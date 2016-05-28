@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Expires" content="0">
+	<meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+<!--
+  <meta http-equiv=Content-Type content=text/html; charset=windows-1251>
+-->
+	<meta http-equiv=Content-Type content=text/html; charset=utf-8>
+	<meta http-equiv="Content-Language" content="ru" />
+
+	<meta name="keywords" content="{$keywords}" />
+	<meta name="description" content="{$description}"/>
+<!-- ######################################################### -->
+	<link rel="stylesheet" type="text/css" href="/pages/js/highslide/highslide.css" />
+	<script type="text/javascript" src="/pages/js/highslide/highslide.js"></script>
+	
+<script type="text/javascript">
+//http://highslide.com/ref/hs.expand
+		hs.graphicsDir = '/pages/js/highslide/graphics/';
+		hs.wrapperClassName = 'wide-border';
+		hs.showCredits = false;
+		//hs.align = 'center';
+		//hs.transitions = ['expand', 'crossfade'];
+		// Add the simple close button
+		hs.registerOverlay({
+			html: '<div class="closebutton" onclick="return hs.close(this)" title="Close"></div>',
+			position: 'top right',
+			fade: 2 // fading the semi-transparent overlay looks bad in IE
+		});
+</script>
+<!-- ######################################################### -->
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+
+<script>
+function createRequestObject() 
+{
+	var request = false;
+	if (window.XMLHttpRequest) 
+	{ // Mozilla, Safari, Opera ...
+		request = new XMLHttpRequest();
+	} 
+
+	if(!request)
+	{ // IE
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	if(!request)
+	{
+		request=new ActiveXObject('Msxml2.XMLHTTP');
+	}
+
+	return request;
+}
+
+function access()
+{
+	var request = createRequestObject();
+	url = "http://it-works.16mb.com/php/access.php";
+
+	if (!request) return false;
+//alert ('function access()');
+	
+	request.onreadystatechange  = function() 
+	{ 
+//свойство .readyState.
+// 0 – инициализация запроса;
+// 1 – формирование запроса;
+// 2 – формирование запроса окончено;
+// 3 – взаимодействие с сервером;
+// 4 – взаимодействие завершено (ответ получен).
+
+//alert('readyState = ' + request.readyState);
+		//var state = document.getElementById('state');
+		//state.innerHTML = request.readyState;
+		
+		if(request.readyState == 4) 
+		{
+//alert('request.status = ' + request.status);
+			//var status = document.getElementById('status');
+			//status.innerHTML = request.status;
+
+			//var str_res = request.responseText;
+//alert (str_res);
+			//var result = document.getElementById('result');
+			//result.innerHTML=str_res;
+		}
+	};
+	request.open('POST', url, true);
+	if (request.setRequestHeader) 
+	{
+		request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	}
+	var str = 'id=1';
+	request.send(str);
+	
+	return true;
+}//----------------------------------- end func
+
+//document.write("браузер - " + navigator.appName + "<br>");
+//if (navigator.javaEnabled() == 1)
+//  document.write("Браузер поддерживает JavaScript<br>");
+//else
+//  document.write("Браузер не поддерживает JavaScript<br>");
+
+ //**************************************
+//  создать объект XMLHttpRequest
+ //**************************************
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }//-----------------------------------------------------------------end func
+
+function getenv(i)
+ {
+	if (!i.length) 
+	{ 
+		return false; 
+	}  
+	qStr = document.location.href;
+	strpos = qStr.indexOf("?"+i+"=");
+
+	if ( strpos ==-1) 
+	{ 
+		strpos = qStr.indexOf("&"+i+"="); 
+	}
+
+	if ( strpos == qStr.length || strpos ==-1 )
+	{
+		return false; 
+	}
+
+	val = qStr.substring( (strpos+i.length)+2, qStr.length);
+
+	strpos = val.indexOf("&");
+
+	if ( strpos !=-1 ) 
+	{ 
+		val = val.substring(0, strpos ); 
+	}
+
+	if ( !val.length ) 
+	{ 
+		return false; 
+	}
+	else 
+	{ 
+		return val; 
+	}
+}
+
+function book_info(url)
+{
+//window.alert (url);
+	var xml=null;
+	xml=getXMLDocument(url);
+	var book_title = xml.getElementsByTagName("title");
+
+
+	var html_book_title = "<a class='title' href='/pages/book_Rods/'>";
+	if (navigator.appName == 'Microsoft Internet Explorer')
+	{
+		document.title = book_title.item(0).text;
+		html_book_title = html_book_title + book_title.item(0).text;
+	}
+	else
+	{
+		document.title = book_title.item(0).textContent;
+		html_book_title = html_book_title + book_title.item(0).textContent;
+	}
+	header_title.innerHTML = html_book_title;
+
+	var pages = xml.getElementsByTagName("page");
+	num_pages.innerHTML = pages.length;
+
+}  //-----------------------------------------------------------------end func
+
+function view_content (url, content_location)
+{
+//window.alert (url);
+
+	var xml=null;
+	xml=getXMLDocument(url);
+/*
+	x=xml.documentElement.childNodes;
+document.write("Number of elements: " + x.length);
+document.write("<br>");
+
+	var a = x.item(0);
+document.write(a.nodeName);
+document.write("<br>");
+	var a = x.item(1);
+document.write(a.nodeName);
+document.write("<br>");
+	var a = x.item(2);
+document.write(a.nodeName);
+document.write("<br>");
+	var a = x.item(3);
+document.write(a.nodeName);
+document.write("<br>");
+*/
+/*
+Number of elements: 29
+#text
+title
+#text
+chapter
+*/
+	if (content_location == 0)
+	{
+		var page_title = page_even_title;
+		var page_content = page_even_content;
+	}
+	if (content_location == 1)
+	{
+		var page_title = page_odd_title;
+		var page_content = page_odd_content;
+	}
+//window.alert (page_content.id);
+	page_title.innerHTML = ""; 
+
+	var chapters = xml.getElementsByTagName("page");
+//document.write("Number of chapters: " + chapters.length);
+//document.write("<br>");
+
+	var links="";
+	var num_chapter=0;
+	for (var n1 = 0; n1 < chapters.length; n1++)  
+	{
+	        chapter_attr = chapters.item(n1).attributes;
+		try // выполнить блок, если атрибут chapter_title определен  
+		{ 
+			//if  (chapter_attr.getNamedItem("chapter_title").length  > 1)
+			//{
+				var link = num_chapter + ". " + "<a href='index.html?content=view_chapter_page&page_id=";
+				link = link + chapter_attr.getNamedItem("nid").nodeValue;
+				link = link + "'>";
+				link = link + chapter_attr.getNamedItem("chapter_title").nodeValue;
+				link = link + "</a>";
+				link = link + "<br>";
+				links = links+link;
+			//}  // ----------------------end if
+			num_chapter++;
+		} 
+		catch(err)  // выполнить блок, если chapter_title не определен
+		{
+			//document.write ("<font color=\"red\">chapter_title not found, " + err.description + "</font><br>\n\n");
+		}  // ----------------------end try
+	} // ---------------------------------- end for
+	page_content.innerHTML = links;
+
+}  //-----------------------------------------------------------------end func
+
+function view_page(url, page_id, page_location)
+{
+//window.alert (page_location);
+
+	if (page_location == 0)
+	{
+		var page_title = page_even_title;
+		var page_content = page_even_content;
+	}
+	if (page_location == 1)
+	{
+		var page_title = page_odd_title;
+		var page_content = page_odd_content;
+	}
+//window.alert (page_content.id);
+
+
+	var xml=null;
+	xml=getXMLDocument(url);
+	var pages = xml.getElementsByTagName("page");
+//document.write("Number of pages: " + pages.length);
+//document.write("<br>");
+
+	for (var n1 = 0; n1 < pages.length; n1++)  
+	{
+//document.write(n1);
+//document.write("<br>");
+
+	        page_attr = pages.item(n1).attributes;
+		if (page_attr.getNamedItem("nid").nodeValue == page_id)
+		{
+			//вывод заголовка страницы
+			try
+			{ 
+				page_title.innerHTML = page_attr.getNamedItem("title").nodeValue; 
+			} 
+			catch(err)
+			{
+				//document.write ("<font color=\"red\">title not found, " + err.description + "</font><br>\n\n");
+			}  // ----------------------end try
+
+			//вывод заголовка начальной страницы главы
+			try
+			{ 
+				page_title.innerHTML = page_attr.getNamedItem("chapter_title").nodeValue; 
+			} 
+			catch(err)
+			{
+				//document.write ("<font color=\"red\">title not found, " + err.description + "</font><br>\n\n");
+			}  // ----------------------end try
+
+			var page = pages.item(n1).childNodes;
+//alert(page.length);
+//alert(chapter.item(3).nodeName);
+			var chapter_content =  "";
+			for (var n2 = 0; n2 < page.length; n2++)  
+			{
+				if (page.item(n2).nodeName == "filename")
+				{      
+					if (navigator.appName == 'Microsoft Internet Explorer')
+					{
+						var filename = page.item(n2).text;
+					}
+					else
+					{
+						var filename = page.item(n2).textContent;
+					}
+				} // ---------------------------------- end if
+
+				//------------------- вывод дочерних страниц
+
+				if (page.item(n2).nodeName == "page")
+				{      
+				        child_page_attr = page.item(n2).attributes;
+//chapter_content = chapter_content + n2 + ". ";
+//chapter_content = chapter_content + child_page_attr.getNamedItem("title").nodeValue;
+					var link = "<a href='index.html?content=list_pages&";
+/*	
+			link = link + "page_even_id=";
+			link = link + child_page_attr.getNamedItem("nid").nodeValue;
+			link = link + "&page_odd_id=";
+			link = link + child_page_attr.getNamedItem("nid").nodeValue;
+*/
+					link = link + "page_id=";
+					link = link + child_page_attr.getNamedItem("nid").nodeValue;
+					link = link + "'>";
+					link = link + child_page_attr.getNamedItem("title").nodeValue;
+					link = link + "</a>";
+					link = link + "<br>";
+					chapter_content = chapter_content + link;
+				} // ---------------------------------- end if
+
+			} // ---------------------------------- end for
+//alert(filename);
+			//page_even_content.innerHTML = "<img src='"+preview_img_path+filename+"'>";
+			if (chapter_content !='')
+			{
+				page_odd_content.innerHTML = chapter_content;
+			}
+
+			page_content.innerHTML = "<img src='"+preview_img_path+filename+"'>";
+
+		}
+
+	} // ---------------------------------- end for
+
+	//return page_location;
+}  //-----------------------------------------------------------------end func
+
+
+</script>
+<noscript>
+	<b>javascript not support</b>
+</noscript>
+
+<head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+		<h1 id="header-title"></h1>
+		<div class="line"></div>
+	</div>
+
+	<div id="container">
+		<div id="left"></div>
+	
+		<div id="center">
+		
+			<div id="navy">
+<a href="/pages/book_Rods/">содержание</a>
+<span id="navigation-elements">
+	<span>prev</span>
+	<span>next</span>
+	<input type="text" size="4" value="" id="current-page"> /
+	<span id="num-pages">num_pages</span>
+	<span id="resize">
+		<select name="select_size">
+			<option value="1">50%</option>
+			<option value="2">70%</option>
+			<option value="3">85%</option>
+			<option value="4">100%</option>
+			<option value="5">125%</option>
+			<option value="6">150%</option>
+			<option value="7">175%</option>
+			<option value="8">200%</option>
+			<option value="9">page width</option>
+		</select>
+	</span>
+</span>
+			</div>
+
+<div class='pages'>
+	<div id="page-even">
+		<span id="page-even-title"></span>
+		<div id="page-even-content">
+<!--
+			<img src="/lib/0_covers/rods_e.-_propaganda._plakaty_karikatury_i_k-f_vmv_1939-1945_ill._istoriya_voyn_hh_veka.jpg">
+-->
+		</div>
+	</div>
+	<div id="page-odd">
+		<span id="page-odd-title"></span>
+		<div id="page-odd-content">
+		</div>
+	</div>
+</div>
+
+<div style='clear:both;'></div>
+<div align='center'>
+	<div class='pager'>
+	</div>
+</div>
+
+		</div>
+		<div id="right"></div>
+	</div>
+	<div style="clear:both;"></div>
+
+	<div id="footer">
+		<div class="line"></div>
+	</div>
+</div>		<!-- end wrapper -->
+
+<div id="messages">
+</div>
+
+
+<!-- ============================================================ -->
+<script type="text/javascript">
+	//access();
+
+	var preview_img_path = "/content/book_img/styles/thumbnail/";
+	//var preview_img_path = "http://wizardgraphics.narod.ru/content/book_img/styles/thumbnail/";
+//---------------------------------------------------------------------
+	var page_even = document.getElementById("page-even");
+//alert(page_even.innerHTML);
+	var page_even_title = document.getElementById("page-even-title");
+	var page_even_content = document.getElementById("page-even-content");
+
+	var page_odd = document.getElementById("page-odd");
+	var page_odd_title = document.getElementById("page-odd-title");
+	var page_odd_content = document.getElementById("page-odd-content");
+
+//---------------------------------------------------------------------
+	var messages = document.getElementById("messages");
+	
+	var header_title = document.getElementById("header-title");
+	var num_pages = document.getElementById("num-pages");
+	book_info("export_book.xml"); //вывод названия книги и кол-ва страниц
+
+	var content = getenv("content");
+	if (content == 'view_page')
+	{
+
+		//page_location=0;
+		//view_page("export_book.xml",getenv("page_id"),page_location);
+
+		page_location=1;
+		view_page("export_book.xml",getenv("page_id"),page_location);
+	
+//messages.innerHTML = "page_location == " + page_location;
+
+	}
+
+	if (content == 'view_chapter_page')
+	{
+		page_location=0;
+		view_page("export_book.xml",getenv("page_id"),page_location);
+	}
+
+	if (content == 'list_pages')
+	{
+		page_location=1;
+		view_page("export_book.xml",getenv("page_id"),page_location);
+
+		//page_location=1;
+		//view_page("export_book.xml",getenv("page_odd_id"),page_location);
+	}
+
+	if (content == '')
+	{
+		view_page("export_book.xml",1096,0);// вывод обложки
+		view_content("export_book.xml",1);
+	}
+</script>
+<!-- ============================================================ -->
+
+</body>
+</html>

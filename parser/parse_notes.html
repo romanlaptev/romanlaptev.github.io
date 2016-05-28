@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=320,initial-scale=1.0"/>
+	
+	<title>notes (export from drupal book)</title>
+	<link rel="stylesheet" href="css/bootstrap.css"/>	
+	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+	<link rel="stylesheet" href="css/notes.css"/>
+<!--
+	<script type="text/javascript" src="../../js/lib/jquery-1.10.1.js"></script>
+-->
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery-browser/jquery.browser.min.js"></script>
+
+	<script>
+
+$(document).ready(
+function()
+{
+	load_xml('xml/export_mydb_notes.xml');
+
+	$('.show-link').live("click",function()
+	//$(document).on( "click", ".show-link", function(e) //jquery > 1.7.2
+		{
+			//$(".node").hide();
+			var show_nid = $(this).attr('id');
+			var node_nid = show_nid.replace("show","node");
+			$('#' + node_nid).toggle();
+			if ( $('#' + node_nid ).is(":visible") )
+			{
+				$('#'+ show_nid +' span').text(" - ");
+
+				//$('.show-link').removeClass("active");
+				$('#'+ show_nid).addClass("active");
+			}
+			else
+			{
+				$('#'+ show_nid +' span').text(" + ");
+				$('#'+ show_nid).removeClass("active");
+			}
+			return false;
+		}
+	);
+	$('.close-link').live("click",function()
+		{
+			var show_nid = $(this).attr('href').replace("#","#show-");
+			var node_nid = show_nid.replace("show","node");
+			$(node_nid).toggle();
+			if ( $(node_nid ).is(":visible") )
+			{
+				$(show_nid +' span').text(" - ");
+				//$('.show-link').removeClass("active");
+				$('#'+ show_nid).addClass("active");
+			}
+			else
+			{
+				$(show_nid +' span').text(" + ");
+				$('#'+ show_nid).removeClass("active");
+			}
+			return false;
+		}
+	);
+
+//--------------------------
+	$('.top').click(function (e) {
+	  e.preventDefault();
+	  $('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
+	});
+
+//----------------------------
+	//$("#xml_data > ul > .show-link").addClass("btn-large");
+
+});// end ready
+
+function load_xml(xml_file)
+{
+	$.get(xml_file,function(data)
+	{
+		$('#xml_data').empty();
+		var html = "";
+		//========================== вывод страниц верхнего уровня
+		$(data).find('node').each(
+		function()
+		{
+			var node = $(this);
+			var plid = node.attr('plid');
+			if ( plid == "0" )
+			{
+				var title = node.attr('title');
+				html += "<h2>";
+				html += title;
+				html += "</h2>";
+				var mlid = node.attr('mlid');
+
+				html += list_content(data, mlid);
+
+				var body_value = node.find('body_value');
+				if (body_value.length)
+				{
+					html += "<div class='node' id='node-"+node.attr('nid')+"'>";
+					html += "<pre>";
+					//---------------------
+					var body_filter = body_value.text();
+					body_filter = body_filter.split("<").join("&lt");
+					body_filter = body_filter.split(">").join("&gt");
+					html += body_filter;
+					//---------------------
+
+					html += "</pre>";
+					html += "</div>";
+				}
+			}
+		}
+		);//------------------------ end each
+		$('#xml_data').append(html);
+	});
+	return false;
+}//------------------------- end func
+
+
+
+function list_content(data, plid)
+{
+	var html = "";
+	$(data).find('node').each(
+		function()
+		{
+			var node = $(this);
+			var test_plid = node.attr('plid');
+			if ( test_plid == plid )
+			{
+				html += "<ul>";
+				html += "<a class='show-link' id='show-"+node.attr('nid')+"' href='#'>";
+				html += "<span> + </span>";
+				html += node.attr('title') +"</a>";
+				//html += "(" + node.attr('weight') + ")";
+
+				html += "<div class='node' id='node-"+node.attr('nid')+"'>";
+				var mlid = node.attr('mlid');
+				html += list_content(data, mlid);
+				//if (child_pages.length)
+				//{
+					//html += "(" + child_pages.length + ")";
+				//}
+
+				html += "<br>";
+				var body_value = node.find('body_value');
+				if (body_value.length)
+				{
+//------------------- close btn
+					html += "<div class='close-btn'>";
+					html += "<a class='close-link' href='#"+node.attr('nid')+"'>";
+					html += "x</a></div>";
+//----------------------------
+					html += "<pre>";
+					//---------------------
+					var body_filter = body_value.text();
+					body_filter = body_filter.split("<").join("&lt");
+					body_filter = body_filter.split(">").join("&gt");
+					html += body_filter;
+					//---------------------
+
+					html += "</pre>";
+				}
+				html += "</div>";
+				html += "</ul>";
+
+			}
+		}
+	);
+	return html;
+}//--------------------- end func
+
+	</script>
+</head>
+
+<body>
+
+<div class="container container-fluid" id="top">
+
+<ul class="nav nav-tabs">
+	<li><a class="btn-info" href="../../index.html">index</a></li>
+	<li><a href="parse_bookmarks.html">bookmarks</a></li>
+</ul>
+
+<!--
+	<h2>notes (export from drupal book)</h2>
+-->
+	<div id="xml_data">Loading...</div>
+
+</div><!-- end container -->
+
+<div class="top">
+<!--
+	<a id="top-link" title="наверх" href="javascript:scroll(0,0)">
+-->	
+	<a id="top-link" title="наверх" href="#">
+		<div class="arrow"></div>
+	</a>
+</div>
+
+
+</body>
+</html>

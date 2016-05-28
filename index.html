@@ -1,29 +1,117 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, layout=1.0">
-	<title>roman laptev personal site</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Roman Laptev personal site</title>
+<!--	
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script>
-window.onload = function(){
-console.log("onload");
-};//end load
-</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+-->	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/main.js"></script>
 </head>
 
 <body>
-	<div class="container">
-	
-		<div class="page-header">
-			<h1>Roman Laptev personal site...</h1>
-		</div>
-	
-		<div class="panel panel-primary">
-			<div class="panel-body" id="log"></div>
-		</div>
-		
+	<div class="container-fluid">
+		<h1>Roman Laptev personal site...</h1>
 	</div><!-- end container -->
+
+	<div class="container-fluid main-content">    
+		<nav class="navbar">
+			<div class="container-fluid">
+			<!--
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>                        
+					</button>
+					<a class="navbar-brand" href="#">Logo</a>
+				</div>
+			-->
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">Home</a></li>
+						<!-- <li><a href="#">About</a></li> -->
+						<!-- <li><a href="#">Projects</a></li> -->
+						<!-- <li><a href="#">Contact</a></li> -->
+						<li><a class="" href="parser/parse_bookmarks.html" target="_blank">Firefox bookmarks</a></li>
+						<li><a class="" href="parser/parse_notes.html" target="_balnk">Notes</a></li>
+						<li><a target="_blank" href="https://romanvlaptev.wordpress.com" class="">my webpad</a></li>
+					</ul>
+			<!--		
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+			-->		
+				</div>
+			</div>
+		</nav>
+		
+		<div class="row content">
+			<div class="col-sm-2 sidenav">
+				<div class="panel panel-primary">
+					<div class="panel-body">
+						<ul class="nav text-center">
+							<li><a class="" href="parser/parse_bookmarks.html" target="_blank">Firefox bookmarks</a></li>
+							<li><a class="" href="parser/parse_notes.html" target="_balnk">Notes</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-8 text-left"> 
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3>WebApps</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="">
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/index.html">lib_xml</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/albums_xml/">albums_xml</a></li>
+<li><a target="_blank" href="http://www.graphic-art-collection.cf/">www.graphic-art-collection.cf</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzTnpfZDJGcUp5UUk/photoalbum/html/index.html">photoalbum</a><br>
+</li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/parse_video/">parse_video</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/book_Rods/">Пропаганда. Плакаты, карикатуры и кинофильмы Второй мировой войны 1939-1945</a></li>
+						</ul>
+					</div>
+				</div><!-- end panel -->
+					
+				<div class="panel panel-danger">
+					<div class="panel-body">
+						<ul class="">
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/book_history_engraving/index.html">Очерки истории и техники гравюры</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/parse_booklist.html">parse fb2 booklist</a></li><li><a target="_blank" href="https://drive.google.com/folderview?id=0BxjK1kq1ZINaS3MzLURhSzdlMnM&amp;usp=sharing">books_unsort</a></li><li><a target="_blank" href="https://0b376ccf8f5d26d0a2a500ed253a7edb19366ab3.googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/books_unsort">/lib/books_unsort</a><br></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/albums_html/">albums_html</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/demo/">demo/</a></li>
+<li><a target="_blank" href="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/book_Rods/">Пропаганда. Плакаты, карикатуры и кинофильмы Второй мировой войны 1939-1945</a></li>
+						</ul>
+					</div>
+				</div><!-- end panel -->
+				
+			</div>
+			
+			<div class="col-sm-2 sidenav">
+				<div class="panel panel-primary">
+					<div class="panel-body">
+<p>right sidenav</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- end container-fluid -->
+
+	<footer class="container-fluid text-center">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+<p>2016</p>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>
