@@ -50,6 +50,16 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Da
 //console.log( d, d.toString());
 //console.log( Date.parse(d) );
 
+Узнать сколько дней между двумя датами:
+
+// Первая дата (год, месяц, день)
+var Date1 = new Date (2008, 7, 25);
+
+// Вторая дата (год, месяц, день)
+var Date2 = new Date (2009, 0, 12);
+
+// Сколько целых дней между датами
+var Days = Math.floor((Date2.getTime() - Date1.getTime())/(1000*60*60*24));
 </pre>
 
 
