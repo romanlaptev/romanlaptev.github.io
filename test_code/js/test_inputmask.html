@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>test jquery.inputmask</title>
+	
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+	<meta name="HandheldFriendly" content="True"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="format-detection" content="address=no"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<meta name="author" content=""/>
+	<meta name="copyright" content="(c)"> 
+	<meta http-equiv="Reply-to" content="mail@yandex.ru">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--
+<script src="js/mask.js"></script>
+-->
+<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script>
+$(document).ready(function() 
+{
+	$("input[name='phone']").inputmask("8 (999) 999-99-99");
+});
+</script>
+
+<script type="text/javascript" src="https://raw.githubusercontent.com/digitalBush/jquery.maskedinput/1.4.0/dist/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/kaimallea/isMobile/master/isMobile.js"></script>
+<script type="text/javascript" src="https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/js/plugins/is.mobile.js"></script>
+<script>
+$(document).ready(function() 
+{
+	var message = "isMobile.apple.phone - " + isMobile.apple.phone + ", isMobile.android.phone - " + isMobile.android.phone + ", isMobile.seven_inch - " + isMobile.seven_inch;
+alert ( message );
+/*
+	if (isMobile.apple.phone || isMobile.android.phone || isMobile.seven_inch)
+	{
+                $('.phone_input').each(function () {
+                    $(this).mask("+7 (999) 999-99-99");
+                });
+                $('.phone_input')
+                    .addClass('rfield')
+                    .removeAttr('required')
+                    .removeAttr('pattern')
+                    .removeAttr('title')
+                    .attr({'placeholder': '+7 (___) ___-__-__'});
+	}
+*/
+alert ( "is_mobile() - " + is_mobile());
+        if (is_mobile()) {
+                $('.phone_input').each(function () {
+                    $(this).mask("+7 (999) 999-99-99");
+                });
+                $('.phone_input')
+                    .addClass('rfield')
+                    .removeAttr('required')
+                    .removeAttr('pattern')
+                    .removeAttr('title')
+                    .attr({'placeholder': '+7 (___) ___-__-__'});
+	}
+});
+</script>
+
+</head>
+<body>
+
+	<h1>test jquery.inputmask</h1>
+<pre>	
+http://robinherbots.github.io/jquery.inputmask/			
+https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js
+</pre>
+	<form action="">
+		<input type="text" name="phone"  placeholder="Телефон">
+		<button class="btn">Заказать</button>
+	</form>
+<hr>
+
+<h3>подкл. скрипта фильтрации только для мобильников</h3>
+<pre>	
+http://digitalbush.com/projects/masked-input-plugin/
+https://raw.githubusercontent.com/digitalBush/jquery.maskedinput/1.4.0/dist/jquery.maskedinput.js
+
+https://github.com/kaimallea/isMobile
+https://raw.githubusercontent.com/kaimallea/isMobile/master/isMobile.js
+or
+https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/js/plugins/is.mobile.js
+</pre>	
+	<form action="">
+		<label class="label_text">Номер телефона</label>
+		<input type="text" class="shorts_input phone_input" 
+type="tel" 
+required pattern="[0-9_-]{10}" 
+placeholder="(___) ___-__-__" 
+id="user_phone" 
+title="Формат: (xxx) xxx xx xx">
+		<input type="submit" class="btn submit_btn disabled" value="Отправьте заявку">
+	</form>
+
+</body>
+</html>

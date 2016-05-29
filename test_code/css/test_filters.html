@@ -1,0 +1,84 @@
+<html>
+<head
+>
+<style>
+.google{
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); 
+    filter: gray;
+    -webkit-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	
+-ms-filter: grayscale(100%);	
+/*
+-ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";
+filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+*/
+}
+
+#svg-filter-blur { filter:url(#blur-effect-1); margin: 15px; }
+#svg-filter-blur:hover { filter:url(#blur-effect-2); }
+.test-blur
+{
+filter: blur(5px); 
+-webkit-filter: blur(5px); 
+-o-filter: blur(5px); 
+
+-ms-filter: blur(5px);	
+filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5'); 
+
+-moz-filter: blur(5px);
+	filter:url(#blur-effect-3);
+}
+</style>
+
+</head>
+<body>
+
+<h1>test filters</h1>
+
+<h2>grayscale</h2>
+http://stackoverflow.com/questions/12173130/css-filter-not-working-in-firefox
+<div class="google">
+     <img src="https://www.google.com/images/srpr/logo3w.png">
+</div>
+
+<h2>blur</h2>
+<pre class="test-blur">
+https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+http://css-plus.com/2012/03/gaussian-blur/
+</pre>
+
+<img id="svg-filter-blur" 
+src="http://css-plus.com/examples/2012/03/gaussian-blur/i/fence.jpg" 
+alt="HTML element blur via SVG" 
+height="200" width="300" />
+
+<svg id="svg-image-blur">
+    <filter id="blur-effect-1">
+        <feGaussianBlur stdDeviation="1" />
+    </filter>
+    <filter id="blur-effect-2">
+        <feGaussianBlur stdDeviation="2" />
+    </filter>
+</svg>
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <filter id="blur-effect-3">
+    <feGaussianBlur stdDeviation="5" />
+  </filter>
+</svg>
+
+<style>
+#svg-image-blur { height: 220px; width: 320px; }
+#svg-image:hover { filter:url(#blur-effect-4); 
+</style>
+	
+<svg id="svg-image-blur">
+    <image x="10" y="10" id="svg-image" width="300" height="200" xlink:href="http://css-plus.com/examples/2012/03/gaussian-blur/i/fence.jpg" />
+    <filter id="blur-effect-4">
+        <feGaussianBlur stdDeviation="5" />
+    </filter>
+</svg>
+
+</body>
+</html>

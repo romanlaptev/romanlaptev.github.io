@@ -1,0 +1,184 @@
+<html>
+<head>
+  <title> все фильмы, описания </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+  <meta http-equiv=Content-Type content=text/html; charset=windows-1251>
+<!--
+  <meta http-equiv=Content-Type content=text/html; charset=utf-8>
+-->
+</head>
+
+<script>
+ //**************************************
+//  создать объект XMLHttpRequest
+ //**************************************
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }   //-----------------------------------------------------------------end func
+
+function select_videoclips (url)
+{
+//     window.alert (url);
+     var xml=null;
+     xml=getXMLDocument(url);
+
+// определить кол-во секций FILM
+ var clip_section = xml.getElementsByTagName("videoclip");
+// document.write("Number of elements: " + clip_section.length);
+// document.write("<br />");
+
+//document.write (xml.getElementsByTagName("film").item(0).textContent);
+
+var num = 0;
+for (var k = 0; k < clip_section.length; k++)  
+	 {
+		var cur_clip_section = xml.getElementsByTagName("videoclip")[k];
+		x = cur_clip_section.attributes;
+
+		// выполнять дальнейший блок, если у клипа заполнено поле исполнителя
+		if (x.getNamedItem('group').nodeValue) 
+		  {
+			num = num +1;
+			try 
+			     {
+				document.write ("<br/>");
+				var tagname = "group";
+				document.write (num +  ".<b> " + x.getNamedItem("group").nodeValue + ", ");
+
+				var tagname = "title";
+				document.write (x.getNamedItem("title").nodeValue + "</b><br>");
+
+		//		document.write (cur_clip_section.textContent);
+
+				document.write ("<ul>");
+				var tagname = "desc";
+				var desc = cur_clip_section.getElementsByTagName("description").item(0).textContent;
+				document.write ("<b><i>Описание: </i></b>" + desc + "<br />");
+
+				var tagname = "filesize";
+				var filesize = cur_clip_section.getElementsByTagName("filesize").item(0).textContent;
+				document.write ("<b><i>Размер: </i></b>" + filesize + "<br/>");
+
+				var tagname = "location";
+				var location = cur_clip_section.getElementsByTagName("location").item(0).textContent;
+				document.write ("<b><i>Ссылка для локальной сети: </i></b>");
+
+				//------------------------------------------------
+				// формирование HTML-ссылок 
+				//------------------------------------------------
+				var b = cur_clip_section.getElementsByTagName("location").item(0).childNodes;
+				var num_lnk=0
+				for (var n = 1;  n < b.length;  n++)  
+			           {  
+					 var a = cur_clip_section.getElementsByTagName("location").item(0).childNodes[n];
+					 // document.write(a.nodeName);
+				        if (a.nodeName == "a")
+				          {      
+						num_lnk++;
+						document.write(num_lnk + ".<a href='" + a.getAttribute('href') + "' target=_blank>");
+						document.write(a.textContent + "</a>");
+				          }
+			           }   // ----------------------end for
+
+				document.write ("<br/>");
+
+			     } 
+			catch(err) 
+			    {
+				document.write ("<font color=\"red\">" + tagname +" " + err.description + "</font><br>\n\n");
+			    } 
+			finally 
+			   {
+//--------------------------------------------------------------------------------------
+				try 
+				     {
+					var tagname = "filesharing";
+					var filesharing = cur_clip_section.getElementsByTagName("filesharing").item(0).textContent;
+					document.write ("<b><i>Ссылка для скачивания с файлообменников: </i></b>");
+
+					//--------------------------------------------------------------------------------
+					// формирование HTML-ссылок на файлообменники
+					//--------------------------------------------------------------------------------
+					var b = cur_clip_section.getElementsByTagName("filesharing").item(0).childNodes;
+					var num_lnk=0
+					for (var n = 1;  n < b.length;  n++)  
+				           {  
+						 var a = cur_clip_section.getElementsByTagName("filesharing").item(0).childNodes[n];
+						 // document.write(a.nodeName);
+					        if (a.nodeName == "a")
+					          {      
+							num_lnk++;
+							document.write(num_lnk + ".<a href='" + a.getAttribute('href') + "' target=_blank>");
+							document.write(a.textContent + "</a>");
+					          }
+				           }   // ----------------------end for
+
+				     } 
+				catch(err) 
+				    {
+					document.write ("<font color=\"red\">" + tagname +" " + err.description + "</font><br>\n\n");
+				    } 
+				finally 
+				    {
+				    }  // ----------------------end try
+//--------------------------------------------------------------------------------------
+				document.write ("</ul>");
+
+			 }  // ----------------------end try
+
+		  }  //------------------------end if
+
+	 }  // ----------------------end for
+} 
+//-----------------------------------------------------------------end func
+
+
+//-----------------------------------------------------------------
+function test ()
+ {
+//	document.all['div_output'].innerHTML = "This is a test !";
+      window.frames['content_frame'].document.write ('hello frame');
+      window.frames['content_frame'].document.write ('hello frame2');
+ }   //-----------------------------------------------------------------end func
+
+</script>
+
+<noscript>
+<b> javascript not support </b>
+</noscript>
+
+<body>
+<li><a href="films.html"> все фильмы, описания </a>
+<li><a href="filesharing_films.html"> выборка фильмов, закачанных на файлообменники </a>
+<li><a href="videoclips.html"> выборка видеоклипов </a>
+<hr>
+
+<script type="text/javascript">
+   select_videoclips ("video.xml");
+</script>
+
+</body>
+</html>

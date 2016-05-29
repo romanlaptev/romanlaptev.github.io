@@ -1,0 +1,141 @@
+<html>
+<head>
+  <title> Favorities books </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+      <meta http-equiv=Content-Type content=text/html; charset=windows-1251>
+  <link rel="STYLESHEET" href="../css/style.css" type="text/css">
+</head>
+
+<script>
+function read_xml (url)
+{
+//     window.alert (url);
+     var xml=null;
+     xml=getXMLDocument(url);
+
+// определить кол-во секций 
+ var book_section = xml.getElementsByTagName("book");
+ document.write("Number of book elements: " + book_section.length);
+ document.write("<br/>");
+
+ x=xml.documentElement.childNodes;
+
+ var a = x.item(1).childNodes[1];
+ document.write(a.nodeName);
+ document.write(a.textContent);
+ document.write("<br/>");
+
+ var b = x.item(1).childNodes[3];
+ document.write(b.nodeName);
+ document.write(b.textContent);
+ document.write("<br/>");
+
+ var b = x.item(3).childNodes[3];
+ document.write(b.nodeName);
+ document.write(b.textContent);
+ document.write("<br/>");
+
+for (var k = 1; k < x.length; k+=2)  
+ {  
+	document.write("<b>[" + x.item(k).nodeName + " ]</b>");
+//	document.write(x.item(k).textContent);
+	document.write("<br/>");
+
+        var a = x.item(k).childNodes[1];
+        document.write("&nbsp;<b>[" + a.nodeName + "]</b> ");
+        document.write(a.textContent);
+        document.write("<br/>");
+
+	var b = x.item(k).childNodes[3];
+	document.write("&nbsp;<b>[" + b.nodeName + "]</b> ");
+	document.write(b.textContent);
+	document.write("<br/>");
+        
+  }
+
+ document.write("<table width=\"95%\">");
+ document.write("<tbody>");
+
+ document.write("<tr>");
+ document.write("<td width=\"5%\"> № </td>");
+ document.write("<td width=\"30%\"> author </td>");
+ document.write("<td> book </td>");
+ document.write("</tr>");
+
+for (var k = 0; k < book_section.length; k++)  
+ {  
+  document.write("<td width=\"5%\">" + (k+1) + ".</td>");
+
+// вывести атрибуты
+  c = xml.getElementsByTagName("book")[k].attributes;
+  document.write("<td width=\"30%\">" + c.getNamedItem("author").nodeValue + "</td>");
+
+  document.write("<td>");
+  // Формирование HTML-ссылок на файлы книг
+  document.write("<a href='");
+
+  document.write("' target=\"_blank\">");
+  document.write(c.getNamedItem("title").nodeValue);
+  document.write("</a><br/>");
+
+  document.write("</td>");
+
+  document.write("</tr>");
+ }
+ document.write("</tbody>");
+ document.write("</table>");
+
+}
+
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }  
+</script>
+<noscript>
+<b> not javascript support </b>
+</noscript>
+<body>
+
+<a href="http://roman-laptev.narod.ru/lib/BigSlov/index.htm"> Современный толковый словарь </a><br/>
+
+<table cellpadding="4" cellspacing="0" height="100%" width="100%">
+<tbody>
+<tr>
+<td class="class1" valign="top" width="90%">
+
+<script type="text/javascript">
+   read_xml("books.xml");
+</script>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
+
+

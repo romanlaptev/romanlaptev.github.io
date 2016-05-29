@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!--	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+-->	
+<script id="code1">
+		var exec_start = new Date();
+		
+		var runtime = 3000;
+		var timer_id = setTimeout( function(){ 
+alert('time is over...'); 
+			var exec_end = new Date();
+			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+console.log("time: " + runtime_s);
+			test_time.innerHTML += ": " + runtime_s + "sec";
+		}, runtime );
+</script>
+
+<script>
+window.onload = function(){
+	//print source code
+	var source_txt = document.getElementById("code1");
+	code1_out.innerHTML +="<br><br>";
+	code1_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+	
+	source_txt = document.getElementById("code2");
+	code2_out.innerHTML +="<br><br>";
+	code2_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+}//end load	
+</script>
+
+</head>
+<body>
+
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>test Date operation</h1>
+		</div>
+<pre>
+https://learn.javascript.ru/datetime
+https://msdn.microsoft.com/ru-ru/library/ee532932%28v=vs.94%29.aspx
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+//var d = new Date();
+//console.log( d, d.toString());
+//console.log( Date.parse(d) );
+
+</pre>
+
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h1>получить время выполнения <span id="test_time"></span> </h1>
+			</div>
+<pre id="code1_out"></pre>
+		</div>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h1>сравнить даты</h1>
+			</div>
+<pre id="code2_out"></pre>
+<span id="comp_res"></span>
+		</div>
+
+	</div><!-- end container -->
+
+<script id="code2">
+var now = new Date(); 
+var d1 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+var s_d1 = d1.getDate() + "." + (d1.getMonth() + 1) +"." + d1.getFullYear();
+
+//var specificDate = new Date("01/01/1997");
+//console.log( specificDate );
+
+var specificDate = new Date(2016,3,21);//21.04.2016
+console.log( specificDate );
+
+var s_specificDate = specificDate.getDate() + "." + ( specificDate.getMonth() + 1) +"." + specificDate.getFullYear();
+
+if ( d1.getTime() === specificDate.getTime() ){
+//alert("Same");
+	comp_res.innerHTML += s_d1 + " == " + s_specificDate;
+} else {
+//alert("Different");
+	comp_res.innerHTML += s_d1 + " != " + s_specificDate;
+}
+</script>
+	
+</body>
+</html>

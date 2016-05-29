@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>New Page 1</title>
+</head>
+
+<script language="javascript">
+
+function test1()
+ {
+
+  // Поиск выделенного элемента - ответа пользователя
+  for (n1=0; n1 < 3; n1++)
+     {
+
+      if (document.forms.check_test[n1].checked)
+        {
+//          otv_usr = document.forms.check_test[n1].value;
+
+         if (document.forms.check_test[n1].value == 'ok')
+           {
+             window.alert ('Правильно !'); 
+           }
+         else
+           {
+             window.alert ('Давай еще раз '); 
+           }
+        }
+     }
+
+
+ }
+</script>
+
+
+<body>
+
+<table align=center border=1 bordercolor=black cellspacing=0 cellpadding=5 width=100%>
+ <tr>
+   <td align=left>
+
+      Вопрос 1
+
+   </td>
+ </tr>
+
+ <tr>
+   <td>
+
+   <form method="POST" action="javascript:test1();" name=check_test method=post> 
+
+     <input type="radio" value="no" name="otvet"> Ответ 1 <br>
+     <input type="radio" value="ok" name="otvet"> Ответ 2 <br>
+     <input type="radio" value="no" name="otvet"> Ответ 3 <br>
+
+   </td>
+ </tr>
+
+ <tr>
+   <td>
+
+     <input type=hidden name=action value="check_test_answer">
+
+     <input type="submit" value="Ответить">
+
+   </form>
+
+   </td>
+ </tr>
+
+</table>
+
+
+
+</body>
+</html>

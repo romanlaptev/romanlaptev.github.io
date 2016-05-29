@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<!-- Имя файла: ex6_book.xml -->
+<BOOK>
+      <TITLE>The Adventures of Huckleberry Finn</TITLE>
+      <AUTHOR>Mark Twain</AUTHOR>
+      <BINDING>mass market paperback</BINDING>
+      <PAGES>298</PAGES>
+      <PRICE>$5.49</PRICE>
+</BOOK>
+

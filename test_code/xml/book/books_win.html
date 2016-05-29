@@ -1,0 +1,225 @@
+<html>
+<head>
+  <title> Favorities books </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+      <meta http-equiv=Content-Type content=text/html; charset="windows-1251">
+  <link rel="STYLESHEET" href="../css/style.css" type="text/css">
+</head>
+
+<script>
+function read_xml (url)
+{
+//     window.alert (url);
+     var xml=null;
+     xml=getXMLDocument(url);
+
+// определить кол-во секций 
+// var book_section = xml.getElementsByTagName("book");
+// document.write("Number of book elements: " + book_section.length);
+
+ document.write("<table width=\"95%\">");
+ document.write("<tbody>");
+
+ document.write("<tr>");
+ document.write("<td width=\"5%\"> N </td>");
+ document.write("<td width=\"20%\"> author </td>");
+ document.write("<td width=\"30%\"> book </td>");
+ document.write("<td> links </td>");
+ document.write("</tr>");
+
+
+  x=xml.documentElement.childNodes;
+  var n=1
+  for (var k = 1; k < x.length; k+=2)  
+   {  
+	document.write("<tr>");
+	document.write("<td width=\"5%\">" + n + "</td>");
+
+//	document.write("<b>[" + x.item(k).nodeName + " ]</b>");
+//	document.write(x.item(k).textContent);
+
+        c = x.item(k).attributes;
+        document.write("<td>" + c.getNamedItem("author").nodeValue + "</td>");
+
+	document.write("<td>");
+        document.write(c.getNamedItem("title").nodeValue);
+        document.write("</td>");
+
+	document.write("<td>");
+        var a = x.item(k).childNodes[3];
+        document.write("<a href='http://roman-laptev.hut1.ru/lib/" + a.textContent + "' target=\"_blank\"> site1 </a> *");
+        document.write("<a href='http://rlaptev.far.ru/lib/" + a.textContent + "' target=\"_blank\"> site2 </a> *");
+        document.write("<a href='http://roman-laptev.narod.ru/lib/" + a.textContent + "' target=\"_blank\"> site3 </a> *");
+        document.write("<a href='http://rlaptev.co.cc/www/lib/" + a.textContent + "' target=\"_blank\"> site4 </a>");
+        document.write("</td>");
+
+	document.write("</tr>");
+        n=n+1;
+   } 
+
+ document.write("</tbody>");
+ document.write("</table>");
+
+}
+
+
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }  
+
+function search_key(word)  
+ {  
+   document.write("<table width=\"95%\">");
+   document.write("<tbody>");
+
+   document.write("<tr>");
+   document.write("<td width=\"5%\"> N </td>");
+   document.write("<td width=\"20%\"> author </td>");
+   document.write("<td width=\"30%\"> book </td>");
+   document.write("<td> links </td>");
+   document.write("</tr>");
+
+
+//   x=xml.documentElement.childNodes;
+   var n=1
+   for (var k = 1; k < x.length; k+=2)  
+     {  
+        c = x.item(k).attributes;
+        var key = c.getNamedItem("author").nodeValue ;
+        if (key.substring(0,1).toUpperCase() == word)
+          {      
+	document.write("<tr>");
+	document.write("<td width=\"5%\">" + n + "</td>");
+
+//	document.write("<b>[" + x.item(k).nodeName + " ]</b>");
+//	document.write(x.item(k).textContent);
+
+        document.write("<td>" + c.getNamedItem("author").nodeValue + "</td>");
+
+	document.write("<td>");
+        document.write(c.getNamedItem("title").nodeValue);
+        document.write("</td>");
+
+	document.write("<td>");
+        var a = x.item(k).childNodes[3];
+        document.write("<a href='http://roman-laptev.hut1.ru/lib/" + a.textContent + "' target=\"_blank\"> site1 </a> *");
+        document.write("<a href='http://rlaptev.far.ru/lib/" + a.textContent + "' target=\"_blank\"> site2 </a> *");
+        document.write("<a href='http://roman-laptev.narod.ru/lib/" + a.textContent + "' target=\"_blank\"> site3 </a> *");
+        document.write("<a href='http://rlaptev.co.cc/www/lib/" + a.textContent + "' target=\"_blank\"> site4 </a>");
+        document.write("</td>");
+
+	document.write("</tr>");
+        n=n+1;
+          }
+     } 
+
+   document.write("</tbody>");
+   document.write("</table>");
+
+ }  
+</script>
+
+<noscript>
+      <b> not javascript support </b>
+</noscript>
+<body>
+
+<a href="http://roman-laptev.narod.ru/lib/BigSlov/index.htm"> Современный толковый словарь </a><br/>
+
+<center>
+По автору: 
+<a href="javascript:search_key('А');"> А </a> |
+<a href="javascript:search_key('Б');"> Б </a> |
+<a href="javascript:search_key('В');"> В </a> |
+
+<a href="javascript:search_key('Г');"> Г  </a> |
+<a href="javascript:search_key('Д');"> Д  </a> |
+<a href="javascript:search_key('Е');"> Е  </a> |
+<!--
+<a href="javascript:search_key('Ё');"> Ё  </a> | 
+-->
+<a href="javascript:search_key('Ж');"> Ж  </a> |
+
+<a href="javascript:search_key('З');"> З  </a> |
+<a href="javascript:search_key('И');"> И  </a> |
+<!--
+<a href="javascript:search_key('Й');"> Й  </a> |
+-->
+<a href="javascript:search_key('К');"> К  </a> |
+<a href="javascript:search_key('Л');"> Л  </a> |
+
+<a href="javascript:search_key('М');"> М  </a> |
+<a href="javascript:search_key('Н');"> Н  </a> |
+<a href="javascript:search_key('О');"> О  </a> |
+<a href="javascript:search_key('П');"> П  </a> |
+<a href="javascript:search_key('Р');"> Р  </a> |
+
+<a href="javascript:search_key('С');"> С  </a> |
+<a href="javascript:search_key('Т');"> Т  </a> |
+<a href="javascript:search_key('У');"> У  </a> |
+<a href="javascript:search_key('Ф');"> Ф  </a> |
+<a href="javascript:search_key('Х');"> Х  </a> |
+
+<a href="javascript:search_key('Ц');"> Ц  </a> |
+<a href="javascript:search_key('Ч');"> Ч  </a> |
+<a href="javascript:search_key('Ш');"> Ш  </a> |
+<a href="javascript:search_key('Щ');"> Щ  </a> |
+<!--
+<a href="javascript:search_key('Ъ');"> Ъ  </a> |
+<a href="javascript:search_key('Ы');"> Ы  </a> |
+<a href="javascript:search_key('Ь');"> Ь  </a> |
+-->
+
+<a href="javascript:search_key('Э');"> Э  </a> |
+<a href="javascript:search_key('Ю');"> Ю  </a> |
+<a href="javascript:search_key('Я');"> Я  </a>
+</center>
+
+<table cellpadding="4" cellspacing="0" height="100%" width="100%">
+<tbody>
+<tr>
+<td class="class1" valign="top" width="90%">
+
+<script type="text/javascript">
+   read_xml("books_win.xml");
+</script>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html></textarea></form>
+</title></comment></a>
+</div></span></ilayer></layer></iframe></noframes></style></noscript></table></script></applet></font>
+<style>
+#bn {display:block;}
+#bt {display:block;}
+</style>
+<div style="background:url(http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=narod_total/)"></div>
+<script language="JavaScript" src="http://yabs.yandex.ru/show/163"></script>
+<!-- mailto:spm111@yandex.ru -->

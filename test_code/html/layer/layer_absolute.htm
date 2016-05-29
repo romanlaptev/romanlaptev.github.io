@@ -1,0 +1,56 @@
+<html>
+<head>
+
+<script language="JavaScript">
+
+  function init()
+   {
+     IE = (document.all)
+     NC = (document.layers)
+     Opera = (document.getElementById)
+   }
+
+  function hiddenLayer() 
+   {
+    init();
+    if (IE) eval('document.all["descr"].style.visibility = "hidden"')
+    if (NC) eval('document.layers["descr"].visibility = "hidden"')
+    if (Opera) eval('document.getElementById("descr").style.visibility = "hidden"')
+   }
+
+  function showLayer()
+   {
+    init();
+    if (IE) eval('document.all["descr"].style.visibility = "visible"')
+    if (NC) eval('document.layers["descr"].visibility = "visible"')
+    if (Opera) eval('document.getElementById("descr").style.visibility = "visible"')
+   }
+</script>
+
+</head>
+
+<body>
+
+<table width="90%" border="1" cellspacing="0" cellpadding="4" bordercolor="#666666" align="center">
+ <tr>
+   <td>
+
+     <li><a href=# onMouseOver="showLayer()" onMouseOut="hiddenLayer()">       јЅќЌ≈ћ≈Ќ“ (франц. abonnement) - право пользовани€ чем-либо на определенный  ... </a>
+     <div id="descr" style="position: absolute; left: 500px; top: 10px; visibility: hidden">
+     <p>
+
+       јЅќЌ≈ћ≈Ќ“ (франц. abonnement) - право пользовани€ чем-либо на определенный
+      срок (местом в театре, катком, телефоном и т. д.), а также документ,
+      предоставл€ющий это право. јбонемент библиотечный - предоставление
+      читател€м права использовани€ произведений печати вне библиотеки в течение
+      определенного срока.
+     </p>
+     </div>
+
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
+

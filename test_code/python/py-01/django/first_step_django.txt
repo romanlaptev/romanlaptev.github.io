@@ -1,0 +1,107 @@
+# инсталляция
+sudo python setup.py install
+
+#------------------------------------------------------------
+# Создание проекта Django
+#------------------------------------------------------------
+django-admin.py startproject mysite
+
+#------------------------------------------------------------
+#Настройка базы данных Django
+#------------------------------------------------------------
+# SQLite включен как часть Python 2.5 и более поздних версий
+mcedit /home/roman/mysite/settings.py
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': '/home/roman/mysite/mydb',                      # Or path to database file if using sqlite3.
+#        'USER': '',                      # Not used with sqlite3.
+#        'PASSWORD': '',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
+
+#создать таблицы в базе данных (root, 123qwe)
+python manage.py syncdb
+
+#------------------------------------------------------------
+# Активирование интерфейса администратора сайта
+#------------------------------------------------------------
+# раскомментировать   'django.contrib.admin'
+mcedit settings.py 
+#INSTALLED_APPS = (
+#    'django.contrib.auth',
+#    'django.contrib.contenttypes',
+#    'django.contrib.sessions',
+#    'django.contrib.sites',
+#    'django.contrib.messages',
+#    # Uncomment the next line to enable the admin:
+#    'django.contrib.admin',
+#    # Uncomment the next line to enable admin documentation:
+#    'django.contrib.admindocs',
+) 
+# обновить таблицы баз данных
+python manage.py syncdb
+
+#раскомментировать URL интерфейса администратора
+mcedit urls.py
+
+#from django.conf.urls.defaults import *
+
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
+urlpatterns = patterns('',
+    # Example:
+    # (r'^mysite/', include('mysite.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+#     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+     (r'^admin/', include(admin.site.urls)),
+) 
+
+seamonkey http://localhost:8000/admin/
+
+#------------------------------------------------------------
+#создать своё приложение
+#------------------------------------------------------------
+python manage.py startapp polls
+
+mcedit /home/roman/mysite/polls/models.py
+#from django.db import models
+#
+#class Poll(models.Model):
+#    question = models.CharField(max_length=200)
+#    pub_date = models.DateTimeField('date published')
+#
+#class Choice(models.Model):
+#    poll = models.ForeignKey(Poll)
+#    choice = models.CharField(max_length=200)
+#    votes = models.IntegerField()
+
+#Измените снова файл settings.py и измените настройки INSTALLED_APPS добавив строку 'mysite.polls'
+mcedit /home/roman/mysite/polls/settings.py
+#INSTALLED_APPS = (
+#    'django.contrib.auth',
+#    'django.contrib.contenttypes',
+#    'django.contrib.sessions',
+#    'django.contrib.sites',
+#    'mysite.polls'
+#)
+
+python manage.py sql polls
+
+#создать таблицы моделей в своей базе данных
+python manage.py syncdb
+
+#Сделаем приложение опроса редактируемым в интерфейсе администратора
+#создайте файл admin.py в каталоге polls и измените его следующим образом
+#from mysite.polls.models import Poll
+#from django.contrib import admin
+
+#admin.site.register(Poll)
+
+

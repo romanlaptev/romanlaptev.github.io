@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>hello-backbonejs</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!--
+    <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone.js"></script>
+<script>
+/*
+//constructor
+var Person = function( config ) {
+	this.name  = config.name;
+	this.age = config.age;
+	this.job = config.job;
+};
+
+Person.prototype.walk = function () {
+	return this.name +  'is walking';
+};
+
+var Nick = new Person ( {name: 'Nick', age: '24', job: 'developer'} );
+
+alert (Nick.walk() );
+*/
+
+var Person = Backbone.Model.extend( {
+	defaults: {
+		name: 'Dima',
+		age: 23,
+		job: 'web developer'
+	},
+	walk: function () {
+		return this.get('name') + ' is walking.';
+	}
+});
+
+var person = new Person ({name: 'Andrey', age: 27 });
+alert ( person.get('name') );
+
+person.set( 'name', 'Nikolay' );
+alert ( person.get('name') );
+alert ( person.walk() );
+//alert ( person.toJSON() );
+
+
+</script>
+
+</head>
+<body>
+
+<p>http://arturadib.com/hello-backbonejs/</p>
+
+</body>
+</html>

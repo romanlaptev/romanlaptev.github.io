@@ -1,0 +1,243 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+function browse_folder_name ()
+ {
+	a = document.forms.form1.local_file.value;
+	document.forms.form1.remote_file.value = a;
+ }
+function browse_folder_name2 ()
+ {
+	a = document.forms.form2.local_file.value;
+	document.forms.form2.remote_file.value = a;
+ }
+function browse_folder_name3 ()
+ {
+	a = document.forms.form3.local_file.value;
+	document.forms.form3.remote_file.value = a;
+ }
+function browse_folder_name4 ()
+ {
+	a = document.forms.form4.local_file.value;
+	document.forms.form4.remote_file.value = a;
+ }
+function browse_folder_name5 ()
+ {
+	a = document.forms.form5.local_file.value;
+	document.forms.form5.remote_file.value = a;
+ }
+function browse_folder_name6 ()
+ {
+	a = document.forms.form6.local_file.value;
+	document.forms.form6.remote_file.value = a;
+ }
+function browse_folder_name7 ()
+ {
+	a = document.forms.form7.local_file.value;
+	document.forms.form7.remote_file.value = a;
+ }
+function browse_folder_name8 ()
+ {
+	a = document.forms.form8.local_file.value;
+	document.forms.form8.remote_file.value = a;
+ }
+function browse_folder_name9 ()
+ {
+	a = document.forms.form9.local_file.value;
+	document.forms.form9.remote_file.value = a;
+ }
+function browse_folder_name10 ()
+ {
+	a = document.forms.form10.local_file.value;
+	document.forms.form10.remote_file.value = a;
+ }
+function browse_folder_name11 ()
+ {
+	a = document.forms.form11.local_file.value;
+	//a = document.forms[10].local_file.form.local_file.value;
+	//a = document.forms[10].elements[1].value
+	document.forms.form11.remote_file.value = a;
+}
+function browse_folder_name12 ()
+ {
+	a = document.forms.form12.local_file.value;
+	document.forms.form12.remote_file.value = a;
+}
+function browse_folder_name13 ()
+ {
+	a = document.forms.form13.local_file.value;
+	document.forms.form13.remote_file.value = a;
+}
+</script>
+</head>
+
+<body>
+
+<form method="post" name="form9" action="ftp_upload.php?action=mass_upload" target=_blank>
+<fieldset>
+<legend>mass upload</legend>
+	local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name9();'><br>
+	remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+	<input type=submit value='mass upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form1" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>roman-laptev.ucoz.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='roman-laptev.ucoz.ru'><br>
+user:<input type=text  size="30" name=user value='0roman-laptev'><br>
+pwd:<input type=password  size="30" name=pwd value=''><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form2" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>ftp.narod.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name2();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='ftp.narod.ru'><br>
+user:<input type=text  size="30" name=user value='roman-laptev'><br>
+pwd:<input type=password  size="30" name=pwd value=''><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='lib'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form3" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>roman-laptev.hut1.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name3();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='roman-laptev.hut1.ru'><br>
+user:<input type=text  size="30" name=user value='romanla'><br>
+pwd:<input type=password  size="30" name=pwd value=''><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='WWW'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form4" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>rex.dax.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name4();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='rex.dax.ru'><br>
+user:<input type=text  size="30" name=user value='u301005'><br>
+pwd:<input type=password  size="30" name=pwd value='zh3oroyb'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='public_html'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form5" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>rex.hop.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name5();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='rex.hop.ru'><br>
+user:<input type=text  size="30" name=user value='w336486'><br>
+pwd:<input type=password  size="30" name=pwd value='wl9fgg4k'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='public_html'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form6" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>bookz.aiq.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name6();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='bookz.aiq.ru'><br>
+user:<input type=text  size="30" name=user value='u335427'><br>
+pwd:<input type=password  size="30" name=pwd value='3qd8do5i'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='public_html'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form7" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>lib.wallst.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name7();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='lib.wallst.ru'><br>
+user:<input type=text  size="30" name=user value='u335492'><br>
+pwd:<input type=password  size="30" name=pwd value='b3nfr52w'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='public_html'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form8" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>rlaptev.far.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name8();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='rlaptev.far.ru'><br>
+user:<input type=text  size="30" name=user value='w300020'><br>
+pwd:<input type=password  size="30" name=pwd value='qpe3ca9m'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='public_html'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form method="post" name="form10" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>catblack.co.cc</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name10();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='catblack.co.cc'><br>
+user:<input type=text  size="30" name=user value='acc2'><br>
+pwd:<input type=password  size="30" name=pwd value='Nfo7tAv'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='www/catblack.co.cc'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form enctype="application/x-www-form-urlencoded" method="post" name="form12" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>beta.hut2.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name12();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='beta.hut2.ru'><br>
+user:<input type=text  size="30" name=user value='beta8'><br>
+pwd:<input type=password  size="30" name=pwd value='a8t1FkHs'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='WWW/pages'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<form enctype="application/x-www-form-urlencoded" method="post" name="form12" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>catblack.h19.ru</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name13();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='catblack.h19.ru'><br>
+user:<input type=text  size="30" name=user value='catblac8'><br>
+pwd:<input type=password  size="30" name=pwd value='gfccword'><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value='WWW'><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+<!--<form enctype="multipart/form-data" method="post" name="form11" action="ftp_upload.php?action=upload" target=_blank>-->
+<form enctype="application/x-www-form-urlencoded" method="post" name="form11" action="ftp_upload.php?action=upload" target=_blank>
+<fieldset>
+<legend>NAS</legend>
+local_file:<input type="file" name="local_file" size="30" onChange='javascript:browse_folder_name11();'><br>
+remote_file:<input type=text  size="30" name="remote_file" value=""><br>
+server:<input type=text  size="30" name=server value='nas'><br>
+user:<input type=text  size="30" name=user value='roman'><br>
+pwd:<input type=password  size="30" name=pwd value=''><br>
+remote_dir:<input type=text  size="30" name="remote_dir" value=''><br>
+<input type=submit value='upload'><br>
+</fieldset>
+</form>
+
+</body>
+</html>

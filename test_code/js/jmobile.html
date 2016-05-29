@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>test jquery mobile</title> 	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script>
+	$(document).bind("mobileinit", function()
+		{
+console.log("mobile init");
+			$.mobile.loadingMessage = "upload data, wait.....";
+		}
+	);
+
+	$(document).bind("pageinit", function()
+		{
+console.log("page init");
+			$("#info").text ( jQuery.event.special.orientationchange.orientation() );
+//+console.log (  "activePage = " + $.mobile.activePage.attr("id") );
+			
+			$(window).bind("orientationchange",
+				function(e)
+				{
+//console.log("orientation change");
+					$("#info").text("Orientation - " + e.orientation );
+				}
+			);
+
+			$("#test-btn").bind("tap", function(e)
+				{
+alert("tap button!");				
+					$.mobile.changePage("#second",{
+							loadMsgDelay:1000
+						}
+					);
+					
+				}
+			);
+/*
+			$("#filter-list").listview("option","filterCallback", function( listItem, filter )
+				{
+console.log("filter listview");
+					var pattern = new RegExp( "^" + filter, "i");
+					return !pattern.test( listItem );
+				}
+			);
+*/			
+		}
+	);
+</script>	
+	<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+
+<style>
+#info
+{
+  background: none repeat scroll 0 0 #fff;
+  color: #000000;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+
+@media all and (min-width: 800px) {
+  #nav {
+    width: 300px;
+    float: left;
+    margin-right: 20px;
+  }
+  #grid {
+    width: 450px;
+    float: left;
+  }
+}
+
+@media all and (max-width: 799px) {
+  #nav {
+    width: 100%;
+  }
+  #grid {
+    width: 100%;
+  }
+}
+</style>
+	
+</head> 
+<body> 
+
+<div id="info">info</div>
+ 
+<div data-role="page" id="main" data-theme="a">
+
+	<div data-role="header" data-theme="e">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#page-list" data-icon="home" data-theme="b" data-transition="slide">Lists</a></li>
+				<li><a href="#page-grid" data-icon="star" data-theme="b" data-transition="flip">CSS grids</a></li>
+				<li><a href="#page-form" data-icon="grid" data-theme="b" data-transition="slide">Forms</a></li>
+				<li><a href="#page-collapsible" data-theme="a" data-transition="turn">Collapsible blocks</a></li>
+<!-- http://view.jquerymobile.com/master/demos/transitions/ -->				
+			</ul>
+		</div>
+		<h1>Test jQuery Mobile</h1>
+	</div>
+	
+	<div data-role="content">	
+		<p>Содержимое страницы</p>
+		<a href="#second" data-rel="dialog" data-transition="pop">Dialog</a>
+
+		<a href="#" data-role="button" data-inline="true">Cancel</a> 
+		<a href="#" data-role="button" data-inline="true">OK</a>
+
+		<!-- Для добавления иконки в кнопке используется атрибут data-icon -->
+		<a href="#" data-role="button" data-icon="delete" data-inline="true">Delete</a> 
+		<a href="#" data-role="button" data-icon="home">Home</a>
+				
+		<!-- div-элемент с набором атрибутов -->
+		<div data-role="controlgroup" data-type="horizontal"> 
+			<a href="#" data-role="button" data-icon="check">Yes</a> 
+			<a href="#" data-role="button" data-icon="arrow-d">No</a>
+			<a href="#" data-role="button">Maybe</a>
+		</div>
+		<div data-role="controlgroup" data-type="horizontal"> 
+			<a href="#" data-role="button" data-icon="back">back</a> 
+			<a href="#" data-role="button" data-icon="home">home</a>
+			<a href="#" data-role="button" data-icon="forward">forward</a> 
+		</div>
+
+		<button id="test-btn">test button</button>
+		
+	</div><!-- end content -->
+	
+	<div data-role="footer">
+		<h4>Подвал страницы</h4>
+	</div>
+</div>
+ 
+<div data-role="page" id="second" data-add-back-btn="true" data-theme="c">
+	<div data-role="header" id="header">
+		<h1>Пример jQuery Mobile</h1>
+	</div>
+	<div data-role="content">	
+		<p>Пример мультистраничности</p>		
+		
+		<!-- Для создания кнопки возврата атрибут data-rel задан в значении back --> 
+		<a href="#" data-role="button" data-rel="back" data-icon="back">Back to previous page</a>		
+	</div><!-- end content -->
+
+	<div data-role="footer">
+		<h4>Copyright (c)</h4>
+		<a href="http://www.facebook.com" data-role="button" data-icon="plus">Add to Facebook</a> 
+		<a href="http://www.twitter.com" data-role="button" data-icon="plus">Tweet this Page</a>		
+	</div>
+</div>
+
+
+
+<div data-role="page" id="page-grid" data-theme="d">
+	<div data-role="header" id="header">
+		<h6>CSS grids</h6>
+	</div>
+	<div data-role="content">	
+		<a href="#" data-rel="back">Back</a>
+		<p>Theme d</p>		
+		
+		<div id="grid" class="ui-grid-b">
+			<div class="ui-block-a"><div class="ui-bar ui-bar-e">A</div></div>
+			<div class="ui-block-b"><div class="ui-bar ui-bar-e">B</div></div>
+			<div class="ui-block-c"><div class="ui-bar ui-bar-e">C</div></div>
+			<div class="ui-block-a"><div class="ui-bar ui-bar-e">A</div></div>
+			<div class="ui-block-b"><div class="ui-bar ui-bar-e">B</div></div>
+			<div class="ui-block-c"><div class="ui-bar ui-bar-e">C</div></div>
+		</div>
+
+		<div style="clear:both;"></div>
+		<br>
+		
+ui-grid-a, two columns		
+		<div class="ui-grid-a">
+			<div class="ui-block-a">1</div>
+			<div class="ui-block-b">2</div>
+			<div class="ui-block-c">3</div>
+		</div>
+		<div style="clear:both;"></div>
+		<br>
+		
+ui-grid-b, three columns		
+		<div class="ui-grid-b">
+			<div class="ui-block-a">1</div>
+			<div class="ui-block-b">2</div>
+			<div class="ui-block-c">3</div>
+		</div>
+		<div style="clear:both;"></div>
+		<br>
+		
+ui-grid-c, four columns		
+		<div class="ui-grid-c">
+			<div class="ui-block-a">1</div>
+			<div class="ui-block-b">2</div>
+			<div class="ui-block-c">3</div>
+			<div class="ui-block-d">4</div>
+			<div class="ui-block-e">5</div>
+		</div>
+
+ui-grid-d, five columns		
+		<div class="ui-grid-d">
+			<div class="ui-block-a">1</div>
+			<div class="ui-block-b">2</div>
+			<div class="ui-block-c">3</div>
+			<div class="ui-block-d">4</div>
+			<div class="ui-block-e">5</div>
+			<div class="ui-block-f">6</div>
+		</div>
+
+		
+	</div><!-- end content -->
+	
+	<div data-role="footer" data-theme="c">
+		<h4>footer</h4>
+	</div>
+</div>
+
+<div id="page-collapsible" data-role="page" data-theme="b">
+	<div data-role="content">
+
+		<a href="#" data-rel="back" data-role="button" data-inline="true" data-theme="a">back</a>
+		
+		<h1>Collapsible blocks</h1>
+		<div data-role="collapsible">
+			<h1>block1</h1>
+			<p>
+Власти Турции ввели комендантский час после того, как в ходе массовых акций протестов курдов погибли 14 человек, еще несколько десятков пострадали. Демонстранты громили магазины, забрасывали полицию камнями и бутылками с зажигательной смесью. В ответ стражи порядка применили водометы и слезоточивый газ.			
+			</p>
+		</div>
+		
+		<div data-role="collapsible" data-collapsed="false" data-content-theme="e">
+			<h1>block2</h1>
+			<p>
+Интенсивность боевых действий на востоке Украины значительно уменьшилась благодаря соглашению о прекращении огня. Об этом сообщает ТАСС со ссылкой на имеющийся в его распоряжении очередной доклад Управления верховного комиссара ООН по правам человека (УВКПЧ) по ситуации на Украине.
+«Вслед за перемирием от 5 сентября масштаб и интенсивность боевых действий значительно уменьшилась, хотя и не до полного их завершения», — говорится в документе, который официально будет опубликован позднее в среду, 8 октября. Он охватывает период времени с 18 августа по 16 сентября 2014 года.
+			</p>
+		</div>
+
+		<h1>Accordion</h1>
+		<div data-role="collapsible-set">
+			<div data-role="collapsible">
+				<h1>block1</h1>
+				<p>
+	Власти Турции ввели комендантский час после того, как в ходе массовых акций протестов курдов погибли 14 человек, еще несколько десятков пострадали. Демонстранты громили магазины, забрасывали полицию камнями и бутылками с зажигательной смесью. В ответ стражи порядка применили водометы и слезоточивый газ.			
+				</p>
+			</div>
+			
+			<div data-role="collapsible" data-collapsed="false" data-content-theme="e">
+				<h1>block2</h1>
+				<p>
+	Интенсивность боевых действий на востоке Украины значительно уменьшилась благодаря соглашению о прекращении огня. Об этом сообщает ТАСС со ссылкой на имеющийся в его распоряжении очередной доклад Управления верховного комиссара ООН по правам человека (УВКПЧ) по ситуации на Украине.
+	«Вслед за перемирием от 5 сентября масштаб и интенсивность боевых действий значительно уменьшилась, хотя и не до полного их завершения», — говорится в документе, который официально будет опубликован позднее в среду, 8 октября. Он охватывает период времени с 18 августа по 16 сентября 2014 года.
+				</p>
+			</div>
+		</div>
+		
+	</div><!-- end content -->
+</div><!-- end page -->
+
+<div id="page-form" data-role="page" data-theme="d">
+	<div data-role="content">
+<a href="#" data-rel="back" data-role="button" data-inline="true">back</a>
+
+		<form method="get">
+			<div data-role="fieldcontain">		
+				<label for="name">	Name:</label>
+				<input type="text" id="name" placeholder="your name">
+			</div>
+			
+			<div data-role="fieldcontain">		
+				<label for="address">	Address:</label>
+				<textarea id="address"></textarea>
+			</div>
+			
+			<h2>select</h2>
+			<div data-role="fieldcontain">		
+				<label for="country">	Country:</label>
+				<select id="country" data-native-menu="false" data-overlay-theme="b">
+					<option data-placeholder="true" value="placeholder">choose country</option>				
+					<option value="ru">RU</option>				
+					<option value="ua">UA</option>				
+					<option value="en">EN</option>				
+					<option value="us">US</option>				
+				</select>
+			</div>
+
+			<div data-role="fieldcontain">		
+				<label for="color">Color:</label>
+				<select id="color" data-role="slider">
+					<option value="red">Red</option>				
+					<option value="green">Green</option>				
+				</select>
+			</div>
+			
+			<h2>checkboxes</h2>
+			<div data-role="fieldcontain">		
+				<fieldset data-role="controlgroup">
+					<legend>note, if you agree with the rules</legend>
+					<input type="checkbox" id="check-agree" name="check_agree">
+					<label for="check-agree">Agree</label>
+				</fieldset>
+			</div>
+
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>Fonts</legend>
+					
+					<input type="checkbox" id="bold" name="bold">
+					<label for="bold"><b>b</b></label>
+					
+					<input type="checkbox" id="italic" name="italic">
+					<label for="italic"><em>i</em></label>
+					
+					<input type="checkbox" id="underline" name="underline">
+					<label for="underline"><u>u</u></label>
+					
+				</fieldset>
+			</div>
+
+			<div data-role="fieldcontain">		
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>Radio</legend>
+					
+					<label for="red">Red</label>
+					<input type="radio" id="red" name="color_radio">
+
+					<label for="green">Green</label>
+					<input type="radio" id="green" name="color_radio">
+
+					<label for="blue">Blue</label>
+					<input type="radio" id="blue" name="color_radio">
+				</fieldset>
+			</div>
+			
+
+			<div data-role="fieldcontain">		
+					<label for="quant">quantity</label>
+					<input type="range" id="quant" value="5" min="0" max="10">
+			</div>
+			
+			<div id="button-container">		
+				<input type="submit" value="send" data-inline="true">
+			</div>
+			
+		</form>
+		
+	</div><!-- end content -->
+</div><!-- end page -->
+
+
+<div id="page-list" data-role="page" data-theme="e">
+	<div data-role="content">
+		<a href="#" data-role="button" data-rel="back" data-inline="true" data-transition="slide" data-direction="reverse">back</a>
+
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#page-grid" data-transition="slidedown">CSS grids</a></li>
+				<li><a href="#page-form" data-transition="slide">Forms</a></li>
+				<li><a href="#page-collapsible" data-transition="fade">Collapsible blocks</a></li>
+				<li><a href="test_bootstrap/test_bootstrap.html" data-transition="fade" data-ajax="false">test_bootstrap.html</a></li>
+			</ul>
+		
+			<h1>Split list</h1>
+			<ul data-role="listview" data-inset="true">
+				<li>
+					<a href="#">CSS grids</a>
+					<a href="#page-grid" data-transition="slidedown">CSS grids</a>
+				</li>
+				<li>
+					<a href="#">Forms</a>
+					<a href="#page-form" data-transition="slide">Forms</a>
+				</li>
+				<li>
+					<a href="#">Collapsible blocks</a>
+					<a href="#page-collapsible" data-transition="fade">Collapsible blocks</a>
+				</li>
+				<li>
+					<a href="#">test_bootstrap.html</a>
+					<a href="test_bootstrap/test_bootstrap.html" data-transition="fade" data-ajax="false">test_bootstrap.html</a>
+				</li>
+			</ul>
+
+			<h1>filter list</h1>
+			
+			<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="filter list">
+				<li>
+						<a href="#">
+							<h1>Roses</h1>
+							<p>desc</p>
+						</a>
+						<div class="ui-li-count">Red</div>
+				</li>
+				<li>
+					<a href="#">Orchids e <div class="ui-li-count">15</div> </a>
+				</li>
+				<li><a href="#">Astors</a> <div class="ui-li-count">8</div> </li>
+			</ul>
+
+			<ul id="nav" data-role="listview" data-inset="true" data-theme="d" data-divider-theme="b">
+				<li><a href="#">Nav item</a></li>
+				<li data-role="list-divider">divider</li>
+				<li><a href="#">Nav item</a></li>
+				<li><a href="#">Nav item</a></li>
+			</ul>
+			
+	</div><!-- end content -->
+</div><!-- end page -->
+	
+</body>
+</html>

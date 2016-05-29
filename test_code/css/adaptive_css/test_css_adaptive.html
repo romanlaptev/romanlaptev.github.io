@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+<style>
+html,body
+{
+height:100%;
+}
+
+body
+{
+color:#fff;
+}
+
+#page
+{
+background:#444;
+margin:36px auto;
+/*width:960px;*//* context */
+width:90%;
+height:90%;
+}
+
+.blog
+{
+/*width:900px;*//* target */
+/* target / context, 900/960=0.9375, 93,75% */
+width:93.75%;
+height:90%;
+margin:0 auto 53px;
+background:#555;
+
+}
+
+.blog .main
+{
+float:left;
+/*width:566px;*/
+/* target / context, 566/900=0.628888889, 62.8888889% */
+width:62.8888889%;
+
+height:75%;
+background:#666;
+}
+
+.blog .right
+{
+float:right;
+/*width:331px;*/
+/* target / context, 331/900=0.367777778, 36.7777778% */
+width:36.7777778%;
+
+height:75%;
+background:#777;
+}
+
+/* левый отступ для h1 (48px)*/
+/* перерасчет в проценты
+48/900 (ширина родит. элемента .blog) = 0.0533333333
+*/
+h1
+{
+padding-left:5.33333333%;
+}
+</style>
+</head>
+
+<body>
+
+<div id="page">
+	<div class="blog">
+		<h1>тест адаптивной верстки</h1>
+		<div class="main">
+			main
+		</div>
+		
+		<div class="right">
+			right
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

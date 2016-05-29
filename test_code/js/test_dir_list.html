@@ -1,0 +1,46 @@
+<DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+//window.onload = function() 
+$(document).ready(function(){
+console.log ( "domain =" + document.domain );
+
+	$.ajax({
+		//url: "./redirect.html",
+		//url: "./",
+		url: "file:///mnt/terra/clouds/cloud_mail/music/",
+		//url: "file:///mnt/terra/clouds/0_data/documents/0_source/js/tests/redirect.html",
+		//url: "http://mycomp/source/js/tests/redirect.html",
+		success:function(data,status)
+		{
+console.log("status - " + status);
+console.log("data - " + data);
+/*
+				var html = "";
+				 $(data).find("td > a").each(function(){
+					html += $(this).attr("href");
+					html += "<br>";
+				 });
+				$("#result").html( html );
+*/
+		},
+		error:function(data, status, errorThrown)
+		{
+console.log("status - " + status);
+console.log("data [statusText] = " + data["statusText"]);
+		}
+
+	});
+});
+</script>
+</head>
+
+<body>
+<h1>test ajax dir listing</h1>
+
+<div id="result"></div>
+
+</body>
+</html>

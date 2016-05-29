@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>angular js</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+	
+<script>
+	var first_app = angular.module("first_app",[]);
+	var model = {
+		user: "test_user",
+		courses: [
+			{ name: "HTML, CSS", passed: true },
+			{ name: "JavaScript", passed: true },
+			{ name: "JavaScript Adv", passed: true },
+			{ name: "CSS3", passed: true },
+			{ name: "Angular JS", passed: false }
+		]
+	};
+	
+	first_app.controller("first_app_ctrl1", function($scope){
+		$scope.message = "This is first app, controller first....";
+		$scope.click_btn = function(){
+			$scope.text = "click on button 1....";
+		}
+	});
+	
+	first_app.controller("first_app_ctrl2", function($scope){
+		$scope.message = "This is first app, controller second....";
+		$scope.click_btn = function(){
+			$scope.text = "click on button 2....";
+		}
+	});
+	
+	first_app.controller("first_app_ctrl3", function($scope){
+		$scope.title = "This is first app, controller third....";
+		$scope.text = "ng-repeat sample";
+		$scope.data = model;
+	});
+	
+//	var sec_app = angular.module("sec_app",[]);
+//	sec_app.controller("sec_app_ctrl1", function($scope){
+//		$scope.message = "This is second app, controller first....";
+//	});
+	
+</script>
+
+
+<script>
+window.onload = function(){		
+	version.innerHTML += angular.version.full;
+};//end load		
+</script>
+	
+</head>
+<body>
+	
+<div class="container">
+	<div class="page-header"><h1>test angular framework <span id="version"></span></h1></div>
+<pre>
+https://angularjs.org/
+
+</pre>
+	<div class="panel" ng-app="first_app">
+		
+		<div ng-controller="first_app_ctrl1">
+			<h3>{{message}}</h3>
+			<p>{{text}}</p>
+			<button class="btn btn-danger" ng-click="click_btn()">btn1</button>
+		</div>
+		
+		<div ng-controller="first_app_ctrl2">
+			<h3>{{message}}</h3>
+			<p>{{text}}</p>
+			<button class="btn btn-info" ng-click="click_btn()">btn2</button>
+		</div>
+		
+		<div ng-controller="first_app_ctrl3">
+			<h3>{{title}}</h3>
+			
+			<p>{{ data.user }}, num courses - {{ data.courses.length }}</p>
+			<p>course 1 - {{ data.courses[0].name }}</p>
+			
+			<h4>{{text}}</h4>
+			<ul ng-repeat="course in data.courses">
+				<li>{{ course.name }}</li>
+			</ul>
+		</div>
+		
+	</div><!-- end panel -->
+	
+<!--	<div class="panel" ng-app="sec_app">
+		<div ng-controller="sec_app_ctrl1">
+			<h3>{{message}}</h3>
+		</div>
+	</div>-->
+	
+</div><!-- end container -->
+	
+</body>
+</html>

@@ -1,0 +1,78 @@
+@media screen and (-webkit-min-device-pixel-ratio:0) /* only Webkit */
+{
+	body
+	{
+/*background:orange;*/
+	}	   
+}
+
+@media all and (-webkit-min-device-pixel-ratio:10000), /* only  Opera < 12 */
+not all and ( -webkit-min-device-pixel-ratio : 0 ) 
+{ 
+	body
+	{
+	background:gold;
+	}	   
+}
+/*------------------------------------------------------------------------*/
+
+
+@media screen and (max-width:980px) 
+{ 
+}/* end max-width:980px */
+
+
+@media screen and (max-width:800px) 
+{ 
+
+}/* end max-width:800px */
+
+
+
+@media screen and (max-width:768px) 
+{ 
+
+}/* end max-width:768px */
+
+
+@media screen and (max-width:720px) 
+{ 
+/*body{background:red;}*/
+	.workers-menu
+	{
+		 margin-left:0;
+	}
+
+}/* end max-width:720px */
+
+
+@media screen and (max-width:640px) 
+{ 
+
+}/* end max-width:640px */
+
+
+@media screen and (max-width:480px) 
+{ 
+
+}/* end max-width:480px */
+
+
+@media screen and (max-width:360px) 
+{ 
+
+}/* end max-width:360px */
+
+@media only screen and (max-width: 360px) and (-webkit-min-device-pixel-ratio:0) 
+{
+/*body{background:red;}*/
+
+
+}/* end webkit and max-width:360px */
+
+
+@media screen and (max-width:320px) 
+{ 
+	
+}/* end max-width:320px */
+

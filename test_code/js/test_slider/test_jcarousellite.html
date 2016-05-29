@@ -1,0 +1,78 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta charset="utf-8"/>
+	<script src="https://code.jquery.com/jquery-latest.js"></script>	
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">	
+<!--
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+-->
+<script src="https://raw.githubusercontent.com/ganeshmax/jcarousellite/master/jquery.jcarousellite.js"></script>	
+<script>
+$(function() {
+    $(".jcarousellite").jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev",
+	visible: 4,
+    speed: 1000,
+// auto: 1800,
+    });
+});
+</script>
+
+<style>
+.list-main-category .col-md-offset-2 {
+  margin-left: 14%;
+}
+
+img {
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<h1 class="text-center">Test jcarousellite</h1>
+
+	<div class="row">
+		<div class="col-md-10 jcarousellite">
+			<ul>
+				<li>
+<img src='https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/albums/termin_images/imagecache/category_pictures/steinlein-chatnoirt.-a._steynlen_chyornyy_kot._plakat_odnoimyonnogo_kabare.jpg'>
+				<span class='carousel-caption'>Т.-А. Стейнлен «Чёрный кот». Плакат одноимённого кабаре</span>
+				</li>
+				<li>
+<img src='http://wizardgraphics.narod.ru/content/albums/plakat/imagecache/preview_gallery_img/ksssrpost_0039.jpg'>
+				<span class='carousel-caption'>Дейнека А. "Даешь"</span>
+				</li>
+				<li>
+<img src='http://wizardgraphics.narod.ru/content/albums/plakat/imagecache/preview_gallery_img/le_047.jpg'>
+				<span class='carousel-caption'>«Работать надо — винтовка рядом». Лебедев В. В., 1920</span>
+				</li>
+				<li>
+<img src='http://wizardgraphics.narod.ru/content/albums/plakat/imagecache/preview_gallery_img/ksssrpost_0003.jpg'>
+				<span class='carousel-caption'>Родченко А., Маяковский В.</span>
+				</li>
+				<li>
+<img src='http://wizardgraphics.narod.ru/content/albums/plakat/imagecache/preview_gallery_img/ksssrpost_0026.jpg'>
+				<span class='carousel-caption'>Зеленский А. Лучшая для обуви паста "Штоко</span>
+				</li>
+				<li>
+<img src='http://wizardgraphics.narod.ru/content/albums/plakat/imagecache/preview_gallery_img/ksssrpost_0024.jpg'>
+				<span class='carousel-caption'>Плакат "Карандаши Мосполиграф"</span>
+				</li>
+			</ul>
+			<button class="prev">&laquo;</button>
+			<button class="next">&raquo;</button>
+		</div>
+	</div>
+
+</div><!-- end container -->
+
+</body>
+</html>

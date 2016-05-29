@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Скрипт для ротации текста</title>
+	<meta charset='utf-8'>
+
+<style type="text/css">
+	/* настройки по своему усмотрению */
+	body {
+		color: #000;
+		background: #fff;
+		font: normal x-small/1.4em tahoma, verdana, sans-serif;
+	}
+	#container {
+		width: 200px;
+		height: 200px;
+		border: 1px solid #000;
+	}
+ 
+	/* правила ниже непосредственно относятся к скрипту */
+	#text1, #text2, #text3 { /* если элементов с текстом больше чем 3, их следует добавить сюда через запятую */
+		margin: 10px;
+		display: none; /* изначально скрываем все блоки, потом они будут показываться с помощью js */
+	}
+</style>
+
+<script type="text/javascript">
+ 	// настройки для скрипта, можно редактировать на свое усмотрение
+	var elements = 3; //количество div-элементов с текстом
+	var time = 3; //задержка смены текста по времени в секундах
+ 
+	//тело скрипта, желательно без причины не редактировать *) 
+	var currentText = 0;
+	var color = 255;
+	noElement = elements + 1;
+	time = time*1000;
+ 	function textRotator () {
+		currentText++;
+		if (currentText == noElement) {
+			currentText = 1;
+		}
+ 
+		if (currentText == 1) {
+			prevText = elements;
+		}
+		else {
+			prevText = currentText - 1;
+		}
+ 
+		var hide = document.getElementById('text'+prevText);
+		hide.style.display = 'none';
+ 
+		var show = document.getElementById('text'+currentText);
+		show.style.display = 'block';
+ 
+		setTimeout('textRotator()', time);
+	}
+ 	window.onload = textRotator;
+ </script>
+</head>
+
+<body>
+
+<div id="container">
+<!-- содержимое должно обязательно скрываться между тегами с id = "text + номер по порядку"-->
+
+	<div id="text1">
+Tyler gets me a job as a waiter, after that Tyler’s pushing a gun in my mouth and saying, the first step to eternal life is you have to die.
+	</div>
+	
+	<div id="text2">
+For a long time though, Tyler and I were best friends. People are always asking, did I know about Tyler Durden.
+	</div>
+	
+	<div id="text3">
+The barrel of the gun pressed against the back of my throat, Tyler says “We really won’t die.”
+	</div>
+</div>
+
+</body>
+</html>

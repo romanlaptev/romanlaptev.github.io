@@ -1,0 +1,156 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<title> test divs</title>
+<style>
+body, html 
+	{
+	margin:5;
+	padding:5;
+	background:silver;
+	color:#000;
+	}
+body 
+	{
+	min-width:950px;
+	}
+
+#wrap 
+	{
+	background:#99c;
+	margin:0 auto;
+	width:950px;
+	}
+
+#header 
+	{
+	background:#ddd;
+	}
+#header h1 
+	{
+	padding:10px;
+	margin:0;
+	}
+
+#nav 
+	{
+	background:#c99;
+	padding:5px;
+	}
+#nav ul
+	{
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+#nav li
+	{
+	display:inline;
+	margin:0;
+	padding:0;
+	}
+
+#main 
+	{
+	background:#9c9;
+	float:left;
+	width:500px;
+	}
+#main h2, #main h3, #main p 
+	{
+	color:olive;
+	padding:0 10px;
+	}
+
+#sidebar 
+	{
+	padding:10;
+	background:darkviolet;;
+	float:right;
+	width:300px;
+	}
+#sidebar ul 
+	{
+	margin-bottom:2;
+	}
+#sidebar h3, #sidebar p 
+	{
+	padding:0 10px 0 0;
+	}
+
+#footer 
+	{
+	position: absolute; top:450px; left:50%;
+	padding:10;
+	background:#cc9;
+	clear:both;
+	}
+#footer p 
+	{
+	color:gold;
+	background:maroon;
+	padding:5px;
+	margin:0;
+	}
+</style>
+
+<script>
+//alert ("Hello!");
+//document.div.document.write();
+
+function myfunc ()
+{
+//alert ("Hello!");
+//	document.getElementById('header').open();
+//	document.getElementById('header').write("qwerty");	
+//	document.getElementById('header').close();
+
+alert (document.all.length);
+for (n1=0; n1 < document.all.length; n1++)
+{
+alert (document.all.item(n1).tagName);
+}
+
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<div id="header"><h1>Заголовок страницы</h1></div>
+
+<div id="nav">
+	<ul>
+		<li><a href="#">Раздел 1</a></li>
+		<li><a href="#">Раздел 2</a></li>
+	</ul>
+</div>
+
+<div id="main">
+	<h2>Колонка 1</h2>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
+</div>
+
+<div id="sidebar">
+	<h3>Колонка 2</h3>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</p>
+	<ul>
+		<li><a href="#">Ссылка 1</a></li>
+		<li><a href="#">Ссылка 2</a></li>
+	</ul>
+</div>
+
+<div id="footer">
+	<p>Подвал</p>
+</div>
+<a href='javascript:myfunc()'>test</a><br/>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>  my website! </title>
+<meta http-equiv=Expires content=0>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link rel=STYLESHEET href=menu.css type=text/css>
+
+<style>
+div
+{
+	background:#072F07;
+	color: white;
+	width: 150px;
+	padding-top:1px;
+	padding-bottom:1px;
+}
+
+.menu1
+{
+	margin:10px;
+	padding:10px;
+
+	background:#072F07;
+	color:white;
+
+	border-style:double;
+	border-color: green;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 3px;
+	border-left-width: 0px;
+
+}
+
+.menu2
+{
+	height: 45px;
+	margin: 10px;
+	padding-left: 5px;
+
+	font-style: normal;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	color: white;
+
+	background: darkgreen; 		
+
+	border-right: #000000 1px solid;
+	border-top: #ffffff 1px solid;
+	border-left: #ffffff 1px solid;
+	border-bottom: #000000 1px solid;
+
+	text-align: left;
+	vertical-align:middle;
+
+}
+
+A:link 
+{
+    color:orange;
+}
+
+A:visited 
+{
+    color:orange;
+}
+
+A:hover 
+{
+    color:orange;
+}
+</style>
+
+<script>
+ //**************************************
+//  создать объект XMLHttpRequest
+ //**************************************
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }   //-----------------------------------------------------------------end func
+
+function select(url)
+{
+	//     window.alert (url);
+	var xml=null;
+	xml=getXMLDocument(url);
+
+	// определить кол-во секций ITEM
+	var menu_items = xml.getElementsByTagName("li");
+	//document.write("Number of item elements: " + menu_items.length);
+	//document.write("<br/>");
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	for (var k = 0; k < menu_items.length; k++)  
+	 {  
+		//считываем пункт меню <li> (level 1)
+		var current_item = xml.getElementsByTagName("li")[k];
+		//document.write("<b>[" + current_item.nodeName + "]</b><br/>");
+
+		var x = current_item.attributes;
+		// выполнять дальнейший блок, если пункт меню включен
+		if (x.getNamedItem('status').nodeValue == 'on')
+		  { 
+			//считываем дочерний тег <a>
+			if (navigator.appName == 'Microsoft Internet Explorer')
+			  {
+				var current_item_link = current_item.getElementsByTagName("a").item(0);
+			  }
+			else
+			 {
+				var current_item_link = current_item.childNodes[1];	
+			 }
+
+			var x = current_item_link.attributes;				//считываем атрибуты тега <a> 
+			var url = x.getNamedItem("href").nodeValue;	
+
+			if (x.getNamedItem('target').nodeValue) 			// если есть атрибут target
+			  {
+				var target = x.getNamedItem("target").nodeValue;
+			  }
+			else
+				var target = "";
+
+			if (navigator.appName == 'Microsoft Internet Explorer')
+			  {
+				var name = current_item_link.text;	//названия ссылки 
+			  }
+			else
+				var name = current_item_link.textContent;	//названия ссылки 
+
+			document.write ("<p class=\"menu2\"><a href=\"" + url + "\" target=" + target + ">" + name + "</a></p>");
+
+		  } // ---------------------------------- end if 
+	 }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+}  //-----------------------------------------------------------------end func
+
+</script>
+<noscript><b> javascript not support </b></noscript>
+
+</head>
+
+<body>
+
+<h3> menu </h3>
+<div>
+<script type="text/javascript">   select("menu.xml"); </script>
+</div>
+
+</body>
+</html>

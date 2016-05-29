@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<script>
+	if( typeof window.jQuery !== "function")
+	{
+		var message = "jQuery load error, https://code.jquery.com/jquery-latest.js " + window.jQuery + ", ....loading local jQuery.....";
+		document.write('<h2>' +message+ '</h2>');
+		document.write('<script src="../jquery-latest.js"><\/script>');
+	}
+	</script>
+	
+	<script>
+//http://www.phpied.com/when-is-a-stylesheet-really-loaded/	
+		var url = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
+		head = document.getElementsByTagName('head')[0];
+		link = document.createElement('link');
+		link.type = "text/css";
+		link.rel = "stylesheet"
+		link.href = url;
+		head.appendChild(link);
+		
+		link.onload = function (){
+//alert( "onload " + this.href);
+		}		
+		link.onerror = function (){
+alert( "onerror " + this.href);
+			var url = "css/bootstrap.min.css",
+			head = document.getElementsByTagName('head')[0];
+			local_link = document.createElement('link');
+			local_link.type = "text/css";
+			local_link.rel = "stylesheet"
+			local_link.href = url;
+			head.appendChild( local_link );
+			
+			local_link.onload = function (){
+alert( "onload " + this.href);
+			}		
+			
+		}		
+	</script>
+	
+	<script>
+if( typeof window.EventSource === "undefined"){
+	alert("No server-sent events support");
+	alert("window.EventSource = " + window.EventSource);
+} else {
+	alert("window.EventSource = " + window.EventSource);
+};
+		
+window.onload = function(){
+
+	btn_sse.onclick = function(e){
+console.log(e);		
+		//var url = "http://172.16.1.194/www/test/test_code/js/server_side_events/demo_sse.aspx";
+		var url = "http://vbox1/php/demo_sse.php";
+console.log( url );
+	
+		var eventSource = new EventSource( url );
+		
+		eventSource.onopen = function(e) {
+console.log("server connection open! ", e);
+		};
+		
+		eventSource.onmessage = function(e) {
+console.log("server message: " + e.data);
+		};
+
+	};
+	
+};//end load
+
+	</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>test server side events</h2>
+		</div>
+<pre>
+https://learn.javascript.ru/server-sent-events
+https://habrahabr.ru/post/120429/
+https://ru.wikipedia.org/wiki/Server-sent_events
+http://caniuse.com/#feat=eventsource
+http://www.w3schools.com/html/html5_serversentevents.asp
+</pre>
+		<button id="btn_sse" class="btn btn-primary">create connection</button>
+	</div>
+</div><!-- end container -->
+
+</body>
+</html>
