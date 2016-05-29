@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>honey site</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+-->
+	<link rel="stylesheet" type="text/css" href="/pages/css/honey-style.css" />
+<!--[if lte IE 8]>
+	<link rel=stylesheet href="gallery-style_fix-ie.css" type=text/css>
+<![endif]-->
+<script language=JavaScript src="/pages/js/functions.js"></script>
+<noscript>
+	<font color="red"><b>not javascript support</b></font>
+	<meta http-equiv="refresh" content="0;URL=/pages/no_js/index.html">
+</noscript>
+
+</head>
+
+<body>
+<base target=_blank>
+
+<div id="main">
+<div id="row1">
+<!-- =============================================== -->
+	<div id="honey11">
+		<div class="top-corner"></div>
+		<a id="box_books" href="javascript:processnode('books');">
+			<div class="box">Книги</div>
+		</a>
+		<div style='display: none;' id='books' class="window1">
+			<p class="close">
+				<a href="javascript:void(0);" onClick="javascript:document.getElementById('books').style.display = 'none'"> x</a>
+			</p>
+<table>
+	<tr>
+		<td>художественая литература
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","books_author");</script>
+		</td>
+		<td>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","books_genre"); </script>
+		</td>
+		<td>компьютерная литература
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","comp_books"); </script>
+		</td>
+	</tr>
+</table>
+		</div><!-- end books -->
+
+		<div class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey12">
+		<div class="top-corner"></div>
+		<a  id="box_graphics" href="javascript:processnode('graphics');">
+			<div class="box">Графика</div>
+		</a>
+		<div id="graphics" style="display: none;" class="window2">
+			<p class="close">
+				<a onclick="javascript:document.getElementById('graphics').style.display = 'none'" href="javascript:void(0);"> x</a>
+			</p>
+			<a href="/pages/albums/index.html" target="_balnk">index</a><br/>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","grafika_albums"); </script>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","grafika_albums_fomenko"); </script>
+			<a href="http://gravura.ts6.ru/pages/book_history_engraving/index.html">Очерки по истории и технике гравюры</a><br>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","grafika_styles"); </script>
+		</div><!-- end graphics -->
+
+		<div class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+</div>
+<!-- =============================================== -->
+
+<div id="row2">
+<!-- =============================================== -->
+	<div id="honey21">
+		<div class="top-corner"></div>
+		<a  id="box_bookmarks" href="javascript:processnode('links');">
+			<div class="box">закладки</div>
+		</a>
+		<div style='display: none;' id='links'  class="window1">
+			<p class="close">
+				<a href="javascript:void(0);" onClick="javascript:document.getElementById('links').style.display = 'none'"> x</a>
+			</p>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","menu2"); </script>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","menu3"); </script>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","sites"); </script>
+		</div><!-- end links -->
+		<div class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey22">
+		<div class="top-corner"></div>
+		<div class="box"></div>
+		<div class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey23">
+		<div class="top-corner"></div>
+		<div class="box"></div>
+		<div class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+</div>
+<!-- =============================================== -->
+
+<div id="row3">
+	<div id="honey31">
+		<div class="top-corner"></div>
+		<a  id="box_video" href="javascript:processnode('video');">
+			<div class="box">Видео</div>
+		</a>
+		<div id="video" style="display: none;" class="window1">
+			<p class="close">
+				<a onclick="javascript:document.getElementById('video').style.display = 'none'" href="javascript:void(0);"> x</a>
+			</p>
+			<script type="text/javascript">read_xml_menu("/pages/xml/site-menus.xml","video"); </script>
+		</div><!-- end video -->
+
+		<div class="bottom-corner"></div>
+	</div>
+	<div id="honey32">
+		<div class="top-corner"></div>
+		<a  id="box_music" href="/pages/xml/select_music.xml">
+			<div class="box">Музыка</div>
+		</a>
+		<div class="bottom-corner"></div>
+	</div>
+</div>
+
+</div><!-- end main -->
+</base>
+
+</body>
+</html>
