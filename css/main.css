@@ -2,9 +2,9 @@
   height: 100%;
 }
 body {
-  background-color: #6aa6c0;
+  background-color: #2c5885/*#6aa6c0*/;
   margin: 0;
-  padding: 20px;
+  padding: 15px;
 }
 
 .main-content {
@@ -16,4 +16,15 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   padding: 20px;
+}
+header {
+  margin-bottom: 5px;
+}
+footer {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.navbar-brand {
+  padding: 0;
 }
