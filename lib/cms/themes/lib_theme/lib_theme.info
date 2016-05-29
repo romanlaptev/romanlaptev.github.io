@@ -1,0 +1,14 @@
+name = lib_theme
+description = none
+package = Core
+version = VERSION
+core = 7.x
+stylesheets[all][] = layout.css
+stylesheets[screen][] = reset.css
+stylesheets[screen][] = style.css
+
+; Information added by drupal.org packaging script on 2013-08-08
+version = "7.23"
+project = "drupal"
+datestamp = "1375928238"
+

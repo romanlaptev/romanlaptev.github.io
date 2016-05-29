@@ -1,0 +1,141 @@
+body, html {
+  height: 100%;
+}
+
+body {
+  background: #C9C6D3;
+}
+
+a
+{
+	text-decoration:none;
+	/*color:#1e90ff;*/
+color: rgb(11, 113, 241);
+}
+
+
+.wrapper
+{
+	/*width:940px;*/
+	margin:auto;
+  height: 100%;
+}
+
+.container
+{
+background:#ffffff;
+  height: 85%;
+}
+
+
+.header
+{
+  background: #45557A;
+	/*padding:5px 10px 5px 10px;*/
+height: 110px;
+}
+.header h2
+{
+  color: #FFFFFF;
+  left: 20px;
+  position: relative;
+  top: 20px;
+font-size:200%;
+}
+.header h4
+{
+  color: #FFFFFF;
+  left: 20px;
+  position: relative;
+  top: 20px;
+font-size:150%;
+}
+
+.footer
+{
+}
+
+.container
+{
+background: none repeat scroll 0 0 #FFFFFF;
+min-height: 100%;
+}
+
+input {
+  width: auto;
+}
+
+
+.control-panel
+{
+  background: none repeat scroll 0 0 #CFDFCC;
+  /*opacity: 0.48;*/
+opacity: 0.9;
+  position: fixed;
+  right: 0;
+  top: 0;
+z-index: 999;
+}
+
+.columns.nav-butons {
+padding: 0 5px 5px;
+text-align: right;
+}
+.columns.to-page {
+  padding: 10px 5px 5px;
+}
+
+.to-page .columns {
+  margin: 5px;
+}
+
+.to-page .text-label{
+  padding-top: 5px;
+}
+
+
+
+.view-book-content
+{
+display:none;
+}
+
+.wrap-book-content
+{
+/*background: #cfdfcc;*/
+background: #fffbe1;
+/*background: #003089;*/
+
+padding: 20px 30px 10px 0;
+position: absolute;
+}
+.wrap-book-content ul
+{
+list-style: none outside none;
+}
+.wrap-book-content a[href="#close"] 
+{
+  display: block;
+  float: right;
+  font-size: 20px;
+  left: 15px;
+  position: relative;
+  top: -15px;
+}
+
+/*
+.wrap-book-content a {
+color: #ffffff !important;
+}
+*/
+
+.preview-page {
+  position: relative;
+left:0;
+}
+
+.nav {
+  position: relative;
+  z-index: 999;
+}
+
