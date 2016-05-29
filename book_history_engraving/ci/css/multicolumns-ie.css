@@ -1,0 +1,8 @@
+.column {
+	column-count: 2;
+	column-rule: 5px solid #F4EACF;
+	column-gap: 20px;
+	text-align:justify;
+	padding:50px;
+	background-color:#E4E1CE;
+}

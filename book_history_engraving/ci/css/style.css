@@ -1,0 +1,194 @@
+::selection{ background-color: #E13300; color: white; }
+::moz-selection{ background-color: #E13300; color: white; }
+::webkit-selection{ background-color: #E13300; color: white; }
+
+body 
+{
+	background-color: #58656D;
+	margin: 40px;
+	font: 17px/24px normal Helvetica, Arial, sans-serif;
+	color: #ffffff;
+}
+
+a {
+	color: #003399;
+	background-color: transparent;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	background-color: transparent;
+	border-bottom: 1px solid #D0D0D0;
+	font-size: 19px;
+	font-weight: normal;
+	margin: 0 0 14px 0;
+	padding: 14px 15px 10px 15px;
+}
+
+code {
+	font-family: Consolas, Monaco, Courier New, Courier, monospace;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	border: 1px solid #D0D0D0;
+	color: #002166;
+	display: block;
+	margin: 14px 0 14px 0;
+	padding: 12px 10px 12px 10px;
+}
+
+#body
+{
+	margin: 0 15px 0 15px;
+	padding:10px;
+}
+	
+p.footer{
+	text-align: right;
+	font-size: 11px;
+	border-top: 1px solid #D0D0D0;
+	line-height: 32px;
+	padding: 0 10px 0 10px;
+	margin: 20px 0 0 0;
+}
+	
+#container
+{
+	margin: 10px;
+	border: 1px solid #D0D0D0;
+	-webkit-box-shadow: 0 0 8px #D0D0D0;
+
+	/*background:#F2F2F2;*/
+	background:#E4E1CE;
+
+	color: #000000;
+}
+.breadcrumbs
+{
+	margin: 10px;
+	padding:10px;
+	-webkit-box-shadow: 0 0 8px #D0D0D0;
+	background:#F2F2F2;
+	color: #000000;
+}
+
+
+.page-links
+{
+	margin: 10px;
+	/*background:#F2F2F2;*/
+	color: #ffffff;
+/*
+	border-bottom: 1px solid #888888;
+	border-top: 1px solid #888888;
+	padding: 0.5em;
+*/
+	text-align: center;
+	height:60px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+}
+
+.page-links a
+{
+	color: gold;
+	text-decoration:none;
+}
+.page-previous 
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: 31%;
+}
+
+.page-up 
+{
+    display: block;
+    float: left;
+    margin: 0 5%;
+    width: 25%;
+}
+
+.page-next 
+{
+    display: block;
+    float: right;
+    text-align: right;
+    width: 20%;
+}
+
+/*--------------------TEXT --------------------------------------------*/
+.notes
+{
+/*
+	font-style:italic;
+	font-family: Times New Roman;
+	font-size:16px;
+	display:block;
+	border:1px solid;
+	padding:10px;
+*/
+    color: #006600;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: italic;
+    padding: 9px;
+}
+
+.termin
+{
+    /*color: red;*/
+	font-weight:bold;
+}
+
+.name
+{
+    /*color: green;*/
+	font-family: Arial;
+	color: maroon;
+	font-weight:bold;
+}
+
+.picture_text
+{
+	font-family: Trebuchet MS;
+	color: darkblue;
+	font-weight:bold;
+}
+/*---------------------------------------------------------------------*/
+.column 
+{
+	/* Оптимальная ширина колонок */
+	-moz-column-width: 200px;
+	-webkit-column-width: 200px;
+	column-width: 200px;
+
+	/* Устанавливает оптимальное число колонок */
+	-moz-column-count: 2; /* Для Firefox */
+	-webkit-column-count: 2; /* Для Safari и Chrome */
+	column-count: 2;
+
+	/* Расстояние между колонками */
+	-moz-column-gap: 20px;
+	-webkit-column-gap: 20px;
+	column-gap: 20px;
+
+	/* Разделительная линия между колонками */
+	-moz-column-rule: 1px solid #ccc;
+	-webkit-column-rule: 1px solid #ccc;
+	column-rule: 1px solid #ccc;
+
+	text-align: justify;
+}
+/*---------------------------------------------------------------------*/
+.book-img-attached
+{
+	border:1px solid #F2F2F2;
+	float:left;
+	text-align:center;
+	max-width:530px;
+	padding: 20px;
+}
+

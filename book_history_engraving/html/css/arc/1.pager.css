@@ -1,0 +1,105 @@
+/*-------PAGER----------------------------------------------------------*/
+.pager
+{
+	border:0px solid white;
+	text-align:center;
+	font-family: Verdana;
+	font-size:14px;
+	/*color:#ffffff;*/
+}
+
+.pager a
+{
+	/*color:#ffffff;*/
+	font-family: Verdana;
+	color:gold;
+	text-decoration:none;
+}
+
+.pager h2
+{
+	color:#ffffff;
+}
+
+.nav_prev
+{
+	float:left;
+	border:0px solid white;
+	margin-top: 30px;
+	width: 5%;
+}
+.nav_index
+{
+	border:0px solid white;
+	color:#ffffff;
+	width: 89%;
+	float:left;
+}
+.nav_next
+{
+	float:right;
+	border:0px solid white;
+	/*margin-top: 10px;*/
+	width: 5%;
+}
+
+.nav_pager
+{
+	/*float:left;*/
+	border:0px solid red;
+	/*margin-top: 10px;*/
+	/*width: 729px;*/
+}
+
+.num_page_top
+{
+    /*border-bottom: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+.num_page_bottom
+{
+    /*border-top: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+
+.num_page_bottom a
+{
+	color:gold;
+	text-decoration:none;
+}
+
+.pager_start_page
+{
+    margin: 10px;
+    text-align: center;
+}
+
+.active_page
+{
+	font-weight:bold;
+	/*font-size:16px;*/
+}
+/*---------------------------------------------------------------------*/
+.nav_txt
+{
+	color:#ffffff;
+}
+
+.more
+{
+	color:#ffffff;
+	border-bottom:1px solid;
+	margin-top:10px;
+	margin-bottom: 15px;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-left:10px;
+	padding-right:10px;
+	/*text-align:left;*/
+}
+/*-------END PAGER--------------------------------------------------*/
+

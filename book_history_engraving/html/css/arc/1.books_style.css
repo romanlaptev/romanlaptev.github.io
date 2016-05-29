@@ -1,0 +1,167 @@
+body
+{
+	background:#222222;
+}
+.page
+{
+	/*border:0px solid red;*/
+	/*width:90%;*/
+	width:1024px;
+	/*margin:auto;*/
+	margin-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:15px;
+	padding-bottom:10px;
+	/*background:#072F07;*/
+	background:#EDD4A0;
+}
+
+.pager
+{
+	border:0px solid black;
+	width:1024px;
+	text-align:center;
+	font-family: Verdana;
+	font-size:12px;
+	/*color:#ffffff;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pager a
+{
+	color:#ffffff;
+	text-decoration:none;
+	font-size:16px;
+}
+
+.num_page_top
+{
+    /*border-bottom: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+.num_page_bottom
+{
+    /*border-top: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+
+.pager_start_page
+{
+    margin: 10px;
+    text-align: center;
+}
+
+.text_column
+{
+	/*border:0px solid red;*/
+	background:#EDD4A0;
+
+	/*width:60%;*/
+	/*width:590px;*/
+	width:450px;
+
+	float:left;
+	padding:30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.text_column p
+{
+	text-indent:30px;
+	font-family: Verdana;
+	font-size:16px;
+}
+.notes
+{
+	font-style:italic;
+	font-family: Verdana;
+	font-size:12px;
+}
+
+.picture_column
+{
+	/*border:0px solid red;*/
+	background:darkred;
+	float:left;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	/*margin-right: 10px;*/
+	/*padding-top:30px;*/
+
+	/*width:340px;*/
+	/*width:48%;*/
+}
+
+.picture
+{
+	border:1px solid #ffffff;
+	/*width:320px;*/
+	margin:10px;
+}
+
+.picture_column p
+{
+	text-align:center;
+	color:#ffffff;
+	margin:10px;
+    margin: auto;
+    padding: 5px;
+    width: 300px;
+}
+
+.picture_column h2
+{
+	text-align:center;
+	color:#ffffff;
+	margin:10px;
+}
+
+.picture img
+{
+	/*width:300px;*/
+	display:block;
+	margin:auto;
+	padding:10px;
+	border:0px;
+}
+
+.picture a
+{
+	color:gold;
+	text-decoration:none;
+}
+
+.url_details
+{
+	float:left;
+	margin:5px;
+}
+
+.url_details a
+{
+	color:#ffffff;
+}
+
+.clear_both
+{
+	clear:both;
+}
+
+.column
+{
+	border:1px solid red;
+	width:45%;
+	float:left;
+    margin: 10px;
+    padding: 10px;
+}
+

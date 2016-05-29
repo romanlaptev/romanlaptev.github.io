@@ -1,1 +1,6 @@
-lib/cms/
+lib/cms/db
+
+#book_history_engraving/ci
+book_history_engraving/cms/db
+#book_history_engraving/export
+#book_history_engraving/html

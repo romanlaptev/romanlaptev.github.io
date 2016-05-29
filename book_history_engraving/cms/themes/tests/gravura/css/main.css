@@ -1,0 +1,188 @@
+body,html
+{
+/*height:100%;*/
+}
+
+body 
+{
+}
+
+a,a:visited
+{
+text-decoration:none;
+color:#0088CC;
+}
+a:hover
+{
+text-decoration:underline;
+color:blue;
+}
+
+.rows
+{
+clear:both;
+}
+.columns
+{
+float:left;
+}
+
+.main-wrap {
+margin: 5% auto auto;
+width: 780px;
+}
+
+
+.row-1 .columns {
+  text-align: center;
+  width: 16.6667%;
+}
+.row-1 .col-1 {
+  width: 30%;
+}
+.row-1 .col-2, 
+.row-1 .col-3, 
+.row-1 .col-4, 
+.row-1 .col-5 {
+  width: 10%;
+}
+.row-1 .col-6 {
+  width: 25%;
+}
+
+.row-1 .notebook-2 .title
+{
+left: -85px;
+position: relative;
+top:80px;
+}
+
+
+.row-1 .notebook-3 .title p {
+  left: -70px;
+  position: relative;
+  top: 5px;
+  width: 145px;
+}
+
+
+.row-1 .notebook-4 .title p {
+left: 10px;
+position: relative;
+top: 5px;
+width: 145px;
+}
+
+
+.row-1 .notebook-5 .title
+{
+left: 75px;
+position: relative;
+top:80px;
+}
+
+
+
+
+.row-2 .left, .row-2 .right {
+padding-top: 30px;
+width: 25%;
+}
+.row-2 .center {
+  text-align: center;
+  width: 50%;
+}
+.row-2 .left .columns, .row-2 .right .columns {
+  width: 50%;
+}
+.row-2 .left{
+  text-align: right;
+}
+.row-2 .right .columns {
+  width: 35%;
+}
+
+.left .notebook-icons, .right .notebook-icons {
+  /*width: 35% !important;*/
+}
+.notebook-icons img {
+width: 60px;
+}
+.notebook-icons {
+font-size: 9px;
+}
+.columns.title {
+  text-align: center;
+}
+.left .title p
+{
+  left: -35px;
+  position: relative;
+  width: 160px;
+	margin: 0;
+	text-align: right;
+}
+
+.row-2 .left .notebook-1 p, 
+.row-2 .left .notebook-14 p, 
+.row-2 .left .notebook-13 p, 
+.row-2 .left .notebook-11 p 
+{
+  position: relative;
+  top: 15px;
+}
+.row-2 .left .notebook-12 p {
+  left: -60px;
+  top:15px;
+  width: 185px;
+}
+
+.right .title p
+{
+  left: 5px;
+  position: relative;
+  width: 165px;
+	margin: 0;
+text-align: left;
+}
+.row-2 .right .notebook-6 p, 
+.row-2 .right .notebook-7 p, 
+.row-2 .right .notebook-8 p 
+{
+  position: relative;
+  top: 15px;
+}
+
+
+.main-pic {
+margin: auto;
+padding-top: 15px;
+width: 350px;
+}
+.main-pic img {
+  width: 350px;
+}
+.author-info p {
+  font-size: 11px;
+}
+
+
+.row-3 {
+  text-align: center;
+}
+
+.row-3 .col-1 {
+  width: 20%;
+}
+.row-3 .col-2 {
+  width: 60%;
+border-top: 2px solid;
+}
+.row-3 .col-3 {
+  width: 20%;
+}
+
+.row-3 .col-2 h1 {
+  font-size: 28px;
+  margin: 5px;
+}

@@ -1,0 +1,125 @@
+(
+SELECT 
+	menu_links.link_title, 
+	@p1:=menu_links.plid
+FROM 
+	menu_links
+WHERE 
+	menu_links.mlid =505
+)
+UNION ALL
+(
+SELECT 
+	menu_links.link_title, 
+	menu_links.plid
+FROM 
+	menu_links
+WHERE 
+	menu_links.mlid =@p1
+)
+--------------------------------------------------
+-- получить заголовок текущего раздела и параметры родителей для строки навигации 
+( 
+SELECT 
+	menu_links.link_title, 
+	@p1:=menu_links.plid as plid 
+FROM 
+	menu_links 
+WHERE 
+	menu_links.mlid =1339 AND menu_links.depth >4
+) 
+UNION ALL 
+( 
+SELECT 
+	menu_links.link_title, 
+	@p2:=menu_links.plid as plid
+FROM 
+	menu_links 
+WHERE 
+	menu_links.mlid =@p1  AND menu_links.depth >4
+) 
+UNION ALL 
+( 
+SELECT 
+	menu_links.link_title, 
+	menu_links.plid 
+FROM 
+	menu_links 
+WHERE 
+	menu_links.mlid =@p2  AND menu_links.depth >4
+) 
+
+--------------------------------------------------------------------------------
+--
+-- получить mlid родительской страницы для строки ссылок в нижн. части страницы
+--
+SELECT 
+	menu_links.link_title, 
+	menu_links.mlid, 
+	menu_links.plid
+FROM 
+	menu_links 
+WHERE 
+	menu_links.mlid =
+	(
+	SELECT menu_links.plid as plid FROM menu_links WHERE menu_links.mlid =505 AND menu_links.depth >4
+	) 
+AND menu_links.depth >4
+
+
+--
+-- получить mlid родительской страницы для строки ссылок в нижн. части страницы
+-- получить mlid соседних страниц для строки ссылок в нижн. части страницы
+--
+SELECT 
+	menu_links.link_title, 
+	menu_links.mlid, 
+	menu_links.plid 
+FROM 
+	menu_links 
+WHERE 
+	menu_links.plid=505 
+AND menu_links.link_title !='all_text'
+AND menu_links.depth >4
+ORDER BY menu_links.weight, menu_links.link_title ASC
+
+------------------------------------------------------------
+-- получить параметры прикрепленных файлов
+SELECT 
+	file_managed.filename, 
+	-- file_managed.uri, 
+	-- file_managed.filemime, 
+	-- file_managed.filesize, 
+	-- file_managed.timestamp, 
+	field_data_field_book_img.field_book_img_alt,
+	field_data_field_book_img.field_book_img_title 
+FROM file_usage
+LEFT JOIN file_managed ON file_managed.fid=file_usage.fid -- получить параметры прикрепленных файлов
+LEFT JOIN field_data_field_book_img ON field_book_img_fid=file_usage.fid 
+WHERE 
+	file_usage.id=78 -- fid прикрепленных файлы  
+
+
+-- получить параметры прикрепленных файлов
+SELECT 
+	-- field_data_field_book_img.field_book_img_fid,
+	field_data_field_book_img.delta as book_img_delta, 
+	file_managed.filename, 
+	-- file_managed.uri, 
+	-- file_managed.filemime, 
+	-- file_managed.filesize, 
+	-- file_managed.timestamp, 
+	field_data_field_book_img.entity_id, 
+	field_data_field_book_img.field_book_img_alt,
+	field_data_field_book_img.field_book_img_title,
+	field_data_field_book_img.field_book_img_width,
+	field_data_field_book_img.field_book_img_height
+FROM 
+	field_data_field_book_img
+LEFT JOIN 
+	file_managed ON file_managed.fid=field_data_field_book_img.field_book_img_fid
+WHERE 
+	field_data_field_book_img.entity_id=78
+ORDER BY 
+	field_data_field_book_img.delta ASC
+

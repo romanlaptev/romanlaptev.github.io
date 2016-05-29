@@ -1,0 +1,285 @@
+/*-------PAGER----------------------------------------------------------*/
+.pager
+{
+	border:0px solid white;
+	text-align:center;
+	font-family: Verdana;
+	font-size:14px;
+	/*color:#ffffff;*/
+
+}
+
+.pager a
+{
+	/*color:#ffffff;*/
+	font-family: Verdana;
+	color:gold;
+	text-decoration:none;
+}
+
+.pager h2
+{
+	color:#ffffff;
+}
+
+.nav_prev
+{
+	float:left;
+	border:0px solid white;
+	/*margin-top: 10px;*/
+	width: 5%;
+	background:darkgreen;
+}
+.nav_index
+{
+	border:0px solid white;
+	color:#ffffff;
+	width: 85%;
+	float:left;
+	margin: 10px;
+	padding: 10px;
+}
+.nav_next
+{
+	float:right;
+	border:0px solid white;
+	/*margin-top: 10px;*/
+	width: 5%;
+	background:darkgreen;
+}
+
+.nav_pager
+{
+	/*float:left;*/
+	border:0px solid red;
+	margin-top: 30px;
+	/*width: 729px;*/
+}
+
+.num_page_top
+{
+    /*border-bottom: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+.num_page_bottom
+{
+    /*border-top: 1px solid #ffffff;*/
+    padding: 10px;
+    text-align: center;
+	color:#ffffff;
+}
+
+.num_page_bottom a
+{
+	color:gold;
+	text-decoration:none;
+}
+
+.pager_start_page
+{
+    margin: 10px;
+    text-align: center;
+}
+
+.active_page
+{
+	font-weight:bold;
+	/*font-size:16px;*/
+	background:darkgreen;
+	padding:3px;
+}
+/*---------------------------------------------------------------------*/
+.nav_txt
+{
+	color:#ffffff;
+}
+
+.more
+{
+	color:#ffffff;
+	border-bottom:1px solid;
+/*
+	margin-top:10px;
+	margin-bottom: 15px;
+*/
+	margin:auto;
+	width:80%;
+
+	padding-top:5px;
+	padding-bottom:15px;
+	padding-left:10px;
+	padding-right:10px;
+	/*text-align:left;*/
+}
+/*-------END PAGER--------------------------------------------------*/
+
+.search_form
+{
+    border: 0px solid white;
+    color: #FFFFFF;
+
+/*
+	clear:both;
+	position:relative;
+	top:-60px;
+	margin-bottom:-60px;
+	z-index:-1;
+*/
+}
+
+/*----------romb, corners--------------------------------------*/
+.highslide-marker_top
+{
+	border-width: 0;
+	border-color: transparent; /* change this to actual background color in highslide-ie6.css */
+	border-style: solid;
+	border-left-width: 50px;
+	border-right-width: 50px;
+	border-top: 50px solid red;
+	width: 0;
+	height: 0;
+	float:left;
+}
+
+.highslide-marker_bottom
+{
+	border-width: 0;
+	border-color: transparent; /* change this to actual background color in highslide-ie6.css */
+	border-style: solid;
+	border-left-width: 50px;
+	border-right-width: 50px;
+	border-bottom: 50px solid red;
+	width: 0;
+	height: 0;
+	float:left;
+	/*margin-left:15px;*/
+}
+
+.right-corner
+{
+	border-width: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-left-width: 40px;
+	/*border-right-width: 50px;*/
+	border-bottom: 30px solid #70708C;
+	width: 0;
+	height: 0;
+	/*float:left;*/
+}
+
+.right-corner2
+{
+	border-width: 0;
+	border-color: transparent;
+	border-style: solid;
+	border-left-width: 40px;
+	/*border-right-width: 50px;*/
+	border-top: 30px solid #70708C;
+	width: 0;
+	height: 0;
+	/*float:left;*/
+}
+
+.left-arrow
+{
+	float:left;
+	/*margin-left:30px;*/
+	border:0px solid white;
+}
+
+.left-corner
+{
+	border-width: 0;
+	border-color: transparent;
+	border-style: solid;
+	/*border-left-width: 50px;*/
+	border-right-width: 40px;
+	border-bottom: 30px solid #70708C;
+	width: 0;
+	height: 0;
+	/*float:left;*/
+}
+
+
+.left-corner2
+{
+	border-width: 0;
+	border-color: transparent;
+	border-style: solid;
+	/*border-left-width: 50px;*/
+	border-right-width: 40px;
+	border-top: 30px solid #70708C;
+	width: 0;
+	height: 0;
+	/*float:left;*/
+}
+
+.right-arrow
+{
+	float:right;
+	/*margin-right:40px;*/
+	border:0px solid white;
+}
+
+.clear
+{
+	clear:both;
+}
+
+/*-------arrows detail---------------------------------------*/
+.corner
+{
+    border: 0px solid red;
+    float: left;
+}
+
+.block1
+{
+    border: 0px solid red;
+    float: left;
+    height: 45px;
+    margin-left: 3px;
+    margin-top: 8px;
+    width: 20px;
+    background: #70708C;
+}
+
+.block2
+{
+	display:none;
+    border: 0px solid;
+    float: left;
+    height: 30px;
+    margin-left: 3px;
+    margin-top: 16px;
+    width: 100px;
+    background: #70708C;
+}
+
+.block21
+{
+    border: 0px solid;
+    float: left;
+    height: 45px;
+    margin-right: 3px;
+    margin-top: 8px;
+    width: 20px;
+    background: #70708C;
+}
+
+.block22
+{
+	display:none;
+    border: 0px solid;
+    float: left;
+    height: 30px;
+    margin-right: 3px;
+    margin-top: 16px;
+    width: 100px;
+    background: #70708C;
+}
+/*-------------------------------------------------*/
+
