@@ -57,12 +57,27 @@
 						<div class='bookname'>#bookname</div>
 						<div class='author'>#author</div>
 
-						<ul id='book-url'>#book-url-links
-							<li><a href="#url" target="_blank">#link-title</a></li>
+						<ul id='book-url' class="list-group">#book-url-links
+							<li class="list-group-item"><a href="#url" target="_blank">#link-title</a></li>
 						</ul>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<b>Dropbox links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">
+									{{dropbox-list}}
+								</ul>
+							</div>
+						</div><!-- end panel -->
+<script type="text/template" id="dropbox-for">
+	<li class="list-group-item">
+		<a href="{{url}}" target="_blank">{{link-title}}</a>
+	</li>
+</script>						
 						
 						<ul id='book-links'>#book-links</ul>
-						
 						<ul>#book-url2</ul>
 
 						<div class='body-value'>#body_value</div>
@@ -74,6 +89,7 @@
 						<div class='date'>
 							<b>created:</b>#created , <b>changed:</b>#changed
 						</div>
+
 						
 					</div>
 				</div>
@@ -82,6 +98,8 @@
 			</div>
 		</div>
 
+	
+		
 		<div class="pull-left grad">
 			<div class="columns left-grad"></div>
 			<div class="columns right-grad"></div>
