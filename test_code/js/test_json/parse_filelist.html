@@ -48,7 +48,7 @@ window.onload = function(){
 	xhr.open("GET","filelist.json", true);
 	xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
-				document.getElementById("ajax-content").innerHTML += "<p>xhr.status -" + xhr.status + "</p>";
+				document.getElementById("ajax_content").innerHTML += "<p>xhr.status -" + xhr.status + "</p>";
 				if (xhr.status == 200) {
 					var json = xhr.responseText;
 					var json_obj = JSON.parse( json );
@@ -64,14 +64,41 @@ console.log( json_obj );
 					}//next file
 					html = list_tpl.replace( "{{list}}", html_list)
 					.replace( "{{source}}",  xhr.responseURL );
-					document.getElementById("ajax-content").innerHTML += html;
+					document.getElementById("ajax_content").innerHTML = html;
 				}
 				
 			}
 		}
 		xhr.send();
-	}
+	}//end event
+	
+	btn_remote.onclick = function(){
+console.log("click", document.getElementById("request_url"));
+		var request_url = document.getElementById("request_url").value;
+		if( request_url.length === 0 ){
+			ajax_content.innerHTML = "<p>error, request_url is empty....</p>";
+			return;
+		}
+		ajax_content.innerHTML = "<h3>Get filelist from " + request_url + "</h3>";
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", request_url, true);
+		xhr.onreadystatechange = function(){
+console.log("state:", xhr.readyState);
+			if( xhr.readyState === 4){
+console.log("end request, state ", xhr.readystate, ", status: ", xhr.status, xhr);
+for( var item in xhr){
+console.log( item +": "+ xhr[item]);
 }
+				if( xhr.status === 200){
+					ajax_content.innerHTML += xhr.responseText;
+				}
+			}
+		};
+		xhr.send();
+	}//end event
+	
+}//end load
 
 //function process_json( data) {
 //	$.each( data, function( key, value){
@@ -81,7 +108,7 @@ console.log( json_obj );
 //	for(var item in data) {
 //console.log( item +": "+ data[item] );	
 //	}
-//	//document.getElementById("ajax-content").innerHTML += data;
+//	//document.getElementById("ajax_content").innerHTML += data;
 //}//end process_json
 
 </script>
@@ -95,10 +122,20 @@ console.log( json_obj );
 <!--		
 		<button id="btn1" class="btn btn-info">$.getJSON</button>
 -->
-		<button id="btn2" class="btn btn-warning">load filelist</button>
-		<button id="btn_remote" class="btn btn-info">get remote filelist</button>
+		<button id="btn2" class="btn btn-warning">load local filelist.json</button>
+		
+		
+		<div class="well">
+			<label>request_url:</label>
+			<input type="text" class="form-control" id="request_url" name="input_url" value=""/>
+			<button id="btn_remote" class="btn btn-info">get remote filelist</button>
+	<pre>
+https://github.com/romanlaptev/romanlaptev.github.io/tree/master/test_code
+	</pre>
+		</div>
+		
 	</div>
-	<div class="panel" id="ajax-content">ajax-content</div>
+	<div class="panel" id="ajax_content">ajax_content</div>
 	
 </div>
 
