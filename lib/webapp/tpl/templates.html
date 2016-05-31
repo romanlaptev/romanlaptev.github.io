@@ -94,14 +94,22 @@
 							</div>
 						</div><!-- end panel -->
 						
-						<ul>{{book-url2}}</ul>
+						<ul>{{book-old-url}}</ul>
 
 						<div class='body-value'>{{body_value}}</div>
+
+						<div class="panel panel-success" id='termins'>
+							<div class="panel-heading">
+								<b>tags</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-inline">
+									{{termin-links}}
+									<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
 						
-						<ul id='termins' class="list-inline"><h3>tags</h3>
-							{{termin-links}}
-							<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
-						</ul>
 						
 						<div class='date'>
 							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
