@@ -54,20 +54,28 @@
 <!-- TEMPLATE -->
 				<div id="view-node">
 					<div class='node'>
-						<div class='bookname'>#bookname</div>
-						<div class='author'>#author</div>
+						<div class='bookname'>{{bookname}}</div>
+						<div class='author'>{{author}}</div>
 
-						<ul id='book-url' class="list-group">#book-url-links
-							<li class="list-group-item"><a href="#url" target="_blank">#link-title</a></li>
-						</ul>
+						<div class="panel panel-info" id="book-links">
+							<div class="panel-heading">
+								<b>Book links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{book-list}}
+									<li class="list-group-item"><a href="{{url}}" target="_blank">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
 
-						<div class="panel panel-primary">
+
+						<div class="panel panel-info" id="dropbox-links">
 							<div class="panel-heading">
 								<b>Dropbox links</b>
 							</div>
 							<div class="panel-body">
 								<ul class="list-group">
-									{{dropbox-list}}
+									<span id="dropbox-list"></span>
 								</ul>
 							</div>
 						</div><!-- end panel -->
@@ -77,17 +85,34 @@
 	</li>
 </script>						
 						
-						<ul id='book-links'>#book-links</ul>
-						<ul>#book-url2</ul>
-
-						<div class='body-value'>#body_value</div>
+						<div class="panel panel-info" id='external-links'>
+							<div class="panel-heading">
+								<b>External links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{external-links}}</ul>
+							</div>
+						</div><!-- end panel -->
 						
-						<ul id='termins'>#termin-links
-							<li><a href="#url" class="nav-click">#link-title</a></li>
-						</ul>
+						<ul>{{book-old-url}}</ul>
+
+						<div class='body-value'>{{body_value}}</div>
+
+						<div class="panel panel-success" id='termins'>
+							<div class="panel-heading">
+								<b>tags</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-inline">
+									{{termin-links}}
+									<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
+						
 						
 						<div class='date'>
-							<b>created:</b>#created , <b>changed:</b>#changed
+							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
 						</div>
 
 						
@@ -125,11 +150,11 @@
 <!-- TEMPLATE -->
 				<div id="tags">
 					<div id="taxonomy-menu">
-						<ul class="menu">#links
-							<li>
-								<a class="nav-click" href="#url">#link-title</a>
-							</li>
-						</ul>
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+							<ul class="menu">#links
+								<li><a class="nav-click" href="#url">#link-title</a></li>
+							</ul>
+						</div>
 					</div>
 					<div id="taxonomy-url">?q=termin_nodes&vid=#vid&tid=#tid</div>
 				</div>		
