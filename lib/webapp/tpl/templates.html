@@ -54,15 +54,22 @@
 <!-- TEMPLATE -->
 				<div id="view-node">
 					<div class='node'>
-						<div class='bookname'>#bookname</div>
-						<div class='author'>#author</div>
+						<div class='bookname'>{{bookname}}</div>
+						<div class='author'>{{author}}</div>
 
-						<ul id='book-url' class="list-group">#book-url-links
-							<li class="list-group-item"><a href="#url" target="_blank">#link-title</a></li>
-						</ul>
+						<div class="panel panel-info" id="book-links">
+							<div class="panel-heading">
+								<b>Book links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{book-list}}
+									<li class="list-group-item"><a href="{{url}}" target="_blank">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
 
 
-						<div class="panel panel-primary" id="dropbox-links">
+						<div class="panel panel-info" id="dropbox-links">
 							<div class="panel-heading">
 								<b>Dropbox links</b>
 							</div>
@@ -78,17 +85,26 @@
 	</li>
 </script>						
 						
-						<ul id='book-links'>#book-links</ul>
-						<ul>#book-url2</ul>
-
-						<div class='body-value'>#body_value</div>
+						<div class="panel panel-info" id='external-links'>
+							<div class="panel-heading">
+								<b>External links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{external-links}}</ul>
+							</div>
+						</div><!-- end panel -->
 						
-						<ul id='termins'>#termin-links
-							<li><a href="#url" class="nav-click">#link-title</a></li>
+						<ul>{{book-url2}}</ul>
+
+						<div class='body-value'>{{body_value}}</div>
+						
+						<ul id='termins' class="list-inline"><h3>tags</h3>
+							{{termin-links}}
+							<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
 						</ul>
 						
 						<div class='date'>
-							<b>created:</b>#created , <b>changed:</b>#changed
+							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
 						</div>
 
 						
