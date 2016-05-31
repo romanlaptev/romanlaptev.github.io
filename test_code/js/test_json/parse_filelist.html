@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+ -->
+<script>
+
+//$(document).ready(function(){
+//	$("#btn1").click(function(){
+//		$.getJSON("filelist.json", function( data ){
+//			process_json( data );
+//		})
+//		.done(function() {
+////console.log( "Done" );
+//		})
+//		.fail(function( jqxhr, textStatus, error ) {
+//			var err = textStatus + ", " + error;
+//console.log( "Request Failed: " + err );
+//		})
+//		.always(function() {
+////console.log( "Always" );
+//		});	
+//	});
+//	
+//});
+
+var list_tpl = "<div class='panel panel-info'>\
+	<div class='panel-heading'>\
+		<h3>Index folder from {{source}}</h3>\
+	</div>	\
+	<div class='panel-body'>\
+		<ul class='list-group'>{{list}}</ul>\
+	</div>	\
+</div>";
+var url_tpl = "<li class='list-group-item'><a href='{{name}}'>{{name}}</a>\
+<p class='list-group-item-text'>{{description}}</p>\
+</li>";
+	
+window.onload = function(){
+
+	document.getElementById("btn2").onclick = function(){
+//console.log("click", this.getAttribute("id"));	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET","filelist.json", true);
+	xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				document.getElementById("ajax-content").innerHTML += "<p>xhr.status -" + xhr.status + "</p>";
+				if (xhr.status == 200) {
+					var json = xhr.responseText;
+					var json_obj = JSON.parse( json );
+console.log( json_obj );
+					var html_list = "";
+					for(var n1 = 0; n1 < json_obj.length; n1++) {
+						var name = json_obj[n1]["name"];
+						if( json_obj[n1]["type"] === "dir" ) {
+							name = "["+name+"]";
+						}
+						html_list += url_tpl.replace(/{{name}}/g, name )
+						.replace("{{description}}", json_obj[n1]["description"]);;
+					}//next file
+					html = list_tpl.replace( "{{list}}", html_list)
+					.replace( "{{source}}",  xhr.responseURL );
+					document.getElementById("ajax-content").innerHTML += html;
+				}
+				
+			}
+		}
+		xhr.send();
+	}
+}
+
+//function process_json( data) {
+//	$.each( data, function( key, value){
+//console.log(key, value);
+//	});
+//
+//	for(var item in data) {
+//console.log( item +": "+ data[item] );	
+//	}
+//	//document.getElementById("ajax-content").innerHTML += data;
+//}//end process_json
+
+</script>
+</head>
+
+<body>
+<div class="container">
+	<h1>test JSON filelist</h1>
+
+	<div class="panel panel-success">
+<!--		
+		<button id="btn1" class="btn btn-info">$.getJSON</button>
+-->
+		<button id="btn2" class="btn btn-warning">load filelist</button>
+		<button id="btn_remote" class="btn btn-info">get remote filelist</button>
+	</div>
+	<div class="panel" id="ajax-content">ajax-content</div>
+	
+</div>
+
+</body>
+</html>
