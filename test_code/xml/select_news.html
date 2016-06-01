@@ -1,0 +1,115 @@
+<html>
+<head>
+  <title> bookmarks </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+  <meta http-equiv=Content-Type content=text/html; charset="utf-8">
+<!--
+  <link rel="STYLESHEET" href="../css/style.css" type="text/css">
+-->
+</head>
+
+<script>
+function read_xml (url)
+{
+//     window.alert (url);
+     keyword="section_news";
+     var xml=null;
+     xml=getXMLDocument(url);
+
+     x=xml.documentElement.childNodes;
+
+     var n=1
+     for (var k = 1;  k < x.length; k+=2)  
+         {  
+	        c = x.item(k).attributes;
+	        var key = c.getNamedItem("keyword").nodeValue ;
+	        if (key == keyword)
+	          {      
+//			document.write("[" + x.item(k).nodeName + " ");
+//			document.write(" ]");
+		        document.write("title: <b>" + c.getNamedItem("title").nodeValue + "</b>, ");
+		        document.write("keyword: <b>" + c.getNamedItem("keyword").nodeValue + "</b>");
+			document.write("<br>");
+
+			var b = x.item(k).childNodes;
+
+			var num_lnk=0
+  		       for (var n = 1;  n < b.length;  n++)  
+		         {  
+				 var a = x.item(k).childNodes[n];
+//				 document.write(a.nodeName);
+			        if (a.nodeName == "a")
+			          {      
+					num_lnk++;
+					document.write(num_lnk + ".<a href='" + a.getAttribute('href') + "'>");
+					document.write(a.textContent + "</a><br>");
+			         }
+			        if (a.nodeName == "h3")
+			          {      
+					document.write("<h3>");
+					document.write(a.textContent);
+					document.write("</h3>");
+			         } 
+			        if (a.nodeName == "hr")
+			          {      
+					document.write("<hr>");
+			         } 
+ 
+//			      document.write("<br>");
+		         } 
+
+//			document.write("<pre>");
+//			document.write  (x.item(k).textContent);
+//			document.write("</pre>");
+		  }
+         } 
+}
+
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }  
+
+</script>
+<noscript>
+      <b> not javascript support </b>
+</noscript>
+
+<body>
+<table cellpadding="4" cellspacing="0" width="100%">
+	<tbody>
+		<tr>
+		<td class="class1" valign="top" width="90%">
+			<script type="text/javascript">
+	   		read_xml("bookmarks.xml");
+			</script>
+		</td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
+

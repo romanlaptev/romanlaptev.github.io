@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<script>
+		var app = angular.module("App",[]);
+		app.directive("orderedList",function(){
+			return function(scope, element, attributes){
+				var attrValue = attributes["orderedList"];
+				var data = scope[attrValue];
+				if( angular.isArray(data) )
+				{
+					var e = angular.element("<ol>");
+					element.append(e);
+					for( var n = 0; n < data.length; n++ )
+					{
+						e.append( angular.element("<li>").text( data[n].name ) );
+					}
+				}
+			}
+		});
+		app.controller("AppCtrl",function( $scope ){
+			$scope.items = [
+			{ name:"Table", price: 44.10},
+			{ name:"Chair", price: 21.20},
+			{ name:"Pillow", price: 12.20},
+			{ name:"Picture", price: 112.70},
+			{ name:"Lamp", price: 28.31}
+			];
+		});
+	</script>
+</head>
+
+<body ng-app="App">
+	<div class="container">
+		<h2>test AngularJS</h2>
+		
+		<div class="panel panel-primary" ng-controller="AppCtrl">
+			<div class="panel-heading">
+				<h3>Items</h3>
+			</div>
+
+			<div class="panel-body h4">
+				<div ordered-list="items"></div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>

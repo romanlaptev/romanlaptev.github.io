@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>test doT</title>
+<!--	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+-->
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<script src="doT.min.js"></script>
+
+<script id="headertmpl" type="text/x-dot-template">
+	<h1>{{=it.title}}</h1>
+</script>
+
+<script id="pagetmpl" type="text/x-dot-template">
+	<h2>Here is the page using a header template</h2>
+	{{#def.header}}
+	{{=it.name}}<br>
+</script>
+
+	
+<script id="thumbnail_tpl" type="text/plain">
+	<li class='thumbnail'>
+<a class='pirobox' href='#' title='{{=it.title}}'>
+	<img id="{{=it.id}}" src='{{=it.image}}' alt='{{=it.title}}'>
+</a>
+		<p class="img-caption">{{=it.title}}</p>
+	</li>
+</script>
+
+<script>
+window.onload = function(){
+//console.log("onload");
+	log.innerHTML +="version <b>doT</b> " + doT.version;
+	
+	var def = {
+		header: document.getElementById('headertmpl').text//,
+		//customheader: document.getElementById('customizableheadertmpl').text
+	};
+	var data = {
+		title: "My title",
+		name: "My name"
+	};
+
+	var pagefn = doT.template( document.getElementById('pagetmpl').text, undefined, def );
+	document.getElementById('content').innerHTML = pagefn(data);
+	
+	
+	var pictures = [
+	  {id: 1, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/01.jpg', title: 'Вступительная статья. О технике гравюры.'},
+	  {id: 2, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/02.jpg', title: 'Немецкая гравюра 15 - 16 веков'},
+	  {id: 3, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/03.jpg', title: 'Нидерландская гравюра 15 - 16 веков'},
+	  {id: 4, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/04.jpg', title: 'Итальянская гравюра 15 - 18 веков'},
+	  {id: 5, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/05.jpg', title: 'Французская гравюра 15 - 17 веков'},
+	  {id: 6, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/06.jpg', title: 'Французская гравюра 18 века'},
+	  {id: 7, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/07.jpg', title: 'Голландский офорт 17 века'},
+	  {id: 8, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/08.jpg', title: 'Английская гравюра 18 века'},
+	  {id: 9, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/09.jpg', title: 'Офорты Гойи и западноевропейская гравюра 19 века'},
+	  {id: 10, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/10.jpg', title: 'Гравюра 20 века стран Западной Европы и Америки'},
+	  {id: 11, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/11.jpg', title: 'Японская гравюра 17 - 19 веков'},
+	  {id: 12, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/12.jpg', title: 'Русская гравюра 16 - 17 веков. Русская народная картинка'},
+	  {id: 13, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/13.jpg', title: 'Русская гравюра 18 - начала 20 века'},
+	  {id: 14, image: 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/14.jpg', title: 'Советская гравюра'}
+	];
+	var thumbnail = doT.template( document.getElementById('thumbnail_tpl').innerHTML );
+	for( var n = 0; n < pictures.length; n++){
+		document.getElementById('list').innerHTML += thumbnail( pictures[n] );
+	}
+	
+};
+</script>
+<style>
+.thumbnail {
+float: left;
+height: 200px;
+width: 150px;
+}
+.img-caption {
+	text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>Testing template engine <a href="http://olado.github.io/doT/">doT</a></h1>
+		</div>
+	
+		<pre>
+		http://olado.github.io/doT/
+		http://nano.sapegin.ru/all/shablony-dlya-javascript-dot-js-plagin-dlya-jquery
+		http://true-coder.ru/javascript/shablonizaciya-na-storone-klienta.html
+		</pre>
+		
+		<div class="panel panel-primary">
+			<div class="panel-body" id="log"></div>
+			<div class="panel-body" id="content"></div>
+			<ul class='panel-body list-inline' id="list"></ul>
+		</div>
+		
+	</div><!-- end container -->
+
+</body>
+</html>

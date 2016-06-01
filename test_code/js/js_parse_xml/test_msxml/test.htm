@@ -1,0 +1,65 @@
+<HTML>
+<head>
+<title></title>
+
+<script language="javascript">
+var xmldoc = new ActiveXObject("msxml");
+var xmlsrc = "data.xml";
+
+
+function parse (root)
+ {
+  if (root==null) return;
+  var i=0;
+  var elem;                       
+
+// Если вложенные элементы не были определены, то свойство children будет установленно в null
+  if (root.children!=null)
+    {
+
+     // Перебор дочерних элементов
+     for (i=0; i <root.children.length; i++)
+      {
+        elem=root.children.item(i);
+
+        // Отображение заголовка документа, определяемого элементом <title>
+        if (root.children.item(i).tagName=="TITLE")
+          {
+            this.document.writeln('<b>'+ elem.tagName + ':</b>' + elem.text);
+            this.document.writeln('<br>');
+          }
+
+        if (root.children.item(i).tagName=="PROGRAMS-LIST")
+          {
+            if (elem.children!=null)
+              {
+                for (n=0; n <= root.children.length; n++)
+                   {
+                    var cur_item=elem.children.item(n);
+                    this.document.writeln('<b>'+ cur_item.tagName + ':</b>' + cur_item.text);
+                    this.document.writeln('<br>');
+                   }
+              }
+          }
+       }
+
+
+    }   
+ }
+
+function viewDocument()
+ {
+   xmldoc.URL = xmlsrc;     // Загрузка XML документа
+   this.document.writeln('<body bgcolor="lightsteelblue">');
+
+   this.document.writeln('<b> xmldoc.URL              </b> = ' + xmldoc.URL+'<br>');
+
+   parse(xmldoc.root);      // Начало разбора документа
+
+   this.document.writeln('</body>');
+}
+
+// Генерирование страницы
+viewDocument();
+</script>
+</head>

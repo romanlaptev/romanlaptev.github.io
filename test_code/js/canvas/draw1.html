@@ -1,0 +1,221 @@
+<html>
+<head>
+<title> dev </title>
+<script type="text/javascript" src="wz_jsgraphics.js"></script>
+</head>
+
+
+<body>
+
+<h2>  Draw on JS </h2>
+<form action="">
+<table cellspacing="0">
+<tr align="right">
+<td>
+<input style="
+width: 100%;" 
+value="drawLine()" 
+onclick="DRAW(this.value)" type="button">
+</td>
+<td>x1<input name="dl_x1" size="5" maxlength="4" value="50" type="text">&nbsp;</td>
+<td>y1<input name="dl_y1" size="5" maxlength="4" value="-330" type="text">&nbsp;</td>
+<td>x2<input name="dl_x2" size="5" maxlength="4" value="500" type="text">&nbsp;</td>
+<td>y2<input name="dl_y2" size="5" maxlength="4" value="800" type="text">&nbsp;</td>
+</tr>
+
+<tr align="right">
+<td>
+<input 
+style="width: 100%;" 
+value="drawRect()" 
+onclick="DRAW(this.value)" 
+type="button">
+</td>
+  <td>x<input name="dr_x" size="5" maxlength="4" value="130" type="text">&nbsp;</td>
+  <td>y<input name="dr_y" size="5" maxlength="4" value="20" type="text">&nbsp;</td>
+  <td>w<input name="dr_w" size="5" maxlength="4" value="490" type="text">&nbsp;</td>
+  <td>h<input name="dr_h" size="5" maxlength="4" value="80" type="text">&nbsp;</td>
+</tr>
+
+<tr align="right">
+<td>
+<input 
+style="width: 100%;" 
+value="fillRect()" 
+onclick="DRAW(this.value)" 
+type="button">
+</td>
+  <td>x<input name="fr_x" size="5" maxlength="4" value="-70" type="text">&nbsp;</td>
+  <td>y<input name="fr_y" size="5" maxlength="4" value="130" type="text">&nbsp;</td>
+  <td>w<input name="fr_w" size="5" maxlength="4" value="160" type="text">&nbsp;</td>
+  <td>h<input name="fr_h" size="5" maxlength="4" value="100" type="text">&nbsp;</td>
+</tr>
+
+<tr align="right">
+<td>
+<input 
+value="fillPolygon()" 
+onclick="DRAW(this.value)" 
+type="button"></td>
+
+<td colspan="4">
+    x<input name="fp_x" size="25" value="80,126,-30,-60" type="text">&nbsp;y<input name="fp_y" size="25" value="0,130,40,100" type="text">
+</td>
+</tr>
+
+<tr align="right">
+<td>
+<input 
+style="width: 100%;" 
+value="drawEllipse()" 
+onclick="DRAW(this.value)" 
+type="button">
+</td>
+
+  <td>x<input name="do_x" size="5" maxlength="4" value="350" type="text">&nbsp;</td>
+  <td>y<input name="do_y" size="5" maxlength="4" value="-30" type="text">&nbsp;</td>
+  <td>w<input name="do_w" size="5" maxlength="3" value="140" type="text">&nbsp;</td>
+  <td>h<input name="do_h" size="5" maxlength="4" value="250" type="text">&nbsp;</td>
+</tr>
+
+<tr align="right">
+<td>
+<input 
+style="width: 100%;" 
+value="fillEllipse()" 
+onclick="DRAW(this.value)" 
+type="button">
+</td>
+  <td>x<input name="fo_x" size="5" maxlength="4" value="20" type="text">&nbsp;</td>
+  <td>y<input name="fo_y" size="5" maxlength="4" value="150" type="text">&nbsp;</td>
+  <td>w<input name="fo_w" size="5" maxlength="4" value="440" type="text">&nbsp;</td>
+  <td>h<input name="fo_h" size="5" maxlength="4" value="800" type="text">&nbsp;</td>
+</tr>
+
+<tr>
+<td colspan="5">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td>
+setColor("#<input name="Color" size="7" maxlength="6" value="00aaaa" type="text">")
+</td>
+<td align="center">
+setStroke(<input name="Stroke" size="3" maxlength="2" value="4" type="text">)
+</td>
+<td align="right">
+setStroke(Stroke.DOTTED<input name="Dotted" type="checkbox">)
+</td>
+</tr>
+</tbody>
+</table>
+
+<input style="font-weight: bold; 
+width: 290px;" 
+value="clear() this test area" 
+onclick=";if(jg2)jg2.clear();" 
+type="button">
+
+</td>
+</tr>
+
+<tr>
+<td height="250">
+
+<!--
+<div id="dt" 
+style="position: relative; left: -80px; top: 10px; height: 1px;">
+</div>
+-->
+
+<div id="test" 
+style="overflow: visible; 
+position: relative; left: 0px; top: 0px; 
+width: 400px; height: 250px; 
+z-index: 2;">    Test Canvas   </div>
+
+</td>
+</tr>
+
+</table>
+</form>
+
+<script type="text/javascript">
+<!--
+var no_dhtm = (document.layers || window.opera && !document.defaultView);
+
+
+function DRAW(shape)
+{
+    if (jg_n4 || window.opera && !document.defaultView)
+    {
+        alert('In Netscape 4 and Opera < version 7, the functionality\n"Draw into a canvas, even after the page has fully loaded" isn\'t available.\nThese browsers can only draw directly into the document\nwhile the page is parsed.');
+        return;
+    }
+
+
+    if (window.event) event.cancelBubble = true;
+    var f=document.forms[0];
+
+    var color = ''+f.Color.value;
+    for (var z = 0; z<color.length; z++)
+        if (isNaN(parseInt(color.charAt(z), 16)))
+            color = color.substring(0, z) + '6' + color.substring(z+1);
+
+
+
+var t0 = (new Date()).getTime();
+
+    jg2.setColor("#"+color);
+    jg2.setStroke(f.Dotted.checked? Stroke.DOTTED : parseInt(f.Stroke.value));
+
+    if (shape=="drawLine()")
+        jg2.drawLine(parseInt(f.dl_x1.value), parseInt(f.dl_y1.value), parseInt(f.dl_x2.value), parseInt(f.dl_y2.value));
+    else if (shape=="drawRect()")
+        jg2.drawRect(parseInt(f.dr_x.value), parseInt(f.dr_y.value), parseInt(f.dr_w.value), parseInt(f.dr_h.value));
+    else if(shape=="fillRect()")
+        jg2.fillRect(parseInt(f.fr_x.value), parseInt(f.fr_y.value), parseInt(f.fr_w.value), parseInt(f.fr_h.value));
+    else if(shape=="drawEllipse()")
+        jg2.drawEllipse(parseInt(f.do_x.value), parseInt(f.do_y.value), parseInt(f.do_w.value), parseInt(f.do_h.value));
+    else if(shape=="fillEllipse()")
+        jg2.fillEllipse(parseInt(f.fo_x.value), parseInt(f.fo_y.value), parseInt(f.fo_w.value), parseInt(f.fo_h.value));
+    else if(shape=="fillPolygon()")
+    {
+        var pgx = f.fp_x.value.split(',');
+        var pgy = f.fp_y.value.split(',');
+        var comm = '\n \nNote:\nValues must be separated with commas from each other.';
+        if (pgx.length!=pgy.length) alert('The number of x und y values must be equal.'+comm);
+        else
+        {
+            for (var z = 0; z<pgx.length; z++)
+            {
+                if (isNaN(pgx[z] = parseInt(pgx[z])) || isNaN(pgy[z] = parseInt(pgy[z])))
+                {
+                    alert('Invalid x or y value.'+comm);
+                    return;
+                }
+            }
+            jg2.fillPolygon(pgx, pgy);
+        }
+    }
+
+    jg2.paint();
+//    var t1 = (new Date()).getTime() - t0;
+//    jg3.clear();
+//    jg3.setColor('#'+color);
+//    jg3.setFont('verdana,geneva,sans-serif', '12px', Font.BOLD);
+//    jg3.drawString(t1 + ' milliseconds', 0, 10);
+//    jg3.paint();
+
+}
+
+var jg2 = new jsGraphics("test");
+//var jg3 = new jsGraphics("dt");
+
+
+//-->
+</script>
+
+</body>
+</html>
+
+

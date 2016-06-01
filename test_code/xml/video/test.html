@@ -1,0 +1,71 @@
+﻿<html>
+<head>
+  <title> video </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+  <meta http-equiv=Content-Type content=text/html; charset=utf-8>
+</head>
+
+<script>
+function read_xml (url)
+{
+//     window.alert (url);
+     var xml=null;
+     xml=getXMLDocument(url);
+document.write (xml.node(0));
+
+}
+
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }  
+</script>
+<noscript>
+<b> javascript not support </b>
+</noscript>
+
+<body>
+<table cellpadding="4" cellspacing="0" height="100%" width="100%">
+<tbody>
+<tr>
+<td class="class1" width="3%"> <br>
+</td>
+<td class="class1" valign="top" width="90%">
+<h2> video collection </h2>
+
+<script type="text/javascript">
+   read_xml("video.xml");
+</script>
+
+<br>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

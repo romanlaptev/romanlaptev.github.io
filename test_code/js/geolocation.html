@@ -1,0 +1,198 @@
+﻿<DOCTYPE html>
+<html>
+<head>
+	<title>Test API Geolocation</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.css">
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>	
+	
+<script>
+//replace console.log() for old IE
+if (!window.console)
+{ 
+	console = {
+		log: function( message ) {
+			alert( message );
+			//document.getElementById("log").innerHTML += message;
+		}
+	}
+};
+
+window.onload = function(){
+
+	if( navigator.geolocation )
+	{
+		var log = document.querySelector("#log");
+		var latitude_value = document.querySelector("#latitude-value");
+		var longitude_value = document.querySelector("#longitude-value");
+		var speed_value = document.querySelector("#speed-value");
+		var accuracy_value = document.querySelector("#accuracy-value");
+		var timestamp_value = document.querySelector("#timestamp-value");
+
+		var altitude_value = document.querySelector("#altitude-value");
+		var altitudeAccuracy_value = document.querySelector("#altitudeAccuracy-value");
+		var heading_value = document.querySelector("#heading-value");
+
+		
+		navigator.geolocation.getCurrentPosition(function (position) {
+console.log( "async navigator.geolocation.getCurrentPosition ");
+console.log( position);
+//for(var item in position.coords)
+//{
+//console.log( item, position.coords[item] );
+//}
+			var coords = position.coords;
+			latitude_value.innerHTML = coords.latitude;
+			longitude_value.innerHTML = coords.longitude;
+			accuracy_value.innerHTML = coords.accuracy;
+			timestamp_value.innerHTML = position.timestamp;
+			
+			speed_value.innerHTML = coords.speed;
+			altitude_value.innerHTML = coords.altitude;
+			altitudeAccuracy_value.innerHTML = coords.altitudeAccuracy;
+			heading_value.innerHTML = position.heading;
+		}, function (error){
+			var errorTypes = {
+				1: "Permission denied",
+				2: "Position is not available",
+				3: "Request timeout"
+			};
+			log.innerHTML =  "Error code: " + error.code + ", " + errorTypes[error.code] ;
+		});
+	}
+	else
+	{
+		document.write("Error, Geolocation API not support in browser");
+	}
+	
+	
+	
+//https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
+//http://www.paulund.co.uk/how-to-use-geolocation-api-with-google-maps
+	initMap();
+	function initMap() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: -34.397, lng: 150.644},
+			zoom: 6
+		});
+	
+		var infoWindow = new google.maps.InfoWindow({map: map});
+
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+		var pos = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		};
+
+		infoWindow.setPosition(pos);
+		infoWindow.setContent('Location found.');
+		map.setCenter(pos);
+		}, function() {
+		handleLocationError(true, infoWindow, map.getCenter());
+		});
+		} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+		}
+	}//end initMap
+
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ?
+					'Error: The Geolocation service failed.' :
+					'Error: Your browser doesn\'t support geolocation.');
+	}
+
+}//end load
+
+</script>
+
+	
+<style>
+.header-title {
+  background: #bebeeb;
+}
+
+      #map {
+        height: 100%;
+      }
+
+</style>
+	
+</head>
+
+<body>
+
+	<div class="row header-title">
+		<div class="small-12 medium-12 large-12 columns">
+			<h1 class="text-center">Test API Geolocation</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-6 medium-6 large-6 columns">
+<pre>
+<code>
+if( navigator.geolocation )
+{
+	navigator.geolocation.getCurrentPosition(function (position) {
+console.log( position.coords);
+console.log( timestamp );
+	});
+}
+</code>
+<pre>
+		</div>
+		<div class="small-6 medium-6 large-6 columns">
+			<ul id="log" class="no-bullet">
+				<li>
+					<b>latitude:</b>
+					<span id="latitude-value"></span> %
+				</li>
+				<li>
+					<b>longitude:</b>
+					<span id="longitude-value"></span> %
+				</li>
+				<li>
+					<b>accuracy:</b>
+					<span id="accuracy-value"></span> meters
+				</li>
+				<li>
+					<b>timestamp:</b>
+					<span id="timestamp-value"></span> ms
+				</li>
+				
+				<li>
+					<b>speed:</b>
+					<span id="speed-value"></span>
+				</li>
+				<li>
+					<b>altitude:</b>
+					<span id="altitude-value"></span>
+				</li>
+				<li>
+					<b>altitudeAccuracy:</b>
+					<span id="altitudeAccuracy-value"></span>
+				</li>
+				<li>
+					<b>heading:</b>
+					<span id="heading-value"></span>
+				</li>
+				
+			</ul>
+
+		</div>
+	</div><!-- end row -->
+<pre>
+https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
+http://www.paulund.co.uk/how-to-use-geolocation-api-with-google-maps
+</pre>
+
+	<div id="map"></div>
+	
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<script>
+		var app = angular.module("App",[]);
+		app.controller("AppCtrl",function( $scope, $http ){
+			$scope.sendRequest = function(){
+				$http.get("data.json").success(function( response ){
+					$scope.items = response;
+				})
+			};
+		});
+	</script>
+</head>
+
+<body ng-app="App">
+	<div class="container">
+		<h2>test AngularJS</h2>
+		
+		<div class="panel panel-primary" ng-controller="AppCtrl">
+			<div class="panel-heading">
+				<div class="panel-title">
+					<button class="btn btn-success" ng-click="sendRequest()">get items</button>
+				</div>
+			</div>
+
+			<table class="table">
+				<tr ng-repeat="item in items">
+					<td>{{item.name}}</td>
+					<td>{{item.price}}</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>

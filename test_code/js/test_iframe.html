@@ -1,0 +1,328 @@
+﻿<DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+.log
+{
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:40%;
+	opacity:0.8;
+	background-color:#fffaf0;
+	border:1px dashed;
+	padding:10px;
+	margin:10px;
+}
+input.invalid
+{
+	background-color:orange;
+}
+input.valid
+{
+	background-color:lightgreen;
+}
+
+</style>
+	
+<!--	
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+-->
+<script>
+/*
+$(document).ready(
+function()
+{
+console.log ( "domain =" + document.domain );
+
+	$("iframe#filelist").load(function(){
+console.log("iframe load!");
+
+	\/*
+	alert( $('#filelist').contents().find('body').html() );
+	//$(this).contents().find('.dir').append("Hallo, Welt!");
+	//window.frames["filelist"].document.write ('hello frame');
+		$(filelist.document).find(".file").each(
+			function()
+			{
+		console.log ($(this).attr("href") );
+		console.log ($(this).text() );
+			}
+		);	
+	*\/
+
+	});
+
+});//end ready
+*/
+
+//for old IE
+if( !window.console )
+{
+	var console = {
+		log: function(message)
+		{
+alert( message);
+		}
+	};
+}
+
+window.onload = function(){
+//init
+	if( document.querySelector)
+	{
+		var btn_load = document.querySelector("#btn-load");
+		var new_iframe_source = document.querySelector("#new-iframe-source");
+		var log = document.querySelector("#log");
+		var test_frame = document.querySelector("#test-frame");
+		//frame_info = document.querySelector("#frame-info");
+		var btn_clear_log = document.querySelector("#clear-log");
+	}
+	else
+	{
+		var btn_load = document.getElementById("btn-load");
+		var new_iframe_source = document.getElementById("new-iframe-source");
+		var log = document.getElementById("log");
+		var test_frame = document.getElementById("test-frame");
+		//frame_info = document.getElementById("frame-info");
+		var btn_clear_log = document.getElementById("clear-log");
+	}
+//console.log(frame_info );
+
+	btn_clear_log.onclick = function(){
+		log.innerHTML = "";
+	};
+
+	if( window.addEventListener)
+	{
+		btn_load.addEventListener("click", function(e){
+//console.log("add Event Listener!"); 
+			load_iframe();
+		}, false);
+	}
+	
+	if( window.attachEvent)
+	{
+		btn_load.attachEvent("onclick", function(e){
+//console.log("attachEvent"); 
+			load_iframe();
+		});
+	}
+
+	
+	
+	new_iframe_source.onfocus = function(e){
+		new_iframe_source.className = "form-control";
+		var message = "on focus in new_iframe_source";
+		log.innerHTML += "<p>"+message+"</p>";
+	};
+	
+	new_iframe_source.onblur = function(e){
+//alert("on blur");	
+	};
+	
+	new_iframe_source.onchange = function(e){
+//alert("on change");	
+	};
+	
+
+	new_iframe_source.onwheel = function(e){
+//alert("on wheel");	
+	};
+	new_iframe_source.oncopy = function(e){
+//alert("on copy");	
+	};
+	new_iframe_source.oncut = function(e){
+//alert("on cut");	
+	};
+	new_iframe_source.onpaste = function(e){
+//alert("on paste");	
+		var message = "on paste in new_iframe_source";
+		log.innerHTML += "<p>"+message+"</p>";
+	};
+
+	new_iframe_source.ondrag = function(e){
+//alert("on drag");	
+	};
+	new_iframe_source.ondragend = function(e){
+//alert("on dragend");	
+	};
+	new_iframe_source.ondragenter = function(e){
+//alert("on dragenter");	
+		//var message = "on dragenter in new_iframe_source";
+		//log.innerHTML += "<p>"+message+"</p>";
+	};
+	
+	new_iframe_source.ondragleave = function(e){
+//alert("on dragleave");	
+	};
+	new_iframe_source.ondragover = function(e){
+//alert("on dragover");	
+	};
+	new_iframe_source.ondragstart = function(e){
+//alert("on dragstart");	
+	};
+	new_iframe_source.ondrop = function(e){
+//alert("on drop");	
+		var message = "on drop in new_iframe_source";
+		log.innerHTML += "<p>"+message+"</p>";
+		new_iframe_source.className = "form-control";
+	};
+
+};//end window.load
+
+function load_iframe()
+{
+	var new_iframe_source = document.getElementById("new-iframe-source");
+if( new_iframe_source.value.length === 0)
+{
+	var message = "enter value in <b>new iframe src</b>";
+	log.innerHTML += "<p>" +message+"</p>";
+	new_iframe_source.className += " invalid";
+	return;
+}
+	var message = "<b>new iframe src: </b>" + new_iframe_source.value;
+	log.innerHTML += "<p>" +message+"</p>";
+	
+//console.log( test_frame );
+	try
+	{
+		var iframe = window.frames[ test_frame.name ];
+//for(var item in iframe)
+//{
+//console.log( item +" = "+ iframe[item]);
+//}
+//alert (document.all.test_frame.src);
+//alert (iframe.location);
+		iframe.location = new_iframe_source.value;
+//alert (frames[0].document.body.innerHTML);
+//alert( iframe.document.body.innerHTML );
+	}
+	catch(e)
+	{
+		var message = "<p><b>error</b>: " + e.message + "</p> ";
+		log.innerHTML += "<p>" +message+"</p>";
+console.log(e);
+	}
+	
+}//end load_frame()
+
+function get_iframe_info( frame_tag )
+{
+console.log( frame_tag );
+	var new_iframe_source = document.getElementById("new-iframe-source");
+	var frame_info = document.getElementById("frame-info");
+	frame_info.innerHTML = "";
+
+	var iframe = window.frames[ frame_tag.name ];
+//for(var item in iframe.document)
+//{
+//console.log( item +" = "+ iframe.document[item]);
+//}
+
+	var message = "<b>Main page domain</b> = " + document.domain;
+	 message += ", <b>IFRAME domain</b> = " + new_iframe_source.value;
+	frame_info.innerHTML += "<p> " + message + "</p>";
+	
+	try
+	{
+		var message = "<b>iframe location</b> = " + iframe.location;
+		frame_info.innerHTML += "<p> " + message + "</p>";
+	}
+	catch(e)
+	{
+		var message = "<b>iframe location, access error</b>: " + e.message;
+		frame_info.innerHTML += "<p> " + message + "</p>";
+console.log(e);
+	}
+
+	try
+	{
+		var message = "<b>iframe.document</b> = " + iframe.document;
+		frame_info.innerHTML += "<p> " + message + "</p>";
+//alert( iframe_name.document.body.innerHTML );
+	}
+	catch(e)
+	{
+		var message = "<b>iframe.document, access error</b>: " + e.message;
+		frame_info.innerHTML += "<p> " + message + "</p>";
+console.log(e);
+	}
+
+//      window.frames['content_frame'].document.write ('hello frame');
+   //document.all.filelist.src="file:///mnt/terra/clouds/cloud_mail/music/";
+   
+//alert ( window.frames['filelist'].document.body.innerHTML );
+//console.log( window.frames['filelist'].document.body.innerHTML );
+
+//var iframe = document.getElementsByTagName('iframe')[0];
+//var iframeDoc = iframe.contentWindow.document;
+//alert ( iframeDoc.document.body.innerHTML );
+
+	//alert($('#filelist').contents().find('body').html());		
+/*
+	var frame = window.frames['filelist'];		
+	//var frame = frame2.context.body;		
+	for (item in frame)
+	{
+console.log(  "frame["+ item +"] =" + frame[item] );
+	}
+*/
+}
+
+</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1 class="text-center">test iframe</h1>
+		</div>
+		
+		<label>new iframe src</label>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<input class="form-control" type="text" name="new_iframe_source" id="new-iframe-source" value="" >
+<pre>
+http://mycomp/source/
+file:///mnt/terra/clouds/cloud_mail/music/
+http://vbox5
+</pre>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+				<a href="#" class="btn btn-success" id="btn-load">load iframe</a>
+			</div>
+		</div>
+		
+		<div id="log-wrap" class="log">
+			<a id="clear-log" class="btn btn-small btn-danger" href="#">clear log</a>		
+			<div id="log"></div>
+		</div>
+		
+		<iframe id="test-frame" width="100%" height="40%" name="test_frame" onload="get_iframe_info( this )"></iframe>
+		<div id="frame-info"></div>
+		
+	</div><!-- end container -->
+	
+	
+<!--
+	<iframe id="filelist" width="80%" height="40%" name="filelist" src="http://mycomp/source/" onLoad="get_iframe_info( this )"></iframe>
+	<div id="filelist-info"></div>
+	
+	<iframe id="filelist-local" width="80%" height="40%" name="filelist-local" src="file:///mnt/terra/clouds/cloud_mail/music/" onLoad="get_iframe_info( this )"></iframe>
+	<div id="filelist-local-info"></div>
+-->
+
+<!--
+<iframe id="filelist" width="80%" height="50%" name="filelist" 
+src="file:///mnt/terra/clouds/cloud_mail/music/"></iframe>
+<iframe id="filelist" width="80%" height="80%" name="filelist" src="./"></iframe>
+
+<iframe id="filelist" width="80%" height="80%" name="filelist" src="file:///F:/clouds/cloud_mail/music/"></iframe>
+-->
+
+
+</body>
+</html>

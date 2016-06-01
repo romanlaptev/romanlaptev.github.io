@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>hello knockoutjs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script>
+window.onload = function() {
+console.log ("onLoad");
+
+	 //view model
+/*
+	function AppViewModel(){
+		this.firstName = "First name";
+		this.lastName = "Last name";
+	}
+*/
+
+/*
+	function AppViewModel(){
+		this.firstName = ko.observable();
+		this.lastName = ko.observable();
+	}
+
+	ko.applyBindings( new AppViewModel()  );
+*/
+	function UserFormModel(){
+		this.firstName = ko.observable();
+		this.lastName = ko.observable();
+		this.age = ko.observable();
+		this.sex = ko.observable();
+		this.isAdmin = ko.observable(true);
+		this.adminName = ko.observable('');
+		this.sexOptions = ['Male','Female'];
+		this.fullName = ko.computed( function() {
+			return this.firstName() + " " + 	this.lastName();
+		}, this);
+		this.notEmpty = ko.computed( function() {
+			return !!this.age() ||  !!this.firstName || !!this.lastName;
+		}, this);
+		this.reset = function() {
+			this.firstName(" ");
+			this.lastName(" ");
+			this.age(null);
+			this.sex(null);
+			this.isAdmin(false);
+		};
+		this.save = function() {
+			alert("save = function()");
+		}
+	}
+
+	ko.applyBindings( new UserFormModel()  );
+}
+</script>
+
+</head>
+<body>
+<!--
+<p>First name: <span data-bind="text:firstName"></span></p>
+<p>Last name: <span data-bind="text:lastName"></span></p>
+
+<p><input type="text" data-bind="value:firstName"/></p>
+<p><input type="text" data-bind="value:lastName"/></p>
+-->
+
+<div class="container">
+<h1>Test knockout framework</h1>
+	<div class="col-md-6">
+		<form>
+			<h3>создание нового пользователя</h3>
+
+			<div class="form-group">
+				<label for="name" class="col-md-2 control-label">Имя:</label>
+				<div class="col-md-10">
+					<input class="form-control" id="name" type="text" data-bind="value:firstName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="last-name" class="col-md-2 control-label">Фамилия:</label>
+				<div class="col-md-10">
+					<input class="form-control" id="last-name" type="text" data-bind="value:lastName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="age" class="col-md-2 control-label">Возраст:</label>
+				<div class="col-md-10">
+					<div class="col-md-6">
+						<input class="form-control" id="age" type="text" data-bind="value:age">
+					</div>
+					<div class="col-md-6">
+						<label for="sex" class="col-md-4 control-label label-mini">Пол:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="sex" 
+data-bind="options: sexOptions,
+optionsCaption: 'Not select',
+value: sex,
+valueAllowUnset: true"> 
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<label class="pad_add">Доступ к администрированию
+				<input type="checkbox" date-bind="checked:isAdmin">
+			</label>
+			<div class="form-group pad_add" data-bind="visible:isAdmin">
+				<label>Администратор статей
+					<input type="radio" name="optionsRadios" value="Администратор статей" data-bind="checked:adminName">
+				</label><br>
+				<label>Администратор разделов
+					<input type="radio" name="optionsRadios" value="Администратор разделов" data-bind="checked:adminName">
+				</label><br>
+				<label>Супер Администратор
+					<input type="radio" name="optionsRadios" value="Супер Администратор" data-bind="checked:adminName">
+				</label><br>
+			</div>
+			<div class="form-group pad_add">
+				<button type="submit" class="btn btn-default" data-bind="submit:save()">Сохранить</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-md-6">
+		<h3>Новый пользователь</h3>
+		<ul>
+			<li data-bind="text:fullName">new user1</li>
+			<li data-bind="text:age">22</li>
+			<span></span>
+			<li data-bind="text:sex">female</li>
+			<li>admin (<span data-bind="text:adminName"></span>)</li>
+		</ul>
+		<button class="btn btn-default" type="button" data-bind="visible:notEmpty, click:reset">reset</button>
+	</div>
+
+</div>
+</body>
+</html>

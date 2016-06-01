@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test jquery: Ajax function</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.js"></script>
+	<script>
+$(document).ready(
+function()
+{
+	$('#ajax-load').click(
+		function()
+		{
+		$.ajax(
+		{
+			url: 'load_html.html',
+			//url = "http://lib.wallst.ru/pages/book_Rods/index.html",
+			type: 'GET',
+			success:function(result)
+			{
+alert('Success!');
+				$('#ajax_content').html(result);
+//var content = $(result.responseText).text();
+//alert(content);
+//$('#ajax_content').html(content);
+			},
+			error:function(result)
+			{
+//alert('Error! '+result);
+			}			
+		});
+		
+		}
+	);
+});
+
+
+       function test () {
+         $.ajax({
+           url: 'http://external_site.com',
+           type: 'GET',
+           success: function(res) {
+             var content = $(res.responseText).text();
+             alert(content);
+           }
+         });
+       }
+
+function createRequestObject() 
+{
+	var request = false;
+	if (window.XMLHttpRequest) 
+	{ // Mozilla, Safari, Opera ...
+		request = new XMLHttpRequest();
+	} 
+
+	if(!request)
+	{ // IE
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	if(!request)
+	{
+		request=new ActiveXObject('Msxml2.XMLHTTP');
+	}
+
+	return request;
+}
+
+function remote_ajax()
+{
+	var request = createRequestObject();
+	//url = "http://lib.wallst.ru/pages/book_Rods/index.html";
+	//url = "http://rex.dax.ru/php/info.php";
+	var url = "load_html.html";
+	//url = "http://it-works.16mb.com/php/test.php";
+	if (!request) return false;
+//alert ('function remote_ajax()');
+	
+	request.onreadystatechange  = function() 
+	{ 
+//свойство .readyState.
+// 0 – инициализация запроса;
+// 1 – формирование запроса;
+// 2 – формирование запроса окончено;
+// 3 – взаимодействие с сервером;
+// 4 – взаимодействие завершено (ответ получен).
+
+//alert('readyState = ' + request.readyState);
+		var state = document.getElementById('state');
+		state.innerHTML = request.readyState;
+		if(request.readyState == 4) 
+		{
+//alert('request.status = ' + request.status);
+			var status = document.getElementById('status');
+			status.innerHTML = request.status;
+			var str_res = request.responseText;
+alert (str_res);
+			var result = document.getElementById('result');
+			result.innerHTML=str_res;
+		}
+	};
+	request.open('POST', url, true);
+	if (request.setRequestHeader) 
+	{
+		request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	}
+	var str = '';
+	request.send(str);
+	
+	return true;
+}//----------------------------------- end func
+
+
+	</script>
+
+<style>
+div.base
+{
+	border:7px double;
+	margin:30px;
+	width:800px;
+	height:auto;
+}
+</style>
+
+</head>
+
+<body>
+	<h2>test jquery: Ajax function</h2>
+
+	<div id="ajax_content" class="base">
+Ajax content
+		<a href="javascript:void(0);" id="ajax-load">ajax load</a>
+	</div>
+
+	<div id="state" class="base"></div>
+	<div id="status" class="base"></div>
+	
+	<div id="result" class="base">
+result
+		<a href="javascript:void(0);" onClick="remote_ajax();">remote_ajax</a>
+	</div>
+
+</body>
+</html>

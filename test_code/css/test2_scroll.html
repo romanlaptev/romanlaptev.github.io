@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background: #aba;
+}
+header, main, footer {
+  margin: 0 auto;
+}
+header {
+  font-size: 200%;
+  background: #456;
+  text-align: center;
+}
+header a {
+  color: #fff;
+}
+main {
+  margin: 8px auto;
+  text-align: right;
+}
+.article {
+  float: left;
+  width: 485px;
+  height: 1500px;
+  background: #fff;
+  text-align: left;
+}
+aside {
+  display: inline-block;
+  width: 240px;
+  height: 240px;
+  background: #cdc;
+}
+main:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+footer {
+  height: 800px;
+  background: #456;
+}
+
+.prilip {
+  position: fixed;
+  z-index: 101;
+  margin-left: -240px;
+}
+.stop {
+  position: relative;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+  <header>
+    <a href="http://shpargalkablog.ru/2013/09/scroll-block.html">sticky javascript</a>
+  </header>
+  <main>
+    <div class="article">
+    <div style="clear:both;"></div>
+
+<div style="clear:both; padding-bottom:0.25em"></div>
+
+    </div>
+
+    <aside></aside>
+
+  </main>
+  <footer></footer>
+
+<script>
+function offsetPosition(e) {
+  var offsetTop = 0;
+  do {offsetTop  += e.offsetTop;} while (e = e.offsetParent);
+  return offsetTop;
+}
+var aside = document.querySelector('aside'),
+    HTMLtop = document.documentElement.getBoundingClientRect().top,
+    t0 = aside.getBoundingClientRect().top - HTMLtop,
+    t1 = document.documentElement.scrollHeight - 816 - aside.offsetHeight,
+    t2 = document.querySelector('.article').getBoundingClientRect().bottom - HTMLtop - aside.offsetHeight;
+
+window.onscroll = function() {
+
+    aside.className = (t0 < window.pageYOffset ? 'sticky' : '');  
+
+      if (window.pageYOffset > t1) {
+        aside.className = 'stop';
+        aside.style.top = t1 - t0 + 'px';
+      } else {
+        aside.className = (t0 < window.pageYOffset ? 'prilip' : '');
+        aside.style.top = '0';
+      }
+
+    if (window.pageYOffset > t2) {
+      aside.className = 'stop';
+      aside.style.top = t2 - t0 + 'px';
+    } else {
+      aside.className = (t0 < window.pageYOffset ? 'prilip' : '');
+      aside.style.top = '0';
+    }
+
+}
+</script>
+</body>
+</html>
+

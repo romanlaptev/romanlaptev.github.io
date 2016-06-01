@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script language="JavaScript">
+
+  function init()
+   {
+     IE = (document.all)
+     NC = (document.layers)
+     Opera = (document.getElementById)
+   }
+
+  function hiddenLayer() 
+   {
+    init();
+    if (IE) eval('document.all["descr"].style.visibility = "hidden"')
+    if (NC) eval('document.layers["descr"].visibility = "hidden"')
+    if (Opera) eval('document.getElementById("descr").style.visibility = "hidden"')
+   }
+
+  function showLayer()
+   {
+    init();
+    if (IE) eval('document.all["descr"].style.visibility = "visible"')
+    if (NC) eval('document.layers["descr"].visibility = "visible"')
+    if (Opera) eval('document.getElementById("descr").style.visibility = "visible"')
+   }
+
+function processnode(nnodeid)
+{
+//alert (nnodeid);
+// спрятать все элементы div
+for (n1=0; n1 < document.getElementsByTagName('DIV').length; n1++)
+{
+   var divs = document.getElementsByTagName('DIV')[n1];
+   divs.style.display="none";
+}
+
+ if (document.getElementById(nnodeid).style.display == "none")
+   {
+    document.getElementById(nnodeid).style.display = ""
+   }
+ else
+   {
+    document.getElementById(nnodeid).style.display = "none"
+   }
+}
+
+</script>
+
+</head>
+
+<body>
+<table width="90%" border="1" cellspacing="0" cellpadding="4" bordercolor="#666666" align="center">
+ <tr>
+   <td width="20%" align="center">
+     <a href=# onMouseOver="showLayer()" onMouseOut="hiddenLayer()">descr </a>
+     </a>
+   </td>
+   <td>
+
+    <div id="descr" style="position: relative; visibility: hidden">
+      Данная эксклюзия является подмножеством астрациональных супремативных 
+      монотенных федоний кадонарного экстрафазория.
+    </div>
+ 
+  </td>
+ </tr>
+</table>
+
+<table width="90%" border="1" cellspacing="0" cellpadding="4" bordercolor="#666666" align="center">
+ <tr>
+   <td width="20%" align="center">
+     <a href='javascript:processnode("div_1")'>div_1</a><br/>
+     <a href='javascript:processnode("div_2")'>div_2</a><br/>
+   </td>
+   <td>
+
+    <div style='display: none;  position: relative; background-color: white; border-style:solid; border-color: white;  padding:4mm;' id='div_1'>
+      Данная эксклюзия является подмножеством астрациональных супремативных 
+      монотенных федоний кадонарного экстрафазория.
+    </div>
+ 
+    <div style='display: none;  position: relative; background-color: white; border-style:solid; border-color: white;  padding:4mm;' id='div_2'>
+      монотенных федоний кадонарного экстрафазория.
+      Данная эксклюзия является подмножеством астрациональных супремативных 
+    </div>
+ 
+  </td>
+ </tr>
+</table>
+
+</body>
+</html>
+

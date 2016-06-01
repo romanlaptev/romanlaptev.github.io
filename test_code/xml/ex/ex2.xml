@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='ex2.xsl'?>
+<categories>
+  <category id="1" title="Процессоры">
+    <categories>
+      <category id="2" title="Intel">
+        <categories>
+          <category id="3" title="Intel Core LGA775">
+            <categories/>
+          </category>
+          <category id="4" title="Intel Core i7 LGA1366">
+            <categories/>
+          </category>
+        </categories>
+      </category>
+      <category id="6" title="AMD">
+        <categories>
+          <category id="6" title="AMD Athlon AM2">
+            <categories/>
+          </category>
+          <category id="7" title="AMD Athlon II AM3">
+            <categories/>
+          </category>
+        </categories>
+      </category>
+    </categories>
+  </category>
+  <category id="8" title="Жесткие диски">
+    <categories>
+      <category id="9" title="SATA">
+        <categories>
+          <category id="10" title="Seagate">
+            <categories />
+          </category>
+          <category id="11" title="Western Digital">
+            <categories />
+          </category>
+        </categories>
+      </category>
+      <category id="12" title="IDE">
+        <categories>
+          <category id="13" title="Seagate">
+            <categories />
+          </category>
+          <category id="14" title="Western Digital">
+            <categories />
+          </category>
+        </categories>
+      </category>
+    </categories>
+  </category>
+</categories>

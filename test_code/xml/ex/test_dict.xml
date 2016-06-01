@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="test_dict2.xsl"?>
+
+<dictionary>
+
+<article title="first">
+<name_article>A... - приставка  ...</name_article>
+<text_article>
+
+       А... - приставка (греч.) в значении "не", "без" (напр.,
+      асимметричный);перед гласным - ан... (напр., анаэробы).
+
+</text_article>
+<url>http://google.ru/</url>
+<name_url>google.ru</name_url>
+</article>
+
+<article  title="sec">
+<name_article>А КАПЕЛЛА  ... </name_article>
+<text_article>
+
+
+       А КАПЕЛЛА (итал. а cappella) - хоровое многоголосное пение без
+      инструментального сопровождения.Характерно для народного музыкального
+      искусства (русского, грузинского), церковной музыки (ранней католической и
+      православной), произведений композиторов нидерландской школы, творчества
+      Палестрины. Среди современных сочинений а капелла 10 поэм Д. Д.
+      Шостаковича.
+
+</text_article>
+<url>http://google.ru/</url>
+<name_url>google.ru</name_url>
+</article>
+
+
+<article  title="third"><name_article>ААВ  ... </name_article>
+<text_article>
+
+
+       ААВ (Aav) Эвальд (1900-39) - эстонский композитор и хоровой дирижер.Автор
+      первой значительной эстонской оперы "Викерцы" ("Викинги", 1928),
+      симфонической поэмы "Жизнь" (1935) и др.
+
+</text_article>
+<url>http://google.ru/</url>
+<name_url>google.ru</name_url>
+</article>
+
+</dictionary>
+

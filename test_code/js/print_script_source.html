@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title></title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-latest.js"></script>
+
+<script id="jquery_version">
+msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+document.write( msg );
+</script>
+
+<script>
+window.onload = function(){
+	var source_txt = 'alert("Create Coffee Machine with power:" + power +"Vt");';
+	var code_out = document.getElementById("code_out");
+	code_out.appendChild( document.createTextNode(source_txt) );
+	
+	//print source code
+	var source_txt = document.getElementById("jquery_version");
+//for(var key in source_txt)	
+//{
+//console.log(key, source_txt[key]);	
+//}
+
+	//alert( source_txt.outerHTML );
+	code_out.innerHTML +="<br><br>";
+	code_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+}//end load	
+</script>
+	
+</head>
+<body>
+	<div class="container">
+
+		<div class="panel">
+			<h1>print script source code</h1>
+<pre id="code_out"></pre>
+		</div>
+		
+	</div>
+</body>
+</html>

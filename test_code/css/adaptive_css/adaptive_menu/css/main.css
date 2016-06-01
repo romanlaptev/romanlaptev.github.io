@@ -1,0 +1,48 @@
+body {
+	padding:0;
+	height:100%;
+}
+
+
+.top-menu 
+{
+    text-align: center;
+}
+
+.top-menu ul li
+{
+display: inline-block;
+margin-left: 1%;
+margin-right: 1%;
+margin-top: 8px;
+}
+
+.top-menu ul li.active,
+.top-menu ul li:hover
+{
+background:#357cbf;
+border-radius: 5px;
+}
+
+.top-menu a
+{
+text-decoration:none;
+font-size:20px;
+color:#5f6771;
+text-transform: uppercase;
+    padding-bottom: 5%;
+    padding-top: 5%;
+display:block;
+}
+
+.top-menu li.active a,
+.top-menu li:hover a
+{
+color:#dee1e7;
+}
+
+.top-menu a span
+{
+padding-left: 40px;
+padding-right: 40px;
+}

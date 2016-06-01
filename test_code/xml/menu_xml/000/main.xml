@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--
+<?xml-stylesheet type="text/css" href="menu.css"?>
+<?xml-stylesheet type="text/xsl" href="menu.xsl"?>
+-->
+<main>
+
+<menu title="main_menu">
+<item status="on">	<a href="lib/index.html" target=""> Книги </a></item>
+<item status="on">	<a href="photos/index.html" target=""> Фото    </a></item>
+<item status="on">	<a href="music/index.html" target=""> Музыка	</a></item>
+<item status="on">	<a href="video/index.html" target=""> Фильмы </a></item>
+<item status="on">	<a href="http://narod.yandex.ru/userarea/after_register.xhtml" target="_blank"> Мастерская </a></item>
+<item status="on">	<a href="content/mail.html"  target=""> Почта </a></item>
+<item status="on">	<a href="xml/select_bookmarks.xml" target=""> закладки </a></item>
+<item status="on">	<a href="xml/notes.xml" target=""> записки </a></item>
+<item status="on">	<a href="http://www.narod.ru/guestbook/?owner=148544702" target=""> guestbook </a></item>
+<item status="on">	<a href="content/index.html" target=""> work </a></item>
+<item status="on">	<a href="content/resume.html" target=""> резюме </a></item>
+</menu>
+
+</main>

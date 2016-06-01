@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>test</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<script>
+window.onload = function(){
+
+	if( window.localStorage ){
+		document.getElementById("info").innerHTML = "localStorage support in your browser";
+	}
+	else
+	{
+		document.getElementById("info").innerHTML = "localStorage don't support in your browser";
+	}
+
+	document.getElementById("btn1").onclick = function(){
+console.log("Click!");
+	}
+	
+	document.getElementById("name").onchange = function(){
+console.log("change!");
+	}
+}
+	</script>
+</head>
+<body>
+	<p id="info">123</p>
+	<p><input id="name" name="name" type="text" value=""/></p>
+	<p><button id="btn1">test click event</button></p>
+</body>
+</html>

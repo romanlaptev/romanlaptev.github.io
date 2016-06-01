@@ -1,0 +1,477 @@
+﻿<?xml version = "1.0" encoding="utf-8"?>
+
+<books> 
+
+<book title="Эраст Фандорин. Азазель" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/Fandorin/A_prose_akunin_azazel.txt </location>
+</book>
+
+<book title="Эраст Фандорин. VII Статский советник" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/Fandorin/A_prose_akun7_sovetnik.txt</location>
+</book>
+
+<book title="Эраст Фандорин. IX Любовница смерти" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/Fandorin/A_prose_akun9_love1.txt </location>
+</book>
+
+
+<book title="Эраст Фандорин. X. Любовник смерти" author="Акунин Борис">
+<genre> детектив </genre>
+<location> books/A/Akunin/Fandorin/A_prose_akun10_love2.txt </location>
+</book>
+
+
+<book title="Алмазная колесница. ТОМ I Ловец стрекоз" author="Акунин Борис">
+<genre> детектив </genre>
+<location>
+books/A/Akunin/Fandorin/A_prose_Akunin-Almaznaya-Kolesnica-Lovec-Strekoz-Tom-1.txt
+</location>
+</book>
+
+<book title="Алмазная колесница. ТОМ II Между строк" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/Fandorin/A_prose_Akunin-Almaznaya-Kolesnica-Mezhdu-Strok-Tom-2.txt
+</location>
+</book>
+
+<book title="PTSD" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/A_prose_PTSD.txt </location>
+</book>
+
+<book title="Кладбищенские истории" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/A_cemetery_history.txt </location>
+</book>
+
+<book title="Смерть на брудершафт: Младенец и черт" author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/smert1.txt </location>
+</book>
+
+<book  title="Смерть на брудершафт: Муки разбитого сердца"  author="Акунин Борис">
+<genre> детектив </genre>
+<location>books/A/Akunin/Smert2.txt </location>
+</book>
+
+<book title="Сборник рассказов" author="Хорхе Луис Борхес">
+<genre> детектив </genre>
+<location>books/B/Borhes/B_fantasy_kniga.txt </location>
+</book>
+
+<book title="Темные аллеи" author="Бунин Иван Алексеевич">
+<genre> classics_prose </genre>
+<location>books/B/Bunin.I/B_classics_prose_allei.txt </location>
+</book>
+
+<book title="Мастер и Маргарита" author="Булгаков М.А.">
+<genre> classics_prose </genre>
+<location>books/B/Bulgakov.M/B_classics_prose_master.txt </location>
+</book>
+
+<book title="Собачье сердце" author="Булгаков М.А.">
+<genre> classics_prose </genre>
+<location>books/B/Bulgakov.M/B_classics_prose_dogheart.txt </location>
+</book>
+
+<book title="Роковые яйца" author="Булгаков М.А.">
+<genre> classics_prose </genre>
+<location>books/B/Bulgakov.M/B_classics_prose_eggs.txt </location>
+</book>
+
+<book title="Театральный роман (Записки покойника)" author="Булгаков М.А.">
+<genre> classics_prose </genre>
+<location>books/B/Bulgakov.M/B_classics_prose_teatraln.txt </location>
+</book>
+
+<book title="Сага воды и огня" author="Вершинин Лев">
+<genre> classics_prose </genre>
+<location>books/V/Vershinin/V_fantasy_fantasy_wat_fire.txt </location>
+</book>
+
+<book title="Моя семья и другие звери" author="Даррелл Джеральд">
+<genre> humor </genre>
+<location>books/D/Durrell/D_humor_family.txt </location>
+</book>
+
+<book title="Америка" author="Кафка Франц">
+<genre> </genre>
+<location>books/K/Kafka.F/K_prose_AMERIKA.txt </location>
+</book>
+
+<book title="Прогулка в горы" author="Кафка Франц">
+<genre> </genre>
+<location>books/K/Kafka.F/K_prose_mini.txt </location>
+</book>
+
+<book title="Замок" author="Кафка Франц">
+<genre> </genre>
+<location>books/K/Kafka.F/K_prose_zamok.txt </location>
+</book>
+
+<book title="Процесс" author="Кафка Франц">
+<genre> </genre>
+<location>books/K/Kafka.F/K_prose_jury.txt </location>
+</book>
+
+<book title="Повести и рассказы" author="Куприн А.И.">
+<genre> </genre>
+<location>books/K/Kuprin.A/K_classics_prose_kuprins.txt </location>
+</book>
+
+<book title="Поединок" author="Куприн А.И.">
+<genre> </genre>
+<location>books/K/Kuprin.A/K_classics_prose_poedinok.txt </location>
+</book>
+
+<book title="Лабиринт отражений" author="Лукьяненко С.">
+<genre> </genre>
+<location>books/L/Lukyanenko.S/L_science_fiction_labyrint.txt </location>
+</book>
+
+<book title="Мальвиль" author="Робер Мерль">
+<genre> </genre>
+<location>books/M/Merle.R/M_prose_malvil.txt </location>
+</book>
+
+<book title="За стеклом" author="Робер Мерль">
+<genre> </genre>
+<location>books/M/Merle.R/M_prose_STEKLO45.TXT </location>
+</book>
+
+<book title="Гиперболоид инженера Гарина" author="Толстой А.Н.">
+<genre> </genre>
+<location>books/T/Tolstoy.AN/T_classics_prose_hyperbol.txt </location>
+</book>
+
+<book title="АЭЛИТА. (Закат Марса)" author="Толстой А.Н.">
+<genre> </genre>
+<location>books/T/Tolstoy.AN/T_classics_prose_aalita.txt </location>
+</book>
+
+<book title="Гигиена убийцы" author="Нотомб Амели">
+<genre> </genre>
+<location>books/N/Notomb.Ameli/notomb_ameli_gigiena_ubiytsyi.txt </location>
+</book>
+
+<book title="Страх и трепет" author="Нотомб Амели">
+<genre> </genre>
+<location>books/N/Notomb.Ameli/notomb_ameli_strah_i_trepet.rtf </location>
+</book>
+
+<book title="Дрожь и оцепенение" author="Нотомб Амели">
+<genre> </genre>
+<location>books/N/Notomb.Ameli/N_prose_Notomb_tremor.txt </location>
+</book>
+
+<book title="Сборник рассказов и повестей" author="Пелевин В.">
+<genre> </genre>
+<location>books/P/Pelevin/P_fantasy_STORIES.txt </location>
+</book>
+
+<book title="Повесть о благонравном мятежнике" author="Латынина Юлия">
+<genre> </genre>
+<location>books/L/Latynina.Yulia/L_fantasy_1_fantasy_modrebel.txt </location>
+</book>
+
+<book title="Атаульф" author="Хаецкая Елена">
+<genre> </genre>
+<location>books/H/Hayeckaya/H_fantasy_atawulf.txt </location>
+</book>
+
+<book title="Анахрон" author="Хаецкая Елена, Беньковский Виктор">
+<genre> </genre>
+<location>books/B/B_action_anahron.txt </location>
+</book>
+
+<book title="Мирра и дьявол" author="Хаецкая Елена">
+<genre> </genre>
+<location>books/H/Hayeckaya/H_fantasy_myrra.txt </location>
+</book>
+
+<book title="Завоеватели" author="Хаецкая Елена">
+<genre> </genre>
+<location>books/H/Hayeckaya/H_fantasy_conquers.txt </location>
+</book>
+
+<book title="Град обреченный" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_grad.txt </location>
+</book>
+
+<book title="дьявол среди людей" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_devil.txt </location>
+</book>
+
+<book title="Гадкие  лебеди" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_uglyswan.txt </location>
+</book>
+
+<book title="улитка на склоне" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_snail.txt </location>
+</book>
+
+<book title="трудно быть богом" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_be_god.txt </location>
+</book>
+
+<book title="человек из пасифиды" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_fantasy_pacifman.txt </location>
+</book>
+
+<book title="повесть о дружбе и недружбе" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_fantasy_friend.txt </location>
+</book>
+
+<book title="хромая судьба" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_fantasy_c_hro.txt </location>
+</book>
+
+<book title="анс - энциклопедия" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_fantasy_ans-enc.txt </location>
+</book>
+
+<book title="пикник на обочине" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_picnic.txt </location>
+</book>
+
+<book title="парень из преисподней" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_hell_kid.txt </location>
+</book>
+
+<book title="подробности жизни никиты воронцова" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_det_life.txt </location>
+</book>
+
+<book title="за миллиард лет до конца света" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_billion.txt </location>
+</book>
+
+<book title="обитаемый остров" author="Стругацкий Аркадий, Стругацкий Борис">
+<genre> </genre>
+<location>books/S/Strugatskie/S_science_fiction_island.txt </location>
+</book>
+
+<book title="Гражданин галактики" author="Хайнлайн Роберт">
+<genre> </genre>
+<location>books/H/Heinlein.Robert/H_fantasy_citizen.txt </location>
+</book>
+
+<book title="Иов, или осмеяние справедливости" author="Хайнлайн Роберт">
+<genre> </genre>
+<location>books/H/Heinlein.Robert/H_fantasy_JOBCOMED.TXT </location>
+</book>
+
+<book title="Пасынки вселенной" author="Хайнлайн Роберт">
+<genre> </genre>
+<location>books/H/Heinlein.Robert/H_fantasy_PASYNKI.TXT </location>
+</book>
+
+<book title="Магия Incorporated" author="Хайнлайн Роберт">
+<genre> </genre>
+<location>books/H/Heinlein.Robert/H_fantasy_MAGIAINC.txt </location>
+</book>
+
+<book title="Гражданин галактики" author="Хайнлайн Роберт">
+<genre> </genre>
+<location>books/H/Heinlein.Robert/H_fantasy_HEINR018.txt </location>
+</book>
+
+<book title="Завтра война" author="Зорич Александр">
+<genre> </genre>
+<location>books/Z/Zorich.A/Z_fantasy_zor1.txt </location>
+</book>
+
+<book title="Без пощады" author="Зорич Александр">
+<genre> </genre>
+<location>books/Z/Zorich.A/Z_fantasy_zor13.txt </location>
+</book>
+
+<book title="Время – московское" author="Зорич Александр">
+<genre> </genre>
+<location>books/Z/Zorich.A/Z_fantasy_time_moskow.txt </location>
+</book>
+
+<book title="Консул содружества" author="Зорич Александр">
+<genre> </genre>
+<location>books/Z/Zorich.A/Z_fantasy_zor7.txt </location>
+</book>
+
+<book title="Расстрелять" author="Покровский Александр">
+<genre> </genre>
+<location>books/P/Pokrovskiy/P_prose_p.xml </location>
+</book>
+
+<book title="War world" author="Уэллс Герберт">
+<genre> </genre>
+<location>books/W/Wells.Herbert/W_science_fiction_warworld.txt </location>
+</book>
+
+<book title="Машина времени" author="Уэллс Герберт">
+<genre> </genre>
+<location>books/W/Wells.Herbert/W_science_fiction_timemac.txt </location>
+</book>
+
+<book title="Trainspotting" author="Уэлш Ирвин">
+<genre> </genre>
+<location>books/W/Irvin_Welsh/W_prose_trainspotting.txt </location>
+</book>
+
+<book title="Вечеринка что надо" author="Уэлш Ирвин">
+<genre> </genre>
+<location>books/W/Irvin_Welsh/W_prose_evening.txt </location>
+</book>
+
+<book title="99 Франков" author="Бегбедер Фредерик">
+<genre> </genre>
+<location>books/B/Begbeder.F/B_prose_99franks.txt </location>
+</book>
+
+<book title="Рассказики под экстази" author="Бегбедер Фредерик">
+<genre> </genre>
+<location>books/B/Begbeder.F/B_prose_stories_under_extasy.txt </location>
+</book>
+
+<book title="На западном фронте без перемен" author="Ремарк Эрих Мария">
+<genre> </genre>
+<location>books/R/Remark/R_prose_remark1.txt </location>
+</book>
+
+<book title="Время жить и время умирать" author="Ремарк Эрих Мария">
+<genre> </genre>
+<location>books/R/Remark/R_prose_TIMELIFE.txt </location>
+</book>
+
+<book title="Рассказы 20-х годов разных авторов" author="">
+<genre> </genre>
+<location>books/prose_20-e_1251.txt </location>
+</book>
+
+<book title="Роман с кокаином" author="Агеев М.">
+<genre> </genre>
+<location>books/A/A_prose_COCOIN.txt </location>
+</book>
+
+<book title="Звезда Кэц" author="Беляев Александр">
+<genre> </genre>
+<location>books/B/B_science_fiction_star_kec.txt </location>
+</book>
+
+<book title="Песчаный поход" author="Бобров Глеб">
+<genre> </genre>
+<location>books/B/B_afgan_war_prose_POHOD48.txt </location>
+</book>
+
+<book title="Файзабад" author="Бобров Глеб">
+<genre> </genre>
+<location>books/B/B_afgan_war_prose_FAJZABAD.txt </location>
+</book>
+
+<book title="Повесть о Ходже Насреддине" author="Соловьев Леонид">
+<genre> </genre>
+<location>books/S/S_prose_Solovyev_Nasreddin.txt </location>
+</book>
+
+<book title="Котел" author="Булычев Кир">
+<genre> </genre>
+<location>books/B/B_fantasy_boiler.txt </location>
+</book>
+
+<book title="Ветер в Траве. Монголия, 1996 г" author="Динец Владимир">
+<genre> </genre>
+<location>books/D/D_adventur_camel.txt</location>
+</book>
+
+<book title="Судьба пионера в СССР" author="Лаптев Дмитрий">
+<genre> </genre>
+<location>books/L//L_petka1.txt</location>
+</book>
+
+<book title="Над кукушкиным гнездом" author="Кизи Кен">
+<genre> </genre>
+<location>books/K/K_prose_fly.txt</location>
+</book>
+
+<book title="Мертвая зона" author="Кинг Стивен">
+<genre> </genre>
+<location>books/K/King/K_fantasy_1_zona.txt</location>
+</book>
+
+<book title="Фабрика офицеров" author="Ганс Гельмут Кирст">
+<genre> </genre>
+<location>books/K/K_2ww_history_FABRIK.txt</location>
+</book>
+
+<book title="Невезучий Альфонс" author="Конецкий Виктор">
+<genre> </genre>
+<location>books/K/K_unluckfc.txt</location>
+</book>
+
+<book title="Царь Гильгамеш" author="Силверберг Роберт">
+<genre> </genre>
+<location>books/S/Silverberg/S_fantasy_gilgames.txt</location>
+</book>
+
+<book title="Были древних русичей" author="Чернобровкин Александр">
+<genre> </genre>
+<location>books/CH/CH_history_novel_BYLI.txt</location>
+</book>
+
+<book title="Митьки" author="Шинкарев Владимир">
+<genre> </genre>
+<location>books/SH/SH_humor_shinkars.txt</location>
+</book>
+
+<book title="Старики" author="Хэсфорд Густав">
+<genre> </genre>
+<location>books/H/Hasford/H_prose_SHORTT.txt</location>
+</book>
+
+<book title="Эдем" author="Лем Станислав">
+<genre> </genre>
+<location>books/L/Lem/L_science_fiction_eden.txt</location>
+</book>
+
+<book title="Контингент" author="Скрипаль Сергей,  Рытченко Геннадий">
+<genre> </genre>
+<location>books/S/S_afgan_war_prose_skripal1.txt</location>
+</book>
+
+<book title="Ледовая книга" author="Смуул Юхан">
+<genre> </genre>
+<location>books/S/S_adventur_navigat.txt</location>
+</book>
+
+<book title="Хакеры" author="Маркоф Джон">
+<genre> </genre>
+<location>books/M/M_adventur_hackup.txt</location>
+</book>
+
+<book title="Хакеры, герои компьютерной революции" author="Леви Стивен">
+<genre> </genre>
+<location>books/L/L_history_hackers.txt</location>
+</book>
+
+<book title="Винни-Пух как хакер и сисоп" author="Щербаков А.М.">
+<genre> </genre>
+<location>books/SCH/SCH_humor_VINNI_1251.txt</location>
+</book>
+
+</books> 
+
+

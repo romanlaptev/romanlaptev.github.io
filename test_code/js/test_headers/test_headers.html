@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="jquery-latest.min.js"></script>
+<script>
+$(document).ready(
+	function()
+	{
+/*	
+		$("#server-url").html( url );
+		$.ajax({
+			type: "GET",
+			url: url,
+			success: function(data, status, xhr) {
+console.log(xhr.getResponseHeader('X-Powered-By') );
+//console.log(xhr.getAllResponseHeaders() );
+				var all_headers = xhr.getAllResponseHeaders();
+				$("#result").html( all_headers );
+
+			}
+		});
+*/
+		$("#result, #data").empty();
+		
+		$("input[name=send]").click(
+			function()
+			{
+				url = $("input[name=url]").val();
+				if( !url.length > 0)
+				{
+					document.getElementById("result").innerHTML = "error, server url could not be empty!";
+					return;		
+				}
+				
+				$("#server-url").html( url );
+				$.ajax({
+					type: "GET",
+					url: url,
+					//headers: { 'x-my-custom-header': 'some value', 'x-my-other-header': 'other value' },					
+					success: function(data, status, xhr) {
+console.log(xhr.getResponseHeader('X-Powered-By') );
+						var all_headers = xhr.getAllResponseHeaders();
+//console.log( all_headers );
+//console.log( data );
+						
+						$("#result").text( all_headers );
+						$("#result").append( status );
+						
+						var powered = xhr.getResponseHeader('X-Powered-By');
+						$("#result").append( '<p><b>X-Powered-By</b>:' + powered +'</p>');
+						
+						$("#data").text( data );
+					},
+					error: 
+						function(e)
+						{
+console.log(e);						
+							$("#result").text( e.statusText );
+						}
+				});
+
+			}
+		);
+	}
+);//end ready
+
+
+function getXmlHttp(){
+	try {
+		return new ActiveXObject("Msxml2.XMLHTTP");
+	} catch (e) {
+		try {
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		} catch (ee) {
+		}
+	}
+	if (typeof XMLHttpRequest!='undefined') {
+		return new XMLHttpRequest();
+	}
+}
+
+// Получить данные с url и вызывать cb - коллбэк c ответом сервера 
+function getUrl(url) { 
+	var xmlhttp = getXmlHttp();
+	xmlhttp.open("GET", url+'?r='+Math.random());
+	//xmlhttp.setRequestHeader("X-Auth", "123");
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4) {
+			$("#result").html( "<p><b>Status</b>:" + xmlhttp.status +"</p>");
+			$("#result").append( "<p><b>getAllResponseHeaders</b>:" + xmlhttp.getAllResponseHeaders() +"</p>");
+			$("#data").text( "<b>xmlhttp.responseText</b>:\r\n" + xmlhttp.responseText );
+		}
+	}
+	xmlhttp.send(null);
+}
+
+window.onload = function(e)
+{
+//console.log("on load", e);
+
+	document.getElementById("btn2-send").onclick = function(e){
+//console.log("click!", e);
+		var url = document.getElementById("server-url").value;
+		if( !url.length > 0)
+		{
+			document.getElementById("result").innerHTML = "error, server url could not be empty!";
+			return;		
+		}
+		getUrl(url);
+	}//end event
+	
+}//end onload
+
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="page-header">
+		<h1>test HTTP-headers</h1>
+	</div>
+	
+	<pre>
+http://javascript.ru/ajax/transport/xmlhttprequest
+https://learn.javascript.ru/ajax-xmlhttprequest
+https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest	
+http://xmlhttprequest.ru/
+http://vanilla-js.blogspot.ru/2013/11/header-javascript.html
+https://learn.javascript.ru/xhr-crossdomain
+	</pre>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h2>xhr.getAllResponseHeaders()</h2>
+		</div>
+	
+		<label>url:</label>
+		<input class="form-control" type="text" id="server-url" name="url" value="" placeholder="enter server url">
+		<input class="btn btn-primary" type="button" name="send" value="send query to server">
+		<input class="btn btn-info" type="button" id="btn2-send" value="btn2-send">
+		
+		<pre>
+http://172.16.1.194/www/IIS_DEV_files/!iis_z_main.content.aspx?id=41548
+http://172.16.1.194/www/IIS_DEV_files/!iis_z_main.control.aspx?documentType=query-form&documentID=41548&client_cdate_ctrl=none
+
+http://172.16.1.194		
+http://172.16.1.194/www/test/test_headers/test_headers_answer.aspx
+file:///D:/documents/laptev/nb.txt
+http://localhost/
+http://mycomp/source/wfm3/		
+http://mycomp/source/aspx/
+
+http://vbox1/php/test_cors.php
+Запрос из постороннего источника заблокирован: 
+Политика одного источника запрещает чтение удаленного ресурса на http://vbox1/php/test.php?r=0.6958131906978212. 
+Причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').//добавить в test.php заголовок header('Access-Control-Allow-Origin: *'
+		</pre>
+
+		<h3>answer from server <span id="server-url"></span></h3>
+		<pre id="result"></pre>
+		<pre id="data"></pre>
+	</div>
+	
+	
+</div><!-- end container -->
+
+</body>
+</html>

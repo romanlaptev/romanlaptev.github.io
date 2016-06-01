@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<script>
+		var app = angular.module("App",[]);
+		app.controller("AppCtrl", function( $scope ){
+			$scope.buttons = {
+				names: ["Btn1", "Btn2", "Btn3"],
+				totalClicks: 0
+			};
+
+			$scope.$watch("buttons.totalClicks", function( newVal ){
+console.log("Total click count:  " + newVal);
+document.getElementById("log").innerHTML = "Total click count:  " + newVal;
+			});
+
+		});
+
+		app.directive("triButton", function(){
+			return {
+				scope: { counter: "=counter" },
+				link: function( scope, element, attrs ) {
+					element.on("click", function( event ){
+console.log(event, "Button click: " + event.target.innerHTML);
+document.getElementById("log2").innerHTML = "Button click: " + event.target.innerHTML;
+						scope.$apply(function(){
+							scope.counter++;
+						});
+					});
+				}
+			}
+		});
+
+	</script>
+</head>
+
+<body ng-app="App">
+	<div class="container">
+		<h2>test AngularJS</h2>
+		
+		<div class="well" ng-controller="AppCtrl">
+			<div class="btn-group" tri-button counter="buttons.totalClicks" source="button.names">
+				<button class="btn btn-primary" ng-repeat="name in buttons.names">
+					{{name}}
+				</button>
+			</div>			
+			<h5>total clicks: {{buttons.totalClicks}}</h5>
+			<div id="log"></div>
+			<div id="log2"></div>
+		</div>
+
+	</div>
+	
+</body>
+</html>

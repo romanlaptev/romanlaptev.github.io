@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--
+	<script>
+window.onload = function(){	
+		var context = document.querySelector("canvas").getContext("2d");
+		//var ctx = document.getElementById("ctx").getContext("2d");
+		
+		context.fillRect(0,0,10,10);
+		context.moveTo(20, 20);
+		context.lineTo(100, 120);
+		
+		context.strokeStyle = "red";
+		context.stroke();	
+
+		var my_gradient = context.createLinearGradient(0, 0, 300, 0);
+		my_gradient.addColorStop(0, "black");
+		my_gradient.addColorStop(1, "white");
+		context.fillStyle = my_gradient;
+		context.fillRect(150, 0, 300, 125);
+}
+	</script>
+	<style>
+	canvas{
+		border:1px dotted;
+		width:100%;
+	}
+	</style>
+-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<script>
+		var App = angular.module("App",[]);
+		App.controller("AppCtrl", function($scope){
+		
+			$scope.message = "Hello world!!!";
+			
+			$scope.menu = ["a","b","c"];
+			$scope.test_var++;
+			
+			$scope.test_func = function( event ){
+alert("$scope.test_var = " + $scope.test_var );			
+for(var item in event)			
+{
+console.log(item, event[item]);
+}
+			};
+			
+			$scope.toggleElem = true;	
+			$scope.toggle_func = function(){
+				$scope.toggleElem = !$scope.toggleElem;
+			};
+			
+			$scope.filters_func = function(event){
+				event.target.style.display = 'none';
+				//var s = event.target.textContent;
+			};
+			
+for(var item in $scope)			
+{
+console.log(item, $scope[item]);
+}
+			
+		});
+	</script>
+	
+</head>
+
+<body>
+
+<div class="container">
+	<div ng-app="App" ng-init="test_var=25+1">
+		<p>2+3={{2+3}}</p>
+		
+		<p>Test ng-init, <code>test_var</code> = {{test_var}}</p>
+		
+		<div ng-controller="AppCtrl">
+		
+<div class="row">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<h2><code>$scope.message</code> = {{message}}</h2>
+			
+				<p><code>$scope.test_var</code> = {{test_var}}</p>
+				
+				<ul>Test ng-repeat
+					<li ng-repeat="item in menu">{{item}}</li>
+				</ul>
+				
+				<button class="btn btn-primary" ng-click="test_func( $event )">Test ng-click</button>
+	</div>
+
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<h3>Test ng-model</h3>
+		<input type="text" ng-model="name">
+		<code>ng-model name</code> = {{name}}
+	</div>
+
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<h3>Test ng-show</h3>
+		<style>
+			.block
+			{
+			display:inline-block;
+			border:1px solid grey;
+			border-radius:4px;
+			margin:14px;
+			padding:30px;
+			}
+			.d1
+			{
+				background-color:lightgreen;
+			}
+			.d2
+			{
+				background-color:lightblue;
+			}
+			.d3
+			{
+				background-color:lightcoral;
+			}
+		</style>
+
+		<div class="block d1" ng-show="true">Element1</div>
+		<div class="block d2" ng-show="toggleElem">Element2</div>
+		<div class="block d3" ng-show="true">Element3</div>
+
+		<button class="btn btn-info" ng-click="toggle_func()">Toggle Element2</button>
+	</div>
+</div><!-- end row -->
+
+<div class="row">
+	<div class="
+col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4  
+col-xs-4 col-sm-4 col-md-4 col-lg-4">
+<h3>Test ng-if</h3>
+
+<label>test_checked, checked me: 
+<input type="checkbox" ng-model="checked" ng-init="checked=true" /></label><br/>
+<div class="block d2" ng-if="checked">Remove element, if checked = true</div>
+
+	</div>
+	<div>
+		<h2>Test filters</h2>
+		<p>no filter:- {{message}}</p>
+		<p>lowercase:- {{message|lowercase}}</p>
+		<p>uppercase:- {{message|uppercase}}</p>
+		<button class="btn btn-warning" ng-click="filters_func( $event )">filters_func()</button>
+	
+	</div>
+</div><!-- end row -->
+
+		</div>
+		
+	</div>
+
+</div>
+
+</body>
+</html>

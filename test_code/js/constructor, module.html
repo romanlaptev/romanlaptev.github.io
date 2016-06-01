@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title></title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//code.jquery.com/jquery-latest.js"></script>
+	
+	<script>
+	//Самовызывающиеся функции
+	var my_func = (
+		function( name ){
+console.log("Hello " + name + " world!");
+		}
+	)("js");
+	
+	(function() {
+console.log("Init !");
+		}()
+	);
+
+	(function(){
+console.log("Init 2");
+	})();
+
+	
+(function($) {
+    // код jQuery-плагина (устранение конфликтов с другими плагинами)
+})(jQuery);
+	
+//Функции обратного вызова	
+	var test = function( callback ){
+		var name = "Roman";
+		callback (name);
+	}
+	
+	test( function(n) {
+console.log("Hello " + n);
+	});
+	</script>
+	
+	<script>
+//constructor
+function MyConstructor(a,b)
+{
+	this.a = a;
+	this.b = b;
+	this.sum = a + b;
+	
+	function private_method()
+	{
+		return "частный метод, недоступен для вызова в потомках MyConstructor";
+	}
+	
+	//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+	var x = 5;
+	var y = 6;
+	this.priv_method_get = function(){
+		return x + y;
+	}
+	
+}
+
+
+obj1 = new MyConstructor(2, 2);
+console.log("obj1.sum = ", obj1.sum);
+console.log("obj1.constructor = ", obj1.constructor);
+console.log( obj1.x );
+console.log( obj1.priv_method_get() );
+
+obj2 = new MyConstructor(20, 20);
+console.log("obj2.sum = ", obj2.sum);
+console.log("obj2.constructor = ", obj2.constructor);
+
+
+// prototype function (for all children obj)
+// объявление функции test_prototype в прототипе объекта MyConstructor
+// эта функция будет доступна всем потомкам MyConstructor (obj1, obj2)
+MyConstructor.prototype.test_prototype = function()
+{
+	console.log( "test_prototype say - " +this.sum );
+}
+
+obj1.test_prototype();
+
+//замыкание
+// вызовом counter() увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount 
+function test_closure()
+{
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+//замыкание2
+//Илья Кантор - Современный учебник JavaScript - 2015/1. Язык JavaScript.pdf, c.294
+function makeCounter()
+{
+  var currentCounter = 1;
+  return function(){
+    return currentCounter++;
+  };
+}
+
+var counter1 = makeCounter();
+console.log( counter1() );
+console.log( counter1() );
+console.log( counter1() );
+
+	</script>
+	
+<script>
+function test_constructor()
+{
+  this.a = "A";
+  this.b = 2+3;
+  this.c = function myFunc()//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+  {
+return "function myFunc, " + (this.a+this.b)
+  }
+	
+}
+
+var test = new test_constructor();
+
+console.log( test.a );
+console.log( test.b );
+test.c();
+</script>
+	
+<script>
+//переназначение функции по условию
+var filelist_url;
+function test( test_param )
+{
+	if ( test_param == "php")
+	{
+		var get_filelist = get_filelist_php;
+	}
+	
+	if ( test_param == "aspx")
+	{
+		var get_filelist = get_filelist_aspx;
+	}
+	
+	return get_filelist();
+}
+
+var get_filelist_php = function(){
+	filelist_url = "include/filelist.php";
+	return filelist_url;
+}
+
+var get_filelist_aspx = function(){
+	filelist_url = "include/aspx/filelist.aspx";
+	return filelist_url;
+}
+
+//console.log( test("php") );
+console.log( test("aspx") );
+</script>	
+	
+</head>
+<body>
+	<div class="container">
+		<header class="panel-heading">
+			<h1>test objects, oop, callback functions</h1>
+		</header>
+<pre>
+http://javascript.ru/basic/closure
+https://learn.javascript.ru/functions-closures
+http://myrusakov.ru/javascript-anonym-and-callback-functions.html
+http://www.codehint.ru/articles/2014-07-27_javascript-self-invoking-functions
+http://habrahabr.ru/post/117069/
+</pre>		
+
+		<div class="panel">
+<script>
+msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+document.write(msg );
+</script>
+
+
+<pre>
+	//Самовызывающиеся функции
+	var my_func = (
+		function( name ){
+console.log("Hello " + name + " world!");
+		}
+	)("js");
+	
+	(function() {
+console.log("Init !");
+		}()
+	);
+
+	(function(){
+console.log("Init 2");
+	})();
+	
+	
+(function($) {
+    // код jQuery-плагина (устранение конфликтов с другими плагинами)
+})(jQuery);
+
+//------------------------------
+var a=1;
+
+(function(){
+var a = "i am self-invoke function";
+console.log(a);  
+}())
+
+var f1 = function(){
+  var a = 3;
+  console.log(a);
+} 
+f1();
+
+var f2 = function(){
+  var a = 4;
+  console.log(a);
+}();
+
+console.log(a);
+
+</pre>	
+
+<pre>
+	//Функции обратного вызова	
+	var test = function( callback ){
+		var name = "Roman";
+		callback (name);
+	}
+	
+	test( function(n) {
+console.log("Hello " + n);
+	});
+
+//===================================================
+//constructor
+function MyConstructor(a,b)
+{
+	this.a = a;
+	this.b = b;
+	this.sum = a + b;
+	
+	function private_method()
+	{
+		return "частный метод, недоступен для вызова в потомках MyConstructor";
+	}
+	
+	//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+	var x = 5;
+	var y = 6;
+	this.priv_method_get = function(){
+		return x + y;
+	}
+	
+}
+
+
+obj1 = new MyConstructor(2, 2);
+console.log("obj1.sum = ", obj1.sum);
+console.log("obj1.constructor = ", obj1.constructor);
+console.log( obj1.x );
+console.log( obj1.priv_method_get() );
+
+obj2 = new MyConstructor(20, 20);
+console.log("obj2.sum = ", obj2.sum);
+console.log("obj2.constructor = ", obj2.constructor);
+
+
+// prototype function (for all children obj)
+// объявление функции test_prototype в прототипе объекта MyConstructor
+// эта функция будет доступна всем потомкам MyConstructor (obj1, obj2)
+MyConstructor.prototype.test_prototype = function()
+{
+	console.log( "test_prototype say - " +this.sum );
+}
+
+obj1.test_prototype();
+
+//замыкание
+// вызовом counter() увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount 
+function test_closure()
+{
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+//===========================================================	
+function test_constructor()
+{
+  this.a = "A";
+  this.b = 2+3;
+  this.c = function myFunc()//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+  {
+return "function myFunc, " + (this.a+this.b)
+  }
+	
+}
+
+var test = new test_constructor();
+
+console.log( test.a );
+console.log( test.b );
+test.c();
+//=========================================================
+//переназначение функции по условию
+var filelist_url;
+function test( test_param )
+{
+	if ( test_param == "php")
+	{
+		var get_filelist = get_filelist_php;
+	}
+	
+	if ( test_param == "aspx")
+	{
+		var get_filelist = get_filelist_aspx;
+	}
+	
+	return get_filelist();
+}
+
+var get_filelist_php = function(){
+	filelist_url = "include/filelist.php";
+	return filelist_url;
+}
+
+var get_filelist_aspx = function(){
+	filelist_url = "include/aspx/filelist.aspx";
+	return filelist_url;
+}
+
+//console.log( test("php") );
+console.log( test("aspx") );
+
+</pre>
+
+<pre>
+function makeBuffer()
+{
+/*вашкод*/
+}
+
+var buffer=makeBuffer();//добавить значения к буферу
+buffer('Замыкания');
+buffer('Использовать');
+buffer('Нужно!');//получить текущее значение
+alert(buffer());//Замыкания Использовать Нужно!
+//===================================
+function makeBuffer() {     
+	var counter = "";
+	return function(v){
+		if(typeof v !== "undefined")
+		{
+			counter += v;
+		}
+		else
+		{
+			return counter;
+		}
+	}; 
+}  
+
+var buffer = makeBuffer();
+buffer("a"); buffer("b"); buffer("c"); 
+console.log( buffer() );  
+</pre>
+
+<pre>
+var test_module = function(){
+  var version = "1.0";
+
+  function _get_version()
+  {
+    return "Module version is " + version;
+  }
+  
+  return {
+    get_version : function(){
+      return _get_version();
+    }
+  };
+  
+}();
+test_module.get_version();
+
+=========================================
+(
+  function(){
+
+    function my_module()
+    {
+  console.log("my_module");
+    }
+
+    window.m = my_module();
+
+  }()
+);
+
+m;
+
+//========================================
+//Илья Кантор - Современный учебник JavaScript - 2015
+//Свойство-константа
+
+"use strict"//!!!!
+
+var user = {};
+
+Object.defineProperty(
+	user,
+	"name",{
+		value:"User Name",
+		writable:false,
+		configurable:false
+	}
+);
+
+user.name = "new User Name";//error TypeError: "name" is read-only
+
+
+//==================================== OOP
+function CoffeeMachine( power )
+{
+alert("Create Coffee Machine with power:" + power +"Vt");
+
+	this.test_waterAmount = 0;//public property
+	var waterAmount = 0;//private property
+	
+	var WATER_HEAT_CAPACITY = 4200;
+	var COFFEE_MACHINE_CAPACITY = 500;
+	var WATER_TEMPERATURE = 80;
+	
+	var self = this;
+	var timer;
+	
+	function getBoilTime()
+	{
+		return self.waterAmount * WATER_HEAT_CAPACITY * WATER_TEMPERATURE;
+	}
+	
+	function onReady()
+	{
+		alert("Coffee is ready!");
+	}
+	
+	this.run = function(){
+		timer = setTimeout( onReady, getBoilTime() );
+	}
+	
+	this.stop = function(){
+		clearTimeout( timer );
+	}
+	
+	//setter method
+	this.setWaterAmount = function(amount){
+		if( amount < 0 )
+		{
+			throw new Error("error! value could not be < 0");
+		}
+		if( amount > COFFEE_MACHINE_CAPACITY )
+		{
+			throw new Error("error! amount could not be > " + COFFEE_MACHINE_CAPACITY);
+		}
+		waterAmount = amount;
+	}
+	
+	//getter method
+	this.getWaterAmount = function(){
+		return waterAmount;
+	}
+}
+
+var coffeeMachine = new CoffeeMachine(100);
+
+//cofeeMachine.waterAmount = 200;
+cofeeMachine.setWaterAmount = 600;//use setter, method with test on error 
+
+cofeeMachine.run();
+cofeeMachine.stop();
+
+</pre>
+
+		</div>
+		
+	</div>
+</body>
+</html>

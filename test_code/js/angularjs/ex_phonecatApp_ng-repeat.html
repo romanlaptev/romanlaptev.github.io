@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<script>
+		var phonecatApp = angular.module("phonecatApp",[]);
+		phonecatApp.controller("phonecatAppCtrl",function($scope){
+			$scope.phones = [
+				{
+					"name": "Nexus S",
+					"snippet":"Fast just got faster with Nexus S"
+				},
+				{
+					"name": "Motorola XOOM with Wi-Fi",
+					"snippet":"The next, next generation tablet"
+				},
+				{
+					"name": "Motorola XOOM",
+					"snippet":"The next, next generation tablet"
+				},
+			];
+		});
+	</script>
+
+</head>
+
+<body data-ng-app="phonecatApp">
+
+<div class="container" data-ng-controller="phonecatAppCtrl">
+<ul>
+	<li ng-repeat="phone in phones">
+		<span>{{phone.name}}</span>
+		<p>{{phone.snippet}}</p>
+	</li>
+</ul>
+</div>
+
+</body>
+</html>

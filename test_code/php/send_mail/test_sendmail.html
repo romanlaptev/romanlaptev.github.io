@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>send mail</title>
+
+	<script src="jquery1.9.js"></script>
+
+	<script>
+
+function check_form()
+{
+console.log(document.forms.sendform[0].value);
+	var error = true;
+	var error_text = "";
+	var frm = document.forms.sendform;
+	for (item in frm.elements)
+	{
+		if (item == "email")
+		{
+//console.log(frm.elements[item].value);
+			var email_value = frm.elements[item].value;
+			if (email_value.length > 0)
+			{
+// /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
+				var reg = /^\w+([\.-]?\w+)*@\w+([\.-]\w+)*(\.\w{2,4})+$/;
+				if (email_value.search(reg) !=-1 )
+				{
+					error = false;
+				}
+				else
+				{
+					error_text += "enter correct email";
+				}
+			}
+			else
+			{
+				error_text += "enter email";
+				//frm.elements[item].styles="enter email!!!";
+			}
+		}
+	}
+
+	if (!error)
+	{
+		//document.forms.sendform.submit();
+		send(document.forms.sendform);
+		return false;
+	}
+	else
+	{
+		alert ('Error: ' + error_text);
+		return false;
+	}
+}
+
+function send(form)
+{
+console.log ("email -  " + form.email.value);
+console.log ("message -  " + form.message.value);
+
+$.ajax({
+		url: 'send.php',
+		type: 'POST',
+		dataType: 'text',
+		data: { message: form.message.value, email: form.email.value},
+		success: function(data){
+console.log (data);
+/*
+				if (data=="1"){
+$("#sendquest").css({top:"30%", "font-size": "14px"}).html("<b>Ваша заявка поступила в обработку. Спасибо!</b>");
+} else {
+$("#nonono").html("Некоторые поля не заполнены или заполнены неккоректно!");
+}
+*/
+		},
+		error: function (a, err, b) {
+console.log (a);
+console.log (err);
+console.log (b);
+
+			alert("ошибка...");
+		}
+        });
+
+}
+	</script>
+</head>
+<body>
+
+<h2>test send mail</h2>
+
+<form method="get" action="" name="sendform" onSubmit="check_form();return false;">
+	<input type="text" name="email" placeholder="enter your email"><br/>
+	<textarea name="message" cols="80" rows="20" placeholder="enter your message"></textarea><br/>
+	<input type="submit" value="send">
+</form>
+
+
+</body>
+</html>

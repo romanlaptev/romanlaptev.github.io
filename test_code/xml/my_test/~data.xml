@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<programs>
+
+<title> Graphics programs </title>
+
+<programs-list>
+      
+<program ID="1">
+
+ <name>  CorelDraw      </name>
+ <description>  Редактор векторной графики   </description>
+
+</program>
+
+</programs-list>
+
+</programs>

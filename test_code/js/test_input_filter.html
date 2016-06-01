@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script>
+
+$(document).ready(function()
+{
+	$('input.num_only').keypress( function(e) {
+	    if($.browser.msie)
+		return isNum(e.keyCode)
+	    else
+		return (e.keyCode) ? true : isNum(e.charCode)
+	});
+	function isNum(cCode){
+	    return /[0-9@\.]/.test(String.fromCharCode(cCode))
+	}
+
+     //ввод только цифр
+     $('.only_number').on('keydown', function(event) 
+		{
+			 if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 ||
+			     (event.keyCode == 65 && event.ctrlKey === true) ||
+			     (event.keyCode >= 35 && event.keyCode <= 39)) 
+			{
+				return;
+			}
+			 else 
+			{
+				if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) 
+				{
+					event.preventDefault();
+				}
+			}
+		}
+	);
+
+}
+);
+	
+function filter_input(e,regexp)
+{
+	e=e || window.event;
+	var target=e.target || e.srcElement;
+	var isIE=document.all;
+
+	if (target.tagName.toUpperCase()=='INPUT')
+	{
+		var code=isIE ? e.keyCode : e.which;
+		if (code<32 || e.ctrlKey || e.altKey) return true;
+
+		var char=String.fromCharCode(code);
+		if (!regexp.test(char)) return false;
+	}
+	return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<h3>Ввод только цифр</h3>
+1.<input type='text' onkeyup = 'this.value=parseInt(this.value) | 0'>(+ Opera, + FF, +IE, +Chrome, +Safary)<br>
+2.<input type="text" onkeypress="return filter_input(event,/\d/)">(+ Opera, + FF, +IE, +Chrome, +Safary)<br>
+3. JQuery, <input class="num_only" type="text" value="" />(- Opera, + FF, +IE, -Chrome, -Safary)<br>
+
+<h3>Ввод только русских символов и цифр</h3>
+<h4>input  onkeypress="return filter_input(event,/[А-Я0-9]/i)"</h4>
+<input type="text" onkeypress="return filter_input(event,/[А-Я0-9]/i)">
+
+<h3>только цифры и точку</h3>
+<h4>input  onkeypress="return filter_input(event,/^[\d.]+$/)"</h4>
+<input type="text" onkeypress="return filter_input(event,/^[\d.]+$/)">
+
+<h3>Ваш телефон</h3>
+<div class="input">
+	<input id="contact-phone2" name="cont_phone"
+	tabindex="4" onkeyup="javascript:
+	this.value=this.value.replace(/([^0-9]+)/g,'');" onkeydown="javascript:
+	this.value=this.value.replace(/([^0-9]+)/g,'');" onchange="javascript:
+	this.value=this.value.replace(/([^0-9]+)/g,'');" type="text">
+</div>
+
+<h3>ввод только цифр</h3>
+<input type="text" class="only_number">
+
+</body>
+</html>

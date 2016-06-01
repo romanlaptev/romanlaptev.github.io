@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<!--
+	<script src="js/jquery-1.9.1.min.js"></script>	
+	-->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>	
+	<script src="js/bootstrap.js"></script>	
+	
+	<link rel="stylesheet" href="css/bootstrap.css"/>	
+	<style>
+[class*="span"] 
+{
+  background:#DCEAF4;
+  margin: 1px;
+}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<h1>Test Bootstap framework</h1>
+	<div class="row">
+		<div class="span12">span12</div>
+	</div>
+
+	<div class="row">
+		<div class="span4">span4</div>
+		<div class="span8">span8</div>
+	</div>
+	
+	<div class="row">
+		<div class="span4">span4</div>
+		<div class="span4">span4</div>
+		<div class="span4">span4</div>
+	</div>
+
+<div>
+	<h2>Вкладки</h2>
+	
+	<ul class="nav nav-tabs">
+		<li><a href="#">Tab1</a></li>
+		<li class="active"><a href="#">Tab2</a></li>
+		<li><a href="#">Tab3</a></li>
+		<li class="disabled pull-right"><a href="http://yandex.ru">Tab4</a></li>
+	</ul>
+	
+	<ul class="nav nav-tabs nav-stacked">
+		<li><a href="#">Tab1</a></li>
+		<li class="active"><a href="#">Tab2</a></li>
+		<li><a href="#">Tab3</a></li>
+	</ul>
+
+	<h3>Вкладки с выпадающим списком</h3>
+	<ul class="nav nav-tabs">
+		<li><a href="#">Tab1</a></li>
+		<li><a href="#">Tab2</a></li>
+		
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tab3
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">sub tab</a></li>
+				<li><a href="#">sub tab</a></li>
+				<li class="divider"></li>
+				<li><a href="#">sub tab</a></li>
+			</ul>
+		</li>
+		
+	</ul>
+
+</div>
+
+<div>
+	<h2>кнопки</h2>
+	
+	<a href="#" class="btn">btn</a><br>
+	<a href="#" class="btn btn-large">btn-large</a><br>
+	<a href="#" class="btn btn-small btn-info">btn-info</a>
+	<a href="#" class="btn btn-small btn-warning">btn-warning</a>
+	<a href="#" class="btn btn-small btn-error">btn-error</a>
+	<a href="#" class="btn btn-small btn-success">btn-success</a>
+	<br>
+	
+	<ul class="nav nav-pills">
+		<li class="active"><a href="#">button1</a></li>
+		<li><a href="#">button2</a></li>
+		<li><a href="#">button3</a></li>
+	</ul>
+	
+	<ul class="nav nav-pills nav-stacked">
+		<li class="active"><a href="#">button1</a></li>
+		<li><a href="#">button2</a></li>
+		<li><a href="#">button3</a></li>
+	</ul>
+	
+</div>	
+
+</div><!-- end container -->
+	
+
+</body>
+
+</html>

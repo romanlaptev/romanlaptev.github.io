@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>notes (export from drupal book)</title>
+	<script type="text/javascript" src="jquery-1.10.0.min.js"></script>
+	<script>
+(function($)
+{
+//alert('jquery');
+	load_xml('export_mydb_notes.xml');
+
+	function load_xml(xml_file)
+	{
+		$.get(xml_file,function(data)
+		{
+			$('#xml_data').empty();
+			var main_plid = "1585";
+			var html = "";
+//========================== вывод страниц верхнего уровня
+$(data).find('page[plid="'+main_plid+'"]').each(
+	function()
+	{
+		page = $(this);
+		html += "<div class='page' id='"+page.attr('nid')+"'>";
+		html += "<p><b>" + page.attr('title') + "</b>&nbsp;&nbsp;&nbsp;";
+		html += "<a class='show-link' id='show-"+page.attr('nid')+"' href='javascript:void(0)'>show</a>";
+		html += "</p>";
+
+		body = page.find('body');
+		if (body.length)
+		{
+			html += "<div class='body' id='body-"+page.attr('nid')+"'>";
+			html += body.text();
+			html += "</div>";
+		}
+
+//========================== вывод дочерних страниц
+		child_pages = $(data).find('page[plid="'+page.attr('mlid')+'"]');
+		if (child_pages.length)
+		{
+			html += "<p>Child pages: " + child_pages.length + "</p>";
+			html += view_child_pages(child_pages,data);
+		}
+//==========================
+		html += "</div>";
+	}
+);//------------------------ end each
+
+			$('#xml_data').append(html);
+		});
+		return false;
+	}
+
+
+function view_child_pages(child_data,data)
+{
+	var html = "";
+	$(child_data).each(function()
+	{
+		page = $(this);
+		html += "<div class='page' id='"+page.attr('nid')+"'>";
+		html += "<p><b>" + page.attr('title') + "</b></p>";
+
+		body = page.find('body');
+		if (body.length)
+		{
+			html += "<div class='body'>" + body.text() + "</div>";
+		}
+
+//========================== вывод дочерних страниц
+		child_pages = $(data).find('page[plid="'+page.attr('mlid')+'"]');
+		if (child_pages.length)
+		{
+			html += "<p>Child pages: " + child_pages.length + "</p>";
+			html += view_child_pages(child_pages);
+		}
+//==========================
+		html += "</div>";
+	});
+	
+	return html;
+}
+}
+)(jQuery);
+
+$(document).ready(
+function()
+{
+//alert('Ready!');
+
+	$('.show-link').click(function(){
+alert('click');
+	});
+
+});
+
+	</script>
+
+<style>
+#wrapper
+{
+margin:auto;
+width:800px;
+}
+.page
+{
+	border:1px solid;
+	margin:30px;
+	padding:10px;
+	text-align:left;
+}
+.body
+{
+	text-align:left;
+	display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	<h2>notes (export from drupal book)</h2>
+	<div id="xml_data">
+
+	</div>
+
+</div>
+
+</body>
+</html>

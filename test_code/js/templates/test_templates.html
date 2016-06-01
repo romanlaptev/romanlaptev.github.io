@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>test templates</title>
+<!--	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+-->
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+
+<script>
+function supportsTemplate() {
+  return 'content' in document.createElement('template');
+}
+
+function producttable_proccess(){
+	// Instantiate the table with the existing HTML tbody and the row with the template
+	var t = document.querySelector('#productrow'),
+	td = t.content.querySelectorAll("td");
+	td[0].textContent = "1235646565";
+	td[1].textContent = "Stuff";
+
+	// Clone the new row and insert it into the table
+	var tb = document.getElementsByTagName("tbody");
+	var clone = document.importNode(t.content, true);
+	tb[0].appendChild(clone);
+
+	// Create a new row
+	td[0].textContent = "0384928528";
+	td[1].textContent = "Acme Kidney Beans";
+
+	// Clone the new row and insert it into the table
+	var clone2 = document.importNode(t.content, true);
+	tb[0].appendChild(clone2);
+};
+
+window.onload = function(){
+//console.log("onload");
+	if (supportsTemplate()) {
+//alert( supportsTemplate() );
+		log.innerHTML +="This browser support &lt;template&gt;";
+		producttable_proccess();
+		
+		document.querySelector("#btn1").onclick = function(e){
+			var elem = document.querySelector('#content');
+			var t = document.querySelector('#thumbnail_tpl');
+//console.log("Click!", e, t);
+			t.content.querySelector('img').src = 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/site-content/book_history_engraving/icons/02.jpg';
+			elem.appendChild( t.content.cloneNode(true) );
+			
+			//var root = elem.createShadowRoot();
+			//root.appendChild( t.content.cloneNode(true) );
+		}//end events
+		
+	} else {
+		log.innerHTML +="This browser not support &lt;template&gt;";
+	}
+};//end load
+
+</script>
+
+<style>
+#producttable tr, #producttable td {
+  border: 1px solid;
+  padding: 5px;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>use tag <span class="text-warning">template</span></h1>
+		</div>
+	
+		<pre>
+https://developer.mozilla.org/ru/docs/Web/HTML/Element/template
+http://frontender.info/template/
+https://learn.javascript.ru/template-tag
+		</pre>
+		
+		<div class="panel panel-primary">
+			<div class="panel-body" id="log"></div>
+			<div class="panel-body" id="content"></div>
+			<ul class='panel-body list-inline' id="list"></ul>
+		</div>
+		
+		<table id="producttable">
+		  <thead>
+			<tr>
+			  <td>UPC_Code</td>
+			  <td>Product_Name</td>
+			</tr>
+		  </thead>
+		  <tbody>
+			<!-- existing data could optionally be included here -->
+		  </tbody>
+		</table>
+		<br>
+
+		<template id="productrow">
+		  <tr>
+			<td class="record"></td>
+			<td></td>
+		  </tr>
+		</template>
+		
+		<button class="btn btn-primary" id="btn1">add template</button>
+		
+		<template id="thumbnail_tpl">
+			<li class='thumbnail'>
+				<a class='pirobox' href='#' title=''>
+					<img src='' alt=''>
+				</a>
+				<p class="img-caption"></p>
+			</li>
+		</template>
+		
+	</div><!-- end container -->
+
+</body>
+</html>

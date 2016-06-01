@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="ex3.xsl" ?>
+<editor_contacts>
+  <editor>
+    <first_name>Джонатан</first_name>
+    <last_name>Эйнджел</last_name>
+    <title>старший редактор</title>
+    <publication>Network 
+    Magazine</publication>
+    <address>
+      <street>Гариссона, 600 </street>
+      <city>Сан-Франциско</city>
+      <state>Калифорния</state>
+      <zip>94107</zip>
+    </address>
+    <e_mail>jangel@mfi.com</e_mail>
+  </editor>
+</editor_contacts>

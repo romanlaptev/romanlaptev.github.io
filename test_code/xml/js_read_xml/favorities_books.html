@@ -1,0 +1,127 @@
+<html>
+<head>
+  <title> Favorities books </title>
+  <meta http-equiv="Expires" content="0">
+  <meta content="MSHTML 6.00.2600.0" name="GENERATOR">
+      <meta http-equiv=Content-Type content=text/html; charset=windows-1251>
+  <link rel="STYLESHEET" href="../css/style.css" type="text/css">
+</head>
+
+<script>
+function read_xml (url)
+{
+//     window.alert (url);
+     var xml=null;
+     xml=getXMLDocument(url);
+
+// определить кол-во секций авторов
+ var author_section = xml.getElementsByTagName("author");
+// document.write("Number of author elements: " + author_section.length);
+// document.write("<br />");
+
+var en = 0;
+for (var k = 0; k < author_section.length; k++)  
+ {  
+// определить кол-во книг в секции автора
+  var book_section = xml.getElementsByTagName("author")[k];
+  var b = book_section.getElementsByTagName('a');
+
+// document.write ("Number of elements a: " + b.length);
+//  document.write("<br />");
+
+  document.write("<table cellpadding=\"4\" cellspacing=\"10\" width=\"95%\">");
+  document.write("<tbody>");
+  document.write("<tr>");
+  document.write("<td class=\"class2-2\" align=\"center\" width=\"20%\">");
+
+// вывести атрибут имени автора
+  c = xml.getElementsByTagName("author")[k].attributes;
+  document.write( c.getNamedItem("title").nodeValue);
+
+  document.write("</td>");
+  document.write("<td valign=\"top\" width=\"80%\">");
+
+//document.write(xml.getElementsByTagName('author')[k].textContent);
+//document.write("<br />");
+
+  // Формирование HTML-ссылок на файлы книг
+  for (var n = en; n < (en + b.length); n++)  
+   {  
+     document.write("<a href='");
+  //вывести атрибут (ссылка на файл) тега книги
+     x = xml.getElementsByTagName("a")[n].attributes;
+     document.write(x.getNamedItem("href").nodeValue);
+     document.write("'  target=\"_blank\">");
+
+  // вывести содержимое (название книги) тега книги
+     document.write(xml.getElementsByTagName('a')[n].firstChild.data);
+     document.write("</a><br />");
+   }
+  var en = n; // запомнить кол-во обработанных тегов a
+
+  document.write("</td>");
+  document.write("</tr>");
+  document.write("</tbody>");
+  document.write("</table>");
+  document.write("<br>");
+
+ }
+
+}
+
+function getXMLDocument(url)  
+ {  
+     var xml;  
+     if(window.XMLHttpRequest)  
+     {  
+         xml=new window.XMLHttpRequest();  
+         xml.open("GET", url, false);  
+         xml.send("");  
+//         alert (xml.responseText);
+         return xml.responseXML;  
+     }  
+     else  
+         if(window.ActiveXObject)  
+         {  
+             xml=new ActiveXObject("Microsoft.XMLDOM");  
+             xml.async=false;  
+             xml.load(url);  
+             return xml;  
+         }  
+         else  
+         {  
+             alert("Загрузка XML не поддерживается браузером");  
+             return null;  
+         }  
+ }  
+</script>
+
+<body>
+<!--
+<h2> read xml </h2>
+<input type=button value="read xml" onclick='javascript:read_xml("favorities_books.xml");'>
+-->
+<table cellpadding="4" cellspacing="0" height="100%" width="100%">
+<tbody>
+<tr>
+<td class="class1" width="20%"> <br>
+</td>
+<td class="class1" valign="top" width="90%">
+<h2> Favorities books </h2>
+
+
+<script type="text/javascript">
+   read_xml("favorities_books.xml");
+</script>
+
+<br>
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</body>
+</html>

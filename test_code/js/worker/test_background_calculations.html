@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+-->	
+	<script>
+window.onload = function(){
+
+	prime = document.getElementById('prime');
+	document.getElementById("btn1").onclick = function(){
+		if (typeof Worker != "undefined")
+		{
+			worker = new Worker('worker.js');
+			worker.postMessage('hello worker!');
+			worker.onmessage = function (event) {
+				prime.innerHTML = 'The worker just sent me this: ' + event.data;
+			};	
+		}	
+		else
+		{
+			alert("Object Worker not support!");
+		}
+	}//end event
+	
+	document.getElementById("btn2").onclick = function(){
+		//worker.close();
+		worker.terminate();
+	}//end event
+	
+	document.getElementById("btn3").onclick = function(){
+alert("click!");	
+	}//end event
+	
+}//end load
+	</script>
+</head>
+
+<body>
+<div class="container">
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h1>test background calculations</h1>
+		</div>
+	
+		<pre>
+Реми Шарп.
+Изучаем HTML5. Библиотека специалиста. 2-е издание
+http://www.html5rocks.com/ru/tutorials/workers/basics/
+		</pre>	
+
+		<h3>Фоновое вычисление простых чисел</h3>
+		<div id="prime">prime html</div>
+		<button id="btn1" class="btn btn-primary">start calculations</button>
+		<button id="btn2" class="btn btn-danger">stop (worker.terminate)</button>
+		<button id="btn3" class="btn btn-info">test click</button>
+		
+	</div>
+</div><!-- end container -->
+
+</body>
+</html>

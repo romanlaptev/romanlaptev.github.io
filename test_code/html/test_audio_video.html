@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h2>test SVG</h2>
+	<svg>
+		<circle r="55px" cx="80px" cy="70px" fill="green">
+	</svg>
+	
+	<h2>test AUDIO</h2>
+http://html-5.ru/teg-audio-html5.php
+	
+<div>
+	ogg:<audio id="player1" controls="controls">
+		<source src="audio/baauer-harlem-shake.ogg" />
+		Тег audio не поддерживается вашим браузером. 
+	</audio>
+	<button onclick="document.getElementById('player1').play()">Играть</button>
+	<button onclick="document.getElementById('player1').pause()">Пауза</button>
+</div>
+	
+<div>
+mp3:<audio id="player2" controls="controls">
+		<source src="audio/baauer-harlem-shake.mp3" />
+		Тег audio не поддерживается вашим браузером. 
+	</audio>
+	<button onclick="document.getElementById('player2').play()">Играть</button>
+	<button onclick="document.getElementById('player2').pause()">Пауза</button>
+</div>
+	
+	
+	<h2>test VIDEO</h2>
+http://html-5.ru/teg-video-html5.php	
+<div>
+	<video id="player3" width="560" height="315" controls="controls" poster="video/teg-video.jpg">
+		<source src="video/norwegian-army-harlem-shake.ogv" />
+		<source src="video/norwegian-army-harlem-shake.mp4" />
+		Тег video не поддерживается вашим браузером. 
+	</video>
+	<button onclick="document.getElementById('player3').play()">Играть</button>
+	<button onclick="document.getElementById('player3').pause()">Пауза</button>
+</div>
+	
+<hr>
+	<h2>HTML4</h2>
+
+	<h3>object application/x-mplayer2</h3>
+<div>
+mp3:	<object width="30%" height="30%" type="application/x-mplayer2" >
+	<param name="fileName" value="audio/baauer-harlem-shake.mp3">
+	<param name="autostart" value="0">
+	<param name="ShowStatusBar" value="1">
+	<param name="volume" value="0">
+	<param name="controls" value="true">
+	Тег object не поддерживается вашим браузером.
+	</object> 
+</div>
+
+</body>
+</html>
