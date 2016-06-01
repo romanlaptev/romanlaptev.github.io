@@ -229,6 +229,17 @@ console.log("scroll on ");
 		log.innerHTML += "<p>" + message + "</p>";
 	}//end event
 	
+	document.onkeydown = function(e) {
+console.log("document.onkeydown", e);
+		if( e.keyCode == 192 ){
+			$("#log-wrap").hide();
+		}
+	};
+	
+	document.onkeyup = function(e) {
+console.log("document.onkeyup", e);
+	};
+	
 }//end load
 	
 function btn2_click(event)	
@@ -391,7 +402,12 @@ detail
 						</ul>
 					</li>
 					
-					<li><a href="#">от клавиатуры</a></li>
+					<li><a href="#">от клавиатуры</a>
+						<ul class="uk-nav-sub">
+							<li><a id="key_down" href="#">keydown</a></li>
+							<li><a id="key_up" href="#">keyup</a></li>
+						</ul>
+					</li>
 					<li><a href="#">ввода текста</a></li>
 				</ul>
 			</div>
