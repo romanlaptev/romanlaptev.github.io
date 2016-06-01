@@ -31,7 +31,16 @@
 		</div>
 		<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 			<div id="header-content">
-				<div id="block-taxonomy-alpha"></div>
+				<div id="block-taxonomy-alpha">
+<!-- TEMPLATE -->
+					<ul class="menu taxonomy-alpha">
+{{list}}
+						<span id="block-taxonomy-alpha-for">	
+							<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
+						</span>
+					</ul>
+<!-- /TEMPLATE -->
+				</div>
 			</div>
 		</div>
 		
@@ -40,12 +49,6 @@
 			<div class="columns right-grad"></div>
 		</div>
 		
-<!--		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
-			<div class="control-btn">
-<button id="info-panel-view" class="btn btn-info btn-sm">view log</button>
-<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
-			</div>
-		</div>-->
 	</div>
 
 	<div class="row b-content">
@@ -134,15 +137,16 @@
 
 			<div id="right-side">
 			
-				<span class="title">book category</span>
 				<div id="book-category">
 				
 <!-- TEMPLATE -->
-			<div id="book-category-menu">
-<ul class='book-content submenu'>#links
+			<span id="book-category-menu">
+				<h4>book category:</h4>
+<ul class='book-content submenu'>
+	#links
 	<li class='#type'><a href='#link' data-nid='#nid' class='nav-click'>#page-title</a></li>
 </ul>
-			</div>
+			</span>
 <!-- ####### -->
 
 				</div>		
@@ -151,12 +155,14 @@
 				<div id="tags">
 					<div id="taxonomy-menu">
 						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-							<ul class="menu">#links
-								<li><a class="nav-click" href="#url">#link-title</a></li>
+							<h4>book tags:</h4>
+							<ul class="menu">
+								{{list}}
+								<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
 							</ul>
 						</div>
 					</div>
-					<div id="taxonomy-url">?q=termin_nodes&vid=#vid&tid=#tid</div>
+					<div id="taxonomy-url">?q=termin_nodes&vid={{vid}}&tid={{tid}}</div>
 				</div>		
 <!-- ####### -->
 
