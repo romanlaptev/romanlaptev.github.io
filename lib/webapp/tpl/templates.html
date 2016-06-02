@@ -57,7 +57,8 @@
 				
 <!-- TEMPLATE ["node_tpl"] -->
 				<div id="view-node">
-					<div class='node'>
+					<div class='node node-{{type}}'>
+						<div class='node-title'>{{node-title}}</div>
 						<div class='bookname'>{{bookname}}</div>
 						<div class='author'>{{author}}</div>
 
@@ -115,7 +116,7 @@
 						</div><!-- end panel -->
 						
 						
-						<div class='date'>
+						<div class="date small">
 							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
 						</div>
 
@@ -134,7 +135,7 @@
 			<ul class="list-group">
 	{{list}}
 				<span id="block-book-child-pages-for">	
-					<li class="list-group-item {{type}}">
+					<li class="list-group-item node-{{type}}">
 						<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}"><h5>{{link-title}}</h5></a>
 					</li>
 				</span>
