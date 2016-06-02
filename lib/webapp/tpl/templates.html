@@ -32,7 +32,7 @@
 		<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 			<div id="header-content">
 				<div id="block-taxonomy-alpha">
-<!-- TEMPLATE -->
+<!-- TEMPLATE ["block_taxonomy_alpha_tpl"]  -->
 					<ul class="menu taxonomy-alpha">
 {{list}}
 						<span id="block-taxonomy-alpha-for">	
@@ -54,7 +54,8 @@
 	<div class="row b-content">
 		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
 			<div id="region-content">
-<!-- TEMPLATE -->
+				
+<!-- TEMPLATE ["node_tpl"] -->
 				<div id="view-node">
 					<div class='node'>
 						<div class='bookname'>{{bookname}}</div>
@@ -122,6 +123,27 @@
 					</div>
 				</div>
 <!-- ####### -->
+
+<!-- TEMPLATE ["book_child_pages"] -->
+<span id="block-book-child-pages">
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<h3>child pages</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="list-group">
+	{{list}}
+				<span id="block-book-child-pages-for">	
+					<li class="list-group-item {{type}}">
+						<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}"><h5>{{link-title}}</h5></a>
+					</li>
+				</span>
+			</ul>
+		</div>
+	</div>  
+</span>  
+<!-- /TEMPLATE -->
+
 			
 			</div>
 		</div>
