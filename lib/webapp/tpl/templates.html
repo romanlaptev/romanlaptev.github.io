@@ -53,6 +53,18 @@
 
 	<div class="row b-content">
 		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+			
+			<ul class="breadcrumb">
+				<li><a href="./">главная</a></li>
+<!-- TEMPLATE ["breadcrumb_item_tpl"]-->
+				<span id="breadcrumb-tpl">
+					<li>
+						<a href="{{item-url}}" class="nav" data-nid="{{nid}}" data-mlid="{{mlid}}">{{item-title}}</a>
+					</li>
+				</span>			
+<!-- ####### -->
+			</ul>			
+			
 			<div id="region-content">
 				
 <!-- TEMPLATE ["node_tpl"] -->
@@ -105,7 +117,7 @@
 
 						<div class="panel panel-success" id='termins'>
 							<div class="panel-heading">
-								<b>tags</b>
+								<b>related tags:</b>
 							</div>
 							<div class="panel-body">
 								<ul class="list-inline">
@@ -149,17 +161,10 @@
 			</div>
 		</div>
 
-	
-		
-		<div class="pull-left grad">
-			<div class="columns left-grad"></div>
-			<div class="columns right-grad"></div>
-		</div>
 
 		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
 
-			<div id="right-side">
-			
+			<div id="right-side" class="col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
 <!-- TEMPLATE -->
 				<div id="block-book-category">
 					<h4>book category:</h4>
@@ -170,13 +175,12 @@
 				</div>		
 <!-- ####### -->
 				
-<!-- TEMPLATE -->
+<!-- TEMPLATE ["taxonomy_list_tpl"] -->
 				<div id="block-tags">
 					<div id="taxonomy-menu">
 						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 							{{block-title}}
-							<ul>
-								{{list}}
+							<ul>{{list}}
 								<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
 							</ul>
 						</div>
@@ -208,29 +212,25 @@
 
 <div>
 
-<ul class="breadcrumb">
-	<li><a href="./">главная</a></li>
-<!-- TEMPLATE -->
-	<span id="tpl-breadcrumb">
-		<li>
-			<a href="#item-url" class="nav" data-nid="#nid" data-mlid="#mlid">#item-title</a>
-		</li>
-	</span>			
-<!-- ####### -->
-</ul>			
-
-
-<!-- TEMPLATE -->
+<!-- TEMPLATE ["termin_nodes_tpl"] -->
 			<div id="termin-nodes">
-				<div class="wrapper list-termin-nodes">#termin_nodes
-				
-					<div id="termin-nodes-item">
-						<div class="termin-node">
-							<a class="nav-click" href="#url">#author . #bookname</a>
-						</div>
+				<div class="panel panel-primary">
+					<div class="panel-body">
+						<ul class="list-unstyled list-termin-nodes">#termin_nodes
+
+							<span id="termin-nodes-item">
+								<li class="termin-node">
+									<a class="nav-click" href="#url">#author . #bookname</a>
+								</li>
+							</span>
+
+						</ul>
 					</div>
-					
-				</div>
+					<div class="panel-footer">
+						<b>list related nodes</b>
+					</div>
+				</div>  
+				
 			</div>
 <!-- ####### -->
 </div>	

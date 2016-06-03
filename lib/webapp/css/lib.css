@@ -29,9 +29,11 @@ a {
 }
 
 .b-header .fix1 {
+    /*
      margin-left: -25px;
      margin-right: -25px;
      padding-left: 35px;
+    */
 }
 
 
@@ -53,13 +55,16 @@ a {
 
 .b-content {
      background-color: #ffffff;
-     height: 85%;
+     /*height: 85%;*/
+     min-height: 85%;
 }
 
 .b-content .fix1 {
+    /*
      margin-left: -35px;
      margin-right: -25px;
      padding-left: 30px;
+    */
 }
 
 .b-content .grad {
