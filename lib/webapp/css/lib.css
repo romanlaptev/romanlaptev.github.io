@@ -47,8 +47,12 @@ a {
      padding-left: 35px;
 }
 
+.lib-wrapper{
+  height: 100%;
+}
+
 .b-content {
-     background: #ffffff none repeat scroll 0% 0%;
+     background-color: #ffffff;
      height: 85%;
 }
 
