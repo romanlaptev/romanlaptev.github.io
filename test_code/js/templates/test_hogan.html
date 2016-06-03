@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>test Hogan</title>
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.2/hogan.min.js"></script>
+
+
+<script>
+var data = {
+	"header": "Colors",
+	"items": [
+		{"name": "red", "first": true, "url": "#Red"},
+		{"name": "green", "link": true, "url": "#Green"},
+		{"name": "blue", "link": true, "url": "#Blue"}
+	],
+	"empty": false
+}
+
+window.onload = function(){
+console.log("onload");
+	var template = tmpl1.innerHTML;
+console.log(template);	
+  
+	var compiledTemplate = Hogan.compile(template);
+	var html = compiledTemplate.render(data);
+	render.innerHTML += html;
+};//end load
+
+</script>
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>Test <span class="text-info"><b>Hogan</b></span></h1>
+		</div>
+	
+		<pre>
+http://twitter.github.io/hogan.js/
+https://github.com/twitter/hogan.js
+https://cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.2/hogan.js
+http://stackoverflow.com/questions/14601578/how-to-load-templates-with-hogan-js-from-an-external-file
+http://websketches.ru/plugins/hoganjs
+		</pre>
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3>template</h3></div>
+			<div class="panel-body" id="tmpl1">
+<h1>{{header}}</h1>
+{{#items}}
+
+	{{#first}}
+		<li><strong>{{name}}</strong></li>
+	{{/first}}
+  
+	{{#link}}
+		<li><a href="{{url}}">{{name}}</a></li>
+	{{/link}}
+	
+  {{/items}}
+
+{{#empty}}
+	<p>The list is empty.</p>
+{{/empty}}
+			</div>
+		</div>
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3>render HTML</h3></div>
+			<div class="panel-body" id="render"></div>
+		</div>
+		
+	</div><!-- end container -->
+
+</body>
+</html>
