@@ -1,286 +1,147 @@
-﻿body, html {
-  height: 100%;
+body, html {
+     height: 100%;
 }
 
 body {
-  background: #C9C6D3;
+     background: #c9c6d3 none repeat scroll 0% 0%;
 }
 
-a
-{
-	text-decoration:none;
-	/*color:#1e90ff;*/
-color: rgb(11, 113, 241);
+a {
+     color: #0b71f1;
+     text-decoration: none;
 }
 
-
-.wrapper
-{
-	width:940px;
-	margin:auto;
-  height: 100%;
-}
-.lib-wrapper
-{
-  height: 100%;
+.bg-header {
+     background: #45557a none repeat scroll 0% 0%;
+     color: #ffffff;
+     height: 85px;
 }
 
-
-.bg-header
-{
-  background: #45557A;
-	color:#fff;
-height: 85px;	
+.bg-header a.title {
+     color: #ffffff;
+     font-size: 130%;
+     font-style: normal;
 }
-.bg-header a.title
-{
-color: #ffffff;
-font-size: 130%;
-font-style: normal;
+
+.b-header .grad, .b-footer .grad {
+     height: 100%;
+     width: 50px;
+}
+
+.b-header .fix1 {
+     margin-left: -25px;
+     margin-right: -25px;
+     padding-left: 35px;
 }
 
 
-.lib-header .grad,
-.b-header .grad,
-.b-footer .grad
-{
-  height: 100%;
-  width: 50px;
-}
-.b-header .fix1 
-{
-  margin-left: -25px;
-  margin-right: -25px;
-  padding-left: 35px;
-}
-
-
-.lib-footer
-{
-}
 .b-footer {
-  background: #45557a none repeat scroll 0 0;
-  color: #fff;
-  height: 40px;
+     background: #45557a none repeat scroll 0px 0px;
+     color: #ffffff;
+     height: 40px;
 }
+
 .b-footer .fix1 {
-  margin-left: -25px;
-  margin-right: -25px;
-  padding-left: 35px;
-}
-.control-btn {
-  margin-top: 10px;
+     margin-left: -25px;
+     margin-right: -25px;
+     padding-left: 35px;
 }
 
-.navigate
-{
-	margin:10px;
-	padding:10px;
-	background:#ffffff;
+.b-content {
+     background: #ffffff none repeat scroll 0% 0%;
+     height: 85%;
 }
 
-
-.b-content
-{
-	background:#ffffff;
-	height: 85%;
-}
 .b-content .fix1 {
-margin-left: -35px;
-margin-right: -25px;
-padding-left: 30px;
+     margin-left: -35px;
+     margin-right: -25px;
+     padding-left: 30px;
 }
 
-.lib-container .grad,
-.b-content .grad 
-{
-width: 50px;
-height: 100%;
+.b-content .grad {
+     height: 100%;
+     width: 50px;
 }
+
 .grad .columns {
-  width: 50%;
+     width: 50%;
 }
 
-.lib-container .grad .col-1, 
-.b-content .grad .left-grad 
-{
-background: rgb(255,255,255); /* Old browsers */
-background: -moz-linear-gradient(left,  rgba(255,255,255,1) -30%, rgba(170,170,170,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(-30%,rgba(255,255,255,1)), color-stop(100%,rgba(170,170,170,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  rgba(255,255,255,1) -30%,rgba(170,170,170,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  rgba(255,255,255,1) -30%,rgba(170,170,170,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  rgba(255,255,255,1) -30%,rgba(170,170,170,1) 100%); /* IE10+ */
-background: linear-gradient(to right,  rgba(255,255,255,1) -30%,rgba(170,170,170,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#aaaaaa',GradientType=1 ); /* IE6-9 */
-  height: 100%;
-}
-.lib-container .grad .col-2, 
-.b-content .grad .right-grad
-{
-background: #aaaaaa; /* Old browsers */
-background: -moz-linear-gradient(left,  #aaaaaa 0%, #ffffff 130%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#aaaaaa), color-stop(130%,#ffffff)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  #aaaaaa 0%,#ffffff 130%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  #aaaaaa 0%,#ffffff 130%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  #aaaaaa 0%,#ffffff 130%); /* IE10+ */
-background: linear-gradient(to right,  #aaaaaa 0%,#ffffff 130%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaaaaa', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
-
-  height: 100%;
+.b-content .grad .left-grad {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #ffffff -30%, #aaaaaa 100%) repeat scroll 0% 0%;
+     height: 100%;
 }
 
-.lib-header .grad .col-1,
-.b-header .grad .left-grad,
-.b-footer .grad .left-grad
- {
-background: #45557A; /* Old browsers */
-background: -moz-linear-gradient(left,  #45557A 0%, #021838 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#45557A), color-stop(100%,#021838)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  #45557A 0%,#021838 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  #45557A 0%,#021838 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  #45557A 0%,#021838 100%); /* IE10+ */
-background: linear-gradient(to right,  #45557A 0%,#021838 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45557A', endColorstr='#021838',GradientType=1 ); /* IE6-9 */
-
-  height: 100%;
-}
-.lib-header .grad .col-2,
-.b-header .grad .right-grad,
-.b-footer .grad .right-grad
-{
-background: #03245E; /* Old browsers */
-background: -moz-linear-gradient(left,  #021838 0%, #45557A 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(0%,#021838), color-stop(100%,#45557A)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  #021838 0%,#45557A 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  #021838 0%,#45557A 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  #021838 0%,#45557A 100%); /* IE10+ */
-background: linear-gradient(to right,  #021838 0%,#45557A 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#021838', endColorstr='#45557A',GradientType=1 ); /* IE6-9 */
-
-  height: 100%;
+.b-content .grad .right-grad {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #aaaaaa 0%, #ffffff 130%) repeat scroll 0% 0%;
+     height: 100%;
 }
 
+.b-header .grad .left-grad, .b-footer .grad .left-grad {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #45557a 0%, #021838 100%) repeat scroll 0% 0%;
+     height: 100%;
+}
+
+.b-header .grad .right-grad, .b-footer .grad .right-grad {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #021838 0%, #45557a 100%) repeat scroll 0% 0%;
+     height: 100%;
+}
 
 #block-taxonomy-alpha {
-  margin-top: 10px;
+     margin-top: 10px;
 }
+
 #block-taxonomy-alpha .menu {
-font-size: 102%;
-margin: 0;
-padding: 0;
-text-align: right;
-}
-#block-taxonomy-alpha ul li
-{
-display:inline-block;
-padding: 2px;
-}
-#block-taxonomy-alpha ul li a
-{
-color:#ffffff;
+     margin: 0px;
+     padding: 0px;
+     text-align: right;
 }
 
-
-
-#main-book-content
-{
-display:none;
-}
-#list-book-content
-{
-display: none;
-background: none repeat scroll 0 0 #CFDFCC;
-margin-left: 15px;
-margin-top: 10px;
-padding: 5px 5px 5px 30px;
+#block-taxonomy-alpha ul li {
+     display: inline-block;
+     padding: 2px;
 }
 
-
-.book-content .book a, 
-.book-content .author a 
-{
-background: none repeat scroll 0 0 #238F11;
-color: #FFFFFF;
-display: block;
-margin: 3px;
-padding: 5px;
-font-family: RussiaLight;
+#block-taxonomy-alpha ul li a {
+     color: #ffffff;
 }
-.book,
-.library_book
- {
-  list-style: none outside none;
+
+#main-book-content {
+/*     display: none;*/
+}
+
+.book-content .book a, .book-content .author a {
+     background-color: #238f11;
+     color: #ffffff;
+     display: block;
+     margin: 3px;
+     padding: 5px;
+}
+
+.book, .library_book {
+     list-style: outside none none;
 }
 
 .book-content .library_book a {
-background: none;
-color: #0000FF;
-font-family: arial;
-font-size: 14px;
-}
-.submenu
-{
-margin: 0;
-padding: 0;
+     color: #0000ff;
 }
 
-#view-node-content
-{
-display:none;
-padding-left: 15px;
+.submenu {
+     margin: 0px;
+     padding: 0px;
 }
 
-
-.bookname 
-{
-  font: bold 1.5em Arial;
+#view-node-content {
+     display: none;
+     padding-left: 15px;
 }
 
-
-
-.breadcrumb
-{
-padding-top:0;
-padding-left:15px;
-padding-bottom:10px;
-margin:0;
-}
-.breadcrumb li
-{
-display:inline;
-  list-style: none outside none;
+.bookname {
+     font: bold 1.5em Arial;
 }
 
-.breadcrumb-last-item
-{
-	color:#000000;
-	cursor:default;
+.breadcrumb {
+     margin: 0px;
 }
 
-
-
-
-/* parse_booklist */
-body.booklist {
-  background: #6aa6c0;
-  margin: 0;
-  padding: 20px;
-}
-.booklist .lib-container {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  height:auto;
-}
-
-.booklist .list-alf li
-{
-display:inline;
-}
-
-.booklist .visited
-{
-	color:#ccc;
-}
+.breadcrumb-last-item {}
