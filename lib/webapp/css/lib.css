@@ -93,9 +93,12 @@ a {
 position: absolute;
 right: 0;
 top: 10px;
+float:none;
 }
 @media screen and (max-width: 990px) {
   #right-side { position: static; }
+    #right-side .panel-body { float:left};
+
 }
 /*
 https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint
