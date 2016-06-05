@@ -9,50 +9,52 @@
 	<title>my lib</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+        
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--
+	<script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+-->
 	<link rel="stylesheet" href="css/bootstrap336.min.css"/>
+        <script src="js/vendor/bootstrap336.min.js"></script>
+        
 	<link rel="stylesheet" href="css/lib.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/shared.css" type="text/css" media="screen" />
-<!--	
-	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
--->
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
             <script type="text/javascript" src="js/vendor/PIE_IE678.js"></script>
         <![endif]-->
-
-
-	<script src="js/vendor/jquery-1.9.1.min.js"></script>
-<!--
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
--->
-	<script src="js/parse_lib.js"></script>
+	<script src="js/webapp_lib.js"></script>
 	<script src="js/main.js"></script>
 <!--
 	<script type="text/html" src="tpl/test.html" id="test_template"></script>
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
 -->
 </head>
 
 <body>
+    
 <div class="container lib-wrapper">
-	<div class="row header bg-header b-header">
-		<div class="col-sm-3 col-xs-2 col-md-2 col-lg-2">
+	<div class="header bg-header b-header">
+		<div id="sitename-block" class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
 			<h1><a class="title" href="./">my lib</a></h1>
 		</div>
-		<div class="col-sm-9 col-xs-6 col-md-6 col-lg-6">
+            
+		<div class="col-xs-9 col-sm-9 col-md-6 col-lg-6">
 			<div id="header-content">
 				<div id="block-taxonomy-alpha"></div>
 			</div>
 		</div>
 		
-		<div class="pull-left grad hidden-sm">
+		<div class="pull-left grad hidden-xs hidden-sm">
 			<div class="columns left-grad"></div>
 			<div class="columns right-grad"></div>
 		</div>
 		
 <!--				
-		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
 			<div class="control-btn">
 <button id="info-panel-view" class="btn btn-info btn-sm">view log</button>
 <button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
@@ -61,8 +63,44 @@
 -->
 	</div>
 
-	<div class="row b-content">
-		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+        <nav role="navigation" class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+                    <!--
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">book category</a></li>
+                        <li><a href="#">book tags</a></li>
+                        <li class="dropdown">
+                          <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                    -->
+                    <div id="right-side" class="panel">
+                            <div id="block-book-category" class="panel-body"></div>		
+                            <div id="block-tags" class="panel-body"></div>		
+                    </div>
+                    
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    
+	<div class="b-content">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			
 			<ul class="breadcrumb">
 				<li><a href="./">главная</a></li>
@@ -79,26 +117,22 @@
 			<div class="columns left-grad"></div>
 			<div class="columns right-grad"></div>
 		</div>
--->
-		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
-			<div id="right-side" class="col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
-				<div id="block-book-category"></div>		
-				<div id="block-tags"></div>		
-			</div>
+
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
 		</div>
-		
+-->		
 	</div>
 	
-	<div class="row b-footer">
-		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+	<div class="b-footer">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 		</div>
 		
-		<div class="pull-left grad hidden-sm">
+		<div class="pull-left grad hidden-xs hidden-sm">
 			<div class="columns left-grad"></div>
 			<div class="columns right-grad"></div>
 		</div>
 		
-		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
+		<div class="hidden-xs hidden-sm col-md-4 col-lg-4">
 		</div>
 	</div>
 	

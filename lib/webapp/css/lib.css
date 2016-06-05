@@ -22,6 +22,34 @@ a {
      font-size: 130%;
      font-style: normal;
 }
+@media screen and (max-width:605px) { 
+    .bg-header a.title {
+         font-size: inherit;
+    }
+}
+@media screen and (max-width:495px) { 
+    .bg-header a.title {
+         font-size: 90%;
+    }
+}
+@media screen and (max-width:450px) { 
+    .bg-header a.title {
+         font-size: 85%;
+    }
+}
+@media screen and (max-width:439px) { 
+    #sitename-block {
+         display: none;
+    }
+    .bg-header .col-xs-9 {
+      width: 100%;
+    }    
+}
+@media screen and (min-width:440px) { 
+    #sitename-block {
+         display: block;
+    }
+}
 
 .b-header .grad, .b-footer .grad {
      height: 100%;
@@ -36,6 +64,68 @@ a {
     */
 }
 
+
+
+/*
+@media screen and (max-width: 670px) {
+  .navbar { display: block !important; }
+  #right-side { display: none; }
+}
+@media screen and (min-width: 671px) {
+  #right-side { display: block; }
+}
+*/
+
+.navbar {
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+@media screen and (min-width: 991px) {
+    .navbar {
+        min-height: 0;
+      /*position: static;*/
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
+
+#right-side {
+position: absolute;
+right: 0;
+top: 10px;
+}
+@media screen and (max-width: 990px) {
+  #right-side { position: static; }
+}
+/*
+https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint
+@media (max-width: 990px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+*/
 
 .b-footer {
      background: #45557a none repeat scroll 0px 0px;
