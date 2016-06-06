@@ -100,8 +100,7 @@ float:none;
     #right-side .panel-body { float:left};
 
 }
-/*
-https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint
+/*https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint */
 @media (max-width: 990px) {
     .navbar-header {
         float: none;
@@ -128,7 +127,6 @@ https://coderwall.com/p/wpjw4w/change-the-bootstrap-navbar-breakpoint
         padding-bottom: 10px;
     }
 }
-*/
 
 .b-footer {
      background: #45557a none repeat scroll 0px 0px;
