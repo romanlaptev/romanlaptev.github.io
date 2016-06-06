@@ -190,7 +190,7 @@ document.write(msg );
 
 
 <pre>
-	//Самовызывающиеся функции
+<h1>Самовызывающиеся функции</h1>
 	var my_func = (
 		function( name ){
 console.log("Hello " + name + " world!");
@@ -235,7 +235,7 @@ console.log(a);
 </pre>	
 
 <pre>
-	//Функции обратного вызова	
+<h1>Функции обратного вызова</h1>
 	var test = function( callback ){
 		var name = "Roman";
 		callback (name);
@@ -245,10 +245,22 @@ console.log(a);
 console.log("Hello " + n);
 	});
 
-//===================================================
-//constructor
-function MyConstructor(a,b)
-{
+//"Стоян Стефанов. JavaScript. Шаблоны , c.96"
+var setup = function(){
+console.log( 1 );
+	return function(){
+		console.log( 2 );
+	}
+}
+
+var f1 = setup();//1
+f1();//2
+</pre>
+
+<pre>
+<h1>Конструкторы</h1>
+
+function MyConstructor(a,b){
 	this.a = a;
 	this.b = b;
 	this.sum = a + b;
@@ -264,9 +276,7 @@ function MyConstructor(a,b)
 	this.priv_method_get = function(){
 		return x + y;
 	}
-	
 }
-
 
 obj1 = new MyConstructor(2, 2);
 console.log("obj1.sum = ", obj1.sum);
@@ -289,22 +299,6 @@ MyConstructor.prototype.test_prototype = function()
 
 obj1.test_prototype();
 
-//замыкание
-// вызовом counter() увеличивается переменная уже отработавшей функции test_closure()
-// т.е. через внутреннюю функцию func() остался доступ к currentCount 
-function test_closure()
-{
-	var currentCount = 1;
-	var func = function(){
-		return currentCount++;
-	}
-	return func
-}
-var counter = test_closure();
-console.log ("counter - " + counter() );//1
-console.log ("counter - " + counter() );//2
-console.log ("counter - " + counter() );//3
-
 //===========================================================	
 function test_constructor()
 {
@@ -322,7 +316,9 @@ var test = new test_constructor();
 console.log( test.a );
 console.log( test.b );
 test.c();
-//=========================================================
+</pre>
+
+<pre>
 //переназначение функции по условию
 var filelist_url;
 function test( test_param )
@@ -352,12 +348,26 @@ var get_filelist_aspx = function(){
 
 //console.log( test("php") );
 console.log( test("aspx") );
-
 </pre>
 
 <pre>
-function makeBuffer()
-{
+<h1>замыкание</h1>
+// вызов counter(), увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount 
+function test_closure() {
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+
+function makeBuffer() {
 /*вашкод*/
 }
 
@@ -385,6 +395,7 @@ var buffer = makeBuffer();
 buffer("a"); buffer("b"); buffer("c"); 
 console.log( buffer() );  
 </pre>
+
 
 <pre>
 var test_module = function(){
