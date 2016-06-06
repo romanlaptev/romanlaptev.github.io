@@ -1,6 +1,6 @@
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
 исправить ошибку фильтрации директив шаблона: {{директива}} заменяется на
-%7B%7Bдиректива%7D%7D (ff v16-17 ???)
+%7B%7Bдиректива%7D%7D (ff v3-12 ???)
 
 
     *Сделать возможность отключения использования кэша браузера при помощи параметра config["use_localcache"] = true/false; 
