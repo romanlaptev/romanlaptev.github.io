@@ -1,0 +1,222 @@
+﻿body,html
+{
+height:100%;
+}
+
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #555;
+	font: normal 10pt Arial,Helvetica,sans-serif;
+	background: #45557A/*#196e9c*/;
+}
+
+a
+{
+text-decoration:none;
+}
+
+#main-template
+{
+	background: #cacaca;
+}
+
+#page
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	background: white;
+min-height:100%;
+	width:950px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#header
+{
+	margin: 0;
+	padding: 0;
+	border-top: 3px solid #C9E0ED;
+}
+
+#content
+{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+height:80%;
+}
+
+#sidebar
+{
+	padding: 20px 20px 20px 0;
+}
+
+#footer
+{
+	padding: 10px;
+	font-size: 0.8em;
+	text-align: center;
+	border-top: 1px solid #C9E0ED;
+	margin:0;
+	font-size: 0.8em;
+	text-align: center;
+	background:#d5dcee;
+	height:100px;
+}
+
+#logo
+{
+	padding: 10px 20px;
+	font-size: 200%;
+}
+.clear
+{
+clear:both;
+}
+
+/*-----------------------------------------*/
+#taxonomy-vocabulary
+{
+text-align:center;
+}
+#taxonomy-vocabulary .main-termin
+{
+float: left;
+list-style: none outside none;
+margin: 0;
+}
+
+#taxonomy-vocabulary #termin-31
+{
+	display:none;
+}
+
+#taxonomy-vocabulary .related-nodes .term-node ul
+{
+}
+#taxonomy-vocabulary .related-nodes .term-node li
+{
+display: inline-block;
+padding: 5px;
+}
+
+.main-termin .child-termins
+{
+background: none repeat scroll 0 0 #98FB98;
+list-style: none outside none;
+padding: 20px;
+text-align: left;
+}
+
+#nodes .child-termins
+{
+background:/*#BBD8E9*/#FECD90;
+border-radius: 10px 10px 10px 10px;
+padding-top:10px;
+padding-bottom:10px;
+  margin: 10px;
+}
+
+
+.node 
+{
+  background: #E6E6FF;
+  border-radius: 10px 10px 10px 10px;
+  margin: 10px;
+  padding: 10px;
+}
+.node h2
+{
+position: relative;
+left: 50%;
+width:50%;
+}
+
+#nodes .related-nodes .related_termins
+{
+background: none repeat scroll 0 0 #FFFFFF;
+/*border: 1px inset #FFFFFF;*/
+border-radius: 10px 10px 10px 10px;
+float: right;
+margin: 10px;
+width: 55%;
+}
+
+#nodes .term-node li
+{
+display: inline-block;
+padding: 5px;
+}
+
+.related-nodes .photo 
+{
+  float: left;
+  width: 40%;
+text-align:center;
+}
+
+
+.pager li
+{
+display:inline-block;
+}
+.pager li a
+{
+padding:5px;
+}
+.pager li b
+{
+padding:5px;
+}
+
+
+.toggle-taxonomy
+{
+float:right;
+}
+
+
+/*------------ to top ---------------*/
+.to-top {
+    display: none;
+    width: 88px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 99;
+    color: #ffffff;
+	outline:none;
+}
+.to-top:hover {
+    background: rgba(0, 0, 0, 0.2);    
+}
+.lt-ie9 .to-top {
+}
+.lt-ie9 .to-top:hover {
+}
+
+.to-top span 
+{
+display: block;
+font-size:40px;
+height:25px;
+}
+.to-top b
+{
+display: block;
+font-weight:normal;
+}
+
+.to-top span,
+.to-top b
+{
+position:relative;
+top:65%;
+}

@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'ComfortaaLight';
+    src: url('comfortaa-light.eot');
+    src: url('comfortaa-light.eot') format('embedded-opentype'),
+         url('comfortaa-light.woff2') format('woff2'),
+         url('comfortaa-light.woff') format('woff'),
+         url('comfortaa-light.ttf') format('truetype');
+}
