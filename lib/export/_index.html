@@ -1,8 +1,5 @@
-﻿<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +12,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h1>export book history engraving</h1>
+		<h1>export Lib DB</h1>
 	</div>
 
 <form name="form_export" id="export-form" action="include/export.php" method="POST" 
@@ -38,7 +35,7 @@ onSubmit="return validate();" target="_blank">
 		
 		<div class="row">
 		
-			<div class="col-md-6">
+			<div class="col-md-6 hide">
 				<h3>MySQL</h3>
 				<input type="radio" value="mysql" name="db_conn">
 				
@@ -46,22 +43,14 @@ onSubmit="return validate();" target="_blank">
 				<input type="text" name="mysqldb_user" class="form-control"  value="root" placeholder="enter user name"/>
 				<input type="password" name="mysqldb_pwd" class="form-control"  placeholder="enter password"/>
 				<input type="text" name="mysqldb_name" class="form-control"  placeholder="enter database name"/>
-<pre>
-art
-gravura
-mydb
-photoalbum
-webpad
-wp
-</pre>
 			</div>
 			
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<h3>SQLite</h3>
 				<input type="radio" value="sqlite" name="db_conn" checked="checked">
 				<input type="text" name="sqlite_path" class="form-control" 
 id="sqlitedb-name" 
-value="sqlite:/mnt/terra/clouds/Yandex.Disk/sync/sites/book_history_engraving/cms/db/gravura.sqlite"/>
+value="sqlite:/../cms/db/lib.sqlite"/>
 			</div>
 			
 		</div>
@@ -76,8 +65,8 @@ value="sqlite:/mnt/terra/clouds/Yandex.Disk/sync/sites/book_history_engraving/cm
 		</div>
 		
 <div class="form-group">
-	<label class="radio-inline"><input type="radio" name="export[format]" checked="checked" value="html" >HTML pages</label>
-	<label class="radio-inline"><input type="radio" name="export[format]" value="xml" >XML</label>
+	<label class="radio-inline"><input type="radio" name="export[format]" value="html" >HTML pages</label>
+	<label class="radio-inline"><input type="radio" name="export[format]" checked="checked" value="xml" >XML</label>
 	<label class="radio-inline"><input type="radio" name="export[format]" value="json" >JSON</label>
 	<label class="radio-inline"><input type="radio" name="export[format]" value="wxr" >WXR ( WordPress eXtended Rss export/import )</label>
 </div>
@@ -93,22 +82,32 @@ value="sqlite:/mnt/terra/clouds/Yandex.Disk/sync/sites/book_history_engraving/cm
 		
 		<div class="col-md-6">
 			<h3>File</h3>
-			<input type="radio" value="file" name="export[savein]">
+			<input type="radio" value="file" name="export[savein]"  checked="checked">
 			<input type="text" name="export[filename]" class="form-control" value="">
 			<pre>
-export_gravura.xml
+export_lib.xml
 </pre>
 		</div>
 			
 		<div class="col-md-6">
-			<h3>Folder (export in html pages)</h3>
-			<input type="radio" value="folder" name="export[savein]" checked="checked">
-			
+			<h3>Folder</h3>
+			<p class="mark">export in html pages or DB tables export in files</p>
+			<input type="radio" value="folder" name="export[savein]">
 			<input type="text" name="export[foldername]" class="form-control" value="">
 <pre>
-/mnt/terra/clouds/Yandex.Disk/sync/sites/book_history_engraving/out
-/mnt/disk2/temp/site.gravura
+./out
 </pre>
+		</div>
+		
+	</section>
+</fieldset>
+
+<fieldset>
+	<section class="panel panel-info hide">
+		<div class="panel-heading">
+			<h2>Templates:</h2>
+		</div>
+		<div class="col-md-3">
 			<label>page default template</label>
 			<input type="text" name="export[html_tpl][page]" class="form-control" value="tpl/page.tpl.html">
 			<label>picture template</label>
@@ -124,10 +123,19 @@ export_gravura.xml
 		</div>
 		
 		<label>Book title:</label>
-		<input type="text" name="export[drupal_book_to_page][book_title]" class="form-control" value="очерки истории и техники гравюры">
+		<input type="text" name="export[drupal_book_to_page][book_title]" class="form-control" value="библиотека">
 		
 		<label>SQL queries:</label>
 		<textarea rows="10" class="form-control" name="export[drupal_book_to_page][sql][get_nodes]">
+-- получить menu_links.mlid всех страниц книги 
+SELECT menu_links.mlid 
+FROM menu_links 
+WHERE menu_links.menu_name IN (
+	SELECT menu_name FROM menu_links WHERE link_title LIKE 'библиотека' AND module='book'
+) ORDER BY weight ASC;
+		</textarea>
+
+<pre>
 -- получить страницы книги
 SELECT 
 	node.title, 
@@ -156,7 +164,7 @@ WHERE book.mlid IN (
 		) 
 	AND node.type="book" ORDER BY weight ASC
 ) -- ORDER BY menu_links.weight, title ASC;
-		</textarea>
+</pre>
 		
 		<textarea rows="10" class="form-control" name="export[drupal_book_to_page][sql][get_child_pictures]">
 -- получить все страницы изображений, связанные со страницами книги
