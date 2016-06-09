@@ -2352,6 +2352,22 @@ lib/comp_books/program/android
 Google Android. Программирование для мобильных устройств
 		</bookname>
 	</node>
+	<node title="HTML5. Для профессионалов" nid="1702" mlid="2101" plid="391" type="library_book" created="08-Jun-2016 20:06:47" changed="08-Jun-2016 20:06:47" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/comp_books/program/js
+		</subfolder>
+		<author>
+Гоше Хуан Диего
+		</author>
+		<bookname>
+HTML5. Для профессионалов
+		</bookname>
+	</node>
 	<node title="MODx" nid="1504" mlid="1513" plid="1502" type="library_book" created="18-Aug-2013 16:02:42" changed="18-Aug-2013 16:02:42" weight="0">
 		<body_value>
 http://efimov.ws/main/develop/modx.html
@@ -22291,6 +22307,22 @@ lib/books/S/Semenov
 Семнадцать мгновений весны (1945)
 		</bookname>
 	</node>
+	<node title="Сила JavaScript" nid="1703" mlid="2102" plid="391" type="library_book" created="08-Jun-2016 20:14:22" changed="08-Jun-2016 20:14:22" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/comp_books/program/js
+		</subfolder>
+		<author>
+Дэвид Херман
+		</author>
+		<bookname>
+Сила JavaScript
+		</bookname>
+	</node>
 	<node title="Сквер Алексей. Забво" nid="1673" mlid="2063" plid="386" type="library_book" created="01-Jan-2016 16:48:57" changed="05-Feb-2016 20:28:58" weight="0">
 		<body_value>
 http://royallib.com/author/skver_aleksey.html
@@ -30328,6 +30360,12 @@ lib/art_books/book_history_engraving
 	<item entity_id="1701" bundle="library_book" delta="0">
 		<value>clarke_arthur_svidanie_s_ramoy.fb2</value>
 	</item>
+	<item entity_id="1702" bundle="library_book" delta="0">
+		<value>Goshe_Kh_-_HTML5_Dlya_professionalov_-_2013.pdf</value>
+	</item>
+	<item entity_id="1703" bundle="library_book" delta="0">
+		<value>dehvid-herman-sila-javascript.pdf</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -31738,6 +31776,12 @@ lib/art_books/book_history_engraving
 	<item entity_id="1699" bundle="library_book" delta="0">
 		<value>file:///mnt/terra/clouds/0_data</value>
 	</item>
+	<item entity_id="1702" bundle="library_book" delta="0">
+		<value>file:///mnt/terra/clouds/0_data</value>
+	</item>
+	<item entity_id="1703" bundle="library_book" delta="0">
+		<value>file:///mnt/terra/clouds/0_data</value>
+	</item>
 	<item entity_id="27" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
@@ -32910,6 +32954,12 @@ http://localhost#localhost, direct link
 	</item>
 	<item entity_id="1701" bundle="library_book" delta="0">
 		<value>http://www.lib.ru/KLARK/rama1.txt</value>
+	</item>
+	<item entity_id="1702" bundle="library_book" delta="0">
+		<value>https://drive.google.com/file/d/0B0l5s_9HQLzzNlgtbVFVeDV1MWs/view?usp=sharing_eid&amp;ts=57579ab3</value>
+	</item>
+	<item entity_id="1703" bundle="library_book" delta="0">
+		<value>https://drive.google.com/file/d/0B0l5s_9HQLzzc2FvYmFzZGVnVWc/view?usp=sharing_eid&amp;ts=5757d561</value>
 	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
@@ -34297,6 +34347,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1701" delta="0">
 		<termin tid="24" >научная фантастика</termin>
 	</item>
+	<item entity_id="1702" delta="0">
+		<termin tid="182" >учебная литература</termin>
+	</item>
+	<item entity_id="1703" delta="0">
+		<termin tid="182" >учебная литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35416,6 +35472,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1701" delta="1">
 		<termin tid="178" >роман</termin>
 	</item>
+	<item entity_id="1702" delta="1">
+		<termin tid="38" >компьютерная литература</termin>
+	</item>
+	<item entity_id="1703" delta="1">
+		<termin tid="38" >компьютерная литература</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36319,6 +36381,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1701" delta="2">
 		<termin tid="185" >fb2</termin>
 	</item>
+	<item entity_id="1702" delta="2">
+		<termin tid="100" >javascript</termin>
+	</item>
+	<item entity_id="1703" delta="2">
+		<termin tid="100" >javascript</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -36849,6 +36917,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1689" delta="3">
 		<termin tid="14" >исторический роман, рассказ</termin>
+	</item>
+	<item entity_id="1702" delta="3">
+		<termin tid="69" >pdf</termin>
+	</item>
+	<item entity_id="1703" delta="3">
+		<termin tid="69" >pdf</termin>
 	</item>
 	<item entity_id="224" delta="4">
 		<termin tid="4" >приключения</termin>
@@ -37831,6 +37905,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1701" delta="0">
 		<termin tid="119" >C</termin>
 	</item>
+	<item entity_id="1702" delta="0">
+		<termin tid="123" >G</termin>
+	</item>
+	<item entity_id="1703" delta="0">
+		<termin tid="120" >D</termin>
+	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
 	</item>
@@ -38401,6 +38481,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1701" delta="1">
 		<termin tid="139" >А</termin>
 	</item>
+	<item entity_id="1702" delta="1">
+		<termin tid="142" >Г</termin>
+	</item>
+	<item entity_id="1703" delta="1">
+		<termin tid="124" >H</termin>
+	</item>
 	<item entity_id="137" delta="2">
 		<termin tid="156" >С</termin>
 	</item>
@@ -38613,6 +38699,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1701" delta="2">
 		<termin tid="149" >К</termin>
+	</item>
+	<item entity_id="1703" delta="2">
+		<termin tid="160" >Х</termin>
 	</item>
 	<item entity_id="137" delta="3">
 		<termin tid="159" >Ф</termin>
@@ -43258,6 +43347,36 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1701" tid="149">
 	</item>
 	<item nid="1701" tid="155">
+	</item>
+	<item nid="1702" tid="182">
+	</item>
+	<item nid="1702" tid="38">
+	</item>
+	<item nid="1702" tid="100">
+	</item>
+	<item nid="1702" tid="69">
+	</item>
+	<item nid="1702" tid="123">
+	</item>
+	<item nid="1702" tid="142">
+	</item>
+	<item nid="1702" tid="192">
+	</item>
+	<item nid="1703" tid="182">
+	</item>
+	<item nid="1703" tid="38">
+	</item>
+	<item nid="1703" tid="100">
+	</item>
+	<item nid="1703" tid="69">
+	</item>
+	<item nid="1703" tid="120">
+	</item>
+	<item nid="1703" tid="124">
+	</item>
+	<item nid="1703" tid="160">
+	</item>
+	<item nid="1703" tid="192">
 	</item>
 </table_taxonomy_index>
 
