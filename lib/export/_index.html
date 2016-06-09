@@ -35,7 +35,7 @@ onSubmit="return validate();" target="_blank">
 		
 		<div class="row">
 		
-			<div class="col-md-6 hide">
+			<div class="col-md-6">
 				<h3>MySQL</h3>
 				<input type="radio" value="mysql" name="db_conn">
 				
@@ -45,7 +45,7 @@ onSubmit="return validate();" target="_blank">
 				<input type="text" name="mysqldb_name" class="form-control"  placeholder="enter database name"/>
 			</div>
 			
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<h3>SQLite</h3>
 				<input type="radio" value="sqlite" name="db_conn" checked="checked">
 				<input type="text" name="sqlite_path" class="form-control" 
@@ -166,7 +166,7 @@ WHERE book.mlid IN (
 ) -- ORDER BY menu_links.weight, title ASC;
 </pre>
 		
-		<textarea rows="10" class="form-control" name="export[drupal_book_to_page][sql][get_child_pictures]">
+		<pre>
 -- получить все страницы изображений, связанные со страницами книги
 SELECT 
 	-- menu_links.mlid,  
@@ -188,18 +188,18 @@ IN (
 	SELECT menu_name FROM menu_links WHERE link_title LIKE 'очерки истории и техники гравюры' AND module='book'
 	) 
 AND node.type="picture_page" 
-		</textarea>
+		</pre>
 		
-		<textarea rows="10" class="form-control" name="export[drupal_book_to_page][sql][get_child_pictures_info]">
+		<pre>
 -- получить данные об  изображениях
 SELECT 
 	entity_id as picture_page_nid,  
 	-- delta,
 	field_picture_info_value as picture_info
 FROM field_data_field_picture_info 
-		</textarea>
+		</pre>
 		
-		<textarea rows="10" class="form-control" name="export[drupal_book_to_page][sql][get_child_pictures_termins]">
+		<pre>
 -- получить термины страниц изображений
 SELECT 
 	-- menu_links.mlid,  
@@ -226,7 +226,7 @@ IN (
 	SELECT menu_name FROM menu_links WHERE link_title LIKE 'очерки истории и техники гравюры' AND module='book'
 	) 
 AND node.type="picture_page"
-		</textarea>
+		</pre>
 
 		<pre name="export[drupal_book_to_page][sql][get_node_termins]">
 -- получить связанные со страницей термины таксономии
