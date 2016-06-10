@@ -133,6 +133,109 @@ FROM menu_links
 WHERE menu_links.menu_name IN (
 	SELECT menu_name FROM menu_links WHERE link_title LIKE 'библиотека' AND module='book'
 ) ORDER BY weight ASC;
+
+
+-- получить страницы книги
+SELECT 
+book.mlid, 
+book.nid, 
+menu_links.plid, 
+node.nid, 
+node.type, 
+node.created, 
+node.changed, 
+node.title, 
+field_data_body.body_value, 
+field_data_field_subfolder.field_subfolder_value, 
+field_data_field_book_author.field_book_author_value, 
+field_data_field_book_name.field_book_name_value, 
+menu_links.weight 
+-- file_managed.filename
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+-- LEFT JOIN file_usage ON file_usage.id=node.nid 
+-- LEFT JOIN file_managed ON file_managed.fid=file_usage.fid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid 
+LEFT JOIN field_data_field_subfolder ON field_data_field_subfolder.entity_id=node.nid 
+LEFT JOIN field_data_field_book_author ON field_data_field_book_author.entity_id=node.nid 
+LEFT JOIN field_data_field_book_name ON field_data_field_book_name.entity_id=node.nid 
+WHERE book.mlid in (".$sql_mlid.") ORDER BY menu_links.weight,title ASC
+
+-- получить имена связанных файлов книг
+SELECT 
+field_data_field_book_filename.entity_id,
+field_data_field_book_filename.bundle,
+field_data_field_book_filename.field_book_filename_value,
+field_data_field_book_filename.delta
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_book_filename ON field_data_field_book_filename.entity_id=node.nid
+WHERE book.mlid in (".$sql_mlid.") ORDER BY field_data_field_book_filename.delta ASC
+
+-- получить ссылки связанных файлов книг
+SELECT 
+field_data_field_url.entity_id,
+field_data_field_url.entity_type,
+field_data_field_url.bundle,
+field_data_field_url.delta,
+field_data_field_url.field_url_value
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE book.mlid in (".$sql_mlid.") ORDER BY field_data_field_url.delta ASC
+
+-- 2.получить ссылки связанных файлов книг
+SELECT 
+field_data_field_links.entity_id,
+field_data_field_links.entity_type,
+field_data_field_links.bundle,
+field_data_field_links.delta,
+field_data_field_links.field_links_value
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_links ON field_data_field_links.entity_id=node.nid
+WHERE book.mlid in (".$sql_mlid.") ORDER BY field_data_field_links.delta ASC
+
+-- получить связанные с книгами термины таксономии
+SELECT 
+field_data_field_taxonomy.entity_id,
+field_data_field_taxonomy.entity_type,
+field_data_field_taxonomy.bundle,
+field_data_field_taxonomy.delta,
+field_data_field_taxonomy.field_taxonomy_tid,
+taxonomy_term_data.name
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_taxonomy ON field_data_field_taxonomy.entity_id=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy.field_taxonomy_tid
+WHERE book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy.delta ASC
+
+-- получить связанные с книгами термины таксономии
+SELECT 
+field_data_field_taxonomy_alpha.entity_id,
+field_data_field_taxonomy_alpha.entity_type,
+field_data_field_taxonomy_alpha.bundle,
+field_data_field_taxonomy_alpha.delta,
+field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid,
+taxonomy_term_data.name
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_taxonomy_alpha ON field_data_field_taxonomy_alpha.entity_id=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid
+WHERE book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy_alpha.delta ASC
+
+
+-- получить все термины таксономии
+SELECT nid,tid FROM taxonomy_index
+SELECT tid,vid,name,description,weight FROM taxonomy_term_data
+SELECT tid,parent FROM taxonomy_term_hierarchy
+SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary
 		</textarea>
 
 <pre>
