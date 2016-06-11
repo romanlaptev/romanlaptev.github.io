@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>highslid gallery</title>
+	<link rel="stylesheet" type="text/css" href="../css/highslide_gallery.css" />
+<!--[if lte IE 8]>
+	<link rel=stylesheet href="../css/highslide_gallery_fix-ie.css" type=text/css>
+<![endif]-->
+
+<!-- ===============highslide================= -->
+<link rel="stylesheet" type="text/css" href="../js/highslide/highslide.css" />
+<script type="text/javascript" src="../js/highslide/highslide.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
+
+<script type="text/javascript">
+	// Open the first thumb on page load
+/*
+	hs.addEventListener(window, 'load', function() {
+		document.getElementById('img001').onclick();
+	});
+*/
+</script>
+<!-- ======================================= -->
+
+<script>
+function preview_img(id)
+{
+//alert (img_src);
+	var preview_img = document.getElementById('preview_img'); //получить слой для вывода увеличенной картинки
+	var prep_img = document.getElementById(id); //Получить слой с подготовленной картинкой по id слоя
+//alert (prep_img.outerHTML);
+//alert (prep_img.textContent); // не работает в IE
+//alert (prep_img.firstChild.nodeValue); // совместимо с IE
+
+	//var childrens = prep_img.childNodes;
+	//var preview_img_html = childrens.item(1).outerHTML;
+	var preview_img_html = prep_img.getElementsByTagName('div')[0].outerHTML;//получить код подготовленной картинки
+//alert (preview_img_html);
+	preview_img.innerHTML = preview_img_html; // вставить подготовленную картинку в слой preview_img
+//---------------------------------------------------------------------------------------------
+	var preview_img_caption = document.getElementById('preview_img_caption'); //получить слой описания под картинкой
+//alert (preview_img_caption);
+
+//	var enlarge_links = childrens.item(3).outerHTML;
+	var enlarge_links = prep_img.getElementsByTagName('div')[1].outerHTML;
+//alert (enlarge_links);
+	preview_img_caption.innerHTML = enlarge_links;//Занести highslide-ссылки картинки в слой preview_img_caption
+//---------------------------------------------------------------------------------------------
+	var img_description = prep_img.firstChild.nodeValue;
+	preview_img_caption.innerHTML += img_description; //Занести описание картинки в слой preview_img_caption
+
+
+}
+</script>
+<noscript>
+	<font color="red"><b>not javascript support</b></font>
+<!--
+	<meta http-equiv="refresh" content="0;URL=no_js/index.html">
+-->
+</noscript>
+
+<style>
+</style>
+</head>
+
+<body onload="preview_img('img001');">
+
+<div id="square">
+
+	<div id="p7">
+		<div id="top_arrow">
+			<div class="top-corner-left"></div>
+			<div class="top-corner-right"></div>
+		</div>
+		<div id="top_box1"></div>
+		<div id="top_box2"></div>
+	</div><!-- end p7 -->
+
+	<div id="p0">
+		<div id="left_arrow">
+			<div class="left-corner-top"></div>
+			<div class="left-corner-bottom"></div>
+		</div>
+		<div id="left_box1"></div>
+		<div id="left_box2"></div>
+	</div><!-- end p0 -->
+
+	<div id="p1"></div>
+
+	<div id="p2">
+		<div id="title">Иллюстрации Ивана Билибина</div>
+	</div>
+
+	<div id="p3">
+
+	<div id="thumb_col">
+		<a href="index.html"><div class="up_arrow"></div></a>
+<!--		<div class="up_arrow"><a href="page02.html"></a></div>-->
+
+		<div id="thumb_img">
+		<div class="picture">
+			<a href="#"><img src="/site-content/authors/gallery_Bilibin/w120/Ivan%20Bilibin,%20Rusalka,%201934.jpg" onClick="preview_img('img001');"/></a>
+			<div id="img001" class="img_info">Ivan Bilibin, Rusalka, 1934
+				<div><!-- img for layer preview_img -->
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/Ivan_Bilibin_Rusalka_1934.jpg">					
+						<img name="" src="/site-content/authors/gallery_Bilibin/w600/Ivan_Bilibin_Rusalka_1934.jpg" alt=""/>
+					</a>
+				</div>
+				<div><!-- html for layer preview_img_caption -->
+					Click to enlarge: 
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w300/Ivan_Bilibin_Rusalka_1934.jpg">2x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w600/Ivan_Bilibin_Rusalka_1934.jpg">3x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/Ivan_Bilibin_Rusalka_1934.jpg">4x</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="picture">
+			<a href="#"><img src="/site-content/authors/gallery_Bilibin/w120/1.jpg" onClick="preview_img('img002');"/></a>
+			<div id="img002" class="img_info">
+				<div><!-- img for layer preview_img -->
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/1.jpg">					
+						<img name="" src="/site-content/authors/gallery_Bilibin/w600/1.jpg" alt=""/>
+					</a>
+				</div>
+				<div><!-- html for layer preview_img_caption -->
+					Click to enlarge: 
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w300/1.jpg">2x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w600/I1.jpg">3x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/1.jpg">4x</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="picture">
+			<a href="#"><img src="/site-content/authors/gallery_Bilibin/w120/2.jpg" onClick="preview_img('img003');"/></a>
+			<div id="img003" class="img_info">
+				<div><!-- img for layer preview_img -->
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/2.jpg">					
+						<img name="" src="/site-content/authors/gallery_Bilibin/w600/2.jpg" alt=""/>
+					</a>
+				</div>
+				<div><!-- html for layer preview_img_caption -->
+					Click to enlarge: 
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w300/2.jpg">2x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w600/2.jpg">3x</a>
+					<a class="highslide" onclick="return hs.expand(this)" href="/site-content/authors/gallery_Bilibin/w1024/2.jpg">4x</a>
+				</div>
+			</div>
+		</div>
+
+		</div><!-- end of thumb_img -->
+
+		<a href="page02.html"><div class="down_arrow"></div></a>
+	</div><!-- end of thumb_col -->
+
+	</div><!-- end p3 -->
+
+	<div id="p4">
+		<div class="img_area">
+			<div class="pager">страницы: 
+				<a href="page-01.html">1</a>
+				<a href="page-02.html">2</a>
+				<a href="page-03.html">3</a>
+				<a href="page-04.html">4</a>
+			<a href="../">home</a>
+<a href="../">home</a>
+			</div>
+			<div id="preview_img">
+				<img name="img_preview" src="" alt=""/>
+			</div>
+			<div id="preview_img_caption">	</div>
+		</div><!-- end img_area -->
+	</div><!-- end p4 -->
+
+
+	<div id="p5">
+		<div id="right_box2"></div>
+		<div id="right_box1"></div>
+		<div id="right_arrow">
+			<div class="right-corner-top"></div>
+			<div class="right-corner-bottom"></div>
+		</div>
+		<div class="more_links">
+				Также:<br>
+					<a href="page02.html">Графика Альфонса Мухи</a><br>
+					<a href="page02.html">Иллюстрации Обри Бердслея</a><br>
+					<a href="page02.html">Густав Климт</a><br>
+		</div>
+	</div><!-- end p5 -->
+
+	<div id="p6">
+		<div id="bottom_box"></div>
+	</div><!-- end p6 -->
+
+</div>
+
+
+</body>
+</html>

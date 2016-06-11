@@ -1,0 +1,2349 @@
+<html><head>
+
+<title>Создание flash mp3 плеера с плей-листом (xml) » Мир технологии 
+flash. Флеш игры, исходники, примеры, статьи, уроки, советы.</title>
+<meta http-equiv="Content-Type" content="text/html; 
+charset=windows-1251">
+<meta name="keywords" content="flash mp3 плеер, скачать исходник mp3 
+плеер плейлист xml, flash mp3 плеер с плейлистом скачать исходник 
+бесплатно, урок по созданию mp3 плеера на сайт actionscript 2">
+<meta name="description" content="Урок по созданию flash mp3 плеера с 
+плейлистом (xml), скачать бесплатно flash xml mp3 плеер с исходником">
+
+<link rel="search" type="application/opensearchdescription+xml" 
+href="http://flash-world.ru/engine/opensearch.php" title="Мир технологии
+ flash. Флеш игры, исходники, примеры, статьи, уроки, советы.">
+<link rel="icon" href="http://flash-world.ru/favicon.ico" 
+type="image/x-icon">
+<link rel="shortcut icon" href="http://flash-world.ru/favicon.ico" 
+type="image/x-icon">
+<style type="text/css" media="all">
+@import url(/templates/Simple/css/style.css);
+</style>
+<style type="text/css" media="all">
+@import url(/templates/Simple/css/engine.css);
+</style>
+
+<!-- Put this script tag to the <head> of your page -->
+<script type="text/javascript" src="53-flash_mp3_player_xml_playlist_files/openapi.js"></script>
+</head><body>
+<script language="javascript" type="text/javascript">
+<!--
+var dle_root       = '/';
+var dle_admin      = '';
+var dle_login_hash = '';
+var dle_skin       = 'Simple';
+var dle_wysiwyg    = 'no';
+var quick_wysiwyg  = '0';
+var menu_short     = 'Быстрое редактирование';
+var menu_full      = 'Полное редактирование';
+var menu_profile   = 'Просмотр профиля';
+var menu_fnews     = 'Найти все публикации';
+var menu_fcomments = 'Найти все комментарии';
+var menu_send      = 'Отправить сообщение';
+var menu_uedit     = 'Админцентр';
+var dle_req_field  = 'Заполните все необходимые поля';
+var dle_del_agree  = 'Вы действительно хотите удалить? Данное действие невозможно будет отменить';
+var dle_del_news   = 'Удалить новость';
+var allow_dle_delete_news   = false;
+//-->
+</script>
+<script type="text/javascript" src="53-flash_mp3_player_xml_playlist_files/menu.js"></script><div
+ id="dropmenudiv" style="visibility: hidden; position: absolute; 
+z-index: 100; width: 165px;" onmouseover="clearhidemenu()" 
+onmouseout="dynamichide(event)"></div>
+<script type="text/javascript" src="53-flash_mp3_player_xml_playlist_files/dle_ajax.js"></script>
+<div id="loading-layer" style="display: none; font-family: Verdana; 
+font-size: 11px; width: 200px; height: 50px; background: none repeat 
+scroll 0% 0% rgb(255, 255, 255); padding: 10px; text-align: center; 
+border: 1px solid rgb(0, 0, 0);"><div style="font-weight: bold;" 
+id="loading-layer-text">Загрузка. Пожалуйста, подождите...</div><br><img
+ src="53-flash_mp3_player_xml_playlist_files/loading.gif" alt="" 
+border="0"></div>
+<div id="busy_layer" style="visibility: hidden; display: block; 
+position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; 
+background-color: gray; opacity: 0.1;"></div>
+<script type="text/javascript" src="53-flash_mp3_player_xml_playlist_files/js_edit.js"></script>
+
+
+<table width="100%" align="center">
+<tbody><tr valign="top">
+<!-- дальше всё, что будет скроллиться -->
+<td width="220"><div style="position: fixed;">
+<table width="220">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/ltdt.png" height="50" 
+width="5" border="0"></td>
+        <td class="ltitle" valign="top" align="middle" 
+background="53-flash_mp3_player_xml_playlist_files/bgtdt.png">Разделы 
+сайта</td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/rtdt.png" height="50" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+
+ <td class="stext">
+<a href="http://flash-world.ru/flash_tutorial/"><img 
+src="53-flash_mp3_player_xml_playlist_files/tutorial_act.jpg" alt="Флеш 
+примеры и уроки" height="55" width="210" border="0"></a>
+<a href="http://flash-world.ru/skachat-flash-ishodniki/"><img 
+src="53-flash_mp3_player_xml_playlist_files/flash_sourses.jpg" alt="Флеш
+ исходники" height="55" width="210" border="0"></a>
+<a 
+href="http://flash-world.ru/skachat_download_flash_games_and_sourses/"><img
+ src="53-flash_mp3_player_xml_playlist_files/game_sourses.jpg" 
+alt="Скачать флеш игры с исходниками" height="55" width="210" border="0"></a>
+<a href="http://flash-world.ru/skachat_flash_sites/"><img 
+src="53-flash_mp3_player_xml_playlist_files/site_sourses.jpg" 
+alt="Исходники флеш сайтов, скачать шаблоны flash сайты" height="55" 
+width="210" border="0"></a>
+<a href="http://flash-world.ru/flash_protection/"><img 
+src="53-flash_mp3_player_xml_playlist_files/flash_protection.jpg" 
+alt="Флеш исходники, защита flash от декомпиляторов и декомпиляции, 
+защитить flash от кражи" height="55" width="210" border="0"></a>
+<a href="http://flash-world.ru/raznoe/"><img 
+src="53-flash_mp3_player_xml_playlist_files/other.jpg" alt="Разное. 
+Статьи flash уроки софт исходники" height="55" width="210" border="0"></a>
+ 
+<br><br>
+<div style="padding-left: 30px;"><a href="http://flash-world.ru/">Главная</a><br>
+<a href="http://flash-world.ru/index.php?do=search">Поиск по сайту</a><br>
+<a href="http://flash-world.ru/actionscript-3/">Справочник actionscript 3</a><br>
+<a href="http://flash-world.ru/index.php?do=feedback">Обратная связь</a><br>
+<a href="http://flash-world.ru/information">Полезная информация</a>
+
+
+
+<br>
+<br>
+
+
+
+<br>
+
+</div>
+<div align="center">
+<noindex>
+<script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t14.7;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число просмотров за 24"+
+" часа, посетителей за 24 часа и за сегодня' "+
+"border='0' width='88' height='31'><\/a>")
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img
+ src="53-flash_mp3_player_xml_playlist_files/hit.gif" alt="" 
+title="LiveInternet: показано число просмотров за 24 часа, посетителей 
+за 24 часа и за сегодня" height="31" width="88" border="0"></a>
+		
+&nbsp; &nbsp;
+<a href="http://www.i.ua/" target="_blank" 
+onclick="this.href='http://i.ua/r.php?44211';" title="Rated by I.UA">
+<script type="text/javascript" language="javascript"><!--
+iS='<img src="http://r.i.ua/s?u44211&p173&n'+Math.random();
+iD=document;iD.cookie="iua=1";if(iD.cookie)iS+='&c1';
+iS+='&d'+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)
++"&w"+screen.width+'&h'+screen.height;
+iT=iD.referrer.slice(7);iH=window.location.href.slice(7);
+((iI=iT.indexOf('/'))!=-1)?(iT=iT.substring(0,iI)):(iI=iT.length);
+if(iT!=iH.substring(0,iI))iS+='&f'+escape(iD.referrer.slice(7));
+iS+='&r'+escape(iH);
+iD.write(iS+'" border="0" width="88" height="31" />');
+//--></script><img src="53-flash_mp3_player_xml_playlist_files/s.png" 
+height="31" width="88" border="0"></a>
+</noindex>
+</div>
+</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+      </tr>
+    <tr>
+        <td><img src="53-flash_mp3_player_xml_playlist_files/ltdb.png" 
+height="10" width="5" border="0"></td>
+        <td 
+background="53-flash_mp3_player_xml_playlist_files/tdbbg.png"><img 
+src="53-flash_mp3_player_xml_playlist_files/tdbbg.png" height="10" 
+width="1" border="0"></td>
+        <td><img src="53-flash_mp3_player_xml_playlist_files/rtdb.png" 
+height="10" width="5" border="0"></td>
+    </tr>
+
+
+
+
+
+		<tr><td align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mainbg.gif">
+			</td>
+    </tr>
+</tbody></table>
+
+
+</div>
+</td>
+        <td width="9" 
+background="53-flash_mp3_player_xml_playlist_files/linie.gif"><img 
+src="53-flash_mp3_player_xml_playlist_files/linie.gif" height="18" 
+width="9" border="0"></td>
+        <td valign="top">
+<div align="right"><a href="http://flash-world.ru/"><img 
+src="53-flash_mp3_player_xml_playlist_files/head.jpg" alt="Скачать флеш 
+исходники уроки примеры flash игры с исходниками" height="150" 
+width="600" border="0"></a></div>
+<br>
+<div id="dle-info"></div>
+<div id="dle-content">
+
+<table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdl.png" height="50" 
+width="5" border="0"></td>
+        <td class="ntitle" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbg.png">Создание 
+flash mp3 плеера с плей-листом (xml)</td>
+        <td class="category" valign="top" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbg.png"><a 
+href="http://flash-world.ru/flash_tutorial/">Флеш примеры и уроки</a></td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdr.png" height="50" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+        <td class="news" colspan="2" valign="top"><div id="news-id-53">Перед
+ вами урок по созданию flash mp3 плеера с плейлистом (xml), который 
+можно поставить себе на сайт. Урок будет полезен начинающим 
+программировать на actionscript 2, так как мы будем учиться разбирать 
+xml формат данных и работать с классом Sound.<br>Скорее всего, вы уже 
+много раз встречали на сайтах подобные mp3 плееры, позволяющие 
+прослушать песню прямо на сайте, не скачивая её к себе на компьютер (так
+ называемой, потоковое воспроизведение). Сейчас мы с вами сделаем сами 
+такой флеш mp3 плеер (flash actionscript 2), который вы сможете 
+установить на свой сайт. Если вдруг у вас что-то не получится, вы можете
+ бесплатно скачать исходник flash mp3 плеера, который я сделал для 
+примера. Наш плеер будет брать плейлист из внешнего .xml файла, то есть 
+количество треков не является фиксированным и ничем не ограничено.<br>В 
+нашей флешке – mp3 плеере будет всего два кадра: первый – пустой, второй
+ – сам плеер. Пока не загрузится xml файл с плейлистом, флешку будет 
+стоять на первом кадре. В первый кадр пишем код:<br><!--code1--><div 
+class="scriptcode"><!--ecode1-->// для того, чтобы флешка не 
+масштабировалась при изменении размеров<br>Stage.scaleMode = 'noScale';<br>//
+ для того, чтобы флешка могла работать с кириллическими символами<br>System.useCodepage
+ = false;<br>// останавливаем флешку на первом кадре,<br>// и ждём пока 
+загрузится xml <br>// после загрузки переводим нашу флешку на второй 
+кадр,<br>// с нашим mp3 плеером<br>stop();<br>playlist = new XML();<br>playlist.ignoreWhite
+ = true;<br>playlist.onLoad = function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;_root.gotoAndStop(2);<br>}<br><br>playlist.load("playlist.xml");<!--code2--></div><!--ecode2--><br>Теперь
+ переходим на второй кадр и начинаем делать все функциональные элементы 
+плеера: кнопки и список воспроизведения. Плеер, который я сделал для 
+примера, не отличается шикарным дизайном, ещё раз повторюсь, это только 
+пример  <img style="border: medium none;" alt="smile" 
+src="53-flash_mp3_player_xml_playlist_files/smile.gif" align="absmiddle">
+ <br><div align="center"><img 
+src="53-flash_mp3_player_xml_playlist_files/mp3_xml_player.JPG" 
+style="border: medium none;" alt="Создание flash mp3 плеера с 
+плей-листом (xml)" title="Создание flash mp3 плеера с плей-листом (xml)"></div><br>Названия
+ (instance name) мувиклипов:<br><b>play_but</b> – кнопка play;<br><b>pause_but</b>
+ – кнопка pause. Она находится точно под кнопкой play.<br><b>stop_but</b>
+ – кнопка stop;<br><b>scroll</b> – клип со скроллером (полосой 
+прокрутки) для списка воспроизведения (плейлиста). В нём находится 
+горизонтальная линия, а также сам бегунок, его instance name – <b>bar</b>;<br>Клип
+ – список воспроизведения называется <b>pl</b>. В нём находятся рамка, 
+пустой клип-контейнер (container), маска для него (<b>m</b>), такого же 
+размера, как и рамка;<br><b>vol</b> – регулятор громкости. Внутри него –
+ горизонтальная линия-подложка и линия другого цвета (<b>bar</b>), 
+которая будет показывать уровень громкости;<br><b>position</b> – 
+отображение прогресса загрузки и воспроизведения. На самом нижнем слое 
+находится подложка, выше – линия другого цвета (<b>mp3_load</b>), 
+отображающая загрузку mp3 трека, ещё выше – линия, показывающая позицию 
+воспроизведения (<b>bar</b>).<br>В самом верху есть динамическое 
+текстовое поле (var = <b>song</b>), которое показывает название играющей
+ песни.<br>Также необходимо сделать клип – элемент плейлиста. В моём 
+примере он устроен так: в самом низу находится клип fon (как бы картинка
+ – подложка), в нём есть три кадра, которые будут сменяться при 
+наведении мыши и выборе песни (первый кадр – неактивное состояние, 
+второй – при наведении мыши, третий – если играет эта песня), в первом 
+кадре этого клипа висит <br><!--code1--><div class="scriptcode"><!--ecode1-->stop();<!--code2--></div><!--ecode2--><br>Над
+ клипом <b>fon</b> находятся два текстовых поля, для отображения 
+названия песни и длительности (var <b>label</b> и <b>time</b>). Клипу – 
+элементу плейлиста нужно дать идентификатор экспорта item. В его первом 
+(и единственном) кадре находится код:<br><!--code1--><div 
+class="scriptcode"><!--ecode1-->// делаем обработчики кликов на xml 
+плейлист (выбор песни)<br>// а также смену фона при наведении/уходе 
+курсора с элемента списка воспроизведения<br>// При наведении на пункт:<br>fon.onRollOver
+ = function () {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(_root.isPlaying != i) { // если сейчас играет не эта песня,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fon.gotoAndStop(2);
+ // то переводим мувилип fon на второй кадр<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>//
+ При уведении курсора и при отпускании кнопки мыши вне пункта списка<br>fon.onRollOut
+ = fon.onReleaseOutside = function () {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if
+ (_root.isPlaying != i) {// если сейчас играет не эта песня,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fon.gotoAndStop(1);//
+ то переводим мувилип fon обратно на первый кадр<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br>fon.onRelease
+ = function() {<br>// playSong &amp;#8211; функция, при вызове которой 
+будет проигрываться песня номер i<br>&nbsp;&nbsp;&nbsp;&nbsp;_root.playSong(i);<br>}<!--code2--></div><!--ecode2--><br>Для
+ того, чтобы проверять наш плеер, создадим xml плейлист (playlist.xml) в
+ одной папке с нашим mp3 плеером. Его содержание должно быть примерно 
+таким:<br><!--code1--><div class="scriptcode"><!--ecode1-->&lt;data&gt;<br>&lt;item
+ url="1.mp3" label="Stigmata &amp;#8211; Цена твоей жизни" time ="3:31" 
+/&gt;<br>&lt;item url="2.mp3" label="Mushroomhead - These Filthy Hands" 
+time ="5:23" /&gt;<br>&lt;item url="3.mp3" label="###### - Мёртвые тела"
+ time ="4:13" /&gt;<br>&lt;item url="4.mp3" label="Bullet For My 
+Valentine - Waking the demon" time ="4:14" /&gt;<br>&lt;item url="5.mp3"
+ label="Slipknot - Psychosocial " time ="4:43" /&gt;<br>&lt;/data&gt;<!--code2--></div><!--ecode2--><br>Атрибут
+ url хранит ссылку на mp3 файл, label – название трека, time – время 
+(продолжительность) песни.<br>Переходим на временную диаграмму, во 
+второй кадр вставляем код (комментарии по ходу):<br><!--code1--><div 
+class="scriptcode"><!--ecode1-->// инициализация<br>yy = 5; // размещать
+ элементы плейлиста будем от 5<br>dif = 3; // расстояние по высоте между
+ элементами в списке<br>url = []; // массив для хранения ссылок на песни<br>//
+ перебираем все элементы xml файла плей-листа нашего mp3 плеера<br>for 
+(i=0; i&lt;playlist.firstChild.childNodes.length; i++) {<br>&nbsp;&nbsp;&nbsp;&nbsp;mc
+ = _root.pl.container.attachMovie('item', 'item'+i, i);<br>&nbsp;&nbsp;&nbsp;&nbsp;//
+ в список воспрозведения из библиотеки добавляем мувиклип item <br>&nbsp;&nbsp;&nbsp;&nbsp;mc._x
+ = 5; // немного сдвигаем его по оси _x<br>&nbsp;&nbsp;&nbsp;&nbsp;mc._y
+ = yy; // назначаем новую координату по _y<br>&nbsp;&nbsp;&nbsp;&nbsp;yy
+ += mc._height+dif; // считаем координаты для следующего элемента 
+плей-листа<br>&nbsp;&nbsp;&nbsp;&nbsp;dataHolder = 
+playlist.firstChild.childNodes[i];<br>// в каждый элемет плейлиста 
+(списка) пишем несколько переменных:<br>&nbsp;&nbsp;&nbsp;&nbsp;mc.label
+ = dataHolder.attributes.label; // название песни<br>&nbsp;&nbsp;&nbsp;&nbsp;mc.time
+ = dataHolder.attributes.time; // время звучания песни<br>&nbsp;&nbsp;&nbsp;&nbsp;mc.i
+ = i; // в каждый пункт списка пишем его номер<br>&nbsp;&nbsp;&nbsp;&nbsp;mc.playing
+ = false; // значит, что текущая песня не является выбраной в данный 
+момент<br>&nbsp;&nbsp;&nbsp;&nbsp;url[i] = dataHolder.attributes.url; //
+ заносим ссылку на mp3 файл в массив<br>}<br>///////////////////////////<br>//
+ для того, чтобы текст в динамических полях отображался, маску нужно 
+применять программно.<br>pl.container.setMask(pl.m);// что мы и делаем 
+=)<br>// если список умещается в контейнер, то полоса прокрутки 
+(скроллер) нам не нужен.<br>if (pl.container._height &lt; pl.m._height) {
+ // проверяем<br>&nbsp;&nbsp;&nbsp;&nbsp;scroll._visible = false; // 
+если это так, скрываем скроллер<br>}<br><br>// если скроллер нам 
+всё-таки нужен<br>// при нажатии на ползунок<br>scroll.bar.onPress = 
+function() {<br>// начинаем его перетаскивать от самого верху (0) до 
+низа-выоста ползунка<br>&nbsp;&nbsp;&nbsp;&nbsp;scroll.bar.startDrag(false,
+ 4, 0, 4, scroll._height-scroll.bar._height);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scroll.onMouseMove
+ = function () { // при движении курсора<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+ двигаем контейнер со списком воспроизведения на нужное расстояние<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pl.container._y
+ = 0-((pl.container._height-pl.m._height+10) * scroll.bar._y / 
+(scroll._height-scroll.bar._height));<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>//
+ когда пользователь отпускает кнопку мыши, нужно остановить движение 
+ползунка<br>scroll.bar.onRelease = scroll.bar.onReleaseOutside = 
+function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;scroll.bar.stopDrag();<br>}<br><br>////////////////<br><br>isPlaying
+ = null; // изначально при заходе на страницу песня у нас не играет<br>//////////////////////<br>//
+ функция playSong принимает номер песни, которую нужно играть как 
+параметр<br>//////////////////////////<br>function playSong(mp3) {<br>&nbsp;&nbsp;&nbsp;&nbsp;sound
+ = new Sound(); // создаём новый обьект класса Sound<br>&nbsp;&nbsp;&nbsp;&nbsp;sound.loadSound(url[mp3],
+ true); // вызываем метод loadSound <br>&nbsp;&nbsp;&nbsp;&nbsp;// 
+первый параметр - ссылка, откуда нужно грузить mp3 трек (берётся из 
+массива url)), <br>&nbsp;&nbsp;&nbsp;&nbsp;// второй параметр означает, 
+что можно проигрывать звук, не дожидаясь его полной загрузки<br>&nbsp;&nbsp;&nbsp;&nbsp;//
+ (потоковое воспроизведение)<br>&nbsp;&nbsp;&nbsp;&nbsp;// нужно 
+"выделить" пункт, который сейчас играет<br>&nbsp;&nbsp;&nbsp;&nbsp;pl.container['item'+mp3].fon.gotoAndStop(3);<br>&nbsp;&nbsp;&nbsp;&nbsp;//
+ также нужно перевести в неактивное состяние пункт списка, который играл
+ до этого<br>&nbsp;&nbsp;&nbsp;&nbsp;pl.container['item'+isPlaying].fon.gotoAndStop(1);<br>&nbsp;&nbsp;&nbsp;&nbsp;//
+ isPlaying - номер песни, котора сейчас играет, переопределяем её<br>&nbsp;&nbsp;&nbsp;&nbsp;isPlaying
+ = mp3;<br>&nbsp;&nbsp;&nbsp;&nbsp;// song - навзвание mp3 трека вверху<br>&nbsp;&nbsp;&nbsp;&nbsp;song
+ = pl.container['item'+isPlaying].label;<br>&nbsp;&nbsp;&nbsp;&nbsp;// 
+скрываем кнопку play, показываем кнопки pause и stop<br>&nbsp;&nbsp;&nbsp;&nbsp;play_but._visible
+ = false;<br>&nbsp;&nbsp;&nbsp;&nbsp;pause_but._visible = true;<br>&nbsp;&nbsp;&nbsp;&nbsp;stop_but._visible
+ = true;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>// ставим шириниу индикатора 
+загрузки mp3 равной 0<br>position.mp3_load._width = 0;<br>// точно то же
+ для индикатора позиции mp3 файла<br>position.bar._width = 0;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>}<br><br>//
+ регулировка громкости<br>vol.onRelease = function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;vol.bar._width
+ = vol._xmouse;<br>&nbsp;&nbsp;&nbsp;&nbsp;sound.setVolume(vol._xmouse/vol._width
+ * 100);<br>}<br>// изначально пользователь не видит кнопок play, pause и
+ stop<br>play_but._visible = false;<br>pause_but._visible = false;<br>stop_but._visible
+ = false;<br>// ставим шириниу индикатора загрузки mp3 равной 0<br>position.mp3_load._width
+ = 0;<br>// точно то же для индикатора позиции mp3 файла<br>position.bar._width
+ = 0;<br><br>// остановка воспроизведения (кнопка stop)<br>stop_but.onRelease
+ = function() {<br>sound.stop(); // останавливаем воспроизведение<br>// 
+скрываем кнопки play, pause и stop<br>play_but._visible = false;<br>pause_but._visible
+ = false;<br>stop_but._visible = false;<br>// текущую песню (в 
+плейлисте) переводим в "неактивное" положение (первый кадр)<br>pl.container['item'+isPlaying].fon.gotoAndStop(1);<br>isPlaying
+ = null; // отмечаем, что сейчас не играет не одна песня<br>// ставим 
+шириниу индикатора загрузки mp3 равной 0<br>position.mp3_load._width = 
+0;<br>// точно то же для индикатора позиции mp3 файла<br>position.bar._width
+ = 0;<br>}<br>// пауза воспроизведения<br>pause_but.onRelease = 
+function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;pause_but._visible = false; // 
+скрываем кнопку пауза<br>&nbsp;&nbsp;&nbsp;&nbsp;play_but._visible = 
+true; // показываем кнопку play<br>&nbsp;&nbsp;&nbsp;&nbsp;stop_pos = 
+sound.position/1000; // запоминаем позицию, где мы остановили 
+воспроизведение<br>// как видите, у обьектов класса Sound есть 
+интересная особенность,<br>// свойство position возвращает позицию 
+воспроизведения в миллисекундах,<br>// в то время как метод start 
+принимает время в секундах<br>&nbsp;&nbsp;&nbsp;&nbsp;sound.stop(); // 
+осанавливаем воспроизведение<br>}<br>// продолжение воспроизведения 
+(play)<br>play_but.onRelease = function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;pause_but._visible
+ = true; // показываем кнопку пауза<br>&nbsp;&nbsp;&nbsp;&nbsp;play_but._visible
+ = false; // скрываем кнопку play<br>&nbsp;&nbsp;&nbsp;&nbsp;sound.start(stop_pos);
+ // стартуем воспроизведение с позиции паузы<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>}<br>//
+ функция, которая будет выполняться при каждой смене кадра (обновление 
+позиции индикаторов)<br>onEnterFrame = function() { <br>&nbsp;&nbsp;&nbsp;&nbsp;if
+ (isPlaying != null) { // если сейчас играет какая-либо песня<br>&nbsp;&nbsp;&nbsp;&nbsp;t
+ = sound.getBytesTotal(); // получаем полный размер песни (в байтах)<br>&nbsp;&nbsp;&nbsp;&nbsp;l
+ = sound.getBytesLoaded(); // число загруженых байт<br>// в зависимости 
+от размера части загруженого mp3 трека, меняем ширину mp3_load<br>&nbsp;&nbsp;&nbsp;&nbsp;position.mp3_load._width
+ = Math.round(l/t * position._width);<br>// также в зависимости от 
+прогресса воспроизведения меняем ширину мувиклипа bar<br>&nbsp;&nbsp;&nbsp;&nbsp;position.bar._width
+ = Math.round(sound.position/sound.duration * position._width);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>//
+ нажатие на бегунок Прогресс<br>position.onRelease = function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;if
+ (position._xmouse &lt; position.mp3_load._width) { // если позиция, 
+которую выбрал пользователь уже загружена<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+ то перематываем mp3 файл на нужное место<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sound.start((sound.duration/1000)
+ * position._xmouse/position._width );<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<!--code2--></div><!--ecode2--><br>Вот
+ собственно и всё, «собрав» всё правильно, вы получите отличный flash 
+mp3 плеер для своего сайта!<br>Если у вас что-то не получилось, вы 
+можете бесплатно <a 
+href="http://flash-world.ru/files/sourses/mp3_player_xml.rar">скачать 
+исходник моего примера</a> и работать уже с ним (поменять дизайн, 
+например).<br>Вот мой пример:<br><div align="center"><object 
+classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" height="350" 
+width="300" align="middle"><br>                    <param 
+name="allowScriptAccess" value="sameDomain"><br>                    <param
+ name="allowFullScreen" value="true"><br>                    <param 
+name="quality" value="high"><br>                    <param name="movie" 
+value="/files/mp3_xml_player/player.swf"><br> <br> <embed 
+src="53-flash_mp3_player_xml_playlist_files/player.swf" quality="high" 
+name="game" allowscriptaccess="sameDomain" allowfullscreen="true" 
+type="application/x-shockwave-flash" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" height="350" 
+width="300" align="middle"><br></object></div></div> 
+		<br>
+		
+		<noindex>
+		
+
+
+<script type="text/javascript">
+  VK.init({apiId: 2005834, onlyWidgets: true});
+</script>
+
+<!-- Put this div tag to the place, where the Like block will be -->
+<div style="width: 100px; background: none repeat scroll 0% 0% 
+transparent; height: 22px; position: relative; clear: both;" 
+id="vk_like"><iframe id="vkwidget1" 
+src="53-flash_mp3_player_xml_playlist_files/widget_like.html" 
+style="height: 22px; width: 100px; overflow: hidden; z-index: 150;" 
+name="fXDa924e" frameborder="0" height="22px" scrolling="no" 
+width="100%"></iframe></div>
+<script type="text/javascript">
+VK.Widgets.Like("vk_like", {type: "mini"});
+</script>
+		
+		</noindex>
+		
+		
+<br>
+
+
+<div class="ntitle" align="center">
+Почитать ещё:<br>
+</div>
+<div align="left">
+
+<li><a 
+href="http://flash-world.ru/raznoe/129-sposob_zarabotka_na_saite.html">У
+ вас есть свой сайт? Заставьте его приносить прибыль!</a></li>
+
+<li><a 
+href="http://flash-world.ru/flash_tutorial/8-sozdanie_flash_preloadera_actionscript_3.html">Создание
+ флеш прелоадера на actionscript 3 cs3</a></li><li><a 
+href="http://flash-world.ru/flash_tutorial/56-flash_video_player_actionscript_2.html">Урок
+ создания flash видео плеера</a></li><li><a 
+href="http://flash-world.ru/flash_tutorial/31-actionscript_cursor_changing.html">Заменяем
+ стандартный курсор на наш</a></li><li><a 
+href="http://flash-world.ru/flash_tutorial/18-flash_risovalka.html">Изготовление
+ флеш рисовалки как вконтакте граффити</a></li><li><a 
+href="http://flash-world.ru/flash_tutorial/86-vkontakte_api_mp3_player.html">Пример
+ работы с API vkontakte: создаём mp3 плеер</a></li>
+
+</div>
+
+
+</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+        <td class="news" colspan="2" valign="top"><div class="hr_line"></div></td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+        <td class="slink" valign="top"><div id="ratig-layer"><div 
+class="rating" style="float: left;">
+		<ul class="unit-rating">
+		<li class="current-rating" style="width: 68px;">68</li>
+		<li><a href="#" title="Плохо" class="r1-unit" onclick="doRate('1', 
+'53'); return false;">1</a></li>
+		<li><a href="#" title="Приемлемо" class="r2-unit" onclick="doRate('2',
+ '53'); return false;">2</a></li>
+		<li><a href="#" title="Средне" class="r3-unit" onclick="doRate('3', 
+'53'); return false;">3</a></li>
+		<li><a href="#" title="Хорошо" class="r4-unit" onclick="doRate('4', 
+'53'); return false;">4</a></li>
+		<li><a href="#" title="Отлично" class="r5-unit" onclick="doRate('5', 
+'53'); return false;">5</a></li>
+		</ul>
+</div><div class="rating" style="float: left; padding-top: 2px;">&nbsp;(голосов:
+ 21)</div></div></td>
+        <td class="slink" valign="top">&nbsp;</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+        <td class="copy" colspan="2" valign="top">
+		<div align="center"></div>&nbsp;
+
+	
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+</tbody></table>
+<table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+        <td class="slink" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"></td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">  
+Просмотров: 34831 </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><a name="comment"></a><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#1 
+написал: <a href="mailto:sant-diman@mail.ru">Дмитрий</a> (13 июня 2009 
+22:29) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-62">Скажите, как 
+изменить надпись flash-word.ru чёта я когда меняю на свой адрес, у меня 
+появляются лишь некоторые из букв каторые я ввёл.?</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Дмитрий');" href="#" 
+onclick="dle_ins('Дмитрий'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#2 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (14 июня 2009 18:38) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-64">Там шрифт не 
+станадартный, вы будете видеть только те символы, которые я вставил (f, 
+l, a, s, h, -, w, o, r, d, r, u).<br>Просто измените шрифт.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#3 
+написал: <a href="mailto:otb13@mail.ru">Temyr</a> (31 июля 2009 20:14) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-155">Здравствуйте.
+ Ваш плеер мне очень! У меня на сайте есть папка содержащая 4 подпапки в
+ которых есть песни разных категорий. Я хотел спросить можно сделать 
+этот плеер с несколькими плейлистами? А выбирать катерогии можно было с 
+помощью Combobox? У Вас есть iqc?</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Temyr');" href="#" 
+onclick="dle_ins('Temyr'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#4 
+написал: <a href="mailto:vo_va@bk.ru">Василий</a> (4 августа 2009 19:53)
+ </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-168">Здравствуйте.
+ Скажите, я не понял, а когда надо создать Movie Clip vol (bar), Adobe 
+Flash пишет что такое имя уже есть и что надо поменять? Или bar один и 
+тот же в громкости, прогрессе и прокрутке?</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Василий');" href="#" 
+onclick="dle_ins('Василий'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#5 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (4 августа 2009 
+20:00) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-170">Да, мувик 
+bar - везде один и тот же</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#6 
+написал: <a href="mailto:orange_kf@mail.ru">Константин</a> (30 ноября 
+2009 15:45) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-411">Здравствуйте,
+ скажите, пожалуйста, что надо изменить в коде, чтобы при загрузке 
+ролика начинала играть 1й трек из списка??? Без нажатия на кнопку play. 
+Спасибо.<br><br>Буду признателен, если ответите на e-mail<br>Спасибо.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Константин');" href="#" 
+onclick="dle_ins('Константин'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#7 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (30 ноября 2009 
+16:13) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-412">Добавьте в 
+конец кода строку<br>playSong(0);</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#8 
+написал: monsterx (4 декабря 2009 12:47) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-437">Сайт 
+классный, Админу респект ограменый...<br>Очень много полезного для 
+новичка... я сам пока дуб дубом, но много полезного нашел, спасибо!</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('monsterx');" href="#" 
+onclick="dle_ins('monsterx'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#9 
+написал: <a href="mailto:hitmax0@rambler.ru">Максим</a> (17 декабря 2009
+ 17:19) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-478">Сайт очень 
+хороший, админу спасибо за него.<br>Работаю с флэшем давно, но многого 
+еще не знаю...<br>Огромный респект автору за урок! Давно искал исходник 
+флаш-плеера.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Максим');" href="#" 
+onclick="dle_ins('Максим'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#10 
+написал: <a href="mailto:alexgr@mail2000.ru">AlexGr</a> (21 декабря 2009
+ 22:13) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-495">Подскажи, 
+вот такой вопрос есть, а возможно ли реализовать такое: юзер в реальном 
+времени загружает песню на сервер (форма загрузки чуть ниже плеера, 
+например) и что бы эта песня появлялась в конце плей листа???<br><br>Заранее
+ благодарен.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('AlexGr');" href="#" 
+onclick="dle_ins('AlexGr'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#11 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (21 декабря 2009 
+22:20) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-496">возможно</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#12 
+написал: <a href="mailto:alexgr@mail2000.ru">AlexGr</a> (21 декабря 2009
+ 22:34) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-497">Уважаемый 
+админ, а можешь сделать такое? а то я совсем новичек в этом.. ((<br><br>отблагодарю</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('AlexGr');" href="#" 
+onclick="dle_ins('AlexGr'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#13 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (21 декабря 2009 
+23:04) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-498">ок, в скором
+ врмени напишу урок. Сейчас администрация болеет  <img style="border: 
+medium none;" alt="recourse" 
+src="53-flash_mp3_player_xml_playlist_files/recourse.gif" 
+align="absmiddle"></div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#14 
+написал: <a href="mailto:alexgr@mail2000.ru">AlexGr</a> (21 декабря 2009
+ 23:16) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-499">Спасибо 
+огромное, буду очень ждать!!!!</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('AlexGr');" href="#" 
+onclick="dle_ins('AlexGr'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#15 
+написал: <a href="mailto:sirins@yandex.ru">Sirin</a> (2 января 2010 
+14:33) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-509">Здравствуйте!
+ Подскажите пожалуйста как сделать так, чтобы после прослушивания песни 
+трек переключался на следующий, и чтобы громкость музыки была такой, 
+какую пользователь установил в прошлом клипе. А то она здесь почему то 
+обнуляется при нажатии на следующий трек, хотя индикатор громкости 
+остается в прежнем положении...<br><br>Спасибо.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Sirin');" href="#" 
+onclick="dle_ins('Sirin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#16 
+написал: <a href="mailto:mastershef@rambler.ru">MasterShef</a> (27 
+января 2010 22:28) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-551">Воу, всем 
+привет!<br>Ребят, у меня такая прозьба нужен урок по созданию плеера в 
+контакт делаю для себя)! В плеере будет плейлист, кнопочки, хочу что бы 
+показывало время проигрывания, багающие экволайзеры и тд., сам плеер Я 
+уже прорисовал в ШОПЕ и разложил на детали! В общем ЗЕРЬЕЗНЫЙ  
+плеерок)))! Если есть урок выложите или дайте сылку или свяжитесь сомной
+ mastershef@rambler.ru ICQ 305750424! Могу предоставить картинку плеера,
+ что бы на нем зделали урок не посредствено! Буду очень признателен! Я 
+начинающий флешер вот хотелось бы получить урок в таком 
+направлении!!!ЗАрание благодарен!</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('MasterShef');" href="#" 
+onclick="dle_ins('MasterShef'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#17 
+написал: <a href="mailto:ryazanov@Krista.ru">Даниил</a> (15 февраля 2010
+ 17:57) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-622">Доброго всем
+ времени суток, есть проблема с плеером - работаю над проектом, возникла
+ потребность воспроизводить композиции локально, но в этом случае при 
+использовании url начинает материться Flash Player, если кто сталкивался
+ подскажите решение!!!</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Даниил');" href="#" 
+onclick="dle_ins('Даниил'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#18 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (15 февраля 2010 
+18:13) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-623">Есл открыть 
+плеер локально, он не сможет воспроизводить треки из сети, только 
+локальные файлы. Тогда вам нужно прописывать путь к трекам относительно 
+плеера, без слеша / вначале.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#19 
+написал: Nix (10 марта 2010 04:19) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-670">Очень круто!
+ Код правда можно повесить на один кадр. И для Volume прикольно было бы 
+еще скроллер добавить:  onPress =&gt; startDrag =&gt; onMouseMove 
+(изменять громкость) и onRelease для прекращения=)... Да и для 
+интузиастов в xml можно атрибуты настроек добавить, такие как старт 
+трека при загрузке, запуск следующего после окончания играемого и т.п.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Nix');" href="#" onclick="dle_ins('Nix'); 
+return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#20 
+написал: <a href="mailto:vasilek_gorbunok@mail.ru">yavasilek</a> (22 
+марта 2010 13:03) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-697"><b>admin</b>,<br>Добрый
+ день уважаемый. А нельзя ли сделать так что-бы плеер читал не из xml 
+файла, а брал треки из папки? При этом название трека и исполнителя брал
+ из тегов к этому файлу???</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('yavasilek');" href="#" 
+onclick="dle_ins('yavasilek'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#21 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (22 марта 2010 16:55)
+ </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-698">Монжно, по <a
+ href="http://flash-world.ru/flash_tutorial/58-flash_php_slideshow.html">этому
+ уроку</a> написать скрипт, который будет отдавать флешке xml с именами 
+mp3 файлов в папке. Только для того, чтобы получить тэги mp3 файла, его 
+прийдётся сначала загрузить (или хотя бы начать загружать, теги могут 
+располагаться в любом месте файла)</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#22 
+написал: Loust (15 апреля 2010 11:10) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-731">Здравствуйте!
+ а как можно сделать, что бы плеер проигрывал файлы можно сказать с 
+другово хостинга? спс за ранее кто поможет.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Loust');" href="#" 
+onclick="dle_ins('Loust'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#23 
+написал: <a onclick="return dropdownmenu(this, event, 
+UserMenu('href=&quot;http://flash-world.ru/user/admin/&quot;', '1', 
+'0'), '170px')" onmouseout="delayhidemenu()" 
+href="http://flash-world.ru/user/admin/">admin</a> (15 апреля 2010 
+12:27) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/foto_1.jpg" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_1.gif" alt="" 
+border="0"><br><br>Группа: Администраторы<br>Регистрация: 5.02.2009</td>
+        <td class="news" valign="top"><div id="comm-id-732">Так сделать 
+можно, но этот хостинг тоже должен быть ваш. В xml со списокм файлов 
+нужно писать все пути полностью, начинаю с <u>http://</u>. В корневую 
+директорию хоста с файлами нужно положить файл crossdomain.xml 
+(почитайте о политике безопасности flash плеера).</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('admin');" href="#" 
+onclick="dle_ins('admin'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#24 
+написал: Андрей (16 апреля 2010 13:57) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-735">Всем 
+привет!, сайт просто отличный!, помог во всём.<br>Как сделать в 
+проигрыватели, чтобы песни играли поочерёдно?? спасибо!</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Андрей');" href="#" 
+onclick="dle_ins('Андрей'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#25 
+написал: <a href="mailto:demci2009@rambler.ru">Денис</a> (15 мая 2010 
+21:40) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-761">А у меня 
+почему то не хочет работать не открываеться моя музыка!<br>что делаеть?<br>я
+ ваш исходник залил и не пашет<br>=(</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Денис');" href="#" 
+onclick="dle_ins('Денис'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#26 
+написал: <a href="mailto:taras-kachor@mail.ru">Lemuil</a> (16 мая 2010 
+01:02) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-764">А как 
+сделать, что бы плеер брал аудиозаписи из адреса в интернете, например 
+из подкаста podfm.ru<br><br>Я так понял, что тот код который прописан 
+вами, он предполагает что аудиозаписи будут браться из одной папки с 
+флеш-плеером... Хотя я могу ошибаться, но что-то у меня там не совсем 
+получилось с вашим плеером увидеть свою <br></div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Lemuil');" href="#" 
+onclick="dle_ins('Lemuil'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#27 
+написал: Promoteur (18 мая 2010 14:12) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-769">Ув. админ !<br><br>Подскажи
+ пожалуйста, что нужно дописать, чтобы файл .swf лежал на одном сервере,
+ а .xml на другом ? У меня плеер не видет список песен. Зараниее спасибо
+ !</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Promoteur');" href="#" 
+onclick="dle_ins('Promoteur'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#28 
+написал: <a href="mailto:antonionionio@ukr.net">Anton</a> (17 июня 2010 
+17:48) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-829">Есть такой 
+вопрос - я решил поменять дизайн на этот плеер и столкнулся с проблемой -
+ скролер не докручиваеться до конца полоски(((( скажите что это может 
+быть?? И как решить эту проблему?</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('Anton');" href="#" 
+onclick="dle_ins('Anton'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#29 
+написал: ученик (5 июля 2010 17:16) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-856">а на какой 
+проге писать плеер?</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('ученик');" href="#" 
+onclick="dle_ins('ученик'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table><table width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlblue.png" height="58" 
+width="5" border="0"></td>
+        <td class="ctitle" colspan="2" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgblue.png">#30 
+написал: <a href="mailto:barbos9name@rambler.ru">barbos</a> (31 июля 
+2010 20:33) </td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrblue.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+		<td colspan="2" valign="top">
+<table width="100%">
+    <tbody><tr>
+        <td class="slink" valign="top" width="140"><img 
+src="53-flash_mp3_player_xml_playlist_files/noavatar.png" border="0"><br><img
+ src="53-flash_mp3_player_xml_playlist_files/icon_5.gif" alt="" 
+border="0"><br><br>Группа: Гости<br>Регистрация: --</td>
+        <td class="news" valign="top"><div id="comm-id-883">самотыком 
+долго парился с учебником в зубах. я так и не понял как зделать чтобы 
+при окончании трека он автоматом перезагружал трек.<br><br>это нужно для
+ радиостанций, в случае разрыва соединения.<br>и + небольшое 
+кеширование.<br>подскажите пожайлуста что и куда вписать.</div></td>
+    </tr>
+</tbody></table>
+		</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlbot.png" height="32" 
+width="5" border="0"></td>
+		<td class="slink" align="left" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif">ICQ: --
+ </td>
+		<td class="slink" align="right" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbgbot.gif"><a 
+onmouseover="dle_copy_quote('barbos');" href="#" 
+onclick="dle_ins('barbos'); return false;">[цитировать]</a>  </td>
+        <td><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrbot.png" height="32" 
+width="5" border="0"></td>
+    </tr>
+</tbody></table>
+<span id="dle-ajax-comments"></span>
+<div class="navigation" style="margin-bottom: 10px; margin-top: 10px;" 
+align="center"><span>Назад</span> <span>1</span> <a 
+href="http://flash-world.ru/flash_tutorial/page,1,2,53-flash_mp3_player_xml_playlist.html#comment">2</a>
+  <a 
+href="http://flash-world.ru/flash_tutorial/page,1,2,53-flash_mp3_player_xml_playlist.html#comment">Далее</a></div><form
+ method="post" name="dle-comments-form" id="dle-comments-form" 
+action="/flash_tutorial/53-flash_mp3_player_xml_playlist.html"><table 
+width="100%">
+    <tbody><tr>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdlgeen.png" height="58" 
+width="5" border="0"></td>
+        <td class="ntitle" valign="top" 
+background="53-flash_mp3_player_xml_playlist_files/mtdbggreen.png">Добавление
+ комментария</td>
+        <td width="5"><img 
+src="53-flash_mp3_player_xml_playlist_files/mtdrgreen.png" height="58" 
+width="5" border="0"></td>
+    </tr>
+    <tr>
+        <td background="53-flash_mp3_player_xml_playlist_files/ltd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/ltd.gif" width="5" 
+border="0"></td>
+        <td class="news" valign="top">
+<table width="450">
+    <tbody><tr>
+                  <td class="slink" height="25">Ваше Имя:</td>
+                  <td style="width: 380px;" height="25"><input 
+name="name" id="name" style="width: 140px; height: 20px; font-family: 
+tahoma; font-size: 11px; border: 1px solid rgb(224, 224, 224);" 
+type="text"></td>
+                </tr>
+                <tr>
+                  <td class="slink" height="25">Ваш E-Mail:</td>
+                  <td height="25"><input name="mail" id="mail" 
+style="width: 140px; height: 20px; font-family: tahoma; font-size: 11px;
+ border: 1px solid rgb(224, 224, 224);" type="text">			  				  </td>
+                </tr>
+	<tr>
+                  <td colspan="2"><script language="javascript" type="text/javascript">
+<!--
+var text_enter_url       = "Введите полный URL ссылки";
+var text_enter_size       = "Введите размеры флеш ролика (ширина, высота)";
+var text_enter_flash       = "Введите ссылку на флеш ролик";
+var text_enter_page      = "Введите номер страницы";
+var text_enter_url_name  = "Введите название сайта";
+var text_enter_page_name = "Введите описание ссылки";
+var text_enter_image    = "Введите полный URL изображения";
+var text_enter_email    = "Введите e-mail адрес";
+var text_code           = "Использование: [CODE] Здесь Ваш код.. [/CODE]";
+var text_quote          = "Использование: [QUOTE] Здесь Ваша Цитата.. [/QUOTE]";
+var error_no_url        = "Вы должны ввести URL";
+var error_no_title      = "Вы должны ввести название";
+var error_no_email      = "Вы должны ввести e-mail адрес";
+var prompt_start        = "Введите текст для форматирования";
+var img_title   		= "Введите по какому краю выравнивать картинку (left, center, right)";
+var email_title  	    = "Введите описание ссылки (необязательно)";
+var text_pages  	    = "Страница";
+var image_align  	    = "center";
+
+var selField  = "comments";
+var fombj    = document.getElementById( 'dle-comments-form' );
+
+function image_upload()
+{
+
+window.open('http://flash-world.ru/engine/images.php?area=' + selField + '&add_id=', '_Addimage', 'toolbar=0,location=0,status=0, left=0, top=0, menubar=0,scrollbars=yes,resizable=0,width=640,height=550');    
+
+}
+-->
+</script>
+<script type="text/javascript" src="53-flash_mp3_player_xml_playlist_files/bbcodes.js"></script>
+<div style="width: 460px; height: 25px; border: 1px solid rgb(187, 187, 
+187); background-image: 
+url(&quot;/templates/Simple/bbcodes/bg.gif&quot;);">
+<div id="b_b" class="editor_button" onclick="simpletag('b')"><img 
+title="Полужирный" src="53-flash_mp3_player_xml_playlist_files/b.gif" 
+alt="" height="25" width="23" border="0"></div>
+<div id="b_i" class="editor_button" onclick="simpletag('i')"><img 
+title="Наклонный текст" 
+src="53-flash_mp3_player_xml_playlist_files/i.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div id="b_u" class="editor_button" onclick="simpletag('u')"><img 
+title="Подчеркнутый текст" 
+src="53-flash_mp3_player_xml_playlist_files/u.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div id="b_s" class="editor_button" onclick="simpletag('s')"><img 
+title="Зачеркнутый текст" 
+src="53-flash_mp3_player_xml_playlist_files/s.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div class="editor_button"><img 
+src="53-flash_mp3_player_xml_playlist_files/brkspace.gif" alt="" 
+height="25" width="5" border="0"></div>
+<div id="b_left" class="editor_button" onclick="simpletag('left')"><img 
+title="Выравнивание по левому краю" 
+src="53-flash_mp3_player_xml_playlist_files/l.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div id="b_center" class="editor_button" onclick="simpletag('center')"><img
+ title="По центру" src="53-flash_mp3_player_xml_playlist_files/c.gif" 
+alt="" height="25" width="23" border="0"></div>
+<div id="b_right" class="editor_button" onclick="simpletag('right')"><img
+ title="Выравнивание по правому краю" 
+src="53-flash_mp3_player_xml_playlist_files/r.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div class="editor_button"><img 
+src="53-flash_mp3_player_xml_playlist_files/brkspace.gif" alt="" 
+height="25" width="5" border="0"></div>
+<div id="b_emo" class="editor_button" onclick="ins_emo();"><img 
+title="Вставка смайликов" 
+src="53-flash_mp3_player_xml_playlist_files/emo.gif" alt="" height="25" 
+width="23" border="0"></div>
+<div class="editor_button" onclick="tag_url()"><img title="Вставка 
+ссылки" src="53-flash_mp3_player_xml_playlist_files/link.gif" alt="" 
+height="25" width="23" border="0"></div><div class="editor_button" 
+onclick="tag_leech()"><img title="Вставка защищенной ссылки" 
+src="53-flash_mp3_player_xml_playlist_files/leech.gif" alt="" 
+height="25" width="23" border="0"></div>
+
+<div id="b_color" class="editor_button" onclick="ins_color();"><img 
+src="53-flash_mp3_player_xml_playlist_files/color.gif" alt="" 
+height="25" width="23" border="0"></div>
+<div class="editor_button"><img 
+src="53-flash_mp3_player_xml_playlist_files/brkspace.gif" alt="" 
+height="25" width="5" border="0"></div>
+<div id="b_hide" class="editor_button" onclick="simpletag('hide')"><img 
+title="Скрытый текст" 
+src="53-flash_mp3_player_xml_playlist_files/hide.gif" alt="" height="25"
+ width="23" border="0"></div>
+<div id="b_quote" class="editor_button" onclick="simpletag('quote')"><img
+ title="Вставка цитаты" 
+src="53-flash_mp3_player_xml_playlist_files/quote.gif" alt="" 
+height="25" width="23" border="0"></div>
+<div class="editor_button" onclick="translit()"><img 
+title="Преобразовать выбранный текст из транслитерации в кириллицу" 
+src="53-flash_mp3_player_xml_playlist_files/translit.gif" alt="" 
+height="25" width="23" border="0"></div>
+<div id="b_spoiler" class="editor_button" onclick="simpletag('spoiler')"><img
+ src="53-flash_mp3_player_xml_playlist_files/spoiler.gif" alt="" 
+height="25" width="23" border="0"></div>
+</div>
+<iframe id="cp" src="53-flash_mp3_player_xml_playlist_files/color.html" 
+marginwidth="0" marginheight="0" style="visibility: hidden; display: 
+none; position: absolute;" frameborder="0" height="104" scrolling="no" 
+width="154"></iframe>
+<div id="dle_emo" style="visibility: hidden; display: none; position: 
+absolute; width: 140px; height: 124px; overflow: auto; border: 1px solid
+ rgb(187, 187, 187); background: none repeat scroll 0% 0% rgb(233, 232, 
+242);"><table width="120" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':wink:'); return false;"><img style="border: medium
+ none;" alt="wink" src="53-flash_mp3_player_xml_playlist_files/wink.gif"></a></td><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':winked:'); return false;"><img style="border: 
+medium none;" alt="winked" 
+src="53-flash_mp3_player_xml_playlist_files/winked.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':smile:'); return false;"><img style="border: 
+medium none;" alt="smile" 
+src="53-flash_mp3_player_xml_playlist_files/smile.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':am:'); return false;"><img style="border: medium 
+none;" alt="am" src="53-flash_mp3_player_xml_playlist_files/am.gif"></a></td><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':belay:'); return false;"><img style="border: 
+medium none;" alt="belay" 
+src="53-flash_mp3_player_xml_playlist_files/belay.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':feel:'); return false;"><img style="border: medium
+ none;" alt="feel" src="53-flash_mp3_player_xml_playlist_files/feel.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':fellow:'); return false;"><img style="border: 
+medium none;" alt="fellow" 
+src="53-flash_mp3_player_xml_playlist_files/fellow.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':laughing:'); return false;"><img style="border: 
+medium none;" alt="laughing" 
+src="53-flash_mp3_player_xml_playlist_files/laughing.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':lol:'); return false;"><img style="border: medium 
+none;" alt="lol" src="53-flash_mp3_player_xml_playlist_files/lol.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':love:'); return false;"><img style="border: medium
+ none;" alt="love" src="53-flash_mp3_player_xml_playlist_files/love.gif"></a></td><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':no:'); return false;"><img style="border: medium 
+none;" alt="no" src="53-flash_mp3_player_xml_playlist_files/no.gif"></a></td><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':recourse:'); return false;"><img style="border: 
+medium none;" alt="recourse" 
+src="53-flash_mp3_player_xml_playlist_files/recourse.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':request:'); return false;"><img style="border: 
+medium none;" alt="request" 
+src="53-flash_mp3_player_xml_playlist_files/request.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':sad:'); return false;"><img style="border: medium 
+none;" alt="sad" src="53-flash_mp3_player_xml_playlist_files/sad.gif"></a></td><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':tongue:'); return false;"><img style="border: 
+medium none;" alt="tongue" 
+src="53-flash_mp3_player_xml_playlist_files/tongue.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':wassat:'); return false;"><img style="border: 
+medium none;" alt="wassat" 
+src="53-flash_mp3_player_xml_playlist_files/wassat.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':crying:'); return false;"><img style="border: 
+medium none;" alt="crying" 
+src="53-flash_mp3_player_xml_playlist_files/crying.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':what:'); return false;"><img style="border: medium
+ none;" alt="what" src="53-flash_mp3_player_xml_playlist_files/what.gif"></a></td></tr><tr><td
+ style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':bully:'); return false;"><img style="border: 
+medium none;" alt="bully" 
+src="53-flash_mp3_player_xml_playlist_files/bully.gif"></a></td><td 
+style="padding: 2px;" align="center"><a href="#" 
+onclick="dle_smiley(':angry:'); return false;"><img style="border: 
+medium none;" alt="angry" 
+src="53-flash_mp3_player_xml_playlist_files/angry.gif"></a></td></tr></tbody></table></div></td>
+                </tr>
+        <tr>
+      <td colspan="2"><textarea name="comments" id="comments" 
+onclick="setNewField(this.name, document.getElementById( 
+'dle-comments-form' ))" style="width: 461px; height: 160px; font-family:
+ verdana; font-size: 11px; border: 1px solid rgb(224, 224, 224);"></textarea></td>
+	  </tr>
+
+<tr>
+  <td class="slink">Код:</td>
+  <td class="slink"><span id="dle-captcha"><img 
+src="53-flash_mp3_player_xml_playlist_files/antibot.jpeg" alt="Включите 
+эту картинку для отображения кода безопасности" border="0"><br><a 
+onclick="reload(); return false;" href="#">обновить если не виден код</a></span></td>
+</tr>
+<tr>
+  <td class="slink" height="25">Введите код</td>
+  <td><input name="sec_code" id="sec_code" style="width: 167px; height: 
+20px; font-family: tahoma; font-size: 11px; border: 1px solid rgb(224, 
+224, 224);" type="text"></td>
+</tr>
+
+    <tr>
+      <td colspan="2"><br><input onclick="doAddComments();return false;"
+ name="submit" src="53-flash_mp3_player_xml_playlist_files/send.png" 
+type="image"><br><br></td>
+    </tr>
+</tbody></table>
+</td>
+        <td background="53-flash_mp3_player_xml_playlist_files/rtd.gif"><img
+ src="53-flash_mp3_player_xml_playlist_files/rtd.gif" width="5" 
+border="0"></td>
+    </tr>
+    <tr>
+        <td><img src="53-flash_mp3_player_xml_playlist_files/ltdb.png" 
+height="10" width="5" border="0"></td>
+        <td 
+background="53-flash_mp3_player_xml_playlist_files/tdbbg.png"><img 
+src="53-flash_mp3_player_xml_playlist_files/tdbbg.png" height="10" 
+width="1" border="0"></td>
+        <td><img src="53-flash_mp3_player_xml_playlist_files/rtdb.png" 
+height="10" width="5" border="0"></td>
+    </tr>
+</tbody></table>
+		<input name="subaction" value="addcomment" type="hidden">
+		<input name="post_id" id="post_id" value="53" type="hidden"></form><script language="javascript" type="text/javascript">
+<!--
+function reload () {
+
+	var rndval = new Date().getTime(); 
+
+	document.getElementById('dle-captcha').innerHTML = '<img src="/engine/modules/antibot.php?rndval=' + rndval + '" border="0" width="120" height="50" alt="" /><br /><a onclick="reload(); return false;" href="#">обновить если не виден код</a>';
+
+};
+//-->
+</script></div>
+<hr>
+
+<div class="news">Опечатались, когда набирали запрос? Не беда! :) <br>фвщиу
+ адфыр ehjrb bc[jlybrb фсешщтыскшзе akti флаш flesh crfxfnm</div>
+<div align="center">		<a href="http://flash-world.ru/">Мир технологии 
+flash. Флеш уроки, исходники, примеры, статьи, советы, игры.</a>
+
+
+</div><br>
+</td>
+    </tr>		
+</tbody></table><br>
+
+<!-- dude Smart Leech time: 2,034187 msec --></body></html>

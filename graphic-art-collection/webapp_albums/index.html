@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Коллекция живописи и графики</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--
+	<meta name="viewport" content="width=320,initial-scale=1.0"/>
+	<meta name="viewport" content="width=320, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="MobileOptimized" content="320"/>
+<meta name="HandheldFriendly" content="true"/>
+-->	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/bootstrap336.min.css" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="js/highslide/highslide.css" />
+	<script type="text/javascript" src="js/highslide/highslide.js"></script>
+	<script type="text/javascript">
+	//http://highslide.com/ref/hs.expand
+			hs.graphicsDir = 'js/highslide/graphics/';
+			hs.wrapperClassName = 'wide-border';
+			hs.showCredits = false;
+			//hs.align = 'center';
+			//hs.transitions = ['expand', 'crossfade'];
+			// Add the simple close button
+			hs.registerOverlay({
+				html: '<div class="closebutton" onclick="return hs.close(this)" title="Close"></div>',
+				position: 'top right',
+				fade: 2 // fading the semi-transparent overlay looks bad in IE
+			});
+	</script>
+	<script src="js/vendor/jquery-1.9.1.min.js"></script>
+	<script src="js/plugin/jquery.pajinate.js"></script>	
+	<script src="zoomify/ZoomifyImageViewer.min.js"></script>
+	<script src="js/parse_albums.js"></script>
+	<script src="js/main.js"></script>
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1  class="text-center"><a class="title" href="?content=list_albums">Коллекция живописи и графики</a></h1>
+		</header>
+
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="change-content">
+						<div id="main-list-albums" class="row" style="display:none;">
+							<div class="content"></div>
+							 <div class="page_navigation pagination"></div>
+						</div>
+
+						<div id="list-child-albums" class="row" style="display:none;"></div>
+						<div id="list-album-images"class="row" style="display:none;"></div>
+				</div>
+			</div>
+		</div>
+
+		<footer>	</footer>
+	</div>
+
+<!-- repeat TEMPLATES -->
+<!-- main list albums on front page -->
+<div id="tpl-list-albums" style="display:none;">
+	<div class="img-container">
+		<div class="picture">
+			<a href="#view_album">
+				<img src="#category_pictures" alt="#category-title" border="0">
+			</a>
+		</div>
+		<p class="caption">
+			<a href="#view_album">#category-title</a>
+		</p>
+	</div>
+</div>			
+
+<!-- list child albums -->
+<div id="tpl-view-album"  style="display:none;">
+	<div class="img-container h100">
+		<div class="picture_h100">
+			<a href="#view_album">
+				<img src="#category_pictures_h100" alt="#album-title" border="0">
+			</a>
+		</div>
+		<p>
+			<a href="#view_album">#album-title</a>
+		</p>
+	</div>
+</div>			
+
+<!-- list album images -->
+<div id="list-album-images"  style="display:none;">
+
+	<div id="tpl-album-title">
+		<h2 class="rows">#album-title</h2>
+	</div>
+
+	<div id="tpl-album-images">
+		<div class="img-container large">
+			<div class="picture">
+				<a class="highslide" href="#gallery_images_w1024" onclick="return hs.expand(this)">
+					<img src="#preview_gallery_img" alt="#image-title" border="0">
+				</a>
+				<div class="highslide-caption">#image-title</div>
+				<p class="img_title">
+					<a href="#">#image-title</a>
+				</p>
+				<a class="highslide" href="#gallery_images_w1024" onclick="return hs.expand(this)">увеличить</a> |
+				<a href="?q=zoom&nid=#nid" target="_blank">детали</a>
+			</div>
+		</div>
+</div>
+	
+</body>
+</html>

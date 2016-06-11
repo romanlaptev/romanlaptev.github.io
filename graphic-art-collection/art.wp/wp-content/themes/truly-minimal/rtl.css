@@ -1,0 +1,219 @@
+/* =Reset
+-------------------------------------------------------------- */
+
+caption, th, td {
+	text-align: right;
+}
+
+/* =Global
+----------------------------------------------- */
+
+/* Text elements */
+
+ul, ol {
+	margin: 0 3em 1.5em 0;
+}
+
+li > ul,
+li > ol {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+
+blockquote blockquote {
+	margin-left: 0;
+}
+blockquote:before {
+	right: -40px;
+	left: auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"] {
+	padding: 11px 15px 11px 40px;
+}
+
+textarea {
+	padding-right: 3px;
+	padding-left: 0;
+}
+
+/* Links */
+
+/* Alignment */
+.alignright {
+	float: right;
+	margin: .75em 0 .75em 1.5em;
+}
+
+.alignleft {
+	float: left;
+	margin: .75em 1.5em .75em 0;
+}
+
+/* Text meant only for screen readers */
+
+.screen-reader-text:focus {
+	right: 5px;
+	left: auto;
+}
+
+
+/* =Layouts
+----------------------------------------------- */
+
+/* Right Sidebar */
+.content-area {
+	float: right;
+	margin: 0 0 0 -30%;
+}
+
+.site-content {
+	margin: 0 0 0 34%;
+}
+
+.site-main .widget-area {
+	float: left;
+}
+
+/* Left Sidebar */
+
+.sidebar-right .content-area {
+	float: left;
+	margin: 0 -30% 0 0;
+}
+
+.sidebar-right .site-content {
+	margin: 0 34% 0 0;
+}
+
+.sidebar-right .site-main .widget-area {
+	float: right;
+}
+
+.sidebar-right .widget {
+	padding: 0 5px 1.5em 19px;
+}
+
+
+/* =Menu
+----------------------------------------------- */
+
+.navigation-main {
+	float: right;
+}
+
+.navigation-main ul {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.navigation-main li {
+	float: right;
+}
+
+.navigation-main li a:not(:only-child):after {
+	float: left;
+	margin-right: 5px;
+	margin-left: auto;
+}
+
+.navigation-main ul ul {
+	float: right;
+	right: 0;
+	left: auto;
+}
+
+.navigation-main ul ul ul {
+	right: 100%;
+	left: auto;
+}
+
+
+/* =Content
+----------------------------------------------- */
+
+/* 404 */
+.error404 .widget {
+	float: right;
+	margin-left: 5%;
+	margin-right: auto;
+}
+
+.error404 .widget:last-of-type {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+/* Single Attachment */
+
+/* =Post Formats
+----------------------------------------------- */
+
+.entry-format:before {
+	margin-left: 5px;
+	margin-right: auto;
+}
+
+
+/* =Navigation
+----------------------------------------------- */
+
+[class*="navigation"] .previous a {
+	float: right;
+}
+
+[class*="navigation"] .next a {
+	float: left;
+	text-align: left;
+}
+
+/* =Comments
+----------------------------------------------- */
+
+.comment .avatar {
+	float: right;
+	margin: 0 0 0 1.5em;
+}
+
+.comment-content {
+	margin-right: 6.6em;
+	margin-left: auto;
+}
+
+.comment-reply-link {
+	float: left;
+}
+
+.comment-list .edit-link {
+	float: left;
+}
+
+/* =Widgets
+----------------------------------------------- */
+
+.widget {
+	padding: 0 19px 1.5em 5px;
+}
+
+.widget ul ul {
+	margin-right: 1.5em;
+	margin-left: auto;
+}
+
+/* Calendar widget */
+
+#wp-calendar caption {
+	text-align: left;
+}
+
+td#next,
+#wp-calendar td.pad {
+	text-align: left;
+}
+
+td#prev {
+	text-align: right;
+}

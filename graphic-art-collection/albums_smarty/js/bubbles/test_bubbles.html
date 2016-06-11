@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> test bubbles </title>
+<link href="imgbubbles.css" rel="stylesheet" type="text/css" />
+<style>
+.views-row
+{
+	list-style:none;
+}
+
+.views-field-field-trainer-image-fid
+{
+	float:left;
+}
+
+.field-content
+{
+	/*width:110px;*/
+}
+</style>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<style type="text/css">
+
+/*CSS for 2 demos on the page*/
+#orbs li{
+width: 65px; /*width of image container. Should be wider than contained images (before bubbling) */
+height:60px; /*height of image container. Should be taller than contained images (before bubbling) */
+}
+
+#orbs li img{
+width: 55px; /*width of each image before bubbling*/
+height: 60px; /*height of each image*/
+}
+
+#squares li{
+width: 45px; /*width of image container. Must be wider than contained images (before bubbling) */
+height:40px; /*height of image container. Must be taller than contained images (before bubbling) */
+}
+
+#squares li img{
+width: 31px; /*width of each image before bubbling*/
+height: 31px; /*height of each image*/
+}
+
+</style>
+<script type="text/javascript" src="imgbubbles.js">
+
+/***********************************************
+* Image Bubbles effect- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+***********************************************/
+</script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($){
+	$('ul#orbs').imgbubbles({factor:1.75}) //add bubbles effect to UL id="orbs"
+	$('ul#squares').imgbubbles({factor:2.5}) //add bubbles effect to UL id="squares"
+	$('ul#photo').imgbubbles({factor:1.2})
+})
+
+</script>
+</head>
+<body>
+
+<h4>1.75x magnification</h4>
+<ul id="orbs" class="bubblewrap">
+<li><a href="http://dynamicdrive.com"><img src="img/orbs/stumbleupon.png" alt="Add to Stumbleupon" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/orbs/facebook.png" alt="Add to Facebook" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/orbs/digg.png" alt="Add to Digg" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/orbs/twitter.png" alt="Add to Twitter" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/orbs/rss.png" alt="Add RSS Feed" /></a></li>
+</ul>
+
+
+<h4>2.5x magnification</h4>
+<ul id="squares" class="bubblewrap">
+<li><a href="http://dynamicdrive.com"><img src="img/squares/facebook.png" alt="Add to Facebook" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/squares/delicious.png" alt="Add to Delicious" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/squares/digg.png" alt="Add to Digg" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/squares/stumbleupon.png" alt="Add to Stumbleupon" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/squares/rss.png" alt="Add RSS Feed" /></a></li>
+<li><a href="http://dynamicdrive.com"><img src="img/squares/twitter.png" alt="Add to Twitter" /></a></li>
+</ul>
+
+<ul id="photo" class="bubblewrap2">
+<li class="views-row views-row-1 views-row-odd views-row-first">  
+ <div class="views-field-field-trainer-image-fid">
+	 <span class="field-content">
+		<a href="#">
+		<div class="tooltip">Nikolaus Stor 1525-1540</div>
+		<img alt="" src="http://albums.vhost.16mb.com/content/albums/gallery_images/imagecache/h100/nikolaus_stor_1525-1540.jpg"></a>
+	</span>
+ </div>
+</li>
+
+<li class="views-row views-row-2 views-row-even">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+	<a href="#">
+		<div class="tooltip">Ганс Себальд Бехам</div>
+		<img alt="Ганс Себальд Бехам" src="http://albums.vhost.16mb.com/content/albums/gallery_images/imagecache/h100/250px-portrait_of_sebald_beham.jpg">
+	</a>
+	</span>
+  </div>
+</li>
+
+<li class="views-row views-row-3 views-row-odd">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+		<a href="#">
+		<div class="tooltip">Йорг Брой Младший</div>
+		<img alt="Йорг Брой Младший" src="http://albums.vhost.16mb.com/content/albums/gallery_images/imagecache/h100/breu_jorg_the_elder_1533_portrait_of_a_man.jpg"></a>
+	</span>
+  </div>
+</li>
+
+<li class="views-row views-row-4 views-row-even">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+		<a href="/trainer/aleksandr-fedchuk"><div class="tooltip">Александр Федчук</div>
+		<img alt="Александр Федчук" src="img/fedchuk.png"></a>
+	</span>
+  </div>
+</li>
+
+<li class="views-row views-row-5 views-row-odd">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+		<a href="/trainer/sergej-bulanov"><div class="tooltip">Сергей Буланов</div>
+		<img alt="Сергей Буланов" src="img/iog.png"></a>
+	</span>
+  </div>
+</li>
+
+<li class="views-row views-row-6 views-row-even">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+		<a href="/trainer/karamysheva-elena-averkievna">
+		<div class="tooltip">Карамышева Елена</div>
+		<img alt="Карамышева Елена Аверкиевна" src="img/karamisheva_0.png"></a>
+	</span>
+  </div>
+</li>
+
+<li class="views-row views-row-7 views-row-odd views-row-last">  
+<div class="views-field-field-trainer-image-fid">
+	<span class="field-content">
+		<a href="/trainer/karnauhova-galina">
+		<div class="tooltip">Карнаухова Галина</div>
+		<img alt="Карнаухова Галина" src="img/masla.png"></a>
+	</span>
+  </div>
+</li>
+
+</ul>
+
+</body>
+</html>

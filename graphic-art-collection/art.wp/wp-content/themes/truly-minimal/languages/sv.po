@@ -1,0 +1,305 @@
+# Translation of Truly Minimal in Swedish
+# This file is distributed under the same license as the Truly Minimal package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2014-06-02 04:44:52+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Truly Minimal\n"
+
+#: sidebar.php:24
+msgid "Meta"
+msgstr "Meta"
+
+#: searchform.php:11
+msgctxt "submit button"
+msgid "Search"
+msgstr "Sök"
+
+#: searchform.php:9
+msgctxt "assistive text"
+msgid "Search"
+msgstr "Sök"
+
+#: searchform.php:10
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Sök &hellip;"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "Sökresultat för: %s"
+
+#: no-results.php:28
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Det verkar inte som om vi kan hitta det du letar efter. Kanske kan en sökning hjälpa."
+
+#: no-results.php:23
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Tyvärr matchade inget din sökning. Prova igen med något eller några andra nyckelord."
+
+#: no-results.php:19
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Är du redo att posta ditt första inlägg? <a href=\"%1$s\">Starta här</a>."
+
+#: no-results.php:13
+msgid "Nothing Found"
+msgstr "Inget funnet"
+
+#: inc/template-tags.php:120
+msgid "View all posts by %s"
+msgstr "Visa alla inlägg av %s"
+
+#: inc/template-tags.php:84
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar inväntar granskning."
+
+#: inc/template-tags.php:81
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">skriver:</span>"
+
+#: inc/template-tags.php:71
+msgid "Pingback:"
+msgstr "Ping:"
+
+#: inc/template-tags.php:48
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nyare inlägg <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:44
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Äldre inlägg"
+
+#: inc/template-tags.php:39
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: inc/template-tags.php:38
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr;"
+
+#: inc/template-tags.php:34
+msgid "Post navigation"
+msgstr "Inläggsnavigering"
+
+#: inc/extras.php:75
+msgid "Page %s"
+msgstr "Sida %s"
+
+#: inc/customizer.php:33
+msgid "Left"
+msgstr "Vänster"
+
+#: inc/customizer.php:32
+msgid "Right"
+msgstr "Höger"
+
+#: inc/customizer.php:19
+msgid "Theme Options"
+msgstr "Temainställningar"
+
+#: image.php:105
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Både trackbacks och kommentarer är för tillfället inaktiverade."
+
+#: image.php:103
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "Trackbacks är inaktiverade, men du kan <a class=\"comment-link\" href=\"#respond\" title=\"Posta en kommentar\">posta en kommentar</a>."
+
+#: image.php:101
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Kommetarer är inaktiverade, men du kan lämna en trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL för ditt inlägg\" rel=\"trackback\">Trackback URL</a>"
+
+#: image.php:99
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Posta en kommentar\">Posta en kommentar</a> eller lämna en trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL för ditt inlägg\" rel=\"trackback\">Trackback URL</a>."
+
+#: image.php:39
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nästa <span class=\"meta-nav\">&rarr;</span>"
+
+#: image.php:38
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Föregående"
+
+#: header.php:41
+msgid "Skip to content"
+msgstr "Hoppa till innehåll"
+
+#: header.php:40
+msgid "Menu"
+msgstr "Meny"
+
+#: functions.php:82
+msgid "Sidebar"
+msgstr "Sidopanel"
+
+#: functions.php:53
+msgid "Primary Menu"
+msgstr "Primär meny"
+
+#: footer.php:18
+msgid "Theme: %1$s by %2$s."
+msgstr "Tema: %1$s av %2$s."
+
+#: footer.php:16
+msgid "Proudly powered by %s"
+msgstr "Drivs med %s"
+
+#: footer.php:16
+msgid "A Semantic Personal Publishing Platform"
+msgstr "En semantisk plattform för personlig publicering"
+
+#: content.php:37
+msgid "Posted in %1$s"
+msgstr "Postat i %1$s"
+
+#: content-single.php:42
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Det här inlägget postades i %1$s. Bokmärk <a href=\"%3$s\" title=\"Permalänk till %4$s\" rel=\"bookmark\">permalänken</a>. "
+
+#: content-single.php:40
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Det här inlägget postades i %1$s och har märkts med etiketterna %2$s. Bokmärk <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalänken</a>."
+
+#: content-single.php:34
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bokmärk <a href=\"%3$s\" title=\"Permalänk till %4$s\" rel=\"bookmark\">permalänk</a>."
+
+#: content-image.php:47 content-video.php:47 content.php:55
+msgid "% Comments"
+msgstr "% kommentarer"
+
+#: content-image.php:47 content-video.php:47 content.php:55
+msgid "Leave a comment"
+msgstr "Lämna en kommentar"
+
+#: content-image.php:41 content-video.php:41 content.php:48
+msgid "Tagged %1$s"
+msgstr "Taggad %1$s"
+
+#: content-image.php:30 content-video.php:30
+msgid "in %1$s"
+msgstr "i %1$s"
+
+#. translators: used between list items, there is a space after the comma
+#: content-image.php:26 content-image.php:36 content-single.php:24
+#: content-single.php:27 content-video.php:26 content-video.php:36
+#: content.php:33 content.php:43
+msgid ", "
+msgstr ", "
+
+#: content-image.php:16 content-video.php:16 content.php:24
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Läs mer <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:24 content-image.php:50 content-link.php:23
+#: content-page.php:18 content-quote.php:24 content-single.php:56
+#: content-video.php:50 content.php:58 image.php:34 image.php:107
+#: inc/template-tags.php:71 inc/template-tags.php:92
+msgid "Edit"
+msgstr "Redigera"
+
+#: content-aside.php:15 content-image.php:21 content-link.php:15
+#: content-quote.php:15 content-video.php:21
+msgid "All %s posts"
+msgstr "Alla %s inlägg"
+
+#: content-aside.php:11 content-image.php:17 content-link.php:11
+#: content-page.php:16 content-quote.php:11 content-single.php:18
+#: content-video.php:17 content.php:25 image.php:93
+msgid "Pages:"
+msgstr "Sidor:"
+
+#: comments.php:70
+msgid "Comments are closed."
+msgstr "Kommentarer inaktiverade."
+
+#: comments.php:40 comments.php:60
+msgid "Newer Comments &rarr;"
+msgstr "Nyare kommentarer &rarr;"
+
+#: comments.php:39 comments.php:59
+msgid "&larr; Older Comments"
+msgstr "&larr; Äldre kommentarer"
+
+#: comments.php:38 comments.php:58
+msgid "Comment navigation"
+msgstr "Kommentarsnavigering"
+
+#: comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "En reaktion på &rdquo;%2$s&rdquo;"
+msgstr[1] "%1$s reaktioner på &rdquo;%2$s&rdquo;"
+
+#: archive.php:63 sidebar.php:17
+msgid "Archives"
+msgstr "Arkiv"
+
+#: archive.php:60
+msgid "Links"
+msgstr "Länkar"
+
+#: archive.php:57
+msgid "Quotes"
+msgstr "Citat"
+
+#: archive.php:54
+msgid "Videos"
+msgstr "Videos"
+
+#: archive.php:51
+msgid "Images"
+msgstr "Bilder"
+
+#: archive.php:48
+msgid "Asides"
+msgstr "Noteringar"
+
+#: archive.php:45
+msgid "Yearly Archives: %s"
+msgstr "Årsarkiv: %s"
+
+#: archive.php:42
+msgid "Monthly Archives: %s"
+msgstr "Månadsarkiv: %s"
+
+#: archive.php:39
+msgid "Daily Archives: %s"
+msgstr "Dagsarkiv: %s"
+
+#: archive.php:31
+msgid "Author Archives: %s"
+msgstr "Författararkiv: %s"
+
+#: archive.php:24
+msgid "Tag Archives: %s"
+msgstr "Etikettarkiv: %s"
+
+#: archive.php:21
+msgid "Category Archives: %s"
+msgstr "Kategoriarkiv: %s"
+
+#. translators: %1$s: smiley
+#: 404.php:36
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Prova att leta i månadsarkiven. %1$s"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Mest använda kategorier"
+
+#: 404.php:19
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Det verkar som att det inte finns någonting här. Du kan testa en av länkarna nedan eller att göra en sökning."
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Hoppsan, sidan kunde inte hittas."

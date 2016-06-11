@@ -1,0 +1,606 @@
+2013/04/21 14:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum_yii/
+---
+2013/04/23 07:06:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/index.php/...')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum_yii/index.php/node/index.php/node/view?nid=57
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum_yii/index.php/node/list
+---
+2013/04/23 07:06:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/index.php/...')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum_yii/index.php/node/index.php/node/view?nid=105
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum_yii/index.php/node/list
+---
+2013/04/27 13:59:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test".' in /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('test')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /mnt/transcend/0_sites/photoalbum_yii/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum_yii/index.php/test
+---
+2013/04/27 13:59:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test".' in /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('test')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /mnt/transcend/0_sites/photoalbum_yii/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum_yii/index.php/test/
+---
+2013/06/12 18:30:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/16 20:05:04 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "recursion_termins".' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): CComponent->__call('recursion_termi...', Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): SiteController->recursion_termins(Array, '??')
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(190): Export->prep_xml_termins(Array)
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/
+---
+2013/06/16 20:06:33 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "recursion_termins".' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): CComponent->__call('recursion_termi...', Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): SiteController->recursion_termins(Array, '??')
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(190): Export->prep_xml_termins(Array)
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/16 20:11:36 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "recursion_termins".' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): CComponent->__call('recursion_termi...', Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(135): SiteController->recursion_termins(Array, '??')
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(190): Export->prep_xml_termins(Array)
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/17 19:41:54 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM photoalbum_term_node
+ORDER BY nшв ASC' at line 5. The SQL statement executed was: 
+-- получить все термины нод
+SELECT
+	nid,
+	tid,
+FROM photoalbum_term_node
+ORDER BY nшв ASC
+.
+2013/06/17 19:41:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM photoalbum_term_node
+ORDER BY nшв ASC' at line 5' in /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php:602
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php(414): CDbCommand->queryInternal('', 0, Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(249): CDbCommand->query()
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(180): Export->get_all_nodes()
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/
+---
+2013/06/17 19:42:24 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM photoalbum_term_node
+ORDER BY nid ASC' at line 5. The SQL statement executed was: 
+-- получить все термины нод
+SELECT
+	nid,
+	tid,
+FROM photoalbum_term_node
+ORDER BY nid ASC
+.
+2013/06/17 19:42:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM photoalbum_term_node
+ORDER BY nid ASC' at line 5' in /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php:602
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php(414): CDbCommand->queryInternal('', 0, Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(249): CDbCommand->query()
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(180): Export->get_all_nodes()
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/
+---
+2013/06/22 13:43:57 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHRE node.type='photo' 
+ORDER BY node.type ASC' at line 10. The SQL statement executed was: 
+-- получить все ноды
+SELECT
+	node.nid,
+	node.vid,
+	node.type,
+	node.title,
+	node.status,
+	node.created
+FROM photoalbum_node as node
+WHRE node.type='photo' 
+ORDER BY node.type ASC
+.
+2013/06/22 13:43:57 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHRE node.type='photo' 
+ORDER BY node.type ASC' at line 10' in /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php:602
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/CDbCommand.php(414): CDbCommand->queryInternal('', 0, Array)
+#1 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/models/Export.php(229): CDbCommand->query()
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(181): Export->get_all_nodes()
+#3 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/22 14:21:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/22 14:21:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(14): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/22 14:23:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "photoalbum.xml".' in /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('photoalbum.xml')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php//photoalbum.xml
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/22 14:26:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/22 14:26:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/22 14:37:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "xml".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('xml')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('xml')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/xml/photoa...')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/xml/photoalbum.xml
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2013/06/22 14:54:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/22 16:03:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/22 16:03:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php
+---
+2013/06/23 18:36:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/index.php/...')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/0_sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/0_sites/photoalbum/photoalbum_yii/index.php/node/index.php/node/list
+HTTP_REFERER=http://mycomp/transcend/0_sites/photoalbum/photoalbum_yii/index.php/node/list
+---
+2013/08/17 14:22:40 [error] [exception.CException] exception 'CException' with message 'Property "Node.photos" is not defined.' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('photos')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CModel.php(595): CActiveRecord->__get('photos')
+#2 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/views/node/page-list-nodes.php(65): CModel->offsetGet('photos')
+#3 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(126): require('/mnt/transcend/...')
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/mnt/transcend/...', Array, true)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(869): CBaseController->renderFile('/mnt/transcend/...', Array, true)
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(782): CController->renderPartial('page-list-nodes', Array, true)
+#7 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/controllers/NodeController.php(38): CController->render('page-list-nodes', Array)
+#8 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): NodeController->actionList()
+#9 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#13 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/list')
+#14 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=19
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/
+---
+2013/08/17 14:22:48 [error] [exception.CException] exception 'CException' with message 'Property "Node.photos" is not defined.' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('photos')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CModel.php(595): CActiveRecord->__get('photos')
+#2 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/views/node/page-list-nodes.php(65): CModel->offsetGet('photos')
+#3 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(126): require('/mnt/transcend/...')
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/mnt/transcend/...', Array, true)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(869): CBaseController->renderFile('/mnt/transcend/...', Array, true)
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(782): CController->renderPartial('page-list-nodes', Array, true)
+#7 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/controllers/NodeController.php(38): CController->render('page-list-nodes', Array)
+#8 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): NodeController->actionList()
+#9 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#13 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/list')
+#14 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=19
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/index.php
+---
+2013/08/17 14:23:29 [error] [exception.CException] exception 'CException' with message 'Property "Node.photos" is not defined.' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('photos')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CModel.php(595): CActiveRecord->__get('photos')
+#2 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/views/node/page-list-nodes.php(65): CModel->offsetGet('photos')
+#3 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(126): require('/mnt/transcend/...')
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/mnt/transcend/...', Array, true)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(869): CBaseController->renderFile('/mnt/transcend/...', Array, true)
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(782): CController->renderPartial('page-list-nodes', Array, true)
+#7 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/controllers/NodeController.php(38): CController->render('page-list-nodes', Array)
+#8 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): NodeController->actionList()
+#9 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#13 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/list')
+#14 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=19
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/index.php
+---
+2013/08/17 14:23:33 [error] [exception.CException] exception 'CException' with message 'Property "Node.photos" is not defined.' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('photos')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CModel.php(595): CActiveRecord->__get('photos')
+#2 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/views/node/page-list-nodes.php(65): CModel->offsetGet('photos')
+#3 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(126): require('/mnt/transcend/...')
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/mnt/transcend/...', Array, true)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(869): CBaseController->renderFile('/mnt/transcend/...', Array, true)
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(782): CController->renderPartial('page-list-nodes', Array, true)
+#7 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/controllers/NodeController.php(38): CController->render('page-list-nodes', Array)
+#8 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): NodeController->actionList()
+#9 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#13 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/list')
+#14 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=19
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/index.php
+---
+2013/08/17 14:24:07 [error] [exception.CException] exception 'CException' with message 'Property "Node.photos" is not defined.' in /mnt/transcend/php/frameworks/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/db/ar/CActiveRecord.php(143): CComponent->__get('photos')
+#1 /mnt/transcend/php/frameworks/yii/framework/base/CModel.php(595): CActiveRecord->__get('photos')
+#2 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/views/node/page-list-nodes.php(65): CModel->offsetGet('photos')
+#3 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(126): require('/mnt/transcend/...')
+#4 /mnt/transcend/php/frameworks/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/mnt/transcend/...', Array, true)
+#5 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(869): CBaseController->renderFile('/mnt/transcend/...', Array, true)
+#6 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(782): CController->renderPartial('page-list-nodes', Array, true)
+#7 /mnt/transcend/sites/photoalbum/photoalbum_yii/protected/controllers/NodeController.php(38): CController->render('page-list-nodes', Array)
+#8 /mnt/transcend/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): NodeController->actionList()
+#9 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('list')
+#13 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('node/list')
+#14 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#15 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=19
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/index.php
+---
+2014/05/01 13:55:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/transcend/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/transcend/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/transcend/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/transcend/php/frameworks/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /mnt/transcend/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/transcend/sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/transcend/sites/photoalbum/photoalbum_yii/
+---
+2014/11/15 16:24:12 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'photoalbum.photoalbum_field_filename_photo' doesn't exist. The SQL statement executed was: 
+-- получить все изображения нод(имя файла,описание, расположение) 
+SELECT
+	field_image_photo.nid,
+	files.fid,
+	files.filename,
+	field_image_photo.field_image_photo_data,
+	type_photo.field_preview_img_value, 
+	type_photo.field_big_img_value, 
+	type_photo.field_original_img_value,
+	filename_photo.field_filename_photo_value, 
+	filename_photo.delta 
+FROM 
+	photoalbum_files as files
+LEFT JOIN 
+	photoalbum_content_field_image_photo as field_image_photo ON field_image_photo.field_image_photo_fid = files.fid
+LEFT JOIN 
+	photoalbum_content_type_photo as type_photo ON type_photo.nid = field_image_photo.nid
+LEFT JOIN 
+	photoalbum_field_filename_photo as filename_photo ON filename_photo.nid = field_image_photo.nid
+WHERE
+	files.fid = field_image_photo.field_image_photo_fid
+.
+2014/11/15 16:24:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'photoalbum.photoalbum_field_filename_photo' doesn't exist. The SQL statement executed was: 
+-- получить все изображения нод(имя файла,описание, расположение) 
+SELECT
+	field_image_photo.nid,
+	files.fid,
+	files.filename,
+	field_image_photo.field_image_photo_data,
+	type_photo.field_preview_img_value, 
+	type_photo.field_big_img_value, 
+	type_photo.field_original_img_value,
+	filename_photo.field_filename_photo_value, 
+	filename_photo.delta 
+FROM 
+	photoalbum_files as files
+LEFT JOIN 
+	photoalbum_content_field_image_photo as field_image_photo ON field_image_photo.field_image_photo_fid = files.fid
+LEFT JOIN 
+	photoalbum_content_type_photo as type_photo ON type_photo.nid = field_image_photo.nid
+LEFT JOIN 
+	photoalbum_field_filename_photo as filename_photo ON filename_photo.nid = field_image_photo.nid
+WHERE
+	files.fid = field_image_photo.field_image_photo_fid
+' in /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/db/CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/protected/models/Export.php(284): CDbCommand->query()
+#2 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(194): Export->get_all_nodes()
+#3 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2014/11/15 16:25:07 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN 
+	--photoalbum_field_filename_photo as filename_photo ON filename_photo.nid' at line 18. The SQL statement executed was: 
+-- получить все изображения нод(имя файла,описание, расположение) 
+SELECT
+	field_image_photo.nid,
+	files.fid,
+	files.filename,
+	field_image_photo.field_image_photo_data,
+	type_photo.field_preview_img_value, 
+	type_photo.field_big_img_value, 
+	type_photo.field_original_img_value
+	--filename_photo.field_filename_photo_value, 
+	--filename_photo.delta 
+FROM 
+	photoalbum_files as files
+LEFT JOIN 
+	photoalbum_content_field_image_photo as field_image_photo ON field_image_photo.field_image_photo_fid = files.fid
+LEFT JOIN 
+	photoalbum_content_type_photo as type_photo ON type_photo.nid = field_image_photo.nid
+--LEFT JOIN 
+	--photoalbum_field_filename_photo as filename_photo ON filename_photo.nid = field_image_photo.nid
+WHERE
+	files.fid = field_image_photo.field_image_photo_fid
+.
+2014/11/15 16:25:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'JOIN 
+	--photoalbum_field_filename_photo as filename_photo ON filename_photo.nid' at line 18. The SQL statement executed was: 
+-- получить все изображения нод(имя файла,описание, расположение) 
+SELECT
+	field_image_photo.nid,
+	files.fid,
+	files.filename,
+	field_image_photo.field_image_photo_data,
+	type_photo.field_preview_img_value, 
+	type_photo.field_big_img_value, 
+	type_photo.field_original_img_value
+	--filename_photo.field_filename_photo_value, 
+	--filename_photo.delta 
+FROM 
+	photoalbum_files as files
+LEFT JOIN 
+	photoalbum_content_field_image_photo as field_image_photo ON field_image_photo.field_image_photo_fid = files.fid
+LEFT JOIN 
+	photoalbum_content_type_photo as type_photo ON type_photo.nid = field_image_photo.nid
+--LEFT JOIN 
+	--photoalbum_field_filename_photo as filename_photo ON filename_photo.nid = field_image_photo.nid
+WHERE
+	files.fid = field_image_photo.field_image_photo_fid
+' in /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/db/CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/protected/models/Export.php(284): CDbCommand->query()
+#2 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(194): Export->get_all_nodes()
+#3 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionExport()
+#4 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('export')
+#8 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/export')
+#9 /mnt/terra/clouds/Dropbox/documents/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /mnt/terra/clouds/Dropbox/documents/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/sites/photoalbum/photoalbum_yii/index.php/site/export
+---
+2015/06/08 10:44:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /mnt/terra/clouds/Dropbox/Public/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/sites/photoalbum/photoalbum_yii/index.php/node/list?tid=61
+---
+2015/06/09 11:55:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CController.php:483
+Stack trace:
+#0 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CController.php(270): CController->missingAction('page')
+#1 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#3 /mnt/terra/clouds/Dropbox/Public/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /mnt/terra/clouds/Dropbox/Public/sites/photoalbum/photoalbum_yii/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/sites/photoalbum/photoalbum_yii/index.php/site/page?view=about
+HTTP_REFERER=http://mycomp/sites/photoalbum/photoalbum_yii/
+---
+2016/06/11 19:37:06 [error] [php] Undefined index: child (/mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php:45)
+Stack trace:
+#0 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php(23): recursion_view_termins()
+#1 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(126): require()
+#2 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(869): SiteController->renderFile()
+#4 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(782): SiteController->renderPartial()
+#5 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(64): SiteController->render()
+#6 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#7 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#8 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(286): SiteController->runAction()
+#9 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#10 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#11 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/index.php(13): CWebApplication->run()
+REQUEST_URI=/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/
+2016/06/11 19:38:08 [error] [php] Undefined index: child (/mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php:45)
+Stack trace:
+#0 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php(23): recursion_view_termins()
+#1 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(126): require()
+#2 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(869): SiteController->renderFile()
+#4 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(782): SiteController->renderPartial()
+#5 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(64): SiteController->render()
+#6 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#7 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#8 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(286): SiteController->runAction()
+#9 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#10 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#11 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/index.php(13): CWebApplication->run()
+REQUEST_URI=/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/

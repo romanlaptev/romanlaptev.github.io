@@ -1,0 +1,37 @@
+<?php
+
+
+/**
+ * @file
+ * Install and uninstall functions for taxonomy_menu_trails.
+ * 
+ * @author Dmitriy.trt      <http://drupal.org/user/329125>
+ */
+
+/**
+ * Implementation of hook_uninstall()
+ */
+function taxonomy_menu_trails_uninstall() {
+  variable_del('taxonomy_menu_trails_node_types');
+  variable_del('taxonomy_menu_trails_only_without_menu');
+  variable_del('taxonomy_menu_trails_selection_method');
+  variable_del('taxonomy_menu_trails_integration_with_tm');
+  variable_del('taxonomy_menu_trails_node_paths_ui');
+  variable_del('taxonomy_menu_trails_node_paths');
+}
+
+function taxonomy_menu_trails_update_6101() {
+  $types = array_filter(variable_get('taxonomy_menu_trails_node_types', array()));
+  foreach ($types as $key => $type) {
+    unset($types[$key]);
+    $type_vocs = taxonomy_get_vocabularies($type);
+    if (!empty($type_vocs)) {
+      foreach ($type_vocs as $vid => $voc) {
+        $type_vocs[$vid] = $vid;
+      }
+      $types[$key] = $type_vocs;
+    }
+  }
+  variable_set('taxonomy_menu_trails_node_types', $types);
+  return array();
+}

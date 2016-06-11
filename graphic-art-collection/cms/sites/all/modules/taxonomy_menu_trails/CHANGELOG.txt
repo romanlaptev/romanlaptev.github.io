@@ -1,0 +1,19 @@
+Taxonomy Menu Trails 6.x-1.3, 2011-10-09
+----------------------------------------------
+Issue #1129760: implement custom node path patterns
+
+Taxonomy Menu Trails 6.x-1.2, 2010-11-21
+----------------------------------------------
+#970714 by maximpodorov: Vocabulary selection was not used by term selection
+  methods other than "Deepest in lineage"
+#967522 by xgmorkx: Detect node page by path instead of page callback
+
+Taxonomy Menu Trails 6.x-1.1, 2010-10-10
+----------------------------------------------
+by Dmitriy.trt: Added translation template and Russian translation
+by Dmitriy.trt: New "Deepest in lineage" term selection method
+by Dmitriy.trt: Selectable vocabularies for each content type to select terms from
+#929134 by epieddy: Added support for Ctools Page Manager's node template feature
+#935952 by xgmorkx: Fixed server hangup on nodes with terms when none of theese terms 
+  have menu items and term selection method was set to "First term with menu" or 
+  "Last term with menu"

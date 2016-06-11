@@ -1,0 +1,351 @@
+# Translation of Truly Minimal in Azerbaijani
+# This file is distributed under the same license as the Truly Minimal package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-06-24 12:38:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1100\n"
+"Project-Id-Version: Truly Minimal\n"
+
+#. Description of the plugin/theme
+#: wp-content/themes/pub/truly-minimal/style.css
+msgid "A clean, modern theme that is true to its name, with multiple sidebar placement options and support for all post formats."
+msgstr "A clean, modern theme that is true to its name, with multiple sidebar placement options and support for all post formats."
+
+#: sidebar.php:24
+msgid "Meta"
+msgstr "Meta"
+
+#: searchform.php:11
+msgctxt "submit button"
+msgid "Search"
+msgstr "Axtar"
+
+#: searchform.php:9
+msgctxt "assistive text"
+msgid "Search"
+msgstr "Axtar"
+
+#: searchform.php:10
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Axtar &hellip;"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr " %s üçün Axtarışın Nəticələri:"
+
+#: no-results.php:28
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "Axtardığınız səhifə tapılmadı. Bəlkə axtarış qutusu axtardığınızı tapmaqda sizə kömək edər."
+
+#: no-results.php:23
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Bağışlayın, axtarış kriteriyalarınıza uyğun heç bir şey tapılmadı. Bəzi fərqli açar kəlmələrdən istifadə edərək təkrar yoxlayın."
+
+#: no-results.php:19
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "İlk yazınızı dərc etməyə hazırsınızmı? <a href=\"%1$s\">Buradan başlayın</a>."
+
+#: no-results.php:13
+msgid "Nothing Found"
+msgstr "Tapılmadı"
+
+#: inc/template-tags.php:90
+msgctxt "1: date, 2: time"
+msgid "on %1$s at %2$s"
+msgstr "%2$s üzərində %1$s "
+
+#: inc/template-tags.php:114
+msgid "Posted on <a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\">%4$s</time></a><span class=\"byline\"> by <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+msgstr "<a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\">%4$s</time></a><span class=\"byline\"> tarixində <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a> tərəfindən göndərildi</span></span>"
+
+#: inc/template-tags.php:120
+msgid "View all posts by %s"
+msgstr "%s tərəfindən yazılmış bütün yazılara bax"
+
+#: inc/template-tags.php:84
+msgid "Your comment is awaiting moderation."
+msgstr "Şərhiniz yoxlama gözləyir."
+
+#: inc/template-tags.php:81
+msgid "%s <span class=\"says\">says:</span>"
+msgstr "%s <span class=\"says\">dedi ki:</span>"
+
+#: inc/template-tags.php:71
+msgid "Pingback:"
+msgstr "Geri bildiriş: "
+
+#: inc/template-tags.php:48
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Yeni yazılar <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:44
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Əski yazılar"
+
+#: inc/template-tags.php:39
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr "&rarr;"
+
+#: inc/template-tags.php:38
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr "&larr;"
+
+#: inc/template-tags.php:34
+msgid "Post navigation"
+msgstr "Yazı naviqasiyaları"
+
+#: inc/customizer.php:34
+msgid "None (Full Width)"
+msgstr "Heç biri (Tam Genişlik)"
+
+#: inc/extras.php:75
+msgid "Page %s"
+msgstr "Səhifə %s"
+
+#: inc/customizer.php:33
+msgid "Left"
+msgstr "Sol"
+
+#: inc/customizer.php:32
+msgid "Right"
+msgstr "Sağ"
+
+#: inc/customizer.php:19
+msgid "Theme Options"
+msgstr "Mövzu parametrləri"
+
+#: image.php:105
+msgid "Both comments and trackbacks are currently closed."
+msgstr "Şərhlər və geri izləmələr indilik bağlıdır."
+
+#: image.php:103
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "Geri izləmələr bağlıdır, amma <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">bir şərh</a> yaza bilərsiniz."
+
+#: image.php:101
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "Şərhlər bağlıdır, amma geri izləmə qoya bilərsiniz: <a class=\"trackback-link\" href=\"%s\" title=\"Yazınızdan Geri İzləmə Bağlantısı\" rel=\"trackback\">Geri İzləmə Bağlantısı</a>."
+
+#: image.php:99
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Bir şərh yazın</a> və ya bir geri izləmə qoyun: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Geri İzləmə Ünvanı</a>. "
+
+#: image.php:39
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Sonrakı <span class=\"meta-nav\">&rarr;</span>"
+
+#: image.php:23
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr "<span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> tarixində <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> üzərində <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a> içində dərc edildi."
+
+#: image.php:38
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr "<span class=\"meta-nav\">&larr;</span> Öncəki"
+
+#: header.php:41
+msgid "Skip to content"
+msgstr "Mühtəviyyata keç"
+
+#. translators: If there are characters in your language that are not supported
+#. by Droid Serif, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:99
+msgctxt "Droid Serif font: on or off"
+msgid "on"
+msgstr "açıq"
+
+#. translators: If there are characters in your language that are not supported
+#. by Droid Sans, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:108
+msgctxt "Droid Sans font: on or off"
+msgid "on"
+msgstr "açıq"
+
+#: header.php:40
+msgid "Menu"
+msgstr "Menyu"
+
+#: functions.php:82
+msgid "Sidebar"
+msgstr "Yan menyu"
+
+#: functions.php:53
+msgid "Primary Menu"
+msgstr "Əsas menyu"
+
+#: footer.php:18
+msgid "Theme: %1$s by %2$s."
+msgstr "Mövzu: %1$s tərəfindən %2$s."
+
+#: footer.php:16
+msgid "Proudly powered by %s"
+msgstr "%s qürurla təqdim edər"
+
+#: footer.php:16
+msgid "A Semantic Personal Publishing Platform"
+msgstr "Müasir Fərdi Yayın Platforması"
+
+#: content.php:37
+msgid "Posted in %1$s"
+msgstr "%1$s içində dərc edildi"
+
+#: content-single.php:42
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bu yazı %1$s içində dərc edildi. <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Daimi bağlantını</a> seçilmişlərinizə əlavə edin."
+
+#: content-single.php:40
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bu yazı %1$s içində dərc edildi və %2$s olaraq etiketləndi. <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Daimi bağlantını</a> seçilmişlərinizə əlavə edin."
+
+#: content-single.php:34
+msgid "Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "<a href=\"%3$s\" title=\" %4$s üçün daimi bağlantı\" rel=\"bookmark\">daimi bağlantını</a> seçilmişlərinizə əlavə edin."
+
+#: content-single.php:32
+msgid "This entry was tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Bu yazı %2$s ilə etiketləndi. <a href=\"%3$s\" title=\"%4$s üçün daimi bağlantı\" rel=\"bookmark\">Daimi bağlantını</a> seçilmişlərə əlavə edin."
+
+#: content-image.php:47 content-video.php:47 content.php:55
+msgid "% Comments"
+msgstr "% Şərh"
+
+#: content-image.php:47 content-video.php:47 content.php:55
+msgid "1 Comment"
+msgstr "1 Şərh"
+
+#: content-image.php:47 content-video.php:47 content.php:55
+msgid "Leave a comment"
+msgstr "Bir şərh yazın"
+
+#: content-image.php:41 content-video.php:41 content.php:48
+msgid "Tagged %1$s"
+msgstr "%1$s Etiketləndi"
+
+#: content-image.php:30 content-video.php:30
+msgid "in %1$s"
+msgstr "%1$s içində"
+
+#. translators: used between list items, there is a space after the comma
+#: content-image.php:26 content-image.php:36 content-single.php:24
+#: content-single.php:27 content-video.php:26 content-video.php:36
+#: content.php:33 content.php:43
+msgid ", "
+msgstr ","
+
+#: content-image.php:16 content-video.php:16 content.php:24
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Oxumağa davam et <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:24 content-image.php:50 content-link.php:23
+#: content-page.php:18 content-quote.php:24 content-single.php:56
+#: content-video.php:50 content.php:58 image.php:34 image.php:107
+#: inc/template-tags.php:71 inc/template-tags.php:92
+msgid "Edit"
+msgstr "Redaktə et"
+
+#: content-aside.php:15 content-image.php:21 content-link.php:15
+#: content-quote.php:15 content-video.php:21
+msgid "All %s posts"
+msgstr "bütün %s  yazıları"
+
+#: content-aside.php:11 content-image.php:17 content-link.php:11
+#: content-page.php:16 content-quote.php:11 content-single.php:18
+#: content-video.php:17 content.php:25 image.php:93
+msgid "Pages:"
+msgstr "Səhifələr:"
+
+#: comments.php:70
+msgid "Comments are closed."
+msgstr "Şərh üçün bağlıdır."
+
+#: comments.php:40 comments.php:60
+msgid "Newer Comments &rarr;"
+msgstr "Yeni şərhlər &rarr;"
+
+#: comments.php:39 comments.php:59
+msgid "&larr; Older Comments"
+msgstr "&larr; Əski şərhlər"
+
+#: comments.php:38 comments.php:58
+msgid "Comment navigation"
+msgstr "Şərh naviqasiyası"
+
+#: comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; üzərinə bir şərh"
+msgstr[1] "&ldquo;%2$s&rdquo; üzərinə %1$s şərh"
+
+#: archive.php:63 sidebar.php:17
+msgid "Archives"
+msgstr "Arxivlər"
+
+#: archive.php:60
+msgid "Links"
+msgstr "Bağlantılar"
+
+#: archive.php:57
+msgid "Quotes"
+msgstr "Sitatlar"
+
+#: archive.php:54
+msgid "Videos"
+msgstr "Videolar"
+
+#: archive.php:51
+msgid "Images"
+msgstr "Təsvirlər"
+
+#: archive.php:48
+msgid "Asides"
+msgstr "Kənarlar"
+
+#: archive.php:45
+msgid "Yearly Archives: %s"
+msgstr "İllik Arxivlər: %s"
+
+#: archive.php:42
+msgid "Monthly Archives: %s"
+msgstr "Aylıq Arxivlər: %s"
+
+#: archive.php:39
+msgid "Daily Archives: %s"
+msgstr "Günlük Arxivlər: %s"
+
+#: archive.php:31
+msgid "Author Archives: %s"
+msgstr "Müəllifin arxivləri: %s"
+
+#: archive.php:24
+msgid "Tag Archives: %s"
+msgstr "%s Etiket Arxivləri: "
+
+#: archive.php:21
+msgid "Category Archives: %s"
+msgstr "Kateqoriya Arxivləri: %s"
+
+#. translators: %1$s: smiley
+#: 404.php:36
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Aylıq arxivlərə baxmağı yoxlayın. %1$s"
+
+#: 404.php:27
+msgid "Most Used Categories"
+msgstr "Ən sıx istifadə edilən kateqoriyalar"
+
+#: 404.php:19
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Burada heç bir şeyin tapılmadığı görünür. Bəlkə aşağıdakı bağlantılardan birini yoxlayasan və ya bir axtarış edəsən?"
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Bağışlayın! Bu səhifə tapılmır."

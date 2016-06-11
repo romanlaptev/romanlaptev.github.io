@@ -1,0 +1,12 @@
+name = Fancybox
+description = Provides the Fancybox jQuery plugin for displaying images, HTML content and multimedia in an elegant box.
+core = 6.x
+package = User interface
+dependencies[] = jquery_update
+
+; Information added by drupal.org packaging script on 2012-03-28
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "fancybox"
+datestamp = "1332893668"
+

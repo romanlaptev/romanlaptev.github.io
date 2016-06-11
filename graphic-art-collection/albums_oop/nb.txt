@@ -1,0 +1,10 @@
+SELECT term_data.vid, term_data.name, term_data.description from term_hierarchy
+LEFT JOIN term_data ON term_data.tid=term_hierarchy.tid
+WHERE term_hierarchy.parent=0 
+ORDER BY term_data.weight;
+-------------------------
+SELECT term_data.vid, term_data.name, term_data.description from term_hierarchy
+LEFT JOIN term_data ON term_data.tid=term_hierarchy.tid
+WHERE term_hierarchy.parent=0  AND term_data.vid !=5
+ORDER BY term_data.weight;
+

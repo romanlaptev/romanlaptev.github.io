@@ -1,0 +1,118 @@
+body
+{
+	background:#565D66;
+}
+
+.page
+{
+	background:#565D66;
+}
+
+.picture
+{
+	background:#ffffff;
+}
+
+.picture a
+{
+	/*color:gold;*/
+}
+
+.resize
+{
+	border:0px solid;
+	color:#000000;
+	font-size: 12px;
+	text-align:right;
+}
+/*----------------------------------------------------------------------*/
+
+.page
+{
+	border:0px solid;
+	/*width:90%;*/
+
+	/*width:1024px;*/
+	/*min-width:320px;*/
+	/*max-width:1024px;*/
+
+	/*margin:auto;*/
+	margin-bottom: 30px;
+	margin-left: 50px;
+	margin-right: 50px;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+
+
+.picture_column
+{
+	border:0px solid black;
+	/*background:darkred;*/
+	/*float:left;*/
+
+	/*margin-top: 30px;*/
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 10px;
+	padding-top:30px;
+	padding-bottom:30px;
+	padding-left:3%; /*отступ слева для блочных элементов*/
+	text-align:center; /*строчные элементы span, img выравниваются по центру*/
+
+	/*width:340px;*/
+	/*width:48%;*/
+}
+
+
+.picture
+{
+	border:0px solid #ffffff;
+	/*width:320px;*/
+	height:580px;
+	margin:10px;
+	float:left;
+}
+
+.picture_column p
+{
+	text-align:center;
+	/*color:#ffffff;*/
+	margin:10px;
+    margin: auto;
+    padding: 5px;
+    width: 300px;
+}
+
+.picture_column h2
+{
+	text-align:center;
+	color:#ffffff;
+	margin:10px;
+}
+
+.picture img
+{
+	/*width:300px;*/
+	display:block;
+	margin:auto;
+	padding:10px;
+	border:0px;
+}
+
+.url_details
+{
+	float:left;
+	margin:5px;
+}
+
+.url_details a
+{
+	color:#ffffff;
+}
+
+.clear_both
+{
+	clear:both;
+}
+

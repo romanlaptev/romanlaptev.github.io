@@ -1,0 +1,25 @@
+-- получить все страницы подшивки Фотоальбомы
+SELECT
+	menu_links.mlid, 
+	menu_links.plid, 
+	book.nid, 
+	-- book.bid, 
+	-- menu_links.link_path,
+	menu_links.link_title,
+	menu_links.weight,
+	menu_links.depth,
+	menu_links.has_children
+FROM 
+	photoalbum_menu_links as menu_links
+LEFT JOIN 
+	 photoalbum_book as book ON book.mlid=menu_links.mlid 
+WHERE
+	module='book' AND book.bid=(
+		SELECT node.nid FROM photoalbum_node as node WHERE node.title LIKE 'Фотоальбомы'
+			AND node.type='book')
+ORDER BY 
+	menu_links.weight DESC;
+
+===============================================
+
+

@@ -1,0 +1,181 @@
+photoalbum_vocabulary
+
+photoalbum_term_data
+	tid
+	vid
+	name
+	description
+	weight 
+
+photoalbum_term_hierarchy
+	tid
+	parent 
+
+photoalbum_term_node
+	nid
+ 	vid
+ 	tid 
+
+-- получить термины словаря таксономии
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+LEFT JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE photoalbum_term_data.vid=photoalbum_vocabulary.vid
+
+
+-- получить термины словаря таксономии (level 1)
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+INNER JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE 
+photoalbum_term_data.vid=photoalbum_vocabulary.vid AND photoalbum_term_hierarchy.parent=0
+ORDER BY photoalbum_term_data.weight
+
+
+-- получить дочернии термины термина 15
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+INNER JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE 
+photoalbum_term_data.vid=photoalbum_vocabulary.vid AND photoalbum_term_hierarchy.tid IN -- ВЛОЖЕННЫЙ ЗАПРОС
+(
+	SELECT photoalbum_term_hierarchy.tid 
+	FROM photoalbum_term_hierarchy 
+	WHERE photoalbum_term_hierarchy.parent=15
+)
+ORDER BY photoalbum_term_data.weight
+
+
+-- получить термин 15 и дочернии термины
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+INNER JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE 
+photoalbum_term_data.vid=photoalbum_vocabulary.vid AND photoalbum_term_hierarchy.tid IN
+(15, 16, 17, 18, 31, 58)
+ORDER BY photoalbum_term_data.weight
+
+
+1.
+-- получить термины словаря таксономии (level 0)
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+INNER JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE 
+photoalbum_term_data.vid=photoalbum_vocabulary.vid AND photoalbum_term_hierarchy.parent=0
+ORDER BY photoalbum_term_data.weight
+
+2.
+-- получить дочернии термины (level 1)
+SELECT
+photoalbum_term_data.tid,
+photoalbum_term_data.vid,
+photoalbum_term_data.name,
+photoalbum_term_data.description,
+photoalbum_term_data.weight, 
+photoalbum_term_hierarchy.parent
+FROM photoalbum_term_data
+INNER JOIN photoalbum_vocabulary ON photoalbum_vocabulary.name='Фотоальбомы'
+LEFT JOIN photoalbum_term_hierarchy ON photoalbum_term_hierarchy.tid=photoalbum_term_data.tid
+WHERE 
+photoalbum_term_data.vid=photoalbum_vocabulary.vid AND photoalbum_term_hierarchy.tid IN -- ВЛОЖЕННЫЙ ЗАПРОС
+(
+	SELECT photoalbum_term_hierarchy.tid 
+	FROM photoalbum_term_hierarchy 
+	WHERE photoalbum_term_hierarchy.parent=15
+)
+ORDER BY photoalbum_term_data.weight
+
+3.
+-- получить ноды термина
+SELECT
+	node.nid,
+	node.vid,
+	node.type,
+	node.title,
+	node.status,
+	node.created
+FROM photoalbum_node as node
+LEFT JOIN photoalbum_term_node as term_node ON term_node.tid=16
+WHERE node.nid = term_node.nid
+
+4.
+-- получить изображения ноды
+SELECT
+	files.fid,
+	files.filename,
+	type_photo.field_preview_img_value, 
+	type_photo.field_big_img_value, 
+	type_photo.field_original_img_value 
+FROM 
+	photoalbum_files as files
+LEFT JOIN photoalbum_node as node ON node.nid = 46
+LEFT JOIN photoalbum_content_field_image_photo as field_image_photo ON field_image_photo.nid = node.nid
+LEFT JOIN photoalbum_content_type_photo as type_photo ON type_photo.nid = node.nid
+WHERE
+	files.fid = field_image_photo.field_image_photo_fid
+
+
+------------------------------------------
+
+photoalbum_node.nid	46
+	vid
+	type
+	title
+	status
+	created
+
+photoalbum_content_field_image_photo.nid	46
+	field_image_photo_fid	194
+	field_image_photo_fid	217
+	field_image_photo_fid	218
+
+photoalbum_files.fid	194
+	filename 	034.jpg
+	filepath 	sites/default/files/photo_images/034.jpg
+	filemime 	
+	filesize 	
+	status 	
+	timestamp 
+
+photoalbum_content_type_photo.nid	46
+	field_preview_img_value 	/photoalbum/1960x/imagecache/photo_preview
+	field_big_img_value 		/photoalbum/1960x/imagecache/w1024
+	field_original_img_value 	/photoalbum/1960x
+
+
