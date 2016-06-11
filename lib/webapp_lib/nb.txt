@@ -77,3 +77,40 @@ export
 
     исправление структуры модуля Lib  
   
+======================================== RUNTIME
+eee-pc, chrome
+
+Successful download xml/export_lib.xml
+error, no save lib_xml, Error: QUOTA_EXCEEDED_ERR: DOM Exception 22
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 1.607 sec
+- nodes_obj.get_xml_nodes(), runtime: 3.737 sec
+- read_taxonomy_data, runtime: 2.421 sec
+- get taxonomy, runtime: 0.425 sec
+- get_book_category, runtime : 0.098 sec
+No $_GET value
+INIT, runtime : 8.568 sec
+
+eee-pc, ff
+
+Successful download xml/export_lib.xml
+save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 4.857 sec
+- nodes_obj.get_xml_nodes(), runtime: 11.211 sec
+- read_taxonomy_data, runtime: 3.413 sec
+- get taxonomy, runtime: 0.46 sec
+- get_book_category, runtime : 0.176 sec
+No $_GET value
+INIT, runtime : 21.203 sec
+
+Successful download xml/export_lib.xml
+save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 2.323 sec
+- nodes_obj.get_xml_nodes(), runtime: 5.562 sec
+- read_taxonomy_data, runtime: 8.024 sec
+- get taxonomy, runtime: 0.52 sec
+- get_book_category, runtime : 0.163 sec
+No $_GET value
+INIT, runtime : 17.084 sec
