@@ -114,3 +114,26 @@ load templates from tpl/templates.html
 - get_book_category, runtime : 0.163 sec
 No $_GET value
 INIT, runtime : 17.084 sec
+
+------------------------------------
+mycomp, ff
+get cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes, runtime: 0.474 sec, error: null
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 0.706 sec
+- nodes_obj.get_xml_nodes(), runtime: 1.102 sec
+- read_taxonomy_data, runtime: 0.955 sec
+- get taxonomy, runtime: 0.062 sec
+- get_book_category, runtime : 0.022 sec
+No $_GET value
+INIT, runtime : 3.048 sec
+
+Successful download xml/export_lib.xml
+save in cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 0.662 sec
+- nodes_obj.get_xml_nodes(), runtime: 1.551 sec
+- read_taxonomy_data, runtime: 1.274 sec
+- get taxonomy, runtime: 0.159 sec
+- get_book_category, runtime : 0.056 sec
+No $_GET value
+INIT, runtime : 3.836 sec
