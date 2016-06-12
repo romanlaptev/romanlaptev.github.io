@@ -1,6 +1,9 @@
 ﻿<?php
-function process_export_gravura( $params ){
+function process_export_lib( $params ){
 	global $log, $db;
+//echo "<pre>";
+//print_r ($params);
+//echo "</pre>";
 /*
 	$sql = "SELECT nid,tid FROM taxonomy_index";
 	$result = $db->query($sql);
@@ -18,14 +21,18 @@ return;
 	$list_sql["get_nodes"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_nodes"];
 	//$list_sql["get_attach_pictures"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_attach_pictures"];
 	//$list_sql["get_node_termins"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_node_termins"];
-	$list_sql["get_child_pictures"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures"];
-	$list_sql["get_child_pictures_info"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures_info"];
-	$list_sql["get_child_pictures_termins"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures_termins"];
+	//$list_sql["get_child_pictures"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures"];
+	//$list_sql["get_child_pictures_info"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures_info"];
+	//$list_sql["get_child_pictures_termins"] = $_REQUEST["export"]["drupal_book_to_page"]["sql"]["get_child_pictures_termins"];
 	
 	$data = array();
 
 	switch ($params["export_format"]){
 		case "xml":
+			$data["test"] = get_db_data( $list_sql["get_nodes"] );
+echo "<pre>";
+print_r($data);
+echo "</pre>";
 			//export_to_xml( $filename, $data );
 		break;
 		case "json":
@@ -34,17 +41,15 @@ return;
 		case "wxr":
 		break;
 		case "html":
-		
+			/*
 			$data["nodes"] = get_db_data( $list_sql["get_nodes"] );
 			//$data["attach_pictures"] = get_db_data( $list_sql["get_attach_pictures"] );
 			
 			$data["child_pictures"] = get_db_data( $list_sql["get_child_pictures"] );
 			$data["child_pictures_info"] = get_db_data( $list_sql["get_child_pictures_info"] );
 			$data["child_pictures_termins"] = get_db_data( $list_sql["get_child_pictures_termins"] );
-//echo "<pre>";
-//print_r($data);
-//echo "</pre>";
 			export_to_html( $params, $data );
+			 */
 		break;
 	}//end switch
 	

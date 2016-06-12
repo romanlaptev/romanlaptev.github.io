@@ -28,6 +28,16 @@ onSubmit="return validate();" target="_blank">
 <legend>Параметры экспорта</legend>
 
 <fieldset>
+	<label>enter database name:</label>
+	<input type="text" name="export[db_name]" class="form-control"  value="lib"/>
+<pre>
+lib
+video
+gravura
+mydb
+music
+art
+</pre>
 	<section class="panel panel-success">
 		<div class="panel-heading">
 			<h3>db connection type</h3>
@@ -37,20 +47,23 @@ onSubmit="return validate();" target="_blank">
 		
 			<div class="col-md-6">
 				<h3>MySQL</h3>
-				<input type="radio" value="mysql" name="db_conn">
+				<input type="radio" value="mysql" name="export[db_conn]">
 				
-				<input type="text" name="mysqldb_host" class="form-control"  value="localhost" placeholder="enter mysql server name"/>
-				<input type="text" name="mysqldb_user" class="form-control"  value="root" placeholder="enter user name"/>
-				<input type="password" name="mysqldb_pwd" class="form-control"  placeholder="enter password"/>
-				<input type="text" name="mysqldb_name" class="form-control"  placeholder="enter database name"/>
+				<input type="text" name="export[mysqldb_host]" class="form-control"  value="localhost" placeholder="enter mysql server name"/>
+				<input type="text" name="export[mysqldb_user]" class="form-control"  value="root" placeholder="enter user name"/>
+				<input type="password" name="export[mysqldb_pwd]" class="form-control"  placeholder="enter password"/>
 			</div>
 			
 			<div class="col-md-6">
 				<h3>SQLite</h3>
-				<input type="radio" value="sqlite" name="db_conn" checked="checked">
-				<input type="text" name="sqlite_path" class="form-control" 
+				<input type="radio" value="sqlite" name="export[db_conn]" checked="checked">
+				<input type="text" name="export[sqlite_path]" class="form-control" 
 id="sqlitedb-name" 
-value="sqlite:/../cms/db/lib.sqlite"/>
+value="sqlite:../../cms/db/lib.sqlite"/>
+
+<pre>
+sqlite:/mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/lib/cms/db/lib.sqlite
+</pre>
 			</div>
 			
 		</div>
@@ -83,17 +96,19 @@ value="sqlite:/../cms/db/lib.sqlite"/>
 		<div class="col-md-6">
 			<h3>File</h3>
 			<input type="radio" value="file" name="export[savein]"  checked="checked">
-			<input type="text" name="export[filename]" class="form-control" value="">
-			<pre>
+			<input type="text" name="export[filename]" class="form-control" value="export_lib.xml">
+<pre>
 export_lib.xml
 </pre>
 		</div>
 			
 		<div class="col-md-6">
 			<h3>Folder</h3>
-			<p class="mark">export in html pages or DB tables export in files</p>
+			<p class="mark">
+export in html pages or DB tables export in files
+                        </p>
 			<input type="radio" value="folder" name="export[savein]">
-			<input type="text" name="export[foldername]" class="form-control" value="">
+			<input type="text" name="export[foldername]" class="form-control" value="./out">
 <pre>
 ./out
 </pre>
@@ -133,8 +148,9 @@ FROM menu_links
 WHERE menu_links.menu_name IN (
 	SELECT menu_name FROM menu_links WHERE link_title LIKE 'библиотека' AND module='book'
 ) ORDER BY weight ASC;
+		</textarea>
 
-
+<pre>
 -- получить страницы книги
 SELECT 
 book.mlid, 
@@ -236,7 +252,7 @@ SELECT nid,tid FROM taxonomy_index
 SELECT tid,vid,name,description,weight FROM taxonomy_term_data
 SELECT tid,parent FROM taxonomy_term_hierarchy
 SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary
-		</textarea>
+</pre>
 
 <pre>
 -- получить страницы книги
