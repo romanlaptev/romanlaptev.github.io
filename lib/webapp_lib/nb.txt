@@ -79,42 +79,53 @@ export
   
 ======================================== RUNTIME
 eee-pc, chrome
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.4 Safari/532.5
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
 
-Successful download xml/export_lib.xml
+ajax load xml/export_lib.xml complete, runtime: 0.949 sec, state: success
 error, no save lib_xml, Error: QUOTA_EXCEEDED_ERR: DOM Exception 22
-load templates from tpl/templates.html
-- read_nodes_data, runtime: 1.607 sec
-- nodes_obj.get_xml_nodes(), runtime: 3.737 sec
-- read_taxonomy_data, runtime: 2.421 sec
-- get taxonomy, runtime: 0.425 sec
-- get_book_category, runtime : 0.098 sec
+- read templates from tpl/templates.html, runtime: 0.372 sec
+- read_nodes_data, runtime: 1.772 sec
+- nodes_obj.get_xml_nodes(), runtime: 3.813 sec
+- read_taxonomy_data, runtime: 2.429 sec
+- get taxonomy, runtime: 0.424 sec
+- get_book_category, runtime: 0.095 sec
 No $_GET value
-INIT, runtime : 8.568 sec
+runtime all : 15.323 sec
 
 eee-pc, ff
+Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
 
-Successful download xml/export_lib.xml
-save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes
-load templates from tpl/templates.html
-- read_nodes_data, runtime: 4.857 sec
-- nodes_obj.get_xml_nodes(), runtime: 11.211 sec
-- read_taxonomy_data, runtime: 3.413 sec
-- get taxonomy, runtime: 0.46 sec
-- get_book_category, runtime : 0.176 sec
+ajax load xml/export_lib.xml complete, runtime: 1.27 sec, state: success
+save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.179 sec
+- read templates from tpl/templates.html, runtime: 0.395 sec
+- read_nodes_data, runtime: 2.279 sec
+- nodes_obj.get_xml_nodes(), runtime: 5.67 sec
+- read_taxonomy_data, runtime: 8.07 sec
+- get taxonomy, runtime: 0.888 sec
+- get_book_category, runtime: 0.351 sec
 No $_GET value
-INIT, runtime : 21.203 sec
+runtime all : 19.102 sec
 
-Successful download xml/export_lib.xml
-save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes
-load templates from tpl/templates.html
-- read_nodes_data, runtime: 2.323 sec
-- nodes_obj.get_xml_nodes(), runtime: 5.562 sec
-- read_taxonomy_data, runtime: 8.024 sec
-- get taxonomy, runtime: 0.52 sec
-- get_book_category, runtime : 0.163 sec
+Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
+
+get storage element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.264 sec, error: null
+- read templates from tpl/templates.html, runtime: 0.381 sec
+- read_nodes_data, runtime: 2.388 sec
+- nodes_obj.get_xml_nodes(), runtime: 6.111 sec
+- read_taxonomy_data, runtime: 6.598 sec
+- get taxonomy, runtime: 0.585 sec
+- get_book_category, runtime: 0.164 sec
 No $_GET value
-INIT, runtime : 17.084 sec
-
+runtime all : 16.491 sec
 ------------------------------------
 mycomp, ff
 get cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes, runtime: 0.474 sec, error: null
