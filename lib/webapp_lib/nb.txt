@@ -3,31 +3,41 @@
 необходимые пунткты меню терминов....
 
 - выяснить разницу в скорости считывания данных из xml или json форматов
+- есть ли разница в скорости считывания данных из единого файла или при 
+чтении таблиц данных из отдельных файлов
 
+export  
 
-https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
-исправить ошибку фильтрации директив шаблона: {{директива}} заменяется на
-%7B%7Bдиректива%7D%7D (ff v3-12 ???)
+    исправление формата экспортного хмл-файла  
+
+- исправить название таблиц: <table name="название таблицы">  
+- включить  экспорт результаты связанных запросов для экономии времени поиска данных  
+- Исправить ошибку записи - обрезается последний тег </lib>, получается <li 
+
+    исправление структуры модуля Lib  
+
 
 
     *Сделать возможность отключения использования кэша браузера при помощи параметра config["use_localcache"] = true/false; 
     *Вызов панели лога нажатием на апостроф, ESC 
 
-    В панели лога сделать вкладки 
+    В панели лога сделать вкладки (
+статистика, подсчет объема в байтах lib_obj
+общее кол-во книг, авторов 
+)
 
     *Сделать мобильную версию, убирается градиент, смещаются блоки меню (+вверх и складываются до кликабельного заголовка)
-
-    нужно подсчитать размер всех массивов, объектов, переменных скрипта  и выводить в лог (вкладка статистики) 
-
-    Выводить в футере общее кол-во книг, авторов 
 
  
 
 templates 
 
-    Найти шаблонизатор с возможностью наглядного отображения шаблонов на странице (mustashe, hogan)
-
+    Подключить шаблонизатор с возможностью наглядного отображения шаблонов на странице (mustashe, hogan)
     сделать загрузку файла с шаблоном с помощью <script type="text/template"></script> 
+    Перенести шаблоны в index.html ????
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
+исправить ошибку фильтрации директив шаблона: {{директива}} заменяется на
+%7B%7Bдиректива%7D%7D (ff v3-12 ???)
 
 
 
@@ -45,11 +55,6 @@ taxonomy
     *функция вывода нод термина  
 	добавить вывод терминов словаря BOOKTAGS
     Вывод кол-ва связанных с термином книг 
-
-    Уменьшить время загрузки терминов таксономии ( 
-Function read_taxonomy_data, runtime: 0.205 sec, workcomp 
-read_taxonomy_data, runtime: 1.076 sec, mycomp
-) 
 
   
 
@@ -74,17 +79,13 @@ breadcrumb
     функция вывода строки навигации  
 (class root-link обозначает ссылку, клик на к-рой, очищает lib_obj["breadcrumbs"])
 
-export  
-
-    исправление формата экспортного хмл-файла  
-
-- исправить название таблиц: <table name="название таблицы">  
-- включить  экспорт результаты связанных запросов для экономии времени поиска данных  
-- Исправить ошибку записи - обрезается последний тег </lib>, получается <li 
-
-    исправление структуры модуля Lib  
   
 ======================================== RUNTIME
+    Уменьшить время загрузки терминов таксономии ( 
+Function read_taxonomy_data, runtime: 0.205 sec, workcomp 
+read_taxonomy_data, runtime: 1.076 sec, mycomp
+) 
+
 eee-pc, chrome
 Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.4 Safari/532.5
 LocalStorage is available
@@ -96,13 +97,15 @@ error, no save lib_xml, Error: QUOTA_EXCEEDED_ERR: DOM Exception 22
 - read templates from tpl/templates.html, runtime: 0.372 sec
 - read_nodes_data, runtime: 1.772 sec
 - nodes_obj.get_xml_nodes(), runtime: 3.813 sec
-- read_taxonomy_data, runtime: 2.429 sec
+                - read_taxonomy_data, runtime: 2.429 sec
 - get taxonomy, runtime: 0.424 sec
 - get_book_category, runtime: 0.095 sec
 No $_GET value
 runtime all : 15.323 sec
 
-eee-pc, ff
+------------------------------- eee-pc
+
+ff
 Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0
 LocalStorage is available
 Your browser does not have support for WebSQL
@@ -113,7 +116,7 @@ save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.179
 - read templates from tpl/templates.html, runtime: 0.395 sec
 - read_nodes_data, runtime: 2.279 sec
 - nodes_obj.get_xml_nodes(), runtime: 5.67 sec
-- read_taxonomy_data, runtime: 8.07 sec
+               - read_taxonomy_data, runtime: 8.07 sec
 - get taxonomy, runtime: 0.888 sec
 - get_book_category, runtime: 0.351 sec
 No $_GET value
@@ -128,18 +131,19 @@ get storage element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.264 s
 - read templates from tpl/templates.html, runtime: 0.381 sec
 - read_nodes_data, runtime: 2.388 sec
 - nodes_obj.get_xml_nodes(), runtime: 6.111 sec
-- read_taxonomy_data, runtime: 6.598 sec
+            - read_taxonomy_data, runtime: 6.598 sec
 - get taxonomy, runtime: 0.585 sec
 - get_book_category, runtime: 0.164 sec
 No $_GET value
 runtime all : 16.491 sec
-------------------------------------
-mycomp, ff
+
+------------------------------------ mycomp
+ff
 get cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes, runtime: 0.474 sec, error: null
 load templates from tpl/templates.html
 - read_nodes_data, runtime: 0.706 sec
 - nodes_obj.get_xml_nodes(), runtime: 1.102 sec
-- read_taxonomy_data, runtime: 0.955 sec
+            - read_taxonomy_data, runtime: 0.955 sec
 - get taxonomy, runtime: 0.062 sec
 - get_book_category, runtime : 0.022 sec
 No $_GET value
