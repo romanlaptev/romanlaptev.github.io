@@ -144,13 +144,59 @@
 
 	
 <div id="info">
-	<button id="info-panel-clear" class="btn btn-danger btn-sm">clear log</button>
-	<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
 	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
-	<div class="message"></div>
-<!--
-	<a href="stable.index.html">last version</a>
- -->
+	
+	
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a data-toggle="tab" href="#tab1">Log</a>
+		</li>
+		<li>
+			<a data-toggle="tab" href="#tab2">Control panel</a>
+		</li>
+		<li>
+			<a data-toggle="tab" href="#tab3">Tab3</a>
+		</li>
+	</ul>
+	
+	<div class="tab-content">
+		<div id="tab1" class="tab-pane fade in active">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<button id="info-panel-clear" class="btn btn-danger btn-sm pull-right">clear log</button>
+<div class="message"></div>
+
+				</div>
+			</div>
+		</div>
+		
+		<div id="tab2" class="tab-pane fade">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+					
+<section id="control">
+	<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
+</section>	
+					
+<section id="config">
+config variable....
+</section>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tab3" class="tab-pane fade">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<section id="stat-info">
+RAM usage, book_count
+</section>
+				</div>
+			</div>
+		</div>
+		
+	</div><!-- end tab-content -->
+	
 </div>
 
 <div id="ajaxBusy">

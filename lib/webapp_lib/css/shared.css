@@ -22,19 +22,21 @@ clear:both;
 }
 
 
-#info
-{
+#info{
 background: #FFD700;
-/*height: 50px;*/
 padding: 10px;
 position: fixed;
 right: 0;
 top: 0;
+/*
   min-height: 20%;
   min-width: 30%;
+*/  
+min-height: 15%;
+width: 50%;  
 }
-#info .close 
-{
+
+#info .close {
   display: block;
   float: right;
   left: 5px;
