@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test JS sizeof plugin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<script type="text/javascript" src="sizeof.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Test JS sizeof plugin</h1>
+		</div>
+		
+<pre>
+http://code.stephenmorley.org/javascript/finding-the-memory-usage-of-objects/
+http://stackoverflow.com/questions/1248302/javascript-object-size
+
+http://interestabout.blogspot.ru/2011/08/javascript_15.html
+
+var obj = {
+	"boolean" : true,//4 byte
+	"number" : 1,// 8 byte, float64
+	"string" : "abc",//unicode
+	"array" : [1, 2, 3]
+};		
+var size = sizeof(obj); //82 (size of key + size of value)
+<div id="res"></div>
+</pre>
+<script>
+	
+var obj = {
+	"boolean" : true,
+	"number" : 1,
+	"string" : "a",
+	"array" : [1, 2, 3]
+};		
+var size = sizeof(obj);
+console.log( size );
+res.innerHTML += "Size of OBJ: " + size + " bytes.";
+
+var json = JSON.stringify( obj );
+roughObjSize = json.length;
+console.log( json, roughObjSize );//58
+
+</script>
+
+
+<pre>
+------------------------------------------------------- string in bytes
+var s = "йцукен";
+console.log( s.length );//6
+
+1.
+
+String.prototype.byteLength = function(){
+   var str = this, length = str.length, count = 0, i = 0, ch = 0;
+   for(i; i < length; i++){
+     ch = str.charCodeAt(i);
+     if(ch <= 127){
+        count++;
+     }else if(ch <= 2047){
+        count += 2;
+     }else if(ch <= 65535){
+        count += 3;
+     }else if(ch <= 2097151){
+        count += 4;
+     }else if(ch <= 67108863){
+        count += 5;
+     }else{
+        count += 6;
+     }    
+  }
+  return count;
+};
+
+console.log('Length: ', s.byteLength(), ' byte(s)');//12
+
+2.
+var count = unescape(encodeURIComponent(s)).length;//12
+console.log(count );
+
+----------------------
+var s = "qwerty";
+console.log( s.length );//6
+var count = unescape(encodeURIComponent(s)).length;
+console.log('Length: ', count , ' byte(s)');//6
+
+</pre>
+<script>
+var s = "йцукен";
+console.log( s.length );//6
+var count = unescape(encodeURIComponent(s)).length;
+console.log('Length: ', count , ' byte(s)');//12
+
+var s = "qwerty";
+console.log( s.length );//6
+var count = unescape(encodeURIComponent(s)).length;
+console.log('Length: ', count , ' byte(s)');//6
+</script>	
+
+<pre>
+http://stackoverflow.com/questions/1248302/javascript-object-size
+var _ = require('lodash');
+
+var typeSizes = {
+    'boolean': function() { return 4 },
+    'number': function() { return 8 },
+    'string': function(item) { return 2 * item.length },
+    'object': function(item) { return getObjectSize(item) }
+};
+
+module.exports = function sizeOf(value) {
+    return typeSizes[typeof value](value);
+};
+
+function getObjectSize(object){
+    return _.reduce(object, function(sum, value, key) {
+        return sum + sizeOf(value) + sizeOf(key);
+    }, 0);
+}
+</pre>
+
+		
+	</div><!-- end container -->
+
+	
+
+
+</body>
+</html>
