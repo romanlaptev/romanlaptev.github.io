@@ -22437,6 +22437,17 @@ lib//comp_books/program/asp
 Создание приложений Microsoft ASP.NET
 		</bookname>
 	</node>
+	<node title="Создание приложений для Windows 8 с использованием HTML5 и JavaScript" nid="1704" mlid="2103" plid="391" type="library_book" created="20-Jun-2016 19:59:07" changed="20-Jun-2016 20:08:24" weight="0">
+		<subfolder>
+lib/comp_books/program/js
+		</subfolder>
+		<author>
+Штефен Вальтер
+		</author>
+		<bookname>
+Создание приложений для Windows 8 с использованием HTML5 и JavaScript
+		</bookname>
+	</node>
 	<node title="Список иллюстраций" nid="1696" mlid="2089" plid="494" type="library_book" created="02-May-2016 08:26:57" changed="03-May-2016 22:01:39" weight="0">
 		<body_value>
 &amp;lt;p&amp;gt;О технике гравюры&amp;lt;/p&amp;gt;
@@ -30366,6 +30377,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1703" bundle="library_book" delta="0">
 		<value>dehvid-herman-sila-javascript.pdf</value>
 	</item>
+	<item entity_id="1704" bundle="library_book" delta="0">
+		<value>Stephen_Walther_Windows_8_HTML5_JavaScript.pdf</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -32961,6 +32975,9 @@ http://localhost#localhost, direct link
 	<item entity_id="1703" bundle="library_book" delta="0">
 		<value>https://drive.google.com/file/d/0B0l5s_9HQLzzc2FvYmFzZGVnVWc/view?usp=sharing_eid&amp;ts=5757d561</value>
 	</item>
+	<item entity_id="1704" bundle="library_book" delta="0">
+		<value>https://drive.google.com/file/d/0B0l5s_9HQLzzTmQzUVVpOG1ZQ00/view?usp=sharing_eid&amp;ts=57678302</value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, roman.v.laptev cloud
@@ -33037,6 +33054,9 @@ http://localhost#localhost, direct link
 	<item entity_id="1688" bundle="library_book" delta="1">
 		<value>
 </value>
+	</item>
+	<item entity_id="1704" bundle="library_book" delta="1">
+		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/program/js/Stephen_Walther_Windows_8_HTML5_JavaScript.pdf</value>
 	</item>
 	<item entity_id="703" bundle="library_book" delta="2">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/art_books/scan_japan_gravure
@@ -34353,6 +34373,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1703" delta="0">
 		<termin tid="182" >учебная литература</termin>
 	</item>
+	<item entity_id="1704" delta="0">
+		<termin tid="182" >учебная литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35478,6 +35501,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1703" delta="1">
 		<termin tid="38" >компьютерная литература</termin>
 	</item>
+	<item entity_id="1704" delta="1">
+		<termin tid="38" >компьютерная литература</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36387,6 +36413,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1703" delta="2">
 		<termin tid="100" >javascript</termin>
 	</item>
+	<item entity_id="1704" delta="2">
+		<termin tid="100" >javascript</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -36922,6 +36951,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="69" >pdf</termin>
 	</item>
 	<item entity_id="1703" delta="3">
+		<termin tid="69" >pdf</termin>
+	</item>
+	<item entity_id="1704" delta="3">
 		<termin tid="69" >pdf</termin>
 	</item>
 	<item entity_id="224" delta="4">
@@ -37910,6 +37942,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1703" delta="0">
 		<termin tid="120" >D</termin>
+	</item>
+	<item entity_id="1704" delta="0">
+		<termin tid="117" >A</termin>
 	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
@@ -43377,6 +43412,18 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1703" tid="160">
 	</item>
 	<item nid="1703" tid="192">
+	</item>
+	<item nid="1704" tid="182">
+	</item>
+	<item nid="1704" tid="38">
+	</item>
+	<item nid="1704" tid="100">
+	</item>
+	<item nid="1704" tid="69">
+	</item>
+	<item nid="1704" tid="117">
+	</item>
+	<item nid="1704" tid="192">
 	</item>
 </table_taxonomy_index>
 

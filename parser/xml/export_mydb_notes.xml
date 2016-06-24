@@ -2856,12 +2856,12 @@ Now, we can login to nas using telnet, user root without password.
 
 </filename>
 </node>
-<node title="NetBeans" nid="1172" mlid="3331" plid="1589" created="05-May-2016 20:02:32" changed="05-May-2016 20:02:32" weight="0">
+<node title="NetBeans" nid="1172" mlid="3331" plid="1589" created="05-May-2016 20:02:32" changed="08-May-2016 13:35:19" weight="0">
 <body_value>
 Настройка табуляции в NetBeans
 
-Как же всё же настроить нормальную табуляцию в NetBeans.
-А всё просто: Открываем в менюшке Tools -&gt; Options -&gt; Editor -&gt; Formating
+Как настроить нормальную табуляцию в NetBeans.
+Открываем в менюшке Tools -&gt; Options -&gt; Editor -&gt; Formating
 Снимаем галочку с Expand Tabs to Spaces
 Поставить ОДИНАКОВОЕ значение у Number of Spaces per Indent и Tab Size (у меня стоит по 4)
 ==============================
@@ -2871,6 +2871,31 @@ NETBEANS: вертикальное выделение
 https://blogs.oracle.com/netbeansphp/entry/rectangular_selection
 You can select the rectangle after pressing Rectangular Selection toggle
 button in the editor toolbar or pressing CTRL+SHIFT+R shortcut.
+
+===============================
+
+
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="NetBeans, поисковые регулярные выражения" nid="1173" mlid="3332" plid="3331" created="08-May-2016 13:34:50" changed="08-May-2016 14:07:45" weight="0">
+<body_value>
+//перенос предложений в поисковой фразе
+xmlns:foaf=&quot;http://xmlns.com/foaf/0.1/&quot;\s\ xmlns:og=&quot;http://ogp.me/ns#&quot;
+xmlns:foaf=&quot;http://xmlns.com/foaf/0.1/&quot;\n\ xmlns:og=&quot;http://ogp.me/ns#&quot;
+
+//подстановка любого кол-ва символов в поиской фразе
+искать:
+&lt;div id=&quot;node-.*&quot; class=&quot;node node-book&quot; about=&quot;/.*&quot; typeof=&quot;sioc:Item foaf:Document&quot;&gt;
+(&lt;div id=&quot;node-131&quot; class=&quot;node node-book&quot; about=&quot;/german_engraving_technique.html&quot; typeof=&quot;sioc:Item foaf:Document&quot;&gt;)
+
+заменить на:
+&quot;&quot;
+==============================
+&lt;|| на предыдущую страницу&lt;/a&gt; - нужно экранировать знак &lt; - \&lt;\||
+
 </body_value>
 <filename>
 
@@ -8445,6 +8470,21 @@ git push origin :heads/new_branch_name
 
 </filename>
 </node>
+<node title="gitignore" nid="1176" mlid="3337" plid="3006" created="29-May-2016 11:11:29" changed="29-May-2016 11:11:29" weight="0">
+<body_value>
+https://help.github.com/articles/ignoring-files/
+
+echo &quot;folder/subfolder/&quot; &gt; .gitignore
+
+//после создания правила в файле .gitignore нужно
+//удалить из кэша игнорируемые файлы и папки
+git rm --cached filename
+git rm --cached -r foldername/subfolder
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="google" nid="993" mlid="3089" plid="2300" created="19-Apr-2014 18:21:51" changed="19-Apr-2014 18:21:51" weight="0">
 <body_value>
 Поисковые запросы GOOGLE
@@ -12722,11 +12762,6 @@ CLI: split.php
 
 </filename>
 </node>
-<node title="sql" nid="741" mlid="2415" plid="1588" created="06-Jan-2013 13:59:35" changed="20-Apr-2014 16:17:45" weight="0">
-<filename>
-
-</filename>
-</node>
 <node title="sql export queries" nid="748" mlid="2473" plid="3316" created="10-Mar-2013 10:08:07" changed="06-Feb-2016 12:02:00" weight="0">
 <body_value>
 &lt;div&gt;
@@ -13498,6 +13533,32 @@ LOAD DATA INFILE './traffic.table1.txt' fields terminated by ',' INTO TABLE traf
 
 </filename>
 </node>
+<node title="sql, mysql, sqlite" nid="741" mlid="2415" plid="1588" created="06-Jan-2013 13:59:35" changed="13-May-2016 11:22:03" weight="0">
+<body_value>
+MySQL
+запросы
+==========================================================
+If you get the error mysqldump: Got error: 1146: Table 'table' doesn't
+exist when using LOCK TABLES , while taking the backup of the mysql
+database , then you can use the following command to backup the database .
+
+
+\MySQL\bin&gt;mysqldump.exe -uusername -ppassword dbname --skip-lock-tables 
+
+==========================================================
+объединение запросов
+SELECT * FROM _iblock_elements WHERE iblock_id=9 AND active=1 AND section_id REGEXP &quot;(^|;)43($|;)&quot; ORDER BY timestamp
+
+=========================
+SQLite
+аналог функции concat (как в MySQL) для склейки строк
+select 'qwe' || 'asd'
+http://www.sql.ru/forum/703254/analog-funkcii-concat
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="sql, regexp" nid="1098" mlid="3218" plid="2415" created="18-Mar-2015 06:55:10" changed="18-Mar-2015 07:09:53" weight="0">
 <body_value>
 -- выбрать заголовки, к-рые оканчиваются на 'ние'
@@ -13574,7 +13635,7 @@ $ srttool -s -i movie_1.srtx -o my_movie_1.srt
 
 </filename>
 </node>
-<node title="svn" nid="1170" mlid="3329" plid="1588" created="24-Apr-2016 11:12:43" changed="24-Apr-2016 11:49:57" weight="0">
+<node title="svn" nid="1170" mlid="3329" plid="1588" created="24-Apr-2016 11:12:43" changed="26-May-2016 20:19:24" weight="0">
 <body_value>
 //создать рабочую копию репозитория
 sudo svn checkout https://github.com/romanlaptev/site.gravura.git
@@ -13605,6 +13666,10 @@ svn commit -m &quot;vbox2, commit2&quot;
 svn log
 svn update
 
+//==============================
+//переключиться на ветку test
+sudo svn switch https://github.com/romanlaptev/lib.git/branches/test
+svn info
 </body_value>
 <filename>
 
@@ -17444,6 +17509,47 @@ Windows XP Professional - значит все получилось!
 
 </filename>
 </node>
+<node title="Исправление ошибки при использовании PHP 5.4 + SQLite" nid="1175" mlid="3334" plid="1590" created="12-May-2016 12:00:49" changed="12-May-2016 12:00:49" weight="0">
+<body_value>
+http://www.drupal.ru/node/86646
+
+Warning: Illegal string offset 'field' in UpdateQuery_sqlite-&gt;removeFieldsInCondition() (line 75 of D:\Apache2_2\htdocs\orion_dr\includes\database\sqlite\query.inc).
+
+
+Эта проблема лечиться либо патчем либо простым редактором кода в файле - query.inc ;)
+У меня он находиться /drupal/includes/database/sqlite/query.inc
+Вместо:
+protected function removeFieldsInCondition(&amp;$fields, QueryConditionInterface $condition) {
+    foreach ($condition-&gt;conditions() as $child_condition) {
+        if ($child_condition['field'] instanceof QueryConditionInterface) {
+          $this-&gt;removeFieldsInCondition($fields, $child_condition['field']);
+        }
+        else {
+          unset($fields[$child_condition['field']]);
+        }
+    }
+  }
+
+Получаем:
+protected function removeFieldsInCondition(&amp;$fields, QueryConditionInterface $condition) {
+    foreach ($condition-&gt;conditions() as $child_condition) {
+      if (isset($child_condition['field'])) {
+        if ($child_condition['field'] instanceof QueryConditionInterface) {
+          $this-&gt;removeFieldsInCondition($fields, $child_condition['field']);
+        }
+        else {
+          unset($fields[$child_condition['field']]);
+        }
+      }
+    }
+  }
+
+https://www.drupal.org/node/1611828
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="Как загрузить программно картинку в графическое поле CCK" nid="752" mlid="2481" plid="1590" created="16-Mar-2013 12:14:58" changed="16-Mar-2013 12:14:58" weight="0">
 <body_value>
 http://www.drupal.ru/node/9428
@@ -17915,6 +18021,25 @@ function onYouTubePlayerAPIReady() {
     document.getElementById('pauseYoutube1').onclick = function() {play.pauseVideo();};
 }
 &lt;/script&gt;
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="Отключить &quot;Чистые ссылки&quot;" nid="1174" mlid="3333" plid="1590" created="12-May-2016 09:09:32" changed="12-May-2016 09:12:46" weight="0">
+<body_value>
+Отключить &quot;Чистые ссылки&quot; в settings.php
+
+В файле настроек нужного сайта (домена) указать в самом конце, чтобы переопределить эту переменную, если она уже есть в этом файле:
+$conf['clean_url'] = 0;
+http://drupal.ua/groups/drupal-kukhnya/otklyuchyt-chystye-ssylky-clean-urls
+
+-----------------------
+http://cmspress.info/drupal/snippet/542
+Выключить чистые ссылки:
+
+UPDATE variable SET value='s:1:&quot;0&quot;;' WHERE name='clean_url';
+DELETE FROM cache;
 </body_value>
 <filename>
 
