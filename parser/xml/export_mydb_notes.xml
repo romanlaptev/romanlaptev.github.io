@@ -17509,6 +17509,29 @@ Windows XP Professional - значит все получилось!
 
 </filename>
 </node>
+<node title="Использование подстановки при поиске и замене" nid="1177" mlid="3339" plid="3135" created="24-Jun-2016 19:52:31" changed="24-Jun-2016 19:52:31" weight="0">
+<body_value>
+Регулярные выражения. Использование подстановки при поиске и замене
+
+Найти:
+     &quot;text&quot;:(.*), &quot;text&quot;
+
+{&quot;kod&quot;:&quot;-00471031&quot;, &quot;text&quot;:&quot;ABRENES IELA&quot;, &quot;text&quot;:&quot;ABRENES IELA&quot;}
+(.*) - любой символ (.), встречается множество раз. Это выражение
+используется
+при замене под именем \1
+
+Заменить на:
+     &quot;text&quot;:\1, &quot;text_transliter&quot;
+{&quot;kod&quot;:&quot;-00471031&quot;, &quot;text&quot;:&quot;ABRENES IELA&quot;, &quot;text_transliter&quot;:&quot;ABRENES IELA&quot;}
+
+http://www.vsedela.ru/index.php?topic=3188.0
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="Исправление ошибки при использовании PHP 5.4 + SQLite" nid="1175" mlid="3334" plid="1590" created="12-May-2016 12:00:49" changed="12-May-2016 12:00:49" weight="0">
 <body_value>
 http://www.drupal.ru/node/86646
