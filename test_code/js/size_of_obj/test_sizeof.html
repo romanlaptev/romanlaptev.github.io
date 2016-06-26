@@ -23,24 +23,91 @@ http://interestabout.blogspot.ru/2011/08/javascript_15.html
 var obj = {
 	"boolean" : true,//4 byte
 	"number" : 1,// 8 byte, float64
-	"string" : "abc",//unicode
-	"array" : [1, 2, 3]
+	"string" : "abc",//6 bytes, unicode
+	"array" : [1, 2, 3]//24 byte
 };		
-var size = sizeof(obj); //82 (size of key + size of value)
+var size = sizeof(obj); //82 (size of key (48) + size of value (42) = 90 ????????)
 <div id="res"></div>
 </pre>
 <script>
-	
+/*	
 var obj = {
 	"boolean" : true,
 	"number" : 1,
-	"string" : "a",
+	"s1" : "b",
+	"s2" : "б",
 	"array" : [1, 2, 3]
+};
+*/
+var obj = {
+	"boolean" : true,//4 byte
+	"number" : 1,// 8 byte, float64
+	"s1" : "b",//1 byte, unicode????
+	"s2" : "б",//2 byte, unicode
+	"array" : [1, 2, 3],//24 byte
+	//"f1"	:	function(){
+//console.log('test!');
+	//},
+	"obj2"	:	{
+					"kod" : "lva",
+					"obj3" : "abc",
+				}
 };		
+
 var size = sizeof(obj);
 console.log( size );
-res.innerHTML += "Size of OBJ: " + size + " bytes.";
+res.innerHTML += "<p>1.Size of OBJ: " + size + " bytes.</p>";
 
+var size = count_bytes(obj);
+console.log( size );
+res.innerHTML += "<p>2.Size of OBJ: " + size + " bytes.</p>";
+
+
+function count_bytes( obj ){
+	var size = 0;
+	for(var index in obj) {
+		
+		if (Object.prototype.toString.call( obj ) !== '[object Array]'){
+			size += 2 * index.length;//key size in bytes
+//console.log( index, index.length, typeof index );
+		}
+		
+console.log( index, obj[index], typeof obj[index] );
+		switch (typeof obj[index]){
+
+			case 'boolean': 
+				size += 4; 
+				break;
+
+			case 'number': 
+				size += 8; 
+				break;
+
+			case 'string': 
+				//size += 2 * obj[index].length; 
+//console.log( encodeURIComponent( obj[index] ), unescape(encodeURIComponent( obj[index] )).length );
+				
+				size += unescape(encodeURIComponent( obj[index] )).length;
+				break;
+
+			case 'object':
+				
+				if (Object.prototype.toString.call( obj[index] ) === '[object Array]'){
+					var size2 = 0
+					size2 += count_bytes( obj[index]);
+					size += size2;
+//console.log( size2, size );
+				} else {
+					size += count_bytes( obj[index]);
+				}
+				break;
+
+		}//end switch
+	}//next item
+	return size;
+}//end count_bytes()
+//
+//-----------------------------------------
 var json = JSON.stringify( obj );
 roughObjSize = json.length;
 console.log( json, roughObjSize );//58

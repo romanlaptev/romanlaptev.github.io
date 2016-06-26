@@ -20,7 +20,7 @@ function sizeof(object){
 
   // initialise the list of objects and size
   var objects = [object];
-console.log( object, objects);
+//console.log( object, objects);
 
   var size    = 0;
 
