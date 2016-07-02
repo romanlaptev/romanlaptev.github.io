@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+	<link rel="stylesheet" href="http://www.blueprintcss.org/blueprint/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="http://www.blueprintcss.org/blueprint/print.css" type="text/css" media="print"> 
+-->
+<link rel="stylesheet" href="../css/test_blueprint/print.css"/>
+<link rel="stylesheet" href="../css/test_blueprint/screen.css"/>
+
+	<!--[IE]>
+	<link rel="stylesheet" href="../css/test_blueprint/ie.css" type="text/css" media="print"> 
+	<![endif]-->
+
+	<title>Browser info</title>
+	
+<script>
+window.onload = function(){
+	var log = document.getElementById("log");
+	log.innerHTML += "<p>" + navigator.userAgent + "</p>";
+
+	if (!window.console){ 
+		console = {
+			log: function( message ) {
+				alert( message );
+				//document.getElementById("log").innerHTML += message;
+			}
+		};		 
+ 		var message = "Your browser does not support <b>console.log</b>";
+		log.innerHTML += "<p>" + message + "</p>";
+	};
+	
+	if ( window.addEventListener ) {
+		var message = "<b>window.addEventListener</b> support in this browser";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+		var message = "<b>window.addEventListener</b> not support...";
+		log.innerHTML += "<p>" + message + "</p>";
+	};
+	
+	if (window.attachEvent) {
+		var message = "<b>window.attachEvent</b> support in this browser";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+		var message = "<b>window.attachEvent</b> not support...";
+		log.innerHTML += "<p>" + message + "</p>";
+	};
+
+	if (document.querySelector) {
+		var message = "<b>document.querySelector</b> support in this browser";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+		var message = "<b>document.querySelector</b> not support...";
+		log.innerHTML += "<p>" + message + "</p>";
+	};
+	
+	
+	
+	if(window.ActiveXObject || "ActiveXObject" in window){
+		log.innerHTML += "<p><b>ActiveXObject</b> support: " + window.ActiveXObject + "</p>";
+	} else {
+		log.innerHTML += "<p><b>ActiveXObject</b> is not support: " + window.ActiveXObject + "</p>";
+	}
+	
+	if (window.DOMParser) { // all browsers, except IE before version 9
+		log.innerHTML += "<p><b>window.DOMParser</b> support: " + window.DOMParser + "</p>";
+	}
+	
+	if( navigator.geolocation ) {
+		var message = "<b>Geolocation API</b> (navigator.geolocation) support in this browser";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+		var message = "<b>Geolocation API</b> (navigator.geolocation) not support in browser";
+		log.innerHTML += "<p>" + message + "</p>";
+	}
+	
+	if( window.File && window.FileList && window.FileReader ) {
+		var message = "Your browser support <b>File API</b> (window.File && window.FileList && window.FileReader)";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+ 		var message = "Your browser does not support <b>File API</b>";
+		log.innerHTML += "<p>" + message + "</p>";
+	}
+
+	if('WebSocket' in window) {
+		var message = "<b>WebSocket</b> is support";
+		log.innerHTML += "<p>" + message + "</p>";
+	} else {
+		var message = "This browser do not have <b>WebSocket</b> support.";
+		log.innerHTML += "<p>" + message + "</p>";
+	}
+	
+}//end load
+
+</script>
+
+
+<style>
+.log{
+/*
+position:absolute;
+top:10px;
+right:10px;
+width:30%;
+opacity:0.8;
+*/
+background-color:#ffffcc;
+border:1px dashed;
+padding:10px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="prepend-4 span-12">
+		<h1>Browser info</h1>
+	</div>
+</div>
+
+<div id="log" class="log"></div>
+	
+</body>
+</html>
