@@ -59,7 +59,19 @@ var tests = [];
 	}
 	tests.push(test);
 //--------------------------------------
-
+	var test = {
+		"name" : "detect Microsoft mobile device",
+		"result" : false
+	};
+	if( (navigator.maxTouchPoints > 0) || 
+			(navigator.msMaxTouchPoints > 0) ){
+		test["result"] = true;
+		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
+	}
+	tests.push(test);
+//--------------------------------------
+	  
+	  
 	var test = {
 		"name" : "addEventListener",
 		"result" : false
