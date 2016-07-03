@@ -32,10 +32,33 @@ var tests = [];
 	};
 	if ( navigator.userAgent.match(/Mobi/) ) {
 		test["result"] = true;
+		test["msg"] = "navigator.userAgent.match(/Mobi/) === true";
 	}
 	tests.push(test);
 //--------------------------------------
 
+	var test = {
+		"name" : "touch supported",
+		"result" : false
+	};
+	var supportsTouch = false;
+	if ('ontouchstart' in window) {
+		test["result"] = true;
+		test["msg"] = "'ontouchstart' in window === true //iOS & android";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "msPointerEnabled",
+		"result" : false
+	};
+	if(window.navigator.msPointerEnabled) {
+		test["result"] = true;
+		test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
+	}
+	tests.push(test);
+//--------------------------------------
 
 	var test = {
 		"name" : "addEventListener",
@@ -339,6 +362,8 @@ border:1px dashed;
 	</div>
 	
 	<pre>
+<a href="http://mybrowserinfo.com/">mybrowserinfo.com</a>
+<a href="http://supportdetails.com/">supportdetails.com</a>
 <a href="http://caniuse.com/">caniuse.com</a>, Can I use... Support tables for HTML5, CSS3, etc
 	</pre>
 	
