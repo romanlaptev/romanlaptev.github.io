@@ -24,8 +24,18 @@ var tests = [];
 		};	
 		
 	};
-	
 //--------------------------------------
+	
+	var test = {
+		"name" : "is mobile device",
+		"result" : false
+	};
+	if ( navigator.userAgent.match(/Mobi/) ) {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
 
 	var test = {
 		"name" : "addEventListener",
@@ -183,6 +193,17 @@ console.log(window.ActiveXObject);
 //--------------------------------------
 
 	var test = {
+		"name" : "Application Cache API",
+		"result" : false
+	};
+	if (window.applicationCache) {
+		test["result"] = true;
+		test["msg"] = "window.applicationCache is supported";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
 		"name" : "Server side events",
 		"result" : false
 	};
@@ -194,7 +215,19 @@ console.log("window.EventSource = " + window.EventSource);
 	};
 	tests.push(test);
 //--------------------------------------
-		
+
+	var test = {
+		"name" : "JSON support",
+		"result" : false
+	};
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+	} else {
+		test["msg"] = "typeof JSON :" + typeof JSON;
+	}
+	tests.push(test);
+//--------------------------------------
+	
 		
 console.log(tests);	
 
