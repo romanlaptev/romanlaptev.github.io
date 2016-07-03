@@ -333,8 +333,8 @@ console.log(message);
 						var store = db.createObjectStore( store_name, { autoIncrement:true });  
 						
 						//var store = db.createObjectStore( store_name, { keyPath: INDEX_KOD, autoIncrement:true });  
-						//store.createIndex(INDEX_KOD,INDEX_KOD, {unique:true, multiEntry:false});
-						//store.createIndex(INDEX_TEXT,INDEX_TEXT, {unique:false});
+						store.createIndex(INDEX_KOD,INDEX_KOD, {unique:true, multiEntry:false});
+						store.createIndex(INDEX_TEXT,INDEX_TEXT, {unique:false});
 //var name = 'multiple_index';
 //var keyPath = ['kod','text'];
 //store.createIndex( name, keyPath );
