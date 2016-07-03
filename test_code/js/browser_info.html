@@ -124,14 +124,64 @@ console.log(window.DOMParser);
 	tests.push(test);
 //--------------------------------------
 
+	var test = {
+		"name" : "localStorage",
+		"result" : false
+	};
+	if( 'localStorage' in window && window['localStorage'] ){
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "indexedDB",
+		"result" : false
+	};
+	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	if (!window.indexedDB) {
+		test["message"] = "IndexedDB not supported";
+	} else {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Web SQL database",
+		"result" : false
+	};
+	if (window.openDatabase) {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
 console.log(tests);	
 
 window.onload = function(){
-	
-	var ua = document.getElementById("ua");
-	ua.innerHTML = navigator.userAgent;
 	var log = document.getElementById("log");
 	
+	var ua = document.getElementById("ua");
+	var tpl = ua.innerHTML;
+	var html = tpl
+	.replace("{{userAgent}}", navigator.userAgent)
+	.replace("{{product}}", navigator.product)
+	.replace("{{appCodeName}}", navigator.appCodeName)
+	.replace("{{appName}}", navigator.appName)
+	.replace("{{appVersion}}", navigator.appVersion)
+	.replace("{{cookieEnabled}}", navigator.cookieEnabled)
+	.replace("{{language}}", navigator.language)
+	.replace("{{onLine}}", navigator.onLine)
+	.replace("{{platform}}", navigator.platform)
+	.replace("{{oscpu}}", navigator.oscpu);
+	ua.innerHTML = html;
+	
+for( var item in navigator){
+console.log(item , navigator[item]);	
+}	
+//---------------------------------
+
 	var test_tpl = document.getElementById("test-tpl").innerHTML;
 //console.log( test_tpl);	
 	var tests_out = document.getElementById("tests-out");
@@ -146,7 +196,7 @@ window.onload = function(){
 			html += test_tpl
 			.replace("{{name}}", tests[n]["name"])
 			.replace("{{result}}", tests[n]["result"])
-			.replace("{{message}}", message)
+			.replace("{{message}}", message);
 		}
 	}//next
 	tests_out.innerHTML = html;
@@ -181,8 +231,19 @@ border:1px dashed;
 <a href="http://caniuse.com/">caniuse.com</a>, Can I use... Support tables for HTML5, CSS3, etc
 	</pre>
 	
-	<div class="log panel">
-		<h3 class="text-center"><span id="ua"></span></h3>
+	<div class="log panel" id="ua">
+		<h3 class="text-center">navigator.userAgent: {{userAgent}}</h3>
+		<ul>
+<li>navigator.product: {{product}}</li>
+<li>navigator.appCodeName: {{appCodeName}}</li>
+<li>navigator.appName: {{appName}}</li>
+<li>navigator.appVersion: {{appVersion}}</li>
+<li>navigator.cookieEnabled: {{cookieEnabled}}</li>
+<li>navigator.language: {{language}}</li>
+<li>navigator.onLine: {{onLine}}</li>
+<li>navigator.platform: {{platform}}</li>
+<li>navigator.oscpu: {{oscpu}}</li>
+		</ul>
 	</div>
 	
 	<div class="panel log">
@@ -194,7 +255,8 @@ border:1px dashed;
 			<ul id="tests-out">
 				<span id="test-tpl">
 					<li>
-						<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span>, {{message}}
+<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
+<p><small>{{message}}</small></p>
 					</li>
 				</span>
 			</ul>
