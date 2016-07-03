@@ -78,7 +78,31 @@ console.log(window.ActiveXObject);
 	if (window.DOMParser) { // all browsers, except IE before version 9
 		test["result"] = true;
 		test["message"] = "supported";
-console.log(window.DOMParser);
+//console.log(window.DOMParser);
+	}
+	tests.push(test);
+//--------------------------------------
+/*
+	var test = {
+		"name" : "XMLHttpRequest",
+		"result" : false
+	};
+	if ( typeof window.XMLHttpRequest === "function"){ // Mozilla, Safari, Opera ...
+		test["result"] = true;
+		test["message"] = "typeof window.XMLHttpRequest === 'function'";
+	} 
+	tests.push(test);
+//--------------------------------------
+*/
+
+	var test = {
+		"name" : "Worker",
+		"result" : false
+	};
+	if (typeof Worker != "undefined"){
+		test["result"] = true;
+	} else {
+		test["message"] = "Object Worker not supported";
 	}
 	tests.push(test);
 //--------------------------------------
@@ -154,6 +178,20 @@ console.log(window.DOMParser);
 	tests.push(test);
 //--------------------------------------
 
+	var test = {
+		"name" : "Server side events",
+		"result" : false
+	};
+	if( typeof window.EventSource === "undefined"){
+		test["message"] = "No server-sent events support";
+	} else {
+		test["result"] = true;
+console.log("window.EventSource = " + window.EventSource);
+	};
+	tests.push(test);
+//--------------------------------------
+		
+		
 if(window.console && window.console.log) {
 console.log(tests);	
 }
@@ -204,6 +242,13 @@ console.log(item + " : "+ navigator[item]);
 //console.log(item , navigator["mimeTypes"][item]);	
 //}	
 
+//console.log("window.XMLHttpRequest, raw output");	
+//console.log(typeof window.XMLHttpRequest);	
+//console.log(window.XMLHttpRequest.length);	
+//for( var item in window.XMLHttpRequest){
+//console.log(item + " : "+ window.XMLHttpRequest[item]);
+//}	
+
 //---------------------------------
 
 	var test_tpl = document.getElementById("test-tpl").innerHTML;
@@ -225,6 +270,16 @@ console.log(item + " : "+ navigator[item]);
 	}//next
 	tests_out.innerHTML = html;
 };//end load
+
+
+//------------------------------
+/*
+		var canvas = document.getElementById("myCanvas");
+        if (canvas.getContext){
+          // Specify 2d canvas type.
+          ctx = canvas.getContext("2d");
+        }
+ */
 
 </script>
 
