@@ -9,14 +9,6 @@
 var tests = [];
 
 	if (!window.console){ 
-		
-		console = {
-			log: function( message ) {
-				//alert( message );
-				document.getElementById("log").innerHTML += message+"<br>";
-			}
-		};	
-		
 		var test = {
 			"name" : "console",
 			"result" : false,
@@ -70,7 +62,12 @@ var tests = [];
 	if(window.ActiveXObject || "ActiveXObject" in window){
 		test["result"] = true;
 		test["message"] = "supported";
+
+		if(window.console && window.console.log) {
 console.log(window.ActiveXObject);
+		}
+
+		
 	}
 	tests.push(test);
 //--------------------------------------
@@ -157,7 +154,10 @@ console.log(window.DOMParser);
 	tests.push(test);
 //--------------------------------------
 
+if(window.console && window.console.log) {
 console.log(tests);	
+}
+
 
 window.onload = function(){
 	var log = document.getElementById("log");
@@ -178,16 +178,32 @@ window.onload = function(){
 	.replace("{{appCodeName}}", navigator.appCodeName)
 	.replace("{{appName}}", navigator.appName)
 	.replace("{{appVersion}}", navigator.appVersion)
+	.replace("{{appMinorVersion}}", navigator.appMinorVersion)
 	.replace("{{cookieEnabled}}", navigator.cookieEnabled)
 	.replace("{{language}}", navigator.language)
+	.replace("{{systemLanguage}}", navigator.systemLanguage)
+	.replace("{{userLanguage}}", navigator.userLanguage)
 	.replace("{{onLine}}", navigator.onLine)
 	.replace("{{platform}}", navigator.platform)
+	.replace("{{cpuClass}}", navigator.cpuClass)
 	.replace("{{oscpu}}", navigator.oscpu);
 	ua.innerHTML = html;
 	
+console.log("navigator, raw output");	
 for( var item in navigator){
-console.log(item , navigator[item]);	
+console.log(item + " : "+ navigator[item]);	
 }	
+
+//console.log("navigator.plugins, raw output");	
+//for( var item in navigator.plugins){
+//console.log(item , navigator.plugins[item]);	
+//}	
+
+//console.log("navigator.mimeTypes, raw output");	
+//for( var item in navigator["mimeTypes"]){
+//console.log(item , navigator["mimeTypes"][item]);	
+//}	
+
 //---------------------------------
 
 	var test_tpl = document.getElementById("test-tpl").innerHTML;
@@ -208,7 +224,7 @@ console.log(item , navigator[item]);
 		}
 	}//next
 	tests_out.innerHTML = html;
-}//end load
+};//end load
 
 </script>
 
@@ -231,7 +247,7 @@ border:1px dashed;
 
 <body>
 <div class="container">
-	<div class="page-heading">
+	<div class="page-header">
 		<h1>Browser info</h1>
 	</div>
 	
@@ -242,15 +258,19 @@ border:1px dashed;
 	<div class="log panel" id="ua">
 		<h3 class="text-center">navigator.userAgent: {{userAgent}}</h3>
 		<ul>
-<li>navigator.product: {{product}}</li>
-<li>navigator.appCodeName: {{appCodeName}}</li>
-<li>navigator.appName: {{appName}}</li>
-<li>navigator.appVersion: {{appVersion}}</li>
-<li>navigator.cookieEnabled: {{cookieEnabled}}</li>
-<li>navigator.language: {{language}}</li>
-<li>navigator.onLine: {{onLine}}</li>
-<li>navigator.platform: {{platform}}</li>
-<li>navigator.oscpu: {{oscpu}}</li>
+<li>navigator.product: <b>{{product}}</b></b></li>
+<li>navigator.appCodeName: <b>{{appCodeName}}</b></li>
+<li>navigator.appName: <b>{{appName}}</b></li>
+<li>navigator.appVersion: <b>{{appVersion}}</b></li>
+<li>navigator.appMinorVersion: <b>{{appMinorVersion}}</b></li>
+<li>navigator.cookieEnabled: <b>{{cookieEnabled}}</b></li>
+<li>navigator.language: <b>{{language}}</b></li>
+<li>navigator.systemLanguage: <b>{{systemLanguage}}</b></li>
+<li>navigator.userLanguage: <b>{{userLanguage}}</b></li>
+<li>navigator.onLine: <b>{{onLine}}</b></li>
+<li>navigator.platform: <b>{{platform}}</b></li>
+<li>navigator.cpuClass: <b>{{cpuClass}}</b></li>
+<li>navigator.oscpu: <b>{{oscpu}}</b></li>
 		</ul>
 	</div>
 	
