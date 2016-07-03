@@ -12,10 +12,19 @@ var tests = [];
 		var test = {
 			"name" : "console",
 			"result" : false,
-			"message" : "Your browser does not support <b>console.log</b>"
+			"msg" : "Your browser does not support <b>console.log</b>"
 		};
 		tests.push(test);
+		
+		console = {
+			log: function( msg ) {
+//				//alert( msg );
+//				document.getElementById("log").innerHTML += msg+"<br>";
+			}
+		};	
+		
 	};
+	
 //--------------------------------------
 
 	var test = {
@@ -24,9 +33,9 @@ var tests = [];
 	};
 	if ( window.addEventListener ) {
 		test["result"] = true;
-		test["message"] = "window.addEventListener supported in this browser";
+		test["msg"] = "window.addEventListener supported in this browser";
 	} else {
-		test["message"] = "window.addEventListener supported in this browser";
+		test["msg"] = "window.addEventListener supported in this browser";
 	};
 	tests.push(test);
 //--------------------------------------
@@ -37,9 +46,9 @@ var tests = [];
 	};
 	if (window.attachEvent) {
 		test["result"] = true;
-		test["message"] = "window.attachEvent supported in this browser";
+		test["msg"] = "window.attachEvent supported in this browser";
 	} else {
-		test["message"] = "window.attachEvent not supported...";
+		test["msg"] = "window.attachEvent not supported...";
 	};
 //--------------------------------------
 
@@ -49,9 +58,9 @@ var tests = [];
 	};
 	if (document.querySelector) {
 		test["result"] = true;
-		test["message"] = "supported";
+		test["msg"] = "supported";
 	} else {
-		test["message"] = "not supported...";
+		test["msg"] = "not supported...";
 	};
 	tests.push(test);
 //--------------------------------------
@@ -61,13 +70,8 @@ var tests = [];
 	};
 	if(window.ActiveXObject || "ActiveXObject" in window){
 		test["result"] = true;
-		test["message"] = "supported";
-
-		if(window.console && window.console.log) {
+		test["msg"] = "supported";
 console.log(window.ActiveXObject);
-		}
-
-		
 	}
 	tests.push(test);
 //--------------------------------------
@@ -77,7 +81,7 @@ console.log(window.ActiveXObject);
 	};
 	if (window.DOMParser) { // all browsers, except IE before version 9
 		test["result"] = true;
-		test["message"] = "supported";
+		test["msg"] = "supported";
 //console.log(window.DOMParser);
 	}
 	tests.push(test);
@@ -89,7 +93,7 @@ console.log(window.ActiveXObject);
 	};
 	if ( typeof window.XMLHttpRequest === "function"){ // Mozilla, Safari, Opera ...
 		test["result"] = true;
-		test["message"] = "typeof window.XMLHttpRequest === 'function'";
+		test["msg"] = "typeof window.XMLHttpRequest === 'function'";
 	} 
 	tests.push(test);
 //--------------------------------------
@@ -102,7 +106,7 @@ console.log(window.ActiveXObject);
 	if (typeof Worker != "undefined"){
 		test["result"] = true;
 	} else {
-		test["message"] = "Object Worker not supported";
+		test["msg"] = "Object Worker not supported";
 	}
 	tests.push(test);
 //--------------------------------------
@@ -113,9 +117,9 @@ console.log(window.ActiveXObject);
 	};
 	if( navigator.geolocation ) {
 		test["result"] = true;
-		test["message"] = "<b>navigator.geolocation</b> supported in this browser";
+		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
 	} else {
-		test["message"] = "<b>navigator.geolocation</b> not supported in this browser";
+		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
 	}
 	tests.push(test);
 //--------------------------------------
@@ -126,9 +130,9 @@ console.log(window.ActiveXObject);
 	};
 	if( window.File && window.FileList && window.FileReader ) {
 		test["result"] = true;
-		test["message"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
+		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
 	} else {
-		test["message"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
+		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
 	}
 	tests.push(test);
 //--------------------------------------
@@ -140,7 +144,7 @@ console.log(window.ActiveXObject);
 	if('WebSocket' in window) {
 		test["result"] = true;
 	} else {
-		test["message"] = "This browser do not have support <b>WebSocket</b>.";
+		test["msg"] = "This browser do not have support <b>WebSocket</b>.";
 	}
 	tests.push(test);
 //--------------------------------------
@@ -161,7 +165,7 @@ console.log(window.ActiveXObject);
 	};
 	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 	if (!window.indexedDB) {
-		test["message"] = "IndexedDB not supported";
+		test["msg"] = "IndexedDB not supported";
 	} else {
 		test["result"] = true;
 	}
@@ -183,7 +187,7 @@ console.log(window.ActiveXObject);
 		"result" : false
 	};
 	if( typeof window.EventSource === "undefined"){
-		test["message"] = "No server-sent events support";
+		test["msg"] = "No server-sent events support";
 	} else {
 		test["result"] = true;
 console.log("window.EventSource = " + window.EventSource);
@@ -192,21 +196,11 @@ console.log("window.EventSource = " + window.EventSource);
 //--------------------------------------
 		
 		
-if(window.console && window.console.log) {
 console.log(tests);	
-}
 
 
 window.onload = function(){
 	var log = document.getElementById("log");
-	if (!window.console){ 
-		console = {
-			log: function( message ) {
-				//alert( message );
-				document.getElementById("log").innerHTML += message+"<br>";
-			}
-		};	
-	};
 	
 	var ua = document.getElementById("ua");
 	var tpl = ua.innerHTML;
@@ -227,9 +221,14 @@ window.onload = function(){
 	.replace("{{oscpu}}", navigator.oscpu);
 	ua.innerHTML = html;
 	
-console.log("navigator, raw output");	
+		var msg = "navigator, raw output";	
+		console.log(msg);	
+		
+		document.getElementById("log").innerHTML += msg+"<br>";
 for( var item in navigator){
-console.log(item + " : "+ navigator[item]);	
+		var msg = item + " : "+ navigator[item];
+console.log(msg);	
+		document.getElementById("log").innerHTML += msg+"<br>";
 }	
 
 //console.log("navigator.plugins, raw output");	
@@ -257,15 +256,15 @@ console.log(item + " : "+ navigator[item]);
 	var html = "";
 	for (var n = 0; n < tests.length; n++){
 		if( tests[n] ){
-			var message = tests[n]["message"];
-			if(!message){
-				var message = "";
+			var msg = tests[n]["msg"];
+			if(!msg){
+				var msg = "";
 			}
 			
 			html += test_tpl
 			.replace("{{name}}", tests[n]["name"])
 			.replace("{{result}}", tests[n]["result"])
-			.replace("{{message}}", message);
+			.replace("{{msg}}", msg);
 		}
 	}//next
 	tests_out.innerHTML = html;
@@ -336,7 +335,7 @@ border:1px dashed;
 				<span id="test-tpl">
 					<li>
 <b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
-<p><small>{{message}}</small></p>
+<p><small>{{msg}}</small></p>
 					</li>
 				</span>
 			</ul>
