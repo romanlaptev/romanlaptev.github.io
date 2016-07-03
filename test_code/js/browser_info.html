@@ -12,8 +12,8 @@ var tests = [];
 		
 		console = {
 			log: function( message ) {
-				alert( message );
-				//document.getElementById("log").innerHTML += message;
+				//alert( message );
+				document.getElementById("log").innerHTML += message+"<br>";
 			}
 		};	
 		
@@ -161,6 +161,14 @@ console.log(tests);
 
 window.onload = function(){
 	var log = document.getElementById("log");
+	if (!window.console){ 
+		console = {
+			log: function( message ) {
+				//alert( message );
+				document.getElementById("log").innerHTML += message+"<br>";
+			}
+		};	
+	};
 	
 	var ua = document.getElementById("ua");
 	var tpl = ua.innerHTML;
@@ -247,9 +255,6 @@ border:1px dashed;
 	</div>
 	
 	<div class="panel log">
-		<div class="panel-body">
-			<ul id="log"></ul>
-		</div>
 		
 		<div class="panel-body">
 			<ul id="tests-out">
@@ -262,6 +267,12 @@ border:1px dashed;
 			</ul>
 		</div>
 		
+	</div>
+
+	<div class="panel log">
+		<div class="panel-body">
+			<pre id="log"></pre>
+		</div>
 	</div>
 	
 </div><!-- end container -->
