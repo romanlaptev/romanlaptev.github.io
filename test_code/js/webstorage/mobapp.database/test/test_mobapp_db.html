@@ -68,11 +68,11 @@ alert("Your browser does not have support localStorage");
 						"dbname" : document.getElementById("indexeddb-name").value,
 						"storename": document.getElementById("store-name").value,
 						"load_data" : data,
-						"import_type" : type,
-						"fields" : [
-							{"name":"kod","unique":true},
-							{"name":"text","unique":false}
-						]
+						"import_type" : type//,
+						//"fields" : [
+							//{"name":"kod","unique":true},
+							//{"name":"text","unique":false}
+						//]
 					};
 					add_data( params );
 				}
@@ -81,7 +81,7 @@ alert("Your browser does not have support localStorage");
 		xhr.send();
 	}//end event
 	
-	
+/*	
 	document.getElementById("btn-search-code").onclick = function(){
 		var params = {
 			"dbname" : document.getElementById("indexeddb-name").value,
@@ -92,12 +92,15 @@ alert("Your browser does not have support localStorage");
 		};
 		search( params );
 	}//end event
-	
-	document.getElementById("btn-search-text").onclick = function(){
+*/	
+	document.getElementById("btn-search").onclick = function(){
+		var n = document.getElementById("search-field").options.selectedIndex;
+		var search_field = document.getElementById("search-field").options[n].value;
 		var params = {
 			"dbname" : document.getElementById("indexeddb-name").value,
 			"store_name" : document.getElementById("search-store").value,
-			"text" : document.getElementById("search-text").value,
+			"search_value" : document.getElementById("search-value").value,
+			"search_field" : search_field, // catalog fields name - 'text', 'kod'....., required
 			"use_index" : document.getElementById('use-index').checked,
 			"use_cursor" : document.getElementById('use-cursor').checked
 		};
@@ -365,12 +368,10 @@ bacrgound-color:#cfe;
 					<input class="form-control" id="input_file" value=""/>
 	<pre>
 data/valsts_eucaris_va.json
-data/sl_valsts_detail.json
+data/test.csv
 data/PMLP_ADR_LVL_4.json (улицы, 46384 records)
 data/PMLP_ADR_LVL_4_translit.json (поиск с транслитерацией, доп. поле "text_translit")
 data/PMLP_ADR_LVL_4.csv
-data/PMLP_ADR_LVL_4_.csv (строки без ")
-data/test.csv
 	</pre>
 				</div>
 			</div>
@@ -421,6 +422,7 @@ data/test.csv
 	<div class="panel-body row">
 	
 		<div class="col-sm-12 col-md-12">
+<!--		
 			<div class="panel row">
 				<label class="col-sm-2 col-md-2">код:</label>
 				<div class="col-sm-6 col-md-6">
@@ -431,22 +433,27 @@ data/test.csv
 					<button id="btn-search-code" class="btn btn-primary">поиск</button>
 				</div>
 			</div>
-
+-->
 			
 			<div class="panel row">
-				<label class="col-sm-2 col-md-2">текст:</label>
 				<div class="col-sm-6 col-md-6">
-					<input class="form-control" id="search-text"/>
+				
+					<label>значение:</label>
+					<input class="form-control" id="search-value"/>
+					
+					<label>поле поиска(необх. для подключения индекса), text, kod</label>
+					<select id="search-field" name="search_field" class="form-control">
+						<option value="text">text</option>
+						<option value="kod">kod</option>
+					</select>
+				</div>
+				<div class="col-sm-6 col-md-6">
 					<li><small>без использования индекса - полнотекстовый поиск по подстроке (LIKE '%строка%')</small></li>
 					<li><small>при использовании индекса - поиск LIKE 'строка%'</small></li>
-				</div>
-				<div class="col-sm-2 col-md-2">
-					<button id="btn-search-text" class="btn btn-primary">поиск</button>
 				</div>
 			</div>
 			
 			<div class="panel row">
-				<div class="col-sm-2 col-md-2"></div>
 				<div class="col-sm-3 col-md-3">
 	<input type="checkbox" id="use-index">
 	<label>использовать индексы</label>
@@ -457,6 +464,9 @@ data/test.csv
 	<label>использовать в процессе поиска метод чтения курсора (для FF, Chrome отключение ускорит поиск)</label>
 				</div>
 				
+				<div class="col-sm- col-md-2">
+					<button id="btn-search" class="btn btn-primary">поиск</button>
+				</div>
 			</div>
 			
 		</div>
@@ -632,8 +642,16 @@ EDGE (desktop, virtualbox)
 
 т.е. загружаемые данные на порядок увеличиваются
 
+сохранение в цикле строки размером 1024 байт (не строятся индексы и простой формат данных):
+- 20 мб за 15,289 сек, данные доступны, 20480 records, файловый размер хранилища: IndexedDB.edb(91 мб)
+- 22 мб за 15,936 сек, данные доступны, 22527 records, файловый размер хранилища: IndexedDB.edb(112 мб)!!!!!!!!!!!!!!!!
+- 23 мб за 18 сек, данные недоступны
+- 25 мб за 19 сек, данные недоступны, файловый размер хранилища: IndexedDB.edb(124 мб)
+- 40 мб за 30,5 сек, данные недоступны
+
 -----------------
-Windows Mobile 10
+Lumia 550
+Windows Phone 10
 EDGE
 
 загрузка справочника с данными 1,84 мб  (runtime: 46,3 sec)
@@ -644,6 +662,13 @@ EDGE
 добавление 100000 х 64 байта записей - 3 мин
 записи не читаются....
 
+сохранение в цикле строки размером 1024 байт (не строятся индексы и простой формат данных):
+- 10 мб за 26,263 сек (1024*10), данные не читаются
+- 5119 строк, 5 мб за 16,692 сек, данные не читаются, 0 records
+- 4301 строк, 4.2 мб за сек, данные доступны, 4301 records!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- 4095 строк, 4 мб за 10,075 сек, данные доступны, 4096 records
+- 3071 строк, 3 мб за 7,639 сек, данные доступны, 3072 records
+- 2047 строк, 2 мб за 5,6 сек, данные доступны, 2048 records
 ------------------
 NOKIA Lumia 720
 Windows Phone 8.1, IE Mobile 11

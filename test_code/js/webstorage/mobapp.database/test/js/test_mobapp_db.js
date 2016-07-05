@@ -1,11 +1,18 @@
 var database = [];
 database["dbname"] = "mobapp";
 database["import_type"] = "json";
+database["csv_delimiter"] = ",";
+
+//indexes parameters
+database["indexes"] = [
+	{"name":"kod","unique": true }, 
+	{"name":"text","unique": false}
+];
 
 //input JSON file format
-var INDEX_KOD = "kod";
-var INDEX_TEXT = "text";
-var INDEX_TEXT_TRANSLIT = "text_transliter";
+//var INDEX_KOD = "kod";
+//var INDEX_TEXT = "text";
+//var INDEX_TEXT_TRANSLIT = "text_transliter";
 
 //console.log for old IE
 if(!window.console){
@@ -53,16 +60,37 @@ console.log( "error, undefined 'storename'" );
 
 	//detect import_type and parse input data
 	if( args["import_type"].length > 0){
-		database["import_type"] = args["import_type"];
+		var import_type = args["import_type"];
+	} else {
+		var import_type = database["import_type"];
 	}
-	switch( args["import_type"] ) {
+	
+	switch( import_type ) {
 	
 		case "json":
 			var parse_data = JSON.parse( args["load_data"] );
 		break;
 		
 		case "csv":
-			var parse_data = args["load_data"].split('\n');
+			var delimiter = database["csv_delimiter"];
+			var raw_data = args["load_data"].replace(/'/g,"").split('\n');
+			var parse_data = [];
+			for( var n1 = 0; n1 < raw_data.length; n1++){
+				var record = raw_data[n1].split( delimiter );
+				var fields = {};
+				for(var n2 = 0; n2 < record.length; n2++){
+				  var key = "key" + n2;
+				  if( n2 === 0){
+					key = "kod";
+				  }
+				  if( n2 === 1){
+					key = "text";
+				  }
+				  fields[key] = record[n2];
+				};
+//console.log(fields);
+				parse_data.push( fields );
+			}//next
 		break;
 		
 		default:
@@ -70,13 +98,13 @@ var message = "import_type error, 'json' or 'csv' only"
 console.log(message);
 			return false;
 	}
-	
+
 	var params = {
 		"dbname"	:	args["dbname"],
 		"storename":	args["storename"],
 		"action"	:	"add_records",
 		"load_data"	:	parse_data,
-		"fields"	:	args["fields"],
+		//"fields"	:	args["fields"],
 		"callback"	:	function( res ){ 
 console.log("add_data, callback function.", res);
 			var exec_end = new Date();
@@ -84,14 +112,12 @@ console.log("add_data, callback function.", res);
 			output( res );
 		}
 	};
-//console.log( params );
-
+console.log( params );
 	var html = "<h2>Load data in &quot;"+ args["storename"] + "&quot;, waiting...</h2>"
 	document.getElementById("progress-txt").innerHTML = html;
 	
 	var exec_start = new Date();
 	DB( params );
-
 
 	function output( params ){
 //console.log("function output() ", params);
@@ -130,7 +156,8 @@ console.log("add_data, callback function.", res);
 
 function search( args ){
 	var exec_start = new Date();
-	
+	database["search_field"] = args["search_field"];
+	/*
 	if( args["code"] && args["code"].length > 0){
 		var params = {
 			"dbname" : args["dbname"],
@@ -146,14 +173,14 @@ console.log("search code, callback function.....", arguments)
 		};
 		var s_value = params["code"];
 	}
-	
-	if( args["text"]  && args["text"].length > 0){
-	
+	*/
+	if( args["search_value"]  && args["search_value"].length > 0){
 		var params = {
 			"dbname" : args["dbname"],
 			"store_name" : args["store_name"],
-			"action" : "search_text",
-			"value" : args["text"],
+			"action" : "search",
+			"value" : args["search_value"],
+			"search_field" : args["search_field"],
 			"use_index" : args["use_index"],
 			"use_cursor" : args["use_cursor"],
 			"callback" : function( result ){ 
@@ -212,9 +239,8 @@ document.getElementById("search-result").innerHTML = html;
 			for( var n = 0; n < res.length; n++){
 //console.log( res[n] );
 				html += "<li>";
-				html += res[n][INDEX_KOD] + " , " + res[n][INDEX_TEXT];
-				if( res[n][INDEX_TEXT_TRANSLIT] && res[n][INDEX_TEXT_TRANSLIT].length > 0){
-					html += " , " + res[n][INDEX_TEXT_TRANSLIT];
+				for( var item in res[n]){
+					html += res[n][item] + " ";
 				}
 				html += "</li>";
 			}//next
@@ -285,7 +311,7 @@ console.log( "error, undefined DB params dbname" );
 		case "number_records":
 		case "clear_store":
 		case "search_code":
-		case "search_text":
+		case "search":
 			try{
 				var request = indexedDB.open( dbname );
 //console.log( request );
@@ -330,14 +356,30 @@ console.log(message);
 
 				case "create_store":
 					if(!db.objectStoreNames.contains( store_name )) {
+						//var store = db.createObjectStore( store_name, { keyPath: database["indexes"][0], autoIncrement:true });  
 						var store = db.createObjectStore( store_name, { autoIncrement:true });  
 						
-						//var store = db.createObjectStore( store_name, { keyPath: INDEX_KOD, autoIncrement:true });  
-						store.createIndex(INDEX_KOD,INDEX_KOD, {unique:true, multiEntry:false});
-						store.createIndex(INDEX_TEXT,INDEX_TEXT, {unique:false});
-//var name = 'multiple_index';
-//var keyPath = ['kod','text'];
-//store.createIndex( name, keyPath );
+						//create DB index
+						
+						//var index_name = database["indexes"][0]["name"];//KOD
+						//var index_field = database["indexes"][0]["name"];
+						//var uniq = database["indexes"][0]["unique"];
+						//store.createIndex( index_name, index_field, {unique : uniq});
+						
+						//store.createIndex(INDEX_TEXT,INDEX_TEXT, {unique:false});
+						
+						if( database["indexes"].length > 0 ){
+							for(var n = 0; n < database["indexes"].length; n++){
+								var index_name = database["indexes"][n]["name"];
+								var index_field = database["indexes"][n]["name"];
+								var uniq = database["indexes"][n]["unique"];
+								store.createIndex( index_name, index_field, {unique : uniq});
+							}//next index
+						}
+						
+						//var name = 'multiple_index';
+						//var keyPath = ['kod','text'];
+						//store.createIndex( name, keyPath, {unique : true} );
 						
 var message = "Create store " + store_name + ' in ' + dbname;
 //log.innerHTML += "<p class='text-success'>" + message + "</p>";
@@ -488,7 +530,7 @@ console.log(message);
 						}
 						run_transaction( params );
 					break;
-					
+					/*
 				case "search_code":
 						var params = {
 							"action": action,
@@ -501,8 +543,8 @@ console.log(message);
 							};
 						run_transaction( params );
 					break;
-					
-				case "search_text":
+					*/
+				case "search":
 				
 						var params = {
 							"action": action,
@@ -620,8 +662,8 @@ log.innerHTML += "<p class='text-danger'>" + message + "</p>";
 	var type = "readwrite";//"readonly", "version_change"
 	if( action === "get_record" ||  
 			action === "get_records" ||  
-				action === "search_code" ||
-					action === "search_text" ){
+				//action === "search_code" ||
+					action === "search" ){
 		var type = "readonly";
 	}
 	
@@ -696,9 +738,9 @@ console.log(message, e);
 				
 				//count store info size in bytes and symbols
 				var s_value = data[n];
-				if( database["import_type"] === "json"){
+				//if( database["import_type"] === "json"){
 					var s_value = JSON.stringify( data[n] );
-				}
+				//}
 				
 				total["symbols"] = total["symbols"] + s_value.length;
 //console.log( item, data[item], json_value, json_value.length );
@@ -819,7 +861,7 @@ console.log( "cursor: " , cursor, cursor.key, cursor.value );
 var message = "transaction get records complete";
 log.innerHTML += "<p class='text-success'>" + message + "</p>";
 console.log(message, event);
-console.log( records );
+//console.log( records );
 				if( callback ){
 					callback( records );
 				}
@@ -864,7 +906,7 @@ log.innerHTML += "<p class='text-success'>" + message + "</p>";
 			};
 		break;
 
-		
+		/*
 		case 'search_code':
 			var code = params["code"].toUpperCase();
 			if(!code){
@@ -934,8 +976,8 @@ console.log( result );
 			};
 			
 		break;
-		
-		case "search_text":
+		*/
+		case "search":
 			var s_value = params["value"].toUpperCase();
 			if(!s_value){
 var message = "error, empty search line (required).... " + s_value;
@@ -957,26 +999,50 @@ console.log(message);
 				var use_cursor = true;
 			}
 			
-			//checkbox "use_cursor"
+			
+			//check for index in store, index is exist....
+			var use_index = false;
+			var index_name = database["search_field"];
+			if( store.indexNames.length > 0){
+				for( var n = 0; n < store.indexNames.length; n++){
+					if( index_name === store.indexNames[n]){
+console.log( store.indexNames[n], index_name );
+						use_index = true;
+					}
+				}
+			} else {
+console.log( "Not find index for " + index_name);
+			}
+			
+			//ui checkboxes
 			if( typeof params["use_cursor"] !== "undefined"){
 				use_cursor = params["use_cursor"];
+			}
+			if( typeof params["use_index"] !== "undefined"){
+				use_index = params["use_index"];
 			}
 			
 			var result = [];
 			if ( !use_cursor) {
-				if( params["use_index"]){
-					var index = store.index(INDEX_TEXT);
+				if( use_index ){
+				
+					//var index = store.index( database["indexes"][0]["name"] );//KOD index
+					//var index = store.index( "multiple_index" );
+					var index = store.index( index_name );
+					
 					keyRange = IDBKeyRange.lowerBound ( s_value, false);
 					//keyRange = IDBKeyRange.only( s_value );
 					index.getAll( keyRange ).onsuccess = function(event) {
 						var records = event.target.result;
-						process_records ( records, s_value, INDEX_TEXT );
+						//_process_records ( records, s_value, database["indexes"][1]["name"] );
+						process_records ( records, s_value );
 					};
 					
 				} else {
 					store.getAll().onsuccess = function(event) {
 						var records = event.target.result;
-						process_records ( records, s_value, INDEX_TEXT );
+						//_process_records ( records, s_value, INDEX_TEXT );
+						process_records ( records, s_value);
 					};
 					
 					//store.getAllKeys().onsuccess = function(event) {
@@ -987,9 +1053,11 @@ console.log(message);
 			};
 
 			if ( use_cursor) {
-				if( params["use_index"]){
-					//search in fields "text"
-					var index = store.index(INDEX_TEXT);
+				if( use_index ){
+					//var index = store.index( database["indexes"][0]["name"] );//KOD index
+					//var index = store.index( "multiple_index" );
+					var index = store.index( index_name );
+					
 					//keyRange = IDBKeyRange.only( s_value );
 					
 					//keyRange = IDBKeyRange.bound( s_value, s_value + '\uffff');//LIKE 's_value%'
@@ -1002,11 +1070,13 @@ console.log(message);
 
 					keyRange = IDBKeyRange.lowerBound ( s_value, false);
 					index.openCursor( keyRange ).onsuccess = function(event) {
-						process_cursor_record ( event, s_value, INDEX_TEXT );
+						//_process_cursor_record ( event, s_value, database["indexes"][1]["name"] );
+						process_cursor_record ( event, s_value );
 					};
 				} else {
 					store.openCursor().onsuccess = function(event) {
-						process_cursor_record ( event, s_value, INDEX_TEXT );
+						//_process_cursor_record ( event, s_value, INDEX_TEXT );
+						process_cursor_record ( event, s_value);
 					};
 				};
 			};
@@ -1020,11 +1090,11 @@ console.log(message, event);
 					callback( result );
 				}
 			};
-		break;//end search text
+		break;//end search
 		
 	}//end switch
-	
-	function process_cursor_record ( event, value, index ){
+/*	
+	function _process_cursor_record ( event, value, index ){
 		var cursor = event.target.result;
 		if (cursor) {
 //console.log( "cursor: " , cursor, cursor.key, cursor.value );
@@ -1052,15 +1122,32 @@ console.log(message, event);
 			//cursor.continue();
 			cursor["continue"]();
 		}
+	}//end _process_cursor_record()
+*/
+	function process_cursor_record ( event, value){
+		var cursor = event.target.result;
+		if (cursor) {
+			for(var item in cursor.value){
+				var test_value = cursor.value[item].toUpperCase();
+				if( test_value.indexOf( value ) !== -1 ){
+//console.log( test_value );
+					result.push( cursor.value );
+					break;
+				};
+			}//next field
+			cursor["continue"]();
+		}
 	}//end process_cursor_record()
 
-	function process_records ( records, value, index ){
+/*	
+	function _process_records ( records, value, index ){
 		for( var n = 0; n < records.length; n++){
-//console.log( records[n] );
-			var test_value = records[n][index].toUpperCase();
-			if( test_value.indexOf( value ) !== -1 ){
-				result.push( records[n] );
-			};
+console.log( records[n] );
+
+			//var test_value = records[n][index].toUpperCase();
+			//if( test_value.indexOf( value ) !== -1 ){
+				//result.push( records[n] );
+			//};
 
 			if( index === INDEX_TEXT ){
 				//detect translit value (for INDEX_TEXT field)
@@ -1074,6 +1161,22 @@ console.log(message, event);
 			}
 
 		}//next
+	}//end _process_records()
+*/
+
+	function process_records ( records, value ){
+		for( var n = 0; n < records.length; n++){
+//console.log( records[n] );
+			//var test_value = JSON.stringify( records[n] ).toUpperCase();
+			for(var item in records[n]){
+				var test_value = records[n][item].toUpperCase();
+//console.log( test_value );
+				if( test_value.indexOf( value ) !== -1 ){
+					result.push( records[n] );
+					break;
+				};
+			}//next field
+		}//next record
 	}//end process_records()
 	
 }//end run_transaction()

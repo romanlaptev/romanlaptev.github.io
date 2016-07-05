@@ -2,10 +2,7 @@
 <head>
 <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
-<!--
-<script src="js/lib/jquery-1.8.2.js"></script>
-<script src="js/lib/localforage.min.js"></script>-->
+<!--<script src="js/lib/localforage.min.js"></script>-->
 <script>
 var i = 1;
 var k = 1;
@@ -17,7 +14,6 @@ var _records;
 
 function _init(){
 	//for(var i = 0; i <= (32*1024)*1; i++) val += "qwertyuiopasdfghjklzxcvbnm123456";
-	//val = "qwertyuiopasdfghjklzxcvbnm123456qwertyuiopasdfghjklzxcvbnm123456";
 	val = '[{"text":"_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}]';
 	_log('ready, value size = ' + val.length + ' bytes.', "info");
 }
@@ -108,7 +104,7 @@ function _addDBItem(customerObjectStore, db){
 			_log("Error: " + this.error, "info");
 			_log("Last item added: " + (k-1) + ", bytes stored: " + val.length*(k-1), "info");
 			_stop = false;
-
+/*
 			var req = customerObjectStore.clear();
 
 			req.onsuccess = function(evt) {
@@ -118,6 +114,7 @@ function _addDBItem(customerObjectStore, db){
 		    req.onerror = function (evt) {
 		      _log("clearObjectStore: " + this.error, "info");
 			};			
+*/			
 		};
 }
 
@@ -137,7 +134,7 @@ function testCursor(){
 		var cursor = event.target.result;
 		if (cursor) {
 			k++;
-			_log("Read item " + k + "..");
+			_log("Read item " + k + "..["+cursor.value.ssn+ ", " + cursor.value.name + "]");
 			customers.push(cursor.value);
 			cursor.continue();
 		}
@@ -149,6 +146,7 @@ function testCursor(){
 
 function testGetAll(){
 	var objectStore = db.transaction("customers", "readonly").objectStore("customers");
+	_log("getall: start..", "info");
 	_t0 = _set_timer();
 	objectStore.getAll().onsuccess = function(event) {
 		_records = event.target.result;

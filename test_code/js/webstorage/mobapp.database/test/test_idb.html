@@ -18,7 +18,8 @@ var _records;
 
 function _init(){
 	//for(var i = 0; i <= (32*1024)*1; i++) val += "qwertyuiopasdfghjklzxcvbnm123456";
-	val = "qwertyuiopasdfghjklzxcvbnm123456qwertyuiopasdfghjklzxcvbnm123456";
+	//val = "qwertyuiopasdfghjklzxcvbnm123456qwertyuiopasdfghjklzxcvbnm123456";
+	val = '[{"text":"_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}]';
 	_log('ready, value size = ' + val.length + ' bytes.', "info");
 }
 
@@ -32,7 +33,7 @@ var _get_timer = function (timer){
 };
 
 function writeIndexedDB(){
-	var dbName = "mobapp01";
+	var dbName = "mobapp";
 	indexedDB.deleteDatabase(dbName);
 	var request = indexedDB.open(dbName, 1);
 	request.onerror = function(event) {
@@ -135,7 +136,7 @@ function _addDBItem(customerObjectStore, db){
 		
 function test_addDBItem(customerObjectStore, db){
 		
-		for( var n = 0; n < 100000; n++){//1000000 60mb
+		for( var n = 0; n < (1024*23); n++){//1 mb
 			var _d = { ssn: n , name: val };
 $("#status").text(n);
 			
