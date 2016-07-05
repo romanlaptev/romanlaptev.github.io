@@ -8,11 +8,8 @@
 $(document).ready(
 function()
 {
-	$('#ajax-load').click(
-		function()
-		{
-		$.ajax(
-		{
+	$('#ajax-load').click(function(){
+		$.ajax({
 			url: 'load_html.html',
 			//url = "http://lib.wallst.ru/pages/book_Rods/index.html",
 			type: 'GET',
@@ -30,9 +27,20 @@ alert('Success!');
 			}			
 		});
 		
-		}
-	);
-});
+/*		
+//http://api.jquery.com/jquery.ajax/
+		$.ajax({ cache: false,
+			url: "/Admin/Contents/GetData",
+			data: { accountID: AccountID }
+		}).done(function (data) {
+			xxx;
+		}).fail(function (jqXHR, textStatus) {
+			xxx;
+		});
+*/
+	});//end event
+	
+});//end ready
 
 
        function test () {
@@ -110,6 +118,7 @@ alert (str_res);
 	
 	return true;
 }//----------------------------------- end func
+
 
 
 	</script>
