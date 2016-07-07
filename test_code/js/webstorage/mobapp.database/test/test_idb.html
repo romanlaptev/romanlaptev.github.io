@@ -2,6 +2,7 @@
 <head>
 <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<meta charset="utf-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!--
@@ -16,12 +17,20 @@ var db;
 var _t0;
 var _records;
 
+var database = [];
+database["dbname"] = "mobapp";
+database["storename"] = "test1";
+database["csv_delimiter"] = ",";
+database["import_type"] = "json";
+database["total_bytes"] = 0;
+
 function _init(){
 	//for(var i = 0; i <= (32*1024)*1; i++) val += "qwertyuiopasdfghjklzxcvbnm123456";
 	//val = "qwertyuiopasdfghjklzxcvbnm123456qwertyuiopasdfghjklzxcvbnm123456";
-	val = '[{"text":"_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"BEĻĢIJAS KARALISTE", "kod":"BEL"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}]';
+	//val = '[{"text":"_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B1L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B2L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B3L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B4L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B5L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B6L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B7L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B8L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B9L"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}]';
+	val = '{"text":"BEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEĻĢIJAS KARALISTE", "kod":"B1L"}';
 	_log('ready, value size = ' + val.length + ' bytes.', "info");
-}
+}//end init
 
 var _set_timer = function (){
 	var d = new Date;
@@ -33,7 +42,7 @@ var _get_timer = function (timer){
 };
 
 function writeIndexedDB(){
-	var dbName = "mobapp";
+	var dbName = database["dbname"];
 	indexedDB.deleteDatabase(dbName);
 	var request = indexedDB.open(dbName, 1);
 	request.onerror = function(event) {
@@ -50,7 +59,9 @@ function writeIndexedDB(){
 	    // Create an objectStore to hold information about our customers. We're
  	    // going to use "ssn" as our key path because it's guaranteed to be
 	    // unique - or at least that's what I was told during the kickoff meeting.
-	    var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+	    //var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+		
+		var objectStore = db.createObjectStore( database["storename"], { autoIncrement:true });  
 
 		// Create an index to search customers by name. We may have duplicates
 		// so we can't use a unique index.
@@ -60,11 +71,46 @@ function writeIndexedDB(){
 		// no two customers have the same email, so use a unique index.
 		//objectStore.createIndex("email", "email", { unique: true });
 
+		//objectStore.createIndex("kod", "kod", { unique: true });
+		
 		// Use transaction oncomplete to make sure the objectStore creation is 
 		// finished before adding data into it.
 		objectStore.transaction.oncomplete = function(event) {
 	    	// Store values in the newly created objectStore.
-    		var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
+    		var customerObjectStore = db.transaction(database["storename"], "readwrite").objectStore( database["storename"] );
+			
+			customerObjectStore.transaction.onerror = function(event) {
+console.log("transaction.onerror");
+var message = "transaction.onerror";
+log.innerHTML += "<p class='text-danger'>" + message + "</p>";
+console.log(message, event);				
+			};  
+			
+			customerObjectStore.transaction.onabort = function(event) {
+console.log("transaction.onabort", event);
+				var error = event.target.error;
+				if (error.name == 'QuotaExceededError') {
+alert("transaction.onabort, QuotaExceededError!");
+				}
+			};
+
+			customerObjectStore.transaction.oncomplete = function(event) {
+_log( "transaction.oncomplete", "info");
+console.log("transaction.oncomplete", event);
+				_log("Total time: " + _get_timer(_t0) + " sec.", "info");
+				_log( database["total_bytes"] + " bytes stored.", "info");
+				
+				var store = db.transaction(database["storename"], "readonly").objectStore( database["storename"] );
+				var req = store.count();	
+				req.onsuccess = function() {
+					var num_records = req.result;	
+var message = "Store <b>" + database["storename"] + "</b> contains " + num_records +" records.";
+_log( message, "info");
+				}
+				db.close();
+				
+			};
+			
 			var _stop = false;
 			//for(k = 1; k <= 100 && !_stop; k++){
 				//_log("k: " + k, "info");
@@ -85,13 +131,6 @@ function writeIndexedDB(){
 			//db.close();
 		};
 		
-		objectStore.transaction.onabort = function(event) {
-console.log("transaction.onabort", event);
-			var error = event.target.error;
-			if (error.name == 'QuotaExceededError') {
-alert("transaction.onabort, QuotaExceededError!");
-			}
-		};
 		
 		
 	};
@@ -135,12 +174,17 @@ function _addDBItem(customerObjectStore, db){
 
 		
 function test_addDBItem(customerObjectStore, db){
-		
-		for( var n = 0; n < (1024*23); n++){//1 mb
-			var _d = { ssn: n , name: val };
-$("#status").text(n);
+		//for( var n = 0; n < (1024*23); n++){//1 mb * 23
+		for( var n = 0; n < 1024; n++){
+		//for( var n = 0; n < database["import_data"].length; n++){
+			//var _d = { ssn: n , name: val };
+			var _d = val;
+			//var _d = database["import_data"][n];
+			var request = customerObjectStore.put(_d);
+			database["total_bytes"] = database["total_bytes"] + unescape(encodeURIComponent( _d )).length;
+//console.log(database["total_bytes"], _d, _d.length, n);
 			
-			var request = customerObjectStore.add(_d);
+			//var request = customerObjectStore.add(_d);
 			request.onsuccess = function(event) {
 				//_log("Added " + event.target.result + " items..");
 				//_log(n + ' items stored, ' + (val.length * n) + " bytes.");
@@ -150,11 +194,16 @@ $("#status").text(n);
 				_log("Error: " + this.error, "info");
 				_log("Last item added: " + (n-1) + ", bytes stored: " + val.length*(n-1), "info");
 				_stop = false;
+				var error = event.target.error;
+				if (error.name == 'QuotaExceededError') {
+alert("request.onerror, QuotaExceededError!");
+				}
+				
 			};
 		}//next
 		
-		_log('Last item stored is ' + n + ', ' + (val.length * n) + " bytes stored.", "info");
-		_log("Total time: " + _get_timer(_t0) + " sec.", "info");
+		//_log('Last item stored is ' + n + ', ' + (val.length * n) + " bytes stored.", "info");
+		_log("Runtime cycle: " + _get_timer(_t0) + " sec.", "info");
 		_stop = false; i = 1;
 
 }//end test_addDBItem
@@ -167,7 +216,7 @@ function stopTestIndexedDB(){
 	_stop = true;
 }
 function testCursor(){
-	var objectStore = db.transaction("customers", "readonly").objectStore("customers");
+	var objectStore = db.transaction( database["storename"], "readonly").objectStore( database["storename"] );
 	var customers = [];
 	_t0 = _set_timer();
 	k = 0;
@@ -186,7 +235,7 @@ function testCursor(){
 }
 
 function testGetAll(){
-	var objectStore = db.transaction("customers", "readonly").objectStore("customers");
+	var objectStore = db.transaction( database["storename"] , "readonly").objectStore( database["storename"] );
 	_t0 = _set_timer();
 	objectStore.getAll().onsuccess = function(event) {
 		_records = event.target.result;
@@ -205,6 +254,222 @@ function _log(msg, id){
 	else $("#"+id).text(msg);
 }
 
+
+function load_data(){
+	//load	
+	var url = document.getElementById("input_file").value;
+	var pos_last_dot = url.lastIndexOf(".");
+	var pos_last = url.length;
+	var type = url.substring( pos_last_dot + 1, pos_last );
+
+	$.ajax({ 
+		cache: false,
+		url: url
+	})
+	.done(function (data, status, xhr) {
+//console.log("ajax done..", status, xhr);
+		var params = {
+			"dbname" : database["dbname"],
+			"storename": database["storename"],
+			"load_data" : xhr.responseText,
+			"import_type" : type
+		};
+		parse_data( params );
+	})
+	.fail(function (jqXHR, textStatus) {
+alert("ajax fail..");
+console.log(jqXHR, textStatus);
+	})
+	.always(function(){
+//console.log("ajax always..");
+	});
+	
+	
+}//end load_data
+
+
+function parse_data( args ){
+//console.log( args );
+
+	//detect import_type and parse input data
+	var import_type = args["import_type"];
+	database["import_type"] = import_type;
+	
+	switch( import_type ) {
+	
+		case "txt":
+			var parse_data = args["load_data"].replace(/\r/g,"").split('\n');
+			database["import_data"] = parse_data;
+			import_data();
+		break;
+		
+		case "json":
+			var parse_data = JSON.parse( args["load_data"] );
+			database["import_data"] = parse_data;
+			import_data();
+		break;
+		
+		case "csv":
+			var delimiter = database["csv_delimiter"];
+			var raw_data = args["load_data"].replace(/'/g,"").split('\n');
+			var parse_data = [];
+			for( var n1 = 0; n1 < raw_data.length; n1++){
+				var record = raw_data[n1].split( delimiter );
+				var fields = {};
+				for(var n2 = 0; n2 < record.length; n2++){
+				  var key = "key" + n2;
+				  if( n2 === 0){
+					key = "kod";
+				  }
+				  if( n2 === 1){
+					key = "text";
+				  }
+				  fields[key] = record[n2];
+				};
+//console.log(fields);
+				parse_data.push( fields );
+			}//next
+			database["import_data"] = parse_data;
+			import_data();
+		break;
+		
+		default:
+var message = "import type error, 'json', 'csv', 'txt'...";
+console.log(message);
+			return false;
+	}//end switch
+	
+
+}//end parse_data()
+
+function import_data(){
+	var dbName = database["dbname"];
+	indexedDB.deleteDatabase(dbName);
+	
+	var request = indexedDB.open(dbName, 1);
+	request.onerror = function(event) {
+		_log("Request error: " + event.message, "info");
+	};
+	request.onupgradeneeded = function(event) {
+		db = event.target.result;
+		db.onerror = function(event) {
+			_log("Database error: " + event.message, "info");
+		};
+
+	    //var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+		var objectStore = db.createObjectStore( database["storename"], { autoIncrement:true });  
+		//objectStore.createIndex("kod", "kod", { unique: true });
+		
+		objectStore.transaction.oncomplete = function(event) {
+    		var customerObjectStore = db.transaction( database["storename"] , "readwrite").objectStore( database["storename"] );
+			
+			customerObjectStore.transaction.onerror = function(event) {
+console.log("transaction.onerror");
+var message = "transaction.onerror";
+//log.innerHTML += "<p class='text-danger'>" + message + "</p>";
+console.log(message, event);				
+			};  
+			
+			customerObjectStore.transaction.onabort = function(event) {
+console.log("transaction.onabort", event);
+				var error = event.target.error;
+				if (error.name == 'QuotaExceededError') {
+alert("transaction.onabort, QuotaExceededError!");
+				}
+			};//end callback
+
+			customerObjectStore.transaction.oncomplete = function(event) {
+_log( "transaction.oncomplete", "info");
+console.log("transaction.oncomplete", event);
+				_log("Total time: " + _get_timer(_t0) + " sec.", "info");
+				
+				var store = db.transaction(database["storename"], "readonly").objectStore( database["storename"] );
+				var req = store.count();	
+				req.onsuccess = function() {
+					var num_records = req.result;	
+var message = "Store <b>" + database["storename"] + "</b> contains " + num_records +" records.";
+_log( message, "info");
+				}
+				db.close();
+				
+
+				if( total["bytes"] > 1024 ){
+					total["Kbytes"] = (total["bytes"] / 1024).toFixed(2);
+					if( total["Kbytes"] > 1024 ){
+						total["Mbytes"] = (total["Kbytes"] / 1024).toFixed(2);
+					}
+				}
+				var message = "Bytes: <b>" + total["bytes"] + "</b>";
+				if( total["Kbytes"] ){
+				message += ",kbytes: <b>" + total["Kbytes"] + "</b>";
+				}
+				if( total["Mbytes"] ){
+				message += ",Mbytes: <b>" + total["Mbytes"] + "</b>";
+				}
+				_log( message, "info");
+
+				
+			};//end callback
+
+			_t0 = _set_timer();
+			var total = { 
+				"symbols" : 0,
+				"bytes" : 0
+			};
+			
+			var _d = database["import_data"];
+			for( var n = 0; n < _d.length; n++){
+				var request = customerObjectStore.put( _d[n] );
+				
+				//var json = {
+					//"kod":_d[n]["kod"],
+					//"text":_d[n]["text"]
+					//};
+				//var request = customerObjectStore.put( json );
+				
+				//count store info size in bytes and symbols
+				var s_value = _d[n];
+				if( database["import_type"] === "json"){
+					var s_value = JSON.stringify( _d[n] );
+				}
+				
+				
+				total["symbols"] = total["symbols"] + s_value.length;
+				var size_bytes = unescape(encodeURIComponent( s_value )).length;
+				total["bytes"] = total["bytes"] + size_bytes;
+				
+				request.onsuccess = function(event) {
+//var message = "Added " + event.target.result + " items..";
+//message += ( _d[n].length * n ) + " bytes.";
+//$("#status").text( message );
+//console.log(message);
+				 };
+				 
+				request.onerror = function(event) {
+console.log("Stop, error");
+console.log("Error: " + this.error, "info");
+//console.log("Last item added: " + (n-1) + ", bytes stored: " + _d[n].length*(n-1), "info");
+					var error = event.target.error;
+					if (error.name == 'QuotaExceededError') {
+alert("request.onerror, QuotaExceededError!");
+var message = "request.onerror, QuotaExceededError!";
+_log( message, "info");
+					}
+				};
+
+			}//next
+
+			//_log('Last item stored is ' + n + ', ' + (val.length * n) + " bytes stored.", "info");
+			//_log("Runtime cycle: " + _get_timer(_t0) + " sec.", "info");
+				
+		};//end objectStore create transaction.oncomplete
+		
+		
+	};//end request.onupgradeneeded
+	
+}//end import_data;
+
+
 </script>
 <style>
 	body{
@@ -219,6 +484,7 @@ function _log(msg, id){
 <body onload="_init();">
 IndexedDB:
 <hr/>
+<h1>test1, add string records</h1>
 <button onclick="startTestIndexedDB();">Start</button>
 <button onclick="stopTestIndexedDB();">Stop</button>
 <button onclick="testCursor();">testCursor</button>
@@ -226,6 +492,29 @@ IndexedDB:
 
 <div id="status"></div>
 <div id="info"></div>
+
+<hr/>
+<h1>test2, import records from file</h1>
+<label>input file:</label>
+<input class="form-control" id="input_file" value="" size="80"/>
+	<pre>
+data/test.json
+data/test.csv
+data/test.txt
+data/test_1mb.txt
+data/test_1mb.json (1024 строки размером 1024 байта, общий размер 1 мб, время импорта - 0,03 - 1,4 сек)
+data/test_1mb_2.json (19821 строка размером 52 байта, общий размер 0,98 мб, время импорта - 0,8 - 19,1 сек)
+
+data/PMLP_ADR_LVL_4.json
+data/PMLP_ADR_LVL_4.csv
+	</pre>
+				</div>
+<button id="btn-load" class="btn btn-primary" onclick="load_data();">import data</button>
+
+			<div id="progress">
+				<p id="progress-txt"></p>
+				<span id="num-record"></span>
+			</div>
 
 </body>
 </html>

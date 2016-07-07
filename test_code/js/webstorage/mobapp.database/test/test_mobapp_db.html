@@ -367,10 +367,15 @@ bacrgound-color:#cfe;
 					<label>входные данные:</label>
 					<input class="form-control" id="input_file" value=""/>
 	<pre>
-data/valsts_eucaris_va.json
+data/test.json
 data/test.csv
-data/PMLP_ADR_LVL_4.json (улицы, 46384 records)
-data/PMLP_ADR_LVL_4_translit.json (поиск с транслитерацией, доп. поле "text_translit")
+data/test.txt
+data/test_1mb.txt
+data/test_1mb.json (1024 строки размером 1024 байта, общий размер 1 мб, время импорта - 0,03 - 0,3 сек)
+data/test_1mb_2.json (19821 строка размером 52 байта, общий размер 0,98 мб, время импорта - 0,8 - 2,9 сек)
+
+data/PMLP_ADR_LVL_4.json
+data/PMLP_ADR_LVL_4_translit.json
 data/PMLP_ADR_LVL_4.csv
 	</pre>
 				</div>
@@ -665,10 +670,10 @@ EDGE
 сохранение в цикле строки размером 1024 байт (не строятся индексы и простой формат данных):
 - 10 мб за 26,263 сек (1024*10), данные не читаются
 - 5119 строк, 5 мб за 16,692 сек, данные не читаются, 0 records
-- 4301 строк, 4.2 мб за сек, данные доступны, 4301 records!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- 4404 строк, 4.3 мб за 6.96 сек, данные доступны, 4404 records!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 - 4095 строк, 4 мб за 10,075 сек, данные доступны, 4096 records
 - 3071 строк, 3 мб за 7,639 сек, данные доступны, 3072 records
-- 2047 строк, 2 мб за 5,6 сек, данные доступны, 2048 records
+- 2047 строк, 2 мб за 3.2-5,6 сек, данные доступны, 2048 records
 ------------------
 NOKIA Lumia 720
 Windows Phone 8.1, IE Mobile 11
@@ -679,6 +684,35 @@ Windows Phone 8.1, IE Mobile 11
 поиск без индексов по справочнику улиц, runtime: 60 s
 
 <h3>настройка очистки кэша при выходе из браузера должна быть отключена!!!! не сохраняется БД</h3>
+
+data/test_1mb.txt
+test_mobapp_db.html
+Database mobapp, object store test2, add 35841 records, total size: 1048576 bytes (1004544 symbols), 1024.00 Kb, runtime: 1.455 sec
+
+test_idb.html
+Total time: 1.365 sec.
+Bytes: 1048576,kbytes: 1024.00
+Store test1 contains 35841 records.
+
+transaction.oncomplete
+Total time: 1.306 sec.
+1004544 bytes stored.
+Store test1 contains 35841 records.
+
+transaction.oncomplete
+Total time: 1.402 sec.
+1048576 bytes stored.
+Store test1 contains 35841 records.
+
+data/test_1mb_.txt
+Total time: 0.096 sec.
+2096128 bytes stored.?????????????????????
+Store test1 contains 1023 records.
+
+файл из большого кол-ва коротких строк (data/test_1mb.txt, 1048576 bytes, 35841 records, 1.342 sec)
+будет импортирован в БД медленее чем
+файл из меньшего кол-ва строк, но с таким же объемом информации (data/test_1mb_.txt, 1049596 bytes, 1024 records, 0.096 sec)
+
 
 		</pre>
 	</div>

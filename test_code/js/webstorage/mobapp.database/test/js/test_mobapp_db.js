@@ -1,7 +1,20 @@
+var _t0;//timer
+var _set_timer = function (){
+	var d = new Date;
+	return d.getTime();
+};
+var _get_timer = function (timer){
+	var d = new Date;
+	return parseFloat((d.getTime() - timer)/1000);
+};
+
 var database = [];
 database["dbname"] = "mobapp";
+database["storename"] = "";
 database["import_type"] = "json";
+database["import_data"] = [];
 database["csv_delimiter"] = ",";
+database["db_connection"] = false;
 
 //indexes parameters
 database["indexes"] = [
@@ -22,6 +35,15 @@ if(!window.console){
 		}
 	}
 }
+
+function _log( msg, id){
+	if(!id) id = "log";
+	if( window.console && window.console.log) {
+		console.log(msg)
+	};
+	document.getElementById(id).innerHTML += "<p>" + msg + "</p>";
+}
+
 /*
 var translit_table = [
 	{"latin":"U", "latvian":0x16a},//Ū
@@ -61,12 +83,17 @@ console.log( "error, undefined 'storename'" );
 	//detect import_type and parse input data
 	if( args["import_type"].length > 0){
 		var import_type = args["import_type"];
+		database["import_type"] = args["import_type"];
 	} else {
 		var import_type = database["import_type"];
 	}
 	
 	switch( import_type ) {
 	
+		case "txt":
+			var parse_data = args["load_data"].replace(/\r/g,"").split('\n');
+		break;
+		
 		case "json":
 			var parse_data = JSON.parse( args["load_data"] );
 		break;
@@ -94,11 +121,12 @@ console.log( "error, undefined 'storename'" );
 		break;
 		
 		default:
-var message = "import_type error, 'json' or 'csv' only"		
+var message = "import type error, 'json', 'csv', 'txt'...";
 console.log(message);
 			return false;
 	}
 
+	database["import_data"] = parse_data;
 	var params = {
 		"dbname"	:	args["dbname"],
 		"storename":	args["storename"],
@@ -114,7 +142,8 @@ console.log("add_data, callback function.", res);
 	};
 console.log( params );
 	var html = "<h2>Load data in &quot;"+ args["storename"] + "&quot;, waiting...</h2>"
-	document.getElementById("progress-txt").innerHTML = html;
+	//document.getElementById("progress-txt").innerHTML = html;
+	_log( html, "progress-txt" );
 	
 	var exec_start = new Date();
 	DB( params );
@@ -269,8 +298,11 @@ console.log( "error, undefined DB params dbname" );
 	//db_params["dbname"] = params["dbname"];
 	
 	var store_name = params["storename"];
+	database["storename"] = params["storename"];
+	
 	if( params["store_name"] && params["store_name"].length > 0 ){
 		var store_name = params["store_name"];
+		database["storename"] = params["store_name"];
 	};
 
 	var action = params["action"];
@@ -351,6 +383,7 @@ var message = 'Upgrading ' + dbname;
 console.log(message);				
 //log.innerHTML += "<li>" + message + "</li>";
 			db = e.target.result;
+			database["db_connection"] = db;
 			
 			switch( action ){
 
@@ -367,26 +400,34 @@ console.log(message);
 						//store.createIndex( index_name, index_field, {unique : uniq});
 						
 						//store.createIndex(INDEX_TEXT,INDEX_TEXT, {unique:false});
-						
-						if( database["indexes"].length > 0 ){
-							for(var n = 0; n < database["indexes"].length; n++){
-								var index_name = database["indexes"][n]["name"];
-								var index_field = database["indexes"][n]["name"];
-								var uniq = database["indexes"][n]["unique"];
-								store.createIndex( index_name, index_field, {unique : uniq});
-							}//next index
+						if( database["import_type"] === "json" ||
+								 database["import_type"] === "csv"){
+							if( database["indexes"].length > 0 ){
+								for(var n = 0; n < database["indexes"].length; n++){
+									var index_name = database["indexes"][n]["name"];
+									var index_field = database["indexes"][n]["name"];
+									var uniq = database["indexes"][n]["unique"];
+									//store.createIndex( index_name, index_field, {unique : uniq});
+								}//next index
+							}
 						}
+						
 						
 						//var name = 'multiple_index';
 						//var keyPath = ['kod','text'];
 						//store.createIndex( name, keyPath, {unique : true} );
 						
-var message = "Create store " + store_name + ' in ' + dbname;
+//var message = "Create store " + store_name + ' in ' + dbname;
 //log.innerHTML += "<p class='text-success'>" + message + "</p>";
-console.log(message);				
-						if( callback ){
-							callback();
-						}
+//console.log(message);		
+						store.transaction.oncomplete = function(event) {
+var message = "Create store, transaction.oncomplete, " + store_name + ' in ' + dbname;
+_log(message);		
+							if( callback ){
+								callback();
+							}
+						};//end store create transaction.oncomplete
+
 					}
 				break;
 				
@@ -471,15 +512,18 @@ console.log(message);
 							"store_name":store_name,
 							"action":"create_store",
 							"callback":function(){ 
+							/*
 								var params = {
-									"dbname":dbname,
+									"dbname": database["dbname"],
 									"store_name":store_name,
 									"action":"add_records",
-									"data": data,
+									"data": database["import_data"],
 									"callback": callback
 								};
-//console.log("create_store callback...", params);
-								DB( params );
+							*/	
+console.log("create_store callback...", params);
+								//DB( params );
+								import_data();
 							}
 						};
 						DB( params );
@@ -518,7 +562,7 @@ console.log(message);
 							"callback": callback
 							};
 //console.log("params = ", params, !key);
-						run_transaction( params );
+						( params );
 					break;
 
 				case "number_records"://number of added records
@@ -738,8 +782,9 @@ console.log(message, e);
 				
 				//count store info size in bytes and symbols
 				var s_value = data[n];
-				//if( database["import_type"] === "json"){
-					var s_value = JSON.stringify( data[n] );
+				//if( database["import_type"] === "json" ||
+					//	 database["import_type"] === "csv"){
+					//var s_value = JSON.stringify( data[n] );
 				//}
 				
 				total["symbols"] = total["symbols"] + s_value.length;
@@ -1180,6 +1225,93 @@ console.log( records[n] );
 	}//end process_records()
 	
 }//end run_transaction()
+
+function import_data(){
+	var storename = database["storename"];
+	var db = database["db_connection"];
+	var _d = database["import_data"];
+	
+	var type = "readwrite";//"readonly", "version_change"
+	var transaction = db.transaction([storename], type );
+//console.log(transaction);
+	var test_store = transaction.objectStore( storename );
+//console.log( test_store );
+
+	test_store.transaction.onerror = function(event) {
+_log("test_store, transaction.onerror");
+	}; //end callback 
+	
+	test_store.transaction.onabort = function(event) {
+_log("test_store, transaction.onabort", event);
+		var error = event.target.error;
+		if (error.name == 'QuotaExceededError') {
+alert("transaction.onabort, QuotaExceededError!");
+		}
+	};//end callback
+
+	test_store.transaction.oncomplete = function(event) {
+_log("test_store, transaction.oncomplete");
+		var message = "Total time: " + _get_timer(_t0) + " sec.";
+		_log( message );
+		db.close();
+		
+		document.getElementById("progress-txt").innerHTML = "";
+		if( total["bytes"] > 1024 ){
+			total["Kbytes"] = (total["bytes"] / 1024).toFixed(2);
+			if( total["Kbytes"] > 1024 ){
+				total["Mbytes"] = (total["Kbytes"] / 1024).toFixed(2);
+			}
+		}
+		var message = "Bytes: <b>" + total["bytes"] + "</b>";
+		if( total["Kbytes"] ){
+			message += ",kbytes: <b>" + total["Kbytes"] + "</b>";
+		}
+		if( total["Mbytes"] ){
+			message += ",Mbytes: <b>" + total["Mbytes"] + "</b>";
+		}
+		_log( message );
+	};//end callback
+			
+	_t0 = _set_timer();
+	var total = { 
+		"symbols" : 0,
+		"bytes" : 0
+	};
+	
+	for( var n = 0; n < _d.length; n++){
+		var request = test_store.put( _d[n] );
+		
+		//count store info size in bytes and symbols
+		var s_value = _d[n];
+		if( database["import_type"] === "json"){
+			var s_value = JSON.stringify( _d[n] );
+		}
+		
+		total["symbols"] = total["symbols"] + s_value.length;
+		var size_bytes = unescape(encodeURIComponent( s_value )).length;
+		total["bytes"] = total["bytes"] + size_bytes;
+		
+		request.onsuccess = function(event) {
+//var message = "Added " + event.target.result + " items..";
+//message += ( _d[n].length * n ) + " bytes.";
+//$("#status").text( message );
+//console.log(message);
+		 };
+		 
+		request.onerror = function(event) {
+_log("Error: " + this.error);
+//console.log("Last item added: " + (n-1) + ", bytes stored: " + _d[n].length*(n-1), "info");
+			var error = event.target.error;
+			if (error.name == 'QuotaExceededError') {
+alert("request.onerror, QuotaExceededError!");
+var message = "request.onerror, QuotaExceededError!";
+_log( message );
+			}
+		};
+	}//next
+
+}//end import_data
+
 
 
 function test_indexeddb() {

@@ -60,6 +60,20 @@ function writeIndexedDB(){
 		objectStore.transaction.oncomplete = function(event) {
 	    	// Store values in the newly created objectStore.
     		var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
+			
+			customerObjectStore.transaction.onerror = function(event) {
+console.log("transaction.onerror");
+console.log(message, event);				
+			};  
+			
+			customerObjectStore.transaction.onabort = function(event) {
+console.log("transaction.onabort", event);
+				var error = event.target.error;
+				if (error.name == 'QuotaExceededError') {
+alert("transaction.onabort, QuotaExceededError!");
+				}
+			};
+			
 			var _stop = false;
 			//for(k = 1; k <= 100 && !_stop; k++){
 				//_log("k: " + k, "info");
@@ -104,6 +118,10 @@ function _addDBItem(customerObjectStore, db){
 			_log("Error: " + this.error, "info");
 			_log("Last item added: " + (k-1) + ", bytes stored: " + val.length*(k-1), "info");
 			_stop = false;
+				var error = event.target.error;
+				if (error.name == 'QuotaExceededError') {
+alert("request.onerror, QuotaExceededError!");
+				}
 /*
 			var req = customerObjectStore.clear();
 
