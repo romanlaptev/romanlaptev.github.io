@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
@@ -95,6 +95,7 @@ var tests = [];
 	} else {
 		test["msg"] = "window.attachEvent not supported...";
 	};
+	tests.push(test);
 //--------------------------------------
 
 	var test = {
@@ -262,9 +263,24 @@ console.log("window.EventSource = " + window.EventSource);
 	}
 	tests.push(test);
 //--------------------------------------
+
+	var test = {
+		"name" : "isCanvasSupported",
+		"result" : false
+	};
+	try {
+		document.createElement("canvas").getContext("2d");
+		test["result"] = true;
+		test["msg"] = "HTML5 Canvas is supported in this browser";
+	} catch (e) {
+		test["msg"] = "HTML5 Canvas is not supported in this browser";
+		test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number;
+	}
+	tests.push(test);
+//--------------------------------------
 	
 		
-console.log(tests);	
+//console.log(tests);	
 
 
 window.onload = function(){
@@ -339,14 +355,6 @@ console.log(msg);
 };//end load
 
 
-//------------------------------
-/*
-		var canvas = document.getElementById("myCanvas");
-        if (canvas.getContext){
-          // Specify 2d canvas type.
-          ctx = canvas.getContext("2d");
-        }
- */
 
 </script>
 
