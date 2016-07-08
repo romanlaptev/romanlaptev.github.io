@@ -42,7 +42,8 @@ var tests = [];
 		"result" : false
 	};
 	var supportsTouch = false;
-	if ('ontouchstart' in window) {
+	if (('ontouchstart' in window) || 
+			window.DocumentTouch && document instanceof DocumentTouch) {
 		test["result"] = true;
 		test["msg"] = "'ontouchstart' in window === true //iOS & android";
 	}
@@ -149,7 +150,7 @@ console.log(window.ActiveXObject);
 		"name" : "Worker",
 		"result" : false
 	};
-	if (typeof Worker != "undefined"){
+	if (typeof window.Worker != "undefined"){
 		test["result"] = true;
 	} else {
 		test["msg"] = "Object Worker not supported";
@@ -200,6 +201,16 @@ console.log(window.ActiveXObject);
 		"result" : false
 	};
 	if( 'localStorage' in window && window['localStorage'] ){
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "sessionStorage",
+		"result" : false
+	};
+	if( 'sessionStorage' in window && window['sessionStorage'] ){
 		test["result"] = true;
 	}
 	tests.push(test);

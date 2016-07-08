@@ -1,0 +1,17 @@
+CACHE MANIFEST
+
+CACHE:
+# Defines resources to be cached.
+script/main.js
+css/bootstrap336.css
+images/img1.jpg
+
+FALLBACK:
+# Defines resources to be used if non-cached
+# resources cannot be downloaded, for example
+# when the browser is offline..
+photos/ figure2.png
+
+NETWORK:
+# Defines resources that will not be cached.
+figure3.png
