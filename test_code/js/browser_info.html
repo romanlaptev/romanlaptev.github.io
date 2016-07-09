@@ -178,6 +178,7 @@ console.log(window.ActiveXObject);
 	if( window.File && window.FileList && window.FileReader ) {
 		test["result"] = true;
 		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
+		test["msg"] += "<br><a href='fileapi.html'>test page</a>";
 	} else {
 		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
 	}
