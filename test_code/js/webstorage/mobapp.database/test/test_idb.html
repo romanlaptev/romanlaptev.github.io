@@ -27,9 +27,9 @@ database["total_bytes"] = 0;
 function _init(){
 	//for(var i = 0; i <= (32*1024)*1; i++) val += "qwertyuiopasdfghjklzxcvbnm123456";
 	//val = "qwertyuiopasdfghjklzxcvbnm123456qwertyuiopasdfghjklzxcvbnm123456";
-	//val = '[{"text":"_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B1L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B2L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B3L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B4L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B5L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B6L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B7L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B8L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B9L"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}]';
-	val = '{"text":"BEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEĻĢIJAS KARALISTE", "kod":"B1L"}';
-	_log('ready, value size = ' + val.length + ' bytes.', "info");
+	val = '{"text":"12_LATVIJAS REPUBLIKA", "kod":"LVA"},{"text":"LIETUVAS REPUBLIKA", "kod":"LTU"},{"text":"IGAUNIJAS REPUBLIKA", "kod":"EST"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B1L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B2L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B3L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B4L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B5L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B6L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B7L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B8L"},{"text":"BEĻĢIJAS KARALISTE", "kod":"B9L"},{"text":"ITĀLIJAS REPUBLIKA", "kod":"ITA"},{"text":"KIPRAS REPUBLIKA", "kod":"CYP"},{"text":"LIELBRITĀNIJAS UN ZIEMEĻĪRIJAS APVIENOTĀ KARALISTE", "kod":"GBR"},{"text":"LUKSEMBURGAS LIELHERCOGISTE", "kod":"LUX"},{"text":"NĪDERLANDES KARALISTE", "kod":"NLD"},{"text":"RUMĀNIJA", "kod":"ROU"},{"text":"SLOVĀKIJAS REPUBLIKA", "kod":"SVK"},{"text":"UNGĀRIJAS REPUBLIKA", "kod":"HUN"},{"text":"VĀCIJAS FEDERATĪVĀ REPUBLIKA", "kod":"DEU"},{"text":"ZVIEDRIJAS KRLISTE", "kod":"SWE"}';
+	//val = '{"text":"BEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEBEĻĢIJAS KARALISTE", "kod":"B1L"}';
+	_log('ready, test value size = ' + unescape(encodeURIComponent( val )).length + ' bytes.', "info");
 }//end init
 
 var _set_timer = function (){
@@ -41,7 +41,19 @@ var _get_timer = function (timer){
 	return parseFloat((d.getTime() - timer)/1000);
 };
 
+function _log(msg, id){
+	if(!id) id = "info";
+	if( msg.length === 0){
+		$("#"+id).empty();
+	}
+	if(console && console.log) console.log(msg);
+	$("#"+id).append("<p>" + msg + "</p>");
+}
+
 function writeIndexedDB(){
+var message = "<h2>run test, wait...</h2>";
+_log( message, "test-read");
+
 	var dbName = database["dbname"];
 	indexedDB.deleteDatabase(dbName);
 	var request = indexedDB.open(dbName, 1);
@@ -78,38 +90,52 @@ function writeIndexedDB(){
 		objectStore.transaction.oncomplete = function(event) {
 	    	// Store values in the newly created objectStore.
     		var customerObjectStore = db.transaction(database["storename"], "readwrite").objectStore( database["storename"] );
-			
+
 			customerObjectStore.transaction.onerror = function(event) {
-console.log("transaction.onerror");
-var message = "transaction.onerror";
-log.innerHTML += "<p class='text-danger'>" + message + "</p>";
-console.log(message, event);				
+_log("transaction.onerror: " + customerObjectStore.error);
 			};  
 			
+			//Rolls back all the changes to objects in the database associated with this transaction. 
+			//If this transaction has been aborted or completed, then this method throws an error event
 			customerObjectStore.transaction.onabort = function(event) {
-console.log("transaction.onabort", event);
+_log("", "test-read");
+_log("transaction.onabort");
+				_log("Total time: " + _get_timer(_t0) + " sec.", "info");
+				_log( database["total_bytes"] + " bytes stored.", "info");
+				_log( "result: " + database["result"]);
+
+				var store = db.transaction(database["storename"], "readonly").objectStore( database["storename"] );
+				var req = store.count();	
+				req.onsuccess = function() {
+					var num_records = req.result;	
+var message = "Test store.count(): <b>" + database["storename"] + "</b> contains " + num_records +" records.";
+_log( message, "info");
+				}
+				
 				var error = event.target.error;
 				if (error.name == 'QuotaExceededError') {
-alert("transaction.onabort, QuotaExceededError!");
+//alert("transaction.onabort, QuotaExceededError!");
+_log("transaction.onabort, <b>QuotaExceededError!</b>");
 				}
 			};
 
 			customerObjectStore.transaction.oncomplete = function(event) {
-_log( "transaction.oncomplete", "info");
-console.log("transaction.oncomplete", event);
+_log("", "test-read");
+_log( "transaction.oncomplete");
 				_log("Total time: " + _get_timer(_t0) + " sec.", "info");
 				_log( database["total_bytes"] + " bytes stored.", "info");
+				_log( "result: " + database["result"]);
 				
 				var store = db.transaction(database["storename"], "readonly").objectStore( database["storename"] );
 				var req = store.count();	
 				req.onsuccess = function() {
 					var num_records = req.result;	
-var message = "Store <b>" + database["storename"] + "</b> contains " + num_records +" records.";
+var message = "Test store.count(): <b>" + database["storename"] + "</b> contains " + num_records +" records.";
 _log( message, "info");
 				}
+				test_read();
 				db.close();
-				
-			};
+			};//end callback transaction.oncomplete
 			
 			var _stop = false;
 			//for(k = 1; k <= 100 && !_stop; k++){
@@ -136,7 +162,7 @@ _log( message, "info");
 	};
 }
 
-
+/*
 function _addDBItem(customerObjectStore, db){
 		var _d = { ssn: k, name: val };
     	var request = customerObjectStore.add(_d);
@@ -171,40 +197,49 @@ function _addDBItem(customerObjectStore, db){
 			};			
 		};
 }
-
+*/
 		
 function test_addDBItem(customerObjectStore, db){
+		//database["records"] = 0;
 		for( var n = 0; n < (1024*23); n++){//1 mb * 23
 		//for( var n = 0; n < 1024; n++){
 		//for( var n = 0; n < database["import_data"].length; n++){
 			//var _d = { ssn: n , name: val };
 			var _d = val;
 			//var _d = database["import_data"][n];
+			
 			var request = customerObjectStore.put(_d);
+			//var request = customerObjectStore.add(_d);
 			database["total_bytes"] = database["total_bytes"] + unescape(encodeURIComponent( _d )).length;
 //console.log(database["total_bytes"], _d, _d.length, n);
 			
-			//var request = customerObjectStore.add(_d);
 			request.onsuccess = function(event) {
-				//_log("Added " + event.target.result + " items..");
-				//_log(n + ' items stored, ' + (val.length * n) + " bytes.");
+				//database["records"]++;
+				database["result"] = event.target.result;
+				//_log("Added " + event.target.result + " items..", "info");
+				//_log(n + ' items stored, ' + (unescape(encodeURIComponent( val )).length * n) + " bytes.");
 			 };
+			 
 			request.onerror = function(event) {
 				_log("Stop, error");
 				_log("Error: " + this.error, "info");
-				_log("Last item added: " + (n-1) + ", bytes stored: " + val.length*(n-1), "info");
-				_stop = false;
+				_log("Last item added: " + (n-1) + ", bytes stored: " + unescape(encodeURIComponent( val )).length*(n-1), "info");
+				//_stop = false;
+				return false;
+				
 				var error = event.target.error;
 				if (error.name == 'QuotaExceededError') {
 alert("request.onerror, QuotaExceededError!");
+//_log("<h3>request.onerror, QuotaExceededError!</h3>", "test-read");
 				}
 				
 			};
+			
 		}//next
 		
-		//_log('Last item stored is ' + n + ', ' + (val.length * n) + " bytes stored.", "info");
-		_log("Runtime cycle: " + _get_timer(_t0) + " sec.", "info");
-		_stop = false; i = 1;
+		_log('Last item stored is ' + n + ', ' + ( unescape(encodeURIComponent( val )).length * n) + " bytes stored.", "info");
+		//_log("Runtime cycle: " + _get_timer(_t0) + " sec.", "info");
+		//_stop = false; i = 1;
 
 }//end test_addDBItem
 
@@ -215,44 +250,59 @@ function startTestIndexedDB(){
 function stopTestIndexedDB(){
 	_stop = true;
 }
+
+function test_read(){
+	var objectStore = db.transaction( database["storename"] , "readonly").objectStore( database["storename"] );
+	if ('getAll' in objectStore === false) {
+_log("getAll read method not supported...");	
+		testCursor();
+	} else {
+		testGetAll();
+	}
+}//end test_read()
+
 function testCursor(){
 	var objectStore = db.transaction( database["storename"], "readonly").objectStore( database["storename"] );
-	var customers = [];
+	var _records = [];
+	
 	_t0 = _set_timer();
-	k = 0;
+	//k = 0;
 	objectStore.openCursor().onsuccess = function(event){
 		var cursor = event.target.result;
 		if (cursor) {
-			k++;
-			_log("Read item " + k + "..");
-			customers.push(cursor.value);
+			//k++;
+			//_log("Read item " + k + "..");
+			_records.push(cursor.value);
 			cursor.continue();
 		}
 		else {
 			_log("CURSOR: Got all records. Total time: " + _get_timer(_t0) + " sec.", "info");
+			_log("<br><b>openCursor: first record:</b> " + _records[0], "test-read");
+			var last_num = _records.length-1;
+			_log("<br><b>openCursor: last record:</b> " + _records[last_num], "test-read");
 		}
 	};
 }
 
 function testGetAll(){
+
 	var objectStore = db.transaction( database["storename"] , "readonly").objectStore( database["storename"] );
-	_t0 = _set_timer();
+	//_t0 = _set_timer();
 	objectStore.getAll().onsuccess = function(event) {
 		_records = event.target.result;
-		_log("getall: Got all records. time1: " + _get_timer(_t0) + " sec.", "info");
-		for(var i = 0; i < _records.length; i++){
-			setTimeout(function(){_log("Read item " + i + "..");}, 0);
-		}
-		_log("getall: Got all records. Total time: " + _get_timer(_t0) + " sec.", "info");
+		//_log("getall: Got all records. time1: " + _get_timer(_t0) + " sec.", "info");
+		//for(var i = 0; i < _records.length; i++){
+			//setTimeout(function(){_log("Read item " + i + "..");}, 0);
+		//}
+		//_log("getall: Got all records. Total time: " + _get_timer(_t0) + " sec.", "info");
+		
+		_log("<br><b>getAll: first record:</b> " + _records[0], "test-read");
+		var last_num = _records.length-1;
+		_log("<br><b>getAll: last record:</b> " + _records[last_num], "test-read");
+		
 	};
 }
 
-function _log(msg, id){
-	if(!id) id = "status";
-	if(console && console.log) console.log(msg);
-	if(id == "info") $("#"+id).html($("#"+id).html() + "<br/>" + msg);
-	else $("#"+id).text(msg);
-}
 
 
 function load_data(){
@@ -390,9 +440,7 @@ console.log("transaction.oncomplete", event);
 var message = "Store <b>" + database["storename"] + "</b> contains " + num_records +" records.";
 _log( message, "info");
 				}
-				db.close();
 				
-
 				if( total["bytes"] > 1024 ){
 					total["Kbytes"] = (total["bytes"] / 1024).toFixed(2);
 					if( total["Kbytes"] > 1024 ){
@@ -407,9 +455,11 @@ _log( message, "info");
 				message += ",Mbytes: <b>" + total["Mbytes"] + "</b>";
 				}
 				_log( message, "info");
-
 				
-			};//end callback
+				//testGetAll();
+				
+				db.close();
+			};//end callback transaction.oncomplete
 
 			_t0 = _set_timer();
 			var total = { 
@@ -468,9 +518,224 @@ _log( message, "info");
 	};//end request.onupgradeneeded
 	
 }//end import_data;
-
-
 </script>
+
+<script>
+var tests = [];
+
+	if (!window.console){ 
+		var test = {
+			"name" : "console",
+			"result" : false,
+			"msg" : "Your browser does not support <b>console.log</b>"
+		};
+		tests.push(test);
+		
+		console = {
+			log: function( msg ) {
+//				//alert( msg );
+//				document.getElementById("log").innerHTML += msg+"<br>";
+			}
+		};	
+		
+	};
+//--------------------------------------
+	
+	var test = {
+		"name" : "localStorage",
+		"result" : false
+	};
+	if( 'localStorage' in window && window['localStorage'] ){
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "indexedDB",
+		"result" : false
+	};
+	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	if (!window.indexedDB) {
+		test["msg"] = "IndexedDB not supported";
+	} else {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Web SQL database",
+		"result" : false
+	};
+	if (window.openDatabase) {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+	var test = {
+		"name" : "is mobile device",
+		"result" : false
+	};
+	if ( navigator.userAgent.match(/Mobi/) ) {
+		test["result"] = true;
+		test["msg"] = "navigator.userAgent.match(/Mobi/) === true";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "touch supported",
+		"result" : false
+	};
+	var supportsTouch = false;
+	if ('ontouchstart' in window) {
+		test["result"] = true;
+		test["msg"] = "'ontouchstart' in window === true //iOS & android";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "msPointerEnabled",
+		"result" : false
+	};
+	if(window.navigator.msPointerEnabled) {
+		test["result"] = true;
+		test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "detect Microsoft mobile device",
+		"result" : false
+	};
+	if( (navigator.maxTouchPoints > 0) || 
+			(navigator.msMaxTouchPoints > 0) ){
+		test["result"] = true;
+		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
+	}
+	tests.push(test);
+//--------------------------------------
+	var test = {
+		"name" : "Worker",
+		"result" : false
+	};
+	if (typeof Worker != "undefined"){
+		test["result"] = true;
+	} else {
+		test["msg"] = "Object Worker not supported";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Geolocation API",
+		"result" : false
+	};
+	if( navigator.geolocation ) {
+		test["result"] = true;
+		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
+	} else {
+		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "File API",
+		"result" : false
+	};
+	if( window.File && window.FileList && window.FileReader ) {
+		test["result"] = true;
+		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
+	} else {
+		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
+	}
+	tests.push(test);
+//--------------------------------------
+	var test = {
+		"name" : "Application Cache API",
+		"result" : false
+	};
+	if (window.applicationCache) {
+		test["result"] = true;
+		test["msg"] = "window.applicationCache is supported";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Server side events",
+		"result" : false
+	};
+	if( typeof window.EventSource === "undefined"){
+		test["msg"] = "No server-sent events support";
+	} else {
+		test["result"] = true;
+//console.log("window.EventSource = " + window.EventSource);
+	};
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "JSON support",
+		"result" : false
+	};
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+	} else {
+		test["msg"] = "typeof JSON :" + typeof JSON;
+	}
+	tests.push(test);
+//--------------------------------------
+
+//console.log(tests);	
+
+$(document).ready(function(){
+	var ua = document.getElementById("ua");
+	var tpl = ua.innerHTML;
+	var html = tpl
+	.replace("{{userAgent}}", navigator.userAgent);
+	//.replace("{{product}}", navigator.product)
+	//.replace("{{appCodeName}}", navigator.appCodeName)
+	//.replace("{{appName}}", navigator.appName)
+	//.replace("{{appVersion}}", navigator.appVersion)
+	//.replace("{{appMinorVersion}}", navigator.appMinorVersion)
+	//.replace("{{cookieEnabled}}", navigator.cookieEnabled)
+	//.replace("{{language}}", navigator.language)
+	//.replace("{{systemLanguage}}", navigator.systemLanguage)
+	//.replace("{{userLanguage}}", navigator.userLanguage)
+	//.replace("{{onLine}}", navigator.onLine)
+	//.replace("{{platform}}", navigator.platform)
+	//.replace("{{cpuClass}}", navigator.cpuClass)
+	//.replace("{{oscpu}}", navigator.oscpu);
+	ua.innerHTML = html;
+//---------------------------------
+
+	var test_tpl = document.getElementById("test-tpl").innerHTML;
+//console.log( test_tpl);	
+	var tests_out = document.getElementById("tests-out");
+	var html = "";
+	for (var n = 0; n < tests.length; n++){
+		if( tests[n] ){
+			var msg = tests[n]["msg"];
+			if(!msg){
+				var msg = "";
+			}
+			
+			html += test_tpl
+			.replace("{{name}}", tests[n]["name"])
+			.replace("{{result}}", tests[n]["result"])
+			.replace("{{msg}}", msg);
+		}
+	}//next
+	tests_out.innerHTML = html;
+	
+});//end ready
+</script>
+
 <style>
 	body{
 		font-family: Tahoma,Verdana,Arial;
@@ -478,20 +743,36 @@ _log( message, "info");
 	button{
 		font-size: 20px;
 	}
-
+p {
+  margin: 0;
+}
+#test-read {
+  border: 1px dashed;
+  padding: 10px;
+}
 </style>
 </head>
+
 <body onload="_init();">
-IndexedDB:
+
+Tests IndexedDB:
 <hr/>
-<h1>test1, add string records</h1>
+<h1>test1, add string value to store</h1>
 <button onclick="startTestIndexedDB();">Start</button>
+<!--
 <button onclick="stopTestIndexedDB();">Stop</button>
 <button onclick="testCursor();">testCursor</button>
 <button onclick="testGetAll();">testGetAll</button>
+-->
 
 <div id="status"></div>
 <div id="info"></div>
+<div id="test-read"></div>
+<div>Results:
+	<li>Microsoft Lumia 550, Windows Mobile 10, Edge, store max size = 4.75 mb</li>
+	<li>iPhone, IOS 7, Safari 9, indexedDB support == false</li>
+	<li>Asus tablet, Android, Chrome, store max size > 25 mb</li>
+</div>
 
 <hr/>
 <h1>test2, import records from file</h1>
@@ -516,5 +797,39 @@ data/PMLP_ADR_LVL_4.csv
 				<span id="num-record"></span>
 			</div>
 
+	<div id="ua">
+		<h3 class="text-center">navigator.userAgent: {{userAgent}}</h3>
+<!--		
+		<ul>
+<li>navigator.product: <b>{{product}}</b></b></li>
+<li>navigator.appCodeName: <b>{{appCodeName}}</b></li>
+<li>navigator.appName: <b>{{appName}}</b></li>
+<li>navigator.appVersion: <b>{{appVersion}}</b></li>
+<li>navigator.appMinorVersion: <b>{{appMinorVersion}}</b></li>
+<li>navigator.cookieEnabled: <b>{{cookieEnabled}}</b></li>
+<li>navigator.language: <b>{{language}}</b></li>
+<li>navigator.systemLanguage: <b>{{systemLanguage}}</b></li>
+<li>navigator.userLanguage: <b>{{userLanguage}}</b></li>
+<li>navigator.onLine: <b>{{onLine}}</b></li>
+<li>navigator.platform: <b>{{platform}}</b></li>
+<li>navigator.cpuClass: <b>{{cpuClass}}</b></li>
+<li>navigator.oscpu: <b>{{oscpu}}</b></li>
+-->
+		</ul>
+	</div>
+			
+	<div class="panel log">
+		<div class="panel-body">
+			<ul id="tests-out">
+				<span id="test-tpl">
+					<li>
+<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
+<p><small>{{msg}}</small></p>
+					</li>
+				</span>
+			</ul>
+		</div>
+	</div>
+			
 </body>
 </html>

@@ -14,7 +14,7 @@ database["storename"] = "";
 database["import_type"] = "json";
 database["import_data"] = [];
 database["csv_delimiter"] = ",";
-database["db_connection"] = false;
+database["db_connection"] = null;
 
 //indexes parameters
 database["indexes"] = [
