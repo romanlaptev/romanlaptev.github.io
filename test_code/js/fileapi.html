@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+<script>
+//if (window.File && window.FileReader && window.FileList && window.Blob) {
+if( window.File && window.FileList && window.FileReader )
+{
+  // Работает
+} else {
+  alert('Your browser does not support File API');
+}
+
+window.onload = function(){
+
+	document.getElementById("clear-log").onclick = function(){
+		document.getElementById("log").innerHTML="";
+	};
+
+	var fileslist = document.getElementById("files-list"); 
+	fileslist.onchange = function(event){
+console.log(event.target.files);
+		var files = event.target.files;
+		for( var n =0; n < files.length; n++)
+		{
+			var message = "Load file " + event.target.files[n].name ;
+			message += "<br> size: " + event.target.files[n].size ;
+			message += "<br> type: " + event.target.files[n].type ;
+			message += "<br> date: " + event.target.files[n].lastModifiedDate ;
+			document.getElementById("log").innerHTML += "<p>" + message +"</p>";
+		}
+	};
+
+	var one_file = document.getElementById("one-file"); 
+	one_file.onchange = function(event){
+		var file = event.target.files[0];
+		
+		var message = "Load file " + file.name ;
+		message += "<br> size: " + file.size ;
+		message += "<br> type: " + file.type ;
+		message += "<br> date: " + file.lastModifiedDate ;
+		document.getElementById("log").innerHTML += "<p>" + message +"</p>";
+		//if( file.type === "text/plain" )
+		//{
+			var reader = new FileReader();
+			
+			reader.onabort = function(e){
+console.log( "reader, onabort", e );
+			};
+			
+			reader.onerror = function(e){
+console.log( "reader, onerror", e );
+			};
+			
+			reader.onload = function(e){
+console.log( "reader, onload", e );
+console.log(e.target.result);
+			};
+			
+			reader.onloadstart = function(e){
+console.log( "reader, loadstart", e );
+			};
+			
+			reader.onloadend = function(e){
+console.log( "reader, loadend", e );
+				document.getElementById('file-content').textContent = e.target.result;
+			};
+			
+			reader.onprogress = function(e){
+console.log( "reader, progress", e );
+			};
+			
+			reader.readAsText(file);
+		//}
+	}
+	
+}//end load	
+</script>
+
+<style>
+#log-wrap
+{
+position:fixed;
+top:10px;
+right:10px;
+width:30%;
+opacity:0.8;
+border:1px dashed;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="uk-container uk-container-center">
+		<div class="uk-panel uk-panel-box uk-panel-box-primary">
+			<div class="uk-panel-header">
+				<h1 class="uk-text-center">Test HTML5 FileAPI</h1>
+			</div>
+<pre>
+https://developer.mozilla.org/ru/docs/Web/API/FileReader
+
+https://books.google.ru/books?id=C3kabcBG0ZsC&pg=PT756&lpg=PT756
+Закас Н. JavaScript для профессиональных веб-разработчиков 
+
+http://javascript.maxsage.co.uk/Ch25/FileAPIExample03.htm
+
+https://habrahabr.ru/post/112286/
+https://jsfiddle.net/0GiS0/Yvgc2/
+</pre>
+			<h2>File info</h2>
+			<p>selected files info: <input type="file" multiple id="files-list"/></p>
+			
+			<h2>File reader</h2>
+			<p>load text file: <input type="file" id="one-file"/></p>
+			<div>
+				<pre id="file-content"></pre>
+			</div>
+			
+		</div>
+	</div><!-- end container -->
+
+	<div id="log-wrap" class="uk-panel-box uk-panel-box-primary">
+		<a id="clear-log" class="uk-button uk-button-small uk-button-danger" href="#">clear log</a>		
+		<div id="log"></div>
+	</div>
+	
+</body>
+</html>
