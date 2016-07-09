@@ -371,8 +371,8 @@ data/test.json
 data/test.csv
 data/test.txt
 data/test_1mb.txt
-data/test_1mb.json (1024 строки размером 1024 байта, общий размер 1 мб, время импорта - 0,03 - 0,3 сек)
-data/test_1mb_2.json (19821 строка размером 52 байта, общий размер 0,98 мб, время импорта - 0,8 - 2,9 сек)
+data/test_1mb.json
+data/test_1mb_2.json
 data/test_20mb.json
 
 data/PMLP_ADR_LVL_4.json
@@ -714,6 +714,26 @@ Store test1 contains 1023 records.
 будет импортирован в БД медленее чем
 файл из меньшего кол-ва строк, но с таким же объемом информации (data/test_1mb_.txt, 1049596 bytes, 1024 records, 0.096 sec)
 
+
+================================= TEST IE 10
+
+data/test_1mb.txt 
+после загрузки данных,  БД занимает 5 мб, 
+IE10, Internet options - Settings - Caches and databases)
+
+data/test_1mb.json
+1024 строки размером 1024 байта, общий размер 1 мб, время импорта - 0,03 - 0,3 сек
+после загрузки данных,  БД занимает 3 мб, 
+IE10, Internet options - Settings - Caches and databases
+
+data/test_1mb_2.json 
+19821 строка размером 52 байта, общий размер 0,98 мб, время импорта - 0,8 - 2,9 сек
+после загрузки данных,  БД занимает 4 мб, 
+IE10, Internet options - Settings - Caches and databases
+
+data/test_20mb.json
+после загрузки данных ( 70-90 сек),  БД занимает 47 мб, 
+IE10, Internet options - Settings - Caches and databases
 
 		</pre>
 	</div>
