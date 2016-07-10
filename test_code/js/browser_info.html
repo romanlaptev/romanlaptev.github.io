@@ -119,6 +119,20 @@ var tests = [];
 		test["result"] = true;
 		test["msg"] = "supported";
 console.log(window.ActiveXObject);
+		test["links"]=[];
+		test["links"].push(
+			{
+				"link" : "activexobject.html", 
+				"text" : "activexobject.html"
+			}		
+		);
+		test["links"].push(
+			{
+				"link" : "activexobject_2.html", 
+				"text" : "activexobject_2.html"
+			}		
+		);
+
 	}
 	tests.push(test);
 //--------------------------------------
@@ -152,6 +166,14 @@ console.log(window.ActiveXObject);
 	};
 	if (typeof window.Worker != "undefined"){
 		test["result"] = true;
+		test["links"]=[];
+		test["links"].push(
+			{
+				"link" : "worker/test_background_calculations.html", 
+				"text" : "test_background_calculations.html"
+			}		
+		);
+		
 	} else {
 		test["msg"] = "Object Worker not supported";
 	}
@@ -165,6 +187,13 @@ console.log(window.ActiveXObject);
 	if( navigator.geolocation ) {
 		test["result"] = true;
 		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
+		test["links"]=[];
+		test["links"].push(
+			{
+				"link" : "geolocation.html", 
+				"text" : "geolocation.html"
+			}		
+		);
 	} else {
 		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
 	}
@@ -178,7 +207,13 @@ console.log(window.ActiveXObject);
 	if( window.File && window.FileList && window.FileReader ) {
 		test["result"] = true;
 		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
-		test["msg"] += "<br><a href='fileapi.html'>test page</a>";
+		test["links"]=[];
+		test["links"].push(
+			{
+				"link" : "fileapi.html", 
+				"text" : "fileapi.html"
+			}		
+		);
 	} else {
 		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
 	}
@@ -226,6 +261,31 @@ console.log(window.ActiveXObject);
 		test["msg"] = "IndexedDB not supported";
 	} else {
 		test["result"] = true;
+		test["links"]=[];
+		test["links"].push(
+			{
+				"link" : "webstorage/test_DB.html", 
+				"text" : "test_DB.html"
+			}		
+		);
+		test["links"].push(
+			{
+				"link" : "webstorage/test_indexeddb.html", 
+				"text" : "test_indexeddb.html"
+			}		
+		);
+		test["links"].push(
+			{
+				"link" : "webstorage/mobapp.database/test/test_mobapp_db.html", 
+				"text" : "test_mobapp_db.html"
+			}		
+		);
+		test["links"].push(
+			{
+				"link" : "webstorage/mobapp.database/test/test_idb.html", 
+				"text" : "test_idb.html"
+			}		
+		);
 	}
 	tests.push(test);
 //--------------------------------------
@@ -284,6 +344,14 @@ console.log("window.EventSource = " + window.EventSource);
 		document.createElement("canvas").getContext("2d");
 		test["result"] = true;
 		test["msg"] = "HTML5 Canvas is supported in this browser";
+		test["links"]=[];
+		test["links"].push({"link" : "canvas/test_canvas.html", "text" : "test_canvas.html"});
+		test["links"].push(
+			{
+				"link" : "canvas/graphics_curves.html", 
+				"text" : "graphics_curves.html"
+			}		
+		);
 	} catch (e) {
 		test["msg"] = "HTML5 Canvas is not supported in this browser";
 		test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number;
@@ -348,6 +416,9 @@ console.log(msg);
 
 	var test_tpl = document.getElementById("test-tpl").innerHTML;
 //console.log( test_tpl);	
+	var test_links_tpl = document.getElementById("test-links-tpl").innerHTML;
+	var test_links_item_tpl = document.getElementById("test-links-item-tpl").innerHTML;
+
 	var tests_out = document.getElementById("tests-out");
 	var html = "";
 	for (var n = 0; n < tests.length; n++){
@@ -357,10 +428,22 @@ console.log(msg);
 				var msg = "";
 			}
 			
+			var test_links = "";
+			if( tests[n]["links"] && tests[n]["links"].length > 0){
+				var html_items = "";
+				for( var n2 = 0; n2 < tests[n]["links"].length; n2++){
+					html_items += test_links_item_tpl
+					.replace("{{item-link}}", tests[n]["links"][n2]["link"])
+					.replace("{{item-text}}", tests[n]["links"][n2]["text"]);
+				};//next
+				test_links = test_links_tpl.replace("{{links}}", html_items);
+			}
+			
 			html += test_tpl
 			.replace("{{name}}", tests[n]["name"])
 			.replace("{{result}}", tests[n]["result"])
-			.replace("{{msg}}", msg);
+			.replace("{{msg}}", msg)
+			.replace("{{test_links}}", test_links);
 		}
 	}//next
 	tests_out.innerHTML = html;
@@ -423,9 +506,12 @@ border:1px dashed;
 		<div class="panel-body">
 			<ul id="tests-out">
 				<span id="test-tpl">
-					<li>
+					<li class="panel-group">
 <b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
-<p><small>{{msg}}</small></p>
+<div class="description">
+	<small>{{msg}}</small>
+</div>
+{{test_links}}
 					</li>
 				</span>
 			</ul>
@@ -440,6 +526,19 @@ border:1px dashed;
 	</div>
 	
 </div><!-- end container -->
-	
+
+<!-- TEMPLATES -->
+<script type="text/template" id="test-links-tpl">
+	<ul class="form-control list-inline"><b>test pages</b>:
+		{{links}}
+	</ul>
+</script>
+
+<script type="text/template" id="test-links-item-tpl">
+		<li>
+			<a href='{{item-link}}'>{{item-text}}</a>
+		</li>	
+</script>
+
 </body>
 </html>
