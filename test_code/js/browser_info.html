@@ -384,20 +384,35 @@ console.log("window.EventSource = " + window.EventSource);
 		test["result"] = true;
 	}
 
-		test["links"]=[];
-		test["links"].push(
-			{
-				"link" : "../html/svg/ex1.html", 
-				"text" : "ex1.html"
-			}		
-		);
-		test["links"].push(
-			{
-				"link" : "../html/svg/svg_samples.html", 
-				"text" : "svg_samples.html"
-			}		
-		);
+	test["links"]=[];
+	test["links"].push(
+		{
+			"link" : "../html/svg/ex1.html", 
+			"text" : "ex1.html"
+		}		
+	);
+	test["links"].push(
+		{
+			"link" : "../html/svg/svg_samples.html", 
+			"text" : "svg_samples.html"
+		}		
+	);
 	
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Promise support",
+		"result" : typeof window.Promise !== "undefined"
+	};
+	
+	test["links"]=[];
+	test["links"].push(
+		{
+			"link" : "test_promise.html", 
+			"text" : "test_promise.html"
+		}		
+	);
 	tests.push(test);
 //--------------------------------------
 
