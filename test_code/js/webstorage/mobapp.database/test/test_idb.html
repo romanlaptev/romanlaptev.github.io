@@ -555,8 +555,13 @@ var tests = [];
 		"name" : "indexedDB",
 		"result" : false
 	};
-	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-	if (!window.indexedDB) {
+	//window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	//if (!window.indexedDB) {
+	var test_idb = "indexedDB" in window;
+	
+	//if (!window.indexedDB) {
+if(!test_idb) {
+		test["msg"] = "IndexedDB not supported";		
 		test["msg"] = "IndexedDB not supported";
 	} else {
 		test["result"] = true;
