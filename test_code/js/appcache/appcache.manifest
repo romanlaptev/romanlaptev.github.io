@@ -1,17 +1,19 @@
-CACHE MANIFEST
+﻿CACHE MANIFEST
+# version 25
 
 CACHE:
 # Defines resources to be cached.
-script/main.js
-css/bootstrap336.css
+scripts/main.js
 images/img1.jpg
 
 FALLBACK:
 # Defines resources to be used if non-cached
 # resources cannot be downloaded, for example
 # when the browser is offline..
-photos/ figure2.png
+css/bootstrap336.css css/offline.css
+/ offline.html
 
 NETWORK:
 # Defines resources that will not be cached.
-figure3.png
+#figure3.png
+*

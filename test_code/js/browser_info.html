@@ -317,10 +317,20 @@ console.log(window.ActiveXObject);
 		"name" : "Application Cache API",
 		"result" : false
 	};
-	if (window.applicationCache) {
+	if ( typeof window.applicationCache !== "undefined") {
 		test["result"] = true;
-		test["msg"] = "window.applicationCache is supported";
+		test["msg"] = "window.applicationCache is supported, " + window.applicationCache;
+		
+		test["links"]=[];
+		test["links"].push(	{
+				"link" : "appcache/test_appcache.html", 
+				"text" : "test_appcache.html"
+		});
+		
+	} else {
+		test["msg"] = "window.applicationCache not supported, " + window.applicationCache;
 	}
+	
 	tests.push(test);
 //--------------------------------------
 

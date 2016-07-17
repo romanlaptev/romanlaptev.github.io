@@ -1,1 +1,3 @@
-alert('main.js');
+﻿function test(){
+	alert('main.js');	
+}
