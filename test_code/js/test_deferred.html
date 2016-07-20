@@ -1,10 +1,10 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Test Deferred</title>
-	<linl rel="stylesheet" href="../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<script src="jquery/jquery-latest.min.js"></script>
 </head>
 <body>
@@ -13,10 +13,69 @@
 			<h1>Test Deferred</h1>
 		</div>
 		<pre>
+https://api.jquery.com/category/deferred-object/
+http://jquery.page2page.ru/index.php5/%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82_deferred
+https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Deferred
+		
 http://javascript.ru/unsorted/async/deferred
 https://habrahabr.ru/post/113073/
 https://habrahabr.ru/post/193598/
+http://getinstance.info/articles/jquery/a-walkthrough-jquery-deferred-and-promise/
 		</pre>
+		
+		<pre>
+var _getSprData = function (blockName, fieldName){
+
+	var $d = $.Deferred();
+	
+	$.getJSON(_pathGetJSON, function(res){
+		for(var l = 0; l < res.length; l++){
+			res[l].text_t = _translit(res[l].text).toUpperCase();
+		}
+		$d.resolve(res);
+	});
+	return $d;
+	
+};//_getSprData
+
+_getSprData(blockName, fieldName).then( function(res){
+	for (var i = 0; i < res.length; i++){
+		if (res[i].kod == kod){
+			 obj = $.extend(true,{},res[i]);
+			 break
+		}
+	}
+	$d.resolve(obj);
+});
+
+		</pre>
+		
+		<pre>
+https://api.jquery.com/jquery.when/		
+Этот код выведет сообщение только после того, как обе страницы будут успешно загружены в указанные блоки.		
+	$.when(
+		$.get('test_json/data.json'), 
+		$.get('test_json/phones.json')
+	).done(
+		function(args1, args2){ 
+		alert("загрузка завершена"); 
+		$("#status").html = "Loading is complete....";
+	});
+		</pre>
+		<div id="status"></div>
+		
 	</div><!-- end container -->
 </body>
+
+<script>
+	$.when(
+		$.get('test_json/data.json'), 
+		$.get('test_json/phones.json')
+	).done(
+		function(args1, args2){ 
+console.log( args1, args2 );
+		$("#status").html("Loading is complete....");
+	});
+</script>
+
 </html>
