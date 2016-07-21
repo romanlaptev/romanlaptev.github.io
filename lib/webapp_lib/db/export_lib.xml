@@ -17157,12 +17157,12 @@ lib/books/K/Kafka.F
 Америка
 		</bookname>
 	</node>
-	<node title="Анахрон" nid="585" mlid="1793" plid="1788" type="library_book" created="09-Oct-2012 20:41:10" changed="02-Aug-2014 23:16:42" weight="0">
+	<node title="Анахрон" nid="585" mlid="1793" plid="1788" type="library_book" created="09-Oct-2012 20:41:10" changed="21-Jul-2016 20:57:38" weight="0">
 		<body_value>
 Хаецкая Елена,  Беньковский Виктор. Анахрон
 		</body_value>
 		<subfolder>
-lib/books/B/B_action_anahron
+lib/books/H/Hayeckaya/Anahron
 		</subfolder>
 		<author>
 Хаецкая Елена,  Беньковский Виктор
@@ -20847,7 +20847,7 @@ lib/books/K/King
 Мертвая зона
 		</bookname>
 	</node>
-	<node title="Мирра и дьявол" nid="586" mlid="1791" plid="1788" type="library_book" created="09-Oct-2012 20:41:10" changed="02-Aug-2014 23:14:53" weight="0">
+	<node title="Мирра и дьявол" nid="586" mlid="1791" plid="1788" type="library_book" created="09-Oct-2012 20:41:10" changed="21-Jul-2016 20:44:19" weight="0">
 		<body_value>
 Хаецкая Елена. Мирра и дьявол
 		</body_value>
@@ -29949,7 +29949,7 @@ lib/art_books/book_history_engraving
 		<value>H_fantasy_myrra.txt</value>
 	</item>
 	<item entity_id="585" bundle="library_book" delta="0">
-		<value>B_action_anahron.xml</value>
+		<value>Anahron.xml</value>
 	</item>
 	<item entity_id="584" bundle="library_book" delta="0">
 		<value>H_fantasy_atawulf.xml</value>
@@ -30512,6 +30512,12 @@ lib/art_books/book_history_engraving
 	<item entity_id="598" bundle="library_book" delta="1">
 		<value>strugackii_arkadii_paren_iz_preispodnei.fb2#fb2 format</value>
 	</item>
+	<item entity_id="586" bundle="library_book" delta="1">
+		<value>haeckaya_elena_mirra_i_dyavol.fb2.zip</value>
+	</item>
+	<item entity_id="585" bundle="library_book" delta="1">
+		<value>haeckaya_elena_Anahron_1.fb2.zip</value>
+	</item>
 	<item entity_id="626" bundle="library_book" delta="1">
 		<value>B_fantasy_boiler.xml</value>
 	</item>
@@ -30619,6 +30625,9 @@ lib/art_books/book_history_engraving
 	</item>
 	<item entity_id="557" bundle="library_book" delta="2">
 		<value>bulgakov_mihail_master_i_margarita.fb2.zip</value>
+	</item>
+	<item entity_id="585" bundle="library_book" delta="2">
+		<value>haeckaya_elena_Anahron_2.fb2.zip</value>
 	</item>
 	<item entity_id="626" bundle="library_book" delta="2">
 		<value>B_fantasy_boiler.fb2</value>
@@ -31511,12 +31520,6 @@ lib/art_books/book_history_engraving
 	<item entity_id="587" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="586" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
-	<item entity_id="585" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
 	<item entity_id="584" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
@@ -32277,12 +32280,6 @@ lib/art_books/book_history_engraving
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="587" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
-	<item entity_id="586" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
-	<item entity_id="585" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="584" bundle="library_book" delta="1">
@@ -33918,10 +33915,10 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="586" delta="0">
-		<termin tid="67" >txt</termin>
+		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="585" delta="0">
-		<termin tid="68" >xml</termin>
+		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="584" delta="0">
 		<termin tid="68" >xml</termin>
@@ -35088,10 +35085,10 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="586" delta="1">
-		<termin tid="39" >художественая литература</termin>
+		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="585" delta="1">
-		<termin tid="39" >художественая литература</termin>
+		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="584" delta="1">
 		<termin tid="39" >художественая литература</termin>
@@ -36063,10 +36060,10 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="586" delta="2">
-		<termin tid="173" >фантастика</termin>
+		<termin tid="17" >юмор</termin>
 	</item>
 	<item entity_id="585" delta="2">
-		<termin tid="173" >фантастика</termin>
+		<termin tid="68" >xml</termin>
 	</item>
 	<item entity_id="584" delta="2">
 		<termin tid="173" >фантастика</termin>
@@ -36753,7 +36750,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="174" >социальная фантастика</termin>
 	</item>
 	<item entity_id="586" delta="3">
-		<termin tid="17" >юмор</termin>
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="584" delta="3">
 		<termin tid="14" >исторический роман, рассказ</termin>
@@ -40465,30 +40462,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="587" tid="160">
 	</item>
-	<item nid="586" tid="67">
-	</item>
-	<item nid="586" tid="39">
-	</item>
-	<item nid="586" tid="173">
-	</item>
-	<item nid="586" tid="17">
-	</item>
-	<item nid="586" tid="151">
-	</item>
-	<item nid="586" tid="160">
-	</item>
-	<item nid="585" tid="68">
-	</item>
-	<item nid="585" tid="39">
-	</item>
-	<item nid="585" tid="173">
-	</item>
-	<item nid="585" tid="139">
-	</item>
-	<item nid="585" tid="140">
-	</item>
-	<item nid="585" tid="160">
-	</item>
 	<item nid="584" tid="68">
 	</item>
 	<item nid="584" tid="39">
@@ -43492,6 +43465,30 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1444" tid="156">
 	</item>
 	<item nid="1444" tid="194">
+	</item>
+	<item nid="586" tid="39">
+	</item>
+	<item nid="586" tid="173">
+	</item>
+	<item nid="586" tid="17">
+	</item>
+	<item nid="586" tid="67">
+	</item>
+	<item nid="586" tid="151">
+	</item>
+	<item nid="586" tid="160">
+	</item>
+	<item nid="585" tid="39">
+	</item>
+	<item nid="585" tid="173">
+	</item>
+	<item nid="585" tid="68">
+	</item>
+	<item nid="585" tid="139">
+	</item>
+	<item nid="585" tid="140">
+	</item>
+	<item nid="585" tid="160">
 	</item>
 </table_taxonomy_index>
 
