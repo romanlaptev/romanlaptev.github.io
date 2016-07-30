@@ -3,18 +3,94 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/uikit/css/uikit.min.css">
+<!--	
+	//cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+-->	
 <script>
 //if (window.File && window.FileReader && window.FileList && window.Blob) {
-if( window.File && window.FileList && window.FileReader )
-{
+if( window.File && window.FileList && window.FileReader ){
   // Работает
 } else {
   alert('Your browser does not support File API');
 }
 
-window.onload = function(){
+console.log("window.requestFileSystem = " + window.requestFileSystem);
+console.log("window.webkitRequestFileSystem = " + window.webkitRequestFileSystem);
 
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+ 
+// Handle errors
+function errorHandler(e) {
+	var msg = '';
+	switch (e.code){
+	
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg = 'QUOTA_EXCEEDED_ERR';
+		break;
+		
+		case FileError.NOT_FOUND_ERR:
+			msg = 'NOT_FOUND_ERR';
+		break;
+		
+		case FileError.SECURITY_ERR:
+			msg = 'SECURITY_ERR';
+		break;
+		
+		case FileError.INVALID_MODIFICATION_ERR:
+			msg = 'INVALID_MODIFICATION_ERR';
+		break;
+		
+		case FileError.INVALID_STATE_ERR:
+			msg = 'INVALID_STATE_ERR';
+		break;
+		
+		default:
+			msg = 'Unknown Error';
+		break;
+	};
+	console.log('Error: ' + msg);
+}//end errorHandler()
+
+// Init and write some data to a file
+function onInitFs(fs) {
+console.log('Opened file system: ' + fs.name, fs);
+/*
+	fs.root.getFile('log-f-api.txt', {create: true}, function(fileEntry) {
+		fileEntry.isFile === true;
+		fileEntry.name == 'log-f-api.txt';
+		fileEntry.fullPath == '/log-f-api.txt';
+		
+		// Create a FileWriter object for our FileEntry (log.txt).
+		fileEntry.createWriter(function(fileWriter) {
+		
+			fileWriter.onwriteend = function(e) {
+				console.log('Write completed.');
+			};
+			
+			fileWriter.onerror = function(e) {
+				console.log('Write failed: ' + e);
+			};
+			
+		//Create a new Blob and write it to log.txt.
+		if(!window.BlobBuilder && window.WebKitBlobBuilder)
+			window.BlobBuilder = window.WebKitBlobBuilder; // in Chrome 12.
+			
+			var bb = new BlobBuilder(); 
+			bb.append("some stuff");
+console.log("bb size:"+bb.size);
+
+			bb.append('put some nice text in our file....');
+			var ourData = bb.getBlob('text/plain');
+			fileWriter.write(ourData); 
+		}, errorHandler);
+	}, errorHandler);
+*/	
+}//end onInitFs
+
+
+
+window.onload = function(){
 	document.getElementById("clear-log").onclick = function(){
 		document.getElementById("log").innerHTML="";
 	};
@@ -76,6 +152,25 @@ console.log( "reader, progress", e );
 		//}
 	}
 	
+//--------------------------------
+	document.getElementById("btn2").onclick = function(e){
+	/*
+		window.requestFileSystem(
+			window.PERSISTENT, 
+			5*1024*1024, 
+			onInitFs,
+			errorHandler
+		);
+	*/	
+		if (window.webkitRequestFileSystem) {
+			window.webkitRequestFileSystem( window.PERSISTENT, 1024*1024,onInitFs,errorHandler);
+		} 
+		else {
+			window.requestFileSystem( window.PERSISTENT, 1024*1024, onInitFs, errorHandler);
+		}
+		
+	}//end event
+
 }//end load	
 </script>
 
@@ -100,7 +195,11 @@ border:1px dashed;
 				<h1 class="uk-text-center">Test HTML5 FileAPI</h1>
 			</div>
 <pre>
+http://caniuse.com/#feat=filereader
+http://caniuse.com/#feat=filesystem
+
 https://developer.mozilla.org/ru/docs/Web/API/FileReader
+https://developer.mozilla.org/en-US/docs/Web/API/LocalFileSystem
 
 https://books.google.ru/books?id=C3kabcBG0ZsC&pg=PT756&lpg=PT756
 Закас Н. JavaScript для профессиональных веб-разработчиков 
@@ -109,6 +208,16 @@ http://javascript.maxsage.co.uk/Ch25/FileAPIExample03.htm
 
 https://habrahabr.ru/post/112286/
 https://jsfiddle.net/0GiS0/Yvgc2/
+
+https://dev.w3.org/2009/dap/file-system/file-writer.html
+http://www.html5rocks.com/ru/tutorials/file/filesystem/
+
+https://gist.github.com/greenido/979770
+Simple test to FileSystem APIs (HTML5)
+
+http://xdan.ru/Working-with-files-in-JavaScript-Part-1-The-Basics.html
+http://xdan.ru/Working-with-files-in-JavaScript-Part-2-FileReader.html
+
 </pre>
 			<h2>File info</h2>
 			<p>selected files info: <input type="file" multiple id="files-list"/></p>
@@ -120,6 +229,11 @@ https://jsfiddle.net/0GiS0/Yvgc2/
 			</div>
 			
 		</div>
+		
+		<div class="uk-panel uk-panel-box">
+			<button id="btn2" class="uk-button uk-button-primary">test requestFileSystem</button>
+		</div>
+		
 	</div><!-- end container -->
 
 	<div id="log-wrap" class="uk-panel-box uk-panel-box-primary">
