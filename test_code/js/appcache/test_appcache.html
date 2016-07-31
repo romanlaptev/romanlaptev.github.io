@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<!--
 <html manifest="appcache.manifest">
--->
+<!--
 <html manifest="appcache.txt">
+-->
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Test AppCache</title>
@@ -18,7 +18,7 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>test AppCache</h1>
-<p>version 26</p>
+<p>version 42</p>
 		</div>
 		
 		<div class="panel">
@@ -30,6 +30,8 @@
 
 <pre>
 http://caniuse.com/#feat=offline-apps
+http://caniuse.com/#feat=serviceworkers
+
 https://msdn.microsoft.com/ru-ru/library/hh673545%28v=vs.85%29.aspx
 https://habrahabr.ru/post/151815/
 https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
@@ -40,6 +42,10 @@ http://html5doctor.com/go-offline-with-application-cache/
 http://www.html5rocks.com/ru/tutorials/appcache/beginner/ - "Объем кэшированных данных для сайтов не может превышать 5 МБ......."
 
 https://html.spec.whatwg.org/#applicationcache
+http://w3pro.ru/article/zapusk-veb-prilozhenii-v-offlain-s-pomoshchyu-html5-appcache
+
+FF 44, "Application Cache API (AppCache) устарел и в будущем будет удалён. Для поддержки автономной работы, пожалуйста, рассмотрите применение ServiceWorker."
+https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
 
 Cache Manifest Tutorial HTML5 
 https://www.youtube.com/watch?v=15e4tzEEDB8
@@ -58,8 +64,13 @@ https://youtube.com/embed/kXZA9eS6nCw
 браузер IE10-11, 
 
 1.создать manifest.appcache, где описать кешируемые ресурсы
+можно manifest.txt
+Firefox 18 не кеширует при manifest.txt!!!!!!
+
 2.создать .htaccess, где определен тип ответа для запроса файлов manifest
 AddType text/cache-manifest manifest
+для txt не нужно
+
 3.Загрузить страницу test_appcache.html, в консоле будут сообщения о кэшировании ресурсов
 (
 Creating Application Cache with manifest http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/appcache.manifest
@@ -95,8 +106,14 @@ test_appcache.html:1 Application Cache NoUpdate event
 </pre>
 
 <pre>
-	<li><a href="chrome://appcache-internals/">chrome://appcache-internals/, удаление элементов кэша приложений</a></li>
-	about:cache -  Firefox, Information about the Network Cache Storage Service
+	chrome://appcache-internals/
+	удаление элементов кэша приложений
+	
+	about:cache
+	Firefox, Information about the Network Cache Storage Service
+	
+	IE
+	Сервис - Св-ва браузера - Общие - параметры - кэш и базы данных
 </pre>
 
 	</div><!-- end container -->
@@ -109,15 +126,43 @@ if (!window.applicationCache) {
 } else {
 	var msg = "<h3>window.applicationCache is supported, " + window.applicationCache + "</h3>";
 	_log( msg );
-	//for( var item in window.applicationCache){
+	addEvents();
+/*
+setInterval(function () { 
+	window.applicationCache.update();
+	}, 3600000); // Check for an updated manifest file every 60 minutes. If it's updated, download a new cache as defined by the new manifest file.
+	addEventListener('onupdateready', function(){ // when an updated cache is downloaded and ready to be used
+		window.applicationCache.swapCache(); //swap to the newest version of the cache
+	}, false);
+*/
+	for( var item in window.applicationCache){
 //_log( item + " - " +  window.applicationCache[item] );
-//console.log( item,  window.applicationCache[item] );
-	//}
+console.log( item,  window.applicationCache[item] );
+	}
 	
 }
 //--------------------------------------
 
+	var test = {
+		"name" : "Service Worker API",
+		"result" : false
+	};
+	var result = 'serviceWorker' in navigator;
+	if ( 'serviceWorker' in navigator) {
+		var msg = "<h3> serviceWorker is supported, " + result + "</h3>";
+		_log( msg );
+	} else {
+		var msg = "serviceWorker not supported, "  + result;
+		_log( msg );
+	}
+//--------------------------------------
+
 document.getElementById("cache-status").onclick = function(){
+	if (!window.applicationCache) {
+		var msg = "<h3> + window.applicationCache not supported, " + window.applicationCache + "</h3>";
+		_log( msg );
+		return false;
+	}
 	var status = window.applicationCache.status;
 	var text_status = "";
 	switch (status){
@@ -151,6 +196,12 @@ document.getElementById("cache-status").onclick = function(){
 }//end event
 
 document.getElementById("cache-update").onclick = function(){
+	if (!window.applicationCache) {
+		var msg = "<h3> + window.applicationCache not supported, " + window.applicationCache + "</h3>";
+		_log( msg );
+		return false;
+	}
+	
 	var msg = "window.applicationCache.update() - проверка файла .manifest и последующее скачивание необходимых ресурсов" ;
 	_log(msg);
 	
@@ -158,14 +209,17 @@ document.getElementById("cache-update").onclick = function(){
 	appCache.update();
 	
 /*
-Метод переключает браузер на использование новых кэшированных файлов вместо старых. Перерисовки страницы не происходит, только при последующем обращении к кэшированным файлам они берутся уже из обновлённого кэша.
+Метод переключает браузер на использование новых кэшированных файлов вместо старых. 
+Перерисовки страницы не происходит, только при последующем обращении к кэшированным файлам они берутся уже из обновлённого кэша.
 Простой альтернативой метода является перезагрузка страницы, например, при помощи location.reload().	
 */
+/*
 	if ( appCache.status == window.applicationCache.UPDATEREADY ) {
 		appCache.swapCache();  // The fetch was successful, swap in the new cache.
 var msg = "window.applicationCache.swapCache() - The fetch was successful, swap in the new cache" ;
 _log(msg);
 	}
+*/	
 }//end event
 
 /*
@@ -178,57 +232,63 @@ _log(msg);
     obsolete – происходит при подтверждение, что кэш в хранилище устарел и будет удалён;
     updateready – происходит при окончании загрузки обновлённого кэша.
 */
+function addEvents(){
+	// Fired after the first cache of the manifest.
+	window.applicationCache.addEventListener('cached', function(e){
+		var msg = "window.applicationCache, CACHED" ;
+		_log(msg);
+	}, false);
 
-// Fired after the first cache of the manifest.
-window.applicationCache.addEventListener('cached', function(e){
-	var msg = "window.applicationCache, CACHED" ;
-	_log(msg);
-}, false);
+	// Checking for an update. Always the first event fired in the sequence.
+	window.applicationCache.addEventListener('checking', function(e){
+		var msg = "window.applicationCache, CHECKING" ;
+		_log(msg);
+	}, false);
 
-// Checking for an update. Always the first event fired in the sequence.
-window.applicationCache.addEventListener('checking', function(e){
-	var msg = "window.applicationCache, CHECKING" ;
-	_log(msg);
-}, false);
+	// An update was found. The browser is fetching resources.
+	window.applicationCache.addEventListener('downloading', function(e){
+		var msg = "window.applicationCache, DOWNLOADING" ;
+		_log(msg);
+	}, false);
 
-// An update was found. The browser is fetching resources.
-window.applicationCache.addEventListener('downloading', function(e){
-	var msg = "window.applicationCache, DOWNLOADING" ;
-	_log(msg);
-}, false);
+	// The manifest returns 404 or 410, the download failed,
+	// or the manifest changed while the download was in progress.
+	window.applicationCache.addEventListener('error', function(e){
+		var msg = "window.applicationCache, ERROR" ;
+		_log(msg);
+	}, false);
 
-// The manifest returns 404 or 410, the download failed,
-// or the manifest changed while the download was in progress.
-window.applicationCache.addEventListener('error', function(e){
-	var msg = "window.applicationCache, ERROR" ;
-	_log(msg);
-}, false);
+	// Fired after the first download of the manifest.
+	window.applicationCache.addEventListener('noupdate', function(e){
+		var msg = "window.applicationCache, NOUPDATE" ;
+		_log(msg);
+	}, false);
 
-// Fired after the first download of the manifest.
-window.applicationCache.addEventListener('noupdate', function(e){
-	var msg = "window.applicationCache, NOUPDATE" ;
-	_log(msg);
-}, false);
+	// Fired if the manifest file returns a 404 or 410.
+	// This results in the application cache being deleted.
+	window.applicationCache.addEventListener('obsolete', function(e){
+		var msg = "window.applicationCache, OBSOLETE" ;
+		_log(msg);
+	}, false);
 
-// Fired if the manifest file returns a 404 or 410.
-// This results in the application cache being deleted.
-window.applicationCache.addEventListener('obsolete', function(e){
-	var msg = "window.applicationCache, OBSOLETE" ;
-	_log(msg);
-}, false);
+	// Fired for each resource listed in the manifest as it is being fetched.
+	window.applicationCache.addEventListener('progress', function(e){
+		var msg = "window.applicationCache, PROGRESS" ;
+		_log(msg);
+	}, false);
 
-// Fired for each resource listed in the manifest as it is being fetched.
-window.applicationCache.addEventListener('progress', function(e){
-	var msg = "window.applicationCache, PROGRESS" ;
-	_log(msg);
-}, false);
-
-// Fired when the manifest resources have been newly redownloaded.
-window.applicationCache.addEventListener('updateready', function(e){
-	var msg = "window.applicationCache, UPDATEREADY" ;
-	_log(msg);
-}, false);
-
+	// Fired when the manifest resources have been newly redownloaded.
+	window.applicationCache.addEventListener('updateready', function(e){
+		var msg = "window.applicationCache, UPDATEREADY" ;
+		_log(msg);
+		
+		window.applicationCache.swapCache();
+		var msg = "window.applicationCache.swapCache() - The fetch was successful, swap in the new cache" ;
+		_log(msg);
+		//window.location.reload();
+		
+	}, false);
+}//end addEvents()
 
 
 function _log(msg, id){

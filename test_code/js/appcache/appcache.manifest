@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# version 26
+# version 42
 
 CACHE:
 # Defines resources to be cached.
@@ -16,4 +16,5 @@ css/bootstrap336.css css/offline.css
 NETWORK:
 # Defines resources that will not be cached.
 #figure3.png
+appcache.manifest
 *

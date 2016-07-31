@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-# version 26
+# version 28
 
 CACHE:
 # Defines resources to be cached.
@@ -11,6 +11,8 @@ FALLBACK:
 # resources cannot be downloaded, for example
 # when the browser is offline..
 css/bootstrap336.css css/offline.css
+
+# все запросы с сервера в автономном режиме направляются на offline.html (IE)
 / offline.html
 
 NETWORK:

@@ -335,6 +335,22 @@ console.log(window.ActiveXObject);
 //--------------------------------------
 
 	var test = {
+		"name" : "Service Worker API",
+		"result" : false
+	};
+	var result = 'serviceWorker' in navigator;
+	if ( 'serviceWorker' in navigator) {
+		test["result"] = true;
+		test["msg"] = "serviceWorker is supported, " + result;
+		test["msg"] += "<br>https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers ";
+	} else {
+		test["msg"] = "serviceWorker not supported, "  + result;
+	}
+	
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
 		"name" : "Server side events",
 		"result" : false
 	};
