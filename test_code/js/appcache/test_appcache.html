@@ -4,6 +4,13 @@
 <html manifest="appcache.txt">
 -->
 <head>
+<!-- Запрет на кэширование браузером и прокси-сервером -->
+<!--
+<meta http-equiv="Cache-Control" content="no-cache">
+-->
+<!-- Запрет кэширования страницы, только браузером -->
+<meta http-equiv="Cache-Control" content="private">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Test AppCache</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=10">
@@ -18,7 +25,7 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>test AppCache</h1>
-<p>version 42</p>
+<p>version 44</p>
 		</div>
 		
 		<div class="panel">
