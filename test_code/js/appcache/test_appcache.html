@@ -5,11 +5,12 @@
 -->
 <head>
 <!-- Запрет на кэширование браузером и прокси-сервером -->
-<!--
-<meta http-equiv="Cache-Control" content="no-cache">
--->
+<meta http-equiv="Cache-Control" content="no-cache, no-store">
+
 <!-- Запрет кэширования страницы, только браузером -->
+<!--
 <meta http-equiv="Cache-Control" content="private">
+-->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Test AppCache</title>
@@ -38,6 +39,8 @@
 <pre>
 http://caniuse.com/#feat=offline-apps
 http://caniuse.com/#feat=serviceworkers
+http://manifest-validator.com/
+http://www.onlinewebcheck.com/
 
 https://msdn.microsoft.com/ru-ru/library/hh673545%28v=vs.85%29.aspx
 https://habrahabr.ru/post/151815/
@@ -66,6 +69,7 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=588931
 
 ServiceWorker
 https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
+http://prgssr.ru/development/sozdaem-service-worker.html
 https://css-tricks.com/serviceworker-for-offline/
 https://mobiforge.com/design-development/taking-web-offline-service-workers
 
@@ -134,13 +138,13 @@ test_appcache.html:1 Application Cache NoUpdate event
 	
 	about:cache
 	Firefox, Information about the Network Cache Storage Service
+	about:preferences#advanced
 	
 	IE
 	Сервис - Св-ва браузера - Общие - параметры - кэш и базы данных
 </pre>
 
 	</div><!-- end container -->
-</body>
 
 <script>
 if (!window.applicationCache) {
@@ -158,10 +162,10 @@ setInterval(function () {
 		window.applicationCache.swapCache(); //swap to the newest version of the cache
 	}, false);
 */
-	for( var item in window.applicationCache){
+//	for( var item in window.applicationCache){
 //_log( item + " - " +  window.applicationCache[item] );
-console.log( item,  window.applicationCache[item] );
-	}
+//console.log( item,  window.applicationCache[item] );
+	//}
 	
 }
 //--------------------------------------
@@ -279,6 +283,7 @@ function addEvents(){
 	window.applicationCache.addEventListener('error', function(e){
 		var msg = "window.applicationCache, ERROR" ;
 		_log(msg);
+console.log(e);
 	}, false);
 
 	// Fired after the first download of the manifest.
@@ -325,4 +330,5 @@ function _log(msg, id){
 </script>
 
 
+</body>
 </html>
