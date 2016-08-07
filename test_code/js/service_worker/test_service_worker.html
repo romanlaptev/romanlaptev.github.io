@@ -19,6 +19,7 @@
 		<pre>
 https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
 https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces
+https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
 
 http://prgssr.ru/development/sozdaem-service-worker.html
 Пошаговое руководство по созданию сервис-воркера для офлайн-версии сайта. Перевод статьи Лизы Денжер Гарднер.
@@ -41,6 +42,20 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 	var test = 'serviceWorker' in navigator;
 	var msg = "serviceWorker support: " + test;
 	_log(msg);
+
+	if ('serviceWorker' in navigator) {
+		console.log('CLIENT: service worker registration in progress.');
+		
+		navigator.serviceWorker.register('js/service-worker.js')
+		.then(function() {
+			console.log('CLIENT: service worker registration complete.');
+		}, function() {
+			console.log('CLIENT: service worker registration failure.');
+		});
+		
+	} else {
+		console.log('CLIENT: service worker is not supported.');
+	}
 	
 </script>
 
