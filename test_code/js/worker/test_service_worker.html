@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../../css/test_bootstrap/css/bootstrap335.min.css">
+<style>
+	#info {  border: 1px dashed;  padding: 10px; }
+</style>
+	<script src="../lib/shared_functions.js"></script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="page-header">
+			<h1>test Service Worker</h1>
+		</div>
+		
+		<pre>
+https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
+https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces
+
+http://prgssr.ru/development/sozdaem-service-worker.html
+Пошаговое руководство по созданию сервис-воркера для офлайн-версии сайта. Перевод статьи Лизы Денжер Гарднер.
+
+https://css-tricks.com/serviceworker-for-offline/
+https://mobiforge.com/design-development/taking-web-offline-service-workers
+		</pre>
+		
+		<div class="panel">
+			<div class="panel-body" id="info"></div>
+		</div>
+		
+	</div><!-- end container -->
+	
+<script>
+	var test =  typeof window.Promise !== "undefined";
+	var msg = "Promise support: " + test;
+	_log(msg);
+	
+	var test = 'serviceWorker' in navigator;
+	var msg = "serviceWorker support: " + test;
+	_log(msg);
+	
+</script>
+
+</body>
+</html>
