@@ -53,7 +53,7 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 			_log('CLIENT: service worker registration failure.');
 		});
 		*/
-		navigator.serviceWorker.register('/test_code/js/service_worker/js/service-worker.js', { scope: '/test_code/js/service_worker/' }).then(function(reg) {
+		navigator.serviceWorker.register('/test_code/js/service_worker/site/service-worker.js', { scope: '/test_code/js/service_worker/site' }).then(function(reg) {
 		
 		if(reg.installing) {
 			_log('Service worker installing');
