@@ -343,6 +343,12 @@ console.log(window.ActiveXObject);
 		test["result"] = true;
 		test["msg"] = "serviceWorker is supported, " + result;
 		test["msg"] += "<br>https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers ";
+
+		test["links"]=[];
+		test["links"].push(	{
+				"link" : "service_worker/test_service_worker.html", 
+				"text" : "test_service_worker.html"
+		});
 	} else {
 		test["msg"] = "serviceWorker not supported, "  + result;
 	}
