@@ -46,7 +46,7 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 	if ('serviceWorker' in navigator) {
 		_log('CLIENT: service worker registration in progress.');
 		
-		navigator.serviceWorker.register('js/service-worker.js')
+		navigator.serviceWorker.register('/test_code/js/service_worker/js/service-worker.js')
 		.then(function() {
 			_log('CLIENT: service worker registration complete.');
 		}, function() {
@@ -56,7 +56,28 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 	} else {
 		_log('CLIENT: service worker is not supported.');
 	}
-	
+
+
+/*
+	if ('serviceWorker' in navigator) {
+		_log('CLIENT: service worker registration in progress.');
+		navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
+		
+		if(reg.installing) {
+		  console.log('Service worker installing');
+		} else if(reg.waiting) {
+		  console.log('Service worker installed');
+		} else if(reg.active) {
+		  console.log('Service worker active');
+		}
+		
+	  }).catch(function(error) {
+		// registration failed
+		console.log('Registration failed with ' + error);
+	  });
+	};
+*/	
+
 </script>
 
 </body>
