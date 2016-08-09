@@ -43,6 +43,16 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 	var msg = "serviceWorker support: " + test;
 	_log(msg);
 
+	if( window.location.protocol !== "https:"){
+		var msg = "error, protocol used: " + window.location.protocol;
+		_log(msg);
+		var msg = "serviceWorker require https:"
+		_log(msg);
+	} else {
+		var msg = "protocol used: " + window.location.protocol;
+		_log(msg);
+	}
+	
 	if ('serviceWorker' in navigator) {
 		_log('CLIENT: service worker registration in progress.');
 		/*
