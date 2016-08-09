@@ -45,7 +45,7 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 
 	if( window.location.protocol !== "https:"){
 		var msg = "<p class='text-danger'>error, protocol used: " + window.location.protocol;
-		msg += ", serviceWorker require https:</p>"
+		msg += ", but serviceWorker requires https:</p>"
 		_log(msg);
 	} else {
 		var msg = "protocol used: " + window.location.protocol;
