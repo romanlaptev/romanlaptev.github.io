@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>test SORT</title>
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>Test SORT</h1>
+		</div>
+	
+		<pre>
+https://learn.javascript.ru/array-methods
+		</pre>
+		
+		<pre id="code_out"></pre>
+		
+	</div><!-- end container -->
+	
+<script id="source">
+	var items = ["c","b","d", "a" ];
+	sort_string( items, "asc");
+	
+	//alphabetical sorting.
+	function sort_string( sort_items, order ){
+		//sort_items.sort();
+		sort_items.sort(function (a, b){
+console.log(a, b);
+			switch(order){
+
+				case "asc":
+					if (a > b) {
+						return 1;
+					}
+					if (a < b) {
+						return -1;
+					}
+					// a === b
+					return 0;
+				break
+				
+				case "desc":
+					if (a > b) {
+						return -1;
+					}
+					if (a < b) {
+						return 1;
+					}
+					// a === b
+					return 0;
+				break
+				
+			}
+		});			
+console.log( sort_items );  
+	}//end sort_string()
+
+	var code_out = document.getElementById("code_out");
+	
+	//print source code
+	var source_txt = document.getElementById("source");
+	//alert( source_txt.outerHTML );
+	code_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+	
+</script>
+
+</body>
+</html>
