@@ -44,6 +44,27 @@ test_arr.forEach(
 );
 </pre>		
 
+<pre>
+https://learn.javascript.ru/array-methods
+получение уникальных значений
+
+function unique(arr) {
+  var obj = {};
+
+  for(var n = 0; n < arr.length; n++){
+    var str = arr[n];
+    obj[str] = true; // запомнить строку в виде свойства объекта
+  }
+  return Object.keys(obj);
+}
+
+var strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", "8-()"
+];
+
+console.log( unique(strings) );
+</pre>
+
 		</div>
 		
 	</div>
