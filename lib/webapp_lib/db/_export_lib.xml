@@ -22110,6 +22110,21 @@ lib/books/V/Vershinin
 Сага воды и огня
 		</bookname>
 	</node>
+	<node title="Саймон Флэгг и дьявол" nid="1705" mlid="2104" plid="386" type="library_book" created="23-Jul-2016 21:57:42" changed="23-Jul-2016 22:03:13" weight="0">
+		<body_value>
+https://fantlab.ru/work63145
+https://www.youtube.com/watch?v=52yhBkkulXw
+		</body_value>
+		<subfolder>
+lib/books/P
+		</subfolder>
+		<author>
+Порджес Артур
+		</author>
+		<bookname>
+Саймон Флэгг и дьявол
+		</bookname>
+	</node>
 	<node title="Самид Агаев. Седьмой совершенный" nid="682" mlid="1958" plid="386" type="library_book" created="09-Oct-2012 20:41:10" changed="09-Aug-2014 15:23:20" weight="0">
 		<body_value>
 Самид Агаев. Седьмой совершенный
@@ -30380,6 +30395,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1704" bundle="library_book" delta="0">
 		<value>Stephen_Walther_Windows_8_HTML5_JavaScript.pdf</value>
 	</item>
+	<item entity_id="1705" bundle="library_book" delta="0">
+		<value>Pordches_Artur__Saimon_Flegg_i_dyavol.fb2.zip</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -30583,6 +30601,9 @@ lib/art_books/book_history_engraving
 	</item>
 	<item entity_id="1688" bundle="library_book" delta="1">
 		<value>02_dokument-sobytiya-interfejsy.pdf</value>
+	</item>
+	<item entity_id="1705" bundle="library_book" delta="1">
+		<value>P_fantasy_porjers.txt</value>
 	</item>
 	<item entity_id="8" bundle="library_book" delta="2">
 		<value>forums,faq</value>
@@ -32996,6 +33017,9 @@ http://localhost#localhost, direct link
 	<item entity_id="1704" bundle="library_book" delta="0">
 		<value>https://drive.google.com/file/d/0B0l5s_9HQLzzTmQzUVVpOG1ZQ00/view?usp=sharing_eid&amp;ts=57678302</value>
 	</item>
+	<item entity_id="1705" bundle="library_book" delta="0">
+		<value>https://www.youtube.com/watch?v=52yhBkkulXw</value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, roman.v.laptev cloud
@@ -34397,6 +34421,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1704" delta="0">
 		<termin tid="182" >учебная литература</termin>
 	</item>
+	<item entity_id="1705" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35525,6 +35552,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1704" delta="1">
 		<termin tid="38" >компьютерная литература</termin>
 	</item>
+	<item entity_id="1705" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36437,6 +36467,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1704" delta="2">
 		<termin tid="100" >javascript</termin>
 	</item>
+	<item entity_id="1705" delta="2">
+		<termin tid="17" >юмор</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -36977,6 +37010,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1704" delta="3">
 		<termin tid="69" >pdf</termin>
 	</item>
+	<item entity_id="1705" delta="3">
+		<termin tid="20" >Новелла, рассказ</termin>
+	</item>
 	<item entity_id="224" delta="4">
 		<termin tid="4" >приключения</termin>
 	</item>
@@ -37139,6 +37175,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1689" delta="4">
 		<termin tid="185" >fb2</termin>
 	</item>
+	<item entity_id="1705" delta="4">
+		<termin tid="185" >fb2</termin>
+	</item>
 	<item entity_id="1449" delta="5">
 		<termin tid="69" >pdf</termin>
 	</item>
@@ -37171,6 +37210,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1668" delta="5">
 		<termin tid="68" >xml</termin>
+	</item>
+	<item entity_id="1705" delta="5">
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="555" delta="6">
 		<termin tid="68" >xml</termin>
@@ -37976,6 +38018,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1704" delta="0">
 		<termin tid="137" >W</termin>
 	</item>
+	<item entity_id="1705" delta="0">
+		<termin tid="175" >P</termin>
+	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
 	</item>
@@ -38557,6 +38602,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1704" delta="1">
 		<termin tid="163" >Ш</termin>
+	</item>
+	<item entity_id="1705" delta="1">
+		<termin tid="154" >П</termin>
 	</item>
 	<item entity_id="137" delta="2">
 		<termin tid="156" >С</termin>
@@ -43490,6 +43538,24 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="585" tid="160">
 	</item>
+	<item nid="1705" tid="39">
+	</item>
+	<item nid="1705" tid="173">
+	</item>
+	<item nid="1705" tid="17">
+	</item>
+	<item nid="1705" tid="20">
+	</item>
+	<item nid="1705" tid="185">
+	</item>
+	<item nid="1705" tid="67">
+	</item>
+	<item nid="1705" tid="175">
+	</item>
+	<item nid="1705" tid="154">
+	</item>
+	<item nid="1705" tid="217">
+	</item>
 </table_taxonomy_index>
 
 <table_taxonomy_term_data>
@@ -43986,6 +44052,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="216" vid="1" weight="0">
 		<name>гравюра</name>
 	</termin>
+	<termin tid="217" vid="1" weight="0">
+		<name>1959</name>
+	</termin>
 </table_taxonomy_term_data>
 
 <table_taxonomy_term_hierarchy>
@@ -44310,6 +44379,8 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="215" parent="0">
 	</termin>
 	<termin tid="216" parent="0">
+	</termin>
+	<termin tid="217" parent="189">
 	</termin>
 </table_taxonomy_term_hierarchy>
 
