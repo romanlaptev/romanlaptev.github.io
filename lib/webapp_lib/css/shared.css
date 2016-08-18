@@ -35,6 +35,12 @@ top: 0;
 min-height: 15%;
 width: 50%;  
 }
+@media screen and (max-width:1024px) { 
+	#info{
+		width: 100%;  
+	}	   
+}
+
 
 #info .close {
   display: block;
