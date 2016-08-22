@@ -12,9 +12,9 @@
 	$("#node-list-tpl").empty();
 	
 	//load_data();
-	//load_xml("xml/node.xml", "node" );
+	//load_xml("db/node.xml", "node" );
 	//load_table("json/node.json", "node" );
-	load_table("xml/node.xml", "node" );
+	load_table("db/node.xml", "node" );
 	
 	var end_time = new Date();
 	var runtime_load = ( end_time.getTime() - start_time.getTime()) / 1000;
@@ -100,22 +100,22 @@ console.log( "1. ", xml_data );
 	{
 console.log("function load_data()");
 		//node.load();
-		load_xml("xml/node.xml", "node" );
-		load_xml("xml/book.xml", "book" );
-		load_xml( "xml/field_data_body.xml", "field_data_body" );  
-		load_xml( "xml/field_data_body_video.xml", "field_data_body_video" );
-		load_xml( "xml/field_data_field_filename.xml", "field_data_field_filename" );
-		load_xml( "xml/field_data_field_img_cover.xml", "field_data_field_img_cover" );
-		load_xml( "xml/field_data_field_roles.xml", "field_data_field_roles" );
-		load_xml( "xml/field_data_field_subfolder.xml", "field_data_field_subfolder" );
-		load_xml( "xml/field_data_field_taxonomy.xml", "field_data_field_taxonomy" );
-		load_xml( "xml/field_data_field_taxonomy_alpha.xml", "field_data_field_taxonomy_alpha" );
-		load_xml( "xml/field_data_field_year.xml", "field_data_field_year" );
-		load_xml( "xml/menu_links.xml", "menu_links" );
-		load_xml( "xml/taxonomy_index.xml",  "taxonomy_index" );
-		load_xml( "xml/taxonomy_term_data.xml", "taxonomy_term_data" );
-		load_xml( "xml/taxonomy_term_hierarchy.xml", "taxonomy_term_hierarchy" );
-		load_xml( "xml/taxonomy_vocabulary.xml", "taxonomy_vocabulary" );
+		load_xml("db/node.xml", "node" );
+		load_xml("db/book.xml", "book" );
+		load_xml( "db/field_data_body.xml", "field_data_body" );  
+		load_xml( "db/field_data_body_video.xml", "field_data_body_video" );
+		load_xml( "db/field_data_field_filename.xml", "field_data_field_filename" );
+		load_xml( "db/field_data_field_img_cover.xml", "field_data_field_img_cover" );
+		load_xml( "db/field_data_field_roles.xml", "field_data_field_roles" );
+		load_xml( "db/field_data_field_subfolder.xml", "field_data_field_subfolder" );
+		load_xml( "db/field_data_field_taxonomy.xml", "field_data_field_taxonomy" );
+		load_xml( "db/field_data_field_taxonomy_alpha.xml", "field_data_field_taxonomy_alpha" );
+		load_xml( "db/field_data_field_year.xml", "field_data_field_year" );
+		load_xml( "db/menu_links.xml", "menu_links" );
+		load_xml( "db/taxonomy_index.xml",  "taxonomy_index" );
+		load_xml( "db/taxonomy_term_data.xml", "taxonomy_term_data" );
+		load_xml( "db/taxonomy_term_hierarchy.xml", "taxonomy_term_hierarchy" );
+		load_xml( "db/taxonomy_vocabulary.xml", "taxonomy_vocabulary" );
 	}//end load_data()
 	
 	function load_xml(xml_file, table )
@@ -142,8 +142,7 @@ console.log("status - " + status);
 	function load_table(file, table )
 	{
 		var type = file.indexOf(".json");
-		if( type > 0)
-		{
+		if( type > 0){
 			$.getJSON( file, function( data ){
 				
 				$.each( data, function( key, value){
@@ -169,10 +168,9 @@ console.log("status - " + status);
 
 		var type = file.indexOf(".xml");
 console.log(type);
-		if( type > 0)
-		{
+		if( type > 0){
 			$.ajax ({
-					type: "post",
+					type: "GET",
 					url: file,
 					dataType:"xml",
 					//processData:false,
@@ -196,7 +194,7 @@ console.log("status - " + status);
 		"load" : function(){
 			$.ajax ({
 					type: "post",
-					url: "xml/node.xml",
+					url: "db/node.xml",
 					dataType:"xml",
 					success:function(xml, status)
 					{
