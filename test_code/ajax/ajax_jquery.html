@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test jquery: load function</title>
+	<link rel="stylesheet" href="../	css/test_bootstrap/css/bootstrap335.min.css">
+	<script src="../js/lib/jquery.min.js" type="text/javascript"></script>
+	<script>
+$(document).ready(function(){
+
+	var xhr = new XMLHttpRequest();
+	var testXhr2 = "responseType" in xhr;
+	var msg = "XMLHttpRequest2 support: " +  testXhr2;
+	$("#log").append("<p>"+msg+"</p>");
+console.log( msg );  
+
+	$(document)
+	.ajaxStart(function(e) { 
+		var time = convertTimestamp(e.timeStamp);
+		var msg = "ajaxStart, time: " + time;
+console.log(msg, e);
+		$('#log').append( "<p>"+msg+"</p>" ); 
+	})
+	.ajaxSend(function(e) { 
+		var msg = "ajaxSend";
+//console.log(msg, e);
+		$('#log').append( "<p>"+msg+"</p>" ); 
+	})
+	.ajaxStop(function(e) { 
+		var time = convertTimestamp(e.timeStamp);
+		var msg = "ajaxStop, time: " + time;
+console.log(msg, e);
+		$('#log').append( "<p>"+msg+"</p>" ); 
+	})
+	.ajaxError(function( event, xhr, ajaxOptions, thrownError ){
+		var msg = "ajaxError, " + ajaxOptions.url + ", thrownError : " + thrownError;
+		$('#log').append( "<p>"+msg+"</p>" ); 
+//console.log( event);
+//console.log( xhr);
+console.log("ajaxOptions : ", ajaxOptions);
+//console.log("thrownError : ", thrownError);
+	})
+	.ajaxSuccess(function( event, xhr, ajaxOptions ){
+		var msg = "ajaxSuccess, " + ajaxOptions.url;
+		$('#log').append( "<p>"+msg+"</p>" ); 
+//console.log( event);
+//console.log( xhr);
+console.log("ajaxOptions : ", ajaxOptions);
+	})
+	.ajaxComplete(function( event, xhr, ajaxOptions ){
+		var msg = "ajaxComplete, " + ajaxOptions.url;
+		$('#log').append( "<p>"+msg+"</p>" ); 
+//console.log( event);
+//console.log( xhr);
+//console.log("ajaxOptions : ", ajaxOptions);
+	});
+
+	
+	
+	$('#load-html').on("click", function(){
+		var url = $("#html_url").val();
+		$('#insert_html').load( url, function( data, textStatus, xhr ){
+console.log("load(), default callback...", arguments);
+		});
+		return false;
+	});
+
+
+	$('#load-json').on("click", function( event ){
+		event = event || window.event;
+//console.log( event );
+		if (event.preventDefault) { // если метод существует
+			event.preventDefault(); // то вызвать его
+		} else { // иначе вариант IE8-:
+			event.returnValue = false;
+		}
+		
+		var url = $("#json_url").val();
+//console.log( "url = ", url);
+console.log( "getJSON = ", $.getJSON);
+			$.getJSON( url, function(){
+console.log("getJSON, default...");
+			} )
+			.progress(function(){
+console.log("getJSON, Progress...", arguments);
+			})
+			//.abort(function(){
+//console.log("getJSON, Abort...", arguments);
+			//})
+			.success(function( data, textStatus, jqXHR ){
+console.log("getJSON, Success...", arguments);
+				$('#insert_json').empty();
+/*
+				$.each(data,function(entryIndex,entry){
+var html = "<div class='entry'>";
+html += "<p><b>" + entryIndex + ":</b>" + entry + "</p>";
+html += "</div>";
+//alert (html);
+					$('#insert_json').append(html);
+				});
+*/
+				var json_str =   jqXHR.responseText;
+				$('#insert_json').append(  jqXHR.responseText );
+			})
+			.complete(function(){
+console.log("getJSON, Complete...", arguments);
+			})
+			.done(function(){
+console.log("getJSON, Done...");
+			})
+			//.then(function(){
+//console.log("getJSON, Then...");
+			//})
+			.fail(function(){
+console.log("getJSON, Fail...", arguments);
+			})
+			.error(function(){
+console.log("getJSON, Error...", arguments);
+			})
+			.always(function( data, textStatus, jqXHR ){
+console.log("getJSON, Always...", textStatus);
+console.log(" jqXHR: ",  jqXHR);
+console.log(" status: ",  jqXHR.status);
+console.log(" statusText: ",  jqXHR.statusText);
+			});
+			//return false;
+	});
+
+	
+	
+	$('#load-xml').click(function(){
+	
+		var url = $("#xml_url").val();
+		
+		$.get( url, function( data, textStatus, xhr){
+console.log(data);
+console.log(textStatus);
+console.log(xhr);
+			if( url = "data/test.xml"){
+				$('#insert_xml').empty();
+				
+				$(data).find('article').each(function(){
+					$article = $(this);
+					var html = "<div class='article'>";
+					html += "<p><b>" + $article.attr('title') + ":</b></p>";
+
+					$name_article = $article.find('name_article');
+					if ($name_article.length){
+						html += "<p><b>" + $name_article.text() + "</b></p>";
+					}
+
+					$text_article = $article.find('text_article');
+					if ($text_article.length){
+						html += "<p>" + $text_article.text() + "</p>";
+					}
+					html += "</div>";
+					$('#insert_xml').append(html);
+				});
+			
+			} else {
+			}
+			
+		})
+		//.progress(function(){
+//console.log("$.get, progress...", arguments);
+		//})
+		.always(function( data, textStatus, xhr ){
+console.log("$.get, always...", textStatus);
+console.log(" xhr: ",  xhr);
+console.log(" status: ",  xhr.status);
+console.log(" statusText: ", xhr.statusText);
+		});
+		
+		return false;
+/*
+readyState	4
+responseText		"<?xml version="1.0" enco...ticle>\n\n</dictionary>\n\n"
+responseXML	Document 
+status	200
+statusText	"OK"
+abort	function(a)
+always	function()
+complete	function()
+done	function()
+error	function()
+fail	function()
+getAllResponseHeaders	function()
+getResponseHeader	function(a)
+overrideMimeType	function(a)
+pipe		function()
+progress		function()
+promise	function(a)
+setRequestHeader	function(a, b)
+state	function()
+statusCode	function(a)
+success	function()
+then		function()
+*/
+		});//end event
+
+		
+	$('#btn1-load').on("click", function( event ){
+		event = event || window.event;
+//console.log( event );
+		if (event.preventDefault) { // если метод существует
+			event.preventDefault(); // то вызвать его
+		} else { // иначе вариант IE8-:
+			event.returnValue = false;
+		}
+		
+		var url = $("#url1").val();
+			$.ajax({
+				type: "GET",
+				url: url,
+				//cache: false,
+				//dataType:"xml",
+				data: {},
+				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
+					var xhr = new window.XMLHttpRequest();
+					
+					// прогресс загрузки на сервер
+					xhr.upload.addEventListener("progress", function(evt){
+console.log("xhr, upload progress callback function....", evt);
+						if (evt.lengthComputable) {
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+console.log(percentComplete);
+						}
+					}, false);
+					
+					// прогресс скачивания с сервера
+					xhr.addEventListener("progress", function(evt){
+console.log("xhr, download progress callback function....", evt);
+						if (evt.lengthComputable) {
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+console.log(percentComplete);
+						}
+					}, false);
+					return xhr;
+				}
+			})
+			.done(function (data) {
+console.log("$.ajax, Done...", arguments);
+			})
+			.fail(function (xhr, textStatus) {
+console.log("$.ajax, Fail...", arguments);
+			});
+
+	});//end event
+		
+});//end ready
+
+function convertTimestamp(timestamp) {
+	var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
+	yyyy = d.getFullYear(),
+	mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
+	dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
+	hh = d.getHours(),
+	h = hh,
+	min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
+	ampm = 'AM',
+	time;
+			
+	if (hh > 12) {
+		h = hh - 12;
+		ampm = 'PM';
+	} else if (hh === 12) {
+		h = 12;
+		ampm = 'PM';
+	} else if (hh == 0) {
+		h = 12;
+	}
+	
+	// ie: 2013-02-18, 8:35 AM	
+	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+		
+	return time;
+}//end convertTimestamp()
+
+</script>
+</head>
+
+<body>
+<div class="container">
+	<h2 class="page-header">Test jQuery Ajax function</h2>
+<pre>
+
+https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest
+XMLHttpRequest
+
+http://learn.javascript.ru/ajax-xmlhttprequest
+Основы XMLHttpRequest
+
+http://learn.javascript.ru/xhr-forms
+XMLHttpRequest POST, формы и кодировка
+
+http://xmlhttprequest.ru/
+XMLHTTPRequest: описание, применение, частые проблемы
+
+http://javascript.ru/ajax
+Учебник по AJAX и COMET
+
+https://learn.javascript.ru/ajax
+AJAX и COMET
+
+http://www.ibm.com/developerworks/ru/library/wa-ajaxintro1/index.html
+Освоение Ajax: Часть 1. Введение в Ajax
+
+
+http://javascript.ru/blog/gordon-freeman/Primery-raboty-s-AJAX-Otpravka-GET-POST-HEAD-zaprosov-cherez-AJAX-javascript
+Примеры работы с AJAX. Отправка GET, POST, HEAD запросов через AJAX на javascript.
+
+http://learn.javascript.ru/ajax-iframe
+IFRAME для AJAX и COMET
+
+https://habrahabr.ru/post/112779/
+Ajax загрузка данных из контейнера
+
+http://htmlweb.ru/ajax/ajax3.php
+Создание Ajax-приложения
+
+http://easy4web.ru/?p=681
+AJAX. Загрузка файлов.
+
+http://easywebscripts.net/ajax.php
+
+http://www.codenet.ru/webmast/js/ajax/AJAX.php
+Сверхдинамичные веб-интерфейсы
+
+jQuery + Ajax
+-------
+http://jquery-docs.ru/ajax/jquery-ajax/
+Русская документация по jQuery
+
+http://jquery.page2page.ru/index.php5/Ajax
+jQuery имеет ряд функций, позволяющих обмениваться данными с сервером без перезагрузки страницы (технология ajax). 
+
+http://jquery.page2page.ru/index.php5/Ajax_%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81_HTML-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85
+Ajax запрос HTML-данных, .load()
+
+http://anton.shevchuk.name/javascript/jquery-for-beginners-ajax/
+jQuery для начинающих. Часть 3. AJAX
+
+
+http://n-professor.ru/zagruzka-fajlov-ajax-s-pomoshhyu-jquery.html
+Загрузка файлов ajax с помощью JQuery.
+
+http://www.ibm.com/developerworks/ru/library/wa-aj-improve/
+Как упростить процесс Ajax-разработки с помощью библиотеки jQuery
+
+https://learn.javascript.ru/xhr-onprogress
+XMLHttpRequest: индикация прогресса
+
+https://wcoder.github.io/notes/progress-indicator-with-jquery
+Прогресс выполнения Ajax запроса в jQuery
+
+http://incode.pro/jquery/ajax-na-praktike-progress-bar-indikator-protsessa-zagruzki.html
+Progress Bar - индикатор процесса загрузки
+
+Deferred
+----------
+https://api.jquery.com/category/deferred-object/
+Category: Deferred Object
+
+http://javascript.ru/unsorted/async/deferred
+Объект Deferred.
+
+https://habrahabr.ru/post/113073/
+ jQuery Deferred Object (подробное описание)
+ 
+https://habrahabr.ru/post/193598/
+Ещё раз о Deferred/Promise
+
+
+</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>method load()</h3>
+		</div>
+		<div id="insert_html" class="panel-body"></div>
+		<input type="text" class="form-control" id="html_url" value=""/>
+<pre>
+data/test.html
+</pre>
+		<button class="btn btn-primary"  id="load-html">load</button>
+	</div>
+
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>$.getJSON</h3>
+		</div>
+		<div id="insert_json" class="panel-body"></div>
+		<input type="text" class="form-control" id="json_url" name="json_url" value=""/>
+		<button class="btn btn-primary"  id="load-json">load</button>
+<pre>
+data/test.json
+../../parser/json/bookmarks.json
+https://romanlaptev.github.io/parser/json/bookmarks.json
+----------------------
+readyState	4
+responseJSON	Object { FName="Roman",  LName="Laptev"}
+responseText		"{"FName":"Roman","LName":"Laptev"}\n"
+status	200
+statusText	"OK"
+abort	function(a)
+always	function()
+complete	function()
+done	function()
+error	function()
+fail	function()
+getAllResponseHeaders	function()
+getResponseHeader	function(a)
+overrideMimeType	function(a)
+pipe		function()
+progress		function()
+promise		function(a)
+setRequestHeader	function(a, b)
+state	function()
+statusCode	function(a)
+success	function()
+then		function()
+----------------------
+</pre>
+	</div>
+	
+	<div class="panel  panel-primary">
+		<div class="panel-heading">
+			<h3>$.get</h3>
+		</div>
+		
+		<div id="insert_xml" class="panel-body"></div>
+		
+		<div class="panel-footer">
+			<input type="text" class="form-control" id="xml_url" value=""/>
+<pre>
+data/test.xml
+../../parser/xml/export_mydb_notes.xml
+https://romanlaptev.github.io/parser/xml/export_mydb_notes.xml
+--------------------------
+http://jquery.page2page.ru/index.php5/Ajax_%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81_%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%BC_GET
+</pre>
+			<button class="btn btn-primary"  id="load-xml">load</button>
+		</div>
+	</div>
+	
+	<div class="panel  panel-primary">
+		<div class="panel-heading">
+			<h3>$.ajax</h3>
+		</div>
+		
+		<div id="insert_data" class="panel-body"></div>
+		
+		<div class="panel-footer">
+			<input type="text" class="form-control" id="url1" value=""/>
+<pre>
+data/test.xml
+../../parser/xml/export_mydb_notes.xml
+https://romanlaptev.github.io/parser/xml/export_mydb_notes.xml
+</pre>
+			<button class="btn btn-primary"  id="btn1-load">load</button>
+		</div>
+	</div>
+	
+	
+</div><!-- end container -->
+
+<style>
+#log {
+  background: #fff none repeat scroll 0 0;
+  border: 1px dashed;
+  opacity: 0.7;
+  padding: 10px;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+</style>
+<div id="log">log</div>
+
+</body>
+</html>
