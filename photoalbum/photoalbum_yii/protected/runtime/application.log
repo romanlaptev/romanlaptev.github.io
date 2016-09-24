@@ -604,3 +604,20 @@ Stack trace:
 #12 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
 #13 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/index.php(13): CWebApplication->run()
 REQUEST_URI=/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/
+2016/09/18 13:37:31 [error] [php] Undefined index: child (/mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php:45)
+Stack trace:
+#0 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/views/site/page-view-termins.php(23): recursion_view_termins()
+#1 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(126): require()
+#2 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#3 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(869): SiteController->renderFile()
+#4 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(782): SiteController->renderPartial()
+#5 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/protected/controllers/SiteController.php(64): SiteController->render()
+#6 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#7 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#8 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(286): SiteController->runAction()
+#9 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#10 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#11 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /mnt/terra/clouds/Yandex.Disk/sync/sites/php/frameworks/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /mnt/terra/clouds/Yandex.Disk/sync/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/index.php(13): CWebApplication->run()
+REQUEST_URI=/sites/romanlaptev.github.io/photoalbum/photoalbum_yii/
