@@ -1,9 +1,9 @@
-﻿<!doctype html>
+﻿<!DOCTYPE HTML>
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script>
 	window.onload = function()
@@ -135,12 +135,19 @@ console.log("function nameOnChange()");
 		}
 	}
 //==========================
-	$(document).ready(
-		function()
-		{
-//console.log("Ready!");
-		}
-	);
+
+	$(document).ready(function(){
+console.log("Ready!");
+
+		//определение события для всех полей ввода на странице
+		$(window)
+			.unbind("input.test")
+			.on("input.test", function(e){
+				var input = e.target;
+console.log(e, ", input text to ", $(input).attr("id"), $(input).attr("name") );
+		});
+
+	});
 	</script>
 
 	<style>
@@ -291,6 +298,8 @@ console.log("submit");
 })(jQuery);
 
 	</script>
+	
+
 </head>
 <body>
 
@@ -304,6 +313,22 @@ console.log("submit");
 		</div>
 
 		<div id="log" class="panel"></div>
+		
+		<pre>
+https://learn.javascript.ru/events-change
+Изменение: change, input, cut, copy, paste
+.....Событие input срабатывает тут же при изменении значения 
+текстового элемента и поддерживается всеми браузерами, кроме IE8-.......		
+
+		//определение события для всех полей ввода на странице
+		$(window)
+			.unbind("input.test")
+			.on("input.test", function(e){
+				var input = e.target;
+console.log(e, ", input text to ", $(input).attr("id"), $(input).attr("name") );
+		});
+
+		</pre>
 	</div>
 
 	<section class="container">
