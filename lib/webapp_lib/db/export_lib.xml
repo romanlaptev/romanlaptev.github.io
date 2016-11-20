@@ -19533,6 +19533,20 @@ lib/books/B/Bulgakov.M
 Записки юного врача
 		</bookname>
 	</node>
+	<node title="Захар Прилепин. Санькя" nid="1707" mlid="2106" plid="386" type="library_book" created="20-Nov-2016 12:46:49" changed="20-Nov-2016 12:47:31" weight="0">
+		<body_value>
+http://sankya.ru/chapters
+		</body_value>
+		<subfolder>
+lib/books/P
+		</subfolder>
+		<author>
+Захар Прилепин
+		</author>
+		<bookname>
+Санькя
+		</bookname>
+	</node>
 	<node title="Звездная пехота" nid="1483" mlid="1474" plid="1870" type="library_book" created="28-Jul-2013 18:46:16" changed="02-Feb-2016 21:22:23" weight="0">
 		<subfolder>
 lib/books/H/Heinlein.Robert
@@ -30413,6 +30427,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1706" bundle="library_book" delta="0">
 		<value>kataev_valentin_zimniy_veter.fb2.zip</value>
 	</item>
+	<item entity_id="1707" bundle="library_book" delta="0">
+		<value>prilepin_zahar_sankya.fb2.zip</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -34418,6 +34435,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1706" delta="0">
 		<termin tid="39" >художественая литература</termin>
 	</item>
+	<item entity_id="1707" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35552,6 +35572,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1706" delta="1">
 		<termin tid="99" >военная проза</termin>
 	</item>
+	<item entity_id="1707" delta="1">
+		<termin tid="22" >проза</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36470,6 +36493,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1706" delta="2">
 		<termin tid="178" >роман</termin>
 	</item>
+	<item entity_id="1707" delta="2">
+		<termin tid="178" >роман</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -37017,6 +37043,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="20" >Новелла, рассказ</termin>
 	</item>
 	<item entity_id="1706" delta="3">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1707" delta="3">
 		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="224" delta="4">
@@ -38035,6 +38064,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1706" delta="0">
 		<termin tid="147" >З</termin>
+	</item>
+	<item entity_id="1707" delta="0">
+		<termin tid="156" >С</termin>
 	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
@@ -43607,6 +43639,18 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1706" tid="149">
 	</item>
 	<item nid="1706" tid="224">
+	</item>
+	<item nid="1707" tid="39">
+	</item>
+	<item nid="1707" tid="22">
+	</item>
+	<item nid="1707" tid="178">
+	</item>
+	<item nid="1707" tid="185">
+	</item>
+	<item nid="1707" tid="156">
+	</item>
+	<item nid="1707" tid="199">
 	</item>
 </table_taxonomy_index>
 
