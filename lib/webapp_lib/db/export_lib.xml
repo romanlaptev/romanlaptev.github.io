@@ -18032,6 +18032,17 @@ lib/books/W/Wells.Herbert
 Война миров
 		</bookname>
 	</node>
+	<node title="Война. Рассказы" nid="1709" mlid="2108" plid="386" type="library_book" created="26-Dec-2016 17:37:43" changed="26-Dec-2016 17:38:17" weight="0">
+		<subfolder>
+lib/books/P
+		</subfolder>
+		<author>
+Составитель Захар Прилепин
+		</author>
+		<bookname>
+WAR
+		</bookname>
+	</node>
 	<node title="Восстание Ангелов" nid="664" mlid="1963" plid="386" type="library_book" created="09-Oct-2012 21:41:10" changed="09-Aug-2014 16:31:42" weight="0">
 		<body_value>
 Франс Анатоль. Восстание Ангелов
@@ -19533,7 +19544,7 @@ lib/books/B/Bulgakov.M
 Записки юного врача
 		</bookname>
 	</node>
-	<node title="Захар Прилепин. Санькя" nid="1707" mlid="2106" plid="386" type="library_book" created="20-Nov-2016 12:46:49" changed="20-Nov-2016 12:47:31" weight="0">
+	<node title="Захар Прилепин. Санькя" nid="1707" mlid="2106" plid="386" type="library_book" created="20-Nov-2016 12:46:49" changed="03-Dec-2016 20:05:54" weight="0">
 		<body_value>
 http://sankya.ru/chapters
 		</body_value>
@@ -30444,6 +30455,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1708" bundle="library_book" delta="0">
 		<value>minaev_sergei_duhless_povest_o_nenastoyashem_cheloveke.fb2.zip</value>
 	</item>
+	<item entity_id="1709" bundle="library_book" delta="0">
+		<value>prilepin_zahar_voina_rasskazy.fb2.zip</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -33045,6 +33059,10 @@ http://localhost#localhost, direct link
 	<item entity_id="1708" bundle="library_book" delta="0">
 		<value>https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less._%D0%9F%D0%BE%D0%B2%D0%B5%D1%81%D1%82%D1%8C_%D0%BE_%D0%BD%D0%B5%D0%BD%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B5%D0%BC_%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%D0%B5</value>
 	</item>
+	<item entity_id="1709" bundle="library_book" delta="0">
+		<value>
+</value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, roman.v.laptev cloud
@@ -34458,6 +34476,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1708" delta="0">
 		<termin tid="39" >художественая литература</termin>
 	</item>
+	<item entity_id="1709" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35598,6 +35619,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1708" delta="1">
 		<termin tid="22" >проза</termin>
 	</item>
+	<item entity_id="1709" delta="1">
+		<termin tid="99" >военная проза</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36522,6 +36546,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1708" delta="2">
 		<termin tid="9" >criminal</termin>
 	</item>
+	<item entity_id="1709" delta="2">
+		<termin tid="186" >сборник</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -37077,6 +37104,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1708" delta="3">
 		<termin tid="178" >роман</termin>
 	</item>
+	<item entity_id="1709" delta="3">
+		<termin tid="20" >Новелла, рассказ</termin>
+	</item>
 	<item entity_id="224" delta="4">
 		<termin tid="4" >приключения</termin>
 	</item>
@@ -37249,6 +37279,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="1708" delta="4">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1709" delta="4">
 		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="1449" delta="5">
@@ -38098,10 +38131,13 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="147" >З</termin>
 	</item>
 	<item entity_id="1707" delta="0">
-		<termin tid="156" >С</termin>
+		<termin tid="154" >П</termin>
 	</item>
 	<item entity_id="1708" delta="0">
 		<termin tid="143" >Д</termin>
+	</item>
+	<item entity_id="1709" delta="0">
+		<termin tid="137" >W</termin>
 	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
@@ -38691,8 +38727,14 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1706" delta="1">
 		<termin tid="149" >К</termin>
 	</item>
+	<item entity_id="1707" delta="1">
+		<termin tid="156" >С</termin>
+	</item>
 	<item entity_id="1708" delta="1">
 		<termin tid="151" >М</termin>
+	</item>
+	<item entity_id="1709" delta="1">
+		<termin tid="141" >В</termin>
 	</item>
 	<item entity_id="137" delta="2">
 		<termin tid="156" >С</termin>
@@ -43678,18 +43720,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="1706" tid="224">
 	</item>
-	<item nid="1707" tid="39">
-	</item>
-	<item nid="1707" tid="22">
-	</item>
-	<item nid="1707" tid="178">
-	</item>
-	<item nid="1707" tid="185">
-	</item>
-	<item nid="1707" tid="156">
-	</item>
-	<item nid="1707" tid="199">
-	</item>
 	<item nid="1708" tid="39">
 	</item>
 	<item nid="1708" tid="22">
@@ -43705,6 +43735,36 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1708" tid="151">
 	</item>
 	<item nid="1708" tid="199">
+	</item>
+	<item nid="1707" tid="39">
+	</item>
+	<item nid="1707" tid="22">
+	</item>
+	<item nid="1707" tid="178">
+	</item>
+	<item nid="1707" tid="185">
+	</item>
+	<item nid="1707" tid="154">
+	</item>
+	<item nid="1707" tid="156">
+	</item>
+	<item nid="1707" tid="199">
+	</item>
+	<item nid="1709" tid="39">
+	</item>
+	<item nid="1709" tid="99">
+	</item>
+	<item nid="1709" tid="186">
+	</item>
+	<item nid="1709" tid="20">
+	</item>
+	<item nid="1709" tid="185">
+	</item>
+	<item nid="1709" tid="137">
+	</item>
+	<item nid="1709" tid="141">
+	</item>
+	<item nid="1709" tid="197">
 	</item>
 </table_taxonomy_index>
 
