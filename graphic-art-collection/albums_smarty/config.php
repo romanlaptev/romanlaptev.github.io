@@ -33,12 +33,12 @@
 	$smarty->assign('sitename1', $sitename1);
 	$smarty->assign('sitename2', 'Graphic arts collection');
 
-	$smarty->assign('content_site', 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc');
+	//$smarty->assign('content_site', 'https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc');
 
 	//$smarty->assign('content_site', 'http://vhost.tw1.ru');
 	//$smarty->assign('content_site', 'http://wizardgraphics.narod.ru');
 	//$smarty->assign('content_site', 'http://albums.vhost.16mb.com');
-	//$smarty->assign('content_site', 'http://mycomp');
+	$smarty->assign('content_site', 'http://mycomp');
 	//$smarty->assign('content_site', '');
 
 	//$xml_file = "xml/photogallery_images.xml";
