@@ -19354,6 +19354,14 @@ lib/books/E
 В двух шагах от рая
 		</bookname>
 	</node>
+	<node title="Живая вода. Советский рассказ двадцатых годов" nid="1710" mlid="2109" plid="386" type="library_book" created="13-Jan-2017 20:17:50" changed="13-Jan-2017 20:19:40" weight="0">
+		<subfolder>
+lib/books/collection
+		</subfolder>
+		<bookname>
+Живая вода. Советский рассказ двадцатых годов
+		</bookname>
+	</node>
 	<node title="Жюль Верн" nid="1679" mlid="2069" plid="386" type="author" created="05-Feb-2016 22:11:15" changed="05-Feb-2016 22:11:15" weight="0">
 	</node>
 	<node title="Жюль Верн Двадцать тысяч лье под водой" nid="1680" mlid="2071" plid="2069" type="library_book" created="05-Feb-2016 22:13:48" changed="05-Feb-2016 22:14:26" weight="0">
@@ -30458,6 +30466,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1709" bundle="library_book" delta="0">
 		<value>prilepin_zahar_voina_rasskazy.fb2.zip</value>
 	</item>
+	<item entity_id="1710" bundle="library_book" delta="0">
+		<value>Sovetskii_rasskaz_20-h_godov.fb2</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -34479,6 +34490,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1709" delta="0">
 		<termin tid="39" >художественая литература</termin>
 	</item>
+	<item entity_id="1710" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35622,6 +35636,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1709" delta="1">
 		<termin tid="99" >военная проза</termin>
 	</item>
+	<item entity_id="1710" delta="1">
+		<termin tid="22" >проза</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36549,6 +36566,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1709" delta="2">
 		<termin tid="186" >сборник</termin>
 	</item>
+	<item entity_id="1710" delta="2">
+		<termin tid="186" >сборник</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -37107,6 +37127,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1709" delta="3">
 		<termin tid="20" >Новелла, рассказ</termin>
 	</item>
+	<item entity_id="1710" delta="3">
+		<termin tid="20" >Новелла, рассказ</termin>
+	</item>
 	<item entity_id="224" delta="4">
 		<termin tid="4" >приключения</termin>
 	</item>
@@ -37282,6 +37305,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="1709" delta="4">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1710" delta="4">
 		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="1449" delta="5">
@@ -38138,6 +38164,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1709" delta="0">
 		<termin tid="137" >W</termin>
+	</item>
+	<item entity_id="1710" delta="0">
+		<termin tid="146" >Ж</termin>
 	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
@@ -43765,6 +43794,20 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1709" tid="141">
 	</item>
 	<item nid="1709" tid="197">
+	</item>
+	<item nid="1710" tid="39">
+	</item>
+	<item nid="1710" tid="22">
+	</item>
+	<item nid="1710" tid="186">
+	</item>
+	<item nid="1710" tid="20">
+	</item>
+	<item nid="1710" tid="185">
+	</item>
+	<item nid="1710" tid="146">
+	</item>
+	<item nid="1710" tid="221">
 	</item>
 </table_taxonomy_index>
 
