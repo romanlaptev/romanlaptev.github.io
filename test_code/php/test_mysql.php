@@ -61,24 +61,23 @@
 //$username="u131428543_user1";
 //$password="m2ster";
 
+$server="localhost";
+$username="root";
+$password="master";
 echo "<h1>test MySQL connect to $server</h1>";
-if (!$db = mysql_connect ($server, $username, $password))
-  {
+if (!$db = mysql_connect ($server, $username, $password)){
    echo "Dont connect to ".server;
    exit ();
-  }
-else
-  {
-   echo "Connect to ".$server;
-  }
+} else {
+echo "Connect to ".$server;
+}
 
 echo "<br>";
 
 $db_list = mysql_list_dbs ($db);
-while ($row = mysql_fetch_object($db_list))
-  {
+while ($row = mysql_fetch_object($db_list)){
     echo $row->Database."<br>";
-  }
+}
 
 mysql_close ($db);
 ?>

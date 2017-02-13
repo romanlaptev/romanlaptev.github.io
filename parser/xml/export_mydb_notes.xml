@@ -20598,6 +20598,37 @@ git clone https://github.com/romanlaptev/romanlaptev.github.io.git
 
 </filename>
 </node>
+<node title="компиляция PHP из исходников" nid="1189" mlid="3351" plid="1589" created="13-Feb-2017 22:26:48" changed="13-Feb-2017 22:39:35" weight="0">
+<body_value>
+компиляция PHP из исходников
+
+1.
+./configure --bindir=/usr/bin --with-config-file-path=/etc --with-curl --with-mysql --with-mysqli --with-gd --with-pdo-mysql --with-mcrypt --enable-mbstring --with-apxs2 --with-zlib
+
+2.make
+3.make install
+
+Как скомпилировать php v.5.5.10 из исходников
+http://www.tech-notes.net/compile-php-5-5-10-from-sources/
+
+conf.sh
+#! /bin/sh
+./configure --bindir=/usr/bin \
+--with-config-file-path=/etc \
+--with-curl \
+--with-mysql \
+--with-mysqli \
+--with-gd \
+--with-pdo-mysql \
+--enable-mbstring \
+--with-apxs2 \
+--with-zlib
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="конвертер flac в mp3" nid="1117" mlid="3237" plid="3091" created="19-Apr-2015 11:42:53" changed="30-May-2015 03:18:23" weight="0">
 <body_value>
 http://vladimir-stupin.blogspot.ru/2008/08/flac-mp3-debian.html
