@@ -1,4 +1,38 @@
-<?
+﻿<?php
+error_reporting(E_ALL ^ E_DEPRECATED);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+?>
+
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>test MySQL connect...</h1>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-body">
+			</div>
+		</div>
+		
+		<pre>
+http://php.net/manual/ru/function.mysql-db-query.php
+http://php.net/manual/ru/mysqli.select-db.php
+
+<?php
+echo phpversion();
+
+echo PHP_VERSION;
+
+echo PHP_OS;
+
+
 //beta.hut2.ru
 //$server = "database";
 //$username = "beta8";
@@ -64,7 +98,8 @@
 $server="localhost";
 $username="root";
 $password="master";
-echo "<h1>test MySQL connect to $server</h1>";
+
+/*
 if (!$db = mysql_connect ($server, $username, $password)){
    echo "Dont connect to ".server;
    exit ();
@@ -80,4 +115,27 @@ while ($row = mysql_fetch_object($db_list)){
 }
 
 mysql_close ($db);
+*/
+
+/*
+if (!$link = mysql_connect($server, $username, $password )) {
+    echo 'Не удалось подключиться к mysql';
+    exit;
+}
+*/
+printf("mysqli_get_client_info: %s\n", mysqli_get_client_info());
+
+$link = mysqli_connect( $server, $username, $password, "mysql");
+echo $link;
+
+/* проверяем соединение */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
 ?>
+		</pre>
+	</div><!-- end container -->
+</body>
+</html>
