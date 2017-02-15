@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>Test SELECT</title>
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+</head>
+
+<body>
+<div class="container">
+	
+		<div class="page-header">
+			<h1>Test SELECT</h1>
+		</div>
+	
+		<pre>
+выбор значения из списка и копирование его в поле ввода
+http://htmlbook.ru/html/attr/onchange
+		</pre>
+
+         <div class="panel panel-primary" id="html_code">
+             <div class="panel-heading clearfix">
+                 <h3 class="pull-left">Load catalog from local file</h3>
+             </div>
+             <div class="panel-body">
+                 <div class="row">
+                     <div class="col-sm-9 col-md-9">
+                         <input class="form-control" id="input_file"
+value="../data/SL_KODIF.csv"/>
+
+                         <select size="10" class="form-control"
+id="sel1" multiple="" onChange="_changeValue(
+this.options[this.selectedIndex].value );">
+                             <option value="../data/SL_KODIF.csv"
+selected>SL_KODIF.csv</option>
+                             <option
+value="../data/PANT.csv">PANT.csv</option>
+                             <option
+value="../data/PMLP_ADR_LVL_1.csv">PMLP_ADR_LVL_1.csv</option>
+                             <option
+value="../data/PMLP_ADR_LVL_2.csv">PMLP_ADR_LVL_2.csv</option>
+                             <option
+value="../data/PMLP_ADR_LVL_3.csv">PMLP_ADR_LVL_3.csv</option>
+                             <option
+value="../data/PMLP_ADR_LVL_4.csv">PMLP_ADR_LVL_4.csv</option>
+                             <option
+value="../data/SL_KLASS_PERM.csv">SL_KLASS_PERM.csv</option>
+                             <option
+value="../data/SIMPLE_SPR.csv">SIMPLE_SPR.csv</option>
+                             <option
+value="../data/SL_TILTS.csv">SL_TILTS.csv</option>
+                             <option
+value="../data/SL_LUS.csv">SL_LUS.csv</option>
+                         </select>
+
+                     </div>
+                     <div class="col-sm-3 col-md-3">
+                         <p><button id="btn-load" class="btn
+btn-primary">load</button>
+                     </div>
+                 </div>
+             </div>
+
+         </div>
+		
+		HTML CODE:<pre id="code_out"></pre>
+		JS CODE:<pre id="js_code_out"></pre>
+		
+</div><!-- end container -->
+
+
+
+<script id="js_code">
+function _changeValue( value ){
+console.log( value );
+     document.getElementById("input_file").value = value;
+}	
+</script>
+
+<script>
+	var code_out = document.getElementById("code_out");
+	
+	//print source code
+	var source_txt = document.getElementById("html_code");
+	//alert( source_txt.outerHTML );
+	code_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+	
+	var js_code_out = document.getElementById("js_code_out");
+	
+	//print source code
+	var source_txt = document.getElementById("js_code");
+	js_code_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+	
+</script>
+
+</body>
+</html>
