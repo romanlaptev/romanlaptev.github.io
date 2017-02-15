@@ -18,21 +18,21 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 		
 		<div class="panel">
 			<div class="panel-body">
+				<div>
+<?php
+//echo phpversion();
+echo PHP_VERSION;
+echo PHP_OS;
+?>
+				</div>
 			</div>
-		</div>
+		<div>
 		
 		<pre>
 http://php.net/manual/ru/function.mysql-db-query.php
 http://php.net/manual/ru/mysqli.select-db.php
 
 <?php
-echo phpversion();
-
-echo PHP_VERSION;
-
-echo PHP_OS;
-
-
 //beta.hut2.ru
 //$server = "database";
 //$username = "beta8";
