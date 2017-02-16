@@ -18,19 +18,20 @@ error_reporting(E_ALL ^ E_DEPRECATED);
 		
 		<div class="panel">
 			<div class="panel-body">
-				<div>
+				<div>PHP_VERSION:
 <?php
 //echo phpversion();
 echo PHP_VERSION;
-echo PHP_OS;
 ?>
 				</div>
+				<div>PHP_OS:<?php echo PHP_OS;?></div>
 			</div>
 		<div>
 		
 		<pre>
 http://php.net/manual/ru/function.mysql-db-query.php
 http://php.net/manual/ru/mysqli.select-db.php
+		</pre>
 
 <?php
 //beta.hut2.ru
@@ -95,40 +96,42 @@ http://php.net/manual/ru/mysqli.select-db.php
 //$username="u131428543_user1";
 //$password="m2ster";
 
-$server="localhost";
-$username="root";
-$password="master";
 
-/*
-if (!$db = mysql_connect ($server, $username, $password)){
-   echo "Dont connect to ".server;
-   exit ();
-} else {
-echo "Connect to ".$server;
-}
+$host = "localhost";
+$user = "root";
+$password = "master";
+$db_name = "mysql";
 
-echo "<br>";
+$link = mysql_connect($host, $user, $password) or die( "Сервер базы данных не доступен" );
 
-$db_list = mysql_list_dbs ($db);
+$list = "<ul>";
+$db_list = mysql_list_dbs ($link);
 while ($row = mysql_fetch_object($db_list)){
-    echo $row->Database."<br>";
+	$list .= "<ol>".$row->Database."</ol>";
 }
+$list .= "</ul>";
 
-mysql_close ($db);
-*/
+//$db = mysql_select_db($db_name) or die( "База данных не доступна" );
+mysql_close ($link);
 
-/*
-if (!$link = mysql_connect($server, $username, $password )) {
-    echo 'Не удалось подключиться к mysql';
-    exit;
-}
-*/
+?>
+		
+<div class="panel panel-primary">
+	<div class="panel-heading">
+Connect to <?php echo $host ?>
+	</div>
+	<div class="panel-body">
+		Database list:<?php echo $list; ?>
+	</div>  
+</div>
+		
+		<pre>test mysqli_connect:
+<?
 printf("mysqli_get_client_info: %s\n", mysqli_get_client_info());
-
-$link = mysqli_connect( $server, $username, $password, "mysql");
+$link = mysqli_connect( $host, $user, $password, $db_name);
 echo $link;
 
-/* проверяем соединение */
+
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
