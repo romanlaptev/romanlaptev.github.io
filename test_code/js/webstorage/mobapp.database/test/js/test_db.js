@@ -363,7 +363,8 @@ console.log(store);
 			
 			request.onerror = function(e) {
 				var message = "error add value,  " + e.target.error.name;
-	console.log(message);				
+				message += ", " + e.target.error.message;
+	console.log(message, e);				
 				log.innerHTML += "<p class='text-danger'>" + message + "</p>";
 			}
 			request.onsuccess = function(e) {
