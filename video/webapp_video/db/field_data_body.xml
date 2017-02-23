@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<table name='field_data_body'>
+		<record num="0">
+			<entity_id>1</entity_id>
+			<body_value>[video: index=0]
+&lt;!-- START OF THE PLAYER EMBEDDING TO COPY-PASTE --&gt;
+&lt;div id=&quot;mediaplayer&quot;&gt;JW Player goes here&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/transcend/0_sites/video/sites/all/libraries/jwplayer/jwplayer.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		jwplayer(&quot;mediaplayer&quot;).setup({
+			flashplayer: &quot;/transcend/0_sites/video/sites/all/libraries/jwplayer/player.swf&quot;,
+			//file: &quot;/sites/video/sites/default/files/test.avi&quot;,
+			//file: &quot;/sites/video/sites/default/files/video.mp4&quot;,
+			//file: &quot;http://mycomp/video/kvn,fun/rufinad.flv&quot;,
+			//file: &quot;http://mycomp/video/kvn,fun/zp%5B1%5D.avi&quot;,
+			//file: &quot;http://mycomp/video/mult/Killer%20Bean%202.avi&quot;,
+			//file: &quot;http://mycomp/video/mult/maslennitca.mpg&quot;,
+			//file: &quot;http://mycomp/video/mult/hippo.flv&quot;,
+			image: &quot;preview.jpg&quot;,
+    'id': 'playerID',
+    'width': '650',
+    'height': '240',
+    'playlistfile': '/transcend/0_sites/video/sites/all/libraries/jwplayer/playlist.xml',
+    'playlist.position': 'right',
+    'playlist.size': '250',
+    'controlbar': 'over'
+		});
+&lt;/script&gt;
+&lt;!-- END OF THE PLAYER EMBEDDING --&gt;
+
+&lt;div&gt;uflvplayer&lt;br&gt;
+&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;/transcend/0_sites/video/sites/all/libraries/uflvplayer_500x375.swf&quot; height=&quot;340&quot; width=&quot;400&quot;&gt;
+	&lt;param name=&quot;bgcolor&quot; value=&quot;#FFFFFF&quot; /&gt;
+	&lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;
+	&lt;param name=&quot;allowScriptAccess&quot; value=&quot;always&quot; /&gt;
+	&lt;param name=&quot;movie&quot; value=&quot;/sites/video/sites/all/libraries/uflvplayer_500x375.swf&quot; /&gt;
+	&lt;param name=&quot;FlashVars&quot; 
+value=&quot;way=http://mycomp/video/mult/burevestnik.flv&amp;amp;swf=players/uflvplayer_500x375.swf&amp;amp;w=400&amp;amp;h=340&amp;amp;pic=&amp;amp;autoplay=0&amp;amp;tools=1&amp;amp;skin=greyblack&amp;amp;volume=70&amp;amp;q=&amp;amp;comment=&quot; /&gt;
+&lt;/object&gt;
+&lt;/div&gt;
+
+</body_value>
+		</record>
+		<record num="1">
+			<entity_id>1220</entity_id>
+			<body_value>https://www.youtube.com/watch?v=52rBL2rqrag&amp;list=PL2sTusldk6UhvxnMmOBmAE5qN0e8ITwrC&amp;index=29#Smycz
+https://www.youtube.com/watch?v=yYSv6JEWUfQ&amp;list=PL2sTusldk6UhvxnMmOBmAE5qN0e8ITwrC&amp;index=27#Twist
+http://pl.wikipedia.org/wiki/Maanam
+
+</body_value>
+		</record>
+		<record num="2">
+			<entity_id>1219</entity_id>
+			<body_value>https://www.youtube.com/watch?v=GM7U6HJWpDQ&amp;list=PL2sTusldk6UjXkPp5UZGmcBKxkfnmq7NL&amp;index=10#JABOL PUNK, youtube.com, external
+https://www.youtube.com/watch?v=vTqFBuisxU0&amp;list=PL2sTusldk6UjXkPp5UZGmcBKxkfnmq7NL&amp;index=11#KTO CIE OBRONI POLSKO, youtube.com, external</body_value>
+		</record>
+		<record num="3">
+			<entity_id>1218</entity_id>
+			<body_value>https://www.youtube.com/watch?v=94H-FM4i3ZQ&amp;list=PL2sTusldk6UjXkPp5UZGmcBKxkfnmq7NL&amp;index=9#Psy i Koty, youtube.com</body_value>
+		</record>
+		<record num="4">
+			<entity_id>3</entity_id>
+			<body_value>https://www.youtube.com/watch?v=ixvLk1GoeWg&amp;index=31&amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf
+Фильм «Рассказы». Смотреть онлайн фильм</body_value>
+		</record>
+</table>
+</root>

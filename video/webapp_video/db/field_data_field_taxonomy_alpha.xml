@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<table name='field_data_field_taxonomy_alpha'>
+		<record num="0">
+			<entity_id>1217</entity_id>
+			<field_taxonomy_alpha_tid>219</field_taxonomy_alpha_tid>
+		</record>
+		<record num="1">
+			<entity_id>1217</entity_id>
+			<field_taxonomy_alpha_tid>236</field_taxonomy_alpha_tid>
+		</record>
+		<record num="2">
+			<entity_id>1101</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="3">
+			<entity_id>1101</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="4">
+			<entity_id>966</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="5">
+			<entity_id>966</entity_id>
+			<field_taxonomy_alpha_tid>241</field_taxonomy_alpha_tid>
+		</record>
+		<record num="6">
+			<entity_id>748</entity_id>
+			<field_taxonomy_alpha_tid>226</field_taxonomy_alpha_tid>
+		</record>
+		<record num="7">
+			<entity_id>748</entity_id>
+			<field_taxonomy_alpha_tid>244</field_taxonomy_alpha_tid>
+		</record>
+		<record num="8">
+			<entity_id>714</entity_id>
+			<field_taxonomy_alpha_tid>213</field_taxonomy_alpha_tid>
+		</record>
+		<record num="9">
+			<entity_id>714</entity_id>
+			<field_taxonomy_alpha_tid>268</field_taxonomy_alpha_tid>
+		</record>
+		<record num="10">
+			<entity_id>714</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="11">
+			<entity_id>7</entity_id>
+			<field_taxonomy_alpha_tid>224</field_taxonomy_alpha_tid>
+		</record>
+		<record num="12">
+			<entity_id>7</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="13">
+			<entity_id>942</entity_id>
+			<field_taxonomy_alpha_tid>224</field_taxonomy_alpha_tid>
+		</record>
+		<record num="14">
+			<entity_id>942</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="15">
+			<entity_id>887</entity_id>
+			<field_taxonomy_alpha_tid>235</field_taxonomy_alpha_tid>
+		</record>
+		<record num="16">
+			<entity_id>1115</entity_id>
+			<field_taxonomy_alpha_tid>226</field_taxonomy_alpha_tid>
+		</record>
+		<record num="17">
+			<entity_id>734</entity_id>
+			<field_taxonomy_alpha_tid>249</field_taxonomy_alpha_tid>
+		</record>
+		<record num="18">
+			<entity_id>844</entity_id>
+			<field_taxonomy_alpha_tid>216</field_taxonomy_alpha_tid>
+		</record>
+		<record num="19">
+			<entity_id>844</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="20">
+			<entity_id>898</entity_id>
+			<field_taxonomy_alpha_tid>231</field_taxonomy_alpha_tid>
+		</record>
+		<record num="21">
+			<entity_id>659</entity_id>
+			<field_taxonomy_alpha_tid>209</field_taxonomy_alpha_tid>
+		</record>
+		<record num="22">
+			<entity_id>659</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="23">
+			<entity_id>796</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="24">
+			<entity_id>962</entity_id>
+			<field_taxonomy_alpha_tid>248</field_taxonomy_alpha_tid>
+		</record>
+		<record num="25">
+			<entity_id>886</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="26">
+			<entity_id>886</entity_id>
+			<field_taxonomy_alpha_tid>249</field_taxonomy_alpha_tid>
+		</record>
+		<record num="27">
+			<entity_id>733</entity_id>
+			<field_taxonomy_alpha_tid>207</field_taxonomy_alpha_tid>
+		</record>
+		<record num="28">
+			<entity_id>733</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="29">
+			<entity_id>897</entity_id>
+			<field_taxonomy_alpha_tid>208</field_taxonomy_alpha_tid>
+		</record>
+		<record num="30">
+			<entity_id>897</entity_id>
+			<field_taxonomy_alpha_tid>249</field_taxonomy_alpha_tid>
+		</record>
+		<record num="31">
+			<entity_id>736</entity_id>
+			<field_taxonomy_alpha_tid>219</field_taxonomy_alpha_tid>
+		</record>
+		<record num="32">
+			<entity_id>736</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="33">
+			<entity_id>891</entity_id>
+			<field_taxonomy_alpha_tid>225</field_taxonomy_alpha_tid>
+		</record>
+		<record num="34">
+			<entity_id>891</entity_id>
+			<field_taxonomy_alpha_tid>251</field_taxonomy_alpha_tid>
+		</record>
+		<record num="35">
+			<entity_id>704</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="36">
+			<entity_id>914</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="37">
+			<entity_id>912</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="38">
+			<entity_id>912</entity_id>
+			<field_taxonomy_alpha_tid>252</field_taxonomy_alpha_tid>
+		</record>
+		<record num="39">
+			<entity_id>696</entity_id>
+			<field_taxonomy_alpha_tid>240</field_taxonomy_alpha_tid>
+		</record>
+		<record num="40">
+			<entity_id>1095</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="41">
+			<entity_id>1095</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="42">
+			<entity_id>1099</entity_id>
+			<field_taxonomy_alpha_tid>208</field_taxonomy_alpha_tid>
+		</record>
+		<record num="43">
+			<entity_id>1099</entity_id>
+			<field_taxonomy_alpha_tid>239</field_taxonomy_alpha_tid>
+		</record>
+		<record num="44">
+			<entity_id>1099</entity_id>
+			<field_taxonomy_alpha_tid>251</field_taxonomy_alpha_tid>
+		</record>
+		<record num="45">
+			<entity_id>1230</entity_id>
+			<field_taxonomy_alpha_tid>248</field_taxonomy_alpha_tid>
+		</record>
+		<record num="46">
+			<entity_id>878</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="47">
+			<entity_id>878</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="48">
+			<entity_id>1226</entity_id>
+			<field_taxonomy_alpha_tid>239</field_taxonomy_alpha_tid>
+		</record>
+		<record num="49">
+			<entity_id>1215</entity_id>
+			<field_taxonomy_alpha_tid>221</field_taxonomy_alpha_tid>
+		</record>
+		<record num="50">
+			<entity_id>1215</entity_id>
+			<field_taxonomy_alpha_tid>242</field_taxonomy_alpha_tid>
+		</record>
+		<record num="51">
+			<entity_id>1086</entity_id>
+			<field_taxonomy_alpha_tid>268</field_taxonomy_alpha_tid>
+		</record>
+		<record num="52">
+			<entity_id>1086</entity_id>
+			<field_taxonomy_alpha_tid>241</field_taxonomy_alpha_tid>
+		</record>
+		<record num="53">
+			<entity_id>773</entity_id>
+			<field_taxonomy_alpha_tid>263</field_taxonomy_alpha_tid>
+		</record>
+		<record num="54">
+			<entity_id>773</entity_id>
+			<field_taxonomy_alpha_tid>248</field_taxonomy_alpha_tid>
+		</record>
+		<record num="55">
+			<entity_id>773</entity_id>
+			<field_taxonomy_alpha_tid>252</field_taxonomy_alpha_tid>
+		</record>
+		<record num="56">
+			<entity_id>955</entity_id>
+			<field_taxonomy_alpha_tid>237</field_taxonomy_alpha_tid>
+		</record>
+		<record num="57">
+			<entity_id>700</entity_id>
+			<field_taxonomy_alpha_tid>267</field_taxonomy_alpha_tid>
+		</record>
+		<record num="58">
+			<entity_id>732</entity_id>
+			<field_taxonomy_alpha_tid>216</field_taxonomy_alpha_tid>
+		</record>
+		<record num="59">
+			<entity_id>732</entity_id>
+			<field_taxonomy_alpha_tid>224</field_taxonomy_alpha_tid>
+		</record>
+		<record num="60">
+			<entity_id>732</entity_id>
+			<field_taxonomy_alpha_tid>231</field_taxonomy_alpha_tid>
+		</record>
+		<record num="61">
+			<entity_id>732</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="62">
+			<entity_id>694</entity_id>
+			<field_taxonomy_alpha_tid>207</field_taxonomy_alpha_tid>
+		</record>
+		<record num="63">
+			<entity_id>694</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="64">
+			<entity_id>1090</entity_id>
+			<field_taxonomy_alpha_tid>249</field_taxonomy_alpha_tid>
+		</record>
+		<record num="65">
+			<entity_id>12</entity_id>
+			<field_taxonomy_alpha_tid>223</field_taxonomy_alpha_tid>
+		</record>
+		<record num="66">
+			<entity_id>12</entity_id>
+			<field_taxonomy_alpha_tid>238</field_taxonomy_alpha_tid>
+		</record>
+		<record num="67">
+			<entity_id>875</entity_id>
+			<field_taxonomy_alpha_tid>207</field_taxonomy_alpha_tid>
+		</record>
+		<record num="68">
+			<entity_id>875</entity_id>
+			<field_taxonomy_alpha_tid>247</field_taxonomy_alpha_tid>
+		</record>
+		<record num="69">
+			<entity_id>928</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="70">
+			<entity_id>899</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="71">
+			<entity_id>900</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="72">
+			<entity_id>2</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="73">
+			<entity_id>1229</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="74">
+			<entity_id>816</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="75">
+			<entity_id>872</entity_id>
+			<field_taxonomy_alpha_tid>259</field_taxonomy_alpha_tid>
+		</record>
+		<record num="76">
+			<entity_id>872</entity_id>
+			<field_taxonomy_alpha_tid>260</field_taxonomy_alpha_tid>
+		</record>
+		<record num="77">
+			<entity_id>872</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="78">
+			<entity_id>660</entity_id>
+			<field_taxonomy_alpha_tid>224</field_taxonomy_alpha_tid>
+		</record>
+		<record num="79">
+			<entity_id>660</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="80">
+			<entity_id>1096</entity_id>
+			<field_taxonomy_alpha_tid>241</field_taxonomy_alpha_tid>
+		</record>
+		<record num="81">
+			<entity_id>1093</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="82">
+			<entity_id>1093</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="83">
+			<entity_id>873</entity_id>
+			<field_taxonomy_alpha_tid>265</field_taxonomy_alpha_tid>
+		</record>
+		<record num="84">
+			<entity_id>873</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="85">
+			<entity_id>792</entity_id>
+			<field_taxonomy_alpha_tid>240</field_taxonomy_alpha_tid>
+		</record>
+		<record num="86">
+			<entity_id>1231</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="87">
+			<entity_id>1231</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="88">
+			<entity_id>1232</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="89">
+			<entity_id>1232</entity_id>
+			<field_taxonomy_alpha_tid>260</field_taxonomy_alpha_tid>
+		</record>
+		<record num="90">
+			<entity_id>1232</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="91">
+			<entity_id>1233</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="92">
+			<entity_id>1234</entity_id>
+			<field_taxonomy_alpha_tid>217</field_taxonomy_alpha_tid>
+		</record>
+		<record num="93">
+			<entity_id>1201</entity_id>
+			<field_taxonomy_alpha_tid>224</field_taxonomy_alpha_tid>
+		</record>
+		<record num="94">
+			<entity_id>1201</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="95">
+			<entity_id>1235</entity_id>
+			<field_taxonomy_alpha_tid>236</field_taxonomy_alpha_tid>
+		</record>
+		<record num="96">
+			<entity_id>1236</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="97">
+			<entity_id>1236</entity_id>
+			<field_taxonomy_alpha_tid>246</field_taxonomy_alpha_tid>
+		</record>
+		<record num="98">
+			<entity_id>1237</entity_id>
+			<field_taxonomy_alpha_tid>211</field_taxonomy_alpha_tid>
+		</record>
+		<record num="99">
+			<entity_id>1237</entity_id>
+			<field_taxonomy_alpha_tid>230</field_taxonomy_alpha_tid>
+		</record>
+		<record num="100">
+			<entity_id>1237</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="101">
+			<entity_id>1238</entity_id>
+			<field_taxonomy_alpha_tid>215</field_taxonomy_alpha_tid>
+		</record>
+		<record num="102">
+			<entity_id>1238</entity_id>
+			<field_taxonomy_alpha_tid>237</field_taxonomy_alpha_tid>
+		</record>
+		<record num="103">
+			<entity_id>658</entity_id>
+			<field_taxonomy_alpha_tid>246</field_taxonomy_alpha_tid>
+		</record>
+		<record num="104">
+			<entity_id>864</entity_id>
+			<field_taxonomy_alpha_tid>268</field_taxonomy_alpha_tid>
+		</record>
+		<record num="105">
+			<entity_id>864</entity_id>
+			<field_taxonomy_alpha_tid>243</field_taxonomy_alpha_tid>
+		</record>
+		<record num="106">
+			<entity_id>934</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="107">
+			<entity_id>934</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="108">
+			<entity_id>702</entity_id>
+			<field_taxonomy_alpha_tid>207</field_taxonomy_alpha_tid>
+		</record>
+		<record num="109">
+			<entity_id>702</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="110">
+			<entity_id>874</entity_id>
+			<field_taxonomy_alpha_tid>207</field_taxonomy_alpha_tid>
+		</record>
+		<record num="111">
+			<entity_id>874</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="112">
+			<entity_id>683</entity_id>
+			<field_taxonomy_alpha_tid>209</field_taxonomy_alpha_tid>
+		</record>
+		<record num="113">
+			<entity_id>683</entity_id>
+			<field_taxonomy_alpha_tid>217</field_taxonomy_alpha_tid>
+		</record>
+		<record num="114">
+			<entity_id>889</entity_id>
+			<field_taxonomy_alpha_tid>214</field_taxonomy_alpha_tid>
+		</record>
+		<record num="115">
+			<entity_id>889</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="116">
+			<entity_id>890</entity_id>
+			<field_taxonomy_alpha_tid>214</field_taxonomy_alpha_tid>
+		</record>
+		<record num="117">
+			<entity_id>890</entity_id>
+			<field_taxonomy_alpha_tid>232</field_taxonomy_alpha_tid>
+		</record>
+		<record num="118">
+			<entity_id>723</entity_id>
+			<field_taxonomy_alpha_tid>242</field_taxonomy_alpha_tid>
+		</record>
+		<record num="119">
+			<entity_id>1239</entity_id>
+			<field_taxonomy_alpha_tid>245</field_taxonomy_alpha_tid>
+		</record>
+		<record num="120">
+			<entity_id>1240</entity_id>
+			<field_taxonomy_alpha_tid>236</field_taxonomy_alpha_tid>
+		</record>
+		<record num="121">
+			<entity_id>1241</entity_id>
+			<field_taxonomy_alpha_tid>233</field_taxonomy_alpha_tid>
+		</record>
+		<record num="122">
+			<entity_id>1242</entity_id>
+			<field_taxonomy_alpha_tid>229</field_taxonomy_alpha_tid>
+		</record>
+		<record num="123">
+			<entity_id>1242</entity_id>
+			<field_taxonomy_alpha_tid>236</field_taxonomy_alpha_tid>
+		</record>
+		<record num="124">
+			<entity_id>1243</entity_id>
+			<field_taxonomy_alpha_tid>252</field_taxonomy_alpha_tid>
+		</record>
+		<record num="125">
+			<entity_id>1244</entity_id>
+			<field_taxonomy_alpha_tid>241</field_taxonomy_alpha_tid>
+		</record>
+		<record num="126">
+			<entity_id>677</entity_id>
+			<field_taxonomy_alpha_tid>217</field_taxonomy_alpha_tid>
+		</record>
+		<record num="127">
+			<entity_id>677</entity_id>
+			<field_taxonomy_alpha_tid>238</field_taxonomy_alpha_tid>
+		</record>
+		<record num="128">
+			<entity_id>1225</entity_id>
+			<field_taxonomy_alpha_tid>249</field_taxonomy_alpha_tid>
+		</record>
+		<record num="129">
+			<entity_id>848</entity_id>
+			<field_taxonomy_alpha_tid>210</field_taxonomy_alpha_tid>
+		</record>
+		<record num="130">
+			<entity_id>848</entity_id>
+			<field_taxonomy_alpha_tid>215</field_taxonomy_alpha_tid>
+		</record>
+		<record num="131">
+			<entity_id>848</entity_id>
+			<field_taxonomy_alpha_tid>241</field_taxonomy_alpha_tid>
+		</record>
+		<record num="132">
+			<entity_id>964</entity_id>
+			<field_taxonomy_alpha_tid>226</field_taxonomy_alpha_tid>
+		</record>
+		<record num="133">
+			<entity_id>964</entity_id>
+			<field_taxonomy_alpha_tid>238</field_taxonomy_alpha_tid>
+		</record>
+</table>
+</root>
