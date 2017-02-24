@@ -1,2 +1,0 @@
-<!-- node-frontpage.tpl.php -->
-
