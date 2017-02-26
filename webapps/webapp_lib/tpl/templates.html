@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>my lib</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../css/bootstrap336.min.css"/>
+<!--
+	<link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+-->	
+	<link rel="stylesheet" href="../css/lib.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../css/shared.css" type="text/css" media="screen" />
+<!--	
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
+-->
+</head>
+
+<body>
+<div class="container lib-wrapper">
+	<div class="row header bg-header b-header">
+		<div class="col-sm-2 col-xs-2 col-md-2 col-lg-2">
+			<h1>my lib</h1>
+		</div>
+		<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+			<div id="header-content">
+				<div id="block-taxonomy-alpha">
+<!-- TEMPLATE ["block_taxonomy_alpha_tpl"]  -->
+					<ul class="menu taxonomy-alpha">
+{{list}}
+						<span id="block-taxonomy-alpha-for">	
+							<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
+						</span>
+					</ul>
+<!-- /TEMPLATE -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="pull-left grad">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+		
+	</div>
+
+	<div class="row b-content">
+		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+			
+			<ul class="breadcrumb list-inline">
+				<li><a href="./">главная</a></li>
+			</ul>			
+<!-- TEMPLATE ["breadcrumb_item_tpl"]-->
+				<ul id="breadcrumb-tpl" class="list-inline">
+					<li>
+						<a href="{{item-url}}" class="nav-click breadcrumb-link" data-num="{{num}}">{{item-title}}</a>
+					</li>
+				</ul>			
+<!-- ####### -->
+			
+			<div id="region-content">
+				
+<!-- TEMPLATE ["node_tpl"] -->
+				<div id="view-node">
+					<div class='node node-{{type}}'>
+						<div class='node-title'>{{node-title}}</div>
+						<div class='bookname'>{{bookname}}</div>
+						<div class='author'>{{author}}</div>
+
+						<div class="panel panel-info" id="book-links">
+							<div class="panel-heading">
+								<b>Book links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{book-list}}
+									<li class="list-group-item"><a href="{{url}}" target="_blank">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
+
+
+						<div class="panel panel-info" id="dropbox-links">
+							<div class="panel-heading">
+								<b>Dropbox links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">
+									<span id="dropbox-list"></span>
+								</ul>
+							</div>
+						</div><!-- end panel -->
+<script type="text/template" id="dropbox-for">
+	<li class="list-group-item">
+		<a href="{{url}}" target="_blank">{{link-title}}</a>
+	</li>
+</script>						
+						
+						<div class="panel panel-info" id='external-links'>
+							<div class="panel-heading">
+								<b>External links</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group">{{external-links}}</ul>
+							</div>
+						</div><!-- end panel -->
+						
+						<ul>{{book-old-url}}</ul>
+
+						<div class='body-value'>{{body_value}}</div>
+
+						<div class="panel panel-success" id='termins'>
+							<div class="panel-heading">
+								<b>related tags:</b>
+							</div>
+							<div class="panel-body">
+								<ul class="list-inline">
+									{{termin-links}}
+									<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
+								</ul>
+							</div>
+						</div><!-- end panel -->
+						
+						
+						<div class="date small">
+							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
+						</div>
+
+						
+					</div>
+				</div>
+<!-- ####### -->
+
+<!-- TEMPLATE ["book_child_pages"] -->
+<span id="block-book-child-pages">
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<h3>child pages</h3>
+		</div>
+		<div class="panel-body">
+			<ul class="list-group">
+	{{list}}
+				<span id="block-book-child-pages-for">	
+					<li class="list-group-item node-{{type}}">
+						<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}">{{link-title}}</a>
+					</li>
+				</span>
+			</ul>
+		</div>
+	</div>  
+</span>  
+<!-- /TEMPLATE -->
+
+			
+			</div>
+		</div>
+
+
+		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
+
+			<div id="right-side" class="col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+<!-- TEMPLATE ["block_book_category_tpl"] -->
+				<div id="block-book-category">
+					<h4>book category:</h4>
+<ul class='book-content submenu'>
+	{{list}}
+	<span id="block-book-category-for">
+		<li class='{{type}}'><a href='{{url}}' class='nav-click'>{{page-title}}</a></li>
+	</span>
+</ul>
+				</div>		
+<!-- ####### -->
+				
+<!-- TEMPLATE ["taxonomy_list_tpl"] -->
+				<div id="block-tags">
+					<div id="taxonomy-menu">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+							{{block-title}}
+							<ul>{{list}}
+								<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>		
+<!-- ####### -->
+
+			</div><!-- end right-side -->
+			
+			
+		</div>
+	</div>
+	
+	<div class="row b-footer">
+		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+		</div>
+		
+		<div class="pull-left grad">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+		
+		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1"></div>
+	</div>
+	
+</div>
+
+
+
+<div>
+
+<!-- TEMPLATE ["termin_nodes_tpl"] -->
+			<div id="termin-nodes">
+				<div class="panel">
+					<div class="panel-body">
+						<ul class="list-unstyled list-termin-nodes">#termin_nodes
+
+							<span id="termin-nodes-item">
+								<li class="termin-node">
+									<a class="nav-click" href="#url">#author . #bookname</a>
+								</li>
+							</span>
+
+						</ul>
+					</div>
+					<div class="panel-footer">
+						<b>list related nodes</b>
+					</div>
+				</div>  
+				
+			</div>
+<!-- ####### -->
+</div>	
+</body>
+</html>

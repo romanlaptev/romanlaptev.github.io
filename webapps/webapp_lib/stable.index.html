@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>my lib</title>
+        <meta name="description" content="">
+<!--
+	<meta name="viewport" content="width=320,initial-scale=1.0"/>
+-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+        <link rel="stylesheet" href="css/normalize.css">
+<!--
+        <link rel="stylesheet" href="css/main.css">
+
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+-->	
+	<link rel="stylesheet" href="css/stable.lib.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/shared.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+            <script type="text/javascript" src="js/vendor/PIE_IE678.js"></script>
+        <![endif]-->
+
+
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+<!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+	<script src="js/bootstrap.js"></script>
+	<script src="js/plugins/plugins.js"></script>
+-->
+	<script type="text/javascript" src="js/plugins/jquery.browser.min.js"></script>
+	<script src="js/functions.js"></script>
+	<script src="js/stable.parse_lib.js"></script>
+	
+</head>
+
+<body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+<div class="wrapper">
+	<div class="lib-header rows row-1">
+		<div class="columns col-1 logo">
+			<h1><a class="title" href="#">my lib</a></h1>
+		</div>
+		<div class="columns col-2 taxonomy-alpha">
+			<ul class="#classname">
+				<li><a href="#url">#link-title</a></li>
+			</ul>
+		</div>
+		<div class="columns col-3 grad">
+			<div class="columns col-1"></div>
+			<div class="columns col-2"></div>
+		</div>
+		<div class="rows"></div>
+	</div>
+
+	<div class="lib-container rows row-2">
+		
+		<div class="columns col-1 center change-content">&nbsp;
+
+<ul class="breadcrumb">
+	<li><a href="./">главная</a></li>
+<!-- TEMPLATE -->
+	<span id="tpl-breadcrumb">
+		<li>
+			<a href="#item-url" class="nav" data-nid="#nid" data-mlid="#mlid">#item-title</a>
+		</li>
+	</span>			
+<!-- ####### -->
+</ul>			
+
+<!-- TEMPLATE -->
+			<div id="view-node-content">
+				<div class='node'>
+					<div class='bookname'>#bookname</div>
+					<div class='author'>#author</div>
+
+					<ul class='node-url'>
+						<li>
+							<a href="#url" target="_blank">#link-title</a>
+						</li>
+					</ul>
+					<ul class='node-links'>
+						<li>
+							<a href="#url" target="_blank">#link-title</a>
+						</li>
+					</ul>
+
+					<div class='body-value'>#body_value</div>
+					<div class='taxonomy'>#taxonomy</div>
+					<div class='taxonomy_alpha'>#taxonomy_alpha</div>
+
+					<div class='date'>
+						<b>created:</b>#created , <b>changed:</b>#changed
+					</div>
+				</div>
+			</div>		
+
+			<div id="list-book-content"></div>		
+<!-- ####### -->
+
+<!-- TEMPLATE -->
+			<div class="vocabulary-library">
+				<ul class="#classname">
+					<li><a href="#url">#link-title</a></li>
+				</ul>
+			</div>
+<!-- ####### -->
+
+		</div>
+
+		<div class="columns col-25 grad">
+			<div class="columns col-1"></div>
+			<div class="columns col-2"></div>
+		</div>
+
+	
+		<div class="columns col-2 right">
+
+			<div class="rows book-cat">
+				<span class="title">book category</span>
+				<div id="main-book-content"></div>		
+
+			</div>
+
+			<div class="rows">
+				<span class="title">list authors</span>
+				<div class="list-author">
+					<ul class="#classname">
+						<li><a href="#url">#link-title</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="rows book-tags">
+				<a href="#list_termins">book tags</a>
+			</div>
+
+
+		</div>
+
+	</div>
+	
+	<div class="lib-footer rows row-3"></div>
+
+</div>		<!-- end wrapper -->
+
+<div id="busy">
+	<a class="close" href="javascript:$('#busy').hide();void(0);">x</a>
+	<div class="message">Parse XML, pls, wait...</div>
+</div>
+
+<div id="ajaxBusy">
+<h1>ajaxBusy</h1>
+</div>
+	
+</body>
+</html>
