@@ -1,11 +1,12 @@
 	//-------------------------------------------------- init
 	var sitename = "";
 	//var sitecontent = "";
-	var sitecontent = "https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc";
+	//var sitecontent = "https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc";
+	var sitecontent = "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/J1zH/u6oXREDxr";
 	
-	if(location.href.indexOf("mycomp") === -1){
-		var sitename = "https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk";
-	}
+	//if(location.href.indexOf("mycomp") === -1){
+		//var sitename = "https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk";
+	//}
 
 	//-------------------------------------------------------------- load Bootstrap
 	var css = document.createElement('link');
@@ -174,13 +175,19 @@ console.log( "Z.Viewer = ",  Z.Viewer );
 
     
 	//console.log( location.href, location.href.indexOf("gravura.ts6.ru") );    
-	if( location.href.indexOf("gravura.ts6.ru") !== -1 ){
+	if( location.href.indexOf("gravura.wallst.ru") !== -1 ){
 console.log("ya counter add...");        
 		//Yandex.Metrika counter
 		(function (d, w, c) {
 			(w[c] = w[c] || []).push(function() {
 				try {
-					w.yaCounter12808177 = new Ya.Metrika({id:12808177, enableAll: true, webvisor:true});
+					w.yaCounter43081739 = new Ya.Metrika({
+						id:43081739,
+						clickmap:true,
+						trackLinks:true,
+						accurateTrackBounce:true,
+						webvisor:true
+					});
 				} catch(e) { }
 			});
 
@@ -189,23 +196,13 @@ console.log("ya counter add...");
 				f = function () { n.parentNode.insertBefore(s, n); };
 			s.type = "text/javascript";
 			s.async = true;
-			s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+			s.src = "https://mc.yandex.ru/metrika/watch.js";
 
 			if (w.opera == "[object Opera]") {
 				d.addEventListener("DOMContentLoaded", f, false);
 			} else { f(); }
 		})(document, window, "yandex_metrika_callbacks");
-		//<noscript><div><img src="//mc.yandex.ru/watch/12808177" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-		/*
-		<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-53153513-1', 'auto');
-		  ga('send', 'pageview');
-		</script> 
-		*/
+		
 	}
     
 });//end dom load
@@ -339,6 +336,14 @@ console.log( "fix zoomify image path - " + img_filename );
 
 
 function load_img_error( image ){
+	
+	//exit, if no cloud image
+console.log( image.getAttribute("src") );	
+	if( image.getAttribute("src").indexOf("http://") !== -1 ||
+		image.getAttribute("src").indexOf("https://") !== -1){
+		return false;
+	}
+	
 	var new_src = sitecontent + image.getAttribute("src");
 	image.src = new_src;
 	
@@ -349,5 +354,7 @@ function load_img_error( image ){
 		var new_link = sitecontent + link;
 		image.parentNode.setAttribute("href", new_link );
 	}
-console.log("fixing image source - ", image, "new parent link = " + new_link, link_class);
+	
+//console.log("fixing image source - ", image, "new parent link = " + new_link, link_class);
+
 }//end load_img_error()
