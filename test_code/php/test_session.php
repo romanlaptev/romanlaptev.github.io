@@ -70,6 +70,10 @@ if (isset($_GET["is_exit"])) {
 <body>
 <h1>PHP: test SESSION</h1>
 http://php.net/manual/ru/book.session.php
+http://phpfaq.ru/sessions
+http://anton.shevchuk.name/php/php-for-beginners-session/
+http://php.net/manual/ru/function.md5.php
+http://php.net/manual/ru/function.sha1.php
 <br>
 <?php
 echo "Session name: " . session_name();
