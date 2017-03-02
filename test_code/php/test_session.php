@@ -1,27 +1,102 @@
+<?php
+session_start();
+$_SESSION['test'] = "test1";
+
+echo "<pre>";
+print_r($_REQUEST);
+print_r($_SESSION);
+echo "</pre>";
+
+function showForm() {
+	$string = "<form action = '' method='post'>";
+	$string .= "<label>Username: </label>";
+	$string .= "<input type = 'text' name = 'username'>";
+	$string .= "<br />";
+	$string .= "<label>Password: </label>";
+	$string .= "<input type = 'password' name = 'pass'>";
+	$string .= "<br />";
+	$string .= "<input type = 'submit' name = 'log' value = 'Enter'>";
+	$string .= "</form>";
+	return $string;
+}
+
+function check($username, $pass) {
+	if (($username == "admin") && ($pass == md5("123456"))) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function out(){
+	$_SESSION = array();//clear session
+	session_destroy();
+}//end out()
+
+
+if (isset($_POST['log'])) {
+	
+	$username = $_POST['username'];
+	$pass = md5($_POST['pass']);
+	
+	if ( check($username, $pass) ) {
+		/*
+		$expiries = 60;
+		setcookie("username", $username, time() + $expiries);
+		setcookie("pass", $pass, time() + $expiries);
+		*/
+		$_SESSION['is_auth'] = true;
+		$_SESSION['user'] = $username;
+		
+	} else {
+		$_SESSION['is_auth'] = false;
+		echo "access denied!";
+	}
+	
+}
+
+
+if (isset($_GET["is_exit"])) {
+	if ($_GET["is_exit"] == 1) {
+		out(); //Выходим
+		header("Location:".$_SERVER["SCRIPT_NAME"]);
+	}
+}
+
+?>
+
+<html>
+<head></head>
+<body>
 <h1>PHP: test SESSION</h1>
 http://php.net/manual/ru/book.session.php
-<pre>
+<br>
 <?php
-
-session_start();
-print_r($_SESSION);
-echo '<hr>';
-
 echo "Session name: " . session_name();
 echo '<hr>';
-
-$_SESSION['username'] = "admin";
-echo 'Hi, '.$_SESSION['username'];
-echo '<br>';
-
-unset($_SESSION['username']);
-
-echo 'Hi, '.$_SESSION['username'];
-echo '<br>';
-
-session_destroy();
-
-print_r( ini_get_all("session") );
-echo '<hr>';
+//session_destroy();
 ?>
-</pre>
+
+<?php
+	//out();
+	if( $_SESSION['is_auth'] ){
+		echo "Hi, ". $_SESSION['user'];
+		echo "<br/><br/><a href='?is_exit=1'>Exit</a>";
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+		//out();
+	} else {
+		echo showForm();
+	}
+?>
+
+
+<?php
+echo '<pre>';
+print_r( ini_get_all("session") );
+echo '</pre>';
+?>
+
+</body>
+</html>
