@@ -9,6 +9,11 @@ echo "dirname(__FILE__) = ".dirname(__FILE__);
 echo "<hr>";
 
 
+echo "<pre>";
+http://php.net/manual/ru/function.ini-get-all.php
+print_r(ini_get_all());
+echo "</pre>";
+echo '<hr>';
 
 echo "<pre>";
 foreach (getallheaders() as $name => $value)
