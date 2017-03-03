@@ -1,7 +1,9 @@
-<?php
+﻿<?php
 //error_reporting(E_ALL ^ E_DEPRECATED);
 //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
-ini_set("display_errors", 1);
+
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 1);
 
 //echo "<pre>";
 //print_r ($_REQUEST);
@@ -9,12 +11,12 @@ ini_set("display_errors", 1);
 
 ?>
 
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, inital-scale=1.0">
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
 </head>
 <body>
 	<div class="container">
@@ -360,35 +362,16 @@ function list_fields( $query ){
 		<pre>
 		<h2>test mysqli_connect</h2>
 <?
-$mysqli = new mysqli($host, $user, $password, $db_name);
 printf("mysqli_get_client_info: %s\n", mysqli_get_client_info());
-// $link = mysqli_connect( $host, $user, $password, $db_name);
-// echo $link;
+$link = mysqli_connect( $host, $user, $password, $db_name);
+echo $link;
+
 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
 
-/* возвращаем имя текущей базы данных */
-if ($result = $mysqli->query("SELECT DATABASE()")) {
-    $row = $result->fetch_row();
-    printf("Default database is %s.\n", $row[0]);
-    $result->close();
-}
-/*
-// изменяем текущую базу данных на world
-$mysqli->select_db("world");
-
-// возвращаем имя текущей базы данных
-if ($result = $mysqli->query("SELECT DATABASE()")) {
-    $row = $result->fetch_row();
-    printf("Default database is %s.\n", $row[0]);
-    $result->close();
-}
-*/
-
-$mysqli->close();
 ?>
 		</pre>
 	</div><!-- end container -->

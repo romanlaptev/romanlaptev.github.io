@@ -17,14 +17,18 @@ config["storage_key"] = "lib_xml";
 config["xml_file"] = "db/export_lib.xml";
 //config["xml_file"] = "db/test.xml";
 config["tpl_file"] = "tpl/templates.html";
-config["content_location"] = "file:///mnt/terra/clouds/0_data";
+
+//config["content_location"] = "file:///mnt/terra/clouds/0_data";
+config["content_location"] = "http://site-content";
+
 config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
 config["use_localcache"] = true;
 config["runtime"] = [];
 
-if (navigator.userAgent.indexOf ('Windows')!= -1) {
-	config["content_location"] = "file:///F:/clouds/0_data";
-}
+//if (navigator.userAgent.indexOf ('Windows')!= -1) {
+	//config["content_location"] = "file:///F:/clouds/0_data";
+//}
+
 //console.log(config);
 
 /* для Mozilla/Firefox/Opera 9 */

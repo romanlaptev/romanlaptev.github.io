@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 1);
+
 $value = "test";
 $expiries = 60; //sec.
 setcookie ("TestCookie", $value, time() + $expiries);	
