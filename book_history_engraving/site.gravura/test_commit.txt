@@ -1,4 +1,0 @@
-master, commit1
-test, commit2
-test, commit3
-test, commit from mycomp, nb 8.02
