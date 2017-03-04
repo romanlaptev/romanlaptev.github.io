@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>jPlayer Playlist</title>
+<link href="../players/jPlayer-2.5.0/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet">	
+<link href="css/pls_style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../players/jPlayer-2.5.0/js/jquery.min.js"></script>
+<script type="text/javascript" src="../players/jPlayer-2.5.0/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="../players/jPlayer-2.5.0/js/jplayer.playlist.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+	var myPlaylist = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_N",
+		cssSelectorAncestor: "#jp_container_N"
+	}, [
+		{
+			title:"Эта музыка будет вечной",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/Nautilus Pompilius - Эта музыка будет вечной.mp3"
+		},
+		{
+			title:"Князь Тишины",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1989 - Князь Тишины/02 - Князь Тишины.mp3"
+		},
+		{
+			title:"Эти Реки",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1987 - Чужая Земля/02 - Эти Реки.mp3"
+		},
+		{
+			title:"Негодяй и Ангел",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1994 - Титаник/04 - Негодяй и Ангел.mp3"
+		},
+		{
+			title:"Доктор Твоего Тела",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1989 - Князь Тишины/05 - Доктор Твоего Тела.mp3"
+		},
+		{
+			title:"Падал Теплый Снег",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1988 - Раскол/05 - Падал Теплый Снег.mp3"
+		},
+		{
+			title:"Я хочу быть с тобой",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/Наутилус - Я хочу быть с тобой.mp3"
+		},
+		{
+			title:"Тихие игры",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/Nautilus Pompilius - Тихие игры.mp3"
+		},
+		{
+			title:"Утро Полины",
+			artist:"Наутилус Помпилиус",
+			mp3:"http://mycomp/music/N/Nautilus/1991 - Титаник на Фонтанке/08 - Утро Полины.mp3"
+		},
+		{
+			title:"Кошка. (Танец на цыпочках, 1994)",
+			artist:"Настя",
+			mp3:"http://mycomp/music/N/Настя_1994 - Танец на цыпочках_08 - Кошка.mp3"
+		},
+		{
+			title:"Кукла",
+			artist:"Ногу свело",
+			mp3:"http://mycomp/music/N/Ногу свело_01 - Кукла.mp3"
+		},
+		{
+			title:"Мои друзья",
+			artist:"Сегодня ночью",
+			mp3:"http://mycomp/music/S/Сегодня ночью - Мои друзья.mp3"
+		},
+		{
+			title:"Белая невеста",
+			artist:"Алиса",
+			mp3:"http://mycomp/music/A/Алиса/Алиса - Белая невеста.mp3"
+		},
+		{
+			title:"Дождь",
+			artist:"Алиса",
+			mp3:"http://mycomp/music/A/Алиса/Алиса - Дождь.mp3"
+		},
+		{
+			title:"Мое поколение",
+			artist:"Алиса",
+			mp3:"http://mycomp/music/A/Алиса/Алиса - Мое поколение.mp3"
+		},
+		{
+			title:"Элис",
+			artist:"Алиса",
+			mp3:"http://mycomp/music/A/Алиса/Алиса - Элис.mp3"
+		}
+	], {
+		playlistOptions: {
+			enableRemoveControls: true
+		},
+		swfPath: "../players/jPlayer-2.5.0/js",
+		//supplied: "webmv, ogv, m4v, oga, mp3",
+		//supplied: "mp3, m4a",
+		supplied: "mp3",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		audioFullScreen: true
+	});
+
+	$("#playlist-setPlaylist-audio1").click(function() {
+		myPlaylist.setPlaylist([
+			{
+				title:"Эта музыка будет вечной",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/Nautilus Pompilius - Эта музыка будет вечной.mp3"
+			},
+			{
+				title:"Князь Тишины",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1989 - Князь Тишины/02 - Князь Тишины.mp3"
+			},
+			{
+				title:"Эти Реки",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1987 - Чужая Земля/02 - Эти Реки.mp3"
+			},
+			{
+				title:"Негодяй и Ангел",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1994 - Титаник/04 - Негодяй и Ангел.mp3"
+			},
+			{
+				title:"Доктор Твоего Тела",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1989 - Князь Тишины/05 - Доктор Твоего Тела.mp3"
+			},
+			{
+				title:"Падал Теплый Снег",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1988 - Раскол/05 - Падал Теплый Снег.mp3"
+			},
+			{
+				title:"Я хочу быть с тобой",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1989 - Князь Тишины/06 - Я Хочу Быть с Тобой.mp3"
+			},
+			{
+				title:"Тихие игры",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/Nautilus Pompilius - Тихие игры.mp3"
+			},
+			{
+				title:"Утро Полины",
+				artist:"Наутилус Помпилиус",
+				mp3:"http://mycomp/music/N/Nautilus/1991 - Титаник на Фонтанке/08 - Утро Полины.mp3"
+			},
+
+		]);
+	});
+
+
+	$("#playlist-setPlaylist-audio2").click(function() {
+		myPlaylist.setPlaylist([
+			{
+				title:"Navigator (1995) - Goluboy Ogonek",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/01-Goluboy Ogonek.mp3"
+			},
+			{
+				title:"Navigator (1995) - Udivitel'niy Master Luk'yanov",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/13-Udivitel'niy Master Luk'yanov.mp3"
+			},
+			{
+				title:"Navigator (1995) - Posledny Povorot",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/02-Posledny Povorot.mp3"
+			},
+			{
+				title:"Navigator (1995) - Kladbishe",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/03-Kladbishe.mp3"
+			},
+			{
+				title:"Navigator (1995) - Ne Kosi",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/04-Ne Kosi.mp3"
+			},
+			{
+				title:"Navigator (1995) - Maetsya",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/05-Maetsya.mp3"
+			},
+			{
+				title:"Navigator (1995) - Samiy Bistriy Samolet",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/06-Samiy Bistriy Samolet.mp3"
+			},
+			{
+				title:"Navigator (1995) - Navigator",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/07-Navigator.mp3"
+			},
+			{
+				title:"Navigator (1995) - Steregushy Barzhu",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/08-Steregushy Barzhu.mp3"
+			},
+			{
+				title:"Navigator (1995) - Tamozhenniy Blyuz",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/09-Tamozhenniy Blyuz.mp3"
+			},
+			{
+				title:"Navigator (1995) - Tri Sestri",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/10-Tri Sestri.mp3"
+			},
+			{
+				title:"Navigator (1995) - Garson No2",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/11-Garson No2.mp3"
+			},
+			{
+				title:"Navigator (1995) - Fikus Religiozniy",
+				artist:"Аквариум",
+				mp3:"http://mycomp/music/A/Аквариум/01-Navigator (1995)/12-Fikus Religiozniy.mp3"
+			},
+
+		]);
+	});
+
+	$("#playlist-setPlaylist-audio3").click(function() {
+		myPlaylist.setPlaylist([
+			{
+				title:"Smeshnie lyudi",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/08_Smeshnie_lyudi.mp3"
+			},
+			{
+				title:"Igolka",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/12_Igolka.mp3"
+			},
+			{
+				title:"Бузинай",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/Башня Rowan -Бузинай.mp3"
+			},
+			{
+				title:"Кобольды",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/Башня Rowan -Кобольды.mp3"
+			},
+			{
+				title:"О псах и трусах",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/Башня Rowan -О псах и трусах.mp3"
+			},
+			{
+				title:"Харя Пахаря",
+				artist:"Башня Rowan",
+				mp3:"http://mycomp/music/B/Башня Rowan/Башня Rowan - Харя Пахаря.mp3"
+			},
+		]);
+	});
+
+
+
+
+});
+//]]>
+</script>
+</head>
+<body>
+
+<div class="container">
+
+	<div class="row text-center">
+		<h2>Russian music, playlists</h2>
+	</div>
+<br>	
+	  <div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 list-albums">    
+				
+setPlaylist:
+<ul>
+<li><a href="#" id="playlist-setPlaylist-audio1">[Наутилус Помпилиус]</a></li>
+<li><a href="#" id="playlist-setPlaylist-audio2">[Аквариум]</a></li>
+<li><a href="#" id="playlist-setPlaylist-audio3">[Башня Rowan</a></li>
+</ul>
+				
+		</div>		
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 player">    
+
+				<div id="jp_container_N" class="jp-video jp-video-270p">
+					<div class="jp-type-playlist">
+						<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+						<div class="jp-gui">
+							<div class="jp-video-play">
+								<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+							</div>
+							<div class="jp-interface">
+								<div class="jp-progress">
+									<div class="jp-seek-bar">
+										<div class="jp-play-bar"></div>
+									</div>
+								</div>
+								<div class="jp-current-time"></div>
+								<div class="jp-duration"></div>
+								<div class="jp-controls-holder">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+										<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+										<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+										<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+										<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+										<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+										<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+									</ul>
+									<div class="jp-volume-bar">
+										<div class="jp-volume-bar-value"></div>
+									</div>
+									<ul class="jp-toggles">
+										<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+										<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+										<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+										<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+										<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+										<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+									</ul>
+								</div>
+								<div class="jp-title">
+									<ul>
+										<li></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="jp-playlist">
+							<ul>
+								<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+								<li></li>
+							</ul>
+						</div>
+						<div class="jp-no-solution">
+							<span>Update Required</span>
+							To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+						</div>
+					</div>
+				</div>
+		
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->
+
+
+</body>
+
+</html>
