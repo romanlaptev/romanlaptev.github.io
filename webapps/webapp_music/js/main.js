@@ -27,20 +27,22 @@ console.log("init!!!");
 	Wfm().init();
 })();
 */
-var wfm = Wfm();
+
+
+$(document).ready(function(){
+	
+	var wfm = Wfm();
 console.log ("wfm = ", wfm);
 
-$(document).ready(
-	function(){
-
-		$(document).ajaxStart(
-			function(){ 
-			  $('#ajaxBusy').show(); 
-			}
-		).ajaxStop(
-			function()
-			{ 
-			  $('#ajaxBusy').hide();
-			}
-		);
+	$(document).ajaxStart(
+		function(){ 
+		  $('#ajaxBusy').show(); 
+		}
+	).ajaxStop(
+		function()
+		{ 
+		  $('#ajaxBusy').hide();
+		}
+	);
+	
 });//end teady

@@ -366,12 +366,12 @@ var pls_rowan = {
 			{
 				title:"Smeshnie lyudi",
 				artist:"Башня Rowan",
-				mp3:"/music/B/Башня Rowan/08_Smeshnie_lyudi.mp3"
+				mp3:"/music/B/Башня Rowan/2008/08_Smeshnie_lyudi.mp3"
 			},
 			{
 				title:"Igolka",
 				artist:"Башня Rowan",
-				mp3:"/music/B/Башня Rowan/12_Igolka.mp3"
+				mp3:"/music/B/Башня Rowan/2008/12_Igolka.mp3"
 			},
 			{
 				title:"Бузинай",

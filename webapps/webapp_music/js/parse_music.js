@@ -4,7 +4,7 @@
 	var music_alias = "/music/";
 	if (navigator.userAgent.indexOf ('Windows')!= -1) 
 	{
-		var music_coll_location = "F:/clouds/cloud_mail/music";
+		var music_coll_location = "D:/music";
 	}
 	if (navigator.userAgent.indexOf ('Linux')!= -1) 
 	{
@@ -703,6 +703,7 @@ console.log("edit playlist", checked_files, checked_files.length);
 					//$("#log").append( all_headers );
 				
 					var filelist_parse_res = parse_filelist_xml( data );
+console.log(filelist_parse_res);					
 					reload_file_panel( filelist_parse_res, dirname, panel, reload_pls );
 				},
 			error:

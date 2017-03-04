@@ -17,8 +17,25 @@ $(document).ready(function(){
 		keyEnabled: true,
 		audioFullScreen: true
 	});
+/*
+	var playlist = new Array();
 
+	var filename = "test";
+	var artist = "test";
+	var mp3 = "/music/A/ABBA - SOS.mp3";
+	//var mp3 = "/music/A/Amorphis - Thousand lakes.mp3";//error format!
+	
+	var link_to_media =  true;
 
+	var track = {
+		title: filename,
+		"artist": artist,
+		mp3: mp3,
+		free: link_to_media, 
+	};
+	playlist.push(track);
+	myPlaylist.setPlaylist( playlist );
+*/
 //=========================================	
 	$(".set-playlist").click(function() {
 /*

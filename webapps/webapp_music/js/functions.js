@@ -4,44 +4,36 @@
 //else
 //  document.write("Браузер не поддерживает JavaScript<br>");
 
-function getenv(i)
-{
-	if (!i.length) 
-	{ 
+function getenv(i){
+	
+	if (!i.length){ 
 		return false; 
 	}  
 	qStr = document.location.href;
 	strpos = qStr.indexOf("?"+i+"=");
 
-	if ( strpos ==-1) 
-	{ 
+	if( strpos ==-1){ 
 		strpos = qStr.indexOf("&"+i+"="); 
 	}
 
-	if ( strpos == qStr.length || strpos ==-1 )
-	{
+	if ( strpos == qStr.length || strpos ==-1 ){
 		return false; 
 	}
 
 	val = qStr.substring( (strpos+i.length)+2, qStr.length);
-
 	strpos = val.indexOf("&");
 
-	if ( strpos !=-1 ) 
-	{ 
+	if ( strpos !=-1 ){ 
 		val = val.substring(0, strpos ); 
 	}
 
-	if ( !val.length ) 
-	{ 
+	if ( !val.length ){ 
 		return false; 
-	}
-	else 
-	{ 
+	} else { 
 		return val; 
 	}
 
-}//----------------------------------end func
+}// end getenv()
 
 
 function createRequestObject() 
