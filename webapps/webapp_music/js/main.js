@@ -1,48 +1,75 @@
-/*
-//Module Wfm
-(function(){
-	var Wfm = Wfm || function(options){
-
-		// private variables and functions
-		var _init = function(){
-console.log("init!!!");
-		};
-		
-		var _build = function(target){
-			var html = "Table " + target + " is building....";
-			return html;
-		};
-		
-		// public interfaces
-		return{
-			init:	function(){ 
-				return _init(); 
-			},
-			build:	function(target){ 
-				return _build(target); 
-			}
-		};
-	};
-	window.Wfm = Wfm;
-	Wfm().init();
-})();
-*/
-
-
 $(document).ready(function(){
-	
-	var wfm = Wfm();
-console.log ("wfm = ", wfm);
 
-	$(document).ajaxStart(
-		function(){ 
-		  $('#ajaxBusy').show(); 
-		}
-	).ajaxStop(
-		function()
-		{ 
-		  $('#ajaxBusy').hide();
-		}
-	);
+	var myPlaylist = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_N",
+		cssSelectorAncestor: "#jp_container_N"
+	},
+	[
+	], 
+{
+		playlistOptions: {
+			enableRemoveControls: true
+		},
+		swfPath: "../players/jPlayer-2.5.0/js",
+		//supplied: "webmv, ogv, m4v, oga, mp3",
+		supplied: "mp3",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		audioFullScreen: true
+	});
+/*
+	var playlist = new Array();
+
+	var filename = "test";
+	var artist = "test";
+	var mp3 = "/music/A/ABBA - SOS.mp3";
+	//var mp3 = "/music/A/Amorphis - Thousand lakes.mp3";//error format!
 	
-});//end teady
+	var link_to_media =  true;
+
+	var track = {
+		title: filename,
+		"artist": artist,
+		mp3: mp3,
+		free: link_to_media, 
+	};
+	playlist.push(track);
+	myPlaylist.setPlaylist( playlist );
+*/
+//=========================================	
+	$(".set-playlist").click(function() {
+/*
+		var playlist = new Array();
+
+		var filename = "Blackened";
+		var artist = "Metallica";
+		var mp3 = "/music/M/Metallica/1988_And_Justice_For_All/01_Blackened.mp3";
+		var link_to_media =  true;
+
+		var track = {
+			title: filename,
+			"artist": artist,
+			mp3: mp3,
+			free: link_to_media, 
+		};
+		playlist.push(track);
+		myPlaylist.setPlaylist( playlist );
+*/		
+
+
+		var pls_name = $(this).attr("href").replace("#","");
+console.log( eval(pls_name) );
+		var pls_obj = eval( pls_name )
+		myPlaylist.setPlaylist( pls_obj.tracks );
+
+		return false;
+	});
+
+//================================================
+	$('.top').click(function (e) {
+	  e.preventDefault();
+	  $('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
+	});
+
+});
+
