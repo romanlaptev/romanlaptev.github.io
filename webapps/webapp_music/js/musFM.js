@@ -361,7 +361,7 @@ console.log( "errorThrown: " + errorThrown );
 			$( panels["active"] + " .wfm input[type=checkbox]:checked").each(function(){
 				file.push( $(this).val() );
 			});				
-
+//console.log(file);
 			var fsPath = dirname;
 			if ( vars["OS"] === "Windows" ){
 				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
@@ -599,16 +599,14 @@ console.log("edit playlist", checked_files, checked_files.length);
 			var files_html = "";
 			$.getJSON(url,
 				{ dir: dirname },
-				function(data)
-				{
-					for (item in data) 
-					{
-						if ( item=='subfolders')
-						{
+				function(data){
+//console.log(data);		
+					vars["filelist"] = data;
+					for (item in data) {
+						if ( item=='subfolders'){
 							var subfolders = data[item];
 	//console.log( "Subfolders = " + subfolders );
-							for (subfolder in subfolders) 
-							{
+							for (subfolder in subfolders) {
 	//console.log( "Subfolder = " + subfolders[subfolder] );
 								var subfolder_url = subfolders[subfolder];
 							
@@ -619,19 +617,15 @@ console.log("edit playlist", checked_files, checked_files.length);
 							}
 						}
 
-						if ( item=='files')
-						{
+						if ( item=='files'){
 							var playlist = new Array();
 							var files = data[item];
 	//console.log( "files = " + files );
-							for(file in files)
-							{
+							for(file in files) {
 								var last_slash_pos = files[file].lastIndexOf('/')+1;
 								var filename = files[file].substring( last_slash_pos );
-								if ( reload_pls == true)
-								{
-									if (filename.toLowerCase().lastIndexOf('mp3') > 0)
-									{
+								if ( reload_pls == true) {
+									if (filename.toLowerCase().lastIndexOf('mp3') > 0){
 										var track = {
 										title: filename,
 										//"artist": files[file],
@@ -642,8 +636,7 @@ console.log("edit playlist", checked_files, checked_files.length);
 										};
 										playlist.push(track);
 									}
-			if (filename.toLowerCase().lastIndexOf('.ogg') > 0)
-			{
+			if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
 				var track = {
 				title: filename,
 				oga: files[file],
@@ -651,8 +644,7 @@ console.log("edit playlist", checked_files, checked_files.length);
 				};
 				playlist.push(track);
 			}
-			if (filename.toLowerCase().lastIndexOf('.wav') > 0)
-			{
+			if (filename.toLowerCase().lastIndexOf('.wav') > 0){
 				var track = {
 				title: filename,
 				wav: files[file],
@@ -665,7 +657,7 @@ console.log("edit playlist", checked_files, checked_files.length);
 							}
 						}
 
-					}//------------------------- end for
+					}//next
 					//var jsonString = JSON.stringify(playlist);
 
 					$( panel + " .subfolder-tpl").html( subfolders_html );
@@ -677,8 +669,7 @@ vars["dirname"]	= dirname;
 
 					$( panel + " .file-tpl").html( files_html );
 					//-------------------------- insert playlist
-					if ( reload_pls == true)
-					{
+					if ( reload_pls == true){
 						myPlaylist.setPlaylist( playlist );
 					}
 
