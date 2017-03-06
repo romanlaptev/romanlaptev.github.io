@@ -66,17 +66,20 @@ width:100% !important;
 border:1px solid red;
 }
 
-.wfm
-{
+.wfm{
+/*
 height: 550px;
 overflow-y: auto;
+*/
 margin-top:10px;
 }
 
 .jp-playlist 
 {
+	/*
   height: 495px;
   overflow-y: auto;
+  */
   /*background-color: transparent !important;*/
 }
 .jp-video {
@@ -251,10 +254,10 @@ width: 450px !important;
 #log {
   background: #f3f3f3;
   margin-left: 0;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   /*padding-bottom: 20px;*/
   padding-left: 10px;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
 
 .error {
@@ -265,3 +268,9 @@ width: 450px !important;
   padding-left: 5px;
 }
 
+
+
+ul.inline > li, ol.inline > li {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}

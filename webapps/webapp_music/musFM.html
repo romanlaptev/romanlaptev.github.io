@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>web file manager</title>
+	<title>music file manager</title>
 	<link rel="stylesheet" href="css/musFM.css">
 	<link rel="stylesheet" href="css/bootstrap232.min.css"/>	
 	
@@ -50,6 +50,7 @@
 			  <li class="view-media-player active"><a href="#">Player</a></li>
 			  <li class="view-file-panel"><a  href="#">Files</a></li>
 
+			<button id="btn-load-filelist" class="btn btn-success">Load filelist</button>
 			<li class="dropdown pull-right">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage playlists
 					<b class="caret"></b>
@@ -65,10 +66,37 @@
 					<li>
 <a id="edit-pls" href="#modal-edit-pls" role="button" data-toggle="modal" data-keyboard="true">Edit playlists</a>
 					</li>
+					
 				</ul>
 			</li>
 		</ul>
 
+		<ul class="span6 inline">
+					
+			<button id="clear-log" class="clear-log btn btn-warning">clear log</button>
+					<li>
+		<a href="#modal-mkdir" role="button" class="mkdir btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">new folder</a>
+					</li>
+
+					<li>
+		<a href="#modal-copy" role="button" class="copy btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">copy</a>
+					</li>
+					<li>
+		<a href="#modal-copy" role="button" class="move btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">move</a>
+					</li>
+
+					<li>
+		<a href="#modal-rename" role="button" class="rename btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">rename</a>
+					</li>
+					
+			<li><a class="group-remove btn btn-danger" href="#">delete</a></li>
+		</ul>
+
+		
 	</div>
 
 
@@ -133,18 +161,19 @@
 					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
 				</div>
 			</div>
-		</div>
-<!-- ################################## /player -->
-
+<!--			
 <div class="row panel-buttons">
 	<div class="offset1">
 		<ul>
 			<button id="btn-load-filelist" class="btn btn-success">Load filelist</button>
 			<button id="btn-load-pls" class="btn btn-info">Load playlist from JSON</button>
-			<button id="clear-log" class="clear-log btn btn-warning">clear log</button>
 		</ul>
 	</div>
 </div>
+-->
+		</div>
+<!-- ################################## /player -->
+
 
 	</div><!-- #left-panel-->
 
@@ -198,41 +227,25 @@
 -->
 	</div><!-- /right-panel -->
 
-		<div class="row panel-buttons">
-			<div class="">
-				<ul>
-					<li>
-		<a href="#modal-mkdir" role="button" class="mkdir btn btn-primary" 
-		data-toggle="modal" data-keyboard="true">new folder</a>
-					</li>
-
-					<li>
-		<a href="#modal-copy" role="button" class="copy btn btn-primary" 
-		data-toggle="modal" data-keyboard="true">copy</a>
-					</li>
-					<li>
-		<a href="#modal-copy" role="button" class="move btn btn-primary" 
-		data-toggle="modal" data-keyboard="true">move</a>
-					</li>
-
-					<li>
-		<a href="#modal-rename" role="button" class="rename btn btn-primary" 
-		data-toggle="modal" data-keyboard="true">rename</a>
-					</li>
-					<li><a class="group-remove btn btn-danger" href="#">delete</a></li>
-				</ul>
-
-			</div>
-		</div>
-
-
 </div><!-- /panels -->
 
 
-<div id="log" class="row"></div>
+		<div id="log" class="row"></div>
 
 	</div><!-- /container -->
 
+<footer class="container-fluid text-center">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+<!--				
+				<ul class="nav navbar-nav navbar-right">
+<li><a class="" href="musFM.html" target="_self">form playlist with music file manager</a></li>
+				</ul>
+-->      
+			</div>
+		</div>
+</footer>
+	
 <!-- MODAL DIALOG WINDOW -->
 	<div class="modal hide" id="modal-copy" role="dialog" tabindex='-1'>
 		<div class="modal-header">
