@@ -10,9 +10,10 @@ div.jp-video div.jp-interface {
 }
 
 div.jp-interface {
-     background-color: #336699 !important;
-     position: relative;
-     width: 100%;
+	background-color: #336699 !important;
+	position: relative;
+	width: 100%;
+	background-image: linear-gradient(to bottom, #08c, #04c);
 }
 
 div.jp-current-time, div.jp-duration {

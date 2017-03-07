@@ -67,19 +67,17 @@ border:1px solid red;
 }
 
 .wfm{
-/*
+
 height: 550px;
 overflow-y: auto;
-*/
+
 margin-top:10px;
 }
 
-.jp-playlist 
-{
-	/*
-  height: 495px;
-  overflow-y: auto;
-  */
+.jp-playlist {
+height: 495px;
+overflow-y: auto;
+
   /*background-color: transparent !important;*/
 }
 .jp-video {

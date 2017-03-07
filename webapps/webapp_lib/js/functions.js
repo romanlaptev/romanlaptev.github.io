@@ -43,6 +43,10 @@ function getenv(i)
 	}
 }//end function getenv()
 
+//**************************************
+//$_GET = parseGetParams( parse_url ); 
+//console.log( $_GET);
+//**************************************
 function parseGetParams() { 
    var $_GET = {}; 
    var parse_url = window.location.search.substring(1).split("&"); 

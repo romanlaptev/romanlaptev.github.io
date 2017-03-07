@@ -91,9 +91,10 @@ div.jp-video div.jp-interface {
   border-top: medium none;
 }
 div.jp-interface {
-  background-color: #369;
-  position: relative;
-  width: 100%;
+	background-color: #369;
+	position: relative;
+	width: 100%;
+	background-image: linear-gradient(to bottom, #08c, #04c);
 }
 div.jp-current-time, div.jp-duration {
   font-size: 1.5em;

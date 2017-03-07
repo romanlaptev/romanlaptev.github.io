@@ -477,6 +477,7 @@ console.log( "errorThrown: " + errorThrown );
 		});//end event
 
 		//-------------------------------
+/*
 		$("#btn-load-filelist").on("click", function(e){
 //console.log(e);			
 			//var dirname = $(".files .dirname").text();
@@ -487,6 +488,11 @@ console.log( "errorThrown: " + errorThrown );
 			
 			$("#playlist-title").text( vars["text_new_playlist"] );
 			return false;
+		});//end event
+*/
+		$("#btn-clear-playlist").on("click", function(e){
+//console.log(e);			
+			myPlaylist.setPlaylist([]);
 		});//end event
 
 		//-------------------------------
@@ -562,6 +568,28 @@ console.log("edit playlist", checked_files, checked_files.length);
 			}
 		});//end event
 		
+		
+		$("#checkAll").on("click", function(){
+			
+			var panels = get_panels_info();
+			$( panels["active"] + " .wfm input[type=checkbox]" ).each(function(num, item){
+//console.log(num, item);
+				//item.setAttribute("checked", "checked");
+				$(item).prop("checked", true);
+			});		
+			
+		});//end event
+		
+		$("#clearAll").on("click", function(){
+			var panels = get_panels_info();
+			$( panels["active"] + " .wfm input[type=checkbox]" ).each(function(num, item){
+//console.log(num, item);
+				//item.removeAttribute("checked");
+				$(item).prop("checked", false);
+			});		
+			
+		});//end event
+		
 };//end initApp()
 
 
@@ -569,23 +597,22 @@ console.log("edit playlist", checked_files, checked_files.length);
 		var panels = get_panels_info();
 		var dirname = $( panels["active"] + " .dirname").text();
 		var checked_files = [];
-		$( panels["active"] + " .wfm input[type=checkbox]:checked").each(	function(){
+		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(	function(){
 			checked_files.push ( dirname +"/" + $(this).val() );
-			$(this).removeAttr("checked");
+			//$(this).removeAttr("checked");
+			$(item).prop("checked", false);
 		});		
 		return checked_files;
 	}//end  get_checked_files()
 
 	var get_panels_info = function() {
 		var panels = [];
-		if ( $(".left-panel").hasClass("active-panel") )
-		{
+		if ( $(".left-panel").hasClass("active-panel") ){
 			panels["active"] = ".left-panel";
 			panels["destination"] = ".right-panel";
 			return panels;
 		}
-		if ( $(".right-panel").hasClass("active-panel") )
-		{
+		if ( $(".right-panel").hasClass("active-panel") ){
 			panels["active"] = ".right-panel";
 			panels["destination"] = ".left-panel";
 			return panels;
@@ -593,6 +620,8 @@ console.log("edit playlist", checked_files, checked_files.length);
 		return false;
 	}//end get_panels_info
 
+	
+	
 	//function get_filelist_php( url, dirname, panel, reload_pls )
 	get_filelist_php = function( url, dirname, panel, reload_pls ){
 			var subfolders_html = "";

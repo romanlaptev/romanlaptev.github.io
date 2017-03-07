@@ -35,6 +35,28 @@ function getenv(i){
 
 }// end getenv()
 
+//**************************************
+//$_GET = parseGetParams( parse_url ); 
+//console.log( $_GET);
+//**************************************
+function parseGetParams() { 
+   var $_GET = {}; 
+   var parse_url = window.location.search.substring(1).split("&"); 
+   for(var n = 0; n < parse_url.length; n++) 
+   { 
+      var getVar = parse_url[n].split("="); 
+      //$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+	  if( typeof(getVar[1])=="undefined" )
+	  {
+		$_GET[ getVar[0] ] = "";
+	  }
+	  else
+	  {
+		$_GET[ getVar[0] ] = getVar[1];
+	  }
+   } 
+   return $_GET; 
+}//end parseGetParams() 
 
 function createRequestObject() 
 {
@@ -84,11 +106,37 @@ function getXMLDocument(url)
              alert("Загрузка XML не поддерживается браузером");  
              return null;  
          }  
-}//-----------------------------------------------------------------end func
+}//end func
 
-$(document).ready(
-	function()
-	{
+/*
+function select_checkbox( form ){
+//   alert ("select all checkbox");
+   var frm = document.form_ls;
+   for (var n1=1; n1 < frm.elements.length; n1++)
+      {
+        var elmnt = frm.elements[n1];
+        if (elmnt.type == 'checkbox')
+          {
+            elmnt.checked = true;
+          }
+      }
+ }
+
+function clear_checkbox (){
+//     alert ("clear all checkbox");
+      var frm = document.form_ls;
+      for ( var n2=1; n2 < frm.elements.length; n2++)
+         {
+          var elmnt = frm.elements[n2];
+          if  (elmnt.type=='checkbox') 
+            {
+              elmnt.checked = false;
+            }
+         }
+}
+*/
+
+$(document).ready(function(){
 //-------------------------------
 		$(document).ajaxStart(
 			function(){ 
@@ -129,16 +177,14 @@ $(document).ready(
 			}
 		);
 
-//------------------------- scroll to top
-$("#scroll-to-top").click(function(e) {
-	e.preventDefault;
-	$('html,body').animate({
-		scrollTop: 0
-		}, 500);
-	return false;
-});
+		//------------------------- scroll to top
+		$("#scroll-to-top").click(function(e) {
+			e.preventDefault;
+			$('html,body').animate({
+				scrollTop: 0
+				}, 500);
+			return false;
+		});
 
-
-	}
-);//end ready
+});//end ready
 
