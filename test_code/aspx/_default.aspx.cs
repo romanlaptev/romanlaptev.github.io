@@ -13,6 +13,34 @@ namespace myspace
 {
     public partial class Default : System.Web.UI.Page
     {
+
+/*
+//https://professorweb.ru/my/ASP_NET/base/level2/2_2.php
+    Page.Init
+
+    Page.Load
+
+    TextBox.TextChanged
+
+    Button.Click
+
+    Page.PreRender
+
+    Page.Unload
+*/		
+		protected void Page_Init(object sender, EventArgs e)
+		{
+Response.Write("Page_Init.<br>");
+		}
+		protected void Page_PreRender(object sender, EventArgs e)
+		{
+Response.Write("Page_PreRender.<br>");
+		}
+		
+		protected void Page_Unload(object sender, EventArgs e)
+		{
+		}
+		
 		protected void Page_Load(object sender, EventArgs e)
 		{
 /*		

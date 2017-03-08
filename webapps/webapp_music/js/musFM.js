@@ -169,6 +169,7 @@ function initApp(){
 							vars["rename_url"] = "api/aspx/rename.aspx";
 							vars["remove_url"] = "api/aspx/delete.aspx";
 							vars["mkdir_url"] = "api/aspx/mkdir.aspx";
+							vars["save_pls_url"] = "api/aspx/save_pls.aspx";							
 							get_filelist( vars["filelist_url"], vars["dirname"], ".right-panel", true);
 						} else {
 							var msg = "error, not support PHP and ASPX scripts.....";
@@ -493,6 +494,8 @@ console.log( "errorThrown: " + errorThrown );
 		$("#btn-clear-playlist").on("click", function(e){
 //console.log(e);			
 			myPlaylist.setPlaylist([]);
+			$("#playlist-title").empty();
+			
 		});//end event
 
 		//-------------------------------
@@ -519,16 +522,21 @@ console.log( "errorThrown: " + errorThrown );
 			$("#modal-save-pls").modal("hide");
 			var log_message = "";
 			if ( myPlaylist.playlist.length > 0 ){
-				var panels = get_panels_info();
-				var filename = $("#modal-save input").val() ;
+				
+				var filename = $("#modal-save-pls input[name=new_name]").val() ;
 				if ( filename.length > 0){
-					var dirname = $( panels["active"] + " .dirname").text();
-					filename = dirname + "/"+ filename;
+					var panels = get_panels_info();
+					vars["dirname"] = $( panels["active"] + " .dirname").text();
+//console.log( vars["dirname"] );				
+					
+					filename = vars["dirname"] + "/"+ filename;
 					save_playlist( filename );
-					$("#playlist-title").empty();
+					$("#playlist-title").text(filename);
+					
 				} else {
 					log_message += "<p class='error'>Enter filename</p>";
 				}
+
 			} else {
 				log_message += "<p class='error'>Playlist is empty....</p>";
 			}
@@ -558,7 +566,11 @@ console.log( "errorThrown: " + errorThrown );
 			}
 			myPlaylist.setPlaylist( playlist );
 //console.log ("myPlaylist.playlist = ", myPlaylist.playlist);
+			$("#playlist-title").text( vars["text_new_playlist"] );
 
+			var panels = get_panels_info();
+			var $activePanel = $( panels["active"] );
+			clearCheckbox( $activePanel );
 		});//end event
 
 		$("#edit-pls").click( function(){
@@ -582,17 +594,27 @@ console.log("edit playlist", checked_files, checked_files.length);
 		
 		$("#clearAll").on("click", function(){
 			var panels = get_panels_info();
+			var $activePanel = $( panels["active"] );
+			/*
 			$( panels["active"] + " .wfm input[type=checkbox]" ).each(function(num, item){
 //console.log(num, item);
 				//item.removeAttribute("checked");
 				$(item).prop("checked", false);
 			});		
-			
+			*/
+			clearCheckbox( $activePanel );
 		});//end event
 		
 };//end initApp()
 
 
+	function clearCheckbox( $panel ){
+		$panel.find(".wfm :checkbox:checked").each(function(num, item){
+//console.log(num, item);
+			$(item).prop("checked", false);
+		});		
+	}//end clearCheckbox
+	
 	var get_checked_files = function(){
 		var panels = get_panels_info();
 		var dirname = $( panels["active"] + " .dirname").text();
@@ -1045,31 +1067,58 @@ console.log( "error: " + error );
 	}
 
 	function save_playlist( filename ){
+console.log( filename, myPlaylist.playlist );
+
+		var param = {
+			"filename": filename, 
+			"playlist": myPlaylist.playlist
+		};
+
+/*
+		//correct for aspx send query
+		var title = ["ABBA - SOS.mp3", "Afric Simone - Hafanana.mp3"];
+		var url = ["/music/A/ABBA%20-%20SOS.mp3", "/music/A/Afric Simone - Hafanana.mp3"];
+		var attr = [true, true];
+		
+		param["title"] = title;
+		param["url"] = url;
+		param["attr"] = attr;
+*/
 		$.ajax({
 			type: "POST",
-			url: save_pls_url,
-			data: ({filename: filename, json: myPlaylist.playlist}),
-			success: 
-				function( data,textStatus )
-				{
-console.log( "textStatus: " + textStatus );
-					//$("#log").html( textStatus );
-					$("#log").append( data );
+			url: vars["save_pls_url"],
+			//dataType: "json",
+			//data: ({filename: filename, json: myPlaylist.playlist}),
+			data: (param), 
+			
+			beforeSend: function(){
+//console.log("beforeSend:", arguments);					
+				//return false; //cancel
+			},
+			
+			success: function( data,textStatus ){
+console.log( arguments );
+				//$("#log").html( textStatus );
+				$("#log").append( data );
+/*
 
-					var dirname = $(".files .dirname").text();
-					var files_panel = ".right-panel";
-					get_filelist( vars["filelist_url"], dirname, files_panel, true );
-
-				},
-			error:
-				function (XMLHttpRequest, textStatus, errorThrown) 
-				{
-console.log( "textStatus: " + textStatus );
-console.log( "errorThrown: " + errorThrown );
-					$("#log").append( "<p class='error'><b>textStatus:</b> " + textStatus +"</p>");
-					$("#log").append( "<p class='error'><b>errorThrown</b>: " + errorThrown +"</p>" );
-				}
+				var dirname = $(".files .dirname").text();
+				var files_panel = ".right-panel";
+				get_filelist( vars["filelist_url"], dirname, files_panel, true );
+*/
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown){
+//console.log( "textStatus: " + textStatus );
+//console.log( "errorThrown: " + errorThrown );
+				var msg = "<p class='alert-error'>";
+				msg += "<b>url:</b> " + vars["save_pls_url"] +", ";
+				msg += "<b>textStatus:</b> " + textStatus +", ";
+				msg += "<b>errorThrown</b>: " + errorThrown;
+				msg += "</p>";
+				$("#log").append( msg );
+			}
 		});
+
 	}//end save_playlist
 
 	return "Web Music player + File manager";

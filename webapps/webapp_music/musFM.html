@@ -23,10 +23,6 @@
 
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/musFM.js"></script>
-<!--
-<script type="text/javascript" src="js/parse_music.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
--->
 </head>
 
 <body>
@@ -35,18 +31,6 @@
 	<div class="row-fluid topmenu">
 
 		<ul class="nav nav-tabs span6">
-<!--
-			<li class="dropdown menu-select-panel">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Select panel
-					<b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a class="view-file-panel" href="#">Files</a></li>
-
-					<li><a class="view-media-player" href="#">Player</a></li>
-				</ul>
-			</li>
--->
 			  <li class="view-media-player active"><a href="#">Player</a></li>
 			  <li class="view-file-panel"><a  href="#">Files</a></li>
 <!--
@@ -328,7 +312,11 @@ Enter folder name: <input type="text" name="new_name" value="">
 		</div>
 		<div class="modal-body">
 			<div class="pull-left">
-enter new name: <input type="text" name="new_name" value="">
+enter new name: 
+<input type="text" name="new_name" value="newplaylist.json" autocomplete="off">
+<!--
+<input type="text" name="new_name" readonly onfocus="this.removeAttribute('readonly')" value="newplaylist.json">
+-->
 			</div>
 			<div class="pull-left">
 				<a href="#" class="btn btn-primary action-btn">save</a>
