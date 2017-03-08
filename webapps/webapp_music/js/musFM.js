@@ -1074,22 +1074,26 @@ console.log( filename, myPlaylist.playlist );
 			"playlist": myPlaylist.playlist
 		};
 
-/*
-		//correct for aspx send query
-		var title = ["ABBA - SOS.mp3", "Afric Simone - Hafanana.mp3"];
-		var url = ["/music/A/ABBA%20-%20SOS.mp3", "/music/A/Afric Simone - Hafanana.mp3"];
-		var attr = [true, true];
 		
-		param["title"] = title;
-		param["url"] = url;
-		param["attr"] = attr;
+		//correct for aspx send query
+		if(vars["testASPX"]){
+/*
+			var title = ["ABBA - SOS.mp3", "Afric Simone - Hafanana.mp3"];
+			var url = ["/music/A/ABBA%20-%20SOS.mp3", "/music/A/Afric Simone - Hafanana.mp3"];
+			var attr = [true, true];
+			
+			param["title"] = title;
+			param["url"] = url;
+			param["attr"] = attr;
 */
+			param = { json : JSON.stringify(param) };
+		}	
+		
 		$.ajax({
 			type: "POST",
 			url: vars["save_pls_url"],
 			//dataType: "json",
-			//data: ({filename: filename, json: myPlaylist.playlist}),
-			data: (param), 
+			data: param, 
 			
 			beforeSend: function(){
 //console.log("beforeSend:", arguments);					
