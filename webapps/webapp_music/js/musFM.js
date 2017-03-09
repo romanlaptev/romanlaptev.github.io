@@ -112,7 +112,11 @@ function initApp(){
 		//read template
 		vars["templates"]["subfolder_tpl"] = $(".subfolder-tpl").html();
 		vars["templates"]["file_tpl"] = $(".file-tpl").html();
-
+		
+		//vars["protocol"] = window.location.protocol;
+		//vars["hostname"] = window.location.hostname;
+		vars["website"] = window.location.protocol +"//"+ window.location.hostname;
+		
 		//--------------------------
 		$(".up-link").hide();
 		$("#listing").hide();
@@ -491,19 +495,22 @@ console.log( "errorThrown: " + errorThrown );
 			return false;
 		});//end event
 */
-		$("#btn-clear-playlist").on("click", function(e){
-//console.log(e);			
-			myPlaylist.setPlaylist([]);
-			$("#playlist-title").empty();
-			
-		});//end event
 
 		//-------------------------------
 		$("#clear-log").on("click", function(){
 			$("#log").empty();
 		});//end event
 
-		//-------------------------------
+
+		
+		//-------------------- PLAYLIST events
+		$("#btn-clear-playlist").on("click", function(e){
+//console.log(e);			
+			myPlaylist.setPlaylist([]);
+			$("#playlist-title").empty();
+			
+		});//end event
+		
 		$("#load-pls, #btn-load-pls").click(function(){
 			var checked_files = get_checked_files();
 			if ( checked_files.length == 1 ){
@@ -517,8 +524,22 @@ console.log( "errorThrown: " + errorThrown );
 			return false;
 		});//end event
 
-		//--------------------
-		$("#modal-save-pls  .action-btn").click(function(){
+		$("#save-pls").on("click", function(e){
+//console.log(e);	
+			var panels = get_panels_info();
+			var fsPathSrc = $( panels["active"] + " .dirname").text();
+			if ( vars["OS"] === "Windows" ){
+				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					fsPathSrc = vars["disk_symbol"] + fsPathSrc;
+				}
+			}
+		
+			var filename = $("#modal-save-pls input[name=new_name]").val() ;
+			filename = fsPathSrc + "/"+ filename;
+			$("#modal-save-pls input[name=new_name]").val( filename )
+		});
+		
+		$("#modal-save-pls  .action-btn").click(function(e){
 			$("#modal-save-pls").modal("hide");
 			var log_message = "";
 			if ( myPlaylist.playlist.length > 0 ){
@@ -529,8 +550,8 @@ console.log( "errorThrown: " + errorThrown );
 					vars["dirname"] = $( panels["active"] + " .dirname").text();
 //console.log( vars["dirname"] );				
 					
-					filename = vars["dirname"] + "/"+ filename;
-					save_playlist( filename );
+					//filename = vars["dirname"] + "/"+ filename;
+					save_playlist( filename, myPlaylist.playlist );
 					$("#playlist-title").text(filename);
 					
 				} else {
@@ -543,12 +564,16 @@ console.log( "errorThrown: " + errorThrown );
 			$("#log").append( log_message );
 		});//end event
 		
+		
 		//--------------------
 		$("#add-track").click(function(){
 			var checked_files = get_checked_files();
 			var playlist = [];
 			for ( var item in checked_files){
 				var track = checked_files[ item ] ;
+				
+				//track = vars["website"] + track;
+				
 				var filename = track.substring( track.lastIndexOf('/')+1, track.length);
 				var filetype = track.substring( track.lastIndexOf('/')+1, track.length);
 
@@ -565,7 +590,7 @@ console.log( "errorThrown: " + errorThrown );
 				playlist.push( add );
 			}
 			myPlaylist.setPlaylist( playlist );
-//console.log ("myPlaylist.playlist = ", myPlaylist.playlist);
+//console.log (playlist, myPlaylist.playlist);
 			$("#playlist-title").text( vars["text_new_playlist"] );
 
 			var panels = get_panels_info();
@@ -617,10 +642,10 @@ console.log("edit playlist", checked_files, checked_files.length);
 	
 	var get_checked_files = function(){
 		var panels = get_panels_info();
-		var dirname = $( panels["active"] + " .dirname").text();
+		vars["dirname"] = $( panels["active"] + " .dirname").text();
 		var checked_files = [];
 		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(	function(){
-			checked_files.push ( dirname +"/" + $(this).val() );
+			checked_files.push ( vars["dirname"] +"/" + $(this).val() );
 			//$(this).removeAttr("checked");
 			$(item).prop("checked", false);
 		});		
@@ -1066,12 +1091,20 @@ console.log( "error: " + error );
 		});
 	}
 
-	function save_playlist( filename ){
-console.log( filename, myPlaylist.playlist );
+	function save_playlist( filename, playlist ){
+
+		//correct track path, remove http://website
+		for( var n = 0; n < playlist.length; n++){
+			if( playlist[n]["mp3"].indexOf( vars["website"] ) !== -1){
+				playlist[n]["mp3"] = playlist[n]["mp3"].replace( vars["website"], "");
+			}
+		}
+//console.log( filename, playlist );
+
 
 		var param = {
 			"filename": filename, 
-			"playlist": myPlaylist.playlist
+			"playlist": playlist
 		};
 
 		
@@ -1086,7 +1119,7 @@ console.log( filename, myPlaylist.playlist );
 			param["url"] = url;
 			param["attr"] = attr;
 */
-			param = { json : JSON.stringify(param) };
+			param = { "filename" : filename, "json" : JSON.stringify( playlist ) };
 		}	
 		
 		$.ajax({

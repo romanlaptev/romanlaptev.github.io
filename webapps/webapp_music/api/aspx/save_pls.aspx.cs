@@ -63,7 +63,29 @@ foreach (string key in Request.Form.AllKeys)
 				return;
 			}
 			
+			if( Request.Form["json"] == null ){
+				Response.Write("<p class='alert-error'><b>error</b>, undefined 'json'.</p>");
+				return;
+			}
+			string json = Request.Form["json"];
+			if( json.Length == 0 ){
+				Response.Write("<p class='alert-error'><b>error</b>, empty 'json'.</p>");
+				return;
+			}
 			
+			try
+			{
+				StreamWriter sw1 = new StreamWriter( filename );
+				sw1.WriteLine( json );
+				sw1.Close();
+				Response.Write ( "<p class='ok'><b>save playlist </b> " + filename + "</p>"); 
+			}
+			catch (Exception ex2)
+			{
+				Response.Write("<p class='alert-error'>"+ex2.Message+"</p>");
+			}	
+			
+/*
 			string[] playlist = null;
 			playlist = Request.Form.GetValues("playlist[]");
 			if( playlist == null ){
@@ -79,9 +101,7 @@ foreach (string key in Request.Form.AllKeys)
 	Response.Write ( "<br>"); 
 			Response.Write( playlist[2] );
 	Response.Write ( "<br>"); 
-			
-			
-/*
+
 			foreach ( string item in playlist )
 			{
 				Response.Write ( item ); 

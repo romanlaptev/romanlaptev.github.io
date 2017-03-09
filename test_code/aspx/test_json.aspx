@@ -2,6 +2,7 @@
 Language="C#" 
 CodeFile="test_json.aspx.cs" 
 Inherits="myspace.Default" 
+Title="Test JSON"
 Debug="true"%>
 
 <html>
@@ -28,7 +29,7 @@ http://mycomp/source/aspx/test_fileop/copy.aspx?file=TradChin.bin&src_path=c:\te
 http://mycomp/source/aspx/test_fileop/copy.aspx?file=folder3&src_path=c:\temp&dst_path=d:\temp&move_files=1
 
 <h2>GET query</h2>
-http://mycomp/source/aspx/test_fileop/rename.aspx?file=folder3&fs_path=c:\temp
+/source/aspx/test_fileop/rename.aspx?file=folder3&fs_path=c:\temp
 <h2>POST query</h2>
 <form method="post" action="test_fileop/rename.aspx" target="_blank">
 	<input type="text" name=file[] value="oldfile.txt"><br>
@@ -37,17 +38,10 @@ http://mycomp/source/aspx/test_fileop/rename.aspx?file=folder3&fs_path=c:\temp
 	<input type="submit" value="rename"><br>
 </form>
 
-http://mycomp/source/aspx/test_db.aspx
-http://mycomp/source/aspx/test_db2.aspx
+/source/aspx/test_db.aspx
+/source/aspx/test_db2.aspx
 </pre>
 
-<!--
-<form runat="server">
-	<asp:textbox id=txtFileName Runat="server"></asp:textbox>
-	<asp:button id=cmdEcho onclick="cmdEcho_Click" Text="enter filename" runat="server" tooltip="go"></asp:button><br>
-	<asp:label id=lblGreeting runat="server"></asp:label> 
-</form>
--->
 
 <h1>Request.ServerVariables</h1>
 <%

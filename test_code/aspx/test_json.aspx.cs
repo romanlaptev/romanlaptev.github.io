@@ -1,22 +1,24 @@
 ﻿using System;
+
 //using System.Collections.Generic;
 //using System.Linq;
-//using System.Web;
-//using System.Web.UI;
+using System.Web;
+using System.Web.UI;
 //using System.Web.UI.WebControls;
-using System.Runtime.Serialization.Json;
+//using System.Web.Script.Serialization;
+//using System.Runtime.Serialization.Json;
 
 
 namespace myspace
 {
-/*	
     class personObj
     {
 		public string firstname;
 		public string lastname;
 		public int age;
     }
-*/	
+
+/*
 		internal class personObj  
 		{  
 			[DataMember]  
@@ -28,7 +30,7 @@ namespace myspace
 			[DataMember]  
 			internal int age;  
 		}  
-	
+*/	
     public partial class Default : System.Web.UI.Page
     {
 		protected void Page_Load(object sender, EventArgs e)
@@ -95,13 +97,15 @@ user.firstname = "roman";
 user.lastname = "laptev";
 user.age = 41;
 
-//Response.Write ( user.firstname );
-//Response.Write ( user.lastname );
-//Response.Write ( user.age );
+Response.Write ( user.firstname );
+Response.Write ( user.lastname );
+Response.Write ( user.age );
 
+/*
 MemoryStream stream1 = new MemoryStream();  
 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(personObj)); 
 ser.WriteObject(stream1, user);
+*/
 
 /*
 stream1.Position = 0;  
