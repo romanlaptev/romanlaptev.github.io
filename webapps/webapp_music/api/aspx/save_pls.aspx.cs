@@ -31,7 +31,7 @@ foreach ( string x in Request.Params )
 				Response.Write("<p class='alert-error'><b>error</b>, need <b>POST query</b> !</p>");
 				return;
 			}
-
+/*
 foreach ( string x in Request.Form ){
 	Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
 	Response.Write ( "<br>"); 
@@ -42,6 +42,8 @@ for (int n = 0; n < arr1.Length; n++)
 {
    Response.Write("Form: " + arr1[n] + "<br>");
 }
+*/
+
 /*
 List<int> listValues = new List<int>();
 foreach (string key in Request.Form.AllKeys)

@@ -211,6 +211,48 @@ function initApp(){
 		});
 
 		
+		//------------------------------------ mark active panel
+		$(document).on( "click", ".left-panel", function(e){
+//console.log(e, e.target);
+//console.log( $("#jp_container_N").is(":visible") );
+			if( $(".left-panel #jp_container_N").is(":visible") ){
+				return false;
+			}
+			
+			$(".right-panel").removeClass("active-panel");
+			$(this).addClass("active-panel");
+		});//end event
+		
+		$(document).on( "click", ".right-panel", function(e){
+			$(".left-panel").removeClass("active-panel");
+			$(this).addClass("active-panel");
+		});//end event
+
+		
+		$(".topmenu .view-file-panel").on("click", function(){
+			$("#jp_container_N").hide();
+			$(".left-panel .files").remove();
+			$(".right-panel .files").clone(true).appendTo(".left-panel").addClass("left-panel-files");
+			$(".view-media-player").removeClass("active");
+			$(this).addClass("active");
+			return false;
+		});//end event
+		
+		
+		$(".topmenu .view-media-player").on("click", function(){
+			$(".left-panel .files").remove();
+			$("#jp_container_N").show();
+
+			$(".left-panel, .right-panel").removeClass("active-panel");
+			$(".right-panel").addClass("active-panel");
+			
+			$(".view-file-panel").removeClass("active");
+			$(this).addClass("active");
+			
+			return false;
+		});//end event
+		
+		
 		//COPY / MOVE FILES
 		$(document).on( "click", ".copy, .move", function(e){
 			var panels = get_panels_info();
@@ -457,31 +499,6 @@ console.log( "errorThrown: " + errorThrown );
 			return false;
 		});//end event
 
-		//------------------------------- PANELS
-		//------------------------------------ mark active panel
-		$(document).on( "click", ".left-panel, .right-panel", function(e){
-			$(".left-panel, .right-panel").removeClass("active-panel");
-			$(this).addClass("active-panel");
-		});//end event
-
-		$(".topmenu .view-file-panel").click(function(){
-			$("#jp_container_N").hide();
-			$(".left-panel .files").remove();
-			$(".right-panel .files").clone(true).appendTo(".left-panel").addClass("left-panel-files");
-			$(".view-media-player").removeClass("active");
-			$(this).addClass("active");
-			return false;
-		});//end event
-		
-		$(".topmenu .view-media-player").click(function(){
-			$(".left-panel .files").remove();
-			$("#jp_container_N").show();
-			$(".view-file-panel").removeClass("active");
-			$(this).addClass("active");
-			return false;
-		});//end event
-
-		//-------------------------------
 /*
 		$("#btn-load-filelist").on("click", function(e){
 //console.log(e);			
@@ -517,8 +534,13 @@ console.log( "errorThrown: " + errorThrown );
 				load_playlist( checked_files[0] );
 				var filename = checked_files[0].substring( checked_files[0].lastIndexOf('/')+1, checked_files[0].length);
 				$("#playlist-title").text( filename );
+				
+				var panels = get_panels_info();
+				var $activePanel = $( panels["active"] );
+				clearCheckbox( $activePanel );
+				
 			} else {
-				var log_message = "<p class='error'>Playlist file not found....</p>";
+				var log_message = "<p class='alert-error'>Playlist file not found....</p>";
 				$("#log").append( log_message );
 			}
 			return false;
@@ -572,7 +594,7 @@ console.log( "errorThrown: " + errorThrown );
 			for ( var item in checked_files){
 				var track = checked_files[ item ] ;
 				
-				//track = vars["website"] + track;
+				track = vars["website"] + track;
 				
 				var filename = track.substring( track.lastIndexOf('/')+1, track.length);
 				var filetype = track.substring( track.lastIndexOf('/')+1, track.length);
@@ -951,8 +973,7 @@ console.log( "errorThrown: " + errorThrown );
 	}// end parse_filelist_xml()
 
 	
-	function prep_playlist( filelist )
-	{
+	function prep_playlist( filelist ){
 		var playlist = new Array();
 	/*
 	var track = {
@@ -1075,8 +1096,7 @@ console.log( filelist );
 	}//end reload_file_panel()
 
 	
-	function load_playlist( url )
-	{
+	function load_playlist( url ){
 		//var url = "pls/" + filename;
 		$.getJSON( url )
 			.done( function( json ) {
@@ -1137,12 +1157,11 @@ console.log( "error: " + error );
 console.log( arguments );
 				//$("#log").html( textStatus );
 				$("#log").append( data );
-/*
 
 				var dirname = $(".files .dirname").text();
 				var files_panel = ".right-panel";
 				get_filelist( vars["filelist_url"], dirname, files_panel, true );
-*/
+
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown){
 //console.log( "textStatus: " + textStatus );
