@@ -55,8 +55,9 @@
 			<location>/music/0_playlists/folk, chants.json</location>
 		</playlist>
 			
-		<playlist created="11-March-2017" title="GrOb" class="grob">
+		<playlist created="11-March-2017" title="Гражданская оборона" class="grob">
 			<location>/music/0_playlists/GrOb.json</location>
+			<thumbnail url="/music/0_covers/grob.jpg" />
 		</playlist>
 			
 		<playlist created="11-March-2017" title="heavy,speed,power metal" class="heavy">
@@ -78,6 +79,7 @@
 			
 		<playlist created="11-March-2017" title="Apocalyptica" class="Apocalyptica">
 			<location>/music/0_playlists/apocalyptica.json</location>
+			<thumbnail url="/music/0_covers/apocalyptica.jpg" />
 		</playlist>
 			
 		<playlist created="11-March-2017" title="transe, hip-hop, latin" class="hip-hop">
