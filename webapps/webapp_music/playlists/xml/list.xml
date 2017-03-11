@@ -1,0 +1,88 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!--
+<?xml-stylesheet type="text/xsl" href="list.xsl"?>
+<?xml-stylesheet type="text/css" href="list.css" ?>
+-->
+
+<xroot>
+	<title>playlists</title>
+	<xdata>
+	
+		<playlist created="11-March-2017" title="Russian rock" keyword="russian_rock">
+			<description>test description</description>
+			<genre>rock</genre>
+			<author></author>
+			<location>/music/0_playlists/russian.json</location>
+	<!--		
+			<trackList>
+				<track>
+					<creator></creator>
+					<info></info>
+					<image></image>
+				</track>
+			</trackList>
+			<category></category>
+	.....		
+			<link></link>
+	-->		
+		</playlist>
+
+		<playlist created="11-March-2017" title="Ska" class="ska">
+			<location>/music/0_playlists/ska.json</location>
+		</playlist>
+		
+		<playlist created="11-March-2017" title="thrash, death, grindecore, hardcore" class="thrash">
+			<location>/music/0_playlists/thrash, death, grindecore, hardcore.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="trance, rave, hip-hop, electronic" class="trance">
+			<location>/music/0_playlists/trance, rave, hip-hop, electronic.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="blues, rock_n_roll, swing, jazz" class="blues">
+			<location>/music/0_playlists/blues, rock_n_roll, swing, jazz.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="classic music" class="classic">
+			<location>/music/0_playlists/classic.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="disko, pop" class="disko">
+			<location>/music/0_playlists/disko, pop.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="folk, chants" class="folk">
+			<location>/music/0_playlists/folk, chants.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="GrOb" class="grob">
+			<location>/music/0_playlists/GrOb.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="heavy,speed,power metal" class="heavy">
+			<location>/music/0_playlists/heavy,speed,power.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="indian music" class="indian">
+			<location>/music/0_playlists/indian.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="melodic, folk metal" class="melodic-metal">
+			<location>/music/0_playlists/melodic, folk metal.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="Metallica" class="Metallica">
+			<location>/music/0_playlists/metallica.json</location>
+			<thumbnail url="playlists/images/covers/And_Justice_For_All.jpg" />
+		</playlist>
+			
+		<playlist created="11-March-2017" title="transe, hip-hop, latin" class="hip-hop">
+			<location>/music/0_playlists/mix_transe, hip-hop, latin.json</location>
+		</playlist>
+			
+		<playlist created="11-March-2017" title="Rock" class="rock">
+			<location>/music/0_playlists/rock.json</location>
+		</playlist>
+		
+	</xdata>
+</xroot>

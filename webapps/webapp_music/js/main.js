@@ -17,6 +17,10 @@ $(document).ready(function(){
 		keyEnabled: true,
 		audioFullScreen: true
 	});
+
+	vars["playlistObj"] = myPlaylist;
+console.log(vars);	
+
 /*
 	var playlist = new Array();
 

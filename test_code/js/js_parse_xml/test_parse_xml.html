@@ -117,6 +117,8 @@ alert ("XML parsing error: " + e);
 		
 		if (typeof xmldom.xml !== "undefined"){ //for old IE
 			alert(xmldom.xml); 	
+		} else { 
+console.log("Could not serialize XML DOM."); 
 		} 
 		
 	}//end event

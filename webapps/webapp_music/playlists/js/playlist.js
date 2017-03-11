@@ -75,35 +75,13 @@ var pls_metallica_1987_web = {
 			{
 				title:"Helpless",
 				artist:"Metallica",
-				mp3:"https://cloclo12.datacloudmail.ru/weblink/view/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/01 - Helpless.mp3",
+				mp3:"https://cloclo12.datacloudmail.ru/weblink/get/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/01 - Helpless.mp3",
 				free: true, // Optional - Generates links to the media
-			},
-			{
-				title:"The Small Hours",
-				artist:"Metallica",
-				mp3:"https://cloclo12.datacloudmail.ru/weblink/view/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/02 - The Small Hours.mp3",
-				free: true,
-			},
-			{
-				title:"The Wait",
-				artist:"Metallica",
-				mp3:"https://cloclo12.datacloudmail.ru/weblink/view/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/03 - The Wait.mp3",
-				free: true,
-			},
-			{
-				title:"Crash Course In Brain Surgery",
-				artist:"Metallica",
-				mp3:"https://cloclo12.datacloudmail.ru/weblink/view/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/04 - Crash Course In Brain Surgery.mp3",
-				free: true,
-			},
-			{
-				title:"Last Caress-Green Hell",
-				artist:"Metallica",
-				mp3:"https://cloclo12.datacloudmail.ru/weblink/view/bbb2f6a3eb1d/music/M/Metallica/1987_The 5.98 E.P. Garage Days Re-Revisited/05 - Last Caress-Green Hell.mp3",
-				free: true,
-			},
+			}
 		]
 }
+
+//https://cloclo18.cldmail.ru/2wt2EcEnqw2PocSKRiNY/G/bbb2f6a3eb1d/music/M/Metallica/1987_The%205.98%20E.P.%20Garage%20Days%20Re-Revisited/01%20-%20Helpless.mp3?key=47d8e34a7e828348b385ebc85fb40ab6e996ea79
 
 var pls_metallica_1986 = {
 	tracks: [
@@ -291,76 +269,6 @@ var pls_nau = {
 		]
 }
 
-var pls_aqua = {
-	tracks: [
-			{
-				title:"Navigator (1995) - Goluboy Ogonek",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/01-Goluboy Ogonek.mp3"
-			},
-			{
-				title:"Navigator (1995) - Udivitel'niy Master Luk'yanov",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/13-Udivitel'niy Master Luk'yanov.mp3"
-			},
-			{
-				title:"Navigator (1995) - Posledny Povorot",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/02-Posledny Povorot.mp3"
-			},
-			{
-				title:"Navigator (1995) - Kladbishe",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/03-Kladbishe.mp3"
-			},
-			{
-				title:"Navigator (1995) - Ne Kosi",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/04-Ne Kosi.mp3"
-			},
-			{
-				title:"Navigator (1995) - Maetsya",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/05-Maetsya.mp3"
-			},
-			{
-				title:"Navigator (1995) - Samiy Bistriy Samolet",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/06-Samiy Bistriy Samolet.mp3"
-			},
-			{
-				title:"Navigator (1995) - Navigator",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/07-Navigator.mp3"
-			},
-			{
-				title:"Navigator (1995) - Steregushy Barzhu",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/08-Steregushy Barzhu.mp3"
-			},
-			{
-				title:"Navigator (1995) - Tamozhenniy Blyuz",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/09-Tamozhenniy Blyuz.mp3"
-			},
-			{
-				title:"Navigator (1995) - Tri Sestri",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/10-Tri Sestri.mp3"
-			},
-			{
-				title:"Navigator (1995) - Garson No2",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/11-Garson No2.mp3"
-			},
-			{
-				title:"Navigator (1995) - Fikus Religiozniy",
-				artist:"Аквариум",
-				mp3:"/music/A/Аквариум/01-Navigator (1995)/12-Fikus Religiozniy.mp3"
-			},
-		]
-}
-
 var pls_rowan = {
 	tracks: [
 			{
@@ -395,4 +303,3 @@ var pls_rowan = {
 			},
 		]
 }
-

@@ -17,9 +17,8 @@
 <!--
 <script type="text/javascript" src="players/jPlayer.2.9.2/js/jquery.jplayer.min.js"></script>
 -->
-
+<script src="playlists/js/list.js"></script>
 <script src="js/main.js"></script>
-<script src="playlists/js/playlist.js"></script>
 
 </head>
 
@@ -45,49 +44,22 @@
 </header>
 
 <div class="container-fluid" id="top">
-	<div class="panel panel-primary" id="top">
+	<div class="panel panel-primary">
 		<div class="panel-body">
 
 <div class="row">		
 		<div class="col-xs-6 col-sm-6 col-md-7 col-lg-7 list-pls">    
-				<div>
-					<a href="#pls_nau" class="set-playlist">Наутилус Помпилиус</a>
-				</div>
-				<div>
-					<a href="#pls_aqua" class="set-playlist">Аквариум</a>
-				</div>
-				<div>
-					<a href="#pls_rowan" class="set-playlist">Башня Rowan</a>
-				</div>
-
-				<div class="thumbnail album">
-					<img src="playlists/images/covers/And_Justice_For_All.jpg" alt="1988, And Justice For All" title="1988, And Justice For All">
-					<a href="#pls_metallica_1988" class="set-playlist">set playlist</a>
-				</div>
-				
-				<div class="thumbnail album">
-<img src="playlists/images/covers/1296230929_01.jpg" 
-alt="1987, The 5.98 E.P. Garage Days Re-Revisited" 
-title="1987, The 5.98 E.P. Garage Days Re-Revisited">
-					<a href="#pls_metallica_1987_local" class="set-playlist">set local playlist</a>
-					<a href="#pls_metallica_1987_web" class="set-playlist">set web playlist</a>
-				</div>
-				
-
-				<div class="thumbnail album">
-<img src="playlists/images/covers/Master_of_Puppets_(single).jpg" alt="1986, Master of Puppets">
-					<a href="#pls_metallica_1986" class="set-playlist">set playlist</a>
-				</div>
 		
-				<div class="thumbnail album">
-<img src="playlists/images/covers/Metallica_1984.jpg" alt="1984, Ride The Lightning">
-					<a href="#pls_metallica_1984" class="set-playlist">set playlist</a>
-				</div>
-				
-				<div class="thumbnail album">
-<img src="playlists/images/covers/Kill_Em_All.jpg" alt="1983_Kill_em_All" title="1983_Kill_em_All">
-					<a href="#pls_metallica_1983" class="set-playlist">set playlist</a>
-				</div>
+<script type="text/template" id="playlist-tpl">
+	<div class="thumbnail album pls-{{class}}">
+		<p class='caption'>{{title}}</p>
+		
+		<img src="{{img_src}}" alt="{{title}}" title="{{title}}">
+		
+		<a href="http://i5/{{location}}" class='load-playlist'>load playlist</a>
+	</div>
+</script>
+				<div id="external-content"></div>
 				
 		</div><!-- end list-pls -->		
 		

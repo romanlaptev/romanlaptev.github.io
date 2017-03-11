@@ -128,7 +128,7 @@ div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
   padding-left: 0;
 }
 div.jp-title ul, div.jp-playlist ul {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 div.jp-type-playlist div.jp-playlist li:last-child {
   padding: 5px 0 5px 10px;
