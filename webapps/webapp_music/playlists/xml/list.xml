@@ -76,6 +76,10 @@
 			<thumbnail url="playlists/images/covers/And_Justice_For_All.jpg" />
 		</playlist>
 			
+		<playlist created="11-March-2017" title="Apocalyptica" class="Apocalyptica">
+			<location>/music/0_playlists/apocalyptica.json</location>
+		</playlist>
+			
 		<playlist created="11-March-2017" title="transe, hip-hop, latin" class="hip-hop">
 			<location>/music/0_playlists/mix_transe, hip-hop, latin.json</location>
 		</playlist>

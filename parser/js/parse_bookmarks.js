@@ -137,8 +137,7 @@ function load_json( json_filename )
 	$.getJSON("json/"+json_filename,function(data)
 		{
 //console.log(JSON.stringify(data)); 
-			for (item in data) 
-			{
+			for (var item in data){
 				if (typeof data[item]=='object')
 				{
 					s += view_children(data[item]);
@@ -211,8 +210,7 @@ function view_children(obj)
 //console.log(JSON.stringify(obj)); 
 
 
-	for (item in obj) 
-	{
+	for (var item in obj){
 //html += "type:" + obj['type'];
 //html += "<br>";
 //console.log('item = '+ item); 
@@ -296,8 +294,7 @@ html += "</ul>";
 
 							var tags = obj["tags"].split(",");
 							var html_tags = "";
-							for ( item in tags )
-							{
+							for (var item in tags ){
 								//save tag in array
 								if ( tags_arr.indexOf( tags[item] ) == -1 )
 								{
@@ -332,8 +329,7 @@ function view_tags()
 {
 	var html="";
 	var html_tags = "";
-	for (item in tags_arr)
-	{
+	for (var item in tags_arr){
 		html_tags += tags_tpl_item.replace( "#tag", tags_arr[item] );
 	}
 	html =tags_tpl.replace("#tags", html_tags) ;
