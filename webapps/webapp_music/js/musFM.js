@@ -666,7 +666,7 @@ console.log("edit playlist", checked_files, checked_files.length);
 		var panels = get_panels_info();
 		vars["dirname"] = $( panels["active"] + " .dirname").text();
 		var checked_files = [];
-		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(	function(){
+		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(function(num, item){
 			checked_files.push ( vars["dirname"] +"/" + $(this).val() );
 			//$(this).removeAttr("checked");
 			$(item).prop("checked", false);
@@ -700,11 +700,11 @@ console.log("edit playlist", checked_files, checked_files.length);
 				function(data){
 //console.log(data);		
 					vars["filelist"] = data;
-					for (item in data) {
+					for (var item in data) {
 						if ( item=='subfolders'){
 							var subfolders = data[item];
 	//console.log( "Subfolders = " + subfolders );
-							for (subfolder in subfolders) {
+							for (var subfolder in subfolders) {
 	//console.log( "Subfolder = " + subfolders[subfolder] );
 								var subfolder_url = subfolders[subfolder];
 							
@@ -1046,12 +1046,12 @@ console.log( filelist );
 
 		var subfolders_html = "";
 		var files_html = "";
-		for (item in filelist){
-			
+		for ( var item in filelist){
+//console.log(item);			
 			if ( item=="subfolders" ){
 				var subfolders = filelist[item];
 	//console.log( "Subfolders = " + subfolders );
-				for (subfolder in subfolders) {
+				for (var subfolder in subfolders) {
 	//console.log( "Subfolder = " + subfolders[subfolder] );
 					var subfolder_url = subfolders[subfolder];
 					var last_slash_pos = subfolders[subfolder].lastIndexOf('/')+1;
