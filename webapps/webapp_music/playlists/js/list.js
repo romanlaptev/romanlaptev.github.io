@@ -70,8 +70,12 @@ function _init( opts ){
 //console.log( $pls.children("thumbnail").length, _thumbnail );
 
 		var _thumbnail = "";
+		var _img_alt = "";
+		var _img_title = "";
 		if( $pls.children("thumbnail").attr("url") ){
 			_thumbnail = $pls.children("thumbnail").attr("url");
+			_img_alt = $pls.attr("title");
+			_img_title = $pls.attr("title");
 		}
 
 		var _class = num;
@@ -80,9 +84,12 @@ function _init( opts ){
 		}
 
 		html += vars["templates"]["playlist_tpl"]
-		.replace(/{{title}}/g, _title)
+		//.replace(/{{title}}/g, _title)
+		.replace("{{title}}", _title)
 		.replace("{{class}}", _class)
 		.replace("{{img_src}}", _thumbnail)
+		.replace("{{img_alt}}", _img_alt)
+		.replace("{{img_title}}", _img_title)
 		.replace("{{location}}", _location );
 	});
 	
@@ -99,7 +106,6 @@ function _init( opts ){
 
 
 function _postLoad( opts ){
-console.log(arguments);
+//console.log(arguments);
 	vars["playlistObj"].setPlaylist( opts["data"] );	
-	
 }//end _postLoad()

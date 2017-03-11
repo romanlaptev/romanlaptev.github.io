@@ -6,7 +6,7 @@ $(document).ready(function(){
 	},
 	[
 	], 
-{
+	{
 		playlistOptions: {
 			enableRemoveControls: true
 		},
@@ -19,7 +19,7 @@ $(document).ready(function(){
 	});
 
 	vars["playlistObj"] = myPlaylist;
-console.log(vars);	
+//console.log(vars);	
 
 /*
 	var playlist = new Array();
@@ -41,35 +41,7 @@ console.log(vars);
 	myPlaylist.setPlaylist( playlist );
 */
 //=========================================	
-	$(".set-playlist").click(function() {
-/*
-		var playlist = new Array();
 
-		var filename = "Blackened";
-		var artist = "Metallica";
-		var mp3 = "/music/M/Metallica/1988_And_Justice_For_All/01_Blackened.mp3";
-		var link_to_media =  true;
-
-		var track = {
-			title: filename,
-			"artist": artist,
-			mp3: mp3,
-			free: link_to_media, 
-		};
-		playlist.push(track);
-		myPlaylist.setPlaylist( playlist );
-*/		
-
-
-		var pls_name = $(this).attr("href").replace("#","");
-console.log( eval(pls_name) );
-		var pls_obj = eval( pls_name )
-		myPlaylist.setPlaylist( pls_obj.tracks );
-
-		return false;
-	});
-
-//================================================
 	$('.top').click(function (e) {
 	  e.preventDefault();
 	  $('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
