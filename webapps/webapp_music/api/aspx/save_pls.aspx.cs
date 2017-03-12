@@ -24,7 +24,11 @@ foreach ( string x in Request.Params )
 	Response.Write ( "<b>"+x + "</b> = " + Request.Params[x]); 
 	Response.Write ( "<br>"); 
 }
-*/		
+*/
+//filepath = D:\clouds\Yandex.Disk\sync\sites\romanlaptev.github.io\webapps\webapp_music\api\aspx\logs\visits.txt
+//string filepath = Server.MapPath("logs\\visits.txt");
+//Response.Write ( "<b>filepath</b> = " + filepath); 
+//Response.Write ( "<br>"); 
 
 			if ( Request.HttpMethod != "POST" )
 			{

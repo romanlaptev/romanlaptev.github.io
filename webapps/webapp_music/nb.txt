@@ -79,6 +79,24 @@ Music WFM
     добавить возможность редактировать json плейлиста
 (возможность изменять порядок треков, вставлять интернет-адреса, описание)
 
+
+
+---
+	Если нет входного параметра ?dirname-/mnt/d2/music, то загружать в правую панель список файлов папки скрипта ( SCRIPT_NAME )
+или HTTP_REFERER или APPL_PHYSICAL_PATH (DOCUMENT_ROOT)
+
+Request.ServerVariables, Request.Params:	
+PATH_INFO = /sites/romanlaptev.github.io/webapps/webapp_music/api/aspx/save_pls.aspx
+PATH_TRANSLATED = D:\clouds\Yandex.Disk\sync\sites\romanlaptev.github.io\webapps\webapp_music\api\aspx\save_pls.aspx
+SCRIPT_NAME = /sites/romanlaptev.github.io/webapps/webapp_music/api/aspx/save_pls.aspx
+APPL_PHYSICAL_PATH = D:\www\
+HTTP_REFERER = http://i5/sites/romanlaptev.github.io/webapps/webapp_music/musFM.html
+//filepath = D:\clouds\Yandex.Disk\sync\sites\romanlaptev.github.io\webapps\webapp_music\api\aspx\logs\visits.txt
+//string filepath = Server.MapPath("logs\\visits.txt");
+//Response.Write ( "<b>filepath</b> = " + filepath); 
+//Response.Write ( "<br>"); 
+
+
 ---
     *При формировании плейлиста заменять абсолютный путь файловой системы на путь с веб-адресом трека
 (site_url / music_alias / path / track.mp3)
@@ -87,6 +105,9 @@ Music WFM
 ---
     Сделать возможноть работать с папками коллекции с mycomp при расположении скрипта на googlefrive, vbox, телефоне
 (проверить возможность получения списка файлов из папки удаленного компа)
+
+
+
 
 ---
     Добавить скрипт контекстного меню 

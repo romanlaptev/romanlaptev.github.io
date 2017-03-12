@@ -784,7 +784,7 @@ console.log( "errorThrown: " + errorThrown );
 			url: url,
 			//data: ({dir: dirname}),
 			data: ({dir: fsPath}),
-			dataType: "xml",
+			//dataType: "xml",
 			
 			beforeSend: function(){
 //console.log("beforeSend");
