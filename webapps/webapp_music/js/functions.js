@@ -4,6 +4,9 @@
 //else
 //  document.write("Браузер не поддерживает JavaScript<br>");
 
+//**************************************
+//var dirname = getenv("dirname");
+//**************************************
 function getenv(i){
 	
 	if (!i.length){ 
@@ -36,8 +39,9 @@ function getenv(i){
 }// end getenv()
 
 //**************************************
-//$_GET = parseGetParams( parse_url ); 
+//$_GET = parseGetParams(); 
 //console.log( $_GET);
+//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
 //**************************************
 function parseGetParams() { 
    var $_GET = {}; 

@@ -71,9 +71,12 @@ var MusicFM = function( options ){
 		"mkdir_url" : "",
 		"save_pls_url" : "",
 		"filelist_src" : "",
-		"text_new_playlist" : "new playlist"
+		"text_new_playlist" : "new playlist",
+		"playlist" : ""
 	};
 console.log( "vars:" , vars );
+
+	vars["GET"] = parseGetParams(); 
 	
 	if (navigator.userAgent.indexOf ('Windows')!= -1){
 		vars["OS"] = "Windows";
@@ -84,12 +87,16 @@ console.log( "vars:" , vars );
 		vars["OS"] = "Linux";
 		vars["content_location"] = "/mnt/d2/music";
 	}
-	
+//vars["content_location"] = "/home/www";
+
 	
 	//var dirname = $("input[name=init_dirname]").val();
-	vars["dirname"] = getenv("dirname");
-	if ( !vars["dirname"] ) {
-		vars["dirname"] = vars["content_location"];
+	vars["dirname"] = vars["content_location"];
+	if ( vars["GET"]["dirname"] ) {
+		vars["dirname"] = vars["GET"]["dirname"];
+	}
+	if ( vars["GET"]["pls"] ) {
+		vars["playlist"] = vars["GET"]["pls"];
 	}
 	
 
@@ -525,6 +532,7 @@ console.log( "errorThrown: " + errorThrown );
 //console.log(e);			
 			myPlaylist.setPlaylist([]);
 			$("#playlist-title").empty();
+			vars["playlist"]="";
 			
 		});//end event
 		
@@ -691,90 +699,6 @@ console.log("edit playlist", checked_files, checked_files.length);
 
 	
 	
-	//function get_filelist_php( url, dirname, panel, reload_pls )
-	get_filelist_php = function( url, dirname, panel, reload_pls ){
-			var subfolders_html = "";
-			var files_html = "";
-			$.getJSON(url,
-				{ dir: dirname },
-				function(data){
-//console.log(data);		
-					vars["filelist"] = data;
-					for (var item in data) {
-						if ( item=='subfolders'){
-							var subfolders = data[item];
-	//console.log( "Subfolders = " + subfolders );
-							for (var subfolder in subfolders) {
-	//console.log( "Subfolder = " + subfolders[subfolder] );
-								var subfolder_url = subfolders[subfolder];
-							
-								var last_slash_pos = subfolders[subfolder].lastIndexOf('/')+1;
-								var subfolder_name = subfolders[subfolder].substring( last_slash_pos);
-
-								subfolders_html += vars["templates"]["subfolder_tpl"].replace("#", subfolder_url).replace(/sname/g, subfolder_name);
-							}
-						}
-
-						if ( item=='files'){
-							var playlist = new Array();
-							var files = data[item];
-	//console.log( "files = " + files );
-							for(file in files) {
-								var last_slash_pos = files[file].lastIndexOf('/')+1;
-								var filename = files[file].substring( last_slash_pos );
-								if ( reload_pls == true) {
-									if (filename.toLowerCase().lastIndexOf('mp3') > 0){
-										var track = {
-										title: filename,
-										//"artist": files[file],
-										//"wav": files[file],
-										mp3: files[file],
-										free: true, // Optional - Generates links to the media
-										//"ogg": files[file]
-										};
-										playlist.push(track);
-									}
-			if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
-				var track = {
-				title: filename,
-				oga: files[file],
-				free: true, 
-				};
-				playlist.push(track);
-			}
-			if (filename.toLowerCase().lastIndexOf('.wav') > 0){
-				var track = {
-				title: filename,
-				wav: files[file],
-				free: true, 
-				};
-				playlist.push(track);
-			}
-								}
-								files_html += vars["templates"]["file_tpl"].replace("#", files[file] ).replace(/fname/g, filename);
-							}
-						}
-
-					}//next
-					//var jsonString = JSON.stringify(playlist);
-
-					$( panel + " .subfolder-tpl").html( subfolders_html );
-					var up_link = dirname.substring( 0, dirname.lastIndexOf("/") );
-vars["up_link"] = up_link;					
-					$( panel + " .up-link").attr("href",up_link );
-					$( panel + " .dirname").text(dirname);
-vars["dirname"]	= dirname;
-
-					$( panel + " .file-tpl").html( files_html );
-					//-------------------------- insert playlist
-					if ( reload_pls == true){
-						myPlaylist.setPlaylist( playlist );
-					}
-
-				}
-			);// end getJSON
-
-	}//end get_filelist_php()
 
 	//TEST PHP
 	function test_php( callback ){
@@ -842,7 +766,8 @@ console.log( "errorThrown: " + errorThrown );
 
 	
 	//function get_filelist( url, dirname, panel, reload_pls )
-	get_filelist = function( url, dirname, panel, reload_pls ){
+	//get_filelist = function( url, dirname, panel, reload_pls ){
+	get_filelist = function( url, dirname, panel ){
 		
 		var fsPath = dirname;
 		if ( vars["OS"] === "Windows" ){
@@ -889,7 +814,8 @@ console.log( $(this).text() );
 					var filelist_parse_res = parse_filelist_xml( xml );
 					vars["filelist"] = filelist_parse_res;
 
-					reload_file_panel( filelist_parse_res, dirname, panel, reload_pls );
+					//reload_file_panel( filelist_parse_res, dirname, panel, reload_pls );
+					reload_panel( filelist_parse_res, dirname, panel );
 			},
 				
 			error: function (xhr, textStatus, errorThrown){
@@ -913,6 +839,23 @@ console.log( "errorThrown: " + errorThrown );
 		
 	}// end get_filelist
 
+	//function get_filelist_php( url, dirname, panel, reload_pls )
+	//get_filelist_php = function( url, dirname, panel, reload_pls ){
+	get_filelist_php = function( url, dirname, panel ){
+			var subfolders_html = "";
+			var files_html = "";
+			$.getJSON(url,
+				{ dir: dirname },
+				function(data){
+//console.log(data);		
+					vars["filelist"] = data;
+					reload_panel( vars["filelist"], dirname, panel );
+				}
+			);// end getJSON
+
+	}//end get_filelist_php()
+	
+	
 	function parse_local_filelist( url, page )
 	{
 		var filelist_parse = [];
@@ -1026,22 +969,26 @@ console.log( "errorThrown: " + errorThrown );
 			}
 		}
 		return playlist;
-	}//----------------------- enf func
+	}//end prep_playlist()
 
 
-	function reload_file_panel( filelist, dirname, panel, reload_pls ){
-		
-		if ( reload_pls == true){//-------------------------- insert playlist
+	//function reload_file_panel( filelist, dirname, panel, reload_pls ){
+	function reload_panel( filelist, dirname, panel ){
+//console.log(arguments);
 /*		
+		if ( reload_pls == true){//-------------------------- insert playlist
 //test	
-for (var n = 0; n < filelist["files"].length; n++){
-	filelist["files"][n] = filelist["files"][n].replace("file:///D:","");
-}//next
-console.log( filelist );		
-*/
-
+// for (var n = 0; n < filelist["files"].length; n++){
+	// filelist["files"][n] = filelist["files"][n].replace("file:///D:","");
+// }//next
+// console.log( filelist );		
 			var playlist = prep_playlist( filelist["files"] );
 			myPlaylist.setPlaylist( playlist );
+		}
+*/
+		//insert playlist
+		if ( vars["playlist"] ){
+			load_playlist( vars["playlist"] );			
 		}
 
 		var subfolders_html = "";
@@ -1093,7 +1040,7 @@ console.log( filelist );
 
 		$( panel + " .file-tpl").html( files_html );
 				
-	}//end reload_file_panel()
+	}//end reload_panel()
 
 	
 	function load_playlist( url ){
