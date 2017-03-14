@@ -90,5 +90,10 @@
 			<location>/music/0_playlists/rock.json</location>
 		</playlist>
 		
+		<playlist created="14-March-2017" title="KSU" class="punk">
+			<location>/music/0_playlists/KSU.json</location>
+			<thumbnail url="/music/K/KSU/1988%20Pod%20Prad%20(Reedycja%202011)%20[320%20kbps]/pod_prad.jpg" />
+		</playlist>
+		
 	</xdata>
 </xroot>
