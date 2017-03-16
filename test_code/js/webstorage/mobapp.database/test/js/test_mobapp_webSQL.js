@@ -29,6 +29,7 @@ function _log( msg, id){
 
 var _timer = {};
 var db_info = [];
+db_info["link"] = null;
 db_info["import"] = [];
 
 db_info["tables"] = [];
@@ -52,6 +53,7 @@ db_info["tables"]["SL_KODIF"] = {
 	//"keyName" : "ID",
 	//"partSize" : 1
 	"numRec" : 48,
+	"bytes" : 70*48,
 	"testValues" : {
 		"TABLE_NAME" : "SIMPLE_SPR",
 		"BLOCK_NAME" : "EUCARIS",
@@ -84,6 +86,7 @@ db_info["tables"]["PANT"] = {
 		//"keyName" : "PANT_ID",
 		//"partSize" : 100
 	"numRec" : 4389,
+	"bytes" : 17*4389,
 	"testValues" : {
 		"PANT_VEID_KOD" : "116",
 		"PANTS" : "1",
@@ -107,6 +110,7 @@ db_info["tables"]["PMLP_ADR_LVL_1"] ={
 	//"keyName" : "KOD",
 	//"partSize" : 1
 	"numRec" : 166,
+	"bytes" : 18*166,
 	"testValues" : {
 		"KOD" : "30",
 		"TXT" : "ABRENES RAJONS",
@@ -130,6 +134,7 @@ db_info["tables"]["PMLP_ADR_LVL_2"] = {
 		//],
 		//"partSize" : 100
 	"numRec" : 1695,
+	"bytes" : 23*1695,
 	"testValues" : {
 		"KOD" : "-010000",
 		"TXT" : "RIGA",
@@ -158,6 +163,7 @@ db_info["tables"]["PMLP_ADR_LVL_3"] = {
 		//],
 		//"partSize" : 100//200
 	"numRec" : 20201,
+	"bytes" : 48*20201,
 	"testValues" : {
 		"KOD" : "-010091",
 		"TXT" : "CENTRA RAJONS",
@@ -187,6 +193,7 @@ db_info["tables"]["PMLP_ADR_LVL_4"] = {
 		//],
 		//"partSize" : 100
 	"numRec" : 46384,
+	"bytes" : 52*46384,
 	"testValues" : {
 		"KOD" : "-64520706281",
 		"TXT" : "1. ATPUTAS IELA",
@@ -212,6 +219,7 @@ db_info["tables"]["SIMPLE_SPR"] = {
 	//"keyName" : "NOMERKODKOD_MAIN",
 	//"partSize" : 100
 	"numRec" : 28780,
+	"bytes" : 48*28780,
 	"testValues" : {
 		"NOMER" : "984",
 		"KOD" : "17",
@@ -236,6 +244,7 @@ db_info["tables"]["SL_KLASS_PERM"] = {
 		//"keyName" : "ID",
 		//"partSize" : 1
 	"numRec" : 229,
+	"bytes" : 24*229,
 	"testValues" : {
 		"PERM_NAME" : "CPR_175",
 		"NOMER" : "175",
@@ -263,6 +272,7 @@ db_info["tables"]["SL_TILTS"] = {
 		//],
 		//"partSize" : 100
 	"numRec" : 1906,
+	"bytes" : 43*1906,
 	"testValues" : {
 		"KOD" : "517",
 		"RAJONS_KOD" : "-320000",
@@ -298,6 +308,7 @@ db_info["tables"]["SL_LUS"] = {
 		//"keyName" : "SL_LUS_ID",
 		//"partSize" : 1
 	"numRec" : 575,
+	"bytes" : 91 * 575,
 	"testValues" : {
 		"SL_LUS_ID" : "1223551",
 		"LUS_TYPE" : "IF",
@@ -348,14 +359,15 @@ console.log(db_info);
 
 	document.getElementById("websql-drop").onclick = function(){
 		var name = document.getElementById("tablename").value;
-		dropTable( name );
+		var showLog = true;
+		dropTable( name, showLog );
 	}//end event
 
 	document.getElementById("btn-drop-tables").onclick = function(){
 		getAllTables(function( list ){
 //console.log(list);
 			for( var n = 0; n < list.length; n++ ){
-				dropTable( list[n] );				
+				dropTable( list[n], true );				
 			}
 			getAllTablesFromDB();			
 		});
@@ -464,124 +476,193 @@ if( result.rows){
 		if( !db_info["tables"] ){
 			return false;
 		}
-		
-		_timer["total"] = _set_timer();
-		
 		_log("", "wait");
 		_log("Wait...", "wait");
-		
 		_log("");
-		var msg = "- run SAVE test";
-		_log(msg);
 		
-		var count = 0;
-		var sql = [];
-		for( var tableName in db_info["tables"] ){
-//console.log( tableName, db_info["tables"][tableName] );
-
-//------- form create query
-			var createQuery = createTable({
-				"tableName" :  tableName,
-				"fieldsInfo" : db_info["tables"][ tableName ]["fields"],
-				//"executeQuery" : false,
-				"displayLog" : true
-			});
-			sql.push( createQuery );
-			
-//------- form insert query
-if( db_info["tables"][tableName]["numRec"] && 
-		db_info["tables"][tableName]["testValues"]){
-			
-			var sqlTemplate = "INSERT INTO {{table_name}} ( {{fields}} ) VALUES ( {{values}} );";
-			var dBrecord = db_info["tables"][tableName]["fields"];
-			var numRec = db_info["tables"][tableName]["numRec"];
-			var record = db_info["tables"][tableName]["testValues"];
-			for( var n = 0; n < numRec; n++ ){
-			//for( var n = 0; n < 1; n++ ){
-				
-				var insertQuery = sqlTemplate.replace("{{table_name}}", tableName);
-				var sFields = "";
-				var sValues = "";
-				
-				for( var fieldName in record ){
-		//console.log( fieldName, record[fieldName] );			
-
-					for( var n1 = 0; n1 < dBrecord.length; n1++){
-		//console.log( dBrecord[n1] );
-						if( fieldName === dBrecord[n1] ){
-							if( n1 > 0){
-								sFields += ", ";
-								sValues += ", ";
-							}
-							sFields += fieldName;
-							sValues += "'" +record[fieldName] +"'";
-						}
-					}//next
-					
-				}//next
-		//console.log( sFields);
-		//console.log( sValues );
-				
-				insertQuery = insertQuery.replace("{{fields}}", sFields);
-				insertQuery = insertQuery.replace("{{values}}", sValues);
-		//console.log( insertQuery );
-				
-				sql.push( insertQuery );
-			}//next		
-			
-}
-			count++;
-		}//next
-//console.log(sql);
-
-		if( sql.length > 0){
-			var db = connectDB();
-var msg = "- form queries, run DB transaction.";
-_log( msg);
-			runTransaction( sql, db, postFunc, false );
-		}
-		
-		function postFunc(){
-			_log("", "wait");
-			var msg = "- end SAVE test";
-			_log( msg);
-		
-var total = _get_timer( _timer["total"] );		
-msg = "<b>DB Mobapp: CREATE " +count+ " tables and INSERT records</b>";
-msg += ", total time: " + total + " sec.";		
-console.log( msg );
-_log(msg);
-			testSelect();
-		}//end postFunc()
-		
-		function testSelect(){
-			
-			var msg = "- run READ test";
-			_log(msg);
-			
-			for( var tableName in db_info["tables"] ){
-				//var tableName = "SL_KODIF";
-				var sql = "SELECT * FROM "+ tableName;
-				runTransaction( sql, db, postSelect, false );
-			}//next
-			
-			function postSelect( result, sql ){
-//console.log( result, sql );
-				var msg = "- " + sql;
-				//var runtime = 0;
-				//msg += ", runtime: " + runtime +" sec";
-				if( result.rows){
-					msg += ", read " + result.rows.length + " records.";
+		getAllTables(function( list ){
+//console.log(list, list.length);
+			if( list.length > 0){
+				for( var n = 0; n < list.length; n++ ){
+					var showLog = false;
+					dropTable( list[n], showLog );				
 				}
-				_log( msg );
-			}//end postSelect()
-			
-		}//end testSelect()
+				_test();
+			} else {
+				_test();
+			}
+		});
 
-		
 	}//end event
 	
 }//end init()	
+
+
+function _test(){
+	_timer["total"] = _set_timer();
+	
+	var msg = "- run SAVE test";
+	_log(msg);
+	
+	var count = 0;
+	var sql = [];
+	for( var tableName in db_info["tables"] ){
+//console.log( tableName, db_info["tables"][tableName] );
+
+//------- form create query
+		var createQuery = createTable({
+			"tableName" :  tableName,
+			"fieldsInfo" : db_info["tables"][ tableName ]["fields"],
+			//"executeQuery" : false,
+			"displayLog" : true
+		});
+		sql.push( createQuery );
+		
+//------- form insert query
+if( db_info["tables"][tableName]["numRec"] && 
+	db_info["tables"][tableName]["testValues"]){
+		
+		var sqlTemplate = "INSERT INTO {{table_name}} ( {{fields}} ) VALUES ( {{values}} );";
+		var dBrecord = db_info["tables"][tableName]["fields"];
+		var numRec = db_info["tables"][tableName]["numRec"];
+		var record = db_info["tables"][tableName]["testValues"];
+		for( var n = 0; n < numRec; n++ ){
+		//for( var n = 0; n < 1; n++ ){
+			
+			var insertQuery = sqlTemplate.replace("{{table_name}}", tableName);
+			var sFields = "";
+			var sValues = "";
+			
+			for( var fieldName in record ){
+	//console.log( fieldName, record[fieldName] );			
+
+				for( var n1 = 0; n1 < dBrecord.length; n1++){
+	//console.log( dBrecord[n1] );
+					if( fieldName === dBrecord[n1] ){
+						if( n1 > 0){
+							sFields += ", ";
+							sValues += ", ";
+						}
+						sFields += fieldName;
+						sValues += "'" +record[fieldName] +"'";
+					}
+				}//next
+				
+			}//next
+	//console.log( sFields);
+	//console.log( sValues );
+			
+			insertQuery = insertQuery.replace("{{fields}}", sFields);
+			insertQuery = insertQuery.replace("{{values}}", sValues);
+	//console.log( insertQuery );
+			
+			sql.push( insertQuery );
+		}//next		
+		
+}
+		count++;
+	}//next
+//console.log(sql);
+
+	if( sql.length > 0){
+		var db = connectDB();
+var msg = "- form queries, run DB transaction.";
+_log( msg);
+		runTransaction( sql, db, postFunc, false );
+	}
+	
+	function postFunc(){
+		_log("", "wait");
+	
+		var total = _get_timer( _timer["total"] );		
+var msg = "<b>DB Mobapp: CREATE " +count+ " tables and INSERT records</b>";
+msg += ", total time: " + total + " sec.";		
+		
+		var totalSize = 0;
+		for( var tableName in db_info["tables"] ){
+			totalSize = totalSize + db_info["tables"][ tableName ]["bytes"];
+		}
+		totalSize = ((totalSize / 1024) / 1024).toFixed(2);
+msg += ", total size: " + totalSize + " Mb";		
+console.log( msg );
+_log(msg);
+		
+		var msg = "- end SAVE test";
+		_log( msg);
+		
+		testSelect();
+	}//end postFunc()
+	
+	function testSelect(){
+		
+		var msg = "- run READ test";
+		_log(msg);
+		
+		getAllTables(function( list ){
+console.log(list, list.length);
+			if( list.length > 0){
+				db_info["listTables"] = list;
+				db_info["counter"] = 0;
+				_timer["total"] = 0;
+				
+				var tblName = list[ db_info["counter"] ];
+				var sql = "SELECT * FROM "+ tblName;
+				var db = connectDB();
+				
+				//var timeStart = new Date();
+				db_info["timeStart"] = new Date();
+				runTransaction( sql, db, postSelect, false );
+				
+				
+			} else {
+				var msg = "error READ test, not find tables!!!";
+				_log(msg);
+			}
+		});
+		
+		function postSelect( result, sql ){
+console.log( result, result.rows.length, sql );
+
+			var timeStart = db_info["timeStart"];
+			var timeEnd = new Date();
+			var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+//console.log( runtime );
+			_timer["total"] = _timer["total"] + runtime;
+			
+			var msg = "- " + sql;
+			msg += ", runtime: " + runtime +" sec";
+			if( result.rows){
+				msg += ", read " + result.rows.length + " records.";
+			}
+			_log( msg );
+
+			//read next table
+			db_info["counter"]++;
+//console.log( db_info["listTables"], db_info["counter"] );
+			if( db_info["counter"] < db_info["listTables"].length ){
+				var list = db_info["listTables"]
+				var tblName = list[ db_info["counter"] ];
+				var sql = "SELECT * FROM "+ tblName;
+				var db = connectDB();
+				db_info["timeStart"] = new Date();
+				runTransaction( sql, db, postSelect, false );
+			} else{
+				var total = _timer["total"].toFixed(2) ;		
+				var count = db_info["counter"];
+var msg = "<b>DB Mobapp: SELECT from " +count+ " tables</b>";
+msg += ", total time: " + total + " sec.";		
+//console.log( msg );
+_log(msg);
+				var msg = "- end READ test";
+				_log(msg);
+			}
+			
+		}//end postSelect()
+		
+	}//end testSelect()
+	
+}//end _test()
+
 
 function _changeValue( fid, value ){
 //console.log( value );	
@@ -1019,6 +1100,10 @@ _log(msg);
 
 function connectDB(){
 	
+	if( db_info["link"] ){
+		return db_info["link"];
+	}
+	
 	var dbName = document.getElementById("dbname").value;
 	var version = document.getElementById("dbversion").value;//'1.0';
 	var displayName = document.getElementById("dbdesc").value;//'mobapp database';
@@ -1035,7 +1120,8 @@ alert( "DB was created!");
 console.log(db, database);		
 			}*/
 		);   
-console.log(db);		
+console.log(db);
+		db_info["link"] = db;
 		return db;
 		
 	} catch(e) {
@@ -1102,11 +1188,11 @@ console.log("table " +tableName+ " was created!");
 }//end createTables
 
 
-function dropTable( name ) {
+function dropTable( name, showLog ) {
 	
 	var sql = "DROP TABLE " + name;
 	var db = connectDB();
-	runTransaction( sql, db, postFunc, true );
+	runTransaction( sql, db, postFunc, showLog );
 	
 	function postFunc( result ){
 //console.log("postFunc()!!!", result, typeof result);
@@ -1121,7 +1207,7 @@ function getAllTablesFromDB(){
 	
 	var sql = 'SELECT tbl_name from sqlite_master WHERE type = "table"';
 	var db = connectDB();
-	runTransaction( sql, db, postFunc, true );
+	runTransaction( sql, db, postFunc, false );
 		
 	function postFunc( result ){
 //console.log("postFunc()!!!", result, result.rows.length);
@@ -1141,14 +1227,19 @@ function getAllTablesFromDB(){
 function getAllTables( callBack ){
 	var sql = 'SELECT tbl_name from sqlite_master WHERE type = "table"';
 	var db = connectDB();
-	runTransaction( sql, db, postFunc, true );
+	runTransaction( sql, db, postFunc, false );
 		
 	function postFunc( result ){
 		var list = [];
 //console.log("postFunc()!!!", result, result.rows.length);
 
 		for(var n = 0; n < result.rows.length; n++){
-			list.push( result.rows.item(n)["tbl_name"] );
+			var tblName = result.rows.item(n)["tbl_name"];
+			if( tblName === "__WebKitDatabaseInfoTable__" ||
+					tblName === "sqlite_sequence"){
+				continue;
+			}
+			list.push( tblName );
 		}
 		if( typeof callBack === "function"){
 			callBack( list );
@@ -1162,7 +1253,10 @@ function runTransaction( sql, db, callBack, log ){
 	
 	
 	if( typeof sql === "string"){
+		
 		//var timeStart = new Date();
+		//_timer["total"] = _set_timer();		
+		
 		db.transaction( function(t){
 			t.executeSql( sql, [], onSuccess, onError );
 		}, errorCB, successCB );//end transaction
@@ -1198,7 +1292,10 @@ _log("onSuccess(): <b>" + sql +"</b>");
 		
 		//var timeEnd = new Date();
 		//var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-//console.log("onSuccess()", sql, runtime );
+//console.log("onSuccess()", sql, timeStart, timeEnd, runtime );
+		//var total = _get_timer( _timer["total"] );
+//console.log("onSuccess()", sql, total );
+		
 		if( typeof callBack === "function"){
 			callBack( result, sql );
 		}
