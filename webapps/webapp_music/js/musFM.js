@@ -45,6 +45,9 @@ console.log ("music file manager = ", musfm);
 	
 });//end ready
 
+window.onload = function(){
+}//end load
+
 
 var MusicFM = function( options ){
 	
@@ -496,6 +499,10 @@ console.log( "errorThrown: " + errorThrown );
 			var dirname = $(this).attr("href");
 			$(".right-panel .wfm .subfolder-tpl").empty();
 			get_filelist( vars["filelist_url"], dirname, ".right-panel", false );
+			
+			$(".left-panel").removeClass("active-panel");
+			$(".right-panel").addClass("active-panel");
+			
 			return false;
 		});
 		
@@ -503,9 +510,23 @@ console.log( "errorThrown: " + errorThrown );
 			var dirname = $(this).attr("href");
 			$(".left-panel .wfm .subfolder-tpl").empty();
 			get_filelist( vars["filelist_url"], dirname, ".left-panel", false );
+			
+			$(".right-panel").removeClass("active-panel");
+			$(".left-panel").addClass("active-panel");
+			
 			return false;
 		});//end event
 
+		$(document).on("click", ".file a", function(e){
+//console.log(e.target);
+//console.log( $(this) );
+			var $input = $(this).siblings("input[type=checkbox]");
+			if( $input.prop("checked")){
+				$input.prop("checked", false);
+			} else {
+				$input.prop("checked", true);
+			}
+		});
 /*
 		$("#btn-load-filelist").on("click", function(e){
 //console.log(e);			
