@@ -43,21 +43,44 @@ alert(msg);
 
 function onLoad(){
 //alert("function onLoad()");
-//alert(navigator.appName);
-//bVer = parseInt(navigator.appVersion); 
+var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
+alert( info );
 
-//if(document.all){
-	//alert("document.all!");
-//} else {
-	//alert("not support...");
-//}
+if(document.all){
+	alert("document.all!");
+} else {
+	alert("document.all not support...");
+}
 
+if(document.forms){
+	var msg = "document.forms, length:" + document.forms.length;
+	alert(msg);
+
+	if( document.form1 ){
 //alert(document.form1.txt1.value);
-//alert(document.btn2.value);
-//alert(document.elements[0]);
+		alert( document.form1.txt1.value );
+	}
+
+} else {
+	alert("document.forms not support...");
+}
 
 
+if(document.layers){
+	var msg = "document.layers, length:" + document.layers.length;
+	alert(msg);
 
+	for( var key in document.layers){
+		var msg = key +" = "+ document.layers[key];
+		alert(msg);
+	}
+
+}
+
+//for( var key in document.elements){
+	//var msg = key +" = "+ document.elements[key];
+	//alert(msg);
+//}
 
 //var id1 = document.getElementById("id1");
 //alert(id1);
