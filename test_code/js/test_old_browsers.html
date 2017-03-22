@@ -8,8 +8,9 @@ background:#5c5;
 }
 .box1{
 background:red;
-width:100px;
-height:100px;
+width:400px;
+height:200px;
+display:none;
 }
 .pull-left{
 float:left;
@@ -26,56 +27,67 @@ width:50%;
 -->
 
 <script>
-/*
+
 var ar = new Array(1,2);
 ar[3] = "a";
 ar[4] = "b";
 
 for( var key in ar){
 var msg = key +" = "+ ar[key];
-alert(msg);
+document.writeln(msg);
 }
-*/
+
 
 //var test_var1 ="a";
 //alert(test);
 
-
-function onLoad(){
-//alert("function onLoad()");
 var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
-alert( info );
+document.writeln("<h1>" +info+ "</h1>");
+//document.writeln("navigator.cpuClass: " + navigator.cpuClass);
+//document.writeln("navigator.platform: " + navigator.platform);
+//document.writeln("navigator.systemLanguage: " + navigator.systemLanguage);
+//document.writeln("navigator.userLanguage: " + navigator.userLanguage);
+document.writeln("lastModified: " + document.lastModified + "<br>");
 
+for( var prop in navigator){
+	var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
+	document.writeln(msg);
+}
+
+   
 if(document.all){
-	alert("document.all!");
+	document.writeln("document.all!");
 } else {
-	alert("document.all not support...");
+	document.writeln("document.all not support...");
 }
-
-if(document.forms){
-	var msg = "document.forms, length:" + document.forms.length;
-	alert(msg);
-
-	if( document.form1 ){
-//alert(document.form1.txt1.value);
-		alert( document.form1.txt1.value );
-	}
-
-} else {
-	alert("document.forms not support...");
-}
-
 
 if(document.layers){
 	var msg = "document.layers, length:" + document.layers.length;
-	alert(msg);
+	document.writeln(msg);
 
 	for( var key in document.layers){
 		var msg = key +" = "+ document.layers[key];
-		alert(msg);
+		document.writeln(msg);
 	}
 
 }
+
+for( var prop in window){
+	var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
+	document.writeln(msg);
+}
+
+for( var prop in document){
+	var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
+	document.writeln(msg);
+}
+
+function onLoad(){
+
+//document.referrer
+//document.onkeydown=kdown;
+
+//alert("function onLoad()");
 
 //for( var key in document.elements){
 	//var msg = key +" = "+ document.elements[key];
@@ -125,19 +137,465 @@ onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no
 	</div>
 </div>
 
+
+
+<pre>
+6. Q: Какой самый быстрый способ получить символ из строки?
+
+   A: Если вам нужен именно символ, а не подстрока, вместо функции
+   substring лучше использовать функцию charAt(index). Например:
+   var sourceStr="test";
+   document.write(sourceStr.charAt(2)); - напишет в документ символ "s".
+
+
+7. Q: Как получить случайное число в заданном диапазоне (например, 0-1000)?
+
+   A: Это делается так:
+   var diapazon=1000; - диапазон получаемого числа
+   document.write(Math.floor(Math.random()*diapazon)); - выводит в
+   документ случайное число в заданном диапазоне.
+
+9. Q: Как записать в документ дату его последнего изменения?
+
+   A: document.write("Дата последнего изменения документа: " +
+   document.lastModified);
+
+
+10. Q: Как проверить заполнение всех текстовых полей любой формы, не
+перечисляя их по имени?
+
+   A: Приведенная функция проверяет на заполнение текстовых полей форму с
+   именем, переданным в качестве параметра:
+   function check(formname)
+   &#123;
+   for(var i=0;i&lt; document.forms&#091;formname&#093;.elements.length;i++)
+   &#123;
+   if(document.forms&#091;formname&#093;.elements&#091;i&#093;.value.length&lt;=0)
+     &#123;
+      alert("Пожалуйста заполните поле " +
+   document.forms&#091;formname&#093;.elements&#091;i&#093;.name + "!");
+      return;
+     &#125;
+   &#125;
+   &#125;
+
+
+11. Q: Как быстро сравнить два числа (строки) и узнать большее?
+
+   A: Пользуйтесь объектом Math и его методом max:
+   document.write(Math.max(1,2)); - запишет в документ число 2. То-же
+   самое и со строками - возвращается строка, имеющая наибольшее
+   значение.
+
+
+12. Q: А тогда как узнать минимальное число из двух?
+
+   A: Пользуйтесь объектом Math и его методом min:
+   document.write(Math.min(1,2)); - запишет в документ число 1. То-же
+   самое и со строками - возвращается строка, имеющая наименьшее
+   значение.
+
+
+13. Q: Как преобразовать строку в число (в моей форме пользователь
+вводит числовое значение в одно из текстовых полей, но ведь это
+строка, а мне в цикле нужно число)?
+
+   A: Метод parseInt:
+   var stringInt="25";
+   parseInt(stringInt) - получившееся число, то есть 25.
+
+
+14. Q: A как вытащить заголовок документа?
+
+   A: document.write("Заголовок текущего документа: " + document.title);
+
+
+15. Q: Как получить значение User Agent (что за браузер пришел)?
+
+   A: document.write("User Agent: " + navigator.userAgent);
+
+
+16. Q: Как сделать страницу стартовой?
+
+   A: &lt;a href="адрес"
+   onclick="this.style.behavior='url(#default#homepage)';
+   this.setHomePage('http://адрес');"&gt;Сделать стартовой!&lt;/a&gt;
+
+
+17. Q: А как добавить страницу в "Избранное"?
+
+   A: &lt;a
+   href="javascript:window.external.addFavorite('http://адрес','Заголовок
+   ');"&gt;
+   Добавить в "Избранное"&lt;/a&gt;
+
+
+18. Q: Как определить размер экрана (в пикселах) у посетителя?
+
+   A: screen.width - ширина экрана в пикселах;
+   screen.height - высота экрана в пикселах.
+
+
+19. Q: Как определить тип процессора из JavaScript?
+
+   A: В общем, можно попытаться так:
+   document.write("Класс вашего процессора: " + navigator.cpuClass);
+
+
+20. Q: Как определить, на какой платформе работает браузер?
+
+   A: Попробуйте следующее:
+   document.write("Платформа: " + navigator.platform);
+
+
+21. Q: Как определить, какой язык используется в системе по умолчанию?
+   A: Можно вот так:
+   document.write("Язык системы по умолчанию: " +
+   navigator.systemLanguage);
+
+
+22. Q: А как определить текущий язык в системе?
+
+   A: Можно вот так:
+   document.write("Текущий язык системы: " + navigator.userLanguage);
+
+
+23. Q: А можно ли определить количество дисков в системе из JavaScript?
+
+   A: Можно, но учтите, что этот способ использует ActiveX (правда, она
+   уже стоит практически у всех), и поэтому браузер может запросить у вас
+   разрешение на запуск (приведенная функция запишет в документ
+   информацию о дисках):
+   function showDriveList() &#123;
+   var fso = new ActiveXObject("Scripting.FileSystemObject");
+   document.write("Кол-во дисков в системе: " + fso.drives.count + ";
+   Буквы дисков: ");
+   var coll = new Enumerator(fso.Drives);
+   for (; !coll.atEnd(); coll.moveNext()) &#123;
+   document.write(coll.item().DriveLetter + "&amp;nbsp; ");
+   &#125;
+   &#125;
+
+
+24. Q: Как определить, включены ли cookie?
+
+   A: Это делается так:
+   if(navigator.cookieEnabled)
+   document.write("Поддержка cookie включена!");
+   else document.write("Поддержка cookie выключена!");
+
+
+25. Q: Как определить количество цветов в системе?
+
+   A: Вот так:
+   document.write("Количество поддерживаемых цветов: "
+   + Math.pow(2,screen.colorDepth));
+
+
+26. Q: Как определить видеорежим (количество бит на пиксел)?
+ 
+  A: Можно вот так: document.write("Бит на пиксел: " +
+   screen.colorDepth);
+
+
+
+27. Q: А как определить тип соединения (lan или др)?
+
+   A: Это сложнее и работает только в IE. Для начала сделайте тег HTML
+   вот таким:
+   &lt;HTML xmlns:IE&gt;
+   Потом табличка стилей:
+   &lt;STYLE&gt;
+   @media all &#123;
+   IE\:CLIENTCAPS &#123;behavior:url(#default#clientCaps)&#125;
+   &#125;
+   &lt;/STYLE&gt;
+   Потом в теле документа:
+   &lt;IE:CLIENTCAPS ID="oClientCaps" /&gt;
+   &lt;DIV id="oPre"&gt;&lt;/DIV&gt;
+   После этих тегов скрипт:
+   &lt;SCRIPT&gt;
+   &lt;!--
+   oPre.innerText = oClientCaps.connectionType;
+   --&gt;
+   &lt;/SCRIPT&gt;
+
+
+28. Q: Как определить, онлайн ли браузер?
+
+   A: Попробуйте так: if(navigator.onLine)
+   document.write("Браузер онлайн!");
+   else document.write("Браузер оффлайн!");
+
+
+29. Q: Как определить дату создания документа?
+
+   A: Это делается так:
+   document.write("Документ создан: " + document.fileCreatedDate);
+
+
+30. Q: Как определить размер документа в килобайтах?
+
+   A: Вот так:
+   document.write("Размер документа: " + document.fileSize/1024 + " Кб.");
+
+
+31. Q: Как просто получить случайную строку?
+
+   A: Этот скрипт выводит uniqueID документа, который легко можно
+   использовать как случайную строку (перезагрузите страничку несколько раз):
+   document.write("Случайная строка: " +document.uniqueID);
+
+
+32. Q: А как узнать, какой текст находится в буфере обмена?
+
+   A: Можно вот так (скопируйте какой-нибудь текст в буфер, потом обновите страничку):
+   document.write("Текст в буфере: " +
+   window.clipboardData.getData("Text"));
+
+
+33. Q: А как почистить буфер обмена?
+
+   A: Вот так:
+   &lt;script&gt;
+   window.clipboardData.clearData("Text");
+   window.clipboardData.clearData("URL");
+   window.clipboardData.clearData("File");
+   window.clipboardData.clearData("HTML");
+   window.clipboardData.clearData("Image");
+   &lt;/script&gt;
+
+
+34. Q: Как определить кодировку документа?
+
+   A: Это делается так:
+   document.write("Кодировка документа: " + document.charset);
+
+
+35. Q: Можно ли вызвать диалог "Упорядочить Избранное", например?
+
+   A: Можно:
+   &lt;a href="javascript:window.external.ShowBrowserUI('LanguageDialog', null)"&gt;
+   Диалог выбора языка&lt;/a&gt;
+   &lt;a href="javascript:window.external.ShowBrowserUI('OrganizeFavorites', null)"&gt;
+   Диалог "Упорядочить Избранное"&lt;/a&gt;
+
+
+36. Q: Как мне сменить вид стандартного курсора мыши на другой?
+
+   A: Это делается при помощи таблицы стилей, например, вот так:
+   &lt;SPAN STYLE="cursor: crosshair"&gt;crosshair&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: default"&gt;default&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: hand"&gt;hand&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: move"&gt;move&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: e-resize"&gt;e-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: ne-resize"&gt;ne-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: nw-resize"&gt;nw-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: n-resize"&gt;n-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: se-resize"&gt;se-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: sw-resize"&gt;sw-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: s-resize"&gt;s-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: w-resize"&gt;w-resize&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: text"&gt;text&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: wait"&gt;wait&lt;/SPAN&gt;
+   &lt;SPAN STYLE="cursor: help"&gt;help&lt;/SPAN&gt;
+
+
+37. Q: Как проверить адрес e-mail на правильность?
+
+   A: Один из лучших методов - использование регулярных выражений.
+   Нижеприведенный пример делает именно так, а если регулярные выражения
+   не поддерживаются - проводит проверку другим способом:
+   Функция возвращает true, если адрес правильный, и false в противном
+   случае:
+   function isEmail(str) &#123;
+   var supported = 0;
+   if (window.RegExp) &#123;
+   var tempStr = "a";
+   var tempReg = new RegExp(tempStr);
+   if (tempReg.test(tempStr)) supported = 1;
+   &#125;
+   if (!supported)
+   return (str.indexOf(".") &gt; 2) &amp;&amp; (str.indexOf("@") &gt; 0);
+   var r1 = new RegExp("(@.*@)|(\\.\\.)|(@\\.)|(^\\.)");
+   var r2 = new
+   RegExp("^.+\\@(\\&#091;?)&#091;a-zA-Z0-9\\-\\.&#093;+\\.(&#091;a-zA-Z&#093;&#123;2,3&#125;|&#091;0-9&#093;&#123;1,3&#125;)(\\&#093;?)$");
+   return (!r1.test(str) &amp;&amp; r2.test(str));
+   &#125;
+
+
+38. Q: Как сделать, чтобы в "Избранном" вместо стандартной иконки
+помещалась моя собственная?
+
+   A: Поместите нижеприведенный код в раздел &lt;HEAD&gt; документа (еще
+   необходимо иметь на сайте саму иконку, конечно):
+   &lt;LINK REL="SHORTCUT ICON"
+   HREF="<a href="http://www.">http://www.</a>мой_адрес.ru/имя_файла_иконки.ico"&gt;
+
+
+39. Q: А можно ли сделать так, чтобы при нажатии на ссылку посетитель
+мог сохранить страницу на диск?
+
+   A: Можно, но работает только в IE:
+   &lt;a href="javascript:document.execCommand('SaveAs');"&gt;Сохранить&lt;/a&gt;
+
+
+40. Q: Как я могу узнать размеры активного окна (документа), а не всего экрана?
+
+   A: Это вполне возожно (измените размеры окна несколько раз):
+   function wh()
+   &#123; var height, width;
+   if (document.all)
+   height = document.body.offsetHeight, width =
+   document.body.offsetWidth;
+   else if (document.layers)
+   height = window.innerHeight, width = window.innerWidth;
+   alert("Ширина окна: " + width + "\nВысота окна: " + height);
+   &#125;
+
+
+41. Q: Как узнать координаты щелчка мышью в документе?
+
+   A: Это делается вот так:
+   function GetCoord(e) &#123;
+   if (navigator.appName == "Microsoft Internet Explorer")&#123;
+   cX = event.clientX;
+   cY = event.clientY;
+   &#125;
+   else &#123;
+   cX = e.pageX;
+   cY = e.pageY;
+   &#125;
+   alert("Координаты щелчка: x = " + cX + "; y = " + cY);
+   &#125;
+
+
+42. Q: А как заблокировать вывод выпадающего меню по правой кнопке
+мыши без дурацкого окна-алерта?
+
+   A: Вот так, товарищч (попробуйте щелкнуть правой мышой в документе):
+   &lt;script language="JavaScript1.2"&gt;
+   &lt;!--
+   if (window.Event)
+   document.captureEvents(Event.MOUSEUP);
+   function nocontextmenu() &#123;
+   event.cancelBubble = true, event.returnValue = false;
+   return false;
+   &#125;
+   function norightclick(e) &#123;
+   if (window.Event) &#123;
+   if (e.which == 2 || e.which == 3) return false;
+   &#125;
+   else if (event.button == 2 || event.button == 3) &#123;
+   event.cancelBubble = true, event.returnValue = false;
+   return false;
+   &#125;
+   &#125;
+   if (document.layers)
+   document.captureEvents(Event.MOUSEDOWN);
+   document.oncontextmenu = nocontextmenu;
+   document.onmousedown = norightclick;
+   document.onmouseup = norightclick;
+   //--&gt; &lt;/script&gt;
+
+
+43. Q: А как закрыть родительское окно из дочернего без появления
+надоедливого "А вы действительно хотите закрыть окно"?
+
+   A: Вот так (установите время срабатывания таймера, какое вам нужно):
+   &lt;SCRIPT LANGUAGE="JavaScript"&gt;
+   &lt;!--
+   window.open("filename.htm","newwindow","width=725,height=125");
+   setTimeout(\'window.close()\',5000);
+   //--&gt;
+   &lt;/SCRIPT&gt;
+
+
+44. Q: Как автоматически подстроить размер окна под рисунок, который
+оно содержит?
+
+   A: Можно таким способом (один файл открывает все рисунки):
+   Файл - открывальщик рисунков:
+   &lt;html&gt;
+   &lt;head&gt;
+   &lt;SCRIPT LANGUAGE="JavaScript"&gt;
+   &lt;!--
+   function resizer() &#123;
+   if (document.images) &#123;
+   resizeTo(document.images&#091;0&#093;.width+10,document.images&#091;0&#093;.height); &#125;
+   else setTimeout('resizer()', 500);
+   &#125;
+   //--&gt;
+   &lt;/SCRIPT&gt;
+   &lt;/head&gt;
+   &lt;body marginwidth=0 marginheight=0 topmargin=0 leftmargin=0&gt;
+   &lt;SCRIPT LANGUAGE="JavaScript"&gt;
+   &lt;!--
+   var
+   imgName=document.location.search.substring(document.location.search.in
+   dexOf("=")+1,document.location.search.length);
+   imgName = imgName.replace("*",".");
+   document.write('&lt;img src="' + unescape(imgName) + '"&gt;');
+   resizer();
+   //--&gt;
+   &lt;/SCRIPT&gt;
+   &lt;/body&gt;
+   &lt;/html&gt;
+   Подключаемый *.js-файл с функцией открытия нового окна:
+   function openImg(imgName)
+   &#123;
+   imgName = imgName.replace(".","*");
+   var resW = "имя_файла_открывальщика.htm?iname=" + escape(imgName);
+   window.open(resW,'newwin','scrollbars=no, status=no, toolbar=no,
+   location=no, width=50, height=50, left=150, top=150');
+   &#125;
+   Пример вызова:
+   &lt;a href="javascript:openImg('имя_рисунка');"&gt;Открыть рисунок&lt;/a&gt;
+
+
+45. Q: Как я могу расположить окно постоянно впереди других?
+  
+   A: Это возожно (не знаю, как впереди, но иконка на панели задач
+   замигает точно, привлекая внимание):
+   &lt;body onBlur="self.focus();"&gt;
+
+
+
+   Автор  - Порохня Дмитрий (design-star@mail.ru; JavaScript без границ)
+
+</PRE>
+
+
+
+
+
 </body>
 
 <script>
+
 //document.open();
 //document.clear();
-document.writeln("objectstr");
+//document.close();
+
+if(document.forms){
+	var msg = "document.forms, length:" + document.forms.length + "<br>";
+	document.writeln(msg);
+
+	if( document.form1 ){
+//alert(document.form1.txt1.value);
+		document.writeln( document.form1.txt1.value + "<br>" );
 /*
 	for( var key in document.form1){
 		var msg = key +" = "+ document.form1[key];
 		alert(msg);
 	}
 */
-//document.close();
+	}
+
+} else {
+	document.writeln("document.forms not support...<br>");
+}
+
 </script>
 
 </html>
