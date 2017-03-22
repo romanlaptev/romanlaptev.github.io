@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>/www</title>
+
+<style>
+body{
+background:#5c5;
+}
+.box1{
+background:red;
+width:100px;
+height:100px;
+}
+.pull-left{
+float:left;
+width:50%;
+}
+.pull-right{
+float:right;
+width:50%;
+}
+</style>
+
+<!--
+<scrit src="http://code.jquery.com/jquery-1.1.js"></script>
+-->
+
+<script>
+/*
+var ar = new Array(1,2);
+ar[3] = "a";
+ar[4] = "b";
+
+for( var key in ar){
+var msg = key +" = "+ ar[key];
+alert(msg);
+}
+*/
+
+//var test_var1 ="a";
+//alert(test);
+
+
+function onLoad(){
+//alert("function onLoad()");
+//alert(navigator.appName);
+//bVer = parseInt(navigator.appVersion); 
+
+//if(document.all){
+	//alert("document.all!");
+//} else {
+	//alert("not support...");
+//}
+
+//alert(document.form1.txt1.value);
+//alert(document.btn2.value);
+//alert(document.elements[0]);
+
+
+
+
+//var id1 = document.getElementById("id1");
+//alert(id1);
+//id1.innerHTML="window.onload";
+
+
+//var id2 = document.all["id2"];
+//alert(id2);
+//id2.innerHTML="test getObj (document.all)";
+
+}//end onLoad()
+
+</script>
+
+</head>
+<body onload="onLoad();">
+
+	<h1>test JS, CSS, HTML</h1>
+<div class="container">
+	<div class="pull-left">
+
+<div class="box1">box1</div>
+<p id="id1"></p>
+<p id="id2"></p>
+
+<button id="btn1">btn1</button>
+
+<form method=GET" name="form1" action="">
+	<input type="text" name="txt1" value="some text">
+	<input type="submit" value="submit" />
+</form>
+
+<input type="button" size="11" name="btn2" value="Popup window" 
+onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=1,resizable=no');"/>
+
+<p><a href="./" onClick="history.back();return false;">history.back()</a></p>
+
+	</div>
+	<div class="pull-right">
+		<input type="button" value="clear log" id="btn-clear" name="clear_button" />
+		<div id="log"></div>
+	</div>
+</div>
+
+</body>
+
+<script>
+//document.open();
+//document.clear();
+document.writeln("objectstr");
+/*
+	for( var key in document.form1){
+		var msg = key +" = "+ document.form1[key];
+		alert(msg);
+	}
+*/
+//document.close();
+</script>
+
+</html>
