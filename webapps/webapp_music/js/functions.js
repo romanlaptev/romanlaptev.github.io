@@ -1,3 +1,35 @@
+//console.log for old IE
+if(!window.console){
+	console = {
+		log : function(message){
+			alert(message);
+		}
+	}
+}
+
+var _timer = {};
+var _set_timer = function (){
+	var d = new Date;
+	return d.getTime();
+};
+
+var _get_timer = function (timer){
+	var d = new Date;
+	return parseFloat((d.getTime() - timer)/1000);
+};
+
+
+function _log( msg, id){
+	if(!id) id = "log";
+	if( msg.length === 0){
+		document.getElementById(id).innerHTML = "";
+	}
+	//if( window.console && window.console.log) {
+		//console.log(msg)
+	//};
+	document.getElementById(id).innerHTML += "<p>" + msg + "</p>";
+}
+
 //document.write("браузер - " + navigator.appName + "<br>");
 //if (navigator.javaEnabled() == 1)
 //  document.write("Браузер поддерживает JavaScript<br>");
@@ -191,4 +223,3 @@ $(document).ready(function(){
 		});
 
 });//end ready
-
