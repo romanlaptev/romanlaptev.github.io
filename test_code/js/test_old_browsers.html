@@ -1,7 +1,11 @@
 <html>
 <head>
 	<title>test JS</title>
-
+	<meta http-equiv=Expires content=0>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+	<meta name="robots" content="noindex">
 <style>
 body{
 background:#7c8;
@@ -33,120 +37,18 @@ width:50%;
 -->
 
 <script>
-/*
-var ar = new Array(1,2);
-ar[3] = "a";
-ar[4] = "b";
-
-for( var key in ar){
-var msg = key +" = "+ ar[key];
-document.writeln(msg);
-}
-
-
-//var test_var1 ="a";
-//alert(test);
-alert( window["navigator"] );
-
-var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
-document.writeln("<h1>" +info+ "</h1>");
-//document.writeln("navigator.cpuClass: " + navigator.cpuClass);
-//document.writeln("navigator.platform: " + navigator.platform);
-//document.writeln("navigator.systemLanguage: " + navigator.systemLanguage);
-//document.writeln("navigator.userLanguage: " + navigator.userLanguage);
-document.writeln("lastModified: " + document.lastModified + "<br>");
-
-for( var prop in navigator){
-	var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
-	document.writeln(msg);
-}
-
-   
-if(document.all){
-	document.writeln("document.all!");
-} else {
-	document.writeln("document.all not support...");
-}
-
-if(document.layers){
-	var msg = "document.layers, length:" + document.layers.length;
-	document.writeln(msg);
-
-	for( var key in document.layers){
-		var msg = key +" = "+ document.layers[key];
-		document.writeln(msg);
-	}
-
-}
-
-for( var prop in window){
-	var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
-	document.writeln(msg);
-}
-
-for( var prop in document){
-	var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
-	document.writeln(msg);
-}
-*/
-
-//function onLoad(){
+function init(){
 
 //document.referrer
 //document.onkeydown=kdown;
+//document.createElement
 
-//alert("function onLoad()");
+console.log("function init()");
 
 //for( var key in document.elements){
 	//var msg = key +" = "+ document.elements[key];
 	//alert(msg);
 //}
-
-//var id1 = document.getElementById("id1");
-//alert(id1);
-//id1.innerHTML="window.onload";
-
-
-//var id2 = document.all["id2"];
-//alert(id2);
-//id2.innerHTML="test getObj (document.all)";
-
-//}//end onLoad()
-
-function getDOMobj(id){
-	var obj = false;
-
-	if( document["getElementById"] ){
-		var obj = document.getElementById(id);
-	}
-	
-	if( document["all"] ){
-		var obj = document.all[id];
-	}
-
-	return obj;
-}
-
-if(!window.console){
-	var console = {
-		"log" : function(msg){
-			var log = getDOMobj("log");
-			if(log){
-				log.innerHTML += "<p>" + msg +"<p>";
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	}
-}
-//console.log("window.onload:" + window.onload);
-
-
-window.onload = function(){
-
-console.log("onLoad!");
-
 var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
 console.log("<h1>" +info+ "</h1>");
 console.log("lastModified: " + document.lastModified + "<br>");
@@ -157,6 +59,15 @@ for( var prop in navigator){
 }
 
 //console.log( "location" in document );
+
+var ar = new Array(1,2);
+ar[3] = "a";
+ar[4] = "b";
+
+for( var key in ar){
+var msg = key +" = "+ ar[key];
+console.log(msg);
+}
 
 //var test = "all" in document;
 //var test = document["all"];
@@ -190,17 +101,94 @@ if( document.layers ){
 	for(var key in id1){
 console.log(key+" : " + id1[key]);
 	}
+
+}//end init()
+
+function getDOMobj(id){
+	var obj = false;
+
+	if( document["getElementById"] ){
+		var obj = document.getElementById(id);
+	}
 	
+	if( document["all"] ){
+		var obj = document.all[id];
+	}
+
+	return obj;
+}
+
+if(!window.console){
+	var console = {
+		"log" : function(msg){
+			var log = getDOMobj("log");
+			if(log){
+				log.innerHTML += "<p>" + msg +"<p>";
+			} else {
+				//alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+}
+//console.log("window.onload:" + window.onload);
+
+
+window.onload = function(){
+//console.log("window.onLoad!");
 }//end load
+
+if( !document["getElementById"] &&
+	!document["all"] ){
+//document.open();
+//document.clear();
+	//var msg = "!window.console.log<br>";
+	//document.writeln(msg);
+//document.close();
+	
+	var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
+	document.writeln("<h1>" +info+ "</h1>");
+	document.writeln("lastModified: " + document.lastModified + "<br>");
+
+	for( var prop in navigator){
+		var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
+		document.writeln(msg);
+	}
+
+	if(document.all){
+		document.writeln("document.all!");
+	} else {
+		document.writeln("document.all not support...");
+	}
+
+	if(document.layers){
+		var msg = "document.layers, length:" + document.layers.length;
+		document.writeln(msg);
+
+		for( var key in document.layers){
+			var msg = key +" = "+ document.layers[key];
+			document.writeln(msg);
+		}
+
+	}
+
+	for( var prop in window){
+		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
+		document.writeln(msg);
+	}
+
+	for( var prop in document){
+		var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
+		document.writeln(msg);
+	}
+}
+
 
 </script>
 
 </head>
 
-<!--
-<body onload="onLoad();">
--->
-<body>
+<body onload="init();">
 	<h1>test JS, CSS, HTML</h1>
 <div class="container">
 

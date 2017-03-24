@@ -5,8 +5,71 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<title>Browser info</title>
+	
 <script>
+function _log( msg, id){
+	if(!id){
+		var id = "log";
+	}
+	
+	var output = getDOMobj(id);
+	if( output ){
+	
+		if( msg.length == 0){
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += "<p>" + msg +"<p>";
+		}
+		
+	} else {
+		alert(msg);
+		//document.writeln(msg);
+	}
+	
+}//end _log()
+
+function getDOMobj(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document["all"] ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	return false;
+}//end getDOMobj()
+
+function _push( ar, item){
+	if( ar.push ){
+		ar.push(item);
+	} else {
+		var num = ar.length;
+		ar[num] = item;
+	}
+}// end _push()
+
+
 var tests = [];
+
+	if ( !tests.push ){ 
+		var test = {
+			"name" : "array.push()",
+			"result" : false,
+			"msg" : "Your browser does not support <b>method push()</b>"
+		};
+		
+		_push( tests, test );
+	};
+//--------------------------------------
 
 	if (!window.console){ 
 		var test = {
@@ -14,14 +77,20 @@ var tests = [];
 			"result" : false,
 			"msg" : "Your browser does not support <b>console.log</b>"
 		};
-		tests.push(test);
 		
-		console = {
-			log: function( msg ) {
-//				//alert( msg );
-//				document.getElementById("log").innerHTML += msg+"<br>";
+		_push( tests, test );
+		
+		var console = {
+			"log" : function( msg ){
+				var log = getDOMobj("log");
+				if(log){
+					log.innerHTML += "<p>" + msg +"<p>";
+				} else {
+					alert(msg);
+					//document.writeln(msg);
+				}
 			}
-		};	
+		}
 		
 	};
 //--------------------------------------
@@ -34,20 +103,20 @@ var tests = [];
 		test["result"] = true;
 		test["msg"] = "navigator.userAgent.match(/Mobi/) === true";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
-
 	var test = {
 		"name" : "touch supported",
 		"result" : false
 	};
 	var supportsTouch = false;
-	if (('ontouchstart' in window) || 
-			window.DocumentTouch && document instanceof DocumentTouch) {
+	//if (('ontouchstart' in window) || 
+			//window.DocumentTouch && document instanceof DocumentTouch) {
+	if ( typeof window.ontouchstart !== "undefined") {
 		test["result"] = true;
-		test["msg"] = "'ontouchstart' in window === true //iOS & android";
+		test["msg"] = "window.ontouchstart === true //iOS & android";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
@@ -58,8 +127,9 @@ var tests = [];
 		test["result"] = true;
 		test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
+
 	var test = {
 		"name" : "detect Microsoft mobile device",
 		"result" : false
@@ -69,34 +139,27 @@ var tests = [];
 		test["result"] = true;
 		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 	  
-	  
 	var test = {
-		"name" : "addEventListener",
+		"name" : "window.addEventListener",
 		"result" : false
 	};
 	if ( window.addEventListener ) {
 		test["result"] = true;
-		test["msg"] = "window.addEventListener supported in this browser";
-	} else {
-		test["msg"] = "window.addEventListener supported in this browser";
-	};
-	tests.push(test);
+	}
+	_push( tests, test );
 //--------------------------------------
 	
 	var test = {
-		"name" : "attachEvent",
+		"name" : "window.attachEvent",
 		"result" : false
 	};
 	if (window.attachEvent) {
 		test["result"] = true;
-		test["msg"] = "window.attachEvent supported in this browser";
-	} else {
-		test["msg"] = "window.attachEvent not supported...";
-	};
-	tests.push(test);
+	}
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
@@ -105,39 +168,53 @@ var tests = [];
 	};
 	if (document.querySelector) {
 		test["result"] = true;
-		test["msg"] = "supported";
-	} else {
-		test["msg"] = "not supported...";
-	};
-	tests.push(test);
+	}
+	_push( tests, test );
 //--------------------------------------
+
+	var test = {
+		"name" : "document.getElementById",
+		"result" : false
+	};
+	if (document.getElementById) {
+		test["result"] = true;
+	}
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "document.all",
+		"result" : false
+	};
+	if (document.all) {
+		test["result"] = true;
+	}
+	_push( tests, test );
+//--------------------------------------
+
 	var test = {
 		"name" : "window.ActiveXObject",
 		"result" : false
 	};
-	if(window.ActiveXObject || "ActiveXObject" in window){
+	//if(window.ActiveXObject || "ActiveXObject" in window){
+	if( window.ActiveXObject ){
 		test["result"] = true;
 		test["msg"] = "supported";
-console.log(window.ActiveXObject);
+//console.log(window.ActiveXObject);
+
 		test["links"]=[];
-		test["links"].push(
-			{
+		/*
+		_push( test["links"], {
 				"link" : "activexobject.html", 
 				"text" : "activexobject.html"
-			}		
-		);
-		test["links"].push(
-			{
-				"link" : "activexobject_2.html", 
-				"text" : "activexobject_2.html"
-			}		
-		);
-
+			});
+		*/	
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
+
 	var test = {
-		"name" : "window.DOMParser",
+		"name" : "XML, window.DOMParser",
 		"result" : false
 	};
 	if (window.DOMParser) { // all browsers, except IE before version 9
@@ -145,27 +222,27 @@ console.log(window.ActiveXObject);
 		test["msg"] = "supported";
 //console.log(window.DOMParser);
 	}
-	tests.push(test);
+	_push( tests, test );
+	
 //--------------------------------------
-/*
+
 	var test = {
-		"name" : "XMLHttpRequest",
+		"name" : "Ajax, XMLHttpRequest",
 		"result" : false
 	};
 	if ( typeof window.XMLHttpRequest === "function"){ // Mozilla, Safari, Opera ...
 		test["result"] = true;
-		test["msg"] = "typeof window.XMLHttpRequest === 'function'";
 	} 
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
-*/
 
 	var test = {
-		"name" : "Worker",
+		"name" : "HTML5, Worker",
 		"result" : false
 	};
 	if (typeof window.Worker != "undefined"){
 		test["result"] = true;
+		/*
 		test["links"]=[];
 		test["links"].push(
 			{
@@ -173,20 +250,22 @@ console.log(window.ActiveXObject);
 				"text" : "test_background_calculations.html"
 			}		
 		);
-		
+		*/
 	} else {
 		test["msg"] = "Object Worker not supported";
 	}
-	tests.push(test);
+	_push( tests, test );
+
 //--------------------------------------
 
 	var test = {
-		"name" : "Geolocation API",
+		"name" : "HTML5, Geolocation API",
 		"result" : false
 	};
 	if( navigator.geolocation ) {
 		test["result"] = true;
 		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
+		/*
 		test["links"]=[];
 		test["links"].push(
 			{
@@ -194,19 +273,21 @@ console.log(window.ActiveXObject);
 				"text" : "geolocation.html"
 			}		
 		);
+		*/
 	} else {
 		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
-		"name" : "File API",
+		"name" : "HTML5, File API",
 		"result" : false
 	};
 	if( window.File && window.FileList && window.FileReader ) {
 		test["result"] = true;
 		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
+		/*
 		test["links"]=[];
 		test["links"].push(
 			{
@@ -214,44 +295,50 @@ console.log(window.ActiveXObject);
 				"text" : "fileapi.html"
 			}		
 		);
+		*/
 	} else {
 		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
-		"name" : "WebSocket",
+		"name" : "HTML5, WebSocket",
 		"result" : false
 	};
-	if('WebSocket' in window) {
+	
+	//if('WebSocket' in window) {
+	if( window.WebSocket ) {
 		test["result"] = true;
 	} else {
 		test["msg"] = "This browser do not have support <b>WebSocket</b>.";
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
 		"name" : "localStorage",
 		"result" : false
 	};
-	if( 'localStorage' in window && window['localStorage'] ){
+	//if( 'localStorage' in window && window['localStorage'] ){
+	if( window['localStorage'] ){
 		test["result"] = true;
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
 		"name" : "sessionStorage",
 		"result" : false
 	};
-	if( 'sessionStorage' in window && window['sessionStorage'] ){
+	//if( 'sessionStorage' in window && window['sessionStorage'] ){
+	if( window['sessionStorage'] ){
 		test["result"] = true;
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
+/*
 	var test = {
 		"name" : "indexedDB",
 		"result" : false
@@ -460,38 +547,40 @@ console.log("window.EventSource = " + window.EventSource);
 	);
 	tests.push(test);
 //--------------------------------------
+*/
 
 window.onload = function(){
-	var log = document.getElementById("log");
+
+	var ua = getDOMobj("ua");
+	if( ua ){
+		var tpl = ua.innerHTML;
+		var html = tpl
+		.replace("{{userAgent}}", navigator.userAgent);
+		//.replace("{{product}}", navigator.product)
+		//.replace("{{appCodeName}}", navigator.appCodeName)
+		//.replace("{{appName}}", navigator.appName)
+		//.replace("{{appVersion}}", navigator.appVersion)
+		//.replace("{{appMinorVersion}}", navigator.appMinorVersion)
+		//.replace("{{cookieEnabled}}", navigator.cookieEnabled)
+		//.replace("{{language}}", navigator.language)
+		//.replace("{{systemLanguage}}", navigator.systemLanguage)
+		//.replace("{{userLanguage}}", navigator.userLanguage)
+		//.replace("{{onLine}}", navigator.onLine)
+		//.replace("{{platform}}", navigator.platform)
+		//.replace("{{cpuClass}}", navigator.cpuClass)
+		//.replace("{{oscpu}}", navigator.oscpu);
+		ua.innerHTML = html;
+	}
 	
-	var ua = document.getElementById("ua");
-	var tpl = ua.innerHTML;
-	var html = tpl
-	.replace("{{userAgent}}", navigator.userAgent)
-	.replace("{{product}}", navigator.product)
-	.replace("{{appCodeName}}", navigator.appCodeName)
-	.replace("{{appName}}", navigator.appName)
-	.replace("{{appVersion}}", navigator.appVersion)
-	.replace("{{appMinorVersion}}", navigator.appMinorVersion)
-	.replace("{{cookieEnabled}}", navigator.cookieEnabled)
-	.replace("{{language}}", navigator.language)
-	.replace("{{systemLanguage}}", navigator.systemLanguage)
-	.replace("{{userLanguage}}", navigator.userLanguage)
-	.replace("{{onLine}}", navigator.onLine)
-	.replace("{{platform}}", navigator.platform)
-	.replace("{{cpuClass}}", navigator.cpuClass)
-	.replace("{{oscpu}}", navigator.oscpu);
-	ua.innerHTML = html;
-	
-		var msg = "navigator, raw output";	
-		console.log(msg);	
+	var msg = "<h1>Navigator</h1>";	
+	_log(msg, "panel1");
+//console.log(msg);	
 		
-		document.getElementById("log").innerHTML += msg+"<br>";
-for( var item in navigator){
-		var msg = item + " : "+ navigator[item];
-console.log(msg);	
-		document.getElementById("log").innerHTML += msg+"<br>";
-}	
+	for( var item in navigator){
+		var msg = "<li> navigator." + item +" = "+ navigator[item] + "</li>";
+		_log( msg, "panel1");
+	}	
+	
 
 //console.log("navigator.plugins, raw output");	
 //for( var item in navigator.plugins){
@@ -512,6 +601,40 @@ console.log(msg);
 
 //---------------------------------
 
+//console.log(test);
+	var msg = "<h1>Tests</h1>";
+	_log(msg);
+
+	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	//for( var item in tests[0] ){
+		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
+		//_log( msg);
+	//}
+	var testHtml = "";
+	for( var n = 0; n < tests.length; n++){
+	
+		var html = testTpl.replace("{{name}}", tests[n]["name"])
+		.replace("{{result}}", tests[n]["result"]);
+		
+		var msg = tests[n]["msg"];
+		if(!msg){
+			msg = "";
+		}
+		html = html.replace("{{msg}}", msg );
+		
+		var test_links = tests[n]["test_links"];
+		var html_items = "";
+		if( test_links && test_links.length > 0  ){
+			html_items = "test_links !!!";
+		}
+		html = html.replace("{{test_links}}", html_items);
+		testHtml += html;
+		
+	}//next
+	_log( testHtml );
+	
+
+/*
 	var test_tpl = document.getElementById("test-tpl").innerHTML;
 //console.log( test_tpl);	
 	var test_links_tpl = document.getElementById("test-links-tpl").innerHTML;
@@ -545,10 +668,31 @@ console.log(msg);
 		}
 	}//next
 	tests_out.innerHTML = html;
+*/	
+
+	var msg = "<h1>Document</h1>";
+	_log(msg, "panel2");
+	_log("<h3>lastModified: " + document.lastModified + "<h3>", "panel2");
+/*
+	for( var prop in document){
+		var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
+		_log( msg, "panel2");
+	}
+
+//window.TouchEvent
+//window.ontouchend
+//window.ontouchcancel
+
+	var msg = "<h1>Window</h1>";
+	_log(msg, "panel3");
+
+	for( var prop in window){
+		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
+		_log( msg, "panel3");
+	}
+*/
+
 };//end load
-
-
-
 </script>
 
 
@@ -583,6 +727,7 @@ border:1px dashed;
 	
 	<div class="log panel" id="ua">
 		<h3 class="text-center">navigator.userAgent: {{userAgent}}</h3>
+<!--		
 		<ul>
 <li>navigator.product: <b>{{product}}</b></b></li>
 <li>navigator.appCodeName: <b>{{appCodeName}}</b></li>
@@ -597,10 +742,11 @@ border:1px dashed;
 <li>navigator.platform: <b>{{platform}}</b></li>
 <li>navigator.cpuClass: <b>{{cpuClass}}</b></li>
 <li>navigator.oscpu: <b>{{oscpu}}</b></li>
+-->
 		</ul>
 	</div>
 	
-	<div class="panel log">
+	<div class="panel log hide">
 		
 		<div class="panel-body">
 			<ul id="tests-out">
@@ -623,6 +769,24 @@ border:1px dashed;
 			<pre id="log"></pre>
 		</div>
 	</div>
+
+	<div class="panel">
+		<div class="panel-body">
+			<div id="panel1"></div>
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="panel-body">
+			<div id="panel2"></div>
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="panel-body">
+			<div id="panel3"></div>
+		</div>
+	</div>
 	
 </div><!-- end container -->
 
@@ -638,6 +802,7 @@ border:1px dashed;
 			<a href='{{item-link}}'>{{item-text}}</a>
 		</li>	
 </script>
+
 
 </body>
 </html>
