@@ -1,10 +1,10 @@
 <html>
 <head>
-<title>/www</title>
+	<title>test JS</title>
 
 <style>
 body{
-background:#5c5;
+background:#7c8;
 }
 .box1{
 background:red;
@@ -24,10 +24,16 @@ width:50%;
 
 <!--
 <scrit src="http://code.jquery.com/jquery-1.1.js"></script>
+	<script>
+//$(document).ready(function(){
+//alert('Ready!');
+
+//});
+	</script>
 -->
 
 <script>
-
+/*
 var ar = new Array(1,2);
 ar[3] = "a";
 ar[4] = "b";
@@ -40,6 +46,7 @@ document.writeln(msg);
 
 //var test_var1 ="a";
 //alert(test);
+alert( window["navigator"] );
 
 var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
 document.writeln("<h1>" +info+ "</h1>");
@@ -81,8 +88,9 @@ for( var prop in document){
 	var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
 	document.writeln(msg);
 }
+*/
 
-function onLoad(){
+//function onLoad(){
 
 //document.referrer
 //document.onkeydown=kdown;
@@ -103,22 +111,113 @@ function onLoad(){
 //alert(id2);
 //id2.innerHTML="test getObj (document.all)";
 
-}//end onLoad()
+//}//end onLoad()
+
+function getDOMobj(id){
+	var obj = false;
+
+	if( document["getElementById"] ){
+		var obj = document.getElementById(id);
+	}
+	
+	if( document["all"] ){
+		var obj = document.all[id];
+	}
+
+	return obj;
+}
+
+if(!window.console){
+	var console = {
+		"log" : function(msg){
+			var log = getDOMobj("log");
+			if(log){
+				log.innerHTML += "<p>" + msg +"<p>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+}
+//console.log("window.onload:" + window.onload);
+
+
+window.onload = function(){
+
+console.log("onLoad!");
+
+var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
+console.log("<h1>" +info+ "</h1>");
+console.log("lastModified: " + document.lastModified + "<br>");
+
+for( var prop in navigator){
+	var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
+	console.log(msg);
+}
+
+//console.log( "location" in document );
+
+//var test = "all" in document;
+//var test = document["all"];
+if(document.all){
+	console.log("document.all!");
+} else {
+	console.log("document.all not support...");
+}
+
+//var test = "getElementById" in document;
+//var test = document["getElementById"];
+if(document.getElementById){
+	console.log("document.getElementById!");
+} else {
+	console.log("document.getElementById not support...");
+}
+
+
+if( document.layers ){
+	var msg = "document.layers, length:" + document.layers.length;
+	console.log(msg);
+
+	for( var key in document.layers){
+		var msg = key +" = "+ document.layers[key];
+		console.log(msg);
+	}
+}
+	
+	
+	var id1 = getDOMobj("id1");
+	for(var key in id1){
+console.log(key+" : " + id1[key]);
+	}
+	
+}//end load
 
 </script>
 
 </head>
-<body onload="onLoad();">
 
+<!--
+<body onload="onLoad();">
+-->
+<body>
 	<h1>test JS, CSS, HTML</h1>
 <div class="container">
+
+<pre>
+http://tanalin.com/articles/ie-version-js/
+</pre>
+
+<input type="button" value="clear log" id="btn-clear" name="clear_button" />
+<div id="log"></div>
+	
 	<div class="pull-left">
 
 <div class="box1">box1</div>
 <p id="id1"></p>
 <p id="id2"></p>
-
 <button id="btn1">btn1</button>
+	
 
 <form method=GET" name="form1" action="">
 	<input type="text" name="txt1" value="some text">
@@ -132,8 +231,6 @@ onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no
 
 	</div>
 	<div class="pull-right">
-		<input type="button" value="clear log" id="btn-clear" name="clear_button" />
-		<div id="log"></div>
 	</div>
 </div>
 
@@ -572,7 +669,7 @@ onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no
 </body>
 
 <script>
-
+/*
 //document.open();
 //document.clear();
 //document.close();
@@ -584,18 +681,18 @@ if(document.forms){
 	if( document.form1 ){
 //alert(document.form1.txt1.value);
 		document.writeln( document.form1.txt1.value + "<br>" );
-/*
-	for( var key in document.form1){
-		var msg = key +" = "+ document.form1[key];
-		alert(msg);
-	}
-*/
+
+	//for( var key in document.form1){
+		//var msg = key +" = "+ document.form1[key];
+		//alert(msg);
+	//}
+
 	}
 
 } else {
 	document.writeln("document.forms not support...<br>");
 }
-
+*/
 </script>
 
 </html>
