@@ -26,16 +26,6 @@ width:50%;
 }
 </style>
 
-<!--
-<scrit src="http://code.jquery.com/jquery-1.1.js"></script>
-	<script>
-//$(document).ready(function(){
-//alert('Ready!');
-
-//});
-	</script>
--->
-
 <script>
 function init(){
 
@@ -84,6 +74,7 @@ console.log("function init()");
 	//var msg = key +" = "+ document.elements[key];
 	//alert(msg);
 //}
+/*
 var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
 console.log("<h1>" +info+ "</h1>");
 console.log("lastModified: " + document.lastModified + "<br>");
@@ -120,7 +111,6 @@ if(document.getElementById){
 	console.log("document.getElementById not support...");
 }
 
-
 if( document.layers ){
 	var msg = "document.layers, length:" + document.layers.length;
 	console.log(msg);
@@ -130,28 +120,41 @@ if( document.layers ){
 		console.log(msg);
 	}
 }
+*/	
 	
-	
-	var id1 = getDOMobj("id1");
-	for(var key in id1){
-console.log(key+" : " + id1[key]);
+	var layer1 = getDOMobj("layer1");
+alert(layer1);	
+	for(var key in layer1){
+console.log(key+" : " + layer1[key]);
 	}
 
 }//end init()
 
 function getDOMobj(id){
-	var obj = false;
-
-	if( document["getElementById"] ){
-		var obj = document.getElementById(id);
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
 	}
 	
-	if( document["all"] ){
-		var obj = document.all[id];
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
 	}
-
-	return obj;
-}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	if( document.layers ){
+//alert("Use document.layers " + document.layers);	
+		var obj = document.layers[id];
+		return obj;
+	}
+	
+	return false;
+}//end getDOMobj()
 
 if(!window.console){
 	var console = {
@@ -160,7 +163,7 @@ if(!window.console){
 			if(log){
 				log.innerHTML += "<p>" + msg +"<p>";
 			} else {
-				//alert(msg);
+				alert(msg);
 				//document.writeln(msg);
 			}
 		}
@@ -173,6 +176,7 @@ window.onload = function(){
 //console.log("window.onLoad!");
 }//end load
 
+/*
 if( !document["getElementById"] &&
 	!document["all"] ){
 //document.open();
@@ -217,7 +221,7 @@ if( !document["getElementById"] &&
 		document.writeln(msg);
 	}
 }
-
+*/
 
 </script>
 
@@ -225,6 +229,7 @@ if( !document["getElementById"] &&
 
 <body onload="init();">
 	<h1>test JS, CSS, HTML</h1>
+	
 <div class="container">
 
 <pre>
@@ -253,10 +258,12 @@ onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no
 <p><a href="./" onClick="history.back();return false;">history.back()</a></p>
 
 	</div>
+	
 	<div class="pull-right">
+<layer name="layer1" visibility="show">Layer1</layer>
 	</div>
 </div>
-
+<div style="clear:both;"></div>
 
 
 <pre>
@@ -716,6 +723,7 @@ if(document.forms){
 	document.writeln("document.forms not support...<br>");
 }
 */
+
 </script>
 
 </html>

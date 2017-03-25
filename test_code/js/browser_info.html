@@ -6,6 +6,16 @@
 	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<title>Browser info</title>
 	
+<!--
+<scrit src="http://code.jquery.com/jquery-1.1.js"></script>
+	<script>
+//$(document).ready(function(){
+//alert('Ready!');
+
+//});
+	</script>
+-->
+
 <script>
 function _log( msg, id){
 	if(!id){
@@ -40,10 +50,15 @@ function getDOMobj(id){
 		return obj;
 	}
 	
-	if( document["all"] ){
+	if( document.all ){
 		var obj = document.all[id];
 		return obj;
 	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
 	
 	return false;
 }//end getDOMobj()
@@ -133,6 +148,12 @@ window.onload = function(){
 			_log( msg, "info");
 		}
 		
+		_log("<h3>document.body<h3>", "info");
+		for( var prop in document.body){
+			var msg = "<li> document.body." + prop +" = "+ document.body[prop] + "</li>";
+			_log( msg, "info");
+		}
+		
 	}//end event
 	
 	
@@ -170,6 +191,11 @@ window.onload = function(){
 			btn4.onclick = btn4_click;
 		}
 	}//end event
+
+	var btn5 = getDOMobj("btn5");
+	btn5.onclick = function(){
+		btn5_click();
+	}//end event
 	
 };//end load
 
@@ -193,12 +219,6 @@ function btn3_click(event){
 function btn4_click(event){
 	event = event || window.event; //window.event, for old IE
 	event_target = event.target || event.srcElement; //srcElement, for old IE
-	
-		
-	for( var item in navigator){
-		msg = "<li> navigator." + item +" = "+ navigator[item] + "</li>";
-		_log( msg, "info");
-	}	
 
 	_log( "", "info");
 	var msg = "<h1>Window</h1>";
@@ -213,7 +233,12 @@ function btn4_click(event){
 		_log( msg, "info");
 	}
 	
-}//end btn3_click()
+}//end btn4_click()
+
+
+function btn5_click(){
+}//end btn5_click()
+
 
 function runTests(){
 
@@ -966,6 +991,7 @@ border:1px dashed;
 	<button id="btn2">get 'Document' info</button>
 	<button id="btn3">get 'Navigator' info</button>
 	<button id="btn4">get 'Window' info</button>
+	<button id="btn5">btn</button>
 	
 	<div class="panel">
 		<div class="panel-body">
