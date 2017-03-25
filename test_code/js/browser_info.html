@@ -58,7 +58,166 @@ function _push( ar, item){
 }// end _push()
 
 
-var tests = [];
+
+window.onload = function(){
+
+	var ua = getDOMobj("ua");
+	if( ua ){
+		var tpl = ua.innerHTML;
+		var html = tpl
+		.replace("{{userAgent}}", navigator.userAgent);
+		//.replace("{{product}}", navigator.product)
+		//.replace("{{appCodeName}}", navigator.appCodeName)
+		//.replace("{{appName}}", navigator.appName)
+		//.replace("{{appVersion}}", navigator.appVersion)
+		//.replace("{{appMinorVersion}}", navigator.appMinorVersion)
+		//.replace("{{cookieEnabled}}", navigator.cookieEnabled)
+		//.replace("{{language}}", navigator.language)
+		//.replace("{{systemLanguage}}", navigator.systemLanguage)
+		//.replace("{{userLanguage}}", navigator.userLanguage)
+		//.replace("{{onLine}}", navigator.onLine)
+		//.replace("{{platform}}", navigator.platform)
+		//.replace("{{cpuClass}}", navigator.cpuClass)
+		//.replace("{{oscpu}}", navigator.oscpu);
+		ua.innerHTML = html;
+	}
+	
+//console.log("navigator.plugins, raw output");	
+//for( var item in navigator.plugins){
+//console.log(item , navigator.plugins[item]);	
+//}	
+
+//console.log("navigator.mimeTypes, raw output");	
+//for( var item in navigator["mimeTypes"]){
+//console.log(item , navigator["mimeTypes"][item]);	
+//}	
+
+//console.log("window.XMLHttpRequest, raw output");	
+//console.log(typeof window.XMLHttpRequest);	
+//console.log(window.XMLHttpRequest.length);	
+//for( var item in window.XMLHttpRequest){
+//console.log(item + " : "+ window.XMLHttpRequest[item]);
+//}	
+
+//---------------------------------
+
+	var btn1 = getDOMobj("btn1");
+	btn1.onclick = function(event){
+        event = event || window.event; //window.event, for old IE
+		event_target = event.target || event.srcElement; //srcElement, for old IE
+
+		_log( "", "info");
+		var html = runTests();
+		_log( html, "info");
+		
+	}//end event
+
+	var btn2 = getDOMobj("btn2");
+	btn2.onclick = function(event){
+        event = event || window.event; //window.event, for old IE
+		event_target = event.target || event.srcElement; //srcElement, for old IE
+
+		//for( var prop in event){
+			//var msg = "<li> e." + prop +" = "+ event[prop] + "</li>";
+			//_log( msg);
+		//}
+		
+		_log( "", "info");
+		var msg = "<h1>Document</h1>";
+		_log(msg, "info");
+		
+		_log("<h3>lastModified: " + document.lastModified + "<h3>", "info");
+
+		for( var prop in document){
+			var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
+			_log( msg, "info");
+		}
+		
+	}//end event
+	
+	
+	//addEventListener / attachEvent (IE)
+	var msg = "";
+	var btn3 = getDOMobj("btn3");
+	if ( btn3.addEventListener ){
+//alert( "addEventListener " + btn3.addEventListener);	
+		msg = "Use addEventListener...";
+		btn3.addEventListener( "click", btn3_click, false);
+	} else {
+	
+//alert("attachEvent " + btn3.attachEvent);	
+		if( btn3.attachEvent ){
+			msg = "Use attachEvent...";
+			btn3.attachEvent( "onclick", btn3_click);
+		} else {
+			msg = "Use onclick...";
+			btn3.onclick = btn3_click;
+		}
+	}//end event		
+	_log(msg);
+
+	
+	var btn4 = getDOMobj("btn4");
+	if ( btn4.addEventListener ){
+//alert( "addEventListener " + btn4.addEventListener);	
+		btn4.addEventListener( "click", btn4_click, false);
+	} else {
+	
+//alert("attachEvent " + btn3.attachEvent);	
+		if( btn4.attachEvent ){
+			btn4.attachEvent( "onclick", btn4_click);
+		} else {
+			btn4.onclick = btn4_click;
+		}
+	}//end event
+	
+};//end load
+
+
+function btn3_click(event){
+	event = event || window.event; //window.event, for old IE
+	event_target = event.target || event.srcElement; //srcElement, for old IE
+	
+	_log( "", "info");
+	var msg = "<h1>Navigator</h1>";	
+	_log(msg, "info");
+//console.log(msg);	
+		
+	for( var item in navigator){
+		msg = "<li> navigator." + item +" = "+ navigator[item] + "</li>";
+		_log( msg, "info");
+	}	
+	
+}//end btn3_click()
+
+function btn4_click(event){
+	event = event || window.event; //window.event, for old IE
+	event_target = event.target || event.srcElement; //srcElement, for old IE
+	
+		
+	for( var item in navigator){
+		msg = "<li> navigator." + item +" = "+ navigator[item] + "</li>";
+		_log( msg, "info");
+	}	
+
+	_log( "", "info");
+	var msg = "<h1>Window</h1>";
+	_log(msg, "info");
+	
+	_log("<h3>window.TouchEvent: " + window.TouchEvent + "<h3>", "info");
+	_log("<h3>window.ontouchend: " + window.ontouchend + "<h3>", "info");
+	_log("<h3>window.ontouchcancel: " + window.ontouchcancel + "<h3>", "info");
+
+	for( var prop in window){
+		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
+		_log( msg, "info");
+	}
+	
+}//end btn3_click()
+
+function runTests(){
+
+	var tests = [];
 
 	if ( !tests.push ){ 
 		var test = {
@@ -70,7 +229,7 @@ var tests = [];
 		_push( tests, test );
 	};
 //--------------------------------------
-
+//alert(!window.console);
 	if (!window.console){ 
 		var test = {
 			"name" : "console",
@@ -79,8 +238,8 @@ var tests = [];
 		};
 		
 		_push( tests, test );
-		
-		var console = {
+
+		window.console = {
 			"log" : function( msg ){
 				var log = getDOMobj("log");
 				if(log){
@@ -91,7 +250,7 @@ var tests = [];
 				}
 			}
 		}
-		
+
 	};
 //--------------------------------------
 	
@@ -245,7 +404,8 @@ var tests = [];
 		"name" : "Ajax, XMLHttpRequest",
 		"result" : false
 	};
-	if ( typeof window.XMLHttpRequest === "function"){ // Mozilla, Safari, Opera ...
+//alert( typeof window.XMLHttpRequest);	
+	if ( typeof window.XMLHttpRequest !== "undefined"){ // Mozilla, Safari, Opera ...
 		test["result"] = true;
 	} 
 	_push( tests, test );
@@ -678,68 +838,13 @@ console.log(e);
 	_push( tests, test );
 	
 //--------------------------------------
-
-window.onload = function(){
-
-	var ua = getDOMobj("ua");
-	if( ua ){
-		var tpl = ua.innerHTML;
-		var html = tpl
-		.replace("{{userAgent}}", navigator.userAgent);
-		//.replace("{{product}}", navigator.product)
-		//.replace("{{appCodeName}}", navigator.appCodeName)
-		//.replace("{{appName}}", navigator.appName)
-		//.replace("{{appVersion}}", navigator.appVersion)
-		//.replace("{{appMinorVersion}}", navigator.appMinorVersion)
-		//.replace("{{cookieEnabled}}", navigator.cookieEnabled)
-		//.replace("{{language}}", navigator.language)
-		//.replace("{{systemLanguage}}", navigator.systemLanguage)
-		//.replace("{{userLanguage}}", navigator.userLanguage)
-		//.replace("{{onLine}}", navigator.onLine)
-		//.replace("{{platform}}", navigator.platform)
-		//.replace("{{cpuClass}}", navigator.cpuClass)
-		//.replace("{{oscpu}}", navigator.oscpu);
-		ua.innerHTML = html;
-	}
-	
-	var msg = "<h1>Navigator</h1>";	
-	_log(msg, "panel1");
-//console.log(msg);	
-		
-	for( var item in navigator){
-		var msg = "<li> navigator." + item +" = "+ navigator[item] + "</li>";
-		_log( msg, "panel1");
-	}	
-	
-
-//console.log("navigator.plugins, raw output");	
-//for( var item in navigator.plugins){
-//console.log(item , navigator.plugins[item]);	
-//}	
-
-//console.log("navigator.mimeTypes, raw output");	
-//for( var item in navigator["mimeTypes"]){
-//console.log(item , navigator["mimeTypes"][item]);	
-//}	
-
-//console.log("window.XMLHttpRequest, raw output");	
-//console.log(typeof window.XMLHttpRequest);	
-//console.log(window.XMLHttpRequest.length);	
-//for( var item in window.XMLHttpRequest){
-//console.log(item + " : "+ window.XMLHttpRequest[item]);
-//}	
-
-//---------------------------------
-
 //console.log(tests);
-	var msg = "<h1>Tests</h1>";
-	_log(msg);
-
 	//for( var item in tests[0] ){
 		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
 		//_log( msg);
 	//}
-	
+
+	//form HTML
 	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
 	
 	//var test_tpl = getDOMobj("test-tpl").innerHTML;
@@ -750,7 +855,7 @@ window.onload = function(){
 	var test_links_item_tpl = getDOMobj("test-links-item-tpl").innerHTML;
 //console.log( test_links_item_tpl );	
 	
-	var testHtml = "";
+	var testHtml = "<h1>Tests</h1>";
 	for( var n = 0; n < tests.length; n++){
 	
 		var html = testTpl.replace("{{name}}", tests[n]["name"])
@@ -780,68 +885,9 @@ window.onload = function(){
 		
 		testHtml += html;
 	}//next
-	_log( "<ul>" + testHtml + "</ul>");
 	
-
-/*
-	var test_tpl = document.getElementById("test-tpl").innerHTML;
-//console.log( test_tpl);	
-	var test_links_tpl = document.getElementById("test-links-tpl").innerHTML;
-	var test_links_item_tpl = document.getElementById("test-links-item-tpl").innerHTML;
-
-	var tests_out = document.getElementById("tests-out");
-	var html = "";
-	for (var n = 0; n < tests.length; n++){
-		if( tests[n] ){
-			var msg = tests[n]["msg"];
-			if(!msg){
-				var msg = "";
-			}
-			
-			var test_links = "";
-			if( tests[n]["links"] && tests[n]["links"].length > 0){
-				var html_items = "";
-				for( var n2 = 0; n2 < tests[n]["links"].length; n2++){
-					html_items += test_links_item_tpl
-					.replace("{{item-link}}", tests[n]["links"][n2]["link"])
-					.replace("{{item-text}}", tests[n]["links"][n2]["text"]);
-				};//next
-				test_links = test_links_tpl.replace("{{links}}", html_items);
-			}
-			
-			html += test_tpl
-			.replace("{{name}}", tests[n]["name"])
-			.replace("{{result}}", tests[n]["result"])
-			.replace("{{msg}}", msg)
-			.replace("{{test_links}}", test_links);
-		}
-	}//next
-	tests_out.innerHTML = html;
-*/	
-
-	var msg = "<h1>Document</h1>";
-	_log(msg, "panel2");
-	_log("<h3>lastModified: " + document.lastModified + "<h3>", "panel2");
-/*
-	for( var prop in document){
-		var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
-		_log( msg, "panel2");
-	}
-
-//window.TouchEvent
-//window.ontouchend
-//window.ontouchcancel
-
-	var msg = "<h1>Window</h1>";
-	_log(msg, "panel3");
-
-	for( var prop in window){
-		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
-		_log( msg, "panel3");
-	}
-*/
-
-};//end load
+	return "<ul>" + testHtml + "</ul>";
+}//end runTests()
 </script>
 
 
@@ -855,6 +901,8 @@ width:30%;
 opacity:0.8;
 padding:10px;
 */
+}
+.panel{
 background-color:#ffffcc;
 border:1px dashed;
 }
@@ -914,8 +962,12 @@ border:1px dashed;
 		
 	</div>
 -->
-
-	<div class="panel log">
+	<button id="btn1">run tests</button>
+	<button id="btn2">get 'Document' info</button>
+	<button id="btn3">get 'Navigator' info</button>
+	<button id="btn4">get 'Window' info</button>
+	
+	<div class="panel">
 		<div class="panel-body">
 			<div id="log"></div>
 		</div>
@@ -923,21 +975,11 @@ border:1px dashed;
 
 	<div class="panel">
 		<div class="panel-body">
-			<div id="panel1"></div>
+			<div id="info"></div>
 		</div>
 	</div>
 
-	<div class="panel">
-		<div class="panel-body">
-			<div id="panel2"></div>
-		</div>
-	</div>
-
-	<div class="panel">
-		<div class="panel-body">
-			<div id="panel3"></div>
-		</div>
-	</div>
+	
 	
 </div><!-- end container -->
 
