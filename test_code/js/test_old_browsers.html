@@ -39,6 +39,41 @@ width:50%;
 <script>
 function init(){
 
+//https://msdn.microsoft.com/ru-ru/library/8ka90k2e(v=vs.94).aspx
+//https://msdn.microsoft.com/ru-ru/library/s59bkzce(v=vs.94).aspx		
+/*@cc_on @*/
+/*@
+	console.log("JavaScript version: " + @_jscript_version);
+	console.log("@_jscript_build: " + @_jscript_build);
+	
+	console.log("@_win32: " + @_win32);
+	console.log("@_win16: " + @_win16);
+	console.log("@_mac: " + @_mac);
+	console.log("CPU DEC Alpha:" + @_alpha);
+	console.log("CPU Intel:" + @_x86);
+	console.log("CPU Motorola 680x0:" + @_mc680x0);
+	console.log("CPU Motorola PowerPC:" + @_PowerPC);
+	
+    @if (@_win32)
+        console.log("Running on a 32-bit version of Windows.");
+    @elif (@_win16)
+        console.log("Running on a 16-bit version of Windows.");
+    @else
+        console.log("Running on a different operating system.");
+    @end	
+	
+	@set @myvar1 = 12
+	
+	@if (@_jscript_version >= 5)
+	//try {
+	//...
+	//} catch (e) {
+	//...
+	//}
+	@end
+	
+@*/
+
 //document.referrer
 //document.onkeydown=kdown;
 //document.createElement

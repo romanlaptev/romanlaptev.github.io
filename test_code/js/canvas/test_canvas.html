@@ -3,12 +3,16 @@
 <head>
 	<meta charset="utf8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href="../css/bootstrap335.min.css" rel="stylesheet">	
 	
 	<script>
-window.onload = function(){	
-		var context = document.querySelector("#first-canvas").getContext("2d");
-		//var ctx = document.getElementById("ctx").getContext("2d");
+window.onload = function(){
+		if(document.querySelector){
+			var context = document.querySelector("#first-canvas").getContext("2d");
+			//var ctx = document.getElementById("ctx").getContext("2d");
+		} else {
+			var context = document.getElementById("first-canvas").getContext("2d");
+		}
 		
 		
 		// Толщина и цвет для всех линий

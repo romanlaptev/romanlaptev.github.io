@@ -290,20 +290,22 @@ html += "</ul>";
 						//------------------- метки
 						if ( obj["tags"] != undefined ) 
 						{
-							html_url = html_url.replace( "#tags", "1" );
+							if( typeof tags_arr.indexOf === "function"){//IE6 not support array.indexOf
+								html_url = html_url.replace( "#tags", "1" );
 
-							var tags = obj["tags"].split(",");
-							var html_tags = "";
-							for (var item in tags ){
-								//save tag in array
-								if ( tags_arr.indexOf( tags[item] ) == -1 )
-								{
-									tags_arr.push( tags[item] );
+								var tags = obj["tags"].split(",");
+								var html_tags = "";
+								for (var item in tags ){
+									//save tag in array
+										
+									if ( tags_arr.indexOf( tags[item] ) == -1 ){
+										tags_arr.push( tags[item] );
+									}
+									//form tag html
+									html_tags += tags_tpl_item.replace( "#tag", tags[item] );
 								}
-								//form tag html
-								html_tags += tags_tpl_item.replace( "#tag", tags[item] );
+								html_url += tags_tpl.replace( "#tags", html_tags );
 							}
-							html_url += tags_tpl.replace( "#tags", html_tags );
 						}
 						else
 						{

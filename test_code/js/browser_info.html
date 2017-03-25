@@ -18,7 +18,7 @@ function _log( msg, id){
 		if( msg.length == 0){
 			output.innerHTML = "";
 		} else {
-			output.innerHTML += "<p>" + msg +"<p>";
+			output.innerHTML += msg;
 		}
 		
 	} else {
@@ -125,7 +125,8 @@ var tests = [];
 	};
 	if(window.navigator.msPointerEnabled) {
 		test["result"] = true;
-		test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
+		//test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
+		test["msg"] = "window.navigator.msPointerEnabled === true";
 	}
 	_push( tests, test );
 //--------------------------------------
@@ -193,6 +194,20 @@ var tests = [];
 //--------------------------------------
 
 	var test = {
+		"name" : "JSON support",
+		"result" : false
+	};
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+	} else {
+		test["msg"] = "typeof JSON :" + typeof JSON;
+		test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
+		
+	}
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
 		"name" : "window.ActiveXObject",
 		"result" : false
 	};
@@ -236,21 +251,122 @@ var tests = [];
 	_push( tests, test );
 //--------------------------------------
 
+	if( test["result"] ){
+/*@cc_on @*/
+/*@
+	@if (@_jscript_version >= 5)
+@*/
+		try{
+			var xhr = new XMLHttpRequest();
+			var test = {
+				"name" : "Ajax, XMLHttpRequest2 support",
+				"result" : false,
+				"msg" : " 'responseType' not in XMLHttpRequest object"
+			};
+			if ( typeof xhr.responseType !== "undefined" ){
+				test["result"] = true;
+				test["msg"] = "'responseType' in XMLHttpRequest object";
+			} 
+			_push( tests, test );
+		}catch(e){
+console.log(e);
+		}
+/*@
+	@else
+@*/
+		test["msg"] = "XMLHttpRequest NOT created";
+/*@
+		test["msg"] += ", JavaScript version: " + @_jscript_version;
+	@end
+@*/
+	}
+//--------------------------------------
+
+	var test = {
+		"name" : "Ajax, MSXML 1, Microsoft.XMLHTTP",
+		"result" : false,
+		"msg" : "ReferenceError: ActiveXObject is not defined"
+	};
+
+	if( window.ActiveXObject){
+/*@cc_on @*/
+/*@
+	@if (@_jscript_version >= 5)
+@*/	
+		try {
+			var request = new ActiveXObject("Microsoft.XMLHTTP");
+			test["result"] = true;
+			test["msg"] = "ActiveXObject('Microsoft.XMLHTTP') created";
+/*@		
+			test["msg"] += ", JavaScript version: " + @_jscript_version;
+@*/
+		} catch(e){
+			test["msg"] = e.description;
+		}
+/*@
+	@else
+@*/	
+		test["msg"] = "ActiveXObject('Microsoft.XMLHTTP') NOT created";
+/*@
+		test["msg"] += ", JavaScript version: " + @_jscript_version;
+	@end
+@*/
+	}
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "Ajax, MSXML 2, Msxml2.XMLHTTP",
+		"result" : false,
+		"msg" : "ReferenceError: ActiveXObject is not defined"
+	};
+
+	if( window.ActiveXObject){
+/*@
+	@if (@_jscript_version >= 5)
+@*/	
+		try {
+			var request = new ActiveXObject('Msxml2.XMLHTTP');
+			test["result"] = true;
+			test["msg"] = "ActiveXObject('Msxml2.XMLHTTP') created";
+/*@		
+			test["msg"] += ", JavaScript version: " + @_jscript_version;
+@*/
+		} catch(e){
+		
+//for( var key in e){
+//var msg = key +" : "+ e[key];
+//alert(msg);
+//}		
+			test["msg"] = e.description;
+		}
+/*@		
+	@else
+@*/	
+		test["msg"] = "ActiveXObject('Msxml2.XMLHTTP') NOT created";
+/*@		
+		test["msg"] += ", JavaScript version: " + @_jscript_version;
+	@end
+@*/
+	}
+	_push( tests, test );
+//--------------------------------------
+
+
 	var test = {
 		"name" : "HTML5, Worker",
 		"result" : false
 	};
 	if (typeof window.Worker != "undefined"){
 		test["result"] = true;
-		/*
 		test["links"]=[];
-		test["links"].push(
-			{
-				"link" : "worker/test_background_calculations.html", 
-				"text" : "test_background_calculations.html"
-			}		
-		);
-		*/
+		
+		var obj = {
+			"link" : "worker/test_background_calculations.html", 
+			"text" : "test_background_calculations.html"
+		};
+		_push( test["links"], obj );
+
 	} else {
 		test["msg"] = "Object Worker not supported";
 	}
@@ -265,15 +381,13 @@ var tests = [];
 	if( navigator.geolocation ) {
 		test["result"] = true;
 		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
-		/*
 		test["links"]=[];
-		test["links"].push(
-			{
-				"link" : "geolocation.html", 
-				"text" : "geolocation.html"
-			}		
-		);
-		*/
+		var obj = {
+			"link" : "geolocation.html", 
+			"text" : "geolocation.html"
+		};
+		_push( test["links"], obj );
+		
 	} else {
 		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
 	}
@@ -287,15 +401,12 @@ var tests = [];
 	if( window.File && window.FileList && window.FileReader ) {
 		test["result"] = true;
 		test["msg"] = "Your browser support <b> window.File && window.FileList && window.FileReader</b>";
-		/*
 		test["links"]=[];
-		test["links"].push(
-			{
-				"link" : "fileapi.html", 
-				"text" : "fileapi.html"
-			}		
-		);
-		*/
+		var obj = {
+			"link" : "fileapi.html", 
+			"text" : "fileapi.html"
+		};
+		_push( test["links"], obj );
 	} else {
 		test["msg"] = "Your browser no supported <b> window.File && window.FileList && window.FileReader</b>";
 	}
@@ -338,17 +449,17 @@ var tests = [];
 	_push( tests, test );
 //--------------------------------------
 
-/*
 	var test = {
 		"name" : "indexedDB",
 		"result" : false
 	};
 	
 	//window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-	//if (!window.indexedDB) {
-	var test_idb = "indexedDB" in window;
-	if(!test_idb) {
-		test["msg"] = "IndexedDB not supported, " + test_idb;
+	if (!window.indexedDB) {
+	//var test_idb = "indexedDB" in window;
+	//var test_idb = typeof window.indexedDB;
+	//if(!test_idb) {
+		test["msg"] = "IndexedDB not supported, ";
 		test["msg"] += "<br>window.indexedDB = " + window.indexedDB;
 		test["msg"] += "<br>window.mozIndexedDB = " + window.mozIndexedDB;
 		test["msg"] += "<br>window.webkitIndexedDB = " + window.webkitIndexedDB;
@@ -360,34 +471,34 @@ var tests = [];
 		test["msg"] += "<br>window.mozIndexedDB = " + window.mozIndexedDB;
 		test["msg"] += "<br>window.webkitIndexedDB = " + window.webkitIndexedDB;
 		test["msg"] += "<br>window.msIndexedDB = " + window.msIndexedDB;
-		
 		test["links"]=[];
-		test["links"].push(
-			{
-				"link" : "webstorage/test_DB.html", 
-				"text" : "test_DB.html"
-			}		
-		);
-		test["links"].push(
-			{
-				"link" : "webstorage/test_indexeddb.html", 
-				"text" : "test_indexeddb.html"
-			}		
-		);
-		test["links"].push(
-			{
-				"link" : "webstorage/mobapp.database/test/test_mobapp_db.html", 
-				"text" : "test_mobapp_db.html"
-			}		
-		);
-		test["links"].push(
-			{
-				"link" : "webstorage/mobapp.database/test/test_idb.html", 
-				"text" : "test_idb.html"
-			}		
-		);
+		
+		var obj = {
+			"link" : "webstorage/test_DB.html", 
+			"text" : "test_DB.html"
+		};
+		_push( test["links"], obj );
+		
+		var obj = {
+			"link" : "webstorage/test_indexeddb.html", 
+			"text" : "test_indexeddb.html"
+		};
+		_push( test["links"], obj );
+		
+		var obj = {
+			"link" : "webstorage/mobapp.database/test/test_mobapp_db.html", 
+			"text" : "test_mobapp_db.html"
+		};
+		_push( test["links"], obj );
+		
+		var obj = {
+			"link" : "webstorage/mobapp.database/test/test_idb.html", 
+			"text" : "test_idb.html"
+		};
+		_push( test["links"], obj );
+		
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
@@ -397,9 +508,9 @@ var tests = [];
 	if (window.openDatabase) {
 		test["result"] = true;
 	}
-	tests.push(test);
-//--------------------------------------
+	_push( tests, test );
 
+//--------------------------------------
 	var test = {
 		"name" : "Application Cache API",
 		"result" : false
@@ -409,86 +520,92 @@ var tests = [];
 		test["msg"] = "window.applicationCache is supported, " + window.applicationCache;
 		
 		test["links"]=[];
-		test["links"].push(	{
-				"link" : "appcache/test_appcache.html", 
-				"text" : "test_appcache.html"
-		});
+		var obj = {
+			"link" : "appcache/test_appcache.html", 
+			"text" : "test_appcache.html"
+		};
+		_push( test["links"], obj );
 		
 	} else {
 		test["msg"] = "window.applicationCache not supported, " + window.applicationCache;
 	}
 	
-	tests.push(test);
+	_push( tests, test );
+	
 //--------------------------------------
-
 	var test = {
-		"name" : "Service Worker API",
+		"name" : "HTML5, Service Worker API",
 		"result" : false
 	};
-	var result = 'serviceWorker' in navigator;
-	if ( 'serviceWorker' in navigator) {
+	var result = navigator.serviceWorker;
+//alert(result);	
+	if ( result ) {
 		test["result"] = true;
 		test["msg"] = "serviceWorker is supported, " + result;
 		test["msg"] += "<br>https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers ";
 
 		test["links"]=[];
-		test["links"].push(	{
-				"link" : "service_worker/test_service_worker.html", 
-				"text" : "test_service_worker.html"
-		});
+		var obj = {
+			"link" : "service_worker/test_service_worker.html", 
+			"text" : "test_service_worker.html"
+		};
+		_push( test["links"], obj );
+		
 	} else {
 		test["msg"] = "serviceWorker not supported, "  + result;
 	}
-	
-	tests.push(test);
+
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
-		"name" : "Server side events",
+		"name" : "HTML5, Server side events",
 		"result" : false
 	};
 	if( typeof window.EventSource === "undefined"){
 		test["msg"] = "No server-sent events support";
 	} else {
 		test["result"] = true;
-console.log("window.EventSource = " + window.EventSource);
+		test["msg"] = "window.EventSource = " + typeof window.EventSource;
 	};
-	tests.push(test);
+	_push( tests, test );
+	
 //--------------------------------------
 
 	var test = {
-		"name" : "JSON support",
+		"name" : "HTML5, isCanvasSupported",
 		"result" : false
 	};
-	if (typeof JSON === 'object') {
-		test["result"] = true;
-	} else {
-		test["msg"] = "typeof JSON :" + typeof JSON;
-	}
-	tests.push(test);
-//--------------------------------------
-
-	var test = {
-		"name" : "isCanvasSupported",
-		"result" : false
-	};
-	try {
-		document.createElement("canvas").getContext("2d");
-		test["result"] = true;
-		test["msg"] = "HTML5 Canvas is supported in this browser";
-		test["links"]=[];
-		test["links"].push({"link" : "canvas/test_canvas.html", "text" : "test_canvas.html"});
-		test["links"].push(
-			{
+/*@
+	@if (@_jscript_version >= 5)
+@*/	
+		try {
+			document.createElement("canvas").getContext("2d");
+			test["result"] = true;
+			test["msg"] = "HTML5 Canvas is supported in this browser";
+			
+			test["links"]=[];
+			var obj = {
+				"link" : "canvas/test_canvas.html", 
+				"text" : "test_canvas.html"
+			};
+			_push( test["links"], obj );
+			
+			var obj = {
 				"link" : "canvas/graphics_curves.html", 
 				"text" : "graphics_curves.html"
-			}		
-		);
-	} catch (e) {
-		test["msg"] = "HTML5 Canvas is not supported in this browser";
-		test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number;
-	}
-	tests.push(test);
+			};
+			_push( test["links"], obj );
+			
+		} catch (e) {
+		
+			test["msg"] = "HTML5 Canvas is not supported in this browser";
+			test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number+ ", "+e.description;
+		}
+/*@		
+	@end
+@*/
+	_push( tests, test );
 //--------------------------------------
 
 	var test = {
@@ -499,9 +616,12 @@ console.log("window.EventSource = " + window.EventSource);
 			document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect) ) {
 		test["result"] = true;
 	}
-	tests.push(test);
+	_push( tests, test );
 //--------------------------------------
 
+/*@
+	@if (@_jscript_version >= 5)
+@*/	
 	var test = {
 		"name" : "SVG in text/html",
 		"result" : false
@@ -514,40 +634,50 @@ console.log("window.EventSource = " + window.EventSource);
 			e.firstChild instanceof window.SVGSVGElement)	
 	) {
 		test["result"] = true;
-	}
-
-	test["links"]=[];
-	test["links"].push(
-		{
+		
+		test["links"]=[];
+		var obj = {
 			"link" : "../html/svg/ex1.html", 
 			"text" : "ex1.html"
-		}		
-	);
-	test["links"].push(
-		{
+		};
+		_push( test["links"], obj );
+		
+		
+		var obj = {
 			"link" : "../html/svg/svg_samples.html", 
 			"text" : "svg_samples.html"
-		}		
-	);
+		};
+		_push( test["links"], obj );
 	
-	tests.push(test);
+	}
+/*@		
+		test["msg"] = "windows, JavaScript version: " + @_jscript_version;
+@*/
+
+	_push( tests, test );
+/*@		
+	@end
+@*/
+
 //--------------------------------------
 
 	var test = {
 		"name" : "Promise support",
-		"result" : typeof window.Promise !== "undefined"
+		"result" : false
 	};
-	
-	test["links"]=[];
-	test["links"].push(
-		{
+	if( typeof window.Promise !== "undefined" ){
+		test["result"]= true;
+		test["links"]=[];
+		var obj = {
 			"link" : "test_promise.html", 
 			"text" : "test_promise.html"
-		}		
-	);
-	tests.push(test);
+		};
+		_push( test["links"], obj );
+	}
+	
+	_push( tests, test );
+	
 //--------------------------------------
-*/
 
 window.onload = function(){
 
@@ -601,15 +731,25 @@ window.onload = function(){
 
 //---------------------------------
 
-//console.log(test);
+//console.log(tests);
 	var msg = "<h1>Tests</h1>";
 	_log(msg);
 
-	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
 	//for( var item in tests[0] ){
 		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
 		//_log( msg);
 	//}
+	
+	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	
+	//var test_tpl = getDOMobj("test-tpl").innerHTML;
+//console.log( test_tpl );	
+
+	var test_links_tpl = getDOMobj("test-links-tpl").innerHTML;
+//console.log( test_links_tpl );	
+	var test_links_item_tpl = getDOMobj("test-links-item-tpl").innerHTML;
+//console.log( test_links_item_tpl );	
+	
 	var testHtml = "";
 	for( var n = 0; n < tests.length; n++){
 	
@@ -622,16 +762,25 @@ window.onload = function(){
 		}
 		html = html.replace("{{msg}}", msg );
 		
-		var test_links = tests[n]["test_links"];
-		var html_items = "";
-		if( test_links && test_links.length > 0  ){
-			html_items = "test_links !!!";
+		var test_links = "";
+		if( tests[n]["links"] ){
+			var test_links = tests[n]["links"];
+			if( test_links.length > 0  ){
+				var html_items = "";
+				for( var n2 = 0; n2 < test_links.length; n2++){
+					html_items += test_links_item_tpl
+					.replace("{{item-link}}", test_links[n2]["link"])
+					.replace("{{item-text}}", test_links[n2]["text"]);
+				};//next
+				test_links = test_links_tpl.replace("{{links}}", html_items);
+//console.log( test_links );		
+			}
 		}
-		html = html.replace("{{test_links}}", html_items);
-		testHtml += html;
+		html = html.replace("{{test_links}}", test_links);
 		
+		testHtml += html;
 	}//next
-	_log( testHtml );
+	_log( "<ul>" + testHtml + "</ul>");
 	
 
 /*
@@ -742,10 +891,11 @@ border:1px dashed;
 <li>navigator.platform: <b>{{platform}}</b></li>
 <li>navigator.cpuClass: <b>{{cpuClass}}</b></li>
 <li>navigator.oscpu: <b>{{oscpu}}</b></li>
--->
 		</ul>
+-->
 	</div>
 	
+<!--	
 	<div class="panel log hide">
 		
 		<div class="panel-body">
@@ -763,10 +913,11 @@ border:1px dashed;
 		</div>
 		
 	</div>
+-->
 
 	<div class="panel log">
 		<div class="panel-body">
-			<pre id="log"></pre>
+			<div id="log"></div>
 		</div>
 	</div>
 
@@ -791,6 +942,19 @@ border:1px dashed;
 </div><!-- end container -->
 
 <!-- TEMPLATES -->
+
+<script type="text/template" id="test-tpl">
+			<ul>
+					<li class="panel-group">
+<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
+<div class="description">
+	<small>{{msg}}</small>
+</div>
+{{test_links}}
+					</li>
+			</ul>
+</script>
+
 <script type="text/template" id="test-links-tpl">
 	<ul class="form-control list-inline"><b>test pages</b>:
 		{{links}}

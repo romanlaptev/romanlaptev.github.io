@@ -1,19 +1,19 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
 	<title>test ajax</title>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<script>
 		window.onload = function() {
 		
 			document.getElementById("ajax-btn").onclick = function() {
 				//var url = "load_html.html";
 				
-				//Запрос из постороннего источника заблокирован: 
-				//Политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
-				//(Причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
+				//запрос из постороннего источника заблокирован: 
+				//политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
+				//(причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
 				var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
 
 				var xhr = new XMLHttpRequest();
