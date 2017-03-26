@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://yastatic.net/jquery-ui/1.11.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.16/themes/sunny/jquery-ui.css">
+-->
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap335.min.css">
+<script>
+function getDOMobj(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	return false;
+}//end getDOMobj()
+
+if(!window.console){
+	var console = {
+		"log" : function(msg){
+			var log = getDOMobj("log");
+			if(log){
+				log.innerHTML += "<p>" + msg +"<p>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+}
+
+function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+	var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
+	if(!id){
+		var id = "log";
+	}
+	
+	var output = getDOMobj(id);
+	if( output ){
+	
+		if( msg.length == 0){
+//alert( typeof output.innerText);	
+//alert( typeof output.innerHTML);	
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += msg;
+		}
+		
+	} else {
+		alert(msg);
+		//document.writeln(msg);
+	}
+	
+}//end _log()
+
+window.onload = function(){
+
+	var timerId = null;
+	var counter = 0;
+	
+	//var info = getDOMobj("info");
+//alert( typeof info.innerText);	
+//alert( typeof info.innerHTML);	
+//info.innerHTML = "test!";
+
+	//var info2 = getDOMobj("info2");
+	//var out = getDOMobj("counter");
+	
+	var btn1 = getDOMobj("btn1");
+	var btn2 = getDOMobj("btn2");
+	var btn3 = getDOMobj("btn3");
+	var btn4 = getDOMobj("btn4");
+	
+	btn1.onclick = function(){
+		var _sleep = 5;
+		
+		//info.innerText = "Wait " + _sleep + " sec...";
+		var msg = "Wait " + _sleep + " sec...";
+		_log( msg, "info" );
+		
+		timerId = setTimeout(function(){
+		
+			//info.innerText = "Stop timer id: " + timerId;
+			var msg = "Stop timer id: " + timerId;
+			_log( msg, "info" );
+			
+		}, _sleep*1000 );
+console.log("start timerId: " + timerId);
+	}//end event
+	
+	btn2.onclick = function(){
+	
+		//info.innerText = "clearTimeout(), cancel timer id:" + timerId;
+		var msg = "clearTimeout(), cancel timer id:" + timerId;
+		_log("", "info");
+		_log(msg, "info");
+		
+//console.log("timerId = " + timerId);		
+		clearTimeout(timerId);
+	}//end event
+
+	
+	
+	btn3.onclick = function(){
+		var interval = 1;
+		
+		//info2.innerText = "Repeat action with interval :" + interval + " sec...";
+		var msg = "Repeat action with interval :" + interval + " sec...";
+		_log(msg, "info2");
+		
+		timerId = setInterval(function(){
+			counter++;
+			
+			//out.innerText = "counter: " + counter;
+			var msg = "counter: " + counter;
+			_log("", "counter");
+			_log(msg, "counter");
+			
+		}, interval*1000 );
+console.log("start timerId: " + timerId);
+	}//end event
+	
+	btn4.onclick = function(){
+	
+		//info2.innerText = "clearInterval(), cancel timer id:" + timerId;
+		var msg = "clearInterval(), cancel timer id:" + timerId;
+		_log("", "info2");
+		_log(msg, "info2");
+		
+		counter = 0;
+		clearInterval(timerId);
+	}//end event
+
+	
+}//load
+
+</script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+<style>
+.log{
+	background-color:#ffffcc;
+	border:1px dashed;
+}
+</style>
+	<div class="panel log">
+		<div class="panel-body">Log panel
+			<div id="log"></div>
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="">
+			<h2>test setTimeout</h2>
+		</div>
+		
+		<div class="panel-body">
+			<p id="info"></p>
+			<div class="">
+				<button id="btn1" class="btn btn-info">run timer, setTimeout()</button>
+				<button id="btn2" class="btn btn-danger">stop, clearTimeout()</button>
+			</div>
+		</div>
+		
+	</div>	
+
+	<div class="panel">
+		<div class="">
+			<h2>test setInterval</h2>
+		</div>
+		
+		<div class="panel-body">
+			<div>
+				<p id="info2"></p>
+				<p id="counter"></p>
+			</div>
+			<div class="">
+				<button id="btn3" class="btn btn-success">run timer, setInterval()</button>
+				<button id="btn4" class="btn btn-warning">stop, clearInterval()</button>
+			</div>
+		</div>
+		
+	</div>	
+	
+	<pre>
+https://learn.javascript.ru/settimeout-setinterval
+http://javascript.ru/setTimeout
+https://developer.mozilla.org/ru/docs/Web/API/WindowTimers/setTimeout
+http://alljs.ru/articles/timeout/overview	
+http://javascript.itsoft.ru/methods/setTimeout.html
+	</pre>
+	
+</div>	
+	
+</body>
+
+</html>

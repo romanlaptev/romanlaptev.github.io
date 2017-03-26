@@ -18,6 +18,16 @@
 
 <script>
 function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+	var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
 	if(!id){
 		var id = "log";
 	}
@@ -122,9 +132,17 @@ window.onload = function(){
 		event_target = event.target || event.srcElement; //srcElement, for old IE
 
 		_log( "", "info");
+
+		var startDate = new Date();
+//_log( "startDate = " + startDate);
 		var html = runTests();
 		_log( html, "info");
 		
+		var endDate = new Date();
+//_log( ", endDate = " + endDate);
+		var runTime = (endDate - startDate) / 1000;
+_log( "runTests(), runTime = " + runTime + " sec.<br>");
+
 	}//end event
 
 	var btn2 = getDOMobj("btn2");
@@ -138,44 +156,53 @@ window.onload = function(){
 		//}
 		
 		_log( "", "info");
+		var startDate = new Date();
+//_log( "startDate = " + startDate);
+
 		var msg = "<h1>Document</h1>";
 		_log(msg, "info");
 		
 		_log("<h3>lastModified: " + document.lastModified + "<h3>", "info");
-
+		
 		for( var prop in document){
 			var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
 			_log( msg, "info");
 		}
 		
+/*
 		_log("<h3>document.body<h3>", "info");
 		for( var prop in document.body){
 			var msg = "<li> document.body." + prop +" = "+ document.body[prop] + "</li>";
 			_log( msg, "info");
 		}
+*/
+		var endDate = new Date();
+//_log( ", endDate = " + endDate);
+		var runTime = (endDate - startDate) / 1000;
+_log( "Document info, runTime = " + runTime + " sec.<br>");
 		
 	}//end event
 	
 	
 	//addEventListener / attachEvent (IE)
-	var msg = "";
+	//var msg = "";
 	var btn3 = getDOMobj("btn3");
 	if ( btn3.addEventListener ){
 //alert( "addEventListener " + btn3.addEventListener);	
-		msg = "Use addEventListener...";
+		//msg = "Use addEventListener...";
 		btn3.addEventListener( "click", btn3_click, false);
 	} else {
 	
 //alert("attachEvent " + btn3.attachEvent);	
 		if( btn3.attachEvent ){
-			msg = "Use attachEvent...";
+			//msg = "Use attachEvent...";
 			btn3.attachEvent( "onclick", btn3_click);
 		} else {
-			msg = "Use onclick...";
+//var msg = "Use onclick...<br>";
+//_log(msg);
 			btn3.onclick = btn3_click;
 		}
 	}//end event		
-	_log(msg);
 
 	
 	var btn4 = getDOMobj("btn4");
@@ -205,6 +232,9 @@ function btn3_click(event){
 	event_target = event.target || event.srcElement; //srcElement, for old IE
 	
 	_log( "", "info");
+	var startDate = new Date();
+//_log( "startDate = " + startDate);
+
 	var msg = "<h1>Navigator</h1>";	
 	_log(msg, "info");
 //console.log(msg);	
@@ -214,6 +244,11 @@ function btn3_click(event){
 		_log( msg, "info");
 	}	
 	
+	var endDate = new Date();
+//_log( ", endDate = " + endDate);
+	var runTime = (endDate - startDate) / 1000;
+_log( "Navigator info, runTime = " + runTime + " sec.<br>");
+	
 }//end btn3_click()
 
 function btn4_click(event){
@@ -221,6 +256,9 @@ function btn4_click(event){
 	event_target = event.target || event.srcElement; //srcElement, for old IE
 
 	_log( "", "info");
+	var startDate = new Date();
+//_log( "startDate = " + startDate);
+	
 	var msg = "<h1>Window</h1>";
 	_log(msg, "info");
 	
@@ -232,6 +270,11 @@ function btn4_click(event){
 		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
 		_log( msg, "info");
 	}
+	
+	var endDate = new Date();
+//_log( ", endDate = " + endDate);
+	var runTime = (endDate - startDate) / 1000;
+_log( "Window info, runTime = " + runTime + " sec.<br>");
 	
 }//end btn4_click()
 
@@ -994,13 +1037,13 @@ border:1px dashed;
 	<button id="btn5">btn</button>
 	
 	<div class="panel">
-		<div class="panel-body">
+		<div class="panel-body">Log panel
 			<div id="log"></div>
 		</div>
 	</div>
 
 	<div class="panel">
-		<div class="panel-body">
+		<div class="panel-body">Info panel
 			<div id="info"></div>
 		</div>
 	</div>
