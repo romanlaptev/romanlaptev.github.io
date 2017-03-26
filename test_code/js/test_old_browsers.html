@@ -27,30 +27,45 @@ width:50%;
 </style>
 
 <script>
+
+function _log( msg ){
+	//alert(msg);
+	//document.writeln(msg);
+	if( msg.length == 0){
+		document.form1.log.value = "";
+	} else {
+		document.form1.log.value += msg + "\r\n";
+	}
+}//end _log()
+
+
 function init(){
 
 //https://msdn.microsoft.com/ru-ru/library/8ka90k2e(v=vs.94).aspx
 //https://msdn.microsoft.com/ru-ru/library/s59bkzce(v=vs.94).aspx		
+
 /*@cc_on @*/
 /*@
-	console.log("JavaScript version: " + @_jscript_version);
-	console.log("@_jscript_build: " + @_jscript_build);
+	_log("JavaScript version: " + @_jscript_version);
+	_log("@_jscript_build: " + @_jscript_build);
 	
-	console.log("@_win32: " + @_win32);
-	console.log("@_win16: " + @_win16);
-	console.log("@_mac: " + @_mac);
-	console.log("CPU DEC Alpha:" + @_alpha);
-	console.log("CPU Intel:" + @_x86);
-	console.log("CPU Motorola 680x0:" + @_mc680x0);
-	console.log("CPU Motorola PowerPC:" + @_PowerPC);
+	_log("@_win32: " + @_win32);
+	_log("@_win16: " + @_win16);
+	_log("@_mac: " + @_mac);
+	_log("CPU DEC Alpha:" + @_alpha);
+	_log("CPU Intel:" + @_x86);
+	_log("CPU Motorola 680x0:" + @_mc680x0);
+	_log("CPU Motorola PowerPC:" + @_PowerPC);
 	
     @if (@_win32)
-        console.log("Running on a 32-bit version of Windows.");
+        _log("Running on a 32-bit version of Windows.");
     @elif (@_win16)
-        console.log("Running on a 16-bit version of Windows.");
+        _log("Running on a 16-bit version of Windows.");
     @else
-        console.log("Running on a different operating system.");
+        _log("Running on a different operating system.");
     @end	
+	
+	_log("------");
 	
 	@set @myvar1 = 12
 	
@@ -64,165 +79,92 @@ function init(){
 	
 @*/
 
-//document.referrer
-//document.onkeydown=kdown;
-//document.createElement
+//_log("function init()");
+//_log("");
 
-console.log("function init()");
+var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
+_log( info );
+_log("lastModified: " + document.lastModified);
+
+/*
+for( var prop in navigator){
+	var msg = "navigator." + prop +" = "+ navigator[prop];
+	_log(msg);
+	//var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
+	//document.writeln(msg);
+}
+_log("------");
+*/
+	   
+//_log("num: " + document.length);
+_log("num forms: " + document.forms.length);
+_log("Forms properties");
+
+for( var key in document.forms){
+	var msg = key +" = "+ typeof document.forms[key];
+	_log( msg );
+}
+
+for( var n = 0; n < document.forms.length; n++){
+	var msg = n +" = " + typeof document.forms[n];
+	_log( msg );
+}
+
+_log("------");
+
+
+/*
+	var frm = document.form_ls;
+	for ( var n2=1; n2 < frm.elements.length; n2++)
+	   {
+		var elmnt = frm.elements[n2];
+		document.write ("element " + n2 + "= " + elmnt.name+", ");
+		document.write (elmnt.type + ", ");
+		document.write (elmnt.value+"<br/>");
+	   }
+*/
 
 //for( var key in document.elements){
 	//var msg = key +" = "+ document.elements[key];
 	//alert(msg);
 //}
-/*
-var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
-console.log("<h1>" +info+ "</h1>");
-console.log("lastModified: " + document.lastModified + "<br>");
 
-for( var prop in navigator){
-	var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
-	console.log(msg);
-}
-
-//console.log( "location" in document );
-
+_log("test Array");
 var ar = new Array(1,2);
 ar[3] = "a";
 ar[4] = "b";
 
 for( var key in ar){
 var msg = key +" = "+ ar[key];
-console.log(msg);
+_log(msg);
 }
 
-//var test = "all" in document;
-//var test = document["all"];
-if(document.all){
-	console.log("document.all!");
-} else {
-	console.log("document.all not support...");
-}
 
-//var test = "getElementById" in document;
-//var test = document["getElementById"];
-if(document.getElementById){
-	console.log("document.getElementById!");
-} else {
-	console.log("document.getElementById not support...");
-}
+/*
 
 if( document.layers ){
 	var msg = "document.layers, length:" + document.layers.length;
-	console.log(msg);
+	_log(msg);
 
 	for( var key in document.layers){
 		var msg = key +" = "+ document.layers[key];
-		console.log(msg);
+		_log(msg);
 	}
 }
 */	
 	
-	var layer1 = getDOMobj("layer1");
-alert(layer1);	
-	for(var key in layer1){
-console.log(key+" : " + layer1[key]);
-	}
+//	var layer1 = getDOMobj("layer1");
+//alert(layer1);	
+	//for(var key in layer1){
+//_log(key+" : " + layer1[key]);
+	//}
 
 }//end init()
 
-function getDOMobj(id){
-	
-	if( document.querySelector ){
-		var obj = document.querySelector("#"+id);
-		return obj;
-	}
-	
-	if( document.getElementById ){
-		var obj = document.getElementById(id);
-		return obj;
-	}
-	
-	if( document.all ){
-		var obj = document.all[id];
-		return obj;
-	}
-	
-	if( document.layers ){
-//alert("Use document.layers " + document.layers);	
-		var obj = document.layers[id];
-		return obj;
-	}
-	
-	return false;
-}//end getDOMobj()
 
-if(!window.console){
-	var console = {
-		"log" : function(msg){
-			var log = getDOMobj("log");
-			if(log){
-				log.innerHTML += "<p>" + msg +"<p>";
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	}
-}
-//console.log("window.onload:" + window.onload);
-
-
-window.onload = function(){
-//console.log("window.onLoad!");
-}//end load
-
-/*
-if( !document["getElementById"] &&
-	!document["all"] ){
-//document.open();
-//document.clear();
-	//var msg = "!window.console.log<br>";
-	//document.writeln(msg);
-//document.close();
-	
-	var info = "appName:" + navigator.appName + ", appVersion:" + navigator.appVersion;
-	document.writeln("<h1>" +info+ "</h1>");
-	document.writeln("lastModified: " + document.lastModified + "<br>");
-
-	for( var prop in navigator){
-		var msg = "<li> navigator." + prop +" = "+ navigator[prop] + "</li>";
-		document.writeln(msg);
-	}
-
-	if(document.all){
-		document.writeln("document.all!");
-	} else {
-		document.writeln("document.all not support...");
-	}
-
-	if(document.layers){
-		var msg = "document.layers, length:" + document.layers.length;
-		document.writeln(msg);
-
-		for( var key in document.layers){
-			var msg = key +" = "+ document.layers[key];
-			document.writeln(msg);
-		}
-
-	}
-
-	for( var prop in window){
-		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
-		document.writeln(msg);
-	}
-
-	for( var prop in document){
-		var msg = "<li> document." + prop +" = "+ document[prop] + "</li>";
-		document.writeln(msg);
-	}
-}
-*/
-
+//window.onload = function(){
+//_log("window.onLoad!");
+//}//end load
 </script>
 
 </head>
@@ -231,42 +173,35 @@ if( !document["getElementById"] &&
 	<h1>test JS, CSS, HTML</h1>
 	
 <div class="container">
+	<div class="box1">box1</div>
+	
+
+	<form method=GET" name="form1" action="">
+		<input type="text" name="txt1" value="some text"><br>
+		
+		log panel:<br>
+		<textarea name="log" rows="30" cols="120"></textarea><br>
+		
+		<input type="button" value="clear log" id="btn-clear" name="clear_button" /><br>
+		<input type="submit" value="submit" /><br>
+	</form>
+
+	<form name="form2">
+		<input type="button" size="11" name="btn2" value="Popup window" 
+onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=1,resizable=no');"/><br>
+
+		<input type="button" name="test1" id="btn-test1" value="run timer, setTimeout()"><br>
+		<input type="button" name="test2" value="stop, clearTimeout()"><br>
+	</form>
+
+	<p><a href="./" onClick="history.back();return false;">history.back()</a></p>
+</div>
+
+<layer name="layer1" visibility="show">Layer1</layer>
 
 <pre>
 http://tanalin.com/articles/ie-version-js/
-</pre>
 
-<input type="button" value="clear log" id="btn-clear" name="clear_button" />
-<div id="log"></div>
-	
-	<div class="pull-left">
-
-<div class="box1">box1</div>
-<p id="id1"></p>
-<p id="id2"></p>
-<button id="btn1">btn1</button>
-	
-
-<form method=GET" name="form1" action="">
-	<input type="text" name="txt1" value="some text">
-	<input type="submit" value="submit" />
-</form>
-
-<input type="button" size="11" name="btn2" value="Popup window" 
-onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=1,resizable=no');"/>
-
-<p><a href="./" onClick="history.back();return false;">history.back()</a></p>
-
-	</div>
-	
-	<div class="pull-right">
-<layer name="layer1" visibility="show">Layer1</layer>
-	</div>
-</div>
-<div style="clear:both;"></div>
-
-
-<pre>
 6. Q: Какой самый быстрый способ получить символ из строки?
 
    A: Если вам нужен именно символ, а не подстрока, вместо функции
@@ -699,23 +634,22 @@ onClick="window.open('url','_blank','width=500,height=300,titlebar=no,toolbar=no
 </body>
 
 <script>
-/*
 //document.open();
 //document.clear();
 //document.close();
-
+/*
 if(document.forms){
 	var msg = "document.forms, length:" + document.forms.length + "<br>";
 	document.writeln(msg);
 
 	if( document.form1 ){
 //alert(document.form1.txt1.value);
-		document.writeln( document.form1.txt1.value + "<br>" );
+		//document.writeln( document.form1.txt1.value + "<br>" );
 
-	//for( var key in document.form1){
-		//var msg = key +" = "+ document.form1[key];
-		//alert(msg);
-	//}
+		for( var key in document.form2){
+			var msg = key +" = "+ document.form2[key];
+			document.form1.log.value += msg + "\r\n";
+		}
 
 	}
 
@@ -723,7 +657,10 @@ if(document.forms){
 	document.writeln("document.forms not support...<br>");
 }
 */
-
+for( var prop in window){
+	var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
+	document.writeln(msg);
+}
 </script>
 
 </html>

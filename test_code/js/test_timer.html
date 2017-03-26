@@ -6,8 +6,11 @@
 <script src="http://yastatic.net/jquery-ui/1.11.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.16/themes/sunny/jquery-ui.css">
 -->
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap335.min.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap335.min.css">
 <script>
+var timerId = null;
+var counter = 0;
+	
 function getDOMobj(id){
 	
 	if( document.querySelector ){
@@ -79,11 +82,21 @@ function _log( msg, id){
 	
 }//end _log()
 
+function stopFunc(){
+	var msg = "Stop timer id: " + timerId;
+	_log( msg, "info" );
+}//end stopFunc()
+
+function countFunc(){
+	counter++;
+	var msg = "counter: " + counter;
+	_log("", "counter");
+	_log(msg, "counter");
+}//end countFunc()	
+
+
 window.onload = function(){
 
-	var timerId = null;
-	var counter = 0;
-	
 	//var info = getDOMobj("info");
 //alert( typeof info.innerText);	
 //alert( typeof info.innerHTML);	
@@ -103,7 +116,8 @@ window.onload = function(){
 		//info.innerText = "Wait " + _sleep + " sec...";
 		var msg = "Wait " + _sleep + " sec...";
 		_log( msg, "info" );
-		
+		/*
+		//don't work in IE4
 		timerId = setTimeout(function(){
 		
 			//info.innerText = "Stop timer id: " + timerId;
@@ -111,6 +125,11 @@ window.onload = function(){
 			_log( msg, "info" );
 			
 		}, _sleep*1000 );
+		*/
+		
+		//work in IE4
+		timerId = setTimeout("stopFunc()", _sleep*1000 );
+		
 console.log("start timerId: " + timerId);
 	}//end event
 	
@@ -133,7 +152,8 @@ console.log("start timerId: " + timerId);
 		//info2.innerText = "Repeat action with interval :" + interval + " sec...";
 		var msg = "Repeat action with interval :" + interval + " sec...";
 		_log(msg, "info2");
-		
+		/*
+		//don't work in IE4
 		timerId = setInterval(function(){
 			counter++;
 			
@@ -143,9 +163,14 @@ console.log("start timerId: " + timerId);
 			_log(msg, "counter");
 			
 		}, interval*1000 );
+		*/
+		//work in IE4
+		timerId = setInterval("countFunc()", interval*1000 );
+		
 console.log("start timerId: " + timerId);
 	}//end event
 	
+
 	btn4.onclick = function(){
 	
 		//info2.innerText = "clearInterval(), cancel timer id:" + timerId;
@@ -157,7 +182,6 @@ console.log("start timerId: " + timerId);
 		clearInterval(timerId);
 	}//end event
 
-	
 }//load
 
 </script>
@@ -219,11 +243,9 @@ https://learn.javascript.ru/settimeout-setinterval
 http://javascript.ru/setTimeout
 https://developer.mozilla.org/ru/docs/Web/API/WindowTimers/setTimeout
 http://alljs.ru/articles/timeout/overview	
-http://javascript.itsoft.ru/methods/setTimeout.html
 	</pre>
 	
 </div>	
-	
-</body>
 
+</body>
 </html>
