@@ -9,12 +9,12 @@
 		window.onload = function() {
 		
 			document.getElementById("ajax-btn").onclick = function() {
-				//var url = "load_html.html";
-				
+				//var url = "data/test.html";
+				var url = document.getElementsByName("input_url")[0].value;
 				//запрос из постороннего источника заблокирован: 
 				//политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
 				//(причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
-				var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
+				//var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
 
 				var xhr = new XMLHttpRequest();
 				xhr.open("GET", url, true);
@@ -38,6 +38,8 @@ alert ("xhr.status -" + xhr.status);
 	<div class="page-header">
 		<h1>test Ajax</h1>
 	</div>
+	<input type="text" class="form-control" id="request_url" name="input_url" value="data/test.html"/>
+
 	<button class="btn btn-primary" id="ajax-btn">ajax request</button>
 	<div class="panel" id="ajax-content"></div>
 </div>	
