@@ -38,9 +38,27 @@
 		};  
 	}
 </script>
+DOM-shim-ie8.js
+DOM-shim.js
+es5-shim.js
+es5-sham.js
+<script src="/source/js/lib/DOM-shim.js"></script>
+<script src="/source/js/lib/css3-mediaqueries.js"></script>
 -->
 
+
 <script>
+var timerId = null;
+var counter = 0;
+
+function countFunc(){
+	counter++;
+	var msg = counter + " sec.";
+	_log("", "counter");
+	_log(msg, "counter");
+}//end countFunc()	
+
+
 function _log( msg, id){
 //console.log(arguments);
 //alert(arguments.length);
@@ -279,6 +297,10 @@ function btn4_click(event){
 	event = event || window.event; //window.event, for old IE
 	event_target = event.target || event.srcElement; //srcElement, for old IE
 
+	//var interval = 1;//sec
+	//timerId = setInterval("countFunc()", interval*1000 );
+//_log("start process<br>");
+	
 	_log( "", "info");
 	var startDate = new Date();
 //_log( "startDate = " + startDate);
@@ -299,6 +321,13 @@ function btn4_click(event){
 //_log( ", endDate = " + endDate);
 	var runTime = (endDate - startDate) / 1000;
 _log( "Window info, runTime = " + runTime + " sec.<br>");
+
+	//setTimeout(function(){
+	//counter = 0;
+	//clearInterval(timerId);
+	//_log("", "counter");
+//_log("stop process<br>");
+	//}, 5000)
 	
 }//end btn4_click()
 
@@ -1054,13 +1083,31 @@ border:1px dashed;
 		
 	</div>
 -->
-	<button id="btn1">run tests</button>
-	<button id="btn2">get 'Document' info</button>
-	<button id="btn3">get 'Navigator' info</button>
-	<button id="btn4">get 'Window' info</button>
+<style>
+.t-btn {
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+</style>
+	<button id="btn1" class="t-btn btn-success">run tests</button>
+	<button id="btn2" class="t-btn btn-warning">get 'Document' info</button>
+	<button id="btn3" class="t-btn btn-info">get 'Navigator' info</button>
+	<button id="btn4" class="t-btn btn-primary">get 'Window' info</button>
 	<button id="btn5">btn</button>
-	
+
 	<div class="panel">
+		<p id="counter"></p>
 		<div class="panel-body">Log panel
 			<div id="log"></div>
 		</div>
