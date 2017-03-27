@@ -1,5 +1,15 @@
-﻿function _log( msg, id ){
-	var id =  id || "info";
+﻿//console.log for old IE
+if(!window.console){
+	console = {
+		log : function(message){
+			alert(message);
+		}
+	}
+}
+
+
+function _log( msg, id ){
+	var id =  id || "log";
 	
 	if( document.getElementById(id) ){
 		if( msg.length === 0){
@@ -19,6 +29,7 @@
 		}
 	};
 }//end _log
+
 
 var _set_timer = function (){
 	var d = new Date;
@@ -88,8 +99,9 @@ function fixEvent(e) {
 }
 
 
-
-
+//**************************************
+//var dirname = getenv("dirname");
+//**************************************
 function getenv(i){
 	if (!i.length) 
 	{ 
@@ -128,6 +140,11 @@ function getenv(i){
 
 }//end getenv
 
+//**************************************
+//$_GET = parseGetParams(); 
+//console.log( $_GET);
+//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
+//**************************************
 function parseGetParams() { 
    var $_GET = {}; 
    var parse_url = window.location.search.substring(1).split("&"); 
@@ -534,3 +551,16 @@ function convertTimestamp(timestamp) {
 		
 	return time;
 }//end convertTimestamp()
+
+function getDOMobj(id){
+	var obj = false;
+	
+	if( document["getElementById"] ){
+		var obj = document.getElementById(id);
+	}
+	if( document["all"] ){
+		var obj = document.all[id];
+	}
+	
+	return obj;
+}

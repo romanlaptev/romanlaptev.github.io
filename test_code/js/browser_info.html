@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" debug="true">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,37 @@
 	<title>Browser info</title>
 	
 <!--
-<scrit src="http://code.jquery.com/jquery-1.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.1.js"></script>
 	<script>
 //$(document).ready(function(){
 //alert('Ready!');
 
 //});
 	</script>
+-->
+
+<!--
+<script type="text/javascript" src="http://getfirebug.com/firebug-lite-debug.js"></script>
+<script type="text/javascript" src="http://getfirebug.com/firebug-lite.js"></script>
+<script src="lib/firebug-lite/build/firebug-lite.js"></script>
+-->
+<!--
+<script>
+	//https://getfirebug.com/firebuglite	
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "lib/firebug-lite/build/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
+</script>
 -->
 
 <script>
