@@ -1,37 +1,112 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
-	<title></title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<!--
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
--->
+	<title>test JS: createElements</title>
+	
+	<!--
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+	<script src="jquery/jquery-latest.min.js"></script>
+	-->
 	
 	<script>
-window.onload = function(){
-	var file = document.createElement('input');
+	
+	// load Bootstrap
+	var css = document.createElement('link');
+	css.setAttribute("rel", "stylesheet");
+	css.setAttribute("type", "text/css");
+	css.setAttribute("href", "../css/bootstrap335.min.css");
+	document.getElementsByTagName("head")[0].appendChild( css );
+	css.onload = function() {
+//alert( "onload " + this.href);
+console.log( "onload " + this.href);
+	};
+	css.onerror = function(e) {
+//alert( "error load css " + this.href);
+console.log( "error load css " + this.href );
+	};  
 
+	// load jQuery
+	if( typeof window.jQuery !== "function")
+	{
+		//var message = "jQuery load error...";
+		//document.write('<h2>' +message+ '</h2>');
+		//document.write('<script src="jquery/jquery-latest.min.js"><\/script>');
+		var script = document.createElement('script');
+		script.src = "jquery/jquery-latest.min.js";
+		document.getElementsByTagName('head')[0].appendChild(script);
+
+		script.onload = function() {
+console.log( "onload " + this.src);
+console.log( $.fn.jquery);
+		};
+		script.onerror = function(e) {
+console.log( "error load script " + this.src);
+		};  
+	}
+
+window.onload = function(){
+
+	var file = document.createElement('input');
 	file.setAttribute("type","file");
   	file.onchange = function() { 
 alert("test");
      };
-	document.body.appendChild( file );
+	//document.body.appendChild( file );
+	ins.appendChild( file );
+//-----------------
 
+	var newDiv = document.createElement("div");
+	newDiv.className = "alert alert-success";
+	newDiv.innerHTML = "<h1>this is newDiv...</h1>";
+	newDiv.setAttribute('style', 'border:5px dashed;');
+    ins = document.getElementById("ins");
+//console.log(ins);
+	ins.insertBefore( newDiv, file );	
+	
+	newDiv.onclick = function(e){
+console.log("click!", this);
+	}
+	
+	
+	var textElem = document.createTextNode('new TextNode was created....');
+console.log(textElem);
+	document.getElementsByTagName("footer")[0].appendChild( textElem );
+	
+	$("#ins").append("load jQuery, version: " + $.fn.jquery);
+	
+//--------------------------
+  var div2 = newDiv.cloneNode(true);
+  div2.innerHTML = 'this is div2, clone newDiv...';
+  div2.setAttribute('class', 'alert alert-warning');
+  ins.insertBefore(div2, file);	
+  
 }//end load
+
+//$(document).ready(function(e){
+//console.log("Ready...", e);
+//});
+
 	</script>
 	
 </head>
 <body>
-	<div class="container">
-		<header>
-			<h1>test createElements</h1>
-		</header>
+<div class="container">
+	<header>
+		<h1>test JS: createElements</h1>
+	</header>
+
+	<div class="panel">
+		<div id="ins"></div>
+	</div>
+	
+	
 <pre>
 https://learn.javascript.ru/modifying-document
+https://developer.mozilla.org/ru/docs/DOM/document.createElement
 </pre>		
-	</div>
-
+	<footer></footer>
+</div>
 </body>
 </html>
