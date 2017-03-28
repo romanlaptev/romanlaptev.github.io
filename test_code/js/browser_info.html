@@ -48,6 +48,7 @@ es5-sham.js
 
 
 <script>
+/*
 var timerId = null;
 var counter = 0;
 
@@ -57,7 +58,7 @@ function countFunc(){
 	_log("", "counter");
 	_log(msg, "counter");
 }//end countFunc()	
-
+*/
 
 function _log( msg, id){
 //console.log(arguments);
@@ -124,10 +125,43 @@ function _push( ar, item){
 	}
 }// end _push()
 
+function viewProp( obj ){
+//console.log(arguments);
+	_log( "", "info");
+	for( var prop in obj ){
+//console.log(prop, obj[prop]);
+		var _type = typeof obj[prop];
+		switch( _type ){
+		
+			case "object":
+				var childObj = obj[prop];
+				var msg = "<li>" + prop +" : "+ typeof childObj;
+				//msg += ", <a href='#' onClick='viewProp("+childObj+");'>+</a>";
+				msg += "</li>";
+				_log( msg, "info");
+			break;
+			
+			case "function":
+				var msg = "<li>" + prop +" : "+ typeof obj[prop] + "</li>";
+				_log( msg, "info");
+			break;
+			
+			default:
+				var msg = "<li>" + prop +" = "+ obj[prop] + "</li>";
+				_log( msg, "info");
+			break;
+		}//end switch
+	}
+}//end viewProp()
 
 
 window.onload = function(){
 
+	var btn = document.createElement("input");
+	btn.setAttribute("type","button");
+	btn.setAttribute("value", "test");
+console.log(btn);
+				
 	var ua = getDOMobj("ua");
 	if( ua ){
 		var tpl = ua.innerHTML;
@@ -311,11 +345,8 @@ function btn4_click(event){
 	_log("<h3>window.TouchEvent: " + window.TouchEvent + "<h3>", "info");
 	_log("<h3>window.ontouchend: " + window.ontouchend + "<h3>", "info");
 	_log("<h3>window.ontouchcancel: " + window.ontouchcancel + "<h3>", "info");
-
-	for( var prop in window){
-		var msg = "<li> window." + prop +" = "+ window[prop] + "</li>";
-		_log( msg, "info");
-	}
+	
+	viewProp( window );
 	
 	var endDate = new Date();
 //_log( ", endDate = " + endDate);
