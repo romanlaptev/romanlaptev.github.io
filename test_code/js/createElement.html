@@ -12,6 +12,21 @@
 	
 	<script>
 	
+if (!window.console){ 
+	window.console = {
+		"log" : function( msg ){
+			var log = getDOMobj("log");
+			if(log){
+				log.innerHTML += msg +"<br>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+};
+
+
 	// load Bootstrap
 	var css = document.createElement('link');
 	css.setAttribute("rel", "stylesheet");
@@ -27,16 +42,17 @@ console.log( "onload " + this.href);
 console.log( "error load css " + this.href );
 	};  
 
+
+
 	// load jQuery
-	if( typeof window.jQuery !== "function")
-	{
-		//var message = "jQuery load error...";
+	if( typeof window.jQuery !== "function"){
+//console.log("jQuery load error...");
 		//document.write('<h2>' +message+ '</h2>');
 		//document.write('<script src="jquery/jquery-latest.min.js"><\/script>');
+		
 		var script = document.createElement('script');
 		script.src = "jquery/jquery-latest.min.js";
 		document.getElementsByTagName('head')[0].appendChild(script);
-
 		script.onload = function() {
 console.log( "onload " + this.src);
 console.log( $.fn.jquery);
@@ -44,9 +60,39 @@ console.log( $.fn.jquery);
 		script.onerror = function(e) {
 console.log( "error load script " + this.src);
 		};  
+
 	}
 
+function getDOMobj(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	
+	return false;
+}//end getDOMobj()
+
+
 window.onload = function(){
+
+    var _ins = document.getElementById("ins");
+//console.log(ins);
 
 	var file = document.createElement('input');
 	file.setAttribute("type","file");
@@ -54,16 +100,14 @@ window.onload = function(){
 alert("test");
      };
 	//document.body.appendChild( file );
-	ins.appendChild( file );
+	_ins.appendChild( file );
 //-----------------
 
 	var newDiv = document.createElement("div");
 	newDiv.className = "alert alert-success";
 	newDiv.innerHTML = "<h1>this is newDiv...</h1>";
 	newDiv.setAttribute('style', 'border:5px dashed;');
-    ins = document.getElementById("ins");
-//console.log(ins);
-	ins.insertBefore( newDiv, file );	
+	_ins.insertBefore( newDiv, file );	
 	
 	newDiv.onclick = function(e){
 console.log("click!", this);
@@ -71,16 +115,17 @@ console.log("click!", this);
 	
 	
 	var textElem = document.createTextNode('new TextNode was created....');
-console.log(textElem);
-	document.getElementsByTagName("footer")[0].appendChild( textElem );
+//console.log(textElem);
+//console.log( document.getElementsByTagName("footer")[0] );
+	document.getElementsByTagName("p")[0].appendChild( textElem );
 	
-	$("#ins").append("load jQuery, version: " + $.fn.jquery);
+	//$("#ins").append("load jQuery, version: " + $.fn.jquery);
 	
 //--------------------------
   var div2 = newDiv.cloneNode(true);
   div2.innerHTML = 'this is div2, clone newDiv...';
   div2.setAttribute('class', 'alert alert-warning');
-  ins.insertBefore(div2, file);	
+  _ins.insertBefore(div2, file);	
   
 }//end load
 
@@ -98,7 +143,12 @@ console.log(textElem);
 	</header>
 
 	<div class="panel">
+		<div id="log"></div>
+	</div>
+	
+	<div class="panel">
 		<div id="ins"></div>
+		<p></p>
 	</div>
 	
 	
@@ -106,7 +156,6 @@ console.log(textElem);
 https://learn.javascript.ru/modifying-document
 https://developer.mozilla.org/ru/docs/DOM/document.createElement
 </pre>		
-	<footer></footer>
 </div>
 </body>
 </html>
