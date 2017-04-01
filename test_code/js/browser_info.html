@@ -529,12 +529,10 @@ function runTests(){
 //console.log(window.ActiveXObject);
 
 		test["links"]=[];
-		/*
 		_push( test["links"], {
 				"link" : "activexobject.html", 
 				"text" : "activexobject.html"
 			});
-		*/	
 	}
 	_push( tests, test );
 //--------------------------------------
@@ -547,8 +545,85 @@ function runTests(){
 		test["result"] = true;
 		test["msg"] = "supported";
 //console.log(window.DOMParser);
+
+		test["links"]=[];
+		_push( test["links"], {
+				"link" : "js_parse_xml/test_parse_xml.html", 
+				"text" : "test_parse_xml.html"
+			});
+
 	}
 	_push( tests, test );
+	
+//--------------------------------------
+
+	var test = {
+		"name" : "test MSXML",
+		"result" : false
+	};
+	
+/*@cc_on @*/
+/*@
+	@if (@_jscript_version >= 5)
+@*/
+	if (!window.DOMParser) { //IE before version 9
+		var xml_info = create_MSXML();
+//alert(xml_info.version);		
+		if( xml_info.version ){
+			test["result"] = true;
+			test["msg"] = "MSXML version: " + xml_info.version;
+			
+			test["links"]=[];
+			_push( test["links"], {
+					"link" : "js_parse_xml/test_parse_xml.html", 
+					"text" : "test_parse_xml.html"
+			});
+			
+		}
+	}
+/*@
+	@end
+@*/
+	_push( tests, test );
+	
+	function create_MSXML(){
+	
+		if (typeof (ActiveXObject) === "undefined") {
+			return false;
+		}
+		
+		var progIDs = [
+						//"Msxml2.DOMDocument.6.0", 
+						//"Msxml2.DOMDocument.5.0", 
+						//"Msxml2.DOMDocument.4.0", 
+						//"Msxml2.DOMDocument.3.0", 
+						//"MSXML2.DOMDocument", 
+						//"MSXML.DOMDocument",
+"Microsoft.XMLDOM"						
+					  ];
+		for(var n = 0; n < progIDs.length; n++) {
+/*@
+	@if (@_jscript_version >= 5)
+@*/
+			try { 
+				var xml = {
+					"xml_obj" : new ActiveXObject( progIDs[n] ),
+					"version" : progIDs[n]
+				}
+				return xml; 
+			} 
+			catch(e) {
+console.log("error: " + e);
+				for( var item in e ){
+					_log( item + ": " + e[item] + "<br>" );
+				}
+			};
+/*@
+	@end
+@*/
+			
+		}
+	}//end create_MSXML()
 	
 //--------------------------------------
 
@@ -1044,6 +1119,9 @@ console.log(e);
 
 
 <style>
+body{
+	background-color:#F7F0FF;/*rgb(247, 240, 255)*/
+}
 .log{
 /*
 position:absolute;
