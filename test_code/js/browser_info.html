@@ -5,18 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 	<title>Browser info</title>
-	
-<!--
-<script src="http://code.jquery.com/jquery-1.1.js"></script>
-	<script>
-//$(document).ready(function(){
-//alert('Ready!');
-
-//});
-	</script>
--->
 
 <!--
+ 	<script src="lib/jquery-1.4.js"></script>
 <script type="text/javascript" src="http://getfirebug.com/firebug-lite-debug.js"></script>
 <script type="text/javascript" src="http://getfirebug.com/firebug-lite.js"></script>
 <script src="lib/firebug-lite/build/firebug-lite.js"></script>
@@ -46,8 +37,8 @@ es5-sham.js
 <script src="/source/js/lib/css3-mediaqueries.js"></script>
 -->
 
-
 <script>
+	var tests = [];
 /*
 var timerId = null;
 var counter = 0;
@@ -369,8 +360,6 @@ function btn5_click(){
 
 function runTests(){
 
-	var tests = [];
-
 	if ( !tests.push ){ 
 		var test = {
 			"name" : "array.push()",
@@ -381,31 +370,7 @@ function runTests(){
 		_push( tests, test );
 	};
 //--------------------------------------
-//alert(!window.console);
-	if (!window.console){ 
-		var test = {
-			"name" : "console",
-			"result" : false,
-			"msg" : "Your browser does not support <b>console.log</b>"
-		};
-		
-		_push( tests, test );
 
-		window.console = {
-			"log" : function( msg ){
-				var log = getDOMobj("log");
-				if(log){
-					log.innerHTML += "<p>" + msg +"<p>";
-				} else {
-					alert(msg);
-					//document.writeln(msg);
-				}
-			}
-		}
-
-	};
-//--------------------------------------
-	
 	var test = {
 		"name" : "is mobile device",
 		"result" : false
@@ -510,6 +475,20 @@ function runTests(){
 	};
 	if (typeof JSON === 'object') {
 		test["result"] = true;
+		
+		test["links"]=[];
+		var obj = {
+			"link" : "test_json/test_filters/phones.html", 
+			"text" : "test filters (load json with jQuery and filter list)"
+		};
+		_push( test["links"], obj );
+		
+		var obj = {
+			"link" : "test_json/test_filters_jsonp/phones.html", 
+			"text" : "test JSONP (load json from remote server and filter list)"
+		};
+		_push( test["links"], obj );
+		
 	} else {
 		test["msg"] = "typeof JSON :" + typeof JSON;
 		test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
@@ -545,13 +524,7 @@ function runTests(){
 		test["result"] = true;
 		test["msg"] = "supported";
 //console.log(window.DOMParser);
-
-		test["links"]=[];
-		_push( test["links"], {
-				"link" : "js_parse_xml/test_parse_xml.html", 
-				"text" : "test_parse_xml.html"
-			});
-
+		test["links"] = testXMLaddLinks();
 	}
 	_push( tests, test );
 	
@@ -572,19 +545,14 @@ function runTests(){
 		if( xml_info.version ){
 			test["result"] = true;
 			test["msg"] = "MSXML version: " + xml_info.version;
-			
-			test["links"]=[];
-			_push( test["links"], {
-					"link" : "js_parse_xml/test_parse_xml.html", 
-					"text" : "test_parse_xml.html"
-			});
-			
+			test["links"] = testXMLaddLinks();
 		}
 	}
 /*@
 	@end
 @*/
 	_push( tests, test );
+
 	
 	function create_MSXML(){
 	
@@ -624,7 +592,37 @@ console.log("error: " + e);
 			
 		}
 	}//end create_MSXML()
-	
+
+
+	function testXMLaddLinks(){
+		var links = [];
+		
+		var obj = {
+			"link" : "js_parse_xml/test_parse_xml.html", 
+			"text" : "test_parse_xml.html"
+		};
+		_push( links, obj );
+		
+		var obj = {
+			"link" : "../xml/albums/list_albums.html", 
+			"text" : "test parse albums info"
+		};
+		_push( links, obj );
+		
+		var obj = {
+			"link" : "../xml/menu_xml/left_col.html", 
+			"text" : "test parse menu item"
+		};
+		_push( links, obj );
+		
+		var obj = {
+			"link" : "../xml/video_collection/index.html", 
+			"text" : "test parse video_collection info"
+		};
+		_push( links, obj );
+		
+		return links;
+	}//end testXMLaddLinks()
 //--------------------------------------
 
 	var test = {
@@ -1065,6 +1063,7 @@ console.log(e);
 	_push( tests, test );
 	
 //--------------------------------------
+
 //console.log(tests);
 	//for( var item in tests[0] ){
 		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
@@ -1260,4 +1259,90 @@ border:1px dashed;
 
 
 </body>
+
+<script>
+//alert(!window.console);
+	if (!window.console){ 
+		var test = {
+			"name" : "console",
+			"result" : false,
+			"msg" : "Your browser does not support <b>console.log</b>, try replace method...."
+		};
+		
+		_push( tests, test );
+
+		window.console = {
+			"log" : function( msg ){
+				var log = getDOMobj("log");
+				if(log){
+					log.innerHTML += "<p>" + msg +"<p>";
+				} else {
+					alert(msg);
+					//document.writeln(msg);
+				}
+			}
+		}
+
+	};
+	
+//-------------------------------------- try load jQuery
+	var test = {
+		"name" : "test load jQuery",
+		"result" : false
+	};
+	
+/*@cc_on @*/
+/*@
+	@if (@_jscript_version > 5.5)
+@*/
+	var script = document.createElement('script');
+	//script.src = "lib/jquery-1.4.js";
+	script.setAttribute("src", "lib/jquery-1.4.js");
+	script.setAttribute("type", "text/javascript");
+	document.getElementsByTagName('head')[0].appendChild(script);
+
+//var head = document.getElementsByTagName ("head")[0];
+//alert( "test!" + head.appendChild );
+//for( var item in head){
+//alert( item +" : "+ head[item]);
+//}
+	
+	//document.head.appendChild(script);
+	//document.body.appendChild(script);
+	//document.documentElement.firstChild.appendChild(script);
+	
+	//var head = document.getElementsByTagName ("head")[0] || document.documentElement;
+	// Use insertBefore instead of appendChild to circumvent an IE6 bug.
+	// This arises when a base node is used (#2709 and #4378).
+	//head.insertBefore(script, head.firstChild);
+	
+	script.onload = function() {
+console.log( "onload " + this.src);
+
+		if( typeof window.jQuery === "function"){
+			test["msg"] = 'You are running jQuery version: ' + jQuery.fn.jquery;
+/*@
+			test["msg"] += ", JavaScript version: " + @_jscript_version;
+@*/
+			test["result"]= true;
+			_push( tests, test );
+		} else {
+			_push( tests, test );
+		}
+	};
+
+	script.onerror = function(e) {
+console.log( "error load script " + this.src);
+		_push( tests, test );
+	};  
+/*@
+	@else
+		test["msg"] = "skip load jQuery";
+		test["msg"] += ", JavaScript version: " + @_jscript_version;
+		_push( tests, test );
+//alert(tests.length);
+	@end
+@*/
+</script>
+
 </html>
