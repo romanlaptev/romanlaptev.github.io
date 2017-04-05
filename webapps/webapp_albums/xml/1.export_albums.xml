@@ -61,9 +61,6 @@
 	<term_description>p003.jpg
 </term_description>
 	</termin>
-	<termin tid='198' tid_parent='153' weight='0'>
-		<term_name>Ганс Гольбейн Младший, живопись</term_name>
-	</termin>
 	<termin tid='65' tid_parent='67' weight='2'>
 		<term_name>Ганс Себальд Бехам</term_name>
 	<term_description>250px-portrait_of_sebald_beham.jpg</term_description>
@@ -235,9 +232,6 @@
 	<termin tid='84' tid_parent='72' weight='5'>
 		<term_name>Русская миниатюра</term_name>
 	<term_description>drevnerusskaya_miniatyura_p5.jpg</term_description>
-	</termin>
-	<termin tid='199' tid_parent='180' weight='0'>
-		<term_name>серия «Двенадцать месяцев»</term_name>
 	</termin>
 	<termin tid='8' tid_parent='138' weight='3'>
 		<term_name>Симберг</term_name>
@@ -693,14 +687,20 @@ Kommentar: Buchillustration. Von S. Smith und R.B. Sheridan, Ch. Lamb und D. Jer
 	<node num="28" nid="13">
 		<status>1</status>
 		<created timestamp="1336490550">08-May-2012 15:22:30</created>
-		<changed timestamp="1491013350">01-Apr-2017 02:22:30</changed>
+		<changed timestamp="1439515667">14-Aug-2015 01:27:47</changed>
 		<title>Дама из Шалот, 1888</title>
 		<termin tid="7">Уотерхаус</termin>
 		<author>Джон Уильям Уотерхаус</author>
 		<field_title_value>Дама из Шалот, 1888</field_title_value>
 		<teaser>&lt;pre&gt;
 одна из самых известных картин английского художника 
-Джона Уильяма Уотерхауса, созданная в 1888 году.</teaser>
+Джона Уильяма Уотерхауса, созданная в 1888 году. 
+Это первая версия картины, посвященная одноимённой поэме 
+Альфреда Теннисона «Волшебница Шалот» 
+(в России известна в переводе Бальмонта).
+
+http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B4%D0%B8_%D0%B8%D0%B7_%D0%A8%D0%B0%D0%BB%D0%BE%D1%82_%28%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%B0_%D0%A3%D0%BE%D1%82%D0%B5%D1%80%D1%85%D0%B0%D1%83%D1%81%D0%B0%29
+&lt;/pre&gt;</teaser>
 		<year>1888</year>
 		<preview_img>/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/the_lady_of_shalott_1888_by_john_william_waterhouse.jpg</preview_img>
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/the_lady_of_shalott_1888_by_john_william_waterhouse.jpg</big_img>
@@ -4880,14 +4880,20 @@ which seems to be breathing still.
 	<node num="287" nid="13">
 		<status>1</status>
 		<created timestamp="1336490550">08-May-2012 15:22:30</created>
-		<changed timestamp="1491013350">01-Apr-2017 02:22:30</changed>
+		<changed timestamp="1439515667">14-Aug-2015 01:27:47</changed>
 		<title>Дама из Шалот, 1888</title>
 		<termin tid="138">живопись</termin>
 		<author>Джон Уильям Уотерхаус</author>
 		<field_title_value>Дама из Шалот, 1888</field_title_value>
 		<teaser>&lt;pre&gt;
 одна из самых известных картин английского художника 
-Джона Уильяма Уотерхауса, созданная в 1888 году.</teaser>
+Джона Уильяма Уотерхауса, созданная в 1888 году. 
+Это первая версия картины, посвященная одноимённой поэме 
+Альфреда Теннисона «Волшебница Шалот» 
+(в России известна в переводе Бальмонта).
+
+http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%B4%D0%B8_%D0%B8%D0%B7_%D0%A8%D0%B0%D0%BB%D0%BE%D1%82_%28%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%B0_%D0%A3%D0%BE%D1%82%D0%B5%D1%80%D1%85%D0%B0%D1%83%D1%81%D0%B0%29
+&lt;/pre&gt;</teaser>
 		<year>1888</year>
 		<preview_img>/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/the_lady_of_shalott_1888_by_john_william_waterhouse.jpg</preview_img>
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/the_lady_of_shalott_1888_by_john_william_waterhouse.jpg</big_img>
@@ -4914,7 +4920,7 @@ which seems to be breathing still.
 	<node num="289" nid="277">
 		<status>1</status>
 		<created timestamp="1357299567">04-Jan-2013 11:39:27</created>
-		<changed timestamp="1491026198">01-Apr-2017 05:56:38</changed>
+		<changed timestamp="1441552808">06-Sep-2015 15:20:08</changed>
 		<title>Ken Shortwell</title>
 		<termin tid="138">живопись</termin>
 		<author></author>
@@ -4944,9 +4950,24 @@ http://www.bibliotekar.ru/Louvre/62.htm</teaser>
 		<big_img>/site-content/albums/painting/imagecache/w1024/hey_zhan_dofin_karl_orleanskiy.jpg</big_img>
 		<original_img>/site-content/albums/painting/hey_zhan_dofin_karl_orleanskiy.jpg</original_img>
 	</node>
+	<node num="291" nid="411">
+		<status>1</status>
+		<created timestamp="1374068902">17-Jul-2013 13:48:22</created>
+		<changed timestamp="1454735100">06-Feb-2016 05:05:00</changed>
+		<title>Портрет камеристки инфанты Изабеллы</title>
+		<termin tid="138">живопись</termin>
+		<author>Рубенс</author>
+		<field_title_value>Питер Пауль Рубенс
+Портрет камеристки инфанты Изабеллы, 1623—1626 гг.</field_title_value>
+		<teaser>http://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%BA%D0%B0%D0%BC%D0%B5%D1%80%D0%B8%D1%81%D1%82%D0%BA%D0%B8_%D0%B8%D0%BD%D1%84%D0%B0%D0%BD%D1%82%D1%8B_%D0%98%D0%B7%D0%B0%D0%B1%D0%B5%D0%BB%D0%BB%D1%8B</teaser>
+		<year>1623—1626</year>
+		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg</preview_img>
+		<big_img>/site-content/albums/painting/imagecache/w1024/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg</big_img>
+		<original_img>/site-content/albums/painting/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg</original_img>
+	</node>
 	</album>
 	<album tid="139" vid="1" name="гравюра">
-	<node num="291" nid="49">
+	<node num="292" nid="49">
 		<status>1</status>
 		<created timestamp="1336991348">14-May-2012 10:29:08</created>
 		<changed timestamp="1439824090">17-Aug-2015 15:08:10</changed>
@@ -4960,7 +4981,7 @@ http://www.bibliotekar.ru/Louvre/62.htm</teaser>
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/beatrice_alone_-_1998.jpg</big_img>
 		<original_img>/site-content/albums/gallery_images/beatrice_alone_-_1998.jpg</original_img>
 	</node>
-	<node num="292" nid="147">
+	<node num="293" nid="147">
 		<status>1</status>
 		<created timestamp="1344755075">12-Aug-2012 07:04:35</created>
 		<changed timestamp="1357303288">04-Jan-2013 12:41:28</changed>
@@ -4986,7 +5007,7 @@ St Dominic and St Catherine of Sienna in a nun&#39;s habit standing between an a
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/master_s._st_dominic_and_st_catherine_of_sienna.jpg</big_img>
 		<original_img>/site-content/albums/gallery_images/master_s._st_dominic_and_st_catherine_of_sienna.jpg</original_img>
 	</node>
-	<node num="293" nid="426">
+	<node num="294" nid="426">
 		<status>1</status>
 		<created timestamp="1436114328">05-Jul-2015 16:38:48</created>
 		<changed timestamp="1436115184">05-Jul-2015 16:53:04</changed>
@@ -5005,7 +5026,7 @@ The Tribulations of St. Antony.The saint is in mid-air, tormented by eight devil
 	</node>
 	</album>
 	<album tid="141" vid="1" name="фрактальное искусство">
-	<node num="294" nid="281">
+	<node num="295" nid="281">
 		<status>1</status>
 		<created timestamp="1357400313">05-Jan-2013 15:38:33</created>
 		<changed timestamp="1357401818">05-Jan-2013 16:03:38</changed>
@@ -5018,7 +5039,7 @@ The Tribulations of St. Antony.The saint is in mid-air, tormented by eight devil
 		<big_img>/site-content/albums/computer_graphics/imagecache/w1024/it__s_spring_in_japan_by_magnusti78.jpg</big_img>
 		<original_img>/site-content/albums/computer_graphics/it__s_spring_in_japan_by_magnusti78.jpg</original_img>
 	</node>
-	<node num="295" nid="282">
+	<node num="296" nid="282">
 		<status>1</status>
 		<created timestamp="1357401623">05-Jan-2013 16:00:23</created>
 		<changed timestamp="1357401699">05-Jan-2013 16:01:39</changed>
@@ -5033,7 +5054,7 @@ The Tribulations of St. Antony.The saint is in mid-air, tormented by eight devil
 	</node>
 	</album>
 	<album tid="143" vid="1" name="3D">
-	<node num="296" nid="275">
+	<node num="297" nid="275">
 		<status>1</status>
 		<created timestamp="1357298147">04-Jan-2013 11:15:47</created>
 		<changed timestamp="1441537738">06-Sep-2015 11:08:58</changed>
@@ -5049,7 +5070,7 @@ http://artemgorbachev.livejournal.com/</teaser>
 		<big_img>/site-content/albums/computer_graphics/imagecache/w1024/cg-art_3d_001.jpg</big_img>
 		<original_img>/site-content/albums/computer_graphics/cg-art_3d_001.jpg</original_img>
 	</node>
-	<node num="297" nid="276">
+	<node num="298" nid="276">
 		<status>1</status>
 		<created timestamp="1357298572">04-Jan-2013 11:22:52</created>
 		<changed timestamp="1441536464">06-Sep-2015 10:47:44</changed>
@@ -5069,7 +5090,7 @@ http://render.ru/user/info.php?user_id=37</teaser>
 		<big_img>/site-content/albums/computer_graphics/imagecache/w1024/cg-art_3d_002.jpg</big_img>
 		<original_img>/site-content/albums/computer_graphics/cg-art_3d_002.jpg</original_img>
 	</node>
-	<node num="298" nid="283">
+	<node num="299" nid="283">
 		<status>1</status>
 		<created timestamp="1357409372">05-Jan-2013 18:09:32</created>
 		<changed timestamp="1441537907">06-Sep-2015 11:11:47</changed>
@@ -5082,7 +5103,7 @@ http://render.ru/user/info.php?user_id=37</teaser>
 		<big_img>/site-content/albums/computer_graphics/imagecache/w1024/cg-art_11.jpg</big_img>
 		<original_img>/site-content/albums/computer_graphics/cg-art_11.jpg</original_img>
 	</node>
-	<node num="299" nid="284">
+	<node num="300" nid="284">
 		<status>1</status>
 		<created timestamp="1357474812">06-Jan-2013 12:20:12</created>
 		<changed timestamp="1441534371">06-Sep-2015 10:12:51</changed>
@@ -5107,7 +5128,7 @@ http://render.ru/books/show_book.php?book_id=759
 		<big_img>/site-content/albums/computer_graphics/imagecache/w1024/cg-art_andrey_bobir_odinochestvo_2008.jpg</big_img>
 		<original_img>/site-content/albums/computer_graphics/cg-art_andrey_bobir_odinochestvo_2008.jpg</original_img>
 	</node>
-	<node num="300" nid="503">
+	<node num="301" nid="503">
 		<status>1</status>
 		<created timestamp="1454227343">31-Jan-2016 08:02:23</created>
 		<changed timestamp="1454227969">31-Jan-2016 08:12:49</changed>
@@ -5122,7 +5143,7 @@ http://render.ru/books/show_book.php?book_id=759
 	</node>
 	</album>
 	<album tid="144" vid="1" name="Гравюра XVIII-XIX">
-	<node num="301" nid="287">
+	<node num="302" nid="287">
 		<status>1</status>
 		<created timestamp="1360157467">06-Feb-2013 13:31:07</created>
 		<changed timestamp="1446631331">04-Nov-2015 10:02:11</changed>
@@ -5136,7 +5157,7 @@ http://render.ru/books/show_book.php?book_id=759
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/crusades_entry_into_constantinople.jpg</big_img>
 		<original_img>/site-content/albums/gallery_images/crusades_entry_into_constantinople.jpg</original_img>
 	</node>
-	<node num="302" nid="415">
+	<node num="303" nid="415">
 		<status>1</status>
 		<created timestamp="1405829094">20-Jul-2014 04:04:54</created>
 		<changed timestamp="1448199867">22-Nov-2015 13:44:27</changed>
@@ -5152,7 +5173,7 @@ A 1723 satire on the questionable tastes of London society by William Hogarth. T
 		<big_img>/site-content/albums/gravura/imagecache/w1024/masquerades_and_operas.jpg</big_img>
 		<original_img>/site-content/albums/gravura/masquerades_and_operas.jpg</original_img>
 	</node>
-	<node num="303" nid="416">
+	<node num="304" nid="416">
 		<status>1</status>
 		<created timestamp="1405830101">20-Jul-2014 04:21:41</created>
 		<changed timestamp="1454029282">29-Jan-2016 01:01:22</changed>
@@ -5175,7 +5196,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="145" vid="1" name="Густав Доре">
-	<node num="304" nid="287">
+	<node num="305" nid="287">
 		<status>1</status>
 		<created timestamp="1360157467">06-Feb-2013 13:31:07</created>
 		<changed timestamp="1446631331">04-Nov-2015 10:02:11</changed>
@@ -5189,7 +5210,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/gallery_images/imagecache/w1024/crusades_entry_into_constantinople.jpg</big_img>
 		<original_img>/site-content/albums/gallery_images/crusades_entry_into_constantinople.jpg</original_img>
 	</node>
-	<node num="305" nid="457">
+	<node num="306" nid="457">
 		<status>1</status>
 		<created timestamp="1446634051">04-Nov-2015 10:47:31</created>
 		<changed timestamp="1446634455">04-Nov-2015 10:54:15</changed>
@@ -5235,7 +5256,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/gravura/imagecache/w1024/dore_gustave_29_he_answer_thus_return-d_-the_arch_heretics_are_here_accompanied_by_every_sect_their_followers-.jpg</big_img>
 		<original_img>/site-content/albums/gravura/dore_gustave_29_he_answer_thus_return-d_-the_arch_heretics_are_here_accompanied_by_every_sect_their_followers-.jpg</original_img>
 	</node>
-	<node num="306" nid="459">
+	<node num="307" nid="459">
 		<status>1</status>
 		<created timestamp="1446974663">08-Nov-2015 09:24:23</created>
 		<changed timestamp="1446981913">08-Nov-2015 11:25:13</changed>
@@ -5253,7 +5274,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 		<big_img>/site-content/authors/Gustave Dore/imagecache/w1024/gustave_dore_grotesque_sketch_operatic_and_melodramatic.jpg</big_img>
 		<original_img>/site-content/authors/Gustave Dore/gustave_dore_grotesque_sketch_operatic_and_melodramatic.jpg</original_img>
 	</node>
-	<node num="307" nid="460">
+	<node num="308" nid="460">
 		<status>1</status>
 		<created timestamp="1446983610">08-Nov-2015 11:53:30</created>
 		<changed timestamp="1446983701">08-Nov-2015 11:55:01</changed>
@@ -5266,7 +5287,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 		<big_img>/site-content/authors/Gustave Dore/imagecache/w1024/gustave_dore_grotesque_p13_musical_and_saltatory.jpg</big_img>
 		<original_img>/site-content/authors/Gustave Dore/gustave_dore_grotesque_p13_musical_and_saltatory.jpg</original_img>
 	</node>
-	<node num="308" nid="461">
+	<node num="309" nid="461">
 		<status>1</status>
 		<created timestamp="1446984026">08-Nov-2015 12:00:26</created>
 		<changed timestamp="1448093905">21-Nov-2015 08:18:25</changed>
@@ -5279,7 +5300,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 		<big_img>/site-content/authors/Gustave Dore/imagecache/w1024/gustave_dore_grotesque_p13_the_last_galop.jpg</big_img>
 		<original_img>/site-content/authors/Gustave Dore/gustave_dore_grotesque_p13_the_last_galop.jpg</original_img>
 	</node>
-	<node num="309" nid="462">
+	<node num="310" nid="462">
 		<status>1</status>
 		<created timestamp="1446984386">08-Nov-2015 12:06:26</created>
 		<changed timestamp="1447942785">19-Nov-2015 14:19:45</changed>
@@ -5294,7 +5315,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 	</node>
 	</album>
 	<album tid="146" vid="1" name="Ганс Гольбейн Младший">
-	<node num="310" nid="358">
+	<node num="311" nid="358">
 		<status>1</status>
 		<created timestamp="1360849356">14-Feb-2013 13:42:36</created>
 		<changed timestamp="1439822814">17-Aug-2015 14:46:54</changed>
@@ -5307,7 +5328,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 		<big_img>/site-content/albums/gravura/imagecache/w1024/countess_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/countess_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="311" nid="294">
+	<node num="312" nid="294">
 		<status>1</status>
 		<created timestamp="1360401884">09-Feb-2013 09:24:44</created>
 		<changed timestamp="1439822945">17-Aug-2015 14:49:05</changed>
@@ -5322,7 +5343,7 @@ There they are ! three beautiful singers, and only cost 6,000 or 7,000 a year ! 
 	</node>
 	</album>
 	<album tid="147" vid="1" name="Ян ван Эйк">
-	<node num="312" nid="361">
+	<node num="313" nid="361">
 		<status>1</status>
 		<created timestamp="1362063792">28-Feb-2013 15:03:12</created>
 		<changed timestamp="1439569608">14-Aug-2015 16:26:48</changed>
@@ -5338,7 +5359,7 @@ http://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B4%D0%BE%D0%BD%D0%BD%D0%B0_%D0%BA%D
 		<big_img>/site-content/albums/painting/imagecache/w1024/jan_van_eyck_madonna_kanclera_rolena_1441.jpg</big_img>
 		<original_img>/site-content/albums/painting/jan_van_eyck_madonna_kanclera_rolena_1441.jpg</original_img>
 	</node>
-	<node num="313" nid="362">
+	<node num="314" nid="362">
 		<status>1</status>
 		<created timestamp="1362064424">28-Feb-2013 15:13:44</created>
 		<changed timestamp="1439569641">14-Aug-2015 16:27:21</changed>
@@ -5356,7 +5377,7 @@ http://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B4%D0%BE%D0%BD%D0%BD%D0%B0_%D0%BA%D
 	</node>
 	</album>
 	<album tid="148" vid="1" name="Пляска Смерти">
-	<node num="314" nid="358">
+	<node num="315" nid="358">
 		<status>1</status>
 		<created timestamp="1360849356">14-Feb-2013 13:42:36</created>
 		<changed timestamp="1439822814">17-Aug-2015 14:46:54</changed>
@@ -5369,7 +5390,7 @@ http://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B4%D0%BE%D0%BD%D0%BD%D0%B0_%D0%BA%D
 		<big_img>/site-content/albums/gravura/imagecache/w1024/countess_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/countess_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="315" nid="290">
+	<node num="316" nid="290">
 		<status>1</status>
 		<created timestamp="1360398846">09-Feb-2013 08:34:06</created>
 		<changed timestamp="1362497873">05-Mar-2013 15:37:53</changed>
@@ -5382,7 +5403,7 @@ http://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%B4%D0%BE%D0%BD%D0%BD%D0%B0_%D0%BA%D
 		<big_img>/site-content/albums/gravura/imagecache/w1024/arts_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/arts_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="316" nid="291">
+	<node num="317" nid="291">
 		<status>1</status>
 		<created timestamp="1360400035">09-Feb-2013 08:53:55</created>
 		<changed timestamp="1362498016">05-Mar-2013 15:40:16</changed>
@@ -5398,7 +5419,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/astronomer_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/astronomer_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="317" nid="292">
+	<node num="318" nid="292">
 		<status>1</status>
 		<created timestamp="1360400748">09-Feb-2013 09:05:48</created>
 		<changed timestamp="1362497932">05-Mar-2013 15:38:52</changed>
@@ -5411,7 +5432,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/bishop_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/bishop_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="318" nid="293">
+	<node num="319" nid="293">
 		<status>1</status>
 		<created timestamp="1360401456">09-Feb-2013 09:17:36</created>
 		<changed timestamp="1362497972">05-Mar-2013 15:39:32</changed>
@@ -5424,7 +5445,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/blanket_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gallery_images/blanket_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="319" nid="294">
+	<node num="320" nid="294">
 		<status>1</status>
 		<created timestamp="1360401884">09-Feb-2013 09:24:44</created>
 		<changed timestamp="1439822945">17-Aug-2015 14:49:05</changed>
@@ -5437,7 +5458,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/cardinal_and_death._1524-26--1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/cardinal_and_death._1524-26--1538.jpg</original_img>
 	</node>
-	<node num="320" nid="295">
+	<node num="321" nid="295">
 		<status>1</status>
 		<created timestamp="1360402231">09-Feb-2013 09:30:31</created>
 		<changed timestamp="1362498074">05-Mar-2013 15:41:14</changed>
@@ -5450,7 +5471,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/chancellor_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/chancellor_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="321" nid="296">
+	<node num="322" nid="296">
 		<status>1</status>
 		<created timestamp="1360402660">09-Feb-2013 09:37:40</created>
 		<changed timestamp="1362498136">05-Mar-2013 15:42:16</changed>
@@ -5463,7 +5484,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/child_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/child_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="322" nid="297">
+	<node num="323" nid="297">
 		<status>1</status>
 		<created timestamp="1360402969">09-Feb-2013 09:42:49</created>
 		<changed timestamp="1362498106">05-Mar-2013 15:41:46</changed>
@@ -5476,7 +5497,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/count_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/count_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="323" nid="369">
+	<node num="324" nid="369">
 		<status>1</status>
 		<created timestamp="1362499692">05-Mar-2013 16:08:12</created>
 		<changed timestamp="1362499784">05-Mar-2013 16:09:44</changed>
@@ -5489,7 +5510,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/abbess_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/abbess_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="324" nid="370">
+	<node num="325" nid="370">
 		<status>1</status>
 		<created timestamp="1362500273">05-Mar-2013 16:17:53</created>
 		<changed timestamp="1362500317">05-Mar-2013 16:18:37</changed>
@@ -5502,7 +5523,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/abbot_and_death_as_bishop._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/abbot_and_death_as_bishop._1524-1538.jpg</original_img>
 	</node>
-	<node num="325" nid="371">
+	<node num="326" nid="371">
 		<status>1</status>
 		<created timestamp="1362500707">05-Mar-2013 16:25:07</created>
 		<changed timestamp="1362500739">05-Mar-2013 16:25:39</changed>
@@ -5515,7 +5536,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/duchess_and_death._1524-1538.jpg</big_img>
 		<original_img>/site-content/albums/gravura/duchess_and_death._1524-1538.jpg</original_img>
 	</node>
-	<node num="326" nid="372">
+	<node num="327" nid="372">
 		<status>1</status>
 		<created timestamp="1362501087">05-Mar-2013 16:31:27</created>
 		<changed timestamp="1362501125">05-Mar-2013 16:32:05</changed>
@@ -5530,7 +5551,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 	</node>
 	</album>
 	<album tid="150" vid="1" name="Жан Гранвиль">
-	<node num="327" nid="393">
+	<node num="328" nid="393">
 		<status>1</status>
 		<created timestamp="1368621701">15-May-2013 12:41:41</created>
 		<changed timestamp="1439574654">14-Aug-2015 17:50:54</changed>
@@ -5543,7 +5564,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/chinese_bobble-balls_judge_general_lady.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/chinese_bobble-balls_judge_general_lady.jpg</original_img>
 	</node>
-	<node num="328" nid="379">
+	<node num="329" nid="379">
 		<status>1</status>
 		<created timestamp="1368338858">12-May-2013 06:07:38</created>
 		<changed timestamp="1439576093">14-Aug-2015 18:14:53</changed>
@@ -5556,7 +5577,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/marionette_pas-de-deux.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/marionette_pas-de-deux.jpg</original_img>
 	</node>
-	<node num="329" nid="380">
+	<node num="330" nid="380">
 		<status>1</status>
 		<created timestamp="1368340198">12-May-2013 06:29:58</created>
 		<changed timestamp="1439575992">14-Aug-2015 18:13:12</changed>
@@ -5569,7 +5590,7 @@ http://ec-dejavu.ru/d/Dance_macabre.html</teaser>
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/carnival_costumes.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/carnival_costumes.jpg</original_img>
 	</node>
-	<node num="330" nid="381">
+	<node num="331" nid="381">
 		<status>1</status>
 		<created timestamp="1368341885">12-May-2013 06:58:05</created>
 		<changed timestamp="1439575883">14-Aug-2015 18:11:23</changed>
@@ -5590,7 +5611,7 @@ Malheureux enfants, Malheureux chiens</teaser>
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/malheureux_enfants_malheureux_chiens.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/malheureux_enfants_malheureux_chiens.jpg</original_img>
 	</node>
-	<node num="331" nid="382">
+	<node num="332" nid="382">
 		<status>1</status>
 		<created timestamp="1368343378">12-May-2013 07:22:58</created>
 		<changed timestamp="1439575776">14-Aug-2015 18:09:36</changed>
@@ -5607,7 +5628,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/lovers_behind_a_wall.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/lovers_behind_a_wall.jpg</original_img>
 	</node>
-	<node num="332" nid="383">
+	<node num="333" nid="383">
 		<status>1</status>
 		<created timestamp="1368344625">12-May-2013 07:43:45</created>
 		<changed timestamp="1439575672">14-Aug-2015 18:07:52</changed>
@@ -5620,7 +5641,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/concert_a_la_vapeur.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/concert_a_la_vapeur.jpg</original_img>
 	</node>
-	<node num="333" nid="384">
+	<node num="334" nid="384">
 		<status>1</status>
 		<created timestamp="1368345585">12-May-2013 07:59:45</created>
 		<changed timestamp="1439575576">14-Aug-2015 18:06:16</changed>
@@ -5633,7 +5654,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/un_autre_monde_1844_frontispiece.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/un_autre_monde_1844_frontispiece.jpg</original_img>
 	</node>
-	<node num="334" nid="385">
+	<node num="335" nid="385">
 		<status>1</status>
 		<created timestamp="1368346435">12-May-2013 08:13:55</created>
 		<changed timestamp="1439575486">14-Aug-2015 18:04:46</changed>
@@ -5646,7 +5667,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/be-wigged_monkey_master-artist_and_his_students_drawing.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/be-wigged_monkey_master-artist_and_his_students_drawing.jpg</original_img>
 	</node>
-	<node num="335" nid="386">
+	<node num="336" nid="386">
 		<status>1</status>
 		<created timestamp="1368356129">12-May-2013 10:55:29</created>
 		<changed timestamp="1439575379">14-Aug-2015 18:02:59</changed>
@@ -5659,7 +5680,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/monkeys_painting.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/monkeys_painting.jpg</original_img>
 	</node>
-	<node num="336" nid="387">
+	<node num="337" nid="387">
 		<status>1</status>
 		<created timestamp="1368357929">12-May-2013 11:25:29</created>
 		<changed timestamp="1439575252">14-Aug-2015 18:00:52</changed>
@@ -5672,7 +5693,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/lightning_bolts_and_lightning_rods.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/lightning_bolts_and_lightning_rods.jpg</original_img>
 	</node>
-	<node num="337" nid="388">
+	<node num="338" nid="388">
 		<status>1</status>
 		<created timestamp="1368358426">12-May-2013 11:33:46</created>
 		<changed timestamp="1439575167">14-Aug-2015 17:59:27</changed>
@@ -5685,7 +5706,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/cabinet_of_heraldic_animals.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/cabinet_of_heraldic_animals.jpg</original_img>
 	</node>
-	<node num="338" nid="389">
+	<node num="339" nid="389">
 		<status>1</status>
 		<created timestamp="1368580645">15-May-2013 01:17:25</created>
 		<changed timestamp="1439575079">14-Aug-2015 17:57:59</changed>
@@ -5698,7 +5719,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/birds_eye_view_of_the_place_vendome.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/birds_eye_view_of_the_place_vendome.jpg</original_img>
 	</node>
-	<node num="339" nid="390">
+	<node num="340" nid="390">
 		<status>1</status>
 		<created timestamp="1368581325">15-May-2013 01:28:45</created>
 		<changed timestamp="1439574987">14-Aug-2015 17:56:27</changed>
@@ -5711,7 +5732,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/pen_dancing_with_quill.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/pen_dancing_with_quill.jpg</original_img>
 	</node>
-	<node num="340" nid="391">
+	<node num="341" nid="391">
 		<status>1</status>
 		<created timestamp="1368581978">15-May-2013 01:39:38</created>
 		<changed timestamp="1439574903">14-Aug-2015 17:55:03</changed>
@@ -5724,7 +5745,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/masked_ball_of_chimerae.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/masked_ball_of_chimerae.jpg</original_img>
 	</node>
-	<node num="341" nid="392">
+	<node num="342" nid="392">
 		<status>1</status>
 		<created timestamp="1368583040">15-May-2013 01:57:20</created>
 		<changed timestamp="1439574787">14-Aug-2015 17:53:07</changed>
@@ -5737,7 +5758,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/cauliflower_priest_at_christening_of_a_baby_mushroom.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/cauliflower_priest_at_christening_of_a_baby_mushroom.jpg</original_img>
 	</node>
-	<node num="342" nid="394">
+	<node num="343" nid="394">
 		<status>1</status>
 		<created timestamp="1368666169">16-May-2013 01:02:49</created>
 		<changed timestamp="1439574516">14-Aug-2015 17:48:36</changed>
@@ -5750,7 +5771,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/walking_the_tightrope_to_paradise.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/walking_the_tightrope_to_paradise.jpg</original_img>
 	</node>
-	<node num="343" nid="395">
+	<node num="344" nid="395">
 		<status>1</status>
 		<created timestamp="1368667050">16-May-2013 01:17:30</created>
 		<changed timestamp="1439574442">14-Aug-2015 17:47:22</changed>
@@ -5763,7 +5784,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/vegetable_trying_to_gain_entry.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/vegetable_trying_to_gain_entry.jpg</original_img>
 	</node>
-	<node num="344" nid="396">
+	<node num="345" nid="396">
 		<status>1</status>
 		<created timestamp="1368667469">16-May-2013 01:24:29</created>
 		<changed timestamp="1439574349">14-Aug-2015 17:45:49</changed>
@@ -5776,7 +5797,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/unconvincing_chinese_family_at_home.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/unconvincing_chinese_family_at_home.jpg</original_img>
 	</node>
-	<node num="345" nid="397">
+	<node num="346" nid="397">
 		<status>1</status>
 		<created timestamp="1368752359">17-May-2013 00:59:19</created>
 		<changed timestamp="1439574264">14-Aug-2015 17:44:24</changed>
@@ -5789,7 +5810,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/combat_de_deux_raffinees.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/combat_de_deux_raffinees.jpg</original_img>
 	</node>
-	<node num="346" nid="398">
+	<node num="347" nid="398">
 		<status>1</status>
 		<created timestamp="1368753824">17-May-2013 01:23:44</created>
 		<changed timestamp="1439574187">14-Aug-2015 17:43:07</changed>
@@ -5803,7 +5824,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/ecole_theatrale.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/ecole_theatrale.jpg</original_img>
 	</node>
-	<node num="347" nid="399">
+	<node num="348" nid="399">
 		<status>1</status>
 		<created timestamp="1368754794">17-May-2013 01:39:54</created>
 		<changed timestamp="1446982071">08-Nov-2015 11:27:51</changed>
@@ -5817,7 +5838,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/les_grands_hommes_aux_champs-elysees.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/les_grands_hommes_aux_champs-elysees.jpg</original_img>
 	</node>
-	<node num="348" nid="400">
+	<node num="349" nid="400">
 		<status>1</status>
 		<created timestamp="1368838792">18-May-2013 00:59:52</created>
 		<changed timestamp="1439574041">14-Aug-2015 17:40:41</changed>
@@ -5830,7 +5851,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/the_creator_blowing_bubbles.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/the_creator_blowing_bubbles.jpg</original_img>
 	</node>
-	<node num="349" nid="401">
+	<node num="350" nid="401">
 		<status>1</status>
 		<created timestamp="1368839487">18-May-2013 01:11:27</created>
 		<changed timestamp="1439573957">14-Aug-2015 17:39:17</changed>
@@ -5844,7 +5865,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/the_cloud-ladies_water_the_earth.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/the_cloud-ladies_water_the_earth.jpg</original_img>
 	</node>
-	<node num="350" nid="402">
+	<node num="351" nid="402">
 		<status>1</status>
 		<created timestamp="1368840632">18-May-2013 01:30:32</created>
 		<changed timestamp="1439573825">14-Aug-2015 17:37:05</changed>
@@ -5858,7 +5879,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/planet_juggler.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/planet_juggler.jpg</original_img>
 	</node>
-	<node num="351" nid="403">
+	<node num="352" nid="403">
 		<status>1</status>
 		<created timestamp="1368923881">19-May-2013 00:38:01</created>
 		<changed timestamp="1439573746">14-Aug-2015 17:35:46</changed>
@@ -5871,7 +5892,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/racing_traffic_seen_from_above.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/racing_traffic_seen_from_above.jpg</original_img>
 	</node>
-	<node num="352" nid="404">
+	<node num="353" nid="404">
 		<status>1</status>
 		<created timestamp="1368925126">19-May-2013 00:58:46</created>
 		<changed timestamp="1439573663">14-Aug-2015 17:34:23</changed>
@@ -5884,7 +5905,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/deguisements_physiologiques.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/deguisements_physiologiques.jpg</original_img>
 	</node>
-	<node num="353" nid="405">
+	<node num="354" nid="405">
 		<status>1</status>
 		<created timestamp="1368925943">19-May-2013 01:12:23</created>
 		<changed timestamp="1439573580">14-Aug-2015 17:33:00</changed>
@@ -5897,7 +5918,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/pas_de_trois_-_dancing_crabs.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/pas_de_trois_-_dancing_crabs.jpg</original_img>
 	</node>
-	<node num="354" nid="406">
+	<node num="355" nid="406">
 		<status>1</status>
 		<created timestamp="1369009907">20-May-2013 00:31:47</created>
 		<changed timestamp="1446982008">08-Nov-2015 11:26:48</changed>
@@ -5910,7 +5931,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/creepy_ballerina_marionette.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/creepy_ballerina_marionette.jpg</original_img>
 	</node>
-	<node num="355" nid="407">
+	<node num="356" nid="407">
 		<status>1</status>
 		<created timestamp="1369011604">20-May-2013 01:00:04</created>
 		<changed timestamp="1439573385">14-Aug-2015 17:29:45</changed>
@@ -5923,7 +5944,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/camail-paletot_des_magasins_de_m.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/camail-paletot_des_magasins_de_m.jpg</original_img>
 	</node>
-	<node num="356" nid="408">
+	<node num="357" nid="408">
 		<status>1</status>
 		<created timestamp="1369012315">20-May-2013 01:11:55</created>
 		<changed timestamp="1439573303">14-Aug-2015 17:28:23</changed>
@@ -5936,7 +5957,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/hat-racks_and_coat-racks_flaneurs.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/hat-racks_and_coat-racks_flaneurs.jpg</original_img>
 	</node>
-	<node num="357" nid="409">
+	<node num="358" nid="409">
 		<status>1</status>
 		<created timestamp="1369012894">20-May-2013 01:21:34</created>
 		<changed timestamp="1439573199">14-Aug-2015 17:26:39</changed>
@@ -5949,7 +5970,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 		<big_img>/site-content/albums/book_illustrate/imagecache/w1024/specter_of_the_pitiless_art_judge.jpg</big_img>
 		<original_img>/site-content/albums/book_illustrate/specter_of_the_pitiless_art_judge.jpg</original_img>
 	</node>
-	<node num="358" nid="410">
+	<node num="359" nid="410">
 		<status>1</status>
 		<created timestamp="1369013414">20-May-2013 01:30:14</created>
 		<changed timestamp="1446981955">08-Nov-2015 11:25:55</changed>
@@ -5964,7 +5985,7 @@ http://www.flickr.com/photos/bjacques/3953448114/in/set-72157622452294268
 	</node>
 	</album>
 	<album tid="151" vid="1" name="Лукас Кранах Старший">
-	<node num="359" nid="412">
+	<node num="360" nid="412">
 		<status>1</status>
 		<created timestamp="1405693538">18-Jul-2014 14:25:38</created>
 		<changed timestamp="1439570748">14-Aug-2015 16:45:48</changed>
@@ -5979,7 +6000,7 @@ http://gravures.ru/photo/lukas_kranakh_starshij/strasti_khristovy/27</teaser>
 		<big_img>/site-content/albums/gravura/imagecache/w1024/hl10511a.jpg</big_img>
 		<original_img>/site-content/albums/gravura/hl10511a.jpg</original_img>
 	</node>
-	<node num="360" nid="417">
+	<node num="361" nid="417">
 		<status>1</status>
 		<created timestamp="1405831665">20-Jul-2014 04:47:45</created>
 		<changed timestamp="1439570635">14-Aug-2015 16:43:55</changed>
@@ -5992,7 +6013,7 @@ http://gravures.ru/photo/lukas_kranakh_starshij/strasti_khristovy/27</teaser>
 		<big_img>/site-content/albums/painting/imagecache/w1024/portret_princessy_sibilly_klevskoy_v_naryade_nevesty_1526.jpg</big_img>
 		<original_img>/site-content/albums/painting/portret_princessy_sibilly_klevskoy_v_naryade_nevesty_1526.jpg</original_img>
 	</node>
-	<node num="361" nid="418">
+	<node num="362" nid="418">
 		<status>1</status>
 		<created timestamp="1405832105">20-Jul-2014 04:55:05</created>
 		<changed timestamp="1439570501">14-Aug-2015 16:41:41</changed>
@@ -6005,7 +6026,7 @@ http://gravures.ru/photo/lukas_kranakh_starshij/strasti_khristovy/27</teaser>
 		<big_img>/site-content/albums/painting/imagecache/w1024/portret_kurprinca_ioahima_vtorogo_1520.jpg</big_img>
 		<original_img>/site-content/albums/painting/portret_kurprinca_ioahima_vtorogo_1520.jpg</original_img>
 	</node>
-	<node num="362" nid="420">
+	<node num="363" nid="420">
 		<status>1</status>
 		<created timestamp="1405833340">20-Jul-2014 05:15:40</created>
 		<changed timestamp="1439570377">14-Aug-2015 16:39:37</changed>
@@ -6019,7 +6040,7 @@ http://gravures.ru/photo/lukas_kranakh_starshij/strasti_khristovy/27</teaser>
 		<big_img>/site-content/albums/painting/imagecache/w1024/portret_saksonskogo_princa_1515.jpg</big_img>
 		<original_img>/site-content/albums/painting/portret_saksonskogo_princa_1515.jpg</original_img>
 	</node>
-	<node num="363" nid="421">
+	<node num="364" nid="421">
 		<status>1</status>
 		<created timestamp="1405833620">20-Jul-2014 05:20:20</created>
 		<changed timestamp="1439570431">14-Aug-2015 16:40:31</changed>
@@ -6034,7 +6055,7 @@ http://gravures.ru/photo/lukas_kranakh_starshij/strasti_khristovy/27</teaser>
 	</node>
 	</album>
 	<album tid="152" vid="1" name="Уильям Хогарт">
-	<node num="364" nid="415">
+	<node num="365" nid="415">
 		<status>1</status>
 		<created timestamp="1405829094">20-Jul-2014 04:04:54</created>
 		<changed timestamp="1448199867">22-Nov-2015 13:44:27</changed>
@@ -6050,7 +6071,7 @@ A 1723 satire on the questionable tastes of London society by William Hogarth. T
 		<big_img>/site-content/albums/gravura/imagecache/w1024/masquerades_and_operas.jpg</big_img>
 		<original_img>/site-content/albums/gravura/masquerades_and_operas.jpg</original_img>
 	</node>
-	<node num="365" nid="416">
+	<node num="366" nid="416">
 		<status>1</status>
 		<created timestamp="1405830101">20-Jul-2014 04:21:41</created>
 		<changed timestamp="1454029282">29-Jan-2016 01:01:22</changed>
@@ -6073,7 +6094,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="153" vid="1" name="художники 16-17 веков">
-	<node num="366" nid="364">
+	<node num="367" nid="364">
 		<status>1</status>
 		<created timestamp="1362156611">01-Mar-2013 16:50:11</created>
 		<changed timestamp="1405833441">20-Jul-2014 05:17:21</changed>
@@ -6087,10 +6108,10 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/lebrun_1661_chancellor-seguier-on-horseback_ggw-309.jpg</big_img>
 		<original_img>/site-content/albums/painting/lebrun_1661_chancellor-seguier-on-horseback_ggw-309.jpg</original_img>
 	</node>
-	<node num="367" nid="411">
+	<node num="368" nid="411">
 		<status>1</status>
 		<created timestamp="1374068902">17-Jul-2013 13:48:22</created>
-		<changed timestamp="1491037119">01-Apr-2017 08:58:39</changed>
+		<changed timestamp="1454735100">06-Feb-2016 05:05:00</changed>
 		<title>Портрет камеристки инфанты Изабеллы</title>
 		<termin tid="153">художники 16-17 веков</termin>
 		<author>Рубенс</author>
@@ -6102,7 +6123,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg</big_img>
 		<original_img>/site-content/albums/painting/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg</original_img>
 	</node>
-	<node num="368" nid="420">
+	<node num="369" nid="420">
 		<status>1</status>
 		<created timestamp="1405833340">20-Jul-2014 05:15:40</created>
 		<changed timestamp="1439570377">14-Aug-2015 16:39:37</changed>
@@ -6116,7 +6137,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/portret_saksonskogo_princa_1515.jpg</big_img>
 		<original_img>/site-content/albums/painting/portret_saksonskogo_princa_1515.jpg</original_img>
 	</node>
-	<node num="369" nid="421">
+	<node num="370" nid="421">
 		<status>1</status>
 		<created timestamp="1405833620">20-Jul-2014 05:20:20</created>
 		<changed timestamp="1439570431">14-Aug-2015 16:40:31</changed>
@@ -6131,7 +6152,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="154" vid="1" name="Лукас Кранах  Младший">
-	<node num="370" nid="423">
+	<node num="371" nid="423">
 		<status>1</status>
 		<created timestamp="1405834391">20-Jul-2014 05:33:11</created>
 		<changed timestamp="1439477842">13-Aug-2015 14:57:22</changed>
@@ -6144,7 +6165,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/margarita_elizaveta_fon_ansbah-bayroyt_1549.jpg</big_img>
 		<original_img>/site-content/albums/painting/margarita_elizaveta_fon_ansbah-bayroyt_1549.jpg</original_img>
 	</node>
-	<node num="371" nid="424">
+	<node num="372" nid="424">
 		<status>1</status>
 		<created timestamp="1405834784">20-Jul-2014 05:39:44</created>
 		<changed timestamp="1439477803">13-Aug-2015 14:56:43</changed>
@@ -6159,7 +6180,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="155" vid="1" name="художники 18-19 веков">
-	<node num="372" nid="278">
+	<node num="373" nid="278">
 		<status>1</status>
 		<created timestamp="1357302585">04-Jan-2013 12:29:45</created>
 		<changed timestamp="1405835383">20-Jul-2014 05:49:43</changed>
@@ -6172,7 +6193,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/degas_danseuses_en_bleu1893.jpg</big_img>
 		<original_img>/site-content/albums/painting/degas_danseuses_en_bleu1893.jpg</original_img>
 	</node>
-	<node num="373" nid="359">
+	<node num="374" nid="359">
 		<status>1</status>
 		<created timestamp="1362061751">28-Feb-2013 14:29:11</created>
 		<changed timestamp="1405835259">20-Jul-2014 05:47:39</changed>
@@ -6187,7 +6208,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/painting/imagecache/w1024/martin_drolling._interior_of_a_kitchen.jpg</big_img>
 		<original_img>/site-content/albums/painting/martin_drolling._interior_of_a_kitchen.jpg</original_img>
 	</node>
-	<node num="374" nid="377">
+	<node num="375" nid="377">
 		<status>1</status>
 		<created timestamp="1366635805">22-Apr-2013 13:03:25</created>
 		<changed timestamp="1405835365">20-Jul-2014 05:49:25</changed>
@@ -6202,7 +6223,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="156" vid="1" name="Лабурер Жан-Эмиль">
-	<node num="375" nid="430">
+	<node num="376" nid="430">
 		<status>1</status>
 		<created timestamp="1437311663">19-Jul-2015 13:14:23</created>
 		<changed timestamp="1448093121">21-Nov-2015 08:05:21</changed>
@@ -6215,7 +6236,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/gravura/imagecache/w1024/zh.-e.laburer_transhei_v_derevne._1916_278_p0030.jpg</big_img>
 		<original_img>/site-content/albums/gravura/zh.-e.laburer_transhei_v_derevne._1916_278_p0030.jpg</original_img>
 	</node>
-	<node num="376" nid="431">
+	<node num="377" nid="431">
 		<status>1</status>
 		<created timestamp="1437312162">19-Jul-2015 13:22:42</created>
 		<changed timestamp="1448092864">21-Nov-2015 08:01:04</changed>
@@ -6228,7 +6249,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/gravura/imagecache/w1024/broadway1907.jpg</big_img>
 		<original_img>/site-content/albums/gravura/broadway1907.jpg</original_img>
 	</node>
-	<node num="377" nid="432">
+	<node num="378" nid="432">
 		<status>1</status>
 		<created timestamp="1437312892">19-Jul-2015 13:34:52</created>
 		<changed timestamp="1448092369">21-Nov-2015 07:52:49</changed>
@@ -6241,7 +6262,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/gravura/imagecache/w1024/jean-emile_laboureur_themagazinekiosk_1920.jpg</big_img>
 		<original_img>/site-content/albums/gravura/jean-emile_laboureur_themagazinekiosk_1920.jpg</original_img>
 	</node>
-	<node num="378" nid="433">
+	<node num="379" nid="433">
 		<status>1</status>
 		<created timestamp="1437313430">19-Jul-2015 13:43:50</created>
 		<changed timestamp="1441533895">06-Sep-2015 10:04:55</changed>
@@ -6257,7 +6278,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="157" vid="1" name="Хроники Жана Фруассара">
-	<node num="379" nid="434">
+	<node num="380" nid="434">
 		<status>1</status>
 		<created timestamp="1438964990">07-Aug-2015 16:29:50</created>
 		<changed timestamp="1438968464">07-Aug-2015 17:27:44</changed>
@@ -6275,7 +6296,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="160" vid="1" name="Миниатюры из &quot;Бабур-наме&quot;">
-	<node num="380" nid="442">
+	<node num="381" nid="442">
 		<status>1</status>
 		<created timestamp="1439028245">08-Aug-2015 10:04:05</created>
 		<changed timestamp="1439028291">08-Aug-2015 10:04:51</changed>
@@ -6288,7 +6309,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 		<big_img>/site-content/albums/miniature/imagecache/w1024/17.jpg</big_img>
 		<original_img>/site-content/albums/miniature/Babur-name/17.jpg</original_img>
 	</node>
-	<node num="381" nid="443">
+	<node num="382" nid="443">
 		<status>1</status>
 		<created timestamp="1439035075">08-Aug-2015 11:57:55</created>
 		<changed timestamp="1439035762">08-Aug-2015 12:09:22</changed>
@@ -6303,7 +6324,7 @@ http://www.grafika.ru/item/08-003367?r=62352
 	</node>
 	</album>
 	<album tid="161" vid="1" name="Братья Лимбурги">
-	<node num="382" nid="501">
+	<node num="383" nid="501">
 		<status>1</status>
 		<created timestamp="1453251536">20-Jan-2016 00:58:56</created>
 		<changed timestamp="1458451693">20-Mar-2016 05:28:13</changed>
@@ -6321,7 +6342,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%82%D1%8C%D1%8F_%D0%9B%D0%B8%
 	</node>
 	</album>
 	<album tid="171" vid="1" name="Жак Калло">
-	<node num="383" nid="465">
+	<node num="384" nid="465">
 		<status>1</status>
 		<created timestamp="1447251993">11-Nov-2015 14:26:33</created>
 		<changed timestamp="1447252253">11-Nov-2015 14:30:53</changed>
@@ -6334,7 +6355,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%82%D1%8C%D1%8F_%D0%9B%D0%B8%
 		<big_img>/site-content/authors/Jacques_Callot/imagecache/w1024/1620_callot_zwerg_mit_violine_anagoria.jpg</big_img>
 		<original_img>/site-content/authors/Jacques_Callot/1620_callot_zwerg_mit_violine_anagoria.jpg</original_img>
 	</node>
-	<node num="384" nid="479">
+	<node num="385" nid="479">
 		<status>1</status>
 		<created timestamp="1448803941">29-Nov-2015 13:32:21</created>
 		<changed timestamp="1448804027">29-Nov-2015 13:33:47</changed>
@@ -6355,7 +6376,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%82%D1%8C%D1%8F_%D0%9B%D0%B8%
 		<big_img>/site-content/authors/Jacques_Callot/imagecache/w1024/jacques_callot_les_martyrs_du_japon_1628.jpg</big_img>
 		<original_img>/site-content/authors/Jacques_Callot/jacques_callot_les_martyrs_du_japon_1628.jpg</original_img>
 	</node>
-	<node num="385" nid="480">
+	<node num="386" nid="480">
 		<status>1</status>
 		<created timestamp="1448805332">29-Nov-2015 13:55:32</created>
 		<changed timestamp="1454029216">29-Jan-2016 01:00:16</changed>
@@ -6379,7 +6400,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%82%D1%8C%D1%8F_%D0%9B%D0%B8%
 	</node>
 	</album>
 	<album tid="180" vid="1" name="Иоганн Исайя Нильсон">
-	<node num="386" nid="497">
+	<node num="387" nid="497">
 		<status>1</status>
 		<created timestamp="1452323806">09-Jan-2016 07:16:46</created>
 		<changed timestamp="1452323880">09-Jan-2016 07:18:00</changed>
@@ -6398,7 +6419,20 @@ http://www.portraitindex.de/documents/obj/34702639</teaser>
 		<big_img>/site-content/authors/Nilson/imagecache/w1024/j_nilson_catharina_alexiewna_empress_of_russia.jpg</big_img>
 		<original_img>/site-content/authors/Nilson/j_nilson_catharina_alexiewna_empress_of_russia.jpg</original_img>
 	</node>
-	<node num="387" nid="498">
+	<node num="388" nid="494">
+		<status>1</status>
+		<created timestamp="1452317777">09-Jan-2016 05:36:17</created>
+		<changed timestamp="1458451237">20-Mar-2016 05:20:37</changed>
+		<title>серия гравюр «Двенадцать месяцев»</title>
+		<termin tid="180">Иоганн Исайя Нильсон</termin>
+		<author></author>
+		<field_title_value>серия гравюр «Двенадцать месяцев», Аугсбург, 1766</field_title_value>
+		<year>1766</year>
+		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/01_januarius_nilson.j.jpg</preview_img>
+		<big_img>/site-content/authors/Nilson/imagecache/w1024/01_januarius_nilson.j.jpg</big_img>
+		<original_img>/site-content/authors/Nilson/01_januarius_nilson.j.jpg</original_img>
+	</node>
+	<node num="389" nid="498">
 		<status>1</status>
 		<created timestamp="1452324472">09-Jan-2016 07:27:52</created>
 		<changed timestamp="1452325270">09-Jan-2016 07:41:10</changed>
@@ -6412,7 +6446,7 @@ http://www.portraitindex.de/documents/obj/34702639</teaser>
 		<big_img>/site-content/authors/Nilson/imagecache/w1024/j_nilson_elisabeth_i.jpg</big_img>
 		<original_img>/site-content/authors/Nilson/j_nilson_elisabeth_i.jpg</original_img>
 	</node>
-	<node num="388" nid="499">
+	<node num="390" nid="499">
 		<status>1</status>
 		<created timestamp="1452325176">09-Jan-2016 07:39:36</created>
 		<changed timestamp="1452325233">09-Jan-2016 07:40:33</changed>
@@ -6425,7 +6459,7 @@ http://www.portraitindex.de/documents/obj/34702639</teaser>
 		<big_img>/site-content/authors/Nilson/imagecache/w1024/j_nilson_petrus_iii_emperor_of_russia.jpg</big_img>
 		<original_img>/site-content/authors/Nilson/j_nilson_petrus_iii_emperor_of_russia.jpg</original_img>
 	</node>
-	<node num="389" nid="500">
+	<node num="391" nid="500">
 		<status>1</status>
 		<created timestamp="1452326120">09-Jan-2016 07:55:20</created>
 		<changed timestamp="1454214578">31-Jan-2016 04:29:38</changed>
@@ -6438,270 +6472,6 @@ http://www.portraitindex.de/documents/obj/34702639</teaser>
 		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/johann_esaias_nilson_portrait_of_queen_marie-antoinette.jpg</preview_img>
 		<big_img>/site-content/authors/Nilson/imagecache/w1024/johann_esaias_nilson_portrait_of_queen_marie-antoinette.jpg</big_img>
 		<original_img>/site-content/authors/Nilson/johann_esaias_nilson_portrait_of_queen_marie-antoinette.jpg</original_img>
-	</node>
-	</album>
-	<album tid="198" vid="1" name="Ганс Гольбейн Младший, живопись">
-	<node num="390" nid="514">
-		<status>1</status>
-		<created timestamp="1491024543">01-Apr-2017 05:29:03</created>
-		<changed timestamp="1491030677">01-Apr-2017 07:11:17</changed>
-		<title>Portrait of Lady Mary Guildford 1527</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author></author>
-		<field_title_value>Mary, Lady Guildford, 1527
-</field_title_value>
-		<year>1527</year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/mary_lady_guildford._1527.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/mary_lady_guildford._1527.jpg</big_img>
-		<original_img>/site-content/albums/painting/mary_lady_guildford._1527.jpg</original_img>
-	</node>
-	<node num="391" nid="515">
-		<status>1</status>
-		<created timestamp="1491026406">01-Apr-2017 06:00:06</created>
-		<changed timestamp="1491030616">01-Apr-2017 07:10:16</changed>
-		<title>Portrait of Charles de Solier, Sieur de Morette. 1534 - 1535</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author></author>
-		<field_title_value>Портрет Шарля де Солье (1534-35), посол Франции при лондонском дворе</field_title_value>
-		<teaser>Portrait of Charles de Solier, Sieur de Morette. 1534 - 1535 (Gemaldegalerie Alte Meister)</teaser>
-		<year>1534</year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_charles_de_solier.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/portrait_of_charles_de_solier.jpg</big_img>
-		<original_img>/site-content/albums/painting/portrait_of_charles_de_solier.jpg</original_img>
-	</node>
-	<node num="392" nid="516">
-		<status>1</status>
-		<created timestamp="1491027374">01-Apr-2017 06:16:14</created>
-		<changed timestamp="1491039302">01-Apr-2017 09:35:02</changed>
-		<title>Portrait of Jakob Meyer zum Hasen. 1516</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author>1516</author>
-		<field_title_value>Портрет базельского бургомистра Якоба Мейера, 1516</field_title_value>
-		<teaser>Portrait of Jakob Meyer zum Hasen. 1516</teaser>
-		<year></year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_jakob_meyer_zum_hasen._1516.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/portrait_of_jakob_meyer_zum_hasen._1516.jpg</big_img>
-		<original_img>/site-content/albums/painting/portrait_of_jakob_meyer_zum_hasen._1516.jpg</original_img>
-	</node>
-	<node num="393" nid="517">
-		<status>1</status>
-		<created timestamp="1491027743">01-Apr-2017 06:22:23</created>
-		<changed timestamp="1491030667">01-Apr-2017 07:11:07</changed>
-		<title>Portrait of Jane Seymour. 1536</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author></author>
-		<field_title_value>Портрет Джейн Сеймур, 1536
-</field_title_value>
-		<teaser>Portrait of Jane Seymour, Queen of England. 1536 (Kunsthistorisches Museum)
-жена короля Англии Генриха VIII Тюдора, мать короля Эдуарда VI</teaser>
-		<year>1536</year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_jane_seymour_1536.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/portrait_of_jane_seymour_1536.jpg</big_img>
-		<original_img>/site-content/albums/painting/portrait_of_jane_seymour_1536.jpg</original_img>
-	</node>
-	<node num="394" nid="518">
-		<status>1</status>
-		<created timestamp="1491028241">01-Apr-2017 06:30:41</created>
-		<changed timestamp="1491030689">01-Apr-2017 07:11:29</changed>
-		<title>Portrait of Prince Edward, later King Edward VI of England. c.1538</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author></author>
-		<field_title_value>Портрет принца Эдуарда (Эдуард VI), 1538</field_title_value>
-		<teaser>Portrait of Prince Edward, later King Edward VI of England. c.1538</teaser>
-		<year>1538</year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_prince_edward_1538.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/portrait_of_prince_edward_1538.jpg</big_img>
-		<original_img>/site-content/albums/painting/portrait_of_prince_edward_1538.jpg</original_img>
-	</node>
-	<node num="395" nid="519">
-		<status>1</status>
-		<created timestamp="1491028729">01-Apr-2017 06:38:49</created>
-		<changed timestamp="1491030701">01-Apr-2017 07:11:41</changed>
-		<title>Portrait of the Merchant Georg Gisze. 1532</title>
-		<termin tid="198">Ганс Гольбейн Младший, живопись</termin>
-		<author></author>
-		<field_title_value>Портрет Георга Гисце, 1532</field_title_value>
-		<teaser>Portrait of the Merchant Georg Gisze. 1532</teaser>
-		<year>1532</year>
-		<preview_img>/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_the_merchant_georg_gisze._1532.jpg</preview_img>
-		<big_img>/site-content/albums/painting/imagecache/w1024/portrait_of_the_merchant_georg_gisze._1532.jpg</big_img>
-		<original_img>/site-content/albums/painting/portrait_of_the_merchant_georg_gisze._1532.jpg</original_img>
-	</node>
-	</album>
-	<album tid="199" vid="1" name="серия «Двенадцать месяцев»">
-	<node num="396" nid="482">
-		<status>1</status>
-		<created timestamp="1452145430">07-Jan-2016 05:43:50</created>
-		<changed timestamp="1491037763">01-Apr-2017 09:09:23</changed>
-		<title>Nilson, Januarius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Январь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766
-</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0100
-</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/01_januarius_nilson.j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/01_januarius_nilson.j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/01_januarius_nilson.j.jpg</original_img>
-	</node>
-	<node num="397" nid="483">
-		<status>1</status>
-		<created timestamp="1452148069">07-Jan-2016 06:27:49</created>
-		<changed timestamp="1491037819">01-Apr-2017 09:10:19</changed>
-		<title>Nilson, Februarius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Февраль, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766
-</field_title_value>
-		<teaser>&lt;pre&gt;
-http://kk.haum-bs.de/?id=j-e-nilson-ab3-0101
-http://localhost/sites/graphic-art-collection/albums_xml/zoomify/febr_js.html
-&lt;/pre&gt;</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/02_februarius.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/02_februarius.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/02_februarius.jpg</original_img>
-	</node>
-	<node num="398" nid="484">
-		<status>1</status>
-		<created timestamp="1452148993">07-Jan-2016 06:43:13</created>
-		<changed timestamp="1491037943">01-Apr-2017 09:12:23</changed>
-		<title>Nilson, Martius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Март, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0102</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/03_martius_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/03_martius_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/03_martius_nilson_j.jpg</original_img>
-	</node>
-	<node num="399" nid="485">
-		<status>1</status>
-		<created timestamp="1452149612">07-Jan-2016 06:53:32</created>
-		<changed timestamp="1491037965">01-Apr-2017 09:12:45</changed>
-		<title>Nilson, Aprilis</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Апрель, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0103</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/04_aprilis_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/04_aprilis_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/04_aprilis_nilson_j.jpg</original_img>
-	</node>
-	<node num="400" nid="486">
-		<status>1</status>
-		<created timestamp="1452150077">07-Jan-2016 07:01:17</created>
-		<changed timestamp="1491037983">01-Apr-2017 09:13:03</changed>
-		<title>Nilson, Maius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Май, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0104</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/05_maius_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/05_maius_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/05_maius_nilson_j.jpg</original_img>
-	</node>
-	<node num="401" nid="487">
-		<status>1</status>
-		<created timestamp="1452150485">07-Jan-2016 07:08:05</created>
-		<changed timestamp="1491038001">01-Apr-2017 09:13:21</changed>
-		<title>Nilson, Iunius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Июнь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0105</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/06_iunius_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/06_iunius_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/06_iunius_nilson_j.jpg</original_img>
-	</node>
-	<node num="402" nid="488">
-		<status>1</status>
-		<created timestamp="1452151071">07-Jan-2016 07:17:51</created>
-		<changed timestamp="1491038017">01-Apr-2017 09:13:37</changed>
-		<title>Nilson, Iulius</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Июль, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0106</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/07_iulius_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/07_iulius_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/07_iulius_nilson_j.jpg</original_img>
-	</node>
-	<node num="403" nid="489">
-		<status>1</status>
-		<created timestamp="1452151588">07-Jan-2016 07:26:28</created>
-		<changed timestamp="1491038040">01-Apr-2017 09:14:00</changed>
-		<title>Nilson, Augustus</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Август, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0107</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/08_augustus_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/08_augustus_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/08_augustus_nilson_j.jpg</original_img>
-	</node>
-	<node num="404" nid="490">
-		<status>1</status>
-		<created timestamp="1452152105">07-Jan-2016 07:35:05</created>
-		<changed timestamp="1491038055">01-Apr-2017 09:14:15</changed>
-		<title>Nilson, September</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Сентябрь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0108</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/09_september_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/09_september_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/09_september_nilson_j.jpg</original_img>
-	</node>
-	<node num="405" nid="491">
-		<status>1</status>
-		<created timestamp="1452152628">07-Jan-2016 07:43:48</created>
-		<changed timestamp="1491038071">01-Apr-2017 09:14:31</changed>
-		<title>Nilson, October</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Октябрь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0109</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/10_october_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/10_october_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/10_october_nilson_j.jpg</original_img>
-	</node>
-	<node num="406" nid="492">
-		<status>1</status>
-		<created timestamp="1452153164">07-Jan-2016 07:52:44</created>
-		<changed timestamp="1491038087">01-Apr-2017 09:14:47</changed>
-		<title>Nilson, November</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Ноябрь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0110</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/11_november_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/11_november_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/11_november_nilson_j.jpg</original_img>
-	</node>
-	<node num="407" nid="493">
-		<status>1</status>
-		<created timestamp="1452153585">07-Jan-2016 07:59:45</created>
-		<changed timestamp="1491038105">01-Apr-2017 09:15:05</changed>
-		<title>Nilson, December</title>
-		<termin tid="199">серия «Двенадцать месяцев»</termin>
-		<author></author>
-		<field_title_value>Декабрь, серия гравюр «Двенадцать месяцев», Иоганн Исайя Нильсон, Аугсбург, 1766</field_title_value>
-		<teaser>http://kk.haum-bs.de/?id=j-e-nilson-ab3-0111</teaser>
-		<year>1766</year>
-		<preview_img>/site-content/authors/Nilson/imagecache/preview_gallery_img/12_december_nilson_j.jpg</preview_img>
-		<big_img>/site-content/authors/Nilson/imagecache/w1024/12_december_nilson_j.jpg</big_img>
-		<original_img>/site-content/authors/Nilson/12_december_nilson_j.jpg</original_img>
 	</node>
 	</album>
 </albums>
