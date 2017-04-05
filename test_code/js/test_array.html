@@ -17,6 +17,34 @@ test_arr.forEach(
     console.log( "This is element " + n +" with value: " + item);  
   }
 );
+
+//---------------------------
+//test
+var ar1 = [];
+var ar2 = [];
+
+var rec1 = {"a" : 1};
+var rec2 = {"b" : 2};
+var rec3 = {"c" : 3};
+
+ar1.push(rec1);
+ar1.push(rec2);
+ar1.push(rec3);
+
+var rec11 = {"a" : 11};
+var rec12 = {"b" : 12};
+var rec13 = {"c" : 13};
+var rec4 = {"d" : 4};
+
+//ar2.push(rec11);
+ar2.push(rec12);
+ar2.push(rec13);
+ar2.push(rec4);
+
+
+ar1=ar2;
+console.log(ar1);
+
 	</script>
 	
 <style>	
@@ -99,8 +127,6 @@ console.log( unique(strings) );
 </pre>
 			</div>
 		
-			<div class="panel-body">
-
 		</div>
 		
 </div>
