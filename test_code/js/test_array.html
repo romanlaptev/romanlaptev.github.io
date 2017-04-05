@@ -18,7 +18,9 @@ test_arr.forEach(
   }
 );
 
-//---------------------------
+	</script>
+
+	<script>
 //test
 var ar1 = [];
 var ar2 = [];
@@ -44,6 +46,28 @@ ar2.push(rec4);
 
 ar1=ar2;
 console.log(ar1);
+	</script>
+
+	<script>
+//extend object obj1
+var obj1 = {
+  "a" : 1,
+  "b" : 2,
+  "c" : 3
+};
+
+var obj2 = {
+  "b" : 12,
+  "c" : 13,
+  "d" : 4
+};
+
+//obj1=obj2;//+++++replace obj
+for(var key in obj2 ){
+   obj1[key] = obj2[key];
+}
+
+console.log(obj1);
 
 	</script>
 	
@@ -112,7 +136,7 @@ https://learn.javascript.ru/array-methods
 function unique(arr) {
   var obj = {};
 
-  for(var n = 0; n < arr.length; n++){
+  for(var n = 0; n &lt; arr.length; n++){
     var str = arr[n];
     obj[str] = true; // запомнить строку в виде свойства объекта
   }
@@ -124,6 +148,30 @@ var strings = ["кришна", "кришна", "харе", "харе",
 ];
 
 console.log( unique(strings) );
+</pre>
+			</div>
+		
+			<div class="panel-body">
+<pre>
+//extend object obj1
+var obj1 = {
+  "a" : 1,
+  "b" : 2,
+  "c" : 3
+};
+
+var obj2 = {
+  "b" : 12,
+  "c" : 13,
+  "d" : 4
+};
+
+//obj1=obj2;//+++++replace obj
+for(var key in obj2 ){
+   obj1[key] = obj2[key];
+}
+
+console.log(obj1);
 </pre>
 			</div>
 		
