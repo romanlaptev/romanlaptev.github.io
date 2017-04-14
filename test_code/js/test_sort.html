@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="utf-8"/>
@@ -105,7 +105,88 @@ var germanPhonebook = new Intl.Collator("de-DE-u-co-phonebk");
 console.log(names.sort(germanPhonebook.compare).join(", "));
 */
 
-var collator = new Intl.Collator("lv-LV");
+var testLocales = Intl.Collator.supportedLocalesOf(["lv"], { usage: "sort" });
+console.log( testLocales );
+console.log( testLocales.length > 0 ? "collation supported": "collation not supported");
+
+//var collator = new Intl.Collator();
+//var collator = new Intl.Collator("lv");
+//var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+var collator = new Intl.Collator("lv-LV-u-co-dict");
+
+//test1
+var test = [
+//"ĀDAŽI-GARKALNE",
+//"ĻAUDONA-MŪRNIEKI-STALIDZĀNI-GAIGALIEŠI",
+//"ABAVCIEMS-VEĢI",
+//"ŽĪGURI-SILACIEMS-KATLEŠI"
+//"BALTINAVAS NOVADS, APŠOVA",
+//"ĀDAŽU NOVADS, ALDERI",
+//"AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"
+"B",
+"Ā",
+"A"
+];
+
+test.sort(function(a, b) {
+	//return collator.compare(a, b);
+	return a.localeCompare(b);
+});
+console.log( test );
+
+//console.log(new Intl.Collator('de', {sensitivity: "base"} ).compare('ä', 'a'));
+//console.log(new Intl.Collator("lv").compare('Ā', 'A'));
+//console.log(new Intl.Collator("lv").compare('Ž', 'A'));
+
+//test2
+var str1 = "ĀDAŽU NOVADS, ALDERI";
+var str2 = "AGLONAS NOVADS, AGLONAS PAGASTS, AGLONA";
+var result = collator.compare(str1, str2);
+console.log(result);
+
+//test3
+var table = [];
+//var str1 = {"text" : "ĀDAŽU NOVADS, ALDERI"};
+//var str2 = {"text" : "AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"};
+
+table.push({
+	//"text" : "BALTINAVAS NOVADS, APŠOVA"
+	"text" : "BA"
+});
+table.push({
+	//"text" : "ĀDAŽU NOVADS"
+	"text" : "ĀD"
+});
+table.push({
+	//"text" : "AUCES NOVADS"
+	"text" : "AU"
+});
+
+console.log(table);
+
+var sortField = "text";
+table.sort(function(a,b){
+	var a_order = a[sortField];
+	var b_order = b[sortField];
+  /*
+	var res = 0; // a === b
+	if (a_order > b_order) {
+		res = 1;
+	}
+	if (a_order < b_order) {
+		res = -1;
+	}
+	*/
+  var res = collator.compare(a_order, b_order);
+  return res;
+});
+console.log(table);
+
+var res = collator.compare("ĀD", "AU");
+console.log(res);
+
+var res = collator.compare("ĀD", "AD");
+console.log(res);
 
 </script>
 
