@@ -11,14 +11,39 @@
 	<div class="container">
 	
 		<div class="page-header">
-			<h1>Test SORT</h1>
+			<h1>Test SORT, Intl.Collator</h1>
 		</div>
 	
-		<pre>
+		<div class="panel">
+			<div class="panel-body">
+<pre>
+http://javascript.ru/array/sort
+Справочник javascript: sort
+
+
 https://learn.javascript.ru/array-methods
-		</pre>
+
+
+Intl: интернационализация в JavaScript 
+https://learn.javascript.ru/intl
+
+
+https://habrahabr.ru/post/253913/
+API для интернационализации JavaScript: реализация в Firefox / Хабрахабр
+
+
+http://theory.phphtml.net/javascript/string/localeCompare.html
+Метод localeCompare - сравнение строк на JavaScript
+</pre>
+
+			</div>
+		</div>
 		
-		<pre id="code_out"></pre>
+		<div class="panel">
+			<div class="panel-body">
+<pre id="code_out"></pre>
+			</div>
+		</div>
 		
 	</div><!-- end container -->
 	
@@ -65,8 +90,23 @@ console.log( sort_items );
 	//print source code
 	var source_txt = document.getElementById("source");
 	//alert( source_txt.outerHTML );
-	code_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+	code_out.appendChild( document.createTextNode( source_txt.innerHTML ) );
 	
+</script>
+
+
+<script id="src2">
+/*
+var names =
+  ["Hochberg", "Hönigswald", "Holzman"];
+ 
+var germanPhonebook = new Intl.Collator("de-DE-u-co-phonebk");
+ 
+console.log(names.sort(germanPhonebook.compare).join(", "));
+*/
+
+var collator = new Intl.Collator("lv-LV");
+
 </script>
 
 </body>
