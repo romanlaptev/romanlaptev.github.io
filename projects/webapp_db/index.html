@@ -9,39 +9,33 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 -->	
-<script src="js/shared_functions.js"></script>
+	<script src="js/shared_functions.js"></script>
 </head>
 
 <body>
-
 <div class="container">
 	<header>
 		<h1  class="text-center">webapp DB</h1>
 	</header>
-		
-	<div class="panel">
-		<div class="panel-body">Log panel
-			<div id="log"></div>
+	
+	<div class="row">
+	
+		<div class="col-md-3" id="sidebar-left">sidebar-left
+			<div class="block block-views" id="block-views-info_termins_genre-block_1"></div>			
 		</div>
+		
+		<div class="col-md-6" id="main">main</div>
+		
+		<div class="col-md-3" id="sidebar-right">sidebar-right
+		</div>
+		
 	</div>
 
-		<div class="row">
-		
-			<div class="col-md-3" id="sidebar-left">sidebar-left
-				<div class="block block-views" id="block-views-info_termins_genre-block_1"></div>			
-			</div>
-			
-			<div class="col-md-6" id="main">main</div>
-			
-			<div class="col-md-3" id="sidebar-right">sidebar-right
-			</div>
-			
-		</div>
-
-	<footer></footer>
+	<footer>
+		<div id="log"></div>	
+	</footer>
+	
 </div><!-- end container -->
-
 </body>
 <script src="js/main.js"></script>
-
 </html>
