@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0"/>
+	
+	<title>Sea Fight</title>
+<!--
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css"/>
+-->	
+	<link rel="stylesheet" type="text/css" href="css/uikit.css"/>
+	<link rel="stylesheet" type="text/css" href="css/sea_fight.css"/>
+
+	<script src="js/jquery-latest.js"></script>
+	<script>//console.log( jQuery.fn.jquery );</script>
+	<script src="js/sea_fight.js"></script>
+</head>
+
+<body>
+	<div class="uk-container uk-container-center">
+	
+		<div class="box-title">
+			<h1 class="uk-text-center">Sea Fight</h1>
+		</div>
+		
+		<div class="uk-grid">
+		
+			<div class="uk-width-1-1 uk-width-small-1-2 uk-width-medium-1-2 uk-width-large-1-2">
+			
+				<h3 class="uk-text-center">флот игрока</h3>
+				<div id="player-fleet" class="field">
+					<div class="row">
+						<div class="num">	<span>&nbsp;</span>	</div>
+						<div class="sym">	<span>А</span>	</div>
+						<div class="sym">	<span>Б</span>	</div>
+						<div class="sym">	<span>В</span>	</div>
+						<div class="sym">	<span>Г</span>	</div>
+						<div class="sym">	<span>Д</span>	</div>
+						<div class="sym">	<span>Е</span>	</div>
+						<div class="sym">	<span>Ж</span>	</div>
+						<div class="sym">	<span>З</span>	</div>
+						<div class="sym">	<span>И</span>	</div>
+						<div class="sym">	<span>К</span>	</div>
+					</div>
+					
+					<div class="row">
+						<div class="num">	<span>1</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>2</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+				
+					<div class="row">
+						<div class="num">	<span>3</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>4</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>5</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>6</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>7</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>8</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>9</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>10</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				</div><!-- end field -->
+			
+			</div>
+			
+			
+			<div class="uk-width-1-1 uk-width-small-1-2 uk-width-medium-1-2 uk-width-large-1-2">
+				<h3 class="uk-text-center">корабли противника</h3>
+				<div id="computer-fleet" class="field">
+					<div class="row">
+						<div class="num">	<span>&nbsp;</span>	</div>
+						<div class="sym">	<span>А</span>	</div>
+						<div class="sym">	<span>Б</span>	</div>
+						<div class="sym">	<span>В</span>	</div>
+						<div class="sym">	<span>Г</span>	</div>
+						<div class="sym">	<span>Д</span>	</div>
+						<div class="sym">	<span>Е</span>	</div>
+						<div class="sym">	<span>Ж</span>	</div>
+						<div class="sym">	<span>З</span>	</div>
+						<div class="sym">	<span>И</span>	</div>
+						<div class="sym">	<span>К</span>	</div>
+					</div>
+					
+					<div class="row">
+						<div class="num">	<span>1</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>2</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+				
+					<div class="row">
+						<div class="num">	<span>3</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>4</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>5</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>6</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>7</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>8</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>9</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				
+					<div class="row">
+						<div class="num">	<span>10</span>	</div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+						<div class="cell">	<span></span></div>
+					</div>
+				</div><!-- end field -->
+			</div>
+			
+			
+			
+		</div>
+
+<!--
+http://ru.battleship-game.org/
+-->
+
+	</div><!-- end container -->
+	
+</body>
+</html>

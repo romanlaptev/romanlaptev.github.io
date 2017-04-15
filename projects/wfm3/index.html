@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>web file manager</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.css"/>	
+<!--
+<script src="http://code.jquery.com/jquery-latest.js"></script>	
+<script src="js/jquery.min.js"></script>
+-->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.js"></script>	
+
+<link href="jQuery.jPlayer.2.5.0/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jplayer.playlist.min.js"></script>
+
+<!-- 
+<link type="text/css" href="js/jscrollpane/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+<script type="text/javascript" src="js/jscrollpane/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/jscrollpane/jquery.jscrollpane.min.js"></script>		
+-->
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/parse_music.js"></script>
+</head>
+
+<body>
+	<div class="container">
+
+	<div class="rows topmenu">
+
+		<ul class="nav nav-tabs">
+			<li class="dropdown menu-left-panel">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Left panel
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="view-file-panel" href="#">Files</a></li>
+					<!-- <li class="divider"></li> -->
+					<li><a class="view-media-player" href="#">Player</a></li>
+				</ul>
+			</li>
+
+			<li class="dropdown menu-right-panel">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Right panel
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a class="view-file-panel" href="#">Files</a></li>
+					<li><a class="view-pls-panel" href="#">Manage playlists</a></li>
+				</ul>
+			</li>
+		</ul>
+
+	</div>
+
+
+<div class="rows panels">
+	<div class="cols col-1 left-panel">
+
+<!-- ################################## player -->
+		<div id="jp_container_N" class="jp-video jp-video-270p">
+			<div class="jp-type-playlist">
+				<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+				<div class="jp-gui">
+					<div class="jp-video-play">
+						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+					</div>
+					<div class="jp-interface">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+						<div class="jp-controls-holder">
+							<ul class="jp-controls">
+								<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+								<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+							</ul>
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+							<ul class="jp-toggles">
+								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+								<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+								<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+							</ul>
+						</div>
+						<div class="jp-title">
+							<ul>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="jp-playlist">
+					<ul>
+						<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+						<li></li>
+					</ul>
+				</div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+				</div>
+			</div>
+		</div>
+<!-- ################################## /player -->
+
+	</div><!-- #col-1 -->
+
+
+	<div class="cols col-2 right-panel active-panel">
+
+<!-- <form method="post" name="filelist" action=""> -->
+		<div class="files">
+
+			<div class="">
+				<a class="up-link btn" href="#">up</a>
+				<span class="dirname"></span>
+			</div>
+
+			<div class="wfm">
+
+			<div id="listing">
+				<div class="folders-list">
+					<ul class="subfolder-tpl">
+						<li>
+							<input type="checkbox" name="file[]" value="sname">
+							<a class="subfolder" href="#"><small>+</small> sname</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="files-list">
+					<ul class="file-tpl">
+						<li>
+							<div class="file">
+								<input type="checkbox" name="file[]" value="fname">
+								fname
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<iframe id="filelist" 
+			width="100%" height="100%" 
+			name="filelist" 
+			src=""></iframe>
+				
+			</div><!-- /wfm -->
+
+		</div><!-- /files -->
+<!-- 
+		<input type="submit" value="submit">
+	</form> 
+-->
+	</div><!-- /right-panel -->
+
+</div><!-- /panels -->
+
+<div class="rows panel-buttons">
+	<div class="cols col-1">&nbsp;</div>
+	<div class="cols col-2">
+		<ul>
+			<li><a class="copy btn btn-primary" href="#">copy</a></li>
+			<li><a class="move btn btn-primary" href="#">move</a></li>
+			<li><a class="rename btn btn-primary" href="#">rename</a></li>
+			<li><a class="group-remove btn btn-primary" href="#">delete</a></li>
+			<li><a class="reload-pls btn btn-primary" href="#">reload playlist</a></li>
+		</ul>
+	</div>
+	<div class="cols col-3">&nbsp;</div>
+</div>
+
+<div id="log" class="rows"></div>
+
+	</div><!-- /container -->
+
+<div id="input-rename" class="hide">
+	<a class="cancel" href="#">x</a>
+	change filename<br>
+	<input type="hidden" name="old-name" value=""><br>
+	<input type="text" name="new-name" value="">
+	<a class="ok btn btn-primary" href="#">ok</a>
+</div>
+
+<div id="input-copy-location" class="hide">
+	<a class="cancel" href="#">x</a>
+
+	<span class="file-op">copy</span> files<br>
+
+	from: <input type="text" name="src_folder" value=""><br>
+	to: <input type="text" name="dst_folder" value=""><br>
+
+	<input type="hidden" name="movefiles" value="0">
+
+	<a class="ok btn btn-primary" href="#">ok</a>
+</div>
+
+<div id="ajaxBusy">
+<h1>ajaxBusy</h1>
+</div>
+
+</body>
+</html>

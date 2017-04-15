@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>honey site</title>
+<!--
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+-->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/honey-style.css" />
+<!--[if lte IE 8]>
+	<link rel=stylesheet href="gallery-style_fix-ie.css" type=text/css>
+<![endif]-->
+<script language=JavaScript src="js/functions.js"></script>
+
+<!-- ======HIGHSLIDE======================== -->
+<script type="text/javascript" src="js/highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="js/highslide/highslide.css" />
+<script type="text/javascript">
+	hs.graphicsDir = 'js/highslide/graphics/';
+	hs.outlineType = 'rounded-white';
+	hs.wrapperClassName = 'draggable-header';
+	hs.showCredits = false;
+</script>
+<!-- ======================================= -->
+<script>
+
+function honeybox_hover(cell_top, cell_box, cell_bottom, color)
+{
+	//var color='#280099';
+	//var cell_hover_top = document.getElementById('honey11').getElementsByTagName('div')[0];
+	var cell_hover_top = document.getElementById(cell_top);
+//alert (cell_hover_top.outerHTML);
+
+	//cell_hover_top.style.borderBottomStyle = 'solid';
+	//cell_hover_top.style.borderBottomWidth = '40px';
+	cell_hover_top.style.borderBottomColor = color; // for IE
+	//cell_hover_top.setAttribute("style", 'border-bottom: 40px solid ' + color + ';');
+
+	var cell_hover_box = document.getElementById(cell_box);
+	//var cell_hover_box = document.getElementById('honey11').getElementsByTagName('div')[1];
+	cell_hover_box.style.backgroundColor = color; // for IE
+	//cell_hover_box.setAttribute("style", 'background: ' + color + ';');
+
+	var cell_hover_bottom = document.getElementById(cell_bottom);
+	//var cell_hover_bottom = document.getElementById('honey11').getElementsByTagName('div')[3];
+	cell_hover_bottom.style.borderTopColor = color; // for IE
+	//cell_hover_bottom.setAttribute("style", 'border-top: 40px solid ' + color + ';');
+}
+
+function honeybox_unhover(cell_top, cell_box, cell_bottom, color)
+{
+	//var color='red';
+	var cell_hover_top = document.getElementById(cell_top);
+	cell_hover_top.style.borderBottomColor = color; // for IE
+	//cell_hover_top.setAttribute("style", 'border-bottom: 40px solid ' + color + ';');
+
+	var cell_hover_box = document.getElementById(cell_box);
+	cell_hover_box.style.backgroundColor = color; // for IE
+	//cell_hover_box.setAttribute("style", 'background: ' + color + ';');
+
+	var cell_hover_bottom = document.getElementById(cell_bottom);
+	cell_hover_bottom.style.borderTopColor = color; // for IE
+	//cell_hover_bottom.setAttribute("style", 'border-top: 40px solid ' + color + ';');
+}
+</script>
+</head>
+
+<body>
+
+<div id="main">
+<!--
+<h1>Honey site!</h1>
+		<div class="test-box1"></div>
+		<div class="test-box2"></div>
+-->
+<div id="row1">
+<!-- =============================================== -->
+	<div id="honey11">
+		<div id="honey11_top-corner" class="top-corner"></div>
+
+		<a id="box_books" href="/drupal5/" 
+onMouseOver="honeybox_hover('honey11_top-corner', 'honey11_box', 'honey11_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey11_top-corner', 'honey11_box', 'honey11_bottom-corner', '#0099FF');">
+			<div id="honey11_box" class="box">Drupal</div>
+		</a>
+		<div  id="honey11_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey12">
+		<div id="honey12_top-corner" class="top-corner"></div>
+		<a  id="box_graphics" href="/modx/" 
+onMouseOver="honeybox_hover('honey12_top-corner', 'honey12_box', 'honey12_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey12_top-corner', 'honey12_box', 'honey12_bottom-corner', '#315570');">
+			<div id="honey12_box" class="box">MODx</div>
+		</a>
+
+<!--
+		<a  id="box_graphics" href="#" 
+onclick="return hs.htmlExpand(this)"
+onMouseOver="honeybox_hover('honey12_top-corner', 'honey12_box', 'honey12_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey12_top-corner', 'honey12_box', 'honey12_bottom-corner', '#315570');">
+			<div id="honey12_box" class="box">Графика</div>
+		<div class="highslide-maincontent">
+			<h3>Графика</h3>
+			<a href="http://gravura.ts6.ru/pages/book_history_engraving/index.html">Очерки по истории и технике гравюры</a><br>
+		</div>
+-->
+
+		<div id="honey12_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+</div>
+<!-- =============================================== -->
+
+<div id="row2">
+<!-- =============================================== -->
+	<div id="honey21">
+		<div id="honey21_top-corner" class="top-corner"></div>
+		<a  id="box_bookmarks" href="#" 
+onMouseOver="honeybox_hover('honey21_top-corner', 'honey21_box', 'honey21_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey21_top-corner', 'honey21_box', 'honey21_bottom-corner', '#9999CC');">
+			<div id="honey21_box" class="box">#</div>
+		</a>
+		<div id="honey21_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey22">
+		<div id="honey22_top-corner" class="top-corner"></div>
+		<a  href="#" 
+onMouseOver="honeybox_hover('honey22_top-corner', 'honey22_box', 'honey22_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey22_top-corner', 'honey22_box', 'honey22_bottom-corner', '#6B0094');">
+			<div id="honey22_box" class="box"></div>
+		</a>
+		<div id="honey22_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey23">
+		<div id="honey23_top-corner" class="top-corner"></div>
+		<a  href="#" 
+onMouseOver="honeybox_hover('honey23_top-corner', 'honey23_box', 'honey23_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey23_top-corner', 'honey23_box', 'honey23_bottom-corner', '#FFB515');">
+			<div id="honey23_box" class="box"></div>
+		</a>
+		<div id="honey23_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+</div>
+<!-- =============================================== -->
+
+<div id="row3">
+	<div id="honey31">
+		<div id="honey31_top-corner" class="top-corner"></div>
+		<a  id="box_video" href="#" 
+onMouseOver="honeybox_hover('honey31_top-corner', 'honey31_box', 'honey31_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey31_top-corner', 'honey31_box', 'honey31_bottom-corner', '#FF6309');">
+			<div  id="honey31_box" class="box">#</div>
+		</a>
+		<div  id="honey31_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+	<div id="honey32">
+		<div id="honey32_top-corner" class="top-corner"></div>
+		<a  id="box_music" href="#"
+onMouseOver="honeybox_hover('honey32_top-corner', 'honey32_box', 'honey32_bottom-corner', '#280099');" 
+onMouseOut="honeybox_unhover('honey32_top-corner', 'honey32_box', 'honey32_bottom-corner', '#008000');">
+			<div  id="honey32_box" class="box">#</div>
+		</a>
+		<div  id="honey32_bottom-corner" class="bottom-corner"></div>
+	</div>
+<!-- =============================================== -->
+</div>
+
+</div><!-- end main -->
+
+
+</body>
+</html>
+
