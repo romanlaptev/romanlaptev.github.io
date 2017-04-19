@@ -1,4 +1,4 @@
-﻿var webApp = {
+var webApp = {
 	
 	"vars" : {
 		"log" : [],
@@ -38,25 +38,28 @@ console.log("<br>" + msg);
 };//end webApp()
 
 webApp.init();
-
+var _db = _dBase();
+console.log(_db);
 
 function _dBase( opt ){
 //console.log(arguments);	
 
 	// private variables and functions
-	var vars = {};
+	var _vars = {
+		"prop": "test"
+	};
 
 	var _init = function(args){
 console.log("init _dBase!", args);
-		vars["xmlData"] = args["data"];
-//console.log( "vars:" , vars["xmlData"].children );
+		_vars["xmlData"] = args["data"];
+console.log( "_vars:" , _vars["xmlData"].children );
 
 		// var xml = vars["xmlData"].children;
 // console.log( xml ) ;
 		// for( var item in xml){
 // console.log( item +" : "+ xml["item"] ) ;
 		// }
-		var xml = vars["xmlData"].getElementsByTagName("database");
+		var xml = _vars["xmlData"].getElementsByTagName("database");
 		var records = xml.item(0).getElementsByTagName("table");
 		
 console.log( records.length ) ;
@@ -71,6 +74,7 @@ console.log( records.length ) ;
 
 	// public interfaces
 	return{
+		vars : _vars,
 		init:	function(args){ 
 //console.log(arguments);
 			return _init(args); 
