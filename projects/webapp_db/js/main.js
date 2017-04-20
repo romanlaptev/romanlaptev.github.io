@@ -23,8 +23,13 @@ console.log("init webapp!");
 var msg = "load " + webApp.vars["db_url"] ;
 console.log("<br>" + msg);
 //console.log( "_postFunc(), " + typeof data );
-
-				_dBase().init({
+/*
+				_db.init({
+					"data" : data,
+					"format" : webApp.vars["db_type"]
+				});
+*/				
+				webApp.dB.init({
 					"data" : data,
 					"format" : webApp.vars["db_type"]
 				});
@@ -33,13 +38,16 @@ console.log("<br>" + msg);
 		});
 		
 		//this.dBase();
-	}//end init()
+	},//end init()
+	
+	"dB" : _dBase()
 	
 };//end webApp()
 
 webApp.init();
-var _db = _dBase();
-console.log(_db);
+//var _db = _dBase();
+//console.log(_db);
+console.log(webApp);
 
 function _dBase( opt ){
 //console.log(arguments);	
@@ -52,7 +60,7 @@ function _dBase( opt ){
 	var _init = function(args){
 console.log("init _dBase!", args);
 		_vars["xmlData"] = args["data"];
-console.log( "_vars:" , _vars["xmlData"].children );
+//console.log( "_vars:" , _vars["xmlData"].children );
 
 		// var xml = vars["xmlData"].children;
 // console.log( xml ) ;
