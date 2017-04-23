@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Webapp</title>
@@ -21,7 +21,16 @@
 	<div class="row">
 	
 		<div class="col-md-3" id="sidebar-left">sidebar-left
-			<div class="block block-views" id="block-views-info_termins_genre-block_1"></div>			
+		
+			<span id="tpl-info_termins_genre-block">
+				<div class="block">
+						<h2>{{block_title}}</h2>
+						<ul class="tpl-list list-unstyled">
+								<li><a href="{{url}}">{{name}}</a></li>
+						</ul>
+				</div>			
+			</span>			
+			
 		</div>
 		
 		<div class="col-md-6" id="main">main</div>
@@ -37,5 +46,5 @@
 	
 </div><!-- end container -->
 </body>
-<script src="js/main.js"></script>
+<script src="js/webapp.js"></script>
 </html>
