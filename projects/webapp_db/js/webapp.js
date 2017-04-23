@@ -15,9 +15,12 @@ var webApp = {
 			"requestMethod" : "GET", 
 			"url" : webApp.vars["db_url"], 
 			"callback": function( data ){
-var msg = "load " + webApp.vars["db_url"] ;
-console.log("<br>" + msg);
+				
+//var msg = "load " + webApp.vars["db_url"] ;
+//console.log("<br>" + msg);
+//webApp.vars["log"].push(msg);
 //console.log( "_postFunc(), " + typeof data );
+
 				webApp.db.init({
 					"data" : data,
 					"format" : webApp.vars["db_type"]
@@ -52,6 +55,10 @@ webApp.init(function(){
 				{
 					"name" : "миниатюра",
 					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature",
+				},
+				{
+					"name" : "иллюстрация",
+					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration",
 				}
 			]
 		}
@@ -123,14 +130,19 @@ console.log("init _draw");
 	};
 
 	function _loadTemplates(){
-		var id = "tpl-info_termins_genre-block";
 		
+		var id = "tpl-info_termins_genre-block_list";
 		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-info_termins_genre-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
 		// if( typeof template === "string"){
-			_vars["templates"][id] = _getTpl(id);
+			// _vars["templates"][id] = template;
 		// } else {
-			
-// console.log( template );
+// //console.log( template );
 			// if( template["html"].length > 0 &&
 				// template["listHtml"].length > 0 ){
 				// _vars["templates"][id] = template["html"];
@@ -144,10 +156,28 @@ console.log("init _draw");
 			var tpl = getDOMobj(id);
 			var html = tpl.innerHTML;
 			
+			//clear document
+			//if ( tpl.parentNode ) {
+				//tpl.parentNode.removeChild( tpl );
+			//}
+			//tpl.removeChild( tpl );
+			
+			//remove all child nodes
+			// while (tpl.firstChild) {
+			  // tpl.removeChild(tpl.firstChild);
+			// }
+
+//console.log( tpl, html );
+//for( var key in tpl){
+	//console.log( key +" : "+ tpl[key] );
+//}
+			
 			//if template contain list items
-			// var listHtml = document.getElementsByClassName("tpl-list");
-// console.log( listHtml, listHtml.length, listHtml.innerHTML);
-			// if( listHtml.length > 0){
+			// var list = document.getElementsByClassName("tpl-list");
+// console.log( list, list.length );
+			// if( list.length > 0){
+				// var listHtml = list[0].outerHTML;
+				// //tpl.remove(list);
 				// return {
 					// "html" : html,
 					// "listHtml" : listHtml
@@ -190,27 +220,37 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 			if( typeof options["data"][key] === "string"){
 				html = html.replace("{{"+key+"}}", options["data"][key]);
 			}
+			
+			//form list items
 			if( typeof options["data"][key] === "object" &&
 				options["data"][key].length > 0 ){
-
-			/*
+					
+				// html = html
+				// .replace("{{url}}", options["data"][key][0]["url"])
+				// .replace("{{name}}", options["data"][key][0]["name"]);
+				
 				var items = options["data"][key];
-				var itemsHtml = html;
+				var itemTpl = _vars["templates"][templateId+"_list"];
+				var listHtml = "";
+
 				for( var n = 0; n < items.length; n++){
-					html += itemsHtml
+					listHtml += itemTpl
 					.replace("{{url}}", items[n]["url"])
 					.replace("{{name}}", items[n]["name"]);
 				}//next
-			*/
-				html = html
-				.replace("{{url}}", options["data"][key][0]["url"])
-				.replace("{{name}}", options["data"][key][0]["name"]);
+				
 			}
 			
 		}//next
 		
 		var tpl = getDOMobj(templateId);
 		tpl.innerHTML = html;
+		tpl.className = "";
+		
+		//insert list
+		var list = getDOMobj( templateId+"_list" );
+//console.log(list, listHtml, list.innerHTML);
+		list.innerHTML = listHtml;
 		
 	};
 	

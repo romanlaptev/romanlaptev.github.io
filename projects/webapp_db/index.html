@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">	
-<!--
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+<!--
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 -->	
 	<script src="js/shared_functions.js"></script>
@@ -22,14 +22,18 @@
 	
 		<div class="col-md-3" id="sidebar-left">sidebar-left
 		
-			<span id="tpl-info_termins_genre-block">
+<span id="tpl-info_termins_genre-block" class="hide">
 				<div class="block">
-						<h2>{{block_title}}</h2>
-						<ul class="tpl-list list-unstyled">
+						<h3>{{block_title}}</h3>
+						
+						<ul class="list-unstyled">
+	<span id="tpl-info_termins_genre-block_list">
 								<li><a href="{{url}}">{{name}}</a></li>
+	</span>
 						</ul>
+						
 				</div>			
-			</span>			
+</span>			
 			
 		</div>
 		

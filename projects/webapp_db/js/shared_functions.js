@@ -179,8 +179,8 @@ console.log( msg, xhr );
 					
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-				var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
-				_log(msg);
+var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+console.log(msg);
 					
 //console.log( xhr.responseText );
 //console.log( xhr.responseXML );

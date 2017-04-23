@@ -1,0 +1,13 @@
+﻿#sidebar-left {
+	border-right: 3px solid #f5f5f5;
+}
+#sidebar-right {
+	border-left: 3px solid #f5f5f5;
+}
+#sidebar-left, #sidebar-right {
+	background: #fffaf0 none repeat scroll 0 0;
+	/*font-size: 0.75em;*/
+	padding: 10px 15px 10px;
+	vertical-align: top;
+	/*width: 175px;*/
+}
