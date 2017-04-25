@@ -74,12 +74,24 @@ function _db( opt ){
 
 	// private variables and functions
 	var _vars = {
-		//"prop": "test"
+		"data" : false,
+		"format" : false
 	};
 
-	var _init = function(args){
+	var _init = function( opt ){
 console.log("init _db!");
-		_vars["xmlData"] = args["data"];
+		for(var key in opt ){
+			_vars[key] = opt[key];
+		}
+
+		if( !_vars["data"] ){
+console.log("error in _db(), not find 'data' !");			
+		}
+		if( !_vars["format"] ){
+console.log("error in _db(), not find 'format' !");			
+		}
+		
+		//_vars["xmlData"] = args["data"];
 //console.log( "_vars:" , _vars["xmlData"].children );
 
 		// var xml = vars["xmlData"].children;
@@ -87,12 +99,23 @@ console.log("init _db!");
 		// for( var item in xml){
 // console.log( item +" : "+ xml["item"] ) ;
 		// }
-		var xml = _vars["xmlData"].getElementsByTagName("database");
-		var records = xml.item(0).getElementsByTagName("table");
 		
+		switch( _vars["format"] ){
+			case "xml":
+				var xml = _vars["data"].getElementsByTagName("database");
+				var records = xml.item(0).getElementsByTagName("table");
 console.log( records.length ) ;
+			break;
+			
+			case "json":
+			break;
+			
+			case "csv":
+			break;
+		}//end switch
+		
 
-	};
+	};//end _init()
 
 	var _query = function(args){
 		var data = 1;
