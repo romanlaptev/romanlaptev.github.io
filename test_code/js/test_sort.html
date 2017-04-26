@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, layout=1.0">
 	<title>test SORT</title>
 	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+		<meta http-equiv="X-UA-Compatible" content="IE=10">
+
 </head>
 
 <body>
@@ -12,6 +14,12 @@
 	
 		<div class="page-header">
 			<h1>Test SORT, Intl.Collator</h1>
+		</div>
+	
+		<div class="panel">
+			<div class="panel-body">
+				<span id="log"></span>
+			</div>
 		</div>
 	
 		<div class="panel">
@@ -188,6 +196,313 @@ console.log(res);
 var res = collator.compare("ĀD", "AD");
 console.log(res);
 
+var res = collator.compare("K", "Ļ");
+console.log(res);
+
+</script>
+
+<script id="src3">
+//test SORT
+var table1 = [];
+var table2 = [];
+
+var rec = {//45
+  "KOD" : '100003421',
+  "TXT" : 'ZILUPE',
+  "TXT_LOV" : 'ZILUPES NOVADS, ZILUPE',
+  "LVL_1_KOD" : '100015372',
+  "ORD_LOV" : 2,//44,
+  "ARCHIVE_STAT" : 0
+  
+}
+table2.push(rec);
+
+
+var rec = {//277
+  "KOD" : '100011992',
+  "TXT" : 'ŠĶELTOVAS PAGASTS',
+  "TXT_LOV" : 'AGLONAS NOVADS, ŠĶELTOVAS PAGASTS',
+  "LVL_1_KOD" : '100015645',
+  "ORD_LOV" : 3, //276,
+  "ARCHIVE_STAT" : 0
+}
+table1.push(rec);
+
+var rec = {//267
+  "KOD" : '100011896',
+  "TXT" : 'KASTUĻINAS PAGASTS',
+  "TXT_LOV" : 'AGLONAS NOVADS, KASTUĻINAS PAGASTS',
+  "LVL_1_KOD" : '100015645',
+  "ORD_LOV" : 3,//266,
+  "ARCHIVE_STAT" : 0
+}
+table1.push(rec);
+
+var rec = {//342
+  "KOD" : '100012648',
+  "TXT" : 'LAUDERU PAGASTS',
+  "TXT_LOV" : 'ZILUPES NOVADS, LAUDERU PAGASTS',
+  "LVL_1_KOD" : '100015372',
+  "ORD_LOV" : 3, //341,
+  "ARCHIVE_STAT" : 0
+  
+}
+table2.push(rec);
+
+var rec = {//349
+  "KOD" : '100012728',
+  "TXT" : 'PASIENES PAGASTS',
+  "TXT_LOV" : 'ZILUPES NOVADS, PASIENES PAGASTS',
+  "LVL_1_KOD" : '100015372',
+  "ORD_LOV" : 3,//348,
+  "ARCHIVE_STAT" : 0
+  
+}
+table2.push(rec);
+
+var rec = {//354
+  "KOD" : '100012777',
+  "TXT" : 'ZAĻESJES PAGASTS',
+  "TXT_LOV" : 'ZILUPES NOVADS, ZAĻESJES PAGASTS',
+  "LVL_1_KOD" : '100015372',
+  "ORD_LOV" : 3,//353,
+  "ARCHIVE_STAT" : 0
+}
+table2.push(rec);
+
+var rec = {//391
+  "KOD" : '100013143',
+  "TXT" : 'AGLONAS PAGASTS',
+  "TXT_LOV" : 'AGLONAS NOVADS, AGLONAS PAGASTS',
+  "LVL_1_KOD" : '100015645',
+  "ORD_LOV" : 3, //390,
+  "ARCHIVE_STAT" : 0
+}
+table1.push(rec);
+
+var rec = {//566
+  "KOD" : '100014908',
+  "TXT" : 'GRĀVERU PAGASTS',
+  "TXT_LOV" : 'AGLONAS NOVADS, GRĀVERU PAGASTS',
+  "LVL_1_KOD" : '100015645',
+  "ORD_LOV" : 3, //565,
+  "ARCHIVE_STAT" : 0
+}
+table1.push(rec);
+
+
+var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+var sortField = "TXT";
+_sortResultQuery( table1, sortField, "");
+
+var sortField = "ORD_LOV";
+_sortResultQuery( table1, sortField, "");
+
+console.log(table1);
+
+
+//var sortFields = ["ORD_LOV", "TXT"];
+//_sortResultQueryMod( table, sortFields, "");
+//console.log(table);
+
+
+function _sortResultQuery( table, sortField, tableName){
+	table.sort( function (a, b){
+  
+			if( sortField === "ORDER_BY") {
+				var a_order = parseInt( a[sortField] );
+				var b_order = parseInt( b[sortField] );
+			}
+			
+			if( sortField === "ORD_LOV") {
+				var a_order = parseInt( a[sortField] );
+				var b_order = parseInt( b[sortField] );
+			}
+      
+			
+			if( sortField === "TXT" || sortField === "TXT_LOV") {
+				var a_order = a[sortField];
+				var b_order = b[sortField];
+				
+				//sort with locale				
+				if(  collator ){
+					for( var n = 0; n < a_order.length; n++){
+						var res = collator.compare( a_order[n], b_order[n] );
+						if( res !== 0){
+							break;
+						}
+					}//next
+					return res;
+				}			
+
+			}
+			
+			if( sortField === "KOD") {
+				var a_order = a[sortField];
+				var b_order = b[sortField];
+				
+				if( numericCodes ){
+					a_order = parseInt( a[sortField] );
+					b_order = parseInt( b[sortField] );
+				}
+				
+			}
+			
+			if (a_order > b_order) {
+				return 1;
+			}
+			if (a_order < b_order) {
+				return -1;
+			}
+			
+			// a === b
+			return 0;
+
+	});//end sort
+}//end _sortResultQuery
+
+
+function _sortResultQueryMod( table, sortFields){
+	//_sortByField(table, sortFields[0] );
+	_sortByField(table, sortFields[1] );
+	
+	function _sortByField( table, sortField){
+console.log("SORT by field " + sortField);
+		
+		var counter = 0;					
+		table.sort( function (a, b){
+			
+			if( sortField === "ORD_LOV") {
+				var a_order = parseInt( a[sortField] ) + a["num"];
+				var b_order = parseInt( b[sortField] ) + b["num"];
+			}
+			
+			if( sortField === "TXT" || sortField === "TXT_LOV") {
+				var a_order = a[sortField];
+				var b_order = b[sortField];
+			}
+			
+			if (a_order > b_order) {
+				//return 1;
+				var res = 1;
+			}
+			if (a_order < b_order) {
+				//return -1;
+				var res = -1;
+			}
+			if (a_order === b_order) {
+				//return -1;
+				var res = 0;
+			}
+console.log(counter, a["TXT_LOV"], a_order, b["TXT_LOV"], b_order, res);			
+			counter++;
+			
+			//return 0;
+			return res;
+			
+		});//end sort
+		
+	}//end _sortByField
+
+}//end _sortResultQueryMod
+</script>
+
+
+<script id="src4">
+//test SORT (FF, Chrome, IE)
+var table = [];
+
+var rec = {"TXT_LOV" : "DAUGAVPILS", "KOD" : "100003011", "ORD_LOV" : 1, "num" : 1};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "JELGAVA", "KOD" : "100003028", "ORD_LOV" : 1, "num" : 2};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "JĒKABPILS", "KOD" : "100003237", "ORD_LOV" : 1, "num" : 3};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "JŪRMALA", "KOD" : "100003036", "ORD_LOV" : 1, "num" : 4};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "LIEPĀJA", "KOD" : "100003044", "ORD_LOV" : 1, "num" : 5};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "RĒZEKNE", "KOD" : "100003052", "ORD_LOV" : 1, "num" : 6};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "RĪGA", "KOD" : "100003003", "ORD_LOV" : 1, "num" : 7};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "VALMIERA", "KOD" : "100003735", "ORD_LOV" : 1, "num" : 8};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "VENTSPILS", "KOD" : "100003060", "ORD_LOV" : 1, "num" : 9};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "AIZKRAUKLES NOVADS, AIZKRAUKLE", "KOD" : "100003077", "ORD_LOV" : 2, "num" : 10};
+table.push(rec);
+
+var rec = {"TXT_LOV" : "LĪGATNES NOVADS, LĪGATNE", "KOD" : "100003165", "ORD_LOV" : 2, "num" : 11};
+table.push(rec);
+
+//var rec = {"TXT_LOV" : "VARAKĻĀNU NOVADS, VARAKĻĀNI", "KOD" : "100003462", "ORD_LOV" : 2};
+//table.push(rec);
+
+//var collator = new Intl.Collator("lv-LV");
+var sortFields = ["TXT_LOV", "ORD_LOV"];
+_sortResultQueryMod( table, sortFields);
+
+var log = document.getElementById("log");
+var html = "<ol>";
+for( var n = 0; n < table.length; n++){
+	html += "<li>";
+	html += table[n]["ORD_LOV"] +". "+ table[n]["TXT_LOV"];
+	html += "</li>";
+}//next
+html += "</ol>";
+log.innerHTML = html;
+
+/* sort FF
+    1. DAUGAVPILS 100003011
+    1. JELGAVA 100003028
+    1. JĒKABPILS 100003237
+    1. JŪRMALA 100003036
+    1. LIEPĀJA 100003044
+    1. RĒZEKNE 100003052
+    1. RĪGA 100003003
+    1. VALMIERA 100003735
+    1. VENTSPILS 100003060
+    2. AIZKRAUKLES NOVADS, AIZKRAUKLE 100003077
+*/
+
+/* sort Chrome
+1. DAUGAVPILS100003011
+1. JELGAVA100003028
+1. JĒKABPILS100003237
+1. JŪRMALA100003036
+1. LIEPĀJA100003044
+1. RĒZEKNE100003052
+1. RĪGA100003003
+1. VALMIERA100003735
+1. VENTSPILS100003060
+2. LĪGATNES NOVADS, LĪGATNE100003165
+при добавлении 11-го элемента в Хроме сбивается порядок элементов в группе
+Алгоритм сортировки отличается от остальных браузеров:
+первыми сравниваются не соседнии элементы, конечные - первый и последний
+*/
+
+/* sort IE
+1. DAUGAVPILS 100003011
+1. JĒKABPILS 100003237
+1. JŪRMALA 100003036
+1. LIEPĀJA 100003044
+1. RĒZEKNE 100003052
+1. RĪGA 100003003
+1. VENTSPILS 100003060
+1. JELGAVA 100003028
+1. VALMIERA 100003735
+2. VARAKĻĀNU NOVADS, VARAKĻĀNI 100003462
+*/
 </script>
 
 </body>
