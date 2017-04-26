@@ -373,8 +373,10 @@ console.log("SORT by field " + sortField);
 		table.sort( function (a, b){
 			
 			if( sortField === "ORD_LOV") {
-				var a_order = parseInt( a[sortField] ) + a["num"];
-				var b_order = parseInt( b[sortField] ) + b["num"];
+				var a_order = parseInt( a[sortField] );
+				var b_order = parseInt( b[sortField] );
+				//var a_order = parseInt( a[sortField] ) + a["num"];
+				//var b_order = parseInt( b[sortField] ) + b["num"];
 			}
 			
 			if( sortField === "TXT" || sortField === "TXT_LOV") {
@@ -488,7 +490,7 @@ log.innerHTML = html;
 2. LĪGATNES NOVADS, LĪGATNE100003165
 при добавлении 11-го элемента в Хроме сбивается порядок элементов в группе
 Алгоритм сортировки отличается от остальных браузеров:
-первыми сравниваются не соседнии элементы, конечные - первый и последний
+первыми сравниваются не соседнии элементы, а конечные - первый и последний
 исправление - 
 +++++прибавлять перед сравнение к полю ORD_LOV порядковый номер записи
 после сортировки выполнять дополнительную сортировку по группам с одинаковым ORD_LOV 
@@ -507,6 +509,9 @@ log.innerHTML = html;
 1. JELGAVA 100003028
 1. VALMIERA 100003735
 2. VARAKĻĀNU NOVADS, VARAKĻĀNI 100003462
+
+Алгоритм сортировки отличается от FF:
+первыми сравниваются не соседнии элементы, а  второй и первый
 */
 </script>
 
