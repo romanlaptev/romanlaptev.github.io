@@ -992,9 +992,21 @@ console.log(e);
 //--------------------------------------
 	var test = {
 		"name" : "Internationalization API",
-		"msg" : "Intl not supported, https://caniuse.com/#search=Intl.Collator",
+		"msg" : "Intl not supported",
 		"result" : false
 	};
+	test["links"]=[];
+	var obj = {
+		"link" : "https://caniuse.com/#search=Intl.Collator", 
+		"text" : "caniuse.com, Intl.Collator"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "test_SORT.html", 
+		"text" : "test_SORT.html"
+	};
+	_push( test["links"], obj );
+	
 	if( typeof window.Intl !== "undefined" ){
 		test["result"]= true;
 		test["msg"]= "";
