@@ -113,91 +113,98 @@ var germanPhonebook = new Intl.Collator("de-DE-u-co-phonebk");
 console.log(names.sort(germanPhonebook.compare).join(", "));
 */
 
-var testLocales = Intl.Collator.supportedLocalesOf(["lv"], { usage: "sort" });
-console.log( testLocales );
-console.log( testLocales.length > 0 ? "collation supported": "collation not supported");
+if( typeof Intl !== "undefined"){
+	testFunc2();
+}
 
-//var collator = new Intl.Collator();
-//var collator = new Intl.Collator("lv");
-//var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
-var collator = new Intl.Collator("lv-LV-u-co-dict");
+function testFunc2(){
+	var testLocales = Intl.Collator.supportedLocalesOf(["lv"], { usage: "sort" });
+	console.log( testLocales );
+	console.log( testLocales.length > 0 ? "collation supported": "collation not supported");
 
-//test1
-var test = [
-//"ĀDAŽI-GARKALNE",
-//"ĻAUDONA-MŪRNIEKI-STALIDZĀNI-GAIGALIEŠI",
-//"ABAVCIEMS-VEĢI",
-//"ŽĪGURI-SILACIEMS-KATLEŠI"
-//"BALTINAVAS NOVADS, APŠOVA",
-//"ĀDAŽU NOVADS, ALDERI",
-//"AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"
-"B",
-"Ā",
-"A"
-];
+	//var collator = new Intl.Collator();
+	//var collator = new Intl.Collator("lv");
+	//var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+	var collator = new Intl.Collator("lv-LV-u-co-dict");
 
-test.sort(function(a, b) {
-	//return collator.compare(a, b);
-	return a.localeCompare(b);
-});
-console.log( test );
+	//test1
+	var test = [
+	//"ĀDAŽI-GARKALNE",
+	//"ĻAUDONA-MŪRNIEKI-STALIDZĀNI-GAIGALIEŠI",
+	//"ABAVCIEMS-VEĢI",
+	//"ŽĪGURI-SILACIEMS-KATLEŠI"
+	//"BALTINAVAS NOVADS, APŠOVA",
+	//"ĀDAŽU NOVADS, ALDERI",
+	//"AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"
+	"B",
+	"Ā",
+	"A"
+	];
 
-//console.log(new Intl.Collator('de', {sensitivity: "base"} ).compare('ä', 'a'));
-//console.log(new Intl.Collator("lv").compare('Ā', 'A'));
-//console.log(new Intl.Collator("lv").compare('Ž', 'A'));
+	test.sort(function(a, b) {
+		//return collator.compare(a, b);
+		return a.localeCompare(b);
+	});
+	console.log( test );
 
-//test2
-var str1 = "ĀDAŽU NOVADS, ALDERI";
-var str2 = "AGLONAS NOVADS, AGLONAS PAGASTS, AGLONA";
-var result = collator.compare(str1, str2);
-console.log(result);
+	//console.log(new Intl.Collator('de', {sensitivity: "base"} ).compare('ä', 'a'));
+	//console.log(new Intl.Collator("lv").compare('Ā', 'A'));
+	//console.log(new Intl.Collator("lv").compare('Ž', 'A'));
 
-//test3
-var table = [];
-//var str1 = {"text" : "ĀDAŽU NOVADS, ALDERI"};
-//var str2 = {"text" : "AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"};
+	//test2
+	var str1 = "ĀDAŽU NOVADS, ALDERI";
+	var str2 = "AGLONAS NOVADS, AGLONAS PAGASTS, AGLONA";
+	var result = collator.compare(str1, str2);
+	console.log(result);
 
-table.push({
-	//"text" : "BALTINAVAS NOVADS, APŠOVA"
-	"text" : "BA"
-});
-table.push({
-	//"text" : "ĀDAŽU NOVADS"
-	"text" : "ĀD"
-});
-table.push({
-	//"text" : "AUCES NOVADS"
-	"text" : "AU"
-});
+	//test3
+	var table = [];
+	//var str1 = {"text" : "ĀDAŽU NOVADS, ALDERI"};
+	//var str2 = {"text" : "AUCES NOVADS, VĪTIŅU PAGASTS, VĪTIŅI"};
 
-console.log(table);
+	table.push({
+		//"text" : "BALTINAVAS NOVADS, APŠOVA"
+		"text" : "BA"
+	});
+	table.push({
+		//"text" : "ĀDAŽU NOVADS"
+		"text" : "ĀD"
+	});
+	table.push({
+		//"text" : "AUCES NOVADS"
+		"text" : "AU"
+	});
 
-var sortField = "text";
-table.sort(function(a,b){
-	var a_order = a[sortField];
-	var b_order = b[sortField];
-  /*
-	var res = 0; // a === b
-	if (a_order > b_order) {
-		res = 1;
-	}
-	if (a_order < b_order) {
-		res = -1;
-	}
-	*/
-  var res = collator.compare(a_order, b_order);
-  return res;
-});
-console.log(table);
+	console.log(table);
 
-var res = collator.compare("ĀD", "AU");
-console.log(res);
+	var sortField = "text";
+	table.sort(function(a,b){
+		var a_order = a[sortField];
+		var b_order = b[sortField];
+	  /*
+		var res = 0; // a === b
+		if (a_order > b_order) {
+			res = 1;
+		}
+		if (a_order < b_order) {
+			res = -1;
+		}
+		*/
+	  var res = collator.compare(a_order, b_order);
+	  return res;
+	});
+	console.log(table);
 
-var res = collator.compare("ĀD", "AD");
-console.log(res);
+	var res = collator.compare("ĀD", "AU");
+	console.log(res);
 
-var res = collator.compare("K", "Ļ");
-console.log(res);
+	var res = collator.compare("ĀD", "AD");
+	console.log(res);
+
+	var res = collator.compare("K", "Ļ");
+	console.log(res);
+
+}//end testFunc2()
 
 </script>
 
@@ -290,8 +297,9 @@ var rec = {//566
 }
 table1.push(rec);
 
-
-var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+if( typeof Intl !== "undefined"){
+	var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+}
 var sortField = "TXT";
 _sortResultQuery( table1, sortField, "");
 
@@ -574,8 +582,9 @@ table.push(rec);
 var rec = {"TXT_LOV" : "LĪGATNES NOVADS, LĪGATNE", "KOD" : "100003165", "ORD_LOV" : 2, "num" : 11};
 table.push(rec);
 
-
-var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+if( typeof Intl !== "undefined"){
+	var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+}
 var sortField = "TXT_LOV";
 _sortResultQuery( table, sortField, "");
 
@@ -750,7 +759,9 @@ console.log(mergeSort(a));
   
 //})();
 
-var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+if( typeof Intl !== "undefined"){
+	var collator = new Intl.Collator(["lv-LV"], { usage: "sort" });
+}
 var sortField = "TXT_LOV";
 _sortResultQuery( table, sortField, "");
 
@@ -782,6 +793,58 @@ for( var n = 0; n < table.length; n++){
 	html += "</li>";
 }//next
 html += "</ol>";
+log.innerHTML += html;
+
+</script>
+
+<script>
+var LatvianAlphabet = "AĀBCČDEĒFGĢHIĪJKĶLĻMNŅOPRSŠTUŪVZŽ".split("");
+var LatvianAlphabetObj = {};
+for( var n = 0; n < LatvianAlphabet.length; n++){
+	var key = LatvianAlphabet[n];
+	LatvianAlphabetObj[key] = n+1;
+}
+console.log( LatvianAlphabetObj );
+
+var s1 = "Ā";
+var s2 = "B";
+
+//standart compare
+if( s1 > s2 ){
+  var _test = 1;
+}
+if( s1 < s2 ){
+  var _test = -1;
+}
+if( s1 === s2 ){
+  var _test = 0;
+}
+
+//compare with Locale
+if( typeof Intl !== "undefined"){
+//var _test = s1.localeCompare(s2, "lv-LV");
+var _test = s1.localeCompare(s2);
+//console.log(test);
+} else {
+	var a = LatvianAlphabetObj[s1];
+	var b = LatvianAlphabetObj[s2];
+	if( a > b ){
+	  var _test = 1;
+	}
+	if( a < b ){
+	  var _test = -1;
+	}
+	if( a === b ){
+	  var _test = 0;
+	}
+}
+
+var log = document.getElementById("log");
+var html = "<hr>";
+html += "Intl: '" + typeof Intl;
+html += "<p>";
+html += "Compare '" + s1 + "', '" + s2 + "', result: " + _test;
+html += "</p>";
 log.innerHTML += html;
 
 </script>
