@@ -105,6 +105,38 @@ console.log("error in _db(), not find 'format' !");
 				var xml = _vars["data"].getElementsByTagName("database");
 				var records = xml.item(0).getElementsByTagName("table");
 console.log( records.length ) ;
+
+				//read schema
+				//var pmaSchemas = _vars["data"].getElementsByTagName("pma:structure_schemas");
+//console.log( pmaSchemas ) ;
+
+				//var pmaDatabase = _vars["data"].getElementsByTagName("pma:database");
+//console.log( pmaDatabase ) ;
+
+				var tableList = _vars["data"].getElementsByTagName("pma:table");
+console.log( tableList, tableList.length ) ;
+
+				var x = _vars["data"].documentElement.childNodes;
+console.log( x, x.length ) ;
+
+				//read root
+				var rootTag = _vars["data"].documentElement.tagName;
+				var msg = "main tagName: " + rootTag;
+console.log(msg);				
+
+				var xmlDoc = _vars["data"].getElementsByTagName( rootTag );
+console.log( xmlDoc );				
+for(var key in xmlDoc){
+console.log( key, xmlDoc[key] );				
+}
+//console.log( _vars["data"].children );
+console.log( xmlDoc.item(0).children, xmlDoc.length );				
+
+				//read schema
+				var schemaTag = xmlDoc[0].children[0].tagName;
+				var msg = "schema tagName: " + schemaTag;
+console.log(msg);				
+
 			break;
 			
 			case "json":
