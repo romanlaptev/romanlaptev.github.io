@@ -10,6 +10,7 @@ var webApp = {
 	
 	"init" : function( postFunc ){
 //console.log("init webapp!", arguments);
+console.log( navigator.userAgent );
 
 		runAjax( {
 			"requestMethod" : "GET", 
@@ -54,11 +55,11 @@ webApp.init(function(){
 			"items" : [
 				{
 					"name" : "миниатюра",
-					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature",
+					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
 				},
 				{
 					"name" : "иллюстрация",
-					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration",
+					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
 				}
 			]
 		}
@@ -113,30 +114,68 @@ console.log( records.length ) ;
 				//var pmaDatabase = _vars["data"].getElementsByTagName("pma:database");
 //console.log( pmaDatabase ) ;
 
-				var tableList = _vars["data"].getElementsByTagName("pma:table");
-console.log( tableList, tableList.length ) ;
+				//var tableList = _vars["data"].getElementsByTagName("pma:table");
+//console.log( tableList, tableList.length ) ;
 
-				var x = _vars["data"].documentElement.childNodes;
-console.log( x, x.length ) ;
+				//var x = _vars["data"].childNodes;
+				//var x = _vars["data"].documentElement.childNodes;
+//console.log( x ) ;
+//console.log( x.length ) ;
+
+				var test = _vars["data"].childNodes;
+//console.log( typeof test );
+				for (var n = 0; n < test.length; n++) {
+					var node = test[n];
+					
+					if( node.nodeTypeString ){//IE
+console.log( node.nodeType +", "+ node.nodeTypeString);
+					} else {
+console.log( node.nodeType);
+					}
+					
+//console.log(  node.nodeTypeValue );
+				}
+				
+//				for(var key in test){
+//console.log( key +" : "+ test[key] );				
+//}
+				var test = _vars["data"].xml;
+console.log( "xml - " + typeof test );
+				
 
 				//read root
+				//var root = _vars["data"].documentElement.children;
+				
+				//if( _vars["data"].children ){
+					var root = _vars["data"].children;
+console.log( typeof root );
+					if( root ){
+						for(var key in root){
+						console.log( key +" : "+ root[key] );				
+						}
+					}
+					
+				//}
+
 				var rootTag = _vars["data"].documentElement.tagName;
 				var msg = "main tagName: " + rootTag;
 console.log(msg);				
 
+/*
 				var xmlDoc = _vars["data"].getElementsByTagName( rootTag );
 console.log( xmlDoc );				
 for(var key in xmlDoc){
-console.log( key, xmlDoc[key] );				
+console.log( key +" : "+ xmlDoc[key] );				
 }
+
 //console.log( _vars["data"].children );
 console.log( xmlDoc.item(0).children, xmlDoc.length );				
-
 				//read schema
 				var schemaTag = xmlDoc[0].children[0].tagName;
 				var msg = "schema tagName: " + schemaTag;
 console.log(msg);				
-
+*/
+				_parseXML();
 			break;
 			
 			case "json":
@@ -154,6 +193,28 @@ console.log(msg);
 		return data;
 	};
 	
+	function _parseXML(){
+
+		//if(window.ActiveXObject || "ActiveXObject" in window){
+		if( window.ActiveXObject ){
+console.log("ActiveXObject support: " + window.ActiveXObject + ", use MSXML");
+		}
+		else {
+console.log("ActiveXObject not support,  use window.DOMParser");
+		}
+		
+console.log( document.implementation );
+		if( document.implementation ){
+			var hasXmlDom = document.implementation.hasFeature("XML", "2.0");
+			var msg = "support DOM Level 2 XML - " + hasXmlDom;
+console.log(msg);
+			
+			var supportsXPath = document.implementation.hasFeature("XPath", "З.0"); 	
+			msg = "support DOM Level 3 XPath - " + supportsXPath;
+console.log(msg);
+		}
+		
+	}//end _parseXML()
 
 	// public interfaces
 	return{
