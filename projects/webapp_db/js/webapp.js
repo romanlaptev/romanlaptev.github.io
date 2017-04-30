@@ -103,78 +103,9 @@ console.log("error in _db(), not find 'format' !");
 		
 		switch( _vars["format"] ){
 			case "xml":
-				var xml = _vars["data"].getElementsByTagName("database");
-				var records = xml.item(0).getElementsByTagName("table");
-console.log( records.length ) ;
-
-				//read schema
-				//var pmaSchemas = _vars["data"].getElementsByTagName("pma:structure_schemas");
-//console.log( pmaSchemas ) ;
-
-				//var pmaDatabase = _vars["data"].getElementsByTagName("pma:database");
-//console.log( pmaDatabase ) ;
-
-				//var tableList = _vars["data"].getElementsByTagName("pma:table");
-//console.log( tableList, tableList.length ) ;
-
-				//var x = _vars["data"].childNodes;
-				//var x = _vars["data"].documentElement.childNodes;
-//console.log( x ) ;
-//console.log( x.length ) ;
-
-				var test = _vars["data"].childNodes;
-//console.log( typeof test );
-				for (var n = 0; n < test.length; n++) {
-					var node = test[n];
-					
-					if( node.nodeTypeString ){//IE
-console.log( node.nodeType +", "+ node.nodeTypeString);
-					} else {
-console.log( node.nodeType);
-					}
-					
-//console.log(  node.nodeTypeValue );
-				}
-				
-//				for(var key in test){
-//console.log( key +" : "+ test[key] );				
-//}
-				var test = _vars["data"].xml;
-console.log( "xml - " + typeof test );
-				
-
-				//read root
-				//var root = _vars["data"].documentElement.children;
-				
-				//if( _vars["data"].children ){
-					var root = _vars["data"].children;
-console.log( typeof root );
-					if( root ){
-						for(var key in root){
-						console.log( key +" : "+ root[key] );				
-						}
-					}
-					
-				//}
-
-				var rootTag = _vars["data"].documentElement.tagName;
-				var msg = "main tagName: " + rootTag;
-console.log(msg);				
-
-/*
-				var xmlDoc = _vars["data"].getElementsByTagName( rootTag );
-console.log( xmlDoc );				
-for(var key in xmlDoc){
-console.log( key +" : "+ xmlDoc[key] );				
-}
-
-//console.log( _vars["data"].children );
-console.log( xmlDoc.item(0).children, xmlDoc.length );				
-				//read schema
-				var schemaTag = xmlDoc[0].children[0].tagName;
-				var msg = "schema tagName: " + schemaTag;
-console.log(msg);				
-*/
+				//var xml = _vars["data"].getElementsByTagName("database");
+				//var records = xml.item(0).getElementsByTagName("table");
+//console.log( records.length ) ;
 				_parseXML();
 			break;
 			
@@ -196,14 +127,14 @@ console.log(msg);
 	function _parseXML(){
 
 		//if(window.ActiveXObject || "ActiveXObject" in window){
-		if( window.ActiveXObject ){
-console.log("ActiveXObject support: " + window.ActiveXObject + ", use MSXML");
-		}
-		else {
-console.log("ActiveXObject not support,  use window.DOMParser");
-		}
+		// if( window.ActiveXObject ){
+// console.log("ActiveXObject support: " + window.ActiveXObject + ", use MSXML");
+		// }
+		// else {
+// console.log("ActiveXObject not support,  use window.DOMParser");
+		// }
 		
-console.log( document.implementation );
+//console.log( document.implementation );
 		if( document.implementation ){
 			var hasXmlDom = document.implementation.hasFeature("XML", "2.0");
 			var msg = "support DOM Level 2 XML - " + hasXmlDom;
@@ -213,6 +144,189 @@ console.log(msg);
 			msg = "support DOM Level 3 XPath - " + supportsXPath;
 console.log(msg);
 		}
+		
+		__parse( _vars["data"] );
+		
+		// if (window.DOMParser) { // all browsers, except IE before version 9
+			// var msg = "window.DOMParser support: " + window.DOMParser;
+// console.log(msg);
+			// var parser = new DOMParser();
+			
+			// //var xmlsrc = _vars["data"].children[0].outerHTML;
+// //console.log( xmlsrc );
+
+			// try {
+				// //var xml = parser.parseFromString( xmlsrc, "text/xml" );
+// //console.log( xml );
+				// __parse( _vars["data"] );
+				
+			// } catch (e) {
+				// // if text is not well-formed, 
+				// // it raises an exception in IE from version 9
+// alert ("XML parsing error: " + e);
+				// for( var item in e ){
+// console.log(item + ": " + e[item]);
+				// }
+			// };
+
+		// }
+		// else {  // Internet Explorer before version 9
+
+			// var xml_info = _createMSXML();
+// console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
+			// var xml = xml_info["xml_obj"];
+
+			// // xml.async = "false";
+			// // xml.loadXML( xmlsrc );	
+			// // var errorMsg = null;
+			// // if (xml.parseError && xml.parseError.errorCode != 0) {
+				// // errorMsg = "XML Parsing Error: " + xml.parseError.reason
+						  // // + " at line " + xml.parseError.line
+						  // // + " at position " + xml.parseError.linepos;
+			// // }
+			// // if (errorMsg) {
+				// // log.innerHTML += "<p>" + errorMsg + "</p>";
+			// // }
+			// // parse_xml(xml);
+
+		// }
+
+		//xmldom = xml;
+
+		// function _createMSXML(){
+			// if (typeof (ActiveXObject) === "undefined") {
+				// return false;
+			// }
+			// var progIDs = [
+							// "Msxml2.DOMDocument.6.0", 
+							// "Msxml2.DOMDocument.5.0", 
+							// "Msxml2.DOMDocument.4.0", 
+							// "Msxml2.DOMDocument.3.0", 
+							// "MSXML2.DOMDocument", 
+							// "MSXML.DOMDocument"
+						  // ];
+						  
+			// for(var n = 0; n < progIDs.length; n++) {
+				// try { 
+					// var xml = {
+						// "xml_obj" : new ActiveXObject( progIDs[n] ),
+						// "version" : progIDs[n]
+					// }
+					// return xml; 
+				// } 
+				// catch(e)	{
+// console.log("_createMSXML() error: " + e);
+					// for( var item in e ){
+// console.log(item + ": " + e[item]);
+					// }
+				// };
+				
+			// }//next
+		// }//end _createMSXML()
+		
+		function __parse( xml ){
+
+				var rootTag = xml.documentElement.tagName;
+				var msg = "main tagName: " + rootTag;
+console.log(msg);				
+
+				//read schema
+				//var pmaSchemas = xml.getElementsByTagName("pma:structure_schemas");
+//console.log( pmaSchemas ) ;
+
+				//var pmaDatabase = xml.getElementsByTagName("pma:database");
+//console.log( pmaDatabase ) ;
+
+				//var tableList = xml.getElementsByTagName("pma:table");
+//console.log( tableList, tableList.length ) ;
+
+				//var x = xml.childNodes;
+				//var x = xml.documentElement.childNodes;
+//console.log( x ) ;
+//console.log( x.length ) ;
+
+				var test = xml.childNodes;
+//console.log( typeof test );
+				for (var n = 0; n < test.length; n++) {
+					var node = test[n];
+					
+					if( node.nodeTypeString ){//IE
+console.log( node.nodeType +", "+ node.nodeTypeString);
+					} else {
+console.log( node.nodeType);
+					}
+					
+//console.log(  node.nodeTypeValue );
+				}
+				
+//				for(var key in test){
+//console.log( key +" : "+ test[key] );				
+//}
+				//var test = xml["xml"];
+//console.log( "xml - " + typeof test );
+				
+
+				//read root
+				//var root = xml.documentElement.children;
+				
+				// //if( xml.children ){
+					// var root = xml.children;
+// console.log( typeof root );
+					// if( root ){
+						// for(var key in root){
+						// console.log( key +" : "+ root[key] );				
+						// }
+					// }
+					
+				// //}
+
+
+/*
+				var xmlDoc = xml.getElementsByTagName( rootTag );
+console.log( xmlDoc );				
+for(var key in xmlDoc){
+console.log( key +" : "+ xmlDoc[key] );				
+}
+
+//console.log( xml.children );
+console.log( xmlDoc.item(0).children, xmlDoc.length );				
+				//read schema
+				var schemaTag = xmlDoc[0].children[0].tagName;
+				var msg = "schema tagName: " + schemaTag;
+console.log(msg);				
+*/
+
+			
+			// var add_tag = xml.createElement("program"); 
+			// xml.documentElement.appendChild( add_tag ); 
+			// add_tag.setAttribute('type', 'created from script');
+			// if ('textContent' in add_tag)
+			// {
+				// add_tag.textContent = 'GIMP';
+			// }
+			// else
+			// {
+				// add_tag.text = 'GIMP';
+			// }
+		// //------------------	
+
+			// var itemTags = xml.getElementsByTagName("program");
+			// parse_res.innerHTML += "<p> itemTags.length = "+ itemTags.length +"</p>";
+			
+			// for (var n = 0; n < itemTags.length; n++) 
+			// {
+				// if ('textContent' in itemTags[n])
+				// {
+					// parse_res.innerHTML += "<li>" + itemTags[n].textContent + "</li>";
+				// }
+				// else
+				// {
+					// parse_res.innerHTML += "<li>" + itemTags[n].text + "</li>";
+				// }
+				
+			// }//next
+			
+		}//end __parse()
 		
 	}//end _parseXML()
 
@@ -228,6 +342,9 @@ console.log(msg);
 		}
 	};
 }//end _db()
+
+
+
 
 
 function _draw( opt ){
