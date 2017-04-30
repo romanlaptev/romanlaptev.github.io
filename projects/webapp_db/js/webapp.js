@@ -70,13 +70,29 @@ webApp.init(function(){
 console.log(webApp);
 
 
+
+
 function _db( opt ){
 //console.log(arguments);	
 
 	// private variables and functions
 	var _vars = {
 		"data" : false,
-		"format" : false
+		"format" : false,
+		
+		"xml_schema" : {
+			"tag" : "database",
+			"attributes" : ["name"], 
+			"child": {
+				"tag" : "table",
+				"attributes" : ["name"], 
+				 "child": {
+					"tag" : "column",
+					"attributes" : ["name"]
+				}
+			}
+		}
+		
 	};
 
 	var _init = function( opt ){
@@ -269,16 +285,16 @@ console.log( node.nodeType);
 				//read root
 				//var root = xml.documentElement.children;
 				
-				// //if( xml.children ){
-					// var root = xml.children;
-// console.log( typeof root );
-					// if( root ){
-						// for(var key in root){
-						// console.log( key +" : "+ root[key] );				
-						// }
-					// }
+				//if( xml.children ){
+					var root = xml.children;
+console.log( typeof root, root );
+					if( root ){
+						for(var key in root){
+console.log( key +" : "+ root[key] );				
+						}
+					}
 					
-				// //}
+				//}
 
 
 /*
@@ -288,13 +304,12 @@ for(var key in xmlDoc){
 console.log( key +" : "+ xmlDoc[key] );				
 }
 
-//console.log( xml.children );
 console.log( xmlDoc.item(0).children, xmlDoc.length );				
-				//read schema
-				var schemaTag = xmlDoc[0].children[0].tagName;
-				var msg = "schema tagName: " + schemaTag;
-console.log(msg);				
 */
+			//read schema
+			var schemaTag = root[0].children[0].tagName;
+			var msg = "schema tagName: " + schemaTag;
+console.log(msg);				
 
 			
 			// var add_tag = xml.createElement("program"); 
