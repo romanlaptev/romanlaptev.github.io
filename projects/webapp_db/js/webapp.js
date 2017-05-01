@@ -80,15 +80,74 @@ function _db( opt ){
 		"data" : false,
 		"format" : false,
 		
-		"xml_schema" : {
-			"tag" : "database",
-			"attributes" : ["name"], 
-			"child": {
-				"tag" : "table",
-				"attributes" : ["name"], 
-				 "child": {
-					"tag" : "column",
-					"attributes" : ["name"]
+		"schema" : {
+			"root" : {
+				"tag" : "database",
+				"attributes" : ["name"],
+				"child": {
+					"tag" : "table",
+					"attributes" : ["name"],
+					 "child": {
+						"tag" : "column",
+						"attributes" : ["name"]
+					}
+				}
+			}//end root node
+		},
+		
+		"jsonData" : {
+			"database" : {
+				"name" : "",
+				"tables": {
+					/*"taxonomy_menu" :[{ 
+						"tid" : "",  
+						"title" : ""
+					}],  */
+					
+					"taxonomy_title" :[{
+"tid" : "",  
+"title" : ""
+					}],  
+					
+					"term_data" :[{
+"tid" : "",  
+"vid" : "",
+"name" : "",
+"description" : "",
+"weight" : ""
+					}],  
+					
+					"term_hierarchy" :[{
+"tid" : "",  
+"parent" : ""
+					}],  
+					
+					"term_image" :[{
+"tid" : "",  
+"path" : ""
+					}],
+					
+					"term_node" :[{
+"nid" : "",  
+"vid" : "",
+"tid" : ""
+					}],  
+					
+					//"term_relation" :[{}],  
+					//"term_synonym" :[{}],  
+					"vocabulary" :[{
+"vid" : "",
+"name" : "",
+"description" : "",
+"help" : "",
+"relations" : "",
+"hierarchy" : "",
+"multiple" : "",
+"required" : "",
+"tags" : "",
+"module" : "",
+"weight" : ""
+					}]
 				}
 			}
 		}
@@ -122,7 +181,7 @@ console.log("error in _db(), not find 'format' !");
 				//var xml = _vars["data"].getElementsByTagName("database");
 				//var records = xml.item(0).getElementsByTagName("table");
 //console.log( records.length ) ;
-				_parseXML();
+				_parseXML( _vars["data"] );
 			break;
 			
 			case "json":
@@ -140,7 +199,7 @@ console.log("error in _db(), not find 'format' !");
 		return data;
 	};
 	
-	function _parseXML(){
+	function _parseXML(xml){
 
 		//if(window.ActiveXObject || "ActiveXObject" in window){
 		// if( window.ActiveXObject ){
@@ -150,6 +209,7 @@ console.log("error in _db(), not find 'format' !");
 // console.log("ActiveXObject not support,  use window.DOMParser");
 		// }
 		
+/*		
 //console.log( document.implementation );
 		if( document.implementation ){
 			var hasXmlDom = document.implementation.hasFeature("XML", "2.0");
@@ -160,8 +220,36 @@ console.log(msg);
 			msg = "support DOM Level 3 XPath - " + supportsXPath;
 console.log(msg);
 		}
+*/		
+			//var rootTag = xml.documentElement.tagName;
+			var rootTag = _vars["schema"]["root"]["tag"];
+			var msg = "main tagName: " + rootTag;
+//console.log(msg);				
+
+			var xmlDoc = xml.getElementsByTagName( rootTag );
+console.log( xmlDoc, xmlDoc.item(0).tagName );		
+//console.log( xmlDoc.context );		
+//var test = xmlDoc.context;
+//for(var key in test ){
+//console.log( key +" : "+ test[key] );				
+//}
 		
-		__parse( _vars["data"] );
+
+			var attr = xmlDoc.item(0).attributes;
+			var attrName = _vars["schema"]["root"]["attributes"][0];
+			var key = attr.getNamedItem( attrName ).nodeValue ;
+console.log( key );				
+
+			var childTag = _vars["schema"]["root"]["child"]["tag"];
+			var tables = xmlDoc.item(0).getElementsByTagName( childTag );
+console.log( tables,  tables.item(0).tagName, tables.length );		
+
+			var attr = tables.item(0).attributes;
+			var attrName = _vars["schema"]["root"]["child"]["attributes"][0];
+			var key = attr.getNamedItem( attrName ).nodeValue ;
+console.log( key );				
+
+		//__parse( _vars["data"] );
 		
 		// if (window.DOMParser) { // all browsers, except IE before version 9
 			// var msg = "window.DOMParser support: " + window.DOMParser;
@@ -242,10 +330,6 @@ console.log(msg);
 		
 		function __parse( xml ){
 
-				var rootTag = xml.documentElement.tagName;
-				var msg = "main tagName: " + rootTag;
-console.log(msg);				
-
 				//read schema
 				//var pmaSchemas = xml.getElementsByTagName("pma:structure_schemas");
 //console.log( pmaSchemas ) ;
@@ -260,7 +344,7 @@ console.log(msg);
 				//var x = xml.documentElement.childNodes;
 //console.log( x ) ;
 //console.log( x.length ) ;
-
+/*
 				var test = xml.childNodes;
 //console.log( typeof test );
 				for (var n = 0; n < test.length; n++) {
@@ -274,56 +358,28 @@ console.log( node.nodeType);
 					
 //console.log(  node.nodeTypeValue );
 				}
-				
-//				for(var key in test){
-//console.log( key +" : "+ test[key] );				
-//}
+*/				
 				//var test = xml["xml"];
 //console.log( "xml - " + typeof test );
 				
 
 				//read root
 				//var root = xml.documentElement.children;
-				
-				//if( xml.children ){
-					var root = xml.children;
-console.log( typeof root, root );
-					if( root ){
-						for(var key in root){
-console.log( key +" : "+ root[key] );				
-						}
-					}
-					
-				//}
+				// //if( xml.children ){
+					// var root = xml.children;
+// console.log( typeof root, root );
+					// if( root ){
+						// for(var key in root){
+// console.log( key +" : "+ root[key] );				
+						// }
+						
+						// //read schema
+						// var schemaTag = root[0].children[0].tagName;
+// var msg = "schema tagName: " + schemaTag;
+// console.log(msg);				
+					// }
+				// //}
 
-
-/*
-				var xmlDoc = xml.getElementsByTagName( rootTag );
-console.log( xmlDoc );				
-for(var key in xmlDoc){
-console.log( key +" : "+ xmlDoc[key] );				
-}
-
-console.log( xmlDoc.item(0).children, xmlDoc.length );				
-*/
-			//read schema
-			var schemaTag = root[0].children[0].tagName;
-			var msg = "schema tagName: " + schemaTag;
-console.log(msg);				
-
-			
-			// var add_tag = xml.createElement("program"); 
-			// xml.documentElement.appendChild( add_tag ); 
-			// add_tag.setAttribute('type', 'created from script');
-			// if ('textContent' in add_tag)
-			// {
-				// add_tag.textContent = 'GIMP';
-			// }
-			// else
-			// {
-				// add_tag.text = 'GIMP';
-			// }
-		// //------------------	
 
 			// var itemTags = xml.getElementsByTagName("program");
 			// parse_res.innerHTML += "<p> itemTags.length = "+ itemTags.length +"</p>";
