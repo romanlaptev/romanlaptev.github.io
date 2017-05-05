@@ -80,88 +80,62 @@ function _db( opt ){
 		"data" : false,
 		"format" : false,
 		
-		"schema" : {
-			"root" : {
-				"tag" : "database",
-				"attributes" : ["name"],
-				"child": {
-					"tag" : "table",
-					"attributes" : ["name"],
-					 "child": {
-						"tag" : "column",
-						"attributes" : ["name"]
-					}
-				}
-			}//end root node
-		},
-		
+		// "schema" : {
+			// "root" : {
+				// "tag" : "database",
+				// "attributes" : ["name"],
+				// "child": {
+					// "tag" : "table",
+					// "attributes" : ["name"],
+					 // "child": {
+						// "tag" : "column",
+						// "attributes" : ["name"]
+					// }
+				// }
+			// }//end root node
+		// },
 		
 		"tables": {
-			/*"taxonomy_menu" :[{ 
-				"tid" : "",  
-				"title" : ""
-			}],  */
+			// "taxonomy_menu" :[{ 
+				// "tid" : "",  
+				// "title" : ""
+			// }],
 			
 			"taxonomy_title" : {
-				"fields" : {
-"tid" : "",  
-"title" : ""
-				},
+				"fields" : ["tid", "title"],
 				"records" : []
 			},  
 			
 			"term_data" :{
-				"fields" : {
-"tid" : "",  
-"vid" : "",
-"name" : "",
-"description" : "",
-"weight" : ""
-				},
+				"fields" : ["tid",  "vid", "name", "description", "weight"],
 				"records" : []
 			},  
 			
 			"term_hierarchy" :{
-				"fields" : {
-"tid" : "",  
-"parent" : ""
-				},
+				"fields" : [ "tid",  "parent"],
 				"records" : []
 			},  
 			
 			"term_image" :{
-				"fields" : {
-"tid" : "",  
-"path" : ""
-				},
+				"fields" : ["tid",  "path"],
 				"records" : []
 			},
 			
 			"term_node" :{
-				"fields" : {
-"nid" : "",  
-"vid" : "",
-"tid" : ""
-				},
+				"fields" : ["nid",  "vid", "tid"],
 				"records" : []
 			},  
 			
 			//"term_relation" :[{}],  
 			//"term_synonym" :[{}],  
 			"vocabulary" :{
-				"fields" : {
-"vid" : "",
-"name" : "",
-"description" : "",
-"help" : "",
-"relations" : "",
-"hierarchy" : "",
-"multiple" : "",
-"required" : "",
-"tags" : "",
-"module" : "",
-"weight" : ""
-				},
+				"fields" : [ "vid", "name", "description", "help", "relations", "hierarchy",
+"multiple",
+"required",
+"tags",
+"module",
+"weight"
+				],
 				"records" : []
 			}
 			
@@ -182,20 +156,8 @@ console.log("error in _db(), not find 'data' !");
 console.log("error in _db(), not find 'format' !");			
 		}
 		
-		//_vars["xmlData"] = args["data"];
-//console.log( "_vars:" , _vars["xmlData"].children );
-
-		// var xml = vars["xmlData"].children;
-// console.log( xml ) ;
-		// for( var item in xml){
-// console.log( item +" : "+ xml["item"] ) ;
-		// }
-		
 		switch( _vars["format"] ){
 			case "xml":
-				//var xml = _vars["data"].getElementsByTagName("database");
-				//var records = xml.item(0).getElementsByTagName("table");
-//console.log( records.length ) ;
 				_parseXML( _vars["data"] );
 			break;
 			
@@ -216,203 +178,25 @@ console.log("error in _db(), not find 'format' !");
 	
 	function _parseXML(xml){
 
-		//if(window.ActiveXObject || "ActiveXObject" in window){
-		// if( window.ActiveXObject ){
-// console.log("ActiveXObject support: " + window.ActiveXObject + ", use MSXML");
-		// }
-		// else {
-// console.log("ActiveXObject not support,  use window.DOMParser");
-		// }
-		
-/*		
-//console.log( document.implementation );
-		if( document.implementation ){
-			var hasXmlDom = document.implementation.hasFeature("XML", "2.0");
-			var msg = "support DOM Level 2 XML - " + hasXmlDom;
-console.log(msg);
+		var xmlDoc = _vars["data"].getElementsByTagName("database");
+		var records = xmlDoc.item(0).getElementsByTagName("table");
+//console.log( records, records.length ) ;
+		for( var n = 0; n < records.length; n++){
+			var record = records[n];
+			var tableName = record["attributes"]["name"].nodeValue;
+//console.log( tableName );
+
+			var columns = record.getElementsByTagName("column");
+			var recordObj = {};
+			for( var n2 = 0; n2 < columns.length; n2++){
+				var column = columns[n2];
+				var columnName = column["attributes"]["name"].nodeValue;
+				recordObj[columnName] = column.textContent;
+			}//next
 			
-			var supportsXPath = document.implementation.hasFeature("XPath", "З.0"); 	
-			msg = "support DOM Level 3 XPath - " + supportsXPath;
-console.log(msg);
-		}
-*/		
-			//var rootTag = xml.documentElement.tagName;
-			var rootTag = _vars["schema"]["root"]["tag"];
-			var msg = "main tagName: " + rootTag;
-//console.log(msg);				
-
-			var xmlDoc = xml.getElementsByTagName( rootTag );
-console.log( xmlDoc, xmlDoc.item(0).tagName );		
-//console.log( xmlDoc.context );		
-//var test = xmlDoc.context;
-//for(var key in test ){
-//console.log( key +" : "+ test[key] );				
-//}
-		
-
-			var attr = xmlDoc.item(0).attributes;
-			var attrName = _vars["schema"]["root"]["attributes"][0];
-			var key = attr.getNamedItem( attrName ).nodeValue ;
-console.log( key );				
-
-			var childTag = _vars["schema"]["root"]["child"]["tag"];
-			var tables = xmlDoc.item(0).getElementsByTagName( childTag );
-console.log( tables,  tables.item(0).tagName, tables.length );		
-
-			var attr = tables.item(0).attributes;
-			var attrName = _vars["schema"]["root"]["child"]["attributes"][0];
-			var key = attr.getNamedItem( attrName ).nodeValue ;
-console.log( key );				
-
-		//__parse( _vars["data"] );
-		
-		// if (window.DOMParser) { // all browsers, except IE before version 9
-			// var msg = "window.DOMParser support: " + window.DOMParser;
-// console.log(msg);
-			// var parser = new DOMParser();
-			
-			// //var xmlsrc = _vars["data"].children[0].outerHTML;
-// //console.log( xmlsrc );
-
-			// try {
-				// //var xml = parser.parseFromString( xmlsrc, "text/xml" );
-// //console.log( xml );
-				// __parse( _vars["data"] );
-				
-			// } catch (e) {
-				// // if text is not well-formed, 
-				// // it raises an exception in IE from version 9
-// alert ("XML parsing error: " + e);
-				// for( var item in e ){
-// console.log(item + ": " + e[item]);
-				// }
-			// };
-
-		// }
-		// else {  // Internet Explorer before version 9
-
-			// var xml_info = _createMSXML();
-// console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
-			// var xml = xml_info["xml_obj"];
-
-			// // xml.async = "false";
-			// // xml.loadXML( xmlsrc );	
-			// // var errorMsg = null;
-			// // if (xml.parseError && xml.parseError.errorCode != 0) {
-				// // errorMsg = "XML Parsing Error: " + xml.parseError.reason
-						  // // + " at line " + xml.parseError.line
-						  // // + " at position " + xml.parseError.linepos;
-			// // }
-			// // if (errorMsg) {
-				// // log.innerHTML += "<p>" + errorMsg + "</p>";
-			// // }
-			// // parse_xml(xml);
-
-		// }
-
-		//xmldom = xml;
-
-		// function _createMSXML(){
-			// if (typeof (ActiveXObject) === "undefined") {
-				// return false;
-			// }
-			// var progIDs = [
-							// "Msxml2.DOMDocument.6.0", 
-							// "Msxml2.DOMDocument.5.0", 
-							// "Msxml2.DOMDocument.4.0", 
-							// "Msxml2.DOMDocument.3.0", 
-							// "MSXML2.DOMDocument", 
-							// "MSXML.DOMDocument"
-						  // ];
-						  
-			// for(var n = 0; n < progIDs.length; n++) {
-				// try { 
-					// var xml = {
-						// "xml_obj" : new ActiveXObject( progIDs[n] ),
-						// "version" : progIDs[n]
-					// }
-					// return xml; 
-				// } 
-				// catch(e)	{
-// console.log("_createMSXML() error: " + e);
-					// for( var item in e ){
-// console.log(item + ": " + e[item]);
-					// }
-				// };
-				
-			// }//next
-		// }//end _createMSXML()
-		
-		function __parse( xml ){
-
-				//read schema
-				//var pmaSchemas = xml.getElementsByTagName("pma:structure_schemas");
-//console.log( pmaSchemas ) ;
-
-				//var pmaDatabase = xml.getElementsByTagName("pma:database");
-//console.log( pmaDatabase ) ;
-
-				//var tableList = xml.getElementsByTagName("pma:table");
-//console.log( tableList, tableList.length ) ;
-
-				//var x = xml.childNodes;
-				//var x = xml.documentElement.childNodes;
-//console.log( x ) ;
-//console.log( x.length ) ;
-/*
-				var test = xml.childNodes;
-//console.log( typeof test );
-				for (var n = 0; n < test.length; n++) {
-					var node = test[n];
-					
-					if( node.nodeTypeString ){//IE
-console.log( node.nodeType +", "+ node.nodeTypeString);
-					} else {
-console.log( node.nodeType);
-					}
-					
-//console.log(  node.nodeTypeValue );
-				}
-*/				
-				//var test = xml["xml"];
-//console.log( "xml - " + typeof test );
-				
-
-				//read root
-				//var root = xml.documentElement.children;
-				// //if( xml.children ){
-					// var root = xml.children;
-// console.log( typeof root, root );
-					// if( root ){
-						// for(var key in root){
-// console.log( key +" : "+ root[key] );				
-						// }
-						
-						// //read schema
-						// var schemaTag = root[0].children[0].tagName;
-// var msg = "schema tagName: " + schemaTag;
-// console.log(msg);				
-					// }
-				// //}
-
-
-			// var itemTags = xml.getElementsByTagName("program");
-			// parse_res.innerHTML += "<p> itemTags.length = "+ itemTags.length +"</p>";
-			
-			// for (var n = 0; n < itemTags.length; n++) 
-			// {
-				// if ('textContent' in itemTags[n])
-				// {
-					// parse_res.innerHTML += "<li>" + itemTags[n].textContent + "</li>";
-				// }
-				// else
-				// {
-					// parse_res.innerHTML += "<li>" + itemTags[n].text + "</li>";
-				// }
-				
-			// }//next
-			
-		}//end __parse()
+			//var recordObj = {"a":1};
+			_vars["tables"][tableName]["records"].push( recordObj );
+		}//next
 		
 	}//end _parseXML()
 
@@ -614,4 +398,210 @@ console.log("init!!!");
 	window.MusicFM = MusicFM;
 	MusicFM().init();
 })();
+*/
+
+
+/*
+	function _parseXML(xml){
+
+		//if(window.ActiveXObject || "ActiveXObject" in window){
+		// if( window.ActiveXObject ){
+// console.log("ActiveXObject support: " + window.ActiveXObject + ", use MSXML");
+		// }
+		// else {
+// console.log("ActiveXObject not support,  use window.DOMParser");
+		// }
+		
+
+// //console.log( document.implementation );
+		// if( document.implementation ){
+			// var hasXmlDom = document.implementation.hasFeature("XML", "2.0");
+			// var msg = "support DOM Level 2 XML - " + hasXmlDom;
+// console.log(msg);
+			
+			// var supportsXPath = document.implementation.hasFeature("XPath", "З.0"); 	
+			// msg = "support DOM Level 3 XPath - " + supportsXPath;
+// console.log(msg);
+		// }
+
+			//var rootTag = xml.documentElement.tagName;
+			var rootTag = _vars["schema"]["root"]["tag"];
+			var msg = "main tagName: " + rootTag;
+//console.log(msg);				
+
+			var xmlDoc = xml.getElementsByTagName( rootTag );
+console.log( xmlDoc, xmlDoc.item(0).tagName );		
+//console.log( xmlDoc.context );		
+//var test = xmlDoc.context;
+//for(var key in test ){
+//console.log( key +" : "+ test[key] );				
+//}
+		
+
+			var attr = xmlDoc.item(0).attributes;
+			var attrName = _vars["schema"]["root"]["attributes"][0];
+			var key = attr.getNamedItem( attrName ).nodeValue ;
+console.log( key );				
+
+			var childTag = _vars["schema"]["root"]["child"]["tag"];
+			var tables = xmlDoc.item(0).getElementsByTagName( childTag );
+console.log( tables,  tables.item(0).tagName, tables.length );		
+
+			var attr = tables.item(0).attributes;
+			var attrName = _vars["schema"]["root"]["child"]["attributes"][0];
+			var key = attr.getNamedItem( attrName ).nodeValue ;
+console.log( key );				
+
+		//__parse( _vars["data"] );
+		
+		// if (window.DOMParser) { // all browsers, except IE before version 9
+			// var msg = "window.DOMParser support: " + window.DOMParser;
+// console.log(msg);
+			// var parser = new DOMParser();
+			
+			// //var xmlsrc = _vars["data"].children[0].outerHTML;
+// //console.log( xmlsrc );
+
+			// try {
+				// //var xml = parser.parseFromString( xmlsrc, "text/xml" );
+// //console.log( xml );
+				// __parse( _vars["data"] );
+				
+			// } catch (e) {
+				// // if text is not well-formed, 
+				// // it raises an exception in IE from version 9
+// alert ("XML parsing error: " + e);
+				// for( var item in e ){
+// console.log(item + ": " + e[item]);
+				// }
+			// };
+
+		// }
+		// else {  // Internet Explorer before version 9
+
+			// var xml_info = _createMSXML();
+// console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
+			// var xml = xml_info["xml_obj"];
+
+			// // xml.async = "false";
+			// // xml.loadXML( xmlsrc );	
+			// // var errorMsg = null;
+			// // if (xml.parseError && xml.parseError.errorCode != 0) {
+				// // errorMsg = "XML Parsing Error: " + xml.parseError.reason
+						  // // + " at line " + xml.parseError.line
+						  // // + " at position " + xml.parseError.linepos;
+			// // }
+			// // if (errorMsg) {
+				// // log.innerHTML += "<p>" + errorMsg + "</p>";
+			// // }
+			// // parse_xml(xml);
+
+		// }
+
+		//xmldom = xml;
+
+		// function _createMSXML(){
+			// if (typeof (ActiveXObject) === "undefined") {
+				// return false;
+			// }
+			// var progIDs = [
+							// "Msxml2.DOMDocument.6.0", 
+							// "Msxml2.DOMDocument.5.0", 
+							// "Msxml2.DOMDocument.4.0", 
+							// "Msxml2.DOMDocument.3.0", 
+							// "MSXML2.DOMDocument", 
+							// "MSXML.DOMDocument"
+						  // ];
+						  
+			// for(var n = 0; n < progIDs.length; n++) {
+				// try { 
+					// var xml = {
+						// "xml_obj" : new ActiveXObject( progIDs[n] ),
+						// "version" : progIDs[n]
+					// }
+					// return xml; 
+				// } 
+				// catch(e)	{
+// console.log("_createMSXML() error: " + e);
+					// for( var item in e ){
+// console.log(item + ": " + e[item]);
+					// }
+				// };
+				
+			// }//next
+		// }//end _createMSXML()
+		
+		function __parse( xml ){
+
+				//read schema
+				//var pmaSchemas = xml.getElementsByTagName("pma:structure_schemas");
+//console.log( pmaSchemas ) ;
+
+				//var pmaDatabase = xml.getElementsByTagName("pma:database");
+//console.log( pmaDatabase ) ;
+
+				//var tableList = xml.getElementsByTagName("pma:table");
+//console.log( tableList, tableList.length ) ;
+
+				//var x = xml.childNodes;
+				//var x = xml.documentElement.childNodes;
+//console.log( x ) ;
+//console.log( x.length ) ;
+
+				// var test = xml.childNodes;
+// //console.log( typeof test );
+				// for (var n = 0; n < test.length; n++) {
+					// var node = test[n];
+					
+					// if( node.nodeTypeString ){//IE
+// console.log( node.nodeType +", "+ node.nodeTypeString);
+					// } else {
+// console.log( node.nodeType);
+					// }
+					
+// //console.log(  node.nodeTypeValue );
+				// }
+
+				//var test = xml["xml"];
+//console.log( "xml - " + typeof test );
+				
+
+				//read root
+				//var root = xml.documentElement.children;
+				// //if( xml.children ){
+					// var root = xml.children;
+// console.log( typeof root, root );
+					// if( root ){
+						// for(var key in root){
+// console.log( key +" : "+ root[key] );				
+						// }
+						
+						// //read schema
+						// var schemaTag = root[0].children[0].tagName;
+// var msg = "schema tagName: " + schemaTag;
+// console.log(msg);				
+					// }
+				// //}
+
+
+			// var itemTags = xml.getElementsByTagName("program");
+			// parse_res.innerHTML += "<p> itemTags.length = "+ itemTags.length +"</p>";
+			
+			// for (var n = 0; n < itemTags.length; n++) 
+			// {
+				// if ('textContent' in itemTags[n])
+				// {
+					// parse_res.innerHTML += "<li>" + itemTags[n].textContent + "</li>";
+				// }
+				// else
+				// {
+					// parse_res.innerHTML += "<li>" + itemTags[n].text + "</li>";
+				// }
+				
+			// }//next
+			
+		}//end __parse()
+		
+	}//end _parseXML()
+
 */
