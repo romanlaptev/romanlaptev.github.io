@@ -95,47 +95,61 @@ function _db( opt ){
 			}//end root node
 		},
 		
-		"jsonData" : {
-			"database" : {
-				"name" : "",
-				"tables": {
-					/*"taxonomy_menu" :[{ 
-						"tid" : "",  
-						"title" : ""
-					}],  */
-					
-					"taxonomy_title" :[{
+		
+		"tables": {
+			/*"taxonomy_menu" :[{ 
+				"tid" : "",  
+				"title" : ""
+			}],  */
+			
+			"taxonomy_title" : {
+				"fields" : {
 "tid" : "",  
 "title" : ""
-					}],  
-					
-					"term_data" :[{
+				},
+				"records" : []
+			},  
+			
+			"term_data" :{
+				"fields" : {
 "tid" : "",  
 "vid" : "",
 "name" : "",
 "description" : "",
 "weight" : ""
-					}],  
-					
-					"term_hierarchy" :[{
+				},
+				"records" : []
+			},  
+			
+			"term_hierarchy" :{
+				"fields" : {
 "tid" : "",  
 "parent" : ""
-					}],  
-					
-					"term_image" :[{
+				},
+				"records" : []
+			},  
+			
+			"term_image" :{
+				"fields" : {
 "tid" : "",  
 "path" : ""
-					}],
-					
-					"term_node" :[{
+				},
+				"records" : []
+			},
+			
+			"term_node" :{
+				"fields" : {
 "nid" : "",  
 "vid" : "",
 "tid" : ""
-					}],  
-					
-					//"term_relation" :[{}],  
-					//"term_synonym" :[{}],  
-					"vocabulary" :[{
+				},
+				"records" : []
+			},  
+			
+			//"term_relation" :[{}],  
+			//"term_synonym" :[{}],  
+			"vocabulary" :{
+				"fields" : {
 "vid" : "",
 "name" : "",
 "description" : "",
@@ -147,9 +161,10 @@ function _db( opt ){
 "tags" : "",
 "module" : "",
 "weight" : ""
-					}]
-				}
+				},
+				"records" : []
 			}
+			
 		}
 		
 	};
