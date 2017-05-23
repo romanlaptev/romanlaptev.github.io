@@ -210,6 +210,7 @@ console.log("error in _db(), not find 'format' !");
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
+		options["queryObj"]["callback"] = _postQuery;
 //console.log( options );
 
 		// if( options["dbName"].length === 0){
@@ -228,43 +229,42 @@ console.log("error in _db(), not find 'format' !");
 				_processQuery( data, options["queryObj"] );
 			break;
 		}//end switch
-		
-		if( typeof options["callback"] === "function"){
-			options["callback"]( result );
-		} else {
-			return result;
-		}
-		
+
 		function _processQuery( records, queryObj ){
 			var tableName = queryObj["tableName"];
 			var targetFields = queryObj["targetFields"];
 			var conditions = queryObj["where"];
-console.log( conditions, conditions.length, targetFields );
+//console.log( conditions, conditions.length, targetFields );
 
 			var table = [];
-			// for( var n = 0; n < records.length; n++){
-			// //for( var n = 0; n < 50; n++){
+			for( var n = 0; n < records.length; n++){
+			//for( var n = 0; n < 50; n++){
 				
-				// if( typeof records[n] === "object" ){
-					// var record = records[n];//json object
-				// }
+				if( typeof records[n] === "object" ){
+					var record = records[n];//json object
+				}
 				
-				// var test = true;
-				// if( conditions.length > 0 ){//process, search by conditions
-					// test = _checkConditons( record, conditions );
-				// }
+				var test = true;
+				if( conditions.length > 0 ){//process, search by conditions
+					test = _checkConditons( record, conditions );
+				}
 				
-				// if(test){
-					// _pushResultRecord( record, table, targetFields);
-				// }
-			// }//next record
+				if(test){
+					_pushResultRecord( record, table, targetFields);
+				}
+			}//next record
 				
-console.log("unsort:", table[0], table.length);
+//console.log("unsort:", table[0], table.length);
+
+			if( typeof queryObj["callback"] === "function"){
+					queryObj["callback"](table);
+			}
+
 		}//end _processQuery()
 
 		function _checkConditons( record, conditions){
-console.log( "function _checkConditons, ", conditions );
-/*			
+//console.log( "function _checkConditons, ", conditions );
+
 			record["checkResult"] = [];
 			conditions[0]["logic"] = "";
 
@@ -287,8 +287,9 @@ console.log( "function _checkConditons, ", conditions );
 	//console.log("Error, _checkConditons(), empty conditions['value']...");
 					continue;
 				}		
-				
-				switch(compare) {
+//console.log( condition );				
+
+				switch( compare ) {
 				
 					case "=":
 						for( var n2 = 0; n2 < list_values.length; n2++){
@@ -309,51 +310,17 @@ console.log( "function _checkConditons, ", conditions );
 					break;
 
 					case "IN":
-
-						//record["checkResult"][n] = false;
-						for( var n2 = 0; n2 < list_values.length; n2++){
-	//console.log(n2, list_values[n2]);
-
-							//"IN"
-							if( !condition["zapret"] ){
-
-	// if( (record["KOD_MAIN"] === "1" && record["NOMER"] === "170") || 
-	// (record["KOD_MAIN"] === "5" && record["NOMER"] === "170")
-	// ){
-	// console.log(key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record[key] === list_values[n2].toString() );
-	// }
-								if( record[key] === list_values[n2].toString() ){
-									record["checkResult"][n] = true;
-	//console.log( key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record["checkResult"] );
-									break;
-								} //else {
-									//record["checkResult"][n] = false;
-								//}
-								
-							} else { //"NOT IN"
-							
-								if( record[key] !== list_values[n2].toString() ){
-	//console.log(record[key], key, typeof record[key], list_values[n2], typeof list_values[n2] );
-									record["checkResult"][n] = true;
-									break;
-								}
-								
-							}
-							
-						}//next
-
 					break;
 					
 				}//end switch
-				
+
 			}//next condition
 
 	// if( record["NOMER"] === "182"){
-	// console.log(record, record["checkResult"].length);
+//console.log( record, record["checkResult"].length );
 	// }			
 
 			var test = false;
-
 			if( conditions.length === 1){
 				test = record["checkResult"][0];
 				return test;
@@ -388,10 +355,9 @@ console.log( "function _checkConditons, ", conditions );
 						
 					}//end switch
 				}
-					
 			}//next
-*/			
-var compareResult = false;
+
+//var compareResult = false;
 			return compareResult;
 		}//end _checkConditons()
 
@@ -403,6 +369,49 @@ var compareResult = false;
 			}
 			table.push(obj);
 		}//end _pushResultRecord()
+		
+		function _postQuery( data ){ 
+//console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
+//console.log(data);
+
+			// //fail query
+			// if(!data){
+				// if( typeof options["callback"] === "function"){
+					// options["callback"]( false );
+				// }
+				// return false;//wait!!!
+			// }
+			
+			// //run next query
+			// if( data.length === 0 && queryObj["next_query"] ){
+// console.log("Run next query, ", queryObj["next_query"]);
+				// queryObj["next_query"]["callback"] = queryObj["callback"];
+				
+				// if( queryObj["order_by"] ){
+					// queryObj["next_query"]["order_by"] = queryObj["order_by"];
+				// }
+				// _runQuery( queryObj["next_query"] );
+				// return false;//wait!!!
+			// }
+				
+			// if( data.code === "store_not_found" ){
+				// _queryAlt( 
+					// options["queryObj"], 
+					// options["queryObj"]["callback"] 
+				// );
+				// return false;//wait!!!
+			// }
+				
+			if( typeof options["callback"] === "function"){
+console.log("Run query, end process");
+//console.log(options["callback"]);
+				options["callback"]( data );
+				return false;//wait!!!
+			} else {
+				return data;
+			}
+			
+		};//end _postQuery()
 		
 	};//end _query()
 	
