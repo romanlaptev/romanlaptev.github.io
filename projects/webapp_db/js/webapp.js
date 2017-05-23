@@ -66,6 +66,19 @@ webApp.init(function(){
 	};
 	webApp.draw.insert( opt );
 	
+	//test query select tid, title from taxonomy_title
+	webApp.db.query({
+		"queryObj" : {
+			"action" : "select",
+			"tableName": "taxonomy_title",
+			"targetFields" : ["tid", "title"]
+		},
+		"callback" : function( result ){
+console.log("end test query!!!", result);			
+		}
+	});
+
+	
 });
 console.log(webApp);
 
@@ -159,30 +172,6 @@ console.log("error in _db(), not find 'format' !");
 		switch( _vars["format"] ){
 			case "xml":
 				_parseXML( _vars["data"] );
-/*
-				//select tid, title from taxonomy_title	
-				_query({
-					"queryObj" : {
-						"action" : "select",
-						"tableName": "taxonomy_title",
-						"targetFields" : ["tid", "title"],
-						"where" : [
-							//{"key" : "KOD_MAIN", "value" : "5", "compare": "="},
-							//{"key" : "KOD_MAIN", "value" : "(1,5)", "compare": "IN"},
-							//{"logic": "AND", "key" : "NOMER", "value" : fieldInfo["klassNom"], "compare": "="}
-							
-							//and kod_main is null
-							//{"logic": "AND", "key" : "KOD_MAIN", "value" : 0, "compare": "="}
-							
-							//and kod in(select kod from sl_klass_perm where perm_name="CPR_175" and nomer="175")
-							//{"logic": "AND", "key" : "KOD", "value" : select_obj, "compare": "IN"}
-						]
-					},
-					"callback" : function(){
-						
-					}
-				});
-*/
 			break;
 			
 			case "json":
@@ -196,10 +185,44 @@ console.log("error in _db(), not find 'format' !");
 	};//end _init()
 
 	//select tid, title from taxonomy_title	
-	var _query = function(args){
-		var data = 1;
-		return data;
-	};
+	var _query = function( opt ){
+//console.log(arguments);
+		var options = {
+			//"dbName": null,
+			//"storeName" : "",
+			"queryObj" : {//ex: select tid, title from taxonomy_title
+				"action" : "", //"select",
+				"order_by" : false,//"ORDER_BY"
+				"tableName": "", //"taxonomy_title",
+				"targetFields" : "", //["tid", "title"],
+				"where" : [], /*[
+					{"key" : "KOD_MAIN", "value" : "[1,5]", "compare": "IN"},
+					{"logic": "AND", "key" : "NOMER", "value" : 170, "compare": "="}
+				],*/
+			}, 
+			"callback": null
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log( options );
+		
+		// if( options["dbName"].length === 0){
+// var msg = "_getListStores(), error, argument 'dbName' empty.... ";
+// console.log( msg );
+			// return false;
+		// }
+		
+		var result = [1,2,3];
+		if( typeof options["callback"] === "function"){
+			options["callback"]( result );
+		} else {
+			return result;
+		}
+		
+	};//end _query()
 	
 	function _parseXML(xml){
 
@@ -232,8 +255,8 @@ console.log("error in _db(), not find 'format' !");
 //console.log(arguments);
 			return _init(args); 
 		},
-		query:	function(args){ 
-			return _query(args); 
+		query:	function( opt ){ 
+			return _query( opt ); 
 		}
 	};
 }//end _db()
