@@ -71,7 +71,10 @@ webApp.init(function(){
 		"queryObj" : {
 			"action" : "select",
 			"tableName": "taxonomy_title",
-			"targetFields" : ["tid", "title"]
+			"targetFields" : ["tid", "title"],
+			"where" : [
+				{"key" : "tid", "value" : "86", "compare": "="}
+			]
 		},
 		"callback" : function( result ){
 console.log("end test query!!!", result);			
@@ -207,20 +210,199 @@ console.log("error in _db(), not find 'format' !");
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-console.log( options );
-		
+//console.log( options );
+
 		// if( options["dbName"].length === 0){
 // var msg = "_getListStores(), error, argument 'dbName' empty.... ";
 // console.log( msg );
 			// return false;
 		// }
 		
-		var result = [1,2,3];
+		var result = [];
+		var action = options["queryObj"]["action"];
+		switch( action ){
+			
+			case "select":
+				var tableName = options["queryObj"]["tableName"];
+				var data = _vars["tables"][tableName]["records"];
+				_processQuery( data, options["queryObj"] );
+			break;
+		}//end switch
+		
 		if( typeof options["callback"] === "function"){
 			options["callback"]( result );
 		} else {
 			return result;
 		}
+		
+		function _processQuery( records, queryObj ){
+			var tableName = queryObj["tableName"];
+			var targetFields = queryObj["targetFields"];
+			var conditions = queryObj["where"];
+console.log( conditions, conditions.length, targetFields );
+
+			var table = [];
+			// for( var n = 0; n < records.length; n++){
+			// //for( var n = 0; n < 50; n++){
+				
+				// if( typeof records[n] === "object" ){
+					// var record = records[n];//json object
+				// }
+				
+				// var test = true;
+				// if( conditions.length > 0 ){//process, search by conditions
+					// test = _checkConditons( record, conditions );
+				// }
+				
+				// if(test){
+					// _pushResultRecord( record, table, targetFields);
+				// }
+			// }//next record
+				
+console.log("unsort:", table[0], table.length);
+		}//end _processQuery()
+
+		function _checkConditons( record, conditions){
+console.log( "function _checkConditons, ", conditions );
+/*			
+			record["checkResult"] = [];
+			conditions[0]["logic"] = "";
+
+			for( var n = 0; n < conditions.length; n++){
+				var condition = conditions[n];
+				
+				record["checkResult"][n] = false;
+				
+				var key = condition["key"];
+				var compare = condition["compare"];
+				
+				//convert string or number "value" to array ["value"]
+				if( typeof condition["value"] === "string" ||
+						 typeof condition["value"] === "number"){
+					condition["value"] = [ condition["value"] ];
+				}
+				
+				var list_values = condition["value"];
+				if( list_values.length === 0 ){
+	//console.log("Error, _checkConditons(), empty conditions['value']...");
+					continue;
+				}		
+				
+				switch(compare) {
+				
+					case "=":
+						for( var n2 = 0; n2 < list_values.length; n2++){
+							if( record[key] === list_values[n2].toString() ){
+								record["checkResult"][n] = true;							
+	//console.log( key, record[key], condition["value"], n, record["checkResult"] );
+							}
+						}//next
+					break;
+
+					case "!=":
+					case "<>":
+						for( var n2 = 0; n2 < list_values.length; n2++){
+							if( record[key] !== list_values[n2].toString() ){
+								record["checkResult"][n] = true;							
+							}
+						}//next
+					break;
+
+					case "IN":
+
+						//record["checkResult"][n] = false;
+						for( var n2 = 0; n2 < list_values.length; n2++){
+	//console.log(n2, list_values[n2]);
+
+							//"IN"
+							if( !condition["zapret"] ){
+
+	// if( (record["KOD_MAIN"] === "1" && record["NOMER"] === "170") || 
+	// (record["KOD_MAIN"] === "5" && record["NOMER"] === "170")
+	// ){
+	// console.log(key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record[key] === list_values[n2].toString() );
+	// }
+								if( record[key] === list_values[n2].toString() ){
+									record["checkResult"][n] = true;
+	//console.log( key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record["checkResult"] );
+									break;
+								} //else {
+									//record["checkResult"][n] = false;
+								//}
+								
+							} else { //"NOT IN"
+							
+								if( record[key] !== list_values[n2].toString() ){
+	//console.log(record[key], key, typeof record[key], list_values[n2], typeof list_values[n2] );
+									record["checkResult"][n] = true;
+									break;
+								}
+								
+							}
+							
+						}//next
+
+					break;
+					
+				}//end switch
+				
+			}//next condition
+
+	// if( record["NOMER"] === "182"){
+	// console.log(record, record["checkResult"].length);
+	// }			
+
+			var test = false;
+
+			if( conditions.length === 1){
+				test = record["checkResult"][0];
+				return test;
+			}
+			
+			//Check several conditions (.... AND...OR...AND...)
+			var operands = record["checkResult"];
+			var compareResult = 0;
+			for( var n = 0; n < conditions.length; n++){
+				
+				if( n > 0 ){//exclude first condition without logic operation
+					var logicOp = conditions[n]["logic"];
+					switch( logicOp ){
+						
+						case "AND":
+							if( compareResult === 0){
+								var num = n - 1;
+								compareResult = operands[num] && operands[n];
+							} else {
+								compareResult = compareResult && operands[n];
+							}
+						break;
+						
+						case "OR":
+							if( compareResult === 0){
+								var num = n - 1;
+								compareResult = operands[num] || operands[n];
+							} else {
+								compareResult = compareResult || operands[n];
+							}
+						break;
+						
+					}//end switch
+				}
+					
+			}//next
+*/			
+var compareResult = false;
+			return compareResult;
+		}//end _checkConditons()
+
+		
+		function _pushResultRecord( record, table, targetFields){
+			var obj = {};
+			for( var n1 = 0; n1 < targetFields.length; n1++){
+				obj[ targetFields[n1] ] = record[ targetFields[n1] ];
+			}
+			table.push(obj);
+		}//end _pushResultRecord()
 		
 	};//end _query()
 	
