@@ -159,6 +159,30 @@ console.log("error in _db(), not find 'format' !");
 		switch( _vars["format"] ){
 			case "xml":
 				_parseXML( _vars["data"] );
+/*
+				//select tid, title from taxonomy_title	
+				_query({
+					"queryObj" : {
+						"action" : "select",
+						"tableName": "taxonomy_title",
+						"targetFields" : ["tid", "title"],
+						"where" : [
+							//{"key" : "KOD_MAIN", "value" : "5", "compare": "="},
+							//{"key" : "KOD_MAIN", "value" : "(1,5)", "compare": "IN"},
+							//{"logic": "AND", "key" : "NOMER", "value" : fieldInfo["klassNom"], "compare": "="}
+							
+							//and kod_main is null
+							//{"logic": "AND", "key" : "KOD_MAIN", "value" : 0, "compare": "="}
+							
+							//and kod in(select kod from sl_klass_perm where perm_name="CPR_175" and nomer="175")
+							//{"logic": "AND", "key" : "KOD", "value" : select_obj, "compare": "IN"}
+						]
+					},
+					"callback" : function(){
+						
+					}
+				});
+*/
 			break;
 			
 			case "json":
@@ -171,6 +195,7 @@ console.log("error in _db(), not find 'format' !");
 
 	};//end _init()
 
+	//select tid, title from taxonomy_title	
 	var _query = function(args){
 		var data = 1;
 		return data;
@@ -302,7 +327,7 @@ console.log("init _draw");
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-console.log("draw.insert(), ", options);
+//console.log("draw.insert(), ", options);
 
 		var templateId = options["templateId"];
 		if( !_vars["templates"][templateId] ){
