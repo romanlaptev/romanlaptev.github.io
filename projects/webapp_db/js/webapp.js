@@ -67,13 +67,22 @@ webApp.init(function(){
 	webApp.draw.insert( opt );
 	
 	//test query select tid, title from taxonomy_title
+	//Genre
+	var _list = ["100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"];
 	webApp.db.query({
 		"queryObj" : {
 			"action" : "select",
-			"tableName": "taxonomy_title",
-			"targetFields" : ["tid", "title"],
+			"tableName": "term_data",
+			"targetFields" : [
+"tid",
+"vid",
+"name",
+"description",
+"weight"
+],
 			"where" : [
-				{"key" : "tid", "value" : "86", "compare": "="}
+				{"key" : "vid", "value" : "5", "compare": "="},
+				{"logic": "AND", "key" : "tid", "value" : _list, "compare": "="},
 			]
 		},
 		"callback" : function( result ){
@@ -82,7 +91,28 @@ console.log("end test query!!!", result);
 	});
 
 	
+	var queryParams = {
+		"queryObj" : {
+			"action" : "select",
+			"tableName": "term_hierarchy",
+			"targetFields" : [
+"tid",
+"parent"
+],
+			"where" : [
+				{"key" : "parent", "value" : "95", "compare": "="}
+			]
+		},
+		"callback" : _postQuery
+	};
+	webApp.db.query( queryParams);
+	
 });
+
+function _postQuery( result ){
+console.log(result);			
+}
+
 console.log(webApp);
 
 
@@ -310,6 +340,39 @@ console.log("error in _db(), not find 'format' !");
 					break;
 
 					case "IN":
+/*
+					//record["checkResult"][n] = false;
+					for( var n2 = 0; n2 < list_values.length; n2++){
+//console.log(n2, list_values[n2]);
+
+						//"IN"
+						if( !condition["zapret"] ){
+
+// if( (record["KOD_MAIN"] === "1" && record["NOMER"] === "170") || 
+// (record["KOD_MAIN"] === "5" && record["NOMER"] === "170")
+// ){
+// console.log(key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record[key] === list_values[n2].toString() );
+// }
+							if( record[key] === list_values[n2].toString() ){
+								record["checkResult"][n] = true;
+//console.log( key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record["checkResult"] );
+								break;
+							} //else {
+								//record["checkResult"][n] = false;
+							//}
+							
+						} else { //"NOT IN"
+						
+							if( record[key] !== list_values[n2].toString() ){
+//console.log(record[key], key, typeof record[key], list_values[n2], typeof list_values[n2] );
+								record["checkResult"][n] = true;
+								break;
+							}
+							
+						}
+						
+					}//next
+*/					
 					break;
 					
 				}//end switch
