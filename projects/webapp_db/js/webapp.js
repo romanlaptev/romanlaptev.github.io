@@ -48,24 +48,6 @@ console.log( navigator.userAgent );
 //start
 webApp.init(function(){
 
-	var opt = {
-		"templateId" : "tpl-info_termins_genre-block",
-		"data" : {
-			"block_title" : "Genre",
-			"items" : [
-				{
-					"name" : "миниатюра",
-					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-				},
-				{
-					"name" : "иллюстрация",
-					"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
-				}
-			]
-		}
-	};
-	webApp.draw.insert( opt );
-	
 	//test query select tid, title from taxonomy_title
 	//Genre
 	var _list = ["100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"];
@@ -86,11 +68,12 @@ webApp.init(function(){
 			]
 		},
 		"callback" : function( result ){
-console.log("end test query!!!", result);			
+console.log("end test query!!!", result);
+			_drawBlockGenre( result );
 		}
 	});
 
-	
+/*	
 	var queryParams = {
 		"queryObj" : {
 			"action" : "select",
@@ -106,16 +89,47 @@ console.log("end test query!!!", result);
 		"callback" : _postQuery
 	};
 	webApp.db.query( queryParams);
-	
-});
-
 function _postQuery( result ){
 console.log(result);			
 }
+*/
+
+	function _drawBlockGenre( res ){
+
+		var opt = {
+			"templateId" : "tpl-info_termins_genre-block"
+		};
+	
+		var  data = {
+			"block_title" : "Genre",
+			"items" : [
+				// {
+					// "name" : "миниатюра",
+					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+				// },
+				// {
+					// "name" : "иллюстрация",
+					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
+				// }
+			]
+		};
+		
+		for( var n = 0; n < res.length; n++){
+			var item = {
+				"name" : res[n]["name"],
+				"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+			};
+			data["items"].push(item);
+		}//next
+		
+		opt["data"] = data;
+		webApp.draw.insert( opt );
+	}//end _drawBlockGenre()
+	
+	
+});//end webApp initialize
 
 console.log(webApp);
-
-
 
 
 function _db( opt ){
@@ -241,7 +255,7 @@ console.log("error in _db(), not find 'format' !");
 			options[key] = opt[key];
 		}
 		options["queryObj"]["callback"] = _postQuery;
-//console.log( options );
+console.log( "_query()", options );
 
 		// if( options["dbName"].length === 0){
 // var msg = "_getListStores(), error, argument 'dbName' empty.... ";
