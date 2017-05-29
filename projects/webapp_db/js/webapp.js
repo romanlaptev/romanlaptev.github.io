@@ -51,7 +51,8 @@ webApp.init(function(){
 //1. select tid from term_data where name="жанр" -- 95
 //2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
 //3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
-//4. select dst from url_alias where pid=???
+//4. select dst from url_alias where -- pid=???
+//src="taxonomy/term/" + tid
 
 	//test query select tid, title from taxonomy_title
 	//Genre
