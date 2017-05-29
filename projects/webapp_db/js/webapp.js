@@ -47,6 +47,11 @@ console.log( navigator.userAgent );
 
 //start
 webApp.init(function(){
+//1. select vid from vocabulary where name="info" -- 5
+//1. select tid from term_data where name="жанр" -- 95
+//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
+//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
+//4. select dst from url_alias where pid=???
 
 	//test query select tid, title from taxonomy_title
 	//Genre
@@ -197,10 +202,14 @@ function _db( opt ){
 "weight"
 				],
 				"records" : []
-			}
+			},
 			
-		}
-		
+			"url_alias" :{
+				"fields" : ["pid",  "src", "dst", "language"],
+				"records" : []
+			},  
+			
+		}//end tables
 	};
 
 	var _init = function( opt ){
