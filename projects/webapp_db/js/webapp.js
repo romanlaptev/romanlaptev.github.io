@@ -54,88 +54,31 @@ webApp.init(function(){
 //4. select dst from url_alias where -- pid=???
 //src="taxonomy/term/" + tid
 
-	//test query select tid, title from taxonomy_title
-	//Genre
-	var _list = ["100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"];
-	webApp.db.query({
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "term_data",
-			"targetFields" : [
-"tid",
-"vid",
-"name",
-"description",
-"weight"
-],
-			"where" : [
-				{"key" : "vid", "value" : "5", "compare": "="},
-				{"logic": "AND", "key" : "tid", "value" : _list, "compare": "="},
-			]
-		},
-		"callback" : function( result ){
-console.log("end test query!!!", result);
-			_drawBlockGenre( result );
-		}
-	});
-
-/*	
+	//get block data
+	var _vocabularyName = "info";
+	var _termName = "стиль";//"техника";//"жанр";
 	var queryParams = {
 		"queryObj" : {
 			"action" : "select",
-			"tableName": "term_hierarchy",
-			"targetFields" : [
-"tid",
-"parent"
-],
+			"tableName": "vocabulary",
+			"targetFields" : ["vid"],
 			"where" : [
-				{"key" : "parent", "value" : "95", "compare": "="}
+				{"key" : "name", "value" : _vocabularyName, "compare": "="}
 			]
 		},
-		"callback" : _postQuery
+		"callback" : function( res ){
+console.log(res, res.length );	
+			var _vid = res[0]["vid"];
+console.log( _vid );			
+			_getTermByName( _vid, _termName );
+		}
 	};
 	webApp.db.query( queryParams);
-function _postQuery( result ){
-console.log(result);			
-}
-*/
-
-	function _drawBlockGenre( res ){
-
-		var opt = {
-			"templateId" : "tpl-info_termins_genre-block"
-		};
-	
-		var  data = {
-			"block_title" : "Genre",
-			"items" : [
-				// {
-					// "name" : "миниатюра",
-					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-				// },
-				// {
-					// "name" : "иллюстрация",
-					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
-				// }
-			]
-		};
-		
-		for( var n = 0; n < res.length; n++){
-			var item = {
-				"name" : res[n]["name"],
-				"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-			};
-			data["items"].push(item);
-		}//next
-		
-		opt["data"] = data;
-		webApp.draw.insert( opt );
-	}//end _drawBlockGenre()
-	
 	
 });//end webApp initialize
 
 console.log(webApp);
+
 
 
 function _db( opt ){
@@ -694,6 +637,122 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		}
 	};
 }//end _draw()
+
+
+
+
+//QUERIES
+
+// function _buildBlock( opt ){
+// console.log(arguments);
+// }//end _buildBlock()
+
+function _getTermByName( vid, termName ){
+	
+	var queryParams = {
+		"queryObj" : {
+			"action" : "select",
+			"tableName": "term_data",
+			"targetFields" : ["tid"],
+			"where" : [
+				{"key" : "vid", "value" : vid, "compare": "="},
+				{"logic": "AND", "key" : "name", "value" : termName, "compare": "="}
+			]
+		},
+		"callback" : function( res ){
+console.log(res, res.length );	
+			var _tid = res[0]["tid"];
+console.log( _tid );			
+			_getChildTerms( vid, _tid );
+		}
+	};
+	webApp.db.query( queryParams);
+
+}//end _getTermByName()
+
+function _getChildTerms( vid, tid ){
+	
+	var queryParams = {
+		"queryObj" : {
+			"action" : "select",
+			"tableName": "term_hierarchy",
+			"targetFields" : [
+"tid",
+"parent"
+],
+			"where" : [
+				{"key" : "parent", "value" : tid, "compare": "="}
+			]
+		},
+		"callback" : _postQuery
+	};
+	webApp.db.query( queryParams);
+
+	function _postQuery( result ){
+		var _listChildTerms = [];
+		for( var n = 0; n < result.length; n++){
+			_listChildTerms.push( result[n]["tid"] );
+		}//next
+console.log(_listChildTerms);
+		
+		webApp.db.query({
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : [
+"tid",
+"vid",
+"name",
+"description",
+"weight"
+],
+				"where" : [
+					{"key" : "vid", "value" : vid, "compare": "="},
+					{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="},
+				]
+			},
+			"callback" : function( result ){
+	console.log("end test query!!!", result);
+				_drawBlock( result );
+			}
+		});
+	}//end _postQuery()
+	
+}//end _getChildTerms()
+
+
+
+function _drawBlock( res ){
+
+	var opt = {
+		"templateId" : "tpl-info_termins_genre-block"
+	};
+
+	var  data = {
+		"block_title" : "Genre",
+		"items" : [
+			// {
+				// "name" : "миниатюра",
+				// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+			// },
+			// {
+				// "name" : "иллюстрация",
+				// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
+			// }
+		]
+	};
+	
+	for( var n = 0; n < res.length; n++){
+		var item = {
+			"name" : res[n]["name"],
+			"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+		};
+		data["items"].push(item);
+	}//next
+	
+	opt["data"] = data;
+	webApp.draw.insert( opt );
+}//end _drawBlock()
 
 
 /*
