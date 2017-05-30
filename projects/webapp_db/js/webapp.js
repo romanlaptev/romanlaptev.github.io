@@ -58,15 +58,28 @@ webApp.init(function(){
 		"name" : "block-style",
 		"title" : "стиль", //"техника";//"жанр";
 		//"templateID" : "tpl-info_termins_genre-block",
-		"content" : function(){
+		"content" : function( args ){
 			
-			//webApp.db.getVocabularyByName( vocabularyName );
 			//webApp.db.runQuery( queryStr );
+			//webApp.db.getContent( queryStr );//1?
+			var queryStr = "\
+select name from term_data where vid=(\
+	select vid from vocabulary where name='info'\
+) and tid in (\
+	select tid from term_hierarchy where parent=(\
+		select tid from term_data where name='жанр'\
+	)\
+)";
+			//webApp.db.getTerm( queryStr );//2?
+			//_wrapContent();
 			
 			var html = "<h1>Test!!!</h1>";
 			html += "<h2>Test!!!</h2>";
 			html += "<h3>Test!!!</h3>";
-			return html;
+			html += "<h4>Test!!!</h4>";
+			if( typeof args["callback"] === "function"){
+				args["callback"]( html );
+			}
 		}
 	};
 	buildBlock( opt );
@@ -704,8 +717,8 @@ _log("<p>draw.insertBlock(),   error, data: <b class='text-danger'>" + options["
 function buildBlock( opt ){
 	
 	var options = {
-		"title": null,
-		"content" : null,
+		"title": "block title",
+		"content" : "test content",
 		"templateID" : "tpl-block"
 	};
 	//extend options object for queryObj
@@ -716,12 +729,19 @@ console.log(options);
 
 	//dynamic form content
 	if( typeof options["content"] === "function"){
-		var content = options["content"]();
-console.log("end form content!");		
-		options["content"] = content;
+		options["content"]({
+			"callback" : function( content ){
+				options["content"] = content;
+				_draw( options );
+			}
+		});
+	} else {
+		_draw( options );
 	}
 	
-	webApp.draw.insertBlock( options );
+	function _draw( options ){
+		webApp.draw.insertBlock( options );
+	}
 }//end buildBlock()
 
 
