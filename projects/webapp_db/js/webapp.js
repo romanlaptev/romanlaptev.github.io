@@ -54,6 +54,19 @@ webApp.init(function(){
 //4. select dst from url_alias where -- pid=???
 //src="taxonomy/term/" + tid
 
+	var opt = {
+		"name" : "block-style",
+		"title" : "стиль", //"техника";//"жанр";
+		//"templateID" : "tpl-info_termins_genre-block",
+		"content" : function(){
+			var html = "<h1>Test!!!</h1>";
+			html += "<h2>Test!!!</h2>";
+			html += "<h3>Test!!!</h3>";
+			return html;
+		}
+	};
+	buildBlock( opt );
+	
 	//get block data
 	var _vocabularyName = "info";
 	var _termName = "стиль";//"техника";//"жанр";
@@ -67,9 +80,9 @@ webApp.init(function(){
 			]
 		},
 		"callback" : function( res ){
-console.log(res, res.length );	
+//console.log(res, res.length );	
 			var _vid = res[0]["vid"];
-console.log( _vid );			
+//console.log( _vid );			
 			_getTermByName( _vid, _termName );
 		}
 	};
@@ -157,7 +170,7 @@ function _db( opt ){
 	};
 
 	var _init = function( opt ){
-console.log("init _db!");
+//console.log("init _db!");
 		for(var key in opt ){
 			_vars[key] = opt[key];
 		}
@@ -433,7 +446,7 @@ console.log( "_query()", options );
 			// }
 				
 			if( typeof options["callback"] === "function"){
-console.log("Run query, end process");
+//console.log("Run query, end process");
 //console.log(options["callback"]);
 				options["callback"]( data );
 				return false;//wait!!!
@@ -497,11 +510,15 @@ function _draw( opt ){
 	};
 
 	var _init = function(){
-console.log("init _draw");
+//console.log("init _draw");
 		_loadTemplates();
 	};
 
 	function _loadTemplates(){
+		
+		var id = "tpl-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
 		
 		var id = "tpl-info_termins_genre-block_list";
 		var template = _getTpl(id);
@@ -624,7 +641,41 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 //console.log(list, listHtml, list.innerHTML);
 		list.innerHTML = listHtml;
 		
-	};
+	};//end _insert()
+	
+	var _insertBlock = function( opt ){
+		
+		var options = {
+			"templateID": false,
+			"title" : "block",
+			"content" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log("draw.insertBlock(), ", options);
+
+		var templateID = options["templateID"];
+		if( !_vars["templates"][templateID] ){
+_log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-danger'>" + templateID + "</b></p>");
+			return false;
+		}
+		
+		if( !options["content"] ){
+_log("<p>draw.insertBlock(),   error, data: <b class='text-danger'>" + options["content"] + "</b></p>");
+			return false;
+		}
+		
+		var html = _vars["templates"][templateID];
+		html = html.replace("{{block_title}}", options["title"]);
+		html = html.replace("{{content}}", options["content"]);
+		
+		var tpl = getDOMobj(templateID);
+		tpl.innerHTML = html;
+		tpl.className = "";//show block
+		
+	};//end _insertBlock()
 	
 	// public interfaces
 	return{
@@ -634,6 +685,9 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		},
 		insert:	function( opt ){ 
 			return _insert( opt ); 
+		},
+		insertBlock:	function( opt ){ 
+			return _insertBlock( opt ); 
 		}
 	};
 }//end _draw()
@@ -643,9 +697,29 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 
 //QUERIES
 
-// function _buildBlock( opt ){
-// console.log(arguments);
-// }//end _buildBlock()
+function buildBlock( opt ){
+	
+	var options = {
+		"title": null,
+		"content" : null,
+		"templateID" : "tpl-block"
+	};
+	//extend options object for queryObj
+	for(var key in opt ){
+		options[key] = opt[key];
+	}
+console.log(options);
+
+	//dynamic form content
+	if( typeof options["content"] === "function"){
+		var content = options["content"]();
+console.log("end form content!");		
+		options["content"] = content;
+	}
+	
+	webApp.draw.insertBlock( options );
+}//end buildBlock()
+
 
 function _getTermByName( vid, termName ){
 	
@@ -660,9 +734,9 @@ function _getTermByName( vid, termName ){
 			]
 		},
 		"callback" : function( res ){
-console.log(res, res.length );	
+//console.log(res, res.length );	
 			var _tid = res[0]["tid"];
-console.log( _tid );			
+//console.log( _tid );			
 			_getChildTerms( vid, _tid );
 		}
 	};
@@ -693,7 +767,7 @@ function _getChildTerms( vid, tid ){
 		for( var n = 0; n < result.length; n++){
 			_listChildTerms.push( result[n]["tid"] );
 		}//next
-console.log(_listChildTerms);
+//console.log(_listChildTerms);
 		
 		webApp.db.query({
 			"queryObj" : {
@@ -712,7 +786,7 @@ console.log(_listChildTerms);
 				]
 			},
 			"callback" : function( result ){
-	console.log("end test query!!!", result);
+//console.log("end test query!!!", result);
 				_drawBlock( result );
 			}
 		});
