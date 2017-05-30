@@ -59,6 +59,10 @@ webApp.init(function(){
 		"title" : "стиль", //"техника";//"жанр";
 		//"templateID" : "tpl-info_termins_genre-block",
 		"content" : function(){
+			
+			//webApp.db.getVocabularyByName( vocabularyName );
+			//webApp.db.runQuery( queryStr );
+			
 			var html = "<h1>Test!!!</h1>";
 			html += "<h2>Test!!!</h2>";
 			html += "<h3>Test!!!</h3>";
