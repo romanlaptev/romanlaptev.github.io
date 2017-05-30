@@ -54,14 +54,17 @@ webApp.init(function(){
 //4. select dst from url_alias where -- pid=???
 //src="taxonomy/term/" + tid
 
+	//get block data
+	var _vocabularyName = "info";
+	var _termName = "стиль";//"техника";//"жанр";
+
 	var opt = {
 		"name" : "block-style",
-		"title" : "стиль", //"техника";//"жанр";
+		"title" : "жанр",//"стиль", //"техника",
 		//"templateID" : "tpl-info_termins_genre-block",
 		"content" : function( args ){
-			
-			//webApp.db.runQuery( queryStr );
-			//webApp.db.getContent( queryStr );//1?
+
+/*		
 			var queryStr = "\
 select name from term_data where vid=(\
 	select vid from vocabulary where name='info'\
@@ -70,23 +73,36 @@ select name from term_data where vid=(\
 		select tid from term_data where name='жанр'\
 	)\
 )";
-			//webApp.db.getTerm( queryStr );//2?
-			//_wrapContent();
+*/
+			var queryObj = {
+				"action" : "select",
+				"tableName": "vocabulary",
+				"targetFields" : ["vid"],
+				"where" : [
+					{"key" : "name", "value" : _vocabularyName, "compare": "="}
+				]
+			};
 			
-			var html = "<h1>Test!!!</h1>";
-			html += "<h2>Test!!!</h2>";
-			html += "<h3>Test!!!</h3>";
-			html += "<h4>Test!!!</h4>";
-			if( typeof args["callback"] === "function"){
-				args["callback"]( html );
-			}
-		}
+			webApp.db.query({
+				"queryObj" : queryObj,
+				"callback" : function( res ){
+console.log(res, res.length );	
+					//_wrapContent();
+					var html = "<h1>Test!!!</h1>";
+					html += "<h2>Test!!!</h2>";
+					html += "<h3>Test!!!</h3>";
+					html += "<h4>Test!!!</h4>";
+					if( typeof args["callback"] === "function"){
+						args["callback"]( html );
+					}
+				}//end callback()
+			});
+			
+		}//end callback()
 	};
 	buildBlock( opt );
 	
-	//get block data
-	var _vocabularyName = "info";
-	var _termName = "стиль";//"техника";//"жанр";
+//=======================
 	var queryParams = {
 		"queryObj" : {
 			"action" : "select",
@@ -474,6 +490,7 @@ console.log( "_query()", options );
 		};//end _postQuery()
 		
 	};//end _query()
+	
 	
 	function _parseXML(xml){
 
