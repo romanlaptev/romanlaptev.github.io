@@ -54,26 +54,62 @@ webApp.init(function(){
 //4. select dst from url_alias where -- pid=???
 //src="taxonomy/term/" + tid
 
-	//get block data
+//======================= static block
+	var opt = {
+		"name" : "block-1",
+		"title" : "Title", 
+		//"templateID" : "tpl-block",
+		"content" : "<h3>static block</h3>"
+	};
+	buildBlock( opt );
+	
+//======================= dynamic block
 	var _vocabularyName = "info";
-	var _termName = "стиль";//"техника";//"жанр";
+	var _termName = "жанр";//"техника";//"стиль";
+	
+	//get block data
+	webApp.db.getVocabularyByName({
+		"vocName" : _vocabularyName,
+		"callback" : function(res){
+//console.log(res, res.length );	
+			var _vid = res[0]["vid"];
+			webApp.db.getTermByName({
+				"vid" : _vid, 
+				"termName" : _termName,
+				"callback" : function(res){
+//console.log(res, res.length );
+					var _tid = res[0]["tid"];
+//console.log( _vid, _tid );			
 
+					webApp.db.getChildTerms({
+						"vid" : _vid,
+						"tid" : _tid,
+						"callback" : function(res){
+							_drawBlockGenre( res );
+						}//end callback
+					});
+					
+				}//end callback
+			});
+			
+		}//end callback
+	});
+	
+//===========================
 	var opt = {
 		"name" : "block-style",
-		"title" : "жанр",//"стиль", //"техника",
-		//"templateID" : "tpl-info_termins_genre-block",
+		"title" : "стиль", //"техника",//"жанр",
+		"templateID" : "tpl-info_termins_style-block",
 		"content" : function( args ){
+			// var queryStr = "\
+// select name from term_data where vid=(\
+	// select vid from vocabulary where name='info'\
+// ) and tid in (\
+	// select tid from term_hierarchy where parent=(\
+		// select tid from term_data where name='жанр'\
+	// )\
+// )";
 
-/*		
-			var queryStr = "\
-select name from term_data where vid=(\
-	select vid from vocabulary where name='info'\
-) and tid in (\
-	select tid from term_hierarchy where parent=(\
-		select tid from term_data where name='жанр'\
-	)\
-)";
-*/
 			var queryObj = {
 				"action" : "select",
 				"tableName": "vocabulary",
@@ -87,39 +123,16 @@ select name from term_data where vid=(\
 				"queryObj" : queryObj,
 				"callback" : function( res ){
 console.log(res, res.length );	
-					//_wrapContent();
-					var html = "<h1>Test!!!</h1>";
-					html += "<h2>Test!!!</h2>";
-					html += "<h3>Test!!!</h3>";
-					html += "<h4>Test!!!</h4>";
 					if( typeof args["callback"] === "function"){
-						args["callback"]( html );
+						args["callback"]( res );
 					}
+
 				}//end callback()
 			});
 			
 		}//end callback()
 	};
 	buildBlock( opt );
-	
-//=======================
-	var queryParams = {
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "vocabulary",
-			"targetFields" : ["vid"],
-			"where" : [
-				{"key" : "name", "value" : _vocabularyName, "compare": "="}
-			]
-		},
-		"callback" : function( res ){
-//console.log(res, res.length );	
-			var _vid = res[0]["vid"];
-//console.log( _vid );			
-			_getTermByName( _vid, _termName );
-		}
-	};
-	webApp.db.query( queryParams);
 	
 });//end webApp initialize
 
@@ -516,6 +529,152 @@ console.log( "_query()", options );
 		
 	}//end _parseXML()
 
+//async API
+	function _getVocabularyByName( opt ){
+		var options = {
+			"vocName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( options["vocName"].length === 0 ){
+_log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "vocabulary",
+				"targetFields" : ["vid"],
+				"where" : [
+					{"key" : "name", "value" : options["vocName"], "compare": "="}
+				]
+			},
+			"callback" : function( res ){
+				if( typeof options["callback"] === "function"){
+					options["callback"](res);
+				}
+			}//end callback
+		};
+		webApp.db.query( queryParams);
+		
+	}//end _getVocabularyByName()
+	
+	function _getTermByName( opt ){
+		var options = {
+			"vid" : null,
+			"termName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( options["termName"].length === 0 ){
+_log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : ["tid"],
+				"where" : [
+					{"key" : "vid", "value" : options["vid"], "compare": "="},
+					{"logic": "AND", "key" : "name", "value" : options["termName"], "compare": "="}
+				]
+			},
+			"callback" : function( res ){
+//console.log(res, res.length );	
+				if( typeof options["callback"] === "function"){
+					options["callback"](res);
+				}
+			}//end callback
+		};
+		webApp.db.query( queryParams);
+
+	}//end _getTermByName()
+	
+	
+	function _getChildTerms( opt ){
+		var options = {
+			"vid" : null,
+			"tid" : null,
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( !options["tid"] ){
+_log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+options["tid"]+"</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "term_hierarchy",
+				"targetFields" : [
+	"tid",
+	"parent"
+	],
+				"where" : [
+					{"key" : "parent", "value" : options["tid"], "compare": "="}
+				]
+			},
+			"callback" : _postQuery
+		};
+		webApp.db.query( queryParams);
+
+		function _postQuery( result ){
+//console.log( arguments);
+			var _listChildTerms = [];
+			for( var n = 0; n < result.length; n++){
+				_listChildTerms.push( result[n]["tid"] );
+			}//next
+	//console.log(_listChildTerms);
+			
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "term_data",
+					"targetFields" : [
+	"tid",
+	"vid",
+	"name",
+	"description",
+	"weight"
+	],
+					"where" : [
+						{"key" : "vid", "value" : options["vid"], "compare": "="},
+						{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="},
+					]
+				},
+				"callback" : function( res ){
+//console.log("end test query!!!", res);
+					if( typeof options["callback"] === "function"){
+						options["callback"](res);
+					}
+				}//end callback
+				
+			});
+			
+		}//end _postQuery()
+		
+	}//end _getChildTerms()
+	
+	
 	// public interfaces
 	return{
 		vars : _vars,
@@ -525,6 +684,16 @@ console.log( "_query()", options );
 		},
 		query:	function( opt ){ 
 			return _query( opt ); 
+		},
+		//async API
+		getVocabularyByName:	function( opt ){ 
+			return _getVocabularyByName( opt ); 
+		},
+		getTermByName:	function( opt ){ 
+			return _getTermByName( opt ); 
+		},
+		getChildTerms:	function( opt ){ 
+			return _getChildTerms( opt ); 
 		}
 	};
 }//end _db()
@@ -559,6 +728,10 @@ function _draw( opt ){
 		_vars["templates"][id] = template;
 		
 		var id = "tpl-info_termins_genre-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-info_termins_style-block";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
@@ -747,8 +920,15 @@ console.log(options);
 	//dynamic form content
 	if( typeof options["content"] === "function"){
 		options["content"]({
-			"callback" : function( content ){
-				options["content"] = content;
+			"callback" : function( res ){
+				
+				//_wrapContent();
+				var html = "<h1>Test!!!</h1>";
+				html += "<h2>Test!!!</h2>";
+				html += "<h3>Test!!!</h3>";
+				html += "<h4>Test!!!</h4>";
+				
+				options["content"] = html;
 				_draw( options );
 			}
 		});
@@ -762,82 +942,8 @@ console.log(options);
 }//end buildBlock()
 
 
-function _getTermByName( vid, termName ){
-	
-	var queryParams = {
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "term_data",
-			"targetFields" : ["tid"],
-			"where" : [
-				{"key" : "vid", "value" : vid, "compare": "="},
-				{"logic": "AND", "key" : "name", "value" : termName, "compare": "="}
-			]
-		},
-		"callback" : function( res ){
-//console.log(res, res.length );	
-			var _tid = res[0]["tid"];
-//console.log( _tid );			
-			_getChildTerms( vid, _tid );
-		}
-	};
-	webApp.db.query( queryParams);
 
-}//end _getTermByName()
-
-function _getChildTerms( vid, tid ){
-	
-	var queryParams = {
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "term_hierarchy",
-			"targetFields" : [
-"tid",
-"parent"
-],
-			"where" : [
-				{"key" : "parent", "value" : tid, "compare": "="}
-			]
-		},
-		"callback" : _postQuery
-	};
-	webApp.db.query( queryParams);
-
-	function _postQuery( result ){
-		var _listChildTerms = [];
-		for( var n = 0; n < result.length; n++){
-			_listChildTerms.push( result[n]["tid"] );
-		}//next
-//console.log(_listChildTerms);
-		
-		webApp.db.query({
-			"queryObj" : {
-				"action" : "select",
-				"tableName": "term_data",
-				"targetFields" : [
-"tid",
-"vid",
-"name",
-"description",
-"weight"
-],
-				"where" : [
-					{"key" : "vid", "value" : vid, "compare": "="},
-					{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="},
-				]
-			},
-			"callback" : function( result ){
-//console.log("end test query!!!", result);
-				_drawBlock( result );
-			}
-		});
-	}//end _postQuery()
-	
-}//end _getChildTerms()
-
-
-
-function _drawBlock( res ){
+function _drawBlockGenre( res ){
 
 	var opt = {
 		"templateId" : "tpl-info_termins_genre-block"
@@ -867,7 +973,9 @@ function _drawBlock( res ){
 	
 	opt["data"] = data;
 	webApp.draw.insert( opt );
-}//end _drawBlock()
+}//end _drawBlockGenre()
+
+
 
 
 /*
