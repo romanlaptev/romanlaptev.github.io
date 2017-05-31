@@ -59,7 +59,7 @@ webApp.init(function(){
 		"name" : "block-1",
 		"title" : "Title", 
 		//"templateID" : "tpl-block",
-		"content" : "<h3>static block</h3>"
+		"content" : "<h3>static block-1</h3>"
 	};
 	buildBlock( opt );
 	
@@ -96,11 +96,23 @@ webApp.init(function(){
 	});
 	
 //===========================
+	var _vocabularyName = "info";
+	var _termName = "стиль";//"техника";//"жанр";
 	var opt = {
 		"name" : "block-style",
 		"title" : "стиль", //"техника",//"жанр",
 		"templateID" : "tpl-info_termins_style-block",
 		"content" : function( args ){
+			
+			webApp.db.getBlockContent({
+				"vocName" : _vocabularyName,
+				"termName" : _termName,
+				"callback" : function(res){
+					if( typeof args["callback"] === "function"){
+						args["callback"]( res );
+					}
+				}//end callback
+			});
 			// var queryStr = "\
 // select name from term_data where vid=(\
 	// select vid from vocabulary where name='info'\
@@ -109,26 +121,6 @@ webApp.init(function(){
 		// select tid from term_data where name='жанр'\
 	// )\
 // )";
-
-			var queryObj = {
-				"action" : "select",
-				"tableName": "vocabulary",
-				"targetFields" : ["vid"],
-				"where" : [
-					{"key" : "name", "value" : _vocabularyName, "compare": "="}
-				]
-			};
-			
-			webApp.db.query({
-				"queryObj" : queryObj,
-				"callback" : function( res ){
-console.log(res, res.length );	
-					if( typeof args["callback"] === "function"){
-						args["callback"]( res );
-					}
-
-				}//end callback()
-			});
 			
 		}//end callback()
 	};
@@ -674,6 +666,62 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		
 	}//end _getChildTerms()
 	
+	function _getBlockContent( opt ){
+		var options = {
+			"vocName" : "",
+			"termName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log(options);
+
+		if( options["vocName"].length === 0 ){
+_log("<p>db.getBlockContent(),   error, vocName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		
+		if( options["termName"].length === 0 ){
+_log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		//get block data, run queries...
+		_getVocabularyByName({
+			"vocName" : options["vocName"],
+			"callback" : function(res){
+	//console.log(res, res.length );	
+				var _vid = res[0]["vid"];
+				_getTermByName({
+					"vid" : _vid, 
+					"termName" : options["termName"],
+					"callback" : function(res){
+	//console.log(res, res.length );
+						var _tid = res[0]["tid"];
+	//console.log( _vid, _tid );			
+
+						_getChildTerms({
+							"vid" : _vid,
+							"tid" : _tid,
+							"callback" : function(res){
+//console.log(res);								
+								if( typeof options["callback"] === "function"){
+									options["callback"](res);
+								}
+							}//end callback
+						});
+						
+					}//end callback
+				});
+				
+			}//end callback
+		});
+		
+	}//end _getBlockContent()
+
+
 	
 	// public interfaces
 	return{
@@ -694,6 +742,9 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		},
 		getChildTerms:	function( opt ){ 
 			return _getChildTerms( opt ); 
+		},
+		getBlockContent:	function( opt ){ 
+			return _getBlockContent( opt ); 
 		}
 	};
 }//end _db()
@@ -861,7 +912,7 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-console.log("draw.insertBlock(), ", options);
+//console.log("draw.insertBlock(), ", options);
 
 		var templateID = options["templateID"];
 		if( !_vars["templates"][templateID] ){
@@ -921,8 +972,8 @@ console.log(options);
 	if( typeof options["content"] === "function"){
 		options["content"]({
 			"callback" : function( res ){
-				
-				//_wrapContent();
+console.log(res);								
+				//_wrapContent(res, "list");
 				var html = "<h1>Test!!!</h1>";
 				html += "<h2>Test!!!</h2>";
 				html += "<h3>Test!!!</h3>";
