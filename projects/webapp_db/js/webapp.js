@@ -1,3 +1,14 @@
+/*
+- build block with static content
+	var opt = {
+		"name" : "block-1",
+		"title" : "Title", 
+		"templateID" : "tpl-block",//optional
+		"content" : "<h3>static block-1</h3>"
+	};
+	buildBlock( opt );
+========================
+*/
 var webApp = {
 	
 	"vars" : {
@@ -64,45 +75,44 @@ webApp.init(function(){
 	buildBlock( opt );
 	
 //======================= dynamic block
-	var _vocabularyName = "info";
-	var _termName = "жанр";//"техника";//"стиль";
+	// var _vocabularyName = "info";
+	// var _termName = "жанр";//"техника";//"стиль";
 	
 	//get block data
-	webApp.db.getVocabularyByName({
-		"vocName" : _vocabularyName,
-		"callback" : function(res){
-//console.log(res, res.length );	
-			var _vid = res[0]["vid"];
-			webApp.db.getTermByName({
-				"vid" : _vid, 
-				"termName" : _termName,
-				"callback" : function(res){
-//console.log(res, res.length );
-					var _tid = res[0]["tid"];
-//console.log( _vid, _tid );			
+	// webApp.db.getVocabularyByName({
+		// "vocName" : _vocabularyName,
+		// "callback" : function(res){
+// //console.log(res, res.length );	
+			// var _vid = res[0]["vid"];
+			// webApp.db.getTermByName({
+				// "vid" : _vid, 
+				// "termName" : _termName,
+				// "callback" : function(res){
+// //console.log(res, res.length );
+					// var _tid = res[0]["tid"];
+// //console.log( _vid, _tid );			
 
-					webApp.db.getChildTerms({
-						"vid" : _vid,
-						"tid" : _tid,
-						"callback" : function(res){
-							_drawBlockGenre( res );
-						}//end callback
-					});
+					// webApp.db.getChildTerms({
+						// "vid" : _vid,
+						// "tid" : _tid,
+						// "callback" : function(res){
+							// _drawBlockGenre( res );
+						// }//end callback
+					// });
 					
-				}//end callback
-			});
+				// }//end callback
+			// });
 			
-		}//end callback
-	});
+		// }//end callback
+	// });
 	
-//===========================
 	var _vocabularyName = "info";
 	var _termName = "стиль";//"техника";//"жанр";
 	var opt = {
 		"name" : "block-style",
 		"title" : "стиль", //"техника",//"жанр",
-		"templateID" : "tpl-info_termins_style-block",
-		"content" : function( args ){
+		"templateID" : "tpl-info_termins_style-block",//location and style for block
+		"content" : function( args ){//function for getting content data
 			
 			webApp.db.getBlockContent({
 				"vocName" : _vocabularyName,
@@ -121,6 +131,28 @@ webApp.init(function(){
 		// select tid from term_data where name='жанр'\
 	// )\
 // )";
+			
+		}//end callback()
+	};
+	buildBlock( opt );
+	
+	var _vocabularyName = "info";
+	var _termName = "техника";
+	var opt = {
+		"name" : "block-style",
+		"title" : "Tехника",
+		"templateID" : "tpl-info_termins_tech-block",
+		"content" : function( args ){//function for getting content data
+			
+			webApp.db.getBlockContent({
+				"vocName" : _vocabularyName,
+				"termName" : _termName,
+				"callback" : function(res){
+					if( typeof args["callback"] === "function"){
+						args["callback"]( res );
+					}
+				}//end callback
+			});
 			
 		}//end callback()
 	};
@@ -770,19 +802,31 @@ function _draw( opt ){
 
 	function _loadTemplates(){
 		
+		var id = "tpl-menu";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-menu_list";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
 		var id = "tpl-block";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
-		var id = "tpl-info_termins_genre-block_list";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
+		// var id = "tpl-info_termins_genre-block_list";
+		// var template = _getTpl(id);
+		// _vars["templates"][id] = template;
 		
-		var id = "tpl-info_termins_genre-block";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
+		// var id = "tpl-info_termins_genre-block";
+		// var template = _getTpl(id);
+		// _vars["templates"][id] = template;
 		
 		var id = "tpl-info_termins_style-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-info_termins_tech-block";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
@@ -859,45 +903,45 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 			return false;
 		}
 		
-		var html = _vars["templates"][templateId];
-		//var block_title = options["data"]["block_title"];
-		//html = html.replace("{{block_title}}", block_title);
-		for( var key in options["data"]){
+		// var html = _vars["templates"][templateId];
+		// //var block_title = options["data"]["block_title"];
+		// //html = html.replace("{{block_title}}", block_title);
+		// for( var key in options["data"]){
 			
-			if( typeof options["data"][key] === "string"){
-				html = html.replace("{{"+key+"}}", options["data"][key]);
-			}
+			// if( typeof options["data"][key] === "string"){
+				// html = html.replace("{{"+key+"}}", options["data"][key]);
+			// }
 			
-			//form list items
-			if( typeof options["data"][key] === "object" &&
-				options["data"][key].length > 0 ){
+			// //form list items
+			// if( typeof options["data"][key] === "object" &&
+				// options["data"][key].length > 0 ){
 					
-				// html = html
-				// .replace("{{url}}", options["data"][key][0]["url"])
-				// .replace("{{name}}", options["data"][key][0]["name"]);
+				// // html = html
+				// // .replace("{{url}}", options["data"][key][0]["url"])
+				// // .replace("{{name}}", options["data"][key][0]["name"]);
 				
-				var items = options["data"][key];
-				var itemTpl = _vars["templates"][templateId+"_list"];
-				var listHtml = "";
+				// var items = options["data"][key];
+				// var itemTpl = _vars["templates"][templateId+"_list"];
+				// var listHtml = "";
 
-				for( var n = 0; n < items.length; n++){
-					listHtml += itemTpl
-					.replace("{{url}}", items[n]["url"])
-					.replace("{{name}}", items[n]["name"]);
-				}//next
+				// for( var n = 0; n < items.length; n++){
+					// listHtml += itemTpl
+					// .replace("{{url}}", items[n]["url"])
+					// .replace("{{name}}", items[n]["name"]);
+				// }//next
 				
-			}
+			// }
 			
-		}//next
+		// }//next
 		
-		var tpl = getDOMobj(templateId);
-		tpl.innerHTML = html;
-		tpl.className = "";
+		// var tpl = getDOMobj(templateId);
+		// tpl.innerHTML = html;
+		// tpl.className = "";
 		
-		//insert list
-		var list = getDOMobj( templateId+"_list" );
-//console.log(list, listHtml, list.innerHTML);
-		list.innerHTML = listHtml;
+		// //insert list
+		// var list = getDOMobj( templateId+"_list" );
+// //console.log(list, listHtml, list.innerHTML);
+		// list.innerHTML = listHtml;
 		
 	};//end _insert()
 	
@@ -921,7 +965,7 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		}
 		
 		if( !options["content"] ){
-_log("<p>draw.insertBlock(),   error, data: <b class='text-danger'>" + options["content"] + "</b></p>");
+_log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + options["content"] + "</b></p>");
 			return false;
 		}
 		
@@ -953,8 +997,6 @@ _log("<p>draw.insertBlock(),   error, data: <b class='text-danger'>" + options["
 
 
 
-//QUERIES
-
 function buildBlock( opt ){
 	
 	var options = {
@@ -962,7 +1004,7 @@ function buildBlock( opt ){
 		"content" : "test content",
 		"templateID" : "tpl-block"
 	};
-	//extend options object for queryObj
+	//extend options object
 	for(var key in opt ){
 		options[key] = opt[key];
 	}
@@ -972,15 +1014,19 @@ console.log(options);
 	if( typeof options["content"] === "function"){
 		options["content"]({
 			"callback" : function( res ){
-console.log(res);								
-				//_wrapContent(res, "list");
-				var html = "<h1>Test!!!</h1>";
-				html += "<h2>Test!!!</h2>";
-				html += "<h3>Test!!!</h3>";
-				html += "<h4>Test!!!</h4>";
+//console.log(res);								
+				var html = wrapContent({
+					"data" : res,
+					"type" : "menu",//"list"
+					"templateID" : "tpl-menu"
+				});
 				
-				options["content"] = html;
-				_draw( options );
+				//var html = "<h1>Test!!!</h1>";
+				if( html && html.length > 0){
+					options["content"] = html;
+					_draw( options );
+				}
+				
 			}
 		});
 	} else {
@@ -990,6 +1036,79 @@ console.log(res);
 	function _draw( options ){
 		webApp.draw.insertBlock( options );
 	}
+	
+	function wrapContent( opt ){
+		var p = {
+			"data": null,
+			"type" : "",
+			"templateID" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] ){
+_log("<p>wrapContent(),   error, data: <b class='text-danger'>" + p["data"] + "</b></p>");
+			return false;
+		}
+		if( !p["templateID"] ){
+_log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		
+		var html = "";
+//for test		
+// p["data"] = {
+	// "name": "Name",
+	// "url" : "http://test"
+// };
+		
+		switch( p["type"] ){
+			case "menu" :
+				html = webApp.draw.vars["templates"][ p.templateID ];
+				var listHtml = "";
+				for( var key in p["data"]){
+//console.log(p["data"][key], typeof p["data"][key], p["data"][key].length);
+					
+					//if( typeof p["data"][key] === "string"){
+						//html = html.replace("{{"+key+"}}", p["data"][key]);
+					//}
+					
+					//form list items
+					if( typeof p["data"][key] === "object"){
+							
+						// html = html
+						// .replace("{{url}}", p["data"][key]["url"])
+						// .replace("{{name}}", p["data"][key]["name"]);
+						
+						var items = p["data"][key];
+						var itemTpl = webApp.draw.vars["templates"][ p.templateID+"_list"];
+
+						for( var key2 in items){
+//console.log(key2, items[key2]);
+							if( itemTpl.indexOf("{{"+key2+"}}") !== -1 ){
+								listHtml += itemTpl.replace("{{"+key2+"}}", items[key2]);
+							}
+						}//next
+						
+//console.log(listHtml);
+					}
+					
+				}//next
+				html = html.replace("{{list}}", listHtml);
+			break;
+			
+			case "link" :
+			break;
+		}//end switch
+
+		
+//console.log(html);
+		return html;
+	}//end wrapContent
+	
 }//end buildBlock()
 
 
