@@ -21,7 +21,7 @@
 	<div class="row">
 	
 		<div class="col-sm-3 col-md-3" id="sidebar-left">sidebar-left
-		
+<!--		
 <span id="tpl-info_termins_genre-block" class="hide template">
 				<div class="block">
 						<h3>{{block_title}}</h3>
@@ -34,24 +34,28 @@
 						
 				</div>			
 </span>			
+-->
 			
 <span id="tpl-info_termins_style-block" class="hide template">
-				<div class="block">
-						<h3>{{block_title}}</h3>
-						
-						<div class="content">{{content}}</div>
-						<ul class="list-unstyled">
-	<span id="tpl-info_termins_genre-block_list">
-								<li><a href="{{url}}">{{name}}</a></li>
-	</span>
-						</ul>
-						
-				</div>			
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+	</div>			
 </span>			
 			
 		</div><!-- end sidebar left -->
 		
-		<div class="col-sm-6 col-md-6" id="main">main</div>
+		<div class="col-sm-6 col-md-6" id="main">main
+		
+<span id="tpl-info_termins_tech-block" class="hide template">
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+			<button class="btn btn-primary">test btn</button>
+	</div>			
+</span>			
+		
+		</div><!-- end main central area -->
 		
 		<div class="col-sm-3 col-md-3" id="sidebar-right">sidebar-right
 		
@@ -71,6 +75,14 @@
 	</footer>
 	
 </div><!-- end container -->
+
+<script id="tpl-menu" type="text/template">
+	<ul class="list-unstyled">{{list}}</ul>
+</script>
+<script id="tpl-menu_list" type="text/template">
+	<li>))<a href="{{url}}">{{name}}</a>((</li>
+</script>			
+
 </body>
 <script src="js/webapp.js"></script>
 </html>
