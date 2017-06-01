@@ -686,7 +686,20 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 					]
 				},
 				"callback" : function( res ){
-//console.log("end test query!!!", res);
+
+					//add url aliases
+					for( var n = 0; n < res.length; n++){
+						res[n]["url"] = "taxonomy/term/" + res[n]["tid"];
+					}//next
+console.log("end test query!!!", res);
+					// _getUrl({
+						// "callback" : function(res){
+							// if( typeof options["callback"] === "function"){
+								// options["callback"](res);
+							// }
+						// }//end callback
+					// });
+
 					if( typeof options["callback"] === "function"){
 						options["callback"](res);
 					}
@@ -738,7 +751,7 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 							"vid" : _vid,
 							"tid" : _tid,
 							"callback" : function(res){
-//console.log(res);								
+//console.log(res);
 								if( typeof options["callback"] === "function"){
 									options["callback"](res);
 								}
@@ -978,66 +991,9 @@ _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + option
 		tpl.className = "";//show block
 		
 	};//end _insertBlock()
-	
-	// public interfaces
-	return{
-		vars : _vars,
-		init:	function(){ 
-			return _init(); 
-		},
-		insert:	function( opt ){ 
-			return _insert( opt ); 
-		},
-		insertBlock:	function( opt ){ 
-			return _insertBlock( opt ); 
-		}
-	};
-}//end _draw()
 
 
-
-
-function buildBlock( opt ){
-	
-	var options = {
-		"title": "block title",
-		"content" : "test content",
-		"templateID" : "tpl-block"
-	};
-	//extend options object
-	for(var key in opt ){
-		options[key] = opt[key];
-	}
-console.log(options);
-
-	//dynamic form content
-	if( typeof options["content"] === "function"){
-		options["content"]({
-			"callback" : function( res ){
-//console.log(res);								
-				var html = wrapContent({
-					"data" : res,
-					"type" : "menu",//"list"
-					"templateID" : "tpl-menu"
-				});
-				
-				//var html = "<h1>Test!!!</h1>";
-				if( html && html.length > 0){
-					options["content"] = html;
-					_draw( options );
-				}
-				
-			}
-		});
-	} else {
-		_draw( options );
-	}
-	
-	function _draw( options ){
-		webApp.draw.insertBlock( options );
-	}
-	
-	function wrapContent( opt ){
+	function _wrapContent( opt ){
 		var p = {
 			"data": null,
 			"type" : "",
@@ -1067,7 +1023,7 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 		
 		switch( p["type"] ){
 			case "menu" :
-				html = webApp.draw.vars["templates"][ p.templateID ];
+				html = _vars["templates"][ p.templateID ];
 				var listHtml = "";
 				for( var key in p["data"]){
 //console.log(p["data"][key], typeof p["data"][key], p["data"][key].length);
@@ -1084,15 +1040,15 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 						// .replace("{{name}}", p["data"][key]["name"]);
 						
 						var items = p["data"][key];
-						var itemTpl = webApp.draw.vars["templates"][ p.templateID+"_list"];
+						var itemHtml = _vars["templates"][ p.templateID+"_list"];
 
 						for( var key2 in items){
+							if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
 //console.log(key2, items[key2]);
-							if( itemTpl.indexOf("{{"+key2+"}}") !== -1 ){
-								listHtml += itemTpl.replace("{{"+key2+"}}", items[key2]);
+								itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
 							}
 						}//next
-						
+						listHtml += itemHtml;
 //console.log(listHtml);
 					}
 					
@@ -1107,43 +1063,101 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 		
 //console.log(html);
 		return html;
-	}//end wrapContent
+	}//end _wrapContent
+
+	
+	// public interfaces
+	return{
+		vars : _vars,
+		init:	function(){ 
+			return _init(); 
+		},
+		insert:	function( opt ){ 
+			return _insert( opt ); 
+		},
+		insertBlock:	function( opt ){ 
+			return _insertBlock( opt ); 
+		},
+		wrapContent:	function( opt ){ 
+			return _wrapContent( opt ); 
+		}
+	};
+}//end _draw()
+
+
+
+
+function buildBlock( opt ){
+	
+	var options = {
+		"title": "block title",
+		"content" : "test content",
+		"templateID" : "tpl-block"
+	};
+	//extend options object
+	for(var key in opt ){
+		options[key] = opt[key];
+	}
+console.log(options);
+
+	//dynamic form content
+	if( typeof options["content"] === "function"){
+		options["content"]({
+			"callback" : function( res ){
+//console.log(res);								
+				var html = webApp.draw.wrapContent({
+					"data" : res,
+					"type" : "menu",//"list"
+					"templateID" : "tpl-menu"
+				});
+				
+				//var html = "<h1>Test!!!</h1>";
+				if( html && html.length > 0){
+					options["content"] = html;
+					webApp.draw.insertBlock( options );
+				}
+				
+			}
+		});
+	} else {
+		webApp.draw.insertBlock( options );
+	}
 	
 }//end buildBlock()
 
 
 
-function _drawBlockGenre( res ){
+// function _drawBlockGenre( res ){
 
-	var opt = {
-		"templateId" : "tpl-info_termins_genre-block"
-	};
+	// var opt = {
+		// "templateId" : "tpl-info_termins_genre-block"
+	// };
 
-	var  data = {
-		"block_title" : "Genre",
-		"items" : [
-			// {
-				// "name" : "миниатюра",
-				// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-			// },
-			// {
-				// "name" : "иллюстрация",
-				// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
-			// }
-		]
-	};
+	// var  data = {
+		// "block_title" : "Genre",
+		// "items" : [
+			// // {
+				// // "name" : "миниатюра",
+				// // "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+			// // },
+			// // {
+				// // "name" : "иллюстрация",
+				// // "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
+			// // }
+		// ]
+	// };
 	
-	for( var n = 0; n < res.length; n++){
-		var item = {
-			"name" : res[n]["name"],
-			"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-		};
-		data["items"].push(item);
-	}//next
+	// for( var n = 0; n < res.length; n++){
+		// var item = {
+			// "name" : res[n]["name"],
+			// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+		// };
+		// data["items"].push(item);
+	// }//next
 	
-	opt["data"] = data;
-	webApp.draw.insert( opt );
-}//end _drawBlockGenre()
+	// opt["data"] = data;
+	// webApp.draw.insert( opt );
+// }//end _drawBlockGenre()
 
 
 
