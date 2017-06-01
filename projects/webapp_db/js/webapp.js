@@ -682,7 +682,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 	],
 					"where" : [
 						{"key" : "vid", "value" : options["vid"], "compare": "="},
-						{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="},
+						{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="}
 					]
 				},
 				"callback" : function( res ){
@@ -692,17 +692,16 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 						res[n]["url"] = "taxonomy/term/" + res[n]["tid"];
 					}//next
 console.log("end test query!!!", res);
-					// _getUrl({
-						// "callback" : function(res){
-							// if( typeof options["callback"] === "function"){
-								// options["callback"](res);
-							// }
-						// }//end callback
-					// });
 
-					if( typeof options["callback"] === "function"){
-						options["callback"](res);
-					}
+					_replaceUrl({
+						"data" : res,
+						"callback" : function(res){
+							if( typeof options["callback"] === "function"){
+								options["callback"](res);
+							}
+						}//end callback
+					});
+
 				}//end callback
 				
 			});
@@ -710,6 +709,7 @@ console.log("end test query!!!", res);
 		}//end _postQuery()
 		
 	}//end _getChildTerms()
+
 	
 	function _getBlockContent( opt ){
 		var options = {
@@ -766,6 +766,62 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		
 	}//end _getBlockContent()
 
+	
+	function _replaceUrl( opt ){
+		var p = {
+			"data" : null,
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] ){
+_log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		var numRec = 0;
+		__getUrlAlias(numRec);
+		
+		function __getUrlAlias(numRec){
+//console.log( numRec, p["data"].length, numRec >= p["data"].length );
+			
+			if( numRec >= p["data"].length ){
+//console.log(p);
+				if( typeof p["callback"] === "function"){
+					p["callback"]( p["data"] );
+				}
+				return false;
+			}
+			
+			var record = p["data"][numRec];
+			var srcUrl = record["url"];
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "url_alias",
+					"targetFields" : ["dst"],
+					"where" : [
+						{"key" : "src", "value" : srcUrl, "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+//console.log( res );
+					if( res.length === 0 && 
+							typeof res[0] !== "undefined"){
+						p["data"][numRec]["url"] = res[0]["dst"];
+					}
+					numRec++;
+					__getUrlAlias(numRec);						
+				}//end callback
+				
+			});
+		
+		}//end __getUrlAlias
+		
+	}//end _replaceUrl()
 
 	
 	// public interfaces
@@ -790,6 +846,9 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		},
 		getBlockContent:	function( opt ){ 
 			return _getBlockContent( opt ); 
+		},
+		replaceUrl:	function( opt ){ 
+			return _replaceUrl( opt ); 
 		}
 	};
 }//end _db()
