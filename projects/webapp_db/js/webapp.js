@@ -1,3 +1,14 @@
+/*
+- build block with static content
+	var opt = {
+		"name" : "block-1",
+		"title" : "Title", 
+		"templateID" : "tpl-block",//optional
+		"content" : "<h3>static block-1</h3>"
+	};
+	buildBlock( opt );
+========================
+*/
 var webApp = {
 	
 	"vars" : {
@@ -40,93 +51,15 @@ console.log( navigator.userAgent );
 	},//end init()
 	
 	"db" : _db(),
-	"draw" : _draw()
+	"draw" : _draw(),
+	"app" : _app()
 	
 };//end webApp()
 
 
 //start
 webApp.init(function(){
-
-	//test query select tid, title from taxonomy_title
-	//Genre
-	var _list = ["100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"];
-	webApp.db.query({
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "term_data",
-			"targetFields" : [
-"tid",
-"vid",
-"name",
-"description",
-"weight"
-],
-			"where" : [
-				{"key" : "vid", "value" : "5", "compare": "="},
-				{"logic": "AND", "key" : "tid", "value" : _list, "compare": "="},
-			]
-		},
-		"callback" : function( result ){
-console.log("end test query!!!", result);
-			_drawBlockGenre( result );
-		}
-	});
-
-/*	
-	var queryParams = {
-		"queryObj" : {
-			"action" : "select",
-			"tableName": "term_hierarchy",
-			"targetFields" : [
-"tid",
-"parent"
-],
-			"where" : [
-				{"key" : "parent", "value" : "95", "compare": "="}
-			]
-		},
-		"callback" : _postQuery
-	};
-	webApp.db.query( queryParams);
-function _postQuery( result ){
-console.log(result);			
-}
-*/
-
-	function _drawBlockGenre( res ){
-
-		var opt = {
-			"templateId" : "tpl-info_termins_genre-block"
-		};
-	
-		var  data = {
-			"block_title" : "Genre",
-			"items" : [
-				// {
-					// "name" : "миниатюра",
-					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-				// },
-				// {
-					// "name" : "иллюстрация",
-					// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
-				// }
-			]
-		};
-		
-		for( var n = 0; n < res.length; n++){
-			var item = {
-				"name" : res[n]["name"],
-				"url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
-			};
-			data["items"].push(item);
-		}//next
-		
-		opt["data"] = data;
-		webApp.draw.insert( opt );
-	}//end _drawBlockGenre()
-	
-	
+	webApp.app.buildPage();
 });//end webApp initialize
 
 console.log(webApp);
@@ -197,14 +130,18 @@ function _db( opt ){
 "weight"
 				],
 				"records" : []
-			}
+			},
 			
-		}
-		
+			"url_alias" :{
+				"fields" : ["pid",  "src", "dst", "language"],
+				"records" : []
+			},  
+			
+		}//end tables
 	};
 
 	var _init = function( opt ){
-console.log("init _db!");
+//console.log("init _db!");
 		for(var key in opt ){
 			_vars[key] = opt[key];
 		}
@@ -234,6 +171,7 @@ console.log("error in _db(), not find 'format' !");
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
 //console.log(arguments);
+		var startTime = new Date();
 		var options = {
 			//"dbName": null,
 			//"storeName" : "",
@@ -450,7 +388,9 @@ console.log( "_query()", options );
 		function _postQuery( data ){ 
 //console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
 //console.log(data);
-
+			var endTime = new Date();
+			var runtime = (endTime - startTime) / 1000;
+console.log("_postQuery(), runtime, sec: " + runtime);
 			// //fail query
 			// if(!data){
 				// if( typeof options["callback"] === "function"){
@@ -480,7 +420,7 @@ console.log( "_query()", options );
 			// }
 				
 			if( typeof options["callback"] === "function"){
-console.log("Run query, end process");
+//console.log("Run query, end process");
 //console.log(options["callback"]);
 				options["callback"]( data );
 				return false;//wait!!!
@@ -491,6 +431,7 @@ console.log("Run query, end process");
 		};//end _postQuery()
 		
 	};//end _query()
+	
 	
 	function _parseXML(xml){
 
@@ -516,6 +457,277 @@ console.log("Run query, end process");
 		
 	}//end _parseXML()
 
+//async API
+	function _getVocabularyByName( opt ){
+		var options = {
+			"vocName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( options["vocName"].length === 0 ){
+_log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "vocabulary",
+				"targetFields" : ["vid"],
+				"where" : [
+					{"key" : "name", "value" : options["vocName"], "compare": "="}
+				]
+			},
+			"callback" : function( res ){
+				if( typeof options["callback"] === "function"){
+					options["callback"](res);
+				}
+			}//end callback
+		};
+		webApp.db.query( queryParams);
+		
+	}//end _getVocabularyByName()
+	
+	function _getTermByName( opt ){
+		var options = {
+			"vid" : null,
+			"termName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( options["termName"].length === 0 ){
+_log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : ["tid"],
+				"where" : [
+					{"key" : "vid", "value" : options["vid"], "compare": "="},
+					{"logic": "AND", "key" : "name", "value" : options["termName"], "compare": "="}
+				]
+			},
+			"callback" : function( res ){
+//console.log(res, res.length );	
+				if( typeof options["callback"] === "function"){
+					options["callback"](res);
+				}
+			}//end callback
+		};
+		webApp.db.query( queryParams);
+
+	}//end _getTermByName()
+	
+	
+	function _getChildTerms( opt ){
+		var options = {
+			"vid" : null,
+			"tid" : null,
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log(options);
+
+		if( !options["tid"] ){
+_log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+options["tid"]+"</b></p>");
+			return false;
+		}
+
+		var queryParams = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "term_hierarchy",
+				"targetFields" : [
+	"tid",
+	"parent"
+	],
+				"where" : [
+					{"key" : "parent", "value" : options["tid"], "compare": "="}
+				]
+			},
+			"callback" : _postQuery
+		};
+		webApp.db.query( queryParams);
+
+		function _postQuery( result ){
+//console.log( arguments);
+			var _listChildTerms = [];
+			for( var n = 0; n < result.length; n++){
+				_listChildTerms.push( result[n]["tid"] );
+			}//next
+	//console.log(_listChildTerms);
+			
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "term_data",
+					"targetFields" : [
+	"tid",
+	"vid",
+	"name",
+	"description",
+	"weight"
+	],
+					"where" : [
+						{"key" : "vid", "value" : options["vid"], "compare": "="},
+						{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+
+					//add url aliases
+					for( var n = 0; n < res.length; n++){
+						res[n]["url"] = "taxonomy/term/" + res[n]["tid"];
+					}//next
+console.log("end test query!!!", res);
+
+					_replaceUrl({
+						"data" : res,
+						"callback" : function(res){
+							if( typeof options["callback"] === "function"){
+								options["callback"](res);
+							}
+						}//end callback
+					});
+
+				}//end callback
+				
+			});
+			
+		}//end _postQuery()
+		
+	}//end _getChildTerms()
+
+	
+	function _getBlockContent( opt ){
+		var options = {
+			"vocName" : "",
+			"termName" : "",
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log(options);
+
+		if( options["vocName"].length === 0 ){
+_log("<p>db.getBlockContent(),   error, vocName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		
+		if( options["termName"].length === 0 ){
+_log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+
+		//get block data, run queries...
+		_getVocabularyByName({
+			"vocName" : options["vocName"],
+			"callback" : function(res){
+	//console.log(res, res.length );	
+				var _vid = res[0]["vid"];
+				_getTermByName({
+					"vid" : _vid, 
+					"termName" : options["termName"],
+					"callback" : function(res){
+	//console.log(res, res.length );
+						var _tid = res[0]["tid"];
+	//console.log( _vid, _tid );			
+
+						_getChildTerms({
+							"vid" : _vid,
+							"tid" : _tid,
+							"callback" : function(res){
+//console.log(res);
+								if( typeof options["callback"] === "function"){
+									options["callback"](res);
+								}
+							}//end callback
+						});
+						
+					}//end callback
+				});
+				
+			}//end callback
+		});
+		
+	}//end _getBlockContent()
+
+	
+	function _replaceUrl( opt ){
+		var p = {
+			"data" : null,
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] ){
+_log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		var numRec = 0;
+		__getUrlAlias(numRec);
+		
+		function __getUrlAlias(numRec){
+//console.log( numRec, p["data"].length, numRec >= p["data"].length );
+			
+			if( numRec >= p["data"].length ){
+//console.log(p);
+				if( typeof p["callback"] === "function"){
+					p["callback"]( p["data"] );
+				}
+				return false;
+			}
+			
+			var record = p["data"][numRec];
+			var srcUrl = record["url"];
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "url_alias",
+					"targetFields" : ["dst"],
+					"where" : [
+						{"key" : "src", "value" : srcUrl, "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+//console.log( res );
+					if( res.length > 0 && 
+							typeof res[0] !== "undefined"){
+						p["data"][numRec]["url"] = res[0]["dst"];
+					}
+					numRec++;
+					__getUrlAlias(numRec);						
+				}//end callback
+				
+			});
+		
+		}//end __getUrlAlias
+		
+	}//end _replaceUrl()
+
+	
 	// public interfaces
 	return{
 		vars : _vars,
@@ -525,11 +737,25 @@ console.log("Run query, end process");
 		},
 		query:	function( opt ){ 
 			return _query( opt ); 
+		},
+		//async API
+		getVocabularyByName:	function( opt ){ 
+			return _getVocabularyByName( opt ); 
+		},
+		getTermByName:	function( opt ){ 
+			return _getTermByName( opt ); 
+		},
+		getChildTerms:	function( opt ){ 
+			return _getChildTerms( opt ); 
+		},
+		getBlockContent:	function( opt ){ 
+			return _getBlockContent( opt ); 
+		},
+		replaceUrl:	function( opt ){ 
+			return _replaceUrl( opt ); 
 		}
 	};
 }//end _db()
-
-
 
 
 
@@ -544,17 +770,29 @@ function _draw( opt ){
 	};
 
 	var _init = function(){
-console.log("init _draw");
+//console.log("init _draw");
 		_loadTemplates();
 	};
 
 	function _loadTemplates(){
 		
-		var id = "tpl-info_termins_genre-block_list";
+		var id = "tpl-menu";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
-		var id = "tpl-info_termins_genre-block";
+		var id = "tpl-menu_list";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-block-1";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-info_termins_style-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
+		var id = "tpl-info_termins_tech-block";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
@@ -631,47 +869,155 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 			return false;
 		}
 		
-		var html = _vars["templates"][templateId];
-		//var block_title = options["data"]["block_title"];
-		//html = html.replace("{{block_title}}", block_title);
-		for( var key in options["data"]){
+		// var html = _vars["templates"][templateId];
+		// //var block_title = options["data"]["block_title"];
+		// //html = html.replace("{{block_title}}", block_title);
+		// for( var key in options["data"]){
 			
-			if( typeof options["data"][key] === "string"){
-				html = html.replace("{{"+key+"}}", options["data"][key]);
-			}
+			// if( typeof options["data"][key] === "string"){
+				// html = html.replace("{{"+key+"}}", options["data"][key]);
+			// }
 			
-			//form list items
-			if( typeof options["data"][key] === "object" &&
-				options["data"][key].length > 0 ){
+			// //form list items
+			// if( typeof options["data"][key] === "object" &&
+				// options["data"][key].length > 0 ){
 					
-				// html = html
-				// .replace("{{url}}", options["data"][key][0]["url"])
-				// .replace("{{name}}", options["data"][key][0]["name"]);
+				// // html = html
+				// // .replace("{{url}}", options["data"][key][0]["url"])
+				// // .replace("{{name}}", options["data"][key][0]["name"]);
 				
-				var items = options["data"][key];
-				var itemTpl = _vars["templates"][templateId+"_list"];
-				var listHtml = "";
+				// var items = options["data"][key];
+				// var itemTpl = _vars["templates"][templateId+"_list"];
+				// var listHtml = "";
 
-				for( var n = 0; n < items.length; n++){
-					listHtml += itemTpl
-					.replace("{{url}}", items[n]["url"])
-					.replace("{{name}}", items[n]["name"]);
-				}//next
+				// for( var n = 0; n < items.length; n++){
+					// listHtml += itemTpl
+					// .replace("{{url}}", items[n]["url"])
+					// .replace("{{name}}", items[n]["name"]);
+				// }//next
 				
-			}
+			// }
 			
-		}//next
+		// }//next
 		
-		var tpl = getDOMobj(templateId);
+		// var tpl = getDOMobj(templateId);
+		// tpl.innerHTML = html;
+		// tpl.className = "";
+		
+		// //insert list
+		// var list = getDOMobj( templateId+"_list" );
+// //console.log(list, listHtml, list.innerHTML);
+		// list.innerHTML = listHtml;
+		
+	};//end _insert()
+	
+	var _insertBlock = function( opt ){
+		
+		var options = {
+			"templateID": false,
+			"title" : "block",
+			"content" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+//console.log("draw.insertBlock(), ", options);
+
+		var templateID = options["templateID"];
+		if( !_vars["templates"][templateID] ){
+_log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-danger'>" + templateID + "</b></p>");
+			return false;
+		}
+		
+		if( !options["content"] ){
+_log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + options["content"] + "</b></p>");
+			return false;
+		}
+		
+		var html = _vars["templates"][templateID];
+		html = html.replace("{{block_title}}", options["title"]);
+		html = html.replace("{{content}}", options["content"]);
+		
+		var tpl = getDOMobj(templateID);
 		tpl.innerHTML = html;
-		tpl.className = "";
+		tpl.className = "";//show block
 		
-		//insert list
-		var list = getDOMobj( templateId+"_list" );
-//console.log(list, listHtml, list.innerHTML);
-		list.innerHTML = listHtml;
+	};//end _insertBlock()
+
+
+	function _wrapContent( opt ){
+		var p = {
+			"data": null,
+			"type" : "",
+			"templateID" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] ){
+_log("<p>wrapContent(),   error, data: <b class='text-danger'>" + p["data"] + "</b></p>");
+			return false;
+		}
+		if( !p["templateID"] ){
+_log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
 		
-	};
+		var html = "";
+//for test		
+// p["data"] = {
+	// "name": "Name",
+	// "url" : "http://test"
+// };
+		
+		switch( p["type"] ){
+			case "menu" :
+				html = _vars["templates"][ p.templateID ];
+				var listHtml = "";
+				for( var key in p["data"]){
+//console.log(p["data"][key], typeof p["data"][key], p["data"][key].length);
+					
+					//if( typeof p["data"][key] === "string"){
+						//html = html.replace("{{"+key+"}}", p["data"][key]);
+					//}
+					
+					//form list items
+					if( typeof p["data"][key] === "object"){
+							
+						// html = html
+						// .replace("{{url}}", p["data"][key]["url"])
+						// .replace("{{name}}", p["data"][key]["name"]);
+						
+						var items = p["data"][key];
+						var itemHtml = _vars["templates"][ p.templateID+"_list"];
+
+						for( var key2 in items){
+							if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//console.log(key2, items[key2]);
+								itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
+							}
+						}//next
+						listHtml += itemHtml;
+//console.log(listHtml);
+					}
+					
+				}//next
+				html = html.replace("{{list}}", listHtml);
+			break;
+			
+			case "link" :
+			break;
+		}//end switch
+
+		
+//console.log(html);
+		return html;
+	}//end _wrapContent
+
 	
 	// public interfaces
 	return{
@@ -681,9 +1027,226 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		},
 		insert:	function( opt ){ 
 			return _insert( opt ); 
+		},
+		insertBlock:	function( opt ){ 
+			return _insertBlock( opt ); 
+		},
+		wrapContent:	function( opt ){ 
+			return _wrapContent( opt ); 
 		}
 	};
 }//end _draw()
+
+
+
+function _app( opt ){
+console.log(arguments);	
+
+	// private variables and functions
+	//var _vars = {};
+	
+	var _buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
+
+		var options = {
+			"title": "block title",
+			"content" : "test content"//,
+			//"templateID" : "tpl-block"
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+	console.log(options);
+
+		//dynamic form content
+		if( typeof options["content"] === "function"){
+			options["content"]({
+				"callback" : function( res ){
+	//console.log(res);								
+					var html = webApp.draw.wrapContent({
+						"data" : res,
+						"type" : "menu",//"list"
+						"templateID" : "tpl-menu"
+					});
+					
+					//var html = "<h1>Test!!!</h1>";
+					if( html && html.length > 0){
+						options["content"] = html;
+						webApp.draw.insertBlock( options );
+					}
+					
+				}
+			});
+		} else {
+			webApp.draw.insertBlock( options );
+		}
+
+	};//end _buildBlock()
+
+	
+	var _buildPage = function(opt){
+//console.log("_buildPage()", arguments);
+
+		// var options = {
+			// "title": "block title",
+			// "content" : "test content",
+			// "templateID" : "tpl-block"
+		// };
+		// //extend options object
+		// for(var key in opt ){
+			// options[key] = opt[key];
+		// }
+	// console.log(options);
+	//1. select vid from vocabulary where name="info" -- 5
+	//1. select tid from term_data where name="жанр" -- 95
+	//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
+	//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
+	//4. select dst from url_alias where src IN ("taxonomy/term/100", "taxonomy/term/101".....)
+
+	//======================= static block
+		var opt = {
+			"name" : "block-1",
+			"title" : "Title", 
+			"templateID" : "tpl-block-1",
+			"content" : "<h3>static block-1</h3>"
+		};
+		_buildBlock( opt );
+		
+	//======================= dynamic block
+		// var _vocabularyName = "info";
+		// var _termName = "жанр";//"техника";//"стиль";
+		
+		//get block data
+		// webApp.db.getVocabularyByName({
+			// "vocName" : _vocabularyName,
+			// "callback" : function(res){
+	// //console.log(res, res.length );	
+				// var _vid = res[0]["vid"];
+				// webApp.db.getTermByName({
+					// "vid" : _vid, 
+					// "termName" : _termName,
+					// "callback" : function(res){
+	// //console.log(res, res.length );
+						// var _tid = res[0]["tid"];
+	// //console.log( _vid, _tid );			
+
+						// webApp.db.getChildTerms({
+							// "vid" : _vid,
+							// "tid" : _tid,
+							// "callback" : function(res){
+								// _drawBlockGenre( res );
+							// }//end callback
+						// });
+						
+					// }//end callback
+				// });
+				
+			// }//end callback
+		// });
+		
+		var _vocabularyName = "info";
+		var _termName = "стиль";//"техника";//"жанр";
+		var opt = {
+			"name" : "block-style",
+			"title" : "стиль", //"техника",//"жанр",
+			"templateID" : "tpl-info_termins_style-block",//location and style for block
+			"content" : function( args ){//function for getting content data
+				
+				webApp.db.getBlockContent({
+					"vocName" : _vocabularyName,
+					"termName" : _termName,
+					"callback" : function(res){
+						if( typeof args["callback"] === "function"){
+							args["callback"]( res );
+						}
+					}//end callback
+				});
+				// var queryStr = "\
+	// select name from term_data where vid=(\
+		// select vid from vocabulary where name='info'\
+	// ) and tid in (\
+		// select tid from term_hierarchy where parent=(\
+			// select tid from term_data where name='жанр'\
+		// )\
+	// )";
+				
+			}//end callback()
+		};
+		_buildBlock( opt );
+		
+		var _vocabularyName = "info";
+		var _termName = "техника";
+		var opt = {
+			"name" : "block-style",
+			"title" : "Tехника",
+			"templateID" : "tpl-info_termins_tech-block",
+			"content" : function( args ){//function for getting content data
+				
+				webApp.db.getBlockContent({
+					"vocName" : _vocabularyName,
+					"termName" : _termName,
+					"callback" : function(res){
+						if( typeof args["callback"] === "function"){
+							args["callback"]( res );
+						}
+					}//end callback
+				});
+				
+			}//end callback()
+		};
+		_buildBlock( opt );
+
+	};//end _buildPage()
+
+	
+	// public interfaces
+	return{
+		//vars : _vars,
+		buildBlock:	function(opt){ 
+			return _buildBlock(opt); 
+		},
+		buildPage:	function(opt){ 
+			return _buildPage(opt); 
+		}
+	};
+}//end _app()
+
+
+
+// function _drawBlockGenre( res ){
+
+	// var opt = {
+		// "templateId" : "tpl-info_termins_genre-block"
+	// };
+
+	// var  data = {
+		// "block_title" : "Genre",
+		// "items" : [
+			// // {
+				// // "name" : "миниатюра",
+				// // "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+			// // },
+			// // {
+				// // "name" : "иллюстрация",
+				// // "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/illustration"
+			// // }
+		// ]
+	// };
+	
+	// for( var n = 0; n < res.length; n++){
+		// var item = {
+			// "name" : res[n]["name"],
+			// "url" : "/sites/graphic-art-collection/cms/?q=category/info/zhanr/miniature"
+		// };
+		// data["items"].push(item);
+	// }//next
+	
+	// opt["data"] = data;
+	// webApp.draw.insert( opt );
+// }//end _drawBlockGenre()
+
+
 
 
 /*
