@@ -51,117 +51,18 @@ console.log( navigator.userAgent );
 	},//end init()
 	
 	"db" : _db(),
-	"draw" : _draw()
+	"draw" : _draw(),
+	"app" : _app()
 	
 };//end webApp()
 
 
 //start
 webApp.init(function(){
-//1. select vid from vocabulary where name="info" -- 5
-//1. select tid from term_data where name="жанр" -- 95
-//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
-//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
-//4. select dst from url_alias where -- pid=???
-//src="taxonomy/term/" + tid
-
-//======================= static block
-	var opt = {
-		"name" : "block-1",
-		"title" : "Title", 
-		//"templateID" : "tpl-block",
-		"content" : "<h3>static block-1</h3>"
-	};
-	buildBlock( opt );
-	
-//======================= dynamic block
-	// var _vocabularyName = "info";
-	// var _termName = "жанр";//"техника";//"стиль";
-	
-	//get block data
-	// webApp.db.getVocabularyByName({
-		// "vocName" : _vocabularyName,
-		// "callback" : function(res){
-// //console.log(res, res.length );	
-			// var _vid = res[0]["vid"];
-			// webApp.db.getTermByName({
-				// "vid" : _vid, 
-				// "termName" : _termName,
-				// "callback" : function(res){
-// //console.log(res, res.length );
-					// var _tid = res[0]["tid"];
-// //console.log( _vid, _tid );			
-
-					// webApp.db.getChildTerms({
-						// "vid" : _vid,
-						// "tid" : _tid,
-						// "callback" : function(res){
-							// _drawBlockGenre( res );
-						// }//end callback
-					// });
-					
-				// }//end callback
-			// });
-			
-		// }//end callback
-	// });
-	
-	var _vocabularyName = "info";
-	var _termName = "стиль";//"техника";//"жанр";
-	var opt = {
-		"name" : "block-style",
-		"title" : "стиль", //"техника",//"жанр",
-		"templateID" : "tpl-info_termins_style-block",//location and style for block
-		"content" : function( args ){//function for getting content data
-			
-			webApp.db.getBlockContent({
-				"vocName" : _vocabularyName,
-				"termName" : _termName,
-				"callback" : function(res){
-					if( typeof args["callback"] === "function"){
-						args["callback"]( res );
-					}
-				}//end callback
-			});
-			// var queryStr = "\
-// select name from term_data where vid=(\
-	// select vid from vocabulary where name='info'\
-// ) and tid in (\
-	// select tid from term_hierarchy where parent=(\
-		// select tid from term_data where name='жанр'\
-	// )\
-// )";
-			
-		}//end callback()
-	};
-	buildBlock( opt );
-	
-	var _vocabularyName = "info";
-	var _termName = "техника";
-	var opt = {
-		"name" : "block-style",
-		"title" : "Tехника",
-		"templateID" : "tpl-info_termins_tech-block",
-		"content" : function( args ){//function for getting content data
-			
-			webApp.db.getBlockContent({
-				"vocName" : _vocabularyName,
-				"termName" : _termName,
-				"callback" : function(res){
-					if( typeof args["callback"] === "function"){
-						args["callback"]( res );
-					}
-				}//end callback
-			});
-			
-		}//end callback()
-	};
-	buildBlock( opt );
-	
+	webApp.app.buildPage();
 });//end webApp initialize
 
 console.log(webApp);
-
 
 
 function _db( opt ){
@@ -858,8 +759,6 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 
 
 
-
-
 function _draw( opt ){
 //console.log(arguments);	
 
@@ -885,17 +784,9 @@ function _draw( opt ){
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
-		var id = "tpl-block";
+		var id = "tpl-block-1";
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
-		
-		// var id = "tpl-info_termins_genre-block_list";
-		// var template = _getTpl(id);
-		// _vars["templates"][id] = template;
-		
-		// var id = "tpl-info_termins_genre-block";
-		// var template = _getTpl(id);
-		// _vars["templates"][id] = template;
 		
 		var id = "tpl-info_termins_style-block";
 		var template = _getTpl(id);
@@ -1148,44 +1039,178 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 
 
 
+function _app( opt ){
+console.log(arguments);	
 
-function buildBlock( opt ){
+	// private variables and functions
+	//var _vars = {};
 	
-	var options = {
-		"title": "block title",
-		"content" : "test content",
-		"templateID" : "tpl-block"
-	};
-	//extend options object
-	for(var key in opt ){
-		options[key] = opt[key];
-	}
-console.log(options);
+	var _buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
 
-	//dynamic form content
-	if( typeof options["content"] === "function"){
-		options["content"]({
-			"callback" : function( res ){
-//console.log(res);								
-				var html = webApp.draw.wrapContent({
-					"data" : res,
-					"type" : "menu",//"list"
-					"templateID" : "tpl-menu"
+		var options = {
+			"title": "block title",
+			"content" : "test content"//,
+			//"templateID" : "tpl-block"
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+	console.log(options);
+
+		//dynamic form content
+		if( typeof options["content"] === "function"){
+			options["content"]({
+				"callback" : function( res ){
+	//console.log(res);								
+					var html = webApp.draw.wrapContent({
+						"data" : res,
+						"type" : "menu",//"list"
+						"templateID" : "tpl-menu"
+					});
+					
+					//var html = "<h1>Test!!!</h1>";
+					if( html && html.length > 0){
+						options["content"] = html;
+						webApp.draw.insertBlock( options );
+					}
+					
+				}
+			});
+		} else {
+			webApp.draw.insertBlock( options );
+		}
+
+	};//end _buildBlock()
+
+	
+	var _buildPage = function(opt){
+//console.log("_buildPage()", arguments);
+
+		// var options = {
+			// "title": "block title",
+			// "content" : "test content",
+			// "templateID" : "tpl-block"
+		// };
+		// //extend options object
+		// for(var key in opt ){
+			// options[key] = opt[key];
+		// }
+	// console.log(options);
+	//1. select vid from vocabulary where name="info" -- 5
+	//1. select tid from term_data where name="жанр" -- 95
+	//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
+	//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
+	//4. select dst from url_alias where src IN ("taxonomy/term/100", "taxonomy/term/101".....)
+
+	//======================= static block
+		var opt = {
+			"name" : "block-1",
+			"title" : "Title", 
+			"templateID" : "tpl-block-1",
+			"content" : "<h3>static block-1</h3>"
+		};
+		_buildBlock( opt );
+		
+	//======================= dynamic block
+		// var _vocabularyName = "info";
+		// var _termName = "жанр";//"техника";//"стиль";
+		
+		//get block data
+		// webApp.db.getVocabularyByName({
+			// "vocName" : _vocabularyName,
+			// "callback" : function(res){
+	// //console.log(res, res.length );	
+				// var _vid = res[0]["vid"];
+				// webApp.db.getTermByName({
+					// "vid" : _vid, 
+					// "termName" : _termName,
+					// "callback" : function(res){
+	// //console.log(res, res.length );
+						// var _tid = res[0]["tid"];
+	// //console.log( _vid, _tid );			
+
+						// webApp.db.getChildTerms({
+							// "vid" : _vid,
+							// "tid" : _tid,
+							// "callback" : function(res){
+								// _drawBlockGenre( res );
+							// }//end callback
+						// });
+						
+					// }//end callback
+				// });
+				
+			// }//end callback
+		// });
+		
+		var _vocabularyName = "info";
+		var _termName = "стиль";//"техника";//"жанр";
+		var opt = {
+			"name" : "block-style",
+			"title" : "стиль", //"техника",//"жанр",
+			"templateID" : "tpl-info_termins_style-block",//location and style for block
+			"content" : function( args ){//function for getting content data
+				
+				webApp.db.getBlockContent({
+					"vocName" : _vocabularyName,
+					"termName" : _termName,
+					"callback" : function(res){
+						if( typeof args["callback"] === "function"){
+							args["callback"]( res );
+						}
+					}//end callback
+				});
+				// var queryStr = "\
+	// select name from term_data where vid=(\
+		// select vid from vocabulary where name='info'\
+	// ) and tid in (\
+		// select tid from term_hierarchy where parent=(\
+			// select tid from term_data where name='жанр'\
+		// )\
+	// )";
+				
+			}//end callback()
+		};
+		_buildBlock( opt );
+		
+		var _vocabularyName = "info";
+		var _termName = "техника";
+		var opt = {
+			"name" : "block-style",
+			"title" : "Tехника",
+			"templateID" : "tpl-info_termins_tech-block",
+			"content" : function( args ){//function for getting content data
+				
+				webApp.db.getBlockContent({
+					"vocName" : _vocabularyName,
+					"termName" : _termName,
+					"callback" : function(res){
+						if( typeof args["callback"] === "function"){
+							args["callback"]( res );
+						}
+					}//end callback
 				});
 				
-				//var html = "<h1>Test!!!</h1>";
-				if( html && html.length > 0){
-					options["content"] = html;
-					webApp.draw.insertBlock( options );
-				}
-				
-			}
-		});
-	} else {
-		webApp.draw.insertBlock( options );
-	}
+			}//end callback()
+		};
+		_buildBlock( opt );
+
+	};//end _buildPage()
+
 	
-}//end buildBlock()
+	// public interfaces
+	return{
+		//vars : _vars,
+		buildBlock:	function(opt){ 
+			return _buildBlock(opt); 
+		},
+		buildPage:	function(opt){ 
+			return _buildPage(opt); 
+		}
+	};
+}//end _app()
 
 
 
