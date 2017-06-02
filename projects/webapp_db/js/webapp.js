@@ -270,6 +270,7 @@ console.log("error in _db(), not find 'format' !");
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
 //console.log(arguments);
+		var startTime = new Date();
 		var options = {
 			//"dbName": null,
 			//"storeName" : "",
@@ -486,7 +487,9 @@ console.log( "_query()", options );
 		function _postQuery( data ){ 
 //console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
 //console.log(data);
-
+			var endTime = new Date();
+			var runtime = (endTime - startTime) / 1000;
+console.log("_postQuery(), runtime, sec: " + runtime);
 			// //fail query
 			// if(!data){
 				// if( typeof options["callback"] === "function"){
@@ -809,7 +812,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				},
 				"callback" : function( res ){
 //console.log( res );
-					if( res.length === 0 && 
+					if( res.length > 0 && 
 							typeof res[0] !== "undefined"){
 						p["data"][numRec]["url"] = res[0]["dst"];
 					}
