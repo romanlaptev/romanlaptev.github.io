@@ -90,8 +90,8 @@ function _db( opt ){
 		
 		"tables": {
 			// "taxonomy_menu" :[{ 
-				// "tid" : "",  
-				// "title" : ""
+				// "fields" : ["tid", "title"],
+				// "records" : []
 			// }],
 			
 			"taxonomy_title" : {
@@ -435,9 +435,22 @@ console.log("_postQuery(), runtime, sec: " + runtime);
 	
 	function _parseXML(xml){
 
+		//var xmlRoot = _vars["data"].getElementsByTagName("pma_xml_export");
+//console.log( xmlRoot, xmlRoot.item(0) ) ;
+//return;
 		var xmlDoc = _vars["data"].getElementsByTagName("database");
-		var records = xmlDoc.item(0).getElementsByTagName("table");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+		//fix for Chrome, Safari (exclude tag <pma:database>)
+		if( xmlDoc.length === 1){
+			var records = xmlDoc.item(0).getElementsByTagName("table");
+		}
+		if( xmlDoc.length === 2){
+			var records = xmlDoc.item(1).getElementsByTagName("table");
+		}
 //console.log( records, records.length ) ;
+//return;
+
 		for( var n = 0; n < records.length; n++){
 			var record = records[n];
 			var tableName = record["attributes"]["name"].nodeValue;
@@ -452,6 +465,7 @@ console.log("_postQuery(), runtime, sec: " + runtime);
 			}//next
 			
 			//var recordObj = {"a":1};
+//console.log(tableName, _vars["tables"][tableName]);
 			_vars["tables"][tableName]["records"].push( recordObj );
 		}//next
 		
@@ -595,7 +609,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 					for( var n = 0; n < res.length; n++){
 						res[n]["url"] = "taxonomy/term/" + res[n]["tid"];
 					}//next
-console.log("end test query!!!", res);
+//console.log("end test query!!!", res);
 
 					_replaceUrl({
 						"data" : res,
@@ -1050,14 +1064,19 @@ console.log(arguments);
 
 		var options = {
 			"title": "block title",
-			"content" : "test content"//,
+			"content" : ""//,
 			//"templateID" : "tpl-block"
 		};
 		//extend options object
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-	console.log(options);
+//console.log(options);
+	
+		if( options["content"].length === 0 ){
+_log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
+			return false;
+		}
 
 		//dynamic form content
 		if( typeof options["content"] === "function"){
