@@ -1,5 +1,5 @@
 /*
-- build block with static content
+//======================== build block with static content
 	var opt = {
 		"name" : "block-1",
 		"title" : "Title", 
@@ -7,7 +7,7 @@
 		"content" : "<h3>static block-1</h3>"
 	};
 	buildBlock( opt );
-========================
+//========================
 */
 var webApp = {
 	
@@ -177,13 +177,10 @@ console.log("error in _db(), not find 'format' !");
 			//"storeName" : "",
 			"queryObj" : {//ex: select tid, title from taxonomy_title
 				"action" : "", //"select",
-				"order_by" : false,//"ORDER_BY"
+				//"order_by" : false,//"ORDER_BY"
 				"tableName": "", //"taxonomy_title",
 				"targetFields" : "", //["tid", "title"],
-				"where" : [], /*[
-					{"key" : "KOD_MAIN", "value" : "[1,5]", "compare": "IN"},
-					{"logic": "AND", "key" : "NOMER", "value" : 170, "compare": "="}
-				],*/
+				"where" : []
 			}, 
 			"callback": null
 		};
@@ -192,7 +189,11 @@ console.log("error in _db(), not find 'format' !");
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
+		
+		//options["queryObj"]["callback"] = _postQuery;
+		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
+		
 console.log( "_query()", options );
 
 		// if( options["dbName"].length === 0){
@@ -201,17 +202,54 @@ console.log( "_query()", options );
 			// return false;
 		// }
 		
-		var result = [];
-		var action = options["queryObj"]["action"];
-		switch( action ){
+		//detect and run subquery
+		var conditions = options["queryObj"]["where"];
+		var test = false;
+		for( var n = 0; n < conditions.length; n++){
+			var condition = conditions[n];
 			
-			case "select":
-				var tableName = options["queryObj"]["tableName"];
-				var data = _vars["tables"][tableName]["records"];
-				_processQuery( data, options["queryObj"] );
-			break;
-		}//end switch
-
+			if( condition["value"]["action"] ){
+console.log("detect subquery!", condition["value"]);
+				test = true;
+				condition["value"]["callback"] = _postSubQuery;
+				condition["value"]["num_condition"] = n;
+				_startQuery( condition["value"] );
+				// _query({
+					// "queryObj" : condition["value"],
+					// "callback" : options["callback"]
+				// });
+				
+				break;
+			} else {
+				test = false;
+			}
+			
+		}//next condition
+		
+		//run base query
+		if(!test){
+//console.log( options["queryObj"]["callback"] );
+			_startQuery( options["queryObj"] );
+			//clear for next query_obj
+			//dbInfo["query"]=[];
+		}
+		
+		function _startQuery( queryObj ){
+//console.log(arguments);
+			var result = [];
+			var action = queryObj["action"];
+			switch( action ){
+				
+				case "select":
+					var tableName = queryObj["tableName"];
+					var data = _vars["tables"][tableName]["records"];
+					_processQuery( data, queryObj );
+				break;
+				
+			}//end switch
+		}//end _startQuery()
+		
+		
 		function _processQuery( records, queryObj ){
 			var tableName = queryObj["tableName"];
 			var targetFields = queryObj["targetFields"];
@@ -236,10 +274,25 @@ console.log( "_query()", options );
 				}
 			}//next record
 				
-//console.log("unsort:", table[0], table.length);
+console.log("unsort:", table[0], table.length);
 
 			if( typeof queryObj["callback"] === "function"){
-					queryObj["callback"](table);
+				
+//console.log( queryObj["num_condition"] );
+					if( typeof queryObj["num_condition"] === "undefined"){
+//console.log( queryObj["callback"] );
+						queryObj["callback"](table);
+					} else {
+//console.log( queryObj["callback"] );//function postSubQuery
+//console.log( options["queryObj"]["callback"] );//function from kodif.data, _query()
+						
+						queryObj["callback"]({
+							"data" : table, 
+							"baseQuery" : options["queryObj"],
+							"subQuery" : queryObj
+						});
+
+					}
 			}
 
 		}//end _processQuery()
@@ -387,7 +440,7 @@ console.log( "_query()", options );
 		
 		function _postQuery( data ){ 
 //console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
-//console.log(data);
+//console.log(options, data);
 			var endTime = new Date();
 			var runtime = (endTime - startTime) / 1000;
 console.log("_postQuery(), runtime, sec: " + runtime);
@@ -425,10 +478,41 @@ console.log("_postQuery(), runtime, sec: " + runtime);
 				options["callback"]( data );
 				return false;//wait!!!
 			} else {
+console.log("not callback....use return function");
 				return data;
 			}
 			
 		};//end _postQuery()
+		
+		//filter subquery results and run base query
+		function _postSubQuery( opt ){
+//console.log("_postSubQuery()", arguments, "caller: ", _postSubQuery.caller );
+//console.log("_postSubQuery()", opt );
+//console.log(options);
+
+			var num_condition = opt["subQuery"]["num_condition"];
+			//var targetField = opt["baseQuery"]["where"][num_condition]["key"];
+			var targetField = opt["subQuery"]["targetFields"][0];
+			var data = opt["data"]; 
+//console.log(data, data.length, num_condition, targetField);
+
+			var filter = [];
+			if( data.length > 0){
+				for( var n = 0; n < data.length; n++){
+//console.log(data[n], data[n][targetField], targetField);
+					filter.push( data[n][targetField] );
+				}
+			}
+//console.log( filter );	
+			opt["baseQuery"]["where"][num_condition]["value"] = filter;
+//console.log(opt["baseQuery"]);
+			
+			_query( {
+				"queryObj" : opt["baseQuery"],
+				"callback" : options["callback"]
+			});
+
+		};//end _postSubQuery()
 		
 	};//end _query()
 	
@@ -1054,7 +1138,7 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 
 
 function _app( opt ){
-console.log(arguments);	
+//console.log(arguments);	
 
 	// private variables and functions
 	//var _vars = {};
@@ -1181,14 +1265,6 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 						}
 					}//end callback
 				});
-				// var queryStr = "\
-	// select name from term_data where vid=(\
-		// select vid from vocabulary where name='info'\
-	// ) and tid in (\
-		// select tid from term_hierarchy where parent=(\
-			// select tid from term_data where name='жанр'\
-		// )\
-	// )";
 				
 			}//end callback()
 		};
@@ -1216,6 +1292,69 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 		};
 		_buildBlock( opt );
 
+//test subQuery!!!!!		
+				// var queryStr = "\
+	// select name from term_data where vid=(\
+		// select vid from vocabulary where name='info'\
+	// ) and tid in (\
+		// select tid from term_hierarchy where parent=(\
+			// select tid from term_data where name='жанр'\
+		// )\
+	// )";
+		
+		var _vocabularyName = "info";
+		var _termName = "жанр";
+		var subQuery1 = {
+			"action" : "select",
+			"tableName": "vocabulary",
+			"targetFields" : ["vid"],
+			"where" : [
+				{"key" : "name", "compare": "=", "value" : _vocabularyName}
+			]
+		};
+		
+		var subQuery3 = {
+			"action" : "select",
+			"tableName": "term_data",
+			"targetFields" : ["tid"],
+			"where" : [
+				{"key" : "name", "compare": "=", "value" : _termName}
+			]
+		};
+		var subQuery2 = {
+			"action" : "select",
+			"tableName": "term_hierarchy",
+			"targetFields" : ["tid"],
+			"where" : [
+				//{"key" : "parent", "compare": "=", "value" : subQuery3}
+				{"key" : "parent", "compare": "=", "value" : 95}
+			]
+		};
+
+		var baseQuery = {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : [
+"tid",
+"vid",
+"name"//,
+//"description",
+//"weight"
+],
+				"where" : [
+					{"key" : "vid", "compare": "=", "value" : subQuery1},
+					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
+				]
+			};
+			
+		webApp.db.query({
+			"queryObj" : baseQuery,
+			"callback" : function( res ){
+console.log("end test query!!!", res);
+			}//end callback
+			
+		});
+		
 	};//end _buildPage()
 
 	
