@@ -203,19 +203,21 @@ console.log( "_query()", options );
 		// }
 		
 		//detect and run subquery
-		var conditions = options["queryObj"]["where"];
+		/*
 		var test = false;
+		var conditions = options["queryObj"]["where"];
 		for( var n = 0; n < conditions.length; n++){
 			var condition = conditions[n];
 			
 			if( condition["value"]["action"] ){
-console.log("detect subquery!", condition["value"]);
+console.log("detect subquery!", condition["value"], options, n);
 				test = true;
 				condition["value"]["callback"] = _postSubQuery;
 				condition["value"]["num_condition"] = n;
 				_startQuery( condition["value"] );
 				// _query({
 					// "queryObj" : condition["value"],
+					// //"callback" : _postQuery
 					// "callback" : options["callback"]
 				// });
 				
@@ -233,9 +235,49 @@ console.log("detect subquery!", condition["value"]);
 			//clear for next query_obj
 			//dbInfo["query"]=[];
 		}
+		*/
+		
+		var subQuery = _detectSubQuery( options["queryObj"] );
+		if( !subQuery ){//run base query
+			_startQuery( options["queryObj"] );
+		} else {
+			_startQuery( subQuery );
+		}
+		
+		
+		
+		//detect subquery
+		function _detectSubQuery( queryObj ){
+			
+			var subQuery = false;
+			var conditions = queryObj["where"];
+			
+			for( var n = 0; n < conditions.length; n++){
+				var condition = conditions[n];
+				
+				if( condition["value"]["action"] ){
+	console.log("detect subquery!", condition["value"], options, n);
+					//test = true;
+					subQuery = condition["value"];
+					subQuery["callback"] = _postSubQuery;
+					subQuery["num_condition"] = n;
+					break;
+				} else {
+					subQuery = false;
+				}
+				
+			}//next condition
+			
+			return subQuery;
+		}//end _detectSubQuery()
 		
 		function _startQuery( queryObj ){
 //console.log(arguments);
+
+//test, detect sub query
+var subQuery = _detectSubQuery( queryObj );
+console.log( subQuery );
+
 			var result = [];
 			var action = queryObj["action"];
 			switch( action ){
@@ -486,9 +528,9 @@ console.log("not callback....use return function");
 		
 		//filter subquery results and run base query
 		function _postSubQuery( opt ){
-//console.log("_postSubQuery()", arguments, "caller: ", _postSubQuery.caller );
+console.log("_postSubQuery()", arguments, "caller: ", _postSubQuery.caller );
 //console.log("_postSubQuery()", opt );
-//console.log(options);
+console.log(options);
 
 			var num_condition = opt["subQuery"]["num_condition"];
 			//var targetField = opt["baseQuery"]["where"][num_condition]["key"];
@@ -503,14 +545,25 @@ console.log("not callback....use return function");
 					filter.push( data[n][targetField] );
 				}
 			}
-//console.log( filter );	
+console.log( filter );
+
 			opt["baseQuery"]["where"][num_condition]["value"] = filter;
 //console.log(opt["baseQuery"]);
-			
-			_query( {
-				"queryObj" : opt["baseQuery"],
-				"callback" : options["callback"]
-			});
+
+			//detect sub query in opt["subQuery"]
+			// if( opt["subQuery"]["where"][0]["value"]["action"] ){
+				// var subQuery = opt["subQuery"]["where"][0]["value"];
+				// subQuery["callback"] = _postSubQuery;
+				// subQuery["num_condition"] = 0;
+				// _startQuery( subQuery );
+			// } else {
+				
+				_query( {
+					"queryObj" : opt["baseQuery"],
+					"callback" : options["callback"]
+				});
+				
+			//}
 
 		};//end _postSubQuery()
 		
@@ -1214,7 +1267,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"templateID" : "tpl-block-1",
 			"content" : "<h3>static block-1</h3>"
 		};
-		_buildBlock( opt );
+		//_buildBlock( opt );
 		
 	//======================= dynamic block
 		// var _vocabularyName = "info";
@@ -1268,7 +1321,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				
 			}//end callback()
 		};
-		_buildBlock( opt );
+		//_buildBlock( opt );
 		
 		var _vocabularyName = "info";
 		var _termName = "техника";
@@ -1290,7 +1343,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				
 			}//end callback()
 		};
-		_buildBlock( opt );
+		//_buildBlock( opt );
 
 //test subQuery!!!!!		
 				// var queryStr = "\
@@ -1326,8 +1379,8 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"tableName": "term_hierarchy",
 			"targetFields" : ["tid"],
 			"where" : [
-				//{"key" : "parent", "compare": "=", "value" : subQuery3}
-				{"key" : "parent", "compare": "=", "value" : 95}
+				{"key" : "parent", "compare": "=", "value" : subQuery3}
+				//{"key" : "parent", "compare": "=", "value" : 95}
 			]
 		};
 
