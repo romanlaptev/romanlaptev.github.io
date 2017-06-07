@@ -249,7 +249,7 @@ console.log("detect subquery!", condition["value"], options, n);
 		
 		//detect subquery
 		function _detectSubQuery( queryObj ){
-console.log("function _detectSubQuery(), start!");			
+//console.log("_detectSubQuery(), start!");			
 			var subQuery = false;
 			var conditions = queryObj["where"];
 			
@@ -260,7 +260,8 @@ console.log("function _detectSubQuery(), start!");
 					subQuery = condition["value"];
 					subQuery["callback"] = _postSubQuery;
 					subQuery["num_condition"] = n;
-console.log( "detect subQuery ", subQuery, " in ", queryObj, n);
+//console.log( "detect subQuery ", subQuery, " in ", queryObj, n);
+console.log( "detect subQuery ", subQuery);
 					
 //					if( subQuery["where"][0]["value"]["action"] ){
 //console.log("detect subquery2");
@@ -273,7 +274,7 @@ console.log( "detect subQuery ", subQuery, " in ", queryObj, n);
 				
 			}//next condition
 			
-console.log("function _detectSubQuery(), end");			
+//console.log("_detectSubQuery(), end");			
 			return subQuery;
 		}//end _detectSubQuery()
 		
@@ -291,7 +292,19 @@ console.log("function _detectSubQuery(), end");
 				case "select":
 					var tableName = queryObj["tableName"];
 					var data = _vars["tables"][tableName]["records"];
-					_processQuery( data, queryObj );
+					
+					//detect sub query
+					var subQuery = _detectSubQuery( queryObj );
+					if( !subQuery ){
+						_processQuery( data, queryObj );
+					} else {
+						options["parentQuery"] = queryObj;
+						options["subQuery"] = subQuery;
+						//options["num_condition"] = subQuery["num_condition"];
+						_startQuery( subQuery );
+						return false;
+					}
+//console.log( "test1" );
 				break;
 				
 			}//end switch
@@ -299,24 +312,13 @@ console.log("function _detectSubQuery(), end");
 		
 		
 		function _processQuery( records, queryObj ){
-			
+//console.log("_processQuery(), ", arguments);			
+
 			var tableName = queryObj["tableName"];
 			var targetFields = queryObj["targetFields"];
 			var conditions = queryObj["where"];
 //console.log( conditions, conditions.length, targetFields );
 
-//detect sub query
-var subQuery = _detectSubQuery( queryObj );
-//console.log( "detect subQuery ", subQuery, " in ", queryObj);
-if( !subQuery ){
-} else {
-	options["parentQuery"] = queryObj;
-	options["subQuery"] = subQuery;
-	//options["num_condition"] = subQuery["num_condition"];
-	_startQuery( subQuery );
-	return false;
-}
-console.log( "test1" );
 
 			var table = [];
 			for( var n = 0; n < records.length; n++){
@@ -336,7 +338,7 @@ console.log( "test1" );
 				}
 			}//next record
 				
-console.log("unsort:", table[0], table.length);
+//console.log("unsort:", table[0], table.length);
 
 			if( typeof queryObj["callback"] === "function"){
 				
@@ -503,7 +505,7 @@ console.log("unsort:", table[0], table.length);
 		
 		function _postQuery( data ){ 
 //console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
-console.log(options, data);
+//console.log(options, data);
 			var endTime = new Date();
 			var runtime = (endTime - startTime) / 1000;
 console.log("_postQuery(), runtime, sec: " + runtime);
@@ -549,9 +551,9 @@ console.log("not callback....use return function");
 		
 		//filter subquery results and run base query
 		function _postSubQuery( opt ){
-console.log("_postSubQuery()", arguments, "caller: ", _postSubQuery.caller );
+//console.log("_postSubQuery()", arguments, "caller: ", _postSubQuery.caller );
 //console.log("_postSubQuery()", opt );
-console.log(options);
+//console.log(options);
 
 			var num_condition = opt["subQuery"]["num_condition"];
 			//var targetField = opt["baseQuery"]["where"][num_condition]["key"];
@@ -566,7 +568,7 @@ console.log(options);
 					filter.push( data[n][targetField] );
 				}
 			}
-console.log( filter );
+//console.log( filter );
 
 			if( opt["parentQuery"] ){
 				opt["parentQuery"]["where"][num_condition]["value"] = filter;
