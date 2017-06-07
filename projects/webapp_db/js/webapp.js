@@ -237,18 +237,19 @@ console.log("detect subquery!", condition["value"], options, n);
 		}
 		*/
 		
-		var subQuery = _detectSubQuery( options["queryObj"] );
-		if( !subQuery ){//run base query
-			_startQuery( options["queryObj"] );
-		} else {
-			_startQuery( subQuery );
-		}
-		
+		// var subQuery = _detectSubQuery( options["queryObj"] );
+// //console.log( subQuery );
+		// if( !subQuery ){//run base query
+			// _startQuery( options["queryObj"] );
+		// } else {
+			// _startQuery( subQuery );
+		// }
+		_startQuery( options["queryObj"] );
 		
 		
 		//detect subquery
 		function _detectSubQuery( queryObj ){
-			
+console.log("function _detectSubQuery(), start!");			
 			var subQuery = false;
 			var conditions = queryObj["where"];
 			
@@ -256,11 +257,15 @@ console.log("detect subquery!", condition["value"], options, n);
 				var condition = conditions[n];
 				
 				if( condition["value"]["action"] ){
-	console.log("detect subquery!", condition["value"], options, n);
-					//test = true;
 					subQuery = condition["value"];
 					subQuery["callback"] = _postSubQuery;
 					subQuery["num_condition"] = n;
+console.log( "detect subQuery ", subQuery, " in ", queryObj, n);
+					
+//					if( subQuery["where"][0]["value"]["action"] ){
+//console.log("detect subquery2");
+//					}
+					
 					break;
 				} else {
 					subQuery = false;
@@ -268,6 +273,7 @@ console.log("detect subquery!", condition["value"], options, n);
 				
 			}//next condition
 			
+console.log("function _detectSubQuery(), end");			
 			return subQuery;
 		}//end _detectSubQuery()
 		
@@ -275,8 +281,8 @@ console.log("detect subquery!", condition["value"], options, n);
 //console.log(arguments);
 
 //test, detect sub query
-var subQuery = _detectSubQuery( queryObj );
-console.log( subQuery );
+//var subQuery = _detectSubQuery( queryObj );
+//console.log( subQuery );
 
 			var result = [];
 			var action = queryObj["action"];
@@ -293,10 +299,24 @@ console.log( subQuery );
 		
 		
 		function _processQuery( records, queryObj ){
+			
 			var tableName = queryObj["tableName"];
 			var targetFields = queryObj["targetFields"];
 			var conditions = queryObj["where"];
 //console.log( conditions, conditions.length, targetFields );
+
+//detect sub query
+var subQuery = _detectSubQuery( queryObj );
+//console.log( "detect subQuery ", subQuery, " in ", queryObj);
+if( !subQuery ){
+} else {
+	options["parentQuery"] = queryObj;
+	options["subQuery"] = subQuery;
+	//options["num_condition"] = subQuery["num_condition"];
+	_startQuery( subQuery );
+	return false;
+}
+console.log( "test1" );
 
 			var table = [];
 			for( var n = 0; n < records.length; n++){
@@ -331,6 +351,7 @@ console.log("unsort:", table[0], table.length);
 						queryObj["callback"]({
 							"data" : table, 
 							"baseQuery" : options["queryObj"],
+							"parentQuery" : options["parentQuery"],
 							"subQuery" : queryObj
 						});
 
@@ -482,7 +503,7 @@ console.log("unsort:", table[0], table.length);
 		
 		function _postQuery( data ){ 
 //console.log("_postQuery(), ", "caller: ", _postQuery.caller, data.length);
-//console.log(options, data);
+console.log(options, data);
 			var endTime = new Date();
 			var runtime = (endTime - startTime) / 1000;
 console.log("_postQuery(), runtime, sec: " + runtime);
@@ -547,23 +568,25 @@ console.log(options);
 			}
 console.log( filter );
 
-			opt["baseQuery"]["where"][num_condition]["value"] = filter;
+			if( opt["parentQuery"] ){
+				opt["parentQuery"]["where"][num_condition]["value"] = filter;
+			} else {
+				opt["baseQuery"]["where"][num_condition]["value"] = filter;
 //console.log(opt["baseQuery"]);
+			}
 
 			//detect sub query in opt["subQuery"]
-			// if( opt["subQuery"]["where"][0]["value"]["action"] ){
-				// var subQuery = opt["subQuery"]["where"][0]["value"];
-				// subQuery["callback"] = _postSubQuery;
-				// subQuery["num_condition"] = 0;
-				// _startQuery( subQuery );
-			// } else {
-				
-				_query( {
-					"queryObj" : opt["baseQuery"],
-					"callback" : options["callback"]
-				});
-				
+			//if( opt["subQuery"]["where"][0]["value"]["action"] ){
+//console.log(opt["subQuery"], num_condition);
+				//opt["baseQuery"]["where"][num_condition]["value"] = opt["subQuery"];
 			//}
+			//var subQuery = _detectSubQuery( opt["subQuery"] );
+//console.log( subQuery );
+				
+			_query( {
+				"queryObj" : opt["baseQuery"],
+				"callback" : options["callback"]
+			});
 
 		};//end _postSubQuery()
 		
@@ -1395,13 +1418,13 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 //"weight"
 ],
 				"where" : [
-					{"key" : "vid", "compare": "=", "value" : subQuery1},
+					//{"key" : "vid", "compare": "=", "value" : subQuery1},
 					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
 				]
 			};
 			
 		webApp.db.query({
-			"queryObj" : baseQuery,
+			"queryObj" : baseQuery,//subQuery2,
 			"callback" : function( res ){
 console.log("end test query!!!", res);
 			}//end callback
