@@ -1292,7 +1292,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"templateID" : "tpl-block-1",
 			"content" : "<h3>static block-1</h3>"
 		};
-		//_buildBlock( opt );
+		_buildBlock( opt );
 		
 	//======================= dynamic block
 		// var _vocabularyName = "info";
@@ -1346,7 +1346,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				
 			}//end callback()
 		};
-		//_buildBlock( opt );
+		_buildBlock( opt );
 		
 		var _vocabularyName = "info";
 		var _termName = "техника";
@@ -1368,7 +1368,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				
 			}//end callback()
 		};
-		//_buildBlock( opt );
+		_buildBlock( opt );
 
 //test subQuery!!!!!		
 				// var queryStr = "\
@@ -1420,7 +1420,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 //"weight"
 ],
 				"where" : [
-					//{"key" : "vid", "compare": "=", "value" : subQuery1},
+					{"key" : "vid", "compare": "=", "value" : subQuery1},
 					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
 				]
 			};
