@@ -2,9 +2,18 @@
 //======================== build block with static content
 	var opt = {
 		"name" : "block-1",
-		"title" : "Title", 
-		"templateID" : "tpl-block",//optional
-		"content" : "<h3>static block-1</h3>"
+		"title" : "Tехника",
+		"templateID" : "tpl-info_termins_tech-block",//optional
+		"contentTpl" : "tpl-menu",//optional
+		
+		"content" : "<h3>static block-1</h3>" 
+			or
+		"content" : function( args ){ //function for getting content data
+				var res = [.....];
+				if( typeof args["callback"] === "function"){
+					args["callback"]( res );
+				}
+		}//end callback
 	};
 	buildBlock( opt );
 //========================
@@ -941,90 +950,55 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {
 		"templates" : {
-			//"subfolder_tpl" : ""
+			"tpl-list" : _getTpl("tpl-list"),
+			"tpl-list_list" : _getTpl("tpl-list_list"),
+			"tpl-menu" : _getTpl("tpl-menu"),
+			"tpl-menu_list" : _getTpl("tpl-menu_list"),
+			"tpl-block-1" : _getTpl("tpl-block-1"),
+			"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
+			"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
+			"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block")
 		}
 	};
 
 	var _init = function(){
 //console.log("init _draw");
-		_loadTemplates();
 	};
 
-	function _loadTemplates(){
+	function _getTpl( id ){
+		var tpl = getDOMobj(id);
+		var html = tpl.innerHTML;
 		
-		var id = "tpl-menu";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
+		//clear document
+		//if ( tpl.parentNode ) {
+			//tpl.parentNode.removeChild( tpl );
+		//}
+		//tpl.removeChild( tpl );
 		
-		var id = "tpl-menu_list";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
-		
-		var id = "tpl-block-1";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
-		
-		var id = "tpl-info_termins_style-block";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
-		
-		var id = "tpl-info_termins_tech-block";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
-		
-		var id = "tpl-info_termins_genre-block";
-		var template = _getTpl(id);
-		_vars["templates"][id] = template;
-		
-		// if( typeof template === "string"){
-			// _vars["templates"][id] = template;
-		// } else {
-// //console.log( template );
-			// if( template["html"].length > 0 &&
-				// template["listHtml"].length > 0 ){
-				// _vars["templates"][id] = template["html"];
-				// _vars["templates"][id+"-list"] = template["listHtml"];
-			// }
-			
+		//remove all child nodes
+		// while (tpl.firstChild) {
+		  // tpl.removeChild(tpl.firstChild);
 		// }
-		
-		
-		function _getTpl( id ){
-			var tpl = getDOMobj(id);
-			var html = tpl.innerHTML;
-			
-			//clear document
-			//if ( tpl.parentNode ) {
-				//tpl.parentNode.removeChild( tpl );
-			//}
-			//tpl.removeChild( tpl );
-			
-			//remove all child nodes
-			// while (tpl.firstChild) {
-			  // tpl.removeChild(tpl.firstChild);
-			// }
 
 //console.log( tpl, html );
 //for( var key in tpl){
-	//console.log( key +" : "+ tpl[key] );
+//console.log( key +" : "+ tpl[key] );
 //}
-			
-			//if template contain list items
-			// var list = document.getElementsByClassName("tpl-list");
-// console.log( list, list.length );
-			// if( list.length > 0){
-				// var listHtml = list[0].outerHTML;
-				// //tpl.remove(list);
-				// return {
-					// "html" : html,
-					// "listHtml" : listHtml
-				// };
-			// }
-			
-			return html;
-		}//end _getTpl()
 		
-	}//end _loadTemplates()
+		//if template contain list items
+		// var list = document.getElementsByClassName("tpl-list");
+// console.log( list, list.length );
+		// if( list.length > 0){
+			// var listHtml = list[0].outerHTML;
+			// //tpl.remove(list);
+			// return {
+				// "html" : html,
+				// "listHtml" : listHtml
+			// };
+		// }
+		
+		return html;
+	}//end _getTpl()
 	
 	var _insert = function( opt ){
 		
@@ -1129,7 +1103,7 @@ _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + option
 	function _wrapContent( opt ){
 		var p = {
 			"data": null,
-			"type" : "",
+			//"type" : "",
 			"templateID" : false
 		};
 		//extend options object
@@ -1139,11 +1113,11 @@ _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + option
 //console.log(p);
 
 		if( !p["data"] ){
-_log("<p>wrapContent(),   error, data: <b class='text-danger'>" + p["data"] + "</b></p>");
+_log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
 			return false;
 		}
 		if( !p["templateID"] ){
-_log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b></p>");
+_log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b></p>");
 			return false;
 		}
 		
@@ -1154,9 +1128,15 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 	// "url" : "http://test"
 // };
 		
-		switch( p["type"] ){
-			case "menu" :
+		//switch( p["type"] ){
+			//case "menu" :
+			
+				if( !_vars["templates"][p.templateID] ){
+_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+					return false;
+				}
 				html = _vars["templates"][ p.templateID ];
+				
 				var listHtml = "";
 				for( var key in p["data"]){
 //console.log(p["data"][key], typeof p["data"][key], p["data"][key].length);
@@ -1173,9 +1153,16 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 						// .replace("{{name}}", p["data"][key]["name"]);
 						
 						var items = p["data"][key];
+						
+						if( !_vars["templates"][ p.templateID+"_list"] ){
+_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>");
+							return false;
+						}
 						var itemHtml = _vars["templates"][ p.templateID+"_list"];
+//console.log(itemHtml);
 
 						for( var key2 in items){
+//console.log(key2, items[key2]);
 							if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
 //console.log(key2, items[key2]);
 								itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
@@ -1187,11 +1174,11 @@ _log("<p>wrapContent(),   error, templateID <b class='text-danger'>is empty</b><
 					
 				}//next
 				html = html.replace("{{list}}", listHtml);
-			break;
+			//break;
 			
-			case "link" :
-			break;
-		}//end switch
+			//case "link" :
+			//break;
+		//}//end switch
 
 		
 //console.log(html);
@@ -1223,15 +1210,18 @@ function _app( opt ){
 //console.log(arguments);	
 
 	// private variables and functions
-	//var _vars = {};
+	var _vars = {
+		"queries": {}
+	};
 	
 	var _buildBlock = function(opt){
 //console.log("_buildBlock()", arguments);
 
 		var options = {
 			"title": "block title",
-			"content" : ""//,
-			//"templateID" : "tpl-block"
+			"content" : "",
+			"templateID" : "tpl-block",
+			"contentTpl" : "tpl-list"//"tpl-menu"
 		};
 		//extend options object
 		for(var key in opt ){
@@ -1251,8 +1241,8 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 	//console.log(res);								
 					var html = webApp.draw.wrapContent({
 						"data" : res,
-						"type" : "menu",//"list"
-						"templateID" : "tpl-menu"
+						//"type" : "menu",//"list"
+						"templateID" : options["contentTpl"]
 					});
 					
 					//var html = "<h1>Test!!!</h1>";
@@ -1336,6 +1326,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"name" : "block-style",
 			"title" : "стиль", //"техника",//"жанр",
 			"templateID" : "tpl-info_termins_style-block",//location and style for block
+			"contentTpl" : "tpl-menu",
 			"content" : function( args ){//function for getting content data
 				
 				webApp.db.getBlockContent({
@@ -1358,6 +1349,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"name" : "block-style",
 			"title" : "Tехника",
 			"templateID" : "tpl-info_termins_tech-block",
+			"contentTpl" : "tpl-menu",
 			"content" : function( args ){//function for getting content data
 				
 				webApp.db.getBlockContent({
@@ -1429,7 +1421,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				]
 			};
 			
-		//_var
+		_vars["queries"]["getTermGenre"] = baseQuery;
 		
 		var opt = {
 			"name" : "block-genre",
@@ -1438,9 +1430,9 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"content" : function( args ){//function for getting content data
 				
 				webApp.db.query({
-					"queryObj" : baseQuery,//subQuery2,
+					"queryObj" : baseQuery,
 					"callback" : function( res ){
-console.log("end test query!!!", res);
+//console.log("end test query!!!", res);
 						if( typeof args["callback"] === "function"){
 							args["callback"]( res );
 						}
@@ -1456,7 +1448,7 @@ console.log("end test query!!!", res);
 	
 	// public interfaces
 	return{
-		//vars : _vars,
+		vars : _vars,
 		buildBlock:	function(opt){ 
 			return _buildBlock(opt); 
 		},
