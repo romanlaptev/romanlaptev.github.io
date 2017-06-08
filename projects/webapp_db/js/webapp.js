@@ -972,6 +972,10 @@ function _draw( opt ){
 		var template = _getTpl(id);
 		_vars["templates"][id] = template;
 		
+		var id = "tpl-info_termins_genre-block";
+		var template = _getTpl(id);
+		_vars["templates"][id] = template;
+		
 		// if( typeof template === "string"){
 			// _vars["templates"][id] = template;
 		// } else {
@@ -1425,13 +1429,27 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				]
 			};
 			
-		webApp.db.query({
-			"queryObj" : baseQuery,//subQuery2,
-			"callback" : function( res ){
+		//_var
+		
+		var opt = {
+			"name" : "block-genre",
+			"title" : "Жанр",
+			"templateID" : "tpl-info_termins_genre-block",
+			"content" : function( args ){//function for getting content data
+				
+				webApp.db.query({
+					"queryObj" : baseQuery,//subQuery2,
+					"callback" : function( res ){
 console.log("end test query!!!", res);
-			}//end callback
-			
-		});
+						if( typeof args["callback"] === "function"){
+							args["callback"]( res );
+						}
+					}//end callback
+				});
+				
+			}//end callback()
+		};
+		_buildBlock( opt );
 		
 	};//end _buildPage()
 
