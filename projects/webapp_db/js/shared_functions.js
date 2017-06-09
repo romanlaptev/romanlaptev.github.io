@@ -251,10 +251,9 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	// if (xhr.setRequestHeader) {
 		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	// }
-	
-	var str = "";
-	xhr.send(str);
-	//xhr.send();
+	// var str = '';
+	//xhr.send(str);
+	xhr.send();
 
 	function _createRequestObject() {
 		var request = false;
