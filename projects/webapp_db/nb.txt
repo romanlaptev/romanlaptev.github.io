@@ -49,7 +49,7 @@ webapp DB (webapp)
 baseQuery содержит  subQuery (один или несколько) на одном уровне вложенности
 
 - выяснить, где в БД находится информация о блоках страницы
-SELECT * FROM `blocks` WHERE `theme` = 'pushbutton'
+SELECT * FROM `blocks` WHERE `theme` = 'pushbutton' AND `status` =1
 
 ------- SELECT * FROM `blocks` WHERE `theme` = 'pushbutton'
 bid	252
