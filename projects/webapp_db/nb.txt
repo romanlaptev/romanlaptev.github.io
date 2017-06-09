@@ -50,3 +50,39 @@ baseQuery содержит  subQuery (один или несколько) на �
 
 - выяснить, где в БД находится информация о блоках страницы
 SELECT * FROM `blocks` WHERE `theme` = 'pushbutton'
+
+------- SELECT * FROM `blocks` WHERE `theme` = 'pushbutton'
+bid	252
+module	views
+delta	info_termins_style-block_1
+theme	pushbutton
+region	left
+status	1
+
+--------- SELECT * FROM `views_view`
+vid	22
+name	info_termins_style
+base_table	term_data
+
+
+-------- SELECT * FROM `views_display` WHERE `vid` =22
+vid	22
+id	block_1
+
+vid	22
+id	default
+display_options 	
+a:14:{
+	s:13:"relationships";
+	a:1:{
+			s:6:"parent";
+			a:3:{
+					s:2:"id";
+					s:6:"parent";
+					s:5:"table";
+					s:14:"term_hierarchy";
+					s:5:"field";
+					s:6:"parent";
+				}
+		}
+и т.д, т.е. параметры представления info_termins_style
