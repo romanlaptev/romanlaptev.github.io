@@ -69,7 +69,10 @@ console.log( navigator.userAgent );
 //start
 webApp.init(function(){
 	webApp.app.init();
-	webApp.app.buildPage();
+	webApp.app.buildPage({
+		"name" : "frontPage"
+	});
+	
 });//end webApp initialize
 
 console.log(webApp);
@@ -1212,14 +1215,21 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"pages": [],
+		"pages": [
+			{
+				//"id" : 1,
+				"name" : "frontPage",
+				"content" : "<h1>Test page</h1>"
+			}
+		],
 		"queries": {},
 		"blocks" : [
 			{
 				"name" : "block-1",
 				"title" : "Title", 
 				"templateID" : "tpl-block-1",
-				"content" : "<h3>static block-1</h3>"
+				"content" : "<h3>static block-1</h3>",
+				"visibility" : "testPage"
 			},
 			{
 				"name" : "block-style",
@@ -1237,25 +1247,27 @@ function _app( opt ){
 						}//end callback
 					});
 					
-				}//end callback()
+				},//end callback()
+				"visibility" : "testPage"
 			},
-			// {
-				// "name" : "block-tech",
-				// "title" : "Tехника",
-				// "templateID" : "tpl-info_termins_tech-block",
-				// "contentTpl" : "tpl-menu",
-				// "content" : function( args ){//function for getting content data
-					// webApp.db.getBlockContent({
-						// "vocName" : "info",
-						// "termName" : "техника",
-						// "callback" : function(res){
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-				// }//end callback()
-			// },
+			{
+				"name" : "block-tech",
+				"title" : "Tехника",
+				"templateID" : "tpl-info_termins_tech-block",
+				"contentTpl" : "tpl-menu",
+				"content" : function( args ){//function for getting content data
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "техника",
+						"callback" : function(res){
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+				},//end callback()
+				"visibility" : "frontPage"
+			},
 			{
 				"name" : "block-genre",
 				"title" : "Жанр",
@@ -1270,7 +1282,8 @@ function _app( opt ){
 							}
 						}//end callback
 					});
-				}//end callback()
+				},//end callback()
+				"visibility" : "frontPage"
 			}
 		
 		]
@@ -1346,7 +1359,7 @@ console.log("init app!");
 	
 	
 	var _buildBlock = function(opt){
-//console.log("_buildBlock()", arguments);
+console.log("_buildBlock()", arguments);
 
 		var options = {
 			"title": "block title",
@@ -1391,29 +1404,21 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 	};//end _buildBlock()
 
 	
-	var _buildPage = function(opt){
+	var _buildPage = function( opt ){
 //console.log("_buildPage()", arguments);
 
-		// var options = {
-			// "title": "block title",
-			// "content" : "test content",
-			// "templateID" : "tpl-block"
-		// };
-		// //extend options object
-		// for(var key in opt ){
-			// options[key] = opt[key];
-		// }
-	// console.log(options);
+		var options = {
+			//"id": null,
+			//"templateID" : "tpl-page"
+			name : "",
+			content : ""
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log(options);
 
-	//======================= static block
-		// var opt = {
-			// "name" : "block-1",
-			// "title" : "Title", 
-			// "templateID" : "tpl-block-1",
-			// "content" : "<h3>static block-1</h3>"
-		// };
-		// _buildBlock( opt );
-		
 	//======================= dynamic block
 		// var _vocabularyName = "info";
 		// var _termName = "жанр";//"техника";//"стиль";
@@ -1446,13 +1451,21 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			// }//end callback
 		// });
 		
-		//draw blocks
-		for( var n = 0; n < _vars["blocks"].length; n++){
-			var opt = _vars["blocks"][n];
-			_buildBlock( opt );
-		}//next
-		
 		//draw page content
+		if( options["name"].length > 0 ){
+			
+			//....
+			
+			//draw blocks
+			for( var n = 0; n < _vars["blocks"].length; n++){
+				var opt2 = _vars["blocks"][n];
+//console.log(opt2["visibility"], options["name"]);				
+				if( opt2["visibility"] === options["name"] ){
+					_buildBlock( opt2 );
+				}
+			}//next
+			
+		}
 		
 	};//end _buildPage()
 
