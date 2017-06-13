@@ -68,6 +68,7 @@ console.log( navigator.userAgent );
 
 //start
 webApp.init(function(){
+	webApp.app.init();
 	webApp.app.buildPage();
 });//end webApp initialize
 
@@ -1211,8 +1212,132 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"queries": {}
-	};
+		"queries": {},
+		"blocks" : [
+			{
+				"name" : "block-1",
+				"title" : "Title", 
+				"templateID" : "tpl-block-1",
+				"content" : "<h3>static block-1</h3>"
+			},
+			{
+				"name" : "block-style",
+				"title" : "стиль", //"техника",//"жанр",
+				"templateID" : "tpl-info_termins_style-block",//location and style for block
+				"contentTpl" : "tpl-menu",
+				"content" : function( args ){//function for getting content data
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "стиль",
+						"callback" : function(res){
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+					
+				}//end callback()
+			},
+			{
+				"name" : "block-tech",
+				"title" : "Tехника",
+				"templateID" : "tpl-info_termins_tech-block",
+				"contentTpl" : "tpl-menu",
+				"content" : function( args ){//function for getting content data
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "техника",
+						"callback" : function(res){
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+				}//end callback()
+			},
+			{
+				"name" : "block-genre",
+				"title" : "Жанр",
+				"templateID" : "tpl-info_termins_genre-block",
+				"content" : function( args ){//function for getting content data
+					webApp.db.query({
+						"queryObj" : _vars["queries"]["getTermGenre"],
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+				}//end callback()
+			}
+		
+		]
+	};// _vars
+	
+	var _init = function( opt ){
+console.log("init app!");
+
+		//form data queries
+//test subQuery!!!!!		
+				// var queryStr = "\
+	// select name from term_data where vid=(\
+		// select vid from vocabulary where name='info'\
+	// ) and tid in (\
+		// select tid from term_hierarchy where parent=(\
+			// select tid from term_data where name='жанр'\
+		// )\
+	// )";
+		
+		var _vocabularyName = "info";
+		var _termName = "жанр";
+		var subQuery1 = {
+			"action" : "select",
+			"tableName": "vocabulary",
+			"targetFields" : ["vid"],
+			"where" : [
+				{"key" : "name", "compare": "=", "value" : _vocabularyName}
+			]
+		};
+		
+		var subQuery3 = {
+			"action" : "select",
+			"tableName": "term_data",
+			"targetFields" : ["tid"],
+			"where" : [
+				{"key" : "name", "compare": "=", "value" : _termName}
+			]
+		};
+		var subQuery2 = {
+			"action" : "select",
+			"tableName": "term_hierarchy",
+			"targetFields" : ["tid"],
+			"where" : [
+				{"key" : "parent", "compare": "=", "value" : subQuery3}
+				//{"key" : "parent", "compare": "=", "value" : 95}
+			]
+		};
+
+		var baseQuery = {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : [
+"tid",
+"vid",
+"name"//,
+//"description",
+//"weight"
+],
+				"where" : [
+					{"key" : "vid", "compare": "=", "value" : subQuery1},
+					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
+				]
+			};
+			
+		_vars["queries"]["getTermGenre"] = baseQuery;
+		
+	};//end _init()
+	
 	
 	var _buildBlock = function(opt){
 //console.log("_buildBlock()", arguments);
@@ -1365,63 +1490,6 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			}//end callback()
 		};
 		_buildBlock( opt );
-
-//test subQuery!!!!!		
-				// var queryStr = "\
-	// select name from term_data where vid=(\
-		// select vid from vocabulary where name='info'\
-	// ) and tid in (\
-		// select tid from term_hierarchy where parent=(\
-			// select tid from term_data where name='жанр'\
-		// )\
-	// )";
-		
-		var _vocabularyName = "info";
-		var _termName = "жанр";
-		var subQuery1 = {
-			"action" : "select",
-			"tableName": "vocabulary",
-			"targetFields" : ["vid"],
-			"where" : [
-				{"key" : "name", "compare": "=", "value" : _vocabularyName}
-			]
-		};
-		
-		var subQuery3 = {
-			"action" : "select",
-			"tableName": "term_data",
-			"targetFields" : ["tid"],
-			"where" : [
-				{"key" : "name", "compare": "=", "value" : _termName}
-			]
-		};
-		var subQuery2 = {
-			"action" : "select",
-			"tableName": "term_hierarchy",
-			"targetFields" : ["tid"],
-			"where" : [
-				{"key" : "parent", "compare": "=", "value" : subQuery3}
-				//{"key" : "parent", "compare": "=", "value" : 95}
-			]
-		};
-
-		var baseQuery = {
-				"action" : "select",
-				"tableName": "term_data",
-				"targetFields" : [
-"tid",
-"vid",
-"name"//,
-//"description",
-//"weight"
-],
-				"where" : [
-					{"key" : "vid", "compare": "=", "value" : subQuery1},
-					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
-				]
-			};
-			
-		_vars["queries"]["getTermGenre"] = baseQuery;
 		
 		var opt = {
 			"name" : "block-genre",
@@ -1430,7 +1498,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 			"content" : function( args ){//function for getting content data
 				
 				webApp.db.query({
-					"queryObj" : baseQuery,
+					"queryObj" : _vars["queries"]["getTermGenre"],
 					"callback" : function( res ){
 //console.log("end test query!!!", res);
 						if( typeof args["callback"] === "function"){
@@ -1449,6 +1517,9 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 	// public interfaces
 	return{
 		vars : _vars,
+		init:	function(args){ 
+			return _init(args); 
+		},
 		buildBlock:	function(opt){ 
 			return _buildBlock(opt); 
 		},
