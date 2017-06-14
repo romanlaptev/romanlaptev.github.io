@@ -18,6 +18,7 @@
 	buildBlock( opt );
 //========================
 */
+
 var webApp = {
 	
 	"vars" : {
@@ -32,29 +33,13 @@ var webApp = {
 //console.log("init webapp!", arguments);
 console.log( navigator.userAgent );
 
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : webApp.vars["db_url"], 
-			"callback": function( data ){
-				
-//var msg = "load " + webApp.vars["db_url"] ;
-//console.log("<br>" + msg);
-//webApp.vars["log"].push(msg);
-//console.log( "_postFunc(), " + typeof data );
-
-				webApp.db.init({
-					"data" : data,
-					"format" : webApp.vars["db_type"]
-				});
-				
-				webApp.draw.init();
-				
-				if( typeof postFunc === "function"){
-					postFunc();
-				}
-				
-			}//end callback()
-		});
+		webApp.db.init();
+		webApp.draw.init();
+		webApp.app.init();
+		
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
 		
 		//this.dBase();
 	},//end init()
@@ -65,16 +50,15 @@ console.log( navigator.userAgent );
 	
 };//end webApp()
 
-
 //start
 webApp.init(function(){
-	webApp.app.init();
-	webApp.app.buildPage({
-		"name" : "frontPage"
-	});
-	
+	webApp.db.loadData(function(){
+			webApp.app.buildPage({
+				"name" : "frontPage"
+			});
+		}//end callback
+	);
 });//end webApp initialize
-
 console.log(webApp);
 
 
@@ -83,8 +67,8 @@ function _db( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"data" : false,
-		"format" : false,
+		//"data" : false,
+		//"format" : false,
 		
 		// "schema" : {
 			// "root" : {
@@ -149,38 +133,122 @@ function _db( opt ){
 				"fields" : ["pid",  "src", "dst", "language"],
 				"records" : []
 			},  
+
+			"node" :{
+				"fields" : [
+"nid",
+"vid",
+"type",
+"language",
+"title",
+"uid",
+"status",
+"created",
+"changed",
+"comment",
+"promote",
+"moderate",
+"sticky",
+"tnid",
+"translate"
+],
+				"records" : []
+			},
+			
+			"node_revisions" :{
+				"fields" : [
+"nid",
+"vid",
+"uid",
+"title",
+"body",
+"teaser",
+"log",
+"timestamp",
+"format"
+],
+				"records" : []
+			},  
+			
+			"node_type" :{
+				"fields" : [
+"type",
+"name",
+"module",
+"description",
+"help",
+"has_title",
+"title_label",
+"has_body",
+"body_label",
+"min_word_count",
+"custom",
+"modified",
+"locked",
+"orig_type"
+],
+				"records" : []
+			},  
 			
 		}//end tables
 	};
 
+
 	var _init = function( opt ){
-//console.log("init _db!");
-		for(var key in opt ){
-			_vars[key] = opt[key];
-		}
-
-		if( !_vars["data"] ){
-console.log("error in _db(), not find 'data' !");			
-		}
-		if( !_vars["format"] ){
-console.log("error in _db(), not find 'format' !");			
-		}
-		
-		switch( _vars["format"] ){
-			case "xml":
-				_parseXML( _vars["data"] );
-			break;
-			
-			case "json":
-			break;
-			
-			case "csv":
-			break;
-		}//end switch
-		
-
+//console.log("init _db: ", arguments);
 	};//end _init()
 
+	
+	function _loadData( postFunc ){
+//console.log("webApp.db.loadData() ", arguments);
+
+		if( webApp.vars["db_url"].length === 0 ){
+console.log("error in _db(), not find 'db_url' !");
+			return false;
+		}
+		
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : webApp.vars["db_url"], 
+			"callback": function( data ){
+				
+//var msg = "load " + webApp.vars["db_url"] ;
+//console.log("<br>" + msg);
+//webApp.vars["log"].push(msg);
+//console.log( "_postFunc(), " + typeof data );
+//
+
+				if( !data ){
+console.log("error in _db(), not find 'data' !");			
+					return false;
+				}
+				
+				if( webApp.vars["db_type"].length === 0 ){
+console.log("error in _db(), not find 'db_type' !");
+					return false;
+				}
+			
+				switch( webApp.vars["db_type"] ){
+					case "xml":
+						_parseXML( data );
+					break;
+					
+					case "json":
+					break;
+					
+					case "csv":
+					break;
+				}//end switch
+				
+				if( typeof postFunc === "function"){
+					postFunc( data );
+				}
+				
+			}//end callback()
+		});
+		
+	}//end _loadData()
+	
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
 //console.log(arguments);
@@ -610,10 +678,10 @@ console.log("not callback....use return function");
 	
 	function _parseXML(xml){
 
-		//var xmlRoot = _vars["data"].getElementsByTagName("pma_xml_export");
+		//var xmlRoot = xml.getElementsByTagName("pma_xml_export");
 //console.log( xmlRoot, xmlRoot.item(0) ) ;
 //return;
-		var xmlDoc = _vars["data"].getElementsByTagName("database");
+		var xmlDoc = xml.getElementsByTagName("database");
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
 		//fix for Chrome, Safari (exclude tag <pma:database>)
@@ -924,6 +992,9 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 //console.log(arguments);
 			return _init(args); 
 		},
+		loadData:	function( opt ){ 
+			return _loadData( opt ); 
+		},
 		query:	function( opt ){ 
 			return _query( opt ); 
 		},
@@ -1215,10 +1286,12 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"pages": [
+		"node": [
 			{
-				//"id" : 1,
+				"nid" : 1,
+				//"type"
 				"name" : "frontPage",
+				//"templateID" : "node.tpl"
 				"content" : "<h1>Test page</h1>"
 			}
 		],
@@ -1229,7 +1302,7 @@ function _app( opt ){
 				"title" : "Title", 
 				"templateID" : "tpl-block-1",
 				"content" : "<h3>static block-1</h3>",
-				"visibility" : "testPage"
+				"visibility" : "frontPage"
 			},
 			{
 				"name" : "block-style",
@@ -1455,6 +1528,7 @@ console.log(options);
 		if( options["name"].length > 0 ){
 			
 			//....
+			//var node = _nodeLoad( nid );
 			
 			//draw blocks
 			for( var n = 0; n < _vars["blocks"].length; n++){
