@@ -23,10 +23,10 @@ var webApp = {
 	
 	"vars" : {
 		"log" : [],
-		//"db_url" : "db/art.xml",
-		//"db_type" : "xml"
-		"db_url" :"db/art_correct.json",
-		"db_type" : "json"
+		"db_url" : "db/art.xml",
+		"db_type" : "xml"
+		//"db_url" :"db/art_correct.json",
+		//"db_type" : "json"
 		//"db_url" : "db/art.csv"
 	},
 	
@@ -54,9 +54,9 @@ console.log( navigator.userAgent );
 //start
 webApp.init(function(){
 	webApp.db.loadData(function(){
-			//webApp.app.buildPage({
-				//"name" : "frontPage"
-			//});
+			webApp.app.buildPage({
+				"name" : "frontPage"
+			});
 		}//end callback
 	);
 });//end webApp initialize
