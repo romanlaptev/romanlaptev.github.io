@@ -23,9 +23,10 @@ var webApp = {
 	
 	"vars" : {
 		"log" : [],
-		"db_url" : "db/art.xml",
-		"db_type" : "xml"
-		//"db_url" :"db/art.json",
+		//"db_url" : "db/art.xml",
+		//"db_type" : "xml"
+		"db_url" :"db/art_correct.json",
+		"db_type" : "json"
 		//"db_url" : "db/art.csv"
 	},
 	
@@ -53,9 +54,9 @@ console.log( navigator.userAgent );
 //start
 webApp.init(function(){
 	webApp.db.loadData(function(){
-			webApp.app.buildPage({
-				"name" : "frontPage"
-			});
+			//webApp.app.buildPage({
+				//"name" : "frontPage"
+			//});
 		}//end callback
 	);
 });//end webApp initialize
@@ -212,11 +213,10 @@ console.log("error in _db(), not find 'db_url' !");
 			"url" : webApp.vars["db_url"], 
 			"callback": function( data ){
 				
-//var msg = "load " + webApp.vars["db_url"] ;
-//console.log("<br>" + msg);
+var msg = "load " + webApp.vars["db_url"] ;
+console.log("<br>" + msg);
 //webApp.vars["log"].push(msg);
 //console.log( "_postFunc(), " + typeof data );
-//
 
 				if( !data ){
 console.log("error in _db(), not find 'data' !");			
@@ -234,6 +234,23 @@ console.log("error in _db(), not find 'db_type' !");
 					break;
 					
 					case "json":
+						//var obj = typeof data == 'string'? JSON.parse(data): data;
+						if( typeof data === "string"){
+							
+try {
+	//var jsonObj = JSON.parse( data );
+	var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+		return value;
+	});							
+console.log( jsonObj );
+} catch(e) {
+_log( e );
+}							
+						} else {
+console.log("error in _db(), data not in JSON format");
+							return false;
+						}
 					break;
 					
 					case "csv":
