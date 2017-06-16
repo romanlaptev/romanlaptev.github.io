@@ -55,7 +55,8 @@ console.log( navigator.userAgent );
 webApp.init(function(){
 	webApp.db.loadData(function(){
 			webApp.app.buildPage({
-				"name" : "frontPage"
+				"title" : "frontPage",
+				"nid" : 1
 			});
 		}//end callback
 	);
@@ -1046,6 +1047,7 @@ function _draw( opt ){
 			"tpl-list_list" : _getTpl("tpl-list_list"),
 			"tpl-menu" : _getTpl("tpl-menu"),
 			"tpl-menu_list" : _getTpl("tpl-menu_list"),
+			"tpl-block-content" : _getTpl("tpl-block-content"),
 			"tpl-block-1" : _getTpl("tpl-block-1"),
 			"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
 			"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
@@ -1305,11 +1307,25 @@ function _app( opt ){
 	var _vars = {
 		"node": [
 			{
-				"nid" : 1,
-				//"type"
-				"name" : "frontPage",
-				//"templateID" : "node.tpl"
-				"content" : "<h1>Test page</h1>"
+//"templateID" : "node.tpl"
+"nid" : 1,
+"vid" : 1,
+"type" : "photogallery_image",
+//"language" : "ru",
+"title" : "Life Force, 1919", //"frontPage"
+//"uid" : 1,
+"status" : 1,
+"created" : 1335858040,
+"changed" : 1491726570,
+//"comment" : 0,
+//"promote" : 1,
+//"moderate" : 0,
+//"sticky" : 0,
+//"tnid" : 0,
+//"translate" : 0
+//"content" : "<h1>front page</h1>"
+//"format" : 1,
+"body" : "<h1>Page body</h1>"
 			}
 		],
 		"queries": {},
@@ -1318,8 +1334,8 @@ function _app( opt ){
 				"name" : "block-1",
 				"title" : "Title", 
 				"templateID" : "tpl-block-1",
-				"content" : "<h3>static block-1</h3>",
-				"visibility" : "frontPage"
+				"content" : "<u>static text in block-1</u>"//,
+				//"visibility" : "frontPage"
 			},
 			{
 				"name" : "block-style",
@@ -1338,7 +1354,7 @@ function _app( opt ){
 					});
 					
 				},//end callback()
-				"visibility" : "testPage"
+				"visibility" : "frontPage"
 			},
 			{
 				"name" : "block-tech",
@@ -1498,16 +1514,16 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 //console.log("_buildPage()", arguments);
 
 		var options = {
-			//"id": null,
+			"nid": null,
 			//"templateID" : "tpl-page"
-			name : "",
-			content : ""
+			"title" : ""//,
+			//content : ""
 		};
 		//extend options object
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-console.log(options);
+//console.log(options);
 
 	//======================= dynamic block
 		// var _vocabularyName = "info";
@@ -1542,24 +1558,92 @@ console.log(options);
 		// });
 		
 		//draw page content
-		if( options["name"].length > 0 ){
+		if( options["nid"] ){
 			
-			//....
-			//var node = _nodeLoad( nid );
+			var node = _nodeLoad({
+				"nid": options["nid"]//,
+				//"title": options["title"]
+			});
+//console.log( node );
+			if( node ){
+				//draw content block
+				var opt2 = {
+					"name" : "block-content",
+					"title" : node["title"], 
+					"templateID" : "tpl-block-content",
+					"content" : _formNodeContent(node)//node["content"]
+				};
+				_buildBlock( opt2 );
+			}
 			
-			//draw blocks
+			//draw sidebar blocks
 			for( var n = 0; n < _vars["blocks"].length; n++){
 				var opt2 = _vars["blocks"][n];
-//console.log(opt2["visibility"], options["name"]);				
-				if( opt2["visibility"] === options["name"] ){
+//console.log(opt2["visibility"], options["title"]);				
+				if( opt2["visibility"]){
+					if( opt2["visibility"].indexOf( options["title"] ) !== -1 ){
+						_buildBlock( opt2 );
+					}
+				} else {
 					_buildBlock( opt2 );
 				}
+				
 			}//next
 			
 		}
 		
 	};//end _buildPage()
 
+	function _nodeLoad( opt ){
+//console.log("_nodeLoad()", arguments);
+		var p = {
+			"nid": null,
+			"title" : ""
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		var node = {
+			"content" : ""
+		};
+		
+		if( p["nid"] ){
+			//node["content"] = "node by nid!";
+			node = __getNode("nid", p["nid"]);
+		} else {
+			
+			if( p["title"].length > 0 ){
+				//node["content"] = "node by title!";
+				node = __getNode("title", p["title"]);
+			}
+			
+		}
+		
+		return node;
+		
+		function __getNode( key, value ){
+//console.log("__getNode()", arguments);
+			var nodes = webApp.app.vars["node"];
+			var node = {};
+			for( var n = 0; n < nodes.length; n++){
+				if( nodes[n][key] === value){
+					node = nodes[n];
+				}
+			}//next
+//console.log(node);
+			return node;
+		}//__getNode()
+
+	}//end _nodeLoad()
+	
+	function _formNodeContent( node ){
+console.log("_formNodeContent()", arguments);
+		var html = "" + node["body"];
+		return html;
+	}//_formNodeContent()
 	
 	// public interfaces
 	return{
