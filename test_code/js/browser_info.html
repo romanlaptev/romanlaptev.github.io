@@ -1014,6 +1014,29 @@ console.log(e);
 	_push( tests, test );
 	
 //--------------------------------------
+	var test = {
+		"name" : "HTML5: classList support",
+		"msg" : "classList not supported",
+		"result" : false
+	};
+	//test["links"]=[];
+	//var obj = {
+		//"link" : "", 
+		//"text" : ""
+	//};
+	//_push( test["links"], obj );
+	
+	for(key in document.body){
+		if( key === "classList"){
+console.log( key, document.body[key]);
+			test["result"]= true;
+			test["msg"]= "";
+		}
+	}//next
+	_push( tests, test );
+	
+//--------------------------------------
+
 
 //console.log(tests);
 	//for( var item in tests[0] ){
