@@ -78,7 +78,40 @@ var Days = Math.floor((Date2.getTime() - Date1.getTime())/(1000*60*60*24));
 <span id="comp_res"></span>
 		</div>
 
-	</div><!-- end container -->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h1>год является високосным</h1>
+			</div>
+<pre id="code2_out">
+//detect type year
+//https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%81%D0%BE%D0%BA%D0%BE%D1%81%D0%BD%D1%8B%D0%B9_%D0%B3%D0%BE%D0%B4		
+//год является високосным в двух случаях: либо он кратен 4, но при этом не кратен 100, либо кратен 400
+var year = now.getFullYear();
+//var year = 1600;
+var test1 = year % 4;
+//console.log(test1);
+if( test1 === 0){
+	test1 = true;
+	
+	var test2 = year % 400;
+	if( test2 > 0){
+		test1 = false;
+	}
+
+} else {
+	test1 = false;
+}
+if( test1){
+console.log("год является високосным!");	
+	var numDaysInYear = 366;
+} else {
+console.log("год не является високосным!");
+	var numDaysInYear = 365;
+}		
+</pre>
+		</div>
+
+		</div><!-- end container -->
 
 <script id="code2">
 var now = new Date(); 
