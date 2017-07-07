@@ -13,7 +13,7 @@
 	var day_in_ms = 1000*60*60*24;
 	var Days = Math.floor((now.getTime() - startDate.getTime())/ day_in_ms );
 	//document.getElementById("uptime").innerHTML = Days;
-	document.getElementById("current_date").innerHTML += ", ("+Days+"), "; 
+	document.getElementById("current_date").innerHTML += ", ("+Days+") "; 
 	 
 //detect type year
 //год является високосным в двух случаях: либо он кратен 4, но при этом не кратен 100, либо кратен 400
