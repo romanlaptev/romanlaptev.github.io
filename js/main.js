@@ -12,8 +12,8 @@
 	
 	var day_in_ms = 1000*60*60*24;
 	var Days = Math.floor((now.getTime() - startDate.getTime())/ day_in_ms );
-	//document.getElementById("uptime").innerHTML = Days;
-	document.getElementById("current_date").innerHTML += ", ("+Days+") "; 
+	document.getElementById("uptime").innerHTML = Days;
+	//document.getElementById("current_date").innerHTML += ", ("+Days+") "; 
 	 
 //detect type year
 //год является високосным в двух случаях: либо он кратен 4, но при этом не кратен 100, либо кратен 400
@@ -42,6 +42,6 @@ if( test1){
 
 var numYears = Math.floor(Days / numDaysInYear);
 var numDays = Days % numDaysInYear;
-document.getElementById("uptime").innerHTML = numYears +" year "+numDays;
+document.getElementById("uptime2").innerHTML = numYears +" year "+numDays;
 	 
 };//end load
