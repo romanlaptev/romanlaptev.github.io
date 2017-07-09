@@ -2030,7 +2030,7 @@ lib/comp_books/program/asp
 ASP.NET 2.0 Базовый курс
 		</bookname>
 	</node>
-	<node title="ASP.NET 2.0 Углубленное изучение" nid="44" mlid="447" plid="396" type="library_book" created="22-Sep-2012 16:38:59" changed="22-Sep-2012 16:38:59" weight="0">
+	<node title="ASP.NET 2.0 Углубленное изучение" nid="44" mlid="447" plid="396" type="library_book" created="22-Sep-2012 16:38:59" changed="08-Mar-2017 23:01:12" weight="0">
 		<body_value>
 Дино Экспозито. ASP.NET 2.0 Углубленное изучение
 		</body_value>
@@ -2044,9 +2044,9 @@ lib/comp_books/program/asp
 ASP.NET 2.0 Углубленное изучение
 		</bookname>
 	</node>
-	<node title="ASP.NET MVC Framework (Профессиональное программирование)" nid="33" mlid="420" plid="396" type="library_book" created="19-Sep-2012 23:32:01" changed="19-Sep-2012 23:32:01" weight="0">
+	<node title="ASP.NET MVC Framework (Профессиональное программирование)" nid="33" mlid="420" plid="396" type="library_book" created="19-Sep-2012 23:32:01" changed="08-Mar-2017 23:04:46" weight="0">
 		<subfolder>
-lib/books/comp_books/program/asp
+lib/comp_books/program/asp
 		</subfolder>
 		<author>
 Магдануров Г.И., Юнев В.А.
@@ -2055,9 +2055,9 @@ lib/books/comp_books/program/asp
 ASP.NET MVC Framework (Профессиональное программирование)
 		</bookname>
 	</node>
-	<node title="ASP.NET. Учебный_курс" nid="36" mlid="423" plid="396" type="library_book" created="19-Sep-2012 23:45:48" changed="19-Sep-2012 23:46:40" weight="0">
+	<node title="ASP.NET. Учебный_курс" nid="36" mlid="423" plid="396" type="library_book" created="19-Sep-2012 23:45:48" changed="08-Mar-2017 22:58:39" weight="0">
 		<subfolder>
-lib/books/comp_books/program/asp
+lib/comp_books/program/asp
 		</subfolder>
 		<author>
 Г.Бучек.
@@ -2368,6 +2368,20 @@ lib/comp_books/program/js
 HTML5. Для профессионалов
 		</bookname>
 	</node>
+	<node title="JavaScript. Библия пользователя, 2006" nid="1713" mlid="2113" plid="391" type="library_book" created="26-Mar-2017 10:34:47" changed="26-Mar-2017 10:44:21" weight="0">
+		<body_value>
+ 5-е издание
+		</body_value>
+		<subfolder>
+lib/comp_books/program/js
+		</subfolder>
+		<author>
+Дэнни Гудман, Майкл Моррисон
+		</author>
+		<bookname>
+JavaScript. Библия пользователя
+		</bookname>
+	</node>
 	<node title="MODx" nid="1504" mlid="1513" plid="1502" type="library_book" created="18-Aug-2013 18:02:42" changed="18-Aug-2013 18:02:42" weight="0">
 		<body_value>
 http://efimov.ws/main/develop/modx.html
@@ -2407,7 +2421,7 @@ lib/comp_books/program/asp
 Microsoft ASP .NET. Обеспечение безопасности
 		</bookname>
 	</node>
-	<node title="Microsoft ASP.NET 2.0 с примерами на C# 2005 для профессионалов" nid="38" mlid="425" plid="396" type="library_book" created="19-Sep-2012 23:53:36" changed="19-Sep-2012 23:53:36" weight="0">
+	<node title="Microsoft ASP.NET 2.0 с примерами на C# 2005 для профессионалов" nid="38" mlid="425" plid="396" type="library_book" created="19-Sep-2012 23:53:36" changed="08-Mar-2017 23:08:16" weight="0">
 		<body_value>
 Microsoft ASP.NET 2.0 с примерами на C# 2005 для профессионалов
 		</body_value>
@@ -17489,9 +17503,11 @@ lib/books/B/Bulgakov.M
 Белая гвардия
 		</bookname>
 	</node>
-	<node title="Беляев Александр. Звезда Кэц" nid="622" mlid="1605" plid="386" type="library_book" created="09-Oct-2012 22:41:10" changed="21-Nov-2014 02:01:29" weight="0">
+	<node title="Беляев Александр" nid="1714" mlid="2114" plid="386" type="author" created="30-Apr-2017 19:22:06" changed="30-Apr-2017 20:17:24" weight="0">
+	</node>
+	<node title="Беляев Александр. Звезда Кэц" nid="622" mlid="1605" plid="2114" type="library_book" created="09-Oct-2012 22:41:10" changed="30-Apr-2017 19:26:38" weight="0">
 		<subfolder>
-lib/books/B
+lib/books/B/Belyaev_Aleksandr
 		</subfolder>
 		<author>
 Беляев Александр
@@ -18189,6 +18205,14 @@ lib/books/L/Lukyanenko.S
 	</node>
 	<node title="Гоголь Н.В." nid="1616" mlid="1807" plid="386" type="author" created="09-Aug-2014 00:19:28" changed="09-Aug-2014 00:19:28" weight="0">
 	</node>
+	<node title="Голова профессора Доуэля" nid="1716" mlid="2117" plid="2114" type="library_book" created="30-Apr-2017 19:57:25" changed="30-Apr-2017 19:58:10" weight="0">
+		<subfolder>
+lib/books/B/Belyaev_Aleksandr
+		</subfolder>
+		<bookname>
+Голова профессора Доуэля
+		</bookname>
+	</node>
 	<node title="Гончаров И.А. Обрыв" nid="1420" mlid="1353" plid="386" type="library_book" created="22-Apr-2013 22:14:44" changed="09-Aug-2014 16:30:01" weight="0">
 		<subfolder>
 lib/books/G
@@ -18660,7 +18684,7 @@ lib/books/N/Notomb.Ameli
 Дрожь и оцепенение
 		</bookname>
 	</node>
-	<node title="Дронов В.А.JAVASCRIPT В WEB-ДИЗАЙНЕ" nid="1432" mlid="1368" plid="391" type="library_book" created="29-Jun-2013 19:56:39" changed="13-Jul-2015 17:01:16" weight="0">
+	<node title="Дронов В.А.JAVASCRIPT В WEB-ДИЗАЙНЕ, 2001" nid="1432" mlid="1368" plid="391" type="library_book" created="29-Jun-2013 19:56:39" changed="26-Mar-2017 10:41:38" weight="0">
 		<subfolder>
 lib/comp_books/program/js
 		</subfolder>
@@ -19356,7 +19380,7 @@ lib/books/E
 В двух шагах от рая
 		</bookname>
 	</node>
-	<node title="Живая вода. Советский рассказ двадцатых годов" nid="1710" mlid="2109" plid="386" type="library_book" created="13-Jan-2017 22:17:50" changed="13-Jan-2017 22:27:30" weight="0">
+	<node title="Живая вода. Советский рассказ двадцатых годов" nid="1710" mlid="2109" plid="386" type="library_book" created="13-Jan-2017 22:17:50" changed="16-Apr-2017 22:56:51" weight="0">
 		<subfolder>
 lib/books/collection
 		</subfolder>
@@ -19519,6 +19543,14 @@ lib/books/K/Kafka.F
 		</author>
 		<bookname>
 Замок
+		</bookname>
+	</node>
+	<node title="Замок ведьм" nid="1719" mlid="2120" plid="2114" type="library_book" created="30-Apr-2017 20:14:41" changed="30-Apr-2017 20:15:20" weight="0">
+		<subfolder>
+lib/books/B/Belyaev_Aleksandr
+		</subfolder>
+		<bookname>
+Замок ведьм
 		</bookname>
 	</node>
 	<node title="Замятин. Мы" nid="1505" mlid="1514" plid="386" type="library_book" created="12-Sep-2013 21:55:23" changed="21-Aug-2016 14:27:58" weight="0">
@@ -21095,7 +21127,7 @@ lib/books/SH
 Низший Пилотаж
 		</bookname>
 	</node>
-	<node title="Николенко Д.В. Практические Занятия по JavaScript.pdf" nid="1431" mlid="1367" plid="391" type="library_book" created="29-Jun-2013 19:49:39" changed="07-Feb-2016 13:18:14" weight="0">
+	<node title="Николенко Д.В. Практические Занятия по JavaScript.pdf, 2000" nid="1431" mlid="1367" plid="391" type="library_book" created="29-Jun-2013 19:49:39" changed="26-Mar-2017 10:42:13" weight="0">
 		<subfolder>
 lib/comp_books/program/js
 		</subfolder>
@@ -21162,7 +21194,7 @@ lib/books/0_art
 Древнерусская книжная миниатюра
 		</bookname>
 	</node>
-	<node title="Обитаемый остров" nid="601" mlid="1767" plid="1705" type="library_book" created="09-Oct-2012 22:41:10" changed="03-Aug-2014 00:40:24" weight="0">
+	<node title="Обитаемый остров" nid="601" mlid="1767" plid="1705" type="library_book" created="09-Oct-2012 22:41:10" changed="29-Jun-2017 22:56:13" weight="0">
 		<body_value>
 Стругацкий Аркадий, Стругацкий Борис. обитаемый остров
 		</body_value>
@@ -21694,6 +21726,19 @@ lib/books/S/Strugatskie
 Повесть о дружбе и недружбе
 		</bookname>
 	</node>
+	<node title="Подводные земледельцы" nid="1715" mlid="2116" plid="2114" type="library_book" created="30-Apr-2017 19:32:23" changed="30-Apr-2017 19:36:37" weight="0">
+		<body_value>
+https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B4%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5_%D0%B7%D0%B5%D0%BC%D0%BB%D0%B5%D0%B4%D0%B5%D0%BB%D1%8C%D1%86%D1%8B
+
+https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82_%C2%AB%D0%98%D1%85%D1%82%D0%B8%D0%B0%D0%BD%D0%B4%D1%80%C2%BB
+		</body_value>
+		<subfolder>
+lib/books/B/Belyaev_Aleksandr
+		</subfolder>
+		<bookname>
+Подводные земледельцы
+		</bookname>
+	</node>
 	<node title="Подробности жизни Никиты Воронцова" nid="599" mlid="1769" plid="1705" type="library_book" created="09-Oct-2012 22:41:10" changed="04-Jun-2015 00:53:17" weight="0">
 		<body_value>
 Стругацкий Аркадий, Стругацкий Борис. подробности жизни никиты воронцова
@@ -21825,7 +21870,7 @@ lib/books/M
 Принц-кролик
 		</bookname>
 	</node>
-	<node title="Программирование на платформе Microsoft .NET Framework" nid="42" mlid="445" plid="396" type="library_book" created="22-Sep-2012 16:34:12" changed="22-Sep-2012 16:34:12" weight="0">
+	<node title="Программирование на платформе Microsoft .NET Framework" nid="42" mlid="445" plid="396" type="library_book" created="22-Sep-2012 16:34:12" changed="08-Mar-2017 23:24:45" weight="0">
 		<body_value>
 Рихтер Дж. Программирование на платформе Microsoft .NET Framework
 		</body_value>
@@ -21980,7 +22025,7 @@ lib/books/0_art
 	</node>
 	<node title="Пушкин А.С." nid="1686" mlid="2078" plid="485" type="author" created="09-Feb-2016 23:26:07" changed="09-Feb-2016 23:26:07" weight="0">
 	</node>
-	<node title="Разработка Web-приложений в среде ASP.NET 2.0: задача - проект - решение" nid="37" mlid="424" plid="396" type="library_book" created="19-Sep-2012 23:49:55" changed="20-Sep-2012 00:02:34" weight="0">
+	<node title="Разработка Web-приложений в среде ASP.NET 2.0: задача - проект - решение" nid="37" mlid="424" plid="396" type="library_book" created="19-Sep-2012 23:49:55" changed="08-Mar-2017 23:21:43" weight="0">
 		<body_value>
 Марко Беллиньясо. Разработка Web-приложений в среде ASP.NET 2.0: задача - проект - решение
 		</body_value>
@@ -22111,6 +22156,17 @@ lib/books/F
 	</node>
 	<node title="Робер Мерль" nid="1629" mlid="1928" plid="386" type="author" created="09-Aug-2014 16:49:35" changed="09-Aug-2014 16:49:35" weight="0">
 	</node>
+	<node title="Рой" nid="1721" mlid="2122" plid="386" type="library_book" created="09-Jul-2017 12:35:56" changed="09-Jul-2017 12:43:01" weight="0">
+		<subfolder>
+lib/books/K
+		</subfolder>
+		<author>
+Крайтон Майкл
+		</author>
+		<bookname>
+Рой
+		</bookname>
+	</node>
 	<node title="Роковые яйца" nid="559" mlid="1720" plid="1718" type="library_book" created="09-Oct-2012 22:41:10" changed="21-Nov-2014 02:54:33" weight="0">
 		<subfolder>
 lib/books/B/Bulgakov.M
@@ -22136,7 +22192,7 @@ lib/books/A
 Роман с кокаином
 		</bookname>
 	</node>
-	<node title="Русская редакция Альманах программиста Том 2 ASP.NET Web-сервисы WEB-приложения" nid="41" mlid="444" plid="396" type="library_book" created="22-Sep-2012 16:31:44" changed="22-Sep-2012 16:31:44" weight="0">
+	<node title="Русская редакция Альманах программиста Том 2 ASP.NET Web-сервисы WEB-приложения" nid="41" mlid="444" plid="396" type="library_book" created="22-Sep-2012 16:31:44" changed="08-Mar-2017 23:25:32" weight="0">
 		<body_value>
 Русская редакция Альманах программиста Том 2 ASP.NET Web-сервисы WEB-приложения
 		</body_value>
@@ -22494,7 +22550,7 @@ lib/comp_books/program/js/Iliya Kantor_2015
 Современный учебник JavaScript
 		</bookname>
 	</node>
-	<node title="Создание приложений Microsoft ASP.NET" nid="39" mlid="426" plid="396" type="library_book" created="19-Sep-2012 23:56:26" changed="20-Sep-2012 00:01:27" weight="0">
+	<node title="Создание приложений Microsoft ASP.NET" nid="39" mlid="426" plid="396" type="library_book" created="19-Sep-2012 23:56:26" changed="08-Mar-2017 23:28:09" weight="0">
 		<body_value>
 Рейли Д.  Создание приложений Microsoft ASP.NET
 		</body_value>
@@ -23533,12 +23589,12 @@ lib/books/H/Hesse
 Степной волк
 		</bookname>
 	</node>
-	<node title="Стивен Сандерсон. ASP .NET MVC Framework с примерами на C# (для профессионалов)" nid="32" mlid="419" plid="396" type="library_book" created="19-Sep-2012 23:17:19" changed="22-Sep-2012 16:48:57" weight="0">
+	<node title="Стивен Сандерсон. ASP .NET MVC Framework с примерами на C# (для профессионалов)" nid="32" mlid="419" plid="396" type="library_book" created="19-Sep-2012 23:17:19" changed="08-Mar-2017 23:31:11" weight="0">
 		<body_value>
 Стивен Сандерсон - ASP .NET MVC Framework с примерами на C# (для профессионалов) - 2010
 		</body_value>
 		<subfolder>
-lib/books/comp_books/program/asp
+lib/comp_books/program/asp
 		</subfolder>
 		<author>
 Стивен Сандерсон
@@ -26951,7 +27007,21 @@ lib/books/0_history
 Осень Средневековья
 		</bookname>
 	</node>
-	<node title="Хромая судьба" nid="595" mlid="1777" plid="1705" type="library_book" created="09-Oct-2012 22:41:10" changed="03-Aug-2014 00:53:37" weight="0">
+	<node title="Хищные вещи века" nid="1720" mlid="2121" plid="1705" type="library_book" created="29-Jun-2017 23:00:18" changed="29-Jun-2017 23:02:54" weight="0">
+		<body_value>
+https://ru.wikipedia.org/wiki/%D0%A5%D0%B8%D1%89%D0%BD%D1%8B%D0%B5_%D0%B2%D0%B5%D1%89%D0%B8_%D0%B2%D0%B5%D0%BA%D0%B0
+		</body_value>
+		<subfolder>
+lib/books/S/Strugatskie
+		</subfolder>
+		<author>
+Аркадий Стругацкий, Борис Стругацкий
+		</author>
+		<bookname>
+Хищные вещи века
+		</bookname>
+	</node>
+	<node title="Хромая судьба" nid="595" mlid="1777" plid="1705" type="library_book" created="09-Oct-2012 22:41:10" changed="29-Jun-2017 22:55:27" weight="0">
 		<body_value>
 Стругацкий Аркадий, Стругацкий Борис. хромая судьба
 		</body_value>
@@ -27057,6 +27127,19 @@ lib/books/G
 Человек, который смеется
 		</bookname>
 	</node>
+	<node title="Человек-амфибия" nid="1718" mlid="2119" plid="2114" type="library_book" created="30-Apr-2017 20:11:53" changed="30-Apr-2017 20:11:53" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books/B/Belyaev_Aleksandr
+		</subfolder>
+		<bookname>
+Человек-амфибия
+		</bookname>
+	</node>
 	<node title="Черная свеча" nid="1423" mlid="1356" plid="386" type="library_book" created="05-May-2013 17:30:31" changed="09-Aug-2014 16:29:05" weight="0">
 		<body_value>
 &amp;lt;pre&amp;gt;
@@ -27119,6 +27202,14 @@ lib/books/YA
 		</author>
 		<bookname>
 Чингиз-хан (Книга 2)
+		</bookname>
+	</node>
+	<node title="Чудесное око" nid="1717" mlid="2118" plid="2114" type="library_book" created="30-Apr-2017 20:00:47" changed="30-Apr-2017 20:08:05" weight="0">
+		<subfolder>
+lib/books/B/Belyaev_Aleksandr
+		</subfolder>
+		<bookname>
+Чудесное око
 		</bookname>
 	</node>
 	<node title="Шаламов Варлам" nid="1625" mlid="1903" plid="386" type="author" created="09-Aug-2014 16:13:43" changed="09-Aug-2014 16:13:43" weight="0">
@@ -30458,10 +30549,34 @@ lib/art_books/book_history_engraving
 		<value>prilepin_zahar_voina_rasskazy.fb2.zip</value>
 	</item>
 	<item entity_id="1710" bundle="library_book" delta="0">
-		<value>Sovetskii_rasskaz_20-h_godov.fb2</value>
+		<value>Sovetskii_rasskaz_20-h_godov.fb2.zip</value>
 	</item>
 	<item entity_id="1712" bundle="library_book" delta="0">
 		<value>bulychev_kir_poselok.fb2.zip</value>
+	</item>
+	<item entity_id="1713" bundle="library_book" delta="0">
+		<value>biblpolzovatelyajavascript2006.pdf</value>
+	</item>
+	<item entity_id="1715" bundle="library_book" delta="0">
+		<value>belyaev_aleksandr_podvodnye_zemledelcy.fb2.zip</value>
+	</item>
+	<item entity_id="1716" bundle="library_book" delta="0">
+		<value>belyaev_aleksandr_golova_professora_douyelya.fb2.zip</value>
+	</item>
+	<item entity_id="1717" bundle="library_book" delta="0">
+		<value>belyaev_aleksandr_chudesnoe_oko.fb2.zip</value>
+	</item>
+	<item entity_id="1718" bundle="library_book" delta="0">
+		<value>belyaev_aleksandr_chelovekamfibiya.fb2.zip</value>
+	</item>
+	<item entity_id="1719" bundle="library_book" delta="0">
+		<value>belyaev_aleksandr_zamok_vedm.fb2.zip</value>
+	</item>
+	<item entity_id="1720" bundle="library_book" delta="0">
+		<value>strugackie_arkadii_i_boris_hishnye_veshi_veka.fb2.zip</value>
+	</item>
+	<item entity_id="1721" bundle="library_book" delta="0">
+		<value>kraiton_maikl_roi.fb2.zip</value>
 	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
@@ -30589,11 +30704,17 @@ lib/art_books/book_history_engraving
 	<item entity_id="658" bundle="library_book" delta="1">
 		<value>skott_valter_aivengo.fb2.zip</value>
 	</item>
+	<item entity_id="601" bundle="library_book" delta="1">
+		<value>strugackie_arkadii_i_boris_obitaemyi_ostrov.fb2.zip</value>
+	</item>
 	<item entity_id="599" bundle="library_book" delta="1">
 		<value>strugackii_arkadii_podrobnosti_zhizni_nikity_voroncova.fb2.zip</value>
 	</item>
 	<item entity_id="598" bundle="library_book" delta="1">
 		<value>strugackii_arkadii_paren_iz_preispodnei.fb2#fb2 format</value>
+	</item>
+	<item entity_id="595" bundle="library_book" delta="1">
+		<value>strugackie_arkadii_i_boris_hromaya_sudba.fb2.zip</value>
 	</item>
 	<item entity_id="586" bundle="library_book" delta="1">
 		<value>haeckaya_elena_mirra_i_dyavol.fb2.zip</value>
@@ -30672,6 +30793,9 @@ lib/art_books/book_history_engraving
 	</item>
 	<item entity_id="1712" bundle="library_book" delta="1">
 		<value>poselok.txt.html</value>
+	</item>
+	<item entity_id="1717" bundle="library_book" delta="1">
+		<value>oko.txt</value>
 	</item>
 	<item entity_id="8" bundle="library_book" delta="2">
 		<value>forums,faq</value>
@@ -31045,41 +31169,14 @@ lib/art_books/book_history_engraving
 	<item entity_id="30" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="32" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/stiven_sanderson_-_asp_.net_mvc_framework_s_primerami_na_c_dlya_professionalov_-_2010.djvu</value>
-	</item>
-	<item entity_id="33" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/magdanurov_g.i._yunev_v.a._-_asp.net_mvc_framework_professionalnoe_programmirovanie_-_2010.djvu</value>
-	</item>
 	<item entity_id="34" bundle="library_book" delta="0">
 		<value>http://mycomp/lib/comp_books/program/asp/dominik_bayer_-_microsoft_asp_.net_._obespechenie_bezopasnosti.djvu</value>
-	</item>
-	<item entity_id="36" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/g.buchek._asp.net_._uchebnyy_kurs.djvu</value>
-	</item>
-	<item entity_id="37" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/razrabotka_web_prilojenyi_asp_net_2.djvu</value>
-	</item>
-	<item entity_id="38" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/microsoft_asp.net_2.0_s_primerami_na_c_2005_dlya_professionalov.pdf</value>
-	</item>
-	<item entity_id="39" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/reyli_d._sozdanie_prilozheniy_microsoft_asp.net_.pdf</value>
 	</item>
 	<item entity_id="40" bundle="library_book" delta="0">
 		<value>http://mycomp/lib/comp_books/program/asp/prakticheskoe_ispolzovanie_asp.net_-_dostup_k_dannym_v_internet.pdf</value>
 	</item>
-	<item entity_id="41" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/russkaya_redakciya_almanah_programmista_tom_2_asp.net_web-servisy_web-prilozheniya.pdf</value>
-	</item>
-	<item entity_id="42" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/rihter_dzh._programmirovanie_na_platforme_microsoft_.net_framework.pdf</value>
-	</item>
 	<item entity_id="43" bundle="library_book" delta="0">
 		<value>file:///mnt/terra/clouds/0_data#local file</value>
-	</item>
-	<item entity_id="44" bundle="library_book" delta="0">
-		<value>http://mycomp/lib/comp_books/program/asp/dino_ekspozito._asp.net_2.0_uglublennoe_izuchenie.djvu</value>
 	</item>
 	<item entity_id="45" bundle="library_book" delta="0">
 		<value>file:///mnt/terra/clouds/0_data#local file</value>
@@ -31567,16 +31664,10 @@ lib/art_books/book_history_engraving
 	<item entity_id="544" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="601" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
 	<item entity_id="597" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
 	<item entity_id="596" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
-	<item entity_id="595" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
 	<item entity_id="594" bundle="library_book" delta="0">
@@ -31855,6 +31946,21 @@ lib/art_books/book_history_engraving
 	<item entity_id="1702" bundle="library_book" delta="0">
 		<value>file:///mnt/terra/clouds/0_data</value>
 	</item>
+	<item entity_id="1715" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1716" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1717" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1718" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1719" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
 	<item entity_id="27" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
@@ -31864,38 +31970,11 @@ lib/art_books/book_history_engraving
 	<item entity_id="30" bundle="library_book" delta="1">
 		<value>file://e:</value>
 	</item>
-	<item entity_id="32" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/M8IWwqdlMcpm</value>
-	</item>
-	<item entity_id="33" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/a4Ex_KltMcpO</value>
-	</item>
 	<item entity_id="34" bundle="library_book" delta="1">
 		<value>http://yadi.sk/d/1AeCXXbIMcpA</value>
 	</item>
-	<item entity_id="36" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/kv7DgjpsMcpG</value>
-	</item>
-	<item entity_id="37" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/5GQ-d0ZnMcpa</value>
-	</item>
-	<item entity_id="38" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/-3X4TBRBMcpU</value>
-	</item>
-	<item entity_id="39" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/SjLcam6gMcpc</value>
-	</item>
 	<item entity_id="40" bundle="library_book" delta="1">
 		<value>http://yadi.sk/d/O1_8g92kMcpY</value>
-	</item>
-	<item entity_id="41" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/GSCdHsOnMcpi</value>
-	</item>
-	<item entity_id="42" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/z8u0ma2yMcpg</value>
-	</item>
-	<item entity_id="44" bundle="library_book" delta="1">
-		<value>http://yadi.sk/d/m_G63m53Mcp6</value>
 	</item>
 	<item entity_id="46" bundle="library_book" delta="1">
 		<value>http://yadi.sk/d/hjcLm1AQMcpI</value>
@@ -32299,16 +32378,10 @@ lib/art_books/book_history_engraving
 	<item entity_id="544" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
-	<item entity_id="601" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
 	<item entity_id="597" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="596" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
-	<item entity_id="595" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="594" bundle="library_book" delta="1">
@@ -32725,6 +32798,33 @@ lib/art_books/book_history_engraving
 	<item entity_id="8" bundle="library_book" delta="0">
 		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/program/js/#javascript, google disk link</value>
 	</item>
+	<item entity_id="32" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/M8IWwqdlMcpm</value>
+	</item>
+	<item entity_id="33" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/a4Ex_KltMcpO</value>
+	</item>
+	<item entity_id="36" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/kv7DgjpsMcpG</value>
+	</item>
+	<item entity_id="37" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/5GQ-d0ZnMcpa</value>
+	</item>
+	<item entity_id="38" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/-3X4TBRBMcpU</value>
+	</item>
+	<item entity_id="39" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/SjLcam6gMcpc</value>
+	</item>
+	<item entity_id="41" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/GSCdHsOnMcpi</value>
+	</item>
+	<item entity_id="42" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/z8u0ma2yMcpg</value>
+	</item>
+	<item entity_id="44" bundle="library_book" delta="0">
+		<value>http://yadi.sk/d/m_G63m53Mcp6</value>
+	</item>
 	<item entity_id="50" bundle="library_book" delta="0">
 		<value>http://yadi.sk/d/3j73JhtILvrZ</value>
 	</item>
@@ -33031,6 +33131,17 @@ http://localhost#localhost, direct link
 	<item entity_id="1709" bundle="library_book" delta="0">
 		<value>
 </value>
+	</item>
+	<item entity_id="1716" bundle="library_book" delta="0">
+		<value>
+</value>
+	</item>
+	<item entity_id="1718" bundle="library_book" delta="0">
+		<value>
+</value>
+	</item>
+	<item entity_id="1721" bundle="library_book" delta="0">
+		<value>http://lib.ru/DETEKTIWY/KRAJTON/roj.txt</value>
 	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
@@ -33921,7 +34032,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="601" delta="0">
-		<termin tid="67" >txt</termin>
+		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="599" delta="0">
 		<termin tid="39" >художественая литература</termin>
@@ -33936,7 +34047,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="595" delta="0">
-		<termin tid="67" >txt</termin>
+		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="594" delta="0">
 		<termin tid="67" >txt</termin>
@@ -34452,6 +34563,33 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="1712" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1713" delta="0">
+		<termin tid="38" >компьютерная литература</termin>
+	</item>
+	<item entity_id="1714" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1715" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1716" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1717" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1718" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1719" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1720" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1721" delta="0">
 		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="8" delta="1">
@@ -35022,7 +35160,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="64" >Системный администратор</termin>
 	</item>
 	<item entity_id="622" delta="1">
-		<termin tid="185" >fb2</termin>
+		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="1596" delta="1">
 		<termin tid="38" >компьютерная литература</termin>
@@ -35115,7 +35253,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="4" >приключения</termin>
 	</item>
 	<item entity_id="601" delta="1">
-		<termin tid="39" >художественая литература</termin>
+		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="599" delta="1">
 		<termin tid="173" >фантастика</termin>
@@ -35130,7 +35268,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="7" >biography</termin>
 	</item>
 	<item entity_id="595" delta="1">
-		<termin tid="39" >художественая литература</termin>
+		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="594" delta="1">
 		<termin tid="39" >художественая литература</termin>
@@ -35606,6 +35744,33 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1712" delta="1">
 		<termin tid="173" >фантастика</termin>
 	</item>
+	<item entity_id="1713" delta="1">
+		<termin tid="40" >программирование</termin>
+	</item>
+	<item entity_id="1714" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1715" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1716" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1717" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1718" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1719" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1720" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1721" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
 	</item>
@@ -36027,7 +36192,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="40" >программирование</termin>
 	</item>
 	<item entity_id="622" delta="2">
-		<termin tid="68" >xml</termin>
+		<termin tid="24" >научная фантастика</termin>
 	</item>
 	<item entity_id="1596" delta="2">
 		<termin tid="40" >программирование</termin>
@@ -36117,7 +36282,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="14" >исторический роман, рассказ</termin>
 	</item>
 	<item entity_id="601" delta="2">
-		<termin tid="173" >фантастика</termin>
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="599" delta="2">
 		<termin tid="185" >fb2</termin>
@@ -36129,7 +36294,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="595" delta="2">
-		<termin tid="173" >фантастика</termin>
+		<termin tid="174" >социальная фантастика</termin>
 	</item>
 	<item entity_id="594" delta="2">
 		<termin tid="173" >фантастика</termin>
@@ -36542,6 +36707,33 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1712" delta="2">
 		<termin tid="178" >роман</termin>
 	</item>
+	<item entity_id="1713" delta="2">
+		<termin tid="100" >javascript</termin>
+	</item>
+	<item entity_id="1714" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1715" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1716" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1717" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1718" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1719" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1720" delta="2">
+		<termin tid="174" >социальная фантастика</termin>
+	</item>
+	<item entity_id="1721" delta="2">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
 	<item entity_id="82" delta="3">
 		<termin tid="183" >антикварные книги</termin>
 	</item>
@@ -36792,7 +36984,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="100" >javascript</termin>
 	</item>
 	<item entity_id="622" delta="3">
-		<termin tid="67" >txt</termin>
+		<termin tid="4" >приключения</termin>
 	</item>
 	<item entity_id="1596" delta="3">
 		<termin tid="170" >Ruby</termin>
@@ -36855,7 +37047,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="595" delta="3">
-		<termin tid="174" >социальная фантастика</termin>
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="586" delta="3">
 		<termin tid="67" >txt</termin>
@@ -37103,6 +37295,30 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1712" delta="3">
 		<termin tid="185" >fb2</termin>
 	</item>
+	<item entity_id="1713" delta="3">
+		<termin tid="69" >pdf</termin>
+	</item>
+	<item entity_id="1715" delta="3">
+		<termin tid="4" >приключения</termin>
+	</item>
+	<item entity_id="1716" delta="3">
+		<termin tid="4" >приключения</termin>
+	</item>
+	<item entity_id="1717" delta="3">
+		<termin tid="4" >приключения</termin>
+	</item>
+	<item entity_id="1718" delta="3">
+		<termin tid="4" >приключения</termin>
+	</item>
+	<item entity_id="1719" delta="3">
+		<termin tid="179" >повесть</termin>
+	</item>
+	<item entity_id="1720" delta="3">
+		<termin tid="179" >повесть</termin>
+	</item>
+	<item entity_id="1721" delta="3">
+		<termin tid="4" >приключения</termin>
+	</item>
 	<item entity_id="224" delta="4">
 		<termin tid="4" >приключения</termin>
 	</item>
@@ -37162,6 +37378,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1523" delta="4">
 		<termin tid="102" >jQuery</termin>
+	</item>
+	<item entity_id="622" delta="4">
+		<termin tid="178" >роман</termin>
 	</item>
 	<item entity_id="1607" delta="4">
 		<termin tid="67" >txt</termin>
@@ -37283,6 +37502,18 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1712" delta="4">
 		<termin tid="67" >txt</termin>
 	</item>
+	<item entity_id="1715" delta="4">
+		<termin tid="178" >роман</termin>
+	</item>
+	<item entity_id="1718" delta="4">
+		<termin tid="178" >роман</termin>
+	</item>
+	<item entity_id="1719" delta="4">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1721" delta="4">
+		<termin tid="178" >роман</termin>
+	</item>
 	<item entity_id="1449" delta="5">
 		<termin tid="69" >pdf</termin>
 	</item>
@@ -37291,6 +37522,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1523" delta="5">
 		<termin tid="69" >pdf</termin>
+	</item>
+	<item entity_id="622" delta="5">
+		<termin tid="185" >fb2</termin>
 	</item>
 	<item entity_id="617" delta="5">
 		<termin tid="67" >txt</termin>
@@ -37319,6 +37553,18 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1705" delta="5">
 		<termin tid="67" >txt</termin>
 	</item>
+	<item entity_id="1715" delta="5">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1718" delta="5">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="1721" delta="5">
+		<termin tid="185" >fb2</termin>
+	</item>
+	<item entity_id="622" delta="6">
+		<termin tid="68" >xml</termin>
+	</item>
 	<item entity_id="555" delta="6">
 		<termin tid="68" >xml</termin>
 	</item>
@@ -37327,6 +37573,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1667" delta="6">
 		<termin tid="20" >Новелла, рассказ</termin>
+	</item>
+	<item entity_id="622" delta="7">
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="555" delta="7">
 		<termin tid="67" >txt</termin>
@@ -38144,6 +38393,33 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1712" delta="0">
 		<termin tid="140" >Б</termin>
 	</item>
+	<item entity_id="1713" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1714" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1715" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1716" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1717" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1718" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1719" delta="0">
+		<termin tid="140" >Б</termin>
+	</item>
+	<item entity_id="1720" delta="0">
+		<termin tid="156" >С</termin>
+	</item>
+	<item entity_id="1721" delta="0">
+		<termin tid="127" >K</termin>
+	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
 	</item>
@@ -38738,6 +39014,15 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1709" delta="1">
 		<termin tid="141" >В</termin>
 	</item>
+	<item entity_id="1715" delta="1">
+		<termin tid="147" >З</termin>
+	</item>
+	<item entity_id="1716" delta="1">
+		<termin tid="143" >Д</termin>
+	</item>
+	<item entity_id="1720" delta="1">
+		<termin tid="160" >Х</termin>
+	</item>
 	<item entity_id="137" delta="2">
 		<termin tid="156" >С</termin>
 	</item>
@@ -38957,6 +39242,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1703" delta="2">
 		<termin tid="160" >Х</termin>
 	</item>
+	<item entity_id="1715" delta="2">
+		<termin tid="154" >П</termin>
+	</item>
 	<item entity_id="137" delta="3">
 		<termin tid="159" >Ф</termin>
 	</item>
@@ -39032,29 +39320,11 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="29" tid="42">
 	</item>
-	<item nid="33" tid="38">
-	</item>
-	<item nid="33" tid="40">
-	</item>
-	<item nid="33" tid="43">
-	</item>
 	<item nid="34" tid="38">
 	</item>
 	<item nid="34" tid="40">
 	</item>
 	<item nid="34" tid="43">
-	</item>
-	<item nid="36" tid="38">
-	</item>
-	<item nid="36" tid="40">
-	</item>
-	<item nid="36" tid="43">
-	</item>
-	<item nid="38" tid="38">
-	</item>
-	<item nid="38" tid="40">
-	</item>
-	<item nid="38" tid="43">
 	</item>
 	<item nid="40" tid="38">
 	</item>
@@ -39062,45 +39332,11 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="40" tid="43">
 	</item>
-	<item nid="39" tid="38">
-	</item>
-	<item nid="39" tid="40">
-	</item>
-	<item nid="39" tid="43">
-	</item>
-	<item nid="37" tid="38">
-	</item>
-	<item nid="37" tid="40">
-	</item>
-	<item nid="37" tid="43">
-	</item>
-	<item nid="41" tid="38">
-	</item>
-	<item nid="41" tid="40">
-	</item>
-	<item nid="41" tid="43">
-	</item>
-	<item nid="42" tid="38">
-	</item>
-	<item nid="42" tid="40">
-	</item>
-	<item nid="42" tid="43">
-	</item>
-	<item nid="44" tid="38">
-	</item>
-	<item nid="44" tid="40">
-	</item>
-	<item nid="44" tid="43">
-	</item>
 	<item nid="46" tid="38">
 	</item>
 	<item nid="46" tid="40">
 	</item>
 	<item nid="46" tid="43">
-	</item>
-	<item nid="32" tid="40">
-	</item>
-	<item nid="32" tid="43">
 	</item>
 	<item nid="56" tid="47">
 	</item>
@@ -40564,16 +40800,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="544" tid="139">
 	</item>
-	<item nid="601" tid="67">
-	</item>
-	<item nid="601" tid="39">
-	</item>
-	<item nid="601" tid="173">
-	</item>
-	<item nid="601" tid="153">
-	</item>
-	<item nid="601" tid="156">
-	</item>
 	<item nid="597" tid="67">
 	</item>
 	<item nid="597" tid="39">
@@ -40591,18 +40817,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="596" tid="139">
 	</item>
 	<item nid="596" tid="156">
-	</item>
-	<item nid="595" tid="67">
-	</item>
-	<item nid="595" tid="39">
-	</item>
-	<item nid="595" tid="173">
-	</item>
-	<item nid="595" tid="174">
-	</item>
-	<item nid="595" tid="156">
-	</item>
-	<item nid="595" tid="160">
 	</item>
 	<item nid="594" tid="67">
 	</item>
@@ -42262,18 +42476,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="617" tid="165">
 	</item>
-	<item nid="622" tid="39">
-	</item>
-	<item nid="622" tid="185">
-	</item>
-	<item nid="622" tid="68">
-	</item>
-	<item nid="622" tid="67">
-	</item>
-	<item nid="622" tid="140">
-	</item>
-	<item nid="622" tid="147">
-	</item>
 	<item nid="665" tid="39">
 	</item>
 	<item nid="665" tid="174">
@@ -42599,10 +42801,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1656" tid="70">
 	</item>
 	<item nid="1656" tid="69">
-	</item>
-	<item nid="1432" tid="38">
-	</item>
-	<item nid="1432" tid="100">
 	</item>
 	<item nid="1479" tid="38">
 	</item>
@@ -43009,14 +43207,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1440" tid="132">
 	</item>
 	<item nid="1440" tid="196">
-	</item>
-	<item nid="1431" tid="38">
-	</item>
-	<item nid="1431" tid="100">
-	</item>
-	<item nid="1431" tid="152">
-	</item>
-	<item nid="1431" tid="205">
 	</item>
 	<item nid="1434" tid="38">
 	</item>
@@ -43662,20 +43852,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="1709" tid="197">
 	</item>
-	<item nid="1710" tid="39">
-	</item>
-	<item nid="1710" tid="22">
-	</item>
-	<item nid="1710" tid="186">
-	</item>
-	<item nid="1710" tid="20">
-	</item>
-	<item nid="1710" tid="185">
-	</item>
-	<item nid="1710" tid="146">
-	</item>
-	<item nid="1710" tid="221">
-	</item>
 	<item nid="1441" tid="38">
 	</item>
 	<item nid="1441" tid="40">
@@ -43795,6 +43971,286 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1666" tid="139">
 	</item>
 	<item nid="1666" tid="227">
+	</item>
+	<item nid="36" tid="38">
+	</item>
+	<item nid="36" tid="40">
+	</item>
+	<item nid="36" tid="43">
+	</item>
+	<item nid="44" tid="38">
+	</item>
+	<item nid="44" tid="40">
+	</item>
+	<item nid="44" tid="43">
+	</item>
+	<item nid="33" tid="38">
+	</item>
+	<item nid="33" tid="40">
+	</item>
+	<item nid="33" tid="43">
+	</item>
+	<item nid="38" tid="38">
+	</item>
+	<item nid="38" tid="40">
+	</item>
+	<item nid="38" tid="43">
+	</item>
+	<item nid="37" tid="38">
+	</item>
+	<item nid="37" tid="40">
+	</item>
+	<item nid="37" tid="43">
+	</item>
+	<item nid="37" tid="198">
+	</item>
+	<item nid="42" tid="38">
+	</item>
+	<item nid="42" tid="40">
+	</item>
+	<item nid="42" tid="43">
+	</item>
+	<item nid="42" tid="202">
+	</item>
+	<item nid="41" tid="38">
+	</item>
+	<item nid="41" tid="40">
+	</item>
+	<item nid="41" tid="43">
+	</item>
+	<item nid="39" tid="38">
+	</item>
+	<item nid="39" tid="40">
+	</item>
+	<item nid="39" tid="43">
+	</item>
+	<item nid="39" tid="203">
+	</item>
+	<item nid="32" tid="40">
+	</item>
+	<item nid="32" tid="43">
+	</item>
+	<item nid="32" tid="195">
+	</item>
+	<item nid="1432" tid="38">
+	</item>
+	<item nid="1432" tid="100">
+	</item>
+	<item nid="1432" tid="208">
+	</item>
+	<item nid="1432" tid="204">
+	</item>
+	<item nid="1431" tid="38">
+	</item>
+	<item nid="1431" tid="100">
+	</item>
+	<item nid="1431" tid="152">
+	</item>
+	<item nid="1431" tid="205">
+	</item>
+	<item nid="1713" tid="38">
+	</item>
+	<item nid="1713" tid="40">
+	</item>
+	<item nid="1713" tid="100">
+	</item>
+	<item nid="1713" tid="69">
+	</item>
+	<item nid="1713" tid="140">
+	</item>
+	<item nid="1713" tid="208">
+	</item>
+	<item nid="1713" tid="199">
+	</item>
+	<item nid="1710" tid="39">
+	</item>
+	<item nid="1710" tid="22">
+	</item>
+	<item nid="1710" tid="186">
+	</item>
+	<item nid="1710" tid="20">
+	</item>
+	<item nid="1710" tid="185">
+	</item>
+	<item nid="1710" tid="146">
+	</item>
+	<item nid="1710" tid="221">
+	</item>
+	<item nid="622" tid="39">
+	</item>
+	<item nid="622" tid="173">
+	</item>
+	<item nid="622" tid="24">
+	</item>
+	<item nid="622" tid="4">
+	</item>
+	<item nid="622" tid="178">
+	</item>
+	<item nid="622" tid="185">
+	</item>
+	<item nid="622" tid="68">
+	</item>
+	<item nid="622" tid="67">
+	</item>
+	<item nid="622" tid="140">
+	</item>
+	<item nid="622" tid="147">
+	</item>
+	<item nid="622" tid="228">
+	</item>
+	<item nid="1715" tid="39">
+	</item>
+	<item nid="1715" tid="173">
+	</item>
+	<item nid="1715" tid="24">
+	</item>
+	<item nid="1715" tid="4">
+	</item>
+	<item nid="1715" tid="178">
+	</item>
+	<item nid="1715" tid="185">
+	</item>
+	<item nid="1715" tid="140">
+	</item>
+	<item nid="1715" tid="147">
+	</item>
+	<item nid="1715" tid="154">
+	</item>
+	<item nid="1715" tid="229">
+	</item>
+	<item nid="1715" tid="231">
+	</item>
+	<item nid="1716" tid="39">
+	</item>
+	<item nid="1716" tid="173">
+	</item>
+	<item nid="1716" tid="24">
+	</item>
+	<item nid="1716" tid="4">
+	</item>
+	<item nid="1716" tid="140">
+	</item>
+	<item nid="1716" tid="143">
+	</item>
+	<item nid="1716" tid="229">
+	</item>
+	<item nid="1716" tid="232">
+	</item>
+	<item nid="1717" tid="39">
+	</item>
+	<item nid="1717" tid="173">
+	</item>
+	<item nid="1717" tid="24">
+	</item>
+	<item nid="1717" tid="4">
+	</item>
+	<item nid="1717" tid="140">
+	</item>
+	<item nid="1717" tid="229">
+	</item>
+	<item nid="1717" tid="233">
+	</item>
+	<item nid="1718" tid="39">
+	</item>
+	<item nid="1718" tid="173">
+	</item>
+	<item nid="1718" tid="24">
+	</item>
+	<item nid="1718" tid="4">
+	</item>
+	<item nid="1718" tid="178">
+	</item>
+	<item nid="1718" tid="185">
+	</item>
+	<item nid="1718" tid="140">
+	</item>
+	<item nid="1718" tid="229">
+	</item>
+	<item nid="1718" tid="227">
+	</item>
+	<item nid="1719" tid="39">
+	</item>
+	<item nid="1719" tid="173">
+	</item>
+	<item nid="1719" tid="24">
+	</item>
+	<item nid="1719" tid="179">
+	</item>
+	<item nid="1719" tid="185">
+	</item>
+	<item nid="1719" tid="140">
+	</item>
+	<item nid="1719" tid="229">
+	</item>
+	<item nid="1719" tid="234">
+	</item>
+	<item nid="1714" tid="39">
+	</item>
+	<item nid="1714" tid="173">
+	</item>
+	<item nid="1714" tid="24">
+	</item>
+	<item nid="1714" tid="140">
+	</item>
+	<item nid="595" tid="39">
+	</item>
+	<item nid="595" tid="173">
+	</item>
+	<item nid="595" tid="174">
+	</item>
+	<item nid="595" tid="67">
+	</item>
+	<item nid="595" tid="156">
+	</item>
+	<item nid="595" tid="160">
+	</item>
+	<item nid="595" tid="229">
+	</item>
+	<item nid="595" tid="235">
+	</item>
+	<item nid="601" tid="39">
+	</item>
+	<item nid="601" tid="173">
+	</item>
+	<item nid="601" tid="67">
+	</item>
+	<item nid="601" tid="153">
+	</item>
+	<item nid="601" tid="156">
+	</item>
+	<item nid="601" tid="229">
+	</item>
+	<item nid="1720" tid="39">
+	</item>
+	<item nid="1720" tid="173">
+	</item>
+	<item nid="1720" tid="174">
+	</item>
+	<item nid="1720" tid="179">
+	</item>
+	<item nid="1720" tid="156">
+	</item>
+	<item nid="1720" tid="160">
+	</item>
+	<item nid="1720" tid="229">
+	</item>
+	<item nid="1721" tid="39">
+	</item>
+	<item nid="1721" tid="173">
+	</item>
+	<item nid="1721" tid="24">
+	</item>
+	<item nid="1721" tid="4">
+	</item>
+	<item nid="1721" tid="178">
+	</item>
+	<item nid="1721" tid="185">
+	</item>
+	<item nid="1721" tid="127">
+	</item>
+	<item nid="1721" tid="236">
+	</item>
+	<item nid="1721" tid="203">
 	</item>
 </table_taxonomy_index>
 
@@ -44202,97 +44658,97 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="186" vid="2" weight="0">
 		<name>сборник</name>
 	</termin>
-	<termin tid="187" vid="1" weight="0">
+	<termin tid="187" vid="1" weight="1">
 		<name>Китай</name>
 	</termin>
 	<termin tid="188" vid="2" weight="0">
 		<name>космоопера</name>
 	</termin>
-	<termin tid="189" vid="1" weight="0">
+	<termin tid="189" vid="1" weight="2">
 		<name>дата написания</name>
 	</termin>
-	<termin tid="190" vid="1" weight="0">
+	<termin tid="190" vid="1" weight="9">
 		<name>2015</name>
 	</termin>
-	<termin tid="191" vid="1" weight="0">
+	<termin tid="191" vid="1" weight="7">
 		<name>2014</name>
 	</termin>
-	<termin tid="192" vid="1" weight="0">
+	<termin tid="192" vid="1" weight="10">
 		<name>2013</name>
 	</termin>
-	<termin tid="193" vid="1" weight="0">
+	<termin tid="193" vid="1" weight="6">
 		<name>2012</name>
 	</termin>
-	<termin tid="194" vid="1" weight="0">
+	<termin tid="194" vid="1" weight="2">
 		<name>2011</name>
 	</termin>
-	<termin tid="195" vid="1" weight="0">
+	<termin tid="195" vid="1" weight="1">
 		<name>2010</name>
 	</termin>
 	<termin tid="196" vid="1" weight="0">
 		<name>2009</name>
 	</termin>
-	<termin tid="197" vid="1" weight="0">
+	<termin tid="197" vid="1" weight="3">
 		<name>2008</name>
 	</termin>
-	<termin tid="198" vid="1" weight="0">
+	<termin tid="198" vid="1" weight="5">
 		<name>2007</name>
 	</termin>
-	<termin tid="199" vid="1" weight="0">
+	<termin tid="199" vid="1" weight="4">
 		<name>2006</name>
 	</termin>
-	<termin tid="200" vid="1" weight="0">
+	<termin tid="200" vid="1" weight="8">
 		<name>2005</name>
 	</termin>
-	<termin tid="201" vid="1" weight="0">
+	<termin tid="201" vid="1" weight="32">
 		<name>2004</name>
 	</termin>
-	<termin tid="202" vid="1" weight="0">
+	<termin tid="202" vid="1" weight="26">
 		<name>2003</name>
 	</termin>
-	<termin tid="203" vid="1" weight="0">
+	<termin tid="203" vid="1" weight="11">
 		<name>2002</name>
 	</termin>
-	<termin tid="204" vid="1" weight="0">
+	<termin tid="204" vid="1" weight="25">
 		<name>2001</name>
 	</termin>
-	<termin tid="205" vid="1" weight="0">
+	<termin tid="205" vid="1" weight="24">
 		<name>2000</name>
 	</termin>
-	<termin tid="206" vid="1" weight="0">
+	<termin tid="206" vid="1" weight="23">
 		<name>1999</name>
 	</termin>
-	<termin tid="207" vid="1" weight="0">
+	<termin tid="207" vid="1" weight="14">
 		<name>1933</name>
 	</termin>
-	<termin tid="208" vid="1" weight="0">
-		<name>javascript canvas</name>
+	<termin tid="208" vid="1" weight="4">
+		<name>javascript</name>
 	</termin>
-	<termin tid="209" vid="1" weight="0">
+	<termin tid="209" vid="1" weight="17">
 		<name>1888</name>
 	</termin>
-	<termin tid="210" vid="1" weight="0">
+	<termin tid="210" vid="1" weight="19">
 		<name>1823</name>
 	</termin>
-	<termin tid="211" vid="1" weight="0">
+	<termin tid="211" vid="1" weight="18">
 		<name>1819</name>
 	</termin>
-	<termin tid="212" vid="1" weight="0">
+	<termin tid="212" vid="1" weight="28">
 		<name>1987</name>
 	</termin>
-	<termin tid="213" vid="1" weight="0">
+	<termin tid="213" vid="1" weight="27">
 		<name>1990</name>
 	</termin>
-	<termin tid="214" vid="1" weight="0">
+	<termin tid="214" vid="1" weight="5">
 		<name>Мастера советской карикатуры</name>
 	</termin>
-	<termin tid="215" vid="1" weight="0">
+	<termin tid="215" vid="1" weight="7">
 		<name>карикатура</name>
 	</termin>
-	<termin tid="216" vid="1" weight="0">
+	<termin tid="216" vid="1" weight="6">
 		<name>гравюра</name>
 	</termin>
-	<termin tid="217" vid="1" weight="0">
+	<termin tid="217" vid="1" weight="21">
 		<name>1959</name>
 	</termin>
 	<termin tid="218" vid="2" weight="0">
@@ -44301,29 +44757,56 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="219" vid="2" weight="0">
 		<name>Постапокалиптика</name>
 	</termin>
-	<termin tid="220" vid="1" weight="0">
+	<termin tid="220" vid="1" weight="29">
 		<name>1972</name>
 	</termin>
-	<termin tid="221" vid="1" weight="0">
+	<termin tid="221" vid="1" weight="12">
 		<name>1920</name>
 	</termin>
-	<termin tid="222" vid="1" weight="0">
+	<termin tid="222" vid="1" weight="16">
 		<name>1895</name>
 	</termin>
-	<termin tid="223" vid="1" weight="0">
+	<termin tid="223" vid="1" weight="20">
 		<name>1871</name>
 	</termin>
-	<termin tid="224" vid="1" weight="0">
+	<termin tid="224" vid="1" weight="22">
 		<name>1960</name>
 	</termin>
-	<termin tid="225" vid="1" weight="0">
+	<termin tid="225" vid="1" weight="30">
 		<name>1980</name>
 	</termin>
-	<termin tid="226" vid="1" weight="0">
+	<termin tid="226" vid="1" weight="31">
 		<name>1984</name>
 	</termin>
-	<termin tid="227" vid="1" weight="0">
+	<termin tid="227" vid="1" weight="13">
 		<name>1927</name>
+	</termin>
+	<termin tid="228" vid="1" weight="15">
+		<name>1936</name>
+	</termin>
+	<termin tid="229" vid="1" weight="0">
+		<name>СССР</name>
+	</termin>
+	<termin tid="230" vid="1" weight="0">
+		<name>страна</name>
+	</termin>
+	<termin tid="231" vid="1" weight="0">
+		<name>1930</name>
+	</termin>
+	<termin tid="232" vid="1" weight="0">
+		<name>1925</name>
+	</termin>
+	<termin tid="233" vid="1" weight="0">
+		<name>1935</name>
+	</termin>
+	<termin tid="234" vid="1" weight="0">
+		<name>1939</name>
+	</termin>
+	<termin tid="235" vid="1" weight="0">
+		<name>1986</name>
+	</termin>
+	<termin tid="236" vid="1" weight="0">
+		<name>США</name>
 	</termin>
 </table_taxonomy_term_data>
 
@@ -44590,7 +45073,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</termin>
 	<termin tid="186" parent="177">
 	</termin>
-	<termin tid="187" parent="0">
+	<termin tid="187" parent="230">
 	</termin>
 	<termin tid="188" parent="173">
 	</termin>
@@ -44632,8 +45115,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</termin>
 	<termin tid="207" parent="189">
 	</termin>
-	<termin tid="208" parent="0">
-	</termin>
 	<termin tid="209" parent="189">
 	</termin>
 	<termin tid="210" parent="189">
@@ -44671,6 +45152,26 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="226" parent="189">
 	</termin>
 	<termin tid="227" parent="189">
+	</termin>
+	<termin tid="208" parent="0">
+	</termin>
+	<termin tid="228" parent="189">
+	</termin>
+	<termin tid="229" parent="230">
+	</termin>
+	<termin tid="230" parent="0">
+	</termin>
+	<termin tid="231" parent="189">
+	</termin>
+	<termin tid="232" parent="189">
+	</termin>
+	<termin tid="233" parent="189">
+	</termin>
+	<termin tid="234" parent="189">
+	</termin>
+	<termin tid="235" parent="189">
+	</termin>
+	<termin tid="236" parent="230">
 	</termin>
 </table_taxonomy_term_hierarchy>
 
