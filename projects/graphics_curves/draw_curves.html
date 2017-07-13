@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 	<meta charset="utf8">
@@ -9,7 +9,9 @@
 	<script src="js/shared_functions.js"></script>
 	<script src="js/draw_curves.js"></script>
 <style>
-canvas{border:1px solid;}
+canvas{
+	border:1px solid;
+}
 </style>
 </head>
 
@@ -47,8 +49,9 @@ canvas{border:1px solid;}
 </div>			
 
 <div class="form-group form-group-sm">
-	<label class="inline">num_repeat:
-		<input type="text" class="form-control" name="num_repeat" id="form1-num-repeat" value=""/>
+	<label class="inline">num_repeat (1-100):
+		<input disabled="" id="num-repeat-val" type="text">
+		<input id="num-repeat-range" name="num_repeat" min="1" max="100" step="1" value="" type="range">
 	</label>
 	<label class="inline">step
 		<input type="text" class="form-control" name="step" id="form1-step" value=""/>
@@ -56,11 +59,13 @@ canvas{border:1px solid;}
 </div>			
 
 <div class="form-group form-group-sm">
-	<label class="inline">k1
-		<input type="text" class="form-control" name="k1" id="form-k1" value=""/>
+	<label class="inline">k1 (0-100):
+		<input disabled="" id="k1-val" type="text">
+		<input id="k1-range" name="k1" min="0" max="100" step="1" value="" type="range">
 	</label>
-	<label class="inline">k2
-		<input type="text" class="form-control" name="k2" id="form-k2" value=""/>
+	<label class="inline">k2 (0-150):
+		<input disabled="" id="k2-val" type="text">
+		<input id="k2-range" name="k2" min="0" max="150" step="1" value="" type="range">
 	</label>
 </div>			
 
