@@ -1,47 +1,36 @@
-﻿var _vars = {
+var _vars = {
 	"graphics" : {
+		
 		"sinus" : {
 			"canvasID" : "canvas-sin",
 			"formID" : "form1",
-			"context" : null,
-			"start_x" : 100,
-			"start_y" : 100,
-			"step" : 0.01,
-			"num_repeat" : 12,
-			"k1" : 30,
-			"k2" : 70//,
-			//"build" : sinus
-		}
-	}
+			"parameters" : {
+				"context" : null,
+				"start_x" : 100,
+				"start_y" : 100,
+				"step" : 0.01,
+				"num_repeat" : 12,
+				"k1" : 30,
+				"k2" : 70
+			},
+			"init" : function(){
+				initForm( this.formID, this.parameters );
+			},
+			"draw" : function(){
+				this["context"] = _createCanvas( this["canvasID"] );
+				sinus( this["context"], this.parameters );
+			}
+		}//end sinus
+		
+	}//end graphics
 }
 console.log(_vars);
 
 window.onload = function(){
 
-		//get DOM objects
-		// var canvasID = _vars["graphics"]["sinus"]["canvasID"];
-		// var canvasObj = getDOMobj( canvasID );
+		_vars["graphics"]["sinus"].init();
+		_vars["graphics"]["sinus"].draw();
 		
-		// //draw graphic
-		// try {
-			// var context = canvasObj.getContext("2d");
-			// context.fillStyle = 'blue';
-			// var params = _vars["graphics"]["sinus"];
-			// initForm();
-			// sinus( context, params);
-		// } catch (e) {
-			// var msg = "HTML5 Canvas is not supported in this browser";
-			// msg += "<br> "+e.name+ ", "+e.message+ ", "+e.number+ ", "+e.description;
-// console.log(msg);			
-		// }
-
-		var params = _vars["graphics"]["sinus"];
-		params["context"] = _createCanvas( params["canvasID"] );
-		initForm( params["formID"] );
-		var context = params["context"];
-		sinus( context, params);
-		
-//=======================================		
 		//clear-btn
 		var btn_clear_canvas = document.querySelector(".clear-canvas");
 //console.log(btn_clear_canvas);		
@@ -49,7 +38,10 @@ window.onload = function(){
 			var canvas_id = e.target.getAttribute("data-target");
 //console.log(canvas_id);			
 			clear_canvas( canvas_id );
-			initForm( _vars["graphics"]["sinus"]["formID"] );
+			if( canvas_id === "canvas-sin"){
+				_vars["graphics"]["sinus"].init();
+			}
+			
 		}, false);//end event
 
 	
@@ -81,8 +73,6 @@ function clear_canvas( id ){
 
 function sinus( context, params ){
 console.log(params);	
-	//var p = {
-	//}
 	var start_x = params.start_x;
 	var start_y = params.start_y;
 	var step = params.step;
@@ -101,11 +91,12 @@ console.log(params);
 }//end sinus()
 
 
-function initForm( id ){
+function initForm( id, p ){
+//console.log(id, p);
 	var form = getDOMobj( id );
 	
 	var startXRange = getDOMobj( "start-x-range" );
-	startXRange.value = _vars["graphics"]["sinus"]["start_x"];
+	startXRange.value = p["start_x"];
 	var startXVal = getDOMobj( "start-x-val" );
 	startXVal.value = startXRange.value;				
 	//form.step.start_x_range.value = _vars["graphics"]["sinus"]["start_x"];
@@ -114,7 +105,7 @@ function initForm( id ){
 	}
 	
 	var startYRange = getDOMobj( "start-y-range" );
-	startYRange.value = _vars["graphics"]["sinus"]["start_y"];
+	startYRange.value = p["start_y"];
 	var startYVal = getDOMobj( "start-y-val" );
 	startYVal.value = startYRange.value;				
 	startYRange.onchange = function(e){
@@ -123,10 +114,33 @@ function initForm( id ){
 	
 	//form.step.start_y_range.value = _vars["graphics"]["sinus"]["start_y"];
 	
-	form.num_repeat.value  = _vars["graphics"]["sinus"]["num_repeat"];
-	form.step.value  = _vars["graphics"]["sinus"]["step"];
-	form.k1.value = _vars["graphics"]["sinus"]["k1"];
-	form.k2.value = _vars["graphics"]["sinus"]["k2"];
+	var numRepeatRange = getDOMobj( "num-repeat-range" );
+	numRepeatRange.value = p["num_repeat"];
+	var numRepeatVal = getDOMobj( "num-repeat-val" );
+	numRepeatVal.value = numRepeatRange.value;				
+	numRepeatRange.onchange = function(e){
+		numRepeatVal.value=this.value;				
+	}
+	
+	var k1Range = getDOMobj( "k1-range" );
+	k1Range.value = p["k1"];
+	var k1Val = getDOMobj( "k1-val" );
+	k1Val.value = k1Range.value;				
+	k1Range.onchange = function(e){
+		k1Val.value=this.value;				
+	}
+	
+	var k2Range = getDOMobj( "k2-range" );
+	k2Range.value = p["k2"];
+	var k2Val = getDOMobj( "k2-val" );
+	k2Val.value = k2Range.value;				
+	k2Range.onchange = function(e){
+		k2Val.value=this.value;				
+	}
+	
+	
+	//form.num_repeat.value  = p["num_repeat"];
+	form.step.value  = p["step"];
 	
 	if( typeof form.onsubmit !== "function"){
 		form.onsubmit = function( event ){
@@ -135,7 +149,7 @@ function initForm( id ){
 			var context = canvas.getContext("2d");
 			context.fillStyle = 'blue';
 			
-			var p = {
+			var p2 = {
 				start_x : parseInt( form.start_x.value ),
 				start_y : parseInt( form.start_y.value ),
 				step : parseFloat( form.step.value ),
@@ -144,7 +158,7 @@ function initForm( id ){
 				k2 : parseInt( form.k2.value )
 			};
 	//console.log("submit", params);
-			sinus( context, p);
+			sinus( context, p2);
 			
 			event.preventDefault();
 		};
@@ -152,7 +166,7 @@ function initForm( id ){
 	}
 	if( typeof form.onreset !== "function"){
 		form.onreset = function( event ){
-			initForm( _vars["graphics"]["sinus"]["formID"] );
+			initForm( id, p );
 			event.preventDefault();
 		};
 	}
