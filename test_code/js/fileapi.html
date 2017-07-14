@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
+	<title>test JS: file API</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
 	<link rel="stylesheet" type="text/css" href="../css/uikit/css/uikit.min.css">
 <!--	
 	//cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
@@ -10,15 +12,15 @@
 <script>
 //if (window.File && window.FileReader && window.FileList && window.Blob) {
 if( window.File && window.FileList && window.FileReader ){
-  // Работает
+	_process();
 } else {
   alert('Your browser does not support File API');
 }
 
-console.log("window.requestFileSystem = " + window.requestFileSystem);
-console.log("window.webkitRequestFileSystem = " + window.webkitRequestFileSystem);
+function _process(){
+//console.log("test!!!!");
+}//end _process()
 
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
  
 // Handle errors
 function errorHandler(e) {
@@ -88,7 +90,28 @@ console.log("bb size:"+bb.size);
 */	
 }//end onInitFs
 
+//https://developer.mozilla.org/ru/docs/Web/API/FileReader/readAsDataURL
+function previewFile() {
+	var preview = document.querySelector("#preview-img");
+	var fileList = document.querySelector("#preview-file");
+//for( var key in fileList){
+//console.log( key, fileList[key] );	
+//}
+	var file = fileList.files[0];
+	
+	var reader = new FileReader();
 
+	reader.onloadend = function(e) {
+console.log("reader.onloadend! ", e);	
+		preview.src = reader.result;
+	}
+
+	if (file) {
+		reader.readAsDataURL(file);
+	} else {
+		preview.src = "";
+	}
+}//end previewFile()
 
 window.onload = function(){
 	document.getElementById("clear-log").onclick = function(){
@@ -154,19 +177,18 @@ console.log( "reader, progress", e );
 	
 //--------------------------------
 	document.getElementById("btn2").onclick = function(e){
-	/*
-		window.requestFileSystem(
-			window.PERSISTENT, 
-			5*1024*1024, 
-			onInitFs,
-			errorHandler
-		);
-	*/	
+console.log("window.requestFileSystem = " + window.requestFileSystem);
+console.log("window.webkitRequestFileSystem = " + window.webkitRequestFileSystem);
+//window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+	
 		if (window.webkitRequestFileSystem) {
-			window.webkitRequestFileSystem( window.PERSISTENT, 1024*1024,onInitFs,errorHandler);
-		} 
-		else {
-			window.requestFileSystem( window.PERSISTENT, 1024*1024, onInitFs, errorHandler);
+			var requestedBytes = 1024*1024*10; // 10MB		
+			window.webkitRequestFileSystem( window.PERSISTENT, requestedBytes, onInitFs, errorHandler);
+		}
+		
+		if (window.requestFileSystem) {
+			var requestedBytes = 1024*1024*10; // 10MB		
+			window.requestFileSystem( window.PERSISTENT, requestedBytes, onInitFs, errorHandler);
 		}
 		
 	}//end event
@@ -198,8 +220,9 @@ border:1px dashed;
 http://caniuse.com/#feat=filereader
 http://caniuse.com/#feat=filesystem
 
-https://developer.mozilla.org/ru/docs/Web/API/FileReader
 https://developer.mozilla.org/en-US/docs/Web/API/LocalFileSystem
+https://developer.mozilla.org/ru/docs/Web/API/FileReader
+https://developer.mozilla.org/ru/docs/Web/API/FileReader/readAsDataURL
 
 https://books.google.ru/books?id=C3kabcBG0ZsC&pg=PT756&lpg=PT756
 Закас Н. JavaScript для профессиональных веб-разработчиков 
@@ -231,7 +254,13 @@ http://xdan.ru/Working-with-files-in-JavaScript-Part-2-FileReader.html
 		</div>
 		
 		<div class="uk-panel uk-panel-box">
-			<button id="btn2" class="uk-button uk-button-primary">test requestFileSystem</button>
+			<button id="btn2" class="uk-button uk-button-primary">requestFileSystem (only Chrome)</button>
+		</div>
+		
+		<div class="uk-panel uk-panel-box">
+			<h3>Image preview</h3>
+			<input type="file" id="preview-file" onchange="previewFile()"><br>
+			<img src="" id="preview-img">
 		</div>
 		
 	</div><!-- end container -->
