@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -75,3 +76,88 @@ canvas{border:1px solid;}
 </div><!-- end container -->
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" href="css/bootstrap335.min.css">
+	<title>Графики функций. Алгебраические и трансцендентные кривые</title>
+	
+	<script src="js/shared_functions.js"></script>
+	<script src="js/draw_curves.js"></script>
+<style>
+canvas{
+	border:1px solid;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1 class="page-header">Графики функций. Алгебраические и трансцендентные кривые</h1>
+
+<div class="row panel panel-info">
+<!--
+	<div class="panel-heading">
+		<h2>Графики функций</h2>
+	</div>
+-->
+	
+	<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
+		<canvas id="canvas-sin" width="600" height="300"></canvas>
+		<button class="btn btn-small btn-danger clear-canvas" data-target="canvas-sin" >clear</button>
+	</div>
+	
+	<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel-body">
+		<h2>Синусоида</h2>	
+		<form type="GET" action="" name="form_1" id="form1">
+			
+<div class="form-group form-group-sm">
+	<label class="inline">
+		start_x (0-600): <input disabled="" id="start-x-val" name="start_x" type="text">
+			<input id="start-x-range" name="start_x_range" min="0" max="600" step="1" value="" type="range">
+	</label>
+
+	<label class="inline">
+		start_y (0-300): <input disabled="" id="start-y-val" name="start_y" type="text">
+		<input id="start-y-range"  name="start_y_range" min="0" max="300" step="1" value="" type="range">
+	</label>
+</div>			
+
+<div class="form-group form-group-sm">
+	<label class="inline">num_repeat (1-100):
+		<input disabled="" id="num-repeat-val" type="text">
+		<input id="num-repeat-range" name="num_repeat" min="1" max="100" step="1" value="" type="range">
+	</label>
+	<label class="inline">step
+		<input type="text" class="form-control" name="step" id="form1-step" value=""/>
+	</label>
+</div>			
+
+<div class="form-group form-group-sm">
+	<label class="inline">k1 (0-100):
+		<input disabled="" id="k1-val" type="text">
+		<input id="k1-range" name="k1" min="0" max="100" step="1" value="" type="range">
+	</label>
+	<label class="inline">k2 (0-150):
+		<input disabled="" id="k2-val" type="text">
+		<input id="k2-range" name="k2" min="0" max="150" step="1" value="" type="range">
+	</label>
+</div>			
+
+			<input type="submit" class="" value="перестроить график"/>
+			<input type="reset" class="btn btn-info" value="сбросить значения"/>
+		</form>
+
+	</div>
+</div>
+
+
+</div><!-- end container -->
+</body>
+</html>
+>>>>>>> 75325213be2a0c36dc2c522e0ec4710cdd4d2690
