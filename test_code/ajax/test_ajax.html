@@ -1,122 +1,294 @@
-<html>
+<!DOCTYPE html>
+<html lang="ru" debug="true">
 <head>
-<title>Test Ajax</title>
-<meta charset="utf-8">
-</head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: Ajax</title>
+	
 <script>
+window.onload = function() {
+		
+	document.getElementById("ajax-btn").onclick = function() {
+				//var url = "data/test.html";
+				//var url = document.getElementsByName("input_url")[0].value;
+				//запрос из постороннего источника заблокирован: 
+				//политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
+				//(причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
+				//var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : document.getElementsByName("input_url")[0].value, 
+			"callback": function(data){
+console.log("end ajax load, ", data[0], data.length);					
+			}//end ajax load
+		});
+	};//end event
+			
+}//end load
 
-function set_inner(e, v) {
-     b=document.getElementById(e);
-     b.innerHTML=v;
-   }
+function runAjax( opt ){
+//console.log(arguments);
+	
+	var p = {
+		"requestMethod" : "GET", 
+		"url" : false, 
+		"params": "",
+		"async" :  true,
+		"callback" : null
+	};
+	
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+	
+	var requestMethod = p["requestMethod"]; 
+	var url = p["url"]; 
+	var async = p["async"]; 
+	var callback = p["callback"]; 
+	
+	if( !url || url.length === 0){
+		var msg = "Parameters error, needed 'url'";			
+console.log( msg );
+//_log( "<p  class='text-danger'>" +msg+"</p>");
+		return false;
+	}	
 
-// осуществляет запрос
-function send_http_require(r) 
-{
-    // открывает поток методом open
-   r.open('GET', 'test1.php?x='+escape(document.frm.x.value), true);
-   r.send(null); //метод предназначен для отправки тела запроса
-}
-//-------------------------- end func
+	var xhr = _createRequestObject();
+	if ( !xhr ) {
+console.log("error, ", xhr);
+		var msg = "_createRequestObject() error";			
+console.log( msg, xhr );
+//_log( "<p  class='text-danger'>" +msg+"</p>");
+		return false;
+	}
+				
+	var timeStart = new Date();
+	xhr.open( requestMethod, url, async );
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4){
+console.log("xhr.status -" + xhr.status);
+//console.log( xhr  );
+//for(var key in xhr){
+//console.log( key +" : "+xhr[key] );
+//}
+			if (xhr.status == 200){
+//console.log(xhr.getResponseHeader('X-Powered-By') );
+				var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
 
-//*************************************
-// обработчик ответа
-//*************************************
-//свойство .readyState.
-//Возможны следующие значения:
-// 0 – инициализация запроса;
-// 1 – формирование запроса;
-// 2 – формирование запроса окончено;
-// 3 – взаимодействие с сервером;
-// 4 – взаимодействие завершено (ответ получен).
-function process_response(r) 
-{
-   //выводим значение r.readyState в элемент с id=step;
-   set_inner('step', r.readyState);
+				var timeEnd = new Date();
+				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+				_log("ajax load url: " + url + ", runtime: " + runtime +" sec");
+							
+				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
+//console.log( xhr.responseText );
+//console.log( xhr.responseXML );
+					if( typeof callback === "function"){
+						
+						if( xhr.responseXML ){
+							var data = xhr.responseXML;
+						} else {
+							var data = xhr.responseText;
+						}
+						callback(data);
+					}
 
-   if (r.readyState == 4) 
-     {
-	//получаем код HTTP-ответа методом status и «выкладываем» его в тело документа (в элемент status )
-	set_inner('status', r.status);
+							
+			} else {
+console.log(xhr);					
+_log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
+_log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
+_log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
+			}						
+						
+		}
+	};
+				
+	xhr.onprogress = function(e){
+		var percentComplete = 0;
+		if(e.lengthComputable) {
+			percentComplete = Math.ceil(e.loaded / e.total * 100);
+		}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+		if( document.getElementById("load-progress") ){
+			document.getElementById("load-progress").value = percentComplete;
+		}
+	};
+				
+	xhr.send();
 
-	// получаем тело ответа методом ния. Возможны следующие значения: 
-	text = r.responseText;
-//	alert (text);
+	function _createRequestObject(){
+			var request = false;
+			if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+				request = new XMLHttpRequest();
+			} 
 
-	//разбиваем его на строки методом split;
-	strings = text.split('\n');
+			if(!request) { // IE
+				request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
 
-	//выкладываем три полученные  строки, соответственно, 
-	//в элементы time (время), qstring (строка запроса), xsq (x-квадрат).
-	set_inner('time', strings[0]);
-	set_inner('qstring', strings[1]);
-	set_inner('xsq', strings[2]);
-    }
-//  else alert ('Error');
-}
-//-------------------------- end func
+			if(!request) {
+				request=new ActiveXObject('Msxml2.XMLHTTP');
+			}
+			return request;
+	}//end createRequestObject()
+	
+}//end runAjax
 
-// инициализирует объект запроса
-// назначает обработчик ответа.
-function setup_http_object(r) 
- {
-   r.onreadystatechange = function() {process_response(r);};
- }
-//-------------------------- end func
-
-// создаёт объект запроса
-function prepare_http_object() 
-{
-   r = false;
-   if (window.XMLHttpRequest) 
-     { // Mozilla, Safari, Opera ...
-	r = new XMLHttpRequest();
-     } 
-   else 
-	if (window.ActiveXObject) 
-	  { // IE
-		r = new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-   return r;
-}
-//-------------------------- end func
-
-//*************************************
-// MAIN
-//*************************************
-function do_http_rq() 
-{
-  r=prepare_http_object();
-  if (r) 
-    {
-	setup_http_object(r);
-	send_http_require(r);
-    } 
-  else 
-   {
-	alert('This page can not be displayed correctly by your browser');
-   }
-}
-//-------------------------- end func
+		
 </script>
-
+</head>
 <body>
+<div class="container">
+	<div class="page-header">
+		<h1>test Ajax</h1>
+	</div>
+	<input type="text" class="form-control" id="request_url" name="input_url" value=""/>
+	load progress:<progress id="load-progress" max="100" value="0" style="width:100%"></progress>
+	
+	<button class="btn btn-primary" id="ajax-btn">ajax request</button>
+	<div class="panel" id="ajax-content"></div>
+	
+	<pre>
+data/test.html
+http://comp:88/test/data/ar_adr_lvl_5/ar_adr_lvl_5_ORDER.csv
+http://comp:88/test/data/ar_adr_lvl_5/p1_100000.csv
+для загрузки данных с удаленного сервера создать в папке с данными .htaccess или web.config
 
-<form name="frm">
-Данные для запроса:<br>
-x = 
-<input type="text" name="x" size="3">
-<input type="button" value="отправить запрос"  onclick="do_http_rq();"><br>
+APACHE
+.htaccess
+Header set Access-Control-Allow-Origin "*"
+------
+IIS
+web.config
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+&lt;!--
+https://www.iis.net/configreference/system.webserver
+https://professorweb.ru/my/ASP_NET/base/level4/4_4.php
+--&gt;
+	&lt;appSettings /&gt;
+	&lt;connectionStrings /&gt;
+	&lt;system.webServer&gt;
+	
+		&lt;directoryBrowse enabled="true" showFlags="Extension, Size" /&gt;
+&lt;!--		
+		&lt;directoryBrowse enabled="true" showFlags="Date, Time, Size, Extension, LongDate" /&gt;
+--&gt;
+	
+	&lt;defaultDocument enabled="true"&gt;
+		&lt;files&gt;
+			&lt;add value="_Index.html" /&gt;
+		&lt;/files&gt;
+	&lt;/defaultDocument&gt;
+   
+&lt;!--	
+		+&lt;httpRedirect enabled="true" destination="http://yandex.ru/" /&gt;
+--&gt;
+		&lt;httpProtocol&gt;
+			&lt;customHeaders&gt;
+				&lt;add name="Access-Control-Allow-Origin" value="*" /&gt;
+				&lt;add name="Test" value="test1" /&gt;
+			&lt;/customHeaders&gt;
+		&lt;/httpProtocol&gt;
 
-Ход выполнения запроса: <b id="step">null</b><br>
+	&lt;/system.webServer&gt;
+&lt;/configuration&gt;
 
-Статус ответа: <b id="status">null</b><br>
-Результат разбора ответа:<br>
-время: <b id='time'>null</b><br>
-строка запроса: <b id='qstring'>null</b><br>
-x-квадрат: <b id='xsq'>null</b>
-</form>
+	</pre>
+</div>	
+
+<script>
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
+	
+//console.log for old IE
+//alert(typeof window.console);
+if (!window.console){ 
+	window.console = {
+		"log" : function( msg ){
+			var log = getDOMobj("log");
+			if(log){
+				log.innerHTML += msg +"<br>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+};
+
+
+function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+	var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
+	if(!id){
+		var id = "log";
+	}
+	
+	var output = getDOMobj(id);
+	if( output ){
+	
+		if( msg.length == 0){
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += msg;
+		}
+		
+	} else {
+		console.log(msg);
+		//document.writeln(msg);
+	}
+}//end _log()
+
+function getDOMobj(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	
+	return false;
+}//end getDOMobj()
+	
+</script>
 
 </body>
 </html>
-
