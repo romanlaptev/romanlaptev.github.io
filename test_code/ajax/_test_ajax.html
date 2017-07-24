@@ -1,47 +1,121 @@
-<!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, layout=1.0">
-	<title>test ajax</title>
-	<link rel="stylesheet" href="../css/bootstrap335.min.css">
-	<script>
-		window.onload = function() {
-		
-			document.getElementById("ajax-btn").onclick = function() {
-				//var url = "data/test.html";
-				var url = document.getElementsByName("input_url")[0].value;
-				//������ �� ������������ ��������� ������������: 
-				//�������� ������ ��������� ��������� ������ ���������� ������� �� http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
-				//(�������: ����������� ��������� CORS 'Access-Control-Allow-Origin').
-				//var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
-
-				var xhr = new XMLHttpRequest();
-				xhr.open("GET", url, true);
-				xhr.onreadystatechange = function() {
-					if (xhr.readyState == 4)
-					{
-alert ("xhr.status -" + xhr.status);
-						//if (xhr.status == 200)
-						//{
-							document.getElementById("ajax-content").innerHTML += xhr.responseText;
-						//}
-					}
-				}
-				xhr.send();
-			};
-		}
-	</script>
+<title>Test Ajax</title>
+<meta charset="utf-8">
 </head>
-<body>
-<div class="container">
-	<div class="page-header">
-		<h1>test Ajax</h1>
-	</div>
-	<input type="text" class="form-control" id="request_url" name="input_url" value="data/test.html"/>
+<script>
 
-	<button class="btn btn-primary" id="ajax-btn">ajax request</button>
-	<div class="panel" id="ajax-content"></div>
-</div>	
+function set_inner(e, v) {
+     b=document.getElementById(e);
+     b.innerHTML=v;
+   }
+
+// осуществляет запрос
+function send_http_require(r) 
+{
+    // открывает поток методом open
+   r.open('GET', 'test1.php?x='+escape(document.frm.x.value), true);
+   r.send(null); //метод предназначен для отправки тела запроса
+}
+//-------------------------- end func
+
+//*************************************
+// обработчик ответа
+//*************************************
+//свойство .readyState.
+//Возможны следующие значения:
+// 0 – инициализация запроса;
+// 1 – формирование запроса;
+// 2 – формирование запроса окончено;
+// 3 – взаимодействие с сервером;
+// 4 – взаимодействие завершено (ответ получен).
+function process_response(r) 
+{
+   //выводим значение r.readyState в элемент с id=step;
+   set_inner('step', r.readyState);
+
+   if (r.readyState == 4) 
+     {
+	//получаем код HTTP-ответа методом status и «выкладываем» его в тело документа (в элемент status )
+	set_inner('status', r.status);
+
+	// получаем тело ответа методом ния. Возможны следующие значения: 
+	text = r.responseText;
+//	alert (text);
+
+	//разбиваем его на строки методом split;
+	strings = text.split('\n');
+
+	//выкладываем три полученные  строки, соответственно, 
+	//в элементы time (время), qstring (строка запроса), xsq (x-квадрат).
+	set_inner('time', strings[0]);
+	set_inner('qstring', strings[1]);
+	set_inner('xsq', strings[2]);
+    }
+//  else alert ('Error');
+}
+//-------------------------- end func
+
+// инициализирует объект запроса
+// назначает обработчик ответа.
+function setup_http_object(r) 
+ {
+   r.onreadystatechange = function() {process_response(r);};
+ }
+//-------------------------- end func
+
+// создаёт объект запроса
+function prepare_http_object() 
+{
+   r = false;
+   if (window.XMLHttpRequest) 
+     { // Mozilla, Safari, Opera ...
+	r = new XMLHttpRequest();
+     } 
+   else 
+	if (window.ActiveXObject) 
+	  { // IE
+		r = new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+   return r;
+}
+//-------------------------- end func
+
+//*************************************
+// MAIN
+//*************************************
+function do_http_rq() 
+{
+  r=prepare_http_object();
+  if (r) 
+    {
+	setup_http_object(r);
+	send_http_require(r);
+    } 
+  else 
+   {
+	alert('This page can not be displayed correctly by your browser');
+   }
+}
+//-------------------------- end func
+</script>
+
+<body>
+
+<form name="frm">
+Данные для запроса:<br>
+x = 
+<input type="text" name="x" size="3">
+<input type="button" value="отправить запрос"  onclick="do_http_rq();"><br>
+
+Ход выполнения запроса: <b id="step">null</b><br>
+
+Статус ответа: <b id="status">null</b><br>
+Результат разбора ответа:<br>
+время: <b id='time'>null</b><br>
+строка запроса: <b id='qstring'>null</b><br>
+x-квадрат: <b id='xsq'>null</b>
+</form>
+
 </body>
 </html>
