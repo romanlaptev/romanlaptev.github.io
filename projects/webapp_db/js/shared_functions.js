@@ -39,7 +39,8 @@ function _log( msg, id){
 		}
 		
 	} else {
-		alert(msg);
+		console.log(msg);
+		//alert(msg);
 		//document.writeln(msg);
 	}
 }//end _log()
@@ -240,12 +241,20 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	// }
 // console.log( "xhr.onloadstart " + xhr.onloadstart  );
 
-	// if( xhr.onprogress ){
-		// xhr.onprogress = function(){
-// _log("ajax onprogress");
-// console.log(arguments);
-		// }
-	// }
+	if( xhr.onprogress ){
+		xhr.onprogress = function(e){
+//_log("ajax onprogress");
+//console.log(arguments);
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			if( document.getElementById("load-progress") ){
+				document.getElementById("load-progress").value = percentComplete;
+			}
+		}
+	}
 // console.log( "xhr.onprogress " + xhr.onprogress  );
 
 	// if (xhr.setRequestHeader) {
@@ -285,4 +294,3 @@ _log(msg);
 		
 	});//end ready	
 }
-
