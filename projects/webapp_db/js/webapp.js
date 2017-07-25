@@ -190,7 +190,7 @@ function _db( opt ){
 "orig_type"
 ],
 				"records" : []
-			},  
+			}
 			
 		}//end tables
 	};
