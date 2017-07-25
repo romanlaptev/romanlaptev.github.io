@@ -218,7 +218,10 @@ var msg = "load " + webApp.vars["db_url"] ;
 console.log("<br>" + msg);
 //webApp.vars["log"].push(msg);
 //console.log( "_postFunc(), " + typeof data );
-
+//console.log( data );
+//for( var key in data){
+//console.log(key +" : "+data[key]);
+//}
 				if( !data ){
 console.log("error in _db(), not find 'data' !");			
 					return false;
@@ -710,19 +713,33 @@ console.log("not callback....use return function");
 			var records = xmlDoc.item(1).getElementsByTagName("table");
 		}
 //console.log( records, records.length ) ;
+//console.log( records.item(0).text ) ;
+//console.log( records.item(0).textContent ) ;
+//console.log( "textContent" in records.item(0) ) ;
+//console.log( "text" in records.item(0) ) ;
 //return;
 
 		for( var n = 0; n < records.length; n++){
-			var record = records[n];
-			var tableName = record["attributes"]["name"].nodeValue;
+			//var record = records[n];
+			//var tableName = record["attributes"]["name"].nodeValue;
+			var record = records.item(n);
+			var tableName = record.attributes.getNamedItem("name").nodeValue;
 //console.log( tableName );
 
 			var columns = record.getElementsByTagName("column");
 			var recordObj = {};
 			for( var n2 = 0; n2 < columns.length; n2++){
-				var column = columns[n2];
-				var columnName = column["attributes"]["name"].nodeValue;
-				recordObj[columnName] = column.textContent;
+				//var column = columns[n2];
+				//var columnName = column["attributes"]["name"].nodeValue;
+				//recordObj[columnName] = column.textContent;
+				var column = columns.item(n2);
+				var columnName = column.attributes.getNamedItem("name").nodeValue;
+				if ("textContent" in column){
+					recordObj[columnName] = column.textContent;
+				} else {
+					recordObj[columnName] = column.text;
+				}
+				
 			}//next
 			
 			//var recordObj = {"a":1};
@@ -1694,6 +1711,34 @@ console.log("_formNodeContent()", arguments);
 	// webApp.draw.insert( opt );
 // }//end _drawBlockGenre()
 
+function create_MSXML(){// create XML ActiveXObject for Internet Explorer before version 9
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+				  
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		} 	catch(e) {
+// console.log("error: " + e);
+			// for( var item in e )	{
+// console.log( item + ": " + e[item]);
+			// }//next
+		};
+	}//end try
+}//end create_MSXML()
 
 
 
@@ -1827,37 +1872,6 @@ console.log( key );
 
 		//xmldom = xml;
 
-		// function _createMSXML(){
-			// if (typeof (ActiveXObject) === "undefined") {
-				// return false;
-			// }
-			// var progIDs = [
-							// "Msxml2.DOMDocument.6.0", 
-							// "Msxml2.DOMDocument.5.0", 
-							// "Msxml2.DOMDocument.4.0", 
-							// "Msxml2.DOMDocument.3.0", 
-							// "MSXML2.DOMDocument", 
-							// "MSXML.DOMDocument"
-						  // ];
-						  
-			// for(var n = 0; n < progIDs.length; n++) {
-				// try { 
-					// var xml = {
-						// "xml_obj" : new ActiveXObject( progIDs[n] ),
-						// "version" : progIDs[n]
-					// }
-					// return xml; 
-				// } 
-				// catch(e)	{
-// console.log("_createMSXML() error: " + e);
-					// for( var item in e ){
-// console.log(item + ": " + e[item]);
-					// }
-				// };
-				
-			// }//next
-		// }//end _createMSXML()
-		
 		function __parse( xml ){
 
 				//read schema
