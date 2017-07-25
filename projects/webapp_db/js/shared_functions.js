@@ -183,40 +183,20 @@ console.log( msg, xhr );
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-					
 //console.log( xhr.responseText );
 //console.log( xhr.responseXML );
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
+//var test = xhr.responseXML.selectNodes("//pma_xml_export");	
+//var test = xhr.responseXML.getElementsByTagName("database");
+//console.log( test.item(0).nodeName);
 							var data = xhr.responseXML;
 							callback(data);
 						} else {
 							var data = xhr.responseText;
 							callback(data);
 						}
-/*						
-						//fix XML parse for old IE
-						if (!window.DOMParser) {
-							var xml_info = create_MSXML();
-console.log("created ActiveXObject with version: " + xml_info.version);
-								var xml = xml_info["xml_obj"];
-								xml.async = "false";
-								xml.loadXML( xhr.responseText );	
-								var errorMsg = null;
-								if (xml.parseError && xml.parseError.errorCode != 0) {
-									errorMsg = "XML Parsing Error: " + xml.parseError.reason
-											  + " at line " + xml.parseError.line
-											  + " at position " + xml.parseError.linepos;
-								}
-								if (errorMsg) {
-console.log( errorMsg );
-								}
-								//parse_xml(xml);
-console.log(xml);						
-								callback(xml);
-						}
-*/						
 					}
 
 				} else {
@@ -322,37 +302,6 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 	
 }//end runAjax()
 
-function create_MSXML(){// create XML ActiveXObject for Internet Explorer before version 9
-	
-	if (typeof (ActiveXObject) === "undefined") {
-		return false;
-	}
-	
-	var progIDs = [
-					"Msxml2.DOMDocument.6.0", 
-					"Msxml2.DOMDocument.5.0", 
-					"Msxml2.DOMDocument.4.0", 
-					"Msxml2.DOMDocument.3.0", 
-					"MSXML2.DOMDocument", 
-					"MSXML.DOMDocument"
-				  ];
-				  
-	for(var n = 0; n < progIDs.length; n++) {
-		try { 
-			var xml = {
-				"xml_obj" : new ActiveXObject( progIDs[n] ),
-				"version" : progIDs[n]
-			}
-			return xml; 
-		} 	catch(e) {
-// console.log("error: " + e);
-			// for( var item in e )	{
-// console.log( item + ": " + e[item]);
-			// }//next
-		};
-	}//end try
-}//end create_MSXML()
-
 
 if( typeof window.jQuery === "function"){
 var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
@@ -361,4 +310,3 @@ _log(msg);
 		
 	});//end ready	
 }
-
