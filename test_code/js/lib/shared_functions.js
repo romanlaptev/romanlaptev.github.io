@@ -431,8 +431,8 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		// }
 	// }
 // console.log( "xhr.onloadstart " + xhr.onloadstart  );
-
-	if( xhr.onprogress ){
+	
+	//if( "onprogress" in xhr ){
 		xhr.onprogress = function(e){
 //_log("ajax onprogress");
 //console.log(arguments);
@@ -445,9 +445,10 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				document.getElementById("load-progress").value = percentComplete;
 			}
 		}
-	}
-// console.log( "xhr.onprogress " + xhr.onprogress  );
+	//}
+//console.log( "xhr.onprogress ", xhr.onprogress  );
 
+//console.log( "setRequestHeader" in xhr  );
 	// if (xhr.setRequestHeader) {
 		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	// }
