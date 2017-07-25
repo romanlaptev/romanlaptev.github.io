@@ -152,6 +152,7 @@ console.log( msg );
 	}
 	
 	var xhr = _createRequestObject();
+
 	if ( !xhr ) {
 console.log("error, ", xhr);
 		var msg = "_createRequestObject() error";			
@@ -189,10 +190,33 @@ console.log(msg);
 						
 						if( xhr.responseXML ){
 							var data = xhr.responseXML;
+							callback(data);
 						} else {
 							var data = xhr.responseText;
+							callback(data);
 						}
-						callback(data);
+/*						
+						//fix XML parse for old IE
+						if (!window.DOMParser) {
+							var xml_info = create_MSXML();
+console.log("created ActiveXObject with version: " + xml_info.version);
+								var xml = xml_info["xml_obj"];
+								xml.async = "false";
+								xml.loadXML( xhr.responseText );	
+								var errorMsg = null;
+								if (xml.parseError && xml.parseError.errorCode != 0) {
+									errorMsg = "XML Parsing Error: " + xml.parseError.reason
+											  + " at line " + xml.parseError.line
+											  + " at position " + xml.parseError.linepos;
+								}
+								if (errorMsg) {
+console.log( errorMsg );
+								}
+								//parse_xml(xml);
+console.log(xml);						
+								callback(xml);
+						}
+*/						
 					}
 
 				} else {
@@ -257,10 +281,16 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				document.getElementById("load-progress").value = percentComplete;
 			}
 		}
+		
+		//xhr.addEventListener('progress', function(e) {
+//console.log("ajax onprogress", e);
+		//}, false);
+		
 //console.log( "xhr.onprogress ", xhr.onprogress);
 //console.log( "xhr.onprogress ", xhr.onprogress.handleEvent  );
 	}
 
+		
 //console.log( "setRequestHeader" in xhr  );
 	// if (xhr.setRequestHeader) {
 		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -273,16 +303,17 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 		var request = false;
 		
 		if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+//console.log("try use XMLHttpRequest");		
 			request = new XMLHttpRequest();
 		} 
 
 		if(!request){ // IE
-//console.log("use Microsoft.XMLHTTP");		
+//console.log("try use Microsoft.XMLHTTP");		
 			request = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 
 		if(!request){
-//console.log("use Msxml2.XMLHTTP");		
+//console.log("try use Msxml2.XMLHTTP");		
 			request=new ActiveXObject('Msxml2.XMLHTTP');
 		}
 
@@ -290,6 +321,37 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 	}//end _createRequestObject()
 	
 }//end runAjax()
+
+function create_MSXML(){// create XML ActiveXObject for Internet Explorer before version 9
+	
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+				  
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		} 	catch(e) {
+// console.log("error: " + e);
+			// for( var item in e )	{
+// console.log( item + ": " + e[item]);
+			// }//next
+		};
+	}//end try
+}//end create_MSXML()
 
 
 if( typeof window.jQuery === "function"){
@@ -299,3 +361,4 @@ _log(msg);
 		
 	});//end ready	
 }
+
