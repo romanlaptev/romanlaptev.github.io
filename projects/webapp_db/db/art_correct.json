@@ -1,5 +1,5 @@
-[
-[
+{
+"term_data" : [
 {"tid": 66,"title": "Японская гравюра"}, 
 {"tid": 67,"title": "Европейская гравюра XV-XVII"}, 
 {"tid": 68,"title": "Модерн"}, 
@@ -29,8 +29,7 @@
 {"tid": 171,"title": "Jacques Callot"}, 
 {"tid": 139,"title": "гравюра"}
 ],
-
-[
+"term_hierarchy" : [
 {"tid": 4,"vid": 1,"name": "Иван Билибин","description": "ivan_bilibin.jpg","weight": 6}, 
 {"tid": 2,"vid": 1,"name": "Альфонс Муха","description": "alphonse-mucha.jpg_.jpg","weight": 2}, 
 {"tid": 216,"vid": 5,"name": 1912,"description": "","weight": 21}, 
@@ -216,9 +215,10 @@
 {"tid": 244,"vid": 5,"name": 1888,"description": "","weight": 14}, 
 {"tid": 245,"vid": 5,"name": 1887,"description": "","weight": 13}, 
 {"tid": 246,"vid": 5,"name": "историческая живопись","description": "","weight": 0}, 
-{"tid": 247,"vid": 5,"name": 1882,"description": "","weight": 0}],
-
-[{"tid": 2,"parent": 68}, 
+{"tid": 247,"vid": 5,"name": 1882,"description": "","weight": 0}
+],
+"term_image" : [
+{"tid": 2,"parent": 68}, 
 {"tid": 4,"parent": 73}, 
 {"tid": 5,"parent": 68}, 
 {"tid": 6,"parent": 68}, 
@@ -405,9 +405,7 @@
 {"tid": 246,"parent": 163}, 
 {"tid": 247,"parent": 200}
 ],
-
-[{"tid": 136,"path": "kagaya_portret_2.jpg"}],
-
+"term_node" : 
 [{"nid": 1,"vid": 1,"tid": 206}, 
 {"nid": 1,"vid": 1,"tid": 125}, 
 {"nid": 1,"vid": 1,"tid": 214}, 
@@ -1700,8 +1698,9 @@
 {"nid": 527,"vid": 527,"tid": 246}, 
 {"nid": 527,"vid": 527,"tid": 193}],
 
-	[
-		{"vid": 1,"name": "галереи изображений","description": "","help": "","relations": 1,"hierarchy": 1,"multiple": 1,"required": 0,"tags": 0,"module": "taxonomy","weight": 0}, 
-		{"vid": 5,"name": "info","description": "","help": "","relations": 1,"hierarchy": 1,"multiple": 1,"required": 0,"tags": 0,"module": "taxonomy","weight": 0}
-	]
+"vocabulary": [
+{"vid": 1,"name": "галереи изображений","description": "","help": "","relations": 1,"hierarchy": 1,"multiple": 1,"required": 0,"tags": 0,"module": "taxonomy","weight": 0}, 
+{"vid": 5,"name": "info","description": "","help": "","relations": 1,"hierarchy": 1,"multiple": 1,"required": 0,"tags": 0,"module": "taxonomy","weight": 0}
 ]
+
+}
