@@ -25,9 +25,11 @@ var webApp = {
 		"log" : [],
 		//"db_url" : "db/art.xml",
 		//"db_type" : "xml"
-		"db_url" :"db/art_correct.json",
-		"db_type" : "json"
-		//"db_url" : "db/art.csv"
+		//"db_url" :"db/art_correct.json",
+		//"db_type" : "json"
+		"db_url" : "db/art_correct.csv",
+		//"db_url" : "db/art.mcsv",
+		"db_type" : "csv"
 	},
 	
 	"init" : function( postFunc ){
@@ -267,6 +269,7 @@ console.log("error in _db(), data not in JSON format");
 					break;
 					
 					case "csv":
+					//case "mcsv":
 					break;
 				}//end switch
 				
@@ -960,13 +963,26 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		_getVocabularyByName({
 			"vocName" : options["vocName"],
 			"callback" : function(res){
-	//console.log(res, res.length );	
+//console.log(res, res.length );	
+				if( res.length === 0 ){
+					if( typeof options["callback"] === "function"){
+						options["callback"](res);
+					}
+					return false;
+				}
+				
 				var _vid = res[0]["vid"];
 				_getTermByName({
 					"vid" : _vid, 
 					"termName" : options["termName"],
 					"callback" : function(res){
 //console.log(res, res.length );
+						if( res.length === 0 ){
+							if( typeof options["callback"] === "function"){
+								options["callback"](res);
+							}
+							return false;
+						}
 						var _tid = res[0]["tid"];
 //console.log( _vid, _tid );			
 
