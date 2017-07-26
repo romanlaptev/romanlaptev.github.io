@@ -23,10 +23,10 @@ var webApp = {
 	
 	"vars" : {
 		"log" : [],
-		"db_url" : "db/art.xml",
-		"db_type" : "xml"
-		//"db_url" :"db/art_correct.json",
-		//"db_type" : "json"
+		//"db_url" : "db/art.xml",
+		//"db_type" : "xml"
+		"db_url" :"db/art_correct.json",
+		"db_type" : "json"
 		//"db_url" : "db/art.csv"
 	},
 	
@@ -54,6 +54,7 @@ console.log( navigator.userAgent );
 //start
 webApp.init(function(){
 	webApp.db.loadData(function(){
+//console.log(arguments);		
 			webApp.app.buildPage({
 				"title" : "frontPage",
 				"nid" : 1
@@ -239,22 +240,30 @@ console.log("error in _db(), not find 'db_type' !");
 					
 					case "json":
 						//var obj = typeof data == 'string'? JSON.parse(data): data;
-						if( typeof data === "string"){
-							
-try {
-	//var jsonObj = JSON.parse( data );
-	var jsonObj = JSON.parse( data, function(key, value) {
-//console.log( key, value );
-		return value;
-	});							
-console.log( jsonObj );
-} catch(e) {
-_log( e );
-}							
-						} else {
+						if( typeof data !== "string"){
 console.log("error in _db(), data not in JSON format");
 							return false;
 						}
+							
+						try {
+							//var jsonObj = JSON.parse( data );
+							var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+								return value;
+							});							
+//console.log( jsonObj );
+							for(var tableName in jsonObj){
+//console.log( tableName, jsonObj[tableName].length );
+								var table = jsonObj[tableName];
+								for( var n = 0; n < table.length; n++){
+									var recordObj = table[n];
+									webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+								}//next
+							}//next
+						} catch(e) {
+						_log( e );
+						}							
+							
 					break;
 					
 					case "csv":
@@ -262,7 +271,7 @@ console.log("error in _db(), data not in JSON format");
 				}//end switch
 				
 				if( typeof postFunc === "function"){
-					postFunc( data );
+					postFunc();
 				}
 				
 			}//end callback()
@@ -466,13 +475,17 @@ console.log( "detect subQuery ", subQuery);
 
 		function _checkConditons( record, conditions){
 //console.log( "function _checkConditons, ", conditions );
+//console.log( record);
 
 			record["checkResult"] = [];
 			conditions[0]["logic"] = "";
 
 			for( var n = 0; n < conditions.length; n++){
 				var condition = conditions[n];
-				
+// if( condition["value"] === 5){
+// console.log(condition["value"], typeof condition["value"]);
+// console.log( record["vid"], typeof record["vid"]);
+// }				
 				record["checkResult"][n] = false;
 				
 				var key = condition["key"];
@@ -481,10 +494,13 @@ console.log( "detect subQuery ", subQuery);
 				//convert string or number "value" to array ["value"]
 				if( typeof condition["value"] === "string" ||
 						 typeof condition["value"] === "number"){
-					condition["value"] = [ condition["value"] ];
+					//condition["value"] = [ condition["value"] ];
+					var list_values = [ condition["value"] ];
+				} else {
+					var list_values = condition["value"];
 				}
 				
-				var list_values = condition["value"];
+				//var list_values = condition["value"];
 				if( list_values.length === 0 ){
 	//console.log("Error, _checkConditons(), empty conditions['value']...");
 					continue;
@@ -494,10 +510,21 @@ console.log( "detect subQuery ", subQuery);
 				switch( compare ) {
 				
 					case "=":
+//console.log( list_values );
 						for( var n2 = 0; n2 < list_values.length; n2++){
-							if( record[key] === list_values[n2].toString() ){
-								record["checkResult"][n] = true;							
-	//console.log( key, record[key], condition["value"], n, record["checkResult"] );
+//if( condition["value"] === 5){
+//console.log( key, record[key], condition["value"], n, record["checkResult"] );
+//console.log( record);
+//}								
+							//if( record[key] === list_values[n2].toString() ){
+							if( record[key].toString() === list_values[n2].toString() ){
+								record["checkResult"][n] = true;	
+								
+//if( condition["value"] === "стиль"){
+//console.log( key, record[key], condition["value"], n, record["checkResult"] );
+//name стиль стиль 1 [true, true]
+//name стиль стиль 1 [false, true]
+//}								
 							}
 						}//next
 					break;
@@ -939,9 +966,9 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 					"vid" : _vid, 
 					"termName" : options["termName"],
 					"callback" : function(res){
-	//console.log(res, res.length );
+//console.log(res, res.length );
 						var _tid = res[0]["tid"];
-	//console.log( _vid, _tid );			
+//console.log( _vid, _tid );			
 
 						_getChildTerms({
 							"vid" : _vid,
@@ -1582,6 +1609,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 				//"title": options["title"]
 			});
 //console.log( node );
+
 			if( node ){
 				//draw content block
 				var opt2 = {
@@ -1711,35 +1739,35 @@ console.log("_formNodeContent()", arguments);
 	// webApp.draw.insert( opt );
 // }//end _drawBlockGenre()
 
-function create_MSXML(){// create XML ActiveXObject for Internet Explorer before version 9
-	if (typeof (ActiveXObject) === "undefined") {
-		return false;
-	}
-	var progIDs = [
-					"Msxml2.DOMDocument.6.0", 
-					"Msxml2.DOMDocument.5.0", 
-					"Msxml2.DOMDocument.4.0", 
-					"Msxml2.DOMDocument.3.0", 
-					"MSXML2.DOMDocument", 
-					"MSXML.DOMDocument"
-				  ];
-				  
-	for(var n = 0; n < progIDs.length; n++) {
-		try { 
-			var xml = {
-				"xml_obj" : new ActiveXObject( progIDs[n] ),
-				"version" : progIDs[n]
-			}
-			return xml; 
-		} 	catch(e) {
-// console.log("error: " + e);
-			// for( var item in e )	{
-// console.log( item + ": " + e[item]);
-			// }//next
-		};
-	}//end try
-}//end create_MSXML()
 
+// function create_MSXML(){// create XML ActiveXObject for Internet Explorer before version 9
+	// if (typeof (ActiveXObject) === "undefined") {
+		// return false;
+	// }
+	// var progIDs = [
+					// "Msxml2.DOMDocument.6.0", 
+					// "Msxml2.DOMDocument.5.0", 
+					// "Msxml2.DOMDocument.4.0", 
+					// "Msxml2.DOMDocument.3.0", 
+					// "MSXML2.DOMDocument", 
+					// "MSXML.DOMDocument"
+				  // ];
+				  
+	// for(var n = 0; n < progIDs.length; n++) {
+		// try { 
+			// var xml = {
+				// "xml_obj" : new ActiveXObject( progIDs[n] ),
+				// "version" : progIDs[n]
+			// }
+			// return xml; 
+		// } 	catch(e) {
+// // console.log("error: " + e);
+			// // for( var item in e )	{
+// // console.log( item + ": " + e[item]);
+			// // }//next
+		// };
+	// }//end try
+// }//end create_MSXML()
 
 
 /*
