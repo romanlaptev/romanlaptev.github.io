@@ -1,4 +1,4 @@
-#TABLE : "node"; NUM: 492; FIELDS : "nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"
+#HEAD{ "name" : "node", "fields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"]}
 "1","1","photogallery_image","ru","Life Force, 1919","1","1","1335858040","1491726570","0","1","0","0","0","0"
 "2","2","photogallery_image","ru","Мечта (Обыкновенный богомол); Dream (Mantis Religiousa), 1935","1","1","1335884167","1491726470","0","1","0","0","0","0"
 "3","3","photogallery_image","ru","Hand with Reflecting Sphere","1","1","1335884665","1491726426","0","1","0","0","0","0"
@@ -407,7 +407,7 @@
 "438","438","photogallery_image","ru","Повесть о Куликовской битве. Миниатюра 5","1","1","1439021768","1452320265","0","1","0","0","0","0"
 "439","439","photogallery_image","ru","Повесть о Куликовской битве. Миниатюра 6","1","1","1439025554","1452320358","0","1","0","0","0","0"
 "440","440","photogallery_image","ru","Повесть о Куликовской битве. Миниатюра 7","1","1","1439026060","1452320402","0","1","0","0","0","0"
-"441","441","termin_img","ru","Миниатюры из \"Бабур-наме","1","1","1439026777","1439026942","0","1","0","0","0","0"
+"441","441","termin_img","ru","Миниатюры из 'Бабур-наме'","1","1","1439026777","1439026942","0","1","0","0","0","0"
 "442","442","photogallery_image","ru","сбор миндаля","1","1","1439028245","1439028291","0","1","0","0","0","0"
 "443","443","photogallery_image","ru","Бабур-наме. Абубакр Дуглат Кашгари осаждает Узгенд","1","1","1439035075","1439035762","0","1","0","0","0","0"
 "444","444","termin_img","ru","Братья Лимбурги","1","1","1439038967","1439306462","0","1","0","0","0","0"
@@ -491,7 +491,7 @@
 "529","529","photogallery_image","ru","Green angel tower, Michael Whelan, 1993","1","1","1492258160","1492261195","0","1","0","0","0","0"
 "530","530","photogallery_image","ru","Ученик убийцы","1","1","1492268310","1492268843","0","1","0","0","0","0"
 "531","531","photogallery_image","ru","Логотип, люстры54","1","1","1492915013","1492915517","0","1","0","0","0","0"
-#TABLE: "term_data"; NUM: 251; FIELDS: "tid","vid","name","description","weight"
+#HEAD{ "name" : "term_data", "fields" : ["tid","vid","name","description","weight"]}
 "4","1","Иван Билибин","ivan_bilibin.jpg","6"
 "2","1","Альфонс Муха","alphonse-mucha.jpg_.jpg","2"
 "216","5","1912",,"29"
@@ -743,7 +743,7 @@
 "310","5","1995",,"46"
 "311","5","1907",,"25"
 "312","5","1916",,"31"
-#TABLE : "term_hierarchy"; NUM: 251; FIELDS : "tid","parent"
+#HEAD { "name" : "term_hierarchy", "fields" : ["tid","parent"]}
 "2","68"
 "4","73"
 "5","68"
@@ -995,7 +995,7 @@
 "310","200"
 "311","200"
 "312","200"
-#TABLE : "vocabulary"; NUM: 3; FIELDS : "vid","name","description","help","relations","hierarchy","multiple","required","tags","module","weight"
+#HEAD { "name" : "vocabulary", "fields" : ["vid","name","description","help","relations","hierarchy","multiple","required","tags","module","weight"]}
 "1","галереи изображений",,,"1","1","1","0","0","taxonomy","0"
 "5","info",,,"1","1","1","0","0","taxonomy","0"
 "6","Alphabetical_voc",,,"1","0","1","0","0","taxonomy","0"
