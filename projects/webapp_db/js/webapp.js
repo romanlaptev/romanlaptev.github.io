@@ -28,8 +28,11 @@ var webApp = {
 		//"db_url" :"db/art_correct.json",
 		//"db_type" : "json"
 		"db_url" : "db/art_correct.csv",
-		//"db_url" : "db/art.mcsv",
-		"db_type" : "csv"
+		"db_type" : "jcsv",
+		"import" : {
+			"delimiterByFields" : ",",
+			"delimiterByLines" : "\r\n"
+		}
 	},
 	
 	"init" : function( postFunc ){
@@ -218,7 +221,7 @@ console.log("error in _db(), not find 'db_url' !");
 			"callback": function( data ){
 				
 var msg = "load " + webApp.vars["db_url"] ;
-console.log("<br>" + msg);
+console.log(msg);
 //webApp.vars["log"].push(msg);
 //console.log( "_postFunc(), " + typeof data );
 //console.log( data );
@@ -268,8 +271,9 @@ console.log("error in _db(), data not in JSON format");
 							
 					break;
 					
-					case "csv":
-					//case "mcsv":
+					//case "csv":
+					case "jcsv":
+						_parseCSVBlocks(data);
 					break;
 				}//end switch
 				
@@ -779,6 +783,119 @@ console.log("not callback....use return function");
 		
 	}//end _parseXML()
 
+	function _parseCSVBlocks( data ){
+		var importData = data.split( webApp.vars["import"]["delimiterByLines"] );
+//console.log( importData );
+
+		//detect block info
+		webApp.vars["import"]["blocks"] = [];
+		var tableName = "";
+		for( var n = 0; n < importData.length; n++){
+			var record = importData[n];
+			
+			if( record.indexOf("#HEAD") !== -1 ){
+console.log( n, record.indexOf("#HEAD"), record );				
+				var p = record.replace("#HEAD", "");
+//console.log( p );
+				var jsonObj = JSON.parse( p, function(key, value) {
+//console.log( key, value );
+					return value;
+				});							
+//console.log( jsonObj );
+
+				// var obj = {};
+				// for( var key in jsonObj){
+					// obj[key] = jsonObj[key];
+				// }
+				// obj["startPos"] = n+1;
+				// webApp.vars["import"]["blocks"].push( obj );
+				tableName = jsonObj["name"];
+				var fieldsInfo = jsonObj["fields"];
+			} else {
+				
+//console.log( tableName );
+				if( tableName.length > 0){
+					var recordObj = _convertCSV_JSON( 
+						record, 
+						fieldsInfo, 
+						webApp.vars["import"]["delimiterByFields"] 
+					);
+					webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+				} else {
+	console.log("Warn! Skip record", record);				
+				}
+				
+			}
+			
+		}//next
+		
+		function _convertCSV_JSON( record, keys, delimiterByFields ){
+	//console.log( "function _convertCSV_JSON(), ", arguments);
+			if( typeof record !== "string" ){
+	console.log("_convertCSV_JSON(), error, input record is not in CSV format");
+				return false;
+			}
+				
+			if( record.length === 0 ){
+	console.log("_convertCSV_JSON(), error, input record is empty!");
+				return false;
+			}
+
+			var recordObj = {};
+			//create keys(fieldnames)
+			for( var n1 = 0; n1 < keys.length; n1++){
+				var key = keys[n1];
+				recordObj[ key ] = "";
+			}//next field
+			
+			
+			//filter, replace commas within "text value"
+			var regexp = /\"(.*?)\"/g;
+			var filter = [];
+			while( result = regexp.exec( record )){
+	//console.log(result);
+			  var s1 = result[1];
+			  if(s1.indexOf(",") !== -1){
+				var s2 = s1.replace(/,/g,"&#44;");
+	//console.log(s1, s2);
+				var obj = {
+				  "raw": s1,
+				  "filtered": s2
+				};
+				filter.push(obj);
+			  }
+			}
+	//console.log(filter);
+			
+			for( var n1 =0; n1 < filter.length; n1++){
+				var s1 = filter[n1]["raw"];
+				var s2 = filter[n1]["filtered"];
+				record = record.replace( s1, s2 );
+			}
+			
+			record = record.replace(/"/g,"");
+//console.log( record );
+
+			var csv_values = record.split( delimiterByFields );
+//console.log( csv_values, csv_values.length );
+
+			var num = 0;
+			for( var key in recordObj){
+				//restore commas in text value
+				if( csv_values[num].length === 0){
+					csv_values[num] = "NULL";
+				}
+				recordObj[key] = csv_values[num];
+				num++;
+			}//next key
+				
+	//console.log(recordObj);			
+			return recordObj;
+		}//_convertCSV_JSON()
+		
+	}//end _parseCSVBlocks()
+	
+	
 //async API
 	function _getVocabularyByName( opt ){
 		var options = {
