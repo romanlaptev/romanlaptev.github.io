@@ -23,16 +23,16 @@ var webApp = {
 	
 	"vars" : {
 		"log" : [],
-		//"db_url" : "db/art.xml",
-		//"db_type" : "xml"
+		"db_url" : "db/art.xml",
+		"db_type" : "xml"
 		//"db_url" :"db/art_correct.json",
 		//"db_type" : "json"
-		"db_url" : "db/art_correct.csv",
-		"db_type" : "jcsv",
-		"import" : {
-			"delimiterByFields" : ",",
-			"delimiterByLines" : "\r\n"
-		}
+		//"db_url" : "db/art_correct.csv",
+		//"db_type" : "jcsv",
+		 //"import" : {
+			//"delimiterByFields" : ",",
+			//"delimiterByLines" : "\r\n"
+		//}
 	},
 	
 	"init" : function( postFunc ){
@@ -62,7 +62,7 @@ webApp.init(function(){
 //console.log(arguments);		
 			webApp.app.buildPage({
 				"title" : "frontPage",
-				"nid" : 1
+				"nid" : 26
 			});
 		}//end callback
 	);
@@ -794,7 +794,7 @@ console.log("not callback....use return function");
 			var record = importData[n];
 			
 			if( record.indexOf("#HEAD") !== -1 ){
-console.log( n, record.indexOf("#HEAD"), record );				
+//console.log( n, record.indexOf("#HEAD"), record );				
 				var p = record.replace("#HEAD", "");
 //console.log( p );
 				var jsonObj = JSON.parse( p, function(key, value) {
@@ -1502,7 +1502,7 @@ function _app( opt ){
 //"translate" : 0
 //"content" : "<h1>front page</h1>"
 //"format" : 1,
-"body" : "<h1>Page body</h1>"
+"body" : "<h1>Page body!</h1>"
 			}
 		],
 		"queries": {},
@@ -1737,41 +1737,46 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 		//draw page content
 		if( options["nid"] ){
 			
+			//get node from DB
 			var node = _nodeLoad({
-				"nid": options["nid"]//,
+				"nid": options["nid"],
 				//"title": options["title"]
+				"callback" : function( node ){
+console.log( node );						
+					//draw content block
+					var opt2 = {
+						"name" : "block-content",
+						"title" : node[0]["title"], 
+						"templateID" : "tpl-block-content",
+						//"content" : _formNodeContent(node)//node["content"]
+						"content" : node[0]["body"]
+					};
+					_buildBlock( opt2 );
+				}//end callback
 			});
-//console.log( node );
+			
+		} else {
+console.log( options["nid"] );			
+_log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");			
+		}
 
-			if( node ){
-				//draw content block
-				var opt2 = {
-					"name" : "block-content",
-					"title" : node["title"], 
-					"templateID" : "tpl-block-content",
-					"content" : _formNodeContent(node)//node["content"]
-				};
+		//draw sidebar blocks
+		for( var n = 0; n < _vars["blocks"].length; n++){
+			var opt2 = _vars["blocks"][n];
+//console.log(opt2["visibility"], options["title"]);				
+			if( opt2["visibility"]){
+				if( opt2["visibility"].indexOf( options["title"] ) !== -1 ){
+					_buildBlock( opt2 );
+				}
+			} else {
 				_buildBlock( opt2 );
 			}
 			
-			//draw sidebar blocks
-			for( var n = 0; n < _vars["blocks"].length; n++){
-				var opt2 = _vars["blocks"][n];
-//console.log(opt2["visibility"], options["title"]);				
-				if( opt2["visibility"]){
-					if( opt2["visibility"].indexOf( options["title"] ) !== -1 ){
-						_buildBlock( opt2 );
-					}
-				} else {
-					_buildBlock( opt2 );
-				}
-				
-			}//next
+		}//next
 			
-		}
-		
 	};//end _buildPage()
-
+	
+/*
 	function _nodeLoad( opt ){
 //console.log("_nodeLoad()", arguments);
 		var p = {
@@ -1789,6 +1794,7 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 		};
 		
 		if( p["nid"] ){
+			//node["title"] = "title";
 			//node["content"] = "node by nid!";
 			node = __getNode("nid", p["nid"]);
 		} else {
@@ -1816,12 +1822,74 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 		}//__getNode()
 
 	}//end _nodeLoad()
+
 	
 	function _formNodeContent( node ){
 console.log("_formNodeContent()", arguments);
 		var html = "" + node["body"];
 		return html;
 	}//_formNodeContent()
+*/
+
+	function _nodeLoad( opt ){
+//console.log("_nodeLoad()", arguments);
+		var p = {
+			"nid": null,
+			"title" : "",
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		webApp.db.query({
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "node",
+				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
+				"targetFields" : ["title"],
+				"where" : [
+					{"key" : "nid", "value" : p["nid"], "compare": "="}
+				]
+			},
+			"callback" : function( node ){
+//console.log( node );						
+				__getBody(function( res ){
+//console.log( res );						
+					node[0]["body"] = res[0]["body"];
+					if( typeof p["callback"] === "function"){
+						p["callback"](node);
+					}
+				});
+			}//end callback
+		});
+		
+		return  false;
+
+		function __getBody( callback ){
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "node_revisions",
+					"targetFields" : ["body"],
+					"where" : [
+						{"key" : "nid", "value" : p["nid"], "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+//console.log( res );
+					if( typeof callback === "function"){
+						callback(res);
+					}
+				}//end callback
+			});
+			return false;
+		}//__getNode()
+
+	}//end _nodeLoad()
+
 	
 	// public interfaces
 	return{
