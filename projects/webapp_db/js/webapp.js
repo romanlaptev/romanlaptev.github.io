@@ -62,7 +62,7 @@ webApp.init(function(){
 //console.log(arguments);		
 			webApp.app.buildPage({
 				"title" : "frontPage",
-				"nid" : 26
+				"nid" : 1
 			});
 		}//end callback
 	);
@@ -924,7 +924,7 @@ _log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is em
 			},
 			"callback" : function( res ){
 				if( typeof options["callback"] === "function"){
-					options["callback"](res);
+					options["callback"](res);//return vid
 				}
 			}//end callback
 		};
@@ -962,7 +962,7 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 			"callback" : function( res ){
 //console.log(res, res.length );	
 				if( typeof options["callback"] === "function"){
-					options["callback"](res);
+					options["callback"](res);//return tid
 				}
 			}//end callback
 		};
@@ -1179,6 +1179,67 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		
 	}//end _replaceUrl()
 
+
+	function _nodeLoad( opt ){
+//console.log("_nodeLoad()", arguments);
+		var p = {
+			"nid": null,
+			"title" : "",
+			"alias" : "",
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		webApp.db.query({
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "node",
+				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
+				"targetFields" : ["title"],
+				"where" : [
+					{"key" : "nid", "value" : p["nid"], "compare": "="}
+				]
+			},
+			"callback" : function( node ){
+//console.log( node );						
+				__getBody(function( res ){
+//console.log( res );						
+					node[0]["body"] = res[0]["body"];
+					if( typeof p["callback"] === "function"){
+						p["callback"](node);
+					}
+				});
+			}//end callback
+		});
+		
+		return  false;
+
+		function __getBody( callback ){
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "node_revisions",
+					"targetFields" : ["body"],
+					"where" : [
+						{"key" : "nid", "value" : p["nid"], "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+//console.log( res );
+					if( typeof callback === "function"){
+						callback(res);
+					}
+				}//end callback
+			});
+			return false;
+		}//__getBody()
+
+	}//end _nodeLoad()
+
 	
 	// public interfaces
 	return{
@@ -1208,6 +1269,9 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		},
 		replaceUrl:	function( opt ){ 
 			return _replaceUrl( opt ); 
+		},
+		nodeLoad:	function( opt ){ 
+			return _nodeLoad( opt ); 
 		}
 	};
 }//end _db()
@@ -1355,10 +1419,10 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 			return false;
 		}
 		
-		if( !options["content"] ){
-_log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + options["content"] + "</b></p>");
-			return false;
-		}
+		// if( !options["content"] ){
+// _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + options["content"] + "</b></p>");
+			// return false;
+		// }
 		
 		var html = _vars["templates"][templateID];
 		html = html.replace("{{block_title}}", options["title"]);
@@ -1656,10 +1720,10 @@ console.log("_buildBlock()", arguments);
 		}
 //console.log(options);
 	
-		if( options["content"].length === 0 ){
-_log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
-			return false;
-		}
+		// if( options["content"].length === 0 ){
+// _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
+			// return false;
+		// }
 
 		//dynamic form content
 		if( typeof options["content"] === "function"){
@@ -1738,11 +1802,11 @@ _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p
 		if( options["nid"] ){
 			
 			//get node from DB
-			var node = _nodeLoad({
+			var node = webApp.db.nodeLoad({
 				"nid": options["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
-console.log( node );						
+//console.log( node );						
 					//draw content block
 					var opt2 = {
 						"name" : "block-content",
@@ -1751,6 +1815,7 @@ console.log( node );
 						//"content" : _formNodeContent(node)//node["content"]
 						"content" : node[0]["body"]
 					};
+//console.log( opt2 );						
 					_buildBlock( opt2 );
 				}//end callback
 			});
@@ -1775,121 +1840,6 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		}//next
 			
 	};//end _buildPage()
-	
-/*
-	function _nodeLoad( opt ){
-//console.log("_nodeLoad()", arguments);
-		var p = {
-			"nid": null,
-			"title" : ""
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		var node = {
-			"content" : ""
-		};
-		
-		if( p["nid"] ){
-			//node["title"] = "title";
-			//node["content"] = "node by nid!";
-			node = __getNode("nid", p["nid"]);
-		} else {
-			
-			if( p["title"].length > 0 ){
-				//node["content"] = "node by title!";
-				node = __getNode("title", p["title"]);
-			}
-			
-		}
-		
-		return node;
-		
-		function __getNode( key, value ){
-//console.log("__getNode()", arguments);
-			var nodes = webApp.app.vars["node"];
-			var node = {};
-			for( var n = 0; n < nodes.length; n++){
-				if( nodes[n][key] === value){
-					node = nodes[n];
-				}
-			}//next
-//console.log(node);
-			return node;
-		}//__getNode()
-
-	}//end _nodeLoad()
-
-	
-	function _formNodeContent( node ){
-console.log("_formNodeContent()", arguments);
-		var html = "" + node["body"];
-		return html;
-	}//_formNodeContent()
-*/
-
-	function _nodeLoad( opt ){
-//console.log("_nodeLoad()", arguments);
-		var p = {
-			"nid": null,
-			"title" : "",
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		webApp.db.query({
-			"queryObj" : {
-				"action" : "select",
-				"tableName": "node",
-				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
-				"targetFields" : ["title"],
-				"where" : [
-					{"key" : "nid", "value" : p["nid"], "compare": "="}
-				]
-			},
-			"callback" : function( node ){
-//console.log( node );						
-				__getBody(function( res ){
-//console.log( res );						
-					node[0]["body"] = res[0]["body"];
-					if( typeof p["callback"] === "function"){
-						p["callback"](node);
-					}
-				});
-			}//end callback
-		});
-		
-		return  false;
-
-		function __getBody( callback ){
-			webApp.db.query({
-				"queryObj" : {
-					"action" : "select",
-					"tableName": "node_revisions",
-					"targetFields" : ["body"],
-					"where" : [
-						{"key" : "nid", "value" : p["nid"], "compare": "="}
-					]
-				},
-				"callback" : function( res ){
-//console.log( res );
-					if( typeof callback === "function"){
-						callback(res);
-					}
-				}//end callback
-			});
-			return false;
-		}//__getNode()
-
-	}//end _nodeLoad()
-
 	
 	// public interfaces
 	return{
