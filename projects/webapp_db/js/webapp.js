@@ -335,7 +335,7 @@ console.log("error in _db(), data not in JSON format");
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-console.log( "_query()", options );
+//console.log( "_query()", options );
 
 		// if( options["dbName"].length === 0){
 // var msg = "_getListStores(), error, argument 'dbName' empty.... ";
@@ -402,7 +402,7 @@ console.log("detect subquery!", condition["value"], options, n);
 					subQuery["callback"] = _postSubQuery;
 					subQuery["num_condition"] = n;
 //console.log( "detect subQuery ", subQuery, " in ", queryObj, n);
-console.log( "detect subQuery ", subQuery);
+//console.log( "detect subQuery ", subQuery);
 					
 //					if( subQuery["where"][0]["value"]["action"] ){
 //console.log("detect subquery2");
@@ -667,7 +667,7 @@ console.log( "detect subQuery ", subQuery);
 //console.log(options, data);
 			var endTime = new Date();
 			var runtime = (endTime - startTime) / 1000;
-console.log("_postQuery(), runtime, sec: " + runtime);
+//console.log("_postQuery(), runtime, sec: " + runtime);
 			// //fail query
 			// if(!data){
 				// if( typeof options["callback"] === "function"){
@@ -1087,7 +1087,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
-console.log(options);
+//console.log(options);
 
 		if( options["vocName"].length === 0 ){
 _log("<p>db.getBlockContent(),   error, vocName <b class='text-danger'>is empty</b></p>");
@@ -1735,7 +1735,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	}//end _urlManager()
 	
 	var _buildBlock = function(opt){
-console.log("_buildBlock()", arguments);
+//console.log("_buildBlock()", arguments);
 
 		var options = {
 			"title": "block title",
