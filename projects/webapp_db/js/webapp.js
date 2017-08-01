@@ -24,7 +24,7 @@ var webApp = {
 	"vars" : {
 		"log" : [],
 		"db_url" : "db/art.xml",
-		"db_type" : "xml"
+		"db_type" : "xml",
 		//"db_url" :"db/art_correct.json",
 		//"db_type" : "json"
 		//"db_url" : "db/art_correct.csv",
@@ -33,6 +33,7 @@ var webApp = {
 			//"delimiterByFields" : ",",
 			//"delimiterByLines" : "\r\n"
 		//}
+		"GET" : {}
 	},
 	
 	"init" : function( postFunc ){
@@ -58,14 +59,36 @@ console.log( navigator.userAgent );
 
 //start
 webApp.init(function(){
+	
+	// webApp.db.loadData(function(){
+// //console.log(arguments);		
+			// webApp.app.buildPage({
+				// "title" : "frontPage",
+				// "nid" : 1
+			// });
+		// }//end callback
+	// );
+	
+	
 	webApp.db.loadData(function(){
-//console.log(arguments);		
-			webApp.app.buildPage({
-				"title" : "frontPage",
-				"nid" : 1
-			});
+//console.log(arguments);
+
+//console.log(window.location);	
+			var parse_url = window.location.search; 
+			if( parse_url.length > 0 ){
+				webApp.vars["GET"] = parseGetParams(); 
+				webApp.app.urlManager();
+			} else {
+						if( webApp.app.vars["init_url"] ){
+							parse_url = webApp.app.vars["init_url"].substring(1).split("&");
+						}
+						webApp.vars["GET"] = parseGetParams( parse_url ); 
+						webApp.app.urlManager();
+			}
+			
 		}//end callback
 	);
+	
 });//end webApp initialize
 console.log(webApp);
 
@@ -1168,6 +1191,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 					if( res.length > 0 && 
 							typeof res[0] !== "undefined"){
 						p["data"][numRec]["url"] = res[0]["dst"];
+						p["data"][numRec]["url"] = "?q=" + p["data"][numRec]["url"];
 					}
 					numRec++;
 					__getUrlAlias(numRec);						
@@ -1546,29 +1570,8 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"node": [
-			{
-//"templateID" : "node.tpl"
-"nid" : 1,
-"vid" : 1,
-"type" : "photogallery_image",
-//"language" : "ru",
-"title" : "Life Force, 1919", //"frontPage"
-//"uid" : 1,
-"status" : 1,
-"created" : 1335858040,
-"changed" : 1491726570,
-//"comment" : 0,
-//"promote" : 1,
-//"moderate" : 0,
-//"sticky" : 0,
-//"tnid" : 0,
-//"translate" : 0
-//"content" : "<h1>front page</h1>"
-//"format" : 1,
-"body" : "<h1>Page body!</h1>"
-			}
-		],
+		"init_url" : "?q=node&nid=20",
+		"node": [{}],
 		"queries": {},
 		"blocks" : [
 			{
@@ -1704,6 +1707,32 @@ console.log("init app!");
 		
 	};//end _init()
 	
+	
+	function _urlManager(){
+		
+		switch( webApp.vars["GET"]["q"] ) {
+			
+			case "node":
+				webApp.app.buildPage({
+					"nid" : webApp.vars["GET"]["nid"]
+				});
+			break;
+
+//taxonomy&?term=105
+//taxonomy/term/105
+//category/info/stil/modern
+			case "taxonomy":
+console.log("test");			
+			break;
+			
+				
+
+			default:
+console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
+			break;
+		}//end switch
+		
+	}//end _urlManager()
 	
 	var _buildBlock = function(opt){
 console.log("_buildBlock()", arguments);
@@ -1847,6 +1876,10 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		init:	function(args){ 
 			return _init(args); 
 		},
+		urlManager:	function(){ 
+			return _urlManager(); 
+		},
+		
 		buildBlock:	function(opt){ 
 			return _buildBlock(opt); 
 		},
