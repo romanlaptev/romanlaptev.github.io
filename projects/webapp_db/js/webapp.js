@@ -33,12 +33,14 @@ var webApp = {
 			//"delimiterByFields" : ",",
 			//"delimiterByLines" : "\r\n"
 		//}
-		"GET" : {}
+		"GET" : {},
+		"pageContainer" : getDOMobj("page-container")
 	},
 	
 	"init" : function( postFunc ){
 //console.log("init webapp!", arguments);
 console.log( navigator.userAgent );
+//console.log( this.vars.pageContainer );
 
 		webApp.db.init();
 		webApp.draw.init();
@@ -79,11 +81,13 @@ webApp.init(function(){
 				webApp.vars["GET"] = parseGetParams(); 
 				webApp.app.urlManager();
 			} else {
-						if( webApp.app.vars["init_url"] ){
-							parse_url = webApp.app.vars["init_url"].substring(1).split("&");
-						}
-						webApp.vars["GET"] = parseGetParams( parse_url ); 
-						webApp.app.urlManager();
+				if( webApp.app.vars["init_url"] ){
+					//parse_url = webApp.app.vars["init_url"].substring(1).split("&");
+					parse_url = webApp.app.vars["init_url"].substring(1);
+//console.log(parse_url);					
+				}
+				webApp.vars["GET"] = parseGetParams( parse_url ); 
+				webApp.app.urlManager();
 			}
 			
 		}//end callback
@@ -1055,18 +1059,19 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 
 					//add url aliases
 					for( var n = 0; n < res.length; n++){
-						res[n]["url"] = "taxonomy/term/" + res[n]["tid"];
+						//res[n]["url"] = "?q=taxonomy/term/" + res[n]["tid"];
+						res[n]["url"] = "?q=taxonomy&tid=" + res[n]["tid"];
 					}//next
 //console.log("end test query!!!", res);
 
-					_replaceUrl({
-						"data" : res,
-						"callback" : function(res){
+					//_replaceUrl({
+						//"data" : res,
+						//"callback" : function(res){
 							if( typeof options["callback"] === "function"){
 								options["callback"](res);
 							}
-						}//end callback
-					});
+						//}//end callback
+					//});
 
 				}//end callback
 				
@@ -1704,9 +1709,47 @@ console.log("init app!");
 			};
 			
 		_vars["queries"]["getTermGenre"] = baseQuery;
-		
+
+		defineEvent();
 	};//end _init()
 	
+	function defineEvent(){
+//console.log( webApp.vars.pageContainer );
+
+		if( webApp.vars.pageContainer ){
+			webApp.vars.pageContainer.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( target );
+//console.log( this );//page-container
+//console.log( target.tagName );
+//console.log( event.eventPhase );
+//console.log( "preventDefault: " + event.preventDefault );
+				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+
+				if( target.tagName === "A"){
+					var search = target.href.split("?"); 
+					var parseStr = search[1]; 
+//console.log( search, parseStr );
+					if( parseStr.length > 0 ){
+						webApp.vars["GET"] = parseGetParams( parseStr ); 
+						webApp.app.urlManager();
+					} else {
+console.log( "Warn! error parse url in " + target.href );
+					}
+
+				}
+
+			}//end event
+		}
+		
+	}//end defineEvent()
 	
 	function _urlManager(){
 		
@@ -1718,11 +1761,16 @@ console.log("init app!");
 				});
 			break;
 
-//taxonomy&?term=105
+//taxonomy&?tid=105
 //taxonomy/term/105
 //category/info/stil/modern
 			case "taxonomy":
-console.log("test");			
+				if( webApp.vars["GET"]["tid"] ){
+console.log("test" );
+				} else {
+console.log("Warn! not find 'tid' in query string", webApp.vars["GET"]["tid"] );
+				}
+				
 			break;
 			
 				
