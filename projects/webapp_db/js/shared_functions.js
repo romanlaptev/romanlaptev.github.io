@@ -30,8 +30,7 @@ function _log( msg, id){
 	}
 	
 	var output = getDOMobj(id);
-	if( output ){
-	
+	if( output ){	
 		if( msg.length == 0){
 			output.innerHTML = "";
 		} else {
@@ -43,6 +42,12 @@ function _log( msg, id){
 		//alert(msg);
 		//document.writeln(msg);
 	}
+	
+	if( typeof _showHiddenLog === "function"){
+console.log(_showHiddenLog);
+		_showHiddenLog();
+	}
+	
 }//end _log()
 
 function getDOMobj(id){
