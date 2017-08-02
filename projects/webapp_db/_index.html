@@ -19,12 +19,39 @@ $(document).ready(function(){
 console.log("Ready! jQuery version:" + $.fn.jquery);	
 });//end ready
 
-window.onload = function(){
-console.log("window event onload");
-};//end window.load	
 	</script>
 -->	
-	<script src="js/shared_functions.js"></script>
+<script src="js/shared_functions.js"></script>
+<script>
+window.onload = function(){
+//console.log("window event onload");
+
+	document.onkeydown = function(event) {
+		event = event || window.event;
+		var keyCode =  event.which ||  event.keyCode;		
+//console.log(keyCode);			
+		if( keyCode === 27 || keyCode === 192 ){//ESC or tilda
+			var log = getDOMobj("log-wrap");
+			if( log.style.display === "none"){
+				log.style.display="block";
+			} else {
+				log.style.display="none";
+			}
+//console.log(log.style.display);			
+		}
+	};//end event
+	
+};//end window.load	
+
+var _showHiddenLog = function(){
+	var log = getDOMobj("log-wrap");
+	if( log.style.display === "none"){
+		log.style.display="block";
+	}
+}//end _showHiddenLog
+
+</script>
+
 </head>
 
 <body>
@@ -105,7 +132,12 @@ console.log("window event onload");
 		<div class="col-sm-3 col-md-3">3</div>
 
 	</footer>
-	<div id="log" class="row log-panel"></div>	
+	
+	<div id="log-wrap" class="row log-panel">
+		<a class="close" href="#?q=hide-log">x</a>	
+		<a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a>		
+		<div id="log"></div>
+	</div>	
 	
 </div><!-- end container -->
 
