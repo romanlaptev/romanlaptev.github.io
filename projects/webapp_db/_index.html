@@ -14,12 +14,21 @@
 	
 <!--
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+$(document).ready(function(){
+console.log("Ready! jQuery version:" + $.fn.jquery);	
+});//end ready
+
+window.onload = function(){
+console.log("window event onload");
+};//end window.load	
+	</script>
 -->	
 	<script src="js/shared_functions.js"></script>
 </head>
 
 <body>
-<div class="container">
+<div class="container" id="page-container">
 	<header>
 		<h1  class="text-center">webapp DB</h1>
 	</header>
@@ -114,8 +123,6 @@
 	<li><a href="{{url}}">{{name}}</a></li>
 </script>			
 
-</body>
-
 <script src="js/webapp.js"></script>
 <script>
 	if ('ontouchstart' in window){
@@ -134,4 +141,5 @@
 	}
 </script>
 
+</body>
 </html>
