@@ -1082,6 +1082,48 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 	}//end _getChildTerms()
 
 	
+	function _getTerminNodes( opt ){
+		var p = {
+			"tid" : null,
+			"callback" : null
+		};
+		//extend options object for queryObj
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+		if( !p["tid"] ){
+_log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b></p>");
+			return false;
+		}
+
+							if( typeof p["callback"] === "function"){
+								p["callback"]([]);
+							}
+							return false;
+// SELECT * FROM  node WHERE  nid IN (
+	// SELECT nid FROM  term_node WHERE  tid =105
+// )
+
+// SELECT * 
+// FROM  `node_revisions` 
+// WHERE  `nid` =53
+
+// SELECT * 
+// FROM  `content_field_filename` 
+// WHERE  `nid` =53
+
+// SELECT * 
+// FROM  `content_type_photogallery_image` 
+// WHERE  `nid` =53
+
+// SELECT * 
+// FROM  `comments` 
+		
+	}//end _getTerminNodes()
+
+	
+	
 	function _getBlockContent( opt ){
 		var options = {
 			"vocName" : "",
@@ -1293,6 +1335,10 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		getChildTerms:	function( opt ){ 
 			return _getChildTerms( opt ); 
 		},
+		getTerminNodes:	function( opt ){ 
+			return _getTerminNodes( opt ); 
+		},
+		
 		getBlockContent:	function( opt ){ 
 			return _getBlockContent( opt ); 
 		},
@@ -1755,6 +1801,16 @@ console.log( "Warn! error parse url in " + target.href );
 		
 		switch( webApp.vars["GET"]["q"] ) {
 			
+			case "hide-log":
+				var log = getDOMobj("log-wrap");
+				log.style.display="none";
+			break;
+			
+			case "clear-log":
+				var log = getDOMobj("log");
+				log.innerHTML="";
+			break;
+			
 			case "node":
 				webApp.app.buildPage({
 					"nid" : webApp.vars["GET"]["nid"]
@@ -1766,7 +1822,12 @@ console.log( "Warn! error parse url in " + target.href );
 //category/info/stil/modern
 			case "taxonomy":
 				if( webApp.vars["GET"]["tid"] ){
-console.log("test" );
+					webApp.db.getTerminNodes({
+						//"tid" : webApp.vars["GET"]["tid"],
+						"callback" : function( data ){
+console.log(data);
+						}//end callback
+					});
 				} else {
 console.log("Warn! not find 'tid' in query string", webApp.vars["GET"]["tid"] );
 				}
