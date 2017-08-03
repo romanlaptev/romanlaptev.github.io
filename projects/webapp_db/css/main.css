@@ -1,4 +1,4 @@
-﻿#sidebar-left {
+#sidebar-left {
 	border-right: 3px solid #f5f5f5;
 }
 #sidebar-right {
@@ -10,4 +10,21 @@
 	padding: 10px 15px 10px;
 	vertical-align: top;
 	/*width: 175px;*/
+}
+.log-panel{
+background-color:#ffffcc;
+border:1px dashed;
+clear:both;
+padding: 10px;
+position: fixed;
+right: 10px;
+top: 10px;
+width: 80%;
+}
+.close {
+display: block;
+float: right;
+left: 5px;
+position: relative;
+top: -10px;
 }
