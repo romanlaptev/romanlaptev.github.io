@@ -25,7 +25,8 @@ console.log("Ready! jQuery version:" + $.fn.jquery);
 <script>
 window.onload = function(){
 //console.log("window event onload");
-
+	var log = getDOMobj("log-wrap");
+	log.style.display="none";
 	document.onkeydown = function(event) {
 		event = event || window.event;
 		var keyCode =  event.which ||  event.keyCode;		
@@ -154,6 +155,16 @@ var _showHiddenLog = function(){
 <script id="tpl-menu_list" type="text/template">
 	<li><a href="{{url}}">{{name}}</a></li>
 </script>			
+
+<script id="tpl-termin_nodes" type="text/template">
+	<ul class="">{{list}}</ul>
+</script>
+<script id="tpl-termin_nodes_list" type="text/template">
+<li>
+	<a href="?q=node&nid={{nid}}">{{title}}</a><br>
+</li>
+</script>			
+
 
 <script src="js/webapp.js"></script>
 <script>
