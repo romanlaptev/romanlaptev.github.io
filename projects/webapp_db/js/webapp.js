@@ -339,7 +339,7 @@ console.log("error in _db(), data not in JSON format");
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-//console.log( "_query()", options );
+console.log( "_query()", options );
 
 		// if( options["dbName"].length === 0){
 // var msg = "_getListStores(), error, argument 'dbName' empty.... ";
@@ -1091,16 +1091,44 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
+
 		if( !p["tid"] ){
 _log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b></p>");
 			return false;
 		}
 
-							if( typeof p["callback"] === "function"){
-								p["callback"]([]);
-							}
-							return false;
+		var subQuery = {
+			"action" : "select",
+			"tableName": "term_node",
+			"targetFields" : ["nid"],
+			"where" : [
+				{"key" : "tid", "compare": "=", "value" : p["tid"]}
+			]
+		};
+		var baseQuery = {
+			"queryObj" : {
+				"action" : "select",
+				"tableName": "node",
+				//"targetFields" : ["nid", "title", "created", "changed"],
+				"targetFields" : ["nid", "title"],
+				"where" : [
+					{"key" : "nid", "compare": "=", "value" : subQuery}
+				]
+			},
+			"callback" : _postQuery
+		};
+		webApp.db.query( baseQuery );
+		return false;
+		
+		function _postQuery( res ){
+//console.log( res );
+			if( typeof p["callback"] === "function"){
+				p["callback"](res);
+			}
+			
+		}//end _postQuery()
+		
 // SELECT * FROM  node WHERE  nid IN (
 	// SELECT nid FROM  term_node WHERE  tid =105
 // )
@@ -1367,7 +1395,9 @@ function _draw( opt ){
 			"tpl-block-1" : _getTpl("tpl-block-1"),
 			"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
 			"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
-			"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block")
+			"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block"),
+"tpl-termin_nodes" : _getTpl("tpl-termin_nodes"),
+"tpl-termin_nodes_list" : _getTpl("tpl-termin_nodes_list")
 		}
 	};
 
@@ -1514,6 +1544,7 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		var p = {
 			"data": null,
 			//"type" : "",
+			//"contentType" : "",
 			"templateID" : false
 		};
 		//extend options object
@@ -1822,12 +1853,29 @@ console.log( "Warn! error parse url in " + target.href );
 //category/info/stil/modern
 			case "taxonomy":
 				if( webApp.vars["GET"]["tid"] ){
-					webApp.db.getTerminNodes({
-						//"tid" : webApp.vars["GET"]["tid"],
-						"callback" : function( data ){
-console.log(data);
+					
+					_buildBlock({//draw content block
+						"name" : "block-content",
+						"title" : "termin_nodes", 
+						"templateID" : "tpl-block-content",
+						"contentTpl" : "tpl-termin_nodes",
+						"content" : function(args){
+							
+							webApp.db.getTerminNodes({//get list termin nodes
+								"tid" : webApp.vars["GET"]["tid"],
+								"callback" : function( res ){
+//console.log(res);
+									if( typeof args["callback"] === "function"){
+										args["callback"]( res );
+									}
+
+								}//end callback
+							});
 						}//end callback
+						
 					});
+					
+					
 				} else {
 console.log("Warn! not find 'tid' in query string", webApp.vars["GET"]["tid"] );
 				}
@@ -1849,6 +1897,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		var options = {
 			"title": "block title",
 			"content" : "",
+			//"contentType" : "",
 			"templateID" : "tpl-block",
 			"contentTpl" : "tpl-list"//"tpl-menu"
 		};
@@ -1867,10 +1916,11 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		if( typeof options["content"] === "function"){
 			options["content"]({
 				"callback" : function( res ){
-	//console.log(res);								
+//console.log(res);								
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"
+						//"contentType" : options["contentType"],
 						"templateID" : options["contentTpl"]
 					});
 					
@@ -1978,6 +2028,22 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		}//next
 			
 	};//end _buildPage()
+	
+	// function _formContent( opt ){
+		// var p = {
+			// "data": null,
+			// "type" : "",
+			// "content" : ""
+		// };
+		// //extend options object
+		// for(var key in opt ){
+			// p[key] = opt[key];
+		// }
+// console.log(p);
+		
+		// var html = "test...";
+		// return html;
+	// }//_formContent()
 	
 	// public interfaces
 	return{
