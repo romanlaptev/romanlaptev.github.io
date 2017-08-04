@@ -1,5 +1,5 @@
 (function() {
-	var iDB = function(opt){
+	var iDBmodule = function(opt){
 //console.log(arguments);
 
 		var _vars = {
@@ -8,7 +8,7 @@
 		
 		// private variables and functions
 		var _init = function(){
-console.log("init iDB module...");
+//console.log("init iDB module...");
 		};
 		
 		// var _build = function(target){
@@ -16,18 +16,1817 @@ console.log("init iDB module...");
 			// return html;
 		// };
 		
+		
+//******************************** indexedDB: methods of extension ********************************
+		var _addRecord = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+			if(!test){	
+				if(!testDB) {
+	var msg = "_addRecord(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"recordValue": "",
+				"recordKey": "",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_addRecord(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			if( options["recordKey"].length === 0){
+	var msg = "_addRecord(), error, argument 'recordKey' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			if( options["recordValue"].length === 0){
+	var msg = "_addRecord(), error, argument 'recordValue' empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"recordKey" : options["recordKey"],
+				"recordValue" : options["recordValue"],
+				"action" : "add_record",
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc(log){ 
+	//console.log("callback, add_record, ", options["storeName"], options["recordKey"], options["recordValue"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+				log += ", runtime:" + runtime_s;
+				
+				if( typeof options["callback"] == "function"){
+					options["callback"](log);
+				}
+
+			}//end _postFunc()
+		};//end _addRecord()
+
+		
+		var _addRecords = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_addRecords(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"storeData": [],//[ {"key":"","value":""}, {"key":"","value":""} ....],
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_addRecords(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			if( !options["storeData"] ||
+					options["storeData"].length === 0 && typeof options["storeData"] !== "object"){
+	var msg = "_addRecords(), error, argument 'storeData = [ {key:'key1', value:'some value'}, ....]' is empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"storeData" : options["storeData"],
+				"action" : "add_records",
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc( statInfo ){ 
+	//console.log("callback, add_records, " + options["storeName"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	var msg = "_addRecords(), runtime: " + runtime_s;				
+	console.log(msg);
+				if( typeof options["callback"] == "function"){
+					options["callback"](  statInfo  );
+				}
+
+			}//end _postFunc()
+		};//end _addRecords()
+		
+
+		var _getRecord = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_getRecord(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"recordKey": "",
+				"action": "get_record",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_getRecord(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			if( options["recordKey"].length === 0){
+	var msg = "_getRecord(), error, argument 'recordKey' empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"recordKey" : options["recordKey"],
+				"action" : options["action"],
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc(data, log){ 
+	//console.log("callback, getRecord, ", options["storeName"], options["recordKey"], options["recordValue"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+				log += ", runtime: " + runtime_s;
+				
+				if( typeof options["callback"] == "function"){
+					options["callback"](data, log);
+				}
+
+			}//end _postFunc()
+		};//end _getRecord()
+
+		
+		var _getRecords = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_getRecords(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"action": "get_records",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_getRecords(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"storeData" : options["storeData"],
+				"action" : options["action"],
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc(  data, _resObj ){ 
+	//console.log("callback, getRecords, " + options["storeName"], _resObj, options["callback"], "caller:" , _postFunc.caller);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//var log = "getRecords(), runtime: " +runtime_s + " sec";				
+	//if( data.length ){
+		//log += ", num records: " + data.length;				
+	//}
+	//console.log(log);
+	//console.log(data);
+				if( typeof options["callback"] == "function"){
+					options["callback"]( data, _resObj);
+				}
+
+			}//end _postFunc()
+		};//end _getRecords()
+		
+		
+		var _numRecords = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_numRecords(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_numRecords(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"action" : "number_records",
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc( num ){ 
+	//console.log("callback, number_records, " + options["storeName"], num);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+				var log = "runtime: " + runtime_s;
+
+				if( typeof options["callback"] == "function"){
+					options["callback"](num, log);
+				}
+
+			}//end _postFunc()
+		};//end _numRecords()
+		
+		
+		var _deleteRecord = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_deleteRecord(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"recordKey": "",
+				"action": "delete_record",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_deleteRecord(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			if( options["recordKey"].length === 0){
+	var msg = "_deleteRecord(), error, argument 'recordKey' empty.... ";
+	console.log( msg );
+				return false;
+			}
+
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"recordKey" : options["recordKey"],
+				"action" : "delete_record",
+				"callback" : _postFunc
+			});
+
+
+			function _postFunc(log){ 
+	//console.log("callback, deleteRecord, ", options["storeName"], options["recordKey"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+				log += ", runtime:" + runtime_s;
+				
+				if( typeof options["callback"] == "function"){
+					options["callback"](log);
+				}
+
+			}//end _postFunc()
+		};//end _deleteRecord()
+		
+		
+		var _dropDB = function( opt ){
+	//console.log(arguments, _dropDB.caller);
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_dropDB(), IndexedDB not supported!!!";
+	console.log(msg);
+				}
+				
+				var msg = _r.getResource("browser_not_supports_db");
+				_uidMessage.server = _p.addPushMessage({
+					text: msg, 
+					category: "error", 
+					uid:_uidMessage.server
+				});
+				
+				_w.wait({state: false});
+				// if( typeof opt["callback"] == "function"){
+					// opt["callback"]();
+				// }
+				return false;
+			}
+			
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["dbName"].length === 0){
+	var msg = "_dropDB(), error, argument 'dbName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"action" : "drop_db",
+				"callback" : _postFunc
+			});
+
+			function _postFunc( log ){ 
+	//console.log("_dropDB(), end process...." + options["dbName"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+
+				if( typeof options["callback"] == "function"){
+					options["callback"](log, runtime_s);
+				}
+
+			}//end _postFunc()
+		};//end _dropDB()
+		
+
+		var _createStore = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_createStore(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+			
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_createStore(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"action" : "create_store",
+				"callback" : _postFunc
+			});
+
+			function _postFunc(log){ 
+	//console.log(arguments);
+	//console.log("callback, create_store, " + options["storeName"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+
+				if( typeof options["callback"] == "function"){
+					options["callback"](log, runtime_s);
+				}
+
+			}//end _postFunc()
+		};//end _createStore()
+
+		
+		var _deleteStore = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_deleteStore(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_deleteStore(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+		
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"action" : "delete_store",
+				"callback" : _postFunc
+			});
+
+			function _postFunc( log ){ 
+	//console.log(arguments);
+	//console.log("callback, delete_store, " + options["storeName"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+
+				if( typeof options["callback"] == "function"){
+					options["callback"](log, runtime_s);
+				}
+
+			}//end _postFunc()
+		};//end _deleteStore()
+
+		
+		var _clearStore = function( opt ){
+	//console.log(arguments);
+
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_deleteStore(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+
+			if( options["storeName"].length === 0){
+	var msg = "_clearStore(), error, argument 'storeName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+		
+			var timeStart = new Date();
+			iDB({
+				"dbName" : options["dbName"],
+				"storeName" : options["storeName"],
+				"action" : "clear_store",
+				"callback" : _postFunc
+			});
+
+			function _postFunc( log ){ 
+	//console.log(options);
+	//console.log("callback, clear_store, " + options["storeName"]);
+
+				var timeEnd = new Date();
+				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+	//console.log("Runtime: ", runtime_s);
+
+				if( typeof options["callback"] == "function"){
+					options["callback"](log, runtime_s);
+				}
+
+			}//end _postFunc()
+		};//end _clearStore	()
+
+		
+		var _getListStores = function( opt ){
+	//console.log(arguments);
+			var test = true;
+			if( !dbInfo["useIndexedDB"]) {
+				test = false;
+			}
+			if( !dbInfo["allowIndexedDB"]) {
+				test = false;
+			}
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				test = false;
+			}
+			//var testIdb = "indexedDB" in window;
+			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+				//if(!testIdb) {
+			if(!test) {
+				if(!testDB) {
+	var msg = "_getListStores(), IndexedDB not supported!!!";
+	console.log(message);
+					var msg = _r.getResource("browser_not_supports_db");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+				}
+				return false;
+			}
+
+			var options = {
+				"dbName": dbInfo["dbName"],
+				"callback": null
+			};
+			//extend options object
+			for(var key in opt ){
+				options[key] = opt[key];
+			}
+	//console.log(options);
+			
+			if( options["dbName"].length === 0){
+	var msg = "_getListStores(), error, argument 'dbName' empty.... ";
+	console.log( msg );
+				return false;
+			}
+			
+			iDB({
+				"dbName" : options["dbName"],
+				"action" : "get_list_stores",
+				"callback" : _postFunc
+			});
+
+			var callback = function( res ){ 
+			}
+			
+			function _postFunc( res ){ 
+	//console.log(arguments);
+	//console.log("callback, getListStores ", res, options["callback"]);
+				if( typeof options["callback"] == "function"){
+					options["callback"](res);
+				}
+			}//end _postFunc()
+			
+		};//end _getListStores()
+
+
+//************************** indexedDB: base method **************************
+		var iDB = function( opt ){
+	//console.log("iDB, ", iDB.caller, arguments);
+			
+			var _iDBparams = {
+				"dbName": dbInfo["dbName"],
+				"storeName": "",
+				"storeData" : "",
+				"action": "",
+				"recordKey" : null,
+				"recordValue" : "",
+				"callback": null
+			};
+			dbInfo["iDBparams"] = _iDBparams;
+			
+			//extend options object
+			for(var key in opt ){
+				_iDBparams[key] = opt[key];
+			}
+	console.log( "iDB(), " + _iDBparams["storeName"] + ", " +_iDBparams["action"] );
+			
+			switch( _iDBparams["action"] ){
+				case "create_store":
+				case "delete_store":
+					//if( db){
+						//db.close();
+					//}
+					
+					// if( dbInfo["version"] === 0){
+						// _get_version({
+							// "dbName": _iDBparams["dbName"],
+							// "callback" : _set_version
+						// });
+					// } else {
+						// dbInfo["version"]++;
+	// console.log( "new_version = " + dbInfo["version"] );					
+						// try{
+							// var request = indexedDB.open( _iDBparams["dbName"], dbInfo["version"] );
+	// //console.log( request );
+							// _upgrade(request);
+						// } catch(e) {
+	// console.log("1.indexedDB error, ", e);//?
+						// };
+						
+					// }
+					
+					_get_version({
+						"dbName": _iDBparams["dbName"],
+						"callback" : _set_version
+					});
+					
+					
+				break;
+				
+				case "drop_db":
+					var req = indexedDB.deleteDatabase( _iDBparams["dbName"] );
+					
+					req.onsuccess = function(e) {
+	var msg = "Deleted database " + _iDBparams["dbName"] + " successfully";
+	//console.log(msg, e);
+						_iDBparams["runStatus"] = "success";
+						_iDBparams["reason"] = msg;
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( msg );
+						}
+					};
+					
+					req.onerror = function(e) {
+	var msg = "Couldn't delete database " + _iDBparams["dbName"];
+	console.log(msg, e);				
+						_iDBparams["runStatus"] = "error";
+						_iDBparams["reason"] = msg;
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( msg );
+						}
+					};
+					
+					req.onblocked = function(e) {
+	var msg = "Couldn't delete database " + _iDBparams["dbName"] + " due to the operation being blocked";
+	console.log(msg);				
+						_iDBparams["runStatus"] = "error";
+						_iDBparams["reason"] = msg;
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( msg );
+						}
+					};
+					
+				break;
+				
+				default:
+					try{
+						var request = indexedDB.open( _iDBparams["dbName"]);
+	//console.log( request );
+						_upgrade(request);
+					} catch(e) {
+	console.log("indexedDB error, ", e);//?
+					};
+				break;
+			}//end switch
+
+			function _get_version( opt ){
+	//console.log(arguments);
+				var options = {
+					"dbName": dbInfo["dbName"],
+					"callback": null
+				};
+				//extend options object
+				for(var key in opt ){
+					options[key] = opt[key];
+				}
+	//console.log(options);
+				
+				try{
+					var request = indexedDB.open( options["dbName"] );
+	//console.log( request );
+					request.onsuccess = function(e){
+						db = e.target.result;
+	//var msg = options["dbName"] + ", db.version = " + db.version, db;
+	//console.log(msg);				
+						db.close();
+						
+						if( typeof options["callback"] === "function"){
+							options["callback"]( db.version );
+						}
+					}
+					
+					request.onerror = function(e){
+	var msg = "get_version(), error " + e.target.error.name +", "+ e.target.error.message;
+	console.log(msg);
+						// if( e.target.error.name === "UnknownError"){
+	// console.log("error name: " + e.target.error.name);
+						// }
+					}
+				} catch(e) {
+	console.log("error indexedDB.open ", e);
+				};
+				
+			}//end _get_version()
+			
+			function _set_version( current_db_version ){
+	//console.log( arguments );			
+				var new_version = current_db_version + 1;
+				dbInfo["version"] = new_version;
+	//console.log("function set_version_iDB(), ", current_db_version, new_version);
+				try{
+					var request = indexedDB.open( _iDBparams["dbName"], new_version );
+	//console.log( request );
+					_upgrade( request );
+				} catch(e) {
+	console.log("_set_version(), error indexedDB.open ", e);//?
+				};
+			}//end _set_version()
+			
+			function _upgrade( request){
+				request.onupgradeneeded = function(e) {
+	//var msg = 'Upgrading ' + _iDBparams["dbName"];
+	//console.log(msg, e);	
+						
+					db = e.target.result;
+					
+					switch( _iDBparams["action"] ){
+					
+						case "create_store":
+							if( db.objectStoreNames.contains( _iDBparams["storeName"] )) {
+	var msg = "dont create "  + _iDBparams["storeName"] + ", store is exists....";
+	//console.log(msg);
+								_iDBparams["runStatus"] = "error";				
+								if( typeof _iDBparams["callback"] === "function"){
+									_iDBparams["callback"](msg);
+								}
+								return false;
+							};
+							
+							var store = db.createObjectStore( _iDBparams["storeName"], { autoIncrement:true });  
+
+							// //create DB index
+							// var tableName = dbInfo["storeName"];
+							// if( dbInfo["import"]["importFormat"] === "json"){
+								// if( typeof dbInfo["tables"][tableName] !== "undefined"){
+										// if( typeof dbInfo["tables"][tableName]["indexes"] !== "undefined" &&
+												// dbInfo["tables"][tableName]["indexes"].length > 0 ){
+											// var listIndexes = dbInfo["tables"][tableName]["indexes"];
+											// for(var n = 0; n < listIndexes.length; n++){
+												// var indexName = listIndexes[n]["name"];
+												// var keyPath = listIndexes[n]["keyPath"];
+												// var uniq = listIndexes[n]["unique"];
+												// store.createIndex( indexName, keyPath, {unique : uniq});
+											// }//next index
+										// }
+								// }
+							// }
+
+								
+							store.transaction.oncomplete = function(event) {
+	var msg = "Create store " + _iDBparams["storeName"] + ' in ' + _iDBparams["dbName"];
+	//console.log(msg, e);
+								_iDBparams["runStatus"] = "success";				
+								if( typeof _iDBparams["callback"] === "function"){
+									_iDBparams["callback"](msg);
+								}
+							};
+						break;
+						
+						case "delete_store":
+							//var store = db.deleteObjectStore( _iDBparams["storeName"]);//?
+	var msg = "";						
+							if( db.objectStoreNames.contains( _iDBparams["storeName"] ) ){
+								db.deleteObjectStore( _iDBparams["storeName"] );
+	msg = "Delete store " + _iDBparams["storeName"] + ' from ' + _iDBparams["dbName"];
+	//console.log(msg);				
+								_iDBparams["runStatus"] = "success";				
+							} else {
+	msg = _iDBparams["storeName"] + ' not exists in DB ' + _iDBparams["dbName"];
+	//console.log(msg);
+								_iDBparams["runStatus"] = "error";				
+							}
+							
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](msg);
+							}
+							
+						break;
+						
+					}//end switch
+					
+				}//end upgradeneeded callback
+			 
+				request.onsuccess = function(e) {
+	//var msg = "request.onsuccess";
+	//console.log(msg, e);
+					db = e.target.result;
+					
+					// //refresh store-list
+					// if( document.getElementById("store-list") ){
+						// document.getElementById("store-list").innerHTML = "";
+						// for( var n = 0; n < db.objectStoreNames.length; n++){
+							// document.getElementById("store-list").innerHTML += "<li>" +db.objectStoreNames[n]+ "</li>";
+						// }//next
+					// }
+					
+					db.onerror = function(e) {
+	var msg = '(request.onsuccess)Error opening database '  + _iDBparams["dbName"];
+	console.log(msg, e);				
+					};
+					db.onabort = function(e) {
+	var msg = '(request.onsuccess)Database ' + _iDBparams["dbName"] + ' opening aborted!';
+	console.log(msg, e);				
+					};
+					db.onversionchange = function(e) {
+	var msg = '(request.onsuccess)db.onversionchange';
+	console.log(msg, e);				
+					};
+
+					switch( _iDBparams["action"] ){
+						
+						case "add_record":
+							if( db.objectStoreNames.contains( _iDBparams["storeName"] ) ){
+								_run_transaction();
+							} else {
+	var msg = _iDBparams["storeName"] + ' not exists in DB ' + _iDBparams["dbName"];
+	console.log(msg);
+								var __callback = _iDBparams["callback"];
+								var __action = _iDBparams["action"];
+								var __recordKey = _iDBparams["recordKey"];
+								var __recordValue = _iDBparams["recordValue"];
+								iDB({
+									"storeName" : _iDBparams["storeName"],
+									"action" : "create_store",
+									"callback" : function(){
+										iDB({
+											"dbName" : _iDBparams["dbName"],
+											"storeName" : _iDBparams["storeName"],
+											"action" : __action,
+											"recordKey" : __recordKey,
+											"recordValue" : __recordValue,
+											"callback" : __callback
+										});
+									}
+								});
+
+							};
+						break;
+						
+						case "add_records":
+							if( db.objectStoreNames.contains( _iDBparams["storeName"] ) ){
+								_run_transaction();
+							} else {
+	var msg = _iDBparams["storeName"] + ' not exists in DB ' + _iDBparams["dbName"];
+	console.log(msg);
+								var __callback = _iDBparams["callback"];
+								var __action = _iDBparams["action"];
+								var storeData = _iDBparams["storeData"];
+								iDB({
+									"storeName" : _iDBparams["storeName"],
+									"action" : "create_store",
+									"callback" : function(){
+	//var msg = "callback, create_store, "+ _iDBparams["storeName"];									
+	//console.log(msg, buffer, storeData);
+	//_log(msg);
+
+										iDB({
+											"dbName" : _iDBparams["dbName"],
+											"storeName" : _iDBparams["storeName"],
+											"storeData" : storeData,
+											"action" : __action,
+											"callback" : __callback
+										});
+									}
+								});
+
+							};
+						break;
+						
+						case "clear_store":
+						case "get_records":
+						case "get_records_obj":
+						case "get_record":
+						case "delete_record":
+						case "number_records":
+							_run_transaction();
+						break;
+						
+						case "get_list_stores":
+	//console.log("case 'get_list_stores':", _iDBparams["callback"], db.objectStoreNames);
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"]( db.objectStoreNames );
+							}
+						break;
+						
+					}//end switch
+					
+					db.close();
+				}//end success callback
+
+				request.onerror = function(e) {
+	var msg = "indexedDB request error: " + e.target.error.name+", "+ e.target.error.message;
+	console.log(msg, e);
+	_log(msg);
+					_iDBparams["runStatus"] = "error";
+					_iDBparams["reason"] = msg;
+					// if( e.target.error.name === "UnknownError"){
+	// //alert(msg );
+						// if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+							// dbInfo["callbackFunc"]["afterUpdate"]( e.target.error.name );
+						// }
+						// return false;
+						
+					// }
+				}//end error callback
+				
+				request.onblocked = function (e) {
+	var msg = "Database " + _iDBparams["dbName"] + " being blocked";
+	console.log(msg, e);				
+				};
+			
+			}//end _upgrade()	
+
+			//function _run_transaction( args ){
+			function _run_transaction(){
+	//console.log("function _run_transaction() : " + _iDBparams["storeName"], _iDBparams["action"]);
+			
+				if( !db.objectStoreNames.contains( _iDBparams["storeName"] ) ){
+					var msg = "Name object store '" + _iDBparams["storeName"] + "' not exists in DB " + _iDBparams["dbName"];
+	console.log(msg);		
+	//console.log(msg, _iDBparams["callback"]);		
+					if( typeof _iDBparams["callback"] === "function"){
+						_iDBparams["runStatus"] = "error";
+						_iDBparams["reason"] = msg;
+						
+						var error = {
+							"code": "store_not_found",
+							"description": msg
+						}
+						_iDBparams["callback"](error);
+					}
+					return false;
+				}
+				
+				var type = "readwrite";//"readonly", "version_change"
+				if( _iDBparams["action"] === "get_record" ||  
+						_iDBparams["action"] === "get_records" ||
+						_iDBparams["action"] === "get_records_obj" ||
+							_iDBparams["action"]=== "search"
+						){
+					var type = "readonly";
+				}
+
+				var transaction = db.transaction(
+					[ _iDBparams["storeName"] ], 
+					type 
+				);
+				
+				transaction.onerror = function(event) {
+	var msg = "transaction.onerror";
+	console.log(msg, event);
+					_iDBparams["runStatus"] = "error";
+					_iDBparams["reason"] = msg;
+					if( typeof _iDBparams["callback"] === "function"){
+						_iDBparams["callback"]();
+					}
+				};  
+				
+				transaction.onabort = function(event) {
+					var error = event.target.error;
+	var msg = "transaction.onabort, " + error.message + ", " + error.name;
+	console.log(msg, event);
+					_iDBparams["runStatus"] = "error";
+					_iDBparams["reason"] = msg;
+					// if( typeof _iDBparams["callback"] === "function"){
+						// _iDBparams["callback"]();
+					// }
+					
+					var msg = _r.getResource("browser_cache_not_access");
+					_uidMessage.server = _p.addPushMessage({
+						text: msg, 
+						category: "error", 
+						uid:_uidMessage.server
+					});
+					_w.wait({state:false});
+					
+					// //remove last store
+					_deleteStore({
+						"storeName" : _iDBparams["storeName"],
+						"callback" : function( log, runtime ){
+	var msg = "Remove last store, "+ log + ", " +runtime + " sec";				
+	console.log(msg);
+							_abortUpdate( error );
+						}
+					});
+
+					function _abortUpdate( error ){
+						if (error.name == 'QuotaExceededError') {
+	var msg = "transaction.onabort_QuotaExceededError!";
+	console.log(msg);
+	_u.debug(msg);
+							dbInfo["import"]["status"] = {
+								"code" : 2,
+								"reason" : "abort_QuotaExceededError"
+							};
+							
+							//save import result info in master table
+							_save_stat_info( {
+									"callback" : function(){
+	//console.log("callback, _save_stat_info");
+									
+									_addRecord({
+										"storeName" : "idb_master",
+										"recordKey" : "import_status",
+										"recordValue" : "abort_QuotaExceededError",
+										"callback" : function( log ){
+	var msg = "iDB(), _run_transaction(), _abortUpdate(), status: abort, QuotaExceededError";									
+	console.log(msg, log);
+	//_log(msg);
+	_u.debug(msg);
+											_importAbort();
+										}
+									});
+									
+								}//end callback
+							});
+						}
+					}//end _abortUpdate
+					
+				};//end callback transaction.onabort
+				
+				var store = transaction.objectStore( _iDBparams["storeName"] );
+	//console.log(store);
+				
+				switch ( _iDBparams["action"] ){
+				
+					case 'add_record':
+						var key = _iDBparams["recordKey"];
+						var value = _iDBparams["recordValue"];
+	//console.log(key, typeof key, value, typeof value);
+
+						if(!key){
+							//var request = store.add( value );
+							var request = store.put( value );
+						} else {
+							//var request = store.add( value, key );
+							var request = store.put( value, key );
+						}
+						
+						request.onerror = function(e) {
+	var msg = "add_record(), error add value,  " + e.target.error.name +", "+e.target.error.message;
+	console.log(msg,e);
+							_iDBparams["runStatus"] = "error";				
+							// if( e.target.error.name === "UnknownError"){
+	// console.log("test3, " + e.target.error.name);
+							// }
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](msg);
+							}
+						}
+						
+						request.onsuccess = function(e) {
+	var msg = "add_record(), success add value: " + key + " = " + value;
+	//console.log(msg, e);
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](msg);
+							}
+						}
+						
+						//transaction.oncomplete = function(e) {
+	//var msg = "transaction add record oncomplete";
+	//console.log(msg, e);
+						//};
+					break;
+				
+					case 'add_records':
+						_putRecords( _iDBparams["storeData"] );
+					break;
+					
+					case 'number_records':
+						var req = store.count();	
+						req.onsuccess = function() {
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](  req.result  );
+							}
+						};
+					break;
+					
+					case 'delete_record':
+						var key = _iDBparams["recordKey"];
+						var req = store["delete"]( key );
+	//console.log(req);
+						req.onerror = function(e) {
+	var msg = "error delete record with key " + key +", "+e.target.error.name;
+	console.log(msg, e.target.error.name);
+							_iDBparams["runStatus"] = "error";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"]( msg );
+							}
+						}
+						req.onsuccess = function(e) {
+	var msg = "success delete record with key " + key;
+	//console.log(msg, e);				
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"]( msg );
+							}
+						}
+						
+	//					transaction.oncomplete = function(event) {
+	//var message = "transaction delete record oncomplete";
+	//console.log(message, event);				
+	//					};
+					
+					break;
+					
+					case 'get_record':
+	//console.log("case 'get_record': ", store);
+						var key = _iDBparams["recordKey"];
+						var req = store.get( key );
+						//var index = store.index(INDEX_KOD);
+						//var request = index.get( key );
+	//console.log(key, index, request );
+						
+						req.onerror = function(e) {
+	var msg = "error get record, " + e.target.error.name;
+	console.log(msg, e);
+							_iDBparams["runStatus"] = "error";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](false, msg);
+							}
+						}
+						
+						req.onsuccess = function(e) {
+	var msg = "success get record with key " + key;
+	//console.log(msg, e, e.target.result);				
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](  e.target.result, msg );
+							}
+						}
+						
+						//transaction.oncomplete = function(event) {
+	//var msg = "transaction get record oncomplete";
+	//console.log(msg, event);
+						//};
+					break;
+					
+					case 'get_records':
+						_iDBgetRecords();
+					break;
+					case 'get_records_obj':
+						_iDBgetRecordsObj();
+					break;
+					
+					case 'clear_store':
+						var request_clear = store.clear();
+						request_clear.onerror = function(e) {
+	var msg = "Clear store error " + e.target.error.name+", "+ e.target.error.message;
+	console.log(msg, e);				
+							_iDBparams["runStatus"] = "error";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"](msg);
+							}
+						};
+						request_clear.onsuccess = function(e) {
+	var msg = "Success clear " + _iDBparams["storeName"];
+	//console.log(msg, e);				
+							_iDBparams["runStatus"] = "success";				
+							if( typeof _iDBparams["callback"] === "function"){
+								_iDBparams["callback"]( msg );
+							}
+						};
+					break;
+
+					case "search":
+	// //console.log("case search, ", store["name"] );
+						// _iDBsearch( dbInfo["query"] );
+					break;
+					
+				}//end switch
+
+				function _iDBgetRecords(){
+					
+					var useCursor = true;
+					if ('getAll' in store) {
+						useCursor = false;
+					}
+					dbInfo["useCursor"] = useCursor;
+	//useCursor = true;//for test
+
+					var useIndex = dbInfo["useIndex"];
+	//for test index
+	//if( _iDBparams["storeName"] === "SIMPLE_SPR_TEST"){
+		//var useIndex = true;
+		//var index_name = "byKey";
+	//}
+	//console.log("get_records, useIndex: ", useIndex);
+
+					if( dbInfo["calc_store_size"] ){
+						var sum = 0;
+					}
+
+					var result = [];
+					if ( !useCursor) {
+						if( useIndex ){
+							var index = store.index( index_name );
+							index.getAll().onsuccess = function(event) {
+								var records = event.target.result;
+								for( var n = 0; n < records.length; n++){
+	//console.log( records[n] );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( records[n] );
+										sum = sum + json.length;
+									}
+									result.push( records[n] );
+								}//next
+								
+							};
+						} else {
+							store.getAll().onsuccess = function(event) {
+								var records = event.target.result;
+								for( var n = 0; n < records.length; n++){
+
+	//if( _iDBparams["storeName"] === "SL_KODIF"){
+	//console.log( records[n] );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( records[n] );
+	//console.log( json, json.length );
+										sum = sum + json.length;
+									}
+	//}
+									result.push( records[n] );
+								}//next
+							};
+							//store.getAllKeys().onsuccess = function(event) {
+								//records["keys"] = event.target.result;
+							//};
+						}
+					};
+
+					if ( useCursor) {
+						
+						if( useIndex ){
+							var index = store.index( index_name );
+							index.openCursor().onsuccess = function(event) {
+								var cursor = event.target.result;
+								if (cursor) {
+	//console.log( "cursor: " , cursor, cursor.key, cursor.value );
+									result.push( cursor.value );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( cursor.value );
+										sum = sum + json.length;
+									}
+									cursor["continue"]();
+								}
+							};
+
+						} else {
+							store.openCursor().onsuccess = function(event) {
+								var cursor = event.target.result;
+								if (cursor) {
+	//console.log( "cursor: " , cursor, cursor.key, cursor.value );
+									result.push( cursor.value );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( cursor.value );
+										sum = sum + json.length;
+									}
+									cursor["continue"]();
+								}
+							};
+						};
+						
+					};
+						
+					transaction.oncomplete = function(event) {
+	//var msg = _iDBparams["storeName"] + ", transaction get_records complete.";
+	//console.log(msg);
+	//console.log( result );
+						var _resObj = {
+							"storeName" : _iDBparams["storeName"],
+						}
+						
+						if( dbInfo["calc_store_size"] ){
+							_resObj["bytes"] = sum;
+						}
+						
+						_iDBparams["runStatus"] = "success";				
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( result, _resObj );
+						}
+						
+					};
+				}//end _iDBgetRecords()
+
+
+				function _iDBgetRecordsObj(){
+
+					var useCursor = true;
+					//if ('getAll' in store) {
+						//useCursor = false;
+					//}
+					_iDBparams["useCursor"] = useCursor;				
+					var useIndex = dbInfo["useIndex"];
+					
+					if( dbInfo["calc_store_size"] ){
+						var sum = 0;
+					}
+
+					var result = {};
+					if ( !useCursor ) {
+						if( useIndex ){
+							var index = store.index( index_name );
+							index.getAll().onsuccess = function(event) {
+								var records = event.target.result;
+								for( var n = 0; n < records.length; n++){
+	//console.log( records[n] );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( records[n] );
+										sum = sum + json.length;
+									}
+									result.push( records[n] );
+								}//next
+							};
+						} else {
+							store.getAll().onsuccess = function(event) {
+								var records = event.target.result;
+								for( var n = 0; n < records.length; n++){
+
+	//if( storeName === "SL_KODIF"){
+	//console.log( records[n] );
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( records[n] );
+								//console.log( json, json.length );
+										sum = sum + json.length;
+									}
+	//}
+									result.push( records[n] );
+								}//next
+							};
+							//store.getAllKeys().onsuccess = function(event) {
+								//records["keys"] = event.target.result;
+							//};
+						}
+					};
+
+					if ( useCursor) {
+						
+						if( useIndex ){
+							var index = store.index( index_name );
+							index.openCursor().onsuccess = function(event) {
+								var cursor = event.target.result;
+								if (cursor) {
+	//console.log( "cursor: " , cursor, cursor.key, cursor.value );
+
+									//result.push( cursor.value );
+									result[ cursor.key ] = cursor.value ;
+									
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( cursor.value );
+										sum = sum + json.length;
+									}
+									cursor["continue"]();
+								}
+							};
+
+						} else {
+							store.openCursor().onsuccess = function(event) {
+								var cursor = event.target.result;
+								if (cursor) {
+	//console.log( "cursor: " , cursor, cursor.key, cursor.value );
+
+									//result.push( cursor.value );
+									result[ cursor.key ] = cursor.value ;
+									
+									if( dbInfo["calc_store_size"] ){
+										var json = JSON.stringify( cursor.value );
+										sum = sum + json.length;
+									}
+									cursor["continue"]();
+								}
+							};
+						};
+						
+					};
+
+				
+					transaction.oncomplete = function(event) {
+	//var msg = _iDBparams["storeName"] + ", transaction get_records complete.!!!";
+	//console.log(msg);
+	//console.log( result );
+						var _resObj = {
+							"storeName" : _iDBparams["storeName"],
+						}
+						if( dbInfo["calc_store_size"] ){
+							_resObj["bytes"] = sum;
+						}
+						
+						_iDBparams["runStatus"] = "success";				
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( result, _resObj );
+						}
+						
+					};
+					
+				}//end _iDBgetRecordsObj()
+
+			
+				function _putRecords( data ){
+					
+					var total = { 
+						"symbols" : 0,
+						"bytes" : 0
+					};
+
+					_iDBparams["runStatus"] = "success";				
+					for( var n = 0; n < data.length; n++ ){
+					//for( var n = 0; n < 9; n++ ){
+	// //console.log(data[n]);
+						var key = data[n]["key"];
+						var value = data[n]["value"];
+						
+						if(!key){
+							//var request = store.add( value );
+	//if( n === 0){
+	//console.log(value, value.length, typeof value);
+	//}						
+							try{
+								var request = store.put( value);
+							} catch(e){
+	console.log(e);
+	console.log("1.indexedDB error, store.put", value);
+							}
+							
+						} else {
+							//var request = store.add( value, key );
+							try{
+								var request = store.put( value, key );
+							} catch(e){
+	console.log(e);
+	console.log("2.indexedDB error, store.put", value, key);
+							}
+						}
+							
+						// //count store info size in bytes and symbols
+						// if( dbInfo["import"]["importFormat"] === "json" &&
+							// typeof value !== "string"){
+							// value = JSON.stringify( value );
+						// }
+						
+						// //total["symbols"] = total["symbols"] + value.length;
+	// //console.log( n, data[n], s_value, s_value.length );
+						// var size_bytes = unescape(encodeURIComponent( value )).length;
+						// //var size_bytes = 0;
+	// //console.log("size_bytes : ", size_bytes);
+						// total["bytes"] = total["bytes"] + size_bytes;
+
+						request.onerror = function(e) {
+	var msg = "error add value,  " + e.target.error.name +", "+e.target.error.message;
+	console.log(msg,e);
+							// if( e.target.error.name === "UnknownError"){
+	// console.log("test4, " + e.target.error.name);
+							// }
+							_iDBparams["runStatus"] = "error";				
+						}
+						request.onsuccess = function(e) {
+	//var msg = "success add value";
+	//console.log(msg, e);
+						}
+						
+					}//next
+						
+					transaction.oncomplete = function(event) {
+	//var msg = "transaction add records oncomplete";
+	//console.log(msg, event);
+						if( typeof _iDBparams["callback"] === "function"){
+							var statInfo = {};
+							if( total["bytes"] > 0){
+								statInfo["total"] = total;
+							}
+							_iDBparams["callback"](  statInfo );
+						}
+					};
+					
+				}//end _putRecords()
+				
+			}//end _run_transaction()
+		}//end iDB()
+		
 		// public interfaces
 		return{
 			vars:_vars,
-			init: _init//,
+			init: _init,
 			// build: function(target){ 
 				// return _build(target); 
 			// }
+			
+			//indexedDB extension methods		
+			dropDB:	function( opt ){ 
+				return _dropDB( opt ); 
+			},
+			createStore:	function( opt ){ 
+				return _createStore( opt ); 
+			},
+			deleteStore:	function( opt ){ 
+				return _deleteStore( opt ); 
+			},
+			clearStore:	function( opt ){ 
+				return _clearStore( opt ); 
+			},
+			getListStores:	function( opt ){ 
+				return _getListStores( opt ); 
+			},
+			addRecord:	function( opt ){ 
+				return _addRecord( opt ); 
+			},
+			addRecords:	function( opt ){ 
+				return _addRecords( opt ); 
+			},
+			getRecord:	function( opt ){ 
+				return _getRecord( opt ); 
+			},
+			getRecords:	function( opt ){ 
+				return _getRecords( opt ); 
+			},
+			numRecords:	function( opt ){ 
+				return _numRecords( opt ); 
+			},
+			deleteRecord:	function( opt ){ 
+				return _deleteRecord( opt ); 
+			}
 		};
-	};//end iDB()
 	
-	window.iDB = iDB;
-	//iDB().init();
+	};//end iDBModule()
+	
+	window.iDBmodule = iDBmodule;
+	//iDBmodule().init();
 	
 //})(this);
 })();
