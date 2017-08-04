@@ -1,3 +1,143 @@
+/*
+	ADD RECORD:
+			module.addRecord({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"recordKey" : "key1",
+				"recordValue" : "some value",
+				"callback" : function( log ){
+					var msg = "module.addRecord(), " + log;
+					console.log(msg);
+				}
+			});
+
+	ADD RECORDS:
+			module.addRecords({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"storeData" : storeData,
+				"callback" : function( log ){
+					var msg = "mobappDb.addRecords(), " + log;
+					console.log(msg);
+				}
+			});
+		
+	
+	GET RECORD:
+			module.getRecord({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"recordKey" : "key1",
+				"callback" : function( data, log ){
+					var msg = "module.getRecord(), " + log;
+					console.log(msg);
+					console.log(data);
+				}
+			});
+
+			
+	GET ALL RECORDS:
+			module.getRecords({
+				"dbName" : dbName,
+				"storeName" : storeName,
+				"callback" : function( data, log ){
+					var msg = "module.getRecords() " + log;
+					console.log(msg);
+					console.log(data );
+				}
+			});
+	
+	GET STORE DATA Records AS OBJECT
+			module.getRecords({
+				"dbName" : dbName,
+				"storeName" : storeName,
+				"action" : "get_records_obj",
+				"callback" : function( data, log ){
+					var msg = "mobappDb.getRecords(), get storeData as object, " + log;
+					console.log(msg);
+					console.log(data );
+			}
+		});
+	
+	
+	NUM RECORDS:
+			module.numRecords({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"callback" : function( num, log ){
+					var msg = "module.numRecords(), " + num + " records, " + log;
+					console.log(msg);
+				}
+			});
+	
+	
+	DELETE RECORD:
+			module.deleteRecord({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"recordKey" : "key1",
+				"callback" : function( log ){
+					var msg = "module.deleteRecord(), " + log;
+					console.log(msg);
+				}
+			});
+
+	
+	DROP DATABASE:
+			module.dropDB({
+				"dbName": "mobapp",
+				"callback" : function( log, runtime ){
+					var msg = "module.dropDB(), "+ log +", runtime: " + runtime;
+					console.log(msg);
+				}
+			});
+	
+	CREATE STORE:
+			module.createStore({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"callback" : function( log, runtime ){
+					var msg = "module.createStore(), "+ log + ", " +runtime + " sec";				
+					console.log(msg);
+				}
+			});
+
+		
+	DELETE STORE:
+			module.deleteStore({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"callback" : function( log, runtime ){
+					var msg = "module.deleteStore(), "+ log + ", " +runtime + " sec";				
+					console.log(msg);
+				}
+			});
+
+			
+	CLEAR STORE:
+			module.clearStore({
+				"dbName": "mobapp",
+				"storeName": "object_store_name",
+				"callback" : function( log, runtime ){
+					var msg = "module.clearStore(), "+ log + ", " +runtime + " sec";				
+					console.log(msg);
+				}
+			});
+
+	GET_LIST_STORES	
+			module.getListStores({
+				"dbName" : dbName,
+				"callback" : function( res ){
+					var msg = "module.getListStores(), "+ res.length;
+					console.log(msg, res);
+				}
+			});
+	
+	GET INFO: return total size iDB stores
+		var bytes = module.getInfo()
+console.log("Total size: ", bytes);
+	
+*/
 (function() {
 	var iDBmodule = function(opt){
 //console.log(arguments);
@@ -15,37 +155,25 @@
 		var dbInfo = []; 
 		//do not calculate store size
 		dbInfo["calc_store_size"] = false;
-		
+		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
 		
 //******************************** indexedDB: methods of extension ********************************
 		var _addRecord = function( opt ){
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test){	
-				if(!testDB) {
-	var msg = "_addRecord(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+// var msg = "_addRecord(), IndexedDB not supported!!!";
+// console.log(message);
+				// }
 				return false;
 			}
 
@@ -88,13 +216,12 @@
 				"callback" : _postFunc
 			});
 
-
 			function _postFunc(log){ 
 	//console.log("callback, add_record, ", options["storeName"], options["recordKey"], options["recordValue"]);
 
 				var timeEnd = new Date();
 				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-	//console.log("Runtime: ", runtime_s);
+//console.log("Runtime: ", runtime_s);
 				log += ", runtime:" + runtime_s;
 				
 				if( typeof options["callback"] == "function"){
@@ -109,30 +236,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_addRecords(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_addRecords(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -169,7 +284,6 @@
 				"callback" : _postFunc
 			});
 
-
 			function _postFunc( statInfo ){ 
 	//console.log("callback, add_records, " + options["storeName"]);
 
@@ -185,34 +299,23 @@
 		};//end _addRecords()
 		
 
+//*если opt["recordKey"] является массивом, то выбрать все записи, перечисленные в opt["recordKey"]
 		var _getRecord = function( opt ){
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_getRecord(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_getRecord(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -270,9 +373,6 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
@@ -280,20 +380,11 @@
 			if( !testDB) {
 				test = false;
 			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
 			if(!test) {
-				if(!testDB) {
-	var msg = "_getRecords(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_getRecords(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -348,30 +439,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_numRecords(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_numRecords(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -400,7 +479,6 @@
 				"callback" : _postFunc
 			});
 
-
 			function _postFunc( num ){ 
 	//console.log("callback, number_records, " + options["storeName"], num);
 
@@ -420,30 +498,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_deleteRecord(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_deleteRecord(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -500,35 +566,17 @@
 		var _dropDB = function( opt ){
 	//console.log(arguments, _dropDB.caller);
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_dropDB(), IndexedDB not supported!!!";
-	console.log(msg);
-				}
-				
-				var msg = _r.getResource("browser_not_supports_db");
-				_uidMessage.server = _p.addPushMessage({
-					text: msg, 
-					category: "error", 
-					uid:_uidMessage.server
-				});
-				
-				_w.wait({state: false});
-				// if( typeof opt["callback"] == "function"){
-					// opt["callback"]();
+				// if(!testDB) {
+	// var msg = "_dropDB(), IndexedDB not supported!!!";
+	// console.log(msg);
 				// }
 				return false;
 			}
@@ -575,30 +623,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_createStore(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_createStore(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 			
@@ -647,30 +683,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_deleteStore(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_deleteStore(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -719,30 +743,18 @@
 	//console.log(arguments);
 
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_deleteStore(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_deleteStore(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -790,30 +802,18 @@
 		var _getListStores = function( opt ){
 	//console.log(arguments);
 			var test = true;
-			if( !dbInfo["useIndexedDB"]) {
-				test = false;
-			}
 			if( !dbInfo["allowIndexedDB"]) {
 				test = false;
 			}
-			var testDB = "indexedDB" in window;
-			if( !testDB) {
-				test = false;
-			}
-			//var testIdb = "indexedDB" in window;
-			//if(!testIdb || !dbInfo["allowIndexedDB"]) {
-				//if(!testIdb) {
+			// var testDB = "indexedDB" in window;
+			// if( !testDB) {
+				// test = false;
+			// }
 			if(!test) {
-				if(!testDB) {
-	var msg = "_getListStores(), IndexedDB not supported!!!";
-	console.log(message);
-					var msg = _r.getResource("browser_not_supports_db");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-				}
+				// if(!testDB) {
+	// var msg = "_getListStores(), IndexedDB not supported!!!";
+	// console.log(message);
+				// }
 				return false;
 			}
 
@@ -1887,6 +1887,11 @@ console.log(msg, e);
 			},
 			deleteRecord:	function( opt ){ 
 				return _deleteRecord( opt ); 
+			},
+			
+			getInfo: function(){
+				var totalSize = dbInfo["tables"]["total_size"]; 
+				return totalSize;
 			}
 		};
 	
