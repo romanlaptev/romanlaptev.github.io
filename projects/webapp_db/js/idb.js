@@ -2,9 +2,6 @@
 	var iDBmodule = function(opt){
 //console.log(arguments);
 
-		var _vars = {
-			"ver": 1
-		}; 
 		
 		// private variables and functions
 		var _init = function(){
@@ -15,6 +12,9 @@
 			// var html = "Table " + target + " is building....";
 			// return html;
 		// };
+		var dbInfo = []; 
+		//do not calculate store size
+		dbInfo["calc_store_size"] = false;
 		
 		
 //******************************** indexedDB: methods of extension ********************************
@@ -855,7 +855,7 @@
 
 //************************** indexedDB: base method **************************
 		var iDB = function( opt ){
-	//console.log("iDB, ", iDB.caller, arguments);
+//console.log("iDB, ", iDB.caller, arguments);
 			
 			var _iDBparams = {
 				"dbName": dbInfo["dbName"],
@@ -877,42 +877,18 @@
 			switch( _iDBparams["action"] ){
 				case "create_store":
 				case "delete_store":
-					//if( db){
-						//db.close();
-					//}
-					
-					// if( dbInfo["version"] === 0){
-						// _get_version({
-							// "dbName": _iDBparams["dbName"],
-							// "callback" : _set_version
-						// });
-					// } else {
-						// dbInfo["version"]++;
-	// console.log( "new_version = " + dbInfo["version"] );					
-						// try{
-							// var request = indexedDB.open( _iDBparams["dbName"], dbInfo["version"] );
-	// //console.log( request );
-							// _upgrade(request);
-						// } catch(e) {
-	// console.log("1.indexedDB error, ", e);//?
-						// };
-						
-					// }
-					
 					_get_version({
 						"dbName": _iDBparams["dbName"],
 						"callback" : _set_version
 					});
-					
-					
 				break;
 				
 				case "drop_db":
 					var req = indexedDB.deleteDatabase( _iDBparams["dbName"] );
 					
 					req.onsuccess = function(e) {
-	var msg = "Deleted database " + _iDBparams["dbName"] + " successfully";
-	//console.log(msg, e);
+var msg = "Deleted database " + _iDBparams["dbName"] + " successfully";
+//console.log(msg, e);
 						_iDBparams["runStatus"] = "success";
 						_iDBparams["reason"] = msg;
 						if( typeof _iDBparams["callback"] === "function"){
@@ -921,8 +897,8 @@
 					};
 					
 					req.onerror = function(e) {
-	var msg = "Couldn't delete database " + _iDBparams["dbName"];
-	console.log(msg, e);				
+var msg = "Couldn't delete database " + _iDBparams["dbName"];
+console.log(msg, e);				
 						_iDBparams["runStatus"] = "error";
 						_iDBparams["reason"] = msg;
 						if( typeof _iDBparams["callback"] === "function"){
@@ -1017,7 +993,7 @@
 					
 						case "create_store":
 							if( db.objectStoreNames.contains( _iDBparams["storeName"] )) {
-	var msg = "dont create "  + _iDBparams["storeName"] + ", store is exists....";
+	var msg = "dont create "  + _iDBparams["storeName"] + ", store exists....";
 	//console.log(msg);
 								_iDBparams["runStatus"] = "error";				
 								if( typeof _iDBparams["callback"] === "function"){
@@ -1085,14 +1061,6 @@
 	//console.log(msg, e);
 					db = e.target.result;
 					
-					// //refresh store-list
-					// if( document.getElementById("store-list") ){
-						// document.getElementById("store-list").innerHTML = "";
-						// for( var n = 0; n < db.objectStoreNames.length; n++){
-							// document.getElementById("store-list").innerHTML += "<li>" +db.objectStoreNames[n]+ "</li>";
-						// }//next
-					// }
-					
 					db.onerror = function(e) {
 	var msg = '(request.onsuccess)Error opening database '  + _iDBparams["dbName"];
 	console.log(msg, e);				
@@ -1119,6 +1087,7 @@
 								var __recordKey = _iDBparams["recordKey"];
 								var __recordValue = _iDBparams["recordValue"];
 								iDB({
+									"dbName" : _iDBparams["dbName"],
 									"storeName" : _iDBparams["storeName"],
 									"action" : "create_store",
 									"callback" : function(){
@@ -1144,7 +1113,7 @@
 	console.log(msg);
 								var __callback = _iDBparams["callback"];
 								var __action = _iDBparams["action"];
-								var storeData = _iDBparams["storeData"];
+								var __storeData = _iDBparams["storeData"];
 								iDB({
 									"storeName" : _iDBparams["storeName"],
 									"action" : "create_store",
@@ -1156,7 +1125,7 @@
 										iDB({
 											"dbName" : _iDBparams["dbName"],
 											"storeName" : _iDBparams["storeName"],
-											"storeData" : storeData,
+											"storeData" : __storeData,
 											"action" : __action,
 											"callback" : __callback
 										});
@@ -1211,7 +1180,6 @@
 			
 			}//end _upgrade()	
 
-			//function _run_transaction( args ){
 			function _run_transaction(){
 	//console.log("function _run_transaction() : " + _iDBparams["storeName"], _iDBparams["action"]);
 			
@@ -1266,15 +1234,7 @@
 						// _iDBparams["callback"]();
 					// }
 					
-					var msg = _r.getResource("browser_cache_not_access");
-					_uidMessage.server = _p.addPushMessage({
-						text: msg, 
-						category: "error", 
-						uid:_uidMessage.server
-					});
-					_w.wait({state:false});
-					
-					// //remove last store
+					//remove last store
 					_deleteStore({
 						"storeName" : _iDBparams["storeName"],
 						"callback" : function( log, runtime ){
@@ -1288,7 +1248,7 @@
 						if (error.name == 'QuotaExceededError') {
 	var msg = "transaction.onabort_QuotaExceededError!";
 	console.log(msg);
-	_u.debug(msg);
+
 							dbInfo["import"]["status"] = {
 								"code" : 2,
 								"reason" : "abort_QuotaExceededError"
@@ -1307,7 +1267,7 @@
 	var msg = "iDB(), _run_transaction(), _abortUpdate(), status: abort, QuotaExceededError";									
 	console.log(msg, log);
 	//_log(msg);
-	_u.debug(msg);
+
 											_importAbort();
 										}
 									});
@@ -1408,34 +1368,16 @@
 					
 					case 'get_record':
 	//console.log("case 'get_record': ", store);
-						var key = _iDBparams["recordKey"];
-						var req = store.get( key );
-						//var index = store.index(INDEX_KOD);
-						//var request = index.get( key );
-	//console.log(key, index, request );
-						
-						req.onerror = function(e) {
-	var msg = "error get record, " + e.target.error.name;
-	console.log(msg, e);
-							_iDBparams["runStatus"] = "error";				
-							if( typeof _iDBparams["callback"] === "function"){
-								_iDBparams["callback"](false, msg);
-							}
+						if( typeof _iDBparams["recordKey"] === "string"){
+							_getOneRecord();
 						}
-						
-						req.onsuccess = function(e) {
-	var msg = "success get record with key " + key;
-	//console.log(msg, e, e.target.result);				
-							_iDBparams["runStatus"] = "success";				
-							if( typeof _iDBparams["callback"] === "function"){
-								_iDBparams["callback"](  e.target.result, msg );
-							}
+						if( typeof _iDBparams["recordKey"] === "number"){
+							_getOneRecord();
 						}
-						
-						//transaction.oncomplete = function(event) {
-	//var msg = "transaction get record oncomplete";
-	//console.log(msg, event);
-						//};
+						if( typeof _iDBparams["recordKey"] === "object" &&
+								_iDBparams["recordKey"].length > 0){
+							_getListRecords();
+						}
 					break;
 					
 					case 'get_records':
@@ -1754,7 +1696,15 @@
 	// console.log("test4, " + e.target.error.name);
 							// }
 							_iDBparams["runStatus"] = "error";				
+							
+							//A mutation operation in the transaction failed because a constraint was not satisfied. 
+							//For example, an object such as an object store or index already exists and a new one was 
+							//being attempted to be created.
+							if( e.target.error.name === "ConstraintError"){
+	 console.log("request.onerror, name: " + e.target.error.name, key, value);
+							}							
 						}
+						
 						request.onsuccess = function(e) {
 	//var msg = "success add value";
 	//console.log(msg, e);
@@ -1775,13 +1725,130 @@
 					};
 					
 				}//end _putRecords()
+
+
+				function _getOneRecord(){
+					var key = _iDBparams["recordKey"];
+					var req = store.get( key );
+					//var index = store.index(INDEX_KOD);
+					//var request = index.get( key );
+	//console.log(key, index, request );
+					
+					req.onerror = function(e) {
+	var msg = "error get record, " + e.target.error.name;
+	console.log(msg, e);
+						_iDBparams["runStatus"] = "error";				
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]();
+						}
+					}
+					
+					req.onsuccess = function(e) {
+	//var msg = "success get record with key " + key;
+	//console.log(msg, e, e.target.result);				
+						_iDBparams["runStatus"] = "success";				
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"](  e.target.result );
+						}
+					}
+					
+					transaction.oncomplete = function(event) {
+	//var msg = "transaction get record oncomplete";
+	//console.log(msg, event);
+					};
+				}//end _getOneRecord()
+				
+				function _getListRecords(){
+					_iDBparams["runStatus"] = "success";				
+					var records = [];
+					var req = [];
+					var keys = _iDBparams["recordKey"];
+					
+					// for( var n = 0; n < keys.length; n++ ){
+						// var key = keys[n];
+						// req[n] = store.get( key );
+						
+						// req[n].onerror = function(e) {
+	// var msg = "error get list records, " + e.target.error.name;
+	// console.log(msg, e);
+							// _iDBparams["runStatus"] = "error";				
+						// }
+						
+						// req[n].onsuccess = function(e) {
+	// var msg = "success get list records with key " + key;
+	// console.log(msg, keys[n], n);				
+							// var obj = {
+								// "key": key,
+								// "value" : e.target.result
+							// };
+							// records.push(obj);
+						// }
+					// }//next
+					var numKeys = keys.length;
+					var count = 0;
+					__getRecord({
+						"recordKey" : keys[count],
+						"callback" : _nextRec
+					});
+					
+					function _nextRec( record ){
+						if(record){
+							var obj = {
+								"key": keys[count],
+								"value" : record
+							};
+							records.push(obj);
+						}
+						count++;
+						if( count < numKeys ){
+							__getRecord({
+								"records" : records,
+								"recordKey" : keys[count],
+								"callback" : _nextRec
+							});
+						} else {
+	console.log("end read records list info...");
+						}
+					}//end _nextRec()
+
+					function __getRecord(opt){
+						var key = opt["recordKey"];
+						req[count] = store.get( key );
+						
+						req[count].onerror = function(e) {
+	var msg = "error get list records, " + e.target.error.name;
+	console.log(msg, e);
+							_iDBparams["runStatus"] = "error";				
+						}
+						
+						req[count].onsuccess = function(e) {
+	//var msg = "success get list records with key " + key;
+	//console.log(msg);				
+							_iDBparams["runStatus"] = "success";				
+							if( typeof opt["callback"] === "function"){
+								opt["callback"]( e.target.result );
+							}
+						}
+						
+					}//end __getRecord()
+					
+					transaction.oncomplete = function(event) {
+	//var msg = "transaction get list records oncomplete";
+	//console.log(msg, event);
+	//console.log(req);
+						if( typeof _iDBparams["callback"] === "function"){
+							_iDBparams["callback"]( records );
+						}
+					};
+					
+				}//end _getListRecords()
 				
 			}//end _run_transaction()
 		}//end iDB()
 		
 		// public interfaces
 		return{
-			vars:_vars,
+			dbInfo:	dbInfo,
 			init: _init,
 			// build: function(target){ 
 				// return _build(target); 
