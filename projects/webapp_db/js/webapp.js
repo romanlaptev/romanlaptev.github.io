@@ -23,16 +23,17 @@ var webApp = {
 	
 	"vars" : {
 		"log" : [],
-		"db_url" : "db/art.xml",
-		"db_type" : "xml",
-		//"db_url" :"db/art_correct.json",
-		//"db_type" : "json"
-		//"db_url" : "db/art_correct.csv",
-		//"db_type" : "jcsv",
-		 //"import" : {
-			//"delimiterByFields" : ",",
-			//"delimiterByLines" : "\r\n"
-		//}
+		 "import" : {
+			"db_url" : "db/art.xml",
+			"db_type" : "xml"//,
+			//"db_url" :"db/art_correct.json",
+			//"db_type" : "json",
+			
+			// "db_url" : "db/art_correct.csv",
+			// "db_type" : "jcsv",
+			// "delimiterByFields" : ",",
+			// "delimiterByLines" : "\r\n"
+		},
 		"GET" : {},
 		"pageContainer" : getDOMobj("page-container")
 	},
@@ -237,17 +238,17 @@ function _db( opt ){
 	function _loadData( postFunc ){
 //console.log("webApp.db.loadData() ", arguments);
 
-		if( webApp.vars["db_url"].length === 0 ){
+		if( webApp.vars["import"]["db_url"].length === 0 ){
 console.log("error in _db(), not find 'db_url' !");
 			return false;
 		}
 		
 		runAjax( {
 			"requestMethod" : "GET", 
-			"url" : webApp.vars["db_url"], 
+			"url" : webApp.vars["import"]["db_url"], 
 			"callback": function( data ){
 				
-var msg = "load " + webApp.vars["db_url"] ;
+var msg = "load " + webApp.vars["import"]["db_url"] ;
 console.log(msg);
 //webApp.vars["log"].push(msg);
 //console.log( "_postFunc(), " + typeof data );
@@ -260,12 +261,12 @@ console.log("error in _db(), not find 'data' !");
 					return false;
 				}
 				
-				if( webApp.vars["db_type"].length === 0 ){
+				if( webApp.vars["import"]["db_type"].length === 0 ){
 console.log("error in _db(), not find 'db_type' !");
 					return false;
 				}
 			
-				switch( webApp.vars["db_type"] ){
+				switch( webApp.vars["import"]["db_type"] ){
 					case "xml":
 						_parseXML( data );
 					break;
@@ -340,57 +341,8 @@ console.log("error in _db(), data not in JSON format");
 		options["queryObj"]["callback"] = _postQuery;
 		
 console.log( "_query()", options );
-
-		// if( options["dbName"].length === 0){
-// var msg = "_getListStores(), error, argument 'dbName' empty.... ";
-// console.log( msg );
-			// return false;
-		// }
 		
-		//detect and run subquery
-		/*
-		var test = false;
-		var conditions = options["queryObj"]["where"];
-		for( var n = 0; n < conditions.length; n++){
-			var condition = conditions[n];
-			
-			if( condition["value"]["action"] ){
-console.log("detect subquery!", condition["value"], options, n);
-				test = true;
-				condition["value"]["callback"] = _postSubQuery;
-				condition["value"]["num_condition"] = n;
-				_startQuery( condition["value"] );
-				// _query({
-					// "queryObj" : condition["value"],
-					// //"callback" : _postQuery
-					// "callback" : options["callback"]
-				// });
-				
-				break;
-			} else {
-				test = false;
-			}
-			
-		}//next condition
-		
-		//run base query
-		if(!test){
-//console.log( options["queryObj"]["callback"] );
-			_startQuery( options["queryObj"] );
-			//clear for next query_obj
-			//dbInfo["query"]=[];
-		}
-		*/
-		
-		// var subQuery = _detectSubQuery( options["queryObj"] );
-// //console.log( subQuery );
-		// if( !subQuery ){//run base query
-			// _startQuery( options["queryObj"] );
-		// } else {
-			// _startQuery( subQuery );
-		// }
 		_startQuery( options["queryObj"] );
-		
 		
 		//detect subquery
 		function _detectSubQuery( queryObj ){
@@ -426,9 +378,13 @@ console.log("detect subquery!", condition["value"], options, n);
 		function _startQuery( queryObj ){
 //console.log(arguments);
 
-//test, detect sub query
-//var subQuery = _detectSubQuery( queryObj );
-//console.log( subQuery );
+			var tableName = queryObj["tableName"];
+			if( !_vars["tables"][tableName] || 
+					_vars["tables"][tableName]["records"].length === 0){
+	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+console.log( msg );
+				return false;
+			}
 
 			var result = [];
 			var action = queryObj["action"];
@@ -437,7 +393,8 @@ console.log("detect subquery!", condition["value"], options, n);
 				case "select":
 					var tableName = queryObj["tableName"];
 					var data = _vars["tables"][tableName]["records"];
-					
+//console.log( data.length, tableName);		
+
 					//detect sub query
 					var subQuery = _detectSubQuery( queryObj );
 					if( !subQuery ){
