@@ -120,6 +120,9 @@ function _db( opt ){
 				// }
 			// }//end root node
 		// },
+		"indexedDBsupport" : window.indexedDB ? true : false,
+		"webSQLsupport" : window.openDatabase  ? true : false,
+		"localStorageSupport" : window['localStorage']  ? true : false,
 		
 		"tables": {
 			// "taxonomy_menu" :[{ 
@@ -257,60 +260,67 @@ console.log(msg);
 //console.log(key +" : "+data[key]);
 //}
 				if( !data ){
-console.log("error in _db(), not find 'data' !");			
+console.log("error in _db(), _loadData(), not find 'data'.... ");			
 					return false;
 				}
-				
-				if( webApp.vars["import"]["db_type"].length === 0 ){
-console.log("error in _db(), not find 'db_type' !");
-					return false;
-				}
-			
-				switch( webApp.vars["import"]["db_type"] ){
-					case "xml":
-						_parseXML( data );
-					break;
-					
-					case "json":
-						//var obj = typeof data == 'string'? JSON.parse(data): data;
-						if( typeof data !== "string"){
-console.log("error in _db(), data not in JSON format");
-							return false;
-						}
-							
-						try {
-							//var jsonObj = JSON.parse( data );
-							var jsonObj = JSON.parse( data, function(key, value) {
-//console.log( key, value );
-								return value;
-							});							
-//console.log( jsonObj );
-							for(var tableName in jsonObj){
-//console.log( tableName, jsonObj[tableName].length );
-								var table = jsonObj[tableName];
-								for( var n = 0; n < table.length; n++){
-									var recordObj = table[n];
-									webApp.db.vars["tables"][tableName]["records"].push( recordObj );
-								}//next
-							}//next
-						} catch(e) {
-						_log( e );
-						}							
-							
-					break;
-					
-					//case "csv":
-					case "jcsv":
-						_parseCSVBlocks(data);
-					break;
-				}//end switch
-				
-				if( typeof postFunc === "function"){
-					postFunc();
-				}
-				
+				__parseAjax( data );
 			}//end callback()
 		});
+		
+		function __parseAjax( data ){
+			
+			if( webApp.vars["import"]["db_type"].length === 0 ){
+console.log("error in _db(), not find 'db_type' !");
+				return false;
+			}
+			
+console.log( "indexedDBsupport: " + webApp.db.vars["indexedDBsupport"] );			
+console.log( "webSQLsupport: " + webApp.db.vars["webSQLsupport"] );			
+console.log( "localStorageSupport: " + webApp.db.vars["localStorageSupport"] );			
+		
+			switch( webApp.vars["import"]["db_type"] ){
+				case "xml":
+					_parseXML( data );
+				break;
+				
+				case "json":
+					//var obj = typeof data == 'string'? JSON.parse(data): data;
+					if( typeof data !== "string"){
+console.log("error in _db(), data not in JSON format");
+						return false;
+					}
+						
+					try {
+						//var jsonObj = JSON.parse( data );
+						var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+//console.log( jsonObj );
+						for(var tableName in jsonObj){
+//console.log( tableName, jsonObj[tableName].length );
+							var table = jsonObj[tableName];
+							for( var n = 0; n < table.length; n++){
+								var recordObj = table[n];
+								webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+							}//next
+						}//next
+					} catch(e) {
+					_log( e );
+					}							
+						
+				break;
+				
+				//case "csv":
+				case "jcsv":
+					_parseCSVBlocks(data);
+				break;
+			}//end switch
+			
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
+		}//__parseAjax()
 		
 	}//end _loadData()
 	
@@ -340,7 +350,7 @@ console.log("error in _db(), data not in JSON format");
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-console.log( "_query()", options );
+//console.log( "_query()", options );
 		
 		_startQuery( options["queryObj"] );
 		
@@ -1467,7 +1477,8 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		var options = {
 			"templateID": false,
 			"title" : "block",
-			"content" : false
+			"content" : false,
+			"callback":null
 		};
 		//extend options object
 		for(var key in opt ){
@@ -1494,6 +1505,9 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		tpl.innerHTML = html;
 		tpl.className = "";//show block
 		
+		if( typeof options["callback"] === "function"){
+			options["callback"]();
+		}
 	};//end _insertBlock()
 
 
@@ -1610,6 +1624,7 @@ function _app( opt ){
 	// private variables and functions
 	var _vars = {
 		"init_url" : "?q=node&nid=20",
+		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
 		"blocks" : [
@@ -1800,6 +1815,7 @@ console.log( "Warn! error parse url in " + target.href );
 			break;
 			
 			case "node":
+				//var timeStart = new Date();
 				webApp.app.buildPage({
 					"nid" : webApp.vars["GET"]["nid"]
 				});
@@ -1851,12 +1867,24 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	var _buildBlock = function(opt){
 //console.log("_buildBlock()", arguments);
 
+		var timeStart = new Date();
 		var options = {
 			"title": "block title",
 			"content" : "",
 			//"contentType" : "",
 			"templateID" : "tpl-block",
-			"contentTpl" : "tpl-list"//"tpl-menu"
+			"contentTpl" : "tpl-list",//"tpl-menu"
+			"callback" : function(){
+				var timeEnd = new Date();
+				var ms = timeEnd.getTime() - timeStart.getTime();
+				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+console.log(msg);			
+				webApp.app.vars["runtime"].push({
+					"source" : msg,
+					"ms" : ms,
+					"sec" : ms / 1000
+				});
+			}//end callback
 		};
 		//extend options object
 		for(var key in opt ){
