@@ -16,6 +16,7 @@ background-color:#ffffcc;
 border:1px dashed;
 clear:both;
 padding: 10px;
+/*position: absolute;*/
 position: fixed;
 right: 10px;
 top: 10px;
