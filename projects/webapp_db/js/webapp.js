@@ -44,11 +44,11 @@ console.log( navigator.userAgent );
 //console.log( this.vars.pageContainer );
 
 		webApp.db.init();
-		webApp.idb.init();
+		webApp.iDBmodule.init();
 		webApp.draw.init();
 		webApp.app.init();
 		
-//console.log(iDB, typeof iDB);			
+//console.log(iDBmodule, typeof iDBmodule);			
 		
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -58,7 +58,7 @@ console.log( navigator.userAgent );
 	},//end init()
 	
 	"db" : _db(),
-	"idb" : iDB(),
+	"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
 	"app" : _app()
 	
