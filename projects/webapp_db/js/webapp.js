@@ -123,7 +123,7 @@ function _db( opt ){
 		"indexedDBsupport" : window.indexedDB ? true : false,
 		"webSQLsupport" : window.openDatabase  ? true : false,
 		"localStorageSupport" : window['localStorage']  ? true : false,
-		
+		"dataStoreType" : _detectDataStore(),
 		"tables": {
 			// "taxonomy_menu" :[{ 
 				// "fields" : ["tid", "title"],
@@ -235,8 +235,27 @@ function _db( opt ){
 
 	var _init = function( opt ){
 //console.log("init _db: ", arguments);
+console.log( "indexedDBsupport: " + _vars["indexedDBsupport"] );			
+console.log( "webSQLsupport: " + _vars["webSQLsupport"] );			
+console.log( "localStorageSupport: " + _vars["localStorageSupport"] );			
+console.log( "Data store type: " + _vars["dataStoreType"] );			
 	};//end _init()
 
+	function _detectDataStore(){
+//console.log(arguments);		
+//console.log( this );		
+		var dataStoreType = "memory";
+		if( window['localStorage']  ? true : false ){
+			dataStoreType = "localStorage";
+		}
+		if( window.openDatabase  ? true : false ){
+			dataStoreType = "webSQL";
+		}
+		if( window.indexedDB ? true : false ){
+			dataStoreType = "indexedDB";
+		}
+		return dataStoreType;
+	}//end _detectDataStore()
 	
 	function _loadData( postFunc ){
 //console.log("webApp.db.loadData() ", arguments);
@@ -274,10 +293,6 @@ console.log("error in _db(), not find 'db_type' !");
 				return false;
 			}
 			
-console.log( "indexedDBsupport: " + webApp.db.vars["indexedDBsupport"] );			
-console.log( "webSQLsupport: " + webApp.db.vars["webSQLsupport"] );			
-console.log( "localStorageSupport: " + webApp.db.vars["localStorageSupport"] );			
-		
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
 					_parseXML( data );
