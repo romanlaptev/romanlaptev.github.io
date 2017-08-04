@@ -44,8 +44,11 @@ console.log( navigator.userAgent );
 //console.log( this.vars.pageContainer );
 
 		webApp.db.init();
+		webApp.idb.init();
 		webApp.draw.init();
 		webApp.app.init();
+		
+//console.log(iDB, typeof iDB);			
 		
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -55,6 +58,7 @@ console.log( navigator.userAgent );
 	},//end init()
 	
 	"db" : _db(),
+	"idb" : iDB(),
 	"draw" : _draw(),
 	"app" : _app()
 	
@@ -71,7 +75,6 @@ webApp.init(function(){
 			// });
 		// }//end callback
 	// );
-	
 	
 	webApp.db.loadData(function(){
 //console.log(arguments);
@@ -124,6 +127,7 @@ function _db( opt ){
 		"webSQLsupport" : window.openDatabase  ? true : false,
 		"localStorageSupport" : window['localStorage']  ? true : false,
 		"dataStoreType" : _detectDataStore(),
+		//"dbName" : "webapp_db",
 		"tables": {
 			// "taxonomy_menu" :[{ 
 				// "fields" : ["tid", "title"],
@@ -2127,37 +2131,6 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		// };
 	// }//end try
 // }//end create_MSXML()
-
-
-/*
-//Module MusicFM
-(function(){
-	var MusicFM = MusicFM || function(options){
-
-		// private variables and functions
-		var _init = function(){
-console.log("init!!!");
-		};
-		
-		var _build = function(target){
-			var html = "Table " + target + " is building....";
-			return html;
-		};
-		
-		// public interfaces
-		return{
-			init:	function(){ 
-				return _init(); 
-			},
-			build:	function(target){ 
-				return _build(target); 
-			}
-		};
-	};
-	window.MusicFM = MusicFM;
-	MusicFM().init();
-})();
-*/
 
 
 /*
