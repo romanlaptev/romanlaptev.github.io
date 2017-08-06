@@ -1512,7 +1512,7 @@ console.log(msg, e);
 	//console.log(msg);
 	//console.log( result );
 						var _resObj = {
-							"storeName" : _iDBparams["storeName"],
+							"storeName" : _iDBparams["storeName"]
 						}
 						
 						if( dbInfo["calc_store_size"] ){
@@ -1624,7 +1624,7 @@ console.log(msg, e);
 	//console.log(msg);
 	//console.log( result );
 						var _resObj = {
-							"storeName" : _iDBparams["storeName"],
+							"storeName" : _iDBparams["storeName"]
 						}
 						if( dbInfo["calc_store_size"] ){
 							_resObj["bytes"] = sum;
