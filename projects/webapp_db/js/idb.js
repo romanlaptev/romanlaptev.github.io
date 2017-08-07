@@ -1918,18 +1918,70 @@ console.log("_iDBimport(), send request to the server", param);
 			webApp.db.request( param );
 			
 			function _afterRequest( data ){
-console.log( data );
+//console.log( data );
 				//_w.wait({state:false});
 				//_u.ajaxProgress	= __ajaxProgress; //restore callback for progress process
 
 				var time_end = new Date();
 				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
-
+				_parseData(data);
+				
 			};//end _afterRequest();
 
 		}//end _iDBimport()
 		
+		function _parseData(data){
+			if( webApp.vars["import"]["db_type"].length === 0 ){
+console.log("error in _db(), not find 'db_type' !");
+				return false;
+			}
+			
+			switch( webApp.vars["import"]["db_type"] ){
+				case "xml":
+					//_parseXML( data );
+				break;
+				
+				case "json":
+/*				
+					//var obj = typeof data == 'string'? JSON.parse(data): data;
+					if( typeof data !== "string"){
+console.log("error in _db(), data not in JSON format");
+						return false;
+					}
+						
+					try {
+						//var jsonObj = JSON.parse( data );
+						var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+//console.log( jsonObj );
+						for(var tableName in jsonObj){
+//console.log( tableName, jsonObj[tableName].length );
+							var table = jsonObj[tableName];
+							for( var n = 0; n < table.length; n++){
+								var recordObj = table[n];
+								webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+							}//next
+						}//next
+					} catch(e) {
+					_log( e );
+					}							
+*/						
+				break;
+				
+				//case "csv":
+				case "jcsv":
+					//_parseCSVBlocks(data);
+				break;
+			}//end switch
+			
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
+			
+		}//end _parseData()
 		
 		// public interfaces
 		return{
