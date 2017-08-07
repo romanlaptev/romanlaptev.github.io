@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>test JS: import</title>
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>Test import</h1>
+		</div>
+	
+		<div class="panel">
+			<div class="panel-body">
+<pre>
+http://caniuse.com/#search=import
+
+https://learn.javascript.ru/link-import
+HTML Imports (only Chrome!!!)
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/import
+
+</pre>
+
+			</div>
+		</div>
+	</div><!-- end container -->
+</body>
+
+<script>
+//console.log( document.getElementById("inc").document.getElementById("title") );	
+function show() {
+//console.log( inc.import );	
+	var incDoc = inc.import.querySelector("#page-title");
+console.log( incDoc );	
+	document.body.appendChild( incDoc );
+};
+</script>
+<link rel="import" href="test_import_inc.html" id="inc" onload="show()">
+
+</html>
