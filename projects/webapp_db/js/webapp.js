@@ -250,7 +250,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	function _detectDataStore(){
 //console.log(arguments);		
 //console.log( this );		
-		var dataStoreType = "memory";
+		var dataStoreType = false;
 		if( window['localStorage']  ? true : false ){
 			dataStoreType = "localStorage";
 		}
@@ -266,46 +266,60 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	function _loadData( postFunc ){
 //console.log("webApp.db.loadData() ", arguments);
 
-		if( _vars["indexedDBsupport"] && 
-				webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
-			webApp.iDBmodule.getListStores({
-				"dbName" : webApp.iDBmodule.dbInfo["dbName"],
-				"callback" : function( listStores ){
+		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
+			_vars["dataStoreType"] = false;
+		} 
+
+		switch(_vars["dataStoreType"]) {
+			
+			case "indexedDB":
+				webApp.iDBmodule.getListStores({
+					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+					"callback" : function( listStores ){
 console.log(listStores);				
-					webApp.iDBmodule.checkState( listStores );
-				}//end callback
-			});
-			return false;
-		} else {
-			
-			if( webApp.vars["import"]["data_url"].length === 0 ){
-	console.log("error in _db(), not find 'data_url' !");
+						webApp.iDBmodule.checkState( listStores );
+//console.log("test!");				
+					}//end callback
+				});
 				return false;
-			}
+			break;
 			
-			runAjax( {
-				"requestMethod" : "GET", 
-				"url" : webApp.vars["import"]["data_url"], 
-				"callback": function( data ){
-					
-	var msg = "load " + webApp.vars["import"]["data_url"] ;
-	console.log(msg);
-	//webApp.vars["log"].push(msg);
-	//console.log( "_postFunc(), " + typeof data );
-	//console.log( data );
-	//for( var key in data){
-	//console.log(key +" : "+data[key]);
-	//}
-					if( !data ){
-	console.log("error in _db(), _loadData(), not find 'data'.... ");			
-						return false;
-					}
-					__parseAjax( data );
-				}//end callback()
-			});
+			case "webSQL":
+			break;
 			
+			case "localStorage":
+			break;
+			
+			default:
+				if( webApp.vars["import"]["data_url"].length === 0 ){
+		console.log("error in _db(), not find 'data_url' !");
+					return false;
+				}
+				
+				runAjax( {
+					"requestMethod" : "GET", 
+					"url" : webApp.vars["import"]["data_url"], 
+					"callback": function( data ){
+						
+		var msg = "load " + webApp.vars["import"]["data_url"] ;
+		console.log(msg);
+		//webApp.vars["log"].push(msg);
+		//console.log( "_postFunc(), " + typeof data );
+		//console.log( data );
+		//for( var key in data){
+		//console.log(key +" : "+data[key]);
+		//}
+						if( !data ){
+		console.log("error in _db(), _loadData(), not find 'data'.... ");			
+							return false;
+						}
+						__parseAjax( data );
+					}//end callback()
+				});
+			break;
+		}//end switch
+		
 			//return false;
-		}
 			
 		function __parseAjax( data ){
 			
@@ -384,16 +398,16 @@ console.log(url);
 			"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
-				if( !data ){
+
+				if( !data || data.length === 0){
 console.log("error in _db(), _request(), not find 'data'.... ");			
-					return false;
+					var data = [];
 				}
+				
 				if( typeof p["callback"] === "function"){
 					p["callback"](data);
-				} else {
-console.log("error in _db(), _request(), not find 'callback'..", p["callback"]);			
 					return false;
-				}
+				} 
 				
 			}//end callback()
 		});
