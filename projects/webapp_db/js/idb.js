@@ -175,6 +175,7 @@ console.log( addRecord );
 		dbInfo["calc_store_size"] = false;
 		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
 		dbInfo["dbName"] = "webapp_db";
+		dbInfo["import"] = [];
 		
 //******************************** indexedDB: methods of extension ********************************
 
@@ -1869,8 +1870,65 @@ console.log(msg);
 		
 		
 		var _checkState = function(opt){
+			dbInfo["import"]["importType"] = "full";
+			if( typeof listStores !== "undefined" &&
+					listStores.length > 0){
+				//.....
+			} else {
+var msg = "iDBmodule(), not find indexedDB stores, full import.";
+console.log(msg);
+			}
+			
+			//not find tables, full import
+			//not find master table, full import
+var msg = "iDBmodule(),  import type:" + dbInfo["import"]["importType"];
+console.log(msg);
+			if( dbInfo["import"]["importType"] === "full"){
+				_iDBimport();
+			}
+			
+			if( dbInfo["import"]["importType"] === "update"){
+				// check time interval for update iDB
+				//....
+				var date = "2017-08-07";//yyyy-mm-dd
+				_iDBimport( date );
+			}//end check
 			
 		}//end _checkState()
+		
+		function _iDBimport( date ){
+console.log( "_iDBimport()", date );
+			var time_start = new Date();
+			//_w.wait({
+				//button:true, 
+				//abortHandler: function(){ _m.hideModal(); },
+				//text: _r.getResource("_query_wait")
+			//});
+			if(!date){
+				var param = {"date":null};
+			} else {
+				var date = "2016-12-02";//yyyy-mm-dd
+				var param = {"date": date};
+			}
+console.log("_iDBimport(), send request to the server", param);
+			// _w.changeText(_r.getResource("_wait_load_kodif_server"));
+			// var __ajaxProgress	= _u.ajaxProgress;
+			// _u.ajaxProgress	= _ajaxProgress;//replace callback for progress process
+			param["callback"] = _afterRequest;
+			webApp.db.request( param );
+			
+			function _afterRequest( data ){
+console.log( data );
+				//_w.wait({state:false});
+				//_u.ajaxProgress	= __ajaxProgress; //restore callback for progress process
+
+				var time_end = new Date();
+				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
+console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
+
+			};//end _afterRequest();
+
+		}//end _iDBimport()
 		
 		
 		// public interfaces
@@ -1927,7 +1985,7 @@ console.log(msg);
 	};//end iDBModule()
 	
 	window.iDBmodule = iDBmodule;
-	//iDBmodule().init();
+	iDBmodule().init();
 	
 //})(this);
 })();
