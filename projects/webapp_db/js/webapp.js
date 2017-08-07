@@ -127,7 +127,6 @@ function _db( opt ){
 		"webSQLsupport" : window.openDatabase  ? true : false,
 		"localStorageSupport" : window['localStorage']  ? true : false,
 		"dataStoreType" : _detectDataStore(),
-		//"dbName" : "webapp_db",
 		"tables": {
 			// "taxonomy_menu" :[{ 
 				// "fields" : ["tid", "title"],
@@ -264,6 +263,16 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	function _loadData( postFunc ){
 //console.log("webApp.db.loadData() ", arguments);
 
+		if( _vars["indexedDBsupport"] ){
+			webApp.iDBmodule.getListStores({
+				"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+				"callback" : function( listStores ){
+console.log(listStores);				
+					//webApp.iDBmodule.checkState( listStores );
+				}//end callback
+			});
+		}
+			
 		if( webApp.vars["import"]["db_url"].length === 0 ){
 console.log("error in _db(), not find 'db_url' !");
 			return false;
