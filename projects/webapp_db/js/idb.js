@@ -146,6 +146,24 @@ console.log("Total size: ", bytes);
 		// private variables and functions
 		var _init = function(){
 //console.log("init iDB module...");
+			var testDB = "indexedDB" in window;
+			if( !testDB) {
+				var msg = "_iDBmodule(), IndexedDB not supported, clear methods";
+console.log(msg);
+				addRecord = null;
+console.log( addRecord );
+				dropDB = null;
+				createStore = null;
+				deleteStore = null;
+				clearStore = null;
+				getListStores = null;
+				addRecord = null;
+				addRecords = null;
+				getRecord = null;
+				getRecords = null;
+				numRecords = null;
+				deleteRecord = null;
+			}
 		};
 		
 		// var _build = function(target){
@@ -156,8 +174,10 @@ console.log("Total size: ", bytes);
 		//do not calculate store size
 		dbInfo["calc_store_size"] = false;
 		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
+		dbInfo["dbName"] = "webapp_db";
 		
 //******************************** indexedDB: methods of extension ********************************
+
 		var _addRecord = function( opt ){
 	//console.log(arguments);
 
@@ -810,10 +830,11 @@ console.log("Total size: ", bytes);
 				// test = false;
 			// }
 			if(!test) {
+				var msg = "_getListStores(), not use IndexedDB, allowIndexedDB:" + dbInfo["allowIndexedDB"];
 				// if(!testDB) {
-	// var msg = "_getListStores(), IndexedDB not supported!!!";
-	// console.log(message);
+						//msg = "_getListStores(), IndexedDB not supported!!!";
 				// }
+console.log(msg);
 				return false;
 			}
 
@@ -946,8 +967,8 @@ console.log(msg, e);
 	//console.log( request );
 					request.onsuccess = function(e){
 						db = e.target.result;
-	//var msg = options["dbName"] + ", db.version = " + db.version, db;
-	//console.log(msg);				
+	var msg = options["dbName"] + ", db.version = " + db.version, db;
+console.log(msg);				
 						db.close();
 						
 						if( typeof options["callback"] === "function"){
@@ -1846,6 +1867,12 @@ console.log(msg, e);
 			}//end _run_transaction()
 		}//end iDB()
 		
+		
+		var _checkState = function(opt){
+			
+		}//end _checkState()
+		
+		
 		// public interfaces
 		return{
 			dbInfo:	dbInfo,
@@ -1892,7 +1919,9 @@ console.log(msg, e);
 			getInfo: function(){
 				var totalSize = dbInfo["tables"]["total_size"]; 
 				return totalSize;
-			}
+			},
+			
+			checkState : _checkState
 		};
 	
 	};//end iDBModule()
