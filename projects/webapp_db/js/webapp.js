@@ -24,12 +24,15 @@ var webApp = {
 	"vars" : {
 		"log" : [],
 		 "import" : {
-			"db_url" : "db/art.xml",
+			"request_url" : "db/art_{{DATE}}.xml",
+			//"request_url" : "db/request.aspx",
+			//"request_url" : "db/request.php",
+			"data_url" : "db/art.xml",
 			"db_type" : "xml"//,
-			//"db_url" :"db/art_correct.json",
+			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
 			
-			// "db_url" : "db/art_correct.csv",
+			// "data_url" : "db/art_correct.csv",
 			// "db_type" : "jcsv",
 			// "delimiterByFields" : ",",
 			// "delimiterByLines" : "\r\n"
@@ -44,7 +47,7 @@ console.log( navigator.userAgent );
 //console.log( this.vars.pageContainer );
 
 		webApp.db.init();
-		webApp.iDBmodule.init();
+		//webApp.iDBmodule.init();
 		webApp.draw.init();
 		webApp.app.init();
 		
@@ -263,42 +266,47 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	function _loadData( postFunc ){
 //console.log("webApp.db.loadData() ", arguments);
 
-		if( _vars["indexedDBsupport"] ){
+		if( _vars["indexedDBsupport"] && 
+				webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			webApp.iDBmodule.getListStores({
 				"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 				"callback" : function( listStores ){
 console.log(listStores);				
-					//webApp.iDBmodule.checkState( listStores );
+					webApp.iDBmodule.checkState( listStores );
 				}//end callback
 			});
+			return false;
+		} else {
+			
+			if( webApp.vars["import"]["data_url"].length === 0 ){
+	console.log("error in _db(), not find 'data_url' !");
+				return false;
+			}
+			
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["import"]["data_url"], 
+				"callback": function( data ){
+					
+	var msg = "load " + webApp.vars["import"]["data_url"] ;
+	console.log(msg);
+	//webApp.vars["log"].push(msg);
+	//console.log( "_postFunc(), " + typeof data );
+	//console.log( data );
+	//for( var key in data){
+	//console.log(key +" : "+data[key]);
+	//}
+					if( !data ){
+	console.log("error in _db(), _loadData(), not find 'data'.... ");			
+						return false;
+					}
+					__parseAjax( data );
+				}//end callback()
+			});
+			
+			//return false;
 		}
 			
-		if( webApp.vars["import"]["db_url"].length === 0 ){
-console.log("error in _db(), not find 'db_url' !");
-			return false;
-		}
-		
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : webApp.vars["import"]["db_url"], 
-			"callback": function( data ){
-				
-var msg = "load " + webApp.vars["import"]["db_url"] ;
-console.log(msg);
-//webApp.vars["log"].push(msg);
-//console.log( "_postFunc(), " + typeof data );
-//console.log( data );
-//for( var key in data){
-//console.log(key +" : "+data[key]);
-//}
-				if( !data ){
-console.log("error in _db(), _loadData(), not find 'data'.... ");			
-					return false;
-				}
-				__parseAjax( data );
-			}//end callback()
-		});
-		
 		function __parseAjax( data ){
 			
 			if( webApp.vars["import"]["db_type"].length === 0 ){
@@ -351,6 +359,47 @@ console.log("error in _db(), data not in JSON format");
 		}//__parseAjax()
 		
 	}//end _loadData()
+	
+	function _request( opt ){
+		var p = {
+			"date": null,
+			"callback": null
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);		
+
+		var url = webApp.vars["import"]["request_url"].replace("_{{DATE}}", "");
+		if( p["date"] && p["date"].length > 0 ){
+			url = webApp.vars["import"]["request_url"].replace("{{DATE}}", p["date"]);//db/art_2016-12-02.xml
+		}
+console.log(url);		
+		
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : url, 
+			"callback": function( data ){
+var msg = "load " + url ;
+console.log(msg);
+				if( !data ){
+console.log("error in _db(), _request(), not find 'data'.... ");			
+					return false;
+				}
+				if( typeof p["callback"] === "function"){
+					p["callback"](data);
+				} else {
+console.log("error in _db(), _request(), not find 'callback'..", p["callback"]);			
+					return false;
+				}
+				
+			}//end callback()
+		});
+					
+	}//end _request()
+	
 	
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
@@ -1345,6 +1394,10 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		loadData:	function( opt ){ 
 			return _loadData( opt ); 
 		},
+		request:	function( opt ){ 
+			return _request( opt ); 
+		},
+		
 		query:	function( opt ){ 
 			return _query( opt ); 
 		},
