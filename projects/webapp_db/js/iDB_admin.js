@@ -1,5 +1,3 @@
-//mobappDb.init();
-
 //console.log for old IE
 if(!window.console){
 	console = {
@@ -8,7 +6,6 @@ if(!window.console){
 		}
 	}
 }
-
 
 var _timer = {};
 var _set_timer = function (){
@@ -38,278 +35,9 @@ function _log( msg, id){
 var dbInfo = [];
 //dbInfo["import"] = [];
 
-dbInfo["dbname"] = "mobapp";
+dbInfo["dbname"] = "webapp_db";
 //dbInfo["version"] = 0;
 dbInfo["useIndex"] = false;
-
-dbInfo["tables"] = [];
-dbInfo["tables"]["SL_KODIF"] = {
-	"fields" : [
-		"TABLE_NAME",
-		"BLOCK_NAME",
-		"FIELD_NAME",
-		"FIELD_MAIN_NAME",
-		"KLASS_NOM",
-		"KLASS_TYPE",
-		"KOD_TEXT",
-		"ARCHIVE_STAT",
-		"CONDITION",
-		"FIELDS",
-		"PERM_NAME",
-		"ORDER_BY",
-		"LUS_POINT",
-		"ID"],
-	//"keyName" : "ID",
-	"partSize" : 1
-};
-
-dbInfo["tables"]["AR_ADR_LVL_1"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"TXT_LOV",
-"ORD_LOV",
-"ARCHIVE_STAT"
-		],
-		"keyName" : "KOD",
-		"partSize" : 1
-};	
-
-dbInfo["tables"]["AR_ADR_LVL_2"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"TXT_LOV",
-"TXT_D",
-"ORD_LOV",
-"ARCHIVE_STAT",
-"LVL_1_KOD"
-		],
-		//"keyName" : "",
-		"partSize" : 1
-};	
-
-dbInfo["tables"]["AR_ADR_LVL_3"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"TXT_LOV",
-"TXT_D",
-"ORD_LOV",
-"ARCHIVE_STAT",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"TXT_D2"
-		],
-		//"keyName" : "",
-		"partSize" : 1
-};	
-
-dbInfo["tables"]["AR_ADR_LVL_4"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"TXT_LOV",
-"TXT_D",
-"ORD_LOV",
-"ARCHIVE_STAT",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"LVL_3_KOD",
-"TXT_D2"
-		],
-		//"keyName" : "",
-		"partSize" : 1
-};	
-
-dbInfo["tables"]["AR_ADR_LVL_5"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"TXT_LOV",
-"ARCHIVE_STAT",
-"ORD_LOV",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"LVL_3_KOD",
-"LVL_4_KOD",
-"PASTS_IND"
-		],
-		//"keyName" : "",
-		//"splitOnStories" : true,
-		//"numRecordsOnStore" : 563195 / 20000,
-		//"partSize" : 100
-};	
-
-
-dbInfo["tables"]["PANT"] = {
-	"fields" : [
-"PANT_VEID_KOD",
-"PANTS",
-"ZIME",
-"DALA",
-"APAKS_DALA",
-"NOSAUK",
-"PANT_ID",
-"ARCHIVE_STAT"
-		],
-	"keyName" : "PANT_ID",
-	"partSize" : 1
-};	
-
-
-dbInfo["tables"]["PMLP_ADR_LVL_1"] ={
-	"fields" : [
-"KOD",
-"TXT",
-"ORD_LOV",
-"ARCHIVE_STAT"
-	],
-	"keyName" : "KOD",
-	"partSize" : 1
-};	
-	
-dbInfo["tables"]["PMLP_ADR_LVL_2"] = {
-		"fields" : [
-"KOD",
-"TXT",
-"TXT_FULL",
-"LVL_1_KOD",
-"ORD_LOV",
-"ARCHIVE_STAT"
- ],
-	"keyName" : "KOD",
-		//"indexes" : [
-			//{"name":"byLVL_1_KOD", "keyPath":['LVL_1_KOD'], "unique": false }
-		//],
-	"partSize" : 1
-};	
-
-	
-	
-dbInfo["tables"]["PMLP_ADR_LVL_3"] = {
-		"fields" : [
-"KOD",
-"TXT",
-"TXT_FULL",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"ORD_LOV",
-"ARCHIVE_STAT"
-		],
-	"keyName" : "KOD",
-		//"indexes" : [
-			//{"name":"byLVL_1_KODLVL_2_KOD", "keyPath":['LVL_1_KOD', 'LVL_2_KOD'], "unique": false }
-		//],
-	"partSize" : 1
-};
-
-
-dbInfo["tables"]["PMLP_ADR_LVL_4"] = {
-		"fields" : [
-"KOD",
-"TXT",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"LVL_3_KOD",
-"ORD_LOV",
-"ARCHIVE_STAT"
-		],
-		//"keyName" : "KOD",
-		//"indexes" : [
-			//{"name":"byLVL_1_KODLVL_2_KOD", "keyPath":['LVL_1_KOD', 'LVL_2_KOD'], "unique": false },
-			//{"name":"byLVL_1_KODLVL_2_KODLVL_3_KOD", "keyPath":['LVL_1_KOD', 'LVL_2_KOD', 'LVL_3_KOD'], "unique": false }
-		//],
-	"partSize" : 100
-};	
-
-	
-dbInfo["tables"]["SIMPLE_SPR"] = {
-	"fields" : [
-		"NOMER",
-		"KOD",
-		"KOD_MAIN",
-		"TXT",
-		"TEXT2",
-		"ORDER_BY",
-		"ARCHIVE_STAT"
-	],
-	//"keyName" : "NOMERKODKOD_MAIN",
-	"partSize" : 1
-};
-
-	
-dbInfo["tables"]["SL_KLASS_PERM"] = {
-		"fields" : [
-"PERM_NAME",
-"NOMER",
-"TABLE_NAME",
-"ZAPRET",
-"KOD",
-"ID"
-		],
-	"keyName" : "ID",
-	"partSize" : 1
-};	
-
-
-dbInfo["tables"]["SL_TILTS"] = {
-		"fields" : [
-"KOD",
-"RAJONS_KOD",
-"PILSETA_KOD",
-"CEL_KOD",
-"TXT",
-"KM",
-"ARCHIVE_STAT"
-		],
-	"keyName" : "KOD",
-		//"indexes" : [
-			//{"name":"byRAJONS_KODPILSETA_KODCEL_KOD", "keyPath":['RAJONS_KOD', 'PILSETA_KOD', 'CEL_KOD'], "unique": false }
-		//],
-	"partSize" : 1
-};
-
-
-dbInfo["tables"]["SL_LUS"] = {
-		"fields" : [
-"SL_LUS_ID",
-"LUS_TYPE",
-"OPER",
-"TRUE_LUS_ID",
-"FALSE_LUS_ID",
-"P1",
-"P1_NVL",
-"P1_TO_TYPE",
-"P1_FORMAT",
-"P2",
-"P2_NVL",
-"P2_TO_TYPE",
-"P2_FORMAT",
-"ENTRY_NAME",
-"ENTRY_COMMENT",
-"GO_FIELD",
-"ORDER_BY"
-		],
-	"keyName" : "SL_LUS_ID",
-	"partSize" : 1
-};
-
-dbInfo["tables"]["TEST"] = {
-	"fields" : [
-"KOD",
-"TXT",
-"LVL_1_KOD",
-"LVL_2_KOD",
-"LVL_3_KOD",
-"ORD_LOV",
-"ARCHIVE_STAT"
-	],
-	//"keyName" : "NOMERKODKOD_MAIN",
-	"partSize" : 1
-};
-
-
 
 function init(){
 console.log(dbInfo);
@@ -320,16 +48,6 @@ console.log(dbInfo);
 	
 	document.getElementById("btn-list").onclick = function(){
 		_listStories();
-/*		
-		var dbName = document.getElementById("dbname").value;
-		mobappDb.getListStores({
-			"dbName" : dbName,
-			"callback" : function( res ){
-var msg = "mobappDb.getListStores(), "+ res.length;
-console.log(msg, res);
-			}
-		});
-*/		
 	}//end event
 
 	document.getElementById("btn-dropDB").onclick = function(){
@@ -343,18 +61,6 @@ _log(msg);
 				//_log("", "store-list");
 			}
 		});
-		/*
-		var dbName = document.getElementById("dbname").value;
-		mobappDb.dropDB({
-			"dbName" : dbName,
-			"callback" : function( log, runtime ){
-			var msg = "mobappDb.dropDB(), "+ log +", runtime: " + runtime;
-console.log(msg);
-_log(msg);
-				_log("", "store-list");
-			}
-		});
-		*/
 	}//end event
 
 	
@@ -372,18 +78,6 @@ _log(msg);
 				_listStories();
 			}
 		});
-/*		
-		mobappDb.createStore({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"callback" : function( log, runtime ){
-var msg = "mobappDb.createStore(), "+ log +", runtime: " + runtime;
-console.log(msg);
-_log(msg);
-				_listStories();
-			}
-		});
-*/		
 	}//end event
 
 	
@@ -401,18 +95,6 @@ _log(msg);
 				_listStories();
 			}
 		});
-/*	
-		mobappDb.deleteStore({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"callback" : function( log, runtime ){
-var msg = "mobappDb.deleteStore(), "+ log +", runtime: " + runtime;
-console.log(msg);
-_log(msg);
-				_listStories();
-			}
-		});
-*/		
 	}//end event
 
 	
@@ -431,19 +113,6 @@ console.log(msg);
 _log(msg);
 			}
 		});
-/*	
-		mobappDb.addRecord({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"recordKey" : document.getElementById("record-key").value,
-			"recordValue" : document.getElementById("record-value").value,
-			"callback" : function( log ){
-var msg = "mobappDb.addRecord(), " + log;
-console.log(msg);
-_log(msg);
-			}
-		});
-*/		
 	}//end event
 	
 	document.getElementById("btn-add-records").onclick = function(){
@@ -466,18 +135,6 @@ _log(msg);
 //_log(msg);
 			}
 		});
-/*
-		mobappDb.addRecords({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"storeData" : storeData,
-			"callback" : function(){
-var msg = "mobappDb.addRecords() ";
-console.log(msg);
-_log(msg);
-			}
-		});
-*/		
 	}//end event
 	
 
@@ -494,17 +151,6 @@ console.log(msg);
 _log(msg);
 			}
 		});
-/*
-		mobappDb.numRecords({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"callback" : function( num, log ){
-var msg = "mobappDb.numRecords(), " + num + " records, " + log;
-console.log(msg);
-_log(msg);
-			}
-		});
-*/		
 	}//end event
 
 
@@ -522,19 +168,6 @@ _log(msg);
 console.log(data );
 			}
 		});
-
-/*		
-		mobappDb.getRecords({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"callback" : function( data, log ){
-var msg = "mobappDb.getRecords() " + log;
-console.log(msg);
-_log(msg);
-console.log(data );
-			}
-		});
-*/		
 	}//end event
 	
 	document.getElementById("btn-get-records-obj").onclick = function(){
@@ -552,20 +185,6 @@ console.log(msg);
 console.log(data );
 			}
 		});
-
-/*		
-		mobappDb.getRecords({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"action" : "get_records_obj",
-			"callback" : function( data, log ){
-var msg = "mobappDb.getRecords(), get storeData as object, " + log;
-console.log(msg);
-_log(msg);
-console.log(data );
-			}
-		});
-*/		
 	}//end event
 	
 	document.getElementById("btn-get-record").onclick = function(){
@@ -596,26 +215,6 @@ console.log(data);
 				
 			}
 		});
-/*
-		mobappDb.getRecord({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"recordKey" : recordKey,
-			"callback" : function( data, log ){
-var msg = "mobappDb.getRecord(), " + log;
-console.log(msg);
-_log(msg);
-
-console.log(data);
-				if(data){
-					_log(data );
-				} else {
-					_log(typeof data );
-				}
-				
-			}
-		});
-*/		
 	}//end event
 	
 	document.getElementById("btn-delete-record").onclick = function(){
@@ -638,19 +237,6 @@ var msg = "_deleteRecord(), "+ log;
 _log(msg);
 			}
 		});
-/*
-		mobappDb.deleteRecord({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"recordKey" : recordKey,
-			"callback" : function( log ){
-var msg = "mobappDb.deleteRecord(), " + log;
-console.log(msg);
-_log(msg);
-			}
-		});
-*/
-		
 	}//end event
 	
 	document.getElementById("btn-clear-store").onclick = function(){
@@ -665,17 +251,6 @@ var msg = "_clearStore(), "+ log + ", " +runtime + " sec";
 _log(msg);
 			}
 		});
-/*
-		mobappDb.clearStore({
-			"dbName" : dbName,
-			"storeName" : storeName,
-			"callback" : function( log, runtime ){
-var msg = "mobappDb.clearStore(), "+ log + ", " +runtime + " sec";				
-console.log(msg);
-_log(msg);
-			}
-		});
-*/		
 	}//end event
 	
 	if( document.getElementById("btn-get-info") ){
@@ -2415,7 +1990,7 @@ console.log(msg);
 		
 	};//end _getRecords()
 
-//*доработка - если opt["recordKey"] является массивом, то выбрать все записи, перечисленные в opt["recordKey"]
+//*РґРѕСЂР°Р±РѕС‚РєР° - РµСЃР»Рё opt["recordKey"] СЏРІР»СЏРµС‚СЃСЏ РјР°СЃСЃРёРІРѕРј, С‚Рѕ РІС‹Р±СЂР°С‚СЊ РІСЃРµ Р·Р°РїРёСЃРё, РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рµ РІ opt["recordKey"]
 	var _getRecord = function( opt ){
 //console.log(arguments);
 		var options = {
@@ -3575,379 +3150,4 @@ console.log(msg, e);
 			
 		}//end _run_transaction()
 	}//end iDB()
-	
-	
-			//for search with index
-			// function _iDBsearch( query_obj ){
-				// if ('getAll' in store) {
-					// var useCursor = false;
-				// } else {
-					// var useCursor = true;
-				// }
-				// //var useCursor = true;//for test
-				
-				// var useIndex = false;
-				// var keyRange = false;
-				// database["query"]["result"] = [];
-// console.log("iDBsearch()", query_obj, store["name"], "useCursor: " + useCursor);
-
-					
-				// if( 
-// query_obj["fieldName"] === "iestade_kod" ||
-// query_obj["fieldName"] === "reg_iestade_kod"
-				// ){
-					// var indexName = "byNOMERKOD_MAIN";
-					// //check exists index
-					// useIndex = checkIndexName( indexName, store.indexNames);
-					// if( useIndex) {
-						// //Run query with index
-// /*
-// select distinct txt text,kod kod,null kod_main,null km
-// from SIMPLE_SPR where KOD_MAIN IN (1,5) 
-// and nomer = "170";
-// */
-						// //get values for searching
-						// var n1 = query_obj["where"][0]["value"][0];//KOD_MAIN IN (1,5)
-						// var n2 = query_obj["where"][0]["value"][1];
-						// var nomer = query_obj["where"][1]["value"];//NOMER = "170"
-						
-						// try{
-							// keyRange = IDBKeyRange.only( [ nomer, n1 ] );//1376
-							// _process();
-						// }
-						// catch(e){
-// console.log(e);							
-							// useIndex = false;
-						// }
-								
-						// try{
-							// keyRange = IDBKeyRange.only( [ nomer, n2 ] );//86
-							// _process();
-						// }
-						// catch(e){
-// console.log(e);							
-							// useIndex = false;
-						// }
-						
-					// }
-				// }//end if fieldname
-
-				
-				// //Run query and subquery with index
-				// if( 
-// query_obj["fieldName"] === "park_noform_kod" //||
-// //query_obj["fieldName"] === "pant_veid_kod"
-// //query_obj["fieldName"] === "tl_tip_kod" ||
-// //soda_veid_kod
-// //valuta
-// //prot_punkt-pant_veid_kod
-// //prot_panti-pant_veid_kod
-// //spried_sods-soda_veid_kod
-// ){
-// /*
-// select distinct txt text,kod kod,kod_main kod_main,null km 
-// from SIMPLE_SPR where nomer = "175" 
-// and kod_main is null -- sl_kodif_row.FIELD_MAIN_NAME === null 
-// and kod in(select kod from sl_klass_perm where perm_name="CPR_175" and nomer="175")
-// */
-					// var indexName = "byNOMERKOD_MAIN";
-					// //check exists index
-					// //useIndex = checkIndexName( indexName, store.indexNames);
-// useIndex = false;
-					// if( useIndex) {
-
-						// var nomer = query_obj["where"][0]["value"];
-						// var kod_main = query_obj["where"][1]["value"];
-// //var kod = runIndexQuery( query_obj["where"][2]["value"]["where"] );
-// //["1", "10", "11","12","14","16","17","18","19","20","25","28","3","33","38","39","4","40","41","42","43","5","7","8","9"];
-						// try{
-							// keyRange = IDBKeyRange.only( [nomer, kod_main] );
-							// _process();
-						// }
-						// catch(e){
-// console.log(e);							
-							// useIndex = false;
-						// }
-
-// /*						
-						// var subQuery = query_obj["where"][2]["value"];
-						// subQuery["callback"] = callBack;
-						// _iDBquery( subQuery );
-						
-						// function callBack( codes ){ 
-// console.log("park_noform_kod, callback function.....", codes);
-							// //form keys
-							// var nomer = query_obj["where"][0]["value"];
-							// var kod_main = query_obj["where"][1]["value"];
-							// var keys = [];
-							// for( var n = 0; n < codes.length; n++){
-								// var key = "key_" + nomer + codes[n]["KOD"] + kod_main;
-								// keys.push(key);
-							// }
-// //console.log(keys);
-							// //get records by keys
-							// var counter = 0;
-							// database["action"] = "get_record";
-							// database["storeName"] = query_obj["tableName"];
-							// database["record_key"] = keys[counter];
-							// iDB( callBack2 );
-							
-							// function callBack2( record ){ 
-// console.log("Get record, callback function, ", record, counter);
-								// database["query"]["result"].push(record);
-								// counter++;
-								// if( counter < keys.length){
-									// database["action"] = "get_record";
-									// database["storeName"] = query_obj["tableName"];
-									// database["record_key"] = keys[counter];
-									// iDB( callBack2 );
-								// } else {
-									// if( typeof query_obj["callback"] === "function"){
-										// query_obj["callback"]( database["query"]["result"] );
-									// }
-								// }
-							// }//end callBack2()
-
-						// };//end callBack()
-// */
-					// }
-					
-				// }//end if fieldname
-
-				
-				// if( 
-// query_obj["fieldName"] === "sast_pakape" ||
-// query_obj["fieldName"] === "amats" ||
-// query_obj["fieldName"] === "pers_status_kod" ||
-// query_obj["fieldName"] === "pers_valsts_kod" ||
-// query_obj["fieldName"] === "pers_pilson_kod" ||
-// query_obj["fieldName"] === "pers_var_kod" ||
-// query_obj["fieldName"] === "veid_ietekm_kod" ||
-// query_obj["fieldName"] === "promil_kod" ||
-// query_obj["fieldName"] === "pers_adr_valsts_kod" ||
-// query_obj["fieldName"] === "amt_valsts_kod" ||
-// query_obj["fieldName"] === "ipas_valsts_kod" ||
-// query_obj["fieldName"] === "ipas_pilson_kod" ||
-// query_obj["fieldName"] === "ipas_var_kod" ||
-// query_obj["fieldName"] === "ipas_adr_valsts_kod" ||
-// query_obj["fieldName"] === "ipas_adr_pilseta_kod" ||
-// query_obj["fieldName"] === "ipas_adr_ciems_kod" ||
-// query_obj["fieldName"] === "ipas_adr_iela_kod" ||
-// query_obj["fieldName"] === "pilseta1_kod" ||
-// query_obj["fieldName"] === "ciems1_kod" ||
-// query_obj["fieldName"] === "iela1_kod" ||
-// query_obj["fieldName"] === "iela2_kod" ||
-// query_obj["fieldName"] === "cel1_kod" ||
-// query_obj["fieldName"] === "cel2_kod" ||
-// query_obj["fieldName"] === "tilts1_kod" ||
-// query_obj["fieldName"] === "pers_adr_pilseta_kod" ||
-// query_obj["fieldName"] === "pers_adr_ciems_kod" ||
-// query_obj["fieldName"] === "pers_adr_iela_kod" ||
-// query_obj["fieldName"] === "kont_kod" ||
-// query_obj["fieldName"] === "kat_kod" ||
-// query_obj["fieldName"] === "marka_kod" ||
-// query_obj["fieldName"] === "model_kod" ||
-// query_obj["fieldName"] === "krasa1_kod"
-				// ){
-					
-					// //form indexName from condition keys
-					// var indexName = "by";
-					// //var indexName = "byNOMERKOD_MAIN";
-					// //var indexName = "byNOMERKOD_MAINKOD";
-					// //var indexName = "byLVL_1_KOD";
-					// //var indexName = "byLVL_1_KODLVL_2_KOD";
-					// //var indexName = "byLVL_1_KODLVL_2_KODLVL_3_KOD";
-					// //var indexName = "byRAJONS_KODPILSETA_KODCEL_KOD";
-					// for(var n = 0; n < query_obj["where"].length; n++){
-						// var key = query_obj["where"][n]["key"];
-						// indexName += key;
-					// }
-// //console.log("indexName:" + indexName);
-					
-					// //check exists index
-					// useIndex = checkIndexName( indexName, store.indexNames);
-					// if( useIndex) {
-						// //Run query with index
-// /*
-	// select distinct kod kod,txt text,kod_main, nomer, null km
-	// from SIMPLE_SPR where 
-	// nomer = "779" 
-	// and kod_main is null 
-	// order by order_by
-
-// //select distinct txt text,kod kod,null kod_main,null km 
-// //from PMLP_ADR_LVL_2 
-// //WHERE LVL_1_KOD="30"
-// //order by ORD_LOV
-
-// //select txt text,kod kod, LVL_1_KOD, LVL_2_KOD
-// //from PMLP_ADR_LVL_3
-// //WHERE LVL_1_KOD="98"
-// //AND LVL_2_KOD="9860"
-// //ORDER BY ORD_LOV
-	
-// */
-						// //get values for searching
-						// //var v1 = query_obj["where"][0]["value"];//NOMER
-						// //var v2 = query_obj["where"][1]["value"];//KOD_MAIN
-						// //keyRange = IDBKeyRange.only( [v1, v2] );
-						// var searchValues = [];
-						// for(var n = 0; n < query_obj["where"].length; n++){
-							// var value = query_obj["where"][n]["value"];
-							// searchValues.push(value);
-						// }
-// //console.log(searchValues);	
-								
-						// try{
-							// keyRange = IDBKeyRange.only( searchValues );
-							// _process();
-						// }
-						// catch(e){
-// //IE does not support compound indices
-// console.log(e);							
-							// useIndex = false;
-						// }
-					// }
-
-				// }//end if fieldname
-				
-				// if( useIndex) {
-					// var result = [];
-					
-					// transaction.oncomplete = function(event) {
-// var msg = "_iDBsearch(), transaction complete.";
-// console.log(msg);
-						// var table = [];
-						
-						// //select target fields
-						// var targetFields = query_obj["targetFields"];
-						// for( var n1 = 0; n1 < database["query"]["result"].length; n1++){
-							// var record = database["query"]["result"][n1];
-							// var obj = {};
-							// for( var n2 = 0; n2 < targetFields.length; n2++){
-								// obj[ targetFields[n2] ] = record[ targetFields[n2] ];
-							// }
-							// table.push(obj);
-						// }
-
-						// //sorting
-						// if ( query_obj["order_by"] ){
-// console.log("SORT by field " + query_obj["order_by"]);
-								// //var table = database["query"]["result"];
-								// var sortField = query_obj["order_by"];
-								// table.sort( function (a, b){
-									// var a_order = parseInt( a[sortField] );
-									// var b_order = parseInt( b[sortField] );
-									// if (a_order > b_order) {
-										// return 1;
-									// }
-									// if (a_order < b_order) {
-										// return -1;
-									// }
-									// // a === b
-									// return 0;
-								// });			
-// //console.log( table);  
-						// }
-						
-						// //clear for next query_obj
-						// database["query"]=[];
-						
-						// if( typeof query_obj["callback"] === "function"){
-							// query_obj["callback"]( table );
-						// }
-					// };
-					
-				// } else {//full text search in store
-					// database["action"] = "run_query";
-					// //database["storeName"] = "SIMPLE_SPR";
-					// //database["query"]["tableName"] = "SIMPLE_SPR";
-					// iDB();
-				// }
-					
-				// function _process(){
-// console.log("iDBsearch(),_process(), ", "useCursor: " + useCursor, "useIndex: " + useIndex, "indexName: " + indexName );
-// //console.log( keyRange );
-					// if ( !useCursor ) {
-						// if( useIndex ){
-							
-							// try{
-								// var index = store.index( indexName );
-								// //keyRange = IDBKeyRange.only( [value1, value2] );
-								// index.getAll( keyRange ).onsuccess = function(event) {
-									// result = event.target.result;
-// //console.log(result);				
-									// if(!database["query"]["result"]){
-										// database["query"]["result"] = [];
-									// }
-									// for( var n = 0; n < result.length; n++){
-										// database["query"]["result"].push( result[n] );
-									// }
-									
-								// };
-							// } catch(e){
-// console.log( e );
-							// }
-							
-						// }
-					// };
-					
-					// if ( useCursor ) {
-						// if( useIndex ){
-							
-							// try{
-								// var index = store.index( indexName );
-								// //keyRange = IDBKeyRange.only( [value1, value2] );
-								// index.openCursor( keyRange ).onsuccess = function(event) {
-									// if(!database["query"]["result"]){
-										// database["query"]["result"] = [];
-									// }
-									// var cursor = event.target.result;
-									// if (cursor) {
-// //console.log( "cursor: " , cursor, cursor.key, cursor.value );
-										// result.push( cursor.value );
-										// database["query"]["result"].push( cursor.value );
-										// cursor["continue"]();
-									// }
-									
-								// };
-								
-							// } catch(e){
-	// //IE does not support compound indices
-	// //https://github.com/dfahlander/idb-iegap
-// console.log( e );
-								// useIndex = false;
-							// }
-							
-						// }
-					// };
-				// }//end _process
-				
-				// function checkIndexName( indexName, listIndexNames){
-					// var useIndex = false;
-					// if( listIndexNames.length > 0){
-						// for( var n = 0; n < listIndexNames.length; n++){
-// //console.log( listIndexNames[n], indexName );
-							// if( indexName === listIndexNames[n]){
-								// useIndex = true;
-								// break;
-							// } else {
-// //console.log( "Not find index " + indexName + " in " + _iDBparams["storeName"]);
-							// }
-						// }//next index
-					// } else {
-// console.log( "Not find indexes in " + _iDBparams["storeName"]);
-					// }
-// //console.log( "listIndexNames: ", listIndexNames, " useIndex: " + useIndex, "indexName: " + indexName );
-					// return useIndex;
-				// }//end checkIndexName()
-				
-				// /*
-				// function runIndexQuery( queryObj ){
-					// var permName = queryObj["where"][0]["value"];
-					// var nomer = query_obj["where"][1]["value"];
-				// }//end runIndexQuery()
-				// */
-				
-			// }//end _iDBsearch()
 	
