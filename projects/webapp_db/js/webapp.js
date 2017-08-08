@@ -24,7 +24,7 @@ var webApp = {
 	"vars" : {
 		"log" : [],
 		 "import" : {
-			"request_url" : "db/art_{{DATE}}.xml",
+			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url" : "db/request.aspx",
 			//"request_url" : "db/request.php",
 			"data_url" : "db/art.xml",
@@ -90,7 +90,7 @@ webApp.init(function(){
 			} else {
 				if( webApp.app.vars["init_url"] ){
 					//parse_url = webApp.app.vars["init_url"].substring(1).split("&");
-					parse_url = webApp.app.vars["init_url"].substring(1);
+					parse_url = webApp.app.vars["init_url"].substring(2);
 //console.log(parse_url);					
 				}
 				webApp.vars["GET"] = parseGetParams( parse_url ); 
@@ -273,7 +273,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 		switch(_vars["dataStoreType"]) {
 			
 			case "indexedDB":
-				webApp.iDBmodule.getListStores({
+				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
 console.log(listStores);				
@@ -373,46 +373,6 @@ console.log("error in _db(), data not in JSON format");
 		}//__parseAjax()
 		
 	}//end _loadData()
-	
-	function _request( opt ){
-		var p = {
-			"date": null,
-			"callback": null
-		};
-		
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-console.log(p);		
-
-		var url = webApp.vars["import"]["request_url"].replace("_{{DATE}}", "");
-		if( p["date"] && p["date"].length > 0 ){
-			url = webApp.vars["import"]["request_url"].replace("{{DATE}}", p["date"]);//db/art_2016-12-02.xml
-		}
-console.log(url);		
-		
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : url, 
-			"callback": function( data ){
-var msg = "load " + url ;
-console.log(msg);
-
-				if( !data || data.length === 0){
-console.log("error in _db(), _request(), not find 'data'.... ");			
-					var data = [];
-				}
-				
-				if( typeof p["callback"] === "function"){
-					p["callback"](data);
-					return false;
-				} 
-				
-			}//end callback()
-		});
-					
-	}//end _request()
 	
 	
 	//select tid, title from taxonomy_title	
@@ -1118,7 +1078,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 					//add url aliases
 					for( var n = 0; n < res.length; n++){
 						//res[n]["url"] = "?q=taxonomy/term/" + res[n]["tid"];
-						res[n]["url"] = "?q=taxonomy&tid=" + res[n]["tid"];
+						res[n]["url"] = "#?q=taxonomy&tid=" + res[n]["tid"];
 					}//next
 //console.log("end test query!!!", res);
 
@@ -1324,7 +1284,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 					if( res.length > 0 && 
 							typeof res[0] !== "undefined"){
 						p["data"][numRec]["url"] = res[0]["dst"];
-						p["data"][numRec]["url"] = "?q=" + p["data"][numRec]["url"];
+						p["data"][numRec]["url"] = "#?q=" + p["data"][numRec]["url"];
 					}
 					numRec++;
 					__getUrlAlias(numRec);						
@@ -1408,10 +1368,6 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		loadData:	function( opt ){ 
 			return _loadData( opt ); 
 		},
-		request:	function( opt ){ 
-			return _request( opt ); 
-		},
-		
 		query:	function( opt ){ 
 			return _query( opt ); 
 		},
@@ -1718,7 +1674,7 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "?q=node&nid=20",
+		"init_url" : "#?q=node&nid=20",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
@@ -1854,46 +1810,50 @@ console.log("init app!");
 			
 		_vars["queries"]["getTermGenre"] = baseQuery;
 
-		defineEvent();
+		defineEvents();
 	};//end _init()
 	
-	function defineEvent(){
+	function defineEvents(){
 //console.log( webApp.vars.pageContainer );
 
 		if( webApp.vars.pageContainer ){
 			webApp.vars.pageContainer.onclick = function(event){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
-//console.log( target );
+//console.log( event );
 //console.log( this );//page-container
 //console.log( target.tagName );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
-				if (event.preventDefault) { 
-					event.preventDefault();
-				} else {
-					event.returnValue = false;				
-				}
-
-				if( target.tagName === "A"){
-					var search = target.href.split("?"); 
-					var parseStr = search[1]; 
-//console.log( search, parseStr );
-					if( parseStr.length > 0 ){
-						webApp.vars["GET"] = parseGetParams( parseStr ); 
-						webApp.app.urlManager();
+				
+				if ( target.href.indexOf("#") !== -1){
+					if (event.preventDefault) { 
+						event.preventDefault();
 					} else {
-console.log( "Warn! error parse url in " + target.href );
+						event.returnValue = false;				
 					}
 
-				}
+					if( target.tagName === "A"){
+						var search = target.href.split("?"); 
+						var parseStr = search[1]; 
+	//console.log( search, parseStr );
+						if( parseStr.length > 0 ){
+							webApp.vars["GET"] = parseGetParams( parseStr ); 
+							webApp.app.urlManager();
+						} else {
+	console.log( "Warn! error parse url in " + target.href );
+						}
 
+					}
+					
+				}
+				
 			}//end event
 		}
 		
-	}//end defineEvent()
+	}//end defineEvents()
 	
 	function _urlManager(){
 		
@@ -2109,21 +2069,44 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 			
 	};//end _buildPage()
 	
-	// function _formContent( opt ){
-		// var p = {
-			// "data": null,
-			// "type" : "",
-			// "content" : ""
-		// };
-		// //extend options object
-		// for(var key in opt ){
-			// p[key] = opt[key];
-		// }
-// console.log(p);
+	function _serverRequest( opt ){
+		var p = {
+			"date": null,
+			"callback": null
+		};
 		
-		// var html = "test...";
-		// return html;
-	// }//_formContent()
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);		
+
+		//var url = webApp.vars["import"]["request_url"].replace("_{{DATE}}", "");
+		//if( p["date"] && p["date"].length > 0 ){
+			//url = webApp.vars["import"]["request_url"].replace("{{DATE}}", p["date"]);//db/art_2016-12-02.xml
+		//}
+		var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : url, 
+			"callback": function( data ){
+var msg = "load " + url ;
+console.log(msg);
+
+				if( !data || data.length === 0){
+console.log("error in _db(), _request(), not find 'data'.... ");			
+					var data = [];
+				}
+				
+				if( typeof p["callback"] === "function"){
+					p["callback"](data);
+					return false;
+				} 
+				
+			}//end callback()
+		});
+					
+	}//end _serverRequest()
 	
 	// public interfaces
 	return{
@@ -2140,6 +2123,9 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		},
 		buildPage:	function(opt){ 
 			return _buildPage(opt); 
+		},
+		serverRequest:	function(opt){ 
+			return _serverRequest(opt); 
 		}
 	};
 }//end _app()
