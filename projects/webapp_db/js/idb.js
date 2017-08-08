@@ -176,6 +176,7 @@ console.log( addRecord );
 		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
 		dbInfo["dbName"] = "webapp_db";
 		dbInfo["import"] = [];
+		dbInfo["tables"] = [];
 		
 //******************************** indexedDB: methods of extension ********************************
 
@@ -968,8 +969,8 @@ console.log(msg, e);
 	//console.log( request );
 					request.onsuccess = function(e){
 						db = e.target.result;
-	var msg = options["dbName"] + ", db.version = " + db.version, db;
-console.log(msg);				
+//var msg = options["dbName"] + ", db.version = " + db.version, db;
+//console.log(msg);				
 						db.close();
 						
 						if( typeof options["callback"] === "function"){
@@ -1870,28 +1871,26 @@ console.log(msg);
 		
 		
 		var _checkState = function(opt){
-			dbInfo["import"]["importType"] = "full";
+			dbInfo["import"]["importType"] = "new";
 			if( typeof listStores !== "undefined" &&
 					listStores.length > 0){
 				//.....
 			} else {
-var msg = "iDBmodule(), not find indexedDB stores, full import.";
+var msg = "iDBmodule(), not find indexedDB stores, new full import.";
 console.log(msg);
 			}
 			
-			//not find tables, full import
-			//not find master table, full import
 var msg = "iDBmodule(),  import type:" + dbInfo["import"]["importType"];
 console.log(msg);
-			if( dbInfo["import"]["importType"] === "full"){
-				_iDBimport();
+			if( dbInfo["import"]["importType"] === "new"){
+				_iDBimport();//new full import to indexedDB
 			}
 			
 			if( dbInfo["import"]["importType"] === "update"){
 				// check time interval for update iDB
 				//....
 				var date = "2017-08-07";//yyyy-mm-dd
-				_iDBimport( date );
+				_iDBimport( date );//check update data, then import to indexedDB
 			}//end check
 			
 		}//end _checkState()
@@ -1907,7 +1906,7 @@ console.log( "_iDBimport()", date );
 			if(!date){
 				var param = {"date":null};
 			} else {
-				var date = "2016-12-02";//yyyy-mm-dd
+				var date = "2017-08-07";//yyyy-mm-dd
 				var param = {"date": date};
 			}
 console.log("_iDBimport(), send request to the server", param);
@@ -1915,7 +1914,7 @@ console.log("_iDBimport(), send request to the server", param);
 			// var __ajaxProgress	= _u.ajaxProgress;
 			// _u.ajaxProgress	= _ajaxProgress;//replace callback for progress process
 			param["callback"] = _afterRequest;
-			webApp.db.request( param );
+			webApp.app.serverRequest( param );
 			
 			function _afterRequest( data ){
 //console.log( data );
@@ -1925,13 +1924,13 @@ console.log("_iDBimport(), send request to the server", param);
 				var time_end = new Date();
 				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
-				_parseData(data);
+				_saveData(data);
 				
 			};//end _afterRequest();
 
 		}//end _iDBimport()
 		
-		function _parseData(data){
+		function _saveData(data){
 			if( webApp.vars["import"]["db_type"].length === 0 ){
 console.log("error in _db(), not find 'db_type' !");
 				return false;
@@ -1939,7 +1938,7 @@ console.log("error in _db(), not find 'db_type' !");
 			
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
-					//_parseXML( data );
+					__parseXML( data );
 				break;
 				
 				case "json":
@@ -1980,8 +1979,89 @@ console.log("error in _db(), data not in JSON format");
 			if( typeof postFunc === "function"){
 				postFunc();
 			}
+
+			function __parseXML(xml){
+
+				//var xmlRoot = xml.getElementsByTagName("pma_xml_export");
+		//console.log( xmlRoot, xmlRoot.item(0) ) ;
+		//return;
+				var xmlDoc = xml.getElementsByTagName("database");
+		//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+				//fix for Chrome, Safari (exclude tag <pma:database>)
+				if( xmlDoc.length === 1){
+					var records = xmlDoc.item(0).getElementsByTagName("table");
+				}
+				if( xmlDoc.length === 2){
+					var records = xmlDoc.item(1).getElementsByTagName("table");
+				}
+		//console.log( records, records.length ) ;
+		//console.log( records.item(0).text ) ;
+		//console.log( records.item(0).textContent ) ;
+		//console.log( "textContent" in records.item(0) ) ;
+		//console.log( "text" in records.item(0) ) ;
+		//return;
+
+				var tableName = "";
+				var storeData = [];
+				for( var n = 0; n < records.length; n++){
+					//var record = records[n];
+					//var tableName = record["attributes"]["name"].nodeValue;
+					var record = records.item(n);
+					
+					if( tableName.length > 0 &&
+							tableName !== record.attributes.getNamedItem("name").nodeValue){
+						__saveRecords( tableName, storeData );
+						storeData = [];
+						break;
+					}
+					tableName = record.attributes.getNamedItem("name").nodeValue;
+//console.log( tableName );
+
+					//form record
+					var columns = record.getElementsByTagName("column");
+					var recordObj = {};
+					for( var n2 = 0; n2 < columns.length; n2++){
+						//var column = columns[n2];
+						//var columnName = column["attributes"]["name"].nodeValue;
+						//recordObj[columnName] = column.textContent;
+						var column = columns.item(n2);
+						var columnName = column.attributes.getNamedItem("name").nodeValue;
+						if ("textContent" in column){
+							recordObj[columnName] = column.textContent;
+						} else {
+							recordObj[columnName] = column.text;
+						}
+						
+					}//next
+					
+					storeData.push({
+						//"key" : recordObj["tid"],
+						"value" : recordObj
+					});
+				}//next
+				
+			}//end __parseXML()
 			
-		}//end _parseData()
+			function __saveRecords( storeName, storeData ){
+console.log(storeName, storeData[0], storeData.length);						
+				var timeStart = new Date();
+				_addRecords({
+					"storeName" : storeName,
+					"storeData" : storeData,
+					"callback" : function( statInfo ){
+						__callback( statInfo );
+					}
+				});
+				
+				function __callback( statInfo ){
+console.log("callback, _saveRecords(), "+ storeName, dbInfo["import"]["counter"], statInfo);
+				};//end __callback()
+
+			}//end __saveRecords()
+			
+		}//end _saveData()
+
 		
 		// public interfaces
 		return{
