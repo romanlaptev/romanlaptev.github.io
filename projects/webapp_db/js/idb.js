@@ -177,6 +177,7 @@ console.log( addRecord );
 		dbInfo["dbName"] = "webapp_db";
 		dbInfo["import"] = [];
 		dbInfo["tables"] = [];
+		dbInfo["callbackFunc"] = [];
 		
 //******************************** indexedDB: methods of extension ********************************
 
@@ -1871,10 +1872,28 @@ console.log(msg, e);
 		
 		
 		var _checkState = function(opt){
+			var p = {
+				"listStores": "",
+				"callback": null
+			};
+			
+			//extend options object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+
+			if( typeof p["callback"] === "function"){
+				dbInfo["callbackFunc"]["afterUpdate"] = p["callback"];
+			} else {
+console.log("Error, iDBmodule(), checkState(), need callback function");				
+				return false;
+			}
+			
 			dbInfo["import"]["importType"] = "new";
-			if( typeof listStores !== "undefined" &&
-					listStores.length > 0){
-				//.....
+			if( typeof p["listStores"] !== "undefined" &&
+					p["listStores"].length > 0){
+				dbInfo["import"]["importType"] = "update";
+				
 			} else {
 var msg = "iDBmodule(), not find indexedDB stores, new full import.";
 console.log(msg);
@@ -1887,8 +1906,6 @@ console.log(msg);
 			}
 			
 			if( dbInfo["import"]["importType"] === "update"){
-				// check time interval for update iDB
-				//....
 				var date = "2017-08-07";//yyyy-mm-dd
 				_iDBimport( date );//check update data, then import to indexedDB
 			}//end check
@@ -1917,14 +1934,21 @@ console.log("_iDBimport(), send request to the server", param);
 			webApp.app.serverRequest( param );
 			
 			function _afterRequest( data ){
-//console.log( data );
+console.log( data );
 				//_w.wait({state:false});
 				//_u.ajaxProgress	= __ajaxProgress; //restore callback for progress process
 
 				var time_end = new Date();
 				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
-				_saveData(data);
+				//test!
+				if( dbInfo["import"]["importType"] === "new"){
+					_saveData(data);
+				} else{
+						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+							dbInfo["callbackFunc"]["afterUpdate"]( data );
+						}
+				}
 				
 			};//end _afterRequest();
 
@@ -1938,6 +1962,7 @@ console.log("error in _db(), not find 'db_type' !");
 			
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
+					dbInfo["import"]["xml"] = data;
 					__parseXML( data );
 				break;
 				
@@ -1980,11 +2005,8 @@ console.log("error in _db(), data not in JSON format");
 				postFunc();
 			}
 
-			function __parseXML(xml){
-
-				//var xmlRoot = xml.getElementsByTagName("pma_xml_export");
-		//console.log( xmlRoot, xmlRoot.item(0) ) ;
-		//return;
+			function __parseXML(){
+				var xml = dbInfo["import"]["xml"];
 				var xmlDoc = xml.getElementsByTagName("database");
 		//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
@@ -1995,15 +2017,10 @@ console.log("error in _db(), data not in JSON format");
 				if( xmlDoc.length === 2){
 					var records = xmlDoc.item(1).getElementsByTagName("table");
 				}
-		//console.log( records, records.length ) ;
-		//console.log( records.item(0).text ) ;
-		//console.log( records.item(0).textContent ) ;
-		//console.log( "textContent" in records.item(0) ) ;
-		//console.log( "text" in records.item(0) ) ;
-		//return;
-
+		
 				var tableName = "";
-				var storeData = [];
+				//var storeData = [];
+				//get list tables
 				for( var n = 0; n < records.length; n++){
 					//var record = records[n];
 					//var tableName = record["attributes"]["name"].nodeValue;
@@ -2011,40 +2028,65 @@ console.log("error in _db(), data not in JSON format");
 					
 					if( tableName.length > 0 &&
 							tableName !== record.attributes.getNamedItem("name").nodeValue){
-						__saveRecords( tableName, storeData );
-						storeData = [];
-						break;
+						dbInfo["tables"].push(tableName);
 					}
 					tableName = record.attributes.getNamedItem("name").nodeValue;
-//console.log( tableName );
-
-					//form record
-					var columns = record.getElementsByTagName("column");
-					var recordObj = {};
-					for( var n2 = 0; n2 < columns.length; n2++){
-						//var column = columns[n2];
-						//var columnName = column["attributes"]["name"].nodeValue;
-						//recordObj[columnName] = column.textContent;
-						var column = columns.item(n2);
-						var columnName = column.attributes.getNamedItem("name").nodeValue;
-						if ("textContent" in column){
-							recordObj[columnName] = column.textContent;
-						} else {
-							recordObj[columnName] = column.text;
-						}
-						
-					}//next
-					
-					storeData.push({
-						//"key" : recordObj["tid"],
-						"value" : recordObj
-					});
+//console.log( tableName, dbInfo["tables"][tableName] );
 				}//next
+				
+				//recursively save data block in iDB store
+				dbInfo["import"]["counter"] = 0;
+				__getTable();
 				
 			}//end __parseXML()
 			
+			function __getTable(){
+				var num = dbInfo["import"]["counter"];
+				
+				var xml = dbInfo["import"]["xml"];
+				var xmlDoc = xml.getElementsByTagName("database");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+				//fix for Chrome, Safari (exclude tag <pma:database>)
+				if( xmlDoc.length === 1){
+					var records = xmlDoc.item(0).getElementsByTagName("table");
+				}
+				if( xmlDoc.length === 2){
+					var records = xmlDoc.item(1).getElementsByTagName("table");
+				}
+		
+				var tableName = dbInfo["tables"][num];
+				var storeData = [];
+				for( var n = 0; n < records.length; n++){
+					var record = records.item(n);
+					
+					if( tableName === record.attributes.getNamedItem("name").nodeValue){
+						//form record
+						var columns = record.getElementsByTagName("column");
+						var recordObj = {};
+						for( var n2 = 0; n2 < columns.length; n2++){
+							var column = columns.item(n2);
+							var columnName = column.attributes.getNamedItem("name").nodeValue;
+							if ("textContent" in column){
+								recordObj[columnName] = column.textContent;
+							} else {
+								recordObj[columnName] = column.text;
+							}
+							
+						}//next
+						
+						storeData.push({
+							//"key" : recordObj["tid"],
+							"value" : recordObj
+						});
+					}
+				}//next
+//console.log(tableName, storeData[0], storeData.length);						
+				__saveRecords( tableName, storeData );
+			}//end __getTable()
+			
 			function __saveRecords( storeName, storeData ){
-console.log(storeName, storeData[0], storeData.length);						
+//console.log(storeName, storeData[0], storeData.length);						
 				var timeStart = new Date();
 				_addRecords({
 					"storeName" : storeName,
@@ -2055,7 +2097,20 @@ console.log(storeName, storeData[0], storeData.length);
 				});
 				
 				function __callback( statInfo ){
-console.log("callback, _saveRecords(), "+ storeName, dbInfo["import"]["counter"], statInfo);
+//console.log("callback, _saveRecords(), "+ storeName, dbInfo["import"]["counter"], statInfo);
+					dbInfo["import"]["counter"]++;
+					if( dbInfo["import"]["counter"] < dbInfo["tables"].length ){
+						__getTable();
+					} else {
+console.log("All done!");	
+						
+						delete dbInfo["import"]["xml"];//clear var
+						
+						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+							dbInfo["callbackFunc"]["afterUpdate"]( data );
+						}
+					}
+					
 				};//end __callback()
 
 			}//end __saveRecords()
