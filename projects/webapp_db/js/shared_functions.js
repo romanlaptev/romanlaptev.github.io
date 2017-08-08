@@ -44,7 +44,7 @@ function _log( msg, id){
 	}
 	
 	if( typeof _showHiddenLog === "function"){
-console.log(_showHiddenLog);
+//console.log(_showHiddenLog);
 		_showHiddenLog();
 	}
 	
@@ -174,6 +174,9 @@ console.log( msg, xhr );
 	
 	var timeStart = new Date();
 	
+//var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
+//xmlhttp.open("GET", '/script.html?'+params, true)
+	
 	xhr.open( requestMethod, url, async );
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
@@ -288,7 +291,12 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 	// }
 	// var str = '';
 	//xhr.send(str);
-	xhr.send();
+	
+// var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
+// xmlhttp.open("POST", '/script.html', true)
+// xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+	var params = null;
+	xhr.send(params);
 
 	function _createRequestObject() {
 		var request = false;
