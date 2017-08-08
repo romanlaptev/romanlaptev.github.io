@@ -1828,26 +1828,24 @@ console.log("init app!");
 				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 				
-				if ( target.href.indexOf("#") !== -1){
-					if (event.preventDefault) { 
-						event.preventDefault();
-					} else {
-						event.returnValue = false;				
-					}
-
-					if( target.tagName === "A"){
-						var search = target.href.split("?"); 
-						var parseStr = search[1]; 
-	//console.log( search, parseStr );
-						if( parseStr.length > 0 ){
-							webApp.vars["GET"] = parseGetParams( parseStr ); 
-							webApp.app.urlManager();
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+						if (event.preventDefault) { 
+							event.preventDefault();
 						} else {
-	console.log( "Warn! error parse url in " + target.href );
+							event.returnValue = false;				
 						}
 
+							var search = target.href.split("?"); 
+							var parseStr = search[1]; 
+		//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+								webApp.vars["GET"] = parseGetParams( parseStr ); 
+								webApp.app.urlManager();
+							} else {
+		console.log( "Warn! error parse url in " + target.href );
+							}
 					}
-					
 				}
 				
 			}//end event
