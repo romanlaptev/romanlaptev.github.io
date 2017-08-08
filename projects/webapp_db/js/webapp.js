@@ -24,18 +24,19 @@ var webApp = {
 	"vars" : {
 		"log" : [],
 		 "import" : {
-			//"request_url" : "db/art_{{DATE}}.xml",
-			//"request_url" : "db/request.aspx",
-			//"request_url" : "db/request.php",
 			"data_url" : "db/art.xml",
-			"db_type" : "xml"//,
+			"db_type" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
 			
 			// "data_url" : "db/art_correct.csv",
 			// "db_type" : "jcsv",
 			// "delimiterByFields" : ",",
-			// "delimiterByLines" : "\r\n"
+			// "delimiterByLines" : "\r\n",
+			
+			//"request_url" : "db/art_{{DATE}}.xml",
+			"request_url" : "db/request.aspx",
+			//"request_url" : "db/request.php"
 		},
 		"GET" : {},
 		"pageContainer" : getDOMobj("page-container")
@@ -276,8 +277,11 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-console.log(listStores);				
-						webApp.iDBmodule.checkState( listStores );
+//console.log(listStores);				
+						webApp.iDBmodule.checkState({
+							"listStores" : listStores,
+							"callback" : postFunc
+						});
 //console.log("test!");				
 					}//end callback
 				});
