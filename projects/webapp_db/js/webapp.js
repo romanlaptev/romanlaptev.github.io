@@ -446,7 +446,23 @@ console.log("error in _db(), data not in JSON format");
 			var tableName = queryObj["tableName"];
 			if( !_vars["tables"][tableName] || 
 					_vars["tables"][tableName]["records"].length === 0){
-	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+				
+				if( webApp.db.vars["dataStoreType"] === "indexedDB"){
+					//get records from iDB store
+					webApp.iDBmodule.getRecords({
+						"storeName" : tableName,
+						"callback" : function( data){
+var msg = "restart db query, " + tableName;
+console.log( msg );
+//console.log( data[0], data.length );
+							_vars["tables"][tableName]["records"] = data;
+							_startQuery( queryObj );//restart db query
+						}
+					});
+					return false;
+				}
+
+var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
 console.log( msg );
 				return false;
 			}
