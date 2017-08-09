@@ -31,12 +31,12 @@ var webApp = {
 			
 			// "data_url" : "db/art_correct.csv",
 			// "db_type" : "jcsv",
-			// "delimiterByFields" : ",",
-			// "delimiterByLines" : "\r\n",
+			"delimiterByFields" : ",",
+			"delimiterByLines" : "\r\n",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
-			"request_url" : "db/request.aspx",
-			//"request_url" : "db/request.php"
+			"request_url" : "api/request.aspx",
+			//"request_url" : "api/request.php"
 		},
 		"GET" : {},
 		"pageContainer" : getDOMobj("page-container")
@@ -271,7 +271,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 			_vars["dataStoreType"] = false;
 		} 
 
-		switch(_vars["dataStoreType"]) {
+		switch(_vars["dataStoreType"]) {				
 			
 			case "indexedDB":
 				webApp.iDBmodule.getListStores({//DB exists?
@@ -455,8 +455,14 @@ console.log("error in _db(), data not in JSON format");
 var msg = "restart db query, " + tableName;
 console.log( msg );
 //console.log( data[0], data.length );
-							_vars["tables"][tableName]["records"] = data;
-							_startQuery( queryObj );//restart db query
+							if( data.length > 0){
+								_vars["tables"][tableName]["records"] = data;
+								_startQuery( queryObj );//restart db query
+							} else {
+var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+console.log( msg );
+							}
+							
 						}
 					});
 					return false;
@@ -2099,11 +2105,11 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		}
 //console.log(p);		
 
-		//var url = webApp.vars["import"]["request_url"].replace("_{{DATE}}", "");
-		//if( p["date"] && p["date"].length > 0 ){
-			//url = webApp.vars["import"]["request_url"].replace("{{DATE}}", p["date"]);//db/art_2016-12-02.xml
-		//}
-		var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
+		var url = webApp.vars["import"]["request_url"];
+		if( p["date"] && p["date"].length > 0 ){
+			url = webApp.vars["import"]["request_url"] + "?date="+p["date"];
+		}
+		//var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
 		runAjax( {
 			"requestMethod" : "GET", 
 			"url" : url, 
