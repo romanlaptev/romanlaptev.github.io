@@ -1921,7 +1921,7 @@ console.log( "_iDBimport()", date );
 				//text: _r.getResource("_query_wait")
 			//});
 			if(!date){
-				var param = {"date":null};
+				var param = {};
 			} else {
 				var date = "2017-08-07";//yyyy-mm-dd
 				var param = {"date": date};
@@ -1934,20 +1934,21 @@ console.log("_iDBimport(), send request to the server", param);
 			webApp.app.serverRequest( param );
 			
 			function _afterRequest( data ){
-console.log( data );
+//console.log( data );
 				//_w.wait({state:false});
 				//_u.ajaxProgress	= __ajaxProgress; //restore callback for progress process
 
 				var time_end = new Date();
 				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
-				//test!
+
 				if( dbInfo["import"]["importType"] === "new"){
 					_saveData(data);
-				} else{
-						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
-							dbInfo["callbackFunc"]["afterUpdate"]( data );
-						}
+				} 
+				
+				//test!
+				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+					dbInfo["callbackFunc"]["afterUpdate"]( data );
 				}
 				
 			};//end _afterRequest();
@@ -1962,8 +1963,10 @@ console.log("error in _db(), not find 'db_type' !");
 			
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
-					dbInfo["import"]["xml"] = data;
-					__parseXML( data );
+					var importData = data.split( "#mark" );
+//console.log(importData[0]);//new date
+					dbInfo["import"]["xml"] = importData[1];
+					__parseXML( dbInfo["import"]["xml"] );
 				break;
 				
 				case "json":
@@ -2005,10 +2008,9 @@ console.log("error in _db(), data not in JSON format");
 				postFunc();
 			}
 
-			function __parseXML(){
-				var xml = dbInfo["import"]["xml"];
+			function __parseXML( xml ){
 				var xmlDoc = xml.getElementsByTagName("database");
-		//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
 				//fix for Chrome, Safari (exclude tag <pma:database>)
 				if( xmlDoc.length === 1){
