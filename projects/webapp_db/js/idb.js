@@ -2103,6 +2103,7 @@ console.log("error in _db(), data not in JSON format");
 						__getTable();
 					} else {
 console.log("All done!");	
+_log("All done! save records to indexedDB stories...");	
 						
 						delete dbInfo["import"]["xml"];//clear var
 						
