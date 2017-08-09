@@ -58,6 +58,7 @@ console.log(dbInfo);
 			var msg = "_dropDB(), "+ log +", runtime: " + runtime;
 console.log(msg);
 _log(msg);
+				_listStories();
 				//_log("", "store-list");
 			}
 		});
