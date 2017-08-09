@@ -1965,8 +1965,50 @@ console.log("error in _db(), not find 'db_type' !");
 				case "xml":
 					var importData = data.split( "#mark" );
 //console.log(importData[0]);//new date
-					dbInfo["import"]["xml"] = importData[1];
-					__parseXML( dbInfo["import"]["xml"] );
+					
+					if (window.DOMParser) { // all browsers, except IE before version 9
+//var msg = "window.DOMParser support: " + window.DOMParser;
+//console.log(msg);
+						var parser = new DOMParser();
+						
+						var xmlsrc = importData[1];
+//console.log( xmlsrc );
+
+						try {
+							var xml = parser.parseFromString( xmlsrc, "text/xml" );
+//console.log( xml );
+							dbInfo["import"]["xml"] = xml;
+							__parseXML( xml );
+						} catch (e) {
+							// // if text is not well-formed, 
+							// // it raises an exception in IE from version 9
+console.log("XML parsing error: ", e);
+// for( var item in e ){
+// console.log(item + ": " + e[item]);
+// }
+						};
+
+					} else {  // Internet Explorer before version 9
+
+						// var xml_info = _createMSXML();
+			// console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
+						// var xml = xml_info["xml_obj"];
+
+						// // xml.async = "false";
+						// // xml.loadXML( xmlsrc );	
+						// // var errorMsg = null;
+						// // if (xml.parseError && xml.parseError.errorCode != 0) {
+							// // errorMsg = "XML Parsing Error: " + xml.parseError.reason
+									  // // + " at line " + xml.parseError.line
+									  // // + " at position " + xml.parseError.linepos;
+						// // }
+						// // if (errorMsg) {
+							// // log.innerHTML += "<p>" + errorMsg + "</p>";
+						// // }
+						// // parse_xml(xml);
+					}					
+					
+					//__parseXML( dbInfo["import"]["xml"] );
 				break;
 				
 				case "json":
