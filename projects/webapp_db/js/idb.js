@@ -1965,7 +1965,7 @@ console.log("error in _db(), not find 'db_type' !");
 			
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
-console.log(typeof data);				
+//console.log(typeof data);				
 					if(typeof data !== "string"){//server answer contains XML
 							dbInfo["import"]["xml"] = data;
 						__parseXML( data );
@@ -1980,50 +1980,52 @@ console.log(typeof data);
 //console.log( key, value );
 							return value;
 						});							
-console.log( jsonObj );
-return false;
+//console.log( jsonObj );
+					if( jsonObj["date"] && jsonObj["date"].length > 0){
+						__saveNewDate( jsonObj["date"], _postFunc );
+					}
+//return false;
 					
-					if (window.DOMParser) { // all browsers, except IE before version 9
-//var msg = "window.DOMParser support: " + window.DOMParser;
-//console.log(msg);
-						var parser = new DOMParser();
+					function _postFunc(){
+						if (window.DOMParser) { // all browsers, except IE before version 9
+	//var msg = "window.DOMParser support: " + window.DOMParser;
+	//console.log(msg);
+							var parser = new DOMParser();
+							var xmlsrc = importData[1];
+							try {
+								var xml = parser.parseFromString( xmlsrc, "text/xml" );
+								dbInfo["import"]["xml"] = xml;
+								__parseXML( xml );
+							} catch (e) {
+								// // if text is not well-formed, 
+								// // it raises an exception in IE from version 9
+	console.log("XML parsing error: ", e);
+	// for( var item in e ){
+	// console.log(item + ": " + e[item]);
+	// }
+							};
+
+						} else {  // Internet Explorer before version 9
+
+							var xml_info = _createMSXML();
+	console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
+							var xml = xml_info["xml_obj"];
+
+							// xml.async = "false";
+							// xml.loadXML( xmlsrc );	
+							// var errorMsg = null;
+							// if (xml.parseError && xml.parseError.errorCode != 0) {
+								// errorMsg = "XML Parsing Error: " + xml.parseError.reason
+										  // + " at line " + xml.parseError.line
+										  // + " at position " + xml.parseError.linepos;
+							// }
+							// if (errorMsg) {
+								// log.innerHTML += "<p>" + errorMsg + "</p>";
+							// }
+							// parse_xml(xml);
+						}					
 						
-						var xmlsrc = importData[1];
-//console.log( xmlsrc );
-
-						try {
-							var xml = parser.parseFromString( xmlsrc, "text/xml" );
-//console.log( xml );
-							dbInfo["import"]["xml"] = xml;
-							__parseXML( xml );
-						} catch (e) {
-							// // if text is not well-formed, 
-							// // it raises an exception in IE from version 9
-console.log("XML parsing error: ", e);
-// for( var item in e ){
-// console.log(item + ": " + e[item]);
-// }
-						};
-
-					} else {  // Internet Explorer before version 9
-
-						// var xml_info = _createMSXML();
-			// console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
-						// var xml = xml_info["xml_obj"];
-
-						// // xml.async = "false";
-						// // xml.loadXML( xmlsrc );	
-						// // var errorMsg = null;
-						// // if (xml.parseError && xml.parseError.errorCode != 0) {
-							// // errorMsg = "XML Parsing Error: " + xml.parseError.reason
-									  // // + " at line " + xml.parseError.line
-									  // // + " at position " + xml.parseError.linepos;
-						// // }
-						// // if (errorMsg) {
-							// // log.innerHTML += "<p>" + errorMsg + "</p>";
-						// // }
-						// // parse_xml(xml);
-					}					
+					}//end _postFunc
 				break;
 				
 				case "json":
@@ -2067,7 +2069,7 @@ console.log("error in _db(), data not in JSON format");
 
 			function __parseXML( xml ){
 				var xmlDoc = xml.getElementsByTagName("database");
-console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
 				//fix for Chrome, Safari (exclude tag <pma:database>)
 				if( xmlDoc.length === 1){
@@ -2181,6 +2183,23 @@ _log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");
 				};//end __callback()
 
 			}//end __saveRecords()
+			
+			function __saveNewDate( newDate, callback ){
+				dbInfo["import"]["last_date"] = newDate;
+				_addRecord({
+					"storeName" : "idb_master",
+					"recordKey" : "last_date",
+					"recordValue" : newDate,
+					"callback" : function( log ){
+var msg = "Save server up date, " + log;
+console.log(msg);
+						if( typeof callback === "function"){
+							callback();
+						}
+					}//end callback
+				});	
+				
+			}//end __saveNewDate()
 			
 		}//end _saveData()
 
