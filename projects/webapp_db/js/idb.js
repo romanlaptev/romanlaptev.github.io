@@ -1945,7 +1945,7 @@ console.log("_iDBimport(), response from the server,  runtime: " + runtime +" se
 				if( dbInfo["import"]["importType"] === "new"){
 					_saveData(data);
 				} else {
-console.log("_iDBimport(), need to realize update process");
+console.log("_iDBimport(), need to realize update process");// !!!!!!!!!!!!!!!!!!!!!!!!
 				}
 				
 				//test!
@@ -1965,8 +1965,23 @@ console.log("error in _db(), not find 'db_type' !");
 			
 			switch( webApp.vars["import"]["db_type"] ){
 				case "xml":
+console.log(typeof data);				
+					if(typeof data !== "string"){//server answer contains XML
+							dbInfo["import"]["xml"] = data;
+						__parseXML( data );
+						return false;
+					}
+					
+					//server answer contains string data ( update data + XML)
 					var importData = data.split( "#mark" );
+					
 //console.log(importData[0]);//new date
+					var jsonObj = JSON.parse( importData[0], function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+console.log( jsonObj );
+return false;
 					
 					if (window.DOMParser) { // all browsers, except IE before version 9
 //var msg = "window.DOMParser support: " + window.DOMParser;
@@ -2009,8 +2024,6 @@ console.log("XML parsing error: ", e);
 						// // }
 						// // parse_xml(xml);
 					}					
-					
-					//__parseXML( dbInfo["import"]["xml"] );
 				break;
 				
 				case "json":
@@ -2082,6 +2095,7 @@ console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 				
 				//recursively save data block in iDB store
 				dbInfo["import"]["counter"] = 0;
+				dbInfo["import"]["timer"] = new Date();
 				__getTable();
 				
 			}//end __parseXML()
@@ -2148,8 +2162,14 @@ console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 					if( dbInfo["import"]["counter"] < dbInfo["tables"].length ){
 						__getTable();
 					} else {
+						
+						var timeStart = dbInfo["import"]["timer"];
+						var timeEnd = new Date();
+						var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+						dbInfo["import"]["timer"] = runtime;
+						
 console.log("All done!");	
-_log("All done! save records to indexedDB stories...");	
+_log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
 						
 						delete dbInfo["import"]["xml"];//clear var
 						
