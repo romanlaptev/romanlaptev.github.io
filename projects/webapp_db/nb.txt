@@ -54,6 +54,17 @@ webapp DB (webapp)
 Затем, в зависимости от результата сравнения дат выполнить загрузку файла со всеми данными или продолжить
 использовать данные из хранилища
 
+также можно использовать HEAD-запрос для art.xml
+Accept-Ranges	bytes
+Access-Control-Allow-Orig...	*
+Content-Length	1592201
+Content-Type	text/xml
+Date	Thu, 10 Aug 2017 07:30:23 GMT
+Etag	"1de7e0a6bee4d21:0"
+Last-Modified	Wed, 14 Jun 2017 03:31:04 GMT!	!!!!!!!
+Server	Microsoft-IIS/7.5
+X-Powered-By	ASP.NET
+
 ----
 - необходимо определять время *генерации блока, *выполнения запроса, генерации страницы
 
