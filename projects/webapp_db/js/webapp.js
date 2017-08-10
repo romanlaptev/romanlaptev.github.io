@@ -2131,8 +2131,9 @@ console.log("supportPHP:" + supportPHP);
 				
 			})//end test;
 		}
-		
 //---------------------
+//for test!
+//__processRequest();
 
 		function __processRequest(){
 			
