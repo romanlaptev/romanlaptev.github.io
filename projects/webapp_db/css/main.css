@@ -48,5 +48,10 @@ opacity: 0.9;
 }
 
 .modal-dialog {
-  top: 30% !important;
+top: 30% !important;
+opacity: 1;
+}
+#waitText h1 {
+  color: #fff;
+  font-size: 400%;
 }
