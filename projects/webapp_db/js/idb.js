@@ -1944,7 +1944,9 @@ console.log("_iDBimport(), response from the server,  runtime: " + runtime +" se
 
 				if( dbInfo["import"]["importType"] === "new"){
 					_saveData(data);
-				} 
+				} else {
+console.log("_iDBimport(), need to realize update process");
+				}
 				
 				//test!
 				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
