@@ -35,9 +35,11 @@ var webApp = {
 			"delimiterByLines" : "\r\n",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
-			"request_url" : "api/request.aspx",
-			//"request_url" : "api/request.php"
+			"request_url_PHP" : "api/request.php",
+			"request_url_ASPX" : "api/request.aspx"
 		},
+		"testUrlPHP": "api/test.php",
+		"testUrlASPX": "api/test.aspx",
 		"GET" : {},
 		"pageContainer" : getDOMobj("page-container")
 	},
@@ -2105,31 +2107,123 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 		}
 //console.log(p);		
 
-		var url = webApp.vars["import"]["request_url"];
-		if( p["date"] && p["date"].length > 0 ){
-			url = webApp.vars["import"]["request_url"] + "?date="+p["date"];
+//---------------------- Server TESTS
+		if( typeof webApp.vars["supportPHP"] === "undefined" ||
+				typeof webApp.vars["supportASPX"] === "undefined"){
+			__testPHP(function( supportPHP ){
+console.log("supportPHP:" + supportPHP);
+
+				if( supportPHP ){
+					__processRequest();
+				} else {
+					
+					__testASPX(function( supportASPX ){
+		console.log("supportASPX:" + supportASPX);
+						// if( supportASPX ){
+							// __processRequest();
+						// } else {
+							// //next test....
+						// }
+						__processRequest();
+						
+					})//end test;
+				}
+				
+			})//end test;
 		}
-		//var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : url, 
-			"callback": function( data ){
+		
+//---------------------
+
+		function __processRequest(){
+			
+			//form url
+			//var url = webApp.vars["import"]["request_url"];
+			var url = webApp.vars["import"]["data_url"];
+			if( webApp.vars["supportPHP"] ){
+				url = webApp.vars["import"]["request_url_PHP"];
+			}
+			if( webApp.vars["supportASPX"] ){
+				url = webApp.vars["import"]["request_url_ASPX"];
+			}
+			
+			if( p["date"] && p["date"].length > 0 ){
+				url +=  "?date="+p["date"];
+			}
+			//var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
+			
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : url, 
+				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
 
-				if( !data || data.length === 0){
-console.log("error in _db(), _request(), not find 'data'.... ");			
-					var data = [];
-				}
-				
-				if( typeof p["callback"] === "function"){
-					p["callback"](data);
-					return false;
-				} 
-				
-			}//end callback()
-		});
+					if( !data || data.length === 0){
+	console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
+						data = [];
+					}
 					
+					if( typeof p["callback"] === "function"){
+						p["callback"](data);
+						return false;
+					} 
+					
+				}//end callback()
+			});
+		}//end __processRequest()
+
+		function __testPHP( callback ){
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["testUrlPHP"], 
+				"callback": function( data ){
+//console.log(data, typeof data, data.length, data[0]);
+
+					if( !data || data.length === 0){
+console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
+						data = [];
+					}
+					
+					webApp.vars["supportPHP"] = false;
+					if (data[0] === "4"){//test success, result of adding 2+2 on PHP
+						webApp.vars["testPHP"] = true;
+					}
+					
+					if( typeof callback === "function"){
+						callback( webApp.vars["supportPHP"] );
+						return false;
+					} 
+					
+				}//end callback()
+			});
+		}//end __testPHP()
+		
+		function __testASPX( callback ){
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["testUrlASPX"], 
+				"callback": function( data ){
+//console.log(data, typeof data, data.length, data[0]);
+
+					if( !data || data.length === 0){
+console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
+						data = [];
+					}
+					
+					webApp.vars["supportASPX"] = false;
+					if (data[0] === "4"){//test success, result of adding 2+2 on ASPX
+						webApp.vars["supportASPX"] = true;
+					}
+					
+					if( typeof callback === "function"){
+						callback( webApp.vars["supportASPX"] );
+						return false;
+					} 
+					
+				}//end callback()
+			});
+		}//end __testASPX()
+		
 	}//end _serverRequest()
 	
 	// public interfaces
