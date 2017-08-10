@@ -2166,6 +2166,19 @@ console.log("supportPHP:" + supportPHP);
 				"requestMethod" : "GET", 
 				//"requestMethod" : "HEAD", 
 				"url" : url, 
+				"onProgress" : function(e){
+					var percentComplete = 0;
+					if(e.lengthComputable) {
+						percentComplete = Math.ceil(e.loaded / e.total * 100);
+					}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+					var progress = getDOMobj("load-progress");
+//console.log(progress);				
+					if( progress ){
+						progress.value = percentComplete;
+					}
+				},
 				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
