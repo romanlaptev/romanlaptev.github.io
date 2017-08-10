@@ -29,3 +29,20 @@ left: 5px;
 position: relative;
 top: -10px;
 }
+
+.overlay {
+background-color: rgba(100, 100, 100, 0.25);
+height: 100%;
+left: 0;
+opacity: 0;
+position: absolute;
+top: 0;
+transition: all 200ms ease 0s;
+width: 100%;
+will-change: opacity;
+z-index: 9998;
+display:none;
+}
+.overlay.open {
+opacity: 0.9;
+}
