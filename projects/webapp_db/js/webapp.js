@@ -32,14 +32,14 @@ var webApp = {
 			// "data_url" : "db/art_correct.csv",
 			// "db_type" : "jcsv",
 			"delimiterByFields" : ",",
-			"delimiterByLines" : "\r\n",
+			"delimiterByLines" : "\r\n"//,
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
-			"request_url_PHP" : "api/request.php",
-			"request_url_ASPX" : "api/request.aspx"
+			//"request_url_PHP" : "api/request.php",
+			//"request_url_ASPX" : "api/request.aspx"
 		},
-		"testUrlPHP": "api/test.php",
-		"testUrlASPX": "api/test.aspx",
+		//"testUrlPHP": "api/test.php",
+		//"testUrlASPX": "api/test.aspx",
 		"GET" : {},
 		"pageContainer" : getDOMobj("page-container")
 	},
@@ -282,7 +282,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 //console.log(listStores);				
 						webApp.iDBmodule.checkState({
 							"listStores" : listStores,
-							"callback" : postFunc
+							"callback" : postFunc//draw page
 						});
 //console.log("test!");				
 					}//end callback
@@ -2097,7 +2097,7 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 	
 	function _serverRequest( opt ){
 		var p = {
-			"date": null,
+			//"date": null,
 			"callback": null
 		};
 		
@@ -2106,7 +2106,7 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 			p[key] = opt[key];
 		}
 //console.log(p);		
-
+/*
 //---------------------- Server TESTS
 		if( typeof webApp.vars["supportPHP"] === "undefined" ||
 				typeof webApp.vars["supportASPX"] === "undefined"){
@@ -2132,28 +2132,29 @@ console.log("supportPHP:" + supportPHP);
 			})//end test;
 		}
 //---------------------
-//for test!
-//__processRequest();
+*/
+		__processRequest();
 
 		function __processRequest(){
 			
 			//form url
 			//var url = webApp.vars["import"]["request_url"];
 			var url = webApp.vars["import"]["data_url"];
-			if( webApp.vars["supportPHP"] ){
-				url = webApp.vars["import"]["request_url_PHP"];
-			}
-			if( webApp.vars["supportASPX"] ){
-				url = webApp.vars["import"]["request_url_ASPX"];
-			}
+			// if( webApp.vars["supportPHP"] ){
+				// url = webApp.vars["import"]["request_url_PHP"];
+			// }
+			// if( webApp.vars["supportASPX"] ){
+				// url = webApp.vars["import"]["request_url_ASPX"];
+			// }
 			
-			if( p["date"] && p["date"].length > 0 ){
-				url +=  "?date="+p["date"];
-			}
+			// if( p["date"] && p["date"].length > 0 ){
+				// url +=  "?date="+p["date"];
+			// }
 			//var url = webApp.vars["import"]["data_url"] + "?date="+p["date"];
 			
 			runAjax( {
 				"requestMethod" : "GET", 
+				//"requestMethod" : "HEAD", 
 				"url" : url, 
 				"callback": function( data ){
 var msg = "load " + url ;
@@ -2172,7 +2173,7 @@ console.log(msg);
 				}//end callback()
 			});
 		}//end __processRequest()
-
+/*
 		function __testPHP( callback ){
 			runAjax( {
 				"requestMethod" : "GET", 
@@ -2224,7 +2225,7 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 				}//end callback()
 			});
 		}//end __testASPX()
-		
+*/		
 	}//end _serverRequest()
 	
 	// public interfaces
