@@ -1928,7 +1928,8 @@ console.log(msg);
 				//text: _r.getResource("_query_wait")
 			//});
 			var ovr = getDOMobj("wait");
-			ovr.className="overlay open";
+			//ovr.className="overlay open";
+			ovr.className="modal-backdrop in";
 			ovr.style.display="block";
 			
 			var param = {};
@@ -2178,7 +2179,8 @@ _log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");
 						delete dbInfo["import"]["xml"];//clear var
 						
 						var ovr = getDOMobj("wait");
-						ovr.className="overlay";
+						//ovr.className="overlay";
+						ovr.className="";
 						ovr.style.display="none";
 						
 						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
