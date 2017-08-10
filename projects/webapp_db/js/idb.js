@@ -1935,10 +1935,6 @@ console.log(msg);
 			var param = {};
 console.log("_iDBimport(), send request to the server", param);
 
-			// _w.changeText(_r.getResource("_wait_load_kodif_server"));
-			// var __ajaxProgress	= _u.ajaxProgress;
-			// _u.ajaxProgress	= _ajaxProgress;//replace callback for progress process
-			
 			param["callback"] = _afterRequest;
 			webApp.app.serverRequest( param );
 			
@@ -1952,10 +1948,6 @@ console.log("_iDBimport(), send request to the server", param);
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
 
 				_saveData(data);
-				
-				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
-					dbInfo["callbackFunc"]["afterUpdate"]();
-				}
 				
 			};//end _afterRequest();
 		}//end _iDBimport()
@@ -1974,7 +1966,7 @@ console.log("error in _db(), not find 'db_type' !");
 						__parseXML( data );
 						return false;
 					}
-					
+/*					
 					//server answer contains string data ( update data + XML)
 					var importData = data.split( "#mark" );
 					
@@ -2029,6 +2021,7 @@ console.log("error in _db(), not find 'db_type' !");
 						}					
 						
 					}//end _postFunc
+*/					
 				break;
 				
 				case "json":
@@ -2058,17 +2051,23 @@ console.log("error in _db(), data not in JSON format");
 					_log( e );
 					}							
 */						
+					if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+						dbInfo["callbackFunc"]["afterUpdate"]();
+					}
 				break;
 				
 				//case "csv":
 				case "jcsv":
 					//_parseCSVBlocks(data);
+					if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+						dbInfo["callbackFunc"]["afterUpdate"]();
+					}
 				break;
 			}//end switch
 			
-			if( typeof postFunc === "function"){
-				postFunc();
-			}
+			// if( typeof postFunc === "function"){//??????????????????????
+				// postFunc();
+			// }
 
 			function __parseXML( xml ){
 				var xmlDoc = xml.getElementsByTagName("database");
