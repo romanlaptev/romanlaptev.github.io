@@ -1893,6 +1893,7 @@ console.log("Error, iDBmodule(), checkState(), need callback function");
 			if( typeof p["listStores"] !== "undefined" &&
 					p["listStores"].length > 0){
 				dbInfo["import"]["importType"] = "update";
+				//compare dates!!!!
 				
 			} else {
 var msg = "iDBmodule(), not find indexedDB stores, new full import.";
@@ -1906,30 +1907,37 @@ console.log(msg);
 			}
 			
 			if( dbInfo["import"]["importType"] === "update"){
-				var date = "2017-08-07";//yyyy-mm-dd
-				_iDBimport( date );//check update data, then import to indexedDB
+				//read "last_date" from idb_master
+				var date = "2017-08-07";
+				//check update date, before import to indexedDB
+				
+				//_iDBimport();
+				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+					dbInfo["callbackFunc"]["afterUpdate"]();
+				}
 			}//end check
 			
 		}//end _checkState()
 		
-		function _iDBimport( date ){
-console.log( "_iDBimport()", date );
+		function _iDBimport(){
 			var time_start = new Date();
+			
 			//_w.wait({
 				//button:true, 
 				//abortHandler: function(){ _m.hideModal(); },
 				//text: _r.getResource("_query_wait")
 			//});
-			if(!date){
-				var param = {};
-			} else {
-				var date = "2017-08-07";//yyyy-mm-dd
-				var param = {"date": date};
-			}
+			var ovr = getDOMobj("wait");
+			ovr.className="overlay open";
+			ovr.style.display="block";
+			
+			var param = {};
 console.log("_iDBimport(), send request to the server", param);
+
 			// _w.changeText(_r.getResource("_wait_load_kodif_server"));
 			// var __ajaxProgress	= _u.ajaxProgress;
 			// _u.ajaxProgress	= _ajaxProgress;//replace callback for progress process
+			
 			param["callback"] = _afterRequest;
 			webApp.app.serverRequest( param );
 			
@@ -1942,19 +1950,13 @@ console.log("_iDBimport(), send request to the server", param);
 				var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
 console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
 
-				if( dbInfo["import"]["importType"] === "new"){
-					_saveData(data);
-				} else {
-console.log("_iDBimport(), need to realize update process");// !!!!!!!!!!!!!!!!!!!!!!!!
-				}
+				_saveData(data);
 				
-				//test!
 				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
-					dbInfo["callbackFunc"]["afterUpdate"]( data );
+					dbInfo["callbackFunc"]["afterUpdate"]();
 				}
 				
 			};//end _afterRequest();
-
 		}//end _iDBimport()
 		
 		function _saveData(data){
@@ -2174,6 +2176,10 @@ console.log("All done!");
 _log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
 						
 						delete dbInfo["import"]["xml"];//clear var
+						
+						var ovr = getDOMobj("wait");
+						ovr.className="overlay";
+						ovr.style.display="none";
 						
 						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 							dbInfo["callbackFunc"]["afterUpdate"]( data );
