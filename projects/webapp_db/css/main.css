@@ -46,3 +46,7 @@ display:none;
 .overlay.open {
 opacity: 0.9;
 }
+
+.modal-dialog {
+  top: 30% !important;
+}
