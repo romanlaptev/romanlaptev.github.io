@@ -169,7 +169,8 @@ function runAjax( opt ){
 		"url" : false, 
 		"params": "",
 		"async" :  true,
-		"callback" : null
+		"callback" : null,
+		"onProgress" : null
 	};
 	//extend options object
 	for(var key in opt ){
@@ -296,13 +297,13 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
-			var percentComplete = 0;
-			if(e.lengthComputable) {
-				percentComplete = Math.ceil(e.loaded / e.total * 100);
-			}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			if( document.getElementById("load-progress") ){
-				document.getElementById("load-progress").value = percentComplete;
+			// var percentComplete = 0;
+			// if(e.lengthComputable) {
+				// percentComplete = Math.ceil(e.loaded / e.total * 100);
+			// }
+//console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			if( typeof  options["onProgress"] === "function"){
+				options["onProgress"](e);
 			}
 		}
 		
