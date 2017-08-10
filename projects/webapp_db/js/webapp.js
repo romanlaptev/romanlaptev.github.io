@@ -2008,6 +2008,11 @@ console.log(msg);
 	var _buildPage = function( opt ){
 //console.log("_buildPage()", arguments);
 
+		var ovr = getDOMobj("wait");
+		//ovr.className="overlay open";
+		ovr.className="modal-backdrop in";
+		ovr.style.display="block";
+		
 		var options = {
 			"nid": null,
 			//"templateID" : "tpl-page"
@@ -2092,6 +2097,11 @@ _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");
 			}
 			
 		}//next
+			
+		var ovr = getDOMobj("wait");
+		//ovr.className="overlay";
+		ovr.className="";
+		ovr.style.display="none";
 			
 	};//end _buildPage()
 	
