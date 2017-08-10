@@ -126,6 +126,33 @@ function getXMLDocument(url)  {
 	}
 }//end getXMLDocument
 
+function create_MSXML(){
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		}  catch(e) {
+console.log("error: " + e);
+			for( var item in e )	{
+console.log(item + ": " + e[item]);
+			}
+		};
+	}
+}//end create_MSXML()
 
 /*
 	runAjax( {
@@ -214,10 +241,13 @@ console.log(msg);
 					}
 
 				} else {
-console.log(xhr);					
+//console.log(xhr);					
 _log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
 _log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
 _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
+					if( typeof callback === "function"){
+						callback( xhr.responseText );
+					}
 				}
 				
 		}
