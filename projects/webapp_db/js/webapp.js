@@ -89,7 +89,6 @@ webApp.init(function(){
 	
 	webApp.db.loadData(function(){
 //console.log(arguments);
-
 //console.log(window.location);	
 			var parse_url = window.location.search; 
 			if( parse_url.length > 0 ){
@@ -459,8 +458,8 @@ console.log("error in _db(), data not in JSON format");
 					webApp.iDBmodule.getRecords({
 						"storeName" : tableName,
 						"callback" : function( data){
-var msg = "restart db query, " + tableName;
-console.log( msg );
+//var msg = "restart db query, " + tableName;
+//console.log( msg );
 //console.log( data[0], data.length );
 							if( data.length > 0){
 								_vars["tables"][tableName]["records"] = data;
@@ -1901,9 +1900,22 @@ console.log("init app!");
 			break;
 			
 			case "node":
-				//var timeStart = new Date();
+				var timeStart = new Date();
 				webApp.app.buildPage({
-					"nid" : webApp.vars["GET"]["nid"]
+					"nid" : webApp.vars["GET"]["nid"],
+					"callback" : function(){
+console.log("-- end build page --");
+					var timeEnd = new Date();
+					var ms = timeEnd.getTime() - timeStart.getTime();
+					var msg = "Generate page nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+_log(msg);			
+					webApp.app.vars["runtime"].push({
+						"source" : msg,
+						"ms" : ms,
+						"sec" : ms / 1000
+					});
+
+					}//end callback
 				});
 			break;
 
@@ -1954,7 +1966,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 //console.log("_buildBlock()", arguments);
 
 		var timeStart = new Date();
-		var options = {
+		var p = {
 			"title": "block title",
 			"content" : "",
 			//"contentType" : "",
@@ -1970,41 +1982,47 @@ console.log(msg);
 					"ms" : ms,
 					"sec" : ms / 1000
 				});
-			}//end callback
+				
+				if( typeof p["callback2"] === "function"){
+					p["callback2"]();//return from _buildBlock()
+				}
+				
+			},//end callback
+			"callback2" : null
 		};
-		//extend options object
+		//extend p object
 		for(var key in opt ){
-			options[key] = opt[key];
+			p[key] = opt[key];
 		}
-//console.log(options);
+//console.log(p);
 	
-		// if( options["content"].length === 0 ){
+		// if( p["content"].length === 0 ){
 // _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
 			// return false;
 		// }
 
 		//dynamic form content
-		if( typeof options["content"] === "function"){
-			options["content"]({
+		if( typeof p["content"] === "function"){
+			p["content"]({
 				"callback" : function( res ){
 //console.log(res);								
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"
-						//"contentType" : options["contentType"],
-						"templateID" : options["contentTpl"]
+						//"contentType" : p["contentType"],
+						"templateID" : p["contentTpl"]
 					});
 					
 					//var html = "<h1>Test!!!</h1>";
 					if( html && html.length > 0){
-						options["content"] = html;
-						webApp.draw.insertBlock( options );
+						p["content"] = html;
+						webApp.draw.insertBlock( p );
 					}
 					
 				}
 			});
 		} else {
-			webApp.draw.insertBlock( options );
+			webApp.draw.insertBlock( p );
 		}
 
 	};//end _buildBlock()
@@ -2013,20 +2031,21 @@ console.log(msg);
 	var _buildPage = function( opt ){
 //console.log("_buildPage()", arguments);
 
-		// var ovr = getDOMobj("wait");
-		// //ovr.className="overlay open";
-		// ovr.className="modal-backdrop in";
-		// ovr.style.display="block";
+		if( webApp.vars["wait"] ){
+			webApp.vars["wait"].className="modal-backdrop in";
+			webApp.vars["wait"].style.display="block";
+		}
 		
-		var options = {
+		var p = {
 			"nid": null,
 			//"templateID" : "tpl-page"
-			"title" : ""//,
+			"title" : "",
 			//content : ""
+			"callback": null
 		};
 		//extend options object
 		for(var key in opt ){
-			options[key] = opt[key];
+			p[key] = opt[key];
 		}
 //console.log(options);
 
@@ -2063,52 +2082,107 @@ console.log(msg);
 		// });
 		
 		//draw page content
-		if( options["nid"] ){
+		if( p["nid"] ){
 			
 			//get node from DB
 			var node = webApp.db.nodeLoad({
-				"nid": options["nid"],
+				"nid": p["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
 //console.log( node );						
 					//draw content block
-					var opt2 = {
+					_buildBlock({
 						"name" : "block-content",
 						"title" : node[0]["title"], 
 						"templateID" : "tpl-block-content",
 						//"content" : _formNodeContent(node)//node["content"]
 						"content" : node[0]["body"]
-					};
-//console.log( opt2 );						
-					_buildBlock( opt2 );
+					});
+					
+					_buildSidebar({
+						"blocks" : _vars["blocks"],
+						"callback" : function(){
+							if( typeof p["callback"] === "function"){
+								p["callback"]();//return from _buildPage()
+							}
+						}//end callback
+					});
+					
+					
 				}//end callback
 			});
 			
 		} else {
-console.log( options["nid"] );			
+console.log( p["nid"] );			
 _log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");			
 		}
 
-		//draw sidebar blocks
-		for( var n = 0; n < _vars["blocks"].length; n++){
-			var opt2 = _vars["blocks"][n];
-//console.log(opt2["visibility"], options["title"]);				
-			if( opt2["visibility"]){
-				if( opt2["visibility"].indexOf( options["title"] ) !== -1 ){
-					_buildBlock( opt2 );
-				}
-			} else {
-				_buildBlock( opt2 );
-			}
+		// //draw sidebar blocks
+		// for( var n = 0; n < _vars["blocks"].length; n++){
+			// var opt2 = _vars["blocks"][n];
+// //console.log(opt2["visibility"], options["title"]);				
+			// if( opt2["visibility"]){
+				// if( opt2["visibility"].indexOf( p["title"] ) !== -1 ){
+					// _buildBlock( opt2 );
+				// }
+			// } else {
+				// _buildBlock( opt2 );
+			// }
 			
-		}//next
+		// }//next
 			
-		// var ovr = getDOMobj("wait");
-		// //ovr.className="overlay";
-		// ovr.className="";
-		// ovr.style.display="none";
+		if( webApp.vars["wait"] ){
+			//webApp.vars["wait"].className="";
+			webApp.vars["wait"].style.display="none";
+		}
 			
 	};//end _buildPage()
+	
+	function _buildSidebar(opt){
+		var p = {
+			"blocks": null,
+			"callback": null
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);		
+
+		if( p["blocks"].length === 0){
+			var msg = "Warning! no sidebar blocks...";
+console.log(msg);			
+			return false;
+		}
+		
+		//recursively build blocks
+		p["counter"] = 0;
+		__buildBlock();
+		
+		
+		function __buildBlock(){
+			var n  = p["counter"];
+			var block = p["blocks"][n];
+			
+			block["callback2"] = function(){
+//console.log(block);				
+				p["counter"]++;
+				if( p["counter"] < p["blocks"].length){
+					__buildBlock();
+				} else {
+					if( typeof p["callback"] === "function"){
+						p["callback"]();//return from _buildSidebar()
+					}
+				}
+			}//end callback2
+			
+			_buildBlock( block );
+		}//end __buildBlock()
+		
+	}//end _buildSidebar
+	
+	
 	
 	function _serverRequest( opt ){
 		var p = {
