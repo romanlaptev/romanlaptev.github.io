@@ -1911,6 +1911,9 @@ console.log(msg);
 				var date = "2017-08-07";
 				//check update date, before import to indexedDB
 				
+				//.....get last date modified, run HEAD request
+				//.....
+				
 				//_iDBimport();
 				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 					dbInfo["callbackFunc"]["afterUpdate"]();
@@ -1927,10 +1930,10 @@ console.log(msg);
 				//abortHandler: function(){ _m.hideModal(); },
 				//text: _r.getResource("_query_wait")
 			//});
-			var ovr = getDOMobj("wait");
-			//ovr.className="overlay open";
-			ovr.className="modal-backdrop in";
-			ovr.style.display="block";
+			if( webApp.vars["wait"] ){
+				webApp.vars["wait"].className="modal-backdrop in";
+				webApp.vars["wait"].display="block";
+			}
 			
 			var param = {};
 console.log("_iDBimport(), send request to the server", param);
@@ -2162,7 +2165,19 @@ console.log("error in _db(), data not in JSON format");
 				
 				function __callback( statInfo ){
 //console.log("callback, _saveRecords(), "+ storeName, dbInfo["import"]["counter"], statInfo);
+
 					dbInfo["import"]["counter"]++;
+					
+					//----------------------- progress indicator
+					if( webApp.vars["saveProgressBar"] ){
+						var numTotal = dbInfo["tables"].length;
+						var numLoaded = dbInfo["import"]["counter"];
+						var percentComplete = Math.ceil( numLoaded / numTotal * 100);
+		//console.log(percentComplete);
+						webApp.vars["saveProgressBar"].style.width = percentComplete+"%";
+						webApp.vars["saveProgressBar"].innerHTML = percentComplete+"%";
+					}
+					
 					if( dbInfo["import"]["counter"] < dbInfo["tables"].length ){
 						__getTable();
 					} else {
@@ -2171,16 +2186,14 @@ console.log("error in _db(), data not in JSON format");
 						var timeEnd = new Date();
 						var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 						dbInfo["import"]["timer"] = runtime;
-						
-console.log("All done!");	
-_log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
+console.log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
 						
 						delete dbInfo["import"]["xml"];//clear var
 						
-						var ovr = getDOMobj("wait");
-						//ovr.className="overlay";
-						ovr.className="";
-						ovr.style.display="none";
+						if( webApp.vars["wait"] ){
+							webApp.vars["wait"].className="";
+							webApp.vars["wait"].display="none";
+						}
 						
 						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 							dbInfo["callbackFunc"]["afterUpdate"]( data );
