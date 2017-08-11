@@ -41,7 +41,11 @@ var webApp = {
 		//"testUrlPHP": "api/test.php",
 		//"testUrlASPX": "api/test.aspx",
 		"GET" : {},
-		"pageContainer" : getDOMobj("page-container")
+		"pageContainer" : getDOMobj("page-container"),
+		"wait" : getDOMobj("wait"),
+		"loadProgress" : getDOMobj("load-progress"),
+		"loadProgressBar" : getDOMobj("load-progress-bar"),
+		"saveProgressBar" : getDOMobj("save-progress-bar")
 	},
 	
 	"init" : function( postFunc ){
@@ -2173,12 +2177,15 @@ console.log("supportPHP:" + supportPHP);
 					}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 
-					var progress = getDOMobj("load-progress");
-//console.log(progress);				
-					if( progress ){
-						progress.value = percentComplete;
+					if( webApp.vars["loadProgress"] ){
+						webApp.vars["loadProgress"].value = percentComplete;
 					}
-				},
+					if( webApp.vars["loadProgressBar"] ){
+						webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+						webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+					}
+					
+				},//end onProgress()
 				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
