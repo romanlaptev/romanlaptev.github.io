@@ -896,7 +896,7 @@ console.log(msg);
 			for(var key in opt ){
 				_iDBparams[key] = opt[key];
 			}
-	console.log( "iDB(), " + _iDBparams["storeName"] + ", " +_iDBparams["action"] );
+//console.log( "iDB(), " + _iDBparams["storeName"] + ", " +_iDBparams["action"] );
 			
 			switch( _iDBparams["action"] ){
 				case "create_store":
