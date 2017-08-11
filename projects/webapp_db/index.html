@@ -58,35 +58,6 @@ var _showHiddenLog = function(){
 </head>
 
 <body>
-<div id="wait" class="hide">
-<!--
-	<div>
-		<div>
-				<div class="icon-container"><img class="load-icon" src="img/icon-load.svg"></div>
-				<div id="waitText">wait...</div>
-		</div>
-	</div>
--->	
-	<div id="waitText" class="modal-dialog">
-		<h1 class="text-center">wait...</h1>
-		<div class="loader loader2"></div> 
-<!--		
-		<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
--->
-		
-		ajax load:
-		<div class="progress">
-			<div id="load-progress-bar" class="progress-bar"></div>
-		</div>
-		save data:
-		<div class="progress">
-			<div id="save-progress-bar" class="progress-bar"></div>
-		</div>
-		
-	</div>
-</div>
-
- 
 <div class="container" id="page-container">
 	<header>
 		<h1  class="text-center">webapp DB</h1>
@@ -175,6 +146,35 @@ var _showHiddenLog = function(){
 	</div>	
 	
 </div><!-- end container -->
+
+<!--
+<div id="wait" class="overlay open">
+	<div>
+		<div>
+				<div class="icon-container"><img class="load-icon" src="img/icon-load.svg"></div>
+				<div id="waitText">wait...</div>
+		</div>
+	</div>
+</div>
+-->	
+
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+<!--		
+	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
+-->
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar"></div>
+	</div>
+	save data:
+	<div class="progress">
+		<div id="save-progress-bar" class="progress-bar"></div>
+	</div>
+</div>
+<div id="wait" class="hide"></div>
+
 
 <script id="tpl-list" type="text/template">
 	<ul class="list-unstyled">{{list}}</ul>
