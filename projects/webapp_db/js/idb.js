@@ -1925,14 +1925,13 @@ console.log(msg);
 		function _iDBimport(){
 			var time_start = new Date();
 			
-			//_w.wait({
-				//button:true, 
-				//abortHandler: function(){ _m.hideModal(); },
-				//text: _r.getResource("_query_wait")
-			//});
 			if( webApp.vars["wait"] ){
 				webApp.vars["wait"].className="modal-backdrop in";
-				webApp.vars["wait"].display="block";
+				webApp.vars["wait"].style.display="block";
+			}
+			if( webApp.vars["waitWindow"] ){
+				webApp.vars["waitWindow"].className="modal-dialog";
+				webApp.vars["waitWindow"].style.display="block";
 			}
 			
 			var param = {};
@@ -2191,8 +2190,11 @@ console.log("All done! save records to indexedDB stores, runtime:" + runtime + "
 						delete dbInfo["import"]["xml"];//clear var
 						
 						if( webApp.vars["wait"] ){
-							webApp.vars["wait"].className="";
-							webApp.vars["wait"].display="none";
+							//webApp.vars["wait"].className="";
+							webApp.vars["wait"].style.display="none";
+						}
+						if( webApp.vars["waitWindow"] ){
+							webApp.vars["waitWindow"].style.display="none";
 						}
 						
 						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
