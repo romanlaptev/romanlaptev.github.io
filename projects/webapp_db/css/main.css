@@ -47,18 +47,22 @@ display:none;
 opacity: 0.9;
 }
 
-#wait  .modal-dialog {
-background-color: orange;
+#wait-window.modal-dialog {
+background-color: rgb(200, 200, 250);
 border-radius: 10px;
+left: 50%;
+margin-left: -290px;
 padding: 10px;
-top: 30% !important;
+position: fixed;
+top: 25% !important;
+z-index: 1042;
 }
-#wait h1 {
+#wait-window h1 {
 color: #000;
 /*font-size: 400%;*/
 }
 
-#wait .loader {
+#wait-window .loader {
 border: 16px solid #f3f3f3; /* Light grey */
 border-top: 16px solid #3498db; /* Blue */
 border-radius: 50%;
@@ -67,7 +71,7 @@ height: 120px;
 margin: auto;
 animation: spin 2s linear infinite;
 }
-#wait .loader2 {
+#wait-window .loader2 {
 border-bottom: 16px solid #3498db;
 border-top: 16px solid #3498db;
 }
