@@ -14,13 +14,16 @@
 .log-panel{
 background-color:#ffffcc;
 border:1px dashed;
-clear:both;
 padding: 10px;
-/*position: absolute;*/
 position: fixed;
+bottom: 10px;
+z-index: 9999;
+/*
 right: 10px;
-top: 10px;
+clear:both;
 width: 80%;
+*/
+/*position: absolute;*/
 }
 .close {
 display: block;

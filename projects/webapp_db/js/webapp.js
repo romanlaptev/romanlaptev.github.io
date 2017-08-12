@@ -1893,6 +1893,19 @@ console.log("init app!");
 				var log = getDOMobj("log-wrap");
 				log.style.display="none";
 			break;
+			case "view-log":
+				var log = getDOMobj("log-wrap");
+				log.style.display="block";
+			break;
+			case "toggle-log":
+				var log = getDOMobj("log-wrap");
+//console.log(log.style.display);
+				if( log.style.display==="none"){
+					log.style.display="block";
+				} else {
+					log.style.display="none";
+				}
+			break;
 			
 			case "clear-log":
 				var log = getDOMobj("log");
@@ -1908,7 +1921,7 @@ console.log("-- end build page --");
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
 					var msg = "Generate page nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
-_log(msg);			
+_log("<p>"+msg+"</p>");			
 					webApp.app.vars["runtime"].push({
 						"source" : msg,
 						"ms" : ms,
@@ -2114,7 +2127,7 @@ console.log(msg);
 			
 		} else {
 console.log( p["nid"] );			
-_log("Warn! no page,  'nid' <b class='text-danger'>is empty</b> ");			
+_log("<p>Warn! no page,  'nid' <b class='text-danger'>is empty</b></p>");			
 		}
 
 		// //draw sidebar blocks

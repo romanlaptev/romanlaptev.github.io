@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="css/bootstrap335.min.css" rel="stylesheet">	
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/fonts.css" type="text/css" media="screen" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	
 <!--[if lt IE 9]>
@@ -46,19 +47,31 @@ window.onload = function(){
 	
 };//end window.load	
 
-var _showHiddenLog = function(){
-	var log = getDOMobj("log-wrap");
-	if( log.style.display === "none"){
-		log.style.display="block";
-	}
-}//end _showHiddenLog
+//var _showHiddenLog = function(){
+	//var log = getDOMobj("log-wrap");
+	//if( log.style.display === "none"){
+		//log.style.display="block";
+//	}
+//}//end _showHiddenLog
 
 </script>
 
 </head>
 
 <body>
+
 <div class="container" id="page-container">
+
+
+	<div id="log-wrap" class="log-panel col-sm-7 col-md-7">
+		<a class="close" href="#?q=hide-log">x</a>	
+		<ul class="list-inline">
+			<li><a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a></li>
+			<li><a class="btn btn-sm btn-primary" href="iDB_admin.html" target="_self">iDB admin</a></li>
+		</ul>	
+		<div id="log"></div>
+	</div>
+
 	<header>
 		<h1  class="text-center">webapp DB</h1>
 	</header>
@@ -98,7 +111,8 @@ var _showHiddenLog = function(){
 			
 		</div><!-- end sidebar left -->
 		
-		<div class="col-sm-6 col-md-6" id="main">main
+		<div class="col-sm-6 col-md-6" id="main">
+			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
 		
 <span id="tpl-block-content" class="hide template">
 	<div class="block">
@@ -135,16 +149,6 @@ var _showHiddenLog = function(){
 		<div class="col-sm-3 col-md-3">3</div>
 
 	</footer>
-	
-	<div id="log-wrap" class="row log-panel">
-		<a class="close" href="#?q=hide-log">x</a>	
-		<a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a>		
-		<div id="log"></div>
-		<ul class="list-inline">
-			<li><a class="external" href="iDB_admin.html" target="_self">iDB admin</a></li>
-		</ul>	
-	</div>	
-	
 </div><!-- end container -->
 
 <!--
