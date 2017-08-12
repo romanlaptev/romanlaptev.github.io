@@ -2266,6 +2266,7 @@ console.log("supportPHP:" + supportPHP);
 							webApp.vars["loadProgress"].value = percentComplete;
 						}
 						if( webApp.vars["loadProgressBar"] ){
+							webApp.vars["loadProgressBar"].className = "progress-bar";
 							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
 							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
 						}

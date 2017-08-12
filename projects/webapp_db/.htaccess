@@ -3,6 +3,6 @@
 #Header set Access-Control-Allow-Origin "*"
 
 #disable gzip compression ( send  Content-Length header and property e.lengthComputable === true in js code)
-<FilesMatch "\.xml$">
-  SetEnv no-gzip 1
-</FilesMatch>
+#<FilesMatch "\.xml$">
+#SetEnv no-gzip 1
+#</FilesMatch>

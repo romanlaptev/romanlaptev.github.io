@@ -2173,6 +2173,7 @@ console.log("error in _db(), data not in JSON format");
 						var numLoaded = dbInfo["import"]["counter"];
 						var percentComplete = Math.ceil( numLoaded / numTotal * 100);
 		//console.log(percentComplete);
+						webApp.vars["saveProgressBar"].className = "progress-bar";
 						webApp.vars["saveProgressBar"].style.width = percentComplete+"%";
 						webApp.vars["saveProgressBar"].innerHTML = percentComplete+"%";
 					}
