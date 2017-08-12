@@ -2249,16 +2249,17 @@ console.log("supportPHP:" + supportPHP);
 					var percentComplete = 0;
 					if(e.lengthComputable) {
 						percentComplete = Math.ceil(e.loaded / e.total * 100);
+						if( webApp.vars["loadProgress"] ){
+							webApp.vars["loadProgress"].value = percentComplete;
+						}
+						if( webApp.vars["loadProgressBar"] ){
+							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+						}
+
 					}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 
-					if( webApp.vars["loadProgress"] ){
-						webApp.vars["loadProgress"].value = percentComplete;
-					}
-					if( webApp.vars["loadProgressBar"] ){
-						webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-						webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-					}
 					
 				},//end onProgress()
 				"callback": function( data ){
