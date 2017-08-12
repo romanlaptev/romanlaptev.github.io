@@ -219,7 +219,7 @@ console.log( msg, xhr );
 					
 //console.log(xhr.getResponseHeader('X-Powered-By') );
 					var all_headers = xhr.getAllResponseHeaders();
-//console.log( all_headers );
+console.log( all_headers );
 					
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
@@ -316,7 +316,8 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	}
 
 		
-//console.log( "setRequestHeader" in xhr  );
+var test = "setRequestHeader" in xhr;
+console.log( "setRequestHeader: " + test );
 	// if (xhr.setRequestHeader) {
 		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	// }
