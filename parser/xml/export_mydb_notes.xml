@@ -2083,7 +2083,7 @@ echo &quot;&lt;br&gt;&quot;;
 
 </filename>
 </node>
-<node title="D-LINK WIRELESS ROUTER, MAC FILTERING" nid="1121" mlid="3241" plid="1589" created="11-May-2015 00:46:31" changed="25-Sep-2016 14:05:34" weight="0">
+<node title="D-LINK WIRELESS ROUTER, MAC FILTERING" nid="1121" mlid="3241" plid="1589" created="11-May-2015 00:46:31" changed="10-May-2017 21:46:52" weight="0">
 <body_value>
 http://192.168.0.1/
 homenet
@@ -2129,7 +2129,10 @@ mycomp
 00:15:EB:B6:73:C1
 -------------------------
 ???
-00:22:43:1F:0B:23
++00:22:43:1F:0B:23
+
+TP-LINK 150Mbps Wireless N PCI Express Adapter
+18:D6:C7:66:CB:9F
 -------------------------
 
 eee-pc, wi-fi
@@ -2175,10 +2178,8 @@ eee-pc, lan
 ???
 10:BF:48:16:32:67
 -------------------------
-???
-+94:DB:C9:AA:C5:B6
-vbox, windows7
-08:00:27:E7:08:F6
+Eee PC 1011CX, Лера
+94:DB:C9:AA:C5:B6
 -------------------------
 +??? A4:17:31:2A:D1:F1
 vbox1
@@ -2348,6 +2349,23 @@ DRUPAL, htaccess для хостинга hut.ru (limb.hut4.ru)
 
 </filename>
 </node>
+<node title="Debian8, install ffmpeg" nid="1193" mlid="3362" plid="3199" created="11-Mar-2017 11:46:25" changed="11-Mar-2017 11:46:25" weight="0">
+<body_value>
+#Debian8, install ffmpeg
+echo &quot;deb http://www.deb-multimedia.org jessie main non-free&quot; &gt;&gt; /etc/apt/sources.list
+echo &quot;deb-src http://www.deb-multimedia.org jessie main non-free&quot; &gt;&gt; /etc/apt/sources.list
+apt-get update
+apt-get install deb-multimedia-keyring
+apt-get update
+apt-get install ffmpeg
+
+------------
+ffmpeg -i 02\ Гномы-каннибалы.m4a test.mp3
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="Disable firefox same origin policy" nid="1067" mlid="3171" plid="2299" created="04-Oct-2014 01:17:06" changed="04-Oct-2014 01:17:06" weight="0">
 <body_value>
 http://stackoverflow.com/questions/17088609/disable-firefox-same-origin-policy
@@ -2390,8 +2408,36 @@ $zip-&gt;close();
 unzip_file.php.txt
 </filename>
 </node>
-<node title="FTP" nid="805" mlid="2553" plid="2547" created="08-May-2013 12:17:34" changed="08-May-2013 12:17:34" weight="0">
+<node title="FTP" nid="805" mlid="2553" plid="2547" created="08-May-2013 12:17:34" changed="19-Feb-2017 16:30:13" weight="0">
 <body_value>
+Debian, vsFTPd 2.3.5:
+vsftpd.conf
+
+# Example config file /etc/vsftpd.conf
+#
+
+listen=YES
+anonymous_enable=YES
+
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+write_enable=YES
+anon_upload_enable=YES
+anon_mkdir_write_enable=YES
+
+#/home/ftp 755 rights!!!!
+anon_root=/home/ftp 
+
+#anon_umask=000
+#anon_other_write_enable=yes
+no_anon_password=YES
+
+
+#!!!!!!!!!!!!!!!!!!!!!!!!
+chown_uploads=YES
+#!!!!!!!!!!!!!!!!!!!!!!!!
+chown_username=roman
+
+------------------------------
 FTP: файл с учетными данными (.netrc)
 machine pub.fotoland.ru
 login client7
@@ -3256,74 +3302,24 @@ news2.xml
 
 </filename>
 </node>
-<node title="Samba" nid="804" mlid="2552" plid="2547" created="08-May-2013 12:16:20" changed="12-Apr-2015 00:58:19" weight="0">
+<node title="Samba" nid="804" mlid="2552" plid="2547" created="08-May-2013 12:16:20" changed="03-Aug-2017 08:34:32" weight="0">
+<filename>
+
+</filename>
+</node>
+<node title="Samba 4 — доступ к публичным шарам без логина/пароля" nid="1197" mlid="3368" plid="2552" created="03-Aug-2017 08:29:07" changed="03-Aug-2017 08:29:07" weight="0">
 <body_value>
-smbclient -U пользователь //host (просмотр SMB-ресурсов)
-smbclient -U пользователь //host/share /mnt/network password (текст)
------------
-mount -o cifs //host/share /mnt/network -o username=пользователь  
-(монтирование удаленного сетевого ресурса в ФС)
-------------
-net use /user:пользователь \\host\share пароль
-------------
-монтирование через /etc/fstab
-//192.168.1.217/pub /mnt/network/alpha/pub smbfs username=admin,password=super,iocharset=cp1251,codepage=cp866,rw 0 0
-============
+https://blog.kplus.pro/adm/samba-4-shares-anonymouse-access.html
+Samba 4 — доступ к публичным шарам без логина/пароля
 
-Монтировать сетевой ресурс с возможность записи под пользователем
+Необходимо использовать директивы security = user и map to guest = Bad Password в секции [global], а так-же указывать guest ok = yes в секции шары.
+</body_value>
+<filename>
 
-#!/bin/sh
-smbmount //designer-arc/_PHOTOPRINT ^
-         /home/durst/net/designer-arc/_PHOTOPRINT ^
-         -o username=designer,password=foto,uid=durst,gid=users
-
-============
-
-cоздание сетевого ресурса с ограниченным доступом
-
-- Создать папку (/home/pub)
-- Установить доступ на уровне ФС (chmod 777 /home/pub)
-- Создать группу доступа для записи (groupadd permitted_fotoland_users)
-- Включить в группу пользователей
-	vi /etc/group
-	permitted_fotoland_users:x:506:cop,service
-
-- Отредактировать/etc/samba/smb.conf. 
-	Изменить авторизацию и добавить серверы паролей
-	Создать запись для нового ресурса ([public])
-
-security = server
-password server = 192.168.1.1 192.168.1.10
-
-[public]
-comment = A publicly accessible directory, but read only, except for people in the &quot;permitted_fotoland_users&quot; group
-path = /home/pub
-public = yes
-;  writable = yes
-printable = no
-write list = @permitted_fotoland_users
-
-[myshare]
-comment =  two users can place files there that will be owned by the specific users
-path = /home/cop
-valid users = cop service
-;  invalid users = roman
-public = no
-writable = yes
-printable = no
-create mask = 0765
-
-smb.conf (mycomp) 
-  security = share
-
-[mount]
-        path=/mnt
-        browseable = yes
-        guest ok = yes
-        writable = yes
-   create mask = 0777
-   directory mask = 0777
-
+</filename>
+</node>
+<node title="Smbnetfs - лёгкое и удобное монтирование samba шар" nid="1200" mlid="3371" plid="2552" created="03-Aug-2017 08:35:10" changed="03-Aug-2017 08:35:10" weight="0">
+<body_value>
 Smbnetfs - лёгкое и удобное монтирование samba шар.
 
 
@@ -6805,6 +6801,58 @@ function destroy_video()
 custom.js.txt
 </filename>
 </node>
+<node title="cоздание сетевого ресурса с ограниченным доступом" nid="1198" mlid="3369" plid="2552" created="03-Aug-2017 08:31:02" changed="03-Aug-2017 08:31:02" weight="0">
+<body_value>
+cоздание сетевого ресурса с ограниченным доступом
+
+- Создать папку (/home/pub)
+- Установить доступ на уровне ФС (chmod 777 /home/pub)
+- Создать группу доступа для записи (groupadd permitted_fotoland_users)
+- Включить в группу пользователей
+	vi /etc/group
+	permitted_fotoland_users:x:506:cop,service
+
+- Отредактировать/etc/samba/smb.conf. 
+	Изменить авторизацию и добавить серверы паролей
+	Создать запись для нового ресурса ([public])
+
+security = server
+password server = 192.168.1.1 192.168.1.10
+
+[public]
+comment = A publicly accessible directory, but read only, except for people in the &quot;permitted_fotoland_users&quot; group
+path = /home/pub
+public = yes
+;  writable = yes
+printable = no
+write list = @permitted_fotoland_users
+
+[myshare]
+comment =  two users can place files there that will be owned by the specific users
+path = /home/cop
+valid users = cop service
+;  invalid users = roman
+public = no
+writable = yes
+printable = no
+create mask = 0765
+
+smb.conf (mycomp) 
+  security = share
+
+[mount]
+        path=/mnt
+        browseable = yes
+        guest ok = yes
+        writable = yes
+   create mask = 0777
+   directory mask = 0777
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="database mydb, export book" nid="749" mlid="2474" plid="3316" created="10-Mar-2013 12:21:25" changed="06-Feb-2016 15:00:28" weight="0">
 <body_value>
 1.
@@ -7236,7 +7284,7 @@ Response.Write(&quot;&lt;br&gt;&quot;);
 db_admin.asp.txt
 </filename>
 </node>
-<node title="debian" nid="1091" mlid="3199" plid="2413" created="06-Mar-2015 09:59:43" changed="22-Jul-2016 23:38:18" weight="0">
+<node title="debian" nid="1091" mlid="3199" plid="2413" created="06-Mar-2015 09:59:43" changed="30-Jul-2017 12:24:19" weight="0">
 <body_value>
 install skype
 # wget -O skype-install.deb http://www.skype.com/go/getskype-linux-deb
@@ -7250,7 +7298,21 @@ apt-get install totem-mozilla
 apt-get install lxtask
 
 =================================== узнать версию
-cat /etc/debian_version
+1.cat /etc/debian_version
+2.lsb_release -a
+
+----
+Debian: получить список установленных пакетов
+dpkg -query -l  
+----
+
+Debian: узнвать устаговлен ли пакет cifs-utils
+aptitude show cifs-utils
+
+------------ mount network share to /mnt/net
+mount -t cifs //192.168.56.1/soft /mnt/net -o username=admin_pwd
+
+
 </body_value>
 <filename>
 
@@ -7404,26 +7466,7 @@ unjoin.bat client19 administrator password
 
 </filename>
 </node>
-<node title="drupal" nid="675" mlid="1590" plid="2568" created="22-May-2012 21:47:02" changed="04-Apr-2015 15:05:51" weight="0">
-<body_value>
-&lt;a href=&quot;http://www.garageauto.info/node/1513&quot;&gt;Представления Drupal. Вывод корневых терминов словаря&lt;/a&gt;&lt;br/&gt;
-&lt;pre&gt;
-как вывести корневые термины словаря таксономии.
-
-Аргументы представления:
-- ID термина (в настройках при добавлении из вывода исключил) и Термин (убрал Метку).
-Таксономия: Term ID
-
-Фильтр представления:
-- Таксономия: Vocabulary = Каталог 
-
-вывести именно корневые термины из словаря аксономии:
-
-1. Добавил взаимосвязь &quot;Таксономия: Родительский термин&quot; (в настройках не указывать, что связь обязательна)(Таксономия: Parent term).
-2. И после этого добавил фильтр &quot;Таксономия: ID термина&quot; (в настройках Связь = Родитель, Оператор = Пустое поле (NULL))
-&lt;/pre&gt;
-
-</body_value>
+<node title="drupal" nid="675" mlid="1590" plid="2568" created="22-May-2012 21:47:02" changed="11-Apr-2017 22:04:33" weight="0">
 <filename>
 
 </filename>
@@ -8957,6 +9000,84 @@ EOF;
 
 </filename>
 </node>
+<node title="hosts, block banners" nid="1194" mlid="3365" plid="1589" created="29-Mar-2017 21:36:50" changed="29-Mar-2017 21:36:50" weight="0">
+<body_value>
+http://remontka.pro/ubrat-reklamu-skype/
+https://community.skype.com/t5/Windows-desktop-client/Block-Skype-Ads-Quick-and-Easy/td-p/3222434
+https://bloginfo.biz/skype-no-ads.html
+
+====================
+
+127.0.0.1       s0.2mdn.net
+127.0.0.1       banners.adfox.ru
+127.0.0.1       ads.adfox.ru
+127.0.0.1       ad.adriver.ru
+127.0.0.1       code.directadvert.ru
+127.0.0.1       cdn.onthe.io
+
+127.0.0.1      mc.yandex.ru
+127.0.0.1      awaps.yandex.ru
+127.0.0.1      an.yandex.ru
+
+127.0.0.1      ssp.rambler.ru
+127.0.0.1      img01.ssp.rambler.ru
+127.0.0.1      profile.ssp.rambler.ru
+127.0.0.1      id.rambler.ru
+127.0.0.1      kraken.rambler.ru
+127.0.0.1      sync.rambler.ru
+
+127.0.0.1      top-fwz1.mail.ru
+127.0.0.1      ad.mail.ru
+
+127.0.0.1       google-analytics.com
+127.0.0.1       googletagmanager.com
+127.0.0.1       googletagservices.com
+127.0.0.1       tpc.googlesyndication.com
+127.0.0.1       pagead2.googlesyndication.com
+127.0.0.1       googleads.g.doubleclick.net
+127.0.0.1       google2waycm.netmng.com	
+
+
+127.0.0.1      st.top100.ru
+#127.0.0.1      l.lj-toys.com
+127.0.0.1      p.adsymptotic.com
+127.0.0.1      logc400.xiti.com
+127.0.0.1      pubads.g.doubleclick.net
+127.0.0.1      cm.g.doubleclick.net
+127.0.0.1      tt.onthe.io
+127.0.0.1      dsp.adfarm1.adition.com
+127.0.0.1       cc.chango.com
+127.0.0.1	aep.emea.mxptint.net
+127.0.0.1	trends.revcontent.com
+127.0.0.1	securepubads.g.doubleclick.net
+127.0.0.1	secure-ams.adnxs.com
+
+# Skype Ads Blocker
+127.0.0.1 rad.msn.com
+127.0.0.1 preview.msn.com
+
+127.0.0.1 live.rads.msn.com
+127.0.0.1 ads1.msn.com
+127.0.0.1 static.2mdn.net
+127.0.0.1 g.msn.com
+127.0.0.1 a.ads2.msads.net
+127.0.0.1 b.ads2.msads.net
+127.0.0.1 ac3.msn.com
+
+127.0.0.1 adriver.ru
+127.0.0.1 api.skype.com
+127.0.0.1 static.skypeassets.com
+127.0.0.1 apps.skype.com
+
+# End Skype Ads Blocker
+
+
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="htaccess, albums_smarty" nid="850" mlid="2611" plid="2566" created="10-Aug-2013 14:33:14" changed="10-Aug-2013 14:33:14" weight="0">
 <body_value>
 #AuthType Basic
@@ -9002,15 +9123,24 @@ ErrorDocument 404 /temp/missing.html
 
 </filename>
 </node>
-<node title="iis" nid="1015" mlid="3111" plid="1589" created="20-Apr-2014 18:24:06" changed="20-Apr-2014 18:24:06" weight="0">
+<node title="iis" nid="1015" mlid="3111" plid="1589" created="20-Apr-2014 18:24:06" changed="06-Mar-2017 11:32:29" weight="0">
 <body_value>
-&lt;pre&gt;   как в IIS 5.1 подключить расширение .aspx?
+как в IIS 5.1 подключить расширение .aspx?
 
 c:/windows/Microsoft.NET/Framework/(version)/aspnet_regiis.exe -i // установка в IIS поддержки aspx
 c:/windows/Microsoft.NET/Framework/(version)/aspnet_regiis.exe -ui // удаление
 
-&lt;/pre&gt;
+----------------------------
+Configure MIME Types (IIS)
 
+http://codingstill.com/2013/01/set-mime-types-for-web-fonts-in-iis/
+http://stackoverflow.com/questions/8158193/how-to-allow-download-of-json-file-with-asp-net
+
+Extension: .json
+MIME type: application/json
+
+Extension: .djvu
+image/djvu
 </body_value>
 <filename>
 
@@ -9047,11 +9177,18 @@ Windows Registry Editor Version 5.00
 
 </filename>
 </node>
-<node title="install packages" nid="802" mlid="2550" plid="2413" created="08-May-2013 12:12:23" changed="12-Apr-2015 12:47:29" weight="0">
+<node title="install packages" nid="802" mlid="2550" plid="2413" created="08-May-2013 12:12:23" changed="30-Jul-2017 12:12:28" weight="0">
 <body_value>
-dpkg -query -l  Debian: получить список установленных пакетов
+Debian: получить список установленных пакетов
+dpkg -query -l  
+----
 
-rmp -qa  Red Hat: получить список установленных пакетов
+Debian: узнвать устаговлен ли пакет cifs-utils
+aptitude show cifs-utils
+----
+
+Red Hat: получить список установленных пакетов
+rmp -qa  
 
 =========================== Cuneiform и yagf
 - echo &quot;deb http://notesalexp.org/debian/`lsb_release -cs`/ `lsb_release -cs` main contrib non-free&quot; | sudo tee -a /etc/apt/sources.list
@@ -9440,11 +9577,32 @@ $(&quot;#date&quot;).text( dateText );
 
 </filename>
 </node>
-<node title="js" nid="727" mlid="2355" plid="1588" created="03-Nov-2012 12:29:27" changed="22-Jul-2016 09:59:25" weight="0">
+<node title="js" nid="727" mlid="2355" plid="1588" created="03-Nov-2012 12:29:27" changed="03-Mar-2017 14:25:35" weight="0">
 <body_value>
-&lt;iframe src=&quot;http://mycomp/sites/romanlaptev.github.io/test_code/js/&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;&lt;/iframe&gt;
-
 http://learn.javascript.ru/nodejs-screencast
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="js code, alt Eval" nid="1195" mlid="3366" plid="2355" created="06-Apr-2017 22:12:11" changed="06-Apr-2017 22:12:11" weight="0">
+<body_value>
+https://forum.antichat.ru/threads/317254/
+-----
+var test = false;
+
+//function body
+var _checkStr = &quot;true &amp;&amp; true || false&quot;;
+
+  //test = eval( _checkStr );//not use!!!!!!
+
+//create self-self-invoking function from string
+
+//test = Function(&quot;return &quot;+_checkStr)();
+//or
+test = myfunc.constructor(&quot;return &quot;+_checkStr)();
+
+true
 </body_value>
 <filename>
 
@@ -10113,7 +10271,7 @@ event.returnValue = false;
 
 </filename>
 </node>
-<node title="linux, mount" nid="794" mlid="2542" plid="2413" created="08-May-2013 11:50:15" changed="08-May-2013 11:53:29" weight="0">
+<node title="linux, mount" nid="794" mlid="2542" plid="2413" created="08-May-2013 11:50:15" changed="30-Jul-2017 13:45:47" weight="0">
 <body_value>
 fstab.mycomp (22-04-2012)
 	UUID=0DC8-54E9	/mnt/SD_8GB_2	vfat	noauto,rw,umask=000,dmask=000,utf8	0	0
@@ -10171,17 +10329,18 @@ quiet — при копировании на файловую систему FAT
 их сохранить нельзя и будет выведено сообщение об ошибке 
 ( хотя файл скопируется ). 
 Чтобы ошибки не появлялись мы просим смонтировать в &quot;молчаливом&quot; режиме
---------------------------------------
 
-Запись на FAT32 раздел под обычным пользователем
+-------------------------------------- NET SHARES
+монтирование фрагмента фс другого компьютера, для доступа с веб-страницы сервера 
 
- монтирование фрагмента фс другого компьютера, для доступа с веб-страницы сервера 
- mount -t cifs -o iocharset=cp1251 //nas/public /mnt/nas   
-монтирование фс с кодировкой WINDOWS, для 
-правильного отображения русских названий папок на странице 
-с кодировкой WINDOWS-1251
+mount -t cifs -o iocharset=cp1251 //nas/public /mnt/nas   
+монтирование фс с кодировкой WINDOWS, для правильного отображения русских названий папок на странице с кодировкой WINDOWS-1251
+
+/etc/fstab
+//192.168.56.1/backup	/mnt/net	cifs	nouato,user,username=vbox1,password=vbox1,rw
+определение параметров монтирования сетевого ресурса для последующего создания папки для резервного копирования (от пользователя www-data выполнить mount /mnt/net )
+
 ------
-
 mount -o bind /mnt/nas/lib /mnt/disk2/Documents/Roman/0_source/www/my_sites/roman-laptev.hut1.ru/lib  
 для доступа к библиотеке через http://myserver/lib
 ------
@@ -11092,7 +11251,7 @@ netsh interface ip add dns name=&quot;Подключение по локальн
 
 </filename>
 </node>
-<node title="new.iks-on.ru" nid="760" mlid="2489" plid="1590" created="16-Mar-2013 14:24:06" changed="16-Mar-2013 14:24:06" weight="0">
+<node title="new.iks-on.ru" nid="760" mlid="2489" plid="1590" created="16-Mar-2013 14:24:06" changed="11-Apr-2017 22:05:32" weight="0">
 <filename>
 
 </filename>
@@ -11199,7 +11358,10 @@ http://flash-world.ru/raznoe/132-notepad_regular_expressions.html
 
 </filename>
 </node>
-<node title="notes" nid="437" mlid="1585" plid="0" created="10-Mar-2012 13:06:30" changed="12-Oct-2014 14:18:28" weight="0">
+<node title="notes" nid="437" mlid="1585" plid="0" created="10-Mar-2012 13:06:30" changed="11-Jun-2017 09:33:44" weight="0">
+<body_value>
+07-06-2016, замена лампы в коридоре между квартирами
+</body_value>
 <filename>
 
 </filename>
@@ -12812,6 +12974,31 @@ echo $tpl_p2;
     1
     {assign var=var value='string'|cat:$var|cat:'string2'}
 &lt;/pre&gt;
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="smb mount" nid="1199" mlid="3370" plid="2552" created="03-Aug-2017 08:32:47" changed="03-Aug-2017 08:34:04" weight="0">
+<body_value>
+Монтировать сетевой ресурс с возможность записи под пользователем
+
+#!/bin/sh
+smbmount //designer-arc/_PHOTOPRINT ^
+         /home/durst/net/designer-arc/_PHOTOPRINT ^
+         -o username=designer,password=foto,uid=durst,gid=users
+======
+smbclient -U пользователь //host (просмотр SMB-ресурсов)
+smbclient -U пользователь //host/share /mnt/network password (текст)
+-----------
+mount -o cifs //host/share /mnt/network -o username=пользователь  
+(монтирование удаленного сетевого ресурса в ФС)
+------------
+net use /user:пользователь \\host\share пароль
+------------
+монтирование через /etc/fstab
+//192.168.1.217/pub /mnt/network/alpha/pub smbfs username=admin,password=super,iocharset=cp1251,codepage=cp866,rw 0 0
+
 </body_value>
 <filename>
 
@@ -15933,7 +16120,7 @@ height: 600,
 
 </filename>
 </node>
-<node title="views" nid="747" mlid="2427" plid="1590" created="04-Mar-2013 11:04:32" changed="16-Aug-2015 18:48:20" weight="0">
+<node title="views" nid="747" mlid="2427" plid="1590" created="04-Mar-2013 11:04:32" changed="11-Apr-2017 22:05:58" weight="0">
 <body_value>
 &lt;?php
 //Drupal 7, Программная работа с представлениями 
@@ -17299,7 +17486,7 @@ echo &quot;&lt;/pre&gt;&quot;;
 
 </filename>
 </node>
-<node title="Вывод дерева терминов таксономии" nid="771" mlid="2500" plid="1590" created="16-Mar-2013 14:33:29" changed="16-Mar-2013 14:33:29" weight="0">
+<node title="Вывод дерева терминов таксономии" nid="771" mlid="2500" plid="1590" created="16-Mar-2013 14:33:29" changed="11-Apr-2017 22:18:34" weight="0">
 <body_value>
 //-----------------------
 // Вывод дерева терминов таксономии
@@ -17411,7 +17598,58 @@ echo $image;
 	print &quot;&lt;/ul&gt;&quot;;
 ?&gt;
 
+=====================
+&lt;style&gt;
+ul{
+	margin:0 !important;
+}
+.depth1{
+	float:left;
+	border:0px solid;
+	margin:10px;
+}
+&lt;/style&gt;
 
+&lt;?php
+	global $base_url;
+	$vid = 2; 
+	$terms = taxonomy_get_tree($vid);
+//print &quot;&lt;pre&gt;&quot;;
+//print_r ($terms);
+//print &quot;&lt;/pre&gt;&quot;;
+	for ($n1=0;$n1&lt;count($terms);$n1++)	{
+		//if ($terms[$n1]-&gt;parents[0]==0)
+		if ($terms[$n1]-&gt;depth==0)		{
+			echo &quot;&lt;ul class='depth1'&gt;&quot;;
+			echo &quot;	&lt;li&gt;&quot;;
+			echo &quot;	&lt;a href='&quot;.$base_url.&quot;/?q=taxonomy/term/&quot;.$terms[$n1]-&gt;tid.&quot;'&gt;&quot;.$terms[$n1]-&gt;name.&quot;&lt;/a&gt;&quot;;
+			echo &quot;	&lt;ul&gt;&quot;;
+			view_child_termins($terms, $terms[$n1]-&gt;tid);
+			echo &quot;	&lt;/ul&gt;&quot;;
+			echo &quot;	&lt;/li&gt;&quot;;
+			echo &quot;&lt;/ul&gt;&quot;;
+		}
+	}
+//=========================================
+// FUNCTIONS
+//=========================================
+function view_child_termins($terms, $test_termin_tid)
+{
+	global $base_url;
+	for ($n2=0;$n2&lt;count($terms);$n2++)
+	{
+		if ($terms[$n2]-&gt;parents[0] == $test_termin_tid)
+		{
+			echo &quot;&lt;li&gt;&quot;;
+			echo &quot;	&lt;a href='&quot;.$base_url.&quot;/?q=taxonomy/term/&quot;.$terms[$n2]-&gt;tid.&quot;'&gt;&quot;.$terms[$n2]-&gt;name.&quot;&lt;/a&gt;&quot;;
+			echo &quot;	&lt;ul&gt;&quot;;
+			view_child_termins($terms, $terms[$n2]-&gt;tid);
+			echo &quot;	&lt;/ul&gt;&quot;;
+			echo &quot;&lt;/li&gt;&quot;;
+		}
+	}
+}//----------------- end func
+?&gt;
 </body_value>
 <filename>
 
@@ -19983,6 +20221,38 @@ drupal_set_content('content', &quot;test!!!&quot;);
 
 </filename>
 </node>
+<node title="добавить в IIS выполнение cmd скрипта" nid="1201" mlid="3372" plid="3111" created="09-Aug-2017 22:05:13" changed="09-Aug-2017 22:05:13" weight="0">
+<body_value>
+----
+test.cmd
+dir c:
+----
+
+inetmgr.msc
+- создать виртуальный каталог cgi-bin
+- добавить в него test.cmd
+- для каталога cgi-bin (выбрать его в левой части страницы настроек)
+выбрать &quot;Сопоставления обработчиков&quot;
+- в правой части выбрать ссылку &quot;Добавить сопоставление модуля&quot;
+Путь запроса: *.cmd
+Модуль: CgiModule
+Имя: CMD
+Ограничения запроса - Доступ - Сценарий
+
+Начальная страница настройки сервера -
+- выбрать &quot;Ограничения ISAPI и CGI&quot;
+- Добавить ограничение (ссылка в правой части)
+- указать &quot;Путь ISAPI или CGI&quot; (D:\documents\laptev\www\cgi-bin\test.cmd)
+- отметить &quot;разрешить выполнение пути расширения&quot;
+
+===========
+https://blogs.iis.net/thomad/how-to-run-a-cgi-program-under-iis-7-0-or-iis-7-5
+как запустить программу под IIS
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="добавить исключение для айфона, apple_detect_oldprice.js" nid="1119" mlid="3239" plid="2355" created="20-Apr-2015 23:38:27" changed="20-Apr-2015 23:38:27" weight="0">
 <body_value>
 $(document).ready(
@@ -21157,7 +21427,7 @@ git commit -m &quot;fix&quot;
 
 </filename>
 </node>
-<node title="передача параметров через объект" nid="1186" mlid="3348" plid="2355" created="05-Feb-2017 02:38:51" changed="05-Feb-2017 02:38:51" weight="0">
+<node title="передача параметров через объект" nid="1186" mlid="3348" plid="2355" created="05-Feb-2017 02:38:51" changed="13-Mar-2017 20:04:59" weight="0">
 <body_value>
 //передача параметров через объект opt с объявлением параметров по умолчанию (opts)
 
@@ -21177,6 +21447,29 @@ _reqTransport({
 alert(&quot;Test!&quot;);
      }
 });
+
+===========================
+_createStore({
+&quot;storeName&quot; : document.getElementById(&quot;storename&quot;).value,
+&quot;callback&quot; : function( res ){
+console.log( res );				
+	}
+});
+
+----
+	var _createStore = function( opt ){
+console.log(arguments);
+		var options = {
+			&quot;dbName&quot;: &quot;dbname&quot;,
+			&quot;storeName&quot;: &quot;&quot;,
+			&quot;callback&quot;: null
+		};
+		//extend options object
+		for(var key in opt ){
+			options[key] = opt[key];
+		}
+console.log(options);
+...........
 </body_value>
 <filename>
 
@@ -21485,9 +21778,8 @@ http://artkiev.com/blog/ssh-tar-tar-gz-zip-rar-bzip2-gzip.htm
 
 </filename>
 </node>
-<node title="создание репозитория" nid="1045" mlid="3141" plid="3006" created="13-Jun-2014 20:11:51" changed="01-May-2016 11:29:14" weight="0">
+<node title="создание репозитория" nid="1045" mlid="3141" plid="3006" created="13-Jun-2014 20:11:51" changed="08-Apr-2017 23:43:50" weight="0">
 <body_value>
-1.
 mkdir htdocs_test &amp;&amp; cd htdocs_test
 git init
 
@@ -21503,8 +21795,27 @@ git status
 
 //разрешить удаленную перезапись ветки мастер
 git config receive.denyCurrentBranch ignore
+
+-----------
+https://git-scm.com/book/ru/v1/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-Git-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F
+инициализирует репозиторий без рабочего каталога:
+
+$ cd /home/GIT
+$ mkdir project.git
+$ cd project.git
+$ git --bare init
+
+# клонирование на удаленном или локальном(vbox1) компьютере
+$ cd myproject
+$ git init
+$ git add .
+$ git commit -m 'initial commit'
+$ git remote add origin ssh://gituser@vbox1:/home/GIT/project.git
+$ git push origin master (или git push -u origin master для связывания локальной ветки master и удаленной ветки master, проверка сокращается до git pull/git push)
+
+
 ===============================
-2.
+
 mkdir htdocs_test &amp;&amp; cd htdics_test
 git clone ssh://laptev.r@xmpp.worest.ru@/home/GIT/qdec/qdec.git
 - залить код
@@ -21519,7 +21830,9 @@ git init
 git add README.md
 git commit -m &quot;first commit&quot;
 git remote add origin https://github.com/romanlaptev/lib.git
-git push -u origin master
+
+git push -u origin master //это отправляет ветку master в удаленный репозиторий и автоматом делает нашу локальную ветку master отслеживаемой с origin/master
+
 
 …or push an existing repository from the command line
 
