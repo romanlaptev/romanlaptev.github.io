@@ -380,6 +380,7 @@ function runTests(){
 		
 		_push( tests, test );
 	};
+
 //--------------------------------------
 //alert(!window.console);
 	if (!window.console){ 
@@ -404,20 +405,57 @@ function runTests(){
 		}
 
 	};
+
 //--------------------------------------
-	
 	var test = {
-		"name" : "is mobile device",
-		"result" : false
+		"name" : "try detect mobile device",
+		"result" : false, 
+		"msg" : "test navigator.userAgent.match(/Mobi/"
 	};
 	if ( navigator.userAgent.match(/Mobi/) ) {
 		test["result"] = true;
-		test["msg"] = "navigator.userAgent.match(/Mobi/) === true";
 	}
 	_push( tests, test );
+
 //--------------------------------------
 	var test = {
-		"name" : "touch supported",
+		"name" : "try detect mobile device",
+		"result" : false, 
+		"msg" : "test (ontouchstart || maxTouchPoints || msMaxTouchPoints)"
+	};
+//	if( (navigator.maxTouchPoints > 0) || 
+//			(navigator.msMaxTouchPoints > 0) ){
+//		test["result"] = true;
+//		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
+//	}
+
+	if( ('ontouchstart' in window) ||
+		(navigator.maxTouchPoints > 0) ||
+		(navigator.msMaxTouchPoints > 0)
+	){
+		test["result"] = true;
+		//test["msg"] = "browser with either Touch Events of Pointer Events running on touch-capable device";
+	}
+	_push( tests, test );
+
+
+//--------------------------------------
+//_log("<p>" + typeof window.orientation +"</p>");
+	var test = {
+		"name" : "try detect mobile device",
+		"result" : false, 
+		"msg" : "test (window.orientation), " + typeof window.orientation
+	};
+
+	if ( typeof window.orientation !== "undefined") {
+		test["result"] = true;
+		test["msg"] = "window.orientation = " + window.orientation;
+	}
+	_push( tests, test );
+
+//--------------------------------------
+	var test = {
+		"name" : "touch supported (window.ontouchstart)",
 		"result" : false
 	};
 	var supportsTouch = false;
@@ -425,33 +463,25 @@ function runTests(){
 			//window.DocumentTouch && document instanceof DocumentTouch) {
 	if ( typeof window.ontouchstart !== "undefined") {
 		test["result"] = true;
-		test["msg"] = "window.ontouchstart === true //iOS & android";
+		test["msg"] = "window.ontouchstart === true";
 	}
 	_push( tests, test );
-//--------------------------------------
 
+//--------------------------------------
 	var test = {
-		"name" : "msPointerEnabled",
-		"result" : false
+		"name" : "msPointerEnabled (IE)",
+		"result" : false,
+		"msg"	: "test support pointer events"
 	};
 	if(window.navigator.msPointerEnabled) {
 		test["result"] = true;
-		//test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
 		test["msg"] = "window.navigator.msPointerEnabled === true";
 	}
 	_push( tests, test );
-//--------------------------------------
 
-	var test = {
-		"name" : "detect Microsoft mobile device",
-		"result" : false
-	};
-	if( (navigator.maxTouchPoints > 0) || 
-			(navigator.msMaxTouchPoints > 0) ){
-		test["result"] = true;
-		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
-	}
-	_push( tests, test );
+
+
+
 //--------------------------------------
 	  
 	var test = {
