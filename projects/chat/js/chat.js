@@ -24,9 +24,9 @@ function checkForm(form){
 //	}//next
 
 	var formValues = {
-		"url" : form.getAttribute("action"),
-		"action" : form.action.value,
-		"creation_date" : form.creation_date.value//,
+		//"url" : form.getAttribute("action"),
+		"action" : form.action.value//,
+		//"creation_date" : form.creation_date.value//,
 		//"user_ip" : "111.111.111.111"
 	};
 
@@ -62,6 +62,7 @@ function checkForm(form){
 console.log("error in form..");
 	}	
 	return false;
+	
 }//end checkForm()	
 
 // function _nameOnChange(){
@@ -80,46 +81,50 @@ console.log("error in form..");
 	// }
 // }
 
-function sendForm( formValues ){
-console.log( formValues);
-/*
-			runAjax( {
-				"requestMethod" : "GET", 
-				//"requestMethod" : "HEAD", 
-				"url" : url, 
-				"onProgress" : function(e){
-					var percentComplete = 0;
-					if(e.lengthComputable) {
-						percentComplete = Math.ceil(e.loaded / e.total * 100);
-						if( webApp.vars["loadProgress"] ){
-							webApp.vars["loadProgress"].value = percentComplete;
-						}
-						if( webApp.vars["loadProgressBar"] ){
-							webApp.vars["loadProgressBar"].className = "progress-bar";
-							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-						}
+function sendForm( opt ){
+	var p = {
+		"action": "",
+		"authorName" : "anonymous",
+		"textMessage" : "",
+		"url" : "chat.php",
+		"callback": null
+	};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}	
+console.log( p );
 
-					}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+	var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"];
+	var url = p["url"]+"?" + params;
+console.log( url );
 
-					
-				},//end onProgress()
-				"callback": function( data ){
+	runAjax( {
+		"requestMethod" : "GET", 
+		"url" : url, 
+		// "onProgress" : function(e){
+			// var percentComplete = 0;
+			// if(e.lengthComputable) {
+				// percentComplete = Math.ceil(e.loaded / e.total * 100);
+			// }
+// console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+		// },//end onProgress()
+		"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
 
-					if( !data || data.length === 0){
-	console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
-						data = [];
-					}
-					
-					if( typeof p["callback"] === "function"){
-						p["callback"](data);
-						return false;
-					} 
-					
-				}//end callback()
-});
-*/
+			// if( !data || data.length === 0){
+// console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
+				// data = [];
+			// }
+			
+			// if( typeof p["callback"] === "function"){
+				// p["callback"](data);
+				//return false;
+			// } 
+			
+		}//end callback()
+	});
+
 }//end sendForm
