@@ -16,7 +16,22 @@ $tableName = "messages";
 
 	$authorName = $_REQUEST["authorName"];
 	$textMessage = $_REQUEST["textMessage"];
+$sql=array();
+//CREATE DATABASE `db1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+$sql["createDB"] = "CREATE DATABASE ".$db_name;
+$sql["createTable"] = "CREATE TABLE IF NOT EXISTS `".$tableName."` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`author` varchar(20) NOT NULL,
+`message` text NOT NULL default \"\",
+`date` varchar( 20 ) default \"\",
+`ip` varchar( 20 ) default \"\",
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
+$sql["insertMessage"] = "";
+
 	$action = $_REQUEST['action'];
+//====================================== start
+	
 	switch ($action){
 		case "save_message":
 // echo PHP_VERSION;
@@ -35,20 +50,19 @@ $tableName = "messages";
 				exit();
 			}
 			
-$db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
-$db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
-$db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
-$db_info .= "<li>MySQL protocol version: " . mysql_get_proto_info() ."</li>";
-$db_info .= "<li>mysql_client_encoding: " . mysql_client_encoding($link) ."</li>";
-echo $db_info;
+// $db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
+// $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
+// $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
+// $db_info .= "<li>MySQL protocol version: " . mysql_get_proto_info() ."</li>";
+// $db_info .= "<li>mysql_client_encoding: " . mysql_client_encoding($link) ."</li>";
+// echo $db_info;
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
 			
 			$db = mysql_select_db($db_name);
 			if (!$db){
-//CREATE DATABASE `db1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-				$sql = "CREATE DATABASE ".$db_name;
-				if (mysql_query($sql, $link) ) {
+				$query = $sql["createDB"];
+				if (mysql_query($query, $link) ) {
 					echo "База $db_name успешно создана\n";
 					saveMessage();
 				} else {
@@ -66,23 +80,17 @@ echo $db_info;
 	
 
 function saveMessage(){
-	global $authorName, $textMessage, $tableName, $link;
-//echo $textMessage;	
-	$sql = "";
-	$sql .= "CREATE TABLE IF NOT EXISTS `".$tableName."` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`author` varchar(20) NOT NULL,
-`message` text NOT NULL default \"\",
-`date` varchar( 20 ) default \"\",
-`ip` varchar( 20 ) default \"\",
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
-
-	if (mysql_query($sql, $link) ) {
+	global $authorName, $textMessage, $tableName, $link, $sql;
+	
+	$query = $sql["createTable"];
+	if (mysql_query($query, $link) ) {
 		echo "table $tableName was created....<br>";
+		$query = $sql["insertMessage"];
+		
 	} else {
 		echo "error created $tableName: " . mysql_error() . "<br>";
 		echo "SQL: " . $sql . "<br>";
+		return false;
 	}				
 
 }//end saveMessage()	
