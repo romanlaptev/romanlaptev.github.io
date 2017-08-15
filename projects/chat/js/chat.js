@@ -26,8 +26,8 @@ function checkForm(form){
 	var formValues = {
 		"url" : form.getAttribute("action"),
 		"action" : form.action.value,
-		"creation_date" : form.creation_date.value,
-		"user_ip" : "111.111.111.111"
+		"creation_date" : form.creation_date.value//,
+		//"user_ip" : "111.111.111.111"
 	};
 
 	var isValid = true;

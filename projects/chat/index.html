@@ -13,12 +13,20 @@
 		<h2>Place for chat</h2>
 	</div>
 	
-	<div class="row">
-		<div class=" panel panel-default col-md-6">
+		<div class=" panel panel-info">
 			<div class="panel-heading">
-				<h3>your message:</h3>
+				<h4>list of messages:</h4>
 			</div>
 			<div class="panel-body">
+			</div>
+		</div>
+	
+		<div class=" panel panel-primary">
+			<div class="panel-heading">
+				<h4>your message:</h4>
+			</div>
+			<div class="panel-body">
+<div class=" col-sm-6 col-md-6 col-lg-6">			
 						<form name="form_message" id="message-form" action="chat.php" method="POST" onSubmit="return checkForm(this);">
 <!--			
 						<form name="form_message" id="message-form" action="chat.php" method="POST">
@@ -35,9 +43,9 @@
 							
 							<button type="submit" class="btn btn-large btn-primary">send</button>
 						</form>
+</div>						
 			</div>
 		</div>
-	</div>
 	
 </div><!-- end container -->
 </body>
