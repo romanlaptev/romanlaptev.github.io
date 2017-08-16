@@ -34,7 +34,10 @@ $sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_da
 '{{ip}}'
 )";
 
-	$action = $_REQUEST['action'];
+	$action = "";
+	if( !empty($_REQUEST['action']) ){
+		$action = $_REQUEST['action'];
+	}
 //====================================== start
 	
 	switch ($action){

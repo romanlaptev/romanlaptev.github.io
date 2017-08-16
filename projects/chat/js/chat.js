@@ -23,7 +23,10 @@ function checkForm(form){
 //console.log(form.elements[n]);
 //	}//next
 
-	var formValues = {};
+	var formValues = {
+		"requestMethod" : form.getAttribute("method"),
+		"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null
+	};
 
 	var isValid = true;
 	var name = form.elements.author_name.value;
@@ -78,11 +81,13 @@ console.log("error in form..");
 
 function sendForm( opt ){
 	var p = {
-		"action": "save_message",
 		"creation_date" : "",
 		"authorName" : "anonymous",
 		"textMessage" : "",
+		"action": "save_message",
 		"url" : "chat.php",
+		"requestMethod" : "GET",
+		"enctype" : null,
 		"callback": null
 	};
 		
@@ -103,13 +108,27 @@ function sendForm( opt ){
 //console.log(d, t);
 	p["creation_date"] = d +" "+ t;
 
-	var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"]+"&date="+p["creation_date"];
-	var url = p["url"]+"?" + params;
-console.log( url );
+//test
+//p["requestMethod"] = "GET";
+
+	var url = p["url"];
+	//if( p["requestMethod"] === "GET"){
+		//var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"]+"&date="+p["creation_date"];
+		//url = p["url"]+"?" + params;
+	//}
+//console.log( url );
+	var params = {
+		"action" : p["action"],
+		"authorName" : p["authorName"],
+		"textMessage" : p["textMessage"],
+		"date" : p["creation_date"]
+	};
 
 	runAjax( {
-		"requestMethod" : "GET", 
+		"requestMethod" : p["requestMethod"], 
+		"enctype" : p["enctype"],
 		"url" : url, 
+		"params" : params,
 		// "onProgress" : function(e){
 			// var percentComplete = 0;
 			// if(e.lengthComputable) {

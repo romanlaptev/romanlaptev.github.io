@@ -164,24 +164,40 @@ console.log(item + ": " + e[item]);
 function runAjax( opt ){
 //console.log(arguments);
 	
-	var options = {
+	var p = {
 		"requestMethod" : "GET", 
+		"enctype" : "",
 		"url" : false, 
-		"params": "",
+		"params": null,
 		"async" :  true,
 		"callback" : null,
 		"onProgress" : null
 	};
 	//extend options object
 	for(var key in opt ){
-		options[key] = opt[key];
+		p[key] = opt[key];
 	}
-//console.log(options);
+console.log(p);
 
-	var requestMethod = options["requestMethod"]; 
-	var url = options["url"]; 
-	var async = options["async"]; 
-	var callback = options["callback"]; 
+	var requestMethod = p["requestMethod"]; 
+	var url = p["url"]; 
+	var async = p["async"]; 
+	var callback = p["callback"]; 
+
+	//get values from params and form paramsStr....
+	if( p["params"] ){
+		var paramsStr = "";
+		for( var item in p["params"]){
+			var value = encodeURIComponent( p["params"][item] );
+			paramsStr += item + "=" + value;
+			paramsStr += "&";
+		}//next
+
+		if( requestMethod !== "POST"){
+			url += "?"+ paramsStr;
+		}
+	}
+
 	
 	if( !url || url.length === 0){
 		var msg = "Parameters error, needed 'url'";			
@@ -201,10 +217,7 @@ console.log( msg, xhr );
 	}
 	
 	var timeStart = new Date();
-	
-//var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
-//xmlhttp.open("GET", '/script.html?'+params, true)
-	
+
 	xhr.open( requestMethod, url, async );
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
@@ -302,8 +315,8 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 				// percentComplete = Math.ceil(e.loaded / e.total * 100);
 			// }
 //console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			if( typeof  options["onProgress"] === "function"){
-				options["onProgress"](e);
+			if( typeof  p["onProgress"] === "function"){
+				p["onProgress"](e);
 			}
 		}
 		
@@ -315,19 +328,19 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 //console.log( "xhr.onprogress ", xhr.onprogress.handleEvent  );
 	}
 
+	//send query	
+	if( requestMethod !== "POST"){
+		var params = null;
+	} else {
+		//http://learn.javascript.ru/xhr-forms
+		var params = paramsStr;
 		
-var test = "setRequestHeader" in xhr;
+		var test = "setRequestHeader" in xhr;
 console.log( "setRequestHeader: " + test );
-	// if (xhr.setRequestHeader) {
-		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	// }
-	// var str = '';
-	//xhr.send(str);
-	
-// var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
-// xmlhttp.open("POST", '/script.html', true)
-// xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-	var params = null;
+		if (test) {
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		}
+	}
 	xhr.send(params);
 
 	function _createRequestObject() {
