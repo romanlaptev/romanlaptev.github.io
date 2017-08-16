@@ -17,7 +17,21 @@
 			<div class="panel-heading">
 				<h4>list of messages:</h4>
 			</div>
-			<div class="panel-body">
+			<div class="panel-body" id="messages">
+<script id="tpl-message-list" type="text/template">
+				<table class="table table-bordered message">
+					<tbody>
+						<tr>
+							<td colspan="3">text : {{textMessage}}</td>
+						</tr>
+						<tr>
+							<td>authorName: {{authorName}}</td>
+							<td>date:{{client_date}}, {{server_date}} </td>
+							<td>ip: {{ip}}</td>
+						</tr>
+					</tbody>	
+				</table>
+</script> 			
 			</div>
 		</div>
 	
@@ -30,8 +44,8 @@
 						<form name="form_message" id="message-form" 
 action="" 
 method="POST" 
-enctype="application/x-www-form-urlencoded" 
-onSubmit="return checkForm(this);">
+enctype="application/x-www-form-urlencoded">
+<!-- onSubmit="return checkForm(this);"> -->
 							<div class="form-group">
 								<label id="name-label">Name: </label>
 								<input type="text" class="form-control" name="author_name" value="anonymous">
