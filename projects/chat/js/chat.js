@@ -108,15 +108,7 @@ function sendForm( opt ){
 //console.log(d, t);
 	p["creation_date"] = d +" "+ t;
 
-//test
-//p["requestMethod"] = "GET";
-
 	var url = p["url"];
-	//if( p["requestMethod"] === "GET"){
-		//var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"]+"&date="+p["creation_date"];
-		//url = p["url"]+"?" + params;
-	//}
-//console.log( url );
 	var params = {
 		"action" : p["action"],
 		"authorName" : p["authorName"],
@@ -129,13 +121,13 @@ function sendForm( opt ){
 		"enctype" : p["enctype"],
 		"url" : url, 
 		"params" : params,
-		// "onProgress" : function(e){
-			// var percentComplete = 0;
-			// if(e.lengthComputable) {
-				// percentComplete = Math.ceil(e.loaded / e.total * 100);
-			// }
-// console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-		// },//end onProgress()
+		"onProgress" : function(e){
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+		},//end onProgress()
 		"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);

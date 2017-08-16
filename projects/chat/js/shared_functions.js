@@ -157,7 +157,10 @@ console.log(item + ": " + e[item]);
 /*
 	runAjax( {
 		"requestMethod" : "GET", 
+		"enctype" : "application/x-www-form-urlencoded", //for POST send form
 		"url" : _vars["db_url"], 
+		"params" : params,// object
+		"onProgress" : function(e){	},
 		"callback": _postFunc
 	});
 */
@@ -166,9 +169,9 @@ function runAjax( opt ){
 	
 	var p = {
 		"requestMethod" : "GET", 
-		"enctype" : "",
+		"enctype" : "application/x-www-form-urlencoded",
 		"url" : false, 
-		"params": null,
+		"params": null,//params object
 		"async" :  true,
 		"callback" : null,
 		"onProgress" : null
@@ -177,7 +180,7 @@ function runAjax( opt ){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 	var requestMethod = p["requestMethod"]; 
 	var url = p["url"]; 
@@ -193,7 +196,7 @@ console.log(p);
 			paramsStr += "&";
 		}//next
 
-		if( requestMethod !== "POST"){
+		if( requestMethod === "GET"){
 			url += "?"+ paramsStr;
 		}
 	}
@@ -334,11 +337,10 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	} else {
 		//http://learn.javascript.ru/xhr-forms
 		var params = paramsStr;
-		
 		var test = "setRequestHeader" in xhr;
-console.log( "setRequestHeader: " + test );
+//console.log( "setRequestHeader: " + test );
 		if (test) {
-			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.setRequestHeader("Content-Type", p["enctype"]);
 		}
 	}
 	xhr.send(params);

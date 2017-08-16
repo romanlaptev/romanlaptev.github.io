@@ -29,8 +29,7 @@ function _log( msg, id){
 	}
 	
 	var output = getDOMobj(id);
-	if( output ){
-	
+	if( output ){	
 		if( msg.length == 0){
 			output.innerHTML = "";
 		} else {
@@ -42,6 +41,12 @@ function _log( msg, id){
 		//alert(msg);
 		//document.writeln(msg);
 	}
+	
+	if( typeof _showHiddenLog === "function"){
+//console.log(_showHiddenLog);
+		_showHiddenLog();
+	}
+	
 }//end _log()
 
 function getDOMobj(id){
@@ -184,11 +189,14 @@ function getenv(i){
 //$_GET = parseGetParams("?test=1"); 
 //console.log( $_GET);
 //**************************************
-function parseGetParams( parse_url ) { 
+function parseGetParams( parseStr ) { 
 
-	if( !parse_url ){
+	if( !parseStr ){
 		var parse_url = window.location.search.substring(1).split("&"); 
+	} else {
+		var parse_url = parseStr.split("&"); 
 	}
+//console.log(parse_url);
 	
 	var $_GET = {}; 
 	for(var n = 0; n < parse_url.length; n++) { 
@@ -205,7 +213,6 @@ function parseGetParams( parse_url ) {
 
 
 function detectBrowsers(){
-
 	var out = navigator.userAgent+"\n\r";
 	var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
 	var isiPad = navigator.userAgent.toLowerCase().indexOf("ipad");
@@ -310,33 +317,54 @@ function getXMLDocument(url)  {
 	}
 }//end getXMLDocument
 
+
 /*
 	runAjax( {
 		"requestMethod" : "GET", 
+		"enctype" : "application/x-www-form-urlencoded", //for POST send form
 		"url" : _vars["db_url"], 
+		"params" : params,// object
+		"onProgress" : function(e){	},
 		"callback": _postFunc
 	});
 */
 function runAjax( opt ){
 //console.log(arguments);
 	
-	var options = {
+	var p = {
 		"requestMethod" : "GET", 
+		"enctype" : "application/x-www-form-urlencoded",
 		"url" : false, 
-		"params": "",
+		"params": null,//params object
 		"async" :  true,
-		"callback" : null
+		"callback" : null,
+		"onProgress" : null
 	};
 	//extend options object
 	for(var key in opt ){
-		options[key] = opt[key];
+		p[key] = opt[key];
 	}
-//console.log(options);
+//console.log(p);
 
-	var requestMethod = options["requestMethod"]; 
-	var url = options["url"]; 
-	var async = options["async"]; 
-	var callback = options["callback"]; 
+	var requestMethod = p["requestMethod"]; 
+	var url = p["url"]; 
+	var async = p["async"]; 
+	var callback = p["callback"]; 
+
+	//get values from params and form paramsStr....
+	if( p["params"] ){
+		var paramsStr = "";
+		for( var item in p["params"]){
+			var value = encodeURIComponent( p["params"][item] );
+			paramsStr += item + "=" + value;
+			paramsStr += "&";
+		}//next
+
+		if( requestMethod === "GET"){
+			url += "?"+ paramsStr;
+		}
+	}
+
 	
 	if( !url || url.length === 0){
 		var msg = "Parameters error, needed 'url'";			
@@ -346,6 +374,7 @@ console.log( msg );
 	}
 	
 	var xhr = _createRequestObject();
+
 	if ( !xhr ) {
 console.log("error, ", xhr);
 		var msg = "_createRequestObject() error";			
@@ -355,7 +384,7 @@ console.log( msg, xhr );
 	}
 	
 	var timeStart = new Date();
-	
+
 	xhr.open( requestMethod, url, async );
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
@@ -370,30 +399,36 @@ console.log( msg, xhr );
 					
 //console.log(xhr.getResponseHeader('X-Powered-By') );
 					var all_headers = xhr.getAllResponseHeaders();
-//console.log( all_headers );
+console.log( all_headers );
 					
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-					
 //console.log( xhr.responseText );
 //console.log( xhr.responseXML );
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
+//var test = xhr.responseXML.selectNodes("//pma_xml_export");	
+//var test = xhr.responseXML.getElementsByTagName("database");
+//console.log( test.item(0).nodeName);
 							var data = xhr.responseXML;
+							callback(data);
 						} else {
 							var data = xhr.responseText;
+							callback(data);
 						}
-						callback(data);
 					}
 
 				} else {
-console.log(xhr);					
+//console.log(xhr);					
 _log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
 _log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
 _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
+					if( typeof callback === "function"){
+						callback( xhr.responseText );
+					}
 				}
 				
 		}
@@ -434,7 +469,7 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		// }
 	// }
 // console.log( "xhr.onloadstart " + xhr.onloadstart  );
-	
+
 //console.log( "onprogress" in xhr  );
 //console.log( xhr.responseType, typeof xhr.responseType );
 //console.log( window.ProgressEvent, typeof  window.ProgressEvent);
@@ -442,41 +477,53 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
-			var percentComplete = 0;
-			if(e.lengthComputable) {
-				percentComplete = Math.ceil(e.loaded / e.total * 100);
-			}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			if( document.getElementById("load-progress") ){
-				document.getElementById("load-progress").value = percentComplete;
+			// var percentComplete = 0;
+			// if(e.lengthComputable) {
+				// percentComplete = Math.ceil(e.loaded / e.total * 100);
+			// }
+//console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			if( typeof  p["onProgress"] === "function"){
+				p["onProgress"](e);
 			}
 		}
+		
+		//xhr.addEventListener('progress', function(e) {
+//console.log("ajax onprogress", e);
+		//}, false);
+		
 //console.log( "xhr.onprogress ", xhr.onprogress);
 //console.log( "xhr.onprogress ", xhr.onprogress.handleEvent  );
 	}
 
-//console.log( "setRequestHeader" in xhr  );
-	// if (xhr.setRequestHeader) {
-		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	// }
-	// var str = '';
-	//xhr.send(str);
-	xhr.send();
+	//send query	
+	if( requestMethod !== "POST"){
+		var params = null;
+	} else {
+		//http://learn.javascript.ru/xhr-forms
+		var params = paramsStr;
+		var test = "setRequestHeader" in xhr;
+//console.log( "setRequestHeader: " + test );
+		if (test) {
+			xhr.setRequestHeader("Content-Type", p["enctype"]);
+		}
+	}
+	xhr.send(params);
 
 	function _createRequestObject() {
 		var request = false;
 		
 		if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+//console.log("try use XMLHttpRequest");		
 			request = new XMLHttpRequest();
 		} 
 
 		if(!request){ // IE
-//console.log("use Microsoft.XMLHTTP");		
+//console.log("try use Microsoft.XMLHTTP");		
 			request = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 
 		if(!request){
-//console.log("use Msxml2.XMLHTTP");		
+//console.log("try use Msxml2.XMLHTTP");		
 			request=new ActiveXObject('Msxml2.XMLHTTP');
 		}
 
