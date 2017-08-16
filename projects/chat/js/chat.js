@@ -152,18 +152,29 @@ var _chat = function ( opt ){
 	function _loadMessages(){
 //console.log( _vars["templates"] );
 
-		var messages = [];
-		messages.push({"textMessage": "test1"});
+		var data = [];
+		data.push({
+			"textMessage": "test1",
+			"authorName" : "author1"
+		});
+		data.push({
+			"textMessage": "test2",
+			"authorName" : "author2"
+		});
+		data.push({
+			"textMessage": "test3",
+			"authorName" : "author3"
+		});
 		
-		_insertMessage({
-			"messages": messages
+		_insertMessages({
+			"data": data
 		});
 	}//end _loadMessages()
 
-	function _insertMessage( opt ){
+	function _insertMessages( opt ){
 		var p = {
 			"templateID": "tpl-message-list",
-			"messages" : false
+			"data" : null
 		};
 		//extend options object
 		for(var key in opt ){
@@ -172,12 +183,31 @@ var _chat = function ( opt ){
 console.log(p);
 		
 		var templateID = p["templateID"];
-		var html = _vars["templates"][templateID];
-		html = html.replace("{{textMessage}}", p["messages"][0]["textMessage"] );
+		//var html = _vars["templates"][templateID];
+		//html = html.replace("{{textMessage}}", p["data"][0]["textMessage"] );
+		//_vars["messages"].innerHTML = html;
 		
-		_vars["messages"].innerHTML = html;
+		var listHtml = "";
+		var itemHtml = "";
+		for( var n= 0; n < p["data"].length; n++){
+			
+			itemHtml = _vars["templates"][ templateID];
+			var items = p["data"][n];
+			for( var key in items){
+//console.log(key, items[key]);
+				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, items[key]);
+					itemHtml = itemHtml.replace("{{"+key+"}}", items[key]);
+				}
+			}//next
+			listHtml += itemHtml;
+//console.log(listHtml);
+			
+		}//next
 		
-	}//end _insertMessage()
+		_vars["messages"].innerHTML = listHtml;
+		
+	}//end _insertMessages()
 	
 	// public interfaces
 	return{
