@@ -23,12 +23,7 @@ function checkForm(form){
 //console.log(form.elements[n]);
 //	}//next
 
-	var formValues = {
-		//"url" : form.getAttribute("action"),
-		"action" : form.action.value//,
-		//"creation_date" : form.creation_date.value//,
-		//"user_ip" : "111.111.111.111"
-	};
+	var formValues = {};
 
 	var isValid = true;
 	var name = form.elements.author_name.value;
@@ -83,20 +78,32 @@ console.log("error in form..");
 
 function sendForm( opt ){
 	var p = {
-		"action": "",
+		"action": "save_message",
+		"creation_date" : "",
 		"authorName" : "anonymous",
 		"textMessage" : "",
 		"url" : "chat.php",
 		"callback": null
 	};
 		
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}	
-console.log( p );
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}	
+//console.log( p );
+	
+	//get creation date
+	var now = new Date();
+	var sYear = now.getFullYear();
+	var sMonth = now.getMonth();
+	var intMonth = parseInt( sMonth ) + 1;
+	var sDate = now.getDate();
+	var d = sYear + "-" + intMonth + "-" + sDate;
+	var t = now.toTimeString();
+//console.log(d, t);
+	p["creation_date"] = d +" "+ t;
 
-	var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"];
+	var params = "action="+p["action"]+"&authorName="+p["authorName"]+"&textMessage="+p["textMessage"]+"&date="+p["creation_date"];
 	var url = p["url"]+"?" + params;
 console.log( url );
 
