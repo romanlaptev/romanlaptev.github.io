@@ -8,6 +8,7 @@ console.log( webChat );
 var _chat = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
+		"requestUrl" : "chat.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -87,7 +88,7 @@ var _chat = function ( opt ){
 			"authorName" : "anonymous",
 			"textMessage" : "",
 			"action": "save_message",
-			"url" : "chat.php",
+			"url" : _vars["requestUrl"],
 			"requestMethod" : "GET",
 			"enctype" : null,
 			"callback": null
@@ -155,23 +156,41 @@ var _chat = function ( opt ){
 	function _loadMessages(){
 //console.log( _vars["templates"] );
 
-		var data = [];
-		data.push({
-			"textMessage": "test1",
-			"authorName" : "author1"
-		});
-		data.push({
-			"textMessage": "test2",
-			"authorName" : "author2"
-		});
-		data.push({
-			"textMessage": "test3",
-			"authorName" : "author3"
+		// var data = [];
+		// data.push({
+			// "textMessage": "test1",
+			// "authorName" : "author1"
+		// });
+		// data.push({
+			// "textMessage": "test2",
+			// "authorName" : "author2"
+		// });
+		// data.push({
+			// "textMessage": "test3",
+			// "authorName" : "author3"
+		// });
+		
+		var params = {
+			"action" : "get_messages"
+		};
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			"params" : params,
+			"onProgress" : function(e){
+				var percentComplete = 0;
+				if(e.lengthComputable) {
+					percentComplete = Math.ceil(e.loaded / e.total * 100);
+				}
+	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			},//end onProgress()
+			"callback": function( data ){
+				// _insertMessages({
+					// "data": data
+				// });
+			}//end callback()
 		});
 		
-		_insertMessages({
-			"data": data
-		});
 	}//end _loadMessages()
 
 	function _insertMessages( opt ){

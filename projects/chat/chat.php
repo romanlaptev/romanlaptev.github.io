@@ -9,15 +9,15 @@ echo "<pre>";
 print_r ($_REQUEST);
 echo "</pre>";
 
-$host = "localhost";
-$user = "root";
-$password = "master";
-$db_name = "db1";
-$tableName = "messages";
+$_vars=array();
+$_vars["config"]["host"] = "localhost";
+$_vars["config"]["user"] = "root";
+$_vars["config"]["password"] = "master";
+$_vars["config"]["dbName"] = "db1";
+$_vars["config"]["tableName"] = "messages";
 
-$sql=array();
-$sql["createDB"] = "CREATE DATABASE ".$db_name." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-$sql["createTable"] = "CREATE TABLE IF NOT EXISTS `".$tableName."` (
+$_vars["sql"]["createDB"] = "CREATE DATABASE ".$_vars["config"]["dbName"]." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
+$_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `author` varchar(20) NOT NULL,
 `message` text NOT NULL default \"\",
@@ -26,7 +26,7 @@ $sql["createTable"] = "CREATE TABLE IF NOT EXISTS `".$tableName."` (
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
-$sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{textMessage}}',
 '{{client_date}}', 
@@ -45,6 +45,11 @@ $sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_da
 // echo PHP_VERSION;
 // echo phpversion();
 // echo PHP_OS;
+			$host = $_vars["config"]["host"];
+			$user = $_vars["config"]["user"];
+			$password = $_vars["config"]["password"];
+			$dbName = $_vars["config"]["dbName"];
+			$tableName = $_vars["config"]["tableName"];
 			try{
 				$link = mysql_connect($host, $user, $password);
 				if (!$link){
@@ -64,22 +69,19 @@ $sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_da
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
 			
-			$db = mysql_select_db($db_name);
+			$db = mysql_select_db($dbName);
 			if (!$db){
-				$query = $sql["createDB"];
+				$query = $_vars["sql"]["createDB"];
 				if (mysql_query($query, $link) ) {
-					echo "base $db_name created succesfully<br>";
-					$db = mysql_select_db($db_name);
-// echo "<pre>";
-// print_r($db);
-// echo "</pre>";
+					echo "base $dbName created succesfully<br>";
+					$db = mysql_select_db($dbName);
 					if($db){
 						saveMessage();
 					}
 					
 				} else {
-					echo "error create $db_name: " . mysql_error() . "<br>";
-					echo "SQL: " . $sql . "<br>";
+					echo "error create $dbName: " . mysql_error() . "<br>";
+					echo "SQL: " . $query . "<br>";
 				}				
 			} else {
 				saveMessage();
@@ -88,23 +90,57 @@ $sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_da
 			mysql_close ($link);
 
 		break;
+		
+		case "get_messages":
+			$_vars["link"] = connectDB();
+//echo $_vars["link"];
+			mysql_close ( $_vars["link"] );
+		break;
+		
 	}//end switch
 	
+function connectDB(){
+	global $_vars;
+// echo "<pre>";
+// print_r($_vars);
+// echo "</pre>";
 
+	$host = $_vars["config"]["host"];
+	$user = $_vars["config"]["user"];
+	$password = $_vars["config"]["password"];
+	$dbName = $_vars["config"]["dbName"];
+	$tableName = $_vars["config"]["tableName"];
+	
+	try{
+		$link = mysql_connect($host, $user, $password);
+		if (!$link){
+			throw new Exception('MySQL Connection Database Error: ' . mysql_error());
+		} else{
+			return $link;
+		}
+		
+	}catch(Exception $e){
+		echo "exception: ",  $e->getMessage(), "\n";
+		exit();
+	}
+
+}//end connectDB()
+	
 function saveMessage(){
-	global $tableName, $link, $sql;
+	global $_vars, $link;
 
 	$authorName = $_REQUEST["authorName"];
 	$textMessage = $_REQUEST["textMessage"];
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
+	$tableName = $_vars["config"]["tableName"];
 	
-	$query = $sql["createTable"];
+	$query = $_vars["sql"]["createTable"];
 	if (mysql_query($query, $link) ) {
 		echo "table $tableName was created....<br>";
 
-		$query = $sql["insertMessage"];
+		$query = $_vars["sql"]["insertMessage"];
 		$query = str_replace("{{authorName}}", $authorName, $query);
 		$query = str_replace("{{textMessage}}", $textMessage, $query);
 		$query = str_replace("{{client_date}}", $clientDate, $query);
@@ -115,13 +151,13 @@ function saveMessage(){
 			echo "record was inserted....<br>";
 		} else {
 			echo "error INSERT: " . mysql_error() . "<br>";
-			echo "SQL: " . $sql . "<br>";
+			echo "SQL: " . $query . "<br>";
 			return false;
 		}
 		
 	} else {
 		echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
-		echo "SQL: " . $sql . "<br>";
+		echo "SQL: " . $query . "<br>";
 		return false;
 	}				
 }//end saveMessage()	
