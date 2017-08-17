@@ -33,21 +33,15 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `
 '{{server_date}}', 
 '{{ip}}'
 )";
-$_vars["sql"]["getMessages"] = "SELECT author, message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["getMessages"] = "SELECT id, author, message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 
 	$action = "";
 	if( !empty($_REQUEST['action']) ){
 		$action = $_REQUEST['action'];
 	}
-//====================================== start
-	
-	switch ($action){
-		case "save_message":
-// echo PHP_VERSION;
-// echo phpversion();
-// echo PHP_OS;
-			
-			$_vars["link"] = connectDB();
+//========================================= start
+	$_vars["link"] = connectDB();
 // $db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
 // $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
 // $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
@@ -56,7 +50,13 @@ $_vars["sql"]["getMessages"] = "SELECT author, message, client_date, server_date
 // echo $db_info;
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
-			
+//echo $_vars["link"];
+	
+	switch ($action){
+		case "save_message":
+// echo PHP_VERSION;
+// echo phpversion();
+// echo PHP_OS;
 			$dbName = $_vars["config"]["dbName"];
 			$tableName = $_vars["config"]["tableName"];
 			$db = mysql_select_db($dbName, $_vars["link"]);
@@ -76,26 +76,39 @@ $_vars["sql"]["getMessages"] = "SELECT author, message, client_date, server_date
 			} else {
 				saveMessage();
 			}
-
-			mysql_close ( $_vars["link"] );
 		break;
 		
 		case "get_messages":
-			$_vars["link"] = connectDB();
-//echo $_vars["link"];
 			$dbName = $_vars["config"]["dbName"];
-			$tableName = $_vars["config"]["tableName"];
+			//$tableName = $_vars["config"]["tableName"];
 			$db = mysql_select_db($dbName, $_vars["link"]);
 			if($db){
 				getMessages();
 			} else {
 				echo "error select $dbName: " . mysql_error() . "<br>";
 			}				
+		break;
 
-			mysql_close ( $_vars["link"] );
+		case "delete_message":
+			if( !empty($_REQUEST['id']) ){
+				$id = $_REQUEST["id"];
+				$dbName = $_vars["config"]["dbName"];
+				
+				$db = mysql_select_db( $dbName, $_vars["link"]);
+				if($db){
+					deleteMessage($id);
+				} else {
+					echo "error select $dbName: " . mysql_error() . "<br>";
+				}				
+			}
+		break;
+
+		case "edit_message":
 		break;
 		
 	}//end switch
+	mysql_close ( $_vars["link"] );
+//=========================================== end	
 	
 function connectDB(){
 	global $_vars;
@@ -169,6 +182,22 @@ function getMessages(){
 		$json = json_encode($messages);
 		//$error = json_last_error();		
 echo $json;
+	}
+	
+}//end getMessages()	
+
+function deleteMessage( $id ){
+	global $_vars;
+
+	$query = $_vars["sql"]["deleteMessage"];
+	$query = str_replace("{{id}}", $id, $query);
+//echo $query;
+	if (mysql_query($query, $_vars["link"]) ) {
+		echo "record $id was deleted....<br>";
+	} else {
+		echo "error DELETE: " . mysql_error() . "<br>";
+		echo "SQL: " . $query . "<br>";
+		return false;
 	}
 	
 }//end getMessages()	

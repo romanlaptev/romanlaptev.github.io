@@ -12,11 +12,13 @@ var _chat = function ( opt ){
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
-		}
+		},
+		"messagesList" : getDOMobj("messages"),		
 	};
 
 	var _init = function(){
 //console.log("init chat");
+		defineEvents();
 		loadMessages();
 		//define events
 		document.forms["form_message"].onsubmit = function(e){  
@@ -33,6 +35,52 @@ var _chat = function ( opt ){
 	}//end _getTpl()
 	
 
+	function defineEvents(){
+//console.log( _vars.messagesList );
+
+		if( _vars.messagesList ){
+			_vars.messagesList.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+// //console.log( this );//page-container
+// //console.log( target.tagName );
+// //console.log( event.eventPhase );
+// //console.log( "preventDefault: " + event.preventDefault );
+				// //event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+				// //event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+				
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+
+							var search = target.href.split("#"); 
+							var parseStr = search[1]; 
+//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+								if( parseStr.indexOf("edit_message") !== -1 ||
+									parseStr.indexOf("delete_message") !== -1){
+										var p = parseStr.split("-");
+										serviceAction({
+											"action" : p[0],
+											"id": p[1]
+										});
+								}
+							} else {
+		// console.log( "Warn! error parse url in " + target.href );
+							}
+					}
+				}
+				
+			}//end event
+		}
+		
+	}//end defineEvents()
+	
 	function _checkForm(form){
 //console.log(form);
 	//for(var key in form){
@@ -217,7 +265,8 @@ var _chat = function ( opt ){
 //console.log(key, items[key]);
 				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, items[key]);
-					itemHtml = itemHtml.replace("{{"+key+"}}", items[key]);
+					var key2 = "{{"+key+"}}";
+					itemHtml = itemHtml.replace(new RegExp(key2, 'g'), items[key]);
 				}
 			}//next
 			listHtml += itemHtml;
@@ -228,6 +277,28 @@ var _chat = function ( opt ){
 		_vars["messages"].innerHTML = listHtml;
 		
 	}//end _insertMessages()
+	
+	function serviceAction(opt){
+		var p = {
+			"action" : "",
+			"id" : null
+		};
+		
+		//extend parameters object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			"params" : p,
+			"callback": function( data ){
+				loadMessages();
+			}//end callback()
+		});
+		
+	}//end seviceAction
 	
 	// public interfaces
 	return{
