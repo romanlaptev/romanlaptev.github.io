@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Making a Shoutbox with PHP and jQuery</title>
+        
+        <link rel="stylesheet" href="./assets/css/emojione.min.css"/>
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    </head>
+    
+    <body>
+     
+        <div class="shoutbox">
+            
+            <h1>Shout box <img src='./assets/img/refresh.png'/></h1>
+            
+            <ul class="shoutbox-content"></ul>
+            
+            <div class="shoutbox-form">
+                <h2>Write a message <span>×</span></h2>
+                
+                <form action="./publish.php" method="post">
+                    <label for="shoutbox-name">nickname </label> <input type="text" id="shoutbox-name" name="name"/>
+                    <label class="shoutbox-comment-label" for="shoutbox-comment">message </label> <textarea id="shoutbox-comment" name="comment" maxlength='240'></textarea>
+                    <input type="submit" value="Shout!"/>
+                </form>
+            </div>
+            
+        </div>
+
+        <footer>
+            <a class="tz" href="http://tutorialzine.com/2015/01/shoutbox-php-jquery/">Tutorial: Making a Shoutbox with PHP and jQuery</a>
+            <div id="tzine-actions"></div>
+            <span class="close">✕</span>
+        </footer>
+
+        <!-- Include jQuery and the EmojiOne library -->
+        <script src="./assets/js/jquery-2.1.3.min.js"></script>
+        <script src="./assets/js/emojione.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+
+    </body>
+    
+</html>
