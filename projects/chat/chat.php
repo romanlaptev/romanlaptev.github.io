@@ -4,10 +4,10 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-echo "<pre>";
+//echo "<pre>";
 //print_r ($_SERVER);
-print_r ($_REQUEST);
-echo "</pre>";
+//print_r ($_REQUEST);
+//echo "</pre>";
 
 $_vars=array();
 $_vars["config"]["host"] = "localhost";
@@ -33,6 +33,7 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `
 '{{server_date}}', 
 '{{ip}}'
 )";
+$_vars["sql"]["getMessages"] = "SELECT author, message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
 
 	$action = "";
 	if( !empty($_REQUEST['action']) ){
@@ -45,21 +46,8 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `
 // echo PHP_VERSION;
 // echo phpversion();
 // echo PHP_OS;
-			$host = $_vars["config"]["host"];
-			$user = $_vars["config"]["user"];
-			$password = $_vars["config"]["password"];
-			$dbName = $_vars["config"]["dbName"];
-			$tableName = $_vars["config"]["tableName"];
-			try{
-				$link = mysql_connect($host, $user, $password);
-				if (!$link){
-					throw new Exception('MySQL Connection Database Error: ' . mysql_error());
-				}				
-			}catch(Exception $e){
-				echo "exception: ",  $e->getMessage(), "\n";
-				exit();
-			}
 			
+			$_vars["link"] = connectDB();
 // $db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
 // $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
 // $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
@@ -69,12 +57,14 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
 			
-			$db = mysql_select_db($dbName);
+			$dbName = $_vars["config"]["dbName"];
+			$tableName = $_vars["config"]["tableName"];
+			$db = mysql_select_db($dbName, $_vars["link"]);
 			if (!$db){
 				$query = $_vars["sql"]["createDB"];
-				if (mysql_query($query, $link) ) {
+				if (mysql_query($query, $_vars["link"]) ) {
 					echo "base $dbName created succesfully<br>";
-					$db = mysql_select_db($dbName);
+					$db = mysql_select_db($dbName, $_vars["link"]);
 					if($db){
 						saveMessage();
 					}
@@ -87,13 +77,21 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `
 				saveMessage();
 			}
 
-			mysql_close ($link);
-
+			mysql_close ( $_vars["link"] );
 		break;
 		
 		case "get_messages":
 			$_vars["link"] = connectDB();
 //echo $_vars["link"];
+			$dbName = $_vars["config"]["dbName"];
+			$tableName = $_vars["config"]["tableName"];
+			$db = mysql_select_db($dbName, $_vars["link"]);
+			if($db){
+				getMessages();
+			} else {
+				echo "error select $dbName: " . mysql_error() . "<br>";
+			}				
+
 			mysql_close ( $_vars["link"] );
 		break;
 		
@@ -127,7 +125,7 @@ function connectDB(){
 }//end connectDB()
 	
 function saveMessage(){
-	global $_vars, $link;
+	global $_vars;
 
 	$authorName = $_REQUEST["authorName"];
 	$textMessage = $_REQUEST["textMessage"];
@@ -137,7 +135,7 @@ function saveMessage(){
 	$tableName = $_vars["config"]["tableName"];
 	
 	$query = $_vars["sql"]["createTable"];
-	if (mysql_query($query, $link) ) {
+	if (mysql_query($query, $_vars["link"]) ) {
 		echo "table $tableName was created....<br>";
 
 		$query = $_vars["sql"]["insertMessage"];
@@ -147,7 +145,7 @@ function saveMessage(){
 		$query = str_replace("{{server_date}}", $serverDate, $query);
 		$query = str_replace("{{ip}}", $ip, $query);
 		
-		if (mysql_query($query, $link) ) {
+		if (mysql_query($query, $_vars["link"]) ) {
 			echo "record was inserted....<br>";
 		} else {
 			echo "error INSERT: " . mysql_error() . "<br>";
@@ -162,19 +160,31 @@ function saveMessage(){
 	}				
 }//end saveMessage()	
 
-// function get_db_data( $sql ){
-	// $data = array();
-	// $res = mysql_query($sql) or die( "Ошибка при выполнении запроса $sql, ".mysql_error() );
-	// for( $n = 0; $n < mysql_num_rows ($res); $n++){
-		// $row = mysql_fetch_object($res);
-// //echo "<pre>";
-// //print_r ($row);
-// //echo "</pre>";
-		// $data[] = $row;
-	// }//next row
+function getMessages(){
+	global $_vars;
+
+	$query = $_vars["sql"]["getMessages"];
+	$messages = getData( $query, $_vars["link"] );
+	if( count($messages) > 0 ){
+		$json = json_encode($messages);
+		//$error = json_last_error();		
+echo $json;
+	}
 	
-	// return $data;
-// }//end get_db_data()
+}//end getMessages()	
+
+function getData( $query, $link ){
+	$data = array();
+	$res = mysql_query($query, $link) or die( "error run query:  $query, ".mysql_error() );
+	for( $n = 0; $n < mysql_num_rows ($res); $n++){
+		$row = mysql_fetch_object($res);
+//echo "<pre>";
+//print_r ($row);
+//echo "</pre>";
+		$data[] = $row;
+	}//next row
+	return $data;
+}//end getData()
 
 /*
 //---------------------------------------------

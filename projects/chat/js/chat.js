@@ -17,7 +17,7 @@ var _chat = function ( opt ){
 
 	var _init = function(){
 //console.log("init chat");
-		_loadMessages();
+		loadMessages();
 		//define events
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
@@ -135,25 +135,13 @@ var _chat = function ( opt ){
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( data ){
-	var msg = "load " + url ;
-	console.log(msg);
-
-				// if( !data || data.length === 0){
-	// console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
-					// data = [];
-				// }
-				
-				// if( typeof p["callback"] === "function"){
-					// p["callback"](data);
-					//return false;
-				// } 
-				
+				loadMessages();
 			}//end callback()
 		});
 
 	}//end sendForm
 
-	function _loadMessages(){
+	function loadMessages(){
 //console.log( _vars["templates"] );
 
 		// var data = [];
@@ -185,13 +173,23 @@ var _chat = function ( opt ){
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( data ){
-				// _insertMessages({
-					// "data": data
-				// });
+//console.log(data.length);				
+
+				if( data.length > 0){
+						var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+//console.log( jsonObj );
+					_insertMessages({
+						"data": jsonObj
+					});
+				}
+				
 			}//end callback()
 		});
 		
-	}//end _loadMessages()
+	}//end loadMessages()
 
 	function _insertMessages( opt ){
 		var p = {
@@ -202,7 +200,7 @@ var _chat = function ( opt ){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 		
 		var templateID = p["templateID"];
 		//var html = _vars["templates"][templateID];
