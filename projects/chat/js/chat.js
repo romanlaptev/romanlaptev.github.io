@@ -8,15 +8,18 @@ console.log( webChat );
 var _chat = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
+		"requestUrl" : "chat.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
-		}
+		},
+		"messagesList" : getDOMobj("messages"),		
 	};
 
 	var _init = function(){
 //console.log("init chat");
-		_loadMessages();
+		defineEvents();
+		loadMessages();
 		//define events
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
@@ -32,6 +35,52 @@ var _chat = function ( opt ){
 	}//end _getTpl()
 	
 
+	function defineEvents(){
+//console.log( _vars.messagesList );
+
+		if( _vars.messagesList ){
+			_vars.messagesList.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+// //console.log( this );//page-container
+// //console.log( target.tagName );
+// //console.log( event.eventPhase );
+// //console.log( "preventDefault: " + event.preventDefault );
+				// //event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+				// //event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+				
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+
+							var search = target.href.split("#"); 
+							var parseStr = search[1]; 
+//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+								if( parseStr.indexOf("edit_message") !== -1 ||
+									parseStr.indexOf("delete_message") !== -1){
+										var p = parseStr.split("-");
+										serviceAction({
+											"action" : p[0],
+											"id": p[1]
+										});
+								}
+							} else {
+		// console.log( "Warn! error parse url in " + target.href );
+							}
+					}
+				}
+				
+			}//end event
+		}
+		
+	}//end defineEvents()
+	
 	function _checkForm(form){
 //console.log(form);
 	//for(var key in form){
@@ -87,7 +136,7 @@ var _chat = function ( opt ){
 			"authorName" : "anonymous",
 			"textMessage" : "",
 			"action": "save_message",
-			"url" : "chat.php",
+			"url" : _vars["requestUrl"],
 			"requestMethod" : "GET",
 			"enctype" : null,
 			"callback": null
@@ -117,6 +166,9 @@ var _chat = function ( opt ){
 			"textMessage" : p["textMessage"],
 			"date" : p["creation_date"]
 		};
+//test
+//url="http://graphic-art-collection.16mb.com/php/test_mysql.php";
+//params={};
 
 		runAjax( {
 			"requestMethod" : p["requestMethod"], 
@@ -131,45 +183,61 @@ var _chat = function ( opt ){
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( data ){
-	var msg = "load " + url ;
-	console.log(msg);
-
-				// if( !data || data.length === 0){
-	// console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
-					// data = [];
-				// }
-				
-				// if( typeof p["callback"] === "function"){
-					// p["callback"](data);
-					//return false;
-				// } 
-				
+				loadMessages();
 			}//end callback()
 		});
 
 	}//end sendForm
 
-	function _loadMessages(){
+	function loadMessages(){
 //console.log( _vars["templates"] );
 
-		var data = [];
-		data.push({
-			"textMessage": "test1",
-			"authorName" : "author1"
-		});
-		data.push({
-			"textMessage": "test2",
-			"authorName" : "author2"
-		});
-		data.push({
-			"textMessage": "test3",
-			"authorName" : "author3"
+		// var data = [];
+		// data.push({
+			// "textMessage": "test1",
+			// "authorName" : "author1"
+		// });
+		// data.push({
+			// "textMessage": "test2",
+			// "authorName" : "author2"
+		// });
+		// data.push({
+			// "textMessage": "test3",
+			// "authorName" : "author3"
+		// });
+		
+		var params = {
+			"action" : "get_messages"
+		};
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			"params" : params,
+			"onProgress" : function(e){
+				var percentComplete = 0;
+				if(e.lengthComputable) {
+					percentComplete = Math.ceil(e.loaded / e.total * 100);
+				}
+	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			},//end onProgress()
+			"callback": function( data ){
+//console.log(data.length);				
+
+				if( data.length > 0){
+						var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+//console.log( jsonObj );
+					_insertMessages({
+						"data": jsonObj
+					});
+				}
+				
+			}//end callback()
 		});
 		
-		_insertMessages({
-			"data": data
-		});
-	}//end _loadMessages()
+	}//end loadMessages()
 
 	function _insertMessages( opt ){
 		var p = {
@@ -180,7 +248,7 @@ var _chat = function ( opt ){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 		
 		var templateID = p["templateID"];
 		//var html = _vars["templates"][templateID];
@@ -197,7 +265,8 @@ console.log(p);
 //console.log(key, items[key]);
 				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, items[key]);
-					itemHtml = itemHtml.replace("{{"+key+"}}", items[key]);
+					var key2 = "{{"+key+"}}";
+					itemHtml = itemHtml.replace(new RegExp(key2, 'g'), items[key]);
 				}
 			}//next
 			listHtml += itemHtml;
@@ -208,6 +277,28 @@ console.log(p);
 		_vars["messages"].innerHTML = listHtml;
 		
 	}//end _insertMessages()
+	
+	function serviceAction(opt){
+		var p = {
+			"action" : "",
+			"id" : null
+		};
+		
+		//extend parameters object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			"params" : p,
+			"callback": function( data ){
+				loadMessages();
+			}//end callback()
+		});
+		
+	}//end seviceAction
 	
 	// public interfaces
 	return{

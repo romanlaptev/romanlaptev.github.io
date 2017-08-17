@@ -4,20 +4,20 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-echo "<pre>";
+//echo "<pre>";
 //print_r ($_SERVER);
-print_r ($_REQUEST);
-echo "</pre>";
+//print_r ($_REQUEST);
+//echo "</pre>";
 
-$host = "localhost";
-$user = "root";
-$password = "master";
-$db_name = "db1";
-$tableName = "messages";
+$_vars=array();
+$_vars["config"]["host"] = "localhost";
+$_vars["config"]["user"] = "root";
+$_vars["config"]["password"] = "master";
+$_vars["config"]["dbName"] = "db1";
+$_vars["config"]["tableName"] = "messages";
 
-$sql=array();
-$sql["createDB"] = "CREATE DATABASE ".$db_name." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
-$sql["createTable"] = "CREATE TABLE IF NOT EXISTS `".$tableName."` (
+$_vars["sql"]["createDB"] = "CREATE DATABASE ".$_vars["config"]["dbName"]." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
+$_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `author` varchar(20) NOT NULL,
 `message` text NOT NULL default \"\",
@@ -26,35 +26,22 @@ $sql["createTable"] = "CREATE TABLE IF NOT EXISTS `".$tableName."` (
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
-$sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{textMessage}}',
 '{{client_date}}', 
 '{{server_date}}', 
 '{{ip}}'
 )";
+$_vars["sql"]["getMessages"] = "SELECT id, author, message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 
 	$action = "";
 	if( !empty($_REQUEST['action']) ){
 		$action = $_REQUEST['action'];
 	}
-//====================================== start
-	
-	switch ($action){
-		case "save_message":
-// echo PHP_VERSION;
-// echo phpversion();
-// echo PHP_OS;
-			try{
-				$link = mysql_connect($host, $user, $password);
-				if (!$link){
-					throw new Exception('MySQL Connection Database Error: ' . mysql_error());
-				}				
-			}catch(Exception $e){
-				echo "exception: ",  $e->getMessage(), "\n";
-				exit();
-			}
-			
+//========================================= start
+	$_vars["link"] = connectDB();
 // $db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
 // $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
 // $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
@@ -63,82 +50,170 @@ $sql["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_da
 // echo $db_info;
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
-			
-			$db = mysql_select_db($db_name);
+//echo $_vars["link"];
+	
+	switch ($action){
+		case "save_message":
+// echo PHP_VERSION;
+// echo phpversion();
+// echo PHP_OS;
+			$dbName = $_vars["config"]["dbName"];
+			$tableName = $_vars["config"]["tableName"];
+			$db = mysql_select_db($dbName, $_vars["link"]);
 			if (!$db){
-				$query = $sql["createDB"];
-				if (mysql_query($query, $link) ) {
-					echo "base $db_name created succesfully<br>";
-					$db = mysql_select_db($db_name);
-// echo "<pre>";
-// print_r($db);
-// echo "</pre>";
+				$query = $_vars["sql"]["createDB"];
+				if (mysql_query($query, $_vars["link"]) ) {
+					echo "base $dbName created succesfully<br>";
+					$db = mysql_select_db($dbName, $_vars["link"]);
 					if($db){
 						saveMessage();
 					}
 					
 				} else {
-					echo "error create $db_name: " . mysql_error() . "<br>";
-					echo "SQL: " . $sql . "<br>";
+					echo "error create $dbName: " . mysql_error() . "<br>";
+					echo "SQL: " . $query . "<br>";
 				}				
 			} else {
 				saveMessage();
 			}
-
-			mysql_close ($link);
-
 		break;
-	}//end switch
-	
+		
+		case "get_messages":
+			$dbName = $_vars["config"]["dbName"];
+			//$tableName = $_vars["config"]["tableName"];
+			$db = mysql_select_db($dbName, $_vars["link"]);
+			if($db){
+				getMessages();
+			} else {
+				echo "error select $dbName: " . mysql_error() . "<br>";
+			}				
+		break;
 
+		case "delete_message":
+			if( !empty($_REQUEST['id']) ){
+				$id = $_REQUEST["id"];
+				$dbName = $_vars["config"]["dbName"];
+				
+				$db = mysql_select_db( $dbName, $_vars["link"]);
+				if($db){
+					deleteMessage($id);
+				} else {
+					echo "error select $dbName: " . mysql_error() . "<br>";
+				}				
+			}
+		break;
+
+		case "edit_message":
+		break;
+		
+	}//end switch
+	mysql_close ( $_vars["link"] );
+//=========================================== end	
+	
+function connectDB(){
+	global $_vars;
+// echo "<pre>";
+// print_r($_vars);
+// echo "</pre>";
+
+	$host = $_vars["config"]["host"];
+	$user = $_vars["config"]["user"];
+	$password = $_vars["config"]["password"];
+	$dbName = $_vars["config"]["dbName"];
+	$tableName = $_vars["config"]["tableName"];
+	
+	try{
+		$link = mysql_connect($host, $user, $password);
+		if (!$link){
+			throw new Exception('MySQL Connection Database Error: ' . mysql_error());
+		} else{
+			return $link;
+		}
+		
+	}catch(Exception $e){
+		echo "exception: ",  $e->getMessage(), "\n";
+		exit();
+	}
+
+}//end connectDB()
+	
 function saveMessage(){
-	global $tableName, $link, $sql;
+	global $_vars;
 
 	$authorName = $_REQUEST["authorName"];
 	$textMessage = $_REQUEST["textMessage"];
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
+	$tableName = $_vars["config"]["tableName"];
 	
-	$query = $sql["createTable"];
-	if (mysql_query($query, $link) ) {
+	$query = $_vars["sql"]["createTable"];
+	if (mysql_query($query, $_vars["link"]) ) {
 		echo "table $tableName was created....<br>";
 
-		$query = $sql["insertMessage"];
+		$query = $_vars["sql"]["insertMessage"];
 		$query = str_replace("{{authorName}}", $authorName, $query);
 		$query = str_replace("{{textMessage}}", $textMessage, $query);
 		$query = str_replace("{{client_date}}", $clientDate, $query);
 		$query = str_replace("{{server_date}}", $serverDate, $query);
 		$query = str_replace("{{ip}}", $ip, $query);
 		
-		if (mysql_query($query, $link) ) {
+		if (mysql_query($query, $_vars["link"]) ) {
 			echo "record was inserted....<br>";
 		} else {
 			echo "error INSERT: " . mysql_error() . "<br>";
-			echo "SQL: " . $sql . "<br>";
+			echo "SQL: " . $query . "<br>";
 			return false;
 		}
 		
 	} else {
 		echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
-		echo "SQL: " . $sql . "<br>";
+		echo "SQL: " . $query . "<br>";
 		return false;
 	}				
 }//end saveMessage()	
 
-// function get_db_data( $sql ){
-	// $data = array();
-	// $res = mysql_query($sql) or die( "Ошибка при выполнении запроса $sql, ".mysql_error() );
-	// for( $n = 0; $n < mysql_num_rows ($res); $n++){
-		// $row = mysql_fetch_object($res);
-// //echo "<pre>";
-// //print_r ($row);
-// //echo "</pre>";
-		// $data[] = $row;
-	// }//next row
+function getMessages(){
+	global $_vars;
+
+	$query = $_vars["sql"]["getMessages"];
+	$messages = getData( $query, $_vars["link"] );
+	if( count($messages) > 0 ){
+		$json = json_encode($messages);
+		//$error = json_last_error();		
+echo $json;
+	}
 	
-	// return $data;
-// }//end get_db_data()
+}//end getMessages()	
+
+function deleteMessage( $id ){
+	global $_vars;
+
+	$query = $_vars["sql"]["deleteMessage"];
+	$query = str_replace("{{id}}", $id, $query);
+//echo $query;
+	if (mysql_query($query, $_vars["link"]) ) {
+		echo "record $id was deleted....<br>";
+	} else {
+		echo "error DELETE: " . mysql_error() . "<br>";
+		echo "SQL: " . $query . "<br>";
+		return false;
+	}
+	
+}//end getMessages()	
+
+function getData( $query, $link ){
+	$data = array();
+	$res = mysql_query($query, $link) or die( "error run query:  $query, ".mysql_error() );
+	for( $n = 0; $n < mysql_num_rows ($res); $n++){
+		$row = mysql_fetch_object($res);
+//echo "<pre>";
+//print_r ($row);
+//echo "</pre>";
+		$data[] = $row;
+	}//next row
+	return $data;
+}//end getData()
 
 /*
 //---------------------------------------------

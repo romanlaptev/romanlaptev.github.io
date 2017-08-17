@@ -188,12 +188,16 @@ function runAjax( opt ){
 	var callback = p["callback"]; 
 
 	//get values from params and form paramsStr....
+	var num=0;
 	if( p["params"] ){
 		var paramsStr = "";
 		for( var item in p["params"]){
 			var value = encodeURIComponent( p["params"][item] );
+			if( num > 0){
+				paramsStr += "&";
+			}
 			paramsStr += item + "=" + value;
-			paramsStr += "&";
+			num++;
 		}//next
 
 		if( requestMethod === "GET"){
@@ -234,8 +238,8 @@ console.log( msg, xhr );
 				if( xhr.status === 200){
 					
 //console.log(xhr.getResponseHeader('X-Powered-By') );
-					var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
+					//var all_headers = xhr.getAllResponseHeaders();
+//console.log( all_headers );
 					
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;

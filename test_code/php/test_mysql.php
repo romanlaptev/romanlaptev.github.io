@@ -1,4 +1,7 @@
 ﻿<?php
+//ajax query with url http://graphic-art-collection.16mb.com/php/test_mysql.php
+//header('Access-Control-Allow-Origin: *');
+
 //error_reporting(E_ALL ^ E_DEPRECATED);
 //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
@@ -16,7 +19,7 @@ ini_set('display_errors', 1);
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, inital-scale=1.0">
-	<link rel="stylesheet" href="/css/bootstrap335.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container">
@@ -113,6 +116,12 @@ $host = "localhost";
 $user = "root";
 $password = "master";
 $db_name = "mysql";
+
+//graphic-art-collection.16mb.com
+// $host = "mysql.hostinger.ru";
+// $user = "u380901270_usr";
+// $password = "E6bAsZYBs4";
+// $db_name = "u380901270_db1";
 
 $link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
 
