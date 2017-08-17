@@ -117,6 +117,9 @@ var _chat = function ( opt ){
 			"textMessage" : p["textMessage"],
 			"date" : p["creation_date"]
 		};
+//test
+//url="http://graphic-art-collection.16mb.com/php/test_mysql.php";
+//params={};
 
 		runAjax( {
 			"requestMethod" : p["requestMethod"], 

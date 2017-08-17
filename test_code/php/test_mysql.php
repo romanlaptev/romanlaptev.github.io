@@ -1,4 +1,7 @@
 ﻿<?php
+//ajax query with url http://graphic-art-collection.16mb.com/php/test_mysql.php
+//header('Access-Control-Allow-Origin: *');
+
 //error_reporting(E_ALL ^ E_DEPRECATED);
 //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
