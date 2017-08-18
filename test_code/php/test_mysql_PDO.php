@@ -119,10 +119,10 @@ $_vars["config"]["dbPassword"] = "master";
 $_vars["config"]["dbName"] = "mysql";
 
 //graphic-art-collection.16mb.com
-// $host = "mysql.hostinger.ru";
-// $user = "u380901270_usr";
-// $password = "E6bAsZYBs4";
-// $db_name = "u380901270_db1";
+// $_vars["config"]["dbHost"] = "mysql.hostinger.ru";
+// $_vars["config"]["dbUser"] = "u380901270_usr";
+// $_vars["config"]["dbPassword"] = "E6bAsZYBs4";
+// $_vars["config"]["dbName"] = "u380901270_db1";
 
 //echo PDO::ATTR_DRIVER_NAME;
 if (!defined('PDO::ATTR_DRIVER_NAME')) {
