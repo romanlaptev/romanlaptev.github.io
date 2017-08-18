@@ -11,15 +11,13 @@ ini_set('display_errors', 1);
 //echo "<pre>";
 //print_r ($_REQUEST);
 //echo "</pre>";
-
 ?>
-
 <DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, inital-scale=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
 </head>
 <body>
 	<div class="container">
@@ -42,6 +40,7 @@ echo PHP_VERSION;
 		<pre>
 http://php.net/manual/ru/function.mysql-db-query.php
 http://php.net/manual/ru/mysqli.select-db.php
+http://php.net/manual/ru/ref.pdo-mysql.php
 		</pre>
 
 <?php
@@ -123,20 +122,20 @@ $db_name = "mysql";
 // $password = "E6bAsZYBs4";
 // $db_name = "u380901270_db1";
 
-//http://php.net/manual/ru/ref.pdo-mysql.php
 //echo PDO::ATTR_DRIVER_NAME;
 if (!defined('PDO::ATTR_DRIVER_NAME')) {
 	echo "<h1>PDO unavailable</h1>";
-	$link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
+	//$link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
 } else {
 	echo "<h1>PDO available</h1>";
-	$link = new PDO("mysql:dbname=$db_name;host=$host", $user, $password);
-echo "<pre>";	
-print_r($link);
-echo "</pre>";	
+	//$link = new PDO("mysql:dbname=$db_name;host=$host", $user, $password);
+// echo "<pre>";	
+// print_r($link);
+// echo "</pre>";	
 }
 
 
+$link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
 
@@ -177,6 +176,9 @@ $list .= "</ol>";
 		}
 		
 		if ($name == "table_type"){
+			$item = "<p class='mark'>ENGINE, <b>".$name."</b> : ".$value."</p>";
+		}
+		if ($name == "storage_engine"){
 			$item = "<p class='mark'>ENGINE, <b>".$name."</b> : ".$value."</p>";
 		}
 
