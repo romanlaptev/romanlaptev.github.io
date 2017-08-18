@@ -1,14 +1,14 @@
 window.onload = function(){
-	var webChat = _chat();
-console.log( webChat );	
+	var webNotes = _notes();
+console.log( webNotes );	
 
-	webChat.init();
+	webNotes.init();
 }//end load
 
-var _chat = function ( opt ){
+var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
-		"requestUrl" : "chat.php",
+		"requestUrl" : "notes.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -17,7 +17,7 @@ var _chat = function ( opt ){
 	};
 
 	var _init = function(){
-//console.log("init chat");
+//console.log("init _notes");
 		defineEvents();
 		loadMessages();
 		//define events
@@ -308,4 +308,4 @@ var _chat = function ( opt ){
 		}
 	};
 	
-}//end _chat()
+}//end _notes()

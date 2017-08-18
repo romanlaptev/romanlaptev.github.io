@@ -20,20 +20,20 @@ $_vars["sql"]["createDB"] = "CREATE DATABASE ".$_vars["config"]["dbName"]." DEFA
 $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `author` varchar(20) NOT NULL,
-`message` text NOT NULL default \"\",
+`text_message` text NOT NULL default \"\",
 `client_date` DATETIME NULL,
 `server_date` DATETIME NULL,
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
-$_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{textMessage}}',
 '{{client_date}}', 
 '{{server_date}}', 
 '{{ip}}'
 )";
-$_vars["sql"]["getMessages"] = "SELECT id, author, message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["getMessages"] = "SELECT id, author, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
 $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 
 	$action = "";
@@ -42,14 +42,6 @@ $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."
 	}
 //========================================= start
 	$_vars["link"] = connectDB();
-// $db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
-// $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
-// $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
-// $db_info .= "<li>MySQL protocol version: " . mysql_get_proto_info() ."</li>";
-// $db_info .= "<li>mysql_client_encoding: " . mysql_client_encoding($link) ."</li>";
-// echo $db_info;
-//mysql_query('SET NAMES utf8');
-//mysql_set_charset("utf8", $link);
 //echo $_vars["link"];
 	
 	switch ($action){
@@ -127,6 +119,16 @@ function connectDB(){
 		if (!$link){
 			throw new Exception('MySQL Connection Database Error: ' . mysql_error());
 		} else{
+			mysql_set_charset("utf8", $link);
+//mysql_query('SET NAMES utf8');
+//SHOW VARIABLES LIKE  'char%'
+//$db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
+// $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
+// $db_info .= "<li>MySQL host info: " . mysql_get_host_info() ."</li>";
+// $db_info .= "<li>MySQL protocol version: " . mysql_get_proto_info() ."</li>";
+//$db_info .= "<li>mysql_client_encoding: " . mysql_client_encoding($link) ."</li>";
+//echo $db_info;
+
 			return $link;
 		}
 		
@@ -207,9 +209,9 @@ function getData( $query, $link ){
 	$res = mysql_query($query, $link) or die( "error run query:  $query, ".mysql_error() );
 	for( $n = 0; $n < mysql_num_rows ($res); $n++){
 		$row = mysql_fetch_object($res);
-//echo "<pre>";
-//print_r ($row);
-//echo "</pre>";
+// echo "<pre>";
+// print_r ($row);
+// echo "</pre>";
 		$data[] = $row;
 	}//next row
 	return $data;

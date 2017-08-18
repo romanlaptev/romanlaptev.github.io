@@ -14,7 +14,7 @@ function set_inner(e, v) {
 function send_http_require(r) 
 {
     // открывает поток методом open
-   r.open('GET', 'test1.php?x='+escape(document.frm.x.value), true);
+   r.open('GET', '_test_ajax.php?x='+escape(document.frm.x.value), true);
    r.send(null); //метод предназначен для отправки тела запроса
 }
 //-------------------------- end func
