@@ -41,6 +41,7 @@ echo PHP_VERSION;
 http://php.net/manual/ru/function.mysql-db-query.php
 http://php.net/manual/ru/mysqli.select-db.php
 http://php.net/manual/ru/ref.pdo-mysql.php
+http://php.net/manual/ru/mysqli.examples-basic.php
 		</pre>
 
 <?php
@@ -386,9 +387,18 @@ function list_fields( $query ){
 		<h2>test mysqli_connect</h2>
 <?
 printf("mysqli_get_client_info: %s\n", mysqli_get_client_info());
-$link = mysqli_connect( $host, $user, $password, $db_name);
-echo $link;
+//$link = mysqli_connect( $host, $user, $password, $db_name);
+$mysqli = new mysqli($host, $user, $password, $db_name);
+echo "<pre>";	
+print_r($mysqli);
+echo "</pre>";	
 
+if ($mysqli->connect_errno) {
+    echo "Ошибка: Не удалсь создать соединение с базой MySQL и вот почему: \n";
+    echo "Номер_ошибки: " . $mysqli->connect_errno . "\n";
+    echo "Ошибка: " . $mysqli->connect_error . "\n";
+    exit;
+}
 
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
