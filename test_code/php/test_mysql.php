@@ -123,15 +123,19 @@ $db_name = "mysql";
 // $password = "E6bAsZYBs4";
 // $db_name = "u380901270_db1";
 
-echo PDO::ATTR_DRIVER_NAME;
+//http://php.net/manual/ru/ref.pdo-mysql.php
+//echo PDO::ATTR_DRIVER_NAME;
 if (!defined('PDO::ATTR_DRIVER_NAME')) {
-	echo 'PDO unavailable';
+	echo "<h1>PDO unavailable</h1>";
+	$link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
 } else {
-echo 'PDO available';
+	echo "<h1>PDO available</h1>";
+	$link = new PDO("mysql:dbname=$db_name;host=$host", $user, $password);
+echo "<pre>";	
+print_r($link);
+echo "</pre>";	
 }
 
-$link = mysql_connect($host, $user, $password) or die( "<b class='text-danger'>Query error: </b>".mysql_error() );
-// $connection = new PDO("mysql:dbname=$db;host=$host", $username, $password);
 
 //mysql_query('SET NAMES utf8');
 //mysql_set_charset("utf8", $link);
