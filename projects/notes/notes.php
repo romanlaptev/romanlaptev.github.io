@@ -14,7 +14,13 @@ $_vars["config"]["host"] = "localhost";
 $_vars["config"]["user"] = "root";
 $_vars["config"]["password"] = "master";
 $_vars["config"]["dbName"] = "db1";
-$_vars["config"]["tableName"] = "messages";
+
+//$_vars["config"]["host"] = "mysql.hostinger.ru";
+//$_vars["config"]["user"] = "u380901270_usr";
+//$_vars["config"]["password"] = "E6bAsZYBs4";
+//$_vars["config"]["dbName"] = "u380901270_db1";
+
+$_vars["config"]["tableName"] = "notes";
 
 $_vars["sql"]["createDB"] = "CREATE DATABASE ".$_vars["config"]["dbName"]." DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
 $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
@@ -26,13 +32,14 @@ $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
-$_vars["sql"]["insertMessage"] = "INSERT INTO `messages` (`author`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{textMessage}}',
 '{{client_date}}', 
 '{{server_date}}', 
 '{{ip}}'
 )";
+$_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
 $_vars["sql"]["getMessages"] = "SELECT id, author, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
 $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 
@@ -41,57 +48,56 @@ $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."
 		$action = $_REQUEST['action'];
 	}
 //========================================= start
-	$_vars["link"] = connectDB();
+	//connect to server
+	$_vars["link"] = connectMySQL();
 //echo $_vars["link"];
+
+	//create database (IF NOT EXISTS)
+	$dbName = $_vars["config"]["dbName"];
+	$db = mysql_select_db($dbName, $_vars["link"]);
+	if (!$db){
+		$query = $_vars["sql"]["createDB"];
+		if (mysql_query($query, $_vars["link"]) ) {
+			//echo "base $dbName created succesfully<br>";
+			$db = mysql_select_db($dbName, $_vars["link"]);
+		} else {
+			echo "error create $dbName: " . mysql_error() . "<br>";
+			echo "SQL: " . $query . "<br>";
+			exit();
+		}				
+	}
+	
+	//create table (CREATE TABLE IF NOT EXISTS)
+	//$tableName = $_vars["config"]["tableName"];
+	$query = $_vars["sql"]["showTables"];
+	$tables = getDataRow( $query, $_vars["link"] );
+	$test = 0;
+	for( $n = 0; $n < count ($tables); $n++){
+		if( $tables[$n] == $_vars["config"]["tableName"]){
+			$test = 1;
+		}
+	}//next
+	if(!$test){
+		$query = $_vars["sql"]["createTable"];
+		mysql_query($query, $_vars["link"]);
+	}
 	
 	switch ($action){
 		case "save_message":
 // echo PHP_VERSION;
 // echo phpversion();
 // echo PHP_OS;
-			$dbName = $_vars["config"]["dbName"];
-			$tableName = $_vars["config"]["tableName"];
-			$db = mysql_select_db($dbName, $_vars["link"]);
-			if (!$db){
-				$query = $_vars["sql"]["createDB"];
-				if (mysql_query($query, $_vars["link"]) ) {
-					echo "base $dbName created succesfully<br>";
-					$db = mysql_select_db($dbName, $_vars["link"]);
-					if($db){
-						saveMessage();
-					}
-					
-				} else {
-					echo "error create $dbName: " . mysql_error() . "<br>";
-					echo "SQL: " . $query . "<br>";
-				}				
-			} else {
-				saveMessage();
-			}
+			saveMessage();
 		break;
 		
 		case "get_messages":
-			$dbName = $_vars["config"]["dbName"];
-			//$tableName = $_vars["config"]["tableName"];
-			$db = mysql_select_db($dbName, $_vars["link"]);
-			if($db){
-				getMessages();
-			} else {
-				echo "error select $dbName: " . mysql_error() . "<br>";
-			}				
+			getMessages();
 		break;
 
 		case "delete_message":
 			if( !empty($_REQUEST['id']) ){
 				$id = $_REQUEST["id"];
-				$dbName = $_vars["config"]["dbName"];
-				
-				$db = mysql_select_db( $dbName, $_vars["link"]);
-				if($db){
-					deleteMessage($id);
-				} else {
-					echo "error select $dbName: " . mysql_error() . "<br>";
-				}				
+				deleteMessage($id);
 			}
 		break;
 
@@ -102,7 +108,7 @@ $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."
 	mysql_close ( $_vars["link"] );
 //=========================================== end	
 	
-function connectDB(){
+function connectMySQL(){
 	global $_vars;
 // echo "<pre>";
 // print_r($_vars);
@@ -137,7 +143,7 @@ function connectDB(){
 		exit();
 	}
 
-}//end connectDB()
+}//end connectMySQL()
 	
 function saveMessage(){
 	global $_vars;
@@ -169,6 +175,7 @@ function saveMessage(){
 		}
 		
 	} else {
+		//edit this....return JSON!!!!!
 		echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
 		echo "SQL: " . $query . "<br>";
 		return false;
@@ -179,7 +186,7 @@ function getMessages(){
 	global $_vars;
 
 	$query = $_vars["sql"]["getMessages"];
-	$messages = getData( $query, $_vars["link"] );
+	$messages = getDataObject( $query, $_vars["link"] );
 	if( count($messages) > 0 ){
 		$json = json_encode($messages);
 		//$error = json_last_error();		
@@ -195,6 +202,7 @@ function deleteMessage( $id ){
 	$query = str_replace("{{id}}", $id, $query);
 //echo $query;
 	if (mysql_query($query, $_vars["link"]) ) {
+		//to JSON!!!!
 		echo "record $id was deleted....<br>";
 	} else {
 		echo "error DELETE: " . mysql_error() . "<br>";
@@ -204,7 +212,7 @@ function deleteMessage( $id ){
 	
 }//end getMessages()	
 
-function getData( $query, $link ){
+function getDataObject( $query, $link ){
 	$data = array();
 	$res = mysql_query($query, $link) or die( "error run query:  $query, ".mysql_error() );
 	for( $n = 0; $n < mysql_num_rows ($res); $n++){
@@ -215,7 +223,20 @@ function getData( $query, $link ){
 		$data[] = $row;
 	}//next row
 	return $data;
-}//end getData()
+}//end getDataObject()
+
+function getDataRow( $query, $link ){
+	$data = array();
+	$res = mysql_query($query, $link) or die( "error run query:  $query, ".mysql_error() );
+	for( $n = 0; $n < mysql_num_rows ($res); $n++){
+		$row = mysql_fetch_row($res);
+// echo "<pre>";
+// print_r ($row);
+// echo "</pre>";
+		$data[] = $row[0];
+	}//next row
+	return $data;
+}//end getDataObject()
 
 /*
 //---------------------------------------------
