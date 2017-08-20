@@ -183,8 +183,8 @@ var _notes = function ( opt ){
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( log ){
-//_log("<p>-- "+log+"</p>");
-_log("<div class='success alert-success'>" + log + "/div");
+var msg = "<p>"+log+"</p>";
+_log("<div class='success alert-success'>" + msg + "</div");
 
 				loadMessages();
 			}//end callback()
@@ -245,7 +245,7 @@ var out = "";
 out += "<p>Error in the data</p";
 out += "<p>" + error + "</p";
 out += "<p>" + data + "</p";
-_log("<div class='alert alert-danger'>" + out + "/div");
+_log("<div class='alert alert-danger'>" + out + "</div");
 						}//end catch
 
 				} else {
