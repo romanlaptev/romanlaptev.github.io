@@ -228,11 +228,19 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 //console.log(data.length);				
 
 				if( data.length > 0){
-						var jsonObj = JSON.parse( data, function(key, value) {
-//console.log( key, value );
-							return value;
-						});							
+						try{
+							var jsonObj = JSON.parse( data, function(key, value) {
+console.log( key, value );
+								return value;
+							});							
 //console.log( jsonObj );
+						} catch(error) {
+console.log("Error in the data");
+console.log(error);
+_log(data);
+						}
+
+
 					_insertMessages({
 						"data": jsonObj
 					});
