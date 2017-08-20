@@ -183,7 +183,9 @@ var _notes = function ( opt ){
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( log ){
-_log("<p>-- "+log+"</p>");
+//_log("<p>-- "+log+"</p>");
+_log("<div class='success alert-success'>" + log + "/div");
+
 				loadMessages();
 			}//end callback()
 		});
@@ -234,16 +236,18 @@ console.log( key, value );
 								return value;
 							});							
 //console.log( jsonObj );
+
+							_insertMessages({
+								"data": jsonObj
+							});
 						} catch(error) {
-console.log("Error in the data");
-console.log(error);
-_log(data);
-						}
+var out = "";
+out += "<p>Error in the data</p";
+out += "<p>" + error + "</p";
+out += "<p>" + data + "</p";
+_log("<div class='alert alert-danger'>" + out + "/div");
+						}//end catch
 
-
-					_insertMessages({
-						"data": jsonObj
-					});
 				} else {
 					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
 				}
