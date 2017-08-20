@@ -213,7 +213,7 @@ _log("<div class='alert alert-success'>" + msg + "</div");
 			"url" : _vars["requestUrl"], 
 			"params" : params,
 			"callback": function( data ){
-console.log(data.length, typeof data, data);				
+//console.log(data.length, typeof data, data);				
 
 				if( data.length > 0){
 						try{

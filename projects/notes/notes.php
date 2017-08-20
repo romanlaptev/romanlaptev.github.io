@@ -15,6 +15,12 @@ $_vars["config"]["user"] = "root";
 $_vars["config"]["password"] = "master";
 $_vars["config"]["dbName"] = "db1";
 
+//echo PHP_VERSION;
+//echo phpversion();
+//echo PHP_OS;
+$_vars["config"]["phpversion"] = phpversion();
+
+
 //$_vars["config"]["host"] = "mysql.hostinger.ru";
 //$_vars["config"]["user"] = "u380901270_usr";
 //$_vars["config"]["password"] = "E6bAsZYBs4";
@@ -84,9 +90,6 @@ $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."
 	
 	switch ($action){
 		case "save_message":
-// echo PHP_VERSION;
-// echo phpversion();
-// echo PHP_OS;
 			saveMessage();
 		break;
 		
@@ -125,8 +128,17 @@ function connectMySQL(){
 		if (!$link){
 			throw new Exception('MySQL Connection Database Error: ' . mysql_error());
 		} else{
-			mysql_set_charset("utf8", $link);
+
+			if ( function_exists("mysql_set_charset") ){
+echo "use mysql_set_charset()";				
+				//function mysql_set_charset() is available since PHP 5.2.3
+				//MySQL => 5.0.7
+				mysql_set_charset("utf8", $link);
+			} else {
 //mysql_query('SET NAMES utf8');
+//mysql_query("SET CHARACTER SET utf8 ");
+			}
+			
 //SHOW VARIABLES LIKE  'char%'
 //$db_info = "<li>MySQL server info: " . mysql_get_server_info() ."</li>";
 // $db_info .= "<li>MySQL client info: " . mysql_get_client_info() ."</li>";
@@ -188,9 +200,16 @@ function getMessages(){
 	$query = $_vars["sql"]["getMessages"];
 	$messages = getDataObject( $query, $_vars["link"] );
 	if( count($messages) > 0 ){
-		$json = json_encode($messages);
-		//$error = json_last_error();		
-echo $json;
+		
+			if ( function_exists("json_encode") ){
+				//PHP 5 >= 5.2.0
+				$json = json_encode($messages);
+				//$error = json_last_error();		
+				echo $json;
+			} else {
+echo "not use json_encode()";				
+			}
+		
 	}
 	
 }//end getMessages()	
