@@ -134,8 +134,11 @@ function connectMySQL(){
 				//MySQL => 5.0.7
 				mysql_set_charset("utf8", $link);
 			} else {
-mysql_query('SET NAMES utf8');
-mysql_query("SET CHARACTER SET utf8 ");
+//mysql_query('SET NAMES utf8');
+//mysql_query("SET CHARACTER SET utf8 ");
+				mysql_query ("set character_set_client='utf8'");
+				mysql_query ("set character_set_results='utf8'");
+				mysql_query ("set collation_connection='utf8_general_ci'");
 			}
 			
 //SHOW VARIABLES LIKE  'char%'
