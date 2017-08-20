@@ -153,11 +153,11 @@ function saveMessage(){
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
-	$tableName = $_vars["config"]["tableName"];
+	//$tableName = $_vars["config"]["tableName"];
 	
-	$query = $_vars["sql"]["createTable"];
-	if (mysql_query($query, $_vars["link"]) ) {
-		echo "table $tableName was created....<br>";
+	//$query = $_vars["sql"]["createTable"];
+//	if (mysql_query($query, $_vars["link"]) ) {
+		//echo "table $tableName was created....<br>";
 
 		$query = $_vars["sql"]["insertMessage"];
 		$query = str_replace("{{authorName}}", $authorName, $query);
@@ -171,15 +171,15 @@ function saveMessage(){
 		} else {
 			echo "error INSERT: " . mysql_error() . "<br>";
 			echo "SQL: " . $query . "<br>";
-			return false;
+			exit();
 		}
 		
-	} else {
+	//} else {
 		//edit this....return JSON!!!!!
-		echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
-		echo "SQL: " . $query . "<br>";
-		return false;
-	}				
+		//echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
+//		echo "SQL: " . $query . "<br>";
+//		return false;
+//	}				
 }//end saveMessage()	
 
 function getMessages(){

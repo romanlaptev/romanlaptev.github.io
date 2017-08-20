@@ -182,7 +182,8 @@ var _notes = function ( opt ){
 				}
 	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
-			"callback": function( data ){
+			"callback": function( log ){
+_log("<p>-- "+log+"</p>");
 				loadMessages();
 			}//end callback()
 		});
@@ -206,6 +207,9 @@ var _notes = function ( opt ){
 			// "authorName" : "author3"
 		// });
 		
+		_vars["messagesList"].innerHTML = "";
+//_log("<p>-- loadMessages(), clear #messagesList</p>");
+
 		var params = {
 			"action" : "get_messages"
 		};
@@ -218,7 +222,7 @@ var _notes = function ( opt ){
 				if(e.lengthComputable) {
 					percentComplete = Math.ceil(e.loaded / e.total * 100);
 				}
-	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 			},//end onProgress()
 			"callback": function( data ){
 //console.log(data.length);				
@@ -232,6 +236,8 @@ var _notes = function ( opt ){
 					_insertMessages({
 						"data": jsonObj
 					});
+				} else {
+					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
 				}
 				
 			}//end callback()
@@ -293,7 +299,8 @@ var _notes = function ( opt ){
 			"requestMethod" : "GET", 
 			"url" : _vars["requestUrl"], 
 			"params" : p,
-			"callback": function( data ){
+			"callback": function( log ){
+_log("<p>-- "+log+"</p>");
 				loadMessages();
 			}//end callback()
 		});
