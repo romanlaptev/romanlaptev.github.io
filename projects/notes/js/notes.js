@@ -184,7 +184,7 @@ var _notes = function ( opt ){
 			},//end onProgress()
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
-_log("<div class='success alert-success'>" + msg + "</div");
+_log("<div class='alert alert-success'>" + msg + "</div");
 
 				loadMessages();
 			}//end callback()
@@ -312,7 +312,8 @@ _log("<div class='alert alert-danger'>" + out + "</div");
 			"url" : _vars["requestUrl"], 
 			"params" : p,
 			"callback": function( log ){
-_log("<p>-- "+log+"</p>");
+var msg = "<p>"+log+"</p>";
+_log("<div class='alert alert-success'>" + msg + "</div");
 				loadMessages();
 			}//end callback()
 		});
