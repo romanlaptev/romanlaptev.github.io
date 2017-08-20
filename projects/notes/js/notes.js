@@ -232,7 +232,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				if( data.length > 0){
 						try{
 							var jsonObj = JSON.parse( data, function(key, value) {
-console.log( key, value );
+//console.log( key, value );
 								return value;
 							});							
 //console.log( jsonObj );
@@ -241,11 +241,11 @@ console.log( key, value );
 								"data": jsonObj
 							});
 						} catch(error) {
-var out = "";
-out += "<p>Error in the data</p";
-out += "<p>" + error + "</p";
-out += "<p>" + data + "</p";
-_log("<div class='alert alert-danger'>" + out + "</div");
+var msg = "";
+msg += "<p>Error in the data</p";
+msg += "<p>" + error + "</p";
+msg += "<p>" + data + "</p";
+_log("<div class='alert alert-danger'>" + msg + "</div");
 						}//end catch
 
 				} else {
