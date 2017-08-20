@@ -130,13 +130,12 @@ function connectMySQL(){
 		} else{
 
 			if ( function_exists("mysql_set_charset") ){
-echo "use mysql_set_charset()";				
 				//function mysql_set_charset() is available since PHP 5.2.3
 				//MySQL => 5.0.7
 				mysql_set_charset("utf8", $link);
 			} else {
-//mysql_query('SET NAMES utf8');
-//mysql_query("SET CHARACTER SET utf8 ");
+mysql_query('SET NAMES utf8');
+mysql_query("SET CHARACTER SET utf8 ");
 			}
 			
 //SHOW VARIABLES LIKE  'char%'
