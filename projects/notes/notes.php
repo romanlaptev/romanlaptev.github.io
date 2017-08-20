@@ -209,6 +209,9 @@ function getMessages(){
 				//$error = json_last_error();		
 				echo $json;
 			} else {
+//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
+//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
+//https://gist.github.com/jorgeatorres/1239453
 echo "not use json_encode()";				
 			}
 		
