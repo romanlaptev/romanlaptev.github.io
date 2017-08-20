@@ -175,13 +175,6 @@ var _notes = function ( opt ){
 			"enctype" : p["enctype"],
 			"url" : url, 
 			"params" : params,
-			"onProgress" : function(e){
-				var percentComplete = 0;
-				if(e.lengthComputable) {
-					percentComplete = Math.ceil(e.loaded / e.total * 100);
-				}
-	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			},//end onProgress()
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
 _log("<div class='alert alert-success'>" + msg + "</div");
@@ -219,15 +212,8 @@ _log("<div class='alert alert-success'>" + msg + "</div");
 			"requestMethod" : "GET", 
 			"url" : _vars["requestUrl"], 
 			"params" : params,
-			"onProgress" : function(e){
-				var percentComplete = 0;
-				if(e.lengthComputable) {
-					percentComplete = Math.ceil(e.loaded / e.total * 100);
-				}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			},//end onProgress()
 			"callback": function( data ){
-//console.log(data.length);				
+console.log(data.length, typeof data, data);				
 
 				if( data.length > 0){
 						try{
