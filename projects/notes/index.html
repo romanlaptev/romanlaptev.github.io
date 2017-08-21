@@ -38,8 +38,8 @@ overflow-y: scroll;
 			<div class="panel-body">{{text_message}}</div><!-- /panel-body -->
 			
 			<div class="panel-footer">
-				<!--<a href="#edit_message-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
-				<a href="#delete_message-{{id}}" class="btn btn-sm btn-danger">delete</a>
+				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
+				<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger">delete</a>
 			</div>
 		</div><!-- /panel -->
 	</div><!-- /col-sm-5 -->
@@ -47,12 +47,18 @@ overflow-y: scroll;
 </script> 			
 			</div>
 		</div>
-	
+
+		<div class="panel-body" id="control-btn">
+			<a href="#clear_notes" class="btn btn-sm btn-danger">clear all notes</a>
+			<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
+			<a href="#export_notes" class="btn btn-sm btn-warning">export notes</a>
+		</div>
+		
 <form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
 <!-- onSubmit="return checkForm(this);"> -->
 		<div class=" panel panel-primary">
 			<div class="panel-heading">
-				<h4>enter your message:</h4>
+				<h4>add new note</h4>
 			</div>
 			
 			<div class="panel-body">

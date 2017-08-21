@@ -48,6 +48,7 @@ PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 //) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 //MyISAM
+$_vars["sql"]["removeTable"] = "DROP TABLE `".$_vars["config"]["dbName"]."`";
 
 $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
@@ -58,10 +59,10 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."
 '{{ip}}'
 )";
 $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
-$_vars["sql"]["getMessages"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
-$_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
-$_vars["useMySQL"] = 1;
-$_vars["usePDO"] = 0;
+$_vars["sql"]["getNotes"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["deleteNote"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
+$_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
+
 
 	$action = "";
 	if( !empty($_REQUEST['action']) ){
@@ -70,16 +71,17 @@ $_vars["usePDO"] = 0;
 //========================================= connect to server
 	//check PDO support
 	if (!defined('PDO::ATTR_DRIVER_NAME')) {
+		$_vars["useMySQL"] = 1;
+		$_vars["usePDO"] = 0;
 		$_vars["link"] = connectDbMySQL();
 		createDbMySQL();
-		createTableMySQL();
 	} else {
 		$_vars["useMySQL"] = 0;
 		$_vars["usePDO"] = 1;
 		$_vars["link"] = connectDbPDO();
 		createDbPDO();
-		createTablePDO();
 	}
+	createTable();
 	
 	switch ($action){
 		case "save_message":
@@ -87,17 +89,22 @@ $_vars["usePDO"] = 0;
 		break;
 		
 		case "get_messages":
-			getMessages();
+			getNotes();
 		break;
 
-		case "delete_message":
+		case "delete_note":
 			if( !empty($_REQUEST['id']) ){
 				$id = $_REQUEST["id"];
-				deleteMessage($id);
+				deleteNote($id);
 			}
 		break;
 
-		case "edit_message":
+		case "clear_notes":
+			clearNotes();
+		break;
+		
+		case "remove_table":
+			removeTable();
 		break;
 		
 	}//end switch
@@ -223,10 +230,10 @@ function createDbPDO(){
 
 
 //======================================== create table (CREATE TABLE IF NOT EXISTS)
-function createTableMySQL(){
+function createTable(){
 	global $_vars;
 	
-	//$tableName = $_vars["config"]["tableName"];
+	$tableName = $_vars["config"]["tableName"];
 	// $query = $_vars["sql"]["showTables"];
 	// $tables = getDataRow( $query, $_vars["link"] );
 	// $test = 0;
@@ -240,9 +247,34 @@ function createTableMySQL(){
 		// mysql_query($query, $_vars["link"]);
 	// }
 	$query = $_vars["sql"]["createTable"];
-	mysql_query($query, $_vars["link"]);
-}//end createTableMySQL()
+	$msg_success = "$tableName created succesfully, ". "SQL: " . $query;
+	
+	if($_vars["useMySQL"] == 1){
+		if (mysql_query($query, $_vars["link"]) ) {
+			//echo $msg_success;
+		} else {
+			echo "error: " . mysql_error() . "<br>";
+			echo "SQL: " . $query;
+			exit();
+		}				
+	}				
+	
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		//$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
+		try{
+			$connection->query( $query );
+			//echo $msg_success;
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+	
+}//end createTable()
 
+/*
 function createTablePDO(){
 	global $_vars;
 	
@@ -250,7 +282,7 @@ function createTablePDO(){
 	$connection = $_vars["link"];
 	$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
 }//end createTablePDO()	
-
+*/
 
 
 function saveMessage(){
@@ -323,10 +355,10 @@ function saveMessage(){
 		
 }//end saveMessage()	
 
-function getMessages(){
+function getNotes(){
 	global $_vars;
 
-	$query = $_vars["sql"]["getMessages"];
+	$query = $_vars["sql"]["getNotes"];
 	
 	if($_vars["useMySQL"] == 1){
 		$messages = getDataObject( $query, $_vars["link"] );
@@ -355,18 +387,17 @@ echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["c
 			}
 	}
 	
-}//end getMessages()	
+}//end getNotes()	
 
-function deleteMessage( $id ){
+function deleteNote( $id ){
 	global $_vars;
 
-	$query = $_vars["sql"]["deleteMessage"];
+	$query = $_vars["sql"]["deleteNote"];
 	$query = str_replace("{{id}}", $id, $query);
 //echo $query;
 
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			//to JSON!!!!
 			echo "record $id was deleted...";
 		} else {
 			echo "error DELETE: " . mysql_error() . "<br>";
@@ -386,8 +417,64 @@ function deleteMessage( $id ){
 			exit();
 		}
 	}
+}//end deleteNote()	
+
+function clearNotes(){
+	global $_vars;
+	$query = $_vars["sql"]["clearNotes"];
+	$msg_success = "clear notes, ". "SQL: " . $query;
 	
-}//end getMessages()	
+	if($_vars["useMySQL"] == 1){
+		if (mysql_query($query, $_vars["link"]) ) {
+			echo $msg_success;
+		} else {
+			echo "error: " . mysql_error() . "<br>";
+			echo "SQL: " . $query;
+			exit();
+		}
+	}
+	
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		try{
+			$connection->query( $query );
+			echo $msg_success;
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+}//end clearNotes()
+
+function removeTable(){
+	global $_vars;
+	$query = $_vars["sql"]["removeTable"];
+	$msg_success = "remove tables, ". "SQL: " . $query;
+	
+	if($_vars["useMySQL"] == 1){
+		if (mysql_query($query, $_vars["link"]) ) {
+			echo $msg_success;
+		} else {
+			echo "error: " . mysql_error() . "<br>";
+			echo "SQL: " . $query;
+			exit();
+		}
+	}
+	
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		try{
+			$connection->query( $query );
+			echo $msg_success;
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+}//end clearNotes()
+
 
 function getDataObject( $query, $link ){
 	$data = array();

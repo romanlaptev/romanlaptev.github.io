@@ -15,6 +15,7 @@ var _notes = function ( opt ){
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
 		"messagesList" : getDOMobj("messages"),		
+		"controlPanel" : getDOMobj("control-btn"),		
 	};
 	
 	//correct for remote run
@@ -92,6 +93,39 @@ var _notes = function ( opt ){
 				log.innerHTML = "";
 				return false;
 			}
+		}
+
+		if( _vars.controlPanel ){
+			_vars.controlPanel.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+
+							var search = target.href.split("#"); 
+							var parseStr = search[1]; 
+//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+									var p = parseStr.split("-");
+//console.log( p );
+									serviceAction({
+										"action" : p[0],
+										"id": p[1]
+									});
+									
+							} else {
+		// console.log( "Warn! error parse url in " + target.href );
+							}
+					}
+				}
+
+			}//end event
 		}
 		
 	}//end defineEvents()
