@@ -32,21 +32,23 @@ $_vars["sql"]["createDB"] = "CREATE DATABASE ".$_vars["config"]["dbName"]." DEFA
 $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["tableName"]."` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `author` varchar(20) NOT NULL,
+`title` varchar(255) default \"no title\",
 `text_message` text NOT NULL default \"\",
 `client_date` DATETIME NULL,
 `server_date` DATETIME NULL,
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
-$_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
+'{{title}}', 
 '{{textMessage}}',
 '{{client_date}}', 
 '{{server_date}}', 
 '{{ip}}'
 )";
 $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
-$_vars["sql"]["getMessages"] = "SELECT id, author, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["getMessages"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."`";
 $_vars["sql"]["deleteMessage"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 
 	$action = "";
@@ -163,37 +165,28 @@ function saveMessage(){
 	global $_vars;
 
 	$authorName = $_REQUEST["authorName"];
+	$title = $_REQUEST["title"];
 	$textMessage = $_REQUEST["textMessage"];
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
-	//$tableName = $_vars["config"]["tableName"];
-	
-	//$query = $_vars["sql"]["createTable"];
-//	if (mysql_query($query, $_vars["link"]) ) {
-		//echo "table $tableName was created....<br>";
 
-		$query = $_vars["sql"]["insertMessage"];
-		$query = str_replace("{{authorName}}", $authorName, $query);
-		$query = str_replace("{{textMessage}}", $textMessage, $query);
-		$query = str_replace("{{client_date}}", $clientDate, $query);
-		$query = str_replace("{{server_date}}", $serverDate, $query);
-		$query = str_replace("{{ip}}", $ip, $query);
+	$query = $_vars["sql"]["insertMessage"];
+	$query = str_replace("{{authorName}}", $authorName, $query);
+	$query = str_replace("{{title}}", $title, $query);
+	$query = str_replace("{{textMessage}}", $textMessage, $query);
+	$query = str_replace("{{client_date}}", $clientDate, $query);
+	$query = str_replace("{{server_date}}", $serverDate, $query);
+	$query = str_replace("{{ip}}", $ip, $query);
+	
+	if (mysql_query($query, $_vars["link"]) ) {
+		echo "record was inserted....<br>";
+	} else {
+		echo "error INSERT: " . mysql_error() . "<br>";
+		echo "SQL: " . $query . "<br>";
+		exit();
+	}
 		
-		if (mysql_query($query, $_vars["link"]) ) {
-			echo "record was inserted....<br>";
-		} else {
-			echo "error INSERT: " . mysql_error() . "<br>";
-			echo "SQL: " . $query . "<br>";
-			exit();
-		}
-		
-	//} else {
-		//edit this....return JSON!!!!!
-		//echo "error CREATE TABLE $tableName: " . mysql_error() . "<br>";
-//		echo "SQL: " . $query . "<br>";
-//		return false;
-//	}				
 }//end saveMessage()	
 
 function getMessages(){
@@ -212,7 +205,7 @@ function getMessages(){
 //https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
 //http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 //https://gist.github.com/jorgeatorres/1239453
-echo "not use json_encode()";				
+echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
 			}
 		
 	}

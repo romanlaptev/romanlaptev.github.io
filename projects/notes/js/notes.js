@@ -108,6 +108,11 @@ var _notes = function ( opt ){
 			formValues["authorName"] = name;
 		}
 		
+		var title = form.elements.title.value;
+		if( title.length > 0){
+			formValues["title"] = title;
+		}
+		
 		var text = form.elements.text_message.value;
 	//console.log (text, text.length);
 		if(text.length === 0){
@@ -134,6 +139,7 @@ var _notes = function ( opt ){
 		var p = {
 			"creation_date" : "",
 			"authorName" : "anonymous",
+			"title" : "no subject",
 			"textMessage" : "",
 			"action": "save_message",
 			"url" : _vars["requestUrl"],
@@ -163,6 +169,7 @@ var _notes = function ( opt ){
 		var params = {
 			"action" : p["action"],
 			"authorName" : p["authorName"],
+			"title" : p["title"],
 			"textMessage" : p["textMessage"],
 			"date" : p["creation_date"]
 		};
@@ -228,7 +235,7 @@ _log("<div class='alert alert-success'>" + msg + "</div>");
 							});
 						} catch(error) {
 var msg = "";
-msg += "<p>Error in the data</p>";
+msg += "<p>error in server response data</p>";
 msg += "<p>" + error + "</p>";
 //msg += "<p>" + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
