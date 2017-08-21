@@ -8,7 +8,8 @@ console.log( webNotes );
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
-		"requestUrl" : "notes.php",
+		//"requestUrl" : "notes.php",
+		"requestUrl" : "http://graphic-art-collection.16mb.com/notes/notes.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
