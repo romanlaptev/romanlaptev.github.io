@@ -45,7 +45,8 @@ $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["
 `server_date` DATETIME NULL,
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+//) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 //MyISAM
 
 $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (

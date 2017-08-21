@@ -8,7 +8,7 @@ console.log( webNotes );
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
-		"requestUrl" : "notes.php",
+		"requestUrl" : "api/notes_mysql.php",
 		"requestRemoteUrl" : "http://graphic-art-collection.16mb.com/notes/notes.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
@@ -83,6 +83,15 @@ var _notes = function ( opt ){
 				}
 				
 			}//end event
+		}
+		
+		var btn_clear_log = getDOMobj("clear-log");
+		if( btn_clear_log ){
+			btn_clear_log.onclick = function(e){
+				var log = getDOMobj("log");
+				log.innerHTML = "";
+				return false;
+			}
 		}
 		
 	}//end defineEvents()
