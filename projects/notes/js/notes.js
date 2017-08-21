@@ -69,8 +69,8 @@ var _notes = function ( opt ){
 							var parseStr = search[1]; 
 //console.log( search, parseStr );
 							if( parseStr.length > 0 ){
-								if( parseStr.indexOf("edit_message") !== -1 ||
-									parseStr.indexOf("delete_message") !== -1){
+								if( parseStr.indexOf("edit_note") !== -1 ||
+									parseStr.indexOf("delete_note") !== -1){
 										var p = parseStr.split("-");
 										serviceAction({
 											"action" : p[0],
