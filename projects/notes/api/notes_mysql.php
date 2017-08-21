@@ -48,7 +48,7 @@ PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 //) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 //MyISAM
-$_vars["sql"]["removeTable"] = "DROP TABLE `".$_vars["config"]["dbName"]."`";
+$_vars["sql"]["removeTable"] = "DROP TABLE `".$_vars["config"]["tableName"]."`";
 
 $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
