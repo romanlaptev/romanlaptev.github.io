@@ -8,14 +8,19 @@ console.log( webNotes );
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
-		//"requestUrl" : "notes.php",
-		"requestUrl" : "http://graphic-art-collection.16mb.com/notes/notes.php",
+		"requestUrl" : "notes.php",
+		"requestRemoteUrl" = "http://graphic-art-collection.16mb.com/notes/notes.php",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
 		"messagesList" : getDOMobj("messages"),		
 	};
+	
+	//correct for remote run
+	if( window.location.hostname === "romanlaptev.github.io"){
+		_vars["requestUrl"] = _vars["requestRemoteUrl"];
+	}
 
 	var _init = function(){
 //console.log("init _notes");
