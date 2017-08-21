@@ -45,6 +45,8 @@ $_vars["sql"]["createTable"] = "CREATE TABLE IF NOT EXISTS `".$_vars["config"]["
 `ip` varchar( 20 ) default \"\",
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+//MyISAM
+
 $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{title}}', 
@@ -213,7 +215,7 @@ function createDbPDO(){
 	global $_vars;
 	$query = $_vars["sql"]["createDB"];
 	$connection = $_vars["link"];
-	$connection->exec( $query ) or die( print_r($connection->errorInfo(), true) );
+	$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
 	$connection->query("use ".$_vars["config"]["dbName"]);	
 }//end createDbPDO()	
 
