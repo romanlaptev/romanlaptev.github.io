@@ -177,7 +177,7 @@ var _notes = function ( opt ){
 			"params" : params,
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
-_log("<div class='alert alert-success'>" + msg + "</div");
+_log("<div class='alert alert-success'>" + msg + "</div>");
 
 				loadMessages();
 			}//end callback()
@@ -228,10 +228,10 @@ _log("<div class='alert alert-success'>" + msg + "</div");
 							});
 						} catch(error) {
 var msg = "";
-msg += "<p>Error in the data</p";
-msg += "<p>" + error + "</p";
-msg += "<p>" + data + "</p";
-_log("<div class='alert alert-danger'>" + msg + "</div");
+msg += "<p>Error in the data</p>";
+msg += "<p>" + error + "</p>";
+//msg += "<p>" + data + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}//end catch
 
 				} else {
@@ -299,7 +299,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 			"params" : p,
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
-_log("<div class='alert alert-success'>" + msg + "</div");
+_log("<div class='alert alert-success'>" + msg + "</div>");
 				loadMessages();
 			}//end callback()
 		});
