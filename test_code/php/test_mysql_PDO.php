@@ -207,6 +207,12 @@ function _testPDO(){
 	global $_vars;
 	
 	$connection = $_vars["link"];
+	
+	$_vars["PDOdrivers"] = $connection->getAvailableDrivers();
+// echo "<pre>";	
+// print_r($connection->getAvailableDrivers());
+// echo "</pre>";	
+	
 	$dbName = $_vars["config"]["dbName"];
 	
 	$_vars["dbInfo"] = "<ul>";
@@ -290,6 +296,13 @@ function _testPDO(){
 		<h2><?php echo $PDOstate; ?></h2>	
 	</div>
 
+	<div class="panel-body">
+		<h3>PDOdrivers</h3>
+		<pre>
+<?php print_r( $_vars["PDOdrivers"] ); ?>		
+		</pre>
+	</div>
+	
 	<div class="panel-body">
 		<h3> Connect to <?php echo $_vars["config"]["dbHost"] ?></h3>
 	</div>

@@ -288,8 +288,8 @@ function createTablePDO(){
 function saveNote(){
 	global $_vars;
 
-	$authorName = $_REQUEST["authorName"];
-	$title = $_REQUEST["title"];
+	$authorName = addslashes( htmlspecialchars($_REQUEST["authorName"]) );
+	$title = addslashes( htmlspecialchars($_REQUEST["title"]) );
 	
 	//$textMessage = htmlentities( $_REQUEST["textMessage"] );
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
