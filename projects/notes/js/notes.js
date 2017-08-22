@@ -42,6 +42,7 @@ var _notes = function ( opt ){
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
 			_checkForm(this);
+			$("#newModal").modal("hide");
 			return false;
 		};
 		
@@ -234,7 +235,6 @@ var _notes = function ( opt ){
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
 _log("<div class='alert alert-success'>" + msg + "</div>");
-
 				loadMessages();
 			}//end callback()
 		});
