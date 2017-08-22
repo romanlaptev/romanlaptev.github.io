@@ -84,8 +84,8 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 	createTable();
 	
 	switch ($action){
-		case "save_message":
-			saveMessage();
+		case "save_note":
+			saveNote();
 		break;
 		
 		case "get_messages":
@@ -285,12 +285,13 @@ function createTablePDO(){
 */
 
 
-function saveMessage(){
+function saveNote(){
 	global $_vars;
 
 	$authorName = $_REQUEST["authorName"];
 	$title = $_REQUEST["title"];
-	$textMessage = $_REQUEST["textMessage"];
+	//$textMessage = htmlentities( $_REQUEST["textMessage"] );
+
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
@@ -298,12 +299,15 @@ function saveMessage(){
 	$query = $_vars["sql"]["insertMessage"];
 	$query = str_replace("{{authorName}}", $authorName, $query);
 	$query = str_replace("{{title}}", $title, $query);
-	$query = str_replace("{{textMessage}}", $textMessage, $query);
+	//$query = str_replace("{{textMessage}}", $textMessage, $query);
 	$query = str_replace("{{client_date}}", $clientDate, $query);
 	$query = str_replace("{{server_date}}", $serverDate, $query);
 	$query = str_replace("{{ip}}", $ip, $query);
 
 	if($_vars["useMySQL"] == 1){
+		//$textMessage = mysql_real_escape_string(htmlspecialchars("<script>alert('test');</script>"));
+		$textMessage = mysql_real_escape_string( htmlspecialchars($_REQUEST["textMessage"] ));
+		$query = str_replace("{{textMessage}}", $textMessage, $query);
 
 		if (mysql_query($query, $_vars["link"]) ) {
 			echo "record was inserted...";
@@ -316,6 +320,11 @@ function saveMessage(){
 	
 	if($_vars["usePDO"] == 1){
 		$connection = $_vars["link"];
+		
+		//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
+		$textMessage = addslashes( htmlspecialchars($_REQUEST["textMessage"]) );
+		$query = str_replace("{{textMessage}}", $textMessage, $query);
+		
 //Protection against sql-injections
 //1. 
 //$username = PDO::quote($_GET['username']);
@@ -323,13 +332,18 @@ function saveMessage(){
 //2.
 //$pdo->prepare('SELECT * FROM users WHERE username = :username');
 //$pdo->execute(array(':username' => $_GET['username']));
+
 		// $query = str_replace("{{authorName}}", ":author", $query);
 		// $query = str_replace("{{title}}", ":title", $query);
 		// $query = str_replace("{{textMessage}}", ":text_message", $query);
 		// $query = str_replace("{{client_date}}", ":client_date", $query);
 		// $query = str_replace("{{server_date}}", ":server_date", $query);
 		// $query = str_replace("{{ip}}", ":ip", $query);
+// echo $query;
 		// $st = $connection->prepare($query);
+// echo "<pre>";
+// print_r($st);
+// echo "</pre>";
 		
 		// $params = array();
 		// $params[":author_name"] = $authorName;
@@ -340,8 +354,13 @@ function saveMessage(){
 		// $params[":ip"] = $ip;
 // echo "<pre>";
 // print_r($params);
-// echo "</pre>";		
+// echo "</pre>";
+
 		// $st->execute($params);
+		
+		//$textMessage = $connection->quote( htmlspecialchars($_REQUEST["textMessage"]) );
+		//$query = str_replace("{{textMessage}}", $textMessage, $query);
+		
 		try{
 			$connection->query( $query );
 			echo "record was inserted...";
@@ -353,7 +372,7 @@ function saveMessage(){
 		
 	}
 		
-}//end saveMessage()	
+}//end saveNote()	
 
 function getNotes(){
 	global $_vars;

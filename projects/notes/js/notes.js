@@ -192,7 +192,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"authorName" : "anonymous",
 			"title" : "no subject",
 			"textMessage" : "",
-			"action": "save_message",
+			"action": "save_note",
 			"url" : _vars["requestUrl"],
 			"requestMethod" : "GET",
 			"enctype" : null,
