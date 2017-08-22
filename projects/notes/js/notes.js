@@ -42,7 +42,6 @@ var _notes = function ( opt ){
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
 			_checkForm(this);
-			$("#newModal").modal("hide");
 			return false;
 		};
 		
@@ -177,9 +176,11 @@ var _notes = function ( opt ){
 						
 		if (isValid){
 			sendForm( formValues );
+			$("#newModal").modal("hide");
 		} else{
 			//e.preventDefault();
-	console.log("error in form..");
+var msg = "<p>error in form..</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
 		}	
 		return false;
 		

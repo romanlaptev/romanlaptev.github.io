@@ -1,0 +1,14 @@
+/*
+#messages {
+height: 50%;
+overflow-y: scroll;
+}
+*/
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+#log p{
+margin: 0;
+}
