@@ -290,7 +290,10 @@ function saveNote(){
 
 	$authorName = $_REQUEST["authorName"];
 	$title = $_REQUEST["title"];
+	
 	//$textMessage = htmlentities( $_REQUEST["textMessage"] );
+	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
+	$textMessage = addslashes( htmlspecialchars($_REQUEST["textMessage"]) );
 
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
@@ -299,15 +302,12 @@ function saveNote(){
 	$query = $_vars["sql"]["insertMessage"];
 	$query = str_replace("{{authorName}}", $authorName, $query);
 	$query = str_replace("{{title}}", $title, $query);
-	//$query = str_replace("{{textMessage}}", $textMessage, $query);
+	$query = str_replace("{{textMessage}}", $textMessage, $query);
 	$query = str_replace("{{client_date}}", $clientDate, $query);
 	$query = str_replace("{{server_date}}", $serverDate, $query);
 	$query = str_replace("{{ip}}", $ip, $query);
 
 	if($_vars["useMySQL"] == 1){
-		//$textMessage = mysql_real_escape_string(htmlspecialchars("<script>alert('test');</script>"));
-		$textMessage = mysql_real_escape_string( htmlspecialchars($_REQUEST["textMessage"] ));
-		$query = str_replace("{{textMessage}}", $textMessage, $query);
 
 		if (mysql_query($query, $_vars["link"]) ) {
 			echo "record was inserted...";
@@ -320,10 +320,6 @@ function saveNote(){
 	
 	if($_vars["usePDO"] == 1){
 		$connection = $_vars["link"];
-		
-		//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
-		$textMessage = addslashes( htmlspecialchars($_REQUEST["textMessage"]) );
-		$query = str_replace("{{textMessage}}", $textMessage, $query);
 		
 //Protection against sql-injections
 //1. 
