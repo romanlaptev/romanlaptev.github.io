@@ -107,7 +107,7 @@
 
 						<div class="form-group">
 							<label id="text-message-label">*text message: </label>
-							<textarea name="text_message" class="form-control" rows="10"></textarea>
+							<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
 						</div>						
 					</div>
 					
@@ -163,5 +163,19 @@
 </form>
 -->
 </div><!-- end container -->
+
+<!--
+	<script src="editor/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script>
+	tinymce.init({ 
+		selector:"#notes-text" 
+	});
+	</script>
+	
+	<script src="editor/ckeditor/ckeditor.js"></script>
+	<script>
+		CKEDITOR.replace( "notes-text" );
+	</script>
+-->	
 </body>
 </html>
