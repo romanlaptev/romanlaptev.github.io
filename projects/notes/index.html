@@ -63,14 +63,16 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<strong>{{author}}</strong>, <strong>{{title}}</strong> 
-				<p class="text-muted">created: {{client_date}} <small>( server date: {{server_date}})</small></p>
-				<p class="text-muted"><small>send from ip: {{ip}}</small></p>
 			</div>
 			<div class="panel-body">{{text_message}}</div><!-- /panel-body -->
 			
 			<div class="panel-footer">
 				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
-				<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger">delete</a>
+				<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger pull-right">delete</a>
+				<p class="text-muted">created: {{client_date}}, 
+				<small>( server date: {{server_date}})</small>,
+				<small>send from ip: {{ip}}</small>
+				</p>
 			</div>
 		</div><!-- /panel -->
 	</div><!-- /col-sm-5 -->
