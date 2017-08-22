@@ -27,12 +27,6 @@ var _notes = function ( opt ){
 //console.log("init _notes");
 		defineEvents();
 		loadMessages();
-		//define events
-		document.forms["form_message"].onsubmit = function(e){  
-//console.log("Submit form", e, this);
-			_checkForm(this);
-			return false;
-		};
 	};
 
 	function _getTpl( id ){
@@ -45,6 +39,12 @@ var _notes = function ( opt ){
 	function defineEvents(){
 //console.log( _vars.messagesList );
 
+		document.forms["form_message"].onsubmit = function(e){  
+//console.log("Submit form", e, this);
+			_checkForm(this);
+			return false;
+		};
+		
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
 				event = event || window.event;
