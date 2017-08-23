@@ -408,11 +408,13 @@ function getNotes(){
 			if ( function_exists("json_encode") ){
 				//PHP 5 >= 5.2.0
 				$json = json_encode($messages);
-
+/*
 			//restore formatting
 				$json = str_replace("&lt;", "<", $json);
 				$json = str_replace("&gt;", ">", $json);
 				$json = str_replace("&quot;", "'", $json);
+				//$json = str_replace("<code>", "<pre>", $json);
+				//$json = str_replace("<\/code>", "</pre>", $json);
 							
 			//no run script code, no JS, no PHP
 				$json = str_replace("<script", "&lt;script", $json);
@@ -423,6 +425,14 @@ function getNotes(){
 				
 				$json = str_replace("<%", "&lt;%", $json);
 				$jso = str_replace("%>", "%&gt;", $json);
+*/
+				$json = str_replace("&lt;pre&gt;", "<pre>", $json);
+				$json = str_replace("&lt;\/pre&gt;", "</pre>", $json);
+
+				$json = str_replace("&lt;a", "<a", $json);
+				$json = str_replace("&lt;\/a&gt;", "</a>", $json);
+				$json = str_replace("&quot;&gt;", "'>", $json);
+				$json = str_replace("&quot;", "'", $json);
 				
 				//$error = json_last_error();		
 				echo $json;
