@@ -234,8 +234,13 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"url" : url, 
 			"params" : params,
 			"callback": function( log ){
+				
 var msg = "<p>"+log+"</p>";
-_log("<div class='alert alert-success'>" + msg + "</div>");
+				var _className = "alert-success";
+				if( log.indexOf("error") !== -1){
+					_className = "alert-danger";
+				}
+_log("<div class='alert " +_className+ "'>" + msg + "</div>");
 				loadMessages();
 			}//end callback()
 		});

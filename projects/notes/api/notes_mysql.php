@@ -284,27 +284,33 @@ function createTable(){
 	
 }//end createTable()
 
-/*
-function createTablePDO(){
-	global $_vars;
-	
-	$query = $_vars["sql"]["createTable"];
-	$connection = $_vars["link"];
-	$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
-}//end createTablePDO()	
-*/
-
 
 function saveNote(){
 	global $_vars;
 
 	$authorName = addslashes( htmlspecialchars($_REQUEST["authorName"]) );
+	
+	//$title = $_REQUEST["title"];
 	$title = addslashes( htmlspecialchars($_REQUEST["title"]) );
 	
-	//$textMessage = htmlentities( $_REQUEST["textMessage"] );
+	//$textMessage = $_REQUEST["textMessage"];
+	//$textMessage = strip_tags( $_REQUEST["textMessage"], "<h1>" );
+	//$textMessage = nl2br( $_REQUEST["textMessage"] );
+//echo $textMessage;
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
 	$textMessage = addslashes( htmlspecialchars($_REQUEST["textMessage"]) );
+/*
+	$textMessage = str_replace("<script", "&lt;script", $textMessage);
+	$textMessage = str_replace("</script>", "&lt;/script&gt;", $textMessage);
+	
+	$textMessage = str_replace("<?", "&lt;?", $textMessage);
+	$textMessage = str_replace("/?>", "/?&gt;", $textMessage);
+	
+	$textMessage = str_replace("<%", "&lt;%", $textMessage);
+	$textMessage = str_replace("%>", "%&gt;", $textMessage);
 
+	$textMessage = addslashes($textMessage);
+*/
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
@@ -402,6 +408,21 @@ function getNotes(){
 			if ( function_exists("json_encode") ){
 				//PHP 5 >= 5.2.0
 				$json = json_encode($messages);
+
+//restore formatting
+	$json = str_replace("&lt;", "<", $json);
+	$json = str_replace("&gt;", ">", $json);
+				
+//no run script code, no JS, no PHP
+	$json = str_replace("<script", "&lt;script", $json);
+	$json = str_replace("</script>", "&lt;/script&gt;", $json);
+	
+	$json = str_replace("<?", "&lt;?", $json);
+	$json = str_replace("/?>", "/?&gt;", $json);
+	
+	$json = str_replace("<%", "&lt;%", $json);
+	$jso = str_replace("%>", "%&gt;", $json);
+				
 				//$error = json_last_error();		
 				echo $json;
 			} else {
