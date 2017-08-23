@@ -263,7 +263,7 @@ _log("<div class='alert alert-success'>" + msg + "</div>");
 //_log("<p>-- loadMessages(), clear #messagesList</p>");
 
 		var params = {
-			"action" : "get_messages"
+			"action" : "get_notes"
 		};
 		runAjax( {
 			"requestMethod" : "GET", 

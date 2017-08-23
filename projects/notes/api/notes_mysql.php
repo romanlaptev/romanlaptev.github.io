@@ -74,13 +74,13 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 		$_vars["useMySQL"] = 1;
 		$_vars["usePDO"] = 0;
 		$_vars["link"] = connectDbMySQL();
-		createDbMySQL();
 	} else {
 		$_vars["useMySQL"] = 0;
 		$_vars["usePDO"] = 1;
 		$_vars["link"] = connectDbPDO();
-		createDbPDO();
 	}
+	
+	createDb();
 	createTable();
 	
 	switch ($action){
@@ -88,7 +88,7 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 			saveNote();
 		break;
 		
-		case "get_messages":
+		case "get_notes":
 			getNotes();
 		break;
 
@@ -202,31 +202,41 @@ function connectDbPDO(){
 
 
 //=========================================== create database (IF NOT EXISTS)
-function createDbMySQL(){
+function createDb(){
 	global $_vars;
 	
-	$dbName = $_vars["config"]["dbName"];
-	$db = mysql_select_db($dbName, $_vars["link"]);
-	if (!$db){
-		$query = $_vars["sql"]["createDB"];
-		if (mysql_query($query, $_vars["link"]) ) {
-			//echo "base $dbName created succesfully<br>";
-			$db = mysql_select_db($dbName, $_vars["link"]);
-		} else {
-			echo "error create $dbName: " . mysql_error() . "<br>";
-			echo "SQL: " . $query . "<br>";
-			exit();
-		}				
-	}
-}//end createDbMySQL()	
-
-function createDbPDO(){
-	global $_vars;
 	$query = $_vars["sql"]["createDB"];
-	$connection = $_vars["link"];
-	$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
-	$connection->query("use ".$_vars["config"]["dbName"]);	
-}//end createDbPDO()	
+	
+	if($_vars["useMySQL"] == 1){
+		$dbName = $_vars["config"]["dbName"];
+		//$db = mysql_select_db($dbName, $_vars["link"]);
+		//if (!$db){
+			if (mysql_query($query, $_vars["link"]) ) {
+				//echo "base $dbName created succesfully<br>";
+				$db = mysql_select_db($dbName, $_vars["link"]);
+			} else {
+				echo "error, " . mysql_error() . "<br>";
+				echo "SQL: " . $query . "<br>";
+				exit();
+			}				
+		//}
+	}
+	
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		//$connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
+		try{
+			$connection->query( $query );
+			//echo $msg_success;
+			$connection->query("use ".$_vars["config"]["dbName"]);	
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+	
+}//end createDb()	
 
 
 //======================================== create table (CREATE TABLE IF NOT EXISTS)
