@@ -6,7 +6,7 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-	$sqlite_path = "sqlite:/home/www/sites/romanlaptev.github.io/test_code/php/test_sqlite/places.sqlite";
+	$sqlite_path = "sqlite:./places.sqlite";
 	//$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
 	$db = new PDO($sqlite_path) or die("Could not open database");
 
@@ -22,8 +22,6 @@ ini_set('display_errors', 1);
 	{
 		print_r($row);
 	}
-exit();
-
 
 /* List all links I have visited in visit count order. */
 	$query = "SELECT p.url,p.title,p.visit_count FROM moz_places as p ORDER BY p.visit_count;";
