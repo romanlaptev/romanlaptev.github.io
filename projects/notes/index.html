@@ -50,7 +50,7 @@
 		<div id="log"></div>
 	</div>		
 		
-	<div class=" panel panel-info">
+	<div class="panel">
 <!--
 			<div class="panel-heading">
 				<h4>list of notes:</h4>
@@ -59,8 +59,8 @@
 		<div class="panel-body" id="messages">
 <script id="tpl-message-list" type="text/template">
 <div class="row">
-	<div class="col-sm-12 col-md-10 col-lg-9">
-		<div class="panel panel-default">
+	<div class="">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<strong>{{title}}</strong> 
 			</div>
@@ -72,13 +72,13 @@
 				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
 				<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger pull-right">delete</a>
 				<p class="text-muted">
-				<strong>{{author}}</strong>, 
-				<small>created:</small> {{client_date}} <small>( server date: {{server_date}})</small>,
+				<small>created:</small><strong>{{author}}</strong>, 
+				<small>date:</small> {{client_date}} <small>( server date: {{server_date}})</small>,
 				<small>send from ip: {{ip}}</small>
 				</p>
 			</div>
 		</div><!-- /panel -->
-	</div><!-- /col-sm-5 -->
+	</div>
 </div><!-- end row -->
 </script> 			
 		</div>
