@@ -32,6 +32,7 @@ var _notes = function ( opt ){
 		_vars["requestUrl"] = _vars["requestRemoteUrl"];
 	}
 
+
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
@@ -68,6 +69,7 @@ var _notes = function ( opt ){
 				
 				if( target.tagName === "A"){
 					if ( target.href.indexOf("#") !== -1){
+						
 						if (event.preventDefault) { 
 							event.preventDefault();
 						} else {
@@ -397,8 +399,8 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 	
 	function serviceAction(opt){
 		var p = {
-			"action" : "",
-			"id" : null
+			"action" : ""//,
+			//"id" : null
 		};
 		
 		//extend parameters object
@@ -406,6 +408,12 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			p[key] = opt[key];
 		}
 
+		// if( p["action"] === "export_notes"){
+// console.log( window.location );
+			// window.location = window.location + "?action="+p["action"];
+			// return;
+		// }
+		
 		runAjax( {
 			"requestMethod" : "GET", 
 			"url" : _vars["requestUrl"], 

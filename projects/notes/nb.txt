@@ -73,4 +73,12 @@ console.log(links);
 		Отмасштабированная до заданных размеров:  {{wiki:dokuwiki-128.png?200x50}}
 		Отмасштабированная внешняя картинка:      {{http://de3.php.net/images/php.gif?200x50}
 
+		
+================= DUMP
+https://dev.mysql.com/doc/refman/5.7/en/select.html
+SELECT `id`, `author`, `title`, `text_message`, `client_date`, `server_date`, `ip` INTO OUTFILE '/home/samba/pub/notes.csv' 
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'
+FROM notes;
+
+
 blog

@@ -14,18 +14,17 @@ $_vars=array();
 $_vars["config"]["dbHost"] = "localhost";
 $_vars["config"]["dbUser"] = "root";
 $_vars["config"]["dbPassword"] = "master";
+//$_vars["config"]["dbHost"] = "mysql.hostinger.ru";
+//$_vars["config"]["dbUser"] = "u380901270_usr";
+//$_vars["config"]["dbPassword"] = "E6bAsZYBs4";
+//$_vars["config"]["dbName"] = "u380901270_db1";
 $_vars["config"]["dbName"] = "db1";
 
 //echo PHP_VERSION;
 //echo phpversion();
 //echo PHP_OS;
 $_vars["config"]["phpversion"] = phpversion();
-
-
-//$_vars["config"]["dbHost"] = "mysql.hostinger.ru";
-//$_vars["config"]["dbUser"] = "u380901270_usr";
-//$_vars["config"]["dbPassword"] = "E6bAsZYBs4";
-//$_vars["config"]["dbName"] = "u380901270_db1";
+$_vars["export"]["filename"] = "notes.xml";
 
 $_vars["config"]["tableName"] = "notes";
 
@@ -89,7 +88,53 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 		break;
 		
 		case "get_notes":
-			getNotes();
+			$notes = getNotes();
+// echo count($notes);	
+// echo "<pre>";	
+// print_r($notes);
+// echo "</pre>";
+			if( count($notes) > 0 ){
+					if ( function_exists("json_encode") ){
+						//PHP 5 >= 5.2.0
+						$json = json_encode($notes);
+		/*
+					//restore formatting
+						$json = str_replace("&lt;", "<", $json);
+						$json = str_replace("&gt;", ">", $json);
+						$json = str_replace("&quot;", "'", $json);
+						//$json = str_replace("<code>", "<pre>", $json);
+						//$json = str_replace("<\/code>", "</pre>", $json);
+									
+					//no run script code, no JS, no PHP
+						$json = str_replace("<script", "&lt;script", $json);
+						$json = str_replace("</script>", "&lt;/script&gt;", $json);
+						
+						$json = str_replace("<?", "&lt;?", $json);
+						$json = str_replace("/?>", "/?&gt;", $json);
+						
+						$json = str_replace("<%", "&lt;%", $json);
+						$jso = str_replace("%>", "%&gt;", $json);
+		*/
+
+		/*
+						$json = str_replace("&lt;pre&gt;", "<pre>", $json);
+						$json = str_replace("&lt;\/pre&gt;", "</pre>", $json);
+
+						$json = str_replace("&lt;a", "<a", $json);
+						$json = str_replace("&lt;\/a&gt;", "</a>", $json);
+						$json = str_replace("&quot;&gt;", "'>", $json);
+						$json = str_replace("&quot;", "'", $json);
+		*/				
+						//$error = json_last_error();		
+						echo $json;
+					} else {
+		//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
+		//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
+		//https://gist.github.com/jorgeatorres/1239453
+echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
+					}
+			}
+
 		break;
 
 		case "delete_note":
@@ -105,6 +150,13 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 		
 		case "remove_table":
 			removeTable();
+		break;
+		
+		case "export_notes":
+			exportTable( $_vars["export"]["filename"] );
+		break;
+		case "import_notes":
+			importTable();//replace table!!!!
 		break;
 		
 	}//end switch
@@ -381,14 +433,13 @@ function saveNote(){
 			echo $exception->getMessage();
 			exit();
 		}
-		
 	}
-		
 }//end saveNote()	
 
 function getNotes(){
 	global $_vars;
-
+	
+	$messages = array();
 	$query = $_vars["sql"]["getNotes"];
 	
 	if($_vars["useMySQL"] == 1){
@@ -397,55 +448,15 @@ function getNotes(){
 	if($_vars["usePDO"] == 1){
 		$connection = $_vars["link"];
 		$result  = $connection->query( $query ) or die( print_r($connection->errorInfo(), true) );
-		$messages  = $result->fetchAll( PDO::FETCH_ASSOC );
+		//$messages  = $result->fetchAll( PDO::FETCH_ASSOC );
+		$messages  = $result->fetchAll( PDO::FETCH_OBJ );
+		
 // echo count($messages);	
 // echo "<pre>";	
 // print_r($messages);
 // echo "</pre>";	
 	}
-	
-	if( count($messages) > 0 ){
-			if ( function_exists("json_encode") ){
-				//PHP 5 >= 5.2.0
-				$json = json_encode($messages);
-/*
-			//restore formatting
-				$json = str_replace("&lt;", "<", $json);
-				$json = str_replace("&gt;", ">", $json);
-				$json = str_replace("&quot;", "'", $json);
-				//$json = str_replace("<code>", "<pre>", $json);
-				//$json = str_replace("<\/code>", "</pre>", $json);
-							
-			//no run script code, no JS, no PHP
-				$json = str_replace("<script", "&lt;script", $json);
-				$json = str_replace("</script>", "&lt;/script&gt;", $json);
-				
-				$json = str_replace("<?", "&lt;?", $json);
-				$json = str_replace("/?>", "/?&gt;", $json);
-				
-				$json = str_replace("<%", "&lt;%", $json);
-				$jso = str_replace("%>", "%&gt;", $json);
-*/
-
-/*
-				$json = str_replace("&lt;pre&gt;", "<pre>", $json);
-				$json = str_replace("&lt;\/pre&gt;", "</pre>", $json);
-
-				$json = str_replace("&lt;a", "<a", $json);
-				$json = str_replace("&lt;\/a&gt;", "</a>", $json);
-				$json = str_replace("&quot;&gt;", "'>", $json);
-				$json = str_replace("&quot;", "'", $json);
-*/				
-				//$error = json_last_error();		
-				echo $json;
-			} else {
-//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
-//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
-//https://gist.github.com/jorgeatorres/1239453
-echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
-			}
-	}
-	
+	return $messages;
 }//end getNotes()	
 
 function deleteNote( $id ){
@@ -532,8 +543,72 @@ function removeTable(){
 			exit();
 		}
 	}
-}//end clearNotes()
+}//end removeNotes()
 
+
+function exportTable( $filename ){
+	//global $_vars;
+	
+	$notes = getNotes();
+// echo count($notes);	
+// echo "<pre>";	
+// print_r($notes);
+// echo "</pre>";
+	if( count($notes) === 0 ){
+echo "Export error, no data...";		
+		exit();
+	}
+	//create XML
+	$xml="";
+	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
+	$xml .= "<table name='notes'>\n";
+	foreach ( $notes as $row ){
+//print_r($row);
+		$id = $row->id;
+		$author = $row->author;
+		$title = $row->title;
+		$text_message = $row->text_message;
+		$client_date = $row->client_date;
+		$server_date = $row->server_date;
+		$ip = $row->ip;
+
+		$xml .=  "\t<note title=\"".$title."\" ";
+		$xml .=  "id=\"".$id."\" ";
+		$xml .=  "client_date=\"".$client_date."\" ";
+		$xml .=  "server_date=\"".$server_date."\" ";
+		$xml .=  ">\n";
+		if ( !empty($text_message) ){
+//------------------------ filter
+			$text_message = str_replace('', '', $text_message);
+			$text_message = str_replace('&', '&amp;', $text_message);
+//------------------------------
+			$xml .=  "\t\t<text>\n";
+			$xml .=  $text_message."\n";
+			$xml .=  "\t\t</text>\n";
+		}
+		$xml .= "\t</note>\n";
+	}//end foreach
+	$xml .= "</table>\n\n";
+		
+// echo "<pre>";
+// echo htmlspecialchars($xml);
+// echo "</pre>";
+// exit();
+
+	if ( !empty($xml) )
+	{
+		header('Content-Type:  application/xhtml+xml');
+		header('Content-Disposition: attachment; filename='.$filename.'');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: '.strlen($xml));
+		echo $xml;
+	}
+	
+}//end exportNotes()
+
+function importTable(){
+	//removeTable();
+}//end importTable()
 
 function getDataObject( $query, $link ){
 	$data = array();

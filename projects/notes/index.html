@@ -33,11 +33,11 @@
 	<div class=" panel panel-primary">
 		<div class="panel-body" id="control-btn">
 			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal">add new note</button>
-			
 			<a href="#clear_notes" class="btn btn-sm btn-danger">clear all notes</a>
 			<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
-			<!-- <a href="#export_notes" class="btn btn-sm btn-warning">export notes</a> -->
-			<a id="clear-log" class="btn btn-sm btn-danger pull-right" href="#">clear log</a>
+			<a href="api/notes_mysql.php?action=export_notes" class="btn btn-sm btn-warning">export in XML</a>
+			<a href="#import_notes" class="btn btn-sm btn-info">import from XML</a>
+			<a href="#" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
 		</div>
 	</div>
 
@@ -141,47 +141,13 @@ use <b>[code]  code example [/code]</b>,
 		</div>
 	</div>		
 
-<!--		
-<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
-		<div class=" panel panel-primary">
-			<div class="panel-heading">
-				<h4>add new note</h4>
-			</div>
-			
-			<div class="panel-body">
-				<div class="form-group col-sm-6 col-md-6 col-lg-6">
-					<label id="name-label">*Name: </label>
-					<input type="text" class="form-control" name="author_name" value="anonymous">
-				</div>
-				<div class="clearfix"></div>
-
-				<div class="form-group col-sm-12 col-md-10 col-lg-9">
-					<label id="title-label">Title (subject): </label>
-					<input type="text" class="form-control" name="title" value="">
-				</div>
-				<div class="clearfix"></div>
-
-				<div class="col-sm-12 col-md-10 col-lg-9">
-					<label id="text-message-label">*text message: </label>
-					<textarea name="text_message" class="form-control" rows="10"></textarea>
-				</div>						
-			</div>
-			
-			<div class="panel-footer">
-				<button type="reset" class="btn btn-large btn-warning">reset form</button>
-				<button type="submit" class="btn btn-large btn-primary">save</button>
-			</div>
-			
-		</div>
-</form>
--->
 </div><!-- end container -->
 
 <div class="top">
 <!--
-	<a id="top-link" title="наверх" href="javascript:scroll(0,0)">
+	<a id="top-link" href="javascript:scroll(0,0)">
 -->	
-	<a id="top-link" title="наверх" href="#">
+	<a id="top-link" title="to top page" href="#">
 		<div class="arrow"></div>
 	</a>
 </div>

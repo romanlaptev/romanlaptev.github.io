@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restricted area"
-AuthUserFile /usr/local/www/vhosts/toool/data/.backup_htpasswd
-Require valid-user
