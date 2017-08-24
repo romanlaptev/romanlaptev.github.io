@@ -5,6 +5,15 @@ console.log( webNotes );
 	webNotes.init();
 }//end load
 
+$(document).ready(function(){
+
+	$('.top').click(function (e) {
+		e.preventDefault();
+		$('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
+	});
+	
+});//end ready	
+
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
@@ -327,6 +336,21 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			
 			itemHtml = _vars["templates"][ templateID];
 			var items = p["data"][n];
+			
+
+//filter
+//console.log(items["text_message"]);
+items["text_message"] = items["text_message"]
+.replace("&lt;code&gt;", "<pre>")
+.replace("&lt;/code&gt;", "</pre>");
+//.replace("&lt;a", "<a>")
+//.replace("&lt;/a&gt;", "</a>");
+//&lt;a href=&quot;http://yandex.ru&quot;&gt;Yandex&lt;/a&gt;
+
+//links = items["text_message"].match(/\[\[(.*?)\]\]/);
+//console.log(links);
+//---------------
+			
 			for( var key in items){
 //console.log(key, items[key]);
 				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){

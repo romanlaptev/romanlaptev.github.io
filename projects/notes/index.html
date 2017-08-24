@@ -25,7 +25,7 @@
 </head>
 <body>
 		
-<div class="container">
+<div class="container" id="top">
 	<div class="page-header">
 		<h2>Notes</h2>
 	</div>
@@ -114,7 +114,7 @@
 							<label id="text-message-label">*text message: </label>
 							<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
 						</div>						
-<p><small>use tag &lt;pre&gt; for code formatting...use tag &lt;a for link adding<small></p>
+<p><small>use tag &lt;code&gt; for code formatting...<small></p>
 					</div>
 					
 					<div class="panel-footer">
@@ -169,6 +169,15 @@
 </form>
 -->
 </div><!-- end container -->
+
+<div class="top">
+<!--
+	<a id="top-link" title="наверх" href="javascript:scroll(0,0)">
+-->	
+	<a id="top-link" title="наверх" href="#">
+		<div class="arrow"></div>
+	</a>
+</div>
 
 <!--
 	<script src="editor/tinymce/js/tinymce/tinymce.min.js"></script>

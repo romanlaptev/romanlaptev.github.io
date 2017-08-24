@@ -426,6 +426,8 @@ function getNotes(){
 				$json = str_replace("<%", "&lt;%", $json);
 				$jso = str_replace("%>", "%&gt;", $json);
 */
+
+/*
 				$json = str_replace("&lt;pre&gt;", "<pre>", $json);
 				$json = str_replace("&lt;\/pre&gt;", "</pre>", $json);
 
@@ -433,7 +435,7 @@ function getNotes(){
 				$json = str_replace("&lt;\/a&gt;", "</a>", $json);
 				$json = str_replace("&quot;&gt;", "'>", $json);
 				$json = str_replace("&quot;", "'", $json);
-				
+*/				
 				//$error = json_last_error();		
 				echo $json;
 			} else {
