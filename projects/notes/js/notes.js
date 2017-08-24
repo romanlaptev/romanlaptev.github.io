@@ -358,8 +358,9 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		function __filter(textMessage){
 //console.log(textMessage);
 			textMessage = textMessage
-.replace(/{{code}}/g, "<pre>")
-.replace(/{{\/code}}/g, "</pre>");
+.replace(/\[code\]/g, "<pre>")
+.replace(/\[\/code\]/g, "</pre>")
+.replace(/\[br\]/g, "<br/>");
 
 			//var test = "[[http://www.google.com|Это ссылка на Google]]";
 			var regexp = /\[\[(.*?)\]\]/g;
@@ -387,7 +388,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 					textMessage = textMessage.replace("[["+linkText+"]]", linkHtml);
 				}//next
 			}
-			console.log(links);
+//console.log(links);
 			
 			return textMessage;
 		}//end __filter()
