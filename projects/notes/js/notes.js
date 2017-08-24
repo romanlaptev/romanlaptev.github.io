@@ -24,13 +24,20 @@ var _notes = function ( opt ){
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
 		"messagesList" : getDOMobj("messages"),		
-		"controlPanel" : getDOMobj("control-btn"),		
+		"controlPanel" : getDOMobj("control-btn")
 	};
 	
 	//correct for remote run
 	if( window.location.hostname === "romanlaptev.github.io"){
 		_vars["requestUrl"] = _vars["requestRemoteUrl"];
 	}
+//test	
+console.log(_vars["controlPanel"]["children"]);
+
+for( var key in _vars["controlPanel"]["children"]){
+	var btn = _vars["controlPanel"]["children"][key];
+console.log( key, btn["tagName"], btn["href"] );	
+}
 
 
 	var _init = function(){
