@@ -64,9 +64,6 @@
 			<div class="panel-heading">
 				<strong>{{title}}</strong> 
 			</div>
-			<div class="panel-body">
-			{{text_message}}
-			</div>
 			
 			<div class="panel-footer">
 				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
@@ -77,6 +74,11 @@
 				<small>send from ip: {{ip}}</small>
 				</p>
 			</div>
+			
+			<div class="panel-body">
+			{{text_message}}
+			</div>
+			
 		</div><!-- /panel -->
 	</div>
 </div><!-- end row -->
@@ -114,7 +116,8 @@
 							<label id="text-message-label">*text message: </label>
 							<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
 						</div>						
-<p><small>use tag &lt;code&gt; for code formatting...<small></p>
+<p><small>use [[code]]  code example [[/code]].<small></p>
+<p><small>use [[url | text]] for link adding.<small></p>
 					</div>
 					
 					<div class="panel-footer">

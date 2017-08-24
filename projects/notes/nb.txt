@@ -23,24 +23,41 @@ notes
 https://www.dokuwiki.org/ru:wiki:syntax
 http://wiki.vspu.ru/wiki/syntax
 
-Преформатированный текст
+----------- Преформатированный текст
 	'''Преформатированный текст'''
 	<code>Преформатированный текст</code>?
-----
+	
+----------- ссылка
 	[[http://www.google.com|Это ссылка на Google]]
 var test = "[[http://www.google.com|Это ссылка на Google]]";
 reg = test.match(/\[\[(.*?)\]\]/);
-console.log(reg);//http://www.google.com|Это ссылка на Google
+console.log(reg[1]);//http://www.google.com|Это ссылка на Google
 	
-----
+var test = "[[http://www.google.com|Это ссылка на Google]] [[http://yandex.ru|Это ссылка на Yandex]]";
+var regexp = /\[\[(.*?)\]\]/g;
+var links = [];
+links["nowrap"] = [];
+while( result = regexp.exec( test )){
+//console.log(result[1]);
+	links["nowrap"].push( result[1] );
+}
 
-	выделение текста 
+links["html"] = [];
+for(var n = 0; n < links["nowrap"].length; n++){
+	link = links["nowrap"][n];
+	var p = link.split("|");
+	var _url = p[0];
+	var _text = p[1];
+	links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
+}//next
+console.log(links);
+	
+----	выделение текста 
 	**жирным шрифтом**, 
 	//курсивом//, 
 	__подчёркнутый текст__
-----
-
-	Картинки-ссылки
+	
+----	Картинки-ссылки
 		Совместив синтаксис ссылки и картинки, можно вставить в текст картинку, 
 		которая будет внутренней или внешней ссылкой:
 [[http://www.php.net/|{{wiki:dokuwiki-128.png}}]]

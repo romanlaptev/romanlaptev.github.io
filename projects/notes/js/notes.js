@@ -337,19 +337,8 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			itemHtml = _vars["templates"][ templateID];
 			var items = p["data"][n];
 			
-
-//filter
-//console.log(items["text_message"]);
-items["text_message"] = items["text_message"]
-.replace("&lt;code&gt;", "<pre>")
-.replace("&lt;/code&gt;", "</pre>");
-//.replace("&lt;a", "<a>")
-//.replace("&lt;/a&gt;", "</a>");
-//&lt;a href=&quot;http://yandex.ru&quot;&gt;Yandex&lt;/a&gt;
-
-//links = items["text_message"].match(/\[\[(.*?)\]\]/);
-//console.log(links);
-//---------------
+			//filter text message
+			items["text_message"] = __filter( items["text_message"] );
 			
 			for( var key in items){
 //console.log(key, items[key]);
@@ -365,6 +354,43 @@ items["text_message"] = items["text_message"]
 		}//next
 		
 		_vars["messages"].innerHTML = listHtml;
+
+		function __filter(textMessage){
+//console.log(textMessage);
+			textMessage = textMessage
+.replace(/{{code}}/g, "<pre>")
+.replace(/{{\/code}}/g, "</pre>");
+
+			//var test = "[[http://www.google.com|Это ссылка на Google]]";
+			var regexp = /\[\[(.*?)\]\]/g;
+			var links = [];
+			links["nowrap"] = [];
+			while( result = regexp.exec( textMessage )){
+			//console.log(result[1]);
+				links["nowrap"].push( result[1] );
+			}
+
+			if( links["nowrap"].length > 0){
+				links["html"] = [];
+				for(var n = 0; n < links["nowrap"].length; n++){
+					var link = links["nowrap"][n];
+					var _sp = link.split("|");
+			//console.log(link, _sp);
+					var _url = _sp[0];
+					var _text = _sp[1];
+					links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
+				}//next
+				
+				for(var n = 0; n < links["nowrap"].length; n++){
+					var linkText = links["nowrap"][n];
+					var linkHtml = links["html"][n];
+					textMessage = textMessage.replace("[["+linkText+"]]", linkHtml);
+				}//next
+			}
+			console.log(links);
+			
+			return textMessage;
+		}//end __filter()
 		
 	}//end _insertMessages()
 	
