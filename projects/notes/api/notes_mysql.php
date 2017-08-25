@@ -618,81 +618,75 @@ function importTable(){
 }//end importTable()
 
 function uploadFile(){
-echo "<pre>";
+//echo "<pre>";
 //print_r ($_SERVER);
-print_r ($_REQUEST);
-print_r($_FILES);
-echo "</pre>";
-		//$upload_max_filesize = ini_get('upload_max_filesize'); 
-//echo $upload_max_filesize;
+//print_r ($_REQUEST);
+//print_r($_FILES);
+//echo "</pre>";
+
+		$upload_max_filesize = ini_get('upload_max_filesize'); 
+echo "upload_max_filesize = ". $upload_max_filesize;
+echo "<br>";
+
 		$fullPath = initUploadDirectory();
 		if( !$fullPath ){
-echo "not Ok";
-echo "<br>";
+//echo "not Ok";
+//echo "<br>";
 exit();
 		}
 			
-echo "Ok";
-echo "<br>";
+//echo "Ok";
+//echo "<br>";
 	$file_arr = $_FILES["upload_file"];
 	$errors ="";
 	switch ($file_arr['error']){
 		case 0:
-$errors .= "UPLOAD_ERR_OK, Ошибок не возникло, файл был успешно загружен на сервер.";
-$errors .= ' Код ошибки: ' . $file_arr['error'];
-					if ( is_uploaded_file ($file_arr['tmp_name']) ) {
-						$uploaded_file = $fullPath."/".$file_arr['name'];
-						if ( move_uploaded_file( $file_arr['tmp_name'], $uploaded_file ) )
-						{
-echo "<div class='ok'>".$file_arr['name'].", size= ".$file_arr['size']." bytes upload successful</div>";
+			$errors .= "UPLOAD_ERR_OK";
+			if ( is_uploaded_file ($file_arr['tmp_name']) ) {
+				$uploaded_file = $fullPath."/".$file_arr['name'];
+				if ( move_uploaded_file( $file_arr['tmp_name'], $uploaded_file ) )
+				{
+echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
 echo "<br>";
-						} else {
-echo "<div class='error'>".$file_arr['name'].", size= ".$file_arr['size']." bytes not upload</div>";
+				} else {
+echo $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
 echo "<br>";
-						}
-					}
+				}
+			}
 		break;
 
 		case 1:
-			$error = $file_arr['error'];
-$errors .= 'Ошибка UPLOAD_ERR_INI_SIZE, Размер принятого файла превысил максимально допустимый размер, который задан директивой upload_max_filesize конфигурационного файла php.ini.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_INI_SIZE, Размер принятого файла превысил максимально допустимый размер, который задан директивой upload_max_filesize конфигурационного файла php.ini.';
 		break;
 
 		case 2:
-$errors .= 'Ошибка UPLOAD_ERR_FORM_SIZE,  Размер загружаемого файла превысил значение MAX_FILE_SIZE, указанное в HTML-форме.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_FORM_SIZE,  Размер загружаемого файла превысил значение MAX_FILE_SIZE, указанное в HTML-форме.';
 		break;
 
 		case 3:
-$errors .= 'Ошибка UPLOAD_ERR_PARTIAL, Загружаемый файл был получен только частично.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_PARTIAL, Загружаемый файл был получен только частично.';
 		break;
 
 		case 4:
-$errors .= 'Ошибка UPLOAD_ERR_NO_FILE,  Файл не был загружен.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_NO_FILE';
 		break;
 
 		case 6:
-$errors .= 'Ошибка UPLOAD_ERR_NO_TMP_DIR, Отсутствует временная папка. Добавлено в PHP 4.3.10 и PHP 5.0.3.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_NO_TMP_DIR';
 		break;
 
 		case 7:
-$errors .= 'Ошибка UPLOAD_ERR_CANT_WRITE, Не удалось записать файл на диск. Добавлено в PHP 5.1.0.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_CANT_WRITE';
 		break;
 
 		case 8:
-$errors .= 'Ошибка UPLOAD_ERR_EXTENSION, PHP-расширение остановило загрузку файла. PHP не предоставляет способа определить какое расширение остановило загрузку файла; в этом может помочь просмотр списка загруженных расширений из phpinfo(). Добавлено в PHP 5.2.0.';
-$errors .= ' Код ошибки: ' . $file_arr['error'];
+$errors .= 'UPLOAD_ERR_EXTENSION, PHP-расширение остановило загрузку файла. PHP не предоставляет способа определить какое расширение остановило загрузку файла; в этом может помочь просмотр списка загруженных расширений из phpinfo(). Добавлено в PHP 5.2.0.';
 		break;
 
 	}//end switch
+$errors .= ' code: ' . $file_arr['error'];
 echo $errors;
 echo "<br>";
-		
 }// uploadFile()
 
 function initUploadDirectory(){
@@ -723,6 +717,8 @@ echo "<br>";
 			if (is_writable( $fullPath )){
 				return $fullPath;
 			} else {
+echo "Not writable!";
+echo "<br>";
 				return 0;
 			}
 			
@@ -733,6 +729,8 @@ echo "<br>";
 			if (is_writable( $fullPath )){
 				return $fullPath;
 			} else {
+echo "Not writable!";
+echo "<br>";
 				return 0;
 			}
 

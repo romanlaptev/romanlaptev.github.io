@@ -574,8 +574,15 @@ console.log( files );
 		
 	}//end _getUploadFiles()
 */
-	function _postUpload(){
+	function _postUpload(log){
 console.log(arguments);		
+		var msg = "<p>"+log+"</p>";
+		var _className = "alert-success";
+		if( log.indexOf("error") !== -1){
+			_className = "alert-danger";
+		}
+		_log("<div class='alert " +_className+ "'>" + msg + "</div>");
+
 		$("#importModal").modal("hide");
 	}//end _posrtUpload()
 	
