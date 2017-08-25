@@ -1,17 +1,11 @@
 window.onload = function(){
 	var webNotes = _notes();
 console.log( webNotes );	
-
 	webNotes.init();
 }//end load
 
 $(document).ready(function(){
 
-	$('.top').click(function (e) {
-		e.preventDefault();
-		$('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
-	});
-	
 });//end ready	
 
 var _notes = function ( opt ){
@@ -32,7 +26,7 @@ var _notes = function ( opt ){
 		_vars["requestUrl"] = _vars["requestRemoteUrl"];
 		var btn_export = getDOMobj("btn-export");
 		btn_export.href = _vars["requestRemoteUrl"] + "?action=export_notes";
-console.log( btn_export.href );	
+//console.log( btn_export.href );	
 	}
 //test	
 // console.log(_vars["controlPanel"]["children"]);

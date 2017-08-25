@@ -422,5 +422,27 @@ var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
 _log(msg);
 	$(document).ready(function(){
 		
+		//------------------------- scroll to top
+		// $("#scroll-to-top").click(function(e) {
+			// e.preventDefault;
+			// $('html,body').animate({
+				// scrollTop: 0
+				// }, 500);
+			// return false;
+		// });
+		
+		$(".scroll-to").addClass("nolink").on("click", function(){
+			if($(this).attr("href")){
+				var elem = $(this).attr("href");
+			} else {
+				var elem = $(this).attr("data-target");
+			}
+			
+			$('html,body').animate({
+				scrollTop: 0
+				}, 500);
+			return false;
+		});
+		
 	});//end ready	
 }

@@ -108,13 +108,11 @@ function get_attr_to_obj( attr ){
 
 //Мышь: IE8-, исправление события
 //https://learn.javascript.ru/fixevent
-/*
-elem.onclick = function(event) {
-  // если IE8-, то получить объект события window.event и исправить его
-  event = event || fixEvent.call(this, window.event);
-  ...
-}
-*/
+// elem.onclick = function(event) {
+// если IE8-, то получить объект события window.event и исправить его
+// event = event || fixEvent.call(this, window.event);
+// ...
+// }
 function fixEvent(e) {
 	e.currentTarget = this;
 	e.target = e.srcElement;
@@ -136,10 +134,27 @@ function fixEvent(e) {
 	if (!e.which && e.button) {
 		e.which = e.button & 1 ? 1 : (e.button & 2 ? 3 : (e.button & 4 ? 2 : 0));
 	}
-
 	return e;
-}
+}//end fixEvent()
 
+/*addListener(). Use:
+		addListener(btn_test, 'click', function (event) {
+console.log("btn_test, click");			
+console.log(event);			
+			event.stopPropagation();
+		});
+dont work under iE8...why?
+*/
+function addListener(object, event, listener) {
+	event = event || fixEvent.call(this, window.event);
+	if (object && event && listener) {
+		if (object.addEventListener) {
+			object.addEventListener(event, listener, false);
+		} else if (object.attachEvent) {
+			object.attachEvent('on' + event, listener);
+		}
+	}
+}//end addListener()
 
 //**************************************
 //var dirname = getenv("dirname");
@@ -630,11 +645,14 @@ _log(msg);
 		
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
-			var elem = $(this).attr("href");
-			}else{
-			var elem = $(this).attr("data-target");
+				var elem = $(this).attr("href");
+			} else {
+				var elem = $(this).attr("data-target");
 			}
-			$('body').scrollTo( elem, 800, {offset: -50});
+			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
+			$('html,body').animate({
+				scrollTop: 0
+				}, 500);
 			return false;
 		});
 		
