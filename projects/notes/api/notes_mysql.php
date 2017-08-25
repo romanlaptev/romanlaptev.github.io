@@ -618,7 +618,6 @@ function importTable(){
 }//end importTable()
 
 function uploadFile(){
-	global $_vars;
 echo "<pre>";
 //print_r ($_SERVER);
 print_r ($_REQUEST);
@@ -626,7 +625,78 @@ print_r($_FILES);
 echo "</pre>";
 		//$upload_max_filesize = ini_get('upload_max_filesize'); 
 //echo $upload_max_filesize;
+		$fullPath = initUploadDirectory();
+		if( !$fullPath ){
+echo "not Ok";
+echo "<br>";
+exit();
+		}
+			
+echo "Ok";
+echo "<br>";
+	$file_arr = $_FILES["upload_file"];
+	$errors ="";
+	switch ($file_arr['error']){
+		case 0:
+$errors .= "UPLOAD_ERR_OK, Ошибок не возникло, файл был успешно загружен на сервер.";
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+					if ( is_uploaded_file ($file_arr['tmp_name']) ) {
+						$uploaded_file = $fullPath."/".$file_arr['name'];
+						if ( move_uploaded_file( $file_arr['tmp_name'], $uploaded_file ) )
+						{
+echo "<div class='ok'>".$file_arr['name'].", size= ".$file_arr['size']." bytes upload successful</div>";
+echo "<br>";
+						} else {
+echo "<div class='error'>".$file_arr['name'].", size= ".$file_arr['size']." bytes not upload</div>";
+echo "<br>";
+						}
+					}
+		break;
+
+		case 1:
+			$error = $file_arr['error'];
+$errors .= 'Ошибка UPLOAD_ERR_INI_SIZE, Размер принятого файла превысил максимально допустимый размер, который задан директивой upload_max_filesize конфигурационного файла php.ini.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 2:
+$errors .= 'Ошибка UPLOAD_ERR_FORM_SIZE,  Размер загружаемого файла превысил значение MAX_FILE_SIZE, указанное в HTML-форме.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 3:
+$errors .= 'Ошибка UPLOAD_ERR_PARTIAL, Загружаемый файл был получен только частично.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 4:
+$errors .= 'Ошибка UPLOAD_ERR_NO_FILE,  Файл не был загружен.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 6:
+$errors .= 'Ошибка UPLOAD_ERR_NO_TMP_DIR, Отсутствует временная папка. Добавлено в PHP 4.3.10 и PHP 5.0.3.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 7:
+$errors .= 'Ошибка UPLOAD_ERR_CANT_WRITE, Не удалось записать файл на диск. Добавлено в PHP 5.1.0.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+		case 8:
+$errors .= 'Ошибка UPLOAD_ERR_EXTENSION, PHP-расширение остановило загрузку файла. PHP не предоставляет способа определить какое расширение остановило загрузку файла; в этом может помочь просмотр списка загруженных расширений из phpinfo(). Добавлено в PHP 5.2.0.';
+$errors .= ' Код ошибки: ' . $file_arr['error'];
+		break;
+
+	}//end switch
+echo $errors;
+echo "<br>";
 		
+}// uploadFile()
+
+function initUploadDirectory(){
+	global $_vars;
 		chdir("../");
 //echo "getcwd = ".getcwd();
 //echo "__DIR__ = ".__DIR__;
@@ -634,9 +704,9 @@ echo "</pre>";
 		$fullPath = getcwd() . "/".$foldername;
 		
 		if ( !file_exists( $fullPath )) {
-echo $fullPath . " not exists";
-echo "<br>";
-			//mkdir
+//echo $fullPath . " not exists";
+//echo "<br>";
+	
 			$mode = 0777;
 			$recursive = false;
 			if (mkdir ( $fullPath, $mode, $recursive)) {
@@ -645,20 +715,29 @@ echo "<br>";
 			} else {
 echo "Cannot mkdir $fullPath, ";
 echo "<br>";
-			$perms=substr(sprintf('%o', fileperms(  getcwd() )), -4);
-echo getcwd() . " rights: , $perms";
-echo "<br>";
 			}
 			
-			// return false;
+			$perms=substr(sprintf('%o', fileperms(  $fullPath )), -4);
+echo $fullPath . ", rights: $perms";
+echo "<br>";
+			if (is_writable( $fullPath )){
+				return $fullPath;
+			} else {
+				return 0;
+			}
+			
 		} else {
 			$perms=substr(sprintf('%o', fileperms(  $fullPath )), -4);
-echo $fullPath . " exists, $perms";
+echo $fullPath . " exists, rights: $perms";
 echo "<br>";
-			//upload
+			if (is_writable( $fullPath )){
+				return $fullPath;
+			} else {
+				return 0;
+			}
+
 		}
-	
-}// uploadFile()
+}//end initUploadDirectory()		
 
 
 function getDataObject( $query, $link ){
