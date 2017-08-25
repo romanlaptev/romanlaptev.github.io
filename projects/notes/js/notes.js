@@ -57,7 +57,7 @@ var _notes = function ( opt ){
 			return false;
 		};//end event
 		
-/*
+
 		form_import.onsubmit = function(e) {
 			var form = form_import;
 //console.log(form, form_import.upload_file);
@@ -72,27 +72,29 @@ var _notes = function ( opt ){
 						//"fileSelect" : fileSelect
 					//});
 					
-					// Create form data
-					var formData = new FormData();
-					formData.append("upload_file", form.upload_file);
+					//var formData = new FormData();
+					var formData = new FormData( form );
+					//formData.append("upload_file", form.upload_file);
 					if( formData ){
 						var p = {
-							//"action": "upload",
+							"action": "upload",
 							"url" : _vars["requestUrl"],
 							"requestMethod" : form.getAttribute("method"),
 							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
 							"params" : formData,
 							"callback": _postUpload
 						};
-						//runAjax( p );
+						runAjax( p );
+/*						
 //test
 var xhr = new XMLHttpRequest();
 xhr.open('POST', _vars["requestUrl"], true);
-xhr.setRequestHeader("Cache-Control", "no-cache");
-xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-xhr.setRequestHeader("Content-Type", "multipart/form-data");
+// xhr.setRequestHeader("Cache-Control", "no-cache");
+// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+// xhr.setRequestHeader("Content-Type", "multipart/form-data");
 xhr.send(formData);
 //----------						
+*/
 					}
 				//}
 				
@@ -102,8 +104,9 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}
 
 		};//end event
-*/		
 
+		
+/*
     $("form[name='form_import']").submit(function(e) {
         var formData = new FormData($(this)[0]);
 
@@ -124,7 +127,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
         });
         e.preventDefault();
     });
-
+*/
 	
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
@@ -497,7 +500,8 @@ _log("<div class='alert alert-success'>" + msg + "</div>");
 		});
 		
 	}//end seviceAction
-	
+
+/*	
 //http://blog.teamtreehouse.com/uploading-files-ajax
 //https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
 	function _getUploadFiles(opt){
@@ -560,7 +564,7 @@ console.log( files );
 		}
 		
 	}//end _getUploadFiles()
-
+*/
 	function _postUpload(){
 console.log(arguments);		
 	}

@@ -289,7 +289,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 	if( "onloadstart" in xhr ){
 		xhr.onloadstart = function(e){
 //console.log(arguments);
-console.log("event type:" + e.type);
+//console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -299,7 +299,7 @@ console.log("event type:" + e.type);
 	if( "onload" in xhr ){
 		xhr.onload = function(e){
 //console.log(arguments);
-console.log("event type:" + e.type);
+//console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -309,7 +309,7 @@ console.log("event type:" + e.type);
 	if( "onloadend" in xhr ){
 		xhr.onloadend = function(e){
 //console.log(arguments);
-console.log("event type:" + e.type);
+//console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -353,7 +353,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 	if( "onabort" in xhr ){
 		xhr.onabort = function(e){
 // console.log(arguments);
-console.log("event type:" + e.type);
+//console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -385,11 +385,11 @@ console.log("loaded: " + e.loaded);
 		xhr.send();
 	} else {
 		//http://learn.javascript.ru/xhr-forms
-		var test = "setRequestHeader" in xhr;
-//console.log( "setRequestHeader: " + test );
-		if (test) {
-			xhr.setRequestHeader("Content-Type", p["enctype"]);
-		}
+		// var test = "setRequestHeader" in xhr;
+// //console.log( "setRequestHeader: " + test );
+		// if (test) {
+			// xhr.setRequestHeader("Content-Type", p["enctype"]);
+		// }
 		xhr.send( p["params"] );
 	}
 
