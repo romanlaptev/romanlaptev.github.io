@@ -336,9 +336,10 @@ function getXMLDocument(url)  {
 /*
 	runAjax( {
 		"requestMethod" : "GET", 
-		"enctype" : "application/x-www-form-urlencoded", //for POST send form
+		"enctype" : "application/x-www-form-urlencoded",
 		"url" : _vars["db_url"], 
 		"params" : params,// object
+		"formData": null, //object formData
 		"onProgress" : function(e){	},
 		"callback": _postFunc
 	});
@@ -349,11 +350,14 @@ function runAjax( opt ){
 	var p = {
 		"requestMethod" : "GET", 
 		"enctype" : "application/x-www-form-urlencoded",
+		//"enctype" : "multipart/form-data",
 		"url" : false, 
 		"params": null,//params object
+		"formData": null,
 		"async" :  true,
 		"callback" : null,
-		"onProgress" : null
+		"onProgress" : null,
+		"onError" : null
 	};
 	//extend options object
 	for(var key in opt ){
@@ -367,22 +371,21 @@ function runAjax( opt ){
 	var callback = p["callback"]; 
 
 	//get values from params and form paramsStr....
-	var num=0;
-	if( p["params"] ){
-		var paramsStr = "";
-		for( var item in p["params"]){
-			var value = encodeURIComponent( p["params"][item] );
-			if( num > 0){
-				paramsStr += "&";
-			}
-			paramsStr += item + "=" + value;
-			num++;
-		}//next
-
-		if( requestMethod === "GET"){
+	//if( requestMethod === "GET"){
+		var num=0;
+		if( p["params"] ){
+			var paramsStr = "";
+			for( var item in p["params"]){
+				var value = encodeURIComponent( p["params"][item] );
+				if( num > 0){
+					paramsStr += "&";
+				}
+				paramsStr += item + "=" + value;
+				num++;
+			}//next
 			url += "?"+ paramsStr;
 		}
-	}
+	//}
 
 	
 	if( !url || url.length === 0){
@@ -414,6 +417,7 @@ console.log( msg, xhr );
 //}
 
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
+//console.log( "xhr.onerror = ", xhr.onerror  );
 				if( xhr.status === 200){
 					
 //console.log(xhr.getResponseHeader('X-Powered-By') );
@@ -426,6 +430,7 @@ var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
 //console.log( xhr.responseText );
 //console.log( xhr.responseXML );
+
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
@@ -442,52 +447,54 @@ console.log(msg);
 
 				} else {
 //console.log(xhr);					
-_log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-_log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-_log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
-					if( typeof callback === "function"){
-						callback( xhr.responseText );
+// console.log("Ajax load error, url: " + xhr.responseURL);
+// console.log("Ajax load error, status: " + xhr.status);
+// console.log("Ajax load error, statusText:" + xhr.statusText);
+
+var msg = "";
+msg += "<p>Ajax load error</p>";
+msg += "<p>url: " + xhr.responseURL + "</p>";
+msg += "<p>status: " + xhr.status + "</p>";
+msg += "<p>status text: " + xhr.statusText + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div");
+
+					if( typeof  p["onError"] === "function"){
+						p["onError"](xhr);
 					}
 				}
 				
 		}
-	};
+	};//end xhr.onreadystatechange
 	
-	// if( xhr.onabort ){
-		// xhr.onabort = function(){
-// _log("ajax onabort");
-// //console.log(arguments);
-		// }
-	// }
-// console.log( "xhr.onabort " + xhr.onabort  );
+	if( "onloadstart" in xhr ){
+		xhr.onloadstart = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
 
-	// if( xhr.onerror ){
-		// xhr.onerror = function(){
-// _log("ajax onerror");
-// console.log(arguments);
-// console.log(xhr);					
-// _log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-// _log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-// _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
-		// }
-	// }
-// console.log( "xhr.onerror " + xhr.onerror  );
+	if( "onload" in xhr ){
+		xhr.onload = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
 
-	// if( xhr.onload ){
-		// xhr.onload = function(){
-// _log("ajax onload");
-// console.log(arguments);
-		// }
-	// }
-// console.log( "xhr.onload " + xhr.onload  );
-
-	// if( xhr.onloadstart ){
-		// xhr.onloadstart = function(){
-// _log("ajax onloadstart");
-// console.log(arguments);
-		// }
-	// }
-// console.log( "xhr.onloadstart " + xhr.onloadstart  );
+	if( "onloadend" in xhr ){
+		xhr.onloadend = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
 
 //console.log( "onprogress" in xhr  );
 //console.log( xhr.responseType, typeof xhr.responseType );
@@ -496,11 +503,20 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
-			// var percentComplete = 0;
-			// if(e.lengthComputable) {
-				// percentComplete = Math.ceil(e.loaded / e.total * 100);
-			// }
-//console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+			var loadProgressBar = getDOMobj("load-progress-bar");
+			if( loadProgressBar ){
+				//loadProgress.value = percentComplete;
+				loadProgressBar.className = "progress-bar";
+				loadProgressBar.style.width = percentComplete+"%";
+				loadProgressBar.innerHTML = percentComplete+"%";
+			}
+
 			if( typeof  p["onProgress"] === "function"){
 				p["onProgress"](e);
 			}
@@ -514,19 +530,109 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 //console.log( "xhr.onprogress ", xhr.onprogress.handleEvent  );
 	}
 
-	//send query	
-	if( requestMethod !== "POST"){
-		var params = null;
-	} else {
-		//http://learn.javascript.ru/xhr-forms
-		var params = paramsStr;
-		var test = "setRequestHeader" in xhr;
-//console.log( "setRequestHeader: " + test );
-		if (test) {
-			xhr.setRequestHeader("Content-Type", p["enctype"]);
+	if( "onabort" in xhr ){
+		xhr.onabort = function(e){
+// console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
 		}
 	}
-	xhr.send(params);
+
+//console.log( "onerror" in xhr  );
+//console.log( "xhr.onerror " + xhr.onerror  );
+	if( "onerror" in xhr ){
+//console.log( "xhr.onerror = ", xhr.onerror  );
+		xhr.onerror = function(e){
+//console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+			// if( typeof  p["onError"] === "function"){
+				// p["onError"]({
+					// "url" : xhr.responseURL,
+					// "status" : xhr.status,
+					// "statusText" : xhr.statusText
+				// });
+			// }
+		}
+	}
+
+//console.log(xhr.upload);
+	if( xhr.upload ){
+		
+		xhr.upload.onerror = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onabort = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onload = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onloadstart = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		xhr.upload.onloadend = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		//Listen to the upload progress.
+		xhr.upload.onprogress = function(e) {
+			if (e.lengthComputable) {
+				var percent = (e.loaded / e.total) * 100;
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percent+"%" );
+			}
+		};
+		
+		xhr.upload.ontimeout = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+
+	}
+	
+	//send query	
+	if( requestMethod !== "POST"){
+		xhr.send();
+	} else {
+		//http://learn.javascript.ru/xhr-forms
+		// var test = "setRequestHeader" in xhr;
+// //console.log( "setRequestHeader: " + test );
+		// if (test) {
+			// xhr.setRequestHeader("Content-Type", p["enctype"]);
+		// }
+		xhr.send( p["formData"] );
+	}
 
 	function _createRequestObject() {
 		var request = false;

@@ -60,8 +60,6 @@ var _notes = function ( opt ){
 
 		form_import.onsubmit = function(e) {
 			var form = form_import;
-//console.log(form, form_import.upload_file);
-
 			e.preventDefault();
 			
 			if( window.FileList ){
@@ -72,16 +70,27 @@ var _notes = function ( opt ){
 						//"fileSelect" : fileSelect
 					//});
 					
+					//check file type
+					var files = form.upload_file.files;
+//console.log( files );
+					var file = files[0];
+					if ( file.type !== "text/xml") {
+var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
+						$("#importModal").modal("hide");
+						return false;
+					}
+					
 					//var formData = new FormData();
 					var formData = new FormData( form );
 					//formData.append("upload_file", form.upload_file);
-					if( formData ){
+					//if( formData ){
 						var p = {
-							"action": "upload",
 							"url" : _vars["requestUrl"],
 							"requestMethod" : form.getAttribute("method"),
 							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
-							"params" : formData,
+							"params" : { "action" : "upload" },
+							"formData" : formData,
 							"callback": _postUpload
 						};
 						runAjax( p );
@@ -95,7 +104,7 @@ xhr.open('POST', _vars["requestUrl"], true);
 xhr.send(formData);
 //----------						
 */
-					}
+					//}
 				//}
 				
 			} else {
@@ -567,7 +576,8 @@ console.log( files );
 */
 	function _postUpload(){
 console.log(arguments);		
-	}
+		$("#importModal").modal("hide");
+	}//end _posrtUpload()
 	
 	// public interfaces
 	return{

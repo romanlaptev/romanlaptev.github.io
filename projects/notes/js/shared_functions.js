@@ -157,9 +157,10 @@ console.log(item + ": " + e[item]);
 /*
 	runAjax( {
 		"requestMethod" : "GET", 
-		"enctype" : "application/x-www-form-urlencoded", //for POST send form
+		"enctype" : "application/x-www-form-urlencoded",
 		"url" : _vars["db_url"], 
 		"params" : params,// object
+		"formData": null, //object formData
 		"onProgress" : function(e){	},
 		"callback": _postFunc
 	});
@@ -173,6 +174,7 @@ function runAjax( opt ){
 		//"enctype" : "multipart/form-data",
 		"url" : false, 
 		"params": null,//params object
+		"formData": null,
 		"async" :  true,
 		"callback" : null,
 		"onProgress" : null,
@@ -190,7 +192,7 @@ function runAjax( opt ){
 	var callback = p["callback"]; 
 
 	//get values from params and form paramsStr....
-	if( requestMethod === "GET"){
+	//if( requestMethod === "GET"){
 		var num=0;
 		if( p["params"] ){
 			var paramsStr = "";
@@ -202,10 +204,9 @@ function runAjax( opt ){
 				paramsStr += item + "=" + value;
 				num++;
 			}//next
-
 			url += "?"+ paramsStr;
 		}
-	}
+	//}
 
 	
 	if( !url || url.length === 0){
@@ -284,7 +285,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 				}
 				
 		}
-	};
+	};//end xhr.onreadystatechange
 	
 	if( "onloadstart" in xhr ){
 		xhr.onloadstart = function(e){
@@ -379,6 +380,67 @@ console.log("loaded: " + e.loaded);
 			// }
 		}
 	}
+
+//console.log(xhr.upload);
+	if( xhr.upload ){
+		
+		xhr.upload.onerror = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onabort = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onload = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onloadstart = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		xhr.upload.onloadend = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		//Listen to the upload progress.
+		xhr.upload.onprogress = function(e) {
+			if (e.lengthComputable) {
+				var percent = (e.loaded / e.total) * 100;
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percent+"%" );
+			}
+		};
+		
+		xhr.upload.ontimeout = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+
+	}
 	
 	//send query	
 	if( requestMethod !== "POST"){
@@ -390,7 +452,7 @@ console.log("loaded: " + e.loaded);
 		// if (test) {
 			// xhr.setRequestHeader("Content-Type", p["enctype"]);
 		// }
-		xhr.send( p["params"] );
+		xhr.send( p["formData"] );
 	}
 
 	function _createRequestObject() {
