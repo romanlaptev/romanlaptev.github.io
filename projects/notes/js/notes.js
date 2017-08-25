@@ -5,7 +5,7 @@ console.log( webNotes );
 }//end load
 
 $(document).ready(function(){
-
+	$("input[type=file]").bootstrapFileInput();
 });//end ready	
 
 var _notes = function ( opt ){
