@@ -55,8 +55,77 @@ var _notes = function ( opt ){
 //console.log("Submit form", e, this);
 			_checkForm(this);
 			return false;
-		};
+		};//end event
 		
+/*
+		form_import.onsubmit = function(e) {
+			var form = form_import;
+//console.log(form, form_import.upload_file);
+
+			e.preventDefault();
+			
+			if( window.FileList ){
+				
+				//var fileSelect = getDOMobj("file-select");
+				//if( fileSelect ){
+					//var formData = _getUploadFiles({
+						//"fileSelect" : fileSelect
+					//});
+					
+					// Create form data
+					var formData = new FormData();
+					formData.append("upload_file", form.upload_file);
+					if( formData ){
+						var p = {
+							//"action": "upload",
+							"url" : _vars["requestUrl"],
+							"requestMethod" : form.getAttribute("method"),
+							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
+							"params" : formData,
+							"callback": _postUpload
+						};
+						//runAjax( p );
+//test
+var xhr = new XMLHttpRequest();
+xhr.open('POST', _vars["requestUrl"], true);
+xhr.setRequestHeader("Cache-Control", "no-cache");
+xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+xhr.setRequestHeader("Content-Type", "multipart/form-data");
+xhr.send(formData);
+//----------						
+					}
+				//}
+				
+			} else {
+var msg = "<p>Your browser does not support File API</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
+			}
+
+		};//end event
+*/		
+
+    $("form[name='form_import']").submit(function(e) {
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: _vars["requestUrl"],
+            type: "POST",
+            data: formData,
+            async: false,
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function(msg) {
+                alert('Ошибка!');
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+        e.preventDefault();
+    });
+
+	
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
 				event = event || window.event;
@@ -428,6 +497,73 @@ _log("<div class='alert alert-success'>" + msg + "</div>");
 		});
 		
 	}//end seviceAction
+	
+//http://blog.teamtreehouse.com/uploading-files-ajax
+//https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
+	function _getUploadFiles(opt){
+		var p = {
+			"fileSelect" : null
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}	
+//console.log( p );
+
+		if( !p["fileSelect"]){
+var msg = "<p>No selected files</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
+			return false;
+		}
+		// Get the selected files from the input.
+		var files = p["fileSelect"].files;
+console.log( files );
+
+		// Create a new FormData object.
+		var formData = new FormData();
+		
+		// Loop through each of the selected files.
+		for (var n = 0; n < files.length; n++) {
+			var file = files[n];
+			
+			// Check the file type.
+			//if (!file.type.match('image.*')) {
+			if ( file.type !== "text/xml") {
+//console.log("Skip file, incorrect type!", file.name, file.type);
+				//continue;
+			}
+
+			// Add the file to the request.
+			formData.append("upload_files[]", file, file.name);
+		}//next
+// for( var key in formData){
+// console.log(key, formData[key]);
+// }		
+
+// // Display the key/value pairs
+// for (var pair of formData.entries()) {
+    // console.log(pair[0]+ ', ' + pair[1]); 
+// }
+
+// Display the keys
+// for (var key of formData.keys()) {
+   // console.log(key); 
+// }
+		var test = formData.getAll("upload_files[]");
+//console.log( test.length ); 
+		if( test.length > 0 ){
+			//formData.append("action", "upload");
+			return formData;
+		} else {
+			return false;
+		}
+		
+	}//end _getUploadFiles()
+
+	function _postUpload(){
+console.log(arguments);		
+	}
 	
 	// public interfaces
 	return{

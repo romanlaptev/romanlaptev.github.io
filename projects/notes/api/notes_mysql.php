@@ -5,10 +5,11 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-//echo "<pre>";
+echo "<pre>";
 //print_r ($_SERVER);
-//print_r ($_REQUEST);
-//echo "</pre>";
+print_r ($_REQUEST);
+print_r($_FILES);
+echo "</pre>";
 
 $_vars=array();
 $_vars["config"]["dbHost"] = "localhost";
@@ -155,6 +156,13 @@ echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["c
 		case "export_notes":
 			exportTable( $_vars["export"]["filename"] );
 		break;
+		
+		case "upload":
+			$upload_max_filesize = ini_get('upload_max_filesize'); 
+echo $upload_max_filesize;
+
+		break;
+		
 		case "import_notes":
 			importTable();//replace table!!!!
 		break;

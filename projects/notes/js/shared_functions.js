@@ -170,6 +170,7 @@ function runAjax( opt ){
 	var p = {
 		"requestMethod" : "GET", 
 		"enctype" : "application/x-www-form-urlencoded",
+		//"enctype" : "multipart/form-data",
 		"url" : false, 
 		"params": null,//params object
 		"async" :  true,
@@ -189,19 +190,19 @@ function runAjax( opt ){
 	var callback = p["callback"]; 
 
 	//get values from params and form paramsStr....
-	var num=0;
-	if( p["params"] ){
-		var paramsStr = "";
-		for( var item in p["params"]){
-			var value = encodeURIComponent( p["params"][item] );
-			if( num > 0){
-				paramsStr += "&";
-			}
-			paramsStr += item + "=" + value;
-			num++;
-		}//next
+	if( requestMethod === "GET"){
+		var num=0;
+		if( p["params"] ){
+			var paramsStr = "";
+			for( var item in p["params"]){
+				var value = encodeURIComponent( p["params"][item] );
+				if( num > 0){
+					paramsStr += "&";
+				}
+				paramsStr += item + "=" + value;
+				num++;
+			}//next
 
-		if( requestMethod === "GET"){
 			url += "?"+ paramsStr;
 		}
 	}
@@ -288,7 +289,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 	if( "onloadstart" in xhr ){
 		xhr.onloadstart = function(e){
 //console.log(arguments);
-// console.log("event type:" + e.type);
+console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -298,7 +299,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 	if( "onload" in xhr ){
 		xhr.onload = function(e){
 //console.log(arguments);
-// console.log("event type:" + e.type);
+console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -308,7 +309,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 	if( "onloadend" in xhr ){
 		xhr.onloadend = function(e){
 //console.log(arguments);
-// console.log("event type:" + e.type);
+console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -352,7 +353,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 	if( "onabort" in xhr ){
 		xhr.onabort = function(e){
 // console.log(arguments);
-// console.log("event type:" + e.type);
+console.log("event type:" + e.type);
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
@@ -381,17 +382,16 @@ console.log("loaded: " + e.loaded);
 	
 	//send query	
 	if( requestMethod !== "POST"){
-		var params = null;
+		xhr.send();
 	} else {
 		//http://learn.javascript.ru/xhr-forms
-		var params = paramsStr;
 		var test = "setRequestHeader" in xhr;
 //console.log( "setRequestHeader: " + test );
 		if (test) {
 			xhr.setRequestHeader("Content-Type", p["enctype"]);
 		}
+		xhr.send( p["params"] );
 	}
-	xhr.send(params);
 
 	function _createRequestObject() {
 		var request = false;

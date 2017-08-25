@@ -36,7 +36,7 @@
 			<a href="#clear_notes" class="btn btn-sm btn-danger">clear all notes</a>
 			<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
 			<a href="api/notes_mysql.php?action=export_notes" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-			<a href="#import_notes" class="btn btn-sm btn-info">import from XML</a>
+			<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
 			<a href="#" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
 		</div>
 	</div>
@@ -86,63 +86,91 @@
 		</div>
 	</div>
 
+<!-- ********************** newModal ************************** -->	
 	<div id="newModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
-		<!-- Modal content-->
-		<div class="modal-content">
-		
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">add new note</h4>
-			</div>
+			<div class="modal-content">
 			
-			<div class="modal-body">
-			
-	<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
-				<div class=" panel panel-primary">
-					<div class="panel-body">
-						<div class="form-group">
-							<label id="name-label">*Name: </label>
-							<input type="text" class="form-control" name="author_name" value="anonymous">
-						</div>
-
-						<div class="form-group">
-							<label id="title-label">Title (subject): </label>
-							<input type="text" class="form-control" name="title" value="">
-						</div>
-
-						<div class="form-group">
-							<label id="text-message-label">*text message: </label>
-							<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
-						</div>						
-<p><small>
-use <b>[code]  code example [/code]</b>,
-<b>[[url | text]]</b> for link adding, 
-<b>[br]</b> for break line
-</small>
-</p>
-					</div>
-					
-					<div class="panel-footer">
-						<button type="reset" class="btn btn-large btn-warning">reset form</button>
-						<button type="submit" class="btn btn-large btn-primary">save</button>
-					</div>
-					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">add new note</h4>
 				</div>
-	</form>
 				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
+<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
+				<div class="modal-body">
+				
+					<div class=" panel panel-primary">
+						<div class="panel-body">
+							<div class="form-group">
+								<label id="name-label">*Name: </label>
+								<input type="text" class="form-control" name="author_name" value="anonymous">
+							</div>
 
+							<div class="form-group">
+								<label id="title-label">Title (subject): </label>
+								<input type="text" class="form-control" name="title" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="text-message-label">*text message: </label>
+								<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
+							</div>						
+	<p><small>
+	use <b>[code]  code example [/code]</b>,
+	<b>[[url | text]]</b> for link adding, 
+	<b>[br]</b> for break line
+	</small>
+	</p>
+						</div>
+						
+						<div class="panel-footer">
+							<button type="reset" class="btn btn-large btn-warning">reset form</button>
+							<button type="submit" class="btn btn-large btn-primary">save</button>
+						</div>
+					</div><!-- end panel-->
+					
+				</div><!-- end modal-body-->
+</form>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
 		</div>
-	</div>		
+	</div><!-- end newModal -->
+
+<!-- ********************** importModal ************************** -->	
+	<div id="importModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">upload XML and import notes to DB</h4>
+				</div>
+				
+				<div class="modal-body">
+<form name="form_import" id="import-form" action="api/notes_mysql.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="action" value="upload">
+	<input type="file" name="upload_file">
+	<button type="submit" class="">upload</button>
+<!--
+<input type="file" name="upload_files[]" id="file-select" multiple>
+				upload_max_filesize = '.$upload_max_filesize.'
+-->	
+</form>
+					
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end importModal -->
 	
-<button id="btn-test" class="btn btn-lg btn-default">test!</button>
-
 </div><!-- end container -->
 
 <!--
