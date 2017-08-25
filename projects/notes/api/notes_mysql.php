@@ -26,6 +26,7 @@ $_vars["config"]["dbName"] = "db1";
 //echo PHP_OS;
 $_vars["config"]["phpversion"] = phpversion();
 $_vars["export"]["filename"] = "notes.xml";
+$_vars["uploadPath"] = "upload";
 
 $_vars["config"]["tableName"] = "notes";
 
@@ -158,13 +159,7 @@ echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["c
 		break;
 		
 		case "upload":
-echo "<pre>";
-//print_r ($_SERVER);
-print_r ($_REQUEST);
-print_r($_FILES);
-echo "</pre>";
-		$upload_max_filesize = ini_get('upload_max_filesize'); 
-echo $upload_max_filesize;
+			uploadFile();
 		break;
 		
 		case "import_notes":
@@ -621,6 +616,50 @@ echo "Export error, no data...";
 function importTable(){
 	//removeTable();
 }//end importTable()
+
+function uploadFile(){
+	global $_vars;
+echo "<pre>";
+//print_r ($_SERVER);
+print_r ($_REQUEST);
+print_r($_FILES);
+echo "</pre>";
+		//$upload_max_filesize = ini_get('upload_max_filesize'); 
+//echo $upload_max_filesize;
+		
+		chdir("../");
+//echo "getcwd = ".getcwd();
+//echo "__DIR__ = ".__DIR__;
+		$foldername = $_vars["uploadPath"];
+		$fullPath = getcwd() . "/".$foldername;
+		
+		if ( !file_exists( $fullPath )) {
+echo $fullPath . " not exists";
+echo "<br>";
+			//mkdir
+			$mode = 0777;
+			$recursive = false;
+			if (mkdir ( $fullPath, $mode, $recursive)) {
+echo "Mkdir $fullPath successful";
+echo "<br>";
+			} else {
+echo "Cannot mkdir $fullPath, ";
+echo "<br>";
+			$perms=substr(sprintf('%o', fileperms(  getcwd() )), -4);
+echo getcwd() . " rights: , $perms";
+echo "<br>";
+			}
+			
+			// return false;
+		} else {
+			$perms=substr(sprintf('%o', fileperms(  $fullPath )), -4);
+echo $fullPath . " exists, $perms";
+echo "<br>";
+			//upload
+		}
+	
+}// uploadFile()
+
 
 function getDataObject( $query, $link ){
 	$data = array();
