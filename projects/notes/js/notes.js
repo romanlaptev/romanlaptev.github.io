@@ -30,15 +30,16 @@ var _notes = function ( opt ){
 	//correct for remote run
 	if( window.location.hostname === "romanlaptev.github.io"){
 		_vars["requestUrl"] = _vars["requestRemoteUrl"];
+		var btn_export = getDOMobj("btn-export");
+		btn_export.href = _vars["requestRemoteUrl"] + "?action=export_notes";
+console.log( btn_export.href );	
 	}
 //test	
-console.log(_vars["controlPanel"]["children"]);
-
-for( var key in _vars["controlPanel"]["children"]){
-	var btn = _vars["controlPanel"]["children"][key];
-console.log( key, btn["tagName"], btn["href"] );	
-}
-
+// console.log(_vars["controlPanel"]["children"]);
+// for( var key in _vars["controlPanel"]["children"]){
+	// var btn = _vars["controlPanel"]["children"][key];
+// console.log( key, btn["tagName"], btn["href"] );	
+// }
 
 	var _init = function(){
 //console.log("init _notes");
