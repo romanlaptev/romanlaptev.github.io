@@ -14,7 +14,16 @@ echo "<pre>"
 
 #/bin/ping 192.168.0.2
 uname -a
-
+lsb_release -a
+whoami
 echo "</pre>"
+
+echo "<hr>"
+echo "<b>Environment</b><br>"
+
+echo "<pre>"
+set
+echo "</pre>"
+
 echo "</body>"
 echo "</html>"
