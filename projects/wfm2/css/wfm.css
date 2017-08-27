@@ -1,0 +1,167 @@
+.row
+{
+	clear:both;
+}
+
+.panel {
+  margin: 5px;
+  width: 100%;
+/*
+  width: 48%;
+float:left;
+*/
+}
+.panel .filelist {
+  height: 80%;
+  overflow: scroll;
+  width: 100%;
+}
+.filelist td {
+  border: 1px solid;
+}
+
+.columns {
+  float: left;
+}
+
+.row.head-filelist {
+  display: table-row;
+}
+.head-filelist .columns {
+background-color: #7ba2d2;
+border-bottom: 10px solid #7ba2d2;
+border-top: 10px solid #7ba2d2;
+color: #ffffff;
+display: table-cell;
+float: none;
+text-align: center;
+}
+
+
+.col-file {
+  width: 20%;
+}
+.col-action {
+  width: 2%;
+}
+.col-filesize {
+  width: 15%;
+}
+.col-fileperms {
+  width: 12%;
+}
+.col-filegroup {
+  width: 7%;
+}
+.col-fileowner {
+  width: 7%;
+}
+.col-filetime {
+  width: 20%;
+}
+
+.filelist-row {
+display: table-row;
+}
+.filelist .columns {
+border: 1px solid;
+display: table-cell;
+float: none;
+/*padding: 10px;*/
+}
+
+
+
+a:link	
+{
+	/*color: orange; */
+	font:16px Verdana, Arial;
+	text-decoration: none;
+}
+a:visited 
+{
+}
+a:hover	
+{
+	/*font:bold 15.2px Verdana, Arial;*/
+	color: black; 
+	background:gold;
+}
+
+#system-disk-info
+{
+	display:none;
+	border:1px solid;
+/*
+	position: fixed;
+	left: 50%;
+	top: 20%;
+*/
+	padding:10px;
+	width: 400px;
+	background:#bebeb0;
+}
+.log
+{
+	font:normal 14px Verdana, Arial;
+	border:1px solid;
+	padding:10px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 40%;
+	opacity:0.8;
+	background:#ffffff;
+}
+.error {
+	color: red;
+	font:bold 14px Verdana, Arial, Helvetica, sans-serif;
+}
+.ok 
+{
+	color: green;
+	font:bold 14px Verdana, Arial, Helvetica, sans-serif;
+}
+
+.head
+{
+	color: #ffffff;
+      background: #7ba2d2;
+      font: 16px Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+
+.folder
+{
+	/*float:left;*/
+    margin: 5px;
+    padding: 5px;
+}
+.file
+{
+    margin: 5px;
+}
+.file-action
+{
+	/*float:right;*/
+	/*background:palegreen;*/
+    margin: 5px;
+    padding: 5px;
+	font-size:  12px;
+}
+
+
+
+.even
+{
+	background:#ffffff;
+}
+.odd
+{
+	background:#C9d9c9;
+}
+
+.fileperms-info
+{
+}

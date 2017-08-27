@@ -6,6 +6,8 @@
 	<title>web file manager</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/bootstrap.css"/>	
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
+	
 <!--
 <script src="http://code.jquery.com/jquery-latest.js"></script>	
 <script src="js/jquery.min.js"></script>
@@ -17,39 +19,46 @@
 <script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jplayer.playlist.min.js"></script>
 
-<!-- 
-<link type="text/css" href="js/jscrollpane/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-<script type="text/javascript" src="js/jscrollpane/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="js/jscrollpane/jquery.jscrollpane.min.js"></script>		
--->
+<link rel="stylesheet" href="css/player_style.css">
+
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="js/parse_music.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
-	<div class="container">
+	<div class="container container-fluid">
 
-	<div class="rows topmenu">
+	<div class="row-fluid topmenu">
 
-		<ul class="nav nav-tabs">
-			<li class="dropdown menu-left-panel">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Left panel
+		<ul class="nav nav-tabs span6">
+<!--
+			<li class="dropdown menu-select-panel">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Select panel
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
 					<li><a class="view-file-panel" href="#">Files</a></li>
-					<!-- <li class="divider"></li> -->
+
 					<li><a class="view-media-player" href="#">Player</a></li>
 				</ul>
 			</li>
+-->
+			  <li class="view-media-player active"><a href="#">Player</a></li>
+			  <li class="view-file-panel"><a  href="#">Files</a></li>
 
-			<li class="dropdown menu-right-panel">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Right panel
+			<li class="dropdown pull-right">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage playlists
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a class="view-file-panel" href="#">Files</a></li>
-					<li><a class="view-pls-panel" href="#">Manage playlists</a></li>
+					<li>
+<a id="add-track" href="#modal-add-track" role="button" data-toggle="modal" data-keyboard="true">Add track to playlist</a>
+					</li>
+					<li><a id="load-pls" href="#">Load playlist from JSON</a></li>
+					<li>
+<a id="save-pls" href="#modal-save" role="button" data-toggle="modal" data-keyboard="true">Save playlists (JSON)</a>
+					</li>
 				</ul>
 			</li>
 		</ul>
@@ -57,11 +66,12 @@
 	</div>
 
 
-<div class="rows panels">
-	<div class="cols col-1 left-panel">
+<div class="row-fluid panels">
+	<div class="span6 left-panel">
 
 <!-- ################################## player -->
 		<div id="jp_container_N" class="jp-video jp-video-270p">
+			<h5 id="playlist-title" class="text-center">&nbsp;</h5>
 			<div class="jp-type-playlist">
 				<div id="jquery_jplayer_N" class="jp-jplayer"></div>
 				<div class="jp-gui">
@@ -120,10 +130,10 @@
 		</div>
 <!-- ################################## /player -->
 
-	</div><!-- #col-1 -->
+	</div><!-- #left-panel-->
 
 
-	<div class="cols col-2 right-panel active-panel">
+	<div class="span6 right-panel active-panel">
 
 <!-- <form method="post" name="filelist" action=""> -->
 		<div class="files">
@@ -134,29 +144,30 @@
 			</div>
 
 			<div class="wfm">
+				<div id="listing">
 
-			<div id="listing">
-				<div class="folders-list">
-					<ul class="subfolder-tpl">
-						<li>
-							<input type="checkbox" name="file[]" value="sname">
-							<a class="subfolder" href="#"><small>+</small> sname</a>
-						</li>
-					</ul>
+					<div class="folders-list">
+						<ul class="subfolder-tpl">
+							<li>
+								<input type="checkbox" name="file[]" value="sname">
+								<a class="subfolder" href="#"><small>+</small> sname</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="files-list">
+						<ul class="file-tpl">
+							<li>
+								<div class="file">
+									<input type="checkbox" name="file[]" value="fname">
+									<a href="#" target="_blank">fname</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+
 				</div>
 
-				<div class="files-list">
-					<ul class="file-tpl">
-						<li>
-							<div class="file">
-								<input type="checkbox" name="file[]" value="fname">
-								fname
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			
 			<iframe id="filelist" 
 			width="100%" height="100%" 
 			name="filelist" 
@@ -173,48 +184,133 @@
 
 </div><!-- /panels -->
 
-<div class="rows panel-buttons">
-	<div class="cols col-1">&nbsp;</div>
-	<div class="cols col-2">
+
+<div class="row panel-buttons">
+	<div class="offset3">
 		<ul>
-			<li><a class="copy btn btn-primary" href="#">copy</a></li>
-			<li><a class="move btn btn-primary" href="#">move</a></li>
-			<li><a class="rename btn btn-primary" href="#">rename</a></li>
-			<li><a class="group-remove btn btn-primary" href="#">delete</a></li>
-			<li><a class="reload-pls btn btn-primary" href="#">reload playlist</a></li>
+			<li>
+<a href="#modal-mkdir" role="button" class="mkdir btn-large btn-primary" 
+data-toggle="modal" data-keyboard="true">new folder</a>
+			</li>
+
+			<li>
+<a href="#modal-copy" role="button" class="copy btn-large btn-primary" 
+data-toggle="modal" data-keyboard="true">copy</a>
+			</li>
+			<li>
+<a href="#modal-copy" role="button" class="move btn-large btn-primary" 
+data-toggle="modal" data-keyboard="true">move</a>
+			</li>
+
+			<li>
+<a href="#modal-rename" role="button" class="rename btn-large btn-primary" 
+data-toggle="modal" data-keyboard="true">rename</a>
+			</li>
+			<li><a class="group-remove btn-large btn-danger" href="#">delete</a></li>
+			<li><a class="reload-pls btn-large btn-success" href="#">reload playlist</a></li>
+			<li><a class="clear-log btn-large btn-warning" href="#">clear log</a></li>
 		</ul>
 	</div>
-	<div class="cols col-3">&nbsp;</div>
 </div>
 
-<div id="log" class="rows"></div>
+
+<div id="log" class="row"></div>
 
 	</div><!-- /container -->
 
-<div id="input-rename" class="hide">
-	<a class="cancel" href="#">x</a>
-	change filename<br>
-	<input type="hidden" name="old-name" value=""><br>
-	<input type="text" name="new-name" value="">
-	<a class="ok btn btn-primary" href="#">ok</a>
-</div>
+<!-- MODAL DIALOG WINDOW -->
+	<div class="modal hide" id="modal-copy" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3><span class="file-op">copy</span> file</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row-fluid">  
+			  <div class="span2">from:</div>
+			  <div class="span7"><input type="text" name="src_folder" value=""></div> 
+			</div>
+			  
+			<div class="row-fluid">  
+				<div class="span2">to:</div>
+				<div class="span7"><input type="text" name="dst_folder" value=""></div>
+				<div class="span3">
+					<a class="btn-large btn-primary action-btn" href="#">
+						<span class="file-op">copy</span>
+					</a>
+				</div>
+			</div>
+			<input type="hidden" name="movefiles" value="0">
+			
+		</div>
+	</div>
 
-<div id="input-copy-location" class="hide">
-	<a class="cancel" href="#">x</a>
+	<div class="modal hide" id="modal-rename" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>change filename</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+<input type="hidden" disabled name="old_name" value="">
+enter new name: <input type="text" name="new_name" value="">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">rename</a>
+			</div>
+		</div>
+	</div>
 
-	<span class="file-op">copy</span> files<br>
+	<div 
+class="modal hide fade" 
+id="modal-mkdir" 
+role="dialog" 
+tabindex='-1' 
+aria-labelledby="myModalLabel" 
+aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3 id="myModalLabel">create new folder</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+Enter folder name: <input type="text" name="new_name" value="">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">create</a>
+			</div>
+		</div>
+	</div>
 
-	from: <input type="text" name="src_folder" value=""><br>
-	to: <input type="text" name="dst_folder" value=""><br>
 
-	<input type="hidden" name="movefiles" value="0">
-
-	<a class="ok btn btn-primary" href="#">ok</a>
-</div>
-
-<div id="ajaxBusy">
-<h1>ajaxBusy</h1>
-</div>
-
+	<div class="modal hide" id="modal-save" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Save playlist</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+enter new name: <input type="text" name="new_name" value="">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">save</a>
+			</div>
+		</div>
+	</div>
+<!--
+	<div class="modal hide" id="modal-add-track" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Add track to playlist</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left span4">
+<input type="text" name="track" value="" class="span4">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">ok</a>
+			</div>
+		</div>
+	</div>
+-->
 </body>
 </html>

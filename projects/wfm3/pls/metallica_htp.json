@@ -1,0 +1,37 @@
+[
+	{
+		"title":"Blackened",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/01_Blackened.mp3"
+	},
+	{
+		"title":"And Justice For All",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/02_And_Justice_For_All.mp3"
+	},
+	{
+		"title":"Eye Of The Beholder",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/03_Eye_Of_The_Beholder.mp3"
+	},
+	{
+		"title":"One",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/04_One.mp3"
+	},
+	{
+		"title":"The Shortest Straw",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/05_The_Shortest_Straw.mp3"
+	},
+	{
+		"title":"Harvester Of Sorrow",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/06_Harvester_Of_Sorrow.mp3"
+	},
+	{
+		"title":"The Frayed Ends Of Sanity",
+		"artist":"Metallica",
+		"mp3":"http://mycomp/music/M/Metallica/1988_And_Justice_For_All/07_The_Frayed_Ends_Of_Sanity.mp3"
+	}
+]

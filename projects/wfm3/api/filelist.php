@@ -3,7 +3,7 @@
 //print_r($_REQUEST);
 //echo "</pre>";
 
-$media_types = array("wav","mp3","MP3","ogg","avi","wmv","mkv","m4a","mpg","mp4","m4v","flv","flac");
+//$media_types = array("wav","mp3","MP3","ogg","avi","wmv","mkv","m4a","mpg","mp4","m4v","flv","flac");
 
 if (!empty($_REQUEST['dir']) )
 {
@@ -21,7 +21,6 @@ echo json_encode($files);
 function DirFiles($dir, $media_types)
 {
 	$files = array(); 
-	//$subfiles = array(); 
 	$handle = opendir($dir) or die("Can't open directory $dir"); 
 	while (false !== ($file = readdir($handle))) 
 	{
@@ -29,8 +28,6 @@ function DirFiles($dir, $media_types)
 		{ 
 			if(is_dir($dir."/".$file)) 
 			{ 
-				//$subfiles = DirFiles($dir."/".$file); 
-				//$files = array_merge($files,$subfiles);
 				$files['subfolders'][] = ($dir."/".$file); 
 			} 
 			else 

@@ -3,10 +3,14 @@ html
 	height:95%;
 }
 body {
-  background-color: #F4F6F7;
+  background-color: #074e68 !important;
   margin: 0;
-  padding: 20px;
+padding-top: 20px;
+padding-bottom: 20px;
 	height:95%;
+  font-family: hattori_hanzolight, segoe-ui-webfont, Arial  !important;
+  font-size:16px  !important;
+	
 }
 
 .container
@@ -21,7 +25,9 @@ body {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
     padding: 20px;
 }
-
+.panels {
+  height: 80%;
+}
 
 .rows
 {
@@ -62,16 +68,36 @@ border:1px solid red;
 
 .wfm
 {
-height: 590px;
+height: 550px;
 overflow-y: auto;
 margin-top:10px;
 }
 
 .jp-playlist 
 {
-  height: 555px;
+  height: 495px;
   overflow-y: auto;
+  /*background-color: transparent !important;*/
 }
+.jp-video {
+  /*background-color: transparent !important;*/
+}
+.jp-playlist-item.jp-playlist-current {
+  /*font-weight: bold;*/
+}
+.jp-playlist-current {
+  /*list-style: none outside none !important;*/
+}
+.jp-interface {
+  /*background-color: transparent !important;*/
+}
+
+#playlist-title 
+{
+    color: #000;
+    margin: 0;
+}
+
 
 .files .dirname
 {
@@ -99,12 +125,17 @@ margin-bottom: 5px;
 padding: 5px;
 }
 .file-tpl > li:nth-child(2n+1) {
-  background: none repeat scroll 0 0 #C9D9C9;
+  background: none repeat scroll 0 0 #def;
+/*#C9D9C9;*/
 }
 .file > input {
   margin-bottom: 5px !important;
 }
-
+.file > a {
+  color: #0088cc;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .folders-list ul
 {
@@ -118,12 +149,16 @@ margin:0;
 
 
 .panel-buttons .cols {
+/*
   float: left;
   width: 30%;
+*/
 }
 .panel-buttons .col-2 {
+/*
   float: left;
   width: 40%;
+*/
 }
 .panel-buttons ul {
 list-style: none outside none;
@@ -198,3 +233,35 @@ display:none;
   top: 50%;
   width: 400px;
 }
+
+.modal {
+margin-left: -225px !important;
+top: 30% !important;
+width: 450px !important;
+}
+
+.modal .action-btn {
+  margin-left: 5px;
+}
+
+.clear-log {
+  color: #000000 !important;
+}
+
+#log {
+  background: #f3f3f3;
+  margin-left: 0;
+  margin-top: 20px;
+  /*padding-bottom: 20px;*/
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.error {
+  background: none repeat scroll 0 0 maroon;
+  color: #ffffff;
+  font-size: 110%;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
