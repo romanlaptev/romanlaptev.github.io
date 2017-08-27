@@ -1,0 +1,11 @@
+rails new /var/www/ruby/first_ruby_app
+cd /var/www/ruby/first_ruby_app/
+
+rails server
+rails generate controller welcome index
+mcedit app/views/welcome/index.html.erb
+rm public/index.html 
+mcedit config/routes.rb 
+
+#создать модель item
+rails generate model item
