@@ -10,7 +10,7 @@ echo "<hr>";
 
 
 echo "<pre>";
-http://php.net/manual/ru/function.ini-get-all.php
+//http://php.net/manual/ru/function.ini-get-all.php
 print_r(ini_get_all());
 echo "</pre>";
 echo '<hr>';
