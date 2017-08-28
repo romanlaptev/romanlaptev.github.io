@@ -174,7 +174,10 @@ echo "error, not support function json_encode(). incorrect PHP version - ".$_var
 		break;
 		
 		case "import_notes":
-			importTable( $_vars["export"]["filename"] );
+			$foldername = $_vars["uploadPath"];
+			chdir("../");
+			$fullPath = getcwd() . "/".$foldername;
+			importTable( $fullPath."/". $_vars["export"]["filename"]);
 		break;
 		
 	}//end switch
@@ -582,7 +585,7 @@ echo "Export error, no data...";
 	$xml .= "<table name='notes'>\n";
 	foreach ( $notes as $row ){
 //print_r($row);
-		$id = $row->id;
+		//$id = $row->id;
 		$author = $row->author;
 		$title = $row->title;
 		$text_message = $row->text_message;
@@ -591,7 +594,7 @@ echo "Export error, no data...";
 		$ip = $row->ip;
 
 		$xml .=  "\t<note title=\"".$title."\" ";
-		$xml .=  "id=\"".$id."\" ";
+		//$xml .=  "id=\"".$id."\" ";
 		$xml .=  "author=\"".$author."\" ";
 		$xml .=  "ip=\"".$ip."\" ";
 		$xml .=  "client_date=\"".$client_date."\" ";
@@ -630,30 +633,24 @@ function importTable( $xml_file ){
 	global $_vars;
 	//removeTable();
 	
-	//chdir("../");
-	$foldername = $_vars["uploadPath"];
-	$fullPath = getcwd() . "/".$foldername."/".$xml_file;
-	
 	if ( !function_exists("simplexml_load_file") ){
-echo "error read xml from ".$fullPath;	
+echo "error read xml from ".$xml_file;	
 echo "<br>";
 echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5";
 		exit();
 	}
 	
-	$xml = simplexml_load_file($fullPath);
+	$xml = simplexml_load_file($xml_file);
 	if ($xml == FALSE) {
-		exit("Failed to open ".$fullPath);
+		exit("Failed to open ".$xml_file);
 	}
-//echo "Ok, read xml from ".$fullPath;	
+//echo "Ok, read xml from ".$xml_file;	
 //echo "<br>";
 //echo "<pre>";
 //print_r($xml);
 //echo "</pre>";
 
-//<note title="javascript, test Modernizr" id="20" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
 	$queryValues = "";
-
 	for ($n=0; $n < sizeof($xml->note); $n++){
 		$authorName = $xml->note[$n]["author"];
 		$authorName = addslashes( htmlspecialchars($authorName) );
@@ -746,7 +743,10 @@ exit();
 				{
 echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
 echo "<br>";
-					importTable( $file_arr['name'] );
+echo "Rename ". $file_arr['name']." to ".$_vars["export"]["filename"];
+echo "<br>";
+
+					importTable( $fullPath."/".$_vars["export"]["filename"] );
 				} else {
 echo $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
 echo "<br>";
