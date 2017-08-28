@@ -174,7 +174,7 @@ echo "error, not support function json_encode(). incorrect PHP version - ".$_var
 		break;
 		
 		case "import_notes":
-			importTable();//replace table!!!!
+			importTable( $_vars["export"]["filename"] );
 		break;
 		
 	}//end switch
@@ -626,14 +626,12 @@ echo "Export error, no data...";
 	
 }//end exportNotes()
 
-function importTable(){
+function importTable( $xml_file ){
 	global $_vars;
 	//removeTable();
 	
-	chdir("../");
+	//chdir("../");
 	$foldername = $_vars["uploadPath"];
-	$xml_file = $_vars["export"]["filename"];
-
 	$fullPath = getcwd() . "/".$foldername."/".$xml_file;
 	
 	if ( !function_exists("simplexml_load_file") ){
@@ -691,7 +689,8 @@ echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_va
 	$query = $_vars["sql"]["insertAll"];
 	$query = str_replace("{{values}}", $queryValues, $query);
 	
-	$msg_success = "Records added, ". "SQL: " . $query;
+	//$msg_success = "Records added, ". "SQL: " . $query;
+	$msg_success = "Records added.";
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
 			echo $msg_success;
@@ -747,6 +746,7 @@ exit();
 				{
 echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
 echo "<br>";
+					importTable( $file_arr['name'] );
 				} else {
 echo $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
 echo "<br>";

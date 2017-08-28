@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--
+<?xml-stylesheet type="text/css" href="menu.css"?>
+<?xml-stylesheet type="text/xsl" href="menu.xsl"?>
+-->
+<main>
+<menu title="menu1">
+<item status="on">
+	<a href="content/resume.html" target=""> резюме </a>
+</item>
+
+<item status="off">
+	<a href="lib/index.html" target="content_frame"> Книги </a>
+</item>
+
+<item status="on">
+	<a href="photos/index.html" target="content_frame"> Фото    </a>
+</item>
+
+<item status="on">
+	<a href="music/index.html" target="content_frame"> Музыка	</a>
+</item>
+
+<item status="on">
+	<a href="video/index.html" target="content_frame"> Фильмы </a>
+</item>
+
+<item status="on">
+	<a href="http://narod.yandex.ru/userarea/after_register.xhtml" target="_blank"> Мастерская </a>
+</item>
+
+<item status="on">
+	<a href="content/mail.html" target="content_frame"> Почта </a>
+</item>
+
+<item status="on">
+	<a href="xml/bookmarks.xml" target="content_frame"> закладки </a>
+</item>
+
+<item status="on">
+	<a href="xml/notes.xml" target="content_frame"> записки </a>
+</item>
+
+<item status="on">
+	<a href="http://www.narod.ru/guestbook/?owner=148544702" target="content_frame"> guestbook </a>
+</item>
+
+<item status="on">
+	<a href="content/index.html" target="content_frame"> work </a>
+</item>
+</menu>
+
+<menu title="menu2">
+<item status="on">
+<a href="xml/notes.html" target="three">записки</a>
+</item>
+
+<item status="on">
+<a href="xml/bookmarks.html" target="three">закладки</a>
+</item>
+
+<item status="on">
+<a href="lib/html/index.html" target="three">книги</a>
+</item>
+
+<item status="on">
+<a href="work.html" target="three">scripts</a>
+</item>
+
+<item status="on">
+<a href="admin.html" target="three">admin</a>
+</item>
+
+<item status="on">
+<a href="cgi-bin/index1.cgi" target="three">upload</a>
+</item>
+
+<item status="on">
+<a href="xml/private.xml" target="three">my info</a>
+</item>
+
+</menu>
+
+</main>

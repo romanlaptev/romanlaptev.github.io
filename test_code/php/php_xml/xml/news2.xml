@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<newsLine>
+    <news date="1.1.2002">
+        <title>title 1</title>
+        <text>news text 1</text>
+    </news>
+    <news date="5.1.2002">
+        <title>title 2</title>
+        <text>news text 2</text>
+    </news>
+    <news date="10.1.2002">
+        <title>title 3</title>
+        <text>news text 3</text>
+    </news>
+</newsLine>
+

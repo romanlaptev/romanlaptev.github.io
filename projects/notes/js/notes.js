@@ -605,6 +605,7 @@ console.log(arguments);
 		_log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 		$("#importModal").modal("hide");
+		loadMessages();		
 	}//end _posrtUpload()
 	
 	// public interfaces

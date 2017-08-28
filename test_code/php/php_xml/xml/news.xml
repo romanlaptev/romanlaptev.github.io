@@ -1,0 +1,15 @@
+<?xml version="1.0"  encoding="windows-1251"?>
+<bookmarks>
+<title> Закладки </title>
+
+<group ID="1"> 
+<title> сеть mygroup </title>
+
+<link ID="1"> 
+	<addr> http://192.168.0.2/ </addr>
+	<name> ZTE DSL Router </name>
+</link> 
+	
+</group>
+
+</bookmarks>

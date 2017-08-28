@@ -1,0 +1,8 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<root>
+  <info who="моя">
+    <address ulica="моя улица!!" kvartira="12" dom="15">123</address>
+    <phone>+71234567890</phone>
+  </info>
+</root>
+
