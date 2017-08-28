@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="no subject" id="21" client_date="2017-08-24 13:19:27" server_date="2017-08-24 15:19:24" >
+	<note title="no subject" id="21" author="anonymous" client_date="2017-08-24 13:19:27" server_date="2017-08-24 15:19:24" >
 		<text>
 [[ https://ruseller.com/lessons.php?rub=37&amp;amp;id=1381 | PDO против MySQLi. Что выбрать?]]
 [br]
@@ -16,7 +16,7 @@ http://php.net/manual/ru/book.pdo.php
 [/code]
 		</text>
 	</note>
-	<note title="javascript, test Modernizr" id="20" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
+	<note title="javascript, test Modernizr" id="20" author="anonymous" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
 		<text>
 [code]
 &amp;lt;!DOCTYPE html&amp;gt;

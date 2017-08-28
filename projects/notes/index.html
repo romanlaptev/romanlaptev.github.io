@@ -33,11 +33,11 @@
 
 	<div class=" panel panel-primary">
 		<div class="panel-body" id="control-btn">
-			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal">add new note</button>
+			<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal">add new note</button>
 			<a href="#clear_notes" class="btn btn-sm btn-danger">clear all notes</a>
 			<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
 			<a href="api/notes_mysql.php?action=export_notes" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-			<button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
+			<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
 			<a href="#" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
 		</div>
 	</div>
@@ -164,6 +164,7 @@
 				
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">upload</button>
+					<button id="btn-import" class="btn btn-warning">import</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 </form>

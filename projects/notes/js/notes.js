@@ -222,6 +222,24 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}//end event
 		}
 		
+		var btn_import = getDOMobj("btn-import");
+		if( btn_import ){
+			btn_import.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				serviceAction({"action" : "import_notes"}, function(){
+					$("#importModal").modal("hide");
+				});
+				
+			}//end event
+		}
+		
 	}//end defineEvents()
 	
 	function _checkForm(form){
@@ -480,7 +498,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		
 	}//end _insertMessages()
 	
-	function serviceAction(opt){
+	function serviceAction(opt, callback){
 		var p = {
 			"action" : ""//,
 			//"id" : null
@@ -505,6 +523,9 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 var msg = "<p>"+log+"</p>";
 _log("<div class='alert alert-success'>" + msg + "</div>");
 				loadMessages();
+				if( typeof callback === "function"){
+					callback();
+				}
 			}//end callback()
 		});
 		

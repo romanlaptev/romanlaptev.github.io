@@ -58,7 +58,18 @@ $_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."
 '{{client_date}}', 
 '{{server_date}}', 
 '{{ip}}'
+);";
+$_vars["sql"]["insertAll"] = "INSERT INTO `".$_vars["config"]["tableName"]."` VALUES {{values}};";
+$_vars["sql"]["insertValues"] = "(
+NULL, 
+'{{authorName}}', 
+'{{title}}', 
+'{{textMessage}}',
+'{{client_date}}', 
+'{{server_date}}', 
+'{{ip}}'
 )";
+
 $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
 $_vars["sql"]["getNotes"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."` ORDER BY `client_date` DESC";
 $_vars["sql"]["deleteNote"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
@@ -133,7 +144,7 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
 		//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
 		//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 		//https://gist.github.com/jorgeatorres/1239453
-echo "error, not use function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
+echo "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
 					}
 			}
 
@@ -581,6 +592,8 @@ echo "Export error, no data...";
 
 		$xml .=  "\t<note title=\"".$title."\" ";
 		$xml .=  "id=\"".$id."\" ";
+		$xml .=  "author=\"".$author."\" ";
+		$xml .=  "ip=\"".$ip."\" ";
 		$xml .=  "client_date=\"".$client_date."\" ";
 		$xml .=  "server_date=\"".$server_date."\" ";
 		$xml .=  ">\n";
@@ -614,7 +627,93 @@ echo "Export error, no data...";
 }//end exportNotes()
 
 function importTable(){
+	global $_vars;
 	//removeTable();
+	
+	chdir("../");
+	$foldername = $_vars["uploadPath"];
+	$xml_file = $_vars["export"]["filename"];
+
+	$fullPath = getcwd() . "/".$foldername."/".$xml_file;
+	
+	if ( !function_exists("simplexml_load_file") ){
+echo "error read xml from ".$fullPath;	
+echo "<br>";
+echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5";
+		exit();
+	}
+	
+	$xml = simplexml_load_file($fullPath);
+	if ($xml == FALSE) {
+		exit("Failed to open ".$fullPath);
+	}
+//echo "Ok, read xml from ".$fullPath;	
+//echo "<br>";
+//echo "<pre>";
+//print_r($xml);
+//echo "</pre>";
+
+//<note title="javascript, test Modernizr" id="20" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
+	$queryValues = "";
+
+	for ($n=0; $n < sizeof($xml->note); $n++){
+		$authorName = $xml->note[$n]["author"];
+		$authorName = addslashes( htmlspecialchars($authorName) );
+		
+		$title = $xml->note[$n]["title"];
+		$title = addslashes( htmlspecialchars($title) );
+		
+		$textMessage = $xml->note[$n]->text;
+		$textMessage = addslashes( htmlspecialchars($textMessage) );
+		$textMessage = str_replace("&amp;lt;", "&lt;", $textMessage);
+		$textMessage = str_replace("&amp;gt;", "&gt;", $textMessage);
+		
+		$clientDate = $xml->note[$n]["client_date"];
+		$serverDate = $xml->note[$n]["server_date"];
+		$ip = $xml->note[$n]["ip"];
+		
+		$items = $_vars["sql"]["insertValues"];
+		$items = str_replace("{{authorName}}", $authorName, $items);
+		$items = str_replace("{{title}}", $title, $items);
+		$items = str_replace("{{textMessage}}", $textMessage, $items);
+		$items = str_replace("{{client_date}}", $clientDate, $items);
+		$items = str_replace("{{server_date}}", $serverDate, $items);
+		$items = str_replace("{{ip}}", $ip, $items);
+//echo $items;
+//echo "<br>";
+		$queryValues .= $items;
+		if( $n < (sizeof($xml->note)-1) ){
+			$queryValues .= ", ";
+		}
+	}//next
+//echo $queryValues;
+//echo "<br>";
+	$query = $_vars["sql"]["insertAll"];
+	$query = str_replace("{{values}}", $queryValues, $query);
+	
+	$msg_success = "Records added, ". "SQL: " . $query;
+	if($_vars["useMySQL"] == 1){
+		if (mysql_query($query, $_vars["link"]) ) {
+			echo $msg_success;
+		} else {
+			echo "error INSERT: " . mysql_error() . "<br>";
+			echo "SQL: " . $query;
+			exit();
+		}
+	}
+
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		try{
+			$connection->query( $query );
+			echo $msg_success;
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+	
 }//end importTable()
 
 function uploadFile(){
