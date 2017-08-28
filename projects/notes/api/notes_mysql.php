@@ -360,8 +360,8 @@ function createTable(){
 
 function saveNote(){
 	global $_vars;
-
-	$authorName = addslashes( htmlspecialchars($_REQUEST["authorName"]) );
+	
+	$authorName = addslashes( htmlspecialchars($_REQUEST["author_name"]) );
 	
 	//$title = $_REQUEST["title"];
 	$title = addslashes( htmlspecialchars($_REQUEST["title"]) );
@@ -371,7 +371,7 @@ function saveNote(){
 	//$textMessage = nl2br( $_REQUEST["textMessage"] );
 //echo $textMessage;
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
-	$textMessage = addslashes( htmlspecialchars($_REQUEST["textMessage"]) );
+	$textMessage = addslashes( htmlspecialchars($_REQUEST["text_message"]) );
 /*
 	$textMessage = str_replace("<script", "&lt;script", $textMessage);
 	$textMessage = str_replace("</script>", "&lt;/script&gt;", $textMessage);
@@ -713,6 +713,7 @@ echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_va
 }//end importTable()
 
 function uploadFile(){
+	global $_vars;
 //echo "<pre>";
 //print_r ($_SERVER);
 //print_r ($_REQUEST);
@@ -738,7 +739,7 @@ exit();
 		case 0:
 			$errors .= "UPLOAD_ERR_OK";
 			if ( is_uploaded_file ($file_arr['tmp_name']) ) {
-				$uploaded_file = $fullPath."/".$file_arr['name'];
+				$uploaded_file = $fullPath."/".$_vars["export"]["filename"];
 				if ( move_uploaded_file( $file_arr['tmp_name'], $uploaded_file ) )
 				{
 echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";

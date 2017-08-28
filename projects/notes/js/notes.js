@@ -315,7 +315,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}	
-	//console.log( p );
+//console.log( p );
 		
 		//get creation date
 		var now = new Date();
@@ -331,20 +331,21 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		var url = p["url"];
 		var params = {
 			"action" : p["action"],
-			"authorName" : p["authorName"],
-			"title" : p["title"],
-			"textMessage" : p["textMessage"],
 			"date" : p["creation_date"]
 		};
-//test
-//url="http://graphic-art-collection.16mb.com/php/test_mysql.php";
-//params={};
-
+		
+		if(typeof FormData === "undefined"){
+var msg = "<p>This browser not support object FormData! send (ajax) form data not possible... </p>";
+_log("<div class='alert alert-error'>" + msg + "</div>");
+			return false;
+		}
+		
 		runAjax( {
 			"requestMethod" : p["requestMethod"], 
 			"enctype" : p["enctype"],
 			"url" : url, 
 			"params" : params,
+			"formData" : new FormData( form_message ),
 			"callback": function( log ){
 				
 var msg = "<p>"+log+"</p>";
