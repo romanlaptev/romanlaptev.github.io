@@ -597,7 +597,7 @@ console.log( files );
 	}//end _getUploadFiles()
 */
 	function _postUpload(log){
-console.log(arguments);		
+//console.log(arguments);		
 		var msg = "<p>"+log+"</p>";
 		var _className = "alert-success";
 		if( log.indexOf("error") !== -1){
