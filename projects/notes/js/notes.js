@@ -334,18 +334,28 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"date" : p["creation_date"]
 		};
 		
-		if(typeof FormData === "undefined"){
-var msg = "<p>This browser not support object FormData! send (ajax) form data not possible... </p>";
-_log("<div class='alert alert-error'>" + msg + "</div>");
-			return false;
-		}
-		
+		// if(typeof FormData === "undefined"){
+// var msg = "<p>This browser not support object FormData! send (ajax) form data not possible... </p>";
+// _log("<div class='alert alert-error'>" + msg + "</div>");
+			// return false;
+		// }
+		var formData = {
+			"author_name" : p["authorName"],
+			"title" : p["title"],
+			"text_message" : p["textMessage"]
+		};
+// for(var key in form_message){
+// console.log( key, form_message[key]);	
+// }		
+// return;
+
 		runAjax( {
 			"requestMethod" : p["requestMethod"], 
 			"enctype" : p["enctype"],
 			"url" : url, 
 			"params" : params,
-			"formData" : new FormData( form_message ),
+			//"formData" : new FormData( form_message ),
+			"formData" : formData,
 			"callback": function( log ){
 				
 var msg = "<p>"+log+"</p>";

@@ -184,7 +184,7 @@ function runAjax( opt ){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-//console.log(p);
+console.log(p);
 
 	var requestMethod = p["requestMethod"]; 
 	var url = p["url"]; 
@@ -446,13 +446,32 @@ console.log("loaded: " + e.loaded);
 	if( requestMethod !== "POST"){
 		xhr.send();
 	} else {
+		
 		//http://learn.javascript.ru/xhr-forms
-		// var test = "setRequestHeader" in xhr;
-// //console.log( "setRequestHeader: " + test );
-		// if (test) {
-			// xhr.setRequestHeader("Content-Type", p["enctype"]);
-		// }
-		xhr.send( p["formData"] );
+		//form POST body
+		if( p["enctype"] === "application/x-www-form-urlencoded"){
+			
+			var test = "setRequestHeader" in xhr;
+	//console.log( "setRequestHeader: " + test );
+			if (test) {
+				xhr.setRequestHeader("Content-Type", p["enctype"]);
+			}
+			
+			var body = "";
+			var n = 0;
+			for(var key in p["formData"]){
+				var value = p["formData"][key];
+				if( n > 0){
+					body += "&";
+				}
+				body += key + "=" + encodeURIComponent(value);
+				n++;
+			}//next
+//console.log( body );
+			xhr.send( body );
+		} else {
+			xhr.send( p["formData"] );
+		}
 	}
 
 	function _createRequestObject() {

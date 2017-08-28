@@ -360,7 +360,7 @@ function createTable(){
 
 function saveNote(){
 	global $_vars;
-	
+
 	$authorName = addslashes( htmlspecialchars($_REQUEST["author_name"]) );
 	
 	//$title = $_REQUEST["title"];
