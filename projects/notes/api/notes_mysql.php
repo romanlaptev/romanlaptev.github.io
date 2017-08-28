@@ -360,6 +360,14 @@ function createTable(){
 
 function saveNote(){
 	global $_vars;
+	
+	if( empty( $_REQUEST["text_message"]) ){
+echo "error!";
+echo "<pre>";
+print_r ($_REQUEST);
+echo "</pre>";
+exit();
+	}
 
 	$authorName = addslashes( htmlspecialchars($_REQUEST["author_name"]) );
 	
@@ -372,6 +380,8 @@ function saveNote(){
 //echo $textMessage;
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
 	$textMessage = addslashes( htmlspecialchars($_REQUEST["text_message"]) );
+	
+	
 /*
 	$textMessage = str_replace("<script", "&lt;script", $textMessage);
 	$textMessage = str_replace("</script>", "&lt;/script&gt;", $textMessage);
