@@ -226,7 +226,7 @@ var _notes = function ( opt ){
 			btn_export.onclick = function(event){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
-console.log( event );
+//console.log( event );
 				if (event.preventDefault) { 
 					event.preventDefault();
 				} else {
@@ -463,7 +463,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 				}
 			}//next
 			delete headersArr["lines"];
-//console.log(headersArr);
+console.log(headersArr);
 
 			//test PHP support
 			if( headersArr["items"]["X-Powered-By"] &&
