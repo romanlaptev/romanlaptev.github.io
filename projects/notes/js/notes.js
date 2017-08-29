@@ -514,39 +514,27 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			var _data = [];
 			for( var n = 0; n < records.length; n++){
 				var record = records.item(n);
-//console.log(record.attributes);				
-			var _data = get_attr_to_obj( record.attributes );
-console.log(record.children.length);
-			// for( var n = 0; n < record.children.length; n++){
-				// var ch = record.children[n];
-// console.log( ch.textContent );				
-			// }//next
-
-console.log(_data);				
-
-/*				
-
-				var columns = record.getElementsByTagName("column");
-				var recordObj = {};
-				for( var n2 = 0; n2 < columns.length; n2++){
-					//var column = columns[n2];
-					//var columnName = column["attributes"]["name"].nodeValue;
-					//recordObj[columnName] = column.textContent;
-					var column = columns.item(n2);
-					var columnName = column.attributes.getNamedItem("name").nodeValue;
-					if ("textContent" in column){
-						recordObj[columnName] = column.textContent;
-					} else {
-						recordObj[columnName] = column.text;
+				var obj = get_attr_to_obj( record.attributes ) ;
+//console.log(record.children);
+				for(var key in record.children){
+//console.log( key, record.children[key].nodeName);	
+					var ch = record.children[key];
+					if( typeof ch === "object"){
+						var _name = ch.nodeName;
+						if ("textContent" in ch){
+							obj[_name] = ch.textContent;
+						} else {
+							obj[_name] = ch.text;
+						}
 					}
-					
-				}//next
-				
-				//var recordObj = {"a":1};
-	//console.log(tableName, _vars["tables"][tableName]);
-				_vars["tables"][tableName]["records"].push( recordObj );
-*/				
+				}
+				_data.push ( obj );
 			}//next
+//console.log(_data);				
+
+			_drawNotes({
+				"data": _data
+			});
 			
 		}//end _parseXML()
 		
@@ -561,7 +549,7 @@ console.log(_data);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 		
 		var templateID = p["templateID"];
 		//var html = _vars["templates"][templateID];
@@ -576,7 +564,15 @@ console.log(_data);
 			var items = p["data"][n];
 			
 			//filter text message
-			items["text_message"] = __filter( items["text_message"] );
+			if( items["text_message"] ){
+				items["text_message"] = __filter( items["text_message"] );
+			} else {
+				
+				if( items["text"] ){
+					items["text_message"] = __filter( items["text"] );
+				}
+				
+			}
 			
 			for( var key in items){
 //console.log(key, items[key]);
@@ -595,6 +591,10 @@ console.log(_data);
 
 		function __filter(textMessage){
 //console.log(textMessage);
+			if( textMessage.length === 0){
+console.log("error in __filter()");
+				return false;
+			}
 			textMessage = textMessage
 .replace(/\[code\]/g, "<pre>")
 .replace(/\[\/code\]/g, "</pre>")
