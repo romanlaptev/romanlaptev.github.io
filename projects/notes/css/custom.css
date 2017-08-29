@@ -42,7 +42,16 @@ margin: 0;
 /* } */
 
 #btn-scroll-to-top {
-	bottom: 5px;
-	left: 44%;
+	/*left: 44%;*/
+	/*margin-left: 15px;*/
 	position: fixed;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -40px;	
 }
+/*
+@media screen and (max-width:359px){ 
+	#btn-scroll-to-top {
+		left: 39%;
+	}
+}*/
