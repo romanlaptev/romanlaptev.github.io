@@ -39,7 +39,14 @@ var _notes = function ( opt ){
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
-		initConnect();
+		testPHP({
+			"success" : function(){
+				loadNotes();
+			},
+			"fail" : function(){
+				loadNotesXml();
+			}
+		});
 	};
 
 	function _getTpl( id ){
@@ -58,7 +65,7 @@ var _notes = function ( opt ){
 			return false;
 		};//end event
 		
-
+		//UPLOAD
 		form_import.onsubmit = function(e) {
 			var form = form_import;
 			e.preventDefault();
@@ -138,7 +145,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
         e.preventDefault();
     });
 */
-	
+		//DELETE NOTE
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
 				event = event || window.event;
@@ -181,6 +188,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}//end event
 		}
 		
+		//CLEAR LOG
 		var btn_clear_log = getDOMobj("clear-log");
 		if( btn_clear_log ){
 			btn_clear_log.onclick = function(e){
@@ -190,6 +198,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}
 		}
 
+		//REMOVE ALL NOTES, REFRESH TABLES
 		if( _vars.controlPanel ){
 			_vars.controlPanel.onclick = function(event){
 				event = event || window.event;
@@ -223,6 +232,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}//end event
 		}
 		
+		//IMPORT
 		var btn_import = getDOMobj("btn-import");
 		if( btn_import ){
 			btn_import.onclick = function(event){
@@ -373,7 +383,16 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 	}//end sendForm
 
-	function initConnect(){
+	function testPHP(opt){
+		var p = {
+			"success": null,
+			"fail" : null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
 		
 		//get server info
 		runAjax( {
@@ -394,9 +413,9 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 			for( var n = 0; n < headersArr["lines"].length; n++){
 				var header = headersArr["lines"][n];
 				if(header.length > 0){
-					var p = header.split(": ");
-					var _key = p[0];
-					var _value = p[1];
+					var sp = header.split(": ");
+					var _key = sp[0];
+					var _value = sp[1];
 					headersArr["items"][_key] = _value;
 				}
 			}//next
@@ -407,12 +426,16 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 			if( headersArr["items"]["X-Powered-By"] &&
 				headersArr["items"]["X-Powered-By"].indexOf("PHP") !== -1
 			){
-				loadNotes();
+				if( typeof p["success"] === "function"){
+					p["success"]();
+				}
 			} else {
 var msg = "";
 msg += "<p>error, PHP not suppored by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
-				loadNotesXml();
+				if( typeof p["fail"] === "function"){
+					p["fail"]();
+				}
 			}
 
 /*
@@ -549,7 +572,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 		
 		var templateID = p["templateID"];
 		//var html = _vars["templates"][templateID];
@@ -650,18 +673,23 @@ console.log("error in __filter()");
 			// return;
 		// }
 		
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : _vars["requestUrl"], 
-			"params" : p,
-			"callback": function( log ){
-var msg = "<p>"+log+"</p>";
-_log("<div class='alert alert-success'>" + msg + "</div>");
-				loadNotes();
-				if( typeof callback === "function"){
-					callback();
-				}
-			}//end callback()
+		testPHP({
+			"success" : function(){
+				runAjax( {
+					"requestMethod" : "GET", 
+					"url" : _vars["requestUrl"], 
+					"params" : p,
+					"callback": function( log ){
+		var msg = "<p>"+log+"</p>";
+		_log("<div class='alert alert-success'>" + msg + "</div>");
+						loadNotes();
+						if( typeof callback === "function"){
+							callback();
+						}
+					}//end callback()
+				});
+			}//,
+			//"fail" : function(){}
 		});
 		
 	}//end seviceAction
