@@ -14,6 +14,8 @@ var _notes = function ( opt ){
 		"requestUrl" : "api/notes_mysql.php",
 		"requestRemoteUrl" : "http://graphic-art-collection.16mb.com/notes/api/notes_mysql.php",
 		"xmlUrl" : "upload/notes.xml",
+		"exportUrl" : "api/notes_mysql.php?action=export_notes",
+		"supportPHP" : false,
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -21,6 +23,15 @@ var _notes = function ( opt ){
 		"messagesList" : getDOMobj("messages"),		
 		"controlPanel" : getDOMobj("control-btn")
 	};
+	
+	function _error( id ){
+		switch(id){
+			case "errorPHP":
+				var msg = "<p>error, PHP not suppored by server <b>" + window.location.host + "</b></p>";
+			break
+		}//end switch()
+		_log("<div class='alert alert-danger'>" + msg + "</div>");
+	}//end _error()
 	
 	//correct for remote run
 	if( window.location.hostname === "romanlaptev.github.io"){
@@ -42,6 +53,7 @@ var _notes = function ( opt ){
 		testPHP({
 			"success" : function(){
 				loadNotes();
+				_vars["supportPHP"] = true;
 			},
 			"fail" : function(){
 				loadNotesXml();
@@ -59,9 +71,15 @@ var _notes = function ( opt ){
 	function defineEvents(){
 //console.log( _vars.messagesList );
 
+		//ADD NEW NOTE
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
-			_checkForm(this);
+			if( _vars["supportPHP"] ){
+				_checkForm(this);
+			} else {
+				_error("errorPHP");
+				$("#newModal").modal("hide");
+			}
 			return false;
 		};//end event
 		
@@ -251,6 +269,29 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}//end event
 		}
 		
+		//EXPORT
+		var btn_export = getDOMobj("btn-export");
+		if( btn_export ){
+			btn_export.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+console.log( event );
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				
+				if( _vars["supportPHP"] ){
+					var url= _vars["exportUrl"];
+					window.location.assign(url);
+				} else {
+					_error("errorPHP");
+				}
+
+			}//end event
+		}
+		
 	}//end defineEvents()
 	
 	
@@ -430,9 +471,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 					p["success"]();
 				}
 			} else {
-var msg = "";
-msg += "<p>error, PHP not suppored by server <b>" + window.location.host + "</b></p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
+				_error("errorPHP");
 				if( typeof p["fail"] === "function"){
 					p["fail"]();
 				}
@@ -672,25 +711,24 @@ console.log("error in __filter()");
 			// window.location = window.location + "?action="+p["action"];
 			// return;
 		// }
+		if( _vars["supportPHP"] ){
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : _vars["requestUrl"], 
+				"params" : p,
+				"callback": function( log ){
+	var msg = "<p>"+log+"</p>";
+	_log("<div class='alert alert-success'>" + msg + "</div>");
+					loadNotes();
+					if( typeof callback === "function"){
+						callback();
+					}
+				}//end callback()
+			});
+		} else {
+			_error("errorPHP");
+		}
 		
-		testPHP({
-			"success" : function(){
-				runAjax( {
-					"requestMethod" : "GET", 
-					"url" : _vars["requestUrl"], 
-					"params" : p,
-					"callback": function( log ){
-		var msg = "<p>"+log+"</p>";
-		_log("<div class='alert alert-success'>" + msg + "</div>");
-						loadNotes();
-						if( typeof callback === "function"){
-							callback();
-						}
-					}//end callback()
-				});
-			}//,
-			//"fail" : function(){}
-		});
 		
 	}//end seviceAction
 
