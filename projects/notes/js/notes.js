@@ -13,6 +13,7 @@ var _notes = function ( opt ){
 	var _vars = {
 		"requestUrl" : "api/notes_mysql.php",
 		"requestRemoteUrl" : "http://graphic-art-collection.16mb.com/notes/api/notes_mysql.php",
+		"xmlUrl" : "upload/notes.xml",
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -400,7 +401,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 				}
 			}//next
 			delete headersArr["lines"];
-console.log(headersArr);
+//console.log(headersArr);
 
 			//test PHP support
 			if( headersArr["items"]["X-Powered-By"] &&
@@ -409,8 +410,9 @@ console.log(headersArr);
 				loadNotes();
 			} else {
 var msg = "";
-msg += "<p>error, PHP not suppored by server " + window.location.host + "</p>";
+msg += "<p>error, PHP not suppored by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
+				loadNotesXml();
 			}
 
 /*
@@ -479,6 +481,77 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		
 	}//end loadNotes()
 
+	function loadNotesXml(){
+		
+		_vars["messagesList"].innerHTML = "";
+
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["xmlUrl"], 
+			"callback": function( data ){
+//console.log(data.length, typeof data, data);				
+				_parseXML( data );
+			},//end callback()
+			"onError" : _onerror
+		});
+		
+		function _onerror( xhr ){
+var msg = "";
+msg += "<p>error, " +_vars["xmlUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+		}//end _onerror()
+		
+		function _parseXML(xml){
+			var xmlDoc = xml.getElementsByTagName("table");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+			var records = xmlDoc.item(0).getElementsByTagName("note");
+//console.log( records, records.length ) ;
+//console.log( records.item(0).text ) ;
+//console.log( records.item(0).textContent ) ;
+//console.log( "textContent" in records.item(0) ) ;
+//console.log( "text" in records.item(0) ) ;
+//return;
+			var _data = [];
+			for( var n = 0; n < records.length; n++){
+				var record = records.item(n);
+//console.log(record.attributes);				
+			var _data = get_attr_to_obj( record.attributes );
+console.log(record.children.length);
+			// for( var n = 0; n < record.children.length; n++){
+				// var ch = record.children[n];
+// console.log( ch.textContent );				
+			// }//next
+
+console.log(_data);				
+
+/*				
+
+				var columns = record.getElementsByTagName("column");
+				var recordObj = {};
+				for( var n2 = 0; n2 < columns.length; n2++){
+					//var column = columns[n2];
+					//var columnName = column["attributes"]["name"].nodeValue;
+					//recordObj[columnName] = column.textContent;
+					var column = columns.item(n2);
+					var columnName = column.attributes.getNamedItem("name").nodeValue;
+					if ("textContent" in column){
+						recordObj[columnName] = column.textContent;
+					} else {
+						recordObj[columnName] = column.text;
+					}
+					
+				}//next
+				
+				//var recordObj = {"a":1};
+	//console.log(tableName, _vars["tables"][tableName]);
+				_vars["tables"][tableName]["records"].push( recordObj );
+*/				
+			}//next
+			
+		}//end _parseXML()
+		
+	}//end loadNotesXml()
+	
 	function _drawNotes( opt ){
 		var p = {
 			"templateID": "tpl-message-list",

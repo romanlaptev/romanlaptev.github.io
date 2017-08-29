@@ -75,6 +75,20 @@ function getDOMobj(id){
 	return false;
 }//end getDOMobj()
 
+/*
+	var item_attr = get_attr_to_obj( this.attributes );
+	for(attr in item_attr){
+		column_obj[attr] = item_attr[attr];
+	}
+*/
+function get_attr_to_obj( attr ){
+	var item_attr = {};
+	for(var item = 0; item < attr.length; item++) {
+		item_attr[attr[item].name] = attr[item].value;
+	}
+	return item_attr;
+}//end get_attr_to_obj()
+
 //**************************************
 //musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
 //$_GET = parseGetParams(); 
