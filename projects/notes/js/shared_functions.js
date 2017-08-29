@@ -178,13 +178,14 @@ function runAjax( opt ){
 		"async" :  true,
 		"callback" : null,
 		"onProgress" : null,
-		"onError" : null
+		"onError" : null,
+		"onLoadEnd" : null
 	};
 	//extend options object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 	var requestMethod = p["requestMethod"]; 
 	var url = p["url"]; 
@@ -241,12 +242,8 @@ console.log( msg, xhr );
 //console.log( "xhr.onerror = ", xhr.onerror  );
 				if( xhr.status === 200){
 					
-//console.log(xhr.getResponseHeader('X-Powered-By') );
-					//var all_headers = xhr.getAllResponseHeaders();
-//console.log( all_headers );
-					
-				var timeEnd = new Date();
-				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+					var timeEnd = new Date();
+					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
 //console.log( xhr.responseText );
@@ -268,16 +265,16 @@ console.log(msg);
 
 				} else {
 //console.log(xhr);					
-// console.log("Ajax load error, url: " + xhr.responseURL);
-// console.log("Ajax load error, status: " + xhr.status);
-// console.log("Ajax load error, statusText:" + xhr.statusText);
+console.log("Ajax load error, url: " + xhr.responseURL);
+console.log("status: " + xhr.status);
+console.log("statusText:" + xhr.statusText);
 
-var msg = "";
-msg += "<p>Ajax load error</p>";
-msg += "<p>url: " + xhr.responseURL + "</p>";
-msg += "<p>status: " + xhr.status + "</p>";
-msg += "<p>status text: " + xhr.statusText + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div");
+// var msg = "";
+// msg += "<p>Ajax load error</p>";
+// msg += "<p>url: " + xhr.responseURL + "</p>";
+// msg += "<p>status: " + xhr.status + "</p>";
+// msg += "<p>status text: " + xhr.statusText + "</p>";
+// _log("<div class='alert alert-danger'>" + msg + "</div");
 
 					if( typeof  p["onError"] === "function"){
 						p["onError"](xhr);
@@ -314,6 +311,12 @@ _log("<div class='alert alert-danger'>" + msg + "</div");
 // console.log("time: " + e.timeStamp);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
+//console.log(xhr.getResponseHeader('X-Powered-By') );
+			var all_headers = xhr.getAllResponseHeaders();
+//console.log( all_headers );
+			if( typeof  p["onLoadEnd"] === "function"){
+				p["onLoadEnd"](all_headers);
+			}
 		}
 	}
 

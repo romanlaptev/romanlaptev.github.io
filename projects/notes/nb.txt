@@ -79,6 +79,10 @@ https://dev.mysql.com/doc/refman/5.7/en/select.html
 SELECT `id`, `author`, `title`, `text_message`, `client_date`, `server_date`, `ip` INTO OUTFILE '/home/samba/pub/notes.csv' 
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'
 FROM notes;
+----------------------------
 
+========================== 
+- если на сервере нет поддержки PHP+MYSQL, ASPX, использовать чтение из файла upload/notes.xml средствами JS
+- если на сервер исользуется ASPX, то проверить доступна ли БД (MySQL, MSSQL, SQLLITE)
 
 blog

@@ -38,7 +38,7 @@ var _notes = function ( opt ){
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
-		loadMessages();
+		initConnect();
 	};
 
 	function _getTpl( id ){
@@ -242,6 +242,8 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		
 	}//end defineEvents()
 	
+	
+	
 	function _checkForm(form){
 //console.log(form);
 	//for(var key in form){
@@ -364,31 +366,80 @@ var msg = "<p>"+log+"</p>";
 					_className = "alert-danger";
 				}
 _log("<div class='alert " +_className+ "'>" + msg + "</div>");
-				loadMessages();
+				loadNotes();
 			}//end callback()
 		});
 
 	}//end sendForm
 
-	function loadMessages(){
-//console.log( _vars["templates"] );
-
-		// var data = [];
-		// data.push({
-			// "textMessage": "test1",
-			// "authorName" : "author1"
-		// });
-		// data.push({
-			// "textMessage": "test2",
-			// "authorName" : "author2"
-		// });
-		// data.push({
-			// "textMessage": "test3",
-			// "authorName" : "author3"
-		// });
+	function initConnect(){
 		
+		//get server info
+		runAjax( {
+			"requestMethod" : "HEAD", 
+			"url" : _vars["requestUrl"], 
+			//"callback": function( data ){},
+			//"onError" : _onerror,
+			"onLoadEnd" : _onloadend
+		});
+		
+		//function _onerror( xhr ){
+		//}//end _onerror()
+		
+		function _onloadend( headers ){
+			var headersArr = [];
+			headersArr["items"] = [];
+			headersArr["lines"] = headers.split("\r\n");
+			for( var n = 0; n < headersArr["lines"].length; n++){
+				var header = headersArr["lines"][n];
+				if(header.length > 0){
+					var p = header.split(": ");
+					var _key = p[0];
+					var _value = p[1];
+					headersArr["items"][_key] = _value;
+				}
+			}//next
+			delete headersArr["lines"];
+console.log(headersArr);
+
+			//test PHP support
+			if( headersArr["items"]["X-Powered-By"] &&
+				headersArr["items"]["X-Powered-By"].indexOf("PHP") !== -1
+			){
+				loadNotes();
+			} else {
+var msg = "";
+msg += "<p>error, PHP not suppored by server " + window.location.host + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+			}
+
+/*
+Connection	"Keep-Alive"
+Content-Encoding	"gzip"
+Content-Length	"1483"
+Content-Type	"text/html"
+Date	"Tue, 29 Aug 2017 04:00:31 GMT"
+Keep-Alive	"timeout=5, max=99"
+Server	"Apache/2.2.22 (Debian)"
+Vary	"Accept-Encoding"
+X-Powered-By	"PHP/5.4.4-14+deb7u8"
+
+Access-Control-Allow-Origin	"*"
+Cache-Control	"private"
+Content-Length	"10209"
+Content-Type	"text/html; charset=utf-8"
+Date	"Tue, 29 Aug 2017 04:21:35 GMT"
+Server	"Microsoft-IIS/7.5"
+X-Powered-By	"ASP.NET"
+*/				
+		}//end _onloadend()
+		
+	}//end initConnect()
+	
+	function loadNotes(){
+//console.log( _vars["templates"] );
 		_vars["messagesList"].innerHTML = "";
-//_log("<p>-- loadMessages(), clear #messagesList</p>");
+//_log("<p>-- loadNotes(), clear #messagesList</p>");
 
 		var params = {
 			"action" : "get_notes"
@@ -408,7 +459,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 							});							
 //console.log( jsonObj );
 
-							_insertMessages({
+							_drawNotes({
 								"data": jsonObj
 							});
 						} catch(error) {
@@ -426,9 +477,9 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			}//end callback()
 		});
 		
-	}//end loadMessages()
+	}//end loadNotes()
 
-	function _insertMessages( opt ){
+	function _drawNotes( opt ){
 		var p = {
 			"templateID": "tpl-message-list",
 			"data" : null
@@ -507,7 +558,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			return textMessage;
 		}//end __filter()
 		
-	}//end _insertMessages()
+	}//end _drawNotes()
 	
 	function serviceAction(opt, callback){
 		var p = {
@@ -533,7 +584,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			"callback": function( log ){
 var msg = "<p>"+log+"</p>";
 _log("<div class='alert alert-success'>" + msg + "</div>");
-				loadMessages();
+				loadNotes();
 				if( typeof callback === "function"){
 					callback();
 				}
@@ -616,7 +667,7 @@ console.log( files );
 		_log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 		$("#importModal").modal("hide");
-		loadMessages();		
+		loadNotes();		
 	}//end _posrtUpload()
 	
 	// public interfaces
