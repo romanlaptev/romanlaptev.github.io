@@ -457,7 +457,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 				var header = headersArr["lines"][n];
 				if(header.length > 0){
 					var sp = header.split(": ");
-					var _key = sp[0];
+					var _key = sp[0].toUpperCase();
 					var _value = sp[1];
 					headersArr["items"][_key] = _value;
 				}
@@ -466,8 +466,8 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 console.log(headersArr);
 
 			//test PHP support
-			if( headersArr["items"]["X-Powered-By"] &&
-				headersArr["items"]["X-Powered-By"].indexOf("PHP") !== -1
+			if( headersArr["items"]["X-POWERED-BY"] &&
+				headersArr["items"]["X-POWERED-BY"].indexOf("PHP") !== -1
 			){
 				if( typeof p["success"] === "function"){
 					p["success"]();
