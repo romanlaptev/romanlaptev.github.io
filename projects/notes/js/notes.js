@@ -85,62 +85,13 @@ var _notes = function ( opt ){
 		
 		//UPLOAD
 		form_import.onsubmit = function(e) {
-			var form = form_import;
 			e.preventDefault();
-			
-			if( window.FileList ){
-				
-				//var fileSelect = getDOMobj("file-select");
-				//if( fileSelect ){
-					//var formData = _getUploadFiles({
-						//"fileSelect" : fileSelect
-					//});
-					
-					//check file type
-					var files = form.upload_file.files;
-//console.log( files );
-					var file = files[0];
-					if ( file.type !== "text/xml") {
-var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
-						$("#importModal").modal("hide");
-						return false;
-					}
-					
-					//var formData = new FormData();
-					var formData = new FormData( form );
-					//formData.append("upload_file", form.upload_file);
-					//if( formData ){
-						var p = {
-							"url" : _vars["requestUrl"],
-							"requestMethod" : form.getAttribute("method"),
-							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
-							"params" : { "action" : "upload" },
-							"formData" : formData,
-							"callback": _postUpload
-						};
-						runAjax( p );
-/*						
-//test
-var xhr = new XMLHttpRequest();
-xhr.open('POST', _vars["requestUrl"], true);
-// xhr.setRequestHeader("Cache-Control", "no-cache");
-// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-// xhr.setRequestHeader("Content-Type", "multipart/form-data");
-xhr.send(formData);
-//----------						
-*/
-					//}
-				//}
-				
+			if( _vars["supportPHP"] ){
+				_upload( form_import );
 			} else {
-var msg = "<p>Your browser does not support File API</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
+				_error("errorPHP");
 			}
-
 		};//end event
-
-		
 /*
     $("form[name='form_import']").submit(function(e) {
         var formData = new FormData($(this)[0]);
@@ -294,6 +245,57 @@ console.log( event );
 		
 	}//end defineEvents()
 	
+	function _upload( form ){
+			if( window.FileList ){
+				
+				//var fileSelect = getDOMobj("file-select");
+				//if( fileSelect ){
+					//var formData = _getUploadFiles({
+						//"fileSelect" : fileSelect
+					//});
+					
+					//check file type
+					var files = form.upload_file.files;
+//console.log( files );
+					var file = files[0];
+					if ( file.type !== "text/xml") {
+var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
+						$("#importModal").modal("hide");
+						return false;
+					}
+					
+					//var formData = new FormData();
+					var formData = new FormData( form );
+					//formData.append("upload_file", form.upload_file);
+					//if( formData ){
+						var p = {
+							"url" : _vars["requestUrl"],
+							"requestMethod" : form.getAttribute("method"),
+							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
+							"params" : { "action" : "upload" },
+							"formData" : formData,
+							"callback": _postUpload
+						};
+						runAjax( p );
+/*						
+//test
+var xhr = new XMLHttpRequest();
+xhr.open('POST', _vars["requestUrl"], true);
+// xhr.setRequestHeader("Cache-Control", "no-cache");
+// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+// xhr.setRequestHeader("Content-Type", "multipart/form-data");
+xhr.send(formData);
+//----------						
+*/
+					//}
+				//}
+				
+			} else {
+var msg = "<p>Your browser does not support File API</p>";
+_log("<div class='alert alert-warning'>" + msg + "</div>");
+			}
+	}//end _upload()
 	
 	
 	function _checkForm(form){
