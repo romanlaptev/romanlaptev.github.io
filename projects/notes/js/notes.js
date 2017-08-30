@@ -435,7 +435,6 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 			"url" : _vars["testUrlPHP"],
 			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
 			"callback" : function(res){
-console.log(res);				
 				if( res ){
 					loadNotes();
 				} else {
