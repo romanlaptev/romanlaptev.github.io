@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -188,6 +188,19 @@
 <div class="">
 	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
 </div>
+
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+<!--		
+	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+-->
+</div>
+<div id="overlay" class="hide"></div>
 
 <!--
 	<script src="editor/tinymce/js/tinymce/tinymce.min.js"></script>

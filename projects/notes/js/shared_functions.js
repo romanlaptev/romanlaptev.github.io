@@ -240,6 +240,18 @@ console.log( msg, xhr );
 //_log( "<p  class='text-danger'>" +msg+"</p>");
 		return false;
 	}
+
+	//block overlay and wait window
+	var overlay = getDOMobj("overlay");
+	if( overlay ){
+		overlay.className="modal-backdrop in";
+		overlay.style.display="block";
+	}
+	var waitWindow = getDOMobj("wait-window");
+	if( waitWindow ){
+		waitWindow.className="modal-dialog";
+		waitWindow.style.display="block";
+	}
 	
 	var timeStart = new Date();
 
@@ -326,12 +338,22 @@ console.log("statusText:" + xhr.statusText);
 // console.log("total: " + e.total);
 // console.log("loaded: " + e.loaded);
 //console.log(xhr.getResponseHeader('X-Powered-By') );
+
+			//hide block overlay and wait window
+			if( overlay ){
+				//overlay.className="";
+				overlay.style.display="none";
+			}
+			if( waitWindow ){
+				waitWindow.style.display="none";
+			}
+			
 			var all_headers = xhr.getAllResponseHeaders();
 //console.log( all_headers );
 			if( typeof  p["onLoadEnd"] === "function"){
 				p["onLoadEnd"](all_headers);
 			}
-		}
+		}//end event callback
 	}
 
 //console.log( "onprogress" in xhr  );
