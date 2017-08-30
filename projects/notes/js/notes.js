@@ -12,7 +12,7 @@ var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
 		"requestUrl" : "api/notes_mysql.php",
-		"requestRemoteUrl" : "http://graphic-art-collection.16mb.com/notes/api/notes_mysql.php",
+		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 		"xmlUrl" : "upload/notes.xml",
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/test.aspx",
@@ -26,6 +26,21 @@ var _notes = function ( opt ){
 		"controlPanel" : getDOMobj("control-btn")
 	};
 	
+	//correct for remote run
+	if( window.location.hostname === "romanlaptev.github.io"){
+		_vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
+		var btn_export = getDOMobj("btn-export");
+		btn_export.href = _vars["requestUrl"] + "?action=export_notes";
+//console.log( btn_export.href );	
+		_vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
+	}
+//test	
+// console.log(_vars["controlPanel"]["children"]);
+// for( var key in _vars["controlPanel"]["children"]){
+	// var btn = _vars["controlPanel"]["children"][key];
+// console.log( key, btn["tagName"], btn["href"] );	
+// }
+
 	function _error( id ){
 		switch(id){
 			case "errorPHP":
@@ -34,20 +49,6 @@ var _notes = function ( opt ){
 		}//end switch()
 		_log("<div class='alert alert-danger'>" + msg + "</div>");
 	}//end _error()
-	
-	//correct for remote run
-	if( window.location.hostname === "romanlaptev.github.io"){
-		_vars["requestUrl"] = _vars["requestRemoteUrl"];
-		var btn_export = getDOMobj("btn-export");
-		btn_export.href = _vars["requestRemoteUrl"] + "?action=export_notes";
-//console.log( btn_export.href );	
-	}
-//test	
-// console.log(_vars["controlPanel"]["children"]);
-// for( var key in _vars["controlPanel"]["children"]){
-	// var btn = _vars["controlPanel"]["children"][key];
-// console.log( key, btn["tagName"], btn["href"] );	
-// }
 
 	var _init = function(){
 //console.log("init _notes");
@@ -462,6 +463,8 @@ console.log("error in testPHP(), not find 'data'.... ");
 					
 					if (data[0] === "4"){//test success, result of adding 2+2 on PHP
 						_vars["supportPHP"] = true;
+					} else {
+						_error("errorPHP");
 					}
 					
 					if( typeof p["callback"] === "function"){
@@ -469,9 +472,7 @@ console.log("error in testPHP(), not find 'data'.... ");
 						return false;
 					} 
 				
-			}//,
-			//"onError" : _onerror,
-			//"onLoadEnd" : _onloadend
+			}//end callback
 		});
 
 	}//end testPHP_headers()
