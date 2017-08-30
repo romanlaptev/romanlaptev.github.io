@@ -14,10 +14,12 @@ var _notes = function ( opt ){
 		"requestUrl" : "api/notes_mysql.php",
 		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 		"xmlUrl" : "upload/notes.xml",
+		"exportUrl" : "api/notes_mysql.php?action=export_notes",
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/test.aspx",
-		"exportUrl" : "api/notes_mysql.php?action=export_notes",
+		"requestUrlASPX" : "api/notes_sqlite.aspx",
 		"supportPHP" : false,
+		"supportASPX" : false,
 		"messages" : getDOMobj("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -46,6 +48,9 @@ var _notes = function ( opt ){
 			case "errorPHP":
 				var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b></p>";
 			break
+			case "errorASPX":
+				var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b></p>";
+			break
 		}//end switch()
 		_log("<div class='alert alert-danger'>" + msg + "</div>");
 	}//end _error()
@@ -63,15 +68,16 @@ var _notes = function ( opt ){
 			// }
 		// });
 		
-		testPHP({
-			"callback" : function(res){
-				if( res ){
-					loadNotes();
-				} else {
-					loadNotesXml();
-				}
-			}
-		});
+		// testPHP({
+			// "callback" : function(res){
+				// if( res ){
+					// loadNotes();
+				// } else {
+					// loadNotesXml();
+				// }
+			// }
+		// });
+		testServer();
 		
 	};
 
@@ -440,117 +446,182 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 	}//end sendForm
 
-	function testPHP(opt){
-		var p = {
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : _vars["testUrlPHP"], 
-			"callback": function( data ){
-//console.log(data, typeof data, data.length, data[0]);
-
-					if( !data || data.length === 0){
-console.log("error in testPHP(), not find 'data'.... ");			
-						data = [];
-					}
-					
-					if (data[0] === "4"){//test success, result of adding 2+2 on PHP
-						_vars["supportPHP"] = true;
-					} else {
-						_error("errorPHP");
-					}
-					
-					if( typeof p["callback"] === "function"){
-						p["callback"]( _vars["supportPHP"] );
-						return false;
-					} 
-				
-			}//end callback
+	
+	function testServer(){
+		
+		//start chain of tests
+		_test({
+			"target" : _vars["supportPHP"],
+			"errorMsgID" : "errorPHP",
+			"url" : _vars["testUrlPHP"],
+			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
+			"callback" : function(res){
+				if( res ){
+					loadNotes();
+				} else {
+					//loadNotesXml();
+					_testASPX();
+				}
+			}
 		});
 
-	}//end testPHP_headers()
+		function _testASPX(){
+			_test({
+				"target" : _vars["supportASPX"],
+				"errorMsgID" : "errorASPX",
+				"url" : _vars["testUrlASPX"],
+				"testResult" : "4",//test success, result of adding 2+2, string format!!!!
+				"callback" : function(res){
+					if( res ){
+var msg = "<p>test ASPX success, ASP.NET suppored by server <b>" + window.location.host + "</b></p>";
+_log("<div class='alert alert-success'>" + msg + "</div>");
+						//test!!!!
+						loadNotesXml();
+					} else {
+						loadNotesXml();
+					}
+				}
+			});
+		}//end _testASPX()
+		
+		function _test(opt){
+			var p = {
+				"target" : 0,// target var, true or false, requered parameter
+				"url" : 0,//requered parameter
+				"errorMsgID" : 0,//requered parameter
+				"testResult" : 0,//requered parameter
+				"callback": 0//requered parameter
+			};
+			//extend options object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
 	
-	// function testPHP_headers(opt){
-		// var p = {
-			// "success": null,
-			// "fail" : null
-		// };
-		// //extend options object
-		// for(var key in opt ){
-			// p[key] = opt[key];
-		// }
-// //console.log(p);
-		
-		// //get server info
-		// runAjax( {
-			// "requestMethod" : "HEAD", 
-			// "url" : _vars["requestUrl"], 
-			// //"callback": function( data ){},
-			// //"onError" : _onerror,
-			// "onLoadEnd" : _onloadend
-		// });
-		
-		// //function _onerror( xhr ){
-		// //}//end _onerror()
-		
-		// function _onloadend( headers ){
-			// var headersArr = [];
-			// headersArr["items"] = [];
-			// headersArr["lines"] = headers.split("\r\n");
-			// for( var n = 0; n < headersArr["lines"].length; n++){
-				// var header = headersArr["lines"][n];
-				// if(header.length > 0){
-					// var sp = header.split(": ");
-					// var _key = sp[0].toUpperCase();
-					// var _value = sp[1];
-					// headersArr["items"][_key] = _value;
-				// }
-			// }//next
-			// delete headersArr["lines"];
-// console.log(headersArr);
+			//test requered parameters
+			for(var key in p ){
+				if( p[key] === 0 ){
+var msg = "<p>error, testServer(), not find requered arguments " + key +"</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+					return false;
+				}
+			}
+			
+			var target = p["target"];
 
-			// //test PHP support
-			// if( headersArr["items"]["X-POWERED-BY"] &&
-				// headersArr["items"]["X-POWERED-BY"].indexOf("PHP") !== -1
-			// ){
-				// if( typeof p["success"] === "function"){
-					// p["success"]();
-				// }
-			// } else {
-				// _error("errorPHP");
-				// if( typeof p["fail"] === "function"){
-					// p["fail"]();
-				// }
+			runAjax({
+				"requestMethod" : "GET", 
+				"url" : p["url"], 
+				"onError" : _onerror,
+				"callback": function( data ){
+//console.log(data, typeof data, data.length, data[0]);
+
+						if( !data || data.length === 0){
+console.log("error in test(), not find 'data'.... ");			
+							data = [];
+						}
+						
+						if (data[0] === p["testResult"]){//test success (result of adding 2+2 for PHP)
+							target = true;
+						} else {
+							_error( p["errorMsgID"] );
+						}
+						
+						if( typeof p["callback"] === "function"){
+							p["callback"]( target );
+							return false;
+						} 
+				}//end callback
+			});
+
+			function _onerror( xhr ){
+				var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+					if( typeof p["callback"] === "function"){
+						_error( p["errorMsgID"] );
+						p["callback"]( false );
+					} 
+			}//end _onerror()
+			
+		}//end _test()
+		
+		// function testPHP_headers(opt){
+			// var p = {
+				// "success": null,
+				// "fail" : null
+			// };
+			// //extend options object
+			// for(var key in opt ){
+				// p[key] = opt[key];
 			// }
+	// //console.log(p);
+			
+			// //get server info
+			// runAjax( {
+				// "requestMethod" : "HEAD", 
+				// "url" : _vars["requestUrl"], 
+				// //"callback": function( data ){},
+				// //"onError" : _onerror,
+				// "onLoadEnd" : _onloadend
+			// });
+			
+			// //function _onerror( xhr ){
+			// //}//end _onerror()
+			
+			// function _onloadend( headers ){
+				// var headersArr = [];
+				// headersArr["items"] = [];
+				// headersArr["lines"] = headers.split("\r\n");
+				// for( var n = 0; n < headersArr["lines"].length; n++){
+					// var header = headersArr["lines"][n];
+					// if(header.length > 0){
+						// var sp = header.split(": ");
+						// var _key = sp[0].toUpperCase();
+						// var _value = sp[1];
+						// headersArr["items"][_key] = _value;
+					// }
+				// }//next
+				// delete headersArr["lines"];
+	// console.log(headersArr);
 
-// Connection	"Keep-Alive"
-// Content-Encoding	"gzip"
-// Content-Length	"1483"
-// Content-Type	"text/html"
-// Date	"Tue, 29 Aug 2017 04:00:31 GMT"
-// Keep-Alive	"timeout=5, max=99"
-// Server	"Apache/2.2.22 (Debian)"
-// Vary	"Accept-Encoding"
-// X-Powered-By	"PHP/5.4.4-14+deb7u8"
+				// //test PHP support
+				// if( headersArr["items"]["X-POWERED-BY"] &&
+					// headersArr["items"]["X-POWERED-BY"].indexOf("PHP") !== -1
+				// ){
+					// if( typeof p["success"] === "function"){
+						// p["success"]();
+					// }
+				// } else {
+					// _error("errorPHP");
+					// if( typeof p["fail"] === "function"){
+						// p["fail"]();
+					// }
+				// }
 
-// Access-Control-Allow-Origin	"*"
-// Cache-Control	"private"
-// Content-Length	"10209"
-// Content-Type	"text/html; charset=utf-8"
-// Date	"Tue, 29 Aug 2017 04:21:35 GMT"
-// Server	"Microsoft-IIS/7.5"
-// X-Powered-By	"ASP.NET"
+	// Connection	"Keep-Alive"
+	// Content-Encoding	"gzip"
+	// Content-Length	"1483"
+	// Content-Type	"text/html"
+	// Date	"Tue, 29 Aug 2017 04:00:31 GMT"
+	// Keep-Alive	"timeout=5, max=99"
+	// Server	"Apache/2.2.22 (Debian)"
+	// Vary	"Accept-Encoding"
+	// X-Powered-By	"PHP/5.4.4-14+deb7u8"
 
-		// }//end _onloadend()
+	// Access-Control-Allow-Origin	"*"
+	// Cache-Control	"private"
+	// Content-Length	"10209"
+	// Content-Type	"text/html; charset=utf-8"
+	// Date	"Tue, 29 Aug 2017 04:21:35 GMT"
+	// Server	"Microsoft-IIS/7.5"
+	// X-Powered-By	"ASP.NET"
+
+			// }//end _onloadend()
+			
+		// }//end testPHP_headers()
 		
-	// }//end testPHP_headers()
+	}//end testServer()
+	
 	
 	function loadNotes(){
 //console.log( _vars["templates"] );
