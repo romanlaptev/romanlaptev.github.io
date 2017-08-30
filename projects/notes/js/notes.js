@@ -58,27 +58,7 @@ var _notes = function ( opt ){
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
-		// testPHP({
-			// "success" : function(){
-				// loadNotes();
-				// _vars["supportPHP"] = true;
-			// },
-			// "fail" : function(){
-				// loadNotesXml();
-			// }
-		// });
-		
-		// testPHP({
-			// "callback" : function(res){
-				// if( res ){
-					// loadNotes();
-				// } else {
-					// loadNotesXml();
-				// }
-			// }
-		// });
 		testServer();
-		
 	};
 
 	function _getTpl( id ){
@@ -448,18 +428,17 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 	
 	function testServer(){
-		
 		//start chain of tests
 		_test({
-			"target" : _vars["supportPHP"],
+			"nameTargetVar" : "supportPHP",
 			"errorMsgID" : "errorPHP",
 			"url" : _vars["testUrlPHP"],
 			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
 			"callback" : function(res){
+console.log(res);				
 				if( res ){
 					loadNotes();
 				} else {
-					//loadNotesXml();
 					_testASPX();
 				}
 			}
@@ -467,7 +446,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 
 		function _testASPX(){
 			_test({
-				"target" : _vars["supportASPX"],
+				"nameTargetVar" : "supportASPX",
 				"errorMsgID" : "errorASPX",
 				"url" : _vars["testUrlASPX"],
 				"testResult" : "4",//test success, result of adding 2+2, string format!!!!
@@ -484,9 +463,9 @@ _log("<div class='alert alert-success'>" + msg + "</div>");
 			});
 		}//end _testASPX()
 		
-		function _test(opt){
+		function _test( opt){
 			var p = {
-				"target" : 0,// target var, true or false, requered parameter
+				"nameTargetVar" : 0,// name of target global var, true or false, requered parameter
 				"url" : 0,//requered parameter
 				"errorMsgID" : 0,//requered parameter
 				"testResult" : 0,//requered parameter
@@ -507,7 +486,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 				}
 			}
 			
-			var target = p["target"];
+			var nameVar = p["nameTargetVar"];
 
 			runAjax({
 				"requestMethod" : "GET", 
@@ -522,13 +501,13 @@ console.log("error in test(), not find 'data'.... ");
 						}
 						
 						if (data[0] === p["testResult"]){//test success (result of adding 2+2 for PHP)
-							target = true;
+							_vars[nameVar] = true;
 						} else {
 							_error( p["errorMsgID"] );
 						}
 						
 						if( typeof p["callback"] === "function"){
-							p["callback"]( target );
+							p["callback"]( _vars[nameVar] );
 							return false;
 						} 
 				}//end callback
