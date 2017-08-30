@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
+	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
+		<text>
+[code]
+https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
+https://wiki.archlinux.org/index.php/Mod_python_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+http://adw0rd.com/2009/08/28/modpython/
+https://www.stableit.ru/2009/12/apache-modpython-centos-54.html
+
+apt-get install libapache2-mod-python
+yum install -y httpd mod_python
+
+vi /etc/apache2/sites-available/default
+
+        &amp;lt;Directory /var/www/&amp;gt;
+...
+		AddHandler mod_python .py
+                PythonHandler mod_python.publisher
+                PythonDebug On
+        &amp;lt;/Directory&amp;gt;
+
+vi /var/www/test_mod_python.py
+
+def index(req):
+	# req.content_type = 'text/plain'
+	req.content_type = 'text/html'
+	html = &amp;quot;&amp;lt;h1&amp;gt;Test Apache2 + mod_python&amp;lt;/h1&amp;gt;&amp;quot;
+	req.write( html )
+	test = 2+3
+	return test;
+
+
+------------- Python Server Pages
+
+vi /etc/apache2/sites-available/default
+        &amp;lt;Directory /var/www/&amp;gt;
+....
+                AddHandler mod_python .psp
+                PythonHandler mod_python.psp
+                PythonDebug On
+        &amp;lt;/Directory&amp;gt;
+
+PSP test script:
+
+vi /var/www/test_mod_python.psp
+
+&amp;lt;html&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;%
+for n1 in range(0,10):
+    req.write(&amp;quot;&amp;lt;h1&amp;gt;Hello Python world!&amp;lt;/h1&amp;gt;&amp;quot;)
+    print &amp;quot;&amp;lt;br&amp;gt;&amp;quot;
+%&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+[/code]
+		</text>
+	</note>
 	<note title="windows faq" author="anonymous" ip="37.193.108.45" client_date="2017-08-28 15:10:44" server_date="2017-08-28 08:13:45" >
 		<text>
 
