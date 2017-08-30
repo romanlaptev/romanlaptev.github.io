@@ -3,18 +3,17 @@ using System;
 using System.Xml; 
 //using System.IO;
 
-namespace myspace
+public partial class _Default : System.Web.UI.Page
 {
-    public partial class Default : System.Web.UI.Page
-    {
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			Response.Write("<h1>test XML</h1>");
+	protected void Page_Load(object sender, EventArgs e)
+	{
+			Response.Write("<h1>test XML: read from file</h1>");
 			
 			string filepath = Server.MapPath( "menu.xml");
 			XmlTextReader reader = new XmlTextReader (filepath);
 			while (reader.Read())  
 			{
+				Response.Write(reader.NodeType + "<br>");
 				switch (reader.NodeType)  
 				{
 					case XmlNodeType.Element: // Узел является элементом.
@@ -30,8 +29,15 @@ namespace myspace
 						break;
 				}
 			}			
+			
+			//https://msdn.microsoft.com/ru-ru/library/dw229a22(v=vs.110).aspx
+			Response.Write("<h1>test XML: create xml file from string</h1>");
+			string s = "<xml><foo></foo></xml>";
+			XmlDocument xdoc = new XmlDocument();
+			xdoc.LoadXml(s);
+			filepath = Server.MapPath( "test.xml");
+			xdoc.Save( filepath );
 
-		}//end Page_Load()
+	}//end Page_Load()
 		
-	}//end class
-}//end namespace
+}//end class

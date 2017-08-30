@@ -1,5 +1,5 @@
 <%@ Page 
 Language="C#" 
 CodeFile="testXML.aspx.cs" 
-Inherits="myspace.Default" 
+Inherits="_Default" 
 Debug="true"%>
