@@ -653,7 +653,12 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			"url" : _vars["xmlUrl"], 
 			"callback": function( data ){
 //console.log(data.length, typeof data, data);				
-				_parseXML( data );
+				//_parseXML( data );
+				obj = _parseXmlToObj(data);
+//console.log(obj);				
+				_drawNotes({
+					"data": obj
+				});
 			},//end callback()
 			"onError" : _onerror
 		});
@@ -663,86 +668,147 @@ var msg = "";
 msg += "<p>error, " +_vars["xmlUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
 		}//end _onerror()
-		
-		function _parseXML(xml){
-			var xmlDoc = xml.getElementsByTagName("table");
+
+//parse XML : <table><note>....</note>, <note>...</note></table>
+		function _parseXmlToObj(xml){
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );			
+			var rootTagName = xml.documentElement.nodeName;
+			var xmlDoc = xml.getElementsByTagName( rootTagName);
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
-			var records = xmlDoc.item(0).getElementsByTagName("note");
-//console.log( records.length ) ;
-//console.log( records.item(0).text ) ;
-//console.log( records.item(0).textContent ) ;
-//console.log( "textContent" in records.item(0) ) ;
-//console.log( "text" in records.item(0) ) ;
-//return;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+
 			var _data = [];
-			for( var n = 0; n < records.length; n++){
-			//for( var n = 0; n < 1; n++){
-				var record = records.item(n);
-				var obj = get_attr_to_obj( record.attributes ) ;
-// for(var key in obj){
-// console.log( key +", "+ obj[key]+ ", " + typeof obj[key]);
-// }
-//console.log(record.children);
-//console.log(record.nodeName );
-//console.log(record.tagName );
-//console.log(record.childNodes.length);
-//console.log(record.hasChildNodes);
-//console.log(record.childNodes.item(0).nodeName);
-//console.log(record.childNodes.item(0).text);
-
-// var _childNodes = record.childNodes;
-// for(var key in _childNodes){
-// console.log( key +", "+ _childNodes[key], ", " + typeof _childNodes[key]);
-// }
-	for (var n2 = 0; n2 < record.childNodes.length; n2++) {
-		//var child = record.childNodes[n2];
-		//var child = record.childNodes[1];
-		var child = record.childNodes.item(n2);//<=IE9
-		// for(var key in child){
-// console.log( key +", "+ child[key], ", " + typeof child[key]);
-		// }
-		if (child.nodeType !== 1/*Node.ELEMENT_NODE*/){
-			continue;
-		}
-// console.log( "nodeType: "+ child.nodeType);
-// console.log( "nodeName: "+ child.nodeName);
-// //console.log( "nodeValue: "+ child.nodeValue);
-// console.log( "text: "+ child.text);
-// console.log( "textContent: "+ child.textContent);
-			var _name = child.nodeName;
-			if ("textContent" in child){
-				obj[_name] = child.textContent;
-			} else {
-				obj[_name] = child.text;
-			}
-			_data.push ( obj );
-	}
-
-if( !record.children){
-console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
-} else {
-				// for(var key in record.children){
-// //console.log( key, record.children[key].nodeName);	
-					// var ch = record.children[key];
-					// if( typeof ch === "object"){
-						// var _name = ch.nodeName;
-						// if ("textContent" in ch){
-							// obj[_name] = ch.textContent;
-						// } else {
-							// obj[_name] = ch.text;
-						// }
-					// }
-				// }
-				// _data.push ( obj );
-}
+			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+				var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+				if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+					continue;
+				}
+				var node = __parseChildNode( child );
+//console.log(node);			
+				_data.push ( node );
 			}//next
 //console.log(_data);				
-
-			_drawNotes({
-				"data": _data
-			});
+			return _data;
 			
-		}//end _parseXML()
+			function __parseChildNode( nodeXml ){
+//console.log( "nodeName: "+ nodeXml.nodeName);
+//console.log( "text: "+ nodeXml.text);
+//console.log( "textContent: "+ nodeXml.textContent);
+
+				// for (var n = 0; n < nodeXml.childNodes.length; n++) {
+				// var _child = nodeXml.childNodes.item(n);//<=IE9
+// console.log( "nodeType: "+ _child.nodeType);
+				// }//next
+
+// var test = nodeXml;				
+// for(var key in test ){
+// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
+// }
+				var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
+				//var nodeObj = {} ;
+				
+				for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
+					var _child = nodeXml.childNodes.item(n2);
+//console.log( "nodeType: "+ _child.nodeType);
+					if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
+						continue;
+					}
+// console.log( "nodeName: "+ _child.nodeName);
+// console.log( "text: "+ _child.text);
+// console.log( "textContent: "+ _child.textContent);
+					var _name = _child.nodeName;
+					if ("textContent" in _child){
+						nodeObj[_name] = _child.textContent;
+					} else {
+						nodeObj[_name] = _child.text;
+					}
+				}//next
+
+// if( !record.children){
+// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+// }
+				return nodeObj;
+			}//end __parseChildNode()
+			
+
+			// var records = xmlDoc.item(0).getElementsByTagName("note");
+// console.log( records.length ) ;
+// //console.log( records.item(0).text ) ;
+// //console.log( records.item(0).textContent ) ;
+// //console.log( "textContent" in records.item(0) ) ;
+// //console.log( "text" in records.item(0) ) ;
+			// var _data = [];
+			// for( var n = 0; n < records.length; n++){
+			// //for( var n = 0; n < 1; n++){
+				// var record = records.item(n);
+				// var obj = get_attr_to_obj( record.attributes ) ;
+// // for(var key in obj){
+// // console.log( key +", "+ obj[key]+ ", " + typeof obj[key]);
+// // }
+// //console.log(record.children);
+// //console.log(record.nodeName );
+// //console.log(record.tagName );
+// //console.log(record.childNodes.length);
+// //console.log(record.hasChildNodes);
+// //console.log(record.childNodes.item(0).nodeName);
+// //console.log(record.childNodes.item(0).text);
+
+// // var _childNodes = record.childNodes;
+// // for(var key in _childNodes){
+// // console.log( key +", "+ _childNodes[key], ", " + typeof _childNodes[key]);
+// // }
+	// for (var n2 = 0; n2 < record.childNodes.length; n2++) {
+		// //var child = record.childNodes[n2];
+		// //var child = record.childNodes[1];
+		// var child = record.childNodes.item(n2);//<=IE9
+		// // for(var key in child){
+// // console.log( key +", "+ child[key], ", " + typeof child[key]);
+		// // }
+		// if (child.nodeType !== 1/*Node.ELEMENT_NODE*/){
+			// continue;
+		// }
+// // console.log( "nodeType: "+ child.nodeType);
+// // console.log( "nodeName: "+ child.nodeName);
+// // //console.log( "nodeValue: "+ child.nodeValue);
+// // console.log( "text: "+ child.text);
+// // console.log( "textContent: "+ child.textContent);
+			// var _name = child.nodeName;
+			// if ("textContent" in child){
+				// obj[_name] = child.textContent;
+			// } else {
+				// obj[_name] = child.text;
+			// }
+			// _data.push ( obj );
+	// }
+
+// if( !record.children){
+// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+// } else {
+				// // for(var key in record.children){
+// // //console.log( key, record.children[key].nodeName);	
+					// // var ch = record.children[key];
+					// // if( typeof ch === "object"){
+						// // var _name = ch.nodeName;
+						// // if ("textContent" in ch){
+							// // obj[_name] = ch.textContent;
+						// // } else {
+							// // obj[_name] = ch.text;
+						// // }
+					// // }
+				// // }
+				// // _data.push ( obj );
+// }
+			// }//next
+// //console.log(_data);				
+			// return _data;
+		}//end _parseXmlToObj()
 		
 	}//end loadNotesXml()
 	
