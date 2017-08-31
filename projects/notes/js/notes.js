@@ -668,30 +668,73 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			var xmlDoc = xml.getElementsByTagName("table");
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 			var records = xmlDoc.item(0).getElementsByTagName("note");
-//console.log( records, records.length ) ;
+//console.log( records.length ) ;
 //console.log( records.item(0).text ) ;
 //console.log( records.item(0).textContent ) ;
 //console.log( "textContent" in records.item(0) ) ;
 //console.log( "text" in records.item(0) ) ;
 //return;
 			var _data = [];
-			for( var n = 0; n < records.length; n++){
+			//for( var n = 0; n < records.length; n++){
+			for( var n = 0; n < 1; n++){
 				var record = records.item(n);
 				var obj = get_attr_to_obj( record.attributes ) ;
+for(var key in obj){
+console.log( key +", "+ obj[key]+ ", " + typeof obj[key]);
+}
 //console.log(record.children);
-				for(var key in record.children){
-//console.log( key, record.children[key].nodeName);	
-					var ch = record.children[key];
-					if( typeof ch === "object"){
-						var _name = ch.nodeName;
-						if ("textContent" in ch){
-							obj[_name] = ch.textContent;
-						} else {
-							obj[_name] = ch.text;
-						}
-					}
-				}
-				_data.push ( obj );
+//console.log(record.nodeName );
+//console.log(record.tagName );
+//console.log(record.childNodes.length);
+//console.log(record.hasChildNodes);
+//console.log(record.childNodes.item(0).nodeName);
+//console.log(record.childNodes.item(0).text);
+
+// var _childNodes = record.childNodes;
+// for(var key in _childNodes){
+// console.log( key +", "+ _childNodes[key], ", " + typeof _childNodes[key]);
+// }
+	for (var n2 = 0; n2 < record.childNodes.length; n2++) {
+		//var child = record.childNodes[n2];
+		//var child = record.childNodes[1];
+		var child = record.childNodes.item(n2);//<=IE9
+		// for(var key in child){
+// console.log( key +", "+ child[key], ", " + typeof child[key]);
+		// }
+		if (child.nodeType !== 1/*Node.ELEMENT_NODE*/){
+			continue;
+		}
+// console.log( "nodeType: "+ child.nodeType);
+// console.log( "nodeName: "+ child.nodeName);
+// //console.log( "nodeValue: "+ child.nodeValue);
+// console.log( "text: "+ child.text);
+// console.log( "textContent: "+ child.textContent);
+			var _name = child.nodeName;
+			if ("textContent" in child){
+				obj[_name] = child.textContent;
+			} else {
+				obj[_name] = child.text;
+			}
+			_data.push ( obj );
+	}
+
+if( !record.children){
+console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+} else {
+				// for(var key in record.children){
+// //console.log( key, record.children[key].nodeName);	
+					// var ch = record.children[key];
+					// if( typeof ch === "object"){
+						// var _name = ch.nodeName;
+						// if ("textContent" in ch){
+							// obj[_name] = ch.textContent;
+						// } else {
+							// obj[_name] = ch.text;
+						// }
+					// }
+				// }
+				// _data.push ( obj );
+}
 			}//next
 //console.log(_data);				
 
