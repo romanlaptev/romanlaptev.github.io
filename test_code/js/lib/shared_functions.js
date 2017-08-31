@@ -100,6 +100,68 @@ function get_attr_to_obj( attr ){
 }//end get_attr_to_obj()
 
 
+//parse XML : <table><note>....</note>, <note>...</note></table>
+function _parseXmlToObj(xml){
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );			
+	var rootTagName = xml.documentElement.nodeName;
+	var xmlDoc = xml.getElementsByTagName( rootTagName);
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+	var xmlObj = [];
+	for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+		var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+			continue;
+		}
+		var node = __parseChildNode( child );
+//console.log(node);			
+		xmlObj.push ( node );
+	}//next
+//console.log(xmlObj);				
+	return xmlObj;
+	
+	function __parseChildNode( nodeXml ){
+//console.log( "nodeName: "+ nodeXml.nodeName);
+//console.log( "text: "+ nodeXml.text);
+//console.log( "textContent: "+ nodeXml.textContent);
+// var test = nodeXml;				
+// for(var key in test ){
+// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
+// }
+		var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
+		for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
+			var _child = nodeXml.childNodes.item(n2);
+//console.log( "nodeType: "+ _child.nodeType);
+			if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
+				continue;
+			}
+// console.log( "nodeName: "+ _child.nodeName);
+// console.log( "text: "+ _child.text);
+// console.log( "textContent: "+ _child.textContent);
+			var _name = _child.nodeName;
+			if ("textContent" in _child){
+				nodeObj[_name] = _child.textContent;
+			} else {
+				nodeObj[_name] = _child.text;
+			}
+		}//next
+
+// if( !record.children){
+// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+// }
+		return nodeObj;
+	}//end __parseChildNode()
+
+}//end _parseXmlToObj()
+
+
 //print source code
 //var source_txt = document.getElementById("code1");
 //code1_out.innerHTML +="<br><br>";
