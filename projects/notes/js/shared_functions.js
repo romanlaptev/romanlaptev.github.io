@@ -122,19 +122,11 @@ function _parseXmlToObj(xml){
 //console.log( "nodeName: "+ nodeXml.nodeName);
 //console.log( "text: "+ nodeXml.text);
 //console.log( "textContent: "+ nodeXml.textContent);
-
-		// for (var n = 0; n < nodeXml.childNodes.length; n++) {
-		// var _child = nodeXml.childNodes.item(n);//<=IE9
-// console.log( "nodeType: "+ _child.nodeType);
-		// }//next
-
 // var test = nodeXml;				
 // for(var key in test ){
 // console.log( key +", "+ test[key]+ ", " + typeof test[key]);
 // }
 		var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
-		//var nodeObj = {} ;
-		
 		for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
 			var _child = nodeXml.childNodes.item(n2);
 //console.log( "nodeType: "+ _child.nodeType);
