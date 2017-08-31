@@ -93,4 +93,17 @@ FROM notes;
 =======================
 - сделать модули для работы с заметками на SQLITE + ASPX, SQLITE + PHP
 
+======================= ИСПРАВИТЬ
+FF12, ошибка при старте 
+form_import is not defined
+http://localhost/www/romanlaptev.github.io/projects/notes/js/notes.js
+Line 87
+----
+IE6, неверно работает тест PHP
+для http://graphic-art-collection.16mb.com/notes/
+определяется
+ajax load url: api/test.php, runtime: 0.312 sec
+test PHP failed, PHP not suppored by server graphic-art-collection.16mb.com
+
+----------------
 blog
