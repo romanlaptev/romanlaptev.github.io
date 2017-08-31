@@ -675,13 +675,13 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 //console.log( "text" in records.item(0) ) ;
 //return;
 			var _data = [];
-			//for( var n = 0; n < records.length; n++){
-			for( var n = 0; n < 1; n++){
+			for( var n = 0; n < records.length; n++){
+			//for( var n = 0; n < 1; n++){
 				var record = records.item(n);
 				var obj = get_attr_to_obj( record.attributes ) ;
-for(var key in obj){
-console.log( key +", "+ obj[key]+ ", " + typeof obj[key]);
-}
+// for(var key in obj){
+// console.log( key +", "+ obj[key]+ ", " + typeof obj[key]);
+// }
 //console.log(record.children);
 //console.log(record.nodeName );
 //console.log(record.tagName );
