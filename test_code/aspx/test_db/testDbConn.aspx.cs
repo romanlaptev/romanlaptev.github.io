@@ -11,8 +11,9 @@ public partial class _Default : System.Web.UI.Page
 	{
 		Response.Write("<h1>test connect to MSSQL server</h1>");
 		
+		string dbName = "site";
 		string _connectionString = "";
-		_connectionString = "Data Source=.\\SQLEXPRESS; Initial Catalog=site; Integrated Security=False;User Id=root;Password=master;";
+		_connectionString = "Data Source=.\\SQLEXPRESS; Initial Catalog="+	dbName+"; Integrated Security=False;User Id=root;Password=master;";
 		SqlConnection db_connection = new SqlConnection( _connectionString );
 
 
@@ -39,6 +40,11 @@ public partial class _Default : System.Web.UI.Page
 			}
 			myDataReader.Close();
 			
+		}
+		catch (Exception ex)
+		{
+			Response.Write("<h3>connect error.... </h3>");
+			Response.Write("connection string:" + _connectionString);
 		}
 		finally
 		{
