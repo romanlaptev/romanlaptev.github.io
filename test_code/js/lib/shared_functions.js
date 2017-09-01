@@ -2,7 +2,7 @@
 if (!window.console){ 
 	window.console = {
 		"log" : function( msg ){
-			var log = getDOMobj("log");
+			var log = getById("log");
 			if(log){
 				log.innerHTML += msg +"<br>";
 			} else {
@@ -28,7 +28,7 @@ function _log( msg, id){
 		var id = "log";
 	}
 	
-	var output = getDOMobj(id);
+	var output = getById(id);
 	if( output ){	
 		if( msg.length == 0){
 			output.innerHTML = "";
@@ -49,7 +49,7 @@ function _log( msg, id){
 	
 }//end _log()
 
-function getDOMobj(id){
+function getById(id){
 	
 	if( document.querySelector ){
 		var obj = document.querySelector("#"+id);
@@ -72,7 +72,7 @@ function getDOMobj(id){
 	//}
 	
 	return false;
-}//end getDOMobj()
+}//end getById()
 
 
 var _set_timer = function (){
@@ -469,12 +469,12 @@ console.log( msg, xhr );
 	}
 
 	//block overlay and wait window
-	var overlay = getDOMobj("overlay");
+	var overlay = getById("overlay");
 	if( overlay ){
 		overlay.className="modal-backdrop in";
 		overlay.style.display="block";
 	}
-	var waitWindow = getDOMobj("wait-window");
+	var waitWindow = getById("wait-window");
 	if( waitWindow ){
 		waitWindow.className="modal-dialog";
 		waitWindow.style.display="block";
@@ -604,7 +604,7 @@ console.log("statusText:" + xhr.statusText);
 			}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 
-			var loadProgressBar = getDOMobj("load-progress-bar");
+			var loadProgressBar = getById("load-progress-bar");
 			if( loadProgressBar ){
 				//loadProgress.value = percentComplete;
 				loadProgressBar.className = "progress-bar";

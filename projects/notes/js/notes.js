@@ -20,18 +20,18 @@ var _notes = function ( opt ){
 		"requestUrlASPX" : "api/notes_sqlite.aspx",
 		"supportPHP" : false,
 		"supportASPX" : false,
-		"messages" : getDOMobj("messages"),
+		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
-		"messagesList" : getDOMobj("messages"),		
-		"controlPanel" : getDOMobj("control-btn")
+		"messagesList" : getById("messages"),		
+		"controlPanel" : getById("control-btn")
 	};
 	
 	//correct for remote run
 	if( window.location.hostname === "romanlaptev.github.io"){
 		_vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
-		var btn_export = getDOMobj("btn-export");
+		var btn_export = getById("btn-export");
 		btn_export.href = _vars["requestUrl"] + "?action=export_notes";
 //console.log( btn_export.href );	
 		_vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
@@ -62,7 +62,7 @@ var _notes = function ( opt ){
 	};
 
 	function _getTpl( id ){
-		var tpl = getDOMobj(id);
+		var tpl = getById(id);
 		var html = tpl.innerHTML;
 		return html;
 	}//end _getTpl()
@@ -84,10 +84,10 @@ var _notes = function ( opt ){
 		};//end event
 		
 		//UPLOAD
-		form_import.onsubmit = function(e) {
+		document.forms["form_import"].onsubmit = function(e) {
 			e.preventDefault();
 			if( _vars["supportPHP"] ){
-				_upload( form_import );
+				_upload( document.forms["form_import"] );
 			} else {
 				_error("errorPHP");
 			}
@@ -158,10 +158,10 @@ var _notes = function ( opt ){
 		}
 		
 		//CLEAR LOG
-		var btn_clear_log = getDOMobj("clear-log");
+		var btn_clear_log = getById("clear-log");
 		if( btn_clear_log ){
 			btn_clear_log.onclick = function(e){
-				var log = getDOMobj("log");
+				var log = getById("log");
 				log.innerHTML = "";
 				return false;
 			}
@@ -202,7 +202,7 @@ var _notes = function ( opt ){
 		}
 		
 		//IMPORT
-		var btn_import = getDOMobj("btn-import");
+		var btn_import = getById("btn-import");
 		if( btn_import ){
 			btn_import.onclick = function(event){
 				event = event || window.event;
@@ -221,7 +221,7 @@ var _notes = function ( opt ){
 		}
 		
 		//EXPORT
-		var btn_export = getDOMobj("btn-export");
+		var btn_export = getById("btn-export");
 		if( btn_export ){
 			btn_export.onclick = function(event){
 				event = event || window.event;
@@ -248,7 +248,7 @@ var _notes = function ( opt ){
 	function _upload( form ){
 			if( window.FileList ){
 				
-				//var fileSelect = getDOMobj("file-select");
+				//var fileSelect = getById("file-select");
 				//if( fileSelect ){
 					//var formData = _getUploadFiles({
 						//"fileSelect" : fileSelect
