@@ -488,7 +488,7 @@ console.log( msg, xhr );
 	//Check responseType support:
 //https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
-	if( "responseType" in xhr && p["responseType"]){
+	if( "responseType" in xhr){
 		xhr.responseType = p["responseType"];
 	}
 	
@@ -524,7 +524,8 @@ console.log(msg);
 							//fix IE8
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 							var contentType = xhr.getResponseHeader("Content-Type");
-							if( contentType === "application/xml"){
+							if( contentType === "application/xml" ||
+								contentType === "text/xml"){
 								var data = xhr.responseXML;
 							} else {
 								var data = xhr.responseText;

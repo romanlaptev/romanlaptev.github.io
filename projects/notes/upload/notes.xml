@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
+	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:15:37" server_date="2017-09-01 02:18:43" >
+		<text>
+[[https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/ | Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. ]]
+		</text>
+	</note>
+	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:14:04" server_date="2017-09-01 02:17:10" >
+		<text>
+[[http://www.cyberforum.ru/ado-net/thread251180.html | Развертывание программы с SQLite-ом на других компьютерах - C#]]
+		</text>
+	</note>
 	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
 		<text>
 [code]
