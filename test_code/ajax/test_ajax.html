@@ -68,6 +68,21 @@ console.log( msg, xhr );
 				
 	var timeStart = new Date();
 	xhr.open( requestMethod, url, async );
+	
+	//Check responseType support:
+	if( "responseType" in xhr){
+		xhr.responseType = "document";
+	}
+/*
+https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+arraybuffer
+blob
+document
+ms-stream
+text
+*/	
+
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4){
 console.log("xhr.status -" + xhr.status);
@@ -85,11 +100,22 @@ console.log( all_headers );
 				_log("ajax load url: " + url + ", runtime: " + runtime +" sec");
 							
 				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
-//console.log( xhr.responseText );
-//console.log( xhr.responseXML );
+if( "responseType" in xhr){
+console.log( xhr.response );
+console.log( "responseType:: " + xhr.responseType );
+} else {
+console.log( xhr.responseText );
+console.log( xhr.responseXml );
+}
+
+					var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
+//Content-Type: application/xml						
+console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );						
 							var data = xhr.responseXML;
 						} else {
 							var data = xhr.responseText;
@@ -164,6 +190,8 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	
 	<pre>
 data/test.html
+data/test.xml
+/sites/romanlaptev.github.io/projects/notes/api/test.php
 http://comp:88/test/data/ar_adr_lvl_5/ar_adr_lvl_5_ORDER.csv
 http://comp:88/test/data/ar_adr_lvl_5/p1_100000.csv
 для загрузки данных с удаленного сервера создать в папке с данными .htaccess или web.config

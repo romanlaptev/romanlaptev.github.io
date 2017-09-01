@@ -249,6 +249,7 @@ function runAjax( opt ){
 	
 	var p = {
 		"requestMethod" : "GET", 
+		"responseType" : "", //arraybuffer, blob, document, ms-stream, text
 		"enctype" : "application/x-www-form-urlencoded",
 		//"enctype" : "multipart/form-data",
 		"url" : false, 
@@ -321,6 +322,14 @@ console.log( msg, xhr );
 	var timeStart = new Date();
 
 	xhr.open( requestMethod, url, async );
+	
+	//Check responseType support:
+//https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
+//https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+	if( "responseType" in xhr && p["responseType"]){
+		xhr.responseType = p["responseType"];
+	}
+	
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
 		if( xhr.readyState == 4) {
@@ -337,16 +346,28 @@ console.log( msg, xhr );
 					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-//console.log( xhr.responseText );
-//console.log( xhr.responseXML );
-
+// console.log( "xhr.responseText: ", xhr.responseText );
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+// if( "responseType" in xhr){
+// console.log( "xhr.response: ", xhr.response );
+// console.log( "responseType: " + xhr.responseType );
+// }
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
 //var test = xhr.responseXML.selectNodes("//pma_xml_export");	
 //var test = xhr.responseXML.getElementsByTagName("database");
 //console.log( test.item(0).nodeName);
-							var data = xhr.responseXML;
+
+							//fix IE8
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+							var contentType = xhr.getResponseHeader("Content-Type");
+							if( contentType === "application/xml"){
+								var data = xhr.responseXML;
+							} else {
+								var data = xhr.responseText;
+							}
+
 							callback(data);
 						} else {
 							var data = xhr.responseText;
