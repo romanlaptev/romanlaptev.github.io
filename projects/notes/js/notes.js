@@ -436,6 +436,7 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
 			"callback" : function(res){
 				if( res ){
+
 					loadNotes();
 				} else {
 					_testASPX();
@@ -493,13 +494,23 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 				"onError" : _onerror,
 				"callback": function( data ){
 //console.log(data, typeof data, data.length, data[0]);
+//console.log("data = " + data);
+//console.log("data[0] = " + typeof data[0]);
+//console.log("data.charAt(0) = " + data.charAt(0));
 
 						if( !data || data.length === 0){
 console.log("error in test(), not find 'data'.... ");			
 							data = [];
+							return false;
 						}
-						
-						if (data[0] === p["testResult"]){//test success (result of adding 2+2 for PHP)
+
+						var test = data[0];
+						if(!test){//fix IE, not support data[0]
+							test = data.charAt(0);
+						}
+//console.log("test = " + test);
+
+						if (test === p["testResult"]){//test success (result of adding 2+2 for PHP)
 							_vars[nameVar] = true;
 						} else {
 							_error( p["errorMsgID"] );
@@ -631,8 +642,9 @@ console.log( all_headers );
 var msg = "";
 msg += "<p>error in server response data</p>";
 msg += "<p>" + error + "</p>";
-//msg += "<p>" + data + "</p>";
+msg += "<p>data: " + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
+							loadNotesXml();
 						}//end catch
 
 				} else {

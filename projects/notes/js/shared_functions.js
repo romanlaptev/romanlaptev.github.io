@@ -368,6 +368,7 @@ console.log(msg);
 							} else {
 								var data = xhr.responseText;
 							}
+console.log("data: " + data );
 
 							callback(data);
 						} else {
@@ -633,9 +634,9 @@ console.log("loaded: " + e.loaded);
 
 
 if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
 	$(document).ready(function(){
+var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";
+console.log("<div class='alert alert-info'>" + msg + "</div>");
 		
 		//------------------------- scroll to top
 		// $("#scroll-to-top").click(function(e) {
