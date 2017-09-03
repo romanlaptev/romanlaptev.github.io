@@ -368,7 +368,6 @@ console.log(msg);
 							} else {
 								var data = xhr.responseText;
 							}
-console.log("data: " + data );
 
 							callback(data);
 						} else {
