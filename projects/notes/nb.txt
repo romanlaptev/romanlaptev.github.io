@@ -105,5 +105,11 @@ Line 87
 ajax load url: api/test.php, runtime: 0.312 sec
 test PHP failed, PHP not suppored by server graphic-art-collection.16mb.com
 
+
+----
+- IE6, проверить поддержку JSON.parse, подключить библиотеку
+- при старте приложения проверять поддержку Ajax, XMLHttpRequest, JSON...
+
+
 ----------------
 blog
