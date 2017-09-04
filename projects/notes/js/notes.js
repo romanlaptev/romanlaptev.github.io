@@ -17,7 +17,7 @@ var _notes = function ( opt ){
 		"exportUrl" : "api/notes_mysql.php?action=export_notes",
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/test.aspx",
-		"requestUrlASPX" : "api/notes_sqlite.aspx",
+		"requestUrlASPX" : "api/notes_mssql.aspx",
 		"supportPHP" : false,
 		"supportASPX" : false,
 		"messages" : getById("messages"),
@@ -454,8 +454,8 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 					if( res ){
 var msg = "<p>test ASPX success, ASP.NET suppored by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-success'>" + msg + "</div>");
-						//test!!!!
-						loadNotesXml();
+						_vars["requestUrl"] = _vars["requestUrlASPX"];
+						loadNotes();
 					} else {
 						loadNotesXml();
 					}
@@ -624,8 +624,9 @@ console.log( all_headers );
 			"requestMethod" : "GET", 
 			"url" : _vars["requestUrl"], 
 			"params" : params,
+			"onError" : _onerror,
 			"callback": function( data ){
-//console.log(data.length, typeof data, data);				
+console.log(data.length, typeof data, data);				
 
 				if( data.length > 0){
 						try{
@@ -653,6 +654,15 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 				
 			}//end callback()
 		});
+
+		function _onerror( xhr ){
+			var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+var msg = "";
+msg += "<p>error load notes, url: "+_vars["requestUrl"]+"</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+			loadNotesXml();
+		}//end _onerror()
 		
 	}//end loadNotes()
 
