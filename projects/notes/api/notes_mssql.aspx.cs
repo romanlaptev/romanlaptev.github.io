@@ -31,6 +31,17 @@ public partial class _Default : System.Web.UI.Page
 	static string queryGetNotes = "SELECT id, author, title, text_message, client_date, server_date, ip FROM \""+
 tableName+"\" ORDER BY \"client_date\" DESC";
 
+	static string queryInsertMessage = "INSERT INTO "+tableName+" (author, title, text_message, client_date, server_date, ip) "+
+"VALUES ("+
+" '{{authorName}}', "+
+" '{{title}}', " +
+" '{{textMessage}}', " +
+" '{{client_date}}', " +
+" '{{server_date}}', " +
+" '{{ip}}' "+
+");";
+
+
 	static string _connectionString = "";
 	static SqlConnection db_connection;
 	
@@ -41,6 +52,17 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			// Response.Write ( "<b>"+x + "</b> = " + Request.ServerVariables[x]); 
 			// Response.Write ( "<br>"); 
 		// }
+		
+		foreach ( string x in Request.Params )//GET
+		{
+			Response.Write ( "<b>Request.Params["+x + "]</b> = " + Request.Params[x]); 
+			Response.Write ( "<br>"); 
+		}
+		foreach ( string x in Request.Form )//POST
+		{
+			Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
+			Response.Write ( "<br>"); 
+		}
 		
 		_connectionString = "Data Source="+dbHost+"; ";
 		_connectionString += "Initial Catalog="+dbName+"; ";
@@ -79,16 +101,6 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	
 	protected void _testRequestParams()
 	{
-		// foreach ( string x in Request.Params )//GET
-		// {
-			// Response.Write ( "<b>"+x + "</b> = " + Request.Params[x]); 
-			// Response.Write ( "<br>"); 
-		// }
-		// foreach ( string x in Request.Form )//POST
-		// {
-			// Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
-			// Response.Write ( "<br>"); 
-		// }
 	
 		if( Request.QueryString["action"] == null )
 		{
@@ -104,15 +116,16 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		
 		switch (action)
 		{
-			case "save_notes":
-				//Console.WriteLine("Case 1");
+			case "save_note":
+//queryInsertMessage = "INSERT INTO notes (author, title, text_message, client_date, server_date, ip) VALUES ( 'anonymous', 'no subject', 'test1', 0, 0, '3.1.1.1')";
+Response.Write ( queryInsertMessage ); 
+					//runQuery( queryInsertMessage );
 				break;
 				
 			case "get_notes":
 Response.Write ( action ); 
 Response.Write ( "<br>"); 
 					//_testQuery();
-					//runQuery( queryGetNotes );
 				break;
 				
 			case "delete_note":

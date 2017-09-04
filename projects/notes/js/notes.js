@@ -78,8 +78,15 @@ var _notes = function ( opt ){
 				_checkForm(this);
 			} else {
 				_error("errorPHP");
-				$("#newModal").modal("hide");
 			}
+			
+			if( _vars["supportASPX"] ){
+				_checkForm(this);
+			} else {
+				_error("errorASPX");
+			}
+			
+			$("#newModal").modal("hide");
 			return false;
 		};//end event
 		
