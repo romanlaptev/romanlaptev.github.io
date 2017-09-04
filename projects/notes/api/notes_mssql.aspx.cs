@@ -53,16 +53,16 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			// Response.Write ( "<br>"); 
 		// }
 		
-		foreach ( string x in Request.Params )//GET
-		{
-			Response.Write ( "<b>Request.Params["+x + "]</b> = " + Request.Params[x]); 
-			Response.Write ( "<br>"); 
-		}
-		foreach ( string x in Request.Form )//POST
-		{
-			Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
-			Response.Write ( "<br>"); 
-		}
+		// foreach ( string x in Request.Params )//GET
+		// {
+			// Response.Write ( "<b>Request.Params["+x + "]</b> = " + Request.Params[x]); 
+			// Response.Write ( "<br>"); 
+		// }
+		// foreach ( string x in Request.Form )//POST
+		// {
+			// Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
+			// Response.Write ( "<br>"); 
+		// }
 		
 		_connectionString = "Data Source="+dbHost+"; ";
 		_connectionString += "Initial Catalog="+dbName+"; ";
@@ -113,6 +113,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			Response.Write("error, empty var 'action'");
 			return;
 		}
+//Response.Write ( action ); 
+//Response.Write ( "<br>"); 
 		
 		switch (action)
 		{
@@ -123,9 +125,7 @@ Response.Write ( queryInsertMessage );
 				break;
 				
 			case "get_notes":
-Response.Write ( action ); 
-Response.Write ( "<br>"); 
-					//_testQuery();
+					getNotes( queryGetNotes );
 				break;
 				
 			case "delete_note":
@@ -154,22 +154,85 @@ Response.Write ( "<br>");
 	}//end _testRequestParams()
 
 	
-	protected void _testQuery()
+	protected void getNotes( string query )
 	{
-		SqlCommand myCommand;
-		SqlDataReader myDataReader;
+		SqlDataReader reader;
+		SqlCommand cmd;
 		
-		myCommand = new SqlCommand ( queryGetNotes, db_connection );
+		cmd = new SqlCommand ( query, db_connection );
 		
-		myDataReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
-		while (myDataReader.Read())
+		//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqldatareader_methods(v=vs.110).aspx		
+		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+		if (reader.HasRows)
 		{
-			Response.Write(myDataReader["user_login"].ToString());
-			Response.Write("<br>");
-		}
-		myDataReader.Close();
-	}//end _testQuery()
+			while ( reader.Read() )
+			{
+				int numColumns = reader.FieldCount;
+				Response.Write( "numColumns:"  + numColumns );
+//reader.GetString(1));
 
+				string ip = reader["ip"].ToString();
+				Response.Write( ip );
+				Response.Write("<br>");
+
+				//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqldatareader.getvalues(v=vs.110).aspx
+				Object[] values = new Object[reader.FieldCount];
+				int fieldCount = reader.GetValues(values);
+				for (int n = 0; n < fieldCount; n++)
+				{
+					Response.Write( values[n] );
+				}//next
+				Response.Write("<br>");
+
+				for (int n = 0; n < reader.FieldCount; n++)
+				{
+					Response.Write( reader.GetName(n) );
+					Response.Write( reader.GetValue(n) );
+				}//next
+				Response.Write("<br>");
+				
+			}
+		}
+		else
+		{
+			Response.Write("No rows found in table " + tableName);
+		}
+		reader.Close();
+		
+		string[] testArr = new string[6];		
+		testArr[0] = "a";
+		testArr[1] = "b";
+		testArr[2] = "c";
+		Response.Write("testArr.length =  " + testArr.Length);
+		Response.Write("<br>");
+		
+		for (int n = 0; n < testArr.Length; n++)
+		{
+			Response.Write( testArr[n] );
+			Response.Write("<br>");
+		}		
+		
+/*
+      DataTable inv = new DataTable();
+      string sql = "Select * From Inventory";
+      using (SqlCommand cmd = new SqlCommand(sql, this.connect))
+      {
+            SqlDataReader dr = cmd.ExecuteReader();
+            inv.Load(dr);
+            dr.Close();
+       }
+   return inv;
+*/
+/*
+            foreach (DataColumn column in schemaTable.Columns)
+            {
+                Console.WriteLine(String.Format("{0} = {1}",
+                   column.ColumnName, row[column]));
+            }
+*/
+	}//end getNotes()
+
+	
 	protected void runQuery( string query )
 	{
 //Response.Write( query );
