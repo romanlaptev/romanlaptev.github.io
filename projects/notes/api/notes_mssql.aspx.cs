@@ -15,17 +15,21 @@ public partial class _Default : System.Web.UI.Page
 	static string exportFilename = "notes.xml";
 	static string uploadPath = "upload";
 	static string tableName = "notes";//"user";
-	static string queryCreateTable = "CREATE TABLE \""+tableName+"\" (" +
+	static string queryCreateTable = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='notes') " +	
+"BEGIN\r\n"+
+"CREATE TABLE \""+tableName+"\" (" +
 " id int IDENTITY(1,1) PRIMARY KEY NOT NULL," +
 " author  varchar(20) NOT NULL," +
 " title   varchar(255) NOT NULL," +
 " text_message  text NOT NULL," +
 " client_date datetime NOT NULL," +
 " server_date datetime NOT NULL," +
-" ip varchar(20) );";
+" ip varchar(20) "+
+");\r\n"+
+"END";
 
-	
-	static string queryGetNotes = "SELECT * FROM \""+tableName+"\"";
+	static string queryGetNotes = "SELECT id, author, title, text_message, client_date, server_date, ip FROM \""+
+tableName+"\" ORDER BY \"client_date\" DESC";
 
 	static string _connectionString = "";
 	static SqlConnection db_connection;
@@ -51,17 +55,18 @@ public partial class _Default : System.Web.UI.Page
 			db_connection.Open();
 			//_testQuery();
 			
-			Response.Write( queryCreateTable);
-			//createTable();
-			
-			//_testRequestParams();
+			//createTable
+			runQuery( queryCreateTable );
+			_testRequestParams();
 		}
-		catch (Exception ex)
+		//catch (Exception ex)
+		catch (SqlException ex)
 		{
 			Response.Write("connect error....");
 			Response.Write("connection string:" + _connectionString);
 			Response.Write("<pre>");
-			Response.Write(ex);
+			//Response.Write(ex);
+			Response.Write(ex.Message);			
 			Response.Write("</pre>");
 		}
 		finally
@@ -71,23 +76,7 @@ public partial class _Default : System.Web.UI.Page
 		
 	}//end Page_Load()
 	
-	protected void _testQuery()
-	{
-		SqlCommand myCommand;
-		SqlDataReader myDataReader;
-		
-		myCommand = new SqlCommand ( queryGetNotes, db_connection );
-		//result = myCommand.ExecuteNonQuery();
-		
-		myDataReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
-		while (myDataReader.Read())
-		{
-			Response.Write(myDataReader["user_login"].ToString());
-			Response.Write("<br>");
-		}
-		myDataReader.Close();
-	}//end _testQuery()
-
+	
 	protected void _testRequestParams()
 	{
 		// foreach ( string x in Request.Params )//GET
@@ -122,7 +111,8 @@ public partial class _Default : System.Web.UI.Page
 			case "get_notes":
 Response.Write ( action ); 
 Response.Write ( "<br>"); 
-					_testQuery();
+					//_testQuery();
+					//runQuery( queryGetNotes );
 				break;
 				
 			case "delete_note":
@@ -150,4 +140,37 @@ Response.Write ( "<br>");
 		
 	}//end _testRequestParams()
 
+	
+	protected void _testQuery()
+	{
+		SqlCommand myCommand;
+		SqlDataReader myDataReader;
+		
+		myCommand = new SqlCommand ( queryGetNotes, db_connection );
+		
+		myDataReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
+		while (myDataReader.Read())
+		{
+			Response.Write(myDataReader["user_login"].ToString());
+			Response.Write("<br>");
+		}
+		myDataReader.Close();
+	}//end _testQuery()
+
+	protected void runQuery( string query )
+	{
+//Response.Write( query );
+		SqlCommand cmd = new SqlCommand( query, db_connection);
+		try
+		{
+			cmd.ExecuteNonQuery();
+		}
+		catch (SqlException ex)
+		{
+			//Response.Write("<pre>");
+			Response.Write(ex.Message);
+			//Response.Write("</pre>");
+		}		
+	}//end runQuery()
+	
 }//end class	
