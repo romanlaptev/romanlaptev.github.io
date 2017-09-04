@@ -8,13 +8,23 @@ using System.Data.SqlClient;
 public partial class _Default : System.Web.UI.Page
 {
 	static string dbHost = ".\\SQLEXPRESS2005";
-	static string dbName = "site";
+	static string dbName = "db1";//"site";
 	static string dbUser = "sa";
 	static string dbPassword = "assa";
 	
 	static string exportFilename = "notes.xml";
 	static string uploadPath = "upload";
-	static string tableName = "user";//"notes";
+	static string tableName = "notes";//"user";
+	static string queryCreateTable = "CREATE TABLE \""+tableName+"\" (" +
+" id int IDENTITY(1,1) PRIMARY KEY NOT NULL," +
+" author  varchar(20) NOT NULL," +
+" title   varchar(255) NOT NULL," +
+" text_message  text NOT NULL," +
+" client_date datetime NOT NULL," +
+" server_date datetime NOT NULL," +
+" ip varchar(20) );";
+
+	
 	static string queryGetNotes = "SELECT * FROM \""+tableName+"\"";
 
 	static string _connectionString = "";
@@ -40,12 +50,19 @@ public partial class _Default : System.Web.UI.Page
 		{
 			db_connection.Open();
 			//_testQuery();
-			_testRequestParams();
+			
+			Response.Write( queryCreateTable);
+			//createTable();
+			
+			//_testRequestParams();
 		}
 		catch (Exception ex)
 		{
 			Response.Write("connect error....");
 			Response.Write("connection string:" + _connectionString);
+			Response.Write("<pre>");
+			Response.Write(ex);
+			Response.Write("</pre>");
 		}
 		finally
 		{
