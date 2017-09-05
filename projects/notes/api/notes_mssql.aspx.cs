@@ -15,7 +15,29 @@ public partial class _Default : System.Web.UI.Page
 	static string exportFilename = "notes.xml";
 	static string uploadPath = "upload";
 	static string tableName = "notes";//"user";
-	static string queryCreateTable = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='notes') " +	
+	
+	static string queryCreateDB = "IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases WHERE name = '"+dbName+"') " +
+"BEGIN\r\n"+
+"CREATE DATABASE "+dbName+"\r\n"+
+"END";	
+/*	
+https://support.microsoft.com/ru-ru/help/307283/how-to-create-a-sql-server-database-programmatically-by-using-ado-net
+IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases where name = 'db1')
+BEGIN
+CREATE DATABASE db1;
+END	
+
+CREATE DATABASE db1 ON PRIMARY 
+(NAME = db1, 
+FILENAME = 'C:\\db\\MSSQL\\db1.mdf', 
+SIZE = 3MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB) 
+LOG ON (NAME = db1_log, 
+FILENAME = 'C:\\db\\MSSQL\\db1_log.ldf', 
+SIZE = 1MB, 
+MAXSIZE = 5MB, 
+FILEGROWTH = 10%);
+*/
+	static string queryCreateTable = "USE "+dbName+"; IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='"+tableName+"') " +	
 "BEGIN\r\n"+
 "CREATE TABLE \""+tableName+"\" (" +
 " id int IDENTITY(1,1) PRIMARY KEY NOT NULL," +
@@ -65,7 +87,7 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		// }
 		
 		_connectionString = "Data Source="+dbHost+"; ";
-		_connectionString += "Initial Catalog="+dbName+"; ";
+		//_connectionString += "Initial Catalog="+dbName+"; ";
 		_connectionString += "Integrated Security=False; ";
 		_connectionString += "User Id="+dbUser+";";
 		_connectionString += "Password="+dbPassword+";";
@@ -75,13 +97,12 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		try
 		{
 			db_connection.Open();
-			//_testQuery();
-			
-			//createTable
+			runQuery( queryCreateDB );
 			runQuery( queryCreateTable );
 			_testRequestParams();
 		}
 		//catch (Exception ex)
+		//catch (System.Exception ex)		
 		catch (SqlException ex)
 		{
 			Response.Write("connect error....");
@@ -93,8 +114,20 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		}
 		finally
 		{
-			db_connection.Close();
-		}	
+			if(db_connection.State == ConnectionState.Open)
+			{
+				try
+				{
+					db_connection.Close();
+				}
+				catch(Exception eClose)
+				{
+					Response.Write("<pre>");
+					Response.Write(eClose.ToString());
+					Response.Write("</pre>");
+				}//end
+			}
+		}//end	
 		
 	}//end Page_Load()
 	
@@ -241,11 +274,15 @@ Response.Write ( queryInsertMessage );
 		{
 			cmd.ExecuteNonQuery();
 		}
-		catch (SqlException ex)
+		//catch (SqlException ex)
+		catch (System.Exception ex)		
 		{
-			//Response.Write("<pre>");
+			Response.Write("SQL: " + query);
+			Response.Write("<br>");
 			Response.Write(ex.Message);
-			//Response.Write("</pre>");
+			Response.Write("<pre>");
+			Response.Write( ex.ToString() );
+			Response.Write("</pre>");
 		}		
 	}//end runQuery()
 	
