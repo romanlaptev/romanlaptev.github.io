@@ -237,6 +237,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	{
 		SqlDataReader reader;
 		SqlCommand cmd;
+		string jsonStr;
+		string jsonNote;
 		
 		cmd = new SqlCommand ( query, db_connection );
 		
@@ -244,52 +246,66 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 		if (reader.HasRows)
 		{
+			//-------------------------------------------------------- Form json
+			jsonStr = "[";
+			int num = 0;
 			while ( reader.Read() )
 			{
-				int numColumns = reader.FieldCount;
-				Response.Write( "numColumns:"  + numColumns );
-//reader.GetString(1));
+				// int numColumns = reader.FieldCount;
+				// Response.Write( "numColumns:"  + numColumns );
+// //reader.GetString(1));
 
-				string ip = reader["ip"].ToString();
-				Response.Write( ip );
-				Response.Write("<br>");
+				// string ip = reader["ip"].ToString();
+				// Response.Write( ip );
+				// Response.Write("<br>");
 
 				//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqldatareader.getvalues(v=vs.110).aspx
-				Object[] values = new Object[reader.FieldCount];
-				int fieldCount = reader.GetValues(values);
-				for (int n = 0; n < fieldCount; n++)
-				{
-					Response.Write( values[n] );
+				// Object[] values = new Object[reader.FieldCount];
+				// int fieldCount = reader.GetValues(values);
+				// for (int n = 0; n < fieldCount; n++)
+				// {
+					// Response.Write( values[n] );
+				// }//next
+				// Response.Write("<br>");
+				jsonNote = "{";
+				if( num > 0 ){
+					jsonNote = ",{";
+				}
+				for (int n = 0; n < reader.FieldCount; n++){
+					//Response.Write( reader.GetName(n) );
+					//Response.Write( reader.GetValue(n) );
+					if( n > 0 ){
+						jsonNote += ", ";
+					}
+					string key = reader.GetName(n).ToString();
+					string value = reader.GetValue(n).ToString();
+					jsonNote += "\""+key+"\" : \""+value+"\"";
 				}//next
-				Response.Write("<br>");
-
-				for (int n = 0; n < reader.FieldCount; n++)
-				{
-					Response.Write( reader.GetName(n) );
-					Response.Write( reader.GetValue(n) );
-				}//next
-				Response.Write("<br>");
-				
-			}
-		}
-		else
-		{
+				//Response.Write("<br>");
+				jsonNote += "}";
+				jsonStr += jsonNote;
+				num++;
+			}//end while
+			
+			jsonStr += "]";
+			Response.Write(jsonStr);
+		} else {
 			Response.Write("No rows found in table " + tableName);
 		}
 		reader.Close();
 		
-		string[] testArr = new string[6];		
-		testArr[0] = "a";
-		testArr[1] = "b";
-		testArr[2] = "c";
-		Response.Write("testArr.length =  " + testArr.Length);
-		Response.Write("<br>");
+		// string[] testArr = new string[6];		
+		// testArr[0] = "a";
+		// testArr[1] = "b";
+		// testArr[2] = "c";
+		// Response.Write("testArr.length =  " + testArr.Length);
+		// Response.Write("<br>");
 		
-		for (int n = 0; n < testArr.Length; n++)
-		{
-			Response.Write( testArr[n] );
-			Response.Write("<br>");
-		}		
+		// for (int n = 0; n < testArr.Length; n++)
+		// {
+			// Response.Write( testArr[n] );
+			// Response.Write("<br>");
+		// }		
 		
 /*
       DataTable inv = new DataTable();
