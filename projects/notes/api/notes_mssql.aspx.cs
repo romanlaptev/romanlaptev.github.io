@@ -1,22 +1,22 @@
 using System;
 //using System.Xml; 
-using System.IO;
+//using System.IO;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
 
 public partial class _Default : System.Web.UI.Page
 {
-	static string dbHost = ".\\SQLEXPRESS2005";
+	string dbHost = ".\\SQLEXPRESS2005";
 	static string dbName = "db1";//"site";
-	static string dbUser = "sa";
-	static string dbPassword = "assa";
+	string dbUser = "sa";
+	string dbPassword = "assa";
 	
-	static string exportFilename = "notes.xml";
-	static string uploadPath = "upload";
+	string exportFilename = "notes.xml";
+	string uploadPath = "upload";
 	static string tableName = "notes";//"user";
 	
-	static string queryCreateDB = "IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases WHERE name = '"+dbName+"') " +
+	string queryCreateDB = "IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases WHERE name = '"+dbName+"') " +
 "BEGIN\r\n"+
 "CREATE DATABASE "+dbName+"\r\n"+
 "END";	
@@ -37,7 +37,7 @@ SIZE = 1MB,
 MAXSIZE = 5MB, 
 FILEGROWTH = 10%);
 */
-	static string queryCreateTable = "USE "+dbName+"; IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='"+tableName+"') " +	
+	string queryCreateTable = "USE "+dbName+"; IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='"+tableName+"') " +	
 "BEGIN\r\n"+
 "CREATE TABLE \""+tableName+"\" (" +
 " id int IDENTITY(1,1) PRIMARY KEY NOT NULL," +
@@ -50,10 +50,10 @@ FILEGROWTH = 10%);
 ");\r\n"+
 "END";
 
-	static string queryGetNotes = "SELECT id, author, title, text_message, client_date, server_date, ip FROM \""+
+	string queryGetNotes = "SELECT id, author, title, text_message, client_date, server_date, ip FROM \""+
 tableName+"\" ORDER BY \"client_date\" DESC";
 
-	static string queryInsertMessage = "INSERT INTO "+tableName+" (author, title, text_message, client_date, server_date, ip) "+
+	string queryInsertMessage = "INSERT INTO "+tableName+" (author, title, text_message, client_date, server_date, ip) "+
 "VALUES ("+
 " '{{authorName}}', "+
 " '{{title}}', " +
@@ -63,9 +63,11 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{ip}}' "+
 ");";
 
+	string queryDeleteNote = "DELETE FROM "+tableName+" WHERE id={{id}}";
 
-	static string _connectionString = "";
-	static SqlConnection db_connection;
+
+	string _connectionString = "";
+	SqlConnection db_connection;
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
@@ -205,10 +207,25 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 				
 			case "get_notes":
 					getNotes( queryGetNotes );
-				break;
+			break;
 				
 			case "delete_note":
-				break;
+				if( Request.QueryString["id"] == null )
+				{
+					Response.Write("error, undefined var 'id' ");
+					return;
+				}
+				string id = Request.QueryString["id"];
+				if( id.Length == 0 )
+				{
+					Response.Write("error, empty var 'id'");
+					return;
+				}
+				
+				queryDeleteNote = queryDeleteNote.Replace("{{id}}", id );
+Response.Write(queryDeleteNote);
+				runQuery( queryDeleteNote );
+			break;
 				
 			case "clear_notes":
 				break;

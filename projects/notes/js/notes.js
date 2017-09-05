@@ -77,13 +77,13 @@ var _notes = function ( opt ){
 			if( _vars["supportPHP"] ){
 				_checkForm(this);
 			} else {
-				_error("errorPHP");
+				//_error("errorPHP");
 			}
 			
 			if( _vars["supportASPX"] ){
 				_checkForm(this);
 			} else {
-				_error("errorASPX");
+				//_error("errorASPX");
 			}
 			
 			$("#newModal").modal("hide");
@@ -638,7 +638,7 @@ console.log( all_headers );
 			"params" : params,
 			"onError" : _onerror,
 			"callback": function( data ){
-console.log(data.length, typeof data, data);				
+//console.log(data.length, typeof data, data);				
 
 				if( data.length > 0){
 						try{
@@ -657,7 +657,7 @@ msg += "<p>error in server response data</p>";
 msg += "<p>" + error + "</p>";
 msg += "<p>data: " + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
-							loadNotesXml();
+							//loadNotesXml();
 						}//end catch
 
 				} else {
@@ -829,9 +829,26 @@ console.log("error in __filter()");
 				}//end callback()
 			});
 		} else {
-			_error("errorPHP");
+			//_error("errorPHP");
 		}
 		
+		if( _vars["supportASPX"] ){
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : _vars["requestUrl"], 
+				"params" : p,
+				"callback": function( log ){
+	var msg = "<p>"+log+"</p>";
+	_log("<div class='alert alert-success'>" + msg + "</div>");
+					loadNotes();
+					if( typeof callback === "function"){
+						callback();
+					}
+				}//end callback()
+			});
+		} else {
+			//_error("errorASPX");
+		}
 		
 	}//end seviceAction
 
