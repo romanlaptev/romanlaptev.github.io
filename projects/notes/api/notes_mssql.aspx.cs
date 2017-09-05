@@ -64,6 +64,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 ");";
 
 	string queryDeleteNote = "DELETE FROM "+tableName+" WHERE id={{id}}";
+	string queryClearNotes = "TRUNCATE TABLE " + tableName;
+	string queryRemoveTable = "DROP TABLE " + tableName;
 
 
 	string _connectionString = "";
@@ -192,7 +194,12 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			
 				queryInsertMessage = queryInsertMessage.Replace("{{authorName}}", authorName);
 				queryInsertMessage = queryInsertMessage.Replace("{{title}}", title);
+				
+				//textMessage = textMessage.Replace("<", "lt;");
+				//textMessage = textMessage.Replace(">", "gt;");
+				textMessage = textMessage.Replace("'", "&#39");//replace apostrophe
 				queryInsertMessage = queryInsertMessage.Replace("{{textMessage}}", textMessage);
+				
 				queryInsertMessage = queryInsertMessage.Replace("{{client_date}}", clientDate);
 
 				serverDate = DateTime.Today.ToString("yyyy-MM-dd") + " "+DateTime.Now.ToString("HH:mm:ss");
@@ -201,7 +208,7 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 				ip = Request.ServerVariables["REMOTE_ADDR"];
 				queryInsertMessage = queryInsertMessage.Replace("{{ip}}", ip);
 				
-//Response.Write ( queryInsertMessage ); 
+Response.Write ( queryInsertMessage ); 
 				runQuery( queryInsertMessage );
 			break;
 				
@@ -228,10 +235,14 @@ Response.Write(queryDeleteNote);
 			break;
 				
 			case "clear_notes":
-				break;
+Response.Write(queryClearNotes);
+				runQuery( queryClearNotes );
+			break;
 				
 			case "remove_table":
-				break;
+Response.Write(queryRemoveTable);
+				runQuery( queryRemoveTable );
+			break;
 				
 			case "export_notes":
 				break;
@@ -243,8 +254,7 @@ Response.Write(queryDeleteNote);
 				break;
 				
 		  default:
-				//Console.WriteLine("Default case");
-				break;
+			break;
 		}		
 		
 	}//end _testRequestParams()
@@ -362,6 +372,18 @@ Response.Write(queryDeleteNote);
 			Response.Write("<pre>");
 			Response.Write( ex.ToString() );
 			Response.Write("</pre>");
+			
+			foreach ( string x in Request.Params )//GET
+			{
+				Response.Write ( "<b>Request.Params["+x + "]</b> = " + Request.Params[x]); 
+				Response.Write ( "<br>"); 
+			}
+			foreach ( string x in Request.Form )//POST
+			{
+				Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
+				Response.Write ( "<br>"); 
+			}
+			
 		}		
 	}//end runQuery()
 	

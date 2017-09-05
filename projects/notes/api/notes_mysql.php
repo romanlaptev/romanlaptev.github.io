@@ -73,7 +73,7 @@ NULL,
 $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
 $_vars["sql"]["getNotes"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."` ORDER BY `client_date` DESC";
 $_vars["sql"]["deleteNote"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
-$_vars["sql"]["clearNotes"] = "TRUNCATE `".$_vars["config"]["tableName"]."`";
+$_vars["sql"]["clearNotes"] = "TRUNCATE TABLE `".$_vars["config"]["tableName"]."`";
 
 
 	$action = "";

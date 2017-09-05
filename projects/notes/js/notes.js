@@ -346,6 +346,11 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		} else {
 			document.querySelector("#text-message-label").className="";
 			form.elements.text_message.className = "form-control";
+			//filter text
+			text = text
+			//.replace(/'/g, "&#39;")
+			.replace(/\</g, "&lt;")
+			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;
 		}
 						
