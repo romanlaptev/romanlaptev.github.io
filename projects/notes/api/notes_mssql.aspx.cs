@@ -1,6 +1,6 @@
 using System;
 //using System.Xml; 
-//using System.IO;
+using System.IO;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
@@ -58,8 +58,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{authorName}}', "+
 " '{{title}}', " +
 " '{{textMessage}}', " +
-" '{{client_date}}', " +
-" '{{server_date}}', " +
+" CONVERT(DATETIME,'{{client_date}}'), " +
+" CONVERT(DATETIME,'{{server_date}}'), " +
 " '{{ip}}' "+
 ");";
 
@@ -67,6 +67,21 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	static string _connectionString = "";
 	static SqlConnection db_connection;
 	
+	protected void Page_Init(object sender, EventArgs e)
+	{
+//Response.Write("Page_Init.<br>");
+//Response.Write("Net Framework version - " + Environment.Version.ToString() + "<br>");
+	}
+	
+	protected void Page_PreRender(object sender, EventArgs e)
+	{
+//Response.Write("Page_PreRender.<br>");
+	}
+	
+	protected void Page_Unload(object sender, EventArgs e)
+	{
+	}
+		
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		// foreach ( string x in Request.ServerVariables )
@@ -152,10 +167,41 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		switch (action)
 		{
 			case "save_note":
-//queryInsertMessage = "INSERT INTO notes (author, title, text_message, client_date, server_date, ip) VALUES ( 'anonymous', 'no subject', 'test1', 0, 0, '3.1.1.1')";
-Response.Write ( queryInsertMessage ); 
-					//runQuery( queryInsertMessage );
-				break;
+				string authorName = "";
+				string title = "";
+				string textMessage = "";
+				string clientDate = "";
+				string serverDate = "";
+				string ip = "";
+				
+				if ( Request.HttpMethod == "POST" ) {
+					textMessage = Request.Form["text_message"];
+					if( textMessage.Length == 0 ){
+						Response.Write("error, empty var 'text_message'");
+						return;
+					}
+					authorName = Request.Form["author_name"];
+					title = Request.Form["title"];
+					clientDate = Request.Params["date"];
+				} else {
+					Response.Write("<b>error</b>, need <b>POST query</b>...");
+					return;
+				}
+			
+				queryInsertMessage = queryInsertMessage.Replace("{{authorName}}", authorName);
+				queryInsertMessage = queryInsertMessage.Replace("{{title}}", title);
+				queryInsertMessage = queryInsertMessage.Replace("{{textMessage}}", textMessage);
+				queryInsertMessage = queryInsertMessage.Replace("{{client_date}}", clientDate);
+
+				serverDate = DateTime.Today.ToString("yyyy-MM-dd") + " "+DateTime.Now.ToString("HH:mm:ss");
+				queryInsertMessage = queryInsertMessage.Replace("{{server_date}}", serverDate);
+				
+				ip = Request.ServerVariables["REMOTE_ADDR"];
+				queryInsertMessage = queryInsertMessage.Replace("{{ip}}", ip);
+				
+//Response.Write ( queryInsertMessage ); 
+				runQuery( queryInsertMessage );
+			break;
 				
 			case "get_notes":
 					getNotes( queryGetNotes );

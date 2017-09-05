@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Data;
-using System.Data.Common;
 using System.IO;
 
 namespace myspace
@@ -16,100 +8,119 @@ namespace myspace
 	
 		protected void Page_Load(object sender, EventArgs e)
 		{
-		
-			if( Request.QueryString["file"] == null )
+/*
+			foreach ( string x in Request.Form )
 			{
-				Response.Write("error, empty file!");
-				return;
+				Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
+				Response.Write ( "<br>"); 
 			}
-			string file = Request.QueryString["file"];
-			
-			if( Request.QueryString["src_path"] == null )
-			{
-				Response.Write("error, empty src_path!");
-				return;
-			}
-			string src_path = Request.QueryString["src_path"];
-			
-			if( Request.QueryString["dst_path"] == null )
-			{
-				Response.Write("error, empty dst_path!");
-				return;
-			}
-			string dst_path = Request.QueryString["dst_path"];
-			
+*/
+			string src_path="";
+			string dst_path="";
+			string[] files = null;
 			int move_files = 0;
-			if( Request.QueryString["move_files"] != null )
+			if ( Request.HttpMethod == "POST" )
 			{
-				move_files = 1;
+				src_path = Request.Form["src_path"];
+				dst_path = Request.Form["dst_path"];
+				files = Request.Form.GetValues("file[]");
+				if ( Request.Form["move_files"] == "1")
+				{
+					move_files = 1;
+				}
+			}
+			else
+			{
+				Response.Write("<p class='error'><b>error</b>, need <b>POST query</b> !</p>");
+				return;
+			}
+			
+			if( src_path.Length == 0 )
+			{
+				Response.Write("<p class='error'><b>error</b>, empty <b>src_path</b> value!</p>");
+				return;
+			}
+			if( dst_path.Length == 0 )
+			{
+				Response.Write("<p class='error'><b>error</b>, empty <b>dst_path</b> value!</p>");
+				return;
+			}
+			if( files.Length == 0 )
+			{
+				Response.Write("<p class='error'><b>error</b>, empty <b>files</b> value!</p>");
+				return;
 			}
 //============================================			
-			string src_filename = src_path + "\\" +file;
-			string dst_filename = dst_path + "\\" + file;
-			try
+
+			foreach ( string file in files)
 			{
-				FileAttributes attr = File.GetAttributes( @src_filename );
-				if((attr & FileAttributes.Directory) == FileAttributes.Directory)
+				string src_filename = src_path + "\\" +file;
+				string dst_filename = dst_path + "\\" + file;
+				try
 				{
-					try
+					FileAttributes attr = File.GetAttributes( @src_filename );
+					if((attr & FileAttributes.Directory) == FileAttributes.Directory)
 					{
-						if( move_files == 1 )//move dirs
-						{
-							Response.Write ( "move dir " + src_filename + " to " +dst_filename+"<br>"); 
-							DirectoryCopy( src_filename, dst_filename, true);
-							Directory.Delete ( src_filename, true );
-						}
-						else//copy dirs
-						{
-							Response.Write ( "copy dir " + src_filename + " to " +dst_filename+"<br>"); 
-							// Copy from the current directory, include subdirectories.
-							DirectoryCopy( src_filename, dst_filename, true);
-						}
-					}
-					catch (Exception ex)
-					{
-						Response.Write(ex.Message);
-					}			
-				}			
-				else
-				{
-				
-					if( move_files == 1 )//move files
-					{
-						if (!File.Exists( dst_filename ) )	
-						{
-							Response.Write ( "move file " + src_filename + " to " +dst_filename+"<br>"); 
-							File.Move( src_filename, dst_filename );
-						}
-						else
-						{
-							Response.Write ( "error, " +dst_filename+" is exists<br>"); 
-						}
-						
-					}
-					else// copy files
-					{
-					
 						try
 						{
-							Response.Write ( "copy file " + src_filename + " to " +dst_filename+"<br>"); 
-							File.Copy( src_filename, dst_filename, false);
+							if( move_files == 1 )//move dirs
+							{
+								Response.Write ( "<b>move dir</b> " + src_filename + " to " +dst_filename+"<br>"); 
+								DirectoryCopy( src_filename, dst_filename, true);
+								Directory.Delete ( src_filename, true );
+							}
+							else//copy dirs
+							{
+								Response.Write ( "<b>copy dir</b> " + src_filename + " to " +dst_filename+"<br>"); 
+								// Copy from the current directory, include subdirectories.
+								DirectoryCopy( src_filename, dst_filename, true);
+							}
 						}
-						catch (IOException copyError)
-						//catch (Exception ex)
+						catch (Exception ex)
 						{
-							Response.Write(copyError.Message);
-							//Response.Write(ex.Message);
-						}					
+							Response.Write("<p class='error'>"+ex.Message+"</p>");
+						}			
+					}			
+					else
+					{
+					
+						if( move_files == 1 )//move files
+						{
+							if (!File.Exists( dst_filename ) )	
+							{
+								Response.Write ( "<b>move file</b> " + src_filename + " to " +dst_filename+"<br>"); 
+								File.Move( src_filename, dst_filename );
+							}
+							else
+							{
+								Response.Write ( "error, " +dst_filename+" is exists<br>"); 
+							}
+							
+						}
+						else// copy files
+						{
 						
-					}
-				}			
+							try
+							{
+								Response.Write ( "<b>copy file</b> " + src_filename + " to " +dst_filename+"<br>"); 
+								File.Copy( src_filename, dst_filename, false);
+							}
+							catch (IOException copyError)
+							//catch (Exception ex)
+							{
+								Response.Write(copyError.Message);
+								//Response.Write(ex.Message);
+							}					
+							
+						}
+					}			
 
-			}
-			catch (Exception ex)
-			{
-				Response.Write(ex.Message);
-			}			
+				}
+				catch (Exception ex)
+				{
+					Response.Write(ex.Message);
+				}			
+			}//--------------------- end foreach
  
 		}//------------------------------------- end func
 

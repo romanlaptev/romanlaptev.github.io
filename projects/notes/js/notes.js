@@ -378,7 +378,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}	
-//console.log( p );
+console.log( p );
 		
 		//get creation date
 		var now = new Date();
@@ -390,7 +390,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		var t = now.toTimeString();
 	//console.log(d, t);
 		p["creation_date"] = d +" "+ t;
-
+		
+		//remove GMT (MSSQL error convert data)
+		//2017-9-5 10:27:47 GMT+0700
+		var d = p["creation_date"].split("GMT");
+		p["creation_date"] = d[0];
+		
 		var url = p["url"];
 		var params = {
 			"action" : p["action"],

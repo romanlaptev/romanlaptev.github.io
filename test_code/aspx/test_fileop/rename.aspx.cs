@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Data;
-using System.Data.Common;
 using System.IO;
 
 namespace myspace
@@ -16,44 +8,35 @@ namespace myspace
 	
 		protected void Page_Load(object sender, EventArgs e)
 		{
+/*		
 			foreach ( string x in Request.Form )
 			{
 				Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
 				Response.Write ( "<br>"); 
 			}
- 
-			Response.Write ( "<b>Request.HttpMethod</b> = " + Request.HttpMethod); 
-			Response.Write ( "<br>"); 
-			Response.Write ( "<b>Request.Params[REQUEST_METHOD]</b> = " + Request.Params["REQUEST_METHOD"]); 
-			Response.Write ( "<br>"); 
-			Response.Write ( "<b>Request.Params[QUERY_STRING]</b> = " + Request.Params["QUERY_STRING"]); 
-			Response.Write ( "<br>"); 
-//=========================================
-/*			
-			if ( Request.HttpMethod == "GET" )
-			{
-				if( Request.QueryString["file"] == null )
-				{
-					Response.Write("error, empty file!");
-					return;
-				}
-				string file = Request.QueryString["file"];
-				
-				if( Request.QueryString["fs_path"] == null )
-				{
-					Response.Write("error, empty fs_path!");
-					return;
-				}
-				string fs_path = Request.QueryString["fs_path"];
-			}
 */
-
 			string fs_path="";
 			string[] file = null;
 			if ( Request.HttpMethod == "POST" )
 			{
 				file = Request.Form.GetValues("file[]");
 				fs_path = Request.Form["fs_path"];
+			}
+			else
+			{
+				Response.Write("<p class='error'><b>error</b>, need <b>POST query</b> !</p>");
+				return;
+			}
+
+			if( fs_path.Length == 0 )
+			{
+				Response.Write("<p class='error'><b>error</b>, empty <b>fs_path</b> value!</p>");
+				return;
+			}
+			if( file.Length == 0 )
+			{
+				Response.Write("<p class='error'><b>error</b>, empty <b>file</b> value!</p>");
+				return;
 			}
 			
 //============================================			
@@ -64,33 +47,33 @@ namespace myspace
 				FileAttributes attr = File.GetAttributes( @old_filename );
 				if((attr & FileAttributes.Directory) == FileAttributes.Directory)
 				{
-					Response.Write ( "move dir " + old_filename + " to " +new_filename+"<br>"); 
 					try
 					{
+						Response.Write ( "<p class='ok'><b>move dir</b> " + old_filename + " to " +new_filename+"</p>"); 
 						Directory.Move(old_filename, new_filename);  
 					}
 					catch (Exception ex2)
 					{
-						Response.Write ( ex2.Message ); 
+						Response.Write("<p class='error'>"+ex2.Message+"</p>");
 					}	
 				}			
 				else
 				{
-					Response.Write ( "move file " + old_filename + " to " +new_filename+"<br>"); 
 					try
 					{
+						Response.Write ( "<p class='ok'><b>move file</b> " + old_filename + " to " +new_filename+"</p>"); 
 						File.Move( old_filename, new_filename );
 					}
 					catch (Exception ex2)
 					{
-						Response.Write ( ex2.Message ); 
+						Response.Write("<p class='error'>"+ex2.Message+"</p>");
 					}	
 				}			
 
 			}
 			catch (Exception ex)
 			{
-				Response.Write(ex.Message);
+				Response.Write("<p class='error'>"+ex.Message+"</p>");
 			}			
 
 		}//------------------------------------- end func

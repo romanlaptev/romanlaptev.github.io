@@ -110,6 +110,19 @@ test PHP failed, PHP not suppored by server graphic-art-collection.16mb.com
 - IE6, проверить поддержку JSON.parse, подключить библиотеку
 - при старте приложения проверять поддержку Ajax, XMLHttpRequest, JSON...
 
+- при записи в  MSSQL DB новой записи возникает ошибка при запросе
+INSERT INTO notes (author, title, text_message, 
+client_date, 
+server_date, 
+ip) VALUES ( 
+'anonymous', 
+'no subject', 
+'test4', 
+CONVERT(DATETIME,'2017-9-5 10:27:47 GMT+0700'), !!!!
+CONVERT(DATETIME,'2017-09-05 10:26:13'), 
+'192.168.56.1' );
+Ошибку вызывает формат даты с '... GMT+0700', поэтому смещение отпрвлять с клиента не в составе даты,
+а отдельно
 
 ----------------
 blog
