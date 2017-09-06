@@ -1,33 +1,16 @@
-<%@ Page 
-Language="C#" 
-CodeFile="test_json.aspx.cs" 
-Inherits="myspace.Default" 
-Title="Test JSON"
-Debug="true"%>
-
 <html>
 <head>
     <title>Website</title>
 </head>
-<body>default.aspx
+<body>
+	<h1>test JSON</h1>
 
 <pre>
-http://mycomp/source/aspx/sayhello.aspx
-http://mycomp/source/aspx/sample2.aspx
+https://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer.aspx
+https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-serialize-and-deserialize-json-data
+https://metanit.com/sharp/tutorial/6.5.php
 
-http://mycomp/source/aspx/test_fileop/
-http://mycomp/source/aspx/test_fileop/dirlist.aspx?dirname=f:\clouds\0_data
-http://mycomp/source/aspx/test_fileop/mkdir.aspx?dirname=c:\temp\folder3
-
-+http://mycomp/source/aspx/test_fileop/rmdir.aspx?dirname=c:\temp\folder3
-http://mycomp/source/aspx/test_fileop/delete.aspx?file=c:\temp\folder3
-
-http://mycomp/source/aspx/test_fileop/copy.aspx?file=Turkish.bin&src_path=c:\temp&dst_path=d:\temp
-http://mycomp/source/aspx/test_fileop/copy.aspx?file=folder3&src_path=c:\temp&dst_path=d:\temp
-
-http://mycomp/source/aspx/test_fileop/copy.aspx?file=TradChin.bin&src_path=c:\temp&dst_path=d:\temp&move_files=1
-http://mycomp/source/aspx/test_fileop/copy.aspx?file=folder3&src_path=c:\temp&dst_path=d:\temp&move_files=1
-
+<!--
 <h2>GET query</h2>
 /source/aspx/test_fileop/rename.aspx?file=folder3&fs_path=c:\temp
 <h2>POST query</h2>
@@ -40,24 +23,16 @@ http://mycomp/source/aspx/test_fileop/copy.aspx?file=folder3&src_path=c:\temp&ds
 
 /source/aspx/test_db.aspx
 /source/aspx/test_db2.aspx
+-->
 </pre>
 
+<%@ Page 
+Language="C#" 
+CodeFile="test_json.aspx.cs" 
+Inherits="myspace.Default" 
+Title="Test JSON"
+Debug="true"%>
 
-<h1>Request.ServerVariables</h1>
-<%
-			foreach ( string x in Request.ServerVariables )
-			{
-				Response.Write ( "<b>"+x + "</b> = " + Request.ServerVariables[x]); 
-				Response.Write ( "<br>"); 
-			}
-%>
-<h1>Request.Params</h1>
-<%
-			foreach ( string x in Request.Params )
-			{
-				Response.Write ( "<b>"+x + "</b> = " + Request.Params[x]); 
-				Response.Write ( "<br>"); 
-			}
-%>
+
 </body>
 </html>
