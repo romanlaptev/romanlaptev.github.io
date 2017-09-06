@@ -349,6 +349,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			//filter text
 			text = text
 			//.replace(/'/g, "&#39;")
+			//.replace(/\n/g, "!!!")//replace end of line
 			.replace(/\</g, "&lt;")
 			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;

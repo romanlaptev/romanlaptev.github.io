@@ -306,6 +306,7 @@ Response.Write(queryRemoveTable);
 					}
 					string key = reader.GetName(n).ToString();
 					string value = reader.GetValue(n).ToString();
+					//value = value.Replace("\n'", "!!!");//replace end line
 					jsonNote += "\""+key+"\" : \""+value+"\"";
 				}//next
 				//Response.Write("<br>");
