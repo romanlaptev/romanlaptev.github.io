@@ -10,7 +10,7 @@ body {
 .main-content {
   height: 80%;
 }
-.container-fluid {
+.container {
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
