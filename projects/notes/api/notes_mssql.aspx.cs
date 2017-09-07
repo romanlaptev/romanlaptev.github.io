@@ -17,6 +17,12 @@ public partial class _Default : System.Web.UI.Page
 	// static string dbName = "romanlaptevDB";
 	// string dbUser = "romanlaptev_SQLLogin_1";
 	// string dbPassword = "mg2kthxvqs";
+
+	//http://romanlaptev.gearhostpreview.com/projects/notes/index.html	
+	// string dbHost = "mssql6.gear.host";
+	// static string dbName = "db117";
+	// string dbUser = "db117";
+	// string dbPassword = "Vt0U_ldj~yS1";
 	
 	string exportFilename = "notes.xml";
 	string uploadPath = "upload";
