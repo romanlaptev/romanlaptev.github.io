@@ -12,6 +12,12 @@ public partial class _Default : System.Web.UI.Page
 	string dbUser = "sa";
 	string dbPassword = "assa";
 	
+	//somee.com hosting
+	// string dbHost = "romanlaptevDB.mssql.somee.com";
+	// static string dbName = "romanlaptevDB";
+	// string dbUser = "romanlaptev_SQLLogin_1";
+	// string dbPassword = "mg2kthxvqs";
+	
 	string exportFilename = "notes.xml";
 	string uploadPath = "upload";
 	static string tableName = "notes";//"user";
