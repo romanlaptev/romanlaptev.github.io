@@ -27,35 +27,16 @@ public partial class _Default : System.Web.UI.Page
 	string exportFilename = "notes.xml";
 	string uploadPath = "upload";
 	static string tableName = "notes";//"user";
-	
-	string queryCreateDB = "IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases WHERE name = '"+dbName+"') " +
-"BEGIN\r\n"+
-"CREATE DATABASE "+dbName+"\r\n"+
-"END";	
-/*	
-https://support.microsoft.com/ru-ru/help/307283/how-to-create-a-sql-server-database-programmatically-by-using-ado-net
-IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases where name = 'db1')
-BEGIN
-CREATE DATABASE db1;
-END	
 
-CREATE DATABASE db1 ON PRIMARY 
-(NAME = db1, 
-FILENAME = 'C:\\db\\MSSQL\\db1.mdf', 
-SIZE = 3MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB) 
-LOG ON (NAME = db1_log, 
-FILENAME = 'C:\\db\\MSSQL\\db1_log.ldf', 
-SIZE = 1MB, 
-MAXSIZE = 5MB, 
-FILEGROWTH = 10%);
-*/
+	string queryDbInfo = "SELECT * FROM master.sys.databases where name='"+dbName+"' ";
+	string queryCreateDB;
 	string queryCreateTable = "USE "+dbName+"; IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='"+tableName+"') " +	
 "BEGIN\r\n"+
 "CREATE TABLE \""+tableName+"\" (" +
 " id int IDENTITY(1,1) PRIMARY KEY NOT NULL," +
-" author  varchar(20) NOT NULL," +
-" title   varchar(255) NOT NULL," +
-" text_message  text NOT NULL," +
+" author  varchar(20) COLLATE Cyrillic_General_CI_AS NOT NULL," +
+" title   varchar(255) COLLATE Cyrillic_General_CI_AS NOT NULL," +
+" text_message  text COLLATE Cyrillic_General_CI_AS NOT NULL ," +
 " client_date datetime NOT NULL," +
 " server_date datetime NOT NULL," +
 " ip varchar(20) "+
@@ -117,6 +98,29 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			// Response.Write ( "<br>"); 
 		// }
 		
+			queryCreateDB += "IF NOT EXISTS (";
+			queryCreateDB += "SELECT * FROM master.dbo.sysdatabases WHERE name = '"+dbName+"') ";
+			queryCreateDB += "BEGIN\r\n ";
+			queryCreateDB += "CREATE DATABASE "+dbName+" ";
+			queryCreateDB += "COLLATE Cyrillic_General_CI_AS \r\n";
+			queryCreateDB += "END\r\n ";
+/*	
+https://support.microsoft.com/ru-ru/help/307283/how-to-create-a-sql-server-database-programmatically-by-using-ado-net
+IF NOT EXISTS (SELECT * FROM master.dbo.sysdatabases where name = 'db1')
+BEGIN
+CREATE DATABASE db1;
+END	
+
+CREATE DATABASE db1 ON PRIMARY 
+(NAME = db1, 
+FILENAME = 'C:\\db\\MSSQL\\db1.mdf', 
+SIZE = 3MB, MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB) 
+LOG ON (NAME = db1_log, 
+FILENAME = 'C:\\db\\MSSQL\\db1_log.ldf', 
+SIZE = 1MB, 
+MAXSIZE = 5MB, 
+FILEGROWTH = 10%);
+*/
 		_connectionString = "Data Source="+dbHost+"; ";
 		//_connectionString += "Initial Catalog="+dbName+"; ";
 		_connectionString += "Integrated Security=False; ";
@@ -129,6 +133,49 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		{
 			db_connection.Open();
 			runQuery( queryCreateDB );
+
+//queryDbInfo
+	// SqlDataReader reader;
+	// SqlCommand cmd;
+	// string testQuery;
+	
+	//problem with collation_name: "SQL_Latin1_General_CP1_CI_AS" need change on "Cyrillic_General_CI_AS"
+	//change COLLATE to database
+	// testQuery = "ALTER DATABASE "+dbName+" COLLATE Cyrillic_General_CI_AS; ";
+	// runQuery( testQuery );
+	
+	//testQuery = queryDbInfo;
+	//testQuery = "SELECT * FROM fn_helpcollations() ORDER BY name ASC";
+
+	//get COLLATE for table columns
+	// testQuery = "";
+	// testQuery += "SELECT a.[name], a.[collation_name] FROM sys.columns AS a ";
+	// testQuery += "INNER JOIN sys.objects AS b ON a.[object_id] = b.[object_id] ";
+	// testQuery += "WHERE b.[name] = '"+tableName+"'; ";
+/*
+//http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&mode=show
+	-- change COLLATE column
+	ALTER TABLE tableName
+	ALTER COLUMN columnName varchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS
+*/	
+
+	// Response.Write(testQuery);
+	// Response.Write("<br>");
+	
+	// cmd = new SqlCommand ( testQuery, db_connection );
+	// reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+	// if (reader.HasRows){
+		// while ( reader.Read() ){
+			// for (int n = 0; n < reader.FieldCount; n++){
+				// Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+				// Response.Write("<br>");
+			// }//next
+		// }//end while
+	// } else {
+		// Response.Write("No rows found in table " + tableName);
+	// }
+	// reader.Close();
+
 			runQuery( queryCreateTable );
 			_testRequestParams();
 		}
