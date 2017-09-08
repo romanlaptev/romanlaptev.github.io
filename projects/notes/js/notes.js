@@ -11,15 +11,19 @@ $(document).ready(function(){
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
+		"supportPHP" : false,
+		"testUrlPHP": "api/test.php",
 		"requestUrl" : "api/notes_mysql.php",
+		"exportUrl" : "api/notes_mysql.php?action=export_notes",
+
 		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 		"xmlUrl" : "upload/notes.xml",
-		"exportUrl" : "api/notes_mysql.php?action=export_notes",
-		"testUrlPHP": "api/test.php",
+
+		"supportASPX" : false,
 		"testUrlASPX": "api/test.aspx",
 		"requestUrlASPX" : "api/notes_mssql.aspx",
-		"supportPHP" : false,
-		"supportASPX" : false,
+		"exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
+
 		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -29,13 +33,14 @@ var _notes = function ( opt ){
 	};
 	
 	//correct for remote run
-	if( window.location.hostname === "romanlaptev.github.io"){
-		_vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
-		var btn_export = getById("btn-export");
-		btn_export.href = _vars["requestUrl"] + "?action=export_notes";
-//console.log( btn_export.href );	
-		_vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
-	}
+	// if( window.location.hostname === "romanlaptev.github.io"){
+		// _vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
+		// var btn_export = getById("btn-export");
+		// btn_export.href = _vars["requestUrl"] + "?action=export_notes";
+// //console.log( btn_export.href );	
+		// _vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
+	// }
+	
 //test	
 // console.log(_vars["controlPanel"]["children"]);
 // for( var key in _vars["controlPanel"]["children"]){
@@ -245,6 +250,13 @@ var _notes = function ( opt ){
 					window.location.assign(url);
 				} else {
 					_error("errorPHP");
+				}
+				
+				if( _vars["supportASPX"] ){
+					var url= _vars["exportUrlASPX"];
+					window.location.assign(url);
+				} else {
+					_error("errorASPX");
 				}
 
 			}//end event

@@ -63,6 +63,12 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 
 	string _connectionString = "";
 	SqlConnection db_connection;
+
+
+	// class recordObj{
+		// public string key;
+		// public string value;
+	// }
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
@@ -75,10 +81,15 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 //Response.Write("Page_PreRender.<br>");
 	}
 	
-	protected void Page_Unload(object sender, EventArgs e)
+	// protected void Page_Unload(object sender, EventArgs e)
+	// {
+	// }
+	
+	protected void Page_LoadComplete(object sender, EventArgs e)
 	{
-	}
-		
+//Response.Write("Page_LoadComplete.<br>");
+	}//end Page_LoadComplete()
+	
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		// foreach ( string x in Request.ServerVariables )
@@ -267,7 +278,7 @@ FILEGROWTH = 10%);
 				ip = Request.ServerVariables["REMOTE_ADDR"];
 				queryInsertMessage = queryInsertMessage.Replace("{{ip}}", ip);
 				
-Response.Write ( queryInsertMessage ); 
+//Response.Write ( queryInsertMessage ); 
 				runQuery( queryInsertMessage );
 			break;
 				
@@ -304,7 +315,8 @@ Response.Write(queryRemoveTable);
 			break;
 				
 			case "export_notes":
-				break;
+				exportTable( exportFilename );			
+			break;
 				
 			case "upload":
 				break;
@@ -414,6 +426,11 @@ Response.Write(queryRemoveTable);
 */
 	}//end getNotes()
 
+	protected void exportTable( string filename ){
+		runSelectQuery( queryGetNotes );
+	}//end exportTable()
+
+
 	
 	protected void runQuery( string query )
 	{
@@ -446,5 +463,31 @@ Response.Write(queryRemoveTable);
 			
 		}		
 	}//end runQuery()
+
+	protected void runSelectQuery( string query){
+		SqlDataReader reader;
+		SqlCommand cmd;
+Response.Write( query );
+Response.Write("<br>");
+
+		cmd = new SqlCommand ( query, db_connection );
+		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+		
+		if (reader.HasRows){
+			//int num = 0;
+			while ( reader.Read() ){
+				
+				for (int n = 0; n < reader.FieldCount; n++){
+					Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+					Response.Write("<br>");
+				}//next
+				//num++;
+			}//end while
+		} else {
+			Response.Write("No rows found in table " + tableName);
+		}
+		reader.Close();
+		
+	}//end runSelectQuery()
 	
 }//end class	
