@@ -11,15 +11,23 @@ http://www.sqlstrings.com/sql-server-asp-conection.htm
 'Dim Connection
 'Set Connection = Server.CreateObject("ADODB.Connection")
 
-' "DRIVER=SQL Server;SERVER=POLLUKS;UID=Website;DATABASE=Website;User Id=Website;PASSWORD=Bhjkggh&65%5987--54gb;"
-' "DRIVER=SQL Server;SERVER=ALEXCOMP\SQLEXPRESS;DATABASE=katren;Integrated Secutrity=true"
+' ' ' "DRIVER=SQL Server;SERVER=POLLUKS;UID=Website;DATABASE=Website;User Id=Website;PASSWORD=Bhjkggh&65%5987--54gb;"
+' ' ' "DRIVER=SQL Server;SERVER=ALEXCOMP\SQLEXPRESS;DATABASE=katren;Integrated Secutrity=true"
+
+' ' ' 'ConnString =  "PROVIDER=SQLOLEDB;DATA SOURCE=.\\SQLEXPRESS2005;UID=sa;PWD=assa;DATABASE=notes;"
+' ' ' 'ConnString =  "Provider=SQLOLEDB;Data source=.\\SQLEXPRESS2005;UID=sa;Password=assa;Initial Catalog=notes;"
+
+' ' 'ConnStr = "Provider=SQLOLEDB;Data Source=.\\SQLEXPRESS2005; Initial Catalog=db1; User ID=sa; password=assa;"
+
+' ' 'ConnStr="workstation id=romanlaptevDB.mssql.somee.com;packet size=4096;user id=romanlaptev_SQLLogin_1;pwd=mg2kthxvqs;data source=romanlaptevDB.mssql.somee.com;persist security info=False;initial catalog=romanlaptevDB"
+' ' 'Connection string: 	
+' ' 'workstation id=romanlaptevDB.mssql.somee.com;
+' ' 'packet size=4096;
+' ' 'user id=romanlaptev_SQLLogin_1;
+' ' 'pwd=mg2kthxvqs;
+' ' 'data source=romanlaptevDB.mssql.somee.com;persist security info=False;initial catalog=romanlaptevDB
+
 'ConnStr="DRIVER={SQL Native Client};SERVER=VBOX-WIN7\SQLEXPRESS2005;DATABASE=db1;User Id=sa; PASSWORD=assa;"
-
-' 'ConnString =  "PROVIDER=SQLOLEDB;DATA SOURCE=.\\SQLEXPRESS2005;UID=sa;PWD=assa;DATABASE=notes;"
-' 'ConnString =  "Provider=SQLOLEDB;Data source=.\\SQLEXPRESS2005;UID=sa;Password=assa;Initial Catalog=notes;"
-
-'ConnStr = "Provider=SQLOLEDB;Data Source=.\\SQLEXPRESS2005; Initial Catalog=db1; User ID=sa; password=assa;"
-
 ' Response.write ConnStr + "<br>"
 
 ' Connection.open( ConnStr )
