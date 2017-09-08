@@ -31,15 +31,5 @@ https://docs.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/objec
 Object в .NET Framework
 </pre>
 
-<pre>
-id: 1
-author: anonymous
-title: no subject
-text_message: [[http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&mode=show | Как изменить COLLATE у базы данных?]]
-client_date: 09.08.2017 11:14:56
-server_date: 09.08.2017 10:14:56
-ip: 192.168.56.1
-</pre>
-
 </body>
 </html>
