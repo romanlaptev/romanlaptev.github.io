@@ -113,6 +113,11 @@ https://stackoverflow.com/questions/36073703/mysql-to-pdo-comparison-table
 // $password = "m@ster";
 // $db_name = "fr18091_db1";
 
+//$_vars["config"]["dbHost"] = "mysql5.gear.host";
+//$_vars["config"]["dbUser"] = "db118";
+//$_vars["config"]["dbPassword"] = "Kb50i?84!a4i";
+//$_vars["config"]["dbName"] = "db118";
+
 $_vars["config"]["dbHost"] = "localhost";
 $_vars["config"]["dbUser"] = "root";
 $_vars["config"]["dbPassword"] = "master";

@@ -107,6 +107,11 @@ http://php.net/manual/ru/mysqli.examples-basic.php
 //$username="u131428543_user1";
 //$password="m2ster";
 
+//$host = "mysql5.gear.host";
+//$user = "db118";
+//$password = "Kb50i?84!a4i";
+//$db_name = "db118";
+
 // $host = "localhost";
 // $user = "fr18091_db1";
 // $password = "m@ster";

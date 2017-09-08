@@ -15,11 +15,18 @@ $_vars=array();
 $_vars["config"]["dbHost"] = "localhost";
 $_vars["config"]["dbUser"] = "root";
 $_vars["config"]["dbPassword"] = "master";
+$_vars["config"]["dbName"] = "db1";
+
 //$_vars["config"]["dbHost"] = "mysql.hostinger.ru";
 //$_vars["config"]["dbUser"] = "u380901270_usr";
 //$_vars["config"]["dbPassword"] = "E6bAsZYBs4";
 //$_vars["config"]["dbName"] = "u380901270_db1";
-$_vars["config"]["dbName"] = "db1";
+
+//http://romanlaptev.gearhostpreview.com/
+//$_vars["config"]["dbHost"] = "mysql5.gear.host";
+//$_vars["config"]["dbUser"] = "db118";
+//$_vars["config"]["dbPassword"] = "Kb50i?84!a4i";
+//$_vars["config"]["dbName"] = "db118";
 
 //echo PHP_VERSION;
 //echo phpversion();
