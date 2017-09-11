@@ -21,10 +21,20 @@ https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/arrays/multidim
 https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/arrays/jagged-arrays
 Массивы массивов
 
+http://www.codenet.ru/progr/cpp/dynamic-arrays-c-sharp.php
+Пример создания динамического массива
+
+https://msdn.microsoft.com/ru-ru/library/system.collections.arraylist(v=vs.110).aspx
+https://docs.microsoft.com/ru-ru/dotnet/api/System.Collections.ArrayList?view=netframework-4.7
+https://metanit.com/sharp/tutorial/4.3.php
+Класс ArrayList
+
+
 https://metanit.com/sharp/tutorial/2.13.php
 Структуры
 
 https://metanit.com/sharp/tutorial/4.5.php
+https://msdn.microsoft.com/ru-ru/library/6sh2ey19(v=vs.110).aspx
 Список List<T>
 
 https://metanit.com/sharp/tutorial/3.1.php

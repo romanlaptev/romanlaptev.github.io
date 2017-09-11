@@ -1,6 +1,7 @@
 ﻿using System;
 //using System.IO;
-//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 //using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -202,6 +203,45 @@ Response.Write("<hr>");
 			// tuple.Item1 += 26;
 			// Response.Write(tuple.Item1);
 
+Response.Write("<hr>");
+			Response.Write("https://metanit.com/sharp/tutorial/4.5.php<br>");
+			Response.Write("<h2>Список List<T></h2>");
+
+			List<int> numbers = new List<int>();
+			//List<int> numbers = new List<int>() { 1, 2, 3, 45 };
+			numbers.Add(6); // добавление элемента
+			numbers.AddRange(new int[] { 7, 8, 9 });
+			numbers.Insert(0, 756); // вставляем на первое место в списке
+ 			numbers.RemoveAt(1); //  удаляем второй элемент
+
+			Response.Write( "Count: " + numbers.Count );
+			Response.Write( "Capacity: " + numbers.Capacity );
+			Response.Write("<br>");
+ 
+			foreach (int n in numbers)
+			{
+				Response.Write(n);
+				Response.Write(", ");
+			}
+
+Response.Write("<hr>");
+			Response.Write("https://metanit.com/sharp/tutorial/4.3.php<br>");
+			Response.Write("<h2>ArrayList</h2>");
+			ArrayList list = new ArrayList();			
+			list.Add(2.3); // заносим в список объект типа double
+			list.Add(55); // заносим в список объект типа int
+			list.AddRange(new string[] { "Hello", "world" }); // заносим в список строковый массив
+
+			Response.Write( "Count: " + list.Count );
+			Response.Write( "Capacity: " + list.Capacity );
+			Response.Write("<br>");
+			
+			foreach (object o in list)
+			{
+				Response.Write(o);
+				Response.Write("<br>");
+			}
+			
 Response.Write("<hr>");
 			Response.Write("<h2> Object </h2>");
 			personObj user = new personObj();  

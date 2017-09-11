@@ -69,6 +69,19 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		// public string key;
 		// public string value;
 	// }
+
+	struct Note
+	{
+		public string id;
+		public string author;
+		public string title;
+		public string text_message;
+		public string client_date;
+		public string server_date;
+		public string ip;
+	}//end struct
+	Note note;
+	Note[] notes=new Note[3];
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
@@ -426,7 +439,9 @@ Response.Write(queryRemoveTable);
 */
 	}//end getNotes()
 
+	
 	protected void exportTable( string filename ){
+		note.author = "Л. Н. Толстой";
 		runSelectQuery( queryGetNotes );
 	}//end exportTable()
 
@@ -468,6 +483,9 @@ Response.Write(queryRemoveTable);
 		SqlDataReader reader;
 		SqlCommand cmd;
 Response.Write( query );
+Response.Write("<br>");
+
+Response.Write( "Test struct, " + note.author );
 Response.Write("<br>");
 
 		cmd = new SqlCommand ( query, db_connection );
