@@ -31,6 +31,7 @@ https://metanit.com/sharp/tutorial/4.3.php
 
 
 https://metanit.com/sharp/tutorial/2.13.php
+https://professorweb.ru/my/csharp/charp_theory/level9/9_6.php
 Структуры
 
 https://metanit.com/sharp/tutorial/4.5.php

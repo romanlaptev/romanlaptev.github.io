@@ -4,6 +4,7 @@ using System;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -79,9 +80,25 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 		public string client_date;
 		public string server_date;
 		public string ip;
+		
+		public string Info()
+		{
+			string s = "<p>";
+			s += "id : "+id+", ";
+			s += "author : "+author+", ";
+			s += "title : "+title+", ";
+			s += "text_message : "+text_message+", ";
+			s += "client_date : "+client_date+", ";
+			s += "server_date : "+server_date+", ";
+			s += "ip : "+ip;
+			s += "</p>";
+			return s;
+		}
 	}//end struct
+	
 	Note note;
-	Note[] notes=new Note[3];
+	List<Note> notes = new List<Note>();
+
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
@@ -441,8 +458,29 @@ Response.Write(queryRemoveTable);
 
 	
 	protected void exportTable( string filename ){
-		note.author = "Л. Н. Толстой";
+		
+		// note.id = "1";
+		// note.author = "anonymous";
+		// note.title = "no subject";
+		// note.text_message = "test1";
+		// note.client_date = "09.08.2017 11:14:56";
+		// note.server_date = "09.08.2017 10:14:56";
+		// note.ip = "192.168.56.1";
+		//notes.Add( note );
+		
+		//get notes
 		runSelectQuery( queryGetNotes );
+		
+Response.Write( "Test List");
+Response.Write("<br>");
+		foreach (Note _note in notes)
+		{
+			Response.Write( _note.Info() );
+		}
+Response.Write( "Count: " + notes.Count );
+Response.Write( "Capacity: " + notes.Capacity );
+Response.Write("<br>");
+		
 	}//end exportTable()
 
 
@@ -485,9 +523,6 @@ Response.Write(queryRemoveTable);
 Response.Write( query );
 Response.Write("<br>");
 
-Response.Write( "Test struct, " + note.author );
-Response.Write("<br>");
-
 		cmd = new SqlCommand ( query, db_connection );
 		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 		
@@ -499,6 +534,16 @@ Response.Write("<br>");
 					Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
 					Response.Write("<br>");
 				}//next
+				
+				// note.id = "1";
+				// note.author = "anonymous";
+				// note.title = "no subject";
+				// note.text_message = "test1";
+				// note.client_date = "09.08.2017 11:14:56";
+				// note.server_date = "09.08.2017 10:14:56";
+				// note.ip = "192.168.56.1";
+				// notes.Add( note );
+				
 				//num++;
 			}//end while
 		} else {
