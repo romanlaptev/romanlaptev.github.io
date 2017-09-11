@@ -540,7 +540,7 @@ Response.Write(queryRemoveTable);
 			Response.AddHeader("Content-Type", "application/xhtml+xml");
 			Response.AddHeader("Content-Disposition","attachment; filename=" + filename);
 			Response.AddHeader("Content-Transfer-Encoding","binary");
-			Response.AddHeader("Content-Length", xml.Length.ToString() );
+			//Response.AddHeader("Content-Length", xml.Length.ToString() );
 			Response.Write( xml );
 		}
 	}//end exportTable()

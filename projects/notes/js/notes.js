@@ -249,7 +249,7 @@ var _notes = function ( opt ){
 					var url= _vars["exportUrl"];
 					window.location.assign(url);
 				} else {
-					_error("errorPHP");
+					//_error("errorPHP");
 				}
 				
 				if( _vars["supportASPX"] ){
