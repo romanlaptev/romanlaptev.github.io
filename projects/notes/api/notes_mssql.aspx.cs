@@ -94,6 +94,56 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			s += "</p>";
 			return s;
 		}
+		
+		public string formXML()
+		{
+			string s = "\t<note ";
+			s += "title='"+title+"' ";
+			s += "author='"+author+"' ";
+			s += "ip='"+ip+"' ";
+			s += "client_date='"+client_date+"' ";
+			s += "server_date='"+server_date+"'>\n";
+			s += "\t\t<text>\n";
+			s += text_message+"\n";
+			s += "\t\t</text>\n";
+			s += "\t</note>\n";
+			return s;
+		}
+		
+		public void saveValue( string name, string value )
+		{
+			switch (name) {
+				case "id":
+					id = value;
+				break;
+				
+				case "author":
+					author = value;
+				break;
+				
+				case "title":
+					title = value;
+				break;
+				
+				case "text_message":
+					text_message = value;
+				break;
+				
+				case "client_date":
+					client_date = value;
+				break;
+				
+				case "server_date":
+					server_date = value;
+				break;
+				
+				case "ip":
+					ip = value;
+				break;
+				
+			}//end switch
+		}//end saveValue()
+		
 	}//end struct
 	
 	Note note;
@@ -471,16 +521,28 @@ Response.Write(queryRemoveTable);
 		//get notes
 		runSelectQuery( queryGetNotes );
 		
-Response.Write( "Test List");
-Response.Write("<br>");
+		string xml = "";
+		xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
+		xml += "<table name='notes'>\n";
 		foreach (Note _note in notes)
 		{
-			Response.Write( _note.Info() );
+			xml += _note.formXML();
 		}
-Response.Write( "Count: " + notes.Count );
-Response.Write( "Capacity: " + notes.Capacity );
-Response.Write("<br>");
+//Response.Write( "Count: " + notes.Count );
+//Response.Write( "Capacity: " + notes.Capacity );
+//Response.Write("<br>");
+
+		xml += "</table>\n\n";
 		
+//Response.Write( "XML.Length: " + xml.Length );
+//Response.Write("<br>");
+		if( xml.Length > 0 ){
+			Response.AddHeader("Content-Type", "application/xhtml+xml");
+			Response.AddHeader("Content-Disposition","attachment; filename=" + filename);
+			Response.AddHeader("Content-Transfer-Encoding","binary");
+			Response.AddHeader("Content-Length", xml.Length.ToString() );
+			Response.Write( xml );
+		}
 	}//end exportTable()
 
 
@@ -520,8 +582,8 @@ Response.Write("<br>");
 	protected void runSelectQuery( string query){
 		SqlDataReader reader;
 		SqlCommand cmd;
-Response.Write( query );
-Response.Write("<br>");
+//Response.Write( query );
+//Response.Write("<br>");
 
 		cmd = new SqlCommand ( query, db_connection );
 		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
@@ -531,19 +593,14 @@ Response.Write("<br>");
 			while ( reader.Read() ){
 				
 				for (int n = 0; n < reader.FieldCount; n++){
-					Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
-					Response.Write("<br>");
+					//Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+					//Response.Write("<br>");
+					string _name = reader.GetName(n).ToString();
+					string _value = reader.GetValue(n).ToString();
+					note.saveValue( _name, _value );
 				}//next
 				
-				// note.id = "1";
-				// note.author = "anonymous";
-				// note.title = "no subject";
-				// note.text_message = "test1";
-				// note.client_date = "09.08.2017 11:14:56";
-				// note.server_date = "09.08.2017 10:14:56";
-				// note.ip = "192.168.56.1";
-				// notes.Add( note );
-				
+				notes.Add( note );
 				//num++;
 			}//end while
 		} else {
