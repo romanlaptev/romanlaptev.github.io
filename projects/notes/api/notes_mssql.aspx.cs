@@ -533,9 +533,17 @@ Response.Write(queryRemoveTable);
 //Response.Write("<br>");
 
 		xml += "</table>\n\n";
+		//xml += "XML.Length: " + xml.Length;
 		
 //Response.Write( "XML.Length: " + xml.Length );
 //Response.Write("<br>");
+		//string s = "application/xhtml+xmlattachment; filename=notes.xmlbinary1178";
+//Response.Write( "s.Length: " + s.Length );
+//Response.Write("<br>");
+		//int test = xml.Length + s.Length;
+//Response.Write( "test: " + test );
+//Response.Write("<br>");
+
 		if( xml.Length > 0 ){
 			Response.AddHeader("Content-Type", "application/xhtml+xml");
 			Response.AddHeader("Content-Disposition","attachment; filename=" + filename);

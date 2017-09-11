@@ -363,6 +363,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			//.replace(/'/g, "&#39;")
 			//.replace(/\n/g, "\\u000A")//replace end of line
 			.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
+			.replace(/&/g, "&amp;")
 			.replace(/\</g, "&lt;")
 			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;
