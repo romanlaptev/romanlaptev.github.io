@@ -8,6 +8,7 @@
 <pre>
 https://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer.aspx
 https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-serialize-and-deserialize-json-data
+https://metanit.com/sharp/tutorial/6.1.php
 https://metanit.com/sharp/tutorial/6.5.php
 
 <!--

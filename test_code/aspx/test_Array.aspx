@@ -9,7 +9,7 @@ Debug="true"%>
     <title>Website</title>
 </head>
 <body>
-	<h1>C#: test array, object, list</h1>
+	<h1>C#: test array, object, list, struct</h1>
 
 <pre>
 https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/arrays/single-dimensional-arrays
@@ -20,6 +20,9 @@ https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/arrays/multidim
 
 https://docs.microsoft.com/ru-ru/dotnet/csharp/programming-guide/arrays/jagged-arrays
 Массивы массивов
+
+https://metanit.com/sharp/tutorial/2.13.php
+Структуры
 
 https://metanit.com/sharp/tutorial/4.5.php
 Список List<T>

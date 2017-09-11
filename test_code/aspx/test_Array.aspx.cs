@@ -16,7 +16,28 @@ namespace myspace
 
 	public partial class Default : System.Web.UI.Page
 	{
-		
+
+		struct Book
+		{
+			public string name;
+			public string author;
+			public int year;
+		 
+			// конструкор
+			public Book(string n, string a, int y)
+			{
+				name = n;
+				author = a;
+				year = y;
+			}		 
+			
+			public string Info()
+			{
+				string s = "<p>Книга '{"+name+"}' (автор {"+author+"}) была издана в {"+year+"} году</p>";
+				return s;
+			}
+		}//end struct
+			
 		protected void Page_Init(object sender, EventArgs e)
 		{
 //Response.Write("Page_Init.<br>");
@@ -133,6 +154,55 @@ Response.Write("<hr>");
 
 Response.Write("<hr>");
 
+			Response.Write("https://metanit.com/sharp/tutorial/2.13.php<br>");
+			Response.Write("<h2>Структуры</h2>");
+			
+			Book book;
+			book.name = "Война и мир";
+			book.author = "Л. Н. Толстой";
+			book.year = 1869;
+
+			Response.Write( book.name );
+			Response.Write("<br>");
+
+			Response.Write( book.Info() );
+			Response.Write("<br>");
+
+			//struct array
+			Book[] books=new Book[3];
+			
+			books[0].name = "Война и мир";
+			books[0].author = "Л. Н. Толстой";
+			books[0].year = 1869;
+			
+			books[1].name = "Преступление и наказание";
+			books[1].author = "Ф. М. Достоевский";
+			books[1].year = 1866;
+
+			books[2].name = "Отцы и дети";
+			books[2].author = "И. С. Тургенев";
+			books[2].year = 1862;
+ 
+			foreach (Book b in books)
+			{
+				Response.Write( b.Info() );
+			}
+
+			//use constructor
+			Book book2=new Book("Аэлита", "А.Н. Толстой", 1923);
+			Response.Write( book2.Info() );
+			
+// Response.Write("<hr>");
+			// Response.Write("https://metanit.com/sharp/tutorial/4.5.php<br>");
+			// Response.Write("<h2>Кортежи</h2>");
+			
+			// var tuple = (5, 10);
+			// Response.Write(tuple.Item1 +", "+ tuple.Item2);
+			// Response.Write("<br>");
+			// tuple.Item1 += 26;
+			// Response.Write(tuple.Item1);
+
+Response.Write("<hr>");
 			Response.Write("<h2> Object </h2>");
 			personObj user = new personObj();  
 			user.firstname = "roman";
