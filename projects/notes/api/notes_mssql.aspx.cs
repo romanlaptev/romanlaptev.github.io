@@ -5,7 +5,9 @@ using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+//using System.Collections.Specialized;
 using System.Text;
+using System.Web;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -495,10 +497,11 @@ Response.Write(queryRemoveTable);
 			break;
 				
 			case "upload":
-				break;
+				uploadFile();
+			break;
 
 			case "import_notes":
-				break;
+			break;
 				
 			case "test":
 				SqlDataReader reader;
@@ -679,7 +682,44 @@ Response.Write(queryRemoveTable);
 		}
 	}//end exportTable()
 
+	protected void uploadFile(){
+		// foreach ( string x in Request.Files )
+		// {
+			// Response.Write ( "<b>Request.Files["+x + "]</b> = " + Request.Files[x].ToString() ); 
+			// Response.Write ( "<br>"); 
+		// }
+		
+		//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
+		string filepath = Server.MapPath( exportFilename );
+		Response.Write ( "filepath: " + filepath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api\notes.xml<br>
+		Response.Write ( "<br>"); 
+		
+		string path = System.IO.Directory.GetCurrentDirectory();
+		Response.Write ( "path: " + path);
+		Response.Write ( "<br>"); 
 
+		foreach(string f in Request.Files.AllKeys) {
+			//Response.Write ( f ); 
+			//Response.Write ( "<br>"); 
+			HttpPostedFile file = Request.Files[f];
+			file.SaveAs("c:\\temp\\" + file.FileName);
+		}			
+		
+		//https://msdn.microsoft.com/ru-ru/library/system.web.httprequest.files(v=vs.110).aspx
+		//HttpFileCollection Files;
+		//Files = Request.Files;
+		//arr1 = Files.Keys; 
+		// for (int n = 0; n < arr1.Length; n++) {
+			// Response.Write ( arr1[n]); 
+			// Response.Write ( "<br>"); 
+		// }
+// for (loop1 = 0; loop1 < arr1.Length; loop1++) 
+// {
+    // Response.Write("File: " + Server.HtmlEncode(arr1[loop1]) + "<br />");
+    // Response.Write("  size = " + Files[loop1].ContentLength + "<br />");
+    // Response.Write("  content type = " + Files[loop1].ContentType + "<br />");
+// }		
+	}//end uploadFile()
 	
 	protected void runQuery( string query )
 	{

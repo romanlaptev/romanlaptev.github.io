@@ -106,7 +106,10 @@ var _notes = function ( opt ){
 			if( _vars["supportPHP"] ){
 				_upload( document.forms["form_import"] );
 			} else {
-				_error("errorPHP");
+				//_error("errorPHP");
+			}
+			if( _vars["supportASPX"] ){
+				_upload( document.forms["form_import"] );
 			}
 		};//end event
 /*
