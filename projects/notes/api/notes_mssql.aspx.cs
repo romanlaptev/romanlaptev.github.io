@@ -272,8 +272,10 @@ FILEGROWTH = 10%);
 		}
 		//catch (Exception ex){
 		//catch (System.Exception ex){
-		catch (SqlException ex){//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlexception(v=vs.110).aspx
-			Response.Write("connect error....");
+		catch (SqlException ex){
+//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlexception(v=vs.110).aspx
+//https://msdn.microsoft.com/en-us/library/cc645611.aspx
+			Response.Write("Database connect error....");
 			Response.Write("connection string:" + _connectionString);
 			Response.Write("<pre>");
 			//Response.Write(ex);

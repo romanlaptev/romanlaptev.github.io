@@ -380,10 +380,10 @@ console.log(msg);
 						}
 					}
 					//if browser not define callback "onloadend"
-					var test = "onloadend" in xhr;
-					if( !test ){
-						_loadEnd();
-					}
+					// var test = "onloadend" in xhr;
+					// if( !test ){
+						// _loadEnd();
+					// }
 
 				} else {
 //console.log(xhr);					
@@ -440,13 +440,13 @@ console.log("statusText:" + xhr.statusText);
 	
 	function _loadEnd(){
 		//hide block overlay and wait window
-		if( overlay ){
-			//overlay.className="";
-			overlay.style.display="none";
-		}
-		if( waitWindow ){
-			waitWindow.style.display="none";
-		}
+		// if( overlay ){
+			// //overlay.className="";
+			// overlay.style.display="none";
+		// }
+		// if( waitWindow ){
+			// waitWindow.style.display="none";
+		// }
 		
 		var all_headers = xhr.getAllResponseHeaders();
 //console.log( all_headers );

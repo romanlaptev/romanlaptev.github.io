@@ -667,6 +667,16 @@ console.log( all_headers );
 			"callback": function( data ){
 //console.log(data.length, typeof data, data);				
 
+				var overlay = getById("overlay");
+				if( overlay ){
+					//overlay.className="";
+					overlay.style.display="none";
+				}
+				var waitWindow = getById("wait-window");
+				if( waitWindow ){
+					waitWindow.style.display="none";
+				}
+
 				if( data.length > 0){
 						try{
 							var jsonObj = JSON.parse( data, function(key, value) {
