@@ -656,10 +656,23 @@ console.log( all_headers );
 		_vars["messagesList"].innerHTML = "";
 //_log("<p>-- loadNotes(), clear #messagesList</p>");
 
+		//block overlay and wait window
+		// var overlay = getById("overlay");
+		// if( overlay ){
+			// overlay.className="modal-backdrop in";
+			// overlay.style.display="block";
+		// }
+		// var waitWindow = getById("wait-window");
+		// if( waitWindow ){
+			// waitWindow.className="modal-dialog";
+			// waitWindow.style.display="block";
+		// }
+		
 		var params = {
 			"action" : "get_notes"
 		};
 		runAjax( {
+			//"async" :  false,
 			"requestMethod" : "GET", 
 			"url" : _vars["requestUrl"], 
 			"params" : params,
@@ -667,16 +680,15 @@ console.log( all_headers );
 			"callback": function( data ){
 //console.log(data.length, typeof data, data);				
 
-				var overlay = getById("overlay");
-				if( overlay ){
-					//overlay.className="";
-					overlay.style.display="none";
-				}
-				var waitWindow = getById("wait-window");
-				if( waitWindow ){
-					waitWindow.style.display="none";
-				}
-
+				// //hide block overlay and wait window
+				// if( overlay ){
+					// //overlay.className="";
+					// overlay.style.display="none";
+				// }
+				// if( waitWindow ){
+					// waitWindow.style.display="none";
+				// }
+				
 				if( data.length > 0){
 						try{
 							var jsonObj = JSON.parse( data, function(key, value) {

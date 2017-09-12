@@ -245,7 +245,7 @@ console.log(item + ": " + e[item]);
 	});
 */
 function runAjax( opt ){
-//console.log(arguments);
+console.log(arguments);
 	
 	var p = {
 		"requestMethod" : "GET", 
@@ -330,7 +330,8 @@ console.log( msg, xhr );
 	//Check responseType support:
 //https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
-	if( "responseType" in xhr){
+//Error, "The response type cannot be changed for synchronous requests made from a document."
+	if( "responseType" in xhr && p["async"] ){
 		xhr.responseType = p["responseType"];
 	}
 	
@@ -344,6 +345,16 @@ console.log( msg, xhr );
 
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 //console.log( "xhr.onerror = ", xhr.onerror  );
+
+				//hide block overlay and wait window
+				if( overlay ){
+					//overlay.className="";
+					overlay.style.display="none";
+				}
+				if( waitWindow ){
+					waitWindow.style.display="none";
+				}
+					
 				if( xhr.status === 200){
 					
 					var timeEnd = new Date();
@@ -356,6 +367,7 @@ console.log(msg);
 // console.log( "xhr.response: ", xhr.response );
 // console.log( "responseType: " + xhr.responseType );
 // }
+					
 					if( typeof callback === "function"){
 						
 						if( xhr.responseXML ){
@@ -380,10 +392,10 @@ console.log(msg);
 						}
 					}
 					//if browser not define callback "onloadend"
-					// var test = "onloadend" in xhr;
-					// if( !test ){
-						// _loadEnd();
-					// }
+					var test = "onloadend" in xhr;
+					if( !test ){
+						_loadEnd();
+					}
 
 				} else {
 //console.log(xhr);					
