@@ -5,6 +5,7 @@ using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Text;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -220,8 +221,7 @@ FILEGROWTH = 10%);
 
 		db_connection = new SqlConnection( _connectionString );
 		//int result = 0;
-		try
-		{
+		try{
 			db_connection.Open();
 			runQuery( queryCreateDB );
 
@@ -270,15 +270,97 @@ FILEGROWTH = 10%);
 			runQuery( queryCreateTable );
 			_testRequestParams();
 		}
-		//catch (Exception ex)
-		//catch (System.Exception ex)		
-		catch (SqlException ex)
-		{
+		//catch (Exception ex){
+		//catch (System.Exception ex){
+		catch (SqlException ex){//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlexception(v=vs.110).aspx
 			Response.Write("connect error....");
 			Response.Write("connection string:" + _connectionString);
 			Response.Write("<pre>");
 			//Response.Write(ex);
 			Response.Write(ex.Message);			
+			Response.Write("<br>");
+			
+			Response.Write("Class: " + ex.Class);
+			Response.Write("<br>");
+
+			Response.Write("ErrorCode: " + ex.ErrorCode);
+			Response.Write("<br>");
+
+			//Response.Write("ClientConnectionId: " + ex.ClientConnectionId);
+			//Response.Write("<br>");
+
+			//Response.Write("HResult: " + ex.HResult);
+			//Response.Write("<br>");
+			
+			Response.Write("LineNumber: " + ex.LineNumber);
+			Response.Write("<br>");
+
+			Response.Write("Number: " + ex.Number);
+			Response.Write("<br>");
+
+			Response.Write("State: " + ex.State);
+			Response.Write("<br>");
+			
+			Response.Write("Server: " + ex.Server);
+			Response.Write("<br>");
+
+			Response.Write("TargetSite: " + ex.TargetSite);
+			Response.Write("<br>");
+/*
+System_CAPS_pubproperty	Data	
+Возвращает коллекцию пар ключ/значение, предоставляющие дополнительные сведения об исключении, определяемые пользователем.(Наследуется от Exception.)
+
+
+System_CAPS_pubproperty	Errors	
+Возвращает коллекцию из одного или нескольких SqlError объекты, которые предоставляют подробные сведения об исключениях, создаваемых поставщиком данных .NET Framework для SQL Server.
+
+System_CAPS_pubproperty	HelpLink	
+Получает или задает ссылку на файл справки, связанный с этим исключением.(Наследуется от Exception.)
+
+System_CAPS_pubproperty	HResult	
+Возвращает или задает HRESULT — кодированное числовое значение, присвоенное определенному исключению.(Наследуется от Exception.)
+
+System_CAPS_pubproperty	InnerException	
+Возвращает экземпляр класса Exception, который вызвал текущее исключение.(Наследуется от Exception.)
+
+System_CAPS_pubproperty	LineNumber	
+Возвращает номер строки в пакете команд Transact-SQL или хранимой процедуры, вызвавшего ошибку.
+
+System_CAPS_pubproperty	Message	
+Получает сообщение, описывающее текущее исключение.(Наследуется от Exception.)
+
+System_CAPS_pubproperty	Number	
+Возвращает число, определяющее тип ошибки.
+
+System_CAPS_pubproperty	Procedure	
+Возвращает имя вызвавшей ошибку хранимой процедуры или удаленного вызова процедур (RPC).
+
+System_CAPS_pubproperty	Server	
+Возвращает имя компьютера, на котором запущен экземпляр SQL Server, вызвавшего ошибку.
+
+System_CAPS_pubproperty	Source	
+Возвращает имя вызвавшего ошибку поставщика.(Переопределяет Exception.Source.)
+
+System_CAPS_pubproperty	StackTrace	
+Получает строковое представление непосредственных кадров в стеке вызова.(Наследуется от Exception.)
+
+System_CAPS_pubproperty	State	
+Возвращает числовой код ошибки от SQL Server, который представляет ошибку, предупреждение или сообщение «данные не найдены». Дополнительные сведения о расшифровке этих значений см. в разделе электронной документации по SQL Server.
+
+System_CAPS_pubproperty	TargetSite
+*/			
+			StringBuilder errorMessages = new StringBuilder();
+			for (int n = 0; n < ex.Errors.Count; n++){
+				errorMessages.Append("Index #" + n + "\n" +
+					"Message: " + ex.Errors[n].Message + "\n" +
+					"Error Number: " + ex.Errors[n].Number + "\n" +
+					"LineNumber: " + ex.Errors[n].LineNumber + "\n" +
+					"Source: " + ex.Errors[n].Source + "\n" +
+					"Procedure: " + ex.Errors[n].Procedure + "\n");
+			}
+			Response.Write(errorMessages.ToString());
+			Response.Write("<br>");
+				
 			Response.Write("</pre>");
 		}
 		finally
