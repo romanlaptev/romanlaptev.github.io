@@ -24,6 +24,11 @@ var _notes = function ( opt ){
 		"requestUrlASPX" : "api/notes_mssql.aspx",
 		"exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
 
+		"supportMSSQL" : false,
+		"testUrlMSSQL": "api/test_mssql.aspx",
+		"supportMYSQL" : false,
+		"testUrlMYSQL": "api/test_mysql.php",
+		
 		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
@@ -475,7 +480,6 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
 			"callback" : function(res){
 				if( res ){
-
 					loadNotes();
 				} else {
 					_testASPX();
@@ -493,8 +497,9 @@ _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 					if( res ){
 var msg = "<p>test ASPX success, ASP.NET suppored by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-success'>" + msg + "</div>");
-						_vars["requestUrl"] = _vars["requestUrlASPX"];
-						loadNotes();
+						//_vars["requestUrl"] = _vars["requestUrlASPX"];
+						//loadNotes();
+						_testMSSQL();
 					} else {
 						loadNotesXml();
 					}
@@ -647,6 +652,60 @@ console.log( all_headers );
 			// }//end _onloadend()
 			
 		// }//end testPHP_headers()
+
+		function _testMSSQL(){
+			runAjax({
+				"requestMethod" : "GET", 
+				"url" : _vars["testUrlMSSQL"], 
+				"onError" : _onerror,
+				"callback": function( data ){
+//console.log(data, typeof data, data.length);
+					try{
+						var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+							return value;
+						});							
+//console.log( jsonObj, jsonObj.length, jsonObj[0]["error_code"] );
+
+						if( jsonObj.length === 1){
+							if( jsonObj[0]["error_code"] === "0"){
+								_vars["supportMSSQL"] = true;
+								_vars["requestUrl"] = _vars["requestUrlASPX"];
+								loadNotes();
+							} else {
+var msg = "";
+msg += "<p>error!</p>";
+msg += "<p>data: " + data + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+								loadNotesXml();
+							}
+						} else {
+console.log( jsonObj, jsonObj.length );
+						}
+						
+						
+					} catch(error) {
+var msg = "";
+msg += "<p>error in server response data</p>";
+msg += "<p>" + error + "</p>";
+msg += "<p>data: " + data + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+						loadNotesXml();
+					}//end catch
+
+				}//end callback
+			});
+
+			function _onerror( xhr ){
+				var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+					// if( typeof p["callback"] === "function"){
+						// _error( p["errorMsgID"] );
+						// p["callback"]( false );
+					// } 
+			}//end _onerror()
+			
+		}//end _testMSSQL()
 		
 	}//end testServer()
 	
@@ -729,8 +788,8 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 
 	function loadNotesXml(){
 		
+		$("#control-btn").children("div").hide();
 		_vars["messagesList"].innerHTML = "";
-
 		runAjax( {
 			"requestMethod" : "GET", 
 			"url" : _vars["xmlUrl"], 

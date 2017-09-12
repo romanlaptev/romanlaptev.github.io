@@ -245,7 +245,7 @@ console.log(item + ": " + e[item]);
 	});
 */
 function runAjax( opt ){
-console.log(arguments);
+//console.log(arguments);
 	
 	var p = {
 		"requestMethod" : "GET", 
