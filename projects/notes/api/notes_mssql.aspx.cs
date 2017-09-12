@@ -44,7 +44,7 @@ public partial class _Default : System.Web.UI.Page
 ");\r\n"+
 "END";
 
-	string queryGetNotes = "SELECT id, author, title, text_message, client_date, server_date, ip FROM \""+
+	string queryGetNotes = "SELECT id, author, title, text_message, client_date=Convert(char(19), client_date,20), server_date=Convert(char(19), server_date,20), ip FROM \""+
 tableName+"\" ORDER BY \"client_date\" DESC";
 
 	string queryInsertMessage = "INSERT INTO "+tableName+" (author, title, text_message, client_date, server_date, ip) "+
@@ -358,8 +358,8 @@ FILEGROWTH = 10%);
 				ip = Request.ServerVariables["REMOTE_ADDR"];
 				queryInsertMessage = queryInsertMessage.Replace("{{ip}}", ip);
 				
-//Response.Write ( queryInsertMessage ); 
-				runQuery( queryInsertMessage );
+Response.Write ( queryInsertMessage ); 
+				//runQuery( queryInsertMessage );
 			break;
 				
 			case "get_notes":
@@ -404,6 +404,33 @@ Response.Write(queryRemoveTable);
 			case "import_notes":
 				break;
 				
+			case "test":
+				SqlDataReader reader;
+				SqlCommand cmd;
+				string testQuery;
+				//https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql
+				//ODBC canonical date fomat yyyy-mm-dd hh:mi:ss(24h)
+				//testQuery = "SELECT Convert(char(19), server_date,20) FROM notes";
+				testQuery = "SELECT id, author, title, text_message, Convert(char(19), client_date,20), Convert(char(19), server_date,20), ip FROM notes";
+				Response.Write(testQuery);
+				Response.Write("<br>");
+				
+				cmd = new SqlCommand ( testQuery, db_connection );
+				reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+				if (reader.HasRows){
+					while ( reader.Read() ){
+						for (int n = 0; n < reader.FieldCount; n++){
+							Response.Write( "<b>name " +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+							Response.Write("<br>");
+						}//next
+					}//end while
+				} else {
+					Response.Write("No rows found in table " + tableName);
+				}
+				reader.Close();
+			
+			break;
+			
 		  default:
 			break;
 		}		
@@ -450,8 +477,8 @@ Response.Write(queryRemoveTable);
 					jsonNote = ",{";
 				}
 				for (int n = 0; n < reader.FieldCount; n++){
-					//Response.Write( reader.GetName(n) );
-					//Response.Write( reader.GetValue(n) );
+//Response.Write( "<b>name " +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+//Response.Write("<br>");
 					if( n > 0 ){
 						jsonNote += ", ";
 					}

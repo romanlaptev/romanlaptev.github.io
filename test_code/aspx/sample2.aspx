@@ -4,6 +4,13 @@
 <html>
 <head>
 <script runat="server">
+
+	protected void Page_Init(object sender, EventArgs e)
+	{
+Response.Write("Page_Init.<br>");
+Response.Write("Net Framework version - " + Environment.Version.ToString() + "<br>");
+	}
+
 protected void cmdEcho_Click(object Source, EventArgs e)
 {
 	lblGreeting.Text="Hello, " + txtName.Text; 
