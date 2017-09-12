@@ -280,11 +280,11 @@ FILEGROWTH = 10%);
 			Response.Write(ex.Message);			
 			Response.Write("<br>");
 			
-			Response.Write("Class: " + ex.Class);
-			Response.Write("<br>");
+			//Response.Write("Class: " + ex.Class);
+			//Response.Write("<br>");
 
-			Response.Write("ErrorCode: " + ex.ErrorCode);
-			Response.Write("<br>");
+			//Response.Write("ErrorCode: " + ex.ErrorCode);
+			//Response.Write("<br>");
 
 			//Response.Write("ClientConnectionId: " + ex.ClientConnectionId);
 			//Response.Write("<br>");
@@ -292,20 +292,20 @@ FILEGROWTH = 10%);
 			//Response.Write("HResult: " + ex.HResult);
 			//Response.Write("<br>");
 			
-			Response.Write("LineNumber: " + ex.LineNumber);
+			//Response.Write("LineNumber: " + ex.LineNumber);
+			//Response.Write("<br>");
+
+			Response.Write("Error number: " + ex.Number);
 			Response.Write("<br>");
 
-			Response.Write("Number: " + ex.Number);
-			Response.Write("<br>");
-
-			Response.Write("State: " + ex.State);
-			Response.Write("<br>");
+			//Response.Write("State: " + ex.State);
+			//Response.Write("<br>");
 			
 			Response.Write("Server: " + ex.Server);
 			Response.Write("<br>");
 
-			Response.Write("TargetSite: " + ex.TargetSite);
-			Response.Write("<br>");
+			//Response.Write("TargetSite: " + ex.TargetSite);
+			//Response.Write("<br>");
 /*
 System_CAPS_pubproperty	Data	
 Возвращает коллекцию пар ключ/значение, предоставляющие дополнительные сведения об исключении, определяемые пользователем.(Наследуется от Exception.)
@@ -349,18 +349,30 @@ System_CAPS_pubproperty	State
 
 System_CAPS_pubproperty	TargetSite
 */			
-			StringBuilder errorMessages = new StringBuilder();
-			for (int n = 0; n < ex.Errors.Count; n++){
-				errorMessages.Append("Index #" + n + "\n" +
-					"Message: " + ex.Errors[n].Message + "\n" +
-					"Error Number: " + ex.Errors[n].Number + "\n" +
-					"LineNumber: " + ex.Errors[n].LineNumber + "\n" +
-					"Source: " + ex.Errors[n].Source + "\n" +
-					"Procedure: " + ex.Errors[n].Procedure + "\n");
-			}
-			Response.Write(errorMessages.ToString());
-			Response.Write("<br>");
+			// StringBuilder errorMessages = new StringBuilder();
+			// for (int n = 0; n < ex.Errors.Count; n++){
+				// errorMessages.Append("Index #" + n + "\n" +
+					// "Message: " + ex.Errors[n].Message + "\n" +
+					// "Error Number: " + ex.Errors[n].Number + "\n" +
+					// "LineNumber: " + ex.Errors[n].LineNumber + "\n" +
+					// "Source: " + ex.Errors[n].Source + "\n" +
+					// "Procedure: " + ex.Errors[n].Procedure + "\n");
+			// }
+			// Response.Write(errorMessages.ToString());
+			// Response.Write("<br>");
 				
+// foreach(SqlError err in ex.Errors) {
+	// Response.Write(err.ToString() );
+	// Response.Write("<br>");
+// }
+// for (int n = 0; n < ex.Errors.Count; n++)
+// {
+	// Response.Write("Index #" + n + ", " + "error: " + ex.Errors[n].ToString() + "<br>");
+// }
+// switch (err.Number)
+// {
+// }
+	  
 			Response.Write("</pre>");
 		}
 		finally
@@ -440,8 +452,8 @@ System_CAPS_pubproperty	TargetSite
 				ip = Request.ServerVariables["REMOTE_ADDR"];
 				queryInsertMessage = queryInsertMessage.Replace("{{ip}}", ip);
 				
-Response.Write ( queryInsertMessage ); 
-				//runQuery( queryInsertMessage );
+//Response.Write ( queryInsertMessage ); 
+				runQuery( queryInsertMessage );
 			break;
 				
 			case "get_notes":
@@ -490,6 +502,9 @@ Response.Write(queryRemoveTable);
 				SqlDataReader reader;
 				SqlCommand cmd;
 				string testQuery;
+				
+				//testQuery = "SELECT * FROM sys.messages";
+				
 				//https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql
 				//ODBC canonical date fomat yyyy-mm-dd hh:mi:ss(24h)
 				//testQuery = "SELECT Convert(char(19), server_date,20) FROM notes";
