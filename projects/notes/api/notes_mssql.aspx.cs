@@ -60,7 +60,7 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{ip}}' "+
 ");";
 
-	string queryInsertAll "INSERT INTO "+tableName+" VALUES {{values}};";
+	string queryInsertAll = "INSERT INTO "+tableName+" VALUES {{values}};";
 	string queryInsertValues = "("+
 //"NULL, "+
 " '{{authorName}}', "+
