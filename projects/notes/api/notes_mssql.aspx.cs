@@ -60,6 +60,17 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{ip}}' "+
 ");";
 
+	string queryInsertAll "INSERT INTO "+tableName+" VALUES {{values}};";
+	string queryInsertValues = "("+
+//"NULL, "+
+" '{{authorName}}', "+
+" '{{title}}', "+
+" '{{textMessage}}', "+
+" CONVERT(DATETIME,'{{client_date}}'), " +
+" CONVERT(DATETIME,'{{server_date}}'), " +
+" '{{ip}}' "+
+")";
+
 	string queryDeleteNote = "DELETE FROM "+tableName+" WHERE id={{id}}";
 	string queryClearNotes = "TRUNCATE TABLE " + tableName;
 	string queryRemoveTable = "DROP TABLE " + tableName;
