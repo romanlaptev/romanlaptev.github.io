@@ -778,90 +778,66 @@ Response.Write(queryRemoveTable);
 	protected void importTable( string xmlFile ){
 //Response.Write ( "xmlFile: " + xmlFile);
 //Response.Write ( "<br>"); 
-		
-		// XmlTextReader reader = new XmlTextReader (xmlFile);
-		// while (reader.Read())  
-		// {
-			// switch (reader.NodeType)  
-			// {
-				// case XmlNodeType.Element: // Start element
-					// Response.Write("<" + reader.Name);
-					// Response.Write(">");
-				// break;
-				
-				// case XmlNodeType.Text: // Node value
-					// Response.Write (reader.Value);
-				// break;
-				
-				// case XmlNodeType. EndElement: //endElement
-					// Response.Write("</" + reader.Name);
-					// Response.Write(">");
-				// break;
-			// }
-		// }//end while
-
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
 		
 		if ( !File.Exists( xmlFile ) ){
-			Response.Write( xmlFile + " not exists!!!");
+//Response.Write( xmlFile + " not exists!!!");
+			string jsonStr;
+			jsonStr = "[{";
+			jsonStr += "\"error_code\": \"FileNotExists\", "; 
+			jsonStr += "\"message\": \"" + xmlFile + " not exists...\" "; 
+			jsonStr += "}]";
+			
+			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+			Response.Write(jsonStr);
 			return;
 		}
-		Response.Write("test1");
-		Response.Write("<br>");
 		
-/*			
 		try{
-			//doc.Load( xmlFile );
-			doc.Load( "test.txt" );
+			doc.Load( xmlFile );
 		} 
+		catch(Exception ex)
 		//catch(XmlException e)
 		//catch(IOException e) 
-		catch (FileNotFoundException ex)
+		//catch (FileNotFoundException ex)
 		{
-			//Response.Write(e.Message);
-			Response.Write("FileNotFoundException");
-			Response.Write("<br>");
+			Response.Write(ex);
+			//Response.Write("FileNotFoundException");
+			//Response.Write("<br>");
 			//Response.Write("Exception object Line, pos: (" + e.LineNumber + "," + e.LinePosition  + ")");
 			//Response.Write("Exception source URI: (" + e.SourceURI + ")");
 			//Response.Write("XmlReader Line, pos: (" + tr.LineNumber + "," + tr.LinePosition  + ")");
 		}
-		catch (IOException ex)
-		{
-			Response.Write("Another user is already using this file.");
-			Response.Write("<br>");
-		}
-*/
 		
-		// XmlNodeList nodeList;
-		// XmlNode root = doc.DocumentElement;
+		XmlNodeList nodeList;
+		XmlNode root = doc.DocumentElement;
 
-		// //nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
-		// nodeList=root.SelectNodes("descendant::note");
-		// foreach (XmlNode note in nodeList)
-		// {
-			// //book.LastChild.InnerText="15.95";
-			// Response.Write( note.Name );
-			// Response.Write ( "<br>"); 
+		//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
+		nodeList=root.SelectNodes("descendant::note");
+		foreach (XmlNode note in nodeList)
+		{
+Response.Write( note.Name );
+Response.Write ( "<br>"); 
 
-			// if (note.Attributes != null){
-				// foreach (XmlAttribute attr in note.Attributes)
-				// {
-					// Response.Write( attr.Name + ": " + attr.Value );
-					// Response.Write ( "<br>"); 
-				// }//next
-			// }
+			if (note.Attributes != null){
+				foreach (XmlAttribute attr in note.Attributes)
+				{
+Response.Write( attr.Name + ": " + attr.Value );
+Response.Write ( "<br>"); 
+				}//next
+			}
 			
-			// if (note.HasChildNodes){
-				// for (int n = 0; n < note.ChildNodes.Count; n++){
-					// Response.Write( note.ChildNodes[n].Name );
-					// Response.Write ( ": "); 
-					// Response.Write( note.ChildNodes[n].InnerText );
-					// Response.Write ( "<br>"); 
-				// }//next
-			// }
+			if (note.HasChildNodes){
+				for (int n = 0; n < note.ChildNodes.Count; n++){
+Response.Write( note.ChildNodes[n].Name );
+Response.Write ( ": "); 
+Response.Write( note.ChildNodes[n].InnerText );
+Response.Write ( "<br>"); 
+				}//next
+			}
 	
-		// }//next
+		}//next
 	
 	}//end importTable()
 	
