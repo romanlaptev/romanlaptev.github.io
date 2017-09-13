@@ -1,12 +1,12 @@
 using System;
-//using System.Xml; 
-//using System.IO;
+using System.IO;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 //using System.Collections.Specialized;
 using System.Text;
+using System.Xml; 
 using System.Web;
 
 public partial class _Default : System.Web.UI.Page
@@ -29,7 +29,7 @@ public partial class _Default : System.Web.UI.Page
 	// string dbPassword = "Vt0U_ldj~yS1";
 	
 	string exportFilename = "notes.xml";
-	string uploadPath = "upload";
+	string uploadDir = "upload";
 	static string tableName = "notes";//"user";
 
 	string queryDbInfo = "SELECT * FROM master.sys.databases where name='"+dbName+"' ";
@@ -501,6 +501,9 @@ Response.Write(queryRemoveTable);
 			break;
 
 			case "import_notes":
+				string filePath = Server.MapPath( null );
+				string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
+				importTable( uploadPath+ "\\"+ exportFilename);
 			break;
 				
 			case "test":
@@ -690,19 +693,24 @@ Response.Write(queryRemoveTable);
 		// }
 		
 		//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
-		string filepath = Server.MapPath( exportFilename );
-		Response.Write ( "filepath: " + filepath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api\notes.xml<br>
-		Response.Write ( "<br>"); 
+		string filePath = Server.MapPath( null );
+		//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
+		//Response.Write ( "<br>"); 
 		
-		string path = System.IO.Directory.GetCurrentDirectory();
-		Response.Write ( "path: " + path);
-		Response.Write ( "<br>"); 
+		//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
+		string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
+		//Response.Write ( "uploadPath: " + uploadPath);
+		//Response.Write ( "<br>"); 
+		
+		//string path = System.IO.Directory.GetCurrentDirectory();
+		//Response.Write ( "path: " + path);
+		//Response.Write ( "<br>"); 
 
 		foreach(string f in Request.Files.AllKeys) {
 			//Response.Write ( f ); 
 			//Response.Write ( "<br>"); 
 			HttpPostedFile file = Request.Files[f];
-			file.SaveAs("c:\\temp\\" + file.FileName);
+			file.SaveAs( uploadPath +"\\" + exportFilename);
 		}			
 		
 		//https://msdn.microsoft.com/ru-ru/library/system.web.httprequest.files(v=vs.110).aspx
@@ -720,6 +728,35 @@ Response.Write(queryRemoveTable);
     // Response.Write("  content type = " + Files[loop1].ContentType + "<br />");
 // }		
 	}//end uploadFile()
+	
+	protected void importTable( string xmlFile ){
+//Response.Write ( "xmlFile: " + xmlFile);
+//Response.Write ( "<br>"); 
+		
+		// XmlTextReader reader = new XmlTextReader (xmlFile);
+		// while (reader.Read())  
+		// {
+			// switch (reader.NodeType)  
+			// {
+				// case XmlNodeType.Element: // Start element
+					// Response.Write("<" + reader.Name);
+					// Response.Write(">");
+				// break;
+				
+				// case XmlNodeType.Text: // Node value
+					// Response.Write (reader.Value);
+				// break;
+				
+				// case XmlNodeType. EndElement: //endElement
+					// Response.Write("</" + reader.Name);
+					// Response.Write(">");
+				// break;
+			// }
+		// }//end while
+
+		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
+		
+	}//end importTable()
 	
 	protected void runQuery( string query )
 	{

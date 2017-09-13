@@ -10,6 +10,7 @@ public partial class _Default : System.Web.UI.Page
 			Response.Write("<h1>test XML: read from file</h1>");
 			
 			string filepath = Server.MapPath( "menu.xml");
+			//https://msdn.microsoft.com/ru-ru/library/system.xml.xmltextreader(v=vs.110).aspx
 			XmlTextReader reader = new XmlTextReader (filepath);
 			while (reader.Read())  
 			{

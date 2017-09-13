@@ -101,6 +101,9 @@ public partial class _Default : System.Web.UI.Page
 			jsonStr += "\"sql_server\": \""+ dbHost +"\", "; 
 			jsonStr += "\"user_id\": \""+ dbUser +"\""; 
 			jsonStr += "}]";
+			
+			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+
 			Response.Write(jsonStr);
 
 			//Response.Write("Database connect error....");
@@ -223,4 +226,4 @@ System_CAPS_pubproperty	TargetSite
 		
 	}//end Page_Load()
 	
-}//end class	
+}//end class
