@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+<!--	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+-->
+<style>
+@font-face {
+    font-family: "FiraSans";
+    font-style: italic;
+    font-weight: bold;
+    src: url("FiraSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("FiraSans-BoldItalic.woff") format("woff"), url("FiraSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: normal;
+    font-weight: bold;
+    src: url("FiraSans-Bold.eot?#iefix") format("embedded-opentype"), url("FiraSans-Bold.woff") format("woff"), url("FiraSans-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: italic;
+    font-weight: normal;
+    src: url("FiraSans-Italic.eot?#iefix") format("embedded-opentype"), 
+	url("FiraSans-Italic.woff") format("woff"), 
+	url("FiraSans-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: italic;
+    font-weight: 500;
+    src: url("FiraSans-MediumItalic.eot?#iefix") format("embedded-opentype"), url("FiraSans-MediumItalic.woff") format("woff"), url("FiraSans-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: normal;
+    font-weight: 300;
+    src: url("FiraSans-Light.eot?#iefix") format("embedded-opentype"), url("FiraSans-Light.woff") format("woff"), url("FiraSans-Light.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: italic;
+    font-weight: 300;
+    src: url("FiraSans-LightItalic.eot?#iefix") format("embedded-opentype"), url("FiraSans-LightItalic.woff") format("woff"), url("FiraSans-LightItalic.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: normal;
+    font-weight: normal;
+    src: url("FiraSans-Regular.eot?#iefix") format("embedded-opentype"), url("FiraSans-Regular.woff") format("woff"), url("FiraSans-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "FiraSans";
+    font-style: normal;
+    font-weight: 500;
+    src: url("FiraSans-Medium.eot?#iefix") format("embedded-opentype"), url("FiraSans-Medium.woff") format("woff"), url("FiraSans-Medium.ttf") format("truetype");
+}
+
+aside {
+  backface-visibility: hidden;
+  background: #2c2c30 none repeat scroll 0 0;
+  bottom: 0;
+  color: #7d7d7c;
+  font-family: "FiraSans";
+  /*  left: 0;  position: fixed;  top: 0;*/
+  transition: all 0.5s ease 0s;
+  z-index: 200;
+}
+aside .main-nav ul li a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+		
+<div class="container" id="top">
+	<div class="page-header">
+		<h2>test font FiraSans</h2>
+	</div>
+
+<aside>		
+<nav class="main-nav">
+	<ul>
+                    <li class="">
+                        <a href="http://www.unian.net" title="Главная"><i class="fa fa-home"></i> Главная</a>
+                    </li>
+                    <li class="">
+                        <a href="http://pogoda.unian.net" title="Погода"><i class="fa fa-umbrella"></i> Погода</a>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/politics/" title="Политика"><i class="fa fa-suitcase"></i> Политика</a>
+                    </li>
+                    <li class="">
+                        <a href="http://economics.unian.net" title="Экономика"><i class="fa fa-pie-chart"></i> Экономика</a>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/war/" title="Война"><i class="fa fa-binoculars"></i> Война</a>
+                    </li>
+                    <li class=" has-submenu ">
+                        <a href="#" title="Спецпроекты"><i class="fa fa-rocket"></i> Спецпроекты</a>
+                        <ul>
+                            <li class="">
+                                <a href="http://health.unian.net/" title="Здоровье">
+                                    Здоровье
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://religions.unian.net/" title="Религии">
+                                    Религии
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://ecology.unian.net/" title="Экология">
+                                    Экология
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" has-submenu ">
+                        <a href="#" title="Регионы"><i class="fa fa-compass"></i> Регионы</a>
+                        <ul>
+                            <li class="">
+                                <a href="http://kiev.unian.net" title="Киев">
+                                    Киев
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://www.unian.net/lvov/" title="Львов">
+                                    Львов
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://www.unian.net/dnepropetrovsk/" title="Днепр">
+                                    Днепр
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://www.unian.net/kharkiv/" title="Харьков">
+                                    Харьков
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://www.unian.net/odessa/" title="Одесса">
+                                    Одесса
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://ternopil.unian.ua/" title="Тернополь">
+                                    Тернополь
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/society/" title="Общество"><i class="fa fa-users"></i> Общество</a>
+                    </li>
+                    <li class="">
+                        <a href="http://sport.unian.net/" title="Спорт"><i class="fa fa-soccer-ball-o"></i> Спорт</a>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/world/" title="Мир"><i class="fa fa-globe"></i> Мир</a>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/science/" title="Наука и IT"><i class="fa fa-flask"></i> Наука и IT</a>
+                    </li>
+                    <li class="">
+                        <a href="http://www.unian.net/curiosities/" title="Курьезы"><i class="fa fa-bullhorn"></i> Курьезы</a>
+                    </li>
+		</ul>
+	</nav>
+</aside>
+	
+</div><!-- end container -->
+
+<ul>
+	<li>1<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-BoldItalic.eot"> 0 </a></li>
+	<li>2<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-BoldItalic.woff"> 0 </a></li>
+	<li>3<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-BoldItalic.ttf"> 0 </a></li>
+	
+	<li>4<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Bold.eot"> 0 </a></li>
+	<li>5<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Bold.woff"> 0 </a></li>
+	<li>6<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Bold.ttf"> 0 </a></li>
+	
+	<li>7<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Italic.eot"> 0 </a></li>
+	<li>8<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Italic.woff"> 0 </a></li>
+	<li>9<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Italic.ttf"> 0 </a></li>
+	
+	<li>10<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-MediumItalic.eot"> 0 </a></li>
+	<li>11<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-MediumItalic.woff"> 0 </a></li>
+	<li>12<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-MediumItalic.ttf"> 0 </a></li>
+	
+	<li>13<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Light.eot"> 0 </a></li>
+	<li>14<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Light.woff"> 0 </a></li>
+	<li>15<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Light.ttf"> 0 </a></li>
+	
+	<li>16<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-LightItalic.eot"> 0 </a></li>
+	<li>17<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-LightItalic.woff"> 0 </a></li>
+	<li>18<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-LightItalic.ttf"> 0 </a></li>
+	
+	<li>19<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Regular.eot"> 0 </a></li>
+	<li>20<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Regular.woff"> 0 </a></li>
+	<li>21<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Regular.ttf"> 0 </a></li>
+	
+	<li>22<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Medium.eot"> 0 </a></li>
+	<li>23<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Medium.woff"> 0 </a></li>
+	<li>24<a href="https://www.unian.net//assets/fonts/FiraSans/FiraSans-Medium.ttf"> 0 </a></li>
+</ul>
+
+</body>
+</html>
