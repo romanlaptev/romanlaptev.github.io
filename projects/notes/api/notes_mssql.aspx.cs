@@ -810,34 +810,40 @@ Response.Write(queryRemoveTable);
 			//Response.Write("XmlReader Line, pos: (" + tr.LineNumber + "," + tr.LinePosition  + ")");
 		}
 		
-		XmlNodeList nodeList;
-		XmlNode root = doc.DocumentElement;
+		try{
+			XmlNodeList nodeList;
+			XmlNode root = doc.DocumentElement;
 
-		//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
-		nodeList=root.SelectNodes("descendant::note");
-		foreach (XmlNode note in nodeList)
-		{
-Response.Write( note.Name );
-Response.Write ( "<br>"); 
+			//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
+			nodeList=root.SelectNodes("descendant::note");
+			foreach (XmlNode note in nodeList)
+			{
+	Response.Write( note.Name );
+	Response.Write ( "<br>"); 
 
-			if (note.Attributes != null){
-				foreach (XmlAttribute attr in note.Attributes)
-				{
-Response.Write( attr.Name + ": " + attr.Value );
-Response.Write ( "<br>"); 
-				}//next
-			}
+				if (note.Attributes != null){
+					foreach (XmlAttribute attr in note.Attributes)
+					{
+	Response.Write( attr.Name + ": " + attr.Value );
+	Response.Write ( "<br>"); 
+					}//next
+				}
+				
+				if (note.HasChildNodes){
+					for (int n = 0; n < note.ChildNodes.Count; n++){
+	Response.Write( note.ChildNodes[n].Name );
+	Response.Write ( ": "); 
+	Response.Write( note.ChildNodes[n].InnerText );
+	Response.Write ( "<br>"); 
+					}//next
+				}
+			}//next
 			
-			if (note.HasChildNodes){
-				for (int n = 0; n < note.ChildNodes.Count; n++){
-Response.Write( note.ChildNodes[n].Name );
-Response.Write ( ": "); 
-Response.Write( note.ChildNodes[n].InnerText );
-Response.Write ( "<br>"); 
-				}//next
-			}
-	
-		}//next
+		} 
+		catch(XmlException ex)
+		{
+			Response.Write(ex);
+		}
 	
 	}//end importTable()
 	
