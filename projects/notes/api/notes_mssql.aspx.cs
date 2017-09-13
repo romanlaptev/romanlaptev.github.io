@@ -755,7 +755,39 @@ Response.Write(queryRemoveTable);
 		// }//end while
 
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
-		
+		XmlDocument doc = new XmlDocument();
+		doc.Load( xmlFile );
+
+		XmlNodeList nodeList;
+		XmlNode root = doc.DocumentElement;
+
+		//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
+		nodeList=root.SelectNodes("descendant::note");
+		foreach (XmlNode note in nodeList)
+		{
+			//book.LastChild.InnerText="15.95";
+			Response.Write( note.Name );
+			Response.Write ( "<br>"); 
+
+			if (note.Attributes != null){
+				foreach (XmlAttribute attr in note.Attributes)
+				{
+					Response.Write( attr.Name + ": " + attr.Value );
+					Response.Write ( "<br>"); 
+				}//next
+			}
+			
+			if (note.HasChildNodes){
+				for (int n = 0; n < note.ChildNodes.Count; n++){
+					Response.Write( note.ChildNodes[n].Name );
+					Response.Write ( ": "); 
+					Response.Write( note.ChildNodes[n].InnerText );
+					Response.Write ( "<br>"); 
+				}//next
+			}
+	
+		}//next
+	
 	}//end importTable()
 	
 	protected void runQuery( string query )
