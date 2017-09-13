@@ -322,6 +322,112 @@ xhr.send(formData);
 var msg = "<p>Your browser does not support File API</p>";
 _log("<div class='alert alert-warning'>" + msg + "</div>");
 			}
+			
+			
+		/*	
+		//http://blog.teamtreehouse.com/uploading-files-ajax
+		//https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
+			function _getUploadFiles(opt){
+				var p = {
+					"fileSelect" : null
+				};
+				
+				//extend options object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}	
+		//console.log( p );
+
+				if( !p["fileSelect"]){
+		var msg = "<p>No selected files</p>";
+		_log("<div class='alert alert-warning'>" + msg + "</div>");
+					return false;
+				}
+				// Get the selected files from the input.
+				var files = p["fileSelect"].files;
+		console.log( files );
+
+				// Create a new FormData object.
+				var formData = new FormData();
+				
+				// Loop through each of the selected files.
+				for (var n = 0; n < files.length; n++) {
+					var file = files[n];
+					
+					// Check the file type.
+					//if (!file.type.match('image.*')) {
+					if ( file.type !== "text/xml") {
+		//console.log("Skip file, incorrect type!", file.name, file.type);
+						//continue;
+					}
+
+					// Add the file to the request.
+					formData.append("upload_files[]", file, file.name);
+				}//next
+		// for( var key in formData){
+		// console.log(key, formData[key]);
+		// }		
+
+		// // Display the key/value pairs
+		// for (var pair of formData.entries()) {
+			// console.log(pair[0]+ ', ' + pair[1]); 
+		// }
+
+		// Display the keys
+		// for (var key of formData.keys()) {
+		   // console.log(key); 
+		// }
+				var test = formData.getAll("upload_files[]");
+		//console.log( test.length ); 
+				if( test.length > 0 ){
+					//formData.append("action", "upload");
+					return formData;
+				} else {
+					return false;
+				}
+				
+			}//end _getUploadFiles()
+		*/
+		function _postUpload( data ){
+//console.log(arguments);
+
+			try{
+				var jsonArr = JSON.parse( data, function(key, value) {
+	//console.log( key, value );
+					return value;
+				});							
+//console.log( jsonArr, jsonArr.length);
+
+				if( jsonArr.length === 1){
+					
+					var jsonObj = jsonArr[0];
+//console.log( jsonObj, jsonObj["error_code"], jsonObj["error_code"].length);
+					var msg = "<p>" +jsonObj["message"]+ "</p>";
+					
+					if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
+						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+					} else {
+						_log("<div class='alert alert-success'>" + msg + "</div>");
+						loadNotes();		
+					}
+					
+				} else {
+console.log( jsonArr, jsonArr.length );
+				}
+
+			} catch(error) {
+var msg = "";
+msg += "<p>error JSON.parse server response data</p>";
+msg += "<p>" + error + "</p>";
+msg += "<p>data: " + data + "</p>";
+_log("<div class='alert alert-danger'>" + msg + "</div>");
+			loadNotesXml();
+			}//end catch
+
+			$("#importModal").modal("hide");
+		}//end _postUpload()
+			
 	}//end _upload()
 	
 	
@@ -689,7 +795,7 @@ console.log( jsonObj, jsonObj.length );
 						
 					} catch(error) {
 var msg = "";
-msg += "<p>error in server response data</p>";
+msg += "<p>error  JSON.parse server response data</p>";
 msg += "<p>" + error + "</p>";
 msg += "<p>data: " + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -764,7 +870,7 @@ console.log( all_headers );
 							});
 						} catch(error) {
 var msg = "";
-msg += "<p>error in server response data</p>";
+msg += "<p>error  JSON.parse server response data</p>";
 msg += "<p>" + error + "</p>";
 msg += "<p>data: " + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -963,82 +1069,6 @@ console.log("error in __filter()");
 		
 	}//end seviceAction
 
-/*	
-//http://blog.teamtreehouse.com/uploading-files-ajax
-//https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
-	function _getUploadFiles(opt){
-		var p = {
-			"fileSelect" : null
-		};
-		
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}	
-//console.log( p );
-
-		if( !p["fileSelect"]){
-var msg = "<p>No selected files</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
-			return false;
-		}
-		// Get the selected files from the input.
-		var files = p["fileSelect"].files;
-console.log( files );
-
-		// Create a new FormData object.
-		var formData = new FormData();
-		
-		// Loop through each of the selected files.
-		for (var n = 0; n < files.length; n++) {
-			var file = files[n];
-			
-			// Check the file type.
-			//if (!file.type.match('image.*')) {
-			if ( file.type !== "text/xml") {
-//console.log("Skip file, incorrect type!", file.name, file.type);
-				//continue;
-			}
-
-			// Add the file to the request.
-			formData.append("upload_files[]", file, file.name);
-		}//next
-// for( var key in formData){
-// console.log(key, formData[key]);
-// }		
-
-// // Display the key/value pairs
-// for (var pair of formData.entries()) {
-    // console.log(pair[0]+ ', ' + pair[1]); 
-// }
-
-// Display the keys
-// for (var key of formData.keys()) {
-   // console.log(key); 
-// }
-		var test = formData.getAll("upload_files[]");
-//console.log( test.length ); 
-		if( test.length > 0 ){
-			//formData.append("action", "upload");
-			return formData;
-		} else {
-			return false;
-		}
-		
-	}//end _getUploadFiles()
-*/
-	function _postUpload(log){
-//console.log(arguments);		
-		var msg = "<p>"+log+"</p>";
-		var _className = "alert-success";
-		if( log.indexOf("error") !== -1){
-			_className = "alert-danger";
-		}
-		_log("<div class='alert " +_className+ "'>" + msg + "</div>");
-
-		$("#importModal").modal("hide");
-		loadNotes();		
-	}//end _posrtUpload()
 	
 	// public interfaces
 	return{

@@ -707,22 +707,57 @@ Response.Write(queryRemoveTable);
 		string filePath = Server.MapPath( null );
 		//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
 		//Response.Write ( "<br>"); 
+
 		
 		//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
 		string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
-		//Response.Write ( "uploadPath: " + uploadPath);
-		//Response.Write ( "<br>"); 
+//Response.Write ( "uploadPath: " + uploadPath);
+//Response.Write ( "<br>"); 
+		if ( !Directory.Exists( uploadPath ) ){
+			string jsonStr;
+			jsonStr = "[{";
+			jsonStr += "\"error_code\": \"DirectoryNotFound\", "; 
+			jsonStr += "\"message\": \"Directory " + uploadPath + " not exists!!!\" "; 
+			jsonStr += "}]";
+			
+			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+			Response.Write(jsonStr);
+			return;
+		}
 		
+		foreach(string f in Request.Files.AllKeys) {
+//Response.Write ( f ); 
+//Response.Write ( "<br>"); 
+			HttpPostedFile file = Request.Files[f];
+			try{
+				string fPath = uploadPath +"\\" + exportFilename;
+				file.SaveAs( fPath );
+				string jsonStr;
+				jsonStr = "[{";
+				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" bytes,  upload successful...\" "; 
+				jsonStr += "}]";
+				
+				jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+				Response.Write(jsonStr);
+			}
+			catch (Exception ex)
+			//catch (IOException ex)
+			{
+				//Response.Write(ex);
+				//Response.Write("<br>");
+				
+				Response.Write(ex.Message);
+				Response.Write("<br>");
+				
+				//Response.Write(ex.Source);
+				//Response.Write("<br>");
+			}
+			
+		}//next
+
 		//string path = System.IO.Directory.GetCurrentDirectory();
 		//Response.Write ( "path: " + path);
 		//Response.Write ( "<br>"); 
-
-		foreach(string f in Request.Files.AllKeys) {
-			//Response.Write ( f ); 
-			//Response.Write ( "<br>"); 
-			HttpPostedFile file = Request.Files[f];
-			file.SaveAs( uploadPath +"\\" + exportFilename);
-		}			
 		
 		//https://msdn.microsoft.com/ru-ru/library/system.web.httprequest.files(v=vs.110).aspx
 		//HttpFileCollection Files;
@@ -767,37 +802,66 @@ Response.Write(queryRemoveTable);
 
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
-		doc.Load( xmlFile );
-
-		XmlNodeList nodeList;
-		XmlNode root = doc.DocumentElement;
-
-		//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
-		nodeList=root.SelectNodes("descendant::note");
-		foreach (XmlNode note in nodeList)
+		
+		if ( !File.Exists( xmlFile ) ){
+			Response.Write( xmlFile + " not exists!!!");
+			return;
+		}
+		Response.Write("test1");
+		Response.Write("<br>");
+		
+/*			
+		try{
+			//doc.Load( xmlFile );
+			doc.Load( "test.txt" );
+		} 
+		//catch(XmlException e)
+		//catch(IOException e) 
+		catch (FileNotFoundException ex)
 		{
-			//book.LastChild.InnerText="15.95";
-			Response.Write( note.Name );
-			Response.Write ( "<br>"); 
+			//Response.Write(e.Message);
+			Response.Write("FileNotFoundException");
+			Response.Write("<br>");
+			//Response.Write("Exception object Line, pos: (" + e.LineNumber + "," + e.LinePosition  + ")");
+			//Response.Write("Exception source URI: (" + e.SourceURI + ")");
+			//Response.Write("XmlReader Line, pos: (" + tr.LineNumber + "," + tr.LinePosition  + ")");
+		}
+		catch (IOException ex)
+		{
+			Response.Write("Another user is already using this file.");
+			Response.Write("<br>");
+		}
+*/
+		
+		// XmlNodeList nodeList;
+		// XmlNode root = doc.DocumentElement;
 
-			if (note.Attributes != null){
-				foreach (XmlAttribute attr in note.Attributes)
-				{
-					Response.Write( attr.Name + ": " + attr.Value );
-					Response.Write ( "<br>"); 
-				}//next
-			}
+		// //nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
+		// nodeList=root.SelectNodes("descendant::note");
+		// foreach (XmlNode note in nodeList)
+		// {
+			// //book.LastChild.InnerText="15.95";
+			// Response.Write( note.Name );
+			// Response.Write ( "<br>"); 
+
+			// if (note.Attributes != null){
+				// foreach (XmlAttribute attr in note.Attributes)
+				// {
+					// Response.Write( attr.Name + ": " + attr.Value );
+					// Response.Write ( "<br>"); 
+				// }//next
+			// }
 			
-			if (note.HasChildNodes){
-				for (int n = 0; n < note.ChildNodes.Count; n++){
-					Response.Write( note.ChildNodes[n].Name );
-					Response.Write ( ": "); 
-					Response.Write( note.ChildNodes[n].InnerText );
-					Response.Write ( "<br>"); 
-				}//next
-			}
+			// if (note.HasChildNodes){
+				// for (int n = 0; n < note.ChildNodes.Count; n++){
+					// Response.Write( note.ChildNodes[n].Name );
+					// Response.Write ( ": "); 
+					// Response.Write( note.ChildNodes[n].InnerText );
+					// Response.Write ( "<br>"); 
+				// }//next
+			// }
 	
-		}//next
+		// }//next
 	
 	}//end importTable()
 	

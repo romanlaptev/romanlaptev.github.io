@@ -89,7 +89,6 @@ public partial class _Default : System.Web.UI.Page
 			Response.Write(jsonStr);
 		}
 		//catch (Exception ex){
-		//catch (System.Exception ex){
 		catch (SqlException ex){
 //https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlexception(v=vs.110).aspx
 //https://msdn.microsoft.com/en-us/library/cc645611.aspx
