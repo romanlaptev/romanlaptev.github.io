@@ -734,39 +734,44 @@ console.log( all_headers );
 				"url" : _vars["testUrlMSSQL"], 
 				"onError" : _onerror,
 				"callback": function( data ){
-//console.log(data, typeof data, data.length);
-					try{
-						var jsonObj = JSON.parse( data, function(key, value) {
-//console.log( key, value );
-							return value;
-						});							
-//console.log( jsonObj, jsonObj.length, jsonObj[0]["error_code"] );
+console.log(data, typeof data, data.length);
+					// try{
+						// var jsonObj = JSON.parse( data, function(key, value) {
+// //console.log( key, value );
+							// return value;
+						// });							
+// //console.log( jsonObj, jsonObj.length, jsonObj[0]["error_code"] );
 
-						if( jsonObj.length === 1){
-							if( jsonObj[0]["error_code"] === "0"){
-								_vars["supportMSSQL"] = true;
-								_vars["requestUrl"] = _vars["requestUrlASPX"];
-								loadNotes();
-							} else {
-var msg = "";
-msg += "<p>error!</p>";
-msg += "<p>data: " + data + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-								loadNotesXml();
-							}
-						} else {
-console.log( jsonObj, jsonObj.length );
-						}
+						// if( jsonObj.length === 1){
+							// if( jsonObj[0]["error_code"] === "0"){
+								// _vars["supportMSSQL"] = true;
+								// _vars["requestUrl"] = _vars["requestUrlASPX"];
+								// loadNotes();
+							// } else {
+// var msg = "";
+// msg += "<p>error!</p>";
+// msg += "<p>data: " + data + "</p>";
+// _log("<div class='alert alert-danger'>" + msg + "</div>");
+								// loadNotesXml();
+							// }
+						// } else {
+// console.log( jsonObj, jsonObj.length );
+						// }
 						
 						
-					} catch(error) {
-var msg = "";
-msg += "<p>error  JSON.parse server response data</p>";
-msg += "<p>" + error + "</p>";
-msg += "<p>data: " + data + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-						loadNotesXml();
-					}//end catch
+					// } catch(error) {
+// var msg = "";
+// msg += "<p>error  JSON.parse server response data</p>";
+// msg += "<p>" + error + "</p>";
+// msg += "<p>data: " + data + "</p>";
+// _log("<div class='alert alert-danger'>" + msg + "</div>");
+						// loadNotesXml();
+					// }//end catch
+					displayLog( data, function(){
+						_vars["supportMSSQL"] = true;
+						_vars["requestUrl"] = _vars["requestUrlASPX"];
+						loadNotes();		
+					});	
 
 				}//end callback
 			});
@@ -812,7 +817,7 @@ console.log( all_headers );
 			"params" : params,
 			"onError" : _onerror,
 			"callback": function( data ){
-//console.log(data.length, typeof data, data);				
+console.log(data.length, typeof data, data);				
 
 				// //hide block overlay and wait window
 				// if( overlay ){
@@ -836,7 +841,7 @@ console.log( all_headers );
 							});
 						} catch(error) {
 var msg = "";
-msg += "<p>error  JSON.parse server response data</p>";
+msg += "<p>loadNotes(), error  JSON.parse server response data</p>";
 msg += "<p>" + error + "</p>";
 msg += "<p>data: " + data + "</p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -1035,7 +1040,7 @@ console.log("error in __filter()");
 		
 	}//end seviceAction
 
-	function displayLog( jsonStr ){
+	function displayLog( jsonStr, callback ){
 
 		try{
 			var jsonArr = JSON.parse(jsonStr, function(key, value) {
@@ -1069,17 +1074,23 @@ console.log("error in __filter()");
 				var _className = "alert-success";
 				
 				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
-					msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
-					_className = "alert-danger";
-					//displayNotes = false;
+					if( jsonObj["error_code"] !== "0"){
+						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
+						_className = "alert-danger";
+						//displayNotes = false;
+					}
 				}
 				
 				_log("<div class='alert "+_className+" '>" + msg + "</div>");
 			}//next
 			
 			//if( displayNotes ){
-				loadNotes();		
+				//loadNotes();		
 			//}
+			
+			if( typeof callback === "function"){
+				callback();
+			}
 			
 		} catch(error) {
 	var msg = "";

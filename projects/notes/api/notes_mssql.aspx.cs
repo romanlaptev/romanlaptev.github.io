@@ -58,16 +58,14 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{ip}}' "+
 ");";
 
-	string queryInsertAll = "INSERT INTO "+tableName+" VALUES {{values}};";
-	string queryInsertValues = "("+
-//"NULL, "+
+	string queryInsertAll = "INSERT INTO "+tableName+" {{values}};";
+	string queryInsertValues = "SELECT "+
 " '{{author}}', "+
 " '{{title}}', "+
 " '{{text_message}}', "+
 " CONVERT(DATETIME,'{{client_date}}'), " +
 " CONVERT(DATETIME,'{{server_date}}'), " +
-" '{{ip}}' "+
-")";
+" '{{ip}}' ";
 
 /*
 INSERT INTO notes (author, title, text_message, client_date, server_date, ip)
@@ -858,7 +856,7 @@ Response.Write(queryRemoveTable);
 
 				items = queryInsertValues;
 				if( num > 0 ){
-					items = ", " + items;
+					items = " UNION ALL " + items;
 				}
 				if (note.Attributes != null){
 					foreach (XmlAttribute attr in note.Attributes)
@@ -866,7 +864,7 @@ Response.Write(queryRemoveTable);
 						string _name = attr.Name;
 						string _value = attr.Value;
 //Response.Write( _name + ": " + _value );
-//Response.Write ( "<br>"); 
+//Response.Write ( "<br>");
 						items = items.Replace("{{" + _name + "}}", _value);
 					}//next
 				}
@@ -875,8 +873,10 @@ Response.Write(queryRemoveTable);
 					for (int n = 0; n < note.ChildNodes.Count; n++){
 						string nodeName = note.ChildNodes[n].Name;
 						string nodeValue = note.ChildNodes[n].InnerText;
-Response.Write( nodeName + ": " + nodeValue );
-Response.Write ( "<br>"); 
+						nodeValue = nodeValue.Replace("\t", "");
+						nodeValue = nodeValue.Replace("\n", "");
+//Response.Write( nodeName + ": " + nodeValue );
+//Response.Write ( "<br>"); 
 						items = items.Replace("{{" + nodeName + "}}", nodeValue);
 					}//next
 				}
@@ -888,8 +888,9 @@ Response.Write ( "<br>");
 
 			string query = queryInsertAll;
 			query = query.Replace("{{values}}", queryValues);
-Response.Write( query );
-Response.Write ( "<br>"); 
+//Response.Write( query );
+//Response.Write ( "<br>"); 
+			runQuery( query );
 			
 		} catch(Exception ex) {
 			Response.Write("<pre>");

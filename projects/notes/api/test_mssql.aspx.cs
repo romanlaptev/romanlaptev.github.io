@@ -84,7 +84,7 @@ public partial class _Default : System.Web.UI.Page
 			string jsonStr;
 			jsonStr = "[{";
 			jsonStr += "\"error_code\": \"0\", "; 
-			jsonStr += "\"connection_state\": \""+ db_connection.State +"\""; 
+			jsonStr += "\"message\": \"connection to MSSQL, state:  "+ db_connection.State +"\""; 
 			jsonStr += "}]";
 			Response.Write(jsonStr);
 		}
