@@ -61,13 +61,20 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	string queryInsertAll = "INSERT INTO "+tableName+" VALUES {{values}};";
 	string queryInsertValues = "("+
 //"NULL, "+
-" '{{authorName}}', "+
+" '{{author}}', "+
 " '{{title}}', "+
-" '{{textMessage}}', "+
+" '{{text_message}}', "+
 " CONVERT(DATETIME,'{{client_date}}'), " +
 " CONVERT(DATETIME,'{{server_date}}'), " +
 " '{{ip}}' "+
 ")";
+
+/*
+INSERT INTO notes (author, title, text_message, client_date, server_date, ip)
+SELECT 'anonymous','no subject', 'test1', CONVERT(DATETIME,'2017-12-09 10:30:46'),CONVERT(DATETIME, '2017-12-09 09:30:46'), '192.168.56.1'
+UNION ALL
+SELECT 'anonymous','no subject', 'test2', CONVERT(DATETIME,'2017-12-09 10:30:46'),CONVERT(DATETIME, '2017-12-09 09:30:46'), '192.168.56.1'
+*/
 
 	string queryDeleteNote = "DELETE FROM "+tableName+" WHERE id={{id}}";
 	string queryClearNotes = "TRUNCATE TABLE " + tableName;
@@ -112,9 +119,9 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			s += "ip='"+ip+"' ";
 			s += "client_date='"+client_date+"' ";
 			s += "server_date='"+server_date+"'>\n";
-			s += "\t\t<text>\n";
+			s += "\t\t<text_message>\n";
 			s += text_message+"\n";
-			s += "\t\t</text>\n";
+			s += "\t\t</text_message>\n";
 			s += "\t</note>\n";
 			return s;
 		}
@@ -841,34 +848,54 @@ Response.Write(queryRemoveTable);
 
 			//nodeList=root.SelectNodes("descendant::book[author/last-name='Austen']");
 			nodeList=root.SelectNodes("descendant::note");
+			string queryValues = "";
+			string items = "";
+			int num = 0;
 			foreach (XmlNode note in nodeList)
 			{
-	Response.Write( note.Name );
-	Response.Write ( "<br>"); 
+//Response.Write( note.Name );
+//Response.Write ( "<br>"); 
 
+				items = queryInsertValues;
+				if( num > 0 ){
+					items = ", " + items;
+				}
 				if (note.Attributes != null){
 					foreach (XmlAttribute attr in note.Attributes)
 					{
-	Response.Write( attr.Name + ": " + attr.Value );
-	Response.Write ( "<br>"); 
+						string _name = attr.Name;
+						string _value = attr.Value;
+//Response.Write( _name + ": " + _value );
+//Response.Write ( "<br>"); 
+						items = items.Replace("{{" + _name + "}}", _value);
 					}//next
 				}
 				
 				if (note.HasChildNodes){
 					for (int n = 0; n < note.ChildNodes.Count; n++){
-	Response.Write( note.ChildNodes[n].Name );
-	Response.Write ( ": "); 
-	Response.Write( note.ChildNodes[n].InnerText );
-	Response.Write ( "<br>"); 
+						string nodeName = note.ChildNodes[n].Name;
+						string nodeValue = note.ChildNodes[n].InnerText;
+Response.Write( nodeName + ": " + nodeValue );
+Response.Write ( "<br>"); 
+						items = items.Replace("{{" + nodeName + "}}", nodeValue);
 					}//next
 				}
+//Response.Write( items );
+//Response.Write ( "<br>"); 
+				queryValues += items;
+				num++;
 			}//next
+
+			string query = queryInsertAll;
+			query = query.Replace("{{values}}", queryValues);
+Response.Write( query );
+Response.Write ( "<br>"); 
 			
-		} 
-		catch(XmlException ex)
-		{
+		} catch(Exception ex) {
+			Response.Write("<pre>");
 			Response.Write(ex);
-		}
+			Response.Write("</pre>");
+		}//end try
 	
 	}//end importTable()
 	

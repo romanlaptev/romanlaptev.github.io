@@ -622,9 +622,9 @@ echo "Export error, no data...";
 			$text_message = str_replace('', '', $text_message);
 			$text_message = str_replace('&', '&amp;', $text_message);
 //------------------------------
-			$xml .=  "\t\t<text>\n";
+			$xml .=  "\t\t<text_message>\n";
 			$xml .=  $text_message."\n";
-			$xml .=  "\t\t</text>\n";
+			$xml .=  "\t\t</text_message>\n";
 		}
 		$xml .= "\t</note>\n";
 	}//end foreach
