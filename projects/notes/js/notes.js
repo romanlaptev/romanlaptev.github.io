@@ -390,41 +390,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		*/
 		function _postUpload( data ){
 //console.log(arguments);
-
-			try{
-				var jsonArr = JSON.parse( data, function(key, value) {
-	//console.log( key, value );
-					return value;
-				});							
-//console.log( jsonArr, jsonArr.length);
-
-				if( jsonArr.length === 1){
-					
-					var jsonObj = jsonArr[0];
-//console.log( jsonObj, jsonObj["error_code"], jsonObj["error_code"].length);
-					var msg = "<p>" +jsonObj["message"]+ "</p>";
-					
-					if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
-						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
-						_log("<div class='alert alert-danger'>" + msg + "</div>");
-					} else {
-						_log("<div class='alert alert-success'>" + msg + "</div>");
-						loadNotes();		
-					}
-					
-				} else {
-console.log( jsonArr, jsonArr.length );
-				}
-
-			} catch(error) {
-var msg = "";
-msg += "<p>error JSON.parse server response data</p>";
-msg += "<p>" + error + "</p>";
-msg += "<p>data: " + data + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-				loadNotesXml();
-			}//end catch
-
+			displayLog( data );
 			$("#importModal").modal("hide");
 		}//end _postUpload()
 			
@@ -1036,14 +1002,14 @@ console.log("error in __filter()");
 				"requestMethod" : "GET", 
 				"url" : _vars["requestUrl"], 
 				"params" : p,
-				"callback": function( log ){
+				"callback": /*function( log ){
 	var msg = "<p>"+log+"</p>";
 	_log("<div class='alert alert-success'>" + msg + "</div>");
 					loadNotes();
 					if( typeof callback === "function"){
 						callback();
 					}
-				}//end callback()
+				}//end callback()*/ _postFunc
 			});
 		} else {
 			//_error("errorPHP");
@@ -1061,54 +1027,66 @@ console.log("error in __filter()");
 		}
 		
 		function _postFunc( data ){
-			// var msg = "<p>"+log+"</p>";
-			// _log("<div class='alert alert-success'>" + msg + "</div>");
-			// loadNotes();
-			// if( typeof callback === "function"){
-				// callback();
-			// }
-			
-			try{
-				var jsonArr = JSON.parse( data, function(key, value) {
-	//console.log( key, value );
-					return value;
-				});							
-//console.log( jsonArr, jsonArr.length);
-
-				if( jsonArr.length === 1){
-					
-					var jsonObj = jsonArr[0];
-//console.log( jsonObj, jsonObj["error_code"], jsonObj["error_code"].length);
-					var msg = "<p>" +jsonObj["message"]+ "</p>";
-					
-					if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
-						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
-						_log("<div class='alert alert-danger'>" + msg + "</div>");
-					} else {
-						_log("<div class='alert alert-success'>" + msg + "</div>");
-						loadNotes();		
-					}
-					
-				} else {
-console.log( jsonArr, jsonArr.length );
-				}
-
-			} catch(error) {
-var msg = "";
-msg += "<p>error JSON.parse server response data</p>";
-msg += "<p>" + error + "</p>";
-msg += "<p>data: " + data + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-			}//end catch
-			
+			displayLog( data );
 			if( typeof callback === "function"){
 				callback();
 			}
-			
 		}//end _postFunc()
 		
 	}//end seviceAction
 
+	function displayLog( jsonStr ){
+
+		try{
+			var jsonArr = JSON.parse(jsonStr, function(key, value) {
+	//console.log( key, value );
+				return value;
+			});							
+	//console.log( jsonArr, jsonArr.length);
+
+			// if( jsonArr.length === 1){
+				
+				// var jsonObj = jsonArr[0];
+	// //console.log( jsonObj, jsonObj["error_code"], jsonObj["error_code"].length);
+				// var msg = "<p>" +jsonObj["message"]+ "</p>";
+				
+				// if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
+					// msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
+					// _log("<div class='alert alert-danger'>" + msg + "</div>");
+				// } else {
+					// _log("<div class='alert alert-success'>" + msg + "</div>");
+					// loadNotes();		
+				// }
+				
+			// } else {
+	// console.log( jsonArr, jsonArr.length );
+			// }
+			
+			for( var n = 0; n < jsonArr.length; n++){
+				var jsonObj = jsonArr[n];
+				var msg = "<p>" +jsonObj["message"]+ "</p>";
+				var _className = "alert-success";
+				
+				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
+					msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
+					_className = "alert-danger";
+				}
+				
+				_log("<div class='alert "+_className+" '>" + msg + "</div>");
+			}//next
+			loadNotes();		
+			
+		} catch(error) {
+	var msg = "";
+	msg += "<p>error JSON.parse server response data</p>";
+	msg += "<p>" + error + "</p>";
+	msg += "<p>data: " + data + "</p>";
+	_log("<div class='alert alert-danger'>" + msg + "</div>");
+			loadNotesXml();
+		}//end catch
+	
+	}//end displayLog()
+	
 	
 	// public interfaces
 	return{

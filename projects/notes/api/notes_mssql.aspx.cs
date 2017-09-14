@@ -28,8 +28,6 @@ public partial class _Default : System.Web.UI.Page
 	// string dbUser = "db117";
 	// string dbPassword = "Vt0U_ldj~yS1";
 	
-	string exportFilename = "notes.xml";
-	string uploadDir = "upload";
 	static string tableName = "notes";//"user";
 
 	string queryDbInfo = "SELECT * FROM master.sys.databases where name='"+dbName+"' ";
@@ -75,15 +73,12 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	string queryClearNotes = "TRUNCATE TABLE " + tableName;
 	string queryRemoveTable = "DROP TABLE " + tableName;
 
+	string uploadPath = "";
+	//string uploadPath = "c:\\temp\\upload";
+	string exportFilename = "notes.xml";
 
 	string _connectionString = "";
 	SqlConnection db_connection;
-
-
-	// class recordObj{
-		// public string key;
-		// public string value;
-	// }
 
 	struct Note
 	{
@@ -168,7 +163,7 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	{
 //Response.Write("Page_Init.<br>");
 //Response.Write("Net Framework version - " + Environment.Version.ToString() + "<br>");
-	}
+	}//end Page_Init()
 	
 	protected void Page_PreRender(object sender, EventArgs e)
 	{
@@ -508,13 +503,28 @@ Response.Write(queryRemoveTable);
 			break;
 				
 			case "upload":
-				uploadFile();
+				//Redefine uploadPath
+				if( uploadPath.Length == 0){
+					
+					//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
+					string filePath = Server.MapPath( null );
+//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
+//Response.Write ( "<br>"); 
+
+					//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
+					uploadPath = Path.GetDirectoryName(filePath) + "\\upload";
+				}
+//Response.Write ( "uploadPath: " + uploadPath);
+//Response.Write ( "<br>"); 
+				uploadFile( uploadPath );
 			break;
 
 			case "import_notes":
-				string filePath = Server.MapPath( null );
-				string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
-				importTable( uploadPath+ "\\"+ exportFilename);
+				//string filePath = Server.MapPath( null );
+				//string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
+				//importTable( uploadPath+ "\\"+ exportFilename);
+				string xmlFilePath = uploadPath+ "\\"+ exportFilename;
+				importTable( xmlFilePath );
 			break;
 				
 			case "test":
@@ -696,49 +706,58 @@ Response.Write(queryRemoveTable);
 		}
 	}//end exportTable()
 
-	protected void uploadFile(){
+	protected void uploadFile( string _uploadPath ){
 		// foreach ( string x in Request.Files )
 		// {
 			// Response.Write ( "<b>Request.Files["+x + "]</b> = " + Request.Files[x].ToString() ); 
 			// Response.Write ( "<br>"); 
 		// }
 		
-		//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
-		string filePath = Server.MapPath( null );
-		//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
-		//Response.Write ( "<br>"); 
-
-		
-		//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
-		string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
-//Response.Write ( "uploadPath: " + uploadPath);
-//Response.Write ( "<br>"); 
-		if ( !Directory.Exists( uploadPath ) ){
-			string jsonStr;
-			jsonStr = "[{";
-			jsonStr += "\"error_code\": \"DirectoryNotFound\", "; 
-			jsonStr += "\"message\": \"Directory " + uploadPath + " not exists!!!\" "; 
-			jsonStr += "}]";
+		string jsonStr;
+		jsonStr = "[";
 			
-			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-			Response.Write(jsonStr);
-			return;
-		}
+		//https://msdn.microsoft.com/ru-ru/library/54a0at6s(v=vs.110).aspx
+		if ( !Directory.Exists( _uploadPath ) ){
+			jsonStr += "{"; 
+			jsonStr += "\"error_code\": \"DirectoryNotFound\", "; 
+			jsonStr += "\"message\": \"Directory " + _uploadPath + " not exists!!!\" "; 
+			jsonStr += "}";
+			
+			//return;
+			try
+			{
+				Directory.CreateDirectory ( _uploadPath );
+				if( jsonStr.Length == 1){
+					jsonStr += "{";
+				} else {
+					jsonStr += ", {";
+				}
+				jsonStr += "\"message\": \"directory " + _uploadPath + "  created...\" "; 
+				jsonStr += "}";
+			}
+			catch (Exception ex2)
+			{
+				Response.Write(ex2.Message);
+			}
+			
+		}//end if
 		
 		foreach(string f in Request.Files.AllKeys) {
 //Response.Write ( f ); 
 //Response.Write ( "<br>"); 
 			HttpPostedFile file = Request.Files[f];
 			try{
-				string fPath = uploadPath +"\\" + exportFilename;
-				file.SaveAs( fPath );
-				string jsonStr;
-				jsonStr = "[{";
-				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" bytes,  upload successful...\" "; 
-				jsonStr += "}]";
 				
-				jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-				Response.Write(jsonStr);
+				string fPath = _uploadPath +"\\" + exportFilename;
+				file.SaveAs( fPath );
+				
+				if( jsonStr.Length == 1){
+					jsonStr += "{";
+				} else {
+					jsonStr += ", {";
+				}
+				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" bytes,  upload successful...\" "; 
+				jsonStr += "}";
 			}
 			catch (Exception ex)
 			//catch (IOException ex)
@@ -755,6 +774,10 @@ Response.Write(queryRemoveTable);
 			
 		}//next
 
+		jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+		jsonStr += "]";
+		Response.Write(jsonStr);
+			
 		//string path = System.IO.Directory.GetCurrentDirectory();
 		//Response.Write ( "path: " + path);
 		//Response.Write ( "<br>"); 
@@ -776,8 +799,10 @@ Response.Write(queryRemoveTable);
 	}//end uploadFile()
 	
 	protected void importTable( string xmlFile ){
-//Response.Write ( "xmlFile: " + xmlFile);
-//Response.Write ( "<br>"); 
+Response.Write ( "xmlFile: " + xmlFile);
+Response.Write ( "<br>"); 
+return;
+
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
 		
