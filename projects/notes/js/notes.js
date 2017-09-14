@@ -1062,6 +1062,7 @@ console.log("error in __filter()");
 	// console.log( jsonArr, jsonArr.length );
 			// }
 			
+			//var displayNotes = true;
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
 				var msg = "<p>" +jsonObj["message"]+ "</p>";
@@ -1070,19 +1071,23 @@ console.log("error in __filter()");
 				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
 					msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
 					_className = "alert-danger";
+					//displayNotes = false;
 				}
 				
 				_log("<div class='alert "+_className+" '>" + msg + "</div>");
 			}//next
-			loadNotes();		
+			
+			//if( displayNotes ){
+				loadNotes();		
+			//}
 			
 		} catch(error) {
 	var msg = "";
 	msg += "<p>error JSON.parse server response data</p>";
 	msg += "<p>" + error + "</p>";
-	msg += "<p>data: " + data + "</p>";
+	msg += "<p>data: " + jsonStr + "</p>";
 	_log("<div class='alert alert-danger'>" + msg + "</div>");
-			loadNotesXml();
+			//loadNotesXml();
 		}//end catch
 	
 	}//end displayLog()

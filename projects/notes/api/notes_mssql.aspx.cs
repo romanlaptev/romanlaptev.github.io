@@ -163,6 +163,19 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 	{
 //Response.Write("Page_Init.<br>");
 //Response.Write("Net Framework version - " + Environment.Version.ToString() + "<br>");
+		//Redefine uploadPath
+		if( uploadPath.Length == 0){
+			
+			//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
+			string filePath = Server.MapPath( null );
+//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
+//Response.Write ( "<br>"); 
+
+			//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
+			uploadPath = Path.GetDirectoryName(filePath) + "\\upload";
+		}
+//Response.Write ( "uploadPath: " + uploadPath);
+//Response.Write ( "<br>"); 
 	}//end Page_Init()
 	
 	protected void Page_PreRender(object sender, EventArgs e)
@@ -503,19 +516,6 @@ Response.Write(queryRemoveTable);
 			break;
 				
 			case "upload":
-				//Redefine uploadPath
-				if( uploadPath.Length == 0){
-					
-					//https://msdn.microsoft.com/en-us/library/36s52zhs(v=vs.110).aspx
-					string filePath = Server.MapPath( null );
-//Response.Write ( "filePath: " + filePath); //filepath: C:\www\romanlaptev.github.io\projects\notes\api
-//Response.Write ( "<br>"); 
-
-					//https://msdn.microsoft.com/ru-ru/library/system.io.path.getdirectoryname(v=vs.110).aspx
-					uploadPath = Path.GetDirectoryName(filePath) + "\\upload";
-				}
-//Response.Write ( "uploadPath: " + uploadPath);
-//Response.Write ( "<br>"); 
 				uploadFile( uploadPath );
 			break;
 
@@ -799,9 +799,9 @@ Response.Write(queryRemoveTable);
 	}//end uploadFile()
 	
 	protected void importTable( string xmlFile ){
-Response.Write ( "xmlFile: " + xmlFile);
-Response.Write ( "<br>"); 
-return;
+//Response.Write ( "xmlFile: " + xmlFile);
+//Response.Write ( "<br>"); 
+//return;
 
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
