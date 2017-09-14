@@ -639,8 +639,8 @@ System_CAPS_pubproperty	TargetSite
 			jsonStr += "]";
 			Response.Write(jsonStr);
 		} else {
-			jsonStr = "[{\"error_code\" : \"1\"}, ";
-			jsonStr += "{\"message\" : \"No rows found in table <b>"+tableName+"</b>\"}]";
+			jsonStr = "[{\"error_code\" : \"emptyTable\", ";
+			jsonStr += "\"message\" : \"No rows found in table <b>"+tableName+"</b>. Use import from XML\"}]";
 			Response.Write( jsonStr );
 		}
 		reader.Close();
@@ -775,7 +775,7 @@ System_CAPS_pubproperty	TargetSite
 				} else {
 					jsonStr += ", {";
 				}
-				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" bytes,  upload successful...\" "; 
+				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" Kbytes,  upload successful...\" "; 
 				jsonStr += "}";
 			}
 			catch (Exception ex)

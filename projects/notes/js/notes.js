@@ -817,7 +817,7 @@ console.log( all_headers );
 			"params" : params,
 			"onError" : _onerror,
 			"callback": function( data ){
-console.log(data.length, typeof data, data);				
+//console.log(data.length, typeof data, data);				
 
 				// //hide block overlay and wait window
 				// if( overlay ){
@@ -841,7 +841,7 @@ console.log(data.length, typeof data, data);
 								});
 							} else {
 								displayLog( data, function(){
-console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
+//console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
 								});	
 							}
 							
@@ -1076,6 +1076,8 @@ console.log("error in __filter()");
 			//var displayNotes = true;
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
+//console.log( jsonObj );
+
 				var msg = "<p>" +jsonObj["message"]+ "</p>";
 				var _className = "alert-success";
 				
