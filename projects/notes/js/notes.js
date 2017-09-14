@@ -830,15 +830,21 @@ console.log(data.length, typeof data, data);
 				
 				if( data.length > 0){
 						try{
-							var jsonObj = JSON.parse( data, function(key, value) {
+							var jsonArr = JSON.parse( data, function(key, value) {
 //console.log( key, value );
 								return value;
 							});							
-//console.log( jsonObj );
-
-							_drawNotes({
-								"data": jsonObj
-							});
+//console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
+							if( !jsonArr[0]["error_code"] ){
+								_drawNotes({
+									"data": jsonArr
+								});
+							} else {
+								displayLog( data, function(){
+console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
+								});	
+							}
+							
 						} catch(error) {
 var msg = "";
 msg += "<p>loadNotes(), error  JSON.parse server response data</p>";

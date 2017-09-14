@@ -426,6 +426,8 @@ System_CAPS_pubproperty	TargetSite
 	protected void _testRequestParams()
 	{
 	
+		string jsonStr = "";
+		
 		if( Request.QueryString["action"] == null )
 		{
 			Response.Write("error, undefined var 'action' ");
@@ -502,18 +504,27 @@ System_CAPS_pubproperty	TargetSite
 				}
 				
 				queryDeleteNote = queryDeleteNote.Replace("{{id}}", id );
-Response.Write(queryDeleteNote);
 				runQuery( queryDeleteNote );
+
+				jsonStr = "[{";
+				jsonStr += "\"message\": \"Delete note, " + queryDeleteNote + " \" "; 
+				jsonStr += "}]";
 			break;
 				
 			case "clear_notes":
-Response.Write(queryClearNotes);
 				runQuery( queryClearNotes );
+//Response.Write(queryClearNotes);
+				jsonStr = "[{";
+				jsonStr += "\"message\": \"Clear table, " + queryClearNotes + " \" "; 
+				jsonStr += "}]";
 			break;
 				
 			case "remove_table":
-Response.Write(queryRemoveTable);
 				runQuery( queryRemoveTable );
+
+				jsonStr = "[{";
+				jsonStr += "\"message\": \"Rebuild table, " + queryRemoveTable + " \" "; 
+				jsonStr += "}]";
 			break;
 				
 			case "export_notes":
@@ -562,9 +573,10 @@ Response.Write(queryRemoveTable);
 			
 			break;
 			
-		  default:
+			default:
 			break;
 		}		
+		Response.Write(jsonStr);
 		
 	}//end _testRequestParams()
 
@@ -627,7 +639,9 @@ Response.Write(queryRemoveTable);
 			jsonStr += "]";
 			Response.Write(jsonStr);
 		} else {
-			Response.Write("No rows found in table " + tableName);
+			jsonStr = "[{\"error_code\" : \"1\"}, ";
+			jsonStr += "{\"message\" : \"No rows found in table <b>"+tableName+"</b>\"}]";
+			Response.Write( jsonStr );
 		}
 		reader.Close();
 		
