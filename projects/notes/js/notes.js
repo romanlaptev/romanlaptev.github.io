@@ -56,10 +56,13 @@ var _notes = function ( opt ){
 	function _error( id ){
 		switch(id){
 			case "errorPHP":
-				var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b></p>";
+				var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>";
 			break
 			case "errorASPX":
-				var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b></p>";
+				var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>";
+			break
+			case "errorMSSQL":
+				var msg = "<p>test MSSQL failed, cannot connect to database server...</p>";
 			break
 		}//end switch()
 		_log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -397,7 +400,9 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		*/
 		function _postUpload( data ){
 //console.log(arguments);
-			displayLog( data );
+			parseLog({
+				"jsonLog" : data 
+			});
 			$("#importModal").modal("hide");
 			loadNotes();
 		}//end _postUpload()
@@ -775,10 +780,20 @@ console.log(data, typeof data, data.length);
 // _log("<div class='alert alert-danger'>" + msg + "</div>");
 						// loadNotesXml();
 					// }//end catch
-					displayLog( data, function(){
-						_vars["supportMSSQL"] = true;
-						_vars["requestUrl"] = _vars["requestUrlASPX"];
-						loadNotes();		
+					parseLog({
+						"jsonLog" : data,
+						"onSuccess" : function(){
+							_vars["supportMSSQL"] = true;
+							_vars["requestUrl"] = _vars["requestUrlASPX"];
+							loadNotes();		
+						},
+						"onError" : function( errorCode ){
+console.log(errorCode);
+							_error("errorMSSQL");
+							loadNotesXml();
+						}//,
+						//"callback" : function(){
+						//}//end callback
 					});	
 
 				}//end callback
@@ -848,9 +863,12 @@ console.log( all_headers );
 									"data": jsonArr
 								});
 							} else {
-								displayLog( data, function(){
+								parseLog({
+									"jsonLog" : data, 
+									"callback" : function(){
 //console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
-								});	
+									}
+								});
 							}
 							
 						} catch(error) {
@@ -1046,7 +1064,9 @@ console.log("error in __filter()");
 		}
 		
 		function _postFunc( data ){
-			displayLog( data );
+			parseLog({
+				"jsonLog" : data 
+			});
 			//loadNotes();
 			if( typeof callback === "function"){
 				callback();
@@ -1055,10 +1075,29 @@ console.log("error in __filter()");
 		
 	}//end seviceAction
 
-	function displayLog( jsonStr, callback ){
-
+	function parseLog( opt ){
+		var p = {
+			"jsonLog" : "",
+			"onError": null,
+			"onSuccess": null,
+			"callback" : null
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}	
+//console.log( p );
+		
+		if( p["jsonLog"].length === 0){
+var msg = "<p> Warning! empty log....</p>";
+console.log(msg);
+//_log("<div class='alert alert-danger'>" + msg + "</div>");
+			return false;
+		}
+		
 		try{
-			var jsonArr = JSON.parse(jsonStr, function(key, value) {
+			var jsonArr = JSON.parse( p["jsonLog"], function(key, value) {
 	//console.log( key, value );
 				return value;
 			});							
@@ -1082,7 +1121,7 @@ console.log("error in __filter()");
 	// console.log( jsonArr, jsonArr.length );
 			// }
 			
-			//var displayNotes = true;
+			var errorCode = 0;
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
 //console.log( jsonObj );
@@ -1095,30 +1134,39 @@ console.log("error in __filter()");
 						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
 						_className = "alert-danger";
 						//displayNotes = false;
+						errorCode = jsonObj["error_code"];
 					}
 				}
 				
 				_log("<div class='alert "+_className+" '>" + msg + "</div>");
 			}//next
 			
-			//if( displayNotes ){
-				//loadNotes();		
-			//}
+//console.log(errorCode);			
+
+			if( errorCode !== 0){
+				if( typeof p["onError"] === "function"){
+					p["onError"]( errorCode );
+				}
+			} else {
+				if( typeof p["onSuccess"] === "function"){
+					p["onSuccess"]();
+				}
+			}
 			
-			if( typeof callback === "function"){
-				callback();
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
 			}
 			
 		} catch(error) {
 	var msg = "";
 	msg += "<p>error JSON.parse server response data</p>";
 	msg += "<p>" + error + "</p>";
-	msg += "<p>data: " + jsonStr + "</p>";
+	msg += "<p>data: " + p["jsonLog"] + "</p>";
 	_log("<div class='alert alert-danger'>" + msg + "</div>");
 			//loadNotesXml();
 		}//end catch
 	
-	}//end displayLog()
+	}//end parseLog()
 	
 	
 	// public interfaces

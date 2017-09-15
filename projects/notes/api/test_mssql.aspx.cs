@@ -94,7 +94,8 @@ public partial class _Default : System.Web.UI.Page
 //https://msdn.microsoft.com/en-us/library/cc645611.aspx
 			string jsonStr;
 			jsonStr = "[{";
-			jsonStr += "\"error_code\": \""+ex.ErrorCode+"\", "; 
+			jsonStr += "\"error_code\": \"notAccessSQLServer\", "; 
+			jsonStr += "\"errorCode\": \""+ex.ErrorCode+"\", "; 
 			jsonStr += "\"message\": \""+ ex.Message +"\", "; 
 			jsonStr += "\"error_number\": \""+ ex.Number +"\", "; 
 			jsonStr += "\"sql_server\": \""+ dbHost +"\", "; 
