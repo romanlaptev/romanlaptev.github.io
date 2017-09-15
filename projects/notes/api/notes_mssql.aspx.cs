@@ -53,8 +53,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{authorName}}', "+
 " '{{title}}', " +
 " '{{textMessage}}', " +
-" CONVERT(DATETIME,'{{client_date}}'), " +
-" CONVERT(DATETIME,'{{server_date}}'), " +
+" CONVERT(DATETIME,'{{client_date}}', 120), " +
+" CONVERT(DATETIME,'{{server_date}}', 120), " +
 " '{{ip}}' "+
 ");";
 
@@ -63,8 +63,8 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " '{{author}}', "+
 " '{{title}}', "+
 " '{{text_message}}', "+
-" CONVERT(DATETIME,'{{client_date}}'), " +
-" CONVERT(DATETIME,'{{server_date}}'), " +
+" CONVERT(DATETIME,'{{client_date}}', 120), " +
+" CONVERT(DATETIME,'{{server_date}}', 120), " +
 " '{{ip}}' ";
 
 /*
@@ -826,9 +826,9 @@ System_CAPS_pubproperty	TargetSite
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
 		
+		string jsonStr;
 		if ( !File.Exists( xmlFile ) ){
 //Response.Write( xmlFile + " not exists!!!");
-			string jsonStr;
 			jsonStr = "[{";
 			jsonStr += "\"error_code\": \"FileNotExists\", "; 
 			jsonStr += "\"message\": \"" + xmlFile + " not exists...\" "; 
@@ -888,8 +888,8 @@ System_CAPS_pubproperty	TargetSite
 					for (int n = 0; n < note.ChildNodes.Count; n++){
 						string nodeName = note.ChildNodes[n].Name;
 						string nodeValue = note.ChildNodes[n].InnerText;
-						nodeValue = nodeValue.Replace("\t", "");
-						nodeValue = nodeValue.Replace("\n", "");
+						nodeValue = nodeValue.Replace("\t", "");//no Tab
+						nodeValue = nodeValue.Replace("\n", "");//no break line
 //Response.Write( nodeName + ": " + nodeValue );
 //Response.Write ( "<br>"); 
 						items = items.Replace("{{" + nodeName + "}}", nodeValue);
@@ -906,6 +906,12 @@ System_CAPS_pubproperty	TargetSite
 //Response.Write( query );
 //Response.Write ( "<br>"); 
 			runQuery( query );
+
+			jsonStr = "[{";
+			jsonStr += "\"message\": \"Notes from " + xmlFile + " imported to database ...\" "; 
+			jsonStr += "}]";
+			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+			Response.Write(jsonStr);
 			
 		} catch(Exception ex) {
 			Response.Write("<pre>");

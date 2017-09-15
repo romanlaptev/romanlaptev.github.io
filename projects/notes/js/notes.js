@@ -166,6 +166,9 @@ var _notes = function ( opt ){
 										serviceAction({
 											"action" : p[0],
 											"id": p[1]
+										}, 
+										function(){
+											loadNotes();
 										});
 								}
 							} else {
@@ -210,6 +213,9 @@ var _notes = function ( opt ){
 									serviceAction({
 										"action" : p[0],
 										"id": p[1]
+									}, 
+									function(){
+										loadNotes();
 									});
 									
 							} else {
@@ -234,6 +240,7 @@ var _notes = function ( opt ){
 					event.returnValue = false;				
 				}
 				serviceAction({"action" : "import_notes"}, function(){
+					loadNotes();
 					$("#importModal").modal("hide");
 				});
 				
@@ -1039,6 +1046,7 @@ console.log("error in __filter()");
 		
 		function _postFunc( data ){
 			displayLog( data );
+			//loadNotes();
 			if( typeof callback === "function"){
 				callback();
 			}
