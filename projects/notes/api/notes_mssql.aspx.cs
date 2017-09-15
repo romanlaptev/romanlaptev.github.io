@@ -536,9 +536,6 @@ System_CAPS_pubproperty	TargetSite
 			break;
 
 			case "import_notes":
-				//string filePath = Server.MapPath( null );
-				//string uploadPath = Path.GetDirectoryName(filePath) + "\\" + uploadDir;
-				//importTable( uploadPath+ "\\"+ exportFilename);
 				string xmlFilePath = uploadPath+ "\\"+ exportFilename;
 				importTable( xmlFilePath );
 			break;
@@ -775,7 +772,11 @@ System_CAPS_pubproperty	TargetSite
 				} else {
 					jsonStr += ", {";
 				}
-				jsonStr += "\"message\": \"file " + fPath + ", size="+ fPath.Length +" Kbytes,  upload successful...\" "; 
+				FileInfo fileInfo = new FileInfo(fPath);				
+				//int Kb = Math.Round(fileInfo.Length / 1024, 1);
+				long Kb = fileInfo.Length / 1024;
+				jsonStr += "\"message\": \"file " + fPath + ", size="+fileInfo.Length+" bytes , "+ 
+				Kb +" Kbytes,  upload successful...\" "; 
 				jsonStr += "}";
 			}
 			catch (Exception ex)
