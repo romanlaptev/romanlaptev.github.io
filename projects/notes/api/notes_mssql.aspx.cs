@@ -888,8 +888,15 @@ System_CAPS_pubproperty	TargetSite
 					for (int n = 0; n < note.ChildNodes.Count; n++){
 						string nodeName = note.ChildNodes[n].Name;
 						string nodeValue = note.ChildNodes[n].InnerText;
-						nodeValue = nodeValue.Replace("\t", "");//no Tab
-						nodeValue = nodeValue.Replace("\n", "");//no break line
+						nodeValue = nodeValue.Replace("\t", "\\t");//escape Tab
+						nodeValue = nodeValue.Replace("\r", "\\r");//escape break line
+						nodeValue = nodeValue.Replace("\n", "\\n");//escape break line
+						nodeValue = nodeValue.Replace("\"", "&quot;");
+						nodeValue = nodeValue.Replace("<", "&lt;");
+						nodeValue = nodeValue.Replace(">", "&gt;");
+						//nodeValue = nodeValue.Replace("[", "&#91;");
+						//nodeValue = nodeValue.Replace("]", "&#93;");
+						nodeValue = nodeValue.Replace("'", "&#39;");//replace apostrophe
 //Response.Write( nodeName + ": " + nodeValue );
 //Response.Write ( "<br>"); 
 						items = items.Replace("{{" + nodeName + "}}", nodeValue);
