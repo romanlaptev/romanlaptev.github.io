@@ -399,6 +399,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 //console.log(arguments);
 			displayLog( data );
 			$("#importModal").modal("hide");
+			loadNotes();
 		}//end _postUpload()
 			
 	}//end _upload()

@@ -162,7 +162,7 @@ SELECT 'anonymous','no subject', 'test2', CONVERT(DATETIME,'2017-12-09 10:30:46'
 	
 	Note note;
 	List<Note> notes = new List<Note>();
-
+	List<string> log = new List<string>();
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
@@ -181,6 +181,15 @@ SELECT 'anonymous','no subject', 'test2', CONVERT(DATETIME,'2017-12-09 10:30:46'
 		}
 //Response.Write ( "uploadPath: " + uploadPath);
 //Response.Write ( "<br>"); 
+
+		// log.Add("[");
+		// log.Add("{\"first\" : \"test!\"}");
+		// log.Add("]");
+		// foreach (string logStr in log)
+		// {
+			// Response.Write( logStr );
+		// }
+		
 	}//end Page_Init()
 	
 	protected void Page_PreRender(object sender, EventArgs e)
@@ -420,6 +429,23 @@ System_CAPS_pubproperty	TargetSite
 			}
 		}//end	
 		
+		//output log in JSON format
+		//log.Add("{\"error_code\" : \"noaction\", \"message\" : \"error, undefined var 'action'\"}");
+		if( log.Count > 0){
+			string logStr = "[";
+			int num = 0;
+			foreach (string logMsg in log){
+				if( num > 0){
+					logStr += ", ";
+				}
+				logStr += logMsg;
+				num++;
+			}
+			logStr +="]";
+			logStr = logStr.Replace("\\", "&#92;");//replace slash			
+Response.Write( logStr );
+		}
+		
 	}//end Page_Load()
 	
 	
@@ -430,13 +456,15 @@ System_CAPS_pubproperty	TargetSite
 		
 		if( Request.QueryString["action"] == null )
 		{
-			Response.Write("error, undefined var 'action' ");
+			//Response.Write("error, undefined var 'action' ");
+			log.Add("{\"message\" : \"no action, undefined var 'action'\"}");
 			return;
 		}
 		string action = Request.QueryString["action"];
 		if( action.Length == 0 )
 		{
-			Response.Write("error, empty var 'action'");
+			//Response.Write("error, empty var 'action'");
+			log.Add("{\"message\" : \"error, empty var 'action'\"}");
 			return;
 		}
 //Response.Write ( action ); 
@@ -455,7 +483,8 @@ System_CAPS_pubproperty	TargetSite
 				if ( Request.HttpMethod == "POST" ) {
 					textMessage = Request.Form["text_message"];
 					if( textMessage.Length == 0 ){
-						Response.Write("error, empty var 'text_message'");
+						//Response.Write("error, empty var 'text_message'");
+						log.Add("{\"message\" : \"error, empty var 'text_message'\"}");						
 						return;
 					}
 					authorName = Request.Form["author_name"];
@@ -493,38 +522,42 @@ System_CAPS_pubproperty	TargetSite
 			case "delete_note":
 				if( Request.QueryString["id"] == null )
 				{
-					Response.Write("error, undefined var 'id' ");
+					//Response.Write("error, undefined var 'id' ");
+					log.Add("{\"message\" : \"error, undefined var 'id'\"}");	
 					return;
 				}
 				string id = Request.QueryString["id"];
 				if( id.Length == 0 )
 				{
-					Response.Write("error, empty var 'id'");
+					//Response.Write("error, empty var 'id'");
+					log.Add("{\"message\" : \"error, empty var 'id'\"}");	
 					return;
 				}
 				
 				queryDeleteNote = queryDeleteNote.Replace("{{id}}", id );
 				runQuery( queryDeleteNote );
 
-				jsonStr = "[{";
-				jsonStr += "\"message\": \"Delete note, " + queryDeleteNote + " \" "; 
-				jsonStr += "}]";
+				//jsonStr = "[{";
+				//jsonStr += "\"message\": \"Delete note, " + queryDeleteNote + " \" "; 
+				//jsonStr += "}]";
+				log.Add("{ \"message\" : \"Delete note, " + queryDeleteNote + "\"}");	
 			break;
 				
 			case "clear_notes":
 				runQuery( queryClearNotes );
 //Response.Write(queryClearNotes);
-				jsonStr = "[{";
-				jsonStr += "\"message\": \"Clear table, " + queryClearNotes + " \" "; 
-				jsonStr += "}]";
+				//jsonStr = "[{";
+				//jsonStr += "\"message\": \"Clear table, " + queryClearNotes + " \" "; 
+				//jsonStr += "}]";
+				log.Add("{\"message\" : \"Clear table, " + queryClearNotes + " \"}");	
 			break;
 				
 			case "remove_table":
 				runQuery( queryRemoveTable );
-
-				jsonStr = "[{";
-				jsonStr += "\"message\": \"Rebuild table, " + queryRemoveTable + " \" "; 
-				jsonStr += "}]";
+				//jsonStr = "[{";
+				//jsonStr += "\"message\": \"Rebuild table, " + queryRemoveTable + " \" "; 
+				//jsonStr += "}]";
+				log.Add("{\"message\" : \"Rebuild table, " + queryRemoveTable + " \"}");	
 			break;
 				
 			case "export_notes":
@@ -636,9 +669,10 @@ System_CAPS_pubproperty	TargetSite
 			jsonStr += "]";
 			Response.Write(jsonStr);
 		} else {
-			jsonStr = "[{\"error_code\" : \"emptyTable\", ";
-			jsonStr += "\"message\" : \"No rows found in table <b>"+tableName+"</b>. Use import from XML\"}]";
-			Response.Write( jsonStr );
+			//jsonStr = "[{\"error_code\" : \"emptyTable\", ";
+			//jsonStr += "\"message\" : \"No rows found in table <b>"+tableName+"</b>. Use import from XML\"}]";
+			//Response.Write( jsonStr );
+			log.Add("{\"error_code\" : \"emptyTable\", \"message\" : \"No rows found in table <b>"+tableName+"</b>. Use import from XML\"}");	
 		}
 		reader.Close();
 		
@@ -729,27 +763,28 @@ System_CAPS_pubproperty	TargetSite
 			// Response.Write ( "<br>"); 
 		// }
 		
-		string jsonStr;
-		jsonStr = "[";
+		//string jsonStr;
+		//jsonStr = "[";
 			
 		//https://msdn.microsoft.com/ru-ru/library/54a0at6s(v=vs.110).aspx
 		if ( !Directory.Exists( _uploadPath ) ){
-			jsonStr += "{"; 
-			jsonStr += "\"error_code\": \"DirectoryNotFound\", "; 
-			jsonStr += "\"message\": \"Directory " + _uploadPath + " not exists!!!\" "; 
-			jsonStr += "}";
-			
+			//jsonStr += "{"; 
+			//jsonStr += "\"error_code\": \"DirectoryNotFound\", "; 
+			//jsonStr += "\"message\": \"Directory " + _uploadPath + " not exists!!!\" "; 
+			//jsonStr += "}";
+			log.Add("{\"error_code\" : \"DirectoryNotFound\", \"message\" : \"Directory " + _uploadPath + " not exists...\"}");	
 			//return;
 			try
 			{
 				Directory.CreateDirectory ( _uploadPath );
-				if( jsonStr.Length == 1){
-					jsonStr += "{";
-				} else {
-					jsonStr += ", {";
-				}
-				jsonStr += "\"message\": \"directory " + _uploadPath + "  created...\" "; 
-				jsonStr += "}";
+				//if( jsonStr.Length == 1){
+					//jsonStr += "{";
+				//} else {
+					//jsonStr += ", {";
+				//}
+				//jsonStr += "\"message\": \"directory " + _uploadPath + "  created...\" "; 
+				//jsonStr += "}";
+				log.Add("{\"message\" : \"directory " + _uploadPath + "  was created...\"}");	
 			}
 			catch (Exception ex2)
 			{
@@ -767,17 +802,21 @@ System_CAPS_pubproperty	TargetSite
 				string fPath = _uploadPath +"\\" + exportFilename;
 				file.SaveAs( fPath );
 				
-				if( jsonStr.Length == 1){
-					jsonStr += "{";
-				} else {
-					jsonStr += ", {";
-				}
+				//if( jsonStr.Length == 1){
+					//jsonStr += "{";
+				//} else {
+					//jsonStr += ", {";
+				//}
 				FileInfo fileInfo = new FileInfo(fPath);				
 				//int Kb = Math.Round(fileInfo.Length / 1024, 1);
 				long Kb = fileInfo.Length / 1024;
-				jsonStr += "\"message\": \"file " + fPath + ", size="+fileInfo.Length+" bytes , "+ 
-				Kb +" Kbytes,  upload successful...\" "; 
-				jsonStr += "}";
+				//jsonStr += "\"message\": \"file " + fPath + ", size="+fileInfo.Length+" bytes , "+ 
+				//Kb +" Kbytes,  upload successful...\" "; 
+				//jsonStr += "}";
+				string _msg = "file " + fPath + ", size="+fileInfo.Length+" bytes , "+ Kb +" Kbytes,  upload successful...";
+				log.Add("{\"message\" : \"" + _msg + "\"}");	
+				
+				importTable( fPath );
 			}
 			catch (Exception ex)
 			//catch (IOException ex)
@@ -794,9 +833,10 @@ System_CAPS_pubproperty	TargetSite
 			
 		}//next
 
-		jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-		jsonStr += "]";
-		Response.Write(jsonStr);
+		//log.Add("{\"error_code\" : \"emptyTable\", \"message\" : \"No rows found in table <b>"+tableName+"</b>. Use import from XML\"}");	
+		//jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+		//jsonStr += "]";
+		//Response.Write(jsonStr);
 			
 		//string path = System.IO.Directory.GetCurrentDirectory();
 		//Response.Write ( "path: " + path);
@@ -826,16 +866,18 @@ System_CAPS_pubproperty	TargetSite
 		//https://msdn.microsoft.com/ru-ru/library/hcebdtae(v=vs.110).aspx		
 		XmlDocument doc = new XmlDocument();
 		
-		string jsonStr;
+		//string jsonStr;
 		if ( !File.Exists( xmlFile ) ){
 //Response.Write( xmlFile + " not exists!!!");
-			jsonStr = "[{";
-			jsonStr += "\"error_code\": \"FileNotExists\", "; 
-			jsonStr += "\"message\": \"" + xmlFile + " not exists...\" "; 
-			jsonStr += "}]";
+			//jsonStr = "[{";
+			//jsonStr += "\"error_code\": \"FileNotExists\", "; 
+			//jsonStr += "\"message\": \"" + xmlFile + " not exists...\" "; 
+			//jsonStr += "}]";
 			
-			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-			Response.Write(jsonStr);
+			//jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+			//Response.Write(jsonStr);
+			log.Add("{\"error_code\" : \"FileNotExists\", \"message\" : \"file " + xmlFile + " not exists...\"}");
+			
 			return;
 		}
 		
@@ -914,11 +956,12 @@ System_CAPS_pubproperty	TargetSite
 //Response.Write ( "<br>"); 
 			runQuery( query );
 
-			jsonStr = "[{";
-			jsonStr += "\"message\": \"Notes from " + xmlFile + " imported to database ...\" "; 
-			jsonStr += "}]";
-			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-			Response.Write(jsonStr);
+			//jsonStr = "[{";
+			//jsonStr += "\"message\": \"Notes from " + xmlFile + " imported to database ...\" "; 
+			//jsonStr += "}]";
+			//jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
+			//Response.Write(jsonStr);
+			log.Add("{\"message\" : \"Notes from " + xmlFile + " imported to database ...\"}");
 			
 		} catch(Exception ex) {
 			Response.Write("<pre>");
