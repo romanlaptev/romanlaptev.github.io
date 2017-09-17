@@ -123,7 +123,7 @@ body, html
 	<div class="page-header">
 		<h1>Bookmarks...</h1>
 	</div>
-	<div class="row">
+	<div class="panel">
 <xsl:for-each select="document('mydb.xml')/main/bookmarks/section">
 <!--
 <b><xsl:number/>. </b><h3><xsl:value-of select="@title"/></h3> 
