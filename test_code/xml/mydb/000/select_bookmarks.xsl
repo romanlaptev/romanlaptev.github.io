@@ -19,6 +19,15 @@ span a
 	text-decoration:none;
 	font-size:11pt;
 }
+a:focus, a:hover {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:visited {
+  color: darkblue;
+  text-decoration: none;
+}
+
 p
 {
 	text-align:right;
@@ -112,7 +121,7 @@ body, html
 <!-- вывести секции закладок  -->
 <div id="left" class="container">
 	<div class="page-header">
-		<h1>Notes...</h1>
+		<h1>Bookmarks...</h1>
 	</div>
 	<div class="row">
 <xsl:for-each select="document('mydb.xml')/main/bookmarks/section">
