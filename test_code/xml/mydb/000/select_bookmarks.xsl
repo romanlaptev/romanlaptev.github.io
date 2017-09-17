@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <style>
 a
@@ -28,21 +29,18 @@ p
 span
 {
 	background:#2C3F66;
-	border: 7px outset #000000;
+	border: 3px outset #000000;
 	display: block;
 	float: left;
-	height: 65px;
-	width: 120px;
-	margin:0px;
-	padding-top:3px;
-	padding-bottom:3px;
-	padding-left:3px;
-	padding-right:3px;
+	/*height: 65px;
+	width: 120px;*/
+	margin:1px;
+	padding:10px;
 	text-align:center;
 	word-wrap: break-word;
-	border-radius:18px;
-	-moz-border-radius:18px;
-	-webkit-border-radius:18px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
 }
 
 div.section
@@ -50,12 +48,12 @@ div.section
 	/*background:#5A2000;*/
 	background:#cccccc;
 	/*border:7px outset #FFAC19;*/
-	border: 7px double black;
+	/*border: 7px double black;*/
 	/*color:#ffffff;*/
 	position: absolute;
-	width:700px;
+	/*width:700px;*/
 	overflow-x:hidden;
-	top: 20px;
+	top: 15%;
 	left: 20px;
 	padding-top:2px;
 	padding-bottom: 10px;
@@ -64,7 +62,7 @@ div.section
 }
 #left
 {
-	width:85%;
+	/*width:85%;*/
 }
 </style>
 <script>
@@ -74,8 +72,8 @@ function processnode(nnodeid)
 {
 //alert (nnodeid);
 
-// спрятать все элементы div, кроме 0
-for (n1=1; n1 &lt; document.getElementsByTagName('DIV').length; n1++)
+// спрятать все элементы div, кроме 0,1, 3
+for (n1=3; n1 &lt; document.getElementsByTagName('DIV').length; n1++)
 {
    var divs = document.getElementsByTagName('DIV')[n1];
    divs.style.display="none";
@@ -111,9 +109,12 @@ body, html
 </style>
 -->
 <body>
-
 <!-- вывести секции закладок  -->
-<div id="left">
+<div id="left" class="container">
+	<div class="page-header">
+		<h1>Notes...</h1>
+	</div>
+	<div class="row">
 <xsl:for-each select="document('mydb.xml')/main/bookmarks/section">
 <!--
 <b><xsl:number/>. </b><h3><xsl:value-of select="@title"/></h3> 
@@ -121,7 +122,7 @@ body, html
 		<span>
 		<a href='javascript:processnode("section_{position()}")'><xsl:value-of select="@title"/></a><br/>
 		</span>
-		<div style='display:none' class="section" id="section_{position()}">
+		<div style='display:none' class="section container" id="section_{position()}">
 		<p><a href="#" onClick="javascript:document.getElementById('section_{position()}').style.display = 'none'"> x</a></p>
 <!--		
 		<div style='display: none;  position: absolute; top:1mm; left:220px; background-color: white; border-style:solid; border-color: white;  padding:4mm;' id='section_{position()}'>
@@ -141,7 +142,8 @@ body, html
 		</div>
 
 </xsl:for-each>
-</div>
+	</div><!-- end row -->
+</div><!-- end container -->
 
 </body>
 </html>
