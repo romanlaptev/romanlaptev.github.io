@@ -67,12 +67,13 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 " CONVERT(DATETIME,'{{server_date}}', 120), " +
 " '{{ip}}' ";
 
-/*
-INSERT INTO notes (author, title, text_message, client_date, server_date, ip)
-SELECT 'anonymous','no subject', 'test1', CONVERT(DATETIME,'2017-12-09 10:30:46'),CONVERT(DATETIME, '2017-12-09 09:30:46'), '192.168.56.1'
-UNION ALL
-SELECT 'anonymous','no subject', 'test2', CONVERT(DATETIME,'2017-12-09 10:30:46'),CONVERT(DATETIME, '2017-12-09 09:30:46'), '192.168.56.1'
-*/
+	string queryUpdateNote = "UPDATE " +tableName+ " SET " +
+"author = '{{author}}', " +
+"title = '{{title}}', "+
+"text_message = '{{text_message}}', "+
+"client_date = CONVERT(DATETIME,'{{client_date}}', 120), " +
+"server_date = CONVERT(DATETIME,'{{server_date}}', 120), " +
+"ip = '{{ip}}' WHERE id={{id}}";
 
 	string queryDeleteNote = "DELETE FROM "+tableName+" WHERE id={{id}}";
 	string queryClearNotes = "TRUNCATE TABLE " + tableName;
@@ -454,6 +455,14 @@ Response.Write( logStr );
 	
 		string jsonStr = "";
 		
+		string authorName = "";
+		string title = "";
+		string textMessage = "";
+		string clientDate = "";
+		string serverDate = "";
+		string ip = "";
+		string nid = "";
+		
 		if( Request.QueryString["action"] == null )
 		{
 			//Response.Write("error, undefined var 'action' ");
@@ -473,12 +482,6 @@ Response.Write( logStr );
 		switch (action)
 		{
 			case "save_note":
-				string authorName = "";
-				string title = "";
-				string textMessage = "";
-				string clientDate = "";
-				string serverDate = "";
-				string ip = "";
 				
 				if ( Request.HttpMethod == "POST" ) {
 					textMessage = Request.Form["text_message"];
@@ -541,6 +544,51 @@ Response.Write( logStr );
 				//jsonStr += "\"message\": \"Delete note, " + queryDeleteNote + " \" "; 
 				//jsonStr += "}]";
 				log.Add("{ \"message\" : \"Delete note, " + queryDeleteNote + "\"}");	
+			break;
+			
+			case "edit_note":
+// foreach ( string x in Request.Params )//GET
+// {
+	// Response.Write ( "<b>Request.Params["+x + "]</b> = " + Request.Params[x]); 
+	// Response.Write ( "<br>"); 
+// }
+// foreach ( string x in Request.Form )//POST
+// {
+	// Response.Write ( "<b>Request.Form["+x + "]</b> = " + Request.Form[x]); 
+	// Response.Write ( "<br>"); 
+// }
+				if ( Request.HttpMethod == "POST" ) {
+					textMessage = Request.Form["text_message"];
+					if( textMessage.Length == 0 ){
+						//Response.Write("error, empty var 'text_message'");
+						log.Add("{\"message\" : \"error, empty var 'text_message'\"}");						
+						return;
+					}
+					nid = Request.Form["id"];
+					authorName = Request.Form["author_name"];
+					title = Request.Form["title"];
+					clientDate = Request.Params["date"];
+				} 
+			
+				queryUpdateNote = queryUpdateNote.Replace("{{id}}", nid);
+				queryUpdateNote = queryUpdateNote.Replace("{{author}}", authorName);
+				queryUpdateNote = queryUpdateNote.Replace("{{title}}", title);
+				
+				//textMessage = textMessage.Replace("<", "lt;");
+				//textMessage = textMessage.Replace(">", "gt;");
+				textMessage = textMessage.Replace("'", "&#39");//replace apostrophe
+				queryUpdateNote = queryUpdateNote.Replace("{{text_message}}", textMessage);
+				
+				queryUpdateNote = queryUpdateNote.Replace("{{client_date}}", clientDate);
+
+				serverDate = DateTime.Today.ToString("yyyy-MM-dd") + " "+DateTime.Now.ToString("HH:mm:ss");
+				queryUpdateNote = queryUpdateNote.Replace("{{server_date}}", serverDate);
+				
+				ip = Request.ServerVariables["REMOTE_ADDR"];
+				queryUpdateNote = queryUpdateNote.Replace("{{ip}}", ip);
+				
+Response.Write ( queryUpdateNote ); 
+				//runQuery( queryUpdateNote );
 			break;
 				
 			case "clear_notes":

@@ -89,18 +89,25 @@ var _notes = function ( opt ){
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
 			if( _vars["supportPHP"] ){
-				_checkForm(this);
+				checkForm({
+					"form" : this, 
+					"modalWindowId" : "#newModal",
+					"action" : "save_note"
+				});
 			} else {
 				//_error("errorPHP");
 			}
 			
 			if( _vars["supportASPX"] ){
-				_checkForm(this);
+				checkForm({
+					"form" : this, 
+					"modalWindowId" : "#newModal",
+					"action" : "save_note"
+				});
 			} else {
 				//_error("errorASPX");
 			}
 			
-			$("#newModal").modal("hide");
 			return false;
 		};//end event
 
@@ -123,20 +130,42 @@ var _notes = function ( opt ){
 		});//end event
 		
 		$("#message-edit-form").on("submit", function(){
-console.log("submit");
-			var error = false;
-
-			// $(".user-info input").each(function(){
-				// //if ( $.trim( $(this).val() ) == "" && $(this).attr("id") != 'email') {
-				// if ( $.trim( $(this).val() ) == "") {
+			//var error = false;
+			// $("#message-edit-form .test").each(function(){
+				// if ( $.trim( $(this).val() ).length === 0) {
 					// error = true;
-					// $(this).parents(".field").addClass('error');
+					// $(this).addClass("alert-danger");
 				// }
 			// });
 
-			// if (!error) {
-				// $(".overlay").fadeIn(200);
-			// }
+			// if (!error){
+				// sendForm( formValues );
+				// $("#editModal").modal("hide");
+			// } else{
+				// //e.preventDefault();
+	// var msg = "<p>error in form..</p>";
+	// _log("<div class='alert alert-warning'>" + msg + "</div>");
+			// }	
+			if( _vars["supportPHP"] ){
+				checkForm({
+					"form" : this, 
+					"modalWindowId" : "#editModal",
+					"action" : "edit_note"
+				});
+			} else {
+				
+				if( _vars["supportASPX"] ){
+					if( _vars["supportMSSQL"] ){
+						checkForm({
+							"form" : this, 
+							"modalWindowId" : "#editModal",
+							"action" : "edit_note"
+						});
+					}
+				}
+
+			}
+			
 			return false;
 		});//end event
 		
@@ -447,7 +476,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 	}//end _upload()
 	
 	
-	function _checkForm(form){
+	function checkForm(opt){
+		var p = {
+			"form" : null,
+			"modalWindowId" : "", 
+			"action" : ""
+		};
 //console.log(form);
 	//for(var key in form){
 	//console.log(key, form[key]);
@@ -455,8 +489,16 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 	//	for( var n = 0; n < form.elements.length; n++){
 	//console.log(form.elements[n]);
 	//	}//next
+	
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}	
+//console.log( p );
 
+		var form = p["form"];
 		var formValues = {
+			"action" : p["action"],
 			"requestMethod" : form.getAttribute("method"),
 			"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null
 		};
@@ -498,10 +540,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;
 		}
-						
+
+		formValues["id"] = form.elements.id.value;
+		
 		if (isValid){
 			sendForm( formValues );
-			$("#newModal").modal("hide");
+			$( p["modalWindowId"] ).modal("hide");
 		} else{
 			//e.preventDefault();
 var msg = "<p>error in form..</p>";
@@ -509,15 +553,16 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		}	
 		return false;
 		
-	}//end _checkForm()	
+	}//end checkForm()	
 	
 	function sendForm( opt ){
 		var p = {
+			"id": null, 
 			"creation_date" : "",
 			"authorName" : "anonymous",
 			"title" : "no subject",
 			"textMessage" : "",
-			"action": "save_note",
+			"action": "",
 			"url" : _vars["requestUrl"],
 			"requestMethod" : "GET",
 			"enctype" : null,
@@ -565,6 +610,7 @@ console.log( p );
 			// return false;
 		// }
 		var formData = {
+			"id" : p["id"],
 			"author_name" : p["authorName"],
 			"title" : p["title"],
 			"text_message" : p["textMessage"]
@@ -572,7 +618,8 @@ console.log( p );
 // for(var key in form_message){
 // console.log( key, form_message[key]);	
 // }		
-// return;
+//console.log( formData );	
+//return false;
 
 		runAjax( {
 			"requestMethod" : p["requestMethod"], 

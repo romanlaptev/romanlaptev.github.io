@@ -173,35 +173,36 @@
 <form 
 name="form_message_edit" 
 id="message-edit-form" 
-action="?action=edit_note" 
+action=""
 method="POST" 
 enctype="application/x-www-form-urlencoded">
+<!-- action="?action=edit_note"  -->
 				<div class="modal-body">
 					<div class=" panel panel-primary">
 						<div class="panel-body">
 							<input type="text" name="id" value="32" readonly>
 							<div class="form-group">
 								<label id="name-label">*Name: </label>
-								<input type="text" class="form-control" name="author_name" value="">
+								<input type="text" class="form-control test" name="author_name" value="">
 							</div>
 
 							<div class="form-group">
 								<label id="title-label">Title (subject): </label>
-								<input type="text" class="form-control" name="title" value="">
+								<input type="text" class="form-control test" name="title" value="">
 							</div>
 
 							<div class="form-group">
 								<label id="text-message-label">*text message: </label>
-								<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
+								<textarea id="notes-text" name="text_message" class="form-control test" rows="10"></textarea>
 							</div>						
-	<p><small>
-	use <b>[code] unformatted text [/code]</b>,
-	<b>[[url | text]]</b> for link adding, 
-	<b>[br]</b> for break line
-	</small>
-	</p>
+	<!-- <p><small> -->
+	<!-- use <b>[code] unformatted text [/code]</b>, -->
+	<!-- <b>[[url | text]]</b> for link adding,  -->
+	<!-- <b>[br]</b> for break line -->
+	<!-- </small> -->
+	<!-- </p> -->
 						</div>
-						
+						<div id="form-edit-log"></div>
 						<div class="panel-footer">
 							<!-- <button type="reset" class="btn btn-large btn-warning">reset form</button> -->
 							<button type="submit" class="btn btn-large btn-primary">save</button>
