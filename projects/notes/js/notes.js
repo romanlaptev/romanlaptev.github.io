@@ -34,7 +34,8 @@ var _notes = function ( opt ){
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
 		"messagesList" : getById("messages"),		
-		"controlPanel" : getById("control-btn")
+		"controlPanel" : getById("control-btn"),
+		"hideControlPanel" : false
 	};
 	
 	//correct for remote run
@@ -900,7 +901,10 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 
 	function loadNotesXml(){
 		
+		//hide CONTROL PANEL
 		$("#control-btn").children("div").hide();
+		_vars["hideControlPanel"]=true;
+		
 		_vars["messagesList"].innerHTML = "";
 		runAjax( {
 			"requestMethod" : "GET", 
@@ -973,7 +977,11 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		}//next
 		
 		_vars["messages"].innerHTML = listHtml;
-
+		//hide DELETE btn
+		if( _vars["hideControlPanel"] ){
+			$(".btn-delete-notes").hide();
+		}
+		
 		function __filter(textMessage){
 //console.log(textMessage);
 			if( textMessage.length === 0){
