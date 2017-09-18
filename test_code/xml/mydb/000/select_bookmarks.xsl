@@ -43,15 +43,15 @@ span
 	float: left;
 	/*height: 65px;
 	width: 120px;*/
-	/*margin:1px;*/
+	margin:1px;
 	padding:10px;
 	text-align:center;
 /*	
 	word-wrap: break-word;
+*/
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-*/
 }
 
 div.section
