@@ -949,15 +949,15 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			var items = p["data"][n];
 			
 			//filter text message
-			if( items["text_message"] ){
+			// if( items["text_message"] ){
 				items["text_message"] = __filter( items["text_message"] );
-			} else {
+			// } else {
 				
-				if( items["text"] ){
-					items["text_message"] = __filter( items["text"] );
-				}
+				// if( items["text"] ){
+					// items["text_message"] = __filter( items["text"] );
+				// }
 				
-			}
+			// }
 			
 			for( var key in items){
 //console.log(key, items[key]);
@@ -981,6 +981,9 @@ console.log("error in __filter()");
 				return false;
 			}
 			textMessage = textMessage
+//.replace(/&/g, "&amp;")
+.replace(/\</g, "&lt;")
+.replace(/\>/g, "&gt;")
 .replace(/\[code\]/g, "<pre>")
 .replace(/\[\/code\]/g, "</pre>")
 .replace(/\[br\]/g, "<br/>");
