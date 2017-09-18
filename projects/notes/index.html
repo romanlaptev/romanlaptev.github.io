@@ -67,23 +67,35 @@
 		<div class="panel-body" id="messages">
 <script id="tpl-message-list" type="text/template">
 <div class="row">
-	<div class="">
+	<div class="" id="note-{{id}}">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<strong>{{title}}</strong> 
+				<strong class="title">{{title}}</strong> 
+				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
+<div class="pull-right">
+	<button class="btn btn-info btn-sm btn-edit-note" data-toggle="modal" data-target="#editModal" data-id="{{id}}">edit note</button>
+	<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger btn-delete-note">delete note</a>
+</div>
+ <br><br>
+ 
 			</div>
 			
 			<div class="panel-footer">
-				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
-				<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger pull-right btn-delete-notes">delete</a>
 				<p class="text-muted">
-				<small>created:</small><strong>{{author}}</strong>, 
-				<small>date:</small> {{client_date}} <small>( server date: {{server_date}})</small>,
-				<small>send from ip: {{ip}}</small>
+					<small>created:</small><strong class="author">{{author}}</strong>, 
+					<span class="date">
+						<small>date:</small> {{client_date}} 
+					</span>
+					<span class="server-date">
+						<small>( server date: {{server_date}})</small>,
+					</span>
+					<span class="ip">
+						<small>send from ip: {{ip}}</small>
+					</span>
 				</p>
 			</div>
 			
-			<div class="panel-body">
+			<div class="panel-body text-message">
 			{{text_message}}
 			</div>
 			
@@ -149,6 +161,63 @@
 		</div>
 	</div><!-- end newModal -->
 
+<!-- ********************** editModal ************************** -->	
+	<div id="editModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">edit note</h4>
+				</div>
+				
+<form 
+name="form_message_edit" 
+id="message-edit-form" 
+action="?action=edit_note" 
+method="POST" 
+enctype="application/x-www-form-urlencoded">
+				<div class="modal-body">
+					<div class=" panel panel-primary">
+						<div class="panel-body">
+							<input type="text" name="id" value="32" readonly>
+							<div class="form-group">
+								<label id="name-label">*Name: </label>
+								<input type="text" class="form-control" name="author_name" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="title-label">Title (subject): </label>
+								<input type="text" class="form-control" name="title" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="text-message-label">*text message: </label>
+								<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
+							</div>						
+	<p><small>
+	use <b>[code] unformatted text [/code]</b>,
+	<b>[[url | text]]</b> for link adding, 
+	<b>[br]</b> for break line
+	</small>
+	</p>
+						</div>
+						
+						<div class="panel-footer">
+							<!-- <button type="reset" class="btn btn-large btn-warning">reset form</button> -->
+							<button type="submit" class="btn btn-large btn-primary">save</button>
+						</div>
+					</div><!-- end panel-->
+				</div><!-- end modal-body-->
+</form>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end editModal -->
+	
 <!-- ********************** importModal ************************** -->	
 	<div id="importModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">

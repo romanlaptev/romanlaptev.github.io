@@ -103,6 +103,43 @@ var _notes = function ( opt ){
 			$("#newModal").modal("hide");
 			return false;
 		};//end event
+
+		//EDIT
+		$('#editModal').on('show.bs.modal', function (e) {
+			var btn = $(e.relatedTarget);
+			
+			var note_id = btn.data("id");
+			$("#message-edit-form input[name=id]").val( note_id );
+			
+			var title = $("#note-" + note_id + " .title").text();
+			$("#message-edit-form input[name=title]").val( title );
+			
+			var author = $("#note-" + note_id + " .author").text();
+			$("#message-edit-form input[name=author_name]").val( author );
+			
+			var text_message = $("#note-" + note_id + " .text-message").html();
+			$("#message-edit-form textarea[name=text_message]").val( text_message );
+			
+		});//end event
+		
+		$("#message-edit-form").on("submit", function(){
+console.log("submit");
+			var error = false;
+
+			// $(".user-info input").each(function(){
+				// //if ( $.trim( $(this).val() ) == "" && $(this).attr("id") != 'email') {
+				// if ( $.trim( $(this).val() ) == "") {
+					// error = true;
+					// $(this).parents(".field").addClass('error');
+				// }
+			// });
+
+			// if (!error) {
+				// $(".overlay").fadeIn(200);
+			// }
+			return false;
+		});//end event
+		
 		
 		//UPLOAD
 		document.forms["form_import"].onsubmit = function(e) {
@@ -164,8 +201,7 @@ var _notes = function ( opt ){
 							var parseStr = search[1]; 
 //console.log( search, parseStr );
 							if( parseStr.length > 0 ){
-								if( parseStr.indexOf("edit_note") !== -1 ||
-									parseStr.indexOf("delete_note") !== -1){
+								if( parseStr.indexOf("delete_note") !== -1){
 										var p = parseStr.split("-");
 										serviceAction({
 											"action" : p[0],
@@ -979,7 +1015,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		_vars["messages"].innerHTML = listHtml;
 		//hide DELETE btn
 		if( _vars["hideControlPanel"] ){
-			$(".btn-delete-notes").hide();
+			$(".btn-delete-note").hide();
 		}
 		
 		function __filter(textMessage){
