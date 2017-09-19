@@ -273,6 +273,37 @@ Response.Write("<hr>");
 			}//next
 
 			
+			Response.Write("<hr>");
+			Response.Write("<h2> Dictionary </h2>");
+
+			Dictionary<int, string> countries = new Dictionary<int, string>(5);
+			countries.Add(1, "Russia");
+			countries.Add(3, "Great Britain");
+			countries.Add(2, "USA");
+			countries.Add(4, "France");
+			countries.Add(5, "China");
+			//countries.Add("key", "Germany");
+
+			// получение элемента по ключу
+			string country = countries[4];
+			// изменение объекта
+			countries[4] = "Spain";
+			// удаление по ключу
+			countries.Remove(2);
+			
+			foreach (KeyValuePair<int, string> keyValue in countries)
+			{
+				Response.Write(keyValue.Key + " - " + keyValue.Value);
+			}
+			Response.Write("<br>");
+			
+			Dictionary<string, string> myTest = new Dictionary<string, string>(5);
+			myTest.Add("key1", "Germany");
+			foreach (KeyValuePair<string, string> keyValue in myTest)
+			{
+				Response.Write(keyValue.Key + " - " + keyValue.Value);
+			}
+ 
 		}//end Page_LoadComplete()
 		
 	}//end class

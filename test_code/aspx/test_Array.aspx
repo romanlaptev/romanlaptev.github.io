@@ -46,6 +46,9 @@ Object в .NET Framework
 
 https://metanit.com/sharp/tutorial/4.9.php
 Коллекция Dictionary<T, V>, Словарь
+
+https://blog.foolsoft.ru/c-associativnyj-massiv-2/
+
 </pre>
 
 </body>
