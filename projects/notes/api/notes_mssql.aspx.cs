@@ -588,7 +588,7 @@ Response.Write( logStr );
 				queryUpdateNote = queryUpdateNote.Replace("{{ip}}", ip);
 				
 Response.Write ( queryUpdateNote ); 
-				//runQuery( queryUpdateNote );
+				runQuery( queryUpdateNote );
 			break;
 				
 			case "clear_notes":
