@@ -4,7 +4,7 @@ using System;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 //using System.Text;
 
 public partial class _Default : System.Web.UI.Page
@@ -29,7 +29,11 @@ public partial class _Default : System.Web.UI.Page
 	string _connectionString = "";
 	SqlConnection db_connection;
 
-
+	List<string> log = new List<string>();
+	
+	string queryGetVersion = "Select @@VERSION as SQLServerVersion;";
+	string queryDbList = "EXEC sp_helpdb;";
+	
 	protected void Page_Init(object sender, EventArgs e){
 //Response.Write("Page_Init.<br>");
 //Response.Write("Net Framework version - " + Environment.Version.ToString() + "<br>");
@@ -78,34 +82,67 @@ public partial class _Default : System.Web.UI.Page
 			db_connection.Open();
 			//Response.Write("DB connection state: " + db_connection.State);
 			//Response.Write("<br>");
-			//Response.Write("ConnectionState.Open: " + ConnectionState.Open);
+			//Response.Write("ServerVersion: " + db_connection.ServerVersion);
 			//Response.Write("<br>");
 			
-			string jsonStr;
-			jsonStr = "[{";
-			jsonStr += "\"error_code\": \"0\", "; 
-			jsonStr += "\"message\": \"connect to MSSQL success, state:  "+ db_connection.State +"\""; 
-			jsonStr += "}]";
-			Response.Write(jsonStr);
+			//https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlconnection.serverversion(v=vs.110).aspx
+			string msg = "connect to MSSQL success, state:  "+ db_connection.State;
+			msg += ", ServerVersion:  "+ db_connection.ServerVersion;
+			log.Add("{\"message\" : \""+msg+"\"}");
+			//log.Add("{\"message\" : \"test2\"}");
+			
+			//runSelectQuery( queryGetVersion );
+			//runSelectQuery( queryDbList );
+/*
+			//SELECT @@VERSION
+https://habrahabr.ru/post/241079/
+-- Имена сервера и экземпляра 
+Select @@SERVERNAME as [Server\Instance]; 
+
+-- версия SQL Server 
+Select @@VERSION as SQLServerVersion; 
+
+-- экземпляр SQL Server 
+Select @@ServiceName AS ServiceInstance;
+
+ -- Текущая БД (БД, в контексте которой выполняется запрос)
+Select DB_NAME() AS CurrentDB_Name;
+
+-- EXEC sp_helpdb;
+-- EXEC sp_Databases;
+
+SELECT  @@SERVERNAME AS Server ,
+        name AS DBName ,
+        recovery_model_Desc AS RecoveryModel ,
+        Compatibility_level AS CompatiblityLevel ,
+        create_date ,
+        state_desc
+FROM    sys.databases
+ORDER BY Name; 
+
+
+SELECT  @@SERVERNAME AS Server ,
+        d.name AS DBName ,
+        create_date ,
+        compatibility_level ,
+        m.physical_name AS FileName
+FROM    sys.databases d
+        JOIN sys.master_files m ON d.database_id = m.database_id
+WHERE   m.[type] = 0 -- data files only
+ORDER BY d.name; 
+*/			
 		}
 		//catch (Exception ex){
 		catch (SqlException ex){
 //https://msdn.microsoft.com/ru-ru/library/system.data.sqlclient.sqlexception(v=vs.110).aspx
 //https://msdn.microsoft.com/en-us/library/cc645611.aspx
-			string jsonStr;
-			jsonStr = "[{";
-			jsonStr += "\"error_code\": \"notAccessSQLServer\", "; 
-			jsonStr += "\"errorCode\": \""+ex.ErrorCode+"\", "; 
-			jsonStr += "\"message\": \""+ ex.Message +"\", "; 
-			jsonStr += "\"error_number\": \""+ ex.Number +"\", "; 
-			jsonStr += "\"sql_server\": \""+ dbHost +"\", "; 
-			jsonStr += "\"user_id\": \""+ dbUser +"\""; 
-			jsonStr += "}]";
+			log.Add("{\"error_code\" : \"notConnectSQLServer\"");
+			log.Add("\"errorCode\" : \""+ex.ErrorCode+"\"");
+			log.Add("\"message\" : \""+ex.Message+"\"");
+			log.Add("\"error_number\" : \""+ex.Number+"\"");
+			log.Add("\"sql_server\" : \""+dbHost+"\"");
+			log.Add("\"user_id\" : \""+dbUser+"\"}");
 			
-			jsonStr = jsonStr.Replace("\\", "&#92;");//replace slash
-
-			Response.Write(jsonStr);
-
 			//Response.Write("Database connect error....");
 			//Response.Write("connection string:" + _connectionString);
 			//Response.Write("<pre>");
@@ -224,6 +261,54 @@ System_CAPS_pubproperty	TargetSite
 			}
 		}//end	
 		
+		//output log in JSON format
+		//log.Add("{\"error_code\" : \"noaction\", \"message\" : \"error, undefined var 'action'\"}");
+		if( log.Count > 0){
+			string logStr = "[";
+			int num = 0;
+			foreach (string logMsg in log){
+				if( num > 0){
+					logStr += ", ";
+				}
+				logStr += logMsg;
+				num++;
+			}
+			logStr +="]";
+			logStr = logStr.Replace("\\", "&#92;");//replace slash			
+			Response.Write( logStr );
+		}
+		
 	}//end Page_Load()
+	
+	protected void runSelectQuery( string query){
+		SqlDataReader reader;
+		SqlCommand cmd;
+//Response.Write( query );
+//Response.Write("<br>");
+
+		cmd = new SqlCommand ( query, db_connection );
+		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+		
+		if (reader.HasRows){
+			//int num = 0;
+			while ( reader.Read() ){
+				
+				for (int n = 0; n < reader.FieldCount; n++){
+Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+Response.Write("<br>");
+					//string _name = reader.GetName(n).ToString();
+					//string _value = reader.GetValue(n).ToString();
+					//note.saveValue( _name, _value );
+				}//next
+				
+				//notes.Add( note );
+				//num++;
+			}//end while
+		} else {
+			Response.Write("No rows found...");
+		}
+		reader.Close();
+
+	}//end runSelectQuery()
 	
 }//end class

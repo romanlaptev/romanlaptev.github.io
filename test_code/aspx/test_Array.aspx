@@ -43,6 +43,9 @@ https://metanit.com/sharp/tutorial/3.1.php
 
 https://docs.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/object
 Object в .NET Framework
+
+https://metanit.com/sharp/tutorial/4.9.php
+Коллекция Dictionary<T, V>, Словарь
 </pre>
 
 </body>
