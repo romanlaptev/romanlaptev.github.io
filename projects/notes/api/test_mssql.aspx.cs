@@ -4,6 +4,7 @@ using System;
 using System.Data;
 //using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Collections;
 using System.Collections.Generic;
 //using System.Text;
 
@@ -89,10 +90,23 @@ public partial class _Default : System.Web.UI.Page
 			string msg = "connect to MSSQL success, state:  "+ db_connection.State;
 			msg += ", ServerVersion:  "+ db_connection.ServerVersion;
 			log.Add("{\"message\" : \""+msg+"\"}");
-			//log.Add("{\"message\" : \"test2\"}");
 			
-			//runSelectQuery( queryGetVersion );
-			//runSelectQuery( queryDbList );
+			List<string[,]> _records = runSelectQuery( queryGetVersion );
+			//List<string[,]> _records = runSelectQuery( queryDbList );
+			
+			//convert result to json str
+			msg="";
+			for (int n = 0; n < _records.Count; n++)
+			{
+				int fieldCount = _records[n].Length / 2;
+				for (int n1 = 0; n1 < fieldCount; n1++)
+				{
+					msg += _records[n][n1,0]+ ": ";
+					msg += _records[n][n1,1];
+				}//next
+			}//next
+			log.Add("{\"message\" : \""+msg+"\"}");
+			
 /*
 			//SELECT @@VERSION
 https://habrahabr.ru/post/241079/
@@ -275,39 +289,80 @@ System_CAPS_pubproperty	TargetSite
 			}
 			logStr +="]";
 			logStr = logStr.Replace("\\", "&#92;");//replace slash			
+			logStr = logStr.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+			logStr = logStr.Replace("\r", "");
+			logStr = logStr.Replace("\n", "<br>");
 			Response.Write( logStr );
 		}
 		
 	}//end Page_Load()
 	
-	protected void runSelectQuery( string query){
+	protected List<string[,]> runSelectQuery( string query){
 		SqlDataReader reader;
 		SqlCommand cmd;
 //Response.Write( query );
 //Response.Write("<br>");
 
+		List<string[,]> records = new List<string[,]>();
+
 		cmd = new SqlCommand ( query, db_connection );
 		reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-		
+
 		if (reader.HasRows){
 			//int num = 0;
+			//ArrayList records = new ArrayList();			
+//records.Add( 852 );
+			
 			while ( reader.Read() ){
 				
+				string[,] arrayRecord = new string[ reader.FieldCount, 2];
 				for (int n = 0; n < reader.FieldCount; n++){
-Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
-Response.Write("<br>");
+//Response.Write( "<b>" +reader.GetName(n) +"</b>: " + reader.GetValue(n) );
+//Response.Write("<br>");
 					//string _name = reader.GetName(n).ToString();
 					//string _value = reader.GetValue(n).ToString();
 					//note.saveValue( _name, _value );
+					
+					string _name = reader.GetName(n).ToString();
+					string _value = reader.GetValue(n).ToString();
+					arrayRecord[n, 0] = _name;
+					arrayRecord[n, 1] = _value;
 				}//next
 				
-				//notes.Add( note );
+//Response.Write("Length:" + arrayRecord.Length);
+//Response.Write("key:" + arrayRecord[num, 0]);
+//Response.Write("<br>");
+				records.Add( arrayRecord );
 				//num++;
 			}//end while
+/*
+Response.Write("Length:" + records.Count);
+Response.Write("<br>");
+			
+Response.Write("Name: " + records[0][0,0] );
+Response.Write(", value: " + records[0][0,1] );
+Response.Write("<br>");
+
+Response.Write("Name: " + records[0][6,0] );
+Response.Write(", value: " + records[0][6,1] );
+Response.Write("<br>");
+//Dump
+for (int n = 0; n < records.Count; n++)
+{
+	int fieldCount = records[n].Length / 2;
+	for (int n1 = 0; n1 < fieldCount; n1++)
+	{
+		Response.Write("Name: " + records[n][n1,0] );
+		Response.Write(", value: " + records[n][n1,1] );
+		Response.Write("<br>");
+	}//next
+}//next
+*/			
 		} else {
 			Response.Write("No rows found...");
 		}
 		reader.Close();
+		return records;
 
 	}//end runSelectQuery()
 	

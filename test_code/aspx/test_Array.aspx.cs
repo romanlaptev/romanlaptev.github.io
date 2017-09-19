@@ -94,7 +94,7 @@ System.Console.WriteLine(array2Db[1, 0]);
 System.Console.WriteLine(array3Da[1, 0, 1]);
 System.Console.WriteLine(array3D[1, 1, 2]);
 */
-			Response.Write("<h2> Array 'arrayRecord' </h2>");
+			Response.Write("<h2> Array 2D 'arrayRecord' </h2>");
 			string[,] arrayRecord = new string[7, 2] { 
 	{ "id", "1" }, 
 	{ "author", "anonymous" },
@@ -113,7 +113,7 @@ System.Console.WriteLine(array3D[1, 1, 2]);
 			
 Response.Write("<hr>");
 
-			Response.Write("<h2> Array 'arrayRecords' </h2>");
+			Response.Write("<h2> Array 3D 'arrayRecords' </h2>");
 			string[,,] arrayRecords = new string[3, 7, 2] { 
 	{
 		{ "id", "1" }, 
@@ -148,7 +148,7 @@ Response.Write("<hr>");
 					string key = arrayRecords[n1, n2, 0];
 					string value = arrayRecords[n1, n2, 1];
 					Response.Write( "<b>" + key + "</b> : " + value);
-					Response.Write("<br>");
+					Response.Write("; ");
 				}
 				Response.Write("<hr>");
 			}
