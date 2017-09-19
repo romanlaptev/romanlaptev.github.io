@@ -124,8 +124,8 @@ var _notes = function ( opt ){
 			var author = $("#note-" + note_id + " .author").text();
 			$("#message-edit-form input[name=author_name]").val( author );
 			
-			//var text_message = $("#note-" + note_id + " .text-message").html();
-			var text_message = $("#note-" + note_id + " .text-message").text();
+			var text_message = $("#note-" + note_id + " .text-message").html();
+			//var text_message = $("#note-" + note_id + " .text-message").text();
 //console.log(text_message, text_message.length );
 			$("#message-edit-form textarea[name=text_message]").val( text_message );
 			
@@ -538,6 +538,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			//.replace(/\n/g, "\\u000A")//replace end of line
 			.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
 			//.replace(/&/g, "&amp;")
+			.replace(/"/g, "&quot;")
 			.replace(/\</g, "&lt;")
 			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;
@@ -1077,6 +1078,7 @@ console.log("error in __filter()");
 			}
 			textMessage = textMessage
 //.replace(/&/g, "&amp;")
+//.replace(/"/g, "&quot;")
 .replace(/\</g, "&lt;")
 .replace(/\>/g, "&gt;")
 .replace(/\[code\]/g, "<pre>[code]")
