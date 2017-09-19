@@ -540,8 +540,10 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			.replace(/\>/g, "&gt;");
 			formValues["textMessage"] = text;
 		}
-
-		formValues["id"] = form.elements.id.value;
+		
+		if( form.elements.id && form.elements.id.value.length > 0){
+			formValues["id"] = form.elements.id.value;
+		}
 		
 		if (isValid){
 			sendForm( formValues );
@@ -573,8 +575,8 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}	
-console.log( p );
-		
+//console.log( p );
+
 		//get creation date
 		var now = new Date();
 		var sYear = now.getFullYear();
