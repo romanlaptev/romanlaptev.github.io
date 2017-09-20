@@ -81,12 +81,15 @@ $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."
 $_vars["sql"]["getNotes"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."` ORDER BY `client_date` DESC";
 $_vars["sql"]["deleteNote"] = "DELETE FROM `".$_vars["config"]["tableName"]."` WHERE `id`={{id}}";
 $_vars["sql"]["clearNotes"] = "TRUNCATE TABLE `".$_vars["config"]["tableName"]."`";
-
+$_vars["log"]=array();
 
 	$action = "";
 	if( !empty($_REQUEST['action']) ){
 		$action = $_REQUEST['action'];
+	} else {
+		$_vars["log"][] = "{\"error_code\" : \"noaction\", \"message\" : \"error, undefined var 'action'\"}";
 	}
+	
 //========================================= connect to server
 	//check PDO support
 	if (!defined('PDO::ATTR_DRIVER_NAME')) {
@@ -151,7 +154,9 @@ $_vars["sql"]["clearNotes"] = "TRUNCATE TABLE `".$_vars["config"]["tableName"]."
 		//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
 		//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 		//https://gist.github.com/jorgeatorres/1239453
-echo "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
+//echo "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
+$msg = "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
+$_vars["log"][] = "{\"error_code\" : \"notSupportJSON\", \"message\" : \""+$msg+"\"}";
 					}
 			}
 
@@ -202,8 +207,28 @@ echo "</pre>";
 	if($_vars["usePDO"] == 1){
 		unset ($_vars["link"]);
 	}
-
+	
+	viewLog();
 //=========================================== end	
+
+//output log in JSON format
+function viewLog(){
+	global $_vars;
+	
+	if( count( $_vars["log"] ) > 0){
+		 $logStr = "[";
+		// int num = 0;
+		for( $n = 0; $n < count( $_vars["log"] ); $n++){
+			if( $n > 0){
+				$logStr .= ", ";
+			}
+			$logStr .= $_vars["log"][$n];
+		}
+		$logStr .="]";
+		// logStr = logStr.Replace("\\", "&#92;");//replace slash			
+		echo $logStr;
+	}
+}//end viewLog
 	
 function connectDbMySQL(){
 	global $_vars;
@@ -247,7 +272,9 @@ function connectDbMySQL(){
 		}
 		
 	}catch(Exception $e){
-		echo "exception: ",  $e->getMessage(), "\n";
+		//echo "exception: ",  $e->getMessage(), "\n";
+		$_vars["log"][] = "{\"error_code\" : \"connectDBerror\", \"message\" : \"exception: " . $e->getMessage() . "\"}";
+		viewLog();
 		exit();
 	}
 
@@ -280,7 +307,9 @@ function connectDbPDO(){
 		
 		return $connection;
 	} catch( PDOException $exception ) {
-		echo $exception->getMessage();
+		//echo $exception->getMessage();
+		$_vars["log"][] = "{\"error_code\" : \"connectDBerror\", \"message\" : \"" . $exception->getMessage() . "\"}";
+		viewLog();
 		exit();
 	}
 	
@@ -301,8 +330,11 @@ function createDb(){
 				//echo "base $dbName created succesfully<br>";
 				$db = mysql_select_db($dbName, $_vars["link"]);
 			} else {
-				echo "error, " . mysql_error() . "<br>";
-				echo "SQL: " . $query . "<br>";
+				//echo "error, " . mysql_error() . "<br>";
+				//echo "SQL: " . $query . "<br>";
+				$_vars["log"][] = "{\"error_code\" : \"createDBerror\", \"message\" : \"" . mysql_error() . "\"}";
+				$_vars["log"][] = "{\"message\" : \"SQL: " . $query . "<br>\"}";
+				viewLog();
 				exit();
 			}				
 		//}
@@ -317,7 +349,10 @@ function createDb(){
 			$connection->query("use ".$_vars["config"]["dbName"]);	
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
-			echo $exception->getMessage();
+			//echo $exception->getMessage();
+			$_vars["log"][] = "{\"error_code\" : \"createDBerror\", \"message\" : \"" . $exception->getMessage() . "\"}";
+			$_vars["log"][] = "{\"message\" : \"SQL: " . $query . "\"}";
+			viewLog();
 			exit();
 		}
 	}
@@ -422,7 +457,8 @@ exit();
 	if($_vars["useMySQL"] == 1){
 
 		if (mysql_query($query, $_vars["link"]) ) {
-			echo "record was inserted...";
+			//echo "record was inserted...";
+			$_vars["log"][] = "{\"message\" : \"record was inserted...\"}";
 		} else {
 			echo "error INSERT: " . mysql_error() . "<br>";
 			echo "SQL: " . $query;
@@ -471,7 +507,8 @@ exit();
 		
 		try{
 			$connection->query( $query );
-			echo "record was inserted...";
+			//echo "record was inserted...";
+			$_vars["log"][] = "{\"message\" : \"record was inserted...\"}";
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();
@@ -512,10 +549,13 @@ function deleteNote( $id ){
 
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			echo "record $id was deleted...";
+			$_vars["log"][] = "{\"message\" : \"record $id was deleted...\"}";
 		} else {
-			echo "error DELETE: " . mysql_error() . "<br>";
-			echo "SQL: " . $query;
+			//echo "error DELETE: " . mysql_error() . "<br>";
+			//echo "SQL: " . $query;
+			$_vars["log"][] = "{\"error_code\" : \"errorDelete\", \"message\" : \"" . mysql_error() . "\"}";
+			$_vars["log"][] = "{\"message\" : \"SQL: " . $query . "<br>\"}";
+			viewLog();
 			exit();
 		}
 	}
@@ -524,7 +564,7 @@ function deleteNote( $id ){
 		$connection = $_vars["link"];
 		try{
 			$connection->query( $query );
-			echo "record $id was deleted...";
+			$_vars["log"][] = "{\"message\" : \"record $id was deleted...\"}";
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();

@@ -649,13 +649,22 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"formData" : formData,
 			"callback": function( log ){
 				
-var msg = "<p>"+log+"</p>";
-				var _className = "alert-success";
-				if( log.indexOf("error") !== -1){
-					_className = "alert-danger";
-				}
-_log("<div class='alert " +_className+ "'>" + msg + "</div>");
-				loadNotes();
+// var msg = "<p>"+log+"</p>";
+				// var _className = "alert-success";
+				// if( log.indexOf("error") !== -1){
+					// _className = "alert-danger";
+				// }
+// _log("<div class='alert " +_className+ "'>" + msg + "</div>");
+				// loadNotes();
+				parseLog({
+					"jsonLog" : log,
+					//"onSuccess" : function(){},
+					//"onError" : function( errorCode ){},
+					"callback" : function(){
+						loadNotes();		
+					}//end callback
+				});	
+				
 			}//end callback()
 		});
 
