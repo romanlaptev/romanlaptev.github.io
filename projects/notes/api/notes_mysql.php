@@ -164,6 +164,12 @@ echo "error, not support function json_encode(). incorrect PHP version - ".$_var
 			}
 		break;
 
+		case "edit_note":
+echo "<pre>";
+print_r ($_REQUEST);
+echo "</pre>";
+		break;
+		
 		case "clear_notes":
 			clearNotes();
 		break;
@@ -675,7 +681,7 @@ echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_va
 		$title = $xml->note[$n]["title"];
 		$title = addslashes( htmlspecialchars($title) );
 		
-		$textMessage = $xml->note[$n]->text;
+		$textMessage = $xml->note[$n]->text_message;
 		$textMessage = addslashes( htmlspecialchars($textMessage) );
 		$textMessage = str_replace("&amp;lt;", "&lt;", $textMessage);
 		$textMessage = str_replace("&amp;gt;", "&gt;", $textMessage);
