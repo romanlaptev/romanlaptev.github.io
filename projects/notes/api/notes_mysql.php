@@ -217,7 +217,6 @@ function viewLog(){
 	
 	if( count( $_vars["log"] ) > 0){
 		 $logStr = "[";
-		// int num = 0;
 		for( $n = 0; $n < count( $_vars["log"] ); $n++){
 			if( $n > 0){
 				$logStr .= ", ";
@@ -226,6 +225,7 @@ function viewLog(){
 		}
 		$logStr .="]";
 		// logStr = logStr.Replace("\\", "&#92;");//replace slash			
+		//$logStr = str_replace("`", "&#39", $logStr);//replace apostrophe
 		echo $logStr;
 	}
 }//end viewLog
@@ -546,10 +546,11 @@ function deleteNote( $id ){
 	$query = $_vars["sql"]["deleteNote"];
 	$query = str_replace("{{id}}", $id, $query);
 //echo $query;
+	$msg_success = "record $id was deleted, ". "SQL: " . $query;
 
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			$_vars["log"][] = "{\"message\" : \"record $id was deleted...\"}";
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} else {
 			//echo "error DELETE: " . mysql_error() . "<br>";
 			//echo "SQL: " . $query;
@@ -564,7 +565,7 @@ function deleteNote( $id ){
 		$connection = $_vars["link"];
 		try{
 			$connection->query( $query );
-			$_vars["log"][] = "{\"message\" : \"record $id was deleted...\"}";
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();
@@ -580,7 +581,8 @@ function clearNotes(){
 	
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			echo $msg_success;
+			//echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} else {
 			echo "error: " . mysql_error() . "<br>";
 			echo "SQL: " . $query;
@@ -592,7 +594,8 @@ function clearNotes(){
 		$connection = $_vars["link"];
 		try{
 			$connection->query( $query );
-			echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
+			//echo $msg_success;
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();
@@ -604,11 +607,12 @@ function clearNotes(){
 function removeTable(){
 	global $_vars;
 	$query = $_vars["sql"]["removeTable"];
-	$msg_success = "remove tables, ". "SQL: " . $query;
+	$msg_success = "Rebuild table, ". "SQL: " . $query;
 	
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			echo $msg_success;
+			//echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} else {
 			echo "error: " . mysql_error() . "<br>";
 			echo "SQL: " . $query;
@@ -620,7 +624,8 @@ function removeTable(){
 		$connection = $_vars["link"];
 		try{
 			$connection->query( $query );
-			echo $msg_success;
+			//echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();
@@ -639,7 +644,9 @@ function exportTable( $filename ){
 // print_r($notes);
 // echo "</pre>";
 	if( count($notes) === 0 ){
-echo "Export error, no data...";		
+//echo "Export error, no data...";		
+		$_vars["log"][] = "{\"error_code\" : \"exportError\", \"message\" : \"not find notes...\"}";
+		viewLog();
 		exit();
 	}
 	//create XML
@@ -697,9 +704,12 @@ function importTable( $xml_file ){
 	//removeTable();
 	
 	if ( !function_exists("simplexml_load_file") ){
-echo "error read xml from ".$xml_file;	
-echo "<br>";
-echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5";
+//echo "error read xml from ".$xml_file;	
+//echo "<br>";
+//echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5";
+		$msg = "error read xml from ".$xml_file;
+		$msg .= "<br>Not support function simplexml_load_file(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5";
+		$_vars["log"][] = "{\"error_code\" : \"importError\", \"message\" : \"$msg\"}";
 		exit();
 	}
 	
@@ -753,10 +763,14 @@ echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_va
 	$msg_success = "Records added.";
 	if($_vars["useMySQL"] == 1){
 		if (mysql_query($query, $_vars["link"]) ) {
-			echo $msg_success;
+			//echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} else {
-			echo "error INSERT: " . mysql_error() . "<br>";
-			echo "SQL: " . $query;
+			//echo "error INSERT: " . mysql_error() . "<br>";
+			//echo "SQL: " . $query;
+			$msg = "error INSERT: " . mysql_error() . "<br>";
+			$msg .= "SQL: " . $query;
+			$_vars["log"][] = "{\"error_code\" : \"importError\", \"message\" : \"$msg\"}";
 			exit();
 		}
 	}
@@ -765,7 +779,8 @@ echo "Not support function simplexml_load_file(). incorrect PHP version - ".$_va
 		$connection = $_vars["link"];
 		try{
 			$connection->query( $query );
-			echo $msg_success;
+			//echo $msg_success;
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
 		} catch( PDOException $exception ){
 			print_r($connection->errorInfo(), true);
 			echo $exception->getMessage();
@@ -784,8 +799,10 @@ function uploadFile(){
 //echo "</pre>";
 
 		$upload_max_filesize = ini_get('upload_max_filesize'); 
-echo "upload_max_filesize = ". $upload_max_filesize;
-echo "<br>";
+//echo "upload_max_filesize = ". $upload_max_filesize;
+//echo "<br>";
+		$msg = "upload_max_filesize = ". $upload_max_filesize;
+		$_vars["log"][] = "{\"message\" : \"$msg\"}";
 
 		$fullPath = initUploadDirectory();
 		if( !$fullPath ){
@@ -805,15 +822,21 @@ exit();
 				$uploaded_file = $fullPath."/".$_vars["export"]["filename"];
 				if ( move_uploaded_file( $file_arr['tmp_name'], $uploaded_file ) )
 				{
-echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
-echo "<br>";
-echo "Rename ". $file_arr['name']." to ".$_vars["export"]["filename"];
-echo "<br>";
+//echo $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
+//echo "<br>";
+//echo "Rename ". $file_arr['name']." to ".$_vars["export"]["filename"];
+//echo "<br>";
+					$msg = $file_arr['name'].", size= ".$file_arr['size']." bytes upload successful";
+					$_vars["log"][] = "{\"message\" : \"$msg\"}";
+					$msg = "Rename ". $file_arr['name']." to ".$_vars["export"]["filename"];
+					$_vars["log"][] = "{\"message\" : \"$msg\"}";
 
 					importTable( $fullPath."/".$_vars["export"]["filename"] );
 				} else {
-echo $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
-echo "<br>";
+//echo $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
+//echo "<br>";
+					$msg = $file_arr['name'].", size= ".$file_arr['size']." bytes not upload";
+					$_vars["log"][] = "{\"message\" : \"$msg\"}";
 				}
 			}
 		break;
@@ -848,8 +871,10 @@ $errors .= 'UPLOAD_ERR_EXTENSION, PHP-расширение остановило 
 
 	}//end switch
 $errors .= ' code: ' . $file_arr['error'];
-echo $errors;
-echo "<br>";
+//echo $errors;
+//echo "<br>";
+	$_vars["log"][] = "{\"message\" : \"$errors\"}";
+
 }// uploadFile()
 
 function initUploadDirectory(){
@@ -867,33 +892,45 @@ function initUploadDirectory(){
 			$mode = 0777;
 			$recursive = false;
 			if (mkdir ( $fullPath, $mode, $recursive)) {
-echo "Mkdir $fullPath successful";
-echo "<br>";
+//echo "Mkdir $fullPath successful";
+//echo "<br>";
+				$msg = "Mkdir $fullPath successful";
+				$_vars["log"][] = "{\"message\" : \"$msg\"}";
 			} else {
-echo "Cannot mkdir $fullPath, ";
-echo "<br>";
+//echo "Cannot mkdir $fullPath, ";
+//echo "<br>";
+				$msg = "Cannot mkdir $fullPath, ";
+				$_vars["log"][] = "{\"message\" : \"$msg\"}";
 			}
 			
 			$perms=substr(sprintf('%o', fileperms(  $fullPath )), -4);
-echo $fullPath . ", rights: $perms";
-echo "<br>";
+//echo $fullPath . ", rights: $perms";
+//echo "<br>";
+			$msg = $fullPath . ", rights: $perms";
+			$_vars["log"][] = "{\"message\" : \"$msg\"}";
 			if (is_writable( $fullPath )){
 				return $fullPath;
 			} else {
-echo "Not writable!";
-echo "<br>";
+//echo "Not writable!";
+//echo "<br>";
+				$msg = "Not writable!";
+				$_vars["log"][] = "{\"message\" : \"$msg\"}";
 				return 0;
 			}
 			
 		} else {
 			$perms=substr(sprintf('%o', fileperms(  $fullPath )), -4);
-echo $fullPath . " exists, rights: $perms";
-echo "<br>";
+//echo $fullPath . " exists, rights: $perms";
+//echo "<br>";
+			$msg = $fullPath . " exists, rights: $perms";
+			$_vars["log"][] = "{\"message\" : \"$msg\"}";
 			if (is_writable( $fullPath )){
 				return $fullPath;
 			} else {
-echo "Not writable!";
-echo "<br>";
+//echo "Not writable!";
+//echo "<br>";
+				$msg = "Not writable!";
+				$_vars["log"][] = "{\"message\" : \"$msg\"}";
 				return 0;
 			}
 
