@@ -118,8 +118,21 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			s += "ip='"+ip+"' ";
 			s += "client_date='"+client_date+"' ";
 			s += "server_date='"+server_date+"'>\n";
+			
 			s += "\t\t<text_message>\n";
+//------------------------ filter
+			text_message = text_message.Replace("&quot;", "\"");
+			text_message = text_message.Replace("&amp;", "&");
+			text_message = text_message.Replace("&lt;", "<");
+			text_message = text_message.Replace("&gt;", ">");
+
+			text_message = text_message.Replace("&", "&amp;");
+			text_message = text_message.Replace("<", "&lt;");
+			text_message = text_message.Replace(">", "&gt;");
+			text_message = text_message.Replace("\"", "&quot;");
+//------------------------------
 			s += text_message+"\n";
+			
 			s += "\t\t</text_message>\n";
 			s += "\t</note>\n";
 			return s;
@@ -500,10 +513,14 @@ Response.Write( logStr );
 			
 				queryInsertMessage = queryInsertMessage.Replace("{{authorName}}", authorName);
 				queryInsertMessage = queryInsertMessage.Replace("{{title}}", title);
-				
+//filter				
 				//textMessage = textMessage.Replace("<", "lt;");
 				//textMessage = textMessage.Replace(">", "gt;");
+				textMessage = textMessage.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+				//textMessage = textMessage.Replace("\r", "");
+				//textMessage = textMessage.Replace("\n", "<br>");
 				textMessage = textMessage.Replace("'", "&#39");//replace apostrophe
+				
 				queryInsertMessage = queryInsertMessage.Replace("{{textMessage}}", textMessage);
 				
 				queryInsertMessage = queryInsertMessage.Replace("{{client_date}}", clientDate);
@@ -573,10 +590,14 @@ Response.Write( logStr );
 				queryUpdateNote = queryUpdateNote.Replace("{{id}}", nid);
 				queryUpdateNote = queryUpdateNote.Replace("{{author}}", authorName);
 				queryUpdateNote = queryUpdateNote.Replace("{{title}}", title);
-				
+//filter				
 				//textMessage = textMessage.Replace("<", "lt;");
 				//textMessage = textMessage.Replace(">", "gt;");
+				textMessage = textMessage.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
+				//textMessage = textMessage.Replace("\r", "");
+				//textMessage = textMessage.Replace("\n", "<br>");
 				textMessage = textMessage.Replace("'", "&#39");//replace apostrophe
+				
 				queryUpdateNote = queryUpdateNote.Replace("{{text_message}}", textMessage);
 				
 				queryUpdateNote = queryUpdateNote.Replace("{{client_date}}", clientDate);
@@ -587,7 +608,7 @@ Response.Write( logStr );
 				ip = Request.ServerVariables["REMOTE_ADDR"];
 				queryUpdateNote = queryUpdateNote.Replace("{{ip}}", ip);
 				
-Response.Write ( queryUpdateNote ); 
+//Response.Write ( queryUpdateNote ); 
 				runQuery( queryUpdateNote );
 			break;
 				
@@ -775,9 +796,9 @@ Response.Write ( queryUpdateNote );
 		string xml = "";
 		xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 		xml += "<table name='notes'>\n";
-		foreach (Note _note in notes)
+		foreach (Note note in notes)
 		{
-			xml += _note.formXML();
+			xml += note.formXML();
 		}
 //Response.Write( "Count: " + notes.Count );
 //Response.Write( "Capacity: " + notes.Capacity );

@@ -127,6 +127,13 @@ var _notes = function ( opt ){
 			var text_message = $("#note-" + note_id + " .text-message").html();
 			//var text_message = $("#note-" + note_id + " .text-message").text();
 //console.log(text_message, text_message.length );
+//filter
+			text_message = text_message
+.replace(/<pre>\[code\]/g, "[code]")
+.replace(/\[\/code\]<\/pre>/g, "[/code]")
+.replace(/\&amp;/g, "&")
+.replace(/\&lt;/g, "<")
+.replace(/\&gt;/g, ">");
 			$("#message-edit-form textarea[name=text_message]").val( text_message );
 			
 		});//end event
@@ -532,15 +539,21 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		} else {
 			document.querySelector("#text-message-label").className="";
 			form.elements.text_message.className = "form-control";
-			//filter text
+//filter
 			text = text
 			//.replace(/'/g, "&#39;")
 			//.replace(/\n/g, "\\u000A")//replace end of line
 			.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
-			//.replace(/&/g, "&amp;")
+			
+			.replace(/\&amp;/g, "&")
+			.replace(/\&lt;/g, "<")
+			.replace(/\&gt;/g, ">")
+			
+			.replace(/&/g, "&amp;")
 			.replace(/"/g, "&quot;")
 			.replace(/\</g, "&lt;")
 			.replace(/\>/g, "&gt;");
+			
 			formValues["textMessage"] = text;
 		}
 		
@@ -1071,6 +1084,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			$(".btn-delete-note, .btn-edit-note").hide();			
 		}
 		
+//filter
 		function __filter(textMessage){
 //console.log(textMessage);
 			if( textMessage.length === 0){
