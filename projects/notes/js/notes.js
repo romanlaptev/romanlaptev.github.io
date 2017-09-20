@@ -1065,9 +1065,10 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		}//next
 		
 		_vars["messages"].innerHTML = listHtml;
-		//hide DELETE btn
+		
+		//hide EDIT, DELETE btn
 		if( _vars["hideControlPanel"] ){
-			$(".btn-delete-note").hide();
+			$(".btn-delete-note, .btn-edit-note").hide();			
 		}
 		
 		function __filter(textMessage){
