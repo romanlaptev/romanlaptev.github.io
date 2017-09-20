@@ -129,12 +129,13 @@ var _notes = function ( opt ){
 //console.log(text_message, text_message.length );
 //filter
 			text_message = text_message
-.replace(/<pre>\[code\]/g, "[code]")
-.replace(/\[\/code\]<\/pre>/g, "[/code]")
+.replace(/<!-- \[br\] --><br>/g, "[br]")
+.replace(/<pre><!-- \[code\] -->/g, "[code]")
+.replace(/<!-- \[\/code\] --><\/pre>/g, "[/code]")
 .replace(/\&amp;/g, "&")
 .replace(/\&lt;/g, "<")
 .replace(/\&gt;/g, ">");
-			$("#message-edit-form textarea[name=text_message]").val( text_message );
+			$("#message-edit-form textarea[name=text_message]").val( text_message.trim() );
 			
 		});//end event
 		
@@ -1096,9 +1097,9 @@ console.log("error in __filter()");
 //.replace(/"/g, "&quot;")
 .replace(/\</g, "&lt;")
 .replace(/\>/g, "&gt;")
-.replace(/\[code\]/g, "<pre>[code]")
-.replace(/\[\/code\]/g, "[/code]</pre>")
-.replace(/\[br\]/g, "<br/>");
+.replace(/\[code\]/g, "<pre><!-- [code] -->")
+.replace(/\[\/code\]/g, "<!-- [/code] --></pre>")
+.replace(/\[br\]/g, "<!-- [br] --><br>");
 
 			//var test = "[[http://www.google.com|Это ссылка на Google]]";
 			var regexp = /\[\[(.*?)\]\]/g;
@@ -1128,7 +1129,7 @@ console.log("error in __filter()");
 			}
 //console.log(links);
 			
-			return textMessage;
+			return textMessage.trim();
 		}//end __filter()
 		
 	}//end _drawNotes()
