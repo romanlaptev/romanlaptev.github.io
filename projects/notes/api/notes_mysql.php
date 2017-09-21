@@ -128,8 +128,12 @@ $_vars["log"]=array();
 					if ( function_exists("json_encode") ){
 						//PHP 5 >= 5.2.0
 						$json = json_encode($notes);
+						
+						//restore formatting after json_encode
+						$json = str_replace("&amp;gt;", "&gt;", $json);
+						$json = str_replace("&amp;lt;", "&lt;", $json);
+						$json = str_replace("&amp;quot;", "&quot;", $json);
 		/*
-					//restore formatting
 						$json = str_replace("&lt;", "<", $json);
 						$json = str_replace("&gt;", ">", $json);
 						$json = str_replace("&quot;", "'", $json);
