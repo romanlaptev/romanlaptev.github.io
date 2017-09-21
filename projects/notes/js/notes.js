@@ -1219,7 +1219,11 @@ console.log("error in __filter()");
 		if( p["jsonLog"].length === 0){
 var msg = "Warning! empty log....";
 console.log(msg);
-			p["jsonLog"] = "[{\"message\" : \""+msg+"\"}]";
+			//p["jsonLog"] = "[{\"message\" : \""+msg+"\"}]";
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			return false;
 		}
 		
 		try{
@@ -1279,10 +1283,6 @@ console.log(msg);
 				}
 			}
 			
-			if( typeof p["callback"] === "function"){
-				p["callback"]();
-			}
-			
 		} catch(error) {
 	var msg = "";
 	msg += "<p>error JSON.parse server response data</p>";
@@ -1291,7 +1291,11 @@ console.log(msg);
 	_log("<div class='alert alert-danger'>" + msg + "</div>");
 			//loadNotesXml();
 		}//end catch
-	
+
+		if( typeof p["callback"] === "function"){
+			p["callback"]();
+		}
+		
 	}//end parseLog()
 	
 	
