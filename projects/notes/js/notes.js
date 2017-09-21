@@ -124,9 +124,24 @@ var _notes = function ( opt ){
 			var author = $("#note-" + note_id + " .author").text();
 			$("#message-edit-form input[name=author_name]").val( author );
 			
-			var text_message = $("#note-" + note_id + " .text-message").html();
-			//var text_message = $("#note-" + note_id + " .text-message").text();
+			var $text_message = $("#note-" + note_id + " .text-message");
+			
+			//change code-url 
+			$text_message.children(".code-url").each(function(index, value){
+//console.log( index + ": " + value );
+//console.log( this );
+//console.log( $(this) );
+				var href = $(this).attr("href");
+				var text = $(this).text();
+				var code = "[url]" +href+" | "+text+ "[/url]";
+//console.log( code );
+				$(this)[0].outerHTML = code;
+			});
+
+			var text_message = $text_message.html();
+			//var text_message = $text_message.text();
 //console.log(text_message, text_message.length );
+
 //filter
 			text_message = text_message
 .replace(/<!-- \[br\] --><br>/g, "[br]")
@@ -1113,7 +1128,11 @@ console.log("error in __filter()");
 .replace(/\[br\]/g, "<!-- [br] --><br>");
 
 			//var test = "[[http://www.google.com|Это ссылка на Google]]";
-			var regexp = /\[\[(.*?)\]\]/g;
+			//var regexp = /\[\[(.*?)\]\]/g;
+			
+			//var textMessage = "[url]http://www.google.com|Это ссылка на Google[/url]";
+			var regexp = /\[url\](.*?)\[\/url\]/g;
+			
 			var links = [];
 			links["nowrap"] = [];
 			while( result = regexp.exec( textMessage )){
@@ -1129,13 +1148,15 @@ console.log("error in __filter()");
 			//console.log(link, _sp);
 					var _url = _sp[0];
 					var _text = _sp[1];
-					links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
+					//links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
+					links["html"].push("<a href='"+_url+"' class='code-url'>"+_text+"</a>");
 				}//next
 				
 				for(var n = 0; n < links["nowrap"].length; n++){
 					var linkText = links["nowrap"][n];
 					var linkHtml = links["html"][n];
-					textMessage = textMessage.replace("[["+linkText+"]]", linkHtml);
+					//textMessage = textMessage.replace("[["+linkText+"]]", linkHtml);
+					textMessage = textMessage.replace("[url]"+linkText+"[/url]", linkHtml);
 				}//next
 			}
 //console.log(links);
