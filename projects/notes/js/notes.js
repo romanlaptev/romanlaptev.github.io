@@ -126,8 +126,8 @@ var _notes = function ( opt ){
 			
 			var $text_message = $("#note-" + note_id + " .text-message");
 			
-			//change code-url 
-			$text_message.children(".code-url").each(function(index, value){
+			//change out-code-url 
+			$text_message.children(".out-code-url").each(function(index, value){
 //console.log( index + ": " + value );
 //console.log( this );
 //console.log( $(this) );
@@ -1149,7 +1149,7 @@ console.log("error in __filter()");
 					var _url = _sp[0];
 					var _text = _sp[1];
 					//links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
-					links["html"].push("<a href='"+_url+"' class='code-url'>"+_text+"</a>");
+					links["html"].push("<a href='"+_url+"' class='out-code-url'>"+_text+"</a>");
 				}//next
 				
 				for(var n = 0; n < links["nowrap"].length; n++){
