@@ -544,6 +544,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			text = text
 			//.replace(/'/g, "&#39;")
 			//.replace(/\n/g, "\\u000A")//replace end of line
+			//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
 			//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
 			
 			.replace(/\&amp;/g, "&")
