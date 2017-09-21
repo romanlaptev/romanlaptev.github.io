@@ -215,7 +215,7 @@ $_vars["log"][] = "{\"error_code\" : \"notSupportJSON\", \"message\" : \""+$msg+
 	}
 	
 	viewLog();
-//=========================================== end	
+//=========================================== end
 
 //output log in JSON format
 function viewLog(){
