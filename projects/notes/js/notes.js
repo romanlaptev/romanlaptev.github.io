@@ -1219,7 +1219,10 @@ console.log("error in __filter()");
 var msg = "<p> Warning! empty log....</p>";
 console.log(msg);
 //_log("<div class='alert alert-danger'>" + msg + "</div>");
-			return false;
+			//return false;
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
 		}
 		
 		try{
