@@ -58,7 +58,7 @@ PRIMARY KEY (`id`)
 //MyISAM
 $_vars["sql"]["removeTable"] = "DROP TABLE `".$_vars["config"]["tableName"]."`";
 
-$_vars["sql"]["insertMessage"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
+$_vars["sql"]["insertNote"] = "INSERT INTO `".$_vars["config"]["tableName"]."` (`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES (
 '{{authorName}}', 
 '{{title}}', 
 '{{textMessage}}',
@@ -76,6 +76,14 @@ NULL,
 '{{server_date}}', 
 '{{ip}}'
 )";
+
+$_vars["sql"]["updateNote"] = "UPDATE `".$_vars["config"]["tableName"]."` SET 
+author = '{{authorName}}', 
+title = '{{title}}', 
+text_message = '{{textMessage}}',
+client_date = '{{client_date}}', 
+server_date = '{{server_date}}', 
+ip = '{{ip}}' WHERE id={{id}}";
 
 $_vars["sql"]["showTables"] = "SHOW TABLES  FROM `".$_vars["config"]["dbName"]."`";
 $_vars["sql"]["getNotes"] = "SELECT id, author, title, text_message, client_date, server_date, ip FROM `".$_vars["config"]["tableName"]."` ORDER BY `client_date` DESC";
@@ -170,9 +178,7 @@ $_vars["log"][] = "{\"error_code\" : \"notSupportJSON\", \"message\" : \""+$msg+
 		break;
 
 		case "edit_note":
-echo "<pre>";
-print_r ($_REQUEST);
-echo "</pre>";
+			updateNote();
 		break;
 		
 		case "clear_notes":
@@ -446,7 +452,7 @@ exit();
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
 	
-	$query = $_vars["sql"]["insertMessage"];
+	$query = $_vars["sql"]["insertNote"];
 	$query = str_replace("{{authorName}}", $authorName, $query);
 	$query = str_replace("{{title}}", $title, $query);
 	$query = str_replace("{{textMessage}}", $textMessage, $query);
@@ -516,6 +522,72 @@ exit();
 		}
 	}
 }//end saveNote()	
+
+function updateNote(){
+	global $_vars;
+	
+	if( empty( $_REQUEST["text_message"]) ){
+echo "error, not found text note...";
+echo "<pre>";
+print_r ($_REQUEST);
+echo "</pre>";
+exit();
+	}
+	//$textMessage = $_REQUEST["textMessage"];
+	//$textMessage = strip_tags( $_REQUEST["textMessage"], "<h1>" );
+	//$textMessage = nl2br( $_REQUEST["textMessage"] );
+//echo $textMessage;
+	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
+	$textMessage = addslashes( htmlspecialchars($_REQUEST["text_message"]) );
+					
+	if( empty( $_REQUEST["id"]) ){
+echo "error, not found id note...";
+echo "<pre>";
+print_r ($_REQUEST);
+echo "</pre>";
+exit();
+	}
+	$id = $_REQUEST["id"];
+	
+	$authorName = addslashes( htmlspecialchars($_REQUEST["author_name"]) );
+	$title = addslashes( htmlspecialchars($_REQUEST["title"]) );
+	$clientDate = $_REQUEST["date"];
+	$serverDate = date(DATE_ATOM);
+	$ip = $_SERVER["REMOTE_ADDR"];
+	
+	$query = $_vars["sql"]["updateNote"];
+	$query = str_replace("{{authorName}}", $authorName, $query);
+	$query = str_replace("{{title}}", $title, $query);
+	$query = str_replace("{{textMessage}}", $textMessage, $query);
+	$query = str_replace("{{client_date}}", $clientDate, $query);
+	$query = str_replace("{{server_date}}", $serverDate, $query);
+	$query = str_replace("{{ip}}", $ip, $query);
+	$query = str_replace("{{id}}", $id, $query);
+
+	$msg_success = "record $id was updated. ";
+	if($_vars["useMySQL"] == 1){
+
+		if (mysql_query($query, $_vars["link"]) ) {
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
+		} else {
+			echo "error INSERT: " . mysql_error() . "<br>";
+			echo "SQL: " . $query;
+			exit();
+		}
+	}
+	
+	if($_vars["usePDO"] == 1){
+		$connection = $_vars["link"];
+		try{
+			$connection->query( $query );
+			$_vars["log"][] = "{\"message\" : \"$msg_success\"}";
+		} catch( PDOException $exception ){
+			print_r($connection->errorInfo(), true);
+			echo $exception->getMessage();
+			exit();
+		}
+	}
+}//end updateNote()	
 
 function getNotes(){
 	global $_vars;
