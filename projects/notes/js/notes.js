@@ -1216,13 +1216,9 @@ console.log("error in __filter()");
 //console.log( p );
 		
 		if( p["jsonLog"].length === 0){
-var msg = "<p> Warning! empty log....</p>";
+var msg = "Warning! empty log....";
 console.log(msg);
-//_log("<div class='alert alert-danger'>" + msg + "</div>");
-			//return false;
-			if( typeof p["callback"] === "function"){
-				p["callback"]();
-			}
+			p["jsonLog"] = "[{\"message\" : \""+msg+"\"}]";
 		}
 		
 		try{

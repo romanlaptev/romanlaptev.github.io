@@ -727,14 +727,16 @@ Response.Write( logStr );
 					string key = reader.GetName(n).ToString();
 					string value = reader.GetValue(n).ToString();
 // if( n == 3 ){
-// Response.Write("value:" + value[3] + value[4]+(int)value[5]);
-// Response.Write("<br>");
-// Response.Write("test, code:" + "\n");
+// //Response.Write("test, code:" + (char)65 );
+// //Response.Write("<br>");
+// for( int n1 = 0; n1 < value.Length; n1++){
+// Response.Write("Code:" + (int)value[n1] );
 // Response.Write("<br>");
 // }
-// //filter					
-					// value = value.Replace("\r'", "R");//replace end line (for correct JSON parsing)
-					// value = value.Replace("\n'", "N");//replace end line (for correct JSON parsing)
+// }
+					//filter
+					value = value.Replace("\r", "\\r");//replace Return (for correct JSON parsing)
+					value = value.Replace("\n", "\\n");//replace end line (for correct JSON parsing)
 					
 					jsonNote += "\""+key+"\" : \""+value+"\"";
 				}//next
