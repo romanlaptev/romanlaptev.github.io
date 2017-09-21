@@ -541,7 +541,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			document.querySelector("#text-message-label").className="";
 			form.elements.text_message.className = "form-control";
 //filter
-/*
+
 			text = text
 			//.replace(/'/g, "&#39;")
 			//.replace(/\n/g, "\\u000A")//replace end of line
@@ -556,7 +556,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			.replace(/"/g, "&quot;")
 			.replace(/\</g, "&lt;")
 			.replace(/\>/g, "&gt;");
-*/
+
 			formValues["textMessage"] = text;
 		}
 		

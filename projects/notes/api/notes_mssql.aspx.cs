@@ -514,8 +514,8 @@ Response.Write( logStr );
 				queryInsertMessage = queryInsertMessage.Replace("{{authorName}}", authorName);
 				queryInsertMessage = queryInsertMessage.Replace("{{title}}", title);
 //filter				
-				//textMessage = textMessage.Replace("<", "lt;");
-				//textMessage = textMessage.Replace(">", "gt;");
+				//textMessage = textMessage.Replace("<", "&lt;");
+				//textMessage = textMessage.Replace(">", "&gt;");
 				textMessage = textMessage.Replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;");
 				//textMessage = textMessage.Replace("\r", "");
 				//textMessage = textMessage.Replace("\n", "<br>");
