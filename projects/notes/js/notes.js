@@ -347,6 +347,8 @@ var _notes = function ( opt ){
 		
 		//EXPORT
 		var btn_export = getById("btn-export");
+		_vars["$btn_export"] = btn_export;//copy to module global vars 
+		
 		if( btn_export ){
 			btn_export.onclick = function(event){
 				event = event || window.event;
@@ -358,6 +360,10 @@ var _notes = function ( opt ){
 					event.returnValue = false;				
 				}
 				
+				if( _vars["$num_notes"].innerHTML === "0"){
+					return;
+				}
+
 				if( _vars["supportPHP"] ){
 					var url= _vars["exportUrl"];
 					window.location.assign(url);
@@ -1006,6 +1012,7 @@ console.log( all_headers );
 //console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
 										_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
 										_vars["$num_notes"].innerHTML  = "0";//set number of notes
+										_vars["$btn_export"].className += " disabled";
 									}
 								});
 							}
@@ -1022,6 +1029,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 				} else {
 					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
 					_vars["$num_notes"].innerHTML  = "0";//set number of notes
+					_vars["$btn_export"].className += " disabled";
 				}
 				
 			}//end callback()
@@ -1051,11 +1059,18 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			"callback": function( data ){
 //console.log(data.length, typeof data, data);				
 				//_parseXML( data );
-				obj = _parseXmlToObj(data);
+				xmlNotes = _parseXmlToObj(data);
 //console.log(obj);				
-				_drawNotes({
-					"data": obj
-				});
+				if( xmlNotes.length > 0 ){
+					_drawNotes({
+						"data": xmlNotes
+					});
+				} else {
+					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
+					_vars["$num_notes"].innerHTML  = "0";//set number of notes
+					_vars["$btn_export"].className += " disabled";
+				}
+				
 			},//end callback()
 			"onError" : _onerror
 		});
@@ -1086,6 +1101,8 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		
 		//set number of notes
 		_vars["$num_notes"].innerHTML  = p["data"].length;
+		_vars["$btn_export"].className = _vars["$btn_export"].className.replace(" disabled", "");
+//console.log( _vars["$btn_export"].className );
 		
 		var listHtml = "";
 		var itemHtml = "";
