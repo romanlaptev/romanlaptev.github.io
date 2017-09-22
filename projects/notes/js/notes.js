@@ -127,6 +127,8 @@ var _notes = function ( opt ){
 			var $text_message = $("#note-" + note_id + " .text-message");
 			
 			//change out-code-url 
+			var _copyHTML = $text_message.html();
+//console.log(_copyHTML);			
 			$text_message.children(".out-code-url").each(function(index, value){
 //console.log( index + ": " + value );
 //console.log( this );
@@ -152,6 +154,7 @@ var _notes = function ( opt ){
 .replace(/\&gt;/g, ">");
 			$("#message-edit-form textarea[name=text_message]").val( text_message.trim() );
 			
+			$text_message.html( _copyHTML );
 		});//end event
 		
 		$("#message-edit-form").on("submit", function(){

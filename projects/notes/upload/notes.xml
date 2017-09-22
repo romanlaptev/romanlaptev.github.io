@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
+	<note title="traning" author="anonymous" ip="37.193.108.45" client_date="2017-09-22 08:17:03" server_date="2017-09-22 01:20:32" >
+		<text_message>
+[[http://recipehealth.ru/sportzal/bodybuilding/bodibilding-bez-otyagoshheniy-uprazhneniya-s-rezinovyim-zhgutom.html | упражнения с резиновым жгутом]]
+		</text_message>
+	</note>
 	<note title="config, windows server" author="anonymous" ip="37.193.108.45" client_date="2017-09-15 08:46:38" server_date="2017-09-15 01:50:00" >
 		<text_message>
 Как отключить Ctrl-Alt-Del при входе в Windows Server 2003
@@ -27,7 +32,7 @@
 
     Computer Configuration –&gt; Administrative Templates –&gt; System –&gt; Display Shutdown Event Tracker –&gt; Disabled
 [/code]
-[url]http://did5.ru/it/windows/kak-otklyuchit-ctrl-alt-del-pri-vxode-v-windows-server-2003.html | Блог did5.ru[/url]
+[[http://did5.ru/it/windows/kak-otklyuchit-ctrl-alt-del-pri-vxode-v-windows-server-2003.html | Блог did5.ru]]
 		</text_message>
 	</note>
 	<note title="config, windows server" author="anonymous" ip="37.193.108.45" client_date="2017-09-15 08:42:34" server_date="2017-09-15 01:45:56" >
@@ -238,17 +243,17 @@ git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin m
 	</note>
 	<note title="no subject" author="anonymous" ip="37.193.108.45" client_date="2017-09-08 11:16:06" server_date="2017-09-08 04:19:20" >
 		<text_message>
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show | Как изменить COLLATE у базы данных?[/url]
+[[http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show | Как изменить COLLATE у базы данных?]]
 		</text_message>
 	</note>
 	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:15:37" server_date="2017-09-01 02:18:43" >
 		<text_message>
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/ | Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[[https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/ | Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. ]]
 		</text_message>
 	</note>
 	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:14:04" server_date="2017-09-01 02:17:10" >
 		<text_message>
-[url]http://www.cyberforum.ru/ado-net/thread251180.html | Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+[[http://www.cyberforum.ru/ado-net/thread251180.html | Развертывание программы с SQLite-ом на других компьютерах - C#]]
 		</text_message>
 	</note>
 	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
@@ -311,7 +316,7 @@ for n1 in range(0,10):
 	<note title="windows faq" author="anonymous" ip="37.193.108.45" client_date="2017-08-28 15:10:44" server_date="2017-08-28 08:13:45" >
 		<text_message>
 
-[url] http://answers.microsoft.com/ru-ru/windows/forum/windows_7-files/windows-7-%D0%BA%D0%B0%D0%BA/45b99053-120e-4779-a684-7008420b83ed | url,answers.microsoft.com[/url]
+[[ http://answers.microsoft.com/ru-ru/windows/forum/windows_7-files/windows-7-%D0%BA%D0%B0%D0%BA/45b99053-120e-4779-a684-7008420b83ed | url,answers.microsoft.com]]
 [br]
 [code]
 Как штатными средствами вывести список файлов
@@ -334,7 +339,7 @@ for n1 in range(0,10):
 
 
 
-[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess[/url]
+[[http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess]]
 [code]
 Как сделать 301 редирект
 Файл .htaccess
@@ -355,9 +360,9 @@ Redirect /data http://www.example.com/data
 
 
 
-[url]https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
-[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
-[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
+[[https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;id=1381 | PDO против MySQLi. Что выбрать?]][br]
+[[https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам ]][br]
+[[http://php.net/manual/ru/book.pdo.php | Объекты данных PHP]][br]
 		
 		
 		
