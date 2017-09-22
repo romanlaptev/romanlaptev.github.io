@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="javascript, test Modernizr" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 13:04:55" server_date="2017-09-22 15:04:54" >
+	<note title="no subject" author="anonymous" ip="37.193.108.45" client_date="2017-09-22 14:34:16" server_date="2017-09-22 07:37:45" >
 		<text_message>
-[code]
-&lt;!DOCTYPE html&gt;
-&lt;!--[if lt IE 7]&gt;      &lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&gt;
-&lt;![endif]--&gt;
-&lt;!--[if IE 7]&gt;         &lt;html class='no-js lt-ie9 lt-ie8'&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 8]&gt;         &lt;html class='no-js lt-ie9'&gt; &lt;![endif]--&gt;
-&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class='no-js'&gt; &lt;!--&lt;![endif]--&gt;
-&lt;head&gt;
-&lt;meta charset='utf-8'&gt;
-&lt;title&gt;test Modernizr&lt;/title&gt;
-&lt;script
-src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;h1&gt;test Modernizr&lt;/h1&gt;
-
-&lt;/html&gt;
-[/code]
+[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show    |    Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/    |    Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html    |    Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+[br]
+[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381   |   PDO против MySQLi. Что выбрать?[/url][br]
+[url]https://habrahabr.ru/post/141127/   |  MySQLi раскладываем все по полочкам [/url][br]
+[url]http://php.net/manual/ru/book.pdo.php   |   Объекты данных PHP[/url][br]
 		</text_message>
 	</note>
-	<note title="links" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 13:02:49" server_date="2017-09-22 12:02:49" >
+	<note title="Apache, config" author="a1" ip="37.193.108.45" client_date="2017-09-22 12:59:14" server_date="2017-09-22 06:02:43" >
 		<text_message>
+[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
+[code]
+Как сделать 301 редирект
+Файл .htaccess
+301 редирект – корректная переадресация через htaccess и php header
+.htaccess: , вывод ошибок PHP
 
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
-[br]
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
-[br]
-[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
-		
+Redirect /index.php http://example.com/index.php
+Redirect /data http://www.example.com/data 
+=================================
+[/code]
 		</text_message>
 	</note>
 	<note title="config, windows server" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 12:52:58" server_date="2017-09-22 14:52:57" >
 		<text_message>
-
 
 
 Как отключить Ctrl-Alt-Del при входе в Windows Server 2003
@@ -78,7 +72,6 @@ src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
 [/code]
 		
 		
-		
 		</text_message>
 	</note>
 	<note title="traning" author="anonymous" ip="37.193.108.45" client_date="2017-09-22 08:17:03" server_date="2017-09-22 01:20:32" >
@@ -86,9 +79,7 @@ src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
 
 
 
-
 [url]http://recipehealth.ru/sportzal/bodybuilding/bodibilding-bez-otyagoshheniy-uprazhneniya-s-rezinovyim-zhgutom.html | упражнения с резиновым жгутом[/url]
-		
 		
 		
 		
@@ -96,7 +87,6 @@ src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
 	</note>
 	<note title="js code" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:27:56" server_date="2017-09-14 02:31:17" >
 		<text_message>
-
 
 
 
@@ -154,12 +144,10 @@ console.log(&quot;result_build = &quot; + result_build);
 		
 		
 		
-		
 		</text_message>
 	</note>
 	<note title="playlist" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:17:17" server_date="2017-09-14 02:20:38" >
 		<text_message>
-
 
 
 
@@ -179,7 +167,7 @@ Playlist:
 0:33:16 Birdeatsbaby - China Doll 
 0:36:49 Rasputina - When I Was a Young Girl 
 0:38:28 The Dresden Dolls - Missed Me 
-0:43:20 Circus Contraption - Why Can&amp;#39;t the Clowns Get Along 
+0:43:20 Circus Contraption - Why Can't the Clowns Get Along 
 0:45:30 Katzenjammer - Demon Kitty Rag 
 0:49:31 Red Skunk Band - The Vamp of New Orleans 
 0:53:54 Eliza Carthy - Blood on My Boots 
@@ -231,7 +219,7 @@ https://www.youtube.com/watch?v=IryFtcBJeZE&amp;t=2483s
 27:18 One More Smoke - Reverend Glasseye 
 29:45 Mr. Green - This Way to the Egress 
 34:30 Rattlesnake - Caravan of Thieves 
-38:20 Two of Us - Curtis Eller&amp;#39;s American Circus 
+38:20 Two of Us - Curtis Eller's American Circus 
 43:22 Anywhere - The Scarring Party 
 45:55 Wake Up - Humanwine 
 50:47 Angels in Cages - Caravan of Thieves 
@@ -243,9 +231,8 @@ https://www.youtube.com/watch?v=IryFtcBJeZE&amp;t=2483s
 1:15:59 Sometimes Sunshine - Revue Noir 
 1:20:00 Revelator - The Scarring Party 
 1:22:50 Live Through Your Strings - This Way to the Egress 
-1:25:55 Sugar in My Coffin - Curtis Eller&amp;#39;s American Circus
+1:25:55 Sugar in My Coffin - Curtis Eller's American Circus
 [/code]
-		
 		
 		
 		
@@ -253,7 +240,6 @@ https://www.youtube.com/watch?v=IryFtcBJeZE&amp;t=2483s
 	</note>
 	<note title="config, linux, xrandr" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:14:51" server_date="2017-09-14 02:18:12" >
 		<text_message>
-
 
 
 
@@ -282,7 +268,7 @@ xrandr  --newmode &quot;1600x900_60.00&quot;  118.25  1600 1696 1856 2112  900 9
 Код: [Выделить] 
 xrandr --addmode VGA1 1600x900_60.00 
  
-5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система &gt; Параметры &gt; Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
+5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система → Параметры → Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
  
 Код: [Выделить] 
 xrandr --output VGA1 --mode 1600x900_60.00 
@@ -291,12 +277,10 @@ xrandr --output VGA1 --mode 1600x900_60.00
 		
 		
 		
-		
 		</text_message>
 	</note>
 	<note title="GIT, create a new repository on the command line" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:11:40" server_date="2017-09-14 02:15:01" >
 		<text_message>
-
 
 
 
@@ -314,12 +298,10 @@ git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin m
 		
 		
 		
-		
 		</text_message>
 	</note>
 	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
 		<text_message>
-
 
 
 
@@ -344,8 +326,8 @@ vi /etc/apache2/sites-available/default
 vi /var/www/test_mod_python.py
 
 def index(req):
-	# req.content_type = &amp;#39;text/plain&amp;#39;
-	req.content_type = &amp;#39;text/html&amp;#39;
+	# req.content_type = 'text/plain'
+	req.content_type = 'text/html'
 	html = &quot;&lt;h1&gt;Test Apache2 + mod_python&lt;/h1&gt;&quot;
 	req.write( html )
 	test = 2+3
@@ -379,12 +361,10 @@ for n1 in range(0,10):
 		
 		
 		
-		
 		</text_message>
 	</note>
 	<note title="windows faq" author="anonymous" ip="37.193.108.45" client_date="2017-08-28 15:10:44" server_date="2017-08-28 08:13:45" >
 		<text_message>
-
 
 
 
@@ -396,22 +376,21 @@ for n1 in range(0,10):
 1. выделить группу файлов
 2. Нажать Shift (левый или правый)
 3. Удерживая Shift, вызвать контекстное меню
-4. Там будет команда &quot;копировать как путь&quot;. Ее и использовать.
+4. Там будет команда &amp;quot;копировать как путь&amp;quot;. Ее и использовать.
 Далее можно вставлять полные пути всех файлов в блокнот, excel, куда 
 угодно.
 
 -------------------------
 Настройка отображения меню в Проводнике
-«Упорядочить» ? «Представление»  - пункт «Строка меню»
+«Упорядочить» ⇒ «Представление»  - пункт «Строка меню»
 [/code]
-		
 		
 		
 		
 		
 		</text_message>
 	</note>
-	<note title="no subject" author="" ip="" client_date="2017-08-24 21:09:46" server_date="2017-08-24 14:11:58" >
+	<note title="javascript, test Modernizr" author="anonymous" ip="" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
 		<text_message>
 
 
@@ -419,40 +398,24 @@ for n1 in range(0,10):
 
 
 
-
-[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess[/url]
 [code]
-Как сделать 301 редирект
-Файл .htaccess
-301 редирект – корректная переадресация через htaccess и php header
-.htaccess: , вывод ошибок PHP
+&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&gt;
+&lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class='no-js lt-ie9 lt-ie8'&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class='no-js lt-ie9'&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class='no-js'&gt; &lt;!--&lt;![endif]--&gt;
+&lt;head&gt;
+&lt;meta charset='utf-8'&gt;
+&lt;title&gt;test Modernizr&lt;/title&gt;
+&lt;script
+src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
+&lt;/head&gt;
 
-Redirect /index.php http://example.com/index.php
-Redirect /data http://www.example.com/data 
-=================================
+&lt;h1&gt;test Modernizr&lt;/h1&gt;
+
+&lt;/html&gt;
 [/code]
-		
-		
-		
-		
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="test filter" author="" ip="" client_date="2017-08-24 15:36:32" server_date="2017-08-24 08:39:29" >
-		<text_message>
-
-
-
-
-
-
-
-[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
-[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
-[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
-		
 		
 		
 		
