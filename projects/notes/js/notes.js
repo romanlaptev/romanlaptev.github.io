@@ -566,10 +566,13 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
 			//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
 			
+			//remove old special symbols
 			.replace(/\&amp;/g, "&")
 			.replace(/\&lt;/g, "<")
 			.replace(/\&gt;/g, ">")
+			.replace(/\&quot;/g, "\"")
 			
+			//insert special symbols re-new
 			.replace(/&/g, "&amp;")
 			.replace(/"/g, "&quot;")
 			.replace(/\</g, "&lt;")
@@ -611,8 +614,9 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
-		}	
+		}
 //console.log( p );
+//return false;
 
 		//get creation date
 		var now = new Date();

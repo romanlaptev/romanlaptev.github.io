@@ -439,7 +439,21 @@ exit();
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
 	$textMessage = addslashes( htmlspecialchars($_REQUEST["text_message"]) );
 	
-	
+//------------------------ filter
+	//$textMessage = str_replace("&amp;lt;", "&lt;", $textMessage);
+	//$textMessage = str_replace("&amp;gt;", "&gt;", $textMessage);
+	//$textMessage = str_replace("&amp;quot;", "&quot;", $textMessage);
+		// //remove old special symbols
+		// $textMessage = str_replace("&quot;", "\"", $textMessage);
+		// $textMessage = str_replace("&amp;", "&", $textMessage);
+		// $textMessage = str_replace("&lt;", "<", $textMessage);
+		// $textMessage = str_replace("&gt;", ">", $textMessage);
+		
+		// //insert special symbols re-new
+		// $textMessage = str_replace("&", "&amp;", $textMessage);
+		// $textMessage = str_replace("<", "&lt;", $textMessage);
+		// $textMessage = str_replace(">", "&gt;", $textMessage);
+		// $textMessage = str_replace("\"", "&quot;", $textMessage);
 /*
 	$textMessage = str_replace("<script", "&lt;script", $textMessage);
 	$textMessage = str_replace("</script>", "&lt;/script&gt;", $textMessage);
@@ -452,6 +466,8 @@ exit();
 
 	$textMessage = addslashes($textMessage);
 */
+//------------------------------
+
 	$clientDate = $_REQUEST["date"];
 	$serverDate = date(DATE_ATOM);
 	$ip = $_SERVER["REMOTE_ADDR"];
@@ -537,12 +553,20 @@ print_r ($_REQUEST);
 echo "</pre>";
 exit();
 	}
-	//$textMessage = $_REQUEST["textMessage"];
-	//$textMessage = strip_tags( $_REQUEST["textMessage"], "<h1>" );
-	//$textMessage = nl2br( $_REQUEST["textMessage"] );
+	$textNote = $_REQUEST["text_message"];
+	//$textMessage = strip_tags( $_REQUEST["text_message"], "<h1>" );
+	//$textMessage = nl2br( $_REQUEST["text_message"] );
 //echo $textMessage;
+
+	//filter
+	//remove old special symbols ( for correct htmlspecialchars() )
+	$textNote = str_replace("&quot;", "\"", $textNote);
+	$textNote = str_replace("&amp;", "&", $textNote);
+	$textNote = str_replace("&lt;", "<", $textNote);
+	$textNote = str_replace("&gt;", ">", $textNote);
+
 	//$textMessage = addslashes(htmlspecialchars("<script>alert('test');</script>"));
-	$textMessage = addslashes( htmlspecialchars($_REQUEST["text_message"]) );
+	$textMessage = addslashes( htmlspecialchars($textNote) );
 					
 	if( empty( $_REQUEST["id"]) ){
 echo "error, not found id note...";
@@ -751,16 +775,17 @@ function exportTable( $filename ){
 			//$text_message = str_replace('', '', $text_message);
 			//$text_message = str_replace('&', '&amp;', $text_message);
 			
-			$text_message = str_replace("&quot;", "\"", $text_message);
-			$text_message = str_replace("&amp;", "&", $text_message);
-			$text_message = str_replace("&lt;", "<", $text_message);
-			$text_message = str_replace("&gt;", ">", $text_message);
+			//remove old special symbols
+			// $text_message = str_replace("&quot;", "\"", $text_message);
+			// $text_message = str_replace("&amp;", "&", $text_message);
+			// $text_message = str_replace("&lt;", "<", $text_message);
+			// $text_message = str_replace("&gt;", ">", $text_message);
 			
-			//insert special symbols re-new
-			$text_message = str_replace("&", "&amp;", $text_message);
-			$text_message = str_replace("<", "&lt;", $text_message);
-			$text_message = str_replace(">", "&gt;", $text_message);
-			$text_message = str_replace("\"", "&quot;", $text_message);
+			// //insert special symbols re-new
+			// $text_message = str_replace("&", "&amp;", $text_message);
+			// $text_message = str_replace("<", "&lt;", $text_message);
+			// $text_message = str_replace(">", "&gt;", $text_message);
+			// $text_message = str_replace("\"", "&quot;", $text_message);
 //------------------------------
 			$xml .=  "\t\t<text_message>\n";
 			$xml .=  $text_message."\n";
