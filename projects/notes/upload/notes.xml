@@ -1,17 +1,136 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="config, windows server" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:42:33" server_date="2017-09-22 12:42:32" >
+	<note title="javascript, test Modernizr" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 11:28:50" server_date="2017-09-22 13:28:49" >
 		<text_message>
+[code]
+&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&gt;
+&lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class='no-js lt-ie9 lt-ie8'&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class='no-js lt-ie9'&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class='no-js'&gt; &lt;!--&lt;![endif]--&gt;
+&lt;head&gt;
+&lt;meta charset='utf-8'&gt;
+&lt;title&gt;test Modernizr&lt;/title&gt;
+&lt;script
+src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;h1&gt;test Modernizr&lt;/h1&gt;
+
+&lt;/html&gt;
+[/code]
+		</text_message>
+	</note>
+	<note title="test filter" author="a1" ip="192.168.56.1" client_date="2017-09-22 10:53:34" server_date="2017-09-22 12:53:33" >
+		<text_message>
+
+
+[url]https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;id=1381  |  PDO против MySQLi. Что выбрать?[/url][br]
+[url]https://habrahabr.ru/post/141127/  | MySQLi раскладываем все по полочкам [/url][br]
+[url]http://php.net/manual/ru/book.pdo.php  |  Объекты данных PHP[/url][br]
+		
+		
+		</text_message>
+	</note>
+	<note title="Apache, config" author="a1" ip="192.168.56.1" client_date="2017-09-22 10:52:40" server_date="2017-09-22 12:52:39" >
+		<text_message>
+
+
+[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
+[code]
+Как сделать 301 редирект
+Файл .htaccess
+301 редирект – корректная переадресация через htaccess и php header
+.htaccess: , вывод ошибок PHP
+
+Redirect /index.php http://example.com/index.php
+Redirect /data http://www.example.com/data 
+=================================
+[/code]
+		
+		
+		</text_message>
+	</note>
+	<note title="windows, config" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:51:47" server_date="2017-09-22 12:51:46" >
+		<text_message>
+
+
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;amp;amp;amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+[br]
+[url] http://answers.microsoft.com/ru-ru/windows/forum/windows_7-files/windows-7-%D0%BA%D0%B0%D0%BA/45b99053-120e-4779-a684-7008420b83ed  |  url,answers.microsoft.com[/url]
+[br]
+[code]
+Как штатными средствами вывести список файлов
+1. выделить группу файлов
+2. Нажать Shift (левый или правый)
+3. Удерживая Shift, вызвать контекстное меню
+4. Там будет команда &amp;amp;amp;amp;quot;копировать как путь&amp;amp;amp;amp;quot;. Ее и использовать.
+Далее можно вставлять полные пути всех файлов в блокнот, excel, куда 
+угодно.
+
+-------------------------
+Настройка отображения меню в Проводнике
+«Упорядочить» ⇒ «Представление»  - пункт «Строка меню»
+[/code]
+		
+		
+		</text_message>
+	</note>
+	<note title="config, linux, xrandr" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:47:59" server_date="2017-09-22 12:47:57" >
+		<text_message>
+
+
+[code]
+.... монитор при подключении к VGA неправильно выдает список поддерживаемых разрешений. Поэтому в стандартной утилите настройки дисплея я могу поставить разрешение не больше 1024x768. Я же хотел поставить разрешение 1600x900. Это делается так: 
+ 
+1. Открываем консоль. Узнаем список видеовыходов и поддерживаемых разрешений для каждого выхода командой 
+ 
+xrandr
+
+У меня выходы назывались LVDS1 (монитор ноутбука) и VGA1 (внешний монитор). 
+ 
+2. Создаем Modeline для нужного режима: 
+cvt 1600 900 60
+
+Первые два числа — разрешение, третье — частота обновления экрана (можно не задавать, по умолчанию будет 60). Команда выдаст примерно следующее: 
+ 
+Modeline &amp;amp;amp;quot;1600x900_60.00&amp;amp;amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync 
+
+3. Создаем режим: 
+xrandr  --newmode &amp;amp;amp;quot;1600x900_60.00&amp;amp;amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync
+(после --newmode вставляем вывод команды cvt без слова Modeline). 
+ 
+4. Добавляем новый режим к нужному выходу: 
+xrandr --addmode VGA1 1600x900_60.00 
+ 
+5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система → Параметры → Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
+ 
+xrandr --output VGA1 --mode 1600x900_60.00 
+(Положительный эффект не гарантирую. У меня мой способ работает на одной видеокарточке, но не работает на другой (с тем же монитором), ругается на 4-м пункте. При этом под виндой в обоих можно выставить правильное разрешение.)
+[/code]
+		
+		
+		</text_message>
+	</note>
+	<note title="config, windows server" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:45:42" server_date="2017-09-22 12:45:41" >
+		<text_message>
+
+
 Как отключить Ctrl-Alt-Del при входе в Windows Server 2003
 [code]
 Запускаем Редактор локальной групповой политики: Пуск – Выполнить – вводим gpedit.msc.
 Далее в открывшимся окне:
 
-    Конфигурация компьютера -&amp;amp;gt; Конфигурация Windows –&amp;amp;gt; Параметры безопасности –&amp;amp;gt; Локальные политики -&amp;amp;gt; Параметры безопасности -&amp;amp;gt; Интерактивный вход: не требовать нажатия сочетания клавиш CTRL+ALT+DEL –&amp;amp;gt; Отключен
+    Конфигурация компьютера -&amp;amp;amp;gt; Конфигурация Windows –&amp;amp;amp;gt; Параметры безопасности –&amp;amp;amp;gt; Локальные политики -&amp;amp;amp;gt; Параметры безопасности -&amp;amp;amp;gt; Интерактивный вход: не требовать нажатия сочетания клавиш CTRL+ALT+DEL –&amp;amp;amp;gt; Отключен
 
 В нерусифицированной версии винды:
 
-    Computer Configuration –&amp;amp;gt; Windows Settings –&amp;amp;gt; Security Settings –&amp;amp;gt; Local Policies –&amp;amp;gt; Security Options –&amp;amp;gt; Interactive logon: Do not require CTRL+ALT+DEL — Enabled
+    Computer Configuration –&amp;amp;amp;gt; Windows Settings –&amp;amp;amp;gt; Security Settings –&amp;amp;amp;gt; Local Policies –&amp;amp;amp;gt; Security Options –&amp;amp;amp;gt; Interactive logon: Do not require CTRL+ALT+DEL — Enabled
 [/code]
 
 Как отключить Event Tracker?
@@ -20,22 +139,45 @@
 
 Далее в открывшимся окне:
 
-    Конфигурация компьютера –&amp;amp;gt; Административные шаблоны –&amp;amp;gt; Система –&amp;amp;gt; Отображать диалог слежения за завершением работы –&amp;amp;gt; Отключен
+    Конфигурация компьютера –&amp;amp;amp;gt; Административные шаблоны –&amp;amp;amp;gt; Система –&amp;amp;amp;gt; Отображать диалог слежения за завершением работы –&amp;amp;amp;gt; Отключен
 
 В нерусифицированной версии винды:
 
-    Computer Configuration –&amp;amp;gt; Administrative Templates –&amp;amp;gt; System –&amp;amp;gt; Display Shutdown Event Tracker –&amp;amp;gt; Disabled
+    Computer Configuration –&amp;amp;amp;gt; Administrative Templates –&amp;amp;amp;gt; System –&amp;amp;amp;gt; Display Shutdown Event Tracker –&amp;amp;amp;gt; Disabled
 [/code]
-[url]http://did5.ru/it/windows/kak-otklyuchit-ctrl-alt-del-pri-vxode-v-windows-server-2003.html | Блог did5.ru[/url]
+[url]http://did5.ru/it/windows/kak-otklyuchit-ctrl-alt-del-pri-vxode-v-windows-server-2003.html   |   Блог did5.ru[/url]
+[br][br]
+Как выключить Windows Server без залогинивания
+[code]
+Для того чтобы так сделать вам нужно изменить локальную политику безопасности.
+Для этого откройте:
+
+&amp;amp;amp;quot;Редактор локальной групповой политики&amp;amp;amp;quot; командой gpedit.msc и найдите ветку &amp;amp;amp;quot;Конфигурация компьютера -&amp;amp;amp;gt; Конфигурация Windows -&amp;amp;amp;gt; Параметры безопасности -&amp;amp;amp;gt; Локальные политики -&amp;amp;amp;gt; Параметры безопасности&amp;amp;amp;quot;.
+Найдите политику:
+
+&amp;amp;amp;quot;Завершение работы: разрешить завершение работы системы без выполнения входа в систему&amp;amp;amp;quot;
+и измените её статус на Включен.
+[/code]
+		
+		
 		</text_message>
 	</note>
 	<note title="traning" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:41:49" server_date="2017-09-22 12:41:47" >
 		<text_message>
+
+
+
 [url]http://recipehealth.ru/sportzal/bodybuilding/bodibilding-bez-otyagoshheniy-uprazhneniya-s-rezinovyim-zhgutom.html | упражнения с резиновым жгутом[/url]
+		
+		
+		
 		</text_message>
 	</note>
 	<note title="a2" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 10:39:34" server_date="2017-09-22 12:39:33" >
 		<text_message>
+
+
+
 line1[br]
 line2
 line3
@@ -44,27 +186,16 @@ cod1
 cod2
 cod3
 [/code]
-		</text_message>
-	</note>
-	<note title="config, windows server" author="anonymous" ip="37.193.108.45" client_date="2017-09-15 08:42:34" server_date="2017-09-15 01:45:56" >
-		<text_message>
-
-Как выключить Windows Server без залогинивания
-[code]
-Для того чтобы так сделать вам нужно изменить локальную политику безопасности.
-Для этого откройте:
-
-&amp;quot;Редактор локальной групповой политики&amp;quot; командой gpedit.msc и найдите ветку &amp;quot;Конфигурация компьютера -&amp;gt; Конфигурация Windows -&amp;gt; Параметры безопасности -&amp;gt; Локальные политики -&amp;gt; Параметры безопасности&amp;quot;.
-Найдите политику:
-
-&amp;quot;Завершение работы: разрешить завершение работы системы без выполнения входа в систему&amp;quot;
-и измените её статус на Включен.
-[/code]
+		
+		
 		
 		</text_message>
 	</note>
 	<note title="js code" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:27:56" server_date="2017-09-14 02:31:17" >
 		<text_message>
+
+
+
 
 [code]
 //пример конструктора
@@ -78,10 +209,10 @@ var topRight = new Point(100, 0);
 var bottomLeft = new Point(0, 100);
 var bottomRight = new Point(100, 100);
 
-console.log(&amp;quot;topLeft x = &amp;quot; + topLeft.x);
-console.log(&amp;quot;topRight x = &amp;quot; + topRight.x);
-console.log(&amp;quot;bottomLeft x = &amp;quot; + bottomLeft.x);
-console.log(&amp;quot;bottomRight x = &amp;quot; + bottomRight.x);
+console.log(&amp;amp;amp;quot;topLeft x = &amp;amp;amp;quot; + topLeft.x);
+console.log(&amp;amp;amp;quot;topRight x = &amp;amp;amp;quot; + topRight.x);
+console.log(&amp;amp;amp;quot;bottomLeft x = &amp;amp;amp;quot; + bottomLeft.x);
+console.log(&amp;amp;amp;quot;bottomRight x = &amp;amp;amp;quot; + bottomRight.x);
 
 //замыкание
 (function(){
@@ -89,14 +220,14 @@ console.log(&amp;quot;bottomRight x = &amp;quot; + bottomRight.x);
 
 		//обязательный элемент здесь будет автоматически хранится версия
 		// из version control
-		var _repositoryRevision = &amp;quot;$Rev$&amp;quot;; 
+		var _repositoryRevision = &amp;amp;amp;quot;$Rev$&amp;amp;amp;quot;; 
 
 		// private variables and functions
 		var _init = function(){
 		};
 
 		var _build = function(target){
-			return target + &amp;quot; is building!&amp;quot;;
+			return target + &amp;amp;amp;quot; is building!&amp;amp;amp;quot;;
 		};
 		
 		// public interfaces
@@ -111,17 +242,23 @@ console.log(&amp;quot;bottomRight x = &amp;quot; + bottomRight.x);
 })();
 ---------------
 использование в main.js
-	var a = ZList(&amp;quot;some options&amp;quot;);
-console.log(&amp;quot;a.revision = &amp;quot; + a.revision);
+	var a = ZList(&amp;amp;amp;quot;some options&amp;amp;amp;quot;);
+console.log(&amp;amp;amp;quot;a.revision = &amp;amp;amp;quot; + a.revision);
 
-	var result_build = a.build(&amp;quot;table1&amp;quot;);
-console.log(&amp;quot;result_build = &amp;quot; + result_build);
+	var result_build = a.build(&amp;amp;amp;quot;table1&amp;amp;amp;quot;);
+console.log(&amp;amp;amp;quot;result_build = &amp;amp;amp;quot; + result_build);
 [/code]
+		
+		
+		
 		
 		</text_message>
 	</note>
 	<note title="playlist" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:17:17" server_date="2017-09-14 02:20:38" >
 		<text_message>
+
+
+
 
 [code]
 The Femme Fatale Dark Cabaret Collection 
@@ -160,7 +297,7 @@ https://www.youtube.com/watch?v=gt4SYFt7Ai8
  
 ------- 
 Modern Noir Songs 
-https://www.youtube.com/watch?v=AU_PuF59E5g&amp;amp;t=70s 
+https://www.youtube.com/watch?v=AU_PuF59E5g&amp;amp;amp;amp;t=70s 
 Playlist: 
 0:00 San Telmo - Tarantella 
 3:12 Goodnight Moon - Shivaree 
@@ -170,7 +307,7 @@ Playlist:
 18:00 Cold Blooded - The Pretty Reckless 
 21:05 Happy - Kat Frankie 
 26:04 Build the Fire - Kal Cahoone 
-29:37 Between the Bars - Seth Avett &amp;amp; Jessica Lea Mayfield 
+29:37 Between the Bars - Seth Avett &amp;amp;amp;amp; Jessica Lea Mayfield 
 32:05 Handbrake - Micatone 
 36:06 Temptation - Clara Bakker (Tom Waits cover) 
 39:42 Think Twice - Groove Armada 
@@ -179,7 +316,7 @@ Playlist:
 56:16 Wicked Game - Hula-Hifi 
 ----- 
 The Deadly Elegant Dark Cabaret/Folk Song Collection 
-https://www.youtube.com/watch?v=IryFtcBJeZE&amp;amp;t=2483s 
+https://www.youtube.com/watch?v=IryFtcBJeZE&amp;amp;amp;amp;t=2483s 
 0:00 The Hearse Song - Brillig 
 1:54 Rivolta Silenziosa - Humanwine 
 5:50 No More Room - The Scarring Party 
@@ -206,85 +343,39 @@ https://www.youtube.com/watch?v=IryFtcBJeZE&amp;amp;t=2483s
 1:25:55 Sugar in My Coffin - Curtis Eller's American Circus
 [/code]
 		
-		</text_message>
-	</note>
-	<note title="config, linux, xrandr" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:14:51" server_date="2017-09-14 02:18:12" >
-		<text_message>
-
-[code]
-.... монитор при подключении к VGA неправильно выдает список поддерживаемых разрешений. Поэтому в стандартной утилите настройки дисплея я могу поставить разрешение не больше 1024x768. Я же хотел поставить разрешение 1600x900. Это делается так: 
- 
-1. Открываем консоль. Узнаем список видеовыходов и поддерживаемых разрешений для каждого выхода командой 
- 
-Код: [Выделить] 
-xrandrУ меня выходы назывались LVDS1 (монитор ноутбука) и VGA1 (внешний монитор). 
- 
-2. Создаем Modeline для нужного режима: 
- 
-Код: [Выделить] 
-cvt 1600 900 60Первые два числа — разрешение, третье — частота обновления экрана (можно не задавать, по умолчанию будет 60). Команда выдаст примерно следующее: 
- 
-Код: [Выделить] 
-Modeline &amp;quot;1600x900_60.00&amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync 
-3. Создаем режим: 
- 
-Код: [Выделить] 
-xrandr  --newmode &amp;quot;1600x900_60.00&amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync(после --newmode вставляем вывод команды cvt без слова Modeline). 
- 
-4. Добавляем новый режим к нужному выходу: 
- 
-Код: [Выделить] 
-xrandr --addmode VGA1 1600x900_60.00 
- 
-5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система → Параметры → Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
- 
-Код: [Выделить] 
-xrandr --output VGA1 --mode 1600x900_60.00 
-(Положительный эффект не гарантирую. У меня мой способ работает на одной видеокарточке, но не работает на другой (с тем же монитором), ругается на 4-м пункте. При этом под виндой в обоих можно выставить правильное разрешение.)
-[/code]
+		
+		
 		
 		</text_message>
 	</note>
 	<note title="GIT, create a new repository on the command line" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:11:40" server_date="2017-09-14 02:15:01" >
 		<text_message>
 
+
+
+
 [code]
 GIT, create a new repository on the command line 
-echo &amp;quot;# lib&amp;quot; &amp;gt;&amp;gt; README.md 
+echo &amp;amp;amp;quot;# lib&amp;amp;amp;quot; &gt;&gt; README.md 
 git init 
 git add README.md 
-git commit -m &amp;quot;first commit&amp;quot; 
+git commit -m &amp;amp;amp;quot;first commit&amp;amp;amp;quot; 
 git remote add origin https://github.com/romanlaptev/lib.git 
 git push -u origin master  
 #push an existing repository from the command line 
 git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
 [/code]
 		
-		</text_message>
-	</note>
-	<note title="no subject" author="anonymous" ip="37.193.108.45" client_date="2017-09-08 11:16:06" server_date="2017-09-08 04:19:20" >
-		<text_message>
-
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;amp;mode=show | Как изменить COLLATE у базы данных?[/url]
 		
-		</text_message>
-	</note>
-	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:15:37" server_date="2017-09-01 02:18:43" >
-		<text_message>
-
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/ | Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
 		
-		</text_message>
-	</note>
-	<note title="windows, config" author="anonymous" ip="37.193.108.45" client_date="2017-09-01 09:14:04" server_date="2017-09-01 02:17:10" >
-		<text_message>
-
-[url]http://www.cyberforum.ru/ado-net/thread251180.html | Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
 		
 		</text_message>
 	</note>
 	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
 		<text_message>
+
+
+
 
 [code]
 https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
@@ -297,19 +388,19 @@ yum install -y httpd mod_python
 
 vi /etc/apache2/sites-available/default
 
-        &amp;lt;Directory /var/www/&amp;gt;
+        &lt;Directory /var/www/&gt;
 ...
 		AddHandler mod_python .py
                 PythonHandler mod_python.publisher
                 PythonDebug On
-        &amp;lt;/Directory&amp;gt;
+        &lt;/Directory&gt;
 
 vi /var/www/test_mod_python.py
 
 def index(req):
 	# req.content_type = 'text/plain'
 	req.content_type = 'text/html'
-	html = &amp;quot;&amp;lt;h1&amp;gt;Test Apache2 + mod_python&amp;lt;/h1&amp;gt;&amp;quot;
+	html = &amp;amp;amp;quot;&lt;h1&gt;Test Apache2 + mod_python&lt;/h1&gt;&amp;amp;amp;quot;
 	req.write( html )
 	test = 2+3
 	return test;
@@ -318,136 +409,26 @@ def index(req):
 ------------- Python Server Pages
 
 vi /etc/apache2/sites-available/default
-        &amp;lt;Directory /var/www/&amp;gt;
+        &lt;Directory /var/www/&gt;
 ....
                 AddHandler mod_python .psp
                 PythonHandler mod_python.psp
                 PythonDebug On
-        &amp;lt;/Directory&amp;gt;
+        &lt;/Directory&gt;
 
 PSP test script:
 
 vi /var/www/test_mod_python.psp
 
-&amp;lt;html&amp;gt;
-&amp;lt;body&amp;gt;
-&amp;lt;%
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
 for n1 in range(0,10):
-    req.write(&amp;quot;&amp;lt;h1&amp;gt;Hello Python world!&amp;lt;/h1&amp;gt;&amp;quot;)
-    print &amp;quot;&amp;lt;br&amp;gt;&amp;quot;
-%&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-[/code]
-		
-		</text_message>
-	</note>
-	<note title="windows faq" author="anonymous" ip="37.193.108.45" client_date="2017-08-28 15:10:44" server_date="2017-08-28 08:13:45" >
-		<text_message>
-
-
-[url] http://answers.microsoft.com/ru-ru/windows/forum/windows_7-files/windows-7-%D0%BA%D0%B0%D0%BA/45b99053-120e-4779-a684-7008420b83ed | url,answers.microsoft.com[/url]
-[br]
-[code]
-Как штатными средствами вывести список файлов
-1. выделить группу файлов
-2. Нажать Shift (левый или правый)
-3. Удерживая Shift, вызвать контекстное меню
-4. Там будет команда &amp;amp;quot;копировать как путь&amp;amp;quot;. Ее и использовать.
-Далее можно вставлять полные пути всех файлов в блокнот, excel, куда 
-угодно.
-
--------------------------
-Настройка отображения меню в Проводнике
-«Упорядочить» ⇒ «Представление»  - пункт «Строка меню»
-[/code]
-		
-		
-		</text_message>
-	</note>
-	<note title="no subject" author="" ip="" client_date="2017-08-24 21:09:46" server_date="2017-08-24 14:11:58" >
-		<text_message>
-
-
-
-
-[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess[/url]
-[code]
-Как сделать 301 редирект
-Файл .htaccess
-301 редирект – корректная переадресация через htaccess и php header
-.htaccess: , вывод ошибок PHP
-
-Redirect /index.php http://example.com/index.php
-Redirect /data http://www.example.com/data 
-=================================
-[/code]
-		
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="test filter" author="" ip="" client_date="2017-08-24 15:36:32" server_date="2017-08-24 08:39:29" >
-		<text_message>
-
-
-
-
-[url]https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
-[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
-[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
-		
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="test filter" author="" ip="" client_date="2017-08-24 15:35:23" server_date="2017-08-24 08:38:20" >
-		<text_message>
-
-
-
-
-[code]
-https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;amp;id=1381 
-PDO против MySQLi. Что выбрать? 
-
-https://habrahabr.ru/post/141127/ 
-MySQLi раскладываем все по полочкам 
-
-http://php.net/manual/ru/book.pdo.php 
-Объекты данных PHP
-[/code]
-		
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="javascript, test Modernizr" author="anonymous" ip="" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
-		<text_message>
-
-
-
-
-[code]
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;!--[if lt IE 7]&amp;gt;      &amp;lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&amp;gt;
-&amp;lt;![endif]--&amp;gt;
-&amp;lt;!--[if IE 7]&amp;gt;         &amp;lt;html class='no-js lt-ie9 lt-ie8'&amp;gt; &amp;lt;![endif]--&amp;gt;
-&amp;lt;!--[if IE 8]&amp;gt;         &amp;lt;html class='no-js lt-ie9'&amp;gt; &amp;lt;![endif]--&amp;gt;
-&amp;lt;!--[if gt IE 8]&amp;gt;&amp;lt;!--&amp;gt; &amp;lt;html class='no-js'&amp;gt; &amp;lt;!--&amp;lt;![endif]--&amp;gt;
-&amp;lt;head&amp;gt;
-&amp;lt;meta charset='utf-8'&amp;gt;
-&amp;lt;title&amp;gt;test Modernizr&amp;lt;/title&amp;gt;
-&amp;lt;script
-src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;/head&amp;gt;
-
-&amp;lt;h1&amp;gt;test Modernizr&amp;lt;/h1&amp;gt;
-
-&amp;lt;/html&amp;gt;
+    req.write(&amp;amp;amp;quot;&lt;h1&gt;Hello Python world!&lt;/h1&gt;&amp;amp;amp;quot;)
+    print &amp;amp;amp;quot;&lt;br&gt;&amp;amp;amp;quot;
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 [/code]
 		
 		

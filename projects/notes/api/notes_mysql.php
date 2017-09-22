@@ -748,8 +748,19 @@ function exportTable( $filename ){
 		$xml .=  ">\n";
 		if ( !empty($text_message) ){
 //------------------------ filter
-			$text_message = str_replace('', '', $text_message);
-			$text_message = str_replace('&', '&amp;', $text_message);
+			//$text_message = str_replace('', '', $text_message);
+			//$text_message = str_replace('&', '&amp;', $text_message);
+			
+			$text_message = str_replace("&quot;", "\"", $text_message);
+			$text_message = str_replace("&amp;", "&", $text_message);
+			$text_message = str_replace("&lt;", "<", $text_message);
+			$text_message = str_replace("&gt;", ">", $text_message);
+			
+			//insert special symbols re-new
+			$text_message = str_replace("&", "&amp;", $text_message);
+			$text_message = str_replace("<", "&lt;", $text_message);
+			$text_message = str_replace(">", "&gt;", $text_message);
+			$text_message = str_replace("\"", "&quot;", $text_message);
 //------------------------------
 			$xml .=  "\t\t<text_message>\n";
 			$xml .=  $text_message."\n";
@@ -809,8 +820,22 @@ function importTable( $xml_file ){
 		
 		$textMessage = $xml->note[$n]->text_message;
 		$textMessage = addslashes( htmlspecialchars($textMessage) );
+		
+//------------------------ filter
 		$textMessage = str_replace("&amp;lt;", "&lt;", $textMessage);
 		$textMessage = str_replace("&amp;gt;", "&gt;", $textMessage);
+		// //remove old special symbols
+		// $textMessage = str_replace("&quot;", "\"", $textMessage);
+		// $textMessage = str_replace("&amp;", "&", $textMessage);
+		// $textMessage = str_replace("&lt;", "<", $textMessage);
+		// $textMessage = str_replace("&gt;", ">", $textMessage);
+		
+		// //insert special symbols re-new
+		// $textMessage = str_replace("&", "&amp;", $textMessage);
+		// $textMessage = str_replace("<", "&lt;", $textMessage);
+		// $textMessage = str_replace(">", "&gt;", $textMessage);
+		// $textMessage = str_replace("\"", "&quot;", $textMessage);
+//------------------------------
 		
 		$clientDate = $xml->note[$n]["client_date"];
 		$serverDate = $xml->note[$n]["server_date"];
