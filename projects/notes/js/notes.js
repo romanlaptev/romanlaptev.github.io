@@ -1004,6 +1004,8 @@ console.log( all_headers );
 									"jsonLog" : data, 
 									"callback" : function(){
 //console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
+										_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
+										_vars["$num_notes"].innerHTML  = "0";//set number of notes
 									}
 								});
 							}
