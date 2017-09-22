@@ -121,11 +121,13 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			
 			s += "\t\t<text_message>\n";
 //------------------------ filter
+			//remove old special symbols
 			text_message = text_message.Replace("&quot;", "\"");
 			text_message = text_message.Replace("&amp;", "&");
 			text_message = text_message.Replace("&lt;", "<");
 			text_message = text_message.Replace("&gt;", ">");
-
+			
+			//insert special symbols re-new
 			text_message = text_message.Replace("&", "&amp;");
 			text_message = text_message.Replace("<", "&lt;");
 			text_message = text_message.Replace(">", "&gt;");
@@ -359,44 +361,44 @@ FILEGROWTH = 10%);
 			//Response.Write("<br>");
 /*
 System_CAPS_pubproperty	Data	
-Возвращает коллекцию пар ключ/значение, предоставляющие дополнительные сведения об исключении, определяемые пользователем.(Наследуется от Exception.)
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РїР°СЂ РєР»СЋС‡/Р·РЅР°С‡РµРЅРёРµ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ РѕР± РёСЃРєР»СЋС‡РµРЅРёРё, РѕРїСЂРµРґРµР»СЏРµРјС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 
 System_CAPS_pubproperty	Errors	
-Возвращает коллекцию из одного или нескольких SqlError объекты, которые предоставляют подробные сведения об исключениях, создаваемых поставщиком данных .NET Framework для SQL Server.
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»Р»РµРєС†РёСЋ РёР· РѕРґРЅРѕРіРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… SqlError РѕР±СЉРµРєС‚С‹, РєРѕС‚РѕСЂС‹Рµ РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚ РїРѕРґСЂРѕР±РЅС‹Рµ СЃРІРµРґРµРЅРёСЏ РѕР± РёСЃРєР»СЋС‡РµРЅРёСЏС…, СЃРѕР·РґР°РІР°РµРјС‹С… РїРѕСЃС‚Р°РІС‰РёРєРѕРј РґР°РЅРЅС‹С… .NET Framework РґР»СЏ SQL Server.
 
 System_CAPS_pubproperty	HelpLink	
-Получает или задает ссылку на файл справки, связанный с этим исключением.(Наследуется от Exception.)
+РџРѕР»СѓС‡Р°РµС‚ РёР»Рё Р·Р°РґР°РµС‚ СЃСЃС‹Р»РєСѓ РЅР° С„Р°Р№Р» СЃРїСЂР°РІРєРё, СЃРІСЏР·Р°РЅРЅС‹Р№ СЃ СЌС‚РёРј РёСЃРєР»СЋС‡РµРЅРёРµРј.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 System_CAPS_pubproperty	HResult	
-Возвращает или задает HRESULT — кодированное числовое значение, присвоенное определенному исключению.(Наследуется от Exception.)
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РёР»Рё Р·Р°РґР°РµС‚ HRESULT вЂ” РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ, РїСЂРёСЃРІРѕРµРЅРЅРѕРµ РѕРїСЂРµРґРµР»РµРЅРЅРѕРјСѓ РёСЃРєР»СЋС‡РµРЅРёСЋ.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 System_CAPS_pubproperty	InnerException	
-Возвращает экземпляр класса Exception, который вызвал текущее исключение.(Наследуется от Exception.)
+Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° Exception, РєРѕС‚РѕСЂС‹Р№ РІС‹Р·РІР°Р» С‚РµРєСѓС‰РµРµ РёСЃРєР»СЋС‡РµРЅРёРµ.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 System_CAPS_pubproperty	LineNumber	
-Возвращает номер строки в пакете команд Transact-SQL или хранимой процедуры, вызвавшего ошибку.
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё РІ РїР°РєРµС‚Рµ РєРѕРјР°РЅРґ Transact-SQL РёР»Рё С…СЂР°РЅРёРјРѕР№ РїСЂРѕС†РµРґСѓСЂС‹, РІС‹Р·РІР°РІС€РµРіРѕ РѕС€РёР±РєСѓ.
 
 System_CAPS_pubproperty	Message	
-Получает сообщение, описывающее текущее исключение.(Наследуется от Exception.)
+РџРѕР»СѓС‡Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ, РѕРїРёСЃС‹РІР°СЋС‰РµРµ С‚РµРєСѓС‰РµРµ РёСЃРєР»СЋС‡РµРЅРёРµ.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 System_CAPS_pubproperty	Number	
-Возвращает число, определяющее тип ошибки.
+Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡РёСЃР»Рѕ, РѕРїСЂРµРґРµР»СЏСЋС‰РµРµ С‚РёРї РѕС€РёР±РєРё.
 
 System_CAPS_pubproperty	Procedure	
-Возвращает имя вызвавшей ошибку хранимой процедуры или удаленного вызова процедур (RPC).
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ РІС‹Р·РІР°РІС€РµР№ РѕС€РёР±РєСѓ С…СЂР°РЅРёРјРѕР№ РїСЂРѕС†РµРґСѓСЂС‹ РёР»Рё СѓРґР°Р»РµРЅРЅРѕРіРѕ РІС‹Р·РѕРІР° РїСЂРѕС†РµРґСѓСЂ (RPC).
 
 System_CAPS_pubproperty	Server	
-Возвращает имя компьютера, на котором запущен экземпляр SQL Server, вызвавшего ошибку.
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ РєРѕРјРїСЊСЋС‚РµСЂР°, РЅР° РєРѕС‚РѕСЂРѕРј Р·Р°РїСѓС‰РµРЅ СЌРєР·РµРјРїР»СЏСЂ SQL Server, РІС‹Р·РІР°РІС€РµРіРѕ РѕС€РёР±РєСѓ.
 
 System_CAPS_pubproperty	Source	
-Возвращает имя вызвавшего ошибку поставщика.(Переопределяет Exception.Source.)
+Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ РІС‹Р·РІР°РІС€РµРіРѕ РѕС€РёР±РєСѓ РїРѕСЃС‚Р°РІС‰РёРєР°.(РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµС‚ Exception.Source.)
 
 System_CAPS_pubproperty	StackTrace	
-Получает строковое представление непосредственных кадров в стеке вызова.(Наследуется от Exception.)
+РџРѕР»СѓС‡Р°РµС‚ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅС‹С… РєР°РґСЂРѕРІ РІ СЃС‚РµРєРµ РІС‹Р·РѕРІР°.(РќР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ Exception.)
 
 System_CAPS_pubproperty	State	
-Возвращает числовой код ошибки от SQL Server, который представляет ошибку, предупреждение или сообщение «данные не найдены». Дополнительные сведения о расшифровке этих значений см. в разделе электронной документации по SQL Server.
+Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡РёСЃР»РѕРІРѕР№ РєРѕРґ РѕС€РёР±РєРё РѕС‚ SQL Server, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ РѕС€РёР±РєСѓ, РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РёР»Рё СЃРѕРѕР±С‰РµРЅРёРµ В«РґР°РЅРЅС‹Рµ РЅРµ РЅР°Р№РґРµРЅС‹В». Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ Рѕ СЂР°СЃС€РёС„СЂРѕРІРєРµ СЌС‚РёС… Р·РЅР°С‡РµРЅРёР№ СЃРј. РІ СЂР°Р·РґРµР»Рµ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РґРѕРєСѓРјРµРЅС‚Р°С†РёРё РїРѕ SQL Server.
 
 System_CAPS_pubproperty	TargetSite
 */			
@@ -727,16 +729,17 @@ Response.Write( logStr );
 					string key = reader.GetName(n).ToString();
 					string value = reader.GetValue(n).ToString();
 // if( n == 3 ){
-// //Response.Write("test, code:" + (char)65 );
-// //Response.Write("<br>");
-// for( int n1 = 0; n1 < value.Length; n1++){
-// Response.Write("Code:" + (int)value[n1] );
-// Response.Write("<br>");
+// // //Response.Write("test, code:" + (char)65 );
+// // //Response.Write("<br>");
+	// for( int n1 = 0; n1 < value.Length; n1++){
+		// Response.Write("Code:" + (int)value[n1] );
+		// Response.Write("<br>");
+	// }
 // }
-// }
-					//filter
-					value = value.Replace("\r", "\\r");//replace Return (for correct JSON parsing)
-					value = value.Replace("\n", "\\n");//replace end line (for correct JSON parsing)
+					//filter getNotes
+					value = value.Replace("\r", "\\r");//replace CReturn (for correct JSON parsing)
+					value = value.Replace("\n", "\\n");//replace end line LF(for correct JSON parsing)
+					value = value.Replace("\t", "\\t");//replace TAB
 					
 					jsonNote += "\""+key+"\" : \""+value+"\"";
 				}//next
@@ -1010,9 +1013,10 @@ Response.Write( logStr );
 					for (int n = 0; n < note.ChildNodes.Count; n++){
 						string nodeName = note.ChildNodes[n].Name;
 						string nodeValue = note.ChildNodes[n].InnerText;
-						nodeValue = nodeValue.Replace("\t", "\\t");//escape Tab
-						nodeValue = nodeValue.Replace("\r", "\\r");//escape break line
-						nodeValue = nodeValue.Replace("\n", "\\n");//escape break line
+//filter import
+						//nodeValue = nodeValue.Replace("\t", "\\t");//escape Tab
+						//nodeValue = nodeValue.Replace("\r", "\\r");//escape CR
+						//nodeValue = nodeValue.Replace("\n", "\\n");//escape break line LF
 						nodeValue = nodeValue.Replace("\"", "&quot;");
 						nodeValue = nodeValue.Replace("<", "&lt;");
 						nodeValue = nodeValue.Replace(">", "&gt;");
