@@ -126,12 +126,14 @@ tableName+"\" ORDER BY \"client_date\" DESC";
 			text_message = text_message.Replace("&amp;", "&");
 			text_message = text_message.Replace("&lt;", "<");
 			text_message = text_message.Replace("&gt;", ">");
+			text_message = text_message.Replace("&#39;", "'");//apostrophe
 			
 			//insert special symbols re-new
 			text_message = text_message.Replace("&", "&amp;");
 			text_message = text_message.Replace("<", "&lt;");
 			text_message = text_message.Replace(">", "&gt;");
 			text_message = text_message.Replace("\"", "&quot;");
+			text_message = text_message.Replace("\'", "&#39;");//apostrophe
 //------------------------------
 			s += text_message+"\n";
 			
