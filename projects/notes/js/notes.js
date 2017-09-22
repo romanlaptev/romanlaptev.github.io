@@ -35,7 +35,8 @@ var _notes = function ( opt ){
 		},
 		"messagesList" : getById("messages"),		
 		"controlPanel" : getById("control-btn"),
-		"hideControlPanel" : false
+		"hideControlPanel" : false,
+		"$num_notes" : getById("num-notes")
 	};
 	
 	//correct for remote run
@@ -1018,6 +1019,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 
 				} else {
 					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
+					_vars["$num_notes"].innerHTML  = "0";//set number of notes
 				}
 				
 			}//end callback()
@@ -1079,6 +1081,9 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		//var html = _vars["templates"][templateID];
 		//html = html.replace("{{textMessage}}", p["data"][0]["textMessage"] );
 		//_vars["messages"].innerHTML = html;
+		
+		//set number of notes
+		_vars["$num_notes"].innerHTML  = p["data"].length;
 		
 		var listHtml = "";
 		var itemHtml = "";
