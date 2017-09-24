@@ -70,9 +70,9 @@ console.log( msg, xhr );
 	xhr.open( requestMethod, url, async );
 	
 	//Check responseType support:
-	if( "responseType" in xhr){
-		xhr.responseType = "document";
-	}
+	//if( "responseType" in xhr){
+		//xhr.responseType = "document";
+	//}
 /*
 https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
@@ -100,13 +100,18 @@ console.log( all_headers );
 				_log("ajax load url: " + url + ", runtime: " + runtime +" sec");
 							
 				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
+console.log( "xhr.response: ", xhr.response );
+console.log( "xhr.responseText: ", xhr.responseText );
+console.log( "xhr.responseXML: ", xhr.responseXML );
+/*				
 if( "responseType" in xhr){
 console.log( xhr.response );
 console.log( "responseType:: " + xhr.responseType );
 } else {
-console.log( xhr.responseText );
-console.log( xhr.responseXml );
+console.log( "xhr.responseText: ", xhr.responseText );
+console.log( "xhr.responseXML: ", xhr.responseXML );
 }
+*/
 
 					var all_headers = xhr.getAllResponseHeaders();
 console.log( all_headers );
@@ -191,6 +196,7 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	<pre>
 data/test.html
 data/test.xml
+data/test.json
 /sites/romanlaptev.github.io/projects/notes/api/test.php
 http://comp:88/test/data/ar_adr_lvl_5/ar_adr_lvl_5_ORDER.csv
 http://comp:88/test/data/ar_adr_lvl_5/p1_100000.csv

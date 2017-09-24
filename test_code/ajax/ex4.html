@@ -22,6 +22,9 @@ console.log("click", document.getElementById("request_url"), document.getElement
 console.log("state:", xhr.readyState);
 			if( xhr.readyState === 4){
 console.log("end request, state ", xhr.readystate, ", status: ", xhr.status);
+console.log( "xhr.responseText: ", xhr.responseText );
+console.log( "xhr.responseXML: ", xhr.responseXML );
+
 				if( xhr.status === 200){
 					ajax_content.innerHTML += xhr.responseText;
 				}
@@ -44,10 +47,15 @@ console.log("end request, state ", xhr.readystate, ", status: ", xhr.status);
 		</div>
 		<div class="panel-body" id="ajax_content"></div>
 	</div>
-	<input type="text" class="form-control" id="request_url" name="input_url" value="https://romanlaptev.github.io/"/>
+	<input type="text" class="form-control" id="request_url" name="input_url" value="data/test.html"/>
 	<pre>
+data/test.html
+data/test.xml
+data/test.json
+
+https://romanlaptev.github.io/
 https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest
-	http://yandex.ru
+http://yandex.ru
 	</pre>
 	<button class="btn btn-primary" id="btn_send">send request</button>
 	

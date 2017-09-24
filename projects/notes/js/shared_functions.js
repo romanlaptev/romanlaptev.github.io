@@ -331,9 +331,10 @@ console.log( msg, xhr );
 //https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
 //Error, "The response type cannot be changed for synchronous requests made from a document."
-	if( "responseType" in xhr && p["async"] ){
-		xhr.responseType = p["responseType"];
-	}
+	// Opera 12 crash!!!!
+	// if( "responseType" in xhr && p["async"] ){
+		// xhr.responseType = p["responseType"];
+	// }
 	
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
@@ -361,12 +362,24 @@ console.log( msg, xhr );
 					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-// console.log( "xhr.responseText: ", xhr.responseText );
-// console.log( "xhr.responseXML: ", xhr.responseXML );
+console.log( "xhr.response: ", xhr.response );
+
 // if( "responseType" in xhr){
 // console.log( "xhr.response: ", xhr.response );
-// console.log( "responseType: " + xhr.responseType );
+console.log( "responseType: " + xhr.responseType );
 // }
+
+try{
+console.log( "xhr.responseText: ", xhr.responseText );
+} catch(e){
+console.log( e );
+}
+
+try{
+console.log( "xhr.responseXML: ", xhr.responseXML );
+} catch(e){
+console.log( e );
+}
 					
 					if( typeof callback === "function"){
 						

@@ -10,7 +10,7 @@ function()
 {
 	$('#ajax-load').click(function(){
 		$.ajax({
-			url: 'load_html.html',
+			url: 'data/test.html',
 			//url = "http://lib.wallst.ru/pages/book_Rods/index.html",
 			type: 'GET',
 			success:function(result)
@@ -80,7 +80,7 @@ function remote_ajax()
 	var request = createRequestObject();
 	//url = "http://lib.wallst.ru/pages/book_Rods/index.html";
 	//url = "http://rex.dax.ru/php/info.php";
-	var url = "load_html.html";
+	var url = "data/test.html";
 	//url = "http://it-works.16mb.com/php/test.php";
 	if (!request) return false;
 //alert ('function remote_ajax()');
