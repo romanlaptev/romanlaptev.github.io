@@ -14,13 +14,21 @@
 <pre>
 http://j2w.blogspot.ru/2008/01/mysql-jdbc.html
 http://forum.vingrad.ru/topic-154042.html
+https://tproger.ru/translations/java-jdbc-example/
+
+http://www.javaportal.ru/java/tutorial/tutorialJDBC/resultset.html
+Руководство по JDBC v.1
+
+http://java-course.ru/begin/database01/
+Базы данных на Java
 </pre>
 
 <%
 	Connection conn = null;
 	String userName = "root";
 	String password = "master";
-	String url = "jdbc:mysql://localhost/test";
+	String url = "jdbc:mysql://localhost/mysql";
+	String sql;
 	
 	try{
 
@@ -32,10 +40,33 @@ http://forum.vingrad.ru/topic-154042.html
 		out.println ("connection statement: " + stat);
 		out.println ("</div>");
 		
+		//sql = "select * from db;";
+		sql = "SHOW TABLES;";
+		ResultSet rs = stat.executeQuery(sql);
+
+// ykk>1. В ResultSet есть метод last() перемещает курсор на последнюю запись
+// ykk>2. Затем getRow() — номер текущей строки
+// ykk>3. Возврашаешь курсор в начало — beforeFirst()
+
+		ResultSetMetaData data = rs.getMetaData();
+		int count = data.getColumnCount();
+
+		for (int n = 1; n <= count; n++) {
+			out.print( data.getColumnName(n)+", ");
+		}
+
+		while (rs.next()) {
+			out.println("<li>");
+			out.println(rs.getString(1));
+			out.println("</li>");
+		}
+
+		rs.close();
+		
 	} catch (Exception e) {
 		out.println ("<div class='alert alert-danger'>");
 		out.println ("Cannot connect to database server " + url);
-		//e.printStackTrace();
+		e.printStackTrace(response.getWriter());
 		out.println ("</div>");
 	} finally {
 		if(conn != null){
@@ -49,7 +80,7 @@ http://forum.vingrad.ru/topic-154042.html
 			} catch (Exception e){
 				out.println ("<div class='alert alert-danger'>");
 				out.println("Cannot close connect to database server....");
-				//e.printStackTrace();
+				e.printStackTrace(response.getWriter());
 				out.println ("</div>");
 			}
 		}
