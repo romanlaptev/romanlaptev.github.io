@@ -16,7 +16,7 @@ https://bitbucket.org/xerial/sqlite-jdbc/downloads
 <%
 	Class.forName("org.sqlite.JDBC");
 	Connection conn =
-		 DriverManager.getConnection("jdbc:sqlite:d:\\db\\sqlite\\lib.sqlite");
+		 DriverManager.getConnection("jdbc:sqlite:c:\\db\\sqlite\\lib.sqlite");
 	Statement stat = conn.createStatement();
 
 	ResultSet rs = stat.executeQuery("select * from node;");
