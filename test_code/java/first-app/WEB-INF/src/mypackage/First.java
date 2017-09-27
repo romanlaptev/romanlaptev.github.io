@@ -18,6 +18,7 @@ package mypackage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,14 +51,71 @@ public final class First extends HttpServlet {
         writer.println("<html>");
         writer.println("<head>");
         writer.println("<title>First Servlet Page</title>");
+		writer.println("<link rel='stylesheet' href='css/bootstrap337.min.css'>");
         writer.println("</head>");
         writer.println("<body>");
+		writer.println("<div class='container'>");
 
         writer.println("<h1>my First Servlet</h1>");
+        writer.println("<b>Path: </b>" + request.getContextPath() );
+		
+		writer.println("<div class='panel panel-primary'>");
+writer.println("<form name='form_message' id='message-form' action='"+request.getContextPath() +"/first' method='POST' enctype='application/x-www-form-urlencoded'>");
+writer.println("<div class='form-group'>");
+writer.println("<label id='name-label'>*Name: </label>");
+writer.println("<input type='text' class='form-control' name='author_name' value='anonymous'>");
+writer.println("</div>");
+writer.println("<div class='form-group'>");
+writer.println("<label id='title-label'>Title (subject): </label>");
+writer.println("<input type='text' class='form-control' name='title'>");
+writer.println("</div>");
+writer.println("<div class='form-group'>");
+writer.println("<label id='text-message-label'>*text message: </label>");
+writer.println("<textarea id='notes-text' name='text_message' class='form-control' rows='10'></textarea>");
+writer.println("</div>");
+writer.println("<button type='reset' class='btn btn-large btn-warning'>reset form</button>");
+writer.println("<button type='submit' class='btn btn-large btn-primary'>submit</button>");
+writer.println("</form>");
+		writer.println("</div>");
 
-        writer.println("</body>");
-        writer.println("</html>");
-    }
+		writer.println("</div>");
+		writer.println("</body>");
+		writer.println("</html>");
+    }//end doGet()
 
+	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		Enumeration paramNames = request.getParameterNames();
+		
+		String parName;
+		boolean emptyEnum = false;
+		
+		if( !paramNames.hasMoreElements() ){
+			emptyEnum = true;
+		}
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>Submitted parameters</title>");
+		out.println("</head>");
+		out.println("<body>");
+		
+		if( emptyEnum ){
+			out.println("<h2>No parameters in POST-request object...</h2>");
+		} else {
+			out.println("<ul>");
+			while( paramNames.hasMoreElements() ){
+				parName = (String) paramNames.nextElement();
+				out.println("<li>");
+				out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
+				out.println("</li>");
+			}//end while
+			out.println("</ul>");
+		}
+		
+		out.println("</body>");
+		out.println("</html>");
+		
+	}//end doPost()
 
-}
+}//end class
