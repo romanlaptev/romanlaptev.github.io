@@ -6,15 +6,15 @@
 		exit ();
 	}
 
-	if( empty($_REQUEST['json']) )
+	if( empty($_REQUEST['playlist']) )
 	{
-		$message .= "<p class='error'>error, empty json playlist</p>";
+		$message .= "<p class='error'>error, empty playlist</p>";
 		echo $message;
 		exit ();
 	}
 
 	$filename = $_REQUEST['filename'];
-	$json_string = json_encode( $_REQUEST['json'] );
+	$json_string = json_encode( $_REQUEST['playlist'] );
 	switch ( json_last_error() ) {
 		case JSON_ERROR_NONE:
 			$num_bytes = file_put_contents ($filename, $json_string);

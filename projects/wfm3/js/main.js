@@ -1,46 +1,51 @@
+$(document).ready(function(){
+
+	var myPlaylist = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_N",
+		cssSelectorAncestor: "#jp_container_N"
+	},
+	[
+	], 
+	{
+		playlistOptions: {
+			enableRemoveControls: true
+		},
+		swfPath: "../players/jPlayer-2.5.0/js",
+		//supplied: "webmv, ogv, m4v, oga, mp3",
+		supplied: "mp3",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		audioFullScreen: true
+	});
+
+	vars["playlistObj"] = myPlaylist;
+//console.log(vars);	
+
 /*
-//Module Wfm
-(function(){
-	var Wfm = Wfm || function(options){
+	var playlist = new Array();
 
-		// private variables and functions
-		var _init = function(){
-console.log("init!!!");
-		};
-		
-		var _build = function(target){
-			var html = "Table " + target + " is building....";
-			return html;
-		};
-		
-		// public interfaces
-		return{
-			init:	function(){ 
-				return _init(); 
-			},
-			build:	function(target){ 
-				return _build(target); 
-			}
-		};
+	var filename = "test";
+	var artist = "test";
+	var mp3 = "/music/A/ABBA - SOS.mp3";
+	//var mp3 = "/music/A/Amorphis - Thousand lakes.mp3";//error format!
+	
+	var link_to_media =  true;
+
+	var track = {
+		title: filename,
+		"artist": artist,
+		mp3: mp3,
+		free: link_to_media, 
 	};
-	window.Wfm = Wfm;
-	Wfm().init();
-})();
+	playlist.push(track);
+	myPlaylist.setPlaylist( playlist );
 */
-var wfm = Wfm();
-console.log ("wfm = ", wfm);
+//=========================================	
 
-$(document).ready(
-	function(){
+	$('.top').click(function (e) {
+	  e.preventDefault();
+	  $('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
+	});
 
-		$(document).ajaxStart(
-			function(){ 
-			  $('#ajaxBusy').show(); 
-			}
-		).ajaxStop(
-			function()
-			{ 
-			  $('#ajaxBusy').hide();
-			}
-		);
-});//end teady
+});
+

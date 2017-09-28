@@ -10,14 +10,20 @@ namespace myspace
 		{
 			if( Request.QueryString["dir"] == null )
 			{
-				Response.Write("<p class='error'>error, undefined dir var!</p>");
+				Response.Write("<p class='alert-error'>error, undefined dir var!</p>");
 				return;
 			}
 			string dir = Request.QueryString["dir"];
 			if( dir.Length == 0 )
 			{
-				Response.Write("<p class='error'>error, empty dir value!</p>");
+				Response.Write("<p class='alert-error'>error, empty dir value!</p>");
 				return;
+				
+				//dir = Request.ServerVariables["APPL_PHYSICAL_PATH"];
+				
+				//string filePath = Request.ServerVariables["PATH_TRANSLATED"];
+				//dir = Path.GetDirectoryName(filePath);
+				//D:\clouds\Yandex.Disk\sync\sites\romanlaptev.github.io\webapps\webapp_music\api\aspx
 			}
 			
 			string directoryName = @dir;
@@ -42,7 +48,7 @@ namespace myspace
 			}
 			catch (Exception ex)
 			{
-				Response.Write ( "<p class='error'>"+ex.Message+"</p>" ); 
+				Response.Write ( "<p class='alert-error'>"+ex.Message+"</p>" ); 
 			}	
 			
 			
@@ -54,7 +60,7 @@ namespace myspace
 			}
 			else
 			{
-				Response.Write("<p class='error'>error, empty filelist</p>");
+				Response.Write("<p class='alert-error'>error, empty filelist</p>");
 			}
 			
 		}//------------------------------------- end func

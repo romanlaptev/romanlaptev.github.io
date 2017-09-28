@@ -1,48 +1,98 @@
+//console.log for old IE
+if(!window.console){
+	console = {
+		log : function(message){
+			alert(message);
+		}
+	}
+}
+
+var _timer = {};
+var _set_timer = function (){
+	var d = new Date;
+	return d.getTime();
+};
+
+var _get_timer = function (timer){
+	var d = new Date;
+	return parseFloat((d.getTime() - timer)/1000);
+};
+
+
+function _log( msg, id){
+	if(!id) id = "log";
+	if( msg.length === 0){
+		document.getElementById(id).innerHTML = "";
+	}
+	//if( window.console && window.console.log) {
+		//console.log(msg)
+	//};
+	document.getElementById(id).innerHTML += "<p>" + msg + "</p>";
+}
+
 //document.write("браузер - " + navigator.appName + "<br>");
 //if (navigator.javaEnabled() == 1)
 //  document.write("Браузер поддерживает JavaScript<br>");
 //else
 //  document.write("Браузер не поддерживает JavaScript<br>");
 
-function getenv(i)
-{
-	if (!i.length) 
-	{ 
+//**************************************
+//var dirname = getenv("dirname");
+//**************************************
+function getenv(i){
+	
+	if (!i.length){ 
 		return false; 
 	}  
 	qStr = document.location.href;
 	strpos = qStr.indexOf("?"+i+"=");
 
-	if ( strpos ==-1) 
-	{ 
+	if( strpos ==-1){ 
 		strpos = qStr.indexOf("&"+i+"="); 
 	}
 
-	if ( strpos == qStr.length || strpos ==-1 )
-	{
+	if ( strpos == qStr.length || strpos ==-1 ){
 		return false; 
 	}
 
 	val = qStr.substring( (strpos+i.length)+2, qStr.length);
-
 	strpos = val.indexOf("&");
 
-	if ( strpos !=-1 ) 
-	{ 
+	if ( strpos !=-1 ){ 
 		val = val.substring(0, strpos ); 
 	}
 
-	if ( !val.length ) 
-	{ 
+	if ( !val.length ){ 
 		return false; 
-	}
-	else 
-	{ 
+	} else { 
 		return val; 
 	}
 
-}//----------------------------------end func
+}// end getenv()
 
+//**************************************
+//$_GET = parseGetParams(); 
+//console.log( $_GET);
+//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
+//**************************************
+function parseGetParams() { 
+   var $_GET = {}; 
+   var parse_url = window.location.search.substring(1).split("&"); 
+   for(var n = 0; n < parse_url.length; n++) 
+   { 
+      var getVar = parse_url[n].split("="); 
+      //$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+	  if( typeof(getVar[1])=="undefined" )
+	  {
+		$_GET[ getVar[0] ] = "";
+	  }
+	  else
+	  {
+		$_GET[ getVar[0] ] = getVar[1];
+	  }
+   } 
+   return $_GET; 
+}//end parseGetParams() 
 
 function createRequestObject() 
 {
@@ -92,11 +142,37 @@ function getXMLDocument(url)
              alert("Загрузка XML не поддерживается браузером");  
              return null;  
          }  
-}//-----------------------------------------------------------------end func
+}//end func
 
-$(document).ready(
-	function()
-	{
+/*
+function select_checkbox( form ){
+//   alert ("select all checkbox");
+   var frm = document.form_ls;
+   for (var n1=1; n1 < frm.elements.length; n1++)
+      {
+        var elmnt = frm.elements[n1];
+        if (elmnt.type == 'checkbox')
+          {
+            elmnt.checked = true;
+          }
+      }
+ }
+
+function clear_checkbox (){
+//     alert ("clear all checkbox");
+      var frm = document.form_ls;
+      for ( var n2=1; n2 < frm.elements.length; n2++)
+         {
+          var elmnt = frm.elements[n2];
+          if  (elmnt.type=='checkbox') 
+            {
+              elmnt.checked = false;
+            }
+         }
+}
+*/
+
+$(document).ready(function(){
 //-------------------------------
 		$(document).ajaxStart(
 			function(){ 
@@ -137,16 +213,13 @@ $(document).ready(
 			}
 		);
 
-//------------------------- scroll to top
-$("#scroll-to-top").click(function(e) {
-	e.preventDefault;
-	$('html,body').animate({
-		scrollTop: 0
-		}, 500);
-	return false;
-});
+		//------------------------- scroll to top
+		$("#scroll-to-top").click(function(e) {
+			e.preventDefault;
+			$('html,body').animate({
+				scrollTop: 0
+				}, 500);
+			return false;
+		});
 
-
-	}
-);//end ready
-
+});//end ready
