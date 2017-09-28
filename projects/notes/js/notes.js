@@ -38,12 +38,17 @@ var _notes = function ( opt ){
 		"tests" : [{
 				"name" : "checkPHP",
 				"url" : "api/test.php",
+				"successMsg" : "<p>test PHP success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
-						if( res === "4" ){
+						if( res[0] === "4" ){
 							_vars["supportPHP"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
 						} else {
 							_vars["supportPHP"] = false;
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
 					}//end callback
 				}, //end test
@@ -51,35 +56,60 @@ var _notes = function ( opt ){
 				{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
+				"successMsg" : "<p>test ASPX success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
-						if( res === "4" ){
+						if( res[0] === "4" ){
 							_vars["supportASPX"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
 						} else {
 							_vars["supportASPX"] = false;
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
 					}//end callback
 				}, //end test
 				
 				{
 				"name" : "checkMSSQL",
-				"url" : "test_mssql.aspx",
+				"url" : "api/test_mssql.aspx",
 				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
-console.log(res);					
-						_vars["supportMSSQL"] = false;
+//console.log(res);					
+						parseLog({
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportMSSQL"] = true;
+								_vars["requestUrl"] = _vars["requestUrlASPX"];
+							},
+							"onError" : function( errorCode ){
+console.log(errorCode);
+								_vars["supportMSSQL"] = false;
+								_error("errorMSSQL");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
 					}//end callback
 				}, //end test
 
 				{
 				"name" : "checkJAVA",
-				"url" : "api/test.jsp",
+				"url" : "api/test_java.jsp",
+				"successMsg" : "<p>test JAVA success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
-						if( res === 4 ){
+console.log("res", res.charAt(0) );
+						if( res.charAt(0) === "4" ){
 							_vars["supportJAVA"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
 						} else {
 							_vars["supportJAVA"] = false;
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
 					}//end callback
 				} //end test
@@ -1036,8 +1066,8 @@ console.log(data, typeof data, data.length);
 				test["callback"]( data );
 			} 
 			numTest++;
-			//if( numTest < _vars["tests"].length ){
-			if( numTest < 2 ){
+			if( numTest < _vars["tests"].length ){
+			//if( numTest < 2 ){
 				testServerMod( numTest );
 			}
 		}//end _postReq()
