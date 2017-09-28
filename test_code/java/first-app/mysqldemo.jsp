@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/css/bootstrap335.min.css">
+	<link rel="stylesheet" href="css/bootstrap337.min.css">
 	<title>MySQL Demo</title>
 </head>
 
