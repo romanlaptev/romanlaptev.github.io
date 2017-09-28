@@ -11,13 +11,13 @@ $(document).ready(function(){
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
+		
+		"requestUrl" : "upload/notes.xml",
+		"exportUrl" : "",
+		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
+
 		// "supportPHP" : false,
 		// "testUrlPHP": "api/test.php",
-		// "requestUrl" : "api/notes_mysql.php",
-		// "exportUrl" : "api/notes_mysql.php?action=export_notes",
-
-		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
-		"xmlUrl" : "upload/notes.xml",
 
 		// "supportASPX" : false,
 		// "testUrlASPX": "api/test.aspx",
@@ -41,12 +41,15 @@ var _notes = function ( opt ){
 				"successMsg" : "<p>test PHP success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
+					
+						_vars["supportPHP"] = false;
 						if( res[0] === "4" ){
+							
 							_vars["supportPHP"] = true;
+							
 							var msg = this["successMsg"];
 							_log("<div class='alert alert-success'>" + msg + "</div>");
 						} else {
-							_vars["supportPHP"] = false;
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
@@ -59,12 +62,15 @@ var _notes = function ( opt ){
 				"successMsg" : "<p>test ASPX success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
+					
+						_vars["supportASPX"] = false;
 						if( res[0] === "4" ){
+							
 							_vars["supportASPX"] = true;
+
 							var msg = this["successMsg"];
 							_log("<div class='alert alert-success'>" + msg + "</div>");
 						} else {
-							_vars["supportASPX"] = false;
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
@@ -76,7 +82,8 @@ var _notes = function ( opt ){
 				"url" : "api/test_mssql.aspx",
 				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
-//console.log(res);					
+console.log(res);					
+						_vars["supportMSSQL"] = false;
 						parseLog({
 							"jsonLog" : res,
 							"onSuccess" : function(){
@@ -85,7 +92,6 @@ var _notes = function ( opt ){
 							},
 							"onError" : function( errorCode ){
 console.log(errorCode);
-								_vars["supportMSSQL"] = false;
 								_error("errorMSSQL");
 							}//,
 							//"callback" : function(){
@@ -101,8 +107,8 @@ console.log(errorCode);
 				"successMsg" : "<p>test JAVA success, suppored by server <b>" + window.location.host + "</b>...</p>",
 				"errorMsg" : "<p>test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...</p>",
 				"callback" : function(res){
-console.log("res", res.charAt(0) );
-						if( res.charAt(0) === "4" ){
+//console.log("res", res.charAt(0) );
+						if( res[0] === "4" ){
 							_vars["supportJAVA"] = true;
 							var msg = this["successMsg"];
 							_log("<div class='alert alert-success'>" + msg + "</div>");
@@ -1055,12 +1061,9 @@ console.log( all_headers );
 			"callback": _postReq
 		});
 		
-		// function _onerror( xhr ){
-			// var all_headers = xhr.getAllResponseHeaders();
-// console.log( all_headers );
-		// }//end _onerror()
-
 		function _postReq( data ){
+// var all_headers = xhr.getAllResponseHeaders();
+// console.log( all_headers );
 console.log(data, typeof data, data.length);
 			if( typeof test["callback"] === "function"){
 				test["callback"]( data );
@@ -1069,9 +1072,41 @@ console.log(data, typeof data, data.length);
 			if( numTest < _vars["tests"].length ){
 			//if( numTest < 2 ){
 				testServerMod( numTest );
+			} else {
+console.log("PHP: " , _vars["supportPHP"]);
+console.log("ASPX: " , _vars["supportASPX"]);
+console.log("MSSQL: " , _vars["supportMSSQL"]);
+console.log("JAVA: " , _vars["supportJAVA"]);
+				var noSupport = true;
+				if( _vars["supportPHP"] ){
+					noSupport = false;
+					_vars["requestUrl"] = "api/notes_mysql.php";
+					_vars["exportUrl"] = "api/notes_mysql.php?action=export_notes";
+					loadNotes();
+				}
+				
+				if( _vars["supportASPX"] ){
+					if( _vars["supportMSSQL"] ){
+						noSupport = false;
+						_vars["requestUrl"] = "api/notes_mssql.aspx";
+						_vars["exportUrl"] = "api/notes_mssql.aspx?action=export_notes";
+						loadNotes();
+					}
+				}
+
+				if( _vars["supportJAVA"] ){
+					noSupport = false;
+					_vars["requestUrl"] = "api/notes_java.jsp";
+					_vars["exportUrl"] = "api/notes_java.jsp?action=export_notes";
+					// loadNotes();
+				}
+				
+				if( noSupport ){
+					loadNotesXml();
+				}
+
 			}
 		}//end _postReq()
-
 	}//end testServer()
 
 	function loadNotes(){
@@ -1173,7 +1208,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		_vars["messagesList"].innerHTML = "";
 		runAjax( {
 			"requestMethod" : "GET", 
-			"url" : _vars["xmlUrl"], 
+			"url" : _vars["requestUrl"], 
 			"callback": function( data ){
 //console.log(data.length, typeof data, data);				
 				//_parseXML( data );
@@ -1195,7 +1230,7 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		
 		function _onerror( xhr ){
 var msg = "";
-msg += "<p>error, " +_vars["xmlUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
+msg += "<p>error, " +_vars["requestUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
 _log("<div class='alert alert-danger'>" + msg + "</div>");
 		}//end _onerror()
 		
