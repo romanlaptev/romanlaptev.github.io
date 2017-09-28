@@ -459,19 +459,17 @@ console.log(errorCode);
 					return;
 				}
 
-				if( _vars["supportPHP"] ){
+				if( _vars["supportPHP"]){
 					var url= _vars["exportUrl"];
 					window.location.assign(url);
-				} else {
-					//_error("errorPHP");
 				}
 				
-				if( _vars["supportASPX"] ){
-					var url= _vars["exportUrl"];
-					window.location.assign(url);
-				} else {
-					_error("errorASPX");
-				}
+				//if( _vars["supportASPX"] ){
+					if( _vars["supportMSSQL"] ){
+						var url= _vars["exportUrl"];
+						window.location.assign(url);
+					}
+				//}
 
 			}//end event
 		}
@@ -796,7 +794,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 
 	}//end sendForm
 
-
+/*
 	function testServer(){
 		//start chain of tests
 		_test({
@@ -1049,7 +1047,7 @@ console.log( all_headers );
 		}//end _testMSSQL()
 		
 	}//end testServer()
-
+*/
 	//async requests (one by one), server capabilities check
 	function testServerMod( numTest ){
 
@@ -1107,7 +1105,7 @@ console.log( all_headers );
 
 			}
 		}//end _postReq()
-	}//end testServer()
+	}//end testServerMod()
 
 	function loadNotes(){
 //console.log( _vars["templates"] );
