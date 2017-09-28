@@ -467,7 +467,7 @@ console.log(errorCode);
 				}
 				
 				if( _vars["supportASPX"] ){
-					var url= _vars["exportUrlASPX"];
+					var url= _vars["exportUrl"];
 					window.location.assign(url);
 				} else {
 					_error("errorASPX");
@@ -1064,7 +1064,7 @@ console.log( all_headers );
 		function _postReq( data ){
 // var all_headers = xhr.getAllResponseHeaders();
 // console.log( all_headers );
-console.log(data, typeof data, data.length);
+//console.log(data, typeof data, data.length);
 			if( typeof test["callback"] === "function"){
 				test["callback"]( data );
 			} 
@@ -1073,10 +1073,10 @@ console.log(data, typeof data, data.length);
 			//if( numTest < 2 ){
 				testServerMod( numTest );
 			} else {
-console.log("PHP: " , _vars["supportPHP"]);
-console.log("ASPX: " , _vars["supportASPX"]);
-console.log("MSSQL: " , _vars["supportMSSQL"]);
-console.log("JAVA: " , _vars["supportJAVA"]);
+// console.log("PHP: " , _vars["supportPHP"]);
+// console.log("ASPX: " , _vars["supportASPX"]);
+// console.log("MSSQL: " , _vars["supportMSSQL"]);
+// console.log("JAVA: " , _vars["supportJAVA"]);
 				var noSupport = true;
 				if( _vars["supportPHP"] ){
 					noSupport = false;
