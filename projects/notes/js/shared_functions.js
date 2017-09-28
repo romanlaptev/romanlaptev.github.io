@@ -362,24 +362,24 @@ console.log( msg, xhr );
 					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-console.log( "xhr.response: ", xhr.response );
+//console.log( "xhr.response: ", xhr.response );
 
 // if( "responseType" in xhr){
-// console.log( "xhr.response: ", xhr.response );
-console.log( "responseType: " + xhr.responseType );
+// // console.log( "xhr.response: ", xhr.response );
+// console.log( "responseType: " + xhr.responseType );
 // }
 
-try{
-console.log( "xhr.responseText: ", xhr.responseText );
-} catch(e){
-console.log( e );
-}
+// try{
+// console.log( "xhr.responseText: ", xhr.responseText );
+// } catch(e){
+// console.log( e );
+// }
 
-try{
-console.log( "xhr.responseXML: ", xhr.responseXML );
-} catch(e){
-console.log( e );
-}
+// try{
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+// } catch(e){
+// console.log( e );
+// }
 					
 					if( typeof callback === "function"){
 						

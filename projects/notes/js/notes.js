@@ -24,10 +24,16 @@ var _notes = function ( opt ){
 		"requestUrlASPX" : "api/notes_mssql.aspx",
 		"exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
 
+		"supportJAVA" : false,
+		"testUrlJAVA": "api/test_java.jsp",
+		"requestUrlJAVA" : "api/notes_java.jsp",
+		"exportUrlJAVA" : "api/notes_java.jsp?action=export_notes",
+		
 		"supportMSSQL" : false,
 		"testUrlMSSQL": "api/test_mssql.aspx",
 		"supportMYSQL" : false,
 		"testUrlMYSQL": "api/test_mysql.php",
+		
 		
 		"messages" : getById("messages"),
 		"templates" : {
