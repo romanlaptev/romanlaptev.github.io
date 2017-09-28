@@ -11,29 +11,80 @@ $(document).ready(function(){
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
-		"supportPHP" : false,
-		"testUrlPHP": "api/test.php",
-		"requestUrl" : "api/notes_mysql.php",
-		"exportUrl" : "api/notes_mysql.php?action=export_notes",
+		// "supportPHP" : false,
+		// "testUrlPHP": "api/test.php",
+		// "requestUrl" : "api/notes_mysql.php",
+		// "exportUrl" : "api/notes_mysql.php?action=export_notes",
 
 		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 		"xmlUrl" : "upload/notes.xml",
 
-		"supportASPX" : false,
-		"testUrlASPX": "api/test.aspx",
-		"requestUrlASPX" : "api/notes_mssql.aspx",
-		"exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
+		// "supportASPX" : false,
+		// "testUrlASPX": "api/test.aspx",
+		// "requestUrlASPX" : "api/notes_mssql.aspx",
+		// "exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
 
-		"supportJAVA" : false,
-		"testUrlJAVA": "api/test_java.jsp",
-		"requestUrlJAVA" : "api/notes_java.jsp",
-		"exportUrlJAVA" : "api/notes_java.jsp?action=export_notes",
+		// "supportJAVA" : false,
+		// "testUrlJAVA": "api/test_java.jsp",
+		// "requestUrlJAVA" : "api/notes_java.jsp",
+		// "exportUrlJAVA" : "api/notes_java.jsp?action=export_notes",
 		
-		"supportMSSQL" : false,
-		"testUrlMSSQL": "api/test_mssql.aspx",
-		"supportMYSQL" : false,
-		"testUrlMYSQL": "api/test_mysql.php",
+		// "supportMSSQL" : false,
+		// "testUrlMSSQL": "api/test_mssql.aspx",
+		// "supportMYSQL" : false,
 		
+		// "testUrlMYSQL": "api/test_mysql.php",
+		
+		"tests" : [{
+				"name" : "checkPHP",
+				"url" : "api/test.php",
+				"errorMsg" : "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"callback" : function(res){
+						if( res === "4" ){
+							_vars["supportPHP"] = true;
+						} else {
+							_vars["supportPHP"] = false;
+						}
+					}//end callback
+				}, //end test
+				
+				{
+				"name" : "checkASPX",
+				"url" : "api/test.aspx",
+				"errorMsg" : "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"callback" : function(res){
+						if( res === "4" ){
+							_vars["supportASPX"] = true;
+						} else {
+							_vars["supportASPX"] = false;
+						}
+					}//end callback
+				}, //end test
+				
+				{
+				"name" : "checkMSSQL",
+				"url" : "test_mssql.aspx",
+				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
+				"callback" : function(res){
+console.log(res);					
+						_vars["supportMSSQL"] = false;
+					}//end callback
+				}, //end test
+
+				{
+				"name" : "checkJAVA",
+				"url" : "api/test.jsp",
+				"errorMsg" : "<p>test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"callback" : function(res){
+						if( res === 4 ){
+							_vars["supportJAVA"] = true;
+						} else {
+							_vars["supportJAVA"] = false;
+						}
+					}//end callback
+				} //end test
+				
+		],//end tests
 		
 		"messages" : getById("messages"),
 		"templates" : {
@@ -79,7 +130,9 @@ var _notes = function ( opt ){
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
-		testServer();
+		//testServer();
+		var startNumTest = 0;
+		testServerMod( startNumTest );
 	};
 
 	function _getTpl( id ){
@@ -707,7 +760,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 
 	}//end sendForm
 
-	
+
 	function testServer(){
 		//start chain of tests
 		_test({
@@ -960,8 +1013,37 @@ console.log( all_headers );
 		}//end _testMSSQL()
 		
 	}//end testServer()
-	
-	
+
+	//async requests (one by one), server capabilities check
+	function testServerMod( numTest ){
+
+		var test = _vars["tests"][ numTest ];
+		runAjax({
+			"requestMethod" : "GET", 
+			"url" : test["url"], 
+			"onError" : _postReq,
+			"callback": _postReq
+		});
+		
+		// function _onerror( xhr ){
+			// var all_headers = xhr.getAllResponseHeaders();
+// console.log( all_headers );
+		// }//end _onerror()
+
+		function _postReq( data ){
+console.log(data, typeof data, data.length);
+			if( typeof test["callback"] === "function"){
+				test["callback"]( data );
+			} 
+			numTest++;
+			//if( numTest < _vars["tests"].length ){
+			if( numTest < 2 ){
+				testServerMod( numTest );
+			}
+		}//end _postReq()
+
+	}//end testServer()
+
 	function loadNotes(){
 //console.log( _vars["templates"] );
 		_vars["messagesList"].innerHTML = "";

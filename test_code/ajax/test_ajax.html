@@ -179,8 +179,23 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	
 }//end runAjax
 
-		
+/*
+			//parallel ajax
+			$.when(
+				$.ajax( _vars["tests"]["checkPHP"] ),
+				$.ajax( _vars["tests"]["checkASPX"] )
+			).then( 
+				function( supportPHP, supportASPX){
+console.log( supportPHP );
+console.log( supportASPX );
+			})
+			.fail(function(){
+console.log( arguments );
+			});
+*/
+
 </script>
+
 </head>
 <body>
 <div class="container">
@@ -242,6 +257,26 @@ https://professorweb.ru/my/ASP_NET/base/level4/4_4.php
 	&lt;/system.webServer&gt;
 &lt;/configuration&gt;
 
+	</pre>
+	
+	<pre>
+http://www.internet-technologies.ru/articles/article_1845.html
+Несколько одновременных Ajax запросов (с одним обратным вызовом)
+
+https://habrahabr.ru/company/bankrot-pro/blog/230441/
+JQuery Deferred — примеры использования
+
+Ограничение одновременных запросов http
+Firefox 2:  2
+Firefox 3+: 6
+Opera 9.26: 4
+Opera 12:   6
+Safari 3:   4
+Safari 5:   6
+IE 7:       2
+IE 8:       6
+IE 10:      8
+Chrome:     6
 	</pre>
 </div>	
 
