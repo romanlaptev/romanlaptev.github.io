@@ -127,11 +127,16 @@ function _testPDO(){
 	
 //----------------------------------------------	
 	
-	// $_vars["dbVersion"] = "";
-	// $query = "SELECT VERSION()";
-	// $result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
-	// $row = $result->fetch( PDO::FETCH_NUM );
-	// $_vars["dbVersion"] .= $row[0];
+	$_vars["dbVersion"] = "";
+	$query = "SELECT version()";
+	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	$row = $result->fetch( PDO::FETCH_NUM );
+	$_vars["dbVersion"] .= $row[0];
+	
+	$rows  = $result->fetchAll( PDO::FETCH_ASSOC );
+echo "<pre>";	
+print_r($rows);
+echo "</pre>";	
 //----------------------------------------------
 
 	$_vars["dbVars"] = "";
@@ -140,10 +145,7 @@ function _testPDO(){
 	$query = "SELECT * FROM PG_SETTINGS";
 	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
 	$rows  = $result->fetchAll( PDO::FETCH_ASSOC );
-echo count($rows);	
-// echo "<pre>";	
-// print_r($rows);
-// echo "</pre>";	
+//echo count($rows);	
 /*
             [name] => allow_system_table_mods
             [setting] => off
@@ -208,11 +210,10 @@ return;
 			<b>Database list</b>: <?php //echo $_vars["dbList"]; ?>
 		</div>  
 -->
-<!--
+
 		<div class="panel-body">
 			<b>SELECT VERSION():</b> <?php //echo $_vars["dbVersion"]; ?>
 		</div>  
--->		
 		<div class="panel-body">
 			<b>DB VARIABLES:</b><?php echo $_vars["dbVars"]; ?>
 		</div>  
