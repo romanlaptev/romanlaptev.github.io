@@ -67,6 +67,35 @@ console.log(errorCode);
 				}, //end test
 
 				{
+				"name" : "checkPostgreSQL",
+				"url" : "api/test_postgresql.php",
+				"successMsg" : "<p>test local PostgreSQL success...</p>",
+				"errorMsg" : "<p>test local PostgreSQL failed, cannot connect to database server...</p>",
+				"callback" : function(res){
+//console.log(res);					
+						_vars["supportPostgreSQL"] = false;
+						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportPostgreSQL"] = true;
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							},
+							"onError" : function( errorCode  ){
+console.log(errorCode);
+								var msg = this["errorMsg"];
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
+					}//end callback
+				}, //end test
+
+				{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
 				"successMsg" : "<p>test ASPX success, suppored by server <b>" + window.location.host + "</b>...</p>",
@@ -842,6 +871,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 						noSupport = false;
 						_vars["requestUrl"] = "api/notes_mysql.php";
 						_vars["exportUrl"] = "api/notes_mysql.php?action=export_notes";
+						loadNotes();
+					}
+					if( _vars["supportPostgreSQL"] ){
+						noSupport = false;
+						_vars["requestUrl"] = "api/notes_postgresql.php";
+						_vars["exportUrl"] = "api/notes_postgresql.php?action=export_notes";
 						loadNotes();
 					}
 				}
