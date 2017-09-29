@@ -90,7 +90,7 @@ console.log(errorCode);
 				{
 				"name" : "checkMSSQL",
 				"url" : "api/test_mssql.aspx",
-				"errorMsg" : "<p>test MSSQL success...</p>",
+				"successMsg" : "<p>test MSSQL success...</p>",
 				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
 //console.log(res);					
