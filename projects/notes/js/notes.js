@@ -16,25 +16,6 @@ var _notes = function ( opt ){
 		"exportUrl" : "",
 		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 
-		// "supportPHP" : false,
-		// "testUrlPHP": "api/test.php",
-
-		// "supportASPX" : false,
-		// "testUrlASPX": "api/test.aspx",
-		// "requestUrlASPX" : "api/notes_mssql.aspx",
-		// "exportUrlASPX" : "api/notes_mssql.aspx?action=export_notes",
-
-		// "supportJAVA" : false,
-		// "testUrlJAVA": "api/test_java.jsp",
-		// "requestUrlJAVA" : "api/notes_java.jsp",
-		// "exportUrlJAVA" : "api/notes_java.jsp?action=export_notes",
-		
-		// "supportMSSQL" : false,
-		// "testUrlMSSQL": "api/test_mssql.aspx",
-		// "supportMYSQL" : false,
-		
-		// "testUrlMYSQL": "api/test_mysql.php",
-		
 		"tests" : [{
 				"name" : "checkPHP",
 				"url" : "api/test.php",
@@ -56,6 +37,35 @@ var _notes = function ( opt ){
 					}//end callback
 				}, //end test
 				
+				{
+				"name" : "checkMySQL",
+				"url" : "api/test_mysql.php",
+				"successMsg" : "<p>test local MySQL success...</p>",
+				"errorMsg" : "<p>test local MySQL failed, cannot connect to database server...</p>",
+				"callback" : function(res){
+//console.log(res);					
+						_vars["supportMySQL"] = false;
+						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportMySQL"] = true;
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							},
+							"onError" : function( errorCode  ){
+console.log(errorCode);
+								var msg = this["errorMsg"];
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
+					}//end callback
+				}, //end test
+
 				{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
@@ -80,19 +90,24 @@ var _notes = function ( opt ){
 				{
 				"name" : "checkMSSQL",
 				"url" : "api/test_mssql.aspx",
+				"errorMsg" : "<p>test MSSQL success...</p>",
 				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
-console.log(res);					
+//console.log(res);					
 						_vars["supportMSSQL"] = false;
 						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
 							"jsonLog" : res,
 							"onSuccess" : function(){
 								_vars["supportMSSQL"] = true;
-								_vars["requestUrl"] = _vars["requestUrlASPX"];
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode ){
 console.log(errorCode);
-								_error("errorMSSQL");
+								var msg = this["errorMsg"];
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
 							//}//end callback
@@ -794,260 +809,6 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 
 	}//end sendForm
 
-/*
-	function testServer(){
-		//start chain of tests
-		_test({
-			"nameTargetVar" : "supportPHP",
-			"errorMsgID" : "errorPHP",
-			"url" : _vars["testUrlPHP"],
-			"testResult" : "4",//test success, result of adding 2+2 on PHP, string format!!!!
-			"callback" : function(res){
-				if( res ){
-					loadNotes();
-				} else {
-					_testASPX();
-				}
-			}
-		});
-
-		function _testASPX(){
-			_test({
-				"nameTargetVar" : "supportASPX",
-				"errorMsgID" : "errorASPX",
-				"url" : _vars["testUrlASPX"],
-				"testResult" : "4",//test success, result of adding 2+2, string format!!!!
-				"callback" : function(res){
-					if( res ){
-var msg = "<p>test ASPX success, ASP.NET suppored by server <b>" + window.location.host + "</b></p>";
-_log("<div class='alert alert-success'>" + msg + "</div>");
-						//_vars["requestUrl"] = _vars["requestUrlASPX"];
-						//loadNotes();
-						_testMSSQL();
-					} else {
-						loadNotesXml();
-					}
-				}
-			});
-		}//end _testASPX()
-		
-		function _test( opt){
-			var p = {
-				"nameTargetVar" : 0,// name of target global var, true or false, requered parameter
-				"url" : 0,//requered parameter
-				"errorMsgID" : 0,//requered parameter
-				"testResult" : 0,//requered parameter
-				"callback": 0//requered parameter
-			};
-			//extend options object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-	
-			//test requered parameters
-			for(var key in p ){
-				if( p[key] === 0 ){
-var msg = "<p>error, testServer(), not find requered arguments " + key +"</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-					return false;
-				}
-			}
-			
-			var nameVar = p["nameTargetVar"];
-
-			runAjax({
-				"requestMethod" : "GET", 
-				"url" : p["url"], 
-				"onError" : _onerror,
-				"callback": function( data ){
-//console.log(data, typeof data, data.length, data[0]);
-//console.log("data = " + data);
-//console.log("data[0] = " + typeof data[0]);
-//console.log("data.charAt(0) = " + data.charAt(0));
-
-						if( !data || data.length === 0){
-console.log("error in test(), not find 'data'.... ");			
-							data = [];
-							return false;
-						}
-
-						var test = data[0];
-						if(!test){//fix IE, not support data[0]
-							test = data.charAt(0);
-						}
-//console.log("test = " + test);
-
-						if (test === p["testResult"]){//test success (result of adding 2+2 for PHP)
-							_vars[nameVar] = true;
-						} else {
-							_error( p["errorMsgID"] );
-						}
-						
-						if( typeof p["callback"] === "function"){
-							p["callback"]( _vars[nameVar] );
-							return false;
-						} 
-				}//end callback
-			});
-
-			function _onerror( xhr ){
-				var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
-					if( typeof p["callback"] === "function"){
-						_error( p["errorMsgID"] );
-						p["callback"]( false );
-					} 
-			}//end _onerror()
-			
-		}//end _test()
-		
-		// function testPHP_headers(opt){
-			// var p = {
-				// "success": null,
-				// "fail" : null
-			// };
-			// //extend options object
-			// for(var key in opt ){
-				// p[key] = opt[key];
-			// }
-	// //console.log(p);
-			
-			// //get server info
-			// runAjax( {
-				// "requestMethod" : "HEAD", 
-				// "url" : _vars["requestUrl"], 
-				// //"callback": function( data ){},
-				// //"onError" : _onerror,
-				// "onLoadEnd" : _onloadend
-			// });
-			
-			// //function _onerror( xhr ){
-			// //}//end _onerror()
-			
-			// function _onloadend( headers ){
-				// var headersArr = [];
-				// headersArr["items"] = [];
-				// headersArr["lines"] = headers.split("\r\n");
-				// for( var n = 0; n < headersArr["lines"].length; n++){
-					// var header = headersArr["lines"][n];
-					// if(header.length > 0){
-						// var sp = header.split(": ");
-						// var _key = sp[0].toUpperCase();
-						// var _value = sp[1];
-						// headersArr["items"][_key] = _value;
-					// }
-				// }//next
-				// delete headersArr["lines"];
-	// console.log(headersArr);
-
-				// //test PHP support
-				// if( headersArr["items"]["X-POWERED-BY"] &&
-					// headersArr["items"]["X-POWERED-BY"].indexOf("PHP") !== -1
-				// ){
-					// if( typeof p["success"] === "function"){
-						// p["success"]();
-					// }
-				// } else {
-					// _error("errorPHP");
-					// if( typeof p["fail"] === "function"){
-						// p["fail"]();
-					// }
-				// }
-
-	// Connection	"Keep-Alive"
-	// Content-Encoding	"gzip"
-	// Content-Length	"1483"
-	// Content-Type	"text/html"
-	// Date	"Tue, 29 Aug 2017 04:00:31 GMT"
-	// Keep-Alive	"timeout=5, max=99"
-	// Server	"Apache/2.2.22 (Debian)"
-	// Vary	"Accept-Encoding"
-	// X-Powered-By	"PHP/5.4.4-14+deb7u8"
-
-	// Access-Control-Allow-Origin	"*"
-	// Cache-Control	"private"
-	// Content-Length	"10209"
-	// Content-Type	"text/html; charset=utf-8"
-	// Date	"Tue, 29 Aug 2017 04:21:35 GMT"
-	// Server	"Microsoft-IIS/7.5"
-	// X-Powered-By	"ASP.NET"
-
-			// }//end _onloadend()
-			
-		// }//end testPHP_headers()
-
-		function _testMSSQL(){
-			runAjax({
-				"requestMethod" : "GET", 
-				"url" : _vars["testUrlMSSQL"], 
-				"onError" : _onerror,
-				"callback": function( data ){
-console.log(data, typeof data, data.length);
-					// try{
-						// var jsonObj = JSON.parse( data, function(key, value) {
-// //console.log( key, value );
-							// return value;
-						// });							
-// //console.log( jsonObj, jsonObj.length, jsonObj[0]["error_code"] );
-
-						// if( jsonObj.length === 1){
-							// if( jsonObj[0]["error_code"] === "0"){
-								// _vars["supportMSSQL"] = true;
-								// _vars["requestUrl"] = _vars["requestUrlASPX"];
-								// loadNotes();
-							// } else {
-// var msg = "";
-// msg += "<p>error!</p>";
-// msg += "<p>data: " + data + "</p>";
-// _log("<div class='alert alert-danger'>" + msg + "</div>");
-								// loadNotesXml();
-							// }
-						// } else {
-// console.log( jsonObj, jsonObj.length );
-						// }
-						
-						
-					// } catch(error) {
-// var msg = "";
-// msg += "<p>error  JSON.parse server response data</p>";
-// msg += "<p>" + error + "</p>";
-// msg += "<p>data: " + data + "</p>";
-// _log("<div class='alert alert-danger'>" + msg + "</div>");
-						// loadNotesXml();
-					// }//end catch
-					parseLog({
-						"jsonLog" : data,
-						"onSuccess" : function(){
-							_vars["supportMSSQL"] = true;
-							_vars["requestUrl"] = _vars["requestUrlASPX"];
-							loadNotes();		
-						},
-						"onError" : function( errorCode ){
-console.log(errorCode);
-							_error("errorMSSQL");
-							loadNotesXml();
-						}//,
-						//"callback" : function(){
-						//}//end callback
-					});	
-
-				}//end callback
-			});
-
-			function _onerror( xhr ){
-				var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
-					// if( typeof p["callback"] === "function"){
-						// _error( p["errorMsgID"] );
-						// p["callback"]( false );
-					// } 
-			}//end _onerror()
-			
-		}//end _testMSSQL()
-		
-	}//end testServer()
-*/
 	//async requests (one by one), server capabilities check
 	function testServerMod( numTest ){
 
@@ -1077,10 +838,12 @@ console.log( all_headers );
 // console.log("JAVA: " , _vars["supportJAVA"]);
 				var noSupport = true;
 				if( _vars["supportPHP"] ){
-					noSupport = false;
-					_vars["requestUrl"] = "api/notes_mysql.php";
-					_vars["exportUrl"] = "api/notes_mysql.php?action=export_notes";
-					loadNotes();
+					if( _vars["supportMySQL"] ){
+						noSupport = false;
+						_vars["requestUrl"] = "api/notes_mysql.php";
+						_vars["exportUrl"] = "api/notes_mysql.php?action=export_notes";
+						loadNotes();
+					}
 				}
 				
 				if( _vars["supportASPX"] ){
@@ -1490,7 +1253,8 @@ console.log(msg);
 	var msg = "";
 	msg += "<p>error JSON.parse server response data</p>";
 	msg += "<p>" + error + "</p>";
-	msg += "<p>data: " + p["jsonLog"] + "</p>";
+	//msg += "<p>data: " + p["jsonLog"] + "</p>";
+console.log("error data: " + p["jsonLog"] );
 	_log("<div class='alert alert-danger'>" + msg + "</div>");
 			//loadNotesXml();
 		}//end catch
