@@ -1,31 +1,181 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="no subject" author="anonymous" ip="37.193.108.45" client_date="2017-09-22 14:34:16" server_date="2017-09-22 07:37:45" >
+	<note title="Вызов jsp из Servlet" author="anonymous" ip="37.193.108.45" client_date="2017-10-02 16:04:58" server_date="2017-10-02 09:08:40" >
 		<text_message>
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show    |    Как изменить COLLATE у базы данных?[/url]
-[br]
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/    |    Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
-[br]
-[url]http://www.cyberforum.ru/ado-net/thread251180.html    |    Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
-[br]
-[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381   |   PDO против MySQLi. Что выбрать?[/url][br]
-[url]https://habrahabr.ru/post/141127/   |  MySQLi раскладываем все по полочкам [/url][br]
-[url]http://php.net/manual/ru/book.pdo.php   |   Объекты данных PHP[/url][br]
+[url]https://toster.ru/q/284566 | Вызов jsp из Servlet/ JAVA[/url]
+[code]
+Сервлет
+
+@WebServlet(urlPatterns = &amp;quot;/&amp;quot;) // javax.servlet-api 3.0
+public class HomeServlet extends HttpServlet {
+
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    List&amp;lt;String&amp;gt; users = Arrays.asList(&amp;quot;Vaya&amp;quot;, &amp;quot;Petya&amp;quot;, &amp;quot;Fedya&amp;quot;);
+
+    req.setAttribute(&amp;quot;users&amp;quot;, users); // с помощью атрибутов передаются данные между сервлетами
+
+    req.getRequestDispatcher(&amp;quot;/home.jsp&amp;quot;).forward(req,resp);
+  }
+}
+============
+JSP /home.jsp
+
+&amp;lt;%@ taglib uri=&amp;quot;http://java.sun.com/jsp/jstl/core&amp;quot; prefix=&amp;quot;c&amp;quot; %&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h2&amp;gt;Hello World!&amp;lt;/h2&amp;gt;
+
+&amp;lt;c:forEach items=&amp;quot;${users}&amp;quot; var=&amp;quot;usr&amp;quot;&amp;gt; 
+    &amp;lt;p&amp;gt;${usr}&amp;lt;/p&amp;gt;
+&amp;lt;/c:forEach&amp;gt;
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+[/code]
 		</text_message>
 	</note>
-	<note title="Apache, config" author="a1" ip="37.193.108.45" client_date="2017-09-22 12:59:14" server_date="2017-09-22 06:02:43" >
+	<note title="cmd, get filename from args" author="anonymous" ip="37.193.108.45" client_date="2017-09-28 09:25:24" server_date="2017-09-28 02:29:00" >
 		<text_message>
-[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
+[url]http://www.cyberforum.ru/cmd-bat/thread55211.html   |   FAQ по файлам BAT/CMD - Batch (CMD/BAT) - CyberForum.ru [/url]
 [code]
-Как сделать 301 редирект
-Файл .htaccess
-301 редирект – корректная переадресация через htaccess и php header
-.htaccess: , вывод ошибок PHP
+ при использовании нумерованных переменных %0-%9 можно использовать некоторые модификаторы:
 
-Redirect /index.php http://example.com/index.php
-Redirect /data http://www.example.com/data 
-=================================
+        %~1         - разворачивает %1, удаляя кавычки (&quot;)
+        %~f1        - разворачивает %1 в полный квалифицированный путь
+        %~d1        - разворачивает %1 в букву диска
+        %~p1        - разворачивает %1 в путь
+        %~n1        - разворачивает %1 в имя файла
+        %~x1        - разворачивает %1 в расширение файла
+        %~s1        - развернутый путь будет содержать только короткие имена
+        %~a1        - разворачивает %1 в атрибуты файла
+        %~t1        - разворачивает %1 в дату/время создания файла
+        %~z1        - разворачивает %1 в размер файла
+        %~$PATH:1   - Ищет в каталогах, перечисленных в переменной среды PATH,
+                       и разворачивает %1 в полное квалифицированное имя 
+                       первого совпадения. Если имя перменной среды
+                       не определено, или если файл не найден, этот 
+                       модификатор вернет пустую строку
 [/code]
+
+-------- Java compile, file *.class locate to temp
+[br]
+compile.cmd Add.java
+[code]
+javac %1 -d c:\temp\
+pause
+java -cp c:\temp %~n1
+
+[/code]
+		</text_message>
+	</note>
+	<note title="opera 12, config" author="anonymous" ip="37.192.115.96" client_date="2017-09-24 17:43:57" server_date="2017-09-24 11:46:21" >
+		<text_message>
+[code]
+ Opera cache 
+
+Рассмотрим настройки по кэшу, а так же выставим значения влияющие на производительность и снижающие потребление памяти. Данные параметры рассчитаны на безлимитный интернет, не ниже 1 мб\с. Сейчас технологии шагнули далеко и порой легче скачать что то с интернета, чем заставлять старенький компьютер судорожно шерстить по фрагментированному винчестеру в поисках данных в кэше.
+
+Итак, в адресной строке набираем opera:config и меняем значения: 
+Редактор настроек opera:config
+
+[BitTorrent] – Enable — Отключаем встроенный клиент BitTorrent. Для скачивания используем внешнее приложение – 0
+[Cache] — Cache Docs – Сохранять документы в кэш—памяти – Отключаем если оперативной памяти мало.
+[Cache] — Cache Figs – Сохранять изображения в кэш—памяти – Отключаем. Аналогично.
+[Cache] — Cache HTTPS After Sessions — Сохранять HTTPS страницы в кэше при закрытии Opera – Отключаем
+[Cache] — Check Expiry History — Проверять окончание срока хранения при доступе к страницам из истории. – 2
+[Cache] — Check Expiry Load — Проверять срок хранения при загрузке страницы – 2
+[Cache] — Document — Размер кэша документов, КБ – 0
+[Cache] — Figure — Размер кэша изображений, КБ – 0
+[Cache] — SVG Cache Size — Размер кэша векторных изображений SVG , КБ – 10240
+
+[Disk Cache] — Cache Docs – Кэшировать документы — 0
+[Disk Cache] — Cache Figs — Кэшировать изображения 0 
+[Disk Cache] — Cache Other — Кэшировать другое содержимое страниц – 0
+[Disk Cache] — Docs Modification — Проверять, обновились ли на сервере документы, сохранённые в кэш – 0
+[Disk Cache] — Enabled — Включить дисковый кэш. – 1
+[Disk Cache] — Figs Modification — Проверять, обновились ли на сервере изображения, сохранённые в кэш – 0
+[Disk Cache] — Media Cache Size — Размер кэша мультимедийных данных, КБ – тут нужно экспериментировать и выставить значения 5120 или 51200. Этот параметр позволяет не расходовать оперативку и скидывать загружаемый медиа—файл на диск. Если вы часто смотрите фильмы, то чтобы опера не расходовала много ОП, укажите большее значение.
+[Disk Cache] — Multimedia Stream Always — Постоянный мультимедийный поток (тег audio/video), расходует пропускную способность, но экономит дисковое пространство. — 1
+[Disk Cache] — Multimedia Stream Size — Размер буфера мультимедийного потока, КБ – 2048. Здесь размер можно указать побольше, чтобы потоковое видео не подтормаживало при онлайн—трансляции.
+[Disk Cache] — Multimedia Stream in RAM — Мультимедийный поток в оперативной памяти. – 1
+[Disk Cache] — Other Modification — Проверять изменения другого содержимого страниц на сервере: — 0
+[Disk Cache] — Size — Размер дискового кэша, КБ – 5120
+
+[Extensions] – EcmaScriptJIT — Включает формирование машинного кода для ECMAScript. – 1
+[Geolocation] — Enable geolocation — Включить/отключить геолокацию. – 0
+[Geolocation] — Google2011 Location Provider Access Token — Маркер доступа, используемый для поставщика местоположения – оставляем пустым
+[Geolocation] — Location Provider URL — URL для поставщика данных о положении, основанных на точках доступа Wi—Fi, информации сотового телефона и т.д. – оставляем пустым
+[Geolocation] — Send location request only on change — Посылать запрос местоположения, только если некоторые из поставщиков данных (Wi—Fi, сота и т.д.) на самом деле изменились – 0
+
+[Network] — Check Local HostName — Искать компьютеры в локальной сети перед попыткой автозавершения. – 0
+[Network] — DNS Prefetching — Предварительный запрос DNS—сервера при наведении указателя мыши на ссылку. – 0
+[Network] — Enable Do Not Track Header — Включить передачу заголовка Do_not_track, чтобы веб—сайты третьих сторон (например, рекламные сети) не отслеживали ваши личные данные между веб—сайтами. – 1
+[Network] — Enable HostName Expansion — Включить автозавершение имени сервера. – 0
+[Network] — Enable NTLM — Включить поддержку NTLM. Только в Windows. – 0
+[Network] — Use Spdy2 – Использовать протокол SPDY 2 — 0
+[Network] — Use Spdy2 — Использовать протокол SPDY 3 — 0 
+
+[Opera Sync] — Sync Bookmarks — Синхронизировать закладки. – 0
+[Opera Sync] — Sync Extensions — Синхронизировать Расширения. – 0
+[Opera Sync] — Sync Notes — Синхронизировать Заметки. – 0
+[Opera Sync] — Sync Personalbar — Синхронизировать Панель закладок. — 0
+[Opera Sync] — Sync Searches — Синхронизировать Службы поиска. — 0
+[Opera Sync] — Sync Speed Dial — Синхронизировать Экспресс—панель. — 0
+[Opera Sync] — Sync Typed History — Синхронизировать Введённые адреса. — 0
+[Opera Sync] — Sync URL Filter — Синхронизировать Правила блокировки содержимого. – 0
+
+[Performance] — Extra Idle Connections — Открывать дополнительные простаивающие соединения с текущим сервером. – 1
+[Performance] — Max Connections Server — Разрешённое число одновременных подключений к серверу. – 16
+[Performance] — Max Connections Total — Общее разрешённое число одновременных подключений. – 64
+[Performance] — Max Persistent Connections Server — Разрешённое число постоянных подключений к серверу. – 8
+[Performance] — Network Buffer Size — Размер сетевого буфера, КБ. — 512
+[Performance] — Non—Compliant Server 100 Continue — Упрощать запросы к нестандартным серверам. — 1
+
+[Proxy] — Enable Proxy – Использовать прокси для всех серверов, кроме перечисленных – 0
+[Sounds] – Enabled — Включить звуковые уведомления в Opera. – 0
+
+[User Prefs] — Automatic RAM Cache — Выбирать размер кэша в памяти автоматически. – 0
+[User Prefs] — Enable Service Discovery Notifications — Показать/скрыть оповещения об обнаружении локально размещенных приложений Unite. – 0
+[User Prefs] — Enable Trust Rating — Включить защиту от мошенничества и вредоносного ПО. – 0
+[User Prefs] — Enable UI Animations — Включить анимацию пользовательского интерфейса. – 0
+[User Prefs] — Enable Unite — Включить службы Opera Unite. – 0
+[User Prefs] — Enable Usage Statistics — Включить сбор статистики использования функций Opera, отправляемой в Opera Software. – 0
+[User Prefs] — Enable Webfonts — Включить использование внедряемых шрифтов (веб—шрифтов). – 0
+[User Prefs] — First Update Delay — Задержка перерисовки страницы в миллисекундах. – 500
+[User Prefs] — Opera Turbo Mode — Режим Opera Turbo: — 2
+[User Prefs] — Show Network Speed Notification — Показывать уведомления о скорости соединения. — 0
+[User Prefs] — Spellcheck enabled by default — Включение проверки орфографии. – 0
+[User Prefs] — Visited Pages — Помнить содержимое посещённых страниц. – 0
+
+[Web Server] – Enable — Включить. – 0
+[Web Server] – Listen To All Networks — Прослушивать все сети. – 0
+[Web Server] – UPnP Enabled — Разрешить Opera Unite использовать переадресацию портов UPnP. – 0
+[Web Server] – UPnP Service Discovery Enabled — Разрешить Opera Unite использовать службу обнаружения UPnP. – 0
+[Web Server] – Use Opera Account — Использовать учётную запись Opera. — 0
+[Web Server] – Webserver Always On — Веб—сервер всегда включён. — 0
+[Web Server] – Webserver Used — Веб—сервер используется. – 0
+[Web Server] – robots.txt Enabled — Включает создание стандартного файла robots.txt, запрещающего поисковым роботам сканирование вашего персонального сервера Opera Unite. – 1
+
+Как видно из описания настроек opera:config список параметров влияющих на производительность достаточно внушительный. Данный перечень рассматривался на версии Opera 12.17
+
+
+soft-tuning.ru © 2013-2017
+[/code]
+		</text_message>
+	</note>
+	<note title="no subject" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 12:55:38" server_date="2017-09-22 14:55:37" >
+		<text_message>
+
+[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show  |  Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/  |  Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html  |  Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+
+		
 		</text_message>
 	</note>
 	<note title="config, windows server" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 12:52:58" server_date="2017-09-22 14:52:57" >
@@ -384,6 +534,78 @@ for n1 in range(0,10):
 Настройка отображения меню в Проводнике
 «Упорядочить» ⇒ «Представление»  - пункт «Строка меню»
 [/code]
+		
+		
+		
+		
+		</text_message>
+	</note>
+	<note title="no subject" author="" ip="" client_date="2017-08-24 21:09:46" server_date="2017-08-24 14:11:58" >
+		<text_message>
+
+
+
+
+
+
+[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess[/url]
+[code]
+Как сделать 301 редирект
+Файл .htaccess
+301 редирект – корректная переадресация через htaccess и php header
+.htaccess: , вывод ошибок PHP
+
+Redirect /index.php http://example.com/index.php
+Redirect /data http://www.example.com/data 
+=================================
+[/code]
+		
+		
+		
+		
+		
+		
+		</text_message>
+	</note>
+	<note title="test filter" author="" ip="" client_date="2017-08-24 15:36:32" server_date="2017-08-24 08:39:29" >
+		<text_message>
+
+
+
+
+
+
+[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
+[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
+[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
+		
+		
+		
+		
+		
+		
+		</text_message>
+	</note>
+	<note title="test filter" author="" ip="" client_date="2017-08-24 15:35:23" server_date="2017-08-24 08:38:20" >
+		<text_message>
+
+
+
+
+
+
+[code]
+https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;id=1381 
+PDO против MySQLi. Что выбрать? 
+
+https://habrahabr.ru/post/141127/ 
+MySQLi раскладываем все по полочкам 
+
+http://php.net/manual/ru/book.pdo.php 
+Объекты данных PHP
+[/code]
+		
+		
 		
 		
 		
