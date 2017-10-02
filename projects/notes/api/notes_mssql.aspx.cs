@@ -739,9 +739,15 @@ Response.Write( logStr );
 	// }
 // }
 					//filter getNotes
-					value = value.Replace("\r", "\\r");//replace CReturn (for correct JSON parsing)
-					value = value.Replace("\n", "\\n");//replace end line LF(for correct JSON parsing)
-					value = value.Replace("\t", "\\t");//replace TAB
+					value = value.Replace("\r", "&#92;r");//replace CReturn (for correct JSON parsing)
+					value = value.Replace("\n", "&#92;n");//replace end line LF(for correct JSON parsing)
+					value = value.Replace("\t", "&#92;t");//replace TAB
+					
+					value = value.Replace("\\", "\\\\");//replace single backslash
+					
+					value = value.Replace("&#92;r", "\\r");//replace CReturn (for correct JSON parsing)
+					value = value.Replace("&#92;n", "\\n");//replace end line LF(for correct JSON parsing)
+					value = value.Replace("&#92;t", "\\t");//replace TAB
 					
 					jsonNote += "\""+key+"\" : \""+value+"\"";
 				}//next
