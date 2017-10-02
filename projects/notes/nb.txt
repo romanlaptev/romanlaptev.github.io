@@ -131,5 +131,30 @@ Java + Oracle
 *- ИСПРАВИТЬ, если в таблице нет заметок, не выполнять экспорт
 - добавить возможность ручного указания параметров соединения (через диалоговое окно)
 
+
+=============================== CREATE & UPLOAD romanlaptev.heroku.com
+https://habrahabr.ru/post/232679/
+
+https://toolbelt.heroku.com/
+Установка Heroku Toolbelt
+
+
+heroku login
+
+heroku create romanlaptev
+	https://romanlaptev.herokuapp.com/ | https://git.heroku.com/romanlaptev.git
+heroku apps
+heroku buildpacks:set heroku/php -a romanlaptev
+
+git init
+echo "{}" > composer.json
+git add .
+git commit -am "first commit"
+git remote add origin https://git.heroku.com/romanlaptev.git
+git push -u origin master (git push heroku master?)
+---
+cd romanlaptev.github.io/projects/notes
+git push/ git pull - команды обращаются не к github.com, а к git.heroku.com
+
 ---------------- BLOG
 	note --> post
