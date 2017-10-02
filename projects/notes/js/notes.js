@@ -40,8 +40,8 @@ var _notes = function ( opt ){
 				{
 				"name" : "checkMySQL",
 				"url" : "api/test_mysql.php",
-				"successMsg" : "<p>test local MySQL success...</p>",
-				"errorMsg" : "<p>test local MySQL failed, cannot connect to database server...</p>",
+				"successMsg" : "test local MySQL success...",
+				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
 console.log(res, typeof res);					
 						_vars["supportMySQL"] = false;
@@ -51,7 +51,7 @@ console.log(res, typeof res);
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
 							return;
 						}
-//console.log("test!");						
+
 						parseLog({
 							"successMsg" : this["successMsg"],
 							"errorMsg" : this["errorMsg"],
@@ -62,8 +62,9 @@ console.log(res, typeof res);
 								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode  ){
-console.log(errorCode);
+//console.log(errorCode);
 								var msg = this["errorMsg"];
+								msg += ", error code: "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -76,8 +77,8 @@ console.log(errorCode);
 				{
 				"name" : "checkPostgreSQL",
 				"url" : "api/test_postgresql.php",
-				"successMsg" : "<p>test local PostgreSQL success...</p>",
-				"errorMsg" : "<p>test local PostgreSQL failed, cannot connect to database server...</p>",
+				"successMsg" : "test local PostgreSQL success...",
+				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
 				"callback" : function(res){
 console.log(res, typeof res);					
 						_vars["supportPostgreSQL"] = false;
@@ -98,8 +99,8 @@ console.log(res, typeof res);
 								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode  ){
-console.log(errorCode);
 								var msg = this["errorMsg"];
+								msg += ", error code: "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -1299,13 +1300,15 @@ console.log(msg);
 			}
 			
 		} catch(error) {
-	var msg = "";
-	msg += "<p>error JSON.parse server response data</p>";
-	msg += "<p>" + error + "</p>";
-	//msg += "<p>data: " + p["jsonLog"] + "</p>";
-console.log("error data: " + p["jsonLog"] );
-	_log("<div class='alert alert-danger'>" + msg + "</div>");
-			//loadNotesXml();
+			var msg = "";
+			msg += "<p>error JSON.parse server response data</p>";
+			msg += "<p>" + error + "</p>";
+			msg += "<p>data: " + p["jsonLog"] + "</p>";
+console.log(msg);
+		//_log("<div class='alert alert-danger'>" + msg + "</div>");
+			if( typeof p["onError"] === "function"){
+				p["onError"]( "Unknown server error...." );
+			}
 		}//end catch
 
 		if( typeof p["callback"] === "function"){
