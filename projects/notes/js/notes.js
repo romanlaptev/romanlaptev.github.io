@@ -19,8 +19,8 @@ var _notes = function ( opt ){
 		"tests" : [{
 				"name" : "checkPHP",
 				"url" : "api/test.php",
-				"successMsg" : "<p>test PHP success, suppored by server <b>" + window.location.host + "</b>...</p>",
-				"errorMsg" : "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"successMsg" : "test PHP success, suppored by server <b>" + window.location.host + "</b>...",
+				"errorMsg" : "test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...",
 				"callback" : function(res){
 					
 						_vars["supportPHP"] = false;
@@ -43,7 +43,7 @@ var _notes = function ( opt ){
 				"successMsg" : "test local MySQL success...",
 				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
-console.log(res, typeof res);					
+//console.log(res, typeof res);					
 						_vars["supportMySQL"] = false;
 						
 						if( typeof res !== "string"){
@@ -64,7 +64,7 @@ console.log(res, typeof res);
 							"onError" : function( errorCode  ){
 //console.log(errorCode);
 								var msg = this["errorMsg"];
-								msg += ", error code: "+errorCode;
+								msg += ", "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -80,7 +80,7 @@ console.log(res, typeof res);
 				"successMsg" : "test local PostgreSQL success...",
 				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
 				"callback" : function(res){
-console.log(res, typeof res);					
+//console.log(res, typeof res);					
 						_vars["supportPostgreSQL"] = false;
 						
 						if( typeof res !== "string"){
@@ -100,7 +100,7 @@ console.log(res, typeof res);
 							},
 							"onError" : function( errorCode  ){
 								var msg = this["errorMsg"];
-								msg += ", error code: "+errorCode;
+								msg += ", "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -113,8 +113,8 @@ console.log(res, typeof res);
 				{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
-				"successMsg" : "<p>test ASPX success, suppored by server <b>" + window.location.host + "</b>...</p>",
-				"errorMsg" : "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"successMsg" : "test ASPX success, suppored by server <b>" + window.location.host + "</b>...",
+				"errorMsg" : "test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...",
 				"callback" : function(res){
 					
 						_vars["supportASPX"] = false;
@@ -134,8 +134,8 @@ console.log(res, typeof res);
 				{
 				"name" : "checkMSSQL",
 				"url" : "api/test_mssql.aspx",
-				"successMsg" : "<p>test MSSQL success...</p>",
-				"errorMsg" : "<p>test MSSQL failed, cannot connect to database server...</p>",
+				"successMsg" : "test MSSQL success...",
+				"errorMsg" : "test MSSQL failed, cannot connect to database server...",
 				"callback" : function(res){
 //console.log(res);					
 						_vars["supportMSSQL"] = false;
@@ -149,8 +149,9 @@ console.log(res, typeof res);
 								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode ){
-console.log(errorCode);
+//console.log(errorCode);
 								var msg = this["errorMsg"];
+								msg += ", error code: "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -163,8 +164,8 @@ console.log(errorCode);
 				{
 				"name" : "checkJAVA",
 				"url" : "api/test_java.jsp",
-				"successMsg" : "<p>test JAVA success, suppored by server <b>" + window.location.host + "</b>...</p>",
-				"errorMsg" : "<p>test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...</p>",
+				"successMsg" : "test JAVA success, suppored by server <b>" + window.location.host + "</b>...",
+				"errorMsg" : "test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...",
 				"callback" : function(res){
 //console.log("res", res.charAt(0) );
 						if( res[0] === "4" ){
@@ -225,9 +226,8 @@ console.log(errorCode);
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
-		//testServer();
 		var startNumTest = 0;
-		testServerMod( startNumTest );
+		testServer( startNumTest );
 	};
 
 	function _getTpl( id ){
@@ -854,7 +854,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 	}//end sendForm
 
 	//async requests (one by one), server capabilities check
-	function testServerMod( numTest ){
+	function testServer( numTest ){
 
 		var test = _vars["tests"][ numTest ];
 		runAjax({
@@ -874,7 +874,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			numTest++;
 			if( numTest < _vars["tests"].length ){
 			//if( numTest < 2 ){
-				testServerMod( numTest );
+				testServer( numTest );
 			} else {
 // console.log("PHP: " , _vars["supportPHP"]);
 // console.log("ASPX: " , _vars["supportASPX"]);
@@ -907,9 +907,9 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 
 				if( _vars["supportJAVA"] ){
 					noSupport = false;
-					_vars["requestUrl"] = "api/notes_java.jsp";
-					_vars["exportUrl"] = "api/notes_java.jsp?action=export_notes";
-					// loadNotes();
+					_vars["requestUrl"] = "notes-serv";
+					_vars["exportUrl"] = "notes-serv?action=export_notes";
+					loadNotes();
 				}
 				
 				if( noSupport ){
@@ -918,7 +918,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 
 			}
 		}//end _postReq()
-	}//end testServerMod()
+	}//end testServer()
 
 	function loadNotes(){
 //console.log( _vars["templates"] );
@@ -1301,13 +1301,13 @@ console.log(msg);
 			
 		} catch(error) {
 			var msg = "";
-			msg += "<p>error JSON.parse server response data</p>";
-			msg += "<p>" + error + "</p>";
-			msg += "<p>data: " + p["jsonLog"] + "</p>";
+			msg += "error JSON.parse server response data";
+			msg += ", " + error;
+			//msg += "<p>data: " + p["jsonLog"] + "</p>";
 console.log(msg);
 		//_log("<div class='alert alert-danger'>" + msg + "</div>");
 			if( typeof p["onError"] === "function"){
-				p["onError"]( "Unknown server error...." );
+				p["onError"]( msg );
 			}
 		}//end catch
 
