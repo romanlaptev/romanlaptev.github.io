@@ -43,8 +43,15 @@ var _notes = function ( opt ){
 				"successMsg" : "<p>test local MySQL success...</p>",
 				"errorMsg" : "<p>test local MySQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
-//console.log(res);					
+console.log(res, typeof res);					
 						_vars["supportMySQL"] = false;
+						
+						if( typeof res !== "string"){
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+							return;
+						}
+//console.log("test!");						
 						parseLog({
 							"successMsg" : this["successMsg"],
 							"errorMsg" : this["errorMsg"],
@@ -72,8 +79,15 @@ console.log(errorCode);
 				"successMsg" : "<p>test local PostgreSQL success...</p>",
 				"errorMsg" : "<p>test local PostgreSQL failed, cannot connect to database server...</p>",
 				"callback" : function(res){
-//console.log(res);					
+console.log(res, typeof res);					
 						_vars["supportPostgreSQL"] = false;
+						
+						if( typeof res !== "string"){
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+							return;
+						}
+
 						parseLog({
 							"successMsg" : this["successMsg"],
 							"errorMsg" : this["errorMsg"],
@@ -192,20 +206,20 @@ console.log(errorCode);
 // console.log( key, btn["tagName"], btn["href"] );	
 // }
 
-	function _error( id ){
-		switch(id){
-			case "errorPHP":
-				var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>";
-			break
-			case "errorASPX":
-				var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>";
-			break
-			case "errorMSSQL":
-				var msg = "<p>test MSSQL failed, cannot connect to database server...</p>";
-			break
-		}//end switch()
-		_log("<div class='alert alert-danger'>" + msg + "</div>");
-	}//end _error()
+	// function _error( id ){
+		// switch(id){
+			// case "errorPHP":
+				// var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>";
+			// break
+			// case "errorASPX":
+				// var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>";
+			// break
+			// case "errorMSSQL":
+				// var msg = "<p>test MSSQL failed, cannot connect to database server...</p>";
+			// break
+		// }//end switch()
+		// _log("<div class='alert alert-danger'>" + msg + "</div>");
+	// }//end _error()
 
 	var _init = function(){
 //console.log("init _notes");
