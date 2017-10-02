@@ -153,8 +153,8 @@ git commit -am "first commit"
 git remote add origin https://git.heroku.com/romanlaptev.git
 git push -u origin master (git push heroku master?)
 ---
-cd romanlaptev.github.io/projects/notes
-git push/ git pull - команды обращаются не к github.com, а к git.heroku.com
++cd romanlaptev.github.io/projects/notes
++git push/ git pull - команды обращаются не к github.com, а к git.heroku.com
 
 ---------------- BLOG
 	note --> post
