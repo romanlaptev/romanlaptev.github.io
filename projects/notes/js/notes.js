@@ -178,6 +178,42 @@ var _notes = function ( opt ){
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
 						}
 					}//end callback
+				}, //end test
+				{
+				"name" : "checkMySQL_java",
+				"url" : "api/test_mysql.jsp",
+				"successMsg" : "test local MySQL success...",
+				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
+				"callback" : function(res){
+console.log(res, typeof res);					
+						_vars["supportMySQL"] = false;
+						
+						if( typeof res !== "string"){
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+							return;
+						}
+
+						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportMySQL"] = true;
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							},
+							"onError" : function( errorCode  ){
+console.log(errorCode);
+								var msg = this["errorMsg"];
+								msg += ", "+errorCode;
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
+					}//end callback
 				} //end test
 				
 		],//end tests
@@ -906,10 +942,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 				}
 
 				if( _vars["supportJAVA"] ){
-					noSupport = false;
-					_vars["requestUrl"] = "notes-serv";
-					_vars["exportUrl"] = "notes-serv?action=export_notes";
-					loadNotes();
+					if( _vars["supportMySQL"] ){
+						noSupport = false;
+						_vars["requestUrl"] = "notes-serv";
+						_vars["exportUrl"] = "notes-serv?action=export_notes";
+						loadNotes();
+					}
 				}
 				
 				if( noSupport ){
@@ -1244,52 +1282,34 @@ console.log(msg);
 		
 		try{
 			var jsonArr = JSON.parse( p["jsonLog"], function(key, value) {
-	//console.log( key, value );
+//console.log( key, value );
 				return value;
 			});							
-	//console.log( jsonArr, jsonArr.length);
-
-			// if( jsonArr.length === 1){
-				
-				// var jsonObj = jsonArr[0];
-	// //console.log( jsonObj, jsonObj["error_code"], jsonObj["error_code"].length);
-				// var msg = "<p>" +jsonObj["message"]+ "</p>";
-				
-				// if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
-					// msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
-					// _log("<div class='alert alert-danger'>" + msg + "</div>");
-				// } else {
-					// _log("<div class='alert alert-success'>" + msg + "</div>");
-					// loadNotes();		
-				// }
-				
-			// } else {
-	// console.log( jsonArr, jsonArr.length );
-			// }
+//console.log( jsonArr, jsonArr.length);
 			
-			var errorCode = 0;
+			var errorCode = "0";
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
 //console.log( jsonObj );
 
-				var msg = "<p>" +jsonObj["message"]+ "</p>";
-				var _className = "alert-success";
-				
-				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
-					if( jsonObj["error_code"] !== "0"){
-						msg += "<p>error code: " +jsonObj["error_code"]+ "</p>";
-						_className = "alert-danger";
-						//displayNotes = false;
-						errorCode = jsonObj["error_code"];
-					}
+				if( jsonObj["message"] && jsonObj["message"].length > 0 ){
+					var msg_ = "<p>" +jsonObj["message"]+ "</p>";
+					_log("<div class='alert alert-info'>" + msg_ + "</div>");
 				}
 				
-				_log("<div class='alert "+_className+" '>" + msg + "</div>");
+				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
+					errorCode = jsonObj["error_code"];
+					//if( errorCode !== "0"){
+						//var _msg = "<p>error code: " +errorCode+ "</p>";
+						//_log("<div class='alert alert-danger'>" + _msg + "</div>");
+					//}
+				}
+				
 			}//next
 			
-//console.log(errorCode);			
+console.log(errorCode);			
 
-			if( errorCode !== 0){
+			if( errorCode !== "0"){
 				if( typeof p["onError"] === "function"){
 					p["onError"]( errorCode );
 				}

@@ -7,6 +7,7 @@
 	String dbPassword = "master";
 	String dbUrl = "jdbc:mysql://localhost/mysql";
 	String sql;
+	String jsonLog = "";
 	
 	try{
 		Class.forName("com.mysql.jdbc.Driver").newInstance ();
@@ -31,31 +32,45 @@
 		while (rs.next()) {
 			message += rs.getString(1);
 		}
-		String jsonLog = "[{\"message\" : \""+message+"\"}]";
-		out.println( jsonLog );
+		jsonLog = "[";
+		jsonLog += "{\"error_code\" : \"0\"},";
+		jsonLog += "{\"message\" : \""+message+"\"}";
+		jsonLog += "]";
 
 		rs.close();
 		
 	} catch (Exception e) {
 		
 		String message = "Cannot connect to database server " + dbUrl;
-		String jsonLog = "[{\"message\" : \""+message+"\"}]";
-		out.println( jsonLog );
-		
+		jsonLog = "[";
+		jsonLog += "{\"error_code\" : \"connectDBerror\"},";
+		jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
+		jsonLog += "{\"message\" : \""+message+"\"}";
+		jsonLog += "]";
+
 		//e.printStackTrace(response.getWriter());
-		
 	} finally {
 		if(conn != null){
 			try{ 
 				conn.close();
-				
-				//out.println("Database connection closed...");
-				
 			} catch (Exception e){
-				out.println("Cannot close connect to database server....");
-				e.printStackTrace(response.getWriter());
+				//e.printStackTrace(response.getWriter());
+				String message = "Cannot close connect to database server...." + dbUrl;
+				jsonLog = "[";
+				jsonLog += "{\"error_code\" : \"connectDBerror\"},";
+				jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
+				jsonLog += "{\"message\" : \""+message+"\"}";
+				jsonLog += "]";
 			}
 		}
 		
+	}
+	
+	if( jsonLog.length() > 0){
+		jsonLog = jsonLog.replaceAll("\r", "R");
+		jsonLog = jsonLog.replaceAll("\n", "<br>");
+		//jsonLog = jsonLog.replaceAll("/", "!");
+		//jsonLog = jsonLog.replaceAll(":", "%");
+		out.println( jsonLog );
 	}
 %>
