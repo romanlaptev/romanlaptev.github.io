@@ -187,6 +187,7 @@ var _notes = function ( opt ){
 				"callback" : function(res){
 console.log(res, typeof res);					
 						
+						_vars["supportMySQL_java"] = false;
 						if( typeof res !== "string"){
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -204,7 +205,6 @@ console.log(res, typeof res);
 							},
 							"onError" : function( errorCode  ){
 console.log(errorCode);
-								_vars["supportMySQL_java"] = false;
 								var msg = this["errorMsg"];
 								msg += ", "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
