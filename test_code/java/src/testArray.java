@@ -5,8 +5,6 @@ Run: java testArray
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 //import java.util.Collection;
 //import java.util.Iterator;
 
@@ -40,40 +38,6 @@ class testArray{
 		final String[] array = {"four", "three", "two", "one"};
 		System.out.println( Arrays.asList( array ) );
 		
-		// Output a map
-		final Map<String, String> map = new HashMap<String, String>();
-		map.put("one", "a");
-		map.put("two", "b");
-		map.put("three", "c");
-		System.out.println( map.entrySet() );
-		System.out.println( map.keySet() );
-		
-		System.out.println( map.get("two") );
-		
-/*
-		HashMap<String, HashMap> selects = new HashMap<String, HashMap>();
-		for(Map.Entry<String, HashMap> entry : selects.entrySet()) {
-			String key = entry.getKey();
-			HashMap value = entry.getValue();
-
-			// do what you have to do here
-			// In your case, an other loop.
-		}
-
-		//https://habrahabr.ru/post/128017/
-		// 1.
-		for (Map.Entry<String, String> entry: hashmap.entrySet())
-			System.out.println(entry.getKey() + " = " + entry.getValue());
-
-		// 2.
-		for (String key: hashmap.keySet())
-			System.out.println(hashmap.get(key));
-
-		// 3.
-		Iterator<Map.Entry<String, String>> itr = hashmap.entrySet().iterator();
-		while (itr.hasNext())
-			System.out.println(itr.next());
-*/
 
 	}//end main()	
 }//end class
