@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public final class Notes extends HttpServlet {
 	Connection conn = null;
-	String userName = "root";
-	String password = "master";
-	String url = "jdbc:mysql://localhost/mysql";
+	String dbUser = "root";
+	String dbPassword = "master";
+	String dbUrl = "jdbc:mysql://localhost/mysql";
 	String sql;
 
 	
@@ -42,7 +42,7 @@ public final class Notes extends HttpServlet {
 		try
 		{
 			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
-			conn = DriverManager.getConnection (url, userName, password);
+			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			Statement stat = conn.createStatement();
 			
 			out.println ("<div class='alert alert-info'>");
@@ -72,7 +72,7 @@ public final class Notes extends HttpServlet {
 		catch (Exception e)
 		{
 			out.println ("<div class='alert alert-danger'>");
-			out.println ("Cannot connect to database server " + url);
+			out.println ("Cannot connect to database server " + dbUrl);
 			e.printStackTrace(response.getWriter());
 			out.println ("</div>");
 		}

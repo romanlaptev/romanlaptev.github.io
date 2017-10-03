@@ -1,5 +1,6 @@
 //http://www.quizful.net/post/Using-Map-in-Jave
 //http://cybern.ru/java-map.html
+//http://java-online.ru/java-arrayList.xhtml
 import java.util.Map;
 import java.util.HashMap;
 //import java.util.Hashtable;
