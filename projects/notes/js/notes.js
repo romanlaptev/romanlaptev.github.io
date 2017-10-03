@@ -198,13 +198,13 @@ console.log(res, typeof res);
 							"errorMsg" : this["errorMsg"],
 							"jsonLog" : res,
 							"onSuccess" : function(){
-								_vars["supportMySQL"] = true;
+								_vars["supportMySQL_java"] = true;
 								var msg = this["successMsg"];
 								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode  ){
 console.log(errorCode);
-								_vars["supportMySQL"] = false;
+								_vars["supportMySQL_java"] = false;
 								var msg = this["errorMsg"];
 								msg += ", "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -942,7 +942,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 				}
 
 				if( _vars["supportJAVA"] ){
-					if( _vars["supportMySQL"] ){
+					if( _vars["supportMySQL_java"] ){
 						noSupport = false;
 						_vars["requestUrl"] = "notes-serv";
 						_vars["exportUrl"] = "notes-serv?action=export_notes";
