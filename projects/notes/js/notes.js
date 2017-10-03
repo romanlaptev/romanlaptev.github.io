@@ -1288,12 +1288,14 @@ console.log(msg);
 //console.log( jsonArr, jsonArr.length);
 			
 			var errorCode = "0";
+			//var _messagesStr = "";
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
 //console.log( jsonObj );
 
 				if( jsonObj["message"] && jsonObj["message"].length > 0 ){
 					var msg_ = "<p>" +jsonObj["message"]+ "</p>";
+					//_messagesStr += msg_;
 					_log("<div class='alert alert-info'>" + msg_ + "</div>");
 				}
 				
@@ -1308,6 +1310,7 @@ console.log(msg);
 			}//next
 			
 console.log(errorCode);			
+//console.log(_messagesStr);			
 
 			if( errorCode !== "0"){
 				if( typeof p["onError"] === "function"){
