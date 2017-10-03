@@ -186,7 +186,6 @@ var _notes = function ( opt ){
 				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
 console.log(res, typeof res);					
-						_vars["supportMySQL"] = false;
 						
 						if( typeof res !== "string"){
 							var msg = this["errorMsg"];
@@ -205,6 +204,7 @@ console.log(res, typeof res);
 							},
 							"onError" : function( errorCode  ){
 console.log(errorCode);
+								_vars["supportMySQL"] = false;
 								var msg = this["errorMsg"];
 								msg += ", "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
