@@ -2,7 +2,7 @@ package mypackage;
 
 //import java.io.IOException;
 //import java.io.PrintWriter;
-//import java.util.Enumeration;
+import java.util.Enumeration;
 
 import java.io.*;
 import java.sql.*;
@@ -36,20 +36,50 @@ public final class Notes extends HttpServlet {
 					HttpServletResponse response)
 	throws IOException, ServletException {
 
+		String jsonLog = "";
+		
 		//response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		//print request
+		String parName;
+		boolean emptyEnum = false;
+		
+		Enumeration paramNames = request.getParameterNames();
+		if( !paramNames.hasMoreElements() ){
+			emptyEnum = true;
+		}
+		if( emptyEnum ){
+			String message = "No parameters in request object...";
+			jsonLog += "{\"error_code\" : \"noGetParameters\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+		} else {
+			// out.println("<ul>");
+			// while( paramNames.hasMoreElements() ){
+				// parName = (String) paramNames.nextElement();
+				// out.println("<li>");
+				// out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
+				// out.println("</li>");
+			// }//end while
+			// out.println("</ul>");
+		}
+		
+		
+		//connect to DB
 		try
 		{
 			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			Statement stat = conn.createStatement();
 			
-			out.println ("<div class='alert alert-info'>");
-			out.println ("connection statement: " + stat);
-			out.println ("</div>");
-			//System.out.println ("Database connection established");
+			//out.println ("<div class='alert alert-info'>");
+			//out.println ("connection statement: " + stat);
+			//out.println ("</div>");
+
+			String message = "Database connection established,  " + dbUrl;
+			jsonLog += "{\"message\" : \""+message+"\"},";
 			
+/*
 			sql = "SHOW TABLES;";
 			ResultSet rs = stat.executeQuery(sql);
 
@@ -65,16 +95,17 @@ public final class Notes extends HttpServlet {
 				out.println(rs.getString(1));
 				out.println("</li>");
 			}
-
 			rs.close();
+*/
 			
 		}
 		catch (Exception e)
 		{
-			out.println ("<div class='alert alert-danger'>");
-			out.println ("Cannot connect to database server " + dbUrl);
-			e.printStackTrace(response.getWriter());
-			out.println ("</div>");
+			String message = "Cannot connect to database server " + dbUrl;
+			jsonLog += "{\"error_code\" : \"connectDBerror\"},";
+			jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
+			jsonLog += "{\"message\" : \""+message+"\"}";
+			//e.printStackTrace(response.getWriter());
 		}
 		finally
 		{
@@ -82,22 +113,31 @@ public final class Notes extends HttpServlet {
 			{
 				try{
 					conn.close ();
-					out.println ("<div class='alert alert-success'>");
-					out.println("Database connection closed...");
-					out.println ("</div>");
 				} catch (Exception e) { 
-					out.println ("<div class='alert alert-danger'>");
-					out.println("Cannot close connect to database server....");
-					e.printStackTrace(response.getWriter());
-					out.println ("</div>");
+					//e.printStackTrace(response.getWriter());
+					String message = "Cannot close connect to database server...." + dbUrl;
+					jsonLog += "{\"error_code\" : \"connectDBerror\"},";
+					jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
+					jsonLog += "{\"message\" : \""+message+"\"}";
 				}
 			}
 		}//end block try
 		
+		if( jsonLog.length() > 0){
+			jsonLog =  jsonLog.substring( 0, jsonLog.length() - 1);
+			jsonLog = "[" + jsonLog + "]";
+			
+			jsonLog = jsonLog.replaceAll("\r", "R");
+			jsonLog = jsonLog.replaceAll("\n", "<br>");
+			//jsonLog = jsonLog.replaceAll("/", "!");
+			//jsonLog = jsonLog.replaceAll(":", "%");
+			out.println( jsonLog );
+		}
+		
 	}//end doGet()
 
-	// public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		// Enumeration paramNames = request.getParameterNames();
-	// }//end doPost()
+	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		Enumeration paramNames = request.getParameterNames();
+	}//end doPost()
 
 }//end class
