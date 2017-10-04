@@ -19,7 +19,9 @@ public final class Notes extends HttpServlet {
 	String dbPassword = "master";
 	String dbUrl = "jdbc:mysql://localhost/mysql";
 	String sql;
-
+	
+	PrintWriter out;
+	Statement stat;
 	
 /**
  * Respond to a GET request for the content produced by
@@ -39,7 +41,7 @@ public final class Notes extends HttpServlet {
 		String jsonLog = "";
 		
 		//response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		out = response.getWriter();
 		
 		//print request
 		String parName;
@@ -70,7 +72,7 @@ public final class Notes extends HttpServlet {
 		{
 			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
-			Statement stat = conn.createStatement();
+			stat = conn.createStatement();
 			
 			//out.println ("<div class='alert alert-info'>");
 			//out.println ("connection statement: " + stat);
@@ -79,25 +81,8 @@ public final class Notes extends HttpServlet {
 			String message = "Database connection established,  " + dbUrl;
 			jsonLog += "{\"message\" : \""+message+"\"},";
 			
-/*
 			sql = "SHOW TABLES;";
-			ResultSet rs = stat.executeQuery(sql);
-
-			ResultSetMetaData data = rs.getMetaData();
-			int count = data.getColumnCount();
-
-			for (int n = 1; n <= count; n++) {
-				out.print( data.getColumnName(n)+", ");
-			}
-
-			while (rs.next()) {
-				out.println("<li>");
-				out.println(rs.getString(1));
-				out.println("</li>");
-			}
-			rs.close();
-*/
-			
+			runQuery( sql );
 		}
 		catch (Exception e)
 		{
@@ -140,4 +125,25 @@ public final class Notes extends HttpServlet {
 		Enumeration paramNames = request.getParameterNames();
 	}//end doPost()
 
+	private void runQuery(String query){
+		out.println("Query: " + query);
+		out.println ("connection statement: " + stat);
+
+		//ResultSet rs = stat.executeQuery( query );
+
+		// ResultSetMetaData data = rs.getMetaData();
+		// int count = data.getColumnCount();
+
+		// for (int n = 1; n <= count; n++) {
+			// out.print( data.getColumnName(n)+", ");
+		// }
+
+		// while (rs.next()) {
+			// out.println("<li>");
+			// out.println(rs.getString(1));
+			// out.println("</li>");
+		// }
+		// rs.close();
+	}//end runQuery()
+	
 }//end class
