@@ -73,7 +73,7 @@ public final class Notes extends HttpServlet {
 			// out.println("</ul>");
 		}
 		
-		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS "+dbName+" DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
+		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 		
 		String _query = "CREATE TABLE IF NOT EXISTS `"+tableName+"` (" +
 "`id` int(11) NOT NULL AUTO_INCREMENT," +
@@ -94,14 +94,19 @@ public final class Notes extends HttpServlet {
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
-			//String message = "Database connection established,  " + dbUrl;
-			//jsonLog += "{\"message\" : \""+message+"\"},";
+			String message = "Database connection established,  " + dbUrl;
+			jsonLog += "{\"message\" : \""+message+"\"},";
 			
-			runUpdateQuery( sql.get("createDB") );
+			//runUpdateQuery( sql.get("createDB") );
 			runUpdateQuery( sql.get("createTable") );
 
 			//String result = runSelectQuery( sql );
 //out.println( "result: " + result );
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace( out );
+			//out.println( e.getMessage() );
 		}
 		catch (Exception e)
 		{
