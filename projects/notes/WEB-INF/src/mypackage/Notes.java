@@ -12,17 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.Map;
+import java.util.HashMap;
+//import java.util.ArrayList;
+
 
 public final class Notes extends HttpServlet {
 	Connection conn = null;
 	String dbUser = "root";
 	String dbPassword = "master";
 	String dbUrl = "jdbc:mysql://localhost/mysql";
-	String sql;
 	
 	PrintWriter out;
 	Statement stat;
+
+	String dbName = "db1";
+	String tableName = "notes";
 	
+	Map<String, String> sql = new HashMap<String, String>();
 /**
  * Respond to a GET request for the content produced by
  * this servlet.
@@ -66,6 +73,19 @@ public final class Notes extends HttpServlet {
 			// out.println("</ul>");
 		}
 		
+		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS "+dbName+" DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci");
+		
+		String _query = "CREATE TABLE IF NOT EXISTS `"+tableName+"` (" +
+"`id` int(11) NOT NULL AUTO_INCREMENT," +
+"`author` varchar(20) NOT NULL," +
+"`title` varchar(255) default \"no title\"," +
+"`text_message` text NOT NULL, " +
+"`client_date` DATETIME NULL, " +
+"`server_date` DATETIME NULL, " +
+"`ip` varchar( 20 ), " +
+"PRIMARY KEY (`id`)"+
+") DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
+		sql.put("createTable", _query);
 		
 		//connect to DB
 		try
@@ -74,15 +94,14 @@ public final class Notes extends HttpServlet {
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
-			//out.println ("<div class='alert alert-info'>");
-			//out.println ("connection statement: " + stat);
-			//out.println ("</div>");
-
-			String message = "Database connection established,  " + dbUrl;
-			jsonLog += "{\"message\" : \""+message+"\"},";
+			//String message = "Database connection established,  " + dbUrl;
+			//jsonLog += "{\"message\" : \""+message+"\"},";
 			
-			sql = "SHOW TABLES;";
-			runQuery( sql );
+			runUpdateQuery( sql.get("createDB") );
+			runUpdateQuery( sql.get("createTable") );
+
+			//String result = runSelectQuery( sql );
+//out.println( "result: " + result );
 		}
 		catch (Exception e)
 		{
@@ -125,25 +144,45 @@ public final class Notes extends HttpServlet {
 		Enumeration paramNames = request.getParameterNames();
 	}//end doPost()
 
-	private void runQuery(String query){
-		out.println("Query: " + query);
-		out.println ("connection statement: " + stat);
+	//private void runUpdateQuery(String query) throws SQLException{
+	private void runUpdateQuery(String query) {
+out.println("Query: " + query);
+		try
+		{
+			stat.executeUpdate( query );
+		}
+		catch (SQLException e)
+		{
+			//e.printStackTrace( out );
+			out.println( e.getMessage() );
+		}
+	}//end
+	
+	private String runSelectQuery(String query) {
+		try
+		{
+			ResultSet rs = stat.executeQuery( query );
+			ResultSetMetaData data = rs.getMetaData();
+			int count = data.getColumnCount();
 
-		//ResultSet rs = stat.executeQuery( query );
+			for (int n = 1; n <= count; n++) {
+				out.print( data.getColumnName(n)+", ");
+			}
 
-		// ResultSetMetaData data = rs.getMetaData();
-		// int count = data.getColumnCount();
-
-		// for (int n = 1; n <= count; n++) {
-			// out.print( data.getColumnName(n)+", ");
-		// }
-
-		// while (rs.next()) {
-			// out.println("<li>");
-			// out.println(rs.getString(1));
-			// out.println("</li>");
-		// }
-		// rs.close();
-	}//end runQuery()
+			while (rs.next()) {
+				out.println("<li>");
+				out.println(rs.getString(1));
+				out.println("</li>");
+			}
+			rs.close();
+		}
+		catch (SQLException e)
+		{
+			//e.printStackTrace( out );
+			out.println( e.getMessage() );
+		}
+		
+		return "test";
+	}//end runSelectQuery()
 	
 }//end class
