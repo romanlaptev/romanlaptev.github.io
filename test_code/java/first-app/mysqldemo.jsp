@@ -28,7 +28,7 @@ http://java-course.ru/begin/database01/
 	String userName = "root";
 	String password = "master";
 	String url = "jdbc:mysql://localhost/mysql";
-	String sql;
+	String _query;
 	
 	try{
 
@@ -40,33 +40,75 @@ http://java-course.ru/begin/database01/
 		out.println ("connection statement: " + stat);
 		out.println ("</div>");
 		
-		//sql = "select * from db;";
-		sql = "SHOW TABLES;";
-		ResultSet rs = stat.executeQuery(sql);
+		// //sql = "select * from db;";
+		// sql = "SHOW TABLES;";
+		// ResultSet rs = stat.executeQuery(sql);
 
-// ykk>1. В ResultSet есть метод last() перемещает курсор на последнюю запись
-// ykk>2. Затем getRow() — номер текущей строки
-// ykk>3. Возврашаешь курсор в начало — beforeFirst()
+// // ykk>1. В ResultSet есть метод last() перемещает курсор на последнюю запись
+// // ykk>2. Затем getRow() — номер текущей строки
+// // ykk>3. Возврашаешь курсор в начало — beforeFirst()
 
-		ResultSetMetaData data = rs.getMetaData();
-		int count = data.getColumnCount();
+		// ResultSetMetaData data = rs.getMetaData();
+		// int count = data.getColumnCount();
 
-		for (int n = 1; n <= count; n++) {
-			out.print( data.getColumnName(n)+", ");
+		// for (int n = 1; n <= count; n++) {
+			// out.print( data.getColumnName(n)+", ");
+		// }
+
+		// while (rs.next()) {
+			// out.println("<li>");
+			// out.println(rs.getString(1));
+			// out.println("</li>");
+		// }
+
+		// rs.close();
+		
+		try
+		{
+/*			
+			_query = "INSERT INTO `notes` ("+
+	"`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
+	" 'anonymous', "+
+	" 'title1', "+
+	" 'textMessage1', "+
+	" '2017-10-02 16:04:58', "+
+	" '2017-10-02 09:08:40', "+
+	" '37.193.108.45' "+
+	");";
+			stat.executeUpdate( _query );
+*/			
+//---------------------
+			_query = "SELECT * from notes;";
+			ResultSet rs = stat.executeQuery( _query );
+			ResultSetMetaData data = rs.getMetaData();
+			int count = data.getColumnCount();
+out.println("Column count: " + count );
+			for (int n = 1; n <= count; n++) {
+				out.print( data.getColumnName(n)+", ");
+			}
+
+			while (rs.next()) {
+				out.println("<li>");
+				out.println(rs.getString(6));
+				out.println("</li>");
+			}
+
+			rs.close();
+			
 		}
-
-		while (rs.next()) {
-			out.println("<li>");
-			out.println(rs.getString(1));
-			out.println("</li>");
+		catch (SQLException e)
+		{
+			//e.printStackTrace( out );
+			out.println( e.getMessage() );
 		}
-
-		rs.close();
 		
 	} catch (Exception e) {
 		out.println ("<div class='alert alert-danger'>");
 		out.println ("Cannot connect to database server " + url);
-		e.printStackTrace(response.getWriter());
+		
+		//e.printStackTrace(response.getWriter());
+		out.println( e.getMessage() );
+		
 		out.println ("</div>");
 	} finally {
 		if(conn != null){

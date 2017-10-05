@@ -87,6 +87,17 @@ public final class Notes extends HttpServlet {
 ") DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 		sql.put("createTable", _query);
 		
+		_query = "INSERT INTO `"+tableName+"` ("+
+"`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
+" 'anonymous', "+
+" 'title1', "+
+" 'textMessage1', "+
+" '2017-10-02 16:04:58', "+
+" '2017-10-02 09:08:40', "+
+" '37.193.108.45' "+
+");";
+		sql.put("insertNote", _query);
+		
 		//connect to DB
 		try
 		{
@@ -97,8 +108,9 @@ public final class Notes extends HttpServlet {
 			String message = "Database connection established,  " + dbUrl;
 			jsonLog += "{\"message\" : \""+message+"\"},";
 			
-			//runUpdateQuery( sql.get("createDB") );
+			runUpdateQuery( sql.get("createDB") );
 			runUpdateQuery( sql.get("createTable") );
+			runUpdateQuery( sql.get("insertNote") );
 
 			//String result = runSelectQuery( sql );
 //out.println( "result: " + result );
