@@ -65,18 +65,19 @@ http://java-course.ru/begin/database01/
 		
 		try
 		{
-/*			
-			_query = "INSERT INTO `notes` ("+
-	"`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
-	" 'anonymous', "+
-	" 'title1', "+
-	" 'textMessage1', "+
-	" '2017-10-02 16:04:58', "+
-	" '2017-10-02 09:08:40', "+
-	" '37.193.108.45' "+
-	");";
+
+			// _query = "INSERT INTO `notes` ("+
+	// "`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
+	// " 'anonymous', "+
+	// " 'title1', "+
+	// " 'textMessage1', "+
+	// " '2017-10-02 16:04:58', "+
+	// " '2017-10-02 09:08:40', "+
+	// " '37.193.108.45' "+
+	// ");";
+			_query = "USE db1;";
 			stat.executeUpdate( _query );
-*/			
+
 //---------------------
 			_query = "SELECT * from notes;";
 			ResultSet rs = stat.executeQuery( _query );
