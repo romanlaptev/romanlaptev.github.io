@@ -29,7 +29,15 @@ public final class Notes extends HttpServlet {
 	String dbName = "db1";
 	String tableName = "notes";
 	
-	Map<String, String> sql = new HashMap<String, String>();
+	public Map<String, String> sql = new HashMap<String, String>();
+
+	public String jsonLog = "";
+	
+	//constructor
+	public Notes() {
+		//sql.put("test", "Test!");
+	}
+   
 /**
  * Respond to a GET request for the content produced by
  * this servlet.
@@ -41,37 +49,36 @@ public final class Notes extends HttpServlet {
  * @exception ServletException if a servlet error occurs
  */
 	@Override
-	public void doGet(HttpServletRequest request,
-					HttpServletResponse response)
-	throws IOException, ServletException {
+	public void doGet( HttpServletRequest request,
+					HttpServletResponse response) throws IOException, ServletException {
 
-		String jsonLog = "";
-		
 		//response.setContentType("text/html");
 		out = response.getWriter();
 		
-		//print request
-		String parName;
-		boolean emptyEnum = false;
+		//out.println("test constructor:" + sql.get("test"));
 		
-		Enumeration paramNames = request.getParameterNames();
-		if( !paramNames.hasMoreElements() ){
-			emptyEnum = true;
-		}
-		if( emptyEnum ){
-			String message = "No parameters in request object...";
-			jsonLog += "{\"error_code\" : \"noGetParameters\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
-		} else {
-			// out.println("<ul>");
-			// while( paramNames.hasMoreElements() ){
-				// parName = (String) paramNames.nextElement();
-				// out.println("<li>");
-				// out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
-				// out.println("</li>");
-			// }//end while
-			// out.println("</ul>");
-		}
+		// //print request
+		// String parName;
+		// boolean emptyEnum = false;
+		
+		// Enumeration paramNames = request.getParameterNames();
+		// if( !paramNames.hasMoreElements() ){
+			// emptyEnum = true;
+		// }
+		// if( emptyEnum ){
+			// String message = "No parameters in request object...";
+			// jsonLog += "{\"error_code\" : \"noGetParameters\",";
+			// jsonLog += "\"message\" : \""+message+"\"},";
+		// } else {
+			// // out.println("<ul>");
+			// // while( paramNames.hasMoreElements() ){
+				// // parName = (String) paramNames.nextElement();
+				// // out.println("<li>");
+				// // out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
+				// // out.println("</li>");
+			// // }//end while
+			// // out.println("</ul>");
+		// }
 		
 		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 		
@@ -100,23 +107,25 @@ public final class Notes extends HttpServlet {
 ");";
 		sql.put("insertNote", _query);
 		
-		//connect to DB
+		_query = "SELECT id, author, title, text_message, client_date, server_date, ip  FROM `"+tableName+"` ORDER BY `client_date` DESC;";
+		sql.put("getNotes", _query);
+		
+		//start, connect to database server, create database, create table, check request parameters
 		try
 		{
 			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
-			String message = "Database connection established,  " + dbUrl;
-			jsonLog += "{\"message\" : \""+message+"\"},";
+			//String message = "Database connection established,  " + dbUrl;
+			//jsonLog += "{\"message\" : \""+message+"\"},";
 			
 			runUpdateQuery( sql.get("createDB") );
 			runUpdateQuery( sql.get("selectDB") );
 			runUpdateQuery( sql.get("createTable") );
-			runUpdateQuery( sql.get("insertNote") );
+			//runUpdateQuery( sql.get("insertNote") );
 
-			//String result = runSelectQuery( sql );
-//out.println( "result: " + result );
+			_testRequestParams( request );
 		}
 		catch (SQLException e)
 		{
@@ -139,8 +148,8 @@ public final class Notes extends HttpServlet {
 					conn.close ();
 				} catch (Exception e) { 
 					//e.printStackTrace(response.getWriter());
-					String message = "Cannot close connect to database server...." + dbUrl;
-					jsonLog += "{\"error_code\" : \"connectDBerror\"},";
+					String message = "Cannot close connect to database " + dbUrl;
+					jsonLog += "{\"error_code\" : \"DBerror\"},";
 					jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
 					jsonLog += "{\"message\" : \""+message+"\"}";
 				}
@@ -157,6 +166,7 @@ public final class Notes extends HttpServlet {
 			//jsonLog = jsonLog.replaceAll(":", "%");
 			out.println( jsonLog );
 		}
+		jsonLog = "";
 		
 	}//end doGet()
 
@@ -166,7 +176,7 @@ public final class Notes extends HttpServlet {
 
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
-out.println("Query: " + query);
+//out.println("Query: " + query);
 		try
 		{
 			stat.executeUpdate( query );
@@ -183,16 +193,15 @@ out.println("Query: " + query);
 		{
 			ResultSet rs = stat.executeQuery( query );
 			ResultSetMetaData data = rs.getMetaData();
+			
 			int count = data.getColumnCount();
 
-			for (int n = 1; n <= count; n++) {
-				out.print( data.getColumnName(n)+", ");
-			}
-
 			while (rs.next()) {
-				out.println("<li>");
-				out.println(rs.getString(1));
-				out.println("</li>");
+				for ( int n = 1; n <= count; n++ ) {
+					out.print( data.getColumnName(n) + " : " + rs.getString(n) );
+					out.println("\n");
+				}
+				out.println("===================");
 			}
 			rs.close();
 		}
@@ -205,4 +214,91 @@ out.println("Query: " + query);
 		return "test";
 	}//end runSelectQuery()
 	
+	private void _testRequestParams( HttpServletRequest request ){
+		
+		//print request
+		Enumeration paramNames = request.getParameterNames();
+		if( !paramNames.hasMoreElements() ){
+			String message = "No parameters in request object...";
+			jsonLog += "{\"error_code\" : \"noGetParameters\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+			return;
+		}
+
+		//String parName;
+		// out.println("<ul>");
+		// while( paramNames.hasMoreElements() ){
+			// parName = (String) paramNames.nextElement();
+			// out.println("<li>");
+			// out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
+			// out.println("</li>");
+		// }//end while
+		// out.println("</ul>");
+		
+		String action = request.getParameter("action");
+//out.println( action == null );
+		if (action == null) {
+			String message = "No parameter 'action' ...";
+			jsonLog += "{\"error_code\" : \"noGetParameter\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+			return;
+		}
+		
+//out.println( "action length: " + action.length() );
+//out.println( "action isEmpty: " + action.isEmpty() );
+		if ( action.isEmpty() ) {
+			String message = "Empty 'action' ...";
+			jsonLog += "{\"error_code\" : \"emptyAction\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+			return;
+		}
+//out.println("action:" + action);
+
+		switch (action)
+		{
+			case "save_note":
+			break;
+				
+			case "get_notes":
+				getNotes();
+			break;
+				
+			case "delete_note":
+			break;
+			
+			case "edit_note":
+			break;
+				
+			case "clear_notes":
+			break;
+				
+			case "remove_table":
+			break;
+				
+			case "export_notes":
+			break;
+				
+			case "upload":
+			break;
+
+			case "import_notes":
+			break;
+				
+			case "test":
+			break;
+			
+			default:
+			break;
+		}//end switch
+
+		
+	}//end _testRequestParams()
+
+	private void getNotes(){
+//out.println("Query:" + sql.get("getNotes"));
+		String result = runSelectQuery( sql.get("getNotes") );
+out.println( "result: " + result );
+		
+	}//end getNotes()
+
 }//end class

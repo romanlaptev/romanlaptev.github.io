@@ -678,7 +678,8 @@ Response.Write( logStr );
 			
 			default:
 			break;
-		}		
+		}//end switch
+		
 		Response.Write(jsonStr);
 		
 	}//end _testRequestParams()
