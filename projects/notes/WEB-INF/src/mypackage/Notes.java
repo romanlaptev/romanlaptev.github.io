@@ -87,6 +87,8 @@ public final class Notes extends HttpServlet {
 ") DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 		sql.put("createTable", _query);
 		
+		sql.put("selectDB", "USE db1;");
+		
 		_query = "INSERT INTO `"+tableName+"` ("+
 "`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
 " 'anonymous', "+
@@ -109,6 +111,7 @@ public final class Notes extends HttpServlet {
 			jsonLog += "{\"message\" : \""+message+"\"},";
 			
 			runUpdateQuery( sql.get("createDB") );
+			runUpdateQuery( sql.get("selectDB") );
 			runUpdateQuery( sql.get("createTable") );
 			runUpdateQuery( sql.get("insertNote") );
 
