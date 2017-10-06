@@ -191,12 +191,12 @@ public final class Notes extends HttpServlet {
 		}
 	}//end
 	
-	private String runSelectQuery(String query) {
+	private List<Map<String, String>> runSelectQuery(String query) {
 		
 		String key = "";
 		String value = "";
 		
-		List<Map> records = new ArrayList<Map>();
+		List<Map<String, String>> records = new ArrayList<Map<String, String>>();
 		Map<String, String> dBrecord = new HashMap<String, String>();
 		
 		try
@@ -231,20 +231,20 @@ public final class Notes extends HttpServlet {
 			
 //out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
 
-for(Map<String, String> entry: records ){
-	out.println( "Size = " + entry.size() );
-	// String _value = (String) entry.get("ip"); 
-// out.println ("element IP: " + _value );
+// for(Map<String, String> entry: records ){
+	// out.println( "Size = " + entry.size() );
+	// // String _value = (String) entry.get("ip"); 
+// // out.println ("element IP: " + _value );
 	
-	//out.println( "Key set " + entry.keySet() );
-	//Class cls = entry.keySet().getClass();
-	//out.println("The type of the object is: " + cls.getName() );
+	// //out.println( "Key set " + entry.keySet() );
+	// //Class cls = entry.keySet().getClass();
+	// //out.println("The type of the object is: " + cls.getName() );
 	
-	for (String _key: entry.keySet() ) { 
-		String _value = entry.get(_key); 
-		out.println( _key + " : " + _value );
-	 }//next
-}//next
+	// for (String _key: entry.keySet() ) { 
+		// String _value = entry.get(_key); 
+		// out.println( _key + " : " + _value );
+	 // }//next
+// }//next
 
 // for( int n = 0; n < records.size(); n++){
 	// Map<String, String> _record = records.get(n);
@@ -271,7 +271,7 @@ for(Map<String, String> entry: records ){
 			out.println( e.getMessage() );
 		}
 		
-		return "test";
+		return records;
 	}//end runSelectQuery()
 	
 	private void _testRequestParams( HttpServletRequest request ){
@@ -356,9 +356,17 @@ for(Map<String, String> entry: records ){
 
 	private void getNotes(){
 //out.println("Query:" + sql.get("getNotes"));
-		String result = runSelectQuery( sql.get("getNotes") );
-out.println( "result: " + result );
+		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 		
+		//print query result
+out.println ("Size of the records result object: " + result.size() );		
+		for(Map<String, String> entry: result ){
+			for (String _key: entry.keySet() ) { 
+				String _value = entry.get(_key); 
+				out.println( _key + " : " + _value );
+			 }//next
+		}//next		
+
 	}//end getNotes()
 
 }//end class

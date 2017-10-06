@@ -82,7 +82,9 @@ out.println("Key: " + _record.getKey() + " Value: "+ _record.getValue());
 // clear()
 
 		//------------------------------- ArrayList
-		List<Map> records = new ArrayList<Map>();
+		//List<Map> records = new ArrayList<Map>();
+		List<Map<String, String>> records = new ArrayList<Map<String, String>>();
+		
 		records.add( dBrecord );
 		
 		System.out.println ("Size of the first element: " + records.get(0).size());
