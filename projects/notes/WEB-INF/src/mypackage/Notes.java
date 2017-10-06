@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.Map;
 import java.util.HashMap;
-//import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
 
+//import java.lang.Class;
+//import java.util.Set;
 
 public final class Notes extends HttpServlet {
 	Connection conn = null;
@@ -189,6 +192,13 @@ public final class Notes extends HttpServlet {
 	}//end
 	
 	private String runSelectQuery(String query) {
+		
+		String key = "";
+		String value = "";
+		
+		List<Map> records = new ArrayList<Map>();
+		Map<String, String> dBrecord = new HashMap<String, String>();
+		
 		try
 		{
 			ResultSet rs = stat.executeQuery( query );
@@ -197,13 +207,46 @@ public final class Notes extends HttpServlet {
 			int count = data.getColumnCount();
 
 			while (rs.next()) {
+				String record[] = new String[ count ];
 				for ( int n = 1; n <= count; n++ ) {
-					out.print( data.getColumnName(n) + " : " + rs.getString(n) );
-					out.println("\n");
-				}
-				out.println("===================");
-			}
+//out.print( data.getColumnName(n) + " : " + rs.getString(n) );
+//out.println("\n");
+					key = data.getColumnName(n);
+					value = rs.getString(n);
+					dBrecord.put( key , value);
+				}//next
+//out.println("===================");
+for (String _key: dBrecord.keySet() ) { 
+	String _value = dBrecord.get(_key); 
+	out.println( _key + " : " + _value );
+} 
+				records.add( dBrecord );
+			}//end while
+			
 			rs.close();
+			
+out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
+//for(Map entry: records ){
+	//out.println( "Size = " + entry.size() );
+	// String _value = (String) entry.get("ip"); 
+// out.println ("element IP: " + _value );
+	
+	//out.println( "Key set " + entry.keySet() );
+	//Class cls = entry.keySet().getClass();
+	//out.println("The type of the object is: " + cls.getName() );
+	
+	//for (String _key: entry.keySet() ) { 
+		// String _value = (String) entry.get(_key); 
+		// out.println( _key + " : " + _value );
+	 //}//next
+	
+//}//next
+
+for( int n = 0; n < records.size(); n++){
+	Map record = records.get(0);
+	out.println ("Size of the element: " + record.size() );
+}
+
 		}
 		catch (SQLException e)
 		{
