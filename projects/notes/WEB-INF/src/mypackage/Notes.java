@@ -216,18 +216,23 @@ public final class Notes extends HttpServlet {
 					dBrecord.put( key , value);
 				}//next
 //out.println("===================");
-for (String _key: dBrecord.keySet() ) { 
-	String _value = dBrecord.get(_key); 
-	out.println( _key + " : " + _value );
-} 
+// for (String _key: dBrecord.keySet() ) { 
+	// String _value = dBrecord.get(_key); 
+	// out.println( _key + " : " + _value );
+// } 
+
+// for (Map.Entry<String, String> _record : dBrecord.entrySet()) {
+// out.println("Key: " + _record.getKey() + " Value: "+ _record.getValue());
+// }
 				records.add( dBrecord );
 			}//end while
 			
 			rs.close();
 			
-out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
-//for(Map entry: records ){
-	//out.println( "Size = " + entry.size() );
+//out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
+
+for(Map<String, String> entry: records ){
+	out.println( "Size = " + entry.size() );
 	// String _value = (String) entry.get("ip"); 
 // out.println ("element IP: " + _value );
 	
@@ -235,17 +240,29 @@ out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );
 	//Class cls = entry.keySet().getClass();
 	//out.println("The type of the object is: " + cls.getName() );
 	
-	//for (String _key: entry.keySet() ) { 
-		// String _value = (String) entry.get(_key); 
-		// out.println( _key + " : " + _value );
-	 //}//next
-	
-//}//next
+	for (String _key: entry.keySet() ) { 
+		String _value = entry.get(_key); 
+		out.println( _key + " : " + _value );
+	 }//next
+}//next
 
-for( int n = 0; n < records.size(); n++){
-	Map record = records.get(0);
-	out.println ("Size of the element: " + record.size() );
-}
+// for( int n = 0; n < records.size(); n++){
+	// Map<String, String> _record = records.get(n);
+// out.println ("Size of the element: " + _record.size() );
+// out.println ("element: " + _record.toString() );
+
+	// for (String _key : _record.keySet() ) {
+		// out.println("Key: " + _key);
+	// }
+	// // for (Map.Entry _r : _record.entrySet() ) {
+// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
+	// // }//next
+	
+	// // for (Map.Entry<String, String> _r : _record.entrySet()) {
+// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
+	// // }
+	
+// }//next
 
 		}
 		catch (SQLException e)

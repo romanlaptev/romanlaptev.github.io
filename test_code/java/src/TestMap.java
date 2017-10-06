@@ -1,6 +1,7 @@
 //http://www.quizful.net/post/Using-Map-in-Jave
 //http://cybern.ru/java-map.html
 //http://java-online.ru/java-arrayList.xhtml
+//http://developer.alexanderklimov.ru/android/java/hashmap.php
 import java.util.Map;
 import java.util.HashMap;
 //import java.util.Hashtable;
@@ -69,6 +70,12 @@ class TestMap {
 			// System.out.println( key + " :: " + value );
 		// } 
 		
+/* Tesst!!!!
+for (Map.Entry _record : dBrecord.entrySet()) {
+out.println("Key: " + _record.getKey() + " Value: "+ _record.getValue());
+}
+*/		
+
 // put(K key, V value)
 // values() — возвращает значения всех элементов в виде коллекции
 // remove(Object key)
