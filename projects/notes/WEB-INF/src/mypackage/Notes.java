@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 //import java.lang.Class;
 //import java.util.Set;
+import com.google.gson.Gson;
 
 public final class Notes extends HttpServlet {
 	Connection conn = null;
@@ -317,6 +318,18 @@ public final class Notes extends HttpServlet {
 		switch (action)
 		{
 			case "save_note":
+			
+String parName;
+out.println("<ul>");
+while( paramNames.hasMoreElements() ){
+	parName = (String) paramNames.nextElement();
+	out.println("<li>");
+	out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
+	out.println("</li>");
+}//end while
+out.println("</ul>");
+
+				saveNote();
 			break;
 				
 			case "get_notes":
@@ -359,14 +372,23 @@ public final class Notes extends HttpServlet {
 		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 		
 		//print query result
-out.println ("Size of the records result object: " + result.size() );		
-		for(Map<String, String> entry: result ){
-			for (String _key: entry.keySet() ) { 
-				String _value = entry.get(_key); 
-				out.println( _key + " : " + _value );
-			 }//next
-		}//next		
+// out.println ("Size of the records result object: " + result.size() );		
+		// for(Map<String, String> entry: result ){
+			// for (String _key: entry.keySet() ) { 
+				// String _value = entry.get(_key); 
+				// out.println( _key + " : " + _value );
+			 // }//next
+		// }//next		
+		
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson( result );
+		out.println( jsonStr);
 
 	}//end getNotes()
+
+	private void saveNote(){
+		
+	}//end saveNote();
+
 
 }//end class
