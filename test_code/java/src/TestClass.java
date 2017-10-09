@@ -6,6 +6,9 @@ class TestClass {
 	
 	public static void main( String[] args){
 		
+		//use static(!) variable without creating object
+		System.out.println("Static variable: " + Book.staticVar);
+
 		//create object1
 		Book book;
 		book = new Book();
@@ -28,7 +31,9 @@ class Book {
 	public String name;
 	public String author;
 	public int year;
-
+	
+	static int staticVar = 2;
+	
 	//constructor 1 (create object without parameters)
 	Book(){
 		this.name = "none";
