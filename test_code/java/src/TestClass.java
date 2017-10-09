@@ -18,6 +18,8 @@ class TestClass {
 		book2 = new Book("Alice in Wonderland", "Lewis Carroll", 1865);
 		book2.getInfo();
 		
+		// book = null;
+		// book2 = null;
 	}//end main()
 
 }//end class
@@ -27,14 +29,14 @@ class Book {
 	public String author;
 	public int year;
 
-	//constructor 1
+	//constructor 1 (create object without parameters)
 	Book(){
 		this.name = "none";
 		this.author = "none";
 		this.year = 0;
 	}
 	
-	//constructor 2
+	//constructor 2 (create object with input parameters)
 	Book( String _name, String _author, int _year){
 		name = _name;
 		author = _author;
