@@ -53,39 +53,20 @@ public final class Notes extends HttpServlet {
  * @exception ServletException if a servlet error occurs
  */
 	@Override
-	public void doGet( HttpServletRequest request,
-					HttpServletResponse response) throws IOException, ServletException {
-
-		//response.setContentType("text/html");
+	public void doGet( HttpServletRequest request,	HttpServletResponse response) throws IOException, ServletException {
 		out = response.getWriter();
-		
-		//out.println("test constructor:" + sql.get("test"));
-		
-		// //print request
-		// String parName;
-		// boolean emptyEnum = false;
-		
-		// Enumeration paramNames = request.getParameterNames();
-		// if( !paramNames.hasMoreElements() ){
-			// emptyEnum = true;
-		// }
-		// if( emptyEnum ){
-			// String message = "No parameters in request object...";
-			// jsonLog += "{\"error_code\" : \"noGetParameters\",";
-			// jsonLog += "\"message\" : \""+message+"\"},";
-		// } else {
-			// // out.println("<ul>");
-			// // while( paramNames.hasMoreElements() ){
-				// // parName = (String) paramNames.nextElement();
-				// // out.println("<li>");
-				// // out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
-				// // out.println("</li>");
-			// // }//end while
-			// // out.println("</ul>");
-		// }
-		
+		PageLoad( request );
+	}//end doGet()
+
+	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		out = response.getWriter();
+		PageLoad( request );
+	}//end doPost()
+
+	protected void PageLoad( HttpServletRequest request ){
 		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 		
+//------------------
 		String _query = "CREATE TABLE IF NOT EXISTS `"+tableName+"` (" +
 "`id` int(11) NOT NULL AUTO_INCREMENT," +
 "`author` varchar(20) NOT NULL," +
@@ -100,19 +81,21 @@ public final class Notes extends HttpServlet {
 		
 		sql.put("selectDB", "USE db1;");
 		
-		_query = "INSERT INTO `"+tableName+"` ("+
-"`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
-" 'anonymous', "+
-" 'title1', "+
-" 'textMessage1', "+
-" '2017-10-02 16:04:58', "+
-" '2017-10-02 09:08:40', "+
-" '37.193.108.45' "+
-");";
-		sql.put("insertNote", _query);
-		
+//------------------
 		_query = "SELECT id, author, title, text_message, client_date, server_date, ip  FROM `"+tableName+"` ORDER BY `client_date` DESC;";
 		sql.put("getNotes", _query);
+		
+//------------------
+		_query = "INSERT INTO `"+tableName+"` ("+
+"`author`, `title`, `text_message`, `client_date`, `server_date`, `ip`) VALUES ("+
+" '{{authorName}}', "+
+" '{{title}}', "+
+" '{{textMessage}}', "+
+" '{{client_date}}', "+
+" '{{server_date}}', "+
+" '{{ip}}' "+
+");";
+		sql.put("insertNote", _query);
 		
 		//start, connect to database server, create database, create table, check request parameters
 		try
@@ -172,12 +155,8 @@ public final class Notes extends HttpServlet {
 		}
 		jsonLog = "";
 		
-	}//end doGet()
-
-	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		Enumeration paramNames = request.getParameterNames();
-	}//end doPost()
-
+	}//end PageLoad()
+	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
 //out.println("Query: " + query);
@@ -278,6 +257,7 @@ public final class Notes extends HttpServlet {
 	private void _testRequestParams( HttpServletRequest request ){
 		
 		//print request
+		//out.println("Request method:" + request.getMethod() );
 		Enumeration paramNames = request.getParameterNames();
 		if( !paramNames.hasMoreElements() ){
 			String message = "No parameters in request object...";
@@ -287,6 +267,7 @@ public final class Notes extends HttpServlet {
 		}
 
 		//String parName;
+		// response.setContentType("text/html");
 		// out.println("<ul>");
 		// while( paramNames.hasMoreElements() ){
 			// parName = (String) paramNames.nextElement();
@@ -318,22 +299,53 @@ public final class Notes extends HttpServlet {
 		switch (action)
 		{
 			case "save_note":
-			
-String parName;
-out.println("<ul>");
-while( paramNames.hasMoreElements() ){
-	parName = (String) paramNames.nextElement();
-	out.println("<li>");
-	out.println("<b>" + parName + "</b>: " + request.getParameter(parName) );
-	out.println("</li>");
-}//end while
-out.println("</ul>");
-
-				saveNote();
+				String insertNoteQuery = sql.get("insertNote");
+				
+				String textMessage = request.getParameter("text_message");
+				String authorName = request.getParameter("author_name");
+				String title = request.getParameter("title");
+				String clientDate = request.getParameter("date");
+				
+				// insertNoteQuery = insertNoteQuery.replaceAll("{{authorName}}", authorName);
+				// insertNoteQuery = insertNoteQuery.replaceAll("{{title}}", title);
+				// insertNoteQuery = insertNoteQuery.replaceAll("{{textMessage}}", textMessage);
+				// insertNoteQuery = insertNoteQuery.replaceAll("{{client_date}}", clientDate);
+				
+				// Date now = new Date();
+				// String sYear = now.getFullYear();
+				// String sMonth = now.getMonth();
+				// String intMonth = parseInt( sMonth ) + 1;
+				// String sDate = now.getDate();
+				// String d = sYear + "-" + intMonth + "-" + sDate;
+				
+				// String sHours = now.getHours();		
+				// String sMin = now.getMinutes();		
+				// String sSec = now.getSeconds();		
+				// String tm = sHours + ":" + sMin + ":" + sSec;
+				// String serverDate = d +" "+ tm;
+	
+				// insertNoteQuery = insertNoteQuery.replaceAll("{{server_date}}", serverDate);
+				
+out.println("Query:" + insertNoteQuery);
 			break;
 				
 			case "get_notes":
-				getNotes();
+				//getNotes();
+//out.println("Query:" + sql.get("getNotes"));
+				List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
+				
+				//print query result
+// out.println ("Size of the records result object: " + result.size() );		
+				// for(Map<String, String> entry: result ){
+					// for (String _key: entry.keySet() ) { 
+						// String _value = entry.get(_key); 
+						// out.println( _key + " : " + _value );
+					 // }//next
+				// }//next		
+				
+				Gson gson = new Gson();
+				String jsonStr = gson.toJson( result );
+				out.println( jsonStr);
 			break;
 				
 			case "delete_note":
@@ -367,28 +379,23 @@ out.println("</ul>");
 		
 	}//end _testRequestParams()
 
-	private void getNotes(){
-//out.println("Query:" + sql.get("getNotes"));
-		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
+	// private void getNotes(){
+// //out.println("Query:" + sql.get("getNotes"));
+		// List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 		
-		//print query result
-// out.println ("Size of the records result object: " + result.size() );		
-		// for(Map<String, String> entry: result ){
-			// for (String _key: entry.keySet() ) { 
-				// String _value = entry.get(_key); 
-				// out.println( _key + " : " + _value );
-			 // }//next
-		// }//next		
+		// //print query result
+// // out.println ("Size of the records result object: " + result.size() );		
+		// // for(Map<String, String> entry: result ){
+			// // for (String _key: entry.keySet() ) { 
+				// // String _value = entry.get(_key); 
+				// // out.println( _key + " : " + _value );
+			 // // }//next
+		// // }//next		
 		
-		Gson gson = new Gson();
-		String jsonStr = gson.toJson( result );
-		out.println( jsonStr);
+		// Gson gson = new Gson();
+		// String jsonStr = gson.toJson( result );
+		// out.println( jsonStr);
 
-	}//end getNotes()
-
-	private void saveNote(){
-		
-	}//end saveNote();
-
+	// }//end getNotes()
 
 }//end class

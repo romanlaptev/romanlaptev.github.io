@@ -279,25 +279,25 @@ console.log(errorCode);
 		//ADD NEW NOTE
 		document.forms["form_message"].onsubmit = function(e){  
 //console.log("Submit form", e, this);
-			if( _vars["supportPHP"] ){
-				checkForm({
-					"form" : this, 
-					"modalWindowId" : "#newModal",
-					"action" : "save_note"
-				});
-			} else {
-				//_error("errorPHP");
+
+			if( !_vars["supportPHP"] &&
+					!_vars["supportASPX"] &&
+						!_vars["supportJAVA"]){
+				return false;
 			}
 			
-			if( _vars["supportASPX"] ){
-				checkForm({
-					"form" : this, 
-					"modalWindowId" : "#newModal",
-					"action" : "save_note"
-				});
-			} else {
-				//_error("errorASPX");
+			if( !_vars["supportMySQL"] &&
+					!_vars["supportPostgreSQL"] &&
+						!_vars["supportMSSQL"] &&
+							!_vars["supportMySQL_java"]){
+				return false;
 			}
+			
+			checkForm({
+				"form" : this, 
+				"modalWindowId" : "#newModal",
+				"action" : "save_note"
+			});
 			
 			return false;
 		};//end event
