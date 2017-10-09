@@ -41,8 +41,19 @@ class Book {
 		year = _year;
 	}
 	
+	//init block
+	// {
+		// name = "no name";
+		// author = "anonymous";
+		// year = 0;
+	// }
+	
 	public void getInfo(){
 		System.out.printf("Book name: '%s', author: '%s', year: '%d' \n", name, author, year);
 	}//end getInfo()
+	
+	// protected void finalize() throws Throwable{
+		// System.out.println("this is the end...destroy object....");
+	// }//end finalize()
 	
 }//end class
