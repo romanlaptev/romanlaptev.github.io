@@ -6,7 +6,7 @@ class TestClass {
 	
 	public static void main( String[] args){
 		
-		//use static(!) variable without creating object
+		//use static(!) global variable without creating object
 		System.out.println("Static variable: " + Book.staticVar);
 
 		//create object1
