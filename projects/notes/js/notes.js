@@ -756,7 +756,6 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 //filter
 
 			text = text
-			//.replace(/'/g, "&#39;")
 			//.replace(/\n/g, "\\u000A")//replace end of line
 			//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
 			//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
@@ -771,7 +770,8 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			.replace(/&/g, "&amp;")
 			.replace(/"/g, "&quot;")
 			.replace(/\</g, "&lt;")
-			.replace(/\>/g, "&gt;");
+			.replace(/\>/g, "&gt;")
+			.replace(/'/g, "&#39;");
 
 			formValues["textMessage"] = text;
 		}
