@@ -87,7 +87,9 @@ public final class Notes extends HttpServlet {
 		sql.put("selectDB", "USE db1;");
 		
 //------------------
-		_query = "SELECT id, author, title, text_message, client_date, server_date, ip  FROM `"+tableName+"` ORDER BY `client_date` DESC;";
+		_query = "SELECT id, author, title, text_message, DATE_FORMAT(client_date, '%Y-%m-%d %H:%i:%s') as client_date, "+
+"DATE_FORMAT(server_date, '%Y-%m-%d %H:%i:%s') as  server_date, "+
+"ip  FROM `"+tableName+"` ORDER BY `client_date` DESC;";
 		sql.put("getNotes", _query);
 		
 //------------------
@@ -226,7 +228,7 @@ public final class Notes extends HttpServlet {
 				String ipAddress = request.getRemoteAddr();
 				insertNoteQuery = insertNoteQuery.replace("{{ip}}", ipAddress);
 				
-out.println("Query:" + insertNoteQuery);
+//out.println("Query:" + insertNoteQuery);
 				runUpdateQuery( insertNoteQuery );
 			break;
 				
