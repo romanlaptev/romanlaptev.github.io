@@ -41,6 +41,7 @@ public final class Notes extends HttpServlet {
 	public Map<String, String> sql = new HashMap<String, String>();
 
 	public String jsonLog = "";
+	private String message;	
 	
 	//constructor
 	public Notes() {
@@ -103,8 +104,19 @@ public final class Notes extends HttpServlet {
 " '{{ip}}' "+
 ");";
 		sql.put("insertNote", _query);
+		
+		_query = "UPDATE `"+tableName+"` SET "+
+"author = '{{authorName}}', "+
+"title = '{{title}}', "+
+"text_message = '{{textMessage}}', "+
+"client_date = '{{client_date}}', "+
+"server_date = '{{server_date}}', "+
+"ip = '{{ip}}' WHERE id='{{id}}';";
+		sql.put("updateNote", _query);
 
 		sql.put("deleteNote", "DELETE FROM `"+tableName+"` WHERE `id`={{id}}");
+		sql.put("clearNotes", "TRUNCATE TABLE `"+tableName+"`");
+		sql.put("removeTable", "DROP TABLE `"+tableName+"`");
 		
 		//start, connect to database server, create database, create table, check request parameters
 		try
@@ -210,28 +222,7 @@ public final class Notes extends HttpServlet {
 		switch (action)
 		{
 			case "save_note":
-				String insertNoteQuery = sql.get("insertNote");
-				
-				String textMessage = request.getParameter("text_message");
-				String authorName = request.getParameter("author_name");
-				String title = request.getParameter("title");
-				String clientDate = request.getParameter("date");
-				
-				insertNoteQuery = insertNoteQuery.replace("{{authorName}}", authorName);
-				insertNoteQuery = insertNoteQuery.replace("{{title}}", title);
-				insertNoteQuery = insertNoteQuery.replace("{{textMessage}}", textMessage);
-				insertNoteQuery = insertNoteQuery.replace("{{client_date}}", clientDate);
-				
-				Date now = new Date();
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-				String serverDate = dateFormat.format( now );
-				insertNoteQuery = insertNoteQuery.replace("{{server_date}}", serverDate);
-
-				String ipAddress = request.getRemoteAddr();
-				insertNoteQuery = insertNoteQuery.replace("{{ip}}", ipAddress);
-				
-//out.println("Query:" + insertNoteQuery);
-				runUpdateQuery( insertNoteQuery );
+				saveNote( request );
 			break;
 				
 			case "get_notes":
@@ -240,17 +231,18 @@ public final class Notes extends HttpServlet {
 				List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 				
 				//print query result
-// out.println ("Size of the records result object: " + result.size() );		
+//out.println ("Size of the records result object: " + result.size() );		
 				// for(Map<String, String> entry: result ){
 					// for (String _key: entry.keySet() ) { 
 						// String _value = entry.get(_key); 
 						// out.println( _key + " : " + _value );
 					 // }//next
 				// }//next		
-				
-				Gson gson = new Gson();
-				String jsonStr = gson.toJson( result );
-				out.println( jsonStr);
+				if( result.size() > 0 ){
+					Gson gson = new Gson();
+					String jsonStr = gson.toJson( result );
+					out.println( jsonStr);
+				}
 			break;
 				
 			case "delete_note":
@@ -262,7 +254,7 @@ public final class Notes extends HttpServlet {
 //out.println("Query:" + deleteNoteQuery);
 				runUpdateQuery( deleteNoteQuery );
 				
-				String message = "Delete note, SQL: " + deleteNoteQuery;
+				message = "Delete note, SQL: " + deleteNoteQuery;
 				jsonLog += "{";
 				jsonLog += "\"message\" : \""+message+"\"";
 				jsonLog += "},";
@@ -270,12 +262,23 @@ public final class Notes extends HttpServlet {
 			break;
 			
 			case "edit_note":
+				editNote( request );
 			break;
 				
 			case "clear_notes":
+				runUpdateQuery( sql.get("clearNotes") );
+				message = "Clear notes, SQL: " + sql.get("clearNotes");
+				jsonLog += "{";
+				jsonLog += "\"message\" : \""+message+"\"";
+				jsonLog += "},";
 			break;
 				
 			case "remove_table":
+				runUpdateQuery( sql.get("clearNotes") );
+				String message = "Rebuild table, SQL: " + sql.get("clearNotes");
+				jsonLog += "{";
+				jsonLog += "\"message\" : \""+message+"\"";
+				jsonLog += "},";
 			break;
 				
 			case "export_notes":
@@ -287,11 +290,11 @@ public final class Notes extends HttpServlet {
 			case "import_notes":
 			break;
 				
-			case "test":
-			break;
+			//case "test":
+			//break;
 			
-			default:
-			break;
+			//default:
+			//break;
 		}//end switch
 
 		
@@ -316,6 +319,63 @@ public final class Notes extends HttpServlet {
 
 	// }//end getNotes()
 
+	private void saveNote(  HttpServletRequest request ){
+		String insertNoteQuery = sql.get("insertNote");
+		
+		String textMessage = request.getParameter("text_message");
+		String authorName = request.getParameter("author_name");
+		String title = request.getParameter("title");
+		String clientDate = request.getParameter("date");
+		
+		insertNoteQuery = insertNoteQuery.replace("{{authorName}}", authorName);
+		insertNoteQuery = insertNoteQuery.replace("{{title}}", title);
+		insertNoteQuery = insertNoteQuery.replace("{{textMessage}}", textMessage);
+		insertNoteQuery = insertNoteQuery.replace("{{client_date}}", clientDate);
+		
+		Date now = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String serverDate = dateFormat.format( now );
+		insertNoteQuery = insertNoteQuery.replace("{{server_date}}", serverDate);
+
+		String ipAddress = request.getRemoteAddr();
+		insertNoteQuery = insertNoteQuery.replace("{{ip}}", ipAddress);
+		
+//out.println("Query:" + insertNoteQuery);
+		runUpdateQuery( insertNoteQuery );
+	}//end saveNotes()
+	
+	private void editNote(  HttpServletRequest request ){
+		String updateNoteQuery = sql.get("updateNote");
+		
+		String id = request.getParameter("id");
+		String textMessage = request.getParameter("text_message");
+		String authorName = request.getParameter("author_name");
+		String title = request.getParameter("title");
+		String clientDate = request.getParameter("date");
+		
+		updateNoteQuery = updateNoteQuery.replace("{{id}}", id);
+		updateNoteQuery = updateNoteQuery.replace("{{authorName}}", authorName);
+		updateNoteQuery = updateNoteQuery.replace("{{title}}", title);
+		updateNoteQuery = updateNoteQuery.replace("{{textMessage}}", textMessage);
+		updateNoteQuery = updateNoteQuery.replace("{{client_date}}", clientDate);
+		
+		Date now = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String serverDate = dateFormat.format( now );
+		updateNoteQuery = updateNoteQuery.replace("{{server_date}}", serverDate);
+
+		String ipAddress = request.getRemoteAddr();
+		updateNoteQuery = updateNoteQuery.replace("{{ip}}", ipAddress);
+		
+//out.println("Query:" + updateNoteQuery);
+		runUpdateQuery( updateNoteQuery );
+		message = "Update note "+id+", SQL: " + updateNoteQuery;
+		jsonLog += "{";
+		jsonLog += "\"message\" : \""+message+"\"";
+		jsonLog += "},";
+	}//end editNote()
+	
+	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
 //out.println("Query: " + query);

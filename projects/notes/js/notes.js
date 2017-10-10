@@ -365,25 +365,25 @@ console.log(errorCode);
 	// var msg = "<p>error in form..</p>";
 	// _log("<div class='alert alert-warning'>" + msg + "</div>");
 			// }	
-			if( _vars["supportPHP"] ){
-				checkForm({
-					"form" : this, 
-					"modalWindowId" : "#editModal",
-					"action" : "edit_note"
-				});
-			} else {
-				
-				if( _vars["supportASPX"] ){
-					if( _vars["supportMSSQL"] ){
-						checkForm({
-							"form" : this, 
-							"modalWindowId" : "#editModal",
-							"action" : "edit_note"
-						});
-					}
-				}
-
+			
+			if( !_vars["supportPHP"] &&
+					!_vars["supportASPX"] &&
+						!_vars["supportJAVA"]){
+				return false;
 			}
+			
+			if( !_vars["supportMySQL"] &&
+					!_vars["supportPostgreSQL"] &&
+						!_vars["supportMSSQL"] &&
+							!_vars["supportMySQL_java"]){
+				return false;
+			}
+			
+			checkForm({
+				"form" : this, 
+				"modalWindowId" : "#editModal",
+				"action" : "edit_note"
+			});
 			
 			return false;
 		});//end event
