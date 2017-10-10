@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+//import java.util.Locale;
+
 //import java.lang.Class;
 //import java.util.Set;
 import com.google.gson.Gson;
@@ -110,7 +115,6 @@ public final class Notes extends HttpServlet {
 			runUpdateQuery( sql.get("createDB") );
 			runUpdateQuery( sql.get("selectDB") );
 			runUpdateQuery( sql.get("createTable") );
-			//runUpdateQuery( sql.get("insertNote") );
 
 			_testRequestParams( request );
 		}
@@ -157,103 +161,6 @@ public final class Notes extends HttpServlet {
 		
 	}//end PageLoad()
 	
-	//private void runUpdateQuery(String query) throws SQLException{
-	private void runUpdateQuery(String query) {
-//out.println("Query: " + query);
-		try
-		{
-			stat.executeUpdate( query );
-		}
-		catch (SQLException e)
-		{
-			//e.printStackTrace( out );
-			out.println( e.getMessage() );
-		}
-	}//end
-	
-	private List<Map<String, String>> runSelectQuery(String query) {
-		
-		String key = "";
-		String value = "";
-		
-		List<Map<String, String>> records = new ArrayList<Map<String, String>>();
-		Map<String, String> dBrecord = new HashMap<String, String>();
-		
-		try
-		{
-			ResultSet rs = stat.executeQuery( query );
-			ResultSetMetaData data = rs.getMetaData();
-			
-			int count = data.getColumnCount();
-
-			while (rs.next()) {
-				String record[] = new String[ count ];
-				for ( int n = 1; n <= count; n++ ) {
-//out.print( data.getColumnName(n) + " : " + rs.getString(n) );
-//out.println("\n");
-					key = data.getColumnName(n);
-					value = rs.getString(n);
-					dBrecord.put( key , value);
-				}//next
-//out.println("===================");
-// for (String _key: dBrecord.keySet() ) { 
-	// String _value = dBrecord.get(_key); 
-	// out.println( _key + " : " + _value );
-// } 
-
-// for (Map.Entry<String, String> _record : dBrecord.entrySet()) {
-// out.println("Key: " + _record.getKey() + " Value: "+ _record.getValue());
-// }
-				records.add( dBrecord );
-			}//end while
-			
-			rs.close();
-			
-//out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
-
-// for(Map<String, String> entry: records ){
-	// out.println( "Size = " + entry.size() );
-	// // String _value = (String) entry.get("ip"); 
-// // out.println ("element IP: " + _value );
-	
-	// //out.println( "Key set " + entry.keySet() );
-	// //Class cls = entry.keySet().getClass();
-	// //out.println("The type of the object is: " + cls.getName() );
-	
-	// for (String _key: entry.keySet() ) { 
-		// String _value = entry.get(_key); 
-		// out.println( _key + " : " + _value );
-	 // }//next
-// }//next
-
-// for( int n = 0; n < records.size(); n++){
-	// Map<String, String> _record = records.get(n);
-// out.println ("Size of the element: " + _record.size() );
-// out.println ("element: " + _record.toString() );
-
-	// for (String _key : _record.keySet() ) {
-		// out.println("Key: " + _key);
-	// }
-	// // for (Map.Entry _r : _record.entrySet() ) {
-// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
-	// // }//next
-	
-	// // for (Map.Entry<String, String> _r : _record.entrySet()) {
-// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
-	// // }
-	
-// }//next
-
-		}
-		catch (SQLException e)
-		{
-			//e.printStackTrace( out );
-			out.println( e.getMessage() );
-		}
-		
-		return records;
-	}//end runSelectQuery()
-	
 	private void _testRequestParams( HttpServletRequest request ){
 		
 		//print request
@@ -266,8 +173,8 @@ public final class Notes extends HttpServlet {
 			return;
 		}
 
-		//String parName;
-		// response.setContentType("text/html");
+		// String parName;
+		// //response.setContentType("text/html");
 		// out.println("<ul>");
 		// while( paramNames.hasMoreElements() ){
 			// parName = (String) paramNames.nextElement();
@@ -306,27 +213,21 @@ public final class Notes extends HttpServlet {
 				String title = request.getParameter("title");
 				String clientDate = request.getParameter("date");
 				
-				// insertNoteQuery = insertNoteQuery.replaceAll("{{authorName}}", authorName);
-				// insertNoteQuery = insertNoteQuery.replaceAll("{{title}}", title);
-				// insertNoteQuery = insertNoteQuery.replaceAll("{{textMessage}}", textMessage);
-				// insertNoteQuery = insertNoteQuery.replaceAll("{{client_date}}", clientDate);
+				insertNoteQuery = insertNoteQuery.replace("{{authorName}}", authorName);
+				insertNoteQuery = insertNoteQuery.replace("{{title}}", title);
+				insertNoteQuery = insertNoteQuery.replace("{{textMessage}}", textMessage);
+				insertNoteQuery = insertNoteQuery.replace("{{client_date}}", clientDate);
 				
-				// Date now = new Date();
-				// String sYear = now.getFullYear();
-				// String sMonth = now.getMonth();
-				// String intMonth = parseInt( sMonth ) + 1;
-				// String sDate = now.getDate();
-				// String d = sYear + "-" + intMonth + "-" + sDate;
-				
-				// String sHours = now.getHours();		
-				// String sMin = now.getMinutes();		
-				// String sSec = now.getSeconds();		
-				// String tm = sHours + ":" + sMin + ":" + sSec;
-				// String serverDate = d +" "+ tm;
-	
-				// insertNoteQuery = insertNoteQuery.replaceAll("{{server_date}}", serverDate);
+				Date now = new Date();
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				String serverDate = dateFormat.format( now );
+				insertNoteQuery = insertNoteQuery.replace("{{server_date}}", serverDate);
+
+				String ipAddress = request.getRemoteAddr();
+				insertNoteQuery = insertNoteQuery.replace("{{ip}}", ipAddress);
 				
 out.println("Query:" + insertNoteQuery);
+				runUpdateQuery( insertNoteQuery );
 			break;
 				
 			case "get_notes":
@@ -398,4 +299,111 @@ out.println("Query:" + insertNoteQuery);
 
 	// }//end getNotes()
 
+	//private void runUpdateQuery(String query) throws SQLException{
+	private void runUpdateQuery(String query) {
+//out.println("Query: " + query);
+		try
+		{
+			stat.executeUpdate( query );
+			
+			// String _message = "Query: " + query;
+			// jsonLog += "{";
+			// jsonLog += "\"message\" : \""+_message+"\"";
+			// jsonLog += "},";
+		}
+		catch (SQLException e)
+		{
+			//e.printStackTrace( out );
+			//out.println( e.getMessage() );
+			String message = "SQL Exception. " + e.getMessage();
+			jsonLog += "{\"error_code\" : \"SQLException\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+			return;
+		}
+	}//end
+	
+	private List<Map<String, String>> runSelectQuery(String query) {
+		
+		String key = "";
+		String value = "";
+		
+		List<Map<String, String>> records = new ArrayList<Map<String, String>>();
+		
+		try
+		{
+			ResultSet rs = stat.executeQuery( query );
+			ResultSetMetaData data = rs.getMetaData();
+			
+			int count = data.getColumnCount();
+
+			while (rs.next()) {
+				
+				Map<String, String> dBrecord = new HashMap<String, String>();
+				//String record[] = new String[ count ];
+				
+				for ( int n = 1; n <= count; n++ ) {
+//out.println( data.getColumnName(n) + " : " + rs.getString(n) );
+					key = data.getColumnName(n);
+					value = rs.getString(n);
+					dBrecord.put( key , value);
+				}//next
+//out.println("===================");
+// for (String _key: dBrecord.keySet() ) { 
+	// String _value = dBrecord.get(_key); 
+	// out.println( _key + " : " + _value );
+// } 
+
+// for (Map.Entry<String, String> _record : dBrecord.entrySet()) {
+// out.println("Key: " + _record.getKey() + " Value: "+ _record.getValue());
+// }
+				records.add( dBrecord );
+			}//end while
+			
+			rs.close();
+			
+//out.println ("Size of the records: " + Integer.valueOf ( records.size() ) );		
+
+// for(Map<String, String> entry: records ){
+	// out.println( "Size = " + entry.size() );
+	// // String _value = (String) entry.get("ip"); 
+// // out.println ("element IP: " + _value );
+	
+	// //out.println( "Key set " + entry.keySet() );
+	// //Class cls = entry.keySet().getClass();
+	// //out.println("The type of the object is: " + cls.getName() );
+	
+	// for (String _key: entry.keySet() ) { 
+		// String _value = entry.get(_key); 
+		// out.println( _key + " : " + _value );
+	 // }//next
+// }//next
+
+// for( int n = 0; n < records.size(); n++){
+	// Map<String, String> _record = records.get(n);
+// //out.println ("Size of the element: " + _record.size() );
+// out.println ("element: " + _record.toString() );
+
+	// // for (String _key : _record.keySet() ) {
+		// // out.println("Key: " + _key);
+	// // }
+	// // for (Map.Entry _r : _record.entrySet() ) {
+// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
+	// // }//next
+	
+	// // for (Map.Entry<String, String> _r : _record.entrySet()) {
+// // out.println("Key: " + _r.getKey() + " Value: "+ _r.getValue());
+	// // }
+	
+// }//next
+
+		}
+		catch (SQLException e)
+		{
+			//e.printStackTrace( out );
+			out.println( e.getMessage() );
+		}
+		
+		return records;
+	}//end runSelectQuery()
+	
 }//end class

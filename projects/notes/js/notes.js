@@ -1293,18 +1293,21 @@ console.log(msg);
 				var jsonObj = jsonArr[n];
 //console.log( jsonObj );
 
-				if( jsonObj["message"] && jsonObj["message"].length > 0 ){
-					var msg_ = "<p>" +jsonObj["message"]+ "</p>";
-					//_messagesStr += msg_;
-					_log("<div class='alert alert-info'>" + msg_ + "</div>");
-				}
-				
 				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
 					errorCode = jsonObj["error_code"];
-					//if( errorCode !== "0"){
-						//var _msg = "<p>error code: " +errorCode+ "</p>";
-						//_log("<div class='alert alert-danger'>" + _msg + "</div>");
-					//}
+					if( errorCode !== "0"){
+						var _msg = "error code: " +errorCode+ ", ";
+						_msg += jsonObj["message"];
+						_log("<div class='alert alert-danger'>" + _msg + "</div>");
+					}
+				} else {
+					
+					if( jsonObj["message"] && jsonObj["message"].length > 0 ){
+						var msg_ = "<p>" +jsonObj["message"]+ "</p>";
+						//_messagesStr += msg_;
+						_log("<div class='alert alert-info'>" + msg_ + "</div>");
+					}
+					
 				}
 				
 			}//next
