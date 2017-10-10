@@ -103,6 +103,8 @@ public final class Notes extends HttpServlet {
 " '{{ip}}' "+
 ");";
 		sql.put("insertNote", _query);
+
+		sql.put("deleteNote", "DELETE FROM `"+tableName+"` WHERE `id`={{id}}");
 		
 		//start, connect to database server, create database, create table, check request parameters
 		try
@@ -252,6 +254,19 @@ public final class Notes extends HttpServlet {
 			break;
 				
 			case "delete_note":
+				String deleteNoteQuery = sql.get("deleteNote");
+				
+				String id = request.getParameter("id");
+				deleteNoteQuery = deleteNoteQuery.replace("{{id}}", id);
+				
+//out.println("Query:" + deleteNoteQuery);
+				runUpdateQuery( deleteNoteQuery );
+				
+				String message = "Delete note, SQL: " + deleteNoteQuery;
+				jsonLog += "{";
+				jsonLog += "\"message\" : \""+message+"\"";
+				jsonLog += "},";
+				
 			break;
 			
 			case "edit_note":

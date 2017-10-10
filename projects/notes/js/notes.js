@@ -1215,34 +1215,25 @@ console.log("error in __filter()");
 			// window.location = window.location + "?action="+p["action"];
 			// return;
 		// }
-		if( _vars["supportPHP"] ){
-			runAjax( {
-				"requestMethod" : "GET", 
-				"url" : _vars["requestUrl"], 
-				"params" : p,
-				"callback": /*function( log ){
-	var msg = "<p>"+log+"</p>";
-	_log("<div class='alert alert-success'>" + msg + "</div>");
-					loadNotes();
-					if( typeof callback === "function"){
-						callback();
-					}
-				}//end callback()*/ _postFunc
-			});
-		} else {
-			//_error("errorPHP");
+		
+		if( !_vars["supportPHP"] &&
+				!_vars["supportASPX"] &&
+					!_vars["supportJAVA"]){
+			return false;
 		}
 		
-		if( _vars["supportASPX"] ){
-			runAjax( {
-				"requestMethod" : "GET", 
-				"url" : _vars["requestUrl"], 
-				"params" : p,
-				"callback": _postFunc
-			});
-		} else {
-			//_error("errorASPX");
+		if( !_vars["supportMySQL"] &&
+				!_vars["supportPostgreSQL"] &&
+					!_vars["supportMSSQL"] &&
+						!_vars["supportMySQL_java"]){
+			return false;
 		}
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			"params" : p,
+			"callback": _postFunc
+		});
 		
 		function _postFunc( data ){
 			parseLog({
