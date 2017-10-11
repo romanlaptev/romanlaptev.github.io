@@ -226,23 +226,7 @@ public final class Notes extends HttpServlet {
 			break;
 				
 			case "get_notes":
-				//getNotes();
-//out.println("Query:" + sql.get("getNotes"));
-				List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
-				
-				//print query result
-//out.println ("Size of the records result object: " + result.size() );		
-				// for(Map<String, String> entry: result ){
-					// for (String _key: entry.keySet() ) { 
-						// String _value = entry.get(_key); 
-						// out.println( _key + " : " + _value );
-					 // }//next
-				// }//next		
-				if( result.size() > 0 ){
-					Gson gson = new Gson();
-					String jsonStr = gson.toJson( result );
-					out.println( jsonStr);
-				}
+				getNotes();
 			break;
 				
 			case "delete_note":
@@ -300,24 +284,25 @@ public final class Notes extends HttpServlet {
 		
 	}//end _testRequestParams()
 
-	// private void getNotes(){
-// //out.println("Query:" + sql.get("getNotes"));
-		// List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
+	private void getNotes(){
+//out.println("Query:" + sql.get("getNotes"));
+		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 		
-		// //print query result
-// // out.println ("Size of the records result object: " + result.size() );		
-		// // for(Map<String, String> entry: result ){
-			// // for (String _key: entry.keySet() ) { 
-				// // String _value = entry.get(_key); 
-				// // out.println( _key + " : " + _value );
-			 // // }//next
-		// // }//next		
-		
-		// Gson gson = new Gson();
-		// String jsonStr = gson.toJson( result );
-		// out.println( jsonStr);
+		//print query result
+// out.println ("Size of the records result object: " + result.size() );		
+		// for(Map<String, String> entry: result ){
+			// for (String _key: entry.keySet() ) { 
+				// String _value = entry.get(_key); 
+				// out.println( _key + " : " + _value );
+			 // }//next
+		// }//next		
+		if( result.size() > 0 ){
+			Gson gson = new Gson();
+			String jsonStr = gson.toJson( result );
+			out.println( jsonStr);
+		}
 
-	// }//end getNotes()
+	}//end getNotes()
 
 	private void saveNote(  HttpServletRequest request ){
 		String insertNoteQuery = sql.get("insertNote");
