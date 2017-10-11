@@ -45,6 +45,8 @@ public final class Notes extends HttpServlet {
 	public String jsonLog = "";
 	private String message;	
 	
+	HttpServletResponse Response;
+	
 	//constructor
 	public Notes() {
 		//sql.put("test", "Test!");
@@ -63,11 +65,13 @@ public final class Notes extends HttpServlet {
 	@Override
 	public void doGet( HttpServletRequest request,	HttpServletResponse response) throws IOException, ServletException {
 		out = response.getWriter();
+		Response = response;
 		PageLoad( request );
 	}//end doGet()
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		out = response.getWriter();
+		Response = response;
 		PageLoad( request );
 	}//end doPost()
 
@@ -379,22 +383,44 @@ public final class Notes extends HttpServlet {
 		xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 		xml += "<table name='notes'>\n";
 		
-		// for(Map<String, String> entry: result ){
-			// for (String _key: entry.keySet() ) { 
-				// String _value = entry.get(_key); 
-				// out.println( _key + " : " + _value );
-			 // }//next
-		// }//next		
+		for(Map<String, String> entry: result ){
+			//for (String _key: entry.keySet() ) { 
+				//String _value = entry.get(_key); 
+				//out.println( _key + " : " + _value );
+			 //}//next
+			String author = entry.get("author");
+			String title = entry.get("title");
+			String text_message = entry.get("text_message");
+			String client_date = entry.get("client_date");
+			String server_date = entry.get("server_date");
+			String ip = entry.get("ip");
+
+			xml +=  "\t<note title=\"" +title+ "\" ";
+			//$xml .=  "id=\"".$id."\" ";
+			xml +=  "author=\"" +author+ "\" ";
+			xml +=  "ip=\"" +ip+ "\" ";
+			xml +=  "client_date=\"" +client_date+ "\" ";
+			xml +=  "server_date=\"" +server_date+ "\" ";
+			xml +=  ">\n";
+			
+			if ( text_message.length() > 0 ){
+				xml +=  "\t\t<text_message>\n";
+				xml +=  text_message+"\n";
+				xml +=  "\t\t</text_message>\n";
+			}
+			xml += "\t</note>\n";
+		}//next		
 		
 		xml += "</table>\n\n";
-out.println( StringEscapeUtils.escapeHtml( xml ) );
-
-		// out.println("Content-Type", "application/xhtml+xml");
-		// out.println("Content-Disposition","attachment; filename=" + filename);
-		// out.println("Content-Transfer-Encoding","binary");
-		// //out.println("Content-Length", xml.Length.ToString() );
-		// out.println( xml );
 		
+//Response.setContentType("text/html");
+//out.println( StringEscapeUtils.escapeHtml( xml ) );
+
+ 		Response.addHeader("Content-Type", "application/xhtml+xml");
+		Response.addHeader("Content-Disposition","attachment; filename=" + filename);
+		Response.addHeader("Content-Transfer-Encoding","binary");
+		//Response.addHeader("Content-Length", xml.Length.ToString() );
+		out.println( xml );
 	}//end exportTable()
 	
 	//private void runUpdateQuery(String query) throws SQLException{
