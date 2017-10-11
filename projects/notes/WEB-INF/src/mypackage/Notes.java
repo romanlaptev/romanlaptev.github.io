@@ -25,19 +25,21 @@ import java.util.Date;
 //import java.lang.Class;
 //import java.util.Set;
 import com.google.gson.Gson;
+import org.apache.commons.lang.StringEscapeUtils; 
 
 public final class Notes extends HttpServlet {
 	Connection conn = null;
-	String dbUser = "root";
-	String dbPassword = "master";
-	String dbUrl = "jdbc:mysql://localhost/mysql";
+	 static final String dbUser = "root";
+	 static final String dbPassword = "master";
+	 static final String dbUrl = "jdbc:mysql://localhost/mysql";
 	
 	PrintWriter out;
 	Statement stat;
 
-	String dbName = "db1";
-	String tableName = "notes";
-	
+	 static final String dbName = "db1";
+	 static final String tableName = "notes";
+	 static final String exportFileName = "notes.xml";
+	 
 	public Map<String, String> sql = new HashMap<String, String>();
 
 	public String jsonLog = "";
@@ -266,6 +268,7 @@ public final class Notes extends HttpServlet {
 			break;
 				
 			case "export_notes":
+				exportTable( exportFileName );
 			break;
 				
 			case "upload":
@@ -360,6 +363,39 @@ public final class Notes extends HttpServlet {
 		jsonLog += "},";
 	}//end editNote()
 	
+	private void exportTable( String filename ){
+
+		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
+		
+		if( result.size() == 0 ){
+			String message = "error, no export data... ";
+			jsonLog += "{\"error_code\" : \"exportError\",";
+			jsonLog += "\"message\" : \""+message+"\"},";
+			return;
+		}
+		
+		//create XML
+		String xml = "";
+		xml += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
+		xml += "<table name='notes'>\n";
+		
+		// for(Map<String, String> entry: result ){
+			// for (String _key: entry.keySet() ) { 
+				// String _value = entry.get(_key); 
+				// out.println( _key + " : " + _value );
+			 // }//next
+		// }//next		
+		
+		xml += "</table>\n\n";
+out.println( StringEscapeUtils.escapeHtml( xml ) );
+
+		// out.println("Content-Type", "application/xhtml+xml");
+		// out.println("Content-Disposition","attachment; filename=" + filename);
+		// out.println("Content-Transfer-Encoding","binary");
+		// //out.println("Content-Length", xml.Length.ToString() );
+		// out.println( xml );
+		
+	}//end exportTable()
 	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {

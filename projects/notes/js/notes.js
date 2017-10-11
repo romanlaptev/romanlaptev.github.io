@@ -554,17 +554,21 @@ console.log(errorCode);
 					return;
 				}
 
-				if( _vars["supportPHP"]){
-					var url= _vars["exportUrl"];
-					window.location.assign(url);
+				if( !_vars["supportPHP"] &&
+						!_vars["supportASPX"] &&
+							!_vars["supportJAVA"]){
+					return false;
 				}
 				
-				//if( _vars["supportASPX"] ){
-					if( _vars["supportMSSQL"] ){
-						var url= _vars["exportUrl"];
-						window.location.assign(url);
-					}
-				//}
+				if( !_vars["supportMySQL"] &&
+						!_vars["supportPostgreSQL"] &&
+							!_vars["supportMSSQL"] &&
+								!_vars["supportMySQL_java"]){
+					return false;
+				}
+				
+				var url= _vars["exportUrl"];
+				window.location.assign(url);
 
 			}//end event
 		}
