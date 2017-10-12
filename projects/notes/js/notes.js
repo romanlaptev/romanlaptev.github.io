@@ -392,14 +392,19 @@ console.log(errorCode);
 		//UPLOAD
 		document.forms["form_import"].onsubmit = function(e) {
 			e.preventDefault();
-			if( _vars["supportPHP"] ){
-				_upload( document.forms["form_import"] );
-			} else {
-				//_error("errorPHP");
+			if( !_vars["supportPHP"] &&
+					!_vars["supportASPX"] &&
+						!_vars["supportJAVA"]){
+				return false;
 			}
-			if( _vars["supportASPX"] ){
-				_upload( document.forms["form_import"] );
+			
+			if( !_vars["supportMySQL"] &&
+					!_vars["supportPostgreSQL"] &&
+						!_vars["supportMSSQL"] &&
+							!_vars["supportMySQL_java"]){
+				return false;
 			}
+			_upload( document.forms["form_import"] );
 		};//end event
 /*
     $("form[name='form_import']").submit(function(e) {

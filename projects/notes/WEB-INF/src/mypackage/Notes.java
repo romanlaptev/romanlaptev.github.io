@@ -27,18 +27,31 @@ import java.util.Date;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringEscapeUtils; 
 
+//import java.util.Collection;
+import javax.servlet.http.Part;
+import javax.servlet.annotation.MultipartConfig;
+//import javax.servlet.annotation.WebServlet;
+// import java.nio.ByteBuffer;
+// import java.nio.channels.Channels;
+// import java.nio.channels.ReadableByteChannel;
+// import java.nio.channels.WritableByteChannel;
+// import java.nio.file.Path;
+// import java.nio.file.Paths;
+
+@MultipartConfig
 public final class Notes extends HttpServlet {
 	Connection conn = null;
-	 static final String dbUser = "root";
-	 static final String dbPassword = "master";
-	 static final String dbUrl = "jdbc:mysql://localhost/mysql";
+	static final String dbUser = "root";
+	static final String dbPassword = "master";
+	static final String dbUrl = "jdbc:mysql://localhost/mysql";
 	
 	PrintWriter out;
 	Statement stat;
 
-	 static final String dbName = "db1";
-	 static final String tableName = "notes";
-	 static final String exportFileName = "notes.xml";
+	static final String dbName = "db1";
+	static final String tableName = "notes";
+	static final String exportFileName = "notes.xml";
+	String uploadPath;
 	 
 	public Map<String, String> sql = new HashMap<String, String>();
 
@@ -177,6 +190,7 @@ public final class Notes extends HttpServlet {
 			jsonLog = jsonLog.replaceAll("\n", "<br>");
 			//jsonLog = jsonLog.replaceAll("/", "!");
 			//jsonLog = jsonLog.replaceAll(":", "%");
+			jsonLog = jsonLog.replaceAll("\\\\", "&#92;");//replace slash
 			out.println( jsonLog );
 		}
 		jsonLog = "";
@@ -276,6 +290,11 @@ public final class Notes extends HttpServlet {
 			break;
 				
 			case "upload":
+//out.println("HttpServletRequest.getContextPath(): " + request.getContextPath() );
+//out.println("ServletContext.getRealPath: " + getServletContext().getRealPath("/") );
+				uploadPath = getServletContext().getRealPath("/") + "upload";
+//out.println("uploadPath: " + uploadPath );
+				uploadFile( request, uploadPath);
 			break;
 
 			case "import_notes":
@@ -422,6 +441,96 @@ public final class Notes extends HttpServlet {
 		//Response.addHeader("Content-Length", xml.Length.ToString() );
 		out.println( xml );
 	}//end exportTable()
+	
+	private void uploadFile( HttpServletRequest request, String dirPath ){
+
+		String contentType = request.getContentType();
+//out.println("request ContentType: " + contentType );
+		
+		if( contentType.indexOf("multipart/form-data") == -1){
+			String message = "Wrong request, No POST data";
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"noPOSTdata\",";
+			jsonLog += "\"message\" : \""+message+"\"";
+			jsonLog += "},";
+			return;
+		};
+		
+dirPath = "c:\\temp\\upload";
+		File file = new File(dirPath);
+		if( !file.isDirectory() ){
+			// File[] files = file.listFiles();
+			// for(File f:files){
+				// try {
+					// out.println( f.getCanonicalPath() );
+				// } catch (IOException e) {
+					// e.printStackTrace();
+				// }
+			// }//next
+			String message = "Directory " + dirPath + " not exists...";
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"DirectoryNotFound\",";
+			jsonLog += "\"message\" : \""+message+"\"";
+			jsonLog += "},";
+			
+			try {
+				file = new File(dirPath);
+				boolean created = false;
+				created = file.mkdirs();
+				if( created ){
+					message = "Directory " + dirPath + " was created...";
+					jsonLog += "{";
+					jsonLog += "\"message\" : \""+message+"\"";
+					jsonLog += "},";
+				}			 
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}//end if
+
+		try{
+			//Collection<Part> parts = request.getParts();
+//out.println("Size of parts: " + parts.size() );
+
+			// int i = 0;
+			// for (Part part : parts) {
+				// out.println("Part #" + ++i + ":");
+				// out.println(part.getName());
+				// out.println(part.getSize());
+				// out.println(part.getContentType());
+			// }
+			Part uploadFile = request.getPart("upload_file");
+out.println("Name: " + uploadFile.getName());
+out.println("Size: " + uploadFile.getSize());
+out.println("Type: " + uploadFile.getContentType());
+			if ( uploadFile != null && 
+					uploadFile.getSize() > 0 && 
+						uploadFile.getInputStream() != null) {
+				File f = new File( dirPath + "\\" + exportFileName );
+				FileOutputStream fos = new FileOutputStream( f );
+				
+// String text = "Hello world!";
+// byte[] buffer = text.getBytes();
+// fos.write( buffer, 0, buffer.length);
+
+				//fos.write( 1 );
+				//fos.write( uploadFile.getInputStream() );
+				
+InputStream fin = uploadFile.getInputStream();
+byte[] buffer = new byte[ fin.available() ];
+fin.read(buffer, 0, buffer.length);
+fos.write(buffer, 0, buffer.length);
+
+				fos.close();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}//end uploadFile()
+
 	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
