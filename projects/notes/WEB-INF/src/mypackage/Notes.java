@@ -38,6 +38,13 @@ import javax.servlet.annotation.MultipartConfig;
 // import java.nio.file.Path;
 // import java.nio.file.Paths;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 @MultipartConfig
 public final class Notes extends HttpServlet {
 	Connection conn = null;
@@ -136,6 +143,19 @@ public final class Notes extends HttpServlet {
 		sql.put("deleteNote", "DELETE FROM `"+tableName+"` WHERE `id`={{id}}");
 		sql.put("clearNotes", "TRUNCATE TABLE `"+tableName+"`");
 		sql.put("removeTable", "DROP TABLE `"+tableName+"`");
+
+		sql.put("insertAll", "INSERT INTO `"+tableName+"` VALUES {{values}};");
+		_query = "("+
+" NULL, " +
+" '{{author}}', " +
+" '{{title}}', " +
+" '{{text_message}}'," +
+" '{{client_date}}', " +
+" '{{server_date}}', " +
+" '{{ip}}' " +
+")";
+		sql.put("insertValues", _query);
+
 		
 		//start, connect to database server, create database, create table, check request parameters
 		try
@@ -298,6 +318,8 @@ public final class Notes extends HttpServlet {
 			break;
 
 			case "import_notes":
+				String xmlFilePath = getServletContext().getRealPath("/") + "upload/" + exportFileName;
+				importTable( xmlFilePath );
 			break;
 				
 			//case "test":
@@ -456,7 +478,7 @@ public final class Notes extends HttpServlet {
 			return;
 		};
 		
-dirPath = "c:\\temp\\upload";
+//dirPath = "c:\\temp\\upload";
 		File file = new File(dirPath);
 		if( !file.isDirectory() ){
 			// File[] files = file.listFiles();
@@ -489,6 +511,7 @@ dirPath = "c:\\temp\\upload";
 		}//end if
 
 		try{
+			//https://javatalks.ru/topics/41831
 			//Collection<Part> parts = request.getParts();
 //out.println("Size of parts: " + parts.size() );
 
@@ -500,16 +523,17 @@ dirPath = "c:\\temp\\upload";
 				// out.println(part.getContentType());
 			// }
 			Part uploadFile = request.getPart("upload_file");
-out.println("Name: " + uploadFile.getName());
-out.println("Size: " + uploadFile.getSize());
-out.println("Type: " + uploadFile.getContentType());
+// out.println("Name: " + uploadFile.getName());
+// out.println("Size: " + uploadFile.getSize());
+// out.println("Type: " + uploadFile.getContentType());
 
 			if ( uploadFile != null && 
 					uploadFile.getSize() > 0 && 
 						uploadFile.getInputStream() != null) {
 							
 				try {
-					File f = new File( dirPath + "\\" + exportFileName );
+					//File f = new File( dirPath + "\\" + exportFileName );
+					File f = new File( dirPath + "/" + exportFileName );
 					FileOutputStream fos = new FileOutputStream( f );
 					
 	//https://metanit.com/java/tutorial/6.3.php				
@@ -525,8 +549,11 @@ out.println("Type: " + uploadFile.getContentType());
 					fos.close();
 				}
 				catch(IOException ex){
-					 
-					System.out.println(ex.getMessage());
+					String message = "Upload error: " + ex.getMessage();
+					jsonLog += "{";
+					jsonLog += "\"error_code\" : \"UploadError\",";
+					jsonLog += "\"message\" : \""+message+"\"";
+					jsonLog += "},";
 				}
  				
 			}//end if
@@ -538,6 +565,113 @@ out.println("Type: " + uploadFile.getContentType());
 		
 	}//end uploadFile()
 
+	private void importTable( String xmlFilePath){
+//out.println("xmlFilePath: " + xmlFilePath );
+		String msg;
+		
+		File xmlFile;
+		xmlFile = new File( xmlFilePath );
+		if ( !xmlFile.exists() ){
+			msg = "Import error: " + xmlFile + " not exists...";
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"FileNotExists\",";
+			jsonLog += "\"message\" : \""+msg+"\"";
+			jsonLog += "},";
+			return;
+		}
+		if ( !xmlFile.canRead() ){
+			msg = "Import error: cannot read " + xmlFile + "...";
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"FileNotRead\",";
+			jsonLog += "\"message\" : \""+msg+"\"";
+			jsonLog += "},";
+			return;
+		}
+		if ( xmlFile.length() == 0 ){
+			msg = "Import error: empty data in " + xmlFile + "...";
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"FileEmpty\",";
+			jsonLog += "\"message\" : \""+msg+"\"";
+			jsonLog += "},";
+			return;
+		}
+		
+		try {
+		
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse( xmlFile );//create tree from file
+		
+			Node root = doc.getDocumentElement();
+			if (doc.hasChildNodes() ) {
+				String queryValues = formInsertSQLQuery( root.getChildNodes() );
+				
+				String query = sql.get("insertAll");
+				query = query.replace("{{values}}", queryValues);
+				
+out.println("Query :" + query );
+				runUpdateQuery( query );
+			}		
+			
+		} catch (Exception e) {
+			//ex.printStackTrace(System.out);
+			msg = "XML parse error: " + e.getMessage();
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"XMLparseError\",";
+			jsonLog += "\"message\" : \""+msg+"\"";
+			jsonLog += "},";
+		}//end try
+
+	}//end importTable()
+	
+	private String formInsertSQLQuery( NodeList nodeList ){
+		String queryValues = "";
+		String record;
+		int num = 0;
+		
+		for( int count = 0; count < nodeList.getLength(); count++){
+			Node tempNode = nodeList.item(count);
+			if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
+				
+				record = sql.get("insertValues");
+				if( num > 0 ){
+					record = ", " + record;
+				}
+				
+				if ( tempNode.hasAttributes() ){// get attributes names and values
+					NamedNodeMap nodeMap = tempNode.getAttributes();
+					for (int n = 0; n < nodeMap.getLength(); n++) {
+						Node attr = nodeMap.item(n);
+						String name = attr.getNodeName();
+						String value = attr.getNodeValue();
+						record = record.replace("{{" + name + "}}", value);
+//out.println("Record :" + record );
+					}
+				}
+			
+				if (tempNode.hasChildNodes()) {
+					NodeList childNodeList = tempNode.getChildNodes();
+					for( int n2 = 0; n2 < childNodeList.getLength(); n2++){
+						Node _item = childNodeList.item(n2);
+						String nName = _item.getNodeName();
+						
+						String nValue = _item.getTextContent();
+						nValue = nValue.replaceAll("\"", "&quot;");
+						nValue = nValue.replaceAll("<", "&lt;");
+						nValue = nValue.replaceAll(">", "&gt;");
+						
+						record = record.replace("{{" + nName + "}}", nValue);
+					}//next
+				}
+				
+				queryValues += record;
+				num++;
+			}
+		}//next
+		
+		return queryValues;
+	}//end formInsertSqlQuery()
+	
 	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
