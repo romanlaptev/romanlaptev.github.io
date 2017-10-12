@@ -503,26 +503,33 @@ dirPath = "c:\\temp\\upload";
 out.println("Name: " + uploadFile.getName());
 out.println("Size: " + uploadFile.getSize());
 out.println("Type: " + uploadFile.getContentType());
+
 			if ( uploadFile != null && 
 					uploadFile.getSize() > 0 && 
 						uploadFile.getInputStream() != null) {
-				File f = new File( dirPath + "\\" + exportFileName );
-				FileOutputStream fos = new FileOutputStream( f );
-				
-// String text = "Hello world!";
-// byte[] buffer = text.getBytes();
-// fos.write( buffer, 0, buffer.length);
+							
+				try {
+					File f = new File( dirPath + "\\" + exportFileName );
+					FileOutputStream fos = new FileOutputStream( f );
+					
+	//https://metanit.com/java/tutorial/6.3.php				
+	// String text = "Hello world!";
+	// byte[] buffer = text.getBytes();
+	// fos.write( buffer, 0, buffer.length);
 
-				//fos.write( 1 );
-				//fos.write( uploadFile.getInputStream() );
-				
-InputStream fin = uploadFile.getInputStream();
-byte[] buffer = new byte[ fin.available() ];
-fin.read(buffer, 0, buffer.length);
-fos.write(buffer, 0, buffer.length);
+					InputStream fin = uploadFile.getInputStream();
+					byte[] buffer = new byte[ fin.available() ];
+					fin.read(buffer, 0, buffer.length);
+					fos.write(buffer, 0, buffer.length);
 
-				fos.close();
-			}
+					fos.close();
+				}
+				catch(IOException ex){
+					 
+					System.out.println(ex.getMessage());
+				}
+ 				
+			}//end if
 			
 		} catch (Exception e) {
 			e.printStackTrace();
