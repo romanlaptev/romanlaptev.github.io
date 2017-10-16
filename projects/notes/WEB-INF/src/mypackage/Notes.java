@@ -315,6 +315,8 @@ public final class Notes extends HttpServlet {
 				uploadPath = getServletContext().getRealPath("/") + "upload";
 //out.println("uploadPath: " + uploadPath );
 				uploadFile( request, uploadPath);
+				
+				importTable( uploadPath + "/" + exportFileName );
 			break;
 
 			case "import_notes":
@@ -644,7 +646,7 @@ out.println("Query :" + query );
 						Node attr = nodeMap.item(n);
 						String name = attr.getNodeName();
 						String value = attr.getNodeValue();
-						record = record.replace("{{" + name + "}}", value);
+						record = record.replace("{{" + name + "}}", value.trim() );
 //out.println("Record :" + record );
 					}
 				}
@@ -659,8 +661,9 @@ out.println("Query :" + query );
 						nValue = nValue.replaceAll("\"", "&quot;");
 						nValue = nValue.replaceAll("<", "&lt;");
 						nValue = nValue.replaceAll(">", "&gt;");
+						nValue = nValue.replaceAll("'", "&#39");//apostrophe
 						
-						record = record.replace("{{" + nName + "}}", nValue);
+						record = record.replace("{{" + nName + "}}", nValue.trim() );
 					}//next
 				}
 				
