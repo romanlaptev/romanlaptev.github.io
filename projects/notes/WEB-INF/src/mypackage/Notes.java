@@ -238,8 +238,12 @@ public final class Notes extends HttpServlet {
 		}
 
 		//Response.setContentType("text/html; charset=utf-8");
-        //указываем кодировку для данных полученых от клиента
-        //request.setCharacterEncoding("CP1251"); 
+		// try {
+			// //указываем кодировку для данных полученых от клиента
+			// request.setCharacterEncoding("UTF-8"); 
+		// } catch  (Exception e){
+			// e.printStackTrace( out );
+		// }
 		
 		// String parName;
 		// out.println("<ul>");
