@@ -50,8 +50,9 @@ public final class Notes extends HttpServlet {
 	Connection conn = null;
 	static final String dbUser = "root";
 	static final String dbPassword = "master";
-	static final String dbUrl = "jdbc:mysql://localhost/mysql";
-	
+	//static final String dbUrl = "jdbc:mysql://localhost/mysql";
+	static final String dbUrl = "jdbc:mysql://localhost/mysql?useUnicode=true&characterEncoding=UTF-8";
+
 	PrintWriter out;
 	Statement stat;
 
@@ -164,11 +165,18 @@ public final class Notes extends HttpServlet {
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
+
 			//String message = "Database connection established,  " + dbUrl;
 			//jsonLog += "{\"message\" : \""+message+"\"},";
 			
 			runUpdateQuery( sql.get("createDB") );
 			runUpdateQuery( sql.get("selectDB") );
+//stat.execute("set character set utf8");
+//stat.execute("set names utf8"); 
+// stat.execute("set character_set_client='utf8'");
+// stat.execute("set character_set_results='utf8'"); 
+// stat.execute("set collation_connection='utf8_general_ci'"); 
+		
 			runUpdateQuery( sql.get("createTable") );
 
 			_testRequestParams( request );
@@ -229,8 +237,11 @@ public final class Notes extends HttpServlet {
 			return;
 		}
 
+		//Response.setContentType("text/html; charset=utf-8");
+        //указываем кодировку для данных полученых от клиента
+        //request.setCharacterEncoding("CP1251"); 
+		
 		// String parName;
-		// //response.setContentType("text/html");
 		// out.println("<ul>");
 		// while( paramNames.hasMoreElements() ){
 			// parName = (String) paramNames.nextElement();
