@@ -149,4 +149,9 @@ writer.println("</form>");
 		
 	}//end doPost()
 
+	public void destroy(){
+		/*called before the Filter instance is removed 
+		from service by the web container*/
+	}
+	
 }//end class
