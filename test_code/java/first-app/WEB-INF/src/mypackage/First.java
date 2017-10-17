@@ -22,7 +22,7 @@ import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 //import javax.servlet.ServletConfig;
-//import javax.servlet.ServletContext;
+import javax.servlet.ServletContext;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +46,8 @@ public final class First extends HttpServlet {
 		
 		//this.config = config;  
 		//ServletContext sc = config.getServletContext();  
-		//serverInfo = sc.getServerInfo();
+		ServletContext sc = getServletContext();  
+		serverInfo = sc.getServerInfo();
     }//end init()
 	
     /**
@@ -75,6 +76,8 @@ public final class First extends HttpServlet {
         writer.println("<body>");
 		writer.println("<div class='container'>");
 
+writer.println("server info:" + serverInfo);
+writer.println("<br>");
 writer.println("servlet name:" + servletName);
 writer.println("<br>");
 writer.println("initAction:" + initAction);
