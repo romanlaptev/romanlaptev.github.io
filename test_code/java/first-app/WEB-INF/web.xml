@@ -24,6 +24,12 @@
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
         <servlet-class>mypackage.First</servlet-class>
+		
+		<init-param>
+		  <param-name>initAction</param-name>
+		  <param-value>test initAction</param-value>
+		</init-param>
+	
     </servlet>
 
     <servlet-mapping>

@@ -1,4 +1,4 @@
- javac -classpath ..\..\..\..\..\lib\servlet-api.jar First.java
+javac -classpath ..\..\..\..\..\lib\servlet-api.jar First.java
 pause
 copy First.class ..\..\classes\mypackage
 

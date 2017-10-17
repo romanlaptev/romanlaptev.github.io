@@ -21,6 +21,9 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
+//import javax.servlet.ServletConfig;
+//import javax.servlet.ServletContext;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +33,22 @@ public final class First extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+	String servletName = "000";
+	String initAction = "000";
+	String serverInfo = "";
+	//private ServletConfig config;
+	
+	//http://docs.oracle.com/javaee/7/api/javax/servlet/GenericServlet.html#getInitParameter-java.lang.String-
+    public void init() throws ServletException {
+    //public void init( ServletConfig config ) throws ServletException {
+		servletName = getServletName();
+		initAction = getInitParameter("initAction");		
+		
+		//this.config = config;  
+		//ServletContext sc = config.getServletContext();  
+		//serverInfo = sc.getServerInfo();
+    }//end init()
+	
     /**
      * Respond to a GET request for the content produced by
      * this servlet.
@@ -55,6 +74,10 @@ public final class First extends HttpServlet {
         writer.println("</head>");
         writer.println("<body>");
 		writer.println("<div class='container'>");
+
+writer.println("servlet name:" + servletName);
+writer.println("<br>");
+writer.println("initAction:" + initAction);
 
         writer.println("<h1>my First Servlet</h1>");
         writer.println("<b>Path: </b>" + request.getContextPath() );

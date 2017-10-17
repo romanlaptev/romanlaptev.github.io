@@ -51,7 +51,7 @@ public final class Notes extends HttpServlet {
 	static final String dbUser = "root";
 	static final String dbPassword = "master";
 	//static final String dbUrl = "jdbc:mysql://localhost/mysql";
-	static final String dbUrl = "jdbc:mysql://localhost/mysql?useUnicode=true&characterEncoding=UTF-8";
+	static final String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
 
 	PrintWriter out;
 	Statement stat;
@@ -237,13 +237,14 @@ public final class Notes extends HttpServlet {
 			return;
 		}
 
-		//Response.setContentType("text/html; charset=utf-8");
-		// try {
-			// //указываем кодировку для данных полученых от клиента
-			// request.setCharacterEncoding("UTF-8"); 
-		// } catch  (Exception e){
-			// e.printStackTrace( out );
-		// }
+		Response.setContentType("text/html; charset=utf-8");
+		//Response.setContentType("text/html;");
+		try {
+			//указываем кодировку для данных полученых от клиента
+			request.setCharacterEncoding("utf-8"); 
+		} catch  (Exception e){
+			e.printStackTrace( out );
+		}
 		
 		// String parName;
 		// out.println("<ul>");
