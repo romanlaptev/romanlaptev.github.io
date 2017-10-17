@@ -46,6 +46,13 @@
 	<div class="columns small-4 small-offset-1 medium-4 medium-offset-1 large-4 large-offset-1">
 		<b>java.util.Date():</b><%= new java.util.Date() %>
 	</div>
+	<div class="columns small-4 large-4 large-offset-1">
+		<b>java.version:</b><%= System.getProperty("java.version") %>
+Server Version: <%= application.getServerInfo() %><br>
+Servlet Version: <%= application.getMajorVersion() %>.<%= application.getMinorVersion() %>
+JSP Version: <%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %> <br>
+		
+	</div>
 </div>
 
 <div class="row">
