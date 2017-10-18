@@ -37,4 +37,17 @@
         <url-pattern>/first</url-pattern>
     </servlet-mapping>
 
+	<servlet>
+		<servlet-name>Second</servlet-name>
+		<servlet-class>mypackage.Second</servlet-class>
+		<init-param>
+		  <param-name>initAction</param-name>
+		  <param-value>123</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Second</servlet-name>
+		<url-pattern>/sec</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
