@@ -183,5 +183,6 @@ Existing Git repository
 
 $ heroku git:remote -a romanlaptev2
 
+heroku logs -a romanlaptev2
 ---------------- BLOG
 	note --> post
