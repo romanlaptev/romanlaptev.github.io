@@ -166,17 +166,45 @@ var _notes = function ( opt ){
 				"url" : "api/test_java.jsp",
 				"successMsg" : "test JAVA success, suppored by server <b>" + window.location.host + "</b>...",
 				"errorMsg" : "test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...",
-				"callback" : function(res){
-//console.log("res", res.charAt(0) );
-						if( res[0] === "4" ){
-							_vars["supportJAVA"] = true;
-							var msg = this["successMsg"];
-							_log("<div class='alert alert-success'>" + msg + "</div>");
-						} else {
+				"callback" : function( json ){
+						
+						try{
+							var jsonObj = JSON.parse( json, function(key, value) {
+//console.log( key, value );
+								return value;
+							});							
+
+							if( jsonObj["testResult"] === "4" ){
+								_vars["supportJAVA"] = true;
+								var msg = this["successMsg"];
+								
+								var n = 0;								
+								for( var key in jsonObj){
+									if( key !== "testResult"){
+										if( n > 0){
+											msg += ", ";
+										} else {
+											msg += "<br>";
+										}
+										msg += key + " : " + jsonObj[key];
+										n++;
+									}
+								}//next
+								
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							} else {
+console.log( jsonObj);
+								_vars["supportJAVA"] = false;
+								var msg = this["errorMsg"];
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}
+							
+						} catch(error) {
 							_vars["supportJAVA"] = false;
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
-						}
+						}//end catch
+						
 					}//end callback
 				}, //end test
 				{
@@ -185,7 +213,7 @@ var _notes = function ( opt ){
 				"successMsg" : "test local MySQL success...",
 				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
-console.log(res, typeof res);					
+//console.log(res, typeof res);					
 						
 						_vars["supportMySQL_java"] = false;
 						if( typeof res !== "string"){
@@ -392,14 +420,19 @@ console.log(errorCode);
 		//UPLOAD
 		document.forms["form_import"].onsubmit = function(e) {
 			e.preventDefault();
-			if( _vars["supportPHP"] ){
-				_upload( document.forms["form_import"] );
-			} else {
-				//_error("errorPHP");
+			if( !_vars["supportPHP"] &&
+					!_vars["supportASPX"] &&
+						!_vars["supportJAVA"]){
+				return false;
 			}
-			if( _vars["supportASPX"] ){
-				_upload( document.forms["form_import"] );
+			
+			if( !_vars["supportMySQL"] &&
+					!_vars["supportPostgreSQL"] &&
+						!_vars["supportMSSQL"] &&
+							!_vars["supportMySQL_java"]){
+				return false;
 			}
+			_upload( document.forms["form_import"] );
 		};//end event
 /*
     $("form[name='form_import']").submit(function(e) {

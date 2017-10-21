@@ -8,10 +8,6 @@ import java.io.*;
 import java.sql.*;
 
 import javax.servlet.ServletException;
-//import javax.servlet.ServletConfig;
-//import javax.servlet.ServletContext;
-
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,7 +51,7 @@ public final class Notes extends HttpServlet {
 	static final String dbUser = "root";
 	static final String dbPassword = "master";
 	//static final String dbUrl = "jdbc:mysql://localhost/mysql";
-	static final String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
+	static final String dbUrl = "jdbc:mysql://localhost/mysql?useUnicode=true&characterEncoding=UTF-8";
 
 	PrintWriter out;
 	Statement stat;
@@ -71,22 +67,12 @@ public final class Notes extends HttpServlet {
 	private String message;	
 	
 	HttpServletResponse Response;
-	//private ServletConfig config;
 	
 	//constructor
 	public Notes() {
 		//sql.put("test", "Test!");
 	}
-  
-	public void init() throws ServletException {
-	//public void init( ServletConfig config ) throws ServletException {
-	}//end init()
-	
-	public void destroy(){
-		/*called before the Filter instance is removed 
-		from service by the web container*/
-	}
-	
+   
 /**
  * Respond to a GET request for the content produced by
  * this servlet.
@@ -99,29 +85,18 @@ public final class Notes extends HttpServlet {
  */
 	@Override
 	public void doGet( HttpServletRequest request,	HttpServletResponse response) throws IOException, ServletException {
-		
-		request.setCharacterEncoding("UTF-8"); 
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-
 		out = response.getWriter();
 		Response = response;
 		PageLoad( request );
 	}//end doGet()
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
-		request.setCharacterEncoding("UTF-8"); //charset for client send data
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");//charset for send to the server
-
 		out = response.getWriter();
 		Response = response;
 		PageLoad( request );
 	}//end doPost()
 
 	protected void PageLoad( HttpServletRequest request ){
-		
 		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 		
 //------------------
@@ -262,8 +237,7 @@ public final class Notes extends HttpServlet {
 			return;
 		}
 
-		// Response.setContentType("text/html; charset=UTF-8");
-		// //Response.setContentType("text/html;");
+		//Response.setContentType("text/html; charset=utf-8");
 		// try {
 			// //указываем кодировку для данных полученых от клиента
 			// request.setCharacterEncoding("UTF-8"); 
@@ -499,11 +473,10 @@ public final class Notes extends HttpServlet {
 		
 //Response.setContentType("text/html");
 //out.println( StringEscapeUtils.escapeHtml( xml ) );
-//out.println( xml );
 
  		Response.addHeader("Content-Type", "application/xhtml+xml");
 		Response.addHeader("Content-Disposition","attachment; filename=" + filename);
-		// Response.addHeader("Content-Transfer-Encoding","binary");
+		Response.addHeader("Content-Transfer-Encoding","binary");
 		//Response.addHeader("Content-Length", xml.Length.ToString() );
 		out.println( xml );
 	}//end exportTable()

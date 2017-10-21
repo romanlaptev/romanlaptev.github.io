@@ -1,19 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package mypackage;
 
 import java.io.IOException;
@@ -21,6 +5,9 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
+//import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +17,23 @@ public final class First extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
+	String servletName = "000";
+	String initAction = "000";
+	String serverInfo = "";
+	//private ServletConfig config;
+	
+	//http://docs.oracle.com/javaee/7/api/javax/servlet/GenericServlet.html#getInitParameter-java.lang.String-
+    public void init() throws ServletException {
+    //public void init( ServletConfig config ) throws ServletException {
+		servletName = getServletName();
+		initAction = getInitParameter("initAction");		
+		
+		//this.config = config;  
+		//ServletContext sc = config.getServletContext();  
+		ServletContext sc = getServletContext();  
+		serverInfo = sc.getServerInfo();
+    }//end init()
+	
     /**
      * Respond to a GET request for the content produced by
      * this servlet.
@@ -55,6 +59,17 @@ public final class First extends HttpServlet {
         writer.println("</head>");
         writer.println("<body>");
 		writer.println("<div class='container'>");
+
+writer.println("server info:" + serverInfo);
+writer.println("<br>");
+writer.println("servlet name:" + servletName);
+writer.println("<br>");
+writer.println("initAction:" + initAction);
+writer.println("<br>");
+
+String ver = System.getProperty("java.version");
+writer.println("java.version:" + ver);
+writer.println("<br>");
 
         writer.println("<h1>my First Servlet</h1>");
         writer.println("<b>Path: </b>" + request.getContextPath() );
@@ -118,4 +133,9 @@ writer.println("</form>");
 		
 	}//end doPost()
 
+	public void destroy(){
+		/*called before the Filter instance is removed 
+		from service by the web container*/
+	}
+	
 }//end class

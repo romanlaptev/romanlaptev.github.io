@@ -134,6 +134,7 @@ Java + Oracle
 выводить все обнаруженные возможности сервера (языки и базы данных) и выбирать вручную....
 
 - добавить в код notes.js тесты на основе фреймворка mocha.js
+- ИСПРАВИТЬ, при импорте и экспорте добавить удаление начальных и конечных пробелов в text_message
 
 =============================== CREATE & UPLOAD romanlaptev.heroku.com
 https://habrahabr.ru/post/232679/
@@ -159,5 +160,29 @@ git push -u origin master (git push heroku master?)
 +cd romanlaptev.github.io/projects/notes
 +git push/ git pull - команды обращаются не к github.com, а к git.heroku.com
 
+--------------------
+$ heroku login
+
+Create a new Git repository
+	Initialize a git repository in a new or existing directory
+
+$ cd my-project/
+$ git init
+$ heroku git:remote -a romanlaptev2
+
+Deploy your application
+
+Commit your code to the repository and deploy it to Heroku using Git.
+
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
+
+Existing Git repository
+	For existing repositories, simply add the heroku remote
+
+$ heroku git:remote -a romanlaptev2
+
+heroku logs -a romanlaptev2
 ---------------- BLOG
 	note --> post
