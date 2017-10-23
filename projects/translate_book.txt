@@ -27,7 +27,7 @@ steering-gear a final wrench and deposited self and car approximately in front
 of the Happer steps. There was a plaintive heaving sound, a death-rattle, 
 followed by a short silence; and then the air was rent by a startling whistle.
 
-  Сверху,    из    спальни,    опустив    на    подоконник    подбородок,
+  Сверху, из спальни, опустив на подоконник подбородок,
 девятнадцатилетняя Салли Кэррол Хэппер наблюдала  за  стареньким  "фордом"
 Кларка Дарроу, свернувшим к их дому.  Автомобиль  дышал  жаром,  солнце  и
 мотор нещадно накалили его металлические части, и  сам  Кларк  Дарроу,  со
@@ -39,27 +39,47 @@ followed by a short silence; and then the air was rent by a startling whistle.
 бормотание, наступила тишина, и воздух разрезал резкий свист.
 Пер. - В.Харитонов.
 
-Sally Carrol gazed down sleepily. She started to yawn, but finding this quite impossible unless she raised her chin from the window-sill, changed her mind and continued silently to regard the car, whose owner sat brilliantly if perfunctorily at attention as he waited for an answer to his signal. After a moment the whistle once more split the dusty air.
+Sally Carrol gazed down sleepily. She started to yawn, but finding this quite impossible 
+unless she raised her chin from the window-sill, changed her mind and continued silently to regard the car, 
+whose owner sat brilliantly if perfunctorily at attention as he waited for an answer to his signal. 
+After a moment the whistle once more split the dusty air.
+	Сонными глазами смотрела вниз Салли Кэррол. Ей захотелось  зевнуть,  но
+для этого требовалось поднять голову, и, подавив  зевок, она продолжала
+молча созерцать автомобиль, между тем как его владелец, застыв в  картинно
+скучающей позе, ждал ответа. В  следующую минуту новый свист пронзил пыльное безмолвие.
+Пер. - В.Харитонов.
+
 
 “Good mawnin’.”
+- Доброе утро.
 
 With difficulty Clark twisted his tall body round and bent a distorted glance on the window.
+Кларк ужом потянулся из кабины и скосил глаза на окно.
 
 “’Tain’t mawnin’, Sally Carrol.”
+- Утро ты уже проспала, Салли Кэррол.
 
 “Isn’t it, sure enough?”
+- Правда?
 
 “What you do in’?”
+- Что делаешь?
 
 “Eatin’ ’n apple.”
+- Яблоко ем.
 
 “Come on go swimmin’—want to?”
+- Поехали купаться?
 
 “Reckon so.”
+- Можно.
 
 “How ’bout hurryin’ up?”
+- Тогда, может быть, поторопишься?
 
 “Sure enough.”
+- Может быть.
+
 
 Sally Carrol sighed voluminously and raised herself with profound inertia from the floor, where she had been occupied in alternately destroying parts of a green apple and painting paper tops for her younger sister. She approached a mirror, regarded her expression with a pleased and pleasant languor, dabbed two spots of rouge on her lips and a grain of powder on her nose, and covered her bobbed corn-colored hair with a rose littered sun bonnet. Then she kicked over the painting water, said, “Oh, damn!”—but let it lay—and left the room.
 
@@ -818,37 +838,6 @@ Note: Story appeared in “The Saturday Evening Post” (22 May 1920) It was the
 
    1
 
-   Дом был облит золотистой охрою,  словно  декоративная  ваза,  и  редкие
-пятачки тени давали особенно почувствовать напор затопляющего света.  Дома
-ближайших  соседей,  Баттеруортов  и  Ларкинов,  прятались   за   высокими
-раскидистыми деревьями, а дом Хэпперов стоял на самом солнцепеке  и  целый
-день с добродушным терпением караулил пыльную  дорогу.  Место  действия  -
-Тарлтон, в самом южном углу штата Джорджия, время - сентябрь, полдень.
-   Сверху,    из    спальни,    опустив    на    подоконник    подбородок,
-девятнадцатилетняя Салли Кэррол Хэппер наблюдала  за  стареньким  "фордом"
-Кларка Дарроу, свернувшим к их дому.  Автомобиль  дышал  жаром,  солнце  и
-мотор нещадно накалили его металлические части, и  сам  Кларк  Дарроу,  со
-страдальчески-напряженным выражением оцепеневший  за  рулем,  ощущал  себя
-частью механизма, и притом весьма  ненадежной.  Под  протестующий  скрежет
-колес он осторожно переехал присыпанную  пылью  наезженную  колею,  потом,
-ожесточившись лицом, до отказа вывернул баранку и в целости доставил  себя
-и автомобиль почти к  порогу  дома.  Мотор  издал  жалобное  агонизирующее
-бормотание, наступила тишина, и воздух разрезал резкий свист.
-   Сонными глазами смотрела вниз Салли Кэррол. Ей захотелось  зевнуть,  но
-для этого требовалось поднять голову, и,  подавив  зевок,  она  продолжала
-молча созерцать автомобиль, между тем как его владелец, застыв в  картинно
-скучающей позе, ждал  ответа.  В  следующую  минуту  новый  свист  пронзил
-пыльное безмолвие.
-   - Доброе утро.
-   Кларк ужом потянулся из кабины и скосил глаза на окно.
-   - Утро ты уже проспала, Салли Кэррол.
-   - Правда?
-   - Что делаешь?
-   - Яблоко ем.
-   - Поехали купаться?
-   - Можно.
-   - Тогда, может быть, поторопишься?
-   - Может быть.
    Салли Кэррол глубоко вздохнула и с великой неохотой поднялась  с  пола,
 где остались следы ее занятий  -  обкусанное  яблоко  и  раскрашенные  для
 сестренки  бумажные  куклы.  Она  подошла  к  зеркалу,  не   спеша   и   с
