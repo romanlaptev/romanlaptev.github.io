@@ -123,9 +123,12 @@ public final class Notes2 extends HttpServlet {
 
 	protected void PageLoad( HttpServletRequest request ){
 		
-		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
+//https://www.postgresql.org/docs/9.1/static/sql-createdatabase.html		
+		//sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
+		sql.put("createDB", "CREATE DATABASE "+dbName+";");
 		
 //------------------
+//https://www.postgresql.org/docs/9.1/static/sql-createtable.html
 		String _query = "CREATE TABLE IF NOT EXISTS `"+tableName+"` (" +
 "`id` int(11) NOT NULL AUTO_INCREMENT," +
 "`author` varchar(20) NOT NULL," +
@@ -138,7 +141,8 @@ public final class Notes2 extends HttpServlet {
 ") DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 		sql.put("createTable", _query);
 		
-		sql.put("selectDB", "USE db1;");
+		//sql.put("selectDB", "USE db1;");
+		sql.put("selectDB", "\connect db1;");
 		
 //------------------
 		_query = "SELECT id, author, title, text_message, DATE_FORMAT(client_date, '%Y-%m-%d %H:%i:%s') as client_date, "+
@@ -720,7 +724,7 @@ out.println("Query :" + query );
 	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
-//out.println("Query: " + query);
+out.println("Query: " + query);
 		try
 		{
 			stat.executeUpdate( query );
