@@ -135,6 +135,8 @@ Java + Oracle
 
 - добавить в код notes.js тесты на основе фреймворка mocha.js
 - ИСПРАВИТЬ, при импорте и экспорте добавить удаление начальных и конечных пробелов в text_message
+- ИСПРАВИТЬ, передавать результаты тестов в формате JSON 
+(например - { "testResult" : "4" , "javaVersion" : "1.8.0_121" , "serverInfo" : "Apache Tomcat/7.0.67" , "serverVersion" : "3.0" , "JSPversion" : "2.2" } )
 
 =============================== CREATE & UPLOAD romanlaptev.heroku.com
 https://habrahabr.ru/post/232679/

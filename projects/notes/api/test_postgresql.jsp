@@ -1,0 +1,115 @@
+<%@ page contentType="text/html" %>
+<%@ page import="java.sql.*" %>
+
+<%
+	Connection conn = null;
+	String dbUser = "postgres";
+	String dbPassword = "master";
+	String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
+	String dbClassName = "org.postgresql.Driver";
+	String sql;
+	String jsonLog = "";
+	String msg = "";
+	boolean test = false;
+	
+	try {
+		Class.forName( dbClassName );
+		test = true;
+	} catch (ClassNotFoundException e) {
+		// e.printStackTrace();
+		jsonLog += "\"error_code\" : \"noJDBCdriver\",";
+		
+		msg = "class "+dbClassName+" not registered...";
+		jsonLog += "\"message\" : \""+msg+"\"";
+		
+		jsonLog = "{" + jsonLog + "}";
+		//jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
+	}
+	
+	if (test){
+// out.println ("<div class='alert alert-success'>");
+// out.println ("class "+dbClassName+" registered...");
+// out.println ("</div>");
+		try {
+			conn = DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+			test = true;
+			
+		} catch (SQLException e) {
+			test = false;
+			// out.println ("<div class='alert alert-danger'>");
+			// out.println("Connection to " +dbUrl+ " failed...");
+			// out.println ("</div>");
+			//e.printStackTrace();
+			jsonLog += "\"error_code\" : \"noDBconnect\",";
+			
+			msg = "Connection to " +dbUrl+ " failed...";
+			jsonLog += "\"message\" : \""+msg+"\"";
+			jsonLog = "{" + jsonLog + "}";
+			
+			//request.setCharacterEncoding("CP1251"); 
+			//response.setContentType("text/html; charset=UTF-8");
+			response.setCharacterEncoding("CP1251");
+			
+			jsonLog += ",";
+			jsonLog += "{\"message\" : \""+e.getMessage()+"\"}";
+		}
+
+	}
+
+	if (test){
+// out.println ("<div class='alert alert-success'>");
+// out.println("Connection to " +dbUrl+ " success...");
+// out.println ("</div>");
+
+		Statement stat = conn.createStatement();
+// out.println ("<div class='alert alert-info'>");
+// out.println ("connection statement: " + stat);
+// out.println ("</div>");
+
+		//sql = "SELECT * FROM PG_SETTINGS WHERE name='server_version';";
+		sql = "SELECT version();";
+		ResultSet rs = stat.executeQuery(sql);
+		ResultSetMetaData data = rs.getMetaData();
+		
+		int count = data.getColumnCount();
+		String key = "";
+		String value = "";
+		String dbVersion = "unknown";
+		
+		while (rs.next()) {
+			for ( int n = 1; n <= count; n++ ) {
+				key = data.getColumnName(n);
+				value = rs.getString(n);
+//out.println( key + " : " + value );
+//out.println( key.getClass().getName() );
+				if( key.equals("version") ){
+					dbVersion = value;
+				}
+//out.println("<br>");
+			}//next
+		}
+		rs.close();
+		
+		jsonLog += "\"error_code\" : \"0\",";
+			
+		msg = dbVersion;
+		jsonLog += "\"message\" : \""+msg+"\"";
+		jsonLog = "{" + jsonLog + "}";
+
+
+		try{ 
+			conn.close();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+	}
+	
+	if( jsonLog.length() > 0){
+		jsonLog = jsonLog.replaceAll("\r", "R");
+		jsonLog = jsonLog.replaceAll("\n", "<br>");
+		//jsonLog = jsonLog.replaceAll("/", "!");
+		//jsonLog = jsonLog.replaceAll(":", "%");
+		out.println( jsonLog );
+	}
+%>
