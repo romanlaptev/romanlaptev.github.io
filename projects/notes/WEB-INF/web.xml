@@ -20,4 +20,13 @@
 		<url-pattern>/notes-serv</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>Notes2</servlet-name>
+		<servlet-class>mypackage.Notes2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Notes2</servlet-name>
+		<url-pattern>/notes-serv-postgres</url-pattern>
+	</servlet-mapping>
+
 </web-app>

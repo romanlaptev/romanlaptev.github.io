@@ -8,6 +8,10 @@ import java.io.*;
 import java.sql.*;
 
 import javax.servlet.ServletException;
+//import javax.servlet.ServletConfig;
+//import javax.servlet.ServletContext;
+
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,13 +50,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 @MultipartConfig
-public final class Notes extends HttpServlet {
+public final class Notes2 extends HttpServlet {
 	Connection conn = null;
-	static final String dbUser = "root";
+	static final String dbUser = "postgres";
 	static final String dbPassword = "master";
-	//static final String dbUrl = "jdbc:mysql://localhost/mysql";
-	static final String dbUrl = "jdbc:mysql://localhost/mysql?useUnicode=true&characterEncoding=UTF-8";
-
+	static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
+	//static final String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
+	static final String dbClassName = "org.postgresql.Driver";
+	
 	PrintWriter out;
 	Statement stat;
 
@@ -67,12 +72,22 @@ public final class Notes extends HttpServlet {
 	private String message;	
 	
 	HttpServletResponse Response;
+	//private ServletConfig config;
 	
 	//constructor
-	public Notes() {
+	public Notes2() {
 		//sql.put("test", "Test!");
 	}
-   
+  
+	public void init() throws ServletException {
+	//public void init( ServletConfig config ) throws ServletException {
+	}//end init()
+	
+	public void destroy(){
+		/*called before the Filter instance is removed 
+		from service by the web container*/
+	}
+	
 /**
  * Respond to a GET request for the content produced by
  * this servlet.
@@ -85,18 +100,29 @@ public final class Notes extends HttpServlet {
  */
 	@Override
 	public void doGet( HttpServletRequest request,	HttpServletResponse response) throws IOException, ServletException {
+		
+		request.setCharacterEncoding("UTF-8"); 
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
 		out = response.getWriter();
 		Response = response;
 		PageLoad( request );
 	}//end doGet()
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
+		request.setCharacterEncoding("UTF-8"); //charset for client send data
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");//charset for send to the server
+
 		out = response.getWriter();
 		Response = response;
 		PageLoad( request );
 	}//end doPost()
 
 	protected void PageLoad( HttpServletRequest request ){
+		
 		sql.put("createDB", "CREATE DATABASE IF NOT EXISTS `"+dbName+"` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;");
 		
 //------------------
@@ -161,23 +187,22 @@ public final class Notes extends HttpServlet {
 		//start, connect to database server, create database, create table, check request parameters
 		try
 		{
-			Class.forName ("com.mysql.jdbc.Driver").newInstance ();
+			Class.forName ( dbClassName ).newInstance ();
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
-
-			//String message = "Database connection established,  " + dbUrl;
+			//message = "Database connection established,  " + dbUrl;
 			//jsonLog += "{\"message\" : \""+message+"\"},";
 			
 			runUpdateQuery( sql.get("createDB") );
-			runUpdateQuery( sql.get("selectDB") );
+			//runUpdateQuery( sql.get("selectDB") );
 //stat.execute("set character set utf8");
 //stat.execute("set names utf8"); 
 // stat.execute("set character_set_client='utf8'");
 // stat.execute("set character_set_results='utf8'"); 
 // stat.execute("set collation_connection='utf8_general_ci'"); 
 		
-			runUpdateQuery( sql.get("createTable") );
+			//runUpdateQuery( sql.get("createTable") );
 
 			_testRequestParams( request );
 		}
@@ -237,7 +262,8 @@ public final class Notes extends HttpServlet {
 			return;
 		}
 
-		//Response.setContentType("text/html; charset=utf-8");
+		// Response.setContentType("text/html; charset=UTF-8");
+		// //Response.setContentType("text/html;");
 		// try {
 			// //указываем кодировку для данных полученых от клиента
 			// request.setCharacterEncoding("UTF-8"); 
@@ -272,79 +298,79 @@ public final class Notes extends HttpServlet {
 			jsonLog += "\"message\" : \""+message+"\"},";
 			return;
 		}
-//out.println("action:" + action);
+out.println("action:" + action);
 
-		switch (action)
-		{
-			case "save_note":
-				saveNote( request );
-			break;
+		// switch (action)
+		// {
+			// case "save_note":
+				// saveNote( request );
+			// break;
 				
-			case "get_notes":
-				getNotes();
-			break;
+			// case "get_notes":
+				// getNotes();
+			// break;
 				
-			case "delete_note":
-				String deleteNoteQuery = sql.get("deleteNote");
+			// case "delete_note":
+				// String deleteNoteQuery = sql.get("deleteNote");
 				
-				String id = request.getParameter("id");
-				deleteNoteQuery = deleteNoteQuery.replace("{{id}}", id);
+				// String id = request.getParameter("id");
+				// deleteNoteQuery = deleteNoteQuery.replace("{{id}}", id);
 				
-//out.println("Query:" + deleteNoteQuery);
-				runUpdateQuery( deleteNoteQuery );
+// //out.println("Query:" + deleteNoteQuery);
+				// runUpdateQuery( deleteNoteQuery );
 				
-				message = "Delete note, SQL: " + deleteNoteQuery;
-				jsonLog += "{";
-				jsonLog += "\"message\" : \""+message+"\"";
-				jsonLog += "},";
+				// message = "Delete note, SQL: " + deleteNoteQuery;
+				// jsonLog += "{";
+				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "},";
 				
-			break;
+			// break;
 			
-			case "edit_note":
-				editNote( request );
-			break;
+			// case "edit_note":
+				// editNote( request );
+			// break;
 				
-			case "clear_notes":
-				runUpdateQuery( sql.get("clearNotes") );
-				message = "Clear notes, SQL: " + sql.get("clearNotes");
-				jsonLog += "{";
-				jsonLog += "\"message\" : \""+message+"\"";
-				jsonLog += "},";
-			break;
+			// case "clear_notes":
+				// runUpdateQuery( sql.get("clearNotes") );
+				// message = "Clear notes, SQL: " + sql.get("clearNotes");
+				// jsonLog += "{";
+				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "},";
+			// break;
 				
-			case "remove_table":
-				runUpdateQuery( sql.get("clearNotes") );
-				String message = "Rebuild table, SQL: " + sql.get("clearNotes");
-				jsonLog += "{";
-				jsonLog += "\"message\" : \""+message+"\"";
-				jsonLog += "},";
-			break;
+			// case "remove_table":
+				// runUpdateQuery( sql.get("clearNotes") );
+				// String message = "Rebuild table, SQL: " + sql.get("clearNotes");
+				// jsonLog += "{";
+				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "},";
+			// break;
 				
-			case "export_notes":
-				exportTable( exportFileName );
-			break;
+			// case "export_notes":
+				// exportTable( exportFileName );
+			// break;
 				
-			case "upload":
-//out.println("HttpServletRequest.getContextPath(): " + request.getContextPath() );
-//out.println("ServletContext.getRealPath: " + getServletContext().getRealPath("/") );
-				uploadPath = getServletContext().getRealPath("/") + "upload";
-//out.println("uploadPath: " + uploadPath );
-				uploadFile( request, uploadPath);
+			// case "upload":
+// //out.println("HttpServletRequest.getContextPath(): " + request.getContextPath() );
+// //out.println("ServletContext.getRealPath: " + getServletContext().getRealPath("/") );
+				// uploadPath = getServletContext().getRealPath("/") + "upload";
+// //out.println("uploadPath: " + uploadPath );
+				// uploadFile( request, uploadPath);
 				
-				importTable( uploadPath + "/" + exportFileName );
-			break;
+				// importTable( uploadPath + "/" + exportFileName );
+			// break;
 
-			case "import_notes":
-				String xmlFilePath = getServletContext().getRealPath("/") + "upload/" + exportFileName;
-				importTable( xmlFilePath );
-			break;
+			// case "import_notes":
+				// String xmlFilePath = getServletContext().getRealPath("/") + "upload/" + exportFileName;
+				// importTable( xmlFilePath );
+			// break;
 				
-			//case "test":
-			//break;
+			// //case "test":
+			// //break;
 			
-			//default:
-			//break;
-		}//end switch
+			// //default:
+			// //break;
+		// }//end switch
 
 		
 	}//end _testRequestParams()
@@ -473,10 +499,11 @@ public final class Notes extends HttpServlet {
 		
 //Response.setContentType("text/html");
 //out.println( StringEscapeUtils.escapeHtml( xml ) );
+//out.println( xml );
 
  		Response.addHeader("Content-Type", "application/xhtml+xml");
 		Response.addHeader("Content-Disposition","attachment; filename=" + filename);
-		Response.addHeader("Content-Transfer-Encoding","binary");
+		// Response.addHeader("Content-Transfer-Encoding","binary");
 		//Response.addHeader("Content-Length", xml.Length.ToString() );
 		out.println( xml );
 	}//end exportTable()

@@ -183,6 +183,7 @@ console.log( jsonObj);
 				{
 				"name" : "checkPostgreSQL",
 				"url" : "api/test_postgresql.php",
+				"urlAltJava" : "api/test_postgresql.jsp",
 				"successMsg" : "test local PostgreSQL success...",
 				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
 				"callback" : function(res){
@@ -939,6 +940,11 @@ if( test["name"] === "checkMySQL"){
 		test["url"] = test["urlAltJava"];
 	}
 }
+if( test["name"] === "checkPostgreSQL"){
+	if( _vars["supportJAVA"] ){
+		test["url"] = test["urlAltJava"];
+	}
+}
 		runAjax({
 			"requestMethod" : "GET", 
 			"url" : test["url"], 
@@ -989,11 +995,16 @@ console.log(numTest );
 				}
 
 				if( _vars["supportJAVA"] ){
-					//if( _vars["supportMySQL_java"] ){
 					if( _vars["supportMySQL"] ){
 						noSupport = false;
 						_vars["requestUrl"] = "notes-serv";
 						_vars["exportUrl"] = "notes-serv?action=export_notes";
+						loadNotes();
+					}
+					if( _vars["supportPostgreSQL"] ){
+						noSupport = false;
+						_vars["requestUrl"] = "notes-serv-postgres";
+						_vars["exportUrl"] = "notes-serv-postgres?action=export_notes";
 						loadNotes();
 					}
 				}
