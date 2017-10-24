@@ -38,79 +38,6 @@ var _notes = function ( opt ){
 				}, //end test
 				
 				{
-				"name" : "checkMySQL",
-				"url" : "api/test_mysql.php",
-				"successMsg" : "test local MySQL success...",
-				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
-				"callback" : function(res){
-//console.log(res, typeof res);					
-						_vars["supportMySQL"] = false;
-						
-						if( typeof res !== "string"){
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-							return;
-						}
-
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportMySQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode  ){
-//console.log(errorCode);
-								var msg = this["errorMsg"];
-								msg += ", "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
-					
-					}//end callback
-				}, //end test
-
-				{
-				"name" : "checkPostgreSQL",
-				"url" : "api/test_postgresql.php",
-				"successMsg" : "test local PostgreSQL success...",
-				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
-				"callback" : function(res){
-//console.log(res, typeof res);					
-						_vars["supportPostgreSQL"] = false;
-						
-						if( typeof res !== "string"){
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-							return;
-						}
-
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportPostgreSQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode  ){
-								var msg = this["errorMsg"];
-								msg += ", "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
-					
-					}//end callback
-				}, //end test
-
-				{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
 				"successMsg" : "test ASPX success, suppored by server <b>" + window.location.host + "</b>...",
@@ -131,36 +58,6 @@ var _notes = function ( opt ){
 					}//end callback
 				}, //end test
 				
-				{
-				"name" : "checkMSSQL",
-				"url" : "api/test_mssql.aspx",
-				"successMsg" : "test MSSQL success...",
-				"errorMsg" : "test MSSQL failed, cannot connect to database server...",
-				"callback" : function(res){
-//console.log(res);					
-						_vars["supportMSSQL"] = false;
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportMSSQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode ){
-//console.log(errorCode);
-								var msg = this["errorMsg"];
-								msg += ", error code: "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
-					
-					}//end callback
-				}, //end test
-
 				{
 				"name" : "checkJAVA",
 				"url" : "api/test_java.jsp",
@@ -207,15 +104,17 @@ console.log( jsonObj);
 						
 					}//end callback
 				}, //end test
+				
 				{
-				"name" : "checkMySQL_java",
-				"url" : "api/test_mysql.jsp",
+				"name" : "checkMySQL",
+				"url" : "api/test_mysql.php",
+				"urlAltJava" : "api/test_mysql.jsp",
 				"successMsg" : "test local MySQL success...",
 				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
 //console.log(res, typeof res);					
+						_vars["supportMySQL"] = false;
 						
-						_vars["supportMySQL_java"] = false;
 						if( typeof res !== "string"){
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
@@ -227,14 +126,117 @@ console.log( jsonObj);
 							"errorMsg" : this["errorMsg"],
 							"jsonLog" : res,
 							"onSuccess" : function(){
-								_vars["supportMySQL_java"] = true;
+								_vars["supportMySQL"] = true;
 								var msg = this["successMsg"];
 								_log("<div class='alert alert-success'>" + msg + "</div>");
 							},
 							"onError" : function( errorCode  ){
-console.log(errorCode);
+//console.log(errorCode);
 								var msg = this["errorMsg"];
 								msg += ", "+errorCode;
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
+					}//end callback
+				}, //end test
+				
+				// {
+				// "name" : "checkMySQL_java",
+				// "url" : "api/test_mysql.jsp",
+				// "successMsg" : "test local MySQL success...",
+				// "errorMsg" : "test local MySQL failed, cannot connect to database server...",
+				// "callback" : function(res){
+// //console.log(res, typeof res);					
+						
+						// _vars["supportMySQL_java"] = false;
+						// if( typeof res !== "string"){
+							// var msg = this["errorMsg"];
+							// _log("<div class='alert alert-danger'>" + msg + "</div>");
+							// return;
+						// }
+
+						// parseLog({
+							// "successMsg" : this["successMsg"],
+							// "errorMsg" : this["errorMsg"],
+							// "jsonLog" : res,
+							// "onSuccess" : function(){
+								// _vars["supportMySQL_java"] = true;
+								// var msg = this["successMsg"];
+								// _log("<div class='alert alert-success'>" + msg + "</div>");
+							// },
+							// "onError" : function( errorCode  ){
+// console.log(errorCode);
+								// var msg = this["errorMsg"];
+								// msg += ", "+errorCode;
+								// _log("<div class='alert alert-danger'>" + msg + "</div>");
+							// }//,
+							// //"callback" : function(){
+							// //}//end callback
+						// });	
+					
+					// }//end callback
+				// } //end test
+//,
+				{
+				"name" : "checkPostgreSQL",
+				"url" : "api/test_postgresql.php",
+				"successMsg" : "test local PostgreSQL success...",
+				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
+				"callback" : function(res){
+//console.log(res, typeof res);					
+						_vars["supportPostgreSQL"] = false;
+						
+						if( typeof res !== "string"){
+							var msg = this["errorMsg"];
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+							return;
+						}
+
+						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportPostgreSQL"] = true;
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							},
+							"onError" : function( errorCode  ){
+								var msg = this["errorMsg"];
+								msg += ", "+errorCode;
+								_log("<div class='alert alert-danger'>" + msg + "</div>");
+							}//,
+							//"callback" : function(){
+							//}//end callback
+						});	
+					
+					}//end callback
+				} //end test
+,
+				{
+				"name" : "checkMSSQL",
+				"url" : "api/test_mssql.aspx",
+				"successMsg" : "test MSSQL success...",
+				"errorMsg" : "test MSSQL failed, cannot connect to database server...",
+				"callback" : function(res){
+//console.log(res);					
+						_vars["supportMSSQL"] = false;
+						parseLog({
+							"successMsg" : this["successMsg"],
+							"errorMsg" : this["errorMsg"],
+							"jsonLog" : res,
+							"onSuccess" : function(){
+								_vars["supportMSSQL"] = true;
+								var msg = this["successMsg"];
+								_log("<div class='alert alert-success'>" + msg + "</div>");
+							},
+							"onError" : function( errorCode ){
+//console.log(errorCode);
+								var msg = this["errorMsg"];
+								msg += ", error code: "+errorCode;
 								_log("<div class='alert alert-danger'>" + msg + "</div>");
 							}//,
 							//"callback" : function(){
@@ -292,6 +294,7 @@ console.log(errorCode);
 		defineEvents();
 		var startNumTest = 0;
 		testServer( startNumTest );
+		//testServerMod();
 	};
 
 	function _getTpl( id ){
@@ -930,6 +933,12 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 	function testServer( numTest ){
 
 		var test = _vars["tests"][ numTest ];
+//change tst url
+if( test["name"] === "checkMySQL"){
+	if( _vars["supportJAVA"] ){
+		test["url"] = test["urlAltJava"];
+	}
+}
 		runAjax({
 			"requestMethod" : "GET", 
 			"url" : test["url"], 
@@ -946,6 +955,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			} 
 			numTest++;
 			if( numTest < _vars["tests"].length ){
+console.log(numTest );				
 			//if( numTest < 2 ){
 				testServer( numTest );
 			} else {
@@ -979,7 +989,8 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 				}
 
 				if( _vars["supportJAVA"] ){
-					if( _vars["supportMySQL_java"] ){
+					//if( _vars["supportMySQL_java"] ){
+					if( _vars["supportMySQL"] ){
 						noSupport = false;
 						_vars["requestUrl"] = "notes-serv";
 						_vars["exportUrl"] = "notes-serv?action=export_notes";
@@ -995,6 +1006,36 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		}//end _postReq()
 	}//end testServer()
 
+	// function testServerMod(){
+		
+		// //run test PHP
+		// for( var n = 0; n < _vars["tests"].length; n++){
+			// var test = _vars["tests"][ n ];
+			// if( test["name"] === "checkPHP"){
+				// runAjax({
+					// "requestMethod" : "GET", 
+					// "url" : test["url"], 
+					// "onError" : _postReq,
+					// "callback": _postReq
+				// });
+			// }
+// // checkMySQL  notes.js:1001:1
+// // checkPostgreSQL  notes.js:1001:1
+// // checkASPX  notes.js:1001:1
+// // checkMSSQL  notes.js:1001:1
+// // checkJAVA  notes.js:1001:1
+// // checkMySQL_java
+		// }//next
+		
+		// function _postReq( data ){
+// console.log(data, typeof data, data.length);
+			// // if( typeof test["callback"] === "function"){
+				// // test["callback"]( data );
+			// // } 
+		// }//end _postReq()
+		
+	// }//end testServerMod()
+	
 	function loadNotes(){
 //console.log( _vars["templates"] );
 		_vars["messagesList"].innerHTML = "";

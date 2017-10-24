@@ -92,10 +92,8 @@
 		
 		jsonLog += "\"error_code\" : \"0\",";
 			
-		msg = dbVersion;
-		jsonLog += "\"message\" : \""+msg+"\"";
+		jsonLog += "\"message\" : \""+dbVersion+"\"";
 		jsonLog = "{" + jsonLog + "}";
-
 
 		try{ 
 			conn.close();
