@@ -54,7 +54,6 @@ public final class Notes2 extends HttpServlet {
 	Connection conn = null;
 	static final String dbUser = "postgres";
 	static final String dbPassword = "master";
-	static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
 	//static final String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
 	static final String dbClassName = "org.postgresql.Driver";
 	
@@ -63,13 +62,17 @@ public final class Notes2 extends HttpServlet {
 
 	static final String dbName = "db1";
 	static final String tableName = "notes";
+
+	//static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
+	static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/"+dbName;
+
 	static final String exportFileName = "notes.xml";
 	String uploadPath;
 	 
 	public Map<String, String> sql = new HashMap<String, String>();
 
 	public String jsonLog = "";
-	private String message;	
+	private String msg;	
 	
 	HttpServletResponse Response;
 	//private ServletConfig config;
@@ -141,8 +144,7 @@ public final class Notes2 extends HttpServlet {
 ") DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 		sql.put("createTable", _query);
 		
-		//sql.put("selectDB", "USE db1;");
-		sql.put("selectDB", "\connect db1;");
+		sql.put("selectDB", "USE db1;");
 		
 //------------------
 		_query = "SELECT id, author, title, text_message, DATE_FORMAT(client_date, '%Y-%m-%d %H:%i:%s') as client_date, "+
@@ -195,10 +197,10 @@ public final class Notes2 extends HttpServlet {
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
 			stat = conn.createStatement();
 			
-			//message = "Database connection established,  " + dbUrl;
-			//jsonLog += "{\"message\" : \""+message+"\"},";
+			//msg = "Database connection established,  " + dbUrl;
+			//jsonLog += "{\"message\" : \""+msg+"\"},";
 			
-			runUpdateQuery( sql.get("createDB") );
+			//runUpdateQuery( sql.get("createDB") );
 			//runUpdateQuery( sql.get("selectDB") );
 //stat.execute("set character set utf8");
 //stat.execute("set names utf8"); 
@@ -212,15 +214,21 @@ public final class Notes2 extends HttpServlet {
 		}
 		catch (SQLException e)
 		{
-			e.printStackTrace( out );
+			//e.printStackTrace( out );
 			//out.println( e.getMessage() );
+			msg = e.getMessage();
+			jsonLog += "{";
+			jsonLog += "\"error_code\" : \"connectDBerror\",";
+			jsonLog += "\"message\" : \""+msg+"\",";
+			jsonLog += "},";
+			
 		}
 		catch (Exception e)
 		{
-			String message = "Cannot connect to database server " + dbUrl;
+			msg = "Cannot connect to database server " + dbUrl;
 			jsonLog += "{\"error_code\" : \"connectDBerror\"},";
 			jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
-			jsonLog += "{\"message\" : \""+message+"\"}";
+			jsonLog += "{\"message\" : \""+msg+"\"}";
 			//e.printStackTrace(response.getWriter());
 		}
 		finally
@@ -231,10 +239,10 @@ public final class Notes2 extends HttpServlet {
 					conn.close ();
 				} catch (Exception e) { 
 					//e.printStackTrace(response.getWriter());
-					String message = "Cannot close connect to database " + dbUrl;
+					msg = "Cannot close connect to database " + dbUrl;
 					jsonLog += "{\"error_code\" : \"DBerror\"},";
 					jsonLog += "{\"message\" : \""+e.getMessage()+"\"},";
-					jsonLog += "{\"message\" : \""+message+"\"}";
+					jsonLog += "{\"message\" : \""+msg+"\"}";
 				}
 			}
 		}//end block try
@@ -260,9 +268,9 @@ public final class Notes2 extends HttpServlet {
 		//out.println("Request method:" + request.getMethod() );
 		Enumeration paramNames = request.getParameterNames();
 		if( !paramNames.hasMoreElements() ){
-			String message = "No parameters in request object...";
+			msg = "No parameters in request object...";
 			jsonLog += "{\"error_code\" : \"noGetParameters\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
+			jsonLog += "\"message\" : \""+msg+"\"},";
 			return;
 		}
 
@@ -288,18 +296,18 @@ public final class Notes2 extends HttpServlet {
 		String action = request.getParameter("action");
 //out.println( action == null );
 		if (action == null) {
-			String message = "No parameter 'action' ...";
+			msg = "No parameter 'action' ...";
 			jsonLog += "{\"error_code\" : \"noGetParameter\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
+			jsonLog += "\"message\" : \""+msg+"\"},";
 			return;
 		}
 		
 //out.println( "action length: " + action.length() );
 //out.println( "action isEmpty: " + action.isEmpty() );
 		if ( action.isEmpty() ) {
-			String message = "Empty 'action' ...";
+			msg = "Empty 'action' ...";
 			jsonLog += "{\"error_code\" : \"emptyAction\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
+			jsonLog += "\"message\" : \""+msg+"\"},";
 			return;
 		}
 out.println("action:" + action);
@@ -323,9 +331,9 @@ out.println("action:" + action);
 // //out.println("Query:" + deleteNoteQuery);
 				// runUpdateQuery( deleteNoteQuery );
 				
-				// message = "Delete note, SQL: " + deleteNoteQuery;
+				// msg = "Delete note, SQL: " + deleteNoteQuery;
 				// jsonLog += "{";
-				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "\"message\" : \""+msg+"\"";
 				// jsonLog += "},";
 				
 			// break;
@@ -336,17 +344,17 @@ out.println("action:" + action);
 				
 			// case "clear_notes":
 				// runUpdateQuery( sql.get("clearNotes") );
-				// message = "Clear notes, SQL: " + sql.get("clearNotes");
+				// msg = "Clear notes, SQL: " + sql.get("clearNotes");
 				// jsonLog += "{";
-				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "\"message\" : \""+msg+"\"";
 				// jsonLog += "},";
 			// break;
 				
 			// case "remove_table":
 				// runUpdateQuery( sql.get("clearNotes") );
-				// String message = "Rebuild table, SQL: " + sql.get("clearNotes");
+				// msg = "Rebuild table, SQL: " + sql.get("clearNotes");
 				// jsonLog += "{";
-				// jsonLog += "\"message\" : \""+message+"\"";
+				// jsonLog += "\"message\" : \""+msg+"\"";
 				// jsonLog += "},";
 			// break;
 				
@@ -449,9 +457,9 @@ out.println("action:" + action);
 		
 //out.println("Query:" + updateNoteQuery);
 		runUpdateQuery( updateNoteQuery );
-		message = "Update note "+id+", SQL: " + updateNoteQuery;
+		msg = "Update note "+id+", SQL: " + updateNoteQuery;
 		jsonLog += "{";
-		jsonLog += "\"message\" : \""+message+"\"";
+		jsonLog += "\"message\" : \""+msg+"\"";
 		jsonLog += "},";
 	}//end editNote()
 	
@@ -460,9 +468,9 @@ out.println("action:" + action);
 		List<Map<String, String>> result = runSelectQuery( sql.get("getNotes") );
 		
 		if( result.size() == 0 ){
-			String message = "error, no export data... ";
+			msg = "error, no export data... ";
 			jsonLog += "{\"error_code\" : \"exportError\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
+			jsonLog += "\"message\" : \""+msg+"\"},";
 			return;
 		}
 		
@@ -518,10 +526,10 @@ out.println("action:" + action);
 //out.println("request ContentType: " + contentType );
 		
 		if( contentType.indexOf("multipart/form-data") == -1){
-			String message = "Wrong request, No POST data";
+			msg = "Wrong request, No POST data";
 			jsonLog += "{";
 			jsonLog += "\"error_code\" : \"noPOSTdata\",";
-			jsonLog += "\"message\" : \""+message+"\"";
+			jsonLog += "\"message\" : \""+msg+"\"";
 			jsonLog += "},";
 			return;
 		};
@@ -537,10 +545,10 @@ out.println("action:" + action);
 					// e.printStackTrace();
 				// }
 			// }//next
-			String message = "Directory " + dirPath + " not exists...";
+			msg = "Directory " + dirPath + " not exists...";
 			jsonLog += "{";
 			jsonLog += "\"error_code\" : \"DirectoryNotFound\",";
-			jsonLog += "\"message\" : \""+message+"\"";
+			jsonLog += "\"message\" : \""+msg+"\"";
 			jsonLog += "},";
 			
 			try {
@@ -548,9 +556,9 @@ out.println("action:" + action);
 				boolean created = false;
 				created = file.mkdirs();
 				if( created ){
-					message = "Directory " + dirPath + " was created...";
+					msg = "Directory " + dirPath + " was created...";
 					jsonLog += "{";
-					jsonLog += "\"message\" : \""+message+"\"";
+					jsonLog += "\"message\" : \""+msg+"\"";
 					jsonLog += "},";
 				}			 
 			} catch(Exception e) {
@@ -597,10 +605,10 @@ out.println("action:" + action);
 					fos.close();
 				}
 				catch(IOException ex){
-					String message = "Upload error: " + ex.getMessage();
+					msg = "Upload error: " + ex.getMessage();
 					jsonLog += "{";
 					jsonLog += "\"error_code\" : \"UploadError\",";
-					jsonLog += "\"message\" : \""+message+"\"";
+					jsonLog += "\"message\" : \""+msg+"\"";
 					jsonLog += "},";
 				}
  				
@@ -615,7 +623,7 @@ out.println("action:" + action);
 
 	private void importTable( String xmlFilePath){
 //out.println("xmlFilePath: " + xmlFilePath );
-		String msg;
+		//String msg;
 		
 		File xmlFile;
 		xmlFile = new File( xmlFilePath );
@@ -729,18 +737,18 @@ out.println("Query: " + query);
 		{
 			stat.executeUpdate( query );
 			
-			// String _message = "Query: " + query;
+			// msg = "Query: " + query;
 			// jsonLog += "{";
-			// jsonLog += "\"message\" : \""+_message+"\"";
+			// jsonLog += "\"message\" : \""+msg+"\"";
 			// jsonLog += "},";
 		}
 		catch (SQLException e)
 		{
 			//e.printStackTrace( out );
 			//out.println( e.getMessage() );
-			String message = "SQL Exception. " + e.getMessage();
+			msg = "SQL Exception. " + e.getMessage();
 			jsonLog += "{\"error_code\" : \"SQLException\",";
-			jsonLog += "\"message\" : \""+message+"\"},";
+			jsonLog += "\"message\" : \""+msg+"\"},";
 			return;
 		}
 	}//end

@@ -16,6 +16,7 @@
 https://www.mkyong.com/jdbc/how-do-connect-to-postgresql-with-jdbc-driver-java/
 https://habrahabr.ru/sandbox/41444/
 https://wiki.dieg.info/postgresql
+https://postgrespro.ru/docs/postgrespro/9.5/sql-do
 </pre>
 
 <%
@@ -88,7 +89,8 @@ https://wiki.dieg.info/postgresql
 			htmlTableBody += "</tr>";
 		}
 		
-		
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
+
 		// while (rs.next()) {
 				
 			// for ( int n = 1; n <= count; n++ ) {
@@ -106,31 +108,6 @@ https://wiki.dieg.info/postgresql
 			// }//next
 		// }
 		
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: 
-<% 
-out.println(sql); 
-%>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<% 
-out.println( htmlHeadBody ); 
-%>
-				</tr>
-			</thead>
-<% 
-out.println( htmlTableBody ); 
-%>
-		</table>
-	</div>
-</div>
-
-<%		
 //-----------------------
 		sql = "SELECT version();";
 		
@@ -154,25 +131,8 @@ out.println( htmlTableBody );
 			}//next
 			htmlTableBody += "</tr>";
 		}
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: 
-<%= sql %>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<%= htmlHeadBody %>
-				</tr>
-			</thead>
-<%= htmlTableBody %>
-		</table>
-	</div>
-</div>
-
-<%		
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
+		
 //-----------------------
 		//sql = "show server_encoding;";
 		sql = "select datname, pg_encoding_to_char(encoding) from pg_database;";
@@ -196,32 +156,13 @@ SQL:
 			}//next
 			htmlTableBody += "</tr>";
 		}
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: 
-<%= sql %>  <i>(show databases)</i>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<%= htmlHeadBody %>
-				</tr>
-			</thead>
-<%= htmlTableBody %>
-		</table>
-	</div>
-</div>
-
-<%		
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
 
 //-------------------------- show databases
 		sql = "select * from pg_database;";
 		rs = stat.executeQuery(sql);
 		data = rs.getMetaData();
 		count = data.getColumnCount();
-		
 
 		htmlHeadBody = "";
 		for ( int n = 1; n <= count; n++ ) {
@@ -238,26 +179,9 @@ SQL:
 			}//next
 			htmlTableBody += "</tr>";
 		}
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: 
-<%= sql %>  <i>(show databases)</i>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<%= htmlHeadBody %>
-				</tr>
-			</thead>
-<%= htmlTableBody %>
-		</table>
-	</div>
-</div>
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
 
-
-<%
+//--------------------------
 		// try
 		// {
 			// sql = "SET CONNECTION = db1";
@@ -289,24 +213,8 @@ SQL:
 			}//next
 			htmlTableBody += "</tr>";
 		}
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: <%= sql %>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<%= htmlHeadBody %>
-				</tr>
-			</thead>
-<%= htmlTableBody %>
-		</table>
-	</div>
-</div>
-
-<%		
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
+		
 //--------------------------
 		//sql = "SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';";
 		sql = "SELECT * FROM pg_catalog.pg_tables;";
@@ -329,28 +237,9 @@ SQL: <%= sql %>
 			}//next
 			htmlTableBody += "</tr>";
 		}
-%>
-<div class='panel panel-primary'>
-	<div class='panel-heading'>
-SQL: 
-<%= sql %>  <i>(show tables)</i>
-<p><small>
-SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';
-</small></p>
-	</div>
-	<div class='panel-body'>
-		<table class='table table-bordered small'>
-			<thead>
-				<tr class='success'>
-<%= htmlHeadBody %>
-				</tr>
-			</thead>
-<%= htmlTableBody %>
-		</table>
-	</div>
-</div>
-
-<%		
+		out.println( formTable( sql, htmlHeadBody, htmlTableBody) );
+		
+//------------------------------
 		rs.close();
 		
 		try{ 
@@ -371,6 +260,37 @@ SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemana
 		return;
 	}	
 %>
+
+<%!
+String formTable( String sql, String htmlHeadBody, String htmlTableBody ){
+	String html;
+	html = "<div class='panel panel-primary'>"; 
+	html += "	<div class='panel-heading'>"; 
+	html += "SQL: "; 
+
+	html +=sql ; 
+
+	html += "	</div>"; 
+	html += "	<div class='panel-body'>"; 
+	html += "		<table class='table table-bordered small'>"; 
+	html += "			<thead>"; 
+	html += "				<tr class='info'>"; 
+
+	html += htmlHeadBody ; 
+
+	html += "				</tr>"; 
+	html += "			</thead>"; 
+
+	html += htmlTableBody; 
+
+	html += "		</table>"; 
+	html += "	</div>"; 
+	html += "</div>"; 
+	
+	return html;
+}
+%>
+
 	</div>
 </body>
 </html>
