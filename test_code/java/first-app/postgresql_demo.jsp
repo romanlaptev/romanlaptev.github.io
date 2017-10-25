@@ -200,7 +200,7 @@ SQL:
 <div class='panel panel-primary'>
 	<div class='panel-heading'>
 SQL: 
-<%= sql %>
+<%= sql %>  <i>(show databases)</i>
 	</div>
 	<div class='panel-body'>
 		<table class='table table-bordered small'>
@@ -242,7 +242,101 @@ SQL:
 <div class='panel panel-primary'>
 	<div class='panel-heading'>
 SQL: 
-<%= sql %>
+<%= sql %>  <i>(show databases)</i>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<%= htmlHeadBody %>
+				</tr>
+			</thead>
+<%= htmlTableBody %>
+		</table>
+	</div>
+</div>
+
+
+<%
+		// try
+		// {
+			// sql = "SET CONNECTION = db1";
+			// stat.executeUpdate( sql );
+		// }
+		// catch (SQLException e)
+		// {
+			// out.println( e.getMessage() );
+		// }
+
+//--------------------------
+		sql = "SELECT current_database();";
+		rs = stat.executeQuery(sql);
+		data = rs.getMetaData();
+		count = data.getColumnCount();
+
+		htmlHeadBody = "";
+		for ( int n = 1; n <= count; n++ ) {
+			colName = data.getColumnName(n);
+			htmlHeadBody += "<td>" + colName + "</td>";
+		}//next
+		
+		htmlTableBody = "";
+		while (rs.next()) {
+			htmlTableBody += "<tr>";
+			for ( int n = 1; n <= count; n++ ) {
+				value = rs.getString(n);
+				htmlTableBody += "<td>" + value + "</td>";
+			}//next
+			htmlTableBody += "</tr>";
+		}
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: <%= sql %>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<%= htmlHeadBody %>
+				</tr>
+			</thead>
+<%= htmlTableBody %>
+		</table>
+	</div>
+</div>
+
+<%		
+//--------------------------
+		//sql = "SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';";
+		sql = "SELECT * FROM pg_catalog.pg_tables;";
+		rs = stat.executeQuery(sql);
+		data = rs.getMetaData();
+		count = data.getColumnCount();
+
+		htmlHeadBody = "";
+		for ( int n = 1; n <= count; n++ ) {
+			colName = data.getColumnName(n);
+			htmlHeadBody += "<td>" + colName + "</td>";
+		}//next
+		
+		htmlTableBody = "";
+		while (rs.next()) {
+			htmlTableBody += "<tr>";
+			for ( int n = 1; n <= count; n++ ) {
+				value = rs.getString(n);
+				htmlTableBody += "<td>" + value + "</td>";
+			}//next
+			htmlTableBody += "</tr>";
+		}
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: 
+<%= sql %>  <i>(show tables)</i>
+<p><small>
+SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';
+</small></p>
 	</div>
 	<div class='panel-body'>
 		<table class='table table-bordered small'>
