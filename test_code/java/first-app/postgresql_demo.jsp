@@ -62,10 +62,6 @@ https://wiki.dieg.info/postgresql
 //--------------------------------
 		sql = "SELECT * FROM PG_SETTINGS WHERE name='server_version';";
 		//sql = "SELECT version();";
-		out.println ("<div class='panel panel-primary'>");
-		out.println ("<div class='panel-heading'>");
-		out.println ( "SQL: " + sql );
-		out.println ("</div>");
 		
 		ResultSet rs = stat.executeQuery(sql);
 		ResultSetMetaData data = rs.getMetaData();
@@ -73,114 +69,194 @@ https://wiki.dieg.info/postgresql
 		int count = data.getColumnCount();
 		String key = "";
 		String value = "";
-		//String dbVersion = "000";
+		
+		String htmlHeadBody = "";
+		String htmlTableBody = "";
 		String colName;
 		
-		out.println ("<div class='panel-body'>");
-		out.println("<table class='table table-bordered small'>");
-		
-		out.println("<thead>");
-		out.println("<tr class='success'>");
 		for ( int n = 1; n <= count; n++ ) {
 			colName = data.getColumnName(n);
-			out.println( "<td>" + colName + "</td>" );
+			htmlHeadBody += "<td>" + colName + "</td>";
 		}//next
-		out.println("</tr>");
-		out.println("</thead>");
 		
 		while (rs.next()) {
-			out.println("<tr>");
+			htmlTableBody += "<tr>";
 			for ( int n = 1; n <= count; n++ ) {
 				value = rs.getString(n);
-				out.println( "<td>" + value + "</td>" );
+				htmlTableBody += "<td>" + value + "</td>";
 			}//next
-			out.println("</tr>");
+			htmlTableBody += "</tr>";
 		}
 		
-		out.println("</table>");
-		out.println ("</div>");
 		
-		out.println ("</div>");
-		
-		while (rs.next()) {
+		// while (rs.next()) {
 				
-			for ( int n = 1; n <= count; n++ ) {
-//out.println( data.getColumnName(n) + " : " + rs.getString(n) );
-				key = data.getColumnName(n);
-				value = rs.getString(n);
-out.println( key + " : " + value );
-//out.println( key.getClass().getName() );
+			// for ( int n = 1; n <= count; n++ ) {
+// //out.println( data.getColumnName(n) + " : " + rs.getString(n) );
+				// key = data.getColumnName(n);
+				// value = rs.getString(n);
+// out.println( key + " : " + value );
+// //out.println( key.getClass().getName() );
 					
-				// if( key.equals("setting") ){
-					// dbVersion = value;
-				// }
+				// // if( key.equals("setting") ){
+					// // dbVersion = value;
+				// // }
 					
-				out.println(", ");
-			}//next
-		}
+				// out.println(", ");
+			// }//next
+		// }
 		
-		
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: 
+<% 
+out.println(sql); 
+%>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<% 
+out.println( htmlHeadBody ); 
+%>
+				</tr>
+			</thead>
+<% 
+out.println( htmlTableBody ); 
+%>
+		</table>
+	</div>
+</div>
+
+<%		
 //-----------------------
 		sql = "SELECT version();";
-		out.println ("<div class='alert alert-info'>");
-out.println ( "SQL: " + sql );
-out.println("<br>");
 		
 		rs = stat.executeQuery(sql);
 		data = rs.getMetaData();
 		count = data.getColumnCount();
 		
-		while (rs.next()) {
-			for ( int n = 1; n <= count; n++ ) {
-				key = data.getColumnName(n);
-				value = rs.getString(n);
-out.println( key + " : " + value );
-out.println("<br>");
-			}//next
-		}
-		out.println ("</div>");
 
+		htmlHeadBody = "";
+		for ( int n = 1; n <= count; n++ ) {
+			colName = data.getColumnName(n);
+			htmlHeadBody += "<td>" + colName + "</td>";
+		}//next
+		
+		htmlTableBody = "";
+		while (rs.next()) {
+			htmlTableBody += "<tr>";
+			for ( int n = 1; n <= count; n++ ) {
+				value = rs.getString(n);
+				htmlTableBody += "<td>" + value + "</td>";
+			}//next
+			htmlTableBody += "</tr>";
+		}
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: 
+<%= sql %>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<%= htmlHeadBody %>
+				</tr>
+			</thead>
+<%= htmlTableBody %>
+		</table>
+	</div>
+</div>
+
+<%		
 //-----------------------
 		//sql = "show server_encoding;";
 		sql = "select datname, pg_encoding_to_char(encoding) from pg_database;";
-		out.println ("<div class='alert alert-info'>");
-out.println ( "SQL: " + sql );
-out.println("<br>");
-		
 		rs = stat.executeQuery(sql);
 		data = rs.getMetaData();
 		count = data.getColumnCount();
+		
+
+		htmlHeadBody = "";
+		for ( int n = 1; n <= count; n++ ) {
+			colName = data.getColumnName(n);
+			htmlHeadBody += "<td>" + colName + "</td>";
+		}//next
+		
+		htmlTableBody = "";
 		while (rs.next()) {
+			htmlTableBody += "<tr>";
 			for ( int n = 1; n <= count; n++ ) {
-//out.println( data.getColumnName(n) + " : " + rs.getString(n) );
-				key = data.getColumnName(n);
 				value = rs.getString(n);
-out.println( key + " : " + value );
-				out.println("<br>");
+				htmlTableBody += "<td>" + value + "</td>";
 			}//next
+			htmlTableBody += "</tr>";
 		}
-		out.println ("</div>");
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: 
+<%= sql %>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<%= htmlHeadBody %>
+				</tr>
+			</thead>
+<%= htmlTableBody %>
+		</table>
+	</div>
+</div>
+
+<%		
 
 //-------------------------- show databases
 		sql = "select * from pg_database;";
-		out.println ("<div class='alert alert-info'>");
-out.println ( "SQL: " + sql );
-out.println("<br>");
-
 		rs = stat.executeQuery(sql);
 		data = rs.getMetaData();
 		count = data.getColumnCount();
-		while (rs.next()) {
-			for ( int n = 1; n <= count; n++ ) {
-//out.println( data.getColumnName(n) + " : " + rs.getString(n) );
-				key = data.getColumnName(n);
-				value = rs.getString(n);
-out.println( key + " : " + value );
-				out.println("<br>");
-			}//next
-		}
-		out.println ("</div>");
 		
+
+		htmlHeadBody = "";
+		for ( int n = 1; n <= count; n++ ) {
+			colName = data.getColumnName(n);
+			htmlHeadBody += "<td>" + colName + "</td>";
+		}//next
+		
+		htmlTableBody = "";
+		while (rs.next()) {
+			htmlTableBody += "<tr>";
+			for ( int n = 1; n <= count; n++ ) {
+				value = rs.getString(n);
+				htmlTableBody += "<td>" + value + "</td>";
+			}//next
+			htmlTableBody += "</tr>";
+		}
+%>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+SQL: 
+<%= sql %>
+	</div>
+	<div class='panel-body'>
+		<table class='table table-bordered small'>
+			<thead>
+				<tr class='success'>
+<%= htmlHeadBody %>
+				</tr>
+			</thead>
+<%= htmlTableBody %>
+		</table>
+	</div>
+</div>
+
+<%		
 		rs.close();
 		
 		try{ 
