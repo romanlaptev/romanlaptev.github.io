@@ -53,11 +53,11 @@
 			// out.println("Connection to " +dbUrl+ " failed...");
 			// out.println ("</div>");
 			//e.printStackTrace();
-			jsonLog += "\"error_code\" : \"noDBconnect\",";
+			jsonLog += "{\"error_code\" : \"connectDBerror\"}";
 			
+			jsonLog += ",";
 			msg = "Connection to " +dbUrl+ " failed...";
-			jsonLog += "\"message\" : \""+msg+"\"";
-			jsonLog = "{" + jsonLog + "}";
+			jsonLog += "{\"message\" : \""+msg+"\"}";
 			
 			//request.setCharacterEncoding("CP1251"); 
 			//response.setContentType("text/html; charset=UTF-8");
@@ -121,6 +121,8 @@
 		jsonLog = jsonLog.replaceAll("\n", "<br>");
 		//jsonLog = jsonLog.replaceAll("/", "!");
 		//jsonLog = jsonLog.replaceAll(":", "%");
+		
+		jsonLog = "[" + jsonLog + "]";
 		out.println( jsonLog );
 	}
 %>

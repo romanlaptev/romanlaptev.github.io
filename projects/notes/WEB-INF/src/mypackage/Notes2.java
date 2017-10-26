@@ -57,7 +57,7 @@ public final class Notes2 extends HttpServlet {
 	static final String dbPassword = "master";
 	static final String dbHost = "127.0.0.1";
 	static final String dbPort = "5432";
-	static final String dbName = "db3";
+	static final String dbName = "db1";
 	
 	//https://romanlaptev2.herokuapp.com
 	// static final String dbUser = "aejvwysqgsboeb";
@@ -205,6 +205,7 @@ public final class Notes2 extends HttpServlet {
 		{
 			Class.forName ( dbClassName ).newInstance ();
 			conn = DriverManager.getConnection (dbUrl, dbUser, dbPassword);
+			
 			stat = conn.createStatement();
 			
 			//msg = "Database connection established,  " + dbUrl;
@@ -220,7 +221,7 @@ public final class Notes2 extends HttpServlet {
 		
 			//runUpdateQuery( sql.get("createTable") );
 
-			_testRequestParams( request );
+			//_testRequestParams( request );
 		}
 		catch (SQLException e)
 		{
@@ -742,7 +743,7 @@ out.println("Query :" + query );
 	
 	//private void runUpdateQuery(String query) throws SQLException{
 	private void runUpdateQuery(String query) {
-out.println("Query: " + query);
+//out.println("Query: " + query);
 		try
 		{
 			stat.executeUpdate( query );

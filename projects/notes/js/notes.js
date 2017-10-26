@@ -1385,7 +1385,7 @@ console.log(msg);
 					if( jsonObj["message"] && jsonObj["message"].length > 0 ){
 						var msg_ = "<p>" +jsonObj["message"]+ "</p>";
 						//_messagesStr += msg_;
-						_log("<div class='alert alert-info'>" + msg_ + "</div>");
+						_log("<div class='alert alert-info'><small>" + msg_ + "</small></div>");
 					}
 					
 				}
