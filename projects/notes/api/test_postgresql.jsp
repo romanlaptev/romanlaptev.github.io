@@ -1,6 +1,6 @@
 <%@ page contentType="text/html" %>
 <%@ page import="java.sql.*" %>
-
+<%@ page import="org.postgresql.Driver.*" %>
 <%
 	Connection conn = null;
 
