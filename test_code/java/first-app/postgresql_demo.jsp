@@ -1,5 +1,6 @@
 ﻿<%@ page contentType="text/html" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="org.postgresql.Driver.*" %>
 <!DOCTYPE html>
 <html>
 <head>

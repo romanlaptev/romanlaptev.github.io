@@ -3,9 +3,22 @@
 
 <%
 	Connection conn = null;
+
 	String dbUser = "postgres";
 	String dbPassword = "master";
-	String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
+	String dbHost = "127.0.0.1";
+	String dbPort = "5432";
+	String dbName = "postgres";
+	String dbUrl = "jdbc:postgresql://"+dbHost+":"+dbPort+"/"+dbName;
+
+	//https://romanlaptev2.herokuapp.com
+	// String dbUser = "aejvwysqgsboeb";
+	// String dbPassword = "55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c";
+	// String dbHost = "ec2-184-73-189-190.compute-1.amazonaws.com";
+	// String dbPort = "5432";
+	// String dbName = "d7c534mf7866o2";
+	// String dbUrl = "jdbc:postgresql://"+dbHost+":"+dbPort+"/"+dbName;
+
 	String dbClassName = "org.postgresql.Driver";
 	String sql;
 	String jsonLog = "";

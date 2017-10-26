@@ -52,20 +52,30 @@ import org.w3c.dom.NodeList;
 @MultipartConfig
 public final class Notes2 extends HttpServlet {
 	Connection conn = null;
+	
 	static final String dbUser = "postgres";
 	static final String dbPassword = "master";
-	//static final String dbUrl = "jdbc:mysql://localhost/?useUnicode=true&characterEncoding=UTF-8";
+	static final String dbHost = "127.0.0.1";
+	static final String dbPort = "5432";
+	static final String dbName = "db3";
+	
+	//https://romanlaptev2.herokuapp.com
+	// static final String dbUser = "aejvwysqgsboeb";
+	// static final String dbPassword = "55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c";
+	// static final String dbHost = "ec2-184-73-189-190.compute-1.amazonaws.com";
+	// static final String dbPort = "5432";
+	// static final String dbName = "d7c534mf7866o2";
+
+	String dbUrl = "jdbc:postgresql://"+dbHost+":"+dbPort+"/"+dbName;
 	static final String dbClassName = "org.postgresql.Driver";
 	
 	PrintWriter out;
 	Statement stat;
 
-	static final String dbName = "db1";
-	static final String tableName = "notes";
-
 	//static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/postgres";
-	static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/"+dbName;
+	//static final String dbUrl = "jdbc:postgresql://127.0.0.1:5432/"+dbName;
 
+	static final String tableName = "notes";
 	static final String exportFileName = "notes.xml";
 	String uploadPath;
 	 

@@ -961,7 +961,7 @@ if( test["name"] === "checkPostgreSQL"){
 			} 
 			numTest++;
 			if( numTest < _vars["tests"].length ){
-console.log(numTest );				
+//console.log(numTest );				
 			//if( numTest < 2 ){
 				testServer( numTest );
 			} else {
