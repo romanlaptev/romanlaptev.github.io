@@ -1428,7 +1428,7 @@ console.log(msg);
 	return{
 		vars : _vars,
 		init:	function(){ 
-			return _init(); 
+			return _init();
 		}
 	};
 	
