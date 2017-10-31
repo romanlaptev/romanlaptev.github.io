@@ -1,249 +1,249 @@
 var _notes = function ( opt ){
-//console.log(arguments);	
+//console.log(arguments);
 	var _vars = {
 		
 		"requestUrl" : "upload/notes.xml",
 		"exportUrl" : "",
 		//"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
-
+		
 		"tests" : [{
-				"name" : "checkPHP",
-				"url" : "api/test.php",
-				"successMsg" : "test PHP success, suppored by server <b>" + window.location.host + "</b>...",
-				"errorMsg" : "test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...",
-				"callback" : function(res){
-					
-						_vars["supportPHP"] = false;
-						if( res[0] === "4" ){
-							
-							_vars["supportPHP"] = true;
-							
-							var msg = this["successMsg"];
-							_log("<div class='alert alert-success'>" + msg + "</div>");
-						} else {
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-						}
-					}//end callback
-				}, //end test
+			"name" : "checkPHP",
+			"url" : "api/test.php",
+			"successMsg" : "test PHP success, supported by server <b>" + window.location.host + "</b>...",
+			"errorMsg" : "test PHP failed, PHP not supported by server <b>" + window.location.host + "</b>...",
+			"callback" : function(res){
 				
-				{
+				_vars["supportPHP"] = false;
+				if( res[0] === "4" ){
+					
+					_vars["supportPHP"] = true;
+					
+					var msg = this["successMsg"];
+					_log("<div class='alert alert-success'>" + msg + "</div>");
+				} else {
+					var msg = this["errorMsg"];
+					_log("<div class='alert alert-danger'>" + msg + "</div>");
+				}
+			}//end callback
+		}, //end test
+			
+			{
 				"name" : "checkASPX",
 				"url" : "api/test.aspx",
-				"successMsg" : "test ASPX success, suppored by server <b>" + window.location.host + "</b>...",
-				"errorMsg" : "test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...",
+				"successMsg" : "test ASPX success, supported by server <b>" + window.location.host + "</b>...",
+				"errorMsg" : "test ASPX failed, ASP.NET not supported by server <b>" + window.location.host + "</b>...",
 				"callback" : function(res){
 					
-						_vars["supportASPX"] = false;
-						if( res[0] === "4" ){
-							
-							_vars["supportASPX"] = true;
-
-							var msg = this["successMsg"];
-							_log("<div class='alert alert-success'>" + msg + "</div>");
-						} else {
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-						}
-					}//end callback
-				}, //end test
-				
-				{
+					_vars["supportASPX"] = false;
+					if( res[0] === "4" ){
+						
+						_vars["supportASPX"] = true;
+						
+						var msg = this["successMsg"];
+						_log("<div class='alert alert-success'>" + msg + "</div>");
+					} else {
+						var msg = this["errorMsg"];
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+					}
+				}//end callback
+			}, //end test
+			
+			{
 				"name" : "checkJAVA",
 				"url" : "api/test_java.jsp",
-				"successMsg" : "test JAVA success, suppored by server <b>" + window.location.host + "</b>...",
-				"errorMsg" : "test JAVA failed, not suppored by server <b>" + window.location.host + "</b>...",
+				"successMsg" : "test JAVA success, supported by server <b>" + window.location.host + "</b>...",
+				"errorMsg" : "test JAVA failed, not supported by server <b>" + window.location.host + "</b>...",
 				"callback" : function( json ){
-						
-						try{
-							var jsonObj = JSON.parse( json, function(key, value) {
+					
+					try{
+						var jsonObj = JSON.parse( json, function(key, value) {
 //console.log( key, value );
-								return value;
-							});							
-
-							if( jsonObj["testResult"] === "4" ){
-								_vars["supportJAVA"] = true;
-								var msg = this["successMsg"];
-								
-								var n = 0;								
-								for( var key in jsonObj){
-									if( key !== "testResult"){
-										if( n > 0){
-											msg += ", ";
-										} else {
-											msg += "<br>";
-										}
-										msg += key + " : " + jsonObj[key];
-										n++;
-									}
-								}//next
-								
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							} else {
-console.log( jsonObj);
-								_vars["supportJAVA"] = false;
-								var msg = this["errorMsg"];
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}
+							return value;
+						});
+						
+						if( jsonObj["testResult"] === "4" ){
+							_vars["supportJAVA"] = true;
+							var msg = this["successMsg"];
 							
-						} catch(error) {
+							var n = 0;
+							for( var key in jsonObj){
+								if( key !== "testResult"){
+									if( n > 0){
+										msg += ", ";
+									} else {
+										msg += "<br>";
+									}
+									msg += key + " : " + jsonObj[key];
+									n++;
+								}
+							}//next
+							
+							_log("<div class='alert alert-success'>" + msg + "</div>");
+						} else {
+							console.log( jsonObj);
 							_vars["supportJAVA"] = false;
 							var msg = this["errorMsg"];
 							_log("<div class='alert alert-danger'>" + msg + "</div>");
-						}//end catch
+						}
 						
-					}//end callback
-				}, //end test
-				
-				{
+					} catch(error) {
+						_vars["supportJAVA"] = false;
+						var msg = this["errorMsg"];
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+					}//end catch
+					
+				}//end callback
+			}, //end test
+			
+			{
 				"name" : "checkMySQL",
 				"url" : "api/test_mysql.php",
 				"urlAltJava" : "api/test_mysql.jsp",
 				"successMsg" : "test local MySQL success...",
 				"errorMsg" : "test local MySQL failed, cannot connect to database server...",
 				"callback" : function(res){
-//console.log(res, typeof res);					
-						_vars["supportMySQL"] = false;
-						
-						if( typeof res !== "string"){
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-							return;
-						}
-
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportMySQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode  ){
+//console.log(res, typeof res);
+					_vars["supportMySQL"] = false;
+					
+					if( typeof res !== "string"){
+						var msg = this["errorMsg"];
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+						return;
+					}
+					
+					parseLog({
+						"successMsg" : this["successMsg"],
+						"errorMsg" : this["errorMsg"],
+						"jsonLog" : res,
+						"onSuccess" : function(){
+							_vars["supportMySQL"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
+						},
+						"onError" : function( errorCode  ){
 //console.log(errorCode);
-								var msg = this["errorMsg"];
-								msg += ", "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
+							var msg = this["errorMsg"];
+							msg += ", "+errorCode;
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+						}//,
+						//"callback" : function(){
+						//}//end callback
+					});
 					
-					}//end callback
-				}, //end test
-				
-				// {
-				// "name" : "checkMySQL_java",
-				// "url" : "api/test_mysql.jsp",
-				// "successMsg" : "test local MySQL success...",
-				// "errorMsg" : "test local MySQL failed, cannot connect to database server...",
-				// "callback" : function(res){
-// //console.log(res, typeof res);					
-						
-						// _vars["supportMySQL_java"] = false;
-						// if( typeof res !== "string"){
-							// var msg = this["errorMsg"];
-							// _log("<div class='alert alert-danger'>" + msg + "</div>");
-							// return;
-						// }
-
-						// parseLog({
-							// "successMsg" : this["successMsg"],
-							// "errorMsg" : this["errorMsg"],
-							// "jsonLog" : res,
-							// "onSuccess" : function(){
-								// _vars["supportMySQL_java"] = true;
-								// var msg = this["successMsg"];
-								// _log("<div class='alert alert-success'>" + msg + "</div>");
-							// },
-							// "onError" : function( errorCode  ){
+				}//end callback
+			}, //end test
+			
+			// {
+			// "name" : "checkMySQL_java",
+			// "url" : "api/test_mysql.jsp",
+			// "successMsg" : "test local MySQL success...",
+			// "errorMsg" : "test local MySQL failed, cannot connect to database server...",
+			// "callback" : function(res){
+// //console.log(res, typeof res);
+			
+			// _vars["supportMySQL_java"] = false;
+			// if( typeof res !== "string"){
+			// var msg = this["errorMsg"];
+			// _log("<div class='alert alert-danger'>" + msg + "</div>");
+			// return;
+			// }
+			
+			// parseLog({
+			// "successMsg" : this["successMsg"],
+			// "errorMsg" : this["errorMsg"],
+			// "jsonLog" : res,
+			// "onSuccess" : function(){
+			// _vars["supportMySQL_java"] = true;
+			// var msg = this["successMsg"];
+			// _log("<div class='alert alert-success'>" + msg + "</div>");
+			// },
+			// "onError" : function( errorCode  ){
 // console.log(errorCode);
-								// var msg = this["errorMsg"];
-								// msg += ", "+errorCode;
-								// _log("<div class='alert alert-danger'>" + msg + "</div>");
-							// }//,
-							// //"callback" : function(){
-							// //}//end callback
-						// });	
-					
-					// }//end callback
-				// } //end test
+			// var msg = this["errorMsg"];
+			// msg += ", "+errorCode;
+			// _log("<div class='alert alert-danger'>" + msg + "</div>");
+			// }//,
+			// //"callback" : function(){
+			// //}//end callback
+			// });
+			
+			// }//end callback
+			// } //end test
 //,
-				{
+			{
 				"name" : "checkPostgreSQL",
 				"url" : "api/test_postgresql.php",
 				"urlAltJava" : "api/test_postgresql.jsp",
 				"successMsg" : "test local PostgreSQL success...",
 				"errorMsg" : "test local PostgreSQL failed, cannot connect to database server...",
 				"callback" : function(res){
-//console.log(res, typeof res);					
-						_vars["supportPostgreSQL"] = false;
-						
-						if( typeof res !== "string"){
-							var msg = this["errorMsg"];
-							_log("<div class='alert alert-danger'>" + msg + "</div>");
-							return;
-						}
-
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportPostgreSQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode  ){
-								var msg = this["errorMsg"];
-								msg += ", "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
+//console.log(res, typeof res);
+					_vars["supportPostgreSQL"] = false;
 					
-					}//end callback
-				} //end test
-,
-				{
+					if( typeof res !== "string"){
+						var msg = this["errorMsg"];
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+						return;
+					}
+					
+					parseLog({
+						"successMsg" : this["successMsg"],
+						"errorMsg" : this["errorMsg"],
+						"jsonLog" : res,
+						"onSuccess" : function(){
+							_vars["supportPostgreSQL"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
+						},
+						"onError" : function( errorCode  ){
+							var msg = this["errorMsg"];
+							msg += ", "+errorCode;
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+						}//,
+						//"callback" : function(){
+						//}//end callback
+					});
+					
+				}//end callback
+			} //end test
+			,
+			{
 				"name" : "checkMSSQL",
 				"url" : "api/test_mssql.aspx",
 				"successMsg" : "test MSSQL success...",
 				"errorMsg" : "test MSSQL failed, cannot connect to database server...",
 				"callback" : function(res){
-//console.log(res);					
-						_vars["supportMSSQL"] = false;
-						parseLog({
-							"successMsg" : this["successMsg"],
-							"errorMsg" : this["errorMsg"],
-							"jsonLog" : res,
-							"onSuccess" : function(){
-								_vars["supportMSSQL"] = true;
-								var msg = this["successMsg"];
-								_log("<div class='alert alert-success'>" + msg + "</div>");
-							},
-							"onError" : function( errorCode ){
+//console.log(res);
+					_vars["supportMSSQL"] = false;
+					parseLog({
+						"successMsg" : this["successMsg"],
+						"errorMsg" : this["errorMsg"],
+						"jsonLog" : res,
+						"onSuccess" : function(){
+							_vars["supportMSSQL"] = true;
+							var msg = this["successMsg"];
+							_log("<div class='alert alert-success'>" + msg + "</div>");
+						},
+						"onError" : function( errorCode ){
 //console.log(errorCode);
-								var msg = this["errorMsg"];
-								msg += ", error code: "+errorCode;
-								_log("<div class='alert alert-danger'>" + msg + "</div>");
-							}//,
-							//"callback" : function(){
-							//}//end callback
-						});	
+							var msg = this["errorMsg"];
+							msg += ", error code: "+errorCode;
+							_log("<div class='alert alert-danger'>" + msg + "</div>");
+						}//,
+						//"callback" : function(){
+						//}//end callback
+					});
 					
-					}//end callback
-				} //end test
-				
+				}//end callback
+			} //end test
+		
 		],//end tests
 		
 		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list")
 		},
-		"messagesList" : getById("messages"),		
+		"messagesList" : getById("messages"),
 		"controlPanel" : getById("control-btn"),
 		"hideControlPanel" : false,
 		"$num_notes" : getById("num-notes")
@@ -251,35 +251,35 @@ console.log( jsonObj);
 	
 	//correct for remote run
 	// if( window.location.hostname === "romanlaptev.github.io"){
-		// _vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
-		// var btn_export = getById("btn-export");
-		// btn_export.href = _vars["requestUrl"] + "?action=export_notes";
-// //console.log( btn_export.href );	
-		// _vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
+	// _vars["requestUrl"] = _vars["requestRemoteAjaxUrl"] + _vars["requestUrl"];
+	// var btn_export = getById("btn-export");
+	// btn_export.href = _vars["requestUrl"] + "?action=export_notes";
+// //console.log( btn_export.href );
+	// _vars["testUrlPHP"] = _vars["requestRemoteAjaxUrl"] + _vars["testUrlPHP"];
 	// }
-	
-//test	
+
+//test
 // console.log(_vars["controlPanel"]["children"]);
 // for( var key in _vars["controlPanel"]["children"]){
 	// var btn = _vars["controlPanel"]["children"][key];
-// console.log( key, btn["tagName"], btn["href"] );	
+// console.log( key, btn["tagName"], btn["href"] );
 // }
-
+	
 	// function _error( id ){
-		// switch(id){
-			// case "errorPHP":
-				// var msg = "<p>test PHP failed, PHP not suppored by server <b>" + window.location.host + "</b>...</p>";
-			// break
-			// case "errorASPX":
-				// var msg = "<p>test ASPX failed, ASP.NET not suppored by server <b>" + window.location.host + "</b>...</p>";
-			// break
-			// case "errorMSSQL":
-				// var msg = "<p>test MSSQL failed, cannot connect to database server...</p>";
-			// break
-		// }//end switch()
-		// _log("<div class='alert alert-danger'>" + msg + "</div>");
+	// switch(id){
+	// case "errorPHP":
+	// var msg = "<p>test PHP failed, PHP not supported by server <b>" + window.location.host + "</b>...</p>";
+	// break
+	// case "errorASPX":
+	// var msg = "<p>test ASPX failed, ASP.NET not supported by server <b>" + window.location.host + "</b>...</p>";
+	// break
+	// case "errorMSSQL":
+	// var msg = "<p>test MSSQL failed, cannot connect to database server...</p>";
+	// break
+	// }//end switch()
+	// _log("<div class='alert alert-danger'>" + msg + "</div>");
 	// }//end _error()
-
+	
 	var _init = function(){
 //console.log("init _notes");
 		defineEvents();
@@ -287,43 +287,42 @@ console.log( jsonObj);
 		testServer( startNumTest );
 		//testServerMod();
 	};
-
+	
 	function _getTpl( id ){
 		var tpl = getById(id);
-		var html = tpl.innerHTML;
-		return html;
+		return tpl.innerHTML;
 	}//end _getTpl()
 	
-
+	
 	function defineEvents(){
 //console.log( _vars.messagesList );
-
+		
 		//ADD NEW NOTE
-		document.forms["form_message"].onsubmit = function(e){  
+		document.forms["form_message"].onsubmit = function(e){
 //console.log("Submit form", e, this);
-
+			
 			if( !_vars["supportPHP"] &&
-					!_vars["supportASPX"] &&
-						!_vars["supportJAVA"]){
+				!_vars["supportASPX"] &&
+				!_vars["supportJAVA"]){
 				return false;
 			}
 			
 			if( !_vars["supportMySQL"] &&
-					!_vars["supportPostgreSQL"] &&
-						!_vars["supportMSSQL"] &&
-							!_vars["supportMySQL_java"]){
+				!_vars["supportPostgreSQL"] &&
+				!_vars["supportMSSQL"] &&
+				!_vars["supportMySQL_java"]){
 				return false;
 			}
 			
 			checkForm({
-				"form" : this, 
+				"form" : this,
 				"modalWindowId" : "#newModal",
 				"action" : "save_note"
 			});
 			
 			return false;
 		};//end event
-
+		
 		//EDIT
 		$('#editModal').on('show.bs.modal', function (e) {
 			var btn = $(e.relatedTarget);
@@ -339,9 +338,9 @@ console.log( jsonObj);
 			
 			var $text_message = $("#note-" + note_id + " .text-message");
 			
-			//change out-code-url 
+			//change out-code-url
 			var _copyHTML = $text_message.html();
-//console.log(_copyHTML);			
+//console.log(_copyHTML);
 			$text_message.children(".out-code-url").each(function(index, value){
 //console.log( index + ": " + value );
 //console.log( this );
@@ -352,19 +351,19 @@ console.log( jsonObj);
 //console.log( code );
 				$(this)[0].outerHTML = code;
 			});
-
+			
 			var text_message = $text_message.html();
 			//var text_message = $text_message.text();
 //console.log(text_message, text_message.length );
 
 //filter
 			text_message = text_message
-.replace(/<!-- \[br\] --><br>/g, "[br]")
-.replace(/<pre><!-- \[code\] -->/g, "[code]")
-.replace(/<!-- \[\/code\] --><\/pre>/g, "[/code]")
-.replace(/\&amp;/g, "&")
-.replace(/\&lt;/g, "<")
-.replace(/\&gt;/g, ">");
+				.replace(/<!-- \[br\] --><br>/g, "[br]")
+				.replace(/<pre><!-- \[code\] -->/g, "[code]")
+				.replace(/<!-- \[\/code\] --><\/pre>/g, "[/code]")
+				.replace(/\&amp;/g, "&")
+				.replace(/\&lt;/g, "<")
+				.replace(/\&gt;/g, ">");
 			$("#message-edit-form textarea[name=text_message]").val( text_message.trim() );
 			
 			$text_message.html( _copyHTML );
@@ -373,36 +372,36 @@ console.log( jsonObj);
 		$("#message-edit-form").on("submit", function(){
 			//var error = false;
 			// $("#message-edit-form .test").each(function(){
-				// if ( $.trim( $(this).val() ).length === 0) {
-					// error = true;
-					// $(this).addClass("alert-danger");
-				// }
+			// if ( $.trim( $(this).val() ).length === 0) {
+			// error = true;
+			// $(this).addClass("alert-danger");
+			// }
 			// });
-
+			
 			// if (!error){
-				// sendForm( formValues );
-				// $("#editModal").modal("hide");
+			// sendForm( formValues );
+			// $("#editModal").modal("hide");
 			// } else{
-				// //e.preventDefault();
-	// var msg = "<p>error in form..</p>";
-	// _log("<div class='alert alert-warning'>" + msg + "</div>");
-			// }	
+			// //e.preventDefault();
+			// var msg = "<p>error in form..</p>";
+			// _log("<div class='alert alert-warning'>" + msg + "</div>");
+			// }
 			
 			if( !_vars["supportPHP"] &&
-					!_vars["supportASPX"] &&
-						!_vars["supportJAVA"]){
+				!_vars["supportASPX"] &&
+				!_vars["supportJAVA"]){
 				return false;
 			}
 			
 			if( !_vars["supportMySQL"] &&
-					!_vars["supportPostgreSQL"] &&
-						!_vars["supportMSSQL"] &&
-							!_vars["supportMySQL_java"]){
+				!_vars["supportPostgreSQL"] &&
+				!_vars["supportMSSQL"] &&
+				!_vars["supportMySQL_java"]){
 				return false;
 			}
 			
 			checkForm({
-				"form" : this, 
+				"form" : this,
 				"modalWindowId" : "#editModal",
 				"action" : "edit_note"
 			});
@@ -415,41 +414,41 @@ console.log( jsonObj);
 		document.forms["form_import"].onsubmit = function(e) {
 			e.preventDefault();
 			if( !_vars["supportPHP"] &&
-					!_vars["supportASPX"] &&
-						!_vars["supportJAVA"]){
+				!_vars["supportASPX"] &&
+				!_vars["supportJAVA"]){
 				return false;
 			}
 			
 			if( !_vars["supportMySQL"] &&
-					!_vars["supportPostgreSQL"] &&
-						!_vars["supportMSSQL"] &&
-							!_vars["supportMySQL_java"]){
+				!_vars["supportPostgreSQL"] &&
+				!_vars["supportMSSQL"] &&
+				!_vars["supportMySQL_java"]){
 				return false;
 			}
 			_upload( document.forms["form_import"] );
 		};//end event
-/*
-    $("form[name='form_import']").submit(function(e) {
-        var formData = new FormData($(this)[0]);
-
-        $.ajax({
-            url: _vars["requestUrl"],
-            type: "POST",
-            data: formData,
-            async: false,
-            success: function (msg) {
-                alert(msg);
-            },
-            error: function(msg) {
-                alert('Ошибка!');
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-        e.preventDefault();
-    });
-*/
+		/*
+			$("form[name='form_import']").submit(function(e) {
+				var formData = new FormData($(this)[0]);
+		
+				$.ajax({
+					url: _vars["requestUrl"],
+					type: "POST",
+					data: formData,
+					async: false,
+					success: function (msg) {
+						alert(msg);
+					},
+					error: function(msg) {
+						alert('Ошибка!');
+					},
+					cache: false,
+					contentType: false,
+					processData: false
+				});
+				e.preventDefault();
+			});
+		*/
 		//DELETE NOTE
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
@@ -461,34 +460,34 @@ console.log( jsonObj);
 // //console.log( event.eventPhase );
 // //console.log( "preventDefault: " + event.preventDefault );
 				// //event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-				// //event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+				// //event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 				
 				if( target.tagName === "A"){
 					if ( target.href.indexOf("#") !== -1){
 						
-						if (event.preventDefault) { 
+						if (event.preventDefault) {
 							event.preventDefault();
 						} else {
-							event.returnValue = false;				
+							event.returnValue = false;
 						}
-
-							var search = target.href.split("#"); 
-							var parseStr = search[1]; 
+						
+						var search = target.href.split("#");
+						var parseStr = search[1];
 //console.log( search, parseStr );
-							if( parseStr.length > 0 ){
-								if( parseStr.indexOf("delete_note") !== -1){
-										var p = parseStr.split("-");
-										serviceAction({
-											"action" : p[0],
-											"id": p[1]
-										}, 
-										function(){
-											loadNotes();
-										});
-								}
-							} else {
-		// console.log( "Warn! error parse url in " + target.href );
+						if( parseStr.length > 0 ){
+							if( parseStr.indexOf("delete_note") !== -1){
+								var p = parseStr.split("-");
+								serviceAction({
+										"action" : p[0],
+										"id": p[1]
+									},
+									function(){
+										loadNotes();
+									});
 							}
+						} else {
+							// console.log( "Warn! error parse url in " + target.href );
+						}
 					}
 				}
 				
@@ -504,7 +503,7 @@ console.log( jsonObj);
 				return false;
 			}
 		}
-
+		
 		//REMOVE ALL NOTES, REFRESH TABLES
 		if( _vars.controlPanel ){
 			_vars.controlPanel.onclick = function(event){
@@ -513,32 +512,32 @@ console.log( jsonObj);
 //console.log( event );
 				if( target.tagName === "A"){
 					if ( target.href.indexOf("#") !== -1){
-						if (event.preventDefault) { 
+						if (event.preventDefault) {
 							event.preventDefault();
 						} else {
-							event.returnValue = false;				
+							event.returnValue = false;
 						}
-
-							var search = target.href.split("#"); 
-							var parseStr = search[1]; 
+						
+						var search = target.href.split("#");
+						var parseStr = search[1];
 //console.log( search, parseStr );
-							if( parseStr.length > 0 ){
-									var p = parseStr.split("-");
+						if( parseStr.length > 0 ){
+							var p = parseStr.split("-");
 //console.log( p );
-									serviceAction({
-										"action" : p[0],
-										"id": p[1]
-									}, 
-									function(){
-										loadNotes();
-									});
-									
-							} else {
-		// console.log( "Warn! error parse url in " + target.href );
-							}
+							serviceAction({
+									"action" : p[0],
+									"id": p[1]
+								},
+								function(){
+									loadNotes();
+								});
+							
+						} else {
+							// console.log( "Warn! error parse url in " + target.href );
+						}
 					}
 				}
-
+				
 			}//end event
 		}
 		
@@ -549,10 +548,10 @@ console.log( jsonObj);
 				event = event || window.event;
 				var target = event.target || event.srcElement;
 //console.log( event );
-				if (event.preventDefault) { 
+				if (event.preventDefault) {
 					event.preventDefault();
 				} else {
-					event.returnValue = false;				
+					event.returnValue = false;
 				}
 				serviceAction({"action" : "import_notes"}, function(){
 					loadNotes();
@@ -564,97 +563,97 @@ console.log( jsonObj);
 		
 		//EXPORT
 		var btn_export = getById("btn-export");
-		_vars["$btn_export"] = btn_export;//copy to module global vars 
+		_vars["$btn_export"] = btn_export;//copy to module global vars
 		
 		if( btn_export ){
 			btn_export.onclick = function(event){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
 //console.log( event );
-				if (event.preventDefault) { 
+				if (event.preventDefault) {
 					event.preventDefault();
 				} else {
-					event.returnValue = false;				
+					event.returnValue = false;
 				}
 				
 				if( _vars["$num_notes"].innerHTML === "0"){
 					return;
 				}
-
+				
 				if( !_vars["supportPHP"] &&
-						!_vars["supportASPX"] &&
-							!_vars["supportJAVA"]){
+					!_vars["supportASPX"] &&
+					!_vars["supportJAVA"]){
 					return false;
 				}
 				
 				if( !_vars["supportMySQL"] &&
-						!_vars["supportPostgreSQL"] &&
-							!_vars["supportMSSQL"] &&
-								!_vars["supportMySQL_java"]){
+					!_vars["supportPostgreSQL"] &&
+					!_vars["supportMSSQL"] &&
+					!_vars["supportMySQL_java"]){
 					return false;
 				}
 				
 				var url= _vars["exportUrl"];
 				window.location.assign(url);
-
+				
 			}//end event
 		}
 		
 	}//end defineEvents()
 	
 	function _upload( form ){
-			if( window.FileList ){
-				
-				//var fileSelect = getById("file-select");
-				//if( fileSelect ){
-					//var formData = _getUploadFiles({
-						//"fileSelect" : fileSelect
-					//});
-					
-					//check file type
-					var files = form.upload_file.files;
+		if( window.FileList ){
+			
+			//var fileSelect = getById("file-select");
+			//if( fileSelect ){
+			//var formData = _getUploadFiles({
+			//"fileSelect" : fileSelect
+			//});
+			
+			//check file type
+			var files = form.upload_file.files;
 //console.log( files );
-					var file = files[0];
-					if ( file.type !== "text/xml") {
-var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
-						$("#importModal").modal("hide");
-						return false;
-					}
-					
-					//var formData = new FormData();
-					var formData = new FormData( form );
-					//formData.append("upload_file", form.upload_file);
-					//if( formData ){
-						var p = {
-							"url" : _vars["requestUrl"],
-							"requestMethod" : form.getAttribute("method"),
-							"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
-							"params" : { "action" : "upload" },
-							"formData" : formData,
-							"callback": _postUpload
-						};
-						runAjax( p );
-/*						
-//test
-var xhr = new XMLHttpRequest();
-xhr.open('POST', _vars["requestUrl"], true);
-// xhr.setRequestHeader("Cache-Control", "no-cache");
-// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-// xhr.setRequestHeader("Content-Type", "multipart/form-data");
-xhr.send(formData);
-//----------						
-*/
-					//}
-				//}
-				
-			} else {
-var msg = "<p>Your browser does not support File API</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
+			var file = files[0];
+			if ( file.type !== "text/xml") {
+				var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
+				_log("<div class='alert alert-warning'>" + msg + "</div>");
+				$("#importModal").modal("hide");
+				return false;
 			}
 			
+			//var formData = new FormData();
+			var formData = new FormData( form );
+			//formData.append("upload_file", form.upload_file);
+			//if( formData ){
+			var p = {
+				"url" : _vars["requestUrl"],
+				"requestMethod" : form.getAttribute("method"),
+				"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
+				"params" : { "action" : "upload" },
+				"formData" : formData,
+				"callback": _postUpload
+			};
+			runAjax( p );
+			/*
+			//test
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', _vars["requestUrl"], true);
+			// xhr.setRequestHeader("Cache-Control", "no-cache");
+			// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+			// xhr.setRequestHeader("Content-Type", "multipart/form-data");
+			xhr.send(formData);
+			//----------
+			*/
+			//}
+			//}
 			
-		/*	
+		} else {
+			var msg = "<p>Your browser does not support File API</p>";
+			_log("<div class='alert alert-warning'>" + msg + "</div>");
+		}
+		
+		
+		/*
 		//http://blog.teamtreehouse.com/uploading-files-ajax
 		//https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
 			function _getUploadFiles(opt){
@@ -665,7 +664,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 				//extend options object
 				for(var key in opt ){
 					p[key] = opt[key];
-				}	
+				}
 		//console.log( p );
 
 				if( !p["fileSelect"]){
@@ -696,19 +695,19 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 				}//next
 		// for( var key in formData){
 		// console.log(key, formData[key]);
-		// }		
+		// }
 
 		// // Display the key/value pairs
 		// for (var pair of formData.entries()) {
-			// console.log(pair[0]+ ', ' + pair[1]); 
+			// console.log(pair[0]+ ', ' + pair[1]);
 		// }
 
 		// Display the keys
 		// for (var key of formData.keys()) {
-		   // console.log(key); 
+		   // console.log(key);
 		// }
 				var test = formData.getAll("upload_files[]");
-		//console.log( test.length ); 
+		//console.log( test.length );
 				if( test.length > 0 ){
 					//formData.append("action", "upload");
 					return formData;
@@ -721,45 +720,45 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		function _postUpload( data ){
 //console.log(arguments);
 			parseLog({
-				"jsonLog" : data 
+				"jsonLog" : data
 			});
 			$("#importModal").modal("hide");
 			loadNotes();
 		}//end _postUpload()
-			
+		
 	}//end _upload()
 	
 	
 	function checkForm(opt){
 		var p = {
 			"form" : null,
-			"modalWindowId" : "", 
+			"modalWindowId" : "",
 			"action" : ""
 		};
 //console.log(form);
-	//for(var key in form){
-	//console.log(key, form[key]);
-	//}
-	//	for( var n = 0; n < form.elements.length; n++){
-	//console.log(form.elements[n]);
-	//	}//next
-	
+		//for(var key in form){
+		//console.log(key, form[key]);
+		//}
+		//	for( var n = 0; n < form.elements.length; n++){
+		//console.log(form.elements[n]);
+		//	}//next
+		
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
-		}	
+		}
 //console.log( p );
-
+		
 		var form = p["form"];
 		var formValues = {
 			"action" : p["action"],
 			"requestMethod" : form.getAttribute("method"),
 			"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null
 		};
-
+		
 		var isValid = true;
 		var name = form.elements.author_name.value;
-	//console.log (name, name.length);
+		//console.log (name, name.length);
 		if(name.length === 0){
 			document.querySelector("#name-label").className="alert-danger";
 			form.elements.author_name.className = "form-control alert-danger";
@@ -776,7 +775,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		}
 		
 		var text = form.elements.text_message.value;
-	//console.log (text, text.length);
+		//console.log (text, text.length);
 		if(text.length === 0){
 			document.querySelector("#text-message-label").className="alert-danger";
 			form.elements.text_message.className = "form-control alert-danger";
@@ -785,25 +784,25 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			document.querySelector("#text-message-label").className="";
 			form.elements.text_message.className = "form-control";
 //filter
-
+			
 			text = text
 			//.replace(/\n/g, "\\u000A")//replace end of line
 			//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
 			//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
 			
 			//remove old special symbols
-			.replace(/\&amp;/g, "&")
-			.replace(/\&lt;/g, "<")
-			.replace(/\&gt;/g, ">")
-			.replace(/\&quot;/g, "\"")
+				.replace(/\&amp;/g, "&")
+				.replace(/\&lt;/g, "<")
+				.replace(/\&gt;/g, ">")
+				.replace(/\&quot;/g, "\"")
+				
+				//insert special symbols re-new
+				.replace(/&/g, "&amp;")
+				.replace(/"/g, "&quot;")
+				.replace(/\</g, "&lt;")
+				.replace(/\>/g, "&gt;")
+				.replace(/'/g, "&#39;");
 			
-			//insert special symbols re-new
-			.replace(/&/g, "&amp;")
-			.replace(/"/g, "&quot;")
-			.replace(/\</g, "&lt;")
-			.replace(/\>/g, "&gt;")
-			.replace(/'/g, "&#39;");
-
 			formValues["textMessage"] = text;
 		}
 		
@@ -816,16 +815,16 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			$( p["modalWindowId"] ).modal("hide");
 		} else{
 			//e.preventDefault();
-var msg = "<p>error in form..</p>";
-_log("<div class='alert alert-warning'>" + msg + "</div>");
-		}	
+			var msg = "<p>error in form..</p>";
+			_log("<div class='alert alert-warning'>" + msg + "</div>");
+		}
 		return false;
 		
-	}//end checkForm()	
+	}//end checkForm()
 	
 	function sendForm( opt ){
 		var p = {
-			"id": null, 
+			"id": null,
 			"creation_date" : "",
 			"authorName" : "anonymous",
 			"title" : "no subject",
@@ -836,14 +835,14 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"enctype" : null,
 			"callback": null
 		};
-			
+		
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
 //console.log( p );
 //return false;
-
+		
 		//get creation date
 		var now = new Date();
 		var sYear = now.getFullYear();
@@ -852,14 +851,14 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		var sDate = now.getDate();
 		var d = sYear + "-" + intMonth + "-" + sDate;
 		
-		var sHours = now.getHours();		
-		var sMin = now.getMinutes();		
-		var sSec = now.getSeconds();		
+		var sHours = now.getHours();
+		var sMin = now.getMinutes();
+		var sSec = now.getSeconds();
 		var tm = sHours + ":" + sMin + ":" + sSec;
 //console.log(d, tm);
 		
 		//var t = now.toTimeString();
-	//console.log(d, t);
+		//console.log(d, t);
 		p["creation_date"] = d +" "+ tm;
 		
 		//remove GMT (MSSQL error convert data)
@@ -876,7 +875,7 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 		// if(typeof FormData === "undefined"){
 // var msg = "<p>This browser not support object FormData! send (ajax) form data not possible... </p>";
 // _log("<div class='alert alert-error'>" + msg + "</div>");
-			// return false;
+		// return false;
 		// }
 		var formData = {
 			"id" : p["id"],
@@ -885,24 +884,24 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 			"text_message" : p["textMessage"]
 		};
 // for(var key in form_message){
-// console.log( key, form_message[key]);	
-// }		
-//console.log( formData );	
+// console.log( key, form_message[key]);
+// }
+//console.log( formData );
 //return false;
-
+		
 		runAjax( {
-			"requestMethod" : p["requestMethod"], 
+			"requestMethod" : p["requestMethod"],
 			"enctype" : p["enctype"],
-			"url" : url, 
+			"url" : url,
 			"params" : params,
 			//"formData" : new FormData( form_message ),
 			"formData" : formData,
 			"callback": function( log ){
-				
+
 // var msg = "<p>"+log+"</p>";
 				// var _className = "alert-success";
 				// if( log.indexOf("error") !== -1){
-					// _className = "alert-danger";
+				// _className = "alert-danger";
 				// }
 // _log("<div class='alert " +_className+ "'>" + msg + "</div>");
 				// loadNotes();
@@ -911,33 +910,33 @@ _log("<div class='alert alert-warning'>" + msg + "</div>");
 					//"onSuccess" : function(){},
 					//"onError" : function( errorCode ){},
 					"callback" : function(){
-						loadNotes();		
+						loadNotes();
 					}//end callback
-				});	
+				});
 				
 			}//end callback()
 		});
-
+		
 	}//end sendForm
-
+	
 	//async requests (one by one), server capabilities check
 	function testServer( numTest ){
-
+		
 		var test = _vars["tests"][ numTest ];
 //change tst url
-if( test["name"] === "checkMySQL"){
-	if( _vars["supportJAVA"] ){
-		test["url"] = test["urlAltJava"];
-	}
-}
-if( test["name"] === "checkPostgreSQL"){
-	if( _vars["supportJAVA"] ){
-		test["url"] = test["urlAltJava"];
-	}
-}
+		if( test["name"] === "checkMySQL"){
+			if( _vars["supportJAVA"] ){
+				test["url"] = test["urlAltJava"];
+			}
+		}
+		if( test["name"] === "checkPostgreSQL"){
+			if( _vars["supportJAVA"] ){
+				test["url"] = test["urlAltJava"];
+			}
+		}
 		runAjax({
-			"requestMethod" : "GET", 
-			"url" : test["url"], 
+			"requestMethod" : "GET",
+			"url" : test["url"],
 			"onError" : _postReq,
 			"callback": _postReq
 		});
@@ -948,11 +947,11 @@ if( test["name"] === "checkPostgreSQL"){
 //console.log(data, typeof data, data.length);
 			if( typeof test["callback"] === "function"){
 				test["callback"]( data );
-			} 
+			}
 			numTest++;
 			if( numTest < _vars["tests"].length ){
-//console.log(numTest );				
-			//if( numTest < 2 ){
+//console.log(numTest );
+				//if( numTest < 2 ){
 				testServer( numTest );
 			} else {
 // console.log("PHP: " , _vars["supportPHP"]);
@@ -983,7 +982,7 @@ if( test["name"] === "checkPostgreSQL"){
 						loadNotes();
 					}
 				}
-
+				
 				if( _vars["supportJAVA"] ){
 					if( _vars["supportMySQL"] ){
 						noSupport = false;
@@ -1002,56 +1001,56 @@ if( test["name"] === "checkPostgreSQL"){
 				if( noSupport ){
 					loadNotesXml();
 				}
-
+				
 			}
 		}//end _postReq()
 	}//end testServer()
-
+	
 	// function testServerMod(){
-		
-		// //run test PHP
-		// for( var n = 0; n < _vars["tests"].length; n++){
-			// var test = _vars["tests"][ n ];
-			// if( test["name"] === "checkPHP"){
-				// runAjax({
-					// "requestMethod" : "GET", 
-					// "url" : test["url"], 
-					// "onError" : _postReq,
-					// "callback": _postReq
-				// });
-			// }
+	
+	// //run test PHP
+	// for( var n = 0; n < _vars["tests"].length; n++){
+	// var test = _vars["tests"][ n ];
+	// if( test["name"] === "checkPHP"){
+	// runAjax({
+	// "requestMethod" : "GET",
+	// "url" : test["url"],
+	// "onError" : _postReq,
+	// "callback": _postReq
+	// });
+	// }
 // // checkMySQL  notes.js:1001:1
 // // checkPostgreSQL  notes.js:1001:1
 // // checkASPX  notes.js:1001:1
 // // checkMSSQL  notes.js:1001:1
 // // checkJAVA  notes.js:1001:1
 // // checkMySQL_java
-		// }//next
-		
-		// function _postReq( data ){
+	// }//next
+	
+	// function _postReq( data ){
 // console.log(data, typeof data, data.length);
-			// // if( typeof test["callback"] === "function"){
-				// // test["callback"]( data );
-			// // } 
-		// }//end _postReq()
-		
+	// // if( typeof test["callback"] === "function"){
+	// // test["callback"]( data );
+	// // }
+	// }//end _postReq()
+	
 	// }//end testServerMod()
 	
 	function loadNotes(){
 //console.log( _vars["templates"] );
 		_vars["messagesList"].innerHTML = "";
 //_log("<p>-- loadNotes(), clear #messagesList</p>");
-
+		
 		//block overlay and wait window
 		// var overlay = getById("overlay");
 		// if( overlay ){
-			// overlay.className="modal-backdrop in";
-			// overlay.style.display="block";
+		// overlay.className="modal-backdrop in";
+		// overlay.style.display="block";
 		// }
 		// var waitWindow = getById("wait-window");
 		// if( waitWindow ){
-			// waitWindow.className="modal-dialog";
-			// waitWindow.style.display="block";
+		// waitWindow.className="modal-dialog";
+		// waitWindow.style.display="block";
 		// }
 		
 		var params = {
@@ -1059,54 +1058,54 @@ if( test["name"] === "checkPostgreSQL"){
 		};
 		runAjax( {
 			//"async" :  false,
-			"requestMethod" : "GET", 
-			"url" : _vars["requestUrl"], 
+			"requestMethod" : "GET",
+			"url" : _vars["requestUrl"],
 			"params" : params,
 			"onError" : _onerror,
 			"callback": function( data ){
-//console.log(data.length, typeof data, data);				
-
+//console.log(data.length, typeof data, data);
+				
 				// //hide block overlay and wait window
 				// if( overlay ){
-					// //overlay.className="";
-					// overlay.style.display="none";
+				// //overlay.className="";
+				// overlay.style.display="none";
 				// }
 				// if( waitWindow ){
-					// waitWindow.style.display="none";
+				// waitWindow.style.display="none";
 				// }
 				
 				if( data.length > 0){
-						try{
-							var jsonArr = JSON.parse( data, function(key, value) {
+					try{
+						var jsonArr = JSON.parse( data, function(key, value) {
 //console.log( key, value );
-								return value;
-							});							
+							return value;
+						});
 //console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
-							if( !jsonArr[0]["error_code"] ){
-								_drawNotes({
-									"data": jsonArr
-								});
-							} else {
-								parseLog({
-									"jsonLog" : data, 
-									"callback" : function(){
+						if( !jsonArr[0]["error_code"] ){
+							_drawNotes({
+								"data": jsonArr
+							});
+						} else {
+							parseLog({
+								"jsonLog" : data,
+								"callback" : function(){
 //console.log( jsonArr, jsonArr.length, jsonArr[0]["error_code"] );
-										_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
-										_vars["$num_notes"].innerHTML  = "0";//set number of notes
-										_vars["$btn_export"].className += " disabled";
-									}
-								});
-							}
-							
-						} catch(error) {
-var msg = "";
-msg += "<p>loadNotes(), error  JSON.parse server response data</p>";
-msg += "<p>" + error + "</p>";
-msg += "<p>data: " + data + "</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
-							//loadNotesXml();
-						}//end catch
-
+									_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
+									_vars["$num_notes"].innerHTML  = "0";//set number of notes
+									_vars["$btn_export"].className += " disabled";
+								}
+							});
+						}
+						
+					} catch(error) {
+						var msg = "";
+						msg += "<p>loadNotes(), error  JSON.parse server response data</p>";
+						msg += "<p>" + error + "</p>";
+						msg += "<p>data: " + data + "</p>";
+						_log("<div class='alert alert-danger'>" + msg + "</div>");
+						//loadNotesXml();
+					}//end catch
+					
 				} else {
 					_vars["messagesList"].innerHTML = "<h2>no added notes</h2>";
 					_vars["$num_notes"].innerHTML  = "0";//set number of notes
@@ -1115,18 +1114,18 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 				
 			}//end callback()
 		});
-
+		
 		function _onerror( xhr ){
 			var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
-var msg = "";
-msg += "<p>error load notes, url: "+_vars["requestUrl"]+"</p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
+			console.log( all_headers );
+			var msg = "";
+			msg += "<p>error load notes, url: "+_vars["requestUrl"]+"</p>";
+			_log("<div class='alert alert-danger'>" + msg + "</div>");
 			loadNotesXml();
 		}//end _onerror()
 		
 	}//end loadNotes()
-
+	
 	function loadNotesXml(){
 		
 		//hide CONTROL PANEL
@@ -1135,13 +1134,13 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		
 		_vars["messagesList"].innerHTML = "";
 		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : _vars["requestUrl"], 
+			"requestMethod" : "GET",
+			"url" : _vars["requestUrl"],
 			"callback": function( data ){
-//console.log(data.length, typeof data, data);				
+//console.log(data.length, typeof data, data);
 				//_parseXML( data );
 				xmlNotes = _parseXmlToObj(data);
-//console.log(obj);				
+//console.log(obj);
 				if( xmlNotes.length > 0 ){
 					_drawNotes({
 						"data": xmlNotes
@@ -1157,9 +1156,9 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 		});
 		
 		function _onerror( xhr ){
-var msg = "";
-msg += "<p>error, " +_vars["requestUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
-_log("<div class='alert alert-danger'>" + msg + "</div>");
+			var msg = "";
+			msg += "<p>error, " +_vars["requestUrl"]+ " not found by server <b>" + window.location.host + "</b></p>";
+			_log("<div class='alert alert-danger'>" + msg + "</div>");
 		}//end _onerror()
 		
 	}//end loadNotesXml()
@@ -1194,13 +1193,13 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			
 			//filter text message
 			// if( items["text_message"] ){
-				items["text_message"] = __filter( items["text_message"] );
+			items["text_message"] = __filter( items["text_message"] );
 			// } else {
-				
-				// if( items["text"] ){
-					// items["text_message"] = __filter( items["text"] );
-				// }
-				
+			
+			// if( items["text"] ){
+			// items["text_message"] = __filter( items["text"] );
+			// }
+			
 			// }
 			
 			for( var key in items){
@@ -1213,32 +1212,32 @@ _log("<div class='alert alert-danger'>" + msg + "</div>");
 			}//next
 			listHtml += itemHtml;
 //console.log(listHtml);
-			
+		
 		}//next
 		
 		_vars["messages"].innerHTML = listHtml;
 		
 		//hide EDIT, DELETE btn
 		if( _vars["hideControlPanel"] ){
-			$(".btn-delete-note, .btn-edit-note").hide();			
+			$(".btn-delete-note, .btn-edit-note").hide();
 		}
-		
+
 //filter
 		function __filter(textMessage){
 //console.log(textMessage);
 			if( textMessage.length === 0){
-console.log("error in __filter()");
+				console.log("error in __filter()");
 				return false;
 			}
 			textMessage = textMessage
-//.replace(/&/g, "&amp;")
-//.replace(/"/g, "&quot;")
-.replace(/\</g, "&lt;")
-.replace(/\>/g, "&gt;")
-.replace(/\[code\]/g, "<pre><!-- [code] -->")
-.replace(/\[\/code\]/g, "<!-- [/code] --></pre>")
-.replace(/\[br\]/g, "<!-- [br] --><br>");
-
+			//.replace(/&/g, "&amp;")
+			//.replace(/"/g, "&quot;")
+				.replace(/\</g, "&lt;")
+				.replace(/\>/g, "&gt;")
+				.replace(/\[code\]/g, "<pre><!-- [code] -->")
+				.replace(/\[\/code\]/g, "<!-- [/code] --></pre>")
+				.replace(/\[br\]/g, "<!-- [br] --><br>");
+			
 			//var test = "[[http://www.google.com|Это ссылка на Google]]";
 			//var regexp = /\[\[(.*?)\]\]/g;
 			
@@ -1248,16 +1247,16 @@ console.log("error in __filter()");
 			var links = [];
 			links["nowrap"] = [];
 			while( result = regexp.exec( textMessage )){
-			//console.log(result[1]);
+				//console.log(result[1]);
 				links["nowrap"].push( result[1] );
 			}
-
+			
 			if( links["nowrap"].length > 0){
 				links["html"] = [];
 				for(var n = 0; n < links["nowrap"].length; n++){
 					var link = links["nowrap"][n];
 					var _sp = link.split("|");
-			//console.log(link, _sp);
+					//console.log(link, _sp);
 					var _url = _sp[0];
 					var _text = _sp[1];
 					//links["html"].push("<a href='"+_url+"'>"+_text+"</a>");
@@ -1288,35 +1287,35 @@ console.log("error in __filter()");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-
+		
 		// if( p["action"] === "export_notes"){
 // console.log( window.location );
-			// window.location = window.location + "?action="+p["action"];
-			// return;
+		// window.location = window.location + "?action="+p["action"];
+		// return;
 		// }
 		
 		if( !_vars["supportPHP"] &&
-				!_vars["supportASPX"] &&
-					!_vars["supportJAVA"]){
+			!_vars["supportASPX"] &&
+			!_vars["supportJAVA"]){
 			return false;
 		}
 		
 		if( !_vars["supportMySQL"] &&
-				!_vars["supportPostgreSQL"] &&
-					!_vars["supportMSSQL"] &&
-						!_vars["supportMySQL_java"]){
+			!_vars["supportPostgreSQL"] &&
+			!_vars["supportMSSQL"] &&
+			!_vars["supportMySQL_java"]){
 			return false;
 		}
 		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : _vars["requestUrl"], 
+			"requestMethod" : "GET",
+			"url" : _vars["requestUrl"],
 			"params" : p,
 			"callback": _postFunc
 		});
 		
 		function _postFunc( data ){
 			parseLog({
-				"jsonLog" : data 
+				"jsonLog" : data
 			});
 			//loadNotes();
 			if( typeof callback === "function"){
@@ -1324,8 +1323,8 @@ console.log("error in __filter()");
 			}
 		}//end _postFunc()
 		
-	}//end seviceAction
-
+	}//end serviceAction
+	
 	function parseLog( opt ){
 		var p = {
 			"jsonLog" : "",
@@ -1337,12 +1336,12 @@ console.log("error in __filter()");
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
-		}	
+		}
 //console.log( p );
 		
 		if( p["jsonLog"].length === 0){
-var msg = "Warning! empty log....";
-console.log(msg);
+			var msg = "Warning! empty log....";
+			console.log(msg);
 			//p["jsonLog"] = "[{\"message\" : \""+msg+"\"}]";
 			if( typeof p["callback"] === "function"){
 				p["callback"]();
@@ -1354,7 +1353,7 @@ console.log(msg);
 			var jsonArr = JSON.parse( p["jsonLog"], function(key, value) {
 //console.log( key, value );
 				return value;
-			});							
+			});
 //console.log( jsonArr, jsonArr.length);
 			
 			var errorCode = "0";
@@ -1362,7 +1361,7 @@ console.log(msg);
 			for( var n = 0; n < jsonArr.length; n++){
 				var jsonObj = jsonArr[n];
 //console.log( jsonObj );
-
+				
 				if( jsonObj["error_code"] && jsonObj["error_code"].length > 0 ){
 					errorCode = jsonObj["error_code"];
 					if( errorCode !== "0"){
@@ -1382,9 +1381,9 @@ console.log(msg);
 				
 			}//next
 			
-console.log(errorCode);			
-//console.log(_messagesStr);			
-
+			console.log(errorCode);
+//console.log(_messagesStr);
+			
 			if( errorCode !== "0"){
 				if( typeof p["onError"] === "function"){
 					p["onError"]( errorCode );
@@ -1400,13 +1399,13 @@ console.log(errorCode);
 			msg += "error JSON.parse server response data";
 			msg += ", " + error;
 			//msg += "<p>data: " + p["jsonLog"] + "</p>";
-console.log(msg);
-		//_log("<div class='alert alert-danger'>" + msg + "</div>");
+			console.log(msg);
+			//_log("<div class='alert alert-danger'>" + msg + "</div>");
 			if( typeof p["onError"] === "function"){
 				p["onError"]( msg );
 			}
 		}//end catch
-
+		
 		if( typeof p["callback"] === "function"){
 			p["callback"]();
 		}
@@ -1417,9 +1416,9 @@ console.log(msg);
 	// public interfaces
 	return{
 		vars : _vars,
-		init:	function(){ 
+		init:	function(){
 			return _init();
 		}
 	};
 	
-}//end _notes()
+};//end _notes()
