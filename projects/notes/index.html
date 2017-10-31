@@ -28,6 +28,18 @@
 	
 	<script src="js/shared_functions.js"></script>
 	<script src="js/notes.js"></script>
+	<script>
+window.onload = function(){
+	var webNotes = _notes();
+console.log( webNotes );	
+	webNotes.init();
+}//end load
+
+$(document).ready(function(){
+	$("input[type=file]").bootstrapFileInput();
+});//end ready	
+	</script>
+	
 </head>
 <body>
 		

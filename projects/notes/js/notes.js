@@ -1,20 +1,10 @@
-window.onload = function(){
-	var webNotes = _notes();
-console.log( webNotes );	
-	webNotes.init();
-}//end load
-
-$(document).ready(function(){
-	$("input[type=file]").bootstrapFileInput();
-});//end ready	
-
 var _notes = function ( opt ){
 //console.log(arguments);	
 	var _vars = {
 		
 		"requestUrl" : "upload/notes.xml",
 		"exportUrl" : "",
-		"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
+		//"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 
 		"tests" : [{
 				"name" : "checkPHP",
@@ -299,6 +289,7 @@ console.log( jsonObj);
 	};
 
 	function _getTpl( id ){
+console.log(id);		
 		var tpl = getById(id);
 		var html = tpl.innerHTML;
 		return html;
