@@ -1,0 +1,244 @@
+<div class="container" id="top">
+	<div class="">
+		<h2>Notes: <span id="num-notes">0</span></h2>
+	</div>
+
+	<div class=" panel panel-primary">
+		<div class="panel-body" id="control-btn">
+			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
+				<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
+				<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
+				<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
+				
+				<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
+				<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
+				<a href="tests/SpecRunner.html" class="btn btn-sm btn-success">run tests</a>
+			</div>
+			<a href="#" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+		</div>
+	</div>
+		
+	<div id="log-wrap" class="log-panel">
+<!--
+		<div class="progress">ajax load:
+			<div id="load-progress-bar" class="progress-bar hide"></div>
+		</div>
+-->
+		<div id="log"></div>
+	</div>		
+		
+	<div class="panel">
+<!--
+			<div class="panel-heading">
+				<h4>list of notes:</h4>
+			</div>
+-->
+		<div class="panel-body" id="messages">
+<script id="tpl-message-list" type="text/template">
+<div class="row">
+	<div class="" id="note-{{id}}">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<strong class="title">{{title}}</strong> 
+				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
+<div class="pull-right">
+	<button class="btn btn-info btn-sm btn-edit-note" data-toggle="modal" data-target="#editModal" data-id="{{id}}">edit note</button>
+	<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger btn-delete-note">delete note</a>
+</div>
+ <br><br>
+ 
+			</div>
+			
+			<div class="panel-footer">
+				<p class="text-muted">
+					<small>created:</small><strong class="author">{{author}}</strong>, 
+					<span class="date">
+						<small>date:</small> {{client_date}} 
+					</span>
+					<span class="server-date">
+						<small>( server date: {{server_date}})</small>,
+					</span>
+					<span class="ip">
+						<small>send from ip: {{ip}}</small>
+					</span>
+				</p>
+			</div>
+			
+			<div class="panel-body text-message">{{text_message}}</div>
+			
+		</div><!-- /panel -->
+	</div>
+</div><!-- end row -->
+</script> 			
+		</div>
+	</div>
+
+<!-- ********************** newModal ************************** -->	
+	<div id="newModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+			
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">add new note</h4>
+				</div>
+				
+<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
+				<div class="modal-body">
+				
+					<div class=" panel panel-primary">
+						<div class="panel-body">
+							<div class="form-group">
+								<label id="name-label">*Name: </label>
+								<input type="text" class="form-control" name="author_name" value="anonymous">
+							</div>
+
+							<div class="form-group">
+								<label id="title-label">Title (subject): </label>
+								<input type="text" class="form-control" name="title" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="text-message-label">*text message: </label>
+								<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
+							</div>						
+	<p><small>
+	use <b>[code] unformatted text [/code]</b>,
+	<b>[url] url | text [/url]</b> for link adding, 
+	<b>[br]</b> for break line
+	</small>
+	</p>
+						</div>
+						
+						<div class="panel-footer">
+							<button type="reset" class="btn btn-large btn-warning">reset form</button>
+							<button type="submit" class="btn btn-large btn-primary">save</button>
+						</div>
+					</div><!-- end panel-->
+					
+				</div><!-- end modal-body-->
+</form>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end newModal -->
+
+<!-- ********************** editModal ************************** -->	
+	<div id="editModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">edit note</h4>
+				</div>
+				
+<form 
+name="form_message_edit" 
+id="message-edit-form" 
+action=""
+method="POST" 
+enctype="application/x-www-form-urlencoded">
+<!-- action="?action=edit_note"  -->
+				<div class="modal-body">
+					<div class=" panel panel-primary">
+						<div class="panel-body">
+							<input type="text" name="id" value="32" readonly>
+							<div class="form-group">
+								<label id="name-label-edit">*Name: </label>
+								<input type="text" class="form-control test" name="author_name" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="title-label-edit">Title (subject): </label>
+								<input type="text" class="form-control test" name="title" value="">
+							</div>
+
+							<div class="form-group">
+								<label id="text-message-label-edit">*text message: </label>
+								<textarea id="notes-text" name="text_message" class="form-control test" rows="10"></textarea>
+							</div>						
+	<p><small>
+	use <b>[code] unformatted text [/code]</b>,
+	<b>[url] url | text [/url]</b> for link adding, 
+	<b>[br]</b> for break line
+	</small>
+	</p>
+						</div>
+						<div id="form-edit-log"></div>
+						<div class="panel-footer">
+							<!-- <button type="reset" class="btn btn-large btn-warning">reset form</button> -->
+							<button type="submit" class="btn btn-large btn-primary">save</button>
+						</div>
+					</div><!-- end panel-->
+				</div><!-- end modal-body-->
+</form>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end editModal -->
+	
+<!-- ********************** importModal ************************** -->	
+	<div id="importModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">upload XML and import notes to DB</h4>
+				</div>
+				
+<form name="form_import" id="import-form" action="api/notes_mysql.php" method="POST" enctype="multipart/form-data">
+				<div class="modal-body">
+	<input type="file" name="upload_file" title="Search for a file to add" class="btn-primary"><br>
+<!--
+	<input type="hidden" name="action" value="upload">
+<input type="file" name="upload_files[]" id="file-select" multiple>
+				upload_max_filesize = '.$upload_max_filesize.'
+-->	
+					
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">upload & import</button>
+					<button id="btn-import" class="btn btn-warning">import</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+</form>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end importModal -->
+	
+</div><!-- end container -->
+
+<!--
+<div class="top">
+	<a title="scroll to top page" href="#top" class="">
+		<div class="arrow"></div>
+	</a>
+</div>
+-->	
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
+</div>
+
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+<!--		
+	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+-->
+</div>
+<div id="overlay" class="hide"></div>
