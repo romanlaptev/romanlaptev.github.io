@@ -45,7 +45,7 @@ describe("check DOM elements", function(){
 	
 });//end describe
 
-describe("check object _vars", function(){
+describe("check object vars", function(){
 	
 	beforeEach(function(){
 //console.log("beforeEach !!!!");				
