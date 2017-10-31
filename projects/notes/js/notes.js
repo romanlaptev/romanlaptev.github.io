@@ -289,7 +289,6 @@ console.log( jsonObj);
 	};
 
 	function _getTpl( id ){
-console.log(id);		
 		var tpl = getById(id);
 		var html = tpl.innerHTML;
 		return html;
