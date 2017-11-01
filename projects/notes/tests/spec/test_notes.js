@@ -79,7 +79,7 @@ describe("check object vars", function(){
 		var webNotes = _notes();
 		
 //spyOn( webNotes, "init");
-		//webNotes.init();
+		webNotes.init();
 		
 		var res = typeof webNotes.vars["templates"] !== "undefined";
 console.log( typeof webNotes.vars["templates"], res );	
