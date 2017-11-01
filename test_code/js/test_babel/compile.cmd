@@ -1,0 +1,1 @@
+.\node_modules\.bin\babel.cmd src -d lib

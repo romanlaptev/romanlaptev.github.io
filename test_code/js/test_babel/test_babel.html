@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="page-header">
+		<h1>Test Babel</h1>
+		Version: <span id="version"></span>
+	</div>
+	<pre>
+https://babeljs.io/docs/setup#installation
+https://learn.javascript.ru/es-modern-usage	
+https://keeprock.ru/nauchite-menya-polzovatsya-babel
+https://habrahabr.ru/post/257153/
+	</pre>
+	<div id="output"></div>
+</div>
+
+<!-- Load Babel -->
+<!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+<script src="babel.min.js"></script>
+<script>
+	var versionContainer;
+	var out = "not supported";
+	if( document.querySelector ){
+		versionContainer = document.querySelector("#version");
+	} else {
+		versionContainer = document.getElementById("version");
+	}
+
+	if( typeof Babel !== "undefined"){
+console.log(Babel.version);
+		out = Babel.version;
+	}
+	versionContainer.innerHTML = out;
+</script>
+
+<!-- Your custom script here -->
+<script type="text/babel">
+let a = 2+2;
+document.getElementById('output').innerHTML = a;
+</script>
+
+
+<script type="text/babel">
+const getMessage = () => "Hello World";
+document.getElementById('output').innerHTML += getMessage();
+</script>
+
+</body>
+</html>
