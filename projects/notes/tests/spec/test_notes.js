@@ -49,9 +49,6 @@ describe("check object vars", function(){
 	
 	beforeEach(function(){
 //console.log("beforeEach !!!!");				
-
-		loadFixtures("notes.html");
-
 		// spyOn(_m, "closeTooltips");
 		// spyOn(_w, "wait").and.callFake(function(obj){
 // console.log("Spy callback for wait function !!!!", obj );				
@@ -77,7 +74,11 @@ describe("check object vars", function(){
 	});
 
 	it("test 2", function(){
+		
+		loadFixtures("notes.html");
 		var webNotes = _notes();
+		
+//spyOn( webNotes, "init");
 		//webNotes.init();
 		
 		var res = typeof webNotes.vars["templates"] !== "undefined";
