@@ -3,3 +3,4 @@ test2 (from vbox5)
 test3
 test4 (from vbox-win7)
 test5 from eee-pc
+test6
