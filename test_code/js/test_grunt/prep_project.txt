@@ -1,0 +1,8 @@
+nodejs --version
+npm --version
+
+npm init
+sudo npm install grunt --save-dev
+nodejs ./node_modules/grunt/bin/grunt --version
+touch Gruntfile.js
+sudo npm install grunt-contrib-concat
