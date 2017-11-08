@@ -281,10 +281,10 @@ var _notes = function ( opt ){
 	// }//end _error()
 	
 	var _init = function(){
-//console.log("init _notes");
-		defineEvents();
+console.log("init _notes");
+		_testing.defineEvents();
 		var startNumTest = 0;
-		testServer( startNumTest );
+		_testing.testServer( startNumTest );
 		//testServerMod();
 	};
 	
@@ -294,8 +294,8 @@ var _notes = function ( opt ){
 	}//end _getTpl()
 	
 	
-	function defineEvents(){
-//console.log( _vars.messagesList );
+	function _defineEvents(){
+console.log("_defineEvents()");
 		
 		//ADD NEW NOTE
 		document.forms["form_message"].onsubmit = function(e){
@@ -599,7 +599,7 @@ var _notes = function ( opt ){
 			}//end event
 		}
 		
-	}//end defineEvents()
+	}//end _defineEvents()
 	
 	function _upload( form ){
 		if( window.FileList ){
@@ -920,7 +920,7 @@ var _notes = function ( opt ){
 	}//end sendForm
 	
 	//async requests (one by one), server capabilities check
-	function testServer( numTest ){
+	var _testServer = function( numTest ){
 		
 		var test = _vars["tests"][ numTest ];
 //change tst url
@@ -952,7 +952,7 @@ var _notes = function ( opt ){
 			if( numTest < _vars["tests"].length ){
 //console.log(numTest );
 				//if( numTest < 2 ){
-				testServer( numTest );
+				_testServer( numTest );
 			} else {
 // console.log("PHP: " , _vars["supportPHP"]);
 // console.log("ASPX: " , _vars["supportASPX"]);
@@ -1004,7 +1004,7 @@ var _notes = function ( opt ){
 				
 			}
 		}//end _postReq()
-	}//end testServer()
+	}//end _testServer()
 	
 	// function testServerMod(){
 	
@@ -1413,8 +1413,14 @@ var _notes = function ( opt ){
 	}//end parseLog()
 	
 	
+	var _testing = {
+		defineEvents : _defineEvents,
+		testServer : _testServer
+	};
+	
 	// public interfaces
 	return{
+		testing:	_testing,
 		vars : _vars,
 		init:	function(){
 			return _init();

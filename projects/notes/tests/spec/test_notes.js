@@ -1,18 +1,18 @@
 jasmine.getFixtures().fixturesPath = "html";
 
 beforeAll(function(){
-console.log("beforeAll !!!!");				
+console.log("beforeAll !!!!");
 });
+
 afterAll(function(){
 console.log("afterAll !!!!");				
 });
-
 
 describe("check DOM elements", function(){
 	
 	beforeEach(function(){
 //console.log("beforeEach !!!!");				
-		loadFixtures("notes.html");
+	  loadFixtures("notes.html");
 	});
 	
 	afterEach(function(){
@@ -77,9 +77,17 @@ describe("check object vars", function(){
 		
 		loadFixtures("notes.html");
 		var webNotes = _notes();
+
+		//spyOn( webNotes, "init");
+		spyOn( webNotes.testing, "defineEvents").and.callFake( function(){
+console.log("defineEvents(), callFake");
+		});
+		spyOn( webNotes.testing, "testServer" ).and.callFake( function(){
+console.log("testServer(), callFake");
+		});
 		
-//spyOn( webNotes, "init");
 		webNotes.init();
+console.log( webNotes );	
 		
 		var res = typeof webNotes.vars["templates"] !== "undefined";
 console.log( typeof webNotes.vars["templates"], res );	
