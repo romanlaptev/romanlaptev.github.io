@@ -1,4 +1,5 @@
 jasmine.getFixtures().fixturesPath = "html";
+var webNotes;
 
 beforeAll(function(){
 console.log("beforeAll !!!!");
@@ -48,20 +49,15 @@ describe("check DOM elements", function(){
 describe("check object vars", function(){
 	
 	beforeEach(function(){
-//console.log("beforeEach !!!!");				
-		// spyOn(_m, "closeTooltips");
-		// spyOn(_w, "wait").and.callFake(function(obj){
-// console.log("Spy callback for wait function !!!!", obj );				
-				// _waitObj=obj;
-		// });
-		
-		// _kdd.getCatalog=jasmine.createSpy().and.callFake(function(obj){
-			// var $df = $.Deferred();
-			
-			// $df.resolve([{kod:"1", text:"text_1", text_t:"text_1"}, {kod:"2", text:"text_2", text_t:"text_2"}]);
-			// return $df;
-		// });
-		// jasmine.clock().install();
+		loadFixtures("notes.html");
+		webNotes = _notes();
+		//spyOn( webNotes, "init");
+		spyOn( webNotes.testing, "defineEvents").and.callFake( function(){
+console.log("defineEvents(), callFake");
+		});
+		spyOn( webNotes.testing, "testServer" ).and.callFake( function(){
+console.log("testServer(), callFake");
+		});
 	});
 	
 	afterEach(function(){
@@ -74,17 +70,6 @@ describe("check object vars", function(){
 	});
 
 	it("test 2", function(){
-		
-		loadFixtures("notes.html");
-		var webNotes = _notes();
-
-		//spyOn( webNotes, "init");
-		spyOn( webNotes.testing, "defineEvents").and.callFake( function(){
-console.log("defineEvents(), callFake");
-		});
-		spyOn( webNotes.testing, "testServer" ).and.callFake( function(){
-console.log("testServer(), callFake");
-		});
 		
 		webNotes.init();
 console.log( webNotes );	

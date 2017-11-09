@@ -7,3 +7,6 @@ gcc -S helloworld.c
 
 #cl helloworld.c - compile in Visual Studio 6
 
+
+#g++ helloworld.cpp -o helloworld
+
