@@ -1,0 +1,40 @@
+- node -v
+- npm -v
+
+- npm install karma
+- node ./node_modules/karma/bin/karma --version
+- npm install karma-jasmine
+- npm install karma-chrome-launcher
+
+//create karma.conf.js
+node ./node_modules/karma/bin/karma init
+
+- add simple test to tests/test1.js
+describe("Test 1", function() {
+    it("contains spec with an expectation", function() {
+        expect(true).toBe(true);
+    });
+});
+
+//run http://localhost:9876
+- node ./node_modules/karma/bin/karma start
+Chrome 60.0.3112 (Linux 0.0.0): Executed 1 of 1 SUCCESS (0.008 secs / 0.004 secs)
+
+---------------------
+
+//npm install jasmine
+
+//npm install bower -g
+//npm install grunt -g
+//sudo npm install gulp
+
+//sudo npm install mocha
+//sudo npm install selenium
+//sudo npm install jquery
+//sudo npm install qunit
+//sudo npm install bootstrap
+//sudo npm install foundation
+//sudo npm install uikit
+//sudo npm install blueprint
+//sudo npm install babel
+//sudo npm install requirejs
