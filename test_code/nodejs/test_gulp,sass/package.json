@@ -1,0 +1,19 @@
+{
+    "name": "HTML5Application2",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "dev_user",
+    "contributors": [],
+    "dependencies": {},
+    "devDependencies": {
+        "browser-sync": "^2.18.13",
+        "gulp": "^3.9.1",
+        "gulp-sass": "^3.1.0"
+    }
+}
