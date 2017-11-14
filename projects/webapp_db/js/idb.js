@@ -2096,7 +2096,7 @@ console.log("error in _db(), data not in JSON format");
 						dbInfo["tables"].push(tableName);
 					}
 					tableName = record.attributes.getNamedItem("name").nodeValue;
-//console.log( tableName, dbInfo["tables"][tableName] );
+console.log( tableName, dbInfo["tables"][tableName] );
 				}//next
 				
 				//recursively save data block in iDB store
