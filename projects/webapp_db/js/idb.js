@@ -2083,9 +2083,10 @@ console.log("error in _db(), data not in JSON format");
 					var records = xmlDoc.item(1).getElementsByTagName("table");
 				}
 		
+				
+				//get list tables
 				var tableName = "";
 				//var storeData = [];
-				//get list tables
 				for( var n = 0; n < records.length; n++){
 					//var record = records[n];
 					//var tableName = record["attributes"]["name"].nodeValue;
@@ -2096,8 +2097,14 @@ console.log("error in _db(), data not in JSON format");
 						dbInfo["tables"].push(tableName);
 					}
 					tableName = record.attributes.getNamedItem("name").nodeValue;
-console.log( tableName, dbInfo["tables"][tableName] );
+//if( tableName === "vocabulary" ){
+//console.log( tableName, dbInfo["tables"].length );
+//}					
 				}//next
+				
+				//push last tableName
+				dbInfo["tables"].push(tableName);
+
 				
 				//recursively save data block in iDB store
 				dbInfo["import"]["counter"] = 0;
