@@ -138,109 +138,109 @@ function _db( opt ){
 		"localStorageSupport" : window['localStorage']  ? true : false,
 		"dataStoreType" : _detectDataStore(),
 		"tables": {
-			// "taxonomy_menu" :[{ 
-				// "fields" : ["tid", "title"],
-				// "records" : []
-			// }],
+			//// "taxonomy_menu" :[{ 
+				//// "fields" : ["tid", "title"],
+				//// "records" : []
+			//// }],
 			
-			"taxonomy_title" : {
-				"fields" : ["tid", "title"],
-				"records" : []
-			},  
+			//"taxonomy_title" : {
+				//"fields" : ["tid", "title"],
+				//"records" : []
+			//},  
 			
-			"term_data" :{
-				"fields" : ["tid",  "vid", "name", "description", "weight"],
-				"records" : []
-			},  
+			//"term_data" :{
+				//"fields" : ["tid",  "vid", "name", "description", "weight"],
+				//"records" : []
+			//},  
 			
-			"term_hierarchy" :{
-				"fields" : [ "tid",  "parent"],
-				"records" : []
-			},  
+			//"term_hierarchy" :{
+				//"fields" : [ "tid",  "parent"],
+				//"records" : []
+			//},  
 			
-			"term_image" :{
-				"fields" : ["tid",  "path"],
-				"records" : []
-			},
+			//"term_image" :{
+				//"fields" : ["tid",  "path"],
+				//"records" : []
+			//},
 			
-			"term_node" :{
-				"fields" : ["nid",  "vid", "tid"],
-				"records" : []
-			},  
+			//"term_node" :{
+				//"fields" : ["nid",  "vid", "tid"],
+				//"records" : []
+			//},  
 			
-			//"term_relation" :[{}],  
-			//"term_synonym" :[{}],  
-			"vocabulary" :{
-				"fields" : [ "vid", "name", "description", "help", "relations", "hierarchy",
-"multiple",
-"required",
-"tags",
-"module",
-"weight"
-				],
-				"records" : []
-			},
+			////"term_relation" :[{}],  
+			////"term_synonym" :[{}],  
+			//"vocabulary" :{
+				//"fields" : [ "vid", "name", "description", "help", "relations", "hierarchy",
+//"multiple",
+//"required",
+//"tags",
+//"module",
+//"weight"
+				//],
+				//"records" : []
+			//},
 			
-			"url_alias" :{
-				"fields" : ["pid",  "src", "dst", "language"],
-				"records" : []
-			},  
+			//"url_alias" :{
+				//"fields" : ["pid",  "src", "dst", "language"],
+				//"records" : []
+			//},  
 
-			"node" :{
-				"fields" : [
-"nid",
-"vid",
-"type",
-"language",
-"title",
-"uid",
-"status",
-"created",
-"changed",
-"comment",
-"promote",
-"moderate",
-"sticky",
-"tnid",
-"translate"
-],
-				"records" : []
-			},
+			//"node" :{
+				//"fields" : [
+//"nid",
+//"vid",
+//"type",
+//"language",
+//"title",
+//"uid",
+//"status",
+//"created",
+//"changed",
+//"comment",
+//"promote",
+//"moderate",
+//"sticky",
+//"tnid",
+//"translate"
+//],
+				//"records" : []
+			//},
 			
-			"node_revisions" :{
-				"fields" : [
-"nid",
-"vid",
-"uid",
-"title",
-"body",
-"teaser",
-"log",
-"timestamp",
-"format"
-],
-				"records" : []
-			},  
+			//"node_revisions" :{
+				//"fields" : [
+//"nid",
+//"vid",
+//"uid",
+//"title",
+//"body",
+//"teaser",
+//"log",
+//"timestamp",
+//"format"
+//],
+				//"records" : []
+			//},  
 			
-			"node_type" :{
-				"fields" : [
-"type",
-"name",
-"module",
-"description",
-"help",
-"has_title",
-"title_label",
-"has_body",
-"body_label",
-"min_word_count",
-"custom",
-"modified",
-"locked",
-"orig_type"
-],
-				"records" : []
-			}
+			//"node_type" :{
+				//"fields" : [
+//"type",
+//"name",
+//"module",
+//"description",
+//"help",
+//"has_title",
+//"title_label",
+//"has_body",
+//"body_label",
+//"min_word_count",
+//"custom",
+//"modified",
+//"locked",
+//"orig_type"
+//],
+				//"records" : []
+			//}
 			
 		}//end tables
 	};
@@ -387,7 +387,6 @@ console.log("error in _db(), data not in JSON format");
 	
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
-//console.log(arguments);
 		var startTime = new Date();
 		var options = {
 			//"dbName": null,
@@ -406,6 +405,7 @@ console.log("error in _db(), data not in JSON format");
 		for(var key in opt ){
 			options[key] = opt[key];
 		}
+//console.log(opt);
 		
 		//options["queryObj"]["callback"] = _postQuery;
 		options["callback"] = opt["callback"];
@@ -462,6 +462,11 @@ console.log("error in _db(), data not in JSON format");
 //console.log( msg );
 //console.log( data[0], data.length );
 							if( data.length > 0){
+								
+								if( typeof _vars["tables"][tableName] === "undefined"){
+									_vars["tables"][tableName] = [];
+									//_vars["tables"][tableName]["records"] = [];
+								}
 								_vars["tables"][tableName]["records"] = data;
 								_startQuery( queryObj );//restart db query
 							} else {
@@ -855,6 +860,11 @@ console.log("not callback....use return function");
 			
 			//var recordObj = {"a":1};
 //console.log(tableName, _vars["tables"][tableName]);
+			if( typeof _vars["tables"][tableName] === "undefined"){
+				_vars["tables"][tableName] = [];
+				//_vars["tables"][tableName]["fields"] = [];
+				_vars["tables"][tableName]["records"] = [];
+			}
 			_vars["tables"][tableName]["records"].push( recordObj );
 		}//next
 		
@@ -1348,19 +1358,28 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				"action" : "select",
 				"tableName": "node",
 				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
-				"targetFields" : ["title"],
+				"targetFields" : ["title", "type"],
 				"where" : [
 					{"key" : "nid", "value" : p["nid"], "compare": "="}
 				]
 			},
-			"callback" : function( node ){
-//console.log( node );						
-				__getBody(function( res ){
+			"callback" : function( res ){
+//console.log( node );
+				var node = res[0];
+				node["nid"] = p["nid"];
+				
+				__getBody(function( body ){
 //console.log( res );						
-					node[0]["body"] = res[0]["body"];
-					if( typeof p["callback"] === "function"){
-						p["callback"](node);
-					}
+					node["body"] = body;
+					
+					__getFields( node, function( fields ){
+						node["fields"] = fields;
+						if( typeof p["callback"] === "function"){
+							p["callback"](node);
+						}
+						
+					});//end get fields node
+					
 				});
 			}//end callback
 		});
@@ -1380,12 +1399,84 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				"callback" : function( res ){
 //console.log( res );
 					if( typeof callback === "function"){
-						callback(res);
+						callback( res[0]["body"]);
 					}
 				}//end callback
 			});
 			return false;
 		}//__getBody()
+
+		function __getFields( node, callback ){
+console.log( "__getFields()");
+			var tableName = "content_type_" + node["type"];
+			var fieldsList = [
+"field_num_page_value",
+"field_author_value",
+"field_create_date_value",
+			"field_img1_gallery_fid",
+			"field_img1_gallery_list",
+			"field_img1_gallery_data",
+"field_title_value",
+"field_preview_img_value",
+"field_big_img_value",
+"field_original_img_value",
+			"field_info_value",
+			"field_info_format",
+"field_preview_img_preset_value",
+"field_zoom_img_value"
+];
+
+
+//-----------------
+
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": "content_node_field_instance",
+					"targetFields" : ["field_name"],
+					"where" : [
+						{"key" : "type_name", "value" : node["type"], "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+console.log( res );
+/*
+Object { field_name="field_author"}
+Object { field_name="field_create_date"}
+Object { field_name="field_num_page"}
+	Object { field_name="field_img1_gallery"}
+Object { field_name="field_big_img"}
+Object { field_name="field_preview_img"}
+Object { field_name="field_title"}
+	Object { field_name="field_content_location"}
+Object { field_name="field_original_img"}
+	Object { field_name="field_info"}
+Object { field_name="field_preview_img_preset"}
+	Object { field_name="field_filename"}
+Object { field_name="field_zoom_img"}
+*/
+				}//end callback
+			});
+
+//-----------------
+			webApp.db.query({
+				"queryObj" : {
+					"action" : "select",
+					"tableName": tableName,
+					"targetFields" : fieldsList,
+					"where" : [
+						{"key" : "nid", "value" : node["nid"], "compare": "="}
+					]
+				},
+				"callback" : function( res ){
+//console.log( res );
+					if( typeof callback === "function"){
+						callback( res[0] );
+					}
+				}//end callback
+			});
+			return false;
+		}//__getFields()
 
 	}//end _nodeLoad()
 
@@ -2096,20 +2187,21 @@ console.log(msg);
 		
 		//draw page content
 		if( p["nid"] ){
+console.log("-- start build page --");
 			
 			//get node from DB
 			var node = webApp.db.nodeLoad({
 				"nid": p["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
-//console.log( node );						
+console.log( node );						
 					//draw content block
 					_buildBlock({
 						"name" : "block-content",
-						"title" : node[0]["title"], 
+						"title" : node["title"], 
 						"templateID" : "tpl-block-content",
 						//"content" : _formNodeContent(node)//node["content"]
-						"content" : node[0]["body"]
+						"content" : node["body"]
 					});
 					
 					_buildSidebar({
