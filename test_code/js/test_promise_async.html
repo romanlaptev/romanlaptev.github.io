@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test Promise</title>
+<!--	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+-->
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h1>Promise info</h1>
+			</div>
+			
+			<div class="panel-body">
+<pre>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://learn.javascript.ru/promise		
+https://www.sitepoint.com/overview-javascript-promises/
+</pre>
+			</div>
+			
+		</div>
+	
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h1>Async info</h1>
+			</div>
+			
+			<div class="panel-body">
+<pre>
+Node.js >= 7.6
+https://caniuse.com/#feat=async-functions
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/async_function
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/await
+
+https://habrahabr.ru/company/ruvds/blog/326074/
+Async/await: 6 причин забыть о промисах
+
+https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
+Зачем мне async/await в JavaScript?
+</pre>
+			</div>
+			
+		</div>
+	
+		
+	</div><!-- end container -->
+
+</body>
+
+<script>
+//https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
+function asyncFunc1 () {
+	return new Promise(function(resolve, reject) {
+	
+		setTimeout(function(){
+			resolve({message: "First done!"}), 300 
+			});
+		
+	});
+};
+
+function asyncFunc2 () {
+	return new Promise(function(resolve, reject) {
+	setTimeout( () => resolve({message: "Second done!"}), 200 );
+	});
+};
+
+function asyncFunc3 () {
+	return new Promise(function(resolve, reject) {
+	setTimeout( () => resolve({message: "Third done!"}), 100 );
+	});
+};
+
+function start () {// Работают асинхронно
+  asyncFunc1().then(callback);
+  asyncFunc2().then(callback);
+  asyncFunc3().then(callback);
+};
+function callback ( data ) { console.log( data.message ) };
+
+//----------------------- Use Promises callback
+function startChain() {
+	asyncFunc1()
+	.then(
+		function( data ) {
+console.log(data.message );
+			return asyncFunc2();
+		}
+	).then(
+		function(data_2) {
+console.log(data_2.message);
+			return asyncFunc3();
+			}
+	).then( 
+		function(data_3) {
+console.log(data_3.message);
+console.log("All done..");
+		}
+	);
+};
+
+//-----------------------
+// Use async attribute
+async function startAsyncAwait(){// Работают синхронно, в нужном нам порядке
+	let data1 = await asyncFunc1();
+	let data2 = await asyncFunc2();
+	let data3 = await asyncFunc3();
+console.log("startAsync:", data1.message, data2.message, data3.message);
+};
+
+
+//start();
+//startChain();
+startAsyncAwait();
+//console.log( startAsyncAwait.constructor.name );
+
+</script>
+
+</html>
