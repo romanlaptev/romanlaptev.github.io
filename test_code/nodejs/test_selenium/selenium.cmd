@@ -8,4 +8,5 @@ REM selenium-standalone install
 rem selenium-standalone start 
 
 rem Run test
-node test_selenium.js 
+rem node test_selenium_google.js 
+rem node .\node_modules\selenium-webdriver\example\google_search.js

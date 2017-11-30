@@ -2,13 +2,15 @@ var webdriver = require("selenium-webdriver");
 
 // Input capabilities
 var capabilities = {
-"browserName" : "chrome",
+//"browserName" : "chrome",
+"browserName" : "firefox",
+//"browserName" : "internet explorer",
 }
-
-var driver = new webdriver.Builder().
-usingServer("http://localhost:4444/wd/hub").
-withCapabilities(capabilities).
-build();
+	
+var driver = new webdriver.Builder()
+.usingServer("http://localhost:4444/wd/hub")
+.withCapabilities(capabilities)
+.build();
 
 driver.get("http://www.google.com");
 driver.findElement(webdriver.By.name("q")).sendKeys("video testing");
