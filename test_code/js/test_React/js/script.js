@@ -1,4 +1,4 @@
-var msg = "React version: " + React.version;
+﻿var msg = "React version: " + React.version;
 console.log( msg );	
 
 window.onload = function(){
@@ -15,6 +15,9 @@ window.onload = function(){
 	  // <h1>Hello, world!</h1>,
 	  // document.getElementById('root')
 	// );
+	
+//https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png	
+	//React.render(<img src='http://.comlkevsb9' />, document.body);
 	
 }//end load
 

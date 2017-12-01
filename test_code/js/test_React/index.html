@@ -10,9 +10,12 @@
 
     <script type="text/javascript" src="js/react/react.development.js"></script>
 	<script type="text/javascript" src="js/react/react-dom.development.js"></script>
-
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script> -->
+	<script src="js/babel.js"></script>
+ 
     <script type="text/javascript" src="js/script.js"></script>
 	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
@@ -21,10 +24,25 @@
 	<div class="container">
 		<h1>Test React <span id="version"></span></h1>
 		
-		<div id="root"></div>
-
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h1>React render element</h1>
+			</div>
+			<div class="panel-body">
+				<span id="root"></span>
+			</div>
+		</div>
+		
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				use Babel precompile and render element:<span id="root2"></span>
+			</div>
+		</div>
+		
 		<pre>
 https://reactjs.org/
+https://babeljs.io/
+https://github.com/facebook/react
 
 https://cdnjs.com/libraries/react
 https://cdnjs.com/libraries/react-dom
@@ -34,10 +52,16 @@ https://habrahabr.ru/post/248799/
 Краткое руководство по React JS
 
 https://habrahabr.ru/post/229629/
-5 практических примеров для изучения фреймворка React		
+5 практических примеров для изучения фреймворка React
+
+https://metanit.com/web/react/1.1.php
+Введение в React
+Что такое React. Первое приложение
+
 		</pre>
 		
 	</div><!-- end container -->
+    <script type="text/babel" src="js/custom.js"></script>
 	
 </body>
 </html>
