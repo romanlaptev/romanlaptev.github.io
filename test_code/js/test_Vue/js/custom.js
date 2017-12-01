@@ -6,29 +6,45 @@ if( typeof Vue === "undefined"){
 
 window.onload=function(){
 
-	var $ver = getById("version");
 	if( support){
-console.log("Vue version:" + Vue.version);
-		$ver.innerHTML = Vue.version;
-		
-		var app = new Vue({
-			el: '#app',
-			data: {
-				message: 'Hello Vue!'
-			},
-			methods: {
-				setMessage: function(event){
-	console.log(event);				
-					this.message = event.target.value;
-				}
-			}
-		});
+		testVue();
 	} else {
+		var $ver = getById("version");
 		var msg = "This browser does not support the framework Vue!!!";
 		$ver.innerHTML = "<p class='alert-danger'>"+msg+"</p>";
 	}
 	
 }//end load
+
+
+function testVue(){
+
+	var $ver = getById("version");
+console.log("Vue version:" + Vue.version);
+	$ver.innerHTML = Vue.version;
+	
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue!'
+		},
+		methods: {
+			setMessage: function(event){
+console.log(event);				
+				this.message = event.target.value;
+			}
+		}
+	});
+
+	var app2 = new Vue({
+	  el: '#app-2',
+	  data: {
+		message: 'Вы загрузили эту страницу в: ' + new Date().toLocaleString()
+	  }
+	})
+	
+}//end testVue()
+
 
 function getById(id){
 	
