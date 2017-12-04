@@ -144,6 +144,13 @@ console.log("computed");
 			// }			
 		// }
 	});
+
+
+	//https://ru.vuejs.org/v2/guide/index.html
+	//https://metanit.com/web/vuejs/4.1.php
+	Vue.component('todo-item', {
+		template: '<li>Это todo</li>'
+	})
 	
 }//end testVue()
 
