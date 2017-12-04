@@ -22,35 +22,6 @@
 			<h1>Test Vue <span id="version"></span></h1>
 		</div>	
 		
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h1>First App</h1>
-			</div>
-			<div class="panel-body">
-https://metanit.com/web/vuejs/1.1.php
-<div id="app">
-	<h3>{{message}}</h3>
-	<input type="text" v-on:input="setMessage" />
-</div>
-
-			</div>
-		</div>
-		
-		<div class="panel panel-primary">
-			<div class="panel-body">
-https://ru.vuejs.org/v2/guide/index.html			
-<div id="app-2">
-  <span v-bind:title="message">
-    Подержи курсор надо мной пару секунд,
-    чтобы увидеть динамически связанное значение title!
-  </span>
-</div>
-
-			</div>
-		</div>
-
-		
-	
 <pre>
 https://vuejs.org/
 https://vuejs.org/v2/guide/installation.html
@@ -61,6 +32,85 @@ https://metanit.com/web/vuejs/1.1.php
 Основы Vue.js
 Что такое Vue.js. Первое приложение
 </pre>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h1>First App</h1>
+			</div>
+			<div class="panel-body">
+https://metanit.com/web/vuejs/1.1.php<br>
+Test directive v-on:input
+<div id="app">
+	<h3>{{message}}</h3>
+	<input type="text" v-on:input="setMessage" />
+</div>
+
+			</div>
+		</div>
+		
+		<div class="panel panel-primary">
+			<div class="panel-body">
+https://ru.vuejs.org/v2/guide/index.html<br>
+Test directive v-bind
+<div id="app-2">
+  <span v-bind:title="message">
+    Подержи курсор надо мной пару секунд,
+    чтобы увидеть динамически связанное значение title!
+  </span>
+</div>
+
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+https://ru.vuejs.org/v2/guide/index.html<br>
+Test directive v-if
+<div id="app-3">
+	<button class="btn btn-large btn-success" v-if="seen"> iam visible...</button>
+</div>
+<button id="btn-visibility" class="btn btn-default">switch visibility</button>
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+Test of cycles, directive v-for
+
+				<div id="app-4">
+<ol>
+	<li v-for="todo in todos">
+	  {{ todo.text }}
+	</li>
+</ol>
+				</div>
+<button id="btn-push" class="btn btn-primary">add item</button>
+				
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+Test directive v-on:click
+	<div id="app-5">
+		<p>{{ message }}</p>
+		<button v-on:click="method1">change text</button>
+	</div>
+				
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+Test directive v-model
+	<div id="app-6">
+		<p>Hi {{ name }} !!! Nice to meet you...</p>
+		type you name here: <input v-model="name">
+	</div>
+				
+			</div>
+		</div>
+
 
 </div><!-- end container -->
 	
