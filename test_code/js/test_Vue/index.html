@@ -96,7 +96,18 @@ Test directive v-on:click
 		<p>{{ message }}</p>
 		<button v-on:click="method1">change text</button>
 	</div>
-				
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+Counter
+	<div id="app-counter">
+		<button v-on:click="increase">+</button>
+		<button v-on:click="decrease">-</button>		
+		<div>{{counter}}</div>
+	</div>
+	
 			</div>
 		</div>
 
@@ -107,6 +118,19 @@ Test directive v-model
 		<p>Hi {{ name }} !!! Nice to meet you...</p>
 		type you name here: <input v-model="name">
 	</div>
+				
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+Test methods, https://metanit.com/web/vuejs/1.6.php
+			<div id="app-m">
+				your name:<input type="text" v-model="name" />
+				your age:<input type="text" v-model="age" />
+				<!-- <h3>{{checkAge()}}</h3> -->
+				<h3>{{enabled}}</h3>
+			</div>		
 				
 			</div>
 		</div>

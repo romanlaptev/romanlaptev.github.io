@@ -102,6 +102,49 @@ console.log(event);
 		}
 	});
 	
+	var app_counter = new Vue({
+		el: "#app-counter",
+		data : {
+			counter: 0
+		},
+		methods : {
+			increase: function(e){
+console.log(e);				
+				this.counter++;
+			},
+			decrease: function(e){
+console.log(e);				
+				if(this.counter>0) 
+					this.counter--;
+			}			
+		}
+	});
+	
+	var app_m = new Vue({
+		el: "#app-m",
+		data: {
+			name:"Tommy", age:15
+		},
+		computed:{
+			enabled: function(){
+console.log("computed");
+				if(this.age > 17)
+					return "come in...";
+				else
+					return "come on, go home, chick...";
+			}			
+		}
+		// methods : {
+			// checkAge: function(){
+// console.log(arguments);				
+				// if(this.age > 17)
+					// return "enter";
+				// else
+					// return "go home, chick...";
+			// }			
+		// }
+	});
+	
 }//end testVue()
 
 
