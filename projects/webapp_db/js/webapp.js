@@ -1409,24 +1409,24 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		function __getFields( node, callback ){
 console.log( "__getFields()");
 			var tableName = "content_type_" + node["type"];
-			var fieldsList = [
-"field_num_page_value",
-"field_author_value",
-"field_create_date_value",
-			"field_img1_gallery_fid",
-			"field_img1_gallery_list",
-			"field_img1_gallery_data",
-"field_title_value",
-"field_preview_img_value",
-"field_big_img_value",
-"field_original_img_value",
-			"field_info_value",
-			"field_info_format",
-"field_preview_img_preset_value",
-"field_zoom_img_value"
-];
-
-
+			// var fieldsList = [
+// "field_num_page_value",
+// "field_author_value",
+// "field_create_date_value",
+			// "field_img1_gallery_fid",
+			// "field_img1_gallery_list",
+			// "field_img1_gallery_data",
+// "field_title_value",
+// "field_preview_img_value",
+// "field_big_img_value",
+// "field_original_img_value",
+			// "field_info_value",
+			// "field_info_format",
+// "field_preview_img_preset_value",
+// "field_zoom_img_value"
+// ];
+			var fieldsList = [];
+//field_filename - NOT MULPTIPLE VALUES!!!
 //-----------------
 
 			webApp.db.query({
@@ -1439,42 +1439,34 @@ console.log( "__getFields()");
 					]
 				},
 				"callback" : function( res ){
-console.log( res );
-/*
-Object { field_name="field_author"}
-Object { field_name="field_create_date"}
-Object { field_name="field_num_page"}
-	Object { field_name="field_img1_gallery"}
-Object { field_name="field_big_img"}
-Object { field_name="field_preview_img"}
-Object { field_name="field_title"}
-	Object { field_name="field_content_location"}
-Object { field_name="field_original_img"}
-	Object { field_name="field_info"}
-Object { field_name="field_preview_img_preset"}
-	Object { field_name="field_filename"}
-Object { field_name="field_zoom_img"}
-*/
+//console.log( res );
+					for( var n = 0; n < res.length; n++){
+						var fieldName = res[n]["field_name"];
+						fieldsList.push( fieldName + "_value");
+					}
+//console.log( fieldsList );
+					
+					webApp.db.query({
+						"queryObj" : {
+							"action" : "select",
+							"tableName": tableName,
+							"targetFields" : fieldsList,
+							"where" : [
+								{"key" : "nid", "value" : node["nid"], "compare": "="}
+							]
+						},
+						"callback" : function( res ){
+//console.log( res );
+							if( typeof callback === "function"){
+								callback( res[0] );
+							}
+						}//end callback
+					});
+
 				}//end callback
 			});
 
 //-----------------
-			webApp.db.query({
-				"queryObj" : {
-					"action" : "select",
-					"tableName": tableName,
-					"targetFields" : fieldsList,
-					"where" : [
-						{"key" : "nid", "value" : node["nid"], "compare": "="}
-					]
-				},
-				"callback" : function( res ){
-console.log( res );
-					if( typeof callback === "function"){
-						callback( res[0] );
-					}
-				}//end callback
-			});
 			return false;
 		}//__getFields()
 
