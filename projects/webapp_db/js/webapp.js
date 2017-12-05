@@ -1469,7 +1469,7 @@ Object { field_name="field_zoom_img"}
 					]
 				},
 				"callback" : function( res ){
-//console.log( res );
+console.log( res );
 					if( typeof callback === "function"){
 						callback( res[0] );
 					}
@@ -2004,6 +2004,7 @@ console.log("init app!");
 			break;
 			
 			case "node":
+console.log("-- start build page --");
 				var timeStart = new Date();
 				webApp.app.buildPage({
 					"nid" : webApp.vars["GET"]["nid"],
@@ -2187,7 +2188,6 @@ console.log(msg);
 		
 		//draw page content
 		if( p["nid"] ){
-console.log("-- start build page --");
 			
 			//get node from DB
 			var node = webApp.db.nodeLoad({
