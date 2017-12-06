@@ -30,14 +30,14 @@ console.log("Ready! jQuery version:" + $.fn.jquery);
 <script>
 window.onload = function(){
 //console.log("window event onload");
-	var log = getDOMobj("log-wrap");
+	var log = getById("log-wrap");
 	log.style.display="none";
 	document.onkeydown = function(event) {
 		event = event || window.event;
 		var keyCode =  event.which ||  event.keyCode;		
 //console.log(keyCode);			
 		if( keyCode === 27 || keyCode === 192 ){//ESC or tilda
-			var log = getDOMobj("log-wrap");
+			var log = getById("log-wrap");
 			if( log.style.display === "none"){
 				log.style.display="block";
 			} else {
@@ -50,7 +50,7 @@ window.onload = function(){
 };//end window.load	
 
 //var _showHiddenLog = function(){
-	//var log = getDOMobj("log-wrap");
+	//var log = getById("log-wrap");
 	//if( log.style.display === "none"){
 		//log.style.display="block";
 //	}

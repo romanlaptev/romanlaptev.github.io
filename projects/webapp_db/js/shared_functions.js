@@ -2,7 +2,7 @@
 if (!window.console){ 
 	window.console = {
 		"log" : function( msg ){
-			var log = getDOMobj("log");
+			var log = getById("log");
 			if(log){
 				log.innerHTML += msg +"<br>";
 			} else {
@@ -29,7 +29,7 @@ function _log( msg, id){
 		var id = "log";
 	}
 	
-	var output = getDOMobj(id);
+	var output = getById(id);
 	if( output ){	
 		if( msg.length == 0){
 			output.innerHTML = "";
@@ -50,7 +50,7 @@ function _log( msg, id){
 	
 }//end _log()
 
-function getDOMobj(id){
+function getById(id){
 	
 	if( document.querySelector ){
 		var obj = document.querySelector("#"+id);
@@ -73,7 +73,7 @@ function getDOMobj(id){
 	//}
 	
 	return false;
-}//end getDOMobj()
+}//end getById()
 
 //**************************************
 //musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json

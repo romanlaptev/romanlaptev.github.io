@@ -41,12 +41,12 @@ var webApp = {
 		//"testUrlPHP": "api/test.php",
 		//"testUrlASPX": "api/test.aspx",
 		"GET" : {},
-		"pageContainer" : getDOMobj("page-container"),
-		"wait" : getDOMobj("wait"),
-		"waitWindow" : getDOMobj("wait-window"),
-		"loadProgress" : getDOMobj("load-progress"),
-		"loadProgressBar" : getDOMobj("load-progress-bar"),
-		"saveProgressBar" : getDOMobj("save-progress-bar")
+		"pageContainer" : getById("page-container"),
+		"wait" : getById("wait"),
+		"waitWindow" : getById("wait-window"),
+		"loadProgress" : getById("load-progress"),
+		"loadProgressBar" : getById("load-progress-bar"),
+		"saveProgressBar" : getById("save-progress-bar")
 	},
 	
 	"init" : function( postFunc ){
@@ -1543,7 +1543,7 @@ function _draw( opt ){
 	};
 
 	function _getTpl( id ){
-		var tpl = getDOMobj(id);
+		var tpl = getById(id);
 		var html = tpl.innerHTML;
 		
 		//clear document
@@ -1631,12 +1631,12 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 			
 		// }//next
 		
-		// var tpl = getDOMobj(templateId);
+		// var tpl = getById(templateId);
 		// tpl.innerHTML = html;
 		// tpl.className = "";
 		
 		// //insert list
-		// var list = getDOMobj( templateId+"_list" );
+		// var list = getById( templateId+"_list" );
 // //console.log(list, listHtml, list.innerHTML);
 		// list.innerHTML = listHtml;
 		
@@ -1671,7 +1671,7 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		html = html.replace("{{block_title}}", options["title"]);
 		html = html.replace("{{content}}", options["content"]);
 		
-		var tpl = getDOMobj(templateID);
+		var tpl = getById(templateID);
 		tpl.innerHTML = html;
 		tpl.className = "";//show block
 		
@@ -1977,15 +1977,15 @@ console.log("init app!");
 		switch( webApp.vars["GET"]["q"] ) {
 			
 			case "hide-log":
-				var log = getDOMobj("log-wrap");
+				var log = getById("log-wrap");
 				log.style.display="none";
 			break;
 			case "view-log":
-				var log = getDOMobj("log-wrap");
+				var log = getById("log-wrap");
 				log.style.display="block";
 			break;
 			case "toggle-log":
-				var log = getDOMobj("log-wrap");
+				var log = getById("log-wrap");
 //console.log(log.style.display);
 				if( log.style.display==="none"){
 					log.style.display="block";
@@ -1995,7 +1995,7 @@ console.log("init app!");
 			break;
 			
 			case "clear-log":
-				var log = getDOMobj("log");
+				var log = getById("log");
 				log.innerHTML="";
 			break;
 			
