@@ -1524,6 +1524,10 @@ function _draw( opt ){
 			"tpl-list_list" : _getTpl("tpl-list_list"),
 			"tpl-menu" : _getTpl("tpl-menu"),
 			"tpl-menu_list" : _getTpl("tpl-menu_list"),
+
+			"tpl-list-fields" : _getTpl("tpl-list-fields"),
+			"tpl-list-fields_list" : _getTpl("tpl-list-fields_list"),
+
 			"tpl-block-content" : _getTpl("tpl-block-content"),
 			"tpl-block-1" : _getTpl("tpl-block-1"),
 			"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
@@ -2110,6 +2114,7 @@ console.log(msg);
 						"templateID" : p["contentTpl"]
 					});
 					
+//console.log(html);								
 					//var html = "<h1>Test!!!</h1>";
 					if( html && html.length > 0){
 						p["content"] = html;
@@ -2186,16 +2191,55 @@ console.log(msg);
 				"nid": p["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
-console.log( node );						
-					//draw content block
+console.log( node );
+
+					//draw content block for BODY of node
+					if( node["body"].length > 0 ){
+						_buildBlock({
+							"name" : "block-content",
+							"title" : node["title"], 
+							"templateID" : "tpl-block-content",
+							//"content" : _formNodeContent(node)//node["content"]
+							"content" : node["body"]
+						});
+					}
+					
+//--------------------- draw content block for FIELDS of node
 					_buildBlock({
 						"name" : "block-content",
-						"title" : node["title"], 
+						"title" : "fields", 
 						"templateID" : "tpl-block-content",
-						//"content" : _formNodeContent(node)//node["content"]
-						"content" : node["body"]
+						"contentTpl" : "tpl-list-fields",
+						"content" : function( opt ){
+							var fieldList = [];
+							// var fieldList = [{
+								// "name" : "field_title_value", 
+								// "value" : "Ballet Mistress, 1994, Майкл Паркес"
+							// }];
+							
+							for( var field in node["fields"] ){
+								if( !node["fields"][field] ){
+									continue;
+								}
+								if( node["fields"][field] === "NULL" ){
+									continue;
+								}
+								fieldList.push({
+									"name": field,
+									"value" : node["fields"][field]
+								});
+							}//next
+//console.log( fieldList );	
+							if( typeof opt["callback"] === "function"){
+								if( fieldList.length > 0){
+									opt["callback"]( fieldList );
+								}
+							}
+							
+						}//end content callback
 					});
-					
+//---------------------
+
 					_buildSidebar({
 						"blocks" : _vars["blocks"],
 						"callback" : function(){
@@ -2245,7 +2289,7 @@ _log("<p>Warn! no page,  'nid' <b class='text-danger'>is empty</b></p>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);		
+//console.log(p);		
 
 		if( p["blocks"].length === 0){
 			var msg = "Warning! no sidebar blocks...";
