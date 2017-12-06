@@ -2193,53 +2193,55 @@ console.log(msg);
 				"callback" : function( node ){
 console.log( node );
 
-					//draw content block for BODY of node
+					var html = "";
+					
+					//add node BODY to the content block
 					if( node["body"].length > 0 ){
+						html += node["body"];
+					}
+
+					//add node FIELDS to the content block
+					var fieldList = [];
+					// // var fieldList = [{
+						// // "name" : "field_title_value", 
+						// // "value" : "Ballet Mistress, 1994, Майкл Паркес"
+					// // }];
+					
+					for( var field in node["fields"] ){
+						if( !node["fields"][field] ){
+							continue;
+						}
+						if( node["fields"][field] === "NULL" ){
+							continue;
+						}
+						fieldList.push({
+							"name": field,
+							"value" : node["fields"][field]
+						});
+					}//next
+//console.log( fieldList );	
+					
+					var fields_html = webApp.draw.wrapContent({
+						"data" : fieldList,
+						"templateID" : "tpl-list-fields"
+					});
+					
+//console.log( fields_html);
+					if( fields_html && fields_html.length > 0){
+						html += fields_html;
+					}
+
+					//draw content block
+					if( html.length > 0 ){
 						_buildBlock({
 							"name" : "block-content",
 							"title" : node["title"], 
 							"templateID" : "tpl-block-content",
 							//"content" : _formNodeContent(node)//node["content"]
-							"content" : node["body"]
+							"content" : html
 						});
 					}
 					
-//--------------------- draw content block for FIELDS of node
-					_buildBlock({
-						"name" : "block-content",
-						"title" : "fields", 
-						"templateID" : "tpl-block-content",
-						"contentTpl" : "tpl-list-fields",
-						"content" : function( opt ){
-							var fieldList = [];
-							// var fieldList = [{
-								// "name" : "field_title_value", 
-								// "value" : "Ballet Mistress, 1994, Майкл Паркес"
-							// }];
-							
-							for( var field in node["fields"] ){
-								if( !node["fields"][field] ){
-									continue;
-								}
-								if( node["fields"][field] === "NULL" ){
-									continue;
-								}
-								fieldList.push({
-									"name": field,
-									"value" : node["fields"][field]
-								});
-							}//next
-//console.log( fieldList );	
-							if( typeof opt["callback"] === "function"){
-								if( fieldList.length > 0){
-									opt["callback"]( fieldList );
-								}
-							}
-							
-						}//end content callback
-					});
-//---------------------
-
 					_buildSidebar({
 						"blocks" : _vars["blocks"],
 						"callback" : function(){
