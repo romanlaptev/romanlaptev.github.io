@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 <!--
 	<script>
 window.onload = function(){	
@@ -31,8 +31,14 @@ window.onload = function(){
 	}
 	</style>
 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script> -->
+	<script src="js/angular-1.3.16.min.js"></script>
 	<script>
+		window.onload = function(){
+			var ver = document.querySelector("#ver");
+			ver.innerHTML = angular.version.full;
+		}
+		
 		var App = angular.module("App",[]);
 		App.controller("AppCtrl", function($scope){
 		
@@ -72,6 +78,9 @@ console.log(item, $scope[item]);
 <body>
 
 <div class="container">
+
+	<h1>Test AngularJS <span id="ver"></span></h1>	
+	
 	<div ng-app="App" ng-init="test_var=25+1">
 		<p>2+3={{2+3}}</p>
 		

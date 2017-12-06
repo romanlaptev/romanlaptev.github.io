@@ -1,2 +1,4 @@
 npm install 
 npm start 
+rem node .\node_modules\typescript\bin\tsc --help
+rem node .\node_modules\typescript\bin\tsc app\app.component.ts
