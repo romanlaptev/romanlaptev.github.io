@@ -11,53 +11,10 @@
 	<link rel="stylesheet" href="css/fonts.css" type="text/css" media="screen" />
 -->	
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	
 <!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 <![endif]-->
-	
-<!--
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script>
-$(document).ready(function(){
-console.log("Ready! jQuery version:" + $.fn.jquery);	
-});//end ready
-
-	</script>
--->	
-<script src="js/shared_functions.js"></script>
-<script>
-window.onload = function(){
-//console.log("window event onload");
-	var log = getById("log-wrap");
-	log.style.display="none";
-	document.onkeydown = function(event) {
-		event = event || window.event;
-		var keyCode =  event.which ||  event.keyCode;		
-//console.log(keyCode);			
-		if( keyCode === 27 || keyCode === 192 ){//ESC or tilda
-			var log = getById("log-wrap");
-			if( log.style.display === "none"){
-				log.style.display="block";
-			} else {
-				log.style.display="none";
-			}
-//console.log(log.style.display);			
-		}
-	};//end event
-	
-};//end window.load	
-
-//var _showHiddenLog = function(){
-	//var log = getById("log-wrap");
-	//if( log.style.display === "none"){
-		//log.style.display="block";
-//	}
-//}//end _showHiddenLog
-
-</script>
-
 </head>
 
 <body>
@@ -212,27 +169,6 @@ window.onload = function(){
 <script id="tpl-list-fields_list" type="text/template">
 	<li>{{name}} : {{value}}</li>
 </script>			
-
-
-<script src="js/idb.js"></script>
-<script src="js/webapp.js"></script>
-
-<script>
-	if ('ontouchstart' in window){
-		var script = document.createElement('script');
-		script.src = "https://getfirebug.com/firebug-lite.js";
-		//document.body.appendChild( script );
-		document.getElementsByTagName('head')[0].appendChild(script);
-/*
-		script.onload = function() {
-//alert( "onload " + this.src);
-		};
-		script.onerror = function(e) {
-//alert( "error load script " + this.src);
-		};  
-*/		
-	}
-</script>
 
 </body>
 </html>
