@@ -1544,11 +1544,7 @@ function _draw( opt ){
 
 	function _getTpl( id ){
 		var tpl = getById(id);
-		
-		html = "";
-		if( tpl && tpl.length > 0){
-			html = tpl.innerHTML;
-		}
+		var html = tpl.innerHTML;
 		
 		//clear document
 		//if ( tpl.parentNode ) {
