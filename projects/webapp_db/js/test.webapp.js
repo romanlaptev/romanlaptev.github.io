@@ -24,7 +24,8 @@ var webApp = {
 	"vars" : {
 		"log" : [],
 		 "import" : {
-			"data_url" : "db/art.xml",
+			//"data_url" : "db/art.xml",
+"data_url" : "../db/art.xml",
 			"db_type" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
