@@ -421,7 +421,7 @@ console.log( addRecord );
 			for(var key in opt ){
 				options[key] = opt[key];
 			}
-	console.log(options);
+//console.log(options);
 
 			if( options["storeName"].length === 0){
 	var msg = "_getRecords(), error, argument 'storeName' empty.... ";

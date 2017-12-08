@@ -1525,8 +1525,8 @@ function _draw( opt ){
 			"tpl-menu" : _getTpl("tpl-menu"),
 			"tpl-menu_list" : _getTpl("tpl-menu_list"),
 
-			"tpl-list-fields" : _getTpl("tpl-list-fields"),
-			"tpl-list-fields_list" : _getTpl("tpl-list-fields_list"),
+			//"tpl-list-fields" : _getTpl("tpl-list-fields"),
+			//"tpl-list-fields_list" : _getTpl("tpl-list-fields_list"),
 
 			"tpl-block-content" : _getTpl("tpl-block-content"),
 			"tpl-block-1" : _getTpl("tpl-block-1"),
@@ -1534,7 +1534,8 @@ function _draw( opt ){
 			"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
 			"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block"),
 "tpl-termin_nodes" : _getTpl("tpl-termin_nodes"),
-"tpl-termin_nodes_list" : _getTpl("tpl-termin_nodes_list")
+"tpl-termin_nodes_list" : _getTpl("tpl-termin_nodes_list"),
+"tpl-node" : _getTpl("tpl-node")
 		}
 	};
 
@@ -1685,14 +1686,14 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		var p = {
 			"data": null,
 			//"type" : "",
-			//"contentType" : "",
+			"contentType" : "menu",
 			"templateID" : false
 		};
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -1710,9 +1711,10 @@ _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b
 	// "url" : "http://test"
 // };
 		
-		//switch( p["type"] ){
-			//case "menu" :
-			
+		switch( p["contentType"] ){
+			case "menu" :
+				//_formMenuHtml();
+
 				if( !_vars["templates"][p.templateID] ){
 _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
 					return false;
@@ -1721,7 +1723,8 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 				
 				var listHtml = "";
 				for( var key in p["data"]){
-//console.log(p["data"][key], typeof p["data"][key], p["data"][key].length);
+//console.log( key );
+//console.log( p["data"][key], typeof p["data"][key], p["data"].length);
 					
 					//if( typeof p["data"][key] === "string"){
 						//html = html.replace("{{"+key+"}}", p["data"][key]);
@@ -1737,7 +1740,9 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 						var items = p["data"][key];
 						
 						if( !_vars["templates"][ p.templateID+"_list"] ){
-_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>");
+var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
+console.log(msg);							
+_log(msg);
 							return false;
 						}
 						var itemHtml = _vars["templates"][ p.templateID+"_list"];
@@ -1756,11 +1761,11 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 					
 				}//next
 				html = html.replace("{{list}}", listHtml);
-			//break;
+			break;
 			
-			//case "link" :
-			//break;
-		//}//end switch
+			case "node" :
+			break;
+		}//end switch
 
 		
 //console.log(html);
@@ -2192,15 +2197,14 @@ console.log(msg);
 				//"title": options["title"]
 				"callback" : function( node ){
 console.log( node );
-
 					var html = "";
-					
 					//add node BODY to the content block
 					if( node["body"].length > 0 ){
 						html += node["body"];
 					}
 
 					//add node FIELDS to the content block
+/*
 					var fieldList = [];
 					// // var fieldList = [{
 						// // "name" : "field_title_value", 
@@ -2230,9 +2234,22 @@ console.log( node );
 					if( fields_html && fields_html.length > 0){
 						html += fields_html;
 					}
-
+*/
+					var _node = [];
+					var _node = [{
+						"field_author_value" : "Майкл Паркес"
+					}];
+					var _html = webApp.draw.wrapContent({
+						"data" : _node,
+						"templateID" : "tpl-node"
+					});
+console.log( _html);
+					if( _html && _html.length > 0){
+						html += _html;
+					}
+					
 					//draw content block
-					if( html.length > 0 ){
+					//if( html.length > 0 ){
 						_buildBlock({
 							"name" : "block-content",
 							"title" : node["title"], 
@@ -2240,7 +2257,8 @@ console.log( node );
 							//"content" : _formNodeContent(node)//node["content"]
 							"content" : html
 						});
-					}
+					//}
+
 					
 					_buildSidebar({
 						"blocks" : _vars["blocks"],

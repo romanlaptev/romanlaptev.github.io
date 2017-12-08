@@ -123,7 +123,16 @@ window.onload = function(){
 			<div class="content">{{content}}</div>
 	</div>			
 </span>			
-		
+
+<!--		
+<span id="tpl-block-node" class="hide template">
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+Author: {{field_author_value}}			
+	</div>			
+</span>			
+-->		
 		</div><!-- end main central area -->
 		
 		<div class="col-sm-3 col-md-3" id="sidebar-right">sidebar-right
@@ -206,12 +215,18 @@ window.onload = function(){
 </li>
 </script>			
 
+<!--
 <script id="tpl-list-fields" type="text/template">
 	<ol>{{list}}</ol>
 </script>
 <script id="tpl-list-fields_list" type="text/template">
 	<li>{{name}} : {{value}}</li>
 </script>			
+-->
+<script id="tpl-node" type="text/template">
+	<div>{{body}}</div>
+	<p>Author: {{field_author_value}}</p>
+</script>
 
 
 <script src="js/idb.js"></script>
