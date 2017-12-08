@@ -1,6 +1,7 @@
 //jasmine.getJSONFixtures().fixturesPath = __confFixturesPathJSON;
 //jasmine.getFixtures().fixturesPath = "html";
 //console.log( jasmine );
+console.log( webApp.draw );
 
 
 var _getRecords_ = webApp.iDBmodule.getRecords;
