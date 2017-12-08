@@ -1686,7 +1686,7 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		var p = {
 			"data": null,
 			//"type" : "",
-			"contentType" : "menu",
+			"wrapType" : "menu",
 			"templateID" : false
 		};
 		//extend options object
@@ -1705,71 +1705,72 @@ _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b
 		}
 		
 		var html = "";
-//for test		
-// p["data"] = {
-	// "name": "Name",
-	// "url" : "http://test"
-// };
 		
-		switch( p["contentType"] ){
+		switch( p["wrapType"] ){
 			case "menu" :
-				//_formMenuHtml();
-
-				if( !_vars["templates"][p.templateID] ){
-_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
-					return false;
-				}
-				html = _vars["templates"][ p.templateID ];
-				
-				var listHtml = "";
-				for( var key in p["data"]){
-//console.log( key );
-//console.log( p["data"][key], typeof p["data"][key], p["data"].length);
-					
-					//if( typeof p["data"][key] === "string"){
-						//html = html.replace("{{"+key+"}}", p["data"][key]);
-					//}
-					
-					//form list items
-					if( typeof p["data"][key] === "object"){
-							
-						// html = html
-						// .replace("{{url}}", p["data"][key]["url"])
-						// .replace("{{name}}", p["data"][key]["name"]);
-						
-						var items = p["data"][key];
-						
-						if( !_vars["templates"][ p.templateID+"_list"] ){
-var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
-console.log(msg);							
-_log(msg);
-							return false;
-						}
-						var itemHtml = _vars["templates"][ p.templateID+"_list"];
-//console.log(itemHtml);
-
-						for( var key2 in items){
-//console.log(key2, items[key2]);
-							if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-//console.log(key2, items[key2]);
-								itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
-							}
-						}//next
-						listHtml += itemHtml;
-//console.log(listHtml);
-					}
-					
-				}//next
-				html = html.replace("{{list}}", listHtml);
+				html = __formMenuHtml();
 			break;
 			
 			case "node" :
+console.log("Test!!!");			
 			break;
 		}//end switch
-
 		
 //console.log(html);
 		return html;
+
+		function __formMenuHtml(){
+			var _html = "";
+			if( !_vars["templates"][p.templateID] ){
+_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+				return false;
+			}
+			_html = _vars["templates"][ p.templateID ];
+			
+			var listHtml = "";
+			for( var key in p["data"]){
+//console.log( key );
+//console.log( p["data"][key], typeof p["data"][key], p["data"].length);
+				
+				//if( typeof p["data"][key] === "string"){
+					//_html = _html.replace("{{"+key+"}}", p["data"][key]);
+				//}
+				
+				//form list items
+				if( typeof p["data"][key] === "object"){
+						
+					// _html = _html
+					// .replace("{{url}}", p["data"][key]["url"])
+					// .replace("{{name}}", p["data"][key]["name"]);
+					
+					var items = p["data"][key];
+					
+					if( !_vars["templates"][ p.templateID+"_list"] ){
+var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
+console.log(msg);							
+_log(msg);
+						return false;
+					}
+					var itemHtml = _vars["templates"][ p.templateID+"_list"];
+//console.log(itemHtml);
+
+					for( var key2 in items){
+//console.log(key2, items[key2]);
+						if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//console.log(key2, items[key2]);
+							itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
+						}
+					}//next
+					listHtml += itemHtml;
+//console.log(listHtml);
+				}
+				
+			}//next
+			_html = _html.replace("{{list}}", listHtml);
+			
+			return _html;
+		}//end __formMenuHtml
+		
 	}//end _wrapContent
 
 	
@@ -2241,7 +2242,8 @@ console.log( node );
 					}];
 					var _html = webApp.draw.wrapContent({
 						"data" : _node,
-						"templateID" : "tpl-node"
+						"templateID" : "tpl-node",
+						"wrapType" : "node",
 					});
 console.log( _html);
 					if( _html && _html.length > 0){
