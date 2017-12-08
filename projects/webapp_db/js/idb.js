@@ -421,7 +421,7 @@ console.log( addRecord );
 			for(var key in opt ){
 				options[key] = opt[key];
 			}
-	//console.log(options);
+	console.log(options);
 
 			if( options["storeName"].length === 0){
 	var msg = "_getRecords(), error, argument 'storeName' empty.... ";
@@ -444,12 +444,12 @@ console.log( addRecord );
 
 				var timeEnd = new Date();
 				var runtime_s = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-	//var log = "getRecords(), runtime: " +runtime_s + " sec";				
-	//if( data.length ){
-		//log += ", num records: " + data.length;				
-	//}
-	//console.log(log);
-	//console.log(data);
+// var log = "getRecords(), runtime: " +runtime_s + " sec";				
+// if( data.length ){
+	// log += ", num records: " + data.length;				
+// }
+// console.log(log);
+// console.log(data);
 				if( typeof options["callback"] == "function"){
 					options["callback"]( data, _resObj);
 				}
