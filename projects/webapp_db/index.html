@@ -115,7 +115,6 @@ window.onload = function(){
 		</div><!-- end sidebar left -->
 		
 		<div class="col-sm-6 col-md-6" id="main">
-			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
 		
 <span id="tpl-block-content" class="hide template">
 	<div class="block">
@@ -149,7 +148,9 @@ Author: {{field_author_value}}
 	</div>
 
 	<footer>
-		<div class="col-sm-3 col-md-3">1</div>
+		<div class="col-sm-3 col-md-3">1
+			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
+		</div>
 		<div class="col-sm-6 col-md-6">2
 <span id="tpl-block-1" class="hide template">
 	<div class="block">
@@ -223,9 +224,43 @@ Author: {{field_author_value}}
 	<li>{{name}} : {{value}}</li>
 </script>			
 -->
+
+<!-- node.tpl -->
 <script id="tpl-node" type="text/template">
+	<div class="img-container">
+		<div class="picture">
+			<a href="#">
+<!--				
+<img border="0" src="http://site-content/{{field_preview_img_value}}/{{field_filename_value}}">
+-->
+<img border="0" src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/{{field_preview_img_value}}/{{field_filename_value}}">
+			</a>
+		</div>
+		<p class="img-caption">
+			<span class="small-text">
+<!--<p>{{field_author_value}}</p>-->
+<p>{{field_title_value}}</p>
+			</span>
+		</p>
+	</div>
+		
 	<div>{{body}}</div>
-	<p>Author: {{field_author_value}}</p>
+	
+<!--
+http://site-content
+https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p
+	<p>filename: {{field_filename_value}}</p>
+	<p>big img path: {{field_big_img_value}}</p>
+	<p>original img path: {{field_original_img_value}}</p>
+	<p>preview img path: {{field_preview_img_value}}</p>
+-->				
+<!-- field_create_date_value -->
+<!-- field_content_location_value -->
+<!-- field_img1_gallery_value -->
+<!-- field_info_value -->
+<!-- field_num_page_value -->
+<!-- field_preview_img_preset_value -->
+<!--field_zoom_img_value -->
 </script>
 
 

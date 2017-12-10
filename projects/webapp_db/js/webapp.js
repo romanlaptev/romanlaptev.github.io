@@ -1704,28 +1704,26 @@ _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b
 			return false;
 		}
 		
+		if( !_vars["templates"][p.templateID] ){
+_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+			return false;
+		}
 		var html = "";
-		
+			
 		switch( p["wrapType"] ){
 			case "menu" :
-				html = __formMenuHtml();
+				html = __formMenuHtml( _vars["templates"][ p.templateID ] );
 			break;
 			
 			case "node" :
-console.log("Test!!!");			
+				html = __formNodeHtml( _vars["templates"][ p.templateID ] );
 			break;
 		}//end switch
 		
 //console.log(html);
 		return html;
 
-		function __formMenuHtml(){
-			var _html = "";
-			if( !_vars["templates"][p.templateID] ){
-_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
-				return false;
-			}
-			_html = _vars["templates"][ p.templateID ];
+		function __formMenuHtml( _html ){
 			
 			var listHtml = "";
 			for( var key in p["data"]){
@@ -1770,6 +1768,19 @@ _log(msg);
 			
 			return _html;
 		}//end __formMenuHtml
+
+		function __formNodeHtml( _html ){
+			
+			for( var key in p["data"]){
+//console.log(key, p["data"][key]);
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, p["data"][key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), p["data"][key]);
+				}
+			}//next
+			
+			return _html;
+		}//end __formNodeHtml()
 		
 	}//end _wrapContent
 
@@ -2198,13 +2209,7 @@ console.log(msg);
 				//"title": options["title"]
 				"callback" : function( node ){
 console.log( node );
-					var html = "";
-					//add node BODY to the content block
-					if( node["body"].length > 0 ){
-						html += node["body"];
-					}
 
-					//add node FIELDS to the content block
 /*
 					var fieldList = [];
 					// // var fieldList = [{
@@ -2236,19 +2241,40 @@ console.log( node );
 						html += fields_html;
 					}
 */
-					var _node = [];
-					var _node = [{
-						"field_author_value" : "Майкл Паркес"
-					}];
+					var _data = {};
+					//var _data = {
+						//"body" : node["body"],
+						//"field_author_value" : "Майкл Паркес"
+					//};
+					
+					//add node BODY to the content block
+					//if( node["body"].length > 0 ){
+						_data["body"] = node["body"];
+					//}
+					
+					//add node FIELDS to the content block
+					for( var field in node["fields"] ){
+						if( !node["fields"][field] ){
+							continue;
+						}
+						if( node["fields"][field] === "NULL" ){
+							continue;
+						}
+						_data[field] = node["fields"][field];
+					}//next
+					
 					var _html = webApp.draw.wrapContent({
-						"data" : _node,
+						"data" : _data,
 						"templateID" : "tpl-node",
 						"wrapType" : "node",
 					});
-console.log( _html);
+//console.log( _html);
 					if( _html && _html.length > 0){
-						html += _html;
+						//html += _html;
+					} else {
+console.log("Error form node html!!!");
 					}
+					
 					
 					//draw content block
 					//if( html.length > 0 ){
@@ -2257,7 +2283,7 @@ console.log( _html);
 							"title" : node["title"], 
 							"templateID" : "tpl-block-content",
 							//"content" : _formNodeContent(node)//node["content"]
-							"content" : html
+							"content" : _html
 						});
 					//}
 
