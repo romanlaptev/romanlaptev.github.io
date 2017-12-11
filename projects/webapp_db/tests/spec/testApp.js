@@ -1,7 +1,7 @@
 //jasmine.getJSONFixtures().fixturesPath = __confFixturesPathJSON;
 //jasmine.getFixtures().fixturesPath = "html";
 //console.log( jasmine );
-//console.log( webApp.draw.testing );
+//console.log( webApp.draw );
 
 var _getRecords_ = webApp.iDBmodule.getRecords;
 webApp.iDBmodule.getRecords = function( opt ){
@@ -209,12 +209,6 @@ console.log("afterEach ", arguments);
 	});
 });
 */
-
-// var _getTpl_ = webApp.draw.testing.getTpl;
-// webApp.draw.testing.getTpl = function(){
-	// console.log("test!");
-	// return false;
-// };
 
 describe("test application", function(){
 	

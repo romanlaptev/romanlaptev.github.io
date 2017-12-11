@@ -1544,6 +1544,7 @@ function _draw( opt ){
 	};
 
 	function _getTpl( id ){
+//console.log(id);
 		var tpl = getById(id);
 		var html = tpl.innerHTML;
 		
