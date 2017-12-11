@@ -1788,6 +1788,9 @@ _log(msg);
 	// public interfaces
 	return{
 		vars : _vars,
+		// testing : {
+			// getTpl : _getTpl
+		// },
 		init:	function(){ 
 			return _init(); 
 		},
