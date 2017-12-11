@@ -192,7 +192,6 @@ Author: {{field_author_value}}
 </div>
 <div id="wait" class="hide"></div>
 
-
 <script id="tpl-list" type="text/template">
 	<ul class="list-unstyled">{{list}}</ul>
 </script>
@@ -266,6 +265,12 @@ https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p
 
 <script src="js/idb.js"></script>
 <script src="js/webapp.js"></script>
+<iframe 
+id="tpl-frame"
+name="tpl_frame"
+src="tests/html/templates.html" width="0" height="0"
+style="display:none;"
+onload="webApp.loadTemplates(this);"></iframe>
 
 <script>
 	if ('ontouchstart' in window){

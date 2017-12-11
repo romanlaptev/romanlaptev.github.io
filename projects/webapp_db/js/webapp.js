@@ -70,7 +70,14 @@ console.log( navigator.userAgent );
 	
 	"db" : _db(),
 	"iDBmodule" : iDBmodule(),
+	
 	"draw" : _draw(),
+	"loadTemplates" : function loadTemplates( frame ){
+//console.log( frame );
+		webApp.draw.vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
+//console.log( $tpl_frame.querySelector("#_tpl-list").innerHTML );
+	},
+	
 	"app" : _app()
 	
 };//end webApp()
@@ -1521,6 +1528,7 @@ function _draw( opt ){
 	var _vars = {
 		"templates" : {
 			"tpl-list" : _getTpl("tpl-list"),
+			//"tpl-list" : _getTplMod("tpl-list"),
 			"tpl-list_list" : _getTpl("tpl-list_list"),
 			"tpl-menu" : _getTpl("tpl-menu"),
 			"tpl-menu_list" : _getTpl("tpl-menu_list"),
@@ -1542,6 +1550,31 @@ function _draw( opt ){
 	var _init = function(){
 //console.log("init _draw");
 	};
+
+	// function _getTplMod( id ){
+// console.log(id);
+// return;
+		// var tpl = _getById(id, webApp.vars["tplDoc"] );
+		// var html = tpl.innerHTML;
+		// return html;
+		
+		// function _getById( id, $doc ){
+			// if( $doc.querySelector ){
+				// var obj = $doc.querySelector("#"+id);
+				// return obj;
+			// }
+			
+			// if( $doc.getElementById ){//old browsers
+				// var obj = $doc.getElementById(id);
+				// return obj;
+			// }
+			
+			// if( $doc.all ){//old IE
+				// var obj = $doc.all[id];
+				// return obj;
+			// }
+		// }//end _getById()
+	// }//end _getTpl()
 
 	function _getTpl( id ){
 //console.log(id);
