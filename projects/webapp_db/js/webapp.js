@@ -2084,7 +2084,8 @@ _log("<p>"+msg+"</p>");
 					
 					_buildBlock({//draw content block
 						"name" : "block-content",
-						"title" : "termin_nodes", 
+						//"title" : "termin_nodes", 
+						"title" : "", 
 						"templateID" : "tpl-block-content",
 						"contentTpl" : "tpl-termin_nodes",
 						"content" : function(args){
