@@ -61,9 +61,7 @@ window.onload = function(){
 </head>
 
 <body>
-
 <div class="container" id="page-container">
-
 
 	<div id="log-wrap" class="log-panel col-sm-7 col-md-7">
 		<a class="close" href="#?q=hide-log">x</a>	
@@ -81,87 +79,31 @@ window.onload = function(){
 	
 	<div class="row">
 	
-		<div class="col-sm-3 col-md-3" id="sidebar-left">sidebar-left
-<!--		
-<span id="tpl-info_termins_genre-block" class="hide template">
-				<div class="block">
-						<h3>{{block_title}}</h3>
-						
-						<ul class="list-unstyled">
-	<span id="tpl-info_termins_genre-block_list">
-								<li><a href="{{url}}">{{name}}</a></li>
-	</span>
-						</ul>
-						
-				</div>			
-</span>			
--->
-			
-<span id="tpl-info_termins_style-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-
-<span id="tpl-info_termins_tech-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-			<button class="btn btn-primary">test btn</button>
-	</div>			
-</span>			
-			
+		<div class="col-sm-3 col-md-3" id="sidebar-left">
+			<span id="block-style"></span>			
+			<span id="block-tech"></span>			
 		</div><!-- end sidebar left -->
 		
 		<div class="col-sm-6 col-md-6" id="main">
-		
-<span id="tpl-block-content" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-
-<!--		
-<span id="tpl-block-node" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-Author: {{field_author_value}}			
-	</div>			
-</span>			
--->		
+			<span id="block-content"></span>			
 		</div><!-- end main central area -->
 		
-		<div class="col-sm-3 col-md-3" id="sidebar-right">sidebar-right
-
-<span id="tpl-info_termins_genre-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-
+		<div class="col-sm-3 col-md-3" id="sidebar-right">
+			<span id="block-genre"></span>			
 		</div><!-- end sidebar-right -->
 		
 	</div>
 
 	<footer>
-		<div class="col-sm-3 col-md-3">1
+		<div class="col-sm-3 col-md-3">
 			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
 		</div>
-		<div class="col-sm-6 col-md-6">2
-<span id="tpl-block-1" class="hide template">
-	<div class="block">
-			{{block_title}}
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
+		<div class="col-sm-6 col-md-6"></div>
+		<div class="col-sm-3 col-md-3">
+			<span id="block-1"></span>
 		</div>
-		<div class="col-sm-3 col-md-3">3</div>
-
 	</footer>
+	
 </div><!-- end container -->
 
 <!--

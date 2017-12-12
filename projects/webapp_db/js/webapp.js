@@ -1407,7 +1407,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		}//__getBody()
 
 		function __getFields( node, callback ){
-console.log( "__getFields()");
+//console.log( "__getFields()");
 			var tableName = "content_type_" + node["type"];
 			// var fieldsList = [
 // "field_num_page_value",
@@ -1520,11 +1520,11 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {
 		"templates" : {
-			"tpl-block-content" : _getTpl("tpl-block-content"),
-			"tpl-block-1" : _getTpl("tpl-block-1"),
-			"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
-			"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
-			"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block")
+			//"tpl-block-content" : _getTpl("tpl-block-content"),
+			//"tpl-block-1" : _getTpl("tpl-block-1"),
+			//"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
+			//"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
+			//"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block")
 		}
 	};
 
@@ -1543,6 +1543,12 @@ function _draw( opt ){
 		_vars["templates"]["tpl-termin_nodes"] = _getTplMod("tpl-termin_nodes");
 		_vars["templates"]["tpl-termin_nodes_list"] = _getTplMod("tpl-termin_nodes_list");
 		_vars["templates"]["tpl-node"] = _getTplMod("tpl-node");
+		
+		_vars["templates"]["tpl-block-1"] = _getTplMod("tpl-block-1");
+		_vars["templates"]["tpl-info_termins_style-block"] = _getTplMod("tpl-info_termins_style-block");
+		_vars["templates"]["tpl-info_termins_tech-block"] = _getTplMod("tpl-info_termins_tech-block");
+		_vars["templates"]["tpl-info_termins_genre-block"] = _getTplMod("tpl-info_termins_genre-block");
+		_vars["templates"]["tpl-block-content"] = _getTplMod("tpl-block-content");
 	}//end _loadTemplates()
 	
 	function _getTplMod( id ){
@@ -1673,6 +1679,7 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		
 		var options = {
 			"templateID": false,
+			"locationID": "block-1",
 			"title" : "block",
 			"content" : false,
 			"callback":null
@@ -1698,9 +1705,11 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		html = html.replace("{{block_title}}", options["title"]);
 		html = html.replace("{{content}}", options["content"]);
 		
-		var tpl = getById(templateID);
-		tpl.innerHTML = html;
-		tpl.className = "";//show block
+		var loc = getById( options["name"] );
+if( loc){
+	loc.innerHTML = html;
+}		
+		//loc.className = "";//show block
 		
 		if( typeof options["callback"] === "function"){
 			options["callback"]();
@@ -1719,7 +1728,7 @@ _log("<p>draw.insertBlock(),  error, not find template, id: <b class='text-dange
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
