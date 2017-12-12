@@ -70,14 +70,7 @@ console.log( navigator.userAgent );
 	
 	"db" : _db(),
 	"iDBmodule" : iDBmodule(),
-	
 	"draw" : _draw(),
-	"loadTemplates" : function loadTemplates( frame ){
-//console.log( frame );
-		webApp.draw.vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
-//console.log( $tpl_frame.querySelector("#_tpl-list").innerHTML );
-	},
-	
 	"app" : _app()
 	
 };//end webApp()
@@ -1551,6 +1544,12 @@ function _draw( opt ){
 //console.log("init _draw");
 	};
 
+	function _loadTemplates( frame ){
+console.log( frame );
+		_vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
+//console.log( $tpl_frame.querySelector("#_tpl-list").innerHTML );
+	}//end _loadTemplates()
+	
 	// function _getTplMod( id ){
 // console.log(id);
 // return;
@@ -1836,7 +1835,8 @@ _log(msg);
 		},
 		wrapContent:	function( opt ){ 
 			return _wrapContent( opt ); 
-		}
+		},
+		loadTemplates : _loadTemplates
 	};
 }//end _draw()
 
