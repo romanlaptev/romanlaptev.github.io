@@ -1528,6 +1528,8 @@ function _draw( opt ){
 
 	function _loadTemplates( frame ){
 		//var $tplDoc = frame.contentDocument;
+		//https://learn.javascript.ru/iframes
+		//var $tplDoc = frame.contentWindow.document;
 		
 		//_vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
 		var $tplDoc = window.frames[ "tpl_frame" ].document;
