@@ -71,45 +71,62 @@ console.log( navigator.userAgent );
 	"db" : _db(),
 	"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
-	"app" : _app()
+	"app" : _app(),
+	
+	"loadTemplates" : function( frame ){
+//console.log( frame.contentWindow.document.body.innerHTML.length );
+		var isLoaded = frame.contentWindow.document.body.innerHTML.length > 0;
+//console.log( isLoaded );
+		if( isLoaded ){
+			webApp.draw.formTemplates();
+			webApp.run();
+		} else {
+console.log("<p>webApp.init(),  error, dont load templates from <b class='text-danger'>IFRAME</b></p>");
+			return false;
+		}
+	},//end loadTemplates()
+	
+	"run" : _runApp
 	
 };//end webApp()
+console.log(webApp);
 
 //start
-webApp.init(function(){
-	
-	// webApp.db.loadData(function(){
-// //console.log(arguments);		
-			// webApp.app.buildPage({
-				// "title" : "frontPage",
-				// "nid" : 1
-			// });
-		// }//end callback
-	// );
-//console.log( window.frames[ "test_frame" ] );
-	
-	webApp.db.loadData(function(){
-//console.log(arguments);
-//console.log(window.location);	
-			var parse_url = window.location.search; 
-			if( parse_url.length > 0 ){
-				webApp.vars["GET"] = parseGetParams(); 
-				webApp.app.urlManager();
-			} else {
-				if( webApp.app.vars["init_url"] ){
-					//parse_url = webApp.app.vars["init_url"].substring(1).split("&");
-					parse_url = webApp.app.vars["init_url"].substring(2);
-//console.log(parse_url);					
+function _runApp(){
+	webApp.init(function(){
+		
+		// webApp.db.loadData(function(){
+	// //console.log(arguments);		
+				// webApp.app.buildPage({
+					// "title" : "frontPage",
+					// "nid" : 1
+				// });
+			// }//end callback
+		// );
+	//console.log( window.frames["test_frame" ].document.querySelector("#tpl-list") );
+		
+		webApp.db.loadData(function(){
+	//console.log(arguments);
+	//console.log(window.location);	
+				var parse_url = window.location.search; 
+				if( parse_url.length > 0 ){
+					webApp.vars["GET"] = parseGetParams(); 
+					webApp.app.urlManager();
+				} else {
+					if( webApp.app.vars["init_url"] ){
+						//parse_url = webApp.app.vars["init_url"].substring(1).split("&");
+						parse_url = webApp.app.vars["init_url"].substring(2);
+	//console.log(parse_url);					
+					}
+					webApp.vars["GET"] = parseGetParams( parse_url ); 
+					webApp.app.urlManager();
 				}
-				webApp.vars["GET"] = parseGetParams( parse_url ); 
-				webApp.app.urlManager();
-			}
-			
-		}//end callback
-	);
-	
-});//end webApp initialize
-console.log(webApp);
+				
+			}//end callback
+		);
+		
+	});//end webApp initialize
+}//end _runApp()
 
 
 function _db( opt ){
@@ -1526,7 +1543,8 @@ function _draw( opt ){
 //console.log("init _draw");
 	};
 
-	function _loadTemplates( frame ){
+	//function _formTemplates( frame ){
+	function _formTemplates(){
 		//var $tplDoc = frame.contentDocument;
 		//https://learn.javascript.ru/iframes
 		//var $tplDoc = frame.contentWindow.document;
@@ -1550,7 +1568,7 @@ function _draw( opt ){
 		_vars["templates"]["tpl-info_termins_tech-block"] = _getTplMod("tpl-info_termins_tech-block", $tplDoc);
 		_vars["templates"]["tpl-info_termins_genre-block"] = _getTplMod("tpl-info_termins_genre-block", $tplDoc);
 		_vars["templates"]["tpl-block-content"] = _getTplMod("tpl-block-content", $tplDoc);
-	}//end _loadTemplates()
+	}//end _formTemplates()
 	
 	function _getTplMod( id, $tplDoc ){
 //console.log($tplDoc);		
@@ -1841,7 +1859,7 @@ _log(msg);
 		wrapContent:	function( opt ){ 
 			return _wrapContent( opt ); 
 		},
-		loadTemplates : _loadTemplates
+		formTemplates : _formTemplates
 	};
 }//end _draw()
 

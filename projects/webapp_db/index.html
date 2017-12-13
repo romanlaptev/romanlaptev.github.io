@@ -134,21 +134,18 @@ window.onload = function(){
 </div>
 <div id="wait" class="hide"></div>
 
-<!--
-<iframe 
-id="test-frame" name="test_frame">
-<h1>test frame</h1>
-</iframe>
--->
+
+<!-- <iframe id="test-frame" name="test_frame" onload="console.log('LOAD test_frame!');"></iframe> -->
+
 
 <script src="js/idb.js"></script>
 <script src="js/webapp.js"></script>
 <iframe 
 id="tpl-frame"
 name="tpl_frame"
-src="tests/html/templates.html" width="0" height="0"
+src="templates.html" width="0" height="0"
 style="display:none;"
-onload="webApp.draw.loadTemplates(this);"></iframe>
+onload="console.log('LOAD tpl_frame!'); webApp.loadTemplates(this);"></iframe>
 
 <script>
 	if ('ontouchstart' in window){
