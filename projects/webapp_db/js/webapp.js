@@ -1518,15 +1518,7 @@ function _draw( opt ){
 //console.log(arguments);	
 
 	// private variables and functions
-	var _vars = {
-		"templates" : {
-			//"tpl-block-content" : _getTpl("tpl-block-content"),
-			//"tpl-block-1" : _getTpl("tpl-block-1"),
-			//"tpl-info_termins_style-block" : _getTpl("tpl-info_termins_style-block"),
-			//"tpl-info_termins_tech-block" : _getTpl("tpl-info_termins_tech-block"),
-			//"tpl-info_termins_genre-block" : _getTpl("tpl-info_termins_genre-block")
-		}
-	};
+	var _vars = {};
 
 	var _init = function(){
 //console.log("init _draw");
@@ -1536,13 +1528,17 @@ function _draw( opt ){
 //console.log( frame );
 		_vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
 //console.log( $tpl_frame.querySelector("#_tpl-list").innerHTML );
+
+		_vars["templates"] = {};
 		_vars["templates"]["tpl-list"] = _getTplMod("tpl-list");
 		_vars["templates"]["tpl-list_list"] = _getTplMod("tpl-list_list");
 		_vars["templates"]["tpl-menu"] = _getTplMod("tpl-menu");
 		_vars["templates"]["tpl-menu_list"] = _getTplMod("tpl-menu_list");
 		_vars["templates"]["tpl-termin_nodes"] = _getTplMod("tpl-termin_nodes");
 		_vars["templates"]["tpl-termin_nodes_list"] = _getTplMod("tpl-termin_nodes_list");
+		
 		_vars["templates"]["tpl-node"] = _getTplMod("tpl-node");
+		_vars["templates"]["tpl-node"] = _vars["templates"]["tpl-node"].replace(/#/g, "");
 		
 		_vars["templates"]["tpl-block-1"] = _getTplMod("tpl-block-1");
 		_vars["templates"]["tpl-info_termins_style-block"] = _getTplMod("tpl-info_termins_style-block");
