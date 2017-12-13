@@ -74,6 +74,7 @@ console.log( navigator.userAgent );
 	"app" : _app(),
 	
 	"loadTemplates" : function( frame ){
+//console.log( frame.contentWindow.document.body.innerHTML);
 //console.log( frame.contentWindow.document.body.innerHTML.length );
 		var isLoaded = frame.contentWindow.document.body.innerHTML.length > 0;
 //console.log( isLoaded );
