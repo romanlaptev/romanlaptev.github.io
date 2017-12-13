@@ -86,6 +86,7 @@ webApp.init(function(){
 			// });
 		// }//end callback
 	// );
+//console.log( window.frames[ "test_frame" ] );
 	
 	webApp.db.loadData(function(){
 //console.log(arguments);
@@ -1519,40 +1520,44 @@ function _draw( opt ){
 
 	// private variables and functions
 	var _vars = {};
+	_vars["templates"] = {};
 
 	var _init = function(){
 //console.log("init _draw");
 	};
 
 	function _loadTemplates( frame ){
-//console.log( frame );
-		_vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
-//console.log( $tpl_frame.querySelector("#_tpl-list").innerHTML );
-
-		_vars["templates"] = {};
-		_vars["templates"]["tpl-list"] = _getTplMod("tpl-list");
-		_vars["templates"]["tpl-list_list"] = _getTplMod("tpl-list_list");
-		_vars["templates"]["tpl-menu"] = _getTplMod("tpl-menu");
-		_vars["templates"]["tpl-menu_list"] = _getTplMod("tpl-menu_list");
-		_vars["templates"]["tpl-termin_nodes"] = _getTplMod("tpl-termin_nodes");
-		_vars["templates"]["tpl-termin_nodes_list"] = _getTplMod("tpl-termin_nodes_list");
+		//var $tplDoc = frame.contentDocument;
 		
-		_vars["templates"]["tpl-node"] = _getTplMod("tpl-node");
+		//_vars["tplDoc"] = window.frames[ "tpl_frame" ].document;
+		var $tplDoc = window.frames[ "tpl_frame" ].document;
+//console.log( window.frames[ "tpl_frame" ].document );
+
+		_vars["templates"]["tpl-list"] = _getTplMod("tpl-list", $tplDoc);
+		_vars["templates"]["tpl-list_list"] = _getTplMod("tpl-list_list", $tplDoc);
+		_vars["templates"]["tpl-menu"] = _getTplMod("tpl-menu", $tplDoc);
+		_vars["templates"]["tpl-menu_list"] = _getTplMod("tpl-menu_list", $tplDoc);
+		_vars["templates"]["tpl-termin_nodes"] = _getTplMod("tpl-termin_nodes", $tplDoc);
+		_vars["templates"]["tpl-termin_nodes_list"] = _getTplMod("tpl-termin_nodes_list", $tplDoc);
+		
+		_vars["templates"]["tpl-node"] = _getTplMod("tpl-node", $tplDoc);
 		_vars["templates"]["tpl-node"] = _vars["templates"]["tpl-node"].replace(/#/g, "");
 		
-		_vars["templates"]["tpl-block-1"] = _getTplMod("tpl-block-1");
-		_vars["templates"]["tpl-info_termins_style-block"] = _getTplMod("tpl-info_termins_style-block");
-		_vars["templates"]["tpl-info_termins_tech-block"] = _getTplMod("tpl-info_termins_tech-block");
-		_vars["templates"]["tpl-info_termins_genre-block"] = _getTplMod("tpl-info_termins_genre-block");
-		_vars["templates"]["tpl-block-content"] = _getTplMod("tpl-block-content");
+		_vars["templates"]["tpl-block-1"] = _getTplMod("tpl-block-1", $tplDoc);
+		_vars["templates"]["tpl-info_termins_style-block"] = _getTplMod("tpl-info_termins_style-block", $tplDoc);
+		_vars["templates"]["tpl-info_termins_tech-block"] = _getTplMod("tpl-info_termins_tech-block", $tplDoc);
+		_vars["templates"]["tpl-info_termins_genre-block"] = _getTplMod("tpl-info_termins_genre-block", $tplDoc);
+		_vars["templates"]["tpl-block-content"] = _getTplMod("tpl-block-content", $tplDoc);
 	}//end _loadTemplates()
 	
-	function _getTplMod( id ){
-		var tpl = _getById(id, _vars["tplDoc"] );
+	function _getTplMod( id, $tplDoc ){
+//console.log($tplDoc);		
+		var tpl = _getById(id, $tplDoc );
 		var html = tpl.innerHTML;
 		return html;
 		
 		function _getById( id, $doc ){
+//console.log(id, $doc);		
 			if( $doc.querySelector ){
 				var obj = $doc.querySelector("#"+id);
 				return obj;
@@ -1568,8 +1573,8 @@ function _draw( opt ){
 				return obj;
 			}
 		}//end _getById()
-	}//end _getTpl()
-
+	}//end _getTplMod()
+/*
 	function _getTpl( id ){
 //console.log(id);
 		var tpl = getById(id);
@@ -1605,7 +1610,7 @@ function _draw( opt ){
 		
 		return html;
 	}//end _getTpl()
-	
+*/	
 	var _insert = function( opt ){
 		
 		var options = {

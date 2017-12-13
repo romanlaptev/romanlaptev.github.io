@@ -22,162 +22,6 @@
 		<h1>Test code with Jasmine <span id="ver"></span></h1>
 	</div>
 	
-<div id="testHtml" style="display:none;">
-<div class="container" id="page-container">
-
-
-	<div id="log-wrap" class="log-panel col-sm-7 col-md-7">
-		<a class="close" href="#?q=hide-log">x</a>	
-		<ul class="list-inline">
-			<li><a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a></li>
-			<li><a class="btn btn-sm btn-primary" href="iDB_admin.html" target="_balnk">iDB admin</a></li>
-			<li><a class="btn btn-sm btn-info" href="tests/SpecRunner.html" target="_blank">tests</a></li>
-		</ul>	
-		<div id="log"></div>
-	</div>
-
-	<header>
-		<h1  class="text-center">webapp DB</h1>
-	</header>
-	
-	<div class="row">
-	
-		<div class="col-sm-3 col-md-3" id="sidebar-left">sidebar-left
-<!--		
-<span id="tpl-info_termins_genre-block" class="hide template">
-				<div class="block">
-						<h3>{{block_title}}</h3>
-						
-						<ul class="list-unstyled">
-	<span id="tpl-info_termins_genre-block_list">
-								<li><a href="{{url}}">{{name}}</a></li>
-	</span>
-						</ul>
-						
-				</div>			
-</span>			
--->
-			
-<span id="tpl-info_termins_style-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-
-<span id="tpl-info_termins_tech-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-			<button class="btn btn-primary">test btn</button>
-	</div>			
-</span>			
-			
-		</div><!-- end sidebar left -->
-		
-		<div class="col-sm-6 col-md-6" id="main">
-			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
-		
-<span id="tpl-block-content" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-		
-		</div><!-- end main central area -->
-		
-		<div class="col-sm-3 col-md-3" id="sidebar-right">sidebar-right
-
-<span id="tpl-info_termins_genre-block" class="hide template">
-	<div class="block">
-			<h3>{{block_title}}</h3>
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-
-		</div><!-- end sidebar-right -->
-		
-	</div>
-
-	<footer>
-		<div class="col-sm-3 col-md-3">1</div>
-		<div class="col-sm-6 col-md-6">2
-<span id="tpl-block-1" class="hide template">
-	<div class="block">
-			{{block_title}}
-			<div class="content">{{content}}</div>
-	</div>			
-</span>			
-		</div>
-		<div class="col-sm-3 col-md-3">3</div>
-
-	</footer>
-</div><!-- end container -->
-
-<!--
-<div id="wait" class="overlay open">
-	<div>
-		<div>
-				<div class="icon-container"><img class="load-icon" src="img/icon-load.svg"></div>
-				<div id="waitText">wait...</div>
-		</div>
-	</div>
-</div>
--->	
-
-<div id="wait-window" class="modal-dialog hide">
-	<h1 class="text-center">wait...</h1>
-	<div class="loader loader2"></div> 
-<!--		
-	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
--->
-	ajax load:
-	<div class="progress">
-		<div id="load-progress-bar" class="progress-bar hide"></div>
-	</div>
-	save data:
-	<div class="progress">
-		<div id="save-progress-bar" class="progress-bar hide"></div>
-	</div>
-</div>
-<div id="wait" class="hide"></div>
-
-
-<script id="tpl-list" type="text/template">
-	<ul class="list-unstyled">{{list}}</ul>
-</script>
-<script id="tpl-list_list" type="text/template">
-	<li>{{name}}</li>
-</script>			
-
-<script id="tpl-menu" type="text/template">
-	<ul class="list-unstyled">{{list}}</ul>
-</script>
-<script id="tpl-menu_list" type="text/template">
-	<li><a href="{{url}}">{{name}}</a></li>
-</script>			
-
-<script id="tpl-termin_nodes" type="text/template">
-	<ul class="">{{list}}</ul>
-</script>
-<script id="tpl-termin_nodes_list" type="text/template">
-<li>
-	<a href="#?q=node&nid={{nid}}">{{title}}</a><br>
-</li>
-</script>			
-
-<script id="tpl-list-fields" type="text/template">
-	<ol>{{list}}</ol>
-</script>
-<script id="tpl-list-fields_list" type="text/template">
-	<li>{{name}} : {{value}}</li>
-</script>			
-
-</div>
-
-</body>
-
 <script>
 	var $ver = getById("ver");
 	$ver.innerHTML = jasmine.version;
@@ -187,6 +31,12 @@
 
 <script src="../js/idb.js"></script>
 <script src="../js/webapp.js"></script>
+<iframe 
+id="tpl-frame"
+name="tpl_frame"
+src="tests/html/templates.html" width="0" height="0"
+onload="webApp.draw.loadTemplates(this);"></iframe>
 <script src="spec/testApp.js"></script>
-
+	
+</body>
 </html>
