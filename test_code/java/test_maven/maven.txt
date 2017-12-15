@@ -3,3 +3,10 @@ rem https://habrahabr.ru/post/309222/
 mvn --version
 
 mvn archetype:generate
+
+cd fistApp
+mvn compile
+
+mvn package
+
+java -cp ./target/classes ru.apache_maven.App
