@@ -1003,6 +1003,7 @@ console.log("not callback....use return function");
 	
 	
 //async API
+/*
 	function _getVocabularyByName( opt ){
 		var options = {
 			"vocName" : "",
@@ -1037,7 +1038,9 @@ _log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is em
 		webApp.db.query( queryParams);
 		
 	}//end _getVocabularyByName()
-	
+*/	
+
+/*
 	function _getTermByName( opt ){
 		var options = {
 			"vid" : null,
@@ -1075,8 +1078,8 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 		webApp.db.query( queryParams);
 
 	}//end _getTermByName()
-	
-	
+*/	
+/*	
 	function _getChildTerms( opt ){
 		var options = {
 			"vid" : null,
@@ -1159,7 +1162,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		}//end _postQuery()
 		
 	}//end _getChildTerms()
-
+*/
 	
 	function _getTerminNodes( opt ){
 		var p = {
@@ -1230,7 +1233,7 @@ _log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b>
 	}//end _getTerminNodes()
 
 	
-	
+/*	
 	function _getBlockContent( opt ){
 		var options = {
 			"vocName" : "",
@@ -1298,7 +1301,7 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		});
 		
 	}//end _getBlockContent()
-
+*/
 	
 	function _replaceUrl( opt ){
 		var p = {
@@ -1506,22 +1509,22 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 			return _query( opt ); 
 		},
 		//async API
-		getVocabularyByName:	function( opt ){ 
-			return _getVocabularyByName( opt ); 
-		},
-		getTermByName:	function( opt ){ 
-			return _getTermByName( opt ); 
-		},
-		getChildTerms:	function( opt ){ 
-			return _getChildTerms( opt ); 
-		},
+		//getVocabularyByName:	function( opt ){ 
+			//return _getVocabularyByName( opt ); 
+		//},
+		//getTermByName:	function( opt ){ 
+			//return _getTermByName( opt ); 
+		//},
+		//getChildTerms:	function( opt ){ 
+			//return _getChildTerms( opt ); 
+		//},
 		getTerminNodes:	function( opt ){ 
 			return _getTerminNodes( opt ); 
 		},
 		
-		getBlockContent:	function( opt ){ 
-			return _getBlockContent( opt ); 
-		},
+		//getBlockContent:	function( opt ){ 
+			//return _getBlockContent( opt ); 
+		//},
 		replaceUrl:	function( opt ){ 
 			return _replaceUrl( opt ); 
 		},
@@ -1889,10 +1892,24 @@ function _app( opt ){
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
 				"contentTpl" : "tpl-menu",
 				"content" : function( args ){//function for getting content data
-					webApp.db.getBlockContent({
-						"vocName" : "info",
-						"termName" : "стиль",
-						"callback" : function(res){
+					// webApp.db.getBlockContent({
+						// "vocName" : "info",
+						// "termName" : "стиль",
+						// "callback" : function(res){
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( res );
+							// }
+						// }//end callback
+					// });
+					
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "info", 
+							"termName" : "стиль"
+							}),
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
@@ -1908,15 +1925,21 @@ function _app( opt ){
 				"templateID" : "tpl-info_termins_tech-block",
 				"contentTpl" : "tpl-menu",
 				"content" : function( args ){//function for getting content data
-					webApp.db.getBlockContent({
-						"vocName" : "info",
-						"termName" : "техника",
-						"callback" : function(res){
+				
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "info", 
+							"termName" : "техника",
+						}),
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
 						}//end callback
 					});
+					
 				},//end callback()
 				"visibility" : "frontPage"
 			},
@@ -1926,7 +1949,11 @@ function _app( opt ){
 				"templateID" : "tpl-info_termins_genre-block",
 				"content" : function( args ){//function for getting content data
 					webApp.db.query({
-						"queryObj" : _vars["queries"]["getTermGenre"],
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "info", 
+							"termName" : "жанр"
+							}),
 						"callback" : function( res ){
 	//console.log("end test query!!!", res);
 							if( typeof args["callback"] === "function"){
@@ -1943,70 +1970,6 @@ function _app( opt ){
 	
 	var _init = function( opt ){
 console.log("init app!");
-
-		//form data queries
-	//1. select vid from vocabulary where name="info" -- 5
-	//1. select tid from term_data where name="жанр" -- 95
-	//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
-	//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
-	//4. select dst from url_alias where src IN ("taxonomy/term/100", "taxonomy/term/101".....)
-//test subQuery!!!!!		
-				// var queryStr = "\
-	// select name from term_data where vid=(\
-		// select vid from vocabulary where name='info'\
-	// ) and tid in (\
-		// select tid from term_hierarchy where parent=(\
-			// select tid from term_data where name='жанр'\
-		// )\
-	// )";
-		
-		var _vocabularyName = "info";
-		var _termName = "жанр";
-		var subQuery1 = {
-			"action" : "select",
-			"tableName": "vocabulary",
-			"targetFields" : ["vid"],
-			"where" : [
-				{"key" : "name", "compare": "=", "value" : _vocabularyName}
-			]
-		};
-		
-		var subQuery3 = {
-			"action" : "select",
-			"tableName": "term_data",
-			"targetFields" : ["tid"],
-			"where" : [
-				{"key" : "name", "compare": "=", "value" : _termName}
-			]
-		};
-		var subQuery2 = {
-			"action" : "select",
-			"tableName": "term_hierarchy",
-			"targetFields" : ["tid"],
-			"where" : [
-				{"key" : "parent", "compare": "=", "value" : subQuery3}
-				//{"key" : "parent", "compare": "=", "value" : 95}
-			]
-		};
-
-		var baseQuery = {
-				"action" : "select",
-				"tableName": "term_data",
-				"targetFields" : [
-"tid",
-"vid",
-"name"//,
-//"description",
-//"weight"
-],
-				"where" : [
-					{"key" : "vid", "compare": "=", "value" : subQuery1},
-					{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
-				]
-			};
-			
-		_vars["queries"]["getTermGenre"] = baseQuery;
-
 		defineEvents();
 	};//end _init()
 	
@@ -2141,6 +2104,110 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 	}//end _urlManager()
+
+	
+	
+	function _formQueryObj(opt){
+		var p = {
+			queryTarget : "",//"getVocabulary"
+			vocName : "",//"info",
+			termName : ""//"жанр"
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( p["queryTarget"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'queryTarget'....");
+			return false;
+		}
+
+		switch( p.queryTarget ) {
+			
+			case "getVocabulary":
+				if( p["vocName"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'vocabularyName'....");
+					return false;
+				}
+				if( p["termName"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'termName'....");
+					return false;
+				}
+				return __formVocabularyQuery();
+			break;
+
+		}//end switch
+
+		function __formVocabularyQuery(){
+/*
+		//form data queries
+	//1. select vid from vocabulary where name="info" -- 5
+	//1. select tid from term_data where name="жанр" -- 95
+	//2. select tid from term_hierarchy where parent=95 -- "100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226"
+	//3. select name from term_data where vid=5 and tid in ("100", "101", "102", "104", "111", "113", "114", "132", "149", "176", "178", "187", "196", "226")
+	//4. select dst from url_alias where src IN ("taxonomy/term/100", "taxonomy/term/101".....)
+//test subQuery!!!!!		
+				// var queryStr = "\
+	// select name from term_data where vid=(\
+		// select vid from vocabulary where name='info'\
+	// ) and tid in (\
+		// select tid from term_hierarchy where parent=(\
+			// select tid from term_data where name='жанр'\
+		// )\
+	// )";
+*/		
+			var subQuery1 = {
+				"action" : "select",
+				"tableName": "vocabulary",
+				"targetFields" : ["vid"],
+				"where" : [
+					{"key" : "name", "compare": "=", "value" : p.vocName}
+				]
+			};
+			
+			var subQuery3 = {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : ["tid"],
+				"where" : [
+					{"key" : "name", "compare": "=", "value" : p.termName}
+				]
+			};
+			var subQuery2 = {
+				"action" : "select",
+				"tableName": "term_hierarchy",
+				"targetFields" : ["tid"],
+				"where" : [
+					{"key" : "parent", "compare": "=", "value" : subQuery3}
+					//{"key" : "parent", "compare": "=", "value" : 95}
+				]
+			};
+
+			var baseQuery = {
+					"action" : "select",
+					"tableName": "term_data",
+					"targetFields" : [
+	"tid",
+	"vid",
+	"name"//,
+	//"description",
+	//"weight"
+	],
+					"where" : [
+						{"key" : "vid", "compare": "=", "value" : subQuery1},
+						{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery2}
+					]
+				};
+				
+			//_vars["queries"]["getTermGenre"] = baseQuery;
+//console.log(baseQuery);
+			return baseQuery;
+		}//end __formVocabularyQuery()
+		
+	}//end _formQueryObj()
+	
 	
 	var _buildBlock = function(opt){
 //console.log("_buildBlock()", arguments);

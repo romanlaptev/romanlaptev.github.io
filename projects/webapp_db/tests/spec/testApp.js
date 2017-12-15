@@ -223,4 +223,12 @@ describe("test application", function(){
 		expect(true).toBe(true);
 	});//end it
 	
+//get children termins by parameters "vocName", "termName"
+//webApp.db.getBlockContent
+	//_getVocabularyByName
+	//_getTermByName
+	//_getChildTerms
+
+//_formQueryObj() to replace getBlockContent() !!!!!!
+
 });//end describe
