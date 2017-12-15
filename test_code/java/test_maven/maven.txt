@@ -1,0 +1,5 @@
+rem http://www.apache-maven.ru/quick_start.html
+rem https://habrahabr.ru/post/309222/
+mvn --version
+
+mvn archetype:generate
