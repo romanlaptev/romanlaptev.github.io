@@ -2038,7 +2038,7 @@ console.log("init app!");
 				var target = event.target || event.srcElement;
 //console.log( event );
 //console.log( this );//page-container
-console.log( target.textContent );
+//console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
@@ -2102,11 +2102,13 @@ console.log("-- start build page --");
 				webApp.app.buildPage({
 					"nid" : webApp.vars["GET"]["nid"],
 					"callback" : function(){
-console.log("-- end build page --");
+
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
-					var msg = "Generate page nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+					var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
 _log("<p>"+msg+"</p>");			
+console.log(msg);
+console.log("-- end build page --");
 					webApp.app.vars["runtime"].push({
 						"source" : msg,
 						"ms" : ms,
