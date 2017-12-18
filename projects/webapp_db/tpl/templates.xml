@@ -2,6 +2,7 @@
 <templates>
 	<tpl name="tpl-node_photogallery_image">
 		<html_code>
+<![CDATA[
 			<div class="img-container">
 				<div class="picture">
 					<a href="#">
@@ -35,6 +36,20 @@
 		<!-- field_num_page_value -->
 		<!-- field_preview_img_preset_value -->
 		<!--field_zoom_img_value -->
+]]>		
 		</html_code>
 	</tpl>
+		
+	<tpl name="tpl-list">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-list_list">
+		<html_code><![CDATA[
+<li>{{name}}</li>
+		]]></html_code>
+	</tpl>
+	
 </templates>

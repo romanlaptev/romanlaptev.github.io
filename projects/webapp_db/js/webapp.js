@@ -38,7 +38,7 @@ var webApp = {
 			//"request_url_PHP" : "api/request.php",
 			//"request_url_ASPX" : "api/request.aspx"
 		},
-		"templates_url" : "tpl/templates.xml.txt",
+		"templates_url" : "tpl/templates.xml",
 		//"testUrlPHP": "api/test.php",
 		//"testUrlASPX": "api/test.aspx",
 		"GET" : {},
@@ -96,7 +96,7 @@ console.log(webApp);
 //start
 function _runApp(){
 	
-	//webApp.draw.loadTemplatesMod();
+	webApp.draw.loadTemplatesMod();
 	
 	webApp.init(function(){
 		
@@ -1546,7 +1546,7 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {};
 	_vars["templates"] = {};
-	//_vars["templatesTest"] = {};
+	_vars["templatesTest"] = {};
 
 	var _init = function(){
 //console.log("init _draw");
@@ -1640,18 +1640,8 @@ function _draw( opt ){
 		return html;
 	}//end _getTpl()
 */	
-	function _loadTemplatesMod( opt ){
-/*		
-		var p = {
-			"templateId": false,
-			"data" : false
-		};
-		//extend options object
-		for(var key in opt ){
-			options[key] = opt[key];
-		}
-//console.log("draw.insert(), ", options);
-*/		
+	function _loadTemplatesMod(){
+		
 		if( webApp.vars["templates_url"].length === 0 ){
 console.log("error in draw.loadTemplatesMod(), not find 'templates_url' !");
 			return false;
@@ -1664,34 +1654,29 @@ console.log("error in draw.loadTemplatesMod(), not find 'templates_url' !");
 var msg = "load " + webApp.vars["templates_url"] ;
 console.log(msg);
 //webApp.vars["log"].push(msg);
-console.log( data );
-
+//console.log( data );
 				if( !data ){
 console.log("error in draw.loadTemplatesMod(), not find data templates'....");
 					return false;
 				}
 				
-				var parser = new DOMParser();
-				try {
-					var xml = parser.parseFromString( data, "text/xml" );
-console.log (xml);
-				} catch (e) {
-console.log ("XML parsing error: " + e);
-for( var item in e ){
-console.log( item + ": " + e[item]);
-}
-				};
-				
-				xmlNodes = _parseXmlToObj( xml );
-console.log(xmlNodes);
-				// if( xmlNodes.length > 0 ){
-					// for( var n= 0; n < xmlNodes.length; n++){
-// _vars["templatesTest"]["tpl-list"] = 
-					// }//next
+				xmlNodes = _parseXmlToObj( data );
+//console.log(xmlNodes);
+				if( xmlNodes.length > 0 ){
+					for( var n= 0; n < xmlNodes.length; n++){
+						var key = xmlNodes[n]["name"];
+
+						var value = xmlNodes[n]["html_code"]
+						.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+						.replace(/\t/g,"")
+						.replace(/\n/g,"");
+						
+						_vars["templatesTest"][key] = value;
+					}//next
 					
-				// } else {
-// console.log("error in draw.loadTemplatesMod(), cannot parse templates data.....");
-				// }
+				} else {
+console.log("error in draw.loadTemplatesMod(), cannot parse templates data.....");
+				}
 
 			}//end callback()
 		});
