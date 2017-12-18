@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+	<tpl name="tpl-node_photogallery_image">
+		<html_code>
+			<div class="img-container">
+				<div class="picture">
+					<a href="#">
+		<!--			
+		<img border="0" src="http://site-content/{{field_preview_img_value}}/{{field_filename_value}}">
+		<img border="0" src="{{field_preview_img_value}}/{{field_filename_value}}">
+		-->
+		<img border="0" src="#{{field_preview_img_value}}/{{field_filename_value}}"/>
+					</a>
+				</div>
+				<p class="img-caption">
+					<span class="small-text">
+		<p>{{field_title_value}}</p>
+					</span>
+				</p>
+			</div>
+				
+			<div>{{body}}</div>
+		<!--
+		http://site-content
+		https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p
+			<p>filename: {{field_filename_value}}</p>
+			<p>big img path: {{field_big_img_value}}</p>
+			<p>original img path: {{field_original_img_value}}</p>
+			<p>preview img path: {{field_preview_img_value}}</p>
+		-->				
+		<!-- field_create_date_value -->
+		<!-- field_content_location_value -->
+		<!-- field_img1_gallery_value -->
+		<!-- field_info_value -->
+		<!-- field_num_page_value -->
+		<!-- field_preview_img_preset_value -->
+		<!--field_zoom_img_value -->
+		</html_code>
+	</tpl>
+</templates>
