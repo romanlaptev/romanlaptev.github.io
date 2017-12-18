@@ -94,7 +94,7 @@ console.log( navigator.userAgent );
 console.log(webApp);
 
 	//start
-	webApp.draw.loadTemplatesAjax(function(){
+	webApp.draw.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
 	});
@@ -1633,10 +1633,10 @@ function _draw( opt ){
 		return html;
 	}//end _getTpl()
 */	
-	function _loadTemplatesAjax( callback ){
+	function _loadTemplates( callback ){
 		
 		if( webApp.vars["templates_url"].length === 0 ){
-console.log("error in draw.loadTemplatesAjax(), not find 'templates_url' !");
+console.log("error in draw.loadTemplates(), not find 'templates_url' !");
 			return false;
 		}
 		
@@ -1649,7 +1649,7 @@ console.log(msg);
 //webApp.vars["log"].push(msg);
 //console.log( data );
 				if( !data ){
-console.log("error in draw.loadTemplatesAjax(), not find data templates'....");
+console.log("error in draw.loadTemplates(), not find data templates'....");
 					return false;
 				}
 				
@@ -1665,6 +1665,7 @@ console.log("error in draw.loadTemplatesAjax(), not find data templates'....");
 						.replace(/\n/g,"");
 						
 						_vars["templates"][key] = value;
+						
 					}//next
 					
 					if( typeof callback === "function"){
@@ -1672,13 +1673,13 @@ console.log("error in draw.loadTemplatesAjax(), not find data templates'....");
 					}
 					
 				} else {
-console.log("error in draw.loadTemplatesAjax(), cannot parse templates data.....");
+console.log("error in draw.loadTemplates(), cannot parse templates data.....");
 				}
 
 			}//end callback()
 		});
 		
-	}//end _loadTemplatesAjax()
+	}//end _loadTemplates()
 
 
 	var _insert = function( opt ){
@@ -1910,7 +1911,7 @@ _log(msg);
 			return _wrapContent( opt ); 
 		},
 		//formTemplates : _formTemplates,
-		loadTemplatesAjax : _loadTemplatesAjax
+		loadTemplates : _loadTemplates
 	};
 }//end _draw()
 
