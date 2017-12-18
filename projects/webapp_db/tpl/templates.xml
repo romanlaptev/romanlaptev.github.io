@@ -39,7 +39,16 @@
 ]]>		
 		</html_code>
 	</tpl>
-		
+
+
+	<tpl name="tpl-node">
+		<html_code>
+<![CDATA[
+			<div>{{body}}</div>
+]]>
+		</html_code>
+	</tpl>
+	
 	<tpl name="tpl-list">
 		<html_code><![CDATA[
 <ul class="list-unstyled">{{list}}</ul>
@@ -52,4 +61,80 @@
 		]]></html_code>
 	</tpl>
 	
+	<tpl name="tpl-menu">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-menu_list">
+		<html_code><![CDATA[
+<li><a href="{{url}}">{{name}}</a></li>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-termin_nodes">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-termin_nodes_list">
+		<html_code><![CDATA[
+<a href="#?q=node&nid={{nid}}">{{title}}</a><br>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-block-1">
+		<html_code><![CDATA[
+	<div class="block">
+			{{block_title}}
+			<div class="content">{{content}}</div>
+	</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-info_termins_genre-block">
+		<html_code><![CDATA[
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+	</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-info_termins_tech-block">
+		<html_code><![CDATA[
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+			<button class="btn btn-primary">test btn</button>
+	</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-info_termins_style-block">
+		<html_code><![CDATA[
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+	</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-block-content">
+		<html_code><![CDATA[
+	<div class="block">
+			<h3>{{block_title}}</h3>
+			<div class="content">{{content}}</div>
+	</div>			
+		]]></html_code>
+	</tpl>
+<!--	
+	<tpl name="">
+		<html_code><![CDATA[
+
+		]]></html_code>
+	</tpl>
+-->	
 </templates>

@@ -74,41 +74,33 @@ console.log( navigator.userAgent );
 	"draw" : _draw(),
 	"app" : _app(),
 	
-	"loadTemplates" : function( frame ){
-//console.log( frame.contentWindow.document.body.innerHTML);
-//console.log( frame.contentWindow.document.body.innerHTML.length );
-		var isLoaded = frame.contentWindow.document.body.innerHTML.length > 0;
-//console.log( isLoaded );
-		if( isLoaded ){
-			webApp.draw.formTemplates();
-			webApp.run();
-		} else {
-console.log("<p>webApp.init(),  error, dont load templates from <b class='text-danger'>IFRAME</b></p>");
-			return false;
-		}
-	},
+	// "loadTemplates" : function( frame ){
+// //console.log( frame.contentWindow.document.body.innerHTML);
+// //console.log( frame.contentWindow.document.body.innerHTML.length );
+		// var isLoaded = frame.contentWindow.document.body.innerHTML.length > 0;
+// //console.log( isLoaded );
+		// if( isLoaded ){
+			// webApp.draw.formTemplates();
+			// webApp.run();
+		// } else {
+// console.log("<p>webApp.init(),  error, dont load templates from <b class='text-danger'>IFRAME</b></p>");
+			// return false;
+		// }
+	// },
 	
 	"run" : _runApp
 	
 };//end webApp()
 console.log(webApp);
 
-//start
+	//start
+	webApp.draw.loadTemplatesAjax(function(){
+//console.log("Load templates end...", webApp.draw.vars["templates"] );		
+		_runApp();
+	});
+
 function _runApp(){
-	
-	webApp.draw.loadTemplatesMod();
-	
 	webApp.init(function(){
-		
-		// webApp.db.loadData(function(){
-	// //console.log(arguments);		
-				// webApp.app.buildPage({
-					// "title" : "frontPage",
-					// "nid" : 1
-				// });
-			// }//end callback
-		// );
-	//console.log( window.frames["test_frame" ].document.querySelector("#tpl-list") );
 		
 		webApp.db.loadData(function(){
 	//console.log(arguments);
@@ -1007,7 +999,7 @@ console.log("not callback....use return function");
 	
 	
 //async API
-/*
+
 	function _getVocabularyByName( opt ){
 		var options = {
 			"vocName" : "",
@@ -1042,9 +1034,9 @@ _log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is em
 		webApp.db.query( queryParams);
 		
 	}//end _getVocabularyByName()
-*/	
 
-/*
+
+
 	function _getTermByName( opt ){
 		var options = {
 			"vid" : null,
@@ -1082,8 +1074,8 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 		webApp.db.query( queryParams);
 
 	}//end _getTermByName()
-*/	
-/*	
+
+
 	function _getChildTerms( opt ){
 		var options = {
 			"vid" : null,
@@ -1166,7 +1158,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		}//end _postQuery()
 		
 	}//end _getChildTerms()
-*/
+
 	
 	function _getTerminNodes( opt ){
 		var p = {
@@ -1237,7 +1229,7 @@ _log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b>
 	}//end _getTerminNodes()
 
 	
-/*	
+
 	function _getBlockContent( opt ){
 		var options = {
 			"vocName" : "",
@@ -1305,7 +1297,7 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		});
 		
 	}//end _getBlockContent()
-*/
+
 	
 	function _replaceUrl( opt ){
 		var p = {
@@ -1513,22 +1505,22 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 			return _query( opt ); 
 		},
 		//async API
-		//getVocabularyByName:	function( opt ){ 
-			//return _getVocabularyByName( opt ); 
-		//},
-		//getTermByName:	function( opt ){ 
-			//return _getTermByName( opt ); 
-		//},
-		//getChildTerms:	function( opt ){ 
-			//return _getChildTerms( opt ); 
-		//},
+		getVocabularyByName:	function( opt ){ 
+			return _getVocabularyByName( opt ); 
+		},
+		getTermByName:	function( opt ){ 
+			return _getTermByName( opt ); 
+		},
+		getChildTerms:	function( opt ){ 
+			return _getChildTerms( opt ); 
+		},
 		getTerminNodes:	function( opt ){ 
 			return _getTerminNodes( opt ); 
 		},
 		
-		//getBlockContent:	function( opt ){ 
-			//return _getBlockContent( opt ); 
-		//},
+		getBlockContent:	function( opt ){ 
+			return _getBlockContent( opt ); 
+		},
 		replaceUrl:	function( opt ){ 
 			return _replaceUrl( opt ); 
 		},
@@ -1546,12 +1538,12 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {};
 	_vars["templates"] = {};
-	_vars["templatesTest"] = {};
 
 	var _init = function(){
 //console.log("init _draw");
 	};
-
+	
+/*
 	//function _formTemplates( frame ){
 	function _formTemplates(){
 		//var $tplDoc = frame.contentDocument;
@@ -1603,6 +1595,7 @@ function _draw( opt ){
 			}
 		}//end _getById()
 	}//end _getTplMod()
+*/	
 /*
 	function _getTpl( id ){
 //console.log(id);
@@ -1640,10 +1633,10 @@ function _draw( opt ){
 		return html;
 	}//end _getTpl()
 */	
-	function _loadTemplatesMod(){
+	function _loadTemplatesAjax( callback ){
 		
 		if( webApp.vars["templates_url"].length === 0 ){
-console.log("error in draw.loadTemplatesMod(), not find 'templates_url' !");
+console.log("error in draw.loadTemplatesAjax(), not find 'templates_url' !");
 			return false;
 		}
 		
@@ -1656,7 +1649,7 @@ console.log(msg);
 //webApp.vars["log"].push(msg);
 //console.log( data );
 				if( !data ){
-console.log("error in draw.loadTemplatesMod(), not find data templates'....");
+console.log("error in draw.loadTemplatesAjax(), not find data templates'....");
 					return false;
 				}
 				
@@ -1671,17 +1664,21 @@ console.log("error in draw.loadTemplatesMod(), not find data templates'....");
 						.replace(/\t/g,"")
 						.replace(/\n/g,"");
 						
-						_vars["templatesTest"][key] = value;
+						_vars["templates"][key] = value;
 					}//next
 					
+					if( typeof callback === "function"){
+						callback();
+					}
+					
 				} else {
-console.log("error in draw.loadTemplatesMod(), cannot parse templates data.....");
+console.log("error in draw.loadTemplatesAjax(), cannot parse templates data.....");
 				}
 
 			}//end callback()
 		});
 		
-	}//end _loadTemplatesMod()
+	}//end _loadTemplatesAjax()
 
 
 	var _insert = function( opt ){
@@ -1912,8 +1909,8 @@ _log(msg);
 		wrapContent:	function( opt ){ 
 			return _wrapContent( opt ); 
 		},
-		formTemplates : _formTemplates,
-		loadTemplatesMod : _loadTemplatesMod
+		//formTemplates : _formTemplates,
+		loadTemplatesAjax : _loadTemplatesAjax
 	};
 }//end _draw()
 
@@ -1942,29 +1939,29 @@ function _app( opt ){
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
 				"contentTpl" : "tpl-menu",
 				"content" : function( args ){//function for getting content data
-					// webApp.db.getBlockContent({
-						// "vocName" : "info",
-						// "termName" : "стиль",
-						// "callback" : function(res){
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-					
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
-							"vocName" : "info", 
-							"termName" : "стиль"
-							}),
-						"callback" : function( res ){
-	//console.log("end test query!!!", res);
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "стиль",
+						"callback" : function(res){
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
 						}//end callback
 					});
+					
+					// webApp.db.query({
+						// "queryObj" : _formQueryObj({
+							// "queryTarget" : "getVocabulary",
+							// "vocName" : "info", 
+							// "termName" : "стиль"
+							// }),
+						// "callback" : function( res ){
+	// //console.log("end test query!!!", res);
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( res );
+							// }
+						// }//end callback
+					// });
 					
 				},//end callback()
 				"visibility" : "frontPage"
@@ -1975,20 +1972,29 @@ function _app( opt ){
 				"templateID" : "tpl-info_termins_tech-block",
 				"contentTpl" : "tpl-menu",
 				"content" : function( args ){//function for getting content data
-				
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
-							"vocName" : "info", 
-							"termName" : "техника",
-						}),
-						"callback" : function( res ){
-	//console.log("end test query!!!", res);
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "техника",
+						"callback" : function(res){
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
 						}//end callback
 					});
+				
+					// webApp.db.query({
+						// "queryObj" : _formQueryObj({
+							// "queryTarget" : "getVocabulary",
+							// "vocName" : "info", 
+							// "termName" : "техника",
+						// }),
+						// "callback" : function( res ){
+	// //console.log("end test query!!!", res);
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( res );
+							// }
+						// }//end callback
+					// });
 					
 				},//end callback()
 				"visibility" : "frontPage"
@@ -2442,12 +2448,19 @@ console.log( node );
 						_data[field] = node["fields"][field];
 					}//next
 					
-					var _html = webApp.draw.wrapContent({
+					var opt2 = {
 						"data" : _data,
 						"templateID" : "tpl-node",
+						//"templateID" : "tpl-node_photogallery_image",
 						"wrapType" : "node",
-					});
+					};
+//console.log( node["type"] );
+					if( node["type"].length > 0 ){
+						opt2["templateID"] = opt2["templateID"]+"_"+node["type"];
+					}
+					var _html = webApp.draw.wrapContent(opt2);
 //console.log( _html);
+
 					if( _html && _html.length > 0){
 						//html += _html;
 					} else {
