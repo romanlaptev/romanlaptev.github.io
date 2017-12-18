@@ -2038,7 +2038,7 @@ console.log("init app!");
 				var target = event.target || event.srcElement;
 //console.log( event );
 //console.log( this );//page-container
-//console.log( target.tagName );
+console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
@@ -2057,7 +2057,7 @@ console.log("init app!");
 		//console.log( search, parseStr );
 							if( parseStr.length > 0 ){
 								webApp.vars["GET"] = parseGetParams( parseStr ); 
-								webApp.app.urlManager();
+								webApp.app.urlManager( target );
 							} else {
 		console.log( "Warn! error parse url in " + target.href );
 							}
@@ -2069,8 +2069,8 @@ console.log("init app!");
 		
 	}//end defineEvents()
 	
-	function _urlManager(){
-		
+	function _urlManager( target ){
+//console.log(target);
 		switch( webApp.vars["GET"]["q"] ) {
 			
 			case "hide-log":
@@ -2123,10 +2123,15 @@ _log("<p>"+msg+"</p>");
 			case "taxonomy":
 				if( webApp.vars["GET"]["tid"] ){
 					
+					var block_title = "";
+					if( target.innerHTML.length > 0){
+						block_title = target.innerHTML;
+					}
+					
 					_buildBlock({//draw content block
 						"name" : "block-content",
 						//"title" : "termin_nodes", 
-						"title" : "", 
+						"title" : block_title, 
 						"templateID" : "tpl-block-content",
 						"contentTpl" : "tpl-termin_nodes",
 						"content" : function(args){
@@ -2722,8 +2727,8 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 		init:	function(args){ 
 			return _init(args); 
 		},
-		urlManager:	function(){ 
-			return _urlManager(); 
+		urlManager:	function( target ){ 
+			return _urlManager( target ); 
 		},
 		
 		buildBlock:	function(opt){ 
