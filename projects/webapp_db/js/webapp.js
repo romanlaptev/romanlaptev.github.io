@@ -295,46 +295,56 @@ console.log("error in _db(), data not in JSON format");
 	}//end _loadData()
 	
 	function _loadTemplates( postFunc ){
+//console.log( "_loadTemplates", postFunc);			
 		
 		var isLoadTemplates = false;
-		if( typeof postFunc === "function"){
-			postFunc( isLoadTemplates );
-		} else {
-			return false;
-		}
 		
-		// if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
-			// _vars["dataStoreType"] = false;
-		// } 
+		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
+			//_vars["dataStoreType"] = false;
+			if( typeof postFunc === "function"){
+				postFunc( isLoadTemplates );
+			}
+		} 
 		
-		// switch(_vars["dataStoreType"]) {				
-			// case "indexedDB":
-				// webApp.iDBmodule.getListStores({//DB exists?
-					// "dbName" : webApp.iDBmodule.dbInfo["dbName"],
-					// "callback" : function( listStores ){
-// console.log(listStores);				
-						// // webApp.iDBmodule.checkState({
-							// // "listStores" : listStores,
-							// // "callback" : postFunc//draw page
-						// // });
-// //console.log("test!");				
-					// }//end callback
-				// });
-				// return false;
-			// break;
+		switch(_vars["dataStoreType"]) {				
+			case "indexedDB":
+				webApp.iDBmodule.getListStores({//store by name 'templates' is exists?
+					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+					"callback" : function( listStores ){
+//console.log(listStores);				
+						for( var storeName in listStores){
+							if( storeName === "templates"){
+								isLoadTemplates = true;
+								break;
+							}
+						}//next
+						if( typeof postFunc === "function"){
+							postFunc( isLoadTemplates );
+						}
+
+					}//end callback
+				});
+				return false;
+			break;
 			
-			// case "webSQL":
-			// break;
+			case "webSQL":
+			break;
 			
-			// case "localStorage":
-			// break;
+			case "localStorage":
+			break;
 			
-			// default:
-			// break;
-		// }//end switch
+			default:
+			break;
+		}//end switch
+
 		
 	}//end _loadTemplates()
 
+	function _saveTemplates( templates ){
+console.log( "_saveTemplates", templates);			
+	}//end _saveTemplates()
+	
+	
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
 		var startTime = new Date();
@@ -1437,9 +1447,11 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		loadData:	function( opt ){ 
 			return _loadData( opt ); 
 		},
-		loadTemplates : function(){
-			return _loadTemplates();
+		loadTemplates : function( postFunc ){
+			return _loadTemplates( postFunc );
 		},
+		saveTemplates: _saveTemplates,
+		
 		query:	function( opt ){ 
 			return _query( opt ); 
 		},
@@ -2617,16 +2629,16 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 	
 	function _loadTemplates( callback ){
 		
-		// webApp.db.loadTemplates(function( isLoadTemplates ){
-			// if( !isLoadTemplates ){
-				// _loadTemplatesFromFile();
-			// } else{
-				// if( typeof callback === "function"){
-					// callback();
-				// }
-			// }
-		// });//end db.loadTemplates()
-		_loadTemplatesFromFile();
+		webApp.db.loadTemplates(function( isLoadTemplates ){
+			if( !isLoadTemplates ){
+				_loadTemplatesFromFile();
+			} else{
+				
+				if( typeof callback === "function"){
+					callback();
+				}
+			}
+		});//end db.loadTemplates()
 		
 		function _loadTemplatesFromFile(){
 			
@@ -2661,6 +2673,7 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 							webApp.draw.vars["templates"][key] = value;
 						}//next
 						
+						webApp.db.saveTemplates( webApp.draw.vars["templates"] );
 						
 						if( typeof callback === "function"){
 							callback();
