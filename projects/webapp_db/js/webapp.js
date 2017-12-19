@@ -22,6 +22,7 @@
 var webApp = {
 	
 	"vars" : {
+		"app_title" : "Graphic Art Collection",
 		"log" : [],
 		 "import" : {
 			"data_url" : "db/art.xml",
@@ -57,10 +58,14 @@ console.log( navigator.userAgent );
 
 		webApp.db.init();
 		//webApp.iDBmodule.init();
+//console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
 		webApp.app.init();
 		
-//console.log(iDBmodule, typeof iDBmodule);			
+		var app_title = getById("app-title");
+		if( app_title){
+			app_title.innerHTML = this.vars["app_title"];
+		}
 		
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -100,8 +105,8 @@ console.log(webApp);
 	});
 
 function _runApp(){
+	
 	webApp.init(function(){
-		
 		webApp.db.loadData(function(){
 	//console.log(arguments);
 	//console.log(window.location);	
