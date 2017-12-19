@@ -312,9 +312,23 @@ console.log("error in _db(), data not in JSON format");
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
 //console.log(listStores);				
-						for( var storeName in listStores){
+						for( var n = 0; n < listStores.length; n++){
+							var storeName = listStores[n];
 							if( storeName === "templates"){
 								isLoadTemplates = true;
+								
+								webApp.iDBmodule.getRecords({
+									"dbName": webApp.iDBmodule.dbInfo["dbName"],
+									"storeName": "templates",
+									"action" : "get_records_obj",
+									"callback" : function( data, log ){
+//var msg = "webApp.iDBmodule.getRecords(), get storeData as object,";
+//console.log(msg, log);
+//console.log(data );
+										webApp.draw.vars["templates"] = data;
+									}
+								});
+								
 								break;
 							}
 						}//next
@@ -341,7 +355,49 @@ console.log("error in _db(), data not in JSON format");
 	}//end _loadTemplates()
 
 	function _saveTemplates( templates ){
-console.log( "_saveTemplates", templates);			
+//console.log( "_saveTemplates", templates);			
+
+		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
+			_vars["dataStoreType"] = false;
+		} 
+		
+		switch(_vars["dataStoreType"]) {				
+			case "indexedDB":
+				var storeData = [];
+				for( var tpl in templates){
+					storeData.push({
+						"key" : tpl,
+						"value" : templates[tpl]
+					});					
+				}//next
+//console.log( storeData, storeData.length);
+
+				if( storeData.length > 0){
+					webApp.iDBmodule.addRecords({
+						"dbName": webApp.iDBmodule.dbInfo["dbName"],
+						"storeName": "templates",
+						"storeData" : storeData,
+						"callback" : function( log ){
+var msg = "webApp.iDBmodule.addRecords()";
+console.log(msg,  log);
+						}
+					});
+				} else {
+var msg = "webApp.db.saveTemplates(), warning! No templates in array";
+console.log(msg);
+				}
+			break;
+			
+			case "webSQL":
+			break;
+			
+			case "localStorage":
+			break;
+			
+			default:
+			break;
+		}//end switch
+
 	}//end _saveTemplates()
 	
 	
@@ -2630,6 +2686,7 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 	function _loadTemplates( callback ){
 		
 		webApp.db.loadTemplates(function( isLoadTemplates ){
+//console.log(isLoadTemplates);			
 			if( !isLoadTemplates ){
 				_loadTemplatesFromFile();
 			} else{
