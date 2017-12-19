@@ -92,7 +92,25 @@ function get_attr_to_obj( attr ){
 
 
 
-//parse XML : <table><note>....</note>, <note>...</note></table>
+/*
+parse XML document to array
+
+IN:
+<templates>
+	<tpl name="tpl-node_photogallery_image">
+		<html_code><![CDATA[
+......
+		]]></html_code>
+	</tpl>
+.................
+</templates>
+
+OUT:
+[ { name: "attr value", html_code: "......" },
+{ name: "attr value", html_code: "......" }]
+
+ONLY second LEVEL !!!!!!!!!!!!
+*/
 function _parseXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			

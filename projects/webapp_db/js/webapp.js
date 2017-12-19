@@ -94,7 +94,7 @@ console.log( navigator.userAgent );
 console.log(webApp);
 
 	//start
-	webApp.draw.loadTemplates(function(){
+	webApp.app.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
 	});
@@ -152,112 +152,7 @@ function _db( opt ){
 		"webSQLsupport" : window.openDatabase  ? true : false,
 		"localStorageSupport" : window['localStorage']  ? true : false,
 		"dataStoreType" : _detectDataStore(),
-		"tables": {
-			//// "taxonomy_menu" :[{ 
-				//// "fields" : ["tid", "title"],
-				//// "records" : []
-			//// }],
-			
-			//"taxonomy_title" : {
-				//"fields" : ["tid", "title"],
-				//"records" : []
-			//},  
-			
-			//"term_data" :{
-				//"fields" : ["tid",  "vid", "name", "description", "weight"],
-				//"records" : []
-			//},  
-			
-			//"term_hierarchy" :{
-				//"fields" : [ "tid",  "parent"],
-				//"records" : []
-			//},  
-			
-			//"term_image" :{
-				//"fields" : ["tid",  "path"],
-				//"records" : []
-			//},
-			
-			//"term_node" :{
-				//"fields" : ["nid",  "vid", "tid"],
-				//"records" : []
-			//},  
-			
-			////"term_relation" :[{}],  
-			////"term_synonym" :[{}],  
-			//"vocabulary" :{
-				//"fields" : [ "vid", "name", "description", "help", "relations", "hierarchy",
-//"multiple",
-//"required",
-//"tags",
-//"module",
-//"weight"
-				//],
-				//"records" : []
-			//},
-			
-			//"url_alias" :{
-				//"fields" : ["pid",  "src", "dst", "language"],
-				//"records" : []
-			//},  
-
-			//"node" :{
-				//"fields" : [
-//"nid",
-//"vid",
-//"type",
-//"language",
-//"title",
-//"uid",
-//"status",
-//"created",
-//"changed",
-//"comment",
-//"promote",
-//"moderate",
-//"sticky",
-//"tnid",
-//"translate"
-//],
-				//"records" : []
-			//},
-			
-			//"node_revisions" :{
-				//"fields" : [
-//"nid",
-//"vid",
-//"uid",
-//"title",
-//"body",
-//"teaser",
-//"log",
-//"timestamp",
-//"format"
-//],
-				//"records" : []
-			//},  
-			
-			//"node_type" :{
-				//"fields" : [
-//"type",
-//"name",
-//"module",
-//"description",
-//"help",
-//"has_title",
-//"title_label",
-//"has_body",
-//"body_label",
-//"min_word_count",
-//"custom",
-//"modified",
-//"locked",
-//"orig_type"
-//],
-				//"records" : []
-			//}
-			
-		}//end tables
+		"tables": {}
 	};
 
 
@@ -399,7 +294,47 @@ console.log("error in _db(), data not in JSON format");
 		
 	}//end _loadData()
 	
-	
+	function _loadTemplates( postFunc ){
+		
+		var isLoadTemplates = false;
+		if( typeof postFunc === "function"){
+			postFunc( isLoadTemplates );
+		} else {
+			return false;
+		}
+		
+		// if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
+			// _vars["dataStoreType"] = false;
+		// } 
+		
+		// switch(_vars["dataStoreType"]) {				
+			// case "indexedDB":
+				// webApp.iDBmodule.getListStores({//DB exists?
+					// "dbName" : webApp.iDBmodule.dbInfo["dbName"],
+					// "callback" : function( listStores ){
+// console.log(listStores);				
+						// // webApp.iDBmodule.checkState({
+							// // "listStores" : listStores,
+							// // "callback" : postFunc//draw page
+						// // });
+// //console.log("test!");				
+					// }//end callback
+				// });
+				// return false;
+			// break;
+			
+			// case "webSQL":
+			// break;
+			
+			// case "localStorage":
+			// break;
+			
+			// default:
+			// break;
+		// }//end switch
+		
+	}//end _loadTemplates()
+
 	//select tid, title from taxonomy_title	
 	var _query = function( opt ){
 		var startTime = new Date();
@@ -643,39 +578,37 @@ console.log( msg );
 					break;
 
 					case "IN":
-/*
-					//record["checkResult"][n] = false;
-					for( var n2 = 0; n2 < list_values.length; n2++){
-//console.log(n2, list_values[n2]);
+					// //record["checkResult"][n] = false;
+					// for( var n2 = 0; n2 < list_values.length; n2++){
+// //console.log(n2, list_values[n2]);
 
-						//"IN"
-						if( !condition["zapret"] ){
+						// //"IN"
+						// if( !condition["zapret"] ){
 
-// if( (record["KOD_MAIN"] === "1" && record["NOMER"] === "170") || 
-// (record["KOD_MAIN"] === "5" && record["NOMER"] === "170")
-// ){
-// console.log(key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record[key] === list_values[n2].toString() );
-// }
-							if( record[key] === list_values[n2].toString() ){
-								record["checkResult"][n] = true;
-//console.log( key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record["checkResult"] );
-								break;
-							} //else {
-								//record["checkResult"][n] = false;
-							//}
+// // if( (record["KOD_MAIN"] === "1" && record["NOMER"] === "170") || 
+// // (record["KOD_MAIN"] === "5" && record["NOMER"] === "170")
+// // ){
+// // console.log(key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record[key] === list_values[n2].toString() );
+// // }
+							// if( record[key] === list_values[n2].toString() ){
+								// record["checkResult"][n] = true;
+// //console.log( key, record[key], typeof record[key], list_values[n2], typeof list_values[n2], n, record["checkResult"] );
+								// break;
+							// } //else {
+								// //record["checkResult"][n] = false;
+							// //}
 							
-						} else { //"NOT IN"
+						// } else { //"NOT IN"
 						
-							if( record[key] !== list_values[n2].toString() ){
-//console.log(record[key], key, typeof record[key], list_values[n2], typeof list_values[n2] );
-								record["checkResult"][n] = true;
-								break;
-							}
+							// if( record[key] !== list_values[n2].toString() ){
+// //console.log(record[key], key, typeof record[key], list_values[n2], typeof list_values[n2] );
+								// record["checkResult"][n] = true;
+								// break;
+							// }
 							
-						}
+						// }
 						
-					}//next
-*/					
+					// }//next
 					break;
 					
 				}//end switch
@@ -998,8 +931,11 @@ console.log("not callback....use return function");
 	}//end _parseCSVBlocks()
 	
 	
-//async API
 
+	
+//==================================
+// async API
+//==================================
 	function _getVocabularyByName( opt ){
 		var options = {
 			"vocName" : "",
@@ -1501,9 +1437,13 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		loadData:	function( opt ){ 
 			return _loadData( opt ); 
 		},
+		loadTemplates : function(){
+			return _loadTemplates();
+		},
 		query:	function( opt ){ 
 			return _query( opt ); 
 		},
+		
 		//async API
 		getVocabularyByName:	function( opt ){ 
 			return _getVocabularyByName( opt ); 
@@ -1633,54 +1573,6 @@ function _draw( opt ){
 		return html;
 	}//end _getTpl()
 */	
-	function _loadTemplates( callback ){
-		
-		if( webApp.vars["templates_url"].length === 0 ){
-console.log("error in draw.loadTemplates(), not find 'templates_url' !");
-			return false;
-		}
-		
-		runAjax( {
-			"requestMethod" : "GET", 
-			"url" : webApp.vars["templates_url"], 
-			"callback": function( data ){
-var msg = "load " + webApp.vars["templates_url"] ;
-console.log(msg);
-//webApp.vars["log"].push(msg);
-//console.log( data );
-				if( !data ){
-console.log("error in draw.loadTemplates(), not find data templates'....");
-					return false;
-				}
-				
-				xmlNodes = _parseXmlToObj( data );
-//console.log(xmlNodes);
-				if( xmlNodes.length > 0 ){
-					for( var n= 0; n < xmlNodes.length; n++){
-						var key = xmlNodes[n]["name"];
-
-						var value = xmlNodes[n]["html_code"]
-						.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-						.replace(/\t/g,"")
-						.replace(/\n/g,"");
-						
-						_vars["templates"][key] = value;
-						
-					}//next
-					
-					if( typeof callback === "function"){
-						callback();
-					}
-					
-				} else {
-console.log("error in draw.loadTemplates(), cannot parse templates data.....");
-				}
-
-			}//end callback()
-		});
-		
-	}//end _loadTemplates()
-
 
 	var _insert = function( opt ){
 		
@@ -1910,8 +1802,7 @@ _log(msg);
 		wrapContent:	function( opt ){ 
 			return _wrapContent( opt ); 
 		},
-		//formTemplates : _formTemplates,
-		loadTemplates : _loadTemplates
+		//formTemplates : _formTemplates
 	};
 }//end _draw()
 
@@ -2724,6 +2615,67 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 */		
 	}//end _serverRequest()
 	
+	function _loadTemplates( callback ){
+		
+		// webApp.db.loadTemplates(function( isLoadTemplates ){
+			// if( !isLoadTemplates ){
+				// _loadTemplatesFromFile();
+			// } else{
+				// if( typeof callback === "function"){
+					// callback();
+				// }
+			// }
+		// });//end db.loadTemplates()
+		_loadTemplatesFromFile();
+		
+		function _loadTemplatesFromFile(){
+			
+			if( webApp.vars["templates_url"].length === 0 ){
+	console.log("error in draw.loadTemplates(), not find 'templates_url' !");
+				return false;
+			}
+			runAjax( {
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["templates_url"], 
+				"callback": function( data ){
+	var msg = "load " + webApp.vars["templates_url"] ;
+	console.log(msg);
+	//webApp.vars["log"].push(msg);
+	//console.log( data );
+					if( !data ){
+	console.log("error in draw.loadTemplates(), not find data templates'....");
+						return false;
+					}
+					
+					xmlNodes = _parseXmlToObj( data );
+	//console.log(xmlNodes);
+					if( xmlNodes.length > 0 ){
+						for( var n= 0; n < xmlNodes.length; n++){
+							var key = xmlNodes[n]["name"];
+
+							var value = xmlNodes[n]["html_code"]
+							.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+							.replace(/\t/g,"")
+							.replace(/\n/g,"");
+							
+							webApp.draw.vars["templates"][key] = value;
+						}//next
+						
+						
+						if( typeof callback === "function"){
+							callback();
+						}
+						
+					} else {
+	console.log("error in draw.loadTemplates(), cannot parse templates data.....");
+					}
+
+				}//end callback()
+			});
+		}//end _loadTemplatesFromFile()
+		
+	}//end _loadTemplates()
+	
 	// public interfaces
 	return{
 		vars : _vars,
@@ -2742,7 +2694,8 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 		},
 		serverRequest:	function(opt){ 
 			return _serverRequest(opt); 
-		}
+		},
+		loadTemplates : _loadTemplates
 	};
 }//end _app()
 
