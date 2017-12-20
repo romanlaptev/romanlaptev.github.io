@@ -1767,7 +1767,7 @@ if( loc){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -2169,12 +2169,13 @@ console.log("-- end build page --");
 						"title" : block_title, 
 						"templateID" : "tpl-block-content",
 						"contentTpl" : "tpl-termin_nodes",
+						"contentListTpl" : "tpl-termin_nodes_list",
 						"content" : function(args){
 							
 							webApp.db.getTerminNodes({//get list termin nodes
 								"tid" : webApp.vars["GET"]["tid"],
 								"callback" : function( res ){
-console.log(res);
+//console.log(res);
 									if( typeof args["callback"] === "function"){
 										args["callback"]( res );
 									}
@@ -2340,7 +2341,7 @@ console.log(msg);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 	
 		// if( p["content"].length === 0 ){
 // _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
@@ -2351,7 +2352,7 @@ console.log(p);
 		if( typeof p["content"] === "function"){
 			p["content"]({
 				"callback" : function( res ){
-console.log(res);								
+//console.log(res);								
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"
