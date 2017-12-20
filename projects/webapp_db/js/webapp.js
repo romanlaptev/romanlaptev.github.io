@@ -1760,13 +1760,14 @@ if( loc){
 			"data": null,
 			//"type" : "",
 			//"wrapType" : "menu",
-			"templateID" : false
+			"templateID" : false,
+			"templateListID" : false
 		};
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -1797,6 +1798,12 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
 			break;
 			case "list" :
+				if( !p["templateListID"] ){
+var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
+console.log(msg);							
+_log(msg);
+					return false;
+				}
 				html = __formListHtml( _vars["templates"][ p.templateID ] );
 			break;
 		}//end switch
@@ -1824,12 +1831,12 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 					
 					var items = p["data"][key];
 					
-					if( !_vars["templates"][ p.templateID+"_list"] ){
-var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
-console.log(msg);							
-_log(msg);
-						return false;
-					}
+					// if( !_vars["templates"][ p.templateID+"_list"] ){
+// var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
+// console.log(msg);							
+// _log(msg);
+						// return false;
+					// }
 					//var itemHtml = _vars["templates"][ p.templateID+"_list"];
 //console.log(itemHtml);
 					// for( var key2 in items){
@@ -1840,7 +1847,7 @@ _log(msg);
 						// }
 					// }//next
 					
-					var itemTpl = _vars["templates"][ p.templateID+"_list"];
+					var itemTpl = _vars["templates"][ p.templateListID];
 					var itemHtml = __formNodeHtml( items, itemTpl );
 					
 					listHtml += itemHtml;
@@ -1916,6 +1923,7 @@ function _app( opt ){
 				"title" : "стиль", //"техника",//"жанр",
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
 				"contentTpl" : "tpl-menu",
+				"contentListTpl" : "tpl-menu_list",
 				"content" : function( args ){//function for getting content data
 					webApp.db.getBlockContent({
 						"vocName" : "info",
@@ -1949,6 +1957,7 @@ function _app( opt ){
 				"title" : "Tехника",
 				"templateID" : "tpl-info_termins_tech-block",
 				"contentTpl" : "tpl-menu",
+				"contentListTpl" : "tpl-menu_list",
 				"content" : function( args ){//function for getting content data
 					webApp.db.getBlockContent({
 						"vocName" : "info",
@@ -1981,6 +1990,8 @@ function _app( opt ){
 				"name" : "block-genre",
 				"title" : "Жанр",
 				"templateID" : "tpl-info_termins_genre-block",
+				"contentTpl" : "tpl-list",
+				"contentListTpl" : "tpl-list_list",
 				"content" : function( args ){//function for getting content data
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
@@ -2003,7 +2014,8 @@ function _app( opt ){
 				"name" : "block-alphabetical-voc",
 				"title" : "", 
 				"templateID" : "tpl-block-content",
-				"contentTpl" : "tpl-menu",
+				"contentTpl" : "tpl-menu-inline",
+				"contentListTpl" : "tpl-menu_list",
 				"content" : function( args ){//function for getting content data
 				
 					webApp.db.getBlockContent({
@@ -2023,7 +2035,8 @@ function _app( opt ){
 				"name" : "block-alphabetical-ru",
 				"title" : "", 
 				"templateID" : "tpl-block-content",
-				"contentTpl" : "tpl-menu",
+				"contentTpl" : "tpl-menu-inline",
+				"contentListTpl" : "tpl-menu_list",
 				"content" : function( args ){//function for getting content data
 					
 					webApp.db.getBlockContent({
@@ -2161,7 +2174,7 @@ console.log("-- end build page --");
 							webApp.db.getTerminNodes({//get list termin nodes
 								"tid" : webApp.vars["GET"]["tid"],
 								"callback" : function( res ){
-//console.log(res);
+console.log(res);
 									if( typeof args["callback"] === "function"){
 										args["callback"]( res );
 									}
@@ -2301,7 +2314,10 @@ console.log("error in _formQueryObj(), empty 'termName'....");
 			"content" : "",
 			//"contentType" : "",
 			"templateID" : "tpl-block",
+			
 			"contentTpl" : "tpl-list",//"tpl-menu"
+			"contentListTpl" : false,
+			
 			"callback" : function(){
 				var timeEnd = new Date();
 				var ms = timeEnd.getTime() - timeStart.getTime();
@@ -2324,7 +2340,7 @@ console.log(msg);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 	
 		// if( p["content"].length === 0 ){
 // _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
@@ -2335,12 +2351,13 @@ console.log(msg);
 		if( typeof p["content"] === "function"){
 			p["content"]({
 				"callback" : function( res ){
-//console.log(res);								
+console.log(res);								
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"
 						//"contentType" : p["contentType"],
-						"templateID" : p["contentTpl"]
+						"templateID" : p["contentTpl"],
+						"templateListID" : p["contentListTpl"]
 					});
 					
 //console.log(html);								
