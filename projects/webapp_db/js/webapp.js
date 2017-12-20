@@ -432,7 +432,7 @@ console.log(msg);
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-//console.log( "_query()", options );
+console.log( "_query()", options );
 		
 		_startQuery( options["queryObj"] );
 		
@@ -1959,29 +1959,46 @@ function _app( opt ){
 				"contentTpl" : "tpl-menu",
 				"contentListTpl" : "tpl-menu_list",
 				"content" : function( args ){//function for getting content data
-					webApp.db.getBlockContent({
-						"vocName" : "info",
-						"termName" : "техника",
-						"callback" : function(res){
-							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
-							}
-						}//end callback
-					});
 				
-					// webApp.db.query({
-						// "queryObj" : _formQueryObj({
-							// "queryTarget" : "getVocabulary",
-							// "vocName" : "info", 
-							// "termName" : "техника",
-						// }),
-						// "callback" : function( res ){
-	// //console.log("end test query!!!", res);
+					// webApp.db.getBlockContent({
+						// "vocName" : "info",
+						// "termName" : "техника",
+						// "callback" : function(res){
+// console.log(res);							
 							// if( typeof args["callback"] === "function"){
 								// args["callback"]( res );
 							// }
 						// }//end callback
 					// });
+				
+/*fix Query....
+SELECT name
+FROM term_data
+WHERE vid =5
+AND tid
+IN (
+
+SELECT tid
+FROM term_hierarchy
+WHERE parent in ( 
+SELECT tid
+FROM term_data
+WHERE name =  'техника' )
+)
+*/				
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "info", 
+							"termName" : "техника",
+						}),
+						"callback" : function( res ){
+console.log("end test query!!!", res);
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
 					
 				},//end callback()
 				"visibility" : "frontPage"
