@@ -1084,7 +1084,7 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 	}//end _getTermByName()
 */
 
-/*
+
 	function _getChildTerms( opt ){
 		var options = {
 			"vid" : null,
@@ -1144,12 +1144,12 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 				},
 				"callback" : function( res ){
 
-					//add url aliases
-					for( var n = 0; n < res.length; n++){
-						//res[n]["url"] = "?q=taxonomy/term/" + res[n]["tid"];
-						res[n]["url"] = "#?q=taxonomy&tid=" + res[n]["tid"];
-					}//next
-//console.log("end test query!!!", res);
+					// //add url aliases
+					// for( var n = 0; n < res.length; n++){
+						// //res[n]["url"] = "?q=taxonomy/term/" + res[n]["tid"];
+						// res[n]["url"] = "#?q=taxonomy&tid=" + res[n]["tid"];
+					// }//next
+console.log("end test query!!!", res);
 
 					//_replaceUrl({
 						//"data" : res,
@@ -1167,7 +1167,6 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		}//end _postQuery()
 		
 	}//end _getChildTerms()
-*/
 	
 	function _getTerminNodes( opt ){
 		var p = {
@@ -1527,9 +1526,9 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		//getTermByName:	function( opt ){ 
 			//return _getTermByName( opt ); 
 		//},
-		//getChildTerms:	function( opt ){ 
-			//return _getChildTerms( opt ); 
-		//},
+		getChildTerms:	function( opt ){ 
+			return _getChildTerms( opt ); 
+		},
 		getTerminNodes:	function( opt ){ 
 			return _getTerminNodes( opt ); 
 		},
@@ -2001,6 +2000,15 @@ WHERE name =  'техника' )
 						}),
 						"callback" : function( res ){
 console.log("end test query!!!", res);
+
+						webApp.db.getChildTerms({
+							"vid" : "5",
+							"tid" : "97",
+							"callback" : function(res){
+console.log(res);
+							}//end callback
+						});
+
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
