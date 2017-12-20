@@ -1647,6 +1647,7 @@ function _draw( opt ){
 	}//end _getTpl()
 */	
 
+/*
 	var _insert = function( opt ){
 		
 		var options = {
@@ -1711,7 +1712,7 @@ _log("<p>draw.insert(),   error, data: <b class='text-danger'>" + options["data"
 		// list.innerHTML = listHtml;
 		
 	};//end _insert()
-	
+*/	
 	var _insertBlock = function( opt ){
 		
 		var options = {
@@ -1758,7 +1759,7 @@ if( loc){
 		var p = {
 			"data": null,
 			//"type" : "",
-			"wrapType" : "menu",
+			//"wrapType" : "menu",
 			"templateID" : false
 		};
 		//extend options object
@@ -1771,6 +1772,9 @@ if( loc){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
 			return false;
 		}
+		if( p["data"].length === 0 ){
+			return false;
+		}
 		if( !p["templateID"] ){
 _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b></p>");
 			return false;
@@ -1781,21 +1785,26 @@ _log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-dange
 			return false;
 		}
 		var html = "";
-			
+
+//console.log( p["data"].length );
+		p["wrapType"] = "item";
+		if( p["data"].length > 0 ){
+			p["wrapType"] = "list";
+		}
+		
 		switch( p["wrapType"] ){
-			case "menu" :
-				html = __formMenuHtml( _vars["templates"][ p.templateID ] );
+			case "item" :
+				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
 			break;
-			
-			case "node" :
-				html = __formNodeHtml( _vars["templates"][ p.templateID ] );
+			case "list" :
+				html = __formListHtml( _vars["templates"][ p.templateID ] );
 			break;
 		}//end switch
 		
 //console.log(html);
 		return html;
 
-		function __formMenuHtml( _html ){
+		function __formListHtml( _html ){
 			
 			var listHtml = "";
 			for( var key in p["data"]){
@@ -1821,17 +1830,21 @@ console.log(msg);
 _log(msg);
 						return false;
 					}
-					var itemHtml = _vars["templates"][ p.templateID+"_list"];
+					//var itemHtml = _vars["templates"][ p.templateID+"_list"];
 //console.log(itemHtml);
-
-					for( var key2 in items){
-//console.log(key2, items[key2]);
-						if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-//console.log(key2, items[key2]);
-							itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
-						}
-					}//next
+					// for( var key2 in items){
+// //console.log(key2, items[key2]);
+						// if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+// //console.log(key2, items[key2]);
+							// itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
+						// }
+					// }//next
+					
+					var itemTpl = _vars["templates"][ p.templateID+"_list"];
+					var itemHtml = __formNodeHtml( items, itemTpl );
+					
 					listHtml += itemHtml;
+//console.log(items);
 //console.log(listHtml);
 				}
 				
@@ -1839,15 +1852,15 @@ _log(msg);
 			_html = _html.replace("{{list}}", listHtml);
 			
 			return _html;
-		}//end __formMenuHtml
+		}//end __formListHtml
 
-		function __formNodeHtml( _html ){
+		function __formNodeHtml( data, _html ){
 			
-			for( var key in p["data"]){
-//console.log(key, p["data"][key]);
+			for( var key in data ){
+//console.log(key, data[key]);
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, p["data"][key]);
-					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), p["data"][key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
 				}
 			}//next
 			
@@ -1866,9 +1879,9 @@ _log(msg);
 		init:	function(){ 
 			return _init(); 
 		},
-		insert:	function( opt ){ 
-			return _insert( opt ); 
-		},
+		//insert:	function( opt ){ 
+			//return _insert( opt ); 
+		//},
 		insertBlock:	function( opt ){ 
 			return _insertBlock( opt ); 
 		},
@@ -1891,14 +1904,14 @@ function _app( opt ){
 		"node": [{}],
 		"queries": {},
 		"blocks" : [
-			{
+			{//NEW BLOCK
 				"name" : "block-1",
 				"title" : "Title", 
 				"templateID" : "tpl-block-1",
 				"content" : "<u>static text in block-1</u>"//,
 				//"visibility" : "frontPage"
 			},
-			{
+			{//NEW BLOCK
 				"name" : "block-style",
 				"title" : "стиль", //"техника",//"жанр",
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
@@ -1931,7 +1944,7 @@ function _app( opt ){
 				},//end callback()
 				"visibility" : "frontPage"
 			},
-			{
+			{//NEW BLOCK
 				"name" : "block-tech",
 				"title" : "Tехника",
 				"templateID" : "tpl-info_termins_tech-block",
@@ -1964,7 +1977,7 @@ function _app( opt ){
 				},//end callback()
 				"visibility" : "frontPage"
 			},
-			{
+			{//NEW BLOCK
 				"name" : "block-genre",
 				"title" : "Жанр",
 				"templateID" : "tpl-info_termins_genre-block",
@@ -1984,7 +1997,49 @@ function _app( opt ){
 					});
 				},//end callback()
 				"visibility" : "frontPage"
+			},
+			
+			{//NEW BLOCK
+				"name" : "block-alphabetical-voc",
+				"title" : "", 
+				"templateID" : "tpl-block-content",
+				"contentTpl" : "tpl-menu",
+				"content" : function( args ){//function for getting content data
+				
+					webApp.db.getBlockContent({
+						"vocName" : "Alphabetical_voc", 
+						"termName" : "alphabetical list",
+						"callback" : function(res){
+//console.log(res);							
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+					
+				}//,//end callback()
+			},
+			{//NEW BLOCK
+				"name" : "block-alphabetical-ru",
+				"title" : "", 
+				"templateID" : "tpl-block-content",
+				"contentTpl" : "tpl-menu",
+				"content" : function( args ){//function for getting content data
+					
+					webApp.db.getBlockContent({
+						"vocName" : "Alphabetical_voc", 
+						"termName" : "алфавитный каталог",
+						"callback" : function(res){
+//console.log(res);							
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
+					
+				}//,//end callback()
 			}
+			
 		
 		]
 	};// _vars
@@ -2423,11 +2478,11 @@ console.log( node );
 					var opt2 = {
 						"data" : _data,
 						"templateID" : "tpl-node",
-						//"templateID" : "tpl-node_photogallery_image",
-						"wrapType" : "node",
+						//"wrapType" : "node",
 					};
 //console.log( node["type"] );
 					if( node["type"].length > 0 ){
+						//"templateID" : "tpl-node_photogallery_image",
 						opt2["templateID"] = opt2["templateID"]+"_"+node["type"];
 					}
 					var _html = webApp.draw.wrapContent(opt2);

@@ -6,11 +6,10 @@
 			<div class="img-container">
 				<div class="picture">
 					<a href="#">
-		<!--			
-		<img border="0" src="http://site-content/{{field_preview_img_value}}/{{field_filename_value}}">
-		<img border="0" src="{{field_preview_img_value}}/{{field_filename_value}}">
-		-->
+<!--			
 		<img border="0" src="#{{field_preview_img_value}}/{{field_filename_value}}"/>
+-->
+		<img border="0" src="http://site-content{{field_preview_img_value}}/{{field_filename_value}}">
 					</a>
 				</div>
 				<p class="img-caption">
@@ -64,6 +63,12 @@
 	<tpl name="tpl-menu">
 		<html_code><![CDATA[
 <ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-menu-inline">
+		<html_code><![CDATA[
+<ul class="list-inline">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
@@ -130,6 +135,7 @@
 	</div>			
 		]]></html_code>
 	</tpl>
+	
 <!--	
 	<tpl name="">
 		<html_code><![CDATA[
