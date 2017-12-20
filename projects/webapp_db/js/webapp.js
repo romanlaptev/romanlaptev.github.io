@@ -2341,7 +2341,7 @@ console.log(msg);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+// console.log(p);
 	
 		// if( p["content"].length === 0 ){
 // _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
