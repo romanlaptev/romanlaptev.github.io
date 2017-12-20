@@ -1007,6 +1007,7 @@ console.log("not callback....use return function");
 //==================================
 // async API
 //==================================
+/*
 	function _getVocabularyByName( opt ){
 		var options = {
 			"vocName" : "",
@@ -1041,9 +1042,9 @@ _log("<p>db.getVocabularyByName(),   error, vocName <b class='text-danger'>is em
 		webApp.db.query( queryParams);
 		
 	}//end _getVocabularyByName()
+*/
 
-
-
+/*
 	function _getTermByName( opt ){
 		var options = {
 			"vid" : null,
@@ -1081,8 +1082,9 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 		webApp.db.query( queryParams);
 
 	}//end _getTermByName()
+*/
 
-
+/*
 	function _getChildTerms( opt ){
 		var options = {
 			"vid" : null,
@@ -1165,7 +1167,7 @@ _log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+opt
 		}//end _postQuery()
 		
 	}//end _getChildTerms()
-
+*/
 	
 	function _getTerminNodes( opt ){
 		var p = {
@@ -1236,7 +1238,7 @@ _log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b>
 	}//end _getTerminNodes()
 
 	
-
+/*
 	function _getBlockContent( opt ){
 		var options = {
 			"vocName" : "",
@@ -1304,8 +1306,9 @@ _log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty
 		});
 		
 	}//end _getBlockContent()
+*/
 
-	
+/*	
 	function _replaceUrl( opt ){
 		var p = {
 			"data" : null,
@@ -1362,7 +1365,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		}//end __getUrlAlias
 		
 	}//end _replaceUrl()
-
+*/
 
 	function _nodeLoad( opt ){
 //console.log("_nodeLoad()", arguments);
@@ -1518,25 +1521,25 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		},
 		
 		//async API
-		getVocabularyByName:	function( opt ){ 
-			return _getVocabularyByName( opt ); 
-		},
-		getTermByName:	function( opt ){ 
-			return _getTermByName( opt ); 
-		},
-		getChildTerms:	function( opt ){ 
-			return _getChildTerms( opt ); 
-		},
+		//getVocabularyByName:	function( opt ){ 
+			//return _getVocabularyByName( opt ); 
+		//},
+		//getTermByName:	function( opt ){ 
+			//return _getTermByName( opt ); 
+		//},
+		//getChildTerms:	function( opt ){ 
+			//return _getChildTerms( opt ); 
+		//},
 		getTerminNodes:	function( opt ){ 
 			return _getTerminNodes( opt ); 
 		},
 		
-		getBlockContent:	function( opt ){ 
-			return _getBlockContent( opt ); 
-		},
-		replaceUrl:	function( opt ){ 
-			return _replaceUrl( opt ); 
-		},
+		//getBlockContent:	function( opt ){ 
+			//return _getBlockContent( opt ); 
+		//},
+		//replaceUrl:	function( opt ){ 
+			//return _replaceUrl( opt ); 
+		//},
 		nodeLoad:	function( opt ){ 
 			return _nodeLoad( opt ); 
 		}
@@ -1923,31 +1926,32 @@ function _app( opt ){
 				"title" : "стиль", //"техника",//"жанр",
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
 				"contentTpl" : "tpl-menu",
-				"contentListTpl" : "tpl-menu_list",
+				//"contentListTpl" : "tpl-menu_list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
-					webApp.db.getBlockContent({
-						"vocName" : "info",
-						"termName" : "стиль",
-						"callback" : function(res){
-							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
-							}
-						}//end callback
-					});
-					
-					// webApp.db.query({
-						// "queryObj" : _formQueryObj({
-							// "queryTarget" : "getVocabulary",
-							// "vocName" : "info", 
-							// "termName" : "стиль"
-							// }),
-						// "callback" : function( res ){
-	// //console.log("end test query!!!", res);
+					// webApp.db.getBlockContent({
+						// "vocName" : "info",
+						// "termName" : "стиль",
+						// "callback" : function(res){
 							// if( typeof args["callback"] === "function"){
 								// args["callback"]( res );
 							// }
 						// }//end callback
 					// });
+					
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "info", 
+							"termName" : "стиль"
+							}),
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
+						}//end callback
+					});
 					
 				},//end callback()
 				"visibility" : "frontPage"
@@ -1957,7 +1961,7 @@ function _app( opt ){
 				"title" : "Tехника",
 				"templateID" : "tpl-info_termins_tech-block",
 				"contentTpl" : "tpl-menu",
-				"contentListTpl" : "tpl-menu_list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 				
 					// webApp.db.getBlockContent({
@@ -1985,6 +1989,9 @@ SELECT tid
 FROM term_data
 WHERE name =  'техника' )
 )
+0: Object { tid: "97", vid: "5", name: "гравюра" }
+1: Object { tid: "106", vid: "5", name: "рисунок" }
+2: Object { tid: "112", vid: "5", name: "живопись" }
 */				
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
@@ -2008,7 +2015,8 @@ console.log("end test query!!!", res);
 				"title" : "Жанр",
 				"templateID" : "tpl-info_termins_genre-block",
 				"contentTpl" : "tpl-list",
-				"contentListTpl" : "tpl-list_list",
+				//"contentListTpl" : "tpl-list_list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
@@ -2032,14 +2040,28 @@ console.log("end test query!!!", res);
 				"title" : "", 
 				"templateID" : "tpl-block-content",
 				"contentTpl" : "tpl-menu-inline",
-				"contentListTpl" : "tpl-menu_list",
+				//"contentListTpl" : "tpl-menu_list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 				
-					webApp.db.getBlockContent({
-						"vocName" : "Alphabetical_voc", 
-						"termName" : "alphabetical list",
-						"callback" : function(res){
-//console.log(res);							
+					// webApp.db.getBlockContent({
+						// "vocName" : "Alphabetical_voc", 
+						// "termName" : "alphabetical list",
+						// "callback" : function(res){
+// //console.log(res);							
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( res );
+							// }
+						// }//end callback
+					// });
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "Alphabetical_voc", 
+							"termName" : "alphabetical list"
+							}),
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
@@ -2053,14 +2075,28 @@ console.log("end test query!!!", res);
 				"title" : "", 
 				"templateID" : "tpl-block-content",
 				"contentTpl" : "tpl-menu-inline",
-				"contentListTpl" : "tpl-menu_list",
+				//"contentListTpl" : "tpl-menu_list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 					
-					webApp.db.getBlockContent({
-						"vocName" : "Alphabetical_voc", 
-						"termName" : "алфавитный каталог",
-						"callback" : function(res){
-//console.log(res);							
+					// webApp.db.getBlockContent({
+						// "vocName" : "Alphabetical_voc", 
+						// "termName" : "алфавитный каталог",
+						// "callback" : function(res){
+// //console.log(res);							
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( res );
+							// }
+						// }//end callback
+					// });
+					webApp.db.query({
+						"queryObj" : _formQueryObj({
+							"queryTarget" : "getVocabulary",
+							"vocName" : "Alphabetical_voc", 
+							"termName" : "алфавитный каталог"
+							}),
+						"callback" : function( res ){
+	//console.log("end test query!!!", res);
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
