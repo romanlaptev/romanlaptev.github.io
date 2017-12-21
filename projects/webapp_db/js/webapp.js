@@ -1816,50 +1816,45 @@ _log(msg);
 		function __formListHtml( _html ){
 			
 			var listHtml = "";
-			for( var key in p["data"]){
-//console.log( key );
-//console.log( p["data"][key], typeof p["data"][key], p["data"].length);
-				
-				//if( typeof p["data"][key] === "string"){
-					//_html = _html.replace("{{"+key+"}}", p["data"][key]);
-				//}
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
 				
 				//form list items
-				if( typeof p["data"][key] === "object"){
-						
-					// _html = _html
-					// .replace("{{url}}", p["data"][key]["url"])
-					// .replace("{{name}}", p["data"][key]["name"]);
+				var items = p["data"][n];
 					
-					var items = p["data"][key];
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( items, itemTpl );
+				
+				var itemHtml = _vars["templates"][ p.templateListID];
+				for( var key2 in items){
+//console.log(key2, items[key2]);
+
+					if( key2 === "childTerms" && items["childTerms"].length > 0){
+						var subOrdList = _vars["templates"][ p.templateID];
+						var itemTpl = _vars["templates"][ p.templateListID];
+						var subOrdListHtml = "";
+						for( var n2 = 0; n2 < items["childTerms"].length; n2++){
+							subOrdListHtml += __formNodeHtml( items["childTerms"][n2], itemTpl );
+						}//next
+//console.log( subOrdListHtml );
+						subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+						itemHtml += subOrdList;
+					}
 					
-					// if( !_vars["templates"][ p.templateID+"_list"] ){
-// var msg = "<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID+"_list" + "</b></p>";
-// console.log(msg);							
-// _log(msg);
-						// return false;
-					// }
-					//var itemHtml = _vars["templates"][ p.templateID+"_list"];
-//console.log(itemHtml);
-					// for( var key2 in items){
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
 // //console.log(key2, items[key2]);
-						// if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-// //console.log(key2, items[key2]);
-							// itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
-						// }
-					// }//next
+						itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
+					}
+				}//next
 					
-					var itemTpl = _vars["templates"][ p.templateListID];
-					var itemHtml = __formNodeHtml( items, itemTpl );
-					
-					listHtml += itemHtml;
+				listHtml += itemHtml;
 //console.log(items);
 //console.log(listHtml);
-				}
-				
 			}//next
-			_html = _html.replace("{{list}}", listHtml);
 			
+			_html = _html.replace("{{list}}", listHtml);
 			return _html;
 		}//end __formListHtml
 
@@ -2043,7 +2038,7 @@ console.log("--- terminTree : ", terminTree);
 //-------------------------------------------------
 
 							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
+								args["callback"]( terminTree );
 							}
 						}//end callback
 					});
@@ -2377,7 +2372,6 @@ console.log("error in _formQueryObj(), empty 'tid'....");
 // console.log(res);
 				// }//end callback
 			// });
-
 			return baseQuery;
 		}//end __formQueryChildTermins()
 		
