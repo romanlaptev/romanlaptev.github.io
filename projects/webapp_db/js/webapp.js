@@ -1086,85 +1086,41 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 
 
 	function _getChildTerms( opt ){
-		var options = {
-			"vid" : null,
-			"tid" : null,
+		var p = {
+			"termins" : null,
+			"terminTree" : null,
+			"counter" : null,
 			"callback" : null
 		};
-		//extend options object for queryObj
+		//extend options object
 		for(var key in opt ){
-			options[key] = opt[key];
+			p[key] = opt[key];
 		}
-//console.log(options);
+//console.log(p);
 
-		if( !options["tid"] ){
-_log("<p>db.getChildTerms(),   error, options[tid]: <b class='text-danger'>"+options["tid"]+"</b></p>");
-			return false;
-		}
-
-		var queryParams = {
-			"queryObj" : {
-				"action" : "select",
-				"tableName": "term_hierarchy",
-				"targetFields" : [
-	"tid",
-	"parent"
-	],
-				"where" : [
-					{"key" : "parent", "value" : options["tid"], "compare": "="}
-				]
-			},
-			"callback" : _postQuery
-		};
-		webApp.db.query( queryParams);
-
-		function _postQuery( result ){
-//console.log( arguments);
-			var _listChildTerms = [];
-			for( var n = 0; n < result.length; n++){
-				_listChildTerms.push( result[n]["tid"] );
-			}//next
-	//console.log(_listChildTerms);
-			
-			webApp.db.query({
-				"queryObj" : {
-					"action" : "select",
-					"tableName": "term_data",
-					"targetFields" : [
-	"tid",
-	"vid",
-	"name",
-	"description",
-	"weight"
-	],
-					"where" : [
-						{"key" : "vid", "value" : options["vid"], "compare": "="},
-						{"logic": "AND", "key" : "tid", "value" : _listChildTerms, "compare": "="}
-					]
-				},
-				"callback" : function( res ){
-
-					// //add url aliases
-					// for( var n = 0; n < res.length; n++){
-						// //res[n]["url"] = "?q=taxonomy/term/" + res[n]["tid"];
-						// res[n]["url"] = "#?q=taxonomy&tid=" + res[n]["tid"];
-					// }//next
-console.log("end test query!!!", res);
-
-					//_replaceUrl({
-						//"data" : res,
-						//"callback" : function(res){
-							if( typeof options["callback"] === "function"){
-								options["callback"](res);
-							}
-						//}//end callback
-					//});
-
-				}//end callback
-				
-			});
-			
-		}//end _postQuery()
+		var termin = p["termins"][p.counter];
+		webApp.db.query({
+			"queryObj" : webApp.app.formQueryObj({
+				"queryTarget" : "getChildTerms",
+				"vid" : termin["vid"], 
+				"tid" : termin["tid"]
+			}),
+			"callback" : function( res2 ){
+	// //console.log(res2, counter, res.length);
+				if( res2.length > 0){
+					p["terminTree"][p.counter]["childTerms"] = res2;
+				}
+				p["counter"]++;
+				if( p["counter"] < p["termins"].length ){
+					_getChildTerms( p );
+				} else {
+console.log("--- terminTree : ", p["terminTree"]);
+					if( typeof p["callback"] === "function"){
+						p["callback"]();
+					}
+				}
+			}//end callback
+		});
 		
 	}//end _getChildTerms()
 	
@@ -2000,35 +1956,46 @@ WHERE name =  'техника' )
 							"termName" : "техника",
 						}),
 						"callback" : function( res ){
-//console.log("end test query!!!", res, res.length);
+console.log("Tech, end test query!!!", res, res.length);
 //-------------------------------------------------
-var terminTree = [];
-terminTree = res;
+							var terminTree = [];
+							terminTree = res;
 
-var counter = 0;
-__getChildTermins();
-function __getChildTermins(){
-	var termin = res[counter];
-	webApp.db.query({
-		"queryObj" : _formQueryObj({
-			"queryTarget" : "getChildTerms",
-			"vid" : termin["vid"], 
-			"tid" : termin["tid"]
-		}),
-		"callback" : function( res2 ){
-//console.log(res2, counter, res.length);
-			if( res2.length > 0){
-				terminTree[counter]["childTerms"] = res2;
-			}
-			counter++;
-			if( counter < res.length ){
-				__getChildTermins();
-			} else {
-console.log("--- terminTree : ", terminTree);				
-			}
-		}//end callback
-	});
-}//end __getChildTermins
+//var counter = 0;
+// __getChildTerms();
+// function __getChildTerms(){
+	// var termin = res[counter];
+	// webApp.db.query({
+		// "queryObj" : _formQueryObj({
+			// "queryTarget" : "getChildTerms",
+			// "vid" : termin["vid"], 
+			// "tid" : termin["tid"]
+		// }),
+		// "callback" : function( res2 ){
+// //console.log(res2, counter, res.length);
+			// if( res2.length > 0){
+				// terminTree[counter]["childTerms"] = res2;
+			// }
+			// counter++;
+			// if( counter < res.length ){
+				// __getChildTerms();
+			// } else {
+// console.log("--- terminTree : ", terminTree);				
+			// }
+		// }//end callback
+	// });
+// }//end __getChildTerms
+
+					webApp.db.getChildTerms({
+						"termins" : res, 
+						"terminTree" : terminTree, 
+						"counter" : 0,
+						"callback" : function(){
+							if( typeof args["callback"] === "function"){
+								args["callback"](  terminTree  );
+							}
+						}//end callback
+					});
 
 // webApp.db.query({
 	// "queryObj" : _formQueryObj({
@@ -2043,9 +2010,9 @@ console.log("--- terminTree : ", terminTree);
 
 //-------------------------------------------------
 
-							if( typeof args["callback"] === "function"){
-								args["callback"]( terminTree );
-							}
+							// if( typeof args["callback"] === "function"){
+								// args["callback"]( terminTree );
+							// }
 						}//end callback
 					});
 					
@@ -2067,10 +2034,20 @@ console.log("--- terminTree : ", terminTree);
 							"termName" : "жанр"
 							}),
 						"callback" : function( res ){
-	//console.log("end test query!!!", res);
-							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
-							}
+	console.log("Genre, end test query!!!", res);
+							var terminTree = [];
+							terminTree = res;
+							webApp.db.getChildTerms({
+								"termins" : res, 
+								"terminTree" : terminTree, 
+								"counter" : 0,
+								"callback" : function(){
+									if( typeof args["callback"] === "function"){
+										args["callback"](  terminTree  );
+									}
+								}//end callback
+							});
+
 						}//end callback
 					});
 				},//end callback()
@@ -2987,7 +2964,8 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 		serverRequest:	function(opt){ 
 			return _serverRequest(opt); 
 		},
-		loadTemplates : _loadTemplates
+		loadTemplates : _loadTemplates,
+		formQueryObj : _formQueryObj
 	};
 }//end _app()
 
