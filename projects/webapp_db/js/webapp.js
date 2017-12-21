@@ -1940,7 +1940,7 @@ function _app( opt ){
 					
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
+							"queryTarget" : "getTerminByName",
 							"vocName" : "info", 
 							"termName" : "стиль"
 							}),
@@ -1994,20 +1994,32 @@ WHERE name =  'техника' )
 */				
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
+							"queryTarget" : "getTerminByName",
 							"vocName" : "info", 
 							"termName" : "техника",
 						}),
 						"callback" : function( res ){
 console.log("end test query!!!", res);
-
-						webApp.db.getChildTerms({
-							"vid" : "5",
-							"tid" : "97",
-							"callback" : function(res){
+//-------------------------------------------------
+// webApp.db.getChildTerms({
+	// "vid" : "5",
+	// "tid" : "97",
+	// "callback" : function(res){
+// console.log(res);
+	// }//end callback
+// });
+webApp.db.query({
+	"queryObj" : _formQueryObj({
+		"queryTarget" : "getChildTermins",
+		"vid" : "5", 
+		"tid" : "97"
+	}),
+	"callback" : function( res ){
 console.log(res);
-							}//end callback
-						});
+	}//end callback
+});
+
+//-------------------------------------------------
 
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
@@ -2028,7 +2040,7 @@ console.log(res);
 				"content" : function( args ){//function for getting content data
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
+							"queryTarget" : "getTerminByName",
 							"vocName" : "info", 
 							"termName" : "жанр"
 							}),
@@ -2064,7 +2076,7 @@ console.log(res);
 					// });
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
+							"queryTarget" : "getTerminByName",
 							"vocName" : "Alphabetical_voc", 
 							"termName" : "alphabetical list"
 							}),
@@ -2099,7 +2111,7 @@ console.log(res);
 					// });
 					webApp.db.query({
 						"queryObj" : _formQueryObj({
-							"queryTarget" : "getVocabulary",
+							"queryTarget" : "getTerminByName",
 							"vocName" : "Alphabetical_voc", 
 							"termName" : "алфавитный каталог"
 							}),
@@ -2267,9 +2279,11 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	
 	function _formQueryObj(opt){
 		var p = {
-			queryTarget : "",//"getVocabulary"
+			queryTarget : "",//"getTerminByName"
 			vocName : "",//"info",
-			termName : ""//"жанр"
+			termName : "",//"жанр"
+			"vid" : null,//"5" (info vocabulary)
+			"tid" : null//"97" (техника)
 		};
 		//extend p object
 		for(var key in opt ){
@@ -2284,7 +2298,7 @@ console.log("error in _formQueryObj(), empty 'queryTarget'....");
 
 		switch( p.queryTarget ) {
 			
-			case "getVocabulary":
+			case "getTerminByName":
 				if( p["vocName"].length === 0 ){
 console.log("error in _formQueryObj(), empty 'vocabularyName'....");
 					return false;
@@ -2293,12 +2307,60 @@ console.log("error in _formQueryObj(), empty 'vocabularyName'....");
 console.log("error in _formQueryObj(), empty 'termName'....");
 					return false;
 				}
-				return __formVocabularyQuery();
+				return __formQueryTerminByName();
+			break;
+			
+			case "getChildTermins":
+				if( p["vid"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'vid'....");
+					return false;
+				}
+				if( p["tid"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'tid'....");
+					return false;
+				}
+				return __formQueryChildTermins();
 			break;
 
 		}//end switch
 
-		function __formVocabularyQuery(){
+		function __formQueryChildTermins(){
+			
+			var subQuery1 = {
+				"action" : "select",
+				"tableName": "term_hierarchy",
+				"targetFields" : ["tid"],
+				"where" : [
+						{"key" : "parent", "value" : p["tid"], "compare": "="}
+					]
+			};
+			var baseQuery = {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : [
+"tid",
+"vid",
+"name"//,
+//"description",
+//"weight"
+],
+					"where" : [
+						{"key" : "vid", "compare": "=", "value" : p["vid"]},
+						{"logic": "AND", "key" : "tid", "compare": "=", "value" : subQuery1}
+					]
+				};
+
+			// webApp.db.query({
+				// "queryObj" : baseQuery,
+				// "callback" : function( res ){
+// console.log(res);
+				// }//end callback
+			// });
+
+			return baseQuery;
+		}//end __formQueryChildTermins()
+		
+		function __formQueryTerminByName(){
 /*
 		//form data queries
 	//1. select vid from vocabulary where name="info" -- 5
@@ -2362,7 +2424,7 @@ console.log("error in _formQueryObj(), empty 'termName'....");
 			//_vars["queries"]["getTermGenre"] = baseQuery;
 //console.log(baseQuery);
 			return baseQuery;
-		}//end __formVocabularyQuery()
+		}//end __formQueryTerminByName()
 		
 	}//end _formQueryObj()
 	
