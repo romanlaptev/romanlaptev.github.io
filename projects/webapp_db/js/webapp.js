@@ -432,7 +432,7 @@ console.log(msg);
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-console.log( "_query()", options );
+//console.log( "_query()", options );
 		
 		_startQuery( options["queryObj"] );
 		

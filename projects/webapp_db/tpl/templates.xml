@@ -126,7 +126,7 @@
 	<div class="block">
 			<h3>{{block_title}}</h3>
 			<div class="content">{{content}}</div>
-			<button class="btn btn-primary">test btn</button>
+			<!-- <button class="btn btn-primary">test btn</button> -->
 	</div>			
 		]]></html_code>
 	</tpl>
