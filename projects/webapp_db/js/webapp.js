@@ -1999,25 +1999,46 @@ WHERE name =  'техника' )
 							"termName" : "техника",
 						}),
 						"callback" : function( res ){
-console.log("end test query!!!", res);
+//console.log("end test query!!!", res, res.length);
 //-------------------------------------------------
-// webApp.db.getChildTerms({
-	// "vid" : "5",
-	// "tid" : "97",
-	// "callback" : function(res){
+var terminTree = [];
+terminTree = res;
+
+var counter = 0;
+__getChildTermins();
+function __getChildTermins(){
+	var termin = res[counter];
+	webApp.db.query({
+		"queryObj" : _formQueryObj({
+			"queryTarget" : "getChildTerms",
+			"vid" : termin["vid"], 
+			"tid" : termin["tid"]
+		}),
+		"callback" : function( res2 ){
+//console.log(res2, counter, res.length);
+			if( res2.length > 0){
+				terminTree[counter]["childTerms"] = res2;
+			}
+			counter++;
+			if( counter < res.length ){
+				__getChildTermins();
+			} else {
+console.log("--- terminTree : ", terminTree);				
+			}
+		}//end callback
+	});
+}//end __getChildTermins
+
+// webApp.db.query({
+	// "queryObj" : _formQueryObj({
+		// "queryTarget" : "getChildTerms",
+		// "vid" : "5", 
+		// "tid" : "97"
+	// }),
+	// "callback" : function( res ){
 // console.log(res);
 	// }//end callback
 // });
-webApp.db.query({
-	"queryObj" : _formQueryObj({
-		"queryTarget" : "getChildTermins",
-		"vid" : "5", 
-		"tid" : "97"
-	}),
-	"callback" : function( res ){
-console.log(res);
-	}//end callback
-});
 
 //-------------------------------------------------
 
@@ -2310,7 +2331,7 @@ console.log("error in _formQueryObj(), empty 'termName'....");
 				return __formQueryTerminByName();
 			break;
 			
-			case "getChildTermins":
+			case "getChildTerms":
 				if( p["vid"].length === 0 ){
 console.log("error in _formQueryObj(), empty 'vid'....");
 					return false;
