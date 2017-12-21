@@ -1821,31 +1821,37 @@ _log(msg);
 //console.log( p["data"][n], typeof p["data"][n], p["data"].length);
 				
 				//form list items
-				var items = p["data"][n];
+				var item = p["data"][n];
 					
 				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( items, itemTpl );
+				//var itemHtml = __formNodeHtml( item, itemTpl );
 				
 				var itemHtml = _vars["templates"][ p.templateListID];
-				for( var key2 in items){
-//console.log(key2, items[key2]);
+				for( var key2 in item){
+//console.log(key2, item[key2]);
 
-					if( key2 === "childTerms" && items["childTerms"].length > 0){
+					if( key2 === "childTerms" && item["childTerms"].length > 0){
 						var subOrdList = _vars["templates"][ p.templateID];
 						var itemTpl = _vars["templates"][ p.templateListID];
 						var subOrdListHtml = "";
-						for( var n2 = 0; n2 < items["childTerms"].length; n2++){
-							subOrdListHtml += __formNodeHtml( items["childTerms"][n2], itemTpl );
+						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
+							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
 						}//next
 //console.log( subOrdListHtml );
-						subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+						subOrdList = subOrdList
+						.replace("list-unstyled", "")
+						.replace("{{list}}", subOrdListHtml);
 //console.log( subOrdList );
-						itemHtml += subOrdList;
-					}
+//itemHtml += subOrdList;
+						item["childTerms"] = subOrdList;
+						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+					} //else {
+						//itemHtml = itemHtml.replace("{{childTerms}}", "");
+					//}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-// //console.log(key2, items[key2]);
-						itemHtml = itemHtml.replace("{{"+key2+"}}", items[key2]);
+// //console.log(key2, item[key2]);
+						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
 					}
 				}//next
 					

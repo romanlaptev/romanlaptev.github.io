@@ -74,13 +74,19 @@
 	
 	<tpl name="tpl-menu_list">
 		<html_code><![CDATA[
-<li><a href="{{url}}">{{name}}</a></li>
+<li>
+<a href="{{url}}">{{name}}</a>
+<!-- {{childTerms}} -->
+</li>
 		]]></html_code>
 	</tpl>
 	
 	<tpl name="tpl-taxonomy-menu_list">
 		<html_code><![CDATA[
-<li><a href="#?q=taxonomy&tid={{tid}}">{{name}}</a></li>
+<li>
+<a href="#?q=taxonomy&tid={{tid}}">{{name}}</a>
+<!-- {{childTerms}} -->
+</li>
 		]]></html_code>
 	</tpl>
 	
