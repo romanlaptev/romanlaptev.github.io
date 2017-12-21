@@ -1114,7 +1114,7 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 				if( p["counter"] < p["termins"].length ){
 					_getChildTerms( p );
 				} else {
-console.log("--- terminTree : ", p["terminTree"]);
+//console.log("--- terminTree : ", p["terminTree"]);
 					if( typeof p["callback"] === "function"){
 						p["callback"]();
 					}
@@ -1193,75 +1193,71 @@ _log("<p>db.getTerminNodes(),   error, <b class='text-danger'>'tid' is empty</b>
 	}//end _getTerminNodes()
 
 	
-/*
+
 	function _getBlockContent( opt ){
-		var options = {
+		var p = {
+			"contentType" : false,//"getTerminByName",
 			"vocName" : "",
 			"termName" : "",
 			"callback" : null
 		};
-		//extend options object for queryObj
+		//extend options object
 		for(var key in opt ){
-			options[key] = opt[key];
+			p[key] = opt[key];
 		}
-//console.log(options);
+//console.log(p);
 
-		if( options["vocName"].length === 0 ){
-_log("<p>db.getBlockContent(),   error, vocName <b class='text-danger'>is empty</b></p>");
-			return false;
-		}
-		
-		if( options["termName"].length === 0 ){
-_log("<p>db.getBlockContent(),   error, termName <b class='text-danger'>is empty</b></p>");
+		if( p["contentType"].length === 0 ){
+console.log("error in _getBlockContent(), empty 'contentType'....");
 			return false;
 		}
 
-		//get block data, run queries...
-		_getVocabularyByName({
-			"vocName" : options["vocName"],
-			"callback" : function(res){
-//console.log(res, res.length );	
-				if( res.length === 0 ){
-					if( typeof options["callback"] === "function"){
-						options["callback"](res);
-					}
+		switch( p.contentType ) {
+			
+			case "getTerminByName":
+				if( p["vocName"].length === 0 ){
+_log("<p>db.getBlockContent(), error, empty  <b class='text-danger'>vocName</b></p>");
+					return false;
+				}
+				if( p["termName"].length === 0 ){
+_log("<p>db.getBlockContent(),   error, <b class='text-danger'>termName</b></p>");
 					return false;
 				}
 				
-				var _vid = res[0]["vid"];
-				_getTermByName({
-					"vid" : _vid, 
-					"termName" : options["termName"],
-					"callback" : function(res){
-//console.log(res, res.length );
-						if( res.length === 0 ){
-							if( typeof options["callback"] === "function"){
-								options["callback"](res);
-							}
-							return false;
-						}
-						var _tid = res[0]["tid"];
-//console.log( _vid, _tid );			
+				webApp.db.query({
+					"queryObj" : webApp.app.formQueryObj({
+						"queryTarget" : p["contentType"],//"getTerminByName",
+						"vocName" : p["vocName"], 
+						"termName" : p["termName"],
+					}),
+					"callback" : function( res ){
+//console.log("Tech, end test query!!!", res, res.length);
+						var terminTree = [];
+						terminTree = res;
 
 						_getChildTerms({
-							"vid" : _vid,
-							"tid" : _tid,
-							"callback" : function(res){
-//console.log(res);
-								if( typeof options["callback"] === "function"){
-									options["callback"](res);
+							"termins" : res, 
+							"terminTree" : terminTree, 
+							"counter" : 0,
+							"callback" : function(){
+								if( typeof p["callback"] === "function"){
+									p["callback"](  terminTree  );
 								}
 							}//end callback
 						});
-						
+
 					}//end callback
 				});
-				
-			}//end callback
-		});
+					
+			break;
+			
+			//case "":
+			//break;
+
+		}//end switch
 		
 	}//end _getBlockContent()
-*/
+
 
 /*	
 	function _replaceUrl( opt ){
@@ -1488,10 +1484,9 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		getTerminNodes:	function( opt ){ 
 			return _getTerminNodes( opt ); 
 		},
-		
-		//getBlockContent:	function( opt ){ 
-			//return _getBlockContent( opt ); 
-		//},
+		getBlockContent:	function( opt ){ 
+			return _getBlockContent( opt ); 
+		},
 		//replaceUrl:	function( opt ){ 
 			//return _replaceUrl( opt ); 
 		//},
@@ -1870,14 +1865,14 @@ function _app( opt ){
 		"node": [{}],
 		"queries": {},
 		"blocks" : [
-			{//NEW BLOCK
+			{
 				"name" : "block-1",
 				"title" : "Title", 
 				"templateID" : "tpl-block-1",
 				"content" : "<u>static text in block-1</u>"//,
 				//"visibility" : "frontPage"
-			},
-			{//NEW BLOCK
+			},//end block
+			{
 				"name" : "block-style",
 				"title" : "стиль", //"техника",//"жанр",
 				"templateID" : "tpl-info_termins_style-block",//location and style for block
@@ -1911,150 +1906,53 @@ function _app( opt ){
 					
 				},//end callback()
 				"visibility" : "frontPage"
-			},
-			{//NEW BLOCK
+			},//end block
+			{
 				"name" : "block-tech",
 				"title" : "Tехника",
 				"templateID" : "tpl-info_termins_tech-block",
 				"contentTpl" : "tpl-menu",
 				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
-				
-					// webApp.db.getBlockContent({
-						// "vocName" : "info",
-						// "termName" : "техника",
-						// "callback" : function(res){
-// console.log(res);							
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-				
-/*fix Query....
-SELECT name
-FROM term_data
-WHERE vid =5
-AND tid
-IN (
-
-SELECT tid
-FROM term_hierarchy
-WHERE parent in ( 
-SELECT tid
-FROM term_data
-WHERE name =  'техника' )
-)
-0: Object { tid: "97", vid: "5", name: "гравюра" }
-1: Object { tid: "106", vid: "5", name: "рисунок" }
-2: Object { tid: "112", vid: "5", name: "живопись" }
-*/				
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getTerminByName",
-							"vocName" : "info", 
-							"termName" : "техника",
-						}),
-						"callback" : function( res ){
-console.log("Tech, end test query!!!", res, res.length);
-//-------------------------------------------------
-							var terminTree = [];
-							terminTree = res;
-
-//var counter = 0;
-// __getChildTerms();
-// function __getChildTerms(){
-	// var termin = res[counter];
-	// webApp.db.query({
-		// "queryObj" : _formQueryObj({
-			// "queryTarget" : "getChildTerms",
-			// "vid" : termin["vid"], 
-			// "tid" : termin["tid"]
-		// }),
-		// "callback" : function( res2 ){
-// //console.log(res2, counter, res.length);
-			// if( res2.length > 0){
-				// terminTree[counter]["childTerms"] = res2;
-			// }
-			// counter++;
-			// if( counter < res.length ){
-				// __getChildTerms();
-			// } else {
-// console.log("--- terminTree : ", terminTree);				
-			// }
-		// }//end callback
-	// });
-// }//end __getChildTerms
-
-					webApp.db.getChildTerms({
-						"termins" : res, 
-						"terminTree" : terminTree, 
-						"counter" : 0,
-						"callback" : function(){
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "техника",
+						"contentType" : "getTerminByName",
+						"callback" : function(res){
+//console.log(res);							
 							if( typeof args["callback"] === "function"){
-								args["callback"](  terminTree  );
+								args["callback"]( res );
 							}
 						}//end callback
 					});
-
-// webApp.db.query({
-	// "queryObj" : _formQueryObj({
-		// "queryTarget" : "getChildTerms",
-		// "vid" : "5", 
-		// "tid" : "97"
-	// }),
-	// "callback" : function( res ){
-// console.log(res);
-	// }//end callback
-// });
-
-//-------------------------------------------------
-
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( terminTree );
-							// }
+				},//end callback()
+				"visibility" : "frontPage"
+			},//end block
+			{
+				"name" : "block-genre",
+				"title" : "Жанр",
+				"templateID" : "tpl-info_termins_genre-block",
+				"contentTpl" : "tpl-list",
+				"contentListTpl" : "tpl-taxonomy-menu_list",
+				"content" : function( args ){//function for getting content data
+				
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "жанр",
+						"contentType" : "getTerminByName",
+						"callback" : function(res){
+//console.log(res);							
+							if( typeof args["callback"] === "function"){
+								args["callback"]( res );
+							}
 						}//end callback
 					});
 					
 				},//end callback()
 				"visibility" : "frontPage"
-			},
-			{//NEW BLOCK
-				"name" : "block-genre",
-				"title" : "Жанр",
-				"templateID" : "tpl-info_termins_genre-block",
-				"contentTpl" : "tpl-list",
-				//"contentListTpl" : "tpl-list_list",
-				"contentListTpl" : "tpl-taxonomy-menu_list",
-				"content" : function( args ){//function for getting content data
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getTerminByName",
-							"vocName" : "info", 
-							"termName" : "жанр"
-							}),
-						"callback" : function( res ){
-	console.log("Genre, end test query!!!", res);
-							var terminTree = [];
-							terminTree = res;
-							webApp.db.getChildTerms({
-								"termins" : res, 
-								"terminTree" : terminTree, 
-								"counter" : 0,
-								"callback" : function(){
-									if( typeof args["callback"] === "function"){
-										args["callback"](  terminTree  );
-									}
-								}//end callback
-							});
-
-						}//end callback
-					});
-				},//end callback()
-				"visibility" : "frontPage"
-			},
+			},//end block
 			
-			{//NEW BLOCK
+			{
 				"name" : "block-alphabetical-voc",
 				"title" : "", 
 				"templateID" : "tpl-block-content",
@@ -2063,24 +1961,12 @@ console.log("Tech, end test query!!!", res, res.length);
 				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 				
-					// webApp.db.getBlockContent({
-						// "vocName" : "Alphabetical_voc", 
-						// "termName" : "alphabetical list",
-						// "callback" : function(res){
-// //console.log(res);							
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getTerminByName",
-							"vocName" : "Alphabetical_voc", 
-							"termName" : "alphabetical list"
-							}),
-						"callback" : function( res ){
-	//console.log("end test query!!!", res);
+					webApp.db.getBlockContent({
+						"vocName" : "Alphabetical_voc", 
+						"termName" : "alphabetical list",
+						"contentType" : "getTerminByName",
+						"callback" : function(res){
+//console.log(res);							
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
@@ -2088,8 +1974,8 @@ console.log("Tech, end test query!!!", res, res.length);
 					});
 					
 				}//,//end callback()
-			},
-			{//NEW BLOCK
+			},//end block
+			{
 				"name" : "block-alphabetical-ru",
 				"title" : "", 
 				"templateID" : "tpl-block-content",
@@ -2098,24 +1984,12 @@ console.log("Tech, end test query!!!", res, res.length);
 				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
 					
-					// webApp.db.getBlockContent({
-						// "vocName" : "Alphabetical_voc", 
-						// "termName" : "алфавитный каталог",
-						// "callback" : function(res){
-// //console.log(res);							
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getTerminByName",
-							"vocName" : "Alphabetical_voc", 
-							"termName" : "алфавитный каталог"
-							}),
-						"callback" : function( res ){
-	//console.log("end test query!!!", res);
+					webApp.db.getBlockContent({
+						"vocName" : "Alphabetical_voc", 
+						"termName" : "алфавитный каталог",
+						"contentType" : "getTerminByName",
+						"callback" : function(res){
+//console.log(res);							
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
@@ -2123,8 +1997,7 @@ console.log("Tech, end test query!!!", res, res.length);
 					});
 					
 				}//,//end callback()
-			}
-			
+			}//end block
 		
 		]
 	};// _vars
