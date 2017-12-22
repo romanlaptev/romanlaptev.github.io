@@ -35,6 +35,8 @@
 		<!-- field_num_page_value -->
 		<!-- field_preview_img_preset_value -->
 		<!--field_zoom_img_value -->
+		
+{{nodeTerms}}		
 ]]>		
 		</html_code>
 	</tpl>
@@ -43,7 +45,26 @@
 	<tpl name="tpl-node">
 		<html_code>
 <![CDATA[
-			<div>{{body}}</div>
+	<div>{{body}}</div>
+	<div>{{terms}}</div>
+]]>
+		</html_code>
+	</tpl>
+	
+	<tpl name="tpl_node_terms">
+		<html_code>
+<![CDATA[
+		<div class="panel panel-success" id='termins'>
+			<div class="panel-heading">
+				<b>related terms:</b>
+			</div>
+			<div class="panel-body">
+				<ul class="list-inline">
+					{{termin-links}}
+					<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
+				</ul>
+			</div>
+		</div><!-- end panel -->
 ]]>
 		</html_code>
 	</tpl>

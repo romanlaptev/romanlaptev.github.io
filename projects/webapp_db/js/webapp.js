@@ -1358,7 +1358,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 							"nid" : node["nid"],
 							"callback" : function(res){
 //console.log(res);								
-								node["terms"] = res;
+								node["nodeTerms"] = res;
 								if( typeof p["callback"] === "function"){
 									p["callback"](node);
 								}
@@ -1761,7 +1761,7 @@ if( loc){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -1860,6 +1860,20 @@ _log(msg);
 			
 			for( var key in data ){
 //console.log(key, data[key]);
+
+				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
+					var nodeTermsList = _vars["templates"]["tpl-menu-inline"];
+					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
+					var _listHtml = "";
+					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
+						_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
+					}//next
+//console.log( _listHtml );
+					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
+console.log( nodeTermsList );
+					data["nodeTerms"] = nodeTermsList;
+				}
+
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, p["data"][key]);
 					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
@@ -2519,6 +2533,14 @@ console.log( node );
 						}
 						_data[field] = node["fields"][field];
 					}//next
+					
+					//add node TERMS to the content block
+//for test!!!
+//node["terms"] = [];
+					_data["nodeTerms"] = "test";
+					if( node["nodeTerms"].length > 0 ){
+						_data["nodeTerms"] = node["nodeTerms"];
+					}
 					
 					var opt2 = {
 						"data" : _data,
