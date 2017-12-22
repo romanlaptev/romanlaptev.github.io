@@ -1347,25 +1347,32 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				var node = res[0];
 				node["nid"] = p["nid"];
 				
-				__getBody(function( body ){
+				__getNodeBody(function( body ){
 //console.log( res );						
 					node["body"] = body;
 					
-					__getFields( node, function( fields ){
+					__getNodeFields( node, function( fields ){
 						node["fields"] = fields;
-						if( typeof p["callback"] === "function"){
-							p["callback"](node);
-						}
 						
+						_getNodeTerms({
+							"nid" : node["nid"],
+							"callback" : function(res){
+//console.log(res);								
+								node["terms"] = res;
+								if( typeof p["callback"] === "function"){
+									p["callback"](node);
+								}
+							}
+						});//end get node terms
 					});//end get fields node
-					
-				});
+				});//end get body
+				
 			}//end callback
 		});
 		
 		return  false;
 
-		function __getBody( callback ){
+		function __getNodeBody( callback ){
 			webApp.db.query({
 				"queryObj" : {
 					"action" : "select",
@@ -1383,10 +1390,10 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				}//end callback
 			});
 			return false;
-		}//__getBody()
+		}//__getNodeBody()
 
-		function __getFields( node, callback ){
-//console.log( "__getFields()");
+		function __getNodeFields( node, callback ){
+//console.log( "__getNodeFields()");
 			var tableName = "content_type_" + node["type"];
 			// var fieldsList = [
 // "field_num_page_value",
@@ -1447,10 +1454,43 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 
 //-----------------
 			return false;
-		}//__getFields()
+		}//__getNodeFields()
 
 	}//end _nodeLoad()
 
+/*
+SELECT * 
+FROM  `term_node` 
+WHERE  `nid` =20
+LIMIT 0 , 30
+
+*/	
+	function _getNodeTerms( opt ){
+//console.log("_getNodeTerms()", arguments);
+		var p = {
+			"nid": null,
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+		webApp.db.query({
+			"queryObj" : webApp.app.formQueryObj({
+				"queryTarget" : "getNodeTerms",
+				"nid" : p["nid"]
+				}),
+			"callback" : function( res ){
+//console.log(res);
+				if( typeof p["callback"] === "function"){
+					p["callback"](res);
+				}
+			}//end callback
+		});
+		
+	}//end _getNodeTerms()
+	
 	
 	// public interfaces
 	return{
@@ -1492,7 +1532,8 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		//},
 		nodeLoad:	function( opt ){ 
 			return _nodeLoad( opt ); 
-		}
+		},
+		getNodeTerms: _getNodeTerms
 	};
 }//end _db()
 
@@ -1880,33 +1921,21 @@ function _app( opt ){
 				//"contentListTpl" : "tpl-menu_list",
 				"contentListTpl" : "tpl-taxonomy-menu_list",
 				"content" : function( args ){//function for getting content data
-					// webApp.db.getBlockContent({
-						// "vocName" : "info",
-						// "termName" : "стиль",
-						// "callback" : function(res){
-							// if( typeof args["callback"] === "function"){
-								// args["callback"]( res );
-							// }
-						// }//end callback
-					// });
-					
-					webApp.db.query({
-						"queryObj" : _formQueryObj({
-							"queryTarget" : "getTerminByName",
-							"vocName" : "info", 
-							"termName" : "стиль"
-							}),
-						"callback" : function( res ){
-	//console.log("end test query!!!", res);
+					webApp.db.getBlockContent({
+						"vocName" : "info",
+						"termName" : "стиль",
+						"contentType" : "getTerminByName",
+						"callback" : function(res){
+//console.log(res);							
 							if( typeof args["callback"] === "function"){
 								args["callback"]( res );
 							}
 						}//end callback
 					});
-					
 				},//end callback()
 				"visibility" : "frontPage"
 			},//end block
+			
 			{
 				"name" : "block-tech",
 				"title" : "Tехника",
@@ -2155,7 +2184,8 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 			vocName : "",//"info",
 			termName : "",//"жанр"
 			"vid" : null,//"5" (info vocabulary)
-			"tid" : null//"97" (техника)
+			"tid" : null,//"97" (техника)
+			"nid" : null//"20" (Ballet Mistress)
 		};
 		//extend p object
 		for(var key in opt ){
@@ -2191,13 +2221,48 @@ console.log("error in _formQueryObj(), empty 'vid'....");
 console.log("error in _formQueryObj(), empty 'tid'....");
 					return false;
 				}
-				return __formQueryChildTermins();
+				return __formQueryChildTerms();
 			break;
-
-		}//end switch
-
-		function __formQueryChildTermins(){
 			
+			case "getNodeTerms":
+				if( p["nid"].length === 0 ){
+console.log("error in _formQueryObj(), empty 'nid'....");
+					return false;
+				}
+				return __formQueryNodeTerms();
+			break;
+			
+		}//end switch
+		
+		function __formQueryNodeTerms(){
+			var subQuery1 = {
+				"action" : "select",
+				"tableName": "term_node",
+				"targetFields" : ["tid"],
+				"where" : [
+					{"key" : "nid", "value" : p["nid"], "compare": "="}
+				]
+			};
+			var baseQuery = {
+				"action" : "select",
+				"tableName": "term_data",
+				"targetFields" : [
+"tid",
+"vid",
+"name"//,
+//"description",
+//"weight"
+],
+				"where" : [
+					{"key" : "tid", "compare": "=", "value" : subQuery1}
+				]
+			};
+//console.log(baseQuery);
+			return baseQuery;
+		}//end __formQueryNodeTerms()
+
+		
+		function __formQueryChildTerms(){
 			var subQuery1 = {
 				"action" : "select",
 				"tableName": "term_hierarchy",
@@ -2229,7 +2294,7 @@ console.log("error in _formQueryObj(), empty 'tid'....");
 				// }//end callback
 			// });
 			return baseQuery;
-		}//end __formQueryChildTermins()
+		}//end __formQueryChildTerms()
 		
 		function __formQueryTerminByName(){
 /*
@@ -2433,38 +2498,6 @@ console.log(msg);
 				//"title": options["title"]
 				"callback" : function( node ){
 console.log( node );
-
-/*
-					var fieldList = [];
-					// // var fieldList = [{
-						// // "name" : "field_title_value", 
-						// // "value" : "Ballet Mistress, 1994, Майкл Паркес"
-					// // }];
-					
-					for( var field in node["fields"] ){
-						if( !node["fields"][field] ){
-							continue;
-						}
-						if( node["fields"][field] === "NULL" ){
-							continue;
-						}
-						fieldList.push({
-							"name": field,
-							"value" : node["fields"][field]
-						});
-					}//next
-//console.log( fieldList );	
-					
-					var fields_html = webApp.draw.wrapContent({
-						"data" : fieldList,
-						"templateID" : "tpl-list-fields"
-					});
-					
-//console.log( fields_html);
-					if( fields_html && fields_html.length > 0){
-						html += fields_html;
-					}
-*/
 					var _data = {};
 					//var _data = {
 						//"body" : node["body"],
