@@ -20,6 +20,7 @@
 			</div>
 				
 			<div>{{body}}</div>
+						
 		<!--
 		http://site-content
 		https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p
@@ -59,10 +60,7 @@
 				<b>related terms:</b>
 			</div>
 			<div class="panel-body">
-				<ul class="list-inline">
-					{{termin-links}}
-					<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
-				</ul>
+				<ul class="list-inline">{{list}}</ul>
 			</div>
 		</div><!-- end panel -->
 ]]>
@@ -163,9 +161,13 @@
 	
 	<tpl name="tpl-block-content">
 		<html_code><![CDATA[
-	<div class="block">
+	<div class="block panel panel-primary">
+		<div class="panel-heading">
 			<h3>{{block_title}}</h3>
+		</div>
+		<div class="panel-body">
 			<div class="content">{{content}}</div>
+		</div>
 	</div>			
 		]]></html_code>
 	</tpl>

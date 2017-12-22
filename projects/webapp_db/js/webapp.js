@@ -1862,7 +1862,7 @@ _log(msg);
 //console.log(key, data[key]);
 
 				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
-					var nodeTermsList = _vars["templates"]["tpl-menu-inline"];
+					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
 					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
 					var _listHtml = "";
 					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
@@ -1870,7 +1870,7 @@ _log(msg);
 					}//next
 //console.log( _listHtml );
 					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
-console.log( nodeTermsList );
+//console.log( nodeTermsList );
 					data["nodeTerms"] = nodeTermsList;
 				}
 
@@ -2517,6 +2517,8 @@ console.log( node );
 						//"body" : node["body"],
 						//"field_author_value" : "Майкл Паркес"
 					//};
+					
+					_data["title"] = node["title"];
 					
 					//add node BODY to the content block
 					//if( node["body"].length > 0 ){
