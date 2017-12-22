@@ -305,7 +305,7 @@ function get_xml(){
 	
 	function after_load( xml ) {
 		lib = Lib( xml );
-//console.log(lib);
+console.log(lib);
 	}//end after_load()
 
 	function get_xml_from_storage() {

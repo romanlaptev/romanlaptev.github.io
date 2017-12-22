@@ -30,11 +30,9 @@ Usage:
 			$_GET = parseGetParams( parse_url ); 
 //console.log( $_GET,  get_object_size( $_GET ) );
 
-			var params = {
+			load_templates({
 				callback: callback_init //link to callback function
-			};
-			load_templates( params );
-			
+			});
 		}//end init()
 		
 		function callback_init() {
@@ -110,7 +108,7 @@ console.log("errorThrown - ", errorThrown);
 				
 				//var item_tpl = $(data).find("#block-book-category-for").html();
 				var item_tpl = decodeURI( templates.find("#block-book-category-for").html() );
-console.log( item_tpl);
+//console.log( item_tpl);
 //fix filter href="{{url}}"				
 //if( item_tpl.indexOf("%7B%7B") > 0 ){
 //	item_tpl = item_tpl.replace("%7B%7B", "{{")
@@ -238,7 +236,7 @@ console.log( item_tpl);
 
 
 		function process_get_values() {
-//console.log( $_GET,  get_object_size( $_GET ) );
+console.log( "$_GET: ", $_GET,  get_object_size( $_GET ) );
 			if( get_object_size( $_GET ) === 0) {
 				var message = "<br>No $_GET value";
 				info.push( message );
@@ -326,7 +324,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return get_termin_nodes( params );
+				return _get_termin_nodes( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -436,7 +434,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 		}//end get_xml_nodes()
 
 
-		function get_termin_nodes( params )
+		function _get_termin_nodes( params )
 		{
 			if( typeof lib_obj["nodes"] === "undefined")
 			{
@@ -464,7 +462,7 @@ if( typeof lib_obj["nodes"][node]["tid"] === "undefined")
 			}//next node
 			
 			return termin_nodes;
-		}//end get_termin_nodes()
+		}//end _get_termin_nodes()
 		
 		function view_termin_nodes( params ) {
 			if( typeof lib_obj["termin_nodes"] === "undefined")
@@ -1498,7 +1496,7 @@ console.log("status - " + status +", url - " + url);
 		function get_object_size( obj ) {
 			var size = 0;
 			for ( var key in obj ){
-console.log( key, typeof obj[key] );
+//console.log( key, typeof obj[key] );
 				if ( key.length > 0 ) size++;
 			}
 			return size;
