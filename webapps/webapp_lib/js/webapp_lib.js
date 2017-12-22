@@ -1011,7 +1011,8 @@ console.log("error, vocabulary not found " + vocabulary_name);
 					if( $(node).attr('mlid').length > 0 )
 					{
 						if ( recourse === 1){
-							var children_nodes = list_children_pages( $(node).attr('mlid'), 1 );
+							//var children_nodes = list_children_pages( $(node).attr('mlid'), 1 );
+var children_nodes = list_child_pages( $(node).attr('mlid'), 1 );
 							nodes.push( children_nodes );
 						}
 					}
