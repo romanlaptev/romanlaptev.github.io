@@ -99,13 +99,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 
 .panel-grey {
-  border-color: #9999aa;
+  border-color: #728ca4;
 }
 .panel-grey > .panel-heading {
-  background-color: #9999aa;
-  border-color: #9999aa;
+  background-color: #728ca4;
+  border-color: #728ca4;
   color: #fff;
 }
-
-
-
