@@ -83,6 +83,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   color: #fff;
 }
 
+.panel-purple {
+  border-color: #9999cc;
+}
 .panel-purple > .panel-heading {
   background-color: #9999cc;
   border-color: #9999cc;
