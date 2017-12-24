@@ -2,7 +2,7 @@
   height: 100%;
 }
 body {
-  background-color: #2c5885/*#6aa6c0*/;
+  background-color: #315570/*#2c5885*//*#6aa6c0*/;
   margin: 0;
   padding: 15px;
 }
@@ -75,4 +75,25 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
     box-shadow: 0 1px 2px #777;
     color: #694219;
 }
+
+
+.panel-gray > .panel-heading {
+  background-color: #315570;
+  border-color: #315570;
+  color: #fff;
+}
+
+.panel-purple > .panel-heading {
+  background-color: #9999cc;
+  border-color: #9999cc;
+  color: #fff;
+}
+
+.panel-turquoise > .panel-heading {
+  background-color: #009688;
+  border-color: #009688;
+  color: #fff;
+}
+
+
 
