@@ -35,7 +35,7 @@ function _log( msg, id){
 var dbInfo = [];
 //dbInfo["import"] = [];
 
-dbInfo["dbname"] = "webapp_db";
+dbInfo["dbname"] = "video";
 //dbInfo["version"] = 0;
 dbInfo["useIndex"] = false;
 

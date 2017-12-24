@@ -107,9 +107,9 @@ console.log(webApp);
 function _runApp(){
 	
 	webApp.init(function(){
-/*
 		webApp.db.loadData(function(){
-	//console.log(arguments);
+console.log(arguments);
+/*
 	//console.log(window.location);	
 				var parse_url = window.location.search; 
 				if( parse_url.length > 0 ){
@@ -124,9 +124,9 @@ function _runApp(){
 					webApp.vars["GET"] = parseGetParams( parse_url ); 
 					webApp.app.urlManager();
 				}
+*/				
 			}//end callback
 		);
-*/				
 		
 	});//end webApp initialize
 }//end _runApp()
@@ -187,7 +187,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	}//end _detectDataStore()
 	
 	function _loadData( postFunc ){
-//console.log("webApp.db.loadData() ", arguments);
+console.log("webApp.db.loadData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -199,7 +199,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-//console.log(listStores);				
+console.log(listStores);				
 						webApp.iDBmodule.checkState({
 							"listStores" : listStores,
 							"callback" : postFunc//draw page
