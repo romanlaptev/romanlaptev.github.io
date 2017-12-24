@@ -3,10 +3,15 @@ rem https://habrahabr.ru/post/309222/
 mvn --version
 
 mvn archetype:generate
+ groupId: ru.apache_maven
+ artifactId: firstApp
 
 cd fistApp
+
+1.
 mvn compile
-
-mvn package
-
 java -cp ./target/classes ru.apache_maven.App
+
+2.
+mvn package
+java -jar firstApp-1.0-SNAPSHOT.jar ru.apache.maven.App
