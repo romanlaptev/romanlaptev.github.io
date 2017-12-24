@@ -1,73 +1,172 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html debug="true">
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Webapp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/bootstrap335.min.css" rel="stylesheet">	
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+<!--	
+	<link rel="stylesheet" href="css/fonts.css" type="text/css" media="screen" />
+-->	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+<![endif]-->
+	
+<!--
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+$(document).ready(function(){
+console.log("Ready! jQuery version:" + $.fn.jquery);	
+});//end ready
 
-	<title>parse video</title>
+	</script>
+-->	
+<script src="js/shared_functions.js"></script>
+<script>
+window.onload = function(){
+//console.log("window event onload");
+	var log = getById("log-wrap");
+	log.style.display="none";
+	document.onkeydown = function(event) {
+		event = event || window.event;
+		var keyCode =  event.which ||  event.keyCode;		
+//console.log(keyCode);			
+		if( keyCode === 27 || keyCode === 192 ){//ESC or tilda
+			var log = getById("log-wrap");
+			if( log.style.display === "none"){
+				log.style.display="block";
+			} else {
+				log.style.display="none";
+			}
+//console.log(log.style.display);			
+		}
+	};//end event
 	
-	<link rel="stylesheet" href="css/bootstrap336.min.css">
-	<!--
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
-	-->
-	<link rel="stylesheet" type="text/css" href="css/shared.css" />
-	
-	<script src="js/jquery.min.js"></script>
-	<script src="js/parse_video.js"></script>
-	<script src="js/main.js"></script>
+};//end window.load	
+
+//var _showHiddenLog = function(){
+	//var log = getById("log-wrap");
+	//if( log.style.display === "none"){
+		//log.style.display="block";
+//	}
+//}//end _showHiddenLog
+
+</script>
+
 </head>
 
 <body>
+<div class="container" id="page-container">
 
-	<div class="container">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<div class="panel-title">
-					<h1>video catalog, web application</h1>
-				</div>
-			</div>
-		</div>
-		<div id="app"></div>
-		<div id="log" class="panel"></div>
+	<div id="log-wrap" class="log-panel col-sm-7 col-md-7">
+		<a class="close" href="#?q=hide-log">x</a>	
+		<ul class="list-inline">
+			<li><a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a></li>
+			<li><a class="btn btn-sm btn-primary" href="iDB_admin.html" target="_blank">iDB admin</a></li>
+			<li><a class="btn btn-sm btn-info" href="tests/SpecRunner.html" target="_blank">tests</a></li>
+		</ul>	
+		<div id="log"></div>
+	</div>
 
-		<!-- html templates -->
-		<div id="node-list-tpl">
-			<h2>#title</h2>
-			<p><b>count:</b>#count</p>
-			<div class="container">
-	#value		
-				<div class="item">
-					<ul>
-						<small><b>num:</b>#num.</small> 
-						<small><b>id:</b>#id.</small> 
-						<h3>#title</h3></ol>
-						<li><b>type:</b>#type</li>
-						<li><b>created:</b>#created</li>
-						<li><b>changed:</b>#changed</li>
-					</ul>
-				</div>
-				
-			</div>
-		</div>
+	<header>
+		<h1 class="text-center" id="app-title">webapp DB</h1>
+	</header>
+	
+	<div class="row">
+	
+		<div class="col-sm-3 col-md-3" id="sidebar-left">
+			<span id="block-alphabetical-voc">block-alphabetical-voc</span>
+			<span id="block-tech"></span>			
+			<span id="block-style"></span>			
+		</div><!-- end sidebar left -->
+		
+		<div class="col-sm-6 col-md-6" id="main">
+			<span id="block-content"></span>			
+		</div><!-- end main central area -->
+		
+		<div class="col-sm-3 col-md-3" id="sidebar-right">
+			<span id="block-alphabetical-ru">block-alphabetical-ru</span>
+			<span id="block-genre"></span>			
+			<span id="block-1"></span>
+		</div><!-- end sidebar-right -->
 		
 	</div>
 
+	<footer>
+		<div class="col-sm-3 col-md-3">
+			<a href="#?q=toggle-log" class="btn btnsm btn-default">view log</a>
+		</div>
+		<div class="col-sm-6 col-md-6"></div>
+		<div class="col-sm-3 col-md-3"></div>
+	</footer>
 	
+</div><!-- end container -->
 
 <!--
-<div id="busy">
-	<a class="close" href="javascript:$('#busy').hide();void(0);">x</a>
-	<div class="message">Parse XML, pls, wait...</div>
+<div id="wait" class="overlay open">
+	<div>
+		<div>
+				<div class="icon-container"><img class="load-icon" src="img/icon-load.svg"></div>
+				<div id="waitText">wait...</div>
+		</div>
+	</div>
 </div>
+-->	
+
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+<!--		
+	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
+-->
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+	save data:
+	<div class="progress">
+		<div id="save-progress-bar" class="progress-bar hide"></div>
+	</div>
+</div>
+<div id="wait" class="hide"></div>
+
+
+<!-- <iframe id="test-frame" name="test_frame" onload="console.log('LOAD test_frame!');"></iframe> -->
+
+
+<script src="js/idb.js"></script>
+<script src="js/webapp.js"></script>
+
+<!--
+<iframe 
+id="tpl-frame"
+name="tpl_frame"
+src="tpl/templates.html" width="0" height="0"
+style="display:none;"
+onload="console.log('LOAD tpl_frame!'); webApp.loadTemplates(this);"></iframe>
 -->
 
-	<div id="ajaxBusy">
-		<h1>ajaxBusy</h1>
-	</div>
+<script>
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+/*
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+*/		
+	}
+</script>
 
 </body>
 </html>
