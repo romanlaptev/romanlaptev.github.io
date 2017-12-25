@@ -11,6 +11,7 @@ cd fistApp
 1.
 mvn compile
 java -cp ./target/classes ru.apache_maven.App
+java -cp firstApp-1.0-SNAPSHOT.jar ru.apache.maven.App
 
 2.
 mvn package
