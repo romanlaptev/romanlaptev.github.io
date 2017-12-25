@@ -106,3 +106,14 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   border-color: #728ca4;
   color: #fff;
 }
+
+
+.panel-violet {
+  border-color: #434e7b;
+}
+.panel-violet > .panel-heading {
+  background-color: #434e7b;
+  border-color: #434e7b;
+  color: #fff;
+}
+
