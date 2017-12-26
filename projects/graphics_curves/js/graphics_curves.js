@@ -12,30 +12,32 @@
 			k2 : 70
 		};
 		sinus( context, params);
-/*
+
 		if( document.querySelector)
 		{
 			var form1 = document.querySelector("#form1");
+			var form_epic = document.querySelector("#form-epic");
 		}
 		else
 		{
 			var form1 = document.getElementById("form1");
+			var form_epic = document.getElementById("form-epic");
 		}
 console.log(form1);
-*/		
 
-		form_1.onsubmit = function( event ){
+
+		form1.onsubmit = function( event ){
 		
 			var canvas = document.querySelector("#canvas-sin");
 			var context = canvas.getContext("2d");
 			context.fillStyle = 'blue';
 			
-			var start_x = parseInt( form_1.start_x.value );
-			var start_y = parseInt( form_1.start_y.value );
-			var step = parseFloat( form_1.step.value );
-			var num_repeat = eval( form_1.num_repeat.value );
-			var k1 = parseInt( form_1.k1.value );
-			var k2 = parseInt( form_1.k2.value );
+			var start_x = parseInt( form1.start_x.value );
+			var start_y = parseInt( form1.start_y.value );
+			var step = parseFloat( form1.step.value );
+			var num_repeat = eval( form1.num_repeat.value );
+			var k1 = parseInt( form1.k1.value );
+			var k2 = parseInt( form1.k2.value );
 			var params = {
 				start_x : start_x,
 				start_y : start_y,

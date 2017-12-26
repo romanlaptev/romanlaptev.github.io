@@ -20,7 +20,55 @@ var _vars = {
 				this["context"] = _createCanvas( this["canvasID"] );
 				sinus( this["context"], this.parameters );
 			}
-		}//end sinus
+		}, //end sinus
+		
+		"circle" : {
+			"canvasID" : "canvas-circle",
+			"formID" : "form-circle",
+			"parameters" : {
+				"context" : null,
+				"start_x" : 75,
+				"start_y" : 100,
+				"step" : 0.03,
+				"radius" : 70,
+				"num_repeat" : Math.PI*6,
+				"px" : 50,
+				"py" : 70
+			},
+			"init" : function(){
+					var form = getDOMobj( this.formID );
+					initFormCircle( form, this );
+			},//end init()
+
+			"draw" : function(){
+				var context = _createCanvas( this["canvasID"] );
+
+				var form = getDOMobj( this.formID );
+				var start_x = parseInt( form.start_x_val.value );
+				var start_y = parseInt( form.start_y_val.value );
+//console.log(start_x, start_y);
+				var step = parseFloat( form.step_val.value );
+				var num_repeat =  parseInt( form.num_repeat_val.value );
+
+				var radius = parseInt( form.num_radius_val.value);
+				context.fillStyle = 'blue';
+				for ( n = 0;  n < num_repeat; n += step) {
+					x = start_x + ( Math.cos ( n ) * radius ) ;
+					y = start_y + ( Math.sin( n ) * radius );
+					context.fillRect(x, y, 2, 2);
+				}//next
+
+				var px = parseInt( form.px_val.value );
+				var py = parseInt( form.py_val.value );
+				context.fillStyle = 'red';
+				for ( n = 0;  n < num_repeat; n += step) {
+					x = start_x + ( Math.cos ( n ) * px ) ;
+					y = start_y + ( Math.sin( n ) * py );
+					context.fillRect(x, y, 2, 2);
+				}//next
+
+			}
+		}//end circle
 		
 	}//end graphics
 }
@@ -30,21 +78,10 @@ window.onload = function(){
 
 		_vars["graphics"]["sinus"].init();
 		_vars["graphics"]["sinus"].draw();
-		
-		//clear-btn
-		var btn_clear_canvas = document.querySelector(".clear-canvas");
-//console.log(btn_clear_canvas);		
-		btn_clear_canvas.addEventListener("click", function(e){
-			var canvas_id = e.target.getAttribute("data-target");
-//console.log(canvas_id);			
-			clear_canvas( canvas_id );
-			if( canvas_id === "canvas-sin"){
-				_vars["graphics"]["sinus"].init();
-			}
-			
-		}, false);//end event
 
-	
+		_vars["graphics"]["circle"].init();
+		_vars["graphics"]["circle"].draw();
+
 }//end load
 
 function _createCanvas( id ){
@@ -141,6 +178,15 @@ function initForm( id, p ){
 	
 	//form.num_repeat.value  = p["num_repeat"];
 	form.step.value  = p["step"];
+
+	//clear-btn
+	var btn_clear_canvas = form["clear_canvas"];
+//console.log(btn_clear_canvas);		
+		btn_clear_canvas.addEventListener("click", function(e){
+//console.log(e);
+			clear_canvas("canvas-sin");
+			_vars["graphics"]["sinus"].init();
+		}, false);//end event
 	
 	if( typeof form.onsubmit !== "function"){
 		form.onsubmit = function( event ){
@@ -174,3 +220,90 @@ function initForm( id, p ){
 //console.log( form.onreset );	
 	
 }//end initForm()
+
+
+function initFormCircle(  form, drawObj ){
+//console.log(drawObj);
+	var p = drawObj["parameters"];
+
+	var startXRange = form["start_x_range"];
+	startXRange.value = p["start_x"];
+
+	var startXVal = form["start_x_val"];
+	startXVal.value = startXRange.value;				
+
+	startXRange.onchange = function(e){
+		startXVal.value = this.value;				
+	}
+
+
+	var startYRange = form["start_y_range"];
+	startYRange.value = p["start_y"];
+
+	var startYVal = form["start_y_val"];
+	startYVal.value = startYRange.value;				
+
+	startYRange.onchange = function(e){
+		startYVal.value = this.value;				
+	}
+
+	var numRadiusRange = form[ "num_radius_range" ];
+	numRadiusRange.value = p["radius"];
+	var numRadiusVal = form[ "num_radius_val" ];
+	numRadiusVal.value = numRadiusRange.value;				
+	numRadiusRange.onchange = function(e){
+		numRadiusVal.value=this.value;				
+	}
+
+	var numRepeatRange = form[ "num_repeat_range" ];
+	numRepeatRange.value = p["num_repeat"];
+	var numRepeatVal = form[ "num_repeat_val" ];
+	numRepeatVal.value = numRepeatRange.value;				
+	numRepeatRange.onchange = function(e){
+		numRepeatVal.value=this.value;				
+	}
+
+	var pxRange = form[ "px_range" ];
+	pxRange.value = p["px"];
+	var pxVal = form[ "px_val" ];
+	pxVal.value = pxRange.value;				
+	pxRange.onchange = function(e){
+		pxVal.value=this.value;				
+	}
+
+	var pyRange = form[ "py_range" ];
+	pyRange.value = p["py"];
+	var pyVal = form[ "py_val" ];
+	pyVal.value = pyRange.value;				
+	pyRange.onchange = function(e){
+		pyVal.value=this.value;				
+	}
+
+	form["step_val"].value  = p["step"];
+
+	//clear-btn
+	var btn_clear_canvas = form["clear_canvas"];
+//console.log(btn_clear_canvas);		
+		btn_clear_canvas.addEventListener("click", function(e){
+console.log(e);
+			clear_canvas( drawObj["canvasID"] );
+			drawObj["init"]();
+			//drawObj["draw"]();
+		}, false);//end event
+
+	if( typeof form.onsubmit !== "function"){
+		form.onsubmit = function( event ){
+console.log(event);
+			drawObj["draw"]( form );
+			event.preventDefault();
+		};
+	}
+
+	if( typeof form.onreset !== "function"){
+		form.onreset = function( event ){
+			drawObj["init"]( form, drawObj );
+			event.preventDefault();
+		};
+	}
+
+}//end initFormCircle()
