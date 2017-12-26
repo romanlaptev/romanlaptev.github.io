@@ -80,12 +80,14 @@ canvas{
 <div class="row panel panel-primary">
 
 		<div class="panel-heading">
-			<h2>Окружность, Спираль</h2>	
+			<h2>Окружность</h2>	
 		</div>
 	
 <form name="form_circle" id="form-circle" type="GET" action="">
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
-			<canvas id="canvas-circle" width="600" height="300"></canvas>
+			<canvas id="canvas-circle" width="300" height="300"></canvas>
+			<canvas id="canvas-circle2" width="300" height="300"></canvas>
+<br>
 			<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
 		</div>
 	
@@ -93,7 +95,7 @@ canvas{
 			
 				<div class="form-group form-group-sm">
 					<label class="inline">
-						start_x (0-600): 
+						start_x (0-300): 
 							<input name="start_x_val" disabled="" type="text">
 							<input name="start_x_range" min="0" max="600" step="1" value="" type="range">
 					</label>
@@ -139,6 +141,65 @@ canvas{
 		</div>
 	</div>
 
+<!-- **************************************** -->
+<div class="row panel panel-primary">
+
+		<div class="panel-heading">
+			<h2>Спираль</h2>	
+		</div>
+	
+<form name="form_spire" id="form-spire" type="GET" action="">
+		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
+			<h3>Архимедова спираль</h3>
+			<canvas id="canvas-spire" width="300" height="300"></canvas><br>
+			<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
+		</div>
+	
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel-body">
+			
+				<div class="form-group form-group-sm">
+					<label class="inline">
+						start_x (0-300): 
+							<input name="start_x_val" disabled="" type="text">
+							<input name="start_x_range" min="0" max="300" step="1" value="" type="range">
+					</label>
+
+					<label class="inline">
+						start_y (0-300): 
+						<input name="start_y_val" disabled="" type="text">
+						<input name="start_y_range" min="0" max="300" step="1" value="" type="range">
+					</label>
+				</div>			
+
+				<div class="form-group form-group-sm">
+
+					<label class="inline">num_repeat (1-100):
+						<input name="num_repeat_val" disabled="" type="text">
+						<input name="num_repeat_range" min="1" max="100" step="1" value="" type="range">
+					</label>
+
+					<label class="inline">step
+						<input name="step_val" type="text" class="form-control" value=""/>
+					</label>
+				</div>			
+
+				<div class="form-group form-group-sm">
+					<label class="inline">px (0-100):
+						<input name="px_val" disabled=""  type="text">
+						<input name="px_range" min="0" max="100" step="1" value="" type="range">
+					</label>
+					<label class="inline">py (0-100):
+						<input name="py_val" disabled=""  type="text">
+						<input name="py_range" min="0" max="150" step="1" value="" type="range">
+					</label>
+				</div>			
+
+				<input type="submit" class="btn btn-primary" value="перестроить график"/>
+				<input type="reset" class="btn btn-warning" value="сбросить значения"/>
+</form>
+
+		</div>
+	</div>
 
 </div><!-- end container -->
 </body>

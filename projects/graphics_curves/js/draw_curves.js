@@ -24,11 +24,12 @@ var _vars = {
 		
 		"circle" : {
 			"canvasID" : "canvas-circle",
+			"canvasID_2" : "canvas-circle2",
 			"formID" : "form-circle",
 			"parameters" : {
 				"context" : null,
-				"start_x" : 75,
-				"start_y" : 100,
+				"start_x" : 170,
+				"start_y" : 130,
 				"step" : 0.03,
 				"radius" : 70,
 				"num_repeat" : Math.PI*6,
@@ -58,6 +59,7 @@ var _vars = {
 					context.fillRect(x, y, 2, 2);
 				}//next
 
+				context = _createCanvas( this["canvasID_2"] );
 				var px = parseInt( form.px_val.value );
 				var py = parseInt( form.py_val.value );
 				context.fillStyle = 'red';
@@ -68,7 +70,47 @@ var _vars = {
 				}//next
 
 			}
-		}//end circle
+		},//end circle
+
+		"spire" : {
+			"canvasID" : "canvas-spire",
+			"formID" : "form-spire",
+			"parameters" : {
+				"start_x" : 75,
+				"start_y" : 100,
+				"step" : 0.01,
+				"num_repeat" : Math.PI*6,
+				"px" : 3,
+				"py" : 3
+			},
+			"init" : function(){
+					var form = getDOMobj( this.formID );
+					initFormSpire( form, this );
+			},//end init()
+
+			"draw" : function(){
+				var context = _createCanvas( this["canvasID"] );
+
+				var form = getDOMobj( this.formID );
+				var start_x = parseInt( form.start_x_val.value );
+				var start_y = parseInt( form.start_y_val.value );
+				var px = parseInt( form.px_val.value );
+				var py = parseInt( form.py_val.value );
+				var step = parseFloat( form.step_val.value );
+				var num_repeat =  parseInt( form.num_repeat_val.value );
+
+				context.fillStyle = 'green';
+				for ( n = 0;  n < num_repeat; n += step) {
+					x_ = ( Math.cos( n ) + n  * Math.sin( n ) ) * px;
+					y_ = ( Math.sin( n ) - n * Math.cos( n ) ) * py;
+
+					x = start_x + ( Math.round(x_) ) ;
+					y = start_y + ( Math.round(y_) );
+					context.fillRect(x, y, 2, 2);
+				}//next
+
+			}//end draw()
+		}//end spire
 		
 	}//end graphics
 }
@@ -81,6 +123,9 @@ window.onload = function(){
 
 		_vars["graphics"]["circle"].init();
 		_vars["graphics"]["circle"].draw();
+
+		_vars["graphics"]["spire"].init();
+		_vars["graphics"]["spire"].draw();
 
 }//end load
 
@@ -287,6 +332,7 @@ function initFormCircle(  form, drawObj ){
 		btn_clear_canvas.addEventListener("click", function(e){
 console.log(e);
 			clear_canvas( drawObj["canvasID"] );
+			clear_canvas( drawObj["canvasID_2"] );
 			drawObj["init"]();
 			//drawObj["draw"]();
 		}, false);//end event
@@ -307,3 +353,82 @@ console.log(event);
 	}
 
 }//end initFormCircle()
+
+function initFormSpire(  form, drawObj ){
+//console.log(drawObj);
+	var p = drawObj["parameters"];
+
+	var startXRange = form["start_x_range"];
+	startXRange.value = p["start_x"];
+
+	var startXVal = form["start_x_val"];
+	startXVal.value = startXRange.value;				
+
+	startXRange.onchange = function(e){
+		startXVal.value = this.value;				
+	}
+
+	var startYRange = form["start_y_range"];
+	startYRange.value = p["start_y"];
+
+	var startYVal = form["start_y_val"];
+	startYVal.value = startYRange.value;				
+
+	startYRange.onchange = function(e){
+		startYVal.value = this.value;				
+	}
+
+	var numRepeatRange = form[ "num_repeat_range" ];
+	numRepeatRange.value = p["num_repeat"];
+	var numRepeatVal = form[ "num_repeat_val" ];
+	numRepeatVal.value = numRepeatRange.value;				
+	numRepeatRange.onchange = function(e){
+		numRepeatVal.value=this.value;				
+	}
+
+	var pxRange = form[ "px_range" ];
+	pxRange.value = p["px"];
+	var pxVal = form[ "px_val" ];
+	pxVal.value = pxRange.value;				
+	pxRange.onchange = function(e){
+		pxVal.value=this.value;				
+	}
+
+	var pyRange = form[ "py_range" ];
+	pyRange.value = p["py"];
+	var pyVal = form[ "py_val" ];
+	pyVal.value = pyRange.value;				
+	pyRange.onchange = function(e){
+		pyVal.value=this.value;				
+	}
+
+	form["step_val"].value  = p["step"];
+
+	//clear-btn
+	var btn_clear_canvas = form["clear_canvas"];
+//console.log(btn_clear_canvas);		
+		btn_clear_canvas.addEventListener("click", function(e){
+//console.log(e);
+			clear_canvas( drawObj["canvasID"] );
+			drawObj["init"]();
+			//drawObj["draw"]();
+		}, false);//end event
+
+	if( typeof form.onsubmit !== "function"){
+		form.onsubmit = function( event ){
+//console.log(event);
+			drawObj["draw"]( form );
+			event.preventDefault();
+		};
+	}
+
+	if( typeof form.onreset !== "function"){
+		form.onreset = function( event ){
+			drawObj["init"]( form, drawObj );
+			event.preventDefault();
+		};
+	}
+
+}//end initFormSpire()
+
+
