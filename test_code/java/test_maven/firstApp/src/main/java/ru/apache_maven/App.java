@@ -1,13 +1,11 @@
 package ru.apache_maven;
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+		for( int n = 0; n < 10; n++){
+	        System.out.println( "Hello Maven!" );
+		}
+
     }
 }

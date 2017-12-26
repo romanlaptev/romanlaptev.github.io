@@ -1,5 +1,7 @@
 rem http://www.apache-maven.ru/quick_start.html
 rem https://habrahabr.ru/post/309222/
+rem https://www.ibm.com/developerworks/ru/library/j-5things13/index.html
+
 mvn --version
 
 mvn archetype:generate
@@ -14,5 +16,5 @@ java -cp ./target/classes ru.apache_maven.App
 java -cp firstApp-1.0-SNAPSHOT.jar ru.apache.maven.App
 
 2.
-mvn package
+mvn package -e
 java -jar firstApp-1.0-SNAPSHOT.jar ru.apache.maven.App
