@@ -76,10 +76,10 @@ var _vars = {
 			"canvasID" : "canvas-spire",
 			"formID" : "form-spire",
 			"parameters" : {
-				"start_x" : 75,
-				"start_y" : 100,
+				"start_x" : 150,
+				"start_y" : 150,
 				"step" : 0.01,
-				"num_repeat" : Math.PI*6,
+				"num_repeat" : Math.PI*8,
 				"px" : 3,
 				"py" : 3
 			},
