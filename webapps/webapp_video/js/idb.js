@@ -2016,14 +2016,14 @@ console.log("error in _db(), data not in JSON format");
 			// }
 
 			function __parseXML( xml ){
-/*				
+
 //---------------------
 console.log( xml ) ;
-var xmlNodes = __parseXmlToObj( xml );
-console.log(xmlNodes);
+var xmlSchema = _getXmlSchema( xml );
+console.log(xmlSchema);
 //---------------------
 return false;
-*/
+/*
 				var xmlDoc = xml.getElementsByTagName("database");
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
@@ -2063,21 +2063,23 @@ return false;
 				dbInfo["import"]["counter"] = 0;
 				dbInfo["import"]["timer"] = new Date();
 				__getTable();
-				
+*/				
 			}//end __parseXML()
-/*			
-			function __parseXmlToObj(xml){
+			
+			function _getXmlSchema(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			
 //console.log( xml.documentElement.nodeName );
-				var rootTagName = xml.documentElement.nodeName;
-				var xmlDoc = xml.getElementsByTagName( rootTagName);
-console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+				//var rootTagName = xml.documentElement.nodeName;
+				//var xmlDoc = xml.getElementsByTagName(rootTagName);
+				var xmlDoc = xml.getElementsByTagName("structure_schema");
+				
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 //console.log( xmlDoc.childNodes.length ) ;
 //console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
-// for(var key in xmlDoc){
-// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
-// }
+//for(var key in xmlDoc){
+//console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+//}
 				var xmlObj = [];
 				for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
 					var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
@@ -2089,7 +2091,7 @@ console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 //console.log(node);			
 					xmlObj.push ( node );
 				}//next
-//console.log(xmlObj);				
+console.log(xmlObj);				
 				return xmlObj;
 				
 				function __parseChildNode( nodeXml ){
@@ -2125,8 +2127,8 @@ console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 					return nodeObj;
 				}//end __parseChildNode()
 
-			}//end __parseXmlToObj()
-*/			
+			}//end _getXmlSchema()
+
 			function __getTable(){
 				var num = dbInfo["import"]["counter"];
 				
