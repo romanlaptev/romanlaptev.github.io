@@ -2,7 +2,11 @@
 <!--
 <structure_schemas>
 	<database>
-		<table name='node'></table>
+		<table name='node'>
+			<record num="0">
+				<column name='nid'></column>
+			</record>
+		</table>
 		<table name='node_type'></table>
 		<table name='taxonomy_vocabulary'></table>
 		<table name='taxonomy_term_hierarchy'></table>

@@ -99,10 +99,10 @@ console.log( navigator.userAgent );
 console.log(webApp);
 
 	//start
-	webApp.app.loadTemplates(function(){
+	//webApp.app.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
-	});
+	//});
 
 function _runApp(){
 	

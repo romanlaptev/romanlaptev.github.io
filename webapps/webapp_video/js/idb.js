@@ -1935,10 +1935,10 @@ console.log(msg);
 			}
 			
 			var param = {};
-console.log("_iDBimport(), send request to the server", param);
-
-			param["callback"] = _afterRequest;
-			webApp.app.serverRequest( param );
+//console.log("_iDBimport(), send request to the server");
+			webApp.app.serverRequest({
+				"callback": _afterRequest
+			});
 			
 			function _afterRequest( data ){
 //console.log( data );
@@ -1968,62 +1968,6 @@ console.log("error in _db(), not find 'db_type' !");
 						__parseXML( data );
 						return false;
 					}
-/*					
-					//server answer contains string data ( update data + XML)
-					var importData = data.split( "#mark" );
-					
-//console.log(importData[0]);//new date
-					var jsonObj = JSON.parse( importData[0], function(key, value) {
-//console.log( key, value );
-							return value;
-						});							
-//console.log( jsonObj );
-					if( jsonObj["date"] && jsonObj["date"].length > 0){
-						__saveNewDate( jsonObj["date"], _postFunc );
-					}
-//return false;
-					
-					function _postFunc(){
-						if (window.DOMParser) { // all browsers, except IE before version 9
-	//var msg = "window.DOMParser support: " + window.DOMParser;
-	//console.log(msg);
-							var parser = new DOMParser();
-							var xmlsrc = importData[1];
-							try {
-								var xml = parser.parseFromString( xmlsrc, "text/xml" );
-								dbInfo["import"]["xml"] = xml;
-								__parseXML( xml );
-							} catch (e) {
-								// // if text is not well-formed, 
-								// // it raises an exception in IE from version 9
-	console.log("XML parsing error: ", e);
-	// for( var item in e ){
-	// console.log(item + ": " + e[item]);
-	// }
-							};
-
-						} else {  // Internet Explorer before version 9
-
-							var xml_info = _createMSXML();
-	console.log( "created  MSXML ActiveXObject, version: " + xml_info.version);		
-							var xml = xml_info["xml_obj"];
-
-							// xml.async = "false";
-							// xml.loadXML( xmlsrc );	
-							// var errorMsg = null;
-							// if (xml.parseError && xml.parseError.errorCode != 0) {
-								// errorMsg = "XML Parsing Error: " + xml.parseError.reason
-										  // + " at line " + xml.parseError.line
-										  // + " at position " + xml.parseError.linepos;
-							// }
-							// if (errorMsg) {
-								// log.innerHTML += "<p>" + errorMsg + "</p>";
-							// }
-							// parse_xml(xml);
-						}					
-						
-					}//end _postFunc
-*/					
 				break;
 				
 				case "json":
@@ -2072,6 +2016,14 @@ console.log("error in _db(), data not in JSON format");
 			// }
 
 			function __parseXML( xml ){
+/*				
+//---------------------
+console.log( xml ) ;
+var xmlNodes = __parseXmlToObj( xml );
+console.log(xmlNodes);
+//---------------------
+return false;
+*/
 				var xmlDoc = xml.getElementsByTagName("database");
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
@@ -2082,8 +2034,9 @@ console.log("error in _db(), data not in JSON format");
 				if( xmlDoc.length === 2){
 					var records = xmlDoc.item(1).getElementsByTagName("table");
 				}
-		
-				
+//console.log( records,  records.length) ;
+
+
 				//get list tables
 				var tableName = "";
 				//var storeData = [];
@@ -2112,7 +2065,68 @@ console.log("error in _db(), data not in JSON format");
 				__getTable();
 				
 			}//end __parseXML()
-			
+/*			
+			function __parseXmlToObj(xml){
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );
+				var rootTagName = xml.documentElement.nodeName;
+				var xmlDoc = xml.getElementsByTagName( rootTagName);
+console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+				var xmlObj = [];
+				for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+					var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+					if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+						continue;
+					}
+					var node = __parseChildNode( child );
+//console.log(node);			
+					xmlObj.push ( node );
+				}//next
+//console.log(xmlObj);				
+				return xmlObj;
+				
+				function __parseChildNode( nodeXml ){
+//console.log( "nodeName: "+ nodeXml.nodeName);
+//console.log( "text: "+ nodeXml.text);
+//console.log( "textContent: "+ nodeXml.textContent);
+// var test = nodeXml;				
+// for(var key in test ){
+// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
+// }
+					var nodeObj = get_attr_to_obj( nodeXml.attributes );
+
+					for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
+						var _child = nodeXml.childNodes.item(n2);
+//console.log( "nodeType: "+ _child.nodeType);
+						if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
+							continue;
+						}
+			// console.log( "nodeName: "+ _child.nodeName);
+			// console.log( "text: "+ _child.text);
+			// console.log( "textContent: "+ _child.textContent);
+						var _name = _child.nodeName;
+						if ("textContent" in _child){
+							nodeObj[_name] = _child.textContent;
+						} else {
+							nodeObj[_name] = _child.text;
+						}
+					}//next
+
+			// if( !record.children){
+			// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+			// }
+					return nodeObj;
+				}//end __parseChildNode()
+
+			}//end __parseXmlToObj()
+*/			
 			function __getTable(){
 				var num = dbInfo["import"]["counter"];
 				
