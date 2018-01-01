@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
-
+<!---
 	<structure_schema>
 		<database name='video'>
 			<table name='node'>
@@ -156,7 +156,7 @@
 			
 		</database>
 	</structure_schema>
-	
+-->	
 	<database name='video'>
 		<table name='node'>
 			<record num="0">

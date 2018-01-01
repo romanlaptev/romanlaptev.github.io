@@ -2018,12 +2018,12 @@ console.log("error in _db(), data not in JSON format");
 			function __parseXML( xml ){
 
 //---------------------
-console.log( xml ) ;
-var xmlSchema = _getXmlSchema( xml );
-console.log(xmlSchema);
+//console.log( xml ) ;
+//var xmlSchema = _getXmlSchema( xml );
+//console.log(xmlSchema);
 //---------------------
-return false;
-/*
+//return false;
+
 				var xmlDoc = xml.getElementsByTagName("database");
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
@@ -2063,9 +2063,9 @@ return false;
 				dbInfo["import"]["counter"] = 0;
 				dbInfo["import"]["timer"] = new Date();
 				__getTable();
-*/				
+
 			}//end __parseXML()
-			
+/*			
 			function _getXmlSchema(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			
@@ -2128,7 +2128,7 @@ console.log(xmlObj);
 				}//end __parseChildNode()
 
 			}//end _getXmlSchema()
-
+*/
 			function __getTable(){
 				var num = dbInfo["import"]["counter"];
 				

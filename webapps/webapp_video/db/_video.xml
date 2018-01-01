@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xroot>
+<!---
+	<structure_schema>
+		<database name='video'>
+			<table name='node'>
+				<record num="">
+					<column name='nid'></column>
+					<column name='vid'></column>
+					<column name='type'></column>
+					<column name='title'></column>
+					<column name='created'></column>
+					<column name='changed'></column>
+					<column name='status'></column>
+				</record>
+			</table>
+			
+			<table name='node_type'>
+				<record num="0">
+					<column name='type'></column>
+					<column name='name'></column>
+					<column name='orig_type'></column>
+				</record>
+			</table>
+			
+			<table name='taxonomy_vocabulary'>
+				<record num="0">
+					<column name='vid'></column>
+					<column name='name'></column>
+					<column name='machine_name'></column>
+				</record>
+			</table>
+			
+			<table name='taxonomy_term_hierarchy'>
+				<record num="0">
+					<column name='tid'></column>
+					<column name='parent'></column>
+				</record>
+			</table>
+			
+			<table name='taxonomy_index'>
+				<record num="0">
+					<column name='nid'></column>
+					<column name='tid'></column>
+				</record>
+			</table>
+			
+			<table name='taxonomy_term_data'>
+				<record num="0">
+					<column name='tid'></column>
+					<column name='vid'></column>
+					<column name='name'></column>
+				</record>
+			</table>
+			
+			<table name='menu_links'>
+				<record num="0">
+					<column name='menu_name'></column>
+					<column name='mlid'></column>
+					<column name='plid'></column>
+					<column name='link_path'></column>
+					<column name='router_path'></column>
+					<column name='link_title'></column>
+					<column name='options'></column>
+					<column name='module'></column>
+					<column name='hidden'></column>
+					<column name='external'></column>
+					<column name='has_children'></column>
+					<column name='expanded'></column>
+					<column name='weight'></column>
+					<column name='depth'></column>
+					<column name='customized'></column>
+					<column name='p1'></column>
+					<column name='p2'></column>
+					<column name='p3'></column>
+					<column name='p4'></column>
+					<column name='p5'></column>
+					<column name='p6'></column>
+					<column name='p7'></column>
+					<column name='p8'></column>
+					<column name='p9'></column>
+					<column name='updated'></column>
+				</record>
+			</table>
+			
+			<table name='book'>
+				<record num="0">
+					<column name='mlid'></column>
+					<column name='nid'></column>
+					<column name='bid'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_body_video'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='body_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_body'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='body_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_filename'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_filename_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_subfolder'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_subfolder_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_img_cover'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_img_cover_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_roles'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_roles_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_year'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_year_value'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_taxonomy'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_taxonomy_tid'></column>
+				</record>
+			</table>
+			
+			<table name='field_data_field_taxonomy_alpha'>
+				<record num="0">
+					<column name='entity_id'></column>
+					<column name='field_taxonomy_alpha_tid'></column>
+				</record>
+			</table>
+			
+		</database>
+	</structure_schema>
+-->	
+	<database name='video'>
+		<table name='node'>
+			<record num="0">
+				<column name='nid'>1</column>
+				<column name='vid'>1</column>
+				<column name='type'>page</column>
+				<column name='title'>test media</column>
+				<column name='created'>23-Sep-2012 13:45:32</column>
+				<column name='changed'>24-Sep-2012 09:11:03</column>
+				<column name='status'>1</column>
+			</record>
+			<record num="1">
+				<column name='nid'>2</column>
+				<column name='vid'>2</column>
+				<column name='type'>video</column>
+				<column name='title'>Аргентина. Интервью с мёртвым наркодилером</column>
+				<column name='created'>24-Sep-2012 09:28:16</column>
+				<column name='changed'>21-Aug-2016 20:45:30</column>
+				<column name='status'>1</column>
+			</record>
+			<record num="2">
+				<column name='nid'>3</column>
+				<column name='vid'>3</column>
+				<column name='type'>book</column>
+				<column name='title'>фильмы</column>
+				<column name='created'>01-Oct-2012 09:08:40</column>
+				<column name='changed'>02-Aug-2015 00:30:55</column>
+				<column name='status'>1</column>
+			</record>
+	</table>
+		<table name='node_type'>
+			<record num="0">
+				<column name='type'>article</column>
+				<column name='name'>Article</column>
+				<column name='orig_type'>article</column>
+			</record>
+			<record num="1">
+				<column name='type'>blog</column>
+				<column name='name'>Запись в блог</column>
+				<column name='orig_type'>blog</column>
+			</record>
+			<record num="2">
+				<column name='type'>book</column>
+				<column name='name'>Страница подшивки</column>
+				<column name='orig_type'>book</column>
+			</record>
+			<record num="3">
+				<column name='type'>page</column>
+				<column name='name'>Basic page</column>
+				<column name='orig_type'>page</column>
+			</record>
+			<record num="4">
+				<column name='type'>video</column>
+				<column name='name'>video</column>
+				<column name='orig_type'>video</column>
+			</record>
+			<record num="5">
+				<column name='type'>videoclip</column>
+				<column name='name'>videoclip</column>
+				<column name='orig_type'>videoclip</column>
+			</record>
+	</table>
+
+	</database>
+
+</xroot>
