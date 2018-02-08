@@ -114,8 +114,8 @@ console.log( relativePath );
 console.log( vars["music_alias"] + relativePath );
 //-----------------
 */
-vars["content_location"] = "/documents/laptev/www/music";
-vars["music_alias"] = "/www/music",
+//vars["content_location"] = "/documents/laptev/www/music";
+//vars["music_alias"] = "/www/music",
 	
 	//var dirname = $("input[name=init_dirname]").val();
 	vars["dirname"] = vars["content_location"];
@@ -655,24 +655,33 @@ console.log( checked_files );
 				var filetype = track.substring( track.lastIndexOf('/')+1, track.length);
 
 				var playlist = myPlaylist.playlist;
+				var add = false;
 				if (filename.toLowerCase().lastIndexOf(".mp3") > 0){
-					var add = { "title":filename, "mp3": track, free: true };
+					add = { "title":filename, "mp3": track, free: true };
 				}
 				if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
-					var add = { "title":filename, "oga": track, free: true };
+					add = { "title":filename, "oga": track, free: true };
 				}
 				if (filename.toLowerCase().lastIndexOf('.wav') > 0){
-					var add = { "title":filename, "wav": track, free: true };
+					add = { "title":filename, "wav": track, free: true };
 				}
-				playlist.push( add );
-			}
-			myPlaylist.setPlaylist( playlist );
-//console.log (playlist, myPlaylist.playlist);
-			$("#playlist-title").text( vars["text_new_playlist"] );
+				
+				if( add ){
+					playlist.push( add );
+				}
+				
+			}//next
+			
+			if( playlist.length > 0){
+				myPlaylist.setPlaylist( playlist );
+	//console.log (playlist, myPlaylist.playlist);
+				$("#playlist-title").text( vars["text_new_playlist"] );
 
-			var panels = get_panels_info();
-			var $activePanel = $( panels["active"] );
-			clearCheckbox( $activePanel );
+				var panels = get_panels_info();
+				var $activePanel = $( panels["active"] );
+				clearCheckbox( $activePanel );
+			}
+			
 		});//end event
 
 		$("#edit-pls").click( function(){
