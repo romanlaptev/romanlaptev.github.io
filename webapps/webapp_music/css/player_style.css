@@ -10,10 +10,11 @@ div.jp-video div.jp-interface {
 }
 
 div.jp-interface {
-	background-color: #336699 !important;
+	/*background-color: #336699 !important;*/
 	position: relative;
 	width: 100%;
-	background-image: linear-gradient(to bottom, #08c, #04c);
+	/*background-image: linear-gradient(to bottom, #08c, #04c);*/
+	background-image: linear-gradient(to bottom, #000000, #0079a4);
 }
 
 div.jp-current-time, div.jp-duration {
@@ -23,7 +24,7 @@ div.jp-current-time, div.jp-duration {
 }
 
 div.jp-title, div.jp-playlist {
-     background-color: #c9c6d3;
+     background-color: /*#c9c6d3*/lightsteelblue;
      border-top: medium none;
 }
 
