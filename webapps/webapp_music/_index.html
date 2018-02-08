@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Music Playlists</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="players/jPlayer-2.5.0/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap335.min.css" rel="stylesheet">	
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="players/jPlayer-2.5.0/js/jquery.min.js"></script>
+<script type="text/javascript" src="players/jPlayer-2.5.0/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="players/jPlayer-2.5.0/js/jplayer.playlist.min.js"></script>
+
+<!--
+<script type="text/javascript" src="players/jPlayer.2.9.2/js/jquery.jplayer.min.js"></script>
+-->
+<script src="playlists/js/list.js"></script>
+<script src="js/main.js"></script>
+
+</head>
+
+<body>
+<header class="container-fluid">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<nav class="navbar">
+				<div class="navbar-header"><h1>My playlists</h1></div>
+
+				<ul class="nav navbar-nav navbar-right">
+<li><a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a></li>
+<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+<li><a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>
+<li><a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>
+<li><a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>
+<li><a class="" href="http://10tracks.com/player.ru.html#songs" target="_blank">music on 10tracks.com</a></li>
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<div class="container-fluid" id="top">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+
+<div class="row">		
+		<div class="col-xs-6 col-sm-6 col-md-7 col-lg-7 list-pls">    
+		
+<script type="text/template" id="playlist-tpl">
+	<div class="thumbnail album pls-{{class}}">
+		<p class='caption'>{{title}}</p>
+		
+		<img src="{{img_src}}" alt="{{img_alt}}" title="{{img_title}}">
+		
+		<a href="{{location}}" class='load-playlist'>load playlist</a>
+	</div>
+</script>
+				<div id="external-content"></div>
+				
+		</div><!-- end list-pls -->		
+		
+		<div class="col-xs-6 col-sm-6 col-md-5 col-lg-5 right-column">
+		
+			<div class="panel">
+				<a class="" href="musFM.html" target="_self">form playlist with music file manager</a>
+			</div>
+		
+			<div class="player">    
+				<div id="jp_container_N" class="jp-video jp-video-270p">
+					<div class="jp-type-playlist">
+						<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+						<div class="jp-gui">
+							<div class="jp-video-play">
+								<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+							</div>
+							<div class="jp-interface">
+								<div class="jp-progress">
+									<div class="jp-seek-bar">
+										<div class="jp-play-bar"></div>
+									</div>
+								</div>
+								<div class="jp-current-time"></div>
+								<div class="jp-duration"></div>
+								<div class="jp-controls-holder">
+									<ul class="jp-controls">
+										<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+										<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+										<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+										<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+										<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+										<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+										<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+										<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+									</ul>
+									<div class="jp-volume-bar">
+										<div class="jp-volume-bar-value"></div>
+									</div>
+									<ul class="jp-toggles">
+										<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+										<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+										<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+										<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+										<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+										<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+									</ul>
+								</div>
+								<div class="jp-title">
+									<ul>
+										<li></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="jp-playlist">
+							<ul>
+								<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+								<li></li>
+							</ul>
+						</div>
+						<div class="jp-no-solution">
+							<span>Update Required</span>
+							To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+						</div>
+					</div>
+				</div>
+			</div><!-- end player -->
+		
+		</div>    
+		
+</div><!-- end row -->
+		
+		</div><!-- end panel-body -->
+	</div><!-- end panel -->
+	
+</div><!-- end container -->
+
+<footer class="container-fluid text-center">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<ul class="nav navbar-nav">
+<li><a class="" href="http://romanlaptev.github.io/parser/parse_bookmarks.html" target="_blank">Firefox bookmarks</a></li>
+<li><a class="" href="http://romanlaptev.github.io/parser/parse_bookmarks.html" target="_balnk">Notes</a></li>
+				</ul>
+<!--				
+				<ul class="nav navbar-nav navbar-right">
+<li><a class="" href="musFM.html" target="_self">form playlist with music file manager</a></li>
+				</ul>
+-->      
+			</div>
+		</div>
+</footer>
+
+
+
+<div class="top">
+	<a href="#" title="наверх" id="top-link">
+		<div class="arrow"></div>
+	</a>
+</div>
+		
+
+</body>
+</html>
