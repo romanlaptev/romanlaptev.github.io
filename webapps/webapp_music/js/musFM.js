@@ -91,7 +91,20 @@ console.log( "vars:" , vars );
 		vars["content_location"] = "/mnt/d2/music";
 	}
 //vars["content_location"] = "/home/www";
+//------------------ replace fs path to web alias, TEST!!!!!
+//vars["content_location"] = "/music";
+vars["content_location"] = "/mnt/d2/music";
+vars["music_alias"] = "/music/",
+vars["dirname"] = "/mnt/d2/music/D/Def Leppard/1983 - Pyromania"
+var pos1 = vars["dirname"].indexOf( vars["music_alias"] );
+//var pos2 = pos1 + vars["music_alias"].length;
+console.log(pos1);
+var newLinkPath = vars["dirname"].substring( pos1, vars["dirname"].length );
+console.log(newLinkPath);
+//-----------------
 
+vars["content_location"] = "/documents/laptev/www/music";
+vars["music_alias"] = "/www/music/",
 	
 	//var dirname = $("input[name=init_dirname]").val();
 	vars["dirname"] = vars["content_location"];
@@ -619,6 +632,8 @@ console.log( "errorThrown: " + errorThrown );
 		//--------------------
 		$("#add-track").click(function(){
 			var checked_files = get_checked_files();
+console.log( checked_files );
+
 			var playlist = [];
 			for ( var item in checked_files){
 				var track = checked_files[ item ] ;
@@ -696,7 +711,18 @@ console.log("edit playlist", checked_files, checked_files.length);
 		vars["dirname"] = $( panels["active"] + " .dirname").text();
 		var checked_files = [];
 		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(function(num, item){
-			checked_files.push ( vars["dirname"] +"/" + $(this).val() );
+			//checked_files.push ( vars["dirname"] +"/" + $(this).val() );
+			
+//------------------ replace fs path to web alias
+//vars["dirname"] = "/documents/laptev/www/music/Def Leppard/1983 - Pyromania"
+var pos1 = vars["dirname"].indexOf( vars["music_alias"] );
+//var pos2 = pos1 + vars["music_alias"].length;
+//console.log(pos1, pos2);
+var newLinkPath = vars["dirname"].substring( pos1, vars["dirname"].length );
+//console.log(newLinkPath);
+checked_files.push ( newLinkPath +"/" + $(this).val() );
+//-----------------
+
 			//$(this).removeAttr("checked");
 			$(item).prop("checked", false);
 		});		
