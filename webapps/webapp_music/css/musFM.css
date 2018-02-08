@@ -126,7 +126,7 @@ margin-bottom: 5px;
 padding: 5px;
 }
 .file-tpl > li:nth-child(2n+1) {
-  background: none repeat scroll 0 0 #def;
+  background: none repeat scroll 0 0 #B0C4DE/*#def*/;
 /*#C9D9C9;*/
 }
 .file > input {
