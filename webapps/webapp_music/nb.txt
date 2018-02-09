@@ -4,10 +4,33 @@
 
 - сделать запоминание последней папки в cookies
 
+
 - исправить, при формировании плейлиста, в JSON попадают файловые пути, соответствующие 
 ОС в которой происходило составление плейлиста (/mnt/d2/music, d:/music) и треки не везде
 возпроизводятся по этой причине
-включать web-ссылки??? (http://music/.....)
+!включать web-ссылки??? (http://music/.....)
+
+================== ИСПРАВИТЬ
+при замене в файловом пути части соотв. расположению коллекции треков на веб-алиас этой коллекции,
+возникает проблема с добавлением в плейлист треков находящихся вне коллекции.
+
+//----------------------- get relative path
+vars["content_location"] = "/mnt/d2/temp";
+vars["dirname"] = "/mnt/d2/temp/D/Def Leppard/1983 - Pyromania";
+var relativePath = vars["dirname"].substring( vars["content_location"].length, vars["dirname"].length );
+console.log( relativePath );
+console.log( vars["music_alias"] + relativePath );// "/music" + "/D/Def Leppard/1983 - Pyromania"
+//-----------------
+
+Например, при 
+vars["content_location"] = "/mnt/d2/music";
+vars["dirname"] = "/mnt/d2/unsort/music_unsort/Def Leppard/1983 - Pyromania";
+vars["music_alias"] = "/music"
+var relativePath = "t/music_unsort/Def Leppard/1983 - Pyromania";
+в итоге 
+"music"+"t/music_unsort/Def Leppard/1983 - Pyromania"
+
+
 
 *при загрузке страницы получать список плейлистов
 
