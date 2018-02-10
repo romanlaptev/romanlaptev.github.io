@@ -61,10 +61,10 @@ var MusicFM = function( options ){
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/aspx/test.aspx",
 		
-		//"music_alias" : "/music/",
-		"music_alias" : "/music",
+		//"alias" : "/music/",
+		"alias" : "/music",
 		
-		"content_location" : "",
+		"content_location" : "./",
 		
 		//"protocol" : "file://",
 		//"protocol" : "",
@@ -95,10 +95,10 @@ console.log( "vars:" , vars );
 //vars["content_location"] = "/home/www";
 //------------------ replace fs path to web alias, TEST!!!!!
 /*
-vars["music_alias"] = "/music/";
+vars["alias"] = "/music/";
 vars["dirname"] = "/mnt/d2/music/D/Def Leppard/1983 - Pyromania";
-var pos1 = vars["dirname"].indexOf( vars["music_alias"] );
-//var pos2 = pos1 + vars["music_alias"].length;
+var pos1 = vars["dirname"].indexOf( vars["alias"] );
+//var pos2 = pos1 + vars["alias"].length;
 console.log(pos1);
 var newLinkPath = vars["dirname"].substring( pos1, vars["dirname"].length );
 console.log(newLinkPath);
@@ -110,19 +110,23 @@ vars["content_location"] = "/mnt/d2/temp";
 vars["dirname"] = "/mnt/d2/temp/D/Def Leppard/1983 - Pyromania";
 var relativePath = vars["dirname"].substring( vars["content_location"].length, vars["dirname"].length );
 console.log( relativePath );
-console.log( vars["music_alias"] + relativePath );
+console.log( vars["alias"] + relativePath );
 //-----------------
 */
 //vars["content_location"] = "/documents/laptev/www/music";
-//vars["music_alias"] = "/www/music",
+//vars["alias"] = "/www/music",
 
 //vars["disk_symbol"] = "C:";
 //vars["content_location"] = "/temp/music";
-	vars["content_location"] = "./";
 
 	vars["GET"] = parseGetParams(); 
+
 	if( vars["GET"]["content_location"] ){
 		vars["content_location"] = vars["GET"]["content_location"];
+	}
+
+	if( vars["GET"]["alias"] ){
+		vars["alias"] = "/" + vars["GET"]["alias"];
 	}
 	
 	//var dirname = $("input[name=init_dirname]").val();
@@ -130,6 +134,7 @@ console.log( vars["music_alias"] + relativePath );
 	if ( vars["GET"]["dirname"] ) {
 		vars["dirname"] = vars["GET"]["dirname"];
 	}
+
 	if ( vars["GET"]["pls"] ) {
 		vars["playlist"] = vars["GET"]["pls"];
 	}
@@ -140,7 +145,7 @@ console.log( vars["music_alias"] + relativePath );
 		vars["filelist_src"] = "file:///"+ vars["dirname"];
 	}
 	if (window.location.protocol == "http:"){
-		vars["filelist_src"] = "http://"+ window.location.host + vars["music_alias"];
+		vars["filelist_src"] = "http://"+ window.location.host + vars["alias"];
 	}
 
 	var get_filelist;
@@ -747,8 +752,8 @@ console.log("edit playlist", checked_files, checked_files.length);
 /*			
 //------------------ replace fs path to web alias
 //vars["dirname"] = "/documents/laptev/www/music/Def Leppard/1983 - Pyromania";
-var pos1 = vars["dirname"].indexOf( vars["music_alias"] );
-//var pos2 = pos1 + vars["music_alias"].length;
+var pos1 = vars["dirname"].indexOf( vars["alias"] );
+//var pos2 = pos1 + vars["alias"].length;
 //console.log(pos1, pos2);
 var newLinkPath = vars["dirname"].substring( pos1, vars["dirname"].length );
 //console.log(newLinkPath);
@@ -759,7 +764,7 @@ checked_files.push ( newLinkPath +"/" + $(this).val() );
 //----------------------- get relative path
 var relativePath = vars["dirname"].substring( vars["content_location"].length, vars["dirname"].length );
 console.log( "relativePath: " + relativePath );
-var newLinkPath = vars["music_alias"] + relativePath;
+var newLinkPath = vars["alias"] + relativePath;
 console.log( "newLinkPath: " + newLinkPath );
 checked_files.push ( newLinkPath +"/" + $(this).val() );
 //-----------------
