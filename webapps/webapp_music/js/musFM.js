@@ -763,9 +763,9 @@ checked_files.push ( newLinkPath +"/" + $(this).val() );
 
 //----------------------- get relative path
 var relativePath = vars["dirname"].substring( vars["content_location"].length, vars["dirname"].length );
-console.log( "relativePath: " + relativePath );
+//console.log( "relativePath: " + relativePath );
 var newLinkPath = vars["alias"] + relativePath;
-console.log( "newLinkPath: " + newLinkPath );
+//console.log( "newLinkPath: " + newLinkPath );
 checked_files.push ( newLinkPath +"/" + $(this).val() );
 //-----------------
 
