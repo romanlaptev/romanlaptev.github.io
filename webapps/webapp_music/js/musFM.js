@@ -1004,7 +1004,7 @@ console.log( "errorThrown: " + errorThrown );
 			filelist["files"].push( file );
 		});//end each
 
-//console.log ( filelist );
+//console.log ( "filelist: ", filelist );
 		return filelist;
 	}// end parse_filelist_xml()
 
@@ -1106,7 +1106,16 @@ console.log( "errorThrown: " + errorThrown );
 				for(file in files) {
 					var last_slash_pos = files[file].lastIndexOf('/')+1;
 					var filename = files[file].substring( last_slash_pos );
-					files_html += vars["templates"]["file_tpl"].replace("#", files[file] ).replace(/fname/g, filename);
+					
+					//files_html += vars["templates"]["file_tpl"].replace("#", files[file] ).replace(/fname/g, filename);
+//----------------------- get relative path and form file link
+var relativePath = files[file].substring( vars["content_location"].length, files[file].length );
+console.log( "relativePath: " + relativePath );
+var fileLink = vars["alias"] + relativePath;
+console.log( "fileLink: " + fileLink );
+files_html += vars["templates"]["file_tpl"].replace("#", fileLink ).replace(/fname/g, filename);
+//-----------------
+					
 				}//next
 			}
 		}//next
