@@ -1110,10 +1110,12 @@ console.log( "errorThrown: " + errorThrown );
 					//files_html += vars["templates"]["file_tpl"].replace("#", files[file] ).replace(/fname/g, filename);
 //----------------------- get relative path and form file link
 var relativePath = files[file].substring( vars["content_location"].length, files[file].length );
-console.log( "relativePath: " + relativePath );
+//console.log( "relativePath: " + relativePath );
 var fileLink = vars["alias"] + relativePath;
-console.log( "fileLink: " + fileLink );
-files_html += vars["templates"]["file_tpl"].replace("#", fileLink ).replace(/fname/g, filename);
+//console.log( "fileLink: " + fileLink );
+files_html += vars["templates"]["file_tpl"]
+.replace("#", fileLink )
+.replace(/fname/g, filename);
 //-----------------
 					
 				}//next
