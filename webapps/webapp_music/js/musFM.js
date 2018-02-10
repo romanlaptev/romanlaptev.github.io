@@ -336,19 +336,19 @@ function initApp(){
 			
 			var src_path = $( panels["active"] + " .dirname").text();
 			var fsPathSrc = src_path;
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPathSrc = vars["disk_symbol"] + fsPathSrc;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPathSrc = vars["disk_symbol"] + fsPathSrc;
+				// }
+			// }
 			
 			var dst_path  = $("#modal-copy input[name=dst_folder]").val();
 			var fsPathDst = dst_path;
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPathDst = vars["disk_symbol"] + fsPathDst;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPathDst = vars["disk_symbol"] + fsPathDst;
+				// }
+			// }
 
 			var file = new Array();
 			$( panels["active"] + " .wfm input[type=checkbox]:checked").each(function(){
@@ -417,11 +417,11 @@ console.log( "errorThrown: " + errorThrown );
 			//var dirname = $( panels["active"] + " .dirname").text();
 			var dirname = vars["dirname"];
 			var fsPath = dirname;
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPath = vars["disk_symbol"] + dirname;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPath = vars["disk_symbol"] + dirname;
+				// }
+			// }
 			
 			$.ajax({
 				type: "POST",
@@ -457,11 +457,11 @@ console.log( "errorThrown: " + errorThrown );
 			});				
 //console.log(file);
 			var fsPath = dirname;
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPath = vars["disk_symbol"] + dirname;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPath = vars["disk_symbol"] + dirname;
+				// }
+			// }
 			
 			$.ajax({
 				//async: false,
@@ -504,11 +504,11 @@ console.log( "errorThrown: " + errorThrown );
 			var dirname = vars["dirname"];
 			
 			var fsPath = dirname;
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPath = vars["disk_symbol"] + dirname;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPath = vars["disk_symbol"] + dirname;
+				// }
+			// }
 			
 			var newfolder = $("#modal-mkdir input[name=new_name]").val();
 			$.ajax({
@@ -616,11 +616,11 @@ console.log( "errorThrown: " + errorThrown );
 //console.log(e);	
 			var panels = get_panels_info();
 			var fsPathSrc = $( panels["active"] + " .dirname").text();
-			if ( vars["OS"] === "Windows" ){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					fsPathSrc = vars["disk_symbol"] + fsPathSrc;
-				}
-			}
+			// if ( vars["OS"] === "Windows" ){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// fsPathSrc = vars["disk_symbol"] + fsPathSrc;
+				// }
+			// }
 		
 			var filename = $("#modal-save-pls input[name=new_name]").val() ;
 			filename = fsPathSrc + "/"+ filename;
@@ -863,12 +863,12 @@ console.log( "errorThrown: " + errorThrown );
 	get_filelist = function( url, dirname, panel ){
 		
 		var fsPath = dirname;
-		if ( vars["OS"] === "Windows" ){
-			//dirname = dirname.replace("file:///","");
-			if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-				fsPath = vars["disk_symbol"] + dirname;
-			}
-		}
+		// if ( vars["OS"] === "Windows" ){
+			// //dirname = dirname.replace("file:///","");
+			// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+				// fsPath = vars["disk_symbol"] + dirname;
+			// }
+		// }
 
 		
 		$.ajax({
@@ -981,11 +981,11 @@ console.log( "errorThrown: " + errorThrown );
 			
 			//var file = url + "/" + filename.replace("\\","\/");
 			var file = filename.replace("\\","\/");
-			if ( vars["OS"] === "Windows"){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					file = file.replace( vars["disk_symbol"],"");
-				}
-			}
+			// if ( vars["OS"] === "Windows"){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// file = file.replace( vars["disk_symbol"],"");
+				// }
+			// }
 			
 			filelist["subfolders"].push( file );
 		});//end each
@@ -995,11 +995,11 @@ console.log( "errorThrown: " + errorThrown );
 			
 			//var file = url + "/" + filename.replace("\\","\/");
 			var file = filename.replace("\\","\/");
-			if ( vars["OS"] === "Windows"){
-				if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					file = file.replace( vars["disk_symbol"],"");
-				}
-			}
+			// if ( vars["OS"] === "Windows"){
+				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+					// file = file.replace( vars["disk_symbol"],"");
+				// }
+			// }
 			
 			filelist["files"].push( file );
 		});//end each
