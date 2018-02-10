@@ -82,17 +82,16 @@ var MusicFM = function( options ){
 	};
 console.log( "vars:" , vars );
 
-	vars["GET"] = parseGetParams(); 
-	
 	if (navigator.userAgent.indexOf ('Windows')!= -1){
 		vars["OS"] = "Windows";
-		vars["disk_symbol"] = "D:";
-		vars["content_location"] = "/music";
+		//vars["disk_symbol"] = "D:";
+		//vars["content_location"] = "/music";
 	}
 	if (navigator.userAgent.indexOf ('Linux')!= -1){
 		vars["OS"] = "Linux";
-		vars["content_location"] = "/mnt/d2/music";
+		//vars["content_location"] = "/mnt/d2/music";
 	}
+	
 //vars["content_location"] = "/home/www";
 //------------------ replace fs path to web alias, TEST!!!!!
 /*
@@ -116,6 +115,15 @@ console.log( vars["music_alias"] + relativePath );
 */
 //vars["content_location"] = "/documents/laptev/www/music";
 //vars["music_alias"] = "/www/music",
+
+//vars["disk_symbol"] = "C:";
+//vars["content_location"] = "/temp/music";
+	vars["content_location"] = "./";
+
+	vars["GET"] = parseGetParams(); 
+	if( vars["GET"]["content_location"] ){
+		vars["content_location"] = vars["GET"]["content_location"];
+	}
 	
 	//var dirname = $("input[name=init_dirname]").val();
 	vars["dirname"] = vars["content_location"];
@@ -731,7 +739,11 @@ console.log("edit playlist", checked_files, checked_files.length);
 		vars["dirname"] = $( panels["active"] + " .dirname").text();
 		var checked_files = [];
 		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(function(num, item){
-			//checked_files.push ( vars["dirname"] +"/" + $(this).val() );
+			
+			// var newLink = vars["dirname"] +"/" + $(this).val();
+// console.log( newLink );
+			// checked_files.push ( newLink );
+			
 /*			
 //------------------ replace fs path to web alias
 //vars["dirname"] = "/documents/laptev/www/music/Def Leppard/1983 - Pyromania";
@@ -746,9 +758,9 @@ checked_files.push ( newLinkPath +"/" + $(this).val() );
 
 //----------------------- get relative path
 var relativePath = vars["dirname"].substring( vars["content_location"].length, vars["dirname"].length );
-console.log( relativePath );
+console.log( "relativePath: " + relativePath );
 var newLinkPath = vars["music_alias"] + relativePath;
-console.log( newLinkPath );
+console.log( "newLinkPath: " + newLinkPath );
 checked_files.push ( newLinkPath +"/" + $(this).val() );
 //-----------------
 
