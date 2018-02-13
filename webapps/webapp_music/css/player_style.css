@@ -150,3 +150,9 @@ div.jp-video div.jp-type-playlist ul.jp-controls {
 div.jp-controls-holder {
      top: 0px;
 }
+
+div.jp-type-playlist div.jp-playlist a.jp-playlist-current {
+    /*color: #0d88c1;*/
+    background-color: #cef;
+    padding: 5px;
+}

@@ -42,7 +42,7 @@ console.log ("music file manager = ", musfm);
 		  $('#ajaxBusy').hide();
 		}
 	);
-	
+
 });//end ready
 
 window.onload = function(){
@@ -57,6 +57,7 @@ var MusicFM = function( options ){
 		"templates" : {
 			"subfolder_tpl" : "",
 			"file_tpl" : "",
+			"btn_edit" : "<a class='btn jp-playlist-item-edit' href='#numTrack'>edit</a>"
 		},
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/aspx/test.aspx",
@@ -687,18 +688,33 @@ console.log( checked_files );
 			
 			if( playlist.length > 0){
 				myPlaylist.setPlaylist( playlist );
-	//console.log (playlist, myPlaylist.playlist);
+//console.log (playlist, myPlaylist.playlist);
 				$("#playlist-title").text( vars["text_new_playlist"] );
 				
 				//----------------------- add Edit button in playlist
-	var btn_edit = "<div style=''>\
-<a class='btn jp-playlist-item-edit' href='#'>edit</a>\
-</div>";
+				var btnEdit;
 				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
 //console.log( key, value );
-//console.log( $(this) );
-					$(this).append( btn_edit );
+					var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
+//console.log( btn_edit );
+					
+					$(this).children("div").append( btn_edit );
+					//$(this).find(".jp-free-media").hide();
+					
+					btnEdit = $(this).find(".jp-playlist-item-edit");
+					btnEdit.on("click", function(e){
+//console.log("click!!!", $(this).attr("href") );
+						var num = $(this).attr("href").replace("#track", "");
+						
+						var trackTitle = "0000000000000000";
+						myPlaylist.playlist[num]["title"] = trackTitle;
+console.log ( myPlaylist.playlist );
+
+						$(this).parent().find(".jp-playlist-item").text( trackTitle );
+					});//end event
+					
 				});
+
 				//-----------------------
 				
 				var panels = get_panels_info();
