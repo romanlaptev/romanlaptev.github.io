@@ -113,8 +113,8 @@ console.log( relativePath );
 console.log( vars["alias"] + relativePath );
 //-----------------
 */
-//vars["content_location"] = "/documents/laptev/www/music";
-//vars["alias"] = "/www/music",
+vars["content_location"] = "d:/documents/laptev/www/music";
+vars["alias"] = "/www/music",
 
 //vars["disk_symbol"] = "C:";
 //vars["content_location"] = "/temp/music";
@@ -689,7 +689,18 @@ console.log( checked_files );
 				myPlaylist.setPlaylist( playlist );
 	//console.log (playlist, myPlaylist.playlist);
 				$("#playlist-title").text( vars["text_new_playlist"] );
-
+				
+				//----------------------- add Edit button in playlist
+	var btn_edit = "<div style=''>\
+<a class='btn jp-playlist-item-edit' href='#'>edit</a>\
+</div>";
+				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+//console.log( key, value );
+//console.log( $(this) );
+					$(this).append( btn_edit );
+				});
+				//-----------------------
+				
 				var panels = get_panels_info();
 				var $activePanel = $( panels["active"] );
 				clearCheckbox( $activePanel );
