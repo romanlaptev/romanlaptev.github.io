@@ -156,3 +156,10 @@ div.jp-type-playlist div.jp-playlist a.jp-playlist-current {
     background-color: #cef;
     padding: 5px;
 }
+
+.jp-playlist-item-edit {
+	float: right;
+	margin-right: 5px;
+	margin-top: -2px;
+	padding: 1px 5px;
+}

@@ -58,6 +58,7 @@ var MusicFM = function( options ){
 			"subfolder_tpl" : "",
 			"file_tpl" : "",
 			"btn_edit" : "<a class='btn jp-playlist-item-edit' href='#numTrack'>edit</a>"
+			//"btn_edit" : "<div><a class='btn jp-playlist-item-edit' href='#numTrack'>edit</a></div>"
 		},
 		"testUrlPHP": "api/test.php",
 		"testUrlASPX": "api/aspx/test.aspx",
@@ -671,13 +672,13 @@ console.log( checked_files );
 				var playlist = myPlaylist.playlist;
 				var add = false;
 				if (filename.toLowerCase().lastIndexOf(".mp3") > 0){
-					add = { "title":filename, "mp3": track, free: true };
+					add = { "title":filename, "mp3": track, free: false };
 				}
 				if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
-					add = { "title":filename, "oga": track, free: true };
+					add = { "title":filename, "oga": track, free: false };
 				}
 				if (filename.toLowerCase().lastIndexOf('.wav') > 0){
-					add = { "title":filename, "wav": track, free: true };
+					add = { "title":filename, "wav": track, free: false };
 				}
 				
 				if( add ){
@@ -698,23 +699,17 @@ console.log( checked_files );
 					var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
 //console.log( btn_edit );
 					
+					//$(this).append( btn_edit );
 					$(this).children("div").append( btn_edit );
 					//$(this).find(".jp-free-media").hide();
 					
 					btnEdit = $(this).find(".jp-playlist-item-edit");
 					btnEdit.on("click", function(e){
 //console.log("click!!!", $(this).attr("href") );
-						var num = $(this).attr("href").replace("#track", "");
-						
-						var trackTitle = "0000000000000000";
-						myPlaylist.playlist[num]["title"] = trackTitle;
-console.log ( myPlaylist.playlist );
-
-						$(this).parent().find(".jp-playlist-item").text( trackTitle );
+						_editPlsItem( $(this) );
 					});//end event
 					
-				});
-
+				});//end each
 				//-----------------------
 				
 				var panels = get_panels_info();
@@ -730,6 +725,26 @@ console.log ( myPlaylist.playlist );
 console.log("edit playlist", checked_files, checked_files.length);
 			}
 		});//end event
+		
+		//Edit playlist item
+		function _editPlsItem( $btn ){
+			var num = $btn.attr("href").replace("#track", "");
+			
+			var trackTitle = myPlaylist.playlist[num]["title"];
+			trackTitle += "!!!!";
+			var trackUrl = myPlaylist.playlist[num]["mp3"];
+						
+			myPlaylist.playlist[num]["title"] = trackTitle;
+console.log ( myPlaylist.playlist );
+
+			$('#modal-edit-pls').modal('show');
+/*
+$('#myModal').modal('toggle');
+$('#myModal').modal('show');
+$('#myModal').modal('hide');
+*/			
+			$btn.parent().find(".jp-playlist-item").text( trackTitle );
+		}//end _editPlsItem()
 		
 		
 		$("#checkAll").on("click", function(){
@@ -1065,7 +1080,7 @@ console.log( "errorThrown: " + errorThrown );
 				var track = {
 				title: filename,
 				mp3: filelist[file],
-				free: true, // Optional - Generates links to the media
+				free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}
@@ -1074,7 +1089,7 @@ console.log( "errorThrown: " + errorThrown );
 				var track = {
 				title: filename,
 				oga: filelist[file],
-				free: true, // Optional - Generates links to the media
+				free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}
@@ -1083,7 +1098,7 @@ console.log( "errorThrown: " + errorThrown );
 				var track = {
 				title: filename,
 				wav: filelist[file],
-				free: true, // Optional - Generates links to the media
+				free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}

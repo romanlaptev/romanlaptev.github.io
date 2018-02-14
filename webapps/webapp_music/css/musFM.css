@@ -272,3 +272,11 @@ ul.inline > li, ol.inline > li {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
+/* fix bootstrap*/
+#modal-edit-pls {
+	width: 600px !important;
+}
+#modal-edit-pls input{
+	width: 460px !important;
+}
