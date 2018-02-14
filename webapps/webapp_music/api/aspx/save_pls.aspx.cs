@@ -32,7 +32,7 @@ foreach ( string x in Request.Params )
 
 			if ( Request.HttpMethod != "POST" )
 			{
-				Response.Write("<p class='alert-error'><b>error</b>, need <b>POST query</b> !</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, need <b>POST query</b> !</p>");
 				return;
 			}
 /*
@@ -60,22 +60,22 @@ foreach (string key in Request.Form.AllKeys)
 */
 			
 			if( Request.Form["filename"] == null ){
-				Response.Write("<p class='alert-error'><b>error</b>, undefined 'filename'.</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, undefined 'filename'.</p>");
 				return;
 			}
 			string filename = Request.Form["filename"];
 			if( filename.Length == 0 ){
-				Response.Write("<p class='alert-error'><b>error</b>, empty 'filename'.</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, empty 'filename'.</p>");
 				return;
 			}
 			
 			if( Request.Form["json"] == null ){
-				Response.Write("<p class='alert-error'><b>error</b>, undefined 'json'.</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, undefined 'json'.</p>");
 				return;
 			}
 			string json = Request.Form["json"];
 			if( json.Length == 0 ){
-				Response.Write("<p class='alert-error'><b>error</b>, empty 'json'.</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, empty 'json'.</p>");
 				return;
 			}
 			
@@ -84,18 +84,18 @@ foreach (string key in Request.Form.AllKeys)
 				StreamWriter sw1 = new StreamWriter( filename );
 				sw1.WriteLine( json );
 				sw1.Close();
-				Response.Write ( "<p class='ok'><b>save playlist </b> " + filename + "</p>"); 
+				Response.Write ( "<p class='alert alert-success'><b>save playlist </b> " + filename + "</p>"); 
 			}
 			catch (Exception ex2)
 			{
-				Response.Write("<p class='alert-error'>"+ex2.Message+"</p>");
+				Response.Write("<p class='alert alert-error'>"+ex2.Message+"</p>");
 			}	
 			
 /*
 			string[] playlist = null;
 			playlist = Request.Form.GetValues("playlist[]");
 			if( playlist == null ){
-				Response.Write("<p class='alert-error'><b>error</b>, empty 'playlist[]'.</p>");
+				Response.Write("<p class='alert alert-error'><b>error</b>, empty 'playlist[]'.</p>");
 				return;
 			}
 			int len = playlist.Length;

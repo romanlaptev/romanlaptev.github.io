@@ -54,6 +54,9 @@ var MusicFM = function( options ){
 	// init vars
 	var vars = {
 		"log" : [],
+		"messages" : {
+			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty....</p>",
+		},
 		"templates" : {
 			"subfolder_tpl" : "",
 			"file_tpl" : "",
@@ -731,19 +734,39 @@ console.log("edit playlist", checked_files, checked_files.length);
 			var num = $btn.attr("href").replace("#track", "");
 			var trackTitle = myPlaylist.playlist[num]["title"];
 			var trackUrl = myPlaylist.playlist[num]["mp3"];
-						
-			//myPlaylist.playlist[num]["title"] = trackTitle;
-//console.log ( myPlaylist.playlist );
-
-			$('#modal-edit-pls').modal('show');
+			
+			$("#modal-edit-pls input[name=trackNum]").val( num );
 			$("#modal-edit-pls input[name=trackTitle]").val( trackTitle );
 			$("#modal-edit-pls input[name=trackUrl]").val( trackUrl );
+			$('#modal-edit-pls').modal('show');
 
-			//$btn.parent().find(".jp-playlist-item").text( trackTitle );
 		}//end _editPlsItem()
 		
 		$("#modal-edit-pls  .action-btn").on("click", function(e){
 			$("#modal-edit-pls").modal("hide");
+			
+			var log_message = "";
+			if ( myPlaylist.playlist.length == 0 ){
+				log_message += vars["messages"]["emptyPls"];
+				$("#log").append( log_message );
+				return false;
+			}
+				
+			var num = parseInt( $("#modal-edit-pls input[name=trackNum]").val() );
+			var trackTitle = $("#modal-edit-pls input[name=trackTitle]").val();
+			myPlaylist.playlist[num]["title"] = trackTitle;
+			
+			var trackUrl = $("#modal-edit-pls input[name=trackUrl]").val();
+			myPlaylist.playlist[num]["mp3"] = trackUrl;
+console.log ( myPlaylist.playlist );
+
+			//replace text
+			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+				if( key === num){
+					$(this).find(".jp-playlist-item").text( trackTitle );
+				}
+			});//end each
+			
 		});//end event
 
 
