@@ -55,7 +55,8 @@ var MusicFM = function( options ){
 	var vars = {
 		"log" : [],
 		"messages" : {
-			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty....</p>",
+			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty.</p>",
+			"errorPlsFilename" : "<p class='alert alert-danger'>Playlist file not found.</p>",
 		},
 		"templates" : {
 			"subfolder_tpl" : "",
@@ -384,8 +385,8 @@ function initApp(){
 				error: function (XMLHttpRequest, textStatus, errorThrown){
 console.log( "textStatus: " + textStatus );
 console.log( "errorThrown: " + errorThrown );
-						$("#log").append( "<p class='error'><b>textStatus:</b> " + textStatus +"</p>");
-						$("#log").append( "<p class='error'><b>errorThrown</b>: " + errorThrown +"</p>" );
+						$("#log").append( "<p class='alert alert-error'><b>textStatus:</b> " + textStatus +"</p>");
+						$("#log").append( "<p class='alert alert-error'><b>errorThrown</b>: " + errorThrown +"</p>" );
 				}
 			});
 
@@ -441,8 +442,8 @@ console.log( "errorThrown: " + errorThrown );
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 console.log( "textStatus: " + textStatus );
 console.log( "errorThrown: " + errorThrown );
-						$("#log").append( "<p class='error'><b>textStatus:</b> " + textStatus +"</p>");
-						$("#log").append( "<p class='error'><b>errorThrown</b>: " + errorThrown +"</p>" );
+						$("#log").append( "<p class='alert alert-error'><b>textStatus:</b> " + textStatus +"</p>");
+						$("#log").append( "<p class='alert alert-error'><b>errorThrown</b>: " + errorThrown +"</p>" );
 				}
 			});
 			return false;
@@ -492,8 +493,8 @@ console.log( "errorThrown: " + errorThrown );
 				error: function (XMLHttpRequest, textStatus, errorThrown){
 console.log( "textStatus: " + textStatus );
 console.log( "errorThrown: " + errorThrown );
-						$("#log").append( "<p class='error'><b>textStatus:</b> " + textStatus +"</p>");
-						$("#log").append( "<p class='error'><b>errorThrown</b>: " + errorThrown +"</p>" );
+						$("#log").append( "<p class='alert alert-error'><b>textStatus:</b> " + textStatus +"</p>");
+						$("#log").append( "<p class='alert alert-error'><b>errorThrown</b>: " + errorThrown +"</p>" );
 				}
 			});
 
@@ -528,8 +529,8 @@ console.log( "errorThrown: " + errorThrown );
 //console.log( "XMLHttpRequest: " + XMLHttpRequest );
 console.log( "textStatus: " + textStatus );
 console.log( "errorThrown: " + errorThrown );
-						$("#log").append( "<p class='error'><b>textStatus:</b> " + textStatus +"</p>");
-						$("#log").append( "<p class='error'><b>errorThrown</b>: " + errorThrown +"</p>" );
+						$("#log").append( "<p class='alert alert-error'><b>textStatus:</b> " + textStatus +"</p>");
+						$("#log").append( "<p class='alert alert-error'><b>errorThrown</b>: " + errorThrown +"</p>" );
 					}
 			});
 			return false;
@@ -611,7 +612,7 @@ console.log( "errorThrown: " + errorThrown );
 				clearCheckbox( $activePanel );
 				
 			} else {
-				var log_message = "<p class='alert-error'>Playlist file not found....</p>";
+				var log_message = vars["messages"]["errorPlsFilename"];
 				$("#log").append( log_message );
 			}
 			return false;
@@ -648,11 +649,11 @@ console.log( "errorThrown: " + errorThrown );
 					$("#playlist-title").text(filename);
 					
 				} else {
-					log_message += "<p class='error'>Enter filename</p>";
+					log_message += "<p class='alert alert-error'>Enter filename</p>";
 				}
 
 			} else {
-				log_message += "<p class='error'>Playlist is empty....</p>";
+				log_message += "<p class='alert alert-error'>Playlist is empty....</p>";
 			}
 			$("#log").append( log_message );
 		});//end event
@@ -661,7 +662,7 @@ console.log( "errorThrown: " + errorThrown );
 		//--------------------
 		$("#add-track").click(function(){
 			var checked_files = get_checked_files();
-console.log( checked_files );
+//console.log( checked_files );
 
 			var playlist = [];
 			for ( var item in checked_files){
@@ -691,56 +692,17 @@ console.log( checked_files );
 			}//next
 			
 			if( playlist.length > 0){
-				myPlaylist.setPlaylist( playlist );
-//console.log (playlist, myPlaylist.playlist);
-				$("#playlist-title").text( vars["text_new_playlist"] );
-				
-				//----------------------- add Edit button in playlist
-				var btnEdit;
-				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
-//console.log( key, value );
-					var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
-//console.log( btn_edit );
-					
-					//$(this).append( btn_edit );
-					$(this).children("div").append( btn_edit );
-					//$(this).find(".jp-free-media").hide();
-					
-					btnEdit = $(this).find(".jp-playlist-item-edit");
-					btnEdit.on("click", function(e){
-//console.log("click!!!", $(this).attr("href") );
-						_editPlsItem( $(this) );
-					});//end event
-					
-				});//end each
-				//-----------------------
-				
-				var panels = get_panels_info();
-				var $activePanel = $( panels["active"] );
-				clearCheckbox( $activePanel );
+				_setPlaylist( playlist, vars["text_new_playlist"] );
 			}
 			
 		});//end event
 
-		$("#edit-pls").click( function(){
-			var checked_files = get_checked_files();
-			if( checked_files.length === 1){
-console.log("edit playlist", checked_files, checked_files.length);
-			}
-		});//end event
-		
-		//Edit playlist item
-		function _editPlsItem( $btn ){
-			var num = $btn.attr("href").replace("#track", "");
-			var trackTitle = myPlaylist.playlist[num]["title"];
-			var trackUrl = myPlaylist.playlist[num]["mp3"];
-			
-			$("#modal-edit-pls input[name=trackNum]").val( num );
-			$("#modal-edit-pls input[name=trackTitle]").val( trackTitle );
-			$("#modal-edit-pls input[name=trackUrl]").val( trackUrl );
-			$('#modal-edit-pls').modal('show');
-
-		}//end _editPlsItem()
+		// $("#edit-pls").click( function(){
+			// var checked_files = get_checked_files();
+			// if( checked_files.length === 1){
+// console.log("edit playlist", checked_files, checked_files.length);
+			// }
+		// });//end event
 		
 		$("#modal-edit-pls  .action-btn").on("click", function(e){
 			$("#modal-edit-pls").modal("hide");
@@ -984,7 +946,7 @@ console.log( "errorThrown: " + errorThrown );
 
 					var msg = "function get_filelist( "+url+" ), " + textStatus +", "+errorThrown;
 					vars["log"].push(msg);
-					var log_message = "<p class='error'>"+ msg +"</p>";
+					var log_message = "<p class='alert alert-error'>"+ msg +"</p>";
 					$("#log").append( log_message );
 			},
 			
@@ -1217,13 +1179,14 @@ files_html += vars["templates"]["file_tpl"]
 		//var url = "pls/" + filename;
 		$.getJSON( url )
 			.done( function( json ) {
-			myPlaylist.setPlaylist( json );
+			//myPlaylist.setPlaylist( json );
+			_setPlaylist( json, url );
 		})
 			.fail( function( jqxhr, textStatus, error ) {
 				var err = textStatus + ", " + error;
 console.log( "textStatus: " + textStatus );
 console.log( "error: " + error );
-				var log_message = "<p class='error'>function load_playlist( "+url+" ), " + textStatus +", "+error +"</p>";
+				var log_message = "<p class='alert alert-error'>function load_playlist( "+url+" ), " + textStatus +", "+error +"</p>";
 				$("#log").append( log_message );
 		});
 	}
@@ -1283,7 +1246,7 @@ console.log( arguments );
 			error: function (XMLHttpRequest, textStatus, errorThrown){
 //console.log( "textStatus: " + textStatus );
 //console.log( "errorThrown: " + errorThrown );
-				var msg = "<p class='alert-error'>";
+				var msg = "<p class='alert alert-error'>";
 				msg += "<b>url:</b> " + vars["save_pls_url"] +", ";
 				msg += "<b>textStatus:</b> " + textStatus +", ";
 				msg += "<b>errorThrown</b>: " + errorThrown;
@@ -1294,6 +1257,61 @@ console.log( arguments );
 
 	}//end save_playlist
 
+	function _setPlaylist( playlist, plsName ){
+console.log ("_setPlaylist!!!");
+
+		myPlaylist.setPlaylist( playlist );//async  action??????
+		
+		var timerId = setTimeout(function(){
+			//----------------------- add Edit button in playlist
+			var btnEdit;
+			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+	console.log( key, value );
+				var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
+						
+				var test = $(this).children("div").find(".jp-playlist-item-edit");
+console.log( test.length );
+				if( test.length === 0){
+					
+					//$(this).append( btn_edit );
+					$(this).children("div").append( btn_edit );
+					//$(this).find(".jp-free-media").hide();
+							
+					btnEdit = $(this).find(".jp-playlist-item-edit");
+					btnEdit.on("click", function(e){
+		//console.log("click!!!", $(this).attr("href") );
+						_editPlsItem( $(this) );
+					});//end event
+					
+				}
+						
+			});//end each
+
+	console.log( $("#jp_container_N .jp-playlist").html() );
+			//-----------------------
+		}, 1*1000 );
+		
+		$("#playlist-title").text( plsName );
+
+				
+		var panels = get_panels_info();
+		var $activePanel = $( panels["active"] );
+		clearCheckbox( $activePanel );
+	}//end _setPlaylist
+	
+	//Edit playlist item
+	function _editPlsItem( $btn ){
+		var num = $btn.attr("href").replace("#track", "");
+		var trackTitle = myPlaylist.playlist[num]["title"];
+		var trackUrl = myPlaylist.playlist[num]["mp3"];
+		
+		$("#modal-edit-pls input[name=trackNum]").val( num );
+		$("#modal-edit-pls input[name=trackTitle]").val( trackTitle );
+		$("#modal-edit-pls input[name=trackUrl]").val( trackUrl );
+		$('#modal-edit-pls').modal('show');
+
+	}//end _editPlsItem()
+	
 	return "Web Music player + File manager";
 	
 }//end MusicFM
