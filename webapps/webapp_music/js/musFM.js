@@ -729,23 +729,24 @@ console.log("edit playlist", checked_files, checked_files.length);
 		//Edit playlist item
 		function _editPlsItem( $btn ){
 			var num = $btn.attr("href").replace("#track", "");
-			
 			var trackTitle = myPlaylist.playlist[num]["title"];
-			trackTitle += "!!!!";
 			var trackUrl = myPlaylist.playlist[num]["mp3"];
 						
-			myPlaylist.playlist[num]["title"] = trackTitle;
-console.log ( myPlaylist.playlist );
+			//myPlaylist.playlist[num]["title"] = trackTitle;
+//console.log ( myPlaylist.playlist );
 
 			$('#modal-edit-pls').modal('show');
-/*
-$('#myModal').modal('toggle');
-$('#myModal').modal('show');
-$('#myModal').modal('hide');
-*/			
-			$btn.parent().find(".jp-playlist-item").text( trackTitle );
+			$("#modal-edit-pls input[name=trackTitle]").val( trackTitle );
+			$("#modal-edit-pls input[name=trackUrl]").val( trackUrl );
+
+			//$btn.parent().find(".jp-playlist-item").text( trackTitle );
 		}//end _editPlsItem()
 		
+		$("#modal-edit-pls  .action-btn").on("click", function(e){
+			$("#modal-edit-pls").modal("hide");
+		});//end event
+
+
 		
 		$("#checkAll").on("click", function(){
 			
