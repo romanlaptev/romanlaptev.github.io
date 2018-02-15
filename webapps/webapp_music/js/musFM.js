@@ -57,6 +57,7 @@ var MusicFM = function( options ){
 		"messages" : {
 			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty.</p>",
 			"errorPlsFilename" : "<p class='alert alert-danger'>Playlist file not found.</p>",
+			"emptyFilename" : "<p class='alert alert-error'>error, empty filename!!!</p>"
 		},
 		"templates" : {
 			"subfolder_tpl" : "",
@@ -83,7 +84,7 @@ var MusicFM = function( options ){
 		"mkdir_url" : "",
 		"save_pls_url" : "",
 		"filelist_src" : "",
-		"text_new_playlist" : "new playlist",
+		"filename_new_playlist" : "new_playlist.json",
 		"playlist" : ""
 	};
 console.log( "vars:" , vars );
@@ -169,6 +170,8 @@ function initApp(){
 		//vars["protocol"] = window.location.protocol;
 		//vars["hostname"] = window.location.hostname;
 		vars["website"] = window.location.protocol +"//"+ window.location.hostname;
+		
+		$("#modal-save-pls input[name=new_name]").val( vars["filename_new_playlist"] );		
 		
 		//--------------------------
 		$(".up-link").hide();
@@ -579,7 +582,7 @@ console.log( "errorThrown: " + errorThrown );
 			//get_filelist( vars["filelist_url"], dirname, files_panel, true );
 			get_filelist( vars["filelist_url"], vars["dirname"], files_panel, true );
 			
-			$("#playlist-title").text( vars["text_new_playlist"] );
+			$("#playlist-title").text( vars["filename_new_playlist"] );
 			return false;
 		});//end event
 */
@@ -604,8 +607,6 @@ console.log( "errorThrown: " + errorThrown );
 			var checked_files = get_checked_files();
 			if ( checked_files.length == 1 ){
 				load_playlist( checked_files[0] );
-				var filename = checked_files[0].substring( checked_files[0].lastIndexOf('/')+1, checked_files[0].length);
-				$("#playlist-title").text( filename );
 				
 				var panels = get_panels_info();
 				var $activePanel = $( panels["active"] );
@@ -620,18 +621,21 @@ console.log( "errorThrown: " + errorThrown );
 
 		$("#save-pls").on("click", function(e){
 //console.log(e);	
-			var panels = get_panels_info();
-			var fsPathSrc = $( panels["active"] + " .dirname").text();
-			// if ( vars["OS"] === "Windows" ){
-				// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
-					// fsPathSrc = vars["disk_symbol"] + fsPathSrc;
-				// }
-			// }
-		
 			var filename = $("#modal-save-pls input[name=new_name]").val() ;
-			filename = fsPathSrc + "/"+ filename;
-			$("#modal-save-pls input[name=new_name]").val( filename )
-		});
+//console.log( filename, filename === vars["filename_new_playlist"]);
+
+			if ( filename === vars["filename_new_playlist"] ){
+				var panels = get_panels_info();
+				var fsPathSrc = $( panels["active"] + " .dirname").text();
+				// if ( vars["OS"] === "Windows" ){
+					// if( vars["disk_symbol"] && vars["disk_symbol"].length > 0){
+						// fsPathSrc = vars["disk_symbol"] + fsPathSrc;
+					// }
+				// }
+				filename = fsPathSrc + "/"+ vars["filename_new_playlist"];
+			}
+			$("#modal-save-pls input[name=new_name]").val( filename );
+		});//end event
 		
 		$("#modal-save-pls  .action-btn").click(function(e){
 			$("#modal-save-pls").modal("hide");
@@ -649,11 +653,11 @@ console.log( "errorThrown: " + errorThrown );
 					$("#playlist-title").text(filename);
 					
 				} else {
-					log_message += "<p class='alert alert-error'>Enter filename</p>";
+					log_message += vars["messages"]["emptyFilename"];
 				}
 
 			} else {
-				log_message += "<p class='alert alert-error'>Playlist is empty....</p>";
+				log_message += vars["messages"]["emptyPls"];
 			}
 			$("#log").append( log_message );
 		});//end event
@@ -692,7 +696,7 @@ console.log( "errorThrown: " + errorThrown );
 			}//next
 			
 			if( playlist.length > 0){
-				_setPlaylist( playlist, vars["text_new_playlist"] );
+				_setPlaylist( playlist, vars["filename_new_playlist"] );
 			}
 			
 		});//end event
@@ -720,7 +724,6 @@ console.log( "errorThrown: " + errorThrown );
 			
 			var trackUrl = $("#modal-edit-pls input[name=trackUrl]").val();
 			myPlaylist.playlist[num]["mp3"] = trackUrl;
-console.log ( myPlaylist.playlist );
 
 			//replace text
 			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
@@ -728,6 +731,17 @@ console.log ( myPlaylist.playlist );
 					$(this).find(".jp-playlist-item").text( trackTitle );
 				}
 			});//end each
+			
+			//save changes
+			var filename = $("#modal-save-pls input[name=new_name]").val() ;
+//console.log( filename );
+			if ( filename.length === 0){
+				log_message += vars["messages"]["emptyFilename"];
+				$("#log").append( log_message );
+				return false;
+			}
+			save_playlist( filename, myPlaylist.playlist );
+			$("#playlist-title").text(filename);
 			
 		});//end event
 
@@ -1181,6 +1195,9 @@ files_html += vars["templates"]["file_tpl"]
 			.done( function( json ) {
 			//myPlaylist.setPlaylist( json );
 			_setPlaylist( json, url );
+			var filename = url.substring( url.lastIndexOf('/')+1, url.length);
+			$("#playlist-title").text( filename );
+			$("#modal-save-pls input[name=new_name]").val( vars["dirname"] + "/" + filename );
 		})
 			.fail( function( jqxhr, textStatus, error ) {
 				var err = textStatus + ", " + error;
@@ -1258,20 +1275,19 @@ console.log( arguments );
 	}//end save_playlist
 
 	function _setPlaylist( playlist, plsName ){
-console.log ("_setPlaylist!!!");
 
 		myPlaylist.setPlaylist( playlist );//async  action??????
 		
-		var timerId = setTimeout(function(){
-			//----------------------- add Edit button in playlist
+		//add Edit button in playlist
+		var timerId = setTimeout(function(){// wait 1 sec. for refresh playlist !!!
 			var btnEdit;
 			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
-	console.log( key, value );
+//console.log( key, value );
 				var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
 						
 				var test = $(this).children("div").find(".jp-playlist-item-edit");
-console.log( test.length );
-				if( test.length === 0){
+//console.log( test.length );
+				//if( test.length === 0){
 					
 					//$(this).append( btn_edit );
 					$(this).children("div").append( btn_edit );
@@ -1283,16 +1299,16 @@ console.log( test.length );
 						_editPlsItem( $(this) );
 					});//end event
 					
-				}
+				//}
 						
 			});//end each
 
-	console.log( $("#jp_container_N .jp-playlist").html() );
-			//-----------------------
+//console.log( $("#jp_container_N .jp-playlist").html() );
 		}, 1*1000 );
 		
-		$("#playlist-title").text( plsName );
+//console.log ( myPlaylist.playlist );
 
+		$("#playlist-title").text( plsName );
 				
 		var panels = get_panels_info();
 		var $activePanel = $( panels["active"] );

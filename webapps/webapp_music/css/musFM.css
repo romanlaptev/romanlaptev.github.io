@@ -274,9 +274,18 @@ ul.inline > li, ol.inline > li {
 }
 
 /* fix bootstrap*/
-#modal-edit-pls {
+#modal-edit-pls, 
+#modal-save-pls
+{
 	width: 600px !important;
 }
-#modal-edit-pls input{
+
+#modal-edit-pls input
+{
 	width: 460px !important;
+}
+
+#modal-save-pls input 
+{
+	width: 550px !important;
 }
