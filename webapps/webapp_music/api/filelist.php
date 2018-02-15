@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //header("Access-Control-Allow-Credentials: true ");
 //header("Access-Control-Allow-Headers: Content-Type, Depth, User-Agent, X-Auth-Token, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control, Origin");
 //header("Access-Control-Allow-Headers: Content-Type, Depth, User-Agent, X-Powered-By,  Cache-Control, Origin");
