@@ -15,13 +15,13 @@
 
 	$filename = $_REQUEST['filename'];
 
-//echo "Test!!!!!!!!!!". function_exists("json_encode");	
-	if ( function_exists("json_encode") == 1){
+	if ( !function_exists("json_encode") ){
 		//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
 		//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 		//https://gist.github.com/jorgeatorres/1239453
 //echo "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
-$msg = "<p class='alert alert-error'>error, not support function json_encode(). incorrect PHP version - ".phpversion().", need PHP >= 5.2.0</p>";
+//$msg = "<p class='alert alert-error'>error, not support function json_encode(). incorrect PHP version - ".phpversion().", need PHP >= 5.2.0</p>";
+$msg = "<p class='alert alert-error'>PHP version - ".phpversion().",  json_encode support ". function_exists("json_encode")."</p>";
 		echo $msg;
 		exit ();
 	}

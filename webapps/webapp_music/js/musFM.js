@@ -1216,11 +1216,22 @@ console.log( "error: " + error );
 	}
 
 	function save_playlist( filename, playlist ){
+//console.log( filename, playlist );
 
 		//correct track path, remove http://website
 		for( var n = 0; n < playlist.length; n++){
-			if( playlist[n]["mp3"].indexOf( vars["website"] ) !== -1){
+//console.log( n, playlist[n] );
+			if( playlist[n]["mp3"] && 
+					playlist[n]["mp3"].indexOf( vars["website"] ) !== -1){
 				playlist[n]["mp3"] = playlist[n]["mp3"].replace( vars["website"], "");
+			}
+			if( playlist[n]["wav"] && 
+					playlist[n]["wav"].indexOf( vars["website"] ) !== -1){
+				playlist[n]["wav"] = playlist[n]["wav"].replace( vars["website"], "");
+			}
+			if( playlist[n]["ogg"] && 
+					playlist[n]["ogg"].indexOf( vars["website"] ) !== -1){
+				playlist[n]["ogg"] = playlist[n]["ogg"].replace( vars["website"], "");
 			}
 		}
 //console.log( filename, playlist );
