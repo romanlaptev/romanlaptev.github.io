@@ -733,15 +733,15 @@ console.log( "errorThrown: " + errorThrown );
 			});//end each
 			
 			//save changes
-			var filename = $("#modal-save-pls input[name=new_name]").val() ;
-//console.log( filename );
-			if ( filename.length === 0){
-				log_message += vars["messages"]["emptyFilename"];
-				$("#log").append( log_message );
-				return false;
-			}
-			save_playlist( filename, myPlaylist.playlist );
-			$("#playlist-title").text(filename);
+			// var filename = $("#modal-save-pls input[name=new_name]").val() ;
+// //console.log( filename );
+			// if ( filename.length === 0){
+				// log_message += vars["messages"]["emptyFilename"];
+				// $("#log").append( log_message );
+				// return false;
+			// }
+			// save_playlist( filename, myPlaylist.playlist );
+			// $("#playlist-title").text(filename);
 			
 		});//end event
 
