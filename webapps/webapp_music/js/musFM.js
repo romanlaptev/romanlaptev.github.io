@@ -57,7 +57,8 @@ var MusicFM = function( options ){
 		"messages" : {
 			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty.</p>",
 			"errorPlsFilename" : "<p class='alert alert-danger'>Playlist file not found.</p>",
-			"emptyFilename" : "<p class='alert alert-error'>error, empty filename!!!</p>"
+			"emptyFilename" : "<p class='alert alert-error'>error, empty filename!!!</p>",
+			"noMarkedFiles" : "<p class='alert alert-error'>error, need to mark music track files</p>"
 		},
 		"templates" : {
 			"subfolder_tpl" : "",
@@ -604,9 +605,9 @@ console.log( "errorThrown: " + errorThrown );
 		});//end event
 		
 		$("#load-pls, #btn-load-pls").click(function(){
-			var checked_files = get_checked_files();
-			if ( checked_files.length == 1 ){
-				load_playlist( checked_files[0] );
+			var marked_files = get_marked_files();
+			if ( marked_files.length == 1 ){
+				load_playlist( marked_files[0] );
 				
 				var panels = get_panels_info();
 				var $activePanel = $( panels["active"] );
@@ -665,12 +666,18 @@ console.log( "errorThrown: " + errorThrown );
 		
 		//--------------------
 		$("#add-track").click(function(){
-			var checked_files = get_checked_files();
-//console.log( checked_files );
+			var marked_files = get_marked_files();
+console.log( marked_files );
+
+			if ( marked_files.length === 0){
+				var log_message = vars["messages"]["noMarkedFiles"];
+				$("#log").append( log_message );
+				return false;
+			}
 
 			var playlist = [];
-			for ( var item in checked_files){
-				var track = checked_files[ item ] ;
+			for ( var item in marked_files){
+				var track = marked_files[ item ] ;
 				
 				track = vars["website"] + track;
 				
@@ -702,9 +709,9 @@ console.log( "errorThrown: " + errorThrown );
 		});//end event
 
 		// $("#edit-pls").click( function(){
-			// var checked_files = get_checked_files();
-			// if( checked_files.length === 1){
-// console.log("edit playlist", checked_files, checked_files.length);
+			// var marked_files = get_marked_files();
+			// if( marked_files.length === 1){
+// console.log("edit playlist", marked_files, marked_files.length);
 			// }
 		// });//end event
 		
@@ -781,15 +788,15 @@ console.log( "errorThrown: " + errorThrown );
 		});		
 	}//end clearCheckbox
 	
-	var get_checked_files = function(){
+	var get_marked_files = function(){
 		var panels = get_panels_info();
 		vars["dirname"] = $( panels["active"] + " .dirname").text();
-		var checked_files = [];
+		var marked_files = [];
 		$( panels["active"] + " .wfm .files-list input[type=checkbox]:checked").each(function(num, item){
 			
 			// var newLink = vars["dirname"] +"/" + $(this).val();
 // console.log( newLink );
-			// checked_files.push ( newLink );
+			// marked_files.push ( newLink );
 			
 /*			
 //------------------ replace fs path to web alias
@@ -799,7 +806,7 @@ var pos1 = vars["dirname"].indexOf( vars["alias"] );
 //console.log(pos1, pos2);
 var newLinkPath = vars["dirname"].substring( pos1, vars["dirname"].length );
 //console.log(newLinkPath);
-checked_files.push ( newLinkPath +"/" + $(this).val() );
+marked_files.push ( newLinkPath +"/" + $(this).val() );
 //-----------------
 */
 
@@ -808,14 +815,14 @@ var relativePath = vars["dirname"].substring( vars["content_location"].length, v
 //console.log( "relativePath: " + relativePath );
 var newLinkPath = vars["alias"] + relativePath;
 //console.log( "newLinkPath: " + newLinkPath );
-checked_files.push ( newLinkPath +"/" + $(this).val() );
+marked_files.push ( newLinkPath +"/" + $(this).val() );
 //-----------------
 
 			//$(this).removeAttr("checked");
 			$(item).prop("checked", false);
 		});		
-		return checked_files;
-	}//end  get_checked_files()
+		return marked_files;
+	}//end  get_marked_files()
 
 	var get_panels_info = function() {
 		var panels = [];
