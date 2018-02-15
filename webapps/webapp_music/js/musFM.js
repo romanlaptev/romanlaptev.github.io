@@ -58,7 +58,7 @@ var MusicFM = function( options ){
 			"emptyPls" : "<p class='alert alert-danger'>Playlist is empty.</p>",
 			"errorPlsFilename" : "<p class='alert alert-danger'>Playlist file not found.</p>",
 			"emptyFilename" : "<p class='alert alert-error'>error, empty filename!!!</p>",
-			"noMarkedFiles" : "<p class='alert alert-error'>error, need to mark music track files</p>"
+			"noMarkedFiles" : "<p class='alert alert-error'>error, need to mark music track file</p>"
 		},
 		"templates" : {
 			"subfolder_tpl" : "",
