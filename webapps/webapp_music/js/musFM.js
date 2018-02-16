@@ -26,6 +26,7 @@ console.log("init!!!");
 	window.MusicFM = MusicFM;
 	MusicFM().init();
 })();
+http://jplayer.org/latest/demo-02-jPlayerPlaylist/
 */
 $(document).ready(function(){
 	
@@ -266,6 +267,7 @@ function initApp(){
 			keyEnabled: true,
 			audioFullScreen: true
 		});
+console.log(myPlaylist);
 
 		
 		//------------------------------------ mark active panel
@@ -669,15 +671,16 @@ console.log( "errorThrown: " + errorThrown );
 			var marked_files = get_marked_files();
 //console.log( marked_files );
 
-			if ( marked_files.length === 0){
-				var log_message = vars["messages"]["noMarkedFiles"];
-				$("#log").append( log_message );
+			if ( marked_files.length > 0){
+				addTrack(marked_files);
+			} else {
+				//var log_message = vars["messages"]["noMarkedFiles"];
+				//$("#log").append( log_message );
 				//return false;
+				
 				var num = myPlaylist.playlist.length;
 				$("#modal-edit-pls input[name=trackNum]").val( num );
 				$('#modal-edit-pls').modal('show');
-			} else {
-				addTrack(marked_files);
 			}
 			
 		});//end event
@@ -692,26 +695,63 @@ console.log( "errorThrown: " + errorThrown );
 		$("#modal-edit-pls  .action-btn").on("click", function(e){
 			$("#modal-edit-pls").modal("hide");
 			
-			var log_message = "";
-			if ( myPlaylist.playlist.length == 0 ){
-				log_message += vars["messages"]["emptyPls"];
-				$("#log").append( log_message );
-				return false;
-			}
+			// var log_message = "";
+			// if ( myPlaylist.playlist.length == 0 ){
+				// log_message += vars["messages"]["emptyPls"];
+				// $("#log").append( log_message );
+				// return false;
+			// }
 				
 			var num = parseInt( $("#modal-edit-pls input[name=trackNum]").val() );
 			var trackTitle = $("#modal-edit-pls input[name=trackTitle]").val();
-			myPlaylist.playlist[num]["title"] = trackTitle;
+//console.log(num, trackTitle );
+			
+			//if( !myPlaylist.playlist[num] ){
+				//myPlaylist.playlist[num]={};
+			//}
+			//myPlaylist.playlist[num]["title"] = trackTitle;
 			
 			var trackUrl = $("#modal-edit-pls input[name=trackUrl]").val();
-			myPlaylist.playlist[num]["mp3"] = trackUrl;
+			//myPlaylist.playlist[num]["mp3"] = trackUrl;
+			
+			if (trackUrl.toLowerCase().lastIndexOf('.mp3') > 0){
+				var track = {
+					title: trackTitle,
+					//artist:"The Stark Palace",
+					mp3: trackUrl,
+					//oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
+					//poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
+					free: false // Optional - Generates links to the media
+				}
+			}
+			
+			if (trackUrl.toLowerCase().lastIndexOf('.ogg') > 0){
+				var track = {
+					"title": trackTitle,
+					"oga": trackUrl,
+					free: false // Optional - Generates links to the media
+				}
+			}
+			
+			if (trackUrl.toLowerCase().lastIndexOf('.wav') > 0){
+				var track = {
+					"title": trackTitle,
+					"wav": trackUrl,
+					free: false // Optional - Generates links to the media
+				}
+			}
 
 			//replace text
-			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
-				if( key === num){
-					$(this).find(".jp-playlist-item").text( trackTitle );
-				}
-			});//end each
+			// $("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+				// if( key === num){
+					// $(this).find(".jp-playlist-item").text( trackTitle );
+				// }
+			// });//end each
+			
+			myPlaylist.remove(num);
+			myPlaylist.add(track);			
+			
+			addEditBtnToPlaylist( vars["filename_new_playlist"] );
 			
 			//save changes
 			// var filename = $("#modal-save-pls input[name=new_name]").val() ;
@@ -1200,7 +1240,8 @@ console.log( tracks );
 		}//next
 		
 		if( playlist.length > 0){
-			_setPlaylist( playlist, vars["filename_new_playlist"] );
+			myPlaylist.setPlaylist( playlist );
+			addEditBtnToPlaylist( vars["filename_new_playlist"] );
 		}
 	}//end addTrack()
 	
@@ -1208,8 +1249,10 @@ console.log( tracks );
 		//var url = "pls/" + filename;
 		$.getJSON( url )
 			.done( function( json ) {
-			//myPlaylist.setPlaylist( json );
-			_setPlaylist( json, url );
+				
+			myPlaylist.setPlaylist( json );
+			addEditBtnToPlaylist( url );
+			
 			var filename = url.substring( url.lastIndexOf('/')+1, url.length);
 			$("#playlist-title").text( filename );
 			$("#modal-save-pls input[name=new_name]").val( vars["dirname"] + "/" + filename );
@@ -1300,10 +1343,10 @@ console.log( arguments );
 
 	}//end save_playlist
 
-	function _setPlaylist( playlist, plsName ){
+	function addEditBtnToPlaylist( plsName ){
 
-		myPlaylist.setPlaylist( playlist );//async  action??????
-		
+		//myPlaylist.setPlaylist( playlist );//async  action??????
+
 		//add Edit button in playlist
 		var timerId = setTimeout(function(){// wait 1 sec. for refresh playlist !!!
 			var btnEdit;
@@ -1313,7 +1356,7 @@ console.log( arguments );
 						
 				var test = $(this).children("div").find(".jp-playlist-item-edit");
 //console.log( test.length );
-				//if( test.length === 0){
+				if( test.length === 0){
 					
 					//$(this).append( btn_edit );
 					$(this).children("div").append( btn_edit );
@@ -1321,25 +1364,23 @@ console.log( arguments );
 							
 					btnEdit = $(this).find(".jp-playlist-item-edit");
 					btnEdit.on("click", function(e){
-		//console.log("click!!!", $(this).attr("href") );
+//console.log("click!!!", $(this).attr("href") );
 						_editPlsItem( $(this) );
 					});//end event
 					
-				//}
+				}
 						
 			});//end each
 
 //console.log( $("#jp_container_N .jp-playlist").html() );
 		}, 1*1000 );
-		
-//console.log ( myPlaylist.playlist );
 
 		$("#playlist-title").text( plsName );
 				
 		var panels = get_panels_info();
 		var $activePanel = $( panels["active"] );
 		clearCheckbox( $activePanel );
-	}//end _setPlaylist
+	}//end addEditBtnToPlaylist
 	
 	//Edit playlist item
 	function _editPlsItem( $btn ){
