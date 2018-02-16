@@ -667,43 +667,17 @@ console.log( "errorThrown: " + errorThrown );
 		//--------------------
 		$("#add-track").click(function(){
 			var marked_files = get_marked_files();
-console.log( marked_files );
+//console.log( marked_files );
 
 			if ( marked_files.length === 0){
 				var log_message = vars["messages"]["noMarkedFiles"];
 				$("#log").append( log_message );
-				return false;
-			}
-
-			var playlist = [];
-			for ( var item in marked_files){
-				var track = marked_files[ item ] ;
-				
-				track = vars["website"] + track;
-				
-				var filename = track.substring( track.lastIndexOf('/')+1, track.length);
-				var filetype = track.substring( track.lastIndexOf('/')+1, track.length);
-
-				var playlist = myPlaylist.playlist;
-				var add = false;
-				if (filename.toLowerCase().lastIndexOf(".mp3") > 0){
-					add = { "title":filename, "mp3": track, free: false };
-				}
-				if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
-					add = { "title":filename, "oga": track, free: false };
-				}
-				if (filename.toLowerCase().lastIndexOf('.wav') > 0){
-					add = { "title":filename, "wav": track, free: false };
-				}
-				
-				if( add ){
-					playlist.push( add );
-				}
-				
-			}//next
-			
-			if( playlist.length > 0){
-				_setPlaylist( playlist, vars["filename_new_playlist"] );
+				//return false;
+				var num = myPlaylist.playlist.length;
+				$("#modal-edit-pls input[name=trackNum]").val( num );
+				$('#modal-edit-pls').modal('show');
+			} else {
+				addTrack(marked_files);
 			}
 			
 		});//end event
@@ -1195,6 +1169,40 @@ files_html += vars["templates"]["file_tpl"]
 				
 	}//end reload_panel()
 
+	function addTrack( tracks ){
+console.log( tracks );
+		
+		var playlist = [];
+		for ( var item in tracks){
+			var track = tracks[ item ] ;
+			
+			track = vars["website"] + track;
+			
+			var filename = track.substring( track.lastIndexOf('/')+1, track.length);
+			var filetype = track.substring( track.lastIndexOf('/')+1, track.length);
+
+			var playlist = myPlaylist.playlist;
+			var add = false;
+			if (filename.toLowerCase().lastIndexOf(".mp3") > 0){
+				add = { "title":filename, "mp3": track, free: false };
+			}
+			if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
+				add = { "title":filename, "oga": track, free: false };
+			}
+			if (filename.toLowerCase().lastIndexOf('.wav') > 0){
+				add = { "title":filename, "wav": track, free: false };
+			}
+			
+			if( add ){
+				playlist.push( add );
+			}
+			
+		}//next
+		
+		if( playlist.length > 0){
+			_setPlaylist( playlist, vars["filename_new_playlist"] );
+		}
+	}//end addTrack()
 	
 	function load_playlist( url ){
 		//var url = "pls/" + filename;
