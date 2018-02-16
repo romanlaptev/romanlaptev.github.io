@@ -26,8 +26,10 @@ console.log("init!!!");
 	window.MusicFM = MusicFM;
 	MusicFM().init();
 })();
-http://jplayer.org/latest/demo-02-jPlayerPlaylist/
 */
+//http://jplayer.org/latest/demo-02-jPlayerPlaylist/
+//https://www.soundhelix.com/audio-examples
+
 $(document).ready(function(){
 	
 	var musfm = MusicFM();
@@ -653,7 +655,9 @@ console.log( "errorThrown: " + errorThrown );
 					
 					//filename = vars["dirname"] + "/"+ filename;
 					save_playlist( filename, myPlaylist.playlist );
-					$("#playlist-title").text(filename);
+					
+					//var playlistName = filename.substring( vars["dirname"].length+1, filename.legth );
+					$("#playlist-title").text( filename );
 					
 				} else {
 					log_message += vars["messages"]["emptyFilename"];
@@ -718,26 +722,26 @@ console.log( "errorThrown: " + errorThrown );
 				var track = {
 					title: trackTitle,
 					//artist:"The Stark Palace",
-					mp3: trackUrl,
+					mp3: trackUrl//,
 					//oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
 					//poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png",
-					free: false // Optional - Generates links to the media
+					//free: false // Optional - Generates links to the media
 				}
 			}
 			
 			if (trackUrl.toLowerCase().lastIndexOf('.ogg') > 0){
 				var track = {
 					"title": trackTitle,
-					"oga": trackUrl,
-					free: false // Optional - Generates links to the media
+					"oga": trackUrl//,
+					//free: false // Optional - Generates links to the media
 				}
 			}
 			
 			if (trackUrl.toLowerCase().lastIndexOf('.wav') > 0){
 				var track = {
 					"title": trackTitle,
-					"wav": trackUrl,
-					free: false // Optional - Generates links to the media
+					"wav": trackUrl//,
+					//free: false // Optional - Generates links to the media
 				}
 			}
 
@@ -751,7 +755,7 @@ console.log( "errorThrown: " + errorThrown );
 			myPlaylist.remove(num);
 			myPlaylist.add(track);			
 			
-			addEditBtnToPlaylist( vars["filename_new_playlist"] );
+			addEditBtnToPlaylist( "*" + vars["filename_new_playlist"] );
 			
 			//save changes
 			// var filename = $("#modal-save-pls input[name=new_name]").val() ;
@@ -1100,8 +1104,8 @@ console.log( "errorThrown: " + errorThrown );
 			{
 				var track = {
 				title: filename,
-				mp3: filelist[file],
-				free: false, // Optional - Generates links to the media
+				mp3: filelist[file]//,
+				//free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}
@@ -1109,8 +1113,8 @@ console.log( "errorThrown: " + errorThrown );
 			{
 				var track = {
 				title: filename,
-				oga: filelist[file],
-				free: false, // Optional - Generates links to the media
+				oga: filelist[file]//,
+				//free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}
@@ -1118,8 +1122,8 @@ console.log( "errorThrown: " + errorThrown );
 			{
 				var track = {
 				title: filename,
-				wav: filelist[file],
-				free: false, // Optional - Generates links to the media
+				wav: filelist[file]//,
+				//free: false, // Optional - Generates links to the media
 				};
 				playlist.push(track);
 			}
@@ -1210,7 +1214,7 @@ files_html += vars["templates"]["file_tpl"]
 	}//end reload_panel()
 
 	function addTrack( tracks ){
-console.log( tracks );
+//console.log( tracks );
 		
 		var playlist = [];
 		for ( var item in tracks){
@@ -1224,13 +1228,16 @@ console.log( tracks );
 			var playlist = myPlaylist.playlist;
 			var add = false;
 			if (filename.toLowerCase().lastIndexOf(".mp3") > 0){
-				add = { "title":filename, "mp3": track, free: false };
+				add = { "title":filename, "mp3": track//, free: false 
+				};
 			}
 			if (filename.toLowerCase().lastIndexOf('.ogg') > 0){
-				add = { "title":filename, "oga": track, free: false };
+				add = { "title":filename, "oga": track//, free: false 
+				};
 			}
 			if (filename.toLowerCase().lastIndexOf('.wav') > 0){
-				add = { "title":filename, "wav": track, free: false };
+				add = { "title":filename, "wav": track//, free: false 
+				};
 			}
 			
 			if( add ){
@@ -1241,7 +1248,7 @@ console.log( tracks );
 		
 		if( playlist.length > 0){
 			myPlaylist.setPlaylist( playlist );
-			addEditBtnToPlaylist( vars["filename_new_playlist"] );
+			addEditBtnToPlaylist( "*" +vars["filename_new_playlist"] );
 		}
 	}//end addTrack()
 	
@@ -1287,13 +1294,11 @@ console.log( "error: " + error );
 		}
 //console.log( filename, playlist );
 
-
 		var param = {
 			"filename": filename, 
 			"playlist": playlist
 		};
 
-		
 		//correct for aspx send query
 		if(vars["testASPX"]){
 /*
@@ -1365,7 +1370,7 @@ console.log( arguments );
 					btnEdit = $(this).find(".jp-playlist-item-edit");
 					btnEdit.on("click", function(e){
 //console.log("click!!!", $(this).attr("href") );
-						_editPlsItem( $(this) );
+						editPlaylistItem( $(this) );
 					});//end event
 					
 				}
@@ -1383,7 +1388,7 @@ console.log( arguments );
 	}//end addEditBtnToPlaylist
 	
 	//Edit playlist item
-	function _editPlsItem( $btn ){
+	function editPlaylistItem( $btn ){
 		var num = $btn.attr("href").replace("#track", "");
 		var trackTitle = myPlaylist.playlist[num]["title"];
 		var trackUrl = myPlaylist.playlist[num]["mp3"];
@@ -1393,7 +1398,7 @@ console.log( arguments );
 		$("#modal-edit-pls input[name=trackUrl]").val( trackUrl );
 		$('#modal-edit-pls').modal('show');
 
-	}//end _editPlsItem()
+	}//end editPlaylistItem()
 	
 	return "Web Music player + File manager";
 	
