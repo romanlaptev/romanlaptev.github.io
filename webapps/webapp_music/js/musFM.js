@@ -709,12 +709,6 @@ console.log( "errorThrown: " + errorThrown );
 			var num = parseInt( $("#modal-edit-pls input[name=trackNum]").val() );
 			var trackTitle = $("#modal-edit-pls input[name=trackTitle]").val();
 //console.log(num, trackTitle );
-			
-			//if( !myPlaylist.playlist[num] ){
-				//myPlaylist.playlist[num]={};
-			//}
-			//myPlaylist.playlist[num]["title"] = trackTitle;
-			
 			var trackUrl = $("#modal-edit-pls input[name=trackUrl]").val();
 			//myPlaylist.playlist[num]["mp3"] = trackUrl;
 			
@@ -745,15 +739,20 @@ console.log( "errorThrown: " + errorThrown );
 				}
 			}
 
+			//if( !myPlaylist.playlist[num] ){
+				//myPlaylist.playlist[num]={};
+			//}
+			myPlaylist.playlist[num] = track;
+
 			//replace text
-			// $("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
-				// if( key === num){
-					// $(this).find(".jp-playlist-item").text( trackTitle );
-				// }
-			// });//end each
+			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+				if( key === num){
+					$(this).find(".jp-playlist-item").text( trackTitle );
+				}
+			});//end each
 			
-			myPlaylist.remove(num);
-			myPlaylist.add(track);			
+			//myPlaylist.remove(num);
+			//myPlaylist.add(track);			
 			
 			addEditBtnToPlaylist( "*" + vars["filename_new_playlist"] );
 			
