@@ -755,7 +755,7 @@ console.log( "errorThrown: " + errorThrown );
 			//myPlaylist.remove(num);
 			//myPlaylist.add(track);			
 			
-			addEditBtnToPlaylist( "*" + vars["filename_new_playlist"] );
+			changePlaylistItem( "*" + vars["filename_new_playlist"] );
 			
 			//save changes
 			// var filename = $("#modal-save-pls input[name=new_name]").val() ;
@@ -1248,7 +1248,7 @@ files_html += vars["templates"]["file_tpl"]
 		
 		if( playlist.length > 0){
 			myPlaylist.setPlaylist( playlist );
-			addEditBtnToPlaylist( "*" +vars["filename_new_playlist"] );
+			changePlaylistItem( "*" +vars["filename_new_playlist"] );
 		}
 	}//end addTrack()
 	
@@ -1258,7 +1258,7 @@ files_html += vars["templates"]["file_tpl"]
 			.done( function( json ) {
 				
 			myPlaylist.setPlaylist( json );
-			addEditBtnToPlaylist( url );
+			changePlaylistItem( url );
 			
 			var filename = url.substring( url.lastIndexOf('/')+1, url.length);
 			$("#playlist-title").text( filename );
@@ -1348,15 +1348,17 @@ console.log( arguments );
 
 	}//end save_playlist
 
-	function addEditBtnToPlaylist( plsName ){
+	function changePlaylistItem( plsName ){
 
 		//myPlaylist.setPlaylist( playlist );//async  action??????
 
-		//add Edit button in playlist
 		var timerId = setTimeout(function(){// wait 1 sec. for refresh playlist !!!
+		
 			var btnEdit;
 			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
 //console.log( key, value );
+
+				//add Edit button in playlist
 				var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
 						
 				var test = $(this).children("div").find(".jp-playlist-item-edit");
@@ -1372,9 +1374,26 @@ console.log( arguments );
 //console.log("click!!!", $(this).attr("href") );
 						editPlaylistItem( $(this) );
 					});//end event
-					
 				}
-						
+				//----------------------
+				
+				//add mouse  events (for sort process)
+				$(this)[0].onmousemove = function(event){
+//console.log( "onmousemove!!!", event );
+					//event = event || fixEvent.call(this, window.event);
+// console.log( event.clientX, event.clientY );
+// console.log( event.pageX, event.pageY );
+// console.log( event.screenX, event.screenY );
+				};//end event
+				
+				$(this)[0].onmousedown = function(event){
+console.log( "onmousedown!!!", event );
+				};//end event
+	
+				$(this)[0].onmouseup = function(event){
+console.log( "onmouseup!!! Stop drag & drop...");
+				};//end event
+	
 			});//end each
 
 //console.log( $("#jp_container_N .jp-playlist").html() );
@@ -1385,7 +1404,7 @@ console.log( arguments );
 		var panels = get_panels_info();
 		var $activePanel = $( panels["active"] );
 		clearCheckbox( $activePanel );
-	}//end addEditBtnToPlaylist
+	}//end changePlaylistItem
 	
 	//Edit playlist item
 	function editPlaylistItem( $btn ){
