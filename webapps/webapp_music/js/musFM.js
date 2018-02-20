@@ -272,10 +272,23 @@ function initApp(){
 console.log(myPlaylist);
 		$("#jp_container_N .jp-playlist ul").sortable({
 			change : function(){
-console.log("sort change!");				
+//console.log("sort change!");				
 			},
-			update : function(){
-console.log("sort update!", arguments);				
+			update : function( event, ui ){
+//console.log("sort update!", ui);
+//console.log( ui["item"] );
+				var oldNum = ui["item"].data("num");
+console.log( "oldNum : " + oldNum );
+
+				// //detect new number
+				// var newNum = false;
+				// $("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+					// if( key === oldNum ){
+						// newNum = key;
+					// }
+				// });//end each
+// console.log( "newNum : " +newNum );
+				
 			},
 		});
 
