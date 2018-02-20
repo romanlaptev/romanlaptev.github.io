@@ -270,7 +270,14 @@ function initApp(){
 			audioFullScreen: true
 		});
 console.log(myPlaylist);
-		$("#jp_container_N .jp-playlist ul").sortable();
+		$("#jp_container_N .jp-playlist ul").sortable({
+			change : function(){
+console.log("sort change!");				
+			},
+			update : function(){
+console.log("sort update!", arguments);				
+			},
+		});
 
 		
 		//------------------------------------ mark active panel
@@ -1354,13 +1361,15 @@ console.log( arguments );
 
 		var timerId = setTimeout(function(){// wait 1 sec. for refresh playlist !!!
 		
-			var btnEdit;
+			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+				$(this).data("num", key);
+			});//end each
+			
 			$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
 //console.log( key, value );
 
 				//add Edit button in playlist
 				var btn_edit = vars["templates"]["btn_edit"].replace("#numTrack", "#track" + key);
-						
 				var test = $(this).children("div").find(".jp-playlist-item-edit");
 //console.log( test.length );
 				if( test.length === 0){
@@ -1369,15 +1378,14 @@ console.log( arguments );
 					$(this).children("div").append( btn_edit );
 					//$(this).find(".jp-free-media").hide();
 							
-					btnEdit = $(this).find(".jp-playlist-item-edit");
-					btnEdit.on("click", function(e){
+					$(this).on("click", ".jp-playlist-item-edit", function(e){
 //console.log("click!!!", $(this).attr("href") );
 						editPlaylistItem( $(this) );
 					});//end event
 				}
 				//----------------------
-				
 				//add mouse  events (for sort process)
+/*				
 				$(this)[0].onmousemove = function(event){
 //console.log( "onmousemove!!!", event );
 					//event = event || fixEvent.call(this, window.event);
@@ -1393,6 +1401,15 @@ console.log( "onmousedown!!!", event );
 				$(this)[0].onmouseup = function(event){
 console.log( "onmouseup!!! Stop drag & drop...");
 				};//end event
+*/
+				$(this).on("mousedown", function(event){
+console.log( "onmousedown!!!", event );
+				});//end event
+				
+				// $(this).on("mouseup", function(event){
+// console.log( "onmouseup!!! Stop drag & drop...");
+// console.log( $(this).data() );
+				// });//end event
 	
 			});//end each
 
