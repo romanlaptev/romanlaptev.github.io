@@ -270,6 +270,7 @@ function initApp(){
 			audioFullScreen: true
 		});
 console.log(myPlaylist);
+		$("#jp_container_N .jp-playlist ul").sortable();
 
 		
 		//------------------------------------ mark active panel
