@@ -275,35 +275,38 @@ console.log(myPlaylist);
 //console.log("sort change!");				
 			},
 			update : function( event, ui ){
-console.log("sort update!", ui);
+//console.log("sort update!", ui);
 //console.log( ui["item"] );
 				var oldNum = ui["item"].data("num");
 //console.log( "oldNum : " + oldNum );
 
 				// reorder tracks
 				var newNum = false;
-				var reCalc = false;
+				//var reCalc = false;
 				var playlist = [];
 				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
 //console.log( key, value );
 //console.log( key, $(this).data("num") );
+/*
 					if( $(this).data("num") === oldNum ){
 						newNum = key;
-//console.log( "newNum : " +newNum );
+console.log( "newNum : " +newNum );
 						$(this).find(".jp-playlist-item-edit").attr("href", "#track"+newNum);
 						var trackObj = myPlaylist.playlist[oldNum];
 						playlist.push( trackObj );
-						delete myPlaylist.playlist[oldNum];
+						//delete myPlaylist.playlist[oldNum];
 					} else {
 						//change link for edit track
 						$(this).find(".jp-playlist-item-edit").attr("href", "#track"+key);
 					}
 					
 					//copy track item
-					if( myPlaylist.playlist[key] ){
-						playlist.push( myPlaylist.playlist[key] );
-					}
-					
+					//if( myPlaylist.playlist[key] ){
+						//playlist.push( myPlaylist.playlist[key] );
+					//}
+*/
+					$(this).find(".jp-playlist-item-edit").attr("href", "#track"+key);
+					playlist.push( myPlaylist.playlist[ $(this).data("num") ] );
 				});//end each
 //console.log( playlist );
 				myPlaylist.playlist = playlist;
