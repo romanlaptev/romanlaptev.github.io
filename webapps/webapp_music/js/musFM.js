@@ -313,6 +313,9 @@ console.log("sort update!", ui);
 					$(this).data("num", key);
 				});//end each
 				
+				var plsTitle = "*" + vars["filename_new_playlist"];
+				$("#playlist-title").text( plsTitle );
+				
 			},
 		});//end sortable
 
@@ -653,22 +656,44 @@ console.log( "errorThrown: " + errorThrown );
 			
 		});//end event
 		
+		//LOAD action
 		$("#load-pls, #btn-load-pls").click(function(){
+			
+			$("#modal-load-pls").modal("show");
+			$("#modal-load-pls input[name=filename]").val( vars["alias"] );
+			
 			var marked_files = get_marked_files();
 			if ( marked_files.length == 1 ){
-				load_playlist( marked_files[0] );
-				
-				var panels = get_panels_info();
-				var $activePanel = $( panels["active"] );
-				clearCheckbox( $activePanel );
-				
+//console.log("marked_file:", marked_files[0]);
+				$("#modal-load-pls input[name=filename]").val( marked_files[0] );
 			} else {
-				var log_message = vars["messages"]["errorPlsFilename"];
-				$("#log").append( log_message );
+				//var log_message = vars["messages"]["errorPlsFilename"];
+				//$("#log").append( log_message );
 			}
 			return false;
 		});//end event
+		
+		$("#modal-load-pls  .action-btn").click(function(e){
+			$("#modal-load-pls").modal("hide");
+			var log_message = "";
+			var filename = $("#modal-load-pls input[name=filename]").val();
+//console.log("filename:", filename, filename.length);
+			
+			if ( filename.length > 0){
+				load_playlist( filename );
+				var panels = get_panels_info();
+				var $activePanel = $( panels["active"] );
+				clearCheckbox( $activePanel );
+			} else {
+				log_message += vars["messages"]["emptyFilename"];
+			}
 
+			$("#log").append( log_message );
+		});//end event
+
+		
+		
+		//SAVE action
 		$("#save-pls").on("click", function(e){
 //console.log(e);	
 			var filename = $("#modal-save-pls input[name=new_name]").val() ;
