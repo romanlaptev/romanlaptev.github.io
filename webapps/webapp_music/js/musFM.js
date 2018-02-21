@@ -275,22 +275,46 @@ console.log(myPlaylist);
 //console.log("sort change!");				
 			},
 			update : function( event, ui ){
-//console.log("sort update!", ui);
+console.log("sort update!", ui);
 //console.log( ui["item"] );
 				var oldNum = ui["item"].data("num");
-console.log( "oldNum : " + oldNum );
+//console.log( "oldNum : " + oldNum );
 
-				// //detect new number
-				// var newNum = false;
-				// $("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
-					// if( key === oldNum ){
-						// newNum = key;
-					// }
-				// });//end each
-// console.log( "newNum : " +newNum );
+				// reorder tracks
+				var newNum = false;
+				var reCalc = false;
+				var playlist = [];
+				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+//console.log( key, value );
+//console.log( key, $(this).data("num") );
+					if( $(this).data("num") === oldNum ){
+						newNum = key;
+//console.log( "newNum : " +newNum );
+						$(this).find(".jp-playlist-item-edit").attr("href", "#track"+newNum);
+						var trackObj = myPlaylist.playlist[oldNum];
+						playlist.push( trackObj );
+						delete myPlaylist.playlist[oldNum];
+					} else {
+						//change link for edit track
+						$(this).find(".jp-playlist-item-edit").attr("href", "#track"+key);
+					}
+					
+					//copy track item
+					if( myPlaylist.playlist[key] ){
+						playlist.push( myPlaylist.playlist[key] );
+					}
+					
+				});//end each
+//console.log( playlist );
+				myPlaylist.playlist = playlist;
+				
+				//reorder <li>
+				$("#jp_container_N .jp-playlist ul li").each( function(key, value){ 
+					$(this).data("num", key);
+				});//end each
 				
 			},
-		});
+		});//end sortable
 
 		
 		//------------------------------------ mark active panel
@@ -1415,9 +1439,9 @@ console.log( "onmousedown!!!", event );
 console.log( "onmouseup!!! Stop drag & drop...");
 				};//end event
 */
-				$(this).on("mousedown", function(event){
-console.log( "onmousedown!!!", event );
-				});//end event
+				// $(this).on("mousedown", function(event){
+// console.log( "onmousedown!!!", event );
+				// });//end event
 				
 				// $(this).on("mouseup", function(event){
 // console.log( "onmouseup!!! Stop drag & drop...");
