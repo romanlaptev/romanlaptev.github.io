@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require("express");
 //console.log(express.request.ip);
 /*
@@ -16,6 +17,9 @@ var express = require("express");
 */
 
 var app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+
+console.log("__dirname: " + __dirname);
 
 app.all("/", function (req, res, next) {
 console.log("Request...");
@@ -32,6 +36,7 @@ console.log('GET request to the homepage');
 	html += "<head>\r\n";
 	html += "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>\r\n";
 	html += "<link rel='stylesheet' href='/css/style.css'>\r\n";
+	html += "<link rel='stylesheet' href='/style_public.css'>\r\n";
 	
 	html += "</head>\r\n";
 	
@@ -62,11 +67,14 @@ app.post('/', function (req, res) {
 console.log('POST request to the homepage');
 //console.log(req);
 //console.log(res);
+res.end();
 });
 
 app.get("/css/style.css", function(req, res){
 console.log("request to the /css/style.css");
-res.download("/documents/laptev/www/test/nodejs/test_express/css/style.css");
+//res.download("/documents/laptev/www/test/nodejs/test_express/css/style.css");
+res.end();
+
 /*
 res.download() 	Приглашение загрузки файла.
 res.end() 	Завершение процесса ответа.
