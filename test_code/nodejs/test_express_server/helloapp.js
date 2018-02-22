@@ -1,23 +1,10 @@
-var path = require('path');
+//var path = require('path');
 var express = require("express");
-//console.log(express.request.ip);
-/*
- is: [Function: is],
- protocol: [Getter],
- secure: [Getter],
- ip: [Getter],
- ips: [Getter],
- subdomains: [Getter],
- path: [Getter],
- hostname: [Getter],
- host: [Getter],
- fresh: [Getter],
- stale: [Getter],
- xhr: [Getter] }
-*/
+var fs = require('fs');
 
 var app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use( express.static(path.join(__dirname, 'public')));
+app.use( express.static(__dirname + '/public') );
 
 console.log("__dirname: " + __dirname);
 
@@ -48,6 +35,10 @@ console.log('GET request to the homepage');
 	html += "<pre>\r\n";
 	html += "http://expressjs.com/ru/guide/routing.html\r\n";
 	html += "</pre>\r\n";
+	
+	html += "<ul class='list-unstyled'>\r\n";
+	html += "<li><a class='btn btn-large btn-primary' href='/test'>load local text file</a></li>\r\n";
+	html += "</ul>\r\n";
 	
 	html += "<h3>test post request</h3>\r\n";
 	html += "<form method='POST' name='form1' action=''>";
@@ -88,6 +79,13 @@ res.sendStatus() 	Установка кода состояния ответа и отправка представления в вид
 */
 });
 
+app.get("/test", function(req, res){
+console.log("request to the " + req.originalUrl);
+//console.log(req);
+//console.log(res);
+	var localFile = fs.readFileSync("nb.txt");
+	res.end(localFile);
+});
 
 app.listen(3000, function(){
 console.log('Example app listening on port 3000!');
