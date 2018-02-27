@@ -1,4 +1,4 @@
-<?
+<?php
 echo "getcwd = ".getcwd();
 echo "<hr>";
 echo "__FILE__ = ".__FILE__;
