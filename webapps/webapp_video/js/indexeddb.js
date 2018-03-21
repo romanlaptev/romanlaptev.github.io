@@ -2002,9 +2002,18 @@ console.log("error in _db(), data not in JSON format");
 					}
 				break;
 				
-				//case "csv":
-				case "jcsv":
+				case "csv":
+				//case "jcsv":
+console.log( data );				
 					//_parseCSVBlocks(data);
+	if( webApp.vars["wait"] ){
+		//webApp.vars["wait"].className="";
+		webApp.vars["wait"].style.display="none";
+	}
+	if( webApp.vars["waitWindow"] ){
+		webApp.vars["waitWindow"].style.display="none";
+	}
+					
 					if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 						dbInfo["callbackFunc"]["afterUpdate"]();
 					}
