@@ -2016,7 +2016,24 @@ console.log("error in _db(), data not in JSON format");
 			// }
 
 			function __parseXML( xml ){
-
+if( xml.length === 0){
+console.log("Error save records to indexedDB stores!!!");	
+						
+	delete dbInfo["import"]["xml"];//clear var
+	
+	if( webApp.vars["wait"] ){
+		//webApp.vars["wait"].className="";
+		webApp.vars["wait"].style.display="none";
+	}
+	if( webApp.vars["waitWindow"] ){
+		webApp.vars["waitWindow"].style.display="none";
+	}
+	
+	if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+		dbInfo["callbackFunc"]["afterUpdate"]( data );
+	}
+	return false;
+}
 //---------------------
 //console.log( xml ) ;
 //var xmlSchema = _getXmlSchema( xml );

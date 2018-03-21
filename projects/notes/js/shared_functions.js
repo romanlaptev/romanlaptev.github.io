@@ -108,6 +108,7 @@ IN:
 OUT:
 [ { name: "attr value", html_code: "......" },
 { name: "attr value", html_code: "......" }]
+ONLY second LEVEL !!!!!!!!!!!!							  
 */
 function _parseXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			

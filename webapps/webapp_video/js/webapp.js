@@ -2741,6 +2741,17 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 
 					
 				},//end onProgress()
+				
+				"onError" : function( errorCode  ){
+console.log(errorCode);
+					var msg = "error loading " + url +", "+ errorCode["status"]+", "+errorCode.statusText;
+					_log("<div class='alert alert-danger'>"+msg+"</div>");
+					if( typeof p["callback"] === "function"){
+						p["callback"]([]);
+						return false;
+					} 
+				},
+				
 				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
