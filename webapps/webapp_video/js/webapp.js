@@ -24,7 +24,7 @@ var webApp = {
 		"app_title" : "Video collection",
 		"log" : [],
 		"messages" : {
-			"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
+			//"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
 		},
 		 "import" : {
 			//"data_url" : "db/video.xml",

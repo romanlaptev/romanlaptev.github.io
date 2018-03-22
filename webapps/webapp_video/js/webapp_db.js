@@ -350,13 +350,27 @@ console.log(msg);
 //var msg = "restart db query, " + tableName;
 //console.log( msg );
 //console.log( data[0], data.length );
-if( data["code"] && data["code"] === "store_not_found"){
-	var log_message = webApp.vars["messages"]["storeNotFound"];
-	_log( log_message );
-	if( typeof _showHiddenLog === "function"){
-		_showHiddenLog();
-	}
-}
+
+							//server request
+							if( data["code"] && data["code"] === "store_not_found"){
+								// var log_message = webApp.vars["messages"]["storeNotFound"];
+								// _log( log_message );
+								// if( typeof _showHiddenLog === "function"){
+									// _showHiddenLog();
+								// }
+								webApp.app.serverRequest({
+									"callback": function(data){
+console.log( arguments );
+										//webApp.iDBmodule.dbInfo["callbackFunc"]["continueQuery"] = _continueQuery;
+										//webApp.iDBmodule.saveRawData(data);
+									}
+								});
+								
+//function _continueQuery(){
+//console.log( "function _continueQuery", queryObj );
+//}//end _continueQuery()								
+							}
+							
 							if( data.length > 0){
 								
 								if( typeof _vars["tables"][tableName] === "undefined"){

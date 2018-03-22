@@ -1871,6 +1871,7 @@ console.log(msg, e);
 		}//end iDB()
 		
 		
+//************************** indexedDB: additional methods **************************
 		var _checkState = function(opt){
 			var p = {
 				"listStores": "",
@@ -2324,6 +2325,7 @@ console.log(msg);
 				return totalSize;
 			},
 			
+			// indexedDB additional methods 
 			checkState : _checkState
 		};
 	
