@@ -897,21 +897,36 @@ console.log("not callback....use return function");
 	
 	function _parseCSVBlocks( data ){
 		var csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
-console.log( csvData );
-/*		
-		for( var n = 0; n < csvData.length; n++){
-			var record = csvData[n];
+
+		if( csvData.length === 0){
+console.log( "error CSV parse..." );
+			return false;
+		}
+		
+		if( webApp.vars["import"]["csv_header"] ){
+			var d = webApp.vars["import"]["csv_delimiterByFields"] ;
 			
-			var recordObj = _convertCSV_JSON( 
-				record, 
-				fieldsInfo, 
-				webApp.vars["import"]["csv_delimiterByFields"] 
-			);
-			webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+			//var tableName = jsonObj["name"];
+			var fieldsInfo = csvData[0].split( d );
+//console.log( fieldsInfo );
+
+			for( var n = 1; n < csvData.length; n++){
+				var record = csvData[n];
 				
-			
-		}//next
-*/		
+				var recordObj = _convertCSV_JSON( 
+					record, 
+					fieldsInfo, 
+					webApp.vars["import"]["csv_delimiterByFields"] 
+				);
+//console.log( recordObj );
+				
+				//webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+			}//next
+
+		}
+		
+
+
 		function _convertCSV_JSON( record, keys, delimiterByFields ){
 	//console.log( "function _convertCSV_JSON(), ", arguments);
 			if( typeof record !== "string" ){
