@@ -35,6 +35,16 @@ function _log( msg, id){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
+			
+			// var logWrap = getById("log-wrap");
+			// if( logWrap ){
+// console.log(logWrap);
+// console.log(logWrap.style.display);
+				// if( logWrap.style.display === "none"){
+					// logWrap.style.display="block";
+				// }
+			// }			
+			
 		}
 		
 	} else {
@@ -43,10 +53,10 @@ function _log( msg, id){
 		//document.writeln(msg);
 	}
 	
-	if( typeof _showHiddenLog === "function"){
-//console.log(_showHiddenLog);
-		_showHiddenLog();
-	}
+	// if( typeof _showHiddenLog === "function"){
+// //console.log(_showHiddenLog);
+		// _showHiddenLog();
+	// }
 	
 }//end _log()
 

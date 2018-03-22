@@ -23,6 +23,9 @@ var webApp = {
 	"vars" : {
 		"app_title" : "Video collection",
 		"log" : [],
+		"messages" : {
+			"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
+		},
 		 "import" : {
 			//"data_url" : "db/video.xml",
 			//"db_type" : "xml",
@@ -99,18 +102,17 @@ console.log( navigator.userAgent );
 console.log(webApp);
 
 	//start
-	//webApp.app.loadTemplates(function(){
-//console.log("Load templates end...", webApp.draw.vars["templates"] );		
+	webApp.app.loadTemplates(function(){
+console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
-	//});
+	});
 
 function _runApp(){
 	
 	webApp.init(function(){
 		webApp.db.loadData(function(){
-console.log(arguments);
-/*
-	//console.log(window.location);	
+//console.log(arguments);
+//console.log(window.location);	
 				var parse_url = window.location.search; 
 				if( parse_url.length > 0 ){
 					webApp.vars["GET"] = parseGetParams(); 
@@ -124,7 +126,7 @@ console.log(arguments);
 					webApp.vars["GET"] = parseGetParams( parse_url ); 
 					webApp.app.urlManager();
 				}
-*/				
+
 			}//end callback
 		);
 		

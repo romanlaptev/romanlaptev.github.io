@@ -49,12 +49,12 @@ window.onload = function(){
 	
 };//end window.load	
 
-//var _showHiddenLog = function(){
-	//var log = getById("log-wrap");
-	//if( log.style.display === "none"){
-		//log.style.display="block";
-//	}
-//}//end _showHiddenLog
+var _showHiddenLog = function(){
+	var log = getById("log-wrap");
+	if( log.style.display === "none"){
+		log.style.display="block";
+	}
+}//end _showHiddenLog
 
 </script>
 
@@ -68,7 +68,6 @@ window.onload = function(){
 		<ul class="list-inline">
 			<li><a id="clear-log" class="btn btn-sm btn-danger" href="#?q=clear-log">clear log</a></li>
 			<li><a class="btn btn-sm btn-primary" href="iDB_admin.html" target="_blank">iDB admin</a></li>
-			<li><a class="btn btn-sm btn-info" href="tests/SpecRunner.html" target="_blank">tests</a></li>
 		</ul>	
 		<div id="log"></div>
 	</div>
@@ -140,9 +139,6 @@ window.onload = function(){
 <script src="js/webapp_db.js"></script>
 <script src="js/webapp_draw.js"></script>
 <script src="js/webapp.js"></script>
-<!--
-<script src="js/test.js"></script>
--->
 
 <!--
 <iframe 

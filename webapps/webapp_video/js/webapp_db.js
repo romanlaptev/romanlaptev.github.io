@@ -350,6 +350,13 @@ console.log(msg);
 //var msg = "restart db query, " + tableName;
 //console.log( msg );
 //console.log( data[0], data.length );
+if( data["code"] && data["code"] === "store_not_found"){
+	var log_message = webApp.vars["messages"]["storeNotFound"];
+	_log( log_message );
+	if( typeof _showHiddenLog === "function"){
+		_showHiddenLog();
+	}
+}
 							if( data.length > 0){
 								
 								if( typeof _vars["tables"][tableName] === "undefined"){
