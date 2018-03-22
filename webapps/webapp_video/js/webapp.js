@@ -36,7 +36,8 @@ var webApp = {
 			"db_type" : "csv",
 			"csv_header" : true,// field name in first row of csv file
 			"csv_delimiterByFields" : ",",
-			"csv_delimiterByLines" : "\r\n"//,
+			//"csv_delimiterByLines" : "\r\n"//,
+			"csv_delimiterByLines" : "\n",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url_PHP" : "api/request.php",

@@ -105,7 +105,12 @@ console.log(listStores);
 		console.log("error in _db(), _loadData(), not find 'data'.... ");			
 							return false;
 						}
-						__parseAjax( data );
+						
+						_parseAjax( data );
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+						
 					}//end callback()
 				});
 			break;
@@ -113,59 +118,58 @@ console.log(listStores);
 		
 			//return false;
 			
-		function __parseAjax( data ){
-			
-			if( webApp.vars["import"]["db_type"].length === 0 ){
-console.log("error in _db(), not find 'db_type' !");
-				return false;
-			}
-			
-			switch( webApp.vars["import"]["db_type"] ){
-				case "xml":
-					_parseXML( data );
-				break;
-				
-				case "json":
-					//var obj = typeof data == 'string'? JSON.parse(data): data;
-					if( typeof data !== "string"){
-console.log("error in _db(), data not in JSON format");
-						return false;
-					}
-						
-					try {
-						//var jsonObj = JSON.parse( data );
-						var jsonObj = JSON.parse( data, function(key, value) {
-//console.log( key, value );
-							return value;
-						});							
-//console.log( jsonObj );
-						for(var tableName in jsonObj){
-//console.log( tableName, jsonObj[tableName].length );
-							var table = jsonObj[tableName];
-							for( var n = 0; n < table.length; n++){
-								var recordObj = table[n];
-								webApp.db.vars["tables"][tableName]["records"].push( recordObj );
-							}//next
-						}//next
-					} catch(e) {
-					_log( e );
-					}							
-						
-				break;
-				
-				case "csv":
-				case "jcsv":
-console.log("_parseCSVBlocks()");				
-					//_parseCSVBlocks(data);
-				break;
-			}//end switch
-			
-			if( typeof postFunc === "function"){
-				postFunc();
-			}
-		}//__parseAjax()
-		
 	}//end _loadData()
+
+	function _parseAjax( data ){
+		
+		if( webApp.vars["import"]["db_type"].length === 0 ){
+console.log("error in _db(), not find 'db_type' !");
+			return false;
+		}
+		
+		switch( webApp.vars["import"]["db_type"] ){
+			case "xml":
+				_parseXML( data );
+			break;
+			
+			case "json":
+				//var obj = typeof data == 'string'? JSON.parse(data): data;
+				if( typeof data !== "string"){
+console.log("error in _db(), data not in JSON format");
+					return false;
+				}
+					
+				try {
+					//var jsonObj = JSON.parse( data );
+					var jsonObj = JSON.parse( data, function(key, value) {
+//console.log( key, value );
+						return value;
+					});							
+//console.log( jsonObj );
+					for(var tableName in jsonObj){
+//console.log( tableName, jsonObj[tableName].length );
+						var table = jsonObj[tableName];
+						for( var n = 0; n < table.length; n++){
+							var recordObj = table[n];
+							webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+						}//next
+					}//next
+				} catch(e) {
+				_log( e );
+				}							
+					
+			break;
+			
+			case "csv":
+				_parseCSVBlocks( data );
+			break;
+			case "jcsv":
+				//_parseJCSVBlocks( data );
+			break;
+		}//end switch
+		
+	}//_parseAjax()
+
 	
 	function _loadTemplates( postFunc ){
 //console.log( "_loadTemplates", postFunc);			
@@ -360,9 +364,8 @@ console.log(msg);
 								// }
 								webApp.app.serverRequest({
 									"callback": function(data){
-console.log( arguments );
-										//webApp.iDBmodule.dbInfo["callbackFunc"]["continueQuery"] = _continueQuery;
-										//webApp.iDBmodule.saveRawData(data);
+//console.log( arguments );
+										_parseAjax( data );
 									}
 								});
 								
@@ -777,8 +780,9 @@ console.log("not callback....use return function");
 		}//next
 		
 	}//end _parseXML()
-
-	function _parseCSVBlocks( data ){
+	
+/*
+	function _parseJCSVBlocks( data ){
 		var importData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
 //console.log( importData );
 
@@ -888,9 +892,91 @@ console.log("not callback....use return function");
 			return recordObj;
 		}//_convertCSV_JSON()
 		
+	}//end _parseJCSVBlocks()
+*/	
+	
+	function _parseCSVBlocks( data ){
+		var csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
+console.log( csvData );
+/*		
+		for( var n = 0; n < csvData.length; n++){
+			var record = csvData[n];
+			
+			var recordObj = _convertCSV_JSON( 
+				record, 
+				fieldsInfo, 
+				webApp.vars["import"]["csv_delimiterByFields"] 
+			);
+			webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+				
+			
+		}//next
+*/		
+		function _convertCSV_JSON( record, keys, delimiterByFields ){
+	//console.log( "function _convertCSV_JSON(), ", arguments);
+			if( typeof record !== "string" ){
+	console.log("_convertCSV_JSON(), error, input record is not in CSV format");
+				return false;
+			}
+				
+			if( record.length === 0 ){
+	console.log("_convertCSV_JSON(), error, input record is empty!");
+				return false;
+			}
+
+			var recordObj = {};
+			//create keys(fieldnames)
+			for( var n1 = 0; n1 < keys.length; n1++){
+				var key = keys[n1];
+				recordObj[ key ] = "";
+			}//next field
+			
+			
+			//filter, replace commas within "text value"
+			var regexp = /\"(.*?)\"/g;
+			var filter = [];
+			while( result = regexp.exec( record )){
+	//console.log(result);
+			  var s1 = result[1];
+			  if(s1.indexOf(",") !== -1){
+				var s2 = s1.replace(/,/g,"&#44;");
+	//console.log(s1, s2);
+				var obj = {
+				  "raw": s1,
+				  "filtered": s2
+				};
+				filter.push(obj);
+			  }
+			}
+	//console.log(filter);
+			
+			for( var n1 =0; n1 < filter.length; n1++){
+				var s1 = filter[n1]["raw"];
+				var s2 = filter[n1]["filtered"];
+				record = record.replace( s1, s2 );
+			}
+			
+			record = record.replace(/"/g,"");
+//console.log( record );
+
+			var csv_values = record.split( delimiterByFields );
+//console.log( csv_values, csv_values.length );
+
+			var num = 0;
+			for( var key in recordObj){
+				//restore commas in text value
+				if( csv_values[num].length === 0){
+					csv_values[num] = "NULL";
+				}
+				recordObj[key] = csv_values[num];
+				num++;
+			}//next key
+				
+	//console.log(recordObj);			
+			return recordObj;
+		}//_convertCSV_JSON()
+		
 	}//end _parseCSVBlocks()
-	
-	
 
 	
 //==================================
