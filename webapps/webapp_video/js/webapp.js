@@ -25,6 +25,7 @@ var webApp = {
 		"log" : [],
 		"messages" : {
 			//"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
+			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>"
 		},
 		 "import" : {
 			//"data_url" : "db/video.xml",
@@ -141,7 +142,7 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=node&nid=20",
+		"init_url" : "#?q=node&nid=2",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
@@ -738,6 +739,20 @@ console.log(msg);
 				//"title": options["title"]
 				"callback" : function( node ){
 console.log( node );
+
+					if(!node){
+						var log_message = webApp.vars["messages"]["nodeNotFound"];
+						_log( log_message );
+						if( typeof _showHiddenLog === "function"){
+							_showHiddenLog();
+						}
+						
+						if( typeof p["callback"] === "function"){
+							p["callback"]();
+						}
+						return false;
+					}
+
 					var _data = {};
 					//var _data = {
 						//"body" : node["body"],
@@ -890,6 +905,7 @@ console.log(msg);
 	function _serverRequest( opt ){
 		var p = {
 			//"date": null,
+			"url" : null,
 			"callback": null
 		};
 		
@@ -931,7 +947,13 @@ console.log("supportPHP:" + supportPHP);
 			
 			//form url
 			//var url = webApp.vars["import"]["request_url"];
-			var url = webApp.vars["import"]["data_url"];
+			//var url = webApp.vars["import"]["data_url"];
+			var url = p["url"];
+			if(!url || url.length === 0){
+console.log("error, no URL....");				
+				return false;
+			}
+			
 			// if( webApp.vars["supportPHP"] ){
 				// url = webApp.vars["import"]["request_url_PHP"];
 			// }

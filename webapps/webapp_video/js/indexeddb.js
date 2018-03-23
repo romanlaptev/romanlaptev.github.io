@@ -1938,6 +1938,7 @@ console.log(msg);
 			var param = {};
 //console.log("_iDBimport(), send request to the server");
 			webApp.app.serverRequest({
+				"url" : webApp.vars["import"]["data_url"],
 				"callback": _afterRequest
 			});
 			
