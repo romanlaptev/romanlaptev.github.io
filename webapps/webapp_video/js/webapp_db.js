@@ -1388,10 +1388,11 @@ console.log( body );
 			webApp.db.query({
 				"queryObj" : {
 					"action" : "select",
-					"tableName": "node_revisions",
-					"targetFields" : ["body"],
+					"tableName": "field_data_body",//"node_revisions",
+					"targetFields" : ["body_value"], //["body"],
 					"where" : [
-						{"key" : "nid", "value" : p["nid"], "compare": "="}
+						//{"key" : "nid", "value" : p["nid"], "compare": "="}
+						{"key" : "entity_id", "value" : p["nid"], "compare": "="}
 					]
 				},
 				"callback" : function( res ){

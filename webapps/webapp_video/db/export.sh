@@ -35,6 +35,16 @@ sqlite3 ${dbName} <<!
 select ${fields} from ${tableName};
 !
 
+#tableName="node_revision"
+#fields="nid, vid, uid, title, timestamp"
+#echo "- export table ${tableName}"
+#sqlite3 ${dbName} <<!
+#.headers on
+#.mode ${format}
+#.output ${tableName}.csv
+#select ${fields} from ${tableName};
+#!
+
 tableName="taxonomy_term_hierarchy"
 fields="tid, parent"
 echo "- export table ${tableName}"
