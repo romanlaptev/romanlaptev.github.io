@@ -1,6 +1,5 @@
 entity_id,body_value
-1,"[video: index=0]
-<!-- START OF THE PLAYER EMBEDDING TO COPY-PASTE -->
+1,"[video: index=0]<!-- START OF THE PLAYER EMBEDDING TO COPY-PASTE -->
 <div id=""mediaplayer"">JW Player goes here</div>
 <script type=""text/javascript"" src=""/transcend/0_sites/video/sites/all/libraries/jwplayer/jwplayer.js""></script>
 	<script type=""text/javascript"">

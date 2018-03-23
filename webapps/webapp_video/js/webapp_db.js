@@ -927,7 +927,7 @@ console.log( "error CSV parse..." );
 					fieldsInfo, 
 					webApp.vars["import"]["csv_delimiterByFields"] 
 				);
-//console.log( recordObj );
+console.log( recordObj );
 				jsonData.push( recordObj );
 			}//next
 
@@ -983,7 +983,7 @@ console.log( "error CSV parse..." );
 //console.log( record );
 
 			var csv_values = record.split( delimiterByFields );
-//console.log( csv_values, csv_values.length );
+console.log( csv_values, csv_values.length );
 
 			var num = 0;
 			for( var key in recordObj){
@@ -995,7 +995,7 @@ console.log( "error CSV parse..." );
 				num++;
 			}//next key
 				
-	//console.log(recordObj);			
+console.log(recordObj);			
 			return recordObj;
 		}//_convertCSV_JSON()
 		
