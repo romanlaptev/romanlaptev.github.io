@@ -905,8 +905,15 @@ console.log("not callback....use return function");
 	
 	function _parseCSVBlocks( data ){
 		var jsonData = [];		
-		var csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
-console.log(csvData);
+		var csvData = [];
+		
+//------------ test
+//data = data.replace(/\r\n/g, "<br>");
+//console.log(data);
+//------------
+		csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
+		//csvData = data.split( "\"\n" );
+//console.log(csvData);
 
 		if( csvData.length === 0){
 console.log( "error CSV parse..." );
