@@ -28,13 +28,36 @@ var webApp = {
 			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>"
 		},
 		 "import" : {
-			//"data_url" : "db/video.xml",
-			//"db_type" : "xml",
-			//"data_url" :"db/art_correct.json",
-			//"db_type" : "json",
+			//"data_url" : "../../projects/webapp_db/db/art.xml",
+			//"inputDataFormat" : "xml",
 			
-			"data_url" : "db/node.csv",
-			"db_type" : "csv",
+			//"data_url" :"db/art_correct.json",
+			//"inputDataFormat" : "json",
+			
+			"data_url" : {
+"node": "db/node.csv",
+"node_revision": "db/node_revision.csv",
+"node_type" : "db/node_type.csv",
+
+"field_data_body" : "db/field_data_body.html",
+"field_data_field_filename" : "db/field_data_field_filename.csv",
+"field_data_field_img_cover" : "db/field_data_field_img_cover.csv",
+"field_data_field_roles" : "db/field_data_field_roles.csv",
+"field_data_field_subfolder" : "db/field_data_field_subfolder.csv",
+"field_data_field_year" : "db/field_data_field_year.csv",
+"field_data_field_taxonomy" : "db/field_data_field_taxonomy.csv",
+"field_data_field_taxonomy_alpha" : "db/field_data_field_taxonomy_alpha.csv",
+
+"menu_links" : "db/menu_links.csv",
+"book" : "db/book.csv",
+
+"taxonomy_index" : "db/taxonomy_index.csv",
+"taxonomy_term_data" : "db/taxonomy_term_data.csv",
+"taxonomy_term_hierarchy" : "db/taxonomy_term_hierarchy.csv"
+			},
+			
+			"inputDataFormat" : "csv",
+			
 			"csv_header" : true,// field name in first row of csv file
 			"csv_delimiterByFields" : ",",
 			//"csv_delimiterByLines" : "\r\n"//,
@@ -105,7 +128,7 @@ console.log(webApp);
 
 	//start
 	webApp.app.loadTemplates(function(){
-console.log("Load templates end...", webApp.draw.vars["templates"] );		
+//console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
 	});
 
@@ -142,7 +165,8 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=node&nid=2",
+		"init_url" : "#?q=node&nid=20",
+		//"init_url" : "#?q=node&nid=2",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
