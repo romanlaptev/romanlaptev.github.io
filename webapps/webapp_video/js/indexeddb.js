@@ -1938,6 +1938,7 @@ console.log(msg);
 			//var param = {};
 console.log("_iDBimport(), send request to the server");
 console.log(typeof webApp.vars["import"]["data_url"]);
+			//import from one data files
 			if( typeof webApp.vars["import"]["data_url"] === "string"){
 				webApp.app.serverRequest({
 					"url" : webApp.vars["import"]["data_url"],
@@ -1945,9 +1946,27 @@ console.log(typeof webApp.vars["import"]["data_url"]);
 				});
 			}
 
+			//import from separate data files
 			if( typeof webApp.vars["import"]["data_url"] === "object"){
+
+				//Get tables info
+				for( var tableName in webApp.vars["import"]["data_url"]){
+					var tableInfo = {
+						"tableName" : tableName,
+						"url" : webApp.vars["import"]["data_url"][tableName],
+						"inputDataFormat" : ""
+					};
+					
+					var pos1= tableInfo["url"].lastIndexOf(".")+1;
+					var pos2= tableInfo["url"].length;
+					var inputDataFormat = tableInfo["url"].substring(pos1, pos2);
+					tableInfo["inputDataFormat"]= inputDataFormat;
+					
+					dbInfo["tables"].push( tableInfo );
+				}//next
+				
 				webApp.app.serverRequest({
-					"url" : webApp.vars["import"]["data_url"]["node"],
+					"url" : dbInfo["tables"][0]["url"],
 					"callback": _afterRequest
 				});
 			}
