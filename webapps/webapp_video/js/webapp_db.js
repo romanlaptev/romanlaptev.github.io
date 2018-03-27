@@ -53,7 +53,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	}//end _detectDataStore()
 	
 	function _loadData( postFunc ){
-console.log("webApp.db.loadData() ", arguments);
+//console.log("webApp.db.loadData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -65,7 +65,7 @@ console.log("webApp.db.loadData() ", arguments);
 				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-console.log(listStores);				
+//console.log(listStores);				
 						webApp.iDBmodule.checkState({
 							"listStores" : listStores,
 							"callback" : postFunc//draw page
@@ -459,7 +459,7 @@ console.log( "function _continueQuery", options["queryObj"] );
 				}
 			}//next record
 				
-console.log("unsort:", table[0], table.length);
+//console.log("unsort:", table[0], table.length);
 
 			if( typeof queryObj["callback"] === "function"){
 				
@@ -906,6 +906,7 @@ console.log("not callback....use return function");
 	function _parseCSVBlocks( data ){
 		var jsonData = [];		
 		var csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
+console.log(csvData);
 
 		if( csvData.length === 0){
 console.log( "error CSV parse..." );
@@ -927,7 +928,7 @@ console.log( "error CSV parse..." );
 					fieldsInfo, 
 					webApp.vars["import"]["csv_delimiterByFields"] 
 				);
-console.log( recordObj );
+//console.log( recordObj );
 				jsonData.push( recordObj );
 			}//next
 
@@ -936,14 +937,14 @@ console.log( recordObj );
 
 
 		function _convertCSV_JSON( record, keys, delimiterByFields ){
-	//console.log( "function _convertCSV_JSON(), ", arguments);
+//console.log( "function _convertCSV_JSON(), ", arguments);
 			if( typeof record !== "string" ){
 	console.log("_convertCSV_JSON(), error, input record is not in CSV format");
 				return false;
 			}
 				
 			if( record.length === 0 ){
-	console.log("_convertCSV_JSON(), error, input record is empty!");
+console.log("_convertCSV_JSON(), error, input record is empty!");
 				return false;
 			}
 
@@ -995,7 +996,7 @@ console.log( csv_values, csv_values.length );
 				num++;
 			}//next key
 				
-console.log(recordObj);			
+//console.log(recordObj);			
 			return recordObj;
 		}//_convertCSV_JSON()
 		
