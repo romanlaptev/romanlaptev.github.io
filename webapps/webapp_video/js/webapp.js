@@ -28,13 +28,15 @@ var webApp = {
 			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>"
 		},
 		 "import" : {
-			//"data_url" : "db/video.xml",
-			//"db_type" : "xml",
+			"data_url" : "../../projects/webapp_db/db/art.xml",
+			"db_type" : "xml",
+			
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
 			
-			"data_url" : "db/node.csv",
-			"db_type" : "csv",
+			//"data_url" : "db/node.csv",
+			//"db_type" : "csv",
+			
 			"csv_header" : true,// field name in first row of csv file
 			"csv_delimiterByFields" : ",",
 			//"csv_delimiterByLines" : "\r\n"//,
@@ -142,7 +144,8 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=node&nid=2",
+		"init_url" : "#?q=node&nid=20",
+		//"init_url" : "#?q=node&nid=2",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
