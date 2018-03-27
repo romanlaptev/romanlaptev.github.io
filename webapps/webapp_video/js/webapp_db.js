@@ -115,12 +115,12 @@ console.log(listStores);
 			
 		function __parseAjax( data ){
 			
-			if( webApp.vars["import"]["db_type"].length === 0 ){
-console.log("error in _db(), not find 'db_type' !");
+			if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
+console.log("error in _db(), not find 'inputDataFormat' !");
 				return false;
 			}
 			
-			switch( webApp.vars["import"]["db_type"] ){
+			switch( webApp.vars["import"]["inputDataFormat"] ){
 				case "xml":
 					_parseXML( data );
 				break;

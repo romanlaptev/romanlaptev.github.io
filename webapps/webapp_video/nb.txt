@@ -17,7 +17,7 @@ https://habrahabr.ru/company/mailru/blog/129476/
 при загрузке приложения 
 - импорт xml файла с данными таблиц 
 (
-обнаруживаем отсуствие БД ????
+обнаруживаем отсутствие таблиц в БД ????
 и запускаем процесс импорта или
 проверяем дату последнего обновления и если файл данных создан позже, то обновляем БД)
 - импорт отдельных файлов с данными таблиц в разных форматах (xml, json, csv, html)
@@ -25,3 +25,28 @@ https://habrahabr.ru/company/mailru/blog/129476/
 при выполнении запроса
 - импорт файла с необходимой в данном запросе таблицы и сохранение данных в БД
 (необходимо иметь схему данных, где будет указано соответствие таблицы, файла и формата)
+
+- перейти на использование другого формата ссылки на данные:
+webApp.vars["import"]["data_url"] = "../../projects/webapp_db/db/art.xml"
+или
+webApp.vars["import"]["data_url"] = {
+	"node": "node.csv",
+	"node_revision": "node_revision.csv",
+	"node_type" : "node_type.csv",
+
+	"field_data_body" : "field_data_body.html",
+	"field_data_field_filename" : "field_data_field_filename.csv",
+	"field_data_field_img_cover" : "field_data_field_img_cover.csv",
+	"field_data_field_roles" : "field_data_field_roles.csv",
+	"field_data_field_subfolder" : "field_data_field_subfolder.csv",
+	"field_data_field_year" : "field_data_field_year.csv",
+	"field_data_field_taxonomy" : "field_data_field_taxonomy.csv",
+	"field_data_field_taxonomy_alpha" : "field_data_field_taxonomy_alpha.csv",
+
+	"menu_links" : "menu_links.csv",
+	"book" : "book.csv",
+
+	"taxonomy_index" : "taxonomy_index.csv",
+	"taxonomy_term_data" : "taxonomy_term_data.csv",
+	"taxonomy_term_hierarchy" : "taxonomy_term_hierarchy.csv"
+};

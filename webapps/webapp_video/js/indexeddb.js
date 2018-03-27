@@ -1915,7 +1915,7 @@ console.log(msg);
 				//.....get last date modified, run HEAD request
 				//.....
 				
-				//_iDBimport();
+//_iDBimport();
 				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 					dbInfo["callbackFunc"]["afterUpdate"]();
 				}
@@ -1935,12 +1935,22 @@ console.log(msg);
 				webApp.vars["waitWindow"].style.display="block";
 			}
 			
-			var param = {};
-//console.log("_iDBimport(), send request to the server");
-			webApp.app.serverRequest({
-				"url" : webApp.vars["import"]["data_url"],
-				"callback": _afterRequest
-			});
+			//var param = {};
+console.log("_iDBimport(), send request to the server");
+console.log(typeof webApp.vars["import"]["data_url"]);
+			if( typeof webApp.vars["import"]["data_url"] === "string"){
+				webApp.app.serverRequest({
+					"url" : webApp.vars["import"]["data_url"],
+					"callback": _afterRequest
+				});
+			}
+
+			if( typeof webApp.vars["import"]["data_url"] === "object"){
+				webApp.app.serverRequest({
+					"url" : webApp.vars["import"]["data_url"]["node"],
+					"callback": _afterRequest
+				});
+			}
 			
 			function _afterRequest( data ){
 //console.log( data );
@@ -1957,12 +1967,12 @@ console.log("_iDBimport(), response from the server,  runtime: " + runtime +" se
 		}//end _iDBimport()
 		
 		function _saveData(data){
-			if( webApp.vars["import"]["db_type"].length === 0 ){
-console.log("error in _db(), not find 'db_type' !");
+			if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
+console.log("error in _db(), not find 'inputDataFormat' !");
 				return false;
 			}
 			
-			switch( webApp.vars["import"]["db_type"] ){
+			switch( webApp.vars["import"]["inputDataFormat"] ){
 				case "xml":
 //console.log(typeof data);				
 					if(typeof data !== "string"){//server answer contains XML
