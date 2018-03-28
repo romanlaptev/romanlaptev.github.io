@@ -29,11 +29,7 @@ var webApp = {
 		},
 		 "import" : {
 			//"data_url" : "../../projects/webapp_db/db/art.xml",
-			//"inputDataFormat" : "xml",
-			
 			//"data_url" :"db/art_correct.json",
-			//"inputDataFormat" : "json",
-			
 			"data_url" : {
 "node": "db/node.csv",
 "node_revision": "db/node_revision.csv",
@@ -56,12 +52,14 @@ var webApp = {
 "taxonomy_term_hierarchy" : "db/taxonomy_term_hierarchy.csv"
 			},
 			
+			//"inputDataFormat" : "xml",
+			//"inputDataFormat" : "json",
 			"inputDataFormat" : "csv",
 			
-			"csv_header" : true,// field name in first row of csv file
-			"csv_delimiterByFields" : ",",
-			//"csv_delimiterByLines" : "\r\n"//,
-			"csv_delimiterByLines" : "\n",
+			// "csv_header" : true,// field name in first row of csv file
+			// "csv_delimiterByFields" : ",",
+			// //"csv_delimiterByLines" : "\r\n"//,
+			// "csv_delimiterByLines" : "\n",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url_PHP" : "api/request.php",

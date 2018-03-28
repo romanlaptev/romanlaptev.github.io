@@ -59,6 +59,47 @@ console.log("webApp.db.loadData() ", arguments);
 			_vars["dataStoreType"] = false;
 		} 
 
+		//detect url format
+		var isEmptyURL = false;
+		
+		if( typeof webApp.vars["import"]["data_url"] === "string"){//load data from one file
+			isEmptyURL = webApp.vars["import"]["data_url"].length === 0;
+		}
+
+		if( typeof webApp.vars["import"]["data_url"] === "object"){//load data from files
+			var numDataURL = 0;
+			for( var tableName in webApp.vars["import"]["data_url"]){
+				numDataURL++;
+			}//next
+			isEmptyURL = numDataURL === 0;
+console.log(numDataURL, isEmptyURL);
+		}
+
+		if(isEmptyURL){
+console.log("error in _db(), empty 'data_url' !");
+			return false;
+		}
+		
+		if( numDataURL > 0){
+			//Get tables info
+			for( var tableName in webApp.vars["import"]["data_url"]){
+				var tableInfo = {
+					//"tableName" : tableName,
+					"url" : webApp.vars["import"]["data_url"][tableName],
+					"inputDataFormat" : ""
+				};
+				
+				var pos1= tableInfo["url"].lastIndexOf(".")+1;
+				var pos2= tableInfo["url"].length;
+				var inputDataFormat = tableInfo["url"].substring(pos1, pos2);
+				tableInfo["inputDataFormat"]= inputDataFormat;
+				
+				_vars["tables"][tableName] = tableInfo;
+			}//next
+			
+		}
+return false;
+		
 		switch(_vars["dataStoreType"]) {				
 			
 			case "indexedDB":
@@ -66,11 +107,10 @@ console.log("webApp.db.loadData() ", arguments);
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
 console.log(listStores);				
-						webApp.iDBmodule.checkState({
-							"listStores" : listStores,
-							"callback" : postFunc//draw page
-						});
-//console.log("test!");				
+						//webApp.iDBmodule.checkState({
+							//"listStores" : listStores,
+							//"callback" : postFunc//draw page
+						//});
 					}//end callback
 				});
 				return false;
@@ -83,29 +123,16 @@ console.log(listStores);
 			break;
 			
 			default:
-				if( webApp.vars["import"]["data_url"].length === 0 ){
-		console.log("error in _db(), not find 'data_url' !");
-					return false;
-				}
-				
-				runAjax( {
-					"requestMethod" : "GET", 
-					"url" : webApp.vars["import"]["data_url"], 
+				webApp.app.serverRequest({
+					"url" : webApp.vars["import"]["data_url"],
 					"callback": function( data ){
-						
-		var msg = "load " + webApp.vars["import"]["data_url"] ;
-		console.log(msg);
-		//webApp.vars["log"].push(msg);
-		//console.log( "_postFunc(), " + typeof data );
-		//console.log( data );
-		//for( var key in data){
-		//console.log(key +" : "+data[key]);
-		//}
-						if( !data ){
-		console.log("error in _db(), _loadData(), not find 'data'.... ");			
-							return false;
-						}
-						__parseAjax( data );
+var msg = "load " + webApp.vars["import"]["data_url"] ;
+console.log(msg);
+							if( !data ){
+console.log("error in _db(), _loadData(), not find 'data'.... ");			
+								return false;
+							}
+						__parseAjax(data);
 					}//end callback()
 				});
 			break;
