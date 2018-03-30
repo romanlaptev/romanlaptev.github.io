@@ -24,18 +24,59 @@ function _db( opt ){
 		"webSQLsupport" : window.openDatabase  ? true : false,
 		"localStorageSupport" : window['localStorage']  ? true : false,
 		"dataStoreType" : _detectDataStore(),
+		"isEmptyURL" : false,
+		"numDataURL": false,
 		"tables": {}
 	};
-
-
+	
+	
 	var _init = function( opt ){
 //console.log("init _db: ", arguments);
 console.log( "indexedDBsupport: " + _vars["indexedDBsupport"] );			
 console.log( "webSQLsupport: " + _vars["webSQLsupport"] );			
 console.log( "localStorageSupport: " + _vars["localStorageSupport"] );			
 console.log( "Data store type: " + _vars["dataStoreType"] );			
+		_vars["isEmptyURL"] = _checkDataURL();
 	};//end _init()
 
+	function _checkDataURL(){
+//console.log("_checkDataURL()", webApp);
+		var isEmptyURL = false;
+		
+		//detect url format
+		if( typeof webApp.vars["import"]["data_url"] === "string"){//data url - one filename
+			isEmptyURL = webApp.vars["import"]["data_url"].length === 0;
+		}
+		
+		if( typeof webApp.vars["import"]["data_url"] === "object"){//data url - list of filenames
+			var numDataURL = 0;
+			for( var tableName in webApp.vars["import"]["data_url"]){
+				numDataURL++;
+			}//next
+			isEmptyURL = numDataURL === 0;
+//console.log(numDataURL, isEmptyURL);
+
+			if( numDataURL > 0){//Get tables info
+				_vars["numDataURL"] = numDataURL;
+				for( var tableName in webApp.vars["import"]["data_url"]){
+					var tableInfo = {
+						//"tableName" : tableName,
+						"url" : webApp.vars["import"]["data_url"][tableName],
+						"inputDataFormat" : ""
+					};
+					
+					var pos1= tableInfo["url"].lastIndexOf(".")+1;
+					var pos2= tableInfo["url"].length;
+					var inputDataFormat = tableInfo["url"].substring(pos1, pos2);
+					tableInfo["inputDataFormat"]= inputDataFormat;
+					
+					_vars["tables"][tableName] = tableInfo;
+				}//next
+			}
+		}
+		return isEmptyURL;
+	}//end _checkDataURL()
+	
 	function _detectDataStore(){
 //console.log(arguments);		
 //console.log( this );		
@@ -59,46 +100,10 @@ console.log("webApp.db.loadData() ", arguments);
 			_vars["dataStoreType"] = false;
 		} 
 
-		//detect url format
-		var isEmptyURL = false;
-		
-		if( typeof webApp.vars["import"]["data_url"] === "string"){//load data from one file
-			isEmptyURL = webApp.vars["import"]["data_url"].length === 0;
-		}
-
-		if( typeof webApp.vars["import"]["data_url"] === "object"){//load data from files
-			var numDataURL = 0;
-			for( var tableName in webApp.vars["import"]["data_url"]){
-				numDataURL++;
-			}//next
-			isEmptyURL = numDataURL === 0;
-console.log(numDataURL, isEmptyURL);
-		}
-
-		if(isEmptyURL){
+		if( _vars["isEmptyURL"]){
 console.log("error in _db(), empty 'data_url' !");
 			return false;
 		}
-		
-		if( numDataURL > 0){
-			//Get tables info
-			for( var tableName in webApp.vars["import"]["data_url"]){
-				var tableInfo = {
-					//"tableName" : tableName,
-					"url" : webApp.vars["import"]["data_url"][tableName],
-					"inputDataFormat" : ""
-				};
-				
-				var pos1= tableInfo["url"].lastIndexOf(".")+1;
-				var pos2= tableInfo["url"].length;
-				var inputDataFormat = tableInfo["url"].substring(pos1, pos2);
-				tableInfo["inputDataFormat"]= inputDataFormat;
-				
-				_vars["tables"][tableName] = tableInfo;
-			}//next
-			
-		}
-return false;
 		
 		switch(_vars["dataStoreType"]) {				
 			
@@ -123,22 +128,27 @@ console.log(listStores);
 			break;
 			
 			default:
-				webApp.app.serverRequest({
-					"url" : webApp.vars["import"]["data_url"],
-					"callback": function( data ){
-var msg = "load " + webApp.vars["import"]["data_url"] ;
-console.log(msg);
-							if( !data ){
-console.log("error in _db(), _loadData(), not find 'data'.... ");			
-								return false;
-							}
-						__parseAjax(data);
-					}//end callback()
-				});
+				if(!_vars["numDataURL"]){
+					webApp.app.serverRequest({
+						"url" : webApp.vars["import"]["data_url"],
+						"callback": function( data ){
+	var msg = "load " + webApp.vars["import"]["data_url"] ;
+	console.log(msg);
+								if( !data ){
+	console.log("error in _db(), _loadData(), not find 'data'.... ");			
+									return false;
+								}
+							__parseAjax(data);
+						}//end callback()
+					});
+				}
 			break;
 		}//end switch
 		
-			//return false;
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
+		return false;
 			
 		function __parseAjax( data ){
 			
@@ -366,8 +376,15 @@ console.log(msg);
 //console.log(arguments);
 
 			var tableName = queryObj["tableName"];
-			if( !_vars["tables"][tableName] || 
-					_vars["tables"][tableName]["records"].length === 0){
+//console.log("tableName " + tableName, _vars["tables"][tableName]);
+			if( !_vars["tables"][tableName]){
+console.log("error, _startQuery(), not find tableName " + tableName);
+				_postQuery( data )	;
+				return false;
+			}
+			
+			if( !_vars["tables"][tableName]["records"] ||
+					_vars["tables"][tableName]["records"].length === 0 ){
 				
 				if( webApp.db.vars["dataStoreType"] === "indexedDB"){
 					//get records from iDB store
