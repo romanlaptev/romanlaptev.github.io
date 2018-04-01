@@ -28,7 +28,11 @@ footer {
 .navbar-brand {
   padding: 0;
 }
-
+header .navbar-brand h1 {
+	/*font-family: Lobster;*/
+	font-family: Victorian LET Regular;
+	font-size: 3.5em;
+}
 
 .btn-style1 {
 	background-color: #65a3be;
