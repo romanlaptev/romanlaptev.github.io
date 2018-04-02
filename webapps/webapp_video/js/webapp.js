@@ -454,7 +454,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( p["queryTarget"].length === 0 ){
 console.log("error in _formQueryObj(), empty 'queryTarget'....");
