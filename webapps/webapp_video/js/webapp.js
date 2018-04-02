@@ -54,7 +54,7 @@ var webApp = {
 			
 			//"inputDataFormat" : "xml",
 			//"inputDataFormat" : "json",
-			"inputDataFormat" : "csv",
+			//"inputDataFormat" : "csv",
 			
 			// "csv_header" : true,// field name in first row of csv file
 			// "csv_delimiterByFields" : ",",

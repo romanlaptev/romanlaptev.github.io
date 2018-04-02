@@ -102,20 +102,23 @@ console.log("webApp.db.loadData() ", arguments);
 
 		if( _vars["isEmptyURL"]){
 console.log("error in _db(), empty 'data_url' !");
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
 			return false;
 		}
 		
-		switch(_vars["dataStoreType"]) {				
+		switch(_vars["dataStoreType"]) {
 			
 			case "indexedDB":
 				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
 console.log(listStores);				
-						//webApp.iDBmodule.checkState({
-							//"listStores" : listStores,
-							//"callback" : postFunc//draw page
-						//});
+						webApp.iDBmodule.checkState({
+							"listStores" : listStores,
+							"callback" : postFunc//draw page
+						});
 					}//end callback
 				});
 				return false;
@@ -128,26 +131,36 @@ console.log(listStores);
 			break;
 			
 			default:
+				//server request ( save result to memory, _vars["tables"] )
 				if(!_vars["numDataURL"]){
 					webApp.app.serverRequest({
 						"url" : webApp.vars["import"]["data_url"],
 						"callback": function( data ){
-	var msg = "load " + webApp.vars["import"]["data_url"] ;
-	console.log(msg);
-								if( !data ){
-	console.log("error in _db(), _loadData(), not find 'data'.... ");			
-									return false;
+var msg = "load " + webApp.vars["import"]["data_url"] ;
+console.log(msg);
+//console.log(data);
+								if( data ){
+									__parseAjax(data);
+								} else {
+console.log("error in _db(), _loadData(), not find 'data'.... ");			
 								}
-							__parseAjax(data);
+								
 						}//end callback()
 					});
+				} else {
+					
+					if( typeof postFunc === "function"){
+						postFunc();
+					}
+					
 				}
 			break;
 		}//end switch
 		
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
+		// if( !_vars["dataStoreType"] ){
+// console.log("TEST2");			
+		// } 
+		
 		return false;
 			
 		function __parseAjax( data ){
@@ -386,34 +399,58 @@ console.log("error, _startQuery(), not find tableName " + tableName);
 			if( !_vars["tables"][tableName]["records"] ||
 					_vars["tables"][tableName]["records"].length === 0 ){
 				
-				if( webApp.db.vars["dataStoreType"] === "indexedDB"){
-					//get records from iDB store
-					webApp.iDBmodule.getRecords({
-						"storeName" : tableName,
-						"callback" : function( data){
-//var msg = "restart db query, " + tableName;
-//console.log( msg );
-//console.log( data[0], data.length );
-							if( data.length > 0){
-								
-								if( typeof _vars["tables"][tableName] === "undefined"){
-									_vars["tables"][tableName] = [];
-									//_vars["tables"][tableName]["records"] = [];
+				switch ( webApp.db.vars["dataStoreType"]){
+					case "indexedDB":
+						//get records from iDB store
+						webApp.iDBmodule.getRecords({
+							"storeName" : tableName,
+							"callback" : function( data){
+	//var msg = "restart db query, " + tableName;
+	//console.log( msg );
+	//console.log( data[0], data.length );
+								if( data.length > 0){
+									
+									if( typeof _vars["tables"][tableName] === "undefined"){
+										_vars["tables"][tableName] = [];
+										//_vars["tables"][tableName]["records"] = [];
+									}
+									_vars["tables"][tableName]["records"] = data;
+									_startQuery( queryObj );//restart db query
+								} else {
+	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+	console.log( msg );
 								}
-								_vars["tables"][tableName]["records"] = data;
-								_startQuery( queryObj );//restart db query
-							} else {
-var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+								
+							}
+						});
+					break;
+					
+					default:
+var msg = "Warning! db.query(), startQuery(), table " +tableName+ " empty.... ";
 console.log( msg );
+						if( _vars["numDataURL"] > 0){
+							for(var tblName in _vars["tables"]){
+								if( tableName === tblName){
+									var url = _vars["tables"][tableName]["url"];
+								}
+							}//next
+//console.log( "URL:", url );
+							
+							//server request
+							if( url ){
+								webApp.app.serverRequest({
+									"url" : url,
+									"callback": function(data){
+console.log( data );
+									}
+								});
 							}
 							
 						}
-					});
-					return false;
-				}
-
-var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
-console.log( msg );
+						
+					break;
+				}//end switch
+				
 				return false;
 			}
 
@@ -1255,7 +1292,14 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				]
 			},
 			"callback" : function( res ){
-//console.log( node );
+console.log( res );
+			if( !res ){
+				if( typeof p["callback"] === "function"){
+					p["callback"](node);
+				}
+				return false;
+			}
+
 				var node = res[0];
 				node["nid"] = p["nid"];
 				
