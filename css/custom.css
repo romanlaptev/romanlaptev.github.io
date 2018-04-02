@@ -121,3 +121,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   color: #fff;
 }
 
+
+#header-art-sites {
+	font-family: Lobster;
+	font-size: 200%;
+}
