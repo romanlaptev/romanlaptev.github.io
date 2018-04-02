@@ -393,7 +393,7 @@ console.log(msg);
 			var tableName = queryObj["tableName"];
 //console.log("tableName " + tableName, _vars["tables"][tableName]);
 			if( !_vars["tables"][tableName]){
-console.log("error, _startQuery(), not find tableName " + tableName);
+console.log("error, _startQuery(), not find information schema for table " + tableName);
 				_postQuery( data )	;
 				return false;
 			}
@@ -410,6 +410,7 @@ console.log("error, _startQuery(), not find tableName " + tableName);
 	//var msg = "restart db query, " + tableName;
 	//console.log( msg );
 	//console.log( data[0], data.length );
+/*	
 								if( data.length > 0){
 									
 									if( typeof _vars["tables"][tableName] === "undefined"){
@@ -422,7 +423,8 @@ console.log("error, _startQuery(), not find tableName " + tableName);
 	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
 	console.log( msg );
 								}
-								
+*/
+								_continueQuery(data);
 							}
 						});
 					break;
@@ -447,7 +449,8 @@ console.log( msg );
 								"callback": function(data){
 //console.log( data );			
 									if( _vars["tables"][tableName]["inputDataFormat"] === "csv"){
-										_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+										//_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+										_continueQuery( _parseCSVBlocks(data) );
 									}
 									
 								}
@@ -487,6 +490,23 @@ console.log( msg );
 			}//end switch
 		}//end _startQuery()
 		
+		function _continueQuery( data ){
+console.log( "function _continueQuery", options["queryObj"] );
+		//console.log( data );
+		//console.log( tableName );
+			var tableName = options["queryObj"]["tableName"];				
+			if( data.length > 0){
+				if( typeof _vars["tables"][tableName] === "undefined"){
+					_vars["tables"][tableName] = [];
+					//_vars["tables"][tableName]["records"] = [];
+				}
+				_vars["tables"][tableName]["records"] = data;
+				_startQuery( options["queryObj"] );//restart db query
+			} else {
+		var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+		console.log( msg );
+			}
+		}//end _continueQuery()	
 		
 		function _processQuery( records, queryObj ){
 //console.log("_processQuery(), ", arguments);			
@@ -1406,9 +1426,10 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 			},
 			"callback" : function( res ){
 console.log( res );
-			if( !res ){
+
+			if( !res || res.length === 0 ){
 				if( typeof p["callback"] === "function"){
-					p["callback"](node);
+					p["callback"](res);
 				}
 				return false;
 			}
@@ -1417,7 +1438,14 @@ console.log( res );
 				node["nid"] = p["nid"];
 				
 				__getNodeBody(function( body ){
-//console.log( res );						
+console.log( body );						
+
+					if( !body || body.length === 0 ){
+						if( typeof p["callback"] === "function"){
+							p["callback"](body);
+						}
+						return false;
+					}
 					node["body"] = body;
 					
 					__getNodeFields( node, function( fields ){
@@ -1445,16 +1473,28 @@ console.log( res );
 			webApp.db.query({
 				"queryObj" : {
 					"action" : "select",
+					
 					"tableName": "node_revisions",
 					"targetFields" : ["body"],
+					//"tableName": "field_data_body",
+					//"targetFields" : ["body_value"],
+					
 					"where" : [
 						{"key" : "nid", "value" : p["nid"], "compare": "="}
+						//{"key" : "entity_id", "value" : p["nid"], "compare": "="}
+						
 					]
 				},
 				"callback" : function( res ){
-//console.log( res );
+console.log( res );
+
+					var body = [];
+					if( res && res.length === 1){
+						body = res[0]["body"];
+					}
+					
 					if( typeof callback === "function"){
-						callback( res[0]["body"]);
+						callback( body );
 					}
 				}//end callback
 			});

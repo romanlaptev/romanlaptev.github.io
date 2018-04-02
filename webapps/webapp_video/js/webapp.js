@@ -163,8 +163,8 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=node&nid=20",
-		//"init_url" : "#?q=node&nid=2",
+		//"init_url" : "#?q=node&nid=20",
+		"init_url" : "#?q=node&nid=2",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
@@ -762,7 +762,7 @@ console.log(msg);
 				"callback" : function( node ){
 console.log( node );
 
-					if(!node){
+					if(!node || node.length === 0){
 						var log_message = webApp.vars["messages"]["nodeNotFound"];
 						_log( log_message );
 						if( typeof _showHiddenLog === "function"){
