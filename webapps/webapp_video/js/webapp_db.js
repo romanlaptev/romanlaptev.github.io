@@ -1427,9 +1427,9 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 			"callback" : function( res ){
 console.log( res );
 
-			if( !res || res.length === 0 ){
+			if( !res || res.length === 0){
 				if( typeof p["callback"] === "function"){
-					p["callback"](res);
+					p["callback"](node);
 				}
 				return false;
 			}
@@ -1439,13 +1439,6 @@ console.log( res );
 				
 				__getNodeBody(function( body ){
 console.log( body );						
-
-					if( !body || body.length === 0 ){
-						if( typeof p["callback"] === "function"){
-							p["callback"](body);
-						}
-						return false;
-					}
 					node["body"] = body;
 					
 					__getNodeFields( node, function( fields ){
@@ -1454,7 +1447,7 @@ console.log( body );
 						_getNodeTerms({
 							"nid" : node["nid"],
 							"callback" : function(res){
-//console.log(res);								
+console.log(res);								
 								node["nodeTerms"] = res;
 								if( typeof p["callback"] === "function"){
 									p["callback"](node);
@@ -1487,14 +1480,12 @@ console.log( body );
 				},
 				"callback" : function( res ){
 console.log( res );
-
-					var body = [];
-					if( res && res.length === 1){
-						body = res[0]["body"];
-					}
-					
 					if( typeof callback === "function"){
-						callback( body );
+						if(!res){
+							callback( res );
+						} else {
+							callback( res[0]["body"]);
+						}
 					}
 				}//end callback
 			});
@@ -1534,7 +1525,13 @@ console.log( res );
 					]
 				},
 				"callback" : function( res ){
-//console.log( res );
+console.log( res );
+					if(!res){
+						if( typeof callback === "function"){
+							callback( res );
+						}
+					}
+					
 					for( var n = 0; n < res.length; n++){
 						var fieldName = res[n]["field_name"];
 						fieldsList.push( fieldName + "_value");

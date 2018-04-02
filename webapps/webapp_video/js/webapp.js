@@ -762,7 +762,7 @@ console.log(msg);
 				"callback" : function( node ){
 console.log( node );
 
-					if(!node || node.length === 0){
+					if(!node){
 						var log_message = webApp.vars["messages"]["nodeNotFound"];
 						_log( log_message );
 						if( typeof _showHiddenLog === "function"){
@@ -803,7 +803,7 @@ console.log( node );
 //for test!!!
 //node["terms"] = [];
 					_data["nodeTerms"] = "test";
-					if( node["nodeTerms"].length > 0 ){
+					if( node["nodeTerms"] && node["nodeTerms"].length > 0 ){
 						_data["nodeTerms"] = node["nodeTerms"];
 					}
 					
