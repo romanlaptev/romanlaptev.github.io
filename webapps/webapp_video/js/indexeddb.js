@@ -173,7 +173,7 @@ console.log( addRecord );
 		var dbInfo = []; 
 		//do not calculate store size
 		dbInfo["calc_store_size"] = false;
-		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
+		dbInfo["allowIndexedDB"] = false;//true;//use IndexedDB, program switch
 		dbInfo["dbName"] = "video";//"webapp_db";
 		dbInfo["import"] = [];
 		dbInfo["tables"] = [];
@@ -1871,6 +1871,7 @@ console.log(msg, e);
 		}//end iDB()
 		
 		
+//************************** indexedDB: additional methods **************************
 		var _checkState = function(opt){
 			var p = {
 				"listStores": "",
@@ -1914,7 +1915,7 @@ console.log(msg);
 				//.....get last date modified, run HEAD request
 				//.....
 				
-				//_iDBimport();
+//_iDBimport();
 				if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 					dbInfo["callbackFunc"]["afterUpdate"]();
 				}
@@ -1934,12 +1935,16 @@ console.log(msg);
 				webApp.vars["waitWindow"].style.display="block";
 			}
 			
-			var param = {};
-//console.log("_iDBimport(), send request to the server");
+			//var param = {};
+console.log("_iDBimport(), send request to the server");
+//console.log(typeof webApp.vars["import"]["data_url"]);
+
+			//import from one data file
 			webApp.app.serverRequest({
+				"url" : webApp.vars["import"]["data_url"],
 				"callback": _afterRequest
 			});
-			
+
 			function _afterRequest( data ){
 //console.log( data );
 				//_w.wait({state:false});
@@ -1955,12 +1960,12 @@ console.log("_iDBimport(), response from the server,  runtime: " + runtime +" se
 		}//end _iDBimport()
 		
 		function _saveData(data){
-			if( webApp.vars["import"]["db_type"].length === 0 ){
-console.log("error in _db(), not find 'db_type' !");
+			if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
+console.log("error in _db(), not find 'inputDataFormat' !");
 				return false;
 			}
 			
-			switch( webApp.vars["import"]["db_type"] ){
+			switch( webApp.vars["import"]["inputDataFormat"] ){
 				case "xml":
 //console.log(typeof data);				
 					if(typeof data !== "string"){//server answer contains XML
@@ -2002,9 +2007,18 @@ console.log("error in _db(), data not in JSON format");
 					}
 				break;
 				
-				//case "csv":
-				case "jcsv":
+				case "csv":
+				//case "jcsv":
+console.log( data );				
 					//_parseCSVBlocks(data);
+	if( webApp.vars["wait"] ){
+		//webApp.vars["wait"].className="";
+		webApp.vars["wait"].style.display="none";
+	}
+	if( webApp.vars["waitWindow"] ){
+		webApp.vars["waitWindow"].style.display="none";
+	}
+					
 					if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 						dbInfo["callbackFunc"]["afterUpdate"]();
 					}
@@ -2016,7 +2030,24 @@ console.log("error in _db(), data not in JSON format");
 			// }
 
 			function __parseXML( xml ){
-
+if( xml.length === 0){
+console.log("Error save records to indexedDB stores!!!");	
+						
+	delete dbInfo["import"]["xml"];//clear var
+	
+	if( webApp.vars["wait"] ){
+		//webApp.vars["wait"].className="";
+		webApp.vars["wait"].style.display="none";
+	}
+	if( webApp.vars["waitWindow"] ){
+		webApp.vars["waitWindow"].style.display="none";
+	}
+	
+	if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
+		dbInfo["callbackFunc"]["afterUpdate"]( data );
+	}
+	return false;
+}
 //---------------------
 //console.log( xml ) ;
 //var xmlSchema = _getXmlSchema( xml );
@@ -2298,6 +2329,7 @@ console.log(msg);
 				return totalSize;
 			},
 			
+			// indexedDB additional methods 
 			checkState : _checkState
 		};
 	

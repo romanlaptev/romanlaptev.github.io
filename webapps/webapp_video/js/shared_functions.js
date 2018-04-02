@@ -35,6 +35,16 @@ function _log( msg, id){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
+			
+			// var logWrap = getById("log-wrap");
+			// if( logWrap ){
+// console.log(logWrap);
+// console.log(logWrap.style.display);
+				// if( logWrap.style.display === "none"){
+					// logWrap.style.display="block";
+				// }
+			// }			
+			
 		}
 		
 	} else {
@@ -43,10 +53,10 @@ function _log( msg, id){
 		//document.writeln(msg);
 	}
 	
-	if( typeof _showHiddenLog === "function"){
-//console.log(_showHiddenLog);
-		_showHiddenLog();
-	}
+	// if( typeof _showHiddenLog === "function"){
+// //console.log(_showHiddenLog);
+		// _showHiddenLog();
+	// }
 	
 }//end _log()
 
@@ -75,7 +85,6 @@ function getById(id){
 	return false;
 }//end getById()
 
-
 /*
 	var item_attr = get_attr_to_obj( this.attributes );
 	for(attr in item_attr){
@@ -94,6 +103,7 @@ function get_attr_to_obj( attr ){
 
 /*
 parse XML document to array
+<table><note>....</note>, <note>...</note></table>
 
 IN:
 <templates>
@@ -108,8 +118,7 @@ IN:
 OUT:
 [ { name: "attr value", html_code: "......" },
 { name: "attr value", html_code: "......" }]
-
-ONLY second LEVEL !!!!!!!!!!!!
+ONLY second LEVEL !!!!!!!!!!!!							  
 */
 function _parseXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
@@ -170,6 +179,8 @@ function _parseXmlToObj(xml){
 	}//end __parseChildNode()
 
 }//end _parseXmlToObj()
+
+
 
 //**************************************
 //musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
@@ -253,31 +264,63 @@ console.log(item + ": " + e[item]);
 /*
 	runAjax( {
 		"requestMethod" : "GET", 
+		"enctype" : "application/x-www-form-urlencoded",
 		"url" : _vars["db_url"], 
+		"params" : params,// object
+		"formData": null, //object formData
+		"onProgress" : function(e){	},
 		"callback": _postFunc
 	});
 */
 function runAjax( opt ){
 //console.log(arguments);
 	
-	var options = {
+	var p = {
 		"requestMethod" : "GET", 
+		"responseType" : "", //arraybuffer, blob, document, ms-stream, text
+		"enctype" : "application/x-www-form-urlencoded",
+		//"enctype" : "multipart/form-data",
 		"url" : false, 
-		"params": "",
+		"params": null,//params object
+		"formData": null,
 		"async" :  true,
 		"callback" : null,
-		"onProgress" : null
+		"onProgress" : null,
+		"onError" : null,
+		"onLoadEnd" : null
 	};
 	//extend options object
 	for(var key in opt ){
-		options[key] = opt[key];
+		p[key] = opt[key];
 	}
-//console.log(options);
+//console.log(p);
 
-	var requestMethod = options["requestMethod"]; 
-	var url = options["url"]; 
-	var async = options["async"]; 
-	var callback = options["callback"]; 
+	var requestMethod = p["requestMethod"]; 
+	var url = p["url"]; 
+	var async = p["async"]; 
+	var callback = p["callback"]; 
+
+	//get values from params and form paramsStr....
+	//if( requestMethod === "GET"){
+		var num=0;
+		if( p["params"] ){
+			var paramsStr = "";
+			for( var item in p["params"]){
+				var value = encodeURIComponent( p["params"][item] );
+				if( num > 0){
+					paramsStr += "&";
+				}
+				paramsStr += item + "=" + value;
+				num++;
+			}//next
+			url += "?"+ paramsStr;
+			url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+		} else {
+			url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
+		}
+		
+	//}
+
 	
 	if( !url || url.length === 0){
 		var msg = "Parameters error, needed 'url'";			
@@ -295,14 +338,32 @@ console.log( msg, xhr );
 //_log( "<p  class='text-danger'>" +msg+"</p>");
 		return false;
 	}
+
+	//block overlay and wait window
+	var overlay = getById("overlay");
+	if( overlay ){
+		overlay.className="modal-backdrop in";
+		overlay.style.display="block";
+	}
+	var waitWindow = getById("wait-window");
+	if( waitWindow ){
+		waitWindow.className="modal-dialog";
+		waitWindow.style.display="block";
+	}
 	
 	var timeStart = new Date();
-	
-//var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
-//xmlhttp.open("GET", '/script.html?'+params, true)
-	
+
 	xhr.open( requestMethod, url, async );
-	//xhr.responseType = "text";	
+	
+	//Check responseType support:
+//https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
+//https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+//Error, "The response type cannot be changed for synchronous requests made from a document."
+	// Opera 12 crash!!!!
+	// if( "responseType" in xhr && p["async"] ){
+		// xhr.responseType = p["responseType"];
+	// }
+	
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
 		if( xhr.readyState == 4) {
@@ -312,87 +373,141 @@ console.log( msg, xhr );
 //}
 
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
+//console.log( "xhr.onerror = ", xhr.onerror  );
+
+				//hide block overlay and wait window
+				if( overlay ){
+					//overlay.className="";
+					overlay.style.display="none";
+				}
+				if( waitWindow ){
+					waitWindow.style.display="none";
+				}
+					
 				if( xhr.status === 200){
 					
-//console.log(xhr.getResponseHeader('X-Powered-By') );
-					var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
-					
-				var timeEnd = new Date();
-				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+					var timeEnd = new Date();
+					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-//console.log( xhr.responseText );
-//console.log( xhr.responseXML );
+//console.log( "xhr.response: ", xhr.response );
 
-//if( "responseType" in xhr){
-////console.log( "xhr.response: ", xhr.response );
-//console.log( "responseType: ", xhr.responseType );
-//}
+// if( "responseType" in xhr){
+// // console.log( "xhr.response: ", xhr.response );
+// console.log( "responseType: " + xhr.responseType );
+// }
 
+// try{
+// console.log( "xhr.responseText: ", xhr.responseText );
+// } catch(e){
+// console.log( e );
+// }
+
+// try{
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+// } catch(e){
+// console.log( e );
+// }
+					
 					if( typeof callback === "function"){
-//responseXML is only available if responseType is '' or 'document'.!!!!
+						
 						if( xhr.responseXML ){
 //var test = xhr.responseXML.selectNodes("//pma_xml_export");	
 //var test = xhr.responseXML.getElementsByTagName("database");
 //console.log( test.item(0).nodeName);
-							var data = xhr.responseXML;
+
+							//fix IE8
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+							var contentType = xhr.getResponseHeader("Content-Type");
+							if( contentType === "application/xml" ||
+								contentType === "text/xml"){
+								var data = xhr.responseXML;
+							} else {
+								var data = xhr.responseText;
+							}
+
 							callback(data);
 						} else {
 							var data = xhr.responseText;
 							callback(data);
 						}
 					}
+					//if browser not define callback "onloadend"
+					var test = "onloadend" in xhr;
+					if( !test ){
+						_loadEnd();
+					}
 
 				} else {
 //console.log(xhr);					
-_log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-_log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-_log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
-					if( typeof callback === "function"){
-						callback( xhr.responseText );
+console.log("Ajax load error, url: " + xhr.responseURL);
+console.log("status: " + xhr.status);
+console.log("statusText:" + xhr.statusText);
+
+// var msg = "";
+// msg += "<p>Ajax load error</p>";
+// msg += "<p>url: " + xhr.responseURL + "</p>";
+// msg += "<p>status: " + xhr.status + "</p>";
+// msg += "<p>status text: " + xhr.statusText + "</p>";
+// _log("<div class='alert alert-danger'>" + msg + "</div");
+
+					if( typeof  p["onError"] === "function"){
+						p["onError"](xhr);
 					}
 				}
 				
 		}
-	};
+	};//end xhr.onreadystatechange
 	
-	// if( xhr.onabort ){
-		// xhr.onabort = function(){
-// _log("ajax onabort");
-// //console.log(arguments);
-		// }
-	// }
-// console.log( "xhr.onabort " + xhr.onabort  );
+	if( "onloadstart" in xhr ){
+		xhr.onloadstart = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
 
-	// if( xhr.onerror ){
-		// xhr.onerror = function(){
-// _log("ajax onerror");
-// console.log(arguments);
-// console.log(xhr);					
-// _log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-// _log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-// _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
-		// }
-	// }
-// console.log( "xhr.onerror " + xhr.onerror  );
+	if( "onload" in xhr ){
+		xhr.onload = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
 
-	// if( xhr.onload ){
-		// xhr.onload = function(){
-// _log("ajax onload");
-// console.log(arguments);
+	if( "onloadend" in xhr ){
+		xhr.onloadend = function(e){
+//console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+//console.log(xhr.getResponseHeader('X-Powered-By') );
+			_loadEnd();
+		}//end event callback
+	}
+	
+	function _loadEnd(){
+		//hide block overlay and wait window
+		// if( overlay ){
+			// //overlay.className="";
+			// overlay.style.display="none";
 		// }
-	// }
-// console.log( "xhr.onload " + xhr.onload  );
-
-	// if( xhr.onloadstart ){
-		// xhr.onloadstart = function(){
-// _log("ajax onloadstart");
-// console.log(arguments);
+		// if( waitWindow ){
+			// waitWindow.style.display="none";
 		// }
-	// }
-// console.log( "xhr.onloadstart " + xhr.onloadstart  );
-
+		
+		var all_headers = xhr.getAllResponseHeaders();
+//console.log( all_headers );
+		if( typeof  p["onLoadEnd"] === "function"){
+			p["onLoadEnd"](all_headers);
+		}
+	}//end _loadEnd()
+	
 //console.log( "onprogress" in xhr  );
 //console.log( xhr.responseType, typeof xhr.responseType );
 //console.log( window.ProgressEvent, typeof  window.ProgressEvent);
@@ -400,13 +515,22 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
-			// var percentComplete = 0;
-			// if(e.lengthComputable) {
-				// percentComplete = Math.ceil(e.loaded / e.total * 100);
-			// }
-//console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-			if( typeof  options["onProgress"] === "function"){
-				options["onProgress"](e);
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+			var loadProgressBar = getById("load-progress-bar");
+			if( loadProgressBar ){
+				//loadProgress.value = percentComplete;
+				loadProgressBar.className = "progress-bar";
+				loadProgressBar.style.width = percentComplete+"%";
+				loadProgressBar.innerHTML = percentComplete+"%";
+			}
+
+			if( typeof  p["onProgress"] === "function"){
+				p["onProgress"](e);
 			}
 		}
 		
@@ -418,20 +542,128 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 //console.log( "xhr.onprogress ", xhr.onprogress.handleEvent  );
 	}
 
+	if( "onabort" in xhr ){
+		xhr.onabort = function(e){
+// console.log(arguments);
+//console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		}
+	}
+
+//console.log( "onerror" in xhr  );
+//console.log( "xhr.onerror " + xhr.onerror  );
+	if( "onerror" in xhr ){
+//console.log( "xhr.onerror = ", xhr.onerror  );
+		xhr.onerror = function(e){
+//console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+			// if( typeof  p["onError"] === "function"){
+				// p["onError"]({
+					// "url" : xhr.responseURL,
+					// "status" : xhr.status,
+					// "statusText" : xhr.statusText
+				// });
+			// }
+		}
+	}
+
+//console.log(xhr.upload);
+	if( xhr.upload ){
 		
-var test = "setRequestHeader" in xhr;
-console.log( "setRequestHeader: " + test );
-	// if (xhr.setRequestHeader) {
-		// xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	// }
-	// var str = '';
-	//xhr.send(str);
+		xhr.upload.onerror = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
 	
-// var params = 'name=' + encodeURIComponent(name) + '&surname=' + encodeURIComponent(surname)
-// xmlhttp.open("POST", '/script.html', true)
-// xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-	var params = null;
-	xhr.send(params);
+		xhr.upload.onabort = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onload = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+	
+		xhr.upload.onloadstart = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		xhr.upload.onloadend = function(e){
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);
+		};
+		
+		//Listen to the upload progress.
+		xhr.upload.onprogress = function(e) {
+			if (e.lengthComputable) {
+				var percent = (e.loaded / e.total) * 100;
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percent+"%" );
+			}
+		};
+		
+		xhr.upload.ontimeout = function(e){
+console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+		};
+
+	}
+	
+	//send query	
+	if( requestMethod !== "POST"){
+		xhr.send();
+	} else {
+		
+		//http://learn.javascript.ru/xhr-forms
+		//form POST body
+		if( p["enctype"] === "application/x-www-form-urlencoded"){
+			
+			var test = "setRequestHeader" in xhr;
+	//console.log( "setRequestHeader: " + test );
+			if (test) {
+				xhr.setRequestHeader("Content-Type", p["enctype"]);
+			}
+			
+			var body = "";
+			var n = 0;
+			for(var key in p["formData"]){
+				var value = p["formData"][key];
+				if( n > 0){
+					body += "&";
+				}
+				body += key + "=" + encodeURIComponent(value);
+				n++;
+			}//next
+//console.log( body );
+			xhr.send( body );
+		} else {
+			xhr.send( p["formData"] );
+		}
+	}
 
 	function _createRequestObject() {
 		var request = false;
@@ -458,9 +690,31 @@ console.log( "setRequestHeader: " + test );
 
 
 if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
 	$(document).ready(function(){
+var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";
+console.log("<div class='alert alert-info'>" + msg + "</div>");
+		
+		//------------------------- scroll to top
+		// $("#scroll-to-top").click(function(e) {
+			// e.preventDefault;
+			// $('html,body').animate({
+				// scrollTop: 0
+				// }, 500);
+			// return false;
+		// });
+		
+		$(".scroll-to").addClass("nolink").on("click", function(){
+			if($(this).attr("href")){
+				var elem = $(this).attr("href");
+			} else {
+				var elem = $(this).attr("data-target");
+			}
+			
+			$('html,body').animate({
+				scrollTop: 0
+				}, 500);
+			return false;
+		});
 		
 	});//end ready	
 }

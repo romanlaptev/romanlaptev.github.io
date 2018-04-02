@@ -1,0 +1,7 @@
+type,name,orig_type
+article,Article,article
+blog,"Запись в блог",blog
+book,"Страница подшивки",book
+page,"Basic page",page
+video,video,video
+videoclip,videoclip,videoclip

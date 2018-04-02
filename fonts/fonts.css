@@ -1,0 +1,85 @@
+@font-face {
+	font-family:Victorian LET Regular;
+	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
+
+/* http://www.freefontconverter.com/ */
+	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"); /* EOT file for IE */
+	src: 	url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+			url('Victorian_LET/victorian-let-regular.woff') format('woff'),
+			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+}
+
+
+@font-face 
+{
+	font-family: French Script MT;
+	src: url("../test_code/css/load_font/FRSCRIPT.TTF");
+}
+
+@font-face 
+{
+	font-family:Century Gothic;
+	src: url("../test_code/css/load_font/GOTHIC.TTF");
+}
+
+@font-face 
+{
+	font-family:Impact;
+	src: url("../test_code/css/load_font/impact.ttf");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 900;
+  src: local("nothing"), url("Gilroy/Gilroy-Black.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Black.woff2") format("woff2"), url("Gilroy/Gilroy-Black.woff") format("woff"), url("Gilroy/Gilroy-Black.ttf") format("truetype"), url("Gilroy/Gilroy-Black.svg#Gilroy-Black") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 700;
+  src: local("nothing"), url("Gilroy/Gilroy-Bold.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Bold.woff2") format("woff2"), url("Gilroy/Gilroy-Bold.woff") format("woff"), url("Gilroy/Gilroy-Bold.ttf") format("truetype"), url("Gilroy/Gilroy-Bold.svg#Gilroy-Bold") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 800;
+  src: local("nothing"), url("Gilroy/Gilroy-Extrabold.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Extrabold.woff2") format("woff2"), url("Gilroy/Gilroy-Extrabold.woff") format("woff"), url("Gilroy/Gilroy-Extrabold.ttf") format("truetype"), url("Gilroy/Gilroy-Extrabold.svg#Gilroy-Bold") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 600;
+  src: local("nothing"), url("Gilroy/Gilroy-Semibold.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Semibold.woff2") format("woff2"), url("Gilroy/Gilroy-Semibold.woff") format("woff"), url("Gilroy/Gilroy-Semibold.ttf") format("truetype"), url("Gilroy/Gilroy-Semibold.svg#Gilroy-Bold") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 400;
+  src: local("nothing"), url("Gilroy/Gilroy-Regular.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Regular.woff2") format("woff2"), url("Gilroy/Gilroy-Regular.woff") format("woff"), url("Gilroy/Gilroy-Regular.ttf") format("truetype"), url("Gilroy/Gilroy-Regular.svg#Gilroy-Regular") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 500;
+  src: local("nothing"), url("Gilroy/Gilroy-Medium.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Medium.woff2") format("woff2"), url("Gilroy/Gilroy-Medium.woff") format("woff"), url("Gilroy/Gilroy-Medium.ttf") format("truetype"), url("Gilroy/Gilroy-Medium.svg#Gilroy-Medium") format("svg");
+}
+
+@font-face {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 300;
+  src: local("nothing"), url("Gilroy/Gilroy-Light.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Light.woff2") format("woff2"), url("Gilroy/Gilroy-Light.woff") format("woff"), url("Gilroy/Gilroy-Light.ttf") format("truetype"), url("Gilroy/Gilroy-Light.svg#Gilroy-Medium") format("svg");
+}
+
+/*
+body {
+font-family: Gilroy;
+}
+*/
