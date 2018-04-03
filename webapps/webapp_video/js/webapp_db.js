@@ -93,8 +93,8 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 		return dataStoreType;
 	}//end _detectDataStore()
 	
-	function _loadData( postFunc ){
-console.log("webApp.db.loadData() ", arguments);
+	function _saveData( postFunc ){
+console.log("webApp.db.saveData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -109,26 +109,8 @@ console.log("error in _db(), empty 'data_url' !");
 		}
 		
 		switch(_vars["dataStoreType"]) {
-			
 			case "indexedDB":
-				switch( webApp.vars["import"]["inputDataFormat"] ){
-					case "xml":
-						_saveXMLtoIDB( postFunc );
-						//return false;????????
-					break;
-					
-					//case "json":
-					//break;
-					
-					//case "csv":
-					//case "jcsv":
-					//break;
-					
-					default:
-						_saveDataToIDB(postFunc);
-					break;
-				}//end switch
-			
+				__saveDataToIDB(postFunc);
 			break;
 			
 			case "webSQL":
@@ -139,8 +121,6 @@ console.log("error in _db(), empty 'data_url' !");
 			
 			default:
 				//server request ( save result to memory, _vars["tables"] )
-//console.log("TEST1", _vars["numDataURL"] > 0 );			
-
 				if( _vars["numDataURL"] > 0 ){
 						if( typeof postFunc === "function"){
 							postFunc();
@@ -156,7 +136,7 @@ var msg = "load " + webApp.vars["import"]["data_url"] ;
 								if( data ){
 									__parseAjax(data);
 								} else {
-console.log("error in _db(), _loadData(), not find 'data'.... ");			
+console.log("error in _db(), _saveData(), not find 'data'.... ");			
 								}
 								
 						}//end callback()
@@ -171,7 +151,51 @@ console.log("error in _db(), _loadData(), not find 'data'.... ");
 		// } 
 		
 		return false;
-			
+
+		function __saveDataToIDB( postFunc ){
+console.log("function __saveDataToIDB");	
+
+			if( _vars["numDataURL"] > 0 ){
+console.log("Load data files from server and save to indexeDB storage");
+				if( typeof postFunc === "function"){
+					postFunc();
+				}
+				return false;
+			}
+
+			//data in one file
+			switch( webApp.vars["import"]["inputDataFormat"] ){
+				case "xml":
+					webApp.iDBmodule.getListStores({//DB exists?
+						"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+						"callback" : function( listStores ){
+console.log(listStores);				
+							webApp.iDBmodule.checkState({
+								"listStores" : listStores,
+								"callback" : postFunc//draw page
+							});
+						}//end callback
+					});
+					//return false;????????
+				break;
+				
+				case "json":
+				break;
+				
+				//case "csv":
+				//case "jcsv":
+				//break;
+				
+				default:
+				break;
+			}//end switch
+
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
+			return false;
+		}//end __saveDataToIDB()
+		
 		function __parseAjax( data ){
 			
 			if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
@@ -224,29 +248,9 @@ console.log("_parseCSVBlocks()");
 			}
 		}//__parseAjax()
 		
-	}//end _loadData()
+	}//end _saveData()
 
 	
-	function _saveXMLtoIDB( postFunc ){
-		webApp.iDBmodule.getListStores({//DB exists?
-			"dbName" : webApp.iDBmodule.dbInfo["dbName"],
-			"callback" : function( listStores ){
-console.log(listStores);				
-				webApp.iDBmodule.checkState({
-					"listStores" : listStores,
-					"callback" : postFunc//draw page
-				});
-			}//end callback
-		});
-	}//end _saveXMLtoIDB
-
-	function _saveDataToIDB( postFunc ){
-console.log("function _saveDataToIDB");	
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
-		return false;
-	}//end _saveDataToIDB()
 	
 	function _loadTemplates( postFunc ){
 //console.log( "_loadTemplates", postFunc);			
@@ -440,7 +444,7 @@ console.log(msg);
 							"callback" : function( data){
 var msg = "restart db query, " + tableName;
 console.log( msg );
-console.log( data[0], data.length );
+//console.log( data[0], data.length );
 								if( data.length > 0){
 									
 									if( typeof _vars["tables"][tableName] === "undefined"){
@@ -1648,8 +1652,8 @@ LIMIT 0 , 30
 //console.log(arguments);
 			return _init(args); 
 		},
-		loadData:	function( opt ){ 
-			return _loadData( opt ); 
+		saveData:	function( opt ){ 
+			return _saveData( opt ); 
 		},
 		loadTemplates : function( postFunc ){
 			return _loadTemplates( postFunc );

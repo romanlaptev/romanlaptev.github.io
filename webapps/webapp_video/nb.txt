@@ -19,7 +19,7 @@ https://habrahabr.ru/company/mailru/blog/129476/
 	webApp.init()
 
 - выполнение загрузки данных в БД (webApp.db.vars["tables"])
-	webApp.db.loadData()
+	webApp.db.saveData()
 	
 	если браузер поддерживает сохранение в локальные хранилища, то 
 		- запрос с сервера файла данных (возможно сделать запрос серверного API?)
@@ -42,6 +42,7 @@ https://habrahabr.ru/company/mailru/blog/129476/
 
 - сделать парсинг формата HTML (field_data_body.html)
 - исправить запрос получения ноды (используются другие поля)
+- изменить формат data_url (dataInfo[0]["url"], dataInfo[0]["inputDataFormat"])?????????????
 ------------
 
 при загрузке приложения 

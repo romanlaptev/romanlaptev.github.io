@@ -134,7 +134,7 @@ console.log(webApp);
 function _runApp(){
 	
 	webApp.init(function(){
-		webApp.db.loadData(function(){
+		webApp.db.saveData(function(){
 //console.log(arguments);
 //console.log(window.location);	
 				var parse_url = window.location.search; 

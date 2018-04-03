@@ -2011,13 +2011,13 @@ console.log("error in _db(), data not in JSON format");
 				//case "jcsv":
 console.log( data );				
 					//_parseCSVBlocks(data);
-	if( webApp.vars["wait"] ){
-		//webApp.vars["wait"].className="";
-		webApp.vars["wait"].style.display="none";
-	}
-	if( webApp.vars["waitWindow"] ){
-		webApp.vars["waitWindow"].style.display="none";
-	}
+	// if( webApp.vars["wait"] ){
+		// //webApp.vars["wait"].className="";
+		// webApp.vars["wait"].style.display="none";
+	// }
+	// if( webApp.vars["waitWindow"] ){
+		// webApp.vars["waitWindow"].style.display="none";
+	// }
 					
 					if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 						dbInfo["callbackFunc"]["afterUpdate"]();
@@ -2035,13 +2035,13 @@ console.log("Error save records to indexedDB stores!!!");
 						
 	delete dbInfo["import"]["xml"];//clear var
 	
-	if( webApp.vars["wait"] ){
-		//webApp.vars["wait"].className="";
-		webApp.vars["wait"].style.display="none";
-	}
-	if( webApp.vars["waitWindow"] ){
-		webApp.vars["waitWindow"].style.display="none";
-	}
+	// if( webApp.vars["wait"] ){
+		// //webApp.vars["wait"].className="";
+		// webApp.vars["wait"].style.display="none";
+	// }
+	// if( webApp.vars["waitWindow"] ){
+		// webApp.vars["waitWindow"].style.display="none";
+	// }
 	
 	if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 		dbInfo["callbackFunc"]["afterUpdate"]( data );
@@ -2244,13 +2244,13 @@ console.log("All done! save records to indexedDB stores, runtime:" + runtime + "
 						
 						delete dbInfo["import"]["xml"];//clear var
 						
-						if( webApp.vars["wait"] ){
-							//webApp.vars["wait"].className="";
-							webApp.vars["wait"].style.display="none";
-						}
-						if( webApp.vars["waitWindow"] ){
-							webApp.vars["waitWindow"].style.display="none";
-						}
+						// if( webApp.vars["wait"] ){
+							// //webApp.vars["wait"].className="";
+							// webApp.vars["wait"].style.display="none";
+						// }
+						// if( webApp.vars["waitWindow"] ){
+							// webApp.vars["waitWindow"].style.display="none";
+						// }
 						
 						if( typeof dbInfo["callbackFunc"]["afterUpdate"] === "function"){
 							dbInfo["callbackFunc"]["afterUpdate"]( data );
