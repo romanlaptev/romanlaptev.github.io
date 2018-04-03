@@ -94,7 +94,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	}//end _detectDataStore()
 	
 	function _loadData( postFunc ){
-//console.log("webApp.db.loadData() ", arguments);
+console.log("webApp.db.loadData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -111,17 +111,24 @@ console.log("error in _db(), empty 'data_url' !");
 		switch(_vars["dataStoreType"]) {
 			
 			case "indexedDB":
-				webApp.iDBmodule.getListStores({//DB exists?
-					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
-					"callback" : function( listStores ){
-console.log(listStores);				
-						webApp.iDBmodule.checkState({
-							"listStores" : listStores,
-							"callback" : postFunc//draw page
-						});
-					}//end callback
-				});
-				return false;
+				switch( webApp.vars["import"]["inputDataFormat"] ){
+					case "xml":
+						_saveXMLtoIDB( postFunc );
+						//return false;????????
+					break;
+					
+					//case "json":
+					//break;
+					
+					//case "csv":
+					//case "jcsv":
+					//break;
+					
+					default:
+						_saveDataToIDB(postFunc);
+					break;
+				}//end switch
+			
 			break;
 			
 			case "webSQL":
@@ -218,6 +225,28 @@ console.log("_parseCSVBlocks()");
 		}//__parseAjax()
 		
 	}//end _loadData()
+
+	
+	function _saveXMLtoIDB( postFunc ){
+		webApp.iDBmodule.getListStores({//DB exists?
+			"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+			"callback" : function( listStores ){
+console.log(listStores);				
+				webApp.iDBmodule.checkState({
+					"listStores" : listStores,
+					"callback" : postFunc//draw page
+				});
+			}//end callback
+		});
+	}//end _saveXMLtoIDB
+
+	function _saveDataToIDB( postFunc ){
+console.log("function _saveDataToIDB");	
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
+		return false;
+	}//end _saveDataToIDB()
 	
 	function _loadTemplates( postFunc ){
 //console.log( "_loadTemplates", postFunc);			
@@ -392,14 +421,16 @@ console.log(msg);
 
 			var tableName = queryObj["tableName"];
 //console.log("tableName " + tableName, _vars["tables"][tableName]);
-			if( !_vars["tables"][tableName]){
-console.log("error, _startQuery(), not find information schema for table " + tableName);
-				_postQuery( data )	;
-				return false;
-			}
+
+			//if( !_vars["tables"][tableName]){
+//console.log("error, _startQuery(), not find information schema for table " + tableName);
+				//_postQuery( data )	;
+				//return false;
+			//}
 			
-			if( !_vars["tables"][tableName]["records"] ||
-					_vars["tables"][tableName]["records"].length === 0 ){
+			if( !_vars["tables"][tableName] || 
+					!_vars["tables"][tableName]["records"] ||
+						_vars["tables"][tableName]["records"].length === 0 ){
 				
 				switch ( webApp.db.vars["dataStoreType"]){
 					case "indexedDB":
@@ -407,10 +438,9 @@ console.log("error, _startQuery(), not find information schema for table " + tab
 						webApp.iDBmodule.getRecords({
 							"storeName" : tableName,
 							"callback" : function( data){
-	//var msg = "restart db query, " + tableName;
-	//console.log( msg );
-	//console.log( data[0], data.length );
-/*	
+var msg = "restart db query, " + tableName;
+console.log( msg );
+console.log( data[0], data.length );
 								if( data.length > 0){
 									
 									if( typeof _vars["tables"][tableName] === "undefined"){
@@ -423,8 +453,8 @@ console.log("error, _startQuery(), not find information schema for table " + tab
 	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
 	console.log( msg );
 								}
-*/
-								_continueQuery(data);
+
+								//_continueQuery(data);
 							}
 						});
 					break;
