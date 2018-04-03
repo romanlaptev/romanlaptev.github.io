@@ -94,7 +94,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	}//end _detectDataStore()
 	
 	function _loadData( postFunc ){
-console.log("webApp.db.loadData() ", arguments);
+//console.log("webApp.db.loadData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -144,7 +144,7 @@ console.log(listStores);
 						"url" : webApp.vars["import"]["data_url"],
 						"callback": function( data ){
 var msg = "load " + webApp.vars["import"]["data_url"] ;
-console.log(msg);
+//console.log(msg);
 //console.log(data);
 								if( data ){
 									__parseAjax(data);
@@ -1425,7 +1425,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				]
 			},
 			"callback" : function( res ){
-console.log( res );
+//console.log( res );
 
 			if( !res || res.length === 0){
 				if( typeof p["callback"] === "function"){
@@ -1438,7 +1438,7 @@ console.log( res );
 				node["nid"] = p["nid"];
 				
 				__getNodeBody(function( body ){
-console.log( body );						
+//console.log( body );						
 					node["body"] = body;
 					
 					__getNodeFields( node, function( fields ){
@@ -1447,7 +1447,7 @@ console.log( body );
 						_getNodeTerms({
 							"nid" : node["nid"],
 							"callback" : function(res){
-console.log(res);								
+//console.log(res);								
 								node["nodeTerms"] = res;
 								if( typeof p["callback"] === "function"){
 									p["callback"](node);
@@ -1479,7 +1479,7 @@ console.log(res);
 					]
 				},
 				"callback" : function( res ){
-console.log( res );
+//console.log( res );
 					if( typeof callback === "function"){
 						if(!res){
 							callback( res );
@@ -1525,7 +1525,7 @@ console.log( res );
 					]
 				},
 				"callback" : function( res ){
-console.log( res );
+//console.log( res );
 					if(!res){
 						if( typeof callback === "function"){
 							callback( res );

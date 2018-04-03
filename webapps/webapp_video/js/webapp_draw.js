@@ -220,7 +220,7 @@ if( loc){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -235,7 +235,9 @@ _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b
 		}
 		
 		if( !_vars["templates"][p.templateID] ){
-_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+			var msg = webApp.vars["messages"]["templateNotFound"].replace("{{templateID}}", p.templateID);
+			_log( msg );
+console.log("draw.wrapContent(),  error, not find template, id: " + p.templateID);
 			return false;
 		}
 		var html = "";

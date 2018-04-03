@@ -25,7 +25,8 @@ var webApp = {
 		"log" : [],
 		"messages" : {
 			//"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
-			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>"
+			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>",
+			"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
 		},
 		 "import" : {
 			//"data_url" : "../../projects/webapp_db/db/art.xml",
@@ -454,7 +455,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( p["queryTarget"].length === 0 ){
 console.log("error in _formQueryObj(), empty 'queryTarget'....");
@@ -760,7 +761,7 @@ console.log(msg);
 				"nid": p["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
-console.log( node );
+//console.log( node );
 
 					if(!node){
 						var log_message = webApp.vars["messages"]["nodeNotFound"];
@@ -824,6 +825,7 @@ console.log( node );
 						//html += _html;
 					} else {
 console.log("Error form node html!!!");
+						_html = "Error form content html...";
 					}
 					
 					
