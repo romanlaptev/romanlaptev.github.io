@@ -191,9 +191,13 @@ function _app( opt ){
 						"contentType" : "getTerminByName",
 						"callback" : function(res){
 //console.log(res);							
-							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
-							}
+//console.log( args["callback"].toSource() );
+							//if( res ){
+								if( typeof args["callback"] === "function"){
+									args["callback"]( res );
+								}
+							//}
+							
 						}//end callback
 					});
 				},//end callback()
@@ -675,7 +679,14 @@ console.log(msg);
 		if( typeof p["content"] === "function"){
 			p["content"]({
 				"callback" : function( res ){
-//console.log(res);								
+//console.log(res);						
+					if(!res){
+						if( typeof p["callback"] === "function"){
+							p["callback"]();
+						}
+						return false;
+					}		
+					
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"

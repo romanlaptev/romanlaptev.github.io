@@ -1180,6 +1180,15 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 		}
 //console.log(p);
 
+		if( !p["termins"] ){
+console.log("db.getChildTerms(),  error, not defined termins: " + p["termins"]);
+//console.log( p["callback"].toSource() );
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			return false;
+		}
+		
 		var termin = p["termins"][p.counter];
 		webApp.db.query({
 			"queryObj" : webApp.app.formQueryObj({
@@ -1323,6 +1332,9 @@ _log("<p>db.getBlockContent(),   error, <b class='text-danger'>termName</b></p>"
 							"counter" : 0,
 							"callback" : function(){
 								if( typeof p["callback"] === "function"){
+//console.log("TEST1", p, terminTree );			
+//console.log( p["callback"].toSource() );
+						
 									p["callback"](  terminTree  );
 								}
 							}//end callback
@@ -1530,6 +1542,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 						if( typeof callback === "function"){
 							callback( res );
 						}
+						return false;
 					}
 					
 					for( var n = 0; n < res.length; n++){
