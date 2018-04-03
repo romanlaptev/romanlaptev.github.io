@@ -42,7 +42,7 @@ https://habrahabr.ru/company/mailru/blog/129476/
 
 - сделать парсинг формата HTML (field_data_body.html)
 - исправить запрос получения ноды (используются другие поля)
-- изменить формат data_url (dataInfo[0]["url"], dataInfo[0]["inputDataFormat"])?????????????
++- изменить формат data_url (dataInfo[0]["url"], dataInfo[0]["inputDataFormat"])?????????????
 ------------
 
 при загрузке приложения 

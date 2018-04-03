@@ -72,6 +72,18 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 					
 					_vars["tables"][tableName] = tableInfo;
 				}//next
+				
+				//convert table list to Array
+				_vars["tablesArr"] = [];
+				for(var tblName in _vars["tables"]){
+					var obj = {
+						"name" : tblName,
+						"url" : _vars["tables"][tblName]["url"], 
+						"inputDataFormat" : _vars["tables"][tblName]["inputDataFormat"]
+					}
+					_vars["tablesArr"].push( obj );
+				}//next
+				
 			}
 		}
 		return isEmptyURL;
@@ -157,9 +169,9 @@ console.log("function __saveDataToIDB");
 
 			if( _vars["numDataURL"] > 0 ){
 console.log("Load data files from server and save to indexeDB storage");
-				if( typeof postFunc === "function"){
-					postFunc();
-				}
+
+				var counter = 0;
+				__recursiveSave( counter );
 				return false;
 			}
 
@@ -186,14 +198,47 @@ console.log(listStores);
 				//case "jcsv":
 				//break;
 				
-				default:
-				break;
+				//default:
+				//break;
+				
 			}//end switch
 
 			if( typeof postFunc === "function"){
 				postFunc();
 			}
 			return false;
+			
+			function __recursiveSave( counter ){
+				
+				var url = _vars["tablesArr"][counter]["url"];
+console.log(counter, url);
+				webApp.app.serverRequest({
+					"url" : url,
+					"callback": function(data){
+//console.log( data.length );	
+						if( data.length > 0){
+							if( _vars["tablesArr"][counter]["inputDataFormat"] === "csv"){
+								var tableName = _vars["tablesArr"][counter]["name"];
+								_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+								//_continueQuery( _parseCSVBlocks(data) );
+							}
+						}
+						
+						counter++;
+						if( counter >= _vars["tablesArr"].length ){
+							if( typeof postFunc === "function"){
+								postFunc();
+							}
+							return false;
+						} else {
+							__recursiveSave( counter );
+						}
+						
+					}
+				});
+
+			}//end __recursive()
+			
 		}//end __saveDataToIDB()
 		
 		function __parseAjax( data ){
