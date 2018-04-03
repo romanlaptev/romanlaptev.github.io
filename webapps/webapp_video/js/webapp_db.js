@@ -1100,7 +1100,7 @@ console.log( "error CSV parse..." );
 
 		function _convertCSV_JSON( record, keys, delimiterByFields ){
 //console.log( "function _convertCSV_JSON(), ", arguments);
-console.log( record, record.length);
+//console.log( record, record.length);
 			if( typeof record !== "string" ){
 	console.log("_convertCSV_JSON(), error, input record is not in CSV format");
 				return false;
