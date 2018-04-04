@@ -211,7 +211,7 @@ console.log(listStores);
 			function __recursiveSave( counter ){
 				
 				var url = _vars["tablesArr"][counter]["url"];
-console.log(counter, url);
+//console.log(counter, url);
 				webApp.app.serverRequest({
 					"url" : url,
 					"callback": function(data){
@@ -219,20 +219,48 @@ console.log(counter, url);
 						if( data.length > 0){
 							if( _vars["tablesArr"][counter]["inputDataFormat"] === "csv"){
 								var tableName = _vars["tablesArr"][counter]["name"];
-								_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
-								//_continueQuery( _parseCSVBlocks(data) );
+								//_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+								var records = _parseCSVBlocks(data);
+								
+								var storeData = [];
+								for( var n = 0; n < records.length; n++){
+									storeData.push({
+										//"key" : tpl,
+										"value" : records[n]
+									});					
+								}//next
+//console.log( storeData[0], storeData.length);
+								if( storeData.length > 0){
+//if( tableName === "node"){
+									webApp.iDBmodule.addRecords({
+										"dbName": webApp.iDBmodule.dbInfo["dbName"],
+										"storeName": tableName,
+										"storeData" : storeData,
+										"callback" : function( log ){
+var msg = tableName + ", save records.... ";
+console.log(msg);
+											//continue save process
+											counter++;
+											if( counter >= _vars["tablesArr"].length ){
+												if( typeof postFunc === "function"){
+													postFunc();
+												}
+												return false;
+											} else {
+												__recursiveSave( counter );
+											}
+
+										}
+									});
+//}
+								} else {
+var msg = "webApp.db.saveData(), warning! No input data";
+console.log(msg);
+								}
+								
 							}
 						}
 						
-						counter++;
-						if( counter >= _vars["tablesArr"].length ){
-							if( typeof postFunc === "function"){
-								postFunc();
-							}
-							return false;
-						} else {
-							__recursiveSave( counter );
-						}
 						
 					}
 				});
