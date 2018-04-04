@@ -106,7 +106,7 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 	}//end _detectDataStore()
 	
 	function _saveData( postFunc ){
-console.log("webApp.db.saveData() ", arguments);
+//console.log("webApp.db.saveData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -165,14 +165,14 @@ console.log("error in _db(), empty 'data_url' !");
 		return false;
 
 		function __saveDataToIDB( postFunc ){
-console.log("function __saveDataToIDB");	
+//console.log("function __saveDataToIDB");	
 
 			if( _vars["numDataURL"] > 0 ){
 
 				webApp.iDBmodule.getListStores({//DB exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-console.log(listStores);				
+//console.log(listStores);				
 						_checkState({
 							"listStores" : listStores,
 							"runImport" : function(){
@@ -773,7 +773,7 @@ console.log(msg);
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-console.log( "_query()", options );
+//console.log( "_query()", options );
 		
 		_startQuery( options["queryObj"] );
 		
@@ -812,7 +812,7 @@ console.log( "_query()", options );
 //console.log(arguments);
 
 			var tableName = queryObj["tableName"];
-console.log("tableName " + tableName, _vars["tables"][tableName]);
+//console.log("tableName " + tableName, _vars["tables"][tableName]);
 
 			//if( !_vars["tables"][tableName]){
 //console.log("error, _startQuery(), not find information schema for table " + tableName);

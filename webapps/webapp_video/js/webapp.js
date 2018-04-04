@@ -33,7 +33,7 @@ var webApp = {
 			//"data_url" :"db/art_correct.json",
 			"data_url" : {
 "node": "db/node.csv",
-"node_revision": "db/node_revision.csv",
+//"node_revision": "db/node_revision.csv",
 "node_type" : "db/node_type.csv",
 
 //"field_data_body" : "db/field_data_body.html",
