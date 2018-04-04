@@ -139,20 +139,20 @@ console.log("error in _db(), empty 'data_url' !");
 						}
 				} else {
 					
-					webApp.app.serverRequest({
-						"url" : webApp.vars["import"]["data_url"],
-						"callback": function( data ){
-var msg = "load " + webApp.vars["import"]["data_url"] ;
-//console.log(msg);
-//console.log(data);
-								if( data ){
-									__parseAjax(data);
-								} else {
-console.log("error in _db(), _saveData(), not find 'data'.... ");			
-								}
+					// webApp.app.serverRequest({
+						// "url" : webApp.vars["import"]["data_url"],
+						// "callback": function( data ){
+// var msg = "load " + webApp.vars["import"]["data_url"] ;
+// //console.log(msg);
+// //console.log(data);
+								// if( data ){
+									// __parseAjax(data);
+								// } else {
+// console.log("error in _db(), _saveData(), not find 'data'.... ");			
+								// }
 								
-						}//end callback()
-					});
+						// }//end callback()
+					// });
 					
 				}
 			break;
@@ -168,11 +168,27 @@ console.log("error in _db(), _saveData(), not find 'data'.... ");
 console.log("function __saveDataToIDB");	
 
 			if( _vars["numDataURL"] > 0 ){
-console.log("Load data files from server and save to indexeDB storage");
 
-				var counter = 0;
-				__recursiveSave( counter );
-				return false;
+				webApp.iDBmodule.getListStores({//DB exists?
+					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+					"callback" : function( listStores ){
+console.log(listStores);				
+						_checkState({
+							"listStores" : listStores,
+							"runImport" : function(){
+//console.log("TEST4", arguments);
+console.log("Load data files from server and save to indexeDB storage");
+								__recursiveSave( 0 );
+							},
+							"callback" : postFunc//draw page
+						});
+//console.log("TEST2");
+
+						//return false;
+
+					}//end callback
+				});
+				
 			}
 
 			//data in one file
@@ -181,13 +197,10 @@ console.log("Load data files from server and save to indexeDB storage");
 					webApp.iDBmodule.getListStores({//DB exists?
 						"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 						"callback" : function( listStores ){
-console.log(listStores);				
-							// webApp.iDBmodule.checkState({
-								// "listStores" : listStores,
-								// "callback" : postFunc//draw page
-							// });
+//console.log(listStores);				
 							_checkState({
 								"listStores" : listStores,
+								"runImport" : _iDBimport,
 								"callback" : postFunc//draw page
 							});
 
@@ -211,12 +224,12 @@ console.log(listStores);
 			//if( typeof postFunc === "function"){
 				//postFunc();
 			//}
-			return false;
+			//return false;
 			
 			function __recursiveSave( counter ){
 				
 				var url = _vars["tablesArr"][counter]["url"];
-//console.log(counter, url);
+//console.log(counter, url, _vars["tablesArr"][counter]["name"]);
 				webApp.app.serverRequest({
 					"url" : url,
 					"callback": function(data){
@@ -275,6 +288,7 @@ console.log(msg);
 			function _checkState(opt){
 				var p = {
 					"listStores": "",
+					"runImport": null,//_iDBimport
 					"callback": null
 				};
 				
@@ -286,7 +300,7 @@ console.log(msg);
 				if( typeof p["callback"] === "function"){
 					webApp.iDBmodule.dbInfo["afterUpdate"] = p["callback"];
 				} else {
-	console.log("Error, iDBmodule(), checkState(), need callback function");				
+	console.log("Error, webApp.db, _checkState(), need callback function");				
 					return false;
 				}
 			
@@ -297,14 +311,17 @@ console.log(msg);
 					//compare dates!!!!
 					
 				} else {
-	var msg = "iDBmodule(), not find indexedDB stores, new full import.";
+	var msg = "webApp.db, _checkState(), not find indexedDB stores, new full import.";
 	console.log(msg);
 				}
 				
-	var msg = "iDBmodule(),  import type:" + webApp.vars["import"]["importType"];
+	var msg = "webApp.db, _checkState(),  import type:" + webApp.vars["import"]["importType"];
 	console.log(msg);
 				if( webApp.vars["import"]["importType"] === "new"){
-					_iDBimport();//new full import to indexedDB
+					//new full import to indexedDB
+					if( typeof p["runImport"] === "function"){
+						p["runImport"]();
+					}
 				}
 				
 				if( webApp.vars["import"]["importType"] === "update"){
@@ -315,10 +332,11 @@ console.log(msg);
 					//.....get last date modified, run HEAD request
 					//.....
 					
-	//_iDBimport();
+//console.log("TEST1");
 					if( typeof p["callback"] === "function"){
 						p["callback"]();
 					}
+					return false;
 				}//end check
 				
 			}//end _checkState()
@@ -755,7 +773,7 @@ console.log(msg);
 		options["callback"] = opt["callback"];
 		options["queryObj"]["callback"] = _postQuery;
 		
-//console.log( "_query()", options );
+console.log( "_query()", options );
 		
 		_startQuery( options["queryObj"] );
 		
@@ -794,7 +812,7 @@ console.log(msg);
 //console.log(arguments);
 
 			var tableName = queryObj["tableName"];
-//console.log("tableName " + tableName, _vars["tables"][tableName]);
+console.log("tableName " + tableName, _vars["tables"][tableName]);
 
 			//if( !_vars["tables"][tableName]){
 //console.log("error, _startQuery(), not find information schema for table " + tableName);
