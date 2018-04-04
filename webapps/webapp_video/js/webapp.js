@@ -29,31 +29,31 @@ var webApp = {
 			"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
 		},
 		 "import" : {
-			//"data_url" : "../../projects/webapp_db/db/art.xml",
+			"data_url" : "../../projects/webapp_db/db/art.xml",
 			//"data_url" :"db/art_correct.json",
-			"data_url" : {
-"node": "db/node.csv",
-"node_revision": "db/node_revision.csv",
-"node_type" : "db/node_type.csv",
+			// "data_url" : {
+// "node": "db/node.csv",
+// "node_revision": "db/node_revision.csv",
+// "node_type" : "db/node_type.csv",
 
-//"field_data_body" : "db/field_data_body.html",
-//"field_data_field_filename" : "db/field_data_field_filename.csv",
-"field_data_field_img_cover" : "db/field_data_field_img_cover.csv",
-//"field_data_field_roles" : "db/field_data_field_roles.csv",
-//"field_data_field_subfolder" : "db/field_data_field_subfolder.csv",
-"field_data_field_year" : "db/field_data_field_year.csv",
-"field_data_field_taxonomy" : "db/field_data_field_taxonomy.csv",
-"field_data_field_taxonomy_alpha" : "db/field_data_field_taxonomy_alpha.csv",
+// //"field_data_body" : "db/field_data_body.html",
+// //"field_data_field_filename" : "db/field_data_field_filename.csv",
+// "field_data_field_img_cover" : "db/field_data_field_img_cover.csv",
+// //"field_data_field_roles" : "db/field_data_field_roles.csv",
+// //"field_data_field_subfolder" : "db/field_data_field_subfolder.csv",
+// "field_data_field_year" : "db/field_data_field_year.csv",
+// "field_data_field_taxonomy" : "db/field_data_field_taxonomy.csv",
+// "field_data_field_taxonomy_alpha" : "db/field_data_field_taxonomy_alpha.csv",
 
-"menu_links" : "db/menu_links.csv",
-"book" : "db/book.csv",
+// "menu_links" : "db/menu_links.csv",
+// "book" : "db/book.csv",
 
-"taxonomy_index" : "db/taxonomy_index.csv",
-"taxonomy_term_data" : "db/taxonomy_term_data.csv",
-"taxonomy_term_hierarchy" : "db/taxonomy_term_hierarchy.csv"
-			},
+// "taxonomy_index" : "db/taxonomy_index.csv",
+// "taxonomy_term_data" : "db/taxonomy_term_data.csv",
+// "taxonomy_term_hierarchy" : "db/taxonomy_term_hierarchy.csv"
+			// },
 			
-			//"inputDataFormat" : "xml",
+			"inputDataFormat" : "xml",
 			//"inputDataFormat" : "json",
 			//"inputDataFormat" : "csv",
 			
@@ -1037,6 +1037,7 @@ console.log(errorCode);
 				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
+//console.log(data, data.length);
 
 					if( !data || data.length === 0){
 	console.log("error in _app(), _serverRequest(), not find 'data'.... ");			

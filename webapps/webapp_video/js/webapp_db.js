@@ -182,10 +182,15 @@ console.log("Load data files from server and save to indexeDB storage");
 						"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 						"callback" : function( listStores ){
 console.log(listStores);				
-							webApp.iDBmodule.checkState({
+							// webApp.iDBmodule.checkState({
+								// "listStores" : listStores,
+								// "callback" : postFunc//draw page
+							// });
+							_checkState({
 								"listStores" : listStores,
 								"callback" : postFunc//draw page
 							});
+
 						}//end callback
 					});
 					//return false;????????
@@ -203,9 +208,9 @@ console.log(listStores);
 				
 			}//end switch
 
-			if( typeof postFunc === "function"){
-				postFunc();
-			}
+			//if( typeof postFunc === "function"){
+				//postFunc();
+			//}
 			return false;
 			
 			function __recursiveSave( counter ){
@@ -267,6 +272,298 @@ console.log(msg);
 
 			}//end __recursive()
 			
+			function _checkState(opt){
+				var p = {
+					"listStores": "",
+					"callback": null
+				};
+				
+				//extend options object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+				
+				if( typeof p["callback"] === "function"){
+					webApp.iDBmodule.dbInfo["afterUpdate"] = p["callback"];
+				} else {
+	console.log("Error, iDBmodule(), checkState(), need callback function");				
+					return false;
+				}
+			
+				webApp.vars["import"]["importType"] = "new";
+				if( typeof p["listStores"] !== "undefined" &&
+						p["listStores"].length > 0){
+					webApp.vars["import"]["importType"] = "update";
+					//compare dates!!!!
+					
+				} else {
+	var msg = "iDBmodule(), not find indexedDB stores, new full import.";
+	console.log(msg);
+				}
+				
+	var msg = "iDBmodule(),  import type:" + webApp.vars["import"]["importType"];
+	console.log(msg);
+				if( webApp.vars["import"]["importType"] === "new"){
+					_iDBimport();//new full import to indexedDB
+				}
+				
+				if( webApp.vars["import"]["importType"] === "update"){
+					//read "last_date" from idb_master
+					var date = "2017-08-07";
+					//check update date, before import to indexedDB
+					
+					//.....get last date modified, run HEAD request
+					//.....
+					
+	//_iDBimport();
+					if( typeof p["callback"] === "function"){
+						p["callback"]();
+					}
+				}//end check
+				
+			}//end _checkState()
+
+			function _iDBimport(){
+				var time_start = new Date();
+				
+				if( webApp.vars["wait"] ){
+					webApp.vars["wait"].className="modal-backdrop in";
+					webApp.vars["wait"].style.display="block";
+				}
+				if( webApp.vars["waitWindow"] ){
+					webApp.vars["waitWindow"].className="modal-dialog";
+					webApp.vars["waitWindow"].style.display="block";
+				}
+				
+				// //var param = {};
+console.log("_iDBimport(), send request to the server");
+	// //console.log(typeof webApp.vars["import"]["data_url"]);
+
+				//import from one data file
+				webApp.app.serverRequest({
+					"url" : webApp.vars["import"]["data_url"],
+					"callback": _afterRequest
+				});
+//return false;
+
+				function _afterRequest( data ){
+console.log( data );
+					var time_end = new Date();
+					var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
+console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
+
+					_saveData(data);
+					
+				};//end _afterRequest();
+				
+			}//end _iDBimport()
+
+			function _saveData(data){
+				if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
+console.log("error in _db(), not find 'inputDataFormat' !");
+					return false;
+				}
+				
+				switch( webApp.vars["import"]["inputDataFormat"] ){
+					case "xml":
+//console.log(typeof data);				
+						if(typeof data !== "string"){//server answer contains XML
+							webApp.vars["import"]["xml"] = data;
+							__parseXML( data );
+							return false;
+						}
+						return false;
+					break;
+					
+					case "json":
+/*				
+						// //var obj = typeof data == 'string'? JSON.parse(data): data;
+						// if( typeof data !== "string"){
+	// console.log("error in _db(), data not in JSON format");
+							// return false;
+						// }
+							
+						// try {
+							// //var jsonObj = JSON.parse( data );
+							// var jsonObj = JSON.parse( data, function(key, value) {
+	// //console.log( key, value );
+								// return value;
+							// });							
+	// //console.log( jsonObj );
+							// for(var tableName in jsonObj){
+	// //console.log( tableName, jsonObj[tableName].length );
+								// var table = jsonObj[tableName];
+								// for( var n = 0; n < table.length; n++){
+									// var recordObj = table[n];
+									// webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+								// }//next
+							// }//next
+						// } catch(e) {
+						// _log( e );
+						// }							
+*/						
+						return false;
+					break;
+					
+					case "csv":
+					//case "jcsv":
+console.log( data );				
+						//_parseCSVBlocks(data);
+						return false;
+					break;
+				}//end switch
+				
+				// if( typeof postFunc === "function"){//??????????????????????
+					// postFunc();
+				// }
+
+				function __parseXML( xml ){
+	
+					var xmlDoc = xml.getElementsByTagName("database");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+					//fix for Chrome, Safari (exclude tag <pma:database>)
+					if( xmlDoc.length === 1){
+						var records = xmlDoc.item(0).getElementsByTagName("table");
+					}
+					if( xmlDoc.length === 2){
+						var records = xmlDoc.item(1).getElementsByTagName("table");
+					}
+//console.log( records,  records.length) ;
+
+
+					//get list tables
+					var tableName = "";
+					//var storeData = [];
+					for( var n = 0; n < records.length; n++){
+						//var record = records[n];
+						//var tableName = record["attributes"]["name"].nodeValue;
+						var record = records.item(n);
+						
+						if( tableName.length > 0 &&
+								tableName !== record.attributes.getNamedItem("name").nodeValue){
+							webApp.iDBmodule.dbInfo["tables"].push(tableName);
+						}
+						tableName = record.attributes.getNamedItem("name").nodeValue;
+//if( tableName === "vocabulary" ){
+//console.log( tableName, dbInfo["tables"].length );
+//}					
+					}//next
+					
+					//push last tableName
+					webApp.iDBmodule.dbInfo["tables"].push(tableName);
+
+					//recursively save data block in iDB store
+					webApp.iDBmodule.dbInfo["import"]["counter"] = 0;
+					webApp.iDBmodule.dbInfo["import"]["timer"] = new Date();
+					__getTable();
+
+				}//end __parseXML()
+				
+				function __getTable(){
+					var xml = webApp.vars["import"]["xml"];
+					var xmlDoc = xml.getElementsByTagName("database");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+					//fix for Chrome, Safari (exclude tag <pma:database>)
+					if( xmlDoc.length === 1){
+						var records = xmlDoc.item(0).getElementsByTagName("table");
+					}
+					if( xmlDoc.length === 2){
+						var records = xmlDoc.item(1).getElementsByTagName("table");
+					}
+			
+					var num = webApp.iDBmodule.dbInfo["import"]["counter"];
+					var tableName = webApp.iDBmodule.dbInfo["tables"][num];
+					
+					var storeData = [];
+					for( var n = 0; n < records.length; n++){
+						var record = records.item(n);
+						
+						if( tableName === record.attributes.getNamedItem("name").nodeValue){
+							//form record
+							var columns = record.getElementsByTagName("column");
+							var recordObj = {};
+							for( var n2 = 0; n2 < columns.length; n2++){
+								var column = columns.item(n2);
+								var columnName = column.attributes.getNamedItem("name").nodeValue;
+								if ("textContent" in column){
+									recordObj[columnName] = column.textContent;
+								} else {
+									recordObj[columnName] = column.text;
+								}
+								
+							}//next
+							
+							storeData.push({
+								//"key" : recordObj["tid"],
+								"value" : recordObj
+							});
+						}
+					}//next
+//console.log(tableName, storeData[0], storeData.length);						
+					__saveRecords( tableName, storeData );
+				}//end __getTable()
+				
+				function __saveRecords( storeName, storeData ){
+//console.log(storeName, storeData[0], storeData.length);						
+					var timeStart = new Date();
+					webApp.iDBmodule.addRecords({
+						"storeName" : storeName,
+						"storeData" : storeData,
+						"callback" : function( statInfo ){
+							__callback( statInfo );
+						}
+					});
+					
+					function __callback( statInfo ){
+//console.log("callback, _saveRecords(), "+ storeName);
+//console.log(webApp.iDBmodule.dbInfo["import"]["counter"], statInfo);
+
+						webApp.iDBmodule.dbInfo["import"]["counter"]++;
+						
+						//----------------------- progress indicator
+						if( webApp.vars["saveProgressBar"] ){
+							var numTotal = webApp.iDBmodule.dbInfo["tables"].length;
+							var numLoaded = webApp.iDBmodule.dbInfo["import"]["counter"];
+							var percentComplete = Math.ceil( numLoaded / numTotal * 100);
+//console.log(percentComplete);
+							webApp.vars["saveProgressBar"].className = "progress-bar";
+							webApp.vars["saveProgressBar"].style.width = percentComplete+"%";
+							webApp.vars["saveProgressBar"].innerHTML = percentComplete+"%";
+						}
+
+						if( webApp.iDBmodule.dbInfo["import"]["counter"] < webApp.iDBmodule.dbInfo["tables"].length ){
+							__getTable();
+						} else {
+							
+							var timeStart = webApp.iDBmodule.dbInfo["import"]["timer"];
+							var timeEnd = new Date();
+							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+							webApp.iDBmodule.dbInfo["import"]["timer"] = runtime;
+console.log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
+							
+							delete webApp.vars["import"]["xml"];//clear var
+							
+							// if( webApp.vars["wait"] ){
+								// //webApp.vars["wait"].className="";
+								// webApp.vars["wait"].style.display="none";
+							// }
+							// if( webApp.vars["waitWindow"] ){
+								// webApp.vars["waitWindow"].style.display="none";
+							// }
+							
+							if( typeof 	webApp.iDBmodule.dbInfo["afterUpdate"] === "function"){
+								webApp.iDBmodule.dbInfo["afterUpdate"]( data );
+							}
+						}
+						
+					};//end __callback()
+
+				}//end __saveRecords()
+				
+			}//end _saveData()
+		
 		}//end __saveDataToIDB()
 		
 		function __parseAjax( data ){
