@@ -173,7 +173,7 @@ console.log( addRecord );
 		var dbInfo = []; 
 		//do not calculate store size
 		dbInfo["calc_store_size"] = false;
-		dbInfo["allowIndexedDB"] = true;//use IndexedDB, program switch
+		dbInfo["allowIndexedDB"] = false;//use IndexedDB, program switch
 		dbInfo["dbName"] = "video";//"webapp_db";
 		dbInfo["import"] = [];
 		dbInfo["tables"] = [];

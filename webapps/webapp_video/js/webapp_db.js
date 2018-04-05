@@ -134,25 +134,26 @@ console.log("error in _db(), empty 'data_url' !");
 			default:
 				//server request ( save result to memory, _vars["tables"] )
 				if( _vars["numDataURL"] > 0 ){
+//console.log("TEST1");					
 						if( typeof postFunc === "function"){
 							postFunc();
 						}
 				} else {
-					
-					// webApp.app.serverRequest({
-						// "url" : webApp.vars["import"]["data_url"],
-						// "callback": function( data ){
-// var msg = "load " + webApp.vars["import"]["data_url"] ;
-// //console.log(msg);
-// //console.log(data);
-								// if( data ){
-									// __parseAjax(data);
-								// } else {
-// console.log("error in _db(), _saveData(), not find 'data'.... ");			
-								// }
+//console.log("TEST2");
+					webApp.app.serverRequest({
+						"url" : webApp.vars["import"]["data_url"],
+						"callback": function( data ){
+var msg = "load " + webApp.vars["import"]["data_url"] ;
+//console.log(msg);
+//console.log(data);
+								if( data ){
+									__parseAjax(data);
+								} else {
+console.log("error in _db(), _saveData(), not find 'data'.... ");			
+								}
 								
-						// }//end callback()
-					// });
+						}//end callback()
+					});
 					
 				}
 			break;
