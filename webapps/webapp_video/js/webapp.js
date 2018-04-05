@@ -62,7 +62,7 @@ var webApp = {
 			// //"csv_delimiterByLines" : "\r\n"//,
 			"csv_delimiterByLines" : "\n",
 			
-			"html_delimiterByLines" : "</TR>",
+			"html_delimiterByLines" : "</TR>\n<TR>",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url_PHP" : "api/request.php",

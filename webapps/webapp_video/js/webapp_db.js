@@ -1545,21 +1545,56 @@ console.log("_convertCSV_JSON(), error, input record is empty!");
 
 
 	function _parseHTML( data ){
-		var jsonData = [{a:1}, {b:2}, {c:3}];
+		var jsonData = [];
 		var htmlData = [];
 		
 		htmlData = data.split( webApp.vars["import"]["html_delimiterByLines"] );
-console.log(htmlData);
+		
+		//get field names
+		var fieldNames = [];
+		var regexp = /\<TH\>(.*?)\<\/TH\>/g;
+		while( result = regexp.exec( htmlData[0] )){
+//console.log(result);
+			fieldNames.push( result[1] );
+		}//end while
+		
+		var regexp = /\<TD\>(.*?)\<\/TD\>/g;
+		while( result = regexp.exec( htmlData[1] )){
+console.log(result);
+			//fieldNames.push( result[1] );
+		}//end while
+		
+		// //get values
+		// var regexp = /\<TD\>(.*?)\<\/TD\>/g;
+		// var record = {};
+		// var n1=0;
+		
+		// result = regexp.exec( htmlData[1] );
+		// var key = fieldNames[n1];
+		// var value = result[1];
+// console.log(key, value);
+		// record[key] = value;
+			
+		// n1++;
+		
+		// result = regexp.exec( htmlData[1] );
+		// var key = fieldNames[n1];
+		// var value = result[1];
+// console.log(key, value);
+		// record[key] = value;
+		
+// console.log(record);
+		// jsonData.push( record );
 
-		if( htmlData.length === 0){
+		if( jsonData.length === 0){
 console.log( "error HTML parse..." );
 			return false;
 		}
-		
+console.log( jsonData );
+
+		delete htmlData;
 		return jsonData;
-
 	}//end _parseHTML()
-
 	
 	
 //==================================
