@@ -36,7 +36,7 @@ var webApp = {
 //"node_revision": "db/node_revision.csv",
 "node_type" : "db/node_type.csv",
 
-//"field_data_body" : "db/field_data_body.html",
+"field_data_body" : "db/field_data_body.html",
 //"field_data_field_filename" : "db/field_data_field_filename.csv",
 "field_data_field_img_cover" : "db/field_data_field_img_cover.csv",
 //"field_data_field_roles" : "db/field_data_field_roles.csv",
@@ -61,6 +61,8 @@ var webApp = {
 			"csv_delimiterByFields" : ",",
 			// //"csv_delimiterByLines" : "\r\n"//,
 			"csv_delimiterByLines" : "\n",
+			
+			"html_delimiterByLines" : "</TR>",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url_PHP" : "api/request.php",

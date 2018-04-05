@@ -235,56 +235,69 @@ console.log("Load data files from server and save to indexeDB storage");
 					"url" : url,
 					"callback": function(data){
 //console.log( data.length );	
-						if( data.length > 0){
-							if( _vars["tablesArr"][counter]["inputDataFormat"] === "csv"){
-								var tableName = _vars["tablesArr"][counter]["name"];
-								//_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
-								var records = _parseCSVBlocks(data);
+						if( !data || data.length === 0){
+console.log( "__recursiveSave(), error!" );	
+							return false;
+						}
+							
+						var tableName = _vars["tablesArr"][counter]["name"];
+						var records = [];
+						
+						// if( _vars["tablesArr"][counter]["inputDataFormat"] === "csv"){
+							// //_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+							// records = _parseCSVBlocks(data);
+						// }
+						// if( _vars["tablesArr"][counter]["inputDataFormat"] === "html"){
+// console.log( "__recursiveSave(), inputDataFormat: ",  _vars["tablesArr"][counter]["inputDataFormat"]);	
+							// records = _parseInputData(data, "html");
+						// }
+						records = _parseInputData(data, _vars["tablesArr"][counter]["inputDataFormat"]);
 								
-								var storeData = [];
-								for( var n = 0; n < records.length; n++){
-									storeData.push({
-										//"key" : tpl,
-										"value" : records[n]
-									});					
-								}//next
+						var storeData = [];
+						for( var n = 0; n < records.length; n++){
+							storeData.push({
+								//"key" : tpl,
+								"value" : records[n]
+							});					
+						}//next
 //console.log( storeData[0], storeData.length);
-								if( storeData.length > 0){
-//if( tableName === "node"){
-									webApp.iDBmodule.addRecords({
-										"dbName": webApp.iDBmodule.dbInfo["dbName"],
-										"storeName": tableName,
-										"storeData" : storeData,
-										"callback" : function( log ){
-var msg = tableName + ", save records.... ";
-console.log(msg);
-											//continue save process
-											counter++;
-											if( counter >= _vars["tablesArr"].length ){
-												if( typeof postFunc === "function"){
-													postFunc();
-												}
-												return false;
-											} else {
-												__recursiveSave( counter );
-											}
 
-										}
-									});
-//}
-								} else {
+						if( storeData.length === 0){
 var msg = "webApp.db.saveData(), warning! No input data";
 console.log(msg);
+							_continueSave( counter );
+						} else {
+//if( tableName === "node"){
+							webApp.iDBmodule.addRecords({
+								"dbName": webApp.iDBmodule.dbInfo["dbName"],
+								"storeName": tableName,
+								"storeData" : storeData,
+								"callback" : function( log ){
+var msg = tableName + ", save records.... ";
+console.log(msg);
+									//continue save process
+									_continueSave( counter );
 								}
-								
-							}
+							});
+//}
 						}
 						
-						
-					}
+					}//end callback
 				});
-
-			}//end __recursive()
+				
+				function _continueSave( counter ){
+					counter++;
+					if( counter >= _vars["tablesArr"].length ){
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+						return false;
+					} else {
+						__recursiveSave( counter );
+					}
+				}//end _continueSave()
+				
+			}//end __recursiveSave()
 			
 			function _checkState(opt){
 				var p = {
@@ -1230,6 +1243,27 @@ console.log("not callback....use return function");
 		
 	};//end _query()
 	
+
+	function _parseInputData( data, format){
+		
+		var records = [];
+		switch( format){
+			//case "xml":
+			//case "json":
+			//break;
+			
+			case "csv":
+				records = _parseCSVBlocks(data);
+			break;
+			
+			case "html":
+				records = _parseHTML(data);
+			break;
+		}//end switch
+		
+		return records;
+	}//end _parseInputData()
+
 	
 	function _parseXML(xml){
 
@@ -1401,7 +1435,7 @@ console.log("not callback....use return function");
 		
 	}//end _parseCSVBlocks()
 */
-	
+
 	function _parseCSVBlocks( data ){
 		var jsonData = [];		
 		var csvData = [];
@@ -1509,6 +1543,24 @@ console.log("_convertCSV_JSON(), error, input record is empty!");
 		
 	}//end _parseCSVBlocks()
 
+
+	function _parseHTML( data ){
+		var jsonData = [{a:1}, {b:2}, {c:3}];
+		var htmlData = [];
+		
+		htmlData = data.split( webApp.vars["import"]["html_delimiterByLines"] );
+console.log(htmlData);
+
+		if( htmlData.length === 0){
+console.log( "error HTML parse..." );
+			return false;
+		}
+		
+		return jsonData;
+
+	}//end _parseHTML()
+
+	
 	
 //==================================
 // async API
@@ -1903,14 +1955,15 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				"queryObj" : {
 					"action" : "select",
 					
-					"tableName": "node_revisions",
-					"targetFields" : ["body"],
-					//"tableName": "field_data_body",
-					//"targetFields" : ["body_value"],
+					//"tableName": "node_revisions",
+					//"targetFields" : ["body"],
+					
+					"tableName": "field_data_body",
+					"targetFields" : ["body_value"],
 					
 					"where" : [
-						{"key" : "nid", "value" : p["nid"], "compare": "="}
-						//{"key" : "entity_id", "value" : p["nid"], "compare": "="}
+						//{"key" : "nid", "value" : p["nid"], "compare": "="}
+						{"key" : "entity_id", "value" : p["nid"], "compare": "="}
 						
 					]
 				},
