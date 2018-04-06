@@ -26,7 +26,24 @@ function _db( opt ){
 		"dataStoreType" : _detectDataStore(),
 		"isEmptyURL" : false,
 		"numDataURL": false,
-		"tables": {}
+		"tables": {},
+		"queries":{
+			"getNodeBody": {
+					"action" : "select",
+					//"tableName": "node_revisions",
+					//"targetFields" : ["body"],
+					
+					"tableName": "field_data_body",
+					"targetFields" : ["body_value"],
+					
+					"where" : [
+						//{"key" : "nid", "value" : p["nid"], "compare": "="}
+						{"key" : "entity_id", "value" : null, "compare": "="}
+						
+					]
+				}//end query
+			}
+		
 	};
 	
 	
@@ -671,7 +688,7 @@ console.log("_parseCSVBlocks()");
 				webApp.iDBmodule.getListStores({//store by name 'templates' is exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-//console.log(listStores);				
+console.log(listStores);				
 						for( var n = 0; n < listStores.length; n++){
 							var storeName = listStores[n];
 							if( storeName === "templates"){
@@ -696,7 +713,10 @@ console.log("_parseCSVBlocks()");
 								break;
 							}
 						}//next
-
+						
+						if( typeof postFunc === "function"){
+							postFunc( isLoadTemplates );
+						}
 					}//end callback
 				});
 				return false;
@@ -1990,31 +2010,22 @@ console.log( body.length );
 		return  false;
 
 		function __getNodeBody( callback ){
+			_vars["queries"]["getNodeBody"]["where"][0]["value"] = p["nid"];
 			webApp.db.query({
-				"queryObj" : {
-					"action" : "select",
-					
-					//"tableName": "node_revisions",
-					//"targetFields" : ["body"],
-					
-					"tableName": "field_data_body",
-					"targetFields" : ["body_value"],
-					
-					"where" : [
-						//{"key" : "nid", "value" : p["nid"], "compare": "="}
-						{"key" : "entity_id", "value" : p["nid"], "compare": "="}
-						
-					]
-				},
+				"queryObj" : _vars["queries"]["getNodeBody"],
 				"callback" : function( res ){
 //console.log( res );
 					if( typeof callback === "function"){
+						
 						if(!res){
 							callback( res );
 						} else {
-							//callback( res[0]["body"]);
-							callback( res[0]["body_value"]);
+							for(var fieldName in res[0] ){
+								var body = res[0][fieldName];
+							}//next
+							callback( body );
 						}
+						
 					}
 				}//end callback
 			});
