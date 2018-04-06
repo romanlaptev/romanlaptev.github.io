@@ -1550,38 +1550,44 @@ console.log("_convertCSV_JSON(), error, input record is empty!");
 		
 		htmlData = data.split( webApp.vars["import"]["html_delimiterByLines"] );
 		
-		var RegExpGetFieldNames = /\<TH\>(.*?)\<\/TH\>/g;
-		var RegExpGetValues = /\<TD\>(.*?)\<\/TD\>/g;
 		
 		//get field names
 		var fieldNames = [];
+		var RegExpGetFieldNames = /\<TH\>(.*?)\<\/TH\>/g;
 		while( result = RegExpGetFieldNames.exec( htmlData[0] )){
 			fieldNames.push( result[1] );
 		}//end while
 //console.log( fieldNames );
 		
-		
-		//get values
-		var record = {};
-		
-		//filter data record for correct regexp result !!!
-		var filter = htmlData[1]
-		.replace(/\r\n/g, "&#13&#10")//replace Carriage Return+Line feed
-		.replace(/\n/g, "&#10");//replace Line feed
+		for( var n2 = 1; n2 < htmlData.length; n2++){
+			//var n2 = 3;
+			
+			//get values
+			
+			//filter data record for correct regexp result !!!
+			var filter = htmlData[n2]
+			.replace(/\r\n/g, "&#13&#10")//replace Carriage Return+Line feed
+			.replace(/\n/g, "&#10");//replace Line feed
 //console.log(filter);
 
-		for( var n1 = 0; n1 < fieldNames.length; n1++){
-			result = RegExpGetValues.exec( filter );
-			var key = fieldNames[n1];
-			var value = result[1]
-				.replace(/&#13&#10/g, /\r\n/)//replace Carriage Return+Line feed
-				.replace(/&#10/g, /\n/);//replace Line feed
-	// console.log(key, value);
-			record[key] = value;
-		}//next
+			var record = {};
+			var RegExpGetValues = /\<TD\>(.*?)\<\/TD\>/g;
+			for( var n1 = 0; n1 < fieldNames.length; n1++){
+				var result = RegExpGetValues.exec( filter );
+				var key = fieldNames[n1];
+//console.log(n2, n1);
+				var value = result[1]
+					.replace(/&#13&#10/g, "\r\n")//replace Carriage Return+Line feed
+					.replace(/&#10/g, "\n");//replace Line feed
+		// console.log(key, value);
+				record[key] = value;
+			}//next
 //console.log(record);
 
-		 jsonData.push( record );
+			 jsonData.push( record );
+			 
+		}//next
+		
 //console.log( jsonData );
 
 		if( jsonData.length === 0){
