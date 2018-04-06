@@ -63,7 +63,7 @@ if( loc){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] ){
 _log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
@@ -77,7 +77,6 @@ _log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b
 			return false;
 		}
 		
-console.log( _vars["templates"] );//??????????
 		if( !_vars["templates"][p.templateID] ){
 			var msg = webApp.vars["messages"]["templateNotFound"].replace("{{templateID}}", p.templateID);
 			_log( msg );

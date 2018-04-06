@@ -686,15 +686,16 @@ console.log("_parseCSVBlocks()");
 //console.log(msg, log);
 //console.log(data );
 										webApp.draw.vars["templates"] = data;
+										if( typeof postFunc === "function"){
+											postFunc( isLoadTemplates );
+										}
+										
 									}
 								});
 								
 								break;
 							}
 						}//next
-						if( typeof postFunc === "function"){
-							postFunc( isLoadTemplates );
-						}
 
 					}//end callback
 				});
@@ -1964,7 +1965,7 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				node["nid"] = p["nid"];
 				
 				__getNodeBody(function( body ){
-console.log( body );						
+console.log( body.length );						
 					node["body"] = body;
 					
 					//__getNodeFields( node, function( fields ){
