@@ -2164,6 +2164,8 @@ LIMIT 0 , 30
 		nodeLoad:	function( opt ){ 
 			return _nodeLoad( opt ); 
 		},
-		getNodeTerms: _getNodeTerms
+		getNodeTerms: _getNodeTerms,
+		
+		parseHTML: _parseHTML
 	};
 }//end _db()
