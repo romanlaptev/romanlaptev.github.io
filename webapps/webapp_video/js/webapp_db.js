@@ -1550,47 +1550,44 @@ console.log("_convertCSV_JSON(), error, input record is empty!");
 		
 		htmlData = data.split( webApp.vars["import"]["html_delimiterByLines"] );
 		
+		var RegExpGetFieldNames = /\<TH\>(.*?)\<\/TH\>/g;
+		var RegExpGetValues = /\<TD\>(.*?)\<\/TD\>/g;
+		
 		//get field names
 		var fieldNames = [];
-		var regexp = /\<TH\>(.*?)\<\/TH\>/g;
-		while( result = regexp.exec( htmlData[0] )){
-//console.log(result);
+		while( result = RegExpGetFieldNames.exec( htmlData[0] )){
 			fieldNames.push( result[1] );
 		}//end while
+//console.log( fieldNames );
 		
-		var regexp = /\<TD\>(.*?)\<\/TD\>/g;
-		while( result = regexp.exec( htmlData[1] )){
-console.log(result);
-			//fieldNames.push( result[1] );
-		}//end while
 		
-		// //get values
-		// var regexp = /\<TD\>(.*?)\<\/TD\>/g;
-		// var record = {};
-		// var n1=0;
+		//get values
+		var record = {};
 		
-		// result = regexp.exec( htmlData[1] );
-		// var key = fieldNames[n1];
-		// var value = result[1];
-// console.log(key, value);
-		// record[key] = value;
-			
-		// n1++;
-		
-		// result = regexp.exec( htmlData[1] );
-		// var key = fieldNames[n1];
-		// var value = result[1];
-// console.log(key, value);
-		// record[key] = value;
-		
-// console.log(record);
-		// jsonData.push( record );
+		//filter data record for correct regexp result !!!
+		var filter = htmlData[1]
+		.replace(/\r\n/g, "&#13&#10")//replace Carriage Return+Line feed
+		.replace(/\n/g, "&#10");//replace Line feed
+//console.log(filter);
+
+		for( var n1 = 0; n1 < fieldNames.length; n1++){
+			result = RegExpGetValues.exec( filter );
+			var key = fieldNames[n1];
+			var value = result[1]
+				.replace(/&#13&#10/g, /\r\n/)//replace Carriage Return+Line feed
+				.replace(/&#10/g, /\n/);//replace Line feed
+	// console.log(key, value);
+			record[key] = value;
+		}//next
+//console.log(record);
+
+		 jsonData.push( record );
+//console.log( jsonData );
 
 		if( jsonData.length === 0){
 console.log( "error HTML parse..." );
 			return false;
 		}
-console.log( jsonData );
 
 		delete htmlData;
 		return jsonData;
