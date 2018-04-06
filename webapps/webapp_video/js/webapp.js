@@ -375,6 +375,10 @@ console.log("init app!");
 				log.innerHTML="";
 			break;
 			
+			case "test":
+				_test();
+			break;
+			
 			case "node":
 console.log("-- start build page --");
 				var timeStart = new Date();
@@ -1175,6 +1179,17 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 		}//end _loadTemplatesFromFile()
 		
 	}//end _loadTemplates()
+
+	function _test(){
+		webApp.app.serverRequest({
+			"url" : "db/field_data_body.html",
+			"callback": function(data){
+console.log( data.length );
+				records = webApp.db.parseHTML(data);
+console.log( records );				
+			}//end callback
+		});
+	}//end _test()
 	
 	// public interfaces
 	return{
