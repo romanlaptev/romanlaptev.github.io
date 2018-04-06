@@ -30,16 +30,15 @@ function _db( opt ){
 		"queries":{
 			"getNodeBody": {
 					"action" : "select",
+
 					//"tableName": "node_revisions",
 					//"targetFields" : ["body"],
-					
 					"tableName": "field_data_body",
 					"targetFields" : ["body_value"],
 					
 					"where" : [
-						//{"key" : "nid", "value" : p["nid"], "compare": "="}
+						//{"key" : "nid", "value" : null, "compare": "="}
 						{"key" : "entity_id", "value" : null, "compare": "="}
-						
 					]
 				}//end query
 			}
