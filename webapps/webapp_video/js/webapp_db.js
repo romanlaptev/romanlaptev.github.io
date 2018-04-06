@@ -1964,23 +1964,23 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				node["nid"] = p["nid"];
 				
 				__getNodeBody(function( body ){
-//console.log( body );						
+console.log( body );						
 					node["body"] = body;
 					
-					__getNodeFields( node, function( fields ){
-						node["fields"] = fields;
+					//__getNodeFields( node, function( fields ){
+						//node["fields"] = fields;
 						
-						_getNodeTerms({
-							"nid" : node["nid"],
-							"callback" : function(res){
-//console.log(res);								
-								node["nodeTerms"] = res;
+						// _getNodeTerms({
+							// "nid" : node["nid"],
+							// "callback" : function(res){
+// //console.log(res);								
+								//node["nodeTerms"] = res;
 								if( typeof p["callback"] === "function"){
 									p["callback"](node);
 								}
-							}
-						});//end get node terms
-					});//end get fields node
+							// }
+						// });//end get node terms
+					//});//end get fields node
 				});//end get body
 				
 			}//end callback
@@ -2011,7 +2011,8 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 						if(!res){
 							callback( res );
 						} else {
-							callback( res[0]["body"]);
+							//callback( res[0]["body"]);
+							callback( res[0]["body_value"]);
 						}
 					}
 				}//end callback
