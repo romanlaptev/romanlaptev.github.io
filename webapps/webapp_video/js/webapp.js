@@ -129,7 +129,7 @@ console.log(webApp);
 
 	//start
 	webApp.app.loadTemplates(function(){
-console.log("Load templates end...", webApp.draw.vars["templates"] );		
+//console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		_runApp();
 	});
 
@@ -169,7 +169,7 @@ function _app( opt ){
 	// private variables and functions
 	var _vars = {
 		//"init_url" : "#?q=node&nid=20",
-		"init_url" : "#?q=node&nid=2",
+		"init_url" : "#?q=node&nid=6",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},

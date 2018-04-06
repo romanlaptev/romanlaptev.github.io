@@ -28,6 +28,17 @@ function _db( opt ){
 		"numDataURL": false,
 		"tables": {},
 		"queries":{
+			
+			"getNode" :{
+				"action" : "select",
+				"tableName": "node",
+				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
+				"targetFields" : ["title", "type"],
+				"where" : [
+					{"key" : "nid", "value" : null, "compare": "="}
+				]
+			},
+			
 			"getNodeBody": {
 					"action" : "select",
 
@@ -1960,19 +1971,11 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		}
 //console.log(p);
 
+		_vars["queries"]["getNode"]["where"][0]["value"] = p["nid"];
 		webApp.db.query({
-			"queryObj" : {
-				"action" : "select",
-				"tableName": "node",
-				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
-				"targetFields" : ["title", "type"],
-				"where" : [
-					{"key" : "nid", "value" : p["nid"], "compare": "="}
-				]
-			},
+			"queryObj" :  _vars["queries"]["getNode"],
 			"callback" : function( res ){
 //console.log( res );
-
 			if( !res || res.length === 0){
 				if( typeof p["callback"] === "function"){
 					p["callback"](node);
