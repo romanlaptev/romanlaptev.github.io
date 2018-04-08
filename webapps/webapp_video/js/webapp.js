@@ -25,21 +25,22 @@ var webApp = {
 		"log" : [],
 		"messages" : {
 			//"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
-			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>"
+			"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>",
+			"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
 		},
 		 "import" : {
 			//"data_url" : "../../projects/webapp_db/db/art.xml",
 			//"data_url" :"db/art_correct.json",
 			"data_url" : {
 "node": "db/node.csv",
-"node_revision": "db/node_revision.csv",
+//"node_revision": "db/node_revision.csv",
 "node_type" : "db/node_type.csv",
 
 "field_data_body" : "db/field_data_body.html",
-"field_data_field_filename" : "db/field_data_field_filename.csv",
+//"field_data_field_filename" : "db/field_data_field_filename.csv",
 "field_data_field_img_cover" : "db/field_data_field_img_cover.csv",
-"field_data_field_roles" : "db/field_data_field_roles.csv",
-"field_data_field_subfolder" : "db/field_data_field_subfolder.csv",
+//"field_data_field_roles" : "db/field_data_field_roles.csv",
+//"field_data_field_subfolder" : "db/field_data_field_subfolder.csv",
 "field_data_field_year" : "db/field_data_field_year.csv",
 "field_data_field_taxonomy" : "db/field_data_field_taxonomy.csv",
 "field_data_field_taxonomy_alpha" : "db/field_data_field_taxonomy_alpha.csv",
@@ -54,12 +55,14 @@ var webApp = {
 			
 			//"inputDataFormat" : "xml",
 			//"inputDataFormat" : "json",
-			"inputDataFormat" : "csv",
+			//"inputDataFormat" : "csv",
 			
-			// "csv_header" : true,// field name in first row of csv file
-			// "csv_delimiterByFields" : ",",
+			"csv_header" : true,// field name in first row of csv file
+			"csv_delimiterByFields" : ",",
 			// //"csv_delimiterByLines" : "\r\n"//,
-			// "csv_delimiterByLines" : "\n",
+			"csv_delimiterByLines" : "\n",
+			
+			"html_delimiterByLines" : "</TR>\n<TR>",
 			
 			//"request_url" : "db/art_{{DATE}}.xml",
 			//"request_url_PHP" : "api/request.php",
@@ -133,9 +136,11 @@ console.log(webApp);
 function _runApp(){
 	
 	webApp.init(function(){
-		webApp.db.loadData(function(){
+		webApp.db.saveData(function(){
 //console.log(arguments);
 //console.log(window.location);	
+//console.log("TEST3");
+
 				var parse_url = window.location.search; 
 				if( parse_url.length > 0 ){
 					webApp.vars["GET"] = parseGetParams(); 
@@ -163,8 +168,8 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=node&nid=20",
-		//"init_url" : "#?q=node&nid=2",
+		//"init_url" : "#?q=node&nid=20",
+		"init_url" : "#?q=node&nid=6",
 		"runtime": [],//time for generate blocks
 		"node": [{}],
 		"queries": {},
@@ -190,9 +195,13 @@ function _app( opt ){
 						"contentType" : "getTerminByName",
 						"callback" : function(res){
 //console.log(res);							
-							if( typeof args["callback"] === "function"){
-								args["callback"]( res );
-							}
+//console.log( args["callback"].toSource() );
+							//if( res ){
+								if( typeof args["callback"] === "function"){
+									args["callback"]( res );
+								}
+							//}
+							
 						}//end callback
 					});
 				},//end callback()
@@ -364,6 +373,10 @@ console.log("init app!");
 			case "clear-log":
 				var log = getById("log");
 				log.innerHTML="";
+			break;
+			
+			case "test":
+				_test();
 			break;
 			
 			case "node":
@@ -674,7 +687,14 @@ console.log(msg);
 		if( typeof p["content"] === "function"){
 			p["content"]({
 				"callback" : function( res ){
-//console.log(res);								
+//console.log(res);						
+					if(!res){
+						if( typeof p["callback"] === "function"){
+							p["callback"]();
+						}
+						return false;
+					}		
+					
 					var html = webApp.draw.wrapContent({
 						"data" : res,
 						//"type" : "menu",//"list"
@@ -760,7 +780,7 @@ console.log(msg);
 				"nid": p["nid"],
 				//"title": options["title"]
 				"callback" : function( node ){
-console.log( node );
+//console.log( node );
 
 					if(!node){
 						var log_message = webApp.vars["messages"]["nodeNotFound"];
@@ -803,7 +823,7 @@ console.log( node );
 //for test!!!
 //node["terms"] = [];
 					_data["nodeTerms"] = "test";
-					if( node["nodeTerms"].length > 0 ){
+					if( node["nodeTerms"] && node["nodeTerms"].length > 0 ){
 						_data["nodeTerms"] = node["nodeTerms"];
 					}
 					
@@ -824,6 +844,7 @@ console.log( node );
 						//html += _html;
 					} else {
 console.log("Error form node html!!!");
+						_html = "Error form content html...";
 					}
 					
 					
@@ -925,6 +946,8 @@ console.log(msg);
 	
 	
 	function _serverRequest( opt ){
+//console.log("_serverRequest, ", "caller: ", _serverRequest.caller.toString());
+		
 		var p = {
 			//"date": null,
 			"url" : null,
@@ -1024,6 +1047,7 @@ console.log(errorCode);
 				"callback": function( data ){
 var msg = "load " + url ;
 console.log(msg);
+//console.log(data, data.length);
 
 					if( !data || data.length === 0){
 	console.log("error in _app(), _serverRequest(), not find 'data'.... ");			
@@ -1155,6 +1179,17 @@ console.log("error in _app(), _serverRequest(), not find 'data'.... ");
 		}//end _loadTemplatesFromFile()
 		
 	}//end _loadTemplates()
+
+	function _test(){
+		webApp.app.serverRequest({
+			"url" : "db/field_data_body.html",
+			"callback": function(data){
+console.log( data.length );
+				records = webApp.db.parseHTML(data);
+console.log( records );				
+			}//end callback
+		});
+	}//end _test()
 	
 	// public interfaces
 	return{

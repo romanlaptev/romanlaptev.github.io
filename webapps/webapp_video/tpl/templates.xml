@@ -52,6 +52,14 @@
 		</html_code>
 	</tpl>
 	
+	<tpl name="tpl-node_video">
+		<html_code>
+<![CDATA[
+	<div>{{body}}</div>
+]]>
+		</html_code>
+	</tpl>
+	
 	<tpl name="tpl_node_terms">
 		<html_code>
 <![CDATA[

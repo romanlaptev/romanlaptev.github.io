@@ -26,7 +26,34 @@ function _db( opt ){
 		"dataStoreType" : _detectDataStore(),
 		"isEmptyURL" : false,
 		"numDataURL": false,
-		"tables": {}
+		"tables": {},
+		"queries":{
+			
+			"getNode" :{
+				"action" : "select",
+				"tableName": "node",
+				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
+				"targetFields" : ["title", "type"],
+				"where" : [
+					{"key" : "nid", "value" : null, "compare": "="}
+				]
+			},
+			
+			"getNodeBody": {
+					"action" : "select",
+
+					//"tableName": "node_revisions",
+					//"targetFields" : ["body"],
+					"tableName": "field_data_body",
+					"targetFields" : ["body_value"],
+					
+					"where" : [
+						//{"key" : "nid", "value" : null, "compare": "="}
+						{"key" : "entity_id", "value" : null, "compare": "="}
+					]
+				}//end query
+			}
+		
 	};
 	
 	
@@ -72,6 +99,18 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 					
 					_vars["tables"][tableName] = tableInfo;
 				}//next
+				
+				//convert table list to Array
+				_vars["tablesArr"] = [];
+				for(var tblName in _vars["tables"]){
+					var obj = {
+						"name" : tblName,
+						"url" : _vars["tables"][tblName]["url"], 
+						"inputDataFormat" : _vars["tables"][tblName]["inputDataFormat"]
+					}
+					_vars["tablesArr"].push( obj );
+				}//next
+				
 			}
 		}
 		return isEmptyURL;
@@ -93,8 +132,8 @@ console.log( "Data store type: " + _vars["dataStoreType"] );
 		return dataStoreType;
 	}//end _detectDataStore()
 	
-	function _loadData( postFunc ){
-console.log("webApp.db.loadData() ", arguments);
+	function _saveData( postFunc ){
+//console.log("webApp.db.saveData() ", arguments);
 
 		if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			_vars["dataStoreType"] = false;
@@ -102,23 +141,15 @@ console.log("webApp.db.loadData() ", arguments);
 
 		if( _vars["isEmptyURL"]){
 console.log("error in _db(), empty 'data_url' !");
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
 			return false;
 		}
 		
-		switch(_vars["dataStoreType"]) {				
-			
+		switch(_vars["dataStoreType"]) {
 			case "indexedDB":
-				webApp.iDBmodule.getListStores({//DB exists?
-					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
-					"callback" : function( listStores ){
-console.log(listStores);				
-						//webApp.iDBmodule.checkState({
-							//"listStores" : listStores,
-							//"callback" : postFunc//draw page
-						//});
-					}//end callback
-				});
-				return false;
+				__saveDataToIDB(postFunc);
 			break;
 			
 			case "webSQL":
@@ -128,28 +159,472 @@ console.log(listStores);
 			break;
 			
 			default:
-				if(!_vars["numDataURL"]){
+				//server request ( save result to memory, _vars["tables"] )
+				if( _vars["numDataURL"] > 0 ){
+//console.log("TEST1");					
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+				} else {
+//console.log("TEST2");
 					webApp.app.serverRequest({
 						"url" : webApp.vars["import"]["data_url"],
 						"callback": function( data ){
-	var msg = "load " + webApp.vars["import"]["data_url"] ;
-	console.log(msg);
-								if( !data ){
-	console.log("error in _db(), _loadData(), not find 'data'.... ");			
-									return false;
+var msg = "load " + webApp.vars["import"]["data_url"] ;
+//console.log(msg);
+//console.log(data);
+								if( data ){
+									__parseAjax(data);
+								} else {
+console.log("error in _db(), _saveData(), not find 'data'.... ");			
 								}
-							__parseAjax(data);
+								
 						}//end callback()
 					});
+					
 				}
 			break;
 		}//end switch
 		
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
+		// if( !_vars["dataStoreType"] ){
+// console.log("TEST2");			
+		// } 
+		
 		return false;
+
+		function __saveDataToIDB( postFunc ){
+//console.log("function __saveDataToIDB");	
+
+			if( _vars["numDataURL"] > 0 ){
+
+				webApp.iDBmodule.getListStores({//DB exists?
+					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+					"callback" : function( listStores ){
+//console.log(listStores);				
+						_checkState({
+							"listStores" : listStores,
+							"runImport" : function(){
+//console.log("TEST4", arguments);
+console.log("Load data files from server and save to indexeDB storage");
+								__recursiveSave( 0 );
+							},
+							"callback" : postFunc//draw page
+						});
+//console.log("TEST2");
+
+						//return false;
+
+					}//end callback
+				});
+				
+			}
+
+			//data in one file
+			switch( webApp.vars["import"]["inputDataFormat"] ){
+				case "xml":
+					webApp.iDBmodule.getListStores({//DB exists?
+						"dbName" : webApp.iDBmodule.dbInfo["dbName"],
+						"callback" : function( listStores ){
+//console.log(listStores);				
+							_checkState({
+								"listStores" : listStores,
+								"runImport" : _iDBimport,
+								"callback" : postFunc//draw page
+							});
+
+						}//end callback
+					});
+					//return false;????????
+				break;
+				
+				case "json":
+				break;
+				
+				//case "csv":
+				//case "jcsv":
+				//break;
+				
+				//default:
+				//break;
+				
+			}//end switch
+
+			//if( typeof postFunc === "function"){
+				//postFunc();
+			//}
+			//return false;
 			
+			function __recursiveSave( counter ){
+				
+				var url = _vars["tablesArr"][counter]["url"];
+//console.log(counter, url, _vars["tablesArr"][counter]["name"]);
+				webApp.app.serverRequest({
+					"url" : url,
+					"callback": function(data){
+//console.log( data.length );	
+						if( !data || data.length === 0){
+console.log( "__recursiveSave(), error!" );	
+							return false;
+						}
+							
+						var tableName = _vars["tablesArr"][counter]["name"];
+						var records = [];
+						
+						// if( _vars["tablesArr"][counter]["inputDataFormat"] === "csv"){
+							// //_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+							// records = _parseCSVBlocks(data);
+						// }
+						// if( _vars["tablesArr"][counter]["inputDataFormat"] === "html"){
+// console.log( "__recursiveSave(), inputDataFormat: ",  _vars["tablesArr"][counter]["inputDataFormat"]);	
+							// records = _parseInputData(data, "html");
+						// }
+						records = _parseInputData(data, _vars["tablesArr"][counter]["inputDataFormat"]);
+								
+						var storeData = [];
+						for( var n = 0; n < records.length; n++){
+							storeData.push({
+								//"key" : tpl,
+								"value" : records[n]
+							});					
+						}//next
+//console.log( storeData[0], storeData.length);
+
+						if( storeData.length === 0){
+var msg = "webApp.db.saveData(), warning! No input data";
+console.log(msg);
+							_continueSave( counter );
+						} else {
+//if( tableName === "node"){
+							webApp.iDBmodule.addRecords({
+								"dbName": webApp.iDBmodule.dbInfo["dbName"],
+								"storeName": tableName,
+								"storeData" : storeData,
+								"callback" : function( log ){
+var msg = tableName + ", save records.... ";
+console.log(msg);
+									//continue save process
+									_continueSave( counter );
+								}
+							});
+//}
+						}
+						
+					}//end callback
+				});
+				
+				function _continueSave( counter ){
+					counter++;
+					if( counter >= _vars["tablesArr"].length ){
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+						return false;
+					} else {
+						__recursiveSave( counter );
+					}
+				}//end _continueSave()
+				
+			}//end __recursiveSave()
+			
+			function _checkState(opt){
+				var p = {
+					"listStores": "",
+					"runImport": null,//_iDBimport
+					"callback": null
+				};
+				
+				//extend options object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+				
+				if( typeof p["callback"] === "function"){
+					webApp.iDBmodule.dbInfo["afterUpdate"] = p["callback"];
+				} else {
+	console.log("Error, webApp.db, _checkState(), need callback function");				
+					return false;
+				}
+			
+				webApp.vars["import"]["importType"] = "new";
+				if( typeof p["listStores"] !== "undefined" &&
+						p["listStores"].length > 0){
+					webApp.vars["import"]["importType"] = "update";
+					//compare dates!!!!
+					
+				} else {
+	var msg = "webApp.db, _checkState(), not find indexedDB stores, new full import.";
+	console.log(msg);
+				}
+				
+	var msg = "webApp.db, _checkState(),  import type:" + webApp.vars["import"]["importType"];
+	console.log(msg);
+				if( webApp.vars["import"]["importType"] === "new"){
+					//new full import to indexedDB
+					if( typeof p["runImport"] === "function"){
+						p["runImport"]();
+					}
+				}
+				
+				if( webApp.vars["import"]["importType"] === "update"){
+					//read "last_date" from idb_master
+					var date = "2017-08-07";
+					//check update date, before import to indexedDB
+					
+					//.....get last date modified, run HEAD request
+					//.....
+					
+//console.log("TEST1");
+					if( typeof p["callback"] === "function"){
+						p["callback"]();
+					}
+					return false;
+				}//end check
+				
+			}//end _checkState()
+
+			function _iDBimport(){
+				var time_start = new Date();
+				
+				if( webApp.vars["wait"] ){
+					webApp.vars["wait"].className="modal-backdrop in";
+					webApp.vars["wait"].style.display="block";
+				}
+				if( webApp.vars["waitWindow"] ){
+					webApp.vars["waitWindow"].className="modal-dialog";
+					webApp.vars["waitWindow"].style.display="block";
+				}
+				
+				// //var param = {};
+console.log("_iDBimport(), send request to the server");
+	// //console.log(typeof webApp.vars["import"]["data_url"]);
+
+				//import from one data file
+				webApp.app.serverRequest({
+					"url" : webApp.vars["import"]["data_url"],
+					"callback": _afterRequest
+				});
+//return false;
+
+				function _afterRequest( data ){
+console.log( data );
+					var time_end = new Date();
+					var runtime = (time_end.getTime() - time_start.getTime()) / 1000;
+console.log("_iDBimport(), response from the server,  runtime: " + runtime +" sec");
+
+					_saveData(data);
+					
+				};//end _afterRequest();
+				
+			}//end _iDBimport()
+
+			function _saveData(data){
+				if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
+console.log("error in _db(), not find 'inputDataFormat' !");
+					return false;
+				}
+				
+				switch( webApp.vars["import"]["inputDataFormat"] ){
+					case "xml":
+//console.log(typeof data);				
+						if(typeof data !== "string"){//server answer contains XML
+							webApp.vars["import"]["xml"] = data;
+							__parseXML( data );
+							return false;
+						}
+						return false;
+					break;
+					
+					case "json":
+/*				
+						// //var obj = typeof data == 'string'? JSON.parse(data): data;
+						// if( typeof data !== "string"){
+	// console.log("error in _db(), data not in JSON format");
+							// return false;
+						// }
+							
+						// try {
+							// //var jsonObj = JSON.parse( data );
+							// var jsonObj = JSON.parse( data, function(key, value) {
+	// //console.log( key, value );
+								// return value;
+							// });							
+	// //console.log( jsonObj );
+							// for(var tableName in jsonObj){
+	// //console.log( tableName, jsonObj[tableName].length );
+								// var table = jsonObj[tableName];
+								// for( var n = 0; n < table.length; n++){
+									// var recordObj = table[n];
+									// webApp.db.vars["tables"][tableName]["records"].push( recordObj );
+								// }//next
+							// }//next
+						// } catch(e) {
+						// _log( e );
+						// }							
+*/						
+						return false;
+					break;
+					
+					case "csv":
+					//case "jcsv":
+console.log( data );				
+						//_parseCSVBlocks(data);
+						return false;
+					break;
+				}//end switch
+				
+				// if( typeof postFunc === "function"){//??????????????????????
+					// postFunc();
+				// }
+
+				function __parseXML( xml ){
+	
+					var xmlDoc = xml.getElementsByTagName("database");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+					//fix for Chrome, Safari (exclude tag <pma:database>)
+					if( xmlDoc.length === 1){
+						var records = xmlDoc.item(0).getElementsByTagName("table");
+					}
+					if( xmlDoc.length === 2){
+						var records = xmlDoc.item(1).getElementsByTagName("table");
+					}
+//console.log( records,  records.length) ;
+
+
+					//get list tables
+					var tableName = "";
+					//var storeData = [];
+					for( var n = 0; n < records.length; n++){
+						//var record = records[n];
+						//var tableName = record["attributes"]["name"].nodeValue;
+						var record = records.item(n);
+						
+						if( tableName.length > 0 &&
+								tableName !== record.attributes.getNamedItem("name").nodeValue){
+							webApp.iDBmodule.dbInfo["tables"].push(tableName);
+						}
+						tableName = record.attributes.getNamedItem("name").nodeValue;
+//if( tableName === "vocabulary" ){
+//console.log( tableName, dbInfo["tables"].length );
+//}					
+					}//next
+					
+					//push last tableName
+					webApp.iDBmodule.dbInfo["tables"].push(tableName);
+
+					//recursively save data block in iDB store
+					webApp.iDBmodule.dbInfo["import"]["counter"] = 0;
+					webApp.iDBmodule.dbInfo["import"]["timer"] = new Date();
+					__getTable();
+
+				}//end __parseXML()
+				
+				function __getTable(){
+					var xml = webApp.vars["import"]["xml"];
+					var xmlDoc = xml.getElementsByTagName("database");
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+
+					//fix for Chrome, Safari (exclude tag <pma:database>)
+					if( xmlDoc.length === 1){
+						var records = xmlDoc.item(0).getElementsByTagName("table");
+					}
+					if( xmlDoc.length === 2){
+						var records = xmlDoc.item(1).getElementsByTagName("table");
+					}
+			
+					var num = webApp.iDBmodule.dbInfo["import"]["counter"];
+					var tableName = webApp.iDBmodule.dbInfo["tables"][num];
+					
+					var storeData = [];
+					for( var n = 0; n < records.length; n++){
+						var record = records.item(n);
+						
+						if( tableName === record.attributes.getNamedItem("name").nodeValue){
+							//form record
+							var columns = record.getElementsByTagName("column");
+							var recordObj = {};
+							for( var n2 = 0; n2 < columns.length; n2++){
+								var column = columns.item(n2);
+								var columnName = column.attributes.getNamedItem("name").nodeValue;
+								if ("textContent" in column){
+									recordObj[columnName] = column.textContent;
+								} else {
+									recordObj[columnName] = column.text;
+								}
+								
+							}//next
+							
+							storeData.push({
+								//"key" : recordObj["tid"],
+								"value" : recordObj
+							});
+						}
+					}//next
+//console.log(tableName, storeData[0], storeData.length);						
+					__saveRecords( tableName, storeData );
+				}//end __getTable()
+				
+				function __saveRecords( storeName, storeData ){
+//console.log(storeName, storeData[0], storeData.length);						
+					var timeStart = new Date();
+					webApp.iDBmodule.addRecords({
+						"storeName" : storeName,
+						"storeData" : storeData,
+						"callback" : function( statInfo ){
+							__callback( statInfo );
+						}
+					});
+					
+					function __callback( statInfo ){
+//console.log("callback, _saveRecords(), "+ storeName);
+//console.log(webApp.iDBmodule.dbInfo["import"]["counter"], statInfo);
+
+						webApp.iDBmodule.dbInfo["import"]["counter"]++;
+						
+						//----------------------- progress indicator
+						if( webApp.vars["saveProgressBar"] ){
+							var numTotal = webApp.iDBmodule.dbInfo["tables"].length;
+							var numLoaded = webApp.iDBmodule.dbInfo["import"]["counter"];
+							var percentComplete = Math.ceil( numLoaded / numTotal * 100);
+//console.log(percentComplete);
+							webApp.vars["saveProgressBar"].className = "progress-bar";
+							webApp.vars["saveProgressBar"].style.width = percentComplete+"%";
+							webApp.vars["saveProgressBar"].innerHTML = percentComplete+"%";
+						}
+
+						if( webApp.iDBmodule.dbInfo["import"]["counter"] < webApp.iDBmodule.dbInfo["tables"].length ){
+							__getTable();
+						} else {
+							
+							var timeStart = webApp.iDBmodule.dbInfo["import"]["timer"];
+							var timeEnd = new Date();
+							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+							webApp.iDBmodule.dbInfo["import"]["timer"] = runtime;
+console.log("All done! save records to indexedDB stores, runtime:" + runtime + " sec");	
+							
+							delete webApp.vars["import"]["xml"];//clear var
+							
+							// if( webApp.vars["wait"] ){
+								// //webApp.vars["wait"].className="";
+								// webApp.vars["wait"].style.display="none";
+							// }
+							// if( webApp.vars["waitWindow"] ){
+								// webApp.vars["waitWindow"].style.display="none";
+							// }
+							
+							if( typeof 	webApp.iDBmodule.dbInfo["afterUpdate"] === "function"){
+								webApp.iDBmodule.dbInfo["afterUpdate"]( data );
+							}
+						}
+						
+					};//end __callback()
+
+				}//end __saveRecords()
+				
+			}//end _saveData()
+		
+		}//end __saveDataToIDB()
+		
 		function __parseAjax( data ){
 			
 			if( webApp.vars["import"]["inputDataFormat"].length === 0 ){
@@ -202,7 +677,9 @@ console.log("_parseCSVBlocks()");
 			}
 		}//__parseAjax()
 		
-	}//end _loadData()
+	}//end _saveData()
+
+	
 	
 	function _loadTemplates( postFunc ){
 //console.log( "_loadTemplates", postFunc);			
@@ -221,7 +698,7 @@ console.log("_parseCSVBlocks()");
 				webApp.iDBmodule.getListStores({//store by name 'templates' is exists?
 					"dbName" : webApp.iDBmodule.dbInfo["dbName"],
 					"callback" : function( listStores ){
-//console.log(listStores);				
+console.log(listStores);				
 						for( var n = 0; n < listStores.length; n++){
 							var storeName = listStores[n];
 							if( storeName === "templates"){
@@ -236,16 +713,20 @@ console.log("_parseCSVBlocks()");
 //console.log(msg, log);
 //console.log(data );
 										webApp.draw.vars["templates"] = data;
+										if( typeof postFunc === "function"){
+											postFunc( isLoadTemplates );
+										}
+										
 									}
 								});
 								
 								break;
 							}
 						}//next
+						
 						if( typeof postFunc === "function"){
 							postFunc( isLoadTemplates );
 						}
-
 					}//end callback
 				});
 				return false;
@@ -377,43 +858,76 @@ console.log(msg);
 
 			var tableName = queryObj["tableName"];
 //console.log("tableName " + tableName, _vars["tables"][tableName]);
-			if( !_vars["tables"][tableName]){
-console.log("error, _startQuery(), not find tableName " + tableName);
-				_postQuery( data )	;
-				return false;
-			}
-			
-			if( !_vars["tables"][tableName]["records"] ||
-					_vars["tables"][tableName]["records"].length === 0 ){
-				
-				if( webApp.db.vars["dataStoreType"] === "indexedDB"){
-					//get records from iDB store
-					webApp.iDBmodule.getRecords({
-						"storeName" : tableName,
-						"callback" : function( data){
-//var msg = "restart db query, " + tableName;
-//console.log( msg );
-//console.log( data[0], data.length );
-							if( data.length > 0){
-								
-								if( typeof _vars["tables"][tableName] === "undefined"){
-									_vars["tables"][tableName] = [];
-									//_vars["tables"][tableName]["records"] = [];
-								}
-								_vars["tables"][tableName]["records"] = data;
-								_startQuery( queryObj );//restart db query
-							} else {
-var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
-console.log( msg );
-							}
-							
-						}
-					});
-					return false;
-				}
 
-var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+			//if( !_vars["tables"][tableName]){
+//console.log("error, _startQuery(), not find information schema for table " + tableName);
+				//_postQuery( data )	;
+				//return false;
+			//}
+			
+			if( !_vars["tables"][tableName] || 
+					!_vars["tables"][tableName]["records"] ||
+						_vars["tables"][tableName]["records"].length === 0 ){
+				
+				switch ( webApp.db.vars["dataStoreType"]){
+					case "indexedDB":
+						//get records from iDB store
+						webApp.iDBmodule.getRecords({
+							"storeName" : tableName,
+							"callback" : function( data){
+var msg = "restart db query, " + tableName;
 console.log( msg );
+//console.log( data[0], data.length );
+								if( data.length > 0){
+									
+									if( typeof _vars["tables"][tableName] === "undefined"){
+										_vars["tables"][tableName] = [];
+										//_vars["tables"][tableName]["records"] = [];
+									}
+									_vars["tables"][tableName]["records"] = data;
+									_startQuery( queryObj );//restart db query
+								} else {
+	var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+	console.log( msg );
+								}
+
+								//_continueQuery(data);
+							}
+						});
+					break;
+					
+					default:
+var msg = "Warning! db.query(), startQuery(), table " +tableName+ " empty.... ";
+console.log( msg );
+						var url = false;
+						if( _vars["numDataURL"] > 0){
+							for(var tblName in _vars["tables"]){
+								if( tableName === tblName){
+									url = _vars["tables"][tableName]["url"];
+								}
+							}//next
+//console.log( "URL:", url );
+						}
+							
+						//server request
+						if( url ){
+							webApp.app.serverRequest({
+								"url" : url,
+								"callback": function(data){
+//console.log( data );			
+									if( _vars["tables"][tableName]["inputDataFormat"] === "csv"){
+										//_vars["tables"][tableName]["records"] = _parseCSVBlocks(data);
+										_continueQuery( _parseCSVBlocks(data) );
+									}
+									
+								}
+							});
+						}
+							
+						
+					break;
+				}//end switch
+				
 				return false;
 			}
 
@@ -443,6 +957,23 @@ console.log( msg );
 			}//end switch
 		}//end _startQuery()
 		
+		function _continueQuery( data ){
+console.log( "function _continueQuery", options["queryObj"] );
+		//console.log( data );
+		//console.log( tableName );
+			var tableName = options["queryObj"]["tableName"];				
+			if( data.length > 0){
+				if( typeof _vars["tables"][tableName] === "undefined"){
+					_vars["tables"][tableName] = [];
+					//_vars["tables"][tableName]["records"] = [];
+				}
+				_vars["tables"][tableName]["records"] = data;
+				_startQuery( options["queryObj"] );//restart db query
+			} else {
+		var msg = "db.query(), startQuery(), error, table " +tableName+ " empty.... ";
+		console.log( msg );
+			}
+		}//end _continueQuery()	
 		
 		function _processQuery( records, queryObj ){
 //console.log("_processQuery(), ", arguments);			
@@ -743,6 +1274,27 @@ console.log("not callback....use return function");
 		
 	};//end _query()
 	
+
+	function _parseInputData( data, format){
+		
+		var records = [];
+		switch( format){
+			//case "xml":
+			//case "json":
+			//break;
+			
+			case "csv":
+				records = _parseCSVBlocks(data);
+			break;
+			
+			case "html":
+				records = _parseHTML(data);
+			break;
+		}//end switch
+		
+		return records;
+	}//end _parseInputData()
+
 	
 	function _parseXML(xml){
 
@@ -801,6 +1353,7 @@ console.log("not callback....use return function");
 		
 	}//end _parseXML()
 
+/*	
 	function _parseCSVBlocks( data ){
 		var importData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
 //console.log( importData );
@@ -912,9 +1465,171 @@ console.log("not callback....use return function");
 		}//_convertCSV_JSON()
 		
 	}//end _parseCSVBlocks()
-	
-	
+*/
 
+	function _parseCSVBlocks( data ){
+		var jsonData = [];		
+		var csvData = [];
+		
+//------------ test
+//data = data.replace(/\r\n/g, "<br>");
+//console.log(data);
+//------------
+		csvData = data.split( webApp.vars["import"]["csv_delimiterByLines"] );
+		//csvData = data.split( "\"\n" );
+//console.log(csvData);
+
+		if( csvData.length === 0){
+console.log( "error CSV parse..." );
+			return false;
+		}
+		
+		if( webApp.vars["import"]["csv_header"] ){
+			var d = webApp.vars["import"]["csv_delimiterByFields"] ;
+			
+			//var tableName = jsonObj["name"];
+			var fieldsInfo = csvData[0].split( d );
+//console.log( fieldsInfo );
+
+			for( var n = 1; n < csvData.length; n++){
+				var record = csvData[n];
+				
+				var recordObj = _convertCSV_JSON( 
+					record, 
+					fieldsInfo, 
+					webApp.vars["import"]["csv_delimiterByFields"] 
+				);
+//console.log( recordObj );
+				jsonData.push( recordObj );
+			}//next
+
+		}
+		return jsonData;
+
+
+		function _convertCSV_JSON( record, keys, delimiterByFields ){
+//console.log( "function _convertCSV_JSON(), ", arguments);
+//console.log( record, record.length);
+			if( typeof record !== "string" ){
+	console.log("_convertCSV_JSON(), error, input record is not in CSV format");
+				return false;
+			}
+				
+			if( record.length === 0 ){
+console.log("_convertCSV_JSON(), error, input record is empty!");
+				return false;
+			}
+
+			var recordObj = {};
+			//create keys(fieldnames)
+			for( var n1 = 0; n1 < keys.length; n1++){
+				var key = keys[n1];
+				recordObj[ key ] = "";
+			}//next field
+			
+			
+			//filter, replace commas within "text value"
+			var regexp = /\"(.*?)\"/g;
+			var filter = [];
+			while( result = regexp.exec( record )){
+	//console.log(result);
+			  var s1 = result[1];
+			  if(s1.indexOf(",") !== -1){
+				var s2 = s1.replace(/,/g,"&#44;");
+	//console.log(s1, s2);
+				var obj = {
+				  "raw": s1,
+				  "filtered": s2
+				};
+				filter.push(obj);
+			  }
+			}
+	//console.log(filter);
+			
+			for( var n1 =0; n1 < filter.length; n1++){
+				var s1 = filter[n1]["raw"];
+				var s2 = filter[n1]["filtered"];
+				record = record.replace( s1, s2 );
+			}
+			
+			record = record.replace(/"/g,"");
+//console.log( record );
+
+			var csv_values = record.split( delimiterByFields );
+//console.log( csv_values, csv_values.length );
+
+			var num = 0;
+			for( var key in recordObj){
+				//restore commas in text value
+				if( csv_values[num].length === 0){
+					csv_values[num] = "NULL";
+				}
+				recordObj[key] = csv_values[num];
+				num++;
+			}//next key
+				
+//console.log(recordObj);			
+			return recordObj;
+		}//_convertCSV_JSON()
+		
+	}//end _parseCSVBlocks()
+
+
+	function _parseHTML( data ){
+		var jsonData = [];
+		var htmlData = [];
+		
+		htmlData = data.split( webApp.vars["import"]["html_delimiterByLines"] );
+		
+		
+		//get field names
+		var fieldNames = [];
+		var RegExpGetFieldNames = /\<TH\>(.*?)\<\/TH\>/g;
+		while( result = RegExpGetFieldNames.exec( htmlData[0] )){
+			fieldNames.push( result[1] );
+		}//end while
+//console.log( fieldNames );
+		
+		for( var n2 = 1; n2 < htmlData.length; n2++){
+			//var n2 = 3;
+			
+			//get values
+			
+			//filter data record for correct regexp result !!!
+			var filter = htmlData[n2]
+			.replace(/\r\n/g, "&#13&#10")//replace Carriage Return+Line feed
+			.replace(/\n/g, "&#10");//replace Line feed
+//console.log(filter);
+
+			var record = {};
+			var RegExpGetValues = /\<TD\>(.*?)\<\/TD\>/g;
+			for( var n1 = 0; n1 < fieldNames.length; n1++){
+				var result = RegExpGetValues.exec( filter );
+				var key = fieldNames[n1];
+//console.log(n2, n1);
+				var value = result[1]
+					.replace(/&#13&#10/g, "\r\n")//replace Carriage Return+Line feed
+					.replace(/&#10/g, "\n");//replace Line feed
+		// console.log(key, value);
+				record[key] = value;
+			}//next
+//console.log(record);
+
+			 jsonData.push( record );
+			 
+		}//next
+		
+//console.log( jsonData );
+
+		if( jsonData.length === 0){
+console.log( "error HTML parse..." );
+			return false;
+		}
+
+		delete htmlData;
+		return jsonData;
+	}//end _parseHTML()
+	
 	
 //==================================
 // async API
@@ -1010,6 +1725,15 @@ _log("<p>db.getTermByName(),   error, termName <b class='text-danger'>is empty</
 		}
 //console.log(p);
 
+		if( !p["termins"] ){
+console.log("db.getChildTerms(),  error, not defined termins: " + p["termins"]);
+//console.log( p["callback"].toSource() );
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			return false;
+		}
+		
 		var termin = p["termins"][p.counter];
 		webApp.db.query({
 			"queryObj" : webApp.app.formQueryObj({
@@ -1153,6 +1877,9 @@ _log("<p>db.getBlockContent(),   error, <b class='text-danger'>termName</b></p>"
 							"counter" : 0,
 							"callback" : function(){
 								if( typeof p["callback"] === "function"){
+//console.log("TEST1", p, terminTree );			
+//console.log( p["callback"].toSource() );
+						
 									p["callback"](  terminTree  );
 								}
 							}//end callback
@@ -1244,39 +1971,39 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		}
 //console.log(p);
 
+		_vars["queries"]["getNode"]["where"][0]["value"] = p["nid"];
 		webApp.db.query({
-			"queryObj" : {
-				"action" : "select",
-				"tableName": "node",
-				//"targetFields" : ["nid","vid","type","language","title","uid","status","created","changed","comment","promote","moderate","sticky","tnid","translate"],
-				"targetFields" : ["title", "type"],
-				"where" : [
-					{"key" : "nid", "value" : p["nid"], "compare": "="}
-				]
-			},
+			"queryObj" :  _vars["queries"]["getNode"],
 			"callback" : function( res ){
-//console.log( node );
+//console.log( res );
+			if( !res || res.length === 0){
+				if( typeof p["callback"] === "function"){
+					p["callback"](node);
+				}
+				return false;
+			}
+
 				var node = res[0];
 				node["nid"] = p["nid"];
 				
 				__getNodeBody(function( body ){
-//console.log( res );						
+console.log( body.length );						
 					node["body"] = body;
 					
-					__getNodeFields( node, function( fields ){
-						node["fields"] = fields;
+					//__getNodeFields( node, function( fields ){
+						//node["fields"] = fields;
 						
-						_getNodeTerms({
-							"nid" : node["nid"],
-							"callback" : function(res){
-//console.log(res);								
-								node["nodeTerms"] = res;
+						// _getNodeTerms({
+							// "nid" : node["nid"],
+							// "callback" : function(res){
+// //console.log(res);								
+								//node["nodeTerms"] = res;
 								if( typeof p["callback"] === "function"){
 									p["callback"](node);
 								}
-							}
-						});//end get node terms
-					});//end get fields node
+							// }
+						// });//end get node terms
+					//});//end get fields node
 				});//end get body
 				
 			}//end callback
@@ -1285,19 +2012,22 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 		return  false;
 
 		function __getNodeBody( callback ){
+			_vars["queries"]["getNodeBody"]["where"][0]["value"] = p["nid"];
 			webApp.db.query({
-				"queryObj" : {
-					"action" : "select",
-					"tableName": "node_revisions",
-					"targetFields" : ["body"],
-					"where" : [
-						{"key" : "nid", "value" : p["nid"], "compare": "="}
-					]
-				},
+				"queryObj" : _vars["queries"]["getNodeBody"],
 				"callback" : function( res ){
 //console.log( res );
 					if( typeof callback === "function"){
-						callback( res[0]["body"]);
+						
+						if(!res){
+							callback( res );
+						} else {
+							for(var fieldName in res[0] ){
+								var body = res[0][fieldName];
+							}//next
+							callback( body );
+						}
+						
 					}
 				}//end callback
 			});
@@ -1338,6 +2068,13 @@ _log("<p>db.replaceUrl(),   error, data <b class='text-danger'>is empty</b></p>"
 				},
 				"callback" : function( res ){
 //console.log( res );
+					if(!res){
+						if( typeof callback === "function"){
+							callback( res );
+						}
+						return false;
+					}
+					
 					for( var n = 0; n < res.length; n++){
 						var fieldName = res[n]["field_name"];
 						fieldsList.push( fieldName + "_value");
@@ -1411,8 +2148,8 @@ LIMIT 0 , 30
 //console.log(arguments);
 			return _init(args); 
 		},
-		loadData:	function( opt ){ 
-			return _loadData( opt ); 
+		saveData:	function( opt ){ 
+			return _saveData( opt ); 
 		},
 		loadTemplates : function( postFunc ){
 			return _loadTemplates( postFunc );
@@ -1445,6 +2182,8 @@ LIMIT 0 , 30
 		nodeLoad:	function( opt ){ 
 			return _nodeLoad( opt ); 
 		},
-		getNodeTerms: _getNodeTerms
+		getNodeTerms: _getNodeTerms,
+		
+		parseHTML: _parseHTML
 	};
 }//end _db()
