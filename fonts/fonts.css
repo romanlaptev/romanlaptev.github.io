@@ -33,7 +33,8 @@
 {
 	font-family: addamsfamily;
 	/*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
-	src: url("/fonts/A/addamsfamily/fiddums_family.ttf");
+	src: url("fiddums_family.ttf");
+	/*src: url("http://graphic-art-collection.16mb.com/fonts/fiddums_family.ttf");*/
 }
 
 
