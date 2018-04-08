@@ -28,7 +28,7 @@
 	font-family:Impact;
 	src: url("../test_code/css/load_font/impact.ttf");
 }
-
+/*
 @font-face {
   font-family: "Gilroy";
   font-style: normal;
@@ -78,7 +78,6 @@
   src: local("nothing"), url("Gilroy/Gilroy-Light.eot?#iefix") format("embedded-opentype"), url("Gilroy/Gilroy-Light.woff2") format("woff2"), url("Gilroy/Gilroy-Light.woff") format("woff"), url("Gilroy/Gilroy-Light.ttf") format("truetype"), url("Gilroy/Gilroy-Light.svg#Gilroy-Medium") format("svg");
 }
 
-/*
 body {
 font-family: Gilroy;
 }
