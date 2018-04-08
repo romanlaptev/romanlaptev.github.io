@@ -28,6 +28,15 @@
 	font-family:Impact;
 	src: url("../test_code/css/load_font/impact.ttf");
 }
+
+@font-face 
+{
+	font-family: addamsfamily;
+	/*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
+	src: url("/fonts/A/addamsfamily/fiddums_family.ttf");
+}
+
+
 /*
 @font-face {
   font-family: "Gilroy";
