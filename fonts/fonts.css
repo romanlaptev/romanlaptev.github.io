@@ -15,7 +15,7 @@
     font-family: french-script-mt; /* French Script MT" */
 	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
     src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot") format('embedded-opentype'),
+    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot?#iefix") format('embedded-opentype'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
