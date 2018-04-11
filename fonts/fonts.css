@@ -24,14 +24,26 @@
 
 @font-face 
 {
-	font-family:Century Gothic;
-	src: url("../test_code/css/load_font/GOTHIC.TTF");
+	font-family:century-gothic;
+	/*src: url("../test_code/css/load_font/GOTHIC.TTF");*/
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot"); /* EOT file for IE */
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.svg")  format('svg');
 }
 
 @font-face 
 {
 	font-family:Impact;
-	src: url("../test_code/css/load_font/impact.ttf");
+	/*src: url("../test_code/css/load_font/impact.ttf");*/
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot"); /* EOT file for IE */
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.svg")  format('svg');
 }
 
 @font-face 
