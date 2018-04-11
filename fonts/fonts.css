@@ -3,8 +3,9 @@
 	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
 
 /* http://www.freefontconverter.com/ */
-	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"); /* EOT file for IE */
-	src: 	url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+	src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
+	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+			url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
 			url('Victorian_LET/victorian-let-regular.woff') format('woff'),
 			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
 			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
@@ -31,10 +32,14 @@
 
 @font-face 
 {
-	font-family: addamsfamily;
+	font-family: fiddums-family;
 	/*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
-	src: url("fiddums_family.ttf");
-	/*src: url("http://graphic-art-collection.16mb.com/fonts/fiddums_family.ttf");*/
+	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot"); /* EOT file for IE */
+	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.svg")  format('svg');
 }
 
 
