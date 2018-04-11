@@ -5,7 +5,12 @@
 	<title>Custom fonts demo</title>
 	<meta charset="utf8" />
 	<meta name="viewport" content="width=device-width, inintial_scale=1.0">
+	
 	<link rel="stylesheet" href="../css/bootstrap337.min.css">
+	
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap/bootstrap337.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="fonts.css">
 </head>
 
@@ -24,7 +29,10 @@
 <li><a href="http://graphic-art-collection.16mb.com/fonts/">custom font collection</a></li>
 			</ul>
 		</nav>
-		
+<pre>
+https://onlinefontconverter.com/
+https://everythingfonts.com/font-face
+</pre>
 </header><!-- end container -->
 
 
@@ -33,6 +41,7 @@
 	<div class="panel panel-default" id="font-victorian-let-regular">
 		<div class="panel-heading">
 			<h3>font-family:Victorian LET Regular</h3>
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
 		</div>
 		
 		<div class="panel-body" style="font-family: Victorian LET Regular;">
@@ -41,7 +50,7 @@ abcd
 абвгд	
 		</div>
 		
-		<div class="panel-body">
+<div class="panel-body collapse" id="victorian-code">
 <pre>
 @font-face {
 	font-family:Victorian LET Regular;
@@ -55,7 +64,7 @@ abcd
 			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
 }
 </pre>
-		</div>
+</div>
 		
 		<div class="panel-footer"></div>
 	</div><!-- end panel -->
@@ -64,6 +73,8 @@ abcd
 		<div class="panel-heading">
 			<h3>font-family:fiddums-family</h3>
 <a href="http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family-font.zip">download</a>
+
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#fiddums-code" aria-expanded="false">CSS code</button>
 		</div>
 		
 		<div class="panel-body" style="font-family: fiddums-family;">
@@ -72,6 +83,7 @@ abcd
 абвгд		
 		</div>
 		
+<div class="panel-body collapse" id="fiddums-code">
 		<pre>
 @font-face 
 {
@@ -86,6 +98,38 @@ abcd
 ---------
 http://www.1001fonts.com/fiddums-family-font.html
 		</pre>
+</div>
+		
+		<div class="panel-footer"></div>
+	</div><!-- end panel -->
+
+	<div class="panel panel-default" id="font-french-script-mt">
+		<div class="panel-heading">
+			<h3>font-family: french-script-mt</h3>
+<a href="http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.zip">download</a>
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#french-script-code" aria-expanded="false">CSS code</button>
+		</div>
+		
+		<div class="panel-body" style="font-family: french-script-mt;">
+			<h1>French Script MT</h1>
+abcd
+абвгд		
+		</div>
+
+<div class="panel-body collapse" id="french-script-code">
+		<pre>
+@font-face {
+    font-family: french-script-mt; /* French Script MT" */
+	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
+    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
+    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot") format('embedded-opentype'),
+         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
+         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
+         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
+         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
+}
+		</pre>
+</div>
 		
 		<div class="panel-footer"></div>
 	</div><!-- end panel -->
