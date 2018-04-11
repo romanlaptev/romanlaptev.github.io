@@ -10,21 +10,82 @@
 </head>
 
 <body>
-<div class="container">
-	<div class="page-header">
-		<h1>Custom fonts demo</h1>
-	</div>
+
+<header class="container">
 	
-	<div class="panel panel-default" id="font-victorian-let-regular"
-style="font-family: Victorian LET Regular;">
+		<div class="page-header">
+			<h1>Custom fonts demo</h1>
+		</div>
+		
+		<nav class="navbar">
+			<ul class="nav navbar-nav">
+<li><a href="http://www.freefontconverter.com/">Free Font Converter</a></li>
+<li><a href="http://www.1001fonts.com/">1001fonts.com, New & Fresh Fonts</a></li>
+<li><a href="http://graphic-art-collection.16mb.com/fonts/">custom font collection</a></li>
+			</ul>
+		</nav>
+		
+</header><!-- end container -->
+
+
+<div class="container">
+
+	<div class="panel panel-default" id="font-victorian-let-regular">
 		<div class="panel-heading">
 			<h3>font-family:Victorian LET Regular</h3>
 		</div>
 		
+		<div class="panel-body" style="font-family: Victorian LET Regular;">
+			<h2>Victorian LET Regular</h2>
+abcd
+абвгд	
+		</div>
+		
 		<div class="panel-body">
+<pre>
+@font-face {
+	font-family:Victorian LET Regular;
+	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
+
+	src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
+	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+			url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+			url('Victorian_LET/victorian-let-regular.woff') format('woff'),
+			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+}
+</pre>
+		</div>
+		
+		<div class="panel-footer"></div>
+	</div><!-- end panel -->
+
+	<div class="panel panel-default" id="font-fiddums-family">
+		<div class="panel-heading">
+			<h3>font-family:fiddums-family</h3>
+<a href="http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family-font.zip">download</a>
+		</div>
+		
+		<div class="panel-body" style="font-family: fiddums-family;">
+			<h1>Addams family</h1>
 abcd
 абвгд		
 		</div>
+		
+		<pre>
+@font-face 
+{
+	font-family: fiddums-family;
+	src: url("fiddums-family/fiddums-family.eot"); /* EOT file for IE8 */
+	src: url("fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"), /* EOT file for IE */
+			url("fiddums-family/fiddums-family.woff2") format('woff2'),
+			url("fiddums-family/fiddums-family.woff") format('woff'),
+			url("fiddums-family/fiddums-family.ttf")  format('truetype'),
+			url("fiddums-family/fiddums-family.svg")  format('svg');
+}		
+---------
+http://www.1001fonts.com/fiddums-family-font.html
+		</pre>
 		
 		<div class="panel-footer"></div>
 	</div><!-- end panel -->
