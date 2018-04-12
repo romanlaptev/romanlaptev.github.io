@@ -30,17 +30,25 @@ border-radius: 15px 0 0 0;
 <script>
 _vars = [];
 //_vars["sitename"] = "http://graphic-art-collection.16mb.com";
-_vars["sitename"] = "http://comp";
+//_vars["sitename"] = "http://comp";
 
 $(document).ready(function(){
 //console.log("Ready to start....");
-	
+//console.log( $("#agrevc-css").text() );
+
+//Add CSS font-face text
+$("#agrevc-code pre").text( $("#agrevc-css").text() );
+$("#impact-code pre").text( $("#impact-css").text() );
+$("#victorian-code pre").text( $("#victorian-css").text() );
+
+if( _vars["sitename"] ){
 	$(".download-link").each(function(){
-console.log( $(this) );	
-		var url = _vars["sitename"] + $(this).attr("href");
+//console.log( $(this) );	
+		var url = _vars["sitename"] + "/" + $(this).attr("href");
 console.log( url );	
 		$(this).attr("href", url);
 	});
+}	
 	
 });//end ready
 </script>
@@ -85,23 +93,22 @@ http://graphic-art-collection.16mb.com/fonts/
 		
 			<div class="panel panel-primary" id="font-AGRevueCyr">
 				<div class="panel-heading">
-					<h3>AGRevueCyr Roman Medium</h3>
+					<h3 style="font-family: AGRevueCyr;" >AGRevueCyr Roman Medium</h3>
 		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#agrevc-code" aria-expanded="false">CSS code</button>
 				</div>
 
-<style>				
+<style id="agrevc-css">				
 @font-face {
 	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
-    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot");
-    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
-         url("http://comp/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
-         url("http://comp/fonts/A/AGREVC/AGREVC.woff") format("woff"),
-         url("http://comp/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
-         url("http://comp/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
+    src: url("../fonts/A/AGREVC/AGREVC.eot");
+    src: url("../fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("../fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
+         url("../fonts/A/AGREVC/AGREVC.woff") format("woff"),
+         url("../fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
+         url("../fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
 }
 </style>
 				<div class="panel-body" style="font-family: AGRevueCyr;">
-					<h1>AGRevueCyr Roman Medium</h1>
 абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
 АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
 abcdefghijklmnopqrstuvwxyz   <br>
@@ -110,21 +117,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
 				</div>
 
 		<div class="panel-body collapse" id="agrevc-code">
-			<pre>
-@font-face {
-	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
-    src: url("fonts/AGREVC/AGREVC.eot");
-    src: url("fonts/AGREVC/AGREVC.eot") format("embedded-opentype"),
-         url("fonts/AGREVC/AGREVC.woff2") format("woff2"),
-         url("fonts/AGREVC/AGREVC.woff") format("woff"),
-         url("fonts/AGREVC/AGREVC.ttf") format("truetype"),
-         url("fonts/AGREVC/AGREVC.svg#AGREVC") format("svg");
-}
-			</pre>
+			<pre>paste CSS font face text here!!!!</pre>
 		</div>
 				
 				<div class="panel-footer">
-<a class="download-link" href="/fonts/AGREVC/AGREVC.zip">download</a>
+<a class="download-link" href="fonts/AGREVC/AGREVC.zip">download</a>
 				</div>
 			</div><!-- end panel -->
 		</div><!-- end tab -->
@@ -248,12 +245,23 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
 
 			<div class="panel panel-primary" id="font-impact">
 				<div class="panel-heading">
-					<h3>font-family: impact</h3>
-		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#impact-code" aria-expanded="false">CSS code</button>
+					<h3 style="font-family: Impact;">Impact</h3>
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#impact-code" aria-expanded="false">CSS code</button>
 				</div>
 				
+<style id="impact-css">
+@font-face 
+{
+	font-family:Impact;
+	src: url("../fonts/I/impact/impact.eot"); /* EOT file for IE */
+	src: url("../fonts/I/impact/impact.eot?#iefix") format("embedded-opentype"),
+			url("../fonts/I/impact/impact.woff2") format('woff2'),
+			url("../fonts/I/impact/impact.woff") format('woff'),
+			url("../fonts/I/impact/impact.ttf")  format('truetype'),
+			url("../fonts/I/impact/impact.svg")  format('svg');
+}
+</style>
 				<div class="panel-body" style="font-family: Impact;">
-					<h1>Impact</h1>
 абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
 АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
 abcdefghijklmnopqrstuvwxyz   <br>
@@ -262,33 +270,34 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
 				</div>
 
 		<div class="panel-body collapse" id="impact-code">
-			<pre>
-		@font-face 
-		{
-			font-family:Impact;
-			src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot"); /* EOT file for IE */
-			src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot?#iefix") format("embedded-opentype"),
-					url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff2") format('woff2'),
-					url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff") format('woff'),
-					url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.ttf")  format('truetype'),
-					url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.svg")  format('svg');
-		}
-			</pre>
+			<pre>paste CSS font face text here!!!!</pre>
 		</div>
 				
 				<div class="panel-footer">
-<a class="download-link" href="/fonts/impact_font/impact_font.zip">download</a>
+<a class="download-link" href="fonts/I/impact/impact_font.zip">download</a>
 				</div>
 			</div><!-- end panel -->
 
-			<div class="panel panel-default" id="font-victorian-let-regular">
+			<div class="panel panel-primary" id="font-victorian-let-regular">
 				<div class="panel-heading">
-					<h3>font-family:Victorian LET Regular</h3>
-		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
+					<h3 style="font-family: Victorian LET Regular;">Victorian LET Regular</h3>
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
 				</div>
 				
+<style id="victorian-css">
+@font-face {
+	font-family:Victorian LET Regular;
+	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
+
+	src: url('../fonts/Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
+	src: url('../fonts/Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+			url('../fonts/Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+			url('../fonts/Victorian_LET/victorian-let-regular.woff') format('woff'),
+			url("../fonts/Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+			url("../fonts/Victorian_LET/victorian-let-regular.svg")  format('svg');
+}
+</style>
 				<div class="panel-body" style="font-family: Victorian LET Regular;">
-					<h2>Victorian LET Regular</h2>
 абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
 АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
 abcdefghijklmnopqrstuvwxyz   <br>
@@ -297,19 +306,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
 				</div>
 				
 		<div class="panel-body collapse" id="victorian-code">
-		<pre>
-		@font-face {
-			font-family:Victorian LET Regular;
-			/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
-
-			src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
-			src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
-					url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
-					url('Victorian_LET/victorian-let-regular.woff') format('woff'),
-					url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
-					url("Victorian_LET/victorian-let-regular.svg")  format('svg');
-		}
-		</pre>
+			<pre>paste CSS font face text here!!!!</pre>
 		</div>
 				
 				<div class="panel-footer"></div>

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'AGREVC';
+    src: url('fonts/AGREVC.eot');
+    src: url('fonts/AGREVC.eot') format('embedded-opentype'),
+         url('fonts/AGREVC.woff2') format('woff2'),
+         url('fonts/AGREVC.woff') format('woff'),
+         url('fonts/AGREVC.ttf') format('truetype'),
+         url('fonts/AGREVC.svg#AGREVC') format('svg');
+}
