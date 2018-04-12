@@ -4,6 +4,9 @@
 <head>
 	<title>Custom fonts demo</title>
 	<meta charset="utf8" />
+	<!--
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	-->
 	<meta name="viewport" content="width=device-width, inintial_scale=1.0">
 	
 	<link rel="stylesheet" href="../css/bootstrap337.min.css">
@@ -12,6 +15,61 @@
 	<script src="../js/bootstrap/bootstrap337.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="fonts.css">
+<style>
+.nav-tabs > li > a
+{
+border: 1px solid #337ab7;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover
+{
+border: 3px double #337ab7;
+border-radius: 15px 0 0 0;
+}	
+</style>
+
+<script>
+_vars = [];
+_vars["sitename"] = "http://graphic-art-collection.16mb.com";
+//_vars["sitename"] = "http://comp";
+
+$(document).ready(function(){
+//console.log("Ready to start....");
+//console.log( $("#agrevc-css").text() );
+
+//Add CSS font-face text
+$("#agrevc-code pre").text( $("#agrevc-css").text() );
+$("#impact-code pre").text( $("#impact-css").text() );
+
+$("#century-gothic-code pre").text( $("#century-gothic-css").text() );
+$("#font-century-gothic .panel-heading > h3").css("font-family", "century-gothic");
+$("#font-century-gothic .sample-text").css("font-family", "century-gothic");
+
+$("#fiddums-code > pre").text( $("#font-fiddums-family-css").text() );
+$("#font-fiddums-family .panel-heading > h3").css("font-family", "fiddums-family");
+$("#font-fiddums-family .sample-text").css("font-family", "fiddums-family");
+
+$("#french-script-code > pre").text( $("#french-script-code-css").text() );
+$("#font-french-script-mt .panel-heading > h3").css("font-family", "french-script-mt");
+$("#font-french-script-mt .sample-text").css("font-family", "french-script-mt");
+
+$("#impact-code > pre").text( $("#impact-css").text() );
+$("#font-impact .panel-heading > h3").css("font-family", "Impact");
+$("#font-impact .sample-text").css("font-family", "Impact");
+
+$("#victorian-code pre").text( $("#victorian-css").text() );
+
+if( _vars["sitename"] ){
+	$(".download-link").each(function(){
+//console.log( $(this) );	
+		var url = _vars["sitename"] + "/" + $(this).attr("href");
+console.log( url );	
+		$(this).attr("href", url);
+	});
+}	
+	
+});//end ready
+</script>
+
 </head>
 
 <body>
@@ -24,116 +82,264 @@
 		
 		<nav class="navbar">
 			<ul class="nav navbar-nav">
+
+<li><a href="https://everythingfonts.com/font-face">everythingfonts.com, font-face generator</a></li>
 <li><a href="http://www.freefontconverter.com/">Free Font Converter</a></li>
 <li><a href="http://www.1001fonts.com/">1001fonts.com, New & Fresh Fonts</a></li>
-<li><a href="http://graphic-art-collection.16mb.com/fonts/">custom font collection</a></li>
 			</ul>
 		</nav>
+		
 <pre>
 https://onlinefontconverter.com/
-https://everythingfonts.com/font-face
+http://graphic-art-collection.16mb.com/fonts/
 </pre>
+		
 </header><!-- end container -->
 
 
 <div class="container">
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#tab_A">A</a></li>
+		<li><a data-toggle="tab" href="#tab1">C,F</a></li>
+		<li><a data-toggle="tab" href="#tab2">I, V</a></li>
+	</ul>
+	
+	<div class="tab-content">
+	
+		<div id="tab_A" class="tab-pane fade in active">
+		
+			<div class="panel panel-primary" id="font-AGRevueCyr">
+				<div class="panel-heading">
+					<h3 style="font-family: AGRevueCyr;" >AGRevueCyr Roman Medium</h3>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#agrevc-code" aria-expanded="false">CSS code</button>
+				</div>
 
-	<div class="panel panel-default" id="font-victorian-let-regular">
-		<div class="panel-heading">
-			<h3>font-family:Victorian LET Regular</h3>
+<style id="agrevc-css">				
+@font-face {
+	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
+    src: url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.eot");
+    src: url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
+         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.woff") format("woff"),
+         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
+         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
+}
+</style>
+				<div class="panel-body" style="font-family: AGRevueCyr;">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+
+		<div class="panel-body collapse" id="agrevc-code">
+			<pre>paste CSS font face text here!!!!</pre>
+		</div>
+				
+				<div class="panel-footer">
+<a class="download-link" href="fonts/AGREVC/AGREVC.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+		</div><!-- end tab -->
+		
+<!-- **************************************************************** -->	
+		<div id="tab1" class="tab-pane fade">
+		
+			<div class="panel panel-primary" id="font-century-gothic">
+				<div class="panel-heading">
+					<h3>Century Gothic</h3>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#century-gothic-code" aria-expanded="false">CSS code</button>
+				</div>
+				
+<style id="century-gothic-css">
+@font-face 
+{
+	font-family:century-gothic;
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot"); /* EOT file for IE8 */
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.svg")  format('svg');
+}
+</style>
+				
+				<div class="panel-body sample-text">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+
+				<div class="panel-body collapse" id="century-gothic-code">
+					<pre>paste CSS font face text here!!!!</pre>
+				</div>
+				
+				<div class="panel-footer">
+					<a class="download-link" href="fonts/gothic_font/gothic_font.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+		
+			<div class="panel panel-primary" id="font-fiddums-family">
+				<div class="panel-heading">
+					<h3>Fiddums-family (Addams family film)</h3>
+
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#fiddums-code" aria-expanded="false">CSS code</button>
+				</div>
+				
+<style id="font-fiddums-family-css">
+@font-face 
+{
+	font-family: fiddums-family;
+	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot"); /* EOT file for IE8 */
+	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"), /* EOT file for IE */
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.svg")  format('svg');
+}		
+</style>
+				<div class="panel-body sample-text">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+
+				<pre>
+http://www.1001fonts.com/fiddums-family-font.html
+				</pre>
+				
+				</div>
+				
+		<div class="panel-body collapse .code" id="fiddums-code">
+				<pre>paste CSS font face text here!!!!</pre>
+		</div>
+				
+				<div class="panel-footer">
+<a class="download-link" href="fonts/fiddums-family/fiddums-family-font.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+
+			
+			<div class="panel panel-danger" id="font-french-script-mt">
+				<div class="panel-heading">
+					<h3>French Script MT</h3>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#french-script-code" aria-expanded="false">CSS code</button>
+				</div>
+				
+<style id="french-script-code-css">
+@font-face {
+	font-family: french-script-mt; /* French Script MT" */
+	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
+	src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
+	src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot") format('embedded-opentype'),
+		 url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
+		 url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
+		 url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
+		 url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
+}
+</style>
+				
+				<div class="panel-body sample-text">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+
+		<div class="panel-body collapse" id="french-script-code">
+			<pre>paste CSS font face text here!!!!</pre>
+		</div>
+				
+				<div class="panel-footer">
+<a class="download-link" href="fonts/FRSCRIPT/FRSCRIPT.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+			
+		</div><!-- end tab -->
+
+<!-- **************************************************************** -->	
+		<div id="tab2" class="tab-pane fade">
+		
+
+			<div class="panel panel-primary" id="font-impact">
+				<div class="panel-heading">
+					<h3>Impact</h3>
+<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#impact-code" aria-expanded="false">CSS code</button>
+				</div>
+				
+<style id="impact-css">
+@font-face 
+{
+	font-family:Impact;
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot"); /* EOT file for IE */
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.svg")  format('svg');
+}
+</style>
+				<div class="panel-body sample-text">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+
+				<div class="panel-body collapse" id="impact-code">
+					<pre>paste CSS font face text here!!!!</pre>
+				</div>
+						
+				<div class="panel-footer">
+<a class="download-link" href="fonts/I/impact/impact_font.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+
+			<div class="panel panel-primary" id="font-victorian-let-regular">
+				<div class="panel-heading">
+					<h3 style="font-family: Victorian LET Regular;">Victorian LET Regular</h3>
 <button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
-		</div>
-		
-		<div class="panel-body" style="font-family: Victorian LET Regular;">
-			<h2>Victorian LET Regular</h2>
-abcd
-абвгд	
-		</div>
-		
-<div class="panel-body collapse" id="victorian-code">
-<pre>
+				</div>
+				
+<style id="victorian-css">
 @font-face {
 	font-family:Victorian LET Regular;
 	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
 
-	src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
-	src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
-			url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
-			url('Victorian_LET/victorian-let-regular.woff') format('woff'),
-			url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
-			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+	src: url('../fonts/Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
+	src: url('../fonts/Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+			url('../fonts/Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+			url('../fonts/Victorian_LET/victorian-let-regular.woff') format('woff'),
+			url("../fonts/Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+			url("../fonts/Victorian_LET/victorian-let-regular.svg")  format('svg');
 }
-</pre>
-</div>
-		
-		<div class="panel-footer"></div>
-	</div><!-- end panel -->
-
-	<div class="panel panel-default" id="font-fiddums-family">
-		<div class="panel-heading">
-			<h3>font-family:fiddums-family</h3>
-<a href="http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family-font.zip">download</a>
-
-<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#fiddums-code" aria-expanded="false">CSS code</button>
+</style>
+				<div class="panel-body" style="font-family: Victorian LET Regular;">
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+				
+		<div class="panel-body collapse" id="victorian-code">
+			<pre>paste CSS font face text here!!!!</pre>
 		</div>
+				
+				<div class="panel-footer"></div>
+			</div><!-- end panel -->
+			
+		</div><!-- end tab -->
 		
-		<div class="panel-body" style="font-family: fiddums-family;">
-			<h1>Addams family</h1>
-abcd
-абвгд		
-		</div>
-		
-<div class="panel-body collapse" id="fiddums-code">
-		<pre>
-@font-face 
-{
-	font-family: fiddums-family;
-	src: url("fiddums-family/fiddums-family.eot"); /* EOT file for IE8 */
-	src: url("fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"), /* EOT file for IE */
-			url("fiddums-family/fiddums-family.woff2") format('woff2'),
-			url("fiddums-family/fiddums-family.woff") format('woff'),
-			url("fiddums-family/fiddums-family.ttf")  format('truetype'),
-			url("fiddums-family/fiddums-family.svg")  format('svg');
-}		
----------
-http://www.1001fonts.com/fiddums-family-font.html
-		</pre>
-</div>
-		
-		<div class="panel-footer"></div>
-	</div><!-- end panel -->
-
-	<div class="panel panel-default" id="font-french-script-mt">
-		<div class="panel-heading">
-			<h3>font-family: french-script-mt</h3>
-<a href="http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.zip">download</a>
-<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#french-script-code" aria-expanded="false">CSS code</button>
-		</div>
-		
-		<div class="panel-body" style="font-family: french-script-mt;">
-			<h1>French Script MT</h1>
-abcd
-абвгд		
-		</div>
-
-<div class="panel-body collapse" id="french-script-code">
-		<pre>
-@font-face {
-    font-family: french-script-mt; /* French Script MT" */
-	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot") format('embedded-opentype'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
-         url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
-}
-		</pre>
-</div>
-		
-		<div class="panel-footer"></div>
-	</div><!-- end panel -->
-	
+	</div><!-- end tabs content -->
 </div><!-- end container -->
+
+
 </body>
 </html>

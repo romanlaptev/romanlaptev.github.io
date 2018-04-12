@@ -1,3 +1,15 @@
+/*
+@font-face {
+	font-family: "AGRevueCyr";
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot");
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff") format("woff"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
+}
+*/
+
 @font-face {
 	font-family:Victorian LET Regular;
 	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
@@ -11,41 +23,59 @@
 			url("Victorian_LET/victorian-let-regular.svg")  format('svg');
 }
 
-@font-face {
-    font-family: french-script-mt; /* French Script MT" */
+ /* French Script MT" */
 	/*src: url("../test_code/css/load_font/FRSCRIPT.TTF");*/
+/*
+@font-face {
+    font-family: french-script-mt;
     src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot");
-    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot") format('embedded-opentype'),
+    src: url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.eot?#iefix") format('embedded-opentype'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff2") format('woff2'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.woff") format('woff'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.ttf") format('truetype'),
          url("http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT") format('svg');
 }
+*/
 
+/*
 @font-face 
 {
-	font-family:Century Gothic;
-	src: url("../test_code/css/load_font/GOTHIC.TTF");
+	font-family:century-gothic;
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot");
+	src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.svg")  format('svg');
 }
+*/
 
+/*
 @font-face 
 {
 	font-family:Impact;
-	src: url("../test_code/css/load_font/impact.ttf");
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot");
+	src: url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.eot?#iefix") format("embedded-opentype"),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff2") format('woff2'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.woff") format('woff'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.ttf")  format('truetype'),
+			url("http://graphic-art-collection.16mb.com/fonts/impact_font/impact.svg")  format('svg');
 }
+*/
 
+/*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
+/*
 @font-face 
 {
 	font-family: fiddums-family;
-	/*src: url("http://rex.dax.ru/uploads/fiddums_family.ttf");*/
-	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot"); /* EOT file for IE */
+	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot");
 	src: url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.eot?#iefix") format("embedded-opentype"),
 			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff2") format('woff2'),
 			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.woff") format('woff'),
 			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.ttf")  format('truetype'),
 			url("http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family.svg")  format('svg');
 }
-
+*/
 
 /*
 @font-face {
