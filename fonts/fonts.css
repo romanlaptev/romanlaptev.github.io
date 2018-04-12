@@ -1,3 +1,15 @@
+/*
+@font-face {
+	font-family: "AGRevueCyr";
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot");
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff") format("woff"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
+}
+*/
+
 @font-face {
 	font-family:Victorian LET Regular;
 	/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/

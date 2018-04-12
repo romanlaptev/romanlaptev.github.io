@@ -26,6 +26,25 @@ border: 3px double #337ab7;
 border-radius: 15px 0 0 0;
 }	
 </style>
+
+<script>
+_vars = [];
+//_vars["sitename"] = "http://graphic-art-collection.16mb.com";
+_vars["sitename"] = "http://comp";
+
+$(document).ready(function(){
+//console.log("Ready to start....");
+	
+	$(".download-link").each(function(){
+console.log( $(this) );	
+		var url = _vars["sitename"] + $(this).attr("href");
+console.log( url );	
+		$(this).attr("href", url);
+	});
+	
+});//end ready
+</script>
+
 </head>
 
 <body>
@@ -38,6 +57,8 @@ border-radius: 15px 0 0 0;
 		
 		<nav class="navbar">
 			<ul class="nav navbar-nav">
+
+<li><a href="https://everythingfonts.com/font-face">everythingfonts.com, font-face generator</a></li>
 <li><a href="http://www.freefontconverter.com/">Free Font Converter</a></li>
 <li><a href="http://www.1001fonts.com/">1001fonts.com, New & Fresh Fonts</a></li>
 			</ul>
@@ -45,7 +66,6 @@ border-radius: 15px 0 0 0;
 		
 <pre>
 https://onlinefontconverter.com/
-https://everythingfonts.com/font-face
 http://graphic-art-collection.16mb.com/fonts/
 </pre>
 		
@@ -54,12 +74,63 @@ http://graphic-art-collection.16mb.com/fonts/
 
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#tab1">C,F</a></li>
+		<li class="active"><a data-toggle="tab" href="#tab_A">A</a></li>
+		<li><a data-toggle="tab" href="#tab1">C,F</a></li>
 		<li><a data-toggle="tab" href="#tab2">I, V</a></li>
 	</ul>
 	
 	<div class="tab-content">
-		<div id="tab1" class="tab-pane fade in active">
+	
+		<div id="tab_A" class="tab-pane fade in active">
+		
+			<div class="panel panel-primary" id="font-AGRevueCyr">
+				<div class="panel-heading">
+					<h3>AGRevueCyr Roman Medium</h3>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#agrevc-code" aria-expanded="false">CSS code</button>
+				</div>
+
+<style>				
+@font-face {
+	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot");
+    src: url("http://comp/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.woff") format("woff"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
+         url("http://comp/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
+}
+</style>
+				<div class="panel-body" style="font-family: AGRevueCyr;">
+					<h1>AGRevueCyr Roman Medium</h1>
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
+				</div>
+
+		<div class="panel-body collapse" id="agrevc-code">
+			<pre>
+@font-face {
+	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
+    src: url("fonts/AGREVC/AGREVC.eot");
+    src: url("fonts/AGREVC/AGREVC.eot") format("embedded-opentype"),
+         url("fonts/AGREVC/AGREVC.woff2") format("woff2"),
+         url("fonts/AGREVC/AGREVC.woff") format("woff"),
+         url("fonts/AGREVC/AGREVC.ttf") format("truetype"),
+         url("fonts/AGREVC/AGREVC.svg#AGREVC") format("svg");
+}
+			</pre>
+		</div>
+				
+				<div class="panel-footer">
+<a class="download-link" href="/fonts/AGREVC/AGREVC.zip">download</a>
+				</div>
+			</div><!-- end panel -->
+		</div><!-- end tab -->
+		
+<!-- **************************************************************** -->	
+		<div id="tab1" class="tab-pane fade">
 		
 			<div class="panel panel-primary" id="font-century-gothic">
 				<div class="panel-heading">
@@ -70,8 +141,11 @@ http://graphic-art-collection.16mb.com/fonts/
 				
 				<div class="panel-body" style="font-family: century-gothic;">
 					<h1>Century Gothic</h1>
-		abcd
-		абвгд		
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
 				</div>
 
 		<div class="panel-body collapse" id="century-gothic-code">
@@ -95,15 +169,17 @@ http://graphic-art-collection.16mb.com/fonts/
 			<div class="panel panel-success" id="font-fiddums-family">
 				<div class="panel-heading">
 					<h3>font-family:fiddums-family</h3>
-		<a href="http://graphic-art-collection.16mb.com/fonts/fiddums-family/fiddums-family-font.zip">download</a>
 
 		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#fiddums-code" aria-expanded="false">CSS code</button>
 				</div>
 				
 				<div class="panel-body" style="font-family: fiddums-family;">
 					<h1>Addams family</h1>
-		abcd
-		абвгд		
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
 				</div>
 				
 		<div class="panel-body collapse" id="fiddums-code">
@@ -123,21 +199,25 @@ http://graphic-art-collection.16mb.com/fonts/
 				</pre>
 		</div>
 				
-				<div class="panel-footer"></div>
+				<div class="panel-footer">
+<a class="download-link" href="/fonts/fiddums-family/fiddums-family-font.zip">download</a>
+				</div>
 			</div><!-- end panel -->
 
 			
 			<div class="panel panel-danger" id="font-french-script-mt">
 				<div class="panel-heading">
 					<h3>font-family: french-script-mt</h3>
-		<a href="http://graphic-art-collection.16mb.com/fonts/FRSCRIPT/FRSCRIPT.zip">download</a>
 		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#french-script-code" aria-expanded="false">CSS code</button>
 				</div>
 				
 				<div class="panel-body" style="font-family: french-script-mt;">
 					<h1>French Script MT</h1>
-		abcd
-		абвгд		
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
 				</div>
 
 		<div class="panel-body collapse" id="french-script-code">
@@ -155,12 +235,14 @@ http://graphic-art-collection.16mb.com/fonts/
 				</pre>
 		</div>
 				
-				<div class="panel-footer"></div>
+				<div class="panel-footer">
+<a class="download-link" href="/fonts/FRSCRIPT/FRSCRIPT.zip">download</a>
+				</div>
 			</div><!-- end panel -->
 			
 		</div><!-- end tab -->
 
-		
+<!-- **************************************************************** -->	
 		<div id="tab2" class="tab-pane fade">
 		
 
@@ -172,8 +254,11 @@ http://graphic-art-collection.16mb.com/fonts/
 				
 				<div class="panel-body" style="font-family: Impact;">
 					<h1>Impact</h1>
-		abcd
-		абвгд		
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
 				</div>
 
 		<div class="panel-body collapse" id="impact-code">
@@ -192,7 +277,7 @@ http://graphic-art-collection.16mb.com/fonts/
 		</div>
 				
 				<div class="panel-footer">
-		<a href="http://graphic-art-collection.16mb.com/fonts/impact_font/impact_font.zip">download</a>
+<a class="download-link" href="/fonts/impact_font/impact_font.zip">download</a>
 				</div>
 			</div><!-- end panel -->
 
@@ -204,8 +289,11 @@ http://graphic-art-collection.16mb.com/fonts/
 				
 				<div class="panel-body" style="font-family: Victorian LET Regular;">
 					<h2>Victorian LET Regular</h2>
-		abcd
-		абвгд	
+абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
+АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
+abcdefghijklmnopqrstuvwxyz   <br>
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
+1234567890.:,;   (!?) -*/  <br>
 				</div>
 				
 		<div class="panel-body collapse" id="victorian-code">
