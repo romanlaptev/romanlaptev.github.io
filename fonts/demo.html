@@ -15,6 +15,17 @@
 	<script src="../js/bootstrap/bootstrap337.min.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="fonts.css">
+<style>
+.nav-tabs > li > a
+{
+border: 1px solid #337ab7;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover
+{
+border: 3px double #337ab7;
+border-radius: 15px 0 0 0;
+}	
+</style>
 </head>
 
 <body>
@@ -31,55 +42,56 @@
 <li><a href="http://www.1001fonts.com/">1001fonts.com, New & Fresh Fonts</a></li>
 			</ul>
 		</nav>
-</header><!-- end container -->
-
+		
 <pre>
 https://onlinefontconverter.com/
 https://everythingfonts.com/font-face
 http://graphic-art-collection.16mb.com/fonts/
 </pre>
+		
+</header><!-- end container -->
+
 
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#tab1">Tab1</a></li>
-		<li><a data-toggle="tab" href="#tab2">Tab2</a></li>
-		<li><a data-toggle="tab" href="#unsort-tab">Unsort fonts</a></li>
+		<li class="active"><a data-toggle="tab" href="#tab1">C,F</a></li>
+		<li><a data-toggle="tab" href="#tab2">I, V</a></li>
 	</ul>
 	
 	<div class="tab-content">
 		<div id="tab1" class="tab-pane fade in active">
 		
-			<div class="panel panel-default" id="font-victorian-let-regular">
+			<div class="panel panel-primary" id="font-century-gothic">
 				<div class="panel-heading">
-					<h3>font-family:Victorian LET Regular</h3>
-		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
+					<h3>font-family: century-gothic</h3>
+		<a href="http://graphic-art-collection.16mb.com/fonts/gothic_font/gothic_font.zip">download</a>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#century-gothic-code" aria-expanded="false">CSS code</button>
 				</div>
 				
-				<div class="panel-body" style="font-family: Victorian LET Regular;">
-					<h2>Victorian LET Regular</h2>
+				<div class="panel-body" style="font-family: century-gothic;">
+					<h1>Century Gothic</h1>
 		abcd
-		абвгд	
+		абвгд		
 				</div>
-				
-		<div class="panel-body collapse" id="victorian-code">
-		<pre>
-		@font-face {
-			font-family:Victorian LET Regular;
-			/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
 
-			src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
-			src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
-					url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
-					url('Victorian_LET/victorian-let-regular.woff') format('woff'),
-					url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
-					url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+		<div class="panel-body collapse" id="century-gothic-code">
+			<pre>
+		@font-face 
+		{
+			font-family:century-gothic;
+			src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot"); /* EOT file for IE */
+			src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot?#iefix") format("embedded-opentype"),
+					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff2") format('woff2'),
+					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff") format('woff'),
+					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.ttf")  format('truetype'),
+					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.svg")  format('svg');
 		}
-		</pre>
+			</pre>
 		</div>
 				
 				<div class="panel-footer"></div>
 			</div><!-- end panel -->
-
+		
 			<div class="panel panel-success" id="font-fiddums-family">
 				<div class="panel-heading">
 					<h3>font-family:fiddums-family</h3>
@@ -114,11 +126,7 @@ http://graphic-art-collection.16mb.com/fonts/
 				<div class="panel-footer"></div>
 			</div><!-- end panel -->
 
-		</div><!-- end tab -->
-
-		
-		<div id="tab2" class="tab-pane fade">
-		
+			
 			<div class="panel panel-danger" id="font-french-script-mt">
 				<div class="panel-heading">
 					<h3>font-family: french-script-mt</h3>
@@ -149,39 +157,12 @@ http://graphic-art-collection.16mb.com/fonts/
 				
 				<div class="panel-footer"></div>
 			</div><!-- end panel -->
+			
+		</div><!-- end tab -->
 
-
-			<div class="panel panel-info" id="font-century-gothic">
-				<div class="panel-heading">
-					<h3>font-family: century-gothic</h3>
-		<a href="http://graphic-art-collection.16mb.com/fonts/gothic_font/gothic_font.zip">download</a>
-		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#century-gothic-code" aria-expanded="false">CSS code</button>
-				</div>
-				
-				<div class="panel-body" style="font-family: century-gothic;">
-					<h1>Century Gothic</h1>
-		abcd
-		абвгд		
-				</div>
-
-		<div class="panel-body collapse" id="century-gothic-code">
-			<pre>
-		@font-face 
-		{
-			font-family:century-gothic;
-			src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot"); /* EOT file for IE */
-			src: url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.eot?#iefix") format("embedded-opentype"),
-					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff2") format('woff2'),
-					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.woff") format('woff'),
-					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.ttf")  format('truetype'),
-					url("http://graphic-art-collection.16mb.com/fonts/gothic_font/GOTHIC.svg")  format('svg');
-		}
-			</pre>
-		</div>
-				
-				<div class="panel-footer"></div>
-			</div><!-- end panel -->
-
+		
+		<div id="tab2" class="tab-pane fade">
+		
 
 			<div class="panel panel-primary" id="font-impact">
 				<div class="panel-heading">
@@ -215,409 +196,39 @@ http://graphic-art-collection.16mb.com/fonts/
 				</div>
 			</div><!-- end panel -->
 
+			<div class="panel panel-default" id="font-victorian-let-regular">
+				<div class="panel-heading">
+					<h3>font-family:Victorian LET Regular</h3>
+		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#victorian-code" aria-expanded="false">CSS code</button>
+				</div>
+				
+				<div class="panel-body" style="font-family: Victorian LET Regular;">
+					<h2>Victorian LET Regular</h2>
+		abcd
+		абвгд	
+				</div>
+				
+		<div class="panel-body collapse" id="victorian-code">
+		<pre>
+		@font-face {
+			font-family:Victorian LET Regular;
+			/*src: url("Victorian_LET/victorian-let-plain.ttf")  format('truetype');*/
+
+			src: url('Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */
+			src: url('Victorian_LET/victorian-let-regular.eot?#iefix') format("embedded-opentype"), /* EOT file for IE */
+					url('Victorian_LET/victorian-let-regular.woff2') format('woff2'),
+					url('Victorian_LET/victorian-let-regular.woff') format('woff'),
+					url("Victorian_LET/victorian-let-regular.ttf")  format('truetype'),
+					url("Victorian_LET/victorian-let-regular.svg")  format('svg');
+		}
+		</pre>
+		</div>
+				
+				<div class="panel-footer"></div>
+			</div><!-- end panel -->
+			
 		</div><!-- end tab -->
 		
-		
-		<div id="unsort-tab" class="tab-pane fade">
-<pre>
-"D:\fonts\W\west_side.ttf" 
-
-"D:\fonts\A\akbar_plain.ttf" 
-
-"D:\fonts\F\flowerchild_plain.ttf" 
-
-"D:\fonts\B\balmoral_let_plain.ttf" 
-
-cancellaresca_script_let_plain.ttf 
-
-Corpsscript.otf 
-
-art_victorian.ttf 
-
-Wonderland.ttf 
-
-pfwonderlandpro-reg.ttf 
-
-Futuralightc.otf 
-
-Aquiline.ttf 
-
-aquiline_two.ttf 
-
-Benbrown.ttf 
-
-Alphamackaoe.ttf 
-
-pfkidspro-gradefive.ttf 
-
-pfkidspro-gradeone.ttf 
-
-etienne-regular.ttf 
-
-Beeskneesc.otf 
-
-pfdavinciscriptpro-reg.ttf 
-
-pfdavinciscriptpro-inked.ttf 
-
-cyrillic_old.ttf 
-
-bart_normal.ttf 
-
-baron_munchausen.ttf 
-
-asia_normal.ttf 
-
-amelia_normal.ttf 
-
-baby_baby.ttf 
-
-Appendix.ttf 
-
-almanaque_normal.ttf 
-
-ds_coptic.ttf 
-
-oldcyr_bold.ttf 
-
-a_bighaustitulbrkhil.ttf 
-
- 
-
- 
-
-A/AVANTGAR.TTF 
-
-A/addamsfamily/fiddums family.ttf 
-
-A/apocalypsenow/Apocalypse Now.ttf 
-
-A/ANN55__C.TTF 
-
-A/ARCHITRN.TTF 
-
-A/AGREVC__.TTF 
-
-A/AnnaCTT Regular.Ttf 
-
-  
-
-B/buffy/Buff.ttf 
-
-B/BTS35__C.TTF 
-
-B/BRUSH-N.TTF 
-
-B/BRUSCOMP.TTF 
-
-B/Broadway/TT0131M_.TTF 
-
-B/BRN____C.TTF 
-
-B/BRAVONC.TTF 
-
-B/bonethugsnharmony/BECKETT_.TTF 
-
-B/BODNOFFN.TTF 
-
-B/BIRCH_C.TTF 
-
-B/BHS55__C.TTF 
-
-B/bewitched/Witched.TTF 
-
-B/BrownCow.otf 
-
-  
-
-  
-
-C/CALIGRAP.TTF 
-
-C/carebears/cbfamily.ttf 
-
-C/charmed/CHARF___.TTF 
-
-C/cherrycoke/CHERC___.TTF 
-
-C/ChineseMotleyFont/Motley2.TTF 
-
-C/comic.ttf 
-
-C/crystalr/CRYSTALR.TTF 
-
-C/CWMXCRCS.TTF 
-
-C/CWPCLOOK.TTF 
-
-C/CYRE____.TTF 
-
-C/CYRN____.TTF 
-
-C/CYUN____.TTF 
-
-C/cafecorina.ttf 
-
-C/Carnation.otf 
-
-C/Countdown Normal.Ttf 
-
-C/CyrillicGoth Normal.Ttf 
-
-C/CyrillicOld Bold.Ttf 
-
-  
-
-D/DECOR3.TTF 
-
-D/dummies/Dummies_.ttf 
-
-D/drewcareyshow/mnkchunk.ttf 
-
-D/doors/DENSMORE.TTF 
-
-D/deftones/ribbon.ttf 
-
-D/DeadbdS_/DeadbdS_.ttf 
-
-D/Dandelion.otf 
-
-  
-
-F/FRSCRIPT.TTF 
-
-F/FRNKSTNN.TTF 
-
-F/FTE.TTF 
-
-F/FTF____C.TTF 
-
-F/fantique/Fantique.ttf 
-
-F/fatboy/fbsbltc.ttf 
-
-F/flubber/FLUBBER_.TTF 
-
-F/FunkyWestern.otf 
-
-  
-
-  
-
-G/GOTHIC.TTF 
-
-G/GOTHIRUS.TTF 
-
-G/GRADPLA.TTF 
-
-G/garfield/ALFREDO_.TTF 
-
-G/gremlins/GREMLINS.TTF 
-
-G/gothikka/gothikka.ttf 
-
-G/Gurnsey20.otf 
-
-  
-
-  
-
-H/hattori_hanzo/hattori_hanzo-webfont.ttf 
-
-H/HOMEWRDN.TTF 
-
-H/HRL75__C.TTF 
-
-H/highlander/HIGHLA2.TTF 
-
-H/hellboy/Red Right Hand.ttf 
-
-H/harrypotter/ParryHotter.ttf 
-
-H/HolyCow.otf 
-
-H/a_Huxley Bold.Ttf 
-
-  
-
-I/impact.ttf 
-
-  
-
-J/JIKHAREV.TTF 
-
-J/JKB35__C.TTF 
-
-J/JUPITERN.TTF 
-
-J/JollyJack.otf 
-
-  
-
-K/KALIAKRA.TTF 
-
-K/KRL77__C.TTF 
-
-K/kenny/KENNY.TTF 
-
-  
-
-  
-
-L/LINUSN.TTF 
-
-L/Lobster/webfonts/Lobster.ttf 
-
-L/LillaFunk.otf 
-
-L/a_LCDNova Regular.Ttf 
-
-  
-
-M/MATURASC.TTF 
-
-M/MIST____.TTF 
-
-M/MYSTCALN.TTF 
-
-M/mad/madfont.ttf 
-
-M/marlboro/Marlbo.ttf 
-
-M/murdershewrote/LANSBURY.TTF 
-
-N/neverwinternights/Neverwinter.ttf 
-
-  
-
-N/NFUTEUGE.TTF 
-
-N/NWTX.TTF 
-
-N/nin/Si.TTF 
-
-N/nitemare/nitemare.ttf 
-
-N/Navel.otf 
-
-  
-
-  
-
-O/ODESS9.TTF 
-
-O/OLGA_C.TTF 
-
-  
-
-P/PALADPCR.TTF 
-
-P/Parachute Collection [OpenType TT]/Wonderland Pro/PFWonderlandPro-Reg.ttf 
-
-P/PARADISN.TTF 
-
-P/PARKA36.TTF 
-
-P/PARSEK.TTF 
-
-P/PLAYBILL.TTF 
-
-P/PLYWR_U.TTF 
-
-P/POSTER.TTF 
-
-P/PRES_U.TTF 
-
-P/PRS.TTF 
-
-P/pokemon/Pokemon/POS_____.TTF 
-
-P/postcrypt/pcrypt.ttf 
-
-P/PaladinPCRus Medium.Ttf 
-
- P/Pudelina.ttf 
-
- 
-
-Q/quantumleap/SWC_____.TTF 
-
-  
-
-  
-
-R/REVUE.TTF 
-
-R/renstimpy/REN_STIM.TTF 
-
-  
-
-  
-
-S/SKAZK2.TTF 
-
-S/SSR56__C.TTF 
-
-S/STAMPN.TTF 
-
-S/scorpions/LADYSTAR.TTF 
-
-S/Stensil/STENCIL.TTF 
-
-  
-
-  
-
-T/TAURU.TTF 
-
-T/TECHNO.TTF 
-
-T/TEMPCS__.TTF 
-
-T/TESLDOC.TTF 
-
-T/TIFFANY.TTF 
-
-T/TIFFH.TTF 
-
-T/Tiranti/70729___.TTF 
-
-T/TORHOK.TTF 
-
-T/TRAKT26.TTF 
-
-T/TRKT____.TTF 
-
-T/TT0594M_.TTF 
-
-T/TT0757M_.TTF 
-
-T/TT0983M_.TTF 
-
-T/TT1051M_.TTF 
-
-T/TT1153M_.TTF 
-
-T/Tiranti/70729___.TTF 
-
-  
-
-  
-
-U/unfonts-core/UnPilgi.ttf 
-
-U/unfonts-core/UnPilgiBold.ttf 
-
-V/Victorian LET/victorian-let-regular.ttf 
-
-  
-
-W/WINDSOR.TTF 
-
-W/waltdisney/WaltDisney.ttf 
-</pre>
-		</div>
-
 	</div><!-- end tabs content -->
 </div><!-- end container -->
 
