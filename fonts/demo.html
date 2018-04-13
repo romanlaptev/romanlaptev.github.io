@@ -13,6 +13,7 @@
 	
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap/bootstrap337.min.js"></script>
+	<script src="js/demo.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="fonts.css">
 <style>
@@ -26,49 +27,6 @@ border: 3px double #337ab7;
 border-radius: 15px 0 0 0;
 }	
 </style>
-
-<script>
-_vars = [];
-_vars["sitename"] = "http://graphic-art-collection.16mb.com";
-//_vars["sitename"] = "http://comp";
-
-$(document).ready(function(){
-//console.log("Ready to start....");
-//console.log( $("#agrevc-css").text() );
-
-//Add CSS font-face text
-$("#agrevc-code pre").text( $("#agrevc-css").text() );
-$("#impact-code pre").text( $("#impact-css").text() );
-
-$("#century-gothic-code pre").text( $("#century-gothic-css").text() );
-$("#font-century-gothic .panel-heading > h3").css("font-family", "century-gothic");
-$("#font-century-gothic .sample-text").css("font-family", "century-gothic");
-
-$("#fiddums-code > pre").text( $("#font-fiddums-family-css").text() );
-$("#font-fiddums-family .panel-heading > h3").css("font-family", "fiddums-family");
-$("#font-fiddums-family .sample-text").css("font-family", "fiddums-family");
-
-$("#french-script-code > pre").text( $("#french-script-code-css").text() );
-$("#font-french-script-mt .panel-heading > h3").css("font-family", "french-script-mt");
-$("#font-french-script-mt .sample-text").css("font-family", "french-script-mt");
-
-$("#impact-code > pre").text( $("#impact-css").text() );
-$("#font-impact .panel-heading > h3").css("font-family", "Impact");
-$("#font-impact .sample-text").css("font-family", "Impact");
-
-$("#victorian-code pre").text( $("#victorian-css").text() );
-
-if( _vars["sitename"] ){
-	$(".download-link").each(function(){
-//console.log( $(this) );	
-		var url = _vars["sitename"] + "/" + $(this).attr("href");
-console.log( url );	
-		$(this).attr("href", url);
-	});
-}	
-	
-});//end ready
-</script>
 
 </head>
 
@@ -110,35 +68,17 @@ http://graphic-art-collection.16mb.com/fonts/
 		
 			<div class="panel panel-primary" id="font-AGRevueCyr">
 				<div class="panel-heading">
-					<h3 style="font-family: AGRevueCyr;" >AGRevueCyr Roman Medium</h3>
+					<h3>{{font-name}}</h3>
 		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#agrevc-code" aria-expanded="false">CSS code</button>
 				</div>
-
-<style id="agrevc-css">				
-@font-face {
-	font-family: "AGRevueCyr";/* AGRevueCyr Roman Medium */
-    src: url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.eot");
-    src: url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.eot") format("embedded-opentype"),
-         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.woff2") format("woff2"),
-         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.woff") format("woff"),
-         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.ttf") format("truetype"),
-         url("http://graphic-art-collection.16mb.com/fonts/A/AGREVC/AGREVC.svg#AGREVC") format("svg");
-}
-</style>
-				<div class="panel-body" style="font-family: AGRevueCyr;">
-абвгдежзийклмнопрстуфхцчшщъыьэюя <br>
-АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ  <br>
-abcdefghijklmnopqrstuvwxyz   <br>
-ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>
-1234567890.:,;   (!?) -*/  <br>
+				<div class="panel-body sample-text">{{sample_text}}</div>
+				
+				<div class="panel-body collapse" id="agrevc-code">
+					<pre>paste CSS font face text here!!!!</pre>
 				</div>
-
-		<div class="panel-body collapse" id="agrevc-code">
-			<pre>paste CSS font face text here!!!!</pre>
-		</div>
 				
 				<div class="panel-footer">
-<a class="download-link" href="fonts/AGREVC/AGREVC.zip">download</a>
+<a class="download-link" href="#">download</a>
 				</div>
 			</div><!-- end panel -->
 		</div><!-- end tab -->
