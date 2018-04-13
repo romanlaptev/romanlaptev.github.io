@@ -1,6 +1,6 @@
 _vars = [];
-_vars["sitename"] = "http://graphic-art-collection.16mb.com";
-//_vars["sitename"] = "http://comp";
+//_vars["sitename"] = "http://graphic-art-collection.16mb.com";
+_vars["sitename"] = "http://comp";
 
 _vars["fonts"] = [
 	{
@@ -35,20 +35,29 @@ src: url('#FONTSITEfonts/A/AGREVC/AGREVC.eot') format('embedded-opentype'),\
 		"font_family" : "Impact",
 		"panel_id" : "#font-impact",
 		"view_code" : "#impact-code",
+		//"fontsite" : "http://comp",
+		//"path" : "fonts/impact_font",
+		"path" : "fonts/I/impact",
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family:Impact;\
-src: url('#FONTSITEfonts/impact_font/impact.eot'); /* EOT file for IE */\
-src: url('#FONTSITEfonts/impact_font/impact.eot?#iefix') format('embedded-opentype'),\
-		url('#FONTSITEfonts/impact_font/impact.woff2') format('woff2'),\
-		url('#FONTSITEfonts/impact_font/impact.woff') format('woff'),\
-		url('#FONTSITEfonts/impact_font/impact.ttf')  format('truetype'),\
-		url('#FONTSITEfonts/impact_font/impact.svg')  format('svg');\
+src: url('#FONTSITE{{PATH}}/impact.eot'); /* EOT file for IE */\
+src: url('#FONTSITE{{PATH}}/impact.eot?#iefix') format('embedded-opentype'),\
+		url('#FONTSITE{{PATH}}/impact.woff2') format('woff2'),\
+		url('#FONTSITE{{PATH}}/impact.woff') format('woff'),\
+		url('#FONTSITE{{PATH}}/impact.ttf')  format('truetype'),\
+		url('#FONTSITE{{PATH}}/impact.svg')  format('svg');\
 }";
-			if( !_vars["sitename"] ){
-				_code = _code.replace(/#FONTSITE/g, "");
+//console.log(this);
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
 			} else {
-				_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
 			}
 			return _code;
 		},
@@ -61,20 +70,29 @@ src: url('#FONTSITEfonts/impact_font/impact.eot?#iefix') format('embedded-openty
 		"font_family" : "century-gothic",
 		"panel_id" : "#font-century-gothic",
 		"view_code" : "#century-gothic-code",
+		//"fontsite" : "http://comp",
+		//"path" : "fonts/gothic_font",
+		"path" : "fonts/G/gothic_font",
+		
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family:century-gothic;\
-src: url('#FONTSITEfonts/gothic_font/GOTHIC.eot'); /* EOT file for IE8 */\
-src: url('#FONTSITEfonts/gothic_font/GOTHIC.eot?#iefix') format('embedded-opentype'),\
-		url('#FONTSITEfonts/gothic_font/GOTHIC.woff2') format('woff2'),\
-		url('#FONTSITEfonts/gothic_font/GOTHIC.woff') format('woff'),\
-		url('#FONTSITEfonts/gothic_font/GOTHIC.ttf')  format('truetype'),\
-		url('#FONTSITEfonts/gothic_font/GOTHIC.svg')  format('svg');\
+src: url('#FONTSITE{{PATH}}/GOTHIC.eot'); /* EOT file for IE8 */\
+src: url('#FONTSITE{{PATH}}/GOTHIC.eot?#iefix') format('embedded-opentype'),\
+		url('#FONTSITE{{PATH}}/GOTHIC.woff2') format('woff2'),\
+		url('#FONTSITE{{PATH}}/GOTHIC.woff') format('woff'),\
+		url('#FONTSITE{{PATH}}/GOTHIC.ttf')  format('truetype'),\
+		url('#FONTSITE{{PATH}}/GOTHIC.svg')  format('svg');\
 }";
-			if( !_vars["sitename"] ){
-				_code = _code.replace(/#FONTSITE/g, "");
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
 			} else {
-				_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
 			}
 			return _code;
 		},
@@ -87,20 +105,28 @@ src: url('#FONTSITEfonts/gothic_font/GOTHIC.eot?#iefix') format('embedded-openty
 		"font_family" : "fiddums-family",
 		"panel_id" : "#font-fiddums-family",
 		"view_code" : "#fiddums-code",
+		//"fontsite" : "http://comp",
+		//"path" : "fonts/fiddums-family",
+		"path" : "fonts/F/fiddums-family-font",
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family: fiddums-family;\
-src: url('#FONTSITEfonts/fiddums-family/fiddums-family.eot'); /* EOT file for IE8 */\
-src: url('#FONTSITEfonts/fiddums-family/fiddums-family.eot?#iefix') format('embedded-opentype'), /* EOT file for IE */\
-		url('#FONTSITEfonts/fiddums-family/fiddums-family.woff2') format('woff2'),\
-		url('#FONTSITEfonts/fiddums-family/fiddums-family.woff') format('woff'),\
-		url('#FONTSITEfonts/fiddums-family/fiddums-family.ttf')  format('truetype'),\
-		url('#FONTSITEfonts/fiddums-family/fiddums-family.svg')  format('svg');\
+src: url('#FONTSITE{{PATH}}/fiddums-family.eot'); /* EOT file for IE8 */\
+src: url('#FONTSITE{{PATH}}/fiddums-family.eot?#iefix') format('embedded-opentype'), /* EOT file for IE */\
+		url('#FONTSITE{{PATH}}/fiddums-family.woff2') format('woff2'),\
+		url('#FONTSITE{{PATH}}/fiddums-family.woff') format('woff'),\
+		url('#FONTSITE{{PATH}}/fiddums-family.ttf')  format('truetype'),\
+		url('#FONTSITE{{PATH}}/fiddums-family.svg')  format('svg');\
 }";
-			if( !_vars["sitename"] ){
-				_code = _code.replace(/#FONTSITE/g, "");
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
 			} else {
-				_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
 			}
 			return _code;
 		},
@@ -114,20 +140,28 @@ src: url('#FONTSITEfonts/fiddums-family/fiddums-family.eot?#iefix') format('embe
 		"font_family" : "french-script-mt",
 		"panel_id" : "#font-french-script-mt",
 		"view_code" : "#french-script-code",
+		//"fontsite" : "http://comp",
+		//"path" : "fonts/FRSCRIPT",
+		"path" : "fonts/F/FRSCRIPT",
 		"css_code" : function(){
 			var _code = "@font-face {\
 	font-family: french-script-mt;\
-	src: url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.eot');\
-	src: url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.eot') format('embedded-opentype'),\
-		 url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.woff2') format('woff2'),\
-		 url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.woff') format('woff'),\
-		 url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.ttf') format('truetype'),\
-		 url('#FONTSITEfonts/FRSCRIPT/FRSCRIPT.svg#FRSCRIPT') format('svg');\
+	src: url('#FONTSITE{{PATH}}/FRSCRIPT.eot');\
+	src: url('#FONTSITE{{PATH}}/FRSCRIPT.eot') format('embedded-opentype'),\
+		 url('#FONTSITE{{PATH}}/FRSCRIPT.woff2') format('woff2'),\
+		 url('#FONTSITE{{PATH}}/FRSCRIPT.woff') format('woff'),\
+		 url('#FONTSITE{{PATH}}/FRSCRIPT.ttf') format('truetype'),\
+		 url('#FONTSITE{{PATH}}/FRSCRIPT.svg#FRSCRIPT') format('svg');\
 }";
-			if( !_vars["sitename"] ){
-				_code = _code.replace(/#FONTSITE/g, "");
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
 			} else {
-				_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
 			}
 			return _code;
 		},
