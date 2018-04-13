@@ -31,6 +31,73 @@ src: url('#FONTSITEfonts/A/AGREVC/AGREVC.eot') format('embedded-opentype'),\
 	},//end font
 	
 	{
+		"font_name" : "AvantGarde",
+		"font_family" : "avantgarde",
+		"panel_id" : "#font-avantgarde",
+		"view_code" : "#avantgarde-code",
+		//"fontsite" : "http://comp",
+		"path" : "fonts/A/AVANTGAR",
+		"css_code" : function(){
+			var _code = "\
+@font-face { font-family: 'avantgarde';\
+src: url('#FONTSITE{{PATH}}/AVANTGAR.eot');\
+src: url('#FONTSITE{{PATH}}/AVANTGAR.eot') format('embedded-opentype'),\
+	url('#FONTSITE{{PATH}}/AVANTGAR.woff2') format('woff2'),\
+	url('#FONTSITE{{PATH}}/AVANTGAR.woff') format('woff'),\
+	url('#FONTSITE{{PATH}}/AVANTGAR.ttf') format('truetype'),\
+	url('#FONTSITE{{PATH}}/AVANTGAR.svg#AGREVC') format('svg');\
+}";
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
+			} else {
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
+			}
+			return _code;
+		},
+		//"sample_text" : "This is a test!!!!",
+		"download_link" : "fonts/A/AVANTGAR/AVANTGAR.zip"
+	},//end font
+
+	{
+		"font_name" : "Akbar Plain",
+		"font_family" : "akbar-plain",
+		"panel_id" : "#font-akbar-plain",
+		"view_code" : "#akbar-plain-code",
+		//"fontsite" : "http://comp",
+		"path" : "fonts/A/akbar_plain",
+		"css_code" : function(){
+			var _code = "\
+@font-face { font-family: 'akbar-plain';\
+src: url('#FONTSITE{{PATH}}/akbar_plain.eot');\
+src: url('#FONTSITE{{PATH}}/akbar_plain.eot') format('embedded-opentype'),\
+	url('#FONTSITE{{PATH}}/akbar_plain.woff2') format('woff2'),\
+	url('#FONTSITE{{PATH}}/akbar_plain.woff') format('woff'),\
+	url('#FONTSITE{{PATH}}/akbar_plain.ttf') format('truetype'),\
+	url('#FONTSITE{{PATH}}/akbar_plain.svg#akbar_plain') format('svg');\
+}";
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
+			} else {
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
+			}
+			return _code;
+		},
+		//"sample_text" : "This is a test!!!!",
+		"download_link" : "fonts/A/akbar_plain/akbar_plain.zip"
+	},//end font
+	
+	
+	{
 		"font_name" : "Impact",
 		"font_family" : "Impact",
 		"panel_id" : "#font-impact",
@@ -224,6 +291,7 @@ $(document).ready(function(){
 	addFont( _vars["fonts"][3] );
 	addFont( _vars["fonts"][4] );
 	addFont( _vars["fonts"][5] );
+	addFont( _vars["fonts"][6] );
 	
 });//end ready
 
