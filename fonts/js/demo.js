@@ -281,17 +281,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ   <br>\
 
 $(document).ready(function(){
 //console.log("Ready to start....");
-//console.log( $("#agrevc-css").text() );
 
-//Add CSS font-face text
-//----------------
-	addFont( _vars["fonts"][0] );
-	addFont( _vars["fonts"][1] );
-	addFont( _vars["fonts"][2] );
-	addFont( _vars["fonts"][3] );
-	addFont( _vars["fonts"][4] );
-	addFont( _vars["fonts"][5] );
-	addFont( _vars["fonts"][6] );
+	//addFont( _vars["fonts"][0] );
+	for( var n = 0; n < _vars["fonts"].length; n++){
+		addFont( _vars["fonts"][n] );
+	}//next
 	
 });//end ready
 
