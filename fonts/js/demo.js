@@ -174,20 +174,27 @@ src: url('#FONTSITE{{PATH}}/fiddums-family.eot?#iefix') format('embedded-opentyp
 		"font_family" : "victorian-let-regular",
 		"panel_id" : "#font-victorian-let-regular",
 		"view_code" : "#victorian-code",
+		//"fontsite" : "http://comp",
+		"path" : "fonts/V/Victorian_LET",
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family:victorian-let-regular;\
-src: url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.eot');/* EOT file for IE8 */\
-src: url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.eot?#iefix') format('embedded-opentype'), /* EOT file for IE */\
-		url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.woff2') format('woff2'),\
-		url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.woff') format('woff'),\
-		url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.ttf')  format('truetype'),\
-		url('#FONTSITEfonts/V/Victorian_LET/victorian-let-regular.svg')  format('svg');\
+src: url('#FONTSITE{{PATH}}/victorian-let-regular.eot');/* EOT file for IE8 */\
+src: url('#FONTSITE{{PATH}}/victorian-let-regular.eot?#iefix') format('embedded-opentype'), /* EOT file for IE */\
+		url('#FONTSITE{{PATH}}/victorian-let-regular.woff2') format('woff2'),\
+		url('#FONTSITE{{PATH}}/victorian-let-regular.woff') format('woff'),\
+		url('#FONTSITE{{PATH}}/victorian-let-regular.ttf')  format('truetype'),\
+		url('#FONTSITE{{PATH}}/victorian-let-regular.svg')  format('svg');\
 }";
-			if( !_vars["sitename"] ){
-				_code = _code.replace(/#FONTSITE/g, "");
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
 			} else {
-				_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
 			}
 			return _code;
 		},
