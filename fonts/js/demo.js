@@ -1,6 +1,6 @@
 _vars = [];
-//_vars["sitename"] = "http://graphic-art-collection.16mb.com";
-_vars["sitename"] = "http://comp";
+_vars["sitename"] = "http://graphic-art-collection.16mb.com";
+//_vars["sitename"] = "http://comp";
 
 _vars["fonts"] = [
 	{
@@ -95,8 +95,73 @@ src: url('#FONTSITE{{PATH}}/akbar_plain.eot') format('embedded-opentype'),\
 		//"sample_text" : "This is a test!!!!",
 		"download_link" : "fonts/A/akbar_plain/akbar_plain.zip"
 	},//end font
-	
-	
+
+	{
+		"font_name" : "Almanaque Normal",
+		"font_family" : "almanaque_normal",
+		"panel_id" : "#font-almanaque_normal",
+		"view_code" : "#almanaque_normal-code",
+		//"fontsite" : "http://comp",
+		"path" : "fonts/A/almanaque_normal",
+		"css_code" : function(){
+			var _code = "\
+@font-face { font-family: 'almanaque_normal';\
+src: url('#FONTSITE{{PATH}}/almanaque_normal.eot');\
+src: url('#FONTSITE{{PATH}}/almanaque_normal.eot') format('embedded-opentype'),\
+	url('#FONTSITE{{PATH}}/almanaque_normal.woff2') format('woff2'),\
+	url('#FONTSITE{{PATH}}/almanaque_normal.woff') format('woff'),\
+	url('#FONTSITE{{PATH}}/almanaque_normal.ttf') format('truetype'),\
+	url('#FONTSITE{{PATH}}/almanaque_normal.svg#almanaque_normal') format('svg');\
+}";
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
+			} else {
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
+			}
+			return _code;
+		},
+		//"sample_text" : "This is a test!!!!",
+		"download_link" : "fonts/A/almanaque_normal/almanaque_normal.zip"
+	},//end font
+
+	{
+		"font_name" : "Alpha Mack AOE",
+		"font_family" : "alphamackaoe",
+		"panel_id" : "#font-alphamackaoe",
+		"view_code" : "#alphamackaoe-code",
+		//"fontsite" : "http://comp",
+		"path" : "fonts/A/alphamackaoe",
+		"css_code" : function(){
+			var _code = "\
+@font-face { font-family: 'alphamackaoe';\
+src: url('#FONTSITE{{PATH}}/alphamackaoe.eot');\
+src: url('#FONTSITE{{PATH}}/alphamackaoe.eot') format('embedded-opentype'),\
+	url('#FONTSITE{{PATH}}/alphamackaoe.woff2') format('woff2'),\
+	url('#FONTSITE{{PATH}}/alphamackaoe.woff') format('woff'),\
+	url('#FONTSITE{{PATH}}/alphamackaoe.ttf') format('truetype'),\
+	url('#FONTSITE{{PATH}}/alphamackaoe.svg#alphamackaoe') format('svg');\
+}";
+			_code = _code.replace(/{{PATH}}/g, this.path);
+			if( this.fontsite && this.fontsite.length > 0){
+				_code = _code.replace(/#FONTSITE/g, this.fontsite + "/");
+			} else {
+				if( !_vars["sitename"] ){
+					_code = _code.replace(/#FONTSITE/g, "");
+				} else {
+					_code = _code.replace(/#FONTSITE/g, _vars["sitename"] + "/");
+				}
+			}
+			return _code;
+		},
+		//"sample_text" : "This is a test!!!!",
+		"download_link" : "fonts/A/alphamackaoe/alphamackaoe.zip"
+	},//end font
+
 	{
 		"font_name" : "Impact",
 		"font_family" : "Impact",
