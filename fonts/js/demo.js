@@ -1,6 +1,6 @@
 _vars = [];
-_vars["sitename"] = "http://graphic-art-collection.16mb.com";
-//_vars["sitename"] = "http://comp";
+//_vars["sitename"] = "http://graphic-art-collection.16mb.com";
+_vars["sitename"] = "http://comp";
 
 _vars["fonts"] = [
 	{
@@ -103,7 +103,7 @@ src: url('#FONTSITE{{PATH}}/akbar_plain.eot') format('embedded-opentype'),\
 		"panel_id" : "#font-impact",
 		"view_code" : "#impact-code",
 		//"fontsite" : "http://comp",
-		"path" : "fonts/impact_font",
+		"path" : "fonts/I/impact_font",
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family:Impact;\
@@ -137,8 +137,8 @@ src: url('#FONTSITE{{PATH}}/impact.eot?#iefix') format('embedded-opentype'),\
 		"panel_id" : "#font-century-gothic",
 		"view_code" : "#century-gothic-code",
 		//"fontsite" : "http://comp",
-		"path" : "fonts/gothic_font",
-		//"path" : "fonts/G/gothic_font",
+		//"path" : "fonts/gothic_font",
+		"path" : "fonts/G/gothic_font",
 		
 		"css_code" : function(){
 			var _code = "@font-face {\
@@ -172,8 +172,8 @@ src: url('#FONTSITE{{PATH}}/GOTHIC.eot?#iefix') format('embedded-opentype'),\
 		"panel_id" : "#font-fiddums-family",
 		"view_code" : "#fiddums-code",
 		//"fontsite" : "http://comp",
-		"path" : "fonts/fiddums-family",
-		//"path" : "fonts/F/fiddums-family-font",
+		//"path" : "fonts/fiddums-family",
+		"path" : "fonts/F/fiddums-family",
 		"css_code" : function(){
 			var _code = "@font-face {\
 font-family: fiddums-family;\
@@ -197,7 +197,7 @@ src: url('#FONTSITE{{PATH}}/fiddums-family.eot?#iefix') format('embedded-opentyp
 			return _code;
 		},
 		//"sample_text" : "This is a test!!!!",
-		"download_link" : "fonts/fiddums-family/fiddums-family-font.zip"
+		"download_link" : "fonts/F/fiddums-family/fiddums-family.zip"
 	},//end font
 
 	
@@ -207,8 +207,8 @@ src: url('#FONTSITE{{PATH}}/fiddums-family.eot?#iefix') format('embedded-opentyp
 		"panel_id" : "#font-french-script-mt",
 		"view_code" : "#french-script-code",
 		//"fontsite" : "http://comp",
-		"path" : "fonts/FRSCRIPT",
-		//"path" : "fonts/F/FRSCRIPT",
+		//"path" : "fonts/FRSCRIPT",
+		"path" : "fonts/F/FRSCRIPT",
 		"css_code" : function(){
 			var _code = "@font-face {\
 	font-family: french-script-mt;\
@@ -232,7 +232,7 @@ src: url('#FONTSITE{{PATH}}/fiddums-family.eot?#iefix') format('embedded-opentyp
 			return _code;
 		},
 		//"sample_text" : "This is a test!!!!",
-		"download_link" : "fonts/FRSCRIPT/FRSCRIPT.zip"
+		"download_link" : "fonts/F/FRSCRIPT/FRSCRIPT.zip"
 	},//end font
 
 	{
