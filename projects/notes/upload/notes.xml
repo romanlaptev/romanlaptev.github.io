@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
+	<note title="eng/rus books" author="anonymous" ip="37.193.108.45" client_date="2018-04-24 10:56:34" server_date="2018-04-24 03:57:29" >
+		<text_message>
+[url]http://readli.net/chitat-online/?b=102432&amp;pg=1   |   Роберт Энсон Хайнлайн.Гражданин Галактики [/url]
+[br]
+[url]https://royallib.com/read/Heinlein_Robert/Citizen_of_the_Galaxy.html#0  |  Robert A. Heinlein.Citizen of the Galaxy [/url]
+[br]
+[url] http://samlib.ru/g/gvozdika/beauty.shtml       |       Фицджеральд Ф.С. Последняя красавица Юга!!![/url]
+[br]
+[url] https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html     |     Short Stories, by F. Scott Fitzgerald. The Last of the Belles [/url]
+		</text_message>
+	</note>
+	
+	<note title="GIT" author="anonymous" ip="37.193.108.45" client_date="2018-04-24 10:58:00" server_date="2018-04-24 03:58:55" >
+		<text_message>
+[url] https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej  | Git - Как исправить HEAD detached from [/url]
+
+[code]
+При работе с Git может возникнуть такая ситуация: команда git push не заливает изменения на сервер, а команда git status показывает:
+
+$ git status
+HEAD detached from 87dc87b
+
+Это может означать, что вы делали какую-то навигацию по истории коммитов, и неправильно вернулись к последнему коммиту.
+
+Исправить эту проблему можно 4-мя командами:
+
+git branch temp
+git checkout temp
+git branch -f master temp
+git checkout master
+И, опционально,
+git branch -d temp
+
+Еще один вариант, короткий !!!!!!!!!!
+git checkout имяВеткиГдеВыНаходитесь
+
+- эта команда переключит проект в последний коммит текущей ветки. Точнее, в состоянии detached head, проект не находится ни в какой ветке. git checkout branchname просто переключит проект на последний коммит той ветки, которая указана. Это значит, что до появления ошибки нужно знать, в какой ветке ты находишься. Для того чтобы посмотреть, где находился, можно воспользовтьася командой:
+
+git reflog
+
+Самый правильный вариант
+git checkout HEAD@{1}
+[/code]
+
+[code]
+-------------
+GIT, create a new repository on the command line
+echo &quot;# lib&quot; &gt;&gt; README.md 
+git init 
+git add README.md 
+git commit -m &quot;first commit&quot; 
+git remote add origin https://github.com/romanlaptev/lib.git 
+git push -u origin master  
+#push an existing repository from the command line 
+git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
+[/code]
+		</text_message>
+	</note>
+	
+	<note title="windows FAQ, GPT" author="anonymous" ip="37.193.108.45" client_date="2018-03-20 14:49:40" server_date="2018-03-20 07:53:24" >
+		<text_message>
+[url]https://getpocket.com/a/read/2116352733 | В чем разница между GPT и MBR разделами диска[/url]
+		</text_message>
+	</note>
+	<note title="art,  Francesco Bergamini" author="anonymous" ip="37.193.108.45" client_date="2018-03-20 14:44:15" server_date="2018-03-20 07:47:59" >
+		<text_message>
+Francesco Bergamini (Italian, 1815–1883)[br]
+[url] http://www.artnet.com/artists/francesco-bergamini/ | www.artnet.com[/url]
+		</text_message>
+	</note>
+	<note title="javascript, regExp" author="anonymous" ip="37.193.108.45" client_date="2018-02-14 14:41:28" server_date="2018-02-14 07:44:35" >
+		<text_message>
+убрать из разметки все комментарии
+[code]
+var value = xmlNodes[n][&quot;html_code&quot;]
+.replace(/&lt;!--([\s\S]*?)--&gt;/mig,&quot;&quot;)//remove comments
+.replace(/\t/g,&quot;&quot;)
+.replace(/\n/g,&quot;&quot;); 
+[/code]
+		</text_message>
+	</note>
 	<note title="Вызов jsp из Servlet" author="anonymous" ip="37.193.108.45" client_date="2017-10-02 16:04:58" server_date="2017-10-02 09:08:40" >
 		<text_message>
 [url]https://toster.ru/q/284566 | Вызов jsp из Servlet/ JAVA[/url]
@@ -423,27 +504,6 @@ xrandr --addmode VGA1 1600x900_60.00
 Код: [Выделить] 
 xrandr --output VGA1 --mode 1600x900_60.00 
 (Положительный эффект не гарантирую. У меня мой способ работает на одной видеокарточке, но не работает на другой (с тем же монитором), ругается на 4-м пункте. При этом под виндой в обоих можно выставить правильное разрешение.)
-[/code]
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="GIT, create a new repository on the command line" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:11:40" server_date="2017-09-14 02:15:01" >
-		<text_message>
-
-
-
-[code]
-GIT, create a new repository on the command line 
-echo &quot;# lib&quot; &gt;&gt; README.md 
-git init 
-git add README.md 
-git commit -m &quot;first commit&quot; 
-git remote add origin https://github.com/romanlaptev/lib.git 
-git push -u origin master  
-#push an existing repository from the command line 
-git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
 [/code]
 		
 		
