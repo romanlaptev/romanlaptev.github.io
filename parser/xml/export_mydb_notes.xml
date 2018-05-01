@@ -1182,6 +1182,79 @@ Usage:
 
 </filename>
 </node>
+<node title="APT, создать локальный репозитарий" nid="803" mlid="2551" plid="2413" created="08-May-2013 12:13:34" changed="01-May-2018 19:33:41" weight="0">
+<body_value>
+/etc/apt/sources.list
+deb http://192.168.0.4/www/mirror/ lucid main
+-------------
+*****************
+create_repo.sh
+*****************
+#!/bin/sh
+# create local repository
+
+#base_dir=/mnt/disk2_3/soft/linux_soft/my_repository/ubuntu_10.04_apt
+#repository=/mnt/disk2_3/soft/linux_soft/my_repository/mirror
+
+#base_dir=/home/soft/
+#repository=/home/soft/mirror
+
+#base_dir=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror/pool/lucid/main
+base_dir=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/ubuntu_8.04_apt
+
+#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror_`date +%F`
+#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror
+repository=/media/KINGSTON/soft/linux_soft/mirror
+
+#product_name=lucid
+product_name=hardy
+
+mkdir $repository
+mkdir -p $repository/pool/$product_name/main # folder for deb-packages
+mkdir -p $repository/dists/$product_name/main/binary-i386 # folder for Packages.gz
+#cp -R $base_dir/* $repository/pool/$product_name/main
+
+cd $repository
+sudo apt-ftparchive packages pool/$product_name/main | gzip &gt; dists/$product_name/main/binary-i386/Packages.gz
+
+#sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+#sudo echo deb file:$repository $product_name main &gt; /etc/apt/sources.list
+#sudo echo deb http://192.168.0.4/www/mirror $product_name main &gt; /etc/apt/sources.list
+#sudo echo deb http://192.168.1.123/mirror $product_name main &gt; /etc/apt/sources.list
+
+#sudo apt-get update
+
+***********************
+update_repo.sh
+***********************
+#!/bin/sh
+# update local repository
+
+#base_dir=/mnt/disk2_3/soft/linux_soft/my_repository/ubuntu_10.04_apt
+#repository=mirror
+
+#product_name=hardy
+product_name=lucid
+
+#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror_`date +%F`
+#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/soft/linux_soft/my_repository/mirror
+#repository=/media/KINGSTON/soft/linux_soft/mirror
+repository=/media/KINGSTON/soft/linux_soft/mirror
+
+cd $repository
+sudo apt-ftparchive packages pool/$product_name/main | gzip &gt; dists/$product_name/main/binary-i386/Packages.gz
+#dpkg-scanpackages ./mirror_2010-11-27/pool/lucid/main | gzip &gt; ./mirror_2010-11-27/dists/lucid/main/binary-i386/Packages.gz
+
+#sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+#sudo echo deb file:$base_dir/$repository lucid main &gt; /etc/apt/sources.list
+#sudo echo deb http://192.168.0.4/www/soft/linux,bsd/linux/my_repository/mirror lusid main &gt; /etc/apt/sources.list
+#sudo apt-get update
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="Actionscript, Графики функций" nid="1035" mlid="3131" plid="1588" created="20-Apr-2014 19:38:32" changed="20-Apr-2014 19:38:32" weight="0">
 <body_value>
 //===================================================
@@ -1775,6 +1848,64 @@ http://4pda.ru/forum/index.php?showtopic=435598&amp;st=3960
 ---------------------
 Для того что бы попасть в инженерное меню телефона необходимо набрать комбинацию *#*#3646633#*#* 
 -------------------------
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="Apache, install mod_python" nid="1204" mlid="3375" plid="2354" created="31-Aug-2017 08:31:52" changed="31-Aug-2017 08:31:52" weight="0">
+<body_value>
+https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
+https://wiki.archlinux.org/index.php/Mod_python_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+http://adw0rd.com/2009/08/28/modpython/
+https://www.stableit.ru/2009/12/apache-modpython-centos-54.html
+
+apt-get install libapache2-mod-python
+yum install -y httpd mod_python
+
+vi /etc/apache2/sites-available/default
+
+        &lt;Directory /var/www/&gt;
+...
+		AddHandler mod_python .py
+                PythonHandler mod_python.publisher
+                PythonDebug On
+        &lt;/Directory&gt;
+
+vi /var/www/test_mod_python.py
+
+def index(req):
+	# req.content_type = 'text/plain'
+	req.content_type = 'text/html'
+	html = &quot;&lt;h1&gt;Test Apache2 + mod_python&lt;/h1&gt;&quot;
+	req.write( html )
+	test = 2+3
+	return test;
+
+
+------------- Python Server Pages
+
+vi /etc/apache2/sites-available/default
+        &lt;Directory /var/www/&gt;
+....
+                AddHandler mod_python .psp
+                PythonHandler mod_python.psp
+                PythonDebug On
+        &lt;/Directory&gt;
+
+PSP test script:
+
+vi /var/www/test_mod_python.psp
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+for n1 in range(0,10):
+    req.write(&quot;&lt;h1&gt;Hello Python world!&lt;/h1&gt;&quot;)
+    print &quot;&lt;br&gt;&quot;
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </body_value>
 <filename>
 
@@ -3490,6 +3621,34 @@ xrandr --output DVI-I-1 --mode 1280x1024 --pos 0x0 --output VGA-1 --mode 1280x10
 
 - graphic frontend
 apt-get install arandr
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="YUM, создать локальный репозитарий" nid="1209" mlid="3380" plid="2413" created="01-May-2018 19:29:11" changed="01-May-2018 19:29:11" weight="0">
+<body_value>
+#========================================
+# Fedora 8: создать ЛОКАЛЬНЫЙ РЕПОЗИТАРИЙ
+#========================================
+genisoimage -o fedora8.iso /media/Fedora\ 8\ i386\ DVD (создать образ DVD, не загрузочный)
+
+- rpm -i /media/CDROM/packages/createre.rpm
+- mkdir /home/mirror
+- createrepo -o /home/mirror/ /media/CDROM/packages/ (создать локал. репозиторий без rpm-пакетов)
+- ln -s /media/CDROM/packages/* /home/mirror (создать в локальном репозитории символьные ссылки на rpm-пакеты с DVD)
+- mcedit /etc/yum.d.repos/local.repo
+
+[local]
+name=fedora 8 dvd
+baseurl=file:///home/mirror
+enable=1
+----------------------
+- yum update
+- yum install fetchmail wget bzip2 unzip zip nmap openssl lynx fileutils ncftp gcc gcc-c++
+- yum install bind-chroot
+- yum install mysql mysql-devel mysql-server
+
 </body_value>
 <filename>
 
@@ -6152,6 +6311,40 @@ mplayer -vc help - список видеокодеков
 
 </filename>
 </node>
+<node title="cmd, get filename from args" nid="1205" mlid="3376" plid="3301" created="29-Sep-2017 08:33:56" changed="29-Sep-2017 08:33:56" weight="0">
+<body_value>
+http://www.cyberforum.ru/cmd-bat/thread55211.html
+FAQ по файлам BAT/CMD - Batch (CMD/BAT) - CyberForum.ru
+
+ при использовании нумерованных переменных %0-%9 можно использовать некоторые модификаторы:
+
+        %~1         - разворачивает %1, удаляя кавычки (&quot;)
+        %~f1        - разворачивает %1 в полный квалифицированный путь
+        %~d1        - разворачивает %1 в букву диска
+        %~p1        - разворачивает %1 в путь
+        %~n1        - разворачивает %1 в имя файла
+        %~x1        - разворачивает %1 в расширение файла
+        %~s1        - развернутый путь будет содержать только короткие имена
+        %~a1        - разворачивает %1 в атрибуты файла
+        %~t1        - разворачивает %1 в дату/время создания файла
+        %~z1        - разворачивает %1 в размер файла
+        %~$PATH:1   - Ищет в каталогах, перечисленных в переменной среды PATH,
+                       и разворачивает %1 в полное квалифицированное имя 
+                       первого совпадения. Если имя перменной среды
+                       не определено, или если файл не найден, этот 
+                       модификатор вернет пустую строку
+
+-------- Java compile, file *.class locate to temp
+compile.cmd Add.java
+
+javac %1 -d c:\temp\
+pause
+java -cp c:\temp %~n1
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="commads, bat, cmd" nid="821" mlid="2569" plid="3301" created="08-May-2013 13:06:55" changed="06-Jan-2016 20:01:40" weight="0">
 <body_value>
 ============================= 
@@ -8433,8 +8626,13 @@ pmloadlevel название_уровня, при этом подставляя 
 
 </filename>
 </node>
-<node title="git" nid="929" mlid="3006" plid="1588" created="09-Jan-2014 23:22:48" changed="08-Feb-2015 11:44:24" weight="0">
+<node title="git" nid="929" mlid="3006" plid="1588" created="09-Jan-2014 23:22:48" changed="14-Oct-2017 09:57:52" weight="0">
 <body_value>
+git clone https://github.com/romanlaptev/romanlaptev.heroku.com
+git clone https://bitbucket.org/romanlaptev/romanlaptev.bitbucket.org.git
+git clone https://github.com/romanlaptev/romanlaptev.gearhostpreview.com
+
+------
 git clone ssh://laptev.r@xmpp.worest.ru/home/GIT/qdec/qdec.git
 git status
 git pull
@@ -10271,6 +10469,27 @@ event.returnValue = false;
 
 </filename>
 </node>
+<node title="linux debian, net config, Добавление интерфейса eth1" nid="1202" mlid="3373" plid="3199" created="15-Aug-2017 22:20:28" changed="15-Aug-2017 22:20:28" weight="0">
+<body_value>
+Добавление интерфейса eth1
+/etc/network/interfaces
+
+auto eth1
+iface
+        eth1 inet dhcp
+
+
+Удаляем автоматически созданную конфигурацию сети, чтобы при загрузке система создала новую с учётом добавленного правила:
+sudo rm /etc/udev/rules.d/70-persistent-net.rules
+
+      
+
+http://meandubuntu.ru/2014/06/%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D0%BA%D0%B0-virtualbox-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D0%B0%D1%8F-%D1%81-%D1%85%D0%BE%D1%81%D1%82-%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D1%8B/
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="linux, mount" nid="794" mlid="2542" plid="2413" created="08-May-2013 11:50:15" changed="30-Jul-2017 13:45:47" weight="0">
 <body_value>
 fstab.mycomp (22-04-2012)
@@ -10364,101 +10583,6 @@ mount -o bind /mnt/nas/photos
 Идем в /etc/fstab и там пишем 
  /dev/hda2 /media/c ntfs iocharset=utf8,umask=0,users,user 0 0 
 -----------------------------------
-
-</body_value>
-<filename>
-
-</filename>
-</node>
-<node title="local repository" nid="803" mlid="2551" plid="2413" created="08-May-2013 12:13:34" changed="12-Apr-2015 12:30:41" weight="0">
-<body_value>
-/etc/apt/sources.list
-deb http://192.168.0.4/www/mirror/ lucid main
--------------
-*****************
-create_repo.sh
-*****************
-#!/bin/sh
-# create local repository
-
-#base_dir=/mnt/disk2_3/soft/linux_soft/my_repository/ubuntu_10.04_apt
-#repository=/mnt/disk2_3/soft/linux_soft/my_repository/mirror
-
-#base_dir=/home/soft/
-#repository=/home/soft/mirror
-
-#base_dir=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror/pool/lucid/main
-base_dir=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/ubuntu_8.04_apt
-
-#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror_`date +%F`
-#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror
-repository=/media/KINGSTON/soft/linux_soft/mirror
-
-#product_name=lucid
-product_name=hardy
-
-mkdir $repository
-mkdir -p $repository/pool/$product_name/main # folder for deb-packages
-mkdir -p $repository/dists/$product_name/main/binary-i386 # folder for Packages.gz
-#cp -R $base_dir/* $repository/pool/$product_name/main
-
-cd $repository
-sudo apt-ftparchive packages pool/$product_name/main | gzip &gt; dists/$product_name/main/binary-i386/Packages.gz
-
-#sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-
-#sudo echo deb file:$repository $product_name main &gt; /etc/apt/sources.list
-#sudo echo deb http://192.168.0.4/www/mirror $product_name main &gt; /etc/apt/sources.list
-#sudo echo deb http://192.168.1.123/mirror $product_name main &gt; /etc/apt/sources.list
-
-#sudo apt-get update
-
-***********************
-update_repo.sh
-***********************
-#!/bin/sh
-# update local repository
-
-#base_dir=/mnt/disk2_3/soft/linux_soft/my_repository/ubuntu_10.04_apt
-#repository=mirror
-
-#product_name=hardy
-product_name=lucid
-
-#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/my_repository/mirror_`date +%F`
-#repository=/media/b209fd52-5ec7-4223-9077-723bdc1020fd/soft/linux_soft/my_repository/mirror
-#repository=/media/KINGSTON/soft/linux_soft/mirror
-repository=/media/KINGSTON/soft/linux_soft/mirror
-
-cd $repository
-sudo apt-ftparchive packages pool/$product_name/main | gzip &gt; dists/$product_name/main/binary-i386/Packages.gz
-#dpkg-scanpackages ./mirror_2010-11-27/pool/lucid/main | gzip &gt; ./mirror_2010-11-27/dists/lucid/main/binary-i386/Packages.gz
-
-#sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-#sudo echo deb file:$base_dir/$repository lucid main &gt; /etc/apt/sources.list
-#sudo echo deb http://192.168.0.4/www/soft/linux,bsd/linux/my_repository/mirror lusid main &gt; /etc/apt/sources.list
-#sudo apt-get update
-
-№========================================
-№ Fedora 8: создать ЛОКАЛЬНЫЙ РЕПОЗИТАРИЙ
-№========================================
-genisoimage -o fedora8.iso /media/Fedora\ 8\ i386\ DVD (создать образ DVD, не загрузочный)
-
-- rpm -i /media/CDROM/packages/createre.rpm
-- mkdir /home/mirror
-- createrepo -o /home/mirror/ /media/CDROM/packages/ (создать локал. репозиторий без rpm-пакетов)
-- ln -s /media/CDROM/packages/* /home/mirror (создать в локальном репозитории символьные ссылки на rpm-пакеты с DVD)
-- mcedit /etc/yum.d.repos/local.repo
-
-[local]
-name=fedora 8 dvd
-baseurl=file:///home/mirror
-enable=1
-----------------------
-- yum update
-- yum install fetchmail wget bzip2 unzip zip nmap openssl lynx fileutils ncftp gcc gcc-c++
-- yum install bind-chroot
-- yum install mysql mysql-devel mysql-server
 
 </body_value>
 <filename>
@@ -11038,6 +11162,18 @@ datadir		= /mnt/disk2/documents/0_sites/0_db/mysql
 
 </filename>
 </node>
+<node title="mysql установка пароля root" nid="1203" mlid="3374" plid="2539" created="20-Aug-2017 00:18:55" changed="20-Aug-2017 00:18:55" weight="0">
+<body_value>
+http://www.mysql.ru/docs/man/Default_privileges.html
+способ задать пароль - воспользоваться командой mysqladmin:
+
+shell&gt; mysqladmin -u root password new_password
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="mysql, cmd" nid="1005" mlid="3101" plid="2415" created="20-Apr-2014 17:57:45" changed="20-Apr-2014 18:14:25" weight="0">
 <body_value>
 =============================================
@@ -11272,8 +11408,37 @@ http://stackoverflow.com/questions/1341089/using-meta-tags-to-turn-off-caching-i
 
 </filename>
 </node>
-<node title="node.js, src" nid="856" mlid="2622" plid="2355" created="21-Sep-2013 09:08:12" changed="08-Jul-2014 08:46:44" weight="0">
+<node title="node.js" nid="856" mlid="2622" plid="2355" created="21-Sep-2013 09:08:12" changed="10-Nov-2017 16:20:03" weight="0">
 <body_value>
+УСТАНОВКА
+https://unix.stackexchange.com/questions/207591/how-to-install-latest-nodejs-on-debian-jessie
+
+- скачать pre-built installer for your platform (https://nodejs.org/dist/v8.9.1/node-v8.9.1-linux-x64.tar.xz)
+- создать  /home/roman/bin
+- распаковать архив в /home/roman/bin/nodejs
+- в /home/roman/.profile добавить
+
+# set PATH so it includes user's private bin if it exists
+if [ -d &quot;$HOME/bin&quot; ] ; then
+    PATH=&quot;$HOME/bin:$PATH&quot;
+fi
+
+if [ -d &quot;$HOME/bin/nodejs/bin&quot; ] ; then
+    PATH=&quot;$HOME/bin/nodejs/bin:$PATH&quot;
+fi
+
+- выйти из сеанса  и снова
+- в терминале проверить версию
+echo $PATH
+/home/roman/bin/nodejs/bin:/home/roman/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+roman@i5:~$ node -v
+v8.9.0
+
+roman@i5:~$ npm -v
+5.5.1
+
+===============================
 /*
 var http = require(&quot;http&quot;);
 http.createServer(function(request, response) {
@@ -17117,9 +17282,12 @@ slmgr.vbs /rearm
 
 </filename>
 </node>
-<node title="windows_faq" nid="817" mlid="2565" plid="1585" created="08-May-2013 12:45:28" changed="31-Jul-2016 18:31:09" weight="0">
+<node title="windows_faq" nid="817" mlid="2565" plid="1585" created="08-May-2013 12:45:28" changed="11-Sep-2017 21:38:00" weight="0">
 <body_value>
 ------------------------------------
+Windows XP SP2
+cd-key: FKG7H-4F3V6-VM38J-4QYPG-M23QY 
+
 Windows 8.1 Preview
 http://windows.microsoft.com/ru-ru/windows-8/preview-download
 Ключ продукта: NTTX3-RV7VB-T7X7F-WQYYY-9Y92F 
@@ -21982,6 +22150,17 @@ for ($n1 = 0; $n1 &lt; $num; $n1++)
 	}
 echo &quot;&lt;/hr&gt;&quot;;
 
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="убрать из разметки все комментарии" nid="1207" mlid="3378" plid="2355" created="19-Dec-2017 08:20:18" changed="19-Dec-2017 08:20:18" weight="0">
+<body_value>
+                         var value = xmlNodes[n][&quot;html_code&quot;]
+.replace(/&lt;!--([\s\S]*?)--&gt;/mig,&quot;&quot;)//remove comments
+                         .replace(/\t/g,&quot;&quot;)
+                         .replace(/\n/g,&quot;&quot;);
 </body_value>
 <filename>
 
