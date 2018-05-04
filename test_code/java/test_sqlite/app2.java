@@ -2,8 +2,10 @@
 //https://www.tutlane.com/tutorial/sqlite/sqlite-java-tutorial
 //javac app2.java
 //java -classpath ".;../lib/sqlite-jdbc-3.8.11.2.jar" app2
+
 import java.sql.*;
 import java.io.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -44,10 +46,10 @@ class app2{
 			
 			while ( rs.next() ) {
 				String dbRecord = "{";
-				dbRecord += "id:" + rs.getString("id") + ", ";
-				dbRecord += "username:" + rs.getString("username") + ", ";
-				dbRecord += "password:" + rs.getString("password") + ", ";
-				dbRecord += "email:" + rs.getString("email");
+				dbRecord += " \"id\" : \"" + rs.getString("id") + "\", ";
+				dbRecord += "\"username\" : \"" + rs.getString("username") + "\" , ";
+				dbRecord += "\"password\" : \"" + rs.getString("password") + "\" , ";
+				dbRecord += "\"email\" : \"" + rs.getString("email") + "\"";
 				dbRecord += "}";
 				records.add( dbRecord );
 			}//next
@@ -64,12 +66,30 @@ class app2{
 		
 //out.println( Arrays.asList( records ) );
 //out.println ("Size of records: " + Integer.valueOf ( records.size() ) );		
+		String jsonStr = "[";
 		for( int n = 0; n < records.size(); n++){
-out.println( records.get(n) + ", ");
+			if( n > 0){
+				jsonStr += ",\r\n";
+			}
+			jsonStr += records.get(n);
 		}//next
+		jsonStr += "] ";
+out.println( jsonStr );
 		
-		out.println("Operation done successfully");		
+		//save to file
+		String filename = "export.json";
+		File fw = new File( filename );
+		try( FileOutputStream fos = new FileOutputStream( fw ) )	{
+			byte[] buffer = jsonStr.getBytes();
+			fos.write(buffer, 0, buffer.length);
+			fos.close();
+		}
+		catch(IOException ex){
+			//out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
 		
+		out.println("Export data done successfully");		
 	}//end main
 	
 }//end class
