@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, layout=1.0">
+	<title>Test ECMAScript  version</title>
+	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+</head>
+<body>
+
+<script>
+window.onload = function(){
+				
+	var ua = getDOMobj("ua");
+	if( ua ){
+		var tpl = ua.innerHTML;
+		var html = tpl
+		.replace("{{userAgent}}", navigator.userAgent);
+		ua.innerHTML = html;
+	}
+//---------------------------------
+		var html = runTests();
+		_log( html, "info");
+
+};//end load
+
+</script>
+
+<style>
+.panel{
+background-color:#ffffcc;
+border:1px dashed;
+}
+</style>
+
+<div class="container">
+	<div class="page-header">
+		<h1>Test ECMAScript  version</h1>
+	</div>
+
+	<div class="panel" id="ua">
+		<h3 class="text-center">navigator.userAgent: {{userAgent}}</h3>
+	</div>
+
+	<pre>
+https://ru.wikipedia.org/wiki/ECMAScript
+http://ecma-international.org/publications/standards/Standard.htm
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_5_support_in_Mozilla
+Поддержка ECMAScript 5 в Mozilla
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla
+Поддержка ECMAScript 6 в Mozilla
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_7_support_in_Mozilla
+Поддержка ECMAScript 7 в Mozilla
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+Array.from(), Метод Array.from был добавлен к стандарту ECMA-262 в 6-м издании.....
+
+https://www.w3schools.com/js/js_versions.asp
+ECMAScript Editions
+
+Year 	Name 					Description
+-----------------------------------------------------
+1997 	ECMAScript 1		First Edition.
+1998 	ECMAScript 2		Editorial changes only.
+1999 	ECMAScript 3		Added Regular Expressions. Added try/catch. 	ECMAScript 4	Was never released.
+2009 	ECMAScript 5		Added "strict mode". Added JSON support.
+2011 	ECMAScript 5.1	Editorial changes.
+2015 	ECMAScript 6		Many new features. Read more in JS Version 6.
+2016 	ECMAScript 7		Added exponential operator (**).Added Array.prototype.includes.
+2017 	ECMAScript 8		Added string padding. Added new Object properies. Added Async functions. Added Shared Memory.
+----------------
+ECMAScript 6 is also called ECMAScript 2015.
+ECMAScript 7 is also called ECMAScript 2016.
+ECMAScript 8 is also called ECMAScript 2017.
+---------------------
+https://habr.com/post/260571/
+Одобрена спецификация ECMAScript 2015
+
+	</pre>
+
+	<div class="panel">
+		<p id="counter"></p>
+		<div class="panel-body">Log panel
+			<div id="log"></div>
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="panel-body">Info panel
+			<div id="info"></div>
+		</div>
+	</div>
+
+</div><!-- end container -->
+
+<!-- TEMPLATES -->
+
+<script type="text/template" id="test-tpl">
+			<ul>
+					<li class="panel-group">
+<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
+<div class="description">
+	<small>{{msg}}</small>
+</div>
+{{test_links}}
+					</li>
+			</ul>
+</script>
+
+<script type="text/template" id="test-links-tpl">
+	<ul class=""><b>relative links</b>:
+		{{links}}
+	</ul>
+</script>
+
+<script type="text/template" id="test-links-item-tpl">
+		<li>
+			<a href='{{item-link}}' target='_blank'>{{item-text}}</a>
+		</li>	
+</script>
+
+<script>
+function getDOMobj(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	
+	return false;
+}//end getDOMobj()
+
+function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+	var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
+	if(!id){
+		var id = "log";
+	}
+	
+	var output = getDOMobj(id);
+	if( output ){
+	
+		if( !msg || msg.length == 0){
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += msg;
+		}
+		
+	} else {
+		alert(msg);
+		//document.writeln(msg);
+	}
+}//end _log()
+
+function _push( ar, item){
+	if( ar.push ){
+		ar.push(item);
+	} else {
+		var num = ar.length;
+		ar[num] = item;
+	}
+}// end _push()
+
+
+//Start tests
+function runTests(){
+
+	var tests = [];
+
+	if (!window.console){ 
+		var test = {
+			"name" : "console",
+			"result" : false,
+			"msg" : "Your browser does not support <b>console.log</b>"
+		};
+		
+		_push( tests, test );
+
+		window.console = {
+			"log" : function( msg ){
+				var log = getDOMobj("log");
+				if(log){
+					log.innerHTML += "<p>" + msg +"<p>";
+				} else {
+					alert(msg);
+					//document.writeln(msg);
+				}
+			}
+		}
+
+	};
+//--------------------------------------
+	if ( !tests.push ){ 
+		var test = {
+			"name" : "array.push()",
+			"result" : false,
+			"msg" : "Your browser does not support <b>method push()</b>"
+		};
+		_push( tests, test );
+	};
+//--------------------------------------
+
+	var test = {
+		"name" : "Test ECMAScript 5,  2009",
+		"result" : false,
+		"msg" : "Fail test, this browser don't support <b>ECMAScript 5</b> object JSON"
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_5_support_in_Mozilla", 
+		"text" : "Поддержка ECMAScript 5 в Mozilla"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "http://kangax.github.io/compat-table/es5/", 
+		"text" : "Поддержка ECMAScript 5 в различных браузерах"
+	};
+	_push( test["links"], obj );
+
+
+
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+		test["msg"] = "successful check  JSON support , this browser support <b>ECMAScript 5</b>";
+	}// else {
+		//test["msg"] += ", typeof JSON :" + typeof JSON;
+		//test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
+//	}
+
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "Test ECMAScript 6,  2015",
+		"result" : false,
+		"msg" : "Fail test, this browser don't support <b>ECMAScript 6</b> object Promise"
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla", 
+		"text" : "Поддержка ECMAScript 6 в Mozilla"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "http://kangax.github.io/es5-compat-table/es6", 
+		"text" : "Поддержка ECMAScript 6 в различных браузерах"
+	};
+	_push( test["links"], obj );
+
+
+	if( typeof window.Promise !== "undefined" ){
+		test["result"]= true;
+		test["msg"] = "successful check  Promise support , this browser support <b>ECMAScript 6</b>";
+	}
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "Test ECMAScript 7,  2016",
+		"result" : false,
+		"msg" : "Fail test, this browser don't support <b>ECMAScript 7</b>"
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_7_support_in_Mozilla", 
+		"text" : "Поддержка ECMAScript 7 в Mozilla"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "http://kangax.github.io/compat-table/es2016plus/", 
+		"text" : "Поддержка ECMAScript 2016 в различных браузерах"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes", 
+		"text" : "Array.prototype.includes()"
+	};
+	_push( test["links"], obj );
+
+
+	if( Array.prototype.includes ){
+		test["result"]= true;
+		test["msg"] = "successful check  <b>Array.prototype.includes</b> method  support , this browser support <b>ECMAScript 6</b>";
+
+		var array1 = [1, 2, 3];
+console.log( array1.includes(2) );// expected output: true
+
+		var pets = ['cat', 'dog', 'bat'];
+console.log( pets.includes('cat') );// expected output: true
+console.log( pets.includes('at') );// expected output: false
+	}
+
+	_push( tests, test );
+//--------------------------------------
+
+//console.log(tests);
+	//for( var item in tests[0] ){
+		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
+		//_log( msg);
+	//}
+
+	//form HTML
+	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	
+	//var test_tpl = getDOMobj("test-tpl").innerHTML;
+//console.log( test_tpl );	
+
+	var test_links_tpl = getDOMobj("test-links-tpl").innerHTML;
+//console.log( test_links_tpl );	
+	var test_links_item_tpl = getDOMobj("test-links-item-tpl").innerHTML;
+//console.log( test_links_item_tpl );	
+	
+	var testHtml = "<h1>Tests</h1>";
+	for( var n = 0; n < tests.length; n++){
+	
+		var html = testTpl.replace("{{name}}", tests[n]["name"])
+		.replace("{{result}}", tests[n]["result"]);
+		
+		var msg = tests[n]["msg"];
+		if(!msg){
+			msg = "";
+		}
+		html = html.replace("{{msg}}", msg );
+		
+		var test_links = "";
+		if( tests[n]["links"] ){
+			var test_links = tests[n]["links"];
+			if( test_links.length > 0  ){
+				var html_items = "";
+				for( var n2 = 0; n2 < test_links.length; n2++){
+					html_items += test_links_item_tpl
+					.replace("{{item-link}}", test_links[n2]["link"])
+					.replace("{{item-text}}", test_links[n2]["text"]);
+				};//next
+				test_links = test_links_tpl.replace("{{links}}", html_items);
+//console.log( test_links );		
+			}
+		}
+		html = html.replace("{{test_links}}", test_links);
+		
+		testHtml += html;
+	}//next
+	
+	return "<ul>" + testHtml + "</ul>";
+
+}//end runTests()
+
+</script>
+
+</body>
+</html>
