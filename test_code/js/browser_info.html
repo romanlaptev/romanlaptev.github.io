@@ -78,7 +78,8 @@ function _log( msg, id){
 	var output = getDOMobj(id);
 	if( output ){
 	
-		if( msg.length == 0){
+		//if( msg.length == 0){
+		if( !msg || msg.length == 0){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
