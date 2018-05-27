@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
-	<title>Test ECMAScript  version</title>
+	<title>Test ECMAScript  versions</title>
 	<link rel="stylesheet" href="../css/bootstrap335.min.css">
 </head>
 <body>
@@ -43,7 +43,7 @@ margin-top: 5px;
 
 <div class="container">
 	<div class="page-header">
-		<h1>Test ECMAScript  version</h1>
+		<h1>Test ECMAScript  versions</h1>
 	</div>
 
 	<div class="panel" id="ua">
@@ -371,7 +371,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 7,  2016",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 7</b>"
+		"msg" : "Fail test, this browser don't support <b>ECMAScript 7</b> method Array.prototype.includes()"
 	};
 	test["links"]=[];
 	var obj = {
@@ -393,7 +393,7 @@ function runTests(){
 
 	if( Array.prototype.includes ){
 		test["result"]= true;
-		test["msg"] = "successful check  <b>Array.prototype.includes</b> method  support , this browser support <b>ECMAScript 6</b>";
+		test["msg"] = "successful check  <b>Array.prototype.includes</b> method  support , this browser support <b>ECMAScript 7</b>";
 
 		var array1 = [1, 2, 3];
 console.log( array1.includes(2) );// expected output: true
