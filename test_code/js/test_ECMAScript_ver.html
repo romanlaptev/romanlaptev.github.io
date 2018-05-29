@@ -238,7 +238,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 1,  1997 (JavaScript 1.2-1.3)",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 1</b> <b>Array.prototype.concat</b> method...."
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 1</b> <b>Array.prototype.concat</b> method...."
 	};
 
 	test["links"]=[];
@@ -251,7 +251,7 @@ function runTests(){
 //console.log( Array.prototype.concat  );
 	if ( Array.prototype.concat ) {
 		test["result"] = true;
-		test["msg"] = "successful check  <b>Array.prototype.concat</b> method support , this browser support <b>ECMAScript 1</b>";
+		test["msg"] = "successful check  <b>Array.prototype.concat</b> method support , this browser <b class='text-danger'>support ECMAScript 1</b>";
 	}
 
 	_push( tests, test );
@@ -260,7 +260,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 2,  1998 (JavaScript 1.3)",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 2</b> <b>Date.prototype.getFullYear</b> method...."
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 2</b> <b>Date.prototype.getFullYear</b> method...."
 	};
 
 	test["links"]=[];
@@ -279,7 +279,7 @@ function runTests(){
 //console.log( Date.prototype.getFullYear  );
 	if ( Date.prototype.getFullYear ) {
 		test["result"] = true;
-		test["msg"] = "successful check  <b>Date.prototype.getFullYear</b> method support , this browser support <b>ECMAScript 2</b>";
+		test["msg"] = "successful check  <b>Date.prototype.getFullYear</b> method support , this browser <b class='text-danger'>support ECMAScript 2</b>";
 	}
 
 	_push( tests, test );
@@ -288,7 +288,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 3,  1999 (JavaScript 1.5 - 1.8)",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 3</b> <b>Number.prototype.toFixed</b> method...."
+		"msg" : "Fail test, this browser don't support <b class='text-danger'>ECMAScript 3</b> <b>Number.prototype.toFixed</b> method...."
 	};
 
 	test["links"]=[];
@@ -307,7 +307,7 @@ function runTests(){
 	//if ( 'toFixed' in Number.prototype ) {
 	if ( Number.prototype.toFixed ) {
 		test["result"] = true;
-		test["msg"] = "successful check  <b>Number.prototype.toFixed</b> method support , this browser support <b>ECMAScript 3</b>";
+		test["msg"] = "successful check  <b>Number.prototype.toFixed</b> method support , this browser <b class='text-danger'>support ECMAScript 3</b>";
 	}
 
 	_push( tests, test );
@@ -316,7 +316,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 5,  2009 (JavaScript 1.8.1 - 1.8.5)",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 5</b> object JSON"
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 5</b> object JSON"
 	};
 	test["links"]=[];
 	var obj = {
@@ -334,7 +334,7 @@ function runTests(){
 
 	if (typeof JSON === 'object') {
 		test["result"] = true;
-		test["msg"] = "successful check  JSON support , this browser support <b>ECMAScript 5</b>";
+		test["msg"] = "successful check  JSON support , this browser <b class='text-danger'>support ECMAScript 5</b>";
 	}// else {
 		//test["msg"] += ", typeof JSON :" + typeof JSON;
 		//test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
@@ -346,7 +346,7 @@ function runTests(){
 	var test = {
 		"name" : "Test ECMAScript 6,  2015",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 6</b> object Promise"
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 6</b> object Promise"
 	};
 	test["links"]=[];
 	var obj = {
@@ -359,19 +359,36 @@ function runTests(){
 		"text" : "Поддержка ECMAScript 6 в различных браузерах"
 	};
 	_push( test["links"], obj );
-
+	
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", 
+		"text" : "Promise"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map", 
+		"text" : "Map"
+	};
+	_push( test["links"], obj );
 
 	if( typeof window.Promise !== "undefined" ){
 		test["result"]= true;
-		test["msg"] = "successful check  Promise support , this browser support <b>ECMAScript 6</b>";
+		test["msg"] = "This browser <b class='text-danger'>support ECMAScript 6</b>";
+		test["msg"] += "<br>successful check  Promise support.";
 	}
+	
+//console.log(Map, typeof Map );		
+	if( typeof Map === "function" ){
+		test["msg"] += "<br>successful check  Map support.";
+	}
+	
 	_push( tests, test );
 //--------------------------------------
 
 	var test = {
 		"name" : "Test ECMAScript 7,  2016",
 		"result" : false,
-		"msg" : "Fail test, this browser don't support <b>ECMAScript 7</b> method Array.prototype.includes()"
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 7</b> method Array.prototype.includes()"
 	};
 	test["links"]=[];
 	var obj = {
@@ -393,7 +410,7 @@ function runTests(){
 
 	if( Array.prototype.includes ){
 		test["result"]= true;
-		test["msg"] = "successful check  <b>Array.prototype.includes</b> method  support , this browser support <b>ECMAScript 7</b>";
+		test["msg"] = "successful check  <b>Array.prototype.includes</b> method  support , this browser <b class='text-danger'>support ECMAScript 7</b>";
 
 		var array1 = [1, 2, 3];
 console.log( array1.includes(2) );// expected output: true
@@ -401,6 +418,37 @@ console.log( array1.includes(2) );// expected output: true
 		var pets = ['cat', 'dog', 'bat'];
 console.log( pets.includes('cat') );// expected output: true
 console.log( pets.includes('at') );// expected output: false
+	}
+
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "Test ECMAScript 8,  2017",
+		"result" : false,
+		"msg" : "Fail test, this browser <b class='text-danger'>don't support ECMAScript 8</b> method Object.values()"
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "http://kangax.github.io/compat-table/es2016plus/", 
+		"text" : "Поддержка ECMAScript 2016 в различных браузерах"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values", 
+		"text" : "Object.values()"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries", 
+		"text" : "Object.entries()"
+	};
+	_push( test["links"], obj );
+
+//console.log(Object.values, typeof Object.values);
+	if( typeof Object.values === "function"){
+		test["result"]= true;
+		test["msg"] = "successful check  <b>Object.values()</b> method  support , this browser <b class='text-danger'>support ECMAScript 8</b>";
 	}
 
 	_push( tests, test );
