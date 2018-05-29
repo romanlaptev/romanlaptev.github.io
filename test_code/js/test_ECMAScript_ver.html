@@ -359,12 +359,29 @@ function runTests(){
 		"text" : "Поддержка ECMAScript 6 в различных браузерах"
 	};
 	_push( test["links"], obj );
-
+	
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", 
+		"text" : "Promise"
+	};
+	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map", 
+		"text" : "Map"
+	};
+	_push( test["links"], obj );
 
 	if( typeof window.Promise !== "undefined" ){
 		test["result"]= true;
-		test["msg"] = "successful check  Promise support , this browser <b class='text-danger'>support ECMAScript 6</b>";
+		test["msg"] = "This browser <b class='text-danger'>support ECMAScript 6</b>";
+		test["msg"] += "<br>successful check  Promise support.";
 	}
+	
+//console.log(Map, typeof Map );		
+	if( typeof Map === "function" ){
+		test["msg"] += "<br>successful check  Map support.";
+	}
+	
 	_push( tests, test );
 //--------------------------------------
 
@@ -422,8 +439,13 @@ console.log( pets.includes('at') );// expected output: false
 		"text" : "Object.values()"
 	};
 	_push( test["links"], obj );
+	var obj = {
+		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries", 
+		"text" : "Object.entries()"
+	};
+	_push( test["links"], obj );
 
-console.log(Object.values, typeof Object.values);
+//console.log(Object.values, typeof Object.values);
 	if( typeof Object.values === "function"){
 		test["result"]= true;
 		test["msg"] = "successful check  <b>Object.values()</b> method  support , this browser <b class='text-danger'>support ECMAScript 8</b>";
