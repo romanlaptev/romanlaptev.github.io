@@ -4,3 +4,4 @@ test3
 test4 (from vbox-win7)
 test5 from eee-pc
 test6
+test (from vbox-mac109.local)
