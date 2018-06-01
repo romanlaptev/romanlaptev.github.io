@@ -448,7 +448,14 @@ console.log( pets.includes('at') );// expected output: false
 //console.log(Object.values, typeof Object.values);
 	if( typeof Object.values === "function"){
 		test["result"]= true;
-		test["msg"] = "successful check  <b>Object.values()</b> method  support , this browser <b class='text-danger'>support ECMAScript 8</b>";
+		test["msg"] = "This browser <b class='text-danger'>support ECMAScript 8</b>";
+		test["msg"] += "<p>successful check  <b>Object.values()</b> method.</p>";
+	}
+
+console.log(Object.entries, typeof Object.entries);
+	if( typeof Object.entries === "function"){
+		//test["result"]= true;
+		test["msg"] += "<p>successful check  <b>Object.entries()</b> method.</p>";
 	}
 
 	_push( tests, test );
