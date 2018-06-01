@@ -4,3 +4,7 @@ test3
 test4 (from vbox-win7)
 test5 from eee-pc
 test6
+
+test8, from vbox-mac109
+test9, from vbox5-sites
+test10

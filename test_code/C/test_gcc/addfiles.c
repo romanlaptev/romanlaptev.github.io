@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-main(argc,argv)
+int main(argc,argv)
 
 int argc; /* Число аргументов в командной строке */
 char *argv []; /* Вектор указателей на аргументы */
