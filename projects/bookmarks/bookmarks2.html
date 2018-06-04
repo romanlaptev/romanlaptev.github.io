@@ -9,6 +9,17 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap/bootstrap337.min.js"></script>
+	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
+	<script>
+window.onload = function(){}//end load
+
+$(document).ready(function(){
+	//$("input[type=file]").bootstrapFileInput();
+});//end ready	
+	</script>
+	
 <!--[if lt IE 9]>
 	<script src="js/fix_IE/html5shiv.js"></script>
 	<script src="js/fix_IE/respond.min.js"></script>
@@ -31,7 +42,7 @@
 		
 		<div id="control-btn" class="panel-body">
 			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-<button class="btn btn-primary" data-toggle="modal" data-target="#importModal">upload bookmarks.json</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">upload bookmarks.json</button>
 			</div>	
 <a id="clear-log" class="btn btn-sm btn-danger pull-right"" href="#?q=clear-log">clear log</a>
 		</div>
@@ -68,6 +79,34 @@
 	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="page-container">scroll to top</button>
 </div>
 -->
+
+<!-- ********************** uploadModal ************************** -->	
+	<div id="uploadModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">upload bookmarks.json</h4>
+				</div>
+<form name="form_import" id="import-form" action="api/notes_mysql.php" method="POST" enctype="multipart/form-data">
+				<div class="modal-body">
+	<input type="file" name="upload_file" title="Choose file" class="btn-primary"><br>
+<!--
+	<input type="hidden" name="action" value="upload">
+<input type="file" name="upload_files[]" id="file-select" multiple>
+				upload_max_filesize = '.$upload_max_filesize.'
+-->	
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">upload</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+</form>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end uploadModal -->
 
 <script src="js/shared_functions.js"></script>
 <script src="js/bookmarks2.js"></script>
