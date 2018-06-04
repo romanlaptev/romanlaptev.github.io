@@ -2,6 +2,7 @@ var webApp = {
 	"vars" : {
 		"app_title" : "Firefox bookmarks",
 		"log" : [],
+		"data_url" : "db/bookmarks.json",
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("page-container"),
@@ -42,7 +43,7 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		//"init_url" : "#?q=node&nid=20",
+		"init_url" : "#?q=parse-json",
 	};// _vars
 	
 	var _init = function( opt ){
@@ -151,6 +152,28 @@ console.log( "Warn! error parse url in " + target.href );
 			case "parse-json":
 				var log = getById("log");
 				log.innerHTML="start parsing....";
+				
+				runAjax( {
+					"requestMethod" : "GET", 
+					"url" : webApp.vars["data_url"], 
+					"callback": function( data ){
+						
+var msg = "load " + webApp.vars["data_url"] ;
+console.log(msg);
+					webApp.vars["log"].push(msg);
+console.log( "_postFunc(), " + typeof data );
+console.log( data );
+		//for( var key in data){
+		//console.log(key +" : "+data[key]);
+		//}
+						// if( !data ){
+		// console.log("error, not find 'data'.... ");			
+							// return false;
+						// }
+						//__parseAjax( data );
+					}//end callback()
+				});
+				
 			break;
 			
 			default:
@@ -164,7 +187,19 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 //..................
 	}//end _loadTemplates()
 	
-	
+	// function _serverRequest( opt ){
+		// var p = {
+			// //"date": null,
+			// "callback": null
+		// };
+		
+		// //extend options object
+		// for(var key in opt ){
+			// p[key] = opt[key];
+		// }
+// console.log(p);		
+	// }//end _serverRequest()
+
 	
 	// public interfaces
 	return{
@@ -175,7 +210,10 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		urlManager:	function( target ){ 
 			return _urlManager( target ); 
 		},
-		loadTemplates : _loadTemplates,
+		loadTemplates : _loadTemplates//,
+		//serverRequest:	function(opt){ 
+			//return _serverRequest(opt); 
+		//}
 	};
 	
 }//end _app()
@@ -184,7 +222,20 @@ function _runApp(){
 	//webApp.app.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		webApp.init(function(){
-//...........		
+
+			var parseUrl = window.location.search; 
+			if( parseUrl.length > 0 ){
+				webApp.vars["GET"] = parseGetParams(); 
+				webApp.app.urlManager();
+			} else {
+				if( webApp.app.vars["init_url"] ){
+						parseUrl = webApp.app.vars["init_url"].substring(2);
+//console.log(parseUrl);					
+				}
+				webApp.vars["GET"] = parseGetParams( parseUrl ); 
+				webApp.app.urlManager();
+			}
+		
 		});//end webApp initialize
 	//});
 }//end _runApp()
