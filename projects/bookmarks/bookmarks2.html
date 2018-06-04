@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firefox bookmarks</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	
+<!--[if lt IE 9]>
+	<script src="js/fix_IE/html5shiv.js"></script>
+	<script src="js/fix_IE/respond.min.js"></script>
+<![endif]-->
+
+	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+<div class="container" id="page-container">
+
+	<header>
+		<div class="page-header">
+			<h1 class="text-right" id="app-title">Application title</h1>
+		</div>
+	</header>
+
+	<div class=" panel panel-primary">
+		
+		<div id="control-btn" class="panel-body">
+			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
+<button class="btn btn-primary" data-toggle="modal" data-target="#importModal">upload bookmarks.json</button>
+			</div>	
+<a id="clear-log" class="btn btn-sm btn-danger pull-right"" href="#?q=clear-log">clear log</a>
+		</div>
+		<div id="log-wrap" class="panel-body log-panel">
+			<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
+	<!--
+			<div class="progress">ajax load:
+				<div id="load-progress-bar" class="progress-bar hide"></div>
+			</div>
+	-->
+			<div id="log"></div>
+		</div>
+		
+	</div>
+		
+
+	<div class="panel panel-primary">
+		<div class="panel-body" id="insert_json">
+		</div>
+	</div>
+
+	<footer>
+		<div class="col-sm-3 col-md-3"></div>
+		<div class="col-sm-6 col-md-6"></div>
+		<div class="col-sm-3 col-md-3"></div>
+	</footer>
+	
+</div><!-- end container -->
+
+<!--
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="page-container">scroll to top</button>
+</div>
+-->
+
+<script src="js/shared_functions.js"></script>
+<script src="js/bookmarks2.js"></script>
+
+</body>
+</html>
