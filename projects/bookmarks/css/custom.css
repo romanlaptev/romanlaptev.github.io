@@ -59,3 +59,7 @@ word-break: break-all;
 	left: 50%;
 	margin-left: -40px;	
 }
+
+header .btn:hover {
+	background: #286090 !important;
+}
