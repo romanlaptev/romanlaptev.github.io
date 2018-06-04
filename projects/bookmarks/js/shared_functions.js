@@ -35,6 +35,16 @@ function _log( msg, id){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
+			
+			// var logWrap = getById("log-wrap");
+			// if( logWrap ){
+// console.log(logWrap);
+// console.log(logWrap.style.display);
+				// if( logWrap.style.display === "none"){
+					// logWrap.style.display="block";
+				// }
+			// }			
+			
 		}
 		
 	} else {
@@ -43,10 +53,10 @@ function _log( msg, id){
 		//document.writeln(msg);
 	}
 	
-	if( typeof _showHiddenLog === "function"){
-//console.log(_showHiddenLog);
-		_showHiddenLog();
-	}
+	// if( typeof _showHiddenLog === "function"){
+// //console.log(_showHiddenLog);
+		// _showHiddenLog();
+	// }
 	
 }//end _log()
 
@@ -89,6 +99,167 @@ function get_attr_to_obj( attr ){
 	return item_attr;
 }//end get_attr_to_obj()
 
+
+
+/*
+parse XML document to array
+<table><note>....</note>, <note>...</note></table>
+
+IN:
+<templates>
+	<tpl name="tpl-node_photogallery_image">
+		<html_code><![CDATA[
+......
+		]]></html_code>
+	</tpl>
+.................
+</templates>
+
+OUT:
+[ { name: "attr value", html_code: "......" },
+{ name: "attr value", html_code: "......" }]
+ONLY second LEVEL !!!!!!!!!!!!							  
+*/
+function _parseXmlToObj(xml){
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );			
+	var rootTagName = xml.documentElement.nodeName;
+	var xmlDoc = xml.getElementsByTagName( rootTagName);
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+	var xmlObj = [];
+	for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+		var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+			continue;
+		}
+		var node = __parseChildNode( child );
+//console.log(node);			
+		xmlObj.push ( node );
+	}//next
+//console.log(xmlObj);				
+	return xmlObj;
+	
+	function __parseChildNode( nodeXml ){
+//console.log( "nodeName: "+ nodeXml.nodeName);
+//console.log( "text: "+ nodeXml.text);
+//console.log( "textContent: "+ nodeXml.textContent);
+// var test = nodeXml;				
+// for(var key in test ){
+// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
+// }
+		var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
+		for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
+			var _child = nodeXml.childNodes.item(n2);
+//console.log( "nodeType: "+ _child.nodeType);
+			if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
+				continue;
+			}
+// console.log( "nodeName: "+ _child.nodeName);
+// console.log( "text: "+ _child.text);
+// console.log( "textContent: "+ _child.textContent);
+			var _name = _child.nodeName;
+			if ("textContent" in _child){
+				nodeObj[_name] = _child.textContent;
+			} else {
+				nodeObj[_name] = _child.text;
+			}
+		}//next
+
+// if( !record.children){
+// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+// }
+		return nodeObj;
+	}//end __parseChildNode()
+
+}//end _parseXmlToObj()
+
+
+
+//**************************************
+//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
+//$_GET = parseGetParams(); 
+//or 
+//$_GET = parseGetParams("?test=1"); 
+//console.log( $_GET);
+//**************************************
+function parseGetParams( parseStr ) { 
+
+	if( !parseStr ){
+		var parse_url = window.location.search.substring(1).split("&"); 
+	} else {
+		var parse_url = parseStr.split("&"); 
+	}
+//console.log(parse_url);
+	
+	var $_GET = {}; 
+	for(var n = 0; n < parse_url.length; n++) { 
+	var getVar = parse_url[n].split("="); 
+		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+		if( typeof(getVar[1])=="undefined" ){
+			$_GET[ getVar[0] ] = "";
+		} else {
+		 $_GET[ getVar[0] ] = getVar[1];
+		}
+	}//next
+	return $_GET; 
+}//end parseGetParams() 
+
+
+function getXMLDocument(url)  {  
+	var xml;  
+	if(window.XMLHttpRequest) {  
+		xml=new window.XMLHttpRequest();  
+		xml.open("GET", url, false);  
+		xml.send("");  
+		//alert (xml.responseText);
+		return xml.responseXML;  
+	}  else  {
+		if(window.ActiveXObject) {  
+			xml=new ActiveXObject("Microsoft.XMLDOM");  
+			xml.async=false;  
+			xml.load(url);  
+			return xml;  
+		}  else  {  
+			alert("Загрузка XML не поддерживается браузером");  
+			return null;  
+		}  
+	}
+}//end getXMLDocument
+
+function create_MSXML(){
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		}  catch(e) {
+console.log("error: " + e);
+			for( var item in e )	{
+console.log(item + ": " + e[item]);
+			}
+		};
+	}
+}//end create_MSXML()
 
 /*
 	runAjax( {

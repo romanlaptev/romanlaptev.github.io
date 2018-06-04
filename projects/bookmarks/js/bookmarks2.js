@@ -3,8 +3,9 @@ var webApp = {
 		"app_title" : "Firefox bookmarks",
 		"log" : [],
 		//"templates_url" : "tpl/templates.xml",
-		//"GET" : {},
-		//"pageContainer" : getById("page-container"),
+		"GET" : {},
+		"pageContainer" : getById("page-container"),
+		"btnParse" : getById("btn-parse"),
 		//"wait" : getById("wait"),
 		//"waitWindow" : getById("wait-window"),
 		//"loadProgress" : getById("load-progress"),
@@ -46,12 +47,124 @@ function _app( opt ){
 	
 	var _init = function( opt ){
 console.log("init app!");
-		//defineEvents();
+		defineEvents();
 	};//end _init()
+	
+	function defineEvents(){
+//console.log( webApp.vars.pageContainer );
+		if( webApp.vars.pageContainer ){
+			webApp.vars.pageContainer.onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+//console.log( this );//page-container
+//console.log( target.textContent );
+//console.log( event.eventPhase );
+//console.log( "preventDefault: " + event.preventDefault );
+				//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+				
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+
+							var search = target.href.split("?"); 
+							var parseStr = search[1]; 
+//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+								webApp.vars["GET"] = parseGetParams( parseStr ); 
+								webApp.app.urlManager( target );
+							} else {
+console.log( "Warn! error parse url in " + target.href );
+							}
+					}
+				}
+				
+			}//end event
+		}
+
+		if( webApp.vars.btnParse ){
+			webApp.vars.btnParse.onclick = function( event ){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+
+				$("#serviceModal").modal("hide");
+
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#") !== -1){
+							if (event.preventDefault) { 
+								event.preventDefault();
+							} else {
+								event.returnValue = false;				
+							}
+
+								var search = target.href.split("?"); 
+								var parseStr = search[1]; 
+//console.log( search, parseStr );
+								if( parseStr.length > 0 ){
+									webApp.vars["GET"] = parseGetParams( parseStr ); 
+									webApp.app.urlManager( target );
+								} else {
+	console.log( "Warn! error parse url in " + target.href );
+								}
+					}
+				}
+				
+			}//end event
+		}
+
+	}//end defineEvents()
+
+
+	function _urlManager( target ){
+//console.log(target);
+		switch( webApp.vars["GET"]["q"] ) {
+			
+			case "hide-log":
+				var log = getById("log-wrap");
+				log.style.display="none";
+			break;
+			case "view-log":
+				var log = getById("log-wrap");
+				log.style.display="block";
+			break;
+			case "toggle-log":
+				var log = getById("log-wrap");
+//console.log(log.style.display);
+				if( log.style.display==="none"){
+					log.style.display="block";
+				} else {
+					log.style.display="none";
+				}
+			break;
+			
+			case "clear-log":
+				var log = getById("log");
+				log.innerHTML="";
+			break;
+			
+			case "parse-json":
+				var log = getById("log");
+				log.innerHTML="start parsing....";
+			break;
+			
+			default:
+console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
+			break;
+		}//end switch
+		
+	}//end _urlManager()
 	
 	function _loadTemplates( callback ){
 //..................
 	}//end _loadTemplates()
+	
+	
 	
 	// public interfaces
 	return{
@@ -59,9 +172,9 @@ console.log("init app!");
 		init:	function(args){ 
 			return _init(args); 
 		},
-		//urlManager:	function( target ){ 
-			//return _urlManager( target ); 
-		//},
+		urlManager:	function( target ){ 
+			return _urlManager( target ); 
+		},
 		loadTemplates : _loadTemplates,
 	};
 	
