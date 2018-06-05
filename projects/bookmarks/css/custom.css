@@ -60,6 +60,11 @@ word-break: break-all;
 	margin-left: -40px;	
 }
 
+/* fix Bootstrap */
 header .btn:hover {
 	background: #286090 !important;
+}
+.alert {
+  margin-bottom: 5px !important;
+  padding: 10px !important;
 }

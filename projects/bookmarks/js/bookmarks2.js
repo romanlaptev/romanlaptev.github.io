@@ -1,8 +1,10 @@
 var webApp = {
 	"vars" : {
 		"app_title" : "Firefox bookmarks",
-		"log" : [],
+		//"log" : [],
+		"logMsg" : "",
 		"data_url" : "db/bookmarks.json",
+		//"data_url" : "db/lib.json",
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("page-container"),
@@ -151,26 +153,86 @@ console.log( "Warn! error parse url in " + target.href );
 			
 			case "parse-json":
 				var log = getById("log");
-				log.innerHTML="start parsing....";
+				
+				if( webApp.vars["data_url"] && webApp.vars["data_url"].length > 0){
+//webApp.vars["logMsg"] = "start parsing...." + webApp.vars["data_url"];
+//_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+				} else {
+webApp.vars["logMsg"] = "error, not defined 'data_url' "
+_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+				}
 				
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
+/*					
+					"onProgress" : function(e){
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+							if( webApp.vars["loadProgress"] ){
+								webApp.vars["loadProgress"].value = percentComplete;
+							}
+							if( webApp.vars["loadProgressBar"] ){
+								webApp.vars["loadProgressBar"].className = "progress-bar";
+								webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+								webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+							}
+
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+					},//end onProgress()
+*/					
+
+					"onLoadEnd" : function( headers ){
+//console.log( typeof headers, headers );
+/*
+						if( headers && headers.length > 0){
+							var arrHeaders = headers.split("\r\n");
+//console.log(arrHeaders);
+							var objHeaders = {};
+							for( var n = 0; n < arrHeaders.length; n++){
+								if( !arrHeaders[n]){
+									continue;
+								}
+								if( arrHeaders[n].length === 0){
+									continue;
+								}
+								var headerStr = arrHeaders[n];
+								var arrHeader = headerStr.split(":");
+								var key = arrHeader[0];
+								var value = arrHeader[1].trim();
+								objHeaders[ key ] = value;
+							}//next
+//console.log(objHeaders);
+							webApp.vars["reqHeaders"] = objHeaders;
+							if( webApp.vars["reqHeaders"]["Last-Modified"] &&
+									webApp.vars["reqHeaders"]["Last-Modified"].length > 0){
+webApp.vars["logMsg"] = webApp.vars["data_url"] + ", Last-Modified: " + webApp.vars["reqHeaders"]["Last-Modified"] ;
+_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+							}
+						}
+*/						
+					},//end onLoadEnd
+					
 					"callback": function( data ){
+//webApp.vars["logMsg"] = "load " + webApp.vars["data_url"] ;
+//_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+//console.log( webApp.vars["logMsg"] );
+//console.log( "_postFunc(), " + typeof data );
+//console.log( data );
+//for( var key in data){
+//console.log(key +" : "+data[key]);
+//}
+						if( data.length > 0){
+							_parseJSON( data );
+						} else {
+webApp.vars["logMsg"] = "error, no JSON data in " + webApp.vars["data_url"] ;
+_log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+						}
 						
-var msg = "load " + webApp.vars["data_url"] ;
-console.log(msg);
-					webApp.vars["log"].push(msg);
-console.log( "_postFunc(), " + typeof data );
-console.log( data );
-		//for( var key in data){
-		//console.log(key +" : "+data[key]);
-		//}
-						// if( !data ){
-		// console.log("error, not find 'data'.... ");			
-							// return false;
-						// }
-						//__parseAjax( data );
 					}//end callback()
 				});
 				
@@ -182,6 +244,54 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 	}//end _urlManager()
+	
+	function _parseJSON( jsonStr ){
+		try{
+			var jsonObj = JSON.parse( jsonStr, function(key, value) {
+	//console.log( key, value );
+				return value;
+			});
+		} catch(error) {
+webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
+console.log( webApp.vars["logMsg"] );
+_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+		}//end catch
+		
+		webApp.vars["jsonObj"] = jsonObj;
+		
+		webApp.vars["dateAdded"] = __parseDate( webApp.vars["jsonObj"]["dateAdded"] );
+		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"];
+//console.log( webApp.vars["logMsg"] );
+_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
+		
+		webApp.vars["lastModified"] = __parseDate( webApp.vars["jsonObj"]["lastModified"] );
+		webApp.vars["logMsg"] = "lastModified : " + webApp.vars["lastModified"];
+//console.log( webApp.vars["logMsg"] );
+_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
+		
+		function __parseDate( _date ){
+//dateAdded: 1472905372954000
+//lastModified: 1451313156596000
+//"dateAdded":1526981203879000,
+//"lastModified":1527031412778000
+//var timestamp = 1383256393000;
+
+			var timestamp = _date / 1000;
+			var date = new Date();
+			date.setTime( timestamp);
+	//console.log( date );
+
+			var sYear = date.getFullYear();
+			var sMonth = date.getMonth() + 1;
+			var sDate = date.getDate();
+			var sHours = date.getHours();
+			var sMinutes = date.getMinutes();
+			var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+			return dateStr;
+		}//end __parseDate()
+		
+	}//end _parseJSON()
 	
 	function _loadTemplates( callback ){
 //..................
