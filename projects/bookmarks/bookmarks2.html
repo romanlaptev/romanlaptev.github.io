@@ -9,6 +9,17 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap/bootstrap337.min.js"></script>
+	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
+	<script>
+window.onload = function(){}//end load
+
+$(document).ready(function(){
+	//$("input[type=file]").bootstrapFileInput();
+});//end ready	
+	</script>
+	
 <!--[if lt IE 9]>
 	<script src="js/fix_IE/html5shiv.js"></script>
 	<script src="js/fix_IE/respond.min.js"></script>
@@ -16,12 +27,17 @@
 
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
 	<link rel="stylesheet" href="css/custom.css">
+	<!-- <link rel="stylesheet" href="css/load.css"> -->
 </head>
 
 <body>
 <div class="container" id="page-container">
 
 	<header>
+		<ul class="nav nav-tabs">
+			<li><a class="btn btn-info" href="../../index.html">index</a></li>
+		</ul>
+	
 		<div class="page-header">
 			<h1 class="text-right" id="app-title">Application title</h1>
 		</div>
@@ -31,7 +47,7 @@
 		
 		<div id="control-btn" class="panel-body">
 			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-<button class="btn btn-primary" data-toggle="modal" data-target="#importModal">upload bookmarks.json</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button>
 			</div>	
 <a id="clear-log" class="btn btn-sm btn-danger pull-right"" href="#?q=clear-log">clear log</a>
 		</div>
@@ -49,14 +65,16 @@
 		
 
 	<div class="panel panel-primary">
-		<div class="panel-body" id="insert_json">
+		<div class="panel-body" id="insert-json">
 		</div>
 	</div>
 
 	<footer>
 		<div class="col-sm-3 col-md-3"></div>
 		<div class="col-sm-6 col-md-6"></div>
-		<div class="col-sm-3 col-md-3"></div>
+		<div class="col-sm-3 col-md-3 text-right">
+<a href="parse_bookmarks.html">previous version</a>
+		</div>
 	</footer>
 	
 </div><!-- end container -->
@@ -66,6 +84,44 @@
 	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="page-container">scroll to top</button>
 </div>
 -->
+
+<!-- ********************** load progress bar ************************** -->	
+<!--
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+	save data:
+	<div class="progress">
+		<div id="save-progress-bar" class="progress-bar hide"></div>
+	</div>
+</div>
+<div id="wait" class="hide"></div>
+-->
+
+<!-- ********************** serviceModal ************************** -->	
+	<div id="serviceModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">service actions</h4>
+				</div>
+				<div class="modal-body">
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<a id="btn-parse" href="#?q=parse-json" class="btn btn-primary">Parse file</a>
+					<!-- <button type="submit" class="btn btn-primary">Upload file</button> -->
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end serviceModal -->
 
 <script src="js/shared_functions.js"></script>
 <script src="js/bookmarks2.js"></script>

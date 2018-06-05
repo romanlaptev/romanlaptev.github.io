@@ -17,23 +17,89 @@ body {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   padding: 20px;
 }
+
 header {
   margin-bottom: 5px;
 }
+header.container {
+  padding: 0 20px;
+}
+
 footer {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
+
+
+.navbar {
+	margin-bottom: 0;
+}
 .navbar-brand {
   padding: 0;
+	height: auto;
+	/*font-size:120%;*/
 }
 header .navbar-brand h1 {
 	/*font-family: Lobster;*/
 	font-family: Victorian LET Regular;
 	/*font-family: fiddums-family;*/
-	font-size: 3.5em;
+	/*font-size: 3.5em;*/
+	font-size: 60px;
 }
+
+@media screen and (max-width:768px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 52px;
+	}
+}
+@media screen and (max-width:640px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 38px;
+	}
+}
+
+@media screen and (max-width:480px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 36px;
+	}
+}/* end max-width:480px */
+
+@media screen and (max-width:450px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 30px;
+	}
+}
+@media screen and (max-width:390px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 24px;
+	}
+}
+@media screen and (max-width:320px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 22px;
+	}
+}
+@media screen and (max-width:300px) 
+{ 
+	header.container {
+	  padding: 0 10px;
+	}
+}
+@media screen and (max-width:290px) 
+{ 
+	header .navbar-brand h1 {
+		font-size: 20px;
+	}
+}
+
+
 
 .btn-style1 {
 	background-color: #65a3be;

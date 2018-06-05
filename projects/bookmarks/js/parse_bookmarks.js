@@ -134,7 +134,7 @@ function load_json( json_filename )
 
 	$('#insert_json').empty();
 	var s = "";
-	$.getJSON("json/"+json_filename,function(data)
+	$.getJSON("db/"+json_filename,function(data)
 		{
 //console.log(JSON.stringify(data)); 
 			for (var item in data){
