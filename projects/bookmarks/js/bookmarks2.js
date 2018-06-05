@@ -14,13 +14,14 @@ var webApp = {
 		//"loadProgress" : getById("load-progress"),
 		//"loadProgressBar" : getById("load-progress-bar"),
 		//"saveProgressBar" : getById("save-progress-bar"),
-		
+		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>{{title}}</div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"children" : "<div class='link-container'>{{title}}</div>"
+			"children" : "<div class='well link-container'>\
+<a href='#?q=view-container&id={{id}}'>{{title}}</a></div>"
 		}
 		
 	},
@@ -160,6 +161,11 @@ console.log( "Warn! error parse url in " + target.href );
 				log.innerHTML="";
 			break;
 			
+			case "view-container":
+				var id = parseInt( webApp.vars["GET"]["id"] );
+				_viewContainer( id );
+			break;
+			
 			case "parse-json":
 				var log = getById("log");
 				
@@ -266,12 +272,12 @@ console.log( webApp.vars["logMsg"] );
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		}//end catch
 		
-		//webApp.vars["jsonObj"] = jsonObj;
+		webApp.vars["jsonObj"] = jsonObj;
 //--------------------------------
 		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
 		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
 		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
-		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
+		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
 		
 //--------------------------------
 		// for( var key in jsonObj ){
@@ -279,7 +285,7 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 			// var result = jsonObj[key] instanceof Array;
 // //console.log( key, result );
 			// if( result && jsonObj[key].length > 0){
-				// __parseChildren( jsonObj[key] );
+				// _parseLinkContainer( jsonObj[key] );
 			// }
 		// }//next
 //console.log( typeof jsonObj.children );
@@ -313,61 +319,72 @@ children: [object Object],[object Object] object
 				
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
-					htmlChildren = __parseChildren( container["children"] );
+					htmlChildren = _parseLinkContainer( container["children"] );
 				}
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 			}//next
 		}
 		
-		_log( webApp.vars["htmlCode"], "insert_json");
-		
-		function __parseChildren( obj ){
-			var html = "";
-			for( var n = 0; n <  obj.length; n++ ){
-//console.log( n, obj[n], typeof obj[n]  );
-					var container = obj[n];
-					//for( var key in container){
-//console.log( key + ": " + container[key], typeof container[key]  );
-					//}//next
-				html += webApp.vars["templates"]["children"].replace("{{title}}", container["title"] );				
-			}//next
-			return html;
-		}//end __parseChildren()
-		
-		function __parseDate( _date ){
-			var timestamp = _date / 1000;
-			var date = new Date();
-			date.setTime( timestamp);
-//console.log( date );
-
-			var sYear = date.getFullYear();
-			var sMonth = date.getMonth() + 1;
-			var sDate = date.getDate();
-			var sHours = date.getHours();
-			var sMinutes = date.getMinutes();
-			var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
-
-			return dateStr;
-		}//end __parseDate()
+		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 		
 	}//end _parseJSON()
+
+	function __parseDate( _date ){
+		var timestamp = _date / 1000;
+		var date = new Date();
+		date.setTime( timestamp);
+//console.log( date );
+
+		var sYear = date.getFullYear();
+		var sMonth = date.getMonth() + 1;
+		var sDate = date.getDate();
+		var sHours = date.getHours();
+		var sMinutes = date.getMinutes();
+		var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+		return dateStr;
+	}//end _parseDate()
+
+	function _parseLinkContainer( obj ){
+		webApp.vars["currentContainer"] = obj;
+		var html = "";
+		for( var n = 0; n <  obj.length; n++ ){
+//console.log( n, obj[n], typeof obj[n]  );
+				var container = obj[n];
+				//for( var key in container){
+//console.log( key + ": " + container[key], typeof container[key]  );
+				//}//next
+			html += webApp.vars["templates"]["children"]
+			.replace("{{id}}", container["id"] )
+			.replace("{{title}}", container["title"] );				
+		}//next
+		return html;
+	}//end _parseLinkContainer()
 	
-	function _loadTemplates( callback ){
+	function _viewContainer( id ){
+		for(var n = 0; n < webApp.vars["currentContainer"].length; n++){
+			var container = webApp.vars["currentContainer"][n];
+			if( container["id"] === id){
+//console.log( container );
+				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
+				.replace("{{title}}", container["title"] );
+
+				var htmlChildren = "";
+				if( container["children"] && container["children"].length > 0){
+					htmlChildren = _parseLinkContainer( container["children"] );
+				}
+//console.log(htmlChildren);
+				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+				_log( "", webApp.vars["targetHtmlBlockID"]);
+				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
+			}
+		}//next
+	}//end _viewContainer()
+	
+	//function _loadTemplates( callback ){
 //..................
-	}//end _loadTemplates()
+	//}//end _loadTemplates()
 	
-	// function _serverRequest( opt ){
-		// var p = {
-			// //"date": null,
-			// "callback": null
-		// };
-		
-		// //extend options object
-		// for(var key in opt ){
-			// p[key] = opt[key];
-		// }
-// console.log(p);		
-	// }//end _serverRequest()
 
 	
 	// public interfaces
@@ -378,8 +395,8 @@ children: [object Object],[object Object] object
 		},
 		urlManager:	function( target ){ 
 			return _urlManager( target ); 
-		},
-		loadTemplates : _loadTemplates//,
+		}//,
+		//loadTemplates : _loadTemplates,
 		//serverRequest:	function(opt){ 
 			//return _serverRequest(opt); 
 		//}
