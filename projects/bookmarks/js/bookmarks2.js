@@ -257,17 +257,57 @@ console.log( webApp.vars["logMsg"] );
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		}//end catch
 		
-		webApp.vars["jsonObj"] = jsonObj;
+		//webApp.vars["jsonObj"] = jsonObj;
 		
-		webApp.vars["dateAdded"] = __parseDate( webApp.vars["jsonObj"]["dateAdded"] );
-		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"];
+//--------------------------------
+		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
+		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
+		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
 //console.log( webApp.vars["logMsg"] );
 _log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
 		
-		webApp.vars["lastModified"] = __parseDate( webApp.vars["jsonObj"]["lastModified"] );
-		webApp.vars["logMsg"] = "lastModified : " + webApp.vars["lastModified"];
-//console.log( webApp.vars["logMsg"] );
-_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
+//--------------------------------
+		for( var key in jsonObj ){
+//console.log( key, jsonObj[key], typeof jsonObj[key]  );
+			var result = jsonObj[key] instanceof Array;
+//console.log( key, result );
+			if( result && jsonObj[key].length > 0){
+				__parseChildren( jsonObj[key] );
+			}
+		}//next
+//console.log( typeof jsonObj.children );
+//console.log( jsonObj.children.length );
+
+		function __parseChildren( obj ){
+			for( var n = 0; n <  obj.length; n++ ){
+//console.log( n, obj[n], typeof obj[n]  );
+
+					var container = obj[n];
+					//for( var key in container){
+//console.log( key + ": " + container[key], typeof container[key]  );
+					//}//next
+					
+//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
+_log("<div class='panel panel-primary'>\
+<div class='panel-heading'>" + container["title"] +"</div>\
+<div class='panel-body'></div>\
+</div>", "insert_json");
+		
+/*
+guid: toolbar_____ string
+title: Панель закладок string
+index: 1 number
+dateAdded: 1526981203879000 number
+lastModified: 1526981210071000 number
+id: 3 number
+typeCode: 2 number
+type: text/x-moz-place-container string
+root: toolbarFolder string
+children: [object Object],[object Object] object
+*/					
+
+			}//next
+		}//end __parseChildren()
 		
 		function __parseDate( _date ){
 //dateAdded: 1472905372954000
