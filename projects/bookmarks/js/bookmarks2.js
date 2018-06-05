@@ -13,7 +13,16 @@ var webApp = {
 		//"waitWindow" : getById("wait-window"),
 		//"loadProgress" : getById("load-progress"),
 		//"loadProgressBar" : getById("load-progress-bar"),
-		//"saveProgressBar" : getById("save-progress-bar")
+		//"saveProgressBar" : getById("save-progress-bar"),
+		
+		"templates" : {
+			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
+<div class='panel-heading'>{{title}}</div>\
+<div class='panel-body'>{{children}}</div>\
+</div>",
+			"children" : "<div class='link-container'>{{title}}</div>"
+		}
+		
 	},
 	
 	"init" : function( postFunc ){
@@ -265,36 +274,16 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
 		
 //--------------------------------
-		for( var key in jsonObj ){
-console.log( key, jsonObj[key], typeof jsonObj[key]  );
-			var result = jsonObj[key] instanceof Array;
-//console.log( key, result );
-			if( result && jsonObj[key].length > 0){
-				__parseChildren( jsonObj[key] );
-			}
-		}//next
+		// for( var key in jsonObj ){
+// console.log( key, jsonObj[key], typeof jsonObj[key]  );
+			// var result = jsonObj[key] instanceof Array;
+// //console.log( key, result );
+			// if( result && jsonObj[key].length > 0){
+				// __parseChildren( jsonObj[key] );
+			// }
+		// }//next
 //console.log( typeof jsonObj.children );
 //console.log( jsonObj.children.length );
-
-		function __parseChildren( obj ){
-			for( var n = 0; n <  obj.length; n++ ){
-//console.log( n, obj[n], typeof obj[n]  );
-
-					var container = obj[n];
-					//только Меню закладок
-					if( container["root"] !== "bookmarksMenuFolder"){
-						continue;
-					}
-					//for( var key in container){
-//console.log( key + ": " + container[key], typeof container[key]  );
-					//}//next
-					
-//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
-_log("<div class='panel panel-primary'>\
-<div class='panel-heading'>" + container["title"] +"</div>\
-<div class='panel-body'></div>\
-</div>", "insert_json");
-		
 /*
 guid: toolbar_____ string
 title: Панель закладок string
@@ -306,22 +295,50 @@ typeCode: 2 number
 type: text/x-moz-place-container string
 root: toolbarFolder string
 children: [object Object],[object Object] object
-*/					
-
+*/		
+		webApp.vars["htmlCode"] = "";
+		//first level
+		if( jsonObj["children"] && jsonObj["children"].length > 0){
+			for( var n = 0; n < jsonObj["children"].length; n++){
+				var container = jsonObj["children"][n];
+				
+				//только Меню закладок
+				if( container["root"] !== "bookmarksMenuFolder"){
+					continue;
+				}
+				
+	//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
+				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
+				.replace("{{title}}", container["title"] );
+				
+				var htmlChildren = "";
+				if( container["children"] && container["children"].length > 0){
+					htmlChildren = __parseChildren( container["children"] );
+				}
+				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 			}//next
+		}
+		
+		_log( webApp.vars["htmlCode"], "insert_json");
+		
+		function __parseChildren( obj ){
+			var html = "";
+			for( var n = 0; n <  obj.length; n++ ){
+//console.log( n, obj[n], typeof obj[n]  );
+					var container = obj[n];
+					//for( var key in container){
+//console.log( key + ": " + container[key], typeof container[key]  );
+					//}//next
+				html += webApp.vars["templates"]["children"].replace("{{title}}", container["title"] );				
+			}//next
+			return html;
 		}//end __parseChildren()
 		
 		function __parseDate( _date ){
-//dateAdded: 1472905372954000
-//lastModified: 1451313156596000
-//"dateAdded":1526981203879000,
-//"lastModified":1527031412778000
-//var timestamp = 1383256393000;
-
 			var timestamp = _date / 1000;
 			var date = new Date();
 			date.setTime( timestamp);
-	//console.log( date );
+//console.log( date );
 
 			var sYear = date.getFullYear();
 			var sMonth = date.getMonth() + 1;
