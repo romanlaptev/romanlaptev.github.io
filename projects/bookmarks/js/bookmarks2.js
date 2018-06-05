@@ -258,17 +258,15 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		}//end catch
 		
 		//webApp.vars["jsonObj"] = jsonObj;
-		
 //--------------------------------
 		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
 		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
 		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
-//console.log( webApp.vars["logMsg"] );
-_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
+		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "insert_json");
 		
 //--------------------------------
 		for( var key in jsonObj ){
-//console.log( key, jsonObj[key], typeof jsonObj[key]  );
+console.log( key, jsonObj[key], typeof jsonObj[key]  );
 			var result = jsonObj[key] instanceof Array;
 //console.log( key, result );
 			if( result && jsonObj[key].length > 0){
@@ -283,6 +281,10 @@ _log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>", "inser
 //console.log( n, obj[n], typeof obj[n]  );
 
 					var container = obj[n];
+					//только Меню закладок
+					if( container["root"] !== "bookmarksMenuFolder"){
+						continue;
+					}
 					//for( var key in container){
 //console.log( key + ": " + container[key], typeof container[key]  );
 					//}//next
