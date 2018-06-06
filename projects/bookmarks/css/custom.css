@@ -24,9 +24,9 @@ body {
 }
 
 .log-panel{
-background-color:#f5f5f5;
-margin: 5px;
-border:1px solid #ddd;
+/*background-color:#f5f5f5;*/
+margin-top: 5px;
+/* border:1px solid #ddd; */
 /*	
 position: fixed;
 bottom: 10px;
@@ -58,6 +58,24 @@ word-break: break-all;
 	bottom: 5px;
 	left: 50%;
 	margin-left: -40px;	
+}
+
+.folder {
+	float: left;
+	margin: 10px;
+	background: #87cefa; /*lightskyblue;*/
+	padding: 15px;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.link {
+	float: left;
+	/* border: 1px solid; */
+	border-radius: 5px;
+	margin: 10px;
+	padding: 10px;
+	background: #e6e6fa;/*lavender*/
 }
 
 /* fix Bootstrap */

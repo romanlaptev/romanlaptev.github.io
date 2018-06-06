@@ -17,11 +17,14 @@ var webApp = {
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
-<div class='panel-heading'>{{title}}</div>\
+<div class='panel-heading'>\
+<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>\
+<b>{{title}}</b></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"children" : "<div class='well link-container'>\
-<a href='#?q=view-container&id={{id}}'>{{title}}</a></div>"
+			"children" : "<div class='folder'>\
+<a href='#?q=view-container&id={{id}}'>{{title}}</a></div>",
+			"link" : "<div class='link'><a class='' href='{{uri}}' target='_blank'>{{title}}</a></div>"
 		}
 		
 	},
@@ -308,7 +311,7 @@ children: [object Object],[object Object] object
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 				
-				//только Меню закладок
+				//только меню закладок
 				if( container["root"] !== "bookmarksMenuFolder"){
 					continue;
 				}
@@ -322,6 +325,9 @@ children: [object Object],[object Object] object
 					htmlChildren = _parseLinkContainer( container["children"] );
 				}
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+				
+				webApp.vars["containerPrevId"] = container["id"];
+//console.log( container["id"] );
 			}//next
 		}
 		
@@ -347,16 +353,27 @@ children: [object Object],[object Object] object
 
 	function _parseLinkContainer( obj ){
 		webApp.vars["currentContainer"] = obj;
+		
 		var html = "";
 		for( var n = 0; n <  obj.length; n++ ){
 //console.log( n, obj[n], typeof obj[n]  );
-				var container = obj[n];
+			var container = obj[n];
 				//for( var key in container){
 //console.log( key + ": " + container[key], typeof container[key]  );
 				//}//next
-			html += webApp.vars["templates"]["children"]
-			.replace("{{id}}", container["id"] )
-			.replace("{{title}}", container["title"] );				
+				
+			if( container["type"] === "text/x-moz-place-container"){
+				html += webApp.vars["templates"]["children"]
+				.replace("{{id}}", container["id"] )
+				.replace("{{title}}", container["title"] );				
+			}
+			
+			if( container["type"] === "text/x-moz-place"){
+				html += webApp.vars["templates"]["link"]
+				.replace("{{uri}}", container["uri"] )
+				.replace("{{title}}", container["title"] );				
+			}
+			
 		}//next
 		return html;
 	}//end _parseLinkContainer()
@@ -367,7 +384,10 @@ children: [object Object],[object Object] object
 			if( container["id"] === id){
 //console.log( container );
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
+				.replace("{{prev-id}}", webApp.vars["containerPrevId"] )
 				.replace("{{title}}", container["title"] );
+				
+				webApp.vars["containerPrevId"] = container["id"];
 
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
