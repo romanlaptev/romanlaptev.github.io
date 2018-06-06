@@ -22,9 +22,15 @@ var webApp = {
 <ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"children" : "<div class='folder'>\
-<a href='#?q=select-container&id={{id}}'>{{title}}</a></div>",
-			"link" : "<div class='link'><a class='' href='{{uri}}' target='_blank'>{{title}}</a></div>"
+			"folder_tpl" : "<div class='folder'>\
+<a href='#?q=select-container&id={{id}}'>{{title}}</a>\
+{{annos}}\
+</div>",
+			"link_tpl" : "<div class='link'>\
+<a class='' href='{{uri}}' target='_blank'>{{title}}</a>\
+{{annos}}\
+</div>",
+			"annos_tpl" : "<div class='caption'>{{annos}}</div>"
 		},
 		"breadcrumbs": []
 	},
@@ -164,7 +170,12 @@ console.log( "Warn! error parse url in " + target.href );
 				log.innerHTML="";
 			break;
 			
-			case "select-container":
+			case "view-container": //The container ID search starts with root
+				var id = parseInt( webApp.vars["GET"]["id"] );
+				_getContainerByID( id );
+			break;
+			
+			case "select-container"://The container ID search starts with current container
 				var id = parseInt( webApp.vars["GET"]["id"] );
 				_selectContainer( id );
 			break;
@@ -338,7 +349,6 @@ children: [object Object],[object Object] object
 		}
 		
 		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-		
 	}//end _parseJSON()
 
 	function __parseDate( _date ){
@@ -368,17 +378,27 @@ children: [object Object],[object Object] object
 //console.log( key + ": " + container[key], typeof container[key]  );
 				//}//next
 				
+			var annos = "";
+			if( container["annos"] && container["annos"].length > 0){
+//console.log( container["annos"] );
+				annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", container["annos"][0]["value"] );
+			}
+				
 			if( container["type"] === "text/x-moz-place-container"){
-				html += webApp.vars["templates"]["children"]
+				html += webApp.vars["templates"]["folder_tpl"]
+				.replace("{{annos}}", annos )
 				.replace("{{id}}", container["id"] )
 				.replace("{{title}}", container["title"] );				
 			}
 			
 			if( container["type"] === "text/x-moz-place"){
-				html += webApp.vars["templates"]["link"]
+				html += webApp.vars["templates"]["link_tpl"]
+				.replace("{{annos}}", annos )
 				.replace("{{uri}}", container["uri"] )
 				.replace("{{title}}", container["title"] );				
 			}
+
+			
 			
 		}//next
 		return html;
@@ -424,10 +444,26 @@ console.log( breadcrumbs );
 		}//next
 	}//end _selectContainer()
 	
+	function _getContainerByID( id ){
+//console.log( id, typeof id );
+		var jsonObj = webApp.vars["jsonObj"];
+		
+		if( jsonObj["children"] && jsonObj["children"].length > 0){
+			for( var n = 0; n < jsonObj["children"].length; n++){
+				var container = jsonObj["children"][n];
+				if( container["id"] === id ){
+console.log( container );
+				}
+				
+			}//next
+		}
+		
+
+	}//end _getContainerByID()
+	
 	//function _loadTemplates( callback ){
 //..................
 	//}//end _loadTemplates()
-	
 
 	
 	// public interfaces
@@ -471,4 +507,3 @@ function _runApp(){
 
 //================================== Start
 _runApp();
-	
