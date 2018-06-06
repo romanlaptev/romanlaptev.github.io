@@ -67,15 +67,19 @@ word-break: break-all;
 	padding: 15px;
 	margin: 5px;
 	border-radius: 5px;
+	width: 150px;
+	min-height: 100px;	
 }
 
 .link {
 	float: left;
 	/* border: 1px solid; */
 	border-radius: 5px;
-	margin: 10px;
+	margin: 5px;
 	padding: 10px;
 	background: #e6e6fa;/*lavender*/
+	width: 150px;
+	min-height: 100px;	
 }
 .breadcrumbs a {
 	color: #fff;
