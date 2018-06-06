@@ -19,11 +19,11 @@ var webApp = {
 			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>\
 <!--<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>-->\
-<b>{{title}}</b></div>\
+<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
 			"children" : "<div class='folder'>\
-<a href='#?q=view-container&id={{id}}'>{{title}}</a></div>",
+<a href='#?q=select-container&id={{id}}'>{{title}}</a></div>",
 			"link" : "<div class='link'><a class='' href='{{uri}}' target='_blank'>{{title}}</a></div>"
 		},
 		"breadcrumbs": []
@@ -164,9 +164,9 @@ console.log( "Warn! error parse url in " + target.href );
 				log.innerHTML="";
 			break;
 			
-			case "view-container":
+			case "select-container":
 				var id = parseInt( webApp.vars["GET"]["id"] );
-				_viewContainer( id );
+				_selectContainer( id );
 			break;
 			
 			case "parse-json":
@@ -318,7 +318,7 @@ children: [object Object],[object Object] object
 				
 	//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{title}}", container["title"] );
+				.replace("{{breadcrumbs}}", container["title"] );
 				
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
@@ -384,14 +384,24 @@ children: [object Object],[object Object] object
 		return html;
 	}//end _parseLinkContainer()
 	
-	function _viewContainer( id ){
+	function _selectContainer( id ){
 		for(var n = 0; n < webApp.vars["currentContainer"].length; n++){
 			var container = webApp.vars["currentContainer"][n];
 			if( container["id"] === id){
 //console.log( container );
+
+				//form breadcrumbs line
+				var breadcrumbs = "";
+				for( var n2 = 0; n2 < webApp.vars["breadcrumbs"].length; n2++){
+					var itemID = webApp.vars["breadcrumbs"][n2]["id"];
+					var itemTitle = webApp.vars["breadcrumbs"][n2]["title"];
+					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+				}//next
+console.log( breadcrumbs );
+				
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
 				//.replace("{{prev-id}}", webApp.vars["containerPrevId"] )
-				.replace("{{title}}", container["title"] );
+				.replace("{{breadcrumbs}}", breadcrumbs );
 				
 				//webApp.vars["containerPrevId"] = container["id"];
 
@@ -412,7 +422,7 @@ children: [object Object],[object Object] object
 
 			}
 		}//next
-	}//end _viewContainer()
+	}//end _selectContainer()
 	
 	//function _loadTemplates( callback ){
 //..................

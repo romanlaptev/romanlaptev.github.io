@@ -77,6 +77,9 @@ word-break: break-all;
 	padding: 10px;
 	background: #e6e6fa;/*lavender*/
 }
+.breadcrumbs a {
+	color: #fff;
+}
 
 /* fix Bootstrap */
 header .btn:hover {
