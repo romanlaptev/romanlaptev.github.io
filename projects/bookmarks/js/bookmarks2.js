@@ -326,7 +326,7 @@ children: [object Object],[object Object] object
 				}
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 				
-				webApp.vars["containerPrevId"] = container["id"];
+			webApp.vars["containerPrevId"] = container["id"];
 //console.log( container["id"] );
 			}//next
 		}
