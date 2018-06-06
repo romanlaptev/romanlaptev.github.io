@@ -17,13 +17,27 @@ var webApp = {
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
-<div class='panel-heading'>{{title}}</div>\
+<div class='panel-heading'>\
+<!--<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>-->\
+<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"children" : "<div class='well link-container'>\
-<a href='#?q=view-container&id={{id}}'>{{title}}</a></div>"
-		}
-		
+			"container_tpl" : "<div class='panel panel-primary'>\
+<div class='panel-heading'>\
+<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
+<div class='panel-body'>{{children}}</div>\
+</div>",
+			"folder_tpl" : "<div class='folder'>\
+<a href='#?q=select-container&id={{id}}'>{{title}}</a>\
+{{annos}}\
+</div>",
+			"link_tpl" : "<div class='link'>\
+<a class='' href='{{uri}}' target='_blank'>{{title}}</a>\
+{{annos}}\
+</div>",
+			"annos_tpl" : "<div class='caption'>{{annos}}</div>"
+		},
+	"breadcrumbs": {}
 	},
 	
 	"init" : function( postFunc ){
@@ -161,9 +175,14 @@ console.log( "Warn! error parse url in " + target.href );
 				log.innerHTML="";
 			break;
 			
-			case "view-container":
+			case "view-container": //The container ID search starts with root
 				var id = parseInt( webApp.vars["GET"]["id"] );
-				_viewContainer( id );
+				_getContainerByID( id );
+			break;
+			
+			case "select-container"://The container ID search starts with current container
+				var id = parseInt( webApp.vars["GET"]["id"] );
+				_selectContainer( id );
 			break;
 			
 			case "parse-json":
@@ -285,7 +304,7 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 			// var result = jsonObj[key] instanceof Array;
 // //console.log( key, result );
 			// if( result && jsonObj[key].length > 0){
-				// _parseLinkContainer( jsonObj[key] );
+				// _parseChildren( jsonObj[key] );
 			// }
 		// }//next
 //console.log( typeof jsonObj.children );
@@ -308,25 +327,34 @@ children: [object Object],[object Object] object
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 				
-				//только Меню закладок
+				//только меню закладок
 				if( container["root"] !== "bookmarksMenuFolder"){
 					continue;
 				}
 				
 	//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{title}}", container["title"] );
+				.replace("{{breadcrumbs}}", container["title"] );
 				
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseLinkContainer( container["children"] );
+					htmlChildren = _parseChildren( container["children"] );
 				}
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+				
+				//webApp.vars["containerPrevId"] = container["id"];
+//console.log( container["id"] );
+				//add container link to breadcrumbs
+				// webApp.vars["breadcrumbs"].push({
+					// "id" :  container["id"],
+					// "title" : container["title"]
+				// });
+				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
+				
 			}//next
 		}
 		
 		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-		
 	}//end _parseJSON()
 
 	function __parseDate( _date ){
@@ -345,46 +373,145 @@ children: [object Object],[object Object] object
 		return dateStr;
 	}//end _parseDate()
 
-	function _parseLinkContainer( obj ){
-		webApp.vars["currentContainer"] = obj;
-		var html = "";
-		for( var n = 0; n <  obj.length; n++ ){
-//console.log( n, obj[n], typeof obj[n]  );
-				var container = obj[n];
-				//for( var key in container){
-//console.log( key + ": " + container[key], typeof container[key]  );
-				//}//next
-			html += webApp.vars["templates"]["children"]
-			.replace("{{id}}", container["id"] )
-			.replace("{{title}}", container["title"] );				
-		}//next
-		return html;
-	}//end _parseLinkContainer()
-	
-	function _viewContainer( id ){
-		for(var n = 0; n < webApp.vars["currentContainer"].length; n++){
-			var container = webApp.vars["currentContainer"][n];
+	function _selectContainer( id ){
+		for(var n = 0; n < webApp.vars["currentContainerChildren"].length; n++){
+			var container = webApp.vars["currentContainerChildren"][n];
 			if( container["id"] === id){
 //console.log( container );
+
+				//add container link to breadcrumbs
+				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
+				
+				//form breadcrumbs line
+				var breadcrumbs = "";
+				for( var item in webApp.vars["breadcrumbs"] ){
+					var itemID = item;
+					var itemTitle = webApp.vars["breadcrumbs"][item];
+					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+				}//next
+console.log( breadcrumbs );
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{title}}", container["title"] );
+				.replace("{{breadcrumbs}}", breadcrumbs );
+				//-----------------------------
 
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseLinkContainer( container["children"] );
+					htmlChildren = _parseChildren( container["children"] );
 				}
 //console.log(htmlChildren);
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 				_log( "", webApp.vars["targetHtmlBlockID"]);
 				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
+				
 			}
 		}//next
+	}//end _selectContainer()
+	
+	function _getContainerByID( id ){
+//console.log( id, typeof id );
+		var jsonObj = webApp.vars["jsonObj"];
+		
+		if( jsonObj["children"] && jsonObj["children"].length > 0){
+			for( var n = 0; n < jsonObj["children"].length; n++){
+				var container = jsonObj["children"][n];
+				if( container["id"] === id ){
+					_viewContainer( container );
+				}
+			}//next
+		}
+	}//end _getContainerByID()
+
+
+	function _viewContainer( container ){
+//console.log( container );
+/*
+dateAdded: 1526981203879000
+?guid: "menu________"
+?id: 2
+?index: 0
+?lastModified: 1526988976626000
+?root: "bookmarksMenuFolder"
+?title: "Њеню закладок"
+*/
+		var dateAdded = __parseDate( container["dateAdded"] );
+		var lastModified = __parseDate( container["lastModified"] );
+		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
+		_log("");
+		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+//--------------------------------
+		//add container link to breadcrumbs
+		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
+		
+		//form breadcrumbs line
+		var breadcrumbs = "";
+		for( var item in webApp.vars["breadcrumbs"] ){
+			var itemID = item;
+			var itemTitle = webApp.vars["breadcrumbs"][item];
+			breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+		}//next
+console.log( breadcrumbs );
+		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
+		.replace("{{breadcrumbs}}", breadcrumbs );
+		//-----------------------------
+				
+		if( !container["children"] || container["children"].length === 0){
+			return;
+		}
+		
+		for(var n = 0; n < container["children"].length; n++){
+			var _child = container["children"][n];
+
+				var htmlChildren = "";
+				if( container["children"] && container["children"].length > 0){
+					htmlChildren = _parseChildren( container["children"] );
+				}
+//console.log(htmlChildren);
+
+				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+				_log( "", webApp.vars["targetHtmlBlockID"]);
+				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
+		}//next
+
 	}//end _viewContainer()
+	
+	function _parseChildren( obj ){
+		webApp.vars["currentContainerChildren"] = obj;
+		
+		var html = "";
+		for( var n = 0; n <  obj.length; n++ ){
+//console.log( n, obj[n], typeof obj[n]  );
+			var _child = obj[n];
+				//for( var key in _child){
+//console.log( key + ": " + _child[key], typeof _child[key]  );
+				//}//next
+				
+			var annos = "";
+			if( _child["annos"] && _child["annos"].length > 0){
+//console.log( _child["annos"] );
+				annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+			}
+				
+			if( _child["type"] === "text/x-moz-place-container"){
+				html += webApp.vars["templates"]["folder_tpl"]
+				.replace("{{annos}}", annos )
+				.replace("{{id}}", _child["id"] )
+				.replace("{{title}}", _child["title"] );				
+			}
+			
+			if( _child["type"] === "text/x-moz-place"){
+				html += webApp.vars["templates"]["link_tpl"]
+				.replace("{{annos}}", annos )
+				.replace("{{uri}}", _child["uri"] )
+				.replace("{{title}}", _child["title"] );				
+			}
+			
+		}//next
+		return html;
+	}//end _parseChildren()
 	
 	//function _loadTemplates( callback ){
 //..................
 	//}//end _loadTemplates()
-	
 
 	
 	// public interfaces
@@ -428,4 +555,3 @@ function _runApp(){
 
 //================================== Start
 _runApp();
-	

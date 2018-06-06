@@ -36,33 +36,29 @@ $(document).ready(function(){
 	<header>
 		<ul class="nav nav-tabs">
 			<li><a class="btn btn-info" href="../../index.html">index</a></li>
+			<li><a class="btn btn-warning" href="parse_bookmarks.html">previous version</a></li>
 		</ul>
-	
+		
 		<div class="page-header">
 			<h1 class="text-right" id="app-title">Application title</h1>
 		</div>
+		
+		<div id="control-btn" class="nav">
+<!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button> -->
+<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+		</div>
+		
 	</header>
 
-	<div class=" panel panel-primary">
-		
-		<div id="control-btn" class="panel-body">
-			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-<button class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button>
-			</div>	
-<a id="clear-log" class="btn btn-sm btn-danger pull-right"" href="#?q=clear-log">clear log</a>
+	<div id="log-wrap" class="panel panel-primary log-panel">
+		<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
+<!--
+		<div class="progress">ajax load:
+			<div id="load-progress-bar" class="progress-bar hide"></div>
 		</div>
-		<div id="log-wrap" class="panel-body log-panel">
-			<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
-	<!--
-			<div class="progress">ajax load:
-				<div id="load-progress-bar" class="progress-bar hide"></div>
-			</div>
-	-->
-			<div id="log"></div>
-		</div>
-		
+-->
+		<div id="log" class="panel-body"></div>
 	</div>
-		
 
 	<div class="panel panel-primary">
 		<div class="panel-body" id="insert-json">
@@ -72,9 +68,7 @@ $(document).ready(function(){
 	<footer>
 		<div class="col-sm-3 col-md-3"></div>
 		<div class="col-sm-6 col-md-6"></div>
-		<div class="col-sm-3 col-md-3 text-right">
-<a href="parse_bookmarks.html">previous version</a>
-		</div>
+		<div class="col-sm-3 col-md-3 text-right"></div>
 	</footer>
 	
 </div><!-- end container -->
