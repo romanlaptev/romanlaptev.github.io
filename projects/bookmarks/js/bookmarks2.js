@@ -18,7 +18,7 @@ var webApp = {
 		"templates" : {
 			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>\
-<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>\
+<!--<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>-->\
 <b>{{title}}</b></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
@@ -326,7 +326,7 @@ children: [object Object],[object Object] object
 				}
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 				
-			webApp.vars["containerPrevId"] = container["id"];
+				//webApp.vars["containerPrevId"] = container["id"];
 //console.log( container["id"] );
 			}//next
 		}
@@ -384,10 +384,10 @@ children: [object Object],[object Object] object
 			if( container["id"] === id){
 //console.log( container );
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{prev-id}}", webApp.vars["containerPrevId"] )
+				//.replace("{{prev-id}}", webApp.vars["containerPrevId"] )
 				.replace("{{title}}", container["title"] );
 				
-				webApp.vars["containerPrevId"] = container["id"];
+				//webApp.vars["containerPrevId"] = container["id"];
 
 				var htmlChildren = "";
 				if( container["children"] && container["children"].length > 0){
