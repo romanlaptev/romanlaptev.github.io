@@ -25,8 +25,8 @@ var webApp = {
 			"children" : "<div class='folder'>\
 <a href='#?q=view-container&id={{id}}'>{{title}}</a></div>",
 			"link" : "<div class='link'><a class='' href='{{uri}}' target='_blank'>{{title}}</a></div>"
-		}
-		
+		},
+		"breadcrumbs": []
 	},
 	
 	"init" : function( postFunc ){
@@ -328,6 +328,12 @@ children: [object Object],[object Object] object
 				
 				//webApp.vars["containerPrevId"] = container["id"];
 //console.log( container["id"] );
+				//add container link to breadcrumbs
+				webApp.vars["breadcrumbs"].push({
+					"id" :  container["id"],
+					"title" : container["title"]
+				});
+				
 			}//next
 		}
 		
@@ -397,6 +403,13 @@ children: [object Object],[object Object] object
 				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
 				_log( "", webApp.vars["targetHtmlBlockID"]);
 				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
+				
+				//add container link to breadcrumbs
+				webApp.vars["breadcrumbs"].push({
+					"id" :  container["id"],
+					"title" : container["title"]
+				});
+
 			}
 		}//next
 	}//end _viewContainer()
