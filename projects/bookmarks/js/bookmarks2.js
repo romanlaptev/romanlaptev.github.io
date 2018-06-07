@@ -438,6 +438,7 @@ dateAdded: 1526981203879000
 		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
 		_log("");
 		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+		
 //--------------------------------
 		//add container link to breadcrumbs
 		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
