@@ -1,3 +1,16 @@
 - добавить хлебные крошки
 - сделать индикатор аякс-загрузки
 - поместить bookmarks.json в LocalStorage
+
+blue, selection
+#0174e9 
+
+blue, wordpress header
+#1e73be
+
+green, gitlab header
+#0d4524
+
+green, gitlab button
+phone - #1aaa55
+border - #18a050
