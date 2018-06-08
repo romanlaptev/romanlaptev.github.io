@@ -38,6 +38,7 @@ clear:both;
 width: 80%;
 */
 /*position: absolute;*/
+	/*position:fixed;*/
 }
 .close {
 display: block;
