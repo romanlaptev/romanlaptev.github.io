@@ -388,6 +388,11 @@ children: [object Object],[object Object] object
 					var itemID = item;
 					var itemTitle = webApp.vars["breadcrumbs"][item];
 					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+					
+					//if( itemID === container["id"] ){
+						//break;
+					//}
+					
 				}//next
 console.log( breadcrumbs );
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
@@ -453,12 +458,27 @@ dateAdded: 1526981203879000
 		
 		//form breadcrumbs line
 		var breadcrumbs = "";
+		var clear = false;
 		for( var item in webApp.vars["breadcrumbs"] ){
 			var itemID = item;
-			var itemTitle = webApp.vars["breadcrumbs"][item];
-			breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+			
+			if( clear ){//clear unuseful tail breadrumbs
+				delete webApp.vars["breadcrumbs"][item];
+			} else {
+				var itemTitle = webApp.vars["breadcrumbs"][item];
+				breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+			}
+			
+//console.log( itemID, container["id"], itemID === container["id"] );
+//console.log( typeof itemID, typeof container["id"] );
+			if( parseInt( itemID ) === container["id"] ){//detect unuseful tail breadrumbs
+				//break;
+				clear = true;
+			}
+			
 		}//next
-console.log( breadcrumbs );
+//console.log( breadcrumbs );
+
 		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
 		.replace("{{breadcrumbs}}", breadcrumbs );
 		//-----------------------------
