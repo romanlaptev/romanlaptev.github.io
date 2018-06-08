@@ -38,6 +38,7 @@ clear:both;
 width: 80%;
 */
 /*position: absolute;*/
+	/*position:fixed;*/
 }
 .close {
 display: block;
@@ -70,6 +71,12 @@ word-break: break-all;
 	width: 150px;
 	min-height: 100px;
 	word-break: normal; /*break-all*/
+}
+
+.folder a {
+	width: 150px;
+	display: block;
+	height: 80px;
 font-weight: bold;
 font-size: 110%;
 font-family: Georgia;

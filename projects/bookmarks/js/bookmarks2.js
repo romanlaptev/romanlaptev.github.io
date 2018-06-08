@@ -177,7 +177,7 @@ console.log( "Warn! error parse url in " + target.href );
 			
 			case "view-container": //The container ID search starts with root
 				var id = parseInt( webApp.vars["GET"]["id"] );
-				_getContainerByID( id );
+				_getContainerByID( id, webApp.vars["jsonObj"] );
 			break;
 			
 			case "select-container"://The container ID search starts with current container
@@ -388,6 +388,11 @@ children: [object Object],[object Object] object
 					var itemID = item;
 					var itemTitle = webApp.vars["breadcrumbs"][item];
 					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+					
+					//if( itemID === container["id"] ){
+						//break;
+					//}
+					
 				}//next
 console.log( breadcrumbs );
 				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
@@ -407,18 +412,26 @@ console.log( breadcrumbs );
 		}//next
 	}//end _selectContainer()
 	
-	function _getContainerByID( id ){
-//console.log( id, typeof id );
-		var jsonObj = webApp.vars["jsonObj"];
+	function _getContainerByID( id, jsonObj ){
+//console.log( id );
 		
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
+//console.log( container["id"] );
 				if( container["id"] === id ){
 					_viewContainer( container );
+					break;
 				}
+				
+				//recursive search ID
+				if( container["children"] && container["children"].length > 0){
+					_getContainerByID( id, container );
+				}
+				
 			}//next
 		}
+		
 	}//end _getContainerByID()
 
 
@@ -438,18 +451,34 @@ dateAdded: 1526981203879000
 		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
 		_log("");
 		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+		
 //--------------------------------
 		//add container link to breadcrumbs
 		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
 		
 		//form breadcrumbs line
 		var breadcrumbs = "";
+		var clear = false;
 		for( var item in webApp.vars["breadcrumbs"] ){
 			var itemID = item;
-			var itemTitle = webApp.vars["breadcrumbs"][item];
-			breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+			
+			if( clear ){//clear unuseful tail breadrumbs
+				delete webApp.vars["breadcrumbs"][item];
+			} else {
+				var itemTitle = webApp.vars["breadcrumbs"][item];
+				breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
+			}
+			
+//console.log( itemID, container["id"], itemID === container["id"] );
+//console.log( typeof itemID, typeof container["id"] );
+			if( parseInt( itemID ) === container["id"] ){//detect unuseful tail breadrumbs
+				//break;
+				clear = true;
+			}
+			
 		}//next
-console.log( breadcrumbs );
+//console.log( breadcrumbs );
+
 		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
 		.replace("{{breadcrumbs}}", breadcrumbs );
 		//-----------------------------
