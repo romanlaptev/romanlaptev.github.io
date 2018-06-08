@@ -15,3 +15,6 @@ green, gitlab header
 green, gitlab button
 phone - #1aaa55
 border - #18a050
+
+серо-зеленый
+#c6d6de
