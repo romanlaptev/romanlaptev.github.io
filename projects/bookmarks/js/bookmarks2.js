@@ -177,7 +177,7 @@ console.log( "Warn! error parse url in " + target.href );
 			
 			case "view-container": //The container ID search starts with root
 				var id = parseInt( webApp.vars["GET"]["id"] );
-				_getContainerByID( id );
+				_getContainerByID( id, webApp.vars["jsonObj"] );
 			break;
 			
 			case "select-container"://The container ID search starts with current container
@@ -407,18 +407,26 @@ console.log( breadcrumbs );
 		}//next
 	}//end _selectContainer()
 	
-	function _getContainerByID( id ){
-//console.log( id, typeof id );
-		var jsonObj = webApp.vars["jsonObj"];
+	function _getContainerByID( id, jsonObj ){
+//console.log( id );
 		
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
+//console.log( container["id"] );
 				if( container["id"] === id ){
 					_viewContainer( container );
+					break;
 				}
+				
+				//recursive search ID
+				if( container["children"] && container["children"].length > 0){
+					_getContainerByID( id, container );
+				}
+				
 			}//next
 		}
+		
 	}//end _getContainerByID()
 
 
