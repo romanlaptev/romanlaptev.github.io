@@ -170,7 +170,7 @@ console.log( "Warn! error parse url in " + target.href );
 			break;
 			
 			case "view-container": //The container ID search starts with root
-console.log("Start parsing....");				
+//console.log("Start parsing....");				
 				if( webApp.vars["wait"] ){
 					webApp.vars["wait"].className="modal-backdrop in";
 					webApp.vars["wait"].style.display="block";
@@ -184,7 +184,7 @@ console.log("Start parsing....");
 					if( webApp.vars["wait"] ){
 						webApp.vars["wait"].style.display="none";
 					}
-				console.log("end of parsing..");		
+//console.log("end of parsing..");		
 				//}, 1000*3);
 			break;
 			
