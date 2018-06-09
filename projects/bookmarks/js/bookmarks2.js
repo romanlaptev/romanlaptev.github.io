@@ -18,7 +18,7 @@ var webApp = {
 <ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"folder_tpl" : "<div class='folder'>\
+			"folder_tpl" : "<div class='folder2'>\
 <a class='' href='#?q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
 {{annos}}\
 </div>",
