@@ -10,11 +10,7 @@ var webApp = {
 		"pageContainer" : getById("page-container"),
 		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
-		//"wait" : getById("wait"),
-		//"waitWindow" : getById("wait-window"),
-		//"loadProgress" : getById("load-progress"),
-		//"loadProgressBar" : getById("load-progress-bar"),
-		//"saveProgressBar" : getById("save-progress-bar"),
+		"wait" : getById("wait"),
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"container_tpl" : "<div class='panel panel-primary'>\
@@ -174,14 +170,23 @@ console.log( "Warn! error parse url in " + target.href );
 			break;
 			
 			case "view-container": //The container ID search starts with root
+console.log("Start parsing....");				
+				if( webApp.vars["wait"] ){
+					webApp.vars["wait"].className="modal-backdrop in";
+					webApp.vars["wait"].style.display="block";
+				}
+				
 				var id = parseInt( webApp.vars["GET"]["id"] );
 				_getContainerByID( id, webApp.vars["jsonObj"] );
+				
+				//var t = setTimeout(function(){
+				//console.log("end of wait..", arguments);				
+					if( webApp.vars["wait"] ){
+						webApp.vars["wait"].style.display="none";
+					}
+				console.log("end of parsing..");		
+				//}, 1000*3);
 			break;
-			
-			// case "select-container"://The container ID search starts with current container
-				// var id = parseInt( webApp.vars["GET"]["id"] );
-				// _selectContainer( id );
-			// break;
 			
 			case "parse-json":
 				var log = getById("log");
@@ -198,56 +203,6 @@ console.log( webApp.vars["logMsg"] );
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
-/*					
-					"onProgress" : function(e){
-						var percentComplete = 0;
-						if(e.lengthComputable) {
-							percentComplete = Math.ceil(e.loaded / e.total * 100);
-							if( webApp.vars["loadProgress"] ){
-								webApp.vars["loadProgress"].value = percentComplete;
-							}
-							if( webApp.vars["loadProgressBar"] ){
-								webApp.vars["loadProgressBar"].className = "progress-bar";
-								webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-								webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-							}
-
-						}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-					},//end onProgress()
-*/					
-
-					"onLoadEnd" : function( headers ){
-//console.log( typeof headers, headers );
-/*
-						if( headers && headers.length > 0){
-							var arrHeaders = headers.split("\r\n");
-//console.log(arrHeaders);
-							var objHeaders = {};
-							for( var n = 0; n < arrHeaders.length; n++){
-								if( !arrHeaders[n]){
-									continue;
-								}
-								if( arrHeaders[n].length === 0){
-									continue;
-								}
-								var headerStr = arrHeaders[n];
-								var arrHeader = headerStr.split(":");
-								var key = arrHeader[0];
-								var value = arrHeader[1].trim();
-								objHeaders[ key ] = value;
-							}//next
-//console.log(objHeaders);
-							webApp.vars["reqHeaders"] = objHeaders;
-							if( webApp.vars["reqHeaders"]["Last-Modified"] &&
-									webApp.vars["reqHeaders"]["Last-Modified"].length > 0){
-webApp.vars["logMsg"] = webApp.vars["data_url"] + ", Last-Modified: " + webApp.vars["reqHeaders"]["Last-Modified"] ;
-_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-							}
-						}
-*/						
-					},//end onLoadEnd
-					
 					"callback": function( data ){
 //webApp.vars["logMsg"] = "load " + webApp.vars["data_url"] ;
 //_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
@@ -353,7 +308,7 @@ children: [object Object],[object Object] object
 	
 	function _getContainerByID( id, jsonObj ){
 //console.log( id );
-		
+
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
@@ -561,7 +516,7 @@ function _runApp(){
 				webApp.vars["GET"] = parseGetParams( parseUrl ); 
 				webApp.app.urlManager();
 			}
-		
+
 		});//end webApp initialize
 	//});
 }//end _runApp()
