@@ -34,7 +34,8 @@ var webApp = {
 			"iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
 			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}",
 		},
-	"breadcrumbs": {}
+	"breadcrumbs": {},
+	"imageNotLoad": "img/image_not_load.png"
 	},
 	
 	"init" : function( postFunc ){
@@ -89,7 +90,7 @@ console.log("init app!");
 				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 				
 				if( target.tagName === "A"){
-					if ( target.href.indexOf("#") !== -1){
+					if ( target.href.indexOf("#?q=") !== -1){
 						if (event.preventDefault) { 
 							event.preventDefault();
 						} else {
@@ -451,7 +452,7 @@ webApp.vars["logMsg"] = "error, image not load: " + e.target["src"];
 webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
-					e.target.src = "https://ssl.gstatic.com/news/img/news-vasquette-192-logo_w.png";
+					e.target.src = webApp.vars["imageNotLoad"];
 				}
 				
 			};
