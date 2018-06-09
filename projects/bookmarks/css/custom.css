@@ -124,7 +124,7 @@ font-family: Georgia;
 	width: 150px;
 	min-height: 100px;
 	word-break: normal; /*break-all*/
-	border: 2px outset #99c;
+	/*border: 2px outset #99c;*/
 }
 
 .link .annos {

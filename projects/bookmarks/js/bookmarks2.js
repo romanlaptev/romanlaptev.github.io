@@ -28,10 +28,10 @@ var webApp = {
 </div>",
 			"annos_tpl" : "<div class='annos'>{{annos}}</div>",
 			"iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
-			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}",
+			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}"
 		},
-	"breadcrumbs": {},
-	"imageNotLoad": "img/image_not_load.png"
+		"breadcrumbs": {},
+		"imageNotLoad": "img/image_not_load.png"
 	},
 	
 	"init" : function( postFunc ){
@@ -52,7 +52,7 @@ console.log( navigator.userAgent );
 		
 	},//end init()
 	
-	"app" : _app(),
+	"app" : _app()//,
 	//"run" : _runApp
 };//end webApp()
 console.log(webApp);
@@ -63,7 +63,7 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=parse-json",
+		"init_url" : "#?q=parse-json"
 	};// _vars
 	
 	var _init = function( opt ){
@@ -242,10 +242,12 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
 console.log( webApp.vars["logMsg"] );
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+
 		}//end catch
 		
 		webApp.vars["jsonObj"] = jsonObj;
 //--------------------------------
+
 		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
 		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
 		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
@@ -499,7 +501,112 @@ console.log( webApp.vars["logMsg"] );
 	
 }//end _app()
 
+//Start tests
+function runTests(){
+	
+	var tests = [];
+/*	
+	var test = {
+		"name" : "window.ActiveXObject",
+		"result" : false
+	};
+	//if(window.ActiveXObject || "ActiveXObject" in window){
+	if( window.ActiveXObject ){
+		test["result"] = true;
+		test["msg"] = "supported";
+//console.log(window.ActiveXObject);
+	}
+	_push( tests, test );
+*/	
+//--------------------------------------
+	var test = {
+		"name" : "JSON support",
+		"result" : false
+	};
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+	} else {
+		test["msg"] = "typeof JSON :" + typeof JSON;
+		test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
+		
+	}
+	_push( tests, test );
+//--------------------------------------
+
+//console.log(tests);
+	webApp.vars["tests"] = tests;
+	
+	//form HTML
+	var testTpl = '<li class="list-unstyled"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span></li>';
+//	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	
+	//var test_links_tpl = "<ul class='relative-links'><b>relative links</b>: {{links}}</ul>";
+//console.log( test_links_tpl );	
+	//var test_links_item_tpl = "<li><a href='{{item-link}}' target='_blank'>{{item-text}}</a></li>";
+//console.log( test_links_item_tpl );	
+	
+	var testHtml = "";
+	for( var n = 0; n < tests.length; n++){
+	
+		var html = testTpl.replace("{{name}}", tests[n]["name"])
+		.replace("{{result}}", tests[n]["result"]);
+		
+		var msg = tests[n]["msg"];
+		if(!msg){
+			msg = "";
+		}
+		html = html.replace("{{msg}}", msg );
+		
+		// var test_links = "";
+		// if( tests[n]["links"] ){
+			// var test_links = tests[n]["links"];
+			// if( test_links.length > 0  ){
+				// var html_items = "";
+				// for( var n2 = 0; n2 < test_links.length; n2++){
+					// html_items += test_links_item_tpl
+					// .replace("{{item-link}}", test_links[n2]["link"])
+					// .replace("{{item-text}}", test_links[n2]["text"]);
+				// };//next
+				// test_links = test_links_tpl.replace("{{links}}", html_items);
+// //console.log( test_links );		
+			// }
+		// }
+		// html = html.replace("{{test_links}}", test_links);
+		
+		testHtml += html;
+	}//next
+	
+	return "<ul>" + testHtml + "</ul>";
+	
+}//end runTests()
+
+
 function _runApp(){
+	//---------------------------------
+	_log( navigator.userAgent );
+	var html = runTests();
+	_log( html );
+	
+	webApp.vars["isRunApp"] = false;
+	for( var n = 0; n < webApp.vars["tests"].length; n++ ){
+		var _test = webApp.vars["tests"][n];
+//console.log(_test);
+		if( _test["result"]){
+			webApp.vars["isRunApp"] = true;
+		} else {
+			webApp.vars["isRunApp"] = false;
+			break;
+		}
+	}//next
+	
+	if( !webApp.vars["isRunApp"] ){
+		webApp.vars["logMsg"] = "error, webApplication is not running in this browser....";
+		_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+		return false;
+	}
+	//---------------------------------
+	
 	//webApp.app.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		webApp.init(function(){

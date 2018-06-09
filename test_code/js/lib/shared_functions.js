@@ -13,6 +13,15 @@ if (!window.console){
 	}
 };
 
+function _push( ar, item){
+	if( ar.push ){
+		ar.push(item);
+	} else {
+		var num = ar.length;
+		ar[num] = item;
+	}
+}// end _push()
+
 function _log( msg, id){
 //console.log(arguments);
 //alert(arguments.length);
