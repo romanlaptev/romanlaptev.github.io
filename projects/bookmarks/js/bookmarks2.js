@@ -16,19 +16,13 @@ var webApp = {
 		//"saveProgressBar" : getById("save-progress-bar"),
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
-			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
-<div class='panel-heading'>\
-<!--<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>-->\
-<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
-<div class='panel-body'>{{children}}</div>\
-</div>",
 			"container_tpl" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>\
 <ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
 			"folder_tpl" : "<div class='folder2'>\
-<a href='#?q=select-container&id={{id}}'>{{title}}</a>\
+<a href='#?q=view-container&id={{id}}'>{{title}}</a>\
 {{annos}}\
 </div>",
 			"link_tpl" : "<div class='link2'>\
@@ -180,10 +174,10 @@ console.log( "Warn! error parse url in " + target.href );
 				_getContainerByID( id, webApp.vars["jsonObj"] );
 			break;
 			
-			case "select-container"://The container ID search starts with current container
-				var id = parseInt( webApp.vars["GET"]["id"] );
-				_selectContainer( id );
-			break;
+			// case "select-container"://The container ID search starts with current container
+				// var id = parseInt( webApp.vars["GET"]["id"] );
+				// _selectContainer( id );
+			// break;
 			
 			case "parse-json":
 				var log = getById("log");
@@ -321,40 +315,20 @@ type: text/x-moz-place-container string
 root: toolbarFolder string
 children: [object Object],[object Object] object
 */		
-		webApp.vars["htmlCode"] = "";
 		//first level
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 				
 				//только меню закладок
-				if( container["root"] !== "bookmarksMenuFolder"){
-					continue;
+				if( container["root"] === "bookmarksMenuFolder"){
+					_getContainerByID( container["id"], webApp.vars["jsonObj"] );
+					break;
 				}
-				
-	//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
-				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{breadcrumbs}}", container["title"] );
-				
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				
-				//webApp.vars["containerPrevId"] = container["id"];
-//console.log( container["id"] );
-				//add container link to breadcrumbs
-				// webApp.vars["breadcrumbs"].push({
-					// "id" :  container["id"],
-					// "title" : container["title"]
-				// });
-				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
 				
 			}//next
 		}
 		
-		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 	}//end _parseJSON()
 
 	function __parseDate( _date ){
@@ -372,45 +346,6 @@ children: [object Object],[object Object] object
 
 		return dateStr;
 	}//end _parseDate()
-
-	function _selectContainer( id ){
-		for(var n = 0; n < webApp.vars["currentContainerChildren"].length; n++){
-			var container = webApp.vars["currentContainerChildren"][n];
-			if( container["id"] === id){
-//console.log( container );
-
-				//add container link to breadcrumbs
-				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
-				
-				//form breadcrumbs line
-				var breadcrumbs = "";
-				for( var item in webApp.vars["breadcrumbs"] ){
-					var itemID = item;
-					var itemTitle = webApp.vars["breadcrumbs"][item];
-					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
-					
-					//if( itemID === container["id"] ){
-						//break;
-					//}
-					
-				}//next
-console.log( breadcrumbs );
-				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{breadcrumbs}}", breadcrumbs );
-				//-----------------------------
-
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
-//console.log(htmlChildren);
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				_log( "", webApp.vars["targetHtmlBlockID"]);
-				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-				
-			}
-		}//next
-	}//end _selectContainer()
 	
 	function _getContainerByID( id, jsonObj ){
 //console.log( id );
@@ -504,7 +439,7 @@ dateAdded: 1526981203879000
 	}//end _viewContainer()
 	
 	function _parseChildren( obj ){
-		webApp.vars["currentContainerChildren"] = obj;
+		//webApp.vars["currentContainerChildren"] = obj;
 		
 		var html = "";
 		for( var n = 0; n <  obj.length; n++ ){
