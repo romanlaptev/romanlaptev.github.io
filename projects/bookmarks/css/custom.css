@@ -147,8 +147,14 @@ font-family: Georgia;
 	background: #f0ffff;
 }
 
-.breadcrumbs a {
-	color: #fff;
+.breadcrumb-custom a {
+	/*color: #fff;*/
+}
+
+.icon-uri {
+	width: 24px;
+	/* height: auto; */
+	margin: 3px;
 }
 
 /* fix Bootstrap */

@@ -18,18 +18,20 @@ var webApp = {
 		"templates" : {
 			"container_tpl" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>\
-<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
+<ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
 			"folder_tpl" : "<div class='folder2'>\
-<a href='#?q=view-container&id={{id}}'>{{title}}</a>\
+<a class='' href='#?q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
 {{annos}}\
 </div>",
 			"link_tpl" : "<div class='link2'>\
-<a class='' href='{{uri}}' target='_blank'>{{title}}</a>\
+<a class='' href='{{uri}}' target='_blank' title='{{tooltip}}'>{{iconuri}}{{title}}</a>\
 {{annos}}\
 </div>",
-			"annos_tpl" : "<div class='annos'>{{annos}}</div>"
+			"annos_tpl" : "<div class='annos'>{{annos}}</div>",
+			"iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
+			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}",
 		},
 	"breadcrumbs": {}
 	},
@@ -381,13 +383,15 @@ dateAdded: 1526981203879000
 ?root: "bookmarksMenuFolder"
 ?title: "Меню закладок"
 */
+
+/*
 		var dateAdded = __parseDate( container["dateAdded"] );
 		var lastModified = __parseDate( container["lastModified"] );
 		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
 		_log("");
 		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-		
-//--------------------------------
+*/
+		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs
 		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
 		
@@ -414,27 +418,22 @@ dateAdded: 1526981203879000
 		}//next
 //console.log( breadcrumbs );
 
+		//-------------------------------- insert breadcrumbs
 		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
 		.replace("{{breadcrumbs}}", breadcrumbs );
-		//-----------------------------
 				
 		if( !container["children"] || container["children"].length === 0){
 			return;
 		}
-		
-		for(var n = 0; n < container["children"].length; n++){
-			var _child = container["children"][n];
-
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
+		//------------------------------ insert children block		
+		var htmlChildren = "";
+		if( container["children"] && container["children"].length > 0){
+			htmlChildren = _parseChildren( container["children"] );
+		}
 //console.log(htmlChildren);
-
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				_log( "", webApp.vars["targetHtmlBlockID"]);
-				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-		}//next
+		webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+		_log( "", webApp.vars["targetHtmlBlockID"]);
+		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 
 	}//end _viewContainer()
 	
@@ -454,18 +453,42 @@ dateAdded: 1526981203879000
 //console.log( _child["annos"] );
 				annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
 			}
-				
+			
+			var iconUri = "";
+			if( _child["iconuri"] && _child["iconuri"].length > 0){
+//console.log( _child["iconuri"] );
+				iconUri = webApp.vars["templates"]["iconuri_tpl"].replace( "{{iconuri}}", _child["iconuri"] );
+			}
+
+			var toolTip = webApp.vars["templates"]["tooltip_tpl"];
+			var dateAdded = "";
+			var lastModified = "";
+			
+			if( _child["dateAdded"] ){
+//console.log( _child["dateAdded"] );
+				dateAdded = __parseDate( _child["dateAdded"] );
+				toolTip = toolTip.replace( "{{dateAdded}}", dateAdded );
+			}
+			if( _child["lastModified"] ){
+//console.log( _child["lastModified"] );
+				lastModified = __parseDate( _child["lastModified"] );
+				toolTip = toolTip.replace( "{{lastModified}}", lastModified );
+			}
+			
 			if( _child["type"] === "text/x-moz-place-container"){
 				html += webApp.vars["templates"]["folder_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{id}}", _child["id"] )
+				.replace("{{tooltip}}", toolTip )
 				.replace("{{title}}", _child["title"] );				
 			}
 			
 			if( _child["type"] === "text/x-moz-place"){
 				html += webApp.vars["templates"]["link_tpl"]
 				.replace("{{annos}}", annos )
+				.replace("{{iconuri}}", iconUri )
 				.replace("{{uri}}", _child["uri"] )
+				.replace("{{tooltip}}", toolTip )
 				.replace("{{title}}", _child["title"] );				
 			}
 			
