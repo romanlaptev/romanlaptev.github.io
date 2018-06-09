@@ -21,11 +21,11 @@ var webApp = {
 <ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"folder_tpl" : "<div class='folder2'>\
+			"folder_tpl" : "<div class='folder'>\
 <a class='' href='#?q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
 {{annos}}\
 </div>",
-			"link_tpl" : "<div class='link2'>\
+			"link_tpl" : "<div class='link'>\
 <a class='' href='{{uri}}' target='_blank' title='{{tooltip}}'>{{iconuri}}{{title}}</a>\
 {{annos}}\
 </div>",

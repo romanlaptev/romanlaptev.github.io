@@ -65,12 +65,16 @@ word-break: break-all;
 	float: left;
 	margin: 10px;
 	background: #87cefa; /*lightskyblue;*/
-	padding: 15px;
-	margin: 5px;
+	/* padding: 15px; */
+	padding: 10px 0;
+	/* margin: 5px; */
+	margin: 2px;
 	border-radius: 5px;
 	width: 150px;
 	min-height: 100px;
 	word-break: normal; /*break-all*/
+	/* border: 2px outset darkblue; */
+	text-align: center;
 }
 .folder a {
 	width: 150px;
@@ -113,42 +117,29 @@ font-family: Georgia;
 
 .link {
 	float: left;
-	/* border: 1px solid; */
-	border-radius: 5px;
-	margin: 5px;
-	padding: 10px;
-	background: #e6e6fa;/*lavender*/
-	width: 150px;
-	min-height: 100px;	
-	word-break: normal; /*break-all*/
-}
-.link .annos {
-	font-size: 80%;
-	font-family: Verdana;
-	padding: 5px;
-	background: #f0ffff; /*azure*/
-}
-
-.link2 {
-	float: left;
 	border-radius: 5px;
 	margin: 2px;
 	padding: 10px;
-	background: #e6e6fa;
+	background: #e6e6fa;/*lavender*/
 	width: 150px;
 	min-height: 100px;
-	word-break: normal;
+	word-break: normal; /*break-all*/
 	border: 2px outset #99c;
 }
-.link2 .annos {
+
+.link .annos {
 	font-size: 80%;
 	font-family: Verdana;
 	padding: 5px;
 	background: #f0ffff;
 }
-
+ 
+.breadcrumb-custom {
+	/*background-color: #b1d0ef;*/
+	background-color: inherit;
+}
 .breadcrumb-custom a {
-	/*color: #fff;*/
+	color: #fff;
 }
 
 .icon-uri {
