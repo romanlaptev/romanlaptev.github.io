@@ -450,7 +450,7 @@ dateAdded: 1526981203879000
 				images[n].onerror = function(e){
 webApp.vars["logMsg"] = "error, image not load: " + e.target["src"];
 webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
-_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+//_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 					e.target.src = webApp.vars["imageNotLoad"];
 				}
@@ -475,7 +475,9 @@ console.log( webApp.vars["logMsg"] );
 			var annos = "";
 			if( _child["annos"] && _child["annos"].length > 0){
 //console.log( _child["annos"] );
-				annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+				if( _child["annos"][0]["value"].length > 0){
+					annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+				}
 			}
 			
 			var iconUri = "";
