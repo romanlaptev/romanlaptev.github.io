@@ -27,15 +27,15 @@ var webApp = {
 <ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"folder_tpl" : "<div class='folder'>\
+			"folder_tpl" : "<div class='folder2'>\
 <a href='#?q=select-container&id={{id}}'>{{title}}</a>\
 {{annos}}\
 </div>",
-			"link_tpl" : "<div class='link'>\
+			"link_tpl" : "<div class='link2'>\
 <a class='' href='{{uri}}' target='_blank'>{{title}}</a>\
 {{annos}}\
 </div>",
-			"annos_tpl" : "<div class='caption'>{{annos}}</div>"
+			"annos_tpl" : "<div class='annos'>{{annos}}</div>"
 		},
 	"breadcrumbs": {}
 	},

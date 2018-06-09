@@ -72,7 +72,6 @@ word-break: break-all;
 	min-height: 100px;
 	word-break: normal; /*break-all*/
 }
-
 .folder a {
 	width: 150px;
 	display: block;
@@ -81,6 +80,36 @@ font-weight: bold;
 font-size: 110%;
 font-family: Georgia;
 }
+
+.folder2 {
+	float: left;
+	margin: 10px;
+	background: #2C3F66;
+	padding: 10px 0;
+	margin: 2px;
+	border-radius: 10px;
+	width: 150px;
+	min-height: 100px;
+	word-break: normal;
+	border: 2px outset #000000;
+}
+.folder2 a {
+	width: 150px;
+	display: block;
+	/* height: 80px; */
+	/* font-weight: bold; */
+	font-size: 110%;
+	font-family: Georgia;
+	color: #87cefa;
+	text-align: center;
+}
+.folder2 .annos {
+	font-size: 80%;
+	font-family: Verdana;
+	padding: 5px;
+	color: #ffffff;
+}
+
 
 .link {
 	float: left;
@@ -93,11 +122,29 @@ font-family: Georgia;
 	min-height: 100px;	
 	word-break: normal; /*break-all*/
 }
-.link .caption {
+.link .annos {
 	font-size: 80%;
 	font-family: Verdana;
 	padding: 5px;
 	background: #f0ffff; /*azure*/
+}
+
+.link2 {
+	float: left;
+	border-radius: 5px;
+	margin: 2px;
+	padding: 10px;
+	background: #e6e6fa;
+	width: 150px;
+	min-height: 100px;
+	word-break: normal;
+	border: 2px outset #99c;
+}
+.link2 .annos {
+	font-size: 80%;
+	font-family: Verdana;
+	padding: 5px;
+	background: #f0ffff;
 }
 
 .breadcrumbs a {

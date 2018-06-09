@@ -18,3 +18,16 @@ border - #18a050
 
 серо-зеленый
 #c6d6de
+
+зеленый (травяной)
+#9c9
+
+#98fb98/*palegreen*/
+
+violet
+#99c
+#9999CC
+
+темно-синии блоки
+background: #2C3F66;
+border: 3px outset #000000;
