@@ -8,6 +8,7 @@ var webApp = {
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("page-container"),
+		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
 		//"wait" : getById("wait"),
 		//"waitWindow" : getById("wait-window"),
@@ -435,6 +436,28 @@ dateAdded: 1526981203879000
 		_log( "", webApp.vars["targetHtmlBlockID"]);
 		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 
+		//------------------------ Image load error
+		//var pageContainer = getById("page-container");
+		//var pageContainer = webApp.vars["insertContainer"];
+//console.log( pageContainer.innerHTML );
+		var images = webApp.vars["insertContainer"].getElementsByTagName("img");
+//console.log( "images =  ", images, images.length);
+		for( var n = 0; n < images.length; n++){
+			if( images[n].clientHeight === 0 ){
+//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+//console.log( "img load error: ", images[n].getAttribute("src") );	
+				images[n].onerror = function(e){
+webApp.vars["logMsg"] = "error, image not load: " + e.target["src"];
+webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+					e.target.src = "https://ssl.gstatic.com/news/img/news-vasquette-192-logo_w.png";
+				}
+				
+			};
+		};
+		//------------------------
+		
 	}//end _viewContainer()
 	
 	function _parseChildren( obj ){
