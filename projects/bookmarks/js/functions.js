@@ -383,6 +383,7 @@ console.log( msg, xhr );
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 //console.log( "xhr.onerror = ", xhr.onerror  );
 
+//setTimeout(function(){
 				//hide block overlay and wait window
 				if( overlay ){
 					//overlay.className="";
@@ -391,6 +392,8 @@ console.log( msg, xhr );
 				if( waitWindow ){
 					waitWindow.style.display="none";
 				}
+//}, 1000*3);
+
 					
 				if( xhr.status === 200){
 					

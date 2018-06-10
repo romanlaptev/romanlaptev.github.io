@@ -630,3 +630,40 @@ console.log( webApp.vars["logMsg"] );
 
 //================================== Start
 _runApp();
+
+//============================ test modal
+/*
+	var overlay = getById("overlay");
+	if( overlay ){
+		//overlay.className="modal-backdrop in";
+		overlay.style.display="block";
+	}
+	var waitWindow = getById("wait-window");
+	if( waitWindow ){
+		//waitWindow.className="modal-dialog";
+		waitWindow.style.display="block";
+	}
+
+
+	//var waitWindow = getById("win1");
+	//if( waitWindow ){
+		//waitWindow.style.display="block";
+	//}
+
+
+setTimeout(function(){
+
+				//hide block overlay and wait window
+				if( overlay ){
+					//overlay.className="";
+					overlay.style.display="none";
+				}
+				if( waitWindow ){
+					waitWindow.style.display="none";
+				}
+				
+	//if( waitWindow ){
+		//waitWindow.style.display="none";
+	//}
+}, 1000*3);
+*/

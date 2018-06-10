@@ -1,43 +1,38 @@
-#sidebar-left {
-	border-right: 3px solid #f5f5f5;
-}
-#sidebar-right {
-	border-left: 3px solid #f5f5f5;
-}
-#sidebar-left, #sidebar-right {
-	background: #fffaf0 none repeat scroll 0 0;
-	/*font-size: 0.75em;*/
-	padding: 10px 15px 10px;
-	vertical-align: top;
-	/*width: 175px;*/
-}
 .overlay {
-background-color: rgba(100, 100, 100, 0.25);
+background-color: #000;
 height: 100%;
 left: 0;
-opacity: 0;
+opacity: 0.5;
 position: absolute;
 top: 0;
-transition: all 200ms ease 0s;
+/*transition: all 200ms ease 0s;*/
 width: 100%;
-will-change: opacity;
-z-index: 9998;
+z-index: 1000;
 display:none;
 }
-.overlay.open {
-opacity: 0.9;
-}
 
-#wait-window.modal-dialog {
+#wait-window {
+display:none;
 background-color: rgb(200, 200, 250);
 border-radius: 10px;
-left: 50%;
-margin-left: -290px;
 padding: 10px;
-position: fixed;
-top: 25% !important;
+width: 75%;
 z-index: 1042;
+
+/*
+position: fixed;
+left: 50%;
+top: 25%;
+margin-left: -290px;
+*/
+
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+
 }
+
 #wait-window h1 {
 color: #000;
 /*font-size: 400%;*/

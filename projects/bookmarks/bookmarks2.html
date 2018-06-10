@@ -39,7 +39,7 @@ console.log("image load error", e);
 
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
 	<link rel="stylesheet" href="css/custom.css">
-	<!-- <link rel="stylesheet" href="css/load.css"> -->
+	<link rel="stylesheet" href="css/load.css">
 </head>
 
 <body>
@@ -91,7 +91,7 @@ console.log("image load error", e);
 -->
 
 <!-- ********************** load progress bar ************************** -->	
-<div id="wait-window" class="modal-dialog hide">
+<div id="wait-window" class="">
 	<h1 class="text-center">wait...</h1>
 	<div class="loader loader2"></div> 
 	ajax load:
@@ -104,7 +104,8 @@ console.log("image load error", e);
 	<!-- </div> -->
 </div>
 <div id="wait" class="hide"></div>
-<div id="overlay" class="hide"></div>
+<div id="overlay" class="overlay"></div>
+
 
 <!-- ********************** serviceModal ************************** -->	
 	<div id="serviceModal" class="modal fade" role="dialog">
