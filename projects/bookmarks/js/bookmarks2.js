@@ -8,36 +8,30 @@ var webApp = {
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("page-container"),
+		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
-		//"wait" : getById("wait"),
-		//"waitWindow" : getById("wait-window"),
-		//"loadProgress" : getById("load-progress"),
-		//"loadProgressBar" : getById("load-progress-bar"),
-		//"saveProgressBar" : getById("save-progress-bar"),
+		"wait" : getById("wait"),
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
-			"bookmarksMenuFolder" : "<div class='panel panel-primary'>\
-<div class='panel-heading'>\
-<!--<a href='#?q=view-container&id={{prev-id}}' title='go back' class='btn btn-sm btn-info'><<</a>-->\
-<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
-<div class='panel-body'>{{children}}</div>\
-</div>",
 			"container_tpl" : "<div class='panel panel-primary'>\
 <div class='panel-heading'>\
-<ul class='list-inline breadcrumbs'>{{breadcrumbs}}</ul></div>\
+<ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
 <div class='panel-body'>{{children}}</div>\
 </div>",
-			"folder_tpl" : "<div class='folder'>\
-<a href='#?q=select-container&id={{id}}'>{{title}}</a>\
+			"folder_tpl" : "<div class='folder2'>\
+<a class='' href='#?q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
 {{annos}}\
 </div>",
 			"link_tpl" : "<div class='link'>\
-<a class='' href='{{uri}}' target='_blank'>{{title}}</a>\
+<a class='' href='{{uri}}' target='_blank' title='{{tooltip}}'>{{iconuri}}{{title}}</a>\
 {{annos}}\
 </div>",
-			"annos_tpl" : "<div class='caption'>{{annos}}</div>"
+			"annos_tpl" : "<div class='annos'>{{annos}}</div>",
+			"iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
+			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}"
 		},
-	"breadcrumbs": {}
+		"breadcrumbs": {},
+		"imageNotLoad": "img/image_not_load.png"
 	},
 	
 	"init" : function( postFunc ){
@@ -58,7 +52,7 @@ console.log( navigator.userAgent );
 		
 	},//end init()
 	
-	"app" : _app(),
+	"app" : _app()//,
 	//"run" : _runApp
 };//end webApp()
 console.log(webApp);
@@ -69,7 +63,7 @@ function _app( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"init_url" : "#?q=parse-json",
+		"init_url" : "#?q=parse-json"
 	};// _vars
 	
 	var _init = function( opt ){
@@ -92,7 +86,7 @@ console.log("init app!");
 				//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 				
 				if( target.tagName === "A"){
-					if ( target.href.indexOf("#") !== -1){
+					if ( target.href.indexOf("#?q=") !== -1){
 						if (event.preventDefault) { 
 							event.preventDefault();
 						} else {
@@ -176,13 +170,22 @@ console.log( "Warn! error parse url in " + target.href );
 			break;
 			
 			case "view-container": //The container ID search starts with root
+//console.log("Start parsing....");				
+				if( webApp.vars["wait"] ){
+					webApp.vars["wait"].className="modal-backdrop in";
+					webApp.vars["wait"].style.display="block";
+				}
+				
 				var id = parseInt( webApp.vars["GET"]["id"] );
 				_getContainerByID( id, webApp.vars["jsonObj"] );
-			break;
-			
-			case "select-container"://The container ID search starts with current container
-				var id = parseInt( webApp.vars["GET"]["id"] );
-				_selectContainer( id );
+				
+				//var t = setTimeout(function(){
+				//console.log("end of wait..", arguments);				
+					if( webApp.vars["wait"] ){
+						webApp.vars["wait"].style.display="none";
+					}
+//console.log("end of parsing..");		
+				//}, 1000*3);
 			break;
 			
 			case "parse-json":
@@ -200,56 +203,6 @@ console.log( webApp.vars["logMsg"] );
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
-/*					
-					"onProgress" : function(e){
-						var percentComplete = 0;
-						if(e.lengthComputable) {
-							percentComplete = Math.ceil(e.loaded / e.total * 100);
-							if( webApp.vars["loadProgress"] ){
-								webApp.vars["loadProgress"].value = percentComplete;
-							}
-							if( webApp.vars["loadProgressBar"] ){
-								webApp.vars["loadProgressBar"].className = "progress-bar";
-								webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-								webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-							}
-
-						}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-					},//end onProgress()
-*/					
-
-					"onLoadEnd" : function( headers ){
-//console.log( typeof headers, headers );
-/*
-						if( headers && headers.length > 0){
-							var arrHeaders = headers.split("\r\n");
-//console.log(arrHeaders);
-							var objHeaders = {};
-							for( var n = 0; n < arrHeaders.length; n++){
-								if( !arrHeaders[n]){
-									continue;
-								}
-								if( arrHeaders[n].length === 0){
-									continue;
-								}
-								var headerStr = arrHeaders[n];
-								var arrHeader = headerStr.split(":");
-								var key = arrHeader[0];
-								var value = arrHeader[1].trim();
-								objHeaders[ key ] = value;
-							}//next
-//console.log(objHeaders);
-							webApp.vars["reqHeaders"] = objHeaders;
-							if( webApp.vars["reqHeaders"]["Last-Modified"] &&
-									webApp.vars["reqHeaders"]["Last-Modified"].length > 0){
-webApp.vars["logMsg"] = webApp.vars["data_url"] + ", Last-Modified: " + webApp.vars["reqHeaders"]["Last-Modified"] ;
-_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-							}
-						}
-*/						
-					},//end onLoadEnd
-					
 					"callback": function( data ){
 //webApp.vars["logMsg"] = "load " + webApp.vars["data_url"] ;
 //_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
@@ -289,10 +242,12 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
 console.log( webApp.vars["logMsg"] );
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+
 		}//end catch
 		
 		webApp.vars["jsonObj"] = jsonObj;
 //--------------------------------
+
 		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
 		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
 		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
@@ -321,40 +276,20 @@ type: text/x-moz-place-container string
 root: toolbarFolder string
 children: [object Object],[object Object] object
 */		
-		webApp.vars["htmlCode"] = "";
 		//first level
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 				
 				//только меню закладок
-				if( container["root"] !== "bookmarksMenuFolder"){
-					continue;
+				if( container["root"] === "bookmarksMenuFolder"){
+					_getContainerByID( container["id"], webApp.vars["jsonObj"] );
+					break;
 				}
-				
-	//+ ", dateAdded: "+ __parseDate( container["dateAdded"] )+ 					
-				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{breadcrumbs}}", container["title"] );
-				
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				
-				//webApp.vars["containerPrevId"] = container["id"];
-//console.log( container["id"] );
-				//add container link to breadcrumbs
-				// webApp.vars["breadcrumbs"].push({
-					// "id" :  container["id"],
-					// "title" : container["title"]
-				// });
-				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
 				
 			}//next
 		}
 		
-		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 	}//end _parseJSON()
 
 	function __parseDate( _date ){
@@ -372,49 +307,10 @@ children: [object Object],[object Object] object
 
 		return dateStr;
 	}//end _parseDate()
-
-	function _selectContainer( id ){
-		for(var n = 0; n < webApp.vars["currentContainerChildren"].length; n++){
-			var container = webApp.vars["currentContainerChildren"][n];
-			if( container["id"] === id){
-//console.log( container );
-
-				//add container link to breadcrumbs
-				webApp.vars["breadcrumbs"][ container.id ] = container["title"];
-				
-				//form breadcrumbs line
-				var breadcrumbs = "";
-				for( var item in webApp.vars["breadcrumbs"] ){
-					var itemID = item;
-					var itemTitle = webApp.vars["breadcrumbs"][item];
-					breadcrumbs += "<li><a href='#?q=view-container&id="+itemID+" '>" + itemTitle + "</a></li>";
-					
-					//if( itemID === container["id"] ){
-						//break;
-					//}
-					
-				}//next
-console.log( breadcrumbs );
-				webApp.vars["htmlCode"] = webApp.vars["templates"]["bookmarksMenuFolder"]
-				.replace("{{breadcrumbs}}", breadcrumbs );
-				//-----------------------------
-
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
-//console.log(htmlChildren);
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				_log( "", webApp.vars["targetHtmlBlockID"]);
-				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-				
-			}
-		}//next
-	}//end _selectContainer()
 	
 	function _getContainerByID( id, jsonObj ){
 //console.log( id );
-		
+
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
@@ -446,13 +342,15 @@ dateAdded: 1526981203879000
 ?root: "bookmarksMenuFolder"
 ?title: "Меню закладок"
 */
+
+/*
 		var dateAdded = __parseDate( container["dateAdded"] );
 		var lastModified = __parseDate( container["lastModified"] );
 		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
 		_log("");
 		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-		
-//--------------------------------
+*/
+		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs
 		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
 		
@@ -479,32 +377,49 @@ dateAdded: 1526981203879000
 		}//next
 //console.log( breadcrumbs );
 
+		//-------------------------------- insert breadcrumbs
 		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
 		.replace("{{breadcrumbs}}", breadcrumbs );
-		//-----------------------------
 				
 		if( !container["children"] || container["children"].length === 0){
 			return;
 		}
-		
-		for(var n = 0; n < container["children"].length; n++){
-			var _child = container["children"][n];
-
-				var htmlChildren = "";
-				if( container["children"] && container["children"].length > 0){
-					htmlChildren = _parseChildren( container["children"] );
-				}
+		//------------------------------ insert children block		
+		var htmlChildren = "";
+		if( container["children"] && container["children"].length > 0){
+			htmlChildren = _parseChildren( container["children"] );
+		}
 //console.log(htmlChildren);
+		webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
+		_log( "", webApp.vars["targetHtmlBlockID"]);
+		_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
 
-				webApp.vars["htmlCode"] = webApp.vars["htmlCode"].replace("{{children}}", htmlChildren );
-				_log( "", webApp.vars["targetHtmlBlockID"]);
-				_log( webApp.vars["htmlCode"], webApp.vars["targetHtmlBlockID"]);
-		}//next
-
+		//------------------------ Image load error
+		//var pageContainer = getById("page-container");
+		//var pageContainer = webApp.vars["insertContainer"];
+//console.log( pageContainer.innerHTML );
+		var images = webApp.vars["insertContainer"].getElementsByTagName("img");
+//console.log( "images =  ", images, images.length);
+		for( var n = 0; n < images.length; n++){
+			if( images[n].clientHeight === 0 ){
+//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+//console.log( "img load error: ", images[n].getAttribute("src") );	
+				images[n].onerror = function(e){
+webApp.vars["logMsg"] = "error, image not load: " + e.target["src"];
+webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+//_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+					e.target.src = webApp.vars["imageNotLoad"];
+				}
+				
+			};
+		};
+		//------------------------
+		
 	}//end _viewContainer()
 	
 	function _parseChildren( obj ){
-		webApp.vars["currentContainerChildren"] = obj;
+		//webApp.vars["currentContainerChildren"] = obj;
 		
 		var html = "";
 		for( var n = 0; n <  obj.length; n++ ){
@@ -517,20 +432,46 @@ dateAdded: 1526981203879000
 			var annos = "";
 			if( _child["annos"] && _child["annos"].length > 0){
 //console.log( _child["annos"] );
-				annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+				if( _child["annos"][0]["value"].length > 0){
+					annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+				}
 			}
-				
+			
+			var iconUri = "";
+			if( _child["iconuri"] && _child["iconuri"].length > 0){
+//console.log( _child["iconuri"] );
+				iconUri = webApp.vars["templates"]["iconuri_tpl"].replace( "{{iconuri}}", _child["iconuri"] );
+			}
+
+			var toolTip = webApp.vars["templates"]["tooltip_tpl"];
+			var dateAdded = "";
+			var lastModified = "";
+			
+			if( _child["dateAdded"] ){
+//console.log( _child["dateAdded"] );
+				dateAdded = __parseDate( _child["dateAdded"] );
+				toolTip = toolTip.replace( "{{dateAdded}}", dateAdded );
+			}
+			if( _child["lastModified"] ){
+//console.log( _child["lastModified"] );
+				lastModified = __parseDate( _child["lastModified"] );
+				toolTip = toolTip.replace( "{{lastModified}}", lastModified );
+			}
+			
 			if( _child["type"] === "text/x-moz-place-container"){
 				html += webApp.vars["templates"]["folder_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{id}}", _child["id"] )
+				.replace("{{tooltip}}", toolTip )
 				.replace("{{title}}", _child["title"] );				
 			}
 			
 			if( _child["type"] === "text/x-moz-place"){
 				html += webApp.vars["templates"]["link_tpl"]
 				.replace("{{annos}}", annos )
+				.replace("{{iconuri}}", iconUri )
 				.replace("{{uri}}", _child["uri"] )
+				.replace("{{tooltip}}", toolTip )
 				.replace("{{title}}", _child["title"] );				
 			}
 			
@@ -560,7 +501,112 @@ dateAdded: 1526981203879000
 	
 }//end _app()
 
+//Start tests
+function runTests(){
+	
+	var tests = [];
+/*	
+	var test = {
+		"name" : "window.ActiveXObject",
+		"result" : false
+	};
+	//if(window.ActiveXObject || "ActiveXObject" in window){
+	if( window.ActiveXObject ){
+		test["result"] = true;
+		test["msg"] = "supported";
+//console.log(window.ActiveXObject);
+	}
+	_push( tests, test );
+*/	
+//--------------------------------------
+	var test = {
+		"name" : "JSON support",
+		"result" : false
+	};
+	if (typeof JSON === 'object') {
+		test["result"] = true;
+	} else {
+		test["msg"] = "typeof JSON :" + typeof JSON;
+		test["msg"] += ", methods JSON.stringify(obj), JSON.parse(json_string) not supported...";
+		
+	}
+	_push( tests, test );
+//--------------------------------------
+
+//console.log(tests);
+	webApp.vars["tests"] = tests;
+	
+	//form HTML
+	var testTpl = '<li class="list-unstyled"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span></li>';
+//	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	
+	//var test_links_tpl = "<ul class='relative-links'><b>relative links</b>: {{links}}</ul>";
+//console.log( test_links_tpl );	
+	//var test_links_item_tpl = "<li><a href='{{item-link}}' target='_blank'>{{item-text}}</a></li>";
+//console.log( test_links_item_tpl );	
+	
+	var testHtml = "";
+	for( var n = 0; n < tests.length; n++){
+	
+		var html = testTpl.replace("{{name}}", tests[n]["name"])
+		.replace("{{result}}", tests[n]["result"]);
+		
+		var msg = tests[n]["msg"];
+		if(!msg){
+			msg = "";
+		}
+		html = html.replace("{{msg}}", msg );
+		
+		// var test_links = "";
+		// if( tests[n]["links"] ){
+			// var test_links = tests[n]["links"];
+			// if( test_links.length > 0  ){
+				// var html_items = "";
+				// for( var n2 = 0; n2 < test_links.length; n2++){
+					// html_items += test_links_item_tpl
+					// .replace("{{item-link}}", test_links[n2]["link"])
+					// .replace("{{item-text}}", test_links[n2]["text"]);
+				// };//next
+				// test_links = test_links_tpl.replace("{{links}}", html_items);
+// //console.log( test_links );		
+			// }
+		// }
+		// html = html.replace("{{test_links}}", test_links);
+		
+		testHtml += html;
+	}//next
+	
+	return "<ul>" + testHtml + "</ul>";
+	
+}//end runTests()
+
+
 function _runApp(){
+	//---------------------------------
+	_log( navigator.userAgent );
+	var html = runTests();
+	_log( html );
+	
+	webApp.vars["isRunApp"] = false;
+	for( var n = 0; n < webApp.vars["tests"].length; n++ ){
+		var _test = webApp.vars["tests"][n];
+//console.log(_test);
+		if( _test["result"]){
+			webApp.vars["isRunApp"] = true;
+		} else {
+			webApp.vars["isRunApp"] = false;
+			break;
+		}
+	}//next
+	
+	if( !webApp.vars["isRunApp"] ){
+		webApp.vars["logMsg"] = "error, webApplication is not running in this browser....";
+		_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+		return false;
+	}
+	//---------------------------------
+	
 	//webApp.app.loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		webApp.init(function(){
@@ -577,7 +623,7 @@ function _runApp(){
 				webApp.vars["GET"] = parseGetParams( parseUrl ); 
 				webApp.app.urlManager();
 			}
-		
+
 		});//end webApp initialize
 	//});
 }//end _runApp()

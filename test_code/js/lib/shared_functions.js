@@ -13,6 +13,15 @@ if (!window.console){
 	}
 };
 
+function _push( ar, item){
+	if( ar.push ){
+		ar.push(item);
+	} else {
+		var num = ar.length;
+		ar[num] = item;
+	}
+}// end _push()
+
 function _log( msg, id){
 //console.log(arguments);
 //alert(arguments.length);
@@ -100,7 +109,25 @@ function get_attr_to_obj( attr ){
 }//end get_attr_to_obj()
 
 
-//parse XML : <table><note>....</note>, <note>...</note></table>
+/*
+parse XML document to array
+<table><note>....</note>, <note>...</note></table>
+
+IN:
+<templates>
+	<tpl name="tpl-node_photogallery_image">
+		<html_code><![CDATA[
+......
+		]]></html_code>
+	</tpl>
+.................
+</templates>
+
+OUT:
+[ { name: "attr value", html_code: "......" },
+{ name: "attr value", html_code: "......" }]
+ONLY second LEVEL !!!!!!!!!!!!							  
+*/
 function _parseXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			
@@ -221,6 +248,7 @@ function addListener(object, event, listener) {
 //**************************************
 //var dirname = getenv("dirname");
 //**************************************
+/*
 function getenv(i){
 	if (!i.length) 
 	{ 
@@ -258,6 +286,7 @@ function getenv(i){
 	}
 
 }//end getenv
+*/
 
 //**************************************
 //musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
@@ -394,6 +423,33 @@ function getXMLDocument(url)  {
 	}
 }//end getXMLDocument
 
+function create_MSXML(){
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		}  catch(e) {
+console.log("error: " + e);
+			for( var item in e )	{
+console.log(item + ": " + e[item]);
+			}
+		};
+	}
+}//end create_MSXML()
 
 /*
 	runAjax( {
@@ -448,6 +504,9 @@ function runAjax( opt ){
 				num++;
 			}//next
 			url += "?"+ paramsStr;
+			url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+		} else {
+			url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
 		}
 	//}
 
@@ -488,10 +547,12 @@ console.log( msg, xhr );
 	//Check responseType support:
 //https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
 //https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
-	if( "responseType" in xhr){
-		xhr.responseType = p["responseType"];
-	}
-	
+//Error, "The response type cannot be changed for synchronous requests made from a document."
+	// Opera 12 crash!!!!
+	// if( "responseType" in xhr && p["async"] ){
+		// xhr.responseType = p["responseType"];
+	// }
+		
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
 		if( xhr.readyState == 4) {
@@ -502,6 +563,16 @@ console.log( msg, xhr );
 
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 //console.log( "xhr.onerror = ", xhr.onerror  );
+
+				//hide block overlay and wait window
+				if( overlay ){
+					//overlay.className="";
+					overlay.style.display="none";
+				}
+				if( waitWindow ){
+					waitWindow.style.display="none";
+				}
+					
 				if( xhr.status === 200){
 					
 					var timeEnd = new Date();
@@ -513,6 +584,18 @@ console.log(msg);
 // if( "responseType" in xhr){
 // console.log( "xhr.response: ", xhr.response );
 // console.log( "responseType: " + xhr.responseType );
+// }
+
+// try{
+// console.log( "xhr.responseText: ", xhr.responseText );
+// } catch(e){
+// console.log( e );
+// }
+
+// try{
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+// } catch(e){
+// console.log( e );
 // }
 					if( typeof callback === "function"){
 						
@@ -598,13 +681,13 @@ console.log("statusText:" + xhr.statusText);
 	
 	function _loadEnd(){
 		//hide block overlay and wait window
-		if( overlay ){
-			//overlay.className="";
-			overlay.style.display="none";
-		}
-		if( waitWindow ){
-			waitWindow.style.display="none";
-		}
+		// if( overlay ){
+			// //overlay.className="";
+			// overlay.style.display="none";
+		// }
+		// if( waitWindow ){
+			// waitWindow.style.display="none";
+		// }
 		
 		var all_headers = xhr.getAllResponseHeaders();
 //console.log( all_headers );

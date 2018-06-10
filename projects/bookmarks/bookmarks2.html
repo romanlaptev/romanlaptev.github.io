@@ -9,15 +9,27 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
-	<script src="js/lib/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap/bootstrap337.min.js"></script>
+	<!-- <script src="js/lib/jquery-1.11.3.min.js"></script> -->
+	<!-- <script src="js/bootstrap/bootstrap337.min.js"></script> -->
 	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
 	<script>
 window.onload = function(){}//end load
-
-$(document).ready(function(){
+<!-- $(document).ready(function(){});//end ready	-->
+/*
 	//$("input[type=file]").bootstrapFileInput();
-});//end ready	
+	
+	$("img").on("load", "#insert-json", function( e ){
+console.log("image load event", e);
+	});
+	
+	$("img").on("error", "#insert-json", function( e ){
+console.log("image load error", e);
+		//var src = $(this).attr("src");
+		//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+		//$(this).attr("src", new_src);
+	});
+*/
 	</script>
 	
 <!--[if lt IE 9]>
@@ -79,7 +91,6 @@ $(document).ready(function(){
 -->
 
 <!-- ********************** load progress bar ************************** -->	
-<!--
 <div id="wait-window" class="modal-dialog hide">
 	<h1 class="text-center">wait...</h1>
 	<div class="loader loader2"></div> 
@@ -87,13 +98,13 @@ $(document).ready(function(){
 	<div class="progress">
 		<div id="load-progress-bar" class="progress-bar hide"></div>
 	</div>
-	save data:
-	<div class="progress">
-		<div id="save-progress-bar" class="progress-bar hide"></div>
-	</div>
+	<!-- parse JSON: -->
+	<!-- <div class="progress"> -->
+		<!-- <div id="save-progress-bar" class="progress-bar hide"></div> -->
+	<!-- </div> -->
 </div>
 <div id="wait" class="hide"></div>
--->
+<div id="overlay" class="hide"></div>
 
 <!-- ********************** serviceModal ************************** -->	
 	<div id="serviceModal" class="modal fade" role="dialog">
@@ -116,7 +127,8 @@ $(document).ready(function(){
 		</div>
 	</div><!-- end serviceModal -->
 
-<script src="js/shared_functions.js"></script>
+<script src="js/plugins/json2.js"></script>
+<script src="js/functions.js"></script>
 <script src="js/bookmarks2.js"></script>
 
 </body>
