@@ -116,7 +116,7 @@ https://learn.javascript.ru/css-center
     <div class="dm-table">
         <div class="dm-cell">
             <div class="dm-modal">
-                <a href="#close" class="close"></a>
+				<a href="#close" id="btn-close" class="btn btn-danger close">x</a>
                 <h3>Заголовок модального окна</h3>
                 <div class="pl-left">pl-left</div>
                 <p>Текстовое содержание....</p>
@@ -131,13 +131,30 @@ var waitWindow = getById("win1");
 if( waitWindow ){
 	waitWindow.style.display="block";
 }
+/*
 setTimeout(function(){
 	//hide block overlay and wait window
 	if( waitWindow ){
 		waitWindow.style.display="none";
 	}
 }, 1000*5);
+*/
 
+window.onload = function(){
+	var btn_close = getById("btn-close");
+
+	btn_close.onclick= function( event ){
+		//event = event || window.event;
+		//var target = event.target || event.srcElement;
+//console.log( event );
+
+		//hide block overlay and wait window
+		if( waitWindow ){
+			waitWindow.style.display="none";
+		}
+	}//end event
+
+}//end load
 function getById(id){
 	if( document.querySelector ){
 		var obj = document.querySelector("#"+id);

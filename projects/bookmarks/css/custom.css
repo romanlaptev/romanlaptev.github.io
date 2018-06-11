@@ -8,20 +8,29 @@ body {
   /*#95a496;*/
   /*#315570;*/
   /*#2c5885;*/
-  #6aa6c0;
+  /*#6aa6c0;*/
 	/*#607d8b;*/
+  #fff;
   /*margin: 0;*/
   padding: 15px;
+	font-size:16px;
 }
 
 .container {
-  background-color: #ffffff;
-  padding: 20px;
+  /*background-color: #ffffff;*/
+	background-color: #abbabb;
+	padding: 20px;
   /*
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   */
+	box-shadow: 11px 15px 6px #999;
+}
+
+#app-title {
+	margin: 0;
+	font-family: hattori_hanzolight;
 }
 
 .log-panel{
@@ -59,7 +68,8 @@ word-break: break-all;
 	position: fixed;
 	bottom: 5px;
 	left: 50%;
-	margin-left: -40px;	
+	margin-left: -40px;
+	display:none;
 }
 
 .folder {
@@ -191,7 +201,6 @@ color: #0000ff;
 
 
 /* fix Bootstrap */
-
 header .nav-tabs .btn:hover {
 	background: #286090 !important;
 }
@@ -199,7 +208,15 @@ header .nav-tabs .btn:focus {
 	background: #d9534f !important;/*danger*/
 }
 
+.nav-tabs {
+	/* border-bottom: transparent; */
+	margin-bottom: 10px;
+}
+
 .alert {
 	margin-bottom: 5px !important;
 	padding: 7px !important;
+}
+.panel-primary {
+	border-color: transparent;
 }
