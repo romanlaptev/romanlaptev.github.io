@@ -113,6 +113,7 @@ $(window).scroll(function() {
 
 
 <!-- ********************** load progress bar ************************** -->	
+<!--
 <div id="wait-window" class="">
 	<h1 class="text-center">wait...</h1>
 	<div class="loader loader2"></div> 
@@ -120,13 +121,29 @@ $(window).scroll(function() {
 	<div class="progress">
 		<div id="load-progress-bar" class="progress-bar hide"></div>
 	</div>
-	<!-- parse JSON: -->
-	<!-- <div class="progress"> -->
-		<!-- <div id="save-progress-bar" class="progress-bar hide"></div> -->
-	<!-- </div> -->
 </div>
-<div id="wait" class="hide"></div>
 <div id="overlay" class="overlay"></div>
+-->
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+ajax load:
+				<div class="progress">
+					<div id="load-progress-bar" class="progress-bar hide"></div>
+				</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 <!-- ********************** serviceModal ************************** -->	

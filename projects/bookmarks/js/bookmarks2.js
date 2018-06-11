@@ -11,6 +11,8 @@ var webApp = {
 		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
+		"waitWindow" : getById("win1"),
+
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"container_tpl" : "<div class='panel panel-primary'>\
@@ -200,9 +202,31 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 				}
 				
+
+				if( webApp.vars["waitWindow"] ){
+					//waitWindow.className="modal-dialog";
+					webApp.vars["waitWindow"].style.display="block";
+				}
+
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
+					"onProgress" : function( e ){
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+						var loadProgressBar = getById("load-progress-bar");
+						if( loadProgressBar ){
+							//loadProgress.value = percentComplete;
+							loadProgressBar.className = "progress-bar";
+							loadProgressBar.style.width = percentComplete+"%";
+							loadProgressBar.innerHTML = percentComplete+"%";
+						}
+
+					},
 					"callback": function( data, runtime ){
 webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
 _log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
@@ -212,6 +236,13 @@ console.log( webApp.vars["logMsg"] );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
+
+//setTimeout(function(){
+						if( webApp.vars["waitWindow"] ){
+							webApp.vars["waitWindow"].style.display="none";
+						}
+//}, 1000*3);
+
 						if( data.length > 0){
 							_parseJSON( data );
 						} else {
@@ -649,27 +680,22 @@ _runApp();
 		//waitWindow.className="modal-dialog";
 		waitWindow.style.display="block";
 	}
-
+*/
 
 	//var waitWindow = getById("win1");
 	//if( waitWindow ){
 		//waitWindow.style.display="block";
 	//}
-
-
+/*
 setTimeout(function(){
 
-				//hide block overlay and wait window
-				if( overlay ){
-					//overlay.className="";
-					overlay.style.display="none";
-				}
-				if( waitWindow ){
-					waitWindow.style.display="none";
-				}
-				
-	//if( waitWindow ){
-		//waitWindow.style.display="none";
-	//}
+		//hide block overlay and wait window
+		//if( overlay ){
+			//overlay.className="";
+			//overlay.style.display="none";
+		//}
+		if( waitWindow ){
+			waitWindow.style.display="none";
+		}
 }, 1000*3);
 */

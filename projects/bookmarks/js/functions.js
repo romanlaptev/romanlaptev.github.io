@@ -328,7 +328,6 @@ function runAjax( opt ){
 		}
 		
 	//}
-
 	
 	if( !url || url.length === 0){
 		var msg = "Parameters error, needed 'url'";			
@@ -347,6 +346,7 @@ console.log( msg, xhr );
 		return false;
 	}
 
+/*
 	//block overlay and wait window
 	var overlay = getById("overlay");
 	if( overlay ){
@@ -358,6 +358,7 @@ console.log( msg, xhr );
 		waitWindow.className="modal-dialog";
 		waitWindow.style.display="block";
 	}
+*/
 	
 	var timeStart = new Date();
 
@@ -383,6 +384,7 @@ console.log( msg, xhr );
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 //console.log( "xhr.onerror = ", xhr.onerror  );
 
+/*
 //setTimeout(function(){
 				//hide block overlay and wait window
 				if( overlay ){
@@ -393,7 +395,7 @@ console.log( msg, xhr );
 					waitWindow.style.display="none";
 				}
 //}, 1000*3);
-
+*/
 					
 				if( xhr.status === 200){
 					
@@ -526,6 +528,7 @@ console.log("statusText:" + xhr.statusText);
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
+/*
 			var percentComplete = 0;
 			if(e.lengthComputable) {
 				percentComplete = Math.ceil(e.loaded / e.total * 100);
@@ -539,7 +542,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				loadProgressBar.style.width = percentComplete+"%";
 				loadProgressBar.innerHTML = percentComplete+"%";
 			}
-
+*/
 			if( typeof  p["onProgress"] === "function"){
 				p["onProgress"](e);
 			}
