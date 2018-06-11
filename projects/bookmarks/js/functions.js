@@ -716,13 +716,17 @@ console.log("<div class='alert alert-info'>" + msg + "</div>");
 		
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
-				var elem = $(this).attr("href");
+				var id = $(this).attr("href");
 			} else {
-				var elem = $(this).attr("data-target");
+				var id = "#" + $(this).attr("data-target");
 			}
+//console.log("id: " , id);
 			
+			var start_scroll_pos = $(id).offset().top;
+//console.log("start_scroll_pos: " , start_scroll_pos);
+
 			$('html,body').animate({
-				scrollTop: 0
+				scrollTop: start_scroll_pos
 				}, 500);
 			return false;
 		});

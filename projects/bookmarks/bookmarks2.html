@@ -13,19 +13,14 @@
 	<script src="js/bootstrap/bootstrap337.min.js"></script>
 	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
 	<script>
-//var btn_scroll;
 var start_scroll_pos, end_scroll_pos;
 
-window.onload = function(){
-	//btn_scroll = getById("btn-scroll-to-top");
-}//end load
-
 $(document).ready(function(){
-//определить позицию #insert-json
-//console.log ("insert-json offset left = " + $("#insert-json").offset().left );
-//console.log ("insert-json offset top = " + $("#insert-json").offset().top );
-start_scroll_pos = $("#insert-json").offset().top + 100;
-end_scroll_pos = start_scroll_pos - 20;
+
+		//--------------------- Scroll
+		//Detect top position for scroll block #insert-json
+		start_scroll_pos = $("#insert-json").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
 
 /*
 	//$("input[type=file]").bootstrapFileInput();
@@ -45,8 +40,8 @@ console.log("image load error", e);
 });//end ready	
 
 $(window).scroll(function() {
-var st = $(window).scrollTop();
-document.title = st;
+//var st = $(window).scrollTop();
+//document.title = st;
 //console.log ("scrollTop = " + st );
 
 		if ( $(this).scrollTop() > start_scroll_pos  ) {
@@ -59,17 +54,6 @@ document.title = st;
 });//end scroll
 
 
-window.onscroll = function(event) {
-//console.log("scroll on ");
-//console.log( "btn_scroll: ", btn_scroll.style );
-	//if( btn_scroll.style.display === "" || btn_scroll.style.display === "none"){
-		//btn_scroll.style.display = "block";
-	//}
-}//end event
-	
-window.onresize = function(event) {
-console.log("resize window");
-}//end event
 	</script>
 	
 <!--[if lt IE 9]>
