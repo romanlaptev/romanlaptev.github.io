@@ -72,6 +72,12 @@ word-break: break-all;
 	display:none;
 }
 
+#insert-json .panel-primary > .panel-heading {
+	/*background-color: #337ab7;
+	border-color: #337ab7;*/
+	border-radius: 18px 0;
+}
+
 .folder {
 	float: left;
 	margin: 10px;
