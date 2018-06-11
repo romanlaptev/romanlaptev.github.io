@@ -96,7 +96,11 @@ font-family: Georgia;
 	width: 150px;
 	min-height: 100px;
 	word-break: normal;
-	border: 2px outset #000000;
+	/*border: 2px outset #000000;*/
+    -webkit-box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
+    -moz-box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
+    box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
+
 }
 .folder2 a {
 	width: 150px;
@@ -117,6 +121,10 @@ font-family: Georgia;
 .folder2:hover
 {
 	background: #87cefa; /*lightskyblue;*/
+	/*background: #cecefa;*/
+	box-shadow: 0 0 5px inset;
+	border: 2px outset #99c;
+
 }
 .folder2:hover a
 {
@@ -134,16 +142,24 @@ font-family: Georgia;
 	min-height: 100px;
 	word-break: normal; /*break-all*/
 	/*border: 2px outset #99c;*/
-
+/*
     -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+*/
+    -webkit-box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
+    -moz-box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
+    box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
 
 /*box-shadow: 5px 5px silver;*/
 }
 .link:hover
 {
+/*	background-color:#a68caa;*/
+	/*background-color:#cecefa;*/
+	background-color:#87cefa; /*lightskyblue;*/
 	box-shadow: 0 0 5px inset;
+	border: 2px outset #99c;
 }
 
 .link .annos {
