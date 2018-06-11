@@ -91,7 +91,7 @@ font-family: Georgia;
 	margin: 10px;
 	background: #2C3F66;
 	padding: 10px 0;
-	margin: 2px;
+	margin: 4px;
 	border-radius: 10px;
 	width: 150px;
 	min-height: 100px;
@@ -135,7 +135,7 @@ font-family: Georgia;
 .link {
 	float: left;
 	border-radius: 5px;
-	margin: 2px;
+	margin: 4px;
 	padding: 10px;
 	background: #e6e6fa;/*lavender*/
 	width: 150px;
@@ -169,6 +169,10 @@ font-family: Georgia;
 	background: #f0ffff;
 }
  
+.link a {
+color: #0000ff;
+}
+
 .breadcrumb-custom {
 	/*background-color: #b1d0ef;*/
 	background-color: inherit;
@@ -187,9 +191,14 @@ font-family: Georgia;
 
 
 /* fix Bootstrap */
-header .btn:hover {
+
+header .nav-tabs .btn:hover {
 	background: #286090 !important;
 }
+header .nav-tabs .btn:focus {
+	background: #d9534f !important;/*danger*/
+}
+
 .alert {
 	margin-bottom: 5px !important;
 	padding: 7px !important;

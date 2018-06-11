@@ -428,7 +428,7 @@ console.log( webApp.vars["logMsg"] );
 				//for( var key in _child){
 //console.log( key + ": " + _child[key], typeof _child[key]  );
 				//}//next
-				
+
 			var annos = "";
 			if( _child["annos"] && _child["annos"].length > 0){
 //console.log( _child["annos"] );
@@ -467,6 +467,12 @@ console.log( webApp.vars["logMsg"] );
 			}
 			
 			if( _child["type"] === "text/x-moz-place"){
+
+				//Skip RecentTags link
+				if( _child["uri"].indexOf("place:") !== -1){ 
+					continue;
+				}
+
 				html += webApp.vars["templates"]["link_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{iconuri}}", iconUri )
