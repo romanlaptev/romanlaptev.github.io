@@ -73,8 +73,8 @@ word-break: break-all;
 }
 
 #insert-json .panel-primary > .panel-heading {
-	/*background-color: #337ab7;
-	border-color: #337ab7;*/
+	background-color: #006b9b; /*#337ab7;*/
+	/*border-color: #337ab7;*/
 	border-radius: 18px 0;
 }
 
@@ -136,15 +136,19 @@ font-family: Georgia;
 }
 .folder2:hover
 {
-	background: #87cefa; /*lightskyblue;*/
-	/*background: #cecefa;*/
+	background-color: #87cefa; /*lightskyblue;*/
+	/*background-color: #ffa500;*/ /*orange;*/
+	/*background-color: #009b9b;*/ 
+	/*background-color: #cecefa;*/
 	box-shadow: 0 0 5px inset;
-	border: 2px outset #99c;
+	/*border: 2px outset #99c;*/
+	/*width: 148px;*/
 
 }
 .folder2:hover a
 {
 	color: #2C3F66;
+	/*color: #fff;*/
 }
 
 
@@ -174,8 +178,10 @@ font-family: Georgia;
 /*	background-color:#a68caa;*/
 	/*background-color:#cecefa;*/
 	background-color:#87cefa; /*lightskyblue;*/
+	/*background: #ffa500;*/ /*orange;*/
+	/*background: #006b6b;*/
 	box-shadow: 0 0 5px inset;
-	border: 2px outset #99c;
+	/*border: 2px outset #99c;*/
 }
 
 .link .annos {
@@ -208,7 +214,7 @@ color: #0000ff;
 
 /* fix Bootstrap */
 header .nav-tabs .btn:hover {
-	background: #286090 !important;
+	background: #5bc0de !important;
 }
 header .nav-tabs .btn:focus {
 	background: #d9534f !important;/*danger*/
