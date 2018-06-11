@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	
+	<link rel="stylesheet" href="../../css/bootstrap337.min.css"/>	
+</head>
+
+<body>
+<div class="container">
+
+	<header>
+		<ul class="nav nav-tabs">
+			<li><a class="btn btn-info" href="../../index.html">index</a></li>
+		</ul>
+		
+		<div class="page-header">
+			<h1 class="text-right">Test CSS: centered modal window</h1>
+		</div>
+	</header>
+
+<pre>
+https://habr.com/post/252769/
+Выравнивание модального окна по центру
+
+http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru
+Адаптивное модальное окно строго по центру
+
+https://learn.javascript.ru/css-center
+Центрирование горизонтальное и вертикальное
+</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-body">
+		</div>
+	</div>
+
+	<footer>
+		<div class="col-sm-3 col-md-3"></div>
+		<div class="col-sm-6 col-md-6"></div>
+		<div class="col-sm-3 col-md-3 text-right"></div>
+	</footer>
+	
+</div><!-- end container -->
+
+<style>
+body, html {
+     height: 100%;
+}
+
+.overlay {
+background-color: #000;
+height: 100%;
+left: 0;
+opacity: 0.5;
+position: absolute;
+top: 0;
+/*transition: all 200ms ease 0s;*/
+width: 100%;
+z-index: 1000;
+display:none;
+}
+
+#wait-window {
+display:none;
+background-color: rgb(200, 200, 250);
+border-radius: 10px;
+padding: 10px;
+width: 75%;
+z-index: 1042;
+
+/*
+position: fixed;
+left: 50%;
+top: 25%;
+margin-left: -290px;
+*/
+
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+#wait-window h1 {
+color: #000;
+/*font-size: 400%;*/
+}
+
+#wait-window .loader {
+border: 16px solid #f3f3f3; /* Light grey */
+border-top: 16px solid #3498db; /* Blue */
+border-radius: 50%;
+width: 120px;
+height: 120px;
+margin: auto;
+animation: spin 2s linear infinite;
+}
+#wait-window .loader2 {
+border-bottom: 16px solid #3498db;
+border-top: 16px solid #3498db;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+</style>
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait-window" class="">
+
+	<button id="btn-close" class="btn btn-danger">close</button>
+
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+	<!-- <div class="progress"> -->
+		<!-- <div id="save-progress-bar" class="progress-bar hide"></div> -->
+	<!-- </div> -->
+</div>
+<div id="wait" class="hide"></div>
+<div id="overlay" class="overlay"></div>
+
+
+
+<script>
+
+	var overlay = getById("overlay");
+	if( overlay ){
+		//overlay.className="modal-backdrop in";
+		overlay.style.display="block";
+	}
+
+var waitWindow = getById("wait-window");
+if( waitWindow ){
+	waitWindow.style.display="block";
+}
+
+/*
+setTimeout(function(){
+	//hide block overlay and wait window
+	if( waitWindow ){
+		waitWindow.style.display="none";
+	}
+}, 1000*5);
+*/
+
+window.onload = function(){
+	var btn_close = getById("btn-close");
+
+	btn_close.onclick= function( event ){
+		event = event || window.event;
+		//var target = event.target || event.srcElement;
+//console.log( event );
+
+		//hide block overlay and wait window
+		if( overlay ){
+			//overlay.className="";
+			overlay.style.display="none";
+		}
+		if( waitWindow ){
+			waitWindow.style.display="none";
+		}
+	}//end event
+
+}//end load
+
+
+
+function getById(id){
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	return false;
+}//end getById()
+
+</script>
+
+</body>
+</html>

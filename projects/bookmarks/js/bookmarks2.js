@@ -11,6 +11,8 @@ var webApp = {
 		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
+		"waitWindow" : getById("win1"),
+
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"container_tpl" : "<div class='panel panel-primary'>\
@@ -200,18 +202,47 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 				}
 				
+
+				if( webApp.vars["waitWindow"] ){
+					//waitWindow.className="modal-dialog";
+					webApp.vars["waitWindow"].style.display="block";
+				}
+
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
-					"callback": function( data ){
-//webApp.vars["logMsg"] = "load " + webApp.vars["data_url"] ;
-//_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-//console.log( webApp.vars["logMsg"] );
+					"onProgress" : function( e ){
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+						var loadProgressBar = getById("load-progress-bar");
+						if( loadProgressBar ){
+							//loadProgress.value = percentComplete;
+							loadProgressBar.className = "progress-bar";
+							loadProgressBar.style.width = percentComplete+"%";
+							loadProgressBar.innerHTML = percentComplete+"%";
+						}
+
+					},
+					"callback": function( data, runtime ){
+webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
+_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
 //console.log( "_postFunc(), " + typeof data );
 //console.log( data );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
+
+//setTimeout(function(){
+						if( webApp.vars["waitWindow"] ){
+							webApp.vars["waitWindow"].style.display="none";
+						}
+//}, 1000*3);
+
 						if( data.length > 0){
 							_parseJSON( data );
 						} else {
@@ -428,7 +459,7 @@ console.log( webApp.vars["logMsg"] );
 				//for( var key in _child){
 //console.log( key + ": " + _child[key], typeof _child[key]  );
 				//}//next
-				
+
 			var annos = "";
 			if( _child["annos"] && _child["annos"].length > 0){
 //console.log( _child["annos"] );
@@ -467,6 +498,12 @@ console.log( webApp.vars["logMsg"] );
 			}
 			
 			if( _child["type"] === "text/x-moz-place"){
+
+				//Skip RecentTags link
+				if( _child["uri"].indexOf("place:") !== -1){ 
+					continue;
+				}
+
 				html += webApp.vars["templates"]["link_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{iconuri}}", iconUri )
@@ -630,3 +667,35 @@ console.log( webApp.vars["logMsg"] );
 
 //================================== Start
 _runApp();
+
+//============================ test modal
+/*
+	var overlay = getById("overlay");
+	if( overlay ){
+		//overlay.className="modal-backdrop in";
+		overlay.style.display="block";
+	}
+	var waitWindow = getById("wait-window");
+	if( waitWindow ){
+		//waitWindow.className="modal-dialog";
+		waitWindow.style.display="block";
+	}
+*/
+
+	//var waitWindow = getById("win1");
+	//if( waitWindow ){
+		//waitWindow.style.display="block";
+	//}
+/*
+setTimeout(function(){
+
+		//hide block overlay and wait window
+		//if( overlay ){
+			//overlay.className="";
+			//overlay.style.display="none";
+		//}
+		if( waitWindow ){
+			waitWindow.style.display="none";
+		}
+}, 1000*3);
+*/

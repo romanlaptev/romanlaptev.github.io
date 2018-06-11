@@ -528,6 +528,7 @@ console.log( msg, xhr );
 		return false;
 	}
 
+/*
 	//block overlay and wait window
 	var overlay = getById("overlay");
 	if( overlay ){
@@ -539,6 +540,7 @@ console.log( msg, xhr );
 		waitWindow.className="modal-dialog";
 		waitWindow.style.display="block";
 	}
+*/
 	
 	var timeStart = new Date();
 
@@ -564,6 +566,7 @@ console.log( msg, xhr );
 //console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 //console.log( "xhr.onerror = ", xhr.onerror  );
 
+/*
 				//hide block overlay and wait window
 				if( overlay ){
 					//overlay.className="";
@@ -572,7 +575,7 @@ console.log( msg, xhr );
 				if( waitWindow ){
 					waitWindow.style.display="none";
 				}
-					
+*/					
 				if( xhr.status === 200){
 					
 					var timeEnd = new Date();
@@ -614,10 +617,10 @@ console.log(msg);
 								var data = xhr.responseText;
 							}
 
-							callback(data);
+							callback( data, runtime );
 						} else {
 							var data = xhr.responseText;
-							callback(data);
+							callback( data, runtime );
 						}
 					}
 					//if browser not define callback "onloadend"
@@ -703,6 +706,7 @@ console.log("statusText:" + xhr.statusText);
 		xhr.onprogress = function(e){
 //console.log("ajax onprogress");
 //console.log(arguments);
+/*
 			var percentComplete = 0;
 			if(e.lengthComputable) {
 				percentComplete = Math.ceil(e.loaded / e.total * 100);
@@ -716,7 +720,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				loadProgressBar.style.width = percentComplete+"%";
 				loadProgressBar.innerHTML = percentComplete+"%";
 			}
-
+*/
 			if( typeof  p["onProgress"] === "function"){
 				p["onProgress"](e);
 			}
@@ -889,8 +893,8 @@ function filter_input(e,regexp){
     var code=isIE ? e.keyCode : e.which;
     if (code<32 || e.ctrlKey || e.altKey) return true;
 
-    var char=String.fromCharCode(code);
-    if (!regexp.test(char)) return false;
+    var _char=String.fromCharCode(code);
+    if (!regexp.test( _char )) return false;
   }
   return true;
 }
@@ -928,6 +932,23 @@ function check_form(){
 		alert ('Error: ' + error_text);
 	}
 }//end check_form()
+
+
+window.onload = function(){
+	//btn_scroll = getById("btn-scroll-to-top");
+}//end load
+
+window.onscroll = function(event) {
+//console.log("scroll on ");
+//console.log( "btn_scroll: ", btn_scroll.style );
+	//if( btn_scroll.style.display === "" || btn_scroll.style.display === "none"){
+		//btn_scroll.style.display = "block";
+	//}
+}//end event
+	
+window.onresize = function(event) {
+//console.log("resize window");
+}//end event
 
 
 
@@ -971,16 +992,23 @@ _log(msg);
 		
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
-				var elem = $(this).attr("href");
+				var id = $(this).attr("href");
 			} else {
-				var elem = $(this).attr("data-target");
+				var id = "#" + $(this).attr("data-target");
 			}
+//console.log("id: " , id);
+
 			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
+
+			var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
+//console.log("start_scroll_pos: " , start_scroll_pos);
+
 			$('html,body').animate({
-				scrollTop: 0
+				scrollTop: start_scroll_pos
 				}, 500);
 			return false;
 		});
+
 		
 		$(".fancybox").fancybox({
 			helpers : {
@@ -989,8 +1017,38 @@ _log(msg);
 				}
 			}
 		});
-		
+	
+//------------------------------ Image load error
+/*
+	$("img").on("load", "#insert-json", function( e ){
+console.log("image load event", e);
+	});
+	
+	$("img").on("error", "#insert-json", function( e ){
+console.log("image load error", e);
+		//var src = $(this).attr("src");
+		//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+		//$(this).attr("src", new_src);
+	});
+*/
+	
 	});//end ready	
+
+	$(window).scroll(function() {
+var st = $(window).scrollTop();
+document.title = st;
+//console.log ("scrollTop = " + st );
+
+			//if ( $(this).scrollTop() > start_scroll_pos  ) {
+				//$("#btn-scroll-to-top").show();
+			//} 
+
+			//if ( $(this).scrollTop() < end_scroll_pos ) {
+				//$("#btn-scroll-to-top").hide();
+			//}
+	});//end scroll
+
 }
 
 

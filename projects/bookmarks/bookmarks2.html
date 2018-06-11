@@ -9,12 +9,19 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
-	<!-- <script src="js/lib/jquery-1.11.3.min.js"></script> -->
-	<!-- <script src="js/bootstrap/bootstrap337.min.js"></script> -->
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap/bootstrap337.min.js"></script>
 	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
 	<script>
-window.onload = function(){}//end load
-<!-- $(document).ready(function(){});//end ready	-->
+var start_scroll_pos, end_scroll_pos;
+
+$(document).ready(function(){
+
+		//--------------------- Scroll
+		//Detect top position for scroll block #insert-json
+		start_scroll_pos = $("#insert-json").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
+
 /*
 	//$("input[type=file]").bootstrapFileInput();
 	
@@ -30,6 +37,23 @@ console.log("image load error", e);
 		//$(this).attr("src", new_src);
 	});
 */
+});//end ready	
+
+$(window).scroll(function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+
+		if ( $(this).scrollTop() > start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+});//end scroll
+
+
 	</script>
 	
 <!--[if lt IE 9]>
@@ -39,7 +63,8 @@ console.log("image load error", e);
 
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
 	<link rel="stylesheet" href="css/custom.css">
-	<!-- <link rel="stylesheet" href="css/load.css"> -->
+	<link rel="stylesheet" href="css/load.css">
+	<link rel="stylesheet" href="fonts/fonts.css"/>	
 </head>
 
 <body>
@@ -47,23 +72,21 @@ console.log("image load error", e);
 
 	<header>
 		<ul class="nav nav-tabs">
-			<li><a class="btn btn-info" href="../../index.html">index</a></li>
-			<li><a class="btn btn-warning" href="parse_bookmarks.html">previous version</a></li>
-		</ul>
-		
-		<div class="page-header">
+			<li><a class="btn btn-primary" href="../../index.html">index</a></li>
+			<li><a class="btn btn-primary" href="parse_bookmarks.html">previous version</a></li>
 			<h1 class="text-right" id="app-title">Application title</h1>
-		</div>
+		</ul>
 		
 		<div id="control-btn" class="nav">
 <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button> -->
-<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+<!--<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>-->
 		</div>
 		
 	</header>
 
 	<div id="log-wrap" class="panel panel-primary log-panel">
 		<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
+		<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
 <!--
 		<div class="progress">ajax load:
 			<div id="load-progress-bar" class="progress-bar hide"></div>
@@ -82,29 +105,46 @@ console.log("image load error", e);
 		<div class="col-sm-3 col-md-3 text-right"></div>
 	</footer>
 	
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+
 </div><!-- end container -->
 
-<!--
-<div class="">
-	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="page-container">scroll to top</button>
-</div>
--->
 
 <!-- ********************** load progress bar ************************** -->	
-<div id="wait-window" class="modal-dialog hide">
+<!--
+<div id="wait-window" class="">
 	<h1 class="text-center">wait...</h1>
 	<div class="loader loader2"></div> 
 	ajax load:
 	<div class="progress">
 		<div id="load-progress-bar" class="progress-bar hide"></div>
 	</div>
-	<!-- parse JSON: -->
-	<!-- <div class="progress"> -->
-		<!-- <div id="save-progress-bar" class="progress-bar hide"></div> -->
-	<!-- </div> -->
 </div>
+<div id="overlay" class="overlay"></div>
+-->
 <div id="wait" class="hide"></div>
-<div id="overlay" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+ajax load:
+				<div class="progress">
+					<div id="load-progress-bar" class="progress-bar hide"></div>
+				</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <!-- ********************** serviceModal ************************** -->	
 	<div id="serviceModal" class="modal fade" role="dialog">
