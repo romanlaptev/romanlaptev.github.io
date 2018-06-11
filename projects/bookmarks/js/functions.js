@@ -235,7 +235,7 @@ function getXMLDocument(url)  {
 			xml.load(url);  
 			return xml;  
 		}  else  {  
-			alert("Загрузка XML не поддерживается браузером");  
+			alert("XML download is not supported in this browser");  
 			return null;  
 		}  
 	}

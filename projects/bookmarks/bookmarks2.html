@@ -72,8 +72,8 @@ $(window).scroll(function() {
 
 	<header>
 		<ul class="nav nav-tabs">
-			<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-			<li><a class="btn btn-primary" href="parse_bookmarks.html">previous version</a></li>
+			<li><a class="btn btn-default" href="../../index.html">index</a></li>
+			<li><a class="btn btn-default" href="parse_bookmarks.html">previous version</a></li>
 			<h1 class="text-right" id="app-title">Application title</h1>
 		</ul>
 		
@@ -170,6 +170,25 @@ ajax load:
 <script src="js/plugins/json2.js"></script>
 <script src="js/functions.js"></script>
 <script src="js/bookmarks2.js"></script>
+<script>
+	if ('ontouchstart' in window){
+		document.body.className = "touch";
+_log( document.body.className );	
+/*
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+*/
+	}
+		
+</script>
 
 </body>
 </html>
