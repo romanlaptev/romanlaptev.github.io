@@ -437,10 +437,10 @@ console.log(msg);
 								var data = xhr.responseText;
 							}
 
-							callback(data);
+							callback(data, runtime);
 						} else {
 							var data = xhr.responseText;
-							callback(data);
+							callback(data, runtime);
 						}
 					}
 					//if browser not define callback "onloadend"

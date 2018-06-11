@@ -203,10 +203,10 @@ console.log( webApp.vars["logMsg"] );
 				runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["data_url"], 
-					"callback": function( data ){
-//webApp.vars["logMsg"] = "load " + webApp.vars["data_url"] ;
-//_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-//console.log( webApp.vars["logMsg"] );
+					"callback": function( data, runtime ){
+webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
+_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
 //console.log( "_postFunc(), " + typeof data );
 //console.log( data );
 //for( var key in data){
