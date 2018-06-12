@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'AVANTGAR';
+    src: url('fonts/AVANTGAR.eot');
+    src: url('fonts/AVANTGAR.eot') format('embedded-opentype'),
+         url('fonts/AVANTGAR.woff2') format('woff2'),
+         url('fonts/AVANTGAR.woff') format('woff'),
+         url('fonts/AVANTGAR.ttf') format('truetype'),
+         url('fonts/AVANTGAR.svg#AVANTGAR') format('svg');
+}
