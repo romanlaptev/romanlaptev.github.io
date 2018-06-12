@@ -43,8 +43,9 @@ body {
 
 
 .log-panel{
-background-color:#fff4e1;
+/*background-color:#fff4e1*/;
 margin-top: 5px;
+margin-bottom: 10px;
 /* border:1px solid #ddd; */
 /*	
 position: fixed;
