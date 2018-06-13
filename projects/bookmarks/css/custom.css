@@ -17,7 +17,8 @@ body {
 	font-size:16px;
 }
 
-.container {
+/*.container {*/
+#content-column{
   background-color: #ffffff;
 	/*background-color: #abbabb;*/
 	/*background-color: #5d7b94;*/
@@ -28,7 +29,7 @@ body {
 	box-shadow: 10px 15px 6px #999;
   */
 }
-.touch .container{
+.touch #content-column{
 	/*background-color: #abbabb;*/
 }
 

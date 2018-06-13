@@ -7,7 +7,7 @@ var webApp = {
 		//"data_url" : "db/lib.json",
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
-		"pageContainer" : getById("page-container"),
+		"pageContainer" : getById("content-column"),
 		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
