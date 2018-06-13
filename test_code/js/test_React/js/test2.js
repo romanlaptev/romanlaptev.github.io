@@ -1,78 +1,81 @@
-﻿	var CONTACTS = [
+﻿	var PHONES = [
 		{
-			id: 1,
-			name: 'Darth Vader',
-			phoneNumber: '+250966666666',
-			image: 'images/darth.gif'
+			id: "motorola-xoom-with-wi-fi",
+			name: 'Motorola XOOM\u2122 with Wi-Fi',
+			imageUrl: "../../images/phones/motorola-xoom-with-wi-fi.0.jpg",
+			"snippet": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
 		}, {
-			id: 2,
-			name: 'Princess Leia',
-			phoneNumber: '+250966344466',
-			image: 'images/leia.gif'
+			id: "motorola-xoom",
+			name: "motorola-xoom",
+			imageUrl: "../../images/phones/motorola-xoom.0.jpg",
+			"snippet": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb)."
 		}, {
-			id: 3,
-			name: 'Luke Skywalker',
-			phoneNumber: '+250976654433',
-			image: 'images/luke.gif'
+			id: "motorola-atrix-4g",
+			name: "MOTOROLA ATRIX\u2122 4G",
+			imageUrl: "../../images/phones/motorola-atrix-4g.0.jpg",
+			"snippet": "MOTOROLA ATRIX 4G the world's most powerful smartphone."
 		}, {
-			id: 4,
-			name: 'Chewbacca',
-			phoneNumber: '+250456784935',
-			image: 'images/chewbacca.gif'
+			id: "dell-streak-7",
+			name: "Dell Streak 7",
+			imageUrl: "../../images/phones/dell-streak-7.0.jpg",
+			"snippet": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
 		}
 	];
 
-	var Contact = React.createClass({
+	var Phone = React.createClass({
 		render: function(){
 			return(
-				<li className="contact">
-					<img className="contact-image" src={this.props.image} width="60px" height="60px" />
-					<div className="contact-info">
-							<div className="contact-name">{this.props.name}</div>
-							<div className="contact-number">{this.props.phoneNumber}</div>
+					<div className="panel-body">
+						<div className="col-sm-3 col-md-3 col-lg-3 thumb">
+							<img className="contact-image" src={this.props.image}/>
+						</div>
+						<div className="col-sm-9 col-md-9 col-lg-9">
+								<div className="contact-name">{this.props.name}</div>
+								<div className="snippet">{this.props.snippet}</div>
+						</div>
 					</div>
-				</li>
 			);
 		}
 	});//end class
 	
-	var ContactsList = React.createClass({
-	
+	var PhoneList = React.createClass({
 		getInitialState: function(){
 			return{
-				displayedContacts: CONTACTS
+				displayedPhones: PHONES
 			};
 		},
 		
 		handleSearch: function(event){
 			var searchQuery = event.target.value.toLowerCase();
-			var displayedContacts = CONTACTS.filter( function( el ){
+			var displayedPhones = PHONES.filter( function( el ){
 				var searchValue = el.name.toLowerCase();
 				return searchValue.indexOf(searchQuery) !== -1
 			});
 			
 			this.setState({
-				displayedContacts: displayedContacts
+				displayedPhones: displayedPhones
 			});
 		},
 
 		render: function(){
 			return(
-				<div className="contacts">
-					<input type="text" placeholder="enter phone name" className="search-field" onChange={ this.handleSearch} />
+				<div className="phone-list">
+					<input type="text" placeholder="enter phone name" className="form-control" onChange={ this.handleSearch} />
 					
-					<ul className="contacts-list">
+					<div class="phone panel panel-default">
 						{
-							this.state.displayedContacts.map(function(el){
-								return <Contact
+							this.state.displayedPhones.map(function(el){
+console.log(arguments);								
+								return <Phone
 									key={el.id}
 									name={el.name}
-									phoneNumber={el.phoneNumber}
-									image={el.image}
+									snippet={el.snippet}
+									image={el.imageUrl}
 								/>;
 							})
 						}
-					</ul>
+					</div>
+					
 				</div>
 			);
 		}
@@ -87,12 +90,14 @@
 	// }//end class
 	
 	ReactDOM.render(
-		<ContactsList />,
+		<PhoneList />,
 		//<Hello/>,
 		document.getElementById("content"), function(){
 console.log( arguments );			
 		}
 	);
+	
+console.log( _phones[0] );			
 	
     // ReactDOM.render(
 		// <h1>Hello React, once more...</h1>,

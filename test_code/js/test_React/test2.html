@@ -12,7 +12,18 @@
 	<script type="text/javascript" src="js/react/react.development.js"></script>
 	<script type="text/javascript" src="js/react/react-dom.development.js"></script>
 	<script src="js/babel.js"></script>
--->	
+-->
+<style>
+.thumb {
+	float: left;
+	height: 100px;
+	width: 100px;
+}
+.thumb > img {
+	max-width: 100%;
+	height: auto;
+}
+</style>
 </head>
 
 <body>
@@ -42,6 +53,8 @@ https://github.com/krambertech/react-essential-course
 	<script>
 var msg = "React version: " + React.version;
 console.log( msg );	
+
+var _phones = [1,2,3];
 
 window.onload = function(){
 	var version = getById("version");
