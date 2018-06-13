@@ -1,4 +1,5 @@
-﻿	var PHONES = [
+﻿/*	
+	var PHONES = [
 		{
 			id: "motorola-xoom-with-wi-fi",
 			name: 'Motorola XOOM\u2122 with Wi-Fi',
@@ -21,6 +22,7 @@
 			"snippet": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around."
 		}
 	];
+*/
 
 	var Phone = React.createClass({
 		render: function(){
@@ -48,6 +50,7 @@
 		handleSearch: function(event){
 			var searchQuery = event.target.value.toLowerCase();
 			var displayedPhones = PHONES.filter( function( el ){
+//console.log(el);
 				var searchValue = el.name.toLowerCase();
 				return searchValue.indexOf(searchQuery) !== -1
 			});
@@ -65,7 +68,7 @@
 					<div class="phone panel panel-default">
 						{
 							this.state.displayedPhones.map(function(el){
-console.log(arguments);								
+//console.log(el);
 								return <Phone
 									key={el.id}
 									name={el.name}
@@ -97,7 +100,7 @@ console.log( arguments );
 		}
 	);
 	
-console.log( _phones[0] );			
+//console.log( PHONES[0] );			
 	
     // ReactDOM.render(
 		// <h1>Hello React, once more...</h1>,
@@ -105,4 +108,3 @@ console.log( _phones[0] );
 // console.log( arguments );			
 		// }
     // );
-	
