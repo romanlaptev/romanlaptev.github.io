@@ -7,7 +7,7 @@ var webApp = {
 		//"data_url" : "db/lib.json",
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
-		"pageContainer" : getById("page-container"),
+		"pageContainer" : getById("content-column"),
 		"insertContainer" : getById("insert-json"),
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
@@ -195,7 +195,7 @@ console.log( "Warn! error parse url in " + target.href );
 				
 				if( webApp.vars["data_url"] && webApp.vars["data_url"].length > 0){
 //webApp.vars["logMsg"] = "start parsing...." + webApp.vars["data_url"];
-//_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+//_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 				} else {
 webApp.vars["logMsg"] = "error, not defined 'data_url' "
 _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
@@ -229,7 +229,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 					},
 					"callback": function( data, runtime ){
 webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
-_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 //console.log( "_postFunc(), " + typeof data );
 //console.log( data );
@@ -282,7 +282,7 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		webApp.vars["dateAdded"] = __parseDate( jsonObj["dateAdded"] );
 		webApp.vars["lastModified"] = __parseDate( jsonObj["lastModified"] );
 		webApp.vars["logMsg"] = "dateAdded : " + webApp.vars["dateAdded"] + ", lastModified : " + webApp.vars["lastModified"];
-		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+		_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 		
 //--------------------------------
 		// for( var key in jsonObj ){
@@ -297,7 +297,7 @@ _log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 //console.log( jsonObj.children.length );
 /*
 guid: toolbar_____ string
-title: Панель закладок string
+title: \CF\E0\ED\E5\EB\FC \E7\E0\EA\EB\E0\E4\EE\EA string
 index: 1 number
 dateAdded: 1526981203879000 number
 lastModified: 1526981210071000 number
@@ -312,7 +312,7 @@ children: [object Object],[object Object] object
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 				
-				//только меню закладок
+				//\F2\EE\EB\FC\EA\EE \EC\E5\ED\FE \E7\E0\EA\EB\E0\E4\EE\EA
 				if( container["root"] === "bookmarksMenuFolder"){
 					_getContainerByID( container["id"], webApp.vars["jsonObj"] );
 					break;
@@ -371,7 +371,7 @@ dateAdded: 1526981203879000
 ?index: 0
 ?lastModified: 1526988976626000
 ?root: "bookmarksMenuFolder"
-?title: "Њеню закладок"
+?title: "\8C\E5\ED\FE \E7\E0\EA\EB\E0\E4\EE\EA"
 */
 
 /*
@@ -379,7 +379,7 @@ dateAdded: 1526981203879000
 		var lastModified = __parseDate( container["lastModified"] );
 		webApp.vars["logMsg"] = "Title: " + container["title"]+ ", dateAdded : " + dateAdded + ", lastModified : " + lastModified;
 		_log("");
-		_log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+		_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 */
 		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs

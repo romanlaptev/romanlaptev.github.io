@@ -70,34 +70,43 @@ $(window).scroll(function() {
 <body>
 <div class="container" id="page-container">
 
-	<header>
-		<ul class="nav nav-tabs">
-			<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-			<li><a class="btn btn-info" href="parse_bookmarks.html">previous version</a></li>
-			<h1 class="text-right" id="app-title">Application title</h1>
-		</ul>
-		
-		<div id="control-btn" class="nav">
-<!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button> -->
-<!--<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>-->
+<div class="row">
+	<div class="col-lg-3">1</div>
+	<div id="content-column" class="col-lg-6">
+
+		<header>
+			<ul class="nav nav-tabs">
+				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
+				<li><a class="btn btn-info" href="parse_bookmarks.html">previous version</a></li>
+				<h1 class="text-right" id="app-title">Application title</h1>
+			</ul>
+			
+			<div id="control-btn" class="nav">
+	<!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">select bookmarks.json</button> -->
+	<!--<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>-->
+			</div>
+		</header>
+
+		<div id="log-wrap" class="log-panel bg-warning">
+			<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
+			<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+	<!--
+			<div class="progress">ajax load:
+				<div id="load-progress-bar" class="progress-bar hide"></div>
+			</div>
+	-->
+			<div id="log" class="panel-body"></div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body" id="insert-json"></div>
 		</div>
 		
-	</header>
+	</div><!-- end content column -->
+	
+	<div class="col-lg-3">3</div>
+</div><!-- end row -->
 
-	<div id="log-wrap" class="panel panel-primary log-panel">
-		<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
-		<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
-<!--
-		<div class="progress">ajax load:
-			<div id="load-progress-bar" class="progress-bar hide"></div>
-		</div>
--->
-		<div id="log" class="panel-body"></div>
-	</div>
-
-	<div class="panel panel-primary">
-		<div class="panel-body" id="insert-json"></div>
-	</div>
 
 	<footer>
 		<div class="col-sm-3 col-md-3"></div>
