@@ -4,15 +4,15 @@
 	<title>Test JS: ReactJS, filter phones</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--  
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-    <script type="text/babel" src="script.js"></script>
--->
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<!--	
 	<script type="text/javascript" src="js/react/react.development.js"></script>
 	<script type="text/javascript" src="js/react/react-dom.development.js"></script>
-	
+	<script src="js/babel.js"></script>
+-->	
 </head>
 
 <body>
@@ -29,15 +29,12 @@ https://www.youtube.com/watch?v=gbTSl88k5pk&list=PLvItDmb0sZw8HZwaeolxxRq3UGpWM3
 
 https://github.com/krambertech/react-essential-course
 	</pre>
+	
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3>Phone list, filter by keyup</h3>
 		</div>
-		
-		<div class="panel-body" id="content">
-		
-		</div>
-		
+		<div class="panel-body" id="content"></div>
 	</div>
 	
 </div>
@@ -78,57 +75,7 @@ function getById(id){
 }//end getById()
 	
 </script>
-
-<script type="text/babel">
-	var CONTACTS = [
-		{
-			id: 1,
-			name: 'Darth Vader',
-			phoneNumber: '+250966666666',
-			image: 'images/darth.gif'
-		}, {
-			id: 2,
-			name: 'Princess Leia',
-			phoneNumber: '+250966344466',
-			image: 'images/leia.gif'
-		}, {
-			id: 3,
-			name: 'Luke Skywalker',
-			phoneNumber: '+250976654433',
-			image: 'images/luke.gif'
-		}, {
-			id: 4,
-			name: 'Chewbacca',
-			phoneNumber: '+250456784935',
-			image: 'images/chewbacca.gif'
-		}
-	];
-
-	var ContactsList = React.createClass({
-	
-		render: function(){
-			retutn(
-				<div className="contacts">
-					<input type="text" placeholder="enter phone name" className="search-field" onChange={ this.handleSearch} />
-					
-					<ul className="contacts-list">
-						{
-							this
-						}
-					</ul>
-					
-				</div>
-			);
-		};
-		
-	});//end class
-	
-	ReactDOM.render(
-		<ContactsList />,
-		getByID("content");
-	);
-	
-</script>
+<script type="text/babel" src="js/test2.js"></script>
 
 </body>
 </html>
