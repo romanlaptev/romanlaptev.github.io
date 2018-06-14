@@ -13,7 +13,7 @@ console.log("beforeAll", arguments);
 		
 		//loadFixtures("bookmarks2.html");
 		
-		$("#test-html").load("../bookmarks2.html #content-column");
+		//$("#test-html").load("../bookmarks2.html #content-column");
 	});
 
 	beforeEach(function(){

@@ -43,6 +43,9 @@
 <script>
 	var $ver = getById("ver");
 	$ver.innerHTML = jasmine.version;
+console.log("Load start...");	
+	$("#test-html").load("../bookmarks2.html #content-column");	
+console.log("Load end...");	
 	
 	//$("#testHtml").load("html/test.index.html");
 </script>
