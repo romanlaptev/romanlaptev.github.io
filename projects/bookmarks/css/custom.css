@@ -44,10 +44,12 @@ body {
 
 
 .log-panel{
+	background-color: #ffcc99;
 /*background-color:#fff4e1*/;
 margin-top: 5px;
 margin-bottom: 10px;
 /* border:1px solid #ddd; */
+	border-radius: 10px;
 /*	
 position: fixed;
 bottom: 10px;
@@ -61,6 +63,7 @@ width: 80%;
 /*position: absolute;*/
 	/*position:fixed;*/
 }
+
 .close {
 display: block;
 float: right;
