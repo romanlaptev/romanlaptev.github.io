@@ -18,19 +18,6 @@
 	<script src="../js/bootstrap/bootstrap.file-input.js"></script>
 -->
 	<script src="../js/functions.js"></script>
-
-<!-- include source files here... -->
-	<!-- 
-	<script src="src/testing_code.js"></script>
-	-->
-	<script src="../js/bookmarks2.js"></script>
-
-  <!-- include spec files here... -->
-	<!-- 
-	<script src="spec/spec1.js"></script> 
-	-->
-	<script src="spec/testApp.js"></script>
-	
 </head>
 
 <body>
@@ -38,16 +25,21 @@
 		<h1>Test code with Jasmine <span id="ver"></span></h1>
 	</div>
 	
-	<div id="test-html" style="display:none">Ajax load test HTML here....</div>
+	<div id="test-html" style="display:block">Ajax load test HTML here....	</div>
 	
+<script src="../js/bookmarks2.js"></script>
+<script src="spec/testApp.js"></script>
 <script>
 	var $ver = getById("ver");
 	$ver.innerHTML = jasmine.version;
+/*	
 console.log("Load start...");	
-	$("#test-html").load("../bookmarks2.html #content-column");	
+	$("#test-html").load("../bookmarks2.html #content-column", 
+		function(){
 console.log("Load end...");	
-	
-	//$("#testHtml").load("html/test.index.html");
+		_runApp();
+	});	
+*/	
 </script>
 
 </body>
