@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Phones</title>
-	<link href="../../../css/bootstrap335.min.css" rel="stylesheet">	
+	<link href="../../../css/test_bootstrap/css/bootstrap335.min.css" rel="stylesheet">	
 	<!--
 	<script type="text/javascript" src="../../lib/jquery.min.js"></script>
 	-->
@@ -50,6 +50,17 @@ $(document).ready(function()
 
 });
 </script>
+<style>
+.thumb {
+	float: left;
+	height: 100px;
+	width: 100px;
+}
+.thumb > img {
+	max-width: 100%;
+	height: auto;
+}
+</style>
 </head>
 
 <body>
@@ -74,8 +85,8 @@ $(document).ready(function()
 		<div id="item-tpl">
 			<div class="phone panel panel-default">
 				<div class="panel-body">
-					<div class="col-md-3">#imageUrl</div>
-					<div class="col-md-9">
+					<div class="col-sm-3 col-md-3 col-lg-3 thumb"><img src="#imageUrl" /></div>
+					<div class="col-sm-9 col-md-9 col-lg-9">
 						<p class="name"><a href="#">#name</a></p>
 						<p>#snippet</p>
 					</div>
