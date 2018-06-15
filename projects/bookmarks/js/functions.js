@@ -467,6 +467,12 @@ console.log("statusText:" + xhr.statusText);
 					if( typeof  p["onError"] === "function"){
 						p["onError"](xhr);
 					}
+					
+	// if( !"onloadend" in xhr ){
+			// _loadEnd();
+		// }//end event callback
+	// }
+					
 				}
 				
 		}

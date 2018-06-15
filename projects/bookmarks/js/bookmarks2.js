@@ -47,6 +47,10 @@ console.log( navigator.userAgent );
 
 		webApp.app.init();
 		
+		if( webApp.vars["userDataUrl"]){
+			webApp.vars["userDataUrl"].value = "";
+		}
+		
 		var app_title = getById("app-title");
 		if( app_title){
 			app_title.innerHTML = this.vars["app_title"];
@@ -233,7 +237,20 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 							loadProgressBar.innerHTML = percentComplete+"%";
 						}
 
-					},
+					},//end callback function
+					
+					"onError" : function( xhr ){
+//console.log( "onError ", xhr);
+						webApp.vars["userDataUrl"].value = "";
+					},//end callback function
+					
+					"onLoadEnd" : function( headers ){
+//console.log( "onLoadEnd ", headers);
+						if( webApp.vars["waitWindow"] ){
+							webApp.vars["waitWindow"].style.display="none";
+						}
+					},//end callback function
+					
 					"callback": function( data, runtime ){
 webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
 _log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");

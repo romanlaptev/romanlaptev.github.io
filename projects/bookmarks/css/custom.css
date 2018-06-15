@@ -334,6 +334,10 @@ color: #0000ff;
 	background-color: #395697;
 	color: #fff;
 }
+.btn-violet:hover {
+	color: #fff;
+}
+
 
 .modal-footer {
 	text-align: center;
