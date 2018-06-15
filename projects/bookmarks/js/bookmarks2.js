@@ -161,7 +161,7 @@ console.log( "Warn! error parse url in " + target.href );
 console.log("change...", event.target.files);
 console.log("FileList support is " + window.FileList , typeof window.FileList);
 			if( window.FileList ){
-				_upload( event.target.files );
+				_parseLocalFile( event.target.files );
 			} else {
 				webApp.logMsg = "Your browser does not support File API";
 				_log("<div class='alert alert-warning'>" + webApp.logMsg + "</div>");
@@ -219,7 +219,7 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 			break;
 			
 			case "parse-json":
-console.log( webApp.vars["userDataUrl"] );
+//console.log( webApp.vars["userDataUrl"] );
 //console.log( webApp.vars["userDataUrl"].value );
 				if( webApp.vars["userDataUrl"].value.length > 0){
 					webApp.vars["data_url"] = webApp.vars["userDataUrl"].value;
@@ -565,7 +565,7 @@ console.log( webApp.vars["logMsg"] );
 //..................
 	//}//end _loadTemplates()
 
-	function _upload( fileList){
+	function _parseLocalFile( fileList){
 		if( !fileList || fileList.length === 0){
 			return false;
 		}
@@ -583,13 +583,47 @@ type application/json
 			for(var key in file){
 console.log(key, file[key]);	
 			}//next
-			
+			__processFile(file);
+		}//next
+		
+		function __processFile(file){
 			//check file type
 			webApp.logMsg = "file type:" + file["type"];
 			_log("<div class='alert-info'>" + webApp.logMsg + "</div>");
+			var reader = new FileReader();
 			
-		}//next
-	}//end _upload
+			reader.onabort = function(e){
+console.log( "reader, onabort", e );
+			};
+			
+			reader.onerror = function(e){
+console.log( "reader, onerror", e );
+			};
+			
+			reader.onload = function(e){
+console.log( "reader, onload" );
+console.log(e.target.result);
+				_parseJSON( e.target.result );
+			};
+			
+			reader.onloadstart = function(e){
+console.log( "reader, loadstart" );
+			};
+			
+			reader.onloadend = function(e){
+console.log( "reader, loadend" );
+			};
+			
+			reader.onprogress = function(e){
+console.log( "reader, progress");
+			};
+			
+			reader.readAsText(file);
+			
+		}//end __processFile()
+		
+	}//end _parseLocalFile
+	
 	
 	// public interfaces
 	return{
