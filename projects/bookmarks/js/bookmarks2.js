@@ -6,7 +6,7 @@ var webApp = {
 		"data_url" : "db/bookmarks.json",
 		//"data_url" : "db/lib.json",
 		"userDataUrl" : getById("user-data-url"),
-		//"userDataFile" : getById("user-data-file"),
+		"userDataFile" : getById("user-data-file"),
 		
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
@@ -153,6 +153,20 @@ console.log( "Warn! error parse url in " + target.href );
 //console.log("click...", e);			
 			if( e.target.value.length > 0){
 				e.target.value = "";
+			}
+		});//end event
+		
+		$(webApp.vars["userDataFile"] ).on("change", function(event){
+			event = event || window.event;
+console.log("change...", event.target.files);
+console.log("FileList support is " + window.FileList , typeof window.FileList);
+			if( window.FileList ){
+				_upload( event.target.files );
+			} else {
+				webApp.logMsg = "Your browser does not support File API";
+				_log("<div class='alert alert-warning'>" + webApp.logMsg + "</div>");
+				$("#serviceModal").modal("hide");
+				return false;
 			}
 		});//end event
 		
@@ -551,6 +565,31 @@ console.log( webApp.vars["logMsg"] );
 //..................
 	//}//end _loadTemplates()
 
+	function _upload( fileList){
+		if( !fileList || fileList.length === 0){
+			return false;
+		}
+/*
+name protokols.json
+lastModified 1515750341802
+lastModifiedDate Date 2018-01-12T09:45:41.802Z
+webkitRelativePath 
+slice function slice()
+size 47
+type application/json
+*/
+		for( var n = 0; n < fileList.length; n++){
+			var file = fileList[n];
+			for(var key in file){
+console.log(key, file[key]);	
+			}//next
+			
+			//check file type
+			webApp.logMsg = "file type:" + file["type"];
+			_log("<div class='alert-info'>" + webApp.logMsg + "</div>");
+			
+		}//next
+	}//end _upload
 	
 	// public interfaces
 	return{
