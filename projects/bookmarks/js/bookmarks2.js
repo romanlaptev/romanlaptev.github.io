@@ -588,8 +588,9 @@ console.log(key, file[key]);
 		
 		function __processFile(file){
 			//check file type
-			webApp.logMsg = "file type:" + file["type"];
-			_log("<div class='alert-info'>" + webApp.logMsg + "</div>");
+			//webApp.logMsg = "file type:" + file["type"];
+			//_log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+			
 			var reader = new FileReader();
 			
 			reader.onabort = function(e){
@@ -602,8 +603,31 @@ console.log( "reader, onerror", e );
 			
 			reader.onload = function(e){
 console.log( "reader, onload" );
-console.log(e.target.result);
+//console.log(e.target.result);
 				_parseJSON( e.target.result );
+
+				webApp.logMsg = "Load file " + file.name;
+				webApp.logMsg += ", size: " + file.size;
+				webApp.logMsg += ", type: " + file.type;
+				webApp.logMsg += ", date: " + file.lastModifiedDate;
+	
+//need new func!!!!!!!!!!!!!	
+				var timestamp = file.lastModified;
+				var date = new Date();
+				date.setTime( timestamp);
+//console.log( date );
+				var sYear = date.getFullYear();
+				var sMonth = date.getMonth() + 1;
+				var sDate = date.getDate();
+				var sHours = date.getHours();
+				var sMinutes = date.getMinutes();
+				var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+				webApp.logMsg += ", date2: "+ dateStr;
+				
+				_log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+				
+				$("#serviceModal").modal("hide");
 			};
 			
 			reader.onloadstart = function(e){
@@ -619,7 +643,6 @@ console.log( "reader, progress");
 			};
 			
 			reader.readAsText(file);
-			
 		}//end __processFile()
 		
 	}//end _parseLocalFile
