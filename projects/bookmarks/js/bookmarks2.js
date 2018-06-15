@@ -1,10 +1,13 @@
 var webApp = {
 	"vars" : {
-		"app_title" : "Firefox bookmarks",
+		"app_title" : "Bookmarks",
 		//"log" : [],
 		"logMsg" : "",
 		"data_url" : "db/bookmarks.json",
 		//"data_url" : "db/lib.json",
+		"userDataUrl" : getById("user-data-url"),
+		//"userDataFile" : getById("user-data-file"),
+		
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("content-column"),
@@ -12,6 +15,7 @@ var webApp = {
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
 		"waitWindow" : getById("win1"),
+		"log" : getById("log"),
 
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
@@ -149,26 +153,22 @@ console.log( "Warn! error parse url in " + target.href );
 		switch( webApp.vars["GET"]["q"] ) {
 			
 			case "hide-log":
-				var log = getById("log-wrap");
-				log.style.display="none";
+				webApp.vars["log"].style.display="none";
 			break;
 			case "view-log":
-				var log = getById("log-wrap");
-				log.style.display="block";
+				webApp.vars["log"].style.display="block";
 			break;
 			case "toggle-log":
-				var log = getById("log-wrap");
-//console.log(log.style.display);
-				if( log.style.display==="none"){
-					log.style.display="block";
+//console.log(webApp.vars["log"]..style.display);
+				if( webApp.vars["log"].style.display==="none"){
+					webApp.vars["log"].style.display="block";
 				} else {
-					log.style.display="none";
+					webApp.vars["log"].style.display="none";
 				}
 			break;
 			
 			case "clear-log":
-				var log = getById("log");
-				log.innerHTML="";
+				webApp.vars["log"].innerHTML="";
 			break;
 			
 			case "view-container": //The container ID search starts with root
@@ -189,11 +189,18 @@ console.log( "Warn! error parse url in " + target.href );
 //console.log("end of parsing..");		
 				//}, 1000*3);
 			break;
+
+			case "upload":
+			break;
 			
 			case "parse-json":
-				var log = getById("log");
-				
-				if( webApp.vars["data_url"] && webApp.vars["data_url"].length > 0){
+console.log( webApp.vars["userDataUrl"] );
+//console.log( webApp.vars["userDataUrl"].value );
+				if( webApp.vars["userDataUrl"].value.length > 0){
+					webApp.vars["data_url"] = webApp.vars["userDataUrl"].value;
+				}
+
+				if( webApp.vars["data_url"].length > 0){
 //webApp.vars["logMsg"] = "start parsing...." + webApp.vars["data_url"];
 //_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 				} else {

@@ -326,7 +326,18 @@ color: #0000ff;
 }
 
 
+.btn-blue {
+	background-color: #007bff;
+	color: #fff;
+}
+.btn-violet {
+	background-color: #395697;
+	color: #fff;
+}
 
+.modal-footer {
+	text-align: center;
+}
 
 /* fix Bootstrap */
 header .nav-tabs .btn:hover {
@@ -345,6 +356,6 @@ header .nav-tabs .btn:focus {
 	margin-bottom: 5px !important;
 	padding: 7px !important;
 }
-.panel-primary {
+#page-container .panel-primary {
 	border-color: transparent;
 }
