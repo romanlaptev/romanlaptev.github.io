@@ -338,6 +338,9 @@ color: #0000ff;
 	color: #fff;
 }
 
+.correct1 .column2 {
+	padding-left: 0;
+}
 
 .modal-footer {
 	text-align: center;

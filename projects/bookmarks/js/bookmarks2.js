@@ -149,10 +149,10 @@ console.log( "Warn! error parse url in " + target.href );
 			}//end event
 		}
 
-		$(webApp.vars["userDataUrl"] ).on("click", function(e){
-//console.log("click...", e);			
-			if( e.target.value.length > 0){
-				e.target.value = "";
+		$("#btn-clear").on("click", function(e){
+//console.log("click...", webApp.vars["userDataUrl"].value);			
+			if( webApp.vars["userDataUrl"].value.length > 0){
+				webApp.vars["userDataUrl"].value = "";
 			}
 		});//end event
 		
