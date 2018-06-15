@@ -149,6 +149,13 @@ console.log( "Warn! error parse url in " + target.href );
 			}//end event
 		}
 
+		$(webApp.vars["userDataUrl"] ).on("click", function(e){
+//console.log("click...", e);			
+			if( e.target.value.length > 0){
+				e.target.value = "";
+			}
+		});//end event
+		
 	}//end defineEvents()
 
 

@@ -1,0 +1,3 @@
+#DirectoryIndex _index.html
+Header set Access-Control-Allow-Origin "*"
+
