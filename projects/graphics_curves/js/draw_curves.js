@@ -1,3 +1,44 @@
+//console.log for old IE
+if (!window.console){ 
+	window.console = {
+		"log" : function( msg ){
+			var log = getById("log");
+			if(log){
+				log.innerHTML += msg +"<br>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
+		}
+	}
+};
+
+function getById(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	
+	return false;
+}//end getById()
+
+
 var _vars = {
 	"graphics" : {
 		
@@ -37,14 +78,14 @@ var _vars = {
 				"py" : 70
 			},
 			"init" : function(){
-					var form = getDOMobj( this.formID );
+					var form = getById( this.formID );
 					initFormCircle( form, this );
 			},//end init()
 
 			"draw" : function(){
 				var context = _createCanvas( this["canvasID"] );
 
-				var form = getDOMobj( this.formID );
+				var form = getById( this.formID );
 				var start_x = parseInt( form.start_x_val.value );
 				var start_y = parseInt( form.start_y_val.value );
 //console.log(start_x, start_y);
@@ -84,14 +125,14 @@ var _vars = {
 				"py" : 3
 			},
 			"init" : function(){
-					var form = getDOMobj( this.formID );
+					var form = getById( this.formID );
 					initFormSpire( form, this );
 			},//end init()
 
 			"draw" : function(){
 				var context = _createCanvas( this["canvasID"] );
 
-				var form = getDOMobj( this.formID );
+				var form = getById( this.formID );
 				var start_x = parseInt( form.start_x_val.value );
 				var start_y = parseInt( form.start_y_val.value );
 				var px = parseInt( form.px_val.value );
@@ -131,7 +172,7 @@ window.onload = function(){
 
 function _createCanvas( id ){
 	//get DOM objects
-	var canvasObj = getDOMobj( id );
+	var canvasObj = getById( id );
 	
 	try {
 		var context = canvasObj.getContext("2d");
@@ -147,7 +188,7 @@ console.log(msg);
 }//end _createCanvas()
 
 function clear_canvas( id ){
-	var canvasObj = getDOMobj( id );
+	var canvasObj = getById( id );
 	var context = canvasObj.getContext("2d");
 	context.clearRect(0, 0, canvasObj.width, canvasObj.height);
 }//end clear_canvas
@@ -175,20 +216,20 @@ console.log(params);
 
 function initForm( id, p ){
 //console.log(id, p);
-	var form = getDOMobj( id );
+	var form = getById( id );
 	
-	var startXRange = getDOMobj( "start-x-range" );
+	var startXRange = getById( "start-x-range" );
 	startXRange.value = p["start_x"];
-	var startXVal = getDOMobj( "start-x-val" );
+	var startXVal = getById( "start-x-val" );
 	startXVal.value = startXRange.value;				
 	//form.step.start_x_range.value = _vars["graphics"]["sinus"]["start_x"];
 	startXRange.onchange = function(e){
 		startXVal.value=this.value;				
 	}
 	
-	var startYRange = getDOMobj( "start-y-range" );
+	var startYRange = getById( "start-y-range" );
 	startYRange.value = p["start_y"];
-	var startYVal = getDOMobj( "start-y-val" );
+	var startYVal = getById( "start-y-val" );
 	startYVal.value = startYRange.value;				
 	startYRange.onchange = function(e){
 		startYVal.value=this.value;				
@@ -196,25 +237,25 @@ function initForm( id, p ){
 	
 	//form.step.start_y_range.value = _vars["graphics"]["sinus"]["start_y"];
 	
-	var numRepeatRange = getDOMobj( "num-repeat-range" );
+	var numRepeatRange = getById( "num-repeat-range" );
 	numRepeatRange.value = p["num_repeat"];
-	var numRepeatVal = getDOMobj( "num-repeat-val" );
+	var numRepeatVal = getById( "num-repeat-val" );
 	numRepeatVal.value = numRepeatRange.value;				
 	numRepeatRange.onchange = function(e){
 		numRepeatVal.value=this.value;				
 	}
 	
-	var k1Range = getDOMobj( "k1-range" );
+	var k1Range = getById( "k1-range" );
 	k1Range.value = p["k1"];
-	var k1Val = getDOMobj( "k1-val" );
+	var k1Val = getById( "k1-val" );
 	k1Val.value = k1Range.value;				
 	k1Range.onchange = function(e){
 		k1Val.value=this.value;				
 	}
 	
-	var k2Range = getDOMobj( "k2-range" );
+	var k2Range = getById( "k2-range" );
 	k2Range.value = p["k2"];
-	var k2Val = getDOMobj( "k2-val" );
+	var k2Val = getById( "k2-val" );
 	k2Val.value = k2Range.value;				
 	k2Range.onchange = function(e){
 		k2Val.value=this.value;				
