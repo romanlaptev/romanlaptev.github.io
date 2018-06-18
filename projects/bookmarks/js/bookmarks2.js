@@ -429,7 +429,7 @@ dateAdded: 1526981203879000
 		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs
 		webApp.vars["breadcrumbs"][ "key_" + container.id ] = container["title"];
-console.log("add breadcrumb item, id: ", container.id);
+//console.log("add breadcrumb item, id: ", container.id);
 		
 		//form breadcrumbs line
 		var breadcrumbs = "";
