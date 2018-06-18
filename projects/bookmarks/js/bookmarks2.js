@@ -428,13 +428,14 @@ dateAdded: 1526981203879000
 */
 		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs
-		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
+		webApp.vars["breadcrumbs"][ "key_" + container.id ] = container["title"];
+console.log("add breadcrumb item, id: ", container.id);
 		
 		//form breadcrumbs line
 		var breadcrumbs = "";
 		var clear = false;
 		for( var item in webApp.vars["breadcrumbs"] ){
-			var itemID = item;
+			var itemID = item.replace("key_", "");
 			
 			if( clear ){//clear unuseful tail breadrumbs
 				delete webApp.vars["breadcrumbs"][item];
