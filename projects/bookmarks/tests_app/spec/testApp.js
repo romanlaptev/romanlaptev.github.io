@@ -60,19 +60,19 @@ console.log( typeof webApp.vars, res );
 		expect( res ).toBe(true);
 	});//end it
 
-	it("test, checking load DOM objects", function(){
-		var res = typeof webApp.vars["pageContainer"] === "object";
-		res = webApp.vars["pageContainer"] !== null;
-console.log( typeof webApp.vars["pageContainer"], webApp.vars["pageContainer"]);
+	//it("test, checking load DOM objects", function(){
+		//var res = typeof webApp.vars["pageContainer"] === "object";
+		//res = webApp.vars["pageContainer"] !== null;
+//console.log( typeof webApp.vars["pageContainer"], webApp.vars["pageContainer"]);
 
-		// "pageContainer" : getById("content-column"),
-		// "insertContainer" : getById("insert-json"),
-		// "btnParse" : getById("btn-parse"),
-		// "wait" : getById("wait"),
-		// "waitWindow" : getById("win1"),
+		//// "pageContainer" : getById("content-column"),
+		//// "insertContainer" : getById("insert-json"),
+		//// "btnParse" : getById("btn-parse"),
+		//// "wait" : getById("wait"),
+		//// "waitWindow" : getById("win1"),
 
-		expect( res ).toBe(true);
-	});//end it
+		//expect( res ).toBe(true);
+	//});//end it
 
 	
 });//end describe
