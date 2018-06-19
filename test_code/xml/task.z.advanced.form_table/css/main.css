@@ -1,0 +1,31 @@
+#ajaxBusy
+{
+display:none;
+background: none repeat scroll 0 0 #ffffff;
+color: #000000;
+left: 5px;
+padding: 10px;
+position: fixed;
+text-align: center;
+top: 5px;
+}
+#ajaxBusy > h1 {
+  margin: 0;
+}
+#ajaxBusy .close 
+{
+  display: block;
+  float: right;
+  left: 5px;
+  position: relative;
+  top: -10px;
+}
+
+
+#insert_data
+{
+	display:none;
+}
+#table-tpl
+{
+}

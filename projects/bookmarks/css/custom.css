@@ -44,7 +44,7 @@ body {
 
 
 .log-panel{
-	background-color: #ffcc99;
+	background-color: #ffcc99; /*#c9d9c9;*/
 /*background-color:#fff4e1*/;
 margin-top: 5px;
 margin-bottom: 10px;
@@ -326,7 +326,25 @@ color: #0000ff;
 }
 
 
+.btn-blue {
+	background-color: #007bff;
+	color: #fff;
+}
+.btn-violet-fb {
+	background-color: #395697;
+	color: #fff;
+}
+.btn-violet-fb:hover {
+	color: #fff;
+}
 
+.correct1 .column2 {
+	padding-left: 0;
+}
+
+.modal-footer {
+	text-align: center;
+}
 
 /* fix Bootstrap */
 header .nav-tabs .btn:hover {
@@ -345,6 +363,6 @@ header .nav-tabs .btn:focus {
 	margin-bottom: 5px !important;
 	padding: 7px !important;
 }
-.panel-primary {
+#page-container .panel-primary {
 	border-color: transparent;
 }

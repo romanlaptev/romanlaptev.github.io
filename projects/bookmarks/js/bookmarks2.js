@@ -1,10 +1,13 @@
 var webApp = {
 	"vars" : {
-		"app_title" : "Firefox bookmarks",
+		"app_title" : "Bookmarks",
 		//"log" : [],
 		"logMsg" : "",
 		"data_url" : "db/bookmarks.json",
 		//"data_url" : "db/lib.json",
+		"userDataUrl" : getById("user-data-url"),
+		"userDataFile" : getById("user-data-file"),
+		
 		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : getById("content-column"),
@@ -12,6 +15,7 @@ var webApp = {
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
 		"waitWindow" : getById("win1"),
+		"log" : getById("log"),
 
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
@@ -37,11 +41,15 @@ var webApp = {
 	},
 	
 	"init" : function( postFunc ){
-console.log("init webapp!", arguments);
-console.log( navigator.userAgent );
+console.log("init webapp!");
+//console.log( navigator.userAgent );
 //console.log( this.vars.pageContainer );
 
 		webApp.app.init();
+		
+		if( webApp.vars["userDataUrl"]){
+			webApp.vars["userDataUrl"].value = "";
+		}
 		
 		var app_title = getById("app-title");
 		if( app_title){
@@ -69,7 +77,7 @@ function _app( opt ){
 	};// _vars
 	
 	var _init = function( opt ){
-console.log("init app!");
+//console.log("init app!");
 		defineEvents();
 	};//end _init()
 	
@@ -141,6 +149,27 @@ console.log( "Warn! error parse url in " + target.href );
 			}//end event
 		}
 
+		$("#btn-clear").on("click", function(e){
+//console.log("click...", webApp.vars["userDataUrl"].value);			
+			if( webApp.vars["userDataUrl"].value.length > 0){
+				webApp.vars["userDataUrl"].value = "";
+			}
+		});//end event
+		
+		$(webApp.vars["userDataFile"] ).on("change", function(event){
+			event = event || window.event;
+console.log("change...", event.target.files);
+console.log("FileList support is " + window.FileList , typeof window.FileList);
+			if( window.FileList ){
+				_parseLocalFile( event.target.files );
+			} else {
+				webApp.logMsg = "Your browser does not support File API";
+				_log("<div class='alert alert-warning'>" + webApp.logMsg + "</div>");
+				$("#serviceModal").modal("hide");
+				return false;
+			}
+		});//end event
+		
 	}//end defineEvents()
 
 
@@ -149,26 +178,22 @@ console.log( "Warn! error parse url in " + target.href );
 		switch( webApp.vars["GET"]["q"] ) {
 			
 			case "hide-log":
-				var log = getById("log-wrap");
-				log.style.display="none";
+				webApp.vars["log"].style.display="none";
 			break;
 			case "view-log":
-				var log = getById("log-wrap");
-				log.style.display="block";
+				webApp.vars["log"].style.display="block";
 			break;
 			case "toggle-log":
-				var log = getById("log-wrap");
-//console.log(log.style.display);
-				if( log.style.display==="none"){
-					log.style.display="block";
+//console.log(webApp.vars["log"]..style.display);
+				if( webApp.vars["log"].style.display==="none"){
+					webApp.vars["log"].style.display="block";
 				} else {
-					log.style.display="none";
+					webApp.vars["log"].style.display="none";
 				}
 			break;
 			
 			case "clear-log":
-				var log = getById("log");
-				log.innerHTML="";
+				webApp.vars["log"].innerHTML="";
 			break;
 			
 			case "view-container": //The container ID search starts with root
@@ -189,11 +214,18 @@ console.log( "Warn! error parse url in " + target.href );
 //console.log("end of parsing..");		
 				//}, 1000*3);
 			break;
+
+			case "upload":
+			break;
 			
 			case "parse-json":
-				var log = getById("log");
-				
-				if( webApp.vars["data_url"] && webApp.vars["data_url"].length > 0){
+//console.log( webApp.vars["userDataUrl"] );
+//console.log( webApp.vars["userDataUrl"].value );
+				if( webApp.vars["userDataUrl"].value.length > 0){
+					webApp.vars["data_url"] = webApp.vars["userDataUrl"].value;
+				}
+
+				if( webApp.vars["data_url"].length > 0){
 //webApp.vars["logMsg"] = "start parsing...." + webApp.vars["data_url"];
 //_log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
 				} else {
@@ -226,7 +258,20 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 							loadProgressBar.innerHTML = percentComplete+"%";
 						}
 
-					},
+					},//end callback function
+					
+					"onError" : function( xhr ){
+//console.log( "onError ", xhr);
+						webApp.vars["userDataUrl"].value = "";
+					},//end callback function
+					
+					"onLoadEnd" : function( headers ){
+//console.log( "onLoadEnd ", headers);
+						if( webApp.vars["waitWindow"] ){
+							webApp.vars["waitWindow"].style.display="none";
+						}
+					},//end callback function
+					
 					"callback": function( data, runtime ){
 webApp.vars["logMsg"] = "load " + webApp.vars["data_url"]  +", runtime: "+ runtime +" sec";
 _log("<div class='alert'>" + webApp.vars["logMsg"] + "</div>");
@@ -383,13 +428,14 @@ dateAdded: 1526981203879000
 */
 		//-------------------------------- form breadcrumbs
 		//add container link to breadcrumbs
-		webApp.vars["breadcrumbs"][ container.id ] = container["title"];
+		webApp.vars["breadcrumbs"][ "key_" + container.id ] = container["title"];
+//console.log("add breadcrumb item, id: ", container.id);
 		
 		//form breadcrumbs line
 		var breadcrumbs = "";
 		var clear = false;
 		for( var item in webApp.vars["breadcrumbs"] ){
-			var itemID = item;
+			var itemID = item.replace("key_", "");
 			
 			if( clear ){//clear unuseful tail breadrumbs
 				delete webApp.vars["breadcrumbs"][item];
@@ -520,6 +566,88 @@ console.log( webApp.vars["logMsg"] );
 //..................
 	//}//end _loadTemplates()
 
+	function _parseLocalFile( fileList){
+		if( !fileList || fileList.length === 0){
+			return false;
+		}
+/*
+name protokols.json
+lastModified 1515750341802
+lastModifiedDate Date 2018-01-12T09:45:41.802Z
+webkitRelativePath 
+slice function slice()
+size 47
+type application/json
+*/
+		for( var n = 0; n < fileList.length; n++){
+			var file = fileList[n];
+			for(var key in file){
+console.log(key, file[key]);	
+			}//next
+			__processFile(file);
+		}//next
+		
+		function __processFile(file){
+			//check file type
+			//webApp.logMsg = "file type:" + file["type"];
+			//_log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+			
+			var reader = new FileReader();
+			
+			reader.onabort = function(e){
+console.log( "reader, onabort", e );
+			};
+			
+			reader.onerror = function(e){
+console.log( "reader, onerror", e );
+			};
+			
+			reader.onload = function(e){
+console.log( "reader, onload" );
+//console.log(e.target.result);
+				_parseJSON( e.target.result );
+
+				webApp.logMsg = "Load file " + file.name;
+				webApp.logMsg += ", size: " + file.size;
+				webApp.logMsg += ", type: " + file.type;
+				webApp.logMsg += ", date: " + file.lastModifiedDate;
+	
+//need new func!!!!!!!!!!!!!	
+				var timestamp = file.lastModified;
+				var date = new Date();
+				date.setTime( timestamp);
+//console.log( date );
+				var sYear = date.getFullYear();
+				var sMonth = date.getMonth() + 1;
+				var sDate = date.getDate();
+				var sHours = date.getHours();
+				var sMinutes = date.getMinutes();
+				var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+				webApp.logMsg += ", date2: "+ dateStr;
+				
+				_log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+				
+				$("#serviceModal").modal("hide");
+			};
+			
+			reader.onloadstart = function(e){
+console.log( "reader, loadstart" );
+			};
+			
+			reader.onloadend = function(e){
+console.log( "reader, loadend" );
+			};
+			
+			reader.onprogress = function(e){
+console.log( "reader, progress");
+			};
+			
+			reader.readAsText(file);
+		}//end __processFile()
+		
+	}//end _parseLocalFile
+	
 	
 	// public interfaces
 	return{

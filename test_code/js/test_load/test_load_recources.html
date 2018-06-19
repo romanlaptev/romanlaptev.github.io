@@ -29,6 +29,7 @@ window.onload = function(){
 	script.src = "js/test.js";
 
 	document.body.appendChild(script);
+	//document.getElementsByTagName('head')[0].appendChild(script);
 
 	script.onload = function() {
 		alert( "onload " + this.src);
