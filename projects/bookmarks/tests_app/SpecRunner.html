@@ -28,13 +28,13 @@
 -->
 <div id="content-column"></div>
 <input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="">
-	
 		
 <script>
 	$("#ver").text( jasmine.version );
-/*
+/*	
 console.log("Load start...");	
-	$("#test-html").load("../bookmarks2.html #content-column", 
+	//$("#test-html").load("../bookmarks2.html #content-column", 
+	$("#test-html").load("../bookmarks2.html #page-container", 
 		function(){
 console.log("Load end...");	
 
@@ -46,31 +46,34 @@ console.log("Load end...");
 		
 		script.onload = function() {
 console.log("onload " + this.src);
-			_loadJS("spec/testApp.js");
+			//_loadJS("spec/testApp.js");
 		};
 		
 		script.onerror = function(e) {
 console.log("error load script " + this.src);
 		};  
 		
+	});	
+*/
+	
+/*	
 //-----------------	
 function _loadJS(scriptName){
 console.log("Load script " + scriptName);
-		//var script = document.createElement('script');
-		//script.src = "spec/testApp.js";
-		////document.body.appendChild( script );
-		//document.getElementsByTagName('head')[0].appendChild(script);
+	var script = document.createElement('script');
+	script.src = scriptName;
+	//document.body.appendChild( script );
+	document.getElementsByTagName('head')[0].appendChild(script);
 		
-		//script.onload = function() {
-//console.log("onload " + this.src);
-		//};
-		//script.onerror = function(e) {
-//console.log("error load script " + this.src);
-		//};  
+	script.onload = function() {
+console.log("onload " + this.src);
+	};
+	script.onerror = function(e) {
+console.log("error load script " + this.src);
+	};  
 }//end _loadJS()
+*/	
 
-	});	
-*/
 </script>
 
 <!--
@@ -80,6 +83,7 @@ name="tpl_frame"
 src="html/bookmarks2.html" width="400" height="100"
 onload="console.log('LOAD tpl_frame!');"></iframe>
 -->
+
 <script src="../js/functions.js"></script>
 <script src="../js/bookmarks2.js"></script>
 <script src="spec/testApp.js"></script>
