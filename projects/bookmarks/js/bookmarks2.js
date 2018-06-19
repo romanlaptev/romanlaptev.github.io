@@ -41,8 +41,8 @@ var webApp = {
 	},
 	
 	"init" : function( postFunc ){
-console.log("init webapp!", arguments);
-console.log( navigator.userAgent );
+console.log("init webapp!");
+//console.log( navigator.userAgent );
 //console.log( this.vars.pageContainer );
 
 		webApp.app.init();
@@ -77,7 +77,7 @@ function _app( opt ){
 	};// _vars
 	
 	var _init = function( opt ){
-console.log("init app!");
+//console.log("init app!");
 		defineEvents();
 	};//end _init()
 	
