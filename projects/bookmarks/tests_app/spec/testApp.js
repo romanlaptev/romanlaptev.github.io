@@ -202,3 +202,18 @@ console.log("Load #" +id+ " : " + res);
 	});//end it
 	
 });//end describe
+
+
+describe("test3", function(){
+	
+	it("check method 'urlManager', must be defined as function.", function(){
+//console.log( $("#content-column"), webApp.vars );
+
+		//webApp.app.urlManager = "000";
+		
+		//expect(window.document).toBeDefined();
+    	var res = typeof webApp.app.urlManager === "function";
+		expect( res ).toBe(true);
+	});//end it
+	
+});//end describe
