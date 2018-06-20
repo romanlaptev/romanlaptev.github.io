@@ -793,9 +793,6 @@ console.log( webApp.vars["logMsg"] );
 	//});
 }//end _runApp()
 
-//================================== Start
-_runApp();
-
 //============================ test modal
 /*
 	var overlay = getById("overlay");
