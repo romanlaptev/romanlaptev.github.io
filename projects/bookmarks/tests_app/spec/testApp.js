@@ -159,6 +159,45 @@ console.log("Load #" +id+ " : " + res);
 console.log("Load #" +id+ " : " + res);		
 //---------------------
 
+		var id = "log";
+		prop = "log";
+		webApp.vars[ prop ] = getById(id);
+
+		var condition1 = typeof webApp.vars[ prop ] === "object";
+		if( condition1 ){
+			var condition2 = webApp.vars[ prop ].outerHTML.length > 0;
+		}
+
+		var res = condition1 && condition2;
+console.log("Load #" +id+ " : " + res);
+//--------------------- 
+
+		var id = "user-data-file";
+		var prop = "userDataFile";
+		webApp.vars[ prop ] = getById(id);
+
+		var condition1 = typeof webApp.vars[ prop ] === "object";
+		if( condition1 ){
+		var condition2 = webApp.vars[ prop ].outerHTML.length > 0;
+		}
+
+		var res = condition1 && condition2;
+console.log("Load #" +id+ " : " + res);
+//---------------------
+
+		var id = "user-data-url";
+		var prop = "userDataUrl";
+		webApp.vars[ prop ] = getById(id);
+
+		var condition1 = typeof webApp.vars[ prop ] === "object";
+		if( condition1 ){
+			var condition2 = webApp.vars[ prop ].outerHTML.length > 0;
+		}
+
+		var res = condition1 && condition2;
+console.log("Load #" +id+ " : " + res);		
+//---------------------
+
 		expect( res ).toBe(true);
 	});//end it
 	
