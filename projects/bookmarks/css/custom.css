@@ -180,22 +180,25 @@ font-family: Georgia;
 .link {
 	float: left;
 	border-radius: 5px;
-	margin: 4px;
+	margin: 2px;
 	padding: 10px;
 	/*background-color: #e6e6fa;*//*lavender*/
 	background-color: #e6e6ff;
 	/* width: 150px; */
 	/* min-height: 100px; */
 	word-break: normal; /*break-all*/
-	/*border: 2px outset #99c;*/
+	border: 2px outset #99c;
 /*
     -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
 */
+
+/*
     -webkit-box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
     -moz-box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
     box-shadow: 5px 5px 5px #999, 1px 1px 6px #555;
+*/
 
 /*box-shadow: 5px 5px silver;*/
 }
@@ -338,6 +341,18 @@ color: #0000ff;
 	color: #fff;
 }
 
+.btn-greygreen {
+	background-color: #6298A5;
+	color: #fff;
+}
+.btn-greygreen:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+.btn-greygreen:visited {
+	color: #fff;
+}
+
 .correct1 .column2 {
 	padding-left: 0;
 }
@@ -348,10 +363,12 @@ color: #0000ff;
 
 /* fix Bootstrap */
 header .nav-tabs .btn:hover {
-	background: orange;
+	background-color: orange;
+	color: #000 !important;
 }
 header .nav-tabs .btn:focus {
 	background: orange;
+	color: #000 !important;
 }
 
 .nav-tabs {
