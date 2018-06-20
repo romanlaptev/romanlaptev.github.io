@@ -9,57 +9,6 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
-	<script src="js/lib/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap/bootstrap337.min.js"></script>
-	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
-	<script>
-var start_scroll_pos, end_scroll_pos;
-
-$(document).ready(function(){
-
-		//--------------------- Scroll
-		//Detect top position for scroll block #insert-json
-		start_scroll_pos = $("#insert-json").offset().top + 100;
-		end_scroll_pos = start_scroll_pos - 20;
-
-/*
-	//$("input[type=file]").bootstrapFileInput();
-	
-	$("img").on("load", "#insert-json", function( e ){
-console.log("image load event", e);
-	});
-	
-	$("img").on("error", "#insert-json", function( e ){
-console.log("image load error", e);
-		//var src = $(this).attr("src");
-		//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-		//$(this).attr("src", new_src);
-	});
-*/
-});//end ready	
-
-$(window).scroll(function() {
-//var st = $(window).scrollTop();
-//document.title = st;
-//console.log ("scrollTop = " + st );
-
-		if ( $(this).scrollTop() > start_scroll_pos  ) {
-			$("#btn-scroll-to-top").show();
-		} 
-
-		if ( $(this).scrollTop() < end_scroll_pos ) {
-			$("#btn-scroll-to-top").hide();
-		}
-});//end scroll
-
-
-	</script>
-	
-<!--[if lt IE 9]>
-	<script src="js/fix_IE/html5shiv.js"></script>
-	<script src="js/fix_IE/respond.min.js"></script>
-<![endif]-->
 
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
 	<link rel="stylesheet" href="css/custom.css">
@@ -211,33 +160,6 @@ ajax load:
 
 </div><!-- end container -->
 
-
-
-<script src="js/plugins/json2.js"></script>
-<script src="js/functions.js"></script>
-<script src="js/bookmarks2.js"></script>
-<script>
-	if ('ontouchstart' in window){
-		document.body.className = "touch";
-_log( document.body.className );	
-/*
-		var script = document.createElement('script');
-		script.src = "https://getfirebug.com/firebug-lite.js";
-		//document.body.appendChild( script );
-		document.getElementsByTagName('head')[0].appendChild(script);
-		script.onload = function() {
-//alert( "onload " + this.src);
-		};
-		script.onerror = function(e) {
-//alert( "error load script " + this.src);
-		};  
-*/
-	}
-		
-//Start webApp
-_runApp();
-
-</script>
 
 </body>
 </html>
