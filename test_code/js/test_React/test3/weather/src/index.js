@@ -6,8 +6,12 @@ import registerServiceWorker from './registerServiceWorker';
 
 var msg = "React version: " + React.version;
 console.log( msg );	
-var version = document.querySelector("#version");
-version.innerHTML = React.version;
+
+window.onload = function(){
+console.log("onLoad!!!!");	
+	var version = document.querySelector("#version");
+	version.innerHTML = React.version;
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
