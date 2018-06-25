@@ -1,0 +1,8 @@
+npm init
+npm install react react-dom
++npm install babel 
++npm install babel-core 
++npm install babel-cli 
++node node_modules\babel-cli\bin\babel.js --version 
++npm install --save-dev babel-preset-es2015 
+npm install babel-standalone
