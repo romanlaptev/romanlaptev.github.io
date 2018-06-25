@@ -2,9 +2,8 @@
 //import ReactDOM from '../node_modules/react-dom/umd/react-dom.development.js';
 //import React from 'react';
 //import ReactDOM from 'react-dom';
-
-var msg = "React version: " + React.version;
-console.log( msg );	
+//import ‘bootstrap/dist/css/bootstrap.css’; 
+//import ‘bootstrap/dist/css/bootstrap-theme.css’;
 
 // ReactDOM.render(
   // <h1>Hello, world!</h1>,

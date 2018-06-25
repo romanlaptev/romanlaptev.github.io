@@ -5,7 +5,10 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="device=device-width, initial-scale=1"/>
 	
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<!-- <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-theme.css"> -->
 	
 	<script src="node_modules/react/umd/react.development.js"></script>
 	<script src="node_modules/react-dom/umd/react-dom.development.js"></script>
@@ -22,13 +25,26 @@
 
 	<pre>
 http://css-live.ru/articles/na-osvoenie-react-mne-potrebovalas-vsego-nedelya-a-chem-vy-xuzhe.html	
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/import
+https://learn.javascript.ru/modules
+https://learn.javascript.ru/link-import
+
 	</pre>
 	
 	<div id="root"></div>
-	
+	<button class="btn btn-large btn-danger">000</button>
 </div><!-- end container -->
 
-</body>
+<script>
+//import ‘node_modules/bootstrap/dist/css/bootstrap.css’; 
+//import ‘node_modules/bootstrap/dist/css/bootstrap-theme.css’;
+
+
+var msg = "React version: " + React.version;
+console.log( msg );	
+</script>
 <script type="text/babel" src="js/app.js"></script>
 
+</body>
 </html>

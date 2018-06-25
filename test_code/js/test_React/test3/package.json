@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "babel-standalone": "^6.26.0",
+    "bootstrap": "^3.3.7",
     "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1"
   },
   "devDependencies": {}
