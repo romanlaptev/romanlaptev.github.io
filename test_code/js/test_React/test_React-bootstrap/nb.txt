@@ -1,0 +1,2 @@
+npm install --save react-bootstrap 
+npm install bootstrap@3 
