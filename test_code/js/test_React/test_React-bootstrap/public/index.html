@@ -21,20 +21,40 @@
     -->
 	
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-	
+
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>
+<![endif]-->
+
     <title>test react-bootstrap</title>
   </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+<body>
+
+<noscript>You need to enable JavaScript to run this app.</noscript>
 	
 <div class="container">	
 	<div class="page-header">
 		<h1>Test react-bootstrap components</h1>
+		<h3>React version <span id="version"></span></h3>
 	</div>
+	<div id="info" class="panel"></div>
 	
+	<div id="root"></div>
+	
+	<div class="panel">
+Демо: 
+<a href="https://react-bootstrap.github.io/components/buttons/" target="_blank">react-bootstrap.github.io/components/buttons/</a>
 	<pre>
+---------------- Browsers support
+IE 10 - no
+IE 11 - yes
+Edge - yes
+FF - yes
+Chrome - yes
+
 React-bootstrap, react-bootstrap-dialog, react-bootstrap-table
 
 204 участников
@@ -50,23 +70,15 @@ react-bootstrap-table: ItТs a react table for Bootstrap.
 состоит из набора CSS и HTML шаблонов дл¤ создани¤ разнообразных элементов веб-страниц, таких как формы, кнопки, элементы навигации, и т.п. 
 
 
-Демо: https://react-bootstrap.github.io/components/buttons/
 
 обновление: редко, месяцы
 https://github.com/react-bootstrap/react-bootstrap/blob/master/CHANGELOG.md	
+
+
 	</pre>
-    <div id="root"></div>
+</div>	
 	
 </div><!-- end container -->
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+</body>
 </html>
