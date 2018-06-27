@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+	
+    <title>Test Ant Design of React</title>
+<style>
+.container {
+	margin: 15px;
+	padding: 10px;
+}
+.panel {
+	margin: 15px;
+	padding: 10px;
+	border: 1px solid #cbb;
+}
+
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+  color: #999;
+  transition: all .3s;
+}
+.dynamic-delete-button:hover {
+  color: #777;
+}
+.dynamic-delete-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+</style>
+</head>
+<body>
+
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+<div class="container">
+	<h1>Test Ant Design of React</h1>	
+	<h3>ReactJS version <span id="version"></span></h3>
+
+	<div id="info" class="panel"></div>
+	
+    <div id="root"></div>
+
+<a href="https://ant.design/">ant.design</a>
+<p>Популярные React-компоненты, следующие руководствам и спецификациям Ant в отношении дизайна. Написаны на typescript и поддерживают интенсивный рабочий процесс.</p>
+<p>Библиотека Ant-Design разработана в Китае. Однако, она, благодаря усилиям сообщества, качественно переведена на английский, что открывает доступ к ней для англоговорящих разработчиков. </p>
+
+<pre>
+https://github.com/ant-design/ant-design/	
+527 участников
+29866 users starred this repository
+
+
+
+Демо: https://ant.design/components/form/
+
+
+Обновление — часто
+https://github.com/ant-design/ant-design/blob/master/CHANGELOG.en-US.md
+</pre>
+</div><!-- end container -->
+
+</body>
+</html>
