@@ -1,0 +1,10 @@
+npm install @material-ui/core 
+npm install @material-ui/icons 
+npm install typeface-roboto --save 
+npm install react-select 
+
+//https://bitsrc.io/materialui/react-material-ui/date-picker/calendar
+
+//npm config set '@bit:registry' https://node.bitsrc.io
+//npm i @bit/materialui.react-material-ui.date-picker.calendar
+//npm i https://node.bitsrc.io/materialui.react-material-ui.date-picker.calendar
