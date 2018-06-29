@@ -10,19 +10,6 @@
   // document.getElementById('root')
 // );
 
-	// ReactDOM.render(React.createElement(
-	  // 'h1',
-	  // //null,
-	  // {className: "style1"},
-	  // 'Hello, React!'
-	// ), document.getElementById('root'));
-
-// var App = React.createClass({
-	// render : function(){
-		// return (<div className="style1">test</div>)
-	// }
-// });
-
 //component App
 class AppHeader extends React.Component{
 	render(){
@@ -40,16 +27,31 @@ class AppBody extends React.Component{
 	}
 };
 
+//define component, functional variant
+function AppFooter(){
+	return <div className="panel-footer">...App-footer...</div>
+};
+
+//define component, arrow function
+const Button1 =() => {
+	return(
+		<button className="btn btn-large btn-danger">101</button>
+	)
+};
+
 //create App
 class App extends React.Component{
 	render() {
-		//return <div className="style1">test</div>;
 		return ( 
-			<div className="panel panel-primary">
-				<AppHeader/> 
-				<AppBody/> 
-				<AppBody/> 
-				<AppBody/> 
+			<div>
+				<div className="panel panel-primary">
+					<AppHeader/> 
+					<AppBody/> 
+					<AppBody/> 
+					<AppBody/> 
+					<AppFooter/>
+				</div>
+				<Button1 />
 			</div>
 		);
 	}
@@ -61,3 +63,14 @@ console.log(App.prototype.render.toString() );
 
 //insert App
 ReactDOM.render( <App/>, document.querySelector("#root") );
+
+
+// var App2 = React.createClass({
+	// render : function(){
+		// return (<div className="style1">create component, use method <b>React.createClass</b></div>)
+	// }
+// });
+// ReactDOM.render( <App/>, document.querySelector("#app2") );
+
+var App2 = React.createElement( "h1", {className: "style1"}, "Hello, React!");
+ReactDOM.render( App2, document.querySelector("#app2") );

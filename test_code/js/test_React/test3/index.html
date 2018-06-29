@@ -20,20 +20,17 @@
 <div class="container">
 
 	<div class="page-header">
-		<h1>Test React</h1>
+		<h1>Test React <span id="version"></span></h1>
 	</div>
 
 	<pre>
 http://css-live.ru/articles/na-osvoenie-react-mne-potrebovalas-vsego-nedelya-a-chem-vy-xuzhe.html	
-
-https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/import
-https://learn.javascript.ru/modules
-https://learn.javascript.ru/link-import
-
+https://metanit.com/web/react/2.2.php
 	</pre>
 	
+	<div id="app2"></div>
 	<div id="root"></div>
-	<button class="btn btn-large btn-danger">000</button>
+	
 </div><!-- end container -->
 
 <script>
@@ -42,7 +39,9 @@ https://learn.javascript.ru/link-import
 
 
 var msg = "React version: " + React.version;
-console.log( msg );	
+console.log( msg );
+document.querySelector("#version").innerHTML = React.version;
+
 </script>
 <script type="text/babel" src="js/app.js"></script>
 
