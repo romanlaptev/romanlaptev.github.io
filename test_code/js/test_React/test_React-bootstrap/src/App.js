@@ -8,7 +8,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import {FormGroup, ControlLabel, FormControl, HelpBlock} from 'react-bootstrap';
 import { Popover, Tooltip, Modal, OverlayTrigger } from 'react-bootstrap';
-  
+
+//https://medium.com/@kanby/%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F-%D1%84%D0%BE%D1%80%D0%BC-%D0%B2-reactjs-56341da641d0
+import DemoForm from './Form.js';
+
 class Button1 extends React.Component {
 	render() {
 		return (
@@ -196,7 +199,9 @@ class Modal1 extends React.Component {
       </div>
     );
   }
-}
+}//end class
+
+//--------------------------------
 
 //--------------------------------
 class App extends Component {
@@ -222,6 +227,15 @@ class App extends Component {
 				<div className="col-xs-6">
 <Modal1 />				
 				</div>
+			</div>
+		</div>
+
+		<div className="panel panel-primary">
+			<div className="panel-heading">
+				<h2>Check DemoForm</h2>
+			</div>
+			<div className="panel-body">
+<DemoForm />			
 			</div>
 		</div>
 		
