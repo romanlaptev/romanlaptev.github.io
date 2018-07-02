@@ -48,6 +48,7 @@ class Task extends React.Component {
 		this.state = {
 			edit: false
 		};
+		this.remove = this.remove.bind(this);		
 	};
 	
 	//edit(e){
@@ -55,15 +56,32 @@ class Task extends React.Component {
 console.log(arguments);		
 //console.log(e.target);		
 		this.setState({ edit: true });
+console.log(this.props);		
 	};
-	
+
 	remove(e){
 //console.log(arguments);		
 console.log(e.target);		
+//console.log(this);		
+
+		this.props.updateData({
+			index: this.props.numTask,
+			value: false
+		});
+
 	};
 
 	save = () =>{
+//console.log(this.refs);		
+//console.log(this.refs.editTask.value);		
 //console.log(arguments);		
+//console.log( App );
+		this.props.updateData({
+			index: this.props.numTask,
+			value: this.refs.editTask.value//,
+			//editState: false
+		});
+
 		this.setState({ edit: false });
 	};
 	
@@ -88,17 +106,17 @@ console.log(e.target);
 		return(
 			<div className="panel panel-primary">
 				<div className="panel-body">
-					<textarea className="form-control" defaultValue={this.props.children}></textarea>
+					<textarea ref="editTask" className="form-control" defaultValue={this.props.children}></textarea>
 				</div>
 				<div className="panel-footer">
-					<button onClick={this.remove} className="btn btn-default">Save</button>
+					<button onClick={this.save} className="btn btn-warning">Save</button>
 				</div>
 			</div>
 		);
 	};
 	
 	render(){
-console.log(this);		
+//console.log(this);		
 
 		if( this.state.edit ){
 			return this.rendEdit();
@@ -112,9 +130,50 @@ console.log(this);
 
 //START App
 class App extends React.Component {
+	
+	constructor(props){
+		super(props);
+		this.state = {
+			//edit: false,
+			tasks: [ "task1", "task2", "task3"]
+		};
+	};
+	
+	updateData = (opt) => {
+//console.log("updateData(), ", opt);
+
+		var _tasks = this.state.tasks;
+		var index = opt["index"];
+		_tasks[ index ] = opt["value"];
+//console.log( _tasks );		
+	
+		//to filter removed tasks
+		var arr = _tasks.filter( function(n){ 
+			return n
+		}); 
+//console.log( arr );
+		
+		this.setState({ 
+			//edit: opt["editState"],
+			tasks : arr
+		});
+		
+//console.log( this );		
+	};
+	
 	render(){
+//console.log( this );		
+//console.log(this.state.tasks.length);		
+// for( var n = 0; n < this.state.tasks.length; n++){
+// console.log( this.state.tasks[n] );
+// }
+		var _updateFunc = this.updateData;
 		return(
-			<Task>000000000000</Task>
+			this.state.tasks.map(function( value, index){
+//console.log(arguments);				
+				return <Task key={index} numTask={index} updateData={_updateFunc}>{value}</Task>
+			})
+			
 		);
 	}
 }//end class
