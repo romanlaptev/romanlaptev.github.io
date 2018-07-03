@@ -16,6 +16,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import TestDatePickers from "./TestDatePickers";
 
 import TestSwitches from "./TestSwitches";
 //console.log(TestSwitches);
@@ -23,7 +24,6 @@ import TestReactSelect from "./TestReactSelect";
 
 import RadioButtonsGroup from "./TestRadioBtn";
 console.log(RadioButtonsGroup);
-
 
 //--------------------------------
 class FormDialog extends React.Component {
@@ -143,6 +143,11 @@ render() {
 <TestReactSelect />
 			</div>
 
+			<div className="panel">
+				<h3>Test DatePickers</h3>
+<TestDatePickers />
+			</div>
+			
 		</div>
     );
   }

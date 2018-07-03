@@ -64,7 +64,8 @@ https://v0.material-ui.com/#/components/raised-button
 https://v0.material-ui.com/#/components/date-picker
 
 ---------------- Browsers support
-IE 10 - no
+IE 9 - no
+IE 10 - yes (with polyfill)
 IE 11 - yes
 Edge - yes
 
@@ -72,6 +73,14 @@ FF 49 - yes
 FF 60 - yes
 
 Chrome - yes
+
+https://reactjs.org/docs/javascript-environment-requirements.html
+including a global polyfill in your bundled application, such as core-js or babel-polyfill.
+
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
+import 'raf/polyfill';
 </pre>
 
 			<div class="panel">

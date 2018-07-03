@@ -8,3 +8,4 @@ npm install react-select
 //npm config set '@bit:registry' https://node.bitsrc.io
 //npm i @bit/materialui.react-material-ui.date-picker.calendar
 //npm i https://node.bitsrc.io/materialui.react-material-ui.date-picker.calendar
+npm install --save babel-polyfill 
