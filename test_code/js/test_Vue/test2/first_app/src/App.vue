@@ -1,22 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 
+		<img src="./assets/logo.png">
+		<HelloWorld msg="Welcome to Your Vue.js App"/> 
+	-->
+	<div class="panel">
+		<Component1 msg="Hello Vue world !!!" />
+	</div>
+	
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
 
+/*
 export default {
   name: 'app',
   components: {
     HelloWorld
   }
 }
+*/
+
+import Component1 from './components/Component1.vue'
+export default {
+  name: 'app',
+  components: {
+	Component1
+  }
+}
+
 </script>
 
 <style>
+/*
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,4 +43,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+*/
 </style>

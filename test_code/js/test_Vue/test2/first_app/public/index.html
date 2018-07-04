@@ -6,12 +6,33 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>first_app</title>
+	
+<style>
+.container {
+	margin: 15px;
+	padding: 10px;
+}
+.panel {
+	margin: 15px;
+	padding: 10px;
+	border: 1px solid #cbb;
+}
+</style>
+	
   </head>
   <body>
     <noscript>
       <strong>We're sorry but first_app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+	
+<div class="container">	
+	<h3>Vue version: <span id="version"></span></h3>
+	<div id="info" class="panel"></div>
+	
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+	
+</div><!-- end container -->
+
+</body>
 </html>
