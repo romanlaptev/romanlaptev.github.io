@@ -1,18 +1,23 @@
 <template>
-  <div id="app">
-    <!-- 
+	<div id="app">
+  
 		<img src="./assets/logo.png">
+		
+		<div class="panel">
+			<Component1 msg="Hello Vue world !!!" />
+		</div>
+		
+		<div class="panel">
+			<button v-on:click="">click me</button>
+		</div>
+
 		<HelloWorld msg="Welcome to Your Vue.js App"/> 
-	-->
-	<div class="panel">
-		<Component1 msg="Hello Vue world !!!" />
-	</div>
 	
-  </div>
+	</div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
 
 /*
 export default {
@@ -23,10 +28,15 @@ export default {
 }
 */
 
-import Component1 from './components/Component1.vue'
+import Component1 from './components/Component1.vue';
+Component1.beforeCreate = function(){
+console.log("Component1.beforeCreate...", arguments);	
+}
+
 export default {
   name: 'app',
   components: {
+    HelloWorld,
 	Component1
   }
 }
