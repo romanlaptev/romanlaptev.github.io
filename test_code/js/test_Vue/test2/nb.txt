@@ -1,0 +1,12 @@
+1.
+npm init 
+npm install vue 
+
+2.
+npm init 
+npm install -g @vue/cli 
+vue -V 
+vue -h 
+vue create first_app 
+cd first_app
+npm run serve
