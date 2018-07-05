@@ -8,10 +8,12 @@
 		</div>
 		
 		<div class="panel">
-			<button v-on:click="">click me</button>
+			<Component2 count="0" />
 		</div>
 
-		<HelloWorld msg="Welcome to Your Vue.js App"/> 
+		<div class="panel">
+			<HelloWorld msg="Welcome to Your Vue.js App"/> 
+		</div>
 	
 	</div>
 </template>
@@ -30,17 +32,25 @@ export default {
 
 import Component1 from './components/Component1.vue';
 Component1.beforeCreate = function(){
-console.log("Component1.beforeCreate...", arguments);	
+console.log("Component1: ", Component1);	
+console.log("__file: ", Component1.__file);	
+console.log("beforeCreate...", arguments);	
 }
+
+import Component2 from './components/Component2.vue';
+Component2.beforeCreate = function(){
+console.log("Component2.beforeCreate...", arguments);	
+}
+
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-	Component1
+	Component1,
+	Component2
   }
 }
-
 </script>
 
 <style>
