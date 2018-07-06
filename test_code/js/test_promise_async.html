@@ -10,6 +10,11 @@
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 	<script src="lib/jquery.min.js"></script>
 	
+<!-- 
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>	
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+-->
+
 <script>
 function getById(id){
 	
@@ -229,6 +234,11 @@ window.onload = function(){
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
 https://learn.javascript.ru/promise		
 https://www.sitepoint.com/overview-javascript-promises/
+
+https://www.npmjs.com/package/promise-polyfill
+Promise Polyfill
+npm install promise-polyfill --save-exact
+&lt;script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"&gt;&lt;/script&gt;
 </pre>
 				<button id="btn-test-promise" class="btn btn-primary">test Promise. Load test JSON</button>
 			</div>
@@ -302,6 +312,7 @@ https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-a
 </script>
 
 
+<!-- <script type="text/babel"> -->
 <script>
 //https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
 function asyncFunc1 () {
@@ -371,6 +382,7 @@ startAsyncAwait();
 
 </script>
 
+<!-- <script type="text/babel"> -->
 <script>
 
 if( typeof window.jQuery === "function"){
