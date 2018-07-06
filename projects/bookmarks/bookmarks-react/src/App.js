@@ -10,8 +10,6 @@ class App extends Component {
     return (
 	<div className="App">
 	
-		<h1>Bookmarks</h1>
-
 		<ul>
 			<li><Link title={"Yandex"} url={"http://yandex.ru"} /></li>
 			<li><Link title={"Jest 23.3"} url={"https://jestjs.io/docs/ru/getting-started"} /></li>

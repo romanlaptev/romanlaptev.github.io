@@ -32,12 +32,51 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 	<title>Firefox bookmarks</title>
+	
+<style>
+body {
+	background-color: #baaaba;
+}
+.container {
+	margin: 15px;
+	padding: 10px;
+}
+.panel {
+	margin: 15px;
+	padding: 10px;
+	border: 1px solid #cbb;
+	/*background-color: #efffef;*/
+	background-color: #fff;
+}
+</style>
+
 </head>
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	
 <div class="container">
+
+	<header>
+		<h1>Bookmarks</h1>
+	</header>
+
+	<div id="log-wrap" class="log-panel bg-warning">
+		<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
+		<!-- <a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a> -->
+		<div id="log" class="panel-body"></div>
+	</div>
+
 	<div id="root" class="panel"></div>
+	
+	<footer>
+		<div class="col-sm-3 col-md-3"></div>
+		<div class="col-sm-6 col-md-6">
+<span id="version"></span>
+<span id="ua"></span>
+		</div>
+		<div class="col-sm-3 col-md-3"></div>
+	</footer>
+	
 </div><!-- end container -->
 	
 </body>
