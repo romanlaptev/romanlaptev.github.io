@@ -53,7 +53,7 @@ $(document).ready(function(){
 	$(".switch-control").on("click", function(e){
 		var panelId = e.target.id.replace("-switch", "");
 		if( panelId.length > 0){
-console.log(e.target.id, panelId);	
+//console.log(e.target.id, panelId);	
 			$("#" + panelId).collapse("toggle");
 		}
 	});//end event
