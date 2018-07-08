@@ -26,6 +26,7 @@
 <![endif]-->
 	
 	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/switch.css">
 	<script src="js/main.js"></script>
 </head>
 
@@ -78,7 +79,15 @@
 		<h3>WebApps</h3>
 	</div>
 	<div class="col-xs-3 col-sm-12 col-md-3">
+<!--	
 		<button class="btn btn-sm btn-info pull-right collapsed" data-toggle="collapse" data-target="#webapps" aria-expanded="false">V</button>
+-->
+		<!-- switch -->	
+		<div class="TriSea-technologies-Switch pull-right switch-control">
+			<input id="webapps-switch" name="" type="checkbox" autocomplete="off">
+			<label for="webapps-switch" class="label-default"></label>
+		</div>
+		
 	</div>
 </div>
 					</div>
@@ -95,7 +104,8 @@
 					</div>
 					
 				</div><!-- end panel -->
-				
+
+<!--				
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 <div class="row">
@@ -108,6 +118,7 @@
 </div>
 					</div>
 					
+
 					<div class="panel-body collapse" id="cms-sites">
 						<ul class="list-group">
                                                     
@@ -120,7 +131,8 @@
 <li class="list-group-item"><a target="_blank" href="http://www.kanistra54.ru/">автомагазин "Канистра"</a></li>
 						</ul>
 					</div>
-				</div><!-- end panel -->
+				</div>
+ -->
 
 				<div class="panel panel-primary">
 					<div class="panel-heading">
@@ -129,7 +141,12 @@
 		<h3 id="header-art-sites">Art sites</h3>
 	</div>
 	<div class="col-xs-3 col-sm-12 col-md-3">
-		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#art-sites">V</button>
+<!--		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#art-sites">V</button>-->
+		<!-- switch -->	
+		<div class="TriSea-technologies-Switch pull-right switch-control">
+			<input id="art-sites-switch" name="" type="checkbox" autocomplete="off">
+			<label for="art-sites-switch" class="label-default"></label>
+		</div>
 	</div>
 </div>
 					</div>
@@ -148,7 +165,12 @@
 		<h3>hosting sites</h3>
 	</div>
 	<div class="col-xs-3 col-sm-12 col-md-3">
-		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#host-sites">V</button>
+<!--		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#host-sites">V</button>-->
+		<!-- switch -->	
+		<div class="TriSea-technologies-Switch pull-right switch-control">
+			<input id="host-sites-switch" name="" type="checkbox" autocomplete="off">
+			<label for="host-sites-switch" class="label-default"></label>
+		</div>
 	</div>
 </div>
 					</div>
@@ -239,12 +261,20 @@ http://rex.dax.ru/wfm/wfm23.php
 		<h3 id="notes-webapp-header">Notes webapp</h3>
 	</div>
 	<div class="col-xs-3 col-sm-12 col-md-3">
+<!--	
 		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#notes-webapp">V</button>
+-->
+		<!-- switch -->	
+		<div class="TriSea-technologies-Switch pull-right switch-control">
+			<input id="notes-panel-switch" name="" type="checkbox" autocomplete="off" />
+			<label for="notes-panel-switch" class="label-default"></label>
+		</div>
+		
 	</div>
 </div>
 
 					</div>
-					<div class="panel-body collapse" id="notes-webapp">
+					<div class="panel-body collapse" id="notes-panel">
 <a target="_blank" href="projects/notes/index.html" class="">local</a><br>
 <a target="_blank" href="http://graphic-art-collection.16mb.com/notes/" class="">remote host, PHP</a><br>
 <a target="_blank" href="http://romanlaptev.gearhostpreview.com/">gearhostpreview, C#</a><br>
