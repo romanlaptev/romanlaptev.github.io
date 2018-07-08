@@ -1,6 +1,6 @@
 var app3, app4;
 
-//console.log("Vue:" + typeof Vue);
+console.log("Vue:" + typeof Vue);
 var support = true;
 if( typeof Vue === "undefined"){
 	support = false;
@@ -93,7 +93,7 @@ console.log(event);
 		}
 		
 	});
-	
+console.log("app5:", app5);	
 	
 	var app6 = new Vue({
 		el: "#app-6",

@@ -1,0 +1,7 @@
+create-react-app test_Semantic-ui
+cd test_Semantic-ui
+
+npm install semantic-ui-react
+npm install semantic-ui
+npm install semantic-ui-calendar-react
+ 

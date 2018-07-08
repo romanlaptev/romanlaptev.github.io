@@ -1,0 +1,6 @@
+https://tproger.ru/translations/react-basic-weather-app/
+
+npm install create-react-app
+node_modules\.bin\create-react-app.cmd weather
+cd weather
+npm start

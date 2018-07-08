@@ -1,0 +1,3 @@
+npm install antd --save
+npm install moment 
+npm install --save babel-polyfill 
