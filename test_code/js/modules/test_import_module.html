@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<header>
+			<h1>Test JS: import module</h1>
+		</header>
+		
+<pre>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/import
+https://learn.javascript.ru/modules
+</pre>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h2>import from numbers.js</h2>
+				</div>
+				<div class="panel-body">
+					import values:<div id="result"></div>
+				</div>
+			</div>
+		
+	</div>
+	
+<script type="module">
+//import {one, two} from "./numbers";
+//console.log( one, two );	
+
+import {one as item1, two as item2} from "./numbers";
+console.log( item1, item2 );	
+var out = item1 +", "+ item2;
+document.querySelector("#result").innerHTML += "<p>" + out + "</p>";
+
+import { sayHi as _func1} from "./numbers";
+console.log( _func1 );
+document.querySelector("#result").innerHTML += "<p>" + _func1.toString() + "</p>";
+
+import * as module1 from "./numbers";
+console.log( module1 );
+
+</script>
+
+<!-- test export default, export consructor from module_user.js -->
+<script src="login.js" type="module"></script>
+
+<script type="module">
+import { _user as newUser } from "./login"
+//console.log( newUser);
+
+var out = "Login new user with name: " + newUser.name;
+document.querySelector("#result").innerHTML += "<p>" + out + "</p>";
+
+</script>
+
+</body>
+</html>
