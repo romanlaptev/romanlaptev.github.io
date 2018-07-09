@@ -9,7 +9,10 @@ import { Row, Col } from 'antd';
 import './css/custom.css';
 
 import Link from "./components/Link";
+import Container from "./components/Container";
 console.log(Link);
+console.log(Container);
+
 
 //type: "text/x-moz-place-container"
 //typeCode: 2
@@ -50,6 +53,7 @@ var bookmarksArray = [
 ];
 			
 class App extends Component {
+
 	
 	constructor( props ){
 		super( props );
@@ -67,7 +71,7 @@ class App extends Component {
 	<Col span={1}></Col>
 	<Col span={22}>
 		<div>
-		
+			<Container id="79" />
 				<ul className="ant-select">
 {
 //console.log(  this.state. )
