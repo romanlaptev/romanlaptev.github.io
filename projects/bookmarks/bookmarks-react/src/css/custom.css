@@ -1,0 +1,15 @@
+body {
+	/*background-color: #eef;*/
+	background-color: #105590;
+	/*color: #fff*/
+}
+header h1{
+	color: #fff;
+	text-align: right;
+}
+
+#root {
+	background-color: #51a1e6;
+	border: none;
+	margin: 0;
+}

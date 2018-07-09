@@ -1,3 +1,8 @@
+//import 'core-js/es6/map';
+//import 'core-js/es6/set';
+import 'raf/polyfill';
+import "babel-polyfill";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import './index.css';
@@ -9,7 +14,8 @@ registerServiceWorker();
 
 //-------------------------
 var msg = "<p>React version: " + React.version +"</p>";
-document.querySelector("#version").innerHTML += msg;
+console.log( msg );
+//document.querySelector("#version").innerHTML += msg;
 
-var ua = "<p>"+navigator.userAgent+"</p>";
-document.querySelector("#ua").innerHTML += ua;
+//var ua = "<p>"+navigator.userAgent+"</p>";
+//document.querySelector("#ua").innerHTML += ua;
