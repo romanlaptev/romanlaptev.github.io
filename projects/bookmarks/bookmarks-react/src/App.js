@@ -9,6 +9,8 @@ import { Row, Col } from 'antd';
 import './css/custom.css';
 
 import Container from "./components/Container";
+import Breadcrumb from "./components/Breadcrumb";
+
 console.log(Container);
 
 class App extends Component {
@@ -27,6 +29,11 @@ class App extends Component {
 	<div className="App">
 
  <Row>
+ 
+	<Col span={24}>
+		<Breadcrumb />
+	</Col>
+ 
 	<Col span={1}></Col>
 	<Col span={22}>
 		<div>

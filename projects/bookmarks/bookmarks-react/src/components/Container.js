@@ -27,18 +27,18 @@ class Container extends Component {
 	
 	getContainerByName = () => {
 //console.log("container name(root): ", this.props.root);
-		var arr2 = bookmarksArray.filter( function( element, index){
+		var arr2 = bookmarksArray.find( function( element, index){
 			if( element["root"] === this.props.root ){
 				return element;
 			}
 		}, this);//end filter
-//console.log(arr2);
+//console.log("arr2: ", arr2);
 		return arr2;
 	}//end getContainerByName()
 	
 
 	getContainerByID = () => {
-		var arr2 = bookmarksArray.filter( function( element, index){
+		var arr2 = bookmarksArray.find( function( element, index){
 //console.log(arguments);
 			if( element["id"] === parseInt( this.prop.id ) ){
 				return element;
@@ -55,13 +55,10 @@ class Container extends Component {
 		//return <h1>Test!</h1>;
 		return(
 <div>
-				<div className="container panel">
-					<h1>component Container, root: {this.props.root}</h1>
-				</div>
-				
 				<ul className="ant-select">
 { 
-		this.state.container.map( function(value, index){
+
+		this.state.container["children"].map( function(value, index){
 //console.log(  index, value );
 			if( value.typeCode === 1){
 				return <li key={index}>
@@ -86,6 +83,7 @@ class Container extends Component {
 				</li>
 			}
 		})//next
+		
 }
 				</ul>
 	

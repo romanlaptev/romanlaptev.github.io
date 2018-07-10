@@ -14,3 +14,11 @@ header h1{
 	margin: 0;
 	border-radius: 10px;
 }
+
+.breadcrumb {
+	padding: 0;
+	margin: 0;
+}
+.breadcrumb li {
+	list-style: none;
+}
