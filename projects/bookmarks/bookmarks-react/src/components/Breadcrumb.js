@@ -24,8 +24,8 @@ class Breadcrumb extends Component {
 //console.log(this.props);		
 		var title = this.state.breadcrumbPath["container_2"];
 		return(
-				<div className="panel">
-					<ul className="breadcrumb breadcrumb-custom">
+				<div className="breadcrumb">
+					<ul className="">
 						<li><a href="#?q=view-container&amp;id=">{title}</a></li>
 					</ul>				
 				</div>

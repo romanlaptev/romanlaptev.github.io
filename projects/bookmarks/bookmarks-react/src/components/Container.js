@@ -75,7 +75,7 @@ class Container extends Component {
 
 			if( value.typeCode === 2){
 				return <li key={index}>
-					<div className="panel container">
+					<div className="bookmarks-container">
 						title={value.title}<br/>
 						dateAdded={value.dateAdded}<br/>
 						lastModified={value.lastModified}
