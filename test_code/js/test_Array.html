@@ -191,7 +191,29 @@ var arr2 = arr.filter( function(element, index){
   }
 });
 
-console.log(arr2);
+console.log(arr2);// arr2 = [2]
+=================
+
+var arr = [
+  {"a":1},
+  {"b":2},
+  {"c":3},
+];
+
+var arr2 = arr.filter( function(element, index){
+//console.log(arguments);
+  for( var key in element){
+//console.log( key, element[key]);
+    
+    if( key === "b"){
+        return element;
+    }
+    
+  }
+ 
+});
+console.log(arr2);// arr2 = [2]
+
 </pre>		
 			</div>
 		</div>

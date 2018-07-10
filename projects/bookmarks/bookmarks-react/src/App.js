@@ -30,7 +30,7 @@ class App extends Component {
 	<Col span={1}></Col>
 	<Col span={22}>
 		<div>
-			<Container id="79" />
+			<Container root="bookmarksMenuFolder" />
 		</div>
 	</Col>
 	<Col span={1}></Col>
