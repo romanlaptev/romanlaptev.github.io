@@ -13,18 +13,41 @@ class Container extends Component {
 		
 		if( props["root"] && props["root"].length > 0){
 			this.state = {
-				container: _getContainerByName( props["root"] )
+				container: this.getContainerByName()
 			};
 		}
 		
 		if( props["id"] && props["id"] > 0){
 			this.state = {
-				container: _getContainerByID( props["id"] )
+				container: this.getContainerByID()
 			};
 		}
 		
 	};//end constructor
 	
+	getContainerByName = () => {
+//console.log("container name(root): ", this.props.root);
+		var arr2 = bookmarksArray.filter( function( element, index){
+			if( element["root"] === this.props.root ){
+				return element;
+			}
+		}, this);//end filter
+//console.log(arr2);
+		return arr2;
+	}//end getContainerByName()
+	
+
+	getContainerByID = () => {
+		var arr2 = bookmarksArray.filter( function( element, index){
+//console.log(arguments);
+			if( element["id"] === parseInt( this.prop.id ) ){
+				return element;
+			}
+		}, this);//end filter
+//console.log(arr2);
+		return arr2;
+	}//end getContainerByID()
+
 	
 	//viewContainer(){
 	viewContainer = () => {
@@ -39,7 +62,7 @@ class Container extends Component {
 				<ul className="ant-select">
 { 
 		this.state.container.map( function(value, index){
-console.log(  index, value );
+//console.log(  index, value );
 			if( value.typeCode === 1){
 				return <li key={index}>
 					<Link 
@@ -79,31 +102,3 @@ console.log(  index, value );
 }//end class
 
 export default Container;
-
-
-
-function _getContainerByName( name ){
-//console.log("container name(root): ", name);
-	
-	var arr2 = bookmarksArray.filter( function( element, index){
-//console.log(arguments);
-		if( element["root"] === name){
-			return element;
-		}
-	});//end filter
-//console.log(arr2);
-
-	return arr2;
-}//end _getContainerByName()
-
-function _getContainerByID( id ){
-	var arr2 = bookmarksArray.filter( function( element, index){
-//console.log(arguments);
-		if( element["id"] === parseInt(id) ){
-			return element;
-		}
-	});//end filter
-//console.log(arr2);
-
-	return arr2;
-}//end _getContainerByID()
