@@ -6,56 +6,79 @@ import dataStore from "./DataStore";
   
 class BreadcrumbApp extends Component {
 
-/*	
+
 	constructor( props ){
 		super( props );
-		
-		this.state = {
-			breadcrumbPath: {
-				"container_2" : "Меню закладок"
-			}
-		};
-		
+console.log("class BreadcrumbApp, constructor", props);
+		//this.state = {
+			//breadcrumbPath: {
+				//"container_2" : "Меню закладок"
+			//}
+		//};
 	};//end constructor
-*/
+
 
 //https://metanit.com/web/react/2.6.php
 	componentWillMount(){
 console.log("- component Breadcrumb (BreadcrumbApp), before render.");
-	}
+	}//end 
 	
 	componentDidMount(){
 console.log("- component Breadcrumb (BreadcrumbApp), after render.");
-	}
+	}//end 
            
 	shouldComponentUpdate(){
 console.log("1. component Breadcrumb (BreadcrumbApp) SHOULD update.");
 		return true;
-	}
+	}//end 
            
 	componentWillUpdate(){
 console.log("2. component Breadcrumb (BreadcrumbApp) WILL update.");
-	}
+//console.log(this.props);
+	}//end 
 
 	componentDidUpdate(){
 console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
-	}
+//console.log(this.props);
+	}//end 
            
 	render(){
 //console.log(this.props);
+console.log("class BreadcrumbApp, render", this.props);
 		
-	//for( var key in dataStore.breadcrumbPath){
+		//form breadcrumbs line
+		var clear = false;
+		if( this.props.update && this.props.update.length > 0){
+			for( var key in dataStore.breadcrumbPath){
 //console.log( key, dataStore.breadcrumbPath[key] );
-	//}//next
+				
+				if( clear ){//clear unuseful tail breadrumbs
+					delete dataStore.breadcrumbPath[ key ];
+console.log("update dataStore", dataStore);
+				}
+
+				if( key === this.props.update ){//detect next unuseful tail breadrumbs
+					clear = true;
+				}
+
+			}//next
+		}
 		
+		var breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
+//console.log("breadcrumbPathKeys.length: ", breadcrumbPathKeys.length );
+
 		return(
 		
 				<div className="breadcrumb">
 					<Breadcrumb>
 {
-	Object.keys( dataStore.breadcrumbPath ).map( function(key, index){
+	breadcrumbPathKeys.map( function(key, index){
 //console.log(key, index, dataStore.breadcrumbPath[key] );
-		return <Breadcrumb.Item key={key}><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+		if( index+1 === breadcrumbPathKeys.length ){
+			return <Breadcrumb.Item key={key}>{dataStore.breadcrumbPath[key]}</Breadcrumb.Item>
+		} else {
+			return <Breadcrumb.Item key={key}><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+		}
 	})//next
 }						
 					</Breadcrumb>

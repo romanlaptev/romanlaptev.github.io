@@ -9,6 +9,8 @@ import Link from "./Link";
 class Container extends Component {
 	
 	constructor( props ){
+console.log("class Container, constructor", props);
+
 		super( props );
 		
 		if( props["root"] && props["root"].length > 0){
