@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dataStore from "./DataStore";
 import Link from "./Link";
 
-//console.log("TEST1,", Bookmarks);	
+//console.log("TEST1,", dataStore);
 //console.log(Link);
 
 
@@ -22,7 +22,8 @@ class Container extends Component {
 				container: this.getContainerByID()
 			};
 		}
-		
+
+//delete dataStore.breadcrumbPath["container_454"];
 	};//end constructor
 	
 	getContainerByName = () => {

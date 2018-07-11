@@ -19,7 +19,30 @@ class BreadcrumbApp extends Component {
 	};//end constructor
 */
 
+//https://metanit.com/web/react/2.6.php
+	componentWillMount(){
+console.log("- component Breadcrumb (BreadcrumbApp), before render.");
+	}
+	
+	componentDidMount(){
+console.log("- component Breadcrumb (BreadcrumbApp), after render.");
+	}
+           
+	shouldComponentUpdate(){
+console.log("1. component Breadcrumb (BreadcrumbApp) SHOULD update.");
+		return true;
+	}
+           
+	componentWillUpdate(){
+console.log("2. component Breadcrumb (BreadcrumbApp) WILL update.");
+	}
+
+	componentDidUpdate(){
+console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
+	}
+           
 	render(){
+//console.log(this.props);
 		
 	//for( var key in dataStore.breadcrumbPath){
 //console.log( key, dataStore.breadcrumbPath[key] );
@@ -32,7 +55,7 @@ class BreadcrumbApp extends Component {
 {
 	Object.keys( dataStore.breadcrumbPath ).map( function(key, index){
 //console.log(key, index, dataStore.breadcrumbPath[key] );
-		return <Breadcrumb.Item><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+		return <Breadcrumb.Item key={key}><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
 	})//next
 }						
 					</Breadcrumb>
