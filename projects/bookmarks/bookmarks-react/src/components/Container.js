@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bookmarksArray from "./DataContainer";
+import dataStore from "./DataStore";
 import Link from "./Link";
 
 //console.log("TEST1,", Bookmarks);	
@@ -27,7 +27,7 @@ class Container extends Component {
 	
 	getContainerByName = () => {
 //console.log("container name(root): ", this.props.root);
-		var arr2 = bookmarksArray.find( function( element, index){
+		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
 			if( element["root"] === this.props.root ){
 				return element;
 			}
@@ -38,7 +38,7 @@ class Container extends Component {
 	
 
 	getContainerByID = () => {
-		var arr2 = bookmarksArray.find( function( element, index){
+		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
 //console.log(arguments);
 			if( element["id"] === parseInt( this.prop.id ) ){
 				return element;

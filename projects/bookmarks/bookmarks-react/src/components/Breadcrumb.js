@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-//import bookmarksArray from "./DataContainer";
+import { Breadcrumb } from 'antd';
 
-//console.log("TEST1,", Bookmarks);	
-//console.log(Link);
+import dataStore from "./DataStore";
 
+  
+class BreadcrumbApp extends Component {
 
-class Breadcrumb extends Component {
-	
+/*	
 	constructor( props ){
 		super( props );
 		
@@ -17,20 +17,29 @@ class Breadcrumb extends Component {
 		};
 		
 	};//end constructor
-
+*/
 
 	render(){
-//console.log("State: ", this.state);
-//console.log(this.props);		
-		var title = this.state.breadcrumbPath["container_2"];
+		
+	//for( var key in dataStore.breadcrumbPath){
+//console.log( key, dataStore.breadcrumbPath[key] );
+	//}//next
+		
 		return(
+		
 				<div className="breadcrumb">
-					<ul className="">
-						<li><a href="#?q=view-container&amp;id=">{title}</a></li>
-					</ul>				
+					<Breadcrumb>
+{
+	Object.keys( dataStore.breadcrumbPath ).map( function(key, index){
+//console.log(key, index, dataStore.breadcrumbPath[key] );
+		return <Breadcrumb.Item><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+	})//next
+}						
+					</Breadcrumb>
 				</div>
+				
 		);
 	}
 }//end class
 
-export default Breadcrumb;
+export default BreadcrumbApp;
