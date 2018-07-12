@@ -18,6 +18,8 @@ import Breadcrumb from "./components/Breadcrumb";
 class App extends Component {
 
 	constructor( props ){
+console.log("class App, constructor", props);
+
 		super( props );
 		this.state = {
 			//bookmarks: Bookmarks
@@ -79,6 +81,7 @@ console.log("error, action: ", action);
 	};//end updateState()
 	
 	render() {
+//console.log("App, render", this.props.children);
 	  
 		return (
 		<div className="App">
@@ -105,7 +108,7 @@ console.log("error, action: ", action);
 	 <Row>
 		<div>
 			{/*<button className="btn btn-warning">test btn</button>*/}
-	<Button onClick={this.test} type="default" size="large">test btn</Button>		
+	{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
 		</div>
 	</Row>
 		

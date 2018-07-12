@@ -68,7 +68,7 @@ console.log("class BreadcrumbApp, render", this.props);
 
 //-------------------
 //console.log("breadcrumbPathKeys.length: ", breadcrumbPathKeys.length );
-		if( this.props.update && this.props.update.id.length > 0){
+		if( this.props.update && this.props.update.id.length > 0){//Start breadcrumb chain
 			if( breadcrumbPathKeys.length === 0){
 				var id = this.props.update.id;
 				var title = this.props.update.title;

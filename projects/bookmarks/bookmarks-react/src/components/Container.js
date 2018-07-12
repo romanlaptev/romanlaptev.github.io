@@ -31,6 +31,9 @@ console.log("class Container, constructor", props);
 			"title": this.state.container["title"],
 			"id": "container_" + this.state.container["id"]
 		}, "updateBreadrumb");
+
+//this.state["testVar"] = false;
+console.log("State:", this.state);
 		
 	};//end constructor
 
@@ -95,9 +98,15 @@ console.log(e.target);
 
 //console.log("CHANGE container", this.state);
 
-		//this.setState({
-			//container: this.getContainerByID("79")
-		//});
+		
+//this.setState({
+	//testVar: true
+//});
+
+		this.setState({
+			container: this.getContainerByID("3")
+		});
+console.log("State:", this.state);
 
 
 	};//end eventHandler
@@ -136,10 +145,16 @@ console.log(e.target);
 			if( value.typeCode === 2){//CONTAINER
 				var tooltip = "added:" + value.dateAdded + ", last modified:" + value.lastModified;
 				
+				var announce = value.annos ? value.annos[0]["value"]:"001";
+				//var announce = "000";
+				//if(value.annos){
+					//announce = value.annos[0]["value"];
+				//}
+				
 				return <li key={index}>
 					<div className="bookmarks-container">
 <a onClick={this.eventHandler} href={"#?q=view-container&id="+value.id} title={tooltip}>{value.title}</a>
-<div className="announce">{value.annos[0]["value"]}</div>
+<div className="announce">{announce}</div>
 
 					</div>
 				</li>
