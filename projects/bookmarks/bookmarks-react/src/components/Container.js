@@ -15,21 +15,22 @@ console.log("class Container, constructor", props);
 		
 		if( props["root"] && props["root"].length > 0){
 			this.state = {
-				container: this.getContainerByName()
+				container: this.getContainerByName( props["root"] )
 			};
 		}
 		
 		if( props["id"] && props["id"] > 0){
 			this.state = {
-				container: this.getContainerByID()
+				container: this.getContainerByID( props["id"] )
 			};
 		}
 
 //delete dataStore.breadcrumbPath["container_454"];
-		this.props.updateBreadcrumb({
+		
+		this.props.updateState({
 			"title": this.state.container["title"],
 			"id": "container_" + this.state.container["id"]
-		});
+		}, "updateBreadrumb");
 		
 	};//end constructor
 
@@ -49,19 +50,21 @@ console.log("1. component Container SHOULD update.");
            
 	componentWillUpdate(){
 console.log("2. component Container WILL update.");
-//console.log(this.props);
+console.log(this.props);
+console.log(this.state);
 	}//end 
 
 	componentDidUpdate(){
 console.log("3. component Container DID update.");
-//console.log(this.props);
+console.log(this.props);
+console.log(this.state);
 	}//end 
 
 	
-	getContainerByName = () => {
-//console.log("container name(root): ", this.props.root);
+	getContainerByName = (root) => {
+console.log("getContainerByName()", root);
 		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
-			if( element["root"] === this.props.root ){
+			if( element["root"] === root ){
 				return element;
 			}
 		}, this);//end filter
@@ -70,17 +73,35 @@ console.log("3. component Container DID update.");
 	}//end getContainerByName()
 	
 
-	getContainerByID = () => {
+	getContainerByID = ( id ) => {
+console.log("getContainerByID()", id);
 		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
 //console.log(arguments);
-			if( element["id"] === parseInt( this.prop.id ) ){
+			if( element["id"] === parseInt( id ) ){
 				return element;
 			}
 		}, this);//end filter
-//console.log(arr2);
 		return arr2;
 	}//end getContainerByID()
 
+
+	eventHandler = (e) => {
+		e.preventDefault();		
+console.log(e.target);
+
+		//this.props.updateState({
+			//"containerId": "79"
+		//}, "changeContainer");
+
+//console.log("CHANGE container", this.state);
+
+		//this.setState({
+			//container: this.getContainerByID("79")
+		//});
+
+
+	};//end eventHandler
+	
 	
 	//viewContainer(){
 	viewContainer = (data) => {
@@ -117,13 +138,13 @@ console.log("3. component Container DID update.");
 				
 				return <li key={index}>
 					<div className="bookmarks-container">
-<a href={"#?q=view-container&id="+value.id} title={tooltip}>{value.title}</a>
+<a onClick={this.eventHandler} href={"#?q=view-container&id="+value.id} title={tooltip}>{value.title}</a>
 <div className="announce">{value.annos[0]["value"]}</div>
 
 					</div>
 				</li>
 			}
-		})//next
+		}, this)//next
 		
 }
 				</ul>

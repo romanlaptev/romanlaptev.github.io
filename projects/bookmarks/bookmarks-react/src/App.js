@@ -21,7 +21,9 @@ class App extends Component {
 		super( props );
 		this.state = {
 			//bookmarks: Bookmarks
-			updateBreadcrumb: false
+			//updateBreadcrumb: false
+			root: "bookmarksMenuFolder",
+			containerId: false
 		};
 	};//end constructor
 
@@ -55,10 +57,26 @@ console.log("3. component App DID update.");
 		//this.setState({containerId: "container_24"});
 	};
 	
-	updateBreadcrumbPath = (opt) => {
-//console.log(opt);		
-		this.setState({container: opt });
-	};
+	updateState = ( vars, action) => {
+console.log( vars, action);
+
+		delete this.state.root;
+		
+		switch( action ){
+			case "updateBreadrumb":
+				this.setState({containerValues: vars });
+			break;
+			
+			//case "changeContainer":
+				//this.setState({containerId: vars["containerId"] });
+			//break;
+			
+			default:
+console.log("error, action: ", action);
+			break;
+			
+		}//end switch
+	};//end updateState()
 	
 	render() {
 	  
@@ -68,13 +86,17 @@ console.log("3. component App DID update.");
 	 <Row>
 	 
 		<Col span={24}>
-			<Breadcrumb update={this.state.container}/>
+			<Breadcrumb update={this.state.containerValues}/>
 		</Col>
 	 
 		<Col span={1}></Col>
 		<Col span={22}>
 			<div>
-				<Container root="bookmarksMenuFolder" updateBreadcrumb={this.updateBreadcrumbPath}/>
+				<Container 
+					root={this.state.root} 
+					id={this.state.containerId} 
+					updateState={this.updateState}
+				/>
 			</div>
 		</Col>
 		<Col span={1}></Col>
