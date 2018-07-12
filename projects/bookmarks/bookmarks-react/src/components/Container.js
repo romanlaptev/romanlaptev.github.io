@@ -113,12 +113,13 @@ console.log("3. component Container DID update.");
 			}
 
 			if( value.typeCode === 2){//CONTAINER
+				var tooltip = "added:" + value.dateAdded + ", last modified:" + value.lastModified;
+				
 				return <li key={index}>
 					<div className="bookmarks-container">
-						title={value.title}<br/>
-						announce={value.annos[0]["value"]}<br/>
-						dateAdded={value.dateAdded}<br/>
-						lastModified={value.lastModified}
+<a href={"#?q=view-container&id="+value.id} title={tooltip}>{value.title}</a>
+<div className="announce">{value.annos[0]["value"]}</div>
+
 					</div>
 				</li>
 			}

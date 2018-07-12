@@ -52,14 +52,11 @@ console.log("3. component App DID update.");
 	test = (e) => {
 //console.log(arguments);		
 //console.log(e.target);		
-		this.setState({containerId: "container_24"});
+		//this.setState({containerId: "container_24"});
 	};
 	
 	updateBreadcrumbPath = (opt) => {
 //console.log(opt);		
-		//var id = "container_" + opt["id"];
-		//var id = "container_24";
-		//this.setState({containerId: id });
 		this.setState({container: opt });
 	};
 	

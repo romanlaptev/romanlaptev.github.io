@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 class Link extends Component {
 	render(){
 //console.log(this.props);		
-		var linkTitle = "created:" + this.props.dateAdded + ", modified:" + this.props.lastModified;
+		var linkTitle = "added:" + this.props.dateAdded + ", last modified:" + this.props.lastModified;
 		
 		return(
 <div className="link panel">
@@ -15,7 +15,7 @@ class Link extends Component {
 		<img className="icon-uri" src={this.props.icon} alt="no icon"/>
 		<span>{this.props.title}</span>
 	</a>
-	<div className="annos">{this.props.announce}</div>
+	<div className="announce">{this.props.announce}</div>
 </div>
 		);
 	}
