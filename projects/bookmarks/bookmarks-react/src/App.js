@@ -25,6 +25,30 @@ class App extends Component {
 		};
 	};//end constructor
 
+
+	componentWillMount(){
+console.log("- component App, before render.");
+	}//end 
+	
+	componentDidMount(){
+console.log("- component App, after render.");
+	}//end 
+           
+	shouldComponentUpdate(){
+console.log("1. component App SHOULD update.");
+		return true;
+	}//end 
+           
+	componentWillUpdate(){
+console.log("2. component App WILL update.");
+//console.log(this.props);
+	}//end 
+
+	componentDidUpdate(){
+console.log("3. component App DID update.");
+//console.log(this.props);
+	}//end 
+
 	test = (e) => {
 //console.log(arguments);		
 //console.log(e.target);		
