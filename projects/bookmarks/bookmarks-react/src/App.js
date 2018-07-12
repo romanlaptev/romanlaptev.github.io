@@ -10,7 +10,7 @@ import { Button } from 'antd';
 import './css/custom.css';
 
 import Container from "./components/Container";
-import dataStore from "./components/DataStore";
+//import dataStore from "./components/DataStore";
 import Breadcrumb from "./components/Breadcrumb";
 
 //console.log(Container);
@@ -27,13 +27,17 @@ class App extends Component {
 
 	test = (e) => {
 //console.log(arguments);		
-console.log(e.target);		
-delete dataStore.breadcrumbPath["container_454"];
-console.log("update dataStore", dataStore);
-console.log( Breadcrumb, typeof Breadcrumb);
-//this.setState()		
-		this.setState({updateBreadcrumb: true});
-	}
+//console.log(e.target);		
+		this.setState({containerId: "container_24"});
+	};
+	
+	updateBreadcrumbPath = (opt) => {
+//console.log(opt);		
+		//var id = "container_" + opt["id"];
+		//var id = "container_24";
+		//this.setState({containerId: id });
+		this.setState({container: opt });
+	};
 	
 	render() {
 	  
@@ -43,13 +47,13 @@ console.log( Breadcrumb, typeof Breadcrumb);
 	 <Row>
 	 
 		<Col span={24}>
-			<Breadcrumb update={this.state.updateBreadcrumb}/>
+			<Breadcrumb update={this.state.container}/>
 		</Col>
 	 
 		<Col span={1}></Col>
 		<Col span={22}>
 			<div>
-				<Container root="bookmarksMenuFolder" />
+				<Container root="bookmarksMenuFolder" updateBreadcrumb={this.updateBreadcrumbPath}/>
 			</div>
 		</Col>
 		<Col span={1}></Col>

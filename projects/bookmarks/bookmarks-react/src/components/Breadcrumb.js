@@ -45,27 +45,38 @@ console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
 	render(){
 //console.log(this.props);
 console.log("class BreadcrumbApp, render", this.props);
+
+		var breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
 		
 		//form breadcrumbs line
 		var clear = false;
-		if( this.props.update && this.props.update.length > 0){
+		if( this.props.update && this.props.update.id.length > 0){
 			for( var key in dataStore.breadcrumbPath){
 //console.log( key, dataStore.breadcrumbPath[key] );
 				
 				if( clear ){//clear unuseful tail breadrumbs
 					delete dataStore.breadcrumbPath[ key ];
-console.log("update dataStore", dataStore);
+//console.log("update dataStore", dataStore);
 				}
 
-				if( key === this.props.update ){//detect next unuseful tail breadrumbs
+				if( key === this.props.update.id ){//detect next unuseful tail breadrumbs
 					clear = true;
 				}
 
 			}//next
 		}
-		
-		var breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
+
+//-------------------
 //console.log("breadcrumbPathKeys.length: ", breadcrumbPathKeys.length );
+		if( this.props.update && this.props.update.id.length > 0){
+			if( breadcrumbPathKeys.length === 0){
+				var id = this.props.update.id;
+				var title = this.props.update.title;
+				dataStore.breadcrumbPath = {id: title};
+				breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
+			}
+		}
+		
 
 		return(
 		

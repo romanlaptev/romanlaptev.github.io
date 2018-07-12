@@ -35,10 +35,10 @@ annos: Array [ {…} ]
 var dataStore = {
 	
 	breadcrumbPath: {
-		"container_2": "Меню закладок",
-		"container_79": "info",
-		"container_24": "blogs, articles",
-		"container_454": "LiveJournal"
+		//"container_2": "Меню закладок",
+		//"container_79": "info",
+		//"container_24": "blogs, articles",
+		//"container_454": "LiveJournal"
 	},
 
 	bookmarksArray: [

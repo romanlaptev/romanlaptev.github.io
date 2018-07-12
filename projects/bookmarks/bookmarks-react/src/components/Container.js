@@ -26,7 +26,37 @@ console.log("class Container, constructor", props);
 		}
 
 //delete dataStore.breadcrumbPath["container_454"];
+		this.props.updateBreadcrumb({
+			"title": this.state.container["title"],
+			"id": "container_" + this.state.container["id"]
+		});
+		
 	};//end constructor
+
+	
+	componentWillMount(){
+console.log("- component Container, before render.");
+	}//end 
+	
+	componentDidMount(){
+console.log("- component Container, after render.");
+	}//end 
+           
+	shouldComponentUpdate(){
+console.log("1. component Container SHOULD update.");
+		return true;
+	}//end 
+           
+	componentWillUpdate(){
+console.log("2. component Container WILL update.");
+//console.log(this.props);
+	}//end 
+
+	componentDidUpdate(){
+console.log("3. component Container DID update.");
+//console.log(this.props);
+	}//end 
+
 	
 	getContainerByName = () => {
 //console.log("container name(root): ", this.props.root);
@@ -53,7 +83,7 @@ console.log("class Container, constructor", props);
 
 	
 	//viewContainer(){
-	viewContainer = () => {
+	viewContainer = (data) => {
 //console.log("container: ", this.state.container);
 		//return <h1>Test!</h1>;
 		return(
@@ -61,7 +91,7 @@ console.log("class Container, constructor", props);
 				<ul className="ant-select">
 { 
 
-		this.state.container["children"].map( function(value, index){
+		data.map( function(value, index){
 //console.log(  index, value );
 			if( value.typeCode === 1){
 				return <li key={index}>
@@ -97,8 +127,15 @@ console.log("class Container, constructor", props);
 	
 	render(){
 //console.log("State: ", this.state);
-//console.log(this.props);		
-		return this.viewContainer();
+//console.log(this.props);
+
+//console.log("state.container.children: ", this.state.container["children"]);
+		if( this.state.container["children"] ){
+			return this.viewContainer( this.state.container["children"] );
+		} else {
+			//return <h1>no children...</h1>
+			return this.viewContainer( [this.state.container] );
+		}
 	}
 }//end class
 
