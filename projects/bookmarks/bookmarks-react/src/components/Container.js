@@ -93,23 +93,30 @@ console.log("3. component Container DID update.");
 
 		data.map( function(value, index){
 //console.log(  index, value );
-			if( value.typeCode === 1){
+			if( value.typeCode === 1){//URL
+				
+				//Skip RecentTags link
+				if( value.uri.indexOf("place:") !== -1){ 
+					return false;
+				}
+				
 				return <li key={index}>
 					<Link 
 						title={value.title} 
-						url={value.url} 
+						url={value.uri} 
 						icon={value.icon}
-						announce={value.announce}
+						announce={value.annos[0]["value"]}
 						dateAdded={value.dateAdded}
 						lastModified={value.lastModified}
 					/>
 				</li>
 			}
 
-			if( value.typeCode === 2){
+			if( value.typeCode === 2){//CONTAINER
 				return <li key={index}>
 					<div className="bookmarks-container">
 						title={value.title}<br/>
+						announce={value.annos[0]["value"]}<br/>
 						dateAdded={value.dateAdded}<br/>
 						lastModified={value.lastModified}
 					</div>

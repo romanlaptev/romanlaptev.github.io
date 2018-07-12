@@ -90,9 +90,8 @@ var dataStore = {
 					index: 0,
 					"typeCode" : 1, 
 					"type" : "text/x-moz-place", 
-					"uri" : "http://192.168.0.1/", 
+					"uri" : "place:type=6&sort=14&maxResults=10", 
 					"title" : "Последние метки", 
-					icon : "place:type=6&sort=14&maxResults=10",
 					dateAdded: 1527556178054000,
 					lastModified: 1527556178907000,
 					annos: [ {
