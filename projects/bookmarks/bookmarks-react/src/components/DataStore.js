@@ -51,6 +51,7 @@ var dataStore = {
 			dateAdded: 1527556169316000,
 			lastModified: 1529484963727000,
 			children: [
+/*					
 				{ 
 					"typeCode" : 1, 
 					"type" : "text/x-moz-place", 
@@ -81,6 +82,54 @@ var dataStore = {
 					dateAdded: "2017-1-29 12:15",
 					lastModified: "2018-6-20 15:56"
 				}
+*/
+
+
+				{ 
+					id: 14,
+					index: 0,
+					"typeCode" : 1, 
+					"type" : "text/x-moz-place", 
+					"uri" : "http://192.168.0.1/", 
+					"title" : "Последние метки", 
+					icon : "place:type=6&sort=14&maxResults=10",
+					dateAdded: 1527556178054000,
+					lastModified: 1527556178907000,
+					annos: [ {
+						value: "announce!!!!"
+					}]
+				},
+
+				{ 
+					id: 79,
+					index: 2,
+					"typeCode" : 2, 
+					"type" : "text/x-moz-place-container", 
+					"title" : "info", 
+					announce: "bookmarks container",
+					dateAdded: 1485666942761000,
+					lastModified: 1529484963727000,
+					annos: [ {
+						value: "announce!!!!"
+					}],
+					children: [ {}, {}, {} ]
+				},
+
+
+				{ 
+					id: 6215,
+					index: 14,
+					"typeCode" : 1, 
+					"type" : "text/x-moz-place", 
+					"uri" : "http://192.168.0.1/", 
+					"title" : "D-LINK WIRELESS ROUTER", 
+					dateAdded: 1485666961987000,
+					lastModified: 1528524416604000,
+					annos: [ {
+						value: "announce!!!!"
+					}]
+				}
+				
 			]
 			
 		},
