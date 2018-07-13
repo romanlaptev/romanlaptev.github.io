@@ -5,12 +5,12 @@ import React, { Component } from 'react';
 //UI Ant-Design
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
-import { Button } from 'antd';
+//import { Button } from 'antd';
 
 import './css/custom.css';
 
 import Container from "./components/Container";
-//import dataStore from "./components/DataStore";
+import dataStore from "./components/DataStore";
 import Breadcrumb from "./components/Breadcrumb";
 
 //console.log(Container);
@@ -24,8 +24,8 @@ console.log("class App, constructor", props);
 		this.state = {
 			//bookmarks: Bookmarks
 			//updateBreadcrumb: false
-			root: "bookmarksMenuFolder",
-			containerId: false
+			//root: "bookmarksMenuFolder",
+			containerId: this.getInitId("bookmarksMenuFolder")
 		};
 	};//end constructor
 
@@ -58,6 +58,24 @@ console.log("3. component App DID update.");
 //console.log(e.target);		
 		//this.setState({containerId: "container_24"});
 	};
+
+	getInitId = ( containerName ) => {
+		var initId = dataStore["bookmarksArray"]["children"].find( function( element, index){
+			if( element["root"] === containerName ){
+				return true;
+			}
+		}, this);//end filter
+
+//console.log("getInitId()", containerName, initId, typeof initId);
+
+		if(initId){
+			return initId["id"];
+		} else {
+			return false;
+		}
+		
+	}//end getInitId
+
 	
 	updateState = ( vars, action) => {
 console.log( vars, action);
@@ -80,6 +98,7 @@ console.log("error, action: ", action);
 		}//end switch
 	};//end updateState()
 	
+	
 	render() {
 //console.log("App, render", this.props.children);
 	  
@@ -92,17 +111,15 @@ console.log("error, action: ", action);
 			<Breadcrumb update={this.state.containerValues}/>
 		</Col>
 	 
-		<Col span={1}></Col>
-		<Col span={22}>
+		<Col span={24}>
 			<div>
 				<Container 
-					root={this.state.root} 
 					id={this.state.containerId} 
 					updateState={this.updateState}
 				/>
 			</div>
 		</Col>
-		<Col span={1}></Col>
+
 	</Row>
 
 	 <Row>

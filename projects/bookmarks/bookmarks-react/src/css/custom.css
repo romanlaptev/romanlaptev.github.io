@@ -16,8 +16,8 @@ header h1{
 }
 
 .breadcrumb {
-	/*background-color: #0e3f6a;*/
-	background-color: #fff;
+	background-color: #0e3f6a;
+	/*background-color: #fff;*/
 	/*border: none;*/
 	border-radius: 5px;
 	margin: 15px;
@@ -35,10 +35,13 @@ header h1{
 	color: #fff;
 }
 */
-
+.ant-breadcrumb > span:last-child {
+	color: #fff;
+}
 .ant-breadcrumb a {
 	color: #0000ff;
 }
+
 
 .bookmarks-container {
 	background-color: #ffcc99;

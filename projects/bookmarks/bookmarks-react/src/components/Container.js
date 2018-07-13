@@ -13,20 +13,12 @@ console.log("class Container, constructor", props);
 
 		super( props );
 		
-		if( props["root"] && props["root"].length > 0){
-			this.state = {
-				container: this.getContainerByName( props["root"] )
-			};
-		}
-		
 		if( props["id"] && props["id"] > 0){
 			this.state = {
-				container: this.getContainerByID( props["id"] )
+				container: this.getContainerByID( props["id"], dataStore["bookmarksArray"] )
 			};
 		}
 
-//delete dataStore.breadcrumbPath["container_454"];
-		
 		this.props.updateState({
 			"title": this.state.container["title"],
 			"id": "container_" + this.state.container["id"]
@@ -63,34 +55,81 @@ console.log(this.props);
 console.log(this.state);
 	}//end 
 
-	
-	getContainerByName = (root) => {
-console.log("getContainerByName()", root);
-		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
-			if( element["root"] === root ){
-				return element;
-			}
-		}, this);//end filter
-//console.log("arr2: ", arr2);
-		return arr2;
-	}//end getContainerByName()
-	
-
-	getContainerByID = ( id ) => {
+/*
+	getContainerByID = ( id, jsonObj ) => {
 console.log("getContainerByID()", id);
-		var arr2 = dataStore["bookmarksArray"].find( function( element, index){
+		var arr2 = jsonObj["children"].find( function( element, index){
 //console.log(arguments);
 			if( element["id"] === parseInt( id ) ){
-				return element;
+				return true;
 			}
 		}, this);//end filter
 		return arr2;
 	}//end getContainerByID()
+*/
+	getContainerByID = ( id, jsonObj ) => {
+//console.log("getContainerByID()", id);
+			
+		//var resContainer = [];
+		if( jsonObj["children"] && jsonObj["children"].length > 0){
+			for( var n = 0; n < jsonObj["children"].length; n++){
+				var container = jsonObj["children"][n];
+//console.log( "TEST1", container );
+				if( container["id"] === parseInt( id ) ){
+//console.log( "TEST2", container["id"], id, container );
+					return container;
+					//resContainer = container;
+					//break;
+					//return resContainer;
+				} 
+				
+				//recursive search ID
+				if( container["children"] && container["children"].length > 0){
+					this.getContainerByID( id, container );
+				}
+				
+			}//next
+		}
+		//return resContainer;
+
+	}//end getContainerByID()
+
+	_getContainerByID = ( id, jsonObj, res ) => {
+console.log("_getContainerByID()", id);
+			
+		if( jsonObj["children"] && jsonObj["children"].length > 0){
+			for( var n = 0; n < jsonObj["children"].length; n++){
+				var container = jsonObj["children"][n];
+console.log( "_TEST1", container );
+				if( container["id"] === parseInt( id ) ){
+console.log( "_TEST2", container["id"], id, container );
+					//return container;
+					_testFunc(container, this);
+					break;
+				} 
+				
+				//recursive search ID
+				if( container["children"] && container["children"].length > 0){
+					this._getContainerByID( id, container, res );
+				}
+				
+			}//next
+		}
+		//return resContainer;
+
+		function _testFunc(_container, _this){
+console.log("_testFunc()", _container, _this);			
+			_this.setState({
+				container: _container
+			});
+		}//end _testFunc()
+			
+	}//end _getContainerByID()
 
 
 	eventHandler = (e) => {
 		e.preventDefault();		
-console.log(e.target);
+//console.log(e.target);
 
 		//this.props.updateState({
 			//"containerId": "79"
@@ -103,9 +142,13 @@ console.log(e.target);
 	//testVar: true
 //});
 
-		this.setState({
-			container: this.getContainerByID("3")
-		});
+		var test = this._getContainerByID("79", dataStore["bookmarksArray"]);
+console.log("_TEST3:", test);
+		
+		//this.setState({
+			//container: test
+		//});
+		
 console.log("State:", this.state);
 
 
@@ -114,7 +157,7 @@ console.log("State:", this.state);
 	
 	//viewContainer(){
 	viewContainer = (data) => {
-//console.log("container: ", this.state.container);
+console.log("viewContainer(): ", data);
 		//return <h1>Test!</h1>;
 		return(
 <div>

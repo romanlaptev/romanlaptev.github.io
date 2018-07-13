@@ -41,106 +41,116 @@ var dataStore = {
 		//"container_454": "LiveJournal"
 	},
 
-	bookmarksArray: [
-		{ 
-			id: 2,
-			"typeCode" : 2, 
-			"type" : "text/x-moz-place-container", 
-			"title" : "Меню закладок", 
-			root: "bookmarksMenuFolder",
-			dateAdded: 1527556169316000,
-			lastModified: 1529484963727000,
-			children: [
+	bookmarksArray: {
+		dateAdded: 1527556169316000,
+		lastModified: 1529484963727000,
+		id: 1,
+		index: 0,
+		root: "placesRoot",
+		title: "",
+		type: "text/x-moz-place-container",
+		typeCode: 2,
+		children: [
+			{ 
+				id: 2,
+				"typeCode" : 2, 
+				"type" : "text/x-moz-place-container", 
+				"title" : "Меню закладок", 
+				root: "bookmarksMenuFolder",
+				dateAdded: 1527556169316000,
+				lastModified: 1529484963727000,
+				children: [
 
-				{ 
-					id: 14,
-					index: 0,
-					"typeCode" : 1, 
-					"type" : "text/x-moz-place", 
-					"uri" : "place:type=6&sort=14&maxResults=10", 
-					"title" : "Последние метки", 
-					dateAdded: 1527556178054000,
-					lastModified: 1527556178907000,
-					annos: [ {
-						value: "announce!!!!"
-					}]
-				},
+					{ 
+						id: 14,
+						index: 0,
+						"typeCode" : 1, 
+						"type" : "text/x-moz-place", 
+						"uri" : "place:type=6&sort=14&maxResults=10", 
+						"title" : "Последние метки", 
+						dateAdded: 1527556178054000,
+						lastModified: 1527556178907000,
+						annos: [ {
+							value: "announce!!!!"
+						}]
+					},
 
-				{ 
-					id: 79,
-					index: 2,
-					"typeCode" : 2, 
-					"type" : "text/x-moz-place-container", 
-					"title" : "info", 
-					announce: "bookmarks container",
-					dateAdded: 1485666942761000,
-					lastModified: 1529484963727000,
-					annos: [ {
-						value: "announce!!!!"
-					}],
-					children: [ 
-						{ 
-							"typeCode" : 1, 
-							"type" : "text/x-moz-place", 
-							"url" : "http://yandex.ru", 
-							"title" : "Yandex", 
-							icon : "https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
-							announce: "web portal",
-							dateAdded: "2017-1-29 12:15",
-							lastModified: "2018-6-20 15:56"
-						},
-						
-						{ 
-							"typeCode" : 1, 
-							"type" : "text/x-moz-place", 
-							"url" : "https://jestjs.io/docs/ru/getting-started", 
-							"title" : "Jest 23.3", 
-							icon : "https://jestjs.io/img/favicon/favicon.ico",
-							announce: "system of JavaScript testing",
-							dateAdded: "2017-1-29 12:15",
-							lastModified: "2018-6-20 15:56"
-						},
-						
-						{ 
-							"typeCode" : 2, 
-							"type" : "text/x-moz-place-container", 
-							"title" : "info", 
-							announce: "bookmarks container",
-							dateAdded: "2017-1-29 12:15",
-							lastModified: "2018-6-20 15:56"
-						}
-					]
-				},
+					{ 
+						id: 79,
+						index: 2,
+						"typeCode" : 2, 
+						"type" : "text/x-moz-place-container", 
+						"title" : "info", 
+						announce: "bookmarks container",
+						dateAdded: 1485666942761000,
+						lastModified: 1529484963727000,
+						annos: [ {
+							value: "announce!!!!"
+						}],
+						children: [ 
+							{ 
+								"typeCode" : 1, 
+								"type" : "text/x-moz-place", 
+								"uri" : "http://yandex.ru", 
+								"title" : "Yandex", 
+								icon : "https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
+								annos: "web portal",
+								dateAdded: "2017-1-29 12:15",
+								lastModified: "2018-6-20 15:56"
+							},
+							
+							{ 
+								"typeCode" : 1, 
+								"type" : "text/x-moz-place", 
+								"uri" : "https://jestjs.io/docs/ru/getting-started", 
+								"title" : "Jest 23.3", 
+								icon : "https://jestjs.io/img/favicon/favicon.ico",
+								annos: "system of JavaScript testing",
+								dateAdded: "2017-1-29 12:15",
+								lastModified: "2018-6-20 15:56"
+							},
+							
+							{ 
+								"typeCode" : 2, 
+								"type" : "text/x-moz-place-container", 
+								"title" : "info", 
+								annos: "bookmarks container",
+								dateAdded: "2017-1-29 12:15",
+								lastModified: "2018-6-20 15:56"
+							}
+						]
+					},
 
 
-				{ 
-					id: 6215,
-					index: 14,
-					"typeCode" : 1, 
-					"type" : "text/x-moz-place", 
-					"uri" : "http://192.168.0.1/", 
-					"title" : "D-LINK WIRELESS ROUTER", 
-					dateAdded: 1485666961987000,
-					lastModified: 1528524416604000,
-					annos: [ {
-						value: "announce!!!!"
-					}]
-				}
+					{ 
+						id: 6215,
+						index: 14,
+						"typeCode" : 1, 
+						"type" : "text/x-moz-place", 
+						"uri" : "http://192.168.0.1/", 
+						"title" : "D-LINK WIRELESS ROUTER", 
+						dateAdded: 1485666961987000,
+						lastModified: 1528524416604000,
+						annos: [ {
+							value: "announce!!!!"
+						}]
+					}
+					
+				]
 				
-			]
+			},
 			
-		},
-		
-		{ 
-			id: 3,
-			typeCode: 2, 
-			type: "text/x-moz-place-container", 
-			title: "Панель закладок",
-			root: "toolbarFolder",
-			dateAdded: 1527556169316000,
-			lastModified: 1527556178024000
-		}
-	]
+			{ 
+				id: 3,
+				typeCode: 2, 
+				type: "text/x-moz-place-container", 
+				title: "Панель закладок",
+				root: "toolbarFolder",
+				dateAdded: 1527556169316000,
+				lastModified: 1527556178024000
+			}
+		]
+	}
 	
 };//end dataStore
 console.log("dataStore: ", dataStore);
