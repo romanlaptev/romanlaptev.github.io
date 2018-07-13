@@ -22,11 +22,9 @@ console.log("class Container, constructor", props);
 		this.props.updateState({
 			"title": this.state.container["title"],
 			"id": "container_" + this.state.container["id"]
-		}, "updateBreadrumb");
+		}, "updateBreadcrumb");
 
-//this.state["testVar"] = false;
-console.log("State:", this.state);
-		
+//console.log("State:", this.state);
 	};//end constructor
 
 	
@@ -55,7 +53,7 @@ console.log(this.props);
 console.log(this.state);
 	}//end 
 
-/*
+
 	getContainerByID = ( id, jsonObj ) => {
 console.log("getContainerByID()", id);
 		var arr2 = jsonObj["children"].find( function( element, index){
@@ -66,9 +64,10 @@ console.log("getContainerByID()", id);
 		}, this);//end filter
 		return arr2;
 	}//end getContainerByID()
-*/
+
+/*
 	getContainerByID = ( id, jsonObj ) => {
-//console.log("getContainerByID()", id);
+console.log("getContainerByID()", id);
 			
 		//var resContainer = [];
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
@@ -76,7 +75,7 @@ console.log("getContainerByID()", id);
 				var container = jsonObj["children"][n];
 //console.log( "TEST1", container );
 				if( container["id"] === parseInt( id ) ){
-//console.log( "TEST2", container["id"], id, container );
+console.log( "TEST2", container["id"], id, container );
 					return container;
 					//resContainer = container;
 					//break;
@@ -93,65 +92,83 @@ console.log("getContainerByID()", id);
 		//return resContainer;
 
 	}//end getContainerByID()
+*/
 
-	_getContainerByID = ( id, jsonObj, res ) => {
+	_getContainerByID = ( id, jsonObj, postFunc ) => {
 console.log("_getContainerByID()", id);
 			
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
-console.log( "_TEST1", container );
+//console.log( "_TEST1", container );
 				if( container["id"] === parseInt( id ) ){
-console.log( "_TEST2", container["id"], id, container );
+//console.log( "_TEST2", container["id"], id, container );
 					//return container;
-					_testFunc(container, this);
+					//dataStore["usedContainer"] = container; 
+					if( typeof postFunc === "function"){
+						postFunc( container, this);
+					}
 					break;
 				} 
 				
 				//recursive search ID
 				if( container["children"] && container["children"].length > 0){
-					this._getContainerByID( id, container, res );
+					this._getContainerByID( id, container, postFunc );
 				}
 				
 			}//next
 		}
 		//return resContainer;
 
-		function _testFunc(_container, _this){
-console.log("_testFunc()", _container, _this);			
-			_this.setState({
-				container: _container
-			});
-		}//end _testFunc()
-			
 	}//end _getContainerByID()
 
 
 	eventHandler = (e) => {
 		e.preventDefault();		
 //console.log(e.target);
+//<a href="#?q=view-container&id=79"
 
-		//this.props.updateState({
-			//"containerId": "79"
-		//}, "changeContainer");
+		var path = e.target.href.split("?");
+		var parseStr = path[1]; 
+//console.log( path, parseStr );
 
-//console.log("CHANGE container", this.state);
+		if( parseStr.length > 0 ){
+			
+			dataStore["GET"] = parseGetParams( parseStr ); 
+			var $_GET = parseGetParams(parseStr); 
+//console.log( $_GET);
 
-		
-//this.setState({
-	//testVar: true
-//});
+			switch( $_GET["q"] ){
+				case "view-container":
+					if( $_GET["id"] ){
+						this._getContainerByID( $_GET["id"], dataStore["bookmarksArray"], 
+							function( res, _this ){
+//console.log("CHANGE container:", res, _this);
+//console.log( res["id"], res["title"] );
+								_this.setState({
+									container: res
+								});
 
-		var test = this._getContainerByID("79", dataStore["bookmarksArray"]);
-console.log("_TEST3:", test);
-		
-		//this.setState({
-			//container: test
-		//});
-		
-console.log("State:", this.state);
+//UPDATE Breadcrumb								
+		_this.props.updateState({
+			"title": res["title"],
+			"id": "container_" + res["id"]
+		}, "updateBreadcrumb");
+								
+						});
+					}
+				break;
+				
+				default:
+console.log("error, no action...");
+				break;
+				
+			}//end switch
 
-
+		} else {
+console.log( "Warn! error parse url in " + e.target.href );
+		}
+			
 	};//end eventHandler
 	
 	
@@ -227,3 +244,27 @@ console.log("viewContainer(): ", data);
 }//end class
 
 export default Container;
+
+
+
+function parseGetParams( parseStr ) { 
+
+	if( !parseStr ){
+		var parse_url = window.location.search.substring(1).split("&"); 
+	} else {
+		var parse_url = parseStr.split("&"); 
+	}
+//console.log(parse_url);
+	
+	var $_GET = {}; 
+	for(var n = 0; n < parse_url.length; n++) { 
+	var getVar = parse_url[n].split("="); 
+		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+		if( typeof(getVar[1])=="undefined" ){
+			$_GET[ getVar[0] ] = "";
+		} else {
+		 $_GET[ getVar[0] ] = getVar[1];
+		}
+	}//next
+	return $_GET; 
+}//end parseGetParams() 

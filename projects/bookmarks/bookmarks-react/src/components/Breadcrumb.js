@@ -46,9 +46,18 @@ console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
 //console.log(this.props);
 console.log("class BreadcrumbApp, render", this.props);
 
-		var breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
 		
-		//form breadcrumbs line
+//add link to breadcrumb chain		
+		if( this.props.update && this.props.update.id.length > 0){
+			//if( breadcrumbPathKeys.length === 0){
+				var id = this.props.update.id;
+				var title = this.props.update.title;
+				dataStore.breadcrumbPath[id] = title;
+				//breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
+			//}
+		}
+
+//form breadcrumbs line
 		var clear = false;
 		if( this.props.update && this.props.update.id.length > 0){
 			for( var key in dataStore.breadcrumbPath){
@@ -66,25 +75,18 @@ console.log("class BreadcrumbApp, render", this.props);
 			}//next
 		}
 
-//-------------------
-//console.log("breadcrumbPathKeys.length: ", breadcrumbPathKeys.length );
-		if( this.props.update && this.props.update.id.length > 0){//Start breadcrumb chain
-			if( breadcrumbPathKeys.length === 0){
-				var id = this.props.update.id;
-				var title = this.props.update.title;
-				dataStore.breadcrumbPath = {id: title};
-				breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
-			}
-		}
 		
 
+		var breadcrumbPathKeys = Object.keys( dataStore.breadcrumbPath );
+//console.log("breadcrumbPathKeys.length: ", breadcrumbPathKeys.length );
+		
 		return(
 		
 				<div className="breadcrumb">
 					<Breadcrumb>
 {
 	breadcrumbPathKeys.map( function(key, index){
-//console.log(key, index, dataStore.breadcrumbPath[key] );
+console.log(key, index, dataStore.breadcrumbPath[key] );
 		if( index+1 === breadcrumbPathKeys.length ){
 			return <Breadcrumb.Item key={key}>{dataStore.breadcrumbPath[key]}</Breadcrumb.Item>
 		} else {

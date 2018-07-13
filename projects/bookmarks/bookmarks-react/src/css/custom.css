@@ -39,9 +39,12 @@ header h1{
 	color: #fff;
 }
 .ant-breadcrumb a {
-	color: #0000ff;
+	/*color: #0000ff;*/
+	color: orange;
 }
-
+.ant-breadcrumb-separator {
+	color: #fff;
+}
 
 .bookmarks-container {
 	background-color: #ffcc99;

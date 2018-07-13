@@ -111,10 +111,25 @@ var dataStore = {
 							},
 							
 							{ 
+								id: 1079,
 								"typeCode" : 2, 
 								"type" : "text/x-moz-place-container", 
-								"title" : "info", 
-								annos: "bookmarks container",
+								"title" : "test container", 
+								annos: [ {
+									value: "bookmarks container"
+								}],
+								children: [ 
+									{ 
+										"typeCode" : 1, 
+										"type" : "text/x-moz-place", 
+										"uri" : "http://yandex.ru", 
+										"title" : "Yandex", 
+										icon : "https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
+										annos: "web portal",
+										dateAdded: "2017-1-29 12:15",
+										lastModified: "2018-6-20 15:56"
+									}
+								],
 								dateAdded: "2017-1-29 12:15",
 								lastModified: "2018-6-20 15:56"
 							}

@@ -83,13 +83,9 @@ console.log( vars, action);
 		delete this.state.root;
 		
 		switch( action ){
-			case "updateBreadrumb":
+			case "updateBreadcrumb":
 				this.setState({containerValues: vars });
 			break;
-			
-			//case "changeContainer":
-				//this.setState({containerId: vars["containerId"] });
-			//break;
 			
 			default:
 console.log("error, action: ", action);
