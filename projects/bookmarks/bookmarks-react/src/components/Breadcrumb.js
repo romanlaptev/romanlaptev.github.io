@@ -15,6 +15,8 @@ console.log("class BreadcrumbApp, constructor", props);
 				//"container_2" : "Меню закладок"
 			//}
 		//};
+		dataStore.components["Breadcrumb"] = this;
+		
 	};//end constructor
 
 
@@ -41,6 +43,13 @@ console.log("2. component Breadcrumb (BreadcrumbApp) WILL update.");
 console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
 //console.log(this.props);
 	}//end 
+
+
+	eventHandler = (e) => {
+console.log("Breadcrumb.eventHandler()", e, this);
+		//dataStore.eventHandler(e, this);
+		dataStore.sharedFunc["eventHandler"](e);
+	};//end eventHandler
            
 	render(){
 //console.log(this.props);
@@ -92,9 +101,11 @@ console.log(key, index, dataStore.breadcrumbPath[key] );
 		} else {
 			var id = key.replace("container_", "");
 			var url = dataStore.urlViewContainer.replace("{{id}}",id);
-			return <Breadcrumb.Item key={key}><a href={url}>{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+			return <Breadcrumb.Item key={key}>
+					<a onClick={this.eventHandler} href={url}>{dataStore.breadcrumbPath[key]}</a>
+				</Breadcrumb.Item>
 		}
-	})//next
+	}, this)//next
 }						
 					</Breadcrumb>
 				</div>

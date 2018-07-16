@@ -25,6 +25,9 @@ console.log("class Container, constructor", props);
 		}, "updateBreadcrumb");
 
 //console.log("State:", this.state);
+
+		dataStore.components["Container"] = this;
+		
 	};//end constructor
 
 	
@@ -122,20 +125,23 @@ console.log("_getContainerByID()", id);
 
 	}//end _getContainerByID()
 
-
 	eventHandler = (e) => {
+//console.log("Container.eventHandler()", e);
+		//dataStore.eventHandler(e, this);
+		dataStore.sharedFunc["eventHandler"](e);
+
 		e.preventDefault();		
 //console.log(e.target);
 //<a href="#?q=view-container&id=79"
-
+/*
 		var path = e.target.href.split("?");
 		var parseStr = path[1]; 
 //console.log( path, parseStr );
 
 		if( parseStr.length > 0 ){
 			
-			dataStore["GET"] = parseGetParams( parseStr ); 
-			var $_GET = parseGetParams(parseStr); 
+			var $_GET = dataStore.sharedFunc["parseGetParams"](parseStr); 
+			dataStore["GET"] = $_GET; 
 //console.log( $_GET);
 
 			switch( $_GET["q"] ){
@@ -149,11 +155,11 @@ console.log("_getContainerByID()", id);
 									container: res
 								});
 
-//UPDATE Breadcrumb								
-		_this.props.updateState({
-			"title": res["title"],
-			"id": "container_" + res["id"]
-		}, "updateBreadcrumb");
+								//UPDATE Breadcrumb								
+								_this.props.updateState({
+									"title": res["title"],
+									"id": "container_" + res["id"]
+								}, "updateBreadcrumb");
 								
 						});
 					}
@@ -168,7 +174,8 @@ console.log("error, no action...");
 		} else {
 console.log( "Warn! error parse url in " + e.target.href );
 		}
-			
+*/			
+	
 	};//end eventHandler
 	
 	
@@ -244,27 +251,3 @@ console.log("viewContainer(): ", data);
 }//end class
 
 export default Container;
-
-
-
-function parseGetParams( parseStr ) { 
-
-	if( !parseStr ){
-		var parse_url = window.location.search.substring(1).split("&"); 
-	} else {
-		var parse_url = parseStr.split("&"); 
-	}
-//console.log(parse_url);
-	
-	var $_GET = {}; 
-	for(var n = 0; n < parse_url.length; n++) { 
-	var getVar = parse_url[n].split("="); 
-		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
-		if( typeof(getVar[1])=="undefined" ){
-			$_GET[ getVar[0] ] = "";
-		} else {
-		 $_GET[ getVar[0] ] = getVar[1];
-		}
-	}//next
-	return $_GET; 
-}//end parseGetParams() 
