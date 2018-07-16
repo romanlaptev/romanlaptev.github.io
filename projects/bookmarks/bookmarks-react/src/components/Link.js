@@ -12,7 +12,7 @@ class Link extends Component {
 		return(
 <div className="link panel">
 	<a className="" href={this.props.url} target="_blank" title={linkTitle}>
-		<img className="icon-uri" src={this.props.icon} alt="no icon"/>
+		<img className="icon-uri" src={this.props.icon} alt=""/>
 		<span>{this.props.title}</span>
 	</a>
 	<div className="announce">{this.props.announce}</div>

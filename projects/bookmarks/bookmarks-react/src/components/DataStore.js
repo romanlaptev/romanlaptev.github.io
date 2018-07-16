@@ -254,7 +254,7 @@ function _parseGetParams( parseStr ) {
 	if( !parseStr ){
 		var parse_url = window.location.search.substring(1).split("&"); 
 	} else {
-		var parse_url = parseStr.split("&"); 
+		parse_url = parseStr.split("&"); 
 	}
 //console.log(parse_url);
 	
@@ -262,7 +262,7 @@ function _parseGetParams( parseStr ) {
 	for(var n = 0; n < parse_url.length; n++) { 
 	var getVar = parse_url[n].split("="); 
 		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
-		if( typeof(getVar[1])=="undefined" ){
+		if( typeof(getVar[1]) === "undefined" ){
 			$_GET[ getVar[0] ] = "";
 		} else {
 		 $_GET[ getVar[0] ] = getVar[1];
