@@ -15,7 +15,7 @@ registerServiceWorker();
 //-------------------------
 var msg = "<p>React version: " + React.version +"</p>";
 console.log( msg );
-//document.querySelector("#version").innerHTML += msg;
+document.querySelector("#log").innerHTML += msg;
 
-//var ua = "<p>"+navigator.userAgent+"</p>";
-//document.querySelector("#ua").innerHTML += ua;
+var ua = "<p>"+navigator.userAgent+"</p>";
+document.querySelector("#log").innerHTML += ua;

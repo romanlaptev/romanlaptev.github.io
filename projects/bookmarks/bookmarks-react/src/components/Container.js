@@ -131,51 +131,6 @@ console.log("_getContainerByID()", id);
 		dataStore.sharedFunc["eventHandler"](e);
 
 		e.preventDefault();		
-//console.log(e.target);
-//<a href="#?q=view-container&id=79"
-/*
-		var path = e.target.href.split("?");
-		var parseStr = path[1]; 
-//console.log( path, parseStr );
-
-		if( parseStr.length > 0 ){
-			
-			var $_GET = dataStore.sharedFunc["parseGetParams"](parseStr); 
-			dataStore["GET"] = $_GET; 
-//console.log( $_GET);
-
-			switch( $_GET["q"] ){
-				case "view-container":
-					if( $_GET["id"] ){
-						this._getContainerByID( $_GET["id"], dataStore["bookmarksArray"], 
-							function( res, _this ){
-//console.log("CHANGE container:", res, _this);
-//console.log( res["id"], res["title"] );
-								_this.setState({
-									container: res
-								});
-
-								//UPDATE Breadcrumb								
-								_this.props.updateState({
-									"title": res["title"],
-									"id": "container_" + res["id"]
-								}, "updateBreadcrumb");
-								
-						});
-					}
-				break;
-				
-				default:
-console.log("error, no action...");
-				break;
-				
-			}//end switch
-
-		} else {
-console.log( "Warn! error parse url in " + e.target.href );
-		}
-*/			
-	
 	};//end eventHandler
 	
 	

@@ -95,37 +95,50 @@ console.log("error, action: ", action);
 	};//end updateState()
 	
 	
+	eventHandler = (e) => {
+console.log("App.eventHandler()", e);
+		dataStore.sharedFunc["eventHandler"](e);
+		//e.preventDefault();		
+	};//end eventHandler
+	
 	render() {
 //console.log("App, render", this.props.children);
 	  
 		return (
-		<div className="App">
+<div>
+				
+	<div className="App">
+		 <Row>
+		 
+			<Col span={24}>
+				<Breadcrumb update={this.state.containerValues}/>
+			</Col>
+		 
+			<Col span={24}>
+				<div>
+					<Container 
+						id={this.state.containerId} 
+						updateState={this.updateState}
+					/>
+				</div>
+			</Col>
 
-	 <Row>
-	 
-		<Col span={24}>
-			<Breadcrumb update={this.state.containerValues}/>
-		</Col>
-	 
-		<Col span={24}>
-			<div>
-				<Container 
-					id={this.state.containerId} 
-					updateState={this.updateState}
-				/>
-			</div>
-		</Col>
+		</Row>
 
-	</Row>
+	</div>
 
-	 <Row>
-		<div>
-			{/*<button className="btn btn-warning">test btn</button>*/}
-	{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
-		</div>
-	</Row>
+	<div id="log-wrap" className="panel log-panel">
+	
+		{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
 		
-		  </div>
+		<a id="clear-log" href="#?q=clear-log" onClick={this.eventHandler} 
+		className="ant-btn btn-violet ant-btn-sm"
+		title="Clear log">x</a>
+		
+		<div id="log"></div>
+	</div>
+	
+</div>		  
 		);
 	}//end render()
 	

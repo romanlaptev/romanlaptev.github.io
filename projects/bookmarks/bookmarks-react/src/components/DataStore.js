@@ -235,6 +235,11 @@ function _eventHandler( event ){
 					}
 				break;
 				
+				case "clear-log":
+					document.querySelector("#log").innerHTML = "";
+					document.querySelector("#log-wrap").style.display = "none";
+				break;
+				
 				default:
 console.log("error, no action...");
 				break;
