@@ -35,11 +35,16 @@ annos: Array [ {…} ]
 var dataStore = {
 	
 	urlViewContainer: "#?q=view-container&id={{id}}",
+	logMsg : "",
+	dataUrl : "../db/bookmarks.json",
+	initUrl : "#?q=get-json",
+
 	components:{},//components link
 	sharedFunc: {
 		eventHandler: _eventHandler,
-		parseDate: _parseDate
-		//parseGetParams: _parseGetParams
+		parseDate: _parseDate,
+		//parseGetParams: _parseGetParams,
+		urlManager: _urlManager
 	},
 	
 	breadcrumbPath: {
@@ -199,59 +204,72 @@ export default dataStore;
 
 
 function _eventHandler( event ){	
-//console.log("dataStore.eventHandler()", event, _this);
+console.log("dataStore.eventHandler()", event);
 	//e.preventDefault();		
 //<a href="#?q=view-container&id=79"
+	//window.location.hash = "";
+	
+	_urlManager( event.target.href );
 
-	var path = event.target.href.split("?");
-	var parseStr = path[1]; 
-//console.log( path, parseStr );
+};//end eventHandler
 
 
-		if( parseStr.length > 0 ){
-			
-			dataStore["GET"] = _parseGetParams( parseStr ); 
-			var $_GET = _parseGetParams(parseStr); 
+
+function _urlManager( path ){
+//console.log( "_urlManager()", arguments);
+
+	var p = path.split("?");
+	var parseStr = p[1]; 
+//console.log( "_urlManager()", p, parseStr );
+	
+	if( !parseStr || parseStr.length === 0 ){
+console.log( "Warn! error parse url in _urlManager()."  );
+		return;
+	}
+
+	dataStore["GET"] = _parseGetParams( parseStr ); 
+	var $_GET = _parseGetParams(parseStr); 
 //console.log( $_GET);
 
-			switch( $_GET["q"] ){
-				case "view-container":
-					if( $_GET["id"] ){
-						dataStore.components["Container"]._getContainerByID( $_GET["id"], dataStore["bookmarksArray"], 
-							function( res, _this ){
+	switch( $_GET["q"] ){
+		case "view-container":
+			if( $_GET["id"] ){
+				dataStore.components["Container"]._getContainerByID( $_GET["id"], dataStore["bookmarksArray"], 
+					function( res, _this ){
 //console.log("CHANGE container:", res, _this);
 //console.log( res["id"], res["title"] );
-								dataStore.components["Container"].setState({
-									container: res
-								});
-
-								//UPDATE Breadcrumb								
-								dataStore.components["Container"].props.updateState({
-									"title": res["title"],
-									"id": "container_" + res["id"]
-								}, "updateBreadcrumb");
-		
+						dataStore.components["Container"].setState({
+							container: res
 						});
-					}
-				break;
-				
-				case "clear-log":
-					document.querySelector("#log").innerHTML = "";
-					document.querySelector("#log-wrap").style.display = "none";
-				break;
-				
-				default:
+
+						//UPDATE Breadcrumb								
+						dataStore.components["Container"].props.updateState({
+							"title": res["title"],
+							"id": "container_" + res["id"]
+						}, "updateBreadcrumb");
+
+				});
+			}
+		break;
+		
+		case "clear-log":
+			document.querySelector("#log").innerHTML = "";
+			document.querySelector("#log-wrap").style.display = "none";
+		break;
+		
+		case "get-json":
+dataStore.logMsg = "action: get-json";
+console.log(dataStore.logMsg);
+		break;
+
+		
+		default:
 console.log("error, no action...");
-				break;
-				
-			}//end switch
-
-
-		} else {
-console.log( "Warn! error parse url in " + event.target.href );
-		}
-
-	};//end eventHandler
+		break;
+		
+	}//end switch
+	
+}//end _urlManager
 
 
 function _parseGetParams( parseStr ) { 

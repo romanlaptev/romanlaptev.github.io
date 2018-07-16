@@ -27,6 +27,9 @@ console.log("class App, constructor", props);
 			//root: "bookmarksMenuFolder",
 			containerId: this.getInitId("bookmarksMenuFolder")
 		};
+		
+		
+		dataStore.sharedFunc.urlManager( dataStore.initUrl );
 	};//end constructor
 
 
@@ -98,7 +101,7 @@ console.log("error, action: ", action);
 	eventHandler = (e) => {
 console.log("App.eventHandler()", e);
 		dataStore.sharedFunc["eventHandler"](e);
-		//e.preventDefault();		
+		e.preventDefault();		
 	};//end eventHandler
 	
 	render() {
