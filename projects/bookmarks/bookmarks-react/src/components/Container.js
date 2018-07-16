@@ -190,6 +190,10 @@ console.log("viewContainer(): ", data);
 
 		data.map( function(value, index){
 //console.log(  index, value );
+
+			var dateAdded = dataStore.sharedFunc["parseDate"](value.dateAdded);
+			var lastModified = dataStore.sharedFunc["parseDate"](value.lastModified);
+			
 			if( value.typeCode === 1){//URL
 				
 				//Skip RecentTags link
@@ -197,20 +201,21 @@ console.log("viewContainer(): ", data);
 					return false;
 				}
 				
+				
 				return <li key={index}>
 					<Link 
 						title={value.title} 
 						url={value.uri} 
 						icon={value.icon}
 						announce={value.annos[0]["value"]}
-						dateAdded={value.dateAdded}
-						lastModified={value.lastModified}
+						dateAdded={dateAdded}
+						lastModified={lastModified}
 					/>
 				</li>
 			}
 
 			if( value.typeCode === 2){//CONTAINER
-				var tooltip = "added:" + value.dateAdded + ", last modified:" + value.lastModified;
+				var tooltip = "added:" + dateAdded + ", last modified:" + lastModified;
 				
 				var announce = value.annos ? value.annos[0]["value"]:"001";
 				//var announce = "000";

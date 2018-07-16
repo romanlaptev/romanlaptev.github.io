@@ -375,10 +375,28 @@ children: [object Object],[object Object] object
 //console.log( date );
 
 		var sYear = date.getFullYear();
+		
 		var sMonth = date.getMonth() + 1;
+	//console.log( sMonth, typeof sMonth );
+		if( sMonth < 10){
+			sMonth = "0" + sMonth;
+		}
+		
 		var sDate = date.getDate();
+		if( sDate < 10){
+			sDate = "0" + sDate;
+		}
+		
 		var sHours = date.getHours();
+		if( sHours < 10){
+			sHours = "0" + sHours;
+		}
+		
 		var sMinutes = date.getMinutes();
+		if( sMinutes < 10){
+			sMinutes = "0" + sMinutes;
+		}
+		
 		var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
 
 		return dateStr;

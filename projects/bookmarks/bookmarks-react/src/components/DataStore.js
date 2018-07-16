@@ -37,7 +37,8 @@ var dataStore = {
 	urlViewContainer: "#?q=view-container&id={{id}}",
 	components:{},//components link
 	sharedFunc: {
-		eventHandler: _eventHandler//,
+		eventHandler: _eventHandler,
+		parseDate: _parseDate
 		//parseGetParams: _parseGetParams
 	},
 	
@@ -102,8 +103,8 @@ var dataStore = {
 								"title" : "Yandex", 
 								icon : "https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
 								annos: "web portal",
-								dateAdded: "2017-1-29 12:15",
-								lastModified: "2018-6-20 15:56"
+								dateAdded: 1485666961987000,
+								lastModified: 1528524416604000
 							},
 							
 							{ 
@@ -113,8 +114,8 @@ var dataStore = {
 								"title" : "Jest 23.3", 
 								icon : "https://jestjs.io/img/favicon/favicon.ico",
 								annos: "system of JavaScript testing",
-								dateAdded: "2017-1-29 12:15",
-								lastModified: "2018-6-20 15:56"
+								dateAdded: 1485666961987000,
+								lastModified: 1528524416604000
 							},
 							
 							{ 
@@ -133,12 +134,12 @@ var dataStore = {
 										"title" : "Yandex", 
 										icon : "https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
 										annos: "web portal",
-										dateAdded: "2017-1-29 12:15",
-										lastModified: "2018-6-20 15:56"
+										dateAdded: 1485666961987000,
+										lastModified: 1528524416604000
 									}
 								],
-								dateAdded: "2017-1-29 12:15",
-								lastModified: "2018-6-20 15:56"
+								dateAdded: 1485666961987000,
+								lastModified: 1528524416604000
 							}
 						]
 					},
@@ -269,3 +270,37 @@ function _parseGetParams( parseStr ) {
 	}//next
 	return $_GET; 
 }//end parseGetParams() 
+
+function _parseDate( _date ){
+	var timestamp = _date / 1000;
+	var date = new Date();
+	date.setTime( timestamp);
+//console.log( date );
+
+	var sYear = date.getFullYear();
+	
+	var sMonth = date.getMonth() + 1;
+//console.log( sMonth, typeof sMonth );
+	if( sMonth < 10){
+		sMonth = "0" + sMonth;
+	}
+	
+	var sDate = date.getDate();
+	if( sDate < 10){
+		sDate = "0" + sDate;
+	}
+	
+	var sHours = date.getHours();
+	if( sHours < 10){
+		sHours = "0" + sHours;
+	}
+	
+	var sMinutes = date.getMinutes();
+	if( sMinutes < 10){
+		sMinutes = "0" + sMinutes;
+	}
+	
+	var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+	return dateStr;
+}//end _parseDate()
