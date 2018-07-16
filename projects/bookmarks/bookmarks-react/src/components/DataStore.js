@@ -34,6 +34,8 @@ annos: Array [ {…} ]
 */
 var dataStore = {
 	
+	urlViewContainer: "#?q=view-container&id={{id}}",
+	
 	breadcrumbPath: {
 		//"container_2": "Меню закладок",
 		//"container_79": "info",

@@ -210,10 +210,10 @@ console.log("viewContainer(): ", data);
 				//if(value.annos){
 					//announce = value.annos[0]["value"];
 				//}
-				
+				var url = dataStore.urlViewContainer.replace("{{id}}",value.id);
 				return <li key={index}>
 					<div className="bookmarks-container">
-<a onClick={this.eventHandler} href={"#?q=view-container&id="+value.id} title={tooltip}>{value.title}</a>
+<a onClick={this.eventHandler} href={url} title={tooltip}>{value.title}</a>
 <div className="announce">{announce}</div>
 
 					</div>

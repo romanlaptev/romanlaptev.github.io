@@ -90,7 +90,9 @@ console.log(key, index, dataStore.breadcrumbPath[key] );
 		if( index+1 === breadcrumbPathKeys.length ){
 			return <Breadcrumb.Item key={key}>{dataStore.breadcrumbPath[key]}</Breadcrumb.Item>
 		} else {
-			return <Breadcrumb.Item key={key}><a href="#?q=view-container&amp;id=">{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
+			var id = key.replace("container_", "");
+			var url = dataStore.urlViewContainer.replace("{{id}}",id);
+			return <Breadcrumb.Item key={key}><a href={url}>{dataStore.breadcrumbPath[key]}</a></Breadcrumb.Item>
 		}
 	})//next
 }						
