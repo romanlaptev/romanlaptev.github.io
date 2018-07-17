@@ -34,33 +34,33 @@ console.log("class Container, constructor", props);
 
 	
 	componentWillMount(){
-console.log("- component Container, before render.");
+//console.log("- component Container, before render.");
 	}//end 
 	
 	componentDidMount(){
-console.log("- component Container, after render.");
+//console.log("- component Container, after render.");
 	}//end 
            
 	shouldComponentUpdate(){
-console.log("1. component Container SHOULD update.");
+//console.log("1. component Container SHOULD update.");
 		return true;
 	}//end 
            
 	componentWillUpdate(){
-console.log("2. component Container WILL update.");
-console.log(this.props);
-console.log(this.state);
+//console.log("2. component Container WILL update.");
+//console.log(this.props);
+//console.log(this.state);
 	}//end 
 
 	componentDidUpdate(){
-console.log("3. component Container DID update.");
-console.log(this.props);
-console.log(this.state);
+//console.log("3. component Container DID update.");
+//console.log(this.props);
+//console.log(this.state);
 	}//end 
 
 
 	getContainerByID = ( id, jsonObj ) => {
-console.log("getContainerByID()", id);
+//console.log("getContainerByID()", id);
 		var arr2 = jsonObj["children"].find( function( element, index){
 //console.log(arguments);
 			if( element["id"] === parseInt( id ) ){
@@ -128,17 +128,18 @@ console.log("_getContainerByID()", id);
 	}//end _getContainerByID()
 
 	eventHandler = (e) => {
-//console.log("Container.eventHandler()", e);
-		//dataStore.sharedFunc["eventHandler"](e);
-		utils.eventHandler(e);
+dataStore.logMsg = "Container.eventHandler()"+e.target.href;
+utils._log("<p class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</p>");
+console.log(dataStore.logMsg, e);
 
+		utils.eventHandler(e);
 		e.preventDefault();		
 	};//end eventHandler
 	
 	
 	//viewContainer(){
 	viewContainer = (data) => {
-console.log("viewContainer(): ", data);
+//console.log("viewContainer(): ", data);
 		//return <h1>Test!</h1>;
 		return(
 <div>

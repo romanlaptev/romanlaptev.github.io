@@ -40,25 +40,25 @@ console.log("class App, constructor", props);
 
 
 	componentWillMount(){
-console.log("- component App, before render.");
+//console.log("- component App, WillMount.");
 	}//end 
 	
 	componentDidMount(){
-console.log("- component App, after render.");
+//console.log("- component App, DidMount.");
 	}//end 
            
 	shouldComponentUpdate(){
-console.log("1. component App SHOULD update.");
+//console.log("1. component App SHOULD update.");
 		return true;
 	}//end 
            
 	componentWillUpdate(){
-console.log("2. component App WILL update.");
+//console.log("2. component App WILL update.");
 //console.log(this.props);
 	}//end 
 
 	componentDidUpdate(){
-console.log("3. component App DID update.");
+//console.log("3. component App DID update.");
 //console.log(this.props);
 	}//end 
 
@@ -87,7 +87,7 @@ console.log("3. component App DID update.");
 
 	
 	updateState = ( vars, action) => {
-console.log( vars, action);
+//console.log( vars, action);
 
 		delete this.state.root;
 		
@@ -105,8 +105,7 @@ console.log("error, action: ", action);
 	
 	
 	eventHandler = (e) => {
-console.log("App.eventHandler()", e);
-		//dataStore.sharedFunc["eventHandler"](e);
+//console.log("App.eventHandler()", e);
 		utils.eventHandler(e);
 		e.preventDefault();		
 	};//end eventHandler

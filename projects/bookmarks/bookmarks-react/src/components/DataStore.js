@@ -37,7 +37,7 @@ var dataStore = {
 	
 	urlViewContainer: "#?q=view-container&id={{id}}",
 	logMsg : "",
-	dataUrl : "../db/bookmarks.json",
+	dataUrl : "http://localhost/www/bookmarks/db/bookmarks.json",
 	initUrl : "#?q=get-json",
 
 	components:{},//components link

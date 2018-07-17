@@ -24,33 +24,33 @@ console.log("class BreadcrumbApp, constructor", props);
 
 //https://metanit.com/web/react/2.6.php
 	componentWillMount(){
-console.log("- component Breadcrumb (BreadcrumbApp), before render.");
+//console.log("- component Breadcrumb (BreadcrumbApp), WillMount.");
 	}//end 
 	
 	componentDidMount(){
-console.log("- component Breadcrumb (BreadcrumbApp), after render.");
+//console.log("- component Breadcrumb (BreadcrumbApp), DidMount.");
 	}//end 
            
 	shouldComponentUpdate(){
-console.log("1. component Breadcrumb (BreadcrumbApp) SHOULD update.");
+//console.log("1. component Breadcrumb (BreadcrumbApp) SHOULD update.");
 		return true;
 	}//end 
            
 	componentWillUpdate(){
-console.log("2. component Breadcrumb (BreadcrumbApp) WILL update.");
+//console.log("2. component Breadcrumb (BreadcrumbApp) WILL update.");
 //console.log(this.props);
 	}//end 
 
 	componentDidUpdate(){
-console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
+//console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
 //console.log(this.props);
 	}//end 
 
 
 	eventHandler = (e) => {
-console.log("Breadcrumb.eventHandler()", e, this);
-		//dataStore.sharedFunc["eventHandler"](e);
+//console.log("Breadcrumb.eventHandler()", e, this);
 		utils.eventHandler(e);
+		e.preventDefault();		
 	};//end eventHandler
            
 	render(){
@@ -97,7 +97,7 @@ console.log("class BreadcrumbApp, render", this.props);
 					<Breadcrumb>
 {
 	breadcrumbPathKeys.map( function(key, index){
-console.log(key, index, dataStore.breadcrumbPath[key] );
+//console.log(key, index, dataStore.breadcrumbPath[key] );
 		if( index+1 === breadcrumbPathKeys.length ){
 			return <Breadcrumb.Item key={key}>{dataStore.breadcrumbPath[key]}</Breadcrumb.Item>
 		} else {
