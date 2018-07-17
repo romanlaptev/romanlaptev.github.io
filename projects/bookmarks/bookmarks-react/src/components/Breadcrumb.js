@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Breadcrumb } from 'antd';
 
-import dataStore from "./DataStore";
+import {dataStore} from "./DataStore";
+//import {eventHandler, urlManager, parseDate} from "../utils";
+import * as utils from "../utils";
 
   
 class BreadcrumbApp extends Component {
@@ -47,8 +49,8 @@ console.log("3. component Breadcrumb (BreadcrumbApp) DID update.");
 
 	eventHandler = (e) => {
 console.log("Breadcrumb.eventHandler()", e, this);
-		//dataStore.eventHandler(e, this);
-		dataStore.sharedFunc["eventHandler"](e);
+		//dataStore.sharedFunc["eventHandler"](e);
+		utils.eventHandler(e);
 	};//end eventHandler
            
 	render(){

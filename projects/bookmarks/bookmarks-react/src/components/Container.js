@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import dataStore from "./DataStore";
 import Link from "./Link";
+import {dataStore} from "./DataStore";
+//import {eventHandler, urlManager, parseDate} from "../utils";
+import * as utils from "../utils";
 
 //console.log("TEST1,", dataStore);
 //console.log(Link);
@@ -127,8 +129,8 @@ console.log("_getContainerByID()", id);
 
 	eventHandler = (e) => {
 //console.log("Container.eventHandler()", e);
-		//dataStore.eventHandler(e, this);
-		dataStore.sharedFunc["eventHandler"](e);
+		//dataStore.sharedFunc["eventHandler"](e);
+		utils.eventHandler(e);
 
 		e.preventDefault();		
 	};//end eventHandler
@@ -146,8 +148,10 @@ console.log("viewContainer(): ", data);
 		data.map( function(value, index){
 //console.log(  index, value );
 
-			var dateAdded = dataStore.sharedFunc["parseDate"](value.dateAdded);
-			var lastModified = dataStore.sharedFunc["parseDate"](value.lastModified);
+			//var dateAdded = dataStore.sharedFunc["parseDate"](value.dateAdded);
+			//var lastModified = dataStore.sharedFunc["parseDate"](value.lastModified);
+			var dateAdded = utils.parseDate(value.dateAdded);
+			var lastModified = utils.parseDate(value.lastModified);
 			
 			if( value.typeCode === 1){//URL
 				

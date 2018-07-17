@@ -10,10 +10,15 @@ import { Row, Col } from 'antd';
 import './css/custom.css';
 
 import Container from "./components/Container";
-import dataStore from "./components/DataStore";
 import Breadcrumb from "./components/Breadcrumb";
 
-//console.log(Container);
+import {dataStore} from "./components/DataStore";
+
+//import {sayHi as func1} from "./utils";
+//console.log("TEST!!!!!!!!!", func1.toString());
+import * as utils from "./utils";
+console.log("Utils: ", utils);
+
 
 class App extends Component {
 
@@ -29,7 +34,8 @@ console.log("class App, constructor", props);
 		};
 		
 		
-		dataStore.sharedFunc.urlManager( dataStore.initUrl );
+		//dataStore.sharedFunc.urlManager( dataStore.initUrl );
+		utils.urlManager( dataStore.initUrl );
 	};//end constructor
 
 
@@ -100,7 +106,8 @@ console.log("error, action: ", action);
 	
 	eventHandler = (e) => {
 console.log("App.eventHandler()", e);
-		dataStore.sharedFunc["eventHandler"](e);
+		//dataStore.sharedFunc["eventHandler"](e);
+		utils.eventHandler(e);
 		e.preventDefault();		
 	};//end eventHandler
 	
