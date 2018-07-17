@@ -30,11 +30,11 @@ console.log("class App, constructor", props);
 			//bookmarks: Bookmarks
 			//updateBreadcrumb: false
 			//root: "bookmarksMenuFolder",
-			containerId: this.getInitId("bookmarksMenuFolder")
+			//containerId: this.getInitId("bookmarksMenuFolder")
+			containerId: null
 		};
 		
 		
-		//dataStore.sharedFunc.urlManager( dataStore.initUrl );
 		utils.urlManager( dataStore.initUrl );
 	};//end constructor
 
@@ -67,24 +67,7 @@ console.log("class App, constructor", props);
 //console.log(e.target);		
 		//this.setState({containerId: "container_24"});
 	};
-
-	getInitId = ( containerName ) => {
-		var initId = dataStore["bookmarksArray"]["children"].find( function( element, index){
-			if( element["root"] === containerName ){
-				return true;
-			}
-		}, this);//end filter
-
-//console.log("getInitId()", containerName, initId, typeof initId);
-
-		if(initId){
-			return initId["id"];
-		} else {
-			return false;
-		}
-		
-	}//end getInitId
-
+	
 	
 	updateState = ( vars, action) => {
 //console.log( vars, action);

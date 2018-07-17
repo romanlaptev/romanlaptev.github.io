@@ -35,7 +35,7 @@ console.log( "Warn! error parse url in _urlManager()."  );
 	switch( $_GET["q"] ){
 		case "view-container":
 			if( $_GET["id"] ){
-				dataStore.components["Container"]._getContainerByID( $_GET["id"], dataStore["bookmarksArray"], 
+				dataStore.components["Container"]._getContainerByID( $_GET["id"], dataStore.jsonObj, 
 					function( res, _this ){
 //console.log("CHANGE container:", res, _this);
 //console.log( res["id"], res["title"] );
@@ -66,8 +66,8 @@ dataStore.logMsg = "error, not defined 'dataUrl' "
 console.log(dataStore.logMsg);
 			} else {
 				loadJson( dataStore["dataUrl"], function(jsonStr){
-console.log("jsonStr:", jsonStr);
-					//parseJSON( jsonStr );
+//console.log("jsonStr:", jsonStr);
+					parseJSON( jsonStr );
 				});
 			}
 		break;
@@ -138,7 +138,7 @@ export function parseDate( _date ){
 	var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
 
 	return dateStr;
-}//end _parseDate()
+}//end parseDate()
 
 
 
@@ -188,7 +188,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 		
 		"callback": function( data, runtime ){
 dataStore.logMsg = "load " + dataStore.dataUrl  +", runtime: "+ runtime +" sec";
-_log("<div class='ant-alert ant-alert-success'>" + dataStore.logMsg + "</div>");
+_log("<div class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</div>");
 console.log( dataStore.logMsg );
 
 //console.log( "_postFunc(), " + typeof data );
@@ -220,6 +220,60 @@ console.log( dataStore.logMsg );
 
 }//end loadJson()
 
+
+
+function parseJSON( jsonStr ){
+	try{
+		var jsonObj = JSON.parse( jsonStr, function(key, value) {
+//console.log( key, value );
+			return value;
+		});
+	} catch(error) {
+dataStore.logMsg = "error, error JSON.parse server response data...." ;
+console.log( dataStore.logMsg );
+_log("<div class='ant-alert ant-alert-error'>" + dataStore.logMsg + "</div>");
+		return false;
+	}//end catch
+	
+//--------------------------------
+
+	dataStore["dateAdded"] = parseDate( jsonObj["dateAdded"] );
+	dataStore["lastModified"] = parseDate( jsonObj["lastModified"] );
+	dataStore.logMsg = "dateAdded : " + dataStore["dateAdded"] + ", lastModified : " + dataStore["lastModified"];
+	_log("<div class='ant-alert ant-alert-info'>" + dataStore["logMsg"] + "</div>");
+	
+//--------------------------------
+	dataStore.jsonObj = jsonObj;
+	
+	//first level bookmarks container
+	var id = getInitId( dataStore.initContainerName);
+console.log("Init Id:", id);
+	if(id > 0){
+		var initContainerUrl = dataStore.urlViewContainer.replace("{{id}}",id);
+		urlManager( initContainerUrl );		
+	}
+	
+}//end parseJSON
+
+
+
+	//getInitId = ( containerName ) => {
+	function getInitId( containerName ){
+
+		var initId = dataStore.jsonObj["children"].find( function( element, index){
+			if( element["root"] === containerName ){
+				return true;
+			}
+		}, this);//end filter
+
+//console.log("getInitId()", containerName, initId, typeof initId);
+
+		if(initId){
+			return initId["id"];
+		} else {
+			return false;
+		}
+	}//end getInitId
 
 /*
 	runAjax( {
@@ -657,6 +711,9 @@ console.log("try use Msxml2.XMLHTTP");
 	}//end _createRequestObject()
 	
 }//end runAjax()
+
+
+
 
 
 export function _log( msg, id){

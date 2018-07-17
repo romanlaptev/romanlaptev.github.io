@@ -1,6 +1,3 @@
-//import React, { Component } from 'react';
-
-
 //type: "text/x-moz-place-container"
 //typeCode: 2
 
@@ -39,22 +36,16 @@ var dataStore = {
 	logMsg : "",
 	dataUrl : "http://localhost/www/bookmarks/db/bookmarks.json",
 	initUrl : "#?q=get-json",
-
+	initContainerName : "bookmarksMenuFolder",
 	components:{},//components link
-	/*
-	sharedFunc: {
-		eventHandler: _eventHandler,
-		parseDate: _parseDate,
-		//parseGetParams: _parseGetParams,
-		urlManager: _urlManager
-	},
-	*/
 	breadcrumbPath: {
 		//"container_2": "Меню закладок",
 		//"container_79": "info",
 		//"container_24": "blogs, articles",
 		//"container_454": "LiveJournal"
-	},
+	}//,
+	
+/*	
 
 	bookmarksArray: {
 		dateAdded: 1527556169316000,
@@ -181,27 +172,9 @@ var dataStore = {
 			}
 		]
 	}
-	
+*/	
 };//end dataStore
 console.log("dataStore: ", dataStore);
 
-/*
-class DataContainer extends Component {
-	
-	constructor( props ){
-		super( props );
-		this.state = {
-			bookmarks: bookmarksArray
-		};
-	};//end constructor
-	
-	render(){
-		return;
-	}
-	
-}//end class
-*/
-//export default dataStore;
-
-var test=123;
+//var test=123;
 export {dataStore, test};

@@ -15,17 +15,19 @@ console.log("class Container, constructor", props);
 
 		super( props );
 		
-		if( props["id"] && props["id"] > 0){
+		//if( props["id"] && props["id"] > 0){
 			this.state = {
-				container: this.getContainerByID( props["id"], dataStore["bookmarksArray"] )
+				//container: this.getContainerByID( props["id"], dataStore["bookmarksArray"] )
+				container: null
 			};
-		}
+		//}
 
+/*
 		this.props.updateState({
 			"title": this.state.container["title"],
 			"id": "container_" + this.state.container["id"]
 		}, "updateBreadcrumb");
-
+*/
 //console.log("State:", this.state);
 
 		dataStore.components["Container"] = this;
@@ -58,7 +60,7 @@ console.log("class Container, constructor", props);
 //console.log(this.state);
 	}//end 
 
-
+/*
 	getContainerByID = ( id, jsonObj ) => {
 //console.log("getContainerByID()", id);
 		var arr2 = jsonObj["children"].find( function( element, index){
@@ -69,6 +71,7 @@ console.log("class Container, constructor", props);
 		}, this);//end filter
 		return arr2;
 	}//end getContainerByID()
+*/
 
 /*
 	getContainerByID = ( id, jsonObj ) => {
@@ -153,6 +156,7 @@ console.log(dataStore.logMsg, e);
 			//var lastModified = dataStore.sharedFunc["parseDate"](value.lastModified);
 			var dateAdded = utils.parseDate(value.dateAdded);
 			var lastModified = utils.parseDate(value.lastModified);
+			var announce = value.annos ? value.annos[0]["value"] : "";
 			
 			if( value.typeCode === 1){//URL
 				
@@ -167,7 +171,7 @@ console.log(dataStore.logMsg, e);
 						title={value.title} 
 						url={value.uri} 
 						icon={value.icon}
-						announce={value.annos[0]["value"]}
+						announce={announce}
 						dateAdded={dateAdded}
 						lastModified={lastModified}
 					/>
@@ -177,7 +181,7 @@ console.log(dataStore.logMsg, e);
 			if( value.typeCode === 2){//CONTAINER
 				var tooltip = "added:" + dateAdded + ", last modified:" + lastModified;
 				
-				var announce = value.annos ? value.annos[0]["value"]:"001";
+				var announce = value.annos ? value.annos[0]["value"]:"";
 				//var announce = "000";
 				//if(value.annos){
 					//announce = value.annos[0]["value"];
@@ -202,17 +206,24 @@ console.log(dataStore.logMsg, e);
 
 	
 	render(){
-//console.log("State: ", this.state);
+console.log("State: ", this.state);
 //console.log(this.props);
 
 //console.log("state.container.children: ", this.state.container["children"]);
-		if( this.state.container["children"] ){
-			return this.viewContainer( this.state.container["children"] );
+
+		if( this.state.container ){
+			if( this.state.container["children"] ){
+				return this.viewContainer( this.state.container["children"] );
+			} else {
+				//return <h1>no children...</h1>
+				return this.viewContainer( [this.state.container] );
+			}
 		} else {
-			//return <h1>no children...</h1>
-			return this.viewContainer( [this.state.container] );
+return <h1>test!!!</h1>;
 		}
-	}
+		
+	}//end render()
+	
 }//end class
 
 export default Container;
