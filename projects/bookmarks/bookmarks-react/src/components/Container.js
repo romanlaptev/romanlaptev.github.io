@@ -4,8 +4,6 @@ import {dataStore} from "./DataStore";
 //import {eventHandler, urlManager, parseDate} from "../utils";
 import * as utils from "../utils";
 
-//console.log("TEST1,", dataStore);
-//console.log(Link);
 
 
 class Container extends Component {
@@ -13,25 +11,13 @@ class Container extends Component {
 	constructor( props ){
 console.log("class Container, constructor", props);
 
-		super( props );
+		super(props);
 		
-		//if( props["id"] && props["id"] > 0){
-			this.state = {
-				//container: this.getContainerByID( props["id"], dataStore["bookmarksArray"] )
-				container: null
-			};
-		//}
-
-/*
-		this.props.updateState({
-			"title": this.state.container["title"],
-			"id": "container_" + this.state.container["id"]
-		}, "updateBreadcrumb");
-*/
-//console.log("State:", this.state);
+		this.state = {
+			container: null
+		};
 
 		dataStore.components["Container"] = this;
-		
 	};//end constructor
 
 	
@@ -60,50 +46,9 @@ console.log("class Container, constructor", props);
 //console.log(this.state);
 	}//end 
 
-/*
-	getContainerByID = ( id, jsonObj ) => {
-//console.log("getContainerByID()", id);
-		var arr2 = jsonObj["children"].find( function( element, index){
-//console.log(arguments);
-			if( element["id"] === parseInt( id ) ){
-				return true;
-			}
-		}, this);//end filter
-		return arr2;
-	}//end getContainerByID()
-*/
-
-/*
-	getContainerByID = ( id, jsonObj ) => {
-console.log("getContainerByID()", id);
-			
-		//var resContainer = [];
-		if( jsonObj["children"] && jsonObj["children"].length > 0){
-			for( var n = 0; n < jsonObj["children"].length; n++){
-				var container = jsonObj["children"][n];
-//console.log( "TEST1", container );
-				if( container["id"] === parseInt( id ) ){
-console.log( "TEST2", container["id"], id, container );
-					return container;
-					//resContainer = container;
-					//break;
-					//return resContainer;
-				} 
-				
-				//recursive search ID
-				if( container["children"] && container["children"].length > 0){
-					this.getContainerByID( id, container );
-				}
-				
-			}//next
-		}
-		//return resContainer;
-
-	}//end getContainerByID()
-*/
 
 	_getContainerByID = ( id, jsonObj, postFunc ) => {
-console.log("_getContainerByID()", id);
+//console.log("_getContainerByID()", id);
 			
 		if( jsonObj["children"] && jsonObj["children"].length > 0){
 			for( var n = 0; n < jsonObj["children"].length; n++){
@@ -131,10 +76,9 @@ console.log("_getContainerByID()", id);
 	}//end _getContainerByID()
 
 	eventHandler = (e) => {
-dataStore.logMsg = "Container.eventHandler()"+e.target.href;
-utils._log("<p class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</p>");
-console.log(dataStore.logMsg, e);
-
+//dataStore.logMsg = "Container.eventHandler(), "+e.target.href;
+//utils._log("<p class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</p>");
+//console.log(dataStore.logMsg, e);
 		utils.eventHandler(e);
 		e.preventDefault();		
 	};//end eventHandler
@@ -151,9 +95,6 @@ console.log(dataStore.logMsg, e);
 
 		data.map( function(value, index){
 //console.log(  index, value );
-
-			//var dateAdded = dataStore.sharedFunc["parseDate"](value.dateAdded);
-			//var lastModified = dataStore.sharedFunc["parseDate"](value.lastModified);
 			var dateAdded = utils.parseDate(value.dateAdded);
 			var lastModified = utils.parseDate(value.lastModified);
 			var announce = value.annos ? value.annos[0]["value"] : "";
@@ -206,7 +147,7 @@ console.log(dataStore.logMsg, e);
 
 	
 	render(){
-console.log("State: ", this.state);
+//console.log("State: ", this.state);
 //console.log(this.props);
 
 //console.log("state.container.children: ", this.state.container["children"]);
@@ -219,7 +160,7 @@ console.log("State: ", this.state);
 				return this.viewContainer( [this.state.container] );
 			}
 		} else {
-return <h1>test!!!</h1>;
+			return <h1>test!!!</h1>;
 		}
 		
 	}//end render()

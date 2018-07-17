@@ -189,7 +189,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 		"callback": function( data, runtime ){
 dataStore.logMsg = "load " + dataStore.dataUrl  +", runtime: "+ runtime +" sec";
 _log("<div class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</div>");
-console.log( dataStore.logMsg );
+//console.log( dataStore.logMsg );
 
 //console.log( "_postFunc(), " + typeof data );
 //console.log( data );
@@ -247,7 +247,7 @@ _log("<div class='ant-alert ant-alert-error'>" + dataStore.logMsg + "</div>");
 	
 	//first level bookmarks container
 	var id = getInitId( dataStore.initContainerName);
-console.log("Init Id:", id);
+//console.log("Init Id:", id);
 	if(id > 0){
 		var initContainerUrl = dataStore.urlViewContainer.replace("{{id}}",id);
 		urlManager( initContainerUrl );		
@@ -737,16 +737,16 @@ export function _log( msg, id){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
-			
+
 			 var logWrap = getById("log-wrap");
 			 if( logWrap ){
- console.log(logWrap);
- console.log(logWrap.style.display);
+ //console.log(logWrap);
+ //console.log(logWrap.style.display);
 				 if( logWrap.style.display === "none"){
 					 logWrap.style.display="block";
 				 }
 			 }			
-			
+	
 		}
 		
 	} else {

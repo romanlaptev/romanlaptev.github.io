@@ -61,7 +61,10 @@ header h1{
 
 
 #clear-log {
-	float: right;
+	/* float: right; */
+	position: relative;
+	left: 100%;
+	top: -20px;
 }
 .log-panel {
 	min-height: 45px;

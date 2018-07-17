@@ -27,13 +27,8 @@ console.log("class App, constructor", props);
 
 		super( props );
 		this.state = {
-			//bookmarks: Bookmarks
-			//updateBreadcrumb: false
-			//root: "bookmarksMenuFolder",
-			//containerId: this.getInitId("bookmarksMenuFolder")
 			containerId: null
 		};
-		
 		
 		utils.urlManager( dataStore.initUrl );
 	};//end constructor
@@ -72,7 +67,7 @@ console.log("class App, constructor", props);
 	updateState = ( vars, action) => {
 //console.log( vars, action);
 
-		delete this.state.root;
+		//delete this.state.root;
 		
 		switch( action ){
 			case "updateBreadcrumb":
@@ -99,6 +94,18 @@ console.log("error, action: ", action);
 		return (
 <div>
 				
+	<div id="log-wrap" className="panel log-panel">
+	
+		{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
+		
+		<a id="clear-log" href="#?q=clear-log" 
+			onClick={this.eventHandler} 
+			className="ant-btn btn-violet ant-btn-sm"
+			title="Clear log">x</a>
+		
+		<div id="log"></div>
+	</div>
+	
 	<div className="App">
 		 <Row>
 		 
@@ -119,16 +126,6 @@ console.log("error, action: ", action);
 
 	</div>
 
-	<div id="log-wrap" className="panel log-panel">
-	
-		{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
-		
-		<a id="clear-log" href="#?q=clear-log" onClick={this.eventHandler} 
-		className="ant-btn btn-violet ant-btn-sm"
-		title="Clear log">x</a>
-		
-		<div id="log"></div>
-	</div>
 	
 </div>		  
 		);
