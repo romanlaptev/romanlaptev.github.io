@@ -100,6 +100,44 @@ $().ready(function(){
 <pre>
 http://webknowledge.ru/struktura-javascript-koda-modulnyi-variant-shablona/
 http://largescalejs.ru/
+
+https://getinstance.info/articles/javascript/javascript-modules/
+Шаблон Модуль
+---------------
+
+var test_module = function(){
+  var version = "1.0";
+
+  function _get_version()
+  {
+    return "Module version is " + version;
+  }
+  
+  return {
+    get_version : function(){
+      return _get_version();
+    }
+  };
+  
+}();
+test_module.get_version();
+
+=========================================
+(
+  function(){
+
+    function my_module()
+    {
+  console.log("my_module");
+    }
+
+    window.m = my_module();
+
+  }()
+);
+
+m;
+
 </pre>
 
 		<div id="insert_data"></div>
