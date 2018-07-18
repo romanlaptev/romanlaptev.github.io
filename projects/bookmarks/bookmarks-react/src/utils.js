@@ -5,7 +5,7 @@ import {dataStore} from "./components/DataStore";
 //};
 
 export function eventHandler( event ){	
-console.log("dataStore.eventHandler()", event);
+//console.log("dataStore.eventHandler()", event);
 	//e.preventDefault();		
 //<a href="#?q=view-container&id=79"
 	//window.location.hash = "";

@@ -12,6 +12,8 @@ import './css/custom.css';
 import Container from "./components/Container";
 import Breadcrumb from "./components/Breadcrumb";
 
+import ServiceModal from "./components/ModalService";
+
 import {dataStore} from "./components/DataStore";
 
 //import {sayHi as func1} from "./utils";
@@ -94,6 +96,8 @@ console.log("error, action: ", action);
 		return (
 <div>
 				
+	<ServiceModal/>
+	
 	<div id="log-wrap" className="panel log-panel">
 	
 		{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
