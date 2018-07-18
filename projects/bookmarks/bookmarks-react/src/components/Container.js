@@ -133,7 +133,7 @@ class Container extends Component {
 				var url = dataStore.urlViewContainer.replace("{{id}}",value.id);
 
 				out = <li key={index}>
-					<div className="bookmarks-container">
+					<div className="bookmarks-container btn-orange">
 <a onClick={this.eventHandler} href={url} title={tooltip}>{value.title}</a>
 <div className="announce">{announce}</div>
 
