@@ -23,7 +23,7 @@ console.log("Utils: ", utils);
 class App extends Component {
 
 	constructor( props ){
-console.log("class App, constructor", props);
+//console.log("class App, constructor", props);
 
 		super( props );
 		this.state = {
@@ -132,6 +132,6 @@ console.log("error, action: ", action);
 	}//end render()
 	
 }//end class
-console.log("App: ", App);
+//console.log("App: ", App);
 
 export default App;

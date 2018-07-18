@@ -9,7 +9,7 @@ import * as utils from "../utils";
 class Container extends Component {
 	
 	constructor( props ){
-console.log("class Container, constructor", props);
+//console.log("class Container, constructor", props);
 
 		super(props);
 		
@@ -54,7 +54,7 @@ console.log("class Container, constructor", props);
 			for( var n = 0; n < jsonObj["children"].length; n++){
 				var container = jsonObj["children"][n];
 //console.log( "_TEST1", container );
-				if( container["id"] === parseInt( id ) ){
+				if( container["id"] === parseInt( id, 10 ) ){
 //console.log( "_TEST2", container["id"], id, container );
 					//return container;
 					//dataStore["usedContainer"] = container; 
@@ -95,11 +95,18 @@ console.log("class Container, constructor", props);
 
 		data.map( function(value, index){
 //console.log(  index, value );
+			var out = "";
 			var dateAdded = utils.parseDate(value.dateAdded);
 			var lastModified = utils.parseDate(value.lastModified);
-			var announce = value.annos ? value.annos[0]["value"] : "";
 			
-			if( value.typeCode === 1){//URL
+			var announce = value.annos ? value.annos[0]["value"] : "";
+			//var announce = "000";
+			//if(value.annos){
+				//announce = value.annos[0]["value"];
+			//}
+			
+			//if( value.typeCode === 1){//URL
+			if( value.type === "text/x-moz-place"){//URL
 				
 				//Skip RecentTags link
 				if( value.uri.indexOf("place:") !== -1){ 
@@ -107,7 +114,7 @@ console.log("class Container, constructor", props);
 				}
 				
 				
-				return <li key={index}>
+				out = <li key={index}>
 					<Link 
 						title={value.title} 
 						url={value.uri} 
@@ -119,16 +126,13 @@ console.log("class Container, constructor", props);
 				</li>
 			}
 
-			if( value.typeCode === 2){//CONTAINER
+			//if( value.typeCode === 2){//CONTAINER
+			if( value.type === "text/x-moz-place-container"){//CONTAINER
+
 				var tooltip = "added:" + dateAdded + ", last modified:" + lastModified;
-				
-				var announce = value.annos ? value.annos[0]["value"]:"";
-				//var announce = "000";
-				//if(value.annos){
-					//announce = value.annos[0]["value"];
-				//}
 				var url = dataStore.urlViewContainer.replace("{{id}}",value.id);
-				return <li key={index}>
+
+				out = <li key={index}>
 					<div className="bookmarks-container">
 <a onClick={this.eventHandler} href={url} title={tooltip}>{value.title}</a>
 <div className="announce">{announce}</div>
@@ -136,6 +140,8 @@ console.log("class Container, constructor", props);
 					</div>
 				</li>
 			}
+			
+			return out;
 		}, this)//next
 		
 }

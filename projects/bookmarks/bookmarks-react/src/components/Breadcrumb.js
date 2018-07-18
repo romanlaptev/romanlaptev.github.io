@@ -11,7 +11,7 @@ class BreadcrumbApp extends Component {
 
 	constructor( props ){
 		super( props );
-console.log("class BreadcrumbApp, constructor", props);
+//console.log("class BreadcrumbApp, constructor", props);
 		//this.state = {
 			//breadcrumbPath: {
 				//"container_2" : "Меню закладок"
@@ -55,7 +55,7 @@ console.log("class BreadcrumbApp, constructor", props);
            
 	render(){
 //console.log(this.props);
-console.log("class BreadcrumbApp, render", this.props);
+//console.log("class BreadcrumbApp, render", this.props);
 
 		
 //add link to breadcrumb chain		

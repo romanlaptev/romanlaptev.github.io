@@ -145,7 +145,7 @@ export function parseDate( _date ){
 function loadJson(url, postFunc){
 
 dataStore.logMsg = "loadJson()"+url;
-console.log(dataStore.logMsg);
+//console.log(dataStore.logMsg);
 /*
 	if( webApp.vars["waitWindow"] ){
 		//waitWindow.className="modal-dialog";
@@ -309,6 +309,7 @@ function runAjax( opt ){
 	}
 //console.log(p);
 
+	var msg = "";
 	var requestMethod = p["requestMethod"]; 
 	var url = p["url"]; 
 	var async = p["async"]; 
@@ -335,7 +336,7 @@ function runAjax( opt ){
 	//}
 	
 	if( !url || url.length === 0){
-		var msg = "Parameters error, needed 'url'";			
+		msg = "Parameters error, needed 'url'";			
 console.log( msg );
 		return false;
 	}
@@ -344,7 +345,7 @@ console.log( msg );
 
 	if ( !xhr ) {
 console.log("error, ", xhr);
-		var msg = "_createRequestObject() error";			
+		msg = "_createRequestObject() error";			
 console.log( msg, xhr );
 //_log( "<p  class='text-danger'>" +msg+"</p>");
 		return false;
@@ -379,7 +380,7 @@ console.log( msg, xhr );
 	
 	xhr.onreadystatechange  = function() { 
 //console.log("state:", xhr.readyState);
-		if( xhr.readyState == 4) {
+		if( xhr.readyState === 4) {
 //console.log( xhr  );
 //for(var key in xhr){
 //console.log( key +" : "+xhr[key] );
@@ -405,7 +406,7 @@ console.log( msg, xhr );
 					
 					var timeEnd = new Date();
 					var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
 //console.log( "xhr.response: ", xhr.response );
 
@@ -433,19 +434,20 @@ console.log(msg);
 //var test = xhr.responseXML.getElementsByTagName("database");
 //console.log( test.item(0).nodeName);
 
+							var data = "";
 							//fix IE8
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 							var contentType = xhr.getResponseHeader("Content-Type");
 							if( contentType === "application/xml" ||
 								contentType === "text/xml"){
-								var data = xhr.responseXML;
+								data = xhr.responseXML;
 							} else {
-								var data = xhr.responseText;
+								data = xhr.responseText;
 							}
 
 							callback(data, runtime);
 						} else {
-							var data = xhr.responseText;
+							data = xhr.responseText;
 							callback(data, runtime);
 						}
 					}
@@ -461,7 +463,6 @@ console.log("Ajax load error, url: " + xhr.responseURL);
 console.log("status: " + xhr.status);
 console.log("statusText:" + xhr.statusText);
 
-// var msg = "";
 // msg += "<p>Ajax load error</p>";
 // msg += "<p>url: " + xhr.responseURL + "</p>";
 // msg += "<p>status: " + xhr.status + "</p>";
@@ -693,7 +694,7 @@ console.log("loaded: " + e.loaded);
 		var request = false;
 		
 		if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
-console.log("try use XMLHttpRequest");		
+//console.log("try use XMLHttpRequest");		
 			request = new XMLHttpRequest();
 		} 
 /*
@@ -733,7 +734,7 @@ export function _log( msg, id){
 	
 	var output = getById(id);
 	if( output ){	
-		if( msg.length == 0){
+		if( msg.length === 0){
 			output.innerHTML = "";
 		} else {
 			output.innerHTML += msg;
