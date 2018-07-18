@@ -10,7 +10,7 @@ class Link extends Component {
 		var linkTitle = "added:" + this.props.dateAdded + ", last modified:" + this.props.lastModified;
 		
 		return(
-<div className="link panel">
+<div className="link">
 	<a className="" href={this.props.url} target="_blank" title={linkTitle}>
 		<img className="icon-uri" src={this.props.icon} alt=""/>
 		<span>{this.props.title}</span>

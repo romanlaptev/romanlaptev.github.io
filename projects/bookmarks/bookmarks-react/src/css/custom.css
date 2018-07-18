@@ -46,19 +46,32 @@ header h1{
 	color: #fff;
 }
 
+
+.ant-select {
+	margin: 0;
+	padding: 10px;
+	display: block;
+	/*width: 100px;*/
+	/*min-height: 100px;*/
+	/*word-break: normal;*/
+}
+
 .bookmarks-container {
 	background-color: #ffcc99;
 	border-radius: 5px;
-	margin: 15px;
+	margin: 5px;
 	padding: 10px;
 	float:left;
 }
-
 .link {
+	margin: 5px;
+	padding: 10px;
 	border-radius: 5px;
 	background-color: #e6e6ff;
 	clear:both;
 }
+
+
 
 
 

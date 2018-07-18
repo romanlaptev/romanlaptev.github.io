@@ -144,46 +144,41 @@ export function parseDate( _date ){
 
 function loadJson(url, postFunc){
 
-dataStore.logMsg = "loadJson()"+url;
+//dataStore.logMsg = "loadJson()"+url;
 //console.log(dataStore.logMsg);
-/*
-	if( webApp.vars["waitWindow"] ){
-		//waitWindow.className="modal-dialog";
-		webApp.vars["waitWindow"].style.display="block";
+
+	if( dataStore["waitWindow"] ){
+		dataStore["waitWindow"].style.display="block";
 	}
-*/
 
 	runAjax( {
 		"requestMethod" : "GET", 
 		"url" : url, 
 		"onProgress" : function( e ){
-/*
+
 			var percentComplete = 0;
 			if(e.lengthComputable) {
 				percentComplete = Math.ceil(e.loaded / e.total * 100);
 			}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 
-			var loadProgressBar = getById("load-progress-bar");
-			if( loadProgressBar ){
-				//loadProgress.value = percentComplete;
-				loadProgressBar.className = "progress-bar";
-				loadProgressBar.style.width = percentComplete+"%";
-				loadProgressBar.innerHTML = percentComplete+"%";
+			if( dataStore.loadProgressBar ){
+				dataStore.loadProgressBar.className = "progress-bar";
+				dataStore.loadProgressBar.style.width = percentComplete+"%";
+				dataStore.loadProgressBar.innerHTML = percentComplete+"%";
 			}
-*/
+
 		},//end callback function
 		
 		"onError" : function( xhr ){
-//console.log( "onError ", xhr);
-			//webApp.vars["userDataUrl"].value = "";
+console.log( "onError ", xhr);
 		},//end callback function
 		
 		"onLoadEnd" : function( headers ){
 //console.log( "onLoadEnd ", headers);
-			//if( webApp.vars["waitWindow"] ){
-				//webApp.vars["waitWindow"].style.display="none";
-			//}
+			if( dataStore["waitWindow"] ){
+				dataStore["waitWindow"].style.display="none";
+			}
 		},//end callback function
 		
 		"callback": function( data, runtime ){
@@ -199,8 +194,8 @@ _log("<div class='ant-alert ant-alert-info'>" + dataStore.logMsg + "</div>");
 
 /*
 //setTimeout(function(){
-			if( webApp.vars["waitWindow"] ){
-				webApp.vars["waitWindow"].style.display="none";
+			if( dataStore["waitWindow"] ){
+				dataStore["waitWindow"].style.display="none";
 			}
 //}, 1000*3);
 */
@@ -763,7 +758,7 @@ export function _log( msg, id){
 	
 }//end _log()
 
-function getById(id){
+export function getById(id){
 	
 	if( document.querySelector ){
 		var obj = document.querySelector("#"+id);

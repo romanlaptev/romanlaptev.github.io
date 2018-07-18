@@ -32,6 +32,10 @@ class App extends Component {
 			containerId: null
 		};
 		
+		dataStore.loadProgressBar = utils.getById("load-progress-bar");
+		dataStore.waitWindow = utils.getById("win1");
+		
+		//load JSON
 		utils.urlManager( dataStore.initUrl );
 	};//end constructor
 
