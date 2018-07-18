@@ -188,6 +188,12 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   color: #fff;
 }
 
+.bg-peach {
+  border-color: #ffaa00;
+  background-color: #ffcc99;
+}
+
+
 
 #header-art-sites {
 	font-family: Lobster;

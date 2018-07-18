@@ -7,16 +7,15 @@ import React, { Component } from 'react';
 class Link extends Component {
 	render(){
 //console.log(this.props);		
-		var annos = "Annos!!!";
+		var linkTitle = "added:" + this.props.dateAdded + ", last modified:" + this.props.lastModified;
 		
 		return(
-<div className="link">
-	<a className="" href={this.props.url} target="_blank" 
-title="created: {{dateAdded}}, modified:{{lastModified}}">
-		<img className="icon-uri" src="{{iconuri}}" />
-		{this.props.title}
+<div className="link panel">
+	<a className="" href={this.props.url} target="_blank" title={linkTitle}>
+		<img className="icon-uri" src={this.props.icon} alt=""/>
+		<span>{this.props.title}</span>
 	</a>
-	<div className="annos">{annos}</div>
+	<div className="announce">{this.props.announce}</div>
 </div>
 		);
 	}

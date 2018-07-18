@@ -398,38 +398,6 @@ console.log( buffer() );
 
 
 <pre>
-var test_module = function(){
-  var version = "1.0";
-
-  function _get_version()
-  {
-    return "Module version is " + version;
-  }
-  
-  return {
-    get_version : function(){
-      return _get_version();
-    }
-  };
-  
-}();
-test_module.get_version();
-
-=========================================
-(
-  function(){
-
-    function my_module()
-    {
-  console.log("my_module");
-    }
-
-    window.m = my_module();
-
-  }()
-);
-
-m;
 
 //========================================
 //Илья Кантор - Современный учебник JavaScript - 2015

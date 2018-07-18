@@ -110,7 +110,12 @@ color:#fff;
 <div class="container">
 <pre>
 http://javascript.ru/Array
+
 http://learn.javascript.ru/array
+Массивы с числовыми индексами
+
+https://learn.javascript.ru/array-iteration
+Массив: перебирающие методы
 
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
@@ -166,6 +171,49 @@ test_arr.forEach(
     console.log( "This is element " + n +" with value: " + item);  
   }
 );
+</pre>		
+			</div>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-heading">
+				<h2>Array.filter</h2>
+			</div>
+			<div class="panel-body">
+<pre>
+
+var arr = [ 1, 2, 3 ];
+
+var arr2 = arr.filter( function(element, index){
+//console.log(arguments);
+  if( element === 2){
+      return element;
+  }
+});
+
+console.log(arr2);// arr2 = [2]
+=================
+
+var arr = [
+  {"a":1},
+  {"b":2},
+  {"c":3},
+];
+
+var arr2 = arr.filter( function(element, index){
+//console.log(arguments);
+  for( var key in element){
+//console.log( key, element[key]);
+    
+    if( key === "b"){
+        return element;
+    }
+    
+  }
+ 
+});
+console.log(arr2);// arr2 = [2]
+
 </pre>		
 			</div>
 		</div>
