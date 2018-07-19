@@ -782,3 +782,8 @@ export function getById(id){
 	
 	return false;
 }//end getById()
+
+
+export function parseLocalFile( fileList){
+console.log("parseLocalFile()", fileList);	
+}//end _parseLocalFile

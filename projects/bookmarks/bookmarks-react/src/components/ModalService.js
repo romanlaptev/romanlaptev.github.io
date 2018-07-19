@@ -10,15 +10,22 @@ import * as utils from "../utils";
 //https://ant.design/components/upload/
 
 const props = {
-  name: 'file',
-  //action: '//jsonplaceholder.typicode.com/posts/',
-	action: '',
-	headers: {
+	//name: 'file',//The name of uploading file
+	//action: '//jsonplaceholder.typicode.com/posts/',
+	//headers: {
     //authorization: 'authorization-text',
+	//},
+	
+	//showUploadList: true,
+	
+	onPreview(){
+console.log("onPreview....", arguments);
 	},
-  
+	
 	onChange(info) {
-console.log("onChange....");		
+console.log("onChange....", arguments);
+console.log("info: ", info);
+/*
 		if (info.file.status !== 'uploading') {
 console.log(info.file, info.fileList);
 		}
@@ -28,37 +35,50 @@ console.log(info.file, info.fileList);
 		} else if (info.file.status === 'error') {
 		  message.error(`${info.file.name} file upload failed.`);
 		}
-	},
+*/
+		if( window.FileList ){
+			utils.parseLocalFile( info["file"] );
+		} else {
+			dataStore.logMsg = "Your browser does not support File API";
+			//_log("<div class='alert alert-warning'>" + webApp.logMsg + "</div>");
+			message.error(dataStore.logMsg);
+		}
+		
+		dataStore.components.ServiceModal.setState({
+		  visible: false
+		});
+//console.log("TEST: ", ServiceModal);
+		
+	},//end onChange
 
 	onRemove: (file) => {
 console.log("onRemove....");		
-		//this.setState(({ fileList }) => {
-			//const index = fileList.indexOf(file);
-			//const newFileList = fileList.slice();
-			//newFileList.splice(index, 1);
-			//return {
-				//fileList: newFileList,
-			//};
-		//});
 	},
 
 	beforeUpload: (file) => {
-console.log("beforeUpload....");		
-		//this.setState(({ fileList }) => ({
-			//fileList: [...fileList, file],
-		//}));
-		//return false;
+console.log("beforeUpload....", file);		
+		return false;
 	},
   
 };//end props
 
 
 class ServiceModal extends Component {
-  state = { visible: false }
+	
+	constructor( props ){
+//console.log("class ServiceModal, constructor", props);
+		super(props);
+		
+		this.state = {
+			visible: false
+		};
 
+		dataStore.components["ServiceModal"] = this;
+	};//end constructor
+		
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   }
 
@@ -109,7 +129,7 @@ userDataUrl.value="";
 <p>http://graphic-art-collection.16mb.com/wp-content/uploads/bookmarks-2014-10-06.json</p>
 <p>https://romanlaptev.github.io/projects/bookmarks/db/lib.json</p>
 <p>http://localhost/www/bookmarks/db/bookmarks.json</p>
-
+<p>../../db/bookmarks.json</p>
 			<div>
 				<Upload {...props}>
 					<Button>

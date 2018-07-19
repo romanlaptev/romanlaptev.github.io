@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 //UI Ant-Design
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
-//import { Button } from 'antd';
+import { Button } from 'antd';
 
 import './css/custom.css';
 
@@ -65,8 +65,13 @@ class App extends Component {
 
 	test = (e) => {
 //console.log(arguments);		
-//console.log(e.target);		
+console.log(e.target);		
 		//this.setState({containerId: "container_24"});
+console.log("App.eventHandler()", e);
+console.log("component_breabcrumb: ", this.refs.component_breabcrumb);
+console.log("component_container: ", this.refs.component_container);
+console.log("component_servicemodal: ", this.refs.component_servicemodal);
+//this.refs.component_servicemodal.showModal();
 	};
 	
 	
@@ -89,7 +94,6 @@ console.log("error, action: ", action);
 	
 	
 	eventHandler = (e) => {
-//console.log("App.eventHandler()", e);
 		utils.eventHandler(e);
 		e.preventDefault();		
 	};//end eventHandler
@@ -100,11 +104,12 @@ console.log("error, action: ", action);
 		return (
 <div>
 				
-	<ServiceModal/>
+	<ServiceModal ref="component_servicemodal"/>
 	
 	<div id="log-wrap" className="panel log-panel">
 	
 		{/*<Button onClick={this.test} type="default" size="large">test btn</Button>*/}
+		<Button onClick={this.test} type="default" size="large">test btn</Button>
 		
 		<a id="clear-log" href="#?q=clear-log" 
 			onClick={this.eventHandler} 
@@ -118,12 +123,13 @@ console.log("error, action: ", action);
 		 <Row>
 		 
 			<Col span={24}>
-				<Breadcrumb update={this.state.containerValues}/>
+				<Breadcrumb ref="component_breabcrumb" update={this.state.containerValues}/>
 			</Col>
 		 
 			<Col span={24}>
 				<div>
 					<Container 
+						ref="component_container"
 						id={this.state.containerId} 
 						updateState={this.updateState}
 					/>
