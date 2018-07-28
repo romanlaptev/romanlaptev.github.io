@@ -597,6 +597,19 @@ console.log(message);
 				return;
 			}
 			
+//----------------------
+var bodyValue = "";
+//console.log(lib_obj["node"]["body_value"].length );
+//console.log("TEST!!!", lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0);
+if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
+	bodyValue = lib_obj["node"]["body_value"]
+	.replace(/&quot;/g,"\"")
+	.replace(/&lt;/g,"<")
+	.replace(/&gt;/g,">");
+//console.log(bodyValue );
+}
+//----------------------
+			
 			var node_tpl = lib_obj["templates"]["node_tpl"];
 			var html = node_tpl
 			.replace("{{author}}", lib_obj["node"]["author"] )
@@ -605,7 +618,8 @@ console.log(message);
 			.replace("{{bookname}}", lib_obj["node"]["bookname"] )
 			.replace("{{changed}}", lib_obj["node"]["changed"] )
 			.replace("{{created}}", lib_obj["node"]["created"] )
-			.replace("{{body_value}}", lib_obj["node"]["body_value"] );
+			.replace("{{body_value}}", bodyValue );
+
 
 			if( lib_obj["node"]["bookname"].length === 0){
 				html = html.replace("{{node-title}}", lib_obj["node"]["title"] );

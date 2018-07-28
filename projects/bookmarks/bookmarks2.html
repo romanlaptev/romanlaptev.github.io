@@ -77,7 +77,7 @@ $(window).scroll(function() {
 		<header>
 			<ul class="nav nav-tabs">
 				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-				<li><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#serviceModal">select  bookmarks.json</a></li>
+				<li><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#serviceModal">Service</a></li>
 				<h1 class="text-right" id="app-title">Application title</h1>
 			</ul>
 			
@@ -102,7 +102,10 @@ $(window).scroll(function() {
 
 		<footer>
 			<div class="col-sm-3 col-md-3">
-				<a class="btn btn-sm btn-info" href="parse_bookmarks.html">previous version</a>
+				<div class="btn-group">
+					<a class="btn btn-sm btn-info" href="parse_bookmarks.html">previous version</a>
+					<a class="btn btn-sm btn-primary" href="bookmarks-react/build/">React version</a>
+				</div>
 			</div>
 			<div class="col-sm-6 col-md-6"></div>
 			<div class="col-sm-3 col-md-3 text-right">
@@ -171,7 +174,7 @@ ajax load:
 						<label>URL:</label>
 						<div class="row correct1">
 							<div class="column1 col-sm-11 col-md-11 col-lg-11">
-<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="">
+<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="" autocomplete="off">
 							</div>
 							<div class="column2 col-sm-1 col-md-1 col-lg-1">
 <button id="btn-clear" class="btn btn-danger">x</button>
