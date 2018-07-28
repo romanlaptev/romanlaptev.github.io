@@ -2181,6 +2181,38 @@ lib/books/0_art
 Art Nouveau Ornament / орнаменты в стиле Арт Нуво
 		</bookname>
 	</node>
+	<node title="Barbara Hambly. Bride of the Rat God" nid="1746" mlid="2148" plid="2129" type="library_book" created="28-Jul-2018 14:33:00" changed="28-Jul-2018 14:33:00" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Barbara Hambly
+		</author>
+		<bookname>
+Bride of the Rat God
+		</bookname>
+	</node>
+	<node title="Barbara Hambly. Traveling with the dead" nid="1747" mlid="2149" plid="2129" type="library_book" created="28-Jul-2018 14:34:32" changed="28-Jul-2018 14:34:46" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Barbara Hambly
+		</author>
+		<bookname>
+Traveling with the dead
+		</bookname>
+	</node>
 	<node title="C" nid="1654" mlid="2037" plid="397" type="library_book" created="11-Jul-2015 12:58:59" changed="11-Jul-2015 14:29:54" weight="0">
 		<subfolder>
 lib/comp_books/program/C
@@ -2255,6 +2287,17 @@ lib/comp_books/program/python
 Django. Разработка WEB-приложений на Python
 		</bookname>
 	</node>
+	<node title="Douglas Adams. Young Zaphod Plays It Safe" nid="1736" mlid="2138" plid="2129" type="library_book" created="28-Jul-2018 13:32:01" changed="28-Jul-2018 13:39:11" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Douglas Adams
+		</author>
+		<bookname>
+Young Zaphod Plays It Safe
+		</bookname>
+	</node>
 	<node title="Drupal 6 .DRUPAL HAND BOOK" nid="1499" mlid="1508" plid="1502" type="library_book" created="18-Aug-2013 17:10:01" changed="18-Aug-2013 17:10:01" weight="0">
 		<subfolder>
 lib/comp_books/web/CMS/drupal
@@ -2303,6 +2346,67 @@ lib/comp_books/web/CMS/drupal
 		</author>
 		<bookname>
 Drupal. Создание и управление сайтом
+		</bookname>
+	</node>
+	<node title="English books for translation" nid="1728" mlid="2129" plid="384" type="book" created="28-Jul-2018 11:13:36" changed="28-Jul-2018 14:35:42" weight="0">
+		<body_value>
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;https://cloud.mail.ru/public/9s1v/eaoeyo3J6&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;cloud.mail.ru, eng books&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;https://cloud.mail.ru/public/K1PN/uSFKWsoeY&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;cloud.mail.ru, translate documents&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+http://lib.wallst.ru/uploads/humor_EngHum.TXT&amp;lt;br/&amp;gt;
+http://lib.wallst.ru/uploads/humor_englhum.txt&amp;lt;br/&amp;gt;
+
+		</body_value>
+	</node>
+	<node title="F. Scott Fitzgerald. The Ice Palace" nid="1730" mlid="2132" plid="2129" type="library_book" created="28-Jul-2018 11:59:24" changed="28-Jul-2018 12:05:01" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Scott Fitzgerald
+		</author>
+		<bookname>
+The Ice Palace
+		</bookname>
+	</node>
+	<node title="F. Scott Fitzgerald. The Last of the Belles" nid="1729" mlid="2131" plid="2129" type="library_book" created="28-Jul-2018 11:38:58" changed="28-Jul-2018 11:56:29" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+F. Scott Fitzgerald
+		</author>
+		<bookname>
+The Last of the Belles (Последняя красавица Юга)
+		</bookname>
+	</node>
+	<node title="Francis Scott Fitzerald. The Diamond Big as Ritz" nid="1731" mlid="2133" plid="2129" type="library_book" created="28-Jul-2018 12:13:18" changed="28-Jul-2018 12:15:14" weight="0">
+		<body_value>
+1922
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Francis Scott Fitzerald
+		</author>
+		<bookname>
+The Diamond Big as Ritz
+		</bookname>
+	</node>
+	<node title="Francis Scott Fitzerald. The Swimmers" nid="1732" mlid="2134" plid="2129" type="library_book" created="28-Jul-2018 12:20:07" changed="28-Jul-2018 12:20:07" weight="0">
+		<body_value>
+October 1929
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Francis Scott Fitzerald
+		</author>
+		<bookname>
+The Swimmers
 		</bookname>
 	</node>
 	<node title="Generation П" nid="582" mlid="1714" plid="1615" type="library_book" created="09-Oct-2012 22:41:10" changed="19-May-2014 15:31:25" weight="0">
@@ -2371,6 +2475,17 @@ lib/comp_books/program/js
 HTML5. Для профессионалов
 		</bookname>
 	</node>
+	<node title="Ivan Efremov. The Land of Foam" nid="1741" mlid="2143" plid="2129" type="library_book" created="28-Jul-2018 14:13:23" changed="28-Jul-2018 14:13:46" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Ivan Efremov
+		</author>
+		<bookname>
+The Land of Foam
+		</bookname>
+	</node>
 	<node title="JavaScript. Библия пользователя, 2006" nid="1713" mlid="2113" plid="391" type="library_book" created="26-Mar-2017 10:34:47" changed="26-Mar-2017 10:44:21" weight="0">
 		<body_value>
  5-е издание
@@ -2383,6 +2498,61 @@ lib/comp_books/program/js
 		</author>
 		<bookname>
 JavaScript. Библия пользователя
+		</bookname>
+	</node>
+	<node title="L.Frank Baum. The marvelous land of Oz" nid="1738" mlid="2140" plid="2129" type="library_book" created="28-Jul-2018 13:41:31" changed="28-Jul-2018 13:41:49" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+L.Frank Baum
+		</author>
+		<bookname>
+The marvelous land of Oz
+		</bookname>
+	</node>
+	<node title="L.Frank Baum. The wonderful wizard of Oz" nid="1737" mlid="2139" plid="2129" type="library_book" created="28-Jul-2018 13:38:54" changed="28-Jul-2018 13:39:37" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+L.Frank Baum
+		</author>
+		<bookname>
+The wonderful wizard of Oz
+		</bookname>
+	</node>
+	<node title="Lewis Carroll. Alice's adventures in Wonderland" nid="1750" mlid="2152" plid="2129" type="library_book" created="28-Jul-2018 14:40:27" changed="28-Jul-2018 14:40:44" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Lewis Carroll
+		</author>
+		<bookname>
+Alice's adventures in Wonderland
+		</bookname>
+	</node>
+	<node title="Lewis Carroll. The hunting of the Snark" nid="1748" mlid="2150" plid="2129" type="library_book" created="28-Jul-2018 14:37:16" changed="28-Jul-2018 14:37:30" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Lewis Carroll
+		</author>
+		<bookname>
+The hunting of the Snark
+		</bookname>
+	</node>
+	<node title="Lewis Carroll. Through the looking glass" nid="1749" mlid="2151" plid="2129" type="library_book" created="28-Jul-2018 14:38:49" changed="28-Jul-2018 14:39:12" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Lewis Carroll
+		</author>
+		<bookname>
+Through the looking glass
 		</bookname>
 	</node>
 	<node title="MODx" nid="1504" mlid="1513" plid="1502" type="library_book" created="18-Aug-2013 18:02:42" changed="18-Aug-2013 18:02:42" weight="0">
@@ -2435,6 +2605,22 @@ lib/comp_books/program/asp
 Microsoft ASP.NET 2.0 с примерами на C# 2005 для профессионалов
 		</bookname>
 	</node>
+	<node title="Mikhail Bulgakov. The Master and Margarita" nid="1739" mlid="2141" plid="2129" type="library_book" created="28-Jul-2018 13:57:33" changed="28-Jul-2018 13:57:33" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Mikhail Bulgakov
+		</author>
+		<bookname>
+The Master and Margarita
+		</bookname>
+	</node>
 	<node title="Modx Web Development" nid="1495" mlid="1504" plid="1502" type="library_book" created="18-Aug-2013 16:48:27" changed="18-Aug-2013 16:48:27" weight="0">
 		<subfolder>
 lib/comp_books/web/CMS/modx
@@ -2452,6 +2638,17 @@ lib/comp_books/program/database
 		</subfolder>
 		<bookname>
 MySQL. Справочник по языку
+		</bookname>
+	</node>
+	<node title="Nikolay Gogol. Viy" nid="1744" mlid="2146" plid="2129" type="library_book" created="28-Jul-2018 14:20:27" changed="28-Jul-2018 14:20:43" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Nikolay Gogol
+		</author>
+		<bookname>
+Viy
 		</bookname>
 	</node>
 	<node title="PHP. Объекты, шаблоны и методики программирования (2-е издание)" nid="1437" mlid="1373" plid="394" type="library_book" created="07-Jul-2013 20:34:58" changed="07-Jul-2013 20:34:58" weight="0">
@@ -2605,6 +2802,44 @@ lib/comp_books/program/database
 PostgreSQL 8.2.0 Documentation
 		</bookname>
 	</node>
+	<node title="Robert A. Heinlein. All you zombies" nid="1735" mlid="2137" plid="2129" type="library_book" created="28-Jul-2018 13:23:30" changed="28-Jul-2018 13:23:30" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;/lib/0_covers/&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Robert A. Heinlein
+		</author>
+		<bookname>
+All you zombies
+		</bookname>
+	</node>
+	<node title="Robert A. Heinlein. Citizen of the Galaxy" nid="1733" mlid="2135" plid="2129" type="library_book" created="28-Jul-2018 12:32:10" changed="28-Jul-2018 12:35:42" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Robert A. Heinlein
+		</author>
+		<bookname>
+Citizen of the Galaxy
+		</bookname>
+	</node>
+	<node title="Robert A. Heinlein. Starship troopers" nid="1734" mlid="2136" plid="2129" type="library_book" created="28-Jul-2018 13:05:00" changed="28-Jul-2018 13:08:30" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Robert A. Heinlein
+		</author>
+		<bookname>
+Starship troopers
+		</bookname>
+	</node>
 	<node title="Smarty" nid="1433" mlid="1369" plid="394" type="library_book" created="01-Jul-2013 09:21:39" changed="01-Jul-2013 09:26:41" weight="0">
 		<body_value>
 &amp;lt;a href=&amp;quot;/lib/books/0_art/
@@ -2685,6 +2920,17 @@ lib/comp_books/program/java
 		</author>
 		<bookname>
 Spring 3 для профессионалов
+		</bookname>
+	</node>
+	<node title="Stephen King. Cell" nid="1740" mlid="2142" plid="2129" type="library_book" created="28-Jul-2018 14:11:17" changed="28-Jul-2018 14:11:33" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Stephen King
+		</author>
+		<bookname>
+Cell
 		</bookname>
 	</node>
 	<node title="Summary" nid="1699" mlid="2092" plid="494" type="library_book" created="02-May-2016 11:36:39" changed="02-May-2016 11:37:10" weight="0">
@@ -2821,6 +3067,22 @@ lib/art_books/book_history_engraving
 Summary
 		</bookname>
 	</node>
+	<node title="Terry Goodkind. Faith Of The Fallen" nid="1745" mlid="2147" plid="2129" type="library_book" created="28-Jul-2018 14:27:00" changed="28-Jul-2018 14:30:31" weight="0">
+		<body_value>
+&amp;lt;div class=&amp;quot;book-covers&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;https://www.litmir.me/data/Book/0/57000/57116/BC4_1490537263.jpg&amp;quot; /&amp;gt;
+&amp;lt;/div&amp;gt;
+		</body_value>
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+Terry Goodkind
+		</author>
+		<bookname>
+Faith Of The Fallen
+		</bookname>
+	</node>
 	<node title="The Rails Way" nid="1600" mlid="1690" plid="395" type="library_book" created="12-Dec-2013 15:53:57" changed="13-Dec-2013 15:30:09" weight="0">
 		<subfolder>
 lib/comp_books/program/ruby
@@ -2841,6 +3103,28 @@ lib/books/W/Irvin_Welsh
 		</author>
 		<bookname>
 Trainspotting
+		</bookname>
+	</node>
+	<node title="William Gibson. Agrippa" nid="1742" mlid="2144" plid="2129" type="library_book" created="28-Jul-2018 14:17:10" changed="28-Jul-2018 14:17:23" weight="0">
+		<subfolder>
+lib/books
+		</subfolder>
+		<author>
+William Gibson
+		</author>
+		<bookname>
+Agrippa
+		</bookname>
+	</node>
+	<node title="William Golding. Lord of the flies" nid="1743" mlid="2145" plid="2129" type="library_book" created="28-Jul-2018 14:18:49" changed="28-Jul-2018 14:19:04" weight="0">
+		<subfolder>
+lib/books | video/video_lessons
+		</subfolder>
+		<author>
+William Golding
+		</author>
+		<bookname>
+Lord of the flies
 		</bookname>
 	</node>
 	<node title="WordPress для профессионалов. Разработка и дизайн сайтов" nid="1647" mlid="2026" plid="1502" type="library_book" created="07-Apr-2015 10:20:35" changed="29-Nov-2015 20:11:49" weight="0">
@@ -20293,6 +20577,17 @@ lib/comp_books/program/php
 Самоучитель РНР 4
 		</bookname>
 	</node>
+	<node title="Крайтон Майкл. Рой" nid="1721" mlid="2122" plid="386" type="library_book" created="09-Jul-2017 12:35:56" changed="28-Jul-2018 11:42:08" weight="0">
+		<subfolder>
+lib/books/K
+		</subfolder>
+		<author>
+Крайтон Майкл
+		</author>
+		<bookname>
+Рой
+		</bookname>
+	</node>
 	<node title="Кривенко В." nid="1626" mlid="1907" plid="386" type="author" created="09-Aug-2014 16:27:21" changed="09-Aug-2014 16:27:21" weight="0">
 	</node>
 	<node title="Кристиан Дари. AJAX и PHP. Разработка динамических веб приложений" nid="136" mlid="563" plid="394" type="library_book" created="03-Oct-2012 09:08:55" changed="20-Jul-2013 15:07:13" weight="0">
@@ -22198,17 +22493,6 @@ lib/books/F
 		</bookname>
 	</node>
 	<node title="Робер Мерль" nid="1629" mlid="1928" plid="386" type="author" created="09-Aug-2014 16:49:35" changed="09-Aug-2014 16:49:35" weight="0">
-	</node>
-	<node title="Рой" nid="1721" mlid="2122" plid="386" type="library_book" created="09-Jul-2017 12:35:56" changed="09-Jul-2017 12:43:01" weight="0">
-		<subfolder>
-lib/books/K
-		</subfolder>
-		<author>
-Крайтон Майкл
-		</author>
-		<bookname>
-Рой
-		</bookname>
 	</node>
 	<node title="Роковые яйца" nid="559" mlid="1720" plid="1718" type="library_book" created="09-Oct-2012 22:41:10" changed="21-Nov-2014 02:54:33" weight="0">
 		<subfolder>
@@ -32010,6 +32294,39 @@ lib/art_books/book_history_engraving
 	<item entity_id="1726" bundle="library_book" delta="0">
 		<value>http://site-content/</value>
 	</item>
+	<item entity_id="1729" bundle="library_book" delta="0">
+		<value>#</value>
+	</item>
+	<item entity_id="1730" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1732" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1733" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1735" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1739" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1742" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1743" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1746" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1747" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
+	<item entity_id="1748" bundle="library_book" delta="0">
+		<value>http://site-content/</value>
+	</item>
 	<item entity_id="27" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
@@ -33179,6 +33496,76 @@ http://localhost#localhost, direct link
 	<item entity_id="1727" bundle="library_book" delta="0">
 		<value>http://readli.net/chitat-online/?b=358951&amp;pg=70</value>
 	</item>
+	<item entity_id="1729" bundle="library_book" delta="0">
+		<value>http://samlib.ru/g/gvozdika/beauty.shtml#RUS text
+</value>
+	</item>
+	<item entity_id="1730" bundle="library_book" delta="0">
+		<value>http://fitzgerald.narod.ru/flappers/010e-ice.html#ENG text</value>
+	</item>
+	<item entity_id="1731" bundle="library_book" delta="0">
+		<value>http://fitzgerald.narod.ru/tales/022e-ritz.html#ENG text</value>
+	</item>
+	<item entity_id="1732" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/The%20Swimmers,%20by%20Scott%20Fitzgerald.txt#ENG text
+</value>
+	</item>
+	<item entity_id="1733" bundle="library_book" delta="0">
+		<value>https://www.e-reading.club/bookreader.php/73044/Heinlein_-_Citizen_of_the_Galaxy.htmll#ENG text</value>
+	</item>
+	<item entity_id="1734" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Heinlein_troopers2.txt#ENG text</value>
+	</item>
+	<item entity_id="1735" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Heinlein_zomby.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1736" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Adams_eng/dayz1_.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1737" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Baum_wiz_oz.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1738" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Baum_oz_land.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1739" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Bulgakov_master97_engl.txt.html#The Master and Margarita (1997)</value>
+	</item>
+	<item entity_id="1740" bundle="library_book" delta="0">
+		<value>https://romanvlaptev.wordpress.com/stephen-king-cell/#ENG text</value>
+	</item>
+	<item entity_id="1741" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Efremov_ojkumena_engl.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1742" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Gibson_eng/agrippa.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1743" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Golding_masterflyes_engl.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1744" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Gogol_vij_engl.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1745" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/gud6_engl.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1746" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Hambly_brige.txt.html#ENG text
+</value>
+	</item>
+	<item entity_id="1747" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Hambly_travelin.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1748" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Carroll_snarkeng.txt.html#ENG text</value>
+	</item>
+	<item entity_id="1749" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Carroll_lglass.txt.html#ENG text
+</value>
+	</item>
+	<item entity_id="1750" bundle="library_book" delta="0">
+		<value>http://lib.wallst.ru/uploads/Carroll_alice.txt.html#ENG text</value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, roman.v.laptev cloud
@@ -33259,6 +33646,31 @@ http://localhost#localhost, direct link
 	<item entity_id="1704" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/program/js/Stephen_Walther_Windows_8_HTML5_JavaScript.pdf</value>
 	</item>
+	<item entity_id="1729" bundle="library_book" delta="1">
+		<value>https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html#ENG text</value>
+	</item>
+	<item entity_id="1730" bundle="library_book" delta="1">
+		<value>http://lib.ru/INPROZ/FITSDZHERALD/icepalac.txt#RUS text</value>
+	</item>
+	<item entity_id="1731" bundle="library_book" delta="1">
+		<value>http://lib.ru/INPROZ/FITSDZHERALD/diamond.txt#RUS text</value>
+	</item>
+	<item entity_id="1732" bundle="library_book" delta="1">
+		<value>http://fitzgerald.narod.ru/taps/066e-swim.html#ENG text
+</value>
+	</item>
+	<item entity_id="1733" bundle="library_book" delta="1">
+		<value>http://readli.net/chitat-online/%3Fb%3D102432%26pg%3D1#RUS text</value>
+	</item>
+	<item entity_id="1734" bundle="library_book" delta="1">
+		<value>https://drive.google.com/open?id=0BxjK1kq1ZINacTBNQkVrTk1jRHc#RUS text, google drive</value>
+	</item>
+	<item entity_id="1739" bundle="library_book" delta="1">
+		<value>http://lib.wallst.ru/uploads/Bulgakov_master_engl.txt.html#The Master and Margarita (1967)</value>
+	</item>
+	<item entity_id="1740" bundle="library_book" delta="1">
+		<value>http://lib.wallst.ru/uploads/King_kletka_engl.txt.html#ENG text, url2</value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="2">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, laptev.rv cloud
@@ -33304,6 +33716,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1688" bundle="library_book" delta="2">
 		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/program/js/Iliya%20Kantor_2015/</value>
+	</item>
+	<item entity_id="1732" bundle="library_book" delta="2">
+		<value>http://fitzgerald.narod.ru/taps/066r-swimmers.html#RUS text</value>
+	</item>
+	<item entity_id="1734" bundle="library_book" delta="2">
+		<value>https://yadi.sk/i/ianeUy873Zeq5A#RUS text, yandex disk</value>
 	</item>
 	<item entity_id="1449" bundle="library_book" delta="3">
 		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/program/js/jQuery/frimen_jquery_professional_2013/frimen_jquery_professional_2013.pdf</value>
@@ -34643,6 +35061,72 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1727" delta="0">
 		<termin tid="39" >художественая литература</termin>
 	</item>
+	<item entity_id="1729" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1730" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1731" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1732" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1733" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1734" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1735" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1736" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1737" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1738" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1739" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1740" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1741" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1742" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1743" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1744" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1745" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1746" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1747" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1748" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1749" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
+	<item entity_id="1750" delta="0">
+		<termin tid="39" >художественая литература</termin>
+	</item>
 	<item entity_id="8" delta="1">
 		<termin tid="100" >javascript</termin>
 	</item>
@@ -35836,6 +36320,36 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1727" delta="1">
 		<termin tid="99" >военная проза</termin>
+	</item>
+	<item entity_id="1731" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1733" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1734" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1735" delta="1">
+		<termin tid="24" >научная фантастика</termin>
+	</item>
+	<item entity_id="1737" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1738" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1740" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1741" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1744" delta="1">
+		<termin tid="173" >фантастика</termin>
+	</item>
+	<item entity_id="1745" delta="1">
+		<termin tid="13" >фэнтази</termin>
 	</item>
 	<item entity_id="33" delta="2">
 		<termin tid="43" >ASP, ASP.Net</termin>
@@ -38531,6 +39045,72 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item entity_id="1727" delta="0">
 		<termin tid="176" >V</termin>
 	</item>
+	<item entity_id="1729" delta="0">
+		<termin tid="118" >B</termin>
+	</item>
+	<item entity_id="1730" delta="0">
+		<termin tid="122" >F</termin>
+	</item>
+	<item entity_id="1731" delta="0">
+		<termin tid="120" >D</termin>
+	</item>
+	<item entity_id="1732" delta="0">
+		<termin tid="122" >F</termin>
+	</item>
+	<item entity_id="1733" delta="0">
+		<termin tid="119" >C</termin>
+	</item>
+	<item entity_id="1734" delta="0">
+		<termin tid="124" >H</termin>
+	</item>
+	<item entity_id="1735" delta="0">
+		<termin tid="124" >H</termin>
+	</item>
+	<item entity_id="1736" delta="0">
+		<termin tid="120" >D</termin>
+	</item>
+	<item entity_id="1737" delta="0">
+		<termin tid="118" >B</termin>
+	</item>
+	<item entity_id="1738" delta="0">
+		<termin tid="118" >B</termin>
+	</item>
+	<item entity_id="1739" delta="0">
+		<termin tid="118" >B</termin>
+	</item>
+	<item entity_id="1740" delta="0">
+		<termin tid="127" >K</termin>
+	</item>
+	<item entity_id="1741" delta="0">
+		<termin tid="144" >Е</termin>
+	</item>
+	<item entity_id="1742" delta="0">
+		<termin tid="123" >G</termin>
+	</item>
+	<item entity_id="1743" delta="0">
+		<termin tid="123" >G</termin>
+	</item>
+	<item entity_id="1744" delta="0">
+		<termin tid="141" >В</termin>
+	</item>
+	<item entity_id="1745" delta="0">
+		<termin tid="123" >G</termin>
+	</item>
+	<item entity_id="1746" delta="0">
+		<termin tid="124" >H</termin>
+	</item>
+	<item entity_id="1747" delta="0">
+		<termin tid="124" >H</termin>
+	</item>
+	<item entity_id="1748" delta="0">
+		<termin tid="119" >C</termin>
+	</item>
+	<item entity_id="1749" delta="0">
+		<termin tid="119" >C</termin>
+	</item>
+	<item entity_id="1750" delta="0">
+		<termin tid="119" >C</termin>
+	</item>
 	<item entity_id="137" delta="1">
 		<termin tid="150" >Л</termin>
 	</item>
@@ -39136,6 +39716,27 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item entity_id="1727" delta="1">
 		<termin tid="141" >В</termin>
+	</item>
+	<item entity_id="1729" delta="1">
+		<termin tid="122" >F</termin>
+	</item>
+	<item entity_id="1730" delta="1">
+		<termin tid="175" >P</termin>
+	</item>
+	<item entity_id="1731" delta="1">
+		<termin tid="122" >F</termin>
+	</item>
+	<item entity_id="1732" delta="1">
+		<termin tid="133" >S</termin>
+	</item>
+	<item entity_id="1733" delta="1">
+		<termin tid="124" >H</termin>
+	</item>
+	<item entity_id="1734" delta="1">
+		<termin tid="133" >S</termin>
+	</item>
+	<item entity_id="1744" delta="1">
+		<termin tid="142" >Г</termin>
 	</item>
 	<item entity_id="137" delta="2">
 		<termin tid="156" >С</termin>
@@ -44288,24 +44889,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="1720" tid="229">
 	</item>
-	<item nid="1721" tid="39">
-	</item>
-	<item nid="1721" tid="173">
-	</item>
-	<item nid="1721" tid="24">
-	</item>
-	<item nid="1721" tid="4">
-	</item>
-	<item nid="1721" tid="178">
-	</item>
-	<item nid="1721" tid="185">
-	</item>
-	<item nid="1721" tid="127">
-	</item>
-	<item nid="1721" tid="236">
-	</item>
-	<item nid="1721" tid="203">
-	</item>
 	<item nid="556" tid="39">
 	</item>
 	<item nid="556" tid="22">
@@ -44445,6 +45028,214 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1727" tid="141">
 	</item>
 	<item nid="1727" tid="229">
+	</item>
+	<item nid="1721" tid="39">
+	</item>
+	<item nid="1721" tid="173">
+	</item>
+	<item nid="1721" tid="24">
+	</item>
+	<item nid="1721" tid="4">
+	</item>
+	<item nid="1721" tid="178">
+	</item>
+	<item nid="1721" tid="185">
+	</item>
+	<item nid="1721" tid="127">
+	</item>
+	<item nid="1721" tid="236">
+	</item>
+	<item nid="1721" tid="203">
+	</item>
+	<item nid="1729" tid="39">
+	</item>
+	<item nid="1729" tid="118">
+	</item>
+	<item nid="1729" tid="122">
+	</item>
+	<item nid="1729" tid="240">
+	</item>
+	<item nid="1729" tid="236">
+	</item>
+	<item nid="1730" tid="39">
+	</item>
+	<item nid="1730" tid="122">
+	</item>
+	<item nid="1730" tid="175">
+	</item>
+	<item nid="1730" tid="240">
+	</item>
+	<item nid="1730" tid="236">
+	</item>
+	<item nid="1731" tid="39">
+	</item>
+	<item nid="1731" tid="173">
+	</item>
+	<item nid="1731" tid="120">
+	</item>
+	<item nid="1731" tid="122">
+	</item>
+	<item nid="1731" tid="240">
+	</item>
+	<item nid="1731" tid="236">
+	</item>
+	<item nid="1732" tid="39">
+	</item>
+	<item nid="1732" tid="122">
+	</item>
+	<item nid="1732" tid="133">
+	</item>
+	<item nid="1732" tid="240">
+	</item>
+	<item nid="1732" tid="236">
+	</item>
+	<item nid="1733" tid="39">
+	</item>
+	<item nid="1733" tid="173">
+	</item>
+	<item nid="1733" tid="119">
+	</item>
+	<item nid="1733" tid="124">
+	</item>
+	<item nid="1733" tid="240">
+	</item>
+	<item nid="1733" tid="236">
+	</item>
+	<item nid="1734" tid="39">
+	</item>
+	<item nid="1734" tid="173">
+	</item>
+	<item nid="1734" tid="124">
+	</item>
+	<item nid="1734" tid="133">
+	</item>
+	<item nid="1734" tid="240">
+	</item>
+	<item nid="1734" tid="236">
+	</item>
+	<item nid="1735" tid="39">
+	</item>
+	<item nid="1735" tid="24">
+	</item>
+	<item nid="1735" tid="124">
+	</item>
+	<item nid="1735" tid="240">
+	</item>
+	<item nid="1735" tid="236">
+	</item>
+	<item nid="1736" tid="39">
+	</item>
+	<item nid="1736" tid="120">
+	</item>
+	<item nid="1736" tid="240">
+	</item>
+	<item nid="1737" tid="39">
+	</item>
+	<item nid="1737" tid="173">
+	</item>
+	<item nid="1737" tid="118">
+	</item>
+	<item nid="1737" tid="240">
+	</item>
+	<item nid="1737" tid="236">
+	</item>
+	<item nid="1738" tid="39">
+	</item>
+	<item nid="1738" tid="173">
+	</item>
+	<item nid="1738" tid="118">
+	</item>
+	<item nid="1738" tid="240">
+	</item>
+	<item nid="1738" tid="236">
+	</item>
+	<item nid="1739" tid="39">
+	</item>
+	<item nid="1739" tid="118">
+	</item>
+	<item nid="1739" tid="240">
+	</item>
+	<item nid="1739" tid="229">
+	</item>
+	<item nid="1740" tid="39">
+	</item>
+	<item nid="1740" tid="173">
+	</item>
+	<item nid="1740" tid="127">
+	</item>
+	<item nid="1740" tid="240">
+	</item>
+	<item nid="1740" tid="236">
+	</item>
+	<item nid="1741" tid="39">
+	</item>
+	<item nid="1741" tid="173">
+	</item>
+	<item nid="1741" tid="144">
+	</item>
+	<item nid="1741" tid="240">
+	</item>
+	<item nid="1741" tid="229">
+	</item>
+	<item nid="1742" tid="39">
+	</item>
+	<item nid="1742" tid="123">
+	</item>
+	<item nid="1742" tid="240">
+	</item>
+	<item nid="1743" tid="39">
+	</item>
+	<item nid="1743" tid="123">
+	</item>
+	<item nid="1743" tid="240">
+	</item>
+	<item nid="1744" tid="39">
+	</item>
+	<item nid="1744" tid="173">
+	</item>
+	<item nid="1744" tid="141">
+	</item>
+	<item nid="1744" tid="142">
+	</item>
+	<item nid="1744" tid="240">
+	</item>
+	<item nid="1745" tid="39">
+	</item>
+	<item nid="1745" tid="13">
+	</item>
+	<item nid="1745" tid="123">
+	</item>
+	<item nid="1745" tid="240">
+	</item>
+	<item nid="1745" tid="236">
+	</item>
+	<item nid="1746" tid="39">
+	</item>
+	<item nid="1746" tid="124">
+	</item>
+	<item nid="1747" tid="39">
+	</item>
+	<item nid="1747" tid="124">
+	</item>
+	<item nid="1747" tid="240">
+	</item>
+	<item nid="1748" tid="39">
+	</item>
+	<item nid="1748" tid="119">
+	</item>
+	<item nid="1748" tid="240">
+	</item>
+	<item nid="1749" tid="39">
+	</item>
+	<item nid="1749" tid="119">
+	</item>
+	<item nid="1749" tid="240">
+	</item>
+	<item nid="1750" tid="39">
+	</item>
+	<item nid="1750" tid="119">
+	</item>
+	<item nid="1750" tid="240">
 	</item>
 </table_taxonomy_index>
 
@@ -45008,6 +45799,9 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="239" vid="1" weight="0">
 		<name>Java</name>
 	</termin>
+	<termin tid="240" vid="1" weight="0">
+		<name>English books</name>
+	</termin>
 </table_taxonomy_term_data>
 
 <table_taxonomy_term_hierarchy>
@@ -45376,6 +46170,8 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<termin tid="238" parent="189">
 	</termin>
 	<termin tid="239" parent="0">
+	</termin>
+	<termin tid="240" parent="0">
 	</termin>
 </table_taxonomy_term_hierarchy>
 
