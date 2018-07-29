@@ -11,7 +11,7 @@ NOTES
 	mywebpad.wordpress.xml
 	notes.xml
 
-- ИМПОРТ, создать java application
+- ИМПОРТ, создать java application (или использовать скрипты NODEJS)
 
 - сделать версию с использованием фреймворка (react, vue, angular)
 
