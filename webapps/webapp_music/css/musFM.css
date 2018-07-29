@@ -26,7 +26,7 @@ padding-bottom: 20px;
     padding: 20px;
 }
 .panels {
-  height: 80%;
+  /*height: 80%;*/
 }
 
 .rows
@@ -251,11 +251,14 @@ width: 450px !important;
 
 #log {
   /*background: #f3f3f3;*/
-  margin-left: 0;
-  /*margin-top: 20px;*/
-  /*padding-bottom: 20px;*/
-  /*padding-left: 10px;*/
-  /*padding-top: 20px;*/
+	background: #fff4e1;
+	margin-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	min-height: 20px;
+	margin-bottom: 10px;
+	border-radius: 5px;
 }
 
 .error {
