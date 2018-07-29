@@ -2214,7 +2214,67 @@ echo &quot;&lt;br&gt;&quot;;
 
 </filename>
 </node>
-<node title="D-LINK WIRELESS ROUTER, MAC FILTERING" nid="1121" mlid="3241" plid="1589" created="11-May-2015 00:46:31" changed="10-May-2017 21:46:52" weight="0">
+<node title="Clone local (non-bare) repositore, config for push commit, update base repository" nid="1214" mlid="3385" plid="3006" created="29-Jul-2018 09:38:58" changed="29-Jul-2018 09:38:58" weight="0">
+<body_value>
+on 192.168.56.101 (vbox-mac109):
+
+
+- git clone ssh://root@192.168.56.102/home/www/sites/romanlaptev.github.io
+- cd romanlaptev.github.io
+- change test.txt
+- git commit -am &quot;test commit, from vbox-mac109&quot;
+
+1.git push error
+
+remote: error: refusing to update checked out branch: refs/heads/dev
+remote: error: By default, updating the current branch in a non-bare repository
+remote: error: is denied, because it will make the index and work tree inconsistent
+remote: error: with what you pushed, and will require ‘git reset —hard’ to match
+remote: error: the work tree to HEAD.
+remote: error:
+remote: error: You can set ‘receive.denyCurrentBranch’ configuration variable to
+remote: error: ‘ignore’ or ‘warn’ in the remote repository to allow pushing into
+remote: error: its current branch; however, this is not recommended unless you
+remote: error: arranged to update its work tree to match what you pushed in some
+remote: error: other way.
+remote: error:
+remote: error: To squelch this message and still keep the default behaviour, set
+remote: error: ‘receive.denyCurrentBranch’ configuration variable to ‘refuse’.
+To ssh://root@192.168.56.102/home/www/sites/romanlaptev.github.io
+
+— on 192.168.56.102 (vbox5-sites) enter
+git config —global receive.denyCurrentBranch warn
+
+2.git push
+
+root’s password:
+Counting objects: 7, done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 322 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: warning: updating the current branch
+To ssh://root@192.168.56.102/home/www/sites/romanlaptev.github.io
+9d6724b..4b6fb14 dev -&gt; dev
+
+On 192.168.56.102:
+— git status
+— git reset —hard
+— git status
+— git push
+
+Changes test.txt will be copied to base repository
+
+================== change URL local repository for future commit to base repository
+
+#old url = ssh://root@192.168.56.102/home/www/sites/romanlaptev.github.io
+#new url = http://github.com/romanlaptev/romanlaptev.github.io.git
+git remote set-url origin http://github.com/romanlaptev/romanlaptev.github.io.git
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="D-LINK WIRELESS ROUTER, MAC FILTERING" nid="1121" mlid="3241" plid="1589" created="11-May-2015 00:46:31" changed="26-May-2018 21:58:32" weight="0">
 <body_value>
 http://192.168.0.1/
 homenet
@@ -2237,6 +2297,10 @@ DNS : 	 178.49.132.67 178.49.132.66
 
 DIR300-S
 WAN, mac: e4:6f:13:0b:cc:31
+
+-------------------------
+38:e6:0a:90:76:39
+Смартфон, Ирина
 
 -------------------------
 ноутбук Acer, 
@@ -2611,6 +2675,52 @@ apt-get install flacon
 
 </filename>
 </node>
+<node title="GIT, create and clone local repo" nid="1213" mlid="3384" plid="3006" created="29-Jul-2018 09:29:38" changed="29-Jul-2018 09:35:05" weight="0">
+<body_value>
+#create central repo
+
+
+mkdir /documents/laptev/projects/testGIT
+git init
+
+#this can be done in bare or central repository so that it will accept any files that are pushed from non bare repositories.!!!!!
+#https://stackoverflow.com/questions/1764380/how-to-push-to-a-non-bare-git-repository
+git config --bool core.bare true
+
+git log
+
+
+————— clone local repo
+cd \documents\laptev\www\test_ESLint
+git clone --verbose /D:/documents/laptev/projects/testGIT
+git add .
+git commit -am &quot;first commit&quot;
+git push
+git log
+
+====================================
+https://git-scm.com/book/ru/v1/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-Git-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F
+инициализирует репозиторий без рабочего каталога:
+
+$ cd /home/GIT
+$ mkdir project.git
+$ cd project.git
+$ git --bare init
+
+# клонирование на удаленном или локальном(vbox1) компьютере
+$ cd myproject
+$ git init
+$ git add .
+$ git commit -m 'initial commit'
+$ git remote add origin ssh://gituser@vbox1:/home/GIT/project.git
+$ git push origin master (или git push -u origin master для связывания локальной ветки master и удаленной ветки master, проверка сокращается до git pull/git push)
+
+
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="GPEDIT, права на отключение сетевого интерфейса" nid="823" mlid="2571" plid="2570" created="08-May-2013 13:10:15" changed="08-May-2013 13:10:15" weight="0">
 <body_value>
 GPEDIT: права на отключение сетевого интерфейса
@@ -2653,6 +2763,40 @@ ubuntu 11.04
 проверить диски и добавить запись о новом загрузчике системы
 ++++sudo grub-mkconfig
 update-grub
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="Git - Как исправить HEAD detached from" nid="1215" mlid="3390" plid="3006" created="29-Jul-2018 09:55:51" changed="29-Jul-2018 09:55:51" weight="0">
+<body_value>
+https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej
+
+При работе с Git может возникнуть такая ситуация: команда git push не заливает изменения на сервер, а команда git status показывает:
+
+$ git status
+HEAD detached from 87dc87b
+
+Это может означать, что вы делали какую-то навигацию по истории коммитов, и неправильно вернулись к последнему коммиту.
+
+Исправить эту проблему можно 4-мя командами:
+
+git branch temp
+git checkout temp
+git branch -f master temp
+git checkout master
+И, опционально,
+git branch -d temp
+
+Еще один вариант, короткий !!!!!!!!!!
+git checkout имяВеткиГдеВыНаходитесь
+
+- эта команда переключит проект в последний коммит текущей ветки. Точнее, в состоянии detached head, проект не находится ни в какой ветке. git checkout branchname просто переключит проект на последний коммит той ветки, которая указана. Это значит, что до появления ошибки нужно знать, в какой ветке ты находишься. Для того чтобы посмотреть, где находился, можно воспользовтьася командой:
+
+git reflog
+
+Самый правильный вариант
+git checkout HEAD@{1}
 </body_value>
 <filename>
 
@@ -3760,6 +3904,33 @@ height=&quot;20px&quot; viewBox=&quot;0 0 14 14&quot; class=&quot;u7&quot;&gt;
 &lt;/polygon&gt;
 &lt;/g&gt;
 &lt;/svg&gt;
+</body_value>
+<filename>
+
+</filename>
+</node>
+<node title="android" nid="1212" mlid="3383" plid="1585" created="25-May-2018 12:47:09" changed="25-May-2018 15:05:20" weight="0">
+<body_value>
+#update Android SDK
+/home/jack/android_soft/android-sdk-linux/tools/android update sdk
+
+#list installed platforms (Android 4.4 etc.)
+/home/jack/android_soft/android-sdk-linux/tools/android list targets
+
+#create project
+/home/jack/android_soft/android-sdk-linux/tools/android -v create project --target android-19 --name Application1 --path App1 --activity MainActivity --package com.laptev.app1
+
+========================= Добавить пути SDK в PATH
+.bashrc
+#export PATH=$PATH:/home/jack/android_soft/android-sdk-linux/tools
+
+if [ -d &quot;$HOME/android_soft/android-sdk-linux/tools&quot; ] ; then
+    PATH=&quot;$HOME/android_soft/android-sdk-linux/tools:$PATH&quot;
+fi
+
+if [ -d &quot;$HOME/android_soft/android-sdk-linux/platform-tools&quot; ] ; then
+    PATH=&quot;$HOME/android_soft/android-sdk-linux/platform-tools:$PATH&quot;
+fi
 </body_value>
 <filename>
 
@@ -8626,7 +8797,7 @@ pmloadlevel название_уровня, при этом подставляя 
 
 </filename>
 </node>
-<node title="git" nid="929" mlid="3006" plid="1588" created="09-Jan-2014 23:22:48" changed="14-Oct-2017 09:57:52" weight="0">
+<node title="git" nid="929" mlid="3006" plid="1588" created="09-Jan-2014 23:22:48" changed="29-Jul-2018 09:56:48" weight="0">
 <body_value>
 git clone https://github.com/romanlaptev/romanlaptev.heroku.com
 git clone https://bitbucket.org/romanlaptev/romanlaptev.bitbucket.org.git
@@ -8642,28 +8813,6 @@ git commit -a -m &quot;order for wallpapers, fix2&quot;
 git push
 
 git reset --hard
------------
-mkdir first
-cd first
-git init #создать пустой репозиторий
-mcedit .git
-
-[core]
-	repositoryformatversion = 0
-	filemode = false
-	bare = false
-	logallrefupdates = true
-[remote &quot;origin&quot;]
-	fetch = +refs/heads/*:refs/remotes/origin/*
-	url = ssh://laptev.r@xmpp.worest.ru/home/GIT/qdec/qdec.git
-[branch &quot;master&quot;]
-	remote = origin
-	merge = refs/heads/master
-
-git pull
-
-======================
-
 
 </body_value>
 <filename>
@@ -18725,6 +18874,17 @@ DELETE FROM cache;
 
 </filename>
 </node>
+<node title="Ошибка Virtualbox не видит USB" nid="1211" mlid="3382" plid="2563" created="14-May-2018 10:54:18" changed="14-May-2018 10:54:18" weight="0">
+<body_value>
+https://losst.ru/virtualbox-ne-vidit-usb-v-ubuntu
+Чаще всего такая ошибка возникает потому что у пользователя, от имени которого вы запустили VirtualBox нет доступа к необходимым файлам. Это решается очень просто, вам достаточно добавить своего пользователя в группу vboxusers. Для этого выполните команду:
+
+ sudo usermod -a -G vboxusers $USER
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="Ошибка при установке Drupal function ereg() is deprecated in file.inc" nid="774" mlid="2503" plid="1590" created="16-Mar-2013 14:38:21" changed="16-Mar-2013 14:38:21" weight="0">
 <body_value>
 Ошибка при установке Drupal function ereg() is deprecated in file.inc
@@ -20636,6 +20796,16 @@ UPDATE `field_data_body` SET `body_value` = REPLACE( body_value, '/content', '/s
 
 </filename>
 </node>
+<node title="запись с микрофона" nid="1210" mlid="3381" plid="2413" created="05-May-2018 08:43:48" changed="05-May-2018 08:45:04" weight="0">
+<body_value>
+https://losst.ru/zapis-s-mikrofona-v-linux
+
+arecord 000.wav
+</body_value>
+<filename>
+
+</filename>
+</node>
 <node title="запись сд-дисков из командной строки программы NERO" nid="829" mlid="2577" plid="2569" created="08-May-2013 13:29:17" changed="08-May-2013 13:29:17" weight="0">
 <body_value>
 запись сд-дисков из командной строки программы NERO 
@@ -21839,7 +22009,7 @@ user_pref(&quot;browser.cache.disk.parent_directory&quot;, &quot;/mnt/disk2/temp
 
 </filename>
 </node>
-<node title="сайт компании &quot;Водоводоф&quot;" nid="834" mlid="2582" plid="1582" created="11-May-2013 10:58:08" changed="11-May-2013 10:58:08" weight="0">
+<node title="сайт компании &quot;Водоводоф&quot;" nid="834" mlid="2582" plid="1582" created="11-May-2013 10:58:08" changed="29-Jul-2018 11:09:33" weight="0">
 <body_value>
 http://vdf-nsk.ru/
 Водоводоф, торгово-монтажная компания
@@ -21946,7 +22116,7 @@ http://artkiev.com/blog/ssh-tar-tar-gz-zip-rar-bzip2-gzip.htm
 
 </filename>
 </node>
-<node title="создание репозитория" nid="1045" mlid="3141" plid="3006" created="13-Jun-2014 20:11:51" changed="08-Apr-2017 23:43:50" weight="0">
+<node title="создание репозитория" nid="1045" mlid="3141" plid="3006" created="13-Jun-2014 20:11:51" changed="29-Jul-2018 09:57:22" weight="0">
 <body_value>
 mkdir htdocs_test &amp;&amp; cd htdocs_test
 git init
@@ -21963,24 +22133,6 @@ git status
 
 //разрешить удаленную перезапись ветки мастер
 git config receive.denyCurrentBranch ignore
-
------------
-https://git-scm.com/book/ru/v1/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git-%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-Git-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F
-инициализирует репозиторий без рабочего каталога:
-
-$ cd /home/GIT
-$ mkdir project.git
-$ cd project.git
-$ git --bare init
-
-# клонирование на удаленном или локальном(vbox1) компьютере
-$ cd myproject
-$ git init
-$ git add .
-$ git commit -m 'initial commit'
-$ git remote add origin ssh://gituser@vbox1:/home/GIT/project.git
-$ git push origin master (или git push -u origin master для связывания локальной ветки master и удаленной ветки master, проверка сокращается до git pull/git push)
-
 
 ===============================
 
@@ -22009,6 +22161,28 @@ git push -u origin master
 
 https://github.com/romanlaptev/lib
 
+======================
+
+mkdir first
+cd first
+git init #создать пустой репозиторий
+mcedit .git
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+[remote &quot;origin&quot;]
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	url = ssh://laptev.r@xmpp.worest.ru/home/GIT/qdec/qdec.git
+[branch &quot;master&quot;]
+	remote = origin
+	merge = refs/heads/master
+
+git pull
+
+======================
 
 
 </body_value>
