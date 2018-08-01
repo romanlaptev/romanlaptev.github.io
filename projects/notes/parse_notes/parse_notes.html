@@ -45,20 +45,19 @@ function()
 	);
 	$('.close-link').live("click",function()
 		{
-			var show_nid = $(this).attr('href').replace("#","#show-");
-			var node_nid = show_nid.replace("show","node");
-			$(node_nid).toggle();
-			if ( $(node_nid ).is(":visible") )
-			{
-				$(show_nid +' span').text(" - ");
-				//$('.show-link').removeClass("active");
-				$('#'+ show_nid).addClass("active");
-			}
-			else
-			{
-				$(show_nid +' span').text(" + ");
-				$('#'+ show_nid).removeClass("active");
-			}
+			var node_nid = $(this).attr("href");
+			var showLinkId = $(this).attr('href').replace("#node-","#show-");
+
+			if ( $( node_nid ).is(":visible") ) {
+//console.log( node_nid, showLinkId);			
+				$( node_nid ).hide();
+				$( showLinkId + " span").text(" + ");
+				$( node_nid).addClass("active");
+			} /*else {
+				$( node_nid ).show();
+				$( showLinkId +' span').text(" - ");
+				$( node_nid ).removeClass("active");
+			}*/
 			return false;
 		}
 	);
@@ -80,14 +79,14 @@ function load_xml(xml_file)
 	{
 		$('#xml_data').empty();
 		var html = "";
+		var rootNid = "";
 		//========================== вывод страниц верхнего уровня
-		$(data).find('node').each(
-		function()
-		{
+		$(data).find('node').each(function(){
 			var node = $(this);
 			var plid = node.attr('plid');
-			if ( plid == "0" )
-			{
+			if ( plid == "0" ){
+//console.log(node);			
+				rootNid = node.attr("nid");
 				var title = node.attr('title');
 				html += "<h2>";
 				html += title;
@@ -97,8 +96,8 @@ function load_xml(xml_file)
 				html += list_content(data, mlid);
 
 				var body_value = node.find('body_value');
-				if (body_value.length)
-				{
+				if (body_value.length)	{
+//console.log( body_value.text() );			
 					html += "<div class='node' id='node-"+node.attr('nid')+"'>";
 					html += "<pre>";
 					//---------------------
@@ -112,9 +111,15 @@ function load_xml(xml_file)
 					html += "</div>";
 				}
 			}
-		}
-		);//------------------------ end each
+		});//next
+		
 		$('#xml_data').append(html);
+
+//console.log(rootNid);
+		if( rootNid ){
+			$("#node-"+rootNid).show();
+		}
+		
 	});
 	return false;
 }//------------------------- end func
@@ -151,7 +156,7 @@ function list_content(data, plid)
 				{
 //------------------- close btn
 					html += "<div class='close-btn'>";
-					html += "<a class='close-link' href='#"+node.attr('nid')+"'>";
+					html += "<a class='close-link' href='#node-"+node.attr('nid')+"'>";
 					html += "x</a></div>";
 //----------------------------
 					html += "<pre>";
