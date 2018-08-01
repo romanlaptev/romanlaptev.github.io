@@ -6,6 +6,14 @@
 
 NOTES
 
+- изменить структуру хранения записей в БД, так чтобы они образовывали иерархическую подшивку 
+(БД Друпал, атрибуты plid и mlid, также таблицы для их хранения)
+book
+menu_links
+field_data_body
+file_usage 
+file_managed
+
 - ИМПОРТ, сделать единый формат XML: 
 	export_mydb_notes.xml
 	mywebpad.wordpress.xml

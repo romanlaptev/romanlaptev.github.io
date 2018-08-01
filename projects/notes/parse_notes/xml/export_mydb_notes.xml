@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <book>
-<nodes>
+<nodes attr1="a1">
 <node title="apache" nid="737" mlid="2411" plid="1589" created="24-Dec-2012 22:28:10" changed="19-Apr-2014 20:35:37" weight="-15">
 <filename>
 

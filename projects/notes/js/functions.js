@@ -116,12 +116,16 @@ function _parseXmlToObj(xml){
 //console.log( xml.documentElement.nodeName );			
 	var rootTagName = xml.documentElement.nodeName;
 	var xmlDoc = xml.getElementsByTagName( rootTagName);
+
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 //console.log( xmlDoc.childNodes.length ) ;
 //console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
-// for(var key in xmlDoc){
-// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
-// }
+//console.log( xmlDoc.item(0).childNodes,  xmlDoc.item(0).childNodes.length) ;
+
+//for(var key in xmlDoc){
+//console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+//}
+
 	var xmlObj = [];
 	for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
 		var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
@@ -129,6 +133,7 @@ function _parseXmlToObj(xml){
 		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
 			continue;
 		}
+//console.log( child, child.childNodes, child.childNodes.length );			
 		var node = __parseChildNode( child );
 //console.log(node);			
 		xmlObj.push ( node );
@@ -137,7 +142,7 @@ function _parseXmlToObj(xml){
 	return xmlObj;
 	
 	function __parseChildNode( nodeXml ){
-//console.log( "nodeName: "+ nodeXml.nodeName);
+console.log( "nodeName: "+ nodeXml.nodeName);
 //console.log( "text: "+ nodeXml.text);
 //console.log( "textContent: "+ nodeXml.textContent);
 // var test = nodeXml;				
@@ -145,6 +150,9 @@ function _parseXmlToObj(xml){
 // console.log( key +", "+ test[key]+ ", " + typeof test[key]);
 // }
 		var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
+		
+//console.log( nodeXml, nodeXml.childNodes, nodeXml.childNodes.length );			
+		
 		for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
 			var _child = nodeXml.childNodes.item(n2);
 //console.log( "nodeType: "+ _child.nodeType);
@@ -154,12 +162,22 @@ function _parseXmlToObj(xml){
 // console.log( "nodeName: "+ _child.nodeName);
 // console.log( "text: "+ _child.text);
 // console.log( "textContent: "+ _child.textContent);
-			var _name = _child.nodeName;
-			if ("textContent" in _child){
-				nodeObj[_name] = _child.textContent;
+//console.log( _child, _child.childNodes, _child.childNodes.length);
+//console.log( "nodeType: " + _child.childNodes.item(0).nodeType );
+//console.log( _child.childNodes.length > 1 );
+
+			if( _child.childNodes.length > 1 ){
+//.....				
 			} else {
-				nodeObj[_name] = _child.text;
+				
+				var _name = _child.nodeName;
+				if ("textContent" in _child){
+					nodeObj[_name] = _child.textContent;
+				} else {
+					nodeObj[_name] = _child.text;
+				}
 			}
+			
 		}//next
 
 // if( !record.children){
@@ -416,10 +434,10 @@ console.log(msg);
 								var data = xhr.responseText;
 							}
 
-							callback(data);
+							callback(data, runtime);
 						} else {
 							var data = xhr.responseText;
-							callback(data);
+							callback(data, runtime);
 						}
 					}
 					//if browser not define callback "onloadend"

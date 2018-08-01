@@ -283,8 +283,16 @@ var _notes = function ( opt ){
 	var _init = function(){
 console.log("init _notes");
 		_testing.defineEvents();
+/*		
 		var startNumTest = 0;
 		_testing.testServer( startNumTest );
+*/		
+
+//for test()
+//loadNotesXml();
+_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
+loadBookXml();
+		
 		//testServerMod();
 	};
 	
@@ -1140,7 +1148,7 @@ console.log("_defineEvents()");
 //console.log(data.length, typeof data, data);
 				//_parseXML( data );
 				xmlNotes = _parseXmlToObj(data);
-//console.log(obj);
+//console.log( xmlNotes);
 				if( xmlNotes.length > 0 ){
 					_drawNotes({
 						"data": xmlNotes
@@ -1162,6 +1170,74 @@ console.log("_defineEvents()");
 		}//end _onerror()
 		
 	}//end loadNotesXml()
+	
+	
+	function loadBookXml(){
+
+		//hide CONTROL PANEL
+		$("#control-btn").children("div").hide();
+		_vars["hideControlPanel"]=true;
+		_vars["messagesList"].innerHTML = "";
+		
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : _vars["requestUrl"], 
+			
+			"onProgress" : function( e ){
+				var percentComplete = 0;
+				if(e.lengthComputable) {
+					percentComplete = Math.ceil(e.loaded / e.total * 100);
+				}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+				var loadProgressBar = getById("load-progress-bar");
+				if( loadProgressBar ){
+					//loadProgress.value = percentComplete;
+					loadProgressBar.className = "progress-bar";
+					loadProgressBar.style.width = percentComplete+"%";
+					loadProgressBar.innerHTML = percentComplete+"%";
+				}
+			},//end callback function
+			
+			"onError" : function( xhr ){
+//console.log( "onError ", xhr);
+_vars["logMsg"] = "error, not load " + _vars["requestUrl"]
+_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+			},//end callback function
+			
+			"onLoadEnd" : function( headers ){
+//console.log( "onLoadEnd ", headers);
+				if( _vars["waitWindow"] ){
+					_vars["waitWindow"].style.display="none";
+				}
+			},//end callback function
+			
+			"callback": function( data, runtime ){
+console.log(data.length, typeof data, data );
+_vars["logMsg"] = "load " + _vars["requestUrl"]  +", runtime: "+ runtime +" sec";
+ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+// //console.log( "_postFunc(), " + typeof data );
+// //console.log( data );
+// //for( var key in data){
+// //console.log(key +" : "+data[key]);
+// //}
+
+				if( data ){
+//console.log( "success load!" );
+					xmlNotes = _parseXmlToObj(data);
+console.log( xmlNotes);
+				} else {
+_vars["logMsg"] = "error, no XML data in " + _vars["requestUrl"] ;
+_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+				}
+				
+			}//end callback()
+		});
+	
+	}//end loadBookXml()
+	
 	
 	function _drawNotes( opt ){
 		var p = {

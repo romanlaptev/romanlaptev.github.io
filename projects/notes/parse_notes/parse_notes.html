@@ -75,8 +75,8 @@ function()
 
 function load_xml(xml_file)
 {
-	$.get(xml_file,function(data)
-	{
+	$.get(xml_file,function(data)	{
+//console.log(data);	
 		$('#xml_data').empty();
 		var html = "";
 		var rootNid = "";
