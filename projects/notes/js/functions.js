@@ -116,6 +116,7 @@ function _parseXmlToObj(xml){
 //console.log( xml.documentElement.nodeName );			
 	var rootTagName = xml.documentElement.nodeName;
 	var xmlDoc = xml.getElementsByTagName( rootTagName);
+	//var xmlDoc = xml.getElementsByTagName( "nodes");
 
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 //console.log( xmlDoc.childNodes.length ) ;

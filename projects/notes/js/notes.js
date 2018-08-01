@@ -241,7 +241,8 @@ var _notes = function ( opt ){
 		
 		"messages" : getById("messages"),
 		"templates" : {
-			"tpl-message-list" : _getTpl("tpl-message-list")
+			"tpl-message-list" : _getTpl("tpl-message-list"),
+			"tpl-notes-list" : _getTpl("tpl-notes-list")
 		},
 		"messagesList" : getById("messages"),
 		"controlPanel" : getById("control-btn"),
@@ -1225,8 +1226,9 @@ console.log( _vars["logMsg"] );
 
 				if( data ){
 //console.log( "success load!" );
-					xmlNotes = _parseXmlToObj(data);
-console.log( xmlNotes);
+					//xmlNotes = _parseXmlToObj(data);
+//console.log( xmlNotes);
+					_parseBookXml(data);
 				} else {
 _vars["logMsg"] = "error, no XML data in " + _vars["requestUrl"] ;
 _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
@@ -1237,7 +1239,62 @@ console.log( _vars["logMsg"] );
 		});
 	
 	}//end loadBookXml()
-	
+
+	function _parseBookXml( xml ){
+		
+		if( typeof window.jQuery !== "function"){
+_vars["logMsg"] = "<p>jQuery failing.... ";
+_log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+			return false;
+		}
+
+		var listHtml = "";
+		var itemHtml = "";
+		$(xml).find("node").each(function( index, element ){
+//console.log( index, element );			
+//console.log( element.attributes );
+
+			itemHtml = _vars["templates"][ "tpl-notes-list"];
+			
+			
+			if ( $(element).attr("plid") !== "1585" ){
+//console.log( $(element).attr("plid") );
+				return;
+			}
+			
+			//get attributes
+			var nodeObj = get_attr_to_obj( element.attributes ) ;
+//console.log( $(element).children("body_value").text() );
+
+			//get children 
+			var nodeChildren = $(element).children();
+			$(nodeChildren).each( function( index, child ){
+//console.log( index, child );			
+//console.log( child.nodeName );
+//console.log( $(child).html() );
+				var key = child.nodeName;
+				var value = $(child).html();
+				nodeObj[key] = value;
+			});//next
+			
+			for( var key in nodeObj){
+//console.log(key, nodeObj[key]);
+
+				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, nodeObj[key]);
+					var key2 = "{{"+key+"}}";
+					itemHtml = itemHtml.replace(new RegExp(key2, 'g'), nodeObj[key]);
+				}
+
+			}//next
+			
+			listHtml += itemHtml;
+//console.log(listHtml);
+		});//next
+		
+		_vars["messages"].innerHTML = listHtml;
+	}//end _parseBookXml()
 	
 	function _drawNotes( opt ){
 		var p = {
