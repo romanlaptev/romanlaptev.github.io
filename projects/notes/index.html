@@ -116,7 +116,10 @@ $(document).ready(function(){
 </div><!-- end row -->
 </script>
 
+		</div>
+	</div>
 
+<!-- ********************** list notes ************************** -->	
 <script id="tpl-notes-list" type="text/template">
 	<div class="row">
 		<div class="" id="note-{{nid}}" data-mlid="{{mlid}}" data-plid="{{plid}}">
@@ -131,10 +134,14 @@ $(document).ready(function(){
 						<small>created:</small> {{created}}
 						<small>changed:</small> {{changed}} 
 					</span>
-					<!-- <span class="ip"> -->
-						<!-- <small>weight: {{weight}}</small> -->
-					<!-- </span> -->
 				</p>
+				
+			</div>
+				
+			<div class="panel-body">
+				<ul class="list-group linked-notes">
+{{linked_notes}}
+				</ul>
 			</div>
 				
 			<div class="panel-body text-message">{{body_value}}</div>
@@ -144,9 +151,13 @@ $(document).ready(function(){
 	</div><!-- end row -->
 </script>
 
-		</div>
-	</div>
-
+<!-- ********************** linked notes ************************** -->	
+<script id="tpl-linked-notes" type="text/template">
+	<li class="list-group-item">
+		<a href="#get-note-{{nid}}">{{title}}</a>
+	</li>
+</script>
+	
 <!-- ********************** newModal ************************** -->	
 	<div id="newModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">

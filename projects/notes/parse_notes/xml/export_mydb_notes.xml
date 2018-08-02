@@ -329,6 +329,7 @@ echo &quot;&lt;br&gt;&quot;;
 </node>
 <node title="linux_faq" nid="739" mlid="2413" plid="1585" created="31-Dec-2012 09:45:37" changed="30-May-2015 01:51:47" weight="-15">
 <body_value>
+<pre>
 =========================================================
 SUID
 
@@ -357,7 +358,7 @@ sticky bit в прошлом использовался, чтобы програ
 если каталог имеет это право, то удалить из него файл имеет право только владелец файла 
 или владелец каталога. Как правило это право устанавливается на каталог /tmp.
 =====================
-
+</pre>
 </body_value>
 <filename>
 
@@ -3911,6 +3912,7 @@ height=&quot;20px&quot; viewBox=&quot;0 0 14 14&quot; class=&quot;u7&quot;&gt;
 </node>
 <node title="android" nid="1212" mlid="3383" plid="1585" created="25-May-2018 12:47:09" changed="25-May-2018 15:05:20" weight="0">
 <body_value>
+<pre>
 #update Android SDK
 /home/jack/android_soft/android-sdk-linux/tools/android update sdk
 
@@ -3931,6 +3933,7 @@ fi
 if [ -d &quot;$HOME/android_soft/android-sdk-linux/platform-tools&quot; ] ; then
     PATH=&quot;$HOME/android_soft/android-sdk-linux/platform-tools:$PATH&quot;
 fi
+</pre>
 </body_value>
 <filename>
 

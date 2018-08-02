@@ -242,7 +242,8 @@ var _notes = function ( opt ){
 		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list"),
-			"tpl-notes-list" : _getTpl("tpl-notes-list")
+			"tpl-notes-list" : _getTpl("tpl-notes-list"),
+			"tpl-linked-notes" : _getTpl("tpl-linked-notes")
 		},
 		"messagesList" : getById("messages"),
 		"controlPanel" : getById("control-btn"),
@@ -1228,6 +1229,7 @@ console.log( _vars["logMsg"] );
 //console.log( "success load!" );
 					//xmlNotes = _parseXmlToObj(data);
 //console.log( xmlNotes);
+					_vars["xmlObj"] = data;
 					_parseBookXml(data);
 				} else {
 _vars["logMsg"] = "error, no XML data in " + _vars["requestUrl"] ;
@@ -1257,7 +1259,6 @@ console.log( _vars["logMsg"] );
 
 			itemHtml = _vars["templates"][ "tpl-notes-list"];
 			
-			
 			if ( $(element).attr("plid") !== "1585" ){
 //console.log( $(element).attr("plid") );
 				return;
@@ -1267,10 +1268,10 @@ console.log( _vars["logMsg"] );
 			var nodeObj = get_attr_to_obj( element.attributes ) ;
 //console.log( $(element).children("body_value").text() );
 
-			//get children 
+			//get child nodes
 			var nodeChildren = $(element).children();
 			$(nodeChildren).each( function( index, child ){
-//console.log( index, child );			
+//console.log( index, child );
 //console.log( child.nodeName );
 //console.log( $(child).html() );
 				var key = child.nodeName;
@@ -1278,8 +1279,22 @@ console.log( _vars["logMsg"] );
 				nodeObj[key] = value;
 			});//next
 			
+			//get linked nodes
+			var mlid = $(element).attr("mlid");
+			nodeObj["linkedNodes"] = _getLinkedNodes( mlid );
+//console.log( nodeObj );
+			
+			//form HTML
 			for( var key in nodeObj){
 //console.log(key, nodeObj[key]);
+
+//---------------------------------- add linked page, form link				
+				if( nodeObj["linkedNodes"].length > 0){
+					linkedHtml = _formLinkedNodes( nodeObj["linkedNodes"] );
+					itemHtml = itemHtml.replace("{{linked_notes}}", linkedHtml);
+//console.log(itemHtml);
+				}
+//-------------------------------
 
 				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, nodeObj[key]);
@@ -1289,12 +1304,55 @@ console.log( _vars["logMsg"] );
 
 			}//next
 			
+			itemHtml = itemHtml
+			.replace("{{linked_notes}}", "")
+			.replace("{{body_value}}", "");
+			
 			listHtml += itemHtml;
 //console.log(listHtml);
 		});//next
 		
 		_vars["messages"].innerHTML = listHtml;
+		
 	}//end _parseBookXml()
+	
+	function _getLinkedNodes( mlid ){
+		var linkedNodes = [];
+		$(_vars["xmlObj"]).find("node").each(function( index, element ){
+			if ( $(element).attr("plid") === mlid ){
+//console.log( $(element).attr("plid") );
+				var nodeObj = get_attr_to_obj( element.attributes ) ;
+				//for( var key in nodeObj){
+//console.log(key, nodeObj[key]);
+				//}//next
+				linkedNodes.push( nodeObj );
+			}
+		});//next
+		return linkedNodes;
+	}//end _getLinkedNodes()
+
+	function _formLinkedNodes( linkedNodes ){
+			linkedHtml = "";
+			for(var n = 0; n < linkedNodes.length; n++){
+					var linkedNode = linkedNodes[n];
+					linkHtml = _vars["templates"][ "tpl-linked-notes"];
+
+					for(var key in linkedNode){
+						if( linkHtml.indexOf("{{"+key+"}}") !== -1 ){
+							var key2 = "{{"+key+"}}";
+							var value = linkedNode[key];
+							linkHtml = linkHtml.replace(new RegExp(key2, 'g'), value);
+						}
+					}//next
+
+					//linkedHtml += linkHtml.replace("{{title}}", n);
+					linkedHtml += linkHtml;
+			}//next
+//console.log(linkedHtml);
+			return linkedHtml;
+	}//end _formLinkedNodes()
+
+	
 	
 	function _drawNotes( opt ){
 		var p = {
