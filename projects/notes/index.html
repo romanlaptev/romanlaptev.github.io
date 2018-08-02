@@ -37,6 +37,8 @@ console.log( webNotes );
 
 $(document).ready(function(){
 	$("input[type=file]").bootstrapFileInput();
+	
+	//$(".collapse").collapse();
 });//end ready	
 	</script>
 	
@@ -72,13 +74,97 @@ $(document).ready(function(){
 		<div id="log"></div>
 	</div>		
 		
+		
+	
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h4 class="panel-title">
+				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+				</h4>
+			  </div>
+			  <div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+			  </div>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h4 class="panel-title">
+			  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+			</h4>
+		  </div>
+		  <div id="collapse2" class="panel-collapse collapse">
+			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		  </div>
+		</div>
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h4 class="panel-title">
+			  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+			</h4>
+		  </div>
+		  <div id="collapse3" class="panel-collapse collapse">
+			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		  </div>
+		</div>
+	</div> 
+
 	<div class="panel">
 <!--
 			<div class="panel-heading">
 				<h4>list of notes:</h4>
 			</div>
 -->
-		<div class="panel-body" id="messages">
+		<div class="panel-body" id="messages"></div>
+	</div>
+</div><!-- end container -->
+
+<!--
+<div class="top">
+	<a title="scroll to top page" href="#top" class="">
+		<div class="arrow"></div>
+	</a>
+</div>
+-->	
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
+</div>
+
+<div id="wait-window" class="modal-dialog hide">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+<!--		
+	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+-->
+</div>
+<div id="overlay" class="hide"></div>
+
+<!--
+	<script src="editor/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script>
+	tinymce.init({ 
+		selector:"#notes-text" 
+	});
+	</script>
+	
+	<script src="editor/ckeditor/ckeditor.js"></script>
+	<script>
+		CKEDITOR.replace( "notes-text" );
+	</script>
+-->
+
+<!-- ********************** TEMPLATES ************************** -->	
+<!-- ********************** message-list ************************** -->	
 <script id="tpl-message-list" type="text/template">
 <div class="row">
 	<div class="" id="note-{{id}}">
@@ -115,10 +201,7 @@ $(document).ready(function(){
 	</div>
 </div><!-- end row -->
 </script>
-
-		</div>
-	</div>
-
+	
 <!-- ********************** list notes ************************** -->	
 <script id="tpl-notes-list" type="text/template">
 	<div class="row">
@@ -301,45 +384,6 @@ enctype="application/x-www-form-urlencoded">
 			</div><!-- end modal-content-->
 		</div>
 	</div><!-- end importModal -->
-	
-</div><!-- end container -->
 
-<!--
-<div class="top">
-	<a title="scroll to top page" href="#top" class="">
-		<div class="arrow"></div>
-	</a>
-</div>
--->	
-<div class="">
-	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
-</div>
-
-<div id="wait-window" class="modal-dialog hide">
-	<h1 class="text-center">wait...</h1>
-	<div class="loader loader2"></div> 
-<!--		
-	<progress id="load-progress" max="100" value="0" style="width:100%"></progress>					
-	ajax load:
-	<div class="progress">
-		<div id="load-progress-bar" class="progress-bar hide"></div>
-	</div>
--->
-</div>
-<div id="overlay" class="hide"></div>
-
-<!--
-	<script src="editor/tinymce/js/tinymce/tinymce.min.js"></script>
-	<script>
-	tinymce.init({ 
-		selector:"#notes-text" 
-	});
-	</script>
-	
-	<script src="editor/ckeditor/ckeditor.js"></script>
-	<script>
-		CKEDITOR.replace( "notes-text" );
-	</script>
--->	
 </body>
 </html>

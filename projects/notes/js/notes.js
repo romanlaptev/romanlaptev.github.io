@@ -1259,7 +1259,8 @@ console.log( _vars["logMsg"] );
 
 			itemHtml = _vars["templates"][ "tpl-notes-list"];
 			
-			if ( $(element).attr("plid") !== "1585" ){
+			//if ( $(element).attr("plid") !== "1585" ){
+			if ( $(element).attr("plid") !== "0" ){
 //console.log( $(element).attr("plid") );
 				return;
 			}
