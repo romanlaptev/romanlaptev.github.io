@@ -1503,7 +1503,7 @@ console.log( _vars["logMsg"] );
 			} else {
 				var itemTitle = _vars["breadcrumbs"][item];
 				if( itemID !== nodeObj.nid ){
-					breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"'>" + itemTitle + "</a></li>";
+					breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"' class='btn btn-sm btn-info'>" + itemTitle + "</a></li>";
 				} else {
 					breadcrumbs += "<li>" + itemTitle + "</li>";
 				}
@@ -1512,7 +1512,6 @@ console.log( _vars["logMsg"] );
 //console.log( itemID, nodeObj.nid, itemID === nodeObj.nid );
 //console.log( typeof itemID, typeof nodeObj.nid );
 			if( itemID === nodeObj.nid ){//detect unuseful tail breadrumbs
-//console.log( itemID, nodeObj.nid, itemID === nodeObj.nid );
 				clear = true;
 			}
 			
