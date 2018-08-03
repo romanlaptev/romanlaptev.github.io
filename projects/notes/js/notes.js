@@ -6,6 +6,18 @@ var _notes = function ( opt ){
 		"exportUrl" : "",
 		//"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
 		
+		"messages" : getById("messages"),
+		"templates" : {
+			"tpl-message-list" : _getTpl("tpl-message-list"),
+			"tpl-notes-list" : _getTpl("tpl-notes-list"),
+			"tpl-linked-notes" : _getTpl("tpl-linked-notes")
+		},
+		"messagesList" : getById("messages"),
+		"controlPanel" : getById("control-btn"),
+		"hideControlPanel" : false,
+		"$num_notes" : getById("num-notes"),
+		"breadcrumbs": [],
+		
 		"tests" : [{
 			"name" : "checkPHP",
 			"url" : "api/test.php",
@@ -237,18 +249,8 @@ var _notes = function ( opt ){
 				}//end callback
 			} //end test
 		
-		],//end tests
+		]//end tests
 		
-		"messages" : getById("messages"),
-		"templates" : {
-			"tpl-message-list" : _getTpl("tpl-message-list"),
-			"tpl-notes-list" : _getTpl("tpl-notes-list"),
-			"tpl-linked-notes" : _getTpl("tpl-linked-notes")
-		},
-		"messagesList" : getById("messages"),
-		"controlPanel" : getById("control-btn"),
-		"hideControlPanel" : false,
-		"$num_notes" : getById("num-notes")
 	};
 	
 	//correct for remote run
@@ -1484,6 +1486,39 @@ console.log( _vars["logMsg"] );
 		itemHtml = itemHtml
 		.replace("{{linked_notes}}", "")
 		.replace("{{body_value}}", "");
+		
+//-------------------------------- form breadcrumbs
+		//add container link to breadcrumbs
+		_vars["breadcrumbs"][ "key_" + nodeObj.nid ] = nodeObj["title"];
+//console.log("add breadcrumb item, id: ", nodeObj.nid);
+		
+		//form breadcrumbs line
+		var breadcrumbs = "";
+		var clear = false;
+		for( var item in _vars["breadcrumbs"] ){
+			var itemID = item.replace("key_", "");
+			
+			if( clear ){//clear unuseful tail breadrumbs
+				delete _vars["breadcrumbs"][item];
+			} else {
+				var itemTitle = _vars["breadcrumbs"][item];
+				if( itemID !== nodeObj.nid ){
+					breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"'>" + itemTitle + "</a></li>";
+				} else {
+					breadcrumbs += "<li>" + itemTitle + "</li>";
+				}
+			}
+			
+//console.log( itemID, nodeObj.nid, itemID === nodeObj.nid );
+//console.log( typeof itemID, typeof nodeObj.nid );
+			if( itemID === nodeObj.nid ){//detect unuseful tail breadrumbs
+//console.log( itemID, nodeObj.nid, itemID === nodeObj.nid );
+				clear = true;
+			}
+			
+		}//next
+//console.log( breadcrumbs );
+		itemHtml = itemHtml.replace("{{breadcrumbs}}", breadcrumbs);
 		
 		listHtml += itemHtml;
 //console.log(listHtml);
