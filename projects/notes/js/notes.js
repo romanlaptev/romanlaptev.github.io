@@ -285,15 +285,15 @@ var _notes = function ( opt ){
 	var _init = function(){
 console.log("init _notes");
 		_testing.defineEvents();
-/*		
 		var startNumTest = 0;
 		_testing.testServer( startNumTest );
-*/		
 
+/*		
 //for test()
 //loadNotesXml();
 _vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
 loadBookXml();
+*/		
 		
 		//testServerMod();
 	};
@@ -305,7 +305,7 @@ loadBookXml();
 	
 	
 	function _defineEvents(){
-console.log("_defineEvents()");
+//console.log("_defineEvents()");
 		
 		//ADD NEW NOTE
 		document.forms["form_message"].onsubmit = function(e){
@@ -459,7 +459,8 @@ console.log("_defineEvents()");
 				e.preventDefault();
 			});
 		*/
-		//DELETE NOTE
+		
+		//PAGE NAVIGATION
 		if( _vars.messagesList ){
 			_vars.messagesList.onclick = function(event){
 				event = event || window.event;
@@ -473,7 +474,7 @@ console.log("_defineEvents()");
 				// //event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 				
 				if( target.tagName === "A"){
-					if ( target.href.indexOf("#") !== -1){
+					if ( target.href.indexOf("?q=") !== -1){
 						
 						if (event.preventDefault) {
 							event.preventDefault();
@@ -481,22 +482,14 @@ console.log("_defineEvents()");
 							event.returnValue = false;
 						}
 						
-						var search = target.href.split("#");
+						var search = target.href.split("?");
 						var parseStr = search[1];
 //console.log( search, parseStr );
 						if( parseStr.length > 0 ){
-							if( parseStr.indexOf("delete_note") !== -1){
-								var p = parseStr.split("-");
-								serviceAction({
-										"action" : p[0],
-										"id": p[1]
-									},
-									function(){
-										loadNotes();
-									});
-							}
+							_vars["GET"] = parseGetParams( parseStr ); 
+							_urlManager( target );
 						} else {
-							// console.log( "Warn! error parse url in " + target.href );
+console.log( "Warning! error parse url in " + target.href );
 						}
 					}
 				}
@@ -514,12 +507,13 @@ console.log("_defineEvents()");
 			}
 		}
 		
-		//REMOVE ALL NOTES, REFRESH TABLES
+		//controlPanel buttons
 		if( _vars.controlPanel ){
 			_vars.controlPanel.onclick = function(event){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
 //console.log( event );
+//------------------					
 				if( target.tagName === "A"){
 					if ( target.href.indexOf("#") !== -1){
 						if (event.preventDefault) {
@@ -546,7 +540,29 @@ console.log("_defineEvents()");
 							// console.log( "Warn! error parse url in " + target.href );
 						}
 					}
+					
+//------------------					
+					if ( target.href.indexOf("?q=") !== -1){
+						
+						if (event.preventDefault) {
+							event.preventDefault();
+						} else {
+							event.returnValue = false;
+						}
+						
+						var search = target.href.split("?");
+						var parseStr = search[1];
+//console.log( search, parseStr );
+						if( parseStr.length > 0 ){
+							_vars["GET"] = parseGetParams( parseStr ); 
+							_urlManager( target );
+						} else {
+console.log( "Warning! error parse url in " + target.href );
+						}
+					}
+					
 				}
+				
 				
 			}//end event
 		}
@@ -610,6 +626,70 @@ console.log("_defineEvents()");
 		}
 		
 	}//end _defineEvents()
+	
+	
+	
+	function _urlManager( target ){
+//console.log(target, _vars["GET"]);
+
+		switch( _vars["GET"]["q"] ) {
+/*
+			
+			case "hide-log":
+				webApp.vars["log"].style.display="none";
+			break;
+			case "view-log":
+				webApp.vars["log"].style.display="block";
+			break;
+			case "toggle-log":
+//console.log(webApp.vars["log"]..style.display);
+				if( webApp.vars["log"].style.display==="none"){
+					webApp.vars["log"].style.display="block";
+				} else {
+					webApp.vars["log"].style.display="none";
+				}
+			break;
+			
+			case "clear-log":
+				webApp.vars["log"].innerHTML="";
+			break;
+*/			
+			case "view-node": 
+				var nodeObj = _getNode({
+					"nid" : _vars["GET"]["nid"],
+					"xml" : _vars["xmlObj"]
+				});
+//console.log(nodeObj);
+				if( nodeObj ){
+					_drawNode( nodeObj, _vars["messages"] );
+					} else {
+_vars["logMsg"] = "Not find node, nid:" + _vars["GET"]["nid"];
+_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+					}
+			break;
+
+			case "load-xml-book":
+				_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
+				loadBookXml();
+			break;
+			
+			case "delete-note":
+				serviceAction({
+						"action" : _vars["GET"]["q"],
+						"id": _vars["GET"]["id"]
+					},
+					function(){
+						loadNotes();
+					});
+			break;
+			
+			default:
+console.log("function _urlManager(),  GET query string: ", _vars["GET"]);			
+			break;
+		}//end switch
+		
+	}//end _urlManager()
 	
 	function _upload( form ){
 		if( window.FileList ){
@@ -1215,7 +1295,7 @@ console.log( _vars["logMsg"] );
 			},//end callback function
 			
 			"callback": function( data, runtime ){
-console.log(data.length, typeof data, data );
+//console.log(data.length, typeof data, data );
 _vars["logMsg"] = "load " + _vars["requestUrl"]  +", runtime: "+ runtime +" sec";
  _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
@@ -1226,17 +1306,21 @@ console.log( _vars["logMsg"] );
 // //}
 
 				if( data ){
-//console.log( "success load!" );
-					//xmlNotes = _parseXmlToObj(data);
-//console.log( xmlNotes);
 					_vars["xmlObj"] = data;
 					
 					//output main pages of book (plid=0)
 					var nodeObj = _getNode({
-						"plid" : "0"
+						"plid" : "0",
+						"xml" : _vars["xmlObj"]
 					});
 //console.log(nodeObj);
-					_drawNode( nodeObj, _vars["messages"] );
+					if( nodeObj ){
+						_drawNode( nodeObj, _vars["messages"] );
+					} else {
+_vars["logMsg"] = "Not find node";
+_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+					}
 					
 				} else {
 _vars["logMsg"] = "error, no XML data in " + _vars["requestUrl"] ;
@@ -1253,7 +1337,7 @@ console.log( _vars["logMsg"] );
 	function _getNode( opt ){
 		
 		if( typeof window.jQuery !== "function"){
-_vars["logMsg"] = "<p>jQuery failing.... ";
+_vars["logMsg"] = "<p>jQuery failing....</p>";
 _log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			return false;
@@ -1264,23 +1348,44 @@ console.log( _vars["logMsg"] );
 			"plid": null,
 			"mlid": null,
 			"title" : "",
-			//"callback": null
-			"xml" : _vars["xmlObj"],
-			"nodeObj" : {}
+			"xml" : null,
+			"nodeObj" : false
 		};
 		
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log( p );
+//console.log( p );
 
+		if(!p.xml){
+_vars["logMsg"] = "XML undefined....";
+//_log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+			return false;
+		}
+		
+		var testId = false;
+		if( p.nid ){
+			testId = "nid";
+		}
+		if( p.plid ){
+			testId = "plid";
+		}
+		if( p.mlid ){
+			testId = "mlid";
+		}
+		if( p.title ){
+			testId = "title";
+		}
+		
 		$( p.xml ).find("node").each(function( index, element ){
 //console.log( index, element );			
 //console.log( element.attributes );
 
-			if ( $(element).attr("plid") !== p.plid ){
-//console.log( $(element).attr("plid") );
+			//if ( $(element).attr("plid") !== p.plid ){
+			if ( $(element).attr( testId ) !== p[ testId ] ){
+//console.log( $(element).attr(testId), p.plid );
 				return;
 			}
 			
@@ -1311,7 +1416,7 @@ console.log( p );
 	function _getLinkedNodes( mlid ){
 		
 		if( typeof window.jQuery !== "function"){
-_vars["logMsg"] = "<p>jQuery failing.... ";
+_vars["logMsg"] = "<p>jQuery failing....</p>";
 _log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			return false;

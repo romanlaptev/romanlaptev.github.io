@@ -60,9 +60,15 @@ $(document).ready(function(){
 				<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
 				<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
 				<a href="tests_app/SpecRunner.html" class="">test code</a>
+				<a href="?q=load-xml-book" class="btn btn-sm btn-info">load-xml-book</a>
 			</div>
 			<a href="#" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
 		</div>
+		
+		<div class="panel-body">
+			<a href="parse_notes/parse_notes.html" class="">previous version</a>
+		</div>
+		
 	</div>
 		
 	<div id="log-wrap" class="log-panel">
@@ -75,7 +81,7 @@ $(document).ready(function(){
 	</div>		
 		
 		
-	
+<!--	
 	<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			  <div class="panel-heading">
@@ -114,7 +120,7 @@ $(document).ready(function(){
 		  </div>
 		</div>
 	</div> 
-
+-->
 	<div class="panel">
 <!--
 			<div class="panel-heading">
@@ -174,7 +180,7 @@ $(document).ready(function(){
 				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
 <div class="pull-right">
 	<button class="btn btn-info btn-sm btn-edit-note" data-toggle="modal" data-target="#editModal" data-id="{{id}}">edit note</button>
-	<a href="#delete_note-{{id}}" class="btn btn-sm btn-danger btn-delete-note">delete note</a>
+	<a href="?q=delete-note&id={{id}}" class="btn btn-sm btn-danger btn-delete-note">delete note</a>
 </div>
  <br><br>
  
@@ -237,7 +243,7 @@ $(document).ready(function(){
 <!-- ********************** linked notes ************************** -->	
 <script id="tpl-linked-notes" type="text/template">
 	<li class="list-group-item">
-		<a href="#get-note-{{nid}}">{{title}}</a>
+		<a href="?q=view-node&nid={{nid}}">{{title}}</a>
 	</li>
 </script>
 	
