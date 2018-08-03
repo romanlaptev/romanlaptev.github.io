@@ -1309,6 +1309,9 @@ console.log( _vars["logMsg"] );
 
 				if( data ){
 					_vars["xmlObj"] = data;
+
+					//set number of notes
+					_vars["$num_notes"].innerHTML  = $( data ).find("node").length;
 					
 					//output main pages of book (plid=0)
 					var nodeObj = _getNode({

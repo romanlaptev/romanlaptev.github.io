@@ -229,7 +229,8 @@ $(document).ready(function(){
 				</div>
 				
 				<div class="panel-body">
-					<ul class="list-group linked-notes">
+					<!-- <ul class="list-group linked-notes"> -->
+					<ul class="list-inline linked-notes">
 	{{linked_notes}}
 					</ul>
 				</div>
@@ -244,7 +245,7 @@ $(document).ready(function(){
 <!-- ********************** linked notes ************************** -->	
 <script id="tpl-linked-notes" type="text/template">
 	<li class="list-group-item">
-		<a href="?q=view-node&nid={{nid}}">{{title}}</a>
+		<a href="?q=view-node&nid={{nid}}" class="btn btn-sm btn-info">{{title}}</a>
 	</li>
 </script>
 	
