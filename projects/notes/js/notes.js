@@ -1230,7 +1230,14 @@ console.log( _vars["logMsg"] );
 					//xmlNotes = _parseXmlToObj(data);
 //console.log( xmlNotes);
 					_vars["xmlObj"] = data;
-					_parseBookXml(data);
+					
+					//output main pages of book (plid=0)
+					var nodeObj = _getNode({
+						"plid" : "0"
+					});
+//console.log(nodeObj);
+					_drawNode( nodeObj, _vars["messages"] );
+					
 				} else {
 _vars["logMsg"] = "error, no XML data in " + _vars["requestUrl"] ;
 _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
@@ -1242,7 +1249,8 @@ console.log( _vars["logMsg"] );
 	
 	}//end loadBookXml()
 
-	function _parseBookXml( xml ){
+	
+	function _getNode( opt ){
 		
 		if( typeof window.jQuery !== "function"){
 _vars["logMsg"] = "<p>jQuery failing.... ";
@@ -1250,26 +1258,37 @@ _log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			return false;
 		}
+		
+		var p = {
+			"nid": null,
+			"plid": null,
+			"mlid": null,
+			"title" : "",
+			//"callback": null
+			"xml" : _vars["xmlObj"],
+			"nodeObj" : {}
+		};
+		
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log( p );
 
-		var listHtml = "";
-		var itemHtml = "";
-		$(xml).find("node").each(function( index, element ){
+		$( p.xml ).find("node").each(function( index, element ){
 //console.log( index, element );			
 //console.log( element.attributes );
 
-			itemHtml = _vars["templates"][ "tpl-notes-list"];
-			
-			//if ( $(element).attr("plid") !== "1585" ){
-			if ( $(element).attr("plid") !== "0" ){
+			if ( $(element).attr("plid") !== p.plid ){
 //console.log( $(element).attr("plid") );
 				return;
 			}
 			
 			//get attributes
-			var nodeObj = get_attr_to_obj( element.attributes ) ;
+			p.nodeObj = get_attr_to_obj( element.attributes ) ;
+			
+			//get child nodes (<body_value> .....etc...)
 //console.log( $(element).children("body_value").text() );
-
-			//get child nodes
 			var nodeChildren = $(element).children();
 			$(nodeChildren).each( function( index, child ){
 //console.log( index, child );
@@ -1277,47 +1296,27 @@ console.log( _vars["logMsg"] );
 //console.log( $(child).html() );
 				var key = child.nodeName;
 				var value = $(child).html();
-				nodeObj[key] = value;
+				p.nodeObj[key] = value;
 			});//next
-			
+
 			//get linked nodes
 			var mlid = $(element).attr("mlid");
-			nodeObj["linkedNodes"] = _getLinkedNodes( mlid );
-//console.log( nodeObj );
-			
-			//form HTML
-			for( var key in nodeObj){
-//console.log(key, nodeObj[key]);
-
-//---------------------------------- add linked page, form link				
-				if( nodeObj["linkedNodes"].length > 0){
-					linkedHtml = _formLinkedNodes( nodeObj["linkedNodes"] );
-					itemHtml = itemHtml.replace("{{linked_notes}}", linkedHtml);
-//console.log(itemHtml);
-				}
-//-------------------------------
-
-				if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, nodeObj[key]);
-					var key2 = "{{"+key+"}}";
-					itemHtml = itemHtml.replace(new RegExp(key2, 'g'), nodeObj[key]);
-				}
-
-			}//next
-			
-			itemHtml = itemHtml
-			.replace("{{linked_notes}}", "")
-			.replace("{{body_value}}", "");
-			
-			listHtml += itemHtml;
-//console.log(listHtml);
+			p.nodeObj["linkedNodes"] = _getLinkedNodes( mlid );
 		});//next
 		
-		_vars["messages"].innerHTML = listHtml;
-		
-	}//end _parseBookXml()
+		return p.nodeObj;
+	}//end _getNode
+
 	
 	function _getLinkedNodes( mlid ){
+		
+		if( typeof window.jQuery !== "function"){
+_vars["logMsg"] = "<p>jQuery failing.... ";
+_log("<div class='alert alert-error'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+			return false;
+		}
+		
 		var linkedNodes = [];
 		$(_vars["xmlObj"]).find("node").each(function( index, element ){
 			if ( $(element).attr("plid") === mlid ){
@@ -1353,7 +1352,39 @@ console.log( _vars["logMsg"] );
 			return linkedHtml;
 	}//end _formLinkedNodes()
 
-	
+	function _drawNode(nodeObj, htmlContainer){
+		var listHtml = "";
+		var itemHtml = _vars["templates"][ "tpl-notes-list"];
+
+		//form HTML
+		for( var key in nodeObj){
+//console.log(key, nodeObj[key]);
+
+//---------------------------------- add linked page, form link				
+			if( nodeObj["linkedNodes"].length > 0){
+				linkedHtml = _formLinkedNodes( nodeObj["linkedNodes"] );
+				itemHtml = itemHtml.replace("{{linked_notes}}", linkedHtml);
+//console.log(itemHtml);
+			}
+			
+//------------------------------- insert data into template
+			if( itemHtml.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, nodeObj[key]);
+				var key2 = "{{"+key+"}}";
+				itemHtml = itemHtml.replace(new RegExp(key2, 'g'), nodeObj[key]);
+			}
+
+		}//next
+		
+		itemHtml = itemHtml
+		.replace("{{linked_notes}}", "")
+		.replace("{{body_value}}", "");
+		
+		listHtml += itemHtml;
+//console.log(listHtml);
+
+		htmlContainer.innerHTML = listHtml;
+	}//end _drawNode()
 	
 	function _drawNotes( opt ){
 		var p = {
