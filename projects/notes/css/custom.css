@@ -5,11 +5,22 @@ height: 50%;
 overflow-y: scroll;
 }
 */
+body {
+	/* color: #fff; */
+	background-color: #315570;
+	padding: 15px;
+}
+
+.container{
+background-color: #fff;
+border-radius: 10px;
+}
 
 #log .alert {
 margin-bottom: 0;
 padding: 10px;
 }
+
 #log p{
 margin: 0;
 }
@@ -102,4 +113,10 @@ border-top: 16px solid #3498db;
 }
 .breadcrumb-custom a {
 	color: #fff;
+}
+
+.bookpage .panel-primary > .panel-heading {
+	background-color: #006b9b;
+	/* border-color: #337ab7; */
+	/*border-radius: 15px 15px 0 0;*/
 }
