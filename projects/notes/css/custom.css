@@ -120,3 +120,7 @@ border-top: 16px solid #3498db;
 	/* border-color: #337ab7; */
 	/*border-radius: 15px 15px 0 0;*/
 }
+
+.linked-notes a {
+	color: #0000ff;
+}

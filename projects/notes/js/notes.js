@@ -1361,7 +1361,7 @@ console.log( _vars["logMsg"] );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log( p );
+console.log( p );
 
 		if(!p.xml){
 _vars["logMsg"] = "XML undefined....";
@@ -1506,9 +1506,11 @@ console.log( _vars["logMsg"] );
 			} else {
 				var itemTitle = _vars["breadcrumbs"][item];
 				if( itemID !== nodeObj.nid ){
-					breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"' class='btn btn-sm btn-info'>" + itemTitle + "</a></li>";
+					//breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"' class='btn btn-sm btn-info'>" + itemTitle + "</a></li>";
+					breadcrumbs += "<a href='#?q=view-node&nid="+itemID+"' class='btn btn-primary'>" + itemTitle + "</a>";
 				} else {
-					breadcrumbs += "<li>" + itemTitle + "</li>";
+					//breadcrumbs += "<li>" + itemTitle + "</li>";
+					breadcrumbs += "<span class='btn btn-info'>" + itemTitle + "</span>";
 				}
 			}
 			
