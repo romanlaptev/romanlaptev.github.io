@@ -103,8 +103,9 @@ function _app( opt ){
 							event.returnValue = false;				
 						}
 
-							var search = target.href.split("?"); 
-							var parseStr = search[1]; 
+							//var search = target.href.split("?"); 
+							//var parseStr = search[1]; 
+							var parseStr = target.href; 
 //console.log( search, parseStr );
 							if( parseStr.length > 0 ){
 								webApp.vars["GET"] = parseGetParams( parseStr ); 
@@ -800,7 +801,7 @@ console.log( webApp.vars["logMsg"] );
 				webApp.app.urlManager();
 			} else {
 				if( webApp.app.vars["init_url"] ){
-						parseUrl = webApp.app.vars["init_url"].substring(2);
+						parseUrl = webApp.app.vars["init_url"];
 //console.log(parseUrl);					
 				}
 				webApp.vars["GET"] = parseGetParams( parseUrl ); 

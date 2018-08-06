@@ -1,7 +1,7 @@
 var _notes = function ( opt ){
 //console.log(arguments);
 	var _vars = {
-		
+		"init_url" : "/?q=load-xml-book",
 		"requestUrl" : "upload/notes.xml",
 		"exportUrl" : "",
 		//"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
@@ -287,9 +287,10 @@ var _notes = function ( opt ){
 	var _init = function(){
 console.log("init _notes");
 		_testing.defineEvents();
+/*
 		var startNumTest = 0;
 		_testing.testServer( startNumTest );
-
+*/
 /*		
 //for test()
 //loadNotesXml();
@@ -298,7 +299,22 @@ loadBookXml();
 */		
 		
 		//testServerMod();
-	};
+		
+		var parseUrl = window.location.search; 
+		if( parseUrl.length > 0 ){
+			_vars["GET"] = parseGetParams(); 
+			_urlManager();
+		} else {
+				if( _vars["init_url"] ){
+						//parseUrl = _vars["init_url"].substring(2);
+						parseUrl = _vars["init_url"];
+console.log(parseUrl);					
+				}
+				_vars["GET"] = parseGetParams( parseUrl ); 
+				_urlManager();
+			}
+		
+	};//end _init()
 	
 	function _getTpl( id ){
 		var tpl = getById(id);
@@ -484,9 +500,10 @@ loadBookXml();
 							event.returnValue = false;
 						}
 						
-						var search = target.href.split("?");
-						var parseStr = search[1];
+						//var search = target.href.split("?");
+						//var parseStr = search[1];
 //console.log( search, parseStr );
+						var parseStr = target.href;
 						if( parseStr.length > 0 ){
 							_vars["GET"] = parseGetParams( parseStr ); 
 							_urlManager( target );
@@ -1361,7 +1378,7 @@ console.log( _vars["logMsg"] );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log( p );
+//console.log( p );
 
 		if(!p.xml){
 _vars["logMsg"] = "XML undefined....";

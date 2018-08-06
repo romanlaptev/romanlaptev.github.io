@@ -300,6 +300,9 @@ function parseGetParams( parseStr ) {
 	if( !parseStr ){
 		var parse_url = window.location.search.substring(1).split("&"); 
 	} else {
+		p = parseStr.split("?");
+	//console.log(p);
+		parseStr = p["1"];
 		var parse_url = parseStr.split("&"); 
 	}
 //console.log(parse_url);
