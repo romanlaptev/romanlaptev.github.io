@@ -1510,7 +1510,7 @@ console.log( _vars["logMsg"] );
 					breadcrumbs += "<a href='#?q=view-node&nid="+itemID+"' class='btn btn-primary'>" + itemTitle + "</a>";
 				} else {
 					//breadcrumbs += "<li>" + itemTitle + "</li>";
-					breadcrumbs += "<span class='btn btn-info'>" + itemTitle + "</span>";
+					breadcrumbs += "<span class='btn btn-info active-item'>" + itemTitle + "</span>";
 				}
 			}
 			

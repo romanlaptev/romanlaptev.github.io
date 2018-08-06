@@ -10,7 +10,8 @@
 }
 .btn-breadcrumb .btn{
 	border-color: transparent; border: 0px solid transparent;
-	border-right: 1px solid transparent !important; 
+	/*border-right: 1px solid transparent !important; */
+				border-right: 2px solid transparent !important;
 	font-size: 11px;
 }
 .breadcrumb-default{ background-color: #fff; }
@@ -23,7 +24,11 @@
 .breadcrumb-danger{ background-color: #d9534f; }
 .breadcrumb-negro{ background-color: #d4d4d4; }
 
-.btn-breadcrumb .btn:last-child {font-weight: bold; text-decoration: underline;}
+.btn-breadcrumb .btn:last-child {
+	font-weight: bold; 
+	/*text-decoration: underline;*/
+			text-decoration: none;
+}
 .btn-breadcrumb .btn:last-child:after{margin-left: -2px;}
 .btn-breadcrumb .btn:last-child:before{margin-left: -1px;}
 
@@ -123,3 +128,11 @@
 .breadcrumb-primary {
 	margin-bottom: 10px;
 }
+
+.btn-breadcrumb .active-item {
+	border-radius: 3px 5px 5px 3px;
+}
+.btn-breadcrumb a {
+	text-decoration: none;	
+}
+
