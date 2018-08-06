@@ -250,7 +250,7 @@ $(document).ready(function(){
 	
 		<div class="bookpage" id="note-{{nid}}" data-mlid="{{mlid}}" data-plid="{{plid}}">
 		
-			<div class="panel btn-group btn-breadcrumb breadcrumb-primary">
+			<div class="panel btn-group btn-breadcrumb breadcrumb-primary breadcrumb-custom">
 				{{breadcrumbs}}
 			</div>
 		
@@ -262,20 +262,22 @@ $(document).ready(function(){
 				</div>
 -->
 				
-				<div class="panel-body">
-					<!-- <ul class="list-group linked-notes"> -->
-					<ul class="list-inline linked-notes">
-	{{linked_notes}}
+				<div class="linked-nodes">
+					<!-- <ul class="list-group"> -->
+					<!-- <ul class="list-inline linked-nodes"> -->
+					<ul>
+	{{linked_nodes}}
 					</ul>
 				</div>
 					
 				<div class="panel-body"><pre>{{body_value}}</pre></div>
 
 				<div class="panel-footer">
-					<p class="text-muted">
-						<span class="date">
-							<small>created:</small> {{created}}
-							<small>changed:</small> {{changed}} 
+					<p class="">
+						<span class="date"><small>
+							<b>created:</b> {{created}}
+							<b>changed:</b> {{changed}} 
+							</small>
 						</span>
 					</p>
 				</div>
@@ -287,8 +289,9 @@ $(document).ready(function(){
 </script>
 
 <!-- ********************** linked notes ************************** -->	
-<script id="tpl-linked-notes" type="text/template">
-	<li class="list-group-item">
+<script id="tpl-linked-nodes" type="text/template">
+	<!-- <li class="list-group-item"> -->
+	<li>
 		<a href="?q=view-node&nid={{nid}}" class="">{{title}}</a>
 	</li>
 </script>

@@ -121,6 +121,15 @@ border-top: 16px solid #3498db;
 	/*border-radius: 15px 15px 0 0;*/
 }
 
-.linked-notes a {
+
+.linked-nodes {
+	padding-top: 20px;
+}
+.linked-nodes a {
 	color: #0000ff;
+}
+
+
+.bookpage pre {
+	background-color: #cFdFCc;
 }

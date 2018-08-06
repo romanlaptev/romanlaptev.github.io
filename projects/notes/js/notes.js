@@ -10,7 +10,7 @@ var _notes = function ( opt ){
 		"templates" : {
 			"tpl-message-list" : _getTpl("tpl-message-list"),
 			"tpl-notes-list" : _getTpl("tpl-notes-list"),
-			"tpl-linked-notes" : _getTpl("tpl-linked-notes")
+			"tpl-linked-nodes" : _getTpl("tpl-linked-nodes")
 		},
 		"messagesList" : getById("messages"),
 		"controlPanel" : getById("control-btn"),
@@ -1445,7 +1445,7 @@ console.log( _vars["logMsg"] );
 			linkedHtml = "";
 			for(var n = 0; n < linkedNodes.length; n++){
 					var linkedNode = linkedNodes[n];
-					linkHtml = _vars["templates"][ "tpl-linked-notes"];
+					linkHtml = _vars["templates"][ "tpl-linked-nodes"];
 
 					for(var key in linkedNode){
 						if( linkHtml.indexOf("{{"+key+"}}") !== -1 ){
@@ -1473,7 +1473,7 @@ console.log( _vars["logMsg"] );
 //---------------------------------- add linked page, form link				
 			if( nodeObj["linkedNodes"].length > 0){
 				linkedHtml = _formLinkedNodes( nodeObj["linkedNodes"] );
-				itemHtml = itemHtml.replace("{{linked_notes}}", linkedHtml);
+				itemHtml = itemHtml.replace("{{linked_nodes}}", linkedHtml);
 //console.log(itemHtml);
 			}
 			
@@ -1487,7 +1487,7 @@ console.log( _vars["logMsg"] );
 		}//next
 		
 		itemHtml = itemHtml
-		.replace("{{linked_notes}}", "")
+		.replace("{{linked_nodes}}", "")
 		.replace("{{body_value}}", "");
 		
 //-------------------------------- form breadcrumbs
@@ -1528,6 +1528,11 @@ console.log( _vars["logMsg"] );
 //console.log(listHtml);
 
 		htmlContainer.innerHTML = listHtml;
+		//correct
+		if( nodeObj["linkedNodes"].length === 0){
+			$(".linked-nodes").remove();
+		}
+		
 	}//end _drawNode()
 	
 	function _drawNotes( opt ){
