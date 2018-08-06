@@ -1,7 +1,8 @@
 var _notes = function ( opt ){
 //console.log(arguments);
 	var _vars = {
-		"init_url" : "/?q=load-xml-book",
+		"init_url" : "?q=load-xml-book",
+		//"init_url" : "?q=load-notes",
 		"requestUrl" : "upload/notes.xml",
 		"exportUrl" : "",
 		//"requestRemoteAjaxUrl" : "http://graphic-art-collection.16mb.com/notes/",
@@ -287,17 +288,6 @@ var _notes = function ( opt ){
 	var _init = function(){
 console.log("init _notes");
 		_testing.defineEvents();
-/*
-		var startNumTest = 0;
-		_testing.testServer( startNumTest );
-*/
-/*		
-//for test()
-//loadNotesXml();
-_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
-loadBookXml();
-*/		
-		
 		//testServerMod();
 		
 		var parseUrl = window.location.search; 
@@ -673,6 +663,11 @@ console.log( "Warning! error parse url in " + target.href );
 				webApp.vars["log"].innerHTML="";
 			break;
 */			
+			case "load-notes": 
+				var startNumTest = 0;
+				_testing.testServer( startNumTest );
+			break;
+
 			case "view-node": 
 				var nodeObj = _getNode({
 					"nid" : _vars["GET"]["nid"],
@@ -1524,7 +1519,7 @@ console.log( _vars["logMsg"] );
 				var itemTitle = _vars["breadcrumbs"][item];
 				if( itemID !== nodeObj.nid ){
 					//breadcrumbs += "<li><a href='#?q=view-node&nid="+itemID+"' class='btn btn-sm btn-info'>" + itemTitle + "</a></li>";
-					breadcrumbs += "<a href='#?q=view-node&nid="+itemID+"' class='btn btn-primary'>" + itemTitle + "</a>";
+					breadcrumbs += "<a href='?q=view-node&nid="+itemID+"' class='btn btn-primary'>" + itemTitle + "</a>";
 				} else {
 					//breadcrumbs += "<li>" + itemTitle + "</li>";
 					breadcrumbs += "<span class='btn btn-info active-item'>" + itemTitle + "</span>";
