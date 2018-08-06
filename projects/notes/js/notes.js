@@ -15,6 +15,8 @@ var _notes = function ( opt ){
 		},
 		"messagesList" : getById("messages"),
 		"controlPanel" : getById("control-btn"),
+		"log" :  getById("log"),
+
 		"hideControlPanel" : false,
 		"$num_notes" : getById("num-notes"),
 		"breadcrumbs": [],
@@ -506,6 +508,7 @@ console.log( "Warning! error parse url in " + target.href );
 			}//end event
 		}
 		
+/*		
 		//CLEAR LOG
 		var btn_clear_log = getById("clear-log");
 		if( btn_clear_log ){
@@ -515,21 +518,24 @@ console.log( "Warning! error parse url in " + target.href );
 				return false;
 			}
 		}
-		
+*/		
 		//controlPanel buttons
 		if( _vars.controlPanel ){
 			_vars.controlPanel.onclick = function(event){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
-//console.log( event );
+//console.log( event, target.href );
 //------------------					
 				if( target.tagName === "A"){
+					
+					if (event.preventDefault) {
+						event.preventDefault();
+					} else {
+						event.returnValue = false;
+					}
+//------------------					
 					if ( target.href.indexOf("#") !== -1){
-						if (event.preventDefault) {
-							event.preventDefault();
-						} else {
-							event.returnValue = false;
-						}
+//console.log( "TEST1" );
 						
 						var search = target.href.split("#");
 						var parseStr = search[1];
@@ -552,16 +558,12 @@ console.log( "Warning! error parse url in " + target.href );
 					
 //------------------					
 					if ( target.href.indexOf("?q=") !== -1){
+//console.log( "TEST2" );
 						
-						if (event.preventDefault) {
-							event.preventDefault();
-						} else {
-							event.returnValue = false;
-						}
-						
-						var search = target.href.split("?");
-						var parseStr = search[1];
+						//var search = target.href.split("?");
+						//var parseStr = search[1];
 //console.log( search, parseStr );
+						var parseStr = target.href;
 						if( parseStr.length > 0 ){
 							_vars["GET"] = parseGetParams( parseStr ); 
 							_urlManager( target );
@@ -569,7 +571,8 @@ console.log( "Warning! error parse url in " + target.href );
 console.log( "Warning! error parse url in " + target.href );
 						}
 					}
-					
+//------------------					
+						
 				}
 				
 				
@@ -658,11 +661,11 @@ console.log( "Warning! error parse url in " + target.href );
 					webApp.vars["log"].style.display="none";
 				}
 			break;
-			
-			case "clear-log":
-				webApp.vars["log"].innerHTML="";
-			break;
 */			
+			case "clear-log":
+				_vars["log"].innerHTML="";
+			break;
+			
 			case "load-notes": 
 				var startNumTest = 0;
 				_testing.testServer( startNumTest );
