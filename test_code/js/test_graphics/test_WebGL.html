@@ -40,6 +40,14 @@ https://webglfundamentals.org/webgl/lessons/ru/webgl-fundamentals.html
 
 https://developer.mozilla.org/ru/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
 Начало работы с WebGL
+
+https://habr.com/post/135204/
+Онлайн просмотр интерактивных 3D-моделей при помощи WebGL
+
+Интерактивные 3D-карты своими руками
+http://www.pvsm.ru/webgl/279632
+
+Коичи Мацуда, Роджер Ли «WebGL: программирование трехмерной графики».
 	</pre>
 
 
@@ -56,13 +64,14 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 </div><!-- end container -->
 
 <script>
+console.log(window.WebGLRenderingContext);
+if (window.WebGLRenderingContext) {
+	var msg = "Your browser supports WebGL...";
+	_log("<div class='alert alert-success'>" + msg + "</div>");
+	console.log(msg);
+}
 
-	if(document.querySelector){
-		var canvas = document.querySelector("#test-canvas");
-	} else {
-		var canvas = document.getElementById("test-canvas");
-	}
-
+	var canvas = getById("test-canvas");
 console.log("canvas: " + typeof canvas.getContext);
 
 	var gl = null;
@@ -73,24 +82,29 @@ console.log("canvas: " + typeof canvas.getContext);
 		var msg = "Canvas WebGL does not supported in this browser";
 		_log("<div class='alert alert-danger'>" + msg + "</div>");
 	};
-	
 
 console.log("WebGL context: ", gl);
 	if ( gl ) {
-		var msg = "Your browser supports WebGL...";
+		var msg = "Canvas WebGL ready for drawing...";
 		_log("<div class='alert alert-success'>" + msg + "</div>");
 		console.log(msg);
 		
-		gl.clearColor(0,0,0.8,1);
-		gl.clear(gl.COLOR_BUFFER_BIT);
-
+		runTest(gl);
+	
 	 } else {
 		var msg = "This browser does not support webGL....";
 		_log("<div class='alert alert-danger'>" + msg + "</div>");
 	console.log(msg);
 		//throw new Error('This browser does not support webGL. Try using the canvas renderer');
 	 }
- 
+
+function runTest(gl){
+	gl.clearColor(0,0,0.8,1);
+	gl.enable( gl.DEPTH_TEST );// включает использование буфера глубины
+	gl.depthFunc(gl.LEQUAL);// определяет работу буфера глубины: более ближние объекты перекрывают дальние
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);// очистить буфер цвета и буфер глубины.
+}//end runTest()
+
 </script>
 
 </body>
