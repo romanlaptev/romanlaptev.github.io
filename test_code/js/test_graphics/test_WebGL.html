@@ -46,6 +46,7 @@ https://developer.mozilla.org/ru/docs/Web/API/WebGL_API/Tutorial/Getting_started
 
 https://metanit.com/web/webgl/1.1.php
 Введение в WebGL. Что такое WebGL?
+https://metanit.com/web/webgl/1.2.php
 
 https://ru.wikipedia.org/wiki/Verge3D
 Verge3D
@@ -72,6 +73,21 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 	</div>
 	
 </div><!-- end container -->
+
+<!-- фрагментный шейдер -->
+<script id="shader-fs" type="x-shader/x-fragment">
+  void main(void) {
+    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+  }
+</script>
+
+<!-- вершинный шейдер -->
+<script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+  void main(void) {
+    gl_Position = vec4(aVertexPosition, 1.0);
+  }
+</script>
 
 <script>
 console.log(window.WebGLRenderingContext);
@@ -109,10 +125,118 @@ console.log("WebGL context: ", gl);
 	 }
 
 function runTest(gl){
+	var shaderProgram;
+	var vertexBuffer;
+
+	// покрасим фон в бледно-розовый цвет
+	//gl.clearColor(1.0, 0.0, 0.0, 0.5);
+	
 	gl.clearColor(0,0,0.8,1);
 	gl.enable( gl.DEPTH_TEST );// включает использование буфера глубины
 	gl.depthFunc(gl.LEQUAL);// определяет работу буфера глубины: более ближние объекты перекрывают дальние
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);// очистить буфер цвета и буфер глубины.
+	
+	// установка размеров области рисования
+	gl.viewportWidth = canvas.width;
+	gl.viewportHeight = canvas.height;
+	
+	// установка шейдеров 
+	initShaders();
+	
+	// установка буфера вершин
+	initBuffers();
+	
+	// отрисовка сцены
+	draw();  
+
+	
+	function getShader(type,id) {// Функция создания шейдера по типу и id источника в структуре DOM
+		var source = document.getElementById(id).innerHTML;
+		
+		// создаем шейдер по типу
+		var shader = gl.createShader(type);
+		
+		// установка источника шейдера
+		gl.shaderSource(shader, source);
+		
+		// компилируем шейдер
+		gl.compileShader(shader);
+	   
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			var msg = "Ошибка компиляции шейдера: " + gl.getShaderInfoLog(shader);
+			_log("<div class='alert alert-danger'>" + msg + "</div>");
+console.log(msg);
+	
+			gl.deleteShader(shader);   
+			return null;
+		}
+		return shader;  
+	}//end getShader()
+	
+	function initShaders() {// установка шейдеров
+	
+		// получаем шейдеры
+		var fragmentShader = getShader(gl.FRAGMENT_SHADER, "shader-fs");
+		var vertexShader = getShader(gl.VERTEX_SHADER, "shader-vs");
+		
+		//создаем объект программы шейдеров
+		shaderProgram = gl.createProgram();
+		
+		// прикрепляем к ней шейдеры
+		gl.attachShader(shaderProgram, vertexShader);
+		gl.attachShader(shaderProgram, fragmentShader);
+		
+		// связываем программу с контекстом webgl
+		gl.linkProgram(shaderProgram);
+		  
+		if ( !gl.getProgramParameter(shaderProgram, gl.LINK_STATUS) ) {
+			var msg = "- install shaders fail...";
+			_log("<div class='alert alert-danger'>" + msg + "</div>");
+console.log(msg);
+		}
+		  
+		gl.useProgram(shaderProgram);
+		
+		// установка атрибута программы
+		shaderProgram.vertexPositionAttribute = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+		
+		// делаем доступным атрибут для использования
+		gl.enableVertexAttribArray(shaderProgram.vertexPositionAttribute);
+		
+	}//end initShaders()
+	
+	function initBuffers() {// установка буфера вершин 
+		 // установка буфера вершин
+		  vertexBuffer = gl.createBuffer();
+		  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		  
+		  // массив координат вершин объекта
+		  var triangleVertices = [
+				 0.0,  0.5,  0.0,
+				-0.5, -0.5,  0.0,
+				 0.5, -0.5,  0.0
+		  ];
+		  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(triangleVertices), gl.STATIC_DRAW);
+		  
+		  // указываем кол-во точек
+		  vertexBuffer.itemSize = 3;
+		  vertexBuffer.numberOfItems = 3;
+	}//end initBuffers()
+
+	function draw() {// отрисовка 
+	
+		// установка области отрисовки
+		gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
+
+		gl.clear(gl.COLOR_BUFFER_BIT);
+
+		// указываем, что каждая вершина имеет по три координаты (x, y, z)
+		gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, 
+							 vertexBuffer.itemSize, gl.FLOAT, false, 0, 0);
+		// отрисовка примитивов - треугольников          
+		gl.drawArrays(gl.TRIANGLES, 0, vertexBuffer.numberOfItems);
+	}//end draw()
+	
 }//end runTest()
 
 </script>
