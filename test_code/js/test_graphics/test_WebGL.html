@@ -6,6 +6,8 @@
 	<title>test WebGL</title>
 	<script src="../lib/shared_functions.js"></script>
 	
+	<script src="three.min.js"></script>	
+	
 	<link rel="stylesheet" href="/css/bootstrap335.min.css">
 <style>
 .w canvas{
@@ -70,6 +72,11 @@ http://www.pvsm.ru/webgl/279632
 		<canvas id="test-canvas" width="640" height="480">
 Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
 		</canvas>
+		
+		<canvas id="canvas2" width="640" height="480">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
+		</canvas>
+		
 	</div>
 	
 </div><!-- end container -->
@@ -149,6 +156,7 @@ function runTest(gl){
 	// отрисовка сцены
 	draw();  
 
+	app2();
 	
 	function getShader(type,id) {// Функция создания шейдера по типу и id источника в структуре DOM
 		var source = document.getElementById(id).innerHTML;
@@ -238,6 +246,86 @@ console.log(msg);
 	}//end draw()
 	
 }//end runTest()
+
+
+function app2(){
+    var camera, scene, renderer;
+    var geometry, material, mesh;
+	
+	var canvas = getById("canvas2");
+	var gl = initWebGL(canvas); 
+	
+	if (gl) {
+		gl.clearColor(0.0, 0.0, 0.0, 1.0);
+		gl.enable(gl.DEPTH_TEST);// включает использование буфера глубины
+		gl.depthFunc(gl.LEQUAL);// определяет работу буфера глубины: более ближние объекты перекрывают дальние
+		gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);// очистить буфер цвета и буфер глубины.
+	}
+	
+	init();
+	animate();
+	
+	function init() {
+	
+		// создаем камеру - перспективная проекция
+		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+		
+		// установка z-координаты камеры
+		camera.position.z = 600;
+		
+		// настройка сцены
+		scene = new THREE.Scene();
+		
+		// настройка геометрии - в качестве геометрии будет куб
+		// настроим его ширину, высоту и длину по оси z
+		geometry = new THREE.CubeGeometry(200, 200, 200);
+		
+		// настройка материала - установка цвета
+		material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true});
+		
+		// настраиваем меш, который будет отображать куб
+		mesh = new THREE.Mesh(geometry, material);
+		scene.add(mesh);
+		
+		// создаем объект для рендеринга сцены
+		renderer = new THREE.WebGLRenderer();
+		
+		// установка размеров
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		
+		// встраиваем в DOM-структуру страницы
+		document.body.appendChild(renderer.domElement);
+	}//end init()
+
+	function animate() {
+		requestAnimationFrame(animate);
+		
+		// вращение меша вокруг осей
+		mesh.rotation.x += 0.01;
+		mesh.rotation.y += 0.02;
+		
+		// рендеринг сцены - метод, производящий по сути отрисовку
+		renderer.render(scene, camera);
+	}//enf animate();
+	
+	function initWebGL(canvas) {
+		gl = null;
+
+		try {
+			gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+		} catch(e) {}
+
+		if (!gl) {
+			var msg = "Unable to initialize WebGL. Your browser may not support it.";
+			_log("<div class='alert alert-danger'>" + msg + "</div>");
+console.log(msg);
+			gl = null;
+		}
+
+		return gl;
+	}//end initWebGL()
+
+}//end app2()
 
 </script>
 
