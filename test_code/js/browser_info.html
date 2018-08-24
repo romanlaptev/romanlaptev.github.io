@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
 	<title>Browser info</title>
 	
 <!--
@@ -925,25 +925,58 @@ console.log(e);
 		try {
 			document.createElement("canvas").getContext("2d");
 			test["result"] = true;
-			test["msg"] = "HTML5 Canvas is supported in this browser";
+			test["msg"] = "Canvas 2D is supported in this browser";
 			
 			test["links"]=[];
 			var obj = {
-				"link" : "canvas/test_canvas.html", 
+				"link" : "test_graphics/canvas/test_canvas.html", 
 				"text" : "test_canvas.html"
 			};
 			_push( test["links"], obj );
 			
 			var obj = {
-				"link" : "canvas/graphics_curves.html", 
+				"link" : "test_graphics/canvas/graphics_curves.html", 
 				"text" : "graphics_curves.html"
 			};
 			_push( test["links"], obj );
 			
 		} catch (e) {
 		
-			test["msg"] = "HTML5 Canvas is not supported in this browser";
+			test["msg"] = "Canvas 2D is not supported in this browser";
 			test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number+ ", "+e.description;
+		}
+/*@		
+	@end
+@*/
+	_push( tests, test );
+//--------------------------------------
+
+	var test = {
+		"name" : "WebGL support",
+		"result" : false
+	};
+/*@
+	@if (@_jscript_version >= 5)
+@*/	
+		var gl = null;
+		try {
+			gl = document.createElement("canvas").getContext("webgl") || 
+document.createElement("canvas").getContext("experimental-webgl");		
+
+		} catch (e) {
+			test["msg"] = "WebGL does not supported in this browser";
+			test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number+ ", "+e.description;
+		}
+		
+		if ( gl ) {
+			test["result"] = true;
+			test["msg"] = "Canvas WebGL is supported in this browser";
+			test["links"]=[];
+			var obj = {
+				"link" : "test_graphics/test_WebGL.html", 
+				"text" : "test_WebGL.html"
+			};
+			_push( test["links"], obj );
 		}
 /*@		
 	@end

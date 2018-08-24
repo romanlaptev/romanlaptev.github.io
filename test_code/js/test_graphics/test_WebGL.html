@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width:device-width, initial-scale=1.0"/>
+	<title>test WebGL</title>
+	<script src="../lib/shared_functions.js"></script>
+	
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
+<style>
+.w canvas{
+	border:1px solid;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+	
+</head>
+<body>
+
+<div class="container">
+	<div class="page-header">
+		<h1>test WebGL</h1>
+	</div>
+	
+	<pre>
+https://ru.wikipedia.org/wiki/WebGL
+
+https://get.webgl.org/
+test support
+
+http://brauzerok.ru/mozilla-firefox/biblioteka-webgl-brauzerov
+https://webglfundamentals.org/webgl/lessons/ru/webgl-fundamentals.html	
+
+https://developer.mozilla.org/ru/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
+Начало работы с WebGL
+	</pre>
+
+
+	<div id="log-wrap" class="log-panel">
+		<div id="log"></div>
+	</div>		
+
+	<div class="panel w">
+		<canvas id="test-canvas" width="640" height="480">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
+		</canvas>
+	</div>
+	
+</div><!-- end container -->
+
+<script>
+
+	if(document.querySelector){
+		var canvas = document.querySelector("#test-canvas");
+	} else {
+		var canvas = document.getElementById("test-canvas");
+	}
+
+console.log("canvas: " + typeof canvas.getContext);
+
+	var gl = null;
+	try{
+		var options = {};
+		gl = canvas.getContext('webgl', options) || 	canvas.getContext('experimental-webgl', options);
+	} catch(e) {
+		var msg = "Canvas WebGL does not supported in this browser";
+		_log("<div class='alert alert-danger'>" + msg + "</div>");
+	};
+	
+
+console.log("WebGL context: ", gl);
+	if ( gl ) {
+		var msg = "Your browser supports WebGL...";
+		_log("<div class='alert alert-success'>" + msg + "</div>");
+		console.log(msg);
+		
+		gl.clearColor(0,0,0.8,1);
+		gl.clear(gl.COLOR_BUFFER_BIT);
+
+	 } else {
+		var msg = "This browser does not support webGL....";
+		_log("<div class='alert alert-danger'>" + msg + "</div>");
+	console.log(msg);
+		//throw new Error('This browser does not support webGL. Try using the canvas renderer');
+	 }
+ 
+</script>
+
+</body>
+</html>
