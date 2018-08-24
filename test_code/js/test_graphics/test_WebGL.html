@@ -38,11 +38,18 @@ test support
 http://brauzerok.ru/mozilla-firefox/biblioteka-webgl-brauzerov
 https://webglfundamentals.org/webgl/lessons/ru/webgl-fundamentals.html	
 
+https://developer.mozilla.org/ru/docs/Web/API/WebGL_API
+WebGL
+
 https://developer.mozilla.org/ru/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
 Начало работы с WebGL
 
+https://ru.wikipedia.org/wiki/Verge3D
+Verge3D
+
 https://habr.com/post/135204/
 Онлайн просмотр интерактивных 3D-моделей при помощи WebGL
+
 
 Интерактивные 3D-карты своими руками
 http://www.pvsm.ru/webgl/279632
@@ -105,6 +112,23 @@ function runTest(gl){
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);// очистить буфер цвета и буфер глубины.
 }//end runTest()
 
+</script>
+
+<script>
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+
+		script.onload = function() {
+alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+alert( "error load script " + this.src);
+		};  
+
+	}
 </script>
 
 </body>
