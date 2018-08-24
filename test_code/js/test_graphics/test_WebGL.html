@@ -72,11 +72,6 @@ http://www.pvsm.ru/webgl/279632
 		<canvas id="test-canvas" width="640" height="480">
 Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
 		</canvas>
-		
-		<canvas id="canvas2" width="640" height="480">
-Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
-		</canvas>
-		
 	</div>
 	
 </div><!-- end container -->
@@ -251,7 +246,7 @@ console.log(msg);
 function app2(){
     var camera, scene, renderer;
     var geometry, material, mesh;
-	
+/*	
 	var canvas = getById("canvas2");
 	var gl = initWebGL(canvas); 
 	
@@ -261,7 +256,7 @@ function app2(){
 		gl.depthFunc(gl.LEQUAL);// определяет работу буфера глубины: более ближние объекты перекрывают дальние
 		gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);// очистить буфер цвета и буфер глубины.
 	}
-	
+*/	
 	init();
 	animate();
 	
@@ -291,7 +286,8 @@ function app2(){
 		renderer = new THREE.WebGLRenderer();
 		
 		// установка размеров
-		renderer.setSize(window.innerWidth, window.innerHeight);
+		//renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.setSize( (window.innerWidth/100)*60, (window.innerHeight/100)*60 );
 		
 		// встраиваем в DOM-структуру страницы
 		document.body.appendChild(renderer.domElement);
