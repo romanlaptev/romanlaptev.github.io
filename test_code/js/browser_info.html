@@ -971,12 +971,21 @@ document.createElement("canvas").getContext("experimental-webgl");
 		if ( gl ) {
 			test["result"] = true;
 			test["msg"] = "Canvas WebGL is supported in this browser";
+			
 			test["links"]=[];
 			var obj = {
 				"link" : "test_graphics/test_WebGL.html", 
 				"text" : "test_WebGL.html"
 			};
 			_push( test["links"], obj );
+			
+			var obj = {
+				"link" : "http://madebyevan.com/webgl-water/", 
+				"text" : "WebGL Water"
+			};
+			_push( test["links"], obj );
+			
+			
 		}
 /*@		
 	@end
