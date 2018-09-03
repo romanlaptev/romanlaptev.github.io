@@ -128,16 +128,18 @@ console.log( "Warn! error parse url in " + target.href );
 				$("#serviceModal").modal("hide");
 
 				if( target.tagName === "A"){
-					if ( target.href.indexOf("#") !== -1){
+					//if ( target.href.indexOf("#") !== -1){
+					if ( target.href.indexOf("#?q=") !== -1){
 							if (event.preventDefault) { 
 								event.preventDefault();
 							} else {
 								event.returnValue = false;				
 							}
 
-								var search = target.href.split("?"); 
-								var parseStr = search[1]; 
-//console.log( search, parseStr );
+								//var search = target.href.split("?"); 
+								//var parseStr = search[1]; 
+								var parseStr = target.href; 
+//console.log( parseStr );
 								if( parseStr.length > 0 ){
 									webApp.vars["GET"] = parseGetParams( parseStr ); 
 									webApp.app.urlManager( target );
