@@ -133,3 +133,13 @@ border-top: 16px solid #3498db;
 .bookpage pre {
 	background-color: #cFdFCc;
 }
+
+/* fix Bootstrap */
+.nav-tabs .btn:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+.nav-tabs .btn:focus {
+	background: orange;
+	color: #000 !important;
+}
