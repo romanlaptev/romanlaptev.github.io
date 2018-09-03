@@ -51,16 +51,17 @@ $(document).ready(function(){
 		<div class="panel-body">
 			<ul class="nav nav-tabs">
 				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-				<!-- <li><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#serviceModal">Service</a></li> -->
+				<!-- <li><a href="#" class="btn btn-blue">Service</a></li> -->
 				<!-- <h1 class="text-right" id="app-title">Application title</h1> -->
 				<h2 class="text-right">Notes: <span id="num-notes">0</span></h2>
 			</ul>
 		</div>
-
+<!--
 	<div class=" panel panel-primary">
 		<div class="panel-body" id="control-btn">
 			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
 				<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
+				
 				<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
 				<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
 				
@@ -81,57 +82,45 @@ $(document).ready(function(){
 		</div>
 		
 	</div>
-		
-	<div id="log-wrap" class="log-panel">
-<!--
-		<div class="progress">ajax load:
-			<div id="load-progress-bar" class="progress-bar hide"></div>
-		</div>
 -->
-		<div id="log"></div>
-	</div>		
 		
-		
-<!--	
 	<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			  <div class="panel-heading">
 				<h4 class="panel-title">
-				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">service</a>
 				</h4>
 			  </div>
 			  <div id="collapse1" class="panel-collapse collapse in">
-				<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+					<div class="btn-group">
+						<a href="parse_notes/parse_notes.html" class="btn btn-default">previous version</a>
+						<a href="?q=load-notes" class="btn btn-default">test, load notes from DB</a>
+						<a href="?q=load-xml-book" class="btn btn-default">test, load notes from XML</a>
+						<a href="export/export_drupal_book.php" class="btn btn-default">export_drupal_book</a>
+					</div>
+					
+					<div class="panel-body" id="control-btn">
+						<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
+<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
+<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
+<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
+						
+<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
+<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
+<a href="tests_app/SpecRunner.html" class="">test code</a>
+						</div>
+<a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+					</div>
+					
+					<div id="log-wrap" class="log-panel">
+						<div id="log"></div>
+					</div>		
+					
 			  </div>
 		</div>
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-			<h4 class="panel-title">
-			  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
-			</h4>
-		  </div>
-		  <div id="collapse2" class="panel-collapse collapse">
-			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-		  </div>
-		</div>
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-			<h4 class="panel-title">
-			  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
-			</h4>
-		  </div>
-		  <div id="collapse3" class="panel-collapse collapse">
-			<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-			sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-		  </div>
-		</div>
+	
 	</div> 
--->
+
 
 <!-- https://bootsnipp.com/snippets/GaqB2 -->
 <!--	
