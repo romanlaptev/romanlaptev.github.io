@@ -220,6 +220,7 @@ function initForm( id, p ){
 	//form.step.start_x_range.value = _vars["graphics"]["sinus"]["start_x"];
 	startXRange.onchange = function(e){
 		startXVal.value=this.value;				
+		reDraw();
 	}
 	
 	var startYRange = getById( "start-y-range" );
@@ -228,6 +229,7 @@ function initForm( id, p ){
 	startYVal.value = startYRange.value;				
 	startYRange.onchange = function(e){
 		startYVal.value=this.value;				
+		reDraw();
 	}
 	
 	//form.step.start_y_range.value = _vars["graphics"]["sinus"]["start_y"];
@@ -238,6 +240,7 @@ function initForm( id, p ){
 	numRepeatVal.value = numRepeatRange.value;				
 	numRepeatRange.onchange = function(e){
 		numRepeatVal.value=this.value;				
+		reDraw();
 	}
 	
 	var k1Range = getById( "k1-range" );
@@ -246,6 +249,7 @@ function initForm( id, p ){
 	k1Val.value = k1Range.value;				
 	k1Range.onchange = function(e){
 		k1Val.value=this.value;				
+		reDraw();
 	}
 	
 	var k2Range = getById( "k2-range" );
@@ -254,6 +258,7 @@ function initForm( id, p ){
 	k2Val.value = k2Range.value;				
 	k2Range.onchange = function(e){
 		k2Val.value=this.value;				
+		reDraw();
 	}
 	
 	
@@ -271,22 +276,7 @@ function initForm( id, p ){
 	
 	if( typeof form.onsubmit !== "function"){
 		form.onsubmit = function( event ){
-			
-			var canvas = document.querySelector("#canvas-sin");
-			var context = canvas.getContext("2d");
-			context.fillStyle = 'blue';
-			
-			var p2 = {
-				start_x : parseInt( form.start_x.value ),
-				start_y : parseInt( form.start_y.value ),
-				step : parseFloat( form.step.value ),
-				num_repeat : parseInt( form.num_repeat.value ),
-				k1 : parseInt( form.k1.value ),
-				k2 : parseInt( form.k2.value )
-			};
-	//console.log("submit", params);
-			sinus( context, p2);
-			
+			reDraw();
 			event.preventDefault();
 		};
 		
@@ -299,8 +289,25 @@ function initForm( id, p ){
 	}
 //console.log( form.onsubmit );	
 //console.log( form.onreset );	
+	function reDraw(){
+		var canvas = document.querySelector("#canvas-sin");
+		var context = canvas.getContext("2d");
+		context.fillStyle = 'blue';
+		
+		var p2 = {
+			start_x : parseInt( form.start_x.value ),
+			start_y : parseInt( form.start_y.value ),
+			step : parseFloat( form.step.value ),
+			num_repeat : parseInt( form.num_repeat.value ),
+			k1 : parseInt( form.k1.value ),
+			k2 : parseInt( form.k2.value )
+		};
+	//console.log("submit", params);
+		sinus( context, p2);
+	}//end reDraw()			
 	
 }//end initForm()
+
 
 
 function initFormCircle(  form, drawObj ){
