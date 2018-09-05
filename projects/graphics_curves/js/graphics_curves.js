@@ -348,7 +348,7 @@ console.log("submit", params);
 			start_y : 100,
 			px : 60, // сжатие по X
 			py : 60, // сжатие по Y
-			step : 0.009,
+			step : 0.01,
 			num_repeat :  Math.PI * 6,
 			k1 : 10,
 			k2 : 10,
