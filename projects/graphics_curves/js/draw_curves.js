@@ -115,6 +115,31 @@ var _vars = {
 
 		"curve_epic" : {
 			"canvasID" : "canvas-epic",
+			"formID" : "form-epic",
+			"p" : {
+				"start_x" : 150,
+				"start_y" : 150,
+				"step" : 0.01,
+				"num_repeat" : Math.PI*6,
+				"px" : 60,
+				"py" : 60,
+				k1: 5,
+				k2: 5,
+				k3: 5,
+				"color": "green"
+			},
+			"init" : function(){
+					var form = getById( this.formID );
+//console.log(form);
+/*
+for (var n1=1; n1 < form.elements.length; n1++){
+	var elmnt = form.elements[n1];
+console.log(elmnt);	
+}
+*/
+//console.log( form.elements["start_x_range"] );	
+				initFormEpic( form, this );
+			},//end init()
 
 			"draw" : function(){
 				var context = _createCanvas( this["canvasID"] );
@@ -127,19 +152,27 @@ var _vars = {
 				var px = 60; // сжатие по X
 				var py = 60;// сжатие по Y
 				var num_repeat =  Math.PI*6;
-				var k1 = 10;
-				var k2 = 10;
-				var k3 = 10;
+				var k1 = 5;
+				var k2 = 5;
+				var k3 = 5;
 				
-				for ( n = 0;  n < num_repeat; n += step) {
-					r = 1 - Math.cos( n * k3);
-					x_ = ( r * Math.cos( n  * k1)  ) * px;
-					y_ = ( r * Math.sin( n  * k2)  ) * py;
+				//for( var n2 = 0; n2 < 1; n2++){
+					for ( n = 0;  n < num_repeat; n += step) {
+						r = 1 - Math.cos( n * k3);
+						x_ = ( r * Math.cos( n  * k1)  ) * px;
+						y_ = ( r * Math.sin( n  * k2)  ) * py;
 
-					x = start_x + ( Math.round(x_) ) ;
-					y = start_y + ( Math.round(y_) );
-					context.fillRect(x, y, 2, 2);
-				}//next
+						x = start_x + ( Math.round(x_) ) ;
+						y = start_y + ( Math.round(y_) );
+						context.fillRect(x, y, 2, 2);
+					}//next
+					
+					//k1=k1+0.1;
+					//k2=k2+0.3;
+					//k3=k3+0.5;
+//console.log("k3=" + k3);					
+				//}//next
+				
 				
 			}//end draw()
 			
@@ -160,6 +193,7 @@ console.log(_vars);
 		_vars["graphics"]["spire"].init();
 		_vars["graphics"]["spire"].draw();
 		
+		_vars["graphics"]["curve_epic"].init();
 		_vars["graphics"]["curve_epic"].draw();
 	}
 //}//end load
@@ -473,6 +507,18 @@ function initFormSpire(  form, drawObj ){
 	}
 
 }//end initFormSpire()
+
+function initFormEpic( form, drawObj ){
+	var startXVal = form.elements["start_x"];
+	startXVal.value = drawObj.p["start_x"];
+
+	var startXRange = form.elements["start_x_range"];
+	startXRange.value = drawObj.p["start_x"];
+	startXRange.onchange = function(e){
+		startXVal.value=this.value;				
+	}
+}//end initFormSpire()
+
 
 function runTest(){
 	var support = false;
