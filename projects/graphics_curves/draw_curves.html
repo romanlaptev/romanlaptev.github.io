@@ -7,20 +7,43 @@
 	<link rel="stylesheet" href="css/bootstrap335.min.css">
 	<title>Графики функций. Алгебраические и трансцендентные кривые</title>
 	
-	<!-- <script src="js/shared_functions.js"></script> -->
-	<!-- <script src="../../test_code/js/lib/shared_functions.js"></script> -->
-	<script src="js/draw_curves.js"></script>
-<style>
+	<script src="../../test_code/js/lib/shared_functions.js"></script>
+	<style>
 canvas{
 	border:1px solid;
 }
-</style>
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+	</style>
 </head>
 
 <body>
 <div class="container">
 
 <h1 class="page-header">Графики функций. Алгебраические и трансцендентные кривые</h1>
+
+	<div id="log-wrap" class="log-panel">
+		<div id="log"></div>
+	</div>		
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="text-center">Эпициклоиды</h2>
+	</div>
+	<div class="panel-body">
+		<canvas id="canvas-epic" width="650" height="600">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+		</canvas>
+	</div>
+</div>
+
+<!-- **************************************** -->
 
 	<div class="row panel panel-primary">
 
@@ -30,7 +53,9 @@ canvas{
 	
 <form type="GET" action="" name="form_1" id="form1">
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
-			<canvas id="canvas-sin" width="600" height="300"></canvas>
+			<canvas id="canvas-sin" width="600" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+			</canvas>
 <!--			<button class="btn btn-small btn-danger clear-canvas" data-target="canvas-sin" >clear</button> -->
 			<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
 		</div>
@@ -86,8 +111,12 @@ canvas{
 	
 <form name="form_circle" id="form-circle" type="GET" action="">
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
-			<canvas id="canvas-circle" width="300" height="300"></canvas>
-			<canvas id="canvas-circle2" width="300" height="300"></canvas>
+			<canvas id="canvas-circle" width="300" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+			</canvas>
+			<canvas id="canvas-circle2" width="300" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+			</canvas>
 <br>
 			<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
 		</div>
@@ -152,7 +181,9 @@ canvas{
 <form name="form_spire" id="form-spire" type="GET" action="">
 		<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
 			<h3>Архимедова спираль</h3>
-			<canvas id="canvas-spire" width="300" height="300"></canvas><br>
+			<canvas id="canvas-spire" width="300" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+			</canvas><br>
 			<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
 		</div>
 	
@@ -203,5 +234,8 @@ canvas{
 	</div>
 
 </div><!-- end container -->
+
+<script src="js/draw_curves.js"></script>
+
 </body>
-</html>						
+</html>

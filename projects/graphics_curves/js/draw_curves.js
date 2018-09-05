@@ -1,45 +1,5 @@
-//console.log for old IE
-if (!window.console){ 
-	window.console = {
-		"log" : function( msg ){
-			var log = getById("log");
-			if(log){
-				log.innerHTML += msg +"<br>";
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	}
-};
-
-function getById(id){
-	
-	if( document.querySelector ){
-		var obj = document.querySelector("#"+id);
-		return obj;
-	}
-	
-	if( document.getElementById ){
-		var obj = document.getElementById(id);
-		return obj;
-	}
-	
-	if( document.all ){
-		var obj = document.all[id];
-		return obj;
-	}
-	
-	//if( document.layers ){
-		//var obj = document.layers[id];
-		//return obj;
-	//}
-	
-	return false;
-}//end getById()
-
-
 var _vars = {
+	"supportCanvas" : runTest(),
 	"graphics" : {
 		
 		"sinus" : {
@@ -151,14 +111,46 @@ var _vars = {
 				}//next
 
 			}//end draw()
-		}//end spire
-		
+		}, //end spire
+
+		"curve_epic" : {
+			"canvasID" : "canvas-epic",
+
+			"draw" : function(){
+				var context = _createCanvas( this["canvasID"] );
+				
+				//Улитка Паскаля
+				context.fillStyle = "green";
+				var start_x = 150;
+				var start_y = 150;
+				var step = 0.01;
+				var px = 60; // сжатие по X
+				var py = 60;// сжатие по Y
+				var num_repeat =  Math.PI*6;
+				var k1 = 10;
+				var k2 = 10;
+				var k3 = 10;
+				
+				for ( n = 0;  n < num_repeat; n += step) {
+					r = 1 - Math.cos( n * k3);
+					x_ = ( r * Math.cos( n  * k1)  ) * px;
+					y_ = ( r * Math.sin( n  * k2)  ) * py;
+
+					x = start_x + ( Math.round(x_) ) ;
+					y = start_y + ( Math.round(y_) );
+					context.fillRect(x, y, 2, 2);
+				}//next
+				
+			}//end draw()
+			
+		} //end curve_epic
 	}//end graphics
 }
 console.log(_vars);
 
-window.onload = function(){
-
+//Start app
+//window.onload = function(){
+	if( _vars["supportCanvas"] ){
 		_vars["graphics"]["sinus"].init();
 		_vars["graphics"]["sinus"].draw();
 
@@ -167,8 +159,11 @@ window.onload = function(){
 
 		_vars["graphics"]["spire"].init();
 		_vars["graphics"]["spire"].draw();
+		
+		_vars["graphics"]["curve_epic"].draw();
+	}
+//}//end load
 
-}//end load
 
 function _createCanvas( id ){
 	//get DOM objects
@@ -472,4 +467,24 @@ function initFormSpire(  form, drawObj ){
 
 }//end initFormSpire()
 
+function runTest(){
+	var support = false;
+	var test = {
+		"name" : "HTML5, isCanvasSupported",
+		"result" : false
+	};
+	
+	try {
+			document.createElement("canvas").getContext("2d");
+			test["result"] = true;
+			test["msg"] = "Canvas 2D is supported in this browser";
+	} catch (e) {
+			test["msg"] = "Canvas 2D is not supported in this browser";
+			test["msg"] += "<br> "+e.name+ ", "+e.message+ ", "+e.number+ ", "+e.description;
+_log("<div class='alert alert-danger'>" + test["msg"] + "</div>");
+console.log( test["msg"] );
+	}//end try
+	
 
+	return test["result"];
+}//end runTest()
