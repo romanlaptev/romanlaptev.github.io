@@ -39,16 +39,22 @@ margin: 0;
 	
 <form name="form_epic" id="form-epic" type="GET" action="">
 	<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 panel-body">
-		<canvas id="canvas-epic" width="600" height="300">
-Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
-		</canvas>
+	
 		<input type="submit" class="btn btn-primary" value="перестроить график"/>
 		<input type="reset" class="btn btn-warning" value="сбросить значения"/>
 		<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
+	
+		<canvas id="canvas-epic" width="600" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+		</canvas>
+		<canvas id="canvas-epic2" width="600" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+		</canvas>
+		
 <pre>
 function epic_ulitka( context, params){//Улитка Паскаля
 
-		context.fillStyle = "ble";
+		context.fillStyle = "blue";
 		var start_x = 120;
 		var start_y = 100;
 		var px = 40; // сжатие по X

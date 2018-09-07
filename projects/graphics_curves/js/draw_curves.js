@@ -116,10 +116,11 @@ var _vars = {
 		"curve_epic" : {
 			"canvasID" : "canvas-epic",
 			"context" : _createCanvas( "canvas-epic" ),
+			"context2" : _createCanvas( "canvas-epic2" ),
 			"form" : getById( "form-epic" ),
 			"p" : {
-				"start_x" : 120,
-				"start_y" : 100,
+				"start_x" : 100,
+				"start_y" : 80,
 				"step" : 0.01,
 				"num_repeat" : Math.PI*6,
 				"px" : 40,
@@ -136,7 +137,7 @@ var _vars = {
 				epic_ulitka( this.context, this.p );
 				epic_ulitka( this.context, {
 					"start_x" : 200,
-					"start_y" : 100,
+					"start_y" : 80,
 					"step" : 0.01,
 					"num_repeat" : Math.PI*6,
 					"px" : 30,
@@ -170,6 +171,31 @@ var _vars = {
 					k1: 5,
 					k2: 3,
 					k3: 6,
+					color: "blue"
+				});
+				
+				epic_ulitka( this.context, {
+					"start_x" : 100,
+					"start_y" : 220,
+					"step" : 0.01,
+					"num_repeat" : Math.PI*6,
+					"px" : 40,
+					"py" : 40,
+					k1: 2,
+					k2: 2,
+					k3: 3,
+					color: "darkred"
+				});
+				
+				epic( this.context2, {
+					"start_x" : 100,
+					"start_y" : 80,
+					"step" : 0.01,
+					"num_repeat" : Math.PI*6,
+					k1: 1,
+					r0 : 30, // радиус неподвижного круга
+					r1 : 5, // радиус скользящего круга
+					d : 27,// расстояние от центра неподвижного круга до точки
 					color: "blue"
 				});
 				
@@ -717,6 +743,34 @@ function epic_ulitka( context, params){//Улитка Паскаля
 		}//next
 
 }//end epic_ulika()
+
+function epic( context, params){
+	context.fillStyle = params.color;
+	var start_x = params.start_x;
+	var start_y = params.start_y;
+	var r0 = params.r0; // радиус неподвижного круга
+	var r1 = params.r1; // радиус скользящего круга
+	var d = params.d;// расстояние от центра неподвижного круга до точки
+	var step = params.step;
+	var num_repeat =  params.num_repeat;
+	var k1 = params.k1;
+	
+	var px = params.px; // сжатие по X
+	var py = params.py; // сжатие по Y
+	
+	for ( n = 0;  n < num_repeat; n += step){
+		var cos_v = ((r0 + r1) / r1 ) * n;
+		var sin_v = ((r0 + r1) / r1 ) * n;
+		x_ = ( r0  + r1 )* Math.cos( n ) - d * Math.cos( cos_v );
+		y_ = ( r0 + r1 )  * Math.sin( n ) - d * Math.sin(  sin_v );
+
+		x = start_x + ( Math.round(x_) ) ;
+		y = start_y + ( Math.round(y_) );
+			
+		x = x + k1;
+		context.fillRect(x, y, 2, 2);
+	}//next
+}//end epic()
 
 
 function runTest(){
