@@ -140,9 +140,9 @@ var _vars = {
 					"start_y" : parseInt( this.form.elements["start_y"].value ),
 					"step" : parseFloat( this.form.elements["step"].value ),
 					"num_repeat" : parseInt( this.form.elements["num_repeat_val"].value ),
-					k1: parseInt( this.form.elements["k1"].value ),
-					k2: parseInt( this.form.elements["k2"].value ),
-					k3: parseInt( this.form.elements["k3"].value ),
+					k1: parseInt( this.form.elements["k1_val"].value ),
+					k2: parseInt( this.form.elements["k2_val"].value ),
+					k3: parseInt( this.form.elements["k3_val"].value ),
 					"px" : parseInt( this.form.elements["px_val"].value ),
 					"py" : parseInt( this.form.elements["py_val"].value ),
 					"color": this.form.elements["color"].value
@@ -563,8 +563,11 @@ console.log(elmnt);
 	}
 
 	var k1Val = form.k1_val;
-	var k1Range = form.k1;
 	k1Val.value = p["k1"];
+	k1Val.onkeyup = function(e){
+		k1Range.value=this.value;				
+	}
+	var k1Range = form.k1;
 	k1Range.value = p["k1"];
 	k1Range.onchange = function(e){
 		k1Val.value=this.value;				
@@ -572,8 +575,11 @@ console.log(elmnt);
 	}
 	
 	var k2Val = form.k2_val;
-	var k2Range = form.k2;
 	k2Val.value = p["k2"];
+	k2Val.onkeyup = function(e){
+		k2Range.value=this.value;				
+	}
+	var k2Range = form.k2;
 	k2Range.value = p["k2"];
 	k2Range.onchange = function(e){
 		k2Val.value=this.value;				
@@ -581,8 +587,11 @@ console.log(elmnt);
 	}
 	
 	var k3Val = form.k3_val;
-	var k3Range = form.k3;
 	k3Val.value = p["k3"];
+	k3Val.onkeyup = function(e){
+		k3Range.value=this.value;				
+	}
+	var k3Range = form.k3;
 	k3Range.value = p["k3"];
 	k3Range.onchange = function(e){
 		k3Val.value=this.value;				
@@ -633,6 +642,12 @@ console.log(event);
 		drawObj["init"]();
 		//drawObj["draw"]();
 	}, false);//end event
+	
+	form.elements["color_widget"].onchange = function(e){
+//console.log(arguments);
+//console.log(e.target.value);
+		form.elements["color"].value = e.target.value;
+	}//end event
 	
 }//end initFormEpic()
 
