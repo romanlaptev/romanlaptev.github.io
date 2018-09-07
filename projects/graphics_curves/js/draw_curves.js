@@ -115,7 +115,8 @@ var _vars = {
 
 		"curve_epic" : {
 			"canvasID" : "canvas-epic",
-			"formID" : "form-epic",
+			"context" : _createCanvas( "canvas-epic" ),
+			"form" : getById( "form-epic" ),
 			"p" : {
 				"start_x" : 150,
 				"start_y" : 150,
@@ -126,26 +127,36 @@ var _vars = {
 				k1: 5,
 				k2: 5,
 				k3: 5,
-				"color": "green"
+				color: "blue"
 			},
+			
 			"init" : function(){
-					var form = getById( this.formID );
-//console.log(form);
-/*
-for (var n1=1; n1 < form.elements.length; n1++){
-	var elmnt = form.elements[n1];
-console.log(elmnt);	
-}
-*/
-//console.log( form.elements["start_x_range"] );	
-				initFormEpic( form, this );
-			},//end init()
-
+				initFormEpic( this );
+			},
+			
+			"getFormValues": function(){
+				var values = {
+					"start_x" : parseInt( this.form.elements["start_x"].value ),
+					"start_y" : parseInt( this.form.elements["start_y"].value ),
+					"step" : parseFloat( this.form.elements["step"].value ),
+					"num_repeat" : parseInt( this.form.elements["num_repeat_val"].value ),
+					k1: parseInt( this.form.elements["k1"].value ),
+					k2: parseInt( this.form.elements["k2"].value ),
+					k3: parseInt( this.form.elements["k3"].value ),
+					"px" : parseInt( this.form.elements["px_val"].value ),
+					"py" : parseInt( this.form.elements["py_val"].value ),
+					"color": this.form.elements["color"].value
+				};
+				return values;
+			},
+			
 			"draw" : function(){
-				var context = _createCanvas( this["canvasID"] );
 				
-				//Улитка Паскаля
-				context.fillStyle = "green";
+				var p2 = this.getFormValues();
+				epic_ulitka( this.context, p2 );
+/*
+				var context = _createCanvas( this["canvasID"] );
+				this.context.fillStyle = "blue";
 				var start_x = 150;
 				var start_y = 150;
 				var step = 0.01;
@@ -155,7 +166,6 @@ console.log(elmnt);
 				var k1 = 5;
 				var k2 = 5;
 				var k3 = 5;
-				
 				//for( var n2 = 0; n2 < 1; n2++){
 					for ( n = 0;  n < num_repeat; n += step) {
 						r = 1 - Math.cos( n * k3);
@@ -164,7 +174,7 @@ console.log(elmnt);
 
 						x = start_x + ( Math.round(x_) ) ;
 						y = start_y + ( Math.round(y_) );
-						context.fillRect(x, y, 2, 2);
+						this.context.fillRect(x, y, 2, 2);
 					}//next
 					
 					//k1=k1+0.1;
@@ -172,8 +182,7 @@ console.log(elmnt);
 					//k3=k3+0.5;
 //console.log("k3=" + k3);					
 				//}//next
-				
-				
+*/
 			}//end draw()
 			
 		} //end curve_epic
@@ -224,7 +233,7 @@ function clear_canvas( id ){
 
 
 function sinus( context, params ){
-console.log(params);	
+//console.log(params);	
 	var start_x = params.start_x;
 	var start_y = params.start_y;
 	var step = params.step;
@@ -508,16 +517,149 @@ function initFormSpire(  form, drawObj ){
 
 }//end initFormSpire()
 
-function initFormEpic( form, drawObj ){
-	var startXVal = form.elements["start_x"];
-	startXVal.value = drawObj.p["start_x"];
 
-	var startXRange = form.elements["start_x_range"];
-	startXRange.value = drawObj.p["start_x"];
-	startXRange.onchange = function(e){
+function initFormEpic( drawObj ){
+	
+	var form = drawObj["form"];
+//console.log(form);
+/*
+for (var n1=1; n1 < form.elements.length; n1++){
+	var elmnt = form.elements[n1];
+console.log(elmnt);	
+}
+*/
+//console.log( form.elements["start_x_range"] );	
+	var p = drawObj.p;
+	
+	form.elements["color"].value = p["color"];
+
+	var startXVal = form.elements["start_x"];
+	startXVal.value = p["start_x"];
+
+	var xRange = form.elements["x_range"];
+	xRange.value = p["start_x"];
+	xRange.onchange = function(e){
 		startXVal.value=this.value;				
+		//drawObj["draw"]();
 	}
-}//end initFormSpire()
+	
+	var startYVal = form.elements["start_y"];
+	startYVal.value = p["start_y"];
+
+	var yRange = form.elements["y_range"];
+	yRange.value = p["start_y"];
+	yRange.onchange = function(e){
+		startYVal.value=this.value;				
+		//drawObj["draw"]();
+	}
+	
+	var numRepeatRange = form[ "num_repeat_range" ];
+	numRepeatRange.value = p["num_repeat"];
+	var numRepeatVal = form[ "num_repeat_val" ];
+	numRepeatVal.value = numRepeatRange.value;				
+	numRepeatRange.onchange = function(e){
+		numRepeatVal.value=this.value;				
+		drawObj["draw"]();
+	}
+
+	var k1Val = form.k1_val;
+	var k1Range = form.k1;
+	k1Val.value = p["k1"];
+	k1Range.value = p["k1"];
+	k1Range.onchange = function(e){
+		k1Val.value=this.value;				
+		drawObj["draw"]();
+	}
+	
+	var k2Val = form.k2_val;
+	var k2Range = form.k2;
+	k2Val.value = p["k2"];
+	k2Range.value = p["k2"];
+	k2Range.onchange = function(e){
+		k2Val.value=this.value;				
+		drawObj["draw"]();
+	}
+	
+	var k3Val = form.k3_val;
+	var k3Range = form.k3;
+	k3Val.value = p["k3"];
+	k3Range.value = p["k3"];
+	k3Range.onchange = function(e){
+		k3Val.value=this.value;				
+		drawObj["draw"]();
+	}
+	
+	var pxRange = form[ "px_range" ];
+	pxRange.value = p["px"];
+	var pxVal = form[ "px_val" ];
+	pxVal.value = pxRange.value;				
+	pxRange.onchange = function(e){
+		pxVal.value=this.value;				
+		drawObj["draw"]();
+	}
+
+	var pyRange = form[ "py_range" ];
+	pyRange.value = p["py"];
+	var pyVal = form[ "py_val" ];
+	pyVal.value = pyRange.value;				
+	pyRange.onchange = function(e){
+		pyVal.value=this.value;				
+		drawObj["draw"]();
+	}
+
+	form.elements["step"].value = p["step"];
+
+	if( typeof form.onsubmit !== "function"){
+		form.onsubmit = function( event ){
+console.log(event);
+			drawObj["draw"]();
+			event.preventDefault();
+		};
+	}
+
+	if( typeof form.onreset !== "function"){
+		form.onreset = function( event ){
+			drawObj["init"]( drawObj );
+			event.preventDefault();
+		};
+	}
+
+	//clear-btn
+	var btn_clear_canvas = form["clear_canvas"];
+//console.log(btn_clear_canvas);		
+	btn_clear_canvas.addEventListener("click", function(e){
+//console.log(e);
+		clear_canvas( drawObj["canvasID"] );
+		drawObj["init"]();
+		//drawObj["draw"]();
+	}, false);//end event
+	
+}//end initFormEpic()
+
+function epic_ulitka( context, params){//Улитка Паскаля
+//console.log( context, params );
+		context.fillStyle = params.color;
+		var start_x = params.start_x;
+		var start_y = params.start_y;
+		var px = params.px; // сжатие по X
+		var py = params.py; // сжатие по Y
+		var step = params.step;
+		var num_repeat =  params.num_repeat;
+		var k1 = params.k1;
+		var k2 = params.k2;
+		var k3 = params.k3;
+		
+		for ( var n = 0;  n < num_repeat; n += step) {
+			r = 1 - Math.cos( n * k3);
+			x_ = ( r * Math.cos( n  * k1)  ) * px;
+			y_ = ( r * Math.sin( n  * k2)  ) * py;
+
+			x = start_x + ( Math.round(x_) ) ;
+			y = start_y + ( Math.round(y_) );
+			context.fillRect(x, y, 2, 2);
+		}//next
+
+}//end epic_ulika()
 
 
 function runTest(){
