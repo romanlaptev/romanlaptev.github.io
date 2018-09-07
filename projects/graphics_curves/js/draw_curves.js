@@ -140,17 +140,17 @@ var _vars = {
 					"start_y" : 80,
 					"step" : 0.01,
 					"num_repeat" : Math.PI*6,
-					"px" : 30,
-					"py" : 30,
-					k1: 5,
-					k2: 5,
-					k3: 6,
-					color: "green"
+					"px" : 40,
+					"py" : 40,
+					k1: 2,
+					k2: 2,
+					k3: 3,
+					color: "darkred"
 				});
 				
 				epic_ulitka( this.context, {
-					"start_x" : 340,
-					"start_y" : 100,
+					"start_x" : 100,
+					"start_y" : 220,
 					"step" : 0.01,
 					"num_repeat" : Math.PI*6,
 					"px" : 40,
@@ -162,7 +162,7 @@ var _vars = {
 				});
 
 				epic_ulitka( this.context, {
-					"start_x" : 480,
+					"start_x" : 340,
 					"start_y" : 100,
 					"step" : 0.01,
 					"num_repeat" : Math.PI*6,
@@ -175,16 +175,16 @@ var _vars = {
 				});
 				
 				epic_ulitka( this.context, {
-					"start_x" : 100,
-					"start_y" : 220,
+					"start_x" : 480,
+					"start_y" : 100,
 					"step" : 0.01,
 					"num_repeat" : Math.PI*6,
-					"px" : 40,
-					"py" : 40,
-					k1: 2,
-					k2: 2,
-					k3: 3,
-					color: "darkred"
+					"px" : 30,
+					"py" : 30,
+					k1: 5,
+					k2: 5,
+					k3: 6,
+					color: "green"
 				});
 				
 				epic( this.context2, {
