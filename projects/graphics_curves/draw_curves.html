@@ -45,6 +45,33 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 		<input type="submit" class="btn btn-primary" value="перестроить график"/>
 		<input type="reset" class="btn btn-warning" value="сбросить значения"/>
 		<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
+<pre>
+function epic_ulitka( context, params){//Улитка Паскаля
+
+		context.fillStyle = "ble";
+		var start_x = 120;
+		var start_y = 100;
+		var px = 40; // сжатие по X
+		var py = 40; // сжатие по Y
+		var step = Math.PI*6;
+		var num_repeat =  0.01;
+		var k1 = 5;
+		var k2 = 5;
+		var k3 = 5;
+		
+		for ( var n = 0;  n < num_repeat; n += step) {
+			r = 1 - Math.cos( n * k3);
+			x_ = ( r * Math.cos( n  * k1)  ) * px;
+			y_ = ( r * Math.sin( n  * k2)  ) * py;
+
+			x = start_x + ( Math.round(x_) ) ;
+			y = start_y + ( Math.round(y_) );
+			context.fillRect(x, y, 2, 2);
+		}//next
+
+}//end epic_ulitka()
+</pre>
+
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 panel-body">

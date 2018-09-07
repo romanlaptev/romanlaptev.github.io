@@ -159,8 +159,21 @@ var _vars = {
 					k3: 31,
 					color: "red"
 				});
+
+				epic_ulitka( this.context, {
+					"start_x" : 480,
+					"start_y" : 100,
+					"step" : 0.01,
+					"num_repeat" : Math.PI*6,
+					"px" : 40,
+					"py" : 40,
+					k1: 5,
+					k2: 3,
+					k3: 6,
+					color: "blue"
+				});
 				
-			},
+			},//end init()
 			
 			"getFormValues": function(){
 				var values = {
