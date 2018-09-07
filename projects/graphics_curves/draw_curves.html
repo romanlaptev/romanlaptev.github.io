@@ -42,6 +42,8 @@ margin: 0;
 		<canvas id="canvas-epic" width="600" height="300">
 Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
 		</canvas>
+		<input type="submit" class="btn btn-primary" value="перестроить график"/>
+		<input type="reset" class="btn btn-warning" value="сбросить значения"/>
 		<input name="clear_canvas" type="button" value="Clear canvas" class="btn btn-small btn-danger">
 	</div>
 
@@ -49,19 +51,19 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 			
 		<div class="form-group form-group-sm">
 			<label class="inline">
-				start_x (0-600): <input disabled="" name="start_x" type="text">
+				start_x (0-600): <input name="start_x" type="text">
 					<input name="x_range" min="0" max="600" step="1" value="" type="range">
 			</label>
 
 			<label class="inline">
-				start_y (0-300): <input disabled="" name="start_y" type="text">
+				start_y (0-300): <input name="start_y" type="text">
 				<input name="y_range" min="0" max="300" step="1" value="" type="range">
 			</label>
 		</div>			
 
 		<div class="form-group form-group-sm">
 			<label class="inline">num_repeat (1-100):
-				<input name="num_repeat_val" disabled="" type="text">
+				<input name="num_repeat_val" type="text">
 				<input name="num_repeat_range" min="1" max="100" step="1" value="" type="range">
 			</label>
 			
@@ -92,17 +94,15 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 
 		<div class="form-group form-group-sm">
 			<label class="inline">сжатие по X, px (0-100):
-				<input name="px_val" disabled=""  type="text">
+				<input name="px_val" type="text">
 				<input name="px_range" min="0" max="100" step="1" value="" type="range">
 			</label>
 			<label class="inline">сжатие по Y, py (0-100):
-				<input name="py_val" disabled=""  type="text">
+				<input name="py_val" type="text">
 				<input name="py_range" min="0" max="150" step="1" value="" type="range">
 			</label>
 		</div>			
 		
-		<input type="submit" class="btn btn-primary" value="перестроить график"/>
-		<input type="reset" class="btn btn-warning" value="сбросить значения"/>
 </form>
 	</div>
 

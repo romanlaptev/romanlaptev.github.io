@@ -118,12 +118,12 @@ var _vars = {
 			"context" : _createCanvas( "canvas-epic" ),
 			"form" : getById( "form-epic" ),
 			"p" : {
-				"start_x" : 150,
-				"start_y" : 150,
+				"start_x" : 120,
+				"start_y" : 100,
 				"step" : 0.01,
 				"num_repeat" : Math.PI*6,
-				"px" : 60,
-				"py" : 60,
+				"px" : 40,
+				"py" : 40,
 				k1: 5,
 				k2: 5,
 				k3: 5,
@@ -132,6 +132,34 @@ var _vars = {
 			
 			"init" : function(){
 				initFormEpic( this );
+				
+				epic_ulitka( this.context, this.p );
+				epic_ulitka( this.context, {
+					"start_x" : 200,
+					"start_y" : 100,
+					"step" : 0.01,
+					"num_repeat" : Math.PI*6,
+					"px" : 30,
+					"py" : 30,
+					k1: 5,
+					k2: 5,
+					k3: 6,
+					color: "green"
+				});
+				
+				epic_ulitka( this.context, {
+					"start_x" : 340,
+					"start_y" : 100,
+					"step" : 0.01,
+					"num_repeat" : Math.PI*6,
+					"px" : 40,
+					"py" : 40,
+					k1: 5,
+					k2: 5,
+					k3: 31,
+					color: "red"
+				});
+				
 			},
 			
 			"getFormValues": function(){
@@ -154,6 +182,7 @@ var _vars = {
 				
 				var p2 = this.getFormValues();
 				epic_ulitka( this.context, p2 );
+				
 /*
 				var context = _createCanvas( this["canvasID"] );
 				this.context.fillStyle = "blue";
@@ -639,7 +668,7 @@ console.log(event);
 	btn_clear_canvas.addEventListener("click", function(e){
 //console.log(e);
 		clear_canvas( drawObj["canvasID"] );
-		drawObj["init"]();
+		//drawObj["init"]();
 		//drawObj["draw"]();
 	}, false);//end event
 	
