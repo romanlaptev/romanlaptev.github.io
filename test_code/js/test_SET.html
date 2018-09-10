@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Set, Map, WeakSet и WeakMap</title>
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<script>
+var s = new Set();
+var users = [
+  {name:"user1"}, 
+  {name:"user2"}, 
+  {name:"user3"}, 
+];
+
+s.add( users[0] );
+s.add( users[1] );
+s.add( users[2] );
+s.add( users[0] );
+
+console.log(s.size);
+
+s.forEach( function(value, valueAgain, item){
+console.log(value);
+});
+
+//---
+var _values = s.values();//get iterator with values
+console.log( _values );
+
+for(var n of _values ){
+console.log(n);
+}//next
+	</script>
+	
+</head>
+<body>
+
+<header class="container">
+	<h1>Test JS: Set, Map, WeakSet и WeakMap methods</h1>
+</header>
+
+<div class="container">
+<pre>
+https://learn.javascript.ru/set-map
+Set, Map, WeakSet и WeakMap
+-----
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set
+Set
+----
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+WeakSet
+</pre>		
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+			</div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2>Set</h2>
+			</div>
+			<div class="panel-body">
+<pre>
+Объекты Set позволяют сохранять уникальные значения любого типа, как примитивы, так и другие типы объектов.
+
+'use strict';
+
+let set = new Set();
+
+let vasya = {name: "Вася"};
+let petya = {name: "Петя"};
+let dasha = {name: "Даша"};
+
+// посещения, некоторые пользователи заходят много раз
+set.add(vasya);
+set.add(petya);
+set.add(dasha);
+set.add(vasya);
+set.add(petya);
+
+// set сохраняет только уникальные значения
+alert( set.size ); // 3
+
+set.forEach( user => alert(user.name ) ); // Вася, Петя, Даша
+
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set
+---------------
+
+var s = new Set();
+var users = [
+  {name:"user1"}, 
+  {name:"user2"}, 
+  {name:"user3"}, 
+];
+
+s.add( users[0] );
+s.add( users[1] );
+s.add( users[2] );
+s.add( users[0] );
+
+console.log(s.size);
+
+s.forEach( function(value, valueAgain, item){
+console.log(value);
+});
+
+//---
+var _values = s.values();//get iterator with values
+console.log( _values );
+
+for(var n of _values ){
+console.log(n);
+}//next
+
+</pre>
+
+			</div>
+		</div>
+
+</div>
+</body>
+</html>
