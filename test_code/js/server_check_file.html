@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>Check file exists</title>
+	<script src="lib/shared_functions.js"></script>
+<script>
+window.onload = function(){
+	
+};//end window.load	
+</script>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>Check file on server (exist or not)</h1>
+	</div>
+
+	<div id="log-wrap" class="panel">
+		<div id="log"></div>
+	</div>		
+
+
+	<input id="request-url" name="" placeholder="" class="form-control" value="../../test.txt" autocomplete="off" type="text">
+	<pre>
+../../test.txt	
+https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p/lib/books/L/loginov_svyatoslav_analitik.fb2.zip
+	</pre>
+
+	<input id="request-method" name="" placeholder="" class="form-control" value="HEAD" autocomplete="off" type="text">
+	<pre>
+HEAD, GET
+	</pre>
+
+	<button id="send-btn" class="btn btn-primary">Send request</button>
+</div><!-- end container -->
+
+<script>
+
+
+//var url = "https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p/lib/books/L/loginov_svyatoslav_analitik.fb2.zip";
+//var url = "../../test.txt";
+//test_exists_file( url, "HEAD" );
+
+var sendBtn = getById("send-btn");
+sendBtn.onclick = function(e){
+//console.log(e);	
+	var url = getById("request-url").value;
+	var method = getById("request-method").value;
+	test_exists_file( url, method );
+};//end event
+
+
+function test_exists_file(requestUrl, requestMethod){
+//console.log(requestUrl, requestMethod);
+
+	runAjax( {
+		"requestMethod" : requestMethod,
+		"url" : requestUrl,
+		
+		"onProgress" : function( e ){
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			//var loadProgressBar = getById("load-progress-bar");
+			//if( loadProgressBar ){
+				////loadProgress.value = percentComplete;
+				//loadProgressBar.className = "progress-bar";
+				//loadProgressBar.style.width = percentComplete+"%";
+				//loadProgressBar.innerHTML = percentComplete+"%";
+			//}
+		},//end callback function
+					
+		"callback": function( data ){
+//console.log(data.length, typeof data, data);
+var logMsg = "<p>Success load " + requestUrl;
+logMsg += ", request method: " + requestMethod + "</p>";
+			if( data.length > 0){
+logMsg += "<pre>" + data + "</pre>";
+			}
+_log("<div class='alert alert-success'>" + logMsg + "</div>");
+console.log( logMsg );
+
+		},//end callback()
+		
+		"onLoadEnd" : function( headers ){
+//console.log( "onLoadEnd ", headers);
+var logMsg = "Headers: <pre>" + headers + "</pre>";
+_log("<div class='alert alert-info'>" + logMsg + "</div>");
+console.log( logMsg );
+
+		},//end callback function
+			
+		"onError" : _onerror
+	});
+	
+	function _onerror( xhr ){
+var logMsg = "error, not load " + requestUrl;
+_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+	}//end _onerror()
+
+}//end test_exists_file()
+
+</script>
+
+</body>
+</html>
