@@ -1241,9 +1241,9 @@ console.log("error, not found lib_obj[book_category]");
 				var html = nodes_obj.view_node( params );
 				$("#region-content #block-nodes").html( html );
 				
-				//$("#cloud-links").hide();
 				
 				if( lib_obj["node"]["book_files"].length === 0 ){
+					$("#cloud-links").hide();
 					$("#book-links").hide();
 				}
 				
