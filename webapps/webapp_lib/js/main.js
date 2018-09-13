@@ -22,7 +22,7 @@ config["tpl_file"] = "tpl/templates.html";
 config["content_location"] = "http://site-content";
 
 //config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
-config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p";
+config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p";
 
 config["use_localcache"] = true;
 config["runtime"] = [];
