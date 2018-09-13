@@ -30936,7 +30936,7 @@ lib/art_books/book_history_engraving
 		<value>V_Veselyi_Artem_Rossiya_krovu_umytaya_sbornik.fb2.zip</value>
 	</item>
 	<item entity_id="1752" bundle="library_book" delta="0">
-		<value>loginov_svyatoslav_analitik.fb2.zip</value>
+		<value>Loginov.Sv/loginov_svyatoslav_analitik.fb2.zip</value>
 	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>

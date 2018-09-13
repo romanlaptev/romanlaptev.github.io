@@ -21,7 +21,9 @@ config["tpl_file"] = "tpl/templates.html";
 //config["content_location"] = "file:///mnt/terra/clouds/0_data";
 config["content_location"] = "http://site-content";
 
-config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
+//config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
+config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p";
+
 config["use_localcache"] = true;
 config["runtime"] = [];
 
@@ -29,7 +31,7 @@ config["runtime"] = [];
 	//config["content_location"] = "file:///F:/clouds/0_data";
 //}
 
-//console.log(config);
+console.log(config);
 
 /* для Mozilla/Firefox/Opera 9 */
 if (document.addEventListener) {

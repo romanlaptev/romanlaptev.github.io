@@ -86,19 +86,18 @@
 						</div><!-- end panel -->
 
 
-						<div class="panel panel-info" id="dropbox-links">
+						<div class="panel panel-info" id="cloud-links">
 							<div class="panel-heading">
-								<b>Dropbox links</b>
+								<b>Cloud links</b>
 							</div>
 							<div class="panel-body">
-								<ul class="list-group">
-									<span id="dropbox-list"></span>
-								</ul>
+								<ul class="list-group">{{cloud-links}}</ul>
 							</div>
 						</div><!-- end panel -->
-<script type="text/template" id="dropbox-for">
+<script type="text/template" id="cloud-for">
 	<li class="list-group-item">
-		<a href="{{url}}" target="_blank">{{link-title}}</a>
+		<a href="{{url}}">{{link-title}}</a><br/>
+		{{url}}
 	</li>
 </script>						
 						

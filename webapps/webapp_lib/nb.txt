@@ -6,6 +6,9 @@
 *- на сайте lib.wallst.ru
 - на сайте romanlaptev.wordpress.com
 
+- добавить формирование ссылок на книга из cloud.mail.ru
+(https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p/lib/books/L/Loginov.Sv/loginov_svyatoslav_analitik.fb2.zip)
+
 *т.е. нужна возможность указать на странице в CMS, прямую ссылку на файл книги
 
 ==============================

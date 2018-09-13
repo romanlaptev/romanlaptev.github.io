@@ -151,8 +151,8 @@ console.log("errorThrown - ", errorThrown);
 				lib_obj["templates"]["termin_nodes_url_tpl"] = "?q=node&nid=#nid";
 
 				
-				var tmpl = $(data).find("#dropbox-for");
-				lib_obj["templates"]["dropbox_for_tpl"] = decodeURI( tmpl.html() );
+				var tmpl = $(data).find("#cloud-for");
+				lib_obj["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
 				
 				//var tmpl = $(data).find("#external-links");
 				//lib_obj["templates"]["external_links_tpl"] = tmpl.html();
@@ -659,10 +659,12 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 			
 			
 			//add dropbox disk links
-			add_dropbox_links();
+			//add_dropbox_links();
 			//var html_dropbox_links = add_dropbox_links();
 			//html = html.replace("{{dropbox-list}}", html_dropbox_links);
 
+			var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
+			html = html.replace("{{cloud-links}}", html_cloud_links);
 
 			//form node book external links
 			var html_book_links = "";
@@ -1239,7 +1241,7 @@ console.log("error, not found lib_obj[book_category]");
 				var html = nodes_obj.view_node( params );
 				$("#region-content #block-nodes").html( html );
 				
-				$("#dropbox-links").hide();
+				//$("#cloud-links").hide();
 				
 				if( lib_obj["node"]["book_files"].length === 0 ){
 					$("#book-links").hide();
@@ -1446,6 +1448,40 @@ console.log("w = " + document.body.clientWidth );
 		   return $_GET; 
 		}//end parseGetParams() 
 
+
+		function add_cloud_links( cloudUrl ) {//form link on cloud file
+//console.log("function add_cloud_links", cloudUrl);			
+			var html = "";
+			
+			var node_tpl_url = lib_obj["templates"]["cloud_for_tpl"];
+			var subfolder =  lib_obj["node"]["subfolder"];
+
+			for( var n = 0; n < lib_obj["node"]["book_files"].length; n++ ){
+				var filename =  lib_obj["node"]["book_files"][n];
+				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
+				if( filename.lastIndexOf('#') > 0 )	{
+					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
+				} else {
+					var s_filename = filename;
+				}
+
+				if( filename.indexOf("http") !== -1){//external link
+					var url = s_filename;//?????????????????????
+				} else { //local file
+					var url = cloudUrl + "/"+ subfolder + "/" + s_filename;
+				}
+				
+				var html_url = node_tpl_url
+						.replace("{{link-title}}", link_title)
+						.replace(/{{url}}/g, url);
+				html += html_url;
+			}//next book file
+			
+console.log(html);
+			return html;
+		}//end add_cloud_links()
+
+/*
 		function add_dropbox_links() {
 			//form node book url and generate ajax-request to Dropbox
 			var node_tpl_url = lib_obj["templates"]["dropbox_for_tpl"];
@@ -1472,6 +1508,9 @@ console.log("w = " + document.body.clientWidth );
 				test_exists_book( url, "HEAD", html );
 			}//next book file
 		}//end add_dropbox_links()
+*/
+
+/*		
 		//
 		//асинхронный запрос к серверу для проверки наличия файла книги на сервере и вывода кода ссылки
 		function test_exists_book( url, type_request, html ){
@@ -1494,6 +1533,7 @@ console.log("status - " + status +", url - " + url);
 				}
 			});
 		}//end test_exists_book()
+*/
 		
 		function get_attr_to_obj( attr )	
 		{			
