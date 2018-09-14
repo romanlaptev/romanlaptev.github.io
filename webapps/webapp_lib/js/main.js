@@ -23,7 +23,11 @@ config["content_location"] = "http://site-content";
 
 //config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
 config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p";
+<<<<<<< HEAD
 config["url_book_location_Yandex"] = "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync";
+=======
+
+>>>>>>> 346d149e04677a2b77fb9bea18af6593bf498370
 config["use_localcache"] = true;
 config["runtime"] = [];
 
