@@ -1492,7 +1492,7 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 				html += html_url;
 			}//next book file
 			
-console.log(html);
+//console.log(html);
 			return html;
 		}//end add_cloud_links()
 
