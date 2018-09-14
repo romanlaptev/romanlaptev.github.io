@@ -664,6 +664,7 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 			//html = html.replace("{{dropbox-list}}", html_dropbox_links);
 
 			var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
+			html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
 			html = html.replace("{{cloud-links}}", html_cloud_links);
 
 			//form node book external links
@@ -1471,9 +1472,23 @@ console.log("w = " + document.body.clientWidth );
 					var url = cloudUrl + "/"+ subfolder + "/" + s_filename;
 				}
 				
+//-------------
+if(cloudUrl.indexOf("mail.ru") !== -1 ){
+	link_title = "Mail.ru cloud disk: " + link_title;
+}
+if(cloudUrl.indexOf("yandex") !== -1 ){
+	link_title = "Yandex cloud disk: " + link_title;
+}
+//-------------				
 				var html_url = node_tpl_url
 						.replace("{{link-title}}", link_title)
 						.replace(/{{url}}/g, url);
+//-------------
+if(cloudUrl.indexOf("mail.ru") !== -1 ){
+	html_url += "<br/>direct link: " + url;
+}
+//-------------				
+						
 				html += html_url;
 			}//next book file
 			
