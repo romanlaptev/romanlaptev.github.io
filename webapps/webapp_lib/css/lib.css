@@ -216,6 +216,7 @@ float:none;
      display: block;
      margin: 3px;
      padding: 5px;
+border-radius: 3px;
 }
 
 .book, .library_book {
