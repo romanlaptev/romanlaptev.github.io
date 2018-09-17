@@ -1,11 +1,88 @@
 ﻿//console.log for old IE
-if(!window.console){
-	console = {
-		log : function(message){
-			alert(message);
+if (!window.console){ 
+	window.console = {
+		"log" : function( msg ){
+			var log = getById("log");
+			if(log){
+				log.innerHTML += msg +"<br>";
+			} else {
+				alert(msg);
+				//document.writeln(msg);
+			}
 		}
 	}
-}
+};
+
+function _push( ar, item){
+	if( ar.push ){
+		ar.push(item);
+	} else {
+		var num = ar.length;
+		ar[num] = item;
+	}
+}// end _push()
+
+
+function _log( msg, id){
+//console.log(arguments);
+//alert(arguments.length);
+//		for( var n = 0; n < arguments.length; n++){
+//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
+//alert( _s );
+//		}
+	var id = id || arguments[1];//IE4 fix
+//alert( msg );
+//alert( id );
+
+	if(!id){
+		var id = "log";
+	}
+	
+	var output = getById(id);
+	if( output ){	
+		if( msg.length == 0){
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += msg;
+		}
+		
+	} else {
+		console.log(msg);
+		//alert(msg);
+		//document.writeln(msg);
+	}
+	
+	if( typeof _showHiddenLog === "function"){
+//console.log(_showHiddenLog);
+		_showHiddenLog();
+	}
+	
+}//end _log()
+
+function getById(id){
+	
+	if( document.querySelector ){
+		var obj = document.querySelector("#"+id);
+		return obj;
+	}
+	
+	if( document.getElementById ){
+		var obj = document.getElementById(id);
+		return obj;
+	}
+	
+	if( document.all ){
+		var obj = document.all[id];
+		return obj;
+	}
+	
+	//if( document.layers ){
+		//var obj = document.layers[id];
+		//return obj;
+	//}
+	
+	return false;
+}//end getById()
 
 var _timer = {};
 var _set_timer = function (){
@@ -18,85 +95,48 @@ var _get_timer = function (timer){
 	return parseFloat((d.getTime() - timer)/1000);
 };
 
-
-function _log( msg, id){
-	if(!id) id = "log";
-	if( msg.length === 0){
-		document.getElementById(id).innerHTML = "";
+function get_attr_to_obj( attr ){
+	var item_attr = {};
+	for(var item = 0; item < attr.length; item++) {
+		item_attr[attr[item].name] = attr[item].value;
 	}
-	//if( window.console && window.console.log) {
-		//console.log(msg)
-	//};
-	document.getElementById(id).innerHTML += "<p>" + msg + "</p>";
-}
+	return item_attr;
+}//end get_attr_to_obj()
 
-//document.write("браузер - " + navigator.appName + "<br>");
-//if (navigator.javaEnabled() == 1)
-//  document.write("Браузер поддерживает JavaScript<br>");
-//else
-//  document.write("Браузер не поддерживает JavaScript<br>");
-
-//http://javascript.ru/window-location
-function getenv(i)
-{
-	if (!i.length) 
-	{ 
-		return false; 
-	}  
-	qStr = document.location.href;
-	strpos = qStr.indexOf("?"+i+"=");
-
-	if ( strpos ==-1) 
-	{ 
-		strpos = qStr.indexOf("&"+i+"="); 
-	}
-
-	if ( strpos == qStr.length || strpos ==-1 )
-	{
-		return false; 
-	}
-
-	val = qStr.substring( (strpos+i.length)+2, qStr.length);
-
-	strpos = val.indexOf("&");
-
-	if ( strpos !=-1 ) 
-	{ 
-		val = val.substring(0, strpos ); 
-	}
-
-	if ( !val.length ) 
-	{ 
-		return false; 
-	}
-	else 
-	{ 
-		return val; 
-	}
-}//end function getenv()
 
 //**************************************
-//$_GET = parseGetParams( parse_url ); 
+//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
+//$_GET = parseGetParams(); 
+//or 
+//$_GET = parseGetParams("?test=1"); 
 //console.log( $_GET);
 //**************************************
-function parseGetParams() { 
-   var $_GET = {}; 
-   var parse_url = window.location.search.substring(1).split("&"); 
-   for(var n = 0; n < parse_url.length; n++) 
-   { 
-      var getVar = parse_url[n].split("="); 
-      //$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
-	  if( typeof(getVar[1])=="undefined" )
-	  {
-		$_GET[ getVar[0] ] = "";
-	  }
-	  else
-	  {
-		$_GET[ getVar[0] ] = getVar[1];
-	  }
-   } 
-   return $_GET; 
+function parseGetParams( parseStr ) { 
+console.log(parseStr);
+console.log(window.location);
+
+	if( !parseStr ){
+		var parse_url = window.location.search.substring(1).split("&"); 
+	} else {
+		p = parseStr.split("?");
+	//console.log(p);
+		parseStr = p["1"];
+		var parse_url = parseStr.split("&"); 
+	}
+	
+	var $_GET = {}; 
+	for(var n = 0; n < parse_url.length; n++) { 
+	var getVar = parse_url[n].split("="); 
+		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+		if( typeof(getVar[1])=="undefined" ){
+			$_GET[ getVar[0] ] = "";
+		} else {
+		 $_GET[ getVar[0] ] = getVar[1];
+		}
+	}//next
+	return $_GET; 
 }//end parseGetParams() 
+
 
 function createRequestObject() 
 {
@@ -250,53 +290,45 @@ console.log( "always finished " + config["tpl_file"]);
 			});
 */
 
-function load_json( json_filename )
-{
-	$.getJSON("json/"+json_filename,function(data)
-		{
-console.log(JSON.stringify(data)); 
-		}
-	);
-}//------------ end func
+
+window.onload = function(){
+	//btn_scroll = getById("btn-scroll-to-top");
+}//end load
+
+window.onscroll = function(event) {
+//console.log("scroll on ");
+//console.log( "btn_scroll: ", btn_scroll.style );
+	//if( btn_scroll.style.display === "" || btn_scroll.style.display === "none"){
+		//btn_scroll.style.display = "block";
+	//}
+}//end event
+	
+window.onresize = function(event) {
+//console.log("resize window");
+}//end event
 
 
-$(document).ready(function(){
-//-------------------------------
-//ввод только цифр
-		$('.only-numbers').on('keydown', 
-			function(event) {
-//console.log("event.keyCode = " + event.keyCode );
-				if (event.keyCode == 13) 
-				{
-					return;
-				}
 
-				if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode
-				== 9 || event.keyCode == 27 ||
-				(event.keyCode == 65 && event.ctrlKey === true) ||
-				(event.keyCode >= 35 && event.keyCode <= 39)) 
-				{
-					return;
-				}
-				else 
-				{
-					if ((event.keyCode < 48 || event.keyCode > 57) &&
-					(event.keyCode < 96 || event.keyCode > 105 )) 
-					{
-						event.preventDefault();
-					}
-				}
-			}
-		);
+if( typeof window.jQuery === "function"){
+var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+_log(msg);
 
-//------------------------- scroll to top
-$("#scroll-to-top").click(function(e) {
-	e.preventDefault;
-	$('html,body').animate({
-		scrollTop: 0
-		}, 500);
-	return false;
-});
+	$(document).ready(function(){
+		
+	});//end ready	
 
+	$(window).scroll(function() {
+var st = $(window).scrollTop();
+document.title = st;
+//console.log ("scrollTop = " + st );
 
-});//end ready
+			//if ( $(this).scrollTop() > start_scroll_pos  ) {
+				//$("#btn-scroll-to-top").show();
+			//} 
+
+			//if ( $(this).scrollTop() < end_scroll_pos ) {
+				//$("#btn-scroll-to-top").hide();
+			//}
+	});//end scroll
+
+}

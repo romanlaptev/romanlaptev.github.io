@@ -28,6 +28,9 @@
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
             <script type="text/javascript" src="js/vendor/PIE_IE678.js"></script>
         <![endif]-->
+	<link rel="stylesheet" href="css/loader.css">
+	
+	<script src="js/functions.js"></script>
 	<script src="js/webapp_lib.js"></script>
 	<script src="js/main.js"></script>
 <!--
@@ -207,8 +210,26 @@ num_authors:
 </div>
 
 
-<div id="ajaxBusy">
-	<h1>ajaxBusy</h1>
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+ajax load:
+				<div class="progress">
+					<div id="load-progress-bar" class="progress-bar hide"></div>
+				</div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script>

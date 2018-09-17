@@ -1,16 +1,6 @@
 var lib;
 var info = [];
 
-//console.log for old IE
-if(!window.console){
-	console = {
-		log : function(message){
-			alert(message);
-			//document.getElementById("log").innerHTML += message;
-		}
-	}
-}
-
 //config
 var config = [];
 config["storage_key"] = "lib_xml";
@@ -24,27 +14,34 @@ config["content_location"] = "http://site-content";
 //config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
 config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p";
 config["url_book_location_Yandex"] = "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync";
-config["use_localcache"] = true;
+config["use_localcache"] = false;
 config["runtime"] = [];
 
 //if (navigator.userAgent.indexOf ('Windows')!= -1) {
 	//config["content_location"] = "file:///F:/clouds/0_data";
 //}
 
-console.log(config);
-
-/* для Mozilla/Firefox/Opera 9 */
-if (document.addEventListener) {
-	
-	document.addEventListener("DOMContentLoaded", function(){
-console.log("DOMContentLoaded");
-		//init_webapp()
-	},false);//end dom load
-	
-}
+//console.log(config);
 
 function init_webapp(){
-console.log("init_webapp()");
+//console.log("init_webapp()");
+
+//============================ test modal
+	
+	var waitWindow = getById("win1");
+	if( waitWindow ){
+		waitWindow.style.display="block";
+	}
+
+	setTimeout(function(){
+		//hide block overlay and wait window
+		if( waitWindow ){
+			waitWindow.style.display="none";
+		}
+	}, 1000*3);
+//---------------------------
+
+
 	if ( config["use_localcache"] ) {
 		//load localforage script
 		var script = document.createElement('script');
@@ -62,23 +59,13 @@ console.log("init_webapp()");
 	} else {
 		get_xml( config["xml_file"] );
 	}
+	
 }//end init_webapp()
 
 $(document).ready(function(){
 console.log("document ready");
-	$('#ajaxBusy').hide();//?????
 	$("#info").hide();
 
-	$(document).ajaxStart(
-		function() { 
-			$('#ajaxBusy').show(); 
-		}
-	).ajaxStop(
-		function() { 
-			$('#ajaxBusy').hide();
-		}
-	);
-	
 	$("#info-panel-view").on("click", function(){
 
 			view_log( info );			
@@ -154,24 +141,6 @@ function view_log( log ){
 //	}, 10*1000); 
 }
 
-/*
-console.log("window.addEventListener:" + window.addEventListener);
-console.log("window.attachEvent:" + window.attachEvent);
-if ( window.addEventListener ) {
-	
-	window.addEventListener("load", function(e) {
-console.log("window.addEventListener, event load");
-	}, false);
-	
-} else {
-	
-	if (window.attachEvent)	{
-		window.attachEvent("onload", function(){
-console.log("window.attachEvent, event onload");
-		});
-	}
-};
-*/
 
 function init_cache() {
 	localforage.config({
@@ -255,124 +224,3 @@ alert( "error, no support web-storages" );
 	};//end _test()
 	
 };//end _init_cache()
-
-
-//let's start
-function get_xml(){
-	
-	if ( config["use_localcache"] ) {
-		get_xml_from_storage();
-	} else {
-		var params = {
-			filename : config["xml_file"],
-			callback: after_load
-		};
-		load_xml( params );
-	}
-	
-	function load_xml( params ) {
-		var exec_start = new Date();
-		$.ajax({
-			type: "GET",
-			url: params["filename"],
-			dataType: "text",
-			//dataType: "xml",
-			complete: function(xhr, state){
-//console.log("ajax load complete, ", arguments);
-				var exec_end = new Date();
-				var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-				config["runtime"]["ajax_load"] = [];
-				config["runtime"]["ajax_load"]["time"] = runtime_s;
-				var log = "<br>ajax load " + params["filename"] + " complete";
-				log += ", runtime: <b>" + runtime_s + "</b> sec";
-				log += ", <b>state</b>: " + state;
-				info.push(log);
-			},
-			success: function( data ){
-//console.log( "success", arguments );
-				//var message = "<br>Successful download " + params["filename"];
-				//info.push(message);
-				params.callback( data );	
-			},
-			error: function( data, status, errorThrown ){
-//console.log( "error", arguments );
-				var message = "<br>error ajax load " + params["filename"];
-				//message += ", status: " + status;
-				message += ", " + errorThrown;
-				info.push(message);
-//console.log( message );
-			}
-		});
-	}//end load_xml();
-	
-	function after_load( xml ) {
-		lib = Lib( xml );
-console.log(lib);
-	}//end after_load()
-
-	function get_xml_from_storage() {
-		var exec_start = new Date();
-		localforage.keys(function(err, keys) {//test in array of keys
-			var j_keys = keys.join();
-			var pos = j_keys.indexOf( config["storage_key"] );
-			if( pos >= 0){
-				localforage.getItem( config["storage_key"], function(err, readValue) {
-//console.log('Read: ', config["storage_key"], readValue.length);
-//console.log(err);
-					var exec_end = new Date();
-					var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-				
-					var cache_size = readValue.length; 
-					var cache_size_kb = cache_size / 1024 ;
-					var cache_size_mb = cache_size_kb / 1024;
-					
-					var log = "<br>get storage element " + config["storage_key"];
-					log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-					log += ", runtime: <b>" + runtime_s + "</b> sec";
-					log += ", error: " + err;
-					info.push(log);
-					config["runtime"]["get_storage"] = [];
-					config["runtime"]["get_storage"]["time"] = runtime_s;
-					
-					//params.callback( readValue, true, log );	
-					after_load( readValue);
-				 });
-			} else {
-				var params = {
-					filename : config["xml_file"],
-					callback: put_to_storage
-				};
-				load_xml( params );
-			}
-		});
-	}//end get_xml_from_storage()
-
-	function put_to_storage( xml ) {
-		var exec_start = new Date();
-		localforage.setItem( config["storage_key"], xml, function(err, v) {
-//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
-//console.log(err);
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-
-			var cache_size = xml.length; 
-			var cache_size_kb = cache_size / 1024 ;
-			var cache_size_mb = cache_size_kb / 1024;
-			var log = "<br>save in cache element " + config["storage_key"];
-			log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-			log += ", runtime: <b>" + runtime_s + "</b> sec";
-			//var status = true;
-			if( err !== null){
-				log = "<br>error, no save " + config["storage_key"] + ", " + err;
-				//status = false;
-			}
-			info.push(log);
-			config["runtime"]["put_storage"] = [];
-			config["runtime"]["put_storage"]["time"] = runtime_s;
-			
-			//params.callback( key, status, log );	
-			after_load( xml );
-		});
-	}//end put_to_storage();
-	
-}//end get_xml()

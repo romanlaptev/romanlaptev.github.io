@@ -234,16 +234,19 @@ console.log(event);
 		});
 dont work under iE8...why?
 */
-function addListener(object, event, listener) {
-	event = event || fixEvent.call(this, window.event);
-	if (object && event && listener) {
-		if (object.addEventListener) {
-			object.addEventListener(event, listener, false);
-		} else if (object.attachEvent) {
-			object.attachEvent('on' + event, listener);
+if (document.addEventListener) {
+	function addListener(object, event, listener) {
+		event = event || fixEvent.call(this, window.event);
+		if (object && event && listener) {
+			if (object.addEventListener) {
+				object.addEventListener(event, listener, false);
+			} else if (object.attachEvent) {
+				object.attachEvent('on' + event, listener);
+			}
 		}
-	}
-}//end addListener()
+	}//end addListener()
+}
+
 
 //**************************************
 //var dirname = getenv("dirname");
@@ -954,6 +957,26 @@ window.onresize = function(event) {
 }//end event
 
 
+console.log("window.addEventListener:" + window.addEventListener);
+console.log("window.attachEvent:" + window.attachEvent);
+if ( window.addEventListener ) {
+	window.addEventListener("load", function(e) {
+console.log("window.addEventListener, event load");
+	}, false);
+} else {
+	if (window.attachEvent)	{
+		window.attachEvent("onload", function(){
+console.log("window.attachEvent, event onload");
+		});
+	}
+};
+
+/* for Mozilla/Firefox/Opera 9 */
+if (document.addEventListener) {
+	document.addEventListener("DOMContentLoaded", function(){
+console.log("DOMContentLoaded");
+	},false);//end dom load
+}
 
 if( typeof window.jQuery === "function"){
 var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
