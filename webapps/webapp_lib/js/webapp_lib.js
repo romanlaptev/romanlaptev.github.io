@@ -25,6 +25,8 @@ Usage:
 		_vars["log"] = getById("log");
 		_vars["btnToggle"] = getById("btn-toggle-log");
 		_vars["loadProgressBar"] = getById("load-progress-bar");
+		_vars["parseProgressBar"] = getById("parse-progress-bar");
+		_vars["waitWindow"] = getById("win1");
 		
 		_vars["appContainer"] = getById("App");
 		if( !_vars["appContainer"] ){
@@ -56,6 +58,9 @@ console.log( _vars["logMsg"] );
 
 			var exec_start = new Date();
 			
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="block";
+			}
 			
 			$.ajax({
 				type: "GET",
@@ -140,6 +145,11 @@ console.log("ajax beforeSend, ", arguments);
 					//_vars["logMsg"] += ", <b>state</b>: " + state;
 //_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
+
+					//if( _vars["waitWindow"] ){
+						//_vars["waitWindow"].style.display="none";
+					//}
+					
 				},
 				
 				success: function( data ){
@@ -266,6 +276,12 @@ console.log("$.ajax, Fail...", arguments);
 //var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 //var message = "<br>INIT, runtime: <b>" + runtime_s  + "</b> sec";
 //info.push( message );
+	
+setTimeout(function(){
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="none";
+			}
+}, 1000*3);
 			
 			var runtime_all = 0;
 			for( var item in config["runtime"]){

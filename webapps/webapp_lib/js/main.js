@@ -27,7 +27,7 @@ function init_webapp(){
 //console.log("init_webapp()");
 
 //============================ test modal
-	
+/*	
 	var waitWindow = getById("win1");
 	if( waitWindow ){
 		waitWindow.style.display="block";
@@ -39,6 +39,7 @@ function init_webapp(){
 			waitWindow.style.display="none";
 		}
 	}, 1000*3);
+*/	
 //---------------------------
 
 
