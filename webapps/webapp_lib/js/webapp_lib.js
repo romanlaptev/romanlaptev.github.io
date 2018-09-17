@@ -385,7 +385,7 @@ var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
 						};
-						lib_obj["node"] = nodes_obj.get_node( params);
+						_vars["node"] = nodes_obj.get_node( params);
 						
 var exec_end = new Date();
 var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
@@ -419,14 +419,14 @@ var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
 						};
-						lib_obj["node"] = nodes_obj.get_node( params);
+						_vars["node"] = nodes_obj.get_node( params);
 						
-						lib_obj["book_child_pages"] = [];
+						_vars["book_child_pages"] = [];
 						var params = {
 							"plid" : _vars["GET"]["mlid"],
 							"recourse" : 0
 						};
-						lib_obj["book_child_pages"] = book.get_child_pages( params );
+						_vars["book_child_pages"] = book.get_child_pages( params );
 //var params = [];
 //params["plid"] = "386";
 //params["recourse"] = 0;
@@ -732,7 +732,7 @@ console.log(message);
 		};//end get_node_termins()
 
 		function view_node( params ) {
-			if( typeof lib_obj["node"] === "undefined") {
+			if( typeof _vars["node"] === "undefined") {
 				var message = "<br>error, not found lib_obj[node]";
 console.log(message);
 				info.push( message );
@@ -741,10 +741,10 @@ console.log(message);
 			
 //----------------------
 var bodyValue = "";
-//console.log(lib_obj["node"]["body_value"].length );
-//console.log("TEST!!!", lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0);
-if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
-	bodyValue = lib_obj["node"]["body_value"]
+//console.log(_vars["node"]["body_value"].length );
+//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
+if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
+	bodyValue = _vars["node"]["body_value"]
 	.replace(/&quot;/g,"\"")
 	.replace(/&lt;/g,"<")
 	.replace(/&gt;/g,">");
@@ -754,29 +754,29 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 			
 			var node_tpl = lib_obj["templates"]["node_tpl"];
 			var html = node_tpl
-			.replace("{{author}}", lib_obj["node"]["author"] )
-			//.replace("{{node-title}}", lib_obj["node"]["title"] )
-			.replace("{{type}}", lib_obj["node"]["type"] )
-			.replace("{{bookname}}", lib_obj["node"]["bookname"] )
-			.replace("{{changed}}", lib_obj["node"]["changed"] )
-			.replace("{{created}}", lib_obj["node"]["created"] )
+			.replace("{{author}}", _vars["node"]["author"] )
+			//.replace("{{node-title}}", _vars["node"]["title"] )
+			.replace("{{type}}", _vars["node"]["type"] )
+			.replace("{{bookname}}", _vars["node"]["bookname"] )
+			.replace("{{changed}}", _vars["node"]["changed"] )
+			.replace("{{created}}", _vars["node"]["created"] )
 			.replace("{{body_value}}", bodyValue );
 
 
-			if( lib_obj["node"]["bookname"].length === 0){
-				html = html.replace("{{node-title}}", lib_obj["node"]["title"] );
+			if( _vars["node"]["bookname"].length === 0){
+				html = html.replace("{{node-title}}", _vars["node"]["title"] );
 			} else {
 				html = html.replace("{{node-title}}", "" );
 			}
 			
 			var node_tpl_url = lib_obj["templates"]["node_tpl_url"];
 			//form node book local url
-			if( lib_obj["node"]["book_files"].length > 0) {
+			if( _vars["node"]["book_files"].length > 0) {
 				var html_book_url = "";
-				var subfolder =  lib_obj["node"]["subfolder"];
-				for( var n = 0; n < lib_obj["node"]["book_files"].length; n++ )
+				var subfolder =  _vars["node"]["subfolder"];
+				for( var n = 0; n < _vars["node"]["book_files"].length; n++ )
 				{
-					var filename =  lib_obj["node"]["book_files"][n];
+					var filename =  _vars["node"]["book_files"][n];
 					var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
 					if( filename.lastIndexOf('#') > 0 ) {
 						var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
@@ -811,9 +811,9 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 
 			//form node book external links
 			var html_book_links = "";
-			for( var n = 0; n < lib_obj["node"]["book_links"].length; n++ )
+			for( var n = 0; n < _vars["node"]["book_links"].length; n++ )
 			{
-				var link =  lib_obj["node"]["book_links"][n];
+				var link =  _vars["node"]["book_links"][n];
 				var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
 				if( link.lastIndexOf('#') > 0 ) {
 					var s_link = link.substring( 0, link.lastIndexOf('#') );
@@ -829,8 +829,8 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 			
 			//form node old book url
 			var html_book_url2 = "";
-			for( var n = 0; n < lib_obj["node"]["book_url"].length; n++ ){
-				var link =  lib_obj["node"]["book_url"][n];
+			for( var n = 0; n < _vars["node"]["book_url"].length; n++ ){
+				var link =  _vars["node"]["book_url"][n];
 
 				html_book_url2 += node_tpl_url
 						.replace("{{link-title}}", link)
@@ -843,12 +843,12 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 			var node_tpl_url = lib_obj["templates"]["node_tpl_termins"];
 			var url_tpl = lib_obj["templates"]["taxonomy_url_tpl"];
 
-			for( var n = 0; n < lib_obj["node"]["termins"].length; n++ ) {
+			for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
 				var link = url_tpl
 					.replace("{{vid}}", "")
-					.replace("{{tid}}", lib_obj["node"]["termins"][n]["tid"] );
+					.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
 				
-				var link_title = lib_obj["node"]["termins"][n]["name"];
+				var link_title = _vars["node"]["termins"][n]["name"];
 
 				html_termin_links += node_tpl_url
 						.replace("{{link-title}}", link_title)
@@ -1211,15 +1211,15 @@ console.log("error, not found lib_obj[book_category], function parse_book_catego
 		
 		function view_child_pages( params ) {
 //console.log("function view_child_pages", params);
-			if( typeof lib_obj["book_child_pages"] === "undefined") {
-				var message = "<br>error, not found lib_obj[book_child_pages]";
+			if( typeof _vars["book_child_pages"] === "undefined") {
+				var message = "<br>error, not found _vars[book_child_pages]";
 console.log(message);
 				info.push( message );
 				return;
 			}
 			
-			if( lib_obj["book_child_pages"].length === 0) {
-console.log("lib_obj['book_child_pages'] is empty!!!", lib_obj["book_child_pages"].length);
+			if( _vars["book_child_pages"].length === 0) {
+console.log("lib_obj['book_child_pages'] is empty!!!", _vars["book_child_pages"].length);
 				return;
 			}
 			
@@ -1229,13 +1229,13 @@ console.log("lib_obj['book_child_pages'] is empty!!!", lib_obj["book_child_pages
 			
 			var html = "", html_list = "";
 			
-			for( var n = 0; n < lib_obj["book_child_pages"].length; n++ ) {
+			for( var n = 0; n < _vars["book_child_pages"].length; n++ ) {
 				
-				var type = $(lib_obj["book_child_pages"][n]).attr("type");
-				var nid = $(lib_obj["book_child_pages"][n]).attr("nid");
-				var mlid = $(lib_obj["book_child_pages"][n]).attr("mlid");
-				var plid = $(lib_obj["book_child_pages"][n]).attr("plid");
-				var title = $(lib_obj["book_child_pages"][n]).attr("title");
+				var type = $(_vars["book_child_pages"][n]).attr("type");
+				var nid = $(_vars["book_child_pages"][n]).attr("nid");
+				var mlid = $(_vars["book_child_pages"][n]).attr("mlid");
+				var plid = $(_vars["book_child_pages"][n]).attr("plid");
+				var title = $(_vars["book_child_pages"][n]).attr("title");
 				html_list += item_tpl
 				.replace("{{type}}", type)
 				.replace("{{nid}}", nid)
@@ -1344,7 +1344,7 @@ console.log("error, not found lib_obj[book_category]");
 			//view book nodes
 			if ( _vars["GET"]["q"] === "book_page" ) {
 				render_node();
-				if( lib_obj["book_child_pages"].length > 0) {
+				if( _vars["book_child_pages"].length > 0) {
 					var params = {
 						"nid" :  _vars["GET"]["nid"],
 						"mlid" :  _vars["GET"]["mlid"]
@@ -1353,7 +1353,7 @@ console.log("error, not found lib_obj[book_category]");
 //console.log("html = " + html);
 					$("#region-content #block-nodes").append( html );
 				} else {
-//console.log("lib_obj['book_child_pages'] is empty!!!!!!!!!!!!!!", lib_obj["book_child_pages"].length);
+//console.log("lib_obj['book_child_pages'] is empty!!!!!!!!!!!!!!", _vars["book_child_pages"].length);
 				}
 				
 			}
@@ -1386,19 +1386,19 @@ console.log("error, not found lib_obj[book_category]");
 				$("#region-content #block-nodes").html( html );
 				
 				
-				if( lib_obj["node"]["book_files"].length === 0 ){
+				if( _vars["node"]["book_files"].length === 0 ){
 					$("#cloud-links").hide();
 					$("#book-links").hide();
 				}
 				
-				if( lib_obj["node"]["book_links"].length > 0 ){
-console.log(lib_obj["node"]["book_links"].length, $("#external-links").attr("id"));
+				if( _vars["node"]["book_links"].length > 0 ){
+console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
 					$("#external-links").show();
 				} else {
 					$("#external-links").hide();
 				}
 				
-				if( lib_obj["node"]["termins"].length === 0 ){
+				if( _vars["node"]["termins"].length === 0 ){
 					$("#termins").hide();
 				} else {
 					$("#termins .nav-click").addClass("root-link");			
@@ -1628,14 +1628,11 @@ var exec_start = new Date();
 						_vars["node"] = nodes_obj.get_node({
 							"nid" : _vars["GET"]["nid"]
 						});
-/*						
-						lib_obj["book_child_pages"] = [];
-						var params = {
+						_vars["book_child_pages"] = book.get_child_pages({
 							"plid" : _vars["GET"]["mlid"],
 							"recourse" : 0
-						};
-						lib_obj["book_child_pages"] = book.get_child_pages( params );
-*/						
+						});
+
 //var params = [];
 //params["plid"] = "386";
 //params["recourse"] = 0;
@@ -1648,10 +1645,10 @@ _vars["logMsg"] = "- book.get_child_pages( params), runtime: <b>" + runtime_s  +
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 
-config["runtime"]["get_child_pages"] = [];
-config["runtime"]["get_child_pages"]["time"] = runtime_s;
+//config["runtime"]["get_child_pages"] = [];
+//config["runtime"]["get_child_pages"]["time"] = runtime_s;
 
-					//draw_page();
+					draw_page();
 					
 					//if( $(".navbar-header").is(":visible") &&
 						//document.body.clientWidth < 990) {
@@ -1706,10 +1703,10 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 			var html = "";
 			
 			var node_tpl_url = lib_obj["templates"]["cloud_for_tpl"];
-			var subfolder =  lib_obj["node"]["subfolder"];
+			var subfolder =  _vars["node"]["subfolder"];
 
-			for( var n = 0; n < lib_obj["node"]["book_files"].length; n++ ){
-				var filename =  lib_obj["node"]["book_files"][n];
+			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
+				var filename =  _vars["node"]["book_files"][n];
 				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
 				if( filename.lastIndexOf('#') > 0 )	{
 					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
@@ -1751,9 +1748,9 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 		function add_dropbox_links() {
 			//form node book url and generate ajax-request to Dropbox
 			var node_tpl_url = lib_obj["templates"]["dropbox_for_tpl"];
-			var subfolder =  lib_obj["node"]["subfolder"];
-			for( var n = 0; n < lib_obj["node"]["book_files"].length; n++ ){
-				var filename =  lib_obj["node"]["book_files"][n];
+			var subfolder =  _vars["node"]["subfolder"];
+			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
+				var filename =  _vars["node"]["book_files"][n];
 				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );//"dropbox disk link";
 				if( filename.lastIndexOf('#') > 0 )	{
 					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
