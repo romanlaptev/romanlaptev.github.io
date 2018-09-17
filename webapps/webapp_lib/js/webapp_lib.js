@@ -25,6 +25,7 @@ Usage:
 		_vars["log"] = getById("log");
 		_vars["btnToggle"] = getById("btn-toggle-log");
 		_vars["loadProgressBar"] = getById("load-progress-bar");
+		_vars["numTotalLoad"] = getById("num-total-load");
 		_vars["parseProgressBar"] = getById("parse-progress-bar");
 		_vars["waitWindow"] = getById("win1");
 		
@@ -100,10 +101,11 @@ console.log(percentComplete);
 						}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
 						if( _vars["loadProgressBar"] ){
-							//_vars["loadProgressBar"].value = percentComplete;
 							_vars["loadProgressBar"].className = "progress-bar";
 							_vars["loadProgressBar"].style.width = percentComplete+"%";
 							_vars["loadProgressBar"].innerHTML = percentComplete+"%";
+							
+							_vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
 						}
 					}, false);
 					
