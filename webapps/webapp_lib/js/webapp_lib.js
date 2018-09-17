@@ -24,6 +24,7 @@ Usage:
 		
 		_vars["log"] = getById("log");
 		_vars["btnToggle"] = getById("btn-toggle-log");
+		_vars["loadProgressBar"] = getById("load-progress-bar");
 		
 		_vars["appContainer"] = getById("App");
 		if( !_vars["appContainer"] ){
@@ -54,34 +55,112 @@ console.log( _vars["logMsg"] );
 		function load_xml( params ) {
 
 			var exec_start = new Date();
+			
+			
 			$.ajax({
 				type: "GET",
 				url: params["filename"],
 				dataType: "text",
 				//dataType: "xml",
+				//data: {},
+				//cache: false,
+				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
+					var xhr = new window.XMLHttpRequest();
+/*					
+					// прогресс загрузки на сервер
+					xhr.upload.addEventListener("progress", function(evt){
+console.log("xhr, upload progress callback function....", evt);
+						if (evt.lengthComputable) {
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+console.log(percentComplete);
+						}
+					}, false);
+					
+					// прогресс скачивания с сервера
+					xhr.addEventListener("progress", function(evt){
+console.log("xhr, download progress callback function....", evt);
+						if (evt.lengthComputable) {
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+console.log(percentComplete);
+						}
+					}, false);
+*/
+					xhr.addEventListener("progress", function(e){
+//console.log("xhr, download progress callback function....", e);
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+						if( _vars["loadProgressBar"] ){
+							//_vars["loadProgressBar"].value = percentComplete;
+							_vars["loadProgressBar"].className = "progress-bar";
+							_vars["loadProgressBar"].style.width = percentComplete+"%";
+							_vars["loadProgressBar"].innerHTML = percentComplete+"%";
+						}
+					}, false);
+					
+					return xhr;
+				},
+				
+				beforeSend: function(XMLHttpRequest){
+console.log("ajax beforeSend, ", arguments);
+/*					
+					// прогресс загрузки на сервер
+					//https://wcoder.github.io/notes/progress-indicator-with-jquery
+					XMLHttpRequest.upload.addEventListener("progress", function(evt){
+						if (evt.lengthComputable) {  
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+						}
+					}, false);
+
+					// прогресс скачивания с сервера
+					XMLHttpRequest.addEventListener("progress", function(evt){
+						if (evt.lengthComputable) {  
+							var percentComplete = evt.loaded / evt.total;
+							// делать что-то...
+						}
+					}, false);
+*/					
+				},				
+				
 				complete: function(xhr, state){
-	//console.log("ajax load complete, ", arguments);
+//console.log("ajax load complete, ", arguments);
 					var exec_end = new Date();
 					var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+					
 					config["runtime"]["ajax_load"] = [];
 					config["runtime"]["ajax_load"]["time"] = runtime_s;
-					var log = "<br>ajax load " + params["filename"] + " complete";
-					log += ", runtime: <b>" + runtime_s + "</b> sec";
-					log += ", <b>state</b>: " + state;
-					info.push(log);
+					
+					//_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
+					//_vars["logMsg"] += ", runtime: <b>" + runtime_s + "</b> sec";
+					//_vars["logMsg"] += ", <b>state</b>: " + state;
+//_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+//console.log( _vars["logMsg"] );
 				},
+				
 				success: function( data ){
 _vars["logMsg"] = "Successful download xml file " + params["filename"];
  _log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 					params.callback( data );	
 				},
+				
 				error: function( data, status, errorThrown ){
 //console.log( "error", arguments );
 _vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown;
  _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 				}
+			})
+			.done(function () {
+console.log("$.ajax, Done...");
+			})
+			.fail(function (xhr, textStatus) {
+console.log("$.ajax, Fail...", arguments);
 			});
 		}//end load_xml();
 		
@@ -91,7 +170,7 @@ console.log( _vars["logMsg"] );
 			lib_obj["xml"] = data;
 			
 			_vars["GET"] = parseGetParams(); 
-console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
+//console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
 			load_templates({
 				callback: callback_init //link to callback function
@@ -372,7 +451,7 @@ console.log("errorThrown - ", errorThrown);
 
 
 		function process_get_values() {
-console.log( "$_GET: ", _vars["GET"],  get_object_size( _vars["GET"] ) );
+//console.log( "$_GET: ", _vars["GET"],  get_object_size( _vars["GET"] ) );
 			if( get_object_size( _vars["GET"] ) === 0) {
 				var message = "<br>No $_GET value";
 				info.push( message );

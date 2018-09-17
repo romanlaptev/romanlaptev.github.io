@@ -318,8 +318,8 @@ _log(msg);
 	});//end ready	
 
 	$(window).scroll(function() {
-var st = $(window).scrollTop();
-document.title = st;
+//var st = $(window).scrollTop();
+//document.title = st;
 //console.log ("scrollTop = " + st );
 
 			//if ( $(this).scrollTop() > start_scroll_pos  ) {

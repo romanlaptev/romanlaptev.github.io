@@ -65,7 +65,7 @@ console.log(lib);
 }//end init_webapp()
 
 $(document).ready(function(){
-console.log("document ready");
+//console.log("document ready");
 	$("#info").hide();
 
 	$("#info-panel-view").on("click", function(){
@@ -88,7 +88,7 @@ delete lib.xml_obj;
 
 
 window.onload = function(){
-console.log("window event onload");
+//console.log("window event onload");
 	//var test = document.getElementById("test_template").innerHTML;
 //console.log(test);
 //for(var item in test){
