@@ -41,7 +41,7 @@
 
 <body>
     
-<div class="container lib-wrapper">
+<div id="App" class="container lib-wrapper">
 	<div class="header bg-header b-header">
 		<div id="sitename-block" class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
 			<h1><a class="title" href="./">my lib</a></h1>
@@ -110,6 +110,14 @@
 	<div class="b-content">
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			
+			<div class="">
+				<span class="pull-right">
+					<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
+					<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		
 			<div class="row">
 				<ul class="breadcrumb pull-left">
 					<li><a href="./">главная</a></li>

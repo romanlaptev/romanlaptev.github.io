@@ -11,29 +11,165 @@ Usage:
 	lib_obj["taxonomy"] = [];
 */
 (function(){
-	var Lib =  Lib || function( xml ){
+	var Lib =  Lib || function(){
 
 		// private variables and functions
 		var lib_obj = [];
-		lib_obj["breadcrumb"] = [];
-		var $_GET = {}; 
-		var message = "";
-
-		//init
-//var exec_start = new Date();
-		init();
+		var _vars = {};
 		
+		lib_obj["breadcrumb"] = [];
+		var message = "";
+		lib_obj["xml"] = null;
+		
+		
+		_vars["log"] = getById("log");
+		_vars["btnToggle"] = getById("btn-toggle-log");
+		
+		_vars["appContainer"] = getById("App");
+		if( !_vars["appContainer"] ){
+		_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
+ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+		} else {
+			//init
+	//var exec_start = new Date();
+			init();
+		}
 		
 		
 		function init(){
-			//var parse_url = window.location.search.substring(1).split("&"); 
-			$_GET = parseGetParams(); 
-console.log( $_GET,  get_object_size( $_GET ) );
+			
+			if ( config["use_localcache"] ) {
+				get_xml_from_storage();
+			} else {
+				load_xml({
+					filename : config["xml_file"],
+					callback: after_load
+				});
+			}
+			
+		}//end init()
+		
+		
+		function load_xml( params ) {
+
+			var exec_start = new Date();
+			$.ajax({
+				type: "GET",
+				url: params["filename"],
+				dataType: "text",
+				//dataType: "xml",
+				complete: function(xhr, state){
+	//console.log("ajax load complete, ", arguments);
+					var exec_end = new Date();
+					var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+					config["runtime"]["ajax_load"] = [];
+					config["runtime"]["ajax_load"]["time"] = runtime_s;
+					var log = "<br>ajax load " + params["filename"] + " complete";
+					log += ", runtime: <b>" + runtime_s + "</b> sec";
+					log += ", <b>state</b>: " + state;
+					info.push(log);
+				},
+				success: function( data ){
+_vars["logMsg"] = "Successful download xml file " + params["filename"];
+ _log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+					params.callback( data );	
+				},
+				error: function( data, status, errorThrown ){
+//console.log( "error", arguments );
+_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown;
+ _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+				}
+			});
+		}//end load_xml();
+		
+		function after_load( data ) {
+			//lib = Lib( xml );
+	//console.log(lib);
+			lib_obj["xml"] = data;
+			
+			_vars["GET"] = parseGetParams(); 
+console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
 			load_templates({
 				callback: callback_init //link to callback function
 			});
-		}//end init()
+	
+		}//end after_load()
+		
+		function get_xml_from_storage() {
+/*			
+			var exec_start = new Date();
+			localforage.keys(function(err, keys) {//test in array of keys
+				var j_keys = keys.join();
+				var pos = j_keys.indexOf( config["storage_key"] );
+				if( pos >= 0){
+					localforage.getItem( config["storage_key"], function(err, readValue) {
+	//console.log('Read: ', config["storage_key"], readValue.length);
+	//console.log(err);
+						var exec_end = new Date();
+						var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+					
+						var cache_size = readValue.length; 
+						var cache_size_kb = cache_size / 1024 ;
+						var cache_size_mb = cache_size_kb / 1024;
+						
+						var log = "<br>get storage element " + config["storage_key"];
+						log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+						log += ", runtime: <b>" + runtime_s + "</b> sec";
+						log += ", error: " + err;
+						info.push(log);
+						config["runtime"]["get_storage"] = [];
+						config["runtime"]["get_storage"]["time"] = runtime_s;
+						
+						//params.callback( readValue, true, log );	
+						after_load( readValue);
+					 });
+				} else {
+					var params = {
+						filename : config["xml_file"],
+						callback: put_to_storage
+					};
+					load_xml( params );
+				}
+			});
+*/			
+		}//end get_xml_from_storage()
+
+		function put_to_storage( xml ) {
+/*			
+			var exec_start = new Date();
+			localforage.setItem( config["storage_key"], xml, function(err, v) {
+	//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
+	//console.log(err);
+				var exec_end = new Date();
+				var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+
+				var cache_size = xml.length; 
+				var cache_size_kb = cache_size / 1024 ;
+				var cache_size_mb = cache_size_kb / 1024;
+				var log = "<br>save in cache element " + config["storage_key"];
+				log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+				log += ", runtime: <b>" + runtime_s + "</b> sec";
+				//var status = true;
+				if( err !== null){
+					log = "<br>error, no save " + config["storage_key"] + ", " + err;
+					//status = false;
+				}
+				info.push(log);
+				config["runtime"]["put_storage"] = [];
+				config["runtime"]["put_storage"]["time"] = runtime_s;
+				
+				//params.callback( key, status, log );	
+				after_load( xml );
+			});
+*/			
+		}//end put_to_storage();
+		
+		
+		
 		
 		function callback_init() {
 //runtime : 6.889 sec+, 
@@ -236,18 +372,18 @@ console.log("errorThrown - ", errorThrown);
 
 
 		function process_get_values() {
-console.log( "$_GET: ", $_GET,  get_object_size( $_GET ) );
-			if( get_object_size( $_GET ) === 0) {
+console.log( "$_GET: ", _vars["GET"],  get_object_size( _vars["GET"] ) );
+			if( get_object_size( _vars["GET"] ) === 0) {
 				var message = "<br>No $_GET value";
 				info.push( message );
 				return;
 			}
 			
-			switch( $_GET["q"] ) {
+			switch( _vars["GET"]["q"] ) {
 				case "node":
 var exec_start = new Date();
 						var params = {
-							"nid" : $_GET["nid"]
+							"nid" : _vars["GET"]["nid"]
 						};
 						lib_obj["node"] = nodes_obj.get_node( params);
 						
@@ -264,8 +400,8 @@ config["runtime"]["get_node"]["time"] = runtime_s;
 var exec_start = new Date();
 						lib_obj["termin_nodes"] = [];
 						var params = {
-							//"vid" : $_GET["vid"],
-							"tid" : $_GET["tid"]
+							//"vid" : _vars["GET"]["vid"],
+							"tid" : _vars["GET"]["tid"]
 						};
 						lib_obj["termin_nodes"] = nodes_obj.get_termin_nodes( params);
 						
@@ -280,13 +416,13 @@ config["runtime"]["get_termin_nodes"]["time"] = runtime_s;
 				case "book_page":
 var exec_start = new Date();
 						var params = {
-							"nid" : $_GET["nid"]
+							"nid" : _vars["GET"]["nid"]
 						};
 						lib_obj["node"] = nodes_obj.get_node( params);
 						
 						lib_obj["book_child_pages"] = [];
 						var params = {
-							"plid" : $_GET["mlid"],
+							"plid" : _vars["GET"]["mlid"],
 							"recourse" : 0
 						};
 						lib_obj["book_child_pages"] = book.get_child_pages( params );
@@ -339,6 +475,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
  		//read xml data
 //runtime: 0.668 sec		
 		function read_nodes_data() {
+			var xml = lib_obj["xml"];
 			var table_name_index = "table_taxonomy_index";
 			nodes_obj["x_table_index"] = $(xml).find( table_name_index ).find('item');//runtime: 0.244 sec
 			
@@ -513,6 +650,7 @@ console.log(message);
 
 		function get_book_files( params )
 		{
+			var xml = lib_obj["xml"];
 			var files = [];
 			var table_name = "table_book_filename";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -529,6 +667,7 @@ console.log(message);
 
 		function get_book_url( params )
 		{
+			var xml = lib_obj["xml"];
 			var url = [];
 			var table_name = "table_book_url";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -545,6 +684,7 @@ console.log(message);
 
 		function get_book_links( params )
 		{
+			var xml = lib_obj["xml"];
 			var links = [];
 			var table_name = "table_book_links";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -738,6 +878,7 @@ if( lib_obj["node"]["body_value"] && lib_obj["node"]["body_value"].length > 0){
 		//read xml data
 		function read_taxonomy_data()
 		{
+			var xml = lib_obj["xml"];
 			taxonomy_obj["x_voc"] = $(xml).find( "table_taxonomy_vocabulary" ).find('item');
 			taxonomy_obj["x_term_hierarchy"] = $(xml).find( "table_taxonomy_term_hierarchy" ).find("termin");
 			taxonomy_obj["x_term_data"] = $(xml).find( "table_taxonomy_term_data" ).find('termin');
@@ -1172,14 +1313,14 @@ console.log("error, not found lib_obj[book_category]");
 			
 
 			//view termin nodes
-			if ( $_GET["q"] === "termin_nodes" ) {
+			if ( _vars["GET"]["q"] === "termin_nodes" ) {
 				
-				if( $_GET["vid"] === "2"){
+				if( _vars["GET"]["vid"] === "2"){
 					//view children termin
 					var params = [];
 					params["termins"] = lib_obj["taxonomy"]["library"]["termins"]; 
-					params["vid"] = $_GET["vid"];
-					params["tid"] = $_GET["tid"];
+					params["vid"] = _vars["GET"]["vid"];
+					params["tid"] = _vars["GET"]["tid"];
 					params["recourse"] = true;
 					params["show_only_children"] = false;
 					
@@ -1199,12 +1340,12 @@ console.log("error, not found lib_obj[book_category]");
 			}
 			
 			//view book nodes
-			if ( $_GET["q"] === "book_page" ) {
+			if ( _vars["GET"]["q"] === "book_page" ) {
 				render_node();
 				if( lib_obj["book_child_pages"].length > 0) {
 					var params = {
-						"nid" :  $_GET["nid"],
-						"mlid" :  $_GET["mlid"]
+						"nid" :  _vars["GET"]["nid"],
+						"mlid" :  _vars["GET"]["mlid"]
 					};
 					var html = book.view_child_pages( params );
 //console.log("html = " + html);
@@ -1216,7 +1357,7 @@ console.log("error, not found lib_obj[book_category]");
 			}
 			
 			//view nodes
-			if ( $_GET["q"] === "node" ){
+			if ( _vars["GET"]["q"] === "node" ){
 				render_node();
 			}
 			
@@ -1238,7 +1379,7 @@ console.log("error, not found lib_obj[book_category]");
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
 			function render_node(){
-				var params = {"nid" :  $_GET["nid"]};
+				var params = {"nid" :  _vars["GET"]["nid"]};
 				var html = nodes_obj.view_node( params );
 				$("#region-content #block-nodes").html( html );
 				
@@ -1277,13 +1418,16 @@ console.log(lib_obj["node"]["book_links"].length, $("#external-links").attr("id"
 //					delete lib_obj["breadcrumb"][n];
 //				}
 //			});//end event
-			
+
+/*			
 			$('body').on('click', '.nav-click', function(e){
+console.log(".nav-click click", e );
 //e.ctrlKey
 //e.shiftKey
 //altKey
 				var s_href = $(e.target).attr("href");
 				var parse_url = s_href.substring(1).split("&"); 
+console.log(s_href, parse_url );
 				
 				//breadcrumb process
 				if( $(e.target).hasClass("root-link") ){
@@ -1293,15 +1437,15 @@ console.log(lib_obj["node"]["book_links"].length, $("#external-links").attr("id"
 				if( $(e.target).hasClass("breadcrumb-link") ){
 					var num = $(this).data("num");
 //console.log("breadcrumb click, num: " +  num);
-/*
-					for( var n = num+1; n < lib_obj["breadcrumb"].length; n++){
-console.log(n, lib_obj["breadcrumb"][n]);
-						//delete lib_obj["breadcrumb"][n]["name"];
-						//delete lib_obj["breadcrumb"][n]["url"];
-						//delete lib_obj["breadcrumb"][n];
-						lib_obj["breadcrumb"][n] = [];
-					}
-*/					
+
+					//for( var n = num+1; n < lib_obj["breadcrumb"].length; n++){
+//console.log(n, lib_obj["breadcrumb"][n]);
+						////delete lib_obj["breadcrumb"][n]["name"];
+						////delete lib_obj["breadcrumb"][n]["url"];
+						////delete lib_obj["breadcrumb"][n];
+						//lib_obj["breadcrumb"][n] = [];
+					//}
+
 					var start_index = num + 1;
 					var num_delete = lib_obj["breadcrumb"].length - start_index;
 //console.log( start_index, num_delete );
@@ -1323,7 +1467,7 @@ console.log(n, lib_obj["breadcrumb"][n]);
 				//-----------------------------
 				
 //console.log(".nav-click live!", s_href, parse_url, decodeURI(s_href) );
-				$_GET = parseGetParams( parse_url ); 
+				_vars["GET"] = parseGetParams( parse_url ); 
 				process_get_values();
 				draw_page();
 				
@@ -1341,13 +1485,13 @@ console.log(n, lib_obj["breadcrumb"][n]);
 				var target = $(this).data("target");
 //console.log(e, target);
 				$(target).slideToggle( "slow" );
-				/*
-				if( $(target).hasClass("collapse") ){
-					$(target).removeClass("collapse");
-				} else {
-					$(target).addClass("collapse");
-				}
-				*/
+				
+				//if( $(target).hasClass("collapse") ){
+					//$(target).removeClass("collapse");
+				//} else {
+					//$(target).addClass("collapse");
+				//}
+				
 				e.preventDefault();
 			});//end event
 			
@@ -1403,7 +1547,7 @@ console.log(n, lib_obj["breadcrumb"][n]);
 				
 				e.preventDefault();
 			});//end event
-			
+*/			
 
 
 			window.onresize = function(event) {
@@ -1415,8 +1559,108 @@ console.log("w = " + document.body.clientWidth );
 				}
 			}//end event
 			
+
+			if( _vars["appContainer"] ){
+				_vars["appContainer"].onclick = function(event){
+					event = event || window.event;
+					var target = event.target || event.srcElement;
+//console.log( event );
+	//console.log( this );//page-container
+	//console.log( target.textContent );
+	//console.log( event.eventPhase );
+	//console.log( "preventDefault: " + event.preventDefault );
+					//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+					//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+					
+					if( target.tagName === "A"){
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+						if ( target.href.indexOf("?q=") !== -1){
+
+								//var search = target.href.split("?"); 
+								//var parseStr = search[1]; 
+								var parseStr = target.href; 
+//console.log( parseStr );
+
+								if( parseStr.length > 0 ){
+									_vars["GET"] = parseGetParams( parseStr ); 
+									_urlManager();
+								} else {
+	console.log( "Warn! error parse url in " + target.href );
+								}
+
+						}
+					}
+					
+				}//end event
+			}
 			
 		}//end define_event()
+		
+
+		function _urlManager(){
+	//console.log(target, _vars["GET"]);
+
+			switch( _vars["GET"]["q"] ) {
+	/*
+				case "hide-log":
+					_vars["log"].style.display="none";
+				break;
+				
+				case "view-log":
+					_vars["log"].style.display="block";
+				break;
+	*/			
+				case "toggle-log":
+//console.log(_vars["log"]..style.display);
+					if( _vars["log"].style.display==="none"){
+						_vars["log"].style.display="block";
+						_vars["btnToggle"].innerHTML="-";
+					} else {
+						_vars["log"].style.display="none";
+						_vars["btnToggle"].innerHTML="+";
+					}
+				break;
+				
+				case "clear-log":
+					_vars["log"].innerHTML="";
+				break;
+				
+				case "load-notes": 
+					var startNumTest = 0;
+					_testing.testServer( startNumTest );
+				break;
+
+				case "view-node": 
+					var nodeObj = _getNode({
+						"nid" : _vars["GET"]["nid"],
+						"xml" : _vars["xmlObj"]
+					});
+	//console.log(nodeObj);
+					if( nodeObj ){
+						_drawNode( nodeObj, _vars["messages"] );
+						} else {
+	_vars["logMsg"] = "Not find node, nid:" + _vars["GET"]["nid"];
+	_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+	console.log( _vars["logMsg"] );
+						}
+				break;
+
+				case "load-xml-book":
+					_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
+					loadBookXml();
+				break;
+				
+				
+				default:
+console.log("_urlManager(),  GET query string: ", _vars["GET"]);			
+				break;
+			}//end switch
+			
+		}//end _urlManager()
 		
 		function in_array( test_url, test_array ){
 //console.log("function check_in_array", test_url, test_array);
@@ -1428,27 +1672,7 @@ console.log("w = " + document.body.clientWidth );
 			return true;
 			
 		}//end in_array()
-/*		
-		//parse url
-		function parseGetParams( parse_url ) { 
-		   var $_GET = {}; 
-		   //var parse_url = window.location.search.substring(1).split("&"); 
-		   for(var n = 0; n < parse_url.length; n++) 
-		   { 
-			  var getVar = parse_url[n].split("="); 
-			  //$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
-			  if( typeof(getVar[1]) === "undefined" )
-			  {
-				$_GET[ getVar[0] ] = "";
-			  }
-			  else
-			  {
-				$_GET[ getVar[0] ] = getVar[1];
-			  }
-		   } 
-		   return $_GET; 
-		}//end parseGetParams() 
-*/
+
 
 		function add_cloud_links( cloudUrl ) {//form link on cloud file
 //console.log("function add_cloud_links", cloudUrl);			
@@ -1635,7 +1859,8 @@ console.log(size_obj);
 
 		// public interfaces
 		return{
-			lib_obj: lib_obj//, 
+			lib_obj: lib_obj, 
+			vars: _vars//, 
 			//load_templates: function( params ){ 
 				//return _load_templates( params ); 
 			//},
@@ -1648,125 +1873,3 @@ console.log(size_obj);
 	window.Lib = Lib;
 	
 })();
-
-
-//let's start
-function get_xml(){
-	
-	if ( config["use_localcache"] ) {
-		get_xml_from_storage();
-	} else {
-		load_xml({
-			filename : config["xml_file"],
-			callback: after_load
-		});
-	}
-	
-	function load_xml( params ) {
-
-		var exec_start = new Date();
-		$.ajax({
-			type: "GET",
-			url: params["filename"],
-			dataType: "text",
-			//dataType: "xml",
-			complete: function(xhr, state){
-//console.log("ajax load complete, ", arguments);
-				var exec_end = new Date();
-				var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-				config["runtime"]["ajax_load"] = [];
-				config["runtime"]["ajax_load"]["time"] = runtime_s;
-				var log = "<br>ajax load " + params["filename"] + " complete";
-				log += ", runtime: <b>" + runtime_s + "</b> sec";
-				log += ", <b>state</b>: " + state;
-				info.push(log);
-			},
-			success: function( data ){
-console.log( "success", arguments );
-				//var message = "<br>Successful download " + params["filename"];
-				//info.push(message);
-				params.callback( data );	
-			},
-			error: function( data, status, errorThrown ){
-//console.log( "error", arguments );
-				var message = "<br>error ajax load " + params["filename"];
-				//message += ", status: " + status;
-				message += ", " + errorThrown;
-				info.push(message);
-//console.log( message );
-			}
-		});
-	}//end load_xml();
-	
-	function after_load( xml ) {
-		lib = Lib( xml );
-console.log(lib);
-	}//end after_load()
-
-	function get_xml_from_storage() {
-		var exec_start = new Date();
-		localforage.keys(function(err, keys) {//test in array of keys
-			var j_keys = keys.join();
-			var pos = j_keys.indexOf( config["storage_key"] );
-			if( pos >= 0){
-				localforage.getItem( config["storage_key"], function(err, readValue) {
-//console.log('Read: ', config["storage_key"], readValue.length);
-//console.log(err);
-					var exec_end = new Date();
-					var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-				
-					var cache_size = readValue.length; 
-					var cache_size_kb = cache_size / 1024 ;
-					var cache_size_mb = cache_size_kb / 1024;
-					
-					var log = "<br>get storage element " + config["storage_key"];
-					log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-					log += ", runtime: <b>" + runtime_s + "</b> sec";
-					log += ", error: " + err;
-					info.push(log);
-					config["runtime"]["get_storage"] = [];
-					config["runtime"]["get_storage"]["time"] = runtime_s;
-					
-					//params.callback( readValue, true, log );	
-					after_load( readValue);
-				 });
-			} else {
-				var params = {
-					filename : config["xml_file"],
-					callback: put_to_storage
-				};
-				load_xml( params );
-			}
-		});
-	}//end get_xml_from_storage()
-
-	function put_to_storage( xml ) {
-		var exec_start = new Date();
-		localforage.setItem( config["storage_key"], xml, function(err, v) {
-//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
-//console.log(err);
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-
-			var cache_size = xml.length; 
-			var cache_size_kb = cache_size / 1024 ;
-			var cache_size_mb = cache_size_kb / 1024;
-			var log = "<br>save in cache element " + config["storage_key"];
-			log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-			log += ", runtime: <b>" + runtime_s + "</b> sec";
-			//var status = true;
-			if( err !== null){
-				log = "<br>error, no save " + config["storage_key"] + ", " + err;
-				//status = false;
-			}
-			info.push(log);
-			config["runtime"]["put_storage"] = [];
-			config["runtime"]["put_storage"]["time"] = runtime_s;
-			
-			//params.callback( key, status, log );	
-			after_load( xml );
-		});
-	}//end put_to_storage();
-	
-}//end get_xml()
-

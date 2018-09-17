@@ -57,7 +57,9 @@ function init_webapp(){
 			alert( "error load script " + this.src);
 		}; 
 	} else {
-		get_xml( config["xml_file"] );
+		//get_xml( config["xml_file"] );
+		lib = Lib();
+console.log(lib);
 	}
 	
 }//end init_webapp()

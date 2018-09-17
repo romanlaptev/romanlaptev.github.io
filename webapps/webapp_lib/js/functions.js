@@ -112,8 +112,8 @@ function get_attr_to_obj( attr ){
 //console.log( $_GET);
 //**************************************
 function parseGetParams( parseStr ) { 
-console.log(parseStr);
-console.log(window.location);
+//console.log(parseStr);
+//console.log(window.location);
 
 	if( !parseStr ){
 		var parse_url = window.location.search.substring(1).split("&"); 
