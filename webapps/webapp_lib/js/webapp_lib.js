@@ -399,7 +399,7 @@ console.log("errorThrown - ", errorThrown);
 		var get_content = function( params ){
 			
 			var _total = 3;
-			var _ready = 0;
+			var _numDone = 0;
 			var _percentComplete = 0;
 			
 			//get nodes
@@ -428,9 +428,9 @@ console.log("errorThrown - ", errorThrown);
 			config["runtime"]["get_xml_nodes"]["time"] = runtime_s;
 
 //------------------
-			_ready = 1;
-			_percentComplete = Math.ceil(_ready / _total * 100);
-console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+			_numDone = 1;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
 						if( _vars["parseProgressBar"] ){
 							_vars["parseProgressBar"].className = "progress-bar";
 							_vars["parseProgressBar"].style.width = _percentComplete+"%";
@@ -461,9 +461,9 @@ console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" )
 			config["runtime"]["get_xml_taxonomy"]["time"] = runtime_s;
 
 //------------------
-			_ready++;
-			_percentComplete = Math.ceil(_ready / _total * 100);
-console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
 						if( _vars["parseProgressBar"] ){
 							_vars["parseProgressBar"].className = "progress-bar";
 							_vars["parseProgressBar"].style.width = _percentComplete+"%";
@@ -493,9 +493,9 @@ console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" )
 			//info.push( message );
 			
 //------------------
-			_ready++;
-			_percentComplete = Math.ceil(_ready / _total * 100);
-console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
 						if( _vars["parseProgressBar"] ){
 							_vars["parseProgressBar"].className = "progress-bar";
 							_vars["parseProgressBar"].style.width = _percentComplete+"%";
