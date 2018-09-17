@@ -246,3 +246,14 @@ border-radius: 3px;
 }
 
 .breadcrumb-last-item {}
+
+
+/*-------------*/
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}

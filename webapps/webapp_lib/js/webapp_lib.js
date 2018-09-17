@@ -414,6 +414,7 @@ config["runtime"]["get_termin_nodes"]["time"] = runtime_s;
 					break;
 
 				case "book_page":
+/*				
 var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
@@ -438,6 +439,7 @@ var message = "<br>- book.get_child_pages( params), runtime: <b>" + runtime_s  +
 info.push( message );
 config["runtime"]["get_child_pages"] = [];
 config["runtime"]["get_child_pages"]["time"] = runtime_s;
+*/
 					break;
 				
 				default:
@@ -1605,15 +1607,7 @@ console.log("w = " + document.body.clientWidth );
 	//console.log(target, _vars["GET"]);
 
 			switch( _vars["GET"]["q"] ) {
-	/*
-				case "hide-log":
-					_vars["log"].style.display="none";
-				break;
 				
-				case "view-log":
-					_vars["log"].style.display="block";
-				break;
-	*/			
 				case "toggle-log":
 //console.log(_vars["log"]..style.display);
 					if( _vars["log"].style.display==="none"){
@@ -1629,11 +1623,44 @@ console.log("w = " + document.body.clientWidth );
 					_vars["log"].innerHTML="";
 				break;
 				
-				case "load-notes": 
-					var startNumTest = 0;
-					_testing.testServer( startNumTest );
-				break;
+				case "book_page": 
+var exec_start = new Date();
+						_vars["node"] = nodes_obj.get_node({
+							"nid" : _vars["GET"]["nid"]
+						});
+/*						
+						lib_obj["book_child_pages"] = [];
+						var params = {
+							"plid" : _vars["GET"]["mlid"],
+							"recourse" : 0
+						};
+						lib_obj["book_child_pages"] = book.get_child_pages( params );
+*/						
+//var params = [];
+//params["plid"] = "386";
+//params["recourse"] = 0;
+//lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
+						
+var exec_end = new Date();
+var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 
+_vars["logMsg"] = "- book.get_child_pages( params), runtime: <b>" + runtime_s  + "</b> sec";
+ _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+
+config["runtime"]["get_child_pages"] = [];
+config["runtime"]["get_child_pages"]["time"] = runtime_s;
+
+					//draw_page();
+					
+					//if( $(".navbar-header").is(":visible") &&
+						//document.body.clientWidth < 990) {
+						////$("#bs-navbar-collapse-1").addClass("collapse");
+						//$("#bs-navbar-collapse-1").hide("slow");
+					//}
+				
+				break;
+/*
 				case "view-node": 
 					var nodeObj = _getNode({
 						"nid" : _vars["GET"]["nid"],
@@ -1653,7 +1680,7 @@ console.log("w = " + document.body.clientWidth );
 					_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
 					loadBookXml();
 				break;
-				
+*/				
 				
 				default:
 console.log("_urlManager(),  GET query string: ", _vars["GET"]);			
