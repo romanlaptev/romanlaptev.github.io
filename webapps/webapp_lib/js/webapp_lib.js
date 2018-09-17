@@ -398,6 +398,10 @@ console.log("errorThrown - ", errorThrown);
 
 		var get_content = function( params ){
 			
+			var _total = 3;
+			var _ready = 0;
+			var _percentComplete = 0;
+			
 			//get nodes
 			var exec_start = new Date();
 //runtime: 0.668 sec
@@ -409,6 +413,7 @@ console.log("errorThrown - ", errorThrown);
 			info.push( message );
 			config["runtime"]["read_nodes_data"] = [];
 			config["runtime"]["read_nodes_data"]["time"] = runtime_s;
+			
 
 			var exec_start = new Date();
 //runtime: 4.837 sec+, 
@@ -422,6 +427,16 @@ console.log("errorThrown - ", errorThrown);
 			config["runtime"]["get_xml_nodes"] = [];
 			config["runtime"]["get_xml_nodes"]["time"] = runtime_s;
 
+//------------------
+			_ready = 1;
+			_percentComplete = Math.ceil(_ready / _total * 100);
+console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+						if( _vars["parseProgressBar"] ){
+							_vars["parseProgressBar"].className = "progress-bar";
+							_vars["parseProgressBar"].style.width = _percentComplete+"%";
+							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+						}
+//------------------
 
 			//get taxonomy termins
 			var exec_start = new Date();
@@ -445,6 +460,18 @@ console.log("errorThrown - ", errorThrown);
 			config["runtime"]["get_xml_taxonomy"] = [];
 			config["runtime"]["get_xml_taxonomy"]["time"] = runtime_s;
 
+//------------------
+			_ready++;
+			_percentComplete = Math.ceil(_ready / _total * 100);
+console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+						if( _vars["parseProgressBar"] ){
+							_vars["parseProgressBar"].className = "progress-bar";
+							_vars["parseProgressBar"].style.width = _percentComplete+"%";
+							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+						}
+//------------------
+
+
 			//get book category
 			var exec_start = new Date();
 //runtime : 0.244 sec			
@@ -464,6 +491,17 @@ console.log("errorThrown - ", errorThrown);
 			//message += "<br>Size lib_obj['nodes']: " + nodes.nodes_size  + " bytes";
 			//message += "<br>Size lib_obj['taxonomy']: " + lib_obj["taxonomy"].length  + " bytes";
 			//info.push( message );
+			
+//------------------
+			_ready++;
+			_percentComplete = Math.ceil(_ready / _total * 100);
+console.log( "ready: " + _ready + " of total: " + _total, _percentComplete+"%" );
+						if( _vars["parseProgressBar"] ){
+							_vars["parseProgressBar"].className = "progress-bar";
+							_vars["parseProgressBar"].style.width = _percentComplete+"%";
+							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+						}
+//------------------
 			
 		};//end lib.get_content()
 
