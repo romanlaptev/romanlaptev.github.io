@@ -517,6 +517,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 			switch( _vars["GET"]["q"] ) {
 				case "node":
+/*				
 var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
@@ -529,7 +530,7 @@ var message = "<br>- nodes_obj.get_node(), runtime: <b>" + runtime_s  + "</b> se
 info.push( message );
 config["runtime"]["get_node"] = [];
 config["runtime"]["get_node"]["time"] = runtime_s;
-
+*/
 					break;
 					
 				case "termin_nodes":
@@ -1776,6 +1777,15 @@ _vars["timeStart"] = new Date();
 //params["recourse"] = 0;
 //lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 						
+
+					draw_page();
+					
+					if( $(".navbar-header").is(":visible") &&
+						document.body.clientWidth < 990) {
+						//$("#bs-navbar-collapse-1").addClass("collapse");
+						$("#bs-navbar-collapse-1").hide("slow");
+					}
+				
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 
@@ -1786,25 +1796,21 @@ console.log( _vars["logMsg"] );
 //config["runtime"]["get_child_pages"] = [];
 //config["runtime"]["get_child_pages"]["time"] = runtime_s;
 
-					draw_page();
-					
-					if( $(".navbar-header").is(":visible") &&
-						document.body.clientWidth < 990) {
-						//$("#bs-navbar-collapse-1").addClass("collapse");
-						$("#bs-navbar-collapse-1").hide("slow");
-					}
-				
 				break;
 				
 				case "termin_nodes":
 _vars["timeStart"] = new Date();
 
 					_vars["termin_nodes"] = [];
-					var params = {
+					_vars["termin_nodes"] = nodes_obj.get_termin_nodes({
 						//"vid" : _vars["GET"]["vid"],
 						"tid" : _vars["GET"]["tid"]
-					};
-					_vars["termin_nodes"] = nodes_obj.get_termin_nodes( params);
+					});
+					draw_page();
+					if( $(".navbar-header").is(":visible") &&
+						document.body.clientWidth < 990) {
+						$("#bs-navbar-collapse-1").hide("slow");
+					}
 						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
@@ -1812,29 +1818,27 @@ _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtim
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 				
+				break;
+				
+				case "node": 
+_vars["timeStart"] = new Date();
+
+					_vars["node"] = nodes_obj.get_node({
+						"nid" : _vars["GET"]["nid"]
+					});
 					draw_page();
 					if( $(".navbar-header").is(":visible") &&
 						document.body.clientWidth < 990) {
 						$("#bs-navbar-collapse-1").hide("slow");
 					}
+						
+_vars["timeEnd"] = new Date();
+_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+_vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
+ _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
 				break;
-				
 /*
-				case "view-node": 
-					var nodeObj = _getNode({
-						"nid" : _vars["GET"]["nid"],
-						"xml" : _vars["xmlObj"]
-					});
-	//console.log(nodeObj);
-					if( nodeObj ){
-						_drawNode( nodeObj, _vars["messages"] );
-						} else {
-	_vars["logMsg"] = "Not find node, nid:" + _vars["GET"]["nid"];
-	_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-	console.log( _vars["logMsg"] );
-						}
-				break;
-
 				case "load-xml-book":
 					_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
 					loadBookXml();
