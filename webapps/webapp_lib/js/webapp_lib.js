@@ -36,7 +36,7 @@ Usage:
 console.log( _vars["logMsg"] );
 		} else {
 			//init
-	//var exec_start = new Date();
+			_vars["timeStart"] = new Date();
 			init();
 		}
 		
@@ -113,7 +113,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				},
 				
 				beforeSend: function(XMLHttpRequest){
-console.log("ajax beforeSend, ", arguments);
+//console.log("ajax beforeSend, ", arguments);
 /*					
 					// прогресс загрузки на сервер
 					//https://wcoder.github.io/notes/progress-indicator-with-jquery
@@ -155,9 +155,9 @@ console.log("ajax beforeSend, ", arguments);
 				},
 				
 				success: function( data ){
-_vars["logMsg"] = "Successful download xml file " + params["filename"];
- _log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//_vars["logMsg"] = "Successful download xml file " + params["filename"];
+//_log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
+//console.log( _vars["logMsg"] );
 					params.callback( data );	
 				},
 				
@@ -274,16 +274,17 @@ console.log("$.ajax, Fail...", arguments);
 			define_event();
 			
 			
-//var exec_end = new Date();
-//var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-//var message = "<br>INIT, runtime: <b>" + runtime_s  + "</b> sec";
-//info.push( message );
+			_vars["timeEnd"] = new Date();
+			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+			_vars["logMsg"] = "Init application, runtime: <b>" + _vars["runTime"]  + "</b> sec";
+			_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
 	
-setTimeout(function(){
+//setTimeout(function(){
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="none";
 			}
-}, 1000*3);
+//}, 1000*3);
 			
 			var runtime_all = 0;
 			for( var item in config["runtime"]){
@@ -532,13 +533,14 @@ config["runtime"]["get_node"]["time"] = runtime_s;
 					break;
 					
 				case "termin_nodes":
+/*				
 var exec_start = new Date();
-						lib_obj["termin_nodes"] = [];
+						_vars["termin_nodes"] = [];
 						var params = {
 							//"vid" : _vars["GET"]["vid"],
 							"tid" : _vars["GET"]["tid"]
 						};
-						lib_obj["termin_nodes"] = nodes_obj.get_termin_nodes( params);
+						_vars["termin_nodes"] = nodes_obj.get_termin_nodes( params);
 						
 var exec_end = new Date();
 var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
@@ -546,6 +548,7 @@ var message = "<br>- nodes_obj.get_termin_nodes(), runtime: <b>" + runtime_s  + 
 info.push( message );
 config["runtime"]["get_termin_nodes"] = [];
 config["runtime"]["get_termin_nodes"]["time"] = runtime_s;
+*/
 					break;
 
 				case "book_page":
@@ -739,7 +742,7 @@ if( typeof lib_obj["nodes"][node]["tid"] === "undefined")
 		}//end _get_termin_nodes()
 		
 		function view_termin_nodes( params ) {
-			if( typeof lib_obj["termin_nodes"] === "undefined")
+			if( typeof _vars["termin_nodes"] === "undefined")
 			{
 				var message = "<br>error, not found lib_obj[termin_nodes]";
 console.log(message);
@@ -751,9 +754,9 @@ console.log(message);
 			var termin_node_tpl = lib_obj["templates"]["termin_nodes_item_tpl"];
 			var url_tpl = lib_obj["templates"]["termin_nodes_url_tpl"];
 			var html = "";
-			for( var n = 0; n < lib_obj["termin_nodes"].length; n++)
+			for( var n = 0; n < _vars["termin_nodes"].length; n++)
 			{
-				var node = lib_obj["termin_nodes"][n];
+				var node = _vars["termin_nodes"][n];
 				var url = url_tpl.replace("#nid", node["nid"]);
 				html += termin_node_tpl
 				.replace("#url", url)
@@ -1469,7 +1472,7 @@ console.log("error, not found lib_obj[book_category]");
 					$("#region-content #block-taxonomy").html( html );
 				}
 				
-				if ( lib_obj["termin_nodes"].length > 0)
+				if ( _vars["termin_nodes"].length > 0)
 				{
 					var html = nodes_obj.view_termin_nodes( );
 					$("#region-content #block-nodes").html( html );
@@ -1617,21 +1620,21 @@ console.log(s_href, parse_url );
 				e.preventDefault();
 				//return false;
 			});//end event
+*/
 
 			$("body").on("click", ".navbar-toggle", function(e){
 				var target = $(this).data("target");
 //console.log(e, target);
 				$(target).slideToggle( "slow" );
-				
 				//if( $(target).hasClass("collapse") ){
 					//$(target).removeClass("collapse");
 				//} else {
 					//$(target).addClass("collapse");
 				//}
-				
 				e.preventDefault();
 			});//end event
 			
+
 			$("body").on("click", "#info .nav-tabs a", function(e){
 				var active_tab = $(this).attr("href");
 //console.log( active_tab, $(this).parent() );
@@ -1670,7 +1673,7 @@ console.log(s_href, parse_url );
 					}
 					html += "</li>";
 					
-					var size_obj = count_object_bytes( lib_obj["termin_nodes"] );
+					var size_obj = count_object_bytes( _vars["termin_nodes"] );
 					html += "<li>";
 					html += "lib_obj['termin_nodes']: " + size_obj["bytes"] +" bytes";
 					if( size_obj["Kbytes"] > 0 ){
@@ -1684,7 +1687,7 @@ console.log(s_href, parse_url );
 				
 				e.preventDefault();
 			});//end event
-*/			
+
 
 
 			window.onresize = function(event) {
@@ -1759,7 +1762,7 @@ console.log("w = " + document.body.clientWidth );
 				break;
 				
 				case "book_page": 
-var exec_start = new Date();
+_vars["timeStart"] = new Date();
 						_vars["node"] = nodes_obj.get_node({
 							"nid" : _vars["GET"]["nid"]
 						});
@@ -1773,10 +1776,10 @@ var exec_start = new Date();
 //params["recourse"] = 0;
 //lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 						
-var exec_end = new Date();
-var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+_vars["timeEnd"] = new Date();
+_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 
-_vars["logMsg"] = "- book.get_child_pages( params), runtime: <b>" + runtime_s  + "</b> sec";
+_vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 
@@ -1785,13 +1788,37 @@ console.log( _vars["logMsg"] );
 
 					draw_page();
 					
-					//if( $(".navbar-header").is(":visible") &&
-						//document.body.clientWidth < 990) {
-						////$("#bs-navbar-collapse-1").addClass("collapse");
-						//$("#bs-navbar-collapse-1").hide("slow");
-					//}
+					if( $(".navbar-header").is(":visible") &&
+						document.body.clientWidth < 990) {
+						//$("#bs-navbar-collapse-1").addClass("collapse");
+						$("#bs-navbar-collapse-1").hide("slow");
+					}
 				
 				break;
+				
+				case "termin_nodes":
+_vars["timeStart"] = new Date();
+
+					_vars["termin_nodes"] = [];
+					var params = {
+						//"vid" : _vars["GET"]["vid"],
+						"tid" : _vars["GET"]["tid"]
+					};
+					_vars["termin_nodes"] = nodes_obj.get_termin_nodes( params);
+						
+_vars["timeEnd"] = new Date();
+_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+_vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
+ _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+				
+					draw_page();
+					if( $(".navbar-header").is(":visible") &&
+						document.body.clientWidth < 990) {
+						$("#bs-navbar-collapse-1").hide("slow");
+					}
+				break;
+				
 /*
 				case "view-node": 
 					var nodeObj = _getNode({
