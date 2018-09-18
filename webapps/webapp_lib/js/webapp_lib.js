@@ -270,7 +270,7 @@ console.log("$.ajax, Fail...", arguments);
 //runtime : 2.872 sec+
 //runtime : 2.634 sec
 			get_content();
-			process_get_values();
+			//process_get_values();
 			draw_page();
 			define_event();
 			
@@ -1394,7 +1394,6 @@ console.log("lib_obj['book_child_pages'] is empty!!!", _vars["book_child_pages"]
 		
 		function draw_page( params )	{
 			
-			var html_breadcrumb="";
 			
 			//content gradient	correct height
 			//var h = $(".b-content").height();
@@ -1503,22 +1502,31 @@ console.log("error, not found lib_obj[book_category]");
 				render_node();
 			}
 			
-			//render breadcrumb
-			for( var n = 0; n < lib_obj["breadcrumb"].length; n++){
-				var url = lib_obj["breadcrumb"][n]["url"];
-				var name = lib_obj["breadcrumb"][n]["name"];
+//---------------------- render breadcrumb
+			var html_breadcrumb="";
+			var clear = false;
+
+			for( var key in _vars["breadcrumb"]){
+				var url = _vars["breadcrumb"][key].url;
+				var title = _vars["breadcrumb"][key].title;
 				
-				if( n == ( lib_obj["breadcrumb"].length - 1) ){
-					html_breadcrumb += name ;
+				if( clear ){//clear unuseful tail breadrumbs
+					delete _vars["breadcrumb"][key];
 				} else {
 					html_breadcrumb += lib_obj["templates"]["breadcrumb_item_tpl"]
 					.replace("{{item-url}}", url )
-					.replace("{{num}}", n )
-					.replace("{{item-title}}", name );
+					.replace("{{item-title}}", title );
 				}
-			}
-
+				
+				if( url === _vars["currentUrl"]){
+					clear = true;
+				}
+				
+			}//next
+			
+//console.log(html_breadcrumb);
 			$("#breadcrumb-tpl").html( html_breadcrumb );
+//----------------------
 			
 			function render_node(){
 				var params = {"nid" :  _vars["GET"]["nid"]};
@@ -1746,6 +1754,24 @@ console.log("w = " + document.body.clientWidth );
 		function _urlManager(target){
 	//console.log(target, _vars["GET"]);
 
+//----------------- form breadcrumb line
+			//form unique key 
+			var breadcrumbKey = _vars["GET"]["q"];
+			for( var key in _vars["GET"]){
+				if( key === "q"){
+					continue;
+				}
+				breadcrumbKey += _vars["GET"][key];
+			}
+//console.log(breadcrumbKey);
+	
+			_vars["breadcrumb"][ breadcrumbKey ] = {
+				"title" : $(target).text(),
+				"url" : $(target).attr("href")
+			};
+			_vars["currentUrl"] = $(target).attr("href");
+//-----------------
+
 			switch( _vars["GET"]["q"] ) {
 				
 				case "toggle-log":
@@ -1773,24 +1799,6 @@ _vars["timeStart"] = new Date();
 							"recourse" : 0
 						});
 						
-//-----------------
-/*
-var s_href = $(target).attr("href");
-				if( lib_obj["breadcrumb"].length > 0) {
-					var test = in_array( s_href, lib_obj["breadcrumb"] );
-				} else {
-					var test = true;
-				}
-				if( test ) {
-					var obj = {
-						name : $(target).text(),
-						url : s_href
-					};
-					lib_obj["breadcrumb"].push( obj );
-				}
-*/				
-//-----------------
-
 //var params = [];
 //params["plid"] = "386";
 //params["recourse"] = 0;
@@ -1869,8 +1877,10 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 				break;
 			}//end switch
 			
+
 		}//end _urlManager()
-		
+
+/*		
 		function in_array( test_url, test_array ){
 //console.log("function check_in_array", test_url, test_array);
 			for( var n = 0; n < test_array.length; n++ ){
@@ -1881,7 +1891,7 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 			return true;
 			
 		}//end in_array()
-
+*/
 
 		function add_cloud_links( cloudUrl ) {//form link on cloud file
 //console.log("function add_cloud_links", cloudUrl);			
