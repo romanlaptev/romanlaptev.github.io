@@ -249,6 +249,11 @@ border-radius: 3px;
 
 
 /*-------------*/
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
 #log .alert {
 margin-bottom: 0;
 padding: 10px;

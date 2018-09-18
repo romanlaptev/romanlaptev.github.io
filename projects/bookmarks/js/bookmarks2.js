@@ -15,8 +15,10 @@ var webApp = {
 		"btnParse" : getById("btn-parse"),
 		"wait" : getById("wait"),
 		"waitWindow" : getById("win1"),
+		
 		"log" : getById("log"),
-
+		"btnToggle" : getById("btn-toggle-log"),
+		
 		"targetHtmlBlockID" : "insert-json",
 		"templates" : {
 			"container_tpl" : "<div class='panel panel-primary'>\
@@ -180,21 +182,24 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 //console.log(target);
 		switch( webApp.vars["GET"]["q"] ) {
 			
-			case "hide-log":
-				webApp.vars["log"].style.display="none";
-			break;
-			case "view-log":
-				webApp.vars["log"].style.display="block";
-			break;
+			//case "hide-log":
+				//webApp.vars["log"].style.display="none";
+			//break;
+			//case "view-log":
+				//webApp.vars["log"].style.display="block";
+			//break;
+			
 			case "toggle-log":
 //console.log(webApp.vars["log"]..style.display);
 				if( webApp.vars["log"].style.display==="none"){
 					webApp.vars["log"].style.display="block";
+					webApp.vars["btnToggle"].innerHTML="-";
 				} else {
 					webApp.vars["log"].style.display="none";
+					webApp.vars["btnToggle"].innerHTML="+";
 				}
 			break;
-			
+		
 			case "clear-log":
 				webApp.vars["log"].innerHTML="";
 			break;

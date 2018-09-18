@@ -74,12 +74,22 @@ top: -10px;
 
 #log{
 word-break: break-all;	
+font-size: 75%;	
 }
+
 
 #clear-log {
 	position: relative;
 	top: -9px;
 	left: 9px;
+}
+.log-panel span {
+	margin-top: 2px;
+	margin-right: 7px;
+}
+.log-panel span a{
+text-decoration:none;
+outline: none;
 }
 
 #btn-scroll-to-top {

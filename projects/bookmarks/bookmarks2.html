@@ -85,9 +85,11 @@ $(window).scroll(function() {
 			</div>
 		</header>
 
-		<div id="log-wrap" class="log-panel bg-warning">
-			<!-- <a class="close" href="#?q=hide-log">x</a>	 -->
-			<a id="clear-log" href="#?q=clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
+		<div class="log-panel">
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="">x</a>
+			</span>
 	<!--
 			<div class="progress">ajax load:
 				<div id="load-progress-bar" class="progress-bar hide"></div>
