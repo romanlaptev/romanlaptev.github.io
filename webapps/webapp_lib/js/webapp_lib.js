@@ -17,7 +17,7 @@ Usage:
 		var lib_obj = [];
 		var _vars = {};
 		
-		lib_obj["breadcrumb"] = [];
+		//lib_obj["breadcrumb"] = [];
 		var message = "";
 		lib_obj["xml"] = null;
 		
@@ -28,6 +28,7 @@ Usage:
 		_vars["numTotalLoad"] = getById("num-total-load");
 		_vars["parseProgressBar"] = getById("parse-progress-bar");
 		_vars["waitWindow"] = getById("win1");
+		_vars["breadcrumb"] = {};
 		
 		_vars["appContainer"] = getById("App");
 		if( !_vars["appContainer"] ){
@@ -1728,7 +1729,7 @@ console.log("w = " + document.body.clientWidth );
 
 								if( parseStr.length > 0 ){
 									_vars["GET"] = parseGetParams( parseStr ); 
-									_urlManager();
+									_urlManager(target);
 								} else {
 	console.log( "Warn! error parse url in " + target.href );
 								}
@@ -1742,7 +1743,7 @@ console.log("w = " + document.body.clientWidth );
 		}//end define_event()
 		
 
-		function _urlManager(){
+		function _urlManager(target){
 	//console.log(target, _vars["GET"]);
 
 			switch( _vars["GET"]["q"] ) {
@@ -1771,6 +1772,24 @@ _vars["timeStart"] = new Date();
 							"plid" : _vars["GET"]["mlid"],
 							"recourse" : 0
 						});
+						
+//-----------------
+/*
+var s_href = $(target).attr("href");
+				if( lib_obj["breadcrumb"].length > 0) {
+					var test = in_array( s_href, lib_obj["breadcrumb"] );
+				} else {
+					var test = true;
+				}
+				if( test ) {
+					var obj = {
+						name : $(target).text(),
+						url : s_href
+					};
+					lib_obj["breadcrumb"].push( obj );
+				}
+*/				
+//-----------------
 
 //var params = [];
 //params["plid"] = "386";
