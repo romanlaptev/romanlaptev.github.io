@@ -1781,6 +1781,11 @@ console.log("w = " + document.body.clientWidth );
 					_vars["log"].innerHTML="";
 				break;
 				
+				case "info-panel-view":
+					view_log( info );			
+					$("#info").toggle();
+				break;
+				
 				case "book_page": 
 _vars["timeStart"] = new Date();
 						_vars["node"] = nodes_obj.get_node({

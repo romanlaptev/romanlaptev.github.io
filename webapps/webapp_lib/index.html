@@ -96,9 +96,6 @@
                     </ul>
                     -->
 			<div id="right-side" class="panel">
-				<div class="control-btn">
-					<button id="info-panel-view" class="btn btn-info btn-sm">control</button>
-				</div>
 				<div id="block-book-category" class="panel-body"></div>		
 				<div id="block-tags" class="panel-body"></div>		
 			</div>
@@ -110,12 +107,15 @@
 	<div class="b-content">
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			
-			<div class="log-panel">
-				<span class="pull-right">
-					<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
-					<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="">x</a>
-				</span>
-				<div id="log" class="panel-body"></div>
+			<div class="log-panel panel">
+				<div class="panel-body">
+					<span class="pull-right">
+						<a href="?q=info-panel-view" class="btn btn-sm btn-default">info</a>
+						<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+						<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+					</span>
+					<div id="log" class="panel-body"></div>
+				</div>
 			</div>
 		
 			<div class="row">

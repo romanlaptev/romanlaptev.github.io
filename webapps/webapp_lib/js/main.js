@@ -69,14 +69,6 @@ $(document).ready(function(){
 //console.log("document ready");
 	$("#info").hide();
 
-	$("#info-panel-view").on("click", function(){
-
-			view_log( info );			
-			$("#info").toggle();
-
-		return false;
-	});//end event
-	
 	$("#info-panel-clear").click(function(){
 		info = [];
 delete lib.xml_obj;
