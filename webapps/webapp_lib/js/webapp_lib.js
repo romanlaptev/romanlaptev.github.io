@@ -1737,23 +1737,23 @@ console.log("w = " + document.body.clientWidth );
 					//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 					
 					if( target.tagName === "A"){
-						if (event.preventDefault) { 
-							event.preventDefault();
-						} else {
-							event.returnValue = false;				
-						}
 						if ( target.href.indexOf("?q=") !== -1){
 
-								//var search = target.href.split("?"); 
-								//var parseStr = search[1]; 
-								var parseStr = target.href; 
+							if (event.preventDefault) { 
+								event.preventDefault();
+							} else {
+								event.returnValue = false;				
+							}
+							//var search = target.href.split("?"); 
+							//var parseStr = search[1]; 
+							var parseStr = target.href; 
 //console.log( parseStr );
 
-								if( parseStr.length > 0 ){
-									_vars["GET"] = parseGetParams( parseStr ); 
-									_urlManager(target);
-								} else {
-	console.log( "Warn! error parse url in " + target.href );
+							if( parseStr.length > 0 ){
+								_vars["GET"] = parseGetParams( parseStr ); 
+								_urlManager(target);
+							} else {
+console.log( "Warn! error parse url in " + target.href );
 								}
 
 						}
@@ -1766,7 +1766,7 @@ console.log("w = " + document.body.clientWidth );
 		
 
 		function _urlManager(target){
-	//console.log(target, _vars["GET"]);
+//console.log(target, _vars["GET"]);
 
 
 			switch( _vars["GET"]["q"] ) {
