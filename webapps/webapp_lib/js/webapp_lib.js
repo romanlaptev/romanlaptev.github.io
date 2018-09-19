@@ -271,6 +271,7 @@ console.log("$.ajax, Fail...", arguments);
 //runtime : 2.634 sec
 			get_content();
 			//process_get_values();
+			_urlManager();			
 			draw_page();
 			define_event();
 			
@@ -508,6 +509,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 		};//end lib.get_content()
 
 
+/*				
 		function process_get_values() {
 //console.log( "$_GET: ", _vars["GET"],  get_object_size( _vars["GET"] ) );
 			if( get_object_size( _vars["GET"] ) === 0) {
@@ -518,7 +520,6 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 			switch( _vars["GET"]["q"] ) {
 				case "node":
-/*				
 var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
@@ -531,11 +532,11 @@ var message = "<br>- nodes_obj.get_node(), runtime: <b>" + runtime_s  + "</b> se
 info.push( message );
 config["runtime"]["get_node"] = [];
 config["runtime"]["get_node"]["time"] = runtime_s;
-*/
+
 					break;
 					
 				case "termin_nodes":
-/*				
+
 var exec_start = new Date();
 						_vars["termin_nodes"] = [];
 						var params = {
@@ -550,11 +551,11 @@ var message = "<br>- nodes_obj.get_termin_nodes(), runtime: <b>" + runtime_s  + 
 info.push( message );
 config["runtime"]["get_termin_nodes"] = [];
 config["runtime"]["get_termin_nodes"]["time"] = runtime_s;
-*/
+
 					break;
 
 				case "book_page":
-/*				
+
 var exec_start = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
@@ -579,7 +580,7 @@ var message = "<br>- book.get_child_pages( params), runtime: <b>" + runtime_s  +
 info.push( message );
 config["runtime"]["get_child_pages"] = [];
 config["runtime"]["get_child_pages"]["time"] = runtime_s;
-*/
+
 					break;
 				
 				default:
@@ -589,8 +590,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 			view_log( info );			
 			
 		}//end process_get_values()
-
-
+*/
 
 		
 		var nodes_obj = {
