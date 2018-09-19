@@ -514,7 +514,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
 //------------------
-			
+			delete _vars["xml"];
 		};//end lib.get_content()
 
 
@@ -799,8 +799,7 @@ console.log(message);
 			return node;
 		}//end get_node()
 
-		function get_book_files( params )
-		{
+		function get_book_files( params ){
 			var xml = _vars["xml"];
 			var files = [];
 			var table_name = "table_book_filename";
@@ -816,8 +815,7 @@ console.log(message);
 			return files;
 		}//end get_book_files()
 
-		function get_book_url( params )
-		{
+		function get_book_url( params ){
 			var xml = _vars["xml"];
 			var url = [];
 			var table_name = "table_book_url";
@@ -833,8 +831,7 @@ console.log(message);
 			return url;
 		}//end get_book_url()
 
-		function get_book_links( params )
-		{
+		function get_book_links( params ){
 			var xml = _vars["xml"];
 			var links = [];
 			var table_name = "table_book_links";
@@ -1027,8 +1024,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 		};
 
 		//read xml data
-		function read_taxonomy_data()
-		{
+		function read_taxonomy_data(){
 			var xml = _vars["xml"];
 			taxonomy_obj["x_voc"] = $(xml).find( "table_taxonomy_vocabulary" ).find('item');
 			taxonomy_obj["x_term_hierarchy"] = $(xml).find( "table_taxonomy_term_hierarchy" ).find("termin");
@@ -1797,13 +1793,13 @@ console.log("w = " + document.body.clientWidth );
 				
 				case "book_page": 
 _vars["timeStart"] = new Date();
-						_vars["node"] = nodes_obj.get_node({
-							"nid" : _vars["GET"]["nid"]
-						});
-						_vars["book_child_pages"] = book.get_child_pages({
-							"plid" : _vars["GET"]["mlid"],
-							"recourse" : 0
-						});
+					_vars["node"] = nodes_obj.get_node({
+						"nid" : _vars["GET"]["nid"]
+					});
+					_vars["book_child_pages"] = book.get_child_pages({
+						"plid" : _vars["GET"]["mlid"],
+						"recourse" : 0
+					});
 						
 //var params = [];
 //params["plid"] = "386";
