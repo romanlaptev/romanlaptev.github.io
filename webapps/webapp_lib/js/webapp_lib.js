@@ -1,25 +1,11 @@
-/*
-Usage:
-	var lib = Lib();
-	
-	lib.get_content();
-	
-//------------------	
-	lib_obj["templates"] = [];
-	lib_obj["nodes"] = [];
-	lib_obj["book_category"] = [];
-	lib_obj["taxonomy"] = [];
-*/
 (function(){
 	var Lib =  Lib || function(){
 
 		// private variables and functions
-		var lib_obj = [];
 		var _vars = {};
 		
-		//lib_obj["breadcrumb"] = [];
 		var message = "";
-		lib_obj["xml"] = null;
+		_vars["xml"] = null;
 		
 		
 		_vars["log"] = getById("log");
@@ -180,7 +166,7 @@ console.log("$.ajax, Fail...", arguments);
 		function after_load( data ) {
 			//lib = Lib( xml );
 	//console.log(lib);
-			lib_obj["xml"] = data;
+			_vars["xml"] = data;
 			
 			_vars["GET"] = parseGetParams(); 
 //console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
@@ -300,7 +286,7 @@ console.log( _vars["logMsg"] );
 		
 		//html templates
 		function load_templates( params ) {
-			lib_obj["templates"] = [];
+			_vars["templates"] = [];
 			
 var exec_start = new Date();
 			var url = config["tpl_file"];
@@ -336,11 +322,11 @@ console.log("errorThrown - ", errorThrown);
 			});
 			
 			function get_tmpl(data){
-				lib_obj["templates"]["html"] = data;
-				var templates = $( lib_obj["templates"]["html"] );
+				_vars["templates"]["html"] = data;
+				var templates = $( _vars["templates"]["html"] );
 				
 				//read templates
-				//lib_obj["templates"]["block_book_category_item_tpl"] = templates.find("#block-book-category li")[0].outerHTML;
+				//_vars["templates"]["block_book_category_item_tpl"] = templates.find("#block-book-category li")[0].outerHTML;
 				
 				//var item_tpl = $(data).find("#block-book-category-for").html();
 				var item_tpl = decodeURI( templates.find("#block-book-category-for").html() );
@@ -352,48 +338,48 @@ console.log("errorThrown - ", errorThrown);
 //if( item_tpl.indexOf("%7D%7D") > 0 ){
 //	item_tpl = item_tpl.replace("%7D%7D", "}}")
 //}
-				lib_obj["templates"]["block_book_category_item_tpl"] = item_tpl;
+				_vars["templates"]["block_book_category_item_tpl"] = item_tpl;
 
 				var tmp = templates.find("#block-book-category");
 				tmp.find("li").remove();
-				lib_obj["templates"]["block_book_category_tpl"] = tmp.html();
-				lib_obj["templates"]["block_book_category_url_tpl"] = "?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}";
+				_vars["templates"]["block_book_category_tpl"] = tmp.html();
+				_vars["templates"]["block_book_category_url_tpl"] = "?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}";
 				
-				lib_obj["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
+				_vars["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
 				templates.find("#block-book-child-pages-for").remove();
-				lib_obj["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
+				_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
 				
 				
-				lib_obj["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
-				lib_obj["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
+				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
+				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
 				var tmp = templates.find("#view-node");
 				tmp.find("li").remove();
-				lib_obj["templates"]["node_tpl"] = tmp.html();
+				_vars["templates"]["node_tpl"] = tmp.html();
 				
-				lib_obj["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu li")[0].outerHTML );
+				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu li")[0].outerHTML );
 				var tmp = templates.find("#taxonomy-menu");
 				tmp.find("li").remove();
-				lib_obj["templates"]["taxonomy_list_tpl"] = tmp.html();
-				lib_obj["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
+				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
+				_vars["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
 				
-				lib_obj["templates"]["block_taxonomy_alpha_item_tpl"] = decodeURI(  templates.find("#block-taxonomy-alpha-for").html() );
+				_vars["templates"]["block_taxonomy_alpha_item_tpl"] = decodeURI(  templates.find("#block-taxonomy-alpha-for").html() );
 				templates.find("#block-taxonomy-alpha-for").remove();
-				lib_obj["templates"]["block_taxonomy_alpha_tpl"] = templates.find("#block-taxonomy-alpha").html();
+				_vars["templates"]["block_taxonomy_alpha_tpl"] = templates.find("#block-taxonomy-alpha").html();
 
-				lib_obj["templates"]["termin_nodes_item_tpl"] = templates.find("#termin-nodes-item").html();
+				_vars["templates"]["termin_nodes_item_tpl"] = templates.find("#termin-nodes-item").html();
 				var tmp = templates.find("#termin-nodes");
 				tmp.find("#termin-nodes-item").remove();
-				lib_obj["templates"]["termin_nodes_tpl"] = decodeURI( tmp.html() );
-				lib_obj["templates"]["termin_nodes_url_tpl"] = "?q=node&nid=#nid";
+				_vars["templates"]["termin_nodes_tpl"] = decodeURI( tmp.html() );
+				_vars["templates"]["termin_nodes_url_tpl"] = "?q=node&nid=#nid";
 
 				
 				var tmpl = $(data).find("#cloud-for");
-				lib_obj["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
+				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
 				
 				//var tmpl = $(data).find("#external-links");
-				//lib_obj["templates"]["external_links_tpl"] = tmpl.html();
+				//_vars["templates"]["external_links_tpl"] = tmpl.html();
 				
-				lib_obj["templates"]["breadcrumb_item_tpl"] = decodeURI( templates.find("#breadcrumb-tpl").html() );
+				_vars["templates"]["breadcrumb_item_tpl"] = decodeURI( templates.find("#breadcrumb-tpl").html() );
 				
 			}//end get_tmpl()	
 
@@ -422,7 +408,7 @@ console.log("errorThrown - ", errorThrown);
 //runtime: 4.837 sec+, 
 //runtime: 1.394 sec+, 
 //runtime: 0.783 sec
-				lib_obj["nodes"] = nodes_obj.get_xml_nodes();
+				_vars["nodes"] = nodes_obj.get_xml_nodes();
 			var exec_end = new Date();
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- nodes_obj.get_xml_nodes(), runtime: <b>" + runtime_s  + "</b> sec";
@@ -455,7 +441,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			var exec_start = new Date();
 //runtime: 1.989 sec+, 
 //0.042 sec			
-				lib_obj["taxonomy"] = taxonomy_obj.get_xml_taxonomy();
+				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy();
 			var exec_end = new Date();
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- get taxonomy, runtime: <b>" + runtime_s  + "</b> sec";
@@ -479,7 +465,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			var exec_start = new Date();
 //runtime : 0.244 sec			
  //runtime : 0.032 sec			
-				lib_obj["book_category"] = get_book_category();
+				_vars["book_category"] = get_book_category();
 				
 			var exec_end = new Date();
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
@@ -489,10 +475,10 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			config["runtime"]["get_book_category"]["time"] = runtime_s;
 			
 			//message = "";
-			//message += "<br>Size lib_obj['xml_nodes']: " + lib_obj["xml_nodes"].length  + " bytes";
-			//message += "<br>Size lib_obj['book_category']: " + lib_obj["book_category"].length  + " bytes";
-			//message += "<br>Size lib_obj['nodes']: " + nodes.nodes_size  + " bytes";
-			//message += "<br>Size lib_obj['taxonomy']: " + lib_obj["taxonomy"].length  + " bytes";
+			//message += "<br>Size _vars['xml_nodes']: " + _vars["xml_nodes"].length  + " bytes";
+			//message += "<br>Size _vars['book_category']: " + _vars["book_category"].length  + " bytes";
+			//message += "<br>Size _vars['nodes']: " + nodes.nodes_size  + " bytes";
+			//message += "<br>Size _vars['taxonomy']: " + _vars["taxonomy"].length  + " bytes";
 			//info.push( message );
 			
 //------------------
@@ -571,7 +557,7 @@ var exec_start = new Date();
 //var params = [];
 //params["plid"] = "386";
 //params["recourse"] = 0;
-//lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
+//_vars["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 
 						
 var exec_end = new Date();
@@ -617,7 +603,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
  		//read xml data
 //runtime: 0.668 sec		
 		function read_nodes_data() {
-			var xml = lib_obj["xml"];
+			var xml = _vars["xml"];
 			var table_name_index = "table_taxonomy_index";
 			nodes_obj["x_table_index"] = $(xml).find( table_name_index ).find('item');//runtime: 0.244 sec
 			
@@ -715,27 +701,27 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 
 		function _get_termin_nodes( params )
 		{
-			if( typeof lib_obj["nodes"] === "undefined")
+			if( typeof _vars["nodes"] === "undefined")
 			{
-				var message = "<br>error, not found lib_obj[nodes], function get_termin_nodes()";
+				var message = "<br>error, not found _vars[nodes], function get_termin_nodes()";
 console.log(message);
 				info.push( message );
 				return;
 			}
 		
 			var termin_nodes = [];
-			for( var node in lib_obj["nodes"] )
+			for( var node in _vars["nodes"] )
 			{
-if( typeof lib_obj["nodes"][node]["tid"] === "undefined")
+if( typeof _vars["nodes"][node]["tid"] === "undefined")
 {
 	continue;
 }
-				for( var n = 0; n < lib_obj["nodes"][node]["tid"].length; n++)
+				for( var n = 0; n < _vars["nodes"][node]["tid"].length; n++)
 				{
-					if( params["tid"] === lib_obj["nodes"][node]["tid"][n] )
+					if( params["tid"] === _vars["nodes"][node]["tid"][n] )
 					{
-	//console.log( node,  lib_obj["nodes"][node]  );
-						termin_nodes.push( lib_obj["nodes"][node] );
+	//console.log( node,  _vars["nodes"][node]  );
+						termin_nodes.push( _vars["nodes"][node] );
 					}
 				}//next node tid
 			}//next node
@@ -746,15 +732,15 @@ if( typeof lib_obj["nodes"][node]["tid"] === "undefined")
 		function view_termin_nodes( params ) {
 			if( typeof _vars["termin_nodes"] === "undefined")
 			{
-				var message = "<br>error, not found lib_obj[termin_nodes]";
+				var message = "<br>error, not found _vars[termin_nodes]";
 console.log(message);
 				info.push( message );
 				return;
 			}
 			
-			var termin_nodes_tpl = lib_obj["templates"]["termin_nodes_tpl"];
-			var termin_node_tpl = lib_obj["templates"]["termin_nodes_item_tpl"];
-			var url_tpl = lib_obj["templates"]["termin_nodes_url_tpl"];
+			var termin_nodes_tpl = _vars["templates"]["termin_nodes_tpl"];
+			var termin_node_tpl = _vars["templates"]["termin_nodes_item_tpl"];
+			var url_tpl = _vars["templates"]["termin_nodes_url_tpl"];
 			var html = "";
 			for( var n = 0; n < _vars["termin_nodes"].length; n++)
 			{
@@ -771,12 +757,12 @@ console.log(message);
 		}//end view_termin_nodes()
 
 		function get_node( params ){
-			//for( var node in lib_obj["nodes"] )
-			for( var n = 0; n < lib_obj["nodes"].length; n++)
+			//for( var node in _vars["nodes"] )
+			for( var n = 0; n < _vars["nodes"].length; n++)
 			{
-				if( params["nid"] === lib_obj["nodes"][n]["nid"] )
+				if( params["nid"] === _vars["nodes"][n]["nid"] )
 				{
-					var node = lib_obj["nodes"][n];
+					var node = _vars["nodes"][n];
 					//get book url
 					var params = {"nid" :node["nid"] };
 					node["book_files"] = get_book_files( params );
@@ -792,7 +778,7 @@ console.log(message);
 
 		function get_book_files( params )
 		{
-			var xml = lib_obj["xml"];
+			var xml = _vars["xml"];
 			var files = [];
 			var table_name = "table_book_filename";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -809,7 +795,7 @@ console.log(message);
 
 		function get_book_url( params )
 		{
-			var xml = lib_obj["xml"];
+			var xml = _vars["xml"];
 			var url = [];
 			var table_name = "table_book_url";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -826,7 +812,7 @@ console.log(message);
 
 		function get_book_links( params )
 		{
-			var xml = lib_obj["xml"];
+			var xml = _vars["xml"];
 			var links = [];
 			var table_name = "table_book_links";
 			$(xml).find( table_name ).find('item').each(function(){
@@ -855,9 +841,9 @@ console.log(message);
 				}
 			}//next termin			
 
-			for( var voc in lib_obj["taxonomy"]){
-//console.log(  lib_obj["taxonomy"][voc]);	
-				var test_termins = lib_obj["taxonomy"][voc]["termins"];
+			for( var voc in _vars["taxonomy"]){
+//console.log(  _vars["taxonomy"][voc]);	
+				var test_termins = _vars["taxonomy"][voc]["termins"];
 				for( var n1 = 0; n1 < test_termins.length; n1++){
 					for( var n2 = 0; n2 < node_termins.length; n2++){
 						if( test_termins[n1]["tid"] === node_termins[n2]["tid"] ){
@@ -873,7 +859,7 @@ console.log(message);
 
 		function view_node( params ) {
 			if( typeof _vars["node"] === "undefined") {
-				var message = "<br>error, not found lib_obj[node]";
+				var message = "<br>error, not found _vars[node]";
 console.log(message);
 				info.push( message );
 				return;
@@ -892,7 +878,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 }
 //----------------------
 			
-			var node_tpl = lib_obj["templates"]["node_tpl"];
+			var node_tpl = _vars["templates"]["node_tpl"];
 			var html = node_tpl
 			.replace("{{author}}", _vars["node"]["author"] )
 			//.replace("{{node-title}}", _vars["node"]["title"] )
@@ -909,7 +895,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 				html = html.replace("{{node-title}}", "" );
 			}
 			
-			var node_tpl_url = lib_obj["templates"]["node_tpl_url"];
+			var node_tpl_url = _vars["templates"]["node_tpl_url"];
 			//form node book local url
 			if( _vars["node"]["book_files"].length > 0) {
 				var html_book_url = "";
@@ -980,8 +966,8 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			
 			//form node taxonomy menu
 			var html_termin_links = "";
-			var node_tpl_url = lib_obj["templates"]["node_tpl_termins"];
-			var url_tpl = lib_obj["templates"]["taxonomy_url_tpl"];
+			var node_tpl_url = _vars["templates"]["node_tpl_termins"];
+			var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
 
 			for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
 				var link = url_tpl
@@ -1020,7 +1006,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 		//read xml data
 		function read_taxonomy_data()
 		{
-			var xml = lib_obj["xml"];
+			var xml = _vars["xml"];
 			taxonomy_obj["x_voc"] = $(xml).find( "table_taxonomy_vocabulary" ).find('item');
 			taxonomy_obj["x_term_hierarchy"] = $(xml).find( "table_taxonomy_term_hierarchy" ).find("termin");
 			taxonomy_obj["x_term_data"] = $(xml).find( "table_taxonomy_term_data" ).find('termin');
@@ -1117,20 +1103,20 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 		}//end get_xml_taxonomy()
 		
 		function view_vocabulary ( vocabulary_name, recourse ) {
-			if( typeof lib_obj["taxonomy"][vocabulary_name] === "undefined")
+			if( typeof _vars["taxonomy"][vocabulary_name] === "undefined")
 			{
 console.log("error, vocabulary not found " + vocabulary_name);			
 				return;
 			}
 			
-			var item_tpl = lib_obj["templates"]["taxonomy_list_item_tpl"];
-			var list_tpl = lib_obj["templates"]["taxonomy_list_tpl"];
-			var url_tpl = lib_obj["templates"]["taxonomy_url_tpl"];
+			var item_tpl = _vars["templates"]["taxonomy_list_item_tpl"];
+			var list_tpl = _vars["templates"]["taxonomy_list_tpl"];
+			var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
 			var block_title = "<h4>book tags:</h4>";
 			var html = "";
-			for( var n = 0; n < lib_obj["taxonomy"][vocabulary_name]["termins"].length; n++ )
+			for( var n = 0; n < _vars["taxonomy"][vocabulary_name]["termins"].length; n++ )
 			{
-				var termin = lib_obj["taxonomy"][vocabulary_name]["termins"][n];
+				var termin = _vars["taxonomy"][vocabulary_name]["termins"][n];
 				if( termin["parent_value"] === "0"){
 					var url = url_tpl
 					.replace("{{vid}}", termin["vid"])
@@ -1142,7 +1128,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 					
 					if( recourse ) {
 						var params = [];
-						params["termins"] = lib_obj["taxonomy"][vocabulary_name]["termins"]; 
+						params["termins"] = _vars["taxonomy"][vocabulary_name]["termins"]; 
 						params["vid"] = termin["vid"];
 						params["tid"] = termin["tid"]; 
 						params["recourse"] = recourse;
@@ -1323,21 +1309,21 @@ var children_nodes = list_child_pages( $(node).attr('mlid'), 1 );
 		}//end get_child_pages()
 
 		function view_book_category() {
-			if( typeof lib_obj["book_category"] === "undefined"){
-console.log("error, not found lib_obj[book_category], function parse_book_category( container )");
+			if( typeof _vars["book_category"] === "undefined"){
+console.log("error, not found _vars[book_category], function parse_book_category( container )");
 				return;
 			}
 			
 			var html = "";
-			for( var n = 0; n < lib_obj["book_category"].length; n++) {
-				var node = lib_obj["book_category"][n];
+			for( var n = 0; n < _vars["book_category"].length; n++) {
+				var node = _vars["book_category"][n];
 				
-				var url_tpl = lib_obj["templates"]["block_book_category_url_tpl"];
+				var url_tpl = _vars["templates"]["block_book_category_url_tpl"];
 				var url = url_tpl
 				.replace("{{nid}}", $(node).attr('nid') )
 				.replace("{{mlid}}", $(node).attr('mlid') )
 				.replace("{{plid}}", $(node).attr('plid') );
-				html += lib_obj["templates"]["block_book_category_item_tpl"]
+				html += _vars["templates"]["block_book_category_item_tpl"]
 .replace(/{{page-title}}/g, $(node).attr('title') )
 .replace("{{url}}", url )
 //.replace("%7B%7Burl%7D%7D", url )
@@ -1345,7 +1331,7 @@ console.log("error, not found lib_obj[book_category], function parse_book_catego
 //console.log("url = " + url, html);				
 			}//next
 
-			html = lib_obj["templates"]["block_book_category_tpl"].replace(/{{list}}/g, html );
+			html = _vars["templates"]["block_book_category_tpl"].replace(/{{list}}/g, html );
 			return html;
 		}//end view_book_category()
 		
@@ -1359,13 +1345,13 @@ console.log(message);
 			}
 			
 			if( _vars["book_child_pages"].length === 0) {
-console.log("lib_obj['book_child_pages'] is empty!!!", _vars["book_child_pages"].length);
+console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].length);
 				return;
 			}
 			
 			//list child pages
-			var list_tpl = lib_obj["templates"]["block_book_child_pages_tpl"];
-			var item_tpl = lib_obj["templates"]["block_book_child_pages_item_tpl"];
+			var list_tpl = _vars["templates"]["block_book_child_pages_tpl"];
+			var item_tpl = _vars["templates"]["block_book_child_pages_item_tpl"];
 			
 			var html = "", html_list = "";
 			
@@ -1405,8 +1391,8 @@ console.log("lib_obj['book_child_pages'] is empty!!!", _vars["book_child_pages"]
 			$("#region-content #block-taxonomy").empty( html );
 			$("#region-content #block-nodes").empty( html );
 			
-			if( typeof lib_obj["book_category"] !== "undefined" ) {
-				if( lib_obj["book_category"].length > 0 ) {
+			if( typeof _vars["book_category"] !== "undefined" ) {
+				if( _vars["book_category"].length > 0 ) {
 					var html = book.view_book_category();
 					$("#block-book-category").html( html );
 					
@@ -1415,13 +1401,13 @@ console.log("lib_obj['book_child_pages'] is empty!!!", _vars["book_child_pages"]
 			
 				}
 			} else {
-console.log("error, not found lib_obj[book_category]");
+console.log("error, not found _vars[book_category]");
 			}
 			
 			
 			var html = view_vocabulary( "library", recourse = false );
 //			var params = [];
-//			params["termins"] = lib_obj["taxonomy"]["library"]["termins"]; 
+//			params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
 //			params["vid"] = "2";
 //			params["tid"] = "37";//38, 46
 //			params["recourse"] = true;
@@ -1434,14 +1420,14 @@ console.log("error, not found lib_obj[book_category]");
 
 			//view alphabetical
 			var params = [];
-			params["termins"] = lib_obj["taxonomy"]["alphabetical_voc"]["termins"]; 
+			params["termins"] = _vars["taxonomy"]["alphabetical_voc"]["termins"]; 
 			params["vid"] = "4";
 			params["tid"] = "116";
 			params["recourse"] = true;
 			params["show_only_children"] = true;
-			params["item_tpl"] = lib_obj["templates"]["block_taxonomy_alpha_item_tpl"];
-			params["list_tpl"] = lib_obj["templates"]["block_taxonomy_alpha_tpl"];
-			params["url_tpl"] = lib_obj["templates"]["taxonomy_url_tpl"];
+			params["item_tpl"] = _vars["templates"]["block_taxonomy_alpha_item_tpl"];
+			params["list_tpl"] = _vars["templates"]["block_taxonomy_alpha_tpl"];
+			params["url_tpl"] = _vars["templates"]["taxonomy_url_tpl"];
 			var html = taxonomy_obj.view_termin( params );
 	
 			params["tid"] = "115";
@@ -1459,16 +1445,16 @@ console.log("error, not found lib_obj[book_category]");
 				if( _vars["GET"]["vid"] === "2"){
 					//view children termin
 					var params = [];
-					params["termins"] = lib_obj["taxonomy"]["library"]["termins"]; 
+					params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
 					params["vid"] = _vars["GET"]["vid"];
 					params["tid"] = _vars["GET"]["tid"];
 					params["recourse"] = true;
 					params["show_only_children"] = false;
 					
-					params["item_tpl"] = lib_obj["templates"]["taxonomy_list_item_tpl"];
-					params["list_tpl"] = lib_obj["templates"]["taxonomy_list_tpl"];
+					params["item_tpl"] = _vars["templates"]["taxonomy_list_item_tpl"];
+					params["list_tpl"] = _vars["templates"]["taxonomy_list_tpl"];
 					
-					params["url_tpl"] = lib_obj["templates"]["taxonomy_url_tpl"];
+					params["url_tpl"] = _vars["templates"]["taxonomy_url_tpl"];
 					var html = taxonomy_obj.view_termin( params );
 					$("#region-content #block-taxonomy").html( html );
 				}
@@ -1492,7 +1478,7 @@ console.log("error, not found lib_obj[book_category]");
 //console.log("html = " + html);
 					$("#region-content #block-nodes").append( html );
 				} else {
-//console.log("lib_obj['book_child_pages'] is empty!!!!!!!!!!!!!!", _vars["book_child_pages"].length);
+//console.log("_vars['book_child_pages'] is empty!!!!!!!!!!!!!!", _vars["book_child_pages"].length);
 				}
 				
 			}
@@ -1515,7 +1501,7 @@ console.log("error, not found lib_obj[book_category]");
 				} else {
 					
 					if( url !== _vars["currentUrl"]){
-						html_breadcrumb += lib_obj["templates"]["breadcrumb_item_tpl"]
+						html_breadcrumb += _vars["templates"]["breadcrumb_item_tpl"]
 						.replace("{{item-url}}", url )
 						.replace("{{item-title}}", title );
 					} else {
@@ -1573,8 +1559,8 @@ console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"))
 //				e.preventDefault();
 //console.log("breadcrumb click, num: " +  num);
 //				var num = $(this).data("num");
-//				for( var n = num+1; n < lib_obj["breadcrumb"].length; n++){
-//					delete lib_obj["breadcrumb"][n];
+//				for( var n = num+1; n < _vars["breadcrumb"].length; n++){
+//					delete _vars["breadcrumb"][n];
 //				}
 //			});//end event
 
@@ -1590,29 +1576,29 @@ console.log(s_href, parse_url );
 				
 				//breadcrumb process
 				if( $(e.target).hasClass("root-link") ){
-					lib_obj["breadcrumb"] = [];
+					_vars["breadcrumb"] = [];
 				}
 				
 				if( $(e.target).hasClass("breadcrumb-link") ){
 					var num = $(this).data("num");
 //console.log("breadcrumb click, num: " +  num);
 
-					//for( var n = num+1; n < lib_obj["breadcrumb"].length; n++){
-//console.log(n, lib_obj["breadcrumb"][n]);
-						////delete lib_obj["breadcrumb"][n]["name"];
-						////delete lib_obj["breadcrumb"][n]["url"];
-						////delete lib_obj["breadcrumb"][n];
-						//lib_obj["breadcrumb"][n] = [];
+					//for( var n = num+1; n < _vars["breadcrumb"].length; n++){
+//console.log(n, _vars["breadcrumb"][n]);
+						////delete _vars["breadcrumb"][n]["name"];
+						////delete _vars["breadcrumb"][n]["url"];
+						////delete _vars["breadcrumb"][n];
+						//_vars["breadcrumb"][n] = [];
 					//}
 
 					var start_index = num + 1;
-					var num_delete = lib_obj["breadcrumb"].length - start_index;
+					var num_delete = _vars["breadcrumb"].length - start_index;
 //console.log( start_index, num_delete );
-					lib_obj["breadcrumb"].splice( start_index, num_delete );
+					_vars["breadcrumb"].splice( start_index, num_delete );
 				}
 				
-				if( lib_obj["breadcrumb"].length > 0) {
-					var test = in_array( s_href, lib_obj["breadcrumb"] );
+				if( _vars["breadcrumb"].length > 0) {
+					var test = in_array( s_href, _vars["breadcrumb"] );
 				} else {
 					var test = true;
 				}
@@ -1621,7 +1607,7 @@ console.log(s_href, parse_url );
 						name : $(e.target).text(),
 						url : s_href
 					};
-					lib_obj["breadcrumb"].push( obj );
+					_vars["breadcrumb"].push( obj );
 				}
 				//-----------------------------
 				
@@ -1668,25 +1654,25 @@ console.log(s_href, parse_url );
 //breadcrumb object
  					var html = "";
 					
-					var size_obj = count_object_bytes( lib_obj["nodes"] );
+					var size_obj = count_object_bytes( _vars["nodes"] );
 					html += "<li>";
-					html += "lib_obj['nodes']: " + size_obj["bytes"] +" bytes";
+					html += "_vars['nodes']: " + size_obj["bytes"] +" bytes";
 					if( size_obj["Kbytes"] > 0 ){
 						html += ", " + size_obj["Kbytes"] +" Kb";
 					}
 					html += "</li>";
 					
-					var size_obj = count_object_bytes( lib_obj["taxonomy"] );
+					var size_obj = count_object_bytes( _vars["taxonomy"] );
 					html += "<li>";
-					html += "lib_obj['taxonomy']: " + size_obj["bytes"] +" bytes";
+					html += "_vars['taxonomy']: " + size_obj["bytes"] +" bytes";
 					if( size_obj["Kbytes"] > 0 ){
 						html += ", " + size_obj["Kbytes"] +" Kb";
 					}
 					html += "</li>";
 					
-					var size_obj = count_object_bytes( lib_obj["templates"] );
+					var size_obj = count_object_bytes( _vars["templates"] );
 					html += "<li>";
-					html += "lib_obj['templates']: " + size_obj["bytes"] +" bytes";
+					html += "_vars['templates']: " + size_obj["bytes"] +" bytes";
 					if( size_obj["Kbytes"] > 0 ){
 						html += ", " + size_obj["Kbytes"] +" Kb";
 					}
@@ -1694,14 +1680,14 @@ console.log(s_href, parse_url );
 					
 					var size_obj = count_object_bytes( _vars["termin_nodes"] );
 					html += "<li>";
-					html += "lib_obj['termin_nodes']: " + size_obj["bytes"] +" bytes";
+					html += "_vars['termin_nodes']: " + size_obj["bytes"] +" bytes";
 					if( size_obj["Kbytes"] > 0 ){
 						html += ", " + size_obj["Kbytes"] +" Kb";
 					}
 					html += "</li>";
 
 
-					$("#size_lib_obj").html( html );
+					$("#size__vars").html( html );
 				};
 				
 				e.preventDefault();
@@ -1799,7 +1785,7 @@ _vars["timeStart"] = new Date();
 //var params = [];
 //params["plid"] = "386";
 //params["recourse"] = 0;
-//lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
+//_vars["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 						
 
 					_formBreadcrumb( target );
@@ -1912,7 +1898,7 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 //console.log("function add_cloud_links", cloudUrl);			
 			var html = "";
 			
-			var node_tpl_url = lib_obj["templates"]["cloud_for_tpl"];
+			var node_tpl_url = _vars["templates"]["cloud_for_tpl"];
 			var subfolder =  _vars["node"]["subfolder"];
 
 			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
@@ -1957,7 +1943,7 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 /*
 		function add_dropbox_links() {
 			//form node book url and generate ajax-request to Dropbox
-			var node_tpl_url = lib_obj["templates"]["dropbox_for_tpl"];
+			var node_tpl_url = _vars["templates"]["dropbox_for_tpl"];
 			var subfolder =  _vars["node"]["subfolder"];
 			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
 				var filename =  _vars["node"]["book_files"][n];
@@ -2093,7 +2079,6 @@ console.log(size_obj);
 
 		// public interfaces
 		return{
-			lib_obj: lib_obj, 
 			vars: _vars//, 
 			//load_templates: function( params ){ 
 				//return _load_templates( params ); 
