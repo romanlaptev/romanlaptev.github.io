@@ -1754,23 +1754,6 @@ console.log("w = " + document.body.clientWidth );
 		function _urlManager(target){
 	//console.log(target, _vars["GET"]);
 
-//----------------- form breadcrumb line
-			//form unique key 
-			var breadcrumbKey = _vars["GET"]["q"];
-			for( var key in _vars["GET"]){
-				if( key === "q"){
-					continue;
-				}
-				breadcrumbKey += _vars["GET"][key];
-			}
-//console.log(breadcrumbKey);
-	
-			_vars["breadcrumb"][ breadcrumbKey ] = {
-				"title" : $(target).text(),
-				"url" : $(target).attr("href")
-			};
-			_vars["currentUrl"] = $(target).attr("href");
-//-----------------
 
 			switch( _vars["GET"]["q"] ) {
 				
@@ -1805,6 +1788,7 @@ _vars["timeStart"] = new Date();
 //lib_obj["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 						
 
+					_formBreadcrumb( target );
 					draw_page();
 					
 					if( $(".navbar-header").is(":visible") &&
@@ -1833,7 +1817,10 @@ _vars["timeStart"] = new Date();
 						//"vid" : _vars["GET"]["vid"],
 						"tid" : _vars["GET"]["tid"]
 					});
+					
+					_formBreadcrumb( target );
 					draw_page();
+					
 					if( $(".navbar-header").is(":visible") &&
 						document.body.clientWidth < 990) {
 						$("#bs-navbar-collapse-1").hide("slow");
@@ -1853,7 +1840,10 @@ _vars["timeStart"] = new Date();
 					_vars["node"] = nodes_obj.get_node({
 						"nid" : _vars["GET"]["nid"]
 					});
+					
+					_formBreadcrumb( target );
 					draw_page();
+					
 					if( $(".navbar-header").is(":visible") &&
 						document.body.clientWidth < 990) {
 						$("#bs-navbar-collapse-1").hide("slow");
@@ -1880,18 +1870,29 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 
 		}//end _urlManager()
 
-/*		
-		function in_array( test_url, test_array ){
-//console.log("function check_in_array", test_url, test_array);
-			for( var n = 0; n < test_array.length; n++ ){
-				if( test_url === test_array[n]["url"] ){
-					return false;
-				}
-			}//next item
-			return true;
+		function _formBreadcrumb( target ){
 			
-		}//end in_array()
-*/
+			if( $(target).hasClass("root-link") ){
+				_vars["breadcrumb"] = {};
+			}
+			
+			//form unique key 
+			var breadcrumbKey = _vars["GET"]["q"];
+			for( var key in _vars["GET"]){
+				if( key === "q"){
+					continue;
+				}
+				breadcrumbKey += _vars["GET"][key];
+			}
+			//console.log(breadcrumbKey);
+
+			_vars["breadcrumb"][ breadcrumbKey ] = {
+				"title" : $(target).text(),
+				"url" : $(target).attr("href")
+			};
+			_vars["currentUrl"] = $(target).attr("href");
+		}//end _formBreadCrumb()
+
 
 		function add_cloud_links( cloudUrl ) {//form link on cloud file
 //console.log("function add_cloud_links", cloudUrl);			
