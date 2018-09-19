@@ -1513,9 +1513,16 @@ console.log("error, not found lib_obj[book_category]");
 				if( clear ){//clear unuseful tail breadrumbs
 					delete _vars["breadcrumb"][key];
 				} else {
-					html_breadcrumb += lib_obj["templates"]["breadcrumb_item_tpl"]
-					.replace("{{item-url}}", url )
-					.replace("{{item-title}}", title );
+					
+					if( url !== _vars["currentUrl"]){
+						html_breadcrumb += lib_obj["templates"]["breadcrumb_item_tpl"]
+						.replace("{{item-url}}", url )
+						.replace("{{item-title}}", title );
+					} else {
+						html_breadcrumb += "<li class='active-item'>" + title + "</li>";
+						//html_breadcrumb += "<span class='btn btn-info active-item'>" + title + "</span>";
+					}
+					
 				}
 				
 				if( url === _vars["currentUrl"]){
@@ -1526,6 +1533,8 @@ console.log("error, not found lib_obj[book_category]");
 			
 //console.log(html_breadcrumb);
 			$("#breadcrumb-tpl").html( html_breadcrumb );
+			
+			
 //----------------------
 			
 			function render_node(){
