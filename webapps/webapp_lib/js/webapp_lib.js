@@ -387,10 +387,11 @@ console.log("errorThrown - ", errorThrown);
 
 		var get_content = function( params ){
 			
-			var _total = 3;
+			var _total = 5;
 			var _numDone = 0;
 			var _percentComplete = 0;
 			
+//------------------
 			//get nodes
 			var exec_start = new Date();
 //runtime: 0.668 sec
@@ -400,10 +401,21 @@ console.log("errorThrown - ", errorThrown);
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- read_nodes_data, runtime: <b>" + runtime_s  + "</b> sec";
 			info.push( message );
-			config["runtime"]["read_nodes_data"] = [];
-			config["runtime"]["read_nodes_data"]["time"] = runtime_s;
+			//config["runtime"]["read_nodes_data"] = [];
+			//config["runtime"]["read_nodes_data"]["time"] = runtime_s;
+			
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
+//------------------
 			
 
+//------------------
 			var exec_start = new Date();
 //runtime: 4.837 sec+, 
 //runtime: 1.394 sec+, 
@@ -413,20 +425,20 @@ console.log("errorThrown - ", errorThrown);
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- nodes_obj.get_xml_nodes(), runtime: <b>" + runtime_s  + "</b> sec";
 			info.push( message );
-			config["runtime"]["get_xml_nodes"] = [];
-			config["runtime"]["get_xml_nodes"]["time"] = runtime_s;
+			//config["runtime"]["get_xml_nodes"] = [];
+			//config["runtime"]["get_xml_nodes"]["time"] = runtime_s;
 
-//------------------
-			_numDone = 1;
+			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-						if( _vars["parseProgressBar"] ){
-							_vars["parseProgressBar"].className = "progress-bar";
-							_vars["parseProgressBar"].style.width = _percentComplete+"%";
-							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-						}
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
 //------------------
 
+//------------------
 			//get taxonomy termins
 			var exec_start = new Date();
 //runtime: 0.684 sec
@@ -435,9 +447,20 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- read_taxonomy_data, runtime: <b>" + runtime_s  + "</b> sec";
 			info.push( message );
-			config["runtime"]["read_taxonomy_data"] = [];
-			config["runtime"]["read_taxonomy_data"]["time"] = runtime_s;
+			//config["runtime"]["read_taxonomy_data"] = [];
+			//config["runtime"]["read_taxonomy_data"]["time"] = runtime_s;
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
+//------------------
 			
+			
+//------------------
 			var exec_start = new Date();
 //runtime: 1.989 sec+, 
 //0.042 sec			
@@ -446,21 +469,22 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- get taxonomy, runtime: <b>" + runtime_s  + "</b> sec";
 			info.push( message );
-			config["runtime"]["get_xml_taxonomy"] = [];
-			config["runtime"]["get_xml_taxonomy"]["time"] = runtime_s;
+			//config["runtime"]["get_xml_taxonomy"] = [];
+			//config["runtime"]["get_xml_taxonomy"]["time"] = runtime_s;
 
-//------------------
+
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-						if( _vars["parseProgressBar"] ){
-							_vars["parseProgressBar"].className = "progress-bar";
-							_vars["parseProgressBar"].style.width = _percentComplete+"%";
-							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-						}
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
 //------------------
 
 
+//------------------
 			//get book category
 			var exec_start = new Date();
 //runtime : 0.244 sec			
@@ -471,8 +495,8 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
 			var message = "<br>- get_book_category, runtime: <b>" + runtime_s  + "</b> sec";
 			info.push( message );
-			config["runtime"]["get_book_category"] = [];
-			config["runtime"]["get_book_category"]["time"] = runtime_s;
+			//config["runtime"]["get_book_category"] = [];
+			//config["runtime"]["get_book_category"]["time"] = runtime_s;
 			
 			//message = "";
 			//message += "<br>Size _vars['xml_nodes']: " + _vars["xml_nodes"].length  + " bytes";
@@ -481,15 +505,14 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			//message += "<br>Size _vars['taxonomy']: " + _vars["taxonomy"].length  + " bytes";
 			//info.push( message );
 			
-//------------------
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-						if( _vars["parseProgressBar"] ){
-							_vars["parseProgressBar"].className = "progress-bar";
-							_vars["parseProgressBar"].style.width = _percentComplete+"%";
-							_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-						}
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
 //------------------
 			
 		};//end lib.get_content()
