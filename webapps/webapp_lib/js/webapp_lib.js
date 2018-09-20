@@ -514,7 +514,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
 //------------------
-			delete _vars["xml"];
+			//delete _vars["xml"];
 		};//end lib.get_content()
 
 
