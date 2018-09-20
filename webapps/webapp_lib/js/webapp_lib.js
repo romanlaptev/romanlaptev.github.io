@@ -611,7 +611,8 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return _get_termin_nodes( params );
+				//return _get_termin_nodes( params );
+				return _getTerminNodes( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -622,6 +623,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return html;
 			}
 		};
+console.log("nodes_obj:", nodes_obj);
 
  		//read xml data
 //runtime: 0.668 sec		
@@ -751,6 +753,40 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			
 			return termin_nodes;
 		}//end _get_termin_nodes()
+		
+		function _getTerminNodes(opt){
+//console.log(opt);
+			var p = {
+				"tid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+console.log(p);
+
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+				
+			var terminNodes = [];
+			var nodesObj = {};
+			
+			var xml = _vars["xml"];
+			
+			var tableName = "table_taxonomy_index";
+			nodesObj[tableName] = $(xml).find( tableName ).find('item');
+
+			
+			var tableName = "table_node";
+			nodesObj[tableName] = $(xml).find( tableName ).find('node');
+console.log(nodesObj);
+
+			return terminNodes;
+		}//end _getTerminNodes
 		
 		function view_termin_nodes( params ) {
 			if( typeof _vars["termin_nodes"] === "undefined")
