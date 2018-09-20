@@ -611,8 +611,8 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				//return _get_termin_nodes( params );
-				return _getTerminNodes( params );
+				return _get_termin_nodes( params );
+				//return _getTerminNodes( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -751,9 +751,10 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 				}//next node tid
 			}//next node
 			
+//console.log(termin_nodes);
 			return termin_nodes;
 		}//end _get_termin_nodes()
-		
+/*		
 		function _getTerminNodes(opt){
 //console.log(opt);
 			var p = {
@@ -763,7 +764,7 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-console.log(p);
+//console.log(p);
 
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
@@ -773,21 +774,52 @@ console.log( _vars["logMsg"] );
 			}
 				
 			var terminNodes = [];
-			var nodesObj = {};
-			
 			var xml = _vars["xml"];
 			
 			var tableName = "table_taxonomy_index";
-			nodesObj[tableName] = $(xml).find( tableName ).find('item');
-
+			$(xml).find( tableName ).find("item").each( function(){
+				var tid = $(this).attr("tid");
+				if( p["tid"] === tid ){
+					var node = __getNode({
+						"nid" : $(this).attr("nid")
+					});
+					terminNodes.push( node );
+				}
+			});//next
 			
-			var tableName = "table_node";
-			nodesObj[tableName] = $(xml).find( tableName ).find('node');
-console.log(nodesObj);
-
+console.log(terminNodes);
+terminNodes = [];
 			return terminNodes;
+			
+			function __getNode(opt){
+//console.log(opt);
+				var node = [];
+				var tableName = "table_node";
+				
+				if( opt["nid"]){
+					$(xml).find( tableName ).find("node").each( function(){
+						var nid = $(this).attr("nid");
+						if( opt["nid"] === nid ){
+//console.log( $(this).attr("title") );
+var nodeObj = {
+	"​​changed": $(this).attr("changed"),
+	"​​created": $(this).attr("created"),
+	"mlid": $(this).attr("mlid"),
+	"​​nid": $(this).attr("nid"),
+	"​​plid": $(this).attr("plid"),
+	"title": $(this).attr("title"),
+	"​​type": $(this).attr("type"),
+	"​​weight": $(this).attr("weight")
+};
+							node.push( nodeObj );
+						}
+					});//next
+				}
+				return node;
+			}//end __getNode()
+			
 		}//end _getTerminNodes
-		
+*/		
 		function view_termin_nodes( params ) {
 			if( typeof _vars["termin_nodes"] === "undefined")
 			{
