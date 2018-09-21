@@ -611,8 +611,9 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return _get_termin_nodes( params );
-				//return _getTerminNodes( params );
+				//return _get_termin_nodes( params );
+				//return _getTerminNodesJquery( params );
+				return _getTerminNodesJS( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -755,7 +756,7 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			return termin_nodes;
 		}//end _get_termin_nodes()
 
-		function _getTerminNodes(opt){
+		function _getTerminNodesJquery(opt){
 //console.log(opt);
 			var p = {
 				"tid" : null
@@ -777,7 +778,6 @@ console.log( _vars["logMsg"] );
 			var xml = _vars["xml"];
 
 			var tableName = "table_taxonomy_index";
-			/*
 			$(xml).find( tableName ).find("item").each( function( num, element ){
 //console.log(num, element);				
 				var tid = $(this).attr("tid");
@@ -792,7 +792,85 @@ console.log( _vars["logMsg"] );
 					}
 				}
 			});//next
-			*/
+
+console.log(terminNodes);
+//terminNodes = [];
+			return terminNodes;
+			
+			function __getNode(opt){
+//console.log(opt);
+				var nodeObj = false;
+				var tableName = "table_node";
+				
+				if( opt["nid"]){
+
+					$(xml).find( tableName ).find("node").each( function( num, element ){
+						var nid = $(this).attr("nid");
+						if( opt["nid"] === nid ){
+//console.log( $(this).attr("title") );
+nodeObj = {
+	"title": $(this).attr("title"),
+	"author" : $(this).children("author").text(),
+	"nid": $(this).attr("nid"),
+	"mlid": $(this).attr("mlid"),
+	"plid": $(this).attr("plid"),
+	"tid": __getNodeTermins( nid ),
+	"type": $(this).attr("type"),
+	"body_value" : $(this).children("body_value").text(),
+	"bookname" : $(this).children("bookname").text(),
+	"subfolder" : $(this).children("subfolder").text().trim(),
+	"changed": $(this).attr("changed"),
+	"created": $(this).attr("created"),
+	"weight": $(this).attr("weight")
+};
+						}
+					});//next
+					
+				}//end if
+
+				return nodeObj;
+			}//end __getNode()
+			
+			function __getNodeTermins(nid){
+				var terminsTid = [];
+				var tableName = "table_taxonomy_index";
+				
+				$(xml).find( tableName ).find("item").each( function( num, element ){
+	//console.log(num, element);				
+					var testNid = $(this).attr("nid");
+					if( testNid === nid ){
+						terminsTid.push( $(this).attr("tid") );
+					}
+				});//next
+				
+				return terminsTid;
+			}//end __getNodeTermins
+			
+		}//end _getTerminNodesJquery()
+
+
+		function _getTerminNodesJS(opt){
+//console.log(opt);
+			var p = {
+				"tid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+				
+			var terminNodes = [];
+			var xml = _vars["xml"];
+
+			var tableName = "table_taxonomy_index";
 			var xmlDoc = xml.getElementsByTagName( tableName );
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 //console.log( xmlDoc.childNodes.length ) ;
@@ -832,29 +910,6 @@ console.log(terminNodes);
 				var tableName = "table_node";
 				
 				if( opt["nid"]){
-/*				
-					$(xml).find( tableName ).find("node").each( function( num, element ){
-						var nid = $(this).attr("nid");
-						if( opt["nid"] === nid ){
-//console.log( $(this).attr("title") );
-nodeObj = {
-	"title": $(this).attr("title"),
-	"author" : $(this).children("author").text(),
-	"nid": $(this).attr("nid"),
-	"mlid": $(this).attr("mlid"),
-	"plid": $(this).attr("plid"),
-	"tid": __getNodeTermins( nid ),
-	"type": $(this).attr("type"),
-	"body_value" : $(this).children("body_value").text(),
-	"bookname" : $(this).children("bookname").text(),
-	"subfolder" : $(this).children("subfolder").text().trim(),
-	"changed": $(this).attr("changed"),
-	"created": $(this).attr("created"),
-	"weight": $(this).attr("weight")
-};
-						}
-					});//next
-*/				
 					var xmlDoc = xml.getElementsByTagName( tableName );
 					for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
 						var nodeXML = xmlDoc.item(0).childNodes.item(n);
@@ -936,7 +991,8 @@ nodeObj = {
 				return terminsTid;
 			}//end __getNodeTermins
 			
-		}//end _getTerminNodes
+		}//end _getTerminNodesJS()
+
 
 
 		function view_termin_nodes( params ) {
