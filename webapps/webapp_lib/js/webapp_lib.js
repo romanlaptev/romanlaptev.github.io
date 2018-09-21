@@ -611,8 +611,8 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				//return _get_termin_nodes( params );
-				return _getTerminNodes( params );
+				return _get_termin_nodes( params );
+				//return _getTerminNodes( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -777,6 +777,7 @@ console.log( _vars["logMsg"] );
 			var xml = _vars["xml"];
 
 			var tableName = "table_taxonomy_index";
+			/*
 			$(xml).find( tableName ).find("item").each( function( num, element ){
 //console.log(num, element);				
 				var tid = $(this).attr("tid");
@@ -791,6 +792,35 @@ console.log( _vars["logMsg"] );
 					}
 				}
 			});//next
+			*/
+			var xmlDoc = xml.getElementsByTagName( tableName );
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+
+			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+				var nodeXML = xmlDoc.item(0).childNodes.item(n);
+//console.log( nodeXML, typeof nodeXML);
+//console.log( "nodeType: "+ nodeXML.nodeType);
+				if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
+					continue;
+				}
+				var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
+				var nid = nodeXML.attributes.getNamedItem("nid").nodeValue;
+				if( p["tid"] === tid ){
+					
+					var node = __getNode({
+						"nid" : nid
+					});
+					
+					if( node ){
+						terminNodes.push( node );
+					}
+				}
+			}//next
 			
 console.log(terminNodes);
 //terminNodes = [];
@@ -802,6 +832,7 @@ console.log(terminNodes);
 				var tableName = "table_node";
 				
 				if( opt["nid"]){
+/*				
 					$(xml).find( tableName ).find("node").each( function( num, element ){
 						var nid = $(this).attr("nid");
 						if( opt["nid"] === nid ){
@@ -823,7 +854,70 @@ nodeObj = {
 };
 						}
 					});//next
-				}
+*/				
+					var xmlDoc = xml.getElementsByTagName( tableName );
+					for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+						var nodeXML = xmlDoc.item(0).childNodes.item(n);
+		//console.log( nodeXML, typeof nodeXML);
+		//console.log( "nodeType: "+ nodeXML.nodeType);
+						if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
+							continue;
+						}
+						var nid = nodeXML.attributes.getNamedItem("nid").nodeValue;
+						if( opt["nid"] === nid ){
+//console.log( nodeXML.attributes.getNamedItem("title").nodeValue );
+//console.log( nodeXML.getElementsByTagName("author").item(0) );
+//for(var key in nodeXML.getElementsByTagName("author").item(0)){
+//console.log( key, nodeXML.getElementsByTagName("author").item(0)[key] );
+//}
+//var childNodes = nodeXML.childNodes;
+
+var childNode = nodeXML.getElementsByTagName("author").item(0);
+//console.log( "type:", typeof childNode, childNode );
+if (childNode !== null){
+	if ("textContent" in childNode){
+		var author = childNode.textContent;
+	} else {
+		var author = childNode.text;
+	}
+	//console.log( "author:", author );
+} else {
+//console.log( "length:", childNodes, childNodes.length );
+	continue;
+} 
+	
+childNode = nodeXML.getElementsByTagName("body_value").item(0);
+if (childNode !== null){
+	if ("textContent" in childNode){
+		var body_value = childNode.textContent;
+	} else {
+		var body_value = childNode.text;
+	}
+} else {
+	continue;
+} 
+	
+nodeObj = {
+	"title": nodeXML.attributes.getNamedItem("title").nodeValue,
+	"author" : author,
+	"nid": nodeXML.attributes.getNamedItem("nid").nodeValue,
+	"mlid": nodeXML.attributes.getNamedItem("mlid").nodeValue,
+	"plid": nodeXML.attributes.getNamedItem("plid").nodeValue,
+	"tid": __getNodeTermins( nid ),
+	"type": nodeXML.attributes.getNamedItem("type").nodeValue,
+	"body_value" : body_value,
+	"bookname" : nodeXML.getElementsByTagName("bookname").item(0).textContent,
+	"subfolder" : nodeXML.getElementsByTagName("subfolder").item(0).textContent,
+	"changed": nodeXML.attributes.getNamedItem("changed").nodeValue,
+	"created": nodeXML.attributes.getNamedItem("created").nodeValue,
+	"weight": nodeXML.attributes.getNamedItem("weight").nodeValue
+};
+
+						}
+					}//next
+					
+				}//end if
+
 				return nodeObj;
 			}//end __getNode()
 			
