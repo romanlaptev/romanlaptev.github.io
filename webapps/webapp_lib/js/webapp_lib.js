@@ -611,9 +611,9 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				//return _get_termin_nodes( params );
+				return _get_termin_nodes( params );
 				//return _getTerminNodesJquery( params );
-				return _getTerminNodesJS( params );
+				//return _getTerminNodesJS( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -980,13 +980,20 @@ nodeObj = {
 				var terminsTid = [];
 				var tableName = "table_taxonomy_index";
 				
-				$(xml).find( tableName ).find("item").each( function( num, element ){
-	//console.log(num, element);				
-					var testNid = $(this).attr("nid");
-					if( testNid === nid ){
-						terminsTid.push( $(this).attr("tid") );
+				var xmlDoc = xml.getElementsByTagName( tableName );
+				for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
+					var nodeXML = xmlDoc.item(0).childNodes.item(n);
+					
+					if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
+						continue;
 					}
-				});//next
+					
+					var testNid = nodeXML.attributes.getNamedItem("nid").nodeValue;
+					if( testNid === nid ){
+						var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
+						terminsTid.push( tid );
+					}
+				}//next
 				
 				return terminsTid;
 			}//end __getNodeTermins

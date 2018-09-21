@@ -200,7 +200,7 @@ INIT, runtime : 3.836 sec
 		- nodes_obj.get_termin_nodes(139), runtime: 0.181 sec
 		но все равно больше чем 3 вар.
 	)
-2- парсинг XML с помощью JS (- nodes_obj.get_termin_nodes(139), runtime: 0.147 sec)
+2- парсинг XML с помощью JS (- nodes_obj.get_termin_nodes(139), runtime: 0.141 sec )
 3- парсинг XML при запуске приложения, (
 - nodes_obj.get_termin_nodes(139), runtime: <b>0.033</b> sec (память)
 ......(локальное хранилище)
