@@ -53,8 +53,8 @@ console.log( _vars["logMsg"] );
 			$.ajax({
 				type: "GET",
 				url: params["filename"],
-				dataType: "text",
-				//dataType: "xml",
+				//dataType: "text",
+				dataType: "xml",
 				//data: {},
 				//cache: false,
 				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
@@ -611,8 +611,8 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return _get_termin_nodes( params );
-				//return _getTerminNodes( params );
+				//return _get_termin_nodes( params );
+				return _getTerminNodes( params );
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -754,7 +754,7 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 //console.log(termin_nodes);
 			return termin_nodes;
 		}//end _get_termin_nodes()
-/*		
+
 		function _getTerminNodes(opt){
 //console.log(opt);
 			var p = {
@@ -775,51 +775,76 @@ console.log( _vars["logMsg"] );
 				
 			var terminNodes = [];
 			var xml = _vars["xml"];
-			
+
 			var tableName = "table_taxonomy_index";
-			$(xml).find( tableName ).find("item").each( function(){
+			$(xml).find( tableName ).find("item").each( function( num, element ){
+//console.log(num, element);				
 				var tid = $(this).attr("tid");
 				if( p["tid"] === tid ){
+					
 					var node = __getNode({
 						"nid" : $(this).attr("nid")
 					});
-					terminNodes.push( node );
+					
+					if( node ){
+						terminNodes.push( node );
+					}
 				}
 			});//next
 			
 console.log(terminNodes);
-terminNodes = [];
+//terminNodes = [];
 			return terminNodes;
 			
 			function __getNode(opt){
 //console.log(opt);
-				var node = [];
+				var nodeObj = false;
 				var tableName = "table_node";
 				
 				if( opt["nid"]){
-					$(xml).find( tableName ).find("node").each( function(){
+					$(xml).find( tableName ).find("node").each( function( num, element ){
 						var nid = $(this).attr("nid");
 						if( opt["nid"] === nid ){
 //console.log( $(this).attr("title") );
-var nodeObj = {
-	"​​changed": $(this).attr("changed"),
-	"​​created": $(this).attr("created"),
-	"mlid": $(this).attr("mlid"),
-	"​​nid": $(this).attr("nid"),
-	"​​plid": $(this).attr("plid"),
+nodeObj = {
 	"title": $(this).attr("title"),
-	"​​type": $(this).attr("type"),
-	"​​weight": $(this).attr("weight")
+	"author" : $(this).children("author").text(),
+	"nid": $(this).attr("nid"),
+	"mlid": $(this).attr("mlid"),
+	"plid": $(this).attr("plid"),
+	"tid": __getNodeTermins( nid ),
+	"type": $(this).attr("type"),
+	"body_value" : $(this).children("body_value").text(),
+	"bookname" : $(this).children("bookname").text(),
+	"subfolder" : $(this).children("subfolder").text().trim(),
+	"changed": $(this).attr("changed"),
+	"created": $(this).attr("created"),
+	"weight": $(this).attr("weight")
 };
-							node.push( nodeObj );
 						}
 					});//next
 				}
-				return node;
+				return nodeObj;
 			}//end __getNode()
 			
+			function __getNodeTermins(nid){
+				var terminsTid = [];
+				var tableName = "table_taxonomy_index";
+				
+				$(xml).find( tableName ).find("item").each( function( num, element ){
+	//console.log(num, element);				
+					var testNid = $(this).attr("nid");
+					if( testNid === nid ){
+						terminsTid.push( $(this).attr("tid") );
+					}
+				});//next
+				
+				return terminsTid;
+			}//end __getNodeTermins
+			
 		}//end _getTerminNodes
-*/		
+
+
 		function view_termin_nodes( params ) {
 			if( typeof _vars["termin_nodes"] === "undefined")
 			{

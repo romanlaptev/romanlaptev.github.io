@@ -1,11 +1,3 @@
-- работа с таймингами, 
-определить оптимальный метод парсинга XML, меньший по времени
-- парсинг XML с помощью jQuery
-- парсинг XML с помощью JS
-- парсинг XML при запуске приложения, в дальнейшем все функции получения данных работают с
-JSON-массивами (каждая таблица - отдельный массив)
-
-
 --------------------------- Строка навигации
 -------------------------------------- breadcrumb  
 
@@ -120,6 +112,7 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/de
 
   
 ======================================== RUNTIME
+
     Уменьшить время загрузки терминов таксономии ( 
 Function read_taxonomy_data, runtime: 0.205 sec, workcomp 
 read_taxonomy_data, runtime: 1.076 sec, mycomp
@@ -198,3 +191,18 @@ load templates from tpl/templates.html
 - get_book_category, runtime : 0.056 sec
 No $_GET value
 INIT, runtime : 3.836 sec
+
+-------------------------- работа с таймингами, 
+определить оптимальный метод парсинга XML, меньший по времени
+1- парсинг XML с помощью jQuery (
+		- nodes_obj.get_termin_nodes(139), runtime: <b>1.684</b> sec
+		если использовать при аякс-загрузке dataType: "xml", то время уменьшается 
+		- nodes_obj.get_termin_nodes(139), runtime: 0.181 sec
+		но все равно больше чем 3 вар.
+	)
+2- парсинг XML с помощью JS
+3- парсинг XML при запуске приложения, (- nodes_obj.get_termin_nodes(139), runtime: <b>0.033</b> sec)
+
+в дальнейшем все функции получения данных работают с JSON-массивами (каждая таблица - отдельный массив)
+JSON хранится или в памяти, или в локальном хранилище
+--------
