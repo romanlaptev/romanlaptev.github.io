@@ -5,6 +5,7 @@
 
 		// private variables and functions
 		var _vars = {};
+var info = [];
 		
 		var message = "";
 		_vars["xml"] = null;
@@ -42,6 +43,8 @@ console.log( _vars["logMsg"] );
 
 		
 		function init(){
+			
+			info.push( navigator.userAgent + "<br>\n");
 			
 			if ( config["use_localcache"] ) {
 				
@@ -269,7 +272,8 @@ console.log( "localforage version: " + localforage._config.version );
 					test["indexedDB"] = true;
 				}
 
-				var message = navigator.userAgent + "<br>\n";
+				//var message = navigator.userAgent + "<br>\n";
+				var message = "";
 
 				if ( test["localStorage"] ) {
 					message += "LocalStorage is available<br>\n";
@@ -299,7 +303,7 @@ console.log( "localforage version: " + localforage._config.version );
 		function get_xml_from_storage() {
 //console.log( "function get_xml_from_storage()", localforage );
 
-			_vars["timeStart"] = new Date();
+			var timeStart = new Date();
 			localforage.keys( function(err, keys) {//test in array of keys
 //console.log(err, keys, err === null);				
 				if( err === null ){
@@ -315,8 +319,8 @@ console.log( "localforage version: " + localforage._config.version );
 					localforage.getItem( config["storage_key"], function(err, readValue) {
 //console.log('Read: ', config["storage_key"], readValue.length);
 //console.log(err);
-						_vars["timeEnd"] = new Date();
-						_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+						var timeEnd = new Date();
+						var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 						
 						var cache_size = readValue.length; 
 						var cache_size_kb = cache_size / 1024 ;
@@ -324,7 +328,7 @@ console.log( "localforage version: " + localforage._config.version );
 						
 						var log = "- get storage element " + config["storage_key"];
 						log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-						log += ", runtime: <b>" + _vars["runTime"] + "</b> sec";
+						log += ", runtime: <b>" + runTime + "</b> sec";
 						log += ", error: " + err;
 						
 						//info.push(log);
@@ -358,20 +362,20 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 
 		function put_to_storage( xmlStr ) {
 
-			_vars["timeStart"] = new Date();
+			var timeStart = new Date();
 
 			localforage.setItem( config["storage_key"], xmlStr, function(err, v) {
 //console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
 //console.log(err, v);
-				_vars["timeEnd"] = new Date();
-				_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+				var timeEnd = new Date();
+				var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 				
 				var cache_size = xmlStr.length; 
 				var cache_size_kb = cache_size / 1024 ;
 				var cache_size_mb = cache_size_kb / 1024;
 				var log = "- save in cache element " + config["storage_key"];
 				log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-				log += ", runtime: <b>" + _vars["runTime"] + "</b> sec";
+				log += ", runtime: <b>" + runTime + "</b> sec";
 				
 				//var status = true;
 				if( err !== null){
@@ -2028,79 +2032,6 @@ console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"))
 
 
 		function define_event() {
-			
-			
-//			$("body").on("click", ".breadcrumb-link", function(e){
-//				e.preventDefault();
-//console.log("breadcrumb click, num: " +  num);
-//				var num = $(this).data("num");
-//				for( var n = num+1; n < _vars["breadcrumb"].length; n++){
-//					delete _vars["breadcrumb"][n];
-//				}
-//			});//end event
-
-/*			
-			$('body').on('click', '.nav-click', function(e){
-console.log(".nav-click click", e );
-//e.ctrlKey
-//e.shiftKey
-//altKey
-				var s_href = $(e.target).attr("href");
-				var parse_url = s_href.substring(1).split("&"); 
-console.log(s_href, parse_url );
-				
-				//breadcrumb process
-				if( $(e.target).hasClass("root-link") ){
-					_vars["breadcrumb"] = [];
-				}
-				
-				if( $(e.target).hasClass("breadcrumb-link") ){
-					var num = $(this).data("num");
-//console.log("breadcrumb click, num: " +  num);
-
-					//for( var n = num+1; n < _vars["breadcrumb"].length; n++){
-//console.log(n, _vars["breadcrumb"][n]);
-						////delete _vars["breadcrumb"][n]["name"];
-						////delete _vars["breadcrumb"][n]["url"];
-						////delete _vars["breadcrumb"][n];
-						//_vars["breadcrumb"][n] = [];
-					//}
-
-					var start_index = num + 1;
-					var num_delete = _vars["breadcrumb"].length - start_index;
-//console.log( start_index, num_delete );
-					_vars["breadcrumb"].splice( start_index, num_delete );
-				}
-				
-				if( _vars["breadcrumb"].length > 0) {
-					var test = in_array( s_href, _vars["breadcrumb"] );
-				} else {
-					var test = true;
-				}
-				if( test ) {
-					var obj = {
-						name : $(e.target).text(),
-						url : s_href
-					};
-					_vars["breadcrumb"].push( obj );
-				}
-				//-----------------------------
-				
-//console.log(".nav-click live!", s_href, parse_url, decodeURI(s_href) );
-				_vars["GET"] = parseGetParams( parse_url ); 
-				process_get_values();
-				draw_page();
-				
-				if( $(".navbar-header").is(":visible") &&
-					document.body.clientWidth < 990) {
-					//$("#bs-navbar-collapse-1").addClass("collapse");
-					$("#bs-navbar-collapse-1").hide("slow");
-				}
-				
-				e.preventDefault();
-				//return false;
-			});//end event
-*/
 
 			$("body").on("click", ".navbar-toggle", function(e){
 				var target = $(this).data("target");
@@ -2124,7 +2055,7 @@ console.log(s_href, parse_url );
 				
 				$("#info .tab-content .tab-pane").removeClass("active in");
 				$(active_tab).addClass("active in");
-				
+/*				
 				if( active_tab === "#info-tab" ){
 //breadcrumb object
  					var html = "";
@@ -2164,25 +2095,31 @@ console.log(s_href, parse_url );
 
 					$("#size__vars").html( html );
 				};
-				
+*/				
 				e.preventDefault();
 			});//end event
 
 
-			if ( config["use_localcache"] ) {
+			//if ( config["use_localcache"] ) {
 				$("#btn-localforage-clear").on("click", function(e){
 	
+if ( config["use_localcache"] ) {
 					localforage.clear(function(err) {
 var logMsg = "Clear storage, error: " + err;
 _log("<div class='alert alert-info'>" + logMsg + "</div>");
 console.log( logMsg );
 					});
+} else {
+var logMsg = "Cannot use storage, error...";
+_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+}	
 
 				});//end event
 				
-			} else {
-				$("#btn-localforage-clear").hide();
-			}	
+			//} else {
+				//$("#btn-localforage-clear").hide();
+			//}	
 
 			window.onresize = function(event) {
 				if( document.body.clientWidth > 990){
@@ -2257,6 +2194,7 @@ console.log( "Warn! error parse url in " + target.href );
 				break;
 				
 				case "info-panel-view":
+console.log( info );
 					view_log( info );			
 					$("#info").toggle();
 				break;
