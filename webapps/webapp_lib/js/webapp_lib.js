@@ -1,7 +1,7 @@
 (function(){
 
 	var Lib =  Lib || function( config ){
-console.log(config);
+//console.log(config);
 
 		// private variables and functions
 		var _vars = {};
@@ -29,6 +29,17 @@ console.log( _vars["logMsg"] );
 			init();
 		}
 		
+
+		function view_log( log ){
+		//console.log( log[0] );
+			//$("#info .message").empty();
+			$("#info .message").html( log );
+			
+		//	setTimeout(function() {
+		//		$("#info").hide();
+		//	}, 10*1000); 
+		}//end view_log()
+
 		
 		function init(){
 			

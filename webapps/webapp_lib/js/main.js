@@ -5,7 +5,22 @@ var info = [];
 	//config["content_location"] = "file:///F:/clouds/0_data";
 //}
 
-//console.log(config);
+var config = {
+"storage_key" : "lib_xml",
+"xml_file" : "db/export_lib.xml",
+//"xml_file : "db/test.xml",
+"tpl_file" : "tpl/templates.html",
+
+//"content_location" : "file:///mnt/terra/clouds/0_data",
+"content_location" : "http://site-content",
+
+//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
+"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
+"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
+"use_localcache" : false,
+"runtime" : []
+};
+console.log(config);
 
 function init_webapp(){
 //console.log("init_webapp()");
@@ -25,21 +40,7 @@ function init_webapp(){
 	}, 1000*3);
 */	
 //---------------------------
-	lib = Lib({
-"storage_key" : "lib_xml",
-"xml_file" : "db/export_lib.xml",
-//"xml_file : "db/test.xml",
-"tpl_file" : "tpl/templates.html",
-
-//"content_location" : "file:///mnt/terra/clouds/0_data",
-"content_location" : "http://site-content",
-
-//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
-"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
-"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
-"use_localcache" : true,
-"runtime" : []
-	});
+	lib = Lib(config);
 	
 console.log(lib);
 	
@@ -57,6 +58,14 @@ delete lib.xml_obj;
 		return false;
 	});//end event
 */	
+	$("#use-storage-switch").prop("checked", config["use_localcache"]);
+
+	$(".switch-control").on("click", function(e){
+		var state = $("#use-storage-switch").prop("checked");
+		config["use_localcache"] = state;
+console.log(config["use_localcache"]);	
+	});//end event
+
 });//end ready
 
 
@@ -88,13 +97,3 @@ window.onload = function(){
 
 		
 };//end window.load	
-
-function view_log( log ){
-//console.log( log[0] );
-	//$("#info .message").empty();
-	$("#info .message").html( log );
-	
-//	setTimeout(function() {
-//		$("#info").hide();
-//	}, 10*1000); 
-}

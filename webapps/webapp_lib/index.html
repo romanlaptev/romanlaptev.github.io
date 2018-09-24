@@ -29,6 +29,7 @@
             <script type="text/javascript" src="js/vendor/PIE_IE678.js"></script>
         <![endif]-->
 	<link rel="stylesheet" href="css/loader.css">
+	<link rel="stylesheet" href="css/switch.css">
 	
 	<script src="js/functions.js"></script>
 	<script src="js/webapp_lib.js"></script>
@@ -164,11 +165,11 @@
 		<li class="active">
 			<a data-toggle="tab" href="#tab1">Info</a>
 		</li>
-<!--
+
 		<li>
-			<a data-toggle="tab" href="#info-tab">Info</a>
+			<a data-toggle="tab" href="#tab-config">settings</a>
 		</li>
--->
+
 	</ul>
 	
 	<div class="tab-content">
@@ -187,10 +188,11 @@
 			</div>
 		</div>
 		
-<!--
-		<div id="info-tab" class="tab-pane fade">
+
+		<div id="tab-config" class="tab-pane fade">
 			<div  class="panel panel-default">
-				<div class="panel-body" id="stat-info">
+				<div class="panel-body">
+<!--
 <section>
 <h3>RAM usage</h3>
 size <b>lib_obj</b>:<span id="size_lib_obj"></span>
@@ -200,10 +202,20 @@ size <b>lib_obj</b>:<span id="size_lib_obj"></span>
 num books:
 num_authors:
 </section>
+-->
+<div class="switch">
+	<b>Use local storage:</b>
+	<span class="off">off</span>
+	<span class="TriSea-technologies-Switch switch-control">
+		<input id="use-storage-switch" name="use_storage_switch" type="checkbox" autocomplete="off">
+		<label for="use-storage-switch" class="label-default"></label>
+	</span>
+	<span class="on">on</span>
+</div>
 				</div>
 			</div>
 		</div>
--->
+
 		
 	</div><!-- end tab-content -->
 	
