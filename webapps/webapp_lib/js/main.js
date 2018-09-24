@@ -46,8 +46,8 @@ console.log(lib);
 }//end init_webapp()
 
 $(document).ready(function(){
-//console.log("document ready");
-	//$("#info").hide();
+console.log("document ready");
+	$("#info").hide();
 /*
 	$("#info-panel-clear").click(function(){
 		info = [];

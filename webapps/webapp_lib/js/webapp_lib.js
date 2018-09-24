@@ -201,7 +201,7 @@ console.log("$.ajax, Fail...", arguments);
 		function init_cache() {
 
 			var test = test_db();
-console.log(test);
+//console.log(test);
 			if ( !test["localStorage"] &&
 					!test["WebSQL"] &&
 						!test["indexedDB"]){
