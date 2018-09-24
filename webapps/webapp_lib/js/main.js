@@ -41,27 +41,8 @@ function init_webapp(){
 	}, 1000*3);
 */	
 //---------------------------
-
-
-	if ( config["use_localcache"] ) {
-		//load localforage script
-		var script = document.createElement('script');
-		script.src = "js/vendor/localforage.min.js";
-		document.getElementsByTagName('head')[0].appendChild(script);
-		script.onload = function() {
-//console.log( "onload " + this.src);
-//console.log( "localforage version: " + localforage._config.version );
-			init_cache();
-			get_xml( config["xml_file"] );
-		};
-		script.onerror = function(e) {
-			alert( "error load script " + this.src);
-		}; 
-	} else {
-		//get_xml( config["xml_file"] );
-		lib = Lib();
+	lib = Lib();
 console.log(lib);
-	}
 	
 }//end init_webapp()
 
@@ -91,14 +72,16 @@ window.onload = function(){
 		document.getElementById("localforage-clear").onclick = function(){
 
 			localforage.clear(function(err) {
-	//console.log('Clear storage');
-	//console.dir(err);
-
 				//delete lib.xml_obj;
 	//console.log(lib);			
-				info = [];
-				info.push("Clear storage, " + err +"<br>");
-				view_log( info );
+	
+				//info = [];
+				//info.push("Clear storage, " + err +"<br>");
+				//view_log( info );
+var logMsg = "Clear storage, error: " + err;
+ _log("<div class='alert alert-info'>" + logMsg + "</div>");
+console.log( logMsg );
+				
 			});
 		};//end event
 	} else {
@@ -135,87 +118,3 @@ function view_log( log ){
 //		$("#info").hide();
 //	}, 10*1000); 
 }
-
-
-function init_cache() {
-	localforage.config({
-		driver: [localforage.INDEXEDDB,
-				 localforage.WEBSQL,
-				 localforage.LOCALSTORAGE],
-		name: 'localforage'
-		//name: 'webapp-store'
-		//driver: [localforage.WEBSQL],
-	});
-
-	localforage.ready(function() {
-//console.log('localForage ready');
-//console.log('localforage.driver():', localforage.driver());
-	});
-
-	localforage.length(function(err, numberOfKeys) {
-//console.log('length of the database - ' + numberOfKeys);
-//console.dir(err);
-	});
-	
-	var test = test_db();
-//console.log(test);
-	if ( !test["localStorage"] &&
-			!test["WebSQL"] &&
-				!test["indexedDB"])
-	{
-alert( "error, no support web-storages" );
-		config["use_localcache"] = false;
-	}
-
-	//var test_db = function(){
-	function test_db(){
-		var test = {}
-
-		test["localStorage"] = false;
-		if( 'localStorage' in window && window['localStorage'] !== null ) {
-			test["localStorage"] = true;
-		} 
-
-	//console.log ("openDatabase = " + typeof(openDatabase));
-		test["WebSQL"] = false;
-		if(window.openDatabase) {
-			test["WebSQL"] = true;
-		}
-
-	//console.log ("indexedDB = " + typeof(indexedDB));
-		test["indexedDB"] = false;
-		if("indexedDB" in window) {
-			test["indexedDB"] = true;
-		}
-
-		var message = navigator.userAgent + "<br>\n";
-
-		if ( test["localStorage"] ) {
-			message += "LocalStorage is available<br>\n";
-		} else {
-			message += "LocalStorage is not available<br>\n";
-		}
-
-		if ( test["WebSQL"] ){
-			message += "Your browser supports WebSQL<br>\n";
-		} else {
-			message += "Your browser does not have support for WebSQL<br>\n";
-		}
-
-		if( test["indexedDB"] ) {
-			message += "Your browser supports indexedDB.<br>\n";
-		} else {
-			message += "Your browser does not have support for indexedDB.<br>\n";
-		}
-
-		info.push(message);
-		if( typeof window.console === "object"){
-	//console.log( message );
-		} else {
-	alert( message );
-		}
-
-		return test;
-	};//end _test()
-	
-};//end _init_cache()

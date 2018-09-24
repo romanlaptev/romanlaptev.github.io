@@ -31,7 +31,25 @@ console.log( _vars["logMsg"] );
 		function init(){
 			
 			if ( config["use_localcache"] ) {
-				get_xml_from_storage();
+				
+				//load localforage script
+				var script = document.createElement('script');
+				script.src = "js/vendor/localforage.min.js";
+				
+				document.getElementsByTagName('head')[0].appendChild(script);
+				
+				script.onload = function() {
+//console.log( "onload " + this.src);
+					var res = init_cache();
+					if( res ){
+						get_xml_from_storage();
+					};
+				};
+				
+				script.onerror = function(e) {
+					alert( "error load script " + this.src);
+				}; 
+				
 			} else {
 				load_xml({
 					filename : config["xml_file"],
@@ -53,8 +71,8 @@ console.log( _vars["logMsg"] );
 			$.ajax({
 				type: "GET",
 				url: params["filename"],
-				//dataType: "text",
-				dataType: "xml",
+				dataType: "text",
+				//dataType: "xml",
 				//data: {},
 				//cache: false,
 				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
@@ -177,73 +195,185 @@ console.log("$.ajax, Fail...", arguments);
 	
 		}//end after_load()
 		
+		
+		function init_cache() {
+
+			var test = test_db();
+console.log(test);
+			if ( !test["localStorage"] &&
+					!test["WebSQL"] &&
+						!test["indexedDB"]){
+
+				_vars["logMsg"] = "error, no support web-storages...";
+		 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+
+				config["use_localcache"] = false;
+				return false;
+			}
+			
+		//-----------------	
+console.log( "localforage version: " + localforage._config.version );
+			localforage.config({
+				driver: [localforage.INDEXEDDB,
+						 localforage.WEBSQL,
+						 localforage.LOCALSTORAGE],
+				name: 'localforage'
+				//name: 'webapp-store'
+				//driver: [localforage.WEBSQL],
+			});
+
+			localforage.ready(function() {
+		console.log('localForage ready');
+		console.log('localforage.driver():', localforage.driver());
+			});
+
+			localforage.length(function(err, numberOfKeys) {
+		//console.log('length of the database - ' + numberOfKeys);
+		//console.dir(err);
+			});
+			
+			return true;
+
+			//var test_db = function(){
+			function test_db(){
+				var test = {}
+
+				test["localStorage"] = false;
+				if( 'localStorage' in window && window['localStorage'] !== null ) {
+					test["localStorage"] = true;
+				} 
+
+			//console.log ("openDatabase = " + typeof(openDatabase));
+				test["WebSQL"] = false;
+				if(window.openDatabase) {
+					test["WebSQL"] = true;
+				}
+
+			//console.log ("indexedDB = " + typeof(indexedDB));
+				test["indexedDB"] = false;
+				if("indexedDB" in window) {
+					test["indexedDB"] = true;
+				}
+
+				var message = navigator.userAgent + "<br>\n";
+
+				if ( test["localStorage"] ) {
+					message += "LocalStorage is available<br>\n";
+				} else {
+					message += "LocalStorage is not available<br>\n";
+				}
+
+				if ( test["WebSQL"] ){
+					message += "Your browser supports WebSQL<br>\n";
+				} else {
+					message += "Your browser does not have support for WebSQL<br>\n";
+				}
+
+				if( test["indexedDB"] ) {
+					message += "Your browser supports indexedDB.<br>\n";
+				} else {
+					message += "Your browser does not have support for indexedDB.<br>\n";
+				}
+
+				info.push(message);
+		//console.log( message );
+				return test;
+			};//end _test()
+			
+		};//end _init_cache()
+		
 		function get_xml_from_storage() {
-/*			
-			var exec_start = new Date();
-			localforage.keys(function(err, keys) {//test in array of keys
+//console.log( "function get_xml_from_storage()", localforage );
+
+			_vars["timeStart"] = new Date();
+			localforage.keys( function(err, keys) {//test in array of keys
+//console.log(err, keys, err === null);				
+				if( err === null ){
+					_getItem( keys );
+				}
+			});
+			
+			function _getItem( keys ){
 				var j_keys = keys.join();
 				var pos = j_keys.indexOf( config["storage_key"] );
 				if( pos >= 0){
+
 					localforage.getItem( config["storage_key"], function(err, readValue) {
-	//console.log('Read: ', config["storage_key"], readValue.length);
-	//console.log(err);
-						var exec_end = new Date();
-						var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-					
+//console.log('Read: ', config["storage_key"], readValue.length);
+//console.log(err);
+						_vars["timeEnd"] = new Date();
+						_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+						
 						var cache_size = readValue.length; 
 						var cache_size_kb = cache_size / 1024 ;
 						var cache_size_mb = cache_size_kb / 1024;
 						
 						var log = "<br>get storage element " + config["storage_key"];
 						log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-						log += ", runtime: <b>" + runtime_s + "</b> sec";
+						log += ", runtime: <b>" + _vars["runTime"] + "</b> sec";
 						log += ", error: " + err;
 						info.push(log);
+/*									
+					
 						config["runtime"]["get_storage"] = [];
 						config["runtime"]["get_storage"]["time"] = runtime_s;
-						
 						//params.callback( readValue, true, log );	
-						after_load( readValue);
+*/						
+						if( err === null){
+							after_load( readValue);
+						} else {
+console.log("error, localforage.getItem("+config["storage_key"]+")", err);
+						}
+						
 					 });
+					 
 				} else {
-					var params = {
+					load_xml({
 						filename : config["xml_file"],
 						callback: put_to_storage
-					};
-					load_xml( params );
+					});
 				}
-			});
-*/			
+			}//end _getItem()
+			
 		}//end get_xml_from_storage()
 
-		function put_to_storage( xml ) {
-/*			
-			var exec_start = new Date();
-			localforage.setItem( config["storage_key"], xml, function(err, v) {
-	//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
-	//console.log(err);
-				var exec_end = new Date();
-				var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+		function put_to_storage( xmlStr ) {
 
-				var cache_size = xml.length; 
+			_vars["timeStart"] = new Date();
+
+			localforage.setItem( config["storage_key"], xmlStr, function(err, v) {
+//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
+//console.log(err, v);
+				_vars["timeEnd"] = new Date();
+				_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+				
+				var cache_size = xmlStr.length; 
 				var cache_size_kb = cache_size / 1024 ;
 				var cache_size_mb = cache_size_kb / 1024;
 				var log = "<br>save in cache element " + config["storage_key"];
 				log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
-				log += ", runtime: <b>" + runtime_s + "</b> sec";
+				log += ", runtime: <b>" + _vars["runTime"] + "</b> sec";
+				
 				//var status = true;
 				if( err !== null){
 					log = "<br>error, no save " + config["storage_key"] + ", " + err;
 					//status = false;
 				}
 				info.push(log);
-				config["runtime"]["put_storage"] = [];
-				config["runtime"]["put_storage"]["time"] = runtime_s;
-				
+//console.log(info);				
+				//config["runtime"]["put_storage"] = [];
+				//config["runtime"]["put_storage"]["time"] = runtime_s;
 				//params.callback( key, status, log );	
-				after_load( xml );
+				
+				if( err === null){
+					after_load( xmlStr );
+				} else {
+console.log("error, localforage.setItem("+config["storage_key"]+")", err);
+				}
+
 			});
-*/			
+
 		}//end put_to_storage();
 		
 		
@@ -624,7 +754,7 @@ config["runtime"]["get_child_pages"]["time"] = runtime_s;
 				return html;
 			}
 		};
-console.log("nodes_obj:", nodes_obj);
+//console.log("nodes_obj:", nodes_obj);
 
  		//read xml data
 //runtime: 0.668 sec		
