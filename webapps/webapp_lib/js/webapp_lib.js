@@ -1,5 +1,7 @@
 (function(){
-	var Lib =  Lib || function(){
+
+	var Lib =  Lib || function( config ){
+console.log(config);
 
 		// private variables and functions
 		var _vars = {};
@@ -2093,6 +2095,20 @@ console.log(s_href, parse_url );
 			});//end event
 
 
+			if ( config["use_localcache"] ) {
+				$("#btn-localforage-clear").on("click", function(e){
+	
+					localforage.clear(function(err) {
+var logMsg = "Clear storage, error: " + err;
+_log("<div class='alert alert-info'>" + logMsg + "</div>");
+console.log( logMsg );
+					});
+
+				});//end event
+				
+			} else {
+				$("#btn-localforage-clear").hide();
+			}	
 
 			window.onresize = function(event) {
 				if( document.body.clientWidth > 990){

@@ -1,22 +1,6 @@
 var lib;
 var info = [];
 
-//config
-var config = [];
-config["storage_key"] = "lib_xml";
-config["xml_file"] = "db/export_lib.xml";
-//config["xml_file"] = "db/test.xml";
-config["tpl_file"] = "tpl/templates.html";
-
-//config["content_location"] = "file:///mnt/terra/clouds/0_data";
-config["content_location"] = "http://site-content";
-
-//config["url_lib_location_dropbox"] = "https://dl.dropboxusercontent.com/u/75717183";
-config["url_book_location_Mail"] = "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p";
-config["url_book_location_Yandex"] = "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync";
-config["use_localcache"] = false;
-config["runtime"] = [];
-
 //if (navigator.userAgent.indexOf ('Windows')!= -1) {
 	//config["content_location"] = "file:///F:/clouds/0_data";
 //}
@@ -41,7 +25,22 @@ function init_webapp(){
 	}, 1000*3);
 */	
 //---------------------------
-	lib = Lib();
+	lib = Lib({
+"storage_key" : "lib_xml",
+"xml_file" : "db/export_lib.xml",
+//"xml_file : "db/test.xml",
+"tpl_file" : "tpl/templates.html",
+
+//"content_location" : "file:///mnt/terra/clouds/0_data",
+"content_location" : "http://site-content",
+
+//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
+"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
+"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
+"use_localcache" : true,
+"runtime" : []
+	});
+	
 console.log(lib);
 	
 }//end init_webapp()
@@ -68,25 +67,6 @@ window.onload = function(){
 //for(var item in test){
 //console.log(item +": "+test[item]);
 //}
-	if ( config["use_localcache"] ) {
-		document.getElementById("localforage-clear").onclick = function(){
-
-			localforage.clear(function(err) {
-				//delete lib.xml_obj;
-	//console.log(lib);			
-	
-				//info = [];
-				//info.push("Clear storage, " + err +"<br>");
-				//view_log( info );
-var logMsg = "Clear storage, error: " + err;
- _log("<div class='alert alert-info'>" + logMsg + "</div>");
-console.log( logMsg );
-				
-			});
-		};//end event
-	} else {
-		document.getElementById("localforage-clear").style.display = "none";
-	}	
 
 	document.onkeydown = function(e) {
 		e=e || window.event;
