@@ -47,8 +47,8 @@ console.log(lib);
 
 $(document).ready(function(){
 //console.log("document ready");
-	$("#info").hide();
-
+	//$("#info").hide();
+/*
 	$("#info-panel-clear").click(function(){
 		info = [];
 delete lib.xml_obj;
@@ -56,7 +56,7 @@ delete lib.xml_obj;
 		//$(this).hide();
 		return false;
 	});//end event
-	
+*/	
 });//end ready
 
 

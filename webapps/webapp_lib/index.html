@@ -160,45 +160,34 @@
 <div id="info">
 	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
 	
-	
 	<ul class="nav nav-tabs">
 		<li class="active">
-			<a data-toggle="tab" href="#tab1">Log</a>
+			<a data-toggle="tab" href="#tab1">Info</a>
 		</li>
-		<li>
-			<a data-toggle="tab" href="#tab2">Control</a>
-		</li>
+<!--
 		<li>
 			<a data-toggle="tab" href="#info-tab">Info</a>
 		</li>
+-->
 	</ul>
 	
 	<div class="tab-content">
 		<div id="tab1" class="tab-pane fade in active">
 			<div  class="panel panel-default">
 				<div class="panel-body">
-<button id="info-panel-clear" class="btn btn-danger btn-sm pull-right">clear log</button>
+<span class="pull-right">
+	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
+<!--
+	<button id="info-panel-clear" class="btn btn-danger btn-sm">x</button>
+-->
+</span>
 <div class="message"></div>
 
 				</div>
 			</div>
 		</div>
 		
-		<div id="tab2" class="tab-pane fade">
-			<div  class="panel panel-default">
-				<div class="panel-body">
-					
-<section id="control">
-	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
-</section>	
-					
-<section id="config">
-config variable....
-</section>
-				</div>
-			</div>
-		</div>
-		
+<!--
 		<div id="info-tab" class="tab-pane fade">
 			<div  class="panel panel-default">
 				<div class="panel-body" id="stat-info">
@@ -214,6 +203,7 @@ num_authors:
 				</div>
 			</div>
 		</div>
+-->
 		
 	</div><!-- end tab-content -->
 	
