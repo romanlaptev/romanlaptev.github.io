@@ -53,10 +53,10 @@
 
 /*=====================*/
 .switch span.off {
-	margin-right: 5px;
+	margin-right: 3px;
 	color: red;
 }
 .switch span.on {
-	margin-left: 0;
+	margin-left: 2px;
 	color: green;
 }

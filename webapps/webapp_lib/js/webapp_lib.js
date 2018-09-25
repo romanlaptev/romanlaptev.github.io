@@ -2194,7 +2194,7 @@ console.log( "Warn! error parse url in " + target.href );
 				break;
 				
 				case "info-panel-view":
-console.log( info );
+//console.log( info );
 					view_log( info );			
 					$("#info").toggle();
 				break;

@@ -62,7 +62,7 @@ delete lib.xml_obj;
 	$(".switch-control").on("click", function(e){
 		var state = $("#use-storage-switch").prop("checked");
 		config["use_localcache"] = state;
-console.log(config["use_localcache"]);	
+//console.log(config["use_localcache"]);	
 	});//end event
 
 });//end ready
