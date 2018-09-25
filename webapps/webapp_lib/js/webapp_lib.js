@@ -978,8 +978,7 @@ console.log( _vars["logMsg"] );
 console.log(arguments);				
 			});
 */
-			_getItemFromStorage("taxonomy_index", _callback );
-			_getItemFromStorage("taxonomy", _callback );
+			//_getItemFromStorage("taxonomy_index", _callback );
 			_getItemFromStorage("nodes", _callback );
 			
 console.log(terminNodes);
