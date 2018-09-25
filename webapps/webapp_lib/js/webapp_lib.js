@@ -978,6 +978,10 @@ console.log( _vars["logMsg"] );
 console.log(arguments);				
 			});
 */
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="block";
+			}
+
 			//_getItemFromStorage("taxonomy_index", _callback );
 			_getItemFromStorage("nodes", _callback );
 			
@@ -986,7 +990,33 @@ console.log(terminNodes);
 			return terminNodes;
 			
 			function _callback(readValue, err){
-console.log(readValue, err);				
+console.log("--- continue of the execution process...");						
+console.log(readValue, err);	
+/*
+			for( var node in _vars["nodes"] )
+			{
+if( typeof _vars["nodes"][node]["tid"] === "undefined")
+{
+	continue;
+}
+				for( var n = 0; n < _vars["nodes"][node]["tid"].length; n++)
+				{
+					if( params["tid"] === _vars["nodes"][node]["tid"][n] )
+					{
+	//console.log( node,  _vars["nodes"][node]  );
+						termin_nodes.push( _vars["nodes"][node] );
+					}
+				}//next node tid
+			}//next node
+
+*/
+			
+//setTimeout(function(){
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="none";
+			}
+//}, 1000*3);
+
 			}//end _callback()
 			
 		}//end _getTerminNodesStorage()
@@ -2289,8 +2319,12 @@ _vars["timeStart"] = new Date();
 						"tid" : _vars["GET"]["tid"]
 					});
 					
-					_formBreadcrumb( target );
-					draw_page();
+					if( _vars["termin_nodes"].length > 0){
+						_formBreadcrumb( target );
+						draw_page();
+					} else {
+console.log("--- end of the execution process...");						
+					}
 					
 					if( $(".navbar-header").is(":visible") &&
 						document.body.clientWidth < 990) {
