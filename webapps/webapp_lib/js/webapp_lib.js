@@ -982,8 +982,29 @@ console.log(arguments);
 				_vars["waitWindow"].style.display="block";
 			}
 
+
+	if( typeof window.Promise === "function" ){
+		//......
+	}
+	
+console.log($.Deferred);
+
+	if( typeof $.Deferred === "function" ){
+		_deferred_req()
+			.then(function(){
+console.log( "Then", arguments);
+			})
+			.then(function(){
+console.log( "Fail", arguments);
+			})
+			
+		);
+				
+	}
+
+
 			//_getItemFromStorage("taxonomy_index", _callback );
-			_getItemFromStorage("nodes", _callback );
+			//_getItemFromStorage("nodes", _callback );
 			
 console.log(terminNodes);
 //terminNodes = [];
@@ -1010,6 +1031,17 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			}//next node
 
 */
+
+			function _deferred_req(){
+				var $d = $.Deferred();
+				_getItemFromStorage("nodes", function(readValue, err){
+console.log("--- _deferred_req(), get data...");						
+console.log(readValue, err);	
+					$d.resolve( readValue, err );
+				});
+				return $d;
+			}//end _deferred_req()
+
 			
 //setTimeout(function(){
 			if( _vars["waitWindow"] ){
