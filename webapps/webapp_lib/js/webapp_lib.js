@@ -18,6 +18,7 @@ var info = [];
 		_vars["parseProgressBar"] = getById("parse-progress-bar");
 		_vars["waitWindow"] = getById("win1");
 		_vars["breadcrumb"] = {};
+		_vars["runtime"] = {};
 		
 		_vars["appContainer"] = getById("App");
 		if( !_vars["appContainer"] ){
@@ -78,7 +79,7 @@ console.log( _vars["logMsg"] );
 		
 		function load_xml( params ) {
 
-			var exec_start = new Date();
+			var timeStart = new Date();
 			
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="block";
@@ -157,14 +158,15 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				
 				complete: function(xhr, state){
 //console.log("ajax load complete, ", arguments);
-					var exec_end = new Date();
-					var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+					var timeEnd = new Date();
+					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 					
-					config["runtime"]["ajax_load"] = [];
-					config["runtime"]["ajax_load"]["time"] = runtime_s;
+					_vars["runtime"]["ajax_load"] = {
+						"time" : runTime
+					};
 					
 					//_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
-					//_vars["logMsg"] += ", runtime: <b>" + runtime_s + "</b> sec";
+					//_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
 					//_vars["logMsg"] += ", <b>state</b>: " + state;
 //_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
@@ -336,12 +338,12 @@ _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 						
-/*									
 					
-						config["runtime"]["get_storage"] = [];
-						config["runtime"]["get_storage"]["time"] = runtime_s;
+						_vars["runtime"]["get_storage"] = {
+							"time" : runTime
+						};
 						//params.callback( readValue, true, log );	
-*/						
+
 						if( err === null){
 							after_load( readValue);
 						} else {
@@ -389,8 +391,9 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 
 //console.log(info);				
-				//config["runtime"]["put_storage"] = [];
-				//config["runtime"]["put_storage"]["time"] = runtime_s;
+				_vars["runtime"]["put_storage"] = {
+					"time" : runTime
+				};
 				//params.callback( key, status, log );	
 				
 				if( err === null){
@@ -432,9 +435,9 @@ console.log( _vars["logMsg"] );
 //}, 1000*3);
 			
 			var runtime_all = 0;
-			for( var item in config["runtime"]){
-//console.log(item, config["runtime"][item]);				
-				runtime_all = runtime_all + config["runtime"][item]["time"];
+			for( var item in _vars["runtime"]){
+//console.log(item, _vars["runtime"][item]);				
+				runtime_all = runtime_all + _vars["runtime"][item]["time"];
 			}
 			
 			var log = "runtime all : <b>" + runtime_all.toFixed(3)  + "</b> sec";
@@ -449,7 +452,7 @@ console.log( _vars["logMsg"] );
 		function load_templates( params ) {
 			_vars["templates"] = [];
 			
-var exec_start = new Date();
+var timeStart = new Date();
 			var url = config["tpl_file"];
 			$.ajax({
 				url: url,
@@ -462,19 +465,20 @@ var exec_start = new Date();
 //var content = $(result.responseText).text();
 //alert(content);
 					get_tmpl(data);
-var exec_end = new Date();
-var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var log = "- read templates from <b>" + config["tpl_file"]+"</b>";
-log += ", runtime: <b>" + runtime_s  + "</b> sec";
+log += ", runtime: <b>" + runTime  + "</b> sec";
 
 //info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 
-config["runtime"]["load_tpl"] = [];
-config["runtime"]["load_tpl"]["time"] = runtime_s;
-config["runtime"]["load_tpl"]["message"] = message;
+_vars["runtime"]["load_tpl"] = {
+	"time" : runTime,
+	"message" : message
+};
 					params.callback();	
 				},
 				error:function(data, status, errorThrown){
@@ -564,22 +568,23 @@ console.log("errorThrown - ", errorThrown);
 			
 //------------------
 			//get nodes
-			var exec_start = new Date();
+			var timeStart = new Date();
 //runtime: 0.668 sec
 				read_nodes_data();
 				
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-			var log = "- read_nodes_data, runtime: <b>" + runtime_s  + "</b> sec";
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
 			
 			//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			
-			//config["runtime"]["read_nodes_data"] = [];
-			//config["runtime"]["read_nodes_data"]["time"] = runtime_s;
-			
+			_vars["runtime"]["read_nodes_data"] = {
+				"time" : runTime
+			};
+		
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
@@ -592,22 +597,23 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 
 //------------------
-			var exec_start = new Date();
+			var timeStart = new Date();
 //runtime: 4.837 sec+, 
 //runtime: 1.394 sec+, 
 //runtime: 0.783 sec
 				_vars["nodes"] = nodes_obj.get_xml_nodes();
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runtime_s  + "</b> sec";
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runTime  + "</b> sec";
 			
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			
-			//config["runtime"]["get_xml_nodes"] = [];
-			//config["runtime"]["get_xml_nodes"]["time"] = runtime_s;
+			_vars["runtime"]["get_xml_nodes"] = {
+				"time" : runTime
+			};
 
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
@@ -621,20 +627,22 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 
 //------------------
 			//get taxonomy termins
-			var exec_start = new Date();
+			var timeStart = new Date();
 //runtime: 0.684 sec
 				read_taxonomy_data();
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 			
-			var log = "- read_taxonomy_data, runtime: <b>" + runtime_s  + "</b> sec";
+			var log = "- read_taxonomy_data, runtime: <b>" + runTime  + "</b> sec";
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			
-			//config["runtime"]["read_taxonomy_data"] = [];
-			//config["runtime"]["read_taxonomy_data"]["time"] = runtime_s;
+			_vars["runtime"]["read_taxonomy_data"] = {
+				"time" : runTime
+			};
+			
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
@@ -647,20 +655,21 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 			
 //------------------
-			var exec_start = new Date();
+			var timeStart = new Date();
 //runtime: 1.989 sec+, 
 //0.042 sec			
 				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy();
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-			var log = "- get taxonomy, runtime: <b>" + runtime_s  + "</b> sec";
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			
-			//config["runtime"]["get_xml_taxonomy"] = [];
-			//config["runtime"]["get_xml_taxonomy"]["time"] = runtime_s;
+			_vars["runtime"]["get_xml_taxonomy"] = {
+				"time" : runTime
+			};
 
 
 			_numDone++;
@@ -676,21 +685,22 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 
 //------------------
 			//get book category
-			var exec_start = new Date();
+			var timeStart = new Date();
 //runtime : 0.244 sec			
  //runtime : 0.032 sec			
 				_vars["book_category"] = get_book_category();
 				
-			var exec_end = new Date();
-			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-			var log = "- get_book_category, runtime: <b>" + runtime_s  + "</b> sec";
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- get_book_category, runtime: <b>" + runTime  + "</b> sec";
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 			
-			//config["runtime"]["get_book_category"] = [];
-			//config["runtime"]["get_book_category"]["time"] = runtime_s;
+			_vars["runtime"]["get_book_category"] = {
+				"time" : runTime
+			};
 			
 			//message = "";
 			//message += "<br>Size _vars['xml_nodes']: " + _vars["xml_nodes"].length  + " bytes";
@@ -723,24 +733,24 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 			switch( _vars["GET"]["q"] ) {
 				case "node":
-var exec_start = new Date();
+var timeStart = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
 						};
 						_vars["node"] = nodes_obj.get_node( params);
 						
-var exec_end = new Date();
-var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-var message = "<br>- nodes_obj.get_node(), runtime: <b>" + runtime_s  + "</b> sec";
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+var message = "<br>- nodes_obj.get_node(), runtime: <b>" + runTime  + "</b> sec";
 info.push( message );
-config["runtime"]["get_node"] = [];
-config["runtime"]["get_node"]["time"] = runtime_s;
+_vars["runtime"]["get_node"] = [];
+_vars["runtime"]["get_node"]["time"] = runTime;
 
 					break;
 					
 				case "termin_nodes":
 
-var exec_start = new Date();
+var timeStart = new Date();
 						_vars["termin_nodes"] = [];
 						var params = {
 							//"vid" : _vars["GET"]["vid"],
@@ -748,18 +758,18 @@ var exec_start = new Date();
 						};
 						_vars["termin_nodes"] = nodes_obj.get_termin_nodes( params);
 						
-var exec_end = new Date();
-var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-var message = "<br>- nodes_obj.get_termin_nodes(), runtime: <b>" + runtime_s  + "</b> sec";
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+var message = "<br>- nodes_obj.get_termin_nodes(), runtime: <b>" + runTime  + "</b> sec";
 info.push( message );
-config["runtime"]["get_termin_nodes"] = [];
-config["runtime"]["get_termin_nodes"]["time"] = runtime_s;
+_vars["runtime"]["get_termin_nodes"] = [];
+_vars["runtime"]["get_termin_nodes"]["time"] = runTime;
 
 					break;
 
 				case "book_page":
 
-var exec_start = new Date();
+var timeStart = new Date();
 						var params = {
 							"nid" : _vars["GET"]["nid"]
 						};
@@ -777,12 +787,12 @@ var exec_start = new Date();
 //_vars["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
 
 						
-var exec_end = new Date();
-var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-var message = "<br>- book.get_child_pages( params), runtime: <b>" + runtime_s  + "</b> sec";
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+var message = "<br>- book.get_child_pages( params), runtime: <b>" + runTime  + "</b> sec";
 info.push( message );
-config["runtime"]["get_child_pages"] = [];
-config["runtime"]["get_child_pages"]["time"] = runtime_s;
+_vars["runtime"]["get_child_pages"] = [];
+_vars["runtime"]["get_child_pages"]["time"] = runTime;
 
 					break;
 				
@@ -2231,8 +2241,9 @@ _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 
-//config["runtime"]["get_child_pages"] = [];
-//config["runtime"]["get_child_pages"]["time"] = runtime_s;
+_vars["runtime"]["get_child_pages"] = {
+	"time" : runTime
+};
 
 				break;
 				
