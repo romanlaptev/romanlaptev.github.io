@@ -355,34 +355,52 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 				} else {
 					load_xml({
 						filename : config["xml_file"],
-						callback: put_to_storage
+						callback: function( xmlStr ){
+							put_to_storage( config["storage_key"], xmlStr, __postFunc);
+						}
 					});
 				}
 			}//end _getItem()
 			
+			function __postFunc( value, err){
+//console.log( arguments );				
+
+				if( err === null ){
+					after_load( value );
+				} else {
+				_vars["logMsg"] = "error, failed save element to the storage", err;
+_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				}
+				
+			}//end __postFunc()
+			
 		}//end get_xml_from_storage()
 
-		function put_to_storage( xmlStr ) {
+		function put_to_storage( key, value, callback ) {
 
 			var timeStart = new Date();
 
-			localforage.setItem( config["storage_key"], xmlStr, function(err, v) {
+			localforage.setItem( key, value, function(err, v) {
 //console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
 //console.log(err, v);
 				var timeEnd = new Date();
 				var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 				
-				var cache_size = xmlStr.length; 
+				var cache_size = value.length; 
 				var cache_size_kb = cache_size / 1024 ;
 				var cache_size_mb = cache_size_kb / 1024;
-				var log = "- save in cache element " + config["storage_key"];
+				var log = "- save in cache element " + key;
 				log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
 				log += ", runtime: <b>" + runTime + "</b> sec";
 				
 				//var status = true;
 				if( err !== null){
-					log = "- error, no save " + config["storage_key"] + ", " + err;
+					log = "- error, no save " + key + ", " + err;
 					//status = false;
+					_vars["logMsg"] = "error, faled save element, localforage.setItem("+ key +")", err;
+_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 				}
 				
 				//info.push(log);
@@ -390,16 +408,12 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 
-//console.log(info);				
 				_vars["runtime"]["put_storage"] = {
 					"time" : runTime
 				};
-				//params.callback( key, status, log );	
-				
-				if( err === null){
-					after_load( xmlStr );
-				} else {
-console.log("error, localforage.setItem("+config["storage_key"]+")", err);
+
+				if( typeof callback === "function" ){
+					callback( value, err );
 				}
 
 			});
@@ -408,15 +422,8 @@ console.log("error, localforage.setItem("+config["storage_key"]+")", err);
 		
 		
 		
-		
 		function callback_init() {
-//runtime : 6.889 sec+, 
-//runtime : 3.489 sec+, 
-//runtime : 2.697 sec+
-//runtime : 2.872 sec+
-//runtime : 2.634 sec
 			get_content();
-			//process_get_values();
 			_urlManager();			
 			draw_page();
 			define_event();
@@ -434,6 +441,7 @@ console.log( _vars["logMsg"] );
 			}
 //}, 1000*3);
 			
+			//??????
 			var runtime_all = 0;
 			for( var item in _vars["runtime"]){
 //console.log(item, _vars["runtime"][item]);				
@@ -722,90 +730,6 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 		};//end lib.get_content()
 
 
-/*				
-		function process_get_values() {
-//console.log( "$_GET: ", _vars["GET"],  get_object_size( _vars["GET"] ) );
-			if( get_object_size( _vars["GET"] ) === 0) {
-				var message = "<br>No $_GET value";
-				info.push( message );
-				return;
-			}
-			
-			switch( _vars["GET"]["q"] ) {
-				case "node":
-var timeStart = new Date();
-						var params = {
-							"nid" : _vars["GET"]["nid"]
-						};
-						_vars["node"] = nodes_obj.get_node( params);
-						
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var message = "<br>- nodes_obj.get_node(), runtime: <b>" + runTime  + "</b> sec";
-info.push( message );
-_vars["runtime"]["get_node"] = [];
-_vars["runtime"]["get_node"]["time"] = runTime;
-
-					break;
-					
-				case "termin_nodes":
-
-var timeStart = new Date();
-						_vars["termin_nodes"] = [];
-						var params = {
-							//"vid" : _vars["GET"]["vid"],
-							"tid" : _vars["GET"]["tid"]
-						};
-						_vars["termin_nodes"] = nodes_obj.get_termin_nodes( params);
-						
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var message = "<br>- nodes_obj.get_termin_nodes(), runtime: <b>" + runTime  + "</b> sec";
-info.push( message );
-_vars["runtime"]["get_termin_nodes"] = [];
-_vars["runtime"]["get_termin_nodes"]["time"] = runTime;
-
-					break;
-
-				case "book_page":
-
-var timeStart = new Date();
-						var params = {
-							"nid" : _vars["GET"]["nid"]
-						};
-						_vars["node"] = nodes_obj.get_node( params);
-						
-						_vars["book_child_pages"] = [];
-						var params = {
-							"plid" : _vars["GET"]["mlid"],
-							"recourse" : 0
-						};
-						_vars["book_child_pages"] = book.get_child_pages( params );
-//var params = [];
-//params["plid"] = "386";
-//params["recourse"] = 0;
-//_vars["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
-
-						
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var message = "<br>- book.get_child_pages( params), runtime: <b>" + runTime  + "</b> sec";
-info.push( message );
-_vars["runtime"]["get_child_pages"] = [];
-_vars["runtime"]["get_child_pages"]["time"] = runTime;
-
-					break;
-				
-				default:
-					break;
-			}//end switch
-			
-			view_log( info );			
-			
-		}//end process_get_values()
-*/
-
-		
 		var nodes_obj = {
 			//"nodes_size" : 0,
 			"get_node" : function( params ){
