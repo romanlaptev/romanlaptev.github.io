@@ -398,7 +398,7 @@ console.log( _vars["logMsg"] );
 				if( err !== null){
 					log = "- error, no save " + key + ", " + err;
 					//status = false;
-					_vars["logMsg"] = "error, faled save element, localforage.setItem("+ key +")", err;
+					_vars["logMsg"] = "error, failed SAVE element, localforage.setItem("+ key +")", err;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 				}
@@ -420,6 +420,50 @@ console.log( _vars["logMsg"] );
 
 		}//end put_to_storage();
 		
+
+		function _getItemFromStorage( key, callback ){
+
+			var timeStart = new Date();
+			
+			localforage.getItem( key, function(err, readValue) {
+//console.log("Read: " + key, readValue.length);
+//console.log(err);
+
+					var timeEnd = new Date();
+					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+					
+					var cache_size = readValue.length; 
+					var cache_size_kb = cache_size / 1024 ;
+					var cache_size_mb = cache_size_kb / 1024;
+					
+					var log = "- get storage element <b>" + key + "</b>";
+					log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+					log += ", runtime: <b>" + runTime + "</b> sec";
+					log += ", error: " + err;
+					
+					//info.push(log);
+_vars["logMsg"] = log;
+_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					
+					if( err !== null){
+						_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
+_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					}
+				
+					_vars["runtime"]["get_storage"] = {
+						"time" : runTime
+					};
+
+					if( typeof callback === "function" ){
+						callback( readValue, err );
+					}
+
+			});
+				 
+		}//end _getItem()
+
 		
 		
 		function callback_init() {
@@ -739,9 +783,10 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return _get_termin_nodes( params );
+				//return _get_termin_nodes( params );
 				//return _getTerminNodesJquery( params );
 				//return _getTerminNodesJS( params );
+				return _getTerminNodesStorage(params);
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -763,7 +808,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 			var table_name = "table_node";
 			nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
-			
+//console.log( nodes_obj["x_nodes"] );
 		}//end read_nodes_data()
 
 /*		
@@ -848,7 +893,13 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				
 				nodes.push( node );
 			}//next node
-			
+/*
+			//var jsonData = JSON.stringify( nodes );
+//console.log( jsonData.length );
+			put_to_storage("nodes", nodes, function(){
+//console.log(arguments);				
+			});
+*/			
 			return nodes;
 		}//end get_xml_nodes()
 
@@ -887,6 +938,59 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 //console.log(termin_nodes);
 			return termin_nodes;
 		}//end _get_termin_nodes()
+
+		function _getTerminNodesStorage( opt ){
+//console.log(opt);
+			var p = {
+				"tid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+			var terminNodes = [];
+			
+//======================= TEST
+/*
+			var taxonomy_index = [];
+			var xml = _vars["xml"];
+			var tableName = "table_taxonomy_index";
+			$(xml).find( tableName ).find("item").each( function( num, element ){
+//console.log(num, element);				
+				var itemObj = {
+					"tid" : $(this).attr("tid"),
+					"nid" : $(this).attr("nid")
+				};
+				taxonomy_index.push( itemObj );
+			});//next
+			
+			
+//console.log(taxonomy_index);
+			put_to_storage("taxonomy_index", taxonomy_index, function(){
+console.log(arguments);				
+			});
+*/
+			_getItemFromStorage("taxonomy_index", _callback );
+			_getItemFromStorage("taxonomy", _callback );
+			_getItemFromStorage("nodes", _callback );
+			
+console.log(terminNodes);
+//terminNodes = [];
+			return terminNodes;
+			
+			function _callback(readValue, err){
+console.log(readValue, err);				
+			}//end _callback()
+			
+		}//end _getTerminNodesStorage()
 
 		function _getTerminNodesJquery(opt){
 //console.log(opt);
@@ -1424,8 +1528,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 //runtime: 1.62 sec
 //runtime: 1.061 sec
 //runtime: 0.065 sec ????
-		function get_xml_taxonomy()
-		{
+		function get_xml_taxonomy(){
 			var taxonomy = [];
 			$( taxonomy_obj.x_voc ).each(function()
 			{
@@ -1454,6 +1557,12 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 				taxonomy[name] = vocabulary;
 			}//next voc
 */			
+
+/*
+			put_to_storage("taxonomy", taxonomy, function(){
+//console.log(arguments);				
+			});
+*/
 			return taxonomy;
 			
 			function get_termins( vid )
@@ -1692,6 +1801,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 					var nodes = get_child_pages( $(node).attr('mlid'), 0);
 				}
 			};//next node
+			
 			return nodes;
 			
 		}//end get_book_category()
