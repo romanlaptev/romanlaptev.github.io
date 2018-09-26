@@ -784,10 +784,10 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				return get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				//return _get_termin_nodes( params );
+				return _get_termin_nodes( params );
 				//return _getTerminNodesJquery( params );
 				//return _getTerminNodesJS( params );
-				return _getTerminNodesStorage(params);
+				//return _getTerminNodesStorage(params);
 			}, 
 			"view_node" : function( params ){
 				var html =  view_node( params );
@@ -943,7 +943,8 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 		function _getTerminNodesStorage( opt ){
 //console.log(opt);
 			var p = {
-				"tid" : null
+				"tid" : null,
+				"target" : null
 			};
 			//extend p object
 			for(var key in opt ){
@@ -960,6 +961,8 @@ console.log( _vars["logMsg"] );
 			var terminNodes = [];
 			
 //======================= TEST
+delete _vars["nodes"];
+delete _vars["xml"];
 /*
 			var taxonomy_index = [];
 			var xml = _vars["xml"];
@@ -984,6 +987,7 @@ console.log(arguments);
 			}
 
 
+console.log( window.Promise );
 	if( typeof window.Promise === "function" ){
 		//......
 	}
@@ -995,21 +999,49 @@ console.log($.Deferred);
 		_deferred_req()
 			.then(
 				function(readValue, err){//A function that is called when the Deferred is resolved.
-console.log( "Promise resolved.", arguments);
+//console.log( "Promise resolved.", arguments);
 					if( _vars["waitWindow"] ){
 						_vars["waitWindow"].style.display="none";
+					}
+console.log("--- continue of the execution process...");
+					if( readValue && readValue.length > 0){
+						_vars["termin_nodes"] = __getTerminNodes(readValue);
+						if( _vars["termin_nodes"].length > 0){
+							_formBreadcrumb( p.target );
+							draw_page();
+_vars["timeEnd"] = new Date();
+_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+_vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
+ _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+							
+						}
 					}
 				},
 				function(){//An optional function that is called when the Deferred is rejected. 
 console.log( "Promise rejected.", arguments);
-				}
+				}				
 			)
 			
-			.always(
-				function() {
-console.log( "Promise always callback..." );
-			});			
+			//.progress(
+				//function(p){
+//console.log( "PROGRESS promise callback...%", p);
+			//})
 			
+			.always(//Add handlers to be called when the Deferred object is either resolved or rejected.
+				function() {
+//console.log( "ALWAYS promise callback...", arguments );
+			})
+			
+			.fail(//Add handlers to be called when the Deferred object is rejected.
+				function() {
+//console.log( "FAIL promise callback...", arguments );
+			})
+			
+			.done(//Add handlers to be called when the Deferred object is resolved.
+				function() {
+//console.log( "DONE promise callback...", arguments );
+			});
 	}
 
 
@@ -1019,28 +1051,10 @@ console.log( "Promise always callback..." );
 console.log(terminNodes);
 //terminNodes = [];
 			return terminNodes;
-			
+/*			
 			function _callback(readValue, err){
 console.log("--- continue of the execution process...");						
 console.log(readValue, err);	
-/*
-			for( var node in _vars["nodes"] )
-			{
-if( typeof _vars["nodes"][node]["tid"] === "undefined")
-{
-	continue;
-}
-				for( var n = 0; n < _vars["nodes"][node]["tid"].length; n++)
-				{
-					if( params["tid"] === _vars["nodes"][node]["tid"][n] )
-					{
-	//console.log( node,  _vars["nodes"][node]  );
-						termin_nodes.push( _vars["nodes"][node] );
-					}
-				}//next node tid
-			}//next node
-
-*/
 
 //setTimeout(function(){
 			if( _vars["waitWindow"] ){
@@ -1049,14 +1063,20 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 //}, 1000*3);
 
 			}//end _callback()
-
+*/
 			function _deferred_req(){
+				
 				var $d = $.Deferred();
+
 				_getItemFromStorage("nodes", function(readValue, err){
-console.log("--- _deferred_req(), get data...");						
+//console.log("--- _deferred_req(), get data...");						
 //console.log(readValue, err);
 					if(readValue && readValue.length > 0){
+//console.log("1.State:" , $d.state() );
+
 						$d.resolve( readValue, err );
+//console.log("2.State:" , $d.state() );
+
 					} else {
 						$d.resolve(false);
 					}
@@ -1064,6 +1084,28 @@ console.log("--- _deferred_req(), get data...");
 				});
 				return $d;
 			}//end _deferred_req()
+
+			function __getTerminNodes(nodes){
+//console.log(p["tid"], typeof p["tid"]);
+
+				var _terminNodes = [];
+				for( var n = 0; n < nodes.length; n++ ){
+					var node = nodes[n];
+if( typeof node["tid"] === "undefined"){
+	continue;
+}
+					for( var n1 = 0; n1 < node["tid"].length; n1++){
+//console.log(node["tid"][n1], typeof node["tid"][n1]);
+						if( p["tid"] === node["tid"][n1] ){
+							_terminNodes.push( node );
+						}
+					}//next termin tid
+					
+				}//next node
+
+console.log(_terminNodes);
+				return _terminNodes;
+			}//end __getTerminNodes()
 			
 		}//end _getTerminNodesStorage()
 
@@ -2351,7 +2393,7 @@ _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child
 console.log( _vars["logMsg"] );
 
 _vars["runtime"]["get_child_pages"] = {
-	"time" : runTime
+	"time" : _vars["runTime"]
 };
 
 				break;
@@ -2361,28 +2403,29 @@ _vars["timeStart"] = new Date();
 
 					_vars["termin_nodes"] = [];
 					_vars["termin_nodes"] = nodes_obj.get_termin_nodes({
-						//"vid" : _vars["GET"]["vid"],
-						"tid" : _vars["GET"]["tid"]
+						"tid" : _vars["GET"]["tid"]//,
+						//"target" : target
 					});
 					
-					if( _vars["termin_nodes"].length > 0){
+					//if( _vars["termin_nodes"].length > 0){
 						_formBreadcrumb( target );
 						draw_page();
-					} else {
-console.log("--- end of the execution process...");						
-					}
-					
-					if( $(".navbar-header").is(":visible") &&
-						document.body.clientWidth < 990) {
-						$("#bs-navbar-collapse-1").hide("slow");
-					}
+						
+						if( $(".navbar-header").is(":visible") &&
+							document.body.clientWidth < 990) {
+							$("#bs-navbar-collapse-1").hide("slow");
+						}
 						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
-				
+						
+					//} else {
+//console.log("--- end of the execution process...");						
+					//}
+					
 				break;
 				
 				case "node": 
