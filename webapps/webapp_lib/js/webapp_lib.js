@@ -426,18 +426,19 @@ console.log( _vars["logMsg"] );
 			var timeStart = new Date();
 			
 			localforage.getItem( key, function(err, readValue) {
-//console.log("Read: " + key, readValue.length);
+//console.log("Read: " + key, arguments);
 //console.log(err);
-
 					var timeEnd = new Date();
 					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-					
-					var cache_size = readValue.length; 
-					var cache_size_kb = cache_size / 1024 ;
-					var cache_size_mb = cache_size_kb / 1024;
-					
 					var log = "- get storage element <b>" + key + "</b>";
-					log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+					
+					if( readValue ){
+						var cache_size = readValue.length; 
+						var cache_size_kb = cache_size / 1024 ;
+						var cache_size_mb = cache_size_kb / 1024;
+						log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+					}
+										
 					log += ", runtime: <b>" + runTime + "</b> sec";
 					log += ", error: " + err;
 					
@@ -446,11 +447,11 @@ _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					
-					if( err !== null){
-						_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-					}
+					//if( err !== null){
+						//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
+//_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+					//}
 				
 					_vars["runtime"]["get_storage"] = {
 						"time" : runTime
@@ -988,18 +989,27 @@ console.log(arguments);
 	}
 	
 console.log($.Deferred);
-
 	if( typeof $.Deferred === "function" ){
+		
+		//https://api.jquery.com/deferred.then/
 		_deferred_req()
-			.then(function(){
-console.log( "Then", arguments);
-			})
-			.then(function(){
-console.log( "Fail", arguments);
-			})
+			.then(
+				function(readValue, err){//A function that is called when the Deferred is resolved.
+console.log( "Promise resolved.", arguments);
+					if( _vars["waitWindow"] ){
+						_vars["waitWindow"].style.display="none";
+					}
+				},
+				function(){//An optional function that is called when the Deferred is rejected. 
+console.log( "Promise rejected.", arguments);
+				}
+			)
 			
-		);
-				
+			.always(
+				function() {
+console.log( "Promise always callback..." );
+			});			
+			
 	}
 
 
@@ -1032,17 +1042,6 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 
 */
 
-			function _deferred_req(){
-				var $d = $.Deferred();
-				_getItemFromStorage("nodes", function(readValue, err){
-console.log("--- _deferred_req(), get data...");						
-console.log(readValue, err);	
-					$d.resolve( readValue, err );
-				});
-				return $d;
-			}//end _deferred_req()
-
-			
 //setTimeout(function(){
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="none";
@@ -1050,6 +1049,21 @@ console.log(readValue, err);
 //}, 1000*3);
 
 			}//end _callback()
+
+			function _deferred_req(){
+				var $d = $.Deferred();
+				_getItemFromStorage("nodes", function(readValue, err){
+console.log("--- _deferred_req(), get data...");						
+//console.log(readValue, err);
+					if(readValue && readValue.length > 0){
+						$d.resolve( readValue, err );
+					} else {
+						$d.resolve(false);
+					}
+					//$d.reject();
+				});
+				return $d;
+			}//end _deferred_req()
 			
 		}//end _getTerminNodesStorage()
 
