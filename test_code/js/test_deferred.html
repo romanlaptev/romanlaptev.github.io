@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Test Deferred</title>
+	<title>Test JS: Deferred object</title>
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 
 	<script src="lib/jquery-latest.min.js"></script>
@@ -62,7 +62,7 @@ margin: 0;
 <body>
 	<div class="container">
 		<div class="page-header">
-			<h1>Test Deferred</h1>
+			<h1>Test JS: Deferred object</h1>
 		</div>
 		
 		<div class="log-panel panel">
@@ -125,8 +125,6 @@ var _getSprData = function (blockName, fieldName){
 	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
 	_log(logMsg);
 	
-console.log($.Deferred);
-
 function test1(){
 	var url = $("#request-url").val();
 	getDataAsync(url)
@@ -187,7 +185,15 @@ console.log( args1, args2 );
 }
 
 function getDataAsync(url){
+
 	var $d = $.Deferred();
+	
+console.log( "---");
+console.log( "Deferred object:", $d );
+for( var key in  $d){
+console.log(key, $d[key] );
+}
+console.log( "---");
 	
 	$.getJSON( url, function( res ){
 //console.log( res );
