@@ -2161,8 +2161,6 @@ console.log("error, not found _vars[book_category]");
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
 			
-//----------------------
-			
 			function render_node(){
 				var params = {"nid" :  _vars["GET"]["nid"]};
 				var html = nodes_obj.view_node( params );
@@ -2461,6 +2459,12 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 				break;
 			}//end switch
 			
+//---------- fix b-content height
+var _newHeight = $("#block-content").height();
+console.log(_newHeight);
+$(".b-content").height(_newHeight);
+
+//----------------------
 
 		}//end _urlManager()
 
