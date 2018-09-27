@@ -2292,6 +2292,7 @@ console.log("w = " + document.body.clientWidth );
 
 			if( _vars["appContainer"] ){
 				_vars["appContainer"].onclick = function(event){
+					
 					event = event || window.event;
 					var target = event.target || event.srcElement;
 //console.log( event );
