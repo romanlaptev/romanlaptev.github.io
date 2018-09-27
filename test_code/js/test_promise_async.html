@@ -205,7 +205,18 @@ console.log( logMsg, arguments);
 		});
 		
 		$("#btn-test-async").on("click", function(e){
-			Demo();
+			log.innerHTML += "<p>- start load</p>";
+			Demo()
+				.then(function( data ){
+console.log( arguments );
+
+var logMsg = "<p class='alert alert-success'>Promise resolved...</p>";
+_log( logMsg);
+console.log( logMsg, arguments);
+
+					log.innerHTML += "<p>"+ data +"</p>";
+					log.innerHTML += "<p>- end load</p>";
+				});
 		});
 
 		$("#btn-clear-log").on("click", function(e){
@@ -217,18 +228,14 @@ console.log( logMsg, arguments);
 }
 
 async function Demo(){
-	log.innerHTML += "<p>- start load</p>";
-
 	try{
 		let data = await loadJson();
 //console.log( data );
-		log.innerHTML += "<p>"+ JSON.stringify(data)+"</p>";
+		return JSON.stringify(data);
 	} catch( e) {
 console.log(e);	
-		log.innerHTML += "<p>"+ e +"</p>";
+		return e;
 	}
-	
-	log.innerHTML += "<p>- end load</p>";
 }//end Demo()
 
 function loadJson(){
