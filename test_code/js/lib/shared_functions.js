@@ -957,8 +957,8 @@ window.onresize = function(event) {
 }//end event
 
 
-console.log("window.addEventListener:" + window.addEventListener);
-console.log("window.attachEvent:" + window.attachEvent);
+//console.log("window.addEventListener:" + window.addEventListener);
+//console.log("window.attachEvent:" + window.attachEvent);
 if ( window.addEventListener ) {
 	window.addEventListener("load", function(e) {
 console.log("window.addEventListener, event load");
@@ -1035,7 +1035,7 @@ _log(msg);
 			return false;
 		});
 
-		
+	/*	
 		$(".fancybox").fancybox({
 			helpers : {
 				overlay : {
@@ -1043,7 +1043,7 @@ _log(msg);
 				}
 			}
 		});
-	
+*/	
 //------------------------------ Image load error
 /*
 	$("img").on("load", "#insert-json", function( e ){
