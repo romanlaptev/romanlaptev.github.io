@@ -3,225 +3,41 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>test Promise</title>
+	<title>Test JS: Promise, async</title>
 <!--	
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 -->
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 	<script src="lib/jquery.min.js"></script>
+	<script src="lib/shared_functions.js"></script>
 	
 <!-- 
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>	
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 -->
-
-<script>
-function getById(id){
-	
-	if( document.querySelector ){
-		var obj = document.querySelector("#"+id);
-		return obj;
-	}
-	
-	if( document.getElementById ){
-		var obj = document.getElementById(id);
-		return obj;
-	}
-	
-	if( document.all ){
-		var obj = document.all[id];
-		return obj;
-	}
-	
-	//if( document.layers ){
-		//var obj = document.layers[id];
-		//return obj;
-	//}
-	
-	return false;
-}//end getById()
-
-function _log( msg, id){
-//console.log(arguments);
-//alert(arguments.length);
-//		for( var n = 0; n < arguments.length; n++){
-//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
-//alert( _s );
-//		}
-	var id = id || arguments[1];//IE4 fix
-//alert( msg );
-//alert( id );
-
-	if(!id){
-		var id = "log";
-	}
-	
-	var output = getById(id);
-	if( output ){
-	
-		if( !msg || msg.length == 0){
-			output.innerHTML = "";
-		} else {
-			output.innerHTML += msg;
-		}
-		
-	} else {
-		alert(msg);
-		//document.writeln(msg);
-	}
-}//end _log()
-
-function _push( ar, item){
-	if( ar.push ){
-		ar.push(item);
-	} else {
-		var num = ar.length;
-		ar[num] = item;
-	}
-}// end _push()
-
-
-//Start tests
-function runTests(){
-
-	var tests = [];
-
-	if (!window.console){ 
-		var test = {
-			"name" : "console",
-			"result" : false,
-			"msg" : "Your browser does not support <b>console.log</b>"
-		};
-		
-		_push( tests, test );
-
-		window.console = {
-			"log" : function( msg ){
-				var log = getById("log");
-				if(log){
-					log.innerHTML += "<p>" + msg +"<p>";
-				} else {
-					alert(msg);
-					//document.writeln(msg);
-				}
-			}
-		}
-
-	};
-//--------------------------------------
-	if ( !tests.push ){ 
-		var test = {
-			"name" : "array.push()",
-			"result" : false,
-			"msg" : "Your browser does not support <b>method push()</b>"
-		};
-		_push( tests, test );
-	};
-//--------------------------------------
-
-	var test = {
-		"name" : "Test ECMAScript 6,  2015",
-		"result" : false,
-		"msg" : ""
-	};
-	
-	test["links"]=[];
-/*	
-	var obj = {
-		"link" : "https://developer.mozilla.org/ru/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla", 
-		"text" : "Поддержка ECMAScript 6 в Mozilla"
-	};
-	_push( test["links"], obj );
-*/	
-	
-	var obj = {
-		"link" : "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise", 
-		"text" : "Promise"
-	};
-	_push( test["links"], obj );
-
-	test["msg"] = "Check  <b>Promise</b> support:";
-	if( typeof window.Promise !== "undefined" ){
-		test["result"]= true;
-	}
-	test["msg"] += "<b>" + test["result"] +"</b><br>";
-
-	
-	if( test["result"] ){
-		test["msg"] += "This browser <b class='text-danger'>support ECMAScript 6</b>";
-	} else {
-		test["msg"] += "Fail test, this browser <b class='text-danger'>don't support ECMAScript 6</b>";
-	}
-	
-	_push( tests, test );
-//--------------------------------------
-
-//console.log(tests);
-	//for( var item in tests[0] ){
-		//var msg = "<li>" + item +" = "+ tests[0][item] + "</li>";
-		//_log( msg);
-	//}
-
-	//form HTML
-	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
-	
-	//var test_tpl = getById("test-tpl").innerHTML;
-//console.log( test_tpl );	
-
-	var test_links_tpl = getById("test-links-tpl").innerHTML;
-//console.log( test_links_tpl );	
-	var test_links_item_tpl = getById("test-links-item-tpl").innerHTML;
-//console.log( test_links_item_tpl );	
-	
-	var testHtml = "";
-	for( var n = 0; n < tests.length; n++){
-	
-		var html = testTpl.replace("{{name}}", tests[n]["name"])
-		.replace("{{result}}", tests[n]["result"]);
-		
-		var msg = tests[n]["msg"];
-		if(!msg){
-			msg = "";
-		}
-		html = html.replace("{{msg}}", msg );
-		
-		var test_links = "";
-		if( tests[n]["links"] ){
-			var test_links = tests[n]["links"];
-			if( test_links.length > 0  ){
-				var html_items = "";
-				for( var n2 = 0; n2 < test_links.length; n2++){
-					html_items += test_links_item_tpl
-					.replace("{{item-link}}", test_links[n2]["link"])
-					.replace("{{item-text}}", test_links[n2]["text"]);
-				};//next
-				test_links = test_links_tpl.replace("{{links}}", html_items);
-//console.log( test_links );		
-			}
-		}
-		html = html.replace("{{test_links}}", test_links);
-		
-		testHtml += html;
-	}//next
-	
-	return "<ul>" + testHtml + "</ul>";
-
-}//end runTests()
-
-window.onload = function(){
-	var html = runTests();
-	_log( html, "info");	
-}//end load
-	
-</script>
 </head>
 
 <body>
-
-
 	<div class="container">
 		<div class="page-header">
 			<h1>Test JS: use Promise,  async/await </h1>
+		</div>
+		
+		<div class="log-panel panel panel-default">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-body">
+URL:<input type="text" class="form-control" id="request-url" value="test_json/data.json"/>
+<button id="btn-test-promise" class="btn btn-primary">test Promise. Load test JSON</button>
+<button id="btn-test-async" class="btn btn-warning">Test async/await. Load test JSON</button>
+			</div>
 		</div>
 		
 		<div class="panel panel-primary">
@@ -240,21 +56,12 @@ Promise Polyfill
 npm install promise-polyfill --save-exact
 &lt;script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"&gt;&lt;/script&gt;
 </pre>
-				<button id="btn-test-promise" class="btn btn-primary">test Promise. Load test JSON</button>
 			</div>
 
 			<div class="panel-body">
 				<div id="info"></div>
 			</div>
 		</div>
-	
-		<div id="log-wrap" class="panel panel-default log-panel">
-			<div class="panel-heading">
-				<h3>Log panel</h3>
-			</div>
-			<div class="panel-body" id="log"></div>
-		</div>		
-		
 	
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -275,45 +82,30 @@ Async/await: 6 причин забыть о промисах
 https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
 Зачем мне async/await в JavaScript?
 </pre>
-				<button id="btn-test-async" class="btn btn-warning">Test async/await. Load test JSON</button>
 			</div>
 			
 		</div>
 		
-		<input type="text" class="form-control" id="request-url" value="test_json/data.json"/>
-		
 </div><!-- end container -->
 </body>
-
-<!-- TEMPLATES -->
-
-<script type="text/template" id="test-tpl">
-			<ul>
-					<li class="panel-group">
-<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
-<div class="description">
-	<small>{{msg}}</small>
-</div>
-{{test_links}}
-					</li>
-			</ul>
-</script>
-
-<script type="text/template" id="test-links-tpl">
-	<ul class="relative-links bg-info"><b>relative links</b>:
-		{{links}}
-	</ul>
-</script>
-
-<script type="text/template" id="test-links-item-tpl">
-		<li>
-			<a href='{{item-link}}' target='_blank'>{{item-text}}</a>
-		</li>	
-</script>
 
 
 <!-- <script type="text/babel"> -->
 <script>
+
+console.log( window.Promise);
+	if( typeof window.Promise === "undefined" ){
+var logMsg = "<p class='alert alert-danger'>error, Promise NOT supported...</p>";
+_log( logMsg);
+console.log( logMsg);
+	}
+	if( typeof window.Promise === "function" ){
+var logMsg = "<p class='alert alert-success'>success, Promise is supported...</p>";
+_log( logMsg);
+console.log( logMsg);
+	}
+
+
 //https://medium.com/@derzunov/%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-%D0%BC%D0%BD%D0%B5-async-await-%D0%B2-javascript-fb0eadf46f35
 function asyncFunc1 () {
 	return new Promise(function(resolve, reject) {
@@ -386,22 +178,28 @@ startAsyncAwait();
 <script>
 
 if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-console.log(msg);
+//var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+//console.log(msg);
 	$(document).ready(function(){
 
 		$("#btn-test-promise").on("click", function(e){
 			log.innerHTML += "<p>- start load</p>";
 			loadJson().then(
 				function( data ){
-//console.log("success: ",  arguments );			
+//console.log("success: ",  arguments );
+var logMsg = "<p class='alert alert-success'>Promise resolved...</p>";
+_log( logMsg);
+console.log( logMsg, arguments);
+
 					log.innerHTML += "<p>"+ JSON.stringify(data)+"</p>";
 					log.innerHTML += "<p>- end load</p>";
 				}, 
 				function( error_msg ){
-//console.log("fail: ",  arguments );			
+//console.log("fail: ",  arguments );
+var logMsg = "<p class='alert alert-danger'>Promise rejected...</p>";
+_log( logMsg);
+console.log( logMsg, arguments);
 					log.innerHTML += "<p>"+ error_msg +"</p>";
-					log.innerHTML += "<p>- end load</p>";
 				}
 			);
 		});
@@ -409,6 +207,11 @@ console.log(msg);
 		$("#btn-test-async").on("click", function(e){
 			Demo();
 		});
+
+		$("#btn-clear-log").on("click", function(e){
+			e.preventDefault();
+			$("#log").html("");
+		});//end event
 		
 	});//end ready	
 }
@@ -431,15 +234,7 @@ console.log(e);
 function loadJson(){
 	//let url = "test_json/dta.json";
 	let url = $("#request-url").val();
-/*
-	$.getJSON( url, function( data ){
-console.log( data );
-		//let msg = "<p>Load data from "+ url +"</p>";
-		//log.innerHTML += msg;
-		//msg = JSON.stringify(data);
-		//log.innerHTML += msg;
-	});
-*/		
+	
 	return new Promise( function(resolve, reject) {
 		$.getJSON( url, function( data ){
 //console.log( data );
