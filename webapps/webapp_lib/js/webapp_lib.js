@@ -2462,9 +2462,8 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 			
 //---------- fix b-content height
 var _newHeight = $("#block-content").height();
-console.log(_newHeight);
+//console.log(_newHeight);
 $(".b-content").height(_newHeight);
-
 //----------------------
 
 		}//end _urlManager()
