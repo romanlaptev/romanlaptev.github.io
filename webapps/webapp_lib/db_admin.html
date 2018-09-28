@@ -148,13 +148,14 @@ console.log('Saved: ' + value);
          });
 	}//end event
 
-	document.getElementById("localforage-get").onclick = function(){
+	document.getElementById("btn-localforage-get").onclick = function(){
 		var key = input_key.value;
 		var out = "";
         localforage.getItem(key, function(err, readValue) {
 console.log('Read: ', readValue);
 			out = 'Read ' + key + " = " + readValue;
-			list.innerHTML = out;
+			//list.innerHTML = out;
+			_log(out);
          });
 	}//end event
 	
@@ -190,13 +191,14 @@ console.log(keyName);
 		 
 	}//end event
 	
-	document.getElementById("localforage-keys").onclick = function(){
+	document.getElementById("btn-localforage-keys").onclick = function(){
 		// An array of all the key names.
-		var keyIndex = input_key.value;
+		//var keyIndex = input_key.value;
 		localforage.keys( function(err, keys) {
 console.log(keys);
 			out = keys;
-			list.innerHTML = out;
+			//list.innerHTML = out;
+			_log( out );
 		});
 	}//end event
 	
@@ -291,11 +293,11 @@ http://blog.teamtreehouse.com/using-localforage-offline-data-storage
 			value:<input class="form-control" id="value" type="text" value="">
 			
 			<button id="localforage-set" class="btn btn-info">set item</button>
-			<button id="localforage-get" class="btn btn-info">get item</button>
+			<button id="btn-localforage-get" class="btn btn-info">get item</button>
 			<button id="localforage-remove" class="btn btn-danger">remove item</button>
 			<button id="localforage-clear" class="btn btn-danger">clear storage</button>
 			<button id="localforage-key" class="btn btn-primary">key</button>
-			<button id="localforage-keys" class="btn btn-primary">all keys</button>
+			<button id="btn-localforage-keys" class="btn btn-primary">all keys</button>
 			<button id="localforage-iterate" class="btn btn-primary">iterate</button>
 		</div>
 		
