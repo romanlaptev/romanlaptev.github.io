@@ -623,10 +623,10 @@ console.log(msg);
 								var data = xhr.responseText;
 							}
 
-							callback( data, runtime );
+							callback( data, runtime, xhr );
 						} else {
 							var data = xhr.responseText;
-							callback( data, runtime );
+							callback( data, runtime, xhr );
 						}
 					}
 					//if browser not define callback "onloadend"

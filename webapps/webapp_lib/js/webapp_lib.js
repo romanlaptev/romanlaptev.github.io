@@ -47,6 +47,10 @@ console.log( _vars["logMsg"] );
 			
 			info.push( navigator.userAgent + "<br>\n");
 			
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="block";
+			}
+			
 			if ( config["use_localcache"] ) {
 				
 				//load localforage script
@@ -72,6 +76,12 @@ console.log( _vars["logMsg"] );
 					filename : config["xml_file"],
 					callback: after_load
 				});
+				/*
+				loadXml({
+					filename : config["xml_file"],
+					callback: after_load
+				});
+				*/
 			}
 			
 		}//end init()
@@ -80,10 +90,6 @@ console.log( _vars["logMsg"] );
 		function load_xml( params ) {
 
 			var timeStart = new Date();
-			
-			if( _vars["waitWindow"] ){
-				_vars["waitWindow"].style.display="block";
-			}
 			
 			$.ajax({
 				type: "GET",
@@ -205,6 +211,70 @@ console.log("$.ajax, Fail...", arguments);
 console.log("textStatus:" + textStatus);
 			});
 		}//end load_xml();
+		
+		
+		function loadXml(p){
+			
+			var timeStart = new Date();
+			
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="block";
+			}
+			
+			runAjax( {
+				"requestMethod" : "GET", 
+				"responseType" : "text", //arraybuffer, blob, document, ms-stream, text
+				"url" : p["filename"], 
+				"onProgress" : function( e ){
+					var percentComplete = 0;
+					if(e.lengthComputable) {
+						percentComplete = Math.ceil(e.loaded / e.total * 100);
+					}
+	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+
+					if( _vars["loadProgressBar"] ){
+						_vars["loadProgressBar"].className = "progress-bar";
+						_vars["loadProgressBar"].style.width = percentComplete+"%";
+						_vars["loadProgressBar"].innerHTML = percentComplete+"%";
+						
+						_vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+					}
+
+				},//end callback function
+				
+				"onError" : function( xhr ){
+console.log( "onError ", arguments);
+_vars["logMsg"] = "error ajax load " + params["filename"];
+ _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+				},//end callback function
+				
+				"onLoadEnd" : function( headers ){
+console.log( "onLoadEnd ", headers);
+					//if( webApp.vars["waitWindow"] ){
+						//webApp.vars["waitWindow"].style.display="none";
+					//}
+					var timeEnd = new Date();
+					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+					
+					_vars["runtime"]["ajax_load"] = {
+						"time" : runTime
+					};
+				},//end callback function
+				
+				"callback": function( data, runtime, xhr ){
+_vars["logMsg"] = "load " + p["filename"]  +", runtime: "+ runtime +" sec";
+_log("<div class='alert'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//console.log( typeof data );
+//console.log( "xhr.responseText: ", xhr.responseText );
+
+					p.callback( xhr.responseText );	
+				}//end callback()
+			});
+			
+		}//end loadXml()
+		
 		
 		function after_load( data ) {
 			//lib = Lib( xml );
@@ -366,6 +436,14 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 							put_to_storage( config["storage_key"], xmlStr, __postFunc);
 						}
 					});
+					/*
+					loadXml({
+						filename : config["xml_file"],
+						callback: function( xmlStr ){
+							put_to_storage( config["storage_key"], xmlStr, __postFunc);
+						}
+					});
+					*/
 				}
 			}//end _getItem()
 			
@@ -380,7 +458,7 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 
 //for(var key in err){
-//console.log( key, err[key] );				
+//console.log( key +": "+ err[key] );				
 //}
 
 var driverStr = localforage.driver();
@@ -411,6 +489,19 @@ _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 		});
 	}
 }
+
+//indexedDB error handler
+if( driverStr === "asyncStorage"){
+	if( err["name"] === "QuotaExceededError"){
+		localforage.clear( function(err){
+_vars["logMsg"] = "Clear storage...";
+_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"], err );
+			after_load( value );
+		});
+	}
+}
+
 
 				}
 				
@@ -683,6 +774,7 @@ console.log( _vars["logMsg"] );
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
 			if( _vars["parseProgressBar"] ){
+				
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
