@@ -80,7 +80,7 @@ window.onload = function(){
 			//$("#info").show();
 		//}
 		if( e.keyCode === 27 ){//ESC
-			view_log( info );			
+			//view_log( info );			
 			$("#info").toggle();
 		}
 
