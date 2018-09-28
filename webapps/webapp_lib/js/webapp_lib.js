@@ -373,7 +373,7 @@ console.log('localforage.driver():', localforage.driver());
 				}
 
 				info.push(message);
-		//console.log( message );
+console.log( message );
 				return test;
 			};//end _test()
 			
@@ -481,9 +481,6 @@ _vars["logMsg"] = "Remove " +config["storage_key"];
 _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"], err );
 
-_vars["logMsg"] = "Use memory...";
-_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-				after_load( value );
 			 });
 
 		});
@@ -497,10 +494,13 @@ if( driverStr === "asyncStorage"){
 _vars["logMsg"] = "Clear storage...";
 _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"], err );
-			after_load( value );
 		});
 	}
 }
+
+_vars["logMsg"] = "Use memory...";
+_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+				after_load( value );
 
 
 				}

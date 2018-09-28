@@ -114,6 +114,14 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/de
 превышение квоты localStorage (FF 3.6)
 - error, no save lib_xml, [Exception... "Persistent storage maximum size reached" code: "1014" nsresult: "0x805303f6 (NS_ERROR_DOM_QUOTA_REACHED)" location: "http://vbox5/sites/romanlaptev.github.io/webapps/webapp_lib/js/vendor/localforage.min.js Line: 7"]
   
+- eee-pc, FF 12
+error, failed SAVE element, localforage.setItem(lib_xml)
+- error, no save lib_xml, 
+[Exception... "A mutation operation was attempted in a READ_ONLY transaction." 
+code: "9" nsresult: "0x80660009 (NS_ERROR_DOM_INDEXEDDB_READ_ONLY_ERR)" 
+location: "http://localhost/www/romanlaptev.github.io/webapps/webapp_lib/js/vendor/localforage.min.js Line: 7"]
+localforage.driver(): asyncStorage
+ 
 ======================================== RUNTIME
 
     Уменьшить время загрузки терминов таксономии ( 
