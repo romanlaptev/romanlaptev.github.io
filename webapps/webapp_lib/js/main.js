@@ -5,6 +5,7 @@ var lib;
 //}
 
 var config = {
+"dbName" : "db1",
 "storage_key" : "lib_xml",
 "xml_file" : "db/export_lib.xml",
 //"xml_file : "db/test.xml",
@@ -16,7 +17,7 @@ var config = {
 //"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
 "url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
 "url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
-"use_localcache" : true
+"use_localcache" : false
 };
 console.log(config);
 
@@ -47,15 +48,7 @@ console.log(lib);
 $(document).ready(function(){
 //console.log("document ready");
 	$("#info").hide();
-/*
-	$("#info-panel-clear").click(function(){
-		info = [];
-delete lib.xml_obj;
-		$("#info .message").empty();
-		//$(this).hide();
-		return false;
-	});//end event
-*/	
+	
 	$("#use-storage-switch").prop("checked", config["use_localcache"]);
 
 	$(".switch-control").on("click", function(e){
@@ -94,4 +87,4 @@ window.onload = function(){
 	};//end event
 
 		
-};//end window.load	
+};//end window.load

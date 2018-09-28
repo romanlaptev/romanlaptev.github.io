@@ -187,7 +187,7 @@ function getXMLDocument(url)
              return null;  
          }  
 }//-----------------------------------------------------------------end func
-
+/*
 function load_xml( url, func_success )
 {
 	$.ajax ({
@@ -202,21 +202,21 @@ function load_xml( url, func_success )
 			beforeSend: function (XMLHttpRequest) 
 			{
 console.log("beforeSend function");
-/*
-for ( item in XMLHttpRequest)
-{
-	console.log("XMLHttpRequest[" +item+ "] = " + XMLHttpRequest[item]);
-}
-*/
+
+//for ( item in XMLHttpRequest)
+//{
+	//console.log("XMLHttpRequest[" +item+ "] = " + XMLHttpRequest[item]);
+//}
+
 				//return false; //отмена запроса
 			},
-/*
-			dataFilter: function (data, type) // функция предназначена для предварительной обработки ответа.
-			{
-console.log("dataFilter function , type - " + type);
-			  //return data;
-			},
-*/
+
+			//dataFilter: function (data, type) // функция предназначена для предварительной обработки ответа.
+			//{
+//console.log("dataFilter function , type - " + type);
+			  ////return data;
+			//},
+
 			success: func_success,
 			error:function( data, status, errorThrown )
 			{
@@ -235,22 +235,25 @@ console.log("complete function , status - " + textStatus);
 			//timeout: int, //Устанавливает локальное время ожидания для запроса (в миллисекундах)
 			//xhr: function(){}
 			//headers:map({})
-/*
-(Эта настройка появилась в jQuery-1.5) В этом поле можно указать дополнительные заголовки запроса (header). Эти изменения будут введены до вызова beforeSend, в которой могут быть произведены окончательные правки заголовков.
-*/
+
+//(Эта настройка появилась в jQuery-1.5) В этом поле можно указать дополнительные заголовки запроса (header). Эти изменения будут введены до вызова beforeSend, в которой могут быть произведены окончательные правки заголовков.
+
 
 		}
 	);
-/*
-	$.get( url, function(data)
-	{
-x = data.documentElement.childNodes;
-console.log("Number of elements: " + x.length);
-		return data;
-	});
-*/	
+
+
+	//$.get( url, function(data)
+	//{
+//x = data.documentElement.childNodes;
+//console.log("Number of elements: " + x.length);
+		//return data;
+	//});
+
 	
 }//------------------------- end func
+*/
+
 /*
 function ajax_success( data, status )
 {

@@ -110,6 +110,9 @@ https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/de
 	сделать постраничный вывод списков ссылок и пейджер для перемещения между
 	страницами общего списка
 
+======================================== STORAGE
+превышение квоты localStorage (FF 3.6)
+- error, no save lib_xml, [Exception... "Persistent storage maximum size reached" code: "1014" nsresult: "0x805303f6 (NS_ERROR_DOM_QUOTA_REACHED)" location: "http://vbox5/sites/romanlaptev.github.io/webapps/webapp_lib/js/vendor/localforage.min.js Line: 7"]
   
 ======================================== RUNTIME
 

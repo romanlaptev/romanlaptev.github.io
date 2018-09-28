@@ -186,9 +186,15 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				
 				error: function( data, status, errorThrown ){
 //console.log( "error", arguments );
-_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown;
+_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown["message"];
  _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
+
+console.log( "status:" + status );
+for(var key in errorThrown){
+console.log( key +" : "+ errorThrown[key] );
+}
+
 				}
 			})
 			.done(function () {
@@ -196,6 +202,7 @@ console.log("$.ajax, Done...");
 			})
 			.fail(function (xhr, textStatus) {
 console.log("$.ajax, Fail...", arguments);
+console.log("textStatus:" + textStatus);
 			});
 		}//end load_xml();
 		
@@ -236,14 +243,14 @@ console.log( "localforage version: " + localforage._config.version );
 				driver: [localforage.INDEXEDDB,
 						 localforage.WEBSQL,
 						 localforage.LOCALSTORAGE],
-				name: 'localforage'
-				//name: 'webapp-store'
 				//driver: [localforage.WEBSQL],
+				//driver: [localforage.LOCALSTORAGE],
+				name: config["dbName"]
 			});
 
 			localforage.ready(function() {
-		console.log('localForage ready');
-		console.log('localforage.driver():', localforage.driver());
+console.log('localForage ready');
+console.log('localforage.driver():', localforage.driver());
 			});
 
 			localforage.length(function(err, numberOfKeys) {
@@ -371,6 +378,40 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 				_vars["logMsg"] = "error, failed save element to the storage", err;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
+
+//for(var key in err){
+//console.log( key, err[key] );				
+//}
+
+var driverStr = localforage.driver();
+//console.log('localforage.driver():', driverStr);
+//console.log( err["name"] );//NS_ERROR_DOM_QUOTA_REACHED
+//console.log( err["code"] );//1014
+//console.log( err["message"] );
+
+//LocalStorage error handler
+if( driverStr === "localStorageWrapper"){
+	
+	if( err["code"] === 1014){
+		localforage.clear( function(err){
+_vars["logMsg"] = "Clear storage...";
+_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"], err );
+
+			localforage.removeItem( config["storage_key"], function(err) {
+_vars["logMsg"] = "Remove " +config["storage_key"];
+_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"], err );
+
+_vars["logMsg"] = "Use memory...";
+_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+				after_load( value );
+			 });
+
+		});
+	}
+}
+
 				}
 				
 			}//end __postFunc()
@@ -2273,6 +2314,7 @@ var logMsg = "Cannot use storage, error...";
 _log("<div class='alert alert-danger'>" + logMsg + "</div>");
 console.log( logMsg );
 }	
+					$("#info").hide();
 
 				});//end event
 				
