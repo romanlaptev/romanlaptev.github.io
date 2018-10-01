@@ -2662,15 +2662,11 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 						.replace(/{{url}}/g, url);
 //-------------
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
-	html_url += "<br/>direct link: " + url;
-	html_url += "<button class='btn btn-primary btn-sm btn-copy-url'>Copy link to the clipboard</button>";
+	html_url += "<br/>direct link: <div id='link-"+n+"'>" + url+"</div>";
+	html_url += "<button id='btn-copy-"+n+"' class='btn btn-primary btn-sm btn-copy-url' data-clipboard-action='copy' data-clipboard-target='#link-"+n+"'>Copy link to the clipboard</button>";
 	
-	var clipboard = new ClipboardJS('.btn-copy-url', {
-		text: function() {
-			return url;
-		}
-	});
-//console.log( "TEST!", clipboard );
+    var clipboard = new ClipboardJS("#btn-copy-"+n);
+console.log( "TEST!", clipboard );
 
 	clipboard.on('success', function(e) {
 console.log("Copy link success, ", e);
