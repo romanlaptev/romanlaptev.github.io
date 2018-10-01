@@ -86,7 +86,7 @@ margin: 0;
 		</div>
 		<div class="panel-body">
 <!-- <div id="copied-text">Hello!!!</div> -->
-<button class="btn btn-primary btn-copy">Copy text to clipboard</button>
+<button id="btn-copy-test" class="btn btn-primary btn-copy">Copy text to clipboard</button>
 
 		</div>
 	</div>
@@ -149,18 +149,23 @@ var clipboard = new ClipboardJS('.btn-copy', {
 	}
 });
 */
-    var clipboard = new ClipboardJS('.btn-copy', {
+	//var clipboard = new ClipboardJS('.btn-copy', {
+var clipboard = new ClipboardJS("#btn-copy-test	", {
         text: function() {
-            return 'to be or not to be';
+            return 'To be or not to be';
         }
     });
 
 clipboard.on('success', function(e) {
 	console.log(e);
+	var logMsg = "<p class='alert alert-success'><b>Copy</b> text to clipboard: 'To be or not to be' </p>";
+	_log(logMsg);
 });
 
 clipboard.on('error', function(e) {
 	console.log(e);
+	var logMsg = "<p class='alert alert-anger'>Clipboard error...</p>";
+	_log(logMsg);
 });
 </script>
 
