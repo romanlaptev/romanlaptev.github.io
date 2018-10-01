@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: copy text to clipboard</title>
+	<script src="lib/shared_functions.js"></script>
+    <script src="lib/clipboard.min.js"></script>
+<script>
+window.onload = function(e){
+
+	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
+	_log(logMsg);
+
+	var btn_clear_log = getById("btn-clear-log");
+	btn_clear_log.onclick = function(e){
+		e.preventDefault();
+		log.innerHTML = "";
+	};//end event();
+
+	
+}//end onload
+
+</script>
+	
+<style>
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+/*
+background-color: #f5f5f5;
+border: 1px solid #ccc;
+*/
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+	
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: copy text to clipboard</h1>
+	</div>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>document.execCommand('copy')</h2>
+		</div>
+		<div class="panel-body">
+		
+<p>Email me at <a class="js-emaillink" href="mailto:matt@example.co.uk">matt@example.co.uk</a></p>
+<p><button class="btn btn-info js-emailcopybtn">Copy email</button></p>
+		</div>
+	</div>
+		
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>methods from Clipboardjs library</h2>
+		</div>
+		<div class="panel-body">
+<div id="copied-text">Hello!!!</div>
+<button class="btn btn-primary btn-copy">Copy text to clipboard</button>
+
+		</div>
+	</div>
+
+	<textarea id="paste-text-area" class="form-control" placeholder="Paste text here...."></textarea>
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>paste data from clipboard</h2>
+		</div>
+		<div class="panel-body">
+<pre>
+http://qaru.site/questions/21329/javascript-get-clipboard-data-on-paste-event-cross-browser		
+</pre>
+	<div id='editableDiv' contenteditable='true'>Paste</div>	
+<script>
+function handlePaste (e) {
+    var clipboardData, pastedData;
+
+    // Stop data actually being pasted into div
+    e.stopPropagation();
+    e.preventDefault();
+
+    // Get pasted data via clipboard API
+    clipboardData = e.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+
+    // Do whatever with pasteddata
+    alert(pastedData);
+}
+
+document.getElementById('editableDiv').addEventListener('paste', handlePaste);
+</script>	
+		</div>
+	</div>
+	
+		<pre>
+https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand
+Document.execCommand()
+		
+https://habr.com/post/256027/	
+https://clipboardjs.com/
+
+-----
+https://habr.com/company/ruvds/blog/358494/
+Работа с буфером обмена в JavaScript с использованием асинхронного API Clipboard
+
+		</pre>
+	
+</div><!-- end container -->
+
+
+
+<!-- 3. Instantiate clipboard -->
+<script>
+var clipboard = new ClipboardJS('.btn-copy', {
+	target: function() {
+		return document.querySelector("#copied-text");
+	}
+});
+
+clipboard.on('success', function(e) {
+	console.log(e);
+});
+
+clipboard.on('error', function(e) {
+	console.log(e);
+});
+</script>
+
+<script>
+/*
+https://habr.com/company/ruvds/blog/358494/
+новое API доступно только в Chrome 66+ и поддерживает лишь копирование и вставку обычного текста. Кроме того, работает оно только тогда, когда страница загружена по HTTPS или с localhost, и только в тех случаях, когда страница открыта в текущей активной вкладке браузера.
+*/
+if (navigator.clipboard) {
+	var logMsg = "<p class='alert alert-success'><b>navigator.clipboard</b> supported...</p>";
+	_log(logMsg);
+} else {
+	var logMsg = "<p class='alert alert-danger'><b>navigator.clipboard</b> not support...</p>";
+	_log(logMsg);
+}
+</script>
+
+<script>
+//https://habr.com/post/256027/	
+console.log( document.queryCommandSupported("copy") );
+if( document.queryCommandSupported("copy") ){
+		var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
+		_log(logMsg);
+		
+		_test();
+} else {
+		var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
+		_log(logMsg);
+}
+
+function _test(){
+	var copyEmailBtn = document.querySelector(".js-emailcopybtn");  
+	copyEmailBtn.addEventListener("click", function(event) {  
+console.log(event);
+		var emailLink = document.querySelector(".js-emaillink");  
+		var range = document.createRange();  
+		range.selectNode(emailLink);  
+		
+		window.getSelection().addRange(range);  
+		
+	  try {  
+			// Теперь, когда мы выбрали текст ссылки, выполним команду копирования
+			var successful = document.execCommand('copy');  
+			var msg = successful ? 'successful' : 'unsuccessful';  
+			msg = "Copy email command was " + msg;  
+			
+			var logMsg = "<p class='alert alert-success'>"+msg+"</p>";
+			_log(logMsg);
+	
+	  } catch(err) {  
+		var logMsg = "<p class='alert alert-success'>Fail, unable to copy</p>";
+		_log(logMsg);
+	  }  
+    
+		// Снятие выделения - ВНИМАНИЕ: вы должны использовать
+		// removeRange(range) когда это возможно
+		window.getSelection().removeAllRanges();  
+	});//end event
+}//end _test
+
+</script>
+
+</body>
+</html>
