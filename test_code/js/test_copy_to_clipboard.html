@@ -85,7 +85,7 @@ margin: 0;
 			<h2>methods from Clipboardjs library</h2>
 		</div>
 		<div class="panel-body">
-<div id="copied-text">Hello!!!</div>
+<!-- <div id="copied-text">Hello!!!</div> -->
 <button class="btn btn-primary btn-copy">Copy text to clipboard</button>
 
 		</div>
@@ -142,11 +142,18 @@ https://habr.com/company/ruvds/blog/358494/
 
 <!-- 3. Instantiate clipboard -->
 <script>
+/*
 var clipboard = new ClipboardJS('.btn-copy', {
 	target: function() {
 		return document.querySelector("#copied-text");
 	}
 });
+*/
+    var clipboard = new ClipboardJS('.btn-copy', {
+        text: function() {
+            return 'to be or not to be';
+        }
+    });
 
 clipboard.on('success', function(e) {
 	console.log(e);

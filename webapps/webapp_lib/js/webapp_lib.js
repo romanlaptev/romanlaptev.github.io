@@ -2588,7 +2588,7 @@ console.log( _vars["logMsg"] );
 					loadBookXml();
 				break;
 */				
-				
+			
 				default:
 console.log("_urlManager(),  GET query string: ", _vars["GET"]);			
 				break;
@@ -2652,6 +2652,7 @@ $(".b-content").height(_newHeight);
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
 	link_title = "Mail.ru cloud disk: " + link_title;
 }
+
 if(cloudUrl.indexOf("yandex") !== -1 ){
 	link_title = "Yandex cloud disk: " + link_title;
 }
@@ -2662,7 +2663,25 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 //-------------
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
 	html_url += "<br/>direct link: " + url;
+	html_url += "<button class='btn btn-primary btn-sm btn-copy-url'>Copy link to the clipboard</button>";
+	
+	var clipboard = new ClipboardJS('.btn-copy-url', {
+		text: function() {
+			return url;
+		}
+	});
+//console.log( "TEST!", clipboard );
+
+	clipboard.on('success', function(e) {
+console.log("Copy link success, ", e);
+	});
+
+	clipboard.on('error', function(e) {
+console.log("error copy link", e);
+	});
+	
 }
+
 //-------------				
 						
 				html += html_url;
@@ -2670,7 +2689,27 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 			
 //console.log(html);
 			return html;
+			
 		}//end add_cloud_links()
+		
+/*				
+
+	var clipboard = new ClipboardJS('.btn-copy-url', {
+		text: function() {
+			return _vars["GET"]["url"];
+		}
+	});
+	
+	clipboard.on('success', function(e) {
+		console.log(e);
+	});
+
+	clipboard.on('error', function(e) {
+		console.log(e);
+	});
+
+*/				
+
 
 /*
 		function add_dropbox_links() {

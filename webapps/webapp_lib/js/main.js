@@ -61,8 +61,8 @@ $(document).ready(function(){
 
 	//--------------------- Scroll
 	//Detect top position for scroll block
-	start_scroll_pos = $("#App").offset().top + 100;
-	end_scroll_pos = start_scroll_pos - 20;
+	var start_scroll_pos = $("#App").offset().top + 100;
+	var end_scroll_pos = start_scroll_pos - 20;
 
 	//------------------------- scroll to top
 	// $("#scroll-to-top").click(function(e) {
@@ -96,6 +96,9 @@ console.log("start_scroll_pos: " , start_scroll_pos);
 //var st = $(window).scrollTop();
 //document.title = st;
 //console.log ("scrollTop = " + st );
+		var start_scroll_pos = $("#App").offset().top + 100;
+		var end_scroll_pos = start_scroll_pos - 20;
+
 		if ( $(this).scrollTop() > start_scroll_pos  ) {
 			$("#btn-scroll-to-top").show();
 		} 
