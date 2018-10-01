@@ -19,7 +19,7 @@ var config = {
 "url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
 "use_localcache" : false
 };
-console.log(config);
+console.log("config:", config);
 
 function init_webapp(){
 //console.log("init_webapp()");
@@ -41,12 +41,13 @@ function init_webapp(){
 //---------------------------
 	lib = Lib(config);
 	
-console.log(lib);
+console.log("lib:", lib);
 	
 }//end init_webapp()
 
 $(document).ready(function(){
 //console.log("document ready");
+
 	$("#info").hide();
 	
 	$("#use-storage-switch").prop("checked", config["use_localcache"]);
@@ -57,8 +58,52 @@ $(document).ready(function(){
 //console.log(config["use_localcache"]);	
 	});//end event
 
+
+	//--------------------- Scroll
+	//Detect top position for scroll block
+	start_scroll_pos = $("#App").offset().top + 100;
+	end_scroll_pos = start_scroll_pos - 20;
+
+	//------------------------- scroll to top
+	// $("#scroll-to-top").click(function(e) {
+		// e.preventDefault;
+		// $('html,body').animate({
+			// scrollTop: 0
+			// }, 500);
+		// return false;
+	// });
+	
+	$(".scroll-to").addClass("nolink").on("click", function(){
+		if($(this).attr("href")){
+			var id = $(this).attr("href");
+		} else {
+			var id = "#" + $(this).attr("data-target");
+		}
+console.log("id: " , id);
+		
+		var start_scroll_pos = $(id).offset().top;
+console.log("start_scroll_pos: " , start_scroll_pos);
+
+		$('html,body').animate({
+			scrollTop: start_scroll_pos
+			}, 500);
+		return false;
+	});
+
 });//end ready
 
+	$(window).scroll(function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+		if ( $(this).scrollTop() > start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+	});//end scroll
 
 window.onload = function(){
 //console.log("window event onload");

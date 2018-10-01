@@ -275,3 +275,11 @@ padding: 10px;
 margin: 0;
 }
 
+
+#btn-scroll-to-top {
+	position: fixed;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -45px;
+	display:none;
+}

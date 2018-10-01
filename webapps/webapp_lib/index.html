@@ -234,6 +234,10 @@ num_authors:
 </div>
 
 
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to" data-target="App">scroll to top</button>
+	</div>
+
 <!-- ********************** load progress bar ************************** -->	
 <div id="wait" class="hide"></div>
 
@@ -262,8 +266,23 @@ prepare data:
 </div>
 
 <script>
+	if ('ontouchstart' in window){
+		document.body.className = "touch";
+_log( document.body.className );	
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
   init_webapp();
 </script>
+
   
 </body>
 </html>

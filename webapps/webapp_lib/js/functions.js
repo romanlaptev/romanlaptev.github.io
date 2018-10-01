@@ -728,20 +728,7 @@ _log(msg);
 
 	$(document).ready(function(){
 		
+		
 	});//end ready	
-
-	$(window).scroll(function() {
-//var st = $(window).scrollTop();
-//document.title = st;
-//console.log ("scrollTop = " + st );
-
-			//if ( $(this).scrollTop() > start_scroll_pos  ) {
-				//$("#btn-scroll-to-top").show();
-			//} 
-
-			//if ( $(this).scrollTop() < end_scroll_pos ) {
-				//$("#btn-scroll-to-top").hide();
-			//}
-	});//end scroll
 
 }
