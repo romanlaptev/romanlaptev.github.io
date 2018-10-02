@@ -52,16 +52,23 @@ console.log( _vars["logMsg"] );
 			}
 			
 //-----------------
-console.log( "document.queryCommandSupported('copy'): " + document.queryCommandSupported("copy") );
-if( document.queryCommandSupported("copy") ){
-		var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
-		_log(logMsg);
-		
-		config["addCopyLink"] = true;
-} else {
-		var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
-		_log(logMsg);
-		config["addCopyLink"] = false;
+//console.log(typeof document.queryCommandSupported);
+try{
+console.log( document.queryCommandSupported("copy") );
+	if( document.queryCommandSupported("copy") ){
+			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
+			_log(logMsg);
+			
+			config["addCopyLink"] = true;
+	} else {
+			var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
+			_log(logMsg);
+			config["addCopyLink"] = false;
+	}
+} catch(e) {
+console.log( "error name: " + e.name );
+console.log( "error message: " + e.message );
+console.log( "error result: " + e.result );
 }
 //-----------------			
 
@@ -80,7 +87,13 @@ _log(logMsg);
 					var res = init_cache();
 					if( res ){
 						get_xml_from_storage();
-					};
+					} else {
+						load_xml({
+							filename : config["xml_file"],
+							callback: after_load
+						});
+					}
+					
 				};
 				
 				script.onerror = function(e) {
@@ -315,7 +328,7 @@ console.log( _vars["logMsg"] );
 					!test["WebSQL"] &&
 						!test["indexedDB"]){
 
-				_vars["logMsg"] = "error, no support web-storages...";
+				_vars["logMsg"] = "error, not support web-storages...";
 		 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 
@@ -324,13 +337,26 @@ console.log( _vars["logMsg"] );
 			}
 			
 		//-----------------	
+			var _driver = [];
+			if(test["indexedDB"]){
+				_driver.push(localforage.INDEXEDDB);
+			}
+			if(test["WebSQL"]){
+				_driver.push(localforage.WEBSQL);
+			}
+			if(test["localStorage"]){
+				_driver.push(localforage.LOCALSTORAGE);
+			}
 console.log( "localforage version: " + localforage._config.version );
 			localforage.config({
+/*
 				driver: [localforage.INDEXEDDB,
 						 localforage.WEBSQL,
 						 localforage.LOCALSTORAGE],
+*/						 
 				//driver: [localforage.WEBSQL],
 				//driver: [localforage.LOCALSTORAGE],
+				driver: _driver,
 				name: config["dbName"]
 			});
 
@@ -340,8 +366,8 @@ console.log('localforage.driver():', localforage.driver());
 			});
 
 			localforage.length(function(err, numberOfKeys) {
-		//console.log('length of the database - ' + numberOfKeys);
-		//console.dir(err);
+console.log('length of the database - ' + numberOfKeys);
+console.dir(err);
 			});
 			
 			return true;

@@ -24,6 +24,9 @@ console.log("config:", config);
 function init_webapp(){
 //console.log("init_webapp()");
 
+console.log("typeof window.jQuery: " + typeof window.jQuery);
+
+	if( typeof window.jQuery === "function"){
 //============================ test modal
 /*	
 	var waitWindow = getById("win1");
@@ -39,9 +42,10 @@ function init_webapp(){
 	}, 1000*3);
 */	
 //---------------------------
-	lib = Lib(config);
+		lib = Lib(config);
 	
 console.log("lib:", lib);
+	}
 	
 }//end init_webapp()
 
