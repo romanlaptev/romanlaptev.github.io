@@ -59,7 +59,13 @@ console.log( document.queryCommandSupported("copy") );
 			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
 			_log(logMsg);
 			
-			config["addCopyLink"] = true;
+//console.log( "ClipboardJS: ", typeof ClipboardJS );
+			if( ClipboardJS ){
+				config["addCopyLink"] = true;
+			} else {
+				config["addCopyLink"] = false;
+			}
+			
 	} else {
 			var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
 			_log(logMsg);
