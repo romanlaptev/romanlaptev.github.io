@@ -752,13 +752,17 @@ console.log("errorThrown - ", errorThrown);
 				_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
 				
 				
-				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
-				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
+				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
+				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li").html() );
+				
+				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
+				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li").html();
+				
 				var tmp = templates.find("#view-node");
 				tmp.find("li").remove();
 				_vars["templates"]["node_tpl"] = tmp.html();
 				
-				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu li")[0].outerHTML );
+				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu li").html() );
 				var tmp = templates.find("#taxonomy-menu");
 				tmp.find("li").remove();
 				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
