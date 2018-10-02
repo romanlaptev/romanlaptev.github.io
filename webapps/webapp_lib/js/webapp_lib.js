@@ -24,7 +24,7 @@ var info = [];
 		if( !_vars["appContainer"] ){
 		_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
  _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 		} else {
 			//init
 			_vars["timeStart"] = new Date();
@@ -54,7 +54,7 @@ console.log( _vars["logMsg"] );
 //-----------------
 //console.log(typeof document.queryCommandSupported);
 try{
-console.log( document.queryCommandSupported("copy") );
+//console.log( document.queryCommandSupported("copy") );
 	if( document.queryCommandSupported("copy") ){
 			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
 			_log(logMsg);
@@ -301,7 +301,7 @@ console.log( "onLoadEnd ", headers);
 				"callback": function( data, runtime, xhr ){
 _vars["logMsg"] = "load " + p["filename"]  +", runtime: "+ runtime +" sec";
 _log("<div class='alert'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 //console.log( typeof data );
 //console.log( "xhr.responseText: ", xhr.responseText );
 
@@ -337,7 +337,7 @@ console.log( _vars["logMsg"] );
 
 				_vars["logMsg"] = "error, not support web-storages...";
 		 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 
 				config["use_localcache"] = false;
 				return false;
@@ -462,7 +462,7 @@ console.log( message );
 						//info.push(log);
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 						
 					
 						_vars["runtime"]["get_storage"] = {
@@ -504,7 +504,7 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 				} else {
 				_vars["logMsg"] = "error, failed save element to the storage", err;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 
 //for(var key in err){
 //console.log( key +": "+ err[key] );				
@@ -581,13 +581,13 @@ _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					//status = false;
 					_vars["logMsg"] = "error, failed SAVE element, localforage.setItem("+ key +")", err;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				}
 				
 				//info.push(log);
 				_vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 
 				_vars["runtime"]["put_storage"] = {
 					"time" : runTime
@@ -626,7 +626,7 @@ console.log( _vars["logMsg"] );
 					//info.push(log);
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 					
 					//if( err !== null){
 						//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
@@ -659,7 +659,7 @@ console.log( _vars["logMsg"] );
 			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 			_vars["logMsg"] = "Init application, runtime: <b>" + _vars["runTime"]  + "</b> sec";
 			_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 	
 //setTimeout(function(){
 			if( _vars["waitWindow"] ){
@@ -678,7 +678,7 @@ console.log( _vars["logMsg"] );
 			//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 		}//end callback_init()
 		
@@ -707,7 +707,7 @@ log += ", runtime: <b>" + runTime  + "</b> sec";
 //info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 
 _vars["runtime"]["load_tpl"] = {
 	"time" : runTime,
@@ -723,7 +723,7 @@ _vars["runtime"]["load_tpl"] = {
 					//info.push(message);
 _vars["logMsg"] = log;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 					
 console.log("status - ", status);
 console.log("errorThrown - ", errorThrown);
@@ -817,7 +817,7 @@ console.log("errorThrown - ", errorThrown);
 			//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["read_nodes_data"] = {
 				"time" : runTime
@@ -848,7 +848,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["get_xml_nodes"] = {
 				"time" : runTime
@@ -876,7 +876,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["read_taxonomy_data"] = {
 				"time" : runTime
@@ -904,7 +904,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["get_xml_taxonomy"] = {
 				"time" : runTime
@@ -935,7 +935,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			//info.push( log );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["get_book_category"] = {
 				"time" : runTime
@@ -1100,7 +1100,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				
 				return;
 			}
@@ -1141,7 +1141,7 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
  //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				return false;
 			}
 			var terminNodes = [];
@@ -1199,7 +1199,7 @@ _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 							
 						}
 					}
@@ -1309,7 +1309,7 @@ console.log(_terminNodes);
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
  //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				return false;
 			}
 				
@@ -1402,7 +1402,7 @@ nodeObj = {
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
  //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				return false;
 			}
 				
@@ -1549,7 +1549,7 @@ nodeObj = {
 				//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				
 				return;
 			}
@@ -1677,7 +1677,7 @@ console.log( _vars["logMsg"] );
 				//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				
 				return;
 			}
@@ -2165,7 +2165,7 @@ console.log("error, not found _vars[book_category], function parse_book_category
 				//info.push( message );
 _vars["logMsg"] = log;
 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				
 				return;
 			}
@@ -2359,7 +2359,7 @@ console.log("error, not found _vars[book_category]");
 				}
 				
 				if( _vars["node"]["book_links"].length > 0 ){
-console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
+//console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
 					$("#external-links").show();
 				} else {
 					$("#external-links").hide();
@@ -2576,7 +2576,7 @@ _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) /
 
 _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 
 _vars["runtime"]["get_child_pages"] = {
 	"time" : _vars["runTime"]
@@ -2606,7 +2606,7 @@ _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 						
 					//} else {
 //console.log("--- end of the execution process...");						
@@ -2633,7 +2633,7 @@ _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
+//console.log( _vars["logMsg"] );
 				break;
 /*
 				case "load-xml-book":

@@ -24,8 +24,7 @@ console.log("config:", config);
 function init_webapp(){
 //console.log("init_webapp()");
 
-console.log("typeof window.jQuery: " + typeof window.jQuery);
-
+//console.log("typeof window.jQuery: " + typeof window.jQuery);
 	if( typeof window.jQuery === "function"){
 //============================ test modal
 /*	
@@ -43,7 +42,6 @@ console.log("typeof window.jQuery: " + typeof window.jQuery);
 */	
 //---------------------------
 		lib = Lib(config);
-	
 console.log("lib:", lib);
 	}
 	
@@ -83,10 +81,10 @@ $(document).ready(function(){
 		} else {
 			var id = "#" + $(this).attr("data-target");
 		}
-console.log("id: " , id);
+//console.log("id: " , id);
 		
 		var start_scroll_pos = $(id).offset().top;
-console.log("start_scroll_pos: " , start_scroll_pos);
+//console.log("start_scroll_pos: " , start_scroll_pos);
 
 		$('html,body').animate({
 			scrollTop: start_scroll_pos
