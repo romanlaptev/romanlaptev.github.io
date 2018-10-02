@@ -66,9 +66,10 @@ console.log( document.queryCommandSupported("copy") );
 			config["addCopyLink"] = false;
 	}
 } catch(e) {
-console.log( "error name: " + e.name );
-console.log( "error message: " + e.message );
-console.log( "error result: " + e.result );
+console.log( "error, check document.queryCommandSupported('copy') failed..." );
+console.log( "- name: " + e.name );
+console.log( "- message: " + e.message );
+console.log( "- result: " + e.result );
 }
 //-----------------			
 
@@ -756,13 +757,13 @@ console.log("errorThrown - ", errorThrown);
 				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li").html() );
 				
 				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
-				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li").html();
+				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
 				
 				var tmp = templates.find("#view-node");
 				tmp.find("li").remove();
 				_vars["templates"]["node_tpl"] = tmp.html();
 				
-				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu li").html() );
+				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu ul").html() ).replace("{{list}}","");
 				var tmp = templates.find("#taxonomy-menu");
 				tmp.find("li").remove();
 				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
