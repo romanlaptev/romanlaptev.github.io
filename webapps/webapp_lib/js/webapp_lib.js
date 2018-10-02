@@ -326,10 +326,10 @@ console.log( _vars["logMsg"] );
 		//-----------------	
 console.log( "localforage version: " + localforage._config.version );
 			localforage.config({
-				/*driver: [localforage.INDEXEDDB,
+				driver: [localforage.INDEXEDDB,
 						 localforage.WEBSQL,
-						 localforage.LOCALSTORAGE],*/
-				driver: [localforage.WEBSQL],
+						 localforage.LOCALSTORAGE],
+				//driver: [localforage.WEBSQL],
 				//driver: [localforage.LOCALSTORAGE],
 				name: config["dbName"]
 			});
