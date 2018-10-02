@@ -51,6 +51,20 @@ console.log( _vars["logMsg"] );
 				_vars["waitWindow"].style.display="block";
 			}
 			
+//-----------------
+console.log( "document.queryCommandSupported('copy'): " + document.queryCommandSupported("copy") );
+if( document.queryCommandSupported("copy") ){
+		var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
+		_log(logMsg);
+		
+		config["addCopyLink"] = true;
+} else {
+		var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
+		_log(logMsg);
+		config["addCopyLink"] = false;
+}
+//-----------------			
+
 			if ( config["use_localcache"] ) {
 				
 				//load localforage script
@@ -61,6 +75,8 @@ console.log( _vars["logMsg"] );
 				
 				script.onload = function() {
 //console.log( "onload " + this.src);
+var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
+_log(logMsg);
 					var res = init_cache();
 					if( res ){
 						get_xml_from_storage();
@@ -310,10 +326,10 @@ console.log( _vars["logMsg"] );
 		//-----------------	
 console.log( "localforage version: " + localforage._config.version );
 			localforage.config({
-				driver: [localforage.INDEXEDDB,
+				/*driver: [localforage.INDEXEDDB,
 						 localforage.WEBSQL,
-						 localforage.LOCALSTORAGE],
-				//driver: [localforage.WEBSQL],
+						 localforage.LOCALSTORAGE],*/
+				driver: [localforage.WEBSQL],
 				//driver: [localforage.LOCALSTORAGE],
 				name: config["dbName"]
 			});
@@ -2660,24 +2676,26 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 				var html_url = node_tpl_url
 						.replace("{{link-title}}", link_title)
 						.replace(/{{url}}/g, url);
-//-------------
+						
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
 	html_url += "<br/>direct link: <div id='link-"+n+"'>" + url+"</div>";
-	html_url += "<button id='btn-copy-"+n+"' class='btn btn-primary btn-sm btn-copy-url' data-clipboard-action='copy' data-clipboard-target='#link-"+n+"'>Copy link to the clipboard</button>";
 	
-    var clipboard = new ClipboardJS("#btn-copy-"+n);
-console.log( "TEST!", clipboard );
+//------------- add COPY LINK BUTTON
+	if(config["addCopyLink"]){
+		html_url += "<button id='btn-copy-"+n+"' class='btn btn-primary btn-sm btn-copy-url' data-clipboard-action='copy' data-clipboard-target='#link-"+n+"'>Copy link to the clipboard</button>";
+		
+		var clipboard = new ClipboardJS("#btn-copy-"+n);
+	//console.log( "TEST!", clipboard );
 
-	clipboard.on('success', function(e) {
-console.log("Copy link success, ", e);
-	});
+		clipboard.on('success', function(e) {
+	console.log("Copy link success, ", e);
+		});
 
-	clipboard.on('error', function(e) {
-console.log("error copy link", e);
-	});
-	
+		clipboard.on('error', function(e) {
+	console.log("error copy link", e);
+		});
+	}
 }
-
 //-------------				
 						
 				html += html_url;
@@ -2688,24 +2706,6 @@ console.log("error copy link", e);
 			
 		}//end add_cloud_links()
 		
-/*				
-
-	var clipboard = new ClipboardJS('.btn-copy-url', {
-		text: function() {
-			return _vars["GET"]["url"];
-		}
-	});
-	
-	clipboard.on('success', function(e) {
-		console.log(e);
-	});
-
-	clipboard.on('error', function(e) {
-		console.log(e);
-	});
-
-*/				
-
 
 /*
 		function add_dropbox_links() {
