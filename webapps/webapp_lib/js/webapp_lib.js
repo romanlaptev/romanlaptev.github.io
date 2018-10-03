@@ -52,6 +52,7 @@ var info = [];
 			}
 			
 //-----------------
+/*
 //console.log(typeof document.queryCommandSupported);
 try{
 //console.log( document.queryCommandSupported("copy") );
@@ -77,6 +78,7 @@ console.log( "- name: " + e.name );
 console.log( "- message: " + e.message );
 console.log( "- result: " + e.result );
 }
+*/
 //-----------------			
 
 			if ( config["use_localcache"] ) {
@@ -2702,15 +2704,15 @@ $(".b-content").height(_newHeight);
 				}
 				
 var directLink = "";
-var btnCopyUrl = "";
-var desc = "";
+//var btnCopyUrl = "";
+//var desc = "";
 //-------------
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
-	//link_title = "Mail.ru cloud disk: " + link_title;
 	desc = "Mail.ru cloud disk: ";
-	directLink = "<div id='link-"+n+"'>" + url+"</div>";
+	//directLink = "<div id='link-"+n+"'>" + url+"</div>";
 	
 //------------- add COPY LINK BUTTON
+/*
 	if(config["addCopyLink"]){
 		btnCopyUrl = "<button id='btn-copy-"+n+"' class='btn btn-primary btn-sm btn-copy-url' data-clipboard-action='copy' data-clipboard-target='#link-"+n+"'>Copy link to the clipboard</button>";
 		
@@ -2720,25 +2722,27 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 		clipboard.on('success', function(e) {
 	console.log("Copy link success, ", e);
 //window.location.href = e.text;	
+//var params = "";
+//window.open(e.text, "name", params)
 		});
 
 		clipboard.on('error', function(e) {
 	console.log("error copy link", e);
 		});
 	}
+*/	
 }
 
 if(cloudUrl.indexOf("yandex") !== -1 ){
-	//link_title = "Yandex cloud disk: " + link_title;
 	desc = "Yandex cloud disk: ";
 }
 //-------------				
 				var html_url = node_tpl_url
 						.replace("{{link-title}}", link_title)
 						.replace(/{{url}}/g, url)
-						.replace(/{{description}}/g, desc)
-						.replace(/{{direct-link}}/g, directLink)
-						.replace(/{{btn-copy-url}}/g, btnCopyUrl);
+						.replace(/{{description}}/g, desc);
+						//.replace(/{{direct-link}}/g, directLink)
+						//.replace(/{{btn-copy-url}}/g, btnCopyUrl);
 
 				html += html_url;
 			}//next book file
