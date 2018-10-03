@@ -25,9 +25,19 @@ console.log( "#article-header exists..." );
 		let headerText = await articleHeader.innerText;
 console.log( headerText );
 */
-	var test = Selector("#sitename-block").exists;
-console.log(test);	
-	//await t.expect( siteName.innerText).eql("my lib");
+		const element = Selector("#sitename-block");
+		var test1 = await element.exists;
+console.log("#sitename-block.exists:", test1);		
+
+		var test2 = await element.visible;
+console.log("#sitename-block.visible:", test2);		
+
+		//if( await element.exists && await element.visible ){
+			//await t.typeText(element, "Peter Parker");
+		//}
+		
+		var result = test1 && test2;
+		await t.expect( result ).eql(true);
 	})
 	
 	.before( async t => {
