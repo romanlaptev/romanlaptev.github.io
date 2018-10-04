@@ -59,12 +59,29 @@ try{
 			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
 			_log(logMsg);
 			
-//console.log( "ClipboardJS: ", typeof ClipboardJS );
-			if( ClipboardJS ){
-				config["addCopyLink"] = true;
-			} else {
-				config["addCopyLink"] = false;
-			}
+			//load clipboard script
+			var script = document.createElement('script');
+			script.src = "js/vendor/clipboard.min.js";
+			//script.src = "../../test_code/js/lib/clipboard.js";
+			
+			document.getElementsByTagName('head')[0].appendChild(script);
+			
+			script.onload = function() {
+//console.log( "onload " + this.src);
+var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
+_log(logMsg);
+
+console.log( "ClipboardJS: ", typeof ClipboardJS );
+				if( typeof ClipboardJS === "undefined" ){
+					config["addCopyLink"] = false;
+				}
+				
+			};
+			
+			script.onerror = function(e) {
+				alert( "error load script " + this.src);
+			}; 
+			
 			
 	} else {
 			var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
@@ -72,10 +89,14 @@ try{
 			config["addCopyLink"] = false;
 	}
 } catch(e) {
-console.log( "error, check document.queryCommandSupported('copy') failed..." );
-console.log( "- name: " + e.name );
-console.log( "- message: " + e.message );
-console.log( "- result: " + e.result );
+//console.log( "- name: " + e.name );
+//console.log( "- message: " + e.message );
+//console.log( "- result: " + e.result );
+				_vars["logMsg"] = "error, check document.queryCommandSupported('copy') failed...";
+				_vars["logMsg"] += e.name+", "+e.message+", result: " + e.result;
+				_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+
 }
 //-----------------			
 
@@ -354,7 +375,8 @@ _log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 			if(test["localStorage"]){
 				_driver.push(localforage.LOCALSTORAGE);
 			}
-console.log( "localforage version: " + localforage._config.version );
+console.log( "localforage config: ", localforage._config );
+//console.log( "localforage version: " + localforage._config.version );
 			localforage.config({
 /*
 				driver: [localforage.INDEXEDDB,
@@ -502,55 +524,53 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 				if( err === null ){
 					after_load( value );
 				} else {
-				_vars["logMsg"] = "error, failed save element to the storage", err;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+					_vars["logMsg"] = "error, failed save element to the storage", err;
+					_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
-
 //for(var key in err){
 //console.log( key +": "+ err[key] );				
 //}
 
-var driverStr = localforage.driver();
+					var driverStr = localforage.driver();
 //console.log('localforage.driver():', driverStr);
 //console.log( err["name"] );//NS_ERROR_DOM_QUOTA_REACHED
 //console.log( err["code"] );//1014
 //console.log( err["message"] );
 
-//LocalStorage error handler
-if( driverStr === "localStorageWrapper"){
-	
-	if( err["code"] === 1014){
-		localforage.clear( function(err){
-_vars["logMsg"] = "Clear storage...";
-_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"], err );
+					//LocalStorage error handler
+					if( driverStr === "localStorageWrapper"){
+						
+						if( err["code"] === 1014){
+							localforage.clear( function(err){
+					_vars["logMsg"] = "Clear storage...";
+					_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					console.log( _vars["logMsg"], err );
 
-			localforage.removeItem( config["storage_key"], function(err) {
-_vars["logMsg"] = "Remove " +config["storage_key"];
-_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"], err );
+								//localforage.removeItem( config["storage_key"], function(err) {
+					//_vars["logMsg"] = "Remove " +config["storage_key"];
+					//_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					//console.log( _vars["logMsg"], err );
 
-			 });
+								 //});
 
-		});
-	}
-}
+							});
+						}
+					}
 
-//indexedDB error handler
-if( driverStr === "asyncStorage"){
-	if( err["name"] === "QuotaExceededError"){
-		localforage.clear( function(err){
-_vars["logMsg"] = "Clear storage...";
-_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"], err );
-		});
-	}
-}
+					//indexedDB error handler
+					if( driverStr === "asyncStorage"){
+						if( err["name"] === "QuotaExceededError"){
+							localforage.clear( function(err){
+					_vars["logMsg"] = "Clear storage...";
+					_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					console.log( _vars["logMsg"], err );
+							});
+						}
+					}
 
 _vars["logMsg"] = "Use memory...";
 _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-				after_load( value );
-
+					after_load( value );
 
 				}
 				
@@ -649,11 +669,14 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 		
 		
 		function callback_init() {
-			get_content();
-			_urlManager();			
-			draw_page();
-			define_event();
 			
+			var res = get_content();
+			if(res){
+//console.log("TEST2");				
+				_urlManager();			
+				draw_page();
+				define_event();
+			}
 			
 			_vars["timeEnd"] = new Date();
 			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
@@ -808,8 +831,11 @@ console.log("errorThrown - ", errorThrown);
 			//get nodes
 			var timeStart = new Date();
 //runtime: 0.668 sec
-				read_nodes_data();
-				
+				var res = read_nodes_data();
+if(!res){
+console.log("TEST1");	
+	return false;
+}				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 			var log = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
@@ -958,6 +984,8 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			}
 //------------------
 			//delete _vars["xml"];
+			
+			return true;
 		};//end lib.get_content()
 
 
@@ -989,13 +1017,31 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
  		//read xml data
 //runtime: 0.668 sec		
 		function read_nodes_data() {
-			var xml = _vars["xml"];
-			var table_name_index = "table_taxonomy_index";
-			nodes_obj["x_table_index"] = $(xml).find( table_name_index ).find('item');//runtime: 0.244 sec
-			
-			var table_name = "table_node";
-			nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
-//console.log( nodes_obj["x_nodes"] );
+//console.log("TEST, read_nodes_data()");			
+			try{
+				var xml = _vars["xml"];
+				
+	//FF 3.6.2, error parse, fail $(xml)
+	//script stack space quota is exhausted
+				var table_name_index = "table_taxonomy_index";
+				nodes_obj["x_table_index"] = $(xml).find( table_name_index ).find('item');//runtime: 0.244 sec
+	//console.log( "1", $ );
+	//console.log( "2", typeof nodes_obj["x_table_index"] );
+	//console.log( "3", nodes_obj["x_table_index"] );
+				
+				var table_name = "table_node";
+				nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
+	//console.log( nodes_obj["x_nodes"] );
+	
+				return true;
+				
+			} catch(e) {
+	console.log( e );
+				_vars["logMsg"] = "XML parse error ( read_nodes_data() ). ";
+				_vars["logMsg"] += e.name+", "+e.message;
+				_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+				return false;
+			}
 		}//end read_nodes_data()
 
 /*		
