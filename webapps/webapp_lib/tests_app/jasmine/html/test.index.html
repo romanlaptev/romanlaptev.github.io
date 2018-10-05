@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>my lib</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+	<meta name="referrer" content="no-referrer" />
+-->
+        
+	<link rel="stylesheet" href="../../css/bootstrap336.min.css"/>
+<!--
+	<script src="js/vendor/bootstrap336.min.js"></script>
+-->
+		
+	<link rel="stylesheet" href="../../css/lib.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../css/shared.css" type="text/css" media="screen" />
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+            <script type="text/javascript" src="js/vendor/PIE_IE678.js"></script>
+        <![endif]-->
+	<link rel="stylesheet" href="../../css/loader.css">
+	<link rel="stylesheet" href="../../css/switch.css">
+
+	
+<!--
+	<script src="js/functions.js"></script>
+	<script src="js/main.js"></script>
+	
+	<script type="text/html" src="tpl/test.html" id="test_template"></script>
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
+-->
+	<script src="../../js/webapp_lib.js"></script>
+</head>
+
+<body>
+    
+<div id="App" class="container lib-wrapper">
+	<div class="header bg-header b-header">
+		<div id="sitename-block" class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+			<h1><a class="title" href="./">my lib</a></h1>
+		</div>
+            
+		<div class="col-xs-9 col-sm-9 col-md-6 col-lg-6">
+			<div id="header-content">
+				<div id="block-taxonomy-alpha"></div>
+			</div>
+		</div>
+		
+		<div class="pull-left grad hidden-xs hidden-sm">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+		
+<!--				
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
+			<div class="control-btn">
+<button id="info-panel-view" class="btn btn-info btn-sm">view log</button>
+<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
+			</div>
+		</div>
+-->
+	</div>
+
+        <nav role="navigation" class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button data-target="#bs-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div id="bs-navbar-collapse-1" class="navbar-collapse">
+                    <!--
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">book category</a></li>
+                        <li><a href="#">book tags</a></li>
+                        <li class="dropdown">
+                          <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                    -->
+			<div id="right-side" class="panel">
+				<div id="block-book-category" class="panel-body"></div>		
+				<div id="block-tags" class="panel-body"></div>		
+			</div>
+                    
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    
+	<div class="b-content">
+		<div id="block-content" class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+			
+			<div class="log-panel panel">
+				<div class="panel-body">
+					<span class="pull-right">
+						<a href="?q=info-panel-view" class="btn btn-sm btn-default">info</a>
+						<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+						<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+					</span>
+					<div id="log" class="panel-body"></div>
+				</div>
+			</div>
+		
+			<div class="row">
+<!--
+				<ul class="breadcrumb pull-left">
+					<li><a href="./">главная</a></li>
+				</ul>
+-->
+				<ul id="breadcrumb-tpl" class="breadcrumb list-inline pull-left"></ul>
+			</div><!-- end breadcrumb -->
+			
+			<div id="region-content">
+				<div id="block-taxonomy"></div>
+				<div id="block-nodes"></div>
+			</div>
+		</div>
+<!--
+		<div class="pull-left grad">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
+		</div>
+-->		
+	</div>
+<!--
+<style>
+.b-footer .block1 {
+	height: 40px;
+	background: #45557a none repeat scroll 0px 0px;
+}	
+.b-footer .block3 {
+	height: 40px;
+	background: #45557a none repeat scroll 0px 0px;
+}
+</style>
+-->
+	<div class="b-footer">
+		<div class="block1 col-xs-12 col-sm-12 col-md-8 col-lg-8"></div>
+		
+		<div class="block-grad pull-left grad hidden-xs hidden-sm">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+		
+		<div class="block3 hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+	</div>
+	
+</div>
+
+	
+<div id="info">
+	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
+	
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a data-toggle="tab" href="#tab1">Info</a>
+		</li>
+
+		<li>
+			<a data-toggle="tab" href="#tab-config">settings</a>
+		</li>
+
+	</ul>
+	
+	<div class="tab-content">
+		<div id="tab1" class="tab-pane fade in active">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<span class="pull-right">
+	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
+	<a href="db_admin.html" target="_blank" class="btn btn-primary btn-sm">db admin</a>
+<!--
+	<button id="info-panel-clear" class="btn btn-danger btn-sm">x</button>
+-->
+	<a class="btn btn-sm btn-default" href="tests_app/jasmine/SpecRunner.html" target="_blank">tests application, Jasmine</a>		
+</span>
+<div class="message"></div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		<div id="tab-config" class="tab-pane fade">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<!--
+<section>
+<h3>RAM usage</h3>
+size <b>lib_obj</b>:<span id="size_lib_obj"></span>
+</section>
+					
+<section>
+num books:
+num_authors:
+</section>
+-->
+<div class="switch">
+	<b>Use local storage:</b>
+	<span class="off">off</span>
+	<span class="TriSea-technologies-Switch switch-control">
+		<input id="use-storage-switch" name="use_storage_switch" type="checkbox" autocomplete="off">
+		<label for="use-storage-switch" class="label-default"></label>
+	</span>
+	<span class="on">on</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</div><!-- end tab-content -->
+	
+</div>
+
+
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to" data-target="App">scroll to top</button>
+	</div>
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+ajax load: <span id="num-total-load"></span>
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+
+prepare data:
+	<div class="progress">
+		<div id="parse-progress-bar" class="progress-bar hide"></div>
+	</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/*	
+	if ('ontouchstart' in window){
+		document.body.className = "touch";
+_log( document.body.className );	
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
+  init_webapp();
+*/	
+</script>
+
+  
+</body>
+</html>
