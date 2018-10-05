@@ -61,8 +61,9 @@ try{
 			
 			//load clipboard script
 			var script = document.createElement('script');
-			script.src = "js/vendor/clipboard.min.js";
+			//script.src = "js/vendor/clipboard.min.js";
 			//script.src = "../../test_code/js/lib/clipboard.js";
+			script.src = config["clipboardPath"];
 			
 			document.getElementsByTagName('head')[0].appendChild(script);
 			
@@ -104,8 +105,8 @@ console.log( _vars["logMsg"] );
 				
 				//load localforage script
 				var script = document.createElement('script');
-				script.src = "js/vendor/localforage.min.js";
-				
+				//script.src = "js/vendor/localforage.min.js";
+				script.src = config["localforagePath"];
 				document.getElementsByTagName('head')[0].appendChild(script);
 				
 				script.onload = function() {

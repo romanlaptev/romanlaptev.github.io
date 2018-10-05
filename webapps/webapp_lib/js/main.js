@@ -18,7 +18,9 @@ var config = {
 "url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
 "url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
 "use_localcache" : true,
-"addCopyLink": true
+"addCopyLink": true,
+"localforagePath": "js/vendor/localforage.min.js",
+"clipboardPath": "js/vendor/clipboard.min.js"				
 };
 console.log("config:", config);
 
