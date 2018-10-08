@@ -121,6 +121,18 @@ console.log("beforeAll", arguments);
 // console.log("test method .getRecords(), fake call", arguments);
 		// });
 		
+	});
+
+	beforeEach(function(){
+console.log("beforeEach", arguments);
+	});
+	
+	afterEach(function(){
+console.log("afterEach", arguments);
+	});
+	
+	it("test1, creating lib object", function(){
+		
 		//Start webApp
 		var config = {
 			"dbName" : "db1",
@@ -142,18 +154,7 @@ console.log("beforeAll", arguments);
 		};
 		var lib = Lib(config);
 console.log("lib:", lib);
-
-	});
-
-	beforeEach(function(){
-console.log("beforeEach", arguments);
-	});
-	
-	afterEach(function(){
-console.log("afterEach", arguments);
-	});
-	
-	it("test1, creating lib object", function(){
+		
 		var test1 = typeof Lib === "function";
 console.log( "Lib: " + typeof Lib, test1 );	
 
