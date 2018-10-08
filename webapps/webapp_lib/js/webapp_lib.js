@@ -2840,17 +2840,6 @@ console.log("status - " + status +", url - " + url);
 			});
 		}//end test_exists_book()
 */
-		
-		function get_attr_to_obj( attr )	
-		{			
-			var item_attr = {};				
-			for(var item = 0; item < attr.length; item++)
-			{
-				item_attr[attr[item].name] = attr[item].value;
-			}
-			return item_attr;
-		}//end get_attr_to_obj()
-
 
 
 
@@ -2923,11 +2912,18 @@ console.log(size_obj);
 		}//end count_object_bytes
 */
 
+		// for unit testing with Jasmine
+		var _testApi = {
+			nodesObj: nodes_obj,
+			taxonomyObj: taxonomy_obj,
+			bookObj: book,
+			drawPage: draw_page
+		};
 
 		// public interfaces
 		return{
+			testApi:	_testApi,
 			vars: _vars, 
-			
 			runApp: function( config ){ 
 				if( !_vars["appContainer"] ){
 				_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
