@@ -3,6 +3,28 @@
 jasmine.getFixtures().fixturesPath = "html";
 //jasmine.getStyleFixtures().fixturesPath = "../../../css";
 
+//===============
+/*
+var config = {
+	"dbName" : "db1",
+	"storage_key" : "lib_xml",
+	"xml_file" : "../../db/export_lib.xml",
+	//"xml_file : "db/test.xml",
+	"tpl_file" : "../../tpl/templates.html",
+
+	//"content_location" : "file:///mnt/terra/clouds/0_data",
+	"content_location" : "http://site-content",
+
+	//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
+	"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
+	"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
+	"use_localcache" : true,
+	"addCopyLink": true,
+	"localforagePath": "../../js/vendor/localforage.min.js",
+	"clipboardPath": "../../js/vendor/clipboard.min.js"				
+};
+*/
+//===============
 
 describe("test application", function(){
 	
@@ -23,25 +45,7 @@ console.log("afterEach", arguments);
 	it("test1, check creating lib object", function(){
 		
 		//Start webApp
-		var config = {
-			"dbName" : "db1",
-			"storage_key" : "lib_xml",
-			"xml_file" : "../../db/export_lib.xml",
-			//"xml_file : "db/test.xml",
-			"tpl_file" : "../../tpl/templates.html",
-
-			//"content_location" : "file:///mnt/terra/clouds/0_data",
-			"content_location" : "http://site-content",
-
-			//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
-			"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
-			"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
-			"use_localcache" : true,
-			"addCopyLink": true,
-			"localforagePath": "../../js/vendor/localforage.min.js",
-			"clipboardPath": "../../js/vendor/clipboard.min.js"				
-		};
-		var lib = Lib(config);
+		var lib = Lib();
 console.log("lib:", lib);
 		
 		var test1 = typeof Lib === "function";
@@ -59,25 +63,7 @@ console.log( "test result: ", res );
 	it("test2, checking lib.vars object", function(){
 		
 		//Start webApp
-		var config = {
-			"dbName" : "db1",
-			"storage_key" : "lib_xml",
-			"xml_file" : "../../db/export_lib.xml",
-			//"xml_file : "db/test.xml",
-			"tpl_file" : "../../tpl/templates.html",
-
-			//"content_location" : "file:///mnt/terra/clouds/0_data",
-			"content_location" : "http://site-content",
-
-			//"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
-			"url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
-			"url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
-			"use_localcache" : true,
-			"addCopyLink": true,
-			"localforagePath": "../../js/vendor/localforage.min.js",
-			"clipboardPath": "../../js/vendor/clipboard.min.js"				
-		};
-		var lib = Lib(config);
+		var lib = Lib();
 console.log("lib.vars:", lib.vars);
 		
 		var res = typeof lib.vars === "object";

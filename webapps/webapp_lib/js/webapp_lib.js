@@ -1,6 +1,6 @@
 //(function(){
 
-	var Lib =  Lib || function( config ){
+	var Lib =  Lib || function(){
 //console.log(config);
 
 		// private variables and functions
@@ -21,15 +21,6 @@ var info = [];
 		_vars["runtime"] = {};
 		
 		_vars["appContainer"] = getById("App");
-		if( !_vars["appContainer"] ){
-		_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
- _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-		} else {
-			//init
-			_vars["timeStart"] = new Date();
-			init();
-		}
 		
 
 		function view_log( log ){
@@ -43,7 +34,7 @@ var info = [];
 		}//end view_log()
 
 		
-		function init(){
+		function _init(){
 			
 			info.push( navigator.userAgent + "<br>\n");
 			
@@ -142,7 +133,7 @@ _log(logMsg);
 				*/
 			}
 			
-		}//end init()
+		}//end _init()
 		
 		
 		function load_xml( params ) {
@@ -2935,7 +2926,20 @@ console.log(size_obj);
 
 		// public interfaces
 		return{
-			vars: _vars//, 
+			vars: _vars, 
+			
+			runApp: function( config ){ 
+				if( !_vars["appContainer"] ){
+				_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
+ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+				} else {
+					//init
+					_vars["timeStart"] = new Date();
+					_init();
+				}
+			}//,
+			
 			//load_templates: function( params ){ 
 				//return _load_templates( params ); 
 			//},

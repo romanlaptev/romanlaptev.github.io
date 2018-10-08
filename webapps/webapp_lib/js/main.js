@@ -46,8 +46,9 @@ console.log("module Lib:", typeof Lib, Lib);
 */	
 //---------------------------
 		//lib = Lib(config);
-		var lib = Lib(config);
+		var lib = Lib();
 console.log("lib:", lib);
+		lib.runApp(config);
 	}
 	
 }//end init_webapp()
