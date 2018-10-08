@@ -26,20 +26,60 @@ var config = {
 */
 //===============
 
+describe("check DOM elements", function(){
+	
+	beforeAll(function(){
+//console.log("beforeAll !!!!");				
+	});
+	
+	beforeEach(function(){
+//console.log("beforeEach !!!!");				
+		loadFixtures("test.index.html");
+	});
+	
+	afterEach(function(){
+//console.log("afterEach !!!!");				
+	});
+			
+	it("check AppContainer, #App", function(){
+		expect( $("#App") ).toBeInDOM();
+	});//end it
+	
+	it("check Log panel, #log", function(){
+		expect( $("#log") ).toBeInDOM();
+	});//end it
+	
+	it("check waitWindow, #win1", function(){
+		expect( $("#win1") ).toBeInDOM();
+	});//end it
+	
+	it("check content blocks, #block-taxonomy-alpha, #block-taxonomy, #block-nodes", function(){
+		expect( $("#block-taxonomy-alpha") ).toBeInDOM();
+		expect( $("#block-taxonomy") ).toBeInDOM();
+		expect( $("#block-nodes") ).toBeInDOM();
+	});//end it
+	
+	it("check toggle info block, #info", function(){
+		expect( $("#info") ).toBeInDOM();
+	});//end it
+	
+});//end describe
+
+
 describe("test application", function(){
 	
 	beforeAll(function(){
-console.log("beforeAll", arguments);
+//console.log("beforeAll", arguments);
 		loadFixtures("test.index.html");
 		//loadFixtures("index.html");
 	});
 
 	beforeEach(function(){
-console.log("beforeEach", arguments);
+//console.log("beforeEach", arguments);
 	});
 	
 	afterEach(function(){
-console.log("afterEach", arguments);
+//console.log("afterEach", arguments);
 	});
 	
 	it("test1, check creating lib object", function(){
