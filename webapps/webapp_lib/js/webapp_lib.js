@@ -1,4 +1,4 @@
-(function(){
+//(function(){
 
 	var Lib =  Lib || function( config ){
 //console.log(config);
@@ -2873,7 +2873,7 @@ console.log("status - " + status +", url - " + url);
 		};//end  get_object_size( obj ) 
 		
 		
-		
+/*		
 		function count_object_bytes (obj){
 			var size_obj = {
 				"bytes" : count_bytes( obj ),
@@ -2930,7 +2930,7 @@ console.log(size_obj);
 			}//end count_bytes()
 			
 		}//end count_object_bytes
-
+*/
 
 
 		// public interfaces
@@ -2945,6 +2945,6 @@ console.log(size_obj);
 		};
 	};
 	
-	window.Lib = Lib;
+	//window.Lib = Lib;
 	
-})();
+//})();

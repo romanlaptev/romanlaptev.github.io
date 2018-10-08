@@ -20,7 +20,7 @@ console.log("beforeEach", arguments);
 console.log("afterEach", arguments);
 	});
 	
-	it("test1, creating lib object", function(){
+	it("test1, check creating lib object", function(){
 		
 		//Start webApp
 		var config = {
