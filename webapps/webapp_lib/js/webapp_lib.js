@@ -63,7 +63,7 @@ try{
 var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
 _log(logMsg);
 
-console.log( "ClipboardJS: ", typeof ClipboardJS );
+//console.log( "ClipboardJS: ", typeof ClipboardJS );
 				if( typeof ClipboardJS === "undefined" ){
 					config["addCopyLink"] = false;
 				}
@@ -984,10 +984,10 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 		var nodes_obj = {
 			//"nodes_size" : 0,
 			"get_node" : function( params ){
-				return get_node( params );
+				return _get_node( params );
 			},
 			"get_xml_nodes" : function( params ){
-				return get_xml_nodes( params );
+				return _get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
 				return _get_termin_nodes( params );
@@ -1084,7 +1084,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 
  //runtime: 1.396 sec
  //runtime: 0.783 sec
-		function get_xml_nodes( params ) {
+		function _get_xml_nodes( params ) {
 			var nodes = [];
 
 			for( var n = 0; n < nodes_obj["x_nodes"].length; n++)	{
@@ -1126,7 +1126,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			});
 */			
 			return nodes;
-		}//end get_xml_nodes()
+		}//end _get_xml_nodes()
 
 
 		function _get_termin_nodes( params )
@@ -1610,29 +1610,47 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			return html;
 		}//end view_termin_nodes()
 
-		function get_node( params ){
-			//for( var node in _vars["nodes"] )
-			for( var n = 0; n < _vars["nodes"].length; n++)
-			{
-				if( params["nid"] === _vars["nodes"][n]["nid"] )
-				{
-					var node = _vars["nodes"][n];
+
+		function _get_node( opt ){
+//console.log(opt);
+			var p = {
+				"nid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.nid){
+_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+
+			var node = false;
+			for( var n = 0; n < _vars["nodes"].length; n++){
+				if( p.nid === _vars["nodes"][n]["nid"] ){
+					node = _vars["nodes"][n];
+					
 					//get book url
 					var params = {"nid" :node["nid"] };
+					node["termins"] = get_node_termins( params );
 					node["book_files"] = get_book_files( params );
 					node["book_url"] = get_book_url( params );
 					node["book_links"] = get_book_links( params );
-					node["termins"] = get_node_termins( params );
+					
 				}
 			}//next node
-			
-//console.log( node  );
+console.log( node  );
 			return node;
-		}//end get_node()
+		}//end _get_node()
 
 		function get_book_files( params ){
 			var xml = _vars["xml"];
 			var files = [];
+/*			
 			var table_name = "table_book_filename";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
@@ -1643,12 +1661,14 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 					files.push( v );
 				}
 			});//next url
+*/			
 			return files;
 		}//end get_book_files()
 
 		function get_book_url( params ){
 			var xml = _vars["xml"];
-			var url = [];
+			var listUrl = [];
+/*			
 			var table_name = "table_book_url";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
@@ -1659,12 +1679,14 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 					url.push( v );
 				}
 			});//next url
-			return url;
+*/			
+			return listUrl;
 		}//end get_book_url()
 
 		function get_book_links( params ){
 			var xml = _vars["xml"];
 			var links = [];
+/*			
 			var table_name = "table_book_links";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
@@ -1675,6 +1697,7 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 					links.push( v );
 				}
 			});//next
+*/			
 			return links;
 		}//end get_book_links()
 
@@ -1709,7 +1732,7 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 		};//end get_node_termins()
 
 		function view_node( params ) {
-			if( typeof _vars["node"] === "undefined") {
+			if( !_vars["node"] ) {
 				var log = "- error, not found _vars[node]";
 //console.log(message);
 				//info.push( message );
@@ -1751,8 +1774,9 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			}
 			
 			var node_tpl_url = _vars["templates"]["node_tpl_url"];
+			
 			//form node book local url
-			if( _vars["node"]["book_files"].length > 0) {
+			if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
 				var html_book_url = "";
 				var subfolder =  _vars["node"]["subfolder"];
 				for( var n = 0; n < _vars["node"]["book_files"].length; n++ )
@@ -1781,19 +1805,14 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			}
 			
 			
-			//add dropbox disk links
-			//add_dropbox_links();
-			//var html_dropbox_links = add_dropbox_links();
-			//html = html.replace("{{dropbox-list}}", html_dropbox_links);
-
+			//add cloud disk links
 			var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
 			html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
 			html = html.replace("{{cloud-links}}", html_cloud_links);
 
 			//form node book external links
 			var html_book_links = "";
-			for( var n = 0; n < _vars["node"]["book_links"].length; n++ )
-			{
+			for( var n = 0; n < _vars["node"]["book_links"].length; n++ ){
 				var link =  _vars["node"]["book_links"][n];
 				var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
 				if( link.lastIndexOf('#') > 0 ) {
@@ -2386,8 +2405,18 @@ console.log("error, not found _vars[book_category]");
 			
 			
 			function render_node(){
-				var params = {"nid" :  _vars["GET"]["nid"]};
-				var html = nodes_obj.view_node( params );
+				var html = nodes_obj.view_node({
+					"nid" :  _vars["GET"]["nid"]
+				});
+				
+//console.log(html);				
+				if(!html){
+					_vars["logMsg"] = "- error, render_node("+_vars["GET"]["nid"]+")";
+					//_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					return false;
+				}
+
 				$("#region-content #block-nodes").html( html );
 				
 				
@@ -2723,7 +2752,7 @@ $(".b-content").height(_newHeight);
 			
 			var node_tpl_url = _vars["templates"]["cloud_for_tpl"];
 			var subfolder =  _vars["node"]["subfolder"];
-
+			
 			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
 				var filename =  _vars["node"]["book_files"][n];
 				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );

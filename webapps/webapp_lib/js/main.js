@@ -26,7 +26,7 @@ console.log("config:", config);
 
 function init_webapp(){
 console.log("init_webapp()");
-console.log("module Lib:", typeof Lib, Lib);
+//console.log("module Lib:", typeof Lib, Lib);
 
 //console.log("typeof window.jQuery: " + typeof window.jQuery);
 	if( typeof window.jQuery === "function"){

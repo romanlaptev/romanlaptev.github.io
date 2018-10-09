@@ -82,35 +82,66 @@ describe("test application", function(){
 //console.log("afterEach", arguments);
 	});
 	
-	it("test1, check creating lib object", function(){
+	it("check creating lib object", function(){
 		
 		//Start webApp
 		var lib = Lib();
 console.log("lib:", lib);
 		
 		var test1 = typeof Lib === "function";
-console.log( "Lib: " + typeof Lib, test1 );	
+//console.log( "Lib: " + typeof Lib, test1 );	
 
 		var test2 = typeof lib === "object";
-console.log( "lib: " + typeof lib, test2 );	
+//console.log( "lib: " + typeof lib, test2 );	
 
 		var res = test1 && test2;
-console.log( "test result: ", res );	
+//console.log( "test result: ", res );	
 		
 		expect( res ).toBe(true);
 	});//end it
 
-	it("test2, checking lib.vars object", function(){
+	it("checking lib.vars object", function(){
 		
 		//Start webApp
 		var lib = Lib();
-console.log("lib.vars:", lib.vars);
+//console.log("lib.vars:", lib.vars);
 		
 		var res = typeof lib.vars === "object";
-console.log( typeof lib.vars, res );	
-console.log( "test2 result: ", res );	
+//console.log( typeof lib.vars, res );	
+//console.log( "test2 result: ", res );	
 
 		expect( res ).toBe(true);
+	});//end it
+
+});//end describe
+
+
+describe("test methods", function(){
+	
+	beforeAll(function(){
+//console.log("beforeAll", arguments);
+		loadFixtures("test.index.html");
+		//loadFixtures("index.html");
+	});
+
+	beforeEach(function(){
+//console.log("beforeEach", arguments);
+	});
+	
+	afterEach(function(){
+//console.log("afterEach", arguments);
+	});
+	
+	it("checking get_node()", function(){
+		
+		//Start webApp
+		var lib = Lib();
+//console.log("lib.testApi:", lib.testApi);
+		
+		var res = lib.testApi.nodesObj.get_node();
+//console.log(res);
+		
+		expect( res ).toBe(false);
 	});//end it
 
 });//end describe
