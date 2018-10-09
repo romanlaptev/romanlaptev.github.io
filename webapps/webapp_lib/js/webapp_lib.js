@@ -1025,6 +1025,17 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
 	//console.log( nodes_obj["x_nodes"] );
 	
+//-------------
+				var table_name = "table_book_filename";
+				nodes_obj["x_filenames"] = $(xml).find( table_name );
+				
+				table_name = "table_book_url";
+				nodes_obj["x_url"] = $(xml).find( table_name );
+				
+				table_name = "table_book_links";
+				nodes_obj["x_links"] = $(xml).find( table_name );
+//-------------
+	
 				return true;
 				
 			} catch(e) {
@@ -1087,7 +1098,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 		function _get_xml_nodes( params ) {
 			var nodes = [];
 
-			for( var n = 0; n < nodes_obj["x_nodes"].length; n++)	{
+			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
 //console.log( n, x_nodes[n] );
 				var node = {};
 				
@@ -1114,12 +1125,13 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
 					}
 				}//next termin
-				
-				var params = {"nid" :node["nid"] };
-				node["termins"] = get_node_termins( params );
-				//node["book_files"] = get_book_files( params );
-				//node["book_url"] = get_book_url( params );
-				//node["book_links"] = get_book_links( params );
+//-----------------				
+				//var params = {"nid" :node["nid"] };
+				//node["termins"] = get_node_termins( params );
+				//node["book_files"] = _getBookFiles( params );
+				//node["book_url"] = _getBookUrl( params );
+				//node["book_links"] = _getBookLinks( params );
+//-----------------				
 				
 				nodes.push( node );
 			}//next node
@@ -1645,17 +1657,23 @@ console.log( _vars["logMsg"] );
 					//node["book_url"] = [];
 					//node["book_links"] = [];
 					
-					//node["_termins"] = get_node_termins( params );
-					node["book_files"] = get_book_files( params );
-					node["book_url"] = get_book_url( params );
-					node["book_links"] = get_book_links( params );
+					node["termins"] = get_node_termins( params );
+					
+//node["book_files"] = get_book_files( params );
+					node["book_files"] = _getBookFiles( params );
+					
+//node["book_url"] = get_book_url( params );
+					node["book_url"] = _getBookUrl( params );
+					
+//node["book_links"] = get_book_links( params );
+					node["book_links"] = _getBookLinks( params );
 					
 				}
 			}//next node
 //console.log( node  );
 			return node;
 		}//end _get_node()
-
+/*
 		function get_book_files( params ){
 			var xml = _vars["xml"];
 			var files = [];
@@ -1673,7 +1691,22 @@ console.log( _vars["logMsg"] );
 
 			return files;
 		}//end get_book_files()
+*/
+		function _getBookFiles( params ){
+			var files = [];
+			
+			$(nodes_obj["x_filenames"]).find('item').each(function(){
+				var entity_id = $(this).attr("entity_id");
+				
+				if( params["nid"] === entity_id ){
+					var v = $(this).children("value").text().trim();
+					files.push( v );
+				}
+			});//next url
 
+			return files;
+		}//end _getBookFiles()
+/*
 		function get_book_url( params ){
 			var xml = _vars["xml"];
 			var listUrl = [];
@@ -1690,7 +1723,22 @@ console.log( _vars["logMsg"] );
 
 			return listUrl;
 		}//end get_book_url()
+*/
+		function _getBookUrl( params ){
+			var listUrl = [];
 
+			$(nodes_obj["x_url"]).find('item').each(function(){
+				var entity_id = $(this).attr("entity_id");
+				
+				if( params["nid"] === entity_id ){
+					var v = $(this).children("value").text();
+					listUrl.push( v );
+				}
+			});//next url
+
+			return listUrl;
+		}//end _getBookUrl()
+/*
 		function get_book_links( params ){
 			var xml = _vars["xml"];
 			var links = [];
@@ -1707,6 +1755,21 @@ console.log( _vars["logMsg"] );
 
 			return links;
 		}//end get_book_links()
+*/		
+		function _getBookLinks( params ){
+			var links = [];
+
+			$(nodes_obj["x_links"]).find('item').each(function(){
+				var entity_id = $(this).attr("entity_id");
+				
+				if( params["nid"] === entity_id ){
+					var v = $(this).children("value").text();
+					links.push( v );
+				}
+			});//next
+
+			return links;
+		}//end _getBookLinks()
 
 		function get_node_termins(params){
 //console.log(params, nodes_obj);	
