@@ -187,6 +187,8 @@ type: "library_book",
 weight: "0"
 		}];
 		
+		lib.testApi.nodesObj["x_table_index"] = [];
+		
 		//try to get node
 		var node = lib.testApi.nodesObj.get_node({"nid": "1752"});
 console.log("test getting node data ", node, typeof node);

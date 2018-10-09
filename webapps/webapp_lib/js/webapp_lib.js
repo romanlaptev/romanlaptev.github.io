@@ -975,7 +975,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
 //------------------
-			//delete _vars["xml"];
+			delete _vars["xml"];
 			
 			return true;
 		};//end lib.get_content()
@@ -1027,13 +1027,13 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 	
 //-------------
 				var table_name = "table_book_filename";
-				nodes_obj["x_filenames"] = $(xml).find( table_name );
+				nodes_obj["x_filenames"] = $(xml).find( table_name ).find('item');
 				
 				table_name = "table_book_url";
-				nodes_obj["x_url"] = $(xml).find( table_name );
+				nodes_obj["x_url"] = $(xml).find( table_name ).find('item');
 				
 				table_name = "table_book_links";
-				nodes_obj["x_links"] = $(xml).find( table_name );
+				nodes_obj["x_links"] = $(xml).find( table_name ).find('item');
 //-------------
 	
 				return true;
@@ -1695,7 +1695,7 @@ console.log( _vars["logMsg"] );
 		function _getBookFiles( params ){
 			var files = [];
 			
-			$(nodes_obj["x_filenames"]).find('item').each(function(){
+			$(nodes_obj["x_filenames"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
 				if( params["nid"] === entity_id ){
@@ -1727,7 +1727,7 @@ console.log( _vars["logMsg"] );
 		function _getBookUrl( params ){
 			var listUrl = [];
 
-			$(nodes_obj["x_url"]).find('item').each(function(){
+			$(nodes_obj["x_url"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
 				if( params["nid"] === entity_id ){
@@ -1759,7 +1759,7 @@ console.log( _vars["logMsg"] );
 		function _getBookLinks( params ){
 			var links = [];
 
-			$(nodes_obj["x_links"]).find('item').each(function(){
+			$(nodes_obj["x_links"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
 				if( params["nid"] === entity_id ){
