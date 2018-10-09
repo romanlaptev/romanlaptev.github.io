@@ -854,35 +854,6 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			
 
 //------------------
-			var timeStart = new Date();
-//runtime: 4.837 sec+, 
-//runtime: 1.394 sec+, 
-//runtime: 0.783 sec
-				_vars["nodes"] = nodes_obj.get_xml_nodes();
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runTime  + "</b> sec";
-			
-			//info.push( log );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			
-			_vars["runtime"]["get_xml_nodes"] = {
-				"time" : runTime
-			};
-
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-//------------------
-
-//------------------
 			//get taxonomy termins
 			var timeStart = new Date();
 //runtime: 0.684 sec
@@ -939,6 +910,35 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 			}
 //------------------
 
+
+//------------------
+			var timeStart = new Date();
+//runtime: 4.837 sec+, 
+//runtime: 1.394 sec+, 
+//runtime: 0.783 sec
+				_vars["nodes"] = nodes_obj.get_xml_nodes();
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runTime  + "</b> sec";
+			
+			//info.push( log );
+_vars["logMsg"] = log;
+_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+			
+			_vars["runtime"]["get_xml_nodes"] = {
+				"time" : runTime
+			};
+
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
+//------------------
 
 //------------------
 			//get book category
@@ -1093,8 +1093,7 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 				
 				//read node attributes
 				var item_attr = get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
-				for(var attr in item_attr)
-				{
+				for(var attr in item_attr){
 					node[attr] = item_attr[attr];
 				}//next attr
 			
@@ -1115,6 +1114,12 @@ console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete
 						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
 					}
 				}//next termin
+				
+				var params = {"nid" :node["nid"] };
+				node["termins"] = get_node_termins( params );
+				//node["book_files"] = get_book_files( params );
+				//node["book_url"] = get_book_url( params );
+				//node["book_links"] = get_book_links( params );
 				
 				nodes.push( node );
 			}//next node
@@ -1636,7 +1641,11 @@ console.log( _vars["logMsg"] );
 					
 					//get book url
 					var params = {"nid" :node["nid"] };
-					node["termins"] = get_node_termins( params );
+					//node["book_files"] = [];
+					//node["book_url"] = [];
+					//node["book_links"] = [];
+					
+					//node["_termins"] = get_node_termins( params );
 					node["book_files"] = get_book_files( params );
 					node["book_url"] = get_book_url( params );
 					node["book_links"] = get_book_links( params );
@@ -1650,7 +1659,7 @@ console.log( node  );
 		function get_book_files( params ){
 			var xml = _vars["xml"];
 			var files = [];
-/*			
+
 			var table_name = "table_book_filename";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
@@ -1661,43 +1670,41 @@ console.log( node  );
 					files.push( v );
 				}
 			});//next url
-*/			
+
 			return files;
 		}//end get_book_files()
 
 		function get_book_url( params ){
 			var xml = _vars["xml"];
 			var listUrl = [];
-/*			
+
 			var table_name = "table_book_url";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
-				if( params["nid"] === entity_id )
-				{
+				if( params["nid"] === entity_id ){
 					var v = $(this).children("value").text();
-					url.push( v );
+					listUrl.push( v );
 				}
 			});//next url
-*/			
+
 			return listUrl;
 		}//end get_book_url()
 
 		function get_book_links( params ){
 			var xml = _vars["xml"];
 			var links = [];
-/*			
+
 			var table_name = "table_book_links";
 			$(xml).find( table_name ).find('item').each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
-				if( params["nid"] === entity_id )
-				{
+				if( params["nid"] === entity_id ){
 					var v = $(this).children("value").text();
 					links.push( v );
 				}
 			});//next
-*/			
+
 			return links;
 		}//end get_book_links()
 
