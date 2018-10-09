@@ -72,6 +72,7 @@ _log(logMsg);
 			
 			script.onerror = function(e) {
 				alert( "error load script " + this.src);
+				config["addCopyLink"] = false;
 			}; 
 			
 			
@@ -88,6 +89,7 @@ _log(logMsg);
 				_vars["logMsg"] += e.name+", "+e.message+", result: " + e.result;
 				_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
+				config["addCopyLink"] = false;
 
 }
 //-----------------			
