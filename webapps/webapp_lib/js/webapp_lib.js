@@ -1652,7 +1652,7 @@ console.log( _vars["logMsg"] );
 					
 				}
 			}//next node
-console.log( node  );
+//console.log( node  );
 			return node;
 		}//end _get_node()
 

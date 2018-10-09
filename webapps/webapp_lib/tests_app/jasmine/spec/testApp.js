@@ -116,7 +116,7 @@ console.log("lib:", lib);
 });//end describe
 
 
-describe("test methods", function(){
+describe("test method get_node()", function(){
 	
 	beforeAll(function(){
 //console.log("beforeAll", arguments);
@@ -132,16 +132,77 @@ describe("test methods", function(){
 //console.log("afterEach", arguments);
 	});
 	
-	it("checking get_node()", function(){
+	it("test empty parameters, must be return FALSE", function(){
 		
 		//Start webApp
 		var lib = Lib();
 //console.log("lib.testApi:", lib.testApi);
 		
-		var res = lib.testApi.nodesObj.get_node();
-//console.log(res);
+		var res = false;
+		var test = lib.testApi.nodesObj.get_node();
+//console.log(test);
+
+		if( !test ){
+			var res = true;
+		};
 		
-		expect( res ).toBe(false);
+		expect( res ).toBe(true);
+		
+	});//end it
+
+
+	it("get node data, must be return object with property 'NID', 'TITLE'", function(){
+		
+		//Start webApp
+		var lib = Lib();
+		
+		var res = false;
+		
+		//fake data
+		lib.vars["nodes"] = [{
+author: "Святослав Логинов",
+body_value: "",
+book_files: ["Loginov.Sv/loginov_svyatoslav_analitik.fb2.zip"],
+book_links: ["https://yadi.sk/d/4M0mxgw8qblbuQ"],
+book_url: ["http://site-content/"],
+bookname: "Аналитик",
+changed: "11-Sep-2018 21:26:39",
+created: "11-Sep-2018 21:19:21",
+mlid: "2154",
+nid: "1752",
+plid: "384",
+subfolder: "lib/books/L",
+termins: [	{tid: "39", name: "художественая литература"},
+			{tid: "173", name: "фантастика"},
+			{tid: "47", name: "история"},
+			{tid: "20", name: "Новелла, рассказ"},
+			{tid: "185", name: "fb2"},
+			{tid: "139", name: "А"},
+			{tid: "150", name: "Л"},
+			{tid: "229", name: "СССР"}
+		],
+tid: ["39", "173", "47", "20", "185", "139", "150", "229"],
+title: "Святослав Логинов. Аналитик",
+type: "library_book",
+weight: "0"
+		}];
+		
+		//try to get node
+		var node = lib.testApi.nodesObj.get_node({"nid": "1752"});
+console.log("test getting node data ", node, typeof node);
+//console.log(node["nid"], node instanceof Array, node instanceof Object);
+//node = {};
+
+		if( typeof node === "object"){
+			if( node["nid"] && 
+				node["nid"] !== "" &&
+				node["title"] !== ""
+			){
+				res = true;
+			}
+		}
+
+		expect( res ).toBe(true);
 	});//end it
 
 });//end describe
