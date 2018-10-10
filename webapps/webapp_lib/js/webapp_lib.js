@@ -41,6 +41,7 @@ var info = [];
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="block";
 			}
+			$("#load-progress").hide();
 			
 //-----------------
 //console.log(typeof document.queryCommandSupported);
@@ -108,6 +109,10 @@ var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
 _log(logMsg);
 					var res = init_cache();
 					if( res ){
+//----------- hide not used progress bar
+//$(_vars["loadProgressBar"]).parent().parent().hide();
+//$("#load-progress").hide();
+//-----------
 						get_xml_from_storage();
 					} else {
 						load_xml({
@@ -141,6 +146,8 @@ _log(logMsg);
 		function load_xml( params ) {
 
 			var timeStart = new Date();
+			
+			$("#load-progress").show();
 			
 			$.ajax({
 				type: "GET",
@@ -446,10 +453,6 @@ console.log( message );
 		
 		function get_xml_from_storage() {
 //console.log( "function get_xml_from_storage()", localforage );
-
-//----------- hide not used progress bar
-//$(_vars["loadProgressBar"]).parent().parent().hide();
-//-----------
 
 			var timeStart = new Date();
 			localforage.keys( function(err, keys) {//test in array of keys
