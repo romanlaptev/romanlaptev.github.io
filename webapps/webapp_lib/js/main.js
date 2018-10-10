@@ -30,25 +30,46 @@ console.log("init_webapp()");
 
 //console.log("typeof window.jQuery: " + typeof window.jQuery);
 	if( typeof window.jQuery === "function"){
+		//lib = Lib(config);
+		var lib = Lib();
+console.log("lib:", lib);
+		lib.runApp(config);
+/*		
 //============================ test modal
-/*	
+
 	var waitWindow = getById("win1");
 	if( waitWindow ){
 		waitWindow.style.display="block";
 	}
+
+		lib.vars["loadProgressBar"] = getById("load-progress-bar");
+		//lib.vars["numTotalLoad"] = getById("num-total-load");
+		lib.vars["parseProgressBar"] = getById("parse-progress-bar");
+		
+		var percentComplete = 20;
+		
+		lib.vars["loadProgressBar"].className = "progress-bar";
+		lib.vars["loadProgressBar"].style.width = percentComplete+"%";
+		lib.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+							
+		//lib.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+		
+		var _percentComplete = 30;
+		lib.vars["parseProgressBar"].className = "progress-bar";
+		//lib.vars["parseProgressBar"].style.width = _percentComplete+"%";
+		//lib.vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+		$(lib.vars["parseProgressBar"]).width( _percentComplete+"%");
+		$(lib.vars["parseProgressBar"]).html( _percentComplete+"%");
 
 	setTimeout(function(){
 		//hide block overlay and wait window
 		if( waitWindow ){
 			waitWindow.style.display="none";
 		}
-	}, 1000*3);
-*/	
+	}, 1000*10);
+
 //---------------------------
-		//lib = Lib(config);
-		var lib = Lib();
-console.log("lib:", lib);
-		lib.runApp(config);
+*/		
 	}
 	
 }//end init_webapp()

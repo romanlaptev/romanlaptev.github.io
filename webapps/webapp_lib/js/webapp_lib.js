@@ -447,6 +447,10 @@ console.log( message );
 		function get_xml_from_storage() {
 //console.log( "function get_xml_from_storage()", localforage );
 
+//----------- hide not used progress bar
+//$(_vars["loadProgressBar"]).parent().parent().hide();
+//-----------
+
 			var timeStart = new Date();
 			localforage.keys( function(err, keys) {//test in array of keys
 //console.log(err, keys, err === null);				
@@ -682,7 +686,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="none";
 			}
-//}, 1000*3);
+//}, 1000*7);
 			
 			//??????
 			var runtime_all = 0;
@@ -815,6 +819,7 @@ console.log("errorThrown - ", errorThrown);
 
 		}//end load_templates( params )
 
+
 		var get_content = function( params ){
 			
 			var _total = 5;
@@ -827,7 +832,6 @@ console.log("errorThrown - ", errorThrown);
 //runtime: 0.668 sec
 				var res = read_nodes_data();
 if(!res){
-console.log("TEST1");	
 	return false;
 }				
 			var timeEnd = new Date();
@@ -845,9 +849,10 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 		
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//_log( timeEnd, "parse-progress-bar" );
+
 			if( _vars["parseProgressBar"] ){
-				
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
@@ -875,7 +880,9 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//_log( timeEnd, "parse-progress-bar" );
+
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
@@ -904,12 +911,15 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//_log( timeEnd, "parse-progress-bar" );
+
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
+
 //------------------
 
 
@@ -934,12 +944,15 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//_log( timeEnd, "parse-progress-bar" );
+
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
+
 //------------------
 
 //------------------
@@ -970,12 +983,15 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//_log( timeEnd, "parse-progress-bar" );
+
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
+
 //------------------
 			delete _vars["xml"];
 			
