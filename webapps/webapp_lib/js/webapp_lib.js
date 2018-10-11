@@ -927,6 +927,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 
 //------------------
+/*
 			var timeStart = new Date();
 //runtime: 4.837 sec+, 
 //runtime: 1.394 sec+, 
@@ -955,7 +956,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
-
+*/
 //------------------
 
 //------------------
@@ -1005,13 +1006,15 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 		var nodes_obj = {
 			//"nodes_size" : 0,
 			"get_node" : function( params ){
-				return _get_node( params );
+				//return _get_node( params );
+				return _getNodeXML( params );
 			},
 			"get_xml_nodes" : function( params ){
 				return _get_xml_nodes( params );
 			},
 			"get_termin_nodes" : function( params ){
-				return _get_termin_nodes( params );
+				//return _get_termin_nodes( params );
+				return _getTerminNodesXML( params );
 				//return _getTerminNodesJquery( params );
 				//return _getTerminNodesJS( params );
 				//return _getTerminNodesStorage(params);
@@ -1028,7 +1031,6 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 //console.log("nodes_obj:", nodes_obj);
 
  		//read xml data
-//runtime: 0.668 sec		
 		function read_nodes_data() {
 //console.log("TEST, read_nodes_data()");			
 			try{
@@ -1068,54 +1070,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			}
 		}//end read_nodes_data()
 
-/*		
-//runtime: 4.6 sec
-//runtime: 0.871 sec
-		function get_xml_nodes_old( params )
-		{
-			var nodes = [];
-			
-			var table_name_index = "table_taxonomy_index";
-			var table_index = $(xml).find( table_name_index ).find('item');
-			
-			var table_name = "table_node";
-			$(xml).find( table_name ).find('node').each(function()
-			{
-				var node = {};
-				
-				//read node attributes
-				var item_attr = get_attr_to_obj( $(this)[0].attributes );
-				for(var attr in item_attr)
-				{
-					node[attr] = item_attr[attr];
-				}//next attr
-				
-				node["subfolder"] = $(this).children("subfolder").text();
-				node["author"] = $(this).children("author").text();
-				node["bookname"] = $(this).children("bookname").text();
-				node["body_value"] = $(this).children("body_value").text();
-
-				//read node termins
-				$(table_index).each(function()
-				{
-					if( $(this).attr("nid") === node["nid"] )
-					{
-						if( typeof node["tid"] === "undefined")
-						{
-							node["tid"] = [];
-						}
-						node["tid"].push( $(this).attr("tid") );
-					}
-				});//end each
-
-				nodes.push( node );
-			});//end each
-			return nodes;
-		}//end get_xml_nodes_old()
-*/
-
- //runtime: 1.396 sec
- //runtime: 0.783 sec
+/*
 		function _get_xml_nodes( params ) {
 			var nodes = [];
 
@@ -1146,6 +1101,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
 					}
 				}//next termin
+				
 //-----------------				
 				//var params = {"nid" :node["nid"] };
 				//node["termins"] = get_node_termins( params );
@@ -1156,17 +1112,18 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				
 				nodes.push( node );
 			}//next node
-/*
-			//var jsonData = JSON.stringify( nodes );
-//console.log( jsonData.length );
-			put_to_storage("nodes", nodes, function(){
-//console.log(arguments);				
-			});
-*/			
+
+			////var jsonData = JSON.stringify( nodes );
+////console.log( jsonData.length );
+			//put_to_storage("nodes", nodes, function(){
+////console.log(arguments);				
+			//});
+
 			return nodes;
 		}//end _get_xml_nodes()
+*/		
 
-
+/*
 		function _get_termin_nodes( params )
 		{
 			if( typeof _vars["nodes"] === "undefined")
@@ -1201,8 +1158,9 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 //console.log(termin_nodes);
 			return termin_nodes;
 		}//end _get_termin_nodes()
+*/
 
-		function _getTerminNodesStorage( opt ){
+		function _getTerminNodesXML( opt ){
 //console.log(opt);
 			var p = {
 				"tid" : null,
@@ -1220,30 +1178,71 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 //console.log( _vars["logMsg"] );
 				return false;
 			}
+		
+			var terminNodes = [];
+			
+			for( var n = 0; n < nodes_obj["x_table_index"].length; n++){
+				var tid = $( nodes_obj["x_table_index"][n] ).attr("tid");
+				if( p["tid"] === tid ){
+					
+					var node = _getNodeXML({
+						"nid" : $( nodes_obj["x_table_index"][n] ).attr("nid")
+					});
+					
+					if( node ){
+						terminNodes.push( node );
+					}
+				}
+			};//next
+			
+//console.log(terminNodes);
+			return terminNodes;
+		}//end _getTerminNodesXML()
+
+
+/*
+		function _getTerminNodesStorage( opt ){
+//console.log(opt);
+			var p = {
+				"tid" : null,
+				"target" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodesStorage()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+				return false;
+			}
 			var terminNodes = [];
 			
 //======================= TEST
 delete _vars["nodes"];
 delete _vars["xml"];
-/*
-			var taxonomy_index = [];
-			var xml = _vars["xml"];
-			var tableName = "table_taxonomy_index";
-			$(xml).find( tableName ).find("item").each( function( num, element ){
-//console.log(num, element);				
-				var itemObj = {
-					"tid" : $(this).attr("tid"),
-					"nid" : $(this).attr("nid")
-				};
-				taxonomy_index.push( itemObj );
-			});//next
+
+			//var taxonomy_index = [];
+			//var xml = _vars["xml"];
+			//var tableName = "table_taxonomy_index";
+			//$(xml).find( tableName ).find("item").each( function( num, element ){
+////console.log(num, element);				
+				//var itemObj = {
+					//"tid" : $(this).attr("tid"),
+					//"nid" : $(this).attr("nid")
+				//};
+				//taxonomy_index.push( itemObj );
+			//});//next
 			
 			
-//console.log(taxonomy_index);
-			put_to_storage("taxonomy_index", taxonomy_index, function(){
-console.log(arguments);				
-			});
-*/
+////console.log(taxonomy_index);
+			//put_to_storage("taxonomy_index", taxonomy_index, function(){
+//console.log(arguments);				
+			//});
+
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="block";
 			}
@@ -1313,19 +1312,19 @@ console.log( "Promise rejected.", arguments);
 console.log(terminNodes);
 //terminNodes = [];
 			return terminNodes;
-/*			
-			function _callback(readValue, err){
-console.log("--- continue of the execution process...");						
-console.log(readValue, err);	
 
-//setTimeout(function(){
-			if( _vars["waitWindow"] ){
-				_vars["waitWindow"].style.display="none";
-			}
-//}, 1000*3);
+			//function _callback(readValue, err){
+//console.log("--- continue of the execution process...");						
+//console.log(readValue, err);	
 
-			}//end _callback()
-*/
+////setTimeout(function(){
+			//if( _vars["waitWindow"] ){
+				//_vars["waitWindow"].style.display="none";
+			//}
+////}, 1000*3);
+
+			//}//end _callback()
+
 			function _deferred_req(){
 				
 				var $d = $.Deferred();
@@ -1370,7 +1369,9 @@ console.log(_terminNodes);
 			}//end __getTerminNodes()
 			
 		}//end _getTerminNodesStorage()
+*/
 
+/*
 		function _getTerminNodesJquery(opt){
 //console.log(opt);
 			var p = {
@@ -1383,7 +1384,7 @@ console.log(_terminNodes);
 //console.log(p);
 
 			if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodesJquery()";
  //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				return false;
@@ -1462,8 +1463,9 @@ nodeObj = {
 			}//end __getNodeTermins
 			
 		}//end _getTerminNodesJquery()
+*/
 
-
+/*
 		function _getTerminNodesJS(opt){
 //console.log(opt);
 			var p = {
@@ -1614,7 +1616,7 @@ nodeObj = {
 			}//end __getNodeTermins
 			
 		}//end _getTerminNodesJS()
-
+*/
 
 
 		function view_termin_nodes( params ) {
@@ -1648,7 +1650,7 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			return html;
 		}//end view_termin_nodes()
 
-
+/*
 		function _get_node( opt ){
 //console.log(opt);
 			var p = {
@@ -1694,6 +1696,70 @@ console.log( _vars["logMsg"] );
 //console.log( node  );
 			return node;
 		}//end _get_node()
+*/
+		function _getNodeXML( opt ){
+//console.log(opt);
+			var p = {
+				"nid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.nid){
+_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
+ //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+
+			var node = {};
+			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+				
+				var x_node = $( nodes_obj["x_nodes"][n] );
+				if( p.nid !== x_node.attr("nid") ){
+					continue;
+				}
+				
+				//read node attributes
+				var nodeAttr = get_attr_to_obj( x_node[0].attributes );
+				for(var attr in nodeAttr){
+//console.log(attr, nodeAttr[attr]);
+					node[attr] = nodeAttr[attr];
+				}//next attr
+
+				node["subfolder"] = x_node.children("subfolder").text().trim();
+				node["author"] = x_node.children("author").text().trim();
+				node["bookname"] = x_node.children("bookname").text().trim();
+				node["body_value"] = x_node.children("body_value").text().trim();
+
+				//read node termins
+				for( var n2 = 0; n2 < nodes_obj["x_table_index"].length; n2++){
+					var testNid = nodes_obj["x_table_index"][n2].getAttribute("nid");
+					if( testNid === node["nid"] ){
+						if( typeof node["tid"] === "undefined") {
+							node["tid"] = [];
+						}
+						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
+					}
+				}//next termin
+					
+				var params = {"nid" :node["nid"] };
+				node["termins"] = get_node_termins( params );
+				
+				node["book_files"] = _getBookFilesXML( params );
+				node["book_url"] = _getBookUrlXML( params );
+				node["book_links"] = _getBookLinksXML( params );
+				
+//console.log( node  );
+				return node;
+			}//next node
+			
+			return false;
+		}//end _getNodeXML()
+		
 /*
 		function get_book_files( params ){
 			var xml = _vars["xml"];
@@ -1713,7 +1779,7 @@ console.log( _vars["logMsg"] );
 			return files;
 		}//end get_book_files()
 */
-		function _getBookFiles( params ){
+		function _getBookFilesXML( params ){
 			var files = [];
 			
 			$(nodes_obj["x_filenames"]).each(function(){
@@ -1726,7 +1792,7 @@ console.log( _vars["logMsg"] );
 			});//next url
 
 			return files;
-		}//end _getBookFiles()
+		}//end _getBookFilesXML()
 /*
 		function get_book_url( params ){
 			var xml = _vars["xml"];
@@ -1745,7 +1811,7 @@ console.log( _vars["logMsg"] );
 			return listUrl;
 		}//end get_book_url()
 */
-		function _getBookUrl( params ){
+		function _getBookUrlXML( params ){
 			var listUrl = [];
 
 			$(nodes_obj["x_url"]).each(function(){
@@ -1758,7 +1824,7 @@ console.log( _vars["logMsg"] );
 			});//next url
 
 			return listUrl;
-		}//end _getBookUrl()
+		}//end _getBookUrlXML()
 /*
 		function get_book_links( params ){
 			var xml = _vars["xml"];
@@ -1777,7 +1843,7 @@ console.log( _vars["logMsg"] );
 			return links;
 		}//end get_book_links()
 */		
-		function _getBookLinks( params ){
+		function _getBookLinksXML( params ){
 			var links = [];
 
 			$(nodes_obj["x_links"]).each(function(){
@@ -1790,7 +1856,7 @@ console.log( _vars["logMsg"] );
 			});//next
 
 			return links;
-		}//end _getBookLinks()
+		}//end _getBookLinksXML()
 
 		function get_node_termins(params){
 //console.log(params, nodes_obj);	
