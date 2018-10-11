@@ -1196,6 +1196,12 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 			};//next
 
 			//------------------- SORT by author, alphabetical sorting
+			sortRecords({
+				"records" : terminNodes,
+				"sortOrder": "asc", //desc
+				"sortByKey": "author"
+			});
+/*			
 			var orderByKey = "author";
 			var order = "asc";
 			terminNodes.sort(function(a,b){
@@ -1226,7 +1232,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 					break
 				}//end swith()
 			});
-			
+*/			
 			//-------------------			
 //console.log(terminNodes);
 			return terminNodes;
