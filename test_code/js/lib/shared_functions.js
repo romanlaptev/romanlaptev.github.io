@@ -1,3 +1,17 @@
+/*
+use module:
+//console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
+
+	var func = sharedFunc();
+//console.log("func:", func);
+
+	func.sortRecords({
+		"records" : terminNodes,
+		"sortOrder": "asc", //desc
+		"sortByKey": "author"
+	});
+*/
+
 //(function(){
 	var sharedFunc =  sharedFunc || function(){
 		
@@ -61,12 +75,46 @@ console.log( logMsg );
 				}//end swith()
 			});//end sort
 			
-		}//end sortRecords()
+		}//end _sortRecords()
 
-		
+
+		//**************************************
+		//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
+		//$_GET = parseGetParams(); 
+		//or 
+		//$_GET = parseGetParams("?test=1"); 
+		//console.log( $_GET);
+		//**************************************
+		function _parseGetParams( parseStr ) { 
+//console.log(parseStr);
+//console.log(window.location);
+
+			if( !parseStr ){
+				var parse_url = window.location.search.substring(1).split("&"); 
+			} else {
+				p = parseStr.split("?");
+			//console.log(p);
+				parseStr = p["1"];
+				var parse_url = parseStr.split("&"); 
+			}
+			
+			var $_GET = {}; 
+			for(var n = 0; n < parse_url.length; n++) { 
+			var getVar = parse_url[n].split("="); 
+				//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+				if( typeof(getVar[1])=="undefined" ){
+					$_GET[ getVar[0] ] = "";
+				} else {
+				 $_GET[ getVar[0] ] = getVar[1];
+				}
+			}//next
+			return $_GET; 
+		}//end _parseGetParams() 
+
 		// public interfaces
 		return{
-			sortRecords: _sortRecords//,
+			sortRecords: _sortRecords,
+			parseGetParams: _parseGetParams//,
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}
@@ -371,37 +419,6 @@ function getenv(i){
 }//end getenv
 */
 
-//**************************************
-//musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
-//$_GET = parseGetParams(); 
-//or 
-//$_GET = parseGetParams("?test=1"); 
-//console.log( $_GET);
-//**************************************
-function parseGetParams( parseStr ) { 
-
-	if( !parseStr ){
-		var parse_url = window.location.search.substring(1).split("&"); 
-	} else {
-		p = parseStr.split("?");
-	//console.log(p);
-		parseStr = p["1"];
-		var parse_url = parseStr.split("&"); 
-	}
-//console.log(parse_url);
-	
-	var $_GET = {}; 
-	for(var n = 0; n < parse_url.length; n++) { 
-	var getVar = parse_url[n].split("="); 
-		//$_GET[ getVar[0] ] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
-		if( typeof(getVar[1])=="undefined" ){
-			$_GET[ getVar[0] ] = "";
-		} else {
-		 $_GET[ getVar[0] ] = getVar[1];
-		}
-	}//next
-	return $_GET; 
-}//end parseGetParams() 
 
 
 function detectBrowsers(){

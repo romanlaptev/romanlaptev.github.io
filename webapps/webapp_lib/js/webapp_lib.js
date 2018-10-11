@@ -339,7 +339,7 @@ _log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 	//console.log(lib);
 			_vars["xml"] = data;
 			
-			_vars["GET"] = parseGetParams(); 
+			_vars["GET"] = func.parseGetParams(); 
 //console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
 			load_templates({
@@ -1201,39 +1201,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				"sortOrder": "asc", //desc
 				"sortByKey": "author"
 			});
-/*			
-			var orderByKey = "author";
-			var order = "asc";
-			terminNodes.sort(function(a,b){
-//console.log(a, b);
-				var s1 = a[orderByKey];
-				var s2 = b[orderByKey];
-				switch(order){
-					case "asc":
-						if (s1 > s2) {
-							return 1;
-						}
-						if (s1 < s2) {
-							return -1;
-						}
-						// s1 === s2
-						return 0;
-					break
-					
-					case "desc":
-						if (s1 > s2) {
-							return -1;
-						}
-						if (s1 < s2) {
-							return 1;
-						}
-						// s1 === s2
-						return 0;
-					break
-				}//end swith()
-			});
-*/			
-			//-------------------			
+			
 //console.log(terminNodes);
 			return terminNodes;
 		}//end _getTerminNodesXML()
@@ -2766,7 +2734,7 @@ console.log("w = " + document.body.clientWidth );
 //console.log( parseStr );
 
 							if( parseStr.length > 0 ){
-								_vars["GET"] = parseGetParams( parseStr ); 
+								_vars["GET"] = func.parseGetParams( parseStr ); 
 								_urlManager(target);
 							} else {
 console.log( "Warn! error parse url in " + target.href );
