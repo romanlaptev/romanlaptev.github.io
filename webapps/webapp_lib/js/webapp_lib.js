@@ -1196,7 +1196,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 			};//next
 
 			//------------------- SORT by author, alphabetical sorting
-			sortRecords({
+			func.sortRecords({
 				"records" : terminNodes,
 				"sortOrder": "asc", //desc
 				"sortByKey": "author"

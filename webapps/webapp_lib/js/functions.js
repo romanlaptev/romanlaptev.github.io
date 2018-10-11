@@ -1,4 +1,83 @@
-﻿//console.log for old IE
+﻿//(function(){
+	var sharedFunc =  sharedFunc || function(){
+		
+		// private variables and functions
+		//.......
+
+		// SORT by key, alphabetical sorting
+		function _sortRecords(opt){
+		//console.log(opt);
+			var p = {
+				records: [],
+				"sortOrder": "asc", //desc
+				"sortByKey": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+		//console.log(p);
+
+			if(p.records.length === 0 ){
+				var logMsg = "error, not found sorting records, function sortRecords()";
+		_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+				return false;
+			}
+			
+			if(!p.sortByKey){
+				var logMsg = "error, not found 'sortByKey', function sortRecords()";
+		_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+				return false;
+			}
+			
+			p.records.sort(function(a,b){
+		//console.log(a, b);
+				var s1 = a[p.sortByKey];
+				var s2 = b[p.sortByKey];
+				switch(p.sortOrder){
+					case "asc":
+						if (s1 > s2) {
+							return 1;
+						}
+						if (s1 < s2) {
+							return -1;
+						}
+						// s1 === s2
+						return 0;
+					break
+					
+					case "desc":
+						if (s1 > s2) {
+							return -1;
+						}
+						if (s1 < s2) {
+							return 1;
+						}
+						// s1 === s2
+						return 0;
+					break
+				}//end swith()
+			});//end sort
+			
+		}//end sortRecords()
+
+		
+		// public interfaces
+		return{
+			sortRecords: _sortRecords//,
+			//get_content: function( params ){ 
+				//return get_content( params ); 
+			//}
+		};
+		
+	};//end sharedFunc
+	
+	//window.Lib = Lib;
+//})();
+
+//console.log for old IE
 if (!window.console){ 
 	window.console = {
 		"log" : function( msg ){
@@ -732,62 +811,3 @@ _log(msg);
 	});//end ready	
 
 }
-
-// SORT by key, alphabetical sorting
-function sortRecords(opt){
-//console.log(opt);
-	var p = {
-		records: [],
-		"sortOrder": "asc", //desc
-		"sortByKey": null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(p.records.length === 0 ){
-		var logMsg = "error, not found sorting records, function sortRecords()";
-_log("<div class='alert alert-danger'>" + logMsg + "</div>");
-console.log( logMsg );
-		return false;
-	}
-	
-	if(!p.sortByKey){
-		var logMsg = "error, not found 'sortByKey', function sortRecords()";
-_log("<div class='alert alert-danger'>" + logMsg + "</div>");
-console.log( logMsg );
-		return false;
-	}
-	
-	p.records.sort(function(a,b){
-//console.log(a, b);
-		var s1 = a[p.sortByKey];
-		var s2 = b[p.sortByKey];
-		switch(p.sortOrder){
-			case "asc":
-				if (s1 > s2) {
-					return 1;
-				}
-				if (s1 < s2) {
-					return -1;
-				}
-				// s1 === s2
-				return 0;
-			break
-			
-			case "desc":
-				if (s1 > s2) {
-					return -1;
-				}
-				if (s1 < s2) {
-					return 1;
-				}
-				// s1 === s2
-				return 0;
-			break
-		}//end swith()
-	});//end sort
-	
-}//end sortRecords()

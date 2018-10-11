@@ -4,6 +4,10 @@
 	//config["content_location"] = "file:///F:/clouds/0_data";
 //}
 
+//console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
+		var func = sharedFunc();
+console.log("func:", func);
+
 var config = {
 "dbName" : "db1",
 "storage_key" : "lib_xml",
@@ -26,7 +30,7 @@ console.log("config:", config);
 
 function init_webapp(){
 console.log("init_webapp()");
-//console.log("module Lib:", typeof Lib, Lib);
+
 
 //console.log("typeof window.jQuery: " + typeof window.jQuery);
 	if( typeof window.jQuery === "function"){
