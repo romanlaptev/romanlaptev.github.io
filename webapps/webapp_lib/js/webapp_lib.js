@@ -1194,11 +1194,43 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 					}
 				}
 			};//next
+
+			//------------------- SORT by author, alphabetical sorting
+			var orderByKey = "author";
+			var order = "asc";
+			terminNodes.sort(function(a,b){
+//console.log(a, b);
+				var s1 = a[orderByKey];
+				var s2 = b[orderByKey];
+				switch(order){
+					case "asc":
+						if (s1 > s2) {
+							return 1;
+						}
+						if (s1 < s2) {
+							return -1;
+						}
+						// s1 === s2
+						return 0;
+					break
+					
+					case "desc":
+						if (s1 > s2) {
+							return -1;
+						}
+						if (s1 < s2) {
+							return 1;
+						}
+						// s1 === s2
+						return 0;
+					break
+				}//end swith()
+			});
 			
+			//-------------------			
 //console.log(terminNodes);
 			return terminNodes;
 		}//end _getTerminNodesXML()
-
 
 /*
 		function _getTerminNodesStorage( opt ){
