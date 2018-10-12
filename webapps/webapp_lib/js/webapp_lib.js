@@ -243,15 +243,17 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				
 				error: function( data, status, errorThrown ){
 //console.log( "error", arguments );
-_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown["message"];
+//_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown["message"];
+_vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown;
  func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 
 console.log( "status:" + status );
-for(var key in errorThrown){
-console.log( key +" : "+ errorThrown[key] );
-}
-
+console.log( "errorThrown:" + errorThrown );
+//for(var key in errorThrown){
+//console.log( key +" : "+ errorThrown[key] );
+//}
+					params.callback(false);	
 				}
 			})
 			.done(function () {
@@ -263,7 +265,7 @@ console.log("textStatus:" + textStatus);
 			});
 		}//end load_xml();
 		
-		
+/*		
 		function loadXml(p){
 			
 			var timeStart = new Date();
@@ -325,7 +327,7 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 			});
 			
 		}//end loadXml()
-		
+*/		
 		
 		function after_load( data ) {
 			//lib = Lib( xml );
@@ -664,6 +666,7 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 		
 		function callback_init() {
 			
+//if(_vars["xml"]){
 			var res = get_content();
 			if(res){
 //console.log("TEST2");				
@@ -671,6 +674,7 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 				draw_page();
 				define_event();
 			}
+//}			
 			
 			_vars["timeEnd"] = new Date();
 			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
