@@ -837,9 +837,9 @@ _vars["logMsg"] = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
 //console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
-			_vars["runtime"]["read_nodes_data"] = {
-				"time" : runTime
-			};
+			//_vars["runtime"]["read_nodes_data"] = {
+				//"time" : runTime
+			//};
 		
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
@@ -867,9 +867,9 @@ _vars["logMsg"] = "- read_taxonomy_data, runtime: <b>" + runTime  + "</b> sec";
 //console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
-			_vars["runtime"]["read_taxonomy_data"] = {
-				"time" : runTime
-			};
+			//_vars["runtime"]["read_taxonomy_data"] = {
+				//"time" : runTime
+			//};
 			
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
@@ -896,9 +896,9 @@ _vars["logMsg"] = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
 //console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
-			_vars["runtime"]["get_xml_taxonomy"] = {
-				"time" : runTime
-			};
+			//_vars["runtime"]["get_xml_taxonomy"] = {
+				//"time" : runTime
+			//};
 
 
 			_numDone++;
@@ -953,18 +953,18 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			var timeStart = new Date();
 //runtime : 0.244 sec			
  //runtime : 0.032 sec			
-				_vars["book_category"] = get_book_category();
+				_vars["book_category"] = _get_book_category();
 				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 _vars["logMsg"] = "- get_book_category, runtime: <b>" + runTime  + "</b> sec";
 //func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
-			_vars["runtime"]["get_book_category"] = {
-				"time" : runTime
-			};
+			//_vars["runtime"]["get_book_category"] = {
+				//"time" : runTime
+			//};
 			
 			//message = "";
 			//message += "<br>Size _vars['xml_nodes']: " + _vars["xml_nodes"].length  + " bytes";
@@ -1184,13 +1184,15 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 			};//next
 
 			//------------------- SORT by author, alphabetical sorting
-			func.sortRecords({
-				"records" : terminNodes,
-				"sortOrder": "asc", //desc
-				"sortByKey": "author"
-			});
+			if( terminNodes.length > 0 ){
+				func.sortRecords({
+					"records" : terminNodes,
+					"sortOrder": "asc", //desc
+					"sortByKey": "author"
+				});
+			}
 			
-//console.log(terminNodes);
+//console.log(terminNodes, terminNodes.length);
 			return terminNodes;
 		}//end _getTerminNodesXML()
 
@@ -2285,39 +2287,38 @@ console.log("error, vocabulary not found " + vocabulary_name);
 
 		var book = {
 			"get_book_category" : function(){
-				get_book_category();
+				_get_book_category();
 			},
 			"get_child_pages" : function( params ) {
 				var plid = params["plid"];
 				var recourse = params["recourse"];
-				var nodes = get_child_pages( plid, recourse );
+				var nodes = _get_child_pages( plid, recourse );
 				return nodes;
 			},
 			"view_book_category" : function(){
-				var html = view_book_category();
+				var html = _view_book_category();
 				return html;
 			},
 			"view_child_pages" : function( params ) {
-				var html = view_child_pages( params );
+				var html = _view_child_pages( params );
 				return html;
 			}
 		};
 		
 		
-		function get_book_category()
-		{
+		function _get_book_category(){
 			for( var n = 0; n < nodes_obj["x_nodes"].length; n++) {
 				var node = nodes_obj["x_nodes"][n];
 				if ( $(node).attr('plid') == "0") {
-					var nodes = get_child_pages( $(node).attr('mlid'), 0);
+					var nodes = _get_child_pages( $(node).attr('mlid'), 0);
 				}
 			};//next node
 			
 			return nodes;
 			
-		}//end get_book_category()
+		}//end _get_book_category()
 
-		function get_child_pages( plid, recourse ){
+		function _get_child_pages( plid, recourse ){
 			var nodes = [];
 			for( var n = 0; n < nodes_obj["x_nodes"].length; n++) {
 				var node = nodes_obj["x_nodes"][n];
@@ -2336,9 +2337,9 @@ var children_nodes = list_child_pages( $(node).attr('mlid'), 1 );
 			};//next node
 			
 			return nodes;
-		}//end get_child_pages()
+		}//end _get_child_pages()
 
-		function view_book_category() {
+		function _view_book_category() {
 			if( typeof _vars["book_category"] === "undefined"){
 console.log("error, not found _vars[book_category], function parse_book_category( container )");
 				return;
@@ -2363,9 +2364,9 @@ console.log("error, not found _vars[book_category], function parse_book_category
 
 			html = _vars["templates"]["block_book_category_tpl"].replace(/{{list}}/g, html );
 			return html;
-		}//end view_book_category()
+		}//end _view_book_category()
 		
-		function view_child_pages( params ) {
+		function _view_child_pages( params ) {
 //console.log("function view_child_pages", params);
 			if( typeof _vars["book_child_pages"] === "undefined") {
 				var log = "- error, not found _vars[book_child_pages]";
@@ -2409,7 +2410,7 @@ console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].l
 //console.log( html );
 
 			return html;
-		};//end view_child_pages( params )
+		};//end _view_child_pages( params )
 
 		
 		function draw_page( params )	{
@@ -2792,13 +2793,19 @@ _vars["timeStart"] = new Date();
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 
-_vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+_vars["logMsg"] = "<p>- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
+
+console.log( _vars["book_child_pages"].length );
+						if( _vars["book_child_pages"].length > 0){
+							_vars["logMsg"] += "<p>- в разделе найдено подразделов или книг: <b>" + _vars["book_child_pages"].length + "</b></p>";
+						}
+						
+ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 
-_vars["runtime"]["get_child_pages"] = {
-	"time" : _vars["runTime"]
-};
+//_vars["runtime"]["get_child_pages"] = {
+	//"time" : _vars["runTime"]
+//};
 
 				break;
 				
@@ -2822,8 +2829,13 @@ _vars["timeStart"] = new Date();
 						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-_vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+_vars["logMsg"] = "<p>- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
+
+						if( _vars["termin_nodes"].length > 0){
+							_vars["logMsg"] += "<p>- найдено <b>" + _vars["termin_nodes"].length + "</b> книг, связанных с термином</p>";
+						}
+						
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 						
 					//} else {

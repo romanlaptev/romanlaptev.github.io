@@ -138,17 +138,17 @@
 <span id="block-book-child-pages">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h4>child pages</h4>
+			<h4>страницы раздела</h4>
 		</div>
 		<div class="panel-body">
-			<ul class="list-group">
+			<ol class="list-group--child-pages">
 	{{list}}
 				<span id="block-book-child-pages-for">	
-					<li class="list-group-item node-{{type}}">
+					<li class="list-group-item--child-pages node-{{type}}">
 						<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}">{{link-title}}</a>
 					</li>
 				</span>
-			</ul>
+			</ol>
 		</div>
 	</div>  
 </span>  
@@ -214,8 +214,13 @@
 <!-- TEMPLATE ["termin_nodes_tpl"] -->
 			<div id="termin-nodes">
 				<div class="panel">
+<!--
+					<div class="panel-heading">
+						<b>книги, связанные с термином</b>
+					</div>
+-->
 					<div class="panel-body">
-						<ul class="list-unstyled list-termin-nodes">#termin_nodes
+						<ol class="list-termin-nodes">#termin_nodes
 
 							<span id="termin-nodes-item">
 								<li class="termin-node">
@@ -223,11 +228,13 @@
 								</li>
 							</span>
 
-						</ul>
+						</ol>
 					</div>
+<!--
 					<div class="panel-footer">
 						<b>list related nodes</b>
 					</div>
+-->
 				</div>  
 				
 			</div>
