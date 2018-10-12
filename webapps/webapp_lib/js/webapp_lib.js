@@ -1012,7 +1012,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				return html;
 			},
 			"view_termin_nodes" : function( params ){
-				var html = view_termin_nodes( params );
+				var html = _view_termin_nodes( params );
 				return html;
 			}
 		};
@@ -1192,7 +1192,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				});
 			}
 			
-//console.log(terminNodes, terminNodes.length);
+console.log(terminNodes, terminNodes.length);
 			return terminNodes;
 		}//end _getTerminNodesXML()
 
@@ -1615,9 +1615,8 @@ nodeObj = {
 */
 
 
-		function view_termin_nodes( params ) {
-			if( typeof _vars["termin_nodes"] === "undefined")
-			{
+		function _view_termin_nodes( params ) {
+			if( typeof _vars["termin_nodes"] === "undefined"){
 				var log = "- error, not found _vars[termin_nodes]";
 //console.log(message);
 				//_vars["info"].push( message );
@@ -1632,19 +1631,29 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			var termin_node_tpl = _vars["templates"]["termin_nodes_item_tpl"];
 			var url_tpl = _vars["templates"]["termin_nodes_url_tpl"];
 			var html = "";
-			for( var n = 0; n < _vars["termin_nodes"].length; n++)
-			{
+			for( var n = 0; n < _vars["termin_nodes"].length; n++){
 				var node = _vars["termin_nodes"][n];
 				var url = url_tpl.replace("#nid", node["nid"]);
+
+if(node["type"] === "library_book"){
 				html += termin_node_tpl
-				.replace("#url", url)
-				.replace("#bookname", node["bookname"])
-				.replace("#author", node["author"]);
-				//html += node["title"] + "<br>";
-			}
-			html = termin_nodes_tpl.replace("#termin_nodes", html);
+				.replace(/{{url}}/g, url)
+				.replace("{{bookname}}", '"'+node["bookname"]+'"')
+				.replace("{{author}}", node["author"]);
+}				
+
+if(node["type"] === "author"){
+				html += termin_node_tpl
+				.replace(/{{url}}/g, url)
+				.replace("{{bookname}}", node["title"])
+				.replace("{{author}}", "");
+}
+
+			}//next
+			
+			html = termin_nodes_tpl.replace("{{termin_nodes}}", html);
 			return html;
-		}//end view_termin_nodes()
+		}//end _view_termin_nodes()
 
 /*
 		function _get_node( opt ){
