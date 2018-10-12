@@ -4,39 +4,26 @@
 //console.log(config);
 
 		// private variables and functions
+		//var message = "";
+		
 		var _vars = {};
-var info = [];
-		
-		var message = "";
 		_vars["xml"] = null;
-		
-		
-		_vars["log"] = getById("log");
-		_vars["btnToggle"] = getById("btn-toggle-log");
-		_vars["loadProgressBar"] = getById("load-progress-bar");
-		_vars["numTotalLoad"] = getById("num-total-load");
-		_vars["parseProgressBar"] = getById("parse-progress-bar");
-		_vars["waitWindow"] = getById("win1");
+		_vars["log"] = func.getById("log");
+		_vars["btnToggle"] = func.getById("btn-toggle-log");
+		_vars["loadProgressBar"] = func.getById("load-progress-bar");
+		_vars["numTotalLoad"] = func.getById("num-total-load");
+		_vars["parseProgressBar"] = func.getById("parse-progress-bar");
+		_vars["waitWindow"] = func.getById("win1");
 		_vars["breadcrumb"] = {};
 		_vars["runtime"] = {};
 		
-		_vars["appContainer"] = getById("App");
+		_vars["appContainer"] = func.getById("App");
 		
+		_vars["info"] = [];
 
-		function view_log( log ){
-		//console.log( log[0] );
-			//$("#info .message").empty();
-			$("#info .message").html( log );
-			
-		//	setTimeout(function() {
-		//		$("#info").hide();
-		//	}, 10*1000); 
-		}//end view_log()
-
-		
 		function _init(){
 			
-			info.push( navigator.userAgent + "<br>\n");
+			_vars["info"].push( navigator.userAgent + "<br>\n");
 			
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="block";
@@ -49,7 +36,8 @@ try{
 //console.log( document.queryCommandSupported("copy") );
 	if( document.queryCommandSupported("copy") ){
 			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
-			_log(logMsg);
+			//func.log(logMsg);
+			_vars["info"].push(logMsg);
 			
 			//load clipboard script
 			var script = document.createElement('script');
@@ -62,7 +50,8 @@ try{
 			script.onload = function() {
 //console.log( "onload " + this.src);
 var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
-_log(logMsg);
+//func.log(logMsg);
+_vars["info"].push(logMsg);
 
 //console.log( "ClipboardJS: ", typeof ClipboardJS );
 				if( typeof ClipboardJS === "undefined" ){
@@ -79,7 +68,7 @@ _log(logMsg);
 			
 	} else {
 			var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
-			_log(logMsg);
+			func.log(logMsg);
 			config["addCopyLink"] = false;
 	}
 } catch(e) {
@@ -88,8 +77,10 @@ _log(logMsg);
 //console.log( "- result: " + e.result );
 				_vars["logMsg"] = "error, check document.queryCommandSupported('copy') failed...";
 				_vars["logMsg"] += e.name+", "+e.message+", result: " + e.result;
-				_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+				func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
+				_vars["info"].push("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+				
 				config["addCopyLink"] = false;
 
 }
@@ -106,7 +97,8 @@ console.log( _vars["logMsg"] );
 				script.onload = function() {
 //console.log( "onload " + this.src);
 var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
-_log(logMsg);
+//func.log(logMsg);
+_vars["info"].push(logMsg);
 					var res = init_cache();
 					if( res ){
 //----------- hide not used progress bar
@@ -128,16 +120,17 @@ _log(logMsg);
 				}; 
 				
 			} else {
+
 				load_xml({
 					filename : config["xml_file"],
 					callback: after_load
 				});
-				/*
+/*
 				loadXml({
 					filename : config["xml_file"],
 					callback: after_load
 				});
-				*/
+*/				
 			}
 			
 		}//end _init()
@@ -232,7 +225,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 					//_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
 					//_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
 					//_vars["logMsg"] += ", <b>state</b>: " + state;
-//_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+//func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 
 					//if( _vars["waitWindow"] ){
@@ -243,7 +236,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				
 				success: function( data ){
 //_vars["logMsg"] = "Successful download xml file " + params["filename"];
-//_log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
+//func.log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 					params.callback( data );	
 				},
@@ -251,7 +244,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				error: function( data, status, errorThrown ){
 //console.log( "error", arguments );
 _vars["logMsg"] = "error ajax load " + params["filename"]+ ", " + errorThrown["message"];
- _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 
 console.log( "status:" + status );
@@ -279,7 +272,7 @@ console.log("textStatus:" + textStatus);
 				_vars["waitWindow"].style.display="block";
 			}
 			
-			runAjax( {
+			fn.runAjax( {
 				"requestMethod" : "GET", 
 				"responseType" : "text", //arraybuffer, blob, document, ms-stream, text
 				"url" : p["filename"], 
@@ -303,7 +296,7 @@ console.log("textStatus:" + textStatus);
 				"onError" : function( xhr ){
 console.log( "onError ", arguments);
 _vars["logMsg"] = "error ajax load " + params["filename"];
- _log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
 				},//end callback function
 				
@@ -322,7 +315,7 @@ console.log( "onLoadEnd ", headers);
 				
 				"callback": function( data, runtime, xhr ){
 _vars["logMsg"] = "load " + p["filename"]  +", runtime: "+ runtime +" sec";
-_log("<div class='alert'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 //console.log( typeof data );
 //console.log( "xhr.responseText: ", xhr.responseText );
@@ -358,7 +351,7 @@ _log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 						!test["indexedDB"]){
 
 				_vars["logMsg"] = "error, not support web-storages...";
-		 _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+		 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 
 				config["use_localcache"] = false;
@@ -444,7 +437,7 @@ console.dir(err);
 					message += "Your browser does not have support for indexedDB.<br>\n";
 				}
 
-				info.push(message);
+				_vars["info"].push(message);
 console.log( message );
 				return test;
 			};//end _test()
@@ -482,10 +475,10 @@ console.log( message );
 						log += ", runtime: <b>" + runTime + "</b> sec";
 						log += ", error: " + err;
 						
-						//info.push(log);
 _vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+						_vars["info"].push("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 						
 					
 						_vars["runtime"]["get_storage"] = {
@@ -526,7 +519,7 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 					after_load( value );
 				} else {
 					_vars["logMsg"] = "error, failed save element to the storage", err;
-					_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+					func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 //for(var key in err){
 //console.log( key +": "+ err[key] );				
@@ -544,12 +537,12 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 						if( err["code"] === 1014){
 							localforage.clear( function(err){
 					_vars["logMsg"] = "Clear storage...";
-					_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					console.log( _vars["logMsg"], err );
 
 								//localforage.removeItem( config["storage_key"], function(err) {
 					//_vars["logMsg"] = "Remove " +config["storage_key"];
-					//_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					//func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					//console.log( _vars["logMsg"], err );
 
 								 //});
@@ -563,14 +556,14 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 						if( err["name"] === "QuotaExceededError"){
 							localforage.clear( function(err){
 					_vars["logMsg"] = "Clear storage...";
-					_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+					func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					console.log( _vars["logMsg"], err );
 							});
 						}
 					}
 
 _vars["logMsg"] = "Use memory...";
-_log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					after_load( value );
 
 				}
@@ -601,13 +594,13 @@ _log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 					log = "- error, no save " + key + ", " + err;
 					//status = false;
 					_vars["logMsg"] = "error, failed SAVE element, localforage.setItem("+ key +")", err;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				}
 				
-				//info.push(log);
+				//_vars["info"].push(log);
 				_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 
 				_vars["runtime"]["put_storage"] = {
@@ -644,14 +637,14 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 					log += ", runtime: <b>" + runTime + "</b> sec";
 					log += ", error: " + err;
 					
-					//info.push(log);
+					//_vars["info"].push(log);
 _vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 					
 					//if( err !== null){
 						//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
-//_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 					//}
 				
@@ -682,7 +675,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			_vars["timeEnd"] = new Date();
 			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 			_vars["logMsg"] = "Init application, runtime: <b>" + _vars["runTime"]  + "</b> sec";
-			_log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+			func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 	
 //setTimeout(function(){
@@ -698,11 +691,10 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 				runtime_all = runtime_all + _vars["runtime"][item]["time"];
 			}
 			
-			var log = "runtime all : <b>" + runtime_all.toFixed(3)  + "</b> sec";
-			//info.push( message );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+_vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> sec";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+			_vars["info"].push( "<p>"+_vars["logMsg"]+"</p>" );
 			
 		}//end callback_init()
 		
@@ -728,26 +720,26 @@ var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var log = "- read templates from <b>" + config["tpl_file"]+"</b>";
 log += ", runtime: <b>" + runTime  + "</b> sec";
 
-//info.push( message );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+_vars["info"].push( "<div class='alert alert-info'>" + _vars["logMsg"] + "</div>" );
 
-_vars["runtime"]["load_tpl"] = {
-	"time" : runTime,
-	"message" : message
-};
+//_vars["runtime"]["load_tpl"] = {
+	//"time" : runTime,
+	//"message" : message
+//};
 					params.callback();	
 				},
 				error:function(data, status, errorThrown){
 					var log = "- error ajax load templates file" + config["tpl_file"];
-				//message += ", status: " + status;
+					//log += ", status: " + status;
 					log += ", " + errorThrown;
 					
-					//info.push(message);
 _vars["logMsg"] = log;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+					//_vars["info"].push(log);
 					
 console.log("status - ", status);
 console.log("errorThrown - ", errorThrown);
@@ -839,12 +831,11 @@ if(!res){
 }				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
 			
-			//info.push( message );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+_vars["logMsg"] = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
 			_vars["runtime"]["read_nodes_data"] = {
 				"time" : runTime
@@ -853,7 +844,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//_log( timeEnd, "parse-progress-bar" );
+//func.log( timeEnd, "parse-progress-bar" );
 
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
@@ -871,11 +862,10 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 			
-			var log = "- read_taxonomy_data, runtime: <b>" + runTime  + "</b> sec";
-			//info.push( log );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+_vars["logMsg"] = "- read_taxonomy_data, runtime: <b>" + runTime  + "</b> sec";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
 			_vars["runtime"]["read_taxonomy_data"] = {
 				"time" : runTime
@@ -884,7 +874,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//_log( timeEnd, "parse-progress-bar" );
+//func.log( timeEnd, "parse-progress-bar" );
 
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
@@ -896,16 +886,15 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			
 //------------------
 			var timeStart = new Date();
-//runtime: 1.989 sec+, 
-//0.042 sec			
+			
 				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy();
+				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
-			//info.push( log );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+_vars["logMsg"] = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
 			_vars["runtime"]["get_xml_taxonomy"] = {
 				"time" : runTime
@@ -915,7 +904,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//_log( timeEnd, "parse-progress-bar" );
+//func.log( timeEnd, "parse-progress-bar" );
 
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
@@ -937,9 +926,9 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runTime  + "</b> sec";
 			
-			//info.push( log );
+			//_vars["info"].push( log );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 			
 			_vars["runtime"]["get_xml_nodes"] = {
@@ -949,7 +938,7 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//_log( timeEnd, "parse-progress-bar" );
+//func.log( timeEnd, "parse-progress-bar" );
 
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
@@ -968,11 +957,10 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- get_book_category, runtime: <b>" + runTime  + "</b> sec";
-			//info.push( log );
-_vars["logMsg"] = log;
-_log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+_vars["logMsg"] = "- get_book_category, runtime: <b>" + runTime  + "</b> sec";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
 			_vars["runtime"]["get_book_category"] = {
 				"time" : runTime
@@ -983,12 +971,12 @@ _log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			//message += "<br>Size _vars['book_category']: " + _vars["book_category"].length  + " bytes";
 			//message += "<br>Size _vars['nodes']: " + nodes.nodes_size  + " bytes";
 			//message += "<br>Size _vars['taxonomy']: " + _vars["taxonomy"].length  + " bytes";
-			//info.push( message );
+			//_vars["info"].push( message );
 			
 			_numDone++;
 			_percentComplete = Math.ceil(_numDone / _total * 100);
 console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//_log( timeEnd, "parse-progress-bar" );
+//func.log( timeEnd, "parse-progress-bar" );
 
 			if( _vars["parseProgressBar"] ){
 				_vars["parseProgressBar"].className = "progress-bar";
@@ -1065,7 +1053,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 	console.log( e );
 				_vars["logMsg"] = "XML parse error ( read_nodes_data() ). ";
 				_vars["logMsg"] += e.name+", "+e.message;
-				_log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+				func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
 				return false;
 			}
 		}//end read_nodes_data()
@@ -1079,7 +1067,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				var node = {};
 				
 				//read node attributes
-				var item_attr = get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
+				var item_attr = func.get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
 				for(var attr in item_attr){
 					node[attr] = item_attr[attr];
 				}//next attr
@@ -1130,9 +1118,9 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			{
 				var log = "- error, not found _vars[nodes], function get_termin_nodes()";
 //console.log(message);
-				//info.push( message );
+				//_vars["info"].push( message );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				
 				return;
@@ -1174,7 +1162,7 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1221,7 +1209,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodesStorage()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1279,7 +1267,7 @@ console.log("--- continue of the execution process...");
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 							
 						}
@@ -1391,7 +1379,7 @@ console.log(_terminNodes);
 
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodesJquery()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1485,7 +1473,7 @@ nodeObj = {
 
 			if(!p.tid){
 _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1630,9 +1618,9 @@ nodeObj = {
 			{
 				var log = "- error, not found _vars[termin_nodes]";
 //console.log(message);
-				//info.push( message );
+				//_vars["info"].push( message );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				
 				return;
@@ -1670,7 +1658,7 @@ _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 			if(!p.nid){
 _vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1716,7 +1704,7 @@ console.log( _vars["logMsg"] );
 
 			if(!p.nid){
 _vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
- //_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 				return false;
 			}
@@ -1730,7 +1718,7 @@ console.log( _vars["logMsg"] );
 				}
 				
 				//read node attributes
-				var nodeAttr = get_attr_to_obj( x_node[0].attributes );
+				var nodeAttr = func.get_attr_to_obj( x_node[0].attributes );
 				for(var attr in nodeAttr){
 //console.log(attr, nodeAttr[attr]);
 					node[attr] = nodeAttr[attr];
@@ -1898,9 +1886,9 @@ console.log( _vars["logMsg"] );
 			if( !_vars["node"] ) {
 				var log = "- error, not found _vars[node]";
 //console.log(message);
-				//info.push( message );
+				//_vars["info"].push( message );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				
 				return;
@@ -2382,9 +2370,9 @@ console.log("error, not found _vars[book_category], function parse_book_category
 			if( typeof _vars["book_child_pages"] === "undefined") {
 				var log = "- error, not found _vars[book_child_pages]";
 //console.log(message);
-				//info.push( message );
+				//_vars["info"].push( message );
 _vars["logMsg"] = log;
-_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				
 				return;
@@ -2575,7 +2563,7 @@ console.log("error, not found _vars[book_category]");
 //console.log(html);				
 				if(!html){
 					_vars["logMsg"] = "- error, render_node("+_vars["GET"]["nid"]+")";
-					//_log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+					//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					return false;
 				}
@@ -2681,12 +2669,12 @@ console.log( _vars["logMsg"] );
 if ( config["use_localcache"] ) {
 					localforage.clear(function(err) {
 var logMsg = "Clear storage, error: " + err;
-_log("<div class='alert alert-info'>" + logMsg + "</div>");
+func.log("<div class='alert alert-info'>" + logMsg + "</div>");
 console.log( logMsg );
 					});
 } else {
 var logMsg = "Cannot use storage, error...";
-_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
 console.log( logMsg );
 }	
 					$("#info").hide();
@@ -2771,8 +2759,8 @@ console.log( "Warn! error parse url in " + target.href );
 				break;
 				
 				case "info-panel-view":
-//console.log( info );
-					view_log( info );			
+//console.log( _vars["info"] );
+					$("#info .message").html( _vars["info"] );
 					$("#info").toggle();
 				break;
 				
@@ -2805,7 +2793,7 @@ _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 
 _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 
 _vars["runtime"]["get_child_pages"] = {
@@ -2835,7 +2823,7 @@ _vars["timeStart"] = new Date();
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 						
 					//} else {
@@ -2862,7 +2850,7 @@ _vars["timeStart"] = new Date();
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
- _log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+ func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 				break;
 /*
@@ -3119,7 +3107,7 @@ console.log(size_obj);
 			runApp: function( config ){ 
 				if( !_vars["appContainer"] ){
 				_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
- _log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				} else {
 					//init

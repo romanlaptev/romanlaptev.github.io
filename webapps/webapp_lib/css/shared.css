@@ -103,3 +103,35 @@ margin-top: 18px;
 	text-decoration:none;
 	outline:none;
 }
+
+
+/*-------------*/
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+/*
+background-color: #f5f5f5;
+border: 1px solid #ccc;
+*/
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert,
+#info .alert 
+{
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p,
+#info p
+{
+margin: 0;
+}
