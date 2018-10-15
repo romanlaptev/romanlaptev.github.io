@@ -1,2 +1,2 @@
 #!/bin/sh
-php export.php
+php export_console.php

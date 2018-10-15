@@ -202,13 +202,9 @@
 	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
 	
 	<ul class="nav nav-tabs">
-		<li class="active">
-			<a data-toggle="tab" href="#tab1">Info</a>
-		</li>
-
-		<li>
-			<a data-toggle="tab" href="#tab-config">settings</a>
-		</li>
+		<li class="active"><a data-toggle="tab" href="#tab1">Info</a></li>
+		<li><a data-toggle="tab" href="#tab-export">Export</a></li>
+		<li><a data-toggle="tab" href="#tab-config">Settings</a></li>
 
 	</ul>
 	
@@ -219,7 +215,6 @@
 <span class="pull-right">
 	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
 	<a href="db_admin.html" target="_blank" class="btn btn-primary btn-sm">db admin</a>
-	<a href="db/export.php" target="_blank" class="btn btn-primary btn-sm">export book info from DB (lib.sqlite)</a>
 <!--
 	<button id="info-panel-clear" class="btn btn-danger btn-sm">x</button>
 -->
@@ -227,6 +222,16 @@
 </span>
 <div class="message"></div>
 
+				</div>
+			</div>
+		</div>
+		
+		<div id="tab-export" class="tab-pane fade">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<h3>export book info from DB (lib.sqlite)</h3>					
+<a href="db/export_web.php" target="_blank" class="btn btn-info btn-sm">export_web.php</a>
+<a href="db/export_console.php" target="_blank" class="btn btn-primary btn-sm">export_console.php</a>
 				</div>
 			</div>
 		</div>
