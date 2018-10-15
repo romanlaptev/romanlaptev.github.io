@@ -378,8 +378,7 @@ function write_xml($data){
 	$xml .= "<lib>\n";
 
 	$xml .= "<table_node>\n";
-	foreach ($data["node"] as $row )
-	{
+	foreach ($data["node"] as $row ){
 
 //print_r($row);
 		$nid = $row->nid;
@@ -400,8 +399,7 @@ function write_xml($data){
 		$xml .=  "changed=\"".$changed."\" ";
 		$xml .=  "weight=\"".$weight."\"";
 		$xml .=  ">\n";
-		if (!empty($row->body_value))
-		{
+		if (!empty($row->body_value)){
 			$body = $row->body_value;
 			$body = htmlspecialchars ($body);
 

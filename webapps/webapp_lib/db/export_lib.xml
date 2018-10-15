@@ -22208,9 +22208,10 @@ lib/books/T/Twain.Mark
 Принц и нищий
 		</bookname>
 	</node>
-	<node title="Принц-кролик" nid="695" mlid="1976" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="09-Aug-2014 08:51:43" weight="0">
+	<node title="Принц-кролик" nid="695" mlid="1976" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="15-Oct-2018 07:33:39" weight="0">
 		<body_value>
-А.А.Милн. Принц-кролик
+
+
 		</body_value>
 		<subfolder>
 lib/books/M
@@ -32229,9 +32230,6 @@ lib/art_books/book_history_engraving
 	<item entity_id="694" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="695" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
 	<item entity_id="697" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
@@ -32955,9 +32953,6 @@ lib/art_books/book_history_engraving
 	<item entity_id="694" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
-	<item entity_id="695" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
 	<item entity_id="697" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
@@ -33334,6 +33329,9 @@ http://localhost#localhost, direct link
 	</item>
 	<item entity_id="560" bundle="library_book" delta="0">
 		<value>https://yadi.sk/i/UAShU1c2YvDiq#yandex disk, external link</value>
+	</item>
+	<item entity_id="695" bundle="library_book" delta="0">
+		<value>https://anglijskie-skazki.larec-skazok.ru/princ-krolik#Английские сказки > Сказки Алана Милна</value>
 	</item>
 	<item entity_id="1636" bundle="library_book" delta="0">
 		<value>filename
@@ -34784,7 +34782,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="695" delta="0">
-		<termin tid="67" >txt</termin>
+		<termin tid="17" >юмор</termin>
 	</item>
 	<item entity_id="697" delta="0">
 		<termin tid="67" >txt</termin>
@@ -37118,7 +37116,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="695" delta="2">
-		<termin tid="17" >юмор</termin>
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="697" delta="2">
 		<termin tid="20" >Новелла, рассказ</termin>
@@ -42390,18 +42388,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="694" tid="149">
 	</item>
-	<item nid="695" tid="67">
-	</item>
-	<item nid="695" tid="20">
-	</item>
-	<item nid="695" tid="17">
-	</item>
-	<item nid="695" tid="139">
-	</item>
-	<item nid="695" tid="151">
-	</item>
-	<item nid="695" tid="154">
-	</item>
 	<item nid="697" tid="67">
 	</item>
 	<item nid="697" tid="39">
@@ -45225,6 +45211,18 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="682" tid="139">
 	</item>
 	<item nid="682" tid="156">
+	</item>
+	<item nid="695" tid="17">
+	</item>
+	<item nid="695" tid="20">
+	</item>
+	<item nid="695" tid="67">
+	</item>
+	<item nid="695" tid="139">
+	</item>
+	<item nid="695" tid="151">
+	</item>
+	<item nid="695" tid="154">
 	</item>
 </table_taxonomy_index>
 

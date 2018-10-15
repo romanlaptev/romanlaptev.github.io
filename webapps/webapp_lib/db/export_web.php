@@ -7,10 +7,132 @@ ini_set('display_errors', 1);
 //print_r($_REQUEST);
 //print_r($_FILES);
 //echo "</pre>";
+//exit();
 
-$message = "";
 $action = "";
 
+$_vars=array();
+//$_vars["filename"] = "export_lib.xml";
+//$_vars["sqlite_path"] = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
+//$_vars["exportBookName"] = "библиотека";
+
+$_vars["sql"]["getBook"] = "SELECT menu_links.mlid FROM menu_links WHERE menu_links.menu_name IN (SELECT menu_name FROM menu_links WHERE link_title LIKE '{{exportBookName}}' AND module='book') ORDER BY weight ASC;";
+
+$_vars["sql"]["getNodes"] = "
+SELECT 
+book.mlid, 
+book.nid, 
+menu_links.plid, 
+node.nid, 
+node.type, 
+node.status,
+node.created, 
+node.changed, 
+node.title, 
+field_data_body.body_value, 
+field_data_field_subfolder.field_subfolder_value, 
+field_data_field_book_author.field_book_author_value, 
+field_data_field_book_name.field_book_name_value, 
+menu_links.weight 
+-- file_managed.filename
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+-- LEFT JOIN file_usage ON file_usage.id=node.nid 
+-- LEFT JOIN file_managed ON file_managed.fid=file_usage.fid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid 
+LEFT JOIN field_data_field_subfolder ON field_data_field_subfolder.entity_id=node.nid 
+LEFT JOIN field_data_field_book_author ON field_data_field_book_author.entity_id=node.nid 
+LEFT JOIN field_data_field_book_name ON field_data_field_book_name.entity_id=node.nid 
+WHERE 
+node.status=1 AND 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY menu_links.weight,title ASC
+";
+
+$_vars["sql"]["getBookFileName"] = "
+SELECT 
+field_data_field_book_filename.entity_id,
+field_data_field_book_filename.bundle,
+field_data_field_book_filename.field_book_filename_value,
+field_data_field_book_filename.delta
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_book_filename ON field_data_field_book_filename.entity_id=node.nid
+WHERE 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_book_filename.delta ASC
+";
+
+$_vars["sql"]["getBookUrl"] = "
+SELECT 
+field_data_field_url.entity_id,
+field_data_field_url.entity_type,
+field_data_field_url.bundle,
+field_data_field_url.delta,
+field_data_field_url.field_url_value
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_url.delta ASC
+";
+
+$_vars["sql"]["getBookLinks"] = "
+SELECT 
+field_data_field_links.entity_id,
+field_data_field_links.entity_type,
+field_data_field_links.bundle,
+field_data_field_links.delta,
+field_data_field_links.field_links_value
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_links ON field_data_field_links.entity_id=node.nid
+WHERE 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_links.delta ASC
+";
+
+$_vars["sql"]["getTaxonomy"] = "
+SELECT 
+field_data_field_taxonomy.entity_id,
+field_data_field_taxonomy.entity_type,
+field_data_field_taxonomy.bundle,
+field_data_field_taxonomy.delta,
+field_data_field_taxonomy.field_taxonomy_tid,
+taxonomy_term_data.name
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_taxonomy ON field_data_field_taxonomy.entity_id=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy.field_taxonomy_tid
+WHERE 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy.delta ASC
+";
+
+$_vars["sql"]["getTaxonomyAlpha"] = "
+SELECT 
+field_data_field_taxonomy_alpha.entity_id,
+field_data_field_taxonomy_alpha.entity_type,
+field_data_field_taxonomy_alpha.bundle,
+field_data_field_taxonomy_alpha.delta,
+field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid,
+taxonomy_term_data.name
+FROM book 
+LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
+LEFT JOIN node ON node.nid=book.nid
+LEFT JOIN field_data_field_taxonomy_alpha ON field_data_field_taxonomy_alpha.entity_id=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid
+WHERE 
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy_alpha.delta ASC
+";
+
+$_vars["sql"]["getTaxonomyIndex"] = "SELECT nid,tid FROM taxonomy_index";
+$_vars["sql"]["getTaxonomyTermData"] = "SELECT tid,vid,name,description,weight FROM taxonomy_term_data";
+$_vars["sql"]["getTaxonomyTermHierarchy"] = "SELECT tid,parent FROM taxonomy_term_hierarchy";
+$_vars["sql"]["getTaxonomyVocabulary"] = "SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary";
+
+$_vars["log"] = "";
 
 if (empty($_REQUEST['action']))
 {
@@ -68,43 +190,35 @@ legend
 <body>
 
 <div id='form'>$form</div>
-<div id='message'><h2>message</h2>$message</div>
 
 </body>
 </html>
 EOF;
 
-}
-else
-{
+} else {
 	$action = $_REQUEST['action'];
-	switch ($action)
-	{
+	switch ($action)	{
 		case "export":
-			if (!empty($_REQUEST['filename']))
-			{
-				$filename = $_REQUEST['filename'];
-				$book_title = $_REQUEST['book_title'];
-				$sqlite_path = $_REQUEST['sqlite_path'];
+			if (!empty($_REQUEST['filename']))	{
+				$_vars["filename"] = $_REQUEST['filename'];
+				$_vars["exportBookName"] = $_REQUEST['book_title'];
+				$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
 
-				$db = new PDO($sqlite_path) or die("Could not open database");
+				$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 
 				$book =array();
-				$book = get_content($book_title);
+				$book = get_content();
 /*
 echo "book = <pre>";
 print_r($book);
 echo "</pre>";
 */
-				if ( !empty($book) )
-				{
+				if ( !empty($book) ){
 					write_xml($book);
 				}
-			}
-			else
-			{
-				$message = "<span class='error'>var filename is empty!!!!</span>";
-				$message .= "<br>";
+			} else {
+				$_vars["log"] = "<span class='error'>var filename is empty!!!!</span>";
+				$_vars["log"] .= "<br>";
 			}
 		break;
 	}//------------------------------ end switch
@@ -115,8 +229,7 @@ echo "</pre>";
 //====================
 // FUNCTIONS
 //====================
-function view_form()
-{
+function view_form(){
 	$out="";
 //------------------------------------- form
 	$out .= "<h2>Export lib database , drupal book to xml file</h2>";
@@ -136,34 +249,37 @@ function view_form()
 	return $out;
 }//----------------------- end func
 
+
+	function runSql($db,  $query){
+		$result = $db->query($query);
+		//$result->setFetchMode(PDO::FETCH_ASSOC);
+		$result->setFetchMode(PDO::FETCH_OBJ);
+		$resultData = $result->fetchAll();
+		return $resultData;
+	}//end runSql()
+
 //---------------------------------------------
 // получить menu_links.mlid всех страниц книги 
 //---------------------------------------------
-function get_content($book_title)
-{
-	global $db;
+function get_content(){
+	global $db, $_vars;
 
-	$sql = "SELECT menu_links.mlid FROM menu_links WHERE menu_links.menu_name IN (SELECT menu_name FROM menu_links WHERE link_title LIKE '".$book_title."' AND module='book') ORDER BY weight ASC;";
+	$sql = $_vars["sql"]["getBook"];
+	$sql = str_replace("{{exportBookName}}", $_vars["exportBookName"], $sql);
+	
 //echo "get_content,sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	//$result->setFetchMode(PDO::FETCH_ASSOC);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-
+	$result = runSql($db,  $sql);
+	
 	$sql_mlid="";
-	foreach ($result as $num => $row )
-	{
-		if ($num==0)
-		{
+	foreach ($result as $num => $row ){
+		if ($num==0){
 			$sql_mlid .= $row->mlid;
-		}
-		else
-		{
+		} else {
 			$sql_mlid .= ", ".$row->mlid;
 		}
 	}
-	if ( !empty($sql_mlid) )
-	{
+	if ( !empty($sql_mlid) ){
 //$sql_mlid = "1734";
 //echo "sql_mlid = ".$sql_mlid;
 //echo "<br>";
@@ -182,261 +298,158 @@ function get_content($book_title)
 
 		return $xml_data;
 	}
-
-}//---------------------- end func
+}//end get_content()
 
 //-------------------------
 // получить страницы книги
 //-------------------------
-function get_nodes ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-book.mlid, 
-book.nid, 
-menu_links.plid, 
-node.nid, 
-node.type, 
-node.created, 
-node.changed, 
-node.title, 
-field_data_body.body_value, 
-field_data_field_subfolder.field_subfolder_value, 
-field_data_field_book_author.field_book_author_value, 
-field_data_field_book_name.field_book_name_value, 
-menu_links.weight 
--- file_managed.filename
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
--- LEFT JOIN file_usage ON file_usage.id=node.nid 
--- LEFT JOIN file_managed ON file_managed.fid=file_usage.fid
-LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid 
-LEFT JOIN field_data_field_subfolder ON field_data_field_subfolder.entity_id=node.nid 
-LEFT JOIN field_data_field_book_author ON field_data_field_book_author.entity_id=node.nid 
-LEFT JOIN field_data_field_book_name ON field_data_field_book_name.entity_id=node.nid 
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY menu_links.weight,title ASC
-";
+function get_nodes ($sql_mlid){
+	global $db, $_vars;
+	$sql = $_vars["sql"]["getNodes"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
 //echo "get_pages, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
-
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_nodes()
 
 //-------------------------
 // получить имена связанных файлов книг
 //-------------------------
-function get_book_filename ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-field_data_field_book_filename.entity_id,
-field_data_field_book_filename.bundle,
-field_data_field_book_filename.field_book_filename_value,
-field_data_field_book_filename.delta
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
-LEFT JOIN field_data_field_book_filename ON field_data_field_book_filename.entity_id=node.nid
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_book_filename.delta ASC
-";
+function get_book_filename ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookFileName"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+//echo "-- get book_filename\n";
 //echo "get_book_filename, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
-
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_book_filename()
 
 //-------------------------
 // получить ссылки связанных файлов книг
 //-------------------------
-function get_field_url ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-field_data_field_url.entity_id,
-field_data_field_url.entity_type,
-field_data_field_url.bundle,
-field_data_field_url.delta,
-field_data_field_url.field_url_value
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
-LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_url.delta ASC
-";
+function get_field_url ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookUrl"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+//echo "-- get field_url\n";
 //echo "get_field_url, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_field_url()
 
 
 //-------------------------
 // 2.получить ссылки связанных файлов книг
 //-------------------------
-function get_field_links ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-field_data_field_links.entity_id,
-field_data_field_links.entity_type,
-field_data_field_links.bundle,
-field_data_field_links.delta,
-field_data_field_links.field_links_value
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
-LEFT JOIN field_data_field_links ON field_data_field_links.entity_id=node.nid
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_links.delta ASC
-";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+function get_field_links ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookLinks"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+//echo "-- get field_links\n";
+//echo "get_field_links, sql = ".$sql;
+//echo "<hr>";
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_field_links()
 
 
 //-------------------------
 // получить связанные с книгами термины таксономии
 //-------------------------
-function get_field_taxonomy ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-field_data_field_taxonomy.entity_id,
-field_data_field_taxonomy.entity_type,
-field_data_field_taxonomy.bundle,
-field_data_field_taxonomy.delta,
-field_data_field_taxonomy.field_taxonomy_tid,
-taxonomy_term_data.name
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
-LEFT JOIN field_data_field_taxonomy ON field_data_field_taxonomy.entity_id=node.nid
-LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy.field_taxonomy_tid
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy.delta ASC
-";
+function get_field_taxonomy ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomy"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+//echo "-- get_field_taxonomy\n";
 //echo "get_field_taxonomy, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_field_taxonomy()
 
 
 //-------------------------
 // получить связанные с книгами термины таксономии
 //-------------------------
-function get_field_taxonomy_alpha ($sql_mlid)
-{
-	global $db;
-	$sql = "
-SELECT 
-field_data_field_taxonomy_alpha.entity_id,
-field_data_field_taxonomy_alpha.entity_type,
-field_data_field_taxonomy_alpha.bundle,
-field_data_field_taxonomy_alpha.delta,
-field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid,
-taxonomy_term_data.name
-FROM book 
-LEFT JOIN menu_links ON menu_links.mlid=book.mlid 
-LEFT JOIN node ON node.nid=book.nid
-LEFT JOIN field_data_field_taxonomy_alpha ON field_data_field_taxonomy_alpha.entity_id=node.nid
-LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid
-WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy_alpha.delta ASC
-";
-//echo "get_field_taxonomy, sql = ".$sql;
+function get_field_taxonomy_alpha ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyAlpha"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+//echo "-- get_field_taxonomy_alpha\n";
+//echo "get_field_taxonomy_alpha, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_field_taxonomy_alpha()
 
 //-------------------------
 // получить все термины таксономии
 //-------------------------
-function get_taxonomy_index()
-{
-	global $db;
-	$sql = "SELECT nid,tid FROM taxonomy_index";
+function get_taxonomy_index(){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyIndex"];
+//echo "-- get_taxonomy_index\n";
 //echo "get_taxonomy_index, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
-function get_taxonomy_term_data()
-{
-	global $db;
-	$sql = "SELECT tid,vid,name,description,weight FROM taxonomy_term_data";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+}//end get_taxonomy_index()
 
+function get_taxonomy_term_data(){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyTermData"];
+//echo "-- get_taxonomy_term_data\n";
+
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
-function get_taxonomy_term_hierarchy()
-{
-	global $db;
-	$sql = "SELECT tid,parent FROM taxonomy_term_hierarchy";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+}//end get_taxonomy_term_data()
 
+function get_taxonomy_term_hierarchy(){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyTermHierarchy"];
+//echo "-- get_taxonomy_term_hierarchy\n";
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
-function get_taxonomy_vocabulary()
-{
-	global $db;
-	$sql = "SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+}//end get_taxonomy_term_hierarchy()
 
+function get_taxonomy_vocabulary(){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyVocabulary"];
+//echo "-- get_taxonomy_vocabulary\n";
+
+	$fresult = runSql($db,  $sql);
 	return $fresult;
-}//---------------------------- end func
+}//end get_taxonomy_vocabulary()
 
 
 
-function write_xml($data)
-{
-	global $message;
-	global $filename;
+function write_xml($data){
+	global $_vars;
 
 	$xml="";
 	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 	$xml .= "<lib>\n";
 
 	$xml .= "<table_node>\n";
-	foreach ($data["node"] as $row )
-	{
+	foreach ($data["node"] as $row ){
 
 //print_r($row);
 		$nid = $row->nid;
@@ -457,8 +470,7 @@ function write_xml($data)
 		$xml .=  "changed=\"".$changed."\" ";
 		$xml .=  "weight=\"".$weight."\"";
 		$xml .=  ">\n";
-		if (!empty($row->body_value))
-		{
+		if (!empty($row->body_value)){
 			$body = $row->body_value;
 			$body = htmlspecialchars ($body);
 
@@ -708,14 +720,13 @@ if ( !empty($row->description) )
 	if ( !empty($xml) )
 	{
 		header('Content-Type:  application/xhtml+xml');
-		header('Content-Disposition: attachment; filename='.$filename.'');
+		header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
 		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: '.strlen($xml));
+		//header('Content-Length: '.strlen($xml));
 		echo $xml;
 	}
 	//-----------------------------------
 
-}//-------------------------- end func
+}//end write_xml()
 
 ?>
-
