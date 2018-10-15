@@ -118,6 +118,7 @@ book.nid,
 menu_links.plid, 
 node.nid, 
 node.type, 
+node.status,
 node.created, 
 node.changed, 
 node.title, 
@@ -137,6 +138,7 @@ LEFT JOIN field_data_field_subfolder ON field_data_field_subfolder.entity_id=nod
 LEFT JOIN field_data_field_book_author ON field_data_field_book_author.entity_id=node.nid 
 LEFT JOIN field_data_field_book_name ON field_data_field_book_name.entity_id=node.nid 
 WHERE 
+node.status=1 AND 
 book.mlid in (".$sql_mlid.") ORDER BY menu_links.weight,title ASC
 ";
 //echo "get_pages, sql = ".$sql;

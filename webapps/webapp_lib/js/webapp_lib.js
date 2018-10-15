@@ -148,7 +148,7 @@ _vars["info"].push(logMsg);
 				dataType: "text",
 				//dataType: "xml",
 				//data: {},
-				//cache: false,
+				cache: false,
 				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
 					var xhr = new window.XMLHttpRequest();
 /*					
