@@ -2,116 +2,30 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-
-$log = "Export lib database , drupal book to xml file\n";
-$filename = "export_lib.xml";//"test.xml";
-$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
-$book_title = "библиотека";
-
-$db = new PDO($sqlite_path) or die("Could not open database");
-
-$book =array();
-$book = get_content($book_title);
-//echo "book = <pre>";
-//print_r($book);
+//echo "<pre>";
+//print_r($_SERVER);
+//print_r($_REQUEST);
+//print_r($_FILES);
 //echo "</pre>";
+//exit();
 
-if ( !empty($book) ) {
-	
-	if ( !file_exists($filename) ){
-		write_xml($book);
-	} else {
-		
-		$oldfile = $filename;
-		$newfile = "_".$filename;
-		
-		if (rename ($oldfile, $newfile)) {
-			$log .= "- rename $oldfile to $newfile\n";
-		} else {
-			$log .= "- unable to rename file $oldfile\n";
-		}
-		write_xml($book);
-	}
-}
+$_vars=array();
+echo "Export book info from DB (lib.sqlite)\n";
 
-echo $log;
+//echo PHP_VERSION;
+//echo phpversion();
+//echo PHP_OS;
+$_vars["phpversion"] = phpversion();
+echo "PHP version: ".$_vars["phpversion"]."\n";
 
 
-//====================
-// FUNCTIONS
-//====================
+$_vars["filename"] = "export_lib.xml";//"test.xml";
+$_vars["sqlite_path"] = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
+$_vars["exportBookName"] = "библиотека";
 
-/*
-		$node = run_sql( $db,  $sql);
+$_vars["sql"]["getBook"] = "SELECT menu_links.mlid FROM menu_links WHERE menu_links.menu_name IN (SELECT menu_name FROM menu_links WHERE link_title LIKE '".$_vars["exportBookName"]."' AND module='book') ORDER BY weight ASC;";
 
-	function run_sql($db,  $query)
-	{
-		$result = $db->query($query);
-		$result->setFetchMode(PDO::FETCH_OBJ);
-		$result_data = array();
-		foreach ($result as $row )
-		{
-			$result_data[] = $row;
-		}//----------------------- end foreach
-		return $result_data;
-	}//end get_table()
-
-*/
-
-//---------------------------------------------
-// получить menu_links.mlid всех страниц книги 
-//---------------------------------------------
-function get_content($book_title) {
-	global $db;
-
-	$sql = "SELECT menu_links.mlid FROM menu_links WHERE menu_links.menu_name IN (SELECT menu_name FROM menu_links WHERE link_title LIKE '".$book_title."' AND module='book') ORDER BY weight ASC;";
-//echo "get_content,sql = ".$sql;
-//echo "<hr>";
-	$result = $db->query($sql);
-	//$result->setFetchMode(PDO::FETCH_ASSOC);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-
-	$sql_mlid="";
-	foreach ($result as $num => $row )
-	{
-		if ($num==0)
-		{
-			$sql_mlid .= $row->mlid;
-		}
-		else
-		{
-			$sql_mlid .= ", ".$row->mlid;
-		}
-	}
-	if ( !empty($sql_mlid) )
-	{
-//$sql_mlid = "1734";
-//echo "sql_mlid = ".$sql_mlid;
-//echo "<br>";
-
-		$xml_data = array();
-		$xml_data["node"] = get_nodes($sql_mlid);
-		$xml_data["book_filename"] = get_book_filename ($sql_mlid);
-		$xml_data["field_url"] = get_field_url ($sql_mlid);
-		$xml_data["field_links"] = get_field_links ($sql_mlid);
-		$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
-		$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
-		$xml_data["taxonomy_index"] = get_taxonomy_index ();
-		$xml_data["taxonomy_term_data"] = get_taxonomy_term_data ();
-		$xml_data["taxonomy_term_hierarchy"] = get_taxonomy_term_hierarchy ();
-		$xml_data["taxonomy_vocabulary"] = get_taxonomy_vocabulary ();
-
-		return $xml_data;
-	}
-
-}//end get_content()
-
-//-------------------------
-// получить страницы книги
-//-------------------------
-function get_nodes($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getNodes"] = "
 SELECT 
 book.mlid, 
 book.nid, 
@@ -139,24 +53,10 @@ LEFT JOIN field_data_field_book_author ON field_data_field_book_author.entity_id
 LEFT JOIN field_data_field_book_name ON field_data_field_book_name.entity_id=node.nid 
 WHERE 
 node.status=1 AND 
-book.mlid in (".$sql_mlid.") ORDER BY menu_links.weight,title ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY menu_links.weight,title ASC
 ";
-//echo "get_pages, sql = ".$sql;
-//echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
-	return $fresult;
-}//end get_nodes()
-
-
-//-------------------------
-// получить имена связанных файлов книг
-//-------------------------
-function get_book_filename($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getBookFileName"] = "
 SELECT 
 field_data_field_book_filename.entity_id,
 field_data_field_book_filename.bundle,
@@ -167,24 +67,10 @@ LEFT JOIN menu_links ON menu_links.mlid=book.mlid
 LEFT JOIN node ON node.nid=book.nid
 LEFT JOIN field_data_field_book_filename ON field_data_field_book_filename.entity_id=node.nid
 WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_book_filename.delta ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_book_filename.delta ASC
 ";
-//echo "get_book_filename, sql = ".$sql;
-//echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
-	return $fresult;
-}//end get_book_filename()
-
-
-//-------------------------
-// получить ссылки связанных файлов книг
-//-------------------------
-function get_field_url ($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getBookUrl"] = "
 SELECT 
 field_data_field_url.entity_id,
 field_data_field_url.entity_type,
@@ -196,24 +82,10 @@ LEFT JOIN menu_links ON menu_links.mlid=book.mlid
 LEFT JOIN node ON node.nid=book.nid
 LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
 WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_url.delta ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_url.delta ASC
 ";
-//echo "get_field_url, sql = ".$sql;
-//echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
-	return $fresult;
-}//end get_field_url()
-
-
-//-------------------------
-// 2.получить ссылки связанных файлов книг
-//-------------------------
-function get_field_links ($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getBookLinks"] = "
 SELECT 
 field_data_field_links.entity_id,
 field_data_field_links.entity_type,
@@ -225,21 +97,10 @@ LEFT JOIN menu_links ON menu_links.mlid=book.mlid
 LEFT JOIN node ON node.nid=book.nid
 LEFT JOIN field_data_field_links ON field_data_field_links.entity_id=node.nid
 WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_links.delta ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_links.delta ASC
 ";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
-	return $fresult;
-}//end get_field_links()
-
-//-------------------------
-// получить связанные с книгами термины таксономии
-//-------------------------
-function get_field_taxonomy ($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getTaxonomy"] = "
 SELECT 
 field_data_field_taxonomy.entity_id,
 field_data_field_taxonomy.entity_type,
@@ -253,24 +114,10 @@ LEFT JOIN node ON node.nid=book.nid
 LEFT JOIN field_data_field_taxonomy ON field_data_field_taxonomy.entity_id=node.nid
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy.field_taxonomy_tid
 WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy.delta ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy.delta ASC
 ";
-//echo "get_field_taxonomy, sql = ".$sql;
-//echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
-	return $fresult;
-}//end get_field_taxonomy()
-
-
-//-------------------------
-// получить связанные с книгами термины таксономии
-//-------------------------
-function get_field_taxonomy_alpha ($sql_mlid){
-	global $db;
-	$sql = "
+$_vars["sql"]["getTaxonomyAlpha"] = "
 SELECT 
 field_data_field_taxonomy_alpha.entity_id,
 field_data_field_taxonomy_alpha.entity_type,
@@ -284,14 +131,192 @@ LEFT JOIN node ON node.nid=book.nid
 LEFT JOIN field_data_field_taxonomy_alpha ON field_data_field_taxonomy_alpha.entity_id=node.nid
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy_alpha.field_taxonomy_alpha_tid
 WHERE 
-book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy_alpha.delta ASC
+book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy_alpha.delta ASC
 ";
+
+$_vars["sql"]["getTaxonomyIndex"] = "SELECT nid,tid FROM taxonomy_index";
+$_vars["sql"]["getTaxonomyTermData"] = "SELECT tid,vid,name,description,weight FROM taxonomy_term_data";
+$_vars["sql"]["getTaxonomyTermHierarchy"] = "SELECT tid,parent FROM taxonomy_term_hierarchy";
+$_vars["sql"]["getTaxonomyVocabulary"] = "SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary";
+
+$_vars["log"] = "";
+	
+$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
+$_vars["book"] = get_content();
+//echo "book = <pre>";
+//print_r($_vars["book"]);
+//echo "</pre>";
+
+if ( !empty($_vars["book"]) ) {
+	
+	if ( !file_exists( $_vars["filename"] ) ){
+		write_xml( $_vars["book"] );
+	} else {
+		
+		$oldfile = $_vars["filename"];
+		$newfile = "_".$_vars["filename"];
+		
+		if (rename ($oldfile, $newfile)) {
+			$_vars["log"] .= "- rename $oldfile (old version) to $newfile\n";
+		} else {
+			$_vars["log"] .= "- unable to rename file $oldfile\n";
+		}
+		write_xml( $_vars["book"] );
+	}
+}
+echo $_vars["log"];
+
+
+//====================
+// FUNCTIONS
+//====================
+
+	function runSql($db,  $query){
+		$result = $db->query($query);
+		//$result->setFetchMode(PDO::FETCH_ASSOC);
+		$result->setFetchMode(PDO::FETCH_OBJ);
+		$resultData = $result->fetchAll();
+		return $resultData;
+	}//end runSql()
+
+//---------------------------------------------
+// получить menu_links.mlid всех страниц книги 
+//---------------------------------------------
+function get_content() {
+	global $db, $_vars;
+
+	$sql = $_vars["sql"]["getBook"];
+//echo "get_content,sql = ".$sql;
+//echo "<hr>";
+	$result = runSql($db,  $sql);
+	
+	$sql_mlid="";
+	foreach ($result as $num => $row ){
+		if ($num==0){
+			$sql_mlid .= $row->mlid;
+		} else {
+			$sql_mlid .= ", ".$row->mlid;
+		}
+	}
+	
+	if ( !empty($sql_mlid) ) {
+//$sql_mlid = "1734";
+//echo "sql_mlid = ".$sql_mlid;
+//echo "<br>";
+
+		$xml_data = array();
+		$xml_data["node"] = get_nodes($sql_mlid);
+		
+		$xml_data["book_filename"] = get_book_filename ($sql_mlid);
+		$xml_data["field_url"] = get_field_url ($sql_mlid);
+		$xml_data["field_links"] = get_field_links ($sql_mlid);
+		$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
+		$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
+		$xml_data["taxonomy_index"] = get_taxonomy_index ();
+		$xml_data["taxonomy_term_data"] = get_taxonomy_term_data ();
+		$xml_data["taxonomy_term_hierarchy"] = get_taxonomy_term_hierarchy ();
+		$xml_data["taxonomy_vocabulary"] = get_taxonomy_vocabulary ();
+
+		return $xml_data;
+	}
+
+}//end get_content()
+
+//-------------------------
+// получить страницы книги
+//-------------------------
+function get_nodes($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getNodes"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get nodes\n";
+//echo "get_pages, sql = ".$sql;
+//echo "<hr>";
+	$fresult = runSql($db,  $sql);
+	return $fresult;
+}//end get_nodes()
+
+
+//-------------------------
+// получить имена связанных файлов книг
+//-------------------------
+function get_book_filename($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookFileName"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get book_filename\n";
+//echo "get_book_filename, sql = ".$sql;
+//echo "<hr>";
+	$fresult = runSql($db,  $sql);
+	return $fresult;
+}//end get_book_filename()
+
+
+//-------------------------
+// получить ссылки связанных файлов книг
+//-------------------------
+function get_field_url ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookUrl"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get field_url\n";
+//echo "get_field_url, sql = ".$sql;
+//echo "<hr>";
+
+	$fresult = runSql($db,  $sql);
+	return $fresult;
+}//end get_field_url()
+
+
+//-------------------------
+// 2.получить ссылки связанных файлов книг
+//-------------------------
+function get_field_links ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getBookLinks"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get field_links\n";
+//echo "get_field_links, sql = ".$sql;
+//echo "<hr>";
+
+	$fresult = runSql($db,  $sql);
+	return $fresult;
+}//end get_field_links()
+
+//-------------------------
+// получить связанные с книгами термины таксономии
+//-------------------------
+function get_field_taxonomy ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomy"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get_field_taxonomy\n";
 //echo "get_field_taxonomy, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
+	return $fresult;
+}//end get_field_taxonomy()
+
+
+//-------------------------
+// получить связанные с книгами термины таксономии
+//-------------------------
+function get_field_taxonomy_alpha ($sql_mlid){
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyAlpha"];
+	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
+echo "-- get_field_taxonomy_alpha\n";
+//echo "get_field_taxonomy_alpha, sql = ".$sql;
+//echo "<hr>";
+
+	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_field_taxonomy_alpha()
 
@@ -300,55 +325,53 @@ book.mlid in (".$sql_mlid.") ORDER BY field_data_field_taxonomy_alpha.delta ASC
 // получить все термины таксономии
 //-------------------------
 function get_taxonomy_index(){
-	global $db;
-	$sql = "SELECT nid,tid FROM taxonomy_index";
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyIndex"];
+echo "-- get_taxonomy_index\n";
 //echo "get_taxonomy_index, sql = ".$sql;
 //echo "<hr>";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_taxonomy_index()
 
 
 function get_taxonomy_term_data(){
-	global $db;
-	$sql = "SELECT tid,vid,name,description,weight FROM taxonomy_term_data";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyTermData"];
+echo "-- get_taxonomy_term_data\n";
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_taxonomy_term_data()
 
 
 function get_taxonomy_term_hierarchy(){
-	global $db;
-	$sql = "SELECT tid,parent FROM taxonomy_term_hierarchy";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyTermHierarchy"];
+echo "-- get_taxonomy_term_hierarchy\n";
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_taxonomy_term_hierarchy()
 
 function get_taxonomy_vocabulary(){
-	global $db;
-	$sql = "SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary";
-	$result = $db->query($sql);
-	$result->setFetchMode(PDO::FETCH_OBJ);
-	$fresult = $result->fetchAll();
+	global $db, $_vars;
+	
+	$sql = $_vars["sql"]["getTaxonomyVocabulary"];
+echo "-- get_taxonomy_vocabulary\n";
 
+	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_taxonomy_vocabulary()
 
 
 
-
 function write_xml($data){
-	global $log;
-	global $filename;
+	global $_vars;
 
 	$xml="";
 	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
@@ -629,16 +652,16 @@ if ( !empty($row->description) )
 	if ( !empty($xml) )
 	{
 		//header('Content-Type:  application/xhtml+xml');
-		//header('Content-Disposition: attachment; filename='.$filename.'');
+		//header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
 		//header('Content-Transfer-Encoding: binary');
 		//header('Content-Length: '.strlen($xml));
 		//echo $xml;
-		$num_bytes = file_put_contents ($filename, $xml);
+		$num_bytes = file_put_contents ( $_vars["filename"], $xml);
 		if ($num_bytes > 0){
-$log .= "<p class='alert alert-success'>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+$_vars["log"] .= "Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n";
 		} else {
-$log .= getcwd();
-$log .= "<p class='alert alert-error'>Write error in ".$filename."</p>";
+$_vars["log"] .= getcwd();
+$_vars["log"] .= "Write error in ".$_vars["filename"]."\n";
 		}
 	}
 	//-----------------------------------

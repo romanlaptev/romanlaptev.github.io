@@ -17030,6 +17030,20 @@ lib/books/T/Tolstoy.AN
 АЭЛИТА. (Закат Марса)
 		</bookname>
 	</node>
+	<node title="Агаев Самид. Седьмой совершенный" nid="682" mlid="1958" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="15-Oct-2018 05:44:11" weight="0">
+		<body_value>
+Самид Агаев. Седьмой совершенный
+		</body_value>
+		<subfolder>
+lib/books/A
+		</subfolder>
+		<author>
+Агаев Самид
+		</author>
+		<bookname>
+Седьмой совершенный
+		</bookname>
+	</node>
 	<node title="Адам Фримен - jQuery для профессионалов" nid="1449" mlid="1385" plid="1383" type="library_book" created="20-Jul-2013 04:51:36" changed="21-Jul-2016 14:09:25" weight="0">
 		<subfolder>
 lib/comp_books/program/js/jQuery/frimen_jquery_professional_2013
@@ -22572,20 +22586,6 @@ lib/books/P
 		</author>
 		<bookname>
 Саймон Флэгг и дьявол
-		</bookname>
-	</node>
-	<node title="Самид Агаев. Седьмой совершенный" nid="682" mlid="1958" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="09-Aug-2014 08:23:20" weight="0">
-		<body_value>
-Самид Агаев. Седьмой совершенный
-		</body_value>
-		<subfolder>
-lib/books/A
-		</subfolder>
-		<author>
-Самид Агаев
-		</author>
-		<bookname>
-Седьмой совершенный
 		</bookname>
 	</node>
 	<node title="Самков Г. А. - jQuery. Сборник рецептов. 2-е изд." nid="1444" mlid="1380" plid="1383" type="library_book" created="20-Jul-2013 04:16:31" changed="21-Jul-2016 14:20:07" weight="0">
@@ -34739,7 +34739,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="682" delta="0">
-		<termin tid="67" >txt</termin>
+		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="681" delta="0">
 		<termin tid="67" >txt</termin>
@@ -36038,7 +36038,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="39" >художественая литература</termin>
 	</item>
 	<item entity_id="682" delta="1">
-		<termin tid="39" >художественая литература</termin>
+		<termin tid="14" >исторический роман, рассказ</termin>
 	</item>
 	<item entity_id="681" delta="1">
 		<termin tid="39" >художественая литература</termin>
@@ -37076,7 +37076,7 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 		<termin tid="173" >фантастика</termin>
 	</item>
 	<item entity_id="682" delta="2">
-		<termin tid="14" >исторический роман, рассказ</termin>
+		<termin tid="67" >txt</termin>
 	</item>
 	<item entity_id="681" delta="2">
 		<termin tid="99" >военная проза</termin>
@@ -42286,16 +42286,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	</item>
 	<item nid="683" tid="150">
 	</item>
-	<item nid="682" tid="67">
-	</item>
-	<item nid="682" tid="39">
-	</item>
-	<item nid="682" tid="14">
-	</item>
-	<item nid="682" tid="139">
-	</item>
-	<item nid="682" tid="156">
-	</item>
 	<item nid="680" tid="67">
 	</item>
 	<item nid="680" tid="39">
@@ -45225,6 +45215,16 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<item nid="1750" tid="119">
 	</item>
 	<item nid="1750" tid="240">
+	</item>
+	<item nid="682" tid="39">
+	</item>
+	<item nid="682" tid="14">
+	</item>
+	<item nid="682" tid="67">
+	</item>
+	<item nid="682" tid="139">
+	</item>
+	<item nid="682" tid="156">
 	</item>
 </table_taxonomy_index>
 
