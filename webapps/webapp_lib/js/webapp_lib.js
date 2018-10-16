@@ -693,7 +693,8 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 				_vars["waitWindow"].style.display="none";
 			}
 //}, 1000*7);
-			
+
+/*			
 			//??????
 			var runtime_all = 0;
 			for( var item in _vars["runtime"]){
@@ -705,7 +706,7 @@ _vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> se
 //func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 			_vars["info"].push( "<p>"+_vars["logMsg"]+"</p>" );
-			
+*/			
 		}//end callback_init()
 		
 		
@@ -2137,10 +2138,10 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 
 		var taxonomy_obj = {
 			"get_xml_taxonomy" : function(){
-				return get_xml_taxonomy();
+				return _get_xml_taxonomy();
 			},
 			"view_vocabulary" : function( vocabulary_name, recourse ){
-				var html = view_vocabulary( vocabulary_name, recourse );
+				var html = _view_vocabulary( vocabulary_name, recourse );
 				return html;
 			},
 			"view_termin" : function( params ) {
@@ -2157,10 +2158,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			taxonomy_obj["x_term_data"] = $(xml).find( "table_taxonomy_term_data" ).find('termin');
 		}//end read_taxonomy_data()
 
-//runtime: 1.62 sec
-//runtime: 1.061 sec
-//runtime: 0.065 sec ????
-		function get_xml_taxonomy(){
+		function _get_xml_taxonomy(){
 			var taxonomy = [];
 			$( taxonomy_obj.x_voc ).each(function()
 			{
@@ -2197,8 +2195,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 */
 			return taxonomy;
 			
-			function get_termins( vid )
-			{
+			function get_termins( vid ){
 				var termins = [];
 				$( taxonomy_obj.x_term_data ).each(function()
 				{
@@ -2250,9 +2247,9 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 				return parent_value;
 			}//end get_termin_info()
 */
-		}//end get_xml_taxonomy()
+		}//end _get_xml_taxonomy()
 		
-		function view_vocabulary ( vocabulary_name, recourse ) {
+		function _view_vocabulary ( vocabulary_name, recourse ) {
 			if( typeof _vars["taxonomy"][vocabulary_name] === "undefined")
 			{
 console.log("error, vocabulary not found " + vocabulary_name);			
@@ -2297,7 +2294,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			.replace("{{list}}", html);
 			return html;
 			
-		}//end view_vocabulary()
+		}//end _view_vocabulary()
 
 		function list_children_termins( params ) {
 //console.log(arguments);
@@ -2579,7 +2576,7 @@ console.log("error, not found _vars[book_category]");
 			}
 			
 			
-			var html = view_vocabulary( "library", recourse = false );
+			//var html = _view_vocabulary( "library", recourse = false );
 //			var params = [];
 //			params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
 //			params["vid"] = "2";
@@ -2587,7 +2584,16 @@ console.log("error, not found _vars[book_category]");
 //			params["recourse"] = true;
 //			params["show_only_children"] = false;
 //			var html = taxonomy_obj.view_termin( params );
-			$("#block-tags").html( html );
+
+			//$("#block-tags").html( html );
+//--------------------- BLOCK #block-book-category
+					_buildBlock({
+						"locationID" : "block-tags",
+						//"title" : "block-tagsblock-tagsblock-tagsblock-tags",
+						"templateID" : "tpl-block--tags",
+						"content" : _view_vocabulary( "library", recourse = false )
+					});
+//---------------------
 			//mark root links for breadcrumb navigation
 			$("#block-tags .nav-click").addClass("root-link");			
 

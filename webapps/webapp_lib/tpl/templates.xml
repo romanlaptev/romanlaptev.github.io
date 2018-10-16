@@ -32,7 +32,15 @@
 		]]></html_code>
 	</tpl>
 	
-
+	<tpl name="tpl-block--tags">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
+<!--
 	<tpl name="tpl-termin_nodes">
 		<html_code><![CDATA[
 <ul class="">{{list}}</ul>
@@ -44,5 +52,6 @@
 <a href="#?q=node&nid={{nid}}">{{title}}</a><br>
 		]]></html_code>
 	</tpl>
+-->	
 	
 </templates>
