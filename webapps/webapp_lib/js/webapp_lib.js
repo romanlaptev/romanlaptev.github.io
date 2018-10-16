@@ -341,7 +341,7 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 				//callback: callback_init //link to callback function
 				callback: function(){
 					_loadTemplates(function(){
-console.log("Load templates end...", arguments );
+//console.log("Load templates end...", arguments );
 						callback_init();
 					});
 				}
@@ -882,7 +882,7 @@ console.log( _vars["logMsg"] );
 					
 					"callback": function( data ){
 _vars["logMsg"] = "- read templates from <b>" + _vars["templates_url"] +"</b>";
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 _vars["info"].push( "<div class='alert alert-info'>" + _vars["logMsg"] + "</div>" );
 		
@@ -2550,13 +2550,24 @@ console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].l
 					//$("#block-book-category").html( html );
 					
 //--------------------- BLOCK #block-book-category
-					var opt = {
+					_buildBlock({
 						"locationID" : "block-book-category",
 						//"title" : "test block",
 						"templateID" : "tpl-block--book-category",
-						"content" : book.view_book_category() 
-					};
-					_buildBlock( opt );
+						//"contentTpl" : "tpl-termin_nodes",
+						//"contentListTpl" : "tpl-termin_nodes_list",
+						"content" : book.view_book_category
+/*						
+						"content" : function(args){ //function for getting content data
+console.log(args);							
+								//var res = _vars["book_category"];
+								//if( typeof args["callback"] === "function"){
+									//args["callback"]( res );
+								//}
+							return "111";
+						}//end callback
+*/							
+					});
 //---------------------
 					
 					//mark root links for breadcrumb navigation
@@ -2684,12 +2695,11 @@ console.log("error, not found _vars[book_category]");
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
 //--------------------- BLOCK #sitename-block
-			var opt = {
+			_buildBlock({
 				"locationID" : "sitename-block",
-				"templateID" : "tpl-block--sitename",//optional
-				"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
-			};
-			_buildBlock( opt );
+				"templateID" : "tpl-block--sitename"//,
+				//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
+			});
 //---------------------
 			
 			function render_node(){
@@ -2743,8 +2753,8 @@ console.log( _vars["logMsg"] );
 				//"contentType" : "",
 				"templateID" : "tpl-block",
 				
-				"contentTpl" : "tpl-list",//"tpl-menu"
-				"contentListTpl" : false,
+				//"contentTpl" : "tpl-list",//"tpl-menu"
+				//"contentListTpl" : false,
 				
 				"callback" : function(){
 					var timeEnd = new Date();
@@ -2776,13 +2786,18 @@ console.log(msg);
 				// return false;
 			// }
 
-			//dynamic form content
+			//render dynamic content
 			if( typeof p["content"] === "function"){
+				var html = p["content"]();
+				if( html && html.length > 0){
+					_insertBlock( p );
+				}
 /*				
 				p["content"]({
 					"callback" : function( res ){
-	//console.log(res);								
-						var html = webApp.draw.wrapContent({
+console.log(res);								
+
+						var html = _wrapContent({
 							"data" : res,
 							//"type" : "menu",//"list"
 							//"contentType" : p["contentType"],
@@ -2790,17 +2805,16 @@ console.log(msg);
 							"templateListID" : p["contentListTpl"]
 						});
 						
-	//console.log(html);								
+//console.log(html);								
 						//var html = "<h1>Test!!!</h1>";
 						if( html && html.length > 0){
 							p["content"] = html;
-							webApp.draw.insertBlock( p );
+							_insertBlock( p );
 						}
-						
 					}
 				});
-*/					
-			} else {
+*/				
+			} else {//render static content
 				_insertBlock( p );
 			}
 
@@ -2856,8 +2870,7 @@ console.log( _vars["logMsg"] );
 			}
 
 		};//end _insertBlock()
-		
-/*
+/*		
 		function _wrapContent( opt ){
 			var p = {
 				"data": null,
@@ -2870,27 +2883,31 @@ console.log( _vars["logMsg"] );
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-	console.log(p);
+console.log(p);
 
-			if( !p["data"] ){
-	_log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
-				return false;
-			}
-			if( p["data"].length === 0 ){
+			if( !p["data"] || p["data"].length === 0){
+_vars["logMsg"] = "_wrapContent(),  error, empty content data...";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 				return false;
 			}
 			if( !p["templateID"] ){
-	_log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b></p>");
+_vars["logMsg"] = "_wrapContent(),  error, empty templateID...";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 				return false;
 			}
 			
 			if( !_vars["templates"][p.templateID] ){
-	_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+_vars["logMsg"] = "_wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b>";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 				return false;
 			}
-			var html = "";
 
-	//console.log( p["data"].length );
+			var html = "000";
+			
+console.log( p["data"].length );
 			p["wrapType"] = "item";
 			if( p["data"].length > 0 ){
 				p["wrapType"] = "list";
@@ -2898,20 +2915,20 @@ console.log( _vars["logMsg"] );
 			
 			switch( p["wrapType"] ){
 				case "item" :
-					html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
+					//html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
 				break;
 				case "list" :
 					if( !p["templateListID"] ){
-	var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
-	console.log(msg);							
-	_log(msg);
+_vars["logMsg"] = "_wrapContent(),  error, not find <b>templateListID</b>";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 						return false;
 					}
 					html = __formListHtml( _vars["templates"][ p.templateID ] );
 				break;
 			}//end switch
-			
-	//console.log(html);
+
+console.log(html);
 			return html;
 
 			function __formListHtml( _html ){

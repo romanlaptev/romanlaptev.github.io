@@ -17,7 +17,9 @@
 	<tpl name="tpl-block--sitename">
 		<html_code><![CDATA[
 <div class="block">
-	<div class="content">{{content}}</div>
+	<div class="content">
+		<h1><a class='title' href='./'>my lib</a></h1>	
+	</div>
 </div>			
 		]]></html_code>
 	</tpl>
@@ -27,6 +29,19 @@
 <div class="block">
 	<div class="content">{{content}}</div>
 </div>			
+		]]></html_code>
+	</tpl>
+	
+
+	<tpl name="tpl-termin_nodes">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-termin_nodes_list">
+		<html_code><![CDATA[
+<a href="#?q=node&nid={{nid}}">{{title}}</a><br>
 		]]></html_code>
 	</tpl>
 	
