@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+	
+	<tpl name="tpl-block">
+		<html_code><![CDATA[
+<div class="block panel panel-primary">
+	<div class="panel-heading">
+		<h3>{{block_title}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-block--sitename">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
+</templates>

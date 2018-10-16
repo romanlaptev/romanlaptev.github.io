@@ -6,20 +6,20 @@
 		// private variables and functions
 		//var message = "";
 		
-		var _vars = {};
-		_vars["xml"] = null;
-		_vars["log"] = func.getById("log");
-		_vars["btnToggle"] = func.getById("btn-toggle-log");
-		_vars["loadProgressBar"] = func.getById("load-progress-bar");
-		_vars["numTotalLoad"] = func.getById("num-total-load");
-		_vars["parseProgressBar"] = func.getById("parse-progress-bar");
-		_vars["waitWindow"] = func.getById("win1");
-		_vars["breadcrumb"] = {};
-		_vars["runtime"] = {};
-		
-		_vars["appContainer"] = func.getById("App");
-		
-		_vars["info"] = [];
+		var _vars = {
+"xml": null,
+"templates_url" : "tpl/templates.xml",
+"log": func.getById("log"),
+"btnToggle": func.getById("btn-toggle-log"),
+"loadProgressBar": func.getById("load-progress-bar"),
+"numTotalLoad": func.getById("num-total-load"),
+"parseProgressBar": func.getById("parse-progress-bar"),
+"waitWindow": func.getById("win1"),
+"breadcrumb": {},
+"runtime": {},
+"appContainer": func.getById("App"),
+"info": []
+		};
 
 		function _init(){
 			
@@ -338,7 +338,13 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
 			load_templates({
-				callback: callback_init //link to callback function
+				//callback: callback_init //link to callback function
+				callback: function(){
+					_loadTemplates(function(){
+console.log("Load templates end...", arguments );
+						callback_init();
+					});
+				}
 			});
 	
 		}//end after_load()
@@ -702,7 +708,9 @@ _vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> se
 			
 		}//end callback_init()
 		
-		//html templates
+		
+		
+//============================== TEMPLATES
 		function load_templates( params ) {
 			_vars["templates"] = [];
 			
@@ -815,19 +823,108 @@ console.log("errorThrown - ", errorThrown);
 				_vars["templates"]["breadcrumb_item_tpl"] = decodeURI( templates.find("#breadcrumb-tpl").html() );
 				
 //====================== test
-_vars["templates"]["tpl-block"] = "\
-	<div class='block'>\
-			<h3>{{block_title}}</h3>\
-			<div class='content'>{{content}}</div>\
-	</div>\
-";
+//_vars["templates"]["tpl-block"] = "\
+	//<div class='block'>\
+			//<h3>{{block_title}}</h3>\
+			//<div class='content'>{{content}}</div>\
+	//</div>\
+//";
 //==================
 				
 			}//end get_tmpl()	
 
 		}//end load_templates( params )
 
+		function _loadTemplates( callback ){
+/*			
+			webApp.db.loadTemplates(function( isLoadTemplates ){
+	//console.log(isLoadTemplates);			
+				if( !isLoadTemplates ){
+					_loadTemplatesFromFile();
+				} else{
+					
+					if( typeof callback === "function"){
+						callback();
+					}
+				}
+			});//end db.loadTemplates()
+*/			
+			_loadTemplatesFromFile();
+			
+			function _loadTemplatesFromFile(){
+				
+				if( !_vars["templates_url"] || _vars["templates_url"].length === 0 ){
+_vars["logMsg"] = "- error in _loadTemplates(), not find 'templates_url'....";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+					if( typeof callback === "function"){
+						callback(false);
+					}
+					return false;
+				}
+				
+				func.runAjax( {
+					"requestMethod" : "GET", 
+					"url" : _vars["templates_url"], 
+					//"onProgress" : function( e ){},
+					//"onLoadEnd" : function( headers ){},
+					"onError" : function( xhr ){
+//console.log( "onError ", arguments);
+_vars["logMsg"] = "error ajax load " + _vars["templates_url"];
+func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+						if( typeof callback === "function"){
+							callback(false);
+						}
+						return false;
+					},
+				
+					
+					"callback": function( data ){
+_vars["logMsg"] = "- read templates from <b>" + _vars["templates_url"] +"</b>";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+_vars["info"].push( "<div class='alert alert-info'>" + _vars["logMsg"] + "</div>" );
+		
+//console.log( data );
 
+						if( !data ){
+console.log("error in draw.loadTemplates(), not find data templates'....");
+							if( typeof callback === "function"){
+								callback(false);
+							}
+							return false;
+						}
+
+						xmlNodes = func.parseXmlToObj( data );
+//console.log(xmlNodes);
+						if( xmlNodes.length > 0 ){
+							for( var n= 0; n < xmlNodes.length; n++){
+								var key = xmlNodes[n]["name"];
+
+								var value = xmlNodes[n]["html_code"]
+								.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+								.replace(/\t/g,"")
+								.replace(/\n/g,"");
+								
+								_vars["templates"][key] = value;
+							}//next
+							//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
+						} else {
+console.log("error in draw.loadTemplates(), cannot parse templates data.....");
+						}
+
+						if( typeof callback === "function"){
+							callback();
+						}
+					}//end
+				});
+			}//end _loadTemplatesFromFile()
+			
+		}//end _loadTemplates()
+
+
+//====================================== CONTENT
 		var get_content = function( params ){
 			
 			var _total = 5;
@@ -1205,7 +1302,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				});
 			}
 			
-console.log(terminNodes, terminNodes.length);
+//console.log(terminNodes, terminNodes.length);
 			return terminNodes;
 		}//end _getTerminNodesXML()
 
@@ -2576,13 +2673,14 @@ console.log("error, not found _vars[book_category]");
 //console.log(html_breadcrumb);
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
-//--------------------- test BLOCK
+//--------------------- BLOCK #sitename-block
+			
 	var opt = {
-		"locationID" : "block-test",
+		"locationID" : "sitename-block",
 		//"title" : "test block",
-		//"templateID" : "tpl-info_termins_tech-block",//optional
+		"templateID" : "tpl-block--sitename",//optional
 		//"contentTpl" : "tpl-menu",//optional
-		"content" : "<p>static block-1</p>" 
+		"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
 		/*
 		"content" : function( args ){ //function for getting content data
 				var res = [.....];
@@ -2641,6 +2739,7 @@ console.log( _vars["logMsg"] );
 
 			var p = {
 				"title": "",
+				"locationID" : "",
 				"content" : "",
 				//"contentType" : "",
 				"templateID" : "tpl-block",
@@ -2651,7 +2750,7 @@ console.log( _vars["logMsg"] );
 				"callback" : function(){
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
-					var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
 console.log(msg);			
 
 					//_vars["runtime"].push({
@@ -2726,6 +2825,13 @@ console.log(msg);
 			var templateID = p["templateID"];
 			if( !_vars["templates"][templateID] ){
 _vars["logMsg"] = "_insertBlock(),  error, not find template, id: <b>" + templateID + "</b>";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+
+			if( p["locationID"] === "" ){
+_vars["logMsg"] = "_insertBlock(),  error, not find template location on page...";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 				return false;
