@@ -814,6 +814,15 @@ console.log("errorThrown - ", errorThrown);
 				
 				_vars["templates"]["breadcrumb_item_tpl"] = decodeURI( templates.find("#breadcrumb-tpl").html() );
 				
+//====================== test
+_vars["templates"]["tpl-block"] = "\
+	<div class='block'>\
+			<h3>{{block_title}}</h3>\
+			<div class='content'>{{content}}</div>\
+	</div>\
+";
+//==================
+				
 			}//end get_tmpl()	
 
 		}//end load_templates( params )
@@ -2426,8 +2435,7 @@ console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].l
 		};//end _view_child_pages( params )
 
 		
-		function draw_page( params )	{
-			
+		function draw_page( params ){
 			
 			//content gradient	correct height
 			//var h = $(".b-content").height();
@@ -2568,6 +2576,24 @@ console.log("error, not found _vars[book_category]");
 //console.log(html_breadcrumb);
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
+//--------------------- test BLOCK
+	var opt = {
+		"locationID" : "block-test",
+		//"title" : "test block",
+		//"templateID" : "tpl-info_termins_tech-block",//optional
+		//"contentTpl" : "tpl-menu",//optional
+		"content" : "<p>static block-1</p>" 
+		/*
+		"content" : function( args ){ //function for getting content data
+				var res = [.....];
+				if( typeof args["callback"] === "function"){
+					args["callback"]( res );
+				}
+		}//end callback
+		*/
+	};
+	_buildBlock( opt );
+//---------------------
 			
 			function render_node(){
 				var html = nodes_obj.view_node({
@@ -2605,7 +2631,127 @@ console.log( _vars["logMsg"] );
 				
 			}//end render_node()
 			
-		}//end function draw_page( params )
+		}//end function draw_page()
+
+//====================================
+
+		var _buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
+			var timeStart = new Date();
+
+			var p = {
+				"title": "",
+				"content" : "",
+				//"contentType" : "",
+				"templateID" : "tpl-block",
+				
+				"contentTpl" : "tpl-list",//"tpl-menu"
+				"contentListTpl" : false,
+				
+				"callback" : function(){
+					var timeEnd = new Date();
+					var ms = timeEnd.getTime() - timeStart.getTime();
+					var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+console.log(msg);			
+
+					//_vars["runtime"].push({
+						//"source" : msg,
+						//"ms" : ms,
+						//"sec" : ms / 1000
+					//});
+					
+					if( typeof p["callback2"] === "function"){
+						p["callback2"]();//return from _buildBlock()
+					}
+					
+				},//end callback
+				"callback2" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+		
+			// if( p["content"].length === 0 ){
+	// _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
+				// return false;
+			// }
+
+			//dynamic form content
+			if( typeof p["content"] === "function"){
+/*				
+				p["content"]({
+					"callback" : function( res ){
+	//console.log(res);								
+						var html = webApp.draw.wrapContent({
+							"data" : res,
+							//"type" : "menu",//"list"
+							//"contentType" : p["contentType"],
+							"templateID" : p["contentTpl"],
+							"templateListID" : p["contentListTpl"]
+						});
+						
+	//console.log(html);								
+						//var html = "<h1>Test!!!</h1>";
+						if( html && html.length > 0){
+							p["content"] = html;
+							webApp.draw.insertBlock( p );
+						}
+						
+					}
+				});
+*/					
+			} else {
+				_insertBlock( p );
+			}
+
+		};//end _buildBlock()
+		
+		var _insertBlock = function( opt ){
+			
+			var p = {
+				"templateID": false,
+				"locationID": "",
+				"title" : "",
+				"content" : false,
+				"callback":null
+			};
+			//extend options object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log("_insertBlock(): ", p);
+
+			var templateID = p["templateID"];
+			if( !_vars["templates"][templateID] ){
+_vars["logMsg"] = "_insertBlock(),  error, not find template, id: <b>" + templateID + "</b>";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+
+			// if( !p["content"] ){
+	// _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + p["content"] + "</b></p>");
+				// return false;
+			// }
+			
+			var html = _vars["templates"][templateID];
+			
+			html = html.replace("{{block_title}}", p["title"]);
+			html = html.replace("{{content}}", p["content"]);
+			
+			var locationID = func.getById( p["locationID"] );
+			if( locationID){
+				locationID.innerHTML = html;
+			}		
+			
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+
+		};//end _insertBlock()
+//====================================
 
 
 		function define_event() {
@@ -3047,7 +3193,7 @@ console.log("status - " + status +", url - " + url);
 */
 
 
-
+/*
 		function get_object_size( obj ) {
 			var size = 0;
 			for ( var key in obj ){
@@ -3056,7 +3202,7 @@ console.log("status - " + status +", url - " + url);
 			}
 			return size;
 		};//end  get_object_size( obj ) 
-		
+*/		
 		
 /*		
 		function count_object_bytes (obj){
