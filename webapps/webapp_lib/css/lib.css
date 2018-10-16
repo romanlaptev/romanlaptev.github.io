@@ -263,3 +263,7 @@ padding-left: 10px;
 .list-group-item--child-pages {
 padding: 5px 5px;
 }
+
+.direct-links {
+    word-break: break-all;
+}
