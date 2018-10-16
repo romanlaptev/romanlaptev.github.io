@@ -22,4 +22,12 @@
 		]]></html_code>
 	</tpl>
 	
+	<tpl name="tpl-block--book-category">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
 </templates>
