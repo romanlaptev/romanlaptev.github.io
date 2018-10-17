@@ -2145,7 +2145,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 				return html;
 			},
 			"view_termin" : function( params ) {
-				var html = view_termin( params );
+				var html = _view_termin( params );
 				return html;
 			}
 		};
@@ -2345,7 +2345,8 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			return html;
 		}//end list_children_termins();
 		
-		function view_termin( params )	{
+		function _view_termin( params )	{
+//console.log("TEST2", params);			
 			var termins = params["termins"]; 
 			var vid = params["vid"];
 			var tid = params["tid"];
@@ -2400,7 +2401,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			.replace("{{list}}", html_list);
 			return html;
 
-		}//end function view_termin()
+		}//end _view_termin()
 		
 
 
@@ -2635,20 +2636,29 @@ console.log("error, not found _vars[book_category]");
 			//view termin nodes
 			if ( _vars["GET"]["q"] === "termin_nodes" ) {
 				
-				if( _vars["GET"]["vid"] === "2"){
+				if( _vars["GET"]["vid"] === "2" || _vars["GET"]["vid"] === "1"){
+					
+if( _vars["GET"]["vid"] === "2" ){
+	var termins = _vars["taxonomy"]["library"]["termins"];
+}
+if( _vars["GET"]["vid"] === "1" ){
+	var termins = _vars["taxonomy"]["tags"]["termins"];
+}
+//console.log("TEST1", termins);			
+		
 					//view children termin
-					var params = [];
-					params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
-					params["vid"] = _vars["GET"]["vid"];
-					params["tid"] = _vars["GET"]["tid"];
-					params["recourse"] = true;
-					params["show_only_children"] = false;
-					
-					params["item_tpl"] = _vars["templates"]["taxonomy_list_item_tpl"];
-					params["list_tpl"] = _vars["templates"]["taxonomy_list_tpl"];
-					
-					params["url_tpl"] = _vars["templates"]["taxonomy_url_tpl"];
-					var html = taxonomy_obj.view_termin( params );
+					var html = taxonomy_obj.view_termin({
+						"termins": termins,
+						"vid": _vars["GET"]["vid"],
+						"tid": _vars["GET"]["tid"],
+						"recourse": true,
+						"show_only_children": false,
+						
+						"item_tpl": _vars["templates"]["taxonomy_list_item_tpl"],
+						"list_tpl": _vars["templates"]["taxonomy_list_tpl"],
+						
+						"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+					});
 					$("#region-content #block-taxonomy").html( html );
 				}
 				
