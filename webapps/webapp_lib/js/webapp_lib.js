@@ -2814,7 +2814,7 @@ console.log( _vars["logMsg"] );
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
 					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-console.log(msg);			
+//console.log(msg);			
 
 					//_vars["runtime"].push({
 						//"source" : msg,
