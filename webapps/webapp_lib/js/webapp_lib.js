@@ -804,10 +804,6 @@ console.log("errorThrown - ", errorThrown);
 				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
 				_vars["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
 				
-				_vars["templates"]["block_taxonomy_alpha_item_tpl"] = decodeURI(  templates.find("#block-taxonomy-alpha-for").html() );
-				templates.find("#block-taxonomy-alpha-for").remove();
-				_vars["templates"]["block_taxonomy_alpha_tpl"] = templates.find("#block-taxonomy-alpha").html();
-
 				_vars["templates"]["termin_nodes_item_tpl"] = templates.find("#termin-nodes-item").html();
 				var tmp = templates.find("#termin-nodes");
 				tmp.find("#termin-nodes-item").remove();
@@ -2600,37 +2596,55 @@ console.log("error, not found _vars[book_category]");
 
 			//mark root links for breadcrumb navigation
 			$("#block-library .nav-click").addClass("root-link");			
+//---------------------
 			
 //--------------------- BLOCK
 			_buildBlock({
 				"locationID" : "block-tags",
-				"title" : "00000000000",
+				//"title" : "Tags",
 				"templateID" : "tpl-block--tags",
 				"content" : _view_vocabulary( "tags", recourse = false )
 			});
 			//mark root links for breadcrumb navigation
 			$("#block-tags .nav-click").addClass("root-link");			
+//---------------------
 
 //--------------------- BLOCK
 			//view alphabetical
-			var params = [];
-			params["termins"] = _vars["taxonomy"]["alphabetical_voc"]["termins"]; 
-			params["vid"] = "4";
-			params["tid"] = "116";
-			params["recourse"] = true;
-			params["show_only_children"] = true;
-			params["item_tpl"] = _vars["templates"]["block_taxonomy_alpha_item_tpl"];
-			params["list_tpl"] = _vars["templates"]["block_taxonomy_alpha_tpl"];
-			params["url_tpl"] = _vars["templates"]["taxonomy_url_tpl"];
-			var html = taxonomy_obj.view_termin( params );
-	
-			params["tid"] = "115";
-			html += taxonomy_obj.view_termin( params );
+
+			var html = taxonomy_obj.view_termin({
+				"termins": _vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "116",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"],
+				"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+			});
 			
-			$("#block-taxonomy-alpha").html( html );
+			html += taxonomy_obj.view_termin({
+				"termins": _vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "115",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"],
+				"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+			});
+			
+			//$("#block-taxonomy-alpha").html( html );
+			
+			_buildBlock({
+				"locationID" : "block-taxonomy-alpha",
+				"templateID" : "tpl-block--tags",
+				"content" : html
+			});
 			
 			//mark root links for breadcrumb navigation
 			$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
+//---------------------
 			
 
 			//view termin nodes
@@ -2659,13 +2673,24 @@ if( _vars["GET"]["vid"] === "1" ){
 						
 						"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 					});
-					$("#region-content #block-taxonomy").html( html );
+					//$("#region-content #block-taxonomy").html( html );
+					_buildBlock({
+						"locationID" : "block-taxonomy",
+						"templateID" : "tpl-block--tags",
+						"content" : html
+					});
+					
 				}
 				
 				if ( _vars["termin_nodes"].length > 0)
 				{
 					var html = nodes_obj.view_termin_nodes( );
-					$("#region-content #block-nodes").html( html );
+					//$("#region-content #block-nodes").html( html );
+					_buildBlock({
+						"locationID" : "block-nodes",
+						"templateID" : "tpl-block--tags",
+						"content" : html
+					});
 				}
 			}
 			
@@ -2789,7 +2814,7 @@ console.log( _vars["logMsg"] );
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
 					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-//console.log(msg);			
+console.log(msg);			
 
 					//_vars["runtime"].push({
 						//"source" : msg,

@@ -99,7 +99,7 @@ LEFT JOIN field_data_field_links ON field_data_field_links.entity_id=node.nid
 WHERE 
 book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_links.delta ASC
 ";
-
+/*
 $_vars["sql"]["getTaxonomy"] = "
 SELECT 
 field_data_field_taxonomy.entity_id,
@@ -116,7 +116,8 @@ LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy
 WHERE 
 book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy.delta ASC
 ";
-
+*/
+/*
 $_vars["sql"]["getTaxonomyAlpha"] = "
 SELECT 
 field_data_field_taxonomy_alpha.entity_id,
@@ -133,6 +134,7 @@ LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy
 WHERE 
 book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy_alpha.delta ASC
 ";
+*/
 
 $_vars["sql"]["getTaxonomyIndex"] = "SELECT nid,tid FROM taxonomy_index";
 $_vars["sql"]["getTaxonomyTermData"] = "SELECT tid,vid,name,description,weight FROM taxonomy_term_data";
@@ -210,8 +212,9 @@ function get_content() {
 		$xml_data["book_filename"] = get_book_filename ($sql_mlid);
 		$xml_data["field_url"] = get_field_url ($sql_mlid);
 		$xml_data["field_links"] = get_field_links ($sql_mlid);
-		$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
-		$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
+		
+		//$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
+		//$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
 		
 		get_taxonomy_index();
 		get_taxonomy_term_data();
@@ -592,7 +595,7 @@ function write_xml($data){
 	}//----------------------- end foreach
 	$xml .= "</table_book_links>\n\n";
 
-
+/*
 //----------------------------- table book_taxonomy
 	$xml .= "<table_book_taxonomy>\n";
 	foreach ($data["field_taxonomy"] as $row )
@@ -613,7 +616,9 @@ function write_xml($data){
 		}
 	}//----------------------- end foreach
 	$xml .= "</table_book_taxonomy>\n\n";
+*/
 
+/*
 //----------------------------- table book_taxonomy_alpha
 	$xml .= "<table_book_taxonomy_alpha>\n";
 	foreach ($data["field_taxonomy_alpha"] as $row )
@@ -634,7 +639,7 @@ function write_xml($data){
 		}
 	}//----------------------- end foreach
 	$xml .= "</table_book_taxonomy_alpha>\n\n";
-
+*/
 	$xml .= $_vars["xml"]["taxonomy_index"];
 	$xml .= $_vars["xml"]["taxonomy_term_data"];
 	$xml .= $_vars["xml"]["taxonomy_term_hierarchy"];

@@ -53,5 +53,19 @@
 		]]></html_code>
 	</tpl>
 -->	
-	
+
+	<tpl name="tpl-block--taxonomy_alpha">
+		<html_code><![CDATA[
+<ul class="menu taxonomy-alpha">
+{{list}}
+</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-block--taxonomy_alpha_list">
+		<html_code><![CDATA[
+<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
 </templates>
