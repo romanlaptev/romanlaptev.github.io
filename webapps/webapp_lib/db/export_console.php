@@ -212,10 +212,11 @@ function get_content() {
 		$xml_data["field_links"] = get_field_links ($sql_mlid);
 		$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
 		$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
-		$xml_data["taxonomy_index"] = get_taxonomy_index ();
-		$xml_data["taxonomy_term_data"] = get_taxonomy_term_data ();
-		$xml_data["taxonomy_term_hierarchy"] = get_taxonomy_term_hierarchy ();
-		$xml_data["taxonomy_vocabulary"] = get_taxonomy_vocabulary ();
+		
+		get_taxonomy_index();
+		get_taxonomy_term_data();
+		get_taxonomy_term_hierarchy();
+		get_taxonomy_vocabulary();
 
 		return $xml_data;
 	}
@@ -328,12 +329,21 @@ function get_taxonomy_index(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyIndex"];
-echo "-- get_taxonomy_index\n";
-//echo "get_taxonomy_index, sql = ".$sql;
-//echo "<hr>";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+
+	$xml = "<taxonomy_index>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<record nid=\"".$row->nid."\" ";
+		$xml .=  "tid=\"".$row->tid."\"";
+		$xml .=  "/>\n";
+		//$xml .= "\t</record>\n";
+	}//next
+	$xml .= "</taxonomy_index>\n\n";
+	
+	$_vars["xml"]["taxonomy_index"] = $xml;
+
+echo "-- get_taxonomy_index\n";
+	//return $fresult;
 }//end get_taxonomy_index()
 
 
@@ -341,10 +351,32 @@ function get_taxonomy_term_data(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyTermData"];
-echo "-- get_taxonomy_term_data\n";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+
+	$xml = "<taxonomy_term_data>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
+		$xml .=  "vid=\"".$row->vid."\" ";
+		$xml .=  "weight=\"".$row->weight."\"";
+		$xml .=  ">\n";
+
+		$xml .=  "\t\t<name>";
+		$xml .=  $row->name;
+		$xml .=  "</name>\n";
+
+		if ( !empty($row->description) ) {
+			$xml .=  "\t\t<description>";
+			$xml .=  $row->description;
+			$xml .=  "</description>\n";
+		}
+		
+		$xml .= "\t</termin>\n";
+	}//next
+	$xml .= "</taxonomy_term_data>\n\n";
+	$_vars["xml"]["taxonomy_term_data"] = $xml;
+	
+echo "-- get_taxonomy_term_data\n";
+	//return $fresult;
 }//end get_taxonomy_term_data()
 
 
@@ -352,20 +384,56 @@ function get_taxonomy_term_hierarchy(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyTermHierarchy"];
-echo "-- get_taxonomy_term_hierarchy\n";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+	
+	$xml = "<taxonomy_term_hierarchy>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
+		$xml .=  "parent=\"".$row->parent."\"";
+		$xml .=  "/>\n";
+		//$xml .= "\t</termin>\n";
+	}//next
+	$xml .= "</taxonomy_term_hierarchy>\n\n";
+	$_vars["xml"]["taxonomy_term_hierarchy"] = $xml;
+	
+echo "-- get_taxonomy_term_hierarchy\n";
+	//return $fresult;
 }//end get_taxonomy_term_hierarchy()
 
 function get_taxonomy_vocabulary(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyVocabulary"];
-echo "-- get_taxonomy_vocabulary\n";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+	
+	$xml = "<taxonomy_vocabulary>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<record vid=\"".$row->vid."\" ";
+		$xml .=  "hierarchy=\"".$row->hierarchy."\" ";
+		$xml .=  "weight=\"".$row->weight."\"";
+		$xml .=  ">\n";
+
+		$xml .=  "\t\t<name>";
+		$xml .=  $row->name;
+		$xml .=  "</name>\n";
+
+		$xml .=  "\t\t<m_name>";
+		$xml .=  $row->machine_name;
+		$xml .=  "</m_name>\n";
+
+		if ( !empty($row->description) ){
+			$xml .=  "\t\t<description>";
+			$xml .=  $row->description;
+			$xml .=  "</description>\n";
+		}
+		
+		$xml .= "\t</record>\n";
+	}//next
+	$xml .= "</taxonomy_vocabulary>\n\n";
+	$_vars["xml"]["taxonomy_vocabulary"] = $xml;
+	
+echo "-- get_taxonomy_vocabulary\n";
+	//return $fresult;
 }//end get_taxonomy_vocabulary()
 
 
@@ -375,7 +443,7 @@ function write_xml($data){
 
 	$xml="";
 	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-	$xml .= "<lib>\n";
+	$xml .= "<database name='lib'>\n";
 
 	$xml .= "<table_node>\n";
 	foreach ($data["node"] as $row ){
@@ -567,84 +635,17 @@ function write_xml($data){
 	}//----------------------- end foreach
 	$xml .= "</table_book_taxonomy_alpha>\n\n";
 
-//----------------------------- table taxonomy_index
-	$xml .= "<table_taxonomy_index>\n";
-	foreach ($data["taxonomy_index"] as $row )
-	{
-		$xml .=  "\t<item nid=\"".$row->nid."\" ";
-		$xml .=  "tid=\"".$row->tid."\"";
-		$xml .=  ">\n";
-		$xml .= "\t</item>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_index>\n\n";
-
-//----------------------------- table taxonomy_term_data
-	$xml .= "<table_taxonomy_term_data>\n";
-	foreach ($data["taxonomy_term_data"] as $row )
-	{
-		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
-		$xml .=  "vid=\"".$row->vid."\" ";
-		$xml .=  "weight=\"".$row->weight."\"";
-		$xml .=  ">\n";
-
-		$xml .=  "\t\t<name>";
-		$xml .=  $row->name;
-		$xml .=  "</name>\n";
-
-if ( !empty($row->description) )
-{
-		$xml .=  "\t\t<description>";
-		$xml .=  $row->description;
-		$xml .=  "</description>\n";
-}
-		$xml .= "\t</termin>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_term_data>\n\n";
-
-//----------------------------- table taxonomy_term_hierarchy
-	$xml .= "<table_taxonomy_term_hierarchy>\n";
-	foreach ($data["taxonomy_term_hierarchy"] as $row )
-	{
-		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
-		$xml .=  "parent=\"".$row->parent."\"";
-		$xml .=  ">\n";
-		$xml .= "\t</termin>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_term_hierarchy>\n\n";
-
-//----------------------------- table taxonomy_vocabulary
-	$xml .= "<table_taxonomy_vocabulary>\n";
-	foreach ($data["taxonomy_vocabulary"] as $row )
-	{
-		$xml .=  "\t<item vid=\"".$row->vid."\" ";
-		$xml .=  "hierarchy=\"".$row->hierarchy."\" ";
-		$xml .=  "weight=\"".$row->weight."\"";
-		$xml .=  ">\n";
-
-		$xml .=  "\t\t<name>";
-		$xml .=  $row->name;
-		$xml .=  "</name>\n";
-
-		$xml .=  "\t\t<m_name>";
-		$xml .=  $row->machine_name;
-		$xml .=  "</m_name>\n";
-
-if ( !empty($row->description) )
-{
-		$xml .=  "\t\t<description>";
-		$xml .=  $row->description;
-		$xml .=  "</description>\n";
-}
-		$xml .= "\t</item>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_vocabulary>\n\n";
+	$xml .= $_vars["xml"]["taxonomy_index"];
+	$xml .= $_vars["xml"]["taxonomy_term_data"];
+	$xml .= $_vars["xml"]["taxonomy_term_hierarchy"];
+	$xml .= $_vars["xml"]["taxonomy_vocabulary"];
 
 
 //echo "<pre>";
 //echo htmlspecialchars($xml);
 //echo "</pre>";
 
-	$xml .= "</lib>\n";
+	$xml .= "</database>\n";
 	
 	//----------------------------------- write xml file
 	if ( !empty($xml) )

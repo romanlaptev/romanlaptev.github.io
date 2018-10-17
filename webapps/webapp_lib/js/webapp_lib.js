@@ -1137,11 +1137,11 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				
 	//FF 3.6.2, error parse, fail $(xml)
 	//script stack space quota is exhausted
-				var table_name_index = "table_taxonomy_index";
-				nodes_obj["x_table_index"] = $(xml).find( table_name_index ).find('item');//runtime: 0.244 sec
+				var table_name_index = "taxonomy_index";
+				nodes_obj["taxonomy_index"] = $(xml).find( table_name_index ).find("record");//runtime: 0.244 sec
 	//console.log( "1", $ );
-	//console.log( "2", typeof nodes_obj["x_table_index"] );
-	//console.log( "3", nodes_obj["x_table_index"] );
+	//console.log( "2", typeof nodes_obj["taxonomy_index"] );
+	//console.log( "3", nodes_obj["taxonomy_index"] );
 				
 				var table_name = "table_node";
 				nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
@@ -1190,14 +1190,14 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				node["body_value"] = x_node.children("body_value").text();
 
 				//read node termins
-				for( var n2 = 0; n2 < nodes_obj["x_table_index"].length; n2++){
-					var test_nid = nodes_obj["x_table_index"][n2].getAttribute("nid");
+				for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+					var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
 					if( test_nid === node["nid"] )
 					{
 						if( typeof node["tid"] === "undefined") {
 							node["tid"] = [];
 						}
-						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
+						node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
 					}
 				}//next termin
 				
@@ -1280,12 +1280,12 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 		
 			var terminNodes = [];
 			
-			for( var n = 0; n < nodes_obj["x_table_index"].length; n++){
-				var tid = $( nodes_obj["x_table_index"][n] ).attr("tid");
+			for( var n = 0; n < nodes_obj["taxonomy_index"].length; n++){
+				var tid = $( nodes_obj["taxonomy_index"][n] ).attr("tid");
 				if( p["tid"] === tid ){
 					
 					var node = _getNodeXML({
-						"nid" : $( nodes_obj["x_table_index"][n] ).attr("nid")
+						"nid" : $( nodes_obj["taxonomy_index"][n] ).attr("nid")
 					});
 					
 					if( node ){
@@ -1852,13 +1852,13 @@ console.log( _vars["logMsg"] );
 				node["body_value"] = x_node.children("body_value").text().trim();
 
 				//read node termins
-				for( var n2 = 0; n2 < nodes_obj["x_table_index"].length; n2++){
-					var testNid = nodes_obj["x_table_index"][n2].getAttribute("nid");
+				for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+					var testNid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
 					if( testNid === node["nid"] ){
 						if( typeof node["tid"] === "undefined") {
 							node["tid"] = [];
 						}
-						node["tid"].push( nodes_obj["x_table_index"][n2].getAttribute("tid") );
+						node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
 					}
 				}//next termin
 					
@@ -1978,13 +1978,13 @@ console.log( _vars["logMsg"] );
 //console.log(params, nodes_obj);	
 			//read node termins
 			var node_termins = [];
-			for( var n1 = 0; n1 < nodes_obj["x_table_index"].length; n1++){
-				var test_nid = nodes_obj["x_table_index"][n1].getAttribute("nid");
+			for( var n1 = 0; n1 < nodes_obj["taxonomy_index"].length; n1++){
+				var test_nid = nodes_obj["taxonomy_index"][n1].getAttribute("nid");
 				if( test_nid === params["nid"] ){
 					//if( typeof node_termins["tid"] === "undefined"){
 						//node_termins["tid"] = [];
 					//}
-					node_termins.push( {"tid" : nodes_obj["x_table_index"][n1].getAttribute("tid") } );
+					node_termins.push( {"tid" : nodes_obj["taxonomy_index"][n1].getAttribute("tid") } );
 				}
 			}//next termin			
 
@@ -2153,14 +2153,17 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 		//read xml data
 		function read_taxonomy_data(){
 			var xml = _vars["xml"];
-			taxonomy_obj["x_voc"] = $(xml).find( "table_taxonomy_vocabulary" ).find('item');
-			taxonomy_obj["x_term_hierarchy"] = $(xml).find( "table_taxonomy_term_hierarchy" ).find("termin");
-			taxonomy_obj["x_term_data"] = $(xml).find( "table_taxonomy_term_data" ).find('termin');
+			taxonomy_obj["taxonomy_vocabulary"] = $(xml).find( "taxonomy_vocabulary" ).find("record");
+			taxonomy_obj["taxonomy_term_hierarchy"] = $(xml).find( "taxonomy_term_hierarchy" ).find("termin");
+			taxonomy_obj["taxonomy_term_data"] = $(xml).find( "taxonomy_term_data" ).find('termin');
+			
+			//taxonomy_obj["taxonomy_index"] = $(xml).find( "taxonomy_index" ).find("record");
+			
 		}//end read_taxonomy_data()
 
 		function _get_xml_taxonomy(){
 			var taxonomy = [];
-			$( taxonomy_obj.x_voc ).each(function()
+			$( taxonomy_obj.taxonomy_vocabulary ).each(function()
 			{
 				var item = $(this);
 				var name = item.children('m_name').text();
@@ -2174,11 +2177,11 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			
 //runtime: 0.655 sec
 /*			
- 			var x_voc = $(xml).find( table_name ).find('item');
-			for( var n = 0; n < x_voc.length; n++)
+ 			var taxonomy_vocabulary = $(xml).find( table_name ).find('item');
+			for( var n = 0; n < taxonomy_vocabulary.length; n++)
 			{
 //console.log( n, x_nodes[n] );
-				var voc = $( x_voc[n] );
+				var voc = $( taxonomy_vocabulary[n] );
 				var name = voc.children('m_name').text();
 				var vocabulary = {
 					"vid" : voc.attr('vid')//,
@@ -2197,7 +2200,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			
 			function get_termins( vid ){
 				var termins = [];
-				$( taxonomy_obj.x_term_data ).each(function()
+				$( taxonomy_obj.taxonomy_term_data ).each(function()
 				{
 					var item = $(this);
 					if ( item.attr('vid') === vid ){
@@ -2214,7 +2217,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 
 				//get termins hierarchy
 				var parent_value = false;
-				$( taxonomy_obj.x_term_hierarchy ).each(function()
+				$( taxonomy_obj.taxonomy_term_hierarchy ).each(function()
 				{
 					var item = $(this);
 					var tid = item.attr('tid');
