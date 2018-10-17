@@ -2262,7 +2262,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			var item_tpl = _vars["templates"]["taxonomy_list_item_tpl"];
 			var list_tpl = _vars["templates"]["taxonomy_list_tpl"];
 			var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
-			var block_title = "<h4>book tags:</h4>";
+			//var block_title = "<h4>book tags:</h4>";
 			var html = "";
 			for( var n = 0; n < _vars["taxonomy"][vocabulary_name]["termins"].length; n++ )
 			{
@@ -2293,7 +2293,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			}//next
 			
 			html = list_tpl
-			.replace("{{block-title}}", block_title)
+			//.replace("{{block-title}}", block_title)
 			.replace("{{list}}", html);
 			return html;
 			
@@ -2579,6 +2579,7 @@ console.log("error, not found _vars[book_category]");
 			}
 			
 			
+//--------------------- BLOCK
 			//var html = _view_vocabulary( "library", recourse = false );
 //			var params = [];
 //			params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
@@ -2588,19 +2589,28 @@ console.log("error, not found _vars[book_category]");
 //			params["show_only_children"] = false;
 //			var html = taxonomy_obj.view_termin( params );
 
-			//$("#block-tags").html( html );
-//--------------------- BLOCK #block-book-category
-					_buildBlock({
-						"locationID" : "block-tags",
-						//"title" : "block-tagsblock-tagsblock-tagsblock-tags",
-						"templateID" : "tpl-block--tags",
-						"content" : _view_vocabulary( "library", recourse = false )
-					});
-//---------------------
+			//$("#block-library").html( html );
+
+			_buildBlock({
+				"locationID" : "block-library",
+				"templateID" : "tpl-block--tags",
+				"content" : _view_vocabulary( "library", recourse = false )
+			});
+
+			//mark root links for breadcrumb navigation
+			$("#block-library .nav-click").addClass("root-link");			
+			
+//--------------------- BLOCK
+			_buildBlock({
+				"locationID" : "block-tags",
+				"title" : "00000000000",
+				"templateID" : "tpl-block--tags",
+				"content" : _view_vocabulary( "tags", recourse = false )
+			});
 			//mark root links for breadcrumb navigation
 			$("#block-tags .nav-click").addClass("root-link");			
 
-
+//--------------------- BLOCK
 			//view alphabetical
 			var params = [];
 			params["termins"] = _vars["taxonomy"]["alphabetical_voc"]["termins"]; 
