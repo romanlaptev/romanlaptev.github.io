@@ -1,20 +1,18 @@
-﻿<?php
+<?php
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-//echo "<pre>";
-//print_r($_SERVER);
-//print_r($_REQUEST);
-//print_r($_FILES);
-//echo "</pre>";
-//exit();
-
-$action = "";
-
+//===================== INIT vars
 $_vars=array();
-//$_vars["filename"] = "export_lib.xml";
-//$_vars["sqlite_path"] = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
-//$_vars["exportBookName"] = "библиотека";
+
+//echo PHP_VERSION;
+//echo phpversion();
+//echo PHP_OS;
+$_vars["phpversion"] = phpversion();
+
+$exportBookName = "библиотека";
+$filename = "export_lib.xml";
+$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
 
 $_vars["sql"]["getBook"] = "SELECT menu_links.mlid FROM menu_links WHERE menu_links.menu_name IN (SELECT menu_name FROM menu_links WHERE link_title LIKE '{{exportBookName}}' AND module='book') ORDER BY weight ASC;";
 
@@ -109,7 +107,8 @@ LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=field_data_field_taxonomy
 WHERE 
 book.mlid in ( {{listNodesMlid}} ) ORDER BY field_data_field_taxonomy.delta ASC
 ";
-
+*/
+/*
 $_vars["sql"]["getTaxonomyAlpha"] = "
 SELECT 
 field_data_field_taxonomy_alpha.entity_id,
@@ -133,145 +132,153 @@ $_vars["sql"]["getTaxonomyTermData"] = "SELECT tid,vid,name,description,weight F
 $_vars["sql"]["getTaxonomyTermHierarchy"] = "SELECT tid,parent FROM taxonomy_term_hierarchy";
 $_vars["sql"]["getTaxonomyVocabulary"] = "SELECT vid,name,machine_name,description,hierarchy,weight FROM taxonomy_vocabulary";
 
-$_vars["log"] = "";
+//$_vars["log"] = "";
 
-if (empty($_REQUEST['action']))
-{
-	$form = view_form(); // вывод формы
-echo <<<EOF
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<style>
-legend
-{
-	color:green;
-	font-size:16px;
-}
-.section
-{
-	/*border:1px solid;*/
-	margin:20px;
-	padding:5px;
-	width:870px;
-}
-.param
-{
-	color:darkblue;
-}
-.error
-{
-	font-weight:bold;
-	color:red;
-}
-.ok
-{
-	color:green;
-}
-.warning
-{
-	color:#ffffff;
-	background:darkred;
-	font-style:italic;
-}
-#message
-{
-}
-#form
-{
-}
-#log
-{
-	border: 1px solid;
-	min-height: 100px;
-	padding:10px;
-}
-</style>
-</head>
-<body>
+//exit();
 
-<div id='form'>$form</div>
+//=====================
+//echo "REMOTE_ADDR: ".$_SERVER["REMOTE_ADDR"];
+//echo "<br>";
 
-</body>
-</html>
-EOF;
-
-} else {
-	$action = $_REQUEST['action'];
-	switch ($action)	{
-		case "export":
-			if (!empty($_REQUEST['filename']))	{
-				$_vars["filename"] = $_REQUEST['filename'];
-				$_vars["exportBookName"] = $_REQUEST['book_title'];
-				$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
-
-				$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
-
-				$book =array();
-				$book = get_content();
+//http://php.net/php_sapi_name
+//apache2handler
+//cli
 /*
-echo "book = <pre>";
-print_r($book);
-echo "</pre>";
-*/
-				if ( !empty($book) ){
-					write_xml($book);
-				}
-			} else {
-				$_vars["log"] = "<span class='error'>var filename is empty!!!!</span>";
-				$_vars["log"] .= "<br>";
-			}
-		break;
-	}//------------------------------ end switch
+$_vars["runType"] = "";
 
-}//--------------------------------- end elseif action
+$sapi_type = php_sapi_name();
+if ( $sapi_type == 'apache2handler') {
+	$_vars["runType"] = "web";
+}
+if ( $sapi_type == 'cli') {
+	$_vars["runType"] = "console";
+}
+*/
+
+//=================================== WEB run
+if ( $sapi_type == 'apache2handler') {
+
+$_vars["web"] = true;
+	
+//echo "<pre>";
+//print_r($_SERVER);
+//print_r($_REQUEST);
+//print_r($_FILES);
+//print_r($_vars);
+//echo "</pre>";
+
+	if (empty($_REQUEST['action']))	{
+		view_form();
+	} else {
+		$action = $_REQUEST['action'];
+		
+		switch ($action) {
+			case "export":
+				if (!empty($_REQUEST['filename']))	{
+					$_vars["filename"] = $_REQUEST['filename'];
+					$_vars["exportBookName"] = $_REQUEST['book_title'];
+					$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
+					
+					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
+					$_vars["book"] = get_content();
+
+//echo "book = <pre>";
+//print_r($_vars["book"]);
+//echo "</pre>";
+					if ( !empty($_vars["book"]) ){
+						write_xml($_vars["book"]);
+					}
+				}
+			break;
+		}//end switch
+
+	}//end elseif
+	
+}
+
+//==================================== CONSOLE run
+if ( $sapi_type == 'cli') {
+//print_r($argv);
+//$_SERVER["argv"]
+$_vars["console"] = true;
+
+	echo "Export book info from DB (lib.sqlite)\n";
+	echo "PHP version: ".$_vars["phpversion"]."\n";
+echo "SAPI name: ".php_sapi_name();
+echo "\n";
+echo "PHP_SAPI: ".PHP_SAPI;
+echo "\n";
+	
+	$_vars["exportBookName"] = $exportBookName;
+	$_vars["filename"] = $filename;
+	$_vars["sqlite_path"] = $sqlite_path;
+	
+	$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
+	
+	$_vars["book"] = get_content();
+//echo "book = <pre>";
+//print_r($_vars["book"]);
+//echo "</pre>";
+
+//echo "web:" . $_vars["web"];
+//echo "\n";
+//echo "console:" . $_vars["console"];
+//echo "\n";
+
+	if ( !empty($_vars["book"]) ) {
+		
+		if ( !file_exists( $_vars["filename"] ) ){
+			write_xml( $_vars["book"] );
+		} else {
+			
+			$oldfile = $_vars["filename"];
+			$newfile = "_".$_vars["filename"];
+			
+			if (rename ($oldfile, $newfile)) {
+				_log("- rename $oldfile (old version) to $newfile\n");
+			} else {
+				_log("- unable to rename file $oldfile\n");
+			}
+			write_xml( $_vars["book"] );
+		}
+	}
+	//echo $_vars["log"];
+}
 
 
 //====================
 // FUNCTIONS
 //====================
-function view_form(){
-	$out="";
-//------------------------------------- form
-	$out .= "<h2>Export lib database , drupal book to xml file</h2>";
-	$out .= "<form method=post name=form_export action=''>
-<fieldset><legend><b>export params</b></legend>";
 
-	$out .= "<div class='section'>";
-	$out .= "filename: <input type=text name=filename size=40 value='export_lib.xml'/><br>";
-	$out .= "sqlite_path: <input type=text name=sqlite_path size=60 value='sqlite:/home/www/sites/lib/cms/db/lib.sqlite'/><br>";
-	$out .= "book_title: <input type=text name=book_title size=20 value='библиотека'/>";
-	$out .= "</div>";
+function _log( $message ){
+	global $_vars;
+	if($_vars["console"]){	
+		echo $message;
+	}
+}//end _log()
 
-	$out .= "<input type=hidden name=action value='export'/>";
-	$out .= "<input type=submit value='export'>";
-	$out .= "</fieldset></form>";
-
-	return $out;
-}//----------------------- end func
-
-
-	function runSql($db,  $query){
-		$result = $db->query($query);
-		//$result->setFetchMode(PDO::FETCH_ASSOC);
-		$result->setFetchMode(PDO::FETCH_OBJ);
-		$resultData = $result->fetchAll();
-		return $resultData;
-	}//end runSql()
+function runSql($db,  $query){
+	$result = $db->query($query);
+	//$result->setFetchMode(PDO::FETCH_ASSOC);
+	$result->setFetchMode(PDO::FETCH_OBJ);
+	$resultData = $result->fetchAll();
+	return $resultData;
+}//end runSql()
 
 //---------------------------------------------
 // получить menu_links.mlid всех страниц книги 
 //---------------------------------------------
-function get_content(){
+function get_content() {
 	global $db, $_vars;
 
 	$sql = $_vars["sql"]["getBook"];
 	$sql = str_replace("{{exportBookName}}", $_vars["exportBookName"], $sql);
-	
 //echo "get_content,sql = ".$sql;
 //echo "<hr>";
 	$result = runSql($db,  $sql);
+	_log("-- get book info\n");
 	
+
 	$sql_mlid="";
 	foreach ($result as $num => $row ){
 		if ($num==0){
@@ -280,44 +287,53 @@ function get_content(){
 			$sql_mlid .= ", ".$row->mlid;
 		}
 	}
-	if ( !empty($sql_mlid) ){
+	
+	if ( !empty($sql_mlid) ) {
 //$sql_mlid = "1734";
 //echo "sql_mlid = ".$sql_mlid;
 //echo "<br>";
 
 		$xml_data = array();
 		$xml_data["node"] = get_nodes($sql_mlid);
+		
 		$xml_data["book_filename"] = get_book_filename ($sql_mlid);
 		$xml_data["field_url"] = get_field_url ($sql_mlid);
 		$xml_data["field_links"] = get_field_links ($sql_mlid);
+		
 		//$xml_data["field_taxonomy"] = get_field_taxonomy ($sql_mlid);
 		//$xml_data["field_taxonomy_alpha"] = get_field_taxonomy_alpha ($sql_mlid);
-		$xml_data["taxonomy_index"] = get_taxonomy_index ();
-		$xml_data["taxonomy_term_data"] = get_taxonomy_term_data ();
-		$xml_data["taxonomy_term_hierarchy"] = get_taxonomy_term_hierarchy ();
-		$xml_data["taxonomy_vocabulary"] = get_taxonomy_vocabulary ();
+		
+		get_taxonomy_index();
+		get_taxonomy_term_data();
+		get_taxonomy_term_hierarchy();
+		get_taxonomy_vocabulary();
 
 		return $xml_data;
+	} else {
+		return "error!";
 	}
+
 }//end get_content()
 
 //-------------------------
 // получить страницы книги
 //-------------------------
-function get_nodes ($sql_mlid){
+function get_nodes($sql_mlid){
 	global $db, $_vars;
+	
 	$sql = $_vars["sql"]["getNodes"];
 	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
-//echo "get_pages, sql = ".$sql;
-//echo "<hr>";
+_log("-- get nodes\n");
+	
 	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_nodes()
 
+
 //-------------------------
 // получить имена связанных файлов книг
 //-------------------------
-function get_book_filename ($sql_mlid){
+function get_book_filename($sql_mlid){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getBookFileName"];
@@ -329,6 +345,7 @@ function get_book_filename ($sql_mlid){
 	return $fresult;
 }//end get_book_filename()
 
+
 //-------------------------
 // получить ссылки связанных файлов книг
 //-------------------------
@@ -337,9 +354,7 @@ function get_field_url ($sql_mlid){
 	
 	$sql = $_vars["sql"]["getBookUrl"];
 	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
-//echo "-- get field_url\n";
-//echo "get_field_url, sql = ".$sql;
-//echo "<hr>";
+_log("-- get field_url\n");
 
 	$fresult = runSql($db,  $sql);
 	return $fresult;
@@ -354,14 +369,11 @@ function get_field_links ($sql_mlid){
 	
 	$sql = $_vars["sql"]["getBookLinks"];
 	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
-//echo "-- get field_links\n";
-//echo "get_field_links, sql = ".$sql;
-//echo "<hr>";
+_log("-- get field_links\n");
 
 	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_field_links()
-
 
 //-------------------------
 // получить связанные с книгами термины таксономии
@@ -371,15 +383,14 @@ function get_field_taxonomy ($sql_mlid){
 	
 	$sql = $_vars["sql"]["getTaxonomy"];
 	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
-//echo "-- get_field_taxonomy\n";
-//echo "get_field_taxonomy, sql = ".$sql;
-//echo "<hr>";
+_log("-- get_field_taxonomy\n");
 
 	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_field_taxonomy()
 
 
+/*
 //-------------------------
 // получить связанные с книгами термины таксономии
 //-------------------------
@@ -388,13 +399,14 @@ function get_field_taxonomy_alpha ($sql_mlid){
 	
 	$sql = $_vars["sql"]["getTaxonomyAlpha"];
 	$sql = str_replace("{{listNodesMlid}}", $sql_mlid, $sql);
-//echo "-- get_field_taxonomy_alpha\n";
+//echo "-- get field_taxonomy_alpha\n";
 //echo "get_field_taxonomy_alpha, sql = ".$sql;
 //echo "<hr>";
 
 	$fresult = runSql($db,  $sql);
 	return $fresult;
 }//end get_field_taxonomy_alpha()
+*/
 
 //-------------------------
 // получить все термины таксономии
@@ -403,41 +415,107 @@ function get_taxonomy_index(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyIndex"];
-//echo "-- get_taxonomy_index\n";
-//echo "get_taxonomy_index, sql = ".$sql;
-//echo "<hr>";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+
+	$xml = "<taxonomy_index>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<record nid=\"".$row->nid."\" ";
+		$xml .=  "tid=\"".$row->tid."\"";
+		$xml .=  "/>\n";
+		//$xml .= "\t</record>\n";
+	}//next
+	$xml .= "</taxonomy_index>\n\n";
+	
+	$_vars["xml"]["taxonomy_index"] = $xml;
+
+_log("-- get taxonomy_index\n");
 }//end get_taxonomy_index()
+
 
 function get_taxonomy_term_data(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyTermData"];
-//echo "-- get_taxonomy_term_data\n";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+
+	$xml = "<taxonomy_term_data>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
+		$xml .=  "vid=\"".$row->vid."\" ";
+		$xml .=  "weight=\"".$row->weight."\"";
+		$xml .=  ">\n";
+
+		$xml .=  "\t\t<name>";
+		$xml .=  $row->name;
+		$xml .=  "</name>\n";
+
+		if ( !empty($row->description) ) {
+			$xml .=  "\t\t<description>";
+			$xml .=  $row->description;
+			$xml .=  "</description>\n";
+		}
+		
+		$xml .= "\t</termin>\n";
+	}//next
+	$xml .= "</taxonomy_term_data>\n\n";
+	$_vars["xml"]["taxonomy_term_data"] = $xml;
+	
+_log("-- get_taxonomy_term_data\n");
 }//end get_taxonomy_term_data()
+
 
 function get_taxonomy_term_hierarchy(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyTermHierarchy"];
-//echo "-- get_taxonomy_term_hierarchy\n";
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+	
+	$xml = "<taxonomy_term_hierarchy>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
+		$xml .=  "parent=\"".$row->parent."\"";
+		$xml .=  "/>\n";
+		//$xml .= "\t</termin>\n";
+	}//next
+	$xml .= "</taxonomy_term_hierarchy>\n\n";
+	$_vars["xml"]["taxonomy_term_hierarchy"] = $xml;
+	
+_log("-- get_taxonomy_term_hierarchy\n");
 }//end get_taxonomy_term_hierarchy()
 
 function get_taxonomy_vocabulary(){
 	global $db, $_vars;
 	
 	$sql = $_vars["sql"]["getTaxonomyVocabulary"];
-//echo "-- get_taxonomy_vocabulary\n";
-
 	$fresult = runSql($db,  $sql);
-	return $fresult;
+	
+	$xml = "<taxonomy_vocabulary>\n";
+	foreach ($fresult as $row ){
+		$xml .=  "\t<record vid=\"".$row->vid."\" ";
+		$xml .=  "hierarchy=\"".$row->hierarchy."\" ";
+		$xml .=  "weight=\"".$row->weight."\"";
+		$xml .=  ">\n";
+
+		$xml .=  "\t\t<name>";
+		$xml .=  $row->name;
+		$xml .=  "</name>\n";
+
+		$xml .=  "\t\t<m_name>";
+		$xml .=  $row->machine_name;
+		$xml .=  "</m_name>\n";
+
+		if ( !empty($row->description) ){
+			$xml .=  "\t\t<description>";
+			$xml .=  $row->description;
+			$xml .=  "</description>\n";
+		}
+		
+		$xml .= "\t</record>\n";
+	}//next
+	$xml .= "</taxonomy_vocabulary>\n\n";
+	$_vars["xml"]["taxonomy_vocabulary"] = $xml;
+	
+_log("-- get_taxonomy_vocabulary\n");
 }//end get_taxonomy_vocabulary()
 
 
@@ -447,7 +525,7 @@ function write_xml($data){
 
 	$xml="";
 	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-	$xml .= "<lib>\n";
+	$xml .= "<database name='lib'>\n";
 
 	$xml .= "<table_node>\n";
 	foreach ($data["node"] as $row ){
@@ -617,7 +695,9 @@ function write_xml($data){
 		}
 	}//----------------------- end foreach
 	$xml .= "</table_book_taxonomy>\n\n";
+*/
 
+/*
 //----------------------------- table book_taxonomy_alpha
 	$xml .= "<table_book_taxonomy_alpha>\n";
 	foreach ($data["field_taxonomy_alpha"] as $row )
@@ -639,96 +719,114 @@ function write_xml($data){
 	}//----------------------- end foreach
 	$xml .= "</table_book_taxonomy_alpha>\n\n";
 */
-
-//----------------------------- table taxonomy_index
-	$xml .= "<table_taxonomy_index>\n";
-	foreach ($data["taxonomy_index"] as $row )
-	{
-		$xml .=  "\t<item nid=\"".$row->nid."\" ";
-		$xml .=  "tid=\"".$row->tid."\"";
-		$xml .=  ">\n";
-		$xml .= "\t</item>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_index>\n\n";
-
-//----------------------------- table taxonomy_term_data
-	$xml .= "<table_taxonomy_term_data>\n";
-	foreach ($data["taxonomy_term_data"] as $row )
-	{
-		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
-		$xml .=  "vid=\"".$row->vid."\" ";
-		$xml .=  "weight=\"".$row->weight."\"";
-		$xml .=  ">\n";
-
-		$xml .=  "\t\t<name>";
-		$xml .=  $row->name;
-		$xml .=  "</name>\n";
-
-if ( !empty($row->description) )
-{
-		$xml .=  "\t\t<description>";
-		$xml .=  $row->description;
-		$xml .=  "</description>\n";
-}
-		$xml .= "\t</termin>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_term_data>\n\n";
-
-//----------------------------- table taxonomy_term_hierarchy
-	$xml .= "<table_taxonomy_term_hierarchy>\n";
-	foreach ($data["taxonomy_term_hierarchy"] as $row )
-	{
-		$xml .=  "\t<termin tid=\"".$row->tid."\" ";
-		$xml .=  "parent=\"".$row->parent."\"";
-		$xml .=  ">\n";
-		$xml .= "\t</termin>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_term_hierarchy>\n\n";
-
-//----------------------------- table taxonomy_vocabulary
-	$xml .= "<table_taxonomy_vocabulary>\n";
-	foreach ($data["taxonomy_vocabulary"] as $row )
-	{
-		$xml .=  "\t<item vid=\"".$row->vid."\" ";
-		$xml .=  "hierarchy=\"".$row->hierarchy."\" ";
-		$xml .=  "weight=\"".$row->weight."\"";
-		$xml .=  ">\n";
-
-		$xml .=  "\t\t<name>";
-		$xml .=  $row->name;
-		$xml .=  "</name>\n";
-
-		$xml .=  "\t\t<m_name>";
-		$xml .=  $row->machine_name;
-		$xml .=  "</m_name>\n";
-
-if ( !empty($row->description) )
-{
-		$xml .=  "\t\t<description>";
-		$xml .=  $row->description;
-		$xml .=  "</description>\n";
-}
-		$xml .= "\t</item>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_taxonomy_vocabulary>\n\n";
+	$xml .= $_vars["xml"]["taxonomy_index"];
+	$xml .= $_vars["xml"]["taxonomy_term_data"];
+	$xml .= $_vars["xml"]["taxonomy_term_hierarchy"];
+	$xml .= $_vars["xml"]["taxonomy_vocabulary"];
 
 
 //echo "<pre>";
 //echo htmlspecialchars($xml);
 //echo "</pre>";
 
-	$xml .= "</lib>\n";
+	$xml .= "</database>\n";
+	
 	//----------------------------------- write xml file
 	if ( !empty($xml) )
 	{
-		header('Content-Type:  application/xhtml+xml');
-		header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
-		header('Content-Transfer-Encoding: binary');
-		//header('Content-Length: '.strlen($xml));
-		echo $xml;
+		if($_vars["web"] == 1){
+			header('Content-Type:  application/xhtml+xml');
+			header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
+			header('Content-Transfer-Encoding: binary');
+			//header('Content-Length: '.strlen($xml));
+			echo $xml;
+		}
+		
+		if($_vars["console"] == 1){
+			$num_bytes = file_put_contents ( $_vars["filename"], $xml);
+			if ($num_bytes > 0){
+_log("Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n");
+			} else {
+_log( getcwd() );
+_log("Write error in ".$_vars["filename"]."\n");
+			}
+		}
+		
 	}
 	//-----------------------------------
 
 }//end write_xml()
 
+function view_form(){
+	global $_vars, $exportBookName;
+	global $exportBookName;
+	global $sqlite_path;
+	global $filename;
+	
+echo "
+<html>
+<head>
+	<meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+	<link rel='stylesheet' href='../css/bootstrap336.min.css'/>
+</head>
+<body>
+
+<div class='container'>
+	<div class='page-header'>
+		<h2>Export book info from DB</h2>
+	</div>
+	
+	<form method=post name='form_export' action='' class='form'>
+		<fieldset>
+		
+<legend>Export params:</legend>
+		<div class=class='form-group'>
+ 
+<label>filename</label>
+<input 
+type='text'
+name='filename'
+value='".$filename."'
+class='form-control'/>
+<br>
+
+<label>sqlite_path</label>
+<input 
+class='form-control'
+type='text' 
+name='sqlite_path' 
+value='".$sqlite_path."'/>
+<br>
+
+<label>book_title</label>
+<input 
+class='form-control'
+type='text' name='book_title' 
+value=".$exportBookName."
+/>
+
+<!--
+<div class='form-group'>
+	<label class='radio-inline'><input type='radio' name='format' checked='checked' value='xml' >XML</label>
+	<label class='radio-inline'><input type='radio' name='format' value='json' >JSON</label>
+	<label class='radio-inline'><input type='radio' name='format' value='wxr' >WXR ( WordPress eXtended Rss export/import )</label>
+</div>
+-->
+		</div>
+
+		<input type=hidden name='action' value='export'/>
+		<input type=submit value='export' class='btn btn-large btn-primary'>
+		</fieldset>
+	</form>
+	
+	<pre>PHP version: ".$_vars["phpversion"]."</pre>
+	<pre>SAPI name: ".php_sapi_name()."</pre>
+	
+</div>
+
+</body>
+</html>
+";
+
+}//end view_form()
 ?>
