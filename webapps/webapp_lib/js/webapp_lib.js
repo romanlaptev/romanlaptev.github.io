@@ -1115,12 +1115,10 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				//return _getTerminNodesStorage(params);
 			}, 
 			"view_node" : function( params ){
-				var html =  view_node( params );
-				return html;
+				return _view_node( params );
 			},
 			"view_termin_nodes" : function( params ){
-				var html = _view_termin_nodes( params );
-				return html;
+				return _view_termin_nodes( params );
 			}
 		};
 //console.log("nodes_obj:", nodes_obj);
@@ -1864,6 +1862,14 @@ console.log( _vars["logMsg"] );
 				node["book_files"] = _getBookFilesXML( params );
 				node["book_url"] = _getBookUrlXML( params );
 				node["book_links"] = _getBookLinksXML( params );
+		
+//Get children nodes				
+//if( node["type"] === "author"){
+	node["node_child_pages"] = book.get_child_pages({
+		"plid" : node["mlid"],
+		"recourse" : 0
+	});
+//}
 				
 //console.log( node  );
 				return node;
@@ -2000,7 +2006,8 @@ console.log( _vars["logMsg"] );
 			return node_termins;
 		};//end get_node_termins()
 
-		function view_node( params ) {
+		function _view_node( params ) {
+//console.log(params, nodes_obj);	
 			if( !_vars["node"] ) {
 				var log = "- error, not found _vars[node]";
 //console.log(message);
@@ -2024,6 +2031,25 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 //console.log(bodyValue );
 }
 //----------------------
+
+//----------------------
+var childNodesHtml = "";
+if( _vars["node"]["node_child_pages"] && _vars["node"]["node_child_pages"].length > 0){
+//console.log(_vars["node"]);
+//console.log(_vars["node"]["node_child_pages"]);
+//console.log(_vars["node"]["type"]);
+
+_vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + _vars["node"]["node_child_pages"].length + "</b></p>";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+
+var childNodesHtml = book.view_child_pages({
+	"nid" :  _vars["GET"]["nid"],
+	"mlid" :  _vars["GET"]["mlid"],
+	"child_pages": _vars["node"]["node_child_pages"]
+});
+//console.log("childNodesHtml = " + childNodesHtml);
+}
+//----------------------
 			
 			var node_tpl = _vars["templates"]["node_tpl"];
 			var html = node_tpl
@@ -2033,7 +2059,8 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			.replace("{{bookname}}", _vars["node"]["bookname"] )
 			.replace("{{changed}}", _vars["node"]["changed"] )
 			.replace("{{created}}", _vars["node"]["created"] )
-			.replace("{{body_value}}", bodyValue );
+			.replace("{{body_value}}", bodyValue )
+			.replace("{{child_pages}}", childNodesHtml );
 
 
 			if( _vars["node"]["bookname"].length === 0){
@@ -2041,6 +2068,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			} else {
 				html = html.replace("{{node-title}}", "" );
 			}
+			
 			
 			var node_tpl_url = _vars["templates"]["node_tpl_url"];
 			
@@ -2127,7 +2155,7 @@ if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 			html = html.replace("{{termin-links}}", html_termin_links);
 			
 			return html;
-		}//end view_node()
+		}//end _view_node()
 
 
 
@@ -2482,10 +2510,11 @@ console.log("error, not found _vars[book_category], function parse_book_category
 			return html;
 		}//end _view_book_category()
 		
-		function _view_child_pages( params ) {
-//console.log("function view_child_pages", params);
-			if( typeof _vars["book_child_pages"] === "undefined") {
-				var log = "- error, not found _vars[book_child_pages]";
+		function _view_child_pages( p ) {
+//console.log("function view_child_pages", p);
+
+			if( typeof p["child_pages"] === "undefined") {
+				var log = "- error, not found child_pages";
 //console.log(message);
 				//_vars["info"].push( message );
 _vars["logMsg"] = log;
@@ -2495,8 +2524,8 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 				return;
 			}
 			
-			if( _vars["book_child_pages"].length === 0) {
-console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].length);
+			if( p["child_pages"].length === 0) {
+console.log("child_pages is empty!!!");
 				return;
 			}
 			
@@ -2506,13 +2535,13 @@ console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].l
 			
 			var html = "", html_list = "";
 			
-			for( var n = 0; n < _vars["book_child_pages"].length; n++ ) {
+			for( var n = 0; n < p["child_pages"].length; n++ ) {
 				
-				var type = $(_vars["book_child_pages"][n]).attr("type");
-				var nid = $(_vars["book_child_pages"][n]).attr("nid");
-				var mlid = $(_vars["book_child_pages"][n]).attr("mlid");
-				var plid = $(_vars["book_child_pages"][n]).attr("plid");
-				var title = $(_vars["book_child_pages"][n]).attr("title");
+				var type = $(p["child_pages"][n]).attr("type");
+				var nid = $(p["child_pages"][n]).attr("nid");
+				var mlid = $(p["child_pages"][n]).attr("mlid");
+				var plid = $(p["child_pages"][n]).attr("plid");
+				var title = $(p["child_pages"][n]).attr("title");
 				html_list += item_tpl
 				.replace("{{type}}", type)
 				.replace("{{nid}}", nid)
@@ -2526,7 +2555,7 @@ console.log("_vars['book_child_pages'] is empty!!!", _vars["book_child_pages"].l
 //console.log( html );
 
 			return html;
-		};//end _view_child_pages( params )
+		};//end _view_child_pages(p)
 
 		
 		function draw_page( params ){
@@ -2697,6 +2726,7 @@ if( _vars["GET"]["vid"] === "1" ){
 			//view book nodes
 			if ( _vars["GET"]["q"] === "book_page" ) {
 				render_node();
+/*				
 				if( _vars["book_child_pages"].length > 0) {
 					var params = {
 						"nid" :  _vars["GET"]["nid"],
@@ -2708,7 +2738,7 @@ if( _vars["GET"]["vid"] === "1" ){
 				} else {
 //console.log("_vars['book_child_pages'] is empty!!!!!!!!!!!!!!", _vars["book_child_pages"].length);
 				}
-				
+*/				
 			}
 			
 			//view nodes
@@ -3243,10 +3273,11 @@ _vars["timeStart"] = new Date();
 					_vars["node"] = nodes_obj.get_node({
 						"nid" : _vars["GET"]["nid"]
 					});
-					_vars["book_child_pages"] = book.get_child_pages({
-						"plid" : _vars["GET"]["mlid"],
-						"recourse" : 0
-					});
+					
+					//_vars["book_child_pages"] = book.get_child_pages({
+						//"plid" : _vars["GET"]["mlid"],
+						//"recourse" : 0
+					//});
 						
 //var params = [];
 //params["plid"] = "386";
@@ -3268,10 +3299,11 @@ _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) /
 
 _vars["logMsg"] = "<p>- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
 
-console.log( _vars["book_child_pages"].length );
-						if( _vars["book_child_pages"].length > 0){
-							_vars["logMsg"] += "<p>- в разделе найдено подразделов или книг: <b>" + _vars["book_child_pages"].length + "</b></p>";
-						}
+//console.log( _vars["book_child_pages"].length );
+
+						//if( _vars["book_child_pages"].length > 0){
+							//_vars["logMsg"] += "<p>- в разделе найдено подразделов или книг: <b>" + _vars["book_child_pages"].length + "</b></p>";
+						//}
 						
  func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
