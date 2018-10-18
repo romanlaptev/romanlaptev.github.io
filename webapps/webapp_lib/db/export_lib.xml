@@ -17030,7 +17030,7 @@ lib/books/T/Tolstoy.AN
 АЭЛИТА. (Закат Марса)
 		</bookname>
 	</node>
-	<node title="Агаев Самид. Седьмой совершенный" nid="682" mlid="1958" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="15-Oct-2018 05:44:11" weight="0">
+	<node title="Агаев Самид. Седьмой совершенный" nid="682" mlid="1958" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="18-Oct-2018 08:22:09" weight="0">
 		<body_value>
 Самид Агаев. Седьмой совершенный
 		</body_value>
@@ -32191,9 +32191,6 @@ lib/art_books/book_history_engraving
 	<item entity_id="683" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="682" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
 	<item entity_id="681" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
@@ -32915,9 +32912,6 @@ lib/art_books/book_history_engraving
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="683" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
-	<item entity_id="682" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="681" bundle="library_book" delta="1">
@@ -36357,17 +36351,17 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1750" tid="39"/>
 	<record nid="1750" tid="119"/>
 	<record nid="1750" tid="240"/>
-	<record nid="682" tid="39"/>
-	<record nid="682" tid="14"/>
-	<record nid="682" tid="67"/>
-	<record nid="682" tid="139"/>
-	<record nid="682" tid="156"/>
 	<record nid="695" tid="17"/>
 	<record nid="695" tid="20"/>
 	<record nid="695" tid="67"/>
 	<record nid="695" tid="139"/>
 	<record nid="695" tid="151"/>
 	<record nid="695" tid="154"/>
+	<record nid="682" tid="39"/>
+	<record nid="682" tid="14"/>
+	<record nid="682" tid="67"/>
+	<record nid="682" tid="139"/>
+	<record nid="682" tid="156"/>
 </taxonomy_index>
 
 <taxonomy_term_data>
