@@ -143,7 +143,7 @@ $_vars["sql"]["getTaxonomyVocabulary"] = "SELECT vid,name,machine_name,descripti
 //http://php.net/php_sapi_name
 //apache2handler
 //cli
-/*
+
 $_vars["runType"] = "";
 
 $sapi_type = php_sapi_name();
@@ -153,13 +153,14 @@ if ( $sapi_type == 'apache2handler') {
 if ( $sapi_type == 'cli') {
 	$_vars["runType"] = "console";
 }
-*/
+
+if (!empty($_REQUEST['run_type']) )	{
+	$_vars["runType"] = $_REQUEST['run_type'];
+}
 
 //=================================== WEB run
-if ( $sapi_type == 'apache2handler') {
+if ( $_vars["runType"] == "web") {
 
-$_vars["web"] = true;
-	
 //echo "<pre>";
 //print_r($_SERVER);
 //print_r($_REQUEST);
@@ -197,7 +198,7 @@ $_vars["web"] = true;
 }
 
 //==================================== CONSOLE run
-if ( $sapi_type == 'cli') {
+if ( $_vars["runType"] == "console") {
 //print_r($argv);
 //$_SERVER["argv"]
 $_vars["console"] = true;
@@ -252,7 +253,7 @@ echo "\n";
 
 function _log( $message ){
 	global $_vars;
-	if($_vars["console"]){	
+	if ( $_vars["runType"] == "console") {
 		echo $message;
 	}
 }//end _log()
@@ -734,7 +735,7 @@ function write_xml($data){
 	//----------------------------------- write xml file
 	if ( !empty($xml) )
 	{
-		if($_vars["web"] == 1){
+		if ( $_vars["runType"] == "web") {
 			header('Content-Type:  application/xhtml+xml');
 			header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
 			header('Content-Transfer-Encoding: binary');
@@ -742,7 +743,7 @@ function write_xml($data){
 			echo $xml;
 		}
 		
-		if($_vars["console"] == 1){
+		if ( $_vars["runType"] == "console") {
 			$num_bytes = file_put_contents ( $_vars["filename"], $xml);
 			if ($num_bytes > 0){
 _log("Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n");
