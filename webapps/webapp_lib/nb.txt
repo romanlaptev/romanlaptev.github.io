@@ -57,9 +57,9 @@
 
 --------------------------------------  sql-export  
 - сделать передачу в скрипт экспорта параметров:
-$exportBookName = "библиотека";
-$filename = "export_lib.xml";
-$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
++$exportBookName = "библиотека";
++$filename = "export_lib.xml";
++$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
 также расположение скрипта - 
 http://vbox1/www/sites/export/export_lib.php
 http://vbox5/www/sites/romanlaptev.github.io/webapps/webapp_lib/db/export.php

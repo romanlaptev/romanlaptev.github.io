@@ -23,7 +23,7 @@ clear:both;
 
 
 #info{
-background: #FFD700;
+background: #abbabb; /*#CFDFE5;*/ /*#FFD700;*/
 padding: 10px;
 position: fixed;
 right: 0;
@@ -45,9 +45,14 @@ width: 50%;
 #info .close {
   display: block;
   float: right;
-  left: 5px;
+  left: 0;
   position: relative;
-  top: -10px;
+  top: 0;
+      opacity: 0.7;
+}
+
+#info .panel {
+background-color:#e6eaec;
 }
 
 #ajaxBusy
