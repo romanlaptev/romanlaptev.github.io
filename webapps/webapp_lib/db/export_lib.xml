@@ -17763,7 +17763,7 @@ lib/books/0_art
 Бальдунг
 		</bookname>
 	</node>
-	<node title="Бальзак и портниха китаяночка" nid="1669" mlid="2058" plid="386" type="library_book" created="13-Nov-2015 16:42:15" changed="05-Feb-2016 14:35:32" weight="0">
+	<node title="Бальзак и портниха китаяночка" nid="1669" mlid="2058" plid="386" type="library_book" created="13-Nov-2015 16:42:15" changed="19-Oct-2018 09:39:38" weight="0">
 		<subfolder>
 /lib/books/D/dai_sycze
 		</subfolder>
@@ -27467,7 +27467,7 @@ lib/books/M
 Черная свеча
 		</bookname>
 	</node>
-	<node title="Чжан Тянь-и  Дорога" nid="1670" mlid="2059" plid="386" type="library_book" created="13-Nov-2015 16:51:08" changed="13-Nov-2015 16:51:42" weight="0">
+	<node title="Чжан Тянь-и  Дорога" nid="1670" mlid="2059" plid="386" type="library_book" created="13-Nov-2015 16:51:08" changed="19-Oct-2018 09:40:09" weight="0">
 		<subfolder>
 /lib/books/CH
 		</subfolder>
@@ -33389,11 +33389,7 @@ http://localhost#localhost, direct link
 		<value>https://googledrive.com/host/0BxjK1kq1ZINaOEFkaDBaUlNTNXc/lib/comp_books/web/HTML5.pdf</value>
 	</item>
 	<item entity_id="1669" bundle="library_book" delta="0">
-		<value>http://mycomp/sites/video/node/1246</value>
-	</item>
-	<item entity_id="1670" bundle="library_book" delta="0">
-		<value>
-</value>
+		<value>http://i5/sites/video/node/1246</value>
 	</item>
 	<item entity_id="1671" bundle="library_book" delta="0">
 		<value>http://mycomp/sites/lib.local/lib_xml/image_viewer_pages.html?book_location=http://mycomp/lib/art_books/scan_Jacques_Callot</value>
@@ -35524,12 +35520,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1668" tid="20"/>
 	<record nid="1668" tid="68"/>
 	<record nid="1668" tid="155"/>
-	<record nid="1670" tid="39"/>
-	<record nid="1670" tid="99"/>
-	<record nid="1670" tid="20"/>
-	<record nid="1670" tid="185"/>
-	<record nid="1670" tid="143"/>
-	<record nid="1670" tid="162"/>
 	<record nid="1647" tid="38"/>
 	<record nid="1647" tid="111"/>
 	<record nid="1647" tid="184"/>
@@ -35578,14 +35568,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1672" tid="185"/>
 	<record nid="1672" tid="143"/>
 	<record nid="1672" tid="200"/>
-	<record nid="1669" tid="39"/>
-	<record nid="1669" tid="179"/>
-	<record nid="1669" tid="19"/>
-	<record nid="1669" tid="185"/>
-	<record nid="1669" tid="120"/>
-	<record nid="1669" tid="140"/>
-	<record nid="1669" tid="143"/>
-	<record nid="1669" tid="203"/>
 	<record nid="1671" tid="46"/>
 	<record nid="1671" tid="49"/>
 	<record nid="1671" tid="184"/>
@@ -36354,6 +36336,22 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="646" tid="156"/>
 	<record nid="646" tid="166"/>
 	<record nid="646" tid="229"/>
+	<record nid="1669" tid="39"/>
+	<record nid="1669" tid="179"/>
+	<record nid="1669" tid="19"/>
+	<record nid="1669" tid="185"/>
+	<record nid="1669" tid="120"/>
+	<record nid="1669" tid="140"/>
+	<record nid="1669" tid="143"/>
+	<record nid="1669" tid="187"/>
+	<record nid="1669" tid="203"/>
+	<record nid="1670" tid="39"/>
+	<record nid="1670" tid="99"/>
+	<record nid="1670" tid="20"/>
+	<record nid="1670" tid="185"/>
+	<record nid="1670" tid="143"/>
+	<record nid="1670" tid="162"/>
+	<record nid="1670" tid="187"/>
 </taxonomy_index>
 
 <taxonomy_term_data>
