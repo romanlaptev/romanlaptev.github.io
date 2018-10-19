@@ -54,6 +54,20 @@ width: 50%;
 #info .panel {
 background-color:#e6eaec;
 }
+#info .nav>li>a {
+    background-color: #cfd9db;
+    color: #0000ff;
+}
+
+#info .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    background-color: #fff !important;
+	outline: none;    
+}
+#info .nav>li>a:focus, .nav>li>a:hover {
+    background-color: #eee !important;
+	outline: none;    
+}
+
 
 #ajaxBusy
 {
