@@ -7,6 +7,7 @@ video/cms
 music/cms
 music/player
 lib/cms
+_export_lib.xml
 
 book_history_engraving/ci
 book_history_engraving/cms
