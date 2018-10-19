@@ -22689,10 +22689,7 @@ lib/comp_books/program/java
 Секреты программирования для Internet на Java
 		</bookname>
 	</node>
-	<node title="Семнадцать мгновений весны" nid="646" mlid="1815" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="17-Aug-2014 11:51:35" weight="0">
-		<body_value>
-Семенов Юлиан. Семнадцать мгновений весны (1945)
-		</body_value>
+	<node title="Семнадцать мгновений весны" nid="646" mlid="1815" plid="386" type="library_book" created="09-Oct-2012 13:41:10" changed="19-Oct-2018 04:28:26" weight="0">
 		<subfolder>
 lib/books/S/Semenov
 		</subfolder>
@@ -32038,9 +32035,6 @@ lib/art_books/book_history_engraving
 	<item entity_id="645" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
-	<item entity_id="646" bundle="library_book" delta="0">
-		<value>file:///mnt/wd160</value>
-	</item>
 	<item entity_id="647" bundle="library_book" delta="0">
 		<value>file:///mnt/wd160</value>
 	</item>
@@ -32765,9 +32759,6 @@ lib/art_books/book_history_engraving
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="645" bundle="library_book" delta="1">
-		<value>http://lib.wallst.ru</value>
-	</item>
-	<item entity_id="646" bundle="library_book" delta="1">
 		<value>http://lib.wallst.ru</value>
 	</item>
 	<item entity_id="647" bundle="library_book" delta="1">
@@ -35149,12 +35140,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="633" tid="142"/>
 	<record nid="633" tid="156"/>
 	<record nid="633" tid="161"/>
-	<record nid="646" tid="67"/>
-	<record nid="646" tid="39"/>
-	<record nid="646" tid="10"/>
-	<record nid="646" tid="47"/>
-	<record nid="646" tid="156"/>
-	<record nid="646" tid="166"/>
 	<record nid="689" tid="48"/>
 	<record nid="689" tid="67"/>
 	<record nid="689" tid="151"/>
@@ -36362,6 +36347,13 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="682" tid="67"/>
 	<record nid="682" tid="139"/>
 	<record nid="682" tid="156"/>
+	<record nid="646" tid="39"/>
+	<record nid="646" tid="10"/>
+	<record nid="646" tid="47"/>
+	<record nid="646" tid="67"/>
+	<record nid="646" tid="156"/>
+	<record nid="646" tid="166"/>
+	<record nid="646" tid="229"/>
 </taxonomy_index>
 
 <taxonomy_term_data>

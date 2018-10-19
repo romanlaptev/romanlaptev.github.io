@@ -268,3 +268,14 @@ padding: 5px 5px;
 .direct-links {
     word-break: break-all;
 }
+
+
+.block-node {
+    /*background: lightsteelblue;*/
+    padding: 5px;
+}
+.node {
+    background-color: #CFDFFE;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -158,7 +158,7 @@
 			
 			<div id="region-content">
 				<div id="block-taxonomy"></div>
-				<div id="block-nodes"></div>
+				<div id="block-node"></div>
 			</div>
 		</div>
 <!--
@@ -228,10 +228,22 @@
 		<div id="tab-export" class="tab-pane fade">
 			<div  class="panel panel-default">
 				<div class="panel-body">
-<h3>export book info from DB (lib.sqlite)</h3>					
-<a href="db/export.php" target="_blank" class="btn btn-primary">export.php, web-form</a>
-<a href="db/export.php?run_type=console" target="_blank" class="btn btn-info">export.php, console run</a>
+<h3>export book info from DB (lib.sqlite)</h3>
+<div class="row panel-body">
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<input class="form-control" id="export-script-url" value="db/export.php"/>
+	</div>
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<a id="btn-load-export" href="#" target="_blank" class="btn btn-primary">load export script</a>
+	</div>
+</div>	
+<pre>
+- web-form, 
+http://.../db/export.php
 
+- console run, 
+http://.../db/export.php?run_type=console
+</pre>
 				</div>
 			</div>
 		</div>

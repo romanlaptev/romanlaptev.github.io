@@ -40,6 +40,31 @@
 		]]></html_code>
 	</tpl>
 	
+	<tpl name="tpl-block--node">
+		<html_code><![CDATA[
+<div class="block block-node">
+	<div class="content node">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-block--termin-nodes">
+		<html_code><![CDATA[
+<div class="block block-termin-nodes">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<b>книги, связанные с термином</b>
+		</div>
+		<div class="panel-body content">{{content}}</div>
+		<div class="panel-footer">
+			<b>list related nodes</b>
+		</div>
+	</div>  
+</div>			
+		]]></html_code>
+	</tpl>
+
+
 <!--
 	<tpl name="tpl-termin_nodes">
 		<html_code><![CDATA[

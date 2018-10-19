@@ -207,30 +207,15 @@
 
 <!-- TEMPLATE ["termin_nodes_tpl"] -->
 			<div id="termin-nodes">
-				<div class="panel">
-<!--
-					<div class="panel-heading">
-						<b>книги, связанные с термином</b>
-					</div>
--->
-					<div class="panel-body">
-						<ol class="list-termin-nodes">{{termin_nodes}}
+				<ol class="list-termin-nodes">{{termin_nodes}}
 
-							<span id="termin-nodes-item">
-								<li class="termin-node">
-									<a class="nav-click" href="{{url}}">{{author}} {{bookname}}</a>
-								</li>
-							</span>
+					<span id="termin-nodes-item">
+						<li class="termin-node">
+							<a class="nav-click" href="{{url}}">{{author}} {{bookname}}</a>
+						</li>
+					</span>
 
-						</ol>
-					</div>
-<!--
-					<div class="panel-footer">
-						<b>list related nodes</b>
-					</div>
--->
-				</div>  
-				
+				</ol>
 			</div>
 <!-- ####### -->
 </div>	

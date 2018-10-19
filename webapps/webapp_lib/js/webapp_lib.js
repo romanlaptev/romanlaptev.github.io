@@ -2107,22 +2107,27 @@ var childNodesHtml = book.view_child_pages({
 			html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
 			html = html.replace("{{cloud-links}}", html_cloud_links);
 
-			//form node book external links
-			var html_book_links = "";
-			for( var n = 0; n < _vars["node"]["book_links"].length; n++ ){
-				var link =  _vars["node"]["book_links"][n];
-				var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
-				if( link.lastIndexOf('#') > 0 ) {
-					var s_link = link.substring( 0, link.lastIndexOf('#') );
-				} else {
-					var s_link = link;
-				}
+//-------------------------- form node book external links
+			var externalLinksHtml = "";
+			if( _vars["node"]["book_links"].length > 0 ){
+				
+				for( var n = 0; n < _vars["node"]["book_links"].length; n++ ){
+					var link =  _vars["node"]["book_links"][n];
+					var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
+					if( link.lastIndexOf('#') > 0 ) {
+						var s_link = link.substring( 0, link.lastIndexOf('#') );
+					} else {
+						var s_link = link;
+					}
 
-				html_book_links += node_tpl_url
-						.replace("{{link-title}}", link_title)
-						.replace("{{url}}", s_link);
-			}//next book link
-			html = html.replace("{{external-links}}", html_book_links);
+					externalLinksHtml += node_tpl_url
+							.replace("{{link-title}}", link_title)
+							.replace("{{url}}", s_link);
+				}//next
+				
+			}
+			html = html.replace("{{external-links}}", externalLinksHtml);
+
 			
 			//form node old book url
 			var html_book_url2 = "";
@@ -2702,7 +2707,7 @@ if( _vars["GET"]["vid"] === "1" ){
 						
 						"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 					});
-					//$("#region-content #block-taxonomy").html( html );
+					
 					_buildBlock({
 						"locationID" : "block-taxonomy",
 						"templateID" : "tpl-block--tags",
@@ -2711,39 +2716,37 @@ if( _vars["GET"]["vid"] === "1" ){
 					
 				}
 				
-				if ( _vars["termin_nodes"].length > 0)
-				{
-					var html = nodes_obj.view_termin_nodes( );
-					//$("#region-content #block-nodes").html( html );
+				//if ( _vars["termin_nodes"].length > 0){
 					_buildBlock({
-						"locationID" : "block-nodes",
-						"templateID" : "tpl-block--tags",
-						"content" : html
+						"locationID" : "block-node",
+						"templateID" : "tpl-block--termin-nodes",
+						"content" : function(){
+							var html = nodes_obj.view_termin_nodes();
+//console.log(html);					
+							return html;
+						}
 					});
-				}
+				//} else {
+//console.log("TEST");
+				//}
 			}
 			
 			//view book nodes
 			if ( _vars["GET"]["q"] === "book_page" ) {
 				render_node();
-/*				
-				if( _vars["book_child_pages"].length > 0) {
-					var params = {
-						"nid" :  _vars["GET"]["nid"],
-						"mlid" :  _vars["GET"]["mlid"]
-					};
-					var html = book.view_child_pages( params );
-//console.log("html = " + html);
-					$("#region-content #block-nodes").append( html );
-				} else {
-//console.log("_vars['book_child_pages'] is empty!!!!!!!!!!!!!!", _vars["book_child_pages"].length);
-				}
-*/				
 			}
 			
 			//view nodes
 			if ( _vars["GET"]["q"] === "node" ){
 				render_node();
+			}
+
+			//hide blocks on small screens
+			if ( _vars["GET"]["q"] && _vars["GET"]["q"].length > 0 ){
+				if( $(".navbar-header").is(":visible") &&
+					document.body.clientWidth < 990) {
+					$("#bs-navbar-collapse-1").hide("slow");
+				}
 			}
 			
 //---------------------- render breadcrumb
@@ -2787,38 +2790,47 @@ if( _vars["GET"]["vid"] === "1" ){
 //---------------------
 			
 			function render_node(){
-				var html = nodes_obj.view_node({
-					"nid" :  _vars["GET"]["nid"]
-				});
-				
-//console.log(html);				
-				if(!html){
-					_vars["logMsg"] = "- error, render_node("+_vars["GET"]["nid"]+")";
-					//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-					return false;
-				}
 
-				$("#region-content #block-nodes").html( html );
-				
-				
-				if( _vars["node"]["book_files"].length === 0 ){
-					$("#cloud-links").hide();
-					$("#book-links").hide();
-				}
-				
-				if( _vars["node"]["book_links"].length > 0 ){
-//console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
-					$("#external-links").show();
-				} else {
-					$("#external-links").hide();
-				}
-				
-				if( _vars["node"]["termins"].length === 0 ){
-					$("#termins").hide();
-				} else {
-					$("#termins .nav-click").addClass("root-link");			
-				}
+				//$("#region-content #block-nodes").html( html );
+				_buildBlock({
+					"locationID" : "block-node",
+					"templateID" : "tpl-block--node",
+					"content" : function(){
+						var html = nodes_obj.view_node({
+							"nid" :  _vars["GET"]["nid"]
+						});
+						
+//console.log(html);				
+						if(!html){
+							_vars["logMsg"] = "- error, render_node("+_vars["GET"]["nid"]+")";
+							//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+							return false;
+						}
+						return html;
+					},
+					"postFunc": function(){
+//console.log( "render_node(), build block-nodes, postFunc" );
+						if( _vars["node"]["book_files"].length === 0 ){
+							$("#cloud-links").hide();
+							$("#book-links").hide();
+						}
+						
+						if( _vars["node"]["book_links"].length > 0 ){
+		//console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
+							$("#external-links").show();
+						} else {
+							$("#external-links").hide();
+						}
+						
+						if( _vars["node"]["termins"].length === 0 ){
+							$("#termins").hide();
+						} else {
+							$("#termins .nav-click").addClass("root-link");			
+						}
+
+					}//end postFunc
+				});
 				
 			}//end render_node()
 			
@@ -2844,7 +2856,7 @@ console.log( _vars["logMsg"] );
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
 					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-//console.log(msg);			
+console.log(msg);	
 
 					//_vars["runtime"].push({
 						//"source" : msg,
@@ -2852,12 +2864,12 @@ console.log( _vars["logMsg"] );
 						//"sec" : ms / 1000
 					//});
 					
-					if( typeof p["callback2"] === "function"){
-						p["callback2"]();//return from _buildBlock()
+					if( typeof p["postFunc"] === "function"){
+						p["postFunc"]();//return from _buildBlock()
 					}
 					
 				},//end callback
-				"callback2" : null
+				"postFunc" : null
 			};
 			//extend p object
 			for(var key in opt ){
@@ -3189,6 +3201,18 @@ console.log( logMsg );
 				//$("#btn-localforage-clear").hide();
 			//}	
 
+			$("#btn-load-export").on("click", function(e){
+				if (e.preventDefault) { 
+					e.preventDefault();
+				} else {
+					e.returnValue = false;				
+				}
+				var url = $("#export-script-url").val(); 
+				e.href = url;
+//console.log(e.href);				
+				window.open(e.href);
+			});//end event
+
 			window.onresize = function(event) {
 				if( document.body.clientWidth > 990){
 					if( !$("#bs-navbar-collapse-1").is(":visible") ){
@@ -3268,52 +3292,6 @@ console.log( "Warn! error parse url in " + target.href );
 					$("#info").toggle();
 				break;
 				
-				case "book_page": 
-_vars["timeStart"] = new Date();
-					_vars["node"] = nodes_obj.get_node({
-						"nid" : _vars["GET"]["nid"]
-					});
-					
-					//_vars["book_child_pages"] = book.get_child_pages({
-						//"plid" : _vars["GET"]["mlid"],
-						//"recourse" : 0
-					//});
-						
-//var params = [];
-//params["plid"] = "386";
-//params["recourse"] = 0;
-//_vars["test"] = book.get_child_pages( params );//title="художественая литература" nid="3" mlid="386" plid="384" type="book"
-						
-
-					_formBreadcrumb( target );
-					draw_page();
-					
-					if( $(".navbar-header").is(":visible") &&
-						document.body.clientWidth < 990) {
-						//$("#bs-navbar-collapse-1").addClass("collapse");
-						$("#bs-navbar-collapse-1").hide("slow");
-					}
-				
-_vars["timeEnd"] = new Date();
-_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-
-_vars["logMsg"] = "<p>- nodes_obj.get_node("+_vars["GET"]["nid"]+"), book.get_child_pages("+ _vars["GET"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
-
-//console.log( _vars["book_child_pages"].length );
-
-						//if( _vars["book_child_pages"].length > 0){
-							//_vars["logMsg"] += "<p>- в разделе найдено подразделов или книг: <b>" + _vars["book_child_pages"].length + "</b></p>";
-						//}
-						
- func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-
-//_vars["runtime"]["get_child_pages"] = {
-	//"time" : _vars["runTime"]
-//};
-
-				break;
-				
 				case "termin_nodes":
 _vars["timeStart"] = new Date();
 
@@ -3327,18 +3305,13 @@ _vars["timeStart"] = new Date();
 						_formBreadcrumb( target );
 						draw_page();
 						
-						if( $(".navbar-header").is(":visible") &&
-							document.body.clientWidth < 990) {
-							$("#bs-navbar-collapse-1").hide("slow");
-						}
-						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 _vars["logMsg"] = "<p>- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
 
-						if( _vars["termin_nodes"].length > 0){
+						//if( _vars["termin_nodes"].length > 0){
 							_vars["logMsg"] += "<p>- найдено <b>" + _vars["termin_nodes"].length + "</b> книг, связанных с термином</p>";
-						}
+						//}
 						
 func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
@@ -3349,6 +3322,7 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 					
 				break;
 				
+				case "book_page": 
 				case "node": 
 _vars["timeStart"] = new Date();
 
@@ -3359,14 +3333,10 @@ _vars["timeStart"] = new Date();
 					_formBreadcrumb( target );
 					draw_page();
 					
-					if( $(".navbar-header").is(":visible") &&
-						document.body.clientWidth < 990) {
-						$("#bs-navbar-collapse-1").hide("slow");
-					}
-						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-_vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
+//_vars["logMsg"] = "- nodes_obj.get_node("+_vars["GET"]["nid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
+_vars["logMsg"] = "- nodes_obj.get_node("+_vars["node"]["nid"]+"), book.get_child_pages("+ _vars["node"]["mlid"] +"), runtime: <b>" + _vars["runTime"] + "</b> sec";
  func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 				break;
