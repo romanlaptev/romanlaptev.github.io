@@ -2374,9 +2374,17 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			return html;
 		}//end list_children_termins();
 		
-		function _view_termin( params )	{
-//console.log("TEST2", params);			
+		function _view_termin( p )	{
+//console.log("TEST2", params);
+
+			if(!p.termin ){
+_vars["logMsg"] = "error, _view_termin(), not found termins ";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
 			var termins = params["termins"]; 
+			
 			var vid = params["vid"];
 			var tid = params["tid"];
 			var recourse = params["recourse"];
@@ -2645,7 +2653,9 @@ console.log("error, not found _vars[book_category]");
 
 //--------------------- BLOCK
 			//view alphabetical
-
+//console.log( _vars["taxonomy"]);
+//console.log( typeof _vars["taxonomy"]["alphabetical_voc"]);
+if( _vars["taxonomy"] && _vars["taxonomy"]["alphabetical_voc"] ){
 			var html = taxonomy_obj.view_termin({
 				"termins": _vars["taxonomy"]["alphabetical_voc"]["termins"],
 				"vid": "4",
@@ -2669,6 +2679,7 @@ console.log("error, not found _vars[book_category]");
 			});
 			
 			//$("#block-taxonomy-alpha").html( html );
+}
 			
 			_buildBlock({
 				"locationID" : "block-taxonomy-alpha",

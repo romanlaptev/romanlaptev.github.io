@@ -13,6 +13,10 @@
 	<script src="js/functions.js"></script>
 	
 	<script>
+//console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
+	var func = sharedFunc();
+console.log("func:", func);
+		
 $(document).ready(function(){
 console.log("Ready!", arguments);
 
@@ -57,6 +61,7 @@ console.dir(e);
 	});
 	
 window.onload = function(){
+
 
 	if( document.querySelector)
 	{
@@ -133,7 +138,7 @@ console.log(window.localStorage);
 			out += "</li>";
 		}
 		//list.innerHTML = out;
-		_log(out);		
+		func.log(out);		
 		
 	}//end event
 
@@ -155,7 +160,7 @@ console.log('Saved: ' + value);
 console.log('Read: ', readValue);
 			out = 'Read ' + key + " = " + readValue;
 			//list.innerHTML = out;
-			_log(out);
+			func.log(out);
          });
 	}//end event
 	
@@ -198,7 +203,7 @@ console.log(keyName);
 console.log(keys);
 			out = keys;
 			//list.innerHTML = out;
-			_log( out );
+			func.log( out );
 		});
 	}//end event
 	
@@ -309,7 +314,7 @@ http://blog.teamtreehouse.com/using-localforage-offline-data-storage
 </body>
 <script>
 	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
-	_log(logMsg);
+	func.log(logMsg);
 </script>
 
 </html>
