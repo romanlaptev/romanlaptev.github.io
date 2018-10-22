@@ -1742,14 +1742,16 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 if(node["type"] === "library_book"){
 				html += termin_node_tpl
-				.replace(/{{url}}/g, url)
+				//.replace(/{{url}}/g, url)
+				.replace(/#url#/g, url)
 				.replace("{{bookname}}", '"'+node["bookname"]+'"')
 				.replace("{{author}}", node["author"]);
 }				
 
 if(node["type"] === "author"){
 				html += termin_node_tpl
-				.replace(/{{url}}/g, url)
+				//.replace(/{{url}}/g, url)
+				.replace(/#url#/g, url)
 				.replace("{{bookname}}", node["title"])
 				.replace("{{author}}", "");
 }
