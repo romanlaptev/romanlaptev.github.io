@@ -64,6 +64,20 @@
 		]]></html_code>
 	</tpl>
 
+	<tpl name="termin_nodes_item_tpl">
+		<html_code><![CDATA[
+<li class="termin-node">
+	<a class="nav-click" href="?q=node&nid={{nid}}">{{author}} {{bookname}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="termin_nodes_tpl">
+		<html_code><![CDATA[
+<ol class="list-termin-nodes">{{termin_nodes}}</ol>
+		]]></html_code>
+	</tpl>
+
 
 <!--
 	<tpl name="tpl-termin_nodes">

@@ -803,13 +803,13 @@ console.log("errorThrown - ", errorThrown);
 				tmp.find("li").remove();
 				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
 				_vars["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
-				
+/*				
 				_vars["templates"]["termin_nodes_item_tpl"] = templates.find("#termin-nodes-item").html();
 				var tmp = templates.find("#termin-nodes");
 				tmp.find("#termin-nodes-item").remove();
 				_vars["templates"]["termin_nodes_tpl"] = decodeURI( tmp.html() );
 				_vars["templates"]["termin_nodes_url_tpl"] = "?q=node&nid=#nid";
-
+*/
 				
 				var tmpl = $(data).find("#cloud-for");
 				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
@@ -1734,16 +1734,17 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			
 			var termin_nodes_tpl = _vars["templates"]["termin_nodes_tpl"];
 			var termin_node_tpl = _vars["templates"]["termin_nodes_item_tpl"];
-			var url_tpl = _vars["templates"]["termin_nodes_url_tpl"];
+			//var url_tpl = _vars["templates"]["termin_nodes_url_tpl"];
 			var html = "";
 			for( var n = 0; n < _vars["termin_nodes"].length; n++){
 				var node = _vars["termin_nodes"][n];
-				var url = url_tpl.replace("#nid", node["nid"]);
+				//var url = url_tpl.replace("#nid", node["nid"]);
 
 if(node["type"] === "library_book"){
 				html += termin_node_tpl
 				//.replace(/{{url}}/g, url)
-				.replace(/#url#/g, url)
+				//.replace(/#url#/g, url)
+				.replace("{{nid}}", node["nid"])
 				.replace("{{bookname}}", '"'+node["bookname"]+'"')
 				.replace("{{author}}", node["author"]);
 }				
@@ -1751,7 +1752,8 @@ if(node["type"] === "library_book"){
 if(node["type"] === "author"){
 				html += termin_node_tpl
 				//.replace(/{{url}}/g, url)
-				.replace(/#url#/g, url)
+				//.replace(/#url#/g, url)
+				.replace("{{nid}}", node["nid"])
 				.replace("{{bookname}}", node["title"])
 				.replace("{{author}}", "");
 }
