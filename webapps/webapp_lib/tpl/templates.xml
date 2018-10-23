@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
+
+	<tpl name="breadcrumb_item_tpl">
+		<html_code><![CDATA[
+<ul class="list-inline">
+	<li>
+		<a href="{{item-url}}" class="breadcrumb-link">{{item-title}}</a>
+	</li>
+</ul>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="book_category_tpl">
+		<html_code><![CDATA[
+<div id="block-book-category">
+	<h4>book category:</h4>
+	<ul class='book-content submenu'>{{list}}</ul>
+</div>		
+		]]></html_code>
+	</tpl>
+
+	<tpl name="book_category_item_tpl">
+		<html_code><![CDATA[
+<li class='{{type}}'><a href='?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}' class='nav-click'>{{page-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="taxonomy_list_tpl">
+		<html_code><![CDATA[
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+<!--
+	{{block-title}}
+-->
+	<ul>{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="taxonomy_list_item_tpl">
+		<html_code><![CDATA[
+<li><a class="nav-click" href="?q=termin_nodes&vid={{vid}}&tid={{tid}}">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+
+
 	
 	<tpl name="tpl-block">
 		<html_code><![CDATA[
@@ -103,7 +149,7 @@
 
 	<tpl name="tpl-block--taxonomy_alpha_list">
 		<html_code><![CDATA[
-<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
+<li><a class="nav-click" href="?q=termin_nodes&vid={{vid}}&tid={{tid}}">{{link-title}}</a></li>
 		]]></html_code>
 	</tpl>
 

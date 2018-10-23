@@ -45,13 +45,6 @@
 	<div class="row b-content">
 		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
 			
-<!-- TEMPLATE ["breadcrumb_item_tpl"]-->
-				<ul id="breadcrumb-tpl" class="list-inline">
-					<li>
-						<a href="{{item-url}}" class="breadcrumb-link">{{item-title}}</a>
-					</li>
-				</ul>			
-<!-- ####### -->
 			
 			<div id="region-content">
 				
@@ -113,7 +106,7 @@
 							<div class="panel-body">
 								<ul class="list-inline">
 									{{termin-links}}
-									<li><a href="{{url}}" class="nav-click">{{link-title}}</a></li>
+									<li><a href="?q=termin_nodes&vid={{vid}}&tid={{tid}}" class="nav-click">{{link-title}}</a></li>
 								</ul>
 							</div>
 						</div><!-- end panel -->
@@ -156,32 +149,7 @@
 		<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 fix1">
 
 			<div id="right-side" class="col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
-<!-- TEMPLATE ["block_book_category_tpl"] -->
-				<div id="block-book-category">
-					<h4>book category:</h4>
-<ul class='book-content submenu'>
-	{{list}}
-	<span id="block-book-category-for">
-		<li class='{{type}}'><a href='{{url}}' class='nav-click'>{{page-title}}</a></li>
-	</span>
-</ul>
-				</div>		
-<!-- ####### -->
 				
-<!-- TEMPLATE ["taxonomy_list_tpl"] -->
-				<div id="block-library">
-					<div id="taxonomy-menu">
-						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-<!--
-							{{block-title}}
--->
-							<ul>{{list}}
-								<li><a class="nav-click" href="{{url}}">{{link-title}}</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>		
-<!-- ####### -->
 
 			</div><!-- end right-side -->
 			
@@ -203,23 +171,6 @@
 	
 </div>
 
-
-
-<!-- TEMPLATE ["termin_nodes_tpl"] -->
-<!--
-			<div id="termin-nodes">
-				<ol class="list-termin-nodes">{{termin_nodes}}
-
-					<span id="termin-nodes-item">
-						<li class="termin-node">
-							<a class="nav-click" href="#url#">{{author}} {{bookname}}</a>
-						</li>
-					</span>
-
-				</ol>
-			</div>
--->			
-<!-- ####### -->
 
 </body>
 </html>

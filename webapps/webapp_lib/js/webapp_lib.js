@@ -764,24 +764,6 @@ console.log("errorThrown - ", errorThrown);
 				var templates = $( _vars["templates"]["html"] );
 				
 				//read templates
-				//_vars["templates"]["block_book_category_item_tpl"] = templates.find("#block-book-category li")[0].outerHTML;
-				
-				//var item_tpl = $(data).find("#block-book-category-for").html();
-				var item_tpl = decodeURI( templates.find("#block-book-category-for").html() );
-//console.log( item_tpl);
-//fix filter href="{{url}}"				
-//if( item_tpl.indexOf("%7B%7B") > 0 ){
-//	item_tpl = item_tpl.replace("%7B%7B", "{{")
-//}
-//if( item_tpl.indexOf("%7D%7D") > 0 ){
-//	item_tpl = item_tpl.replace("%7D%7D", "}}")
-//}
-				_vars["templates"]["block_book_category_item_tpl"] = item_tpl;
-
-				var tmp = templates.find("#block-book-category");
-				tmp.find("li").remove();
-				_vars["templates"]["block_book_category_tpl"] = tmp.html();
-				_vars["templates"]["block_book_category_url_tpl"] = "?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}";
 				
 				_vars["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
 				templates.find("#block-book-child-pages-for").remove();
@@ -798,20 +780,9 @@ console.log("errorThrown - ", errorThrown);
 				tmp.find("li").remove();
 				_vars["templates"]["node_tpl"] = tmp.html();
 				
-				_vars["templates"]["taxonomy_list_item_tpl"] = decodeURI( templates.find("#taxonomy-menu ul").html() ).replace("{{list}}","");
-				var tmp = templates.find("#taxonomy-menu");
-				tmp.find("li").remove();
-				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
-				_vars["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
-
-				
 				var tmpl = $(data).find("#cloud-for");
 				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
 				
-				//var tmpl = $(data).find("#external-links");
-				//_vars["templates"]["external_links_tpl"] = tmpl.html();
-				
-				_vars["templates"]["breadcrumb_item_tpl"] = decodeURI( templates.find("#breadcrumb-tpl").html() );
 				
 //====================== test
 //_vars["templates"]["tpl-block"] = "\
@@ -2142,18 +2113,21 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			//form node taxonomy menu
 			var html_termin_links = "";
 			var node_tpl_url = _vars["templates"]["node_tpl_termins"];
-			var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
+			//var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
 
 			for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
-				var link = url_tpl
-					.replace("{{vid}}", "")
-					.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
+				//var link = url_tpl
+					//.replace("{{vid}}", "")
+					//.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
 				
 				var link_title = _vars["node"]["termins"][n]["name"];
 
 				html_termin_links += node_tpl_url
 						.replace("{{link-title}}", link_title)
-						.replace("{{url}}", link);
+						//.replace("{{url}}", link);
+						.replace("{{vid}}", "")
+						.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
+						
 			}//next termin
 
 			html = html.replace("{{termin-links}}", html_termin_links);
@@ -2279,6 +2253,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			}//end get_termin_info()
 */
 		}//end _get_xml_taxonomy()
+
 		
 		function _view_vocabulary ( vocabulary_name, recourse ) {
 			if( typeof _vars["taxonomy"][vocabulary_name] === "undefined")
@@ -2286,23 +2261,27 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log("error, vocabulary not found " + vocabulary_name);			
 				return;
 			}
-			
+
 			var item_tpl = _vars["templates"]["taxonomy_list_item_tpl"];
 			var list_tpl = _vars["templates"]["taxonomy_list_tpl"];
-			var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
+			//var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
+			
 			//var block_title = "<h4>book tags:</h4>";
 			var html = "";
 			for( var n = 0; n < _vars["taxonomy"][vocabulary_name]["termins"].length; n++ )
 			{
 				var termin = _vars["taxonomy"][vocabulary_name]["termins"][n];
 				if( termin["parent_value"] === "0"){
-					var url = url_tpl
-					.replace("{{vid}}", termin["vid"])
-					.replace("{{tid}}", termin["tid"]);
+					
+					//var url = url_tpl
+					//.replace("{{vid}}", termin["vid"])
+					//.replace("{{tid}}", termin["tid"]);
 					
 					html += item_tpl
 					.replace("{{link-title}}", termin["name"])
-					.replace("{{url}}", url);
+					.replace("{{vid}}", termin["vid"])
+					.replace("{{tid}}", termin["tid"]);
+					//.replace("{{url}}", url);
 					
 					if( recourse ) {
 						var params = [];
@@ -2335,7 +2314,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			var recourse = params["recourse"];
 			var item_tpl = params["item_tpl"];
 			var list_tpl = params["list_tpl"];
-			var url_tpl = params["url_tpl"];
+			//var url_tpl = params["url_tpl"];
 			
 			var html = "";
 			for( var n = 0; n < termins.length; n++ )
@@ -2344,13 +2323,15 @@ console.log("error, vocabulary not found " + vocabulary_name);
 				if( termin["vid"] === vid && 
 						termin["parent_value"] === tid )
 				{
-					var url = url_tpl
-					.replace("{{vid}}", termin["vid"])
-					.replace("{{tid}}", termin["tid"]);
+					//var url = url_tpl
+					//.replace("{{vid}}", termin["vid"])
+					//.replace("{{tid}}", termin["tid"]);
 					
 					html += item_tpl
 					.replace("{{link-title}}", termin["name"])
-					.replace("{{url}}", url);
+					.replace("{{vid}}", termin["vid"])
+					.replace("{{tid}}", termin["tid"]);
+					//.replace("{{url}}", url);
 					
 					if( recourse ) {
 						params["termins"] = termins; 
@@ -2359,7 +2340,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 						params["recourse"] = recourse;
 						params["item_tpl"] = item_tpl;
 						params["list_tpl"] = list_tpl;
-						params["url_tpl"] = url_tpl;
+						//params["url_tpl"] = url_tpl;
 						var html_children_termins = list_children_termins( params);
 						if( html_children_termins.length > 0) {
 							html += list_tpl
@@ -2383,7 +2364,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 			
 			var item_tpl = params["item_tpl"];
 			var list_tpl = params["list_tpl"];
-			var url_tpl = params["url_tpl"];
+			//var url_tpl = params["url_tpl"];
 			
 			var html = "", html_list = "";
 			for( var n = 0; n < termins.length; n++ )
@@ -2394,25 +2375,29 @@ console.log("error, vocabulary not found " + vocabulary_name);
 				{
 					if( !show_only_children )
 					{
-						var url = url_tpl
-						.replace("{{vid}}", termin["vid"])
-						.replace("{{tid}}", termin["tid"]);
+						//var url = url_tpl
+						//.replace("{{vid}}", termin["vid"])
+						//.replace("{{tid}}", termin["tid"]);
 						
 						html_list += item_tpl
 						.replace("{{link-title}}", termin["name"])
-						.replace("{{url}}", url);
+						.replace("{{vid}}", termin["vid"])
+						.replace("{{tid}}", termin["tid"]);
+						//.replace("{{url}}", url);
 					}
 					
 					if( recourse )	{
 						var params = [];
-						params["termins"] = termins; 
-						params["vid"] = termin["vid"];
-						params["tid"] = termin["tid"]; 
-						params["recourse"] = recourse;
-						params["list_tpl"] = list_tpl;
-						params["item_tpl"] = item_tpl;
-						params["url_tpl"] = url_tpl;
-						var html_children_termins = list_children_termins( params );
+						var html_children_termins = list_children_termins({
+"termins": termins,
+"vid": termin["vid"],
+"tid": termin["tid"], 
+"recourse": recourse,
+"list_tpl": list_tpl,
+"item_tpl": item_tpl
+//"url_tpl": url_tpl;
+							
+						});
 						
 						if( html_children_termins.length > 0){
 							html_list += list_tpl
@@ -2497,22 +2482,18 @@ console.log("error, not found _vars[book_category], function parse_book_category
 			for( var n = 0; n < _vars["book_category"].length; n++) {
 				var node = _vars["book_category"][n];
 				
-				var url_tpl = _vars["templates"]["block_book_category_url_tpl"];
-				var url = url_tpl
-				.replace("{{nid}}", $(node).attr('nid') )
-				.replace("{{mlid}}", $(node).attr('mlid') )
-				.replace("{{plid}}", $(node).attr('plid') );
-				html += _vars["templates"]["block_book_category_item_tpl"]
+				html += _vars["templates"]["book_category_item_tpl"]
 .replace(/{{page-title}}/g, $(node).attr('title') )
-.replace("{{url}}", url )
-//.replace("%7B%7Burl%7D%7D", url )
-.replace(/{{type}}/g,  $(node).attr('type') );
-//console.log("url = " + url, html);				
+.replace("{{nid}}", $(node).attr('nid') )
+.replace("{{mlid}}", $(node).attr('mlid') )
+.replace("{{plid}}", $(node).attr('plid') )
+.replace("{{type}}", $(node).attr('type') );
 			}//next
 
-			html = _vars["templates"]["block_book_category_tpl"].replace(/{{list}}/g, html );
+			html = _vars["templates"]["book_category_tpl"].replace("{{list}}", html );
 			return html;
 		}//end _view_book_category()
+		
 		
 		function _view_child_pages( p ) {
 //console.log("function view_child_pages", p);
@@ -2652,8 +2633,8 @@ console.log("error, not found _vars[book_category]");
 				"recourse": true,
 				"show_only_children": true,
 				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"],
-				"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"]//,
+				//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 			});
 			
 			html += taxonomy_obj.view_termin({
@@ -2663,8 +2644,8 @@ console.log("error, not found _vars[book_category]");
 				"recourse": true,
 				"show_only_children": true,
 				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"],
-				"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"]//,
+				//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 			});
 			
 			//$("#block-taxonomy-alpha").html( html );
@@ -2702,9 +2683,9 @@ if( _vars["GET"]["vid"] === "1" ){
 						"show_only_children": false,
 						
 						"item_tpl": _vars["templates"]["taxonomy_list_item_tpl"],
-						"list_tpl": _vars["templates"]["taxonomy_list_tpl"],
+						"list_tpl": _vars["templates"]["taxonomy_list_tpl"]//,
 						
-						"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+						//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 					});
 					
 					_buildBlock({
