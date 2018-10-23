@@ -803,13 +803,7 @@ console.log("errorThrown - ", errorThrown);
 				tmp.find("li").remove();
 				_vars["templates"]["taxonomy_list_tpl"] = tmp.html();
 				_vars["templates"]["taxonomy_url_tpl"] = "?q=termin_nodes&vid={{vid}}&tid={{tid}}";
-/*				
-				_vars["templates"]["termin_nodes_item_tpl"] = templates.find("#termin-nodes-item").html();
-				var tmp = templates.find("#termin-nodes");
-				tmp.find("#termin-nodes-item").remove();
-				_vars["templates"]["termin_nodes_tpl"] = decodeURI( tmp.html() );
-				_vars["templates"]["termin_nodes_url_tpl"] = "?q=node&nid=#nid";
-*/
+
 				
 				var tmpl = $(data).find("#cloud-for");
 				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );

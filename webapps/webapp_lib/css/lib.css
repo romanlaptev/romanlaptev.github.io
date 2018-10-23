@@ -211,8 +211,9 @@ float:none;
 /*     display: none;*/
 }
 
-.book-content .book a, .book-content .author a {
-     background-color: #238f11;
+/*.book-content .book a, .book-content .author a {*/
+.block-book-category a {
+     background-color: /*#238f11;*/#008800;
      color: #ffffff;
      display: block;
      margin: 3px;
@@ -225,7 +226,7 @@ border-radius: 3px;
 }
 
 .book-content .library_book a {
-     color: #0000ff;
+/*     color: #0000ff;*/
 }
 
 .submenu {
