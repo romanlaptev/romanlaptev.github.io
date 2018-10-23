@@ -2017,37 +2017,38 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 				return;
 			}
 			
-//----------------------
-var bodyValue = "";
-//console.log(_vars["node"]["body_value"].length );
-//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
-if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
-	bodyValue = _vars["node"]["body_value"]
-	.replace(/&quot;/g,"\"")
-	.replace(/&lt;/g,"<")
-	.replace(/&gt;/g,">");
-//console.log(bodyValue );
-}
-//----------------------
+			//----------------------
+			var bodyValue = "";
+			//console.log(_vars["node"]["body_value"].length );
+			//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
+			if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
+				bodyValue = _vars["node"]["body_value"]
+				.replace(/&quot;/g,"\"")
+				.replace(/&lt;/g,"<")
+				.replace(/&gt;/g,">");
+			//console.log(bodyValue );
+			}
+			//----------------------
 
-//----------------------
-var childNodesHtml = "";
-if( _vars["node"]["node_child_pages"] && _vars["node"]["node_child_pages"].length > 0){
+			//----------------------
+			var childNodesHtml = "";
+			if( _vars["node"]["node_child_pages"] && _vars["node"]["node_child_pages"].length > 0){
 //console.log(_vars["node"]);
 //console.log(_vars["node"]["node_child_pages"]);
 //console.log(_vars["node"]["type"]);
 
-_vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + _vars["node"]["node_child_pages"].length + "</b></p>";
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+				_vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + _vars["node"]["node_child_pages"].length + "</b></p>";
+				func.log("");
+				func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 
-var childNodesHtml = book.view_child_pages({
-	"nid" :  _vars["GET"]["nid"],
-	"mlid" :  _vars["GET"]["mlid"],
-	"child_pages": _vars["node"]["node_child_pages"]
-});
+				var childNodesHtml = book.view_child_pages({
+					"nid" :  _vars["GET"]["nid"],
+					"mlid" :  _vars["GET"]["mlid"],
+					"child_pages": _vars["node"]["node_child_pages"]
+				});
 //console.log("childNodesHtml = " + childNodesHtml);
-}
-//----------------------
+			}
+			//----------------------
 			
 			var node_tpl = _vars["templates"]["node_tpl"];
 			var html = node_tpl
@@ -2854,7 +2855,7 @@ console.log( _vars["logMsg"] );
 					var timeEnd = new Date();
 					var ms = timeEnd.getTime() - timeStart.getTime();
 					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-console.log(msg);	
+//console.log(msg);
 
 					//_vars["runtime"].push({
 						//"source" : msg,
@@ -3406,6 +3407,7 @@ $(".b-content").height(_newHeight);
 				
 var directLink = "";
 var btnCopyUrl = "";
+var btnOmniReader = "";
 var desc = "";
 //-------------
 if(cloudUrl.indexOf("mail.ru") !== -1 ){
@@ -3430,6 +3432,8 @@ if(cloudUrl.indexOf("mail.ru") !== -1 ){
 	console.log("error copy link", e);
 		});
 	}
+	//-------------
+	btnOmniReader = "<a href='http://omnireader.ru/?url="+url+"' rel='noreferrer' target='_blank' class='btn btn-warning'>omnireader.ru</a>";
 }
 
 if(cloudUrl.indexOf("yandex") !== -1 ){
@@ -3441,7 +3445,8 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 						.replace(/{{url}}/g, url)
 						.replace(/{{description}}/g, desc)
 						.replace(/{{direct-link}}/g, directLink)
-						.replace(/{{btn-copy-url}}/g, btnCopyUrl);
+						.replace("{{btn-copy-url}}", btnCopyUrl)
+						.replace("{{btn-omnireader}}", btnOmniReader);
 
 				html += html_url;
 			}//next book file
