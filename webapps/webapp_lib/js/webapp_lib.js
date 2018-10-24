@@ -338,15 +338,10 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 			_vars["GET"] = func.parseGetParams(); 
 //console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
-			//load_templates({
-				//callback: callback_init //link to callback function
-				//callback: function(){
-					_loadTemplates(function(){
+			_loadTemplates(function(){
 //console.log("Load templates end...", arguments );
-						callback_init();
-					});
-				//}
-			//});
+				callback_init();
+			});
 	
 		}//end after_load()
 		
@@ -713,83 +708,6 @@ _vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> se
 		
 		
 //============================== TEMPLATES
-/*
-		function load_templates( params ) {
-			_vars["templates"] = [];
-			
-var timeStart = new Date();
-			var url = config["tpl_file"];
-			$.ajax({
-				url: url,
-				type: 'GET',
-				async: true,
-				response:'text',//text or xml
-				complete: function(xhr, status) {}, 
-				success:function(data,status) {
-//console.log("status - ", status, ", url - " + url);
-//var content = $(result.responseText).text();
-//alert(content);
-					get_tmpl(data);
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var log = "- read templates from <b>" + config["tpl_file"]+"</b>";
-log += ", runtime: <b>" + runTime  + "</b> sec";
-
-_vars["logMsg"] = log;
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-_vars["info"].push( "<div class='alert alert-info'>" + _vars["logMsg"] + "</div>" );
-
-//_vars["runtime"]["load_tpl"] = {
-	//"time" : runTime,
-	//"message" : message
-//};
-					params.callback();	
-				},
-				error:function(data, status, errorThrown){
-					var log = "- error ajax load templates file" + config["tpl_file"];
-					//log += ", status: " + status;
-					log += ", " + errorThrown;
-					
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-					//_vars["info"].push(log);
-					
-console.log("status - ", status);
-console.log("errorThrown - ", errorThrown);
-				}			
-			});
-			
-			function get_tmpl(data){
-				_vars["templates"]["html"] = data;
-				var templates = $( _vars["templates"]["html"] );
-				
-				//read templates
-				
-				//_vars["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
-				//templates.find("#block-book-child-pages-for").remove();
-				//_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
-				
-
-				////_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
-				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
-				
-				////_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
-				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
-				
-				//var tmp = templates.find("#view-node");
-				//tmp.find("li").remove();
-				//_vars["templates"]["node_tpl"] = tmp.html();
-				
-				//var tmpl = $(data).find("#cloud-for");
-				//_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
-
-			}//end get_tmpl()	
-
-		}//end load_templates( params )
-*/
-
 		function _loadTemplates( callback ){
 /*			
 			webApp.db.loadTemplates(function( isLoadTemplates ){
@@ -3206,13 +3124,8 @@ console.log("Submit form", e, this);
 				e.preventDefault();
 				//return false;
 				
-/*				
-				checkForm({
-					"form" : this,
-					"modalWindowId" : "#newModal",
-					"action" : "save_note"
-				});
-*/				
+console.log(this["target"].value);
+console.log(this.keyword.value);
 				$("#service-panel").hide();
 
 			});//end event

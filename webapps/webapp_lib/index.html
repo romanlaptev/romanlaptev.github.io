@@ -221,15 +221,15 @@ https://viewerjs.org/examples/
 </pre>
 				</div>
 			</div>
-		</div>
+		</div><!-- end tab -->
 
 		<div id="tab-search" class="tab-pane fade">
+<form name="formSearch" id="form-search" action="">
 			<div  class="panel panel-default">
 				
-				<form name="formSearch" id="form-search" action="">
 
 					<div class="panel-heading">
-						<h3>Search by parameters</h3>
+						<h3>Search book by parameters</h3>
 					</div>
 					
 					<div class="panel-body">
@@ -237,18 +237,27 @@ https://viewerjs.org/examples/
 	<label class="radio-inline"><input type="radio" name="target" checked="checked" value="author">author name</label>
 	<label class="radio-inline"><input type="radio" name="target" value="bookname" >book name</label>
 </div>
-<input type="text" class="form-control" name="keyword" placeholder="enter keyword" value="">
+						<label>keyword:</label>
+						<div class="row">
+							<div class="column1 col-sm-10 col-md-10 col-lg-10">
+<input type="text" class="form-control" name="keyword" placeholder="enter keyword" autocomplete="off" value="">
+							</div>
+							<div class="column2 col-sm-2 col-md-2 col-lg-2">
+								<button type="reset" class="btn btn-warning">reset form</button>
+							</div>
+						</div>
+
 					</div>
 
+					
 					<div class="panel-footer">
-						<button type="reset" class="btn btn-large btn-warning">reset form</button>
 						<button type="submit" class="btn btn-large btn-primary">start search</button>
 					</div>
 					
-				</form>
 				
 			</div>
-		</div>
+</form>
+		</div><!-- end tab -->
 		
 
 		
@@ -276,7 +285,7 @@ http://.../db/export.php?run_type=console
 </pre>
 				</div>
 			</div>
-		</div>
+		</div><!-- end tab -->
 		
 
 		<div id="tab-config" class="tab-pane fade">
@@ -304,7 +313,7 @@ num_authors:
 </div>
 				</div>
 			</div>
-		</div>
+		</div><!-- end tab -->
 
 		
 	</div><!-- end tab-content -->
