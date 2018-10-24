@@ -765,11 +765,11 @@ console.log("errorThrown - ", errorThrown);
 				
 				//read templates
 				
-				_vars["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
-				templates.find("#block-book-child-pages-for").remove();
-				_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
+				//_vars["templates"]["block_book_child_pages_item_tpl"] = decodeURI(templates.find("#block-book-child-pages-for").html() );
+				//templates.find("#block-book-child-pages-for").remove();
+				//_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
 				
-				
+/*				
 				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
 				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
 				
@@ -782,17 +782,7 @@ console.log("errorThrown - ", errorThrown);
 				
 				var tmpl = $(data).find("#cloud-for");
 				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
-				
-				
-//====================== test
-//_vars["templates"]["tpl-block"] = "\
-	//<div class='block'>\
-			//<h3>{{block_title}}</h3>\
-			//<div class='content'>{{content}}</div>\
-	//</div>\
-//";
-//==================
-				
+*/				
 			}//end get_tmpl()	
 
 		}//end load_templates( params )
@@ -1990,14 +1980,14 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			
 			//----------------------
 			var bodyValue = "";
-			//console.log(_vars["node"]["body_value"].length );
-			//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
+//console.log(_vars["node"]["body_value"].length );
+//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
 			if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
 				bodyValue = _vars["node"]["body_value"]
 				.replace(/&quot;/g,"\"")
 				.replace(/&lt;/g,"<")
 				.replace(/&gt;/g,">");
-			//console.log(bodyValue );
+//console.log(bodyValue );
 			}
 			//----------------------
 
@@ -2039,15 +2029,14 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 				html = html.replace("{{node-title}}", "" );
 			}
 			
-			
 			var node_tpl_url = _vars["templates"]["node_tpl_url"];
-			
+
 			//form node book local url
+			var htmlBookLinks = "";
 			if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
 				var html_book_url = "";
 				var subfolder =  _vars["node"]["subfolder"];
-				for( var n = 0; n < _vars["node"]["book_files"].length; n++ )
-				{
+				for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
 					var filename =  _vars["node"]["book_files"][n];
 					var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
 					if( filename.lastIndexOf('#') > 0 ) {
@@ -2067,20 +2056,27 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 							.replace("{{url}}", url);
 				}//next book file
 
-				html = html.replace("{{book-list}}", html_book_url);
+				htmlBookLinks = _vars["templates"]["node_tpl_book_links"].replace("{{list}}", html_book_url);
+				
 			} else {
 			}
-			
+			html = html.replace("{{book-links}}", htmlBookLinks);
+
 			
 			//add cloud disk links
-			var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
-			html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
-			html = html.replace("{{cloud-links}}", html_cloud_links);
+			var htmlWrapCloudLinks = "";
+			if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
+				var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
+				html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
+				htmlWrapCloudLinks = _vars["templates"]["node_tpl_cloud_links"].replace("{{list}}", html_cloud_links);
+			}
+			html = html.replace("{{cloud-links}}", htmlWrapCloudLinks);
 
 //-------------------------- form node book external links
-			var externalLinksHtml = "";
+			var htmlWrapExternalLinks = "";
 			if( _vars["node"]["book_links"].length > 0 ){
 				
+				var html_external_links = "";
 				for( var n = 0; n < _vars["node"]["book_links"].length; n++ ){
 					var link =  _vars["node"]["book_links"][n];
 					var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
@@ -2090,15 +2086,16 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 						var s_link = link;
 					}
 
-					externalLinksHtml += node_tpl_url
+					html_external_links += node_tpl_url
 							.replace("{{link-title}}", link_title)
 							.replace("{{url}}", s_link);
 				}//next
+				htmlWrapExternalLinks = _vars["templates"]["node_tpl_external_links"].replace("{{list}}", html_external_links);
 				
 			}
-			html = html.replace("{{external-links}}", externalLinksHtml);
+			html = html.replace("{{external-links}}", htmlWrapExternalLinks);
 
-			
+/*			
 			//form node old book url
 			var html_book_url2 = "";
 			for( var n = 0; n < _vars["node"]["book_url"].length; n++ ){
@@ -2109,28 +2106,26 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 						.replace("{{url}}", link);
 			}//next book url
 			html = html.replace("{{book-old-url}}", html_book_url2);
-			
+*/			
+
+
 			//form node taxonomy menu
-			var html_termin_links = "";
-			var node_tpl_url = _vars["templates"]["node_tpl_termins"];
-			//var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
+			var htmlWrapTermins = "";
+			if( _vars["node"]["termins"].length > 0 ){
+				var html_termin_links = "";
+				var node_tpl_url = _vars["templates"]["node_tpl_termins_item"];
 
-			for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
-				//var link = url_tpl
-					//.replace("{{vid}}", "")
-					//.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
-				
-				var link_title = _vars["node"]["termins"][n]["name"];
-
-				html_termin_links += node_tpl_url
-						.replace("{{link-title}}", link_title)
-						//.replace("{{url}}", link);
-						.replace("{{vid}}", "")
-						.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
-						
-			}//next termin
-
-			html = html.replace("{{termin-links}}", html_termin_links);
+				for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
+					var link_title = _vars["node"]["termins"][n]["name"];
+					html_termin_links += node_tpl_url
+							.replace("{{link-title}}", link_title)
+							.replace("{{vid}}", "")
+							.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
+							
+				}//next termin
+				htmlWrapTermins = _vars["templates"]["node_tpl_termins"].replace("{{list}}", html_termin_links);
+			}
+			html = html.replace("{{termin-links}}", htmlWrapTermins);
 			
 			return html;
 		}//end _view_node()
@@ -2513,10 +2508,10 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log("child_pages is empty!!!");
 				return;
 			}
-			
+
 			//list child pages
-			var list_tpl = _vars["templates"]["block_book_child_pages_tpl"];
-			var item_tpl = _vars["templates"]["block_book_child_pages_item_tpl"];
+			var list_tpl = _vars["templates"]["book_child_pages_tpl"];
+			var item_tpl = _vars["templates"]["book_child_pages_item_tpl"];
 			
 			var html = "", html_list = "";
 			
@@ -3368,7 +3363,7 @@ $(".b-content").height(_newHeight);
 //console.log("function add_cloud_links", cloudUrl);			
 			var html = "";
 			
-			var node_tpl_url = _vars["templates"]["cloud_for_tpl"];
+			var node_tpl_url = _vars["templates"]["node_tpl_cloud_links_item"];
 			var subfolder =  _vars["node"]["subfolder"];
 			
 			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){

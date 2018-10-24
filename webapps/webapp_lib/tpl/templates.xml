@@ -45,6 +45,158 @@
 	</tpl>
 
 
+	<tpl name="book_child_pages_tpl">
+		<html_code><![CDATA[
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h4>страницы раздела</h4>
+	</div>
+	<div class="panel-body">
+		<ol class="list-group--child-pages">{{list}}</ol>
+	</div>
+</div>  
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="book_child_pages_item_tpl">
+		<html_code><![CDATA[
+<li class="list-group-item--child-pages node-{{type}}">
+	<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}">{{link-title}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="node_tpl">
+		<html_code><![CDATA[
+<div class='panel panel-info node node-{{type}}'>
+
+	<div class="panel-heading">
+		<div class='node-title'>{{node-title}}</div>
+		<div class='bookname'>{{bookname}}</div>
+		<div class='author'>{{author}}</div>
+	</div>
+
+	<div class="panel-body">
+		<div class='body-value'>{{body_value}}</div>
+		<div class='child-pages'>{{child_pages}}</div>
+	</div>
+
+{{book-links}}
+{{cloud-links}}
+{{external-links}}
+{{termin-links}}
+					
+	<div class="panel-footer date small">
+		<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
+	</div>
+					
+</div>
+			
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="node_tpl_url">
+		<html_code><![CDATA[
+			<li class="list-group-item"><a href="{{url}}" target="_blank">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_book_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>Book links</b>: <ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_cloud_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>Cloud links</b>:<ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_cloud_links_item">
+		<html_code><![CDATA[
+<li class="list-group-item">
+	<b>{{description}}</b>
+	<a href="{{url}}" rel="noreferrer" target="_blank">{{link-title}}</a>
+	<div class="direct-links">{{direct-link}}</div>
+	<div>{{btn-copy-url}}</div>
+	<br/>
+	{{btn-omnireader}}
+</li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="node_tpl_external_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>External links</b>:<ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="node_tpl_termins">
+		<html_code><![CDATA[
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<b>related tags:</b>
+	</div>
+	<div class="panel-body">
+		<ul class="list-inline">
+			{{list}}
+		</ul>
+	</div>
+</div>
+		]]></html_code>
+	</tpl>
+	<tpl name="node_tpl_termins_item">
+		<html_code><![CDATA[
+<li><a href="?q=termin_nodes&vid={{vid}}&tid={{tid}}" class="nav-click">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+	
+<!--
+/*				
+				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
+				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
+				
+				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
+				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
+				
+				var tmp = templates.find("#view-node");
+				tmp.find("li").remove();
+				_vars["templates"]["node_tpl"] = tmp.html();
+				
+*/				
+
+				<div id="view-node">
+					<div class='node node-{{type}}'>
+
+
+						<ul>{{book-old-url}}</ul>
+
+						<div class='body-value'>{{body_value}}</div>
+						<div class='child-pages'>{{child_pages}}</div>
+
+						
+						<div class="date small">
+							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
+						</div>
+
+						
+					</div>
+				</div>
+				
+-->
+
+
 
 	
 	<tpl name="tpl-block">

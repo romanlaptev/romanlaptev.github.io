@@ -276,10 +276,24 @@ padding: 5px 5px;
     /*background: lightsteelblue;*/
     /*padding: 5px;*/
 }
+.block-node .panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #CFDFE6;
+}
+.block-node .panel-info>.panel-footer {
+    background-color: #F9E2CC;
+    border: none;
+}
+
+
+
 .node {
-    background-color: /*#CFDFFE;*/#CFDFE6;
+    /*background-color: #CFDFFE;*/
+    /*background-color: #CFDFE6;*/
+    /*
     padding: 10px;
     border-radius: 10px;
+    */
 }
 
 .block-termin-nodes .panel{
