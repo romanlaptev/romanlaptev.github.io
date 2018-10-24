@@ -13,7 +13,7 @@ var config = {
 "storage_key" : "lib_xml",
 "xml_file" : "db/export_lib.xml",
 //"xml_file : "db/test.xml",
-"tpl_file" : "tpl/templates.html",
+//"tpl_file" : "tpl/templates.html",
 
 //"content_location" : "file:///mnt/terra/clouds/0_data",
 "content_location" : "http://site-content",

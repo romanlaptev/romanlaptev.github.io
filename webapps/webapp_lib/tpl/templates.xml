@@ -84,7 +84,11 @@
 
 {{book-links}}
 {{cloud-links}}
+
+<ul class="book-old-url">{{book-old-url}}</ul>
+
 {{external-links}}
+
 {{termin-links}}
 					
 	<div class="panel-footer date small">
@@ -160,41 +164,6 @@
 <li><a href="?q=termin_nodes&vid={{vid}}&tid={{tid}}" class="nav-click">{{link-title}}</a></li>
 		]]></html_code>
 	</tpl>
-
-	
-<!--
-/*				
-				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
-				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
-				
-				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
-				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
-				
-				var tmp = templates.find("#view-node");
-				tmp.find("li").remove();
-				_vars["templates"]["node_tpl"] = tmp.html();
-				
-*/				
-
-				<div id="view-node">
-					<div class='node node-{{type}}'>
-
-
-						<ul>{{book-old-url}}</ul>
-
-						<div class='body-value'>{{body_value}}</div>
-						<div class='child-pages'>{{child_pages}}</div>
-
-						
-						<div class="date small">
-							<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
-						</div>
-
-						
-					</div>
-				</div>
-				
--->
 
 
 

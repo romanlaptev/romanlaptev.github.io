@@ -9,6 +9,7 @@
 		var _vars = {
 "xml": null,
 "templates_url" : "tpl/templates.xml",
+"templates" : {},
 "log": func.getById("log"),
 "btnToggle": func.getById("btn-toggle-log"),
 "loadProgressBar": func.getById("load-progress-bar"),
@@ -337,15 +338,15 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 			_vars["GET"] = func.parseGetParams(); 
 //console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
 
-			load_templates({
+			//load_templates({
 				//callback: callback_init //link to callback function
-				callback: function(){
+				//callback: function(){
 					_loadTemplates(function(){
 //console.log("Load templates end...", arguments );
 						callback_init();
 					});
-				}
-			});
+				//}
+			//});
 	
 		}//end after_load()
 		
@@ -712,6 +713,7 @@ _vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> se
 		
 		
 //============================== TEMPLATES
+/*
 		function load_templates( params ) {
 			_vars["templates"] = [];
 			
@@ -769,23 +771,24 @@ console.log("errorThrown - ", errorThrown);
 				//templates.find("#block-book-child-pages-for").remove();
 				//_vars["templates"]["block_book_child_pages_tpl"] = templates.find("#block-book-child-pages").html();
 				
-/*				
-				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
-				_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
+
+				////_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links li")[0].outerHTML );
+				//_vars["templates"]["node_tpl_url"] = decodeURI( templates.find("#view-node #book-links ul").html() ).replace("{{book-list}}","");
 				
-				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
-				_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
+				////_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins li")[0].outerHTML;
+				//_vars["templates"]["node_tpl_termins"] = templates.find("#view-node #termins ul").html().replace("{{termin-links}}","");
 				
-				var tmp = templates.find("#view-node");
-				tmp.find("li").remove();
-				_vars["templates"]["node_tpl"] = tmp.html();
+				//var tmp = templates.find("#view-node");
+				//tmp.find("li").remove();
+				//_vars["templates"]["node_tpl"] = tmp.html();
 				
-				var tmpl = $(data).find("#cloud-for");
-				_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
-*/				
+				//var tmpl = $(data).find("#cloud-for");
+				//_vars["templates"]["cloud_for_tpl"] = decodeURI( tmpl.html() );
+
 			}//end get_tmpl()	
 
 		}//end load_templates( params )
+*/
 
 		function _loadTemplates( callback ){
 /*			
@@ -2095,7 +2098,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			}
 			html = html.replace("{{external-links}}", htmlWrapExternalLinks);
 
-/*			
+
 			//form node old book url
 			var html_book_url2 = "";
 			for( var n = 0; n < _vars["node"]["book_url"].length; n++ ){
@@ -2106,7 +2109,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 						.replace("{{url}}", link);
 			}//next book url
 			html = html.replace("{{book-old-url}}", html_book_url2);
-*/			
+
 
 
 			//form node taxonomy menu
