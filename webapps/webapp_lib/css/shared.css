@@ -22,7 +22,7 @@ clear:both;
 }
 
 
-#info{
+#service-panel{
 background: #abbabb; /*#CFDFE5;*/ /*#FFD700;*/
 padding: 10px;
 position: fixed;
@@ -36,13 +36,13 @@ min-height: 15%;
 width: 50%;  
 }
 @media screen and (max-width:1024px) { 
-	#info{
+	#service-panel{
 		width: 100%;  
 	}	   
 }
 
 
-#info .close {
+#service-panel .close {
   display: block;
   float: right;
   left: 0;
@@ -51,19 +51,19 @@ width: 50%;
       opacity: 0.7;
 }
 
-#info .panel {
+#service-panel .panel {
 background-color:#e6eaec;
 }
-#info .nav>li>a {
+#service-panel .nav>li>a {
     background-color: #cfd9db;
     color: #0000ff;
 }
 
-#info .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+#service-panel .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     background-color: #fff !important;
 	outline: none;    
 }
-#info .nav>li>a:focus, .nav>li>a:hover {
+#service-panel .nav>li>a:focus, .nav>li>a:hover {
     background-color: #eee !important;
 	outline: none;    
 }
@@ -143,14 +143,14 @@ outline: none;
 }
 
 #log .alert,
-#info .alert 
+#service-panel .alert 
 {
 margin-bottom: 0;
 padding: 10px;
 }
 
 #log p,
-#info p
+#service-panel p
 {
 margin: 0;
 }

@@ -3103,14 +3103,14 @@ console.log(html);
 			});//end event
 			
 
-			$("body").on("click", "#info .nav-tabs a", function(e){
+			$("body").on("click", "#service-panel .nav-tabs a", function(e){
 				var active_tab = $(this).attr("href");
 //console.log( active_tab, $(this).parent() );
 
-				$("#info .nav-tabs li").removeClass("active");
+				$("#sevice-panel .nav-tabs li").removeClass("active");
 				$(this).parent().addClass("active");
 				
-				$("#info .tab-content .tab-pane").removeClass("active in");
+				$("#service-panel .tab-content .tab-pane").removeClass("active in");
 				$(active_tab).addClass("active in");
 /*				
 				if( active_tab === "#info-tab" ){
@@ -3171,7 +3171,7 @@ var logMsg = "Cannot use storage, error...";
 func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
 console.log( logMsg );
 }	
-					$("#info").hide();
+					$("#service-panel").hide();
 
 				});//end event
 				
@@ -3199,7 +3199,24 @@ console.log("w = " + document.body.clientWidth );
 					}
 				}
 			}//end event
-			
+
+			//Search by parameters
+			$("#form-search").on("submit", function(e){
+console.log("Submit form", e, this);
+				e.preventDefault();
+				//return false;
+				
+/*				
+				checkForm({
+					"form" : this,
+					"modalWindowId" : "#newModal",
+					"action" : "save_note"
+				});
+*/				
+				$("#service-panel").hide();
+
+			});//end event
+
 
 			if( _vars["appContainer"] ){
 				_vars["appContainer"].onclick = function(event){
@@ -3264,10 +3281,10 @@ console.log( "Warn! error parse url in " + target.href );
 					_vars["log"].innerHTML="";
 				break;
 				
-				case "info-panel-view":
+				case "service-panel-view":
 //console.log( _vars["info"] );
-					$("#info .message").html( _vars["info"] );
-					$("#info").toggle();
+					$("#service-panel .message").html( _vars["info"] );
+					$("#service-panel").toggle();
 				break;
 				
 				case "termin_nodes":

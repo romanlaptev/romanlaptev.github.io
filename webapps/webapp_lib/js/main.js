@@ -81,7 +81,7 @@ console.log("lib:", lib);
 $(document).ready(function(){
 //console.log("document ready");
 
-	$("#info").hide();
+	$("#service-panel").hide();
 	
 	$("#use-storage-switch").prop("checked", config["use_localcache"]);
 
@@ -158,11 +158,11 @@ window.onload = function(){
 //console.log( e.keyCode );
 		//if( e.keyCode === 192 ){//`
 			//view_log( info );
-			//$("#info").show();
+			//$("#service-panel").show();
 		//}
 		if( e.keyCode === 27 ){//ESC
 			//view_log( info );			
-			$("#info").toggle();
+			$("#service-panel").toggle();
 		}
 
 	};//end event

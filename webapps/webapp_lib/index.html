@@ -86,14 +86,6 @@
 			<div class="columns right-grad"></div>
 		</div>
 		
-<!--				
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
-			<div class="control-btn">
-<button id="info-panel-view" class="btn btn-info btn-sm">view log</button>
-<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
-			</div>
-		</div>
--->
 	</div>
 
         <nav role="navigation" class="navbar navbar-default">
@@ -139,7 +131,7 @@
 			<div class="log-panel panel">
 				<div class="panel-body">
 					<span class="pull-right">
-						<a href="?q=info-panel-view" class="btn btn-sm btn-default">info</a>
+						<a href="?q=service-panel-view" class="btn btn-sm btn-default">service</a>
 						<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
 						<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
 					</span>
@@ -197,25 +189,26 @@
 </div>
 
 	
-<div id="info">
-	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
+<div id="service-panel">
+	<a class="close" href="javascript:$('#service-panel').hide();void(0);">x</a>
 	
 	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#tab1">Info</a></li>
+		<li class="active"><a data-toggle="tab" href="#tab-info">Info</a></li>
+		<li><a data-toggle="tab" href="#tab-search">Search</a></li>
 		<li><a data-toggle="tab" href="#tab-export">Export</a></li>
 		<li><a data-toggle="tab" href="#tab-config">Settings</a></li>
 
 	</ul>
 	
 	<div class="tab-content">
-		<div id="tab1" class="tab-pane fade in active">
+		<div id="tab-info" class="tab-pane fade in active">
 			<div  class="panel panel-default">
 				<div class="panel-body">
 <span class="pull-right">
 	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
 	<a href="db_admin.html" target="_blank" class="btn btn-primary btn-sm">db admin</a>
 <!--
-	<button id="info-panel-clear" class="btn btn-danger btn-sm">x</button>
+	<button id="service-panel-clear" class="btn btn-danger btn-sm">x</button>
 -->
 	<a class="btn btn-sm btn-default" href="tests_app/jasmine/SpecRunner.html" target="_blank">tests application, Jasmine</a>		
 </span>
@@ -229,6 +222,35 @@ https://viewerjs.org/examples/
 				</div>
 			</div>
 		</div>
+
+		<div id="tab-search" class="tab-pane fade">
+			<div  class="panel panel-default">
+				
+				<form name="formSearch" id="form-search" action="">
+
+					<div class="panel-heading">
+						<h3>Search by parameters</h3>
+					</div>
+					
+					<div class="panel-body">
+<div class="form-group">
+	<label class="radio-inline"><input type="radio" name="target" checked="checked" value="author">author name</label>
+	<label class="radio-inline"><input type="radio" name="target" value="bookname" >book name</label>
+</div>
+<input type="text" class="form-control" name="keyword" placeholder="enter keyword" value="">
+					</div>
+
+					<div class="panel-footer">
+						<button type="reset" class="btn btn-large btn-warning">reset form</button>
+						<button type="submit" class="btn btn-large btn-primary">start search</button>
+					</div>
+					
+				</form>
+				
+			</div>
+		</div>
+		
+
 		
 		<div id="tab-export" class="tab-pane fade">
 			<div  class="panel panel-default">
