@@ -978,7 +978,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			//"nodes_size" : 0,
 			"get_node" : function( params ){
 				//return _get_node( params );
-				return _getNodeXML( params );
+				return _getNode( params );
 			},
 			//"get_xml_nodes" : function( params ){
 				//return _get_xml_nodes( params );
@@ -1158,7 +1158,7 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				var tid = $( nodes_obj["taxonomy_index"][n] ).attr("tid");
 				if( p["tid"] === tid ){
 					
-					var node = _getNodeXML({
+					var node = _getNode({
 						"nid" : $( nodes_obj["taxonomy_index"][n] ).attr("nid")
 					});
 					
@@ -1635,13 +1635,13 @@ console.log( _vars["logMsg"] );
 				var node = {};
 				var _test = x_node.children( _targetField ).text().toLowerCase();
 				if( _test.indexOf(p.keyword) !== -1){
-console.log(x_node);
-					//var node = _getNodeXML({
-						//"xmlObj" : x_node
-					//});
-					//if( node ){
-						//nodes.push( node );
-					//}
+//console.log(x_node);
+					var node = _getNode({
+						"xmlObj" : x_node
+					});
+					if( node ){
+						nodes.push( node );
+					}
 					
 				}
 			}//next node
@@ -1750,10 +1750,11 @@ console.log( _vars["logMsg"] );
 			return node;
 		}//end _get_node()
 */
-		function _getNodeXML( opt ){
+		function _getNode( opt ){
 //console.log(opt);
 			var p = {
-				"nid" : null
+				"nid" : null,
+				"xmlObj": null
 			};
 			//extend p object
 			for(var key in opt ){
@@ -1761,65 +1762,89 @@ console.log( _vars["logMsg"] );
 			}
 //console.log(p);
 
-			if(!p.nid){
-_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
- //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
+			if(p.nid){
+				return __getNodeByNid(p.nid);
 			}
+			
+			if(p.xmlObj){
+				return __getNodeXmlObj(p.xmlObj);
+			}
+			
+			return false;
 
-			var node = {};
-			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+			function __getNodeXmlObj( xmlObj ){
+//console.log("TEST!!!", xmlObj);				
+				var node = {};
 				
-				var x_node = $( nodes_obj["x_nodes"][n] );
-				if( p.nid !== x_node.attr("nid") ){
-					continue;
-				}
+				var $node = $(xmlObj);
 				
 				//read node attributes
-				var nodeAttr = func.get_attr_to_obj( x_node[0].attributes );
+				var nodeAttr = func.get_attr_to_obj( xmlObj[0].attributes );
 				for(var attr in nodeAttr){
 //console.log(attr, nodeAttr[attr]);
 					node[attr] = nodeAttr[attr];
 				}//next attr
-
-				node["subfolder"] = x_node.children("subfolder").text().trim();
-				node["author"] = x_node.children("author").text().trim();
-				node["bookname"] = x_node.children("bookname").text().trim();
-				node["body_value"] = x_node.children("body_value").text().trim();
-
-				//read node termins
-				for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
-					var testNid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
-					if( testNid === node["nid"] ){
-						if( typeof node["tid"] === "undefined") {
-							node["tid"] = [];
-						}
-						node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
-					}
-				}//next termin
-					
-				var params = {"nid" :node["nid"] };
-				node["termins"] = get_node_termins( params );
+				node["author"] = $node.children("author").text().trim();
+				node["bookname"] = $node.children("bookname").text().trim();
 				
-				node["book_files"] = _getBookFilesXML( params );
-				node["book_url"] = _getBookUrlXML( params );
-				node["book_links"] = _getBookLinksXML( params );
-		
-//Get children nodes				
-//if( node["type"] === "author"){
-	node["node_child_pages"] = book.get_child_pages({
-		"plid" : node["mlid"],
-		"recourse" : 0
-	});
-//}
-				
-//console.log( node  );
 				return node;
-			}//next node
+			}//end __getNodeXmlObj()
+
+			function __getNodeByNid( nid ){
+				var node = {};
+				for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+					
+					var x_node = $( nodes_obj["x_nodes"][n] );
+					if( nid !== x_node.attr("nid") ){
+						continue;
+					}
+					
+					//read node attributes
+					var nodeAttr = func.get_attr_to_obj( x_node[0].attributes );
+					for(var attr in nodeAttr){
+				//console.log(attr, nodeAttr[attr]);
+						node[attr] = nodeAttr[attr];
+					}//next attr
+
+					node["subfolder"] = x_node.children("subfolder").text().trim();
+					node["author"] = x_node.children("author").text().trim();
+					node["bookname"] = x_node.children("bookname").text().trim();
+					node["body_value"] = x_node.children("body_value").text().trim();
+
+					//read node termins
+					for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+						var testNid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
+						if( testNid === node["nid"] ){
+							if( typeof node["tid"] === "undefined") {
+								node["tid"] = [];
+							}
+							node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
+						}
+					}//next termin
+						
+					var params = {"nid" :node["nid"] };
+					node["termins"] = get_node_termins( params );
+					
+					node["book_files"] = _getBookFilesXML( params );
+					node["book_url"] = _getBookUrlXML( params );
+					node["book_links"] = _getBookLinksXML( params );
+
+				//Get children nodes				
+				//if( node["type"] === "author"){
+				node["node_child_pages"] = book.get_child_pages({
+					"plid" : node["mlid"],
+					"recourse" : 0
+				});
+				//}
+					
+//console.log( node  );
+					return node;
+				}//next node
+				
+				return false;
+			}//end __getNodeByNid()
 			
-			return false;
-		}//end _getNodeXML()
+		}//end _getNode()
 		
 /*
 		function get_book_files( params ){
