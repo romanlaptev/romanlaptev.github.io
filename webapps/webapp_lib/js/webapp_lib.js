@@ -993,8 +993,8 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			"view_node" : function( params ){
 				return _view_node( params );
 			},
-			"view_termin_nodes" : function( params ){
-				return _view_termin_nodes( params );
+			"viewNodes" : function( opt ){
+				return _viewNodes( opt );
 			},
 			"searchNodes" : function( opt ){
 				return _searchNodes( opt );
@@ -1645,7 +1645,7 @@ console.log( _vars["logMsg"] );
 					
 				}
 			}//next node
-/*
+
 			//------------------- SORT by author, alphabetical sorting
 			if( nodes.length > 0 ){
 				func.sortRecords({
@@ -1654,60 +1654,30 @@ console.log( _vars["logMsg"] );
 					"sortByKey": "author"
 				});
 			}
-*/			
-console.log(nodes, nodes.length);
-		}//end _searchNodes()
 
-
-		function _view_termin_nodes( params ) {
-			if( typeof _vars["termin_nodes"] === "undefined"){
-				var log = "- error, not found _vars[termin_nodes]";
-//console.log(message);
-				//_vars["info"].push( message );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log(nodes, nodes.length);
+			if( nodes.length > 0){
+_vars["logMsg"] = "- найдено книг: "+ nodes.length;
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
-				
-				return;
+				_buildBlock({
+					"locationID" : "block-node",
+					"templateID" : "tpl-block--search-nodes",
+					"content" : nodes_obj.viewNodes({
+						"nodes": nodes
+					})
+				});
 			}
 			
-			var termin_nodes_tpl = _vars["templates"]["termin_nodes_tpl"];
-			var termin_node_tpl = _vars["templates"]["termin_nodes_item_tpl"];
-			//var url_tpl = _vars["templates"]["termin_nodes_url_tpl"];
-			var html = "";
-			for( var n = 0; n < _vars["termin_nodes"].length; n++){
-				var node = _vars["termin_nodes"][n];
-				//var url = url_tpl.replace("#nid", node["nid"]);
+		}//end _searchNodes()
 
-if(node["type"] === "library_book"){
-				html += termin_node_tpl
-				//.replace(/{{url}}/g, url)
-				//.replace(/#url#/g, url)
-				.replace("{{nid}}", node["nid"])
-				.replace("{{bookname}}", '"'+node["bookname"]+'"')
-				.replace("{{author}}", node["author"]);
-}				
-
-if(node["type"] === "author"){
-				html += termin_node_tpl
-				//.replace(/{{url}}/g, url)
-				//.replace(/#url#/g, url)
-				.replace("{{nid}}", node["nid"])
-				.replace("{{bookname}}", node["title"])
-				.replace("{{author}}", "");
-}
-
-			}//next
-			
-			html = termin_nodes_tpl.replace("{{termin_nodes}}", html);
-			return html;
-		}//end _view_termin_nodes()
-
-/*
-		function _get_node( opt ){
+		function _viewNodes( opt ) {
+//console.log("_viewNodes() ", arguments, "caller: " , _viewNodes.caller);
 //console.log(opt);
 			var p = {
-				"nid" : null
+				"nodes" : null,
+				"nodes_tpl": _vars["templates"]["nodes_tpl"],
+				"node_tpl": _vars["templates"]["nodes_item_tpl"]
 			};
 			//extend p object
 			for(var key in opt ){
@@ -1715,41 +1685,45 @@ if(node["type"] === "author"){
 			}
 //console.log(p);
 
-			if(!p.nid){
-_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
- //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+			if( !p["nodes"]){
+_vars["logMsg"] = "- error, not found nodes, _viewNodes()";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+				return false;
+			}
+			if( p["nodes"].length === 0){
+_vars["logMsg"] = "- error, not found nodes, _viewNodes()";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
 				return false;
 			}
 
-			var node = false;
-			for( var n = 0; n < _vars["nodes"].length; n++){
-				if( p.nid === _vars["nodes"][n]["nid"] ){
-					node = _vars["nodes"][n];
-					
-					//get book url
-					var params = {"nid" :node["nid"] };
-					//node["book_files"] = [];
-					//node["book_url"] = [];
-					//node["book_links"] = [];
-					
-					node["termins"] = get_node_termins( params );
-					
-//node["book_files"] = get_book_files( params );
-					node["book_files"] = _getBookFiles( params );
-					
-//node["book_url"] = get_book_url( params );
-					node["book_url"] = _getBookUrl( params );
-					
-//node["book_links"] = get_book_links( params );
-					node["book_links"] = _getBookLinks( params );
-					
-				}
-			}//next node
-//console.log( node  );
-			return node;
-		}//end _get_node()
-*/
+			var html = "";
+			for( var n = 0; n < p["nodes"].length; n++){
+				var node = p["nodes"][n];
+
+if(node["type"] === "library_book"){
+				html += p.node_tpl
+				.replace("{{nid}}", node["nid"])
+				.replace("{{bookname}}", '"'+node["bookname"]+'"')
+				.replace("{{author}}", node["author"]);
+}				
+
+if(node["type"] === "author"){
+				html += p.node_tpl
+				.replace("{{nid}}", node["nid"])
+				.replace("{{bookname}}", node["title"])
+				.replace("{{author}}", "");
+}
+
+			}//next
+			
+			html = p["nodes_tpl"].replace("{{list}}", html);
+			
+			return html;
+		}//end _viewNodes()
+
+
 		function _getNode( opt ){
 //console.log(opt);
 			var p = {
@@ -2704,11 +2678,11 @@ if( _vars["GET"]["vid"] === "1" ){
 					_buildBlock({
 						"locationID" : "block-node",
 						"templateID" : "tpl-block--termin-nodes",
-						"content" : function(){
-							var html = nodes_obj.view_termin_nodes();
-//console.log(html);					
-							return html;
-						}
+						"content" : nodes_obj.viewNodes({
+							"nodes": _vars["termin_nodes"],
+							"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
+							"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
+						})
 					});
 				//} else {
 //console.log("TEST");

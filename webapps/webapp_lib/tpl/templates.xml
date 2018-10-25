@@ -215,6 +215,32 @@
 		]]></html_code>
 	</tpl>
 
+
+	<tpl name="tpl-block--search-nodes">
+		<html_code><![CDATA[
+<div class="block block-search-nodes">
+	<div class="panel panel-default">
+		<div class="panel-body content">{{content}}</div>
+	</div>  
+</div>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="nodes_tpl">
+		<html_code><![CDATA[
+<ol class="list--nodes">{{list}}</ol>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="nodes_item_tpl">
+		<html_code><![CDATA[
+<li class="node">
+	<a class="nav-click" href="?q=node&nid={{nid}}">{{author}} {{bookname}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+
 	<tpl name="tpl-block--termin-nodes">
 		<html_code><![CDATA[
 <div class="block block-termin-nodes">
@@ -231,6 +257,7 @@
 		]]></html_code>
 	</tpl>
 
+
 	<tpl name="termin_nodes_item_tpl">
 		<html_code><![CDATA[
 <li class="termin-node">
@@ -241,7 +268,7 @@
 
 	<tpl name="termin_nodes_tpl">
 		<html_code><![CDATA[
-<ol class="list-termin-nodes">{{termin_nodes}}</ol>
+<ol class="list-termin-nodes">{{list}}</ol>
 		]]></html_code>
 	</tpl>
 
