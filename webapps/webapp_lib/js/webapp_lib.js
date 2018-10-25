@@ -980,9 +980,9 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				//return _get_node( params );
 				return _getNodeXML( params );
 			},
-			"get_xml_nodes" : function( params ){
-				return _get_xml_nodes( params );
-			},
+			//"get_xml_nodes" : function( params ){
+				//return _get_xml_nodes( params );
+			//},
 			"get_termin_nodes" : function( params ){
 				//return _get_termin_nodes( params );
 				return _getTerminNodesXML( params );
@@ -995,7 +995,11 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			},
 			"view_termin_nodes" : function( params ){
 				return _view_termin_nodes( params );
+			},
+			"searchNodes" : function( opt ){
+				return _searchNodes( opt );
 			}
+			
 		};
 //console.log("nodes_obj:", nodes_obj);
 
@@ -1594,6 +1598,65 @@ nodeObj = {
 			
 		}//end _getTerminNodesJS()
 */
+
+		function _searchNodes( opt ){
+//console.log(opt);
+			var p = {
+				"keyword" : null,
+				"targetField" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.keyword){
+_vars["logMsg"] = "error, not found search keyword, _searchNodes()";
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+		
+			if(!p.targetField){
+_vars["logMsg"] = "error, not found search 'targetField', _searchNodes()";
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+		
+			var _targetField = p.targetField.toLowerCase();
+			var _keyword = p.keyword.toLowerCase();
+			
+			var nodes = [];
+			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+				var x_node = $( nodes_obj["x_nodes"][n] );
+				
+				var node = {};
+				var _test = x_node.children( _targetField ).text().toLowerCase();
+				if( _test.indexOf(p.keyword) !== -1){
+console.log(x_node);
+					//var node = _getNodeXML({
+						//"xmlObj" : x_node
+					//});
+					//if( node ){
+						//nodes.push( node );
+					//}
+					
+				}
+			}//next node
+/*
+			//------------------- SORT by author, alphabetical sorting
+			if( nodes.length > 0 ){
+				func.sortRecords({
+					"records" : nodes,
+					"sortOrder": "asc", //desc
+					"sortByKey": "author"
+				});
+			}
+*/			
+console.log(nodes, nodes.length);
+		}//end _searchNodes()
 
 
 		function _view_termin_nodes( params ) {
@@ -3120,14 +3183,35 @@ console.log("w = " + document.body.clientWidth );
 
 			//Search by parameters
 			$("#form-search").on("submit", function(e){
-console.log("Submit form", e, this);
+//console.log("Submit form", e, this);
 				e.preventDefault();
 				//return false;
 				
-console.log(this["target"].value);
-console.log(this.keyword.value);
+//console.log(this["targetField"].value);
+//console.log(this.keyword.value);
 				$("#service-panel").hide();
 
+				//check input values
+				var res = true;
+				if( this.keyword.value.length === 0 ){
+_vars["logMsg"] = "error, empty search field 'keyword'....";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					res = false;
+				}
+				if( this.targetField.value.length === 0 ){
+_vars["logMsg"] = "error, empty search field 'target'....";
+func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					res = false;
+				}
+				
+				if(res){
+					nodes_obj.searchNodes({
+						"targetField": this.targetField.value,
+						"keyword": this.keyword.value
+					});
+				}
 			});//end event
 
 

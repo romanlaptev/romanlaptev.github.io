@@ -78,6 +78,26 @@ console.log("lib:", lib);
 	
 }//end init_webapp()
 
+function _searchNodeType( id, value ){
+//console.log( id, value );	
+
+	var input = func.getById( id );
+//console.log( input );	
+
+	if(input){
+		input.value = value;	
+	} else {
+console.log("error!!! ", input);		
+	}
+	
+	$("#tab-search input[type=radio]").each(function(num, element){
+//console.log(num, element);
+		$(element).prop("checked", false);
+	});//next
+	$("#radio-node-type").prop("checked", true);
+	
+}//end _searchNodeType()
+
 $(document).ready(function(){
 //console.log("document ready");
 
