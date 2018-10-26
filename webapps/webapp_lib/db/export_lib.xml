@@ -19017,6 +19017,17 @@ lib/books/L
 Судьба еврея в СССР
 		</bookname>
 	</node>
+	<node title="Дневник качка" nid="1758" mlid="2160" plid="384" type="library_book" created="26-Oct-2018 22:13:31" changed="26-Oct-2018 22:13:46" weight="0">
+		<subfolder>
+lib/books/L
+		</subfolder>
+		<author>
+Логинов Андрей
+		</author>
+		<bookname>
+Дневник качка
+		</bookname>
+	</node>
 	<node title="Достоевский" nid="1528" mlid="1607" plid="386" type="author" created="06-Nov-2013 19:41:12" changed="06-Nov-2013 19:41:12" weight="0">
 	</node>
 	<node title="Дрожь и оцепенение" nid="580" mlid="1918" plid="1916" type="library_book" created="09-Oct-2012 22:41:10" changed="26-Feb-2017 00:31:04" weight="0">
@@ -30979,6 +30990,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1756" bundle="library_book" delta="0">
 		<value>cooper_dzheims_zveroboi_ili_pervaya_tropa_voiny.fb2.zip</value>
 	</item>
+	<item entity_id="1758" bundle="library_book" delta="0">
+		<value>L_humor_Loginov Andrej.Dnevnik kachka.txt</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -36527,6 +36541,12 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1756" tid="119"/>
 	<record nid="1756" tid="120"/>
 	<record nid="1756" tid="236"/>
+	<record nid="1758" tid="39"/>
+	<record nid="1758" tid="17"/>
+	<record nid="1758" tid="20"/>
+	<record nid="1758" tid="67"/>
+	<record nid="1758" tid="143"/>
+	<record nid="1758" tid="150"/>
 </taxonomy_index>
 
 <taxonomy_term_data>
