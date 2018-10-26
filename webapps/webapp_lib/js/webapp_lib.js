@@ -1657,6 +1657,7 @@ console.log( _vars["logMsg"] );
 
 //console.log(nodes, nodes.length);
 _vars["logMsg"] = "- найдено книг: "+ nodes.length;
+func.log("");
 func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 			return nodes;
@@ -2043,6 +2044,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
 				var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
 				html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
+				//html_cloud_links += add_dropbox_links();
 				htmlWrapCloudLinks = _vars["templates"]["node_tpl_cloud_links"].replace("{{list}}", html_cloud_links);
 			}
 			html = html.replace("{{cloud-links}}", htmlWrapCloudLinks);
@@ -3462,8 +3464,32 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 		}//end add_cloud_links()
 		
 
-/*
+
 		function add_dropbox_links() {
+	
+			var html = "";
+			
+			var subfolder =  _vars["node"]["subfolder"];
+			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
+				var filename =  _vars["node"]["book_files"][n];
+				
+				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
+				if( filename.lastIndexOf('#') > 0 )	{
+					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
+				} else {
+					var s_filename = filename;
+				}
+
+				var html_url = _vars["templates"]["node_tpl_cloud_Dropbox"]
+						.replace("{{link-title}}", link_title)
+						.replace("{{subfolder}}", subfolder)
+						.replace("{{filename}}", s_filename);
+
+				html += html_url;
+			}//next book file
+			
+			return html;
+/*
 			//form node book url and generate ajax-request to Dropbox
 			var node_tpl_url = _vars["templates"]["dropbox_for_tpl"];
 			var subfolder =  _vars["node"]["subfolder"];
@@ -3488,8 +3514,9 @@ if(cloudUrl.indexOf("yandex") !== -1 ){
 				//асинхронный запрос к серверу для проверки наличия файла книги на сервере и вывода кода ссылки
 				test_exists_book( url, "HEAD", html );
 			}//next book file
+*/			
 		}//end add_dropbox_links()
-*/
+
 
 /*		
 		//

@@ -136,6 +136,17 @@
 		]]></html_code>
 	</tpl>
 
+<!--
+	<tpl name="node_tpl_cloud_Dropbox">
+		<html_code><![CDATA[
+<li class="list-group-item">
+	<b>Dropbox preview</b>
+	<a href="https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa/{{subfolder}}?dl=0&preview={{filename}}" target="_blank">{{link-title}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+-->
+
 
 	<tpl name="node_tpl_external_links">
 		<html_code><![CDATA[

@@ -21,6 +21,13 @@ var config = {
 //"url_lib_location_dropbox" : "https://dl.dropboxusercontent.com/u/75717183",
 "url_book_location_Mail" : "https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p",
 "url_book_location_Yandex" : "https://docviewer.yandex.ru/?url=ya-disk:///disk/dont_sync",
+
+//https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa/lib/books/B?dl=0&preview=B_fantasy_boiler.txt&subfolder_nav_tracking=1
+//"url_Dropbox" : "https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa",
+//"url_DropboxPreview" : "?dl=0&preview=",
+//https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa/lib/books/B/Begbeder.F?dl=0&preview=B_prose_99franks.txt
+//https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AACOO8GxThqW4XfJc6Bgh5MAa/lib/books/B/Begbeder.F?dl=0&preview=B_prose_99franks.txt&subfolder_nav_tracking=1
+
 "use_localcache" : true,
 "addCopyLink": true,
 "localforagePath": "js/vendor/localforage.min.js",
