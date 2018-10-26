@@ -1656,20 +1656,12 @@ console.log( _vars["logMsg"] );
 			}
 
 //console.log(nodes, nodes.length);
-			if( nodes.length > 0){
 _vars["logMsg"] = "- найдено книг: "+ nodes.length;
 func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
-				_buildBlock({
-					"locationID" : "block-node",
-					"templateID" : "tpl-block--search-nodes",
-					"content" : nodes_obj.viewNodes({
-						"nodes": nodes
-					})
-				});
-			}
-			
+			return nodes;
 		}//end _searchNodes()
+		
 
 		function _viewNodes( opt ) {
 //console.log("_viewNodes() ", arguments, "caller: " , _viewNodes.caller);
@@ -1687,15 +1679,15 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 
 			if( !p["nodes"]){
 _vars["logMsg"] = "- error, not found nodes, _viewNodes()";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-				return false;
+//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return "";
 			}
 			if( p["nodes"].length === 0){
 _vars["logMsg"] = "- error, not found nodes, _viewNodes()";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-				return false;
+//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return "";
 			}
 
 			var html = "";
@@ -2532,6 +2524,14 @@ console.log("child_pages is empty!!!");
 			//clear content area
 			$("#region-content #block-taxonomy").empty( html );
 			$("#region-content #block-nodes").empty( html );
+
+//--------------------- BLOCK #sitename-block
+			_buildBlock({
+				"locationID" : "sitename-block",
+				"templateID" : "tpl-block--sitename"//,
+				//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
+			});
+//---------------------
 			
 			if( typeof _vars["book_category"] !== "undefined" ) {
 				if( _vars["book_category"].length > 0 ) {
@@ -2569,17 +2569,6 @@ console.log("error, not found _vars[book_category]");
 			
 			
 //--------------------- BLOCK
-			//var html = _view_vocabulary( "library", recourse = false );
-//			var params = [];
-//			params["termins"] = _vars["taxonomy"]["library"]["termins"]; 
-//			params["vid"] = "2";
-//			params["tid"] = "37";//38, 46
-//			params["recourse"] = true;
-//			params["show_only_children"] = false;
-//			var html = taxonomy_obj.view_termin( params );
-
-			//$("#block-library").html( html );
-
 			_buildBlock({
 				"locationID" : "block-library",
 				"templateID" : "tpl-block--tags",
@@ -2689,15 +2678,27 @@ if( _vars["GET"]["vid"] === "1" ){
 				//}
 			}
 			
-			//view book nodes
+			//view book node
 			if ( _vars["GET"]["q"] === "book_page" ) {
 				render_node();
 			}
 			
-			//view nodes
+			//view node
 			if ( _vars["GET"]["q"] === "node" ){
 				render_node();
 			}
+
+
+			if ( _vars["GET"]["q"] === "search" ){
+				_buildBlock({
+					"locationID" : "block-node",
+					"templateID" : "tpl-block--search-nodes",
+					"content" : nodes_obj.viewNodes({
+						"nodes": _vars["nodes"]
+					})
+				});
+			}
+
 
 			//hide blocks on small screens
 			if ( _vars["GET"]["q"] && _vars["GET"]["q"].length > 0 ){
@@ -2739,13 +2740,6 @@ if( _vars["GET"]["vid"] === "1" ){
 //console.log(html_breadcrumb);
 			$("#breadcrumb-tpl").html( html_breadcrumb );
 			
-//--------------------- BLOCK #sitename-block
-			_buildBlock({
-				"locationID" : "sitename-block",
-				"templateID" : "tpl-block--sitename"//,
-				//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
-			});
-//---------------------
 			
 			function render_node(){
 
@@ -3181,35 +3175,48 @@ console.log("w = " + document.body.clientWidth );
 			}//end event
 
 			//Search by parameters
-			$("#form-search").on("submit", function(e){
-//console.log("Submit form", e, this);
-				e.preventDefault();
-				//return false;
+			$("#form-search").on("submit", function(event){
+//console.log("Submit form", event, this);
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
 				
 //console.log(this["targetField"].value);
 //console.log(this.keyword.value);
-				$("#service-panel").hide();
+//console.log(target.action);
+//console.log(target["targetField"].value);
+//console.log(target.keyword.value);
 
 				//check input values
 				var res = true;
-				if( this.keyword.value.length === 0 ){
-_vars["logMsg"] = "error, empty search field 'keyword'....";
+				if( target.keyword.value.length === 0 ){
+_vars["logMsg"] = "error, empty field 'keyword'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					res = false;
 				}
-				if( this.targetField.value.length === 0 ){
-_vars["logMsg"] = "error, empty search field 'target'....";
+				if( target.targetField.value.length === 0 ){
+_vars["logMsg"] = "error, empty field 'targetField'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					res = false;
 				}
 				
 				if(res){
-					nodes_obj.searchNodes({
-						"targetField": this.targetField.value,
-						"keyword": this.keyword.value
-					});
+					var parseStr = target.action+"&targetField="+target["targetField"].value+"&keyword="+target.keyword.value; 
+//console.log( parseStr );
+					if( parseStr.length > 0 ){
+						_vars["GET"] = func.parseGetParams( parseStr ); 
+						_urlManager(target);
+					} else {
+_vars["logMsg"] = "Warning! cannot parse url: " + target.action;
+func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+					}
 				}
 			});//end event
 
@@ -3244,7 +3251,9 @@ console.log( _vars["logMsg"] );
 								_vars["GET"] = func.parseGetParams( parseStr ); 
 								_urlManager(target);
 							} else {
-console.log( "Warn! error parse url in " + target.href );
+_vars["logMsg"] = "Warning! cannot parse url: " + target.href;
+func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
 								}
 
 						}
@@ -3331,12 +3340,16 @@ _vars["logMsg"] = "- nodes_obj.get_node("+_vars["node"]["nid"]+"), book.get_chil
  func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
 				break;
-/*
-				case "load-xml-book":
-					_vars["requestUrl"] = "parse_notes/xml/export_mydb_notes.xml";
-					loadBookXml();
+
+				case "search":
+					$("#service-panel").hide();
+					_vars["nodes"] = nodes_obj.searchNodes({
+						"targetField": _vars["GET"]["targetField"],
+						"keyword": _vars["GET"]["keyword"]
+					});
+					draw_page();
 				break;
-*/				
+
 			
 				default:
 console.log("_urlManager(),  GET query string: ", _vars["GET"]);			
