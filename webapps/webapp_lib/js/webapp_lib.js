@@ -3189,19 +3189,38 @@ console.log("w = " + document.body.clientWidth );
 				
 //console.log(this["targetField"].value);
 //console.log(this.keyword.value);
-//console.log(target.action);
-//console.log(target["targetField"].value);
+
+
+//console.log(target.targetField.value);
 //console.log(target.keyword.value);
+
+//console.log(target.keyword.value);
+				var form = document.forms["formSearch"]
+//console.log(form);
+//console.log(form.elements.targetField.value);
+//console.log(form.elements.keyword.value);
+
+//for( var key in form.elements.targetField){
+//console.log("key:"+key+", value:"+form.elements.targetField[key]);
+//}
+
+//console.log( $(form.elements.targetField).val() );
+
 
 				//check input values
 				var res = true;
-				if( target.keyword.value.length === 0 ){
+				
+				var _keyword = $(form.elements.keyword).val();
+				if( _keyword.length === 0 ){
 _vars["logMsg"] = "error, empty field 'keyword'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					res = false;
 				}
-				if( target.targetField.value.length === 0 ){
+				
+				var _targetField = $(form.elements.targetField).val();
+//console.log( _targetField.length );
+				if( _targetField.length === 0 ){
 _vars["logMsg"] = "error, empty field 'targetField'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
@@ -3209,7 +3228,7 @@ console.log( _vars["logMsg"] );
 				}
 				
 				if(res){
-					var parseStr = target.action+"&targetField="+target["targetField"].value+"&keyword="+target.keyword.value; 
+					var parseStr = target.action+"&targetField="+_targetField+"&keyword="+_keyword; 
 //console.log( parseStr );
 					if( parseStr.length > 0 ){
 						_vars["GET"] = func.parseGetParams( parseStr ); 
@@ -3220,6 +3239,7 @@ func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 					}
 				}
+
 			});//end event
 
 
