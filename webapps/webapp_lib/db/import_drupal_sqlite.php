@@ -14,6 +14,7 @@ $filename = "import_lib.xml";
 $sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
 
 $_vars["sql"]["getNodeTypes"] = "SELECT * FROM node_type;";
+$_vars["sql"]["getNumNodes"] = "SELECT count(nid) FROM node;";
 
 
 //=====================
@@ -54,9 +55,9 @@ if ( $_vars["runType"] == "web") {
 		viewForm();
 	} else {
 		$action = $_REQUEST['action'];
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
+//echo "<pre>";
+//print_r($_REQUEST);
+//echo "</pre>";
 		
 		switch ($action) {
 			case "import":
@@ -65,7 +66,16 @@ echo "</pre>";
 					$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
 					
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
-getNodeType();
+//getNodeType();
+//getNumNodes();
+
+$nodeInfo = new stdClass();
+$nodeInfo->type = "library_book";
+//$nodeInfo->title = $node_xml[@title];
+$nodeInfo->title = "test1";
+//$nodeInfo->body_value = "test1test1test1test1test1test1";
+addNewNode($nodeInfo);
+
 				}
 			break;
 		}//end switch
@@ -105,26 +115,55 @@ function _log( $message ){
 	}
 }//end _log()
 
-function runSql($db,  $query){
+function runSqlQuery($db,  $query){
 	$result = $db->query($query);
 	//$result->setFetchMode(PDO::FETCH_ASSOC);
 	$result->setFetchMode(PDO::FETCH_OBJ);
 	$resultData = $result->fetchAll();
 	return $resultData;
-}//end runSql()
+}//end runSqlQuery()
 
 
-function getNodeType() {
+function runSql($db,  $query){
+	//https://php.ru/manual/sqlite3.exec.html
+	//http://php.net/manual/ru/pdo.exec.php
+	$result = $db->exec($query);
+echo "result exec:"	.$result;
+echo "<br>";
+}//end runSql
+
+
+function getNumNodes() {
 	global $db, $_vars;
 	
-	$sql = $_vars["sql"]["getNodeTypes"];
-_log("-- get node types\n");
+	$sql = $_vars["sql"]["getNumNodes"];
+_log("-- get number of nodes\n");
 
-	$res = runSql($db,  $sql);
+	$res = runSqlQuery($db,  $sql);
 echo "res = <pre>";
 print_r($res);
 echo "</pre>";
 } //end getNodeType()
+
+function addNewNode($nodeInfo) {
+	global $db, $_vars;
+	
+	$node = new stdClass();
+	$node->type = $nodeInfo->type;
+	$node->title = $nodeInfo->title;
+	//$node->body = $nodeInfo->body_value;
+//echo "node = <pre>";
+//print_r($node);
+//echo "</pre>";
+
+	$sql="INSERT INTO node(`type`, `title`) VALUES ('".$node->type."', '".$node->title."');";
+	//$sql = $_vars["sql"]["getNumNodes"];
+//_log("-- get number of nodes\n");
+
+	runSql($db,  $sql);
+	
+	getNumNodes();
+} //end addNewNode()
 
 
 function viewForm(){
