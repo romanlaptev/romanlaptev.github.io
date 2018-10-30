@@ -3167,6 +3167,18 @@ console.log( logMsg );
 				window.open(e.href);
 			});//end event
 
+			$("#btn-load-import").on("click", function(e){
+				if (e.preventDefault) { 
+					e.preventDefault();
+				} else {
+					e.returnValue = false;				
+				}
+				var url = $("#import-script-url").val(); 
+				e.href = url;
+//console.log(e.href);				
+				window.open(e.href);
+			});//end event
+
 			window.onresize = function(event) {
 				if( document.body.clientWidth > 990){
 					if( !$("#bs-navbar-collapse-1").is(":visible") ){

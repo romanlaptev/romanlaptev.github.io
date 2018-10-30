@@ -196,6 +196,7 @@
 		<li class="active"><a data-toggle="tab" href="#tab-info">Info</a></li>
 		<li><a data-toggle="tab" href="#tab-search">Search</a></li>
 		<li><a data-toggle="tab" href="#tab-export">Export</a></li>
+		<li><a data-toggle="tab" href="#tab-import">Import</a></li>
 		<li><a data-toggle="tab" href="#tab-config">Settings</a></li>
 
 	</ul>
@@ -286,7 +287,7 @@ https://viewerjs.org/examples/
 		<input class="form-control" id="export-script-url" value="db/export.php"/>
 	</div>
 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-		<a id="btn-load-export" href="#" target="_blank" class="btn btn-primary">load export script</a>
+		<a id="btn-load-export" href="#" target="_blank" class="btn btn-primary">load script</a>
 	</div>
 </div>	
 <pre>
@@ -302,6 +303,23 @@ http://.../db/export.php?run_type=console
 			</div>
 		</div><!-- end tab -->
 		
+
+		<div id="tab-import" class="tab-pane fade">
+			<div  class="panel panel-default">
+				<div class="panel-body">
+<h3>import book info from DB (lib.sqlite)</h3>
+<div class="row panel-body">
+	<label class="pull-left">url:</label>
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+		<input class="form-control" id="import-script-url" value="db/import_drupal_sqlite.php"/>
+	</div>
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+		<a id="btn-load-import" href="#" target="_blank" class="btn btn-primary">load script</a>
+	</div>
+</div>	
+				</div>
+			</div>
+		</div><!-- end tab -->
 
 		<div id="tab-config" class="tab-pane fade">
 			<div  class="panel panel-default">
