@@ -20,7 +20,9 @@
 "runtime": {},
 "appContainer": func.getById("App"),
 "info": []
+
 		};
+		_vars["updateStore"] = false;
 
 		function _init(){
 			
@@ -803,19 +805,19 @@ console.log("error in draw.loadTemplates(), cannot parse templates data.....");
 			var _total = 5;
 			var _numDone = 0;
 			var _percentComplete = 0;
+
 			
-//------------------
-			//get nodes
+//------------------ //get nodes
 			var timeStart = new Date();
 //runtime: 0.668 sec
-				var res = read_nodes_data();
+				var res = _readNodesData();
 if(!res){
 	return false;
 }				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 			
-_vars["logMsg"] = "- read_nodes_data, runtime: <b>" + runTime  + "</b> sec";
+_vars["logMsg"] = "- _readNodesData(), runtime: <b>" + runTime  + "</b> sec";
 //func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
@@ -835,10 +837,40 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
 //------------------
+//------------------
+
+			var timeStart = new Date();
+//runtime: 4.837 sec+, 
+//runtime: 1.394 sec+, 
+//runtime: 0.783 sec
+				_vars["nodes"] = _getNodes();
+			var timeEnd = new Date();
+			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			var log = "- _getNodes(), runtime: <b>" + runTime  + "</b> sec";
+			
+			//_vars["info"].push( log );
+_vars["logMsg"] = log;
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+			
+			_vars["runtime"]["get_xml_nodes"] = {
+				"time" : runTime
+			};
+
+			_numDone++;
+			_percentComplete = Math.ceil(_numDone / _total * 100);
+console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
+//func.log( timeEnd, "parse-progress-bar" );
+
+			if( _vars["parseProgressBar"] ){
+				_vars["parseProgressBar"].className = "progress-bar";
+				_vars["parseProgressBar"].style.width = _percentComplete+"%";
+				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
+			}
+//------------------
 			
 
-//------------------
-			//get taxonomy termins
+//------------------//get taxonomy termins
 			var timeStart = new Date();
 //runtime: 0.684 sec
 				read_taxonomy_data();
@@ -899,39 +931,6 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 
 //------------------
-/*
-			var timeStart = new Date();
-//runtime: 4.837 sec+, 
-//runtime: 1.394 sec+, 
-//runtime: 0.783 sec
-				_vars["nodes"] = nodes_obj.get_xml_nodes();
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- nodes_obj.get_xml_nodes(), runtime: <b>" + runTime  + "</b> sec";
-			
-			//_vars["info"].push( log );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			
-			_vars["runtime"]["get_xml_nodes"] = {
-				"time" : runTime
-			};
-
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-*/
-//------------------
-
-//------------------
 			//get book category
 			var timeStart = new Date();
 //runtime : 0.244 sec			
@@ -971,7 +970,129 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			delete _vars["xml"];
 			
 			return true;
-		};//end lib.get_content()
+			
+			//read xml data
+			function _readNodesData() {
+	//console.log("TEST, _readNodesData()");			
+				try{
+					var xml = _vars["xml"];
+					
+		//FF 3.6.2, error parse, fail $(xml)
+		//script stack space quota is exhausted
+					var table_name_index = "taxonomy_index";
+					nodes_obj["taxonomy_index"] = $(xml).find( table_name_index ).find("record");//runtime: 0.244 sec
+		//console.log( "1", $ );
+		//console.log( "2", typeof nodes_obj["taxonomy_index"] );
+		//console.log( "3", nodes_obj["taxonomy_index"] );
+					
+					var table_name = "table_node";
+					nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
+		//console.log( nodes_obj["x_nodes"] );
+		
+	//-------------
+					var table_name = "table_book_filename";
+					nodes_obj["x_filenames"] = $(xml).find( table_name ).find('item');
+					
+					table_name = "table_book_url";
+					nodes_obj["x_url"] = $(xml).find( table_name ).find('item');
+					
+					table_name = "table_book_links";
+					nodes_obj["x_links"] = $(xml).find( table_name ).find('item');
+	//-------------
+		
+					return true;
+					
+				} catch(e) {
+		console.log( e );
+					_vars["logMsg"] = "XML parse error ( _readNodesData() ). ";
+					_vars["logMsg"] += e.name+", "+e.message;
+					func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+					return false;
+				}
+			}//end _readNodesData()
+			
+			function _getNodes( params ) {
+				var nodes = [];
+
+				for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+	//console.log( n, x_nodes[n] );
+					var node = {};
+					
+					//read node attributes
+					var item_attr = func.get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
+					for(var attr in item_attr){
+						node[attr] = item_attr[attr];
+					}//next attr
+				
+					var x_node = $( nodes_obj["x_nodes"][n] );
+					node["subfolder"] = x_node.children("subfolder").text().trim();
+					node["author"] = x_node.children("author").text();
+					node["bookname"] = x_node.children("bookname").text();
+					node["body_value"] = x_node.children("body_value").text();
+
+					//read node termins
+					for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+						var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
+						if( test_nid === node["nid"] )
+						{
+							if( typeof node["tid"] === "undefined") {
+								node["tid"] = [];
+							}
+							node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
+						}
+					}//next termin
+					
+	//-----------------				
+					var params = {"nid" :node["nid"] };
+					node["termins"] = get_node_termins( params );
+					node["book_files"] = _getBookFilesXML( params );
+					node["book_url"] = _getBookUrlXML( params );
+					node["book_links"] = _getBookLinksXML( params );
+	//-----------------				
+					
+					nodes.push( node );
+				}//next node
+
+//var jsonData = JSON.stringify( nodes );
+//console.log( jsonData.length );
+				if ( config["use_localcache"] ) {
+					
+					var key = "nodes";
+					_getItemFromStorage(key, function(readValue, err){//try read store Nodes
+//console.log("--- _deferred_req(), get data...");						
+console.log("- read "+key+" from storage...record: "+readValue.length);
+console.log(err);
+
+						if(readValue && readValue.length > 0){
+							
+							if( _vars["updateStore"]){
+								localforage.removeItem(key, function(err) {//remove old version store Nodes
+console.log("- remove " +key);
+console.dir(err);
+									put_to_storage(key, nodes, function(value, err){//save new version store Nodes
+console.log("- save "+key+" to local storage...", value, err);
+									});
+								 });
+							}
+
+
+						} else {
+							put_to_storage(key, nodes, function(value, err){//save new version store Nodes
+console.log("- save "+key+" to local storage...", value, err);
+							});
+							
+						}
+					});
+								
+					
+				}
+				
+				
+				
+				return nodes;
+			}//end _getNodes()
+			
+		};//end get_content()
 
 
 		var nodes_obj = {
@@ -1003,98 +1124,6 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 		};
 //console.log("nodes_obj:", nodes_obj);
 
- 		//read xml data
-		function read_nodes_data() {
-//console.log("TEST, read_nodes_data()");			
-			try{
-				var xml = _vars["xml"];
-				
-	//FF 3.6.2, error parse, fail $(xml)
-	//script stack space quota is exhausted
-				var table_name_index = "taxonomy_index";
-				nodes_obj["taxonomy_index"] = $(xml).find( table_name_index ).find("record");//runtime: 0.244 sec
-	//console.log( "1", $ );
-	//console.log( "2", typeof nodes_obj["taxonomy_index"] );
-	//console.log( "3", nodes_obj["taxonomy_index"] );
-				
-				var table_name = "table_node";
-				nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
-	//console.log( nodes_obj["x_nodes"] );
-	
-//-------------
-				var table_name = "table_book_filename";
-				nodes_obj["x_filenames"] = $(xml).find( table_name ).find('item');
-				
-				table_name = "table_book_url";
-				nodes_obj["x_url"] = $(xml).find( table_name ).find('item');
-				
-				table_name = "table_book_links";
-				nodes_obj["x_links"] = $(xml).find( table_name ).find('item');
-//-------------
-	
-				return true;
-				
-			} catch(e) {
-	console.log( e );
-				_vars["logMsg"] = "XML parse error ( read_nodes_data() ). ";
-				_vars["logMsg"] += e.name+", "+e.message;
-				func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-				return false;
-			}
-		}//end read_nodes_data()
-
-/*
-		function _get_xml_nodes( params ) {
-			var nodes = [];
-
-			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
-//console.log( n, x_nodes[n] );
-				var node = {};
-				
-				//read node attributes
-				var item_attr = func.get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
-				for(var attr in item_attr){
-					node[attr] = item_attr[attr];
-				}//next attr
-			
-				var x_node = $( nodes_obj["x_nodes"][n] );
-				node["subfolder"] = x_node.children("subfolder").text().trim();
-				node["author"] = x_node.children("author").text();
-				node["bookname"] = x_node.children("bookname").text();
-				node["body_value"] = x_node.children("body_value").text();
-
-				//read node termins
-				for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
-					var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
-					if( test_nid === node["nid"] )
-					{
-						if( typeof node["tid"] === "undefined") {
-							node["tid"] = [];
-						}
-						node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
-					}
-				}//next termin
-				
-//-----------------				
-				//var params = {"nid" :node["nid"] };
-				//node["termins"] = get_node_termins( params );
-				//node["book_files"] = _getBookFiles( params );
-				//node["book_url"] = _getBookUrl( params );
-				//node["book_links"] = _getBookLinks( params );
-//-----------------				
-				
-				nodes.push( node );
-			}//next node
-
-			////var jsonData = JSON.stringify( nodes );
-////console.log( jsonData.length );
-			//put_to_storage("nodes", nodes, function(){
-////console.log(arguments);				
-			//});
-
-			return nodes;
-		}//end _get_xml_nodes()
-*/		
 
 /*
 		function _get_termin_nodes( params )
@@ -1716,6 +1745,54 @@ if(node["type"] === "author"){
 			return html;
 		}//end _viewNodes()
 
+
+/*
+		function _get_node( opt ){
+//console.log(opt);
+			var p = {
+				"nid" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			if(!p.nid){
+_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+
+			var node = false;
+			for( var n = 0; n < _vars["nodes"].length; n++){
+				if( p.nid === _vars["nodes"][n]["nid"] ){
+					node = _vars["nodes"][n];
+					
+					//get book url
+					var params = {"nid" :node["nid"] };
+					//node["book_files"] = [];
+					//node["book_url"] = [];
+					//node["book_links"] = [];
+					
+					node["termins"] = get_node_termins( params );
+					
+//node["book_files"] = get_book_files( params );
+					node["book_files"] = _getBookFiles( params );
+					
+//node["book_url"] = get_book_url( params );
+					node["book_url"] = _getBookUrl( params );
+					
+//node["book_links"] = get_book_links( params );
+					node["book_links"] = _getBookLinks( params );
+					
+				}
+			}//next node
+//console.log( node  );
+			return node;
+		}//end _get_node()
+*/
 
 		function _getNode( opt ){
 //console.log(opt);
