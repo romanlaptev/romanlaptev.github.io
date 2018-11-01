@@ -24,6 +24,95 @@
 		};
 		_vars["updateStore"] = false;
 
+		var book = {
+			"get_book_category" : function(){
+				_get_book_category();
+			},
+			"get_child_pages" : function( params ) {
+				var plid = params["plid"];
+				var recourse = params["recourse"];
+				var nodes = _get_child_pages( plid, recourse );
+				return nodes;
+			},
+			"view_book_category" : function(){
+				var html = _view_book_category();
+				return html;
+			},
+			"view_child_pages" : function( params ) {
+				var html = _view_child_pages( params );
+				return html;
+			}
+		};
+
+		var nodes_obj = {
+			//"nodes_size" : 0,
+			"get_node" : function( params ){
+				//return _get_node( params );
+				return _getNode( params );
+			},
+			//"get_xml_nodes" : function( params ){
+				//return _get_xml_nodes( params );
+			//},
+			"get_termin_nodes" : function( params ){
+				//return _get_termin_nodes( params );
+				return _getTerminNodesXML( params );
+				//return _getTerminNodesJquery( params );
+				//return _getTerminNodesJS( params );
+				//return _getTerminNodesStorage(params);
+			}, 
+			"view_node" : function( params ){
+				return _view_node( params );
+			},
+			"viewNodes" : function( opt ){
+				return _viewNodes( opt );
+			},
+			"searchNodes" : function( opt ){
+				return _searchNodes( opt );
+			}
+			
+		};
+console.log("nodes_obj:", nodes_obj);
+
+		var taxonomy_obj = {
+			"get_xml_taxonomy" : function(){
+				return _get_xml_taxonomy();
+			},
+			"view_vocabulary" : function( vocabulary_name, recourse ){
+				var html = _view_vocabulary( vocabulary_name, recourse );
+				return html;
+			},
+			"view_termin" : function( params ) {
+				var html = _view_termin( params );
+				return html;
+			}
+		};
+
+		var storage = {
+			
+			"init": function(){
+				return _init_cache();
+			},
+			
+			"getXml": function(){
+				_get_xml_from_storage();
+			},
+
+			"putItem": function(key, value, callback){
+				return _put_to_storage( key, value, callback );
+			},
+			
+			"getItem": function(key, callback){
+				return _getItemFromStorage( key, callback );
+			},
+			
+			"getAppData": function(opt){
+				return _getAppData( opt );
+			}
+			
+		};//end storage
+console.log("storage object:", storage);
+		
+		
 		function _init(){
 			
 			_vars["info"].push( navigator.userAgent + "<br>\n");
@@ -102,13 +191,18 @@ console.log( _vars["logMsg"] );
 var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
 //func.log(logMsg);
 _vars["info"].push(logMsg);
-					var res = init_cache();
+					var res = storage.init();
 					if( res ){
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
 //$("#load-progress").hide();
 //-----------
-						get_xml_from_storage();
+						storage.getAppData({
+							"callback": function(){
+console.log( "storage.getAppData(), end process");
+							}
+						});
+						
 					} else {
 						load_xml({
 							filename : config["xml_file"],
@@ -348,7 +442,9 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 		}//end after_load()
 		
 		
-		function init_cache() {
+//=================================== STORAGE methods
+		
+		function _init_cache() {
 
 			var test = test_db();
 //console.log(test);
@@ -449,9 +545,87 @@ console.log( message );
 			};//end _test()
 			
 		};//end _init_cache()
-		
-		function get_xml_from_storage() {
-//console.log( "function get_xml_from_storage()", localforage );
+
+
+		function _getAppData( opt ){
+console.log("function _getAppData()", opt);
+			var p = {
+				"callback" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+console.log(p);
+/*
+
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+				return false;
+			}
+*/
+
+			storage.getXml();
+
+			var _key = "node";
+			storage.getItem( _key, function(readValue, err) {//read store Nodes
+console.log("- read "+key+" from storage...record: "+readValue.length);
+console.log(err);
+			});
+
+/*
+			localforage.keys( function(err, keys) {//test in array of keys
+console.log(err, keys, err === null);				
+				if( err === null ){
+					var j_keys = keys.join();
+					var pos = j_keys.indexOf( _key);
+					if( pos >= 0){
+
+					} else {
+					}
+	
+				}
+			});
+*/
+			
+/*
+					storage.getItem(key, function(readValue, err){//try read store Nodes
+//console.log("--- _deferred_req(), get data...");						
+console.log("- read "+key+" from storage...record: "+readValue.length);
+console.log(err);
+
+						if(readValue && readValue.length > 0){
+							
+							if( _vars["updateStore"]){
+								localforage.removeItem(key, function(err) {//remove old version store Nodes
+console.log("- remove " +key);
+console.dir(err);
+									storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+console.log("- save "+key+" to local storage...", value, err);
+									});
+								 });
+							}
+
+
+						} else {
+							storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+console.log("- save "+key+" to local storage...", value, err);
+							});
+							
+						}
+					});
+
+*/
+			if(typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			
+		}//end _getAppData()
+				
+		function _get_xml_from_storage() {
+//console.log( "function _get_xml_from_storage()", localforage );
 
 			var timeStart = new Date();
 			localforage.keys( function(err, keys) {//test in array of keys
@@ -504,14 +678,14 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 					load_xml({
 						filename : config["xml_file"],
 						callback: function( xmlStr ){
-							put_to_storage( config["storage_key"], xmlStr, __postFunc);
+							storage.putItem( config["storage_key"], xmlStr, __postFunc);
 						}
 					});
 					/*
 					loadXml({
 						filename : config["xml_file"],
 						callback: function( xmlStr ){
-							put_to_storage( config["storage_key"], xmlStr, __postFunc);
+							storage.putItem( config["storage_key"], xmlStr, __postFunc);
 						}
 					});
 					*/
@@ -576,14 +750,14 @@ func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 				
 			}//end __postFunc()
 			
-		}//end get_xml_from_storage()
+		}//end _get_xml_from_storage()
 
-		function put_to_storage( key, value, callback ) {
+		function _put_to_storage( key, value, callback ) {
 
 			var timeStart = new Date();
 
 			localforage.setItem( key, value, function(err, v) {
-//console.log('function put_to_storage, saved in cache ' + config["storage_key"]);
+//console.log('function _put_to_storage, saved in cache ' + config["storage_key"]);
 //console.log(err, v);
 				var timeEnd = new Date();
 				var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
@@ -619,7 +793,7 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 
 			});
 
-		}//end put_to_storage();
+		}//end _put_to_storage();
 		
 
 		function _getItemFromStorage( key, callback ){
@@ -667,7 +841,7 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 		}//end _getItem()
 
 		
-		
+//=============================================		
 		function callback_init() {
 			
 //if(_vars["xml"]){
@@ -1055,10 +1229,11 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 //var jsonData = JSON.stringify( nodes );
 //console.log( jsonData.length );
+/*
 				if ( config["use_localcache"] ) {
 					
 					var key = "nodes";
-					_getItemFromStorage(key, function(readValue, err){//try read store Nodes
+					storage.getItem(key, function(readValue, err){//try read store Nodes
 //console.log("--- _deferred_req(), get data...");						
 console.log("- read "+key+" from storage...record: "+readValue.length);
 console.log(err);
@@ -1069,7 +1244,7 @@ console.log(err);
 								localforage.removeItem(key, function(err) {//remove old version store Nodes
 console.log("- remove " +key);
 console.dir(err);
-									put_to_storage(key, nodes, function(value, err){//save new version store Nodes
+									storage.putItem(key, nodes, function(value, err){//save new version store Nodes
 console.log("- save "+key+" to local storage...", value, err);
 									});
 								 });
@@ -1077,7 +1252,7 @@ console.log("- save "+key+" to local storage...", value, err);
 
 
 						} else {
-							put_to_storage(key, nodes, function(value, err){//save new version store Nodes
+							storage.putItem(key, nodes, function(value, err){//save new version store Nodes
 console.log("- save "+key+" to local storage...", value, err);
 							});
 							
@@ -1086,7 +1261,7 @@ console.log("- save "+key+" to local storage...", value, err);
 								
 					
 				}
-				
+*/				
 				
 				
 				return nodes;
@@ -1095,34 +1270,7 @@ console.log("- save "+key+" to local storage...", value, err);
 		};//end get_content()
 
 
-		var nodes_obj = {
-			//"nodes_size" : 0,
-			"get_node" : function( params ){
-				//return _get_node( params );
-				return _getNode( params );
-			},
-			//"get_xml_nodes" : function( params ){
-				//return _get_xml_nodes( params );
-			//},
-			"get_termin_nodes" : function( params ){
-				//return _get_termin_nodes( params );
-				return _getTerminNodesXML( params );
-				//return _getTerminNodesJquery( params );
-				//return _getTerminNodesJS( params );
-				//return _getTerminNodesStorage(params);
-			}, 
-			"view_node" : function( params ){
-				return _view_node( params );
-			},
-			"viewNodes" : function( opt ){
-				return _viewNodes( opt );
-			},
-			"searchNodes" : function( opt ){
-				return _searchNodes( opt );
-			}
-			
-		};
-//console.log("nodes_obj:", nodes_obj);
+//====================================== NODES methods
 
 
 /*
@@ -1249,7 +1397,7 @@ delete _vars["xml"];
 			
 			
 ////console.log(taxonomy_index);
-			//put_to_storage("taxonomy_index", taxonomy_index, function(){
+			//storage.putItem("taxonomy_index", taxonomy_index, function(){
 //console.log(arguments);				
 			//});
 
@@ -1316,8 +1464,8 @@ console.log( "Promise rejected.", arguments);
 	}
 
 
-			//_getItemFromStorage("taxonomy_index", _callback );
-			//_getItemFromStorage("nodes", _callback );
+			//storage.getItem("taxonomy_index", _callback );
+			//storage.getItem("nodes", _callback );
 			
 console.log(terminNodes);
 //terminNodes = [];
@@ -1339,7 +1487,7 @@ console.log(terminNodes);
 				
 				var $d = $.Deferred();
 
-				_getItemFromStorage("nodes", function(readValue, err){
+				storage.getItem("nodes", function(readValue, err){
 //console.log("--- _deferred_req(), get data...");						
 //console.log(readValue, err);
 					if(readValue && readValue.length > 0){
@@ -2186,20 +2334,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 
 
-
-		var taxonomy_obj = {
-			"get_xml_taxonomy" : function(){
-				return _get_xml_taxonomy();
-			},
-			"view_vocabulary" : function( vocabulary_name, recourse ){
-				var html = _view_vocabulary( vocabulary_name, recourse );
-				return html;
-			},
-			"view_termin" : function( params ) {
-				var html = _view_termin( params );
-				return html;
-			}
-		};
+//====================================== TAXONOMY methods
 
 		//read xml data
 		function read_taxonomy_data(){
@@ -2243,7 +2378,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 */			
 
 /*
-			put_to_storage("taxonomy", taxonomy, function(){
+			storage.putItem("taxonomy", taxonomy, function(){
 //console.log(arguments);				
 			});
 */
@@ -2466,27 +2601,7 @@ console.log("error, vocabulary not found " + vocabulary_name);
 		}//end _view_termin()
 		
 
-
-		var book = {
-			"get_book_category" : function(){
-				_get_book_category();
-			},
-			"get_child_pages" : function( params ) {
-				var plid = params["plid"];
-				var recourse = params["recourse"];
-				var nodes = _get_child_pages( plid, recourse );
-				return nodes;
-			},
-			"view_book_category" : function(){
-				var html = _view_book_category();
-				return html;
-			},
-			"view_child_pages" : function( params ) {
-				var html = _view_child_pages( params );
-				return html;
-			}
-		};
-		
+//====================================== BOOK methods
 		
 		function _get_book_category(){
 			for( var n = 0; n < nodes_obj["x_nodes"].length; n++) {
@@ -2590,6 +2705,9 @@ console.log("child_pages is empty!!!");
 
 			return html;
 		};//end _view_child_pages(p)
+
+		
+		
 
 		
 		function draw_page( params ){
