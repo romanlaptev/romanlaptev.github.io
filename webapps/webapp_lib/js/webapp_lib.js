@@ -571,24 +571,19 @@ _vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 
 			var _key = "node";
 			storage.getItem( _key, function(readValue, err) {//read store Nodes
+console.log(readValue, err);
+
+				if(readValue){
 console.log("- read "+key+" from storage...record: "+readValue.length);
-console.log(err);
-			});
-
-/*
-			localforage.keys( function(err, keys) {//test in array of keys
-console.log(err, keys, err === null);				
-				if( err === null ){
-					var j_keys = keys.join();
-					var pos = j_keys.indexOf( _key);
-					if( pos >= 0){
-
-					} else {
-					}
-	
 				}
+				
+				if( err === "store_key_not_found"){
+console.log(_vars["nodes"] );
+//save store key Nodes!!!!!
+				}
+				
 			});
-*/
+
 			
 /*
 					storage.getItem(key, function(readValue, err){//try read store Nodes
@@ -799,46 +794,74 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 		function _getItemFromStorage( key, callback ){
 
 			var timeStart = new Date();
-			
-			localforage.getItem( key, function(err, readValue) {
-//console.log("Read: " + key, arguments);
-//console.log(err);
-					var timeEnd = new Date();
-					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-					var log = "- get storage element <b>" + key + "</b>";
+
+			localforage.keys( function(err, keys) {//test in array of keys
+//console.log(err, keys, err === null);				
+
+				if( err === null ){
+					var j_keys = keys.join();
 					
-					if( readValue ){
-						var cache_size = readValue.length; 
-						var cache_size_kb = cache_size / 1024 ;
-						var cache_size_mb = cache_size_kb / 1024;
-						log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+					var pos = j_keys.indexOf( key);
+					if( pos >= 0){
+						__getItem( key, callback );
+						
+					} else {
+						
+						if(typeof callback === "function"){
+_vars["logMsg"] = "store key "+key+" not found...";
+//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+							callback(null, "store_key_not_found");
+						}
 					}
-										
-					log += ", runtime: <b>" + runTime + "</b> sec";
-					log += ", error: " + err;
-					
-					//_vars["info"].push(log);
+
+				}
+
+			});
+
+			function __getItem( key, callback ){
+			
+				localforage.getItem( key, function(err, readValue){
+console.log("Read: " + key, arguments);
+console.log(err);
+						var timeEnd = new Date();
+						var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+						var log = "- get storage element <b>" + key + "</b>";
+						
+						if( readValue ){
+							var cache_size = readValue.length; 
+							var cache_size_kb = cache_size / 1024 ;
+							var cache_size_mb = cache_size_kb / 1024;
+							log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+						}
+											
+						log += ", runtime: <b>" + runTime + "</b> sec";
+						log += ", error: " + err;
+						
+						//_vars["info"].push(log);
 _vars["logMsg"] = log;
 func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
+						
+						//if( err !== null){
+							//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
+	//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+	//console.log( _vars["logMsg"] );
+						//}
 					
-					//if( err !== null){
-						//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-					//}
-				
-					_vars["runtime"]["get_storage"] = {
-						"time" : runTime
-					};
+						_vars["runtime"]["get_storage"] = {
+							"time" : runTime
+						};
 
-					if( typeof callback === "function" ){
-						callback( readValue, err );
-					}
+						if( typeof callback === "function" ){
+							callback( readValue, err );
+						}
 
-			});
-				 
-		}//end _getItem()
+				});
+						
+			}//end _getItem()
+			
+		}//end _getItemFromStorage()
 
 		
 //=============================================		
@@ -1012,7 +1035,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			}
 //------------------
 //------------------
-
+/*
 			var timeStart = new Date();
 //runtime: 4.837 sec+, 
 //runtime: 1.394 sec+, 
@@ -1041,6 +1064,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
+*/			
 //------------------
 			
 
