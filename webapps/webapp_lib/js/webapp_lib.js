@@ -122,62 +122,6 @@ console.log("storage object:", storage);
 			}
 			$("#load-progress").hide();
 			
-//-----------------
-//console.log(typeof document.queryCommandSupported);
-try{
-//console.log( document.queryCommandSupported("copy") );
-	if( document.queryCommandSupported("copy") ){
-			var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
-			//func.log(logMsg);
-			_vars["info"].push(logMsg);
-			
-			//load clipboard script
-			var script = document.createElement('script');
-			//script.src = "js/vendor/clipboard.min.js";
-			//script.src = "../../test_code/js/lib/clipboard.js";
-			script.src = config["clipboardPath"];
-			
-			document.getElementsByTagName('head')[0].appendChild(script);
-			
-			script.onload = function() {
-//console.log( "onload " + this.src);
-var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
-//func.log(logMsg);
-_vars["info"].push(logMsg);
-
-//console.log( "ClipboardJS: ", typeof ClipboardJS );
-				if( typeof ClipboardJS === "undefined" ){
-					config["addCopyLink"] = false;
-				}
-				
-			};
-			
-			script.onerror = function(e) {
-				alert( "error load script " + this.src);
-				config["addCopyLink"] = false;
-			}; 
-			
-			
-	} else {
-			var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
-			func.log(logMsg);
-			config["addCopyLink"] = false;
-	}
-} catch(e) {
-//console.log( "- name: " + e.name );
-//console.log( "- message: " + e.message );
-//console.log( "- result: " + e.result );
-				_vars["logMsg"] = "error, check document.queryCommandSupported('copy') failed...";
-				_vars["logMsg"] += e.name+", "+e.message+", result: " + e.result;
-				func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
-				_vars["info"].push("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-				
-				config["addCopyLink"] = false;
-
-}
-//-----------------			
-
 			if ( config["use_localcache"] ) {
 				
 				//load localforage script
@@ -3883,6 +3827,63 @@ console.log(size_obj);
  func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
 				} else {
+					
+//----------------- TEST support COPY command
+//console.log(typeof document.queryCommandSupported);
+					try{
+					//console.log( document.queryCommandSupported("copy") );
+						if( document.queryCommandSupported("copy") ){
+								var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
+								//func.log(logMsg);
+								_vars["info"].push(logMsg);
+								
+								//load clipboard script
+								var script = document.createElement('script');
+								//script.src = "js/vendor/clipboard.min.js";
+								//script.src = "../../test_code/js/lib/clipboard.js";
+								script.src = config["clipboardPath"];
+								
+								document.getElementsByTagName('head')[0].appendChild(script);
+								
+								script.onload = function() {
+					//console.log( "onload " + this.src);
+					var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
+					//func.log(logMsg);
+					_vars["info"].push(logMsg);
+
+					//console.log( "ClipboardJS: ", typeof ClipboardJS );
+									if( typeof ClipboardJS === "undefined" ){
+										config["addCopyLink"] = false;
+									}
+									
+								};
+								
+								script.onerror = function(e) {
+									alert( "error load script " + this.src);
+									config["addCopyLink"] = false;
+								}; 
+								
+								
+						} else {
+								var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
+								func.log(logMsg);
+								config["addCopyLink"] = false;
+						}
+					} catch(e) {
+					//console.log( "- name: " + e.name );
+					//console.log( "- message: " + e.message );
+					//console.log( "- result: " + e.result );
+									_vars["logMsg"] = "error, check document.queryCommandSupported('copy') failed...";
+									_vars["logMsg"] += e.name+", "+e.message+", result: " + e.result;
+									func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+					console.log( _vars["logMsg"] );
+									_vars["info"].push("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
+									
+									config["addCopyLink"] = false;
+
+					}
+//-----------------			
+					
 					//init
 					_vars["timeStart"] = new Date();
 					_init();
