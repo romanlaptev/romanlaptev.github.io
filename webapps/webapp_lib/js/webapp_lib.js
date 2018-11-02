@@ -146,32 +146,7 @@ console.log("storage object:", storage);
 var logMsg = "<p class='alert alert-success'>onload " + this.src +"</p>";
 //func.log(logMsg);
 _vars["info"].push(logMsg);
-					var res = storage.init();
-					if( res ){
-//----------- hide not used progress bar
-//$(_vars["loadProgressBar"]).parent().parent().hide();
-//$("#load-progress").hide();
-//-----------
-						storage.initAppData({
-							"callback": function(){
-//console.log( "storage.initAppData(), end process");
-								if(storage["need_update"]){
-									//.....
-								} else {
-									_loadTemplates(function(){
-				console.log("Load templates end...", arguments );
-									});
-								}
-							}
-						});
-						
-					} else {
-						load_xml({
-							filename : config["xml_file"],
-							callback: after_load
-						});
-					}
-					
+					_postLoadStorageScript();
 				};
 				
 				script.onerror = function(e) {
@@ -182,6 +157,7 @@ _vars["info"].push(logMsg);
 
 				load_xml({
 					filename : config["xml_file"],
+					dataType: "text",
 					callback: after_load
 				});
 /*
@@ -191,6 +167,73 @@ _vars["info"].push(logMsg);
 				});
 */				
 			}
+			
+			
+			function _postLoadStorageScript(){
+				
+					var res = storage.init();
+					if( res ){
+//----------- hide not used progress bar
+//$(_vars["loadProgressBar"]).parent().parent().hide();
+//$("#load-progress").hide();
+//-----------
+						storage.initAppData({
+							"callback": function(){
+console.log( "storage.initAppData(), end process");
+//for TEST!!!
+//storage["need_update"] = false;
+								if(storage["need_update"]){
+//for TEST!!!
+//storage.getXml();
+									load_xml({
+										filename : config["xml_file"],
+										dataType: "xml",
+										callback: _postLoadXml
+									});
+
+								} else {
+									_loadTemplates(function(){
+				console.log("Load templates end...", arguments );
+if( _vars["waitWindow"] ){
+	_vars["waitWindow"].style.display="none";
+}				
+									});
+								}
+							}
+						});
+						
+					} else {
+						load_xml({
+							filename : config["xml_file"],
+							dataType: "text",
+							callback: after_load
+						});
+					}
+			}//end _postLoadStorageScript()
+
+			function _postLoadXml( data ) {
+console.log(data, typeof data);				
+				_vars["xml"] = data;
+/*
+		22)преобразование XML-данных в объектный формат ( parseXML(); ????)
+		23)запись объектов данных в хранилище (при "use_localcache")
+			очистить хранилище перед записью 
+		13)загрузка шаблонов ( _loadTemplates(); )
+		14)переход к разбору URL ( _urlManager(); )
+			
+*/
+/*				
+				
+				_vars["GET"] = func.parseGetParams(); 
+	//console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
+
+				_loadTemplates(function(){
+	//console.log("Load templates end...", arguments );
+					callback_init();
+				});
+*/		
+
+			}//end _postLoadXml()
 			
 		}//end _init()
 		
@@ -204,8 +247,8 @@ _vars["info"].push(logMsg);
 			$.ajax({
 				type: "GET",
 				url: params["filename"],
-				dataType: "text",
-				//dataType: "xml",
+				dataType: params["dataType"],
+				//dataType: "xml",//"text"
 				//data: {},
 				cache: false,
 				xhr: function(){//https://wcoder.github.io/notes/progress-indicator-with-jquery
@@ -521,8 +564,6 @@ console.log( message );
 //console.log(p);
 
 
-			storage.getXml();
-/*			
 			//check storage key-tables
 			localforage.keys( function(err, keys) {//test in array of keys
 //console.log(err, keys, err === null);				
@@ -544,13 +585,12 @@ console.log( _vars["logMsg"] );
 						}
 					}//next
 				}
+				
+				if(typeof p["callback"] === "function"){
+					p["callback"]();
+				}
 
 			});
-			
-			if(typeof p["callback"] === "function"){
-				p["callback"]();
-			}
-*/			
 		}//end _initAppData()
 				
 				
@@ -607,6 +647,7 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 				} else {
 					load_xml({
 						filename : config["xml_file"],
+						dataType: "text",
 						callback: function( xmlStr ){
 							storage.putItem( config["storage_key"], xmlStr, __postFunc);
 						}
