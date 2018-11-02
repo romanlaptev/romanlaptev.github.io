@@ -521,8 +521,8 @@ console.log( message );
 //console.log(p);
 
 
-			//storage.getXml();
-			
+			storage.getXml();
+/*			
 			//check storage key-tables
 			localforage.keys( function(err, keys) {//test in array of keys
 //console.log(err, keys, err === null);				
@@ -550,7 +550,7 @@ console.log( _vars["logMsg"] );
 			if(typeof p["callback"] === "function"){
 				p["callback"]();
 			}
-			
+*/			
 		}//end _initAppData()
 				
 				
