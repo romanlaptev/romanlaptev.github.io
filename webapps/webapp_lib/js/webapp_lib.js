@@ -240,10 +240,18 @@ if( _vars["waitWindow"] ){
 					
 					for(var tableName in storage.tables){
 console.log(tableName, storage.tables[tableName]);
-						//storage.putItem(tableName, storage.tables[tableName]["json"]), function(){
-//console.log(arguments);				
-						//});
-
+/*
+						if( storage.tables[tableName]["records"] &&
+								storage.tables[tableName]["records"].length > 0){
+//store_key_not_found									
+							storage.putItem( 
+								tableName, 
+								storage.tables[tableName]["records"], 
+								function(){
+console.log(arguments);				
+								});
+						}
+*/
 					}//next
 					
 				}
