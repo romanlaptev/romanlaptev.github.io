@@ -1301,10 +1301,81 @@ console.log("- save "+key+" to local storage...", value, err);
 			}
 //console.log(p);
 
+/*
 			for(var tableName in storage.tables){
 //console.log(tableName, storage.tables[tableName]);
-				storage.tables[tableName]["records"]= {"a":1};
+
+				storage.tables[tableName] = {
+					"records": []
+				};
+				var records = storage.tables[tableName]["records"];
+				records.push({"a":1});
+				
 			}//next
+*/
+
+			var tableName = "nodes";
+			table_name = "table_node";
+			storage.tables[tableName] = {
+				"records": __getNodes({
+					"xml": $(p.xml).find( table_name ).find('node')
+				})
+			};
+
+			function __getNodes( opt ) {
+				var p = {
+					"xml" : null
+				};
+				//extend p object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+				var nodes = [];
+				for( var n = 0; n < p.xml.length; n++){
+//console.log( n, p.xml[n] );
+					var node = {};
+					//read node attributes
+					var item_attr = func.get_attr_to_obj(  p.xml[n].attributes );
+					for(var attr in item_attr){
+						node[attr] = item_attr[attr];
+					}//next attr
+/*				
+				
+				
+					var x_node = $( nodes_obj["x_nodes"][n] );
+					node["subfolder"] = x_node.children("subfolder").text().trim();
+					node["author"] = x_node.children("author").text();
+					node["bookname"] = x_node.children("bookname").text();
+					node["body_value"] = x_node.children("body_value").text();
+
+					//read node termins
+					for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+						var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
+						if( test_nid === node["nid"] )
+						{
+							if( typeof node["tid"] === "undefined") {
+								node["tid"] = [];
+							}
+							node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
+						}
+					}//next termin
+					
+	//-----------------				
+					var params = {"nid" :node["nid"] };
+					node["termins"] = get_node_termins( params );
+					node["book_files"] = _getBookFilesXML( params );
+					node["book_url"] = _getBookUrlXML( params );
+					node["book_links"] = _getBookLinksXML( params );
+	//-----------------				
+					
+*/
+					nodes.push( node );
+				}//next node
+				
+				
+				return nodes;
+			}//end __getNodes()
 
 		};//end _parseXML()
 
