@@ -181,7 +181,7 @@ _vars["info"].push(logMsg);
 							"callback": function(){
 console.log( "storage.initAppData(), end process");
 //for TEST!!!
-//storage["need_update"] = false;
+storage["need_update"] = false;
 								if(storage["need_update"]){
 //for TEST!!!
 //storage.getXml();
@@ -197,6 +197,9 @@ console.log( "storage.initAppData(), end process");
 if( _vars["waitWindow"] ){
 	_vars["waitWindow"].style.display="none";
 }				
+//for TEST!!!
+storage.getXml();
+
 									});
 								}
 							}
