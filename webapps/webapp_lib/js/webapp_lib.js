@@ -181,10 +181,8 @@ _vars["info"].push(logMsg);
 							"callback": function(){
 console.log( "storage.initAppData(), end process");
 //for TEST!!!
-storage["need_update"] = false;
+//storage["need_update"] = false;
 								if(storage["need_update"]){
-//for TEST!!!
-//storage.getXml();
 									load_xml({
 										filename : config["xml_file"],
 										dataType: "xml",
@@ -198,7 +196,7 @@ if( _vars["waitWindow"] ){
 	_vars["waitWindow"].style.display="none";
 }				
 //for TEST!!!
-storage.getXml();
+//storage.getXml();
 
 									});
 								}
@@ -215,8 +213,7 @@ storage.getXml();
 			}//end _postLoadStorageScript()
 
 			function _postLoadXml( data ) {
-console.log(data, typeof data);				
-				_vars["xml"] = data;
+//console.log(data, typeof data);				
 /*
 		22)преобразование XML-данных в объектный формат ( parseXML(); ????)
 		23)запись объектов данных в хранилище (при "use_localcache")
@@ -235,6 +232,21 @@ console.log(data, typeof data);
 					callback_init();
 				});
 */		
+				if( data ){
+					//_vars["xml"] = data;
+					_parseXML({
+						"xml":data
+					});
+					
+					for(var tableName in storage.tables){
+console.log(tableName, storage.tables[tableName]);
+						//storage.putItem(tableName, storage.tables[tableName]["json"]), function(){
+//console.log(arguments);				
+						//});
+
+					}//next
+					
+				}
 
 			}//end _postLoadXml()
 			
@@ -1276,6 +1288,25 @@ console.log("- save "+key+" to local storage...", value, err);
 			}//end _getNodes()
 			
 		};//end get_content()
+
+
+		function _parseXML( opt ){
+//console.log("function _parseXML", opt);
+			var p = {
+				"xml" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			for(var tableName in storage.tables){
+//console.log(tableName, storage.tables[tableName]);
+				storage.tables[tableName]["records"]= {"a":1};
+			}//next
+
+		};//end _parseXML()
 
 
 //====================================== NODES methods
