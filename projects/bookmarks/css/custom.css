@@ -139,18 +139,19 @@ font-family: Georgia;
 .folder2 {
 	float: left;
 	margin: 10px;
-	background: #2C3F66;
+	background: /*#2C3F66;*/#021859;
 	padding: 10px 0;
-	margin: 4px;
+	margin: 2px;
 	border-radius: 10px;
 	width: 150px;
 	min-height: 100px;
 	word-break: normal;
 	/*border: 2px outset #000000;*/
+/*
     -webkit-box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
     -moz-box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
     box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc;
-
+*/
 }
 .folder2 a {
 	width: 150px;
