@@ -238,20 +238,57 @@ if( _vars["waitWindow"] ){
 						"xml":data
 					});
 					
+/*
 					for(var tableName in storage.tables){
 console.log(tableName, storage.tables[tableName]);
-/*
+
 						if( storage.tables[tableName]["records"] &&
 								storage.tables[tableName]["records"].length > 0){
-//store_key_not_found									
-							storage.putItem( 
-								tableName, 
-								storage.tables[tableName]["records"], 
-								function(){
-console.log(arguments);				
-								});
+
+							localforage.removeItem(tableName, function(err) {
+console.log("Remove " + tableName);
+console.dir(err);
+								if(!err){
+									//storage.putItem( 
+										//tableName, 
+										//storage.tables[tableName]["records"], 
+										//function(){
+											//console.log(arguments);				
+										//});
+								}
+								
+							 });
+
 						}
-*/
+
+					}//next
+*/	
+					for(var tableName in storage.tables){
+console.log(tableName, storage.tables[tableName]);
+						if( storage.tables[tableName]["records"] &&
+								storage.tables[tableName]["records"].length > 0){
+									
+									//closures
+									(function(name){
+										//setTimeout(function(){ 
+											//console.log("!!!Remove " + name); 
+										//}, 1000);
+							localforage.removeItem(name, function(err) {
+console.log("Remove " + name);
+console.dir(err);
+								if(!err){
+									storage.putItem( 
+										name, 
+										storage.tables[name]["records"], 
+										function(){
+											console.log(arguments);				
+										});
+								}
+								
+							 });
+										
+									})(tableName);
+						}
 					}//next
 					
 				}
