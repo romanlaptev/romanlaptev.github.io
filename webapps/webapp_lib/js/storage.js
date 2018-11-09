@@ -1,4 +1,94 @@
 //=================================== STORAGE methods
+		var storage = {
+			"tables": {
+				"nodes": {//<table_node>
+					status: "",
+					records: [],
+					getRecords: __getRecords
+				},
+				
+				"book_filename": {//<table_book_filename>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				},
+				
+				"book_url": {//<table_book_url>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				}, 
+				
+				"book_links": {//<table_book_links>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				}, 
+				
+				"taxonomy_index": {//<taxonomy_index>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				},
+				
+				"taxonomy_term_data": {//<taxonomy_term_data>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				},
+				
+				"taxonomy_term_hierarchy": {//<taxonomy_term_hierarchy>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				},
+				
+				"taxonomy_vocabulary": {//<taxonomy_vocabulary>
+					status: "",
+					records: [],
+					getRecords: function(){
+						return [{"a":1}];
+					}
+				}
+			},
+			
+			"need_update": false,
+			
+			"init": function(){
+				return _init_cache();
+			},
+			
+			"getXml": function(){
+				_get_xml_from_storage();
+			},
+
+			"putItem": function(key, value, callback){
+				return _put_to_storage( key, value, callback );
+			},
+			
+			"getItem": function(key, callback){
+				return _getItemFromStorage( key, callback );
+			},
+			
+			"initAppData": function(opt){
+				return _initAppData( opt );
+			}
+			
+		};//end storage
+//console.log("storage object:", storage);
+
 		function _init_cache() {
 
 			var test = test_db();
@@ -7,9 +97,9 @@
 					!test["WebSQL"] &&
 						!test["indexedDB"]){
 
-				_vars["logMsg"] = "error, not support web-storages...";
-		 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+				lib.vars["logMsg"] = "error, not support web-storages...";
+		 func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 
 				config["use_localcache"] = false;
 				return false;
@@ -94,7 +184,7 @@ console.dir(err);
 					message += "Your browser does not have support for indexedDB.<br>\n";
 				}
 
-				_vars["info"].push(message);
+				lib.vars["info"].push(message);
 console.log( message );
 				return test;
 			};//end _test()
@@ -127,10 +217,10 @@ console.log( message );
 //console.log(key, pos);						
 						if( pos === -1){
 							
-_vars["logMsg"] = "store key "+key+" not found...";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-							storage.tables[key] = "store_key_not_found";
+lib.vars["logMsg"] = "store key "+key+" not found...";
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
+							storage.tables[key]["status"] = "store_key_not_found";
 							storage["need_update"] = true;
 						}
 					}//next
@@ -175,19 +265,19 @@ console.log( _vars["logMsg"] );
 						log += ", runtime: <b>" + runTime + "</b> sec";
 						log += ", error: " + err;
 						
-_vars["logMsg"] = log;
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-						_vars["info"].push("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+lib.vars["logMsg"] = log;
+//func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
+						lib.vars["info"].push("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 						
 					
-						_vars["runtime"]["get_storage"] = {
+						lib.vars["runtime"]["get_storage"] = {
 							"time" : runTime
 						};
 						//params.callback( readValue, true, log );	
 
 						if( err === null){
-							after_load( readValue);
+							lib.postLoad( readValue);
 						} else {
 console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 						}
@@ -217,11 +307,11 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 //console.log( arguments );				
 
 				if( err === null ){
-					after_load( value );
+					lib.postLoad( value );
 				} else {
-					_vars["logMsg"] = "error, failed save element to the storage", err;
-					func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+					lib.vars["logMsg"] = "error, failed save element to the storage", err;
+					func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 //for(var key in err){
 //console.log( key +": "+ err[key] );				
 //}
@@ -237,14 +327,14 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 						
 						if( err["code"] === 1014){
 							localforage.clear( function(err){
-					_vars["logMsg"] = "Clear storage...";
-					func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-					console.log( _vars["logMsg"], err );
+					lib.vars["logMsg"] = "Clear storage...";
+					func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
+					console.log( lib.vars["logMsg"], err );
 
 								//localforage.removeItem( config["storage_key"], function(err) {
-					//_vars["logMsg"] = "Remove " +config["storage_key"];
-					//func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-					//console.log( _vars["logMsg"], err );
+					//lib.vars["logMsg"] = "Remove " +config["storage_key"];
+					//func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
+					//console.log( lib.vars["logMsg"], err );
 
 								 //});
 
@@ -256,22 +346,51 @@ console.log("error, localforage.getItem("+config["storage_key"]+")", err);
 					if( driverStr === "asyncStorage"){
 						if( err["name"] === "QuotaExceededError"){
 							localforage.clear( function(err){
-					_vars["logMsg"] = "Clear storage...";
-					func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-					console.log( _vars["logMsg"], err );
+					lib.vars["logMsg"] = "Clear storage...";
+					func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
+					console.log( lib.vars["logMsg"], err );
 							});
 						}
 					}
 
-_vars["logMsg"] = "Use memory...";
-func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
-					after_load( value );
+lib.vars["logMsg"] = "Use memory...";
+func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
+					lib.postLoad( value );
 
 				}
 				
 			}//end __postFunc()
 			
 		}//end _get_xml_from_storage()
+
+
+		function __getRecords( opt ) {
+			var p = {
+				"xml" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			var nodes = [];
+			for( var n = 0; n < p.xml.length; n++){
+//console.log( n, p.xml[n] );
+				var node = {};
+				//read node attributes
+				var item_attr = func.get_attr_to_obj(  p.xml[n].attributes );
+				for(var attr in item_attr){
+					node[attr] = item_attr[attr];
+				}//next attr
+
+				nodes.push( node );
+			}//next node
+			
+			
+			return nodes;
+		}//end __getRecords()
+
 
 		function _put_to_storage( key, value, callback ) {
 
@@ -294,17 +413,17 @@ func.log("<div class='alert alert-warning'>" + _vars["logMsg"] + "</div>");
 				if( err !== null){
 					log = "- error, no save " + key + ", " + err;
 					//status = false;
-					_vars["logMsg"] = "error, failed SAVE element, localforage.setItem("+ key +")", err;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+					lib.vars["logMsg"] = "error, failed SAVE element, localforage.setItem("+ key +")", err;
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 				}
 				
-				//_vars["info"].push(log);
-				_vars["logMsg"] = log;
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+				//lib.vars["info"].push(log);
+				lib.vars["logMsg"] = log;
+func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 
-				_vars["runtime"]["put_storage"] = {
+				lib.vars["runtime"]["put_storage"] = {
 					"time" : runTime
 				};
 
@@ -334,9 +453,9 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 					} else {
 						
 						if(typeof callback === "function"){
-_vars["logMsg"] = "store key "+key+" not found...";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "store key "+key+" not found...";
+//func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 							callback(null, "store_key_not_found");
 						}
 					}
@@ -364,18 +483,18 @@ console.log( _vars["logMsg"] );
 						log += ", runtime: <b>" + runTime + "</b> sec";
 						log += ", error: " + err;
 						
-						//_vars["info"].push(log);
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+						//lib.vars["info"].push(log);
+lib.vars["logMsg"] = log;
+func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 						
 						//if( err !== null){
-							//_vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
-	//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-	//console.log( _vars["logMsg"] );
+							//lib.vars["logMsg"] = "error, faled READ element, localforage.getItem("+ key +")", err;
+	//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+	//console.log( lib.vars["logMsg"] );
 						//}
 					
-						_vars["runtime"]["get_storage"] = {
+						lib.vars["runtime"]["get_storage"] = {
 							"storageKey" : key,
 							"time" : runTime
 						};
@@ -389,3 +508,4 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 			}//end _getItem()
 			
 		}//end _getItemFromStorage()
+

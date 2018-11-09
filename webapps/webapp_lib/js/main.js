@@ -1,4 +1,4 @@
-//var lib;
+var lib;
 
 //if (navigator.userAgent.indexOf ('Windows')!= -1) {
 	//config["content_location"] = "file:///F:/clouds/0_data";
@@ -42,7 +42,7 @@ console.log("init_webapp()");
 //console.log("typeof window.jQuery: " + typeof window.jQuery);
 	if( typeof window.jQuery === "function"){
 		//lib = Lib(config);
-		var lib = Lib();
+		lib = Lib();
 console.log("lib:", lib);
 		lib.runApp(config);
 /*		
