@@ -82,8 +82,8 @@
 				return _getItemFromStorage( key, callback );
 			},
 			
-			"initAppData": function(opt){
-				return _initAppData( opt );
+			"checkAppData": function(opt){
+				return _checkAppData( opt );
 			}
 			
 		};//end storage
@@ -192,8 +192,8 @@ console.log( message );
 		};//end _init_cache()
 
 
-		function _initAppData( opt ){
-//console.log("function _initAppData()", opt);
+		function _checkAppData( opt ){
+//console.log("function _checkAppData()", opt);
 			var p = {
 				"callback" : null
 			};
@@ -231,7 +231,7 @@ console.log( lib.vars["logMsg"] );
 				}
 
 			});
-		}//end _initAppData()
+		}//end _checkAppData()
 				
 				
 		function _get_xml_from_storage() {

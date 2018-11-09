@@ -144,16 +144,26 @@ _vars["info"].push(logMsg);
 //$(_vars["loadProgressBar"]).parent().parent().hide();
 //$("#load-progress").hide();
 //-----------
-						storage.initAppData({
+						storage.checkAppData({
 							"callback": function(){
-console.log( "storage.initAppData(), end process");
+console.log( "storage.checkAppData(), end process");
 //for TEST!!!
 //storage["need_update"] = false;
 								if(storage["need_update"]){
 									load_xml({
 										filename : config["xml_file"],
 										dataType: "xml",
-										callback: _processXml
+										callback: function(data){
+console.log(typeof data, data);							
+											if(data){
+												_parseXML({
+													"xml":data
+												});
+												//storage.saveAppData();
+												//_loadTemplates(function(){
+												//_urlManager();
+											}
+										}
 									});
 
 								} else {
@@ -185,38 +195,21 @@ storage.getXml();
 						load_xml({
 							filename : config["xml_file"],
 							dataType: "text",
-							callback: after_load
+							callback: function(data){
+console.log(typeof data, data);							
+								//_parseXML({
+									//"xml":data
+								//});
+								//_loadTemplates(function(){
+								//_urlManager();
+								after_load();
+							}
 						});
 					}
 			}//end _postLoadStorageScript()
 
-			function _processXml( data ) {
-//console.log(data, typeof data);				
-/*
-		22)преобразование XML-данных в объектный формат ( parseXML(); ????)
-		23)запись объектов данных в хранилище (при "use_localcache")
-			очистить хранилище перед записью 
-		13)загрузка шаблонов ( _loadTemplates(); )
-		14)переход к разбору URL ( _urlManager(); )
-			
-*/
-/*				
-				
-				_vars["GET"] = func.parseGetParams(); 
-	//console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
-
-				_loadTemplates(function(){
-	//console.log("Load templates end...", arguments );
-					callback_init();
-				});
-*/		
-				if( data ){
-					//_vars["xml"] = data;
-					_parseXML({
-						"xml":data
-					});
-					
-
+			function _saveAppData() {
+			//storage.saveAppData();
 					for(var tableName in storage.tables){
 console.log(tableName, storage.tables[tableName]);
 						if( storage.tables[tableName]["records"].length > 0){
@@ -246,7 +239,7 @@ console.dir(err);
 					
 				}
 
-			}//end _processXml()
+			}//end _saveAppData()
 			
 		}//end _init()
 		
