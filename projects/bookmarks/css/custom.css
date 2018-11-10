@@ -172,7 +172,7 @@ font-family: Georgia;
 .folder2:hover
 {
 	/*background-color: #5bc0de;*//*info*/
-	background-color: #87cefa; /*lightskyblue;*/
+	background-color: /*#87cefa;*/ /*lightskyblue;*/#b6cfed;
 	/*background-color: #ffa500;*/ /*orange;*/
 	/*background-color: #009b9b;*/ 
 	/*background-color: #cecefa;*/
@@ -194,7 +194,7 @@ font-family: Georgia;
 	margin: 2px;
 	padding: 10px;
 	/*background-color: #e6e6fa;*//*lavender*/
-	background-color: /*#e6e6ff;*/#b6cfed;
+	background-color: /*#e6e6ff;*/#87cefa;
 	/* width: 150px; */
 	/* min-height: 100px; */
 	word-break: normal; /*break-all*/
@@ -217,7 +217,7 @@ font-family: Georgia;
 {
 /*	background-color:#a68caa;*/
 	/*background-color:#cecefa;*/
-	background-color:#87cefa; /*lightskyblue;*/
+	background-color:/*#87cefa;*/ /*lightskyblue;*/ #b6cfed;
 	/*background-color: #5bc0de;*//*info*/
 	/*background: #ffa500;*/ /*orange;*/
 	/*background: #006b6b;*/
