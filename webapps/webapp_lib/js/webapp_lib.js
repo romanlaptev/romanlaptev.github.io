@@ -87,8 +87,9 @@ console.log("nodes_obj:", nodes_obj);
 				return html;
 			}
 		};
-console.log("taxonomy_obj:", nodes_obj);
+console.log("taxonomy_obj:", taxonomy_obj);
 console.log("storage object:", storage);
+console.log("draw object:", draw);
 
 		
 		function _init(){
@@ -158,12 +159,12 @@ _vars["info"].push(logMsg);
 							if(!storage["need_update"]){
 //for TEST!!!
 //storage.getXml();
-								storage.getAppData({
-									"callback": function(){
-	console.log( "storage.getAppData(), end process");
+								//storage.getAppData({
+									//"callback": function(){
+	//console.log( "storage.getAppData(), end process");
 										_loadApp();
-									}//end storage.getAppData callback
-								});
+									//}
+								//});
 								
 							}
 								
@@ -194,7 +195,7 @@ _vars["info"].push(logMsg);
 					filename : config["xml_file"],
 					dataType: "xml",
 					callback: function(data){
-				//console.log(typeof data, data);							
+//console.log(typeof data, data);							
 				
 						if(!data){
 				var logMsg = "<p class='alert alert-danger'>Book catalog not loaded.</p>";
@@ -223,7 +224,7 @@ console.log( "storage.saveAppData(), end process");
 				_loadTemplates(function(){
 console.log("Load templates end...");
 					_hideWaitWindow();
-					//_buidPage(opt);
+					draw.buildPage({});
 					//define_event();
 					//_vars["GET"] = func.parseGetParams(); 
 					//_urlManager();
@@ -2959,7 +2960,9 @@ console.log(html);
 			}//end __formNodeHtml()
 			
 		}//end _wrapContent
-*/		
+*/
+
+
 //====================================
 
 

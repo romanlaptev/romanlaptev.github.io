@@ -87,10 +87,10 @@
 			},
 			"saveAppData": function(opt){
 				return _saveAppData( opt );
-			},
-			"getAppData": function(opt){
-				return _getAppData( opt );
-			}
+			}//,
+			//"getAppData": function(opt){
+				//return _getAppData( opt );
+			//}
 			
 		};//end storage
 //console.log("storage object:", storage);
@@ -285,7 +285,7 @@ console.dir(err);
 			}
 		}//end _saveAppData()
 
-
+/*
 		function _getAppData( opt ){
 //console.log("function _getAppData()", opt);
 			var p = {
@@ -303,6 +303,7 @@ console.dir(err);
 				p["callback"]();
 			}
 		}//end _getAppData()
+*/
 				
 				
 		function _get_xml_from_storage() {
