@@ -138,55 +138,25 @@ _vars["info"].push(logMsg);
 			
 			function _postLoadStorageScript(){
 				
-					var res = storage.init();
+				var res = storage.init();
 //for TEST!!!
 //res = false;
-					if( res ){//cache is available
+				if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
 //$("#load-progress").hide();
 //-----------
-						storage.checkAppData({
-							"callback": function(){
-console.log( "storage.checkAppData(), end process");
+					storage.checkAppData({
+						"callback": function(){
+//console.log( "storage.checkAppData(), end process");
 //for TEST!!!
 //storage["need_update"] = false;
-								if(storage["need_update"]){
-									load_xml({
-										filename : config["xml_file"],
-										dataType: "xml",
-										callback: function(data){
-//console.log(typeof data, data);							
-											if(!data){
-var logMsg = "<p class='alert alert-danger'>Book catalog not loaded.</p>";
-func.log(logMsg);
-												_hideWaitWindow()
-												return false;
-											}
-
-											_parseXML({
-												"xml":data
-											});
-											
-											//storage.saveAppData();
-											
-											_loadTemplates(function(){
-console.log("Load templates end...", arguments );
-												_hideWaitWindow()
-												//_buidPage();
-												//define_event();
-												//_vars["GET"] = func.parseGetParams(); 
-												//_urlManager();
-												
-											});
-												
-										}
-									});
-
-								} 
+							if(storage["need_update"]){
+								_updateStorage();
+							} 
 								
-								if(!storage["need_update"]){
-									_loadTemplates(function(){
+							if(!storage["need_update"]){
+								_loadTemplates(function(){
 console.log("Load templates end...", arguments );
 _hideWaitWindow();
 //for TEST!!!
@@ -202,68 +172,78 @@ storage.getXml();
 			}
 */
 
-									});
-								}
-								
-							}//end callback
-						});//end storage.checkAppData()
-					}
-					
-					if( !res ){//cache is unavailable
-						load_xml({
-							filename : config["xml_file"],
-							dataType: "text",
-							callback: function(data){
-//console.log(typeof data, data);							
-								//_parseXML({
-									//"xml":data
-								//});
-								//_loadTemplates(function(){
-								//_urlManager();
-								after_load( data );
+								});
 							}
-						});
-					}
+								
+						}//end callback
+					});//end storage.checkAppData()
+				}
+					
+				if( !res ){//cache is unavailable
+					load_xml({
+						filename : config["xml_file"],
+						dataType: "text",
+						callback: function(data){
+//console.log(typeof data, data);							
+							//_parseXML({
+								//"xml":data
+							//});
+							//_loadTemplates(function(){
+							//_urlManager();
+							after_load( data );
+						}
+					});
+				}
 					
 			}//end _postLoadStorageScript()
 			
+			function _updateStorage(){
+				load_xml({
+					filename : config["xml_file"],
+					dataType: "xml",
+					callback: function(data){
+				//console.log(typeof data, data);							
+				
+						if(!data){
+				var logMsg = "<p class='alert alert-danger'>Book catalog not loaded.</p>";
+func.log(logMsg);
+							_hideWaitWindow()
+							return false;
+						}
+
+						_parseXML({
+							"xml":data
+						});
+							
+						storage.saveAppData({
+							"callback": function(){
+console.log( "storage.saveAppData(), end process");
+
+								_loadTemplates(function(){
+	console.log("Load templates end...");
+									_hideWaitWindow()
+									//_buidPage(opt);
+									//define_event();
+									//_vars["GET"] = func.parseGetParams(); 
+									//_urlManager();
+										
+								});
+
+							}//end storage.saveAppData callback
+						});
+							
+					}//end load_xml() callback
+				});
+			}//end __updateStorage()	
+					
+										
 			function _hideWaitWindow(){
 				if( _vars["waitWindow"] ){
 					_vars["waitWindow"].style.display="none";
 				}				
 			}//end _hideWaitWindow();
 
-			function _saveAppData() {
-			//storage.saveAppData();
-					for(var tableName in storage.tables){
-console.log(tableName, storage.tables[tableName]);
-						if( storage.tables[tableName]["records"].length > 0){
-									
-									//closures
-									(function(name){
-										//setTimeout(function(){ 
-											//console.log("!!!Remove " + name); 
-										//}, 1000);
-										localforage.removeItem(name, function(err) {
-console.log("Remove " + name);
-console.dir(err);
-											if(!err){
-												storage.putItem( 
-													name, 
-													storage.tables[name]["records"], 
-													function(){
-														console.log(arguments);				
-													});
-											}
-											
-										 });
-										
-									})(tableName);//end closure
-						}
-					}//next
-					
-			}//end _saveAppData()
-			
+
 		}//end _init()
 		
 		

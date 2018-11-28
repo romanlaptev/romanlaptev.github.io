@@ -84,6 +84,9 @@
 			
 			"checkAppData": function(opt){
 				return _checkAppData( opt );
+			},
+			"saveAppData": function(opt){
+				return _saveAppData( opt );
 			}
 			
 		};//end storage
@@ -233,6 +236,53 @@ console.log( lib.vars["logMsg"] );
 			});
 		}//end _checkAppData()
 				
+
+		function _saveAppData( opt ){
+//console.log("function _saveAppData()", opt);
+			var p = {
+				"callback" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			//.............
+/*
+					for(var tableName in storage.tables){
+console.log(tableName, storage.tables[tableName]);
+						if( storage.tables[tableName]["records"].length > 0){
+									
+									//closures
+									(function(name){
+										//setTimeout(function(){ 
+											//console.log("!!!Remove " + name); 
+										//}, 1000);
+										localforage.removeItem(name, function(err) {
+console.log("Remove " + name);
+console.dir(err);
+											if(!err){
+												storage.putItem( 
+													name, 
+													storage.tables[name]["records"], 
+													function(){
+														console.log(arguments);				
+													});
+											}
+											
+										 });
+										
+									})(tableName);//end closure
+						}
+					}//next
+*/			
+				
+			if(typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+		}//end _saveAppData()
+
 				
 		function _get_xml_from_storage() {
 //console.log( "function _get_xml_from_storage()", localforage );
