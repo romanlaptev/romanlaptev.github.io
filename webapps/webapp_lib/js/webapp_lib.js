@@ -140,7 +140,7 @@ _vars["info"].push(logMsg);
 				
 					var res = storage.init();
 //for TEST!!!
-res = false;
+//res = false;
 					if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
@@ -156,43 +156,57 @@ console.log( "storage.checkAppData(), end process");
 										filename : config["xml_file"],
 										dataType: "xml",
 										callback: function(data){
-console.log(typeof data, data);							
-											if(data){
-												_parseXML({
-													"xml":data
-												});
-												//storage.saveAppData();
-												//_loadTemplates(function(){
-												//_urlManager();
+//console.log(typeof data, data);							
+											if(!data){
+var logMsg = "<p class='alert alert-danger'>Book catalog not loaded.</p>";
+func.log(logMsg);
+												_hideWaitWindow()
+												return false;
 											}
+
+											_parseXML({
+												"xml":data
+											});
+											
+											//storage.saveAppData();
+											
+											_loadTemplates(function(){
+console.log("Load templates end...", arguments );
+												_hideWaitWindow()
+												//_buidPage();
+												//define_event();
+												//_vars["GET"] = func.parseGetParams(); 
+												//_urlManager();
+												
+											});
+												
 										}
 									});
 
-								} else {
+								} 
+								
+								if(!storage["need_update"]){
 									_loadTemplates(function(){
-				console.log("Load templates end...", arguments );
-if( _vars["waitWindow"] ){
-	_vars["waitWindow"].style.display="none";
-}				
+console.log("Load templates end...", arguments );
+_hideWaitWindow();
 //for TEST!!!
 storage.getXml();
 /*
 			var res = get_content();
 			if(res){
 //console.log("TEST2");				
-				_urlManager();			
-				draw_page();
-				define_event();
+				//_buidPage();
+				//define_event();
+				//_vars["GET"] = func.parseGetParams(); 
+				//_urlManager();
 			}
 */
 
-
-
 									});
 								}
-							}
-						});
-						
+								
+							}//end callback
+						});//end storage.checkAppData()
 					}
 					
 					if( !res ){//cache is unavailable
@@ -212,6 +226,12 @@ storage.getXml();
 					}
 					
 			}//end _postLoadStorageScript()
+			
+			function _hideWaitWindow(){
+				if( _vars["waitWindow"] ){
+					_vars["waitWindow"].style.display="none";
+				}				
+			}//end _hideWaitWindow();
 
 			function _saveAppData() {
 			//storage.saveAppData();
