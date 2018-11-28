@@ -141,7 +141,7 @@ _vars["info"].push(logMsg);
 				
 				var res = storage.init();
 //for TEST!!!
-//res = false;
+res = false;
 				if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
@@ -2428,7 +2428,7 @@ console.log("child_pages is empty!!!");
 			$("#region-content #block-nodes").empty( html );
 
 //--------------------- BLOCK #sitename-block
-			_buildBlock({
+			draw.buildBlock({
 				"locationID" : "sitename-block",
 				"templateID" : "tpl-block--sitename"//,
 				//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
@@ -2441,7 +2441,7 @@ console.log("child_pages is empty!!!");
 					//$("#block-book-category").html( html );
 					
 //--------------------- BLOCK #block-book-category
-					_buildBlock({
+					draw.buildBlock({
 						"locationID" : "block-book-category",
 						//"title" : "test block",
 						"templateID" : "tpl-block--book-category",
@@ -2471,7 +2471,7 @@ console.log("error, not found _vars[book_category]");
 			
 			
 //--------------------- BLOCK
-			_buildBlock({
+			draw.buildBlock({
 				"locationID" : "block-library",
 				"templateID" : "tpl-block--tags",
 				"content" : _view_vocabulary( "library", recourse = false )
@@ -2482,7 +2482,7 @@ console.log("error, not found _vars[book_category]");
 //---------------------
 			
 //--------------------- BLOCK
-			_buildBlock({
+			draw.buildBlock({
 				"locationID" : "block-tags",
 				//"title" : "Tags",
 				"templateID" : "tpl-block--tags",
@@ -2519,7 +2519,7 @@ console.log("error, not found _vars[book_category]");
 			
 			//$("#block-taxonomy-alpha").html( html );
 			
-			_buildBlock({
+			draw.buildBlock({
 				"locationID" : "block-taxonomy-alpha",
 				"templateID" : "tpl-block--tags",
 				"content" : html
@@ -2557,7 +2557,7 @@ if( _vars["GET"]["vid"] === "1" ){
 						//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 					});
 					
-					_buildBlock({
+					draw.buildBlock({
 						"locationID" : "block-taxonomy",
 						"templateID" : "tpl-block--tags",
 						"content" : html
@@ -2566,7 +2566,7 @@ if( _vars["GET"]["vid"] === "1" ){
 				}
 				
 				//if ( _vars["termin_nodes"].length > 0){
-					_buildBlock({
+					draw.buildBlock({
 						"locationID" : "block-node",
 						"templateID" : "tpl-block--termin-nodes",
 						"content" : nodes_obj.viewNodes({
@@ -2592,7 +2592,7 @@ if( _vars["GET"]["vid"] === "1" ){
 
 
 			if ( _vars["GET"]["q"] === "search" ){
-				_buildBlock({
+				draw.buildBlock({
 					"locationID" : "block-node",
 					"templateID" : "tpl-block--search-nodes",
 					"content" : nodes_obj.viewNodes({
@@ -2646,7 +2646,7 @@ if( _vars["GET"]["vid"] === "1" ){
 			function render_node(){
 
 				//$("#region-content #block-nodes").html( html );
-				_buildBlock({
+				draw.buildBlock({
 					"locationID" : "block-node",
 					"templateID" : "tpl-block--node",
 					"content" : function(){
@@ -2691,276 +2691,6 @@ console.log( _vars["logMsg"] );
 		}//end function draw_page()
 
 //====================================
-
-		var _buildBlock = function(opt){
-//console.log("_buildBlock()", arguments);
-			var timeStart = new Date();
-
-			var p = {
-				"title": "",
-				"locationID" : "",
-				"content" : "",
-				//"contentType" : "",
-				"templateID" : "tpl-block",
-				
-				//"contentTpl" : "tpl-list",//"tpl-menu"
-				//"contentListTpl" : false,
-				
-				"callback" : function(){
-					var timeEnd = new Date();
-					var ms = timeEnd.getTime() - timeStart.getTime();
-					var msg = "Generate block '#" + this.locationID +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-//console.log(msg);
-
-					//_vars["runtime"].push({
-						//"source" : msg,
-						//"ms" : ms,
-						//"sec" : ms / 1000
-					//});
-					
-					if( typeof p["postFunc"] === "function"){
-						p["postFunc"]();//return from _buildBlock()
-					}
-					
-				},//end callback
-				"postFunc" : null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-		
-			// if( p["content"].length === 0 ){
-	// _log("<p>app.buildBlock,   error, content is <b class='text-danger'>empty</b></p>");
-				// return false;
-			// }
-
-			//render dynamic content
-			if( typeof p["content"] === "function"){
-				var html = p["content"]();
-				if( html && html.length > 0){
-					_insertBlock( p );
-				}
-/*				
-				p["content"]({
-					"callback" : function( res ){
-console.log(res);								
-
-						var html = _wrapContent({
-							"data" : res,
-							//"type" : "menu",//"list"
-							//"contentType" : p["contentType"],
-							"templateID" : p["contentTpl"],
-							"templateListID" : p["contentListTpl"]
-						});
-						
-//console.log(html);								
-						//var html = "<h1>Test!!!</h1>";
-						if( html && html.length > 0){
-							p["content"] = html;
-							_insertBlock( p );
-						}
-					}
-				});
-*/				
-			} else {//render static content
-				_insertBlock( p );
-			}
-
-		};//end _buildBlock()
-		
-		var _insertBlock = function( opt ){
-			
-			var p = {
-				"templateID": false,
-				"locationID": "",
-				"title" : "",
-				"content" : false,
-				"callback":null
-			};
-			//extend options object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log("_insertBlock(): ", p);
-
-			var templateID = p["templateID"];
-			if( !_vars["templates"][templateID] ){
-_vars["logMsg"] = "_insertBlock(),  error, not find template, id: <b>" + templateID + "</b>";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-
-			if( p["locationID"] === "" ){
-_vars["logMsg"] = "_insertBlock(),  error, not find template location on page...";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-
-			// if( !p["content"] ){
-	// _log("<p>draw.insertBlock(),   error, content: <b class='text-danger'>" + p["content"] + "</b></p>");
-				// return false;
-			// }
-			
-			var html = _vars["templates"][templateID];
-			
-			html = html.replace("{{block_title}}", p["title"]);
-			html = html.replace("{{content}}", p["content"]);
-			
-			var locationID = func.getById( p["locationID"] );
-			if( locationID){
-				locationID.innerHTML = html;
-			}		
-			
-			if( typeof p["callback"] === "function"){
-				p["callback"]();
-			}
-
-		};//end _insertBlock()
-/*		
-		function _wrapContent( opt ){
-			var p = {
-				"data": null,
-				//"type" : "",
-				//"wrapType" : "menu",
-				"templateID" : false,
-				"templateListID" : false
-			};
-			//extend options object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-console.log(p);
-
-			if( !p["data"] || p["data"].length === 0){
-_vars["logMsg"] = "_wrapContent(),  error, empty content data...";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-			if( !p["templateID"] ){
-_vars["logMsg"] = "_wrapContent(),  error, empty templateID...";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-			
-			if( !_vars["templates"][p.templateID] ){
-_vars["logMsg"] = "_wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b>";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-
-			var html = "000";
-			
-console.log( p["data"].length );
-			p["wrapType"] = "item";
-			if( p["data"].length > 0 ){
-				p["wrapType"] = "list";
-			}
-			
-			switch( p["wrapType"] ){
-				case "item" :
-					//html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
-				break;
-				case "list" :
-					if( !p["templateListID"] ){
-_vars["logMsg"] = "_wrapContent(),  error, not find <b>templateListID</b>";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-						return false;
-					}
-					html = __formListHtml( _vars["templates"][ p.templateID ] );
-				break;
-			}//end switch
-
-console.log(html);
-			return html;
-
-			function __formListHtml( _html ){
-				
-				var listHtml = "";
-				for( var n = 0; n < p["data"].length; n++){
-	//console.log( n );
-	//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-					
-					//form list items
-					var item = p["data"][n];
-						
-					//var itemTpl = _vars["templates"][ p.templateListID];
-					//var itemHtml = __formNodeHtml( item, itemTpl );
-					
-					var itemHtml = _vars["templates"][ p.templateListID];
-					for( var key2 in item){
-	//console.log(key2, item[key2]);
-
-						if( key2 === "childTerms" && item["childTerms"].length > 0){
-							var subOrdList = _vars["templates"][ p.templateID];
-							var itemTpl = _vars["templates"][ p.templateListID];
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item["childTerms"].length; n2++){
-								subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
-							}//next
-	//console.log( subOrdListHtml );
-							subOrdList = subOrdList
-							.replace("list-unstyled", "")
-							.replace("{{list}}", subOrdListHtml);
-	//console.log( subOrdList );
-	//itemHtml += subOrdList;
-							item["childTerms"] = subOrdList;
-							itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
-						} //else {
-							//itemHtml = itemHtml.replace("{{childTerms}}", "");
-						//}
-						
-						if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-	// //console.log(key2, item[key2]);
-							itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
-						}
-					}//next
-						
-					listHtml += itemHtml;
-	//console.log(items);
-	//console.log(listHtml);
-				}//next
-				
-				_html = _html.replace("{{list}}", listHtml);
-				return _html;
-			}//end __formListHtml
-
-			function __formNodeHtml( data, _html ){
-				
-				for( var key in data ){
-	//console.log(key, data[key]);
-
-					if( key === "nodeTerms" && data["nodeTerms"].length > 0){
-						var nodeTermsList = _vars["templates"]["tpl_node_terms"];
-						var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
-						var _listHtml = "";
-						for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
-							_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
-						}//next
-	//console.log( _listHtml );
-						nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
-	//console.log( nodeTermsList );
-						data["nodeTerms"] = nodeTermsList;
-					}
-
-					if( _html.indexOf("{{"+key+"}}") !== -1 ){
-	//console.log(key, p["data"][key]);
-						_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
-					}
-				}//next
-				
-				return _html;
-			}//end __formNodeHtml()
-			
-		}//end _wrapContent
-*/
 
 
 //====================================
@@ -3560,6 +3290,7 @@ console.log(size_obj);
 		return{
 			testApi:	_testApi,
 			vars: _vars, 
+			taxonomy: taxonomy_obj, 
 			runApp: function( config ){ 
 				if( !_vars["appContainer"] ){
 				_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";
