@@ -139,7 +139,9 @@ _vars["info"].push(logMsg);
 			function _postLoadStorageScript(){
 				
 					var res = storage.init();
-					if( res ){
+//for TEST!!!
+res = false;
+					if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
 //$("#load-progress").hide();
@@ -191,21 +193,24 @@ storage.getXml();
 							}
 						});
 						
-					} else {
+					}
+					
+					if( !res ){//cache is unavailable
 						load_xml({
 							filename : config["xml_file"],
 							dataType: "text",
 							callback: function(data){
-console.log(typeof data, data);							
+//console.log(typeof data, data);							
 								//_parseXML({
 									//"xml":data
 								//});
 								//_loadTemplates(function(){
 								//_urlManager();
-								after_load();
+								after_load( data );
 							}
 						});
 					}
+					
 			}//end _postLoadStorageScript()
 
 			function _saveAppData() {
@@ -237,8 +242,6 @@ console.dir(err);
 						}
 					}//next
 					
-				}
-
 			}//end _saveAppData()
 			
 		}//end _init()
