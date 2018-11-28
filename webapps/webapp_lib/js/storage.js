@@ -87,6 +87,9 @@
 			},
 			"saveAppData": function(opt){
 				return _saveAppData( opt );
+			},
+			"getAppData": function(opt){
+				return _getAppData( opt );
 			}
 			
 		};//end storage
@@ -282,6 +285,25 @@ console.dir(err);
 			}
 		}//end _saveAppData()
 
+
+		function _getAppData( opt ){
+//console.log("function _getAppData()", opt);
+			var p = {
+				"callback" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			//.............
+				
+			if(typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+		}//end _getAppData()
+				
 				
 		function _get_xml_from_storage() {
 //console.log( "function _get_xml_from_storage()", localforage );

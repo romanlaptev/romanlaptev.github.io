@@ -158,9 +158,13 @@ _vars["info"].push(logMsg);
 							if(!storage["need_update"]){
 //for TEST!!!
 //storage.getXml();
-								//storage.getAppData(function(){
-									_loadApp();
-								//});
+								storage.getAppData({
+									"callback": function(){
+	console.log( "storage.getAppData(), end process");
+										_loadApp();
+									}//end storage.getAppData callback
+								});
+								
 							}
 								
 						}//end callback
