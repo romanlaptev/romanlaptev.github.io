@@ -248,35 +248,34 @@ console.log( lib.vars["logMsg"] );
 			}
 //console.log(p);
 
-			//.............
-/*
-					for(var tableName in storage.tables){
-console.log(tableName, storage.tables[tableName]);
-						if( storage.tables[tableName]["records"].length > 0){
-									
-									//closures
-									(function(name){
-										//setTimeout(function(){ 
-											//console.log("!!!Remove " + name); 
-										//}, 1000);
-										localforage.removeItem(name, function(err) {
+			for(var tableName in storage.tables){
+//console.log(tableName, storage.tables[tableName]);
+
+				if( storage.tables[tableName]["records"].length > 0){
+							
+					//closures
+					(function(name){
+						//setTimeout(function(){ 
+							//console.log("!!!Remove " + name); 
+						//}, 1000);
+						localforage.removeItem(name, function(err) {
 console.log("Remove " + name);
 console.dir(err);
-											if(!err){
-												storage.putItem( 
-													name, 
-													storage.tables[name]["records"], 
-													function(){
-														console.log(arguments);				
-													});
-											}
-											
-										 });
-										
-									})(tableName);//end closure
-						}
-					}//next
-*/			
+							if(!err){
+								storage.putItem( 
+									name, 
+									storage.tables[name]["records"], 
+									function(){
+										//console.log(arguments);				
+									});
+							}
+							
+						 });
+						
+					})(tableName);//end closure
+				}
+
+			}//next
 				
 			if(typeof p["callback"] === "function"){
 				p["callback"]();

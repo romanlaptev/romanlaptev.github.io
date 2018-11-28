@@ -156,23 +156,11 @@ _vars["info"].push(logMsg);
 							} 
 								
 							if(!storage["need_update"]){
-								_loadTemplates(function(){
-console.log("Load templates end...", arguments );
-_hideWaitWindow();
 //for TEST!!!
-storage.getXml();
-/*
-			var res = get_content();
-			if(res){
-//console.log("TEST2");				
-				//_buidPage();
-				//define_event();
-				//_vars["GET"] = func.parseGetParams(); 
-				//_urlManager();
-			}
-*/
-
-								});
+//storage.getXml();
+								//storage.getAppData(function(){
+									_loadApp();
+								//});
 							}
 								
 						}//end callback
@@ -218,17 +206,7 @@ func.log(logMsg);
 						storage.saveAppData({
 							"callback": function(){
 console.log( "storage.saveAppData(), end process");
-
-								_loadTemplates(function(){
-	console.log("Load templates end...");
-									_hideWaitWindow()
-									//_buidPage(opt);
-									//define_event();
-									//_vars["GET"] = func.parseGetParams(); 
-									//_urlManager();
-										
-								});
-
+								_loadApp();
 							}//end storage.saveAppData callback
 						});
 							
@@ -237,6 +215,17 @@ console.log( "storage.saveAppData(), end process");
 			}//end __updateStorage()	
 					
 										
+			function _loadApp(){
+				_loadTemplates(function(){
+console.log("Load templates end...");
+					_hideWaitWindow();
+					//_buidPage(opt);
+					//define_event();
+					//_vars["GET"] = func.parseGetParams(); 
+					//_urlManager();
+				});
+			}//end _loadApp();
+
 			function _hideWaitWindow(){
 				if( _vars["waitWindow"] ){
 					_vars["waitWindow"].style.display="none";
