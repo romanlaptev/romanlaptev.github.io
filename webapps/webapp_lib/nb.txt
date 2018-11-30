@@ -120,7 +120,7 @@ https://mozilla.github.io/pdf.js/
 	- включить в каждый объект все зависимости (для уменьшения времени доступа к данным)
 			
 				- объект nodes (body_value, book_files, book_links, book_url, termins, node_child_pages)
-				getNodes();
+				__formNodesObj()
 <node type="library_book" title="...">
 	<bookname/>
 	<author/>
@@ -154,7 +154,7 @@ var nodes = [
 ];
 
 				
-				- объект taxonomy (список словарей с терминами), getTaxomomy();
+				- объект taxonomy (список словарей с терминами), __formTaxonomyObj()
 var taxonomy = [
 	"alphabetical_voc:": 
 		termins [

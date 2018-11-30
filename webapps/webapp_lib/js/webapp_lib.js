@@ -923,7 +923,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "book_url"
+			var tableName = "book_url";
 			table_name = "table_book_url";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -931,7 +931,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "book_links"
+			var tableName = "book_links";
 			table_name = "table_book_links";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -939,7 +939,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "taxonomy_index"
+			var tableName = "taxonomy_index";
 			table_name = "taxonomy_index";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -947,7 +947,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "taxonomy_term_data"
+			var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -955,7 +955,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "taxonomy_term_hierarchy"
+			var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -963,7 +963,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "taxonomy_vocabulary"
+			var tableName = "taxonomy_vocabulary";
 			table_name = "taxonomy_vocabulary";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
@@ -971,6 +971,28 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
+			//__formNodesObj();
+			//_vars["taxonomy"] = __formTaxonomyObj();
+			//__formBookObj();
+			
+			function __formTaxonomyObj(){
+				var taxonomy = [];
+					
+				$( storage.tables["taxonomy_vocabulary"] ).each(function()
+				{
+					var item = $(this);
+					var name = item.children('m_name').text();
+					var vocabulary = {
+						//"name" : item.children('name').text(),
+						"vid" : item.attr('vid'),
+						"termins" : get_termins( item.attr('vid') )
+					};
+					taxonomy[name] = vocabulary;
+				});//end each
+				
+				return taxonomy;
+			}//end __formTaxonomyObj()
+			
 		};//end _parseXML()
 
 

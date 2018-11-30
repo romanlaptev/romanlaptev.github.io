@@ -28,7 +28,7 @@ var config = {
 //https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa/lib/books/B/Begbeder.F?dl=0&preview=B_prose_99franks.txt
 //https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AACOO8GxThqW4XfJc6Bgh5MAa/lib/books/B/Begbeder.F?dl=0&preview=B_prose_99franks.txt&subfolder_nav_tracking=1
 
-"use_localcache" : false, //true,
+"use_localcache" : true, //false,
 "addCopyLink": true,
 "localforagePath": "js/vendor/localforage.min.js",
 "clipboardPath": "js/vendor/clipboard.min.js"				
