@@ -141,7 +141,7 @@ _vars["info"].push(logMsg);
 				
 				var res = storage.init();
 //for TEST!!!
-res = false;
+//res = false;
 				if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
@@ -177,12 +177,11 @@ res = false;
 						filename : config["xml_file"],
 						dataType: "text",
 						callback: function(data){
-//console.log(typeof data, data);							
+//console.log(typeof data, data[0]);
 							//_parseXML({
 								//"xml":data
 							//});
-							//_loadTemplates(function(){
-							//_urlManager();
+							//_loadApp();
 							after_load( data );
 						}
 					});
