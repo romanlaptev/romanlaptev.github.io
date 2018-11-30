@@ -972,25 +972,11 @@ console.log("- save "+key+" to local storage...", value, err);
 			};
 
 			//__formNodesObj();
-			//_vars["taxonomy"] = __formTaxonomyObj();
+			_vars["taxonomy"] = __formTaxonomyObj();
 			//__formBookObj();
 			
 			function __formTaxonomyObj(){
-				var taxonomy = [];
-					
-				$( storage.tables["taxonomy_vocabulary"] ).each(function()
-				{
-					var item = $(this);
-					var name = item.children('m_name').text();
-					var vocabulary = {
-						//"name" : item.children('name').text(),
-						"vid" : item.attr('vid'),
-						"termins" : get_termins( item.attr('vid') )
-					};
-					taxonomy[name] = vocabulary;
-				});//end each
-				
-				return taxonomy;
+				return taxonomy_obj.get_xml_taxonomy( storage.tables["taxonomy_vocabulary"] );
 			}//end __formTaxonomyObj()
 			
 		};//end _parseXML()
