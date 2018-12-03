@@ -37,8 +37,8 @@
 					getRecords: function(){
 						return [{"a":1}];
 					}
-				},
-				
+				}//,
+/*				
 				"taxonomy_term_data": {//<taxonomy_term_data>
 					status: "",
 					records: [],
@@ -62,6 +62,7 @@
 						return [{"a":1}];
 					}
 				}
+*/				
 			},
 			
 			"need_update": false,
@@ -279,7 +280,26 @@ console.dir(err);
 				}
 
 			}//next
-				
+			
+//================== save application objects
+			if( lib.vars["taxonomy"] ){
+				var name = "taxonomy";
+				localforage.removeItem(name, function(err) {
+console.log("Remove " + name);
+console.dir(err);
+					if(!err){
+						storage.putItem( 
+							name, 
+							lib.vars["taxonomy"], 
+							function(){
+								//console.log(arguments);				
+							});
+					}
+					
+				 });
+			}
+
+					
 			if(typeof p["callback"] === "function"){
 				p["callback"]();
 			}
