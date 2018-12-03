@@ -101,13 +101,12 @@ console.log("nodes_obj:", nodes_obj);
 					storage.getItem( key, function(readValue, err){
 console.log("- read "+key+" from storage...",readValue);
 console.log(err);
-						_vars["taxonomy"] = readValue;
+						//_vars["taxonomy"] = readValue;
 						if( typeof opt["postFunc"] === "function"){
 							opt["postFunc"]( readValue );//return
 						}
 					});
 					
-					return _vars["taxonomy"];
 				}
 			}
 		};
