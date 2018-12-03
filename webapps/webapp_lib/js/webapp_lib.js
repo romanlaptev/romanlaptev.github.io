@@ -75,8 +75,8 @@ console.log("book obj:", book);
 console.log("nodes_obj:", nodes_obj);
 
 		var taxonomy_obj = {
-			"get_xml_taxonomy" : function(opt){
-				return _get_xml_taxonomy(opt);
+			"parseTaxonomyFromXml" : function(opt){
+				return _parseTaxonomyFromXml(opt);
 			},
 			"view_vocabulary" : function( vocabulary_name, recourse ){
 				var html = _view_vocabulary( vocabulary_name, recourse );
@@ -85,9 +85,33 @@ console.log("nodes_obj:", nodes_obj);
 			"view_termin" : function( params ) {
 				var html = _view_termin( params );
 				return html;
+			},
+			"getTaxonomy" : function( opt ) {
+				
+				if( _vars["taxonomy"] ){
+					
+					if( typeof opt["postFunc"] === "function"){
+						opt["postFunc"]( _vars["taxonomy"] );//return
+					}
+					
+				} else {
+					
+					
+					var key = "taxonomy";
+					storage.getItem( key, function(readValue, err){
+console.log("- read "+key+" from storage...",readValue);
+console.log(err);
+						_vars["taxonomy"] = readValue;
+						if( typeof opt["postFunc"] === "function"){
+							opt["postFunc"]( readValue );//return
+						}
+					});
+					
+					return _vars["taxonomy"];
+				}
 			}
 		};
-console.log("taxonomy_obj:", taxonomy_obj);
+//console.log("taxonomy_obj:", taxonomy_obj);
 console.log("storage object:", storage);
 console.log("draw object:", draw);
 
@@ -701,7 +725,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			var timeStart = new Date();
 				
 				var $xml = $(_vars["xml"]);
-				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy({
+				_vars["taxonomy"] = taxonomy_obj.parseTaxonomyFromXml({
 					"xml": {
 "taxonomy_term_data": $xml.find( "taxonomy_term_data" ).find('termin'),
 "taxonomy_term_hierarchy": $xml.find( "taxonomy_term_hierarchy" ).find("termin"),
@@ -716,7 +740,7 @@ _vars["logMsg"] = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
 //console.log( _vars["logMsg"] );
 			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
 			
-			//_vars["runtime"]["get_xml_taxonomy"] = {
+			//_vars["runtime"]["parseTaxonomyFromXml"] = {
 				//"time" : runTime
 			//};
 
@@ -999,7 +1023,7 @@ console.log("- save "+key+" to local storage...", value, err);
 			
 			function __formTaxonomyObj(){
 				//return "test";
-				return taxonomy_obj.get_xml_taxonomy({
+				return taxonomy_obj.parseTaxonomyFromXml({
 					"xml": {
 "taxonomy_term_data": $(p.xml).find( "taxonomy_term_data" ).find('termin'),
 "taxonomy_term_hierarchy": $(p.xml).find( "taxonomy_term_hierarchy" ).find('termin'),
@@ -2089,7 +2113,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			
 		}//end read_taxonomy_data()
 */
-		function _get_xml_taxonomy( opt ){
+		function _parseTaxonomyFromXml( opt ){
 console.log(opt);
 
 			var xml = opt["xml"];
@@ -2178,7 +2202,7 @@ console.log(opt);
 				return parent_value;
 			}//end get_termin_info()
 */
-		}//end _get_xml_taxonomy()
+		}//end _parseTaxonomyFromXml()
 
 		
 		function _view_vocabulary ( vocabulary_name, recourse ) {

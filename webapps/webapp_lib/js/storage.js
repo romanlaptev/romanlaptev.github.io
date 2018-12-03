@@ -76,18 +76,26 @@
 			},
 
 			"putItem": function(key, value, callback){
-				return _put_to_storage( key, value, callback );
+				if ( config["use_localcache"] ) {
+					return _put_to_storage( key, value, callback );
+				}
 			},
 			
 			"getItem": function(key, callback){
-				return _getItemFromStorage( key, callback );
+				if ( config["use_localcache"] ) {
+					return _getItemFromStorage( key, callback );
+				}
 			},
 			
 			"checkAppData": function(opt){
-				return _checkAppData( opt );
+				if ( config["use_localcache"] ) {
+					return _checkAppData( opt );
+				}
 			},
 			"saveAppData": function(opt){
-				return _saveAppData( opt );
+				if ( config["use_localcache"] ) {
+					return _saveAppData( opt );
+				}
 			}//,
 			//"getAppData": function(opt){
 				//return _getAppData( opt );

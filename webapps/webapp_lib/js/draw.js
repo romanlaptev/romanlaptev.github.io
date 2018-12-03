@@ -35,34 +35,39 @@ console.log("_buildPage()");
 	});
 //---------------------
 
-//--------------------- BLOCK
-			//view alphabetical
-
-	var html = lib.taxonomy.view_termin({
-		"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
-		"vid": "4",
-		"tid": "116",
-		"recourse": true,
-		"show_only_children": true,
-		"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-		"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-	});
+//--------------------- BLOCK alphabetical
+	lib.taxonomy.getTaxonomy({
+		"postFunc": function( taxonomy ){
+//console.log(taxonomy);	
+			var html = lib.taxonomy.view_termin({
+				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "116",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
 //console.log(html);
 
-	html += lib.taxonomy.view_termin({
-		"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
-		"vid": "4",
-		"tid": "115",
-		"recourse": true,
-		"show_only_children": true,
-		"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-		"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-	});
-			
-	draw.buildBlock({
-		"locationID" : "block-taxonomy-alpha",
-		"templateID" : "tpl-block--tags",
-		"content" : html
+			html += lib.taxonomy.view_termin({
+				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "115",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+					
+			draw.buildBlock({
+				"locationID" : "block-taxonomy-alpha",
+				"templateID" : "tpl-block--tags",
+				"content" : html
+			});
+		}
 	});
 
 //---------------------
