@@ -154,7 +154,7 @@ var nodes = [
 ];
 
 				
-				- объект taxonomy (список словарей с терминами), __formTaxonomyObj()
+				*- объект taxonomy (список словарей с терминами), __formTaxonomyObj()
 var taxonomy = [
 	"alphabetical_voc:": 
 		termins [
