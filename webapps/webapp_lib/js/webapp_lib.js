@@ -75,8 +75,8 @@ console.log("book obj:", book);
 console.log("nodes_obj:", nodes_obj);
 
 		var taxonomy_obj = {
-			"get_xml_taxonomy" : function(){
-				return _get_xml_taxonomy();
+			"get_xml_taxonomy" : function(opt){
+				return _get_xml_taxonomy(opt);
 			},
 			"view_vocabulary" : function( vocabulary_name, recourse ){
 				var html = _view_vocabulary( vocabulary_name, recourse );
@@ -125,9 +125,22 @@ _vars["info"].push(logMsg);
 
 				load_xml({
 					filename : config["xml_file"],
-					dataType: "text",
-					callback: after_load
+					
+					//dataType: "text",
+					dataType: "xml",
+					
+					//callback: after_load
+					callback: function(data){
+//console.log(typeof data, data[0]);
+						after_load( data );
+						
+						//_parseXML({
+							//"xml":data
+						//});
+						//_loadApp();
+					}
 				});
+				
 /*
 				loadXml({
 					filename : config["xml_file"],
@@ -211,7 +224,7 @@ func.log(logMsg);
 							"callback": function(){
 console.log( "storage.saveAppData(), end process");
 								_loadApp();
-							}//end storage.saveAppData callback
+							}
 						});
 							
 					}//end load_xml() callback
@@ -224,9 +237,9 @@ console.log( "storage.saveAppData(), end process");
 console.log("Load templates end...");
 					_hideWaitWindow();
 					draw.buildPage({});
-					//define_event();
-					//_vars["GET"] = func.parseGetParams(); 
-					//_urlManager();
+					define_event();
+					_vars["GET"] = func.parseGetParams(); 
+					_urlManager();
 				});
 			}//end _loadApp();
 
@@ -654,6 +667,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			
 
 //------------------//get taxonomy termins
+/*
 			var timeStart = new Date();
 //runtime: 0.684 sec
 				read_taxonomy_data();
@@ -679,13 +693,21 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				_vars["parseProgressBar"].style.width = _percentComplete+"%";
 				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
 			}
+*/			
 //------------------
 			
 			
 //------------------
 			var timeStart = new Date();
-			
-				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy();
+				
+				var $xml = $(_vars["xml"]);
+				_vars["taxonomy"] = taxonomy_obj.get_xml_taxonomy({
+					"xml": {
+"taxonomy_term_data": $xml.find( "taxonomy_term_data" ).find('termin'),
+"taxonomy_term_hierarchy": $xml.find( "taxonomy_term_hierarchy" ).find("termin"),
+"taxonomy_vocabulary" :	$xml.find( "taxonomy_vocabulary" ).find("record")
+					}
+				});
 				
 			var timeEnd = new Date();
 			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
@@ -947,36 +969,44 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};
 
-			var tableName = "taxonomy_term_data";
+			/*var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('termin')
 				})
-			};
+			};*/
 
-			var tableName = "taxonomy_term_hierarchy";
+			/*var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('termin')
 				})
-			};
+			};*/
 
-			var tableName = "taxonomy_vocabulary";
+			/*var tableName = "taxonomy_vocabulary";
 			table_name = "taxonomy_vocabulary";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('record')
 				})
-			};
+			};*/
 
 			//__formNodesObj();
 			_vars["taxonomy"] = __formTaxonomyObj();
 			//__formBookObj();
 			
 			function __formTaxonomyObj(){
-				return taxonomy_obj.get_xml_taxonomy( storage.tables["taxonomy_vocabulary"] );
+				//return "test";
+				return taxonomy_obj.get_xml_taxonomy({
+					"xml": {
+"taxonomy_term_data": $(p.xml).find( "taxonomy_term_data" ).find('termin'),
+"taxonomy_term_hierarchy": $(p.xml).find( "taxonomy_term_hierarchy" ).find('termin'),
+"taxonomy_vocabulary" :	$(p.xml).find( "taxonomy_vocabulary" ).find('record')
+					}
+				});
+				
 			}//end __formTaxonomyObj()
 			
 		};//end _parseXML()
@@ -2047,7 +2077,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 
 //====================================== TAXONOMY methods
-
+/*
 		//read xml data
 		function read_taxonomy_data(){
 			var xml = _vars["xml"];
@@ -2058,17 +2088,21 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 			//taxonomy_obj["taxonomy_index"] = $(xml).find( "taxonomy_index" ).find("record");
 			
 		}//end read_taxonomy_data()
+*/
+		function _get_xml_taxonomy( opt ){
+console.log(opt);
 
-		function _get_xml_taxonomy(){
+			var xml = opt["xml"];
+			
 			var taxonomy = [];
-			$( taxonomy_obj.taxonomy_vocabulary ).each(function()
+			$( xml.taxonomy_vocabulary ).each(function()
 			{
 				var item = $(this);
 				var name = item.children('m_name').text();
 				var vocabulary = {
 					//"name" : item.children('name').text(),
 					"vid" : item.attr('vid'),
-					"termins" : get_termins( item.attr('vid') )
+					"termins" : __get_termins( item.attr('vid') )
 				};
 				taxonomy[name] = vocabulary;
 			});//end each
@@ -2096,10 +2130,9 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 */
 			return taxonomy;
 			
-			function get_termins( vid ){
+			function __get_termins( vid ){
 				var termins = [];
-				$( taxonomy_obj.taxonomy_term_data ).each(function()
-				{
+				$( xml.taxonomy_term_data ).each(function(){
 					var item = $(this);
 					if ( item.attr('vid') === vid ){
 						var term_obj = {
@@ -2115,14 +2148,11 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 				//get termins hierarchy
 				var parent_value = false;
-				$( taxonomy_obj.taxonomy_term_hierarchy ).each(function()
-				{
+				$( xml.taxonomy_term_hierarchy ).each(function(){
 					var item = $(this);
 					var tid = item.attr('tid');
-					for( var n = 0; n < termins.length; n++)
-					{
-						if( tid === termins[n]["tid"])
-						{
+					for( var n = 0; n < termins.length; n++){
+						if( tid === termins[n]["tid"]){
 							termins[n]["parent_value"] = item.attr('parent');
 							//break;
 						}
@@ -2130,7 +2160,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 				});//end each
 
 				return termins;
-			}//end get_termins()
+			}//end __get_termins()
 /*
 			function get_termin_info( tid, table )
 			{
