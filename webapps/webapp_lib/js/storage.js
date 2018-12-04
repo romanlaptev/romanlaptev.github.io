@@ -4,7 +4,7 @@
 				"nodes": {//<table_node>
 					status: "",
 					records: [],
-					getRecords: __getRecords
+					//getRecords: __getRecords
 				},
 				
 				"book_filename": {//<table_book_filename>
@@ -290,6 +290,23 @@ console.dir(err);
 			}//next
 			
 //================== save application objects
+			if( lib.vars["nodes"] ){
+				var key = "nodes";
+				localforage.removeItem(key, function(err) {
+console.log("Remove " + key);
+console.dir(err);
+					if(!err){
+						storage.putItem( 
+							key, 
+							lib.vars[key], 
+							function(){
+								//console.log(arguments);				
+							});
+					}
+					
+				 });
+			}
+
 			if( lib.vars["taxonomy"] ){
 				var name = "taxonomy";
 				localforage.removeItem(name, function(err) {
@@ -462,7 +479,7 @@ func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
 			}//end __postFunc()
 			
 		}//end _get_xml_from_storage()
-
+/*
 
 		function __getRecords( opt ) {
 			var p = {
@@ -490,7 +507,7 @@ func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
 			
 			return nodes;
 		}//end __getRecords()
-
+*/
 
 		function _put_to_storage( key, value, callback ) {
 

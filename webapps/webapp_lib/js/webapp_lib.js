@@ -952,6 +952,7 @@ console.log("- save "+key+" to local storage...", value, err);
 			}//next
 */
 
+/*
 			var tableName = "nodes";
 			table_name = "table_node";
 			storage.tables[tableName] = {
@@ -959,7 +960,7 @@ console.log("- save "+key+" to local storage...", value, err);
 					"xml": $(p.xml).find( table_name ).find('node')
 				})
 			};
-
+*/
 			var tableName = "book_filename";
 			table_name = "table_book_filename";
 			storage.tables[tableName] = {
@@ -983,7 +984,7 @@ console.log("- save "+key+" to local storage...", value, err);
 					"xml": $(p.xml).find( table_name ).find('item')
 				})
 			};
-
+/*
 			var tableName = "taxonomy_index";
 			table_name = "taxonomy_index";
 			storage.tables[tableName] = {
@@ -991,7 +992,7 @@ console.log("- save "+key+" to local storage...", value, err);
 					"xml": $(p.xml).find( table_name ).find('record')
 				})
 			};
-
+*/
 			/*var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
 			storage.tables[tableName] = {
@@ -1016,12 +1017,60 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};*/
 
-			//__formNodesObj();
+			_vars["nodes"] = __formNodesObj();
 			_vars["taxonomy"] = __formTaxonomyObj();
 			//__formBookObj();
 			
+			function __formNodesObj(){
+
+				var xml = {
+					"nodes": $(p.xml).find( "table_node" ).find('node'),
+					"taxonomy_index": $(p.xml).find( "taxonomy_index" ).find('record')
+				};
+
+				var nodes = [];
+
+				for( var n = 0; n < xml.nodes.length; n++){
+	//console.log( n, p.xml[n] );
+					var node = {};
+					//read node attributes
+					var item_attr = func.get_attr_to_obj( xml.nodes[n].attributes );
+					for(var attr in item_attr){
+						node[attr] = item_attr[attr];
+					}//next attr
+
+					var x_node = $( xml.nodes[n] );
+					node["subfolder"] = x_node.children("subfolder").text().trim();
+					node["author"] = x_node.children("author").text().trim();
+					node["bookname"] = x_node.children("bookname").text().trim();
+					node["body_value"] = x_node.children("body_value").text();
+
+					//read node termins tids
+					for( var n2 = 0; n2 < xml["taxonomy_index"].length; n2++){
+						var test_nid = xml["taxonomy_index"][n2].getAttribute("nid");
+						if( test_nid === node["nid"] ){
+							if( typeof node["tid"] === "undefined") {
+								node["tid"] = [];
+							}
+							node["tid"].push( xml["taxonomy_index"][n2].getAttribute("tid") );
+						}
+					}//next termin
+
+	//-----------------				
+					var params = {"nid" :node["nid"] };
+					node["termins"] = get_node_termins( params );
+					//node["book_files"] = _getBookFilesXML( params );
+					//node["book_url"] = _getBookUrlXML( params );
+					//node["book_links"] = _getBookLinksXML( params );
+	//-----------------				
+
+					nodes.push( node );
+				}//next node
+
+				return nodes;
+			}//end __formNodesObj()
+
 			function __formTaxonomyObj(){
-				//return "test";
 				return taxonomy_obj.parseTaxonomyFromXml({
 					"xml": {
 "taxonomy_term_data": $(p.xml).find( "taxonomy_term_data" ).find('termin'),
