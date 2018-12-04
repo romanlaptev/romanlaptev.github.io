@@ -838,7 +838,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					return false;
 				}
 			}//end _readNodesData()
-			
+/*			
 			function _getNodes( params ) {
 				var nodes = [];
 
@@ -886,33 +886,33 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				if ( config["use_localcache"] ) {
 					
 					var key = "nodes";
-/*
-					storage.getItem(key, function(readValue, err){//try read store Nodes
-//console.log("--- _deferred_req(), get data...");						
-console.log("- read "+key+" from storage...record: "+readValue.length);
-console.log(err);
 
-						if(readValue && readValue.length > 0){
+					//storage.getItem(key, function(readValue, err){//try read store Nodes
+////console.log("--- _deferred_req(), get data...");						
+//console.log("- read "+key+" from storage...record: "+readValue.length);
+//console.log(err);
+
+						//if(readValue && readValue.length > 0){
 							
-							if( _vars["updateStore"]){
-								localforage.removeItem(key, function(err) {//remove old version store Nodes
-console.log("- remove " +key);
-console.dir(err);
-									storage.putItem(key, nodes, function(value, err){//save new version store Nodes
-console.log("- save "+key+" to local storage...", value, err);
-									});
-								 });
-							}
+							//if( _vars["updateStore"]){
+								//localforage.removeItem(key, function(err) {//remove old version store Nodes
+//console.log("- remove " +key);
+//console.dir(err);
+									//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+//console.log("- save "+key+" to local storage...", value, err);
+									//});
+								 //});
+							//}
 
 
-						} else {
-							storage.putItem(key, nodes, function(value, err){//save new version store Nodes
-console.log("- save "+key+" to local storage...", value, err);
-							});
+						//} else {
+							//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+//console.log("- save "+key+" to local storage...", value, err);
+							//});
 							
-						}
-					});
-*/				
+						//}
+					//});
+
 
 //for TEST
 //					storage.putItem(key, nodes, function(value, err){//save new version store Nodes
@@ -924,7 +924,7 @@ console.log("- save "+key+" to local storage...", value, err);
 				
 				return nodes;
 			}//end _getNodes()
-			
+*/			
 		};//end get_content()
 
 
@@ -1017,8 +1017,8 @@ console.log("- save "+key+" to local storage...", value, err);
 				})
 			};*/
 
-			_vars["nodes"] = __formNodesObj();
 			_vars["taxonomy"] = __formTaxonomyObj();
+			_vars["nodes"] = __formNodesObj();
 			//__formBookObj();
 			
 			function __formNodesObj(){
@@ -1044,7 +1044,7 @@ console.log("- save "+key+" to local storage...", value, err);
 					node["author"] = x_node.children("author").text().trim();
 					node["bookname"] = x_node.children("bookname").text().trim();
 					node["body_value"] = x_node.children("body_value").text();
-
+/*
 					//read node termins tids
 					for( var n2 = 0; n2 < xml["taxonomy_index"].length; n2++){
 						var test_nid = xml["taxonomy_index"][n2].getAttribute("nid");
@@ -1055,10 +1055,14 @@ console.log("- save "+key+" to local storage...", value, err);
 							node["tid"].push( xml["taxonomy_index"][n2].getAttribute("tid") );
 						}
 					}//next termin
-
+*/
 	//-----------------				
-					var params = {"nid" :node["nid"] };
-					node["termins"] = get_node_termins( params );
+					node["termins"] = _getNodeTerminsXML({
+						"nid" :node["nid"],
+						"taxonomy_index": xml["taxonomy_index"],
+						"taxonomy": _vars["taxonomy"]
+					});
+					//var params = {"nid" :node["nid"] };
 					//node["book_files"] = _getBookFilesXML( params );
 					//node["book_url"] = _getBookUrlXML( params );
 					//node["book_links"] = _getBookLinksXML( params );
@@ -1979,6 +1983,47 @@ console.log( _vars["logMsg"] );
 			
 			return node_termins;
 		};//end get_node_termins()
+
+		function _getNodeTerminsXML( opt ){
+//console.log("function _getNodeTerminsXML()", opt);
+			var p = {
+				"nid": null,
+				"taxonomy_index": null,
+				"taxonomy": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+			
+			var node_termins = [];
+			for( var n1 = 0; n1 < p["taxonomy_index"].length; n1++){
+				var test_nid = p["taxonomy_index"][n1].getAttribute("nid");
+				if( test_nid === p["nid"] ){
+					//if( typeof node_termins["tid"] === "undefined"){
+						//node_termins["tid"] = [];
+					//}
+					node_termins.push( {"tid" : p["taxonomy_index"][n1].getAttribute("tid") } );
+				}
+			}//next termin			
+
+			for( var voc in p["taxonomy"]){
+//console.log(  opt["taxonomy"][voc]);	
+				var test_termins = p["taxonomy"][voc]["termins"];
+				for( var n1 = 0; n1 < test_termins.length; n1++){
+					for( var n2 = 0; n2 < node_termins.length; n2++){
+						if( test_termins[n1]["tid"] === node_termins[n2]["tid"] ){
+//console.log(  test_termins[n1]["tid"],  test_termins[n1]["name"]);	
+							node_termins[n2]["name"] = test_termins[n1]["name"];
+						}
+					}//next tid
+				}//next 
+			}//next vocabulary
+			
+			return node_termins;
+		}//end _getNodeTerminsXML()
+
 
 		function _view_node( params ) {
 //console.log(params, nodes_obj);	
