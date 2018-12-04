@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: Closures</title>
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: closures</h1>
+	</div>
+	
+	<pre>
+Доклад: 
+https://docs.google.com/presentation/d/1kiP65zcwktVGPloqLCCS9TEsp94YIVS20600KLSCwv4/edit#slide=id.g41eb7ac6d8_0_48
+	</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>Замыкания и циклы</h2>
+		</div>
+		<div class="panel-body">
+		
+<pre>1.
+	for(var n = 0; n<10; n++){
+	
+		//closures
+		(function(num){
+			setTimeout(function(){ 
+				console.log( num ); 
+			}, 1000);
+		})(n);//end closure
+		
+	}//next
+	//0 1 2 3 4 5 6 7 8 9
+</pre>
+
+<pre>2.
+	function myFunc(num){
+		setTimeout(function(){ 
+console.log( num ); 
+			}, 1000);
+	}//end myFunc()
+
+	for(var n = 1; n<=5; n++){
+		myFunc(n);
+	}//next
+	
+	//1 2 3 4 5 
+</pre>
+
+		</div>
+	</div>
+	
+</div><!-- end container -->
+</body>
+
+<script>
+	for(var n = 0; n<10; n++){
+		//closures
+		(function(num){
+			setTimeout(function(){ 
+				console.log( num ); 
+			}, 1000);
+		})(n);//end closure
+		
+	}//next
+</script>
+
+<script>
+	function myFunc(num){
+		setTimeout(function(){ 
+console.log( num ); 
+			}, 1000);
+	}//end myFunc()
+
+	for(var n = 1; n<=5; n++){
+		myFunc(n);
+	}//next
+</script>
+
+</html>
