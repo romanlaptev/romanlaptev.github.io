@@ -6,38 +6,41 @@
 					records: [],
 					//getRecords: __getRecords
 				},
-				
-				"book_filename": {//<table_book_filename>
-					status: "",
-					records: [],
-					getRecords: function(){
-						return [{"a":1}];
-					}
+				"taxonomy": {
+					records: []
 				},
 				
-				"book_url": {//<table_book_url>
-					status: "",
-					records: [],
-					getRecords: function(){
-						return [{"a":1}];
-					}
-				}, 
+				//"book_filename": {//<table_book_filename>
+					//status: "",
+					//records: [],
+					//getRecords: function(){
+						//return [{"a":1}];
+					//}
+				//},
 				
-				"book_links": {//<table_book_links>
-					status: "",
-					records: [],
-					getRecords: function(){
-						return [{"a":1}];
-					}
-				}, 
+				//"book_url": {//<table_book_url>
+					//status: "",
+					//records: [],
+					//getRecords: function(){
+						//return [{"a":1}];
+					//}
+				//}, 
 				
-				"taxonomy_index": {//<taxonomy_index>
-					status: "",
-					records: [],
-					getRecords: function(){
-						return [{"a":1}];
-					}
-				}//,
+				//"book_links": {//<table_book_links>
+					//status: "",
+					//records: [],
+					//getRecords: function(){
+						//return [{"a":1}];
+					//}
+				//}, 
+				
+				//"taxonomy_index": {//<taxonomy_index>
+					//status: "",
+					//records: [],
+					//getRecords: function(){
+						//return [{"a":1}];
+					//}
+				//}//,
 /*				
 				"taxonomy_term_data": {//<taxonomy_term_data>
 					status: "",

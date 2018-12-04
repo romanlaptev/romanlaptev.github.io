@@ -961,6 +961,8 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				})
 			};
 */
+
+/*
 			var tableName = "book_filename";
 			table_name = "table_book_filename";
 			storage.tables[tableName] = {
@@ -968,6 +970,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					"xml": $(p.xml).find( table_name ).find('item')
 				})
 			};
+
 
 			var tableName = "book_url";
 			table_name = "table_book_url";
@@ -977,6 +980,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				})
 			};
 
+
 			var tableName = "book_links";
 			table_name = "table_book_links";
 			storage.tables[tableName] = {
@@ -984,7 +988,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					"xml": $(p.xml).find( table_name ).find('item')
 				})
 			};
-/*
+
 			var tableName = "taxonomy_index";
 			table_name = "taxonomy_index";
 			storage.tables[tableName] = {
@@ -992,30 +996,31 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					"xml": $(p.xml).find( table_name ).find('record')
 				})
 			};
-*/
-			/*var tableName = "taxonomy_term_data";
+
+			var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('termin')
 				})
-			};*/
+			};
 
-			/*var tableName = "taxonomy_term_hierarchy";
+			var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('termin')
 				})
-			};*/
+			};
 
-			/*var tableName = "taxonomy_vocabulary";
+			var tableName = "taxonomy_vocabulary";
 			table_name = "taxonomy_vocabulary";
 			storage.tables[tableName] = {
 				"records": storage.tables[tableName].getRecords({
 					"xml": $(p.xml).find( table_name ).find('record')
 				})
-			};*/
+			};
+*/
 
 			_vars["taxonomy"] = __formTaxonomyObj();
 			_vars["nodes"] = __formNodesObj();
@@ -1044,29 +1049,29 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					node["author"] = x_node.children("author").text().trim();
 					node["bookname"] = x_node.children("bookname").text().trim();
 					node["body_value"] = x_node.children("body_value").text();
-/*
-					//read node termins tids
-					for( var n2 = 0; n2 < xml["taxonomy_index"].length; n2++){
-						var test_nid = xml["taxonomy_index"][n2].getAttribute("nid");
-						if( test_nid === node["nid"] ){
-							if( typeof node["tid"] === "undefined") {
-								node["tid"] = [];
-							}
-							node["tid"].push( xml["taxonomy_index"][n2].getAttribute("tid") );
-						}
-					}//next termin
-*/
-	//-----------------				
+
+//-----------------				
 					node["termins"] = _getNodeTerminsXML({
 						"nid" :node["nid"],
 						"taxonomy_index": xml["taxonomy_index"],
 						"taxonomy": _vars["taxonomy"]
 					});
-					//var params = {"nid" :node["nid"] };
-					//node["book_files"] = _getBookFilesXML( params );
-					//node["book_url"] = _getBookUrlXML( params );
-					//node["book_links"] = _getBookLinksXML( params );
-	//-----------------				
+
+					node["book_files"] = _getBookFilesXML({
+						"nid" :node["nid"],
+						"xml": $(p.xml).find( "table_book_filename" ).find('item')
+					});
+					
+					node["book_url"] = _getBookUrlXML({
+						"nid" :node["nid"],
+						"xml": $(p.xml).find( "table_book_url" ).find('item')
+					});
+
+					node["book_links"] = _getBookLinksXML({
+						"nid" :node["nid"],
+						"xml": $(p.xml).find( "table_book_links" ).find('item')
+					});
+//-----------------				
 
 					nodes.push( node );
 				}//next node
@@ -1855,65 +1860,51 @@ console.log( _vars["logMsg"] );
 			}//end __getNodeByNid()
 			
 		}//end _getNode()
+
 		
-/*
-		function get_book_files( params ){
-			var xml = _vars["xml"];
-			var files = [];
-
-			var table_name = "table_book_filename";
-			$(xml).find( table_name ).find('item').each(function(){
-				var entity_id = $(this).attr("entity_id");
-				
-				if( params["nid"] === entity_id )
-				{
-					var v = $(this).children("value").text().trim();
-					files.push( v );
-				}
-			});//next url
-
-			return files;
-		}//end get_book_files()
-*/
-		function _getBookFilesXML( params ){
+		function _getBookFilesXML( opt ){
+//console.log("function _getBookFilesXML", opt);
+			var p = {
+				"nid": null,
+				"xml": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
 			var files = [];
 			
-			$(nodes_obj["x_filenames"]).each(function(){
+			$(p["xml"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
-				if( params["nid"] === entity_id ){
+				if( p["nid"] === entity_id ){
 					var v = $(this).children("value").text().trim();
 					files.push( v );
 				}
-			});//next url
+			});//next
 
 			return files;
 		}//end _getBookFilesXML()
-/*
-		function get_book_url( params ){
-			var xml = _vars["xml"];
+
+		
+		function _getBookUrlXML( opt ){
+//console.log("function _getBookUrlXML", opt);
+			var p = {
+				"nid": null,
+				"xml": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
 			var listUrl = [];
 
-			var table_name = "table_book_url";
-			$(xml).find( table_name ).find('item').each(function(){
+			$(p["xml"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
-				if( params["nid"] === entity_id ){
-					var v = $(this).children("value").text();
-					listUrl.push( v );
-				}
-			});//next url
-
-			return listUrl;
-		}//end get_book_url()
-*/
-		function _getBookUrlXML( params ){
-			var listUrl = [];
-
-			$(nodes_obj["x_url"]).each(function(){
-				var entity_id = $(this).attr("entity_id");
-				
-				if( params["nid"] === entity_id ){
+				if( p["nid"] === entity_id ){
 					var v = $(this).children("value").text();
 					listUrl.push( v );
 				}
@@ -1921,31 +1912,25 @@ console.log( _vars["logMsg"] );
 
 			return listUrl;
 		}//end _getBookUrlXML()
-/*
-		function get_book_links( params ){
-			var xml = _vars["xml"];
+
+		
+		function _getBookLinksXML( opt ){
+//console.log("function _getBookLinksXML", opt);
+			var p = {
+				"nid": null,
+				"xml": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
 			var links = [];
 
-			var table_name = "table_book_links";
-			$(xml).find( table_name ).find('item').each(function(){
+			$(p["xml"]).each(function(){
 				var entity_id = $(this).attr("entity_id");
 				
-				if( params["nid"] === entity_id ){
-					var v = $(this).children("value").text();
-					links.push( v );
-				}
-			});//next
-
-			return links;
-		}//end get_book_links()
-*/		
-		function _getBookLinksXML( params ){
-			var links = [];
-
-			$(nodes_obj["x_links"]).each(function(){
-				var entity_id = $(this).attr("entity_id");
-				
-				if( params["nid"] === entity_id ){
+				if( p["nid"] === entity_id ){
 					var v = $(this).children("value").text();
 					links.push( v );
 				}
@@ -1953,6 +1938,7 @@ console.log( _vars["logMsg"] );
 
 			return links;
 		}//end _getBookLinksXML()
+
 
 		function get_node_termins(params){
 //console.log(params, nodes_obj);	
