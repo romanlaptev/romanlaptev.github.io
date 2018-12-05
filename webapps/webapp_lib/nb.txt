@@ -176,30 +176,38 @@ var taxonomy = [
 				
 				- объект hierarchyList (список подшивок Drupal, список материалов Wordpress...)
 var hierarchyList = {
-	"library" = {
-		"sections" = {
-			"2":{
-				name: "компьютерная литература",
-				mlid: 385,
-				plid: 384,
-				categories: [
-					{ nid:25, plid:385, mlid:410, name:"system" }
-					{ nid:24, plid:385, mlid:409, name:"web" }
-					{ nid:1605, plid:385, mlid:1695, name:"компьютерная графика" }
-					{ nid:4, plid:385, mlid:387, name:"программирование" }
-				]
-			},
+	"sections" = [
+		{
+			"name": "библиотека",
+			"mlid": 384,
+			"plid": 0,
+			"categories" = {
+				"2":{
+					name: "компьютерная литература",
+					mlid: 385,
+					plid: 384,
+					categories: [
+						{ nid:25, plid:385, mlid:410, name:"system" }
+						{ nid:24, plid:385, mlid:409, name:"web" }
+						{ nid:1605, plid:385, mlid:1695, name:"компьютерная графика" }
+						{ nid:4, plid:385, mlid:387, name:"программирование" }
+					]
+				},
 
-			"художественая литература",//?q=book_page&nid=3&mlid=386&plid=384
-			"графика, искусствоведение, культурология",//?q=book_page&nid=52&mlid=455&plid=384
-			"История",//?q=book_page&nid=55&mlid=482&plid=384
-			"Поэзия",//?q=book_page&nid=58&mlid=485&plid=384
-			"English books for translation",//?q=book_page&nid=1728&mlid=2129&plid=384
-			"unsort, unread",//?q=book_page&nid=1644&mlid=2018&plid=384
-			"статьи из журналов",//?q=book_page&nid=113&mlid=540&plid=384
-			"философия"//?q=book_page&nid=227&mlid=572&plid=384
-		}
-	}
+				"художественая литература",//?q=book_page&nid=3&mlid=386&plid=384
+				"графика, искусствоведение, культурология",//?q=book_page&nid=52&mlid=455&plid=384
+				"История",//?q=book_page&nid=55&mlid=482&plid=384
+				"Поэзия",//?q=book_page&nid=58&mlid=485&plid=384
+				"English books for translation",//?q=book_page&nid=1728&mlid=2129&plid=384
+				"unsort, unread",//?q=book_page&nid=1644&mlid=2018&plid=384
+				"статьи из журналов",//?q=book_page&nid=113&mlid=540&plid=384
+				"философия"//?q=book_page&nid=227&mlid=572&plid=384
+			}
+		},
+		{.....},
+		{.....},
+		{.....},
+	]
 }
 
 				
