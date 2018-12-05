@@ -176,17 +176,17 @@ var taxonomy = [
 				
 				- объект hierarchyList (список подшивок Drupal, список материалов Wordpress...)
 var hierarchyList = {
-	"sections" = [
+	"section" = [
 		{
 			"name": "библиотека",
 			"mlid": 384,
 			"plid": 0,
-			"categories" = {
+			"category" = {
 				"2":{
 					name: "компьютерная литература",
 					mlid: 385,
 					plid: 384,
-					categories: [
+					category: [
 						{ nid:25, plid:385, mlid:410, name:"system" }
 						{ nid:24, plid:385, mlid:409, name:"web" }
 						{ nid:1605, plid:385, mlid:1695, name:"компьютерная графика" }
