@@ -181,12 +181,12 @@ var hierarchyList = {
 			"name": "библиотека",
 			"mlid": 384,
 			"plid": 0,
-			"category" = {
+			"section" = {
 				"2":{
 					name: "компьютерная литература",
 					mlid: 385,
 					plid: 384,
-					category: [
+					section: [
 						{ nid:25, plid:385, mlid:410, name:"system" }
 						{ nid:24, plid:385, mlid:409, name:"web" }
 						{ nid:1605, plid:385, mlid:1695, name:"компьютерная графика" }

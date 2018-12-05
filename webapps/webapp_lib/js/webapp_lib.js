@@ -952,15 +952,16 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			}//next
 */
 
-/*
+
 			var tableName = "nodes";
 			table_name = "table_node";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('node')
-				})
+				//"records": storage.tables[tableName].getRecords({
+					//"xml": $(p.xml).find( table_name ).find('node')
+				//})
+				"xml": $(p.xml).find( table_name ).find('node')
 			};
-*/
+
 
 /*
 			var tableName = "book_filename";
@@ -1024,12 +1025,12 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 			_vars["taxonomy"] = __formTaxonomyObj();
 			_vars["nodes"] = __formNodesObj();
-			//__formBookObj();
+			_vars["hierarchyList"] = __formHierarchyList();
 			
 			function __formNodesObj(){
 
 				var xml = {
-					"nodes": $(p.xml).find( "table_node" ).find('node'),
+					"nodes": storage.tables["nodes"]["xml"],
 					"taxonomy_index": $(p.xml).find( "taxonomy_index" ).find('record')
 				};
 
@@ -1089,6 +1090,70 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				});
 				
 			}//end __formTaxonomyObj()
+			
+			function __formHierarchyList(){
+				var xml = {
+					"nodes": storage.tables["nodes"]["xml"]
+				};
+				
+				var hList = [];
+
+				for( var n = 0; n < xml.nodes.length; n++){
+//console.log( n, xml[n] );
+					var $node = $( xml.nodes[n] );
+					if ( $node.attr('plid') == "0") {
+						var section = {
+							"name": $node.attr('title'),
+							"nid": $node.attr('nid'),
+							"mlid": $node.attr('mlid'),
+							"plid": $node.attr('plid'),
+							"type": $node.attr('type'),
+							"section": __getChildSections( xml, $node.attr('mlid'), 1)
+						};
+						
+						hList.push( section );
+					}
+
+				}//next node
+
+//console.log(hList);						
+				return hList;
+			}//end __formHierarchyList()
+			
+			
+			function __getChildSections(xml, plid, recourse){
+				var sections = [];
+				for( var n = 0; n < xml.nodes.length; n++) {
+					var $node = $( xml.nodes[n] );
+					
+					if ( $node.attr('plid') === plid ){
+						if ( $node.attr('type') === "book" ){
+						
+							var _section = {
+								"name": $node.attr('title'),
+								"nid": $node.attr('nid'),
+								"mlid": $node.attr('mlid'),
+								"plid": $node.attr('plid'),
+								"type": $node.attr('type')
+							};
+							
+							if( $node.attr('mlid').length > 0 ){
+								if ( recourse === 1){
+									var _subSection = __getChildSections( xml, $node.attr('mlid'), 1 );
+									if( _subSection.length > 0){
+										_section["section"] = _subSection;
+									}
+								}
+							}
+							
+							sections.push( _section );
+						}
+					}
+				};//next node
+				
+//console.log(sections);						
+				return sections;
+			}//end __getChildSections()
 			
 		};//end _parseXML()
 
@@ -2193,7 +2258,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 		}//end read_taxonomy_data()
 */
 		function _parseTaxonomyFromXml( opt ){
-console.log(opt);
+//console.log(opt);
 
 			var xml = opt["xml"];
 			

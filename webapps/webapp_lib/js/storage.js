@@ -2,13 +2,17 @@
 		var storage = {
 			"tables": {
 				"nodes": {//<table_node>
-					status: "",
+					//status: "",
 					records: [],
 					//getRecords: __getRecords
 				},
 				"taxonomy": {
 					records: []
 				},
+				"hierarchyList": {
+					records: []
+				}
+
 				
 				//"book_filename": {//<table_book_filename>
 					//status: "",
@@ -262,7 +266,7 @@ console.log( lib.vars["logMsg"] );
 				p[key] = opt[key];
 			}
 //console.log(p);
-
+/*
 			for(var tableName in storage.tables){
 //console.log(tableName, storage.tables[tableName]);
 
@@ -291,17 +295,17 @@ console.dir(err);
 				}
 
 			}//next
-			
+*/			
 //================== save application objects
 			if( lib.vars["nodes"] ){
-				var key = "nodes";
-				localforage.removeItem(key, function(err) {
-console.log("Remove " + key);
+				var key1 = "nodes";
+				localforage.removeItem(key1, function(err) {
+console.log("Remove " + key1);
 console.dir(err);
 					if(!err){
 						storage.putItem( 
-							key, 
-							lib.vars[key], 
+							key1, 
+							lib.vars[key1], 
 							function(){
 								//console.log(arguments);				
 							});
@@ -311,14 +315,31 @@ console.dir(err);
 			}
 
 			if( lib.vars["taxonomy"] ){
-				var name = "taxonomy";
-				localforage.removeItem(name, function(err) {
-console.log("Remove " + name);
+				var key2 = "taxonomy";
+				localforage.removeItem(key2, function(err) {
+console.log("Remove " + key2);
 console.dir(err);
 					if(!err){
 						storage.putItem( 
-							name, 
+							key2, 
 							lib.vars["taxonomy"], 
+							function(){
+								//console.log(arguments);				
+							});
+					}
+					
+				 });
+			}
+
+			if( lib.vars["hierarchyList"] ){
+				var key3 = "hierarchyList";
+				localforage.removeItem(key3, function(err) {
+console.log("Remove " + key3);
+console.dir(err);
+					if(!err){
+						storage.putItem( 
+							key3, 
+							lib.vars[key3], 
 							function(){
 								//console.log(arguments);				
 							});
