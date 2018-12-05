@@ -38,41 +38,82 @@ console.log("_buildPage()");
 //--------------------- BLOCK alphabetical
 	lib.taxonomy.getTaxonomy({
 		"postFunc": function( taxonomy ){
-console.log(taxonomy);	
-			if( taxonomy ){
-				var html = lib.taxonomy.view_termin({
-					//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
-					"termins": taxonomy["alphabetical_voc"]["termins"],
-					"vid": "4",
-					"tid": "116",
-					"recourse": true,
-					"show_only_children": true,
-					"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-					"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-				});
-	//console.log(html);
+//console.log(taxonomy);	
 
-				html += lib.taxonomy.view_termin({
-					//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
-					"termins": taxonomy["alphabetical_voc"]["termins"],
-					"vid": "4",
-					"tid": "115",
-					"recourse": true,
-					"show_only_children": true,
-					"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-					"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-				});
-						
-				draw.buildBlock({
-					"locationID" : "block-taxonomy-alpha",
-					"templateID" : "tpl-block--tags",
-					"content" : html
-				});
+			if( !taxonomy ){
+lib.vars["logMsg"] = "draw.buildPage(), error, not find <b>taxonomy</b>";
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
+				return false;
 			}
+			
+			var html = lib.taxonomy.view_termin({
+				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "116",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+//console.log(html);
+
+			html += lib.taxonomy.view_termin({
+				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "115",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+						
+			draw.buildBlock({
+				"locationID" : "block-taxonomy-alpha",
+				"templateID" : "tpl-block--tags",
+				"content" : html
+			});
+			//mark root links for breadcrumb navigation
+			//$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
+				
+//--------------------- BLOCK
+			draw.buildBlock({
+				"locationID" : "block-library",
+				"templateID" : "tpl-block--tags",
+				"content" : lib.taxonomy.view_vocabulary({
+					"taxonomy": taxonomy,
+					"vocabularyName": "library", 
+					"recourse": false
+					})
+			});
+
+			//mark root links for breadcrumb navigation
+			//$("#block-library .nav-click").addClass("root-link");			
+//---------------------
+
+//--------------------- BLOCK
+			draw.buildBlock({
+				"locationID" : "block-tags",
+				//"title" : "Tags",
+				"templateID" : "tpl-block--tags",
+				"content" : lib.taxonomy.view_vocabulary({
+					"taxonomy": taxonomy,
+					"vocabularyName": "tags",
+					"recourse": false
+					})
+			});
+			//mark root links for breadcrumb navigation
+			//$("#block-tags .nav-click").addClass("root-link");			
+//---------------------
+
+			
 		}//end postFunc()
 	});
 
 //---------------------
+
 
 };//end _buildPage()
 
