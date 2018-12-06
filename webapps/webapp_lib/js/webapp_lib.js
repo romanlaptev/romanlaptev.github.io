@@ -45,6 +45,7 @@
 		};
 console.log("book obj:", book);
 
+
 		var nodes_obj = {
 			//"nodes_size" : 0,
 			"get_node" : function( params ){
@@ -3509,6 +3510,27 @@ console.log(size_obj);
 		}//end count_object_bytes
 */
 
+		var _getHierarchy = function( opt ) {
+			if( _vars["hierarchyList"] ){
+				
+				if( typeof opt["postFunc"] === "function"){
+					opt["postFunc"]( _vars["hierarchyList"] );//return
+				}
+				
+			} else {
+				var key = "hierarchyList";
+				storage.getItem( key, function(readValue, err){
+console.log("- read "+key+" from storage...",readValue);
+console.log(err);
+					if( typeof opt["postFunc"] === "function"){
+						opt["postFunc"]( readValue );//return
+					}
+				});
+				
+			}
+		};//end _getHierarchy()
+
+
 		// for unit testing with Jasmine
 		var _testApi = {
 			nodesObj: nodes_obj,
@@ -3522,6 +3544,7 @@ console.log(size_obj);
 			testApi:	_testApi,
 			vars: _vars, 
 			taxonomy: taxonomy_obj, 
+			getHierarchy: _getHierarchy,
 			runApp: function( config ){ 
 				if( !_vars["appContainer"] ){
 				_vars["logMsg"] = "error, not found html container (#App) for web-appllication...";

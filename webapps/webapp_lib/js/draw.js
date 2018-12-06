@@ -48,7 +48,6 @@ console.log( lib.vars["logMsg"] );
 			}
 			
 			var html = lib.taxonomy.view_termin({
-				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
 				"termins": taxonomy["alphabetical_voc"]["termins"],
 				"vid": "4",
 				"tid": "116",
@@ -60,7 +59,6 @@ console.log( lib.vars["logMsg"] );
 //console.log(html);
 
 			html += lib.taxonomy.view_termin({
-				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
 				"termins": taxonomy["alphabetical_voc"]["termins"],
 				"vid": "4",
 				"tid": "115",
@@ -114,6 +112,36 @@ console.log( lib.vars["logMsg"] );
 
 //---------------------
 
+//--------------------- BLOCK alphabetical
+	lib.getHierarchy({
+		"postFunc": function( hierarchyList ){
+console.log(hierarchyList);	
+
+			if( !hierarchyList ){
+lib.vars["logMsg"] = "draw.buildPage(), error, not find data <b>hierarchyList</b>";
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
+				return false;
+			}
+/*
+			var html = lib.taxonomy.view_termin({
+				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "116",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+//console.log(html);
+
+*/			
+				
+		}//end postFunc()
+	});
+
+//---------------------
 
 };//end _buildPage()
 
