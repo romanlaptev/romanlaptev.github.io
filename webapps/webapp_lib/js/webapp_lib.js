@@ -209,16 +209,25 @@ _vars["info"].push(logMsg);
 				}
 					
 				if( !res ){//cache is unavailable
+					config["use_localcache"] = false;
 					load_xml({
 						filename : config["xml_file"],
 						dataType: "text",
 						callback: function(data){
 //console.log(typeof data, data[0]);
-							//_parseXML({
-								//"xml":data
-							//});
-							//_loadApp();
-							after_load( data );
+
+							if(!data){
+var logMsg = "<p class='alert alert-danger'>Book catalog not loaded.</p>";
+func.log(logMsg);
+								_hideWaitWindow()
+								return false;
+							}
+							
+							_parseXML({
+								"xml":data
+							});
+							_loadApp();
+							//after_load( data );
 						}
 					});
 				}
@@ -963,65 +972,52 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			};
 
 
-/*
 			var tableName = "book_filename";
 			table_name = "table_book_filename";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('item')
-				})
+				//"records": storage.tables[tableName].getRecords({
+					//"xml": $(p.xml).find( table_name ).find('item')
+				//})
+				"xml": $(p.xml).find( table_name ).find('item')
 			};
-
 
 			var tableName = "book_url";
 			table_name = "table_book_url";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('item')
-				})
+				"xml": $(p.xml).find( table_name ).find('item')
 			};
 
 
 			var tableName = "book_links";
 			table_name = "table_book_links";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('item')
-				})
+				"xml": $(p.xml).find( table_name ).find('item')
 			};
+
 
 			var tableName = "taxonomy_index";
 			table_name = "taxonomy_index";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('record')
-				})
+				"xml": $(p.xml).find( table_name ).find('record')
 			};
 
 			var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('termin')
-				})
+				"xml": $(p.xml).find( table_name ).find('termin')
 			};
 
 			var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('termin')
-				})
+				"xml": $(p.xml).find( table_name ).find('termin')
 			};
 
 			var tableName = "taxonomy_vocabulary";
 			table_name = "taxonomy_vocabulary";
 			storage.tables[tableName] = {
-				"records": storage.tables[tableName].getRecords({
-					"xml": $(p.xml).find( table_name ).find('record')
-				})
+				"xml": $(p.xml).find( table_name ).find('record')
 			};
-*/
 
 			_vars["taxonomy"] = __formTaxonomyObj();
 			_vars["nodes"] = __formNodesObj();
@@ -1031,7 +1027,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 				var xml = {
 					"nodes": storage.tables["nodes"]["xml"],
-					"taxonomy_index": $(p.xml).find( "taxonomy_index" ).find('record')
+					"taxonomy_index": storage.tables["taxonomy_index"]["xml"]
 				};
 
 				var nodes = [];
@@ -1051,7 +1047,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					node["bookname"] = x_node.children("bookname").text().trim();
 					node["body_value"] = x_node.children("body_value").text();
 
-//-----------------				
+//-----------------
 					node["termins"] = _getNodeTerminsXML({
 						"nid" :node["nid"],
 						"taxonomy_index": xml["taxonomy_index"],
@@ -1060,18 +1056,20 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 					node["book_files"] = _getBookFilesXML({
 						"nid" :node["nid"],
-						"xml": $(p.xml).find( "table_book_filename" ).find('item')
+						"xml": storage.tables["book_filename"]["xml"]
 					});
 					
+
 					node["book_url"] = _getBookUrlXML({
 						"nid" :node["nid"],
-						"xml": $(p.xml).find( "table_book_url" ).find('item')
+						"xml": storage.tables["book_url"]["xml"]
 					});
 
 					node["book_links"] = _getBookLinksXML({
 						"nid" :node["nid"],
-						"xml": $(p.xml).find( "table_book_links" ).find('item')
+						"xml": storage.tables["book_links"]["xml"]
 					});
+
 //-----------------				
 
 					nodes.push( node );
@@ -1083,9 +1081,9 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			function __formTaxonomyObj(){
 				return taxonomy_obj.parseTaxonomyFromXml({
 					"xml": {
-"taxonomy_term_data": $(p.xml).find( "taxonomy_term_data" ).find('termin'),
-"taxonomy_term_hierarchy": $(p.xml).find( "taxonomy_term_hierarchy" ).find('termin'),
-"taxonomy_vocabulary" :	$(p.xml).find( "taxonomy_vocabulary" ).find('record')
+"taxonomy_term_data": storage.tables["taxonomy_term_data"]["xml"],
+"taxonomy_term_hierarchy": storage.tables["taxonomy_term_hierarchy"]["xml"],
+"taxonomy_vocabulary" :	storage.tables["taxonomy_vocabulary"]["xml"]
 					}
 				});
 				
@@ -1941,9 +1939,12 @@ console.log( _vars["logMsg"] );
 			var files = [];
 			
 			$(p["xml"]).each(function(){
+//console.log( $(this), arguments );
 				var entity_id = $(this).attr("entity_id");
+//console.log( entity_id);
 				
 				if( p["nid"] === entity_id ){
+//console.log("000");
 					var v = $(this).children("value").text().trim();
 					files.push( v );
 				}

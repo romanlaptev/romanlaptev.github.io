@@ -3,16 +3,9 @@
 			"tables": {
 				"nodes": {//<table_node>
 					//status: "",
-					records: [],
+					records: []//,
 					//getRecords: __getRecords
-				},
-				"taxonomy": {
-					records: []
-				},
-				"hierarchyList": {
-					records: []
-				}
-
+				}//,
 				
 				//"book_filename": {//<table_book_filename>
 					//status: "",
@@ -70,6 +63,12 @@
 					}
 				}
 */				
+			},
+
+			"appObjects": {
+				"nodes": {}, 
+				"taxonomy": {}, 
+				"hierarchyList": {}
 			},
 			
 			"need_update": false,
@@ -234,7 +233,8 @@ console.log( message );
 					var j_keys = keys.join();
 //console.log(j_keys);						
 
-					for(var key in storage.tables){
+					//for(var key in storage.tables){
+					for(var key in storage.appObjects){
 						var pos = j_keys.indexOf( key);
 //console.log(key, pos);						
 						if( pos === -1){
@@ -242,7 +242,8 @@ console.log( message );
 lib.vars["logMsg"] = "store key "+key+" not found...";
 func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 console.log( lib.vars["logMsg"] );
-							storage.tables[key]["status"] = "store_key_not_found";
+							//storage.tables[key]["status"] = "store_key_not_found";
+							storage.appObjects[key]["status"] = "store_key_not_found";
 							storage["need_update"] = true;
 						}
 					}//next
@@ -297,6 +298,7 @@ console.dir(err);
 			}//next
 */			
 //================== save application objects
+
 			if( lib.vars["nodes"] ){
 				var key1 = "nodes";
 				localforage.removeItem(key1, function(err) {
