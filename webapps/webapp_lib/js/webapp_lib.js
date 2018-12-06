@@ -118,6 +118,8 @@ console.log("draw object:", draw);
 		
 		function _init(){
 
+			_vars["timeStart"] = new Date();
+
 			_vars["info"].push( navigator.userAgent + "<br>\n");
 			
 			if( _vars["waitWindow"] ){
@@ -268,15 +270,22 @@ console.log( "storage.saveAppData(), end process");
 			function _loadApp(){
 				_loadTemplates(function(){
 console.log("Load templates end...");
-					_hideWaitWindow();
 					draw.buildPage({});
 					define_event();
 					_vars["GET"] = func.parseGetParams(); 
 					_urlManager();
+					_hideWaitWindow();
 				});
 			}//end _loadApp();
 
 			function _hideWaitWindow(){
+				
+				_vars["timeEnd"] = new Date();
+				_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+				_vars["logMsg"] = "Init application, runtime: <b>" + _vars["runTime"]  + "</b> sec";
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+				
 				if( _vars["waitWindow"] ){
 					_vars["waitWindow"].style.display="none";
 				}				
@@ -3607,9 +3616,6 @@ console.log(err);
 
 					}
 //-----------------			
-					
-					//init
-					_vars["timeStart"] = new Date();
 					_init();
 				}
 			},
