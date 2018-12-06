@@ -115,7 +115,7 @@ console.log( lib.vars["logMsg"] );
 //--------------------- BLOCK alphabetical
 	lib.getHierarchy({
 		"postFunc": function( hierarchyList ){
-console.log(hierarchyList);	
+//console.log(hierarchyList);	
 
 			if( !hierarchyList ){
 lib.vars["logMsg"] = "draw.buildPage(), error, not find data <b>hierarchyList</b>";
@@ -123,21 +123,22 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 console.log( lib.vars["logMsg"] );
 				return false;
 			}
-/*
-			var html = lib.taxonomy.view_termin({
-				//"termins": lib.vars["taxonomy"]["alphabetical_voc"]["termins"],
-				"termins": taxonomy["alphabetical_voc"]["termins"],
-				"vid": "4",
-				"tid": "116",
-				"recourse": true,
-				"show_only_children": true,
-				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			
+//--------------------- BLOCK #block-book-category
+			draw.buildBlock({
+				"locationID" : "block-book-category",
+				//"title" : "test block",
+				"templateID" : "tpl-block--book-category",
+				//"contentTpl" : "tpl-termin_nodes",
+				//"contentListTpl" : "tpl-termin_nodes_list",
+				"content" : _showHierarchy({"hierarchyList": hierarchyList})
 			});
-//console.log(html);
-
-*/			
+//---------------------
 				
+			//mark root links for breadcrumb navigation
+			//$("#block-book-category .nav-click").addClass("root-link");			
+
+
 		}//end postFunc()
 	});
 
@@ -417,3 +418,38 @@ console.log(html);
 	}//end _wrapContent
 */
 
+
+var _showHierarchy = function(opt){
+//console.log("_showHierarchy()", opt);
+	var timeStart = new Date();
+
+	var p = {
+		"hierarchyList": null,
+		"section": null,
+		"recourse":false
+	};
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+	var bookCategory = p["hierarchyList"][0]["section"];//"библиотека"
+//console.log(bookCategory);
+	
+	var html = "";
+	for( var n = 0; n < bookCategory.length; n++) {
+		var _category = bookCategory[n];
+		
+		html += lib.vars["templates"]["book_category_item_tpl"]
+.replace(/{{page-title}}/g, _category["name"] )
+.replace("{{nid}}", _category["nid"] )
+.replace("{{mlid}}", _category["mlid"] )
+.replace("{{plid}}", _category["plid"] )
+.replace("{{type}}", _category["type"] );
+	}//next
+	
+	html = lib.vars["templates"]["book_category_tpl"].replace("{{list}}", html );
+	return html;
+	
+}//end _showHierarchy()
