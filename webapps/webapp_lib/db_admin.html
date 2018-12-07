@@ -47,34 +47,48 @@ margin: 0;
 <body>
 
 	<div class="container">
+	
 		<div class="page-header">
 			<h1>DB Admin</h1>
 		</div>
-	
+		
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<div id="ua">
+					<h4 class="text-center">{{userAgent}}</h4>
+				</div>
+			</div>
+			
+			<div class="panel-body">
+				<ul id="tests-out"></ul>
+			</div>
+		</div>
+
 		<div class="log-panel panel">
 			<div class="panel-body">
 				<span class="pull-right">
 					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
 				</span>
 				<div id="log" class="panel-body"></div>
+				<div class="panel panel-info" id="list"></div>
 			</div>
 		</div>
-	
-		<div class="panel panel-success">
-<button id="btn-list-localstorage" class="btn btn-primary">list localStorage</button>
-<button id="localstorage-btn1" class="btn btn-primary">clear localStorage</button>
-<button id="localstorage-btn2" class="btn btn-primary">add items in localStorage</button>
-		</div>
-<pre>
-https://mozilla.github.io/localForage/
-https://github.com/mozilla/localForage
-http://blog.teamtreehouse.com/using-localforage-offline-data-storage
-</pre>
 	
 		<div class="panel panel-success">
 			<div class="panel-heading">
 				<h1>localForage methods</h1>
 			</div>
+			
+		<div class="panel-body">
+			<label class="col-sm-2 col-md-2">DB name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="dbname" value=""/>
+			</div>
+<pre>
+localforage
+db1
+</pre>			
+		</div>
 			
 			key or keyIndex:<input class="form-control" id="key" type="text" value="">
 			value:<input class="form-control" id="value" type="text" value="">
@@ -88,14 +102,24 @@ http://blog.teamtreehouse.com/using-localforage-offline-data-storage
 			<button id="localforage-iterate" class="btn btn-primary">iterate</button>
 		</div>
 		
-		<div class="panel panel-info" id="list"></div>
 
+		<div class="panel panel-success">
+<button id="btn-list-localstorage" class="btn btn-primary">list localStorage</button>
+<button id="localstorage-btn1" class="btn btn-primary">clear localStorage</button>
+<button id="localstorage-btn2" class="btn btn-primary">add items in localStorage</button>
+		</div>
+<pre>
+https://mozilla.github.io/localForage/
+https://github.com/mozilla/localForage
+http://blog.teamtreehouse.com/using-localforage-offline-data-storage
+</pre>
 
 	</div><!-- end container -->
 
 </body>
+
 <script>
-	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
-	func.log(logMsg);
+	//var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
+	//func.log(logMsg);
 </script>
 </html>
