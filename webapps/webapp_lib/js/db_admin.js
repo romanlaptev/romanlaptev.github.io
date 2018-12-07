@@ -22,7 +22,8 @@ console.log("_vars:", _vars);
 
 var res = initCache();
 window.onload = function(e){
-console.log("onLoad", e);
+//console.log("onLoad", e);
+
 //---------------------------------
 		var ua = document.getElementById("ua");
 		var tpl = ua.innerHTML;
@@ -44,17 +45,19 @@ console.log("onLoad", e);
 };//end window.load	
 
 function runApp(){
-console.log("function runApp()");
+//console.log("function runApp()");
+	_vars["inputKey"] = func.getById("input-key");
+	_vars["inputVal"] = func.getById("input-value");
+	
+	$("#db-name").val( _vars["config"]["dbName"] );
+	
+	defineEvents();
 }//end runApp()
 
+/*
 $(document).ready(function(){
 console.log("Ready!", arguments);
 
-	// $("#btn-clear-log").on("click", function(e){
-		// e.preventDefault();
-		// $("#log").html("");
-	// });//end event
-	
 	// $(".btn-test").on("click", function(e){
 		// e.preventDefault();	
 		// var GET = parseGetParams(e.target.href);
@@ -65,155 +68,10 @@ console.log("Ready!", arguments);
 	// });//end event
 	
 });//end ready
-
+*/
 
 /*	
 window.onload = function(){
-
-	if( document.querySelector)
-	{
-		var list = document.querySelector("#list");
-		var input_key = document.querySelector("#key");
-		var input_value = document.querySelector("#value");
-	}
-	else
-	{
-		var list = document.getElementById("list");
-		var input_key = document.getElementById("key");
-		var input_value = document.getElementById("value");
-	}
-
-	localforage.length(function(err, numberOfKeys) {
-console.log(numberOfKeys);
-console.dir(err);
-		out = 'length of the database - ' + numberOfKeys;
-		list.innerHTML = out;
-	});
-	
-	document.getElementById("localstorage-btn1").onclick = function(){
-		var test = test_storage();
-		if (!test)
-		{
-alert("Your browser does not have support localStorage");
-		}
-		else
-		{
-//alert("LocalStorage is supported");
-			localStorage.clear();
-console.log(window.localStorage);
-			document.getElementById("btn-list-localstorage").click();
-		}
-	}
-	
-	document.getElementById("localstorage-btn2").onclick = function(){
-		var test = test_storage();
-		if (!test) {
-alert("Your browser does not have support localStorage");
-		} else {
-			
-			try {
-				localStorage.setItem("a", 1);
-				localStorage.setItem("b", 2);
-				localStorage["c"] = 3;
-			} catch (e) {
-				if (e.description == 'QUOTA_EXCEEDED_ERR') {
-					alert('localStorage: QUOTA_EXCEEDED_ERR');
-				} else {
-					alert('localStorage: undefined error');
-				}
-			}
-			
-console.log(window.localStorage);
-			document.getElementById("btn-list-localstorage").click();
-		}
-	}//end event
-	
-	document.getElementById("btn-list-localstorage").onclick = function(){
-		var out = "";
-		
-//console.log(localStorage.remainingSpace);		
-		if( localStorage.remainingSpace ){
-			out += "remainingSpace = " + localStorage.remainingSpace + " bytes<br>";
-		} else {
-			out += "max size: (1024 * 1024 * 5) bytes <br>";
-		}
-		out += "data length = " + localStorage.length + "<br>";
-
-		for(var item in localStorage){
-			out += "<li>";
-			out += item + " = " + localStorage[item];
-			out += "</li>";
-		}
-		//list.innerHTML = out;
-		func.log(out);		
-		
-	}//end event
-
-	document.getElementById("localforage-set").onclick = function(){
-		var key = input_key.value;
-		var value = input_value.value;
-		var out = "";
-        localforage.setItem(key, value, function() {
-console.log('Saved: ' + value);
-			out = 'Saved: ' + value;
-			list.innerHTML = out;
-         });
-	}//end event
-
-	document.getElementById("btn-localforage-get").onclick = function(){
-		var key = input_key.value;
-		var out = "";
-        localforage.getItem(key, function(err, readValue) {
-console.log('Read: ', readValue);
-			out = 'Read ' + key + " = " + readValue;
-			//list.innerHTML = out;
-			func.log(out);
-         });
-	}//end event
-	
-	document.getElementById("localforage-remove").onclick = function(){
-		var key = input_key.value;
-		var out = "";
-        localforage.removeItem(key, function(err) {
-console.log("Remove " +key);
-console.dir(err);
-			out = 'Remove ' + key;
-			list.innerHTML = out;
-         });
-	}//end event
-	
-	document.getElementById("localforage-clear").onclick = function(){
-		var out = "";
-		localforage.clear(function(err) {
-console.log('Clear storage');
-console.dir(err);
-			out = 'Clear storage ';
-			list.innerHTML = out;
-		});
-	}//end event
-
-	document.getElementById("localforage-key").onclick = function(){
-//Get the name of a key based on its ID.	
-		var keyIndex = parseInt( input_key.value );
-		localforage.key( keyIndex, function(err, keyName) {
-console.log(keyName);
-			out = 'keyName ' + keyName;
-			list.innerHTML = out;
-		});
-		 
-	}//end event
-	
-	document.getElementById("btn-localforage-keys").onclick = function(){
-		// An array of all the key names.
-		//var keyIndex = input_key.value;
-		localforage.keys( function(err, keys) {
-console.log(keys);
-			out = keys;
-			//list.innerHTML = out;
-			func.log( out );
-		});
-	}//end event
-	
 
 	
 	document.getElementById("localforage-iterate").onclick = function(){
@@ -282,10 +140,11 @@ console.log( "localforage config: ", localforage._config );
 console.log( "localforage version: " + localforage._config.version );
 			});
 
-			localforage.length(function(err, numberOfKeys) {
-console.log('localforage number of keys - ' + numberOfKeys);
-console.dir(err);
-			});
+			// localforage.length(function(err, numberOfKeys) {
+// console.log('localforage number of keys - ' + numberOfKeys);
+// console.dir(err);
+			// });
+			
 			return true;
 }//end initCache()
 
@@ -362,3 +221,145 @@ function runTests(){
 
 	_vars["tests"]["html"] = html;
 }//end runTests()
+
+function defineEvents(){
+	
+	$("#btn-clear-log").on("click", function(e){
+		e.preventDefault();
+		$("#log").html("");
+	});//end event
+	
+
+//-------------------------------------	
+	document.getElementById("btn-add-localstorage").onclick = function(){
+		try {
+			localStorage.setItem("a", 1);
+			localStorage.setItem("b", 2);
+			localStorage["c"] = 3;
+		} catch (e) {
+			if (e.description == 'QUOTA_EXCEEDED_ERR') {
+				func.log('localStorage: QUOTA_EXCEEDED_ERR');
+			} else {
+				func.log('localStorage: undefined error');
+			}
+		}
+console.log(window.localStorage);
+		document.getElementById("btn-list-localstorage").click();
+	}//end event
+	
+//-------------------------------------	
+	document.getElementById("btn-clear-localstorage").onclick = function(){
+		localStorage.clear();
+console.log(window.localStorage);
+		document.getElementById("btn-list-localstorage").click();
+	}//end event
+	
+//-------------------------------------	
+	document.getElementById("btn-list-localstorage").onclick = function(){
+		var out = "";
+//console.log(localStorage.remainingSpace);		
+
+		if( localStorage.remainingSpace ){
+			out += "remainingSpace = " + localStorage.remainingSpace + " bytes<br>";
+		} else {
+			out += "max size: (1024 * 1024 * 5) bytes <br>";
+		}
+		out += "data length = " + localStorage.length + "<br>";
+
+		for(var item in localStorage){
+			out += "<li>";
+			out += item + " = " + localStorage[item];
+			out += "</li>";
+		}
+		
+		func.log("");
+		func.log(out);		
+	}//end event
+	
+//==================================
+
+//-------------------------------------	
+	document.getElementById("btn-localforage-keys").onclick = function(){
+		// An array of all the key names.
+		localforage.keys( function(err, keys) {
+console.log(keys);
+
+			out = "<ol>";
+			for(var n = 0; n < keys.length; n++){
+				out += "<li>";
+				out += "key: " + keys[n];
+				out += "</li>";
+			}
+			out += "</ol>";
+			
+			func.log( out );
+		});
+	}//end event
+
+//-------------------------------------	
+	document.getElementById("localforage-key").onclick = function(){
+//Get the name of a key based on its ID.	
+		//var keyIndex = parseInt( input_key.value );
+		var keyIndex = _vars["inputKey"].value;
+//console.log(keyIndex);	
+		localforage.key( keyIndex, function(err, keyName) {
+console.log(keyName);
+			out = "<p>keyName " + keyName + "</p>";
+			func.log( out );
+		});
+	}//end event
+	
+//-------------------------------------	
+	document.getElementById("localforage-set").onclick = function(){
+		var key = _vars["inputKey"].value;
+		var value = _vars["inputVal"].value;
+		
+		var out = "";
+        localforage.setItem(key, value, function() {
+			_vars["logMsg"] = "Saved key " + key + ", value: " + value;
+console.log(_vars["logMsg"]);
+			out = "<p>"+_vars["logMsg"]+"</p>";
+			func.log( out );
+		});
+	}//end event
+
+//-------------------------------------
+	document.getElementById("btn-localforage-get").onclick = function(){
+		var key = _vars["inputKey"].value;
+		
+		var out = "";
+		localforage.getItem(key, function(err, readValue) {
+			_vars["logMsg"] = "Read key " + key ;
+console.log( _vars["logMsg"] + ", value: ", readValue);
+			out = "<p>"+ _vars["logMsg"] +"</p>";
+			func.log(out);
+		});
+	}//end event
+
+//-------------------------------------
+	document.getElementById("localforage-remove").onclick = function(){
+		var key = _vars["inputKey"].value;
+		var out = "";
+        localforage.removeItem(key, function(err) {
+			_vars["logMsg"] = "Remove key " + key ;
+console.log(_vars["logMsg"]);
+console.dir(err);
+			out = "<p>"+ _vars["logMsg"] +"</p>";
+			func.log(out);
+		});
+	}//end event
+
+//-------------------------------------
+	document.getElementById("localforage-clear").onclick = function(){
+		var out = "";
+		localforage.clear(function(err) {
+			_vars["logMsg"] = "Clear storage " + localforage._config.name ;
+console.log( _vars["logMsg"] );
+console.dir(err);
+			out = "<p>"+ _vars["logMsg"] +"</p>";
+			func.log(out);
+		});
+		
+	}//end event
+
+}//end defineEvents()

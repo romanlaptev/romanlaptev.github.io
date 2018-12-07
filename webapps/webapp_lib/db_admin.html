@@ -82,37 +82,39 @@ margin: 0;
 		<div class="panel-body">
 			<label class="col-sm-2 col-md-2">DB name:</label>
 			<div class="col-sm-4 col-md-4">
-				<input class="form-control" id="dbname" value=""/>
+				<input class="form-control" id="db-name" value=""/>
 			</div>
-<pre>
-localforage
-db1
-</pre>			
 		</div>
 			
-			key or keyIndex:<input class="form-control" id="key" type="text" value="">
-			value:<input class="form-control" id="value" type="text" value="">
+			key or keyIndex:<input class="form-control" id="input-key" type="text" value="">
+			value:<input class="form-control" id="input-value" type="text" value="">
 			
 			<button id="localforage-set" class="btn btn-info">set item</button>
 			<button id="btn-localforage-get" class="btn btn-info">get item</button>
 			<button id="localforage-remove" class="btn btn-danger">remove item</button>
-			<button id="localforage-clear" class="btn btn-danger">clear storage</button>
-			<button id="localforage-key" class="btn btn-primary">key</button>
+			
 			<button id="btn-localforage-keys" class="btn btn-primary">all keys</button>
+			<button id="localforage-key" class="btn btn-default">key by keyIndex</button>
+			
 			<button id="localforage-iterate" class="btn btn-primary">iterate</button>
-		</div>
-		
-
-		<div class="panel panel-success">
-<button id="btn-list-localstorage" class="btn btn-primary">list localStorage</button>
-<button id="localstorage-btn1" class="btn btn-primary">clear localStorage</button>
-<button id="localstorage-btn2" class="btn btn-primary">add items in localStorage</button>
-		</div>
+			<button id="localforage-clear" class="btn btn-danger">clear storage</button>
+			
 <pre>
 https://mozilla.github.io/localForage/
 https://github.com/mozilla/localForage
 http://blog.teamtreehouse.com/using-localforage-offline-data-storage
 </pre>
+		</div><!-- end panel -->
+		
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h1>Local storage methods</h1>
+			</div>
+<button id="btn-list-localstorage" class="btn btn-primary">list localStorage</button>
+<button id="btn-add-localstorage" class="btn btn-primary">add items in localStorage</button>
+<button id="btn-clear-localstorage" class="btn btn-primary">clear localStorage</button>
+		</div><!-- end panel -->
 
 	</div><!-- end container -->
 
