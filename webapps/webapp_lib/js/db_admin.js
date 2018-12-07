@@ -107,10 +107,25 @@ function initCache(){
 
 			localforage.ready(function() {
 console.log('localForage ready');
-console.log('localforage.driver():', localforage.driver());
 
+				_vars["logMsg"] = "localforage.driver():" + localforage.driver();
+//console.log( _vars["logMsg"] );
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] +"</p>");
+
+				_vars["logMsg"] = "localforage DB name: " + localforage._config.name;
+//console.log( _vars["logMsg"] );
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] +"</p>");
+				
+				_vars["logMsg"] = "localforage version: " + localforage._config.version;
+//console.log( _vars["logMsg"] );
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] +"</p>");
+				
+				_vars["logMsg"] = "localforage size: " + localforage._config.size;
+//console.log( _vars["logMsg"] );
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] +"</p>");
+				
+				
 console.log( "localforage config: ", localforage._config );
-console.log( "localforage version: " + localforage._config.version );
 			});
 
 			// localforage.length(function(err, numberOfKeys) {
@@ -324,9 +339,26 @@ console.log(_vars["logMsg"]);
 		
 		var out = "";
 		localforage.getItem(key, function(err, readValue) {
-			_vars["logMsg"] = "Read key " + key ;
+			_vars["logMsg"] = "Read key <b>" + key + "</b>";
 console.log( _vars["logMsg"] + ", value: ", readValue);
+			
 			out = "<p>"+ _vars["logMsg"] +"</p>";
+			
+//console.log( typeof readValue);
+			if( typeof readValue === "object"){
+				//var jsonStr = JSON.stringify( readValue );
+				
+				//https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+				if (Object.assign) {				
+					var _obj = Object.assign({},  readValue );//associative array copy to object
+					var jsonStr = JSON.stringify( _obj );
+	console.log( jsonStr );
+					out += "<div>"+ jsonStr +"</div>";
+				} else {
+					out += "this browser not support <b>Object.assign()</b>, not show read value.....";
+				}
+			}
+			
 			func.log(out);
 		});
 	}//end event
