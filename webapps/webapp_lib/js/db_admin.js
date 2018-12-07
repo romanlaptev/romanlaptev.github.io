@@ -6,7 +6,7 @@ var _vars = {
 	"logMsg": "",
 	"config": {
 		"useCache": true,
-		"dbName": "db1"
+		"dbName": "db1", //"localforage"
 	},
 	"tests": {
 		"indexedDB": false,
@@ -48,6 +48,7 @@ function runApp(){
 //console.log("function runApp()");
 	_vars["inputKey"] = func.getById("input-key");
 	_vars["inputVal"] = func.getById("input-value");
+	_vars["inputDBname"] = func.getById("db-name");
 	
 	$("#db-name").val( _vars["config"]["dbName"] );
 	
@@ -70,44 +71,16 @@ console.log("Ready!", arguments);
 });//end ready
 */
 
-/*	
-window.onload = function(){
-
-	
-	document.getElementById("localforage-iterate").onclick = function(){
-    // Resulting key/value pair -- this callback
-    // will be executed for every item in the
-    // database.
-		var out = "";
-		localforage.iterate(function(value, key, iterationNumber) {
-console.log([key, value]);
-			out += "<p>" + key + ' - ' + value + "</p>";
-		}, function(err) {
-			if (!err) {
-console.log('Iteration has completed');
-				out += '<p>Iteration has completed</p>';
-			}
-			list.innerHTML = out;
-		});
-		
-	}//end event
-	
-
-};//end window.load	
-*/
-
 function initCache(){
-	
 	runTests();
-
 	if ( !_vars["tests"]["localStorage"] &&
 			!_vars["tests"]["WebSQL"] &&
 				!_vars["tests"]["indexedDB"]){
 		_vars["config"]["useCache"] = false;
 		return false;
 	}
-
 //-----------------	
+
 	var _driver = [];
 	if( _vars["tests"]["indexedDB"] ){
 		_driver.push(localforage.INDEXEDDB);
@@ -229,6 +202,23 @@ function defineEvents(){
 		$("#log").html("");
 	});//end event
 	
+	// $("#btn-change-db-name").on("click", function(e){
+		// e.preventDefault();
+		
+		// //localforage.config({
+			// //name: _vars["inputDBname"].value
+		// //});
+		// localforage._config.name = _vars["inputDBname"].value;
+		
+		// _vars["logMsg"] = "db name: <b>" + localforage._config.name +"</b>";
+// console.log( _vars["logMsg"] );
+// console.log( "localforage config: ", localforage._config );
+			
+		// var out = "<p>" +_vars["logMsg"]+"</p>";
+		// func.log( out );
+
+	// });//end event
+	
 
 //-------------------------------------	
 	document.getElementById("btn-add-localstorage").onclick = function(){
@@ -278,13 +268,18 @@ console.log(window.localStorage);
 	
 //==================================
 
+
 //-------------------------------------	
 	document.getElementById("btn-localforage-keys").onclick = function(){
 		// An array of all the key names.
 		localforage.keys( function(err, keys) {
 console.log(keys);
 
-			out = "<ol>";
+			_vars["logMsg"] = "db name: <b>" + localforage._config.name +"</b>";
+console.log( _vars["logMsg"] );
+			
+			out = "<p>" +_vars["logMsg"]+"</p>";
+			out += "<ol>";
 			for(var n = 0; n < keys.length; n++){
 				out += "<li>";
 				out += "key: " + keys[n];
@@ -347,6 +342,24 @@ console.dir(err);
 			out = "<p>"+ _vars["logMsg"] +"</p>";
 			func.log(out);
 		});
+	}//end event
+
+//-------------------------------------
+	document.getElementById("localforage-iterate").onclick = function(){
+	// Resulting key/value pair -- this callback
+	// will be executed for every item in the database.
+		var out = "";
+		localforage.iterate(function(value, key, iterationNumber) {
+console.log([key, value]);
+			out += "<p>" + key + ' - ' + value + "</p>";
+		}, function(err) {
+			if (!err) {
+console.log('Iteration has completed');
+				out += '<p>Iteration has completed</p>';
+			}
+			func.log(out);
+		});
+		
 	}//end event
 
 //-------------------------------------
