@@ -1147,10 +1147,8 @@ console.log( _vars["logMsg"] );
 						//"xml": storage.tables["book_filename"]["xml"]
 					//});
 					
-					node["book_files"] = _getBookFiles({
-						"nid" :node["nid"],
-						"files": storage.tables["book_filename"]["obj"]
-					});
+					var _nid = node["nid"];	
+					node["book_files"] = storage.tables["book_filename"]["obj"][_nid];
 					
 
 /*
@@ -2091,22 +2089,6 @@ console.log( _vars["logMsg"] );
 			return files;
 		}//end _getBookFilesXML_()
 */
-
-		function _getBookFiles( opt ){
-//console.log("function _getBookFiles", opt);
-			var p = {
-				"nid": null,
-				"files": null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-
-			var nid = p["nid"];	
-			return p["files"][nid];
-		}//end _getBookFiles()
 
 		
 		function _getBookUrlXML( opt ){
