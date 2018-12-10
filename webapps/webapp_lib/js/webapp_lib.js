@@ -180,7 +180,7 @@ _vars["info"].push(logMsg);
 				
 				var res = storage.init();
 //for TEST!!!
-//res = false;
+res = false;
 				if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
@@ -216,6 +216,7 @@ _vars["info"].push(logMsg);
 					load_xml({
 						filename : config["xml_file"],
 						dataType: "text",
+						//dataType: "xml",
 						callback: function(data){
 //console.log(typeof data, data[0]);
 
@@ -230,6 +231,7 @@ func.log(logMsg);
 								"xml":data
 							});
 							_loadApp();
+							
 							//after_load( data );
 						}
 					});
@@ -381,11 +383,11 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 						"time" : runTime
 					};
 					
-					//_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
-					//_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
-					//_vars["logMsg"] += ", <b>state</b>: " + state;
-//func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-//console.log( _vars["logMsg"] );
+					_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
+					_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
+					_vars["logMsg"] += ", <b>state</b>: " + state;
+func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
 
 					//if( _vars["waitWindow"] ){
 						//_vars["waitWindow"].style.display="none";
@@ -948,7 +950,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 
 		function _parseXML( opt ){
-//console.log("function _parseXML", opt);
+console.log("function _parseXML", opt);
 			var p = {
 				"xml" : null
 			};
@@ -971,16 +973,26 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 			}//next
 */
 
-
+//---------------------------- load nodes
 			var tableName = "nodes";
 			table_name = "table_node";
+			
+var timeStart = new Date();
+
 			storage.tables[tableName] = {
 				//"records": storage.tables[tableName].getRecords({
 					//"xml": $(p.xml).find( table_name ).find('node')
 				//})
 				"xml": $(p.xml).find( table_name ).find('node')
 			};
-
+			
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			
+_vars["logMsg"] = "- _parseXML(), load "+table_name+", runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//---------------------------- 
 
 			var tableName = "book_filename";
 			table_name = "table_book_filename";
@@ -1011,11 +1023,24 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				"xml": $(p.xml).find( table_name ).find('record')
 			};
 
+//---------------------------- load taxonomy_term_data
 			var tableName = "taxonomy_term_data";
 			table_name = "taxonomy_term_data";
+			
+var timeStart = new Date();
+
 			storage.tables[tableName] = {
 				"xml": $(p.xml).find( table_name ).find('termin')
 			};
+			
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			
+_vars["logMsg"] = "- _parseXML(), load "+tableName+", runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//---------------------------- 
+
 
 			var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
@@ -1023,15 +1048,52 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 				"xml": $(p.xml).find( table_name ).find('termin')
 			};
 
+
 			var tableName = "taxonomy_vocabulary";
 			table_name = "taxonomy_vocabulary";
 			storage.tables[tableName] = {
 				"xml": $(p.xml).find( table_name ).find('record')
 			};
 
+
+//---------------------------- parse taxonomy object
+var timeStart = new Date();
+
 			_vars["taxonomy"] = __formTaxonomyObj();
+			
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			
+_vars["logMsg"] = "- _parseXML(), parse <b>taxonomy object</b>, runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//---------------------------- 
+			
+//---------------------------- parse nodes object
+var timeStart = new Date();
+
 			_vars["nodes"] = __formNodesObj();
+			
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			
+_vars["logMsg"] = "- _parseXML(), parse <b>nodes object</b>, runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//---------------------------- 
+			
+//---------------------------- parse hierarchy object
+var timeStart = new Date();
+
 			_vars["hierarchyList"] = __formHierarchyList();
+			
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+			
+_vars["logMsg"] = "- _parseXML(), parse <b>hierarchy object</b>, runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+//---------------------------- 
 			
 			function __formNodesObj(){
 
@@ -1064,12 +1126,13 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 						"taxonomy": _vars["taxonomy"]
 					});
 
-					node["book_files"] = _getBookFilesXML({
+					node["book_files"] = _getBookFilesXML_({
 						"nid" :node["nid"],
 						"xml": storage.tables["book_filename"]["xml"]
 					});
 					
 
+/*
 					node["book_url"] = _getBookUrlXML({
 						"nid" :node["nid"],
 						"xml": storage.tables["book_url"]["xml"]
@@ -1079,7 +1142,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 						"nid" :node["nid"],
 						"xml": storage.tables["book_links"]["xml"]
 					});
-
+*/
 //-----------------				
 
 					nodes.push( node );
@@ -1962,6 +2025,52 @@ console.log( _vars["logMsg"] );
 
 			return files;
 		}//end _getBookFilesXML()
+
+
+		function _getBookFilesXML_( opt ){
+//console.log("function _getBookFilesXML_", opt);
+			var p = {
+				"nid": null,
+				"xml": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+			var files = [];
+//console.log(p["xml"][0]);
+//console.log( $(p["xml"][0]).attr("entity_id"));
+//console.log( "child: ", p["xml"][0].childNodes);
+
+			for(var n = 0; n < p["xml"].length; n++){
+				var entityId = p["xml"][n].getAttribute("entity_id");
+//console.log( "entity_id: ", entityId);
+
+				if( p["nid"] === entityId ){
+
+					for (var n2 = 0; n2 < p["xml"][n].childNodes.length; n2++) {
+						var nodeXML = p["xml"][n].childNodes.item(n2);
+///console.log( "nodeType: "+ nodeXML.nodeType);
+						if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
+							continue;
+						}
+//console.log( nodeXML, typeof nodeXML);
+	if ("textContent" in nodeXML ){
+		var _value = nodeXML.textContent;
+	} else {
+		var _value = nodeXML.text;
+	}
+//console.log( _value );
+
+						files.push( _value );
+					}//next
+				}
+
+			}//next
+
+			return files;
+		}//end _getBookFilesXML_()
 
 		
 		function _getBookUrlXML( opt ){
