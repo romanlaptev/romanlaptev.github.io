@@ -1000,7 +1000,8 @@ console.log( _vars["logMsg"] );
 				//"records": storage.tables[tableName].getRecords({
 					//"xml": $(p.xml).find( table_name ).find('item')
 				//})
-				"xml": $(p.xml).find( table_name ).find('item')
+				"xml": $(p.xml).find( table_name ).find('item'),
+				"obj": __formFilenameObj( $(p.xml).find( table_name ).find('item') )
 			};
 
 			var tableName = "book_url";
@@ -1095,6 +1096,21 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 //---------------------------- 
 			
+			function __formFilenameObj(xml){
+				var obj = {};
+				$(xml).each(function(){
+//console.log( $(this), arguments );
+					var entityId = $(this).attr("entity_id");
+					if( !obj[entityId] ){
+						obj[entityId] = [];
+					}
+					obj[entityId].push( $(this).children("value").text().trim() );
+				});//next
+//console.log( xml, obj );
+				
+				return obj;
+			}//end __formFilenameObj()
+			
 			function __formNodesObj(){
 
 				var xml = {
@@ -1126,9 +1142,14 @@ console.log( _vars["logMsg"] );
 						"taxonomy": _vars["taxonomy"]
 					});
 
-					node["book_files"] = _getBookFilesXML_({
+					//node["book_files"] = _getBookFilesXML({
+						//"nid" :node["nid"],
+						//"xml": storage.tables["book_filename"]["xml"]
+					//});
+					
+					node["book_files"] = _getBookFiles({
 						"nid" :node["nid"],
-						"xml": storage.tables["book_filename"]["xml"]
+						"files": storage.tables["book_filename"]["obj"]
 					});
 					
 
@@ -2026,7 +2047,7 @@ console.log( _vars["logMsg"] );
 			return files;
 		}//end _getBookFilesXML()
 
-
+/*
 		function _getBookFilesXML_( opt ){
 //console.log("function _getBookFilesXML_", opt);
 			var p = {
@@ -2069,6 +2090,23 @@ console.log( _vars["logMsg"] );
 
 			return files;
 		}//end _getBookFilesXML_()
+*/
+
+		function _getBookFiles( opt ){
+//console.log("function _getBookFiles", opt);
+			var p = {
+				"nid": null,
+				"files": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+
+			var nid = p["nid"];	
+			return p["files"][nid];
+		}//end _getBookFiles()
 
 		
 		function _getBookUrlXML( opt ){
