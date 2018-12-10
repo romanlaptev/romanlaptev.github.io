@@ -2048,7 +2048,6 @@ console.log( _vars["logMsg"] );
 //console.log( "entity_id: ", entityId);
 
 				if( p["nid"] === entityId ){
-
 					for (var n2 = 0; n2 < p["xml"][n].childNodes.length; n2++) {
 						var nodeXML = p["xml"][n].childNodes.item(n2);
 ///console.log( "nodeType: "+ nodeXML.nodeType);
@@ -2056,13 +2055,12 @@ console.log( _vars["logMsg"] );
 							continue;
 						}
 //console.log( nodeXML, typeof nodeXML);
-	if ("textContent" in nodeXML ){
-		var _value = nodeXML.textContent;
-	} else {
-		var _value = nodeXML.text;
-	}
+						if ("textContent" in nodeXML ){
+							var _value = nodeXML.textContent;
+						} else {
+							var _value = nodeXML.text;
+						}
 //console.log( _value );
-
 						files.push( _value );
 					}//next
 				}
