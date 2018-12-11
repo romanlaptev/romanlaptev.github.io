@@ -950,7 +950,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 
 
 		function _parseXML( opt ){
-console.log("function _parseXML", opt);
+//console.log("function _parseXML", opt);
 			var p = {
 				"xml" : null
 			};
@@ -960,18 +960,6 @@ console.log("function _parseXML", opt);
 			}
 //console.log(p);
 
-/*
-			for(var tableName in storage.tables){
-//console.log(tableName, storage.tables[tableName]);
-
-				storage.tables[tableName] = {
-					"records": []
-				};
-				var records = storage.tables[tableName]["records"];
-				records.push({"a":1});
-				
-			}//next
-*/
 
 //---------------------------- load nodes
 			var tableName = "nodes";
@@ -1000,28 +988,48 @@ console.log( _vars["logMsg"] );
 				//"records": storage.tables[tableName].getRecords({
 					//"xml": $(p.xml).find( table_name ).find('item')
 				//})
-				"xml": $(p.xml).find( table_name ).find('item'),
-				"obj": __formFilenameObj( $(p.xml).find( table_name ).find('item') )
+				//"xml": $(p.xml).find( table_name ).find('item'),
+				"obj": __convertXmlToObj({
+					"idKey": "entity_id",
+					"valueKey": "value",
+					"type": "getChildNode", //get attribute value or value child node
+					"xml": $(p.xml).find( table_name ).find('item')
+				})
 			};
 
 			var tableName = "book_url";
 			table_name = "table_book_url";
 			storage.tables[tableName] = {
-				"xml": $(p.xml).find( table_name ).find('item')
+				"obj": __convertXmlToObj({
+					"idKey": "entity_id",
+					"valueKey": "value",
+					"type": "getChildNode", //get attribute value or value child node
+					"xml": $(p.xml).find( table_name ).find('item')
+				})
 			};
 
 
 			var tableName = "book_links";
 			table_name = "table_book_links";
 			storage.tables[tableName] = {
-				"xml": $(p.xml).find( table_name ).find('item')
+				"obj": __convertXmlToObj({
+					"idKey": "entity_id",
+					"valueKey": "value",
+					"type": "getChildNode", //get attribute value or value child node
+					"xml": $(p.xml).find( table_name ).find('item')
+				})
 			};
 
 
 			var tableName = "taxonomy_index";
 			table_name = "taxonomy_index";
 			storage.tables[tableName] = {
-				"xml": $(p.xml).find( table_name ).find('record')
+				"obj": __convertXmlToObj({
+					"idKey": "nid",
+					"valueKey": "tid",
+					"xml": $(p.xml).find( table_name ).find('record'),
+					"type": "getAttribute"//get attribute value or value child node
+				})
 			};
 
 //---------------------------- load taxonomy_term_data
@@ -1042,7 +1050,6 @@ func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 //---------------------------- 
 
-
 			var tableName = "taxonomy_term_hierarchy";
 			table_name = "taxonomy_term_hierarchy";
 			storage.tables[tableName] = {
@@ -1055,7 +1062,6 @@ console.log( _vars["logMsg"] );
 			storage.tables[tableName] = {
 				"xml": $(p.xml).find( table_name ).find('record')
 			};
-
 
 //---------------------------- parse taxonomy object
 var timeStart = new Date();
@@ -1095,27 +1101,60 @@ _vars["logMsg"] = "- _parseXML(), parse <b>hierarchy object</b>, runtime: <b>" +
 func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
 //---------------------------- 
-			
-			function __formFilenameObj(xml){
+
+			function __convertXmlToObj(opt){
+//console.log("function __convertXmlToObj", opt);
+				var p = {
+					"idKey": null,//nid="28"
+					"valueKey": null,//tid="38"
+					"xml": null,//<record nid="28" tid="38"/>....
+					"type": "getAttribute"//get attribute value or value child node
+				};
+				//extend p object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+				
+				var idKey = p["idKey"];
+				var valueKey = p["valueKey"];
+				var xml = p["xml"];
+				
 				var obj = {};
-				$(xml).each(function(){
-//console.log( $(this), arguments );
-					var entityId = $(this).attr("entity_id");
-					if( !obj[entityId] ){
-						obj[entityId] = [];
+				$(xml).each(function( index, value ){
+//console.log( $(this) );
+//console.log( index, value );
+					var key = $(this).attr(idKey);
+					
+					var _value = "";
+					if( p["type"] === "getChildNode"){
+						_value = $(this).children(valueKey).text().trim();
 					}
-					obj[entityId].push( $(this).children("value").text().trim() );
+					if( p["type"] === "getAttribute"){
+						_value = value.getAttribute(valueKey);
+//var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
+					}
+//console.log( "_value:", _value );
+					
+					if( _value.length > 0){
+						if( !obj[key] ){
+							obj[key] = [];
+						}
+						obj[key].push( _value );
+					}
+					
 				});//next
 //console.log( xml, obj );
 				
 				return obj;
-			}//end __formFilenameObj()
+			}//end __convertXmlToObj()
+			
 			
 			function __formNodesObj(){
 
 				var xml = {
-					"nodes": storage.tables["nodes"]["xml"],
-					"taxonomy_index": storage.tables["taxonomy_index"]["xml"]
+					"nodes": storage.tables["nodes"]["xml"]//,
+					//"taxonomy_index": storage.tables["taxonomy_index"]["xml"]
 				};
 
 				var nodes = [];
@@ -1138,30 +1177,24 @@ console.log( _vars["logMsg"] );
 //-----------------
 					node["termins"] = _getNodeTerminsXML({
 						"nid" :node["nid"],
-						"taxonomy_index": xml["taxonomy_index"],
+						"taxonomy_index": storage.tables["taxonomy_index"]["obj"],
 						"taxonomy": _vars["taxonomy"]
 					});
 
-					//node["book_files"] = _getBookFilesXML({
-						//"nid" :node["nid"],
-						//"xml": storage.tables["book_filename"]["xml"]
-					//});
-					
 					var _nid = node["nid"];	
-					node["book_files"] = storage.tables["book_filename"]["obj"][_nid];
 					
-
-/*
-					node["book_url"] = _getBookUrlXML({
-						"nid" :node["nid"],
-						"xml": storage.tables["book_url"]["xml"]
-					});
-
-					node["book_links"] = _getBookLinksXML({
-						"nid" :node["nid"],
-						"xml": storage.tables["book_links"]["xml"]
-					});
-*/
+					if( storage.tables["book_filename"]["obj"][_nid] ){
+						node["book_files"] = storage.tables["book_filename"]["obj"][_nid];
+					}
+					
+					if( storage.tables["book_url"]["obj"][_nid] ){
+						node["book_url"] = storage.tables["book_url"]["obj"][_nid];
+					}
+					
+					if( storage.tables["book_links"]["obj"][_nid] ){
+						node["book_links"] = storage.tables["book_links"]["obj"][_nid];
+					}
+					
 //-----------------				
 
 					nodes.push( node );
@@ -2185,17 +2218,16 @@ console.log( _vars["logMsg"] );
 				p[key] = opt[key];
 			}
 //console.log(p);
-			
 			var node_termins = [];
-			for( var n1 = 0; n1 < p["taxonomy_index"].length; n1++){
-				var test_nid = p["taxonomy_index"][n1].getAttribute("nid");
-				if( test_nid === p["nid"] ){
-					//if( typeof node_termins["tid"] === "undefined"){
-						//node_termins["tid"] = [];
-					//}
-					node_termins.push( {"tid" : p["taxonomy_index"][n1].getAttribute("tid") } );
+			for( var nid in p["taxonomy_index"]){
+				if( nid === p["nid"] ){
+					for( var n1 = 0; n1 < p["taxonomy_index"][nid].length; n1++){
+						var tid = p["taxonomy_index"][nid][n1];
+						node_termins.push( {"tid" : tid } );
+					}//next
 				}
-			}//next termin			
+			}//next
+
 
 			for( var voc in p["taxonomy"]){
 //console.log(  opt["taxonomy"][voc]);	
@@ -2209,7 +2241,7 @@ console.log( _vars["logMsg"] );
 					}//next tid
 				}//next 
 			}//next vocabulary
-			
+
 			return node_termins;
 		}//end _getNodeTerminsXML()
 
