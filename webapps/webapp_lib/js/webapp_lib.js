@@ -55,9 +55,13 @@ console.log("book obj:", book);
 			//"get_xml_nodes" : function( params ){
 				//return _get_xml_nodes( params );
 			//},
+			"getNodes" : function( opt ){
+				return _getNodes( opt );
+			},
 			"get_termin_nodes" : function( params ){
 				//return _get_termin_nodes( params );
-				return _getTerminNodesXML( params );
+				return _getTerminNodes( params );
+				//return _getTerminNodesXML( params );
 				//return _getTerminNodesJquery( params );
 				//return _getTerminNodesJS( params );
 				//return _getTerminNodesStorage(params);
@@ -158,21 +162,14 @@ _vars["info"].push(logMsg);
 					//callback: after_load
 					callback: function(data){
 //console.log(typeof data, data[0]);
-						after_load( data );
+						//after_load( data );
 						
-						//_parseXML({
-							//"xml":data
-						//});
-						//_loadApp();
+						_parseXML({
+							"xml":data
+						});
+						_loadApp();
 					}
 				});
-				
-/*
-				loadXml({
-					filename : config["xml_file"],
-					callback: after_load
-				});
-*/				
 			}
 			
 			
@@ -852,93 +849,7 @@ console.log( "Completed task: " + _numDone + " of total: " + _total, _percentCom
 					return false;
 				}
 			}//end _readNodesData()
-/*			
-			function _getNodes( params ) {
-				var nodes = [];
-
-				for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
-	//console.log( n, x_nodes[n] );
-					var node = {};
-					
-					//read node attributes
-					var item_attr = func.get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
-					for(var attr in item_attr){
-						node[attr] = item_attr[attr];
-					}//next attr
-				
-					var x_node = $( nodes_obj["x_nodes"][n] );
-					node["subfolder"] = x_node.children("subfolder").text().trim();
-					node["author"] = x_node.children("author").text();
-					node["bookname"] = x_node.children("bookname").text();
-					node["body_value"] = x_node.children("body_value").text();
-
-					//read node termins
-					for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
-						var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
-						if( test_nid === node["nid"] )
-						{
-							if( typeof node["tid"] === "undefined") {
-								node["tid"] = [];
-							}
-							node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
-						}
-					}//next termin
-					
-	//-----------------				
-					var params = {"nid" :node["nid"] };
-					node["termins"] = get_node_termins( params );
-					node["book_files"] = _getBookFilesXML( params );
-					node["book_url"] = _getBookUrlXML( params );
-					node["book_links"] = _getBookLinksXML( params );
-	//-----------------				
-					
-					nodes.push( node );
-				}//next node
-
-//var jsonData = JSON.stringify( nodes );
-//console.log( jsonData.length );
-				if ( config["use_localcache"] ) {
-					
-					var key = "nodes";
-
-					//storage.getItem(key, function(readValue, err){//try read store Nodes
-////console.log("--- _deferred_req(), get data...");						
-//console.log("- read "+key+" from storage...record: "+readValue.length);
-//console.log(err);
-
-						//if(readValue && readValue.length > 0){
-							
-							//if( _vars["updateStore"]){
-								//localforage.removeItem(key, function(err) {//remove old version store Nodes
-//console.log("- remove " +key);
-//console.dir(err);
-									//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
-//console.log("- save "+key+" to local storage...", value, err);
-									//});
-								 //});
-							//}
-
-
-						//} else {
-							//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
-//console.log("- save "+key+" to local storage...", value, err);
-							//});
-							
-						//}
-					//});
-
-
-//for TEST
-//					storage.putItem(key, nodes, function(value, err){//save new version store Nodes
-//console.log("- save "+key+" to local storage...", value, err);
-//					});
-					
-				}
-				
-				
-				return nodes;
-			}//end _getNodes()
-*/			
+			
 		};//end get_content()
 
 
@@ -1313,6 +1224,38 @@ if( typeof _vars["nodes"][node]["tid"] === "undefined")
 			return termin_nodes;
 		}//end _get_termin_nodes()
 */
+		function _getTerminNodes( opt ){
+//console.log(opt);
+			var p = {
+				"tid" : null,
+				"target" : null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+console.log(p);
+			if(!p.tid){
+_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+ //func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+				return false;
+			}
+		
+			//var terminNodes = [];
+			
+			nodes_obj.getNodes({
+				"postFunc": function( node ){
+console.log(nodes);
+					
+				}//end postFunc()
+			});
+			
+			
+//console.log(terminNodes, terminNodes.length);
+			//return terminNodes;
+		}//end _getTerminNodes()
+
 
 		function _getTerminNodesXML( opt ){
 //console.log(opt);
@@ -2237,6 +2180,107 @@ console.log( _vars["logMsg"] );
 
 			return node_termins;
 		}//end _getNodeTerminsXML()
+
+
+		function _getNodes( opt ) {
+console.log("function _getNodes()", opt);
+			var p = {
+				//"nid": null,
+				//"taxonomy_index": null,
+				//"taxonomy": null
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+console.log(p);
+
+/*			
+			var nodes = [];
+
+			for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
+//console.log( n, x_nodes[n] );
+				var node = {};
+				
+				//read node attributes
+				var item_attr = func.get_attr_to_obj(  nodes_obj["x_nodes"][n].attributes );
+				for(var attr in item_attr){
+					node[attr] = item_attr[attr];
+				}//next attr
+			
+				var x_node = $( nodes_obj["x_nodes"][n] );
+				node["subfolder"] = x_node.children("subfolder").text().trim();
+				node["author"] = x_node.children("author").text();
+				node["bookname"] = x_node.children("bookname").text();
+				node["body_value"] = x_node.children("body_value").text();
+
+				//read node termins
+				for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
+					var test_nid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
+					if( test_nid === node["nid"] )
+					{
+						if( typeof node["tid"] === "undefined") {
+							node["tid"] = [];
+						}
+						node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
+					}
+				}//next termin
+				
+//-----------------				
+				var params = {"nid" :node["nid"] };
+				node["termins"] = get_node_termins( params );
+				node["book_files"] = _getBookFilesXML( params );
+				node["book_url"] = _getBookUrlXML( params );
+				node["book_links"] = _getBookLinksXML( params );
+//-----------------				
+				
+				nodes.push( node );
+			}//next node
+
+//var jsonData = JSON.stringify( nodes );
+//console.log( jsonData.length );
+			if ( config["use_localcache"] ) {
+				
+				var key = "nodes";
+
+				//storage.getItem(key, function(readValue, err){//try read store Nodes
+////console.log("--- _deferred_req(), get data...");						
+//console.log("- read "+key+" from storage...record: "+readValue.length);
+//console.log(err);
+
+					//if(readValue && readValue.length > 0){
+						
+						//if( _vars["updateStore"]){
+							//localforage.removeItem(key, function(err) {//remove old version store Nodes
+//console.log("- remove " +key);
+//console.dir(err);
+								//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+//console.log("- save "+key+" to local storage...", value, err);
+								//});
+							 //});
+						//}
+
+
+					//} else {
+						//storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+//console.log("- save "+key+" to local storage...", value, err);
+						//});
+						
+					//}
+				//});
+
+
+//for TEST
+//					storage.putItem(key, nodes, function(value, err){//save new version store Nodes
+//console.log("- save "+key+" to local storage...", value, err);
+//					});
+				
+			}
+			
+			
+			return nodes;
+*/			
+		}//end _getNodes()
 
 
 		function _view_node( params ) {
@@ -3361,8 +3405,10 @@ _vars["timeStart"] = new Date();
 					});
 					
 					//if( _vars["termin_nodes"].length > 0){
-						_formBreadcrumb( target );
-						draw_page();
+					
+						//_formBreadcrumb( target );
+						//draw_page();
+						draw.buildPage({});
 						
 _vars["timeEnd"] = new Date();
 _vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
