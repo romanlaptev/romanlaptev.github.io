@@ -180,7 +180,7 @@ _vars["info"].push(logMsg);
 				
 				var res = storage.init();
 //for TEST!!!
-res = false;
+//res = false;
 				if( res ){//cache is available
 //----------- hide not used progress bar
 //$(_vars["loadProgressBar"]).parent().parent().hide();
@@ -375,30 +375,23 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				},				
 				
 				complete: function(xhr, state){
-//console.log("ajax load complete, ", arguments);
-					var timeEnd = new Date();
-					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-					
-					_vars["runtime"]["ajax_load"] = {
-						"time" : runTime
-					};
-					
-					_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
-					_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
-					_vars["logMsg"] += ", <b>state</b>: " + state;
-func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
-
-					//if( _vars["waitWindow"] ){
-						//_vars["waitWindow"].style.display="none";
-					//}
-					
+console.log("ajax load complete, ", xhr, state);
 				},
 				
 				success: function( data ){
 //_vars["logMsg"] = "Successful download xml file " + params["filename"];
 //func.log("<p class='alert alert-success'>" + _vars["logMsg"] + "</p>");
 //console.log( _vars["logMsg"] );
+
+					var timeEnd = new Date();
+					var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+					
+					_vars["logMsg"] = "ajax load " + params["filename"] + " complete";
+					_vars["logMsg"] += ", runtime: <b>" + runTime + "</b> sec";
+					_vars["logMsg"] += ", <b>state</b>: success";
+func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+
 					params.callback( data );	
 				},
 				
