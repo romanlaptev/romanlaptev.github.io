@@ -2253,7 +2253,39 @@ console.log(tid, terminNodes);
 						});
 							
 						//draw.buildPage({});
+/*						
+						if( _vars["GET"]["vid"] === "2" || _vars["GET"]["vid"] === "1"){
 							
+		if( _vars["GET"]["vid"] === "2" ){
+			var termins = _vars["taxonomy"]["library"]["termins"];
+		}
+		if( _vars["GET"]["vid"] === "1" ){
+			var termins = _vars["taxonomy"]["tags"]["termins"];
+		}
+		//console.log("TEST1", termins);			
+				
+							//view children termin
+							var html = taxonomy_obj.view_termin({
+								"termins": termins,
+								"vid": _vars["GET"]["vid"],
+								"tid": _vars["GET"]["tid"],
+								"recourse": true,
+								"show_only_children": false,
+								
+								"item_tpl": _vars["templates"]["taxonomy_list_item_tpl"],
+								"list_tpl": _vars["templates"]["taxonomy_list_tpl"]//,
+								
+								//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
+							});
+							
+							draw.buildBlock({
+								"locationID" : "block-taxonomy",
+								"templateID" : "tpl-block--tags",
+								"content" : html
+							});
+							
+						}
+*/
 	_vars["timeEnd"] = new Date();
 	_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 	_vars["logMsg"] = "<p>- nodes_obj.get_termin_nodes("+tid+"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";

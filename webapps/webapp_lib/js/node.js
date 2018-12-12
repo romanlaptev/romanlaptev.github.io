@@ -100,6 +100,15 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				terminNodes = _selectTerminNodes(p.tid, nodes);
 //console.log(terminNodes, terminNodes.length);
 
+				//------------------- SORT by author, alphabetical sorting
+				if( terminNodes.length > 0 ){
+					func.sortRecords({
+						"records" : terminNodes,
+						"sortOrder": "asc", //desc
+						"sortByKey": "author"
+					});
+				}
+
 				if( typeof p["callback"] === "function"){
 					p["callback"](terminNodes);
 				}
