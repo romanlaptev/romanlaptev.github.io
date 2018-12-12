@@ -1,6 +1,27 @@
 //=================================== DRAW methods
 var draw = {
 
+	"vars": {
+		"blockList": {
+			
+	//--------------------- BLOCK #sitename-block
+			"sitename-block":{ 
+				build: function(){
+					draw.buildBlock({
+						"locationID" : "sitename-block",
+						"templateID" : "tpl-block--sitename"//,
+						//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
+					});
+				},
+				state: "add"//"refresh"????
+			},
+	//---------------------
+				
+			"alphabetical": {}
+		}//end block list
+		
+	},//end vars
+
 	"buildPage": function(opt){
 		return _buildPage(opt);
 	},
@@ -9,7 +30,6 @@ var draw = {
 	}
 
 };//end draw
-//console.log("storage object:", storage);
 
 function _buildPage( opt ){
 console.log("_buildPage()");
@@ -27,14 +47,11 @@ console.log("_buildPage()");
 	}
 //console.log(p);
 
-//--------------------- BLOCK #sitename-block
-	draw.buildBlock({
-		"locationID" : "sitename-block",
-		"templateID" : "tpl-block--sitename"//,
-		//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
-	});
-//---------------------
-
+	if( draw.vars["blockList"]["sitename-block"].state === "add"){
+		draw.vars["blockList"]["sitename-block"].build();
+		draw.vars["blockList"]["sitename-block"].state = ""; //do not update static block!!!!
+	}
+	
 //--------------------- BLOCK alphabetical
 	lib.taxonomy.getTaxonomy({
 		"postFunc": function( taxonomy ){
