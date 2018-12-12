@@ -941,15 +941,25 @@ function _getNodes( opt ) {
 	}
 //console.log(p);
 
-	
-	var key = "nodes";
-	storage.getItem( key, function(readValue, err){
-//console.log("- read "+key+" from storage...",readValue);
-//console.log(err);
+	if( lib.vars["nodes"] ){
+		
 		if( typeof p["postFunc"] === "function"){
-			p["postFunc"]( readValue );//return
+			p["postFunc"]( lib.vars["nodes"] );//return
 		}
-	});
+		
+	} else {
+	
+		var key = "nodes";
+		storage.getItem( key, function(readValue, err){
+	//console.log("- read "+key+" from storage...",readValue);
+	//console.log(err);
+			if( typeof p["postFunc"] === "function"){
+				p["postFunc"]( readValue );//return
+			}
+		});
+		
+	}
+	
 	
 /*			
 	var nodes = [];
