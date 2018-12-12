@@ -2240,9 +2240,19 @@ _vars["timeStart"] = new Date();
 					});
 
 					function __postFunc( tid, terminNodes ){
-							//_formBreadcrumb( target );
-console.log(tid, terminNodes);							
-							draw.buildPage({});
+						//_formBreadcrumb( target );
+console.log(tid, terminNodes);
+						draw.buildBlock({
+							"locationID" : "block-node",
+							"templateID" : "tpl-block--termin-nodes",
+							"content" : nodes_obj.viewNodes({
+								"nodes": terminNodes,
+								"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
+								"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
+							})
+						});
+							
+						//draw.buildPage({});
 							
 	_vars["timeEnd"] = new Date();
 	_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;

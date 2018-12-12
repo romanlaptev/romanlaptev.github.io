@@ -36,31 +36,31 @@ var nodes_obj = {
 /*
 function _get_termin_nodes( params )
 {
-	if( typeof _vars["nodes"] === "undefined")
+	if( typeof lib.vars["nodes"] === "undefined")
 	{
-		var log = "- error, not found _vars[nodes], function get_termin_nodes()";
+		var log = "- error, not found lib.vars[nodes], function get_termin_nodes()";
 //console.log(message);
-		//_vars["info"].push( message );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+		//lib.vars["info"].push( message );
+lib.vars["logMsg"] = log;
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		
 		return;
 	}
 
 	var termin_nodes = [];
-	for( var node in _vars["nodes"] )
+	for( var node in lib.vars["nodes"] )
 	{
-if( typeof _vars["nodes"][node]["tid"] === "undefined")
+if( typeof lib.vars["nodes"][node]["tid"] === "undefined")
 {
 continue;
 }
-		for( var n = 0; n < _vars["nodes"][node]["tid"].length; n++)
+		for( var n = 0; n < lib.vars["nodes"][node]["tid"].length; n++)
 		{
-			if( params["tid"] === _vars["nodes"][node]["tid"][n] )
+			if( params["tid"] === lib.vars["nodes"][node]["tid"][n] )
 			{
-//console.log( node,  _vars["nodes"][node]  );
-				termin_nodes.push( _vars["nodes"][node] );
+//console.log( node,  lib.vars["nodes"][node]  );
+				termin_nodes.push( lib.vars["nodes"][node] );
 			}
 		}//next node tid
 	}//next node
@@ -83,9 +83,9 @@ function _getTerminNodes( opt ){
 //console.log(p);
 
 	if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		return false;
 	}
 
@@ -145,9 +145,9 @@ function _getTerminNodesXML( opt ){
 //console.log(p);
 
 	if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		return false;
 	}
 
@@ -194,19 +194,19 @@ function _getTerminNodesStorage( opt ){
 //console.log(p);
 
 	if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodesStorage()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodesStorage()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		return false;
 	}
 	var terminNodes = [];
 	
 //======================= TEST
-delete _vars["nodes"];
-delete _vars["xml"];
+delete lib.vars["nodes"];
+delete lib.vars["xml"];
 
 	//var taxonomy_index = [];
-	//var xml = _vars["xml"];
+	//var xml = lib.vars["xml"];
 	//var tableName = "table_taxonomy_index";
 	//$(xml).find( tableName ).find("item").each( function( num, element ){
 ////console.log(num, element);				
@@ -223,8 +223,8 @@ delete _vars["xml"];
 //console.log(arguments);				
 	//});
 
-	if( _vars["waitWindow"] ){
-		_vars["waitWindow"].style.display="block";
+	if( lib.vars["waitWindow"] ){
+		lib.vars["waitWindow"].style.display="block";
 	}
 
 
@@ -241,20 +241,20 @@ _deferred_req()
 	.then(
 		function(readValue, err){//A function that is called when the Deferred is resolved.
 //console.log( "Promise resolved.", arguments);
-			if( _vars["waitWindow"] ){
-				_vars["waitWindow"].style.display="none";
+			if( lib.vars["waitWindow"] ){
+				lib.vars["waitWindow"].style.display="none";
 			}
 console.log("--- continue of the execution process...");
 			if( readValue && readValue.length > 0){
-				_vars["termin_nodes"] = __getTerminNodes(readValue);
-				if( _vars["termin_nodes"].length > 0){
+				lib.vars["termin_nodes"] = __getTerminNodes(readValue);
+				if( lib.vars["termin_nodes"].length > 0){
 					_formBreadcrumb( p.target );
 					draw_page();
-_vars["timeEnd"] = new Date();
-_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-_vars["logMsg"] = "- nodes_obj.get_termin_nodes("+_vars["GET"]["tid"]+"), runtime: <b>" + _vars["runTime"] + "</b> sec";
-func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-//console.log( _vars["logMsg"] );
+lib.vars["timeEnd"] = new Date();
+lib.vars["runTime"] = (lib.vars["timeEnd"].getTime() - lib.vars["timeStart"].getTime()) / 1000;
+lib.vars["logMsg"] = "- nodes_obj.get_termin_nodes("+lib.vars["GET"]["tid"]+"), runtime: <b>" + lib.vars["runTime"] + "</b> sec";
+func.log("<p class='alert alert-info'>" + lib.vars["logMsg"] + "</p>");
+//console.log( lib.vars["logMsg"] );
 					
 				}
 			}
@@ -298,8 +298,8 @@ console.log(terminNodes);
 //console.log(readValue, err);	
 
 ////setTimeout(function(){
-	//if( _vars["waitWindow"] ){
-		//_vars["waitWindow"].style.display="none";
+	//if( lib.vars["waitWindow"] ){
+		//lib.vars["waitWindow"].style.display="none";
 	//}
 ////}, 1000*3);
 
@@ -364,14 +364,14 @@ function _getTerminNodesJquery(opt){
 //console.log(p);
 
 	if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodesJquery()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodesJquery()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		return false;
 	}
 		
 	var terminNodes = [];
-	var xml = _vars["xml"];
+	var xml = lib.vars["xml"];
 
 	var tableName = "table_taxonomy_index";
 	$(xml).find( tableName ).find("item").each( function( num, element ){
@@ -458,14 +458,14 @@ function _getTerminNodesJS(opt){
 //console.log(p);
 
 	if(!p.tid){
-_vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		return false;
 	}
 		
 	var terminNodes = [];
-	var xml = _vars["xml"];
+	var xml = lib.vars["xml"];
 
 	var tableName = "table_taxonomy_index";
 	var xmlDoc = xml.getElementsByTagName( tableName );
@@ -611,16 +611,16 @@ function _searchNodes( opt ){
 //console.log(p);
 
 	if(!p.keyword){
-_vars["logMsg"] = "error, not found search keyword, _searchNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found search keyword, _searchNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 		return false;
 	}
 
 	if(!p.targetField){
-_vars["logMsg"] = "error, not found search 'targetField', _searchNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error, not found search 'targetField', _searchNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 		return false;
 	}
 
@@ -655,10 +655,10 @@ console.log( _vars["logMsg"] );
 	}
 
 //console.log(nodes, nodes.length);
-_vars["logMsg"] = "- найдено книг: "+ nodes.length;
+lib.vars["logMsg"] = "- найдено книг: "+ nodes.length;
 func.log("");
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 	return nodes;
 }//end _searchNodes()
 
@@ -668,8 +668,8 @@ function _viewNodes( opt ) {
 //console.log(opt);
 	var p = {
 		"nodes" : null,
-		"nodes_tpl": _vars["templates"]["nodes_tpl"],
-		"node_tpl": _vars["templates"]["nodes_item_tpl"]
+		"nodes_tpl": lib.vars["templates"]["nodes_tpl"],
+		"node_tpl": lib.vars["templates"]["nodes_item_tpl"]
 	};
 	//extend p object
 	for(var key in opt ){
@@ -678,15 +678,15 @@ function _viewNodes( opt ) {
 //console.log(p);
 
 	if( !p["nodes"]){
-_vars["logMsg"] = "- error, not found nodes, _viewNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "- error, not found nodes, _viewNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 		return "";
 	}
 	if( p["nodes"].length === 0){
-_vars["logMsg"] = "- error, not found nodes, _viewNodes()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "- error, not found nodes, _viewNodes()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 		return "";
 	}
 
@@ -729,16 +729,16 @@ function _get_node( opt ){
 //console.log(p);
 
 	if(!p.nid){
-_vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
-//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
+lib.vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
+//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
 		return false;
 	}
 
 	var node = false;
-	for( var n = 0; n < _vars["nodes"].length; n++){
-		if( p.nid === _vars["nodes"][n]["nid"] ){
-			node = _vars["nodes"][n];
+	for( var n = 0; n < lib.vars["nodes"].length; n++){
+		if( p.nid === lib.vars["nodes"][n]["nid"] ){
+			node = lib.vars["nodes"][n];
 			
 			//get book url
 			var params = {"nid" :node["nid"] };
@@ -874,9 +874,9 @@ function get_node_termins(params){
 		}
 	}//next termin			
 
-	for( var voc in _vars["taxonomy"]){
-//console.log(  _vars["taxonomy"][voc]);	
-		var test_termins = _vars["taxonomy"][voc]["termins"];
+	for( var voc in lib.vars["taxonomy"]){
+//console.log(  lib.vars["taxonomy"][voc]);	
+		var test_termins = lib.vars["taxonomy"][voc]["termins"];
 		for( var n1 = 0; n1 < test_termins.length; n1++){
 			for( var n2 = 0; n2 < node_termins.length; n2++){
 				if( test_termins[n1]["tid"] === node_termins[n2]["tid"] ){
@@ -1015,7 +1015,7 @@ function _getNodes( opt ) {
 
 			//if(readValue && readValue.length > 0){
 				
-				//if( _vars["updateStore"]){
+				//if( lib.vars["updateStore"]){
 					//localforage.removeItem(key, function(err) {//remove old version store Nodes
 //console.log("- remove " +key);
 //console.dir(err);
@@ -1050,23 +1050,23 @@ function _getNodes( opt ) {
 
 function _view_node( params ) {
 //console.log(params, nodes_obj);	
-	if( !_vars["node"] ) {
-		var log = "- error, not found _vars[node]";
+	if( !lib.vars["node"] ) {
+		var log = "- error, not found lib.vars[node]";
 //console.log(message);
-		//_vars["info"].push( message );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
+		//lib.vars["info"].push( message );
+lib.vars["logMsg"] = log;
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
 		
 		return;
 	}
 	
 	//----------------------
 	var bodyValue = "";
-//console.log(_vars["node"]["body_value"].length );
-//console.log("TEST!!!", _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0);
-	if( _vars["node"]["body_value"] && _vars["node"]["body_value"].length > 0){
-		bodyValue = _vars["node"]["body_value"]
+//console.log(lib.vars["node"]["body_value"].length );
+//console.log("TEST!!!", lib.vars["node"]["body_value"] && lib.vars["node"]["body_value"].length > 0);
+	if( lib.vars["node"]["body_value"] && lib.vars["node"]["body_value"].length > 0){
+		bodyValue = lib.vars["node"]["body_value"]
 		.replace(/&quot;/g,"\"")
 		.replace(/&lt;/g,"<")
 		.replace(/&gt;/g,">");
@@ -1076,51 +1076,51 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 	//----------------------
 	var childNodesHtml = "";
-	if( _vars["node"]["node_child_pages"] && _vars["node"]["node_child_pages"].length > 0){
-//console.log(_vars["node"]);
-//console.log(_vars["node"]["node_child_pages"]);
-//console.log(_vars["node"]["type"]);
+	if( lib.vars["node"]["node_child_pages"] && lib.vars["node"]["node_child_pages"].length > 0){
+//console.log(lib.vars["node"]);
+//console.log(lib.vars["node"]["node_child_pages"]);
+//console.log(lib.vars["node"]["type"]);
 
-		_vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + _vars["node"]["node_child_pages"].length + "</b></p>";
+		lib.vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + lib.vars["node"]["node_child_pages"].length + "</b></p>";
 		func.log("");
-		func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
+		func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 
 		var childNodesHtml = book.view_child_pages({
-			"nid" :  _vars["GET"]["nid"],
-			"mlid" :  _vars["GET"]["mlid"],
-			"child_pages": _vars["node"]["node_child_pages"]
+			"nid" :  lib.vars["GET"]["nid"],
+			"mlid" :  lib.vars["GET"]["mlid"],
+			"child_pages": lib.vars["node"]["node_child_pages"]
 		});
 //console.log("childNodesHtml = " + childNodesHtml);
 	}
 	//----------------------
 	
-	var node_tpl = _vars["templates"]["node_tpl"];
+	var node_tpl = lib.vars["templates"]["node_tpl"];
 	var html = node_tpl
-	.replace("{{author}}", _vars["node"]["author"] )
-	//.replace("{{node-title}}", _vars["node"]["title"] )
-	.replace("{{type}}", _vars["node"]["type"] )
-	.replace("{{bookname}}", _vars["node"]["bookname"] )
-	.replace("{{changed}}", _vars["node"]["changed"] )
-	.replace("{{created}}", _vars["node"]["created"] )
+	.replace("{{author}}", lib.vars["node"]["author"] )
+	//.replace("{{node-title}}", lib.vars["node"]["title"] )
+	.replace("{{type}}", lib.vars["node"]["type"] )
+	.replace("{{bookname}}", lib.vars["node"]["bookname"] )
+	.replace("{{changed}}", lib.vars["node"]["changed"] )
+	.replace("{{created}}", lib.vars["node"]["created"] )
 	.replace("{{body_value}}", bodyValue )
 	.replace("{{child_pages}}", childNodesHtml );
 
 
-	if( _vars["node"]["bookname"].length === 0){
-		html = html.replace("{{node-title}}", _vars["node"]["title"] );
+	if( lib.vars["node"]["bookname"].length === 0){
+		html = html.replace("{{node-title}}", lib.vars["node"]["title"] );
 	} else {
 		html = html.replace("{{node-title}}", "" );
 	}
 	
-	var node_tpl_url = _vars["templates"]["node_tpl_url"];
+	var node_tpl_url = lib.vars["templates"]["node_tpl_url"];
 
 	//form node book local url
 	var htmlBookLinks = "";
-	if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
+	if( lib.vars["node"]["book_files"] && lib.vars["node"]["book_files"].length > 0) {
 		var html_book_url = "";
-		var subfolder =  _vars["node"]["subfolder"];
-		for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
-			var filename =  _vars["node"]["book_files"][n];
+		var subfolder =  lib.vars["node"]["subfolder"];
+		for( var n = 0; n < lib.vars["node"]["book_files"].length; n++ ){
+			var filename =  lib.vars["node"]["book_files"][n];
 			var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
 			if( filename.lastIndexOf('#') > 0 ) {
 				var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
@@ -1139,7 +1139,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 					.replace("{{url}}", url);
 		}//next book file
 
-		htmlBookLinks = _vars["templates"]["node_tpl_book_links"].replace("{{list}}", html_book_url);
+		htmlBookLinks = lib.vars["templates"]["node_tpl_book_links"].replace("{{list}}", html_book_url);
 		
 	} else {
 	}
@@ -1148,21 +1148,21 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 	
 	//add cloud disk links
 	var htmlWrapCloudLinks = "";
-	if( _vars["node"]["book_files"] && _vars["node"]["book_files"].length > 0) {
+	if( lib.vars["node"]["book_files"] && lib.vars["node"]["book_files"].length > 0) {
 		var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
 		html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
 		//html_cloud_links += add_dropbox_links();
-		htmlWrapCloudLinks = _vars["templates"]["node_tpl_cloud_links"].replace("{{list}}", html_cloud_links);
+		htmlWrapCloudLinks = lib.vars["templates"]["node_tpl_cloud_links"].replace("{{list}}", html_cloud_links);
 	}
 	html = html.replace("{{cloud-links}}", htmlWrapCloudLinks);
 
 //-------------------------- form node book external links
 	var htmlWrapExternalLinks = "";
-	if( _vars["node"]["book_links"].length > 0 ){
+	if( lib.vars["node"]["book_links"].length > 0 ){
 		
 		var html_external_links = "";
-		for( var n = 0; n < _vars["node"]["book_links"].length; n++ ){
-			var link =  _vars["node"]["book_links"][n];
+		for( var n = 0; n < lib.vars["node"]["book_links"].length; n++ ){
+			var link =  lib.vars["node"]["book_links"][n];
 			var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
 			if( link.lastIndexOf('#') > 0 ) {
 				var s_link = link.substring( 0, link.lastIndexOf('#') );
@@ -1174,7 +1174,7 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 					.replace("{{link-title}}", link_title)
 					.replace("{{url}}", s_link);
 		}//next
-		htmlWrapExternalLinks = _vars["templates"]["node_tpl_external_links"].replace("{{list}}", html_external_links);
+		htmlWrapExternalLinks = lib.vars["templates"]["node_tpl_external_links"].replace("{{list}}", html_external_links);
 		
 	}
 	html = html.replace("{{external-links}}", htmlWrapExternalLinks);
@@ -1182,8 +1182,8 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 	//form node old book url
 	var html_book_url2 = "";
-	for( var n = 0; n < _vars["node"]["book_url"].length; n++ ){
-		var link =  _vars["node"]["book_url"][n];
+	for( var n = 0; n < lib.vars["node"]["book_url"].length; n++ ){
+		var link =  lib.vars["node"]["book_url"][n];
 
 		html_book_url2 += node_tpl_url
 				.replace("{{link-title}}", link)
@@ -1195,19 +1195,19 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 	//form node taxonomy menu
 	var htmlWrapTermins = "";
-	if( _vars["node"]["termins"].length > 0 ){
+	if( lib.vars["node"]["termins"].length > 0 ){
 		var html_termin_links = "";
-		var node_tpl_url = _vars["templates"]["node_tpl_termins_item"];
+		var node_tpl_url = lib.vars["templates"]["node_tpl_termins_item"];
 
-		for( var n = 0; n < _vars["node"]["termins"].length; n++ ) {
-			var link_title = _vars["node"]["termins"][n]["name"];
+		for( var n = 0; n < lib.vars["node"]["termins"].length; n++ ) {
+			var link_title = lib.vars["node"]["termins"][n]["name"];
 			html_termin_links += node_tpl_url
 					.replace("{{link-title}}", link_title)
 					.replace("{{vid}}", "")
-					.replace("{{tid}}", _vars["node"]["termins"][n]["tid"] );
+					.replace("{{tid}}", lib.vars["node"]["termins"][n]["tid"] );
 					
 		}//next termin
-		htmlWrapTermins = _vars["templates"]["node_tpl_termins"].replace("{{list}}", html_termin_links);
+		htmlWrapTermins = lib.vars["templates"]["node_tpl_termins"].replace("{{list}}", html_termin_links);
 	}
 	html = html.replace("{{termin-links}}", htmlWrapTermins);
 	
