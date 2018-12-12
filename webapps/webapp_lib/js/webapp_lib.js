@@ -2469,9 +2469,8 @@ func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 
 			var xml = opt["xml"];
 			
-			var taxonomy = [];
-			$( xml.taxonomy_vocabulary ).each(function()
-			{
+			var taxonomy = {};
+			$( xml.taxonomy_vocabulary ).each(function(){
 				var item = $(this);
 				var name = item.children('m_name').text();
 				var vocabulary = {
