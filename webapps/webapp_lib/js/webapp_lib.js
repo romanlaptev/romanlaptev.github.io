@@ -2241,7 +2241,7 @@ _vars["timeStart"] = new Date();
 
 					function __postFunc( tid, terminNodes ){
 						//_formBreadcrumb( target );
-console.log(tid, terminNodes);
+//console.log(tid, terminNodes);
 						draw.buildBlock({
 							"locationID" : "block-node",
 							"templateID" : "tpl-block--termin-nodes",
