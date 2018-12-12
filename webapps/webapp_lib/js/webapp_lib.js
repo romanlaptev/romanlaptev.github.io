@@ -72,7 +72,7 @@
 					storage.getItem( key, function(readValue, err){
 console.log("- read "+key+" from storage...",readValue);
 console.log(err);
-						//_vars["taxonomy"] = readValue;
+						_vars["taxonomy"] = readValue;
 						if( typeof opt["postFunc"] === "function"){
 							opt["postFunc"]( readValue );//return
 						}
@@ -2242,6 +2242,7 @@ _vars["timeStart"] = new Date();
 					function __postFunc( tid, terminNodes ){
 						//_formBreadcrumb( target );
 //console.log(tid, terminNodes);
+						//draw.buildPage({});
 						draw.buildBlock({
 							"locationID" : "block-node",
 							"templateID" : "tpl-block--termin-nodes",
@@ -2252,17 +2253,15 @@ _vars["timeStart"] = new Date();
 							})
 						});
 							
-						//draw.buildPage({});
-/*						
 						if( _vars["GET"]["vid"] === "2" || _vars["GET"]["vid"] === "1"){
 							
-		if( _vars["GET"]["vid"] === "2" ){
-			var termins = _vars["taxonomy"]["library"]["termins"];
-		}
-		if( _vars["GET"]["vid"] === "1" ){
-			var termins = _vars["taxonomy"]["tags"]["termins"];
-		}
-		//console.log("TEST1", termins);			
+							if( _vars["GET"]["vid"] === "2" ){
+								var termins = _vars["taxonomy"]["library"]["termins"];
+							}
+							if( _vars["GET"]["vid"] === "1" ){
+								var termins = _vars["taxonomy"]["tags"]["termins"];
+							}
+console.log("TEST1", termins);			
 				
 							//view children termin
 							var html = taxonomy_obj.view_termin({
@@ -2283,9 +2282,9 @@ _vars["timeStart"] = new Date();
 								"templateID" : "tpl-block--tags",
 								"content" : html
 							});
-							
+
 						}
-*/
+
 	_vars["timeEnd"] = new Date();
 	_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
 	_vars["logMsg"] = "<p>- nodes_obj.get_termin_nodes("+tid+"), runtime: <b>" + _vars["runTime"] + "</b> sec</p>";
