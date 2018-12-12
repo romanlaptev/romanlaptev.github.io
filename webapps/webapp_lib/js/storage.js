@@ -616,7 +616,7 @@ console.log( lib.vars["logMsg"] );
 						var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 						var log = "- get storage element <b>" + key + "</b>";
 						
-						if( readValue ){
+						if( readValue && readValue.length ){
 							var cache_size = readValue.length; 
 							var cache_size_kb = cache_size / 1024 ;
 							var cache_size_mb = cache_size_kb / 1024;
