@@ -4,7 +4,7 @@ var draw = {
 	"vars": {
 		"blockList": {
 			
-	//--------------------- BLOCK #sitename-block
+//--------------------- BLOCK #sitename-block
 			"sitename-block":{ 
 				build: function(){
 					draw.buildBlock({
@@ -15,9 +15,22 @@ var draw = {
 				},
 				state: "add"//"refresh"????
 			},
-	//---------------------
+//---------------------
 				
-			"alphabetical": {}
+//--------------------- BLOCKs alphabetical, tags, library
+			"block-taxonomy": {
+				build: _buildBlockTaxonomy,
+				state: "add"//"refresh"
+			},
+//---------------------
+			
+//--------------------- BLOCK #block-book-category
+			"block-book-category": {
+				build: _buildBookCategory,
+				state: "add"//"refresh"
+			}
+//---------------------
+			
 		}//end block list
 		
 	},//end vars
@@ -47,119 +60,27 @@ console.log("_buildPage()");
 	}
 //console.log(p);
 
-	if( draw.vars["blockList"]["sitename-block"].state === "add"){
+	if( draw.vars["blockList"]["sitename-block"].state === "add" ||
+			draw.vars["blockList"]["sitename-block"].state === "refresh"
+	){
 		draw.vars["blockList"]["sitename-block"].build();
 		draw.vars["blockList"]["sitename-block"].state = ""; //do not update static block!!!!
 	}
 	
-//--------------------- BLOCK alphabetical
-	lib.taxonomy.getTaxonomy({
-		"postFunc": function( taxonomy ){
-//console.log(taxonomy);	
-
-			if( !taxonomy ){
-lib.vars["logMsg"] = "draw.buildPage(), error, not find <b>taxonomy</b>";
-func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-console.log( lib.vars["logMsg"] );
-				return false;
-			}
-			
-			var html = lib.taxonomy.view_termin({
-				"termins": taxonomy["alphabetical_voc"]["termins"],
-				"vid": "4",
-				"tid": "116",
-				"recourse": true,
-				"show_only_children": true,
-				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-			});
-//console.log(html);
-
-			html += lib.taxonomy.view_termin({
-				"termins": taxonomy["alphabetical_voc"]["termins"],
-				"vid": "4",
-				"tid": "115",
-				"recourse": true,
-				"show_only_children": true,
-				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
-			});
-						
-			draw.buildBlock({
-				"locationID" : "block-taxonomy-alpha",
-				"templateID" : "tpl-block--tags",
-				"content" : html
-			});
-			//mark root links for breadcrumb navigation
-			//$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
-				
-//--------------------- BLOCK
-			draw.buildBlock({
-				"locationID" : "block-library",
-				"templateID" : "tpl-block--tags",
-				"content" : lib.taxonomy.view_vocabulary({
-					"taxonomy": taxonomy,
-					"vocabularyName": "library", 
-					"recourse": false
-					})
-			});
-
-			//mark root links for breadcrumb navigation
-			//$("#block-library .nav-click").addClass("root-link");			
-//---------------------
-
-//--------------------- BLOCK
-			draw.buildBlock({
-				"locationID" : "block-tags",
-				//"title" : "Tags",
-				"templateID" : "tpl-block--tags",
-				"content" : lib.taxonomy.view_vocabulary({
-					"taxonomy": taxonomy,
-					"vocabularyName": "tags",
-					"recourse": false
-					})
-			});
-			//mark root links for breadcrumb navigation
-			//$("#block-tags .nav-click").addClass("root-link");			
-//---------------------
-
-			
-		}//end postFunc()
-	});
-
-//---------------------
-
-//--------------------- BLOCK alphabetical
-	lib.getHierarchy({
-		"postFunc": function( hierarchyList ){
-//console.log(hierarchyList);	
-
-			if( !hierarchyList ){
-lib.vars["logMsg"] = "draw.buildPage(), error, not find data <b>hierarchyList</b>";
-func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-console.log( lib.vars["logMsg"] );
-				return false;
-			}
-			
-//--------------------- BLOCK #block-book-category
-			draw.buildBlock({
-				"locationID" : "block-book-category",
-				//"title" : "test block",
-				"templateID" : "tpl-block--book-category",
-				//"contentTpl" : "tpl-termin_nodes",
-				//"contentListTpl" : "tpl-termin_nodes_list",
-				"content" : _showHierarchy({"hierarchyList": hierarchyList})
-			});
-//---------------------
-				
-			//mark root links for breadcrumb navigation
-			//$("#block-book-category .nav-click").addClass("root-link");			
-
-
-		}//end postFunc()
-	});
-
-//---------------------
+	if( draw.vars["blockList"]["block-book-category"].state === "add" ||
+			draw.vars["blockList"]["block-book-category"].state === "refresh"
+	){
+		draw.vars["blockList"]["block-book-category"].build();
+		draw.vars["blockList"]["block-book-category"].state = ""; //do not update block!!!!
+	}
+	
+	if( draw.vars["blockList"]["block-taxonomy"].state === "add" ||
+			draw.vars["blockList"]["block-taxonomy"].state === "refresh"
+	){
+		draw.vars["blockList"]["block-taxonomy"].build();
+		draw.vars["blockList"]["block-taxonomy"].state = ""; //do not update block!!!!
+	}
+	
 
 };//end _buildPage()
 
@@ -435,6 +356,37 @@ console.log(html);
 	}//end _wrapContent
 */
 
+function _buildBookCategory(){
+	lib.getHierarchy({
+		"postFunc": function( hierarchyList ){
+//console.log(hierarchyList);	
+
+			if( !hierarchyList ){
+lib.vars["logMsg"] = "draw.buildPage(), error, not find data <b>hierarchyList</b>";
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( lib.vars["logMsg"] );
+				return false;
+			}
+			
+			draw.buildBlock({
+				"locationID" : "block-book-category",
+				//"title" : "test block",
+				"templateID" : "tpl-block--book-category",
+				//"contentTpl" : "tpl-termin_nodes",
+				//"contentListTpl" : "tpl-termin_nodes_list",
+				"content" : _showHierarchy({"hierarchyList": hierarchyList})
+			});
+
+				
+			//mark root links for breadcrumb navigation
+			//$("#block-book-category .nav-click").addClass("root-link");			
+
+
+		}//end postFunc()
+	});
+
+}// end _buildBookCategory()
+
 
 var _showHierarchy = function(opt){
 //console.log("_showHierarchy()", opt);
@@ -470,3 +422,82 @@ var _showHierarchy = function(opt){
 	return html;
 	
 }//end _showHierarchy()
+
+
+
+function _buildBlockTaxonomy(){
+	
+	lib.taxonomy.getTaxonomy({
+		"postFunc": function( taxonomy ){
+	//console.log(taxonomy);	
+
+			if( !taxonomy ){
+	lib.vars["logMsg"] = "draw.buildPage(), error, not find <b>taxonomy</b>";
+	func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+	console.log( lib.vars["logMsg"] );
+				return false;
+			}
+			
+			var html = lib.taxonomy.view_termin({
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "116",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+	//console.log(html);
+
+			html += lib.taxonomy.view_termin({
+				"termins": taxonomy["alphabetical_voc"]["termins"],
+				"vid": "4",
+				"tid": "115",
+				"recourse": true,
+				"show_only_children": true,
+				"item_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha_list"],
+				"list_tpl": lib.vars["templates"]["tpl-block--taxonomy_alpha"]
+			});
+						
+			draw.buildBlock({
+				"locationID" : "block-taxonomy-alpha",
+				"templateID" : "tpl-block--tags",
+				"content" : html
+			});
+			//mark root links for breadcrumb navigation
+			//$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
+				
+	//--------------------- BLOCK
+			draw.buildBlock({
+				"locationID" : "block-library",
+				"templateID" : "tpl-block--tags",
+				"content" : lib.taxonomy.view_vocabulary({
+					"taxonomy": taxonomy,
+					"vocabularyName": "library", 
+					"recourse": false
+					})
+			});
+
+			//mark root links for breadcrumb navigation
+			//$("#block-library .nav-click").addClass("root-link");			
+	//---------------------
+
+	//--------------------- BLOCK
+			draw.buildBlock({
+				"locationID" : "block-tags",
+				//"title" : "Tags",
+				"templateID" : "tpl-block--tags",
+				"content" : lib.taxonomy.view_vocabulary({
+					"taxonomy": taxonomy,
+					"vocabularyName": "tags",
+					"recourse": false
+					})
+			});
+			//mark root links for breadcrumb navigation
+			//$("#block-tags .nav-click").addClass("root-link");			
+	//---------------------
+			
+		}//end postFunc()
+	});
+
+}//end _buildBlockTaxonomy()
