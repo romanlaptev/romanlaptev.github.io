@@ -10,13 +10,10 @@
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1>test JS: prototypes</h1>
+		<h1>[[Prototype]]</h1>
 	</div>
 	
 <pre>
-Доклад: 
-https://docs.google.com/presentation/d/1-Wg8Zu4rz1oMqgyzlOrIUNeIrOOIedL3Y3qCDhmSTmM/edit?usp=sharing
-
 -- Свойства [[Prototype]], [[Get]], [[Put]]
 -- "Классы", "конструкторы", "наследование", 
 -- Проверка экземпляров класса"
@@ -24,10 +21,10 @@ https://docs.google.com/presentation/d/1-Wg8Zu4rz1oMqgyzlOrIUNeIrOOIedL3Y3qCDhmS
 -- Классы ES6
 
 паттерны делегирование и стратегию на чистых прототипах
-
-тест по прототипам 
-https://docs.google.com/forms/d/e/1FAIpQLSfFpdGga0vgtYRHzEEYnJ8UQXb9zIeRR--R9FyZfMg10sl9Sg/viewform
 </pre>
+<p>Доклад: https://docs.google.com/presentation/d/1-Wg8Zu4rz1oMqgyzlOrIUNeIrOOIedL3Y3qCDhmSTmM/edit?usp=sharing</p>
+<p>тест по прототипам 
+https://docs.google.com/forms/d/e/1FAIpQLSfFpdGga0vgtYRHzEEYnJ8UQXb9zIeRR--R9FyZfMg10sl9Sg/viewform</p>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -36,30 +33,159 @@ https://docs.google.com/forms/d/e/1FAIpQLSfFpdGga0vgtYRHzEEYnJ8UQXb9zIeRR--R9FyZ
 		<div class="panel-body">
 		
 <pre>
-Листинги:
+//создание связи объектов (прототипирование), способы
 
+<b>1.Свойство "prototype"</b>
+function Foo() { 
+console.log("This is a test function....");
+};
+var a = new Foo(); // родит. объект обязательно типа function
+console.log( Foo.prototype ); 
+
+Foo.prototype.b = 7; // создание св-ва b для всех прототипов
+for(var key in a){ 
+console.log( key, a[key])
+}
+//b 7
+//---------------
+console.log ( a.constructor); // function Foo()
+console.log( a instanceof Foo ); //instanceof годится только чтобы узнать связь между объектом и функцией!
+
+//===================
+<b>2."Object.create"</b>
 var anotherObject = {
 	a: 2
 };
 var myObject = Object.create( anotherObject );
-console.log(myObject.a); //2
+console.log( myObject.a ); //2
 
+console.log( Object.getPrototypeOf( myObject ) ); 
+console.log( myObject.prototype); //undefined
+console.log ( myObject.constructor); //undefined
+
+console.log( anotherObject.isPrototypeOf( myObject ) ); //true
+
+//=====================
+<b>3. "setPrototypeOf"</b>
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+Object.setPrototypeOf(obj, prototype);
+
+var obj1 = {
+	a: 1
+};
+var obj2 = {};
+Object.setPrototypeOf( obj2, obj1);
+
+console.log(obj1.isPrototypeOf( obj2 ) );//true
+
+console.log( obj2.a );// 1
+
+obj1.a = 100;
+console.log( obj2.a ); //100
+
+//=====================
+<b>4. "__proto__"</b>
+https://learn.javascript.ru/prototype
+
+var animal = {
+  eats: true
+};
+var rabbit = {
+  jumps: true
+};
+
+rabbit.__proto__ = animal;
+
+// в rabbit можно найти оба свойства
+console.log ( rabbit.jumps ); // true
+console.log ( rabbit.eats ); // true
+
+console.log ( Object.getPrototypeOf( rabbit ) ); // Object { eats: true }
+-----------
+ способ допускается, но так делать не следует. 
+ Ссылка __proto__ была документирована только в стандарте ES6, 
+ и преимущественно используется только для чтения.
+</pre>
+
+<h3>затенение свойства</h3>
+<p>
+Если a находится выше по цепочке [[Prototype]], но отмечено как только для чтения (writable:false), то установка значения этого существующего свойства, равно как и создание затененного свойства у myObject, запрещены. Если код выполняется в strict mode, то будет выброшена ошибка, если нет, то попытка установить значение свойства будет проигнорирована. В любом случае, затенения не происходит.</p>
+<pre>
+var anotherObject = {};
+Object.defineProperty(anotherObject, "a", {
+	value:2,
+	writeble:false
+});
+
+var myObject = Object.create(anotherObject);
+myObject.a = 4; // создание св-ва невозможно, т.к. у родителя одноименное св-во readonly !!!!!!!!!
+
+console.log( anotherObject.a ); //2
+console.log( myObject.a ); // 2 значение получено из свойства родителя - anotherObject.a !!!!!
+
+console.log(anotherObject.hasOwnProperty("a"));
+console.log(myObject.hasOwnProperty("a"));
+</pre>
+
+<pre>
+<h1>Конструкторы</h1>
+
+function MyConstructor(a,b){
+	this.a = a;
+	this.b = b;
+	this.sum = a + b;
+	
+	function private_method(){
+		return "частный метод, недоступен для вызова в потомках MyConstructor";
+	}
+	
+	//привилегированный метод (доступен публично и может использовать внутренние св-ва и методы)
+	var x = 5;
+	var y = 6;
+	this.priv_method_get = function(){
+		return x + y;
+	}
+}
+
+obj1 = new MyConstructor(2, 2);
+console.log("obj1.sum = ", obj1.sum);
+console.log("obj1.constructor = ", obj1.constructor);
+console.log( obj1.x );
+console.log( obj1.priv_method_get() );
+
+obj2 = new MyConstructor(20, 20);
+console.log("obj2.sum = ", obj2.sum);
+console.log("obj2.constructor = ", obj2.constructor);
+
+
+// prototype function (for all children obj)
+// объявление функции test_prototype в прототипе объекта MyConstructor
+// эта функция будет доступна всем потомкам MyConstructor (obj1, obj2)
+MyConstructor.prototype.test_prototype = function(){
+	console.log( "test_prototype say - " +this.sum );
+}
+
+obj1.test_prototype();
+
+//===========================================================
+function test_constructor(){
+	this.a = "A";
+	this.b = 2+3;
+	this.c = function myFunc(){
+		return "function myFunc, " + (this.a+this.b)
+	}
+}
+
+var test = new test_constructor();
+
+console.log( test.a );
+console.log( test.b );
+test.c();
 </pre>
 
 		</div>
-	</div>
+	</div><!-- end panel -->
 
 </div><!-- end container -->
 </body>
-
-<script>
-var anotherObject = {
-	a: 2
-};
-var myObject = Object.create( anotherObject );
-console.log(myObject.a); 
-console.log("a" in myObject);
-
-</script>
-
 </html>
