@@ -2253,6 +2253,7 @@ _vars["timeStart"] = new Date();
 							})
 						});
 							
+						var html = "";	
 						if( _vars["GET"]["vid"] === "2" || _vars["GET"]["vid"] === "1"){
 							
 							if( _vars["GET"]["vid"] === "2" ){
@@ -2261,10 +2262,10 @@ _vars["timeStart"] = new Date();
 							if( _vars["GET"]["vid"] === "1" ){
 								var termins = _vars["taxonomy"]["tags"]["termins"];
 							}
-console.log("TEST1", termins);			
+//console.log("TEST1", termins);			
 				
 							//view children termin
-							var html = taxonomy_obj.view_termin({
+							html = taxonomy_obj.view_termin({
 								"termins": termins,
 								"vid": _vars["GET"]["vid"],
 								"tid": _vars["GET"]["tid"],
@@ -2277,13 +2278,12 @@ console.log("TEST1", termins);
 								//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
 							});
 							
-							draw.buildBlock({
-								"locationID" : "block-taxonomy",
-								"templateID" : "tpl-block--tags",
-								"content" : html
-							});
-
 						}
+						draw.buildBlock({
+							"locationID" : "block-taxonomy",
+							"templateID" : "tpl-block--tags",
+							"content" : html
+						});
 
 	_vars["timeEnd"] = new Date();
 	_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
