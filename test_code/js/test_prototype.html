@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: prototypes</title>
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: prototypes</h1>
+	</div>
+	
+<pre>
+Доклад: 
+https://docs.google.com/presentation/d/1-Wg8Zu4rz1oMqgyzlOrIUNeIrOOIedL3Y3qCDhmSTmM/edit?usp=sharing
+
+-- Свойства [[Prototype]], [[Get]], [[Put]]
+-- "Классы", "конструкторы", "наследование", 
+-- Проверка экземпляров класса"
+-- Создание прототипной связи между двумя объектами
+-- Классы ES6
+
+паттерны делегирование и стратегию на чистых прототипах
+
+тест по прототипам 
+https://docs.google.com/forms/d/e/1FAIpQLSfFpdGga0vgtYRHzEEYnJ8UQXb9zIeRR--R9FyZfMg10sl9Sg/viewform
+</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>Прототипы</h2>
+		</div>
+		<div class="panel-body">
+		
+<pre>
+Листинги:
+
+var anotherObject = {
+	a: 2
+};
+var myObject = Object.create( anotherObject );
+console.log(myObject.a); //2
+
+</pre>
+
+		</div>
+	</div>
+
+</div><!-- end container -->
+</body>
+
+<script>
+var anotherObject = {
+	a: 2
+};
+var myObject = Object.create( anotherObject );
+console.log(myObject.a); 
+console.log("a" in myObject);
+
+</script>
+
+</html>

@@ -5,6 +5,66 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 	<title>test JS: Closures</title>
+	
+<script>
+	//Самовызывающиеся функции
+	var my_func = (
+		function( name ){
+console.log("Hello " + name + " world!");
+		}
+	)("js");
+	
+	(function() {
+console.log("Init !");
+		}()
+	);
+
+	(function(){
+console.log("Init 2");
+	})();
+	
+//Функции обратного вызова	
+	var test = function( callback ){
+		var name = "Roman";
+		callback (name);
+	}
+	
+	test( function(n) {
+console.log("Hello " + n);
+	});
+	
+//замыкание
+// вызовом counter() увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount 
+function test_closure()
+{
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+//замыкание2
+//Илья Кантор - Современный учебник JavaScript - 2015/1. Язык JavaScript.pdf, c.294
+function makeCounter()
+{
+  var currentCounter = 1;
+  return function(){
+    return currentCounter++;
+  };
+}
+
+var counter1 = makeCounter();
+console.log( counter1() );
+console.log( counter1() );
+console.log( counter1() );
+</script>
+
 </head>
 
 <body>
@@ -13,10 +73,16 @@
 		<h1>test JS: closures</h1>
 	</div>
 	
-	<pre>
+<pre>
 Доклад: 
 https://docs.google.com/presentation/d/1kiP65zcwktVGPloqLCCS9TEsp94YIVS20600KLSCwv4/edit#slide=id.g41eb7ac6d8_0_48
-	</pre>
+
+http://javascript.ru/basic/closure
+https://learn.javascript.ru/functions-closures
+http://myrusakov.ru/javascript-anonym-and-callback-functions.html
+http://www.codehint.ru/articles/2014-07-27_javascript-self-invoking-functions
+http://habrahabr.ru/post/117069/
+</pre>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -55,6 +121,114 @@ console.log( num );
 		</div>
 	</div>
 	
+<pre>
+<h1>замыкание</h1>
+// вызов counter(), увеличивается переменная уже отработавшей функции test_closure()
+// т.е. через внутреннюю функцию func() остался доступ к currentCount 
+function test_closure() {
+	var currentCount = 1;
+	var func = function(){
+		return currentCount++;
+	}
+	return func
+}
+var counter = test_closure();
+console.log ("counter - " + counter() );//1
+console.log ("counter - " + counter() );//2
+console.log ("counter - " + counter() );//3
+
+
+function makeBuffer() {
+/*вашкод*/
+}
+
+var buffer=makeBuffer();//добавить значения к буферу
+buffer('Замыкания');
+buffer('Использовать');
+buffer('Нужно!');//получить текущее значение
+alert(buffer());//Замыкания Использовать Нужно!
+//===================================
+function makeBuffer() {     
+	var counter = "";
+	return function(v){
+		if(typeof v !== "undefined")
+		{
+			counter += v;
+		}
+		else
+		{
+			return counter;
+		}
+	}; 
+}  
+
+var buffer = makeBuffer();
+buffer("a"); buffer("b"); buffer("c"); 
+console.log( buffer() );  
+</pre>
+
+<pre>
+<h1>Самовызывающиеся функции</h1>
+	var my_func = (
+		function( name ){
+console.log("Hello " + name + " world!");
+		}
+	)("js");
+	
+	(function() {
+console.log("Init !");
+		}()
+	);
+
+	(function(){
+console.log("Init 2");
+	})();
+	
+//------------------------------
+var a=1;
+
+(function(){
+var a = "i am self-invoke function";
+console.log(a);  
+}())
+
+var f1 = function(){
+  var a = 3;
+  console.log(a);
+} 
+f1();
+
+var f2 = function(){
+  var a = 4;
+  console.log(a);
+}();
+
+console.log(a);
+</pre>	
+
+<pre>
+<h1>Функции обратного вызова</h1>
+	var test = function( callback ){
+		var name = "Roman";
+		callback (name);
+	}
+	
+	test( function(n) {
+console.log("Hello " + n);
+	});
+
+//"Стоян Стефанов. JavaScript. Шаблоны , c.96"
+var setup = function(){
+console.log( 1 );
+	return function(){
+		console.log( 2 );
+	}
+}
+
+var f1 = setup();//1
+f1();//2
+</pre>
+
 </div><!-- end container -->
 </body>
 
