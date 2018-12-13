@@ -545,11 +545,13 @@ func.log("<div class='alert alert-warning'>" + lib.vars["logMsg"] + "</div>");
 				var timeEnd = new Date();
 				var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 				
-				var cache_size = value.length; 
-				var cache_size_kb = cache_size / 1024 ;
-				var cache_size_mb = cache_size_kb / 1024;
 				var log = "- save in cache element " + key;
-				log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+				if( value && value.length ){
+					var cache_size = value.length; 
+					var cache_size_kb = cache_size / 1024 ;
+					var cache_size_mb = cache_size_kb / 1024;
+					log += ", size: <b>"+ cache_size_kb.toFixed(2) +"</b> Kbytes, <b>"+ cache_size_mb.toFixed(2) +"</b> Mbytes";
+				}
 				log += ", runtime: <b>" + runTime + "</b> sec";
 				
 				//var status = true;

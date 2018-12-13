@@ -1030,7 +1030,8 @@ console.log( _vars["logMsg"] );
 					//"taxonomy_index": storage.tables["taxonomy_index"]["xml"]
 				};
 
-				var nodes = [];
+				//var nodes = [];
+				var nodes = {};
 
 				for( var n = 0; n < xml.nodes.length; n++){
 	//console.log( n, p.xml[n] );
@@ -1070,7 +1071,8 @@ console.log( _vars["logMsg"] );
 					
 //-----------------				
 
-					nodes.push( node );
+					//nodes.push( node );
+					nodes[_nid] = node;
 				}//next node
 
 				return nodes;

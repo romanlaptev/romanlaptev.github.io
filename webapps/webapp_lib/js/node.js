@@ -94,8 +94,8 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 	_getNodes({
 		"postFunc": function( nodes ){
 //console.log(nodes);
-
-			if( nodes && nodes.length > 0){
+			//if( nodes && nodes.length > 0){
+			if( nodes ){
 				
 				terminNodes = _selectTerminNodes(p.tid, nodes);
 //console.log(terminNodes, terminNodes.length);
@@ -120,19 +120,36 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 	function _selectTerminNodes(tid, nodes){
 
 		var _terminNodes = [];
-		for( var n = 0; n < nodes.length; n++ ){
-			var node = nodes[n];
-//if( typeof node["termins"] === "undefined"){
-//continue;
-//}
-			for( var n1 = 0; n1 < node["termins"].length; n1++){
-//console.log(node["termins"][n1], typeof node["termins"][n1]);
-				if( tid === node["termins"][n1]["tid"] ){
-					_terminNodes.push( node );
-				}
-			}//next termin tid
+		
+		if( nodes.length ){//nodes is array
+			for( var n = 0; n < nodes.length; n++ ){
+				var node = nodes[n];
+	//if( typeof node["termins"] === "undefined"){
+	//continue;
+	//}
+				for( var n1 = 0; n1 < node["termins"].length; n1++){
+	//console.log(node["termins"][n1], typeof node["termins"][n1]);
+					if( tid === node["termins"][n1]["tid"] ){
+						_terminNodes.push( node );
+					}
+				}//next termin tid
+				
+			}//next node
 			
-		}//next node
+		} else {//nodes is object
+			
+			for( var key in nodes ){
+				var node = nodes[key];
+				for( var n1 = 0; n1 < node["termins"].length; n1++){
+	//console.log(node["termins"][n1], typeof node["termins"][n1]);
+					if( tid === node["termins"][n1]["tid"] ){
+						_terminNodes.push( node );
+					}
+				}//next termin tid
+			}//next node
+			
+		}
+
 		
 //console.log(_terminNodes);
 		return _terminNodes;
