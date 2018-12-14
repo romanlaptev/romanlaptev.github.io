@@ -1094,7 +1094,8 @@ console.log( _vars["logMsg"] );
 					"nodes": storage.tables["nodes"]["xml"]
 				};
 				
-				var hList = [];
+				//var hList = [];
+				var hList = {};
 
 				for( var n = 0; n < xml.nodes.length; n++){
 //console.log( n, xml[n] );
@@ -1109,7 +1110,9 @@ console.log( _vars["logMsg"] );
 							"section": __getChildSections( xml, $node.attr('mlid'), 1)
 						};
 						
-						hList.push( section );
+						//hList.push( section );
+						var key = $node.attr('nid');
+						hList[key] = section;
 					}
 
 				}//next node
@@ -1120,14 +1123,17 @@ console.log( _vars["logMsg"] );
 			
 			
 			function __getChildSections(xml, plid, recourse){
-				var sections = [];
+				
+				//var sections = [];
+				var sections = {};
+				
 				for( var n = 0; n < xml.nodes.length; n++) {
 					var $node = $( xml.nodes[n] );
 					
 					if ( $node.attr('plid') === plid ){
-						if ( $node.attr('type') === "book" ||
-								$node.attr('type') === "author"
-							){
+						//if ( $node.attr('type') === "book" ||
+								//$node.attr('type') === "author"
+							//){
 						
 							var _section = {
 								"name": $node.attr('title'),
@@ -1140,14 +1146,19 @@ console.log( _vars["logMsg"] );
 							if( $node.attr('mlid').length > 0 ){
 								if ( recourse === 1){
 									var _subSection = __getChildSections( xml, $node.attr('mlid'), 1 );
-									if( _subSection.length > 0){
+									//if( _subSection.length > 0){
 										_section["section"] = _subSection;
-									}
+									//}
 								}
 							}
 							
-							sections.push( _section );
-						}
+							//sections.push( _section );
+							
+							var key = $node.attr('nid');
+//console.log( key, typeof key);							
+							sections[key] = _section;
+							
+						//}
 					}
 				};//next node
 				

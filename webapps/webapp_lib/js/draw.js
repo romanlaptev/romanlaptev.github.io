@@ -403,19 +403,29 @@ var _showHierarchy = function(opt){
 	}
 //console.log(p);
 
-	var bookCategory = p["hierarchyList"][0]["section"];//"библиотека"
+	//var bookCategory = p["hierarchyList"][0]["section"];//"библиотека"
+	
+	var nid = 1;//"библиотека"
+	var bookCategory = p["hierarchyList"][nid]["section"];
+	
 //console.log(bookCategory);
 	
 	var html = "";
-	for( var n = 0; n < bookCategory.length; n++) {
-		var _category = bookCategory[n];
+	//for( var n = 0; n < bookCategory.length; n++) {
+	for( var key in bookCategory) {
+		var _category = bookCategory[key];
 		
-		html += lib.vars["templates"]["book_category_item_tpl"]
+		if ( _category["type"] == "book" ||
+				_category["type"] == "author"){
+
+			html += lib.vars["templates"]["book_category_item_tpl"]
 .replace(/{{page-title}}/g, _category["name"] )
 .replace("{{nid}}", _category["nid"] )
 .replace("{{mlid}}", _category["mlid"] )
 .replace("{{plid}}", _category["plid"] )
 .replace("{{type}}", _category["type"] );
+		}
+		
 	}//next
 	
 	html = lib.vars["templates"]["book_category_tpl"].replace("{{list}}", html );
