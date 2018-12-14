@@ -893,6 +893,17 @@ function _getNode( opt ){
 //console.log(nodes);
 				if( nodes ){
 					var node = nodes[nid];
+					
+					//Get children nodes				
+					//if( node["type"] === "author"){
+					
+					//node["node_child_pages"] = book.get_child_pages({
+						//"plid" : node["mlid"],
+						//"recourse" : 0
+					//});
+					
+					//}
+					
 					if( typeof p["callback"] === "function"){
 						p["callback"](node);//return
 					}
@@ -1102,7 +1113,7 @@ function _viewNode( opt ) {
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-//console.log(p);
+console.log(p);
 //console.log(_viewNode.caller);
 	
 	if( !p["node"] ) {
@@ -1235,13 +1246,15 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 	//form node old book url
 	var html_book_url2 = "";
-	for( var n = 0; n < _node["book_url"].length; n++ ){
-		var link =  _node["book_url"][n];
+	if( _node["book_url"] && _node["book_url"].length > 0 ){
+		for( var n = 0; n < _node["book_url"].length; n++ ){
+			var link =  _node["book_url"][n];
 
-		html_book_url2 += node_tpl_url
-				.replace("{{link-title}}", link)
-				.replace("{{url}}", link);
-	}//next book url
+			html_book_url2 += node_tpl_url
+					.replace("{{link-title}}", link)
+					.replace("{{url}}", link);
+		}//next book url
+	}
 	html = html.replace("{{book-old-url}}", html_book_url2);
 
 

@@ -1125,7 +1125,9 @@ console.log( _vars["logMsg"] );
 					var $node = $( xml.nodes[n] );
 					
 					if ( $node.attr('plid') === plid ){
-						if ( $node.attr('type') === "book" ){
+						if ( $node.attr('type') === "book" ||
+								$node.attr('type') === "author"
+							){
 						
 							var _section = {
 								"name": $node.attr('title'),
