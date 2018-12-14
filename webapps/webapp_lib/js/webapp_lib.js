@@ -37,11 +37,11 @@
 			"view_book_category" : function(){
 				var html = _view_book_category();
 				return html;
-			},
-			"view_child_pages" : function( params ) {
-				var html = _view_child_pages( params );
-				return html;
-			}
+			}//,
+			//"view_child_pages" : function( params ) {
+				//var html = _view_child_pages( params );
+				//return html;
+			//}
 		};
 
 
@@ -1094,8 +1094,8 @@ console.log( _vars["logMsg"] );
 					"nodes": storage.tables["nodes"]["xml"]
 				};
 				
-				//var hList = [];
-				var hList = {};
+				var hList = [];
+				//var hList = {};
 
 				for( var n = 0; n < xml.nodes.length; n++){
 //console.log( n, xml[n] );
@@ -1110,9 +1110,9 @@ console.log( _vars["logMsg"] );
 							"section": __getChildSections( xml, $node.attr('mlid'), 1)
 						};
 						
-						//hList.push( section );
-						var key = $node.attr('nid');
-						hList[key] = section;
+						hList.push( section );
+						//var key = $node.attr('nid');
+						//hList[key] = section;
 					}
 
 				}//next node
@@ -1124,8 +1124,8 @@ console.log( _vars["logMsg"] );
 			
 			function __getChildSections(xml, plid, recourse){
 				
-				//var sections = [];
-				var sections = {};
+				var sections = [];
+				//var sections = {};
 				
 				for( var n = 0; n < xml.nodes.length; n++) {
 					var $node = $( xml.nodes[n] );
@@ -1146,17 +1146,19 @@ console.log( _vars["logMsg"] );
 							if( $node.attr('mlid').length > 0 ){
 								if ( recourse === 1){
 									var _subSection = __getChildSections( xml, $node.attr('mlid'), 1 );
-									//if( _subSection.length > 0){
+									if( _subSection.length > 0){
 										_section["section"] = _subSection;
-									//}
+var key = $node.attr('nid');
+_vars["nodes"][key]["node_child_pages"] = _subSection;
+									}
 								}
 							}
 							
-							//sections.push( _section );
+							sections.push( _section );
 							
-							var key = $node.attr('nid');
+							//var key = $node.attr('nid');
 //console.log( key, typeof key);							
-							sections[key] = _section;
+							//sections[key] = _section;
 							
 						//}
 					}
@@ -1639,7 +1641,7 @@ console.log("error, not found _vars[book_category], function parse_book_category
 			return html;
 		}//end _view_book_category()
 		
-		
+/*		
 		function _view_child_pages( p ) {
 //console.log("function view_child_pages", p);
 
@@ -1686,7 +1688,7 @@ console.log("child_pages is empty!!!");
 
 			return html;
 		};//end _view_child_pages(p)
-
+*/
 		
 		
 

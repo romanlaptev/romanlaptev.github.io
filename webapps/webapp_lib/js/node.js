@@ -1113,7 +1113,7 @@ function _viewNode( opt ) {
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 //console.log(_viewNode.caller);
 	
 	if( !p["node"] ) {
@@ -1149,7 +1149,7 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 		func.log("");
 		func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 
-		var childNodesHtml = book.view_child_pages({
+		var childNodesHtml = _showChildPages({
 			"nid" :  _node["nid"],
 			"mlid" :  _node["mlid"],
 			"child_pages": _node["node_child_pages"]
@@ -1354,6 +1354,52 @@ desc = "Yandex cloud disk: ";
 	
 }//end _viewNode()
 
+function _showChildPages( p ) {
+//console.log("function _showChildPages", p);
+
+	if( typeof p["child_pages"] === "undefined") {
+		var log = "- error, not found child_pages";
+//console.log(message);
+		//_vars["info"].push( message );
+lib.vars["logMsg"] = log;
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+//console.log( lib.vars["logMsg"] );
+		
+		return;
+	}
+	
+	if( p["child_pages"].length === 0) {
+console.log("child_pages is empty!!!");
+		return;
+	}
+
+	//list child pages
+	var list_tpl = lib.vars["templates"]["book_child_pages_tpl"];
+	var item_tpl = lib.vars["templates"]["book_child_pages_item_tpl"];
+	
+	var html = "", html_list = "";
+	
+	for( var n = 0; n < p["child_pages"].length; n++ ) {
+		
+		var type = $(p["child_pages"][n]).attr("type");
+		var nid = $(p["child_pages"][n]).attr("nid");
+		var mlid = $(p["child_pages"][n]).attr("mlid");
+		var plid = $(p["child_pages"][n]).attr("plid");
+		var title = $(p["child_pages"][n]).attr("name");
+		html_list += item_tpl
+		.replace("{{type}}", type)
+		.replace("{{nid}}", nid)
+		.replace("{{mlid}}", mlid)
+		.replace("{{plid}}", plid)
+		.replace("{{link-title}}", title);
+
+	}//next child_page
+	
+	html = list_tpl.replace("{{list}}", html_list);
+//console.log( html );
+
+	return html;
+};//end _showChildPages(p)
 
 
 		function add_dropbox_links() {
