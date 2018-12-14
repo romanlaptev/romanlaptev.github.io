@@ -131,10 +131,10 @@ var _buildBlock = function(opt){
 
 	//render dynamic content
 	if( typeof p["content"] === "function"){
-		var html = p["content"]();
-		if( html && html.length > 0){
+		//var html = p["content"]();
+		//if( html && html.length > 0){
 			_insertBlock( p );
-		}
+		//}
 /*				
 		p["content"]({
 			"callback" : function( res ){
@@ -202,7 +202,7 @@ console.log( lib.vars["logMsg"] );
 	var html = lib.vars["templates"][templateID];
 	
 	html = html.replace("{{block_title}}", p["title"]);
-	html = html.replace("{{content}}", p["content"]);
+	html = html.replace("{{content}}", p["content"]);// function p["content"] return html!!!!
 	
 	var locationID = func.getById( p["locationID"] );
 	if( locationID){

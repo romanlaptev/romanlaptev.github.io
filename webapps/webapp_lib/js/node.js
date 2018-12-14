@@ -19,7 +19,8 @@ var nodes_obj = {
 		//return _getTerminNodesStorage(params);
 	}, 
 	"view_node" : function( params ){
-		return _view_node( params );
+//console.log( nodes_obj.view_node.caller);
+		return _viewNode( params );
 	},
 	"viewNodes" : function( opt ){
 		return _viewNodes( opt );
@@ -794,7 +795,8 @@ function _getNode( opt ){
 //console.log(opt);
 	var p = {
 		"nid" : null,
-		"xmlObj": null
+		"xmlObj": null,
+		"callback": null
 	};
 	//extend p object
 	for(var key in opt ){
@@ -829,7 +831,7 @@ function _getNode( opt ){
 		
 		return node;
 	}//end __getNodeXmlObj()
-
+/*
 	function __getNodeByNid( nid ){
 		var node = {};
 		for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
@@ -880,6 +882,23 @@ function _getNode( opt ){
 //console.log( node  );
 			return node;
 		}//next node
+		
+		return false;
+	}//end __getNodeByNid()
+*/
+	function __getNodeByNid( nid ){
+		_getNodes({
+			
+			"postFunc": function( nodes ){
+//console.log(nodes);
+				if( nodes ){
+					var node = nodes[nid];
+					if( typeof p["callback"] === "function"){
+						p["callback"](node);//return
+					}
+				}
+			}//end postFunc()
+		});
 		
 		return false;
 	}//end __getNodeByNid()
@@ -1074,25 +1093,33 @@ function _getNodes( opt ) {
 }//end _getNodes()
 
 
-function _view_node( params ) {
-//console.log(params, nodes_obj);	
-	if( !lib.vars["node"] ) {
-		var log = "- error, not found lib.vars[node]";
-//console.log(message);
-		//lib.vars["info"].push( message );
+function _viewNode( opt ) {
+//console.log("function _viewNode()", opt);
+	var p = {
+		"node": null
+	};
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+//console.log(_viewNode.caller);
+	
+	if( !p["node"] ) {
+		var log = "- error, not found node...";
 lib.vars["logMsg"] = log;
 func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 //console.log( lib.vars["logMsg"] );
-		
 		return;
 	}
 	
+	var _node = p["node"];
 	//----------------------
 	var bodyValue = "";
-//console.log(lib.vars["node"]["body_value"].length );
-//console.log("TEST!!!", lib.vars["node"]["body_value"] && lib.vars["node"]["body_value"].length > 0);
-	if( lib.vars["node"]["body_value"] && lib.vars["node"]["body_value"].length > 0){
-		bodyValue = lib.vars["node"]["body_value"]
+//console.log(_node["body_value"].length );
+//console.log("TEST!!!", _node["body_value"] && _node["body_value"].length > 0);
+	if( _node["body_value"] && _node["body_value"].length > 0){
+		bodyValue = _node["body_value"]
 		.replace(/&quot;/g,"\"")
 		.replace(/&lt;/g,"<")
 		.replace(/&gt;/g,">");
@@ -1102,19 +1129,19 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 	//----------------------
 	var childNodesHtml = "";
-	if( lib.vars["node"]["node_child_pages"] && lib.vars["node"]["node_child_pages"].length > 0){
-//console.log(lib.vars["node"]);
-//console.log(lib.vars["node"]["node_child_pages"]);
-//console.log(lib.vars["node"]["type"]);
+	if( _node["node_child_pages"] && _node["node_child_pages"].length > 0){
+//console.log(_node);
+//console.log(_node["node_child_pages"]);
+//console.log(_node["type"]);
 
-		lib.vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + lib.vars["node"]["node_child_pages"].length + "</b></p>";
+		lib.vars["logMsg"] = "<p>- в разделе найдено подразделов или книг: <b>" + _node["node_child_pages"].length + "</b></p>";
 		func.log("");
 		func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 
 		var childNodesHtml = book.view_child_pages({
-			"nid" :  lib.vars["GET"]["nid"],
-			"mlid" :  lib.vars["GET"]["mlid"],
-			"child_pages": lib.vars["node"]["node_child_pages"]
+			"nid" :  _node["nid"],
+			"mlid" :  _node["mlid"],
+			"child_pages": _node["node_child_pages"]
 		});
 //console.log("childNodesHtml = " + childNodesHtml);
 	}
@@ -1122,18 +1149,18 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 	
 	var node_tpl = lib.vars["templates"]["node_tpl"];
 	var html = node_tpl
-	.replace("{{author}}", lib.vars["node"]["author"] )
+	.replace("{{author}}", _node["author"] )
 	//.replace("{{node-title}}", lib.vars["node"]["title"] )
-	.replace("{{type}}", lib.vars["node"]["type"] )
-	.replace("{{bookname}}", lib.vars["node"]["bookname"] )
-	.replace("{{changed}}", lib.vars["node"]["changed"] )
-	.replace("{{created}}", lib.vars["node"]["created"] )
+	.replace("{{type}}", _node["type"] )
+	.replace("{{bookname}}", _node["bookname"] )
+	.replace("{{changed}}", _node["changed"] )
+	.replace("{{created}}", _node["created"] )
 	.replace("{{body_value}}", bodyValue )
 	.replace("{{child_pages}}", childNodesHtml );
 
 
-	if( lib.vars["node"]["bookname"].length === 0){
-		html = html.replace("{{node-title}}", lib.vars["node"]["title"] );
+	if( _node["bookname"].length === 0){
+		html = html.replace("{{node-title}}", _node["title"] );
 	} else {
 		html = html.replace("{{node-title}}", "" );
 	}
@@ -1142,11 +1169,11 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 	//form node book local url
 	var htmlBookLinks = "";
-	if( lib.vars["node"]["book_files"] && lib.vars["node"]["book_files"].length > 0) {
+	if( _node["book_files"] && _node["book_files"].length > 0) {
 		var html_book_url = "";
-		var subfolder =  lib.vars["node"]["subfolder"];
-		for( var n = 0; n < lib.vars["node"]["book_files"].length; n++ ){
-			var filename =  lib.vars["node"]["book_files"][n];
+		var subfolder =  _node["subfolder"];
+		for( var n = 0; n < _node["book_files"].length; n++ ){
+			var filename =  _node["book_files"][n];
 			var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
 			if( filename.lastIndexOf('#') > 0 ) {
 				var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
@@ -1174,9 +1201,9 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 	
 	//add cloud disk links
 	var htmlWrapCloudLinks = "";
-	if( lib.vars["node"]["book_files"] && lib.vars["node"]["book_files"].length > 0) {
-		var html_cloud_links = add_cloud_links( config["url_book_location_Mail"] );
-		html_cloud_links += add_cloud_links( config["url_book_location_Yandex"] );
+	if( _node["book_files"] && _node["book_files"].length > 0) {
+		var html_cloud_links = add_cloud_links( _node, config["url_book_location_Mail"] );
+		html_cloud_links += add_cloud_links( _node, config["url_book_location_Yandex"] );
 		//html_cloud_links += add_dropbox_links();
 		htmlWrapCloudLinks = lib.vars["templates"]["node_tpl_cloud_links"].replace("{{list}}", html_cloud_links);
 	}
@@ -1184,11 +1211,11 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 //-------------------------- form node book external links
 	var htmlWrapExternalLinks = "";
-	if( lib.vars["node"]["book_links"].length > 0 ){
+	if( _node["book_links"] && _node["book_links"].length > 0 ){
 		
 		var html_external_links = "";
-		for( var n = 0; n < lib.vars["node"]["book_links"].length; n++ ){
-			var link =  lib.vars["node"]["book_links"][n];
+		for( var n = 0; n < _node["book_links"].length; n++ ){
+			var link =  _node["book_links"][n];
 			var link_title = link.substring( link.lastIndexOf('#')+1, link.length );
 			if( link.lastIndexOf('#') > 0 ) {
 				var s_link = link.substring( 0, link.lastIndexOf('#') );
@@ -1208,8 +1235,8 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 	//form node old book url
 	var html_book_url2 = "";
-	for( var n = 0; n < lib.vars["node"]["book_url"].length; n++ ){
-		var link =  lib.vars["node"]["book_url"][n];
+	for( var n = 0; n < _node["book_url"].length; n++ ){
+		var link =  _node["book_url"][n];
 
 		html_book_url2 += node_tpl_url
 				.replace("{{link-title}}", link)
@@ -1221,16 +1248,16 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 
 	//form node taxonomy menu
 	var htmlWrapTermins = "";
-	if( lib.vars["node"]["termins"].length > 0 ){
+	if( _node["termins"] && _node["termins"].length > 0 ){
 		var html_termin_links = "";
 		var node_tpl_url = lib.vars["templates"]["node_tpl_termins_item"];
 
-		for( var n = 0; n < lib.vars["node"]["termins"].length; n++ ) {
-			var link_title = lib.vars["node"]["termins"][n]["name"];
+		for( var n = 0; n < _node["termins"].length; n++ ) {
+			var link_title = _node["termins"][n]["name"];
 			html_termin_links += node_tpl_url
 					.replace("{{link-title}}", link_title)
 					.replace("{{vid}}", "")
-					.replace("{{tid}}", lib.vars["node"]["termins"][n]["tid"] );
+					.replace("{{tid}}", _node["termins"][n]["tid"] );
 					
 		}//next termin
 		htmlWrapTermins = lib.vars["templates"]["node_tpl_termins"].replace("{{list}}", html_termin_links);
@@ -1238,4 +1265,158 @@ func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 	html = html.replace("{{termin-links}}", htmlWrapTermins);
 	
 	return html;
-}//end _view_node()
+	
+	function add_cloud_links( node, cloudUrl ) {//form link on cloud file
+//console.log("function add_cloud_links", cloudUrl);			
+		var html = "";
+		
+		var node_tpl_url = lib.vars["templates"]["node_tpl_cloud_links_item"];
+		var subfolder =  node["subfolder"];
+		
+		for( var n = 0; n < node["book_files"].length; n++ ){
+			var filename =  node["book_files"][n];
+			var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
+			if( filename.lastIndexOf('#') > 0 )	{
+				var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
+			} else {
+				var s_filename = filename;
+			}
+
+			if( filename.indexOf("http") !== -1){//external link
+				var url = s_filename;//?????????????????????
+			} else { //local file
+				var url = cloudUrl + "/"+ subfolder + "/" + s_filename;
+			}
+			
+var directLink = "";
+var btnCopyUrl = "";
+var btnOmniReader = "";
+var desc = "";
+//-------------
+if(cloudUrl.indexOf("mail.ru") !== -1 ){
+desc = "Mail.ru cloud disk: ";
+directLink = "<div id='link-"+n+"'>" + url+"</div>";
+
+//------------- add COPY LINK BUTTON
+if(config["addCopyLink"]){
+	btnCopyUrl = "<button id='btn-copy-"+n+"' class='btn btn-primary btn-sm btn-copy-url' data-clipboard-action='copy' data-clipboard-target='#link-"+n+"'>Copy link to the clipboard</button>";
+	
+	var clipboard = new ClipboardJS("#btn-copy-"+n);
+//console.log( "TEST!", clipboard );
+
+	clipboard.on('success', function(e) {
+console.log("Copy link success, ", e);
+//window.location.href = e.text;	
+//var params = "";
+//window.open(e.text, "name", params)
+	});
+
+	clipboard.on('error', function(e) {
+console.log("error copy link", e);
+	});
+}
+//-------------
+btnOmniReader = "<a href='http://omnireader.ru/?url="+url+"' rel='noreferrer' target='_blank' class='btn btn-warning'>omnireader.ru</a>";
+}
+
+if(cloudUrl.indexOf("yandex") !== -1 ){
+desc = "Yandex cloud disk: ";
+}
+//-------------				
+			var html_url = node_tpl_url
+					.replace("{{link-title}}", link_title)
+					.replace(/{{url}}/g, url)
+					.replace(/{{description}}/g, desc)
+					.replace(/{{direct-link}}/g, directLink)
+					.replace("{{btn-copy-url}}", btnCopyUrl)
+					.replace("{{btn-omnireader}}", btnOmniReader);
+
+			html += html_url;
+		}//next book file
+		
+//console.log(html);
+		return html;
+		
+	}//end add_cloud_links()
+	
+}//end _viewNode()
+
+
+
+		function add_dropbox_links() {
+	
+			var html = "";
+			
+			var subfolder =  _vars["node"]["subfolder"];
+			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
+				var filename =  _vars["node"]["book_files"][n];
+				
+				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );
+				if( filename.lastIndexOf('#') > 0 )	{
+					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
+				} else {
+					var s_filename = filename;
+				}
+
+				var html_url = _vars["templates"]["node_tpl_cloud_Dropbox"]
+						.replace("{{link-title}}", link_title)
+						.replace("{{subfolder}}", subfolder)
+						.replace("{{filename}}", s_filename);
+
+				html += html_url;
+			}//next book file
+			
+			return html;
+/*
+			//form node book url and generate ajax-request to Dropbox
+			var node_tpl_url = _vars["templates"]["dropbox_for_tpl"];
+			var subfolder =  _vars["node"]["subfolder"];
+			for( var n = 0; n < _vars["node"]["book_files"].length; n++ ){
+				var filename =  _vars["node"]["book_files"][n];
+				var link_title = filename.substring( filename.lastIndexOf('#')+1, filename.length );//"dropbox disk link";
+				if( filename.lastIndexOf('#') > 0 )	{
+					var s_filename = filename.substring( 0, filename.lastIndexOf('#') );
+				} else {
+					var s_filename = filename;
+				}
+
+				if( filename.indexOf("http") !== -1){//external link
+					var url = s_filename;//?????????????????????
+				} else { //local file
+					var url = config["url_lib_location_dropbox"] + "/"+ subfolder + "/" + s_filename;
+				}
+				
+				var html = node_tpl_url
+						.replace("{{link-title}}", link_title)
+						.replace("{{url}}", url);
+				//асинхронный запрос к серверу для проверки наличия файла книги на сервере и вывода кода ссылки
+				test_exists_book( url, "HEAD", html );
+			}//next book file
+*/			
+		}//end add_dropbox_links()
+
+
+/*		
+		//
+		//асинхронный запрос к серверу для проверки наличия файла книги на сервере и вывода кода ссылки
+		function test_exists_book( url, type_request, html ){
+			$.ajax({
+				url: url,
+				type: type_request,
+				async: true,
+				response:'text',//тип возвращаемого ответа text либо xml
+				complete: function(xhr, status) 	{}, 
+				success:function(data,status) {
+console.log("status - " + status +", url - " + url);
+					$("#dropbox-list").append( html );
+					$("#dropbox-links").show();
+				},
+				error:function(data, status, errorThrown){
+//console.log("data - " + data);
+console.log("status - " + status +", url - " + url);
+//console.log("errorThrown - " + errorThrown);
+					$("#dropbox-links").hide();
+				}
+			});
+		}//end test_exists_book()
+*/
