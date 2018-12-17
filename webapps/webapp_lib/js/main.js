@@ -9,7 +9,7 @@ var lib;
 console.log("func:", func);
 
 var config = {
-"dbName" : "db1",
+"dbName" : "libdb",
 "storage_key" : "lib_xml",
 "xml_file" : "db/export_lib.xml",
 //"xml_file : "db/test.xml",
