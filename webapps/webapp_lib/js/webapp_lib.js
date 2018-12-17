@@ -23,32 +23,12 @@
 
 		};
 		//_vars["updateStore"] = false;
-		
-		var book = {
-			"get_book_category" : function(){
-				_get_book_category();
-			},
-			"get_child_pages" : function( params ) {
-				var plid = params["plid"];
-				var recourse = params["recourse"];
-				var nodes = _get_child_pages( plid, recourse );
-				return nodes;
-			},
-			"view_book_category" : function(){
-				var html = _view_book_category();
-				return html;
-			}//,
-			//"view_child_pages" : function( params ) {
-				//var html = _view_child_pages( params );
-				//return html;
-			//}
-		};
 
 
 		var taxonomy_obj = {
-			"parseTaxonomyFromXml" : function(opt){
-				return _parseTaxonomyFromXml(opt);
-			},
+			//"parseTaxonomyFromXml" : function(opt){
+				//return _parseTaxonomyFromXml(opt);
+			//},
 			"view_vocabulary" : function( opt ){
 				var html = _view_vocabulary( opt );
 				return html;
@@ -85,7 +65,7 @@ console.log(err);
 console.log("storage object:", storage);
 console.log("draw object:", draw);
 console.log("node object:", nodes_obj);
-console.log("book obj:", book);
+//console.log("book obj:", book);
 console.log("taxonomy_obj:", taxonomy_obj);
 
 		
@@ -131,7 +111,6 @@ _vars["info"].push(logMsg);
 					//callback: after_load
 					callback: function(data){
 //console.log(typeof data, data[0]);
-						//after_load( data );
 						
 						_parseXML({
 							"xml":data
@@ -198,7 +177,6 @@ func.log(logMsg);
 							});
 							_loadApp();
 							
-							//after_load( data );
 						}
 					});
 				}
@@ -449,62 +427,6 @@ func.log("<div class='alert'>" + _vars["logMsg"] + "</div>");
 		}//end loadXml()
 */		
 		
-		function after_load( data ) {
-			//lib = Lib( xml );
-	//console.log(lib);
-			_vars["xml"] = data;
-			
-			_vars["GET"] = func.parseGetParams(); 
-//console.log( _vars["GET"],  get_object_size( _vars["GET"] ) );
-
-			_loadTemplates(function(){
-//console.log("Load templates end...", arguments );
-				callback_init();
-			});
-	
-		}//end after_load()
-		
-		
-//=============================================		
-		function callback_init() {
-			
-//if(_vars["xml"]){
-			var res = get_content();
-			if(res){
-//console.log("TEST2");				
-				_urlManager();			
-				draw_page();
-				define_event();
-			}
-//}			
-			
-			_vars["timeEnd"] = new Date();
-			_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-			_vars["logMsg"] = "Init application, runtime: <b>" + _vars["runTime"]  + "</b> sec";
-			func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-//console.log( _vars["logMsg"] );
-	
-//setTimeout(function(){
-			if( _vars["waitWindow"] ){
-				_vars["waitWindow"].style.display="none";
-			}
-//}, 1000*7);
-
-/*			
-			//??????
-			var runtime_all = 0;
-			for( var item in _vars["runtime"]){
-//console.log(item, _vars["runtime"][item]);				
-				runtime_all = runtime_all + _vars["runtime"][item]["time"];
-			}
-			
-_vars["logMsg"] = "count runtime all : <b>" + runtime_all.toFixed(3)  + "</b> sec";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			_vars["info"].push( "<p>"+_vars["logMsg"]+"</p>" );
-*/			
-		}//end callback_init()
-		
 		
 		
 //============================== TEMPLATES
@@ -596,230 +518,6 @@ console.log("error in draw.loadTemplates(), cannot parse templates data.....");
 			
 		}//end _loadTemplates()
 
-
-//====================================== CONTENT
-		var get_content = function( params ){
-			
-			var _total = 5;
-			var _numDone = 0;
-			var _percentComplete = 0;
-
-			
-//------------------ //get nodes
-			var timeStart = new Date();
-//runtime: 0.668 sec
-				var res = _readNodesData();
-if(!res){
-	return false;
-}				
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			
-_vars["logMsg"] = "- _readNodesData(), runtime: <b>" + runTime  + "</b> sec";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
-			
-			//_vars["runtime"]["read_nodes_data"] = {
-				//"time" : runTime
-			//};
-		
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-//------------------
-//------------------
-/*
-			var timeStart = new Date();
-//runtime: 4.837 sec+, 
-//runtime: 1.394 sec+, 
-//runtime: 0.783 sec
-				_vars["nodes"] = _getNodes();
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			var log = "- _getNodes(), runtime: <b>" + runTime  + "</b> sec";
-			
-			//_vars["info"].push( log );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			
-			_vars["runtime"]["get_xml_nodes"] = {
-				"time" : runTime
-			};
-
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-*/			
-//------------------
-			
-
-//------------------//get taxonomy termins
-/*
-			var timeStart = new Date();
-//runtime: 0.684 sec
-				read_taxonomy_data();
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-			
-_vars["logMsg"] = "- read_taxonomy_data, runtime: <b>" + runTime  + "</b> sec";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
-			
-			//_vars["runtime"]["read_taxonomy_data"] = {
-				//"time" : runTime
-			//};
-			
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-*/			
-//------------------
-			
-			
-//------------------
-			var timeStart = new Date();
-				
-				var $xml = $(_vars["xml"]);
-				_vars["taxonomy"] = taxonomy_obj.parseTaxonomyFromXml({
-					"xml": {
-"taxonomy_term_data": $xml.find( "taxonomy_term_data" ).find('termin'),
-"taxonomy_term_hierarchy": $xml.find( "taxonomy_term_hierarchy" ).find("termin"),
-"taxonomy_vocabulary" :	$xml.find( "taxonomy_vocabulary" ).find("record")
-					}
-				});
-				
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-_vars["logMsg"] = "- get taxonomy, runtime: <b>" + runTime  + "</b> sec";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
-			
-			//_vars["runtime"]["parseTaxonomyFromXml"] = {
-				//"time" : runTime
-			//};
-
-
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-
-//------------------
-
-
-//------------------
-			//get book category
-			var timeStart = new Date();
-//runtime : 0.244 sec			
- //runtime : 0.032 sec			
-				_vars["book_category"] = _get_book_category();
-				
-			var timeEnd = new Date();
-			var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-_vars["logMsg"] = "- get_book_category, runtime: <b>" + runTime  + "</b> sec";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-			_vars["info"].push("<p>" + _vars["logMsg"] + "</p>");
-			
-			//_vars["runtime"]["get_book_category"] = {
-				//"time" : runTime
-			//};
-			
-			//message = "";
-			//message += "<br>Size _vars['xml_nodes']: " + _vars["xml_nodes"].length  + " bytes";
-			//message += "<br>Size _vars['book_category']: " + _vars["book_category"].length  + " bytes";
-			//message += "<br>Size _vars['nodes']: " + nodes.nodes_size  + " bytes";
-			//message += "<br>Size _vars['taxonomy']: " + _vars["taxonomy"].length  + " bytes";
-			//_vars["info"].push( message );
-			
-			_numDone++;
-			_percentComplete = Math.ceil(_numDone / _total * 100);
-console.log( "Completed task: " + _numDone + " of total: " + _total, _percentComplete+"%" );
-//func.log( timeEnd, "parse-progress-bar" );
-
-			if( _vars["parseProgressBar"] ){
-				_vars["parseProgressBar"].className = "progress-bar";
-				_vars["parseProgressBar"].style.width = _percentComplete+"%";
-				_vars["parseProgressBar"].innerHTML = _percentComplete+"%";
-			}
-
-//------------------
-			delete _vars["xml"];
-			
-			return true;
-			
-			//read xml data
-			function _readNodesData() {
-	//console.log("TEST, _readNodesData()");			
-				try{
-					var xml = _vars["xml"];
-					
-		//FF 3.6.2, error parse, fail $(xml)
-		//script stack space quota is exhausted
-					var table_name_index = "taxonomy_index";
-					nodes_obj["taxonomy_index"] = $(xml).find( table_name_index ).find("record");//runtime: 0.244 sec
-		//console.log( "1", $ );
-		//console.log( "2", typeof nodes_obj["taxonomy_index"] );
-		//console.log( "3", nodes_obj["taxonomy_index"] );
-					
-					var table_name = "table_node";
-					nodes_obj["x_nodes"] = $(xml).find( table_name ).find('node');//runtime: 0.253 sec
-		//console.log( nodes_obj["x_nodes"] );
-		
-	//-------------
-					var table_name = "table_book_filename";
-					nodes_obj["x_filenames"] = $(xml).find( table_name ).find('item');
-					
-					table_name = "table_book_url";
-					nodes_obj["x_url"] = $(xml).find( table_name ).find('item');
-					
-					table_name = "table_book_links";
-					nodes_obj["x_links"] = $(xml).find( table_name ).find('item');
-	//-------------
-		
-					return true;
-					
-				} catch(e) {
-		console.log( e );
-					_vars["logMsg"] = "XML parse error ( _readNodesData() ). ";
-					_vars["logMsg"] += e.name+", "+e.message;
-					func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-					return false;
-				}
-			}//end _readNodesData()
-			
-		};//end get_content()
 
 
 		function _parseXML( opt ){
@@ -1172,815 +870,7 @@ _vars["nodes"][key]["node_child_pages"] = _subSection;
 
 
 
-		
-		function _getBookFilesXML( opt ){
-//console.log("function _getBookFilesXML", opt);
-			var p = {
-				"nid": null,
-				"xml": null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-			var files = [];
-			
-			$(p["xml"]).each(function(){
-//console.log( $(this), arguments );
-				var entity_id = $(this).attr("entity_id");
-//console.log( entity_id);
-				
-				if( p["nid"] === entity_id ){
-//console.log("000");
-					var v = $(this).children("value").text().trim();
-					files.push( v );
-				}
-			});//next
-
-			return files;
-		}//end _getBookFilesXML()
-
-/*
-		function _getBookFilesXML_( opt ){
-//console.log("function _getBookFilesXML_", opt);
-			var p = {
-				"nid": null,
-				"xml": null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-			var files = [];
-//console.log(p["xml"][0]);
-//console.log( $(p["xml"][0]).attr("entity_id"));
-//console.log( "child: ", p["xml"][0].childNodes);
-
-			for(var n = 0; n < p["xml"].length; n++){
-				var entityId = p["xml"][n].getAttribute("entity_id");
-//console.log( "entity_id: ", entityId);
-
-				if( p["nid"] === entityId ){
-					for (var n2 = 0; n2 < p["xml"][n].childNodes.length; n2++) {
-						var nodeXML = p["xml"][n].childNodes.item(n2);
-///console.log( "nodeType: "+ nodeXML.nodeType);
-						if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
-							continue;
-						}
-//console.log( nodeXML, typeof nodeXML);
-						if ("textContent" in nodeXML ){
-							var _value = nodeXML.textContent;
-						} else {
-							var _value = nodeXML.text;
-						}
-//console.log( _value );
-						files.push( _value );
-					}//next
-				}
-
-			}//next
-
-			return files;
-		}//end _getBookFilesXML_()
-*/
-
-		
-		function _getBookUrlXML( opt ){
-//console.log("function _getBookUrlXML", opt);
-			var p = {
-				"nid": null,
-				"xml": null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-			var listUrl = [];
-
-			$(p["xml"]).each(function(){
-				var entity_id = $(this).attr("entity_id");
-				
-				if( p["nid"] === entity_id ){
-					var v = $(this).children("value").text();
-					listUrl.push( v );
-				}
-			});//next url
-
-			return listUrl;
-		}//end _getBookUrlXML()
-
-		
-		function _getBookLinksXML( opt ){
-//console.log("function _getBookLinksXML", opt);
-			var p = {
-				"nid": null,
-				"xml": null
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-			var links = [];
-
-			$(p["xml"]).each(function(){
-				var entity_id = $(this).attr("entity_id");
-				
-				if( p["nid"] === entity_id ){
-					var v = $(this).children("value").text();
-					links.push( v );
-				}
-			});//next
-
-			return links;
-		}//end _getBookLinksXML()
-
-
-
-
-//====================================== TAXONOMY methods
-/*
-		//read xml data
-		function read_taxonomy_data(){
-			var xml = _vars["xml"];
-			taxonomy_obj["taxonomy_vocabulary"] = $(xml).find( "taxonomy_vocabulary" ).find("record");
-			taxonomy_obj["taxonomy_term_hierarchy"] = $(xml).find( "taxonomy_term_hierarchy" ).find("termin");
-			taxonomy_obj["taxonomy_term_data"] = $(xml).find( "taxonomy_term_data" ).find('termin');
-			
-			//taxonomy_obj["taxonomy_index"] = $(xml).find( "taxonomy_index" ).find("record");
-			
-		}//end read_taxonomy_data()
-*/
-		function _parseTaxonomyFromXml( opt ){
-//console.log(opt);
-
-			var xml = opt["xml"];
-			
-			var taxonomy = {};
-			$( xml.taxonomy_vocabulary ).each(function(){
-				var item = $(this);
-				var name = item.children('m_name').text();
-				var vocabulary = {
-					//"name" : item.children('name').text(),
-					"vid" : item.attr('vid'),
-					"termins" : __get_termins( item.attr('vid') )
-				};
-				taxonomy[name] = vocabulary;
-			});//end each
-			
-//runtime: 0.655 sec
-/*			
- 			var taxonomy_vocabulary = $(xml).find( table_name ).find('item');
-			for( var n = 0; n < taxonomy_vocabulary.length; n++)
-			{
-//console.log( n, x_nodes[n] );
-				var voc = $( taxonomy_vocabulary[n] );
-				var name = voc.children('m_name').text();
-				var vocabulary = {
-					"vid" : voc.attr('vid')//,
-					//"termins" : get_termins( voc.attr('vid') ),
-				};
-				taxonomy[name] = vocabulary;
-			}//next voc
-*/			
-
-/*
-			storage.putItem("taxonomy", taxonomy, function(){
-//console.log(arguments);				
-			});
-*/
-			return taxonomy;
-			
-			function __get_termins( vid ){
-				var termins = [];
-				$( xml.taxonomy_term_data ).each(function(){
-					var item = $(this);
-					if ( item.attr('vid') === vid ){
-						var term_obj = {
-							"name" : item.children('name').text(),
-							"description" : item.children('description').text(),
-							"vid" : item.attr('vid'),
-							"tid" : item.attr('tid')//,
-							//"parent_value" : get_termin_info( item.attr('tid'), term_hierarchy )
-						};
-						termins.push( term_obj );
-					}
-				});//end each
-
-				//get termins hierarchy
-				var parent_value = false;
-				$( xml.taxonomy_term_hierarchy ).each(function(){
-					var item = $(this);
-					var tid = item.attr('tid');
-					for( var n = 0; n < termins.length; n++){
-						if( tid === termins[n]["tid"]){
-							termins[n]["parent_value"] = item.attr('parent');
-							//break;
-						}
-					}//next termin
-				});//end each
-
-				return termins;
-			}//end __get_termins()
-/*
-			function get_termin_info( tid, table )
-			{
-				var parent_value = false;
-				$( table ).each(function()//8412 вхождений.!!!!!!!!!!!!!!!!!
-				{
-					var item = $(this);
-					if ( item.attr('tid') === tid )
-					{
-						parent_value = item.attr('parent');
-						return false;
-					}
-				});//end each
-//console.log(tid, parent_value);
-				return parent_value;
-			}//end get_termin_info()
-*/
-		}//end _parseTaxonomyFromXml()
-
-		
-		function _view_vocabulary ( opt ) {
-//console.log("_view_vocabulary()", opt);
-
-			var p = {
-				"taxonomy": null,
-				"vocabularyName": "",
-				"recourse" : false
-			};
-			//extend p object
-			for(var key in opt ){
-				p[key] = opt[key];
-			}
-//console.log(p);
-			
-			var vocName = p["vocabularyName"];
-			if( !p["taxonomy"][vocName] ){
-_vars["logMsg"] = "error, vocabulary <b>"+ p["vocabularyName"]+"</b> not found ";
-func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-				return false;
-			}
-			var _vocabulary = p["taxonomy"][vocName];
-			
-			var item_tpl = _vars["templates"]["taxonomy_list_item_tpl"];
-			var list_tpl = _vars["templates"]["taxonomy_list_tpl"];
-			//var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
-			
-			//var block_title = "<h4>book tags:</h4>";
-			var html = "";
-			for( var n = 0; n < _vocabulary["termins"].length; n++ ){
-				var termin = _vocabulary["termins"][n];
-				if( termin["parent_value"] === "0"){
-					
-					//var url = url_tpl
-					//.replace("{{vid}}", termin["vid"])
-					//.replace("{{tid}}", termin["tid"]);
-					
-					html += item_tpl
-					.replace("{{link-title}}", termin["name"])
-					.replace("{{vid}}", termin["vid"])
-					.replace("{{tid}}", termin["tid"]);
-					//.replace("{{url}}", url);
-					
-					if( p["recourse"] ) {
-						
-						var html_children_termins = list_children_termins({
-							"termins": _vocabulary["termins"],
-							"vid": termin["vid"],
-							"tid": termin["tid"], 
-							"recourse": p["recourse"]
-						});
-						
-						if( html_children_termins.length > 0) {
-							html += list_tpl
-							.replace("{{block-title}}", "")
-							.replace("{{list}}", html_children_termins);
-						}
-					}
-				}
-			}//next
-			
-			html = list_tpl
-			//.replace("{{block-title}}", block_title)
-			.replace("{{list}}", html);
-			return html;
-			
-		}//end _view_vocabulary()
-
-		function list_children_termins( params ) {
-//console.log(arguments);
-			var termins = params["termins"]; 
-			var vid = params["vid"];
-			var tid = params["tid"]; 
-			var recourse = params["recourse"];
-			var item_tpl = params["item_tpl"];
-			var list_tpl = params["list_tpl"];
-			//var url_tpl = params["url_tpl"];
-			
-			var html = "";
-			for( var n = 0; n < termins.length; n++ )
-			{
-				var termin = termins[n];
-				if( termin["vid"] === vid && 
-						termin["parent_value"] === tid )
-				{
-					//var url = url_tpl
-					//.replace("{{vid}}", termin["vid"])
-					//.replace("{{tid}}", termin["tid"]);
-					
-					html += item_tpl
-					.replace("{{link-title}}", termin["name"])
-					.replace("{{vid}}", termin["vid"])
-					.replace("{{tid}}", termin["tid"]);
-					//.replace("{{url}}", url);
-					
-					if( recourse ) {
-						params["termins"] = termins; 
-						params["vid"] = termin["vid"];
-						params["tid"] = termin["tid"]; 
-						params["recourse"] = recourse;
-						params["item_tpl"] = item_tpl;
-						params["list_tpl"] = list_tpl;
-						//params["url_tpl"] = url_tpl;
-						var html_children_termins = list_children_termins( params);
-						if( html_children_termins.length > 0) {
-							html += list_tpl
-							.replace("{{block-title}}", "")
-							.replace("{{list}}", html_children_termins);
-						}
-					}
-				}
-			}//next
-			
-			return html;
-		}//end list_children_termins();
-		
-		function _view_termin( params )	{
-//console.log("TEST2", params);			
-			var termins = params["termins"]; 
-			var vid = params["vid"];
-			var tid = params["tid"];
-			var recourse = params["recourse"];
-			var show_only_children = params["show_only_children"];
-			
-			var item_tpl = params["item_tpl"];
-			var list_tpl = params["list_tpl"];
-			//var url_tpl = params["url_tpl"];
-			
-			var html = "", html_list = "";
-			for( var n = 0; n < termins.length; n++ )
-			{
-				var termin = termins[n];
-				if( termin["vid"] === vid && 
-						termin["tid"] === tid)
-				{
-					if( !show_only_children )
-					{
-						//var url = url_tpl
-						//.replace("{{vid}}", termin["vid"])
-						//.replace("{{tid}}", termin["tid"]);
-						
-						html_list += item_tpl
-						.replace("{{link-title}}", termin["name"])
-						.replace("{{vid}}", termin["vid"])
-						.replace("{{tid}}", termin["tid"]);
-						//.replace("{{url}}", url);
-					}
-					
-					if( recourse )	{
-						var params = [];
-						var html_children_termins = list_children_termins({
-"termins": termins,
-"vid": termin["vid"],
-"tid": termin["tid"], 
-"recourse": recourse,
-"list_tpl": list_tpl,
-"item_tpl": item_tpl
-//"url_tpl": url_tpl;
-							
-						});
-						
-						if( html_children_termins.length > 0){
-							html_list += list_tpl
-							.replace("{{block-title}}", "")
-							.replace("{{list}}", html_children_termins);
-						}
-					}
-				}
-			}//next
-			
-			
-			html += list_tpl
-			.replace("{{block-title}}", "")
-			.replace("{{list}}", html_list);
-			return html;
-
-		}//end _view_termin()
-		
-
-//====================================== BOOK methods
-		
-		function _get_book_category(){
-			for( var n = 0; n < nodes_obj["x_nodes"].length; n++) {
-				var node = nodes_obj["x_nodes"][n];
-				if ( $(node).attr('plid') == "0") {
-					var nodes = _get_child_pages( $(node).attr('mlid'), 0);
-				}
-			};//next node
-			
-			return nodes;
-			
-		}//end _get_book_category()
-
-		function _get_child_pages( plid, recourse ){
-			var nodes = [];
-			for( var n = 0; n < nodes_obj["x_nodes"].length; n++) {
-				var node = nodes_obj["x_nodes"][n];
-				if ( $(node).attr('plid') === plid )
-				{
-					nodes.push( node );
-					if( $(node).attr('mlid').length > 0 )
-					{
-						if ( recourse === 1){
-							//var children_nodes = list_children_pages( $(node).attr('mlid'), 1 );
-var children_nodes = list_child_pages( $(node).attr('mlid'), 1 );
-							nodes.push( children_nodes );
-						}
-					}
-				}
-			};//next node
-			
-			return nodes;
-		}//end _get_child_pages()
-
-		function _view_book_category() {
-			if( typeof _vars["book_category"] === "undefined"){
-console.log("error, not found _vars[book_category], function parse_book_category( container )");
-				return;
-			}
-			
-			var html = "";
-			for( var n = 0; n < _vars["book_category"].length; n++) {
-				var node = _vars["book_category"][n];
-				
-				html += _vars["templates"]["book_category_item_tpl"]
-.replace(/{{page-title}}/g, $(node).attr('title') )
-.replace("{{nid}}", $(node).attr('nid') )
-.replace("{{mlid}}", $(node).attr('mlid') )
-.replace("{{plid}}", $(node).attr('plid') )
-.replace("{{type}}", $(node).attr('type') );
-			}//next
-
-			html = _vars["templates"]["book_category_tpl"].replace("{{list}}", html );
-			return html;
-		}//end _view_book_category()
-		
-/*		
-		function _view_child_pages( p ) {
-//console.log("function view_child_pages", p);
-
-			if( typeof p["child_pages"] === "undefined") {
-				var log = "- error, not found child_pages";
-//console.log(message);
-				//_vars["info"].push( message );
-_vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-				
-				return;
-			}
-			
-			if( p["child_pages"].length === 0) {
-console.log("child_pages is empty!!!");
-				return;
-			}
-
-			//list child pages
-			var list_tpl = _vars["templates"]["book_child_pages_tpl"];
-			var item_tpl = _vars["templates"]["book_child_pages_item_tpl"];
-			
-			var html = "", html_list = "";
-			
-			for( var n = 0; n < p["child_pages"].length; n++ ) {
-				
-				var type = $(p["child_pages"][n]).attr("type");
-				var nid = $(p["child_pages"][n]).attr("nid");
-				var mlid = $(p["child_pages"][n]).attr("mlid");
-				var plid = $(p["child_pages"][n]).attr("plid");
-				var title = $(p["child_pages"][n]).attr("title");
-				html_list += item_tpl
-				.replace("{{type}}", type)
-				.replace("{{nid}}", nid)
-				.replace("{{mlid}}", mlid)
-				.replace("{{plid}}", plid)
-				.replace("{{link-title}}", title);
-
-			}//next child_page
-			
-			html = list_tpl.replace("{{list}}", html_list);
-//console.log( html );
-
-			return html;
-		};//end _view_child_pages(p)
-*/
-		
-		
-
-		
-		function draw_page( params ){
-			
-			//content gradient	correct height
-			//var h = $(".b-content").height();
-			//var h = $("#region-content").height();
-//console.log("b-content.height = " + h);			
-			//$(".b-content .grad").height(h);
-			
-			//clear content area
-			$("#region-content #block-taxonomy").empty( html );
-			$("#region-content #block-nodes").empty( html );
-
-//--------------------- BLOCK #sitename-block
-			draw.buildBlock({
-				"locationID" : "sitename-block",
-				"templateID" : "tpl-block--sitename"//,
-				//"content" : "<h1><a class='title' href='./'>my lib</a></h1>" 
-			});
-//---------------------
-			
-			if( typeof _vars["book_category"] !== "undefined" ) {
-				if( _vars["book_category"].length > 0 ) {
-					//var html = book.view_book_category();
-					//$("#block-book-category").html( html );
-					
-//--------------------- BLOCK #block-book-category
-					draw.buildBlock({
-						"locationID" : "block-book-category",
-						//"title" : "test block",
-						"templateID" : "tpl-block--book-category",
-						//"contentTpl" : "tpl-termin_nodes",
-						//"contentListTpl" : "tpl-termin_nodes_list",
-						"content" : book.view_book_category
-/*						
-						"content" : function(args){ //function for getting content data
-console.log(args);							
-								//var res = _vars["book_category"];
-								//if( typeof args["callback"] === "function"){
-									//args["callback"]( res );
-								//}
-							return "111";
-						}//end callback
-*/							
-					});
-//---------------------
-					
-					//mark root links for breadcrumb navigation
-					$("#block-book-category .nav-click").addClass("root-link");			
-			
-				}
-			} else {
-console.log("error, not found _vars[book_category]");
-			}
-			
-			
-//--------------------- BLOCK
-			draw.buildBlock({
-				"locationID" : "block-library",
-				"templateID" : "tpl-block--tags",
-				"content" : _view_vocabulary({
-					"taxonomy": _vars["taxonomy"],
-					"vocabularyName": "library", 
-					"recourse": false
-					})
-			});
-
-			//mark root links for breadcrumb navigation
-			$("#block-library .nav-click").addClass("root-link");			
-//---------------------
-			
-//--------------------- BLOCK
-			draw.buildBlock({
-				"locationID" : "block-tags",
-				//"title" : "Tags",
-				"templateID" : "tpl-block--tags",
-				"content" : _view_vocabulary({
-					"taxonomy": _vars["taxonomy"],
-					"vocabularyName": "tags", 
-					"recourse": false
-					})
-			});
-			//mark root links for breadcrumb navigation
-			$("#block-tags .nav-click").addClass("root-link");			
-//---------------------
-
-//--------------------- BLOCK
-			//view alphabetical
-
-			var html = taxonomy_obj.view_termin({
-				"termins": _vars["taxonomy"]["alphabetical_voc"]["termins"],
-				"vid": "4",
-				"tid": "116",
-				"recourse": true,
-				"show_only_children": true,
-				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"]//,
-				//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
-			});
-			
-			html += taxonomy_obj.view_termin({
-				"termins": _vars["taxonomy"]["alphabetical_voc"]["termins"],
-				"vid": "4",
-				"tid": "115",
-				"recourse": true,
-				"show_only_children": true,
-				"item_tpl": _vars["templates"]["tpl-block--taxonomy_alpha_list"],
-				"list_tpl": _vars["templates"]["tpl-block--taxonomy_alpha"]//,
-				//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
-			});
-			
-			//$("#block-taxonomy-alpha").html( html );
-			
-			draw.buildBlock({
-				"locationID" : "block-taxonomy-alpha",
-				"templateID" : "tpl-block--tags",
-				"content" : html
-			});
-			
-			//mark root links for breadcrumb navigation
-			$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
-//---------------------
-			
-
-			//view termin nodes
-			if ( _vars["GET"]["q"] === "termin_nodes" ) {
-				
-				if( _vars["GET"]["vid"] === "2" || _vars["GET"]["vid"] === "1"){
-					
-if( _vars["GET"]["vid"] === "2" ){
-	var termins = _vars["taxonomy"]["library"]["termins"];
-}
-if( _vars["GET"]["vid"] === "1" ){
-	var termins = _vars["taxonomy"]["tags"]["termins"];
-}
-//console.log("TEST1", termins);			
-		
-					//view children termin
-					var html = taxonomy_obj.view_termin({
-						"termins": termins,
-						"vid": _vars["GET"]["vid"],
-						"tid": _vars["GET"]["tid"],
-						"recourse": true,
-						"show_only_children": false,
-						
-						"item_tpl": _vars["templates"]["taxonomy_list_item_tpl"],
-						"list_tpl": _vars["templates"]["taxonomy_list_tpl"]//,
-						
-						//"url_tpl": _vars["templates"]["taxonomy_url_tpl"]
-					});
-					
-					draw.buildBlock({
-						"locationID" : "block-taxonomy",
-						"templateID" : "tpl-block--tags",
-						"content" : html
-					});
-					
-				}
-				
-				//if ( _vars["termin_nodes"].length > 0){
-					draw.buildBlock({
-						"locationID" : "block-node",
-						"templateID" : "tpl-block--termin-nodes",
-						"content" : nodes_obj.viewNodes({
-							"nodes": _vars["termin_nodes"],
-							"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
-							"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
-						})
-					});
-				//} else {
-//console.log("TEST");
-				//}
-			}
-			
-			//view book node
-			if ( _vars["GET"]["q"] === "book_page" ) {
-				render_node();
-			}
-			
-			//view node
-			if ( _vars["GET"]["q"] === "node" ){
-				render_node();
-			}
-
-
-			if ( _vars["GET"]["q"] === "search" ){
-				draw.buildBlock({
-					"locationID" : "block-node",
-					"templateID" : "tpl-block--search-nodes",
-					"content" : nodes_obj.viewNodes({
-						"nodes": _vars["nodes"]
-					})
-				});
-			}
-
-
-			//hide blocks on small screens
-			if ( _vars["GET"]["q"] && _vars["GET"]["q"].length > 0 ){
-				if( $(".navbar-header").is(":visible") &&
-					document.body.clientWidth < 990) {
-					$("#bs-navbar-collapse-1").hide("slow");
-				}
-			}
-			
-//---------------------- render breadcrumb
-			var html_breadcrumb="";
-			var clear = false;
-
-			for( var key in _vars["breadcrumb"]){
-				var url = _vars["breadcrumb"][key].url;
-				var title = _vars["breadcrumb"][key].title;
-				
-				if( clear ){//clear unuseful tail breadrumbs
-					delete _vars["breadcrumb"][key];
-				} else {
-					
-					if( url !== _vars["currentUrl"]){
-						html_breadcrumb += _vars["templates"]["breadcrumb_item_tpl"]
-						.replace("{{item-url}}", url )
-						.replace("{{item-title}}", title );
-					} else {
-						html_breadcrumb += "<li class='active-item'>" + title + "</li>";
-						//html_breadcrumb += "<span class='btn btn-info active-item'>" + title + "</span>";
-					}
-					
-				}
-				
-				if( url === _vars["currentUrl"]){
-					clear = true;
-				}
-				
-			}//next
-			
-//console.log(html_breadcrumb);
-			$("#breadcrumb-tpl").html( html_breadcrumb );
-			
-			
-			function render_node(){
-
-				//$("#region-content #block-nodes").html( html );
-				draw.buildBlock({
-					"locationID" : "block-node",
-					"templateID" : "tpl-block--node",
-					"content" : function(){
-						var html = nodes_obj.view_node({
-							"nid" :  _vars["GET"]["nid"]
-						});
-						
-//console.log(html);				
-						if(!html){
-							_vars["logMsg"] = "- error, render_node("+_vars["GET"]["nid"]+")";
-							//func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-console.log( _vars["logMsg"] );
-							return false;
-						}
-						return html;
-					},
-					"postFunc": function(){
-//console.log( "render_node(), build block-nodes, postFunc" );
-						if( _vars["node"]["book_files"].length === 0 ){
-							$("#cloud-links").hide();
-							$("#book-links").hide();
-						}
-						
-						if( _vars["node"]["book_links"].length > 0 ){
-		//console.log(_vars["node"]["book_links"].length, $("#external-links").attr("id"));
-							$("#external-links").show();
-						} else {
-							$("#external-links").hide();
-						}
-						
-						if( _vars["node"]["termins"].length === 0 ){
-							$("#termins").hide();
-						} else {
-							$("#termins .nav-click").addClass("root-link");			
-						}
-
-					}//end postFunc
-				});
-				
-			}//end render_node()
-			
-		}//end function draw_page()
-
 //====================================
-
-
-//====================================
-
 
 		function define_event() {
 
@@ -2006,47 +896,6 @@ console.log( _vars["logMsg"] );
 				
 				$("#service-panel .tab-content .tab-pane").removeClass("active in");
 				$(active_tab).addClass("active in");
-/*				
-				if( active_tab === "#info-tab" ){
-//breadcrumb object
- 					var html = "";
-					
-					var size_obj = count_object_bytes( _vars["nodes"] );
-					html += "<li>";
-					html += "_vars['nodes']: " + size_obj["bytes"] +" bytes";
-					if( size_obj["Kbytes"] > 0 ){
-						html += ", " + size_obj["Kbytes"] +" Kb";
-					}
-					html += "</li>";
-					
-					var size_obj = count_object_bytes( _vars["taxonomy"] );
-					html += "<li>";
-					html += "_vars['taxonomy']: " + size_obj["bytes"] +" bytes";
-					if( size_obj["Kbytes"] > 0 ){
-						html += ", " + size_obj["Kbytes"] +" Kb";
-					}
-					html += "</li>";
-					
-					var size_obj = count_object_bytes( _vars["templates"] );
-					html += "<li>";
-					html += "_vars['templates']: " + size_obj["bytes"] +" bytes";
-					if( size_obj["Kbytes"] > 0 ){
-						html += ", " + size_obj["Kbytes"] +" Kb";
-					}
-					html += "</li>";
-					
-					var size_obj = count_object_bytes( _vars["termin_nodes"] );
-					html += "<li>";
-					html += "_vars['termin_nodes']: " + size_obj["bytes"] +" bytes";
-					if( size_obj["Kbytes"] > 0 ){
-						html += ", " + size_obj["Kbytes"] +" Kb";
-					}
-					html += "</li>";
-
-
-					$("#size__vars").html( html );
-				};
-*/				
 				e.preventDefault();
 			});//end event
 
@@ -2428,76 +1277,6 @@ $(".b-content").height(_newHeight);
 		}//end _formBreadCrumb()
 
 
-/*
-		function get_object_size( obj ) {
-			var size = 0;
-			for ( var key in obj ){
-//console.log( key, typeof obj[key] );
-				if ( key.length > 0 ) size++;
-			}
-			return size;
-		};//end  get_object_size( obj ) 
-*/		
-		
-/*		
-		function count_object_bytes (obj){
-			var size_obj = {
-				"bytes" : count_bytes( obj ),
-				"Kbytes" : 0
-			}
-			if( size_obj["bytes"] > 1024 ){ 
-				size_obj["Kbytes"] = (size_obj["bytes"] /1024).toFixed(2) 
-			}
-console.log(size_obj);
-			return size_obj;
-			
-			function count_bytes( obj ){
-				var size = 0;
-				for(var index in obj) {
-
-					if (Object.prototype.toString.call( obj ) !== '[object Array]'){
-						size += 2 * index.length;//key size in bytes
-			//console.log( index, index.length, typeof index );
-					}
-
-			//console.log( index, obj[index], typeof obj[index] );
-					switch (typeof obj[index]){
-
-						case 'boolean': 
-							size += 4; 
-							break;
-
-						case 'number': 
-							size += 8; 
-							break;
-
-						case 'string': 
-							//size += 2 * obj[index].length; 
-			//console.log( encodeURIComponent( obj[index] ), unescape(encodeURIComponent( obj[index] )).length );
-
-							size += unescape(encodeURIComponent( obj[index] )).length;
-							break;
-
-						case 'object':
-
-							if (Object.prototype.toString.call( obj[index] ) === '[object Array]'){
-								var size2 = 0
-								size2 += count_bytes( obj[index]);
-								size += size2;
-			//console.log( size2, size );
-							} else {
-								size += count_bytes( obj[index]);
-							}
-							break;
-
-					}//end switch
-				}//next item
-				return size;
-			}//end count_bytes()
-			
-		}//end count_object_bytes
-*/
-
 		var _getHierarchy = function( opt ) {
 			if( _vars["hierarchyList"] ){
 				
@@ -2519,12 +1298,192 @@ console.log(err);
 		};//end _getHierarchy()
 
 
+//====================================== TAXONOMY methods
+		function _view_termin( params )	{
+//console.log("TEST2", params);			
+			var termins = params["termins"]; 
+			var vid = params["vid"];
+			var tid = params["tid"];
+			var recourse = params["recourse"];
+			var show_only_children = params["show_only_children"];
+			
+			var item_tpl = params["item_tpl"];
+			var list_tpl = params["list_tpl"];
+			//var url_tpl = params["url_tpl"];
+			
+			var html = "", html_list = "";
+			for( var n = 0; n < termins.length; n++ )
+			{
+				var termin = termins[n];
+				if( termin["vid"] === vid && 
+						termin["tid"] === tid)
+				{
+					if( !show_only_children )
+					{
+						//var url = url_tpl
+						//.replace("{{vid}}", termin["vid"])
+						//.replace("{{tid}}", termin["tid"]);
+						
+						html_list += item_tpl
+						.replace("{{link-title}}", termin["name"])
+						.replace("{{vid}}", termin["vid"])
+						.replace("{{tid}}", termin["tid"]);
+						//.replace("{{url}}", url);
+					}
+					
+					if( recourse )	{
+						var params = [];
+						var html_children_termins = list_children_termins({
+"termins": termins,
+"vid": termin["vid"],
+"tid": termin["tid"], 
+"recourse": recourse,
+"list_tpl": list_tpl,
+"item_tpl": item_tpl
+//"url_tpl": url_tpl;
+							
+						});
+						
+						if( html_children_termins.length > 0){
+							html_list += list_tpl
+							.replace("{{block-title}}", "")
+							.replace("{{list}}", html_children_termins);
+						}
+					}
+				}
+			}//next
+			
+			
+			html += list_tpl
+			.replace("{{block-title}}", "")
+			.replace("{{list}}", html_list);
+			return html;
+
+		}//end _view_termin()
+
+		function _view_vocabulary ( opt ) {
+//console.log("_view_vocabulary()", opt);
+
+			var p = {
+				"taxonomy": null,
+				"vocabularyName": "",
+				"recourse" : false
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log(p);
+			
+			var vocName = p["vocabularyName"];
+			if( !p["taxonomy"][vocName] ){
+_vars["logMsg"] = "error, vocabulary <b>"+ p["vocabularyName"]+"</b> not found ";
+func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				return false;
+			}
+			var _vocabulary = p["taxonomy"][vocName];
+			
+			var item_tpl = _vars["templates"]["taxonomy_list_item_tpl"];
+			var list_tpl = _vars["templates"]["taxonomy_list_tpl"];
+			//var url_tpl = _vars["templates"]["taxonomy_url_tpl"];
+			
+			//var block_title = "<h4>book tags:</h4>";
+			var html = "";
+			for( var n = 0; n < _vocabulary["termins"].length; n++ ){
+				var termin = _vocabulary["termins"][n];
+				if( termin["parent_value"] === "0"){
+					
+					//var url = url_tpl
+					//.replace("{{vid}}", termin["vid"])
+					//.replace("{{tid}}", termin["tid"]);
+					
+					html += item_tpl
+					.replace("{{link-title}}", termin["name"])
+					.replace("{{vid}}", termin["vid"])
+					.replace("{{tid}}", termin["tid"]);
+					//.replace("{{url}}", url);
+					
+					if( p["recourse"] ) {
+						
+						var html_children_termins = list_children_termins({
+							"termins": _vocabulary["termins"],
+							"vid": termin["vid"],
+							"tid": termin["tid"], 
+							"recourse": p["recourse"]
+						});
+						
+						if( html_children_termins.length > 0) {
+							html += list_tpl
+							.replace("{{block-title}}", "")
+							.replace("{{list}}", html_children_termins);
+						}
+					}
+				}
+			}//next
+			
+			html = list_tpl
+			//.replace("{{block-title}}", block_title)
+			.replace("{{list}}", html);
+			return html;
+			
+		}//end _view_vocabulary()
+
+		function list_children_termins( params ) {
+//console.log(arguments);
+			var termins = params["termins"]; 
+			var vid = params["vid"];
+			var tid = params["tid"]; 
+			var recourse = params["recourse"];
+			var item_tpl = params["item_tpl"];
+			var list_tpl = params["list_tpl"];
+			//var url_tpl = params["url_tpl"];
+			
+			var html = "";
+			for( var n = 0; n < termins.length; n++ )
+			{
+				var termin = termins[n];
+				if( termin["vid"] === vid && 
+						termin["parent_value"] === tid )
+				{
+					//var url = url_tpl
+					//.replace("{{vid}}", termin["vid"])
+					//.replace("{{tid}}", termin["tid"]);
+					
+					html += item_tpl
+					.replace("{{link-title}}", termin["name"])
+					.replace("{{vid}}", termin["vid"])
+					.replace("{{tid}}", termin["tid"]);
+					//.replace("{{url}}", url);
+					
+					if( recourse ) {
+						params["termins"] = termins; 
+						params["vid"] = termin["vid"];
+						params["tid"] = termin["tid"]; 
+						params["recourse"] = recourse;
+						params["item_tpl"] = item_tpl;
+						params["list_tpl"] = list_tpl;
+						//params["url_tpl"] = url_tpl;
+						var html_children_termins = list_children_termins( params);
+						if( html_children_termins.length > 0) {
+							html += list_tpl
+							.replace("{{block-title}}", "")
+							.replace("{{list}}", html_children_termins);
+						}
+					}
+				}
+			}//next
+			
+			return html;
+		}//end list_children_termins();
+
+
 		// for unit testing with Jasmine
 		var _testApi = {
 			nodesObj: nodes_obj,
-			taxonomyObj: taxonomy_obj,
-			bookObj: book,
-			drawPage: draw_page
+			taxonomyObj: taxonomy_obj//,
+			//bookObj: book,
+			//drawPage: draw_page
 		};
 
 		// public interfaces
@@ -2597,9 +1556,9 @@ console.log(err);
 //-----------------			
 					_init();
 				}
-			},
+			}//,
 			
-			postLoad: after_load
+			//postLoad: after_load
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}
