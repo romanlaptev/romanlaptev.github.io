@@ -890,7 +890,6 @@ function _getNode( opt ){
 		_getNodes({
 			
 			"postFunc": function( nodes ){
-//console.log(nodes);
 				if( nodes ){
 					var node = nodes[nid];
 					
@@ -904,6 +903,7 @@ function _getNode( opt ){
 					
 					//}
 					
+//console.log(node);
 					if( typeof p["callback"] === "function"){
 						p["callback"](node);//return
 					}
@@ -988,6 +988,9 @@ function _getNodeTerminsXML( opt ){
 
 function _getNodes( opt ) {
 //console.log("function _getNodes()", opt);
+//console.log( _getNodes.caller );
+//console.log( _getNodes.caller.toString() );
+
 	var p = {
 		"postFunc": null
 	};
