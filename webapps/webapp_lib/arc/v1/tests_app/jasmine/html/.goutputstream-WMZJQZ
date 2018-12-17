@@ -9,42 +9,10 @@
 	<title>my lib</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-<link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<link rel="manifest" href="manifest.json">
-
-<!--
-<link rel="icon" href="favicon.ico" type="image/x-icon">
--->
-
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-	
 <!--
 	<meta name="referrer" content="no-referrer" />
 -->
         
-	<script src="js/vendor/jquery-1.10.2.min.js"></script>
-<!--
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-	<script src="js/vendor/clipboard.min.js"></script>
--->
-
 	<link rel="stylesheet" href="css/bootstrap336.min.css"/>
 <!--
 	<script src="js/vendor/bootstrap336.min.js"></script>
@@ -60,13 +28,11 @@
 	<link rel="stylesheet" href="css/loader.css">
 	<link rel="stylesheet" href="css/switch.css">
 	
+<!--
 	<script src="js/functions.js"></script>
 	<script src="js/webapp_lib.js"></script>
-	<script src="js/storage.js"></script>
-	<script src="js/node.js"></script>
-	<script src="js/draw.js"></script>
 	<script src="js/main.js"></script>
-<!--
+	
 	<script type="text/html" src="tpl/test.html" id="test_template"></script>
 	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
 -->
@@ -76,8 +42,10 @@
     
 <div id="App" class="container lib-wrapper">
 	<div class="header bg-header b-header">
-		<div id="sitename-block" class="col-xs-3 col-sm-3 col-md-2 col-lg-2"></div>
-
+		<div id="sitename-block" class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+			<h1><a class="title" href="./">my lib</a></h1>
+		</div>
+            
 		<div class="col-xs-9 col-sm-9 col-md-6 col-lg-6">
 			<div id="header-content">
 				<div id="block-taxonomy-alpha"></div>
@@ -89,6 +57,14 @@
 			<div class="columns right-grad"></div>
 		</div>
 		
+<!--				
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
+			<div class="control-btn">
+<button id="info-panel-view" class="btn btn-info btn-sm">view log</button>
+<button id="localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
+			</div>
+		</div>
+-->
 	</div>
 
         <nav role="navigation" class="navbar navbar-default">
@@ -120,8 +96,7 @@
                     -->
 			<div id="right-side" class="panel">
 				<div id="block-book-category" class="panel-body"></div>		
-				<div id="block-library" class="panel-body"></div>
-				<div id="block-tags" class="panel-body"></div>
+				<div id="block-tags" class="panel-body"></div>		
 			</div>
                     
                 </div><!-- /.navbar-collapse -->
@@ -134,7 +109,7 @@
 			<div class="log-panel panel">
 				<div class="panel-body">
 					<span class="pull-right">
-						<a href="?q=service-panel-view" class="btn btn-sm btn-default">service</a>
+						<a href="?q=info-panel-view" class="btn btn-sm btn-default">info</a>
 						<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
 						<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
 					</span>
@@ -153,7 +128,7 @@
 			
 			<div id="region-content">
 				<div id="block-taxonomy"></div>
-				<div id="block-node"></div>
+				<div id="block-nodes"></div>
 			</div>
 		</div>
 <!--
@@ -192,140 +167,38 @@
 </div>
 
 	
-<div id="service-panel">
-	<a class="close" href="javascript:$('#service-panel').hide();void(0);">x</a>
+<div id="info">
+	<a class="close" href="javascript:$('#info').hide();void(0);">x</a>
 	
 	<ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#tab-info">Info</a></li>
-		<li><a data-toggle="tab" href="#tab-search">Search</a></li>
-		<li><a data-toggle="tab" href="#tab-export">Export</a></li>
-		<li><a data-toggle="tab" href="#tab-import">Import</a></li>
-		<li><a data-toggle="tab" href="#tab-config">Settings</a></li>
+		<li class="active">
+			<a data-toggle="tab" href="#tab1">Info</a>
+		</li>
+
+		<li>
+			<a data-toggle="tab" href="#tab-config">settings</a>
+		</li>
 
 	</ul>
 	
 	<div class="tab-content">
-		<div id="tab-info" class="tab-pane fade in active">
+		<div id="tab1" class="tab-pane fade in active">
 			<div  class="panel panel-default">
 				<div class="panel-body">
 <span class="pull-right">
 	<button id="btn-localforage-clear" class="btn btn-danger btn-sm">clear storage</button>
 	<a href="db_admin.html" target="_blank" class="btn btn-primary btn-sm">db admin</a>
 <!--
-	<button id="service-panel-clear" class="btn btn-danger btn-sm">x</button>
+	<button id="info-panel-clear" class="btn btn-danger btn-sm">x</button>
 -->
 	<a class="btn btn-sm btn-default" href="tests_app/jasmine/SpecRunner.html" target="_blank">tests application, Jasmine</a>		
-	<a class="btn btn-sm btn-info" href="https://drive.google.com/open?id=0BxjK1kq1ZINaS3MzLURhSzdlMnM" target="_blank">Google drive, lib</a>
-	<a class="btn btn-sm btn-info" href="https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AACmL6s-oP5FLlS7FJHG7Yt6a/lib" target="_blank">Dropbox, lib</a>
 </span>
 <div class="message"></div>
-<pre>
-https://play.google.com/books/uploads
-https://ru.bookmate.com/@romanvlaptev
-http://omnireader.ru
-https://viewerjs.org/examples/	
-</pre>
-
-<a class="" href="arc/v1/" target="_blank">webapp_lib, version 1</a>
 
 				</div>
 			</div>
-		</div><!-- end tab -->
-
-		<div id="tab-search" class="tab-pane fade">
-<form name="formSearch" id="form-search" action="?q=search" method="GET">
-			<div  class="panel panel-default">
-				
-
-					<div class="panel-heading">
-						<h3>Search book by parameters</h3>
-					</div>
-					
-					<div class="panel-body">
-<div class="form-group">
-	<label class="radio-inline"><input type="radio" name="targetField" checked="checked" value="author">author name</label>
-	<label class="radio-inline"><input type="radio" name="targetField" value="bookname" >book title</label>
-	<label class="radio-inline"><input type="radio" name="targetField" value="filename" >attached filename of book (string, 'M_Krolik.txt'....)</label>
-	<label class="radio-inline"><input type="radio" name="targetField" value="nid" >node id (695, 1645)</label>
-</div>
-
-<div class="row">
-	<div class="form-group col-sm-5 col-md-5 col-lg-5">
-		<label class="radio-inline"><input type="radio" name="targetField" id="radio-node-type" value="node_type">node type:</label>
-		<select size="2" class="form-control" id="select-node-type" onChange="_searchNodeType( 'input-keyword', this.options[this.selectedIndex].value );">
-			<option value="library_book">library_book</option>
-			<option value="author">author</option>
-		</select>
-	</div>
-</div>
-
-						<label>keyword:</label>
-						<div class="row">
-							<div class="column1 col-sm-10 col-md-10 col-lg-10">
-<input type="text" class="form-control" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="">
-							</div>
-							<div class="column2 col-sm-2 col-md-2 col-lg-2">
-								<button type="reset" class="btn btn-warning">reset form</button>
-							</div>
-						</div>
-
-					</div>
-
-					
-					<div class="panel-footer">
-						<button type="submit" class="btn btn-large btn-primary">start search</button>
-					</div>
-					
-				
-			</div>
-</form>
-		</div><!-- end tab -->
+		</div>
 		
-
-		
-		<div id="tab-export" class="tab-pane fade">
-			<div  class="panel panel-default">
-				<div class="panel-body">
-<h3>export book info from DB (lib.sqlite)</h3>
-<div class="row panel-body">
-	<label class="pull-left">url:</label>
-	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-		<input class="form-control" id="export-script-url" value="db/export.php"/>
-	</div>
-	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-		<a id="btn-load-export" href="#" target="_blank" class="btn btn-primary">load script</a>
-	</div>
-</div>	
-<pre>
-- web-form, 
-http://.../db/export.php
-http://vbox1/sites/romanlaptev.github.io/webapps/webapp_lib/db/export.php
-http://vbox1/sites/export/include/export_lib.php (old version)
-
-- console run, 
-http://.../db/export.php?run_type=console
-</pre>
-				</div>
-			</div>
-		</div><!-- end tab -->
-		
-
-		<div id="tab-import" class="tab-pane fade">
-			<div  class="panel panel-default">
-				<div class="panel-body">
-<h3>import book info from DB (lib.sqlite)</h3>
-<div class="row panel-body">
-	<label class="pull-left">url:</label>
-	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-		<input class="form-control" id="import-script-url" value="db/import_drupal_sqlite.php"/>
-	</div>
-	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-		<a id="btn-load-import" href="#" target="_blank" class="btn btn-primary">load script</a>
-	</div>
-</div>	
-				</div>
-			</div>
-		</div><!-- end tab -->
 
 		<div id="tab-config" class="tab-pane fade">
 			<div  class="panel panel-default">
@@ -352,7 +225,7 @@ num_authors:
 </div>
 				</div>
 			</div>
-		</div><!-- end tab -->
+		</div>
 
 		
 	</div><!-- end tab-content -->
@@ -375,16 +248,14 @@ num_authors:
                 <h1 class="text-center">wait...</h1>
 
 				<div class="loader loader2"></div> 
-<div id="load-progress">				
 ajax load: <span id="num-total-load"></span>
 	<div class="progress">
 		<div id="load-progress-bar" class="progress-bar hide"></div>
 	</div>
-</div>
 
 prepare data:
 	<div class="progress">
-		<div id="parse-progress-bar" class="progress-bar"></div>
+		<div id="parse-progress-bar" class="progress-bar hide"></div>
 	</div>
 
             </div>
@@ -409,8 +280,8 @@ alert( "onload " + this.src);
 //alert( "error load script " + this.src);
 		};  
 	}
-*/	
   init_webapp();
+*/	
 </script>
 
   

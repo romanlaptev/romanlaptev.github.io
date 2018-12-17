@@ -1,0 +1,70 @@
+===================================== Тестирование e2e
+https://github.com/DevExpress/testcafe
+http://devexpress.github.io/testcafe/documentation/getting-started/
+http://devexpress.github.io/testcafe/documentation/using-testcafe/installing-testcafe.html
+====================
+npm init
+npm install --save-dev testcafe 
+.\node_modules\.bin\testcafe -v 
+
+=====================
+.\node_modules\.bin\testcafe -h 
+-----
+Usage: testcafe [options] <comma-separated-browser-list> <file-or-glob ...>
+
+
+  In the browser list, you can use browser names (e.g. "ie", "chrome", etc.)
+  as well as paths to executables.
+
+  To run tests against all installed browsers, use the "all" alias.
+
+  To use a remote browser connection (e.g., to connect a mobile device),
+  specify "remote" as the browser alias.
+  If you need to connect multiple devices, add a colon and the number of
+  browsers you want to connect (e.g., "remote:3").
+
+  To run tests in a browser accessed through a browser provider plugin,
+  specify a browser alias that consists of two parts - the browser provider
+  name prefix and the name of the browser itself; for example,
+  "saucelabs:chrome@51".
+
+  You can use one or more file paths or glob patterns to specify which tests
+  to run.
+
+  More info: https://devexpress.github.io/testcafe/documentation
+
+Options:
+
+  -v, --version                             output the version number
+  -b, --list-browsers [provider]            output the aliases for local browsers or browsers available through the specified browser provider
+  -r, --reporter <name[:outputFile][,...]>  specify the reporters and optionally files where reports are saved
+  -s, --screenshots <path>                  enable screenshot capturing and specify the path to save the screenshots to
+  -S, --screenshots-on-fails                take a screenshot whenever a test fails
+  -p, --screenshot-path-pattern <pattern>   use patterns to compose screenshot file names and paths: ${BROWSER}, ${BROWSER_VERSION}, ${OS}, etc.
+  -q, --quarantine-mode                     enable the quarantine mode
+  -d, --debug-mode                          execute test steps one by one pausing the test after each step
+  -e, --skip-js-errors                      make tests not fail when a JS error happens on a page
+  -u, --skip-uncaught-errors                ignore uncaught errors and unhandled promise rejections, which occur during test execution
+  -t, --test <name>                         run only tests with the specified name
+  -T, --test-grep <pattern>                 run only tests matching the specified pattern
+  -f, --fixture <name>                      run only fixtures with the specified name
+  -F, --fixture-grep <pattern>              run only fixtures matching the specified pattern
+  -a, --app <command>                       launch the tested app using the specified command before running tests
+  -c, --concurrency <number>                run tests concurrently
+  --debug-on-fail                           pause the test if it fails
+  --app-init-delay <ms>                     specify how much time it takes for the tested app to initialize
+  --selector-timeout <ms>                   set the amount of time within which selectors make attempts to obtain a node to be returned
+  --assertion-timeout <ms>                  set the amount of time within which assertion should pass
+  --page-load-timeout <ms>                  set the amount of time within which TestCafe waits for the `window.load` event to fire on page load before proceeding to the next test action
+  --speed <factor>                          set the speed of test execution (0.01 ... 1)
+  --ports <port1,port2>                     specify custom port numbers
+  --hostname <name>                         specify the hostname
+  --proxy <host>                            specify the host of the proxy server
+  --ssl                                     specify SSL options to run TestCafe proxy server over the HTTPS protocol
+  --proxy-bypass <rules>                    specify a comma-separated list of rules that define URLs accessed bypassing the proxy server
+  --disable-page-reloads                    disable page reloads between tests
+  --dev                                     enables mechanisms to log and diagnose errors
+  --qr-code                                 outputs QR-code that repeats URLs used to connect the remote browsers
+  --color                                   force colors in command line
+  --no-color                                disable colors in command line
+  -h, --help                                output usage information

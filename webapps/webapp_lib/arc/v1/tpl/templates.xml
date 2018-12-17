@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+	<tpl name="breadcrumb_item_tpl">
+		<html_code><![CDATA[
+<ul class="list-inline">
+	<li>
+		<a href="{{item-url}}" class="breadcrumb-link">{{item-title}}</a>
+	</li>
+</ul>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="book_category_tpl">
+		<html_code><![CDATA[
+<div id="block-book-category">
+	<h4>book category:</h4>
+	<ul class='book-content submenu'>{{list}}</ul>
+</div>		
+		]]></html_code>
+	</tpl>
+
+	<tpl name="book_category_item_tpl">
+		<html_code><![CDATA[
+<li class='{{type}}'><a href='?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}' class='nav-click'>{{page-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="taxonomy_list_tpl">
+		<html_code><![CDATA[
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+<!--
+	{{block-title}}
+-->
+	<ul>{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="taxonomy_list_item_tpl">
+		<html_code><![CDATA[
+<li><a class="nav-click" href="?q=termin_nodes&vid={{vid}}&tid={{tid}}">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="book_child_pages_tpl">
+		<html_code><![CDATA[
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h4>страницы раздела</h4>
+	</div>
+	<div class="panel-body">
+		<ol class="list-group--child-pages">{{list}}</ol>
+	</div>
+</div>  
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="book_child_pages_item_tpl">
+		<html_code><![CDATA[
+<li class="list-group-item--child-pages node-{{type}}">
+	<a class="nav-click" href="?q=book_page&nid={{nid}}&mlid={{mlid}}&plid={{plid}}">{{link-title}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="node_tpl">
+		<html_code><![CDATA[
+<div class='panel panel-info node node-{{type}}'>
+
+	<div class="panel-heading">
+		<div class='node-title'>{{node-title}}</div>
+		<div class='bookname'>{{bookname}}</div>
+		<div class='author'>{{author}}</div>
+	</div>
+
+	<div class="panel-body">
+		<div class='body-value'>{{body_value}}</div>
+		<div class='child-pages'>{{child_pages}}</div>
+	</div>
+
+{{book-links}}
+{{cloud-links}}
+
+<ul class="book-old-url">{{book-old-url}}</ul>
+
+{{external-links}}
+
+{{termin-links}}
+					
+	<div class="panel-footer date small">
+		<b>created:</b>{{created}} , <b>changed:</b>{{changed}}
+	</div>
+					
+</div>
+			
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="node_tpl_url">
+		<html_code><![CDATA[
+			<li class="list-group-item"><a href="{{url}}" target="_blank">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_book_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>Book links</b>: <ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_cloud_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>Cloud links</b>:<ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="node_tpl_cloud_links_item">
+		<html_code><![CDATA[
+<li class="list-group-item">
+	<b>{{description}}</b>
+	<a href="{{url}}" rel="noreferrer" target="_blank">{{link-title}}</a>
+	<div class="direct-links">{{direct-link}}</div>
+	<div>{{btn-copy-url}}</div>
+	<br/>
+	{{btn-omnireader}}
+</li>
+		]]></html_code>
+	</tpl>
+
+<!--
+	<tpl name="node_tpl_cloud_Dropbox">
+		<html_code><![CDATA[
+<li class="list-group-item">
+	<b>Dropbox preview</b>
+	<a href="https://www.dropbox.com/sh/pdyhl1yyagqvbrv/AAD_yLVLU2XZXf0rdV_MAAuVa/{{subfolder}}?dl=0&preview={{filename}}" target="_blank">{{link-title}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+-->
+
+
+	<tpl name="node_tpl_external_links">
+		<html_code><![CDATA[
+<div class="panel-body">
+	<b>External links</b>:<ul class="list-group">{{list}}</ul>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="node_tpl_termins">
+		<html_code><![CDATA[
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<b>related tags:</b>
+	</div>
+	<div class="panel-body">
+		<ul class="list-inline">
+			{{list}}
+		</ul>
+	</div>
+</div>
+		]]></html_code>
+	</tpl>
+	<tpl name="node_tpl_termins_item">
+		<html_code><![CDATA[
+<li><a href="?q=termin_nodes&vid={{vid}}&tid={{tid}}" class="nav-click">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+
+
+	
+	<tpl name="tpl-block">
+		<html_code><![CDATA[
+<div class="block panel panel-primary">
+	<div class="panel-heading">
+		<h3>{{block_title}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-block--sitename">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">
+		<h1><a class='title' href='./'>my lib</a></h1>	
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-block--book-category">
+		<html_code><![CDATA[
+<div class="block block-book-category">
+	<div class="content">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-block--tags">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-block--node">
+		<html_code><![CDATA[
+<div class="block block-node">
+	<div class="content node">{{content}}</div>
+</div>			
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="tpl-block--search-nodes">
+		<html_code><![CDATA[
+<div class="block block-search-nodes">
+	<div class="panel panel-default">
+		<div class="panel-body content">{{content}}</div>
+	</div>  
+</div>			
+		]]></html_code>
+	</tpl>
+
+	<tpl name="nodes_tpl">
+		<html_code><![CDATA[
+<ol class="list--nodes">{{list}}</ol>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="nodes_item_tpl">
+		<html_code><![CDATA[
+<li class="node">
+	<a class="nav-click" href="?q=node&nid={{nid}}">{{author}} {{bookname}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="tpl-block--termin-nodes">
+		<html_code><![CDATA[
+<div class="block block-termin-nodes">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<b>книги, связанные с термином</b>
+		</div>
+		<div class="panel-body content">{{content}}</div>
+		<div class="panel-footer">
+			<b>list related nodes</b>
+		</div>
+	</div>  
+</div>			
+		]]></html_code>
+	</tpl>
+
+
+	<tpl name="termin_nodes_item_tpl">
+		<html_code><![CDATA[
+<li class="termin-node">
+	<a class="nav-click" href="?q=node&nid={{nid}}">{{author}} {{bookname}}</a>
+</li>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="termin_nodes_tpl">
+		<html_code><![CDATA[
+<ol class="list-termin-nodes">{{list}}</ol>
+		]]></html_code>
+	</tpl>
+
+
+<!--
+	<tpl name="tpl-termin_nodes">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-termin_nodes_list">
+		<html_code><![CDATA[
+<a href="#?q=node&nid={{nid}}">{{title}}</a><br>
+		]]></html_code>
+	</tpl>
+-->	
+
+	<tpl name="tpl-block--taxonomy_alpha">
+		<html_code><![CDATA[
+<ul class="menu taxonomy-alpha">
+{{list}}
+</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-block--taxonomy_alpha_list">
+		<html_code><![CDATA[
+<li><a class="nav-click" href="?q=termin_nodes&vid={{vid}}&tid={{tid}}">{{link-title}}</a></li>
+		]]></html_code>
+	</tpl>
+
+</templates>

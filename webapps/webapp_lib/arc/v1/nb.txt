@@ -1,0 +1,499 @@
+#d9ead3
+св-зеленый
+
+-----------------------------------
+- определить возможность чтения книг FB2 с помощью JS
+- найти, подключить плагины для чтения FB2, PDF, DJVU, EPUB...
+
+https://github.com/andreasgal/pdf.js
+https://mozilla.github.io/pdf.js/
+
+
+- разместить на странице блок меню авторов
+- проверить возможность загружать книги с облака OneDrive
+
+----------------------------------- Direct queries to DB 
+- сделать возможность работы приложения с помощью прямых запросов к БД (mySQL, SQLite, postgreSQL, MSSQL)
+(1)БД находитсяна локальном сервере, где и приложение и 2)БД находися на удаленном сервере)
+- есть ли необходимость в файла экспорта export.xml?
+(в случае недоступности локального хранилища и серверной БД использовать файл данных)
+
+
+------------------------------------ local store DB
+- сделать вариант использования для записи/чтения в БД локального хранилища
+при этом становится возможным добавлять новые книги, редактировать
+
+всвязи, необходимо изменить метод получения ноды:
+		var nodes_obj = {
+			//"nodes_size" : 0,
+			"get_node" : function( params ){
+				//return _get_node( params );
+				return _getNode( params );
+			},
+все время считывать список нод из хранилища			
+сейчас нода считыватся из XML списка nodes_obj["x_nodes"]
+
+- инициализация (lib.runApp --> _init() )
+- если установлен флаг "use_localcache", то инициализация хранилища
+	- если кэш(хранилище) доступен, то 
+		1)получение XML-данных из хранилища ( storage.initAppData() --> storage.getXml(), _get_xml_from_storage() )
+		2)загрузка шаблонов ( _loadTemplates(); )
+		3)парсинг XML и формирование объектных таблиц с XML-данными (get_content();)
+		4)переход к разбору URL
+		5)отрисовка блоков ( draw_page(); )
+		6)назначение событий ( define_event(); )
+		
+	- если нет, то 
+		1)загрузка XML-данных из файла (load_xml(); ), 
+		2)запись в хранилище (при "use_localcache") и 
+		)загрузка шаблонов ( _loadTemplates(); )
+		3)переход к разбору URL
+	
+---- Исправить
+- инициализация (lib.runApp --> _init() )
+- если установлен флаг "use_localcache", то загрузка скрипта и инициализация хранилища
+	- 1)если кэш(хранилище) доступен, то 
+		11)проверка данных приложения из хранилища (объектный формат) ( storage.initAppData(); )
+		
+			- если нет запрошенных ключей (storage[tables]["nodes"]....), то возвращать строку "store_key_not_found", 
+			возвращать параметр "need_update": true и 21) 22) 23) 14)
+			
+			- проверка актуальности
+				если старая версия данных(?), то 21) 22) 23) 11)
+				
+				для определения старой версии данных сравнивать дату файла экспорта (export_lib.xml) с
+				сохраненной датой в таблице db1.master ("lastUpdate")
+				возвращать параметр "need_update": true/false
+				
+				
+			+- сохранить в память (_vars["tables"][....])????
+			
+		+13)получить данные из хранилища ( storage.getAppData() )
+			- методы запроса данных самостоятельно получают данные из хранилища
+			
+		14)загрузка шаблонов ( _loadTemplates(); )
+		15)отрисовка блоков страницы на основе разобранных данных ( _buildPage(); )
+		16)назначение событий ( define_event(); )
+		17)переход к разбору URL ( _urlManager(); )
+		
+	- 2)если нет, то 
+		21)загрузка XML-данных из файла (load_xml(); ), 
+		22)преобразование XML-данных в объектный формат ( parseXML(); )
+			получить атрибуты и дочернии узлы каждой записи в xml-таблице и сохранить в объект
+				- объект nodes
+				- объект taxonomy
+				- объект books
+				
+		23)запись объектов данных в хранилище (при "use_localcache")
+			очистить хранилище перед записью 
+			
+		14)
+		15)
+		16)
+		17)
+	
+- переделать методы получения данных на объектный формат (_getNode(), nodes_obj.get_termin_nodes(), nodes_obj.searchNodes() )
+
+
+----------------------------------- parse XML, формат хранения данных в STORAGE
+
+преобразование XML-данных в объектный формат ( parseXML(); )
+
+- объектный формат - XML-таблицы просто преобразуются в JSON 
+<table_node> --> storage[tables]["nodes"]
+<table_book_filename> --> storage[tables]["book_filename"]
+<table_book_url> --> storage[tables]["book_url"]
+<table_book_links> --> storage[tables]["book_links"]
+<taxonomy_index>
+<taxonomy_term_data>
+<taxonomy_term_hierarchy>
+<taxonomy_vocabulary>
+
+- для каждой таблицы указать в структуре storage.tables["tableName"] метод getRecords({"xml": data}) и
+вызывать его при выполнении 22)
+при таком подходе:
+	- методы запроса данных самостоятельно получают данные из хранилища по стандартным запросам (+)
+
+или же 
+
+	- получить атрибуты и дочернии узлы каждой записи в xml-таблице и сохранить в объект
+	- включить в каждый объект все зависимости (для уменьшения времени доступа к данным)
+			
+				- объект nodes (body_value, book_files, book_links, book_url, termins, node_child_pages)
+				getNodes();
+<node type="library_book" title="...">
+	<bookname/>
+	<author/>
+	<book_files/>
+	<body_value/>
+	<tag/>
+</node>
+var nodes = [
+	{
+		type: "library_book",
+		title: "Бальзак и портниха китаяночка",
+		bookname: "Бальзак и портниха китаяночка",
+		author: "Дай Сы-цзе",
+		body_value: ""
+		subfolder: "/lib/books/D/dai_sycze"
+		book_files: ["dai_sycze__balzak_i_portniha_kitayanochka.fb2.zip"]
+		book_links: ["http://mycomp/sites/video/node/1246"]
+		book_url: []
+		node_child_pages: []
+		
+		termins: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+		tid: ["39", "179", "19", "185", "120", "140", "143", "203"]
+		
+		mlid: "2058"
+		nid: "1669"
+		plid: "386"
+		changed: "05-Feb-2016 23:35:32"
+		created: "14-Nov-2015 01:42:15"
+		weight: "0"
+	}
+];
+
+				
+				- объект taxonomy (список словарей с терминами), getTaxomomy();
+var taxonomy = [
+	"alphabetical_voc:": 
+		termins [
+			0: {name: "alphabetical list", description: "", vid: "4", tid: "115", parent_value: "0"}
+			1: {name: "алфавитный каталог", description: "", vid: "4", tid: "116", parent_value: "0"}
+			2: {name: "A", description: "", vid: "4", tid: "117", parent_value: "115"}
+..........		
+		],
+		vid: "4",
+		
+	"library":
+		termins: [{…}, {…}, {…},.....]
+		vid: "2",
+		
+	"tags":
+		termins: [{…}, {…}, {…},...]
+		vid: "1"
+];
+				
+				- объект books (список подшивок)
+				
+	- сохранить в хранилище объекты, чтобы не формировать каждый раз при необходимости
+	
+при таком подходе:
+	невозможно получать данные с помощью стандартных запросов к таблицам, (-)
+	нет привязки к определенному набору таблиц (Drupal, WordPress, импорт данных из текстового файла) (+)
+
+
+--------------------------------------  IMPORT
+- сделать скрипт импорта из ХМЛ-файла в БД
+
+- определить формат импорта
+добавить новые книги и определить их как страницы книги "Библиотека"
+<node type="library_book" title="...">
+	<bookname/>
+	<author/>
+	<book_files/>
+	<body_value/>
+	<tag/>
+</node>
+(формат списка импортируемых книг должен быть один....)
+Как организовать текстовый файл импорта, 
+	требуется разносить данные об авторе, названии, ссылках, файлах, терминах по отдельным таблицам???
+
+- создать в приложении веб-форму для добавления записей в файл импорта
+- после окончания оформления списка добавляемых книг, можно сохранить список 
+( в локальное хранилище, в файл на сервере, в локальный файл, скопировать текст XML и т.д.)
+- затем кнопка импорта 
+(или в drupal, или в wordpress, в зависимости от указанного адреса скрипта импорта)...
+- также нужен консольный вариант скрипта импорта
+import_drupal_sqlite.php
+import_wp_sqlite.php
+
+
+
+----------------------------------- STORAGE
+- добавить новый метод storage.removeItem() с проверкой сушествования удаляемого ключа
+
+обновление хранилища
+- безусловно очищать все таблицы или только "store_key_not_found" или "need_update"?
+- отсутствие или неоходимость обновления одной таблицы приводит к перезаписи всех?
+нет возможности определить что обновились только отдельные таблицы, поэтому перезаписываем все
+
+- проверить поведение приложения при отсутствии XML-файла данный
+что в этом случае записывается в локальное хранилище?
+
+
+----------------------------------------
+
+*- при выводе страницы терминов проверять и показывать ее дочернии страницы, если такие есть (страница автора...)
+* - добавить сортировку при выводе списка нод термина (by author)
+
+
+--------------------------- TESTS
+- добавить unit тесты (karma)
+- добавить тесты браузеров (testcafe, *selenium)
+
+
+--------------------------- Строка навигации, breadcrumb  
+
+    *функция вывода строки навигации  
+(class root-link обозначает ссылку, клик на к-рой, очищает lib_obj["breadcrumbs"])
+
+- исправить работу и оформление строки навигации
+для ссылок из разных блоков формировать уникальный ключ, начинающийся с ид блока.
+как сохранять и получать ИД блока?
+
+Варианты перехода по ссылкам разных блоков:
+- если код блока выбранной ссылки не совпадает с кодом блока в ссылках строки навигации, то очищать строку навигации
+*- при первом формировании ссылок блока присвоить им класс "root-link" (для первого уровня списка ссылок),
+если нажали на ссылку с классом "root-link", то очищать _vars["breadcrumbs"] = {}
+
+*- ИСПРАВИТЬ, при закрытии лог-панели ссылка попадает в строку навигации
+*- ИСПРАВИТЬ, при выборе второго пункта блока "book category" он вместо очистки строки навигации, добавляется в конец
+(главная / компьютерная литература / художественая литература )
+
+- исправить, при выводе блока ноды, последний элемент строки навигации (заголовок ноды)
+съезжает на новую строку, проверить разметку строки
+----------------------------
+
+- сделать блок поисковой формы 
+поиск по параметрам - *по автору, *по названию .....
+возможность использование символов подстановки: * - все символы, % - любой символ
+комбинация полей поиска
+исправить ошибки в ff12
+
+*- сделать кнопку "Скопировать ссылку в буфер обмена" для длинной ссылки на облако mail.ru
+(удобно на моб. устройствах и нетбуке)
+
+- исправить индикатор аякс загрузки файла данных (*добавить спиннер и прогрессбар),
+- сделать индикатор прогресса для запроса данных
+индикатор работает неверно - только после окончания работы всех методов происходит вывод шкалы с процентами!!!! ИСПРАВИТЬ
+
+*- добавить страницу со ссылками на книги для перевода 
+(добавить в CMS, затем экспортировать в XML файл данных ). 
+Ссылки прямые, сайт размещения файлов книг - 
+- локально (относительный путь, "../lib/books/eng_books")
+*- на сайте lib.wallst.ru
+- на сайте romanlaptev.wordpress.com
+
+*- добавить формирование ссылок на книга из cloud.mail.ru
+(https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p/lib/books/L/Loginov.Sv/loginov_svyatoslav_analitik.fb2.zip)
+
+*т.е. нужна возможность указать на странице в CMS, прямую ссылку на файл книги
+
+==============================
+- в объект lib_obj из файлов данных считываются только необходимые данные. 
+Необходимые для отображения текущей страницы - ограниченный список нод, 
+необходимые пункты меню терминов....
+
+--------------------------------------  export 
+- сделать передачу в скрипт экспорта параметров:
++$exportBookName = "библиотека";
++$filename = "export_lib.xml";
++$sqlite_path = "sqlite:/home/www/sites/lib/cms/db/lib.sqlite";
+также расположение скрипта - 
+http://vbox1/www/sites/export/export_lib.php
+http://vbox5/www/sites/romanlaptev.github.io/webapps/webapp_lib/db/export.php
+
+
+    исправление формата экспортного хмл-файла  
+- сделать консольное приложение выполняющее экспорт таблиц из
+SQLITE, MYSQL базы данных. Использовать JAVA, NODEJS, PYTNON, *PHP, shell-скрипты
+экспорт по уже используемому в веб-приложении формату....
+сложно ли изменить приложение под новый формат?
+
++- исправить название таблиц: <table name="название таблицы">  
+- включить  экспорт результаты связанных запросов для экономии времени поиска данных  
+*- Исправить ошибку записи - обрезается последний тег </lib>, получается <li 
++- добавить вывод терминов словаря BOOKTAGS в ХМЛ данные
+
+*- совместить консольную и веб версии PHP-скрипта экспорта
+если при запуске скрипта обнаруживается перданный GET параметр, 
+то считать что вызов скрипта произошел из браузера и отображать форму....иначе
+консольный запуск (args?), заполнить переменные и переход сразу к вызову функций экспорта
+if ('cli' ==  php_sapi_name()) echo 'Running from a command prompt'; 
+http://php.net/php_sapi_name
+export.php?run_type=web
+export.php?run_type=console
+
+- выяснить разницу в скорости считывания данных из xml или json форматов
+- есть ли разница в скорости считывания данных из единого файла или при 
+чтении таблиц данных из отдельных файлов
+
+- включить в экспорт меню авторов
+
+
+
+-------------------------------------- service
+    *Сделать возможность отключения использования кэша браузера при помощи параметра config["use_localcache"] = true/false; 
+    *Вызов панели лога нажатием на апостроф, ESC 
+
+    В панели лога сделать вкладки (
+статистика, подсчет объема в байтах lib_obj
+общее кол-во книг, авторов 
+)
+    - вкладка конфигурации, где есть поля ввода с переменными из массива config
+
+    *Сделать мобильную версию, убирается градиент, смещаются блоки меню (+вверх и складываются до кликабельного заголовка)
+
+ 
+-------------------------------------- templates 
+
+    Подключить шаблонизатор с возможностью наглядного отображения шаблонов на странице (mustashe, hogan)
+    +сделать загрузку файла с шаблоном с помощью <script type="text/template"></script> 
+    Перенести шаблоны в index.html ????
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
+исправить ошибку фильтрации директив шаблона: {{директива}} заменяется на
+%7B%7Bдиректива%7D%7D (ff v3-12 ???)
+
+	- записывать шаблоны в локальное хранилище
+	*- убрать загрузку шаблонов из разных файлов
+	
+-------------------------------------- url manage  
+
+    *сделать разбор адресной строки и переход к нужной функции в зависимости от параметров  
+    *функция разбора адресной строки: возвращает массив GET со всеми параметрами  
+
+
+-------------------------------------- taxonomy  
+
+    *функция вывода термина таксономии с выводом дочерних терминов  
+    *функция вывода словаря таксономии  
+    *функция вывода нод термина  
+    
+	*добавить вывод терминов словаря BOOKTAGS (+вначале исправить экспорт)
+	
+    *Вывод кол-ва связанных с термином книг (nodes_obj.get_termin_nodes)
+
+
+-------------------------------------- book  
+
+    *функция вывода страницы книги с дочерними страницами  
+    функция вывода всей книги  
+  
+
+-------------------------------------- node  
+
+    *функция вывода ноды с прикрепленными файлами, связанными ссылками на книгу  
+    *Сделать вывод генерируемых ссылок на облачные библиотеки вместе с локальными 
+
+    Разделить функцию view_node( params ) на подфункции по типу ноды 
+
+	?сделать постраничный вывод списков ссылок и пейджер для перемещения между
+	страницами общего списка
+
+======================================== STORAGE
+превышение квоты localStorage (FF 3.6)
+- error, no save lib_xml, [Exception... "Persistent storage maximum size reached" code: "1014" nsresult: "0x805303f6 (NS_ERROR_DOM_QUOTA_REACHED)" location: "http://vbox5/sites/romanlaptev.github.io/webapps/webapp_lib/js/vendor/localforage.min.js Line: 7"]
+  
+- eee-pc, FF 12
+error, failed SAVE element, localforage.setItem(lib_xml)
+	- error, no save lib_xml, 
+[Exception... "A mutation operation was attempted in a READ_ONLY transaction." 
+code: "9" nsresult: "0x80660009 (NS_ERROR_DOM_INDEXEDDB_READ_ONLY_ERR)" 
+location: "http://localhost/www/romanlaptev.github.io/webapps/webapp_lib/js/vendor/localforage.min.js Line: 7"]
+localforage.driver(): asyncStorage
+ 
+ - зависает приложение при запуске в браузере с поддержкой WebSQL (epiphany, konqeror)
+ 
+ - сделать вывод в окне информации даты создания данных хранилища
+ (запоминать при записи XML в хранилище дату операции)
+ также выводить дату экспортного файла... 
+ это нужно для сравнения дат и вывода о необходимости обновления
+ 
+======================================== RUNTIME
+
+    Уменьшить время загрузки терминов таксономии ( 
+Function read_taxonomy_data, runtime: 0.205 sec, workcomp 
+read_taxonomy_data, runtime: 1.076 sec, mycomp
+) 
+
+eee-pc, chrome
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.4 Safari/532.5
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
+
+ajax load xml/export_lib.xml complete, runtime: 0.949 sec, state: success
+error, no save lib_xml, Error: QUOTA_EXCEEDED_ERR: DOM Exception 22
+- read templates from tpl/templates.html, runtime: 0.372 sec
+- read_nodes_data, runtime: 1.772 sec
+- nodes_obj.get_xml_nodes(), runtime: 3.813 sec
+                - read_taxonomy_data, runtime: 2.429 sec
+- get taxonomy, runtime: 0.424 sec
+- get_book_category, runtime: 0.095 sec
+No $_GET value
+runtime all : 15.323 sec
+
+------------------------------- eee-pc
+
+ff
+Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
+
+ajax load xml/export_lib.xml complete, runtime: 1.27 sec, state: success
+save in cache element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.179 sec
+- read templates from tpl/templates.html, runtime: 0.395 sec
+- read_nodes_data, runtime: 2.279 sec
+- nodes_obj.get_xml_nodes(), runtime: 5.67 sec
+               - read_taxonomy_data, runtime: 8.07 sec
+- get taxonomy, runtime: 0.888 sec
+- get_book_category, runtime: 0.351 sec
+No $_GET value
+runtime all : 19.102 sec
+
+Mozilla/5.0 (Windows NT 5.1; rv:12.0) Gecko/20100101 Firefox/12.0
+LocalStorage is available
+Your browser does not have support for WebSQL
+Your browser does not have support for indexedDB.
+
+get storage element lib_xml, size: 1532.05 Kbytes, 1.50 Mbytes, runtime: 0.264 sec, error: null
+- read templates from tpl/templates.html, runtime: 0.381 sec
+- read_nodes_data, runtime: 2.388 sec
+- nodes_obj.get_xml_nodes(), runtime: 6.111 sec
+            - read_taxonomy_data, runtime: 6.598 sec
+- get taxonomy, runtime: 0.585 sec
+- get_book_category, runtime: 0.164 sec
+No $_GET value
+runtime all : 16.491 sec
+
+------------------------------------ mycomp
+ff
+get cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes, runtime: 0.474 sec, error: null
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 0.706 sec
+- nodes_obj.get_xml_nodes(), runtime: 1.102 sec
+            - read_taxonomy_data, runtime: 0.955 sec
+- get taxonomy, runtime: 0.062 sec
+- get_book_category, runtime : 0.022 sec
+No $_GET value
+INIT, runtime : 3.048 sec
+
+Successful download xml/export_lib.xml
+save in cache element lib_xml, size: 1488.87 Kbytes, 1.45 Mbytes
+load templates from tpl/templates.html
+- read_nodes_data, runtime: 0.662 sec
+- nodes_obj.get_xml_nodes(), runtime: 1.551 sec
+- read_taxonomy_data, runtime: 1.274 sec
+- get taxonomy, runtime: 0.159 sec
+- get_book_category, runtime : 0.056 sec
+No $_GET value
+INIT, runtime : 3.836 sec
+
+-------------------------- 
+определить оптимальный метод парсинга XML, меньший по времени
+1- парсинг XML с помощью jQuery (
+		- nodes_obj.get_termin_nodes(139), runtime: <b>1.684</b> sec
+		если использовать при аякс-загрузке dataType: "xml", то время уменьшается 
+		- nodes_obj.get_termin_nodes(139), runtime: 0.181 sec
+		но все равно больше чем 3 вар.
+	)
+2- парсинг XML с помощью JS (- nodes_obj.get_termin_nodes(139), runtime: 0.141 sec )
+3- парсинг XML при запуске приложения, (
+- nodes_obj.get_termin_nodes(139), runtime: <b>0.033</b> sec (память)
+- nodes_obj.get_termin_nodes(139), runtime: 0.061 sec (локальное хранилище)
+)
+в дальнейшем все функции получения данных работают с JSON-массивами (каждая таблица - отдельный массив)
+JSON хранится или в памяти, или в локальном хранилище
+--------
