@@ -1243,7 +1243,8 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 						"targetField": _vars["GET"]["targetField"],
 						"keyword": _vars["GET"]["keyword"],
 						"callback": function( sNodes){
-console.log(sNodes);
+//console.log(sNodes);
+
 							draw.buildBlock({
 								"locationID" : "block-node",
 								"templateID" : "tpl-block--termin-nodes",

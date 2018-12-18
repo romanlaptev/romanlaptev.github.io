@@ -132,7 +132,7 @@ function _searchNodes( opt ){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 	if(!p.keyword){
 lib.vars["logMsg"] = "error, not found search keyword, _searchNodes()";
@@ -163,17 +163,36 @@ console.log( lib.vars["logMsg"] );
 			var sNodes = [];
 			for(var nid in nodes){
 				var _node = nodes[nid];
-				var _testValue = _node[_targetField].toLowerCase();
-				if( _testValue.indexOf( p.keyword ) !== -1){
+				
+				if( _targetField === "filename"){
 //console.log(_node);
-					//sNodes.push( _node );
-					sNodes.push({
-						"nid": _node["nid"],
-						"title": _node["title"],
-						"bookname": _node["bookname"],
-						"author": _node["author"],
-						"type": _node["type"]
-					});
+					if( _node["book_files"] && _node["book_files"].length > 0){
+						
+						var res = __searchFilename( _keyword, _node);
+						if( res ){
+							sNodes.push({
+								"nid": _node["nid"],
+								"title": _node["title"],
+								"bookname": _node["bookname"],
+								"author": _node["author"],
+								"type": _node["type"]
+							});
+						}
+						
+					}
+				} else {
+					var _testValue = _node[_targetField].toLowerCase();
+					if( _testValue.indexOf( _keyword ) !== -1){
+	//console.log(_node);
+						//sNodes.push( _node );
+						sNodes.push({
+							"nid": _node["nid"],
+							"title": _node["title"],
+							"bookname": _node["bookname"],
+							"author": _node["author"],
+							"type": _node["type"]
+						});
+					}
 				}
 			}//next
 
@@ -199,6 +218,17 @@ func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 		}//end postFunc()
 	});
 
+	function __searchFilename( keyword, node ){
+		for( var n = 0; n < node["book_files"].length; n++){
+			var _testValue = node["book_files"][n].toLowerCase();
+			if( _testValue.indexOf( keyword ) !== -1 ){
+//console.log(node);
+				return node;
+			}
+		}//next
+		return false;
+	}//end __searchFilename
+	
 }//end _searchNodes()
 
 
