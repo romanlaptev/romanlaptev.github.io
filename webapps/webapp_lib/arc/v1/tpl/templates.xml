@@ -3,11 +3,15 @@
 
 	<tpl name="breadcrumb_item_tpl">
 		<html_code><![CDATA[
+<!--
 <ul class="list-inline">
+-->
 	<li>
 		<a href="{{item-url}}" class="breadcrumb-link">{{item-title}}</a>
 	</li>
+<!--
 </ul>			
+-->
 		]]></html_code>
 	</tpl>
 

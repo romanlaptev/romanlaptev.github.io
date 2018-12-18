@@ -1096,17 +1096,15 @@ console.log( _vars["logMsg"] );
 				case "termin_nodes":
 _vars["timeStart"] = new Date();
 
-					//_vars["termin_nodes"] = [];
 					nodes_obj.get_termin_nodes({
 						"tid" : _vars["GET"]["tid"],
 						"callback" : function( terminNodes){
-//console.log(this);							
 							__postFunc(  this.tid, terminNodes );
 						 }
 					});
 
 					function __postFunc( tid, terminNodes ){
-						//_formBreadcrumb( target );
+						_formBreadcrumb( target );
 //console.log(tid, terminNodes);
 						//draw.buildPage({});
 						draw.buildBlock({
@@ -1173,7 +1171,7 @@ _vars["timeStart"] = new Date();
 						"callback": __postFuncNode
 					});
 					
-					//_formBreadcrumb( target );
+					_formBreadcrumb( target );
 					//draw_page();
 					
 					function __postFuncNode( node ){
@@ -1274,6 +1272,13 @@ $(".b-content").height(_newHeight);
 				"url" : $(target).attr("href")
 			};
 			_vars["currentUrl"] = $(target).attr("href");
+			
+			draw.renderBreadCrumb({
+				"breadcrumb": _vars["breadcrumb"],
+				"template": _vars["templates"]["breadcrumb_item_tpl"],
+				"currentUrl": _vars["currentUrl"]
+			});
+			
 		}//end _formBreadCrumb()
 
 

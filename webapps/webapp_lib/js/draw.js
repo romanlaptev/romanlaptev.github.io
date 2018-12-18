@@ -40,12 +40,16 @@ var draw = {
 	},
 	"buildBlock": function(opt){
 		return _buildBlock(opt);
+	},
+	"renderBreadCrumb": function(opt){
+		return _renderBreadCrumb(opt);
 	}
 
 };//end draw
 
+
 function _buildPage( opt ){
-console.log("_buildPage()");
+//console.log("_buildPage()");
 
 	var p = {
 		//"nid": null,
@@ -379,7 +383,7 @@ console.log( lib.vars["logMsg"] );
 
 				
 			//mark root links for breadcrumb navigation
-			//$("#block-book-category .nav-click").addClass("root-link");			
+			$("#block-book-category .nav-click").addClass("root-link");			
 
 
 		}//end postFunc()
@@ -477,7 +481,7 @@ function _buildBlockTaxonomy(){
 				"content" : html
 			});
 			//mark root links for breadcrumb navigation
-			//$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
+			$("#block-taxonomy-alpha .nav-click").addClass("root-link");			
 				
 	//--------------------- BLOCK
 			draw.buildBlock({
@@ -491,7 +495,7 @@ function _buildBlockTaxonomy(){
 			});
 
 			//mark root links for breadcrumb navigation
-			//$("#block-library .nav-click").addClass("root-link");			
+			$("#block-library .nav-click").addClass("root-link");			
 	//---------------------
 
 	//--------------------- BLOCK
@@ -506,10 +510,53 @@ function _buildBlockTaxonomy(){
 					})
 			});
 			//mark root links for breadcrumb navigation
-			//$("#block-tags .nav-click").addClass("root-link");			
+			$("#block-tags .nav-click").addClass("root-link");			
 	//---------------------
 			
 		}//end postFunc()
 	});
 
 }//end _buildBlockTaxonomy()
+
+function _renderBreadCrumb(opt){
+	var p = {
+		"breadcrumb": "",
+		"template": ""
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+//---------------------- render breadcrumb
+	var html_breadcrumb="";
+	var clear = false;
+
+	for( var key in p["breadcrumb"]){
+		var url = p["breadcrumb"][key].url;
+		var title = p["breadcrumb"][key].title;
+		
+		if( clear ){//clear unuseful tail breadrumbs
+			delete p["breadcrumb"][key];
+		} else {
+			
+			if( url !== p["currentUrl"]){
+				html_breadcrumb += p["template"]
+				.replace("{{item-url}}", url )
+				.replace("{{item-title}}", title );
+			} else {
+				html_breadcrumb += "<li class='active-item'>" + title + "</li>";
+				//html_breadcrumb += "<span class='btn btn-info active-item'>" + title + "</span>";
+			}
+			
+		}
+		
+		if( url === p["currentUrl"]){
+			clear = true;
+		}
+	}//next
+
+//console.log(html_breadcrumb);
+	$("#breadcrumb-tpl").html( html_breadcrumb );	
+}//end _renderBreadCrumb()
