@@ -49,6 +49,13 @@ var draw = {
 };//end draw
 
 function _fixStyles(){
+
+	//hide log panel
+	if( lib.vars["log"].style.display==="none"){
+	} else {
+		lib.vars["log"].style.display="none";
+		lib.vars["btnToggle"].innerHTML="+";
+	}
 	
 	//---------- fix b-content height
 	var _newHeight = $("#block-content").height();
@@ -59,6 +66,7 @@ function _fixStyles(){
 }//end _fixStyles();
 
 
+//common draw actions
 function _buildPage( opt ){
 //console.log("_buildPage()");
 
@@ -75,6 +83,10 @@ function _buildPage( opt ){
 	}
 //console.log(p);
 
+	//clear taxonomy and content area
+	$("#block-taxonomy").empty();
+	$("#block-nodes").empty();
+			
 	if( draw.vars["blockList"]["sitename-block"].state === "add" ||
 			draw.vars["blockList"]["sitename-block"].state === "refresh"
 	){

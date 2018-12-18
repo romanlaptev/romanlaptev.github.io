@@ -1108,7 +1108,9 @@ _vars["timeStart"] = new Date();
 					function __postFunc( tid, terminNodes ){
 						_formBreadcrumb( target );
 //console.log(tid, terminNodes);
-						//draw.buildPage({});
+
+						draw.buildPage({});//common draw actions
+						
 						draw.buildBlock({
 							"locationID" : "block-node",
 							"templateID" : "tpl-block--termin-nodes",
@@ -1175,6 +1177,7 @@ _vars["timeStart"] = new Date();
 						"callback": __postFuncNode
 					});
 					
+					draw.buildPage({});//common draw actions
 					_formBreadcrumb( target );
 					//draw_page();
 					
