@@ -43,9 +43,20 @@ var draw = {
 	},
 	"renderBreadCrumb": function(opt){
 		return _renderBreadCrumb(opt);
-	}
-
+	},
+	"fixStyles": _fixStyles
+	
 };//end draw
+
+function _fixStyles(){
+	
+	//---------- fix b-content height
+	var _newHeight = $("#block-content").height();
+//console.log(_newHeight);
+	$(".b-content").height(_newHeight);
+	//----------------------
+	
+}//end _fixStyles();
 
 
 function _buildPage( opt ){
@@ -85,6 +96,14 @@ function _buildPage( opt ){
 		draw.vars["blockList"]["block-taxonomy"].state = ""; //do not update block!!!!
 	}
 	
+
+	//hide blocks on small screens
+	//if ( lib.vars["GET"]["q"] && lib.vars["GET"]["q"].length > 0 ){
+		if( $(".navbar-header").is(":visible") &&
+			document.body.clientWidth < 990) {
+			$("#bs-navbar-collapse-1").hide("slow");
+		}
+	//}
 
 };//end _buildPage()
 

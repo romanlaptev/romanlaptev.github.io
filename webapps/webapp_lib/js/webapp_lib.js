@@ -1148,6 +1148,8 @@ _vars["timeStart"] = new Date();
 							"templateID" : "tpl-block--tags",
 							"content" : html
 						});
+						
+						draw.fixStyles();
 
 	_vars["timeEnd"] = new Date();
 	_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
@@ -1214,6 +1216,8 @@ console.log( _vars["logMsg"] );
 								} else {
 									//$("#termins .nav-click").addClass("root-link");			
 								}
+								
+								draw.fixStyles();
 
 							}//end postFunc
 						});
@@ -1234,7 +1238,7 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 						"targetField": _vars["GET"]["targetField"],
 						"keyword": _vars["GET"]["keyword"]
 					});
-					draw_page();
+					//draw_page();
 				break;
 
 			
@@ -1243,11 +1247,6 @@ console.log("_urlManager(),  GET query string: ", _vars["GET"]);
 				break;
 			}//end switch
 			
-//---------- fix b-content height
-var _newHeight = $("#block-content").height();
-//console.log(_newHeight);
-$(".b-content").height(_newHeight);
-//----------------------
 
 		}//end _urlManager()
 
