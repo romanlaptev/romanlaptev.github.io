@@ -969,7 +969,6 @@ console.log("w = " + document.body.clientWidth );
 //console.log(this["targetField"].value);
 //console.log(this.keyword.value);
 
-
 //console.log(target.targetField.value);
 //console.log(target.keyword.value);
 
@@ -983,13 +982,15 @@ console.log("w = " + document.body.clientWidth );
 //console.log("key:"+key+", value:"+form.elements.targetField[key]);
 //}
 
+//console.log( form.elements.targetField );
 //console.log( $(form.elements.targetField).val() );
 
 
 				//check input values
 				var res = true;
 				
-				var _keyword = $(form.elements.keyword).val();
+				//var _keyword = $(form.elements.keyword).val();
+				var _keyword = form.elements.keyword.value;
 				if( _keyword.length === 0 ){
 _vars["logMsg"] = "error, empty field 'keyword'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
@@ -997,7 +998,8 @@ console.log( _vars["logMsg"] );
 					res = false;
 				}
 				
-				var _targetField = $(form.elements.targetField).val();
+				//var _targetField = $(form.elements.targetField).val();
+				var _targetField = form.elements.targetField.value;
 //console.log( _targetField.length );
 				if( _targetField.length === 0 ){
 _vars["logMsg"] = "error, empty field 'targetField'....";

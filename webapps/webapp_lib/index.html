@@ -245,13 +245,14 @@ https://viewerjs.org/examples/
 <div class="form-group">
 	<label class="radio-inline"><input type="radio" name="targetField" checked="checked" value="author">author name</label>
 	<label class="radio-inline"><input type="radio" name="targetField" value="bookname" >book title</label>
-	<label class="radio-inline"><input type="radio" name="targetField" value="filename" >attached filename of book (string, 'M_Krolik.txt'....)</label>
 	<label class="radio-inline"><input type="radio" name="targetField" value="nid" >node id (695, 1645)</label>
+	<label class="radio-inline"><input type="radio" name="targetField" value="filename" >*!!!attached filename of book (string, 'M_Krolik.txt'....)</label>
+search by termins...	
 </div>
 
 <div class="row">
 	<div class="form-group col-sm-5 col-md-5 col-lg-5">
-		<label class="radio-inline"><input type="radio" name="targetField" id="radio-node-type" value="node_type">node type:</label>
+		<label class="radio-inline"><input type="radio" name="targetField" id="radio-node-type" value="type">node type:</label>
 		<select size="2" class="form-control" id="select-node-type" onChange="_searchNodeType( 'input-keyword', this.options[this.selectedIndex].value );">
 			<option value="library_book">library_book</option>
 			<option value="author">author</option>
@@ -264,9 +265,6 @@ https://viewerjs.org/examples/
 							<div class="column1 col-sm-10 col-md-10 col-lg-10">
 <input type="text" class="form-control" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="">
 							</div>
-							<div class="column2 col-sm-2 col-md-2 col-lg-2">
-								<button type="reset" class="btn btn-warning">reset form</button>
-							</div>
 						</div>
 
 					</div>
@@ -274,6 +272,7 @@ https://viewerjs.org/examples/
 					
 					<div class="panel-footer">
 						<button type="submit" class="btn btn-large btn-primary">start search</button>
+						<button type="reset" class="btn btn-warning">reset form</button>
 					</div>
 					
 				

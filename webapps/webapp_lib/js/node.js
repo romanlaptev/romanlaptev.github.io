@@ -165,9 +165,11 @@ console.log( lib.vars["logMsg"] );
 				var _node = nodes[nid];
 				var _testValue = _node[_targetField].toLowerCase();
 				if( _testValue.indexOf( p.keyword ) !== -1){
+//console.log(_node);
 					//sNodes.push( _node );
 					sNodes.push({
 						"nid": _node["nid"],
+						"title": _node["title"],
 						"bookname": _node["bookname"],
 						"author": _node["author"],
 						"type": _node["type"]
