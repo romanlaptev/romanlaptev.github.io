@@ -1,22 +1,12 @@
 var nodes_obj = {
-	//"nodes_size" : 0,
 	"get_node" : function( params ){
-		//return _get_node( params );
 		return _getNode( params );
 	},
-	//"get_xml_nodes" : function( params ){
-		//return _get_xml_nodes( params );
-	//},
 	"getNodes" : function( opt ){
 		return _getNodes( opt );
 	},
 	"get_termin_nodes" : function( params ){
-		//return _get_termin_nodes( params );
 		return _getTerminNodes( params );
-		//return _getTerminNodesXML( params );
-		//return _getTerminNodesJquery( params );
-		//return _getTerminNodesJS( params );
-		//return _getTerminNodesStorage(params);
 	}, 
 	"view_node" : function( params ){
 //console.log( nodes_obj.view_node.caller);
@@ -34,42 +24,6 @@ var nodes_obj = {
 
 //=================================== NODES methods
 
-/*
-function _get_termin_nodes( params )
-{
-	if( typeof lib.vars["nodes"] === "undefined")
-	{
-		var log = "- error, not found lib.vars[nodes], function get_termin_nodes()";
-//console.log(message);
-		//lib.vars["info"].push( message );
-lib.vars["logMsg"] = log;
-func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-//console.log( lib.vars["logMsg"] );
-		
-		return;
-	}
-
-	var termin_nodes = [];
-	for( var node in lib.vars["nodes"] )
-	{
-if( typeof lib.vars["nodes"][node]["tid"] === "undefined")
-{
-continue;
-}
-		for( var n = 0; n < lib.vars["nodes"][node]["tid"].length; n++)
-		{
-			if( params["tid"] === lib.vars["nodes"][node]["tid"][n] )
-			{
-//console.log( node,  lib.vars["nodes"][node]  );
-				termin_nodes.push( lib.vars["nodes"][node] );
-			}
-		}//next node tid
-	}//next node
-	
-//console.log(termin_nodes);
-	return termin_nodes;
-}//end _get_termin_nodes()
-*/
 function _getTerminNodes( opt ){
 //console.log(opt);
 	var p = {
@@ -131,7 +85,14 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 				for( var n1 = 0; n1 < node["termins"].length; n1++){
 	//console.log(node["termins"][n1], typeof node["termins"][n1]);
 					if( tid === node["termins"][n1]["tid"] ){
-						_terminNodes.push( node );
+						//_terminNodes.push( node );
+						_terminNodes.push({
+							"nid": node["nid"],
+							"bookname": node["bookname"],
+							"author": node["author"],
+							"type": node["type"]
+						});
+
 					}
 				}//next termin tid
 				
@@ -159,483 +120,19 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 }//end _getTerminNodes()
 
 
-function _getTerminNodesXML( opt ){
-//console.log(opt);
-	var p = {
-		"tid" : null,
-		"target" : null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(!p.tid){
-lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
-//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-//console.log( lib.vars["logMsg"] );
-		return false;
-	}
-
-	var terminNodes = [];
-	
-	for( var n = 0; n < nodes_obj["taxonomy_index"].length; n++){
-		var tid = $( nodes_obj["taxonomy_index"][n] ).attr("tid");
-		if( p["tid"] === tid ){
-			
-			var node = _getNode({
-				"nid" : $( nodes_obj["taxonomy_index"][n] ).attr("nid")
-			});
-			
-			if( node ){
-				terminNodes.push( node );
-			}
-		}
-	};//next
-
-	//------------------- SORT by author, alphabetical sorting
-	if( terminNodes.length > 0 ){
-		func.sortRecords({
-			"records" : terminNodes,
-			"sortOrder": "asc", //desc
-			"sortByKey": "author"
-		});
-	}
-	
-//console.log(terminNodes, terminNodes.length);
-	return terminNodes;
-}//end _getTerminNodesXML()
-
-/*
-function _getTerminNodesStorage( opt ){
-//console.log(opt);
-	var p = {
-		"tid" : null,
-		"target" : null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(!p.tid){
-lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodesStorage()";
-//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-//console.log( lib.vars["logMsg"] );
-		return false;
-	}
-	var terminNodes = [];
-	
-//======================= TEST
-delete lib.vars["nodes"];
-delete lib.vars["xml"];
-
-	//var taxonomy_index = [];
-	//var xml = lib.vars["xml"];
-	//var tableName = "table_taxonomy_index";
-	//$(xml).find( tableName ).find("item").each( function( num, element ){
-////console.log(num, element);				
-		//var itemObj = {
-			//"tid" : $(this).attr("tid"),
-			//"nid" : $(this).attr("nid")
-		//};
-		//taxonomy_index.push( itemObj );
-	//});//next
-	
-	
-////console.log(taxonomy_index);
-	//storage.putItem("taxonomy_index", taxonomy_index, function(){
-//console.log(arguments);				
-	//});
-
-	if( lib.vars["waitWindow"] ){
-		lib.vars["waitWindow"].style.display="block";
-	}
-
-
-console.log( window.Promise );
-if( typeof window.Promise === "function" ){
-//......
-}
-
-console.log($.Deferred);
-if( typeof $.Deferred === "function" ){
-
-//https://api.jquery.com/deferred.then/
-_deferred_req()
-	.then(
-		function(readValue, err){//A function that is called when the Deferred is resolved.
-//console.log( "Promise resolved.", arguments);
-			if( lib.vars["waitWindow"] ){
-				lib.vars["waitWindow"].style.display="none";
-			}
-console.log("--- continue of the execution process...");
-			if( readValue && readValue.length > 0){
-				lib.vars["termin_nodes"] = __getTerminNodes(readValue);
-				if( lib.vars["termin_nodes"].length > 0){
-					_formBreadcrumb( p.target );
-					draw_page();
-lib.vars["timeEnd"] = new Date();
-lib.vars["runTime"] = (lib.vars["timeEnd"].getTime() - lib.vars["timeStart"].getTime()) / 1000;
-lib.vars["logMsg"] = "- nodes_obj.get_termin_nodes("+lib.vars["GET"]["tid"]+"), runtime: <b>" + lib.vars["runTime"] + "</b> sec";
-func.log("<p class='alert alert-info'>" + lib.vars["logMsg"] + "</p>");
-//console.log( lib.vars["logMsg"] );
-					
-				}
-			}
-		},
-		function(){//An optional function that is called when the Deferred is rejected. 
-console.log( "Promise rejected.", arguments);
-		}				
-	)
-	
-	//.progress(
-		//function(p){
-//console.log( "PROGRESS promise callback...%", p);
-	//})
-	
-	.always(//Add handlers to be called when the Deferred object is either resolved or rejected.
-		function() {
-//console.log( "ALWAYS promise callback...", arguments );
-	})
-	
-	.fail(//Add handlers to be called when the Deferred object is rejected.
-		function() {
-//console.log( "FAIL promise callback...", arguments );
-	})
-	
-	.done(//Add handlers to be called when the Deferred object is resolved.
-		function() {
-//console.log( "DONE promise callback...", arguments );
-	});
-}
-
-
-	//storage.getItem("taxonomy_index", _callback );
-	//storage.getItem("nodes", _callback );
-	
-console.log(terminNodes);
-//terminNodes = [];
-	return terminNodes;
-
-	//function _callback(readValue, err){
-//console.log("--- continue of the execution process...");						
-//console.log(readValue, err);	
-
-////setTimeout(function(){
-	//if( lib.vars["waitWindow"] ){
-		//lib.vars["waitWindow"].style.display="none";
-	//}
-////}, 1000*3);
-
-	//}//end _callback()
-
-	function _deferred_req(){
-		
-		var $d = $.Deferred();
-
-		storage.getItem("nodes", function(readValue, err){
-//console.log("--- _deferred_req(), get data...");						
-//console.log(readValue, err);
-			if(readValue && readValue.length > 0){
-//console.log("1.State:" , $d.state() );
-
-				$d.resolve( readValue, err );
-//console.log("2.State:" , $d.state() );
-
-			} else {
-				$d.resolve(false);
-			}
-			//$d.reject();
-		});
-		return $d;
-	}//end _deferred_req()
-
-	function __getTerminNodes(nodes){
-//console.log(p["tid"], typeof p["tid"]);
-
-		var _terminNodes = [];
-		for( var n = 0; n < nodes.length; n++ ){
-			var node = nodes[n];
-if( typeof node["tid"] === "undefined"){
-continue;
-}
-			for( var n1 = 0; n1 < node["tid"].length; n1++){
-//console.log(node["tid"][n1], typeof node["tid"][n1]);
-				if( p["tid"] === node["tid"][n1] ){
-					_terminNodes.push( node );
-				}
-			}//next termin tid
-			
-		}//next node
-
-console.log(_terminNodes);
-		return _terminNodes;
-	}//end __getTerminNodes()
-	
-}//end _getTerminNodesStorage()
-*/
-
-/*
-function _getTerminNodesJquery(opt){
-//console.log(opt);
-	var p = {
-		"tid" : null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(!p.tid){
-lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodesJquery()";
-//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-//console.log( lib.vars["logMsg"] );
-		return false;
-	}
-		
-	var terminNodes = [];
-	var xml = lib.vars["xml"];
-
-	var tableName = "table_taxonomy_index";
-	$(xml).find( tableName ).find("item").each( function( num, element ){
-//console.log(num, element);				
-		var tid = $(this).attr("tid");
-		if( p["tid"] === tid ){
-			
-			var node = __getNode({
-				"nid" : $(this).attr("nid")
-			});
-			
-			if( node ){
-				terminNodes.push( node );
-			}
-		}
-	});//next
-
-console.log(terminNodes);
-//terminNodes = [];
-	return terminNodes;
-	
-	function __getNode(opt){
-//console.log(opt);
-		var nodeObj = false;
-		var tableName = "table_node";
-		
-		if( opt["nid"]){
-
-			$(xml).find( tableName ).find("node").each( function( num, element ){
-				var nid = $(this).attr("nid");
-				if( opt["nid"] === nid ){
-//console.log( $(this).attr("title") );
-nodeObj = {
-"title": $(this).attr("title"),
-"author" : $(this).children("author").text(),
-"nid": $(this).attr("nid"),
-"mlid": $(this).attr("mlid"),
-"plid": $(this).attr("plid"),
-"tid": __getNodeTermins( nid ),
-"type": $(this).attr("type"),
-"body_value" : $(this).children("body_value").text(),
-"bookname" : $(this).children("bookname").text(),
-"subfolder" : $(this).children("subfolder").text().trim(),
-"changed": $(this).attr("changed"),
-"created": $(this).attr("created"),
-"weight": $(this).attr("weight")
-};
-				}
-			});//next
-			
-		}//end if
-
-		return nodeObj;
-	}//end __getNode()
-	
-	function __getNodeTermins(nid){
-		var terminsTid = [];
-		var tableName = "table_taxonomy_index";
-		
-		$(xml).find( tableName ).find("item").each( function( num, element ){
-//console.log(num, element);				
-			var testNid = $(this).attr("nid");
-			if( testNid === nid ){
-				terminsTid.push( $(this).attr("tid") );
-			}
-		});//next
-		
-		return terminsTid;
-	}//end __getNodeTermins
-	
-}//end _getTerminNodesJquery()
-*/
-
-/*
-function _getTerminNodesJS(opt){
-//console.log(opt);
-	var p = {
-		"tid" : null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(!p.tid){
-lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
-//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-//console.log( lib.vars["logMsg"] );
-		return false;
-	}
-		
-	var terminNodes = [];
-	var xml = lib.vars["xml"];
-
-	var tableName = "table_taxonomy_index";
-	var xmlDoc = xml.getElementsByTagName( tableName );
-//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
-//console.log( xmlDoc.childNodes.length ) ;
-//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
-// for(var key in xmlDoc){
-// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
-// }
-
-	for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
-		var nodeXML = xmlDoc.item(0).childNodes.item(n);
-//console.log( nodeXML, typeof nodeXML);
-//console.log( "nodeType: "+ nodeXML.nodeType);
-		if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
-			continue;
-		}
-		var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
-		var nid = nodeXML.attributes.getNamedItem("nid").nodeValue;
-		if( p["tid"] === tid ){
-			
-			var node = __getNode({
-				"nid" : nid
-			});
-			
-			if( node ){
-				terminNodes.push( node );
-			}
-		}
-	}//next
-	
-console.log(terminNodes);
-//terminNodes = [];
-	return terminNodes;
-	
-	function __getNode(opt){
-//console.log(opt);
-		var nodeObj = false;
-		var tableName = "table_node";
-		
-		if( opt["nid"]){
-			var xmlDoc = xml.getElementsByTagName( tableName );
-			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
-				var nodeXML = xmlDoc.item(0).childNodes.item(n);
-//console.log( nodeXML, typeof nodeXML);
-//console.log( "nodeType: "+ nodeXML.nodeType);
-				if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
-					continue;
-				}
-				var nid = nodeXML.attributes.getNamedItem("nid").nodeValue;
-				if( opt["nid"] === nid ){
-//console.log( nodeXML.attributes.getNamedItem("title").nodeValue );
-//console.log( nodeXML.getElementsByTagName("author").item(0) );
-//for(var key in nodeXML.getElementsByTagName("author").item(0)){
-//console.log( key, nodeXML.getElementsByTagName("author").item(0)[key] );
-//}
-//var childNodes = nodeXML.childNodes;
-
-var childNode = nodeXML.getElementsByTagName("author").item(0);
-//console.log( "type:", typeof childNode, childNode );
-if (childNode !== null){
-if ("textContent" in childNode){
-var author = childNode.textContent;
-} else {
-var author = childNode.text;
-}
-//console.log( "author:", author );
-} else {
-//console.log( "length:", childNodes, childNodes.length );
-continue;
-} 
-
-childNode = nodeXML.getElementsByTagName("body_value").item(0);
-if (childNode !== null){
-if ("textContent" in childNode){
-var body_value = childNode.textContent;
-} else {
-var body_value = childNode.text;
-}
-} else {
-continue;
-} 
-
-nodeObj = {
-"title": nodeXML.attributes.getNamedItem("title").nodeValue,
-"author" : author,
-"nid": nodeXML.attributes.getNamedItem("nid").nodeValue,
-"mlid": nodeXML.attributes.getNamedItem("mlid").nodeValue,
-"plid": nodeXML.attributes.getNamedItem("plid").nodeValue,
-"tid": __getNodeTermins( nid ),
-"type": nodeXML.attributes.getNamedItem("type").nodeValue,
-"body_value" : body_value,
-"bookname" : nodeXML.getElementsByTagName("bookname").item(0).textContent,
-"subfolder" : nodeXML.getElementsByTagName("subfolder").item(0).textContent,
-"changed": nodeXML.attributes.getNamedItem("changed").nodeValue,
-"created": nodeXML.attributes.getNamedItem("created").nodeValue,
-"weight": nodeXML.attributes.getNamedItem("weight").nodeValue
-};
-
-				}
-			}//next
-			
-		}//end if
-
-		return nodeObj;
-	}//end __getNode()
-	
-	function __getNodeTermins(nid){
-		var terminsTid = [];
-		var tableName = "table_taxonomy_index";
-		
-		var xmlDoc = xml.getElementsByTagName( tableName );
-		for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
-			var nodeXML = xmlDoc.item(0).childNodes.item(n);
-			
-			if (nodeXML.nodeType !== 1){// not Node.ELEMENT_NODE
-				continue;
-			}
-			
-			var testNid = nodeXML.attributes.getNamedItem("nid").nodeValue;
-			if( testNid === nid ){
-				var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
-				terminsTid.push( tid );
-			}
-		}//next
-		
-		return terminsTid;
-	}//end __getNodeTermins
-	
-}//end _getTerminNodesJS()
-*/
 
 function _searchNodes( opt ){
 //console.log(opt);
 	var p = {
 		"keyword" : null,
-		"targetField" : null
+		"targetField" : null,
+		"callback": null
 	};
 	//extend p object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-//console.log(p);
+console.log(p);
 
 	if(!p.keyword){
 lib.vars["logMsg"] = "error, not found search keyword, _searchNodes()";
@@ -653,40 +150,53 @@ console.log( lib.vars["logMsg"] );
 
 	var _targetField = p.targetField.toLowerCase();
 	var _keyword = p.keyword.toLowerCase();
-	
-	var nodes = [];
-	for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
-		var x_node = $( nodes_obj["x_nodes"][n] );
-		
-		var node = {};
-		var _test = x_node.children( _targetField ).text().toLowerCase();
-		if( _test.indexOf(p.keyword) !== -1){
-//console.log(x_node);
-			var node = _getNode({
-				"xmlObj" : x_node
-			});
-			if( node ){
-				nodes.push( node );
+
+	_getNodes({
+		"postFunc": function( nodes ){
+//console.log(nodes);
+			if( !nodes ){
+				if( typeof p["callback"] === "function"){
+					p["callback"](nodes);//return
+				}
 			}
 			
-		}
-	}//next node
+			var sNodes = [];
+			for(var nid in nodes){
+				var _node = nodes[nid];
+				var _testValue = _node[_targetField].toLowerCase();
+				if( _testValue.indexOf( p.keyword ) !== -1){
+					//sNodes.push( _node );
+					sNodes.push({
+						"nid": _node["nid"],
+						"bookname": _node["bookname"],
+						"author": _node["author"],
+						"type": _node["type"]
+					});
+				}
+			}//next
 
-	//------------------- SORT by author, alphabetical sorting
-	if( nodes.length > 0 ){
-		func.sortRecords({
-			"records" : nodes,
-			"sortOrder": "asc", //desc
-			"sortByKey": "author"
-		});
-	}
+			//------------------- SORT by author, alphabetical sorting
+			if( nodes.length > 0 ){
+				func.sortRecords({
+					"records" : nodes,
+					"sortOrder": "asc", //desc
+					"sortByKey": "author"
+				});
+			}
 
-//console.log(nodes, nodes.length);
-lib.vars["logMsg"] = "- найдено книг: "+ nodes.length;
+//console.log(sNodes, sNodes.length);
+lib.vars["logMsg"] = "- найдено книг: "+ sNodes.length;
 func.log("");
 func.log("<div class='alert alert-info'>" + lib.vars["logMsg"] + "</div>");
 //console.log( lib.vars["logMsg"] );
-	return nodes;
+
+			if( typeof p["callback"] === "function"){
+				p["callback"](sNodes);//return
+			}
+			
+		}//end postFunc()
+	});
+
 }//end _searchNodes()
 
 
@@ -743,54 +253,6 @@ if(node["type"] === "author"){
 }//end _viewNodes()
 
 
-/*
-function _get_node( opt ){
-//console.log(opt);
-	var p = {
-		"nid" : null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(!p.nid){
-lib.vars["logMsg"] = "error in parameters, not found node nid, function _get_node()";
-//func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
-console.log( lib.vars["logMsg"] );
-		return false;
-	}
-
-	var node = false;
-	for( var n = 0; n < lib.vars["nodes"].length; n++){
-		if( p.nid === lib.vars["nodes"][n]["nid"] ){
-			node = lib.vars["nodes"][n];
-			
-			//get book url
-			var params = {"nid" :node["nid"] };
-			//node["book_files"] = [];
-			//node["book_url"] = [];
-			//node["book_links"] = [];
-			
-			node["termins"] = get_node_termins( params );
-			
-//node["book_files"] = get_book_files( params );
-			node["book_files"] = _getBookFiles( params );
-			
-//node["book_url"] = get_book_url( params );
-			node["book_url"] = _getBookUrl( params );
-			
-//node["book_links"] = get_book_links( params );
-			node["book_links"] = _getBookLinks( params );
-			
-		}
-	}//next node
-//console.log( node  );
-	return node;
-}//end _get_node()
-*/
-
 function _getNode( opt ){
 //console.log(opt);
 	var p = {
@@ -831,61 +293,7 @@ function _getNode( opt ){
 		
 		return node;
 	}//end __getNodeXmlObj()
-/*
-	function __getNodeByNid( nid ){
-		var node = {};
-		for( var n = 0; n < nodes_obj["x_nodes"].length; n++){
-			
-			var x_node = $( nodes_obj["x_nodes"][n] );
-			if( nid !== x_node.attr("nid") ){
-				continue;
-			}
-			
-			//read node attributes
-			var nodeAttr = func.get_attr_to_obj( x_node[0].attributes );
-			for(var attr in nodeAttr){
-		//console.log(attr, nodeAttr[attr]);
-				node[attr] = nodeAttr[attr];
-			}//next attr
-
-			node["subfolder"] = x_node.children("subfolder").text().trim();
-			node["author"] = x_node.children("author").text().trim();
-			node["bookname"] = x_node.children("bookname").text().trim();
-			node["body_value"] = x_node.children("body_value").text().trim();
-
-			//read node termins
-			for( var n2 = 0; n2 < nodes_obj["taxonomy_index"].length; n2++){
-				var testNid = nodes_obj["taxonomy_index"][n2].getAttribute("nid");
-				if( testNid === node["nid"] ){
-					if( typeof node["tid"] === "undefined") {
-						node["tid"] = [];
-					}
-					node["tid"].push( nodes_obj["taxonomy_index"][n2].getAttribute("tid") );
-				}
-			}//next termin
-				
-			var params = {"nid" :node["nid"] };
-			node["termins"] = get_node_termins( params );
-			
-			node["book_files"] = _getBookFilesXML( params );
-			node["book_url"] = _getBookUrlXML( params );
-			node["book_links"] = _getBookLinksXML( params );
-
-		//Get children nodes				
-		//if( node["type"] === "author"){
-		node["node_child_pages"] = book.get_child_pages({
-			"plid" : node["mlid"],
-			"recourse" : 0
-		});
-		//}
-			
-//console.log( node  );
-			return node;
-		}//next node
-		
-		return false;
-	}//end __getNodeByNid()
-*/
+	
 	function __getNodeByNid( nid ){
 		_getNodes({
 			

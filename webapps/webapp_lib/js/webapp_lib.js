@@ -1234,11 +1234,23 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 
 				case "search":
 					$("#service-panel").hide();
-					_vars["nodes"] = nodes_obj.searchNodes({
+					nodes_obj.searchNodes({
 						"targetField": _vars["GET"]["targetField"],
-						"keyword": _vars["GET"]["keyword"]
+						"keyword": _vars["GET"]["keyword"],
+						"callback": function( sNodes){
+console.log(sNodes);
+							draw.buildBlock({
+								"locationID" : "block-node",
+								"templateID" : "tpl-block--termin-nodes",
+								"content" : nodes_obj.viewNodes({
+									"nodes": sNodes,
+									"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
+									"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
+								})
+							});
+
+						}//end callback
 					});
-					//draw_page();
 				break;
 
 			
