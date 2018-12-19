@@ -26,9 +26,9 @@
 
 
 		var taxonomy_obj = {
-			//"parseTaxonomyFromXml" : function(opt){
-				//return _parseTaxonomyFromXml(opt);
-			//},
+			"parseTaxonomyFromXml" : function(opt){
+				return _parseTaxonomyFromXml(opt);
+			},
 			"view_vocabulary" : function( opt ){
 				var html = _view_vocabulary( opt );
 				return html;
@@ -1321,6 +1321,96 @@ console.log(err);
 
 
 //====================================== TAXONOMY methods
+		function _parseTaxonomyFromXml( opt ){
+//console.log(opt);
+
+			var xml = opt["xml"];
+			
+			var taxonomy = {};
+			$( xml.taxonomy_vocabulary ).each(function(){
+				var item = $(this);
+				var name = item.children('m_name').text();
+				var vocabulary = {
+					//"name" : item.children('name').text(),
+					"vid" : item.attr('vid'),
+					"termins" : __get_termins( item.attr('vid') )
+				};
+				taxonomy[name] = vocabulary;
+			});//end each
+			
+//runtime: 0.655 sec
+/*			
+ 			var taxonomy_vocabulary = $(xml).find( table_name ).find('item');
+			for( var n = 0; n < taxonomy_vocabulary.length; n++)
+			{
+//console.log( n, x_nodes[n] );
+				var voc = $( taxonomy_vocabulary[n] );
+				var name = voc.children('m_name').text();
+				var vocabulary = {
+					"vid" : voc.attr('vid')//,
+					//"termins" : get_termins( voc.attr('vid') ),
+				};
+				taxonomy[name] = vocabulary;
+			}//next voc
+*/			
+
+/*
+			storage.putItem("taxonomy", taxonomy, function(){
+//console.log(arguments);				
+			});
+*/
+			return taxonomy;
+			
+			function __get_termins( vid ){
+				var termins = [];
+				$( xml.taxonomy_term_data ).each(function(){
+					var item = $(this);
+					if ( item.attr('vid') === vid ){
+						var term_obj = {
+							"name" : item.children('name').text(),
+							"description" : item.children('description').text(),
+							"vid" : item.attr('vid'),
+							"tid" : item.attr('tid')//,
+							//"parent_value" : get_termin_info( item.attr('tid'), term_hierarchy )
+						};
+						termins.push( term_obj );
+					}
+				});//end each
+
+				//get termins hierarchy
+				var parent_value = false;
+				$( xml.taxonomy_term_hierarchy ).each(function(){
+					var item = $(this);
+					var tid = item.attr('tid');
+					for( var n = 0; n < termins.length; n++){
+						if( tid === termins[n]["tid"]){
+							termins[n]["parent_value"] = item.attr('parent');
+							//break;
+						}
+					}//next termin
+				});//end each
+
+				return termins;
+			}//end __get_termins()
+/*
+			function get_termin_info( tid, table )
+			{
+				var parent_value = false;
+				$( table ).each(function()//8412 вхождений.!!!!!!!!!!!!!!!!!
+				{
+					var item = $(this);
+					if ( item.attr('tid') === tid )
+					{
+						parent_value = item.attr('parent');
+						return false;
+					}
+				});//end each
+//console.log(tid, parent_value);
+				return parent_value;
+			}//end get_termin_info()
+*/
+		}//end _parseTaxonomyFromXml()
+
 		function _view_termin( params )	{
 //console.log("TEST2", params);			
 			var termins = params["termins"]; 
