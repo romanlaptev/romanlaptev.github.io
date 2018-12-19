@@ -935,6 +935,20 @@ console.log( logMsg );
 			});//end event
 
 
+			$("#btn-clear-import-url").on("click", function(event){
+				event = event || window.event;
+//console.log(event);				
+				var target = event.target || event.srcElement;
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				
+				$("#import-url").val("");
+			});//end event
+
+
 			$("#btn-import").on("click", function(e){
 				if (e.preventDefault) { 
 					e.preventDefault();
