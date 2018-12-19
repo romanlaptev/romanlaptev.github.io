@@ -934,17 +934,39 @@ console.log( logMsg );
 				window.open(e.href);
 			});//end event
 
-			$("#btn-load-import").on("click", function(e){
+
+			$("#btn-import").on("click", function(e){
 				if (e.preventDefault) { 
 					e.preventDefault();
 				} else {
 					e.returnValue = false;				
 				}
-				var url = $("#import-script-url").val(); 
+				var url = $("#import-url").val(); 
 				e.href = url;
-//console.log(e.href);				
-				window.open(e.href);
+console.log(e.href);
+//- load import.xml
+//- parse book info (nodes, taxonomyObj, hierarchyObj)
+//- merge with data objects: storage.nodes, storage.taxonomyObj, storage.hierarchyObj
+//- save changed objects to local storage
+
 			});//end event
+
+			$("#load-import-file").on("change", function(event){
+				event = event || window.event;
+console.log("change...", event.target.files);
+console.log("FileList support is " + window.FileList , typeof window.FileList);
+
+				$("#service-panel").hide();
+				if( window.FileList ){
+					_importLocalFile( event.target.files );
+				} else {
+					_vars.logMsg = "Your browser does not support File API";
+					_log("<div class='alert alert-warning'>" + _vars.logMsg + "</div>");
+					$("#service-panel").hide();
+					return false;
+				}
+			});//end event
+
 
 			window.onresize = function(event) {
 				if( document.body.clientWidth > 990){
@@ -1590,6 +1612,106 @@ console.log( _vars["logMsg"] );
 		}//end list_children_termins();
 
 
+		function _importLocalFile( fileList){
+			if( !fileList || fileList.length === 0){
+				return false;
+			}
+	/*
+	name protokols.json
+	lastModified 1515750341802
+	lastModifiedDate Date 2018-01-12T09:45:41.802Z
+	webkitRelativePath 
+	slice function slice()
+	size 47
+	type application/json
+	*/
+			for( var n = 0; n < fileList.length; n++){
+				var file = fileList[n];
+				for(var key in file){
+console.log(key, file[key]);	
+				}//next
+				__processFile(file);
+			}//next
+			
+			function __processFile(file){
+				
+				//check file type
+				if ( file.type !== "text/xml") {
+					_vars.logMsg = "Skip file, incorrect file type, only XML... " + file.name +",  " +file.type;
+					func.log("<div class='alert alert-warning'>" + _vars.logMsg + "</div>");
+					return false;
+				}
+				
+				var reader = new FileReader();
+				
+				reader.onabort = function(e){
+console.log( "reader, onabort", e );
+				};
+				
+				reader.onerror = function(e){
+console.log( "reader, onerror", e );
+				};
+				
+				reader.onload = function(e){
+console.log( "reader, onload" );
+	//console.log(e.target.result);
+					//_parseJSON( e.target.result );
+
+					_vars.logMsg = "Load file <b>" + file.name + "</b>";
+					_vars.logMsg += "<br> size: <b>" + file.size +"</b> bytes";
+					_vars.logMsg += "<br> type: <b>" + file.type +"</b>";
+					
+					var timestamp = file.lastModified;
+					var date = new Date();
+					date.setTime( timestamp );
+//console.log( timestamp, date );
+					_vars.logMsg += "<br/> date: " + date;
+		
+
+					var sYear = date.getFullYear();
+					
+					var sMonth = date.getMonth() + 1;
+					if(sMonth < 10){
+						sMonth = "0"+sMonth;
+					}
+					
+					var sDate = date.getDate();
+					
+					var sHours = date.getHours();
+					if(sHours < 10){
+						sHours = "0"+sHours;
+					}
+					
+					var sMinutes = date.getMinutes();
+					if(sMinutes < 10){
+						sMinutes = "0"+sMinutes;
+					}
+					
+					var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+
+					_vars.logMsg += "<br/> date2: "+ dateStr;
+					
+					func.log("<div class='alert alert-info'>" + _vars.logMsg + "</div>");
+				};
+				
+				reader.onloadstart = function(e){
+console.log( "reader, loadstart" );
+				};
+				
+				reader.onloadend = function(e){
+console.log( "reader, loadend" );
+				};
+				
+				reader.onprogress = function(e){
+console.log( "reader, progress");
+				};
+				
+				reader.readAsText(file);
+			}//end __processFile()
+			
+		}//end _parseLocalFile
+
+	
 		// for unit testing with Jasmine
 		var _testApi = {
 			nodesObj: nodes_obj,

@@ -285,7 +285,7 @@ search by termins...
 		<div id="tab-export" class="tab-pane fade">
 			<div  class="panel panel-default">
 				<div class="panel-body">
-<h3>export book info from DB (lib.sqlite)</h3>
+<h3>export book info from server DB (lib.sqlite --> export_lib.xml)</h3>
 <div class="row panel-body">
 	<label class="pull-left">url:</label>
 	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -311,18 +311,35 @@ http://.../db/export.php?run_type=console
 
 		<div id="tab-import" class="tab-pane fade">
 			<div  class="panel panel-default">
+				
 				<div class="panel-body">
-<h3>import book info from DB (lib.sqlite)</h3>
-<div class="row panel-body">
-	<label class="pull-left">url:</label>
-	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-		<input class="form-control" id="import-script-url" value="db/import_drupal_sqlite.php"/>
-	</div>
-	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-		<a id="btn-load-import" href="#" target="_blank" class="btn btn-primary">load script</a>
-	</div>
-</div>	
+					<h3>import book info from XML file (import.xml --> local storage) </h3>
+					<div class="row panel-body">
+						<label class="pull-left">URL:</label>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<input type="text" id="import-url" class="form-control" placeholder="" autocomplete="off" value=""/>
+						</div>
+						
+						<div class="">
+<button id="btn-clear" class="btn btn-danger">x</button>
+						</div>
+						
+					</div>	
+<p class="help-block"><small>db/import.xml</small></p>
+					
 				</div>
+				
+				<div class="panel-body">
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<label>Select local file:</label>
+<input type="file" id="load-import-file" name="import_file" title="" class="" accept="application/xml, .xml">
+					</div>
+				</div>
+				
+				<div class="panel-footer">
+					<a id="btn-import" href="#?q=import" class="btn btn-primary">Import book info</a>
+				</div>
+				
 			</div>
 		</div><!-- end tab -->
 
