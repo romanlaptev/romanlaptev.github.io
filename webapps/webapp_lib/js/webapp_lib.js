@@ -958,7 +958,7 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 
 				$("#service-panel").hide();
 				if( window.FileList ){
-					_importLocalFile( event.target.files );
+					_loadLocalFile( event.target.files );
 				} else {
 					_vars.logMsg = "Your browser does not support File API";
 					_log("<div class='alert alert-warning'>" + _vars.logMsg + "</div>");
@@ -1612,7 +1612,7 @@ console.log( _vars["logMsg"] );
 		}//end list_children_termins();
 
 
-		function _importLocalFile( fileList){
+		function _loadLocalFile( fileList){
 			if( !fileList || fileList.length === 0){
 				return false;
 			}
@@ -1655,7 +1655,7 @@ console.log( "reader, onerror", e );
 				reader.onload = function(e){
 console.log( "reader, onload" );
 	//console.log(e.target.result);
-					//_parseJSON( e.target.result );
+					//_import( e.target.result );
 
 					_vars.logMsg = "Load file <b>" + file.name + "</b>";
 					_vars.logMsg += "<br> size: <b>" + file.size +"</b> bytes";
@@ -1709,7 +1709,7 @@ console.log( "reader, progress");
 				reader.readAsText(file);
 			}//end __processFile()
 			
-		}//end _parseLocalFile
+		}//end _loadLocalFile
 
 	
 		// for unit testing with Jasmine
