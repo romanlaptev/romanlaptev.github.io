@@ -1691,7 +1691,7 @@ console.log( "reader, onload" );
 
 					_vars.logMsg += "<br/> date2: "+ dateStr;
 					
-					func.log("<div class='alert alert-info'>" + _vars.logMsg + "</div>");
+					func.log("<div class='alert alert-success'>" + _vars.logMsg + "</div>");
 				};
 				
 				reader.onloadstart = function(e){
