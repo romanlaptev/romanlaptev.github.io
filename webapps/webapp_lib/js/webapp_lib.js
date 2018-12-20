@@ -1269,10 +1269,11 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 
 				case "import-url":
 					_vars["timeStart"] = new Date();
-				
+					
 					if( _vars["waitWindow"] ){
 						_vars["waitWindow"].style.display="block";
 					}
+					
 					var fileName = $("#import-url").val().trim();
 					load_xml({
 						filename: fileName,
@@ -1280,17 +1281,10 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 						dataType: "xml",
 						callback: function(data){
 //console.log(typeof data, data[0]);
-							if( _vars["waitWindow"] ){
-								_vars["waitWindow"].style.display="none";
-							}				
-							_vars["timeEnd"] = new Date();
-							_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
-							_vars["logMsg"] = "Load "+fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
-							func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
-							
 							_import({
-								"xml": data
+								"fileName": fileName,
+								"xml": data,
+								"timeStart": _vars["timeStart"]
 							});
 						}
 					});
@@ -1657,6 +1651,11 @@ console.log(key, file[key]);
 					return false;
 				}
 				
+_vars["timeStart"] = new Date();
+if( _vars["waitWindow"] ){
+	_vars["waitWindow"].style.display="block";
+}
+					
 				var reader = new FileReader();
 				
 				reader.onabort = function(e){
@@ -1670,9 +1669,10 @@ console.log( "reader, onerror", e );
 				reader.onload = function(e){
 console.log( "reader, onload" );
 //console.log(e.target.result);
-
 					_import({
-						"xml": e.target.result
+						"xml": e.target.result,
+						"fileName": file.name,
+						"timeStart": _vars["timeStart"]
 					});
 
 					_vars.logMsg = "Load file <b>" + file.name + "</b>";
@@ -1734,13 +1734,25 @@ console.log( "reader, progress");
 //console.log("_import", opt);
 
 			var p = {
-				"xml": ""
+				"fileName": "",
+				"xml": "",
+				"timeStart": null
 			};
 			//extend p object
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
 console.log(p);
+
+			if( _vars["waitWindow"] ){
+				_vars["waitWindow"].style.display="none";
+			}				
+
+			_vars["timeEnd"] = new Date();
+			_vars["runTime"] = (_vars["timeEnd"].getTime() - p["timeStart"].getTime()) / 1000;
+			_vars["logMsg"] = "Import "+p.fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
+			func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
 			
 		}//end _import()
 	
