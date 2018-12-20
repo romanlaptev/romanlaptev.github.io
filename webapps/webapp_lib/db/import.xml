@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-	
-	<node title="Андреев Леонид. Рассказ о семи повешенных" nid="" mlid="" plid="" type="library_book" created="" changed="" weight="">
-		<subfolder>
+	<table_node>
+		<node title="Андреев Леонид.Рассказ о семи повешенных">
+			<subfolder>
 lib/books/A
-		</subfolder>
-		
-		<book_filename>	
+			</subfolder>
+			
+			<book_filename>	
 andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip		
-		</book_filename>		
+			</book_filename>		
 
-		<author>
+			<author>
 Леонид Николаевич Андреев
-		</author>
-		
-		<bookname>
+			</author>
+			
+			<bookname>
 Рассказ о семи повешенных
-		</bookname>
+			</bookname>
+		</node>
 		
-		<body_value>
-
-		</body_value>
-	</node>
-
+	</table_node>
 <!--
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_Loginov_Sv_analitik.txt.html"
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_hottab.txt"
