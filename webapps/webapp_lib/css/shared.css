@@ -37,7 +37,9 @@ top: 0;
   min-width: 30%;
 */  
 min-height: 15%;
+/*
 width: 50%;  
+*/
 }
 @media screen and (max-width:1024px) { 
 	#service-panel{

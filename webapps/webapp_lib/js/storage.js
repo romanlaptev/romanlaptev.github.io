@@ -66,7 +66,7 @@
 			},
 
 			"appObjects": {
-				"nodes": {}, 
+				"books": {}, 
 				"taxonomy": {}, 
 				"hierarchyList": {}
 			},
@@ -299,8 +299,8 @@ console.dir(err);
 */			
 //================== save application objects
 
-			if( lib.vars["nodes"] ){
-				var key1 = "nodes";
+			if( lib.vars["books"] ){
+				var key1 = "books";
 				localforage.removeItem(key1, function(err) {
 console.log("Remove " + key1);
 console.dir(err);

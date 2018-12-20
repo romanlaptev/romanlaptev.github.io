@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
-	<table_node>
-		<node title="Андреев Леонид.Рассказ о семи повешенных">
+	<books><!-- object contains books info (author, title, date, book file, url....) -->
+		
+		<book title="Андреев Леонид.Рассказ о семи повешенных">
 			<subfolder>
 lib/books/A
 			</subfolder>
@@ -17,9 +18,13 @@ andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip
 			<bookname>
 Рассказ о семи повешенных
 			</bookname>
-		</node>
+		</book>
 		
-	</table_node>
+	</books>
+	
+	<taxonomy/><!-- object contains termins info -->
+	<hierarchy/><!-- object contains sections info -->
+	
 <!--
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_Loginov_Sv_analitik.txt.html"
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_hottab.txt"

@@ -647,7 +647,7 @@ console.log( _vars["logMsg"] );
 //---------------------------- parse nodes object
 var timeStart = new Date();
 
-			_vars["nodes"] = __formNodesObj();
+			_vars["books"] = __formNodesObj();
 			
 var timeEnd = new Date();
 var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
@@ -726,7 +726,7 @@ console.log( _vars["logMsg"] );
 				};
 
 				//var nodes = [];
-				var nodes = {};
+				var books = {};
 
 				for( var n = 0; n < xml.nodes.length; n++){
 	//console.log( n, p.xml[n] );
@@ -767,10 +767,10 @@ console.log( _vars["logMsg"] );
 //-----------------				
 
 					//nodes.push( node );
-					nodes[_nid] = node;
+					books[_nid] = node;
 				}//next node
 
-				return nodes;
+				return books;
 			}//end __formNodesObj()
 
 			function __formTaxonomyObj(){
@@ -844,7 +844,7 @@ console.log( _vars["logMsg"] );
 									if( _subSection.length > 0){
 										_section["section"] = _subSection;
 var key = $node.attr('nid');
-_vars["nodes"][key]["node_child_pages"] = _subSection;
+_vars["books"][key]["node_child_pages"] = _subSection;
 									}
 								}
 							}

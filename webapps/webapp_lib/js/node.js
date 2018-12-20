@@ -440,7 +440,7 @@ function _getNodes( opt ) {
 	}
 //console.log(p);
 
-	if( lib.vars["nodes"] ){
+	if( lib.vars["books"] ){
 		
 		if( typeof p["postFunc"] === "function"){
 			p["postFunc"]( lib.vars["nodes"] );//return
@@ -448,7 +448,7 @@ function _getNodes( opt ) {
 		
 	} else {
 	
-		var key = "nodes";
+		var key = "books";
 		storage.getItem( key, function(readValue, err){
 	//console.log("- read "+key+" from storage...",readValue);
 	//console.log(err);
