@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	
+	<node title="Андреев Леонид. Рассказ о семи повешенных" nid="" mlid="" plid="" type="library_book" created="" changed="" weight="">
+		<subfolder>
+lib/books/A
+		</subfolder>
+		
+		<book_filename>	
+andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip		
+		</book_filename>		
+
+		<author>
+Леонид Николаевич Андреев
+		</author>
+		
+		<bookname>
+Рассказ о семи повешенных
+		</bookname>
+		
+		<body_value>
+
+		</body_value>
+	</node>
+
+<!--
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_Loginov_Sv_analitik.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_hottab.txt"
+
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_fugu_v_mundire.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_genom.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_holodnye_berega.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_nochnoi_dozor.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_osennie_vizity.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_poslednii_dozor.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_autumn_vizits.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_berega.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_D_PATROL.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_genom.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_KNIGHTS.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_LABIRINT.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_mirror.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_fantasy_noch_dozor.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_humor_fugu.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_science_fiction_genom1-3.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_science_fiction_glubina1-3.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\L_science_fiction_lukjan_stories.txt"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_dnevnoi_dozor.fb2.zip"
+
+"C:\clouds\YandexDisk\vbox-sync\lib\books\M\Markes\M_Markes_100_let.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\M\Markes\M_Markes_patriarh.txt.html"
+
+"C:\clouds\YandexDisk\vbox-sync\lib\books\N\N_NEKRASOW_AS_vrungel.txt.html"
+
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\ringdrk3.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\almaz1.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\darkring1.txt.html"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\perumov_nik_adamant_henny.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\perumov_nik_almaznyi_mech_derevyannyi_mech_tom_1.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\perumov_nik_almaznyi_mech_derevyannyi_mech_tom_2.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\perumov_nik_chernoe_kope.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\perumov_nik_yelfiiskii_klinok.fb2.zip"
+"C:\clouds\YandexDisk\vbox-sync\lib\books\P\Perumov.Nik\ringdrk2.txt.html"
+-->
+</root>
