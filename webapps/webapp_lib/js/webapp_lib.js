@@ -1742,17 +1742,79 @@ console.log( "reader, progress");
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-console.log(p);
+//console.log(p, typeof p.xml );
 
 			if( _vars["waitWindow"] ){
 				_vars["waitWindow"].style.display="none";
 			}				
+
+			_vars["import"] = {
+				"books": [], 
+				"taxonomy": [], 
+				"hierarchyList": []
+			}
+
+			__parseXML(p["xml"]);
+			//__updateAppObjects();
 
 			_vars["timeEnd"] = new Date();
 			_vars["runTime"] = (_vars["timeEnd"].getTime() - p["timeStart"].getTime()) / 1000;
 			_vars["logMsg"] = "Import "+p.fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
 			func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
+			
+			function __parseXML( xml ){
+				//var book = {
+//title: "Дай Сы-цзе. Бальзак и портниха китаяночка",
+//bookname: "Бальзак и портниха китаяночка",
+//author: "Дай Сы-цзе",
+//subfolder: "/lib/books/D/dai_sycze",
+//book_files: ["dai_sycze__balzak_i_portniha_kitayanochka.fb2.zip"]
+				//};
+				//_vars["import"]["books"].push( book );
+				
+				var nodeName = "book";
+				$(xml).find(nodeName).each(function( index, value ){
+//console.log( $(this) );
+//console.log( index, value );
+//console.log( value.attributes );
+//console.log(value.children );
+					
+					var book = {};
+					//read node attributes
+					var item_attr = func.get_attr_to_obj( value.attributes );
+					for(var attr in item_attr){
+						book[attr] = item_attr[attr];
+					}//next attr
+					
+					//var x_node = $( value );
+					//book["subfolder"] = x_node.children("subfolder").text().trim();
+					//book["author"] = x_node.children("author").text().trim();
+					//book["bookname"] = x_node.children("bookname").text().trim();
+					//book["book_files"] = [];
+					
+//for(var key in value.children){
+//console.log(key, value.children[key], value.children[key].nodeName );
+//}					
+for(var n = 0; n < value.children.length; n++){
+	var xBook = value.children[n];
+	var _nodeText = $(xBook).text().trim();
+	var _nodeName = xBook.nodeName.toLowerCase();
+	
+	if( _nodeName === "book_filename"){
+		if(!book["book_files"]){
+			book["book_files"]=[];
+		}
+		book["book_files"].push(_nodeText);
+		continue;
+	}
+	book[ _nodeName ] = _nodeText;
+}//next
+					_vars["import"]["books"].push( book );
+					
+				});//next
+				
+			}//end __parseXML()
 			
 		}//end _import()
 	

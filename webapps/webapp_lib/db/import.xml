@@ -10,6 +10,10 @@ lib/books/A
 			<book_filename>	
 andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip		
 			</book_filename>		
+			
+			<book_filename>	
+rasskaz_o_semi_poveshennyh.txt
+			</book_filename>		
 
 			<author>
 Леонид Николаевич Андреев
@@ -19,6 +23,43 @@ andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip
 Рассказ о семи повешенных
 			</bookname>
 		</book>
+
+
+		<book title="Святослав Логинов. Аналитик">
+			<subfolder>
+lib/books/L
+			</subfolder>
+			
+			<book_filename>	
+L_fantasy_Loginov_Sv_analitik.txt.html
+			</book_filename>		
+
+			<author>
+Святослав Логинов
+			</author>
+			
+			<bookname>
+Аналитик
+			</bookname>
+		</book>
+
+		<book title="Лазарь Лагин. Старик Хоттабыч">
+			<subfolder>
+lib/books/L
+			</subfolder>
+			
+			<book_filename>	
+L_fantasy_hottab.txt
+			</book_filename>		
+
+			<author>
+Лазарь Лагин
+			</author>
+			
+			<bookname>
+Старик Хоттабыч
+			</bookname>
+		</book>
 		
 	</books>
 	
@@ -26,8 +67,6 @@ andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip
 	<hierarchy/><!-- object contains sections info -->
 	
 <!--
-"C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_Loginov_Sv_analitik.txt.html"
-"C:\clouds\YandexDisk\vbox-sync\lib\books\L\L_fantasy_hottab.txt"
 
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_fugu_v_mundire.fb2.zip"
 "C:\clouds\YandexDisk\vbox-sync\lib\books\L\Lukyanenko.Sergej\lukyanenko_sergei_genom.fb2.zip"
