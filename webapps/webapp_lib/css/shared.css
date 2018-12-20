@@ -25,9 +25,13 @@ clear:both;
 #service-panel{
 background: #abbabb; /*#CFDFE5;*/ /*#FFD700;*/
 padding: 10px;
+
+/*
 position: fixed;
 right: 0;
 top: 0;
+*/
+
 /*
   min-height: 20%;
   min-width: 30%;

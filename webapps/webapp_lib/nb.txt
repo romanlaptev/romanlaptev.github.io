@@ -265,6 +265,11 @@ import_drupal_sqlite.php
 import_wp_sqlite.php
 
 
+//- load import.xml (url or local)
+//- parse book info (nodes, taxonomyObj, hierarchyObj)
+//- merge with data objects: storage.nodes, storage.taxonomyObj, storage.hierarchyObj
+//- save changed objects to local storage
+
 
 ----------------------------------- STORAGE
 - добавить новый метод storage.removeItem() с проверкой сушествования удаляемого ключа

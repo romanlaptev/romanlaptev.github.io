@@ -141,57 +141,7 @@
 					<div id="log" class="panel-body"></div>
 				</div>
 			</div>
-		
-			<div class="row">
-<!--
-				<ul class="breadcrumb pull-left">
-					<li><a href="./">главная</a></li>
-				</ul>
--->
-				<ul id="breadcrumb-tpl" class="breadcrumb list-inline pull-left"></ul>
-			</div><!-- end breadcrumb -->
-			
-			<div id="region-content">
-				<div id="block-taxonomy"></div>
-				<div id="block-node"></div>
-			</div>
-		</div>
-<!--
-		<div class="pull-left grad">
-			<div class="columns left-grad"></div>
-			<div class="columns right-grad"></div>
-		</div>
 
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
-		</div>
--->		
-	</div>
-<!--
-<style>
-.b-footer .block1 {
-	height: 40px;
-	background: #45557a none repeat scroll 0px 0px;
-}	
-.b-footer .block3 {
-	height: 40px;
-	background: #45557a none repeat scroll 0px 0px;
-}
-</style>
--->
-	<div class="b-footer">
-		<div class="block1 col-xs-12 col-sm-12 col-md-8 col-lg-8"></div>
-		
-		<div class="block-grad pull-left grad hidden-xs hidden-sm">
-			<div class="columns left-grad"></div>
-			<div class="columns right-grad"></div>
-		</div>
-		
-		<div class="block3 hidden-xs hidden-sm col-md-3 col-lg-3"></div>
-	</div>
-	
-</div>
-
-	
 <div id="service-panel">
 	<a class="close" href="javascript:$('#service-panel').hide();void(0);">x</a>
 	
@@ -317,12 +267,12 @@ http://.../db/export.php?run_type=console
 					<div class="row panel-body">
 						<label class="pull-left">URL:</label>
 						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-							<input type="text" id="import-url" class="form-control" placeholder="" autocomplete="off" value=""/>
+							<input type="text" id="import-url" class="form-control" placeholder="" autocomplete="off" value="db/import.xml"/>
 						</div>
 						
 						<div class="">
-							<a id="btn-clear-import-url" href="#" class="btn btn-danger">x</a>
-							<a id="btn-import" href="#?q=import" class="btn btn-primary">Import book info</a>
+							<a id="btn-clear-import-url" href="#?q=clear-import-url" class="btn btn-danger">x</a>
+							<a id="btn-import" href="#?q=import-url" class="btn btn-primary">Import book info</a>
 						</div>
 						
 					</div>	
@@ -332,7 +282,7 @@ http://.../db/export.php?run_type=console
 				
 				<div class="panel-body">
 					<div class="col-sm-8 col-md-8 col-lg-8">
-						<label>Select local file:</label>
+						<label>Import local file</label>
 <input type="file" id="load-import-file" name="import_file" title="" class="" accept="application/xml, .xml">
 					</div>
 				</div>
@@ -344,17 +294,12 @@ http://.../db/export.php?run_type=console
 		<div id="tab-config" class="tab-pane fade">
 			<div  class="panel panel-default">
 				<div class="panel-body">
-<!--
-<section>
-<h3>RAM usage</h3>
-size <b>lib_obj</b>:<span id="size_lib_obj"></span>
-</section>
-					
+		
 <section>
 num books:
 num_authors:
 </section>
--->
+
 <div class="switch">
 	<b>Use local storage:</b>
 	<span class="off">off</span>
@@ -371,12 +316,62 @@ num_authors:
 		
 	</div><!-- end tab-content -->
 	
+</div><!-- end service-panel -->
+		
+			<div class="row">
+<!--
+				<ul class="breadcrumb pull-left">
+					<li><a href="./">главная</a></li>
+				</ul>
+-->
+				<ul id="breadcrumb-tpl" class="breadcrumb list-inline pull-left"></ul>
+			</div><!-- end breadcrumb -->
+			
+			<div id="region-content">
+				<div id="block-taxonomy"></div>
+				<div id="block-node"></div>
+			</div>
+		</div>
+<!--
+		<div class="pull-left grad">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 fix1">
+		</div>
+-->		
+	</div>
+<!--
+<style>
+.b-footer .block1 {
+	height: 40px;
+	background: #45557a none repeat scroll 0px 0px;
+}	
+.b-footer .block3 {
+	height: 40px;
+	background: #45557a none repeat scroll 0px 0px;
+}
+</style>
+-->
+	<div class="b-footer">
+		<div class="block1 col-xs-12 col-sm-12 col-md-8 col-lg-8"></div>
+		
+		<div class="block-grad pull-left grad hidden-xs hidden-sm">
+			<div class="columns left-grad"></div>
+			<div class="columns right-grad"></div>
+		</div>
+		
+		<div class="block3 hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+	</div>
+	
 </div>
 
+	
 
-	<div class="">
-		<button id="btn-scroll-to-top" class="btn btn-info scroll-to" data-target="App">scroll to top</button>
-	</div>
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-info scroll-to" data-target="App">scroll to top</button>
+</div>
 
 <!-- ********************** load progress bar ************************** -->	
 <div id="wait" class="hide"></div>

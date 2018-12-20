@@ -104,11 +104,8 @@ _vars["info"].push(logMsg);
 
 				load_xml({
 					filename : config["xml_file"],
-					
 					//dataType: "text",
 					dataType: "xml",
-					
-					//callback: after_load
 					callback: function(data){
 //console.log(typeof data, data[0]);
 						
@@ -217,7 +214,7 @@ console.log( "storage.saveAppData(), end process");
 				_loadTemplates(function(){
 console.log("Load templates end...");
 					draw.buildPage({});
-					define_event();
+					defineEvents();
 					_vars["GET"] = func.parseGetParams(); 
 					_urlManager();
 					_hideWaitWindow();
@@ -319,7 +316,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 				},				
 				
 				complete: function(xhr, state){
-console.log("ajax load complete, ", xhr, state);
+//console.log("ajax load complete, ", xhr, state);
 				},
 				
 				success: function( data ){
@@ -355,7 +352,7 @@ console.log( "errorThrown:" + errorThrown );
 				}
 			})
 			.done(function () {
-console.log("$.ajax, Done...");
+//console.log("$.ajax, Done...");
 			})
 			.fail(function (xhr, textStatus) {
 console.log("$.ajax, Fail...", arguments);
@@ -872,7 +869,7 @@ _vars["nodes"][key]["node_child_pages"] = _subSection;
 
 //====================================
 
-		function define_event() {
+		function defineEvents() {
 
 			$("body").on("click", ".navbar-toggle", function(e){
 				var target = $(this).data("target");
@@ -934,36 +931,6 @@ console.log( logMsg );
 				window.open(e.href);
 			});//end event
 
-
-			$("#btn-clear-import-url").on("click", function(event){
-				event = event || window.event;
-//console.log(event);				
-				var target = event.target || event.srcElement;
-				if (event.preventDefault) { 
-					event.preventDefault();
-				} else {
-					event.returnValue = false;				
-				}
-				
-				$("#import-url").val("");
-			});//end event
-
-
-			$("#btn-import").on("click", function(e){
-				if (e.preventDefault) { 
-					e.preventDefault();
-				} else {
-					e.returnValue = false;				
-				}
-				var url = $("#import-url").val(); 
-				e.href = url;
-console.log(e.href);
-//- load import.xml
-//- parse book info (nodes, taxonomyObj, hierarchyObj)
-//- merge with data objects: storage.nodes, storage.taxonomyObj, storage.hierarchyObj
-//- save changed objects to local storage
-
-			});//end event
 
 			$("#load-import-file").on("change", function(event){
 				event = event || window.event;
@@ -1101,7 +1068,7 @@ console.log( _vars["logMsg"] );
 				}//end event
 			}
 			
-		}//end define_event()
+		}//end defineEvents()
 		
 
 		function _urlManager(target){
@@ -1296,6 +1263,40 @@ _vars["logMsg"] = "- nodes_obj.get_node("+node["nid"]+"), runtime: <b>" + _vars[
 				break;
 
 			
+				case "clear-import-url":
+					$("#import-url").val("");
+				break;
+
+				case "import-url":
+					_vars["timeStart"] = new Date();
+				
+					if( _vars["waitWindow"] ){
+						_vars["waitWindow"].style.display="block";
+					}
+					var fileName = $("#import-url").val().trim();
+					load_xml({
+						filename: fileName,
+						//dataType: "text",
+						dataType: "xml",
+						callback: function(data){
+//console.log(typeof data, data[0]);
+							if( _vars["waitWindow"] ){
+								_vars["waitWindow"].style.display="none";
+							}				
+							_vars["timeEnd"] = new Date();
+							_vars["runTime"] = (_vars["timeEnd"].getTime() - _vars["timeStart"].getTime()) / 1000;
+							_vars["logMsg"] = "Load "+fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
+							func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+console.log( _vars["logMsg"] );
+							
+							_import({
+								"xml": data
+							});
+						}
+					});
+				
+				break;
+				
 				default:
 console.log("_urlManager(),  GET query string: ", _vars["GET"]);			
 				break;
@@ -1668,8 +1669,11 @@ console.log( "reader, onerror", e );
 				
 				reader.onload = function(e){
 console.log( "reader, onload" );
-	//console.log(e.target.result);
-					//_import( e.target.result );
+//console.log(e.target.result);
+
+					_import({
+						"xml": e.target.result
+					});
 
 					_vars.logMsg = "Load file <b>" + file.name + "</b>";
 					_vars.logMsg += "<br> size: <b>" + file.size +"</b> bytes";
@@ -1725,6 +1729,21 @@ console.log( "reader, progress");
 			
 		}//end _loadLocalFile
 
+
+		function _import(opt){
+//console.log("_import", opt);
+
+			var p = {
+				"xml": ""
+			};
+			//extend p object
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+console.log(p);
+			
+		}//end _import()
+	
 	
 		// for unit testing with Jasmine
 		var _testApi = {
