@@ -732,7 +732,26 @@ console.log( logMsg );
 		if (!window.console){ 
 			window.console = {
 				"log" : function( msg ){
-					var log = getById("log");
+					
+					var id = "log";
+					var log = false;
+					if( document.querySelector ){
+						log = document.querySelector("#"+id);
+					}
+			
+					if( document.getElementById ){
+						log = document.getElementById(id);
+					}
+			
+					if( document.all ){
+						log = document.all[id];
+					}
+			
+					//if( document.layers ){
+						//var log = document.layers[id];
+					//}
+			
+
 					if(log){
 						log.innerHTML += msg +"<br>";
 					} else {
