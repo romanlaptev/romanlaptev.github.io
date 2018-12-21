@@ -969,6 +969,7 @@ console.log("w = " + document.body.clientWidth );
 					event.returnValue = false;				
 				}
 				
+//console.log(this.targetField.value);
 //console.log(this["targetField"].value);
 //console.log(this.keyword.value);
 
@@ -981,9 +982,6 @@ console.log("w = " + document.body.clientWidth );
 //console.log(form.elements.targetField);
 //console.log(form.elements.keyword.value);
 
-//for( var key in form.elements.targetField){
-//console.log("key:"+key+", value:"+form.elements.targetField[key]);
-//}
 
 //console.log( form.elements.targetField );
 //console.log( $(form.elements.targetField).val() );
@@ -1001,10 +999,25 @@ console.log( _vars["logMsg"] );
 					res = false;
 				}
 				
-				var _targetField = $(form.elements.targetField).val();
+				//var _targetField = $(form.elements.targetField).val();
 				//var _targetField = form.elements.targetField.value;
-//console.log( _targetField.length );
-				if( _targetField.length === 0 ){
+				
+				var _targetField = false;
+				for( var n = 0; n < form.elements.targetField.length; n++){
+//console.log( n, form.elements.targetField[n] );
+
+					var $element = $(form.elements.targetField[n]);
+					var _checked = $element.prop("checked");
+//console.log( $element.attr("value"), _checked );
+					if( _checked){
+						_targetField = $element.attr("value");
+						break;
+					}
+				}//next
+				
+//console.log( "TEST:", _targetField, _targetField.length );
+
+				if( !_targetField || _targetField.length === 0 ){
 _vars["logMsg"] = "error, empty field 'targetField'....";
 func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
 console.log( _vars["logMsg"] );
