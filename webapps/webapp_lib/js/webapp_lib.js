@@ -978,7 +978,7 @@ console.log("w = " + document.body.clientWidth );
 //console.log(target.keyword.value);
 				var form = document.forms["formSearch"]
 //console.log(form);
-//console.log(form.elements.targetField.value);
+//console.log(form.elements.targetField);
 //console.log(form.elements.keyword.value);
 
 //for( var key in form.elements.targetField){
@@ -1001,8 +1001,8 @@ console.log( _vars["logMsg"] );
 					res = false;
 				}
 				
-				//var _targetField = $(form.elements.targetField).val();
-				var _targetField = form.elements.targetField.value;
+				var _targetField = $(form.elements.targetField).val();
+				//var _targetField = form.elements.targetField.value;
 //console.log( _targetField.length );
 				if( _targetField.length === 0 ){
 _vars["logMsg"] = "error, empty field 'targetField'....";
@@ -1177,12 +1177,15 @@ _vars["timeStart"] = new Date();
 
 					_vars["node"] = nodes_obj.get_node({
 						"nid" : _vars["GET"]["nid"],
-						"callback": __postFuncNode
+						//"callback": __postFuncNode
+						"callback": function(node){//FIX FF 3-12
+//console.log("test!!!", node);
+__postFuncNode( node );		
+						}
 					});
 					
 					draw.buildPage({});//common draw actions
 					_formBreadcrumb( target );
-					//draw_page();
 					
 					function __postFuncNode( node ){
 //console.log("__postFuncNode()", node);

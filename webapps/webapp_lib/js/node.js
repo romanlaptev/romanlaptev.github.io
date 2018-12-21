@@ -286,7 +286,7 @@ if(node["type"] === "author"){
 
 
 function _getNode( opt ){
-//console.log(opt);
+//console.log("function _getNode()", opt);
 	var p = {
 		"nid" : null,
 		"xmlObj": null,
