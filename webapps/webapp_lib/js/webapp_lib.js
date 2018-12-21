@@ -1760,10 +1760,6 @@ console.log( "reader, progress");
 			}
 //console.log(p, typeof p.xml );
 
-			if( _vars["waitWindow"] ){
-				_vars["waitWindow"].style.display="none";
-			}				
-
 			_vars["import"] = {
 				"books": [], 
 				"taxonomy": [], 
@@ -1771,13 +1767,25 @@ console.log( "reader, progress");
 			}
 
 			__parseXML(p["xml"]);
-			//__updateAppObjects();
+			__updateAppObjects({
+				"objectName": "books",
+				"callback": function(){
+					__importCompleted();
+				}
+			});
 
-			_vars["timeEnd"] = new Date();
-			_vars["runTime"] = (_vars["timeEnd"].getTime() - p["timeStart"].getTime()) / 1000;
-			_vars["logMsg"] = "Import "+p.fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
-			func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
+			function __importCompleted(){
+				if( _vars["waitWindow"] ){
+					_vars["waitWindow"].style.display="none";
+				}				
+				
+				_vars["timeEnd"] = new Date();
+				_vars["runTime"] = (_vars["timeEnd"].getTime() - p["timeStart"].getTime()) / 1000;
+				_vars["logMsg"] = "Import "+p.fileName+", runtime: <b>" + _vars["runTime"]  + "</b> sec";
+				func.log("<p class='alert alert-info'>" + _vars["logMsg"] + "</p>");
 console.log( _vars["logMsg"] );
+			}//end __importCompleted()
+
 			
 			function __parseXML( xml ){
 				//var book = {
@@ -1812,25 +1820,67 @@ console.log( _vars["logMsg"] );
 //for(var key in value.children){
 //console.log(key, value.children[key], value.children[key].nodeName );
 //}					
-for(var n = 0; n < value.children.length; n++){
-	var xBook = value.children[n];
-	var _nodeText = $(xBook).text().trim();
-	var _nodeName = xBook.nodeName.toLowerCase();
-	
-	if( _nodeName === "book_filename"){
-		if(!book["book_files"]){
-			book["book_files"]=[];
-		}
-		book["book_files"].push(_nodeText);
-		continue;
-	}
-	book[ _nodeName ] = _nodeText;
-}//next
+					for(var n = 0; n < value.children.length; n++){
+						var xBook = value.children[n];
+						var _nodeText = $(xBook).text().trim();
+						var _nodeName = xBook.nodeName.toLowerCase();
+						
+						if( _nodeName === "book_filename"){
+							if(!book["book_files"]){
+								book["book_files"]=[];
+							}
+							book["book_files"].push(_nodeText);
+							continue;
+						}
+						book[ _nodeName ] = _nodeText;
+					}//next
 					_vars["import"]["books"].push( book );
 					
 				});//next
 				
 			}//end __parseXML()
+
+
+			function __updateAppObjects(opt){
+//console.log(opt);
+				var p = {
+					"objectName": "",
+					"callback":null
+				};
+				//extend p object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+
+				switch( p["objectName"] ){
+					
+					case "books":
+						_getNodes({
+							"postFunc": function( books ){
+console.log(books);
+								if( books ){
+console.log( _vars["import"]["books"] );
+									//update application data object "books"									
+									//__updateBooks({
+										//"books": books,
+										//"updates": _vars["import"]["books"]
+									//});
+									
+									if( typeof p["callback"] === "function"){
+										p["callback"]();
+									}
+								}
+							}//end postFunc()
+						});
+					break;
+					
+					default:
+console.log("__updateAppObjects, application data object name: ", p["objectName"]);
+					break;
+					
+				}//end switch
+			}//end __updateAppObjects()			
 			
 		}//end _import()
 	

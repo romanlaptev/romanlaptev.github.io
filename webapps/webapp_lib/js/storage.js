@@ -65,7 +65,7 @@
 */				
 			},
 
-			"appObjects": {
+			"appDataObjects": {
 				"books": {}, 
 				"taxonomy": {}, 
 				"hierarchyList": {}
@@ -234,7 +234,7 @@ console.log( message );
 //console.log(j_keys);						
 
 					//for(var key in storage.tables){
-					for(var key in storage.appObjects){
+					for(var key in storage.appDataObjects){
 						var pos = j_keys.indexOf( key);
 //console.log(key, pos);						
 						if( pos === -1){
@@ -243,7 +243,7 @@ lib.vars["logMsg"] = "store key "+key+" not found...";
 func.log("<div class='alert alert-danger'>" + lib.vars["logMsg"] + "</div>");
 console.log( lib.vars["logMsg"] );
 							//storage.tables[key]["status"] = "store_key_not_found";
-							storage.appObjects[key]["status"] = "store_key_not_found";
+							storage.appDataObjects[key]["status"] = "store_key_not_found";
 							storage["need_update"] = true;
 						}
 					}//next
