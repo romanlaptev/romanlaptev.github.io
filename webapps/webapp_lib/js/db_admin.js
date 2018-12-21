@@ -6,7 +6,7 @@ var _vars = {
 	"logMsg": "",
 	"config": {
 		"useCache": true,
-		"dbName": "db1", //"localforage"
+		"dbName": "libdb"//"db1", //"localforage"
 	},
 	"tests": {
 		"indexedDB": false,
