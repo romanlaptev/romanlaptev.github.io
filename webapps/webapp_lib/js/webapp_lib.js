@@ -1910,7 +1910,8 @@ console.log("__updateAppObjects, application data object name: ", p["objectName"
 //console.log(updateBook);
 					for( var nid in p.books){
 						var book = p.books[nid];
-	
+						_vars["import"]["lastID"] = nid;
+						
 						if( updateBook["bookname"].toLowerCase() === book["bookname"].toLowerCase() ){
 console.log("update book!!!", updateBook, book, updateBook["book_files"].length);
 
@@ -1990,11 +1991,15 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 				});
 //console.log( newBooks, newBooks.length );
 				if( newBooks.length > 0){
+					_vars["import"]["new_books"] = newBooks;
+					
 					//add new books
 					__addBooks({
 						"books": p.books,
 						"add": newBooks
 					});
+				} else {
+console.log("Save updates to local store....");					
 				}
 				
 			}//end __updateBooks()
@@ -2011,7 +2016,8 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 				}
 //console.log(p);
 console.log( p.books, p.add );
-// use hashCode to get a unique ID!!!!!!!!!
+// use hashCode to get a unique ID?????!!!!!!!!
+//increament last key p.books ???? _vars["import"]["lastID"]
 
 			}//end __addBooks()
 			
