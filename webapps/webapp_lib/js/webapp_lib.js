@@ -1829,9 +1829,22 @@ console.log( _vars["logMsg"] );
 							if(!book["book_files"]){
 								book["book_files"]=[];
 							}
-							book["book_files"].push(_nodeText);
+							if(_nodeText.length > 0){
+								book["book_files"].push(_nodeText);
+							}
 							continue;
 						}
+						
+						if( _nodeName === "book_url"){
+							if(!book["book_url"]){
+								book["book_url"]=[];
+							}
+							if(_nodeText.length > 0){
+								book["book_url"].push(_nodeText);
+							}
+							continue;
+						}
+						
 						book[ _nodeName ] = _nodeText;
 					}//next
 					_vars["import"]["books"].push( book );
@@ -1858,14 +1871,12 @@ console.log( _vars["logMsg"] );
 					case "books":
 						_getNodes({
 							"postFunc": function( books ){
-console.log(books);
 								if( books ){
-console.log( _vars["import"]["books"] );
 									//update application data object "books"									
-									//__updateBooks({
-										//"books": books,
-										//"updates": _vars["import"]["books"]
-									//});
+									__updateBooks({
+										"books": books,
+										"updates": _vars["import"]["books"]
+									});
 									
 									if( typeof p["callback"] === "function"){
 										p["callback"]();
@@ -1881,6 +1892,127 @@ console.log("__updateAppObjects, application data object name: ", p["objectName"
 					
 				}//end switch
 			}//end __updateAppObjects()			
+			
+			function __updateBooks(opt){
+//console.log(opt);
+				var p = {
+					"books": {},
+					"updates":[]
+				};
+				//extend p object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+				var updateState = false;
+				for(var n1 = 0; n1 < p.updates.length; n1++){
+					var updateBook = p.updates[n1];
+//console.log(updateBook);
+					for( var nid in p.books){
+						var book = p.books[nid];
+	
+						if( updateBook["bookname"].toLowerCase() === book["bookname"].toLowerCase() ){
+console.log("update book!!!", updateBook, book, updateBook["book_files"].length);
+
+							//update fields
+							if( updateBook["author"] ){
+								book["author"] = updateBook["author"];
+								updateState = true;
+							}
+							
+							if( typeof updateBook["body_value"] !== "undefined"){//empty <body_value> will clear book["body_value"]
+								book["body_value"] = updateBook["body_value"];
+								updateState = true;
+							}
+							
+							if( updateBook["book_files"] ){
+								if( updateBook["book_files"].length > 0){
+									
+									for( var n2 = 0; n2 < updateBook["book_files"].length; n2++){
+										var file = updateBook["book_files"][n2];
+										book["book_files"].push(file);
+									}//next
+									updateState = true;
+									
+								} else {//clear field
+									delete book["book_files"];
+									updateState = true;
+								}
+							}
+
+							if( updateBook["book_url"] ){
+								if( updateBook["book_url"].length > 0){
+									
+									for( var n2 = 0; n2 < updateBook["book_url"].length; n2++){
+										var url = updateBook["book_url"][n2];
+										book["book_url"].push(url);
+									}//next
+									updateState = true;
+									
+								} else {//clear field
+									delete book["book_url"];
+									updateState = true;
+								}
+							}
+
+							if( typeof updateBook["subfolder"] !== "undefined"){
+								book["subfolder"] = updateBook["subfolder"];
+								updateState = true;
+							}
+							
+							if( updateState ){
+								if(!_vars["import"]["updated_books"]){
+									_vars["import"]["updated_books"] = [];
+								}
+								_vars["import"]["updated_books"].push(book);
+//console.log("update books!!!", _vars["import"]["updated_books"]);
+							}
+							
+							delete p.updates[n1];
+						}
+//author: "Леонид Николаевич Андреев"
+//book_files: (2) ["andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip", "rasskaz_o_semi_poveshennyh.txt"]
+//bookname: "Рассказ о семи повешенных"
+//subfolder: "lib/books/A"
+//title: "Андреев Леонид.Рассказ о семи повешенных"
+						
+					}//next
+					
+				}//next
+				
+					
+//console.log(p.books);
+//console.log(p.updates );
+				var newBooks = p.updates.filter(function(value){ //WithoutZeros
+					if(value){ 
+						return value 
+					}; 
+				});
+//console.log( newBooks, newBooks.length );
+				if( newBooks.length > 0){
+					//add new books
+					__addBooks({
+						"books": p.books,
+						"add": newBooks
+					});
+				}
+				
+			}//end __updateBooks()
+			
+			function __addBooks(opt){
+//console.log(opt);
+				var p = {
+					"books": {},
+					"add":[]
+				};
+				//extend p object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+console.log( p.books, p.add );
+
+			}//end __addBooks()
 			
 		}//end _import()
 	
