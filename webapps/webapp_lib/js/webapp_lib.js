@@ -2011,6 +2011,7 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 				}
 //console.log(p);
 console.log( p.books, p.add );
+// use hashCode to get a unique ID!!!!!!!!!
 
 			}//end __addBooks()
 			
