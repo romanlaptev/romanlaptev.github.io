@@ -702,6 +702,97 @@ console.log( logMsg );
 			
 		}//end _runAjax()
 
+
+		function _timeStampToDateStr( timestamp ){
+
+			var sYear = timestamp.getFullYear();
+
+			
+			var sMonth = timestamp.getMonth() + 1;
+	//console.log( sMonth, typeof sMonth );
+			if( sMonth < 10){
+				sMonth = "0" + sMonth;
+			}
+			sMonth = "" + sMonth;
+			
+	//"15-Sep-2018 22:13:00";
+			switch(sMonth){
+				
+				case "01":
+					sMonth = "Jan"
+				break;
+				
+				case "02":
+					sMonth = "Feb"
+				break;
+				
+				case "03":
+					sMonth = "Mar"
+				break;
+				
+				case "04":
+					sMonth = "Apr"
+				break;
+				
+				case "05":
+					sMonth = "May"
+				break;
+				
+				case "06":
+					sMonth = "Jun"
+				break;
+				
+				case "07":
+					sMonth = "Jul"
+				break;
+				
+				case "08":
+					sMonth = "Aug"
+				break;
+				
+				case "09":
+					sMonth = "Sep"
+				break;
+				
+				case "10":
+					sMonth = "Okt"
+				break;
+				
+				case "11":
+					sMonth = "Nov"
+				break;
+				
+				case "12":
+					sMonth = "Dec"
+				break;
+				
+			}//end switch
+			
+			var sDate = timestamp.getDate();
+			if( sDate < 10){
+				sDate = "0" + sDate;
+			}
+			
+			var sHours = timestamp.getHours();
+			if( sHours < 10){
+				sHours = "0" + sHours;
+			}
+			
+			var sMinutes = timestamp.getMinutes();
+			if( sMinutes < 10){
+				sMinutes = "0" + sMinutes;
+			}
+			
+			var sSec = timestamp.getSeconds();
+			if( sSec < 10){
+				sSec = "0" + sSec;
+			}
+			
+			//var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
+			return dateStr;
+		}//end _timeStampToDateStr()
+		
 		
 		// public interfaces
 		return{
@@ -716,7 +807,8 @@ console.log( logMsg );
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
 			parseXmlToObj: _parseXmlToObj,
-			runAjax: _runAjax//,
+			runAjax: _runAjax,
+			timeStampToDateStr: _timeStampToDateStr
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}

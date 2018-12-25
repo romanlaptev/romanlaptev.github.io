@@ -1977,8 +1977,14 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 								book["subfolder"] = updateBook["subfolder"];
 								updateState = true;
 							}
+
 							
 							if( updateState ){
+								var now = new Date();
+								var _changedDate = func.timeStampToDateStr(now);
+//console.log(_changedDate);
+								book["changed"] = _changedDate;
+								
 								if(!_vars["import"]["updated_books"]){
 									_vars["import"]["updated_books"] = [];
 								}
@@ -2008,21 +2014,21 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 						return value 
 					}; 
 				});
-//console.log( newBooks, newBooks.length );
+console.log( newBooks, newBooks.length );
 
+				//add new books
 				if( newBooks.length > 0){
 					_vars["import"]["new_books"] = newBooks;
 					
-					//add new books
 					__addBooks({
 						"books": p.books,
-						"add": newBooks
+						"add": newBooks,
+						"callback": p["callback"]
 					});
 				}
 					
 				//save updated books to local storage
 				if( newBooks.length === 0){
-					
 					var key1 = "books";
 					localforage.removeItem(key1, function(err) {
 console.log("Remove " + key1);
@@ -2040,7 +2046,6 @@ console.log( "Save book updates to local store.., end process");
 						}
 						
 					 });
-					
 				}
 				
 			}//end __updateBooks()
@@ -2049,7 +2054,8 @@ console.log( "Save book updates to local store.., end process");
 //console.log(opt);
 				var p = {
 					"books": {},
-					"add":[]
+					"add":[],
+					"callback": null
 				};
 				//extend p object
 				for(var key in opt ){
@@ -2059,6 +2065,11 @@ console.log( "Save book updates to local store.., end process");
 console.log( p.books, p.add );
 // use hashCode to get a unique ID?????!!!!!!!!
 //increament last key p.books ???? _vars["import"]["lastID"]
+//console.log( "Save new books to local store.., end process");
+
+				if( typeof p["callback"] === "function"){//return from _import()
+					p["callback"]();
+				}
 
 			}//end __addBooks()
 			
