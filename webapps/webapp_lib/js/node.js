@@ -47,12 +47,12 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 	var terminNodes = [];
 	
 	_getNodes({
-		"postFunc": function( nodes ){
-//console.log(nodes);
-			//if( nodes && nodes.length > 0){
-			if( nodes ){
+		"postFunc": function( books ){
+//console.log(books);
+			//if( books && books.length > 0){
+			if( books ){
 				
-				terminNodes = _selectTerminNodes(p.tid, nodes);
+				terminNodes = _selectTerminNodes(p.tid, books);
 //console.log(terminNodes, terminNodes.length);
 
 				//------------------- SORT by author, alphabetical sorting
@@ -64,10 +64,14 @@ lib.vars["logMsg"] = "error, not found termins tid, function _getTerminNodes()";
 					});
 				}
 
-				if( typeof p["callback"] === "function"){
-					p["callback"](terminNodes);
-				}
+			} else {
+console.log("_getTerminNodes(), error!!!", terminNodes);
 			}
+			
+			if( typeof p["callback"] === "function"){
+				p["callback"](terminNodes);
+			}
+			
 		}//end postFunc()
 	});
 	
@@ -443,7 +447,8 @@ function _getNodes( opt ) {
 	if( lib.vars["books"] ){
 		
 		if( typeof p["postFunc"] === "function"){
-			p["postFunc"]( lib.vars["nodes"] );//return
+//console.log(p["postFunc"].toString());		
+			p["postFunc"]( lib.vars["books"] );//return
 		}
 		
 	} else {

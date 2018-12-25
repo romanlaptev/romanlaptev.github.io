@@ -1875,13 +1875,16 @@ console.log( _vars["logMsg"] );
 									//update application data object "books"									
 									__updateBooks({
 										"books": books,
-										"updates": _vars["import"]["books"]
+										"updates": _vars["import"]["books"],
+										"callback": p["callback"]
 									});
-									
+								} else {
+console.log("__updateAppObjects(), error!!!", books);
 									if( typeof p["callback"] === "function"){
 										p["callback"]();
 									}
 								}
+								
 							}//end postFunc()
 						});
 					break;
@@ -1897,13 +1900,15 @@ console.log("__updateAppObjects, application data object name: ", p["objectName"
 //console.log(opt);
 				var p = {
 					"books": {},
-					"updates":[]
+					"updates":[],
+					"callback":null
 				};
 				//extend p object
 				for(var key in opt ){
 					p[key] = opt[key];
 				}
 //console.log(p);
+
 				var updateState = false;
 				for(var n1 = 0; n1 < p.updates.length; n1++){
 					var updateBook = p.updates[n1];
@@ -1931,14 +1936,26 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 									
 									for( var n2 = 0; n2 < updateBook["book_files"].length; n2++){
 										var file = updateBook["book_files"][n2];
-										book["book_files"].push(file);
+										
+										var addFile = true;
+										for(var n3 = 0; n3 < book["book_files"].length; n3++){
+											var _oldFile = book["book_files"][n3];
+											if( file === _oldFile){//do not add file if it exists in the book record
+												addFile = false;
+											}
+										}//next
+										
+										if( addFile ){
+											book["book_files"].push(file);
+										}
+										
 									}//next
 									updateState = true;
 									
-								} else {//clear field
-									delete book["book_files"];
-									updateState = true;
-								}
+								} //else {//clear field
+									//delete book["book_files"];
+									//updateState = true;
+								//}
 							}
 
 							if( updateBook["book_url"] ){
@@ -1984,12 +2001,15 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 					
 //console.log(p.books);
 //console.log(p.updates );
+
+				//detect new books in updates block and filter empty records
 				var newBooks = p.updates.filter(function(value){ //WithoutZeros
 					if(value){ 
 						return value 
 					}; 
 				});
 //console.log( newBooks, newBooks.length );
+
 				if( newBooks.length > 0){
 					_vars["import"]["new_books"] = newBooks;
 					
@@ -1998,8 +2018,29 @@ console.log("update book!!!", updateBook, book, updateBook["book_files"].length)
 						"books": p.books,
 						"add": newBooks
 					});
-				} else {
-console.log("Save updates to local store....");					
+				}
+					
+				//save updated books to local storage
+				if( newBooks.length === 0){
+					
+					var key1 = "books";
+					localforage.removeItem(key1, function(err) {
+console.log("Remove " + key1);
+console.dir(err);
+						if(!err){
+							storage.putItem( 
+								key1, 
+								p.books, 
+								function(){
+console.log( "Save book updates to local store.., end process");
+									if( typeof p["callback"] === "function"){//return from _import()
+										p["callback"]();
+									}
+								});
+						}
+						
+					 });
+					
 				}
 				
 			}//end __updateBooks()

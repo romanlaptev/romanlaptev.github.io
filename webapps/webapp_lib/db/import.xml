@@ -16,12 +16,9 @@ andreev_leonid_rasskaz_o_semi_poveshennyh.fb2.zip
 			<book_filename>	
 rasskaz_o_semi_poveshennyh.txt
 			</book_filename>		
-<!--
-			<book_filename></book_filename>		
--->
 
 			<author>
-Леонид Николаевич Андреев
+Андреев Леонид Николаевич
 			</author>
 			
 			<bookname>
@@ -53,6 +50,7 @@ L_fantasy_Loginov_Sv_analitik.txt.html
 			</bookname>
 		</book>
 
+<!--
 		<book title="Лазарь Лагин. Старик Хоттабыч">
 			<subfolder>
 lib/books/L
@@ -70,6 +68,7 @@ L_fantasy_hottab.txt
 Старик Хоттабыч
 			</bookname>
 		</book>
+-->
 		
 	</books>
 	
