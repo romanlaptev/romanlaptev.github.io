@@ -793,6 +793,23 @@ console.log( logMsg );
 			return dateStr;
 		}//end _timeStampToDateStr()
 		
+		//Convert str to Hash code
+		var _hashCode = function(str){
+			var hash = 0;
+var summa = 0;
+			if (str.length == 0) return hash;
+			for (i = 0; i < str.length; i++) {
+				char = str.charCodeAt(i);
+summa = summa + char;
+				hash = ((hash<<5)-hash)+char;
+				hash = hash & hash; // Convert to 32bit integer
+console.log(char, hash);
+			}
+			
+console.log(summa);
+			return hash;
+		};//_hashCode
+		
 		
 		// public interfaces
 		return{
@@ -808,7 +825,8 @@ console.log( logMsg );
 			parseGetParams: _parseGetParams,
 			parseXmlToObj: _parseXmlToObj,
 			runAjax: _runAjax,
-			timeStampToDateStr: _timeStampToDateStr
+			timeStampToDateStr: _timeStampToDateStr,
+			hashCode: _hashCode
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}

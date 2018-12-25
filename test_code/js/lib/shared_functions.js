@@ -715,6 +715,17 @@ console.log( logMsg );
 			return dateStr;
 		}//end _timeStampToDateStr()
 
+		//Convert str to Hash code
+		var _hashCode = function(str){
+			var hash = 0;
+			if (str.length == 0) return hash;
+			for (i = 0; i < str.length; i++) {
+				char = str.charCodeAt(i);
+				hash = ((hash<<5)-hash)+char;
+				hash = hash & hash; // Convert to 32bit integer
+			}
+			return hash;
+		};//_hashCode
 
 		
 		// public interfaces
@@ -730,7 +741,8 @@ console.log( logMsg );
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
 			runAjax: _runAjax,
-			timeStampToDateStr: _timeStampToDateStr
+			timeStampToDateStr: _timeStampToDateStr,
+			hashCode: _hashCode
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}

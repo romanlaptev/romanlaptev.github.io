@@ -2067,12 +2067,18 @@ console.log( p.books, p.add );
 //increament last key p.books ???? _vars["import"]["lastID"]
 //console.log( "Save new books to local store.., end process");
 
+				for(var n = 0; n < p["add"].length; n++){
+					var book = p["add"][n];
+					var hashTitle = func.hashCode( book["author"] + book["title"] );
+console.log( book["title"], hashTitle);			
+				}//next
+
 				if( typeof p["callback"] === "function"){//return from _import()
 					p["callback"]();
 				}
 
 			}//end __addBooks()
-			
+
 		}//end _import()
 	
 	
