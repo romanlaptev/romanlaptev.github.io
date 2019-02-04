@@ -62,6 +62,12 @@ margin: 0;
 https://learn.javascript.ru/generator
 ------
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Iterators_and_Generators
+
+http://qaru.site/questions/183/how-do-i-return-the-response-from-an-asynchronous-call
+Как вернуть ответ от асинхронного вызова?
+
+https://javascript.ru/forum/misc/69563-asinkhronnyjj-vyzov-v-sinkhronnyjj.html
+Асинхронный вызов в синхронный
 		</pre>
 		
 		URL:<input type="text" class="form-control" id="request-url" value="test_json/data.json"/>
@@ -119,15 +125,16 @@ function _getStorageObject(url){
 	function* _getObject(){
 		//yield 1;
 		//return 3;
-		return func.runAjax( {
+		yield func.runAjax( {
 			"url" : url, 
 			"callback": function(data){
-//console.log(data);		
+console.log(data);		
 var logMsg = "<p class='alert alert-success'>Load "+url+"</p>";
 func.log(logMsg);
 				return data;
 			}
 		});
+	return 3;
 		
 /*
 	
