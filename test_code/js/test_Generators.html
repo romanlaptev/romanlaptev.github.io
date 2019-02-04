@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test JS: Generators</title>
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+
+	<script src="lib/shared_functions.js"></script>
+	<script>
+		var func = sharedFunc();
+console.log(func);
+		
+	</script>
+	
+<style>
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Test JS: generators</h1>
+		</div>
+		
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+		<pre>
+Генераторы – новый вид функций в современном JavaScript. 
+Они отличаются от обычных тем, что могут приостанавливать своё выполнение, 
+возвращать промежуточный результат и далее возобновлять его позже, 
+в произвольный момент времени.
+
+https://learn.javascript.ru/generator
+------
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Iterators_and_Generators
+		</pre>
+		
+		URL:<input type="text" class="form-control" id="request-url" value="test_json/data.json"/>
+		<div class="">
+			<a href="#?func=test1" id="btn1" class="btn btn-primary btn-test">Test,  async load file...</a>
+		</div>
+		
+		
+	</div><!-- end container -->
+</body>
+
+<script>
+	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
+	func.log(logMsg);
+	
+	var log = func.getById("log");
+	var urlField = func.getById("request-url");
+	
+	var btnClear = func.getById("btn-clear-log");
+	btnClear.onclick = function(e){
+//console.log(e);
+		log.innerHTML = "";
+		e.preventDefault();
+		
+	}//end event
+	
+	var btn1 = func.getById("btn1");
+	btn1.onclick = function(e){
+//console.log(e);
+		e.preventDefault();
+		var GET = func.parseGetParams(e.target.href);
+		var nameTestFunc = GET["func"];
+//console.log(nameTestFunc, typeof nameTestFunc);
+//console.log( window[nameTestFunc], typeof window[nameTestFunc]);
+		window[nameTestFunc]();
+	}//end event
+	
+function test1(){
+	var url = urlField.value;
+console.log(url);
+
+	var storageObj = _getStorageObject(url);
+console.log("storageObj:", storageObj);
+
+}//end test1()
+
+	
+function _getStorageObject(url){
+	var _storageObj;
+
+	var generator = _getObject();
+	_storageObj = generator.next();
+	return _storageObj;
+
+	function* _getObject(){
+		//yield 1;
+		//return 3;
+		return func.runAjax( {
+			"url" : url, 
+			"callback": function(data){
+//console.log(data);		
+var logMsg = "<p class='alert alert-success'>Load "+url+"</p>";
+func.log(logMsg);
+				return data;
+			}
+		});
+		
+/*
+	
+		return _get({
+			"key": key, 
+			"callback": function( res, status){
+console.log( typeof res, res.length );
+console.log("-- get storage object using async method ... ", status);
+				return res;
+			} 
+		});
+*/
+	};//end _getObject()
+  
+};//end _getStorageObject()
+
+		
+</script>
+</html>
