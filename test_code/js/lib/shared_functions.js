@@ -1326,8 +1326,8 @@ console.log("DOMContentLoaded");
 }
 
 if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
+//var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
+//_log(msg);
 	$(document).ready(function(){
 		
 		//ввод только цифр

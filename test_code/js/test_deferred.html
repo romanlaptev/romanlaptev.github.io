@@ -9,6 +9,9 @@
 	<script src="lib/jquery-latest.min.js"></script>
 	<script src="lib/shared_functions.js"></script>
 	<script>
+	
+		var func = sharedFunc();
+
 $(document).ready(function(){
 //console.log("Ready!", arguments);
 
@@ -19,7 +22,7 @@ $(document).ready(function(){
 	
 	$(".btn-test").on("click", function(e){
 		e.preventDefault();	
-		var GET = parseGetParams(e.target.href);
+		var GET = func.parseGetParams(e.target.href);
 		var nameTestFunc = GET["func"];
 //console.log(nameTestFunc, typeof nameTestFunc);
 //console.log( window[nameTestFunc], typeof window[nameTestFunc]);
@@ -123,7 +126,7 @@ var _getSprData = function (blockName, fieldName){
 
 <script>
 	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
-	_log(logMsg);
+	func.log(logMsg);
 	
 function test1(){
 	var url = $("#request-url").val();
@@ -131,17 +134,17 @@ function test1(){
 		.then(
 			function(res){
 var logMsg = "<p class='alert alert-success'>Promise resolved...</p>";
-_log( logMsg);
+func.log( logMsg);
 console.log( logMsg, arguments);
 
 logMsg = "<p>Load data from "+ url +"</p>";
 logMsg += "<div>" +JSON.stringify( res ) + "</div>";
-_log( logMsg);
+func.log( logMsg);
 			},
 			
 			function(){
 var logMsg = "<p class='alert alert-danger'>Promise rejected...</p>";
-_log( logMsg);
+func.log( logMsg);
 console.log( logMsg, arguments);
 			}
 	)
@@ -149,21 +152,21 @@ console.log( logMsg, arguments);
 	.always(//Add handlers to be called when the Deferred object is either resolved or rejected.
 		function() {
 var logMsg = "<p class='alert alert-info'>ALWAYS promise callback...</p>";
-_log( logMsg);
+func.log( logMsg);
 console.log( logMsg, arguments);
 	})
 	
 	.fail(//Add handlers to be called when the Deferred object is rejected.
 		function() {
 var logMsg = "<p class='alert alert-warning'>FAIL promise callback...</p>";
-_log( logMsg);
+func.log( logMsg);
 console.log( logMsg, arguments);
 	})
 	
 	.done(//Add handlers to be called when the Deferred object is resolved.
 		function() {
 var logMsg = "<p class='alert alert-success'>DONE promise callback</p>";
-_log( logMsg);
+func.log( logMsg);
 console.log( logMsg, arguments);
 	});
 	
@@ -180,7 +183,7 @@ function test2(){
 			function(args1, args2){ 
 console.log( args1, args2 );
 			var logMsg = "<p class='alert alert-info'>Loading is complete....</p>";
-			_log(logMsg);
+			func.log(logMsg);
 		});
 }
 
@@ -208,7 +211,7 @@ console.log( "getJSON: done" );
 console.log( "getJSON: fail" );
 		var err = textStatus + ", " + error;
 var logMsg = "<p class='alert alert-danger'>Request Failed: " + err + "</p>";
-_log(logMsg);
+func.log(logMsg);
 		$d.reject();
 	})
 	
