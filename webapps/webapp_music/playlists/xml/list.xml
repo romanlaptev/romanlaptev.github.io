@@ -27,6 +27,10 @@
 	-->		
 		</playlist>
 
+		<playlist created="09-Feb-2019" title="punk, hardcore" class="rus-punk">
+			<location>/music/0_playlists/punk, hardcore.json</location>
+		</playlist>
+		
 		<playlist created="23-April-2018" title="Russian punk" class="rus-punk">
 			<location>/music/0_playlists/rus_punk.json</location>
 		</playlist>
