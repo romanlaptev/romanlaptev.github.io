@@ -1,0 +1,81 @@
+/* fix Bootstrap */
+header .nav-tabs .btn:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+header .nav-tabs .btn:focus {
+	background: orange;
+	color: #000 !important;
+}
+
+.nav-tabs {
+	/* border-bottom: transparent; */
+	margin-bottom: 10px;
+}
+
+.alert {
+	margin-bottom: 5px !important;
+	padding: 7px !important;
+}
+
+
+
+
+.log-panel{
+	background-color: #ffcc99; /*#c9d9c9;*/
+/*background-color:#fff4e1*/;
+margin-top: 5px;
+margin-bottom: 10px;
+/* border:1px solid #ddd; */
+	border-radius: 10px;
+/*	
+position: fixed;
+bottom: 10px;
+z-index: 9999;
+*/
+/*
+right: 10px;
+clear:both;
+width: 80%;
+*/
+/*position: absolute;*/
+	/*position:fixed;*/
+}
+
+.close {
+display: block;
+float: right;
+left: 5px;
+position: relative;
+top: -10px;
+}
+
+#log{
+word-break: break-all;	
+font-size: 75%;	
+}
+
+
+#clear-log {
+	position: relative;
+	top: -9px;
+	left: 9px;
+}
+.log-panel span {
+	margin-top: 2px;
+	margin-right: 7px;
+}
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#btn-scroll-to-top {
+	/*left: 44%;*/
+	/*margin-left: 15px;*/
+	position: fixed;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -45px;
+	display:none;
+}
