@@ -10,9 +10,9 @@
 Les Triplettes de Belleville
 			</title>
 			
+			<country>Франция, Великобритания, Канада, Бельгия</country>
+			<year>2003</year>
 			<producer> 
-<country>Франция, Великобритания, Канада, Бельгия</country>
-<year>2003</year>
 Режиссёр: Сильвен Шомэ
 Сценарий: Сильвен Шомэ
 			</producer>
@@ -51,10 +51,9 @@ Les Triplettes de Belleville
 All The Things She Said
 			</title>
 			
-			<producer> 
-<country>au</country>
-<music_band>The Berzerker</music_band>
-			</producer>
+			<country>au</country>
+			<music_band>The Berzerker</music_band>
+			<year>2003</year>
 
 			<music_style></music_style>
 			<description></description>
@@ -69,12 +68,11 @@ All The Things She Said
 			<title lang="ru"></title>
 			<title lang="en">Life in da trash</title>
 			
-			<producer> 
-				<country>Russia</country>
-				<music_band>LITTLE BIG</music_band>
-			</producer>
+			<country>Russia</country>
+			<music_band>LITTLE BIG</music_band>
+			<year>2016</year>
 
-			<music_style></music_style>
+			<music_style>rave</music_style>
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
@@ -96,12 +94,11 @@ All The Things She Said
 			<title lang="ru"></title>
 			<title lang="en">AK-47</title>
 			
-			<producer> 
-				<country>Russia</country>
-				<music_band>LITTLE BIG</music_band>
-			</producer>
+			<country>Russia</country>
+			<music_band>LITTLE BIG</music_band>
+			<year>2017</year>
 
-			<music_style></music_style>
+			<music_style>rave</music_style>
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
@@ -127,9 +124,9 @@ All The Things She Said
 			<title lang="ru">Служебный роман</title>
 			<title lang="en"></title>
 			
+			<country>СССР</country>
+			<year>1977</year>
 			<producer> 
-				<country>СССР</country>
-				<year>1977</year>
 Режиссер: Эльдар Рязанов. 
 Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. 
 Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. 
