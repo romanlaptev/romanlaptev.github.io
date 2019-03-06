@@ -67,6 +67,44 @@
 	<button onclick="document.getElementById('player3').pause()">Пауза</button>
 </div>
 -->
+
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h4 class="panel-title">
+				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">service</a>
+				</h4>
+			  </div>
+			  <div id="collapse1" class="panel-collapse collapse in">
+					<div class="btn-group">
+						<a href="parse_notes/parse_notes.html" class="btn btn-default">previous version</a>
+						<a href="?q=load-notes" class="btn btn-default">test, load notes from DB</a>
+						<a href="?q=load-xml-book" class="btn btn-default">test, load notes from XML</a>
+						<a href="export/export_drupal_book.php" class="btn btn-default">export_drupal_book</a>
+					</div>
+					
+					<div class="panel-body" id="control-btn">
+						<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
+<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
+<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
+<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
+						
+<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
+<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
+<a href="tests_app/SpecRunner.html" class="">test code</a>
+						</div>
+<!-- <a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a> -->
+					</div>
+					
+					<div id="log-wrap" class="log-panel">
+						<div id="log"></div>
+					</div>		
+					
+			  </div>
+		</div>
+	
+	</div> 
+
 	
 <!-- **************************************************************** -->	
 			<div class="panel panel-primary video-list-item">
@@ -80,7 +118,7 @@
 				
 				<div class="panel-body">
 					
-					
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="thumbnail text-center pictures">
 <img src="https://pimg.mycdn.me/getImage?disableStub=true&amp;type=VIDEO_S_720&amp;url=https%3A%2F%2Fvdp.mycdn.me%2FgetImage%3Fid%3D33842072233%26idx%3D13%26thumbType%3D32%26f%3D1&amp;signatureToken=UW97qnk3YP8dPIk4kH1cNg" class="vid-card_img" style="">
 						<div class="panel-body play-buttons">					
@@ -91,8 +129,10 @@
 							<button class="btn btn-primary btn-sm play-btn">local server</button>
 						</div>
 					</div>
+</div>
 
 					
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="producer">
 <p>Режиссер: Эльдар Рязанов. </p>
 <p>Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. </p>
@@ -114,6 +154,7 @@
 					<div class="link">
 <a type="external-link" href="https://ok.ru/video/41202551490" target="_blank">go to OK.ru</a>
 					</div>
+</div>
 
 <!--
 <iframe width="480" height="320" src="//ok.ru/videoembed/41202551490" scrolling="yes" allowfullscreen="1" allow="autoplay; fullscreen" aria-label="Video" frameborder="0"></iframe>
@@ -121,7 +162,7 @@
 
 
 				</div>
-			</div>
+			</div><!-- end panel -->
 			
 <!-- **************************************************************** -->	
 			<div class="panel panel-primary video-list-item">
@@ -135,6 +176,7 @@
 				</div>
 				
 				<div class="panel-body">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="thumbnail text-center pictures">
 						<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg" class="">
 						<div class="panel-body play-buttons">					
@@ -145,18 +187,21 @@
 							<a href="http://mycomp/video/videoclips/trash.mp4" class="btn btn-success btn-sm play-btn">local server</a>
 						</div>
 					</div>
+</div>
 
 								
-					<div class="description"></div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="description">description</div>
 					<div class="link">
 <a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s"/>
 <a type="external-link" href="https://ok.ru/video/3196192005" target="_blank">go to OK.ru</a>
 <a type="external-link" href="https://vk.com/video-163575186_456239090" target="_blank">VContacte</a>
 					</div>
+</div>
 
 
 				</div>
-			</div>
+			</div><!-- end panel -->
 
 
 			<div class="panel panel-primary">
