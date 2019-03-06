@@ -29,14 +29,18 @@ Les Triplettes de Belleville
 Чемпион — маленький мальчик, усыновленный своей бабушкой мадам Сузой. Мадам Суза замечает, что наиболее счастливым мальчик чувствует себя верхом на велосипеде, и поэтому настаивает на том, чтобы он самым серьезным образом тренировался. Проходят годы и, наконец, Чемпион становится достойным собственного имени. Он готов участвовать во всемирно известной гонке Тур-де-Франс. Но во время соревнования двое таинственных неизвестных в черном выкрадывают Чемпиона. Мадам Суза и ее верный пес Брюно должны его освободить.
 Во время поисков они оказываются за океаном в огромном мегаполисе Бельвилль и встречают известных «бельвилльских тройняшек» — трех эксцентричных звезд-певиц мюзик-холла 30-х годов. «Тройняшки» берут мадам Сузу и Брюно под свою опеку. Благодаря острому нюху Бруно храбрая пара вскоре нападает на след Чемпиона.
 			</description>
+			<pictures></pictures>
 			
-			<url>
-<a href="http://mycomp/video/mult/bellville.avi"> bellville.avi  </a>
-<a href="http://mycomp/video/films/Les_Triplettes_de_Belleville.avi"> Les_Triplettes_de_Belleville.avi </a>
-			</url>
+			<link>
+				<a href="http://mycomp/video/mult/bellville.avi"/>
+				<a href="http://mycomp/video/films/Les_Triplettes_de_Belleville.avi"/>
+			</link>
 <!--
 			<column name='created'>23-Sep-2012 13:45:32</column>
 			<column name='changed'>24-Sep-2012 09:11:03</column>
+<published>2014-01-12T08:59:42.000Z</published>
+<updated>1970-01-01T00:00:00.000Z</updated>
+			
 -->
 		</video>
 
@@ -54,11 +58,104 @@ All The Things She Said
 
 			<music_style></music_style>
 			<description></description>
+			<pictures></pictures>
 			
-			<url>
-<a href="http://mycomp/video/videoclips/The_Berzerker_-_All_The_Things_She_Said.avi"> The_Berzerker_-_All_The_Things_She_Said.avi </a>
-			</url>
+			<link>
+				<a href="http://mycomp/video/videoclips/The_Berzerker_-_All_The_Things_She_Said.avi"/>
+			</link>
 		</video>
 
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">Life in da trash</title>
+			
+			<producer> 
+				<country>Russia</country>
+				<music_band>LITTLE BIG</music_band>
+			</producer>
+
+			<music_style></music_style>
+			<description></description>
+			<pictures>
+				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
+			</pictures>
+			
+			<link>
+				<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s"/>
+				<a type="external-link" href="https://ok.ru/video/3196192005" title="OK.ru"/>
+				<a type="external-link" href="https://vk.com/video-163575186_456239090" title="VContacte"/>
+				<a type="youtube_embed" href="http://youtube.com/embed/UVrjzOUZJI4"/>
+				<a type="rutube_embed" href="http://rutube.ru/play/embed/#"/>
+				<a type="ok_embed" href="//ok.ru/videoembed/3196192005"/>
+				<a type="local_server" href="http://mycomp/video/videoclips/trash.mp4"/>
+			</link>
+		</video>
+
+
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">AK-47</title>
+			
+			<producer> 
+				<country>Russia</country>
+				<music_band>LITTLE BIG</music_band>
+			</producer>
+
+			<music_style></music_style>
+			<description></description>
+			<pictures>
+				<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
+			</pictures>
+			
+			<link>
+				<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=-QHha1zko1A&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=24&t=0s"/>
+				<a type="youtube_embed" href="http://youtube.com/embed/-QHha1zko1A"/>
+				
+				<a type="rutube_embed" href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c"/>
+				<a type="external-link" href="https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search" title="go to rutube.ru"/>
+
+				<a type="ok_embed" href="//ok.ru/videoembed/1147112392106"/>
+				<a type="external-link" href="https://ok.ru/video/1147112392106" title="OK.ru"/>
+
+				<a type="external-link" href="https://vk.com/video-55072656_456239072" title="VContacte"/>
+				
+				<a type="local_server" href="http://mycomp/video/videoclips/ak47.mp4"/>
+			</link>
+		</video>
+
+		<video type="film">
+			<title lang="ru">Служебный роман</title>
+			<title lang="en"></title>
+			
+			<producer> 
+				<country>СССР</country>
+				<year>1977</year>
+Режиссер: Эльдар Рязанов. 
+Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. 
+Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. 
+Композитор: Андрей Петров. 
+			</producer>
+
+			<roles>
+Андрей Мягков, Алиса Фрейндлих, Светлана Немоляева, 
+Олег Басилашвили, Лия Ахеджакова, 
+Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
+Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
+Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
+Любовь Колюжная, Владимир Плотников, Александр Фатюшин.
+			</roles>
+
+			<genre></genre>
+			
+			<description></description>
+			<pictures></pictures>
+			
+			<link>
+				<a type="ok_embed" href="//ok.ru/videoembed/41202551490"/>
+				<a type="external-link" href="https://ok.ru/video/41202551490" title="OK.ru"/>
+			</link>
+		</video>
+
+	
 	</database>
 </xroot>
