@@ -14,3 +14,5 @@
 - yandex video
 - twitter
 ============
+https://www.youtube.com/html5
+youtube, ответы на часто задаваемые вопросы о видео HTML5.
