@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xroot>
+	<database name='video'>
+
+		<video type="film">
+			<title lang="ru">
+Трио из Бельвилля			
+			</title>
+			<title lang="en">
+Les Triplettes de Belleville
+			</title>
+			
+			<producer> 
+<country>Франция, Великобритания, Канада, Бельгия</country>
+<year>2003</year>
+Режиссёр: Сильвен Шомэ
+Сценарий: Сильвен Шомэ
+			</producer>
+
+			<roles>
+Чарльз Линтон, Mari-Lou Gauthier, Michele Caucheteux, Lina Boudreault, Béatrice Bonifassi, Monica Viegas, Жан-Клод Донда, Мишель Робин
+			</roles>
+
+			<genre>  
+Драма, Музыка, Приключения, Мультфильм
+			</genre>
+			
+			<description>
+Чемпион — маленький мальчик, усыновленный своей бабушкой мадам Сузой. Мадам Суза замечает, что наиболее счастливым мальчик чувствует себя верхом на велосипеде, и поэтому настаивает на том, чтобы он самым серьезным образом тренировался. Проходят годы и, наконец, Чемпион становится достойным собственного имени. Он готов участвовать во всемирно известной гонке Тур-де-Франс. Но во время соревнования двое таинственных неизвестных в черном выкрадывают Чемпиона. Мадам Суза и ее верный пес Брюно должны его освободить.
+Во время поисков они оказываются за океаном в огромном мегаполисе Бельвилль и встречают известных «бельвилльских тройняшек» — трех эксцентричных звезд-певиц мюзик-холла 30-х годов. «Тройняшки» берут мадам Сузу и Брюно под свою опеку. Благодаря острому нюху Бруно храбрая пара вскоре нападает на след Чемпиона.
+			</description>
+			
+			<url>
+<a href="http://mycomp/video/mult/bellville.avi"> bellville.avi  </a>
+<a href="http://mycomp/video/films/Les_Triplettes_de_Belleville.avi"> Les_Triplettes_de_Belleville.avi </a>
+			</url>
+<!--
+			<column name='created'>23-Sep-2012 13:45:32</column>
+			<column name='changed'>24-Sep-2012 09:11:03</column>
+-->
+		</video>
+
+
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">
+All The Things She Said
+			</title>
+			
+			<producer> 
+<country>au</country>
+<music_band>The Berzerker</music_band>
+			</producer>
+
+			<music_style></music_style>
+			<description></description>
+			
+			<url>
+<a href="http://mycomp/video/videoclips/The_Berzerker_-_All_The_Things_She_Said.avi"> The_Berzerker_-_All_The_Things_She_Said.avi </a>
+			</url>
+		</video>
+
+	</database>
+</xroot>
