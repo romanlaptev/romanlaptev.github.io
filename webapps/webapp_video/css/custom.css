@@ -4,7 +4,7 @@ body {
   padding: 15px;
 }
 .container {
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
 /*
@@ -57,7 +57,7 @@ header .nav-tabs .btn:focus {
 margin-top: 5px;
 margin-bottom: 10px;
 /* border:1px solid #ddd; */
-	border-radius: 10px;
+	border-radius: 5px;
 /*	
 position: fixed;
 bottom: 10px;
@@ -108,4 +108,25 @@ outline: none;
 	left: 50%;
 	margin-left: -45px;
 	display:none;
+}
+
+
+.video-title a{
+color: #fff;
+/*
+display:block;
+*/
+}
+
+.toggle-btn{
+ -webkit-transform:rotate(90deg);
+ -moz-transform:rotate(90deg);
+ -ms-transform:rotate(90deg);
+ -o-transform:rotate(90deg);
+ transform:rotate(90deg);
+ text-align:center;
+}
+
+.play-buttons a {
+	margin: 1px;
 }

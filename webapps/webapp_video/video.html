@@ -11,6 +11,9 @@
 	
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>
 	<link rel="stylesheet" href="css/custom.css">
+<!--
+	<link rel="stylesheet" href="../../css/switch.css">
+-->
 	
 	<script src="js/lib/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap/bootstrap337.min.js"></script>
@@ -38,14 +41,39 @@
 -->
 				
 				<ul class="nav nav-tabs">
-					<li><a class="btn btn-primary" href="../index.html">index</a></li>
+					<li><a class="btn btn-primary" href="../../index.html">index</a></li>
 					<h1 class="text-right" id="app-title">video collection</h1>
 				</ul>
 			</nav>
-<ul class="nav nav-tabs">
-<li><a class="" href="https://yandex.ru/collections/user/roman-laptev/moi_video/" target="_blank">yandex.ru, collection</a></li>
-<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+
+<!--
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h4 class="panel-title">
+				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">control panel</a>
+				</h4>
+			  </div>
+			  <div id="collapse1" class="panel-collapse collapse">
+<ul class="list-inline">
+	<li><a class="" href="https://yandex.ru/collections/user/roman-laptev/moi_video/" target="_blank">yandex.ru, collection</a></li>
+	<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+	<li><a class="" href="https://rutube.ru/" target="_blank">Видеохостинг Rutube</a></li>
 </ul>
+
+					<div class="log-panel">
+						<span class="pull-right">
+							<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
+							<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="">x</a>
+						</span>
+						<div id="log" class="panel-body"></div>
+					</div>
+		
+			  </div>
+		</div>
+	
+	</div> 
+-->
 			
 </header>
 
@@ -56,6 +84,11 @@
 		<iframe width="480" height="320" frameborder="1" allowfullscreen></iframe>
 	</div>
 -->
+
+<!--
+<iframe width="480" height="320" src="//ok.ru/videoembed/41202551490" scrolling="yes" allowfullscreen="1" allow="autoplay; fullscreen" aria-label="Video" frameborder="0"></iframe>
+-->
+
 <!--
 <div>
 	<video id="player3" width="560" height="315" controls="controls" poster="video/teg-video.jpg">
@@ -68,99 +101,75 @@
 </div>
 -->
 
-	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
-			  <div class="panel-heading">
-				<h4 class="panel-title">
-				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">service</a>
-				</h4>
-			  </div>
-			  <div id="collapse1" class="panel-collapse collapse in">
-					<div class="btn-group">
-						<a href="parse_notes/parse_notes.html" class="btn btn-default">previous version</a>
-						<a href="?q=load-notes" class="btn btn-default">test, load notes from DB</a>
-						<a href="?q=load-xml-book" class="btn btn-default">test, load notes from XML</a>
-						<a href="export/export_drupal_book.php" class="btn btn-default">export_drupal_book</a>
-					</div>
-					
-					<div class="panel-body" id="control-btn">
-						<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
-<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
-						
-<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
-<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
-<a href="tests_app/SpecRunner.html" class="">test code</a>
-						</div>
-<!-- <a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a> -->
-					</div>
-					
-					<div id="log-wrap" class="log-panel">
-						<div id="log"></div>
-					</div>		
-					
-			  </div>
-		</div>
 	
-	</div> 
-
-	
+	<div class="panel-group" id="list-video">
 <!-- **************************************************************** -->	
 			<div class="panel panel-primary video-list-item">
 				
 				<div class="panel-heading">
+<div class="pull-right">
+	<a data-toggle="collapse" data-parent="#list-video" href="#video-1" class="btn btn-info btn-sm toggle-btn">	> </a>
+</div>
 					<h3 class="video-title lang-ru">Служебный роман</h3>
 					<span class="country">СССР</span>
 					<span class="year">1977</span>
 					<span class="genre">комедия</span>
 				</div>
 				
-				<div class="panel-body">
+				<div id="video-1" class="panel-collapse collapse in">
+					<div class="panel-body">
 					
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div class="thumbnail text-center pictures">
-<img src="https://pimg.mycdn.me/getImage?disableStub=true&amp;type=VIDEO_S_720&amp;url=https%3A%2F%2Fvdp.mycdn.me%2FgetImage%3Fid%3D33842072233%26idx%3D13%26thumbType%3D32%26f%3D1&amp;signatureToken=UW97qnk3YP8dPIk4kH1cNg" class="vid-card_img" style="">
-						<div class="panel-body play-buttons">					
-							<span class="">play video from </span>
-							<button class="btn btn-danger btn-sm play-btn">youtube</button>
-							<button class="btn btn-warning btn-sm play-btn">rutube</button>
-							<a href="//ok.ru/videoembed/41202551490" class="btn btn-success btn-sm play-btn">ok.ru</a>
-							<button class="btn btn-primary btn-sm play-btn">local server</button>
+						<div class="thumbnail text-center pictures">
+	<img src="https://pimg.mycdn.me/getImage?disableStub=true&amp;type=VIDEO_S_720&amp;url=https%3A%2F%2Fvdp.mycdn.me%2FgetImage%3Fid%3D33842072233%26idx%3D13%26thumbType%3D32%26f%3D1&amp;signatureToken=UW97qnk3YP8dPIk4kH1cNg" class="vid-card_img" style="">
+							<div class="panel-body play-buttons">					
+								<span class="">play video from </span>
+								<a href="//ok.ru/videoembed/41202551490" class="btn btn-success btn-sm play-btn" target="_blank">ok.ru</a>
+								<button class="btn btn-primary btn-sm play-btn">local server</button>
+							</div>
 						</div>
-					</div>
 </div>
 
 					
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<div class="producer">
-<p>Режиссер: Эльдар Рязанов. </p>
-<p>Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. </p>
-<p>Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. </p>
-<p>Композитор: Андрей Петров. </p>
-					</div>
+						<div class="producer">
+	<p>Режиссер: Эльдар Рязанов. </p>
+	<p>Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. </p>
+	<p>Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. </p>
+	<p>Композитор: Андрей Петров. </p>
+						</div>
 
-					<div class="roles">
-Андрей Мягков, Алиса Фрейндлих, Светлана Немоляева, 
-Олег Басилашвили, Лия Ахеджакова, 
-Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
-Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
-Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
-Любовь Колюжная, Владимир Плотников, Александр Фатюшин.
-					</div>
-					
-			
-					<div class="description"></div>
-					<div class="link">
-<a type="external-link" href="https://ok.ru/video/41202551490" target="_blank">go to OK.ru</a>
-					</div>
+						<div class="roles">
+	Андрей Мягков, Алиса Фрейндлих, Светлана Немоляева, 
+	Олег Басилашвили, Лия Ахеджакова, 
+	Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
+	Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
+	Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
+	Любовь Колюжная, Владимир Плотников, Александр Фатюшин.
+						</div>
+						
+				
+						<div class="description"></div>
+						<div class="link">
+	<a type="external-link" href="https://ok.ru/video/41202551490" target="_blank">go to OK.ru</a>
+						</div>
 </div>
 
-<!--
-<iframe width="480" height="320" src="//ok.ru/videoembed/41202551490" scrolling="yes" allowfullscreen="1" allow="autoplay; fullscreen" aria-label="Video" frameborder="0"></iframe>
--->
-
-
+					</div>
+					
+					<div class="panel-body">
+<b>related tags:</b>
+<ul class="list-inline">
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=99" class="nav-click">военная проза</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=174" class="nav-click">социальная фантастика</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=185" class="nav-click">fb2</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=67" class="nav-click">txt</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=139" class="nav-click">А</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=151" class="nav-click">М</a></li>
+	<li><a href="?q=termin_nodes&amp;vid=&amp;tid=198" class="nav-click">1977</a></li>
+</ul>
+					</div>
+					
 				</div>
 			</div><!-- end panel -->
 			
@@ -168,6 +177,10 @@
 			<div class="panel panel-primary video-list-item">
 				
 				<div class="panel-heading">
+<div class="pull-right">
+	<a data-toggle="collapse" data-parent="#list-video" href="#video-2" class="btn btn-info btn-sm toggle-btn">	> </a>
+</div>
+					
 					<h3 class="video-title lang-en">Life in da trash</h3>
 					<span class="music_band">LITTLE BIG</span>
 					<span class="country">Russia</span>
@@ -175,16 +188,16 @@
 					<span class="music_style">rave</span>
 				</div>
 				
-				<div class="panel-body">
+				<div id="video-2" class="panel-body panel-collapse collapse in">
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="thumbnail text-center pictures">
 						<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg" class="">
 						<div class="panel-body play-buttons">					
 							<span class="">play video from </span>
-							<a href="http://youtube.com/embed/UVrjzOUZJI4" class="btn btn-success btn-sm play-btn">youtube</a>
+							<a href="http://youtube.com/embed/UVrjzOUZJI4" class="btn btn-success btn-sm play-btn" target="_blank">youtube</a>
 							<button class="btn btn-warning btn-sm play-btn">rutube</button>
-							<a href="//ok.ru/videoembed/3196192005" class="btn btn-success btn-sm play-btn">ok.ru</a>
-							<a href="http://mycomp/video/videoclips/trash.mp4" class="btn btn-success btn-sm play-btn">local server</a>
+							<a href="//ok.ru/videoembed/3196192005" class="btn btn-success btn-sm play-btn" target="_blank">ok.ru</a>
+							<a href="http://mycomp/video/videoclips/trash.mp4" class="btn btn-success btn-sm play-btn" target="_blank">local server</a>
 						</div>
 					</div>
 </div>
@@ -193,7 +206,7 @@
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 					<div class="description">description</div>
 					<div class="link">
-<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s"/>
+<a type="external-link" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s" target="_blank"/>playlist on Youtube</a>
 <a type="external-link" href="https://ok.ru/video/3196192005" target="_blank">go to OK.ru</a>
 <a type="external-link" href="https://vk.com/video-163575186_456239090" target="_blank">VContacte</a>
 					</div>
@@ -204,38 +217,68 @@
 			</div><!-- end panel -->
 
 
-			<div class="panel panel-primary">
+<!-- **************************************************************** -->	
+			<div class="panel panel-primary video-list-item">
 				
 				<div class="panel-heading">
-	<h3>LITTLE BIG - AK-47</h3>
+<div class="pull-right">
+	<a data-toggle="collapse" data-parent="#list-video" href="#video-3" class="btn btn-info btn-sm toggle-btn">	> </a>
+</div>
+					<h3 class="video-title lang-en">AK-47</h3>
+					<span class="music_band">LITTLE BIG</span>
+					<span class="country">Russia</span>
+					<span class="year">2017</span>
+					<span class="music_style">rave</span>
 				</div>
 				
-				<div class="panel-body">
-<!--
-	<iframe width="480" height="320" src="http://youtube.com/embed/-QHha1zko1A" frameborder="0" allowfullscreen></iframe>
--->
-	https://www.youtube.com/watch?v=-QHha1zko1A&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=24&t=0s
+				<div id="video-3" class="panel-body panel-collapse collapse in">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="thumbnail text-center pictures">
+						<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg" class="">
+						<div class="panel-body play-buttons">					
+							<span class="">play video from </span>
+							<a href="http://youtube.com/embed/-QHha1zko1A" class="btn btn-success btn-sm play-btn" target="_blank">youtube</a>
+							<a href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c" class="btn btn-warning btn-sm play-btn" target="_blank">rutube</a>
+							<a href="//ok.ru/videoembed/1147112392106" class="btn btn-success btn-sm play-btn" target="_blank">ok.ru</a>
+							<a href="http://mycomp/video/videoclips/trash.mp4" class="btn btn-success btn-sm play-btn" target="_blank">local server</a>
+						</div>
+					</div>
+</div>
 
-<!--
-	<iframe width="480" height="320" src="//ok.ru/videoembed/1147112392106" frameborder="0" allowfullscreen></iframe>
--->
-	https://ok.ru/video/1147112392106
+								
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<div class="description">description</div>
+					<div class="link">
+<a type="external-link" href="https://www.youtube.com/watch?v=-QHha1zko1A&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=24&t=0s" target="_blank"/>playlist on Youtube</a>
+<a type="external-link" href="https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search" target="_blank"/>Rutube</a>
+<a type="external-link" href="https://ok.ru/video/1147112392106" target="_blank">go to OK.ru</a>
+<a type="external-link" href="https://vk.com/video-55072656_456239072" target="_blank">VContacte</a>
+					</div>
+</div>
 
-<!--
-	<iframe width="480" height="320" src="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c" frameborder="0" allowfullscreen></iframe>
--->
-	https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search
-
-	https://vk.com/video-55072656_456239072
 
 				</div>
-			</div>
+			</div><!-- end panel -->
+			
+	</div><!-- end list video -->
+
+				
 
 	<footer>
+<!--
 		<div class="col-sm-3 col-md-3">
 		</div>
-		<div class="col-sm-6 col-md-6"></div>
+		<div class="col-sm-6 col-md-6">
+-->
+<ul class="list-inline text-center">
+	<li><a class="" href="https://yandex.ru/collections/user/roman-laptev/moi_video/" target="_blank">yandex.ru, collection</a></li>
+	<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+	<li><a class="" href="https://rutube.ru/" target="_blank">Видеохостинг Rutube</a></li>
+</ul>
+<!--
+		</div>
 		<div class="col-sm-3 col-md-3 text-right"></div>
+-->
 	</footer>
 	
 	
