@@ -37,7 +37,7 @@ Les Triplettes de Belleville
 			</link>
 			
 			<tags>
-				<item>1977</item>
+				<item>2003</item>
 			</tags>
 <!--
 			<column name='created'>23-Sep-2012 13:45:32</column>
@@ -151,9 +151,16 @@ All The Things She Said
 			<description></description>
 			<pictures></pictures>
 			
+			<tags>
+				<item>1977</item>
+				<item>комедия</item>
+			</tags>
+			
 			<link>
 				<a type="ok_embed" href="//ok.ru/videoembed/41202551490"/>
 				<a type="external-link" href="https://ok.ru/video/41202551490" title="OK.ru"/>
+				<a type="external-link" href="https://www.youtube.com/watch?v=hR-1QGMK75c" title="see on Youtube.com"/>
+				
 			</link>
 		</video>
 
