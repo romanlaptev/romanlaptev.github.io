@@ -130,3 +130,9 @@ display:block;
 .play-buttons a {
 	margin: 1px;
 }
+
+.roles {
+	background: #D0CCD5;
+	padding: 10px;
+	border-radius: 3px;
+}
