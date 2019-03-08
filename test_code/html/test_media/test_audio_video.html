@@ -1,63 +1,180 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-	<meta charset="utf-8">
+	<title>Test media</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+
 </head>
 
 <body>
-	<h2>test SVG</h2>
-	<svg>
-		<circle r="55px" cx="80px" cy="70px" fill="green">
-	</svg>
-	
-	<h2>test AUDIO</h2>
-http://html-5.ru/teg-audio-html5.php
-	
-<div>
-	ogg:<audio id="player1" controls="controls">
-		<source src="audio/baauer-harlem-shake.ogg" />
-		Тег audio не поддерживается вашим браузером. 
-	</audio>
-	<button onclick="document.getElementById('player1').play()">Играть</button>
-	<button onclick="document.getElementById('player1').pause()">Пауза</button>
-</div>
-	
-<div>
-mp3:<audio id="player2" controls="controls">
-		<source src="audio/baauer-harlem-shake.mp3" />
-		Тег audio не поддерживается вашим браузером. 
-	</audio>
-	<button onclick="document.getElementById('player2').play()">Играть</button>
-	<button onclick="document.getElementById('player2').pause()">Пауза</button>
-</div>
-	
-	
-	<h2>test VIDEO</h2>
-http://html-5.ru/teg-video-html5.php	
-<div>
-	<video id="player3" width="560" height="315" controls="controls" poster="video/teg-video.jpg">
-		<source src="video/norwegian-army-harlem-shake.ogv" />
-		<source src="video/norwegian-army-harlem-shake.mp4" />
-		Тег video не поддерживается вашим браузером. 
-	</video>
-	<button onclick="document.getElementById('player3').play()">Играть</button>
-	<button onclick="document.getElementById('player3').pause()">Пауза</button>
-</div>
-	
-<hr>
-	<h2>HTML4</h2>
 
-	<h3>object application/x-mplayer2</h3>
-<div>
-mp3:	<object width="30%" height="30%" type="application/x-mplayer2" >
-	<param name="fileName" value="audio/baauer-harlem-shake.mp3">
-	<param name="autostart" value="0">
-	<param name="ShowStatusBar" value="1">
-	<param name="volume" value="0">
-	<param name="controls" value="true">
-	Тег object не поддерживается вашим браузером.
-	</object> 
-</div>
+<div class="container">
+	<div class="page-header">
+		<h1>Test media support</h1>
+	</div>
+
+	<pre>
+http://html-5.ru/teg-audio-html5.php
+http://html-5.ru/teg-video-html5.php
+
+https://www.youtube.com/html5
+	</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>tag &lt;audio&gt;</h2>
+		</div>
+
+		<div class="panel-body">
+			<h3>format OGG</h3>
+			<div>
+				<audio id="player1" controls="controls">
+					<source src="audio/baauer-harlem-shake.ogg" />
+					Tag <b>audio</b> not support this browser.... 
+				</audio>
+			</div>
+
+			<div>
+				<button onclick="document.getElementById('player1').play()">Play</button>
+				<button onclick="document.getElementById('player1').pause()">Pause</button>
+			</div>
+
+		</div>
+
+		<div class="panel-body">
+			<h3>format MP3</h3>
+			<div>
+				<audio id="player2" controls="controls">
+						<source src="audio/baauer-harlem-shake.mp3" />
+					Tag <b>audio</b> not support this browser.... 
+				</audio>
+			</div>
+			<div>
+				<button onclick="document.getElementById('player2').play()">Play</button>
+				<button onclick="document.getElementById('player2').pause()">Pause</button>
+			</div>
+			http://i5/music/S/Ska-P/2008%20-%20Lagrimas%20y%20Gozos/01.%20Ni%20Fu%20Ni%20Fa%20.mp3
+
+			<pre>
+FF4 not play
+Opera 10.53 not play
+			</pre>
+
+		</div>
+
+			<pre>
+FF65 ok
+IE7 not support
+			</pre>
+
+	</div><!-- end panel -->
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>tag &lt;video&gt;</h2>
+		</div>
+
+		<div class="panel-body">
+			<div>
+				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg">
+<!--
+					<source src="video/norwegian-army-harlem-shake.ogv" />
+					<source src="video/norwegian-army-harlem-shake.mp4" />
+-->
+					<source src="video/video.mp4" />
+					Tag <b>video</b> not support this browser.... 
+				</video>
+			</div>
+			<div>
+				<button onclick="document.getElementById('player3').play()">Play</button>
+				<button onclick="document.getElementById('player3').pause()">Pause</button>
+			</div>
+
+			<pre>
+FF65 ok
+FF4 not play
+IE8 not support
+Opera 10.53 not play
+			</pre>
+
+		</div>
+	</div><!-- end panel -->
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>HTML4</h2>
+			<h3>object application/x-mplayer2</h3>
+			<h2>tag &lt;object&gt;</h2>
+		</div>
+		<div class="panel-body">
+			<div>
+				<object width="30%" height="30%" type="application/x-mplayer2" >
+				<param name="fileName" value="audio/baauer-harlem-shake.mp3">
+				<param name="autostart" value="0">
+				<param name="ShowStatusBar" value="1">
+				<param name="volume" value="0">
+				<param name="controls" value="true">
+					Tag <b>object</b> not support this browser.... 
+				</object> 
+			</div>
+
+			<pre>
+baauer-harlem-shake.mp3
+IE7 not play, 
+IE8 ok, 
+FF4 not support
+Opera 10.53 not support
+FF65 not support
+			</pre>
+
+	</div><!-- end panel -->
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>JW Player</h2>
+		</div>
+		<div class="panel-body">
+
+			<div>
+<!-- START OF THE PLAYER EMBEDDING TO COPY-PASTE -->
+<div id="mediaplayer">JW Player goes here</div>
+<script type="text/javascript" src="JWPlayer/jwplayer.js"></script>
+	<script type="text/javascript">
+		jwplayer("mediaplayer").setup({
+			flashplayer: "JWPlayer/player.swf",
+			//file: "/sites/video/sites/default/files/test.avi",
+			//file: "/sites/video/sites/default/files/video.mp4",
+			//file: "http://mycomp/video/kvn,fun/rufinad.flv",
+			//file: "http://mycomp/video/kvn,fun/zp%5B1%5D.avi",
+			//file: "http://mycomp/video/mult/Killer%20Bean%202.avi",
+			//file: "http://mycomp/video/mult/maslennitca.mpg",
+			//file: "http://mycomp/video/mult/hippo.flv",
+			image: "preview.jpg",
+    'id': 'playerID',
+    'width': '650',
+    'height': '240',
+    'playlistfile': 'JWPlayer/playlist.xml',
+    'playlist.position': 'right',
+    'playlist.size': '250',
+    'controlbar': 'over'
+		});
+</script>
+<!-- END OF THE PLAYER EMBEDDING -->
+			</div>
+
+			<pre>
+			</pre>
+
+	</div><!-- end panel -->
+
+
+</div><!-- end container -->
+
 
 </body>
 </html>
