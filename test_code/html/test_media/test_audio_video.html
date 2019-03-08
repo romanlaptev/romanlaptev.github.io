@@ -48,7 +48,7 @@ https://www.youtube.com/html5
 			<h3>format MP3</h3>
 			<div>
 				<audio id="player2" controls="controls">
-						<source src="audio/baauer-harlem-shake.mp3" />
+						<source src="audio/Yankee_doodle.mp3" />
 					Tag <b>audio</b> not support this browser.... 
 				</audio>
 			</div>
@@ -107,29 +107,96 @@ Opera 10.53 not play
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h2>HTML4</h2>
-			<h3>object application/x-mplayer2</h3>
 			<h2>tag &lt;object&gt;</h2>
 		</div>
+
 		<div class="panel-body">
-			<div>
+				<h3>object type "application/x-mplayer2"</h3>
 				<object width="30%" height="30%" type="application/x-mplayer2" >
-				<param name="fileName" value="audio/baauer-harlem-shake.mp3">
+				<param name="fileName" value="audio/Yankee_doodle.mp3">
 				<param name="autostart" value="0">
 				<param name="ShowStatusBar" value="1">
 				<param name="volume" value="0">
 				<param name="controls" value="true">
 					Tag <b>object</b> not support this browser.... 
 				</object> 
-			</div>
 
-			<pre>
-baauer-harlem-shake.mp3
+				<pre>
+Yankee_doodle.mp3
+
 IE7 not play, 
 IE8 ok, 
 FF4 not support
 Opera 10.53 not support
 FF65 not support
+Chrome65 not support
+				</pre>
+
+		</div>
+
+		<div class="panel-body">
+			<h3>object type "video/quicktime"</h3>
+
+<div>
+			<object 
+type="video/quicktime" 
+src="video/zp[1].avi"  
+width="640" height="480" 
+ShowControls="1" 
+ShowStatusBar="0" 
+ShowDisplay="0"
+autostart="0">
+				<param name="volume" value="10">
+				<param name="controller" value="true" >
+				<param name="autoplay" value="false">
+				Tag <b>object</b> not support this browser.... 
+			</object>
+</div>
+
+<div>
+			<object 
+			type="video/quicktime" 
+			data="video/zp[1].avi"
+			width="640" height="480">
+				<param name="controller" value="true" >
+				<param name="autoplay" value="false">
+				Tag <b>object</b> not support this browser.... 
+			</object>
+</div>
+
+			<pre>
+src="video/zp[1].avi"  
+src="file:///m:/video/films/M/Metastaze_DVDRip.rus.avi"
+
+IE7 not support
+FF65 not support
+
 			</pre>
+
+		</div>
+
+
+		<div class="panel-body">
+				<h3>object type "application/x-oleobject"</h3>
+<OBJECT ID="MediaPlayer" WIDTH="640" HEIGHT="480" CLASSID="CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95"
+STANDBY="Loading Windows Media Player components..." TYPE="application/x-oleobject">
+	<PARAM NAME="FileName" VALUE="video/zp[1].avi">
+	<PARAM name="ShowControls" VALUE="true">
+	<param name="ShowStatusBar" value="true">
+	<PARAM name="ShowDisplay" VALUE="true">
+	<PARAM name="autostart" VALUE="false">
+
+	<EMBED TYPE="video/quicktime" SRC="video/zp[1].avi" NAME="MediaPlayer"
+WIDTH="640" HEIGHT="480" ShowControls="1" ShowStatusBar="1" ShowDisplay="0" autostart="0">
+	</EMBED>
+</OBJECT>
+
+			<pre>
+src="video/zp[1].avi"  
+			</pre>
+
+		</div>
+
 
 	</div><!-- end panel -->
 
@@ -139,8 +206,6 @@ FF65 not support
 			<h2>JW Player</h2>
 		</div>
 		<div class="panel-body">
-
-			<div>
 <!-- START OF THE PLAYER EMBEDDING TO COPY-PASTE -->
 <div id="mediaplayer">JW Player goes here</div>
 <script type="text/javascript" src="JWPlayer/jwplayer.js"></script>
@@ -168,13 +233,58 @@ FF65 not support
 			</div>
 
 			<pre>
+IE7 not play
+			</pre>
+	</div><!-- end panel -->
+
+	<div class="panel panel-primary">
+
+		<div class="panel-heading">
+			<h2>uflvplayer</h2>
+		</div>
+		<div class="panel-body">
+				<object type="application/x-shockwave-flash" data="uflvplayer_500x375.swf" height="340" width="400">
+					<param name="bgcolor" value="#FFFFFF" />
+					<param name="allowFullScreen" value="true" />
+					<param name="allowScriptAccess" value="always" />
+					<param name="movie" value="uflvplayer_500x375.swf" />
+					<param name="FlashVars" 
+value="way=video/hippo.flv&amp;swf=players/uflvplayer_500x375.swf&amp;w=400&amp;h=340&amp;pic=&amp;autoplay=0&amp;tools=1&amp;skin=greyblack&amp;volume=70&amp;q=&amp;comment=" />
+				</object>
+			</div>
+
+		<div class="panel-heading">
+			<h2>ump3player</h2>
+		</div>
+		<div class="panel-body">
+				<object type="application/x-shockwave-flash" data="ump3player_500x70.swf" height="70" width="470">
+					<param name="wmode" value="transparent" />
+					<param name="allowFullScreen" value="true" />
+					<param name="allowScriptAccess" value="always" />
+					<param name="movie" value="ump3player_500x70.swf" />
+					<param name="FlashVars" 
+value="way=audio/Yankee_doodle.mp3&amp;swf=ump3player_500x70.swf&amp;w=470&amp;h=70&amp;time_seconds=0&amp;autoplay=0&amp;q=&amp;skin=black&amp;volume=70&amp;comment=" />
+				</object>
+			</div>
+
+			<pre>
+audio/Yankee_doodle.mp3
+
+need install Adobe Flash Player plugin
+
+IE7 not play
+IE8 ok 
+FF4 ok
+FF65 not support
+Chrome65 ok, permit Flash Player plugin
 			</pre>
 
 	</div><!-- end panel -->
 
 
+
+
+
 </div><!-- end container -->
-
-
 </body>
 </html>

@@ -3,10 +3,10 @@
     <title>HTTP Pseudo-Streaming Playlist</title> 
 
     <item> 
-      <title>Zdob Si Zdub, Primavara</title> 
-      <media:content url="http://mycomp/music/Z/zdob/Sounds/Zdob%20Si%20Zdob/Zdob%20Si%20Zdub%20-%20Primavara.mp3" /> 
-      <media:thumbnail url="http://mycomp/music/0_covers,images/Zdob%20Si%20Zdob_spb07.jpg" />
-      <description>Zdob Si Zdub, Primavara</description>
+      <title>Hippo, flv format</title> 
+      <media:content url="video/hippo.flv" /> 
+      <media:thumbnail url="" />
+      <description>no description here</description>
       <jwplayer:provider>http</jwplayer:provider> 
       <jwplayer:duration>33.03</jwplayer:duration> 
     </item> 
