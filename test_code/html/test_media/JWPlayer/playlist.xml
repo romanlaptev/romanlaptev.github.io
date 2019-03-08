@@ -22,14 +22,12 @@
 
     <item> 
       <title>Elephant&#39;s Dream</title> 
-      <media:content url="elephant.mp4" /> 
-      <media:thumbnail url="http://thumbs.server.com/thumbs/elephant.jpg" />
-      <description>Elephants Dream is the world’s first open movie, made entirely 
-          with open source graphics software such as Blender.</description>
+      <media:content url="video/small.avi" /> 
+      <media:thumbnail url="" />
+      <description>format AVI</description>
       <jwplayer:provider>http</jwplayer:provider> 
       <jwplayer:duration>653.79</jwplayer:duration> 
     </item> 
-
 
   </channel> 
 </rss>
