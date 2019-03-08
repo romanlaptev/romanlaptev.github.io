@@ -13,10 +13,9 @@
 
     <item> 
       <title>Sintel</title> 
-      <media:content url="sintel.mp4" /> 
-      <media:thumbnail url="http://thumbs.server.com/thumbs/sintel.jpg" />
-      <description>Sintel is a fantasy computer generated short movie. It's the third 
-         release from the Blender Open Movie Project.</description>
+      <media:content url="video/video.mp4" /> 
+      <media:thumbnail url="JWPlayer/preview.jpg" />
+      <description>format MP4</description>
       <jwplayer:provider>http</jwplayer:provider> 
       <jwplayer:duration>888.06</jwplayer:duration> 
     </item> 

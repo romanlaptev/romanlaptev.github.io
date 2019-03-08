@@ -42,6 +42,13 @@ https://www.youtube.com/html5
 				<button onclick="document.getElementById('player1').pause()">Pause</button>
 			</div>
 
+			<pre>
+IE9 not play
+IE10 not play
+IE11 not play
+FF65 ok
+			</pre>
+
 		</div>
 
 		<div class="panel-body">
@@ -59,16 +66,18 @@ https://www.youtube.com/html5
 			http://i5/music/S/Ska-P/2008%20-%20Lagrimas%20y%20Gozos/01.%20Ni%20Fu%20Ni%20Fa%20.mp3
 
 			<pre>
-FF4 not play
 Opera 10.53 not play
+
+IE7 not support
+IE9 ok
+IE10 ok
+IE11 ok
+
+FF4 not play
+FF65 ok
 			</pre>
 
 		</div>
-
-			<pre>
-FF65 ok
-IE7 not support
-			</pre>
 
 	</div><!-- end panel -->
 
@@ -95,9 +104,14 @@ IE7 not support
 			</div>
 
 			<pre>
-FF65 ok
-FF4 not play
 IE8 not support
+IE9 ok
+IE10 ok
+IE11 ok
+
+FF4 not play
+FF65 ok
+
 Opera 10.53 not play
 			</pre>
 
@@ -112,31 +126,81 @@ Opera 10.53 not play
 
 		<div class="panel-body">
 				<h3>object type "application/x-mplayer2"</h3>
-				<object width="30%" height="30%" type="application/x-mplayer2" >
-				<param name="fileName" value="audio/Yankee_doodle.mp3">
-				<param name="autostart" value="0">
-				<param name="ShowStatusBar" value="1">
-				<param name="volume" value="0">
-				<param name="controls" value="true">
-					Tag <b>object</b> not support this browser.... 
-				</object> 
 
-				<pre>
-Yankee_doodle.mp3
+				<div>
+					<object width="30%" height="30%" type="application/x-mplayer2" >
+						<param name="fileName" value="audio/Yankee_doodle.mp3">
+						<param name="autostart" value="0">
+						<param name="ShowStatusBar" value="1">
+						<param name="volume" value="0">
+						<param name="controls" value="true">
+							Tag <b>object type "application/x-mplayer2"</b> not support this browser.... 
+					</object> 
 
-IE7 not play, 
-IE8 ok, 
-FF4 not support
-Opera 10.53 not support
-FF65 not support
-Chrome65 not support
-				</pre>
+					<pre>
+	Yankee_doodle.mp3
+
+	IE5 ok ???, 
+	IE7 ok, 
+	IE8 ok, 
+	IE9 ok
+	IE10 ok
+	IE11 ok
+
+	Opera 10.53 not support
+
+	FF4 not support
+	FF65 not support
+
+	Chrome65 not support
+					</pre>
+				</div>
+
+				<div>
+					<object type='application/x-mplayer2' data='video/zp[1].avi' width='320' height='300'>
+						<param name='FileName' value='video/zp[1].avi'>
+						<param name='autoplay' value='false'>
+							Tag <b>object type='application/x-mplayer2'</b>  not support this browser.... 
+					</object>
+				</div>
 
 		</div>
 
 		<div class="panel-body">
-			<h3>object type "video/quicktime"</h3>
+				<h3>object type "video/x-msvideo"</h3>
+		<!--
+		<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" width="640" height="480"  type="video/x-msvideo">
+		-->
+			<object classid="CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95" width="640" height="480"  type="video/x-msvideo">
+			<param name="src" value="video/zp[1].avi" >
+			<param name="controller" value="true" >
+			<param name="autoplay" value="false">
+				Tag <b>object type="video/x-msvideo"</b>  not support this browser.... 
+			</object>
+		</div>
 
+		<div class="panel-body">
+			<h3>EMBED type "video/x-msvideo"</h3>
+			<EMBED type="video/x-msvideo" 
+				SRC="video/zp[1].avi" 
+				NAME="MediaPlayer" 
+				WIDTH="320" HEIGHT="240" 
+				ShowControls="1" ShowStatusBar="1" ShowDisplay="0" autostart="0">
+			</EMBED>
+		</div>
+
+		<div class="panel-body">
+			<h3>EMBED type "application/x-mplayer2"</h3>
+			<EMBED type="video/x-msvideo" 
+				SRC="video/zp[1].avi" 
+				NAME="MediaPlayer" 
+				WIDTH="320" HEIGHT="240" 
+				ShowControls="1" ShowStatusBar="1" ShowDisplay="0" autostart="0">
+			</EMBED>
+		</div>
+
+		<div class="panel-body">
+			<h3>object type "video/quicktime"</h3>
 <div>
 			<object 
 type="video/quicktime" 
@@ -149,8 +213,19 @@ autostart="0">
 				<param name="volume" value="10">
 				<param name="controller" value="true" >
 				<param name="autoplay" value="false">
-				Tag <b>object</b> not support this browser.... 
+				Tag <b>object type "video/quicktime"</b> not support this browser.... 
 			</object>
+			<pre>
+src="video/zp[1].avi"  
+src="file:///m:/video/films/M/Metastaze_DVDRip.rus.avi"
+
+IE7 not support
+IE10 not play
+
+FF65 not support
+
+			</pre>
+
 </div>
 
 <div>
@@ -162,17 +237,27 @@ autostart="0">
 				<param name="autoplay" value="false">
 				Tag <b>object</b> not support this browser.... 
 			</object>
-</div>
-
 			<pre>
-src="video/zp[1].avi"  
-src="file:///m:/video/films/M/Metastaze_DVDRip.rus.avi"
-
 IE7 not support
-FF65 not support
+IE9 ok
+IE10 ok
 
+FF65 not support
 			</pre>
 
+</div>
+<!--
+<div>
+	<p>object type="не указан"</p>
+	<object>
+		<param name="FileName" value="video/zp[1].avi">
+		<param name="autoStart" value="false">
+		<param name="showControls" value="true">
+		<param name="PlayCount" value="20">
+		<embed src="video/zp[1].avi" controller="true" autostart="false" loop="false"></embed>
+	</object>
+</div>
+-->
 		</div>
 
 
@@ -189,10 +274,15 @@ STANDBY="Loading Windows Media Player components..." TYPE="application/x-oleobje
 	<EMBED TYPE="video/quicktime" SRC="video/zp[1].avi" NAME="MediaPlayer"
 WIDTH="640" HEIGHT="480" ShowControls="1" ShowStatusBar="1" ShowDisplay="0" autostart="0">
 	</EMBED>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 </OBJECT>
 
 			<pre>
 src="video/zp[1].avi"  
+
+IE9 ok
+IE10 ok
+IE11 ok
 			</pre>
 
 		</div>
@@ -274,6 +364,10 @@ need install Adobe Flash Player plugin
 
 IE7 not play
 IE8 ok 
+IE9 not support
+IE10 not support
+IE11 not support
+
 FF4 ok
 FF65 not support
 Chrome65 ok, permit Flash Player plugin
