@@ -1,3 +1,30 @@
+/* fix Bootstrap */
+header .nav-tabs .btn:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+header .nav-tabs .btn:focus {
+	background: orange;
+	color: #000 !important;
+}
+
+.nav-tabs {
+	/* border-bottom: transparent; */
+	margin-bottom: 10px;
+}
+
+.alert {
+	margin-bottom: 5px !important;
+	padding: 7px !important;
+}
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+
+
+
 body {
   background-color: #315570/*#2c5885*//*#6aa6c0*/;
   margin: 0;
@@ -25,42 +52,25 @@ header.container {
 footer {
   margin-top: 5px;
   margin-bottom: 5px;
-	padding: 10px;
+/*
+    padding: 10px 10px 0px 10px !important;
     background-color: #fff;  
+*/
 }
 
-footer .container {
+.bg-darkblue {
   background-color: #004586;
 }
-footer .container a{
+.bg-darkblue a{
   color: #fff;  
 }
 
-
-
-/* fix Bootstrap */
-header .nav-tabs .btn:hover {
-	background-color: orange;
-	color: #000 !important;
-}
-header .nav-tabs .btn:focus {
-	background: orange;
-	color: #000 !important;
+footer .bg-darkblue {
+  border-radius: 5px;
+  padding: 5px;
 }
 
-.nav-tabs {
-	/* border-bottom: transparent; */
-	margin-bottom: 10px;
-}
-
-.alert {
-	margin-bottom: 5px !important;
-	padding: 7px !important;
-}
-
-header .navbar {
-    margin-bottom: 0;
-}
+    
 
 .btn-blue-c4 {
     color: #fff;
@@ -163,4 +173,11 @@ display:block;
     font-size: 60px;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.video-list-item{
+  float: left;
+  margin-left: 5px;
+  width: 150px;
+  height: 200px;
 }
