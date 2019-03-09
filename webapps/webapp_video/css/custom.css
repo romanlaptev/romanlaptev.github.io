@@ -25,7 +25,17 @@ header.container {
 footer {
   margin-top: 5px;
   margin-bottom: 5px;
+	padding: 10px;
+    background-color: #fff;  
 }
+
+footer .container {
+  background-color: #004586;
+}
+footer .container a{
+  color: #fff;  
+}
+
 
 
 /* fix Bootstrap */
@@ -48,6 +58,17 @@ header .nav-tabs .btn:focus {
 	padding: 7px !important;
 }
 
+header .navbar {
+    margin-bottom: 0;
+}
+
+.btn-blue-c4 {
+    color: #fff;
+	background-color: #269abc;
+/*
+    border-color: #2e6da4;	
+*/
+}
 
 
 
@@ -135,4 +156,11 @@ display:block;
 	background: #D0CCD5;
 	padding: 10px;
 	border-radius: 3px;
+}
+
+#app-title {
+    font-family: a_Huxley;
+    font-size: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
 }

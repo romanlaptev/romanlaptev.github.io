@@ -10,6 +10,7 @@
 	<meta http-equiv="Expires" content="-1">	
 	
 	<link rel="stylesheet" href="css/bootstrap337.min.css"/>
+	<link rel="stylesheet" href="../../fonts/fonts.css">
 	<link rel="stylesheet" href="css/custom.css">
 <!--
 	<link rel="stylesheet" href="../../css/switch.css">
@@ -40,20 +41,29 @@
 				</ul>
 -->
 				
-				<ul class="nav nav-tabs">
-					<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-					<h1 class="text-right" id="app-title">video collection</h1>
-				</ul>
+				<div class="pull-left">
+					<ul class="nav nav-tabs">
+						<li><a class="btn btn-primary" href="../../index.html">index</a></li>
+						<li><a class="btn btn-blue-c4" data-toggle="collapse" data-parent="#accordion" 
+						href="#collapse1">Tags</a></li>
+					</ul>
+				</div>
+				<div class="pull-right">
+					<h1 id="app-title">video collection</h1>
+				</div>
+				
 			</nav>
 
 
 	<div class="panel-group" id="tags">
-		<div class="panel panel-info">
+		<div class="panel">
+<!--
 			  <div class="panel-heading">
 				<h4 class="panel-title">
 				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Tags</a>
 				</h4>
 			  </div>
+-->
 			  <div id="collapse1" class="panel-collapse collapse">
 					
 				<div id="block-taxonomy-alpha">
@@ -137,6 +147,7 @@
 				</div>
 
 
+<!--
 				<div class="log-panel">
 					<span class="pull-right">
 						<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
@@ -144,6 +155,8 @@
 					</span>
 					<div id="log" class="panel-body"></div>
 				</div>
+-->
+
 		
 			</div>
 		</div>
@@ -491,9 +504,10 @@ class="" target="_blank">The_Berzerker_-_All_The_Things_She_Said.avi</a>
 			
 	</div><!-- end list video -->
 
-				
+</div><!-- end container -->
 
 	<footer>
+<div class="container">
 <!--
 		<div class="col-sm-3 col-md-3">
 		</div>
@@ -509,7 +523,7 @@ class="" target="_blank">The_Berzerker_-_All_The_Things_She_Said.avi</a>
 	<li class="last leaf"><a href="https://www.kinopoisk.ru/mykp/movies/list/type/6/" target="_blank">Мой Кинопоиск &gt; Любимые фильмы</a></li>
 </ul>
 
-<ul class="">
+<ul class="list-inline text-center">
 	<li><a href="#" target="_blank">export (from indexedDB)</a></li>
 	<li><a href="#" target="_blank">import (to indexedDB)</a></li>
 </ul>
@@ -518,10 +532,8 @@ class="" target="_blank">The_Berzerker_-_All_The_Things_She_Said.avi</a>
 		</div>
 		<div class="col-sm-3 col-md-3 text-right"></div>
 -->
-	</footer>
-	
-	
 </div><!-- end container -->
+	</footer>
 
 
 </body>
