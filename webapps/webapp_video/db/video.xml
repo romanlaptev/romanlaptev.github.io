@@ -53,17 +53,23 @@ Les Triplettes de Belleville
 			<title lang="ru"></title>
 			<title lang="en">All The Things She Said</title>
 			
-			<country>au</country>
+			<country>Australia</country>
 			<music_band>The Berzerker</music_band>
 			<year>2003</year>
 
 			<music_style>death metal</music_style>
-			<description>cover of t.A.T.u.</description>
+			<description>t.A.T.u. cover
+https://ru.wikipedia.org/wiki/The_Berzerker			
+			</description>
 			<pictures>
+				<img src="https://i.ytimg.com/vi/DDqXXlPkRBo/sddefault.jpg"/>
 				<poster src="http://site-content/video/0_covers/The_Berzerker_-_All_The_Things_She_Said.png"/>
 			</pictures>
 			
 			<link>
+				<a type="external-link" title="see video on Youtube" href="https://www.youtube.com/watch?v=DDqXXlPkRBo"/>
+				<a type="youtube_embed" href="http://youtube.com/embed/DDqXXlPkRBo"/>
+				
 				<a type="local_file" title="The_Berzerker_-_All_The_Things_She_Said.avi"
 				href="http://site-content/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi"/>
 			</link>
