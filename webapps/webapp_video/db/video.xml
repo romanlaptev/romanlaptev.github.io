@@ -51,20 +51,21 @@ Les Triplettes de Belleville
 
 		<video type="videoclip">
 			<title lang="ru"></title>
-			<title lang="en">
-All The Things She Said
-			</title>
+			<title lang="en">All The Things She Said</title>
 			
 			<country>au</country>
 			<music_band>The Berzerker</music_band>
 			<year>2003</year>
 
-			<music_style></music_style>
-			<description></description>
-			<pictures></pictures>
+			<music_style>death metal</music_style>
+			<description>cover of t.A.T.u.</description>
+			<pictures>
+				<poster src="http://site-content/video/0_covers/The_Berzerker_-_All_The_Things_She_Said.png"/>
+			</pictures>
 			
 			<link>
-				<a href="http://mycomp/video/videoclips/The_Berzerker_-_All_The_Things_She_Said.avi"/>
+				<a type="local_file" title="The_Berzerker_-_All_The_Things_She_Said.avi"
+				href="http://site-content/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi"/>
 			</link>
 		</video>
 
@@ -80,16 +81,17 @@ All The Things She Said
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
+				<poster src="http://site-content/video/0_covers/LITTLE BIG - Life in da trash.jpg"/>
 			</pictures>
 			
 			<link>
 				<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s"/>
-				<a type="external-link" href="https://ok.ru/video/3196192005" title="OK.ru"/>
-				<a type="external-link" href="https://vk.com/video-163575186_456239090" title="VContacte"/>
+				<a type="external-link" title="OK.ru" href="https://ok.ru/video/3196192005" />
+				<a type="external-link" title="VContacte" href="https://vk.com/video-163575186_456239090" />
 				<a type="youtube_embed" href="http://youtube.com/embed/UVrjzOUZJI4"/>
 				<a type="rutube_embed" href="http://rutube.ru/play/embed/a8999bb4194d99419b3b8395c26ecc9f"/>
 				<a type="ok_embed" href="//ok.ru/videoembed/3196192005"/>
-				<a type="local_server" href="http://mycomp/video/videoclips/trash.mp4"/>
+				<a type="local_file" title="LITTLE BIG - Life in da trash.mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Life in da trash.mp4"/>
 			</link>
 		</video>
 
@@ -106,6 +108,7 @@ All The Things She Said
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
+				<poster src="http://site-content/video/0_covers/LITTLE BIG - AK-47.jpg"/>
 			</pictures>
 			
 			<link>
@@ -120,7 +123,7 @@ All The Things She Said
 
 				<a type="external-link" href="https://vk.com/video-55072656_456239072" title="VContacte"/>
 				
-				<a type="local_server" href="http://mycomp/video/videoclips/ak47.mp4"/>
+				<a type="local_file" title="LITTLE BIG - AK-47 (music video).mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4"/>
 			</link>
 		</video>
 
