@@ -5,16 +5,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 	
-	<link rel="stylesheet" href="css/bootstrap337.min.css"/>
-	<link rel="stylesheet" href="../../fonts/fonts.css">
-	<link rel="stylesheet" href="css/custom.css">
-<!--
-	<link rel="stylesheet" href="../../css/switch.css">
--->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap337.min.css"/>
+	<link type="text/css" rel="stylesheet" href="../../fonts/fonts.css">
+	<link type="text/css" rel="stylesheet" href="../../css/custom_colors.css">
+<!--	<link type="text/css" rel="stylesheet" href="../../css/switch.css"> -->
+	<link type="text/css" rel="stylesheet" href="css/custom.css">
 	
 	<script src="js/lib/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap/bootstrap337.min.js"></script>
@@ -46,6 +46,9 @@
 						<li><a class="btn btn-primary" href="../../index.html">index</a></li>
 						<li><a class="btn btn-blue-c4" data-toggle="collapse" data-parent="#accordion" 
 						href="#collapse1">Tags</a></li>
+						
+						<li><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#serviceModal">Service</a></li>
+				
 					</ul>
 				</div>
 				<div class="pull-right">
@@ -191,7 +194,12 @@
 </div>
 -->
 
-	
+	<div class="row">
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id="sidebar-left">
+		</div><!-- end sidebar left -->
+		
+		<div class="col-xs-10 col-sm-10 col-md-10 col-lg-8" id="main">
+			
 	<div class="panel-group" id="list-video">
 <!-- **************************************************************** -->	
 			<div class="panel panel-primary video-list-item">
@@ -504,6 +512,13 @@ class="" target="_blank">The_Berzerker_-_All_The_Things_She_Said.avi</a>
 			
 	</div><!-- end list video -->
 
+		</div><!-- end main central area -->
+		
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
+		</div><!-- end sidebar-right -->
+	</div>
+	
+
 </div><!-- end container -->
 
 	<footer class="container">
@@ -533,6 +548,30 @@ class="" target="_blank">The_Berzerker_-_All_The_Things_She_Said.avi</a>
 		<div class="col-sm-1 col-md-1 text-right">3</div>
 -->
 	</footer>
+
+<!-- ********************** serviceModal ************************** -->	
+	<div id="serviceModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">modal-header
+				</div>
+				<div class="modal-body">modal-body
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<a id="btn-parse" href="#?q=parse-json" class="btn btn-violet-fb">Parse file</a>
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end serviceModal -->
+	
+<!--
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+-->
 
 
 </body>

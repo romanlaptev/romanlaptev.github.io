@@ -43,10 +43,11 @@ body {
 header {
   margin-bottom: 5px;
 }
-header.container {
+#tags .panel {
 /*
-  padding: 0 20px;
+  border: 7px double #000;
 */
+border:none;
 }
 
 footer {
@@ -58,37 +59,21 @@ footer {
 */
 }
 
-.bg-darkblue {
-  background-color: #004586;
-}
-.bg-darkblue a{
-  color: #fff;  
-}
-
 footer .bg-darkblue {
   border-radius: 5px;
   padding: 5px;
 }
 
-    
-
-.btn-blue-c4 {
-    color: #fff;
-	background-color: #269abc;
-/*
-    border-color: #2e6da4;	
-*/
-}
-
-
 
 .log-panel{
-	background-color: #ffcc99; /*#c9d9c9;*/
-/*background-color:#fff4e1*/;
+background-color: #f8f9fa;
 margin-top: 5px;
-margin-bottom: 10px;
+margin-bottom: 0;
+border:none;
 /* border:1px solid #ddd; */
-	border-radius: 5px;
+	/*border-radius: 5px;*/
+-webkit-box-shadow: none;
+box-shadow: none;
 /*	
 position: fixed;
 bottom: 10px;
@@ -102,6 +87,9 @@ width: 80%;
 /*position: absolute;*/
 	/*position:fixed;*/
 }
+.log-panel .panel-body{
+    padding: 5px;
+}
 
 .close {
 display: block;
@@ -111,25 +99,47 @@ position: relative;
 top: -10px;
 }
 
-#log{
-word-break: break-all;	
-font-size: 75%;	
-}
-
-
 #clear-log {
+/*
 	position: relative;
 	top: -9px;
 	left: 9px;
+*/
 }
+
 .log-panel span {
+/*
 	margin-top: 2px;
 	margin-right: 7px;
+*/
 }
+
 .log-panel span a{
 text-decoration:none;
 outline: none;
 }
+
+#log{
+/*
+word-break: break-all;	
+font-size: 75%;	
+*/
+}
+#log .alert,
+#service-panel .alert 
+{
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p,
+#service-panel p
+{
+margin: 0;
+}
+
+
+
 
 #btn-scroll-to-top {
 	/*left: 44%;*/
@@ -176,8 +186,10 @@ display:block;
 }
 
 .video-list-item{
+/*
   float: left;
   margin-left: 5px;
   width: 150px;
   height: 200px;
+*/
 }
