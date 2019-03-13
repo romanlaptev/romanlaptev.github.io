@@ -25,7 +25,19 @@ $_vars["phpversion"] = phpversion();
 
 $filename = "export_video.xml";
 $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
-$_vars["sql"]["getNodes"] = "SELECT nid, vid, type, title, created, changed, status FROM node WHERE type IN ('video', 'videoclip');
+$_vars["sql"]["getNodes"] = "
+SELECT 
+-- node.nid, 
+-- node.vid, 
+node.title, 
+node.created, 
+node.changed, 
+-- field_data_body.entity_id,
+field_data_body.body_value,
+node.status
+FROM field_data_body 
+LEFT JOIN node ON node.nid=field_data_body.entity_id
+WHERE node.type IN ('video', 'videoclip');
 ";
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 
@@ -145,6 +157,9 @@ function _log( $message ){
 
 function runSql($db,  $query){
 	$result = $db->query($query);
+//echo "result SQL:";
+//echo $result->queryString;
+//echo "<hr/>";
 	//$result->setFetchMode(PDO::FETCH_ASSOC);
 	$result->setFetchMode(PDO::FETCH_OBJ);
 	$resultData = $result->fetchAll();
