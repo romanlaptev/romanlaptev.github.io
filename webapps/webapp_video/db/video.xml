@@ -2,28 +2,99 @@
 <xroot>
 	<database name='video'>
 
-		<video type="film">
-			<title lang="ru">
-Трио из Бельвилля			
-			</title>
-			<title lang="en">
-Les Triplettes de Belleville
-			</title>
+		<taxonomy>
+			<vocabulary></vocabulary>
 			
-			<country>Франция, Великобритания, Канада, Бельгия</country>
-			<year>2003</year>
-			<producer> 
-Режиссёр: Сильвен Шомэ
-Сценарий: Сильвен Шомэ
-			</producer>
+			<termins>
+				
+				<termin tid='143' tid_parent='133' weight='0'>
+					<term_name>3D</term_name>
+					<term_description>cg-art_11.jpg</term_description>
+				</termin>			
+				
+			</termins>
+			
+			<hierarchy></hierarchy>
+		</taxonomy>
+<!--
+
+<table_node>
+<table_book_filename>
+<table_book_url>
+<table_book_links>
+<taxonomy_index>
+<taxonomy_term_data>
+<taxonomy_term_hierarchy>
+<taxonomy_vocabulary>
+	
+CREATE TABLE `taxonomy_index` (
+	`nid`	INTEGER NOT NULL DEFAULT 0 CHECK(nid >= 0),
+	`tid`	INTEGER NOT NULL DEFAULT 0 CHECK(tid >= 0),
+	`sticky`	INTEGER DEFAULT 0,
+	`created`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `taxonomy_term_data` (
+	`tid`	INTEGER CHECK(tid >= 0) PRIMARY KEY AUTOINCREMENT,
+	`vid`	INTEGER NOT NULL DEFAULT 0 CHECK(vid >= 0),
+	`name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`description`	TEXT DEFAULT NULL,
+	`format`	VARCHAR ( 255 ) DEFAULT NULL,
+	`weight`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `taxonomy_term_hierarchy` (
+	`tid`	INTEGER NOT NULL DEFAULT 0 CHECK(tid >= 0),
+	`parent`	INTEGER NOT NULL DEFAULT 0 CHECK(parent >= 0),
+	PRIMARY KEY(`tid`,`parent`)
+);
+
+CREATE TABLE `taxonomy_vocabulary` (
+	`vid`	INTEGER CHECK(vid >= 0) PRIMARY KEY AUTOINCREMENT,
+	`name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`machine_name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`description`	TEXT DEFAULT NULL,
+	`hierarchy`	INTEGER NOT NULL DEFAULT 0 CHECK(hierarchy >= 0),
+	`module`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`weight`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `book` (
+	`mlid`	INTEGER NOT NULL DEFAULT 0 CHECK(mlid >= 0),
+	`nid`	INTEGER NOT NULL DEFAULT 0 CHECK(nid >= 0),
+	`bid`	INTEGER NOT NULL DEFAULT 0 CHECK(bid >= 0),
+	PRIMARY KEY(`mlid`)
+);
+
+	<node num="1" nid="7">
+		<status>1</status>
+		<created timestamp="1336007280">03-May-2012 01:08:00</created>
+		<changed timestamp="1440946283">30-Aug-2015 14:51:23</changed>
+		<title>Монахиня трапписткого ордена (The Trappistine), реклама ликера</title>
+		<termin tid="2">Альфонс Муха</termin>
+		<author>Альфонс Муха</author>
+		<field_title_value>Монахиня трапписткого ордена (The Trappistine), реклама ликера, 1897, Альфонс Муха</field_title_value>
+		<year>1897</year>
+		<preview_img>/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/the-trappistine-1897.jpg</preview_img>
+		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/the-trappistine-1897.jpg</big_img>
+		<original_img>/site-content/albums/gallery_images/the-trappistine-1897.jpg</original_img>
+	</node>
+
+-->
+		
+		<video type="film" public="1">
+			<title lang="ru">Трио из Бельвилля</title>
+			<title lang="en">Les Triplettes de Belleville</title>
+			
+			<creators> 
+				<director>Режиссер: Сильвен Шомэ.</director> 
+				<writers>Авторы сценария: Сильвен Шомэ.</writers>
+			</creators>
 
 			<roles>
 Чарльз Линтон, Mari-Lou Gauthier, Michele Caucheteux, Lina Boudreault, Béatrice Bonifassi, Monica Viegas, Жан-Клод Донда, Мишель Робин
 			</roles>
 
-			<genre>  
-Драма, Музыка, Приключения, Мультфильм
-			</genre>
 			
 			<description>
 Чемпион — маленький мальчик, усыновленный своей бабушкой мадам Сузой. Мадам Суза замечает, что наиболее счастливым мальчик чувствует себя верхом на велосипеде, и поэтому настаивает на том, чтобы он самым серьезным образом тренировался. Проходят годы и, наконец, Чемпион становится достойным собственного имени. Он готов участвовать во всемирно известной гонке Тур-де-Франс. Но во время соревнования двое таинственных неизвестных в черном выкрадывают Чемпиона. Мадам Суза и ее верный пес Брюно должны его освободить.
@@ -37,6 +108,12 @@ Les Triplettes de Belleville
 			</link>
 			
 			<tags>
+				<country>Франция, Великобритания, Канада, Бельгия</country>
+				<year>2003</year>
+				<genre>  
+	Драма, Музыка, Приключения, Мультфильм
+				</genre>
+				
 				<item>2003</item>
 			</tags>
 <!--
@@ -52,12 +129,7 @@ Les Triplettes de Belleville
 		<video type="videoclip">
 			<title lang="ru"></title>
 			<title lang="en">All The Things She Said</title>
-			
-			<country>Australia</country>
 			<music_band>The Berzerker</music_band>
-			<year>2003</year>
-
-			<music_style>death metal</music_style>
 			<description>t.A.T.u. cover
 https://ru.wikipedia.org/wiki/The_Berzerker			
 			</description>
@@ -73,17 +145,18 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 				<a type="local_file" title="The_Berzerker_-_All_The_Things_She_Said.avi"
 				href="http://site-content/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi"/>
 			</link>
+			
+			<tags>
+				<country>Australia</country>
+				<year>2003</year>
+				<music_style>death metal</music_style>
+			</tags>
 		</video>
 
 		<video type="videoclip">
 			<title lang="ru"></title>
 			<title lang="en">Life in da trash</title>
-			
-			<country>Russia</country>
 			<music_band>LITTLE BIG</music_band>
-			<year>2016</year>
-
-			<music_style>rave</music_style>
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
@@ -99,6 +172,14 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 				<a type="ok_embed" href="//ok.ru/videoembed/3196192005"/>
 				<a type="local_file" title="LITTLE BIG - Life in da trash.mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Life in da trash.mp4"/>
 			</link>
+			
+			<tags>
+				<country>Russia</country>
+				<year>2016</year>
+
+				<music_style>rave</music_style>
+			</tags>
+			
 		</video>
 
 
@@ -106,11 +187,8 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 			<title lang="ru"></title>
 			<title lang="en">AK-47</title>
 			
-			<country>Russia</country>
 			<music_band>LITTLE BIG</music_band>
-			<year>2017</year>
-
-			<music_style>rave</music_style>
+			
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
@@ -131,20 +209,26 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 				
 				<a type="local_file" title="LITTLE BIG - AK-47 (music video).mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4"/>
 			</link>
+			
+			<tags>
+				<country>Russia</country>
+				<year>2017</year>
+				<music_style>rave</music_style>
+			</tags>
+			
 		</video>
 
 		<video type="film">
 			<title lang="ru">Служебный роман</title>
 			<title lang="en"></title>
-			
-			<country>СССР</country>
-			<year>1977</year>
-			<producer> 
-Режиссер: Эльдар Рязанов. 
-Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. 
-Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. 
-Композитор: Андрей Петров. 
-			</producer>
+		
+			<creators> 
+				<director>Режиссер: Эльдар Рязанов.</director> 
+				<writers>Авторы сценария: Эмиль Брагинский, Эльдар Рязанов.</writers>
+				<operator>Главный оператор: Владимир Нахабцев.</operator>
+				<painters>Художники-постановщики: Александр Борисов, Сергей Воронков.</painters>
+				<composer>Композитор: Андрей Петров.<c/omposer>
+			</creators>
 
 			<roles>
 Андрей Мягков, Алиса Фрейндлих, Светлана Немоляева, 
@@ -155,12 +239,15 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 Любовь Колюжная, Владимир Плотников, Александр Фатюшин.
 			</roles>
 
-			<genre></genre>
 			
 			<description></description>
 			<pictures></pictures>
 			
 			<tags>
+				<country>СССР</country>
+				<year>1977</year>
+				<genre></genre>
+				
 				<item>С</item>
 				<item>1977</item>
 				<item>комедия</item>
