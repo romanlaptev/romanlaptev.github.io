@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xroot>
+	<database name='video'>
+
+		<taxonomy>
+			<vocabulary></vocabulary>
+			
+			<termins>
+				
+				<termin tid='143' tid_parent='133' weight='0'>
+					<term_name>3D</term_name>
+					<term_description>cg-art_11.jpg</term_description>
+				</termin>			
+				
+			</termins>
+			
+			<hierarchy></hierarchy>
+		</taxonomy>
+<!--
+
+<table_node>
+<table_book_filename>
+<table_book_url>
+<table_book_links>
+<taxonomy_index>
+<taxonomy_term_data>
+<taxonomy_term_hierarchy>
+<taxonomy_vocabulary>
+	
+CREATE TABLE `taxonomy_index` (
+	`nid`	INTEGER NOT NULL DEFAULT 0 CHECK(nid >= 0),
+	`tid`	INTEGER NOT NULL DEFAULT 0 CHECK(tid >= 0),
+	`sticky`	INTEGER DEFAULT 0,
+	`created`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `taxonomy_term_data` (
+	`tid`	INTEGER CHECK(tid >= 0) PRIMARY KEY AUTOINCREMENT,
+	`vid`	INTEGER NOT NULL DEFAULT 0 CHECK(vid >= 0),
+	`name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`description`	TEXT DEFAULT NULL,
+	`format`	VARCHAR ( 255 ) DEFAULT NULL,
+	`weight`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `taxonomy_term_hierarchy` (
+	`tid`	INTEGER NOT NULL DEFAULT 0 CHECK(tid >= 0),
+	`parent`	INTEGER NOT NULL DEFAULT 0 CHECK(parent >= 0),
+	PRIMARY KEY(`tid`,`parent`)
+);
+
+CREATE TABLE `taxonomy_vocabulary` (
+	`vid`	INTEGER CHECK(vid >= 0) PRIMARY KEY AUTOINCREMENT,
+	`name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`machine_name`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`description`	TEXT DEFAULT NULL,
+	`hierarchy`	INTEGER NOT NULL DEFAULT 0 CHECK(hierarchy >= 0),
+	`module`	VARCHAR ( 255 ) NOT NULL DEFAULT '',
+	`weight`	INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE `book` (
+	`mlid`	INTEGER NOT NULL DEFAULT 0 CHECK(mlid >= 0),
+	`nid`	INTEGER NOT NULL DEFAULT 0 CHECK(nid >= 0),
+	`bid`	INTEGER NOT NULL DEFAULT 0 CHECK(bid >= 0),
+	PRIMARY KEY(`mlid`)
+);
+
+	<node num="1" nid="7">
+		<status>1</status>
+		<created timestamp="1336007280">03-May-2012 01:08:00</created>
+		<changed timestamp="1440946283">30-Aug-2015 14:51:23</changed>
+		<title>Монахиня трапписткого ордена (The Trappistine), реклама ликера</title>
+		<termin tid="2">Альфонс Муха</termin>
+		<author>Альфонс Муха</author>
+		<field_title_value>Монахиня трапписткого ордена (The Trappistine), реклама ликера, 1897, Альфонс Муха</field_title_value>
+		<year>1897</year>
+		<preview_img>/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/the-trappistine-1897.jpg</preview_img>
+		<big_img>/site-content/albums/gallery_images/imagecache/w1024/gallery_images/the-trappistine-1897.jpg</big_img>
+		<original_img>/site-content/albums/gallery_images/the-trappistine-1897.jpg</original_img>
+	</node>
+
+-->
+		
+		<video type="film" public="1">
+			<title lang="ru">Трио из Бельвилля</title>
+			<title lang="en">Les Triplettes de Belleville</title>
+			
+			<creators> 
+				<director>Режиссер: Сильвен Шомэ.</director> 
+				<writers>Авторы сценария: Сильвен Шомэ.</writers>
+			</creators>
+
+			<roles>
+Чарльз Линтон, Mari-Lou Gauthier, Michele Caucheteux, Lina Boudreault, Béatrice Bonifassi, Monica Viegas, Жан-Клод Донда, Мишель Робин
+			</roles>
+
+			
+			<description>
+Чемпион — маленький мальчик, усыновленный своей бабушкой мадам Сузой. Мадам Суза замечает, что наиболее счастливым мальчик чувствует себя верхом на велосипеде, и поэтому настаивает на том, чтобы он самым серьезным образом тренировался. Проходят годы и, наконец, Чемпион становится достойным собственного имени. Он готов участвовать во всемирно известной гонке Тур-де-Франс. Но во время соревнования двое таинственных неизвестных в черном выкрадывают Чемпиона. Мадам Суза и ее верный пес Брюно должны его освободить.
+Во время поисков они оказываются за океаном в огромном мегаполисе Бельвилль и встречают известных «бельвилльских тройняшек» — трех эксцентричных звезд-певиц мюзик-холла 30-х годов. «Тройняшки» берут мадам Сузу и Брюно под свою опеку. Благодаря острому нюху Бруно храбрая пара вскоре нападает на след Чемпиона.
+			</description>
+			<pictures></pictures>
+			
+			<link>
+				<a href="http://mycomp/video/mult/bellville.avi"/>
+				<a href="http://mycomp/video/films/Les_Triplettes_de_Belleville.avi"/>
+			</link>
+			
+			<tags>
+				<country>Франция, Великобритания, Канада, Бельгия</country>
+				<year>2003</year>
+				<genre>  
+	Драма, Музыка, Приключения, Мультфильм
+				</genre>
+				
+				<item>2003</item>
+			</tags>
+<!--
+			<column name='created'>23-Sep-2012 13:45:32</column>
+			<column name='changed'>24-Sep-2012 09:11:03</column>
+<published>2014-01-12T08:59:42.000Z</published>
+<updated>1970-01-01T00:00:00.000Z</updated>
+			
+-->
+		</video>
+
+
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">All The Things She Said</title>
+			<music_band>The Berzerker</music_band>
+			<description>t.A.T.u. cover
+https://ru.wikipedia.org/wiki/The_Berzerker			
+			</description>
+			<pictures>
+				<img src="https://i.ytimg.com/vi/DDqXXlPkRBo/sddefault.jpg"/>
+				<poster src="http://site-content/video/0_covers/The_Berzerker_-_All_The_Things_She_Said.png"/>
+			</pictures>
+			
+			<link>
+				<a type="external-link" title="see video on Youtube" href="https://www.youtube.com/watch?v=DDqXXlPkRBo"/>
+				<a type="youtube_embed" href="http://youtube.com/embed/DDqXXlPkRBo"/>
+				
+				<a type="local_file" title="The_Berzerker_-_All_The_Things_She_Said.avi"
+				href="http://site-content/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi"/>
+			</link>
+			
+			<tags>
+				<country>Australia</country>
+				<year>2003</year>
+				<music_style>death metal</music_style>
+			</tags>
+		</video>
+
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">Life in da trash</title>
+			<music_band>LITTLE BIG</music_band>
+			<description></description>
+			<pictures>
+				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
+				<poster src="http://site-content/video/0_covers/LITTLE BIG - Life in da trash.jpg"/>
+			</pictures>
+			
+			<link>
+				<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=17&t=0s"/>
+				<a type="external-link" title="OK.ru" href="https://ok.ru/video/3196192005" />
+				<a type="external-link" title="VContacte" href="https://vk.com/video-163575186_456239090" />
+				<a type="youtube_embed" href="http://youtube.com/embed/UVrjzOUZJI4"/>
+				<a type="rutube_embed" href="http://rutube.ru/play/embed/a8999bb4194d99419b3b8395c26ecc9f"/>
+				<a type="ok_embed" href="//ok.ru/videoembed/3196192005"/>
+				<a type="local_file" title="LITTLE BIG - Life in da trash.mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Life in da trash.mp4"/>
+			</link>
+			
+			<tags>
+				<country>Russia</country>
+				<year>2016</year>
+
+				<music_style>rave</music_style>
+			</tags>
+			
+		</video>
+
+
+		<video type="videoclip">
+			<title lang="ru"></title>
+			<title lang="en">AK-47</title>
+			
+			<music_band>LITTLE BIG</music_band>
+			
+			<description></description>
+			<pictures>
+				<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
+				<poster src="http://site-content/video/0_covers/LITTLE BIG - AK-47.jpg"/>
+			</pictures>
+			
+			<link>
+				<a type="external-link" title="playlist on Youtube" href="https://www.youtube.com/watch?v=-QHha1zko1A&list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&index=24&t=0s"/>
+				<a type="youtube_embed" href="http://youtube.com/embed/-QHha1zko1A"/>
+				
+				<a type="rutube_embed" href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c"/>
+				<a type="external-link" href="https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search" title="go to rutube.ru"/>
+
+				<a type="ok_embed" href="//ok.ru/videoembed/1147112392106"/>
+				<a type="external-link" href="https://ok.ru/video/1147112392106" title="OK.ru"/>
+
+				<a type="external-link" href="https://vk.com/video-55072656_456239072" title="VContacte"/>
+				
+				<a type="local_file" title="LITTLE BIG - AK-47 (music video).mp4" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4"/>
+			</link>
+			
+			<tags>
+				<country>Russia</country>
+				<year>2017</year>
+				<music_style>rave</music_style>
+			</tags>
+			
+		</video>
+
+		<video type="film">
+			<title lang="ru">Служебный роман</title>
+			<title lang="en"></title>
+		
+			<creators> 
+				<director>Режиссер: Эльдар Рязанов.</director> 
+				<writers>Авторы сценария: Эмиль Брагинский, Эльдар Рязанов.</writers>
+				<operator>Главный оператор: Владимир Нахабцев.</operator>
+				<painters>Художники-постановщики: Александр Борисов, Сергей Воронков.</painters>
+				<composer>Композитор: Андрей Петров.<c/omposer>
+			</creators>
+
+			<roles>
+Андрей Мягков, Алиса Фрейндлих, Светлана Немоляева, 
+Олег Басилашвили, Лия Ахеджакова, 
+Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
+Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
+Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
+Любовь Колюжная, Владимир Плотников, Александр Фатюшин.
+			</roles>
+
+			
+			<description></description>
+			<pictures></pictures>
+			
+			<tags>
+				<country>СССР</country>
+				<year>1977</year>
+				<genre></genre>
+				
+				<item>С</item>
+				<item>1977</item>
+				<item>комедия</item>
+				<item>трагикомедия</item>
+				<item>Мягков,Андрей</item>
+				<item>Олег Басилашвили</item>
+				<item>Рязанов,Эльдар</item>
+				<item>youtube</item>
+			</tags>
+			
+			<link>
+				<a type="ok_embed" href="//ok.ru/videoembed/41202551490"/>
+				<a type="external-link" href="https://ok.ru/video/41202551490" title="OK.ru"/>
+				<a type="external-link" href="https://www.youtube.com/watch?v=hR-1QGMK75c" title="see on Youtube.com"/>
+				
+			</link>
+		</video>
+
+	
+	</database>
+</xroot>
