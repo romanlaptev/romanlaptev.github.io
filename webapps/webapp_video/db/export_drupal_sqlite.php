@@ -64,6 +64,14 @@ node.type='videoclip'
 -- AND node.title LIKE ('%Life%');
 ";
 
+$_vars["sql"]["getVideoTitle"] = "
+SELECT 
+field_data_field_title.field_title_value,
+-- field_data_field_title.delta
+FROM node
+LEFT JOIN field_data_field_title ON field_data_field_title.entity_id={{nodeNid}}
+";
+
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 
 //exit();
@@ -107,6 +115,7 @@ if ( $_vars["runType"] == "web") {
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 					
 					$_vars["films"] = getNodes( $_vars["sql"]["getVideo"] );
+					//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["films"] );
 					$_vars["films"] = _convertFields($_vars["films"]);
 					
 					$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
@@ -203,6 +212,16 @@ function getNodes( $sql ) {
 _log("-- get node info\n");
 	return $result;
 }//end getNodes()
+
+function getMultipleFields( $sql, $records ){
+	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+		$record = $records[$n1];
+//echo $record->title;
+//echo "<br>";
+//$sql = str_replace("{{exportBookName}}", $_vars["exportBookName"], $sql);
+	}//next
+	
+}//getMultipleFields()
 
 function _convertFields( $records ) {
 	$newRecords = array();

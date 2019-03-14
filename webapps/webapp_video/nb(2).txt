@@ -140,11 +140,11 @@ node.type='videoclip'
 ------ get title (video->title_ru, video->title_en)
 SELECT 
 field_data_field_title.field_title_value,
-field_data_field_title.delta
+-- field_data_field_title.delta
 FROM node
 LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
-WHERE 
-node.nid=745;
+-- WHERE 
+-- node.nid=745;
 
 ------ get pictures (video->pictures->img, video->pictures->poster)
 SELECT 
