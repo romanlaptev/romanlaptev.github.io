@@ -25,19 +25,24 @@ $_vars["phpversion"] = phpversion();
 
 $filename = "export_video.xml";
 $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
-$_vars["sql"]["getNodes"] = "
+$_vars["sql"]["getVideo"] = "
 SELECT 
--- node.nid, 
--- node.vid, 
+node.nid, 
 node.title, 
+node.type, 
 node.created, 
 node.changed, 
--- field_data_body.entity_id,
-field_data_body.body_value,
-node.status
-FROM field_data_body 
-LEFT JOIN node ON node.nid=field_data_body.entity_id
-WHERE node.type IN ('video', 'videoclip');
+node.status,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='video';
 ";
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 
@@ -80,11 +85,16 @@ if ( $_vars["runType"] == "web") {
 					$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
 					
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
-					$_vars["nodes"] = getNodes();
-echo "nodes = <pre>";
-print_r($_vars["nodes"]);
-echo "</pre>";
 					
+					$_vars["films"] = getNodes( $_vars["sql"]["getVideo"] );
+					$_vars["video"] = _convertFields($_vars["films"]);
+					
+					//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoclips"] );
+					//$_vars["video"] = _convertFields($_vars["videoclips"]);
+					
+echo "vars = <pre>";
+print_r($_vars["video"] );
+echo "</pre>";
 					//if ( !empty($_vars["book"]) ){
 						//write_xml($_vars["book"]);
 					//}
@@ -166,13 +176,37 @@ function runSql($db,  $query){
 	return $resultData;
 }//end runSql()
 
-function getNodes() {
+function getNodes( $sql ) {
 	global $db, $_vars;
-	$sql = $_vars["sql"]["getNodes"];
 	$result = runSql($db,  $sql);
 _log("-- get node info\n");
 	return $result;
 }//end getNodes()
+
+function _convertFields( $records ) {
+	$newRecords = array();
+	
+
+	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+		$record = $records[$n1];
+//echo $record->title;
+//echo "<br>";
+		$recordVideo = array();
+		foreach( $record as $key=>$field )	{
+//echo $key;
+//echo $field;
+//echo "<br>";
+			if( $key === "field_producer_value"){
+				$recordVideo["creators"] = $field;
+			}
+			
+		}//next
+		$newRecords[] = $recordVideo;
+	}//next
+	
+	//$newRecords = $records;
+	return $newRecords;
+}//end _convertFields()
 
 /*
 function write_xml($data){
