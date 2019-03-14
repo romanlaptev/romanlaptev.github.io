@@ -56,15 +56,15 @@
 			</link>
 			
 			<tags><!-- maybe JSON? -->
-				<item type="year"/><!-- 2003 -->
-				<item type="genre" tid="5"/><!--комедия -->
-				<item type="genre" tid="137"/><!-- мультфильм -->
-				<item type="genre" tid="14"/><!-- приключения -->
-				<item type="country" tid="112"/><!-- Бельгия -->
-				<item type="country" tid="60"/><!-- Великобритания -->
-				<item type="country" tid="60"/><!-- Франция -->
-				<item type="country" tid="60"/><!-- Канада -->
-				<item type="fileformat" tid="22"/><!--avi-->
+				<item name="year"/><!-- 2003 -->
+				<item name="genre" tid="5"/><!--комедия -->
+				<item name="genre" tid="137"/><!-- мультфильм -->
+				<item name="genre" tid="14"/><!-- приключения -->
+				<item name="country" tid="112"/><!-- Бельгия -->
+				<item name="country" tid="60"/><!-- Великобритания -->
+				<item name="country" tid="60"/><!-- Франция -->
+				<item name="country" tid="60"/><!-- Канада -->
+				<item name="fileformat" tid="22"/><!--avi-->
 			</tags>
 			<published>1349968077</published>
 			<updated>1552535579</updated>
@@ -74,7 +74,7 @@
 		<video type="videoclip">
 			<title lang="ru"></title>
 			<title lang="en">All The Things She Said</title>
-			<music_band>The Berzerker</music_band>
+			<creators>The Berzerker</creators>
 			<description>t.A.T.u. cover
 https://ru.wikipedia.org/wiki/The_Berzerker			
 			</description>
@@ -92,16 +92,16 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 			</link>
 			
 			<tags>
-				<country>Australia</country>
-				<year>2003</year>
-				<music_style>death metal</music_style>
+				<item name="country" tid=""/><!-- Australia -->
+				<item name="year" tid=""/><!-- 2003 -->
+				<item name="music_style" tid=""/><!--death metal -->
 			</tags>
 		</video>
 
 		<video type="videoclip">
 			<title lang="ru"></title>
 			<title lang="en">Life in da trash</title>
-			<music_band>LITTLE BIG</music_band>
+			<creators>LITTLE BIG</creators>
 			<description></description>
 			<pictures>
 				<img src="https://i.ytimg.com/vi/UVrjzOUZJI4/sddefault.jpg"/>
@@ -132,7 +132,7 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 			<title lang="ru"></title>
 			<title lang="en">AK-47</title>
 			
-			<music_band>LITTLE BIG</music_band>
+			<creators>LITTLE BIG</creators>
 			
 			<description></description>
 			<pictures>
@@ -190,8 +190,8 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 			
 			<tags>
 				<item>С</item>
-				<item type="country" tid=""/><!-- СССР -->
-				<item type="year" tid=""/><!-- 1977 -->
+				<item name="country" tid=""/><!-- СССР -->
+				<item name="year" tid=""/><!-- 1977 -->
 				<item>комедия</item>
 				<item>трагикомедия</item>
 				<item>Мягков,Андрей</item>

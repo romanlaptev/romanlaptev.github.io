@@ -119,6 +119,22 @@ node.status=1 AND
 node.type='video';
 -- AND node.title LIKE ('%Бельвилля%');
 
+SELECT 
+node.nid, 
+node.title, 
+field_data_field_creators.field_creators_value,
+node.type, 
+node.created, 
+node.changed, 
+node.status
+FROM node
+LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='videoclip' 
+AND node.title LIKE ('%Life%');
+
+
 ------ get title (video->title_ru, video->title_en)
 SELECT 
 field_data_field_title.field_title_value,
@@ -135,7 +151,7 @@ FROM node
 LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
 WHERE 
 node.nid=745;
-
+1283
 
 ------ get links (video->links)
 SELECT 
