@@ -48,14 +48,16 @@ node.type='video';
 $_vars["sql"]["getVideoClips"] = "
 SELECT 
 node.nid, 
-node.title as videoclip_title, 
+node.title, 
 field_data_field_creators.field_creators_value,
 node.type, 
 node.created, 
 node.changed, 
-node.status
+node.status,
+field_data_body.body_value
 FROM node
 LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
 WHERE 
 node.status=1 AND 
 node.type='videoclip' 
@@ -215,6 +217,27 @@ function _convertFields( $records ) {
 //echo $key;
 //echo $field;
 //echo "<br>";
+
+			if( $key === "type"){
+				$recordVideo["type"] = $field;
+			}
+			if( $key === "status"){
+				$recordVideo["public_status"] = $field;
+			}
+			if( $key === "created"){
+				$recordVideo["public"] = date('d-M-Y H:i:s', $field);
+			}
+			if( $key === "changed"){
+				$recordVideo["updated"] = date('d-M-Y H:i:s', $field);
+			}
+			if( $key === "body_value"){
+				$body = htmlspecialchars ($field);
+//echo $body;
+//echo "<br>";
+				$recordVideo["description"] = $body;
+			}
+
+//-------------------------------- film fields
 			if( $key === "field_producer_value"){
 				$recordVideo["creators"] = $field;
 			}
@@ -222,7 +245,8 @@ function _convertFields( $records ) {
 			if( $key === "field_roles_value"){
 				$recordVideo["roles"] = $field;
 			}
-
+			
+//-------------------------------- videoclip fields
 			if( $key === "field_creators_value"){
 				$recordVideo["creators"] = $field;
 			}

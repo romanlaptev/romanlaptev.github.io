@@ -126,13 +126,15 @@ field_data_field_creators.field_creators_value,
 node.type, 
 node.created, 
 node.changed, 
-node.status
+node.status,
+field_data_body.body_value
 FROM node
 LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
 WHERE 
 node.status=1 AND 
 node.type='videoclip' 
-AND node.title LIKE ('%Life%');
+-- AND node.title LIKE ('%Life%');
 
 
 ------ get title (video->title_ru, video->title_en)
