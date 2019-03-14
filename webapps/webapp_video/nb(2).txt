@@ -43,11 +43,113 @@ youtube, ответы на часто задаваемые вопросы о в�
 - сделать скрипт импорта из БД Друпал в XML
 - необходимо конвертировать данные массивов, полученных после  SQL запросов по правилам
 соответсвия полей ( 
-body_value --> description
+
+	field_data_field_title.field_title_value (delta=0)-->	video->title_ru
+	field_data_field_title.field_title_value (delta=1)-->	video->title_en
+	
+	node.type -->									video->type
+
+	field_data_field_producer.field_producer_value	-->	video->creators->producer
+<music_band>?
+
+	field_data_field_img_cover.field_img_cover_value --> video->pictures
+	field_data_field_url.field_url_value --> 		video->links (delta!)
+	field_data_body.body_value --> 					video->description
+	node.status --> 								video->public
+	node.created -->								video->published
+	node.changed -->								video->updated
 ...
 )
 - полученный массив данных вставить в XML, который формируется на основе шаблона, где места
 вставки данных обозначены кодами, названия которых совпадают с наименованием полей в 
 сконвертированном массиве данных.
 перебор массива и вставку в шаблон значений полей организовать в цикле
+
+--------- SQL test
+SELECT 
+node.nid, 
+taxonomy_index.tid,
+taxonomy_term_data.name,
+-- node.vid, 
+node.title, 
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_field_title.field_title_value,
+field_data_field_title.delta,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_field_img_cover.field_img_cover_value,
+field_data_field_url.field_url_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='video' AND 
+node.title LIKE ('%Бельвилля%');
+
+------ one record
+SELECT 
+node.nid, 
+node.title, 
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='video';
+-- AND node.title LIKE ('%Бельвилля%');
+
+------ get title (video->title_ru, video->title_en)
+SELECT 
+field_data_field_title.field_title_value,
+field_data_field_title.delta
+FROM node
+LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
+WHERE 
+node.nid=745;
+
+------ get pictures (video->pictures->img, video->pictures->poster)
+SELECT 
+field_data_field_img_cover.field_img_cover_value
+FROM node
+LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
+WHERE 
+node.nid=745;
+
+
+------ get links (video->links)
+SELECT 
+field_data_field_url.field_url_value
+FROM node
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE 
+node.nid=745;
+
+------ get tags (video->tags)
+SELECT 
+taxonomy_index.tid,
+-- taxonomy_term_data.name
+FROM node
+LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
+-- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+WHERE 
+node.nid=745;
 
