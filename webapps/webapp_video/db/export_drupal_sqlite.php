@@ -44,6 +44,24 @@ WHERE
 node.status=1 AND 
 node.type='video';
 ";
+
+$_vars["sql"]["getVideoClips"] = "
+SELECT 
+node.nid, 
+node.title as videoclip_title, 
+field_data_field_creators.field_creators_value,
+node.type, 
+node.created, 
+node.changed, 
+node.status
+FROM node
+LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='videoclip' 
+-- AND node.title LIKE ('%Life%');
+";
+
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 
 //exit();
@@ -87,11 +105,12 @@ if ( $_vars["runType"] == "web") {
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 					
 					$_vars["films"] = getNodes( $_vars["sql"]["getVideo"] );
-					$_vars["video"] = _convertFields($_vars["films"]);
+					$_vars["films"] = _convertFields($_vars["films"]);
 					
-					//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoclips"] );
-					//$_vars["video"] = _convertFields($_vars["videoclips"]);
+					$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
+					$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
 					
+					$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
 echo "vars = <pre>";
 print_r($_vars["video"] );
 echo "</pre>";
@@ -198,6 +217,18 @@ function _convertFields( $records ) {
 //echo "<br>";
 			if( $key === "field_producer_value"){
 				$recordVideo["creators"] = $field;
+			}
+			
+			if( $key === "field_roles_value"){
+				$recordVideo["roles"] = $field;
+			}
+
+			if( $key === "field_creators_value"){
+				$recordVideo["creators"] = $field;
+			}
+
+			if( $key === "videoclip_title"){
+				$recordVideo["title"] = $field;
 			}
 			
 		}//next

@@ -160,6 +160,7 @@ FROM node
 LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
 WHERE 
 node.nid=745;
+1283
 
 ------ get tags (video->tags)
 SELECT 
@@ -170,4 +171,5 @@ LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
 -- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
 WHERE 
 node.nid=745;
+1283
 
