@@ -10,6 +10,20 @@
 .bg-darkblue3{/*css.html*/
   background-color: #0e1f40 !important;
 }
+.bg-darkblue4{
+  background-color: #062237 !important;
+}
+.bg-darkblue5{
+  background-color: #153449 !important;
+}
+.bg-darkblue-tango{
+  background-color: #0c253c !important;
+}
+.bg-darkblue-tango2{
+  background-color: #001b33 !important;
+}
+
+
 
 
 .bg-lightblue {/*Диаграмма 12*/
@@ -23,6 +37,11 @@
 .bg-lightsteelblue2{ /* comp-books.css */
   background-color: #83A0C5 !important;
 }
+.bg-lightsteelblue3{
+  background-color: #3b5a6f !important;
+}
+
+
 
 .bg-yellow {
   background-color: #ffd320 !important;
@@ -35,6 +54,14 @@
 }
 .bg-orange2 {
   background-color: #ffb515 !important;
+}
+.bg-orange-tango {
+  background-color: #e09d00 !important;
+}
+
+
+.bg-red-brown {
+  background-color: #2f0606 !important;
 }
 
 
@@ -136,6 +163,10 @@
 .bg-darkgreen2{/* windows7 desktop */
   background-color: #094546 !important;
 }
+.bg-darkgreen2{/* windowsXP desktop */
+  background-color: #003200 !important;
+}
+
 
 
 .bg-lightgreen{
@@ -165,7 +196,6 @@
 .bg-grey-green2{
   background-color: #607d8b !important;
 }
-
 
 .bg-pale-rose-c5{
   background-color: #d3c5be !important;
@@ -608,9 +638,6 @@ color:#0000ff,background:#ccffff;
 </div>
 
 
-<div style="color:#ffffff;background:#003200;" class="colorbox">
-color: #ffffff,background:#003200;
-</div>
 
 <div style="color:#ffffff;background:#225033;" class="colorbox">
 color: #ffffff,background:#225033;
