@@ -502,21 +502,27 @@ echo "
 <legend>Export params:</legend>
 		<div class=class='form-group'>
  
-<label>filename</label>
-<input 
-type='text'
-name='filename'
-value='".$filename."'
-class='form-control'/>
-<br>
+<div>
+	<label>filename</label>
+	<input 
+	type='text'
+	name='filename'
+	value='".$filename."'
+	class='form-control'/>
+</div>
 
-<label>sqlite_path</label>
-<input 
-class='form-control'
-type='text' 
-name='sqlite_path' 
-value='".$sqlite_path."'/>
-<br>
+<div>
+	<label>sqlite_path</label>
+	<input 
+	class='form-control'
+	type='text' 
+	name='sqlite_path' 
+	value='".$sqlite_path."'/>
+</div>
+<pre>
+sqlite:/home/www/sites/video/cms/db/video.sqlite
+sqlite:/mnt/d2/temp/video.sqlite
+</pre>
 		</div>
 
 		<input type=hidden name='action' value='export'/>
