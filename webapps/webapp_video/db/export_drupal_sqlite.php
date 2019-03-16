@@ -28,7 +28,7 @@ $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
 $_vars["sql"]["getVideo"] = "
 SELECT 
 node.nid, 
-node.title, 
+-- node.title, 
 node.type, 
 node.created, 
 node.changed, 
@@ -48,7 +48,7 @@ node.type='video';
 $_vars["sql"]["getVideoClips"] = "
 SELECT 
 node.nid, 
-node.title, 
+-- node.title, 
 field_data_field_creators.field_creators_value,
 node.type, 
 node.created, 
@@ -60,16 +60,15 @@ LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.
 LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
 WHERE 
 node.status=1 AND 
-node.type='videoclip' 
--- AND node.title LIKE ('%Life%');
+node.type='videoclip';
 ";
 
 $_vars["sql"]["getVideoTitle"] = "
 SELECT 
-field_data_field_title.field_title_value,
--- field_data_field_title.delta
-FROM node
-LEFT JOIN field_data_field_title ON field_data_field_title.entity_id={{nodeNid}}
+field_data_field_title.field_title_value
+-- field_data_field_title.delta 
+FROM field_data_field_title 
+WHERE field_data_field_title.entity_id={{nodeNid}};
 ";
 
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
@@ -115,10 +114,11 @@ if ( $_vars["runType"] == "web") {
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 					
 					$_vars["films"] = getNodes( $_vars["sql"]["getVideo"] );
-					//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["films"] );
+					getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["films"] );
 					$_vars["films"] = _convertFields($_vars["films"]);
 					
 					$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
+					getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
 					$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
 					
 					$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
@@ -213,15 +213,36 @@ _log("-- get node info\n");
 	return $result;
 }//end getNodes()
 
+
 function getMultipleFields( $sql, $records ){
-	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+	global $db, $_vars;
+	for( $n1 = 0; $n1 < count( $records ); $n1++){
 		$record = $records[$n1];
-//echo $record->title;
+		$sqlFields = str_replace("{{nodeNid}}", $record->nid, $sql);
+//echo "SQL:".$sqlFields;
 //echo "<br>";
-//$sql = str_replace("{{exportBookName}}", $_vars["exportBookName"], $sql);
+		$result = runSql($db,  $sqlFields);
+//echo "result = <pre>";
+//print_r($result );
+//echo "</pre>";
+//echo "count result:".count( $result);
+//echo "<br>";
+
+		$record->title = array();
+		for( $n2 = 0; $n2 < count( $result ); $n2++){
+			$record->title[] = $result[$n2]->field_title_value;
+		}//next
+			
+		//if( count( $result) > 0 ){
+			//$record->title1 = $result[0]->field_title_value;
+			//if( count( $result) === 2 ){
+				//$record->title2 = $result[1]->field_title_value;
+			//}
+		//}
+
 	}//next
-	
 }//getMultipleFields()
+
 
 function _convertFields( $records ) {
 	$newRecords = array();
@@ -237,6 +258,16 @@ function _convertFields( $records ) {
 //echo $field;
 //echo "<br>";
 
+			if( $key === "title"){
+				$recordVideo["title"] = $field;
+			}
+			//if( $key === "title1"){
+				//$recordVideo["title1"] = $field;
+			//}
+			//if( $key === "title2"){
+				//$recordVideo["title2"] = $field;
+			//}
+
 			if( $key === "type"){
 				$recordVideo["type"] = $field;
 			}
@@ -244,7 +275,7 @@ function _convertFields( $records ) {
 				$recordVideo["public_status"] = $field;
 			}
 			if( $key === "created"){
-				$recordVideo["public"] = date('d-M-Y H:i:s', $field);
+				$recordVideo["publiched"] = date('d-M-Y H:i:s', $field);
 			}
 			if( $key === "changed"){
 				$recordVideo["updated"] = date('d-M-Y H:i:s', $field);
@@ -265,14 +296,12 @@ function _convertFields( $records ) {
 				$recordVideo["roles"] = $field;
 			}
 			
+			
 //-------------------------------- videoclip fields
 			if( $key === "field_creators_value"){
 				$recordVideo["creators"] = $field;
 			}
 
-			if( $key === "videoclip_title"){
-				$recordVideo["title"] = $field;
-			}
 			
 		}//next
 		$newRecords[] = $recordVideo;

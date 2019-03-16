@@ -29,8 +29,10 @@
 -->
 		
 		<video type="film" public="1">
-			<title lang="ru">Трио из Бельвилля</title>
-			<title lang="en">Les Triplettes de Belleville</title>
+			<title>
+				<item>Трио из Бельвилля</item>
+				<item>Les Triplettes de Belleville</item>
+			</title>
 			
 			<creators> 
 				Режиссер: Сильвен Шомэ.
@@ -72,7 +74,10 @@
 
 
 		<video type="videoclip">
-			<title lang="en">All The Things She Said</title>
+			<title>
+				<item>All The Things She Said</item>
+			</title>
+			
 			<creators>The Berzerker</creators>
 			<description>t.A.T.u. cover
 https://ru.wikipedia.org/wiki/The_Berzerker			
@@ -98,8 +103,10 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 		</video>
 
 		<video type="videoclip">
-			<title lang="ru"></title>
-			<title lang="en">Life in da trash</title>
+			<title>
+				<item>Life in da trash</item>
+			</title>
+			
 			<creators>LITTLE BIG</creators>
 			<description></description>
 			<pictures>
@@ -128,7 +135,9 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 
 
 		<video type="videoclip">
-			<title lang="en">AK-47</title>
+			<title>
+				<item>AK-47</item>
+			</title>
 			
 			<creators>LITTLE BIG</creators>
 			
@@ -162,7 +171,9 @@ https://ru.wikipedia.org/wiki/The_Berzerker
 		</video>
 
 		<video type="film">
-			<title lang="ru">Служебный роман</title>
+			<title>
+				<item>Служебный роман</item>
+			</title>
 		
 			<creators> 
 				Режиссер: Эльдар Рязанов.

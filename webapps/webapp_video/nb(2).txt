@@ -48,20 +48,23 @@ youtube, ответы на часто задаваемые вопросы о в�
 - необходимо конвертировать данные массивов, полученных после  SQL запросов по правилам
 соответсвия полей ( 
 
-	field_data_field_title.field_title_value (delta=0)-->	video->title_ru
-	field_data_field_title.field_title_value (delta=1)-->	video->title_en
 	
-	node.type -->									video->type
+	*node.type -->									video->type
 
-	field_data_field_producer.field_producer_value	-->	video->creators->producer
-<music_band>?
+	*field_producer_value	-->	video->creators
+	*field_roles_value	-->	video->roles
+	*field_creators_value	-->	video->creators
+	
+	*field_data_body.body_value --> 				video->description
+	*node.status --> 								video->public_status
+	*node.created -->								video->published
+	*node.changed -->								video->updated
+	
+	*field_title_value (delta=0,1)-->	video->title[]
 
-	field_data_field_img_cover.field_img_cover_value --> video->pictures
-	field_data_field_url.field_url_value --> 		video->links (delta!)
-	field_data_body.body_value --> 					video->description
-	node.status --> 								video->public
-	node.created -->								video->published
-	node.changed -->								video->updated
+	field_img_cover_value --> video->pictures (delta!)
+	field_url_value --> 		video->links (delta!)
+	
 ...
 )
 - полученный массив данных вставить в XML, который формируется на основе шаблона, где места
