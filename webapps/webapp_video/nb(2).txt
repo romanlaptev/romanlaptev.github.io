@@ -49,22 +49,23 @@ youtube, ответы на часто задаваемые вопросы о в�
 соответсвия полей ( 
 
 	
-	*node.type -->									video->type
+	*node.type -->	video->type
 
 	*field_producer_value	-->	video->producer
 	*field_roles_value	-->	video->roles
 	*field_creators_value	-->	video->creators
 	
-	*field_data_body.body_value --> 				video->description
-	*node.status --> 								video->public_status
-	*node.created -->								video->published
-	*node.changed -->								video->updated
+	*field_data_body.body_value --> video->description
+	*node.status --> video->public_status
+	*node.created --> video->published
+	*node.changed -->video->updated
 	
 	*field_title_value (delta=0,1)-->	video->title[]
 
-	*field_img_cover_value --> video->pictures (delta!)
-	*field_url_value --> 		video->links (delta!)
-	taxonomy_index.tid, taxonomy_term_data.name	-->	video->tags (assoc!)
+	*field_img_cover_value --> video->pictures[]
+	*field_url_value --> 		video->links[]
+	*taxonomy_index.tid	-->		video->tags[]->tid
+	*taxonomy_term_data.name	-->	video->tags[]->name
 	
 ...
 )

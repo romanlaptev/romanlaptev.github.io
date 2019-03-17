@@ -2,6 +2,7 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
+
 //echo "<pre>";
 //print_r($_SERVER);
 //print_r($_REQUEST);
@@ -25,6 +26,7 @@ $_vars["phpversion"] = phpversion();
 
 $filename = "export_video.xml";
 $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
+
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
@@ -121,7 +123,10 @@ WHERE taxonomy_index.nid={{nodeNid}};
 
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 
-//exit();
+
+//==================================
+$_vars["export_tpl"] = "export_template.xml";
+
 //==============================================================
 //echo "REMOTE_ADDR: ".$_SERVER["REMOTE_ADDR"];
 //echo "<br>";
@@ -193,9 +198,14 @@ if ( $_vars["runType"] == "web") {
 					//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
 					
 					//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
-echo "vars = <pre>";
-print_r($_vars["video"] );
-echo "</pre>";
+//echo "vars = <pre>";
+//print_r($_vars["video"] );
+//echo "</pre>";
+
+					if( !empty($_vars["video"]) ){
+						formXML($_vars["video"]);
+					}
+					
 					//if ( !empty($_vars["book"]) ){
 						//write_xml($_vars["book"]);
 					//}
@@ -418,6 +428,46 @@ function _convertFields( $records ) {
 	//$newRecords = $records;
 	return $newRecords;
 }//end _convertFields()
+
+
+function formXML( $records){
+	global $_vars;
+
+/*
+	if( file_exists( dirname(__FILE__)."/".$_vars["export_tpl"] ) ){
+		$_vars["xml_template"] = file_get_contents( dirname(__FILE__)."/".$_vars["export_tpl"] );
+//echo "<pre>";
+//print_r($_vars);
+//echo "</pre>";
+
+	} else {
+		echo "<p> -- error, not found <b>".dirname(__FILE__)."/".$_vars["export_tpl"] ."</b></p>";
+		exit();
+	}
+
+$test = str_replace("{{title}}", "#title", $_vars["xml_template"]);
+echo htmlspecialchars ( $test );
+*/
+
+//http://php.net/manual/ru/ref.simplexml.php
+	$filename = dirname(__FILE__)."/".$_vars["export_tpl"];
+	$xmlTpl = simplexml_load_file($filename);
+	if(!$xmlTpl){
+		exit("Failed to open ".$filename);
+	} else {
+	  //echo "Use SimpleXML for read data from ".$xml_file."<br>\n"; 
+
+echo "<pre>";
+print_r($xmlTpl);
+echo "</pre>";
+
+echo sizeof($xmlTpl->database->video);
+echo "<br>";
+echo "Type:".$xmlTpl->database->video[0]["type"];
+echo "<br>";
+	  }
+
+}//end formXML()
 
 /*
 function write_xml($data){

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xroot>
+	<database name='video'>
+
+		<video type="{{type}}" public="{{public_status}}">
+			<title>
+{{title}}
+			</title>
+			
+			<creators> 
+{{creators}}				
+			</creators>
+
+			<producer> 
+{{producer}}				
+			</producer>
+
+			<roles>
+{{roles}}
+			</roles>
+
+			
+			<description>
+{{description}}
+			</description>
+			
+			<pictures>
+{{pictures}}
+			</pictures>
+			
+			<links>
+{{links}}
+			</links>
+			
+			<tags>
+{{tags}}
+			</tags>
+
+			<published>{{published}}</published>
+			<updated>{{updated}}</updated>
+		</video>
+
+
+	</database>
+</xroot>
