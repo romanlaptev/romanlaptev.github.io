@@ -51,7 +51,7 @@ youtube, ответы на часто задаваемые вопросы о в�
 	
 	*node.type -->									video->type
 
-	*field_producer_value	-->	video->creators
+	*field_producer_value	-->	video->producer
 	*field_roles_value	-->	video->roles
 	*field_creators_value	-->	video->creators
 	
@@ -62,8 +62,9 @@ youtube, ответы на часто задаваемые вопросы о в�
 	
 	*field_title_value (delta=0,1)-->	video->title[]
 
-	field_img_cover_value --> video->pictures (delta!)
-	field_url_value --> 		video->links (delta!)
+	*field_img_cover_value --> video->pictures (delta!)
+	*field_url_value --> 		video->links (delta!)
+								video->tags (delta!)
 	
 ...
 )
@@ -144,41 +145,38 @@ node.type='videoclip'
 -- AND node.title LIKE ('%Life%');
 
 
------- get title (video->title_ru, video->title_en)
+------ get title (video->title)
 SELECT 
-field_data_field_title.field_title_value,
--- field_data_field_title.delta
-FROM node
-LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
--- WHERE 
--- node.nid=745;
+field_data_field_title.field_title_value
+-- field_data_field_title.delta 
+FROM field_data_field_title 
+WHERE field_data_field_title.entity_id={{nodeNid}};
+-- field_data_field_title.entity_id=745;
+
 
 ------ get pictures (video->pictures->img, video->pictures->poster)
 SELECT 
 field_data_field_img_cover.field_img_cover_value
-FROM node
-LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
-WHERE 
-node.nid=745;
-1283
+FROM field_data_field_img_cover
+WHERE field_data_field_img_cover.entity_id={{nodeNid}};
+-- node.nid=8;
+-- 1283
 
 ------ get links (video->links)
 SELECT 
 field_data_field_url.field_url_value
-FROM node
-LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
-WHERE 
-node.nid=745;
-1283
+FROM field_data_field_url
+WHERE field_data_field_url.entity_id={{nodeNid}};
+-- node.nid=745;
+-- 1283
 
 ------ get tags (video->tags)
 SELECT 
-taxonomy_index.tid,
+taxonomy_index.tid
 -- taxonomy_term_data.name
-FROM node
-LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
+FROM taxonomy_index
 -- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
-WHERE 
-node.nid=745;
-1283
+WHERE taxonomy_index.nid={{nodeNid}};
+-- 745;
+-- 1283
 

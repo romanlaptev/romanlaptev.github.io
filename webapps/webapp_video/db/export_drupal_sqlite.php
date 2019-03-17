@@ -25,6 +25,30 @@ $_vars["phpversion"] = phpversion();
 
 $filename = "export_video.xml";
 $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
+
+$_vars["sql"]["getNodes"] = "
+SELECT 
+node.nid, 
+-- node.title, 
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_field_creators.field_creators_value,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type IN ('video', 'videoclip');
+";
+
+/*
 $_vars["sql"]["getVideo"] = "
 SELECT 
 node.nid, 
@@ -34,8 +58,8 @@ node.created,
 node.changed, 
 node.status,
 field_data_field_producer.field_producer_value,
-field_data_field_roles.field_roles_value,
-field_data_body.body_value
+field_data_field_roles.field_roles_value
+-- field_data_body.body_value
 FROM node
 LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
 LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
@@ -62,13 +86,37 @@ WHERE
 node.status=1 AND 
 node.type='videoclip';
 ";
+*/
 
-$_vars["sql"]["getVideoTitle"] = "
+$_vars["sql"]["getTitle"] = "
 SELECT 
 field_data_field_title.field_title_value
 -- field_data_field_title.delta 
 FROM field_data_field_title 
 WHERE field_data_field_title.entity_id={{nodeNid}};
+";
+
+$_vars["sql"]["getPictures"] = "
+SELECT 
+field_data_field_img_cover.field_img_cover_value
+FROM field_data_field_img_cover
+WHERE field_data_field_img_cover.entity_id={{nodeNid}};
+";
+
+$_vars["sql"]["getLinks"] = "
+SELECT 
+field_data_field_url.field_url_value
+FROM field_data_field_url
+WHERE field_data_field_url.entity_id={{nodeNid}};
+";
+
+$_vars["sql"]["getTags"] = "
+SELECT 
+taxonomy_index.tid
+-- taxonomy_term_data.name
+FROM taxonomy_index
+-- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+WHERE taxonomy_index.nid={{nodeNid}};
 ";
 
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
@@ -113,15 +161,39 @@ if ( $_vars["runType"] == "web") {
 					
 					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 					
-					$_vars["films"] = getNodes( $_vars["sql"]["getVideo"] );
-					getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["films"] );
-					$_vars["films"] = _convertFields($_vars["films"]);
+					$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
+					getMultipleFields( 
+						$_vars["sql"]["getTitle"], 
+						$_vars["films"],
+						"field_title_value", 
+						"title" 
+					);
+					getMultipleFields( 
+						$_vars["sql"]["getPictures"], 
+						$_vars["films"],
+						"field_img_cover_value", 
+						"pictures" 
+					);
+					getMultipleFields( 
+						$_vars["sql"]["getLinks"], 
+						$_vars["films"],
+						"field_url_value", 
+						"links" 
+					);
+					getMultipleFields( 
+						$_vars["sql"]["getTags"], 
+						$_vars["films"],
+						"tid", 
+						"tags" 
+					);
+					$_vars["video"] = _convertFields($_vars["films"]);
 					
-					$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
-					getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
-					$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
+					//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
+					//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
+					//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
+					//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
 					
-					$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
+					//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
 echo "vars = <pre>";
 print_r($_vars["video"] );
 echo "</pre>";
@@ -214,7 +286,7 @@ _log("-- get node info\n");
 }//end getNodes()
 
 
-function getMultipleFields( $sql, $records ){
+function getMultipleFields( $sql, $records, $fieldNameSrc, $fieldNameTrg ){
 	global $db, $_vars;
 	for( $n1 = 0; $n1 < count( $records ); $n1++){
 		$record = $records[$n1];
@@ -227,18 +299,13 @@ function getMultipleFields( $sql, $records ){
 //echo "</pre>";
 //echo "count result:".count( $result);
 //echo "<br>";
-
-		$record->title = array();
-		for( $n2 = 0; $n2 < count( $result ); $n2++){
-			$record->title[] = $result[$n2]->field_title_value;
-		}//next
 			
-		//if( count( $result) > 0 ){
-			//$record->title1 = $result[0]->field_title_value;
-			//if( count( $result) === 2 ){
-				//$record->title2 = $result[1]->field_title_value;
-			//}
-		//}
+		if( count( $result) > 0 ){
+			$record->{$fieldNameTrg} = array();
+			for( $n2 = 0; $n2 < count( $result ); $n2++){
+				$record->{$fieldNameTrg}[] = $result[$n2]->{$fieldNameSrc};
+			}//next
+		}
 
 	}//next
 }//getMultipleFields()
@@ -267,6 +334,22 @@ function _convertFields( $records ) {
 			//if( $key === "title2"){
 				//$recordVideo["title2"] = $field;
 			//}
+			if( $key === "pictures"){
+				if( !empty( $field ) ){
+					$recordVideo["pictures"] = $field;
+				}
+			}
+			if( $key === "links"){
+				if( !empty( $field ) ){
+					$recordVideo["links"] = $field;
+				}
+			}
+			
+			if( $key === "tags"){
+				if( !empty( $field ) ){
+					$recordVideo["tags"] = $field;
+				}
+			}
 
 			if( $key === "type"){
 				$recordVideo["type"] = $field;
@@ -281,27 +364,32 @@ function _convertFields( $records ) {
 				$recordVideo["updated"] = date('d-M-Y H:i:s', $field);
 			}
 			if( $key === "body_value"){
-				$body = htmlspecialchars ($field);
-//echo $body;
-//echo "<br>";
-				$recordVideo["description"] = $body;
+				if( !empty( $field ) ){
+					$body = htmlspecialchars ($field);
+	//echo $body;
+	//echo "<br>";
+					$recordVideo["description"] = $body;
+				}
 			}
 
-//-------------------------------- film fields
+
+			if( $key === "field_creators_value" ){
+				if( !empty( $field ) ){
+					$recordVideo["creators"] = $field;
+				}
+			}
+
 			if( $key === "field_producer_value"){
-				$recordVideo["creators"] = $field;
+				if( !empty( $field ) ){
+					$recordVideo["producer"] = $field;
+				}
 			}
 			
 			if( $key === "field_roles_value"){
-				$recordVideo["roles"] = $field;
+				if( !empty( $field ) ){
+					$recordVideo["roles"] = $field;
+				}
 			}
-			
-			
-//-------------------------------- videoclip fields
-			if( $key === "field_creators_value"){
-				$recordVideo["creators"] = $field;
-			}
-
 			
 		}//next
 		$newRecords[] = $recordVideo;

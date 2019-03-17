@@ -55,7 +55,7 @@
 				<a type="local_file" href="http://mycomp/video/mult/bellville.avi"/>
 				<a type="local_file" href="http://mycomp/video/films/Les_Triplettes_de_Belleville.avi"/>
 				<a type="youtube_embed" href="http://youtube.com/embed/#"/>
-			</link>
+			</links>
 			
 			<tags><!-- maybe JSON? -->
 				<item name="year"/><!-- 2003 -->
