@@ -64,7 +64,7 @@ youtube, ответы на часто задаваемые вопросы о в�
 
 	*field_img_cover_value --> video->pictures (delta!)
 	*field_url_value --> 		video->links (delta!)
-								video->tags (delta!)
+	taxonomy_index.tid, taxonomy_term_data.name	-->	video->tags (assoc!)
 	
 ...
 )
