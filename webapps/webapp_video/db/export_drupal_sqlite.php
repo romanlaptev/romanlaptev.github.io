@@ -112,10 +112,10 @@ WHERE field_data_field_url.entity_id={{nodeNid}};
 
 $_vars["sql"]["getTags"] = "
 SELECT 
-taxonomy_index.tid
--- taxonomy_term_data.name
+taxonomy_index.tid,
+taxonomy_term_data.name
 FROM taxonomy_index
--- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
 WHERE taxonomy_index.nid={{nodeNid}};
 ";
 
@@ -180,10 +180,9 @@ if ( $_vars["runType"] == "web") {
 						"field_url_value", 
 						"links" 
 					);
-					getMultipleFields( 
+					getVideoTags( 
 						$_vars["sql"]["getTags"], 
 						$_vars["films"],
-						"tid", 
 						"tags" 
 					);
 					$_vars["video"] = _convertFields($_vars["films"]);
@@ -309,6 +308,27 @@ function getMultipleFields( $sql, $records, $fieldNameSrc, $fieldNameTrg ){
 
 	}//next
 }//getMultipleFields()
+
+
+function getVideoTags( $sql, $records, $fieldNameTrg ){
+	global $db, $_vars;
+	for( $n1 = 0; $n1 < count( $records ); $n1++){
+		$record = $records[$n1];
+		$sqlFields = str_replace("{{nodeNid}}", $record->nid, $sql);
+		$result = runSql($db,  $sqlFields);
+
+		if( count( $result) > 0 ){
+			$record->{$fieldNameTrg} = array();
+			for( $n2 = 0; $n2 < count( $result ); $n2++){
+				$tag = new stdClass();
+				$tag->tid = $result[$n2]->tid;
+				$tag->name = $result[$n2]->name;
+				$record->{$fieldNameTrg}[] = $tag;
+			}//next
+		}
+
+	}//next
+}//getVideoTags()
 
 
 function _convertFields( $records ) {
