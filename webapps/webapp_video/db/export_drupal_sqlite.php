@@ -135,17 +135,19 @@ $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 	<title>{{title}}</title>
 	<creators>{{creators}}</creators>
-	<producer> {{producer}} </producer>
-	<roles> {{roles}} </roles>
-	<description> {{description}} </description>
-	<pictures> {{pictures}} </pictures>
-	<links> {{links}} </links>
-	<tags> {{tags}} </tags>
-	<published> {{published}} </published>
-	<updated> {{updated}} </updated>
+	<producer>{{producer}}</producer>
+	{{roles}}
+	<description>{{description}}</description>
+	<pictures>{{pictures}}</pictures>
+	<links>{{links}}</links>
+	<tags>{{tags}}</tags>
+	<published>{{published}}</published>
+	<updated>{{updated}}</updated>
 </video>';
 
+$_vars["tpl_roles"] = '<roles>{{roles}}</roles>';
 $_vars["tpl_items"] = '<item>{{item}}</item>';
+$_vars["tpl_images"] = '<img src="{{source}}"</>';
 
 //==============================================================
 //echo "REMOTE_ADDR: ".$_SERVER["REMOTE_ADDR"];
@@ -413,7 +415,7 @@ function _convertFields( $records ) {
 				$recordVideo["public_status"] = $field;
 			}
 			if( $key === "created"){
-				$recordVideo["publiched"] = date('d-M-Y H:i:s', $field);
+				$recordVideo["published"] = date('d-M-Y H:i:s', $field);
 			}
 			if( $key === "changed"){
 				$recordVideo["updated"] = date('d-M-Y H:i:s', $field);
@@ -505,6 +507,26 @@ echo "<br>";
 
 		$video = str_replace("{{type}}", $record["type"], $video);
 		$video = str_replace("{{public_status}}", $record["public_status"], $video);
+		$video = str_replace("{{published}}", $record["published"], $video);
+		$video = str_replace("{{updated}}", $record["updated"], $video);
+	
+if( isset($record["creators"]) ){
+		$video = str_replace("{{creators}}", $record["creators"], $video);
+}
+
+if( isset($record["producer"]) ){
+		$video = str_replace("{{producer}}", $record["producer"], $video);
+}
+
+		$roles="";
+		if( isset($record["roles"]) ){
+			$roles = str_replace("{{roles}}", $record["roles"], $_vars["tpl_roles"]);
+		} 
+		$video = str_replace("{{roles}}", $roles, $video);
+
+if( isset($record["description"]) ){
+		$video = str_replace("{{description}}", $record["description"], $video);
+}
 
 //--------------- title
 		$titles = "";
@@ -512,6 +534,18 @@ echo "<br>";
 			$titles .= "\n\t\t".str_replace("{{item}}", $record["title"][$n2], $_vars["tpl_items"]);
 		}
 		$video = str_replace("{{title}}", $titles."\n\t", $video);
+//---------------
+
+//--------------- pictures
+/*
+		$pics = "";
+if( isset($record["pictures"]) ){
+		for( $n2 =0; $n2 < count($record["pictures"]); $n2++ ){
+			$pics .= "\n\t\t".str_replace("{{source}}", $record["pictures"][$n2], $_vars["tpl_images"]);
+		}
+}
+		$video = str_replace("{{pictures}}", $pics."\n\t", $video);
+*/
 //---------------
 
 		$videoList .= "\n".$video;
