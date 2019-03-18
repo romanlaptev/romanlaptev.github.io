@@ -139,7 +139,7 @@ $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 	{{roles}}
 	{{description}}
 	{{pictures}}
-	<links>{{links}}</links>
+	{{links}}
 	<tags>{{tags}}</tags>
 	<published>{{published}}</published>
 	<updated>{{updated}}</updated>
@@ -150,8 +150,12 @@ $_vars["tpl_producer"] = '<producer>{{text}}</producer>';
 $_vars["tpl_roles"] = '<roles>{{text}}</roles>';
 $_vars["tpl_description"] = '<description>{{text}}</description>';
 $_vars["tpl_items"] = '<item>{{item}}</item>';
-$_vars["tpl_pictures"] = '<pictures>{{image_list}}</pictures>';
+
+$_vars["tpl_pictures"] = '<pictures>{{list}}</pictures>';
 $_vars["tpl_images"] = '<img src="{{source}}">';
+
+$_vars["tpl_links"] = '<ul>{{list}}</ul>';
+$_vars["tpl_menu_item"] = '<li>{{source}}</li>';
 
 
 //==============================================================
@@ -550,6 +554,18 @@ echo "<br>";
 		$video = str_replace("{{title}}", $titles."\n\t", $video);
 //---------------
 
+//--------------- links
+		$links = "";
+		if( isset($record["links"]) ){
+			for( $n2 =0; $n2 < count($record["links"]); $n2++ ){
+				$link_str = $record["links"][$n2];
+				$links .= "\n\t\t".str_replace("{{source}}", $link_str, $_vars["tpl_menu_item"]);
+			}//next
+			$links = str_replace("{{list}}", $links."\n\t", $_vars["tpl_links"]);
+		}
+		$video = str_replace("{{links}}", $links."\n\t", $video);
+//---------------
+
 //--------------- pictures
 		$pics = "";
 		if( isset($record["pictures"]) ){
@@ -565,7 +581,7 @@ echo "<br>";
 					$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
 				}
 			}//next
-			$pics = str_replace("{{image_list}}", $pics."\n\t", $_vars["tpl_pictures"]);
+			$pics = str_replace("{{list}}", $pics."\n\t", $_vars["tpl_pictures"]);
 		}
 		$video = str_replace("{{pictures}}", $pics."\n\t", $video);
 //---------------
