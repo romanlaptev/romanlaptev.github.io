@@ -23,10 +23,8 @@ $_vars["phpversion"] = phpversion();
 //видеоклипы, музыкальное видео
 //видеоуроки, программирование
 //мультипликация
-
-$filename = "export_video.xml";
+$_vars["filename"] = "export_video.xml";
 $sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
-
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
@@ -125,7 +123,29 @@ $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) databas
 
 
 //==================================
-$_vars["export_tpl"] = "export_template.xml";
+//$_vars["export_tpl"] = "export_template.xml";
+$_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
+<xroot>
+	<database name="video">
+<!-- {{taxonomy_list}} -->
+{{video_list}}
+	</database>
+</xroot>';
+
+$_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
+	<title>{{title}}</title>
+	<creators>{{creators}}</creators>
+	<producer> {{producer}} </producer>
+	<roles> {{roles}} </roles>
+	<description> {{description}} </description>
+	<pictures> {{pictures}} </pictures>
+	<links> {{links}} </links>
+	<tags> {{tags}} </tags>
+	<published> {{published}} </published>
+	<updated> {{updated}} </updated>
+</video>';
+
+$_vars["tpl_items"] = '<item>{{item}}</item>';
 
 //==============================================================
 //echo "REMOTE_ADDR: ".$_SERVER["REMOTE_ADDR"];
@@ -159,56 +179,61 @@ if ( $_vars["runType"] == "web") {
 		
 		switch ($action) {
 			case "export":
-				if (!empty($_REQUEST['filename']))	{
+				if(!empty($_REQUEST['filename'])){
 					$_vars["filename"] = $_REQUEST['filename'];
-					//$_vars["exportBookName"] = $_REQUEST['book_title'];
-					$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
+				}
+				
+				if(empty($_REQUEST['sqlite_path'])){
+echo "<p> -- error, not found <b>sqlite_path</b></p>";
+					exit();
+				}
+				//$_vars["exportBookName"] = $_REQUEST['book_title'];
+				
+				$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
+				$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 					
-					$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
-					
-					$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
-					getMultipleFields( 
-						$_vars["sql"]["getTitle"], 
-						$_vars["films"],
-						"field_title_value", 
-						"title" 
-					);
-					getMultipleFields( 
-						$_vars["sql"]["getPictures"], 
-						$_vars["films"],
-						"field_img_cover_value", 
-						"pictures" 
-					);
-					getMultipleFields( 
-						$_vars["sql"]["getLinks"], 
-						$_vars["films"],
-						"field_url_value", 
-						"links" 
-					);
-					getVideoTags( 
-						$_vars["sql"]["getTags"], 
-						$_vars["films"],
-						"tags" 
-					);
-					$_vars["video"] = _convertFields($_vars["films"]);
-					
-					//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
-					//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
-					//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
-					//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
-					
-					//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
+				$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
+				getMultipleFields( 
+					$_vars["sql"]["getTitle"], 
+					$_vars["films"],
+					"field_title_value", 
+					"title" 
+				);
+				getMultipleFields( 
+					$_vars["sql"]["getPictures"], 
+					$_vars["films"],
+					"field_img_cover_value", 
+					"pictures" 
+				);
+				getMultipleFields( 
+					$_vars["sql"]["getLinks"], 
+					$_vars["films"],
+					"field_url_value", 
+					"links" 
+				);
+				getVideoTags( 
+					$_vars["sql"]["getTags"], 
+					$_vars["films"],
+					"tags" 
+				);
+				$_vars["video"] = _convertFields($_vars["films"]);
+				
+				//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
+				//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
+				//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
+				//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
+				
+				//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
 //echo "vars = <pre>";
 //print_r($_vars["video"] );
 //echo "</pre>";
 
-					if( !empty($_vars["video"]) ){
-						formXML($_vars["video"]);
-					}
-					
-					//if ( !empty($_vars["book"]) ){
-						//write_xml($_vars["book"]);
-					//}
+				if( !empty($_vars["video"]) ){
+					$_vars["xml"] = formXML($_vars["video"]);
+				}
+				
+				if( !empty($_vars["xml"]) ){
+					writeXML($_vars["xml"]);
 				}
 
 			break;
@@ -232,7 +257,7 @@ echo "PHP_SAPI: ".PHP_SAPI;
 echo "\n";
 	
 	//$_vars["exportBookName"] = $exportBookName;
-	$_vars["filename"] = $filename;
+	//$_vars["filename"] = $filename;
 	$_vars["sqlite_path"] = $sqlite_path;
 	
 	$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
@@ -449,6 +474,7 @@ $test = str_replace("{{title}}", "#title", $_vars["xml_template"]);
 echo htmlspecialchars ( $test );
 */
 
+/*
 //http://php.net/manual/ru/ref.simplexml.php
 	$filename = dirname(__FILE__)."/".$_vars["export_tpl"];
 	$xmlTpl = simplexml_load_file($filename);
@@ -466,8 +492,63 @@ echo "<br>";
 echo "Type:".$xmlTpl->database->video[0]["type"];
 echo "<br>";
 	  }
+*/
+	$videoList = "";
 
+	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+		$record = $records[$n1];
+//echo "<pre>";
+//print_r($record);
+//echo "</pre>";
+
+		$video = $_vars["tpl_video"];
+
+		$video = str_replace("{{type}}", $record["type"], $video);
+		$video = str_replace("{{public_status}}", $record["public_status"], $video);
+
+//--------------- title
+		$titles = "";
+		for( $n2 =0; $n2 < count($record["title"]); $n2++ ){
+			$titles .= "\n\t\t".str_replace("{{item}}", $record["title"][$n2], $_vars["tpl_items"]);
+		}
+		$video = str_replace("{{title}}", $titles."\n\t", $video);
+//---------------
+
+		$videoList .= "\n".$video;
+	}//next
+
+	$xml = str_replace("{{video_list}}", $videoList, $_vars["export_tpl"]);
+echo "<pre>";
+echo htmlspecialchars($xml);
+echo "</pre>";
+
+	//return $xml;
 }//end formXML()
+
+function writeXML($xml){
+	global $_vars;
+
+	if( !empty($xml) ){
+		if( $_vars["runType"] == "web") {
+			header('Content-Type:  application/xhtml+xml');
+			header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
+			header('Content-Transfer-Encoding: binary');
+			//header('Content-Length: '.strlen($xml));
+			echo $xml;
+		}
+		
+		if ( $_vars["runType"] == "console") {
+			$num_bytes = file_put_contents ( $_vars["filename"], $xml);
+			if ($num_bytes > 0){
+_log("Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n");
+			} else {
+_log( getcwd() );
+_log("Write error in ".$_vars["filename"]."\n");
+			}
+		}
+		
+	}
+}//end writeXML()
 
 /*
 function write_xml($data){
@@ -668,7 +749,7 @@ function view_form(){
 	global $_vars;
 	//global $exportBookName;
 	global $sqlite_path;
-	global $filename;
+	//global $filename;
 	
 echo "
 <html>
@@ -694,7 +775,7 @@ echo "
 	<input 
 	type='text'
 	name='filename'
-	value='".$filename."'
+	value='".$_vars["filename"]."'
 	class='form-control'/>
 </div>
 
