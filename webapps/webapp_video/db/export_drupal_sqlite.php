@@ -137,7 +137,7 @@ $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 	{{creators}}
 	{{producer}}
 	{{roles}}
-	<description>{{description}}</description>
+	{{description}}
 	{{pictures}}
 	<links>{{links}}</links>
 	<tags>{{tags}}</tags>
@@ -148,6 +148,7 @@ $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 $_vars["tpl_creators"] = '<creators>{{text}}</creators>';
 $_vars["tpl_producer"] = '<producer>{{text}}</producer>';
 $_vars["tpl_roles"] = '<roles>{{text}}</roles>';
+$_vars["tpl_description"] = '<description>{{text}}</description>';
 $_vars["tpl_items"] = '<item>{{item}}</item>';
 $_vars["tpl_pictures"] = '<pictures>{{image_list}}</pictures>';
 $_vars["tpl_images"] = '<img src="{{source}}">';
@@ -529,13 +530,17 @@ echo "<br>";
 
 		$roles="";
 		if( isset($record["roles"]) ){
-			$roles = str_replace("{{text}}", $record["roles"], $_vars["tpl_roles"]);
+			$roles = str_replace("{{text}}", $record["roles"]."\t", $_vars["tpl_roles"]);
 		} 
 		$video = str_replace("{{roles}}", $roles, $video);
 
-if( isset($record["description"]) ){
-		$video = str_replace("{{description}}", $record["description"], $video);
-}
+
+		$description="";
+		if( isset($record["description"]) ){
+			$description = str_replace("{{text}}", $record["description"], $_vars["tpl_description"]);
+		} 
+		$video = str_replace("{{description}}", $description, $video);
+
 
 //--------------- title
 		$titles = "";
@@ -547,21 +552,21 @@ if( isset($record["description"]) ){
 
 //--------------- pictures
 		$pics = "";
-if( isset($record["pictures"]) ){
-		for( $n2 =0; $n2 < count($record["pictures"]); $n2++ ){
-			$img_str = $record["pictures"][$n2];
-			if( count($img_str) === 0){
-				continue;
-			}
+		if( isset($record["pictures"]) ){
+			for( $n2 =0; $n2 < count($record["pictures"]); $n2++ ){
+				$img_str = $record["pictures"][$n2];
+				if( count($img_str) === 0){
+					continue;
+				}
 
-			if( strpos( $img_str, "<img") !== false){
-				$pics .= "\n\t\t". $img_str;
-			} else {
-				$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
-			}
+				if( strpos( $img_str, "<img") !== false){
+					$pics .= "\n\t\t". $img_str;
+				} else {
+					$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
+				}
+			}//next
+			$pics = str_replace("{{image_list}}", $pics."\n\t", $_vars["tpl_pictures"]);
 		}
-		$pics = str_replace("{{image_list}}", $pics."\n\t", $_vars["tpl_pictures"]);
-}
 		$video = str_replace("{{pictures}}", $pics."\n\t", $video);
 //---------------
 
