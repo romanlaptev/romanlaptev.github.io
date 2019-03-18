@@ -154,7 +154,7 @@ $_vars["tpl_roles"] = '<roles>{{text}}</roles>';
 $_vars["tpl_description"] = '<description>{{text}}</description>';
 
 $_vars["tpl_pictures"] = '<pictures>{{list}}</pictures>';
-$_vars["tpl_images"] = '<img src="{{source}}">';
+$_vars["tpl_images"] = '<img src="{{source}}"/>';
 
 $_vars["tpl_links"] = '<ul>{{list}}</ul>';
 $_vars["tpl_menu_item"] = '<li>{{source}}</li>';
@@ -559,7 +559,11 @@ echo "<br>";
 //--------------- title
 		$titles = "";
 		for( $n2 =0; $n2 < count($record["title"]); $n2++ ){
-			$titles .= "\n\t\t".str_replace("{{text}}", $record["title"][$n2], $_vars["tpl_item"]);
+			$title = $record["title"][$n2];
+//------------------------ filter
+			$title = str_replace('&', '&amp;', $title);
+//------------------------------
+			$titles .= "\n\t\t".str_replace("{{text}}", $title, $_vars["tpl_item"]);
 		}
 		$video = str_replace("{{title}}", $titles."\n", $video);
 //---------------
@@ -569,6 +573,9 @@ echo "<br>";
 		if( isset($record["links"]) ){
 			for( $n2 =0; $n2 < count($record["links"]); $n2++ ){
 				$link_str = $record["links"][$n2];
+//------------------------ filter
+				$link_str = str_replace('&', '&amp;', $link_str);
+//------------------------------
 				$links .= "\n\t\t".str_replace("{{source}}", $link_str, $_vars["tpl_menu_item"]);
 			}//next
 			$links = str_replace("{{list}}", $links."\n\t", $_vars["tpl_links"]);
@@ -586,7 +593,22 @@ echo "<br>";
 				}
 
 				if( strpos( $img_str, "<img") !== false){
-					$pics .= "\n\t\t". $img_str;
+					//$img_str = htmlspecialchars($img_str);
+					//$img_str = str_replace("&quot;&gt", "&quot;/&gt", $img_str);
+					//$img_str = htmlspecialchars_decode($img_str);
+//--------------------------- fix, get src 
+//$pattern = '/href="(.+)"/';
+$pattern = '/src=\"([^\"]*)\"/';
+//echo $pattern;
+preg_match($pattern, $img_str, $matches);
+//echo "<pre>";
+//print_r($matches);
+//echo "</pre>";
+$img_str = $matches[1];
+//echo $img_src;
+//---------------------------
+					//$pics .= "\n\t\t". $img_str;
+					$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
 				} else {
 					$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
 				}
