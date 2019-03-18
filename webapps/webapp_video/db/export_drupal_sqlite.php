@@ -134,20 +134,24 @@ $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 
 $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 	<title>{{title}}</title>
-	<creators>{{creators}}</creators>
-	<producer>{{producer}}</producer>
+	{{creators}}
+	{{producer}}
 	{{roles}}
 	<description>{{description}}</description>
-	<pictures>{{pictures}}</pictures>
+	{{pictures}}
 	<links>{{links}}</links>
 	<tags>{{tags}}</tags>
 	<published>{{published}}</published>
 	<updated>{{updated}}</updated>
 </video>';
 
-$_vars["tpl_roles"] = '<roles>{{roles}}</roles>';
+$_vars["tpl_creators"] = '<creators>{{text}}</creators>';
+$_vars["tpl_producer"] = '<producer>{{text}}</producer>';
+$_vars["tpl_roles"] = '<roles>{{text}}</roles>';
 $_vars["tpl_items"] = '<item>{{item}}</item>';
-$_vars["tpl_images"] = '<img src="{{source}}"</>';
+$_vars["tpl_pictures"] = '<pictures>{{image_list}}</pictures>';
+$_vars["tpl_images"] = '<img src="{{source}}">';
+
 
 //==============================================================
 //echo "REMOTE_ADDR: ".$_SERVER["REMOTE_ADDR"];
@@ -509,18 +513,23 @@ echo "<br>";
 		$video = str_replace("{{public_status}}", $record["public_status"], $video);
 		$video = str_replace("{{published}}", $record["published"], $video);
 		$video = str_replace("{{updated}}", $record["updated"], $video);
-	
-if( isset($record["creators"]) ){
-		$video = str_replace("{{creators}}", $record["creators"], $video);
-}
 
-if( isset($record["producer"]) ){
-		$video = str_replace("{{producer}}", $record["producer"], $video);
-}
+		$creators="";
+		if( isset($record["creators"]) ){
+			$creators = str_replace("{{text}}", $record["creators"], $_vars["tpl_creators"]);
+		} 
+		$video = str_replace("{{creators}}", $creators, $video);
+
+		$producer="";
+		if( isset($record["producer"]) ){
+			$producer = str_replace("{{text}}", $record["producer"], $_vars["tpl_producer"]);
+		} 
+		$video = str_replace("{{producer}}", $producer, $video);
+
 
 		$roles="";
 		if( isset($record["roles"]) ){
-			$roles = str_replace("{{roles}}", $record["roles"], $_vars["tpl_roles"]);
+			$roles = str_replace("{{text}}", $record["roles"], $_vars["tpl_roles"]);
 		} 
 		$video = str_replace("{{roles}}", $roles, $video);
 
@@ -537,15 +546,23 @@ if( isset($record["description"]) ){
 //---------------
 
 //--------------- pictures
-/*
 		$pics = "";
 if( isset($record["pictures"]) ){
 		for( $n2 =0; $n2 < count($record["pictures"]); $n2++ ){
-			$pics .= "\n\t\t".str_replace("{{source}}", $record["pictures"][$n2], $_vars["tpl_images"]);
+			$img_str = $record["pictures"][$n2];
+			if( count($img_str) === 0){
+				continue;
+			}
+
+			if( strpos( $img_str, "<img") !== false){
+				$pics .= "\n\t\t". $img_str;
+			} else {
+				$pics .= "\n\t\t".str_replace("{{source}}", $img_str, $_vars["tpl_images"]);
+			}
 		}
+		$pics = str_replace("{{image_list}}", $pics."\n\t", $_vars["tpl_pictures"]);
 }
 		$video = str_replace("{{pictures}}", $pics."\n\t", $video);
-*/
 //---------------
 
 		$videoList .= "\n".$video;
