@@ -33,7 +33,7 @@ node.nid,
 node.type, 
 node.created, 
 node.changed, 
-node.status,
+-- node.status,
 field_data_field_creators.field_creators_value,
 field_data_field_producer.field_producer_value,
 field_data_field_roles.field_roles_value,
@@ -132,7 +132,8 @@ $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 	</database>
 </xroot>';
 
-$_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
+//$_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
+$_vars["tpl_video"] = '<video type="{{type}}">
 	<title>{{title}}</title>
 	{{creators}}
 	{{producer}}
@@ -140,22 +141,26 @@ $_vars["tpl_video"] = '<video type="{{type}}" public="{{public_status}}">
 	{{description}}
 	{{pictures}}
 	{{links}}
-	<tags>{{tags}}</tags>
+	{{tags}}
 	<published>{{published}}</published>
 	<updated>{{updated}}</updated>
 </video>';
+
+$_vars["tpl_item"] = '<item>{{text}}</item>';
 
 $_vars["tpl_creators"] = '<creators>{{text}}</creators>';
 $_vars["tpl_producer"] = '<producer>{{text}}</producer>';
 $_vars["tpl_roles"] = '<roles>{{text}}</roles>';
 $_vars["tpl_description"] = '<description>{{text}}</description>';
-$_vars["tpl_items"] = '<item>{{item}}</item>';
 
 $_vars["tpl_pictures"] = '<pictures>{{list}}</pictures>';
 $_vars["tpl_images"] = '<img src="{{source}}">';
 
 $_vars["tpl_links"] = '<ul>{{list}}</ul>';
 $_vars["tpl_menu_item"] = '<li>{{source}}</li>';
+
+$_vars["tpl_tags"] = '<tags>{{list}}</tags>';
+$_vars["tpl_tag_item"] = '<item tid="{{tid}}">{{name}}</item>';
 
 
 //==============================================================
@@ -420,9 +425,9 @@ function _convertFields( $records ) {
 			if( $key === "type"){
 				$recordVideo["type"] = $field;
 			}
-			if( $key === "status"){
-				$recordVideo["public_status"] = $field;
-			}
+			//if( $key === "status"){
+				//$recordVideo["public_status"] = $field;
+			//}
 			if( $key === "created"){
 				$recordVideo["published"] = date('d-M-Y H:i:s', $field);
 			}
@@ -434,6 +439,11 @@ function _convertFields( $records ) {
 					$body = htmlspecialchars ($field);
 	//echo $body;
 	//echo "<br>";
+//------------------------ filter
+	$body = str_replace('', '', $body);
+	$body = str_replace('&', '&amp;', $body);
+//------------------------------
+
 					$recordVideo["description"] = $body;
 				}
 			}
@@ -515,7 +525,7 @@ echo "<br>";
 		$video = $_vars["tpl_video"];
 
 		$video = str_replace("{{type}}", $record["type"], $video);
-		$video = str_replace("{{public_status}}", $record["public_status"], $video);
+		//$video = str_replace("{{public_status}}", $record["public_status"], $video);
 		$video = str_replace("{{published}}", $record["published"], $video);
 		$video = str_replace("{{updated}}", $record["updated"], $video);
 
@@ -541,17 +551,17 @@ echo "<br>";
 
 		$description="";
 		if( isset($record["description"]) ){
-			$description = str_replace("{{text}}", $record["description"], $_vars["tpl_description"]);
+			$desc = trim( $record["description"] );
+			$description = str_replace("{{text}}", $desc, $_vars["tpl_description"]);
 		} 
 		$video = str_replace("{{description}}", $description, $video);
-
 
 //--------------- title
 		$titles = "";
 		for( $n2 =0; $n2 < count($record["title"]); $n2++ ){
-			$titles .= "\n\t\t".str_replace("{{item}}", $record["title"][$n2], $_vars["tpl_items"]);
+			$titles .= "\n\t\t".str_replace("{{text}}", $record["title"][$n2], $_vars["tpl_item"]);
 		}
-		$video = str_replace("{{title}}", $titles."\n\t", $video);
+		$video = str_replace("{{title}}", $titles."\n", $video);
 //---------------
 
 //--------------- links
@@ -563,7 +573,7 @@ echo "<br>";
 			}//next
 			$links = str_replace("{{list}}", $links."\n\t", $_vars["tpl_links"]);
 		}
-		$video = str_replace("{{links}}", $links."\n\t", $video);
+		$video = str_replace("{{links}}", $links."\n", $video);
 //---------------
 
 //--------------- pictures
@@ -583,18 +593,31 @@ echo "<br>";
 			}//next
 			$pics = str_replace("{{list}}", $pics."\n\t", $_vars["tpl_pictures"]);
 		}
-		$video = str_replace("{{pictures}}", $pics."\n\t", $video);
+		$video = str_replace("{{pictures}}", $pics."\n", $video);
 //---------------
 
-		$videoList .= "\n".$video;
+//--------------- tags
+		$tags = "";
+		if( isset($record["tags"]) ){
+			for( $n2 =0; $n2 < count($record["tags"]); $n2++ ){
+				$tid_str = $record["tags"][$n2]->tid;
+				$tag_str = $record["tags"][$n2]->name;
+				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}"], [$tid_str, $tag_str], $_vars["tpl_tag_item"]);
+			}//next
+			$tags = str_replace("{{list}}", $tags."\n\t", $_vars["tpl_tags"]);
+		}
+		$video = str_replace("{{tags}}", $tags."\n", $video);
+//---------------
+
+		$videoList .= "\n\n".$video;
 	}//next
 
 	$xml = str_replace("{{video_list}}", $videoList, $_vars["export_tpl"]);
-echo "<pre>";
-echo htmlspecialchars($xml);
-echo "</pre>";
+//echo "<pre>";
+//echo htmlspecialchars($xml);
+//echo "</pre>";
 
-	//return $xml;
+	return $xml;
 }//end formXML()
 
 function writeXML($xml){
