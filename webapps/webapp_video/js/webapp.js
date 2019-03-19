@@ -305,7 +305,7 @@ console.log( webApp.vars["logMsg"] );
 			
 			switch( webApp.vars["DB"]["dbType"] ){
 				case "xml":
-					//_parseXML( data );
+					_parseXML( data );
 				break;
 				
 				case "json":
@@ -323,45 +323,45 @@ console.log( webApp.vars["logMsg"] );
 
 	function _parseXML(xml){
 console.log("function _parseXML()");
-		//var xmlDoc = xml.getElementsByTagName("database");
+		//var rootTagName = xml.documentElement.nodeName;
+		//var xmlDoc = xml.getElementsByTagName( rootTagName);
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
-		//xmlNodes = func.parseXmlToObj( func, xml );
-//console.log(xmlNodes);
+		xmlNodes = func.parseXmlToObj( func, xml );
+console.log(xmlNodes);
+/*
 		var xmlNodes = __convertXmlToObj({
-					"idKey": "nid",
-					"valueKey": "tid",
-					"xml": $(p.xml).find( table_name ).find('record'),
-					"type": "getAttribute"//"getChildNode"//get attribute value or value child node
+					//"idKey": "nid",
+					"valueKey": "video",
+					"xml": $(xml).find("database").find("video"),
+					"type": "getChildNode"//"getAttribute"//get attribute value or value child node
 				})
-				
-				"obj": __convertXmlToObj({
-					"idKey": "entity_id",
-					"valueKey": "value",
-					"type": "getChildNode", 
-					"xml": $(p.xml).find( table_name ).find('item')
-				})				
+<table_book_filename>
+	<item entity_id="8" bundle="library_book" delta="0">
+		<value>DOM_wikipedia_collection.pdf</value>
+	</item>
+*/
+
+/*
+		$( $(xml).find("database").find("video").find("published") ).each(function( index, value ){
+//console.log( $(this) );
+console.log( index, value );
+		});//next
+*/				
 	
 /*
-
-		//fix for Chrome, Safari (exclude tag <pma:database>)
-		if( xmlDoc.length === 1){
-			var records = xmlDoc.item(0).getElementsByTagName("table");
-		}
-		if( xmlDoc.length === 2){
-			var records = xmlDoc.item(1).getElementsByTagName("table");
-		}
+		//var records = xmlDoc.item(0).getElementsByTagName("video");
 //console.log( records, records.length ) ;
 //console.log( records.item(0).text ) ;
 //console.log( records.item(0).textContent ) ;
 //console.log( "textContent" in records.item(0) ) ;
 //console.log( "text" in records.item(0) ) ;
-//return;
-
 		for( var n = 0; n < records.length; n++){
 			//var record = records[n];
 			//var tableName = record["attributes"]["name"].nodeValue;
 			var record = records.item(n);
+
+
 			var tableName = record.attributes.getNamedItem("name").nodeValue;
 //console.log( tableName );
 
@@ -390,14 +390,13 @@ console.log("function _parseXML()");
 			}
 			_vars["tables"][tableName]["records"].push( recordObj );
 		}//next
-		
 */
 	}//end _parseXML()
 
 	function __convertXmlToObj(opt){
 console.log("function __convertXmlToObj", opt);
 		var p = {
-			"idKey": null,//nid="28"
+			//"idKey": null,//nid="28"
 			"valueKey": null,//tid="38"
 			"xml": null,//<record nid="28" tid="38"/>....
 			"type": "getAttribute"//get attribute value or value child node
@@ -408,20 +407,23 @@ console.log("function __convertXmlToObj", opt);
 		}
 //console.log(p);
 		
-		var idKey = p["idKey"];
+		//var idKey = p["idKey"];
 		var valueKey = p["valueKey"];
 		var xml = p["xml"];
 		
-		var obj = {};
+		//var obj = {};
+		var nodes = [];
 		$(xml).each(function( index, value ){
 //console.log( $(this) );
 //console.log( index, value );
-			var key = $(this).attr(idKey);
+/*
+			//var key = $(this).attr(idKey);
 			
 			var _value = "";
 			if( p["type"] === "getChildNode"){
 				_value = $(this).children(valueKey).text().trim();
 			}
+
 			if( p["type"] === "getAttribute"){
 				_value = value.getAttribute(valueKey);
 //var tid = nodeXML.attributes.getNamedItem("tid").nodeValue;
@@ -429,16 +431,17 @@ console.log("function __convertXmlToObj", opt);
 //console.log( "_value:", _value );
 			
 			if( _value.length > 0){
-				if( !obj[key] ){
-					obj[key] = [];
-				}
-				obj[key].push( _value );
+				//if( !obj[key] ){
+					//obj[key] = [];
+				//}
+				//obj[key].push( _value );
+				nodes.push( _value);
 			}
-			
+*/			
 		});//next
 //console.log( xml, obj );
 		
-		return obj;
+		//return nodes;
 	}//end __convertXmlToObj()
 			
 /*

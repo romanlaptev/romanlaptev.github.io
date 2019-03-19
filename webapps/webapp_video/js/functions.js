@@ -748,12 +748,57 @@ ONLY second LEVEL !!!!!!!!!!!!
 //console.log( xml.documentElement.nodeName );			
 			var rootTagName = xml.documentElement.nodeName;
 			var xmlDoc = xml.getElementsByTagName( rootTagName);
-//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
-//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc, typeof xmlDoc) ;
+//console.log( xmlDoc.item(0), typeof xmlDoc.item(0)) ;
+//console.log( xmlDoc.length) ;
+//console.log( xmlDoc.item(0).childNodes.length ) ;
 //console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
 // for(var key in xmlDoc){
 // console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
 // }
+
+var xmlObj = {};
+for(var n1 = 0; n1 < xmlDoc.length; n1++){
+//console.log( xmlDoc.item(n1) );
+//console.log( xmlDoc.item(n1).childNodes ) ;
+	var _node = xmlDoc.item(n1);
+	//xmlObj[ _node.nodeName ] = {};
+
+	var key = _node.nodeName;
+	xmlObj[key] = {};
+
+	_parseChildNodes( _node, xmlObj[key] );
+}
+console.log(xmlObj);				
+
+function _parseChildNodes( node, nodeObj ){
+	var _childNodes = node.childNodes;
+
+	for(var n = 0; n < _childNodes.length; n++){
+		var child = _childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+			continue;
+		} else {
+//console.log( "nodeName: "+ child.nodeName);
+if(node.childNodes.length > 0){
+			//nodeObj[ child.nodeName ] = {};
+			var key = child.nodeName;
+
+			if( !nodeObj[key] ){
+				nodeObj[key] = [];
+			}
+
+			var _ch = {}
+			nodeObj[key].push(_ch);
+
+			_parseChildNodes(child, _ch );
+}
+		}
+	}
+}//end _parseChildNodes()
+
+return;
 			var xmlObj = [];
 			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
 				var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
