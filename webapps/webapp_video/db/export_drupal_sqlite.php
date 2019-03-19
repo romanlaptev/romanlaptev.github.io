@@ -207,46 +207,8 @@ echo "<p> -- error, not found <b>sqlite_path</b></p>";
 				
 				$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
 				$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
-					
-				$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
-				getMultipleFields( 
-					$_vars["sql"]["getTitle"], 
-					$_vars["films"],
-					"field_title_value", 
-					"title" 
-				);
-				getMultipleFields( 
-					$_vars["sql"]["getPictures"], 
-					$_vars["films"],
-					"field_img_cover_value", 
-					"pictures" 
-				);
-				getMultipleFields( 
-					$_vars["sql"]["getLinks"], 
-					$_vars["films"],
-					"field_url_value", 
-					"links" 
-				);
-				getVideoTags( 
-					$_vars["sql"]["getTags"], 
-					$_vars["films"],
-					"tags" 
-				);
-				$_vars["video"] = _convertFields($_vars["films"]);
 				
-				//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
-				//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
-				//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
-				//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
-				
-				//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
-//echo "vars = <pre>";
-//print_r($_vars["video"] );
-//echo "</pre>";
-
-				if( !empty($_vars["video"]) ){
-					$_vars["xml"] = formXML($_vars["video"]);
-				}
+				_exportProcess();
 				
 				if( !empty($_vars["xml"]) ){
 					writeXML($_vars["xml"]);
@@ -278,28 +240,27 @@ echo "\n";
 	
 	$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 
-	$_vars["nodes"] = getNodes();
+	$_vars["nodes"] = getNodes( $_vars["sql"]["getNodes"] );
 
 //echo "web:" . $_vars["web"];
 //echo "\n";
 //echo "console:" . $_vars["console"];
 //echo "\n";
+	_exportProcess();
 
-	if ( !empty($_vars["nodes"]) ) {
-		
+	if ( !empty($_vars["xml"]) ) {
 		if ( !file_exists( $_vars["filename"] ) ){
-			//write_xml( $_vars["book"] );
+			writeXML($_vars["xml"]);
 		} else {
+			$oldfile = $_vars["filename"];
+			$newfile = "_".$_vars["filename"];
 			
-			// $oldfile = $_vars["filename"];
-			// $newfile = "_".$_vars["filename"];
-			
-			// if (rename ($oldfile, $newfile)) {
-				// _log("- rename $oldfile (old version) to $newfile\n");
-			// } else {
-				// _log("- unable to rename file $oldfile\n");
-			// }
-			//write_xml( $_vars["book"] );
+			if (rename ($oldfile, $newfile)) {
+				_log("- rename $oldfile (old version) to $newfile\n");
+			} else {
+				_log("- unable to rename file $oldfile\n");
+			}
+			writeXML($_vars["xml"]);
 		}
 	}
 
@@ -309,7 +270,6 @@ echo "\n";
 //====================
 // FUNCTIONS
 //====================
-
 function _log( $message ){
 	global $_vars;
 	if ( $_vars["runType"] == "console") {
@@ -327,6 +287,52 @@ function runSql($db,  $query){
 	$resultData = $result->fetchAll();
 	return $resultData;
 }//end runSql()
+
+function _exportProcess(){
+	global $_vars;
+
+	$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
+	getMultipleFields( 
+		$_vars["sql"]["getTitle"], 
+		$_vars["films"],
+		"field_title_value", 
+		"title" 
+	);
+	getMultipleFields( 
+		$_vars["sql"]["getPictures"], 
+		$_vars["films"],
+		"field_img_cover_value", 
+		"pictures" 
+	);
+	getMultipleFields( 
+		$_vars["sql"]["getLinks"], 
+		$_vars["films"],
+		"field_url_value", 
+		"links" 
+	);
+	getVideoTags( 
+		$_vars["sql"]["getTags"], 
+		$_vars["films"],
+		"tags" 
+	);
+	$_vars["video"] = _convertFields($_vars["films"]);
+
+	//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
+	//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
+	//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
+	//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
+
+	//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
+	//echo "vars = <pre>";
+	//print_r($_vars["video"] );
+	//echo "</pre>";
+
+	if( !empty($_vars["video"]) ){
+		$_vars["xml"] = formXML($_vars["video"]);
+	}
+
+}//end _exportProcess()					
+
 
 function getNodes( $sql ) {
 	global $db, $_vars;
@@ -667,206 +673,11 @@ _log("Write error in ".$_vars["filename"]."\n");
 	}
 }//end writeXML()
 
-/*
-function write_xml($data){
-	global $_vars;
-
-	$xml="";
-	$xml .= "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-	$xml .= "<database name='lib'>\n";
-
-	$xml .= "<table_node>\n";
-	foreach ($data["node"] as $row ){
-
-//print_r($row);
-		$nid = $row->nid;
-		$mlid = $row->mlid; 
-		$plid = $row->plid; 
-		$type = $row->type; 
-		$title = htmlspecialchars($row->title);
-		$created = date('d-M-Y H:i:s', $row->created);
-		$changed = date('d-M-Y H:i:s', $row->changed);
-		$weight = $row->weight;
-
-		$xml .=  "\t<node title=\"".$title."\" ";
-		$xml .=  "nid=\"".$nid."\" ";
-		$xml .=  "mlid=\"".$mlid."\" ";
-		$xml .=  "plid=\"".$plid."\" ";
-		$xml .=  "type=\"".$type."\" ";
-		$xml .=  "created=\"".$created."\" ";
-		$xml .=  "changed=\"".$changed."\" ";
-		$xml .=  "weight=\"".$weight."\"";
-		$xml .=  ">\n";
-		if (!empty($row->body_value)){
-			$body = $row->body_value;
-			$body = htmlspecialchars ($body);
-
-//------------------------ filter
-			$body = str_replace('', '', $body);
-			$body = str_replace('&', '&amp;', $body);
-//------------------------------
-
-			$xml .=  "\t\t<body_value>\n";
-			$xml .=  $body."\n";
-			$xml .=  "\t\t</body_value>\n";
-
-		}
-		if (!empty($row->field_subfolder_value))
-		{
-			$xml .=  "\t\t<subfolder>\n";
-			$xml .=  $row->field_subfolder_value."\n";
-			$xml .=  "\t\t</subfolder>\n";
-		}
-		if (!empty($row->field_book_author_value))
-		{
-			$xml .=  "\t\t<author>\n";
-			$author = str_replace('&', '&amp;', $row->field_book_author_value);
-			$xml .=  $author."\n";
-			$xml .=  "\t\t</author>\n";
-		}
-		if (!empty($row->field_book_name_value))
-		{
-			$xml .=  "\t\t<bookname>\n";
-			$bookname = str_replace('&', '&amp;', $row->field_book_name_value);
-			$xml .=  $bookname."\n";
-			$xml .=  "\t\t</bookname>\n";
-		}
-		$xml .= "\t</node>\n";
-	}//----------------------- end foreach
-	$xml .= "</table_node>\n\n";
-
-//----------------------------- table book_filename
-	$xml .= "<table_book_filename>\n";
-	foreach ($data["book_filename"] as $row )
-	{
-		if (!empty($row->field_book_filename_value))
-		{
-			$entity_id = $row->entity_id;
-			$bundle = $row->bundle; 
-			$delta = $row->delta; 
-
-			$xml .=  "\t<item entity_id=\"".$entity_id."\" ";
-			$xml .=  "bundle=\"".$bundle."\" ";
-			$xml .=  "delta=\"".$delta."\"";
-			$xml .=  ">\n";
-			$xml .=  "\t\t<value>";
-
-			//$xml .=  $row->field_book_filename_value;
-			$field_book_filename_value = $row->field_book_filename_value;
-//------------------------ filter
-			$field_book_filename_value = str_replace('&', '&amp;', $field_book_filename_value);
-//------------------------------
-			$xml .=  $field_book_filename_value;
-
-			$xml .=  "</value>\n";
-			$xml .= "\t</item>\n";
-		}
-	}//----------------------- end foreach
-	$xml .= "</table_book_filename>\n\n";
-
-//----------------------------- table book_url
-	$xml .= "<table_book_url>\n";
-	foreach ($data["field_url"] as $row )
-	{
-		if (!empty($row->field_url_value))
-		{
-			$entity_id = $row->entity_id;
-			$bundle = $row->bundle; 
-			$delta = $row->delta; 
-
-			$xml .=  "\t<item entity_id=\"".$entity_id."\" ";
-			$xml .=  "bundle=\"".$bundle."\" ";
-			$xml .=  "delta=\"".$delta."\"";
-			$xml .=  ">\n";
-			$xml .=  "\t\t<value>";
-
-			//$xml .=  $row->field_url_value;
-			$field_url_value = $row->field_url_value;
-//------------------------ filter
-			$field_url_value = str_replace('&', '&amp;', $field_url_value);
-//------------------------------
-			$xml .=  $field_url_value;
-
-			$xml .=  "</value>\n";
-			$xml .= "\t</item>\n";
-		}
-	}//----------------------- end foreach
-	$xml .= "</table_book_url>\n\n";
-
-
-//----------------------------- table book links
-	$xml .= "<table_book_links>\n";
-	foreach ($data["field_links"] as $row )
-	{
-		if (!empty($row->field_links_value))
-		{
-			$entity_id = $row->entity_id;
-			$bundle = $row->bundle; 
-			$delta = $row->delta; 
-
-			$xml .=  "\t<item entity_id=\"".$entity_id."\" ";
-			$xml .=  "bundle=\"".$bundle."\" ";
-			$xml .=  "delta=\"".$delta."\"";
-			$xml .=  ">\n";
-			$xml .=  "\t\t<value>";
-
-			$field_links_value = $row->field_links_value;
-//------------------------ filter
-			$field_links_value = str_replace('&', '&amp;', $field_links_value);
-//------------------------------
-			$xml .=  $field_links_value;
-
-			$xml .=  "</value>\n";
-			$xml .= "\t</item>\n";
-		}
-	}//----------------------- end foreach
-	$xml .= "</table_book_links>\n\n";
-
-
-	$xml .= $_vars["xml"]["taxonomy_index"];
-	$xml .= $_vars["xml"]["taxonomy_term_data"];
-	$xml .= $_vars["xml"]["taxonomy_term_hierarchy"];
-	$xml .= $_vars["xml"]["taxonomy_vocabulary"];
-
-
-//echo "<pre>";
-//echo htmlspecialchars($xml);
-//echo "</pre>";
-
-	$xml .= "</database>\n";
-	
-	//----------------------------------- write xml file
-	if ( !empty($xml) )
-	{
-		if ( $_vars["runType"] == "web") {
-			header('Content-Type:  application/xhtml+xml');
-			header('Content-Disposition: attachment; filename='.$_vars["filename"].'');
-			header('Content-Transfer-Encoding: binary');
-			//header('Content-Length: '.strlen($xml));
-			echo $xml;
-		}
-		
-		if ( $_vars["runType"] == "console") {
-			$num_bytes = file_put_contents ( $_vars["filename"], $xml);
-			if ($num_bytes > 0){
-_log("Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n");
-			} else {
-_log( getcwd() );
-_log("Write error in ".$_vars["filename"]."\n");
-			}
-		}
-		
-	}
-	//-----------------------------------
-
-}//end write_xml()
-*/
 
 function view_form(){
 	global $_vars;
 	//global $exportBookName;
 	global $sqlite_path;
-	//global $filename;
 	
 echo "
 <html>
