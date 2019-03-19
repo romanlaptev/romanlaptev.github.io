@@ -337,7 +337,7 @@ function _exportProcess(){
 function getNodes( $sql ) {
 	global $db, $_vars;
 	$result = runSql($db,  $sql);
-_log("-- get node info\n");
+//_log("-- get node info\n");
 	return $result;
 }//end getNodes()
 
