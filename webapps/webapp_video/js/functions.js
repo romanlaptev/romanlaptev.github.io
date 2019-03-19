@@ -743,17 +743,17 @@ OUT:
 ONLY second LEVEL !!!!!!!!!!!!							  
 */
 		function _parseXmlToObj(_func, xml){
-		//console.log( xml.childNodes.item(0).nodeName );			
-		//console.log( xml.firstChild.nodeName );			
-		//console.log( xml.documentElement.nodeName );			
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );			
 			var rootTagName = xml.documentElement.nodeName;
 			var xmlDoc = xml.getElementsByTagName( rootTagName);
-		//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
-		//console.log( xmlDoc.childNodes.length ) ;
-		//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
-		// for(var key in xmlDoc){
-		// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
-		// }
+//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log( xmlDoc.childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
 			var xmlObj = [];
 			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
 				var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
@@ -762,16 +762,16 @@ ONLY second LEVEL !!!!!!!!!!!!
 					continue;
 				}
 				var node = __parseChildNode( child );
-		//console.log(node);			
+//console.log(node);			
 				xmlObj.push ( node );
 			}//next
 		//console.log(xmlObj);				
 			return xmlObj;
 			
 			function __parseChildNode( nodeXml ){
-		//console.log( "nodeName: "+ nodeXml.nodeName);
-		//console.log( "text: "+ nodeXml.text);
-		//console.log( "textContent: "+ nodeXml.textContent);
+//console.log( "nodeName: "+ nodeXml.nodeName);
+//console.log( "text: "+ nodeXml.text);
+//console.log( "textContent: "+ nodeXml.textContent);
 		// var test = nodeXml;				
 		// for(var key in test ){
 		// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
