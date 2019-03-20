@@ -19,9 +19,8 @@ var webApp = {
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
-		},		
+		}
 	},
-	
 	"init" : function( postFunc ){
 console.log("init webapp!");
 
@@ -47,7 +46,7 @@ console.log("init webapp!");
 		if( typeof postFunc === "function"){
 			postFunc();
 		}
-	},//end init()
+	}//end init()
 	
 };//end webApp()
 console.log(webApp);
