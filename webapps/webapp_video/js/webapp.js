@@ -53,11 +53,11 @@ console.log("init webapp!");
 //console.log(window.location);	
 
 			//clear block
-setTimeout(function(){
+//setTimeout(function(){
 			if( webApp["vars"]["waitWindow"] ){
 				webApp["vars"]["waitWindow"].style.display="none";
 			}		
-}, 1000*3);
+//}, 1000*3);
 
 		//_loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
