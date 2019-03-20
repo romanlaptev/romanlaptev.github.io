@@ -739,7 +739,7 @@ console.log( logMsg );
 				xmlObj[key] = {};
 				_parseChildNodes( _node, xmlObj[key] );
 			}
-			//console.log(xmlObj);				
+//console.log(xmlObj);				
 			return xmlObj;
 
 			function _parseChildNodes( node, nodeObj ){
@@ -748,12 +748,18 @@ console.log( logMsg );
 // console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
 // }
 
+
 				if( _childNodes.length > 0){
-					nodeObj["children"] = {};
+					if( _childNodes.length === 1 &&
+						_childNodes.item(0).nodeType === 3
+					){//one child node of type TEXT cannot contain the "children" property!!!!
+							//_ch["_itemType"] = ;
+					} else {
+						nodeObj["children"] = {};
+					}
 				}
-				
+
 				for(var n = 0; n < _childNodes.length; n++){
-					
 					var child = _childNodes.item(n);//<=IE9
 //console.log( "nodeType: "+ child.nodeType);
 //console.log( "nodeName: "+ child.nodeName);
@@ -783,22 +789,27 @@ console.log( logMsg );
 					} else {
 //console.log( "nodeName: "+ child.nodeName);
 						var key = child.nodeName;
+						//var key = child.nodeName+"_"+n;
 
-						//if( !nodeObj["children"] ){
-							//nodeObj["children"] = {};
-						//}
 						if( !nodeObj["children"][key] ){
 							nodeObj["children"][key] = [];
 						}
+						//if( !nodeObj[key] ){
+							//nodeObj[key] = {};
+						//}
 
 						var _ch = {
+							//"_child_nodes" : child.childNodes
 							//"_length": child.childNodes.length
 						};
 						var attr = __getAttrToObject(child.attributes);
 //_value = child.getAttribute(valueKey);
 //var tid = child.attributes.getNamedItem("tid").nodeValue;
 						if(attr){
-							_ch["attributes"] = attr;
+							//_ch["attributes"] = attr;
+							for(var _key in attr){
+								_ch[_key] = attr[_key];
+							}
 						}
 						
 						//if( child.childNodes.length === 1){
@@ -810,6 +821,8 @@ console.log( logMsg );
 						//}
 						
 						nodeObj["children"][key].push(_ch);
+						//nodeObj[key].push(_ch);
+						//nodeObj[key] = _ch;
 
 						_parseChildNodes(child, _ch );
 					}
@@ -825,7 +838,7 @@ console.log( logMsg );
 					item_attr[attr[item].name] = attr[item].value;
 				}
 				return item_attr;
-			}//end _get_attr_to_obj()
+			}//end __getAttrToObject()
 		
 		}//end _convertXmlToObj()
 

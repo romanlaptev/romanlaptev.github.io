@@ -853,13 +853,17 @@ ONLY second LEVEL !!!!!!!!!!!!
 // if( !node.children){
 // console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
 // }
-
 				if( _childNodes.length > 0){
-					nodeObj["children"] = {};
+					if( _childNodes.length === 1 &&
+						_childNodes.item(0).nodeType === 3
+					){//one child node of type TEXT cannot contain the "children" property!!!!
+							//_ch["_itemType"] = ;
+					} else {
+						nodeObj["children"] = {};
+					}
 				}
 				
 				for(var n = 0; n < _childNodes.length; n++){
-					
 					var child = _childNodes.item(n);//<=IE9
 //console.log( "nodeType: "+ child.nodeType);
 //console.log( "nodeName: "+ child.nodeName);
