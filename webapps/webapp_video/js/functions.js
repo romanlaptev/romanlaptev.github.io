@@ -716,26 +716,7 @@ console.log( logMsg );
 		};//_hashCode
 
 
-/*
-parse XML document to array
-<table><note>....</note>, <note>...</note></table>
-
-IN:
-<templates>
-	<tpl name="tpl-node_photogallery_image">
-		<html_code><![CDATA[
-......
-		]]></html_code>
-	</tpl>
-.................
-</templates>
-
-OUT:
-[ { name: "attr value", html_code: "......" },
-{ name: "attr value", html_code: "......" }]
-ONLY second LEVEL !!!!!!!!!!!!							  
-*/
-		function _parseXmlToObj(xml){
+		function _convertXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			
 //console.log( xml.documentElement.nodeName );			
@@ -751,141 +732,89 @@ ONLY second LEVEL !!!!!!!!!!!!
 // }
 			var xmlObj = {};
 			for(var n1 = 0; n1 < xmlDoc.length; n1++){
-			//console.log( xmlDoc.item(n1) );
-			//console.log( xmlDoc.item(n1).childNodes ) ;
+//console.log( xmlDoc.item(n1) );
+//console.log( xmlDoc.item(n1).childNodes ) ;
 				var _node = xmlDoc.item(n1);
-				//xmlObj[ _node.nodeName ] = {};
-
 				var key = _node.nodeName;
 				xmlObj[key] = {};
-
 				_parseChildNodes( _node, xmlObj[key] );
 			}
 			//console.log(xmlObj);				
 			return xmlObj;
 
-function _parseChildNodes( node, nodeObj ){
-	var _childNodes = node.childNodes;
+			function _parseChildNodes( node, nodeObj ){
+				var _childNodes = node.childNodes;
 // if( !node.children){
 // console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
 // }
 
-	if( _childNodes.length > 0){
-		nodeObj["children"] = {};
-	}
-	
-	for(var n = 0; n < _childNodes.length; n++){
-		
-		var child = _childNodes.item(n);//<=IE9
+				if( _childNodes.length > 0){
+					nodeObj["children"] = {};
+				}
+				
+				for(var n = 0; n < _childNodes.length; n++){
+					
+					var child = _childNodes.item(n);//<=IE9
 //console.log( "nodeType: "+ child.nodeType);
 //console.log( "nodeName: "+ child.nodeName);
 
-		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
-			
-			if (child.nodeType === 3){// #text
-				
-				var _text = "";
-				if ("textContent" in child){
-					_text = child.textContent;
-					
-				} else {
-					_text = child.text;
-				}
-				
-				_text = _text.trim();
-				if( _text.length > 0){
-					if( 
-						_text !== "\n" &&
-						_text !== "\n\n" &&
-						_text !== "\n\n\n"
-					){
-						nodeObj["text"] = _text;
-					}
-				}
-			}
-			
-			//continue;
-		} else {
-//console.log( "nodeName: "+ child.nodeName);
-			var key = child.nodeName;
-
-			//if( !nodeObj["children"] ){
-				//nodeObj["children"] = {};
-			//}
-			if( !nodeObj["children"][key] ){
-				nodeObj["children"][key] = [];
-			}
-
-			var _ch = {
-				//"_length": child.childNodes.length
-			};
-			var attr = __getAttrToObject(child.attributes);
-			if(attr){
-				_ch["attributes"] = attr;
-			}
-			
-			//if( child.childNodes.length === 1){
-				////continue;
-				//_ch["nodeType"] = child.nodeType;
-				//_ch["_child_nodes"] = child.childNodes;
-				//_ch["_item"] = child.childNodes.item(0);
-				//_ch["_itemType"] = child.childNodes.item(0).nodeType;
-			//}
-			
-			nodeObj["children"][key].push(_ch);
-
-			_parseChildNodes(child, _ch );
-		}
-	}
-}//end _parseChildNodes()
-
-return;
-			var xmlObj = [];
-			for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
-				var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
-		//console.log( "nodeType: "+ child.nodeType);
-				if (child.nodeType !== 1){// not Node.ELEMENT_NODE
-					continue;
-				}
-				var node = __parseChildNode( child );
-//console.log(node);			
-				xmlObj.push ( node );
-			}//next
-		//console.log(xmlObj);				
-			return xmlObj;
-			
-			function __parseChildNode( nodeXml ){
-//console.log( "nodeName: "+ nodeXml.nodeName);
-//console.log( "text: "+ nodeXml.text);
-//console.log( "textContent: "+ nodeXml.textContent);
-		// var test = nodeXml;				
-		// for(var key in test ){
-		// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
-		// }
-
-				var nodeObj = _func.get_attr_to_obj( nodeXml.attributes ) ;
-				for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
-					var _child = nodeXml.childNodes.item(n2);
-		//console.log( "nodeType: "+ _child.nodeType);
-					if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
-						continue;
-					}
-		// console.log( "nodeName: "+ _child.nodeName);
-		// console.log( "text: "+ _child.text);
-		// console.log( "textContent: "+ _child.textContent);
-					var _name = _child.nodeName;
-					if ("textContent" in _child){
-						nodeObj[_name] = _child.textContent;
+					if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+						if (child.nodeType === 3){// #text
+							
+							var _text = "";
+							if ("textContent" in child){
+								_text = child.textContent;
+								
+							} else {
+								_text = child.text;
+							}
+							
+							_text = _text.trim();
+							if( _text.length > 0){
+								if( 
+									_text !== "\n" &&
+									_text !== "\n\n" &&
+									_text !== "\n\n\n"
+								){
+									nodeObj["text"] = _text;
+								}
+							}
+						}
 					} else {
-						nodeObj[_name] = _child.text;
-					}
-				}//next
+//console.log( "nodeName: "+ child.nodeName);
+						var key = child.nodeName;
 
-		// if( !record.children){
-		// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
-		// }
-				return nodeObj;
-			}//end __parseChildNode()
+						//if( !nodeObj["children"] ){
+							//nodeObj["children"] = {};
+						//}
+						if( !nodeObj["children"][key] ){
+							nodeObj["children"][key] = [];
+						}
+
+						var _ch = {
+							//"_length": child.childNodes.length
+						};
+						var attr = __getAttrToObject(child.attributes);
+//_value = child.getAttribute(valueKey);
+//var tid = child.attributes.getNamedItem("tid").nodeValue;
+						if(attr){
+							_ch["attributes"] = attr;
+						}
+						
+						//if( child.childNodes.length === 1){
+							////continue;
+							//_ch["nodeType"] = child.nodeType;
+							//_ch["_child_nodes"] = child.childNodes;
+							//_ch["_item"] = child.childNodes.item(0);
+							//_ch["_itemType"] = child.childNodes.item(0).nodeType;
+						//}
+						
+						nodeObj["children"][key].push(_ch);
+
+						_parseChildNodes(child, _ch );
+					}
+				}
+			}//end _parseChildNodes()
 
 			function __getAttrToObject( attr ){
 				if( attr.length === 0){
@@ -898,7 +827,7 @@ return;
 				return item_attr;
 			}//end _get_attr_to_obj()
 		
-		}//end _parseXmlToObj()
+		}//end _convertXmlToObj()
 
 		
 		// public interfaces
@@ -916,7 +845,7 @@ return;
 			runAjax: _runAjax,
 			timeStampToDateStr: _timeStampToDateStr,
 			hashCode: _hashCode,
-			parseXmlToObj: _parseXmlToObj			
+			convertXmlToObj: _convertXmlToObj
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}
