@@ -1301,7 +1301,14 @@ function check_form(){
 
 
 window.onload = function(){
+//console.log("window event onload");
+	
 	//btn_scroll = getById("btn-scroll-to-top");
+	
+//send message to frame	
+//<iframe width="98%" height="80%" name="content_frame" scrolling=auto style='background-color: silver;' src=""></iframe>
+//window.frames['content_frame'].document.write ('hello frame');
+	
 }//end load
 
 window.onscroll = function(event) {

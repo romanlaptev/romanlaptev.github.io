@@ -70,18 +70,19 @@ alert( message);
 }
 
 window.onload = function(){
+
+	//send message to frame	
+	window.frames['content_frame'].document.write ('hello frame');
+
 //init
-	if( document.querySelector)
-	{
+	if( document.querySelector){
 		var btn_load = document.querySelector("#btn-load");
 		var new_iframe_source = document.querySelector("#new-iframe-source");
 		var log = document.querySelector("#log");
 		var test_frame = document.querySelector("#test-frame");
 		//frame_info = document.querySelector("#frame-info");
 		var btn_clear_log = document.querySelector("#clear-log");
-	}
-	else
-	{
+	} else {
 		var btn_load = document.getElementById("btn-load");
 		var new_iframe_source = document.getElementById("new-iframe-source");
 		var log = document.getElementById("log");
@@ -111,8 +112,6 @@ window.onload = function(){
 		});
 	}
 
-	
-	
 	new_iframe_source.onfocus = function(e){
 		new_iframe_source.className = "form-control";
 		var message = "on focus in new_iframe_source";
@@ -304,6 +303,8 @@ http://vbox5
 		<iframe id="test-frame" width="100%" height="40%" name="test_frame" onload="get_iframe_info( this )"></iframe>
 		<div id="frame-info"></div>
 		
+<iframe width="98%" height="80%" name="content_frame" scrolling=auto style='background-color: silver;' src=""></iframe>
+	
 	</div><!-- end container -->
 	
 	
