@@ -19,7 +19,10 @@ var webApp = {
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
-		}
+		},
+		"templates_url" : "tpl/templates.xml",
+		"templates" : {},
+		"breadcrumb": {},
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -55,16 +58,17 @@ setTimeout(function(){
 				webApp["vars"]["waitWindow"].style.display="none";
 			}		
 }, 1000*3);
-			
-		});
-		
+
 		//_loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		//});
+		
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
+		});
+		
 				
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
 	}//end init()
 	
 };//end webApp()
@@ -286,7 +290,6 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 						
 					"onLoadEnd" : function( headers ){
 //console.log( headers );
-
 					},
 					
 					"onError" : function( xhr ){
@@ -369,7 +372,16 @@ console.log("function _parseXML()");
 
 //---------------------------- 
 var timeStart = new Date();
-		xmlNodes = func.convertXmlToObj( xml );
+
+		try{
+			xmlNodes = func.convertXmlToObj( xml );
+console.log(xmlNodes);
+delete xml;
+		} catch(error) {
+webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
+func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( error );
+		}//end catch
 		
 var timeEnd = new Date();
 var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
@@ -377,9 +389,21 @@ webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> s
 func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 		
-console.log(xmlNodes);
-delete xml;
 //---------------------------- 
+/*
+		try{
+			var jsonObj = JSON.parse( jsonStr, function(key, value) {
+	//console.log( key, value );
+				return value;
+			});
+		} catch(error) {
+webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
+console.log( webApp.vars["logMsg"] );
+_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+
+		}//end catch
+
+*/
 
 /*
 		$( $(xml).find("database").find("video").find("published") ).each(function( index, value ){
