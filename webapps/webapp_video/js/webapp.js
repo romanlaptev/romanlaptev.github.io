@@ -31,12 +31,31 @@ console.log("init webapp!");
 		
 		this["vars"]["log"] = func.getById("log");
 		this["vars"]["btnToggle"] = func.getById("btn-toggle-log");
+		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
+		//this["vars"]["parseProgressBar": func.getById("parse-progress-bar");
+		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
+		this["vars"]["waitWindow"] = func.getById("win1");
 		
 		defineEvents();
+
+		//start block
+		if( this["vars"]["waitWindow"] ){
+			this["vars"]["waitWindow"].style.display="block";
+			//$("#load-progress").hide();
+		}
+
 		
 		_loadData(function(){
 //console.log(arguments);
 //console.log(window.location);	
+
+			//clear block
+setTimeout(function(){
+			if( webApp["vars"]["waitWindow"] ){
+				webApp["vars"]["waitWindow"].style.display="none";
+			}		
+}, 1000*3);
+			
 		});
 		
 		//_loadTemplates(function(){
@@ -248,18 +267,36 @@ console.log( webApp.vars["logMsg"] );
 				func.runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["DB"]["dataUrl"], 
-					//"onProgress" : function( e ){},
-					"onLoadEnd" : function( headers ){
-console.log( headers );
+					
+					"onProgress" : function( e ){
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+						if( webApp.vars["loadProgressBar"] ){
+							webApp.vars["loadProgressBar"].className = "progress-bar";
+							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+							
+							webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+						}
+						
 					},
+						
+					"onLoadEnd" : function( headers ){
+//console.log( headers );
+
+					},
+					
 					"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
-						//if( typeof callback === "function"){
-							//callback(false);
-						//}
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
 						//return false;
 					},
 
@@ -278,16 +315,16 @@ func.log("<p class='alert alert-success'>" + webApp.vars["logMsg"] + "</p>");
 webApp.vars["logMsg"] = "error, no data in " + webApp.vars["DB"]["dataUrl"];
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
-							if( typeof callback === "function"){
-								callback(false);
+							if( typeof postFunc === "function"){
+								postFunc(false);
 							}
 							return false;
 						}
 
 						_parseAjax( data );
 						
-						if( typeof callback === "function"){
-							callback();
+						if( typeof postFunc === "function"){
+							postFunc();
 						}
 
 					}//end callback()

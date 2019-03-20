@@ -8,13 +8,16 @@ func.log(msg);
 
 	$(document).ready(function(){
 //console.log("document ready");
+		//--------------------- Scroll
+		//Detect top position for scroll block
+		start_scroll_pos = $("#App").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
 	});//end ready	
 
 	$(window).scroll(function() {
 //var st = $(window).scrollTop();
 //document.title = st;
 //console.log ("scrollTop = " + st );
-/*
 		if ( $(this).scrollTop() > start_scroll_pos  ) {
 			$("#btn-scroll-to-top").show();
 		} 
@@ -22,10 +25,10 @@ func.log(msg);
 		if ( $(this).scrollTop() < end_scroll_pos ) {
 			$("#btn-scroll-to-top").hide();
 		}
-*/		
 	});//end scroll
 }
 
+var start_scroll_pos, end_scroll_pos;
 
 
 window.onload = function(){

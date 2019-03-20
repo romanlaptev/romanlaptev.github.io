@@ -24,21 +24,28 @@
 }
 
 
-
-
 .bg-lightblue {/*Диаграмма 12*/
   background-color: #0084d1 !important;
 }
 .bg-lightblue2 {/*Диаграмма 6*/
   background-color: #83caf !important;
 }
+.bg-lightblue3 {/*bootstrap 2 primary ???*/
+  background-color: #6aa6c0 !important;
+}
 
 
+.bg-lightsteelblue{
+  background-color: #b0c4de !important;
+}
 .bg-lightsteelblue2{ /* comp-books.css */
   background-color: #83A0C5 !important;
 }
 .bg-lightsteelblue3{
   background-color: #3b5a6f !important;
+}
+.bg-lightsteelblue4{
+  background-color: #b6cfed !important;
 }
 
 
@@ -49,6 +56,7 @@
 .bg-yellow2 {
   background-color: #ffcc00 !important;
 }
+
 .bg-orange {
   background-color: #ff950e !important;
 }
@@ -58,11 +66,18 @@
 .bg-orange-tango {
   background-color: #e09d00 !important;
 }
+.bg-orange3 {
+  background-color: #ffa500 !important;
+}
 
 
 .bg-red-brown {
   background-color: #2f0606 !important;
 }
+.bg-red-pink {
+  background-color: #a68caa !important;
+}
+
 
 
 .bg-grey-blue {
@@ -73,6 +88,11 @@
 }
 .bg-lightblue-grey {
   background-color: #e6e6ff !important;
+}
+
+
+.bg-lightskyblue{
+  background-color: #87cefa !important;
 }
 
 .bg-sky-blue5{
@@ -98,8 +118,11 @@
 .bg-sky-blue5{ /*wordpress header*/
   background-color: #1e73be !important;
 }
-.bg--sky-blue6 {/*css.html*/
+.bg-sky-blue6 {/*css.html*/
   background-color: #0088FF !important;
+}
+.bg-sky-blue7 {
+  background-color: #5bc0de !important;
 }
 .bg-sky-blue8{
   background-color: #336699 !important;
@@ -109,6 +132,10 @@
 }
 
 
+
+.bg-turquoise4{
+  background-color: #009b9b !important;
+}
 .bg-turquoise5{
   background-color: #006b6b !important;
 }
@@ -124,10 +151,17 @@
 
 
 
+
+.bg-blue{
+  background-color: #3498db !important;
+}
+
 .bg-blue1{/*css.html*/
   background-color: #0000bb !important;
 }
-
+.bg-blue2{/*bookmarks.html*/
+  background-color: #006b9b !important;
+}
 
 .bg-blue4{
   background-color: #337ab7 !important;
@@ -197,12 +231,17 @@
 .bg-green-grass3{/* gitlab button, border */
   background-color: #18a050 !important;
 }
+
 .bg-grey-green{
   background-color: #c6d6de !important;
 }
 .bg-grey-green2{
   background-color: #607d8b !important;
 }
+.bg-grey-green3{
+  background-color: #abbabb !important;
+}
+
 
 .bg-pale-rose-c5{
   background-color: #d3c5be !important;
@@ -227,6 +266,11 @@
 .bg-grey5{/*css.html*/
   background-color: #475570 !important;
 }
+.bg-grey6{/* dm-modal */
+  background-color: #607d8b !important;
+}
+
+
 
 .bg-grey-c8{
   background-color: #333340 !important;
@@ -240,6 +284,28 @@
   background-color: #9999CC !important;
 }
 
+
+.bg-light-violet{
+  background-color: #cecefa !important;
+}
+.bg-light-violet-lavender{
+  background-color: #e6e6fa !important;
+}
+.bg-light-violet2{
+  background-color: #e6e6ff !important;
+}
+
+.bg-violet{
+  background-color: #99c !important;
+}
+.bg-violet2{/* progress window*/
+  background-color: rgb(200, 200, 250) !important;
+}
+
+
+.bg-dark-violet{
+  background-color: #021859 !important;
+}
 
 
 
@@ -594,9 +660,6 @@ color: #ffffff,background: #324f5a
 color:#ffffff;background:#00B8D9 (голубой цвет);
 </div>
 
-<div style="color:#ffffff;background:#6aa6c0;" class="colorbox bold">
-color:#ffffff;background:#6aa6c0;
-</div>
 
 <div style="color:darkblue;background:#ccf;" class="colorbox">
 color:darkblue;background:#ccf;

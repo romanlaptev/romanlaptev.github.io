@@ -14,6 +14,7 @@
 	<link type="text/css" rel="stylesheet" href="../../fonts/fonts.css">
 	<link type="text/css" rel="stylesheet" href="../../css/custom_colors.css">
 	<link type="text/css" rel="stylesheet" href="css/custom.css">
+	<link type="text/css" rel="stylesheet" href="css/load.css">
 <!--
 	<link rel="stylesheet" href="css/breadcrumb.css">
 -->
@@ -36,7 +37,7 @@
 	
 </head>
 
-<body id="app">
+<body id="App">
 	
 <header class="container">
 			<nav class="navbar">
@@ -170,6 +171,40 @@
 		</div>
 	</footer>
 
+
+
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-info scroll-to" data-target="App">scroll to top</button>
+</div>
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+<div id="load-progress">				
+ajax load: <span id="num-total-load"></span>
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+</div>
+
+prepare data:
+	<div class="progress">
+		<div id="parse-progress-bar" class="progress-bar"></div>
+	</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>
