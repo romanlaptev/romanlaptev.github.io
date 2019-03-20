@@ -114,6 +114,9 @@ _log(msg);
 
 
 		function _get_attr_to_obj( attr ){
+			if( attr.length === 0){
+				return false;
+			}
 			var item_attr = {};
 			for(var item = 0; item < attr.length; item++) {
 				item_attr[attr[item].name] = attr[item].value;

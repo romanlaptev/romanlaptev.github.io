@@ -12,6 +12,10 @@ var webApp = {
 		//"GET" : {},
 		"DB" : {
 			"dataUrl" : "db/export_video.xml",
+			//"dataUrl" : "../../test_code/xml/notes.xml",
+			//"dataUrl" : "../../test_code/xml/bookmarks.xml",
+			//"dataUrl" : "../webapp_lib/tpl/templates.xml",
+
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
@@ -327,7 +331,7 @@ console.log("function _parseXML()");
 		//var xmlDoc = xml.getElementsByTagName( rootTagName);
 //console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
 
-		xmlNodes = func.parseXmlToObj( func, xml );
+		xmlNodes = func.parseXmlToObj( xml );
 console.log(xmlNodes);
 /*
 		var xmlNodes = __convertXmlToObj({
