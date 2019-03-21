@@ -24,6 +24,7 @@ var webApp = {
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
+		"init_url" : "#?q=node&nid=6",
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -63,7 +64,21 @@ console.log("init webapp!");
 		//_loadTemplates(function(){
 //console.log("Load templates end...", webApp.draw.vars["templates"] );		
 		//});
-		
+
+			var parse_url = window.location.search; 
+			if( parse_url.length > 0 ){
+				webApp.vars["GET"] = func.parseGetParams(); 
+				_urlManager();
+			} else {
+				if( webApp.vars["init_url"] ){
+					//parse_url = webApp.vars["init_url"].substring(2);
+					parse_url = webApp.vars["init_url"];
+//console.log(parse_url);
+				}
+				webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+				_urlManager();
+			}
+
 			if( typeof postFunc === "function"){
 				postFunc();
 			}
@@ -136,9 +151,10 @@ console.log("click...", e);
 
 
 	function _urlManager( target ){
-console.log(target);
-/*
+//console.log(target);
+		
 		switch( webApp.vars["GET"]["q"] ) {
+/*
 			
 			case "hide-log":
 				var log = getById("log-wrap");
@@ -166,29 +182,31 @@ console.log(target);
 			case "test":
 				_test();
 			break;
-			
+*/
+
 			case "node":
 console.log("-- start build page --");
 				var timeStart = new Date();
-				webApp.app.buildPage({
-					"nid" : webApp.vars["GET"]["nid"],
+				_buildPage({
+					//"nid" : webApp.vars["GET"]["nid"],
 					"callback" : function(){
 
-					var timeEnd = new Date();
-					var ms = timeEnd.getTime() - timeStart.getTime();
-					var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
-_log("<p>"+msg+"</p>");			
-console.log(msg);
+					//var timeEnd = new Date();
+					//var ms = timeEnd.getTime() - timeStart.getTime();
+					//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+//_log("<p>"+msg+"</p>");			
+//console.log(msg);
 console.log("-- end build page --");
-					webApp.app.vars["runtime"].push({
-						"source" : msg,
-						"ms" : ms,
-						"sec" : ms / 1000
-					});
-
+					//webApp.app.vars["runtime"].push({
+						//"source" : msg,
+						//"ms" : ms,
+						//"sec" : ms / 1000
+					//});
+					
 					}//end callback
 				});
 			break;
+/*			
 
 //taxonomy&?tid=105
 //taxonomy/term/105
@@ -233,11 +251,11 @@ console.log("Warn! not find 'tid' in query string", webApp.vars["GET"]["tid"] );
 			
 				
 
+*/
 			default:
 console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
 			break;
 		}//end switch
-*/
 		
 	}//end _urlManager()
 
@@ -622,3 +640,146 @@ console.log("error in draw.loadTemplates(), cannot parse templates data.....");
 			
 		}//end _loadTemplates()
 */
+
+
+//===============================================
+	var _buildPage = function( opt ){
+console.log("_buildPage()", arguments);
+
+		//if( webApp.vars["wait"] ){
+			//webApp.vars["wait"].className="modal-backdrop in";
+			//webApp.vars["wait"].style.display="block";
+		//}
+		
+		var p = {
+			"nid": null,
+			//"templateID" : "tpl-page"
+			"title" : "",
+			//content : ""
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(opt);
+
+		
+		//draw page content
+/*		
+		if( p["nid"] ){
+			
+			//get node from DB
+			var node = webApp.db.nodeLoad({
+				"nid": p["nid"],
+				//"title": options["title"]
+				"callback" : function( node ){
+console.log( node );
+					var _data = {};
+					//var _data = {
+						//"body" : node["body"],
+						//"field_author_value" : "Майкл Паркес"
+					//};
+					
+					_data["title"] = node["title"];
+					
+					//add node BODY to the content block
+					//if( node["body"].length > 0 ){
+						_data["body"] = node["body"];
+					//}
+					
+					//add node FIELDS to the content block
+					for( var field in node["fields"] ){
+						if( !node["fields"][field] ){
+							continue;
+						}
+						if( node["fields"][field] === "NULL" ){
+							continue;
+						}
+						_data[field] = node["fields"][field];
+					}//next
+					
+					//add node TERMS to the content block
+//for test!!!
+//node["terms"] = [];
+					_data["nodeTerms"] = "test";
+					if( node["nodeTerms"].length > 0 ){
+						_data["nodeTerms"] = node["nodeTerms"];
+					}
+					
+					var opt2 = {
+						"data" : _data,
+						"templateID" : "tpl-node",
+						//"wrapType" : "node",
+					};
+//console.log( node["type"] );
+					if( node["type"].length > 0 ){
+						//"templateID" : "tpl-node_photogallery_image",
+						opt2["templateID"] = opt2["templateID"]+"_"+node["type"];
+					}
+					var _html = webApp.draw.wrapContent(opt2);
+//console.log( _html);
+
+					if( _html && _html.length > 0){
+						//html += _html;
+					} else {
+console.log("Error form node html!!!");
+					}
+					
+					
+					//draw content block
+					//if( html.length > 0 ){
+						_buildBlock({
+							"name" : "block-content",
+							"title" : node["title"], 
+							"templateID" : "tpl-block-content",
+							//"content" : _formNodeContent(node)//node["content"]
+							"content" : _html
+						});
+					//}
+
+					
+					_buildSidebar({
+						"blocks" : _vars["blocks"],
+						"callback" : function(){
+							if( typeof p["callback"] === "function"){
+								p["callback"]();//return from _buildPage()
+							}
+						}//end callback
+					});
+					
+					
+				}//end callback
+			});
+			
+		} else {
+console.log( p["nid"] );			
+_log("<p>Warn! no page,  'nid' <b class='text-danger'>is empty</b></p>");			
+		}
+
+		// //draw sidebar blocks
+		// for( var n = 0; n < _vars["blocks"].length; n++){
+			// var opt2 = _vars["blocks"][n];
+// //console.log(opt2["visibility"], options["title"]);				
+			// if( opt2["visibility"]){
+				// if( opt2["visibility"].indexOf( p["title"] ) !== -1 ){
+					// _buildBlock( opt2 );
+				// }
+			// } else {
+				// _buildBlock( opt2 );
+			// }
+			
+		// }//next
+*/			
+
+		//if( webApp.vars["wait"] ){
+			////webApp.vars["wait"].className="";
+			//webApp.vars["wait"].style.display="none";
+		//}
+
+//---------------------------- return from _buildPage()
+		if( typeof p["callback"] === "function"){
+			p["callback"]();
+		}
+			
+	};//end _buildPage()

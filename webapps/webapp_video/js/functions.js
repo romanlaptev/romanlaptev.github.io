@@ -178,14 +178,14 @@ console.log( logMsg );
 		//console.log( $_GET);
 		//**************************************
 		function _parseGetParams( parseStr ) { 
-//console.log(parseStr);
+console.log(parseStr);
 //console.log(window.location);
 
 			if( !parseStr ){
 				var parse_url = window.location.search.substring(1).split("&"); 
 			} else {
 				p = parseStr.split("?");
-			//console.log(p);
+//console.log(p);
 				parseStr = p["1"];
 				var parse_url = parseStr.split("&"); 
 			}
