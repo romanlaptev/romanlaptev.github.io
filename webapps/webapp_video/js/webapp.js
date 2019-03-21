@@ -19,6 +19,7 @@ var webApp = {
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
+			"tagNameFilms": "video"
 		},
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
@@ -374,9 +375,14 @@ console.log("function _parseXML()");
 var timeStart = new Date();
 
 		try{
-			xmlNodes = func.convertXmlToObj( xml );
-console.log(xmlNodes);
+			xmlObj = func.convertXmlToObj( xml );
+console.log(xmlObj);
 delete xml;
+			webApp.vars["DB"]["nodes"] = _formNodesObj(xmlObj);
+delete xmlObj;
+			//_vars["taxonomy"] = __formTaxonomyObj();
+			//_vars["hierarchyList"] = __formHierarchyList();
+
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
 func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
@@ -389,42 +395,86 @@ webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> s
 func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
 console.log( webApp.vars["logMsg"] );
 		
-//---------------------------- 
-/*
-		try{
-			var jsonObj = JSON.parse( jsonStr, function(key, value) {
-	//console.log( key, value );
-				return value;
-			});
-		} catch(error) {
-webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
-console.log( webApp.vars["logMsg"] );
-_log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
-
-		}//end catch
-
-*/
-
-/*
-		$( $(xml).find("database").find("video").find("published") ).each(function( index, value ){
-//console.log( $(this) );
-console.log( index, value );
-		});//next
-*/				
-		//_vars["taxonomy"] = __formTaxonomyObj();
-		//_vars["nodes"] = __formNodesObj();
-		//_vars["hierarchyList"] = __formHierarchyList();
 
 	}//end _parseXML()
 
-	function __formNodesObj(){
-	}//end __formNodesObj()
+	function _formNodesObj(xmlObj){
+//console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
+		var databases = xmlObj["xroot"]["children"]["database"];
+		var dbName = "video";
+		var tagName = webApp.vars["DB"]["tagNameFilms"];
+		
+		//var nodes = {};
+		var nodes = [];
+		
+		for(var n = 0; n < databases.length; n++){
+			if( databases[n]["name"] && databases[n]["name"] === dbName){
+//console.log();
+				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
+			}
+		}//next
+		
+		if( tagNodes.length > 0){
+			for(var n = 0; n < tagNodes.length; n++){
+				var obj = {
+					"type" : tagNodes[n]["type"]
+				};
 
-	function __formTaxonomyObj(){
-	}//end __formTaxonomyObj()
+				for(var item in tagNodes[n]["children"]){
+					var _content = tagNodes[n]["children"][item][0]["text"];
+//"producer"
+//"roles"
+//"creators"
+//"description"
+//"published"
+//"updated"
+					
+					if( !_content ){
+//tags
+//title
+//ul
+						_content = __convertMultipleField( tagNodes[n]["children"][item][0]["children"]);
+					}
+					obj[item] = _content;
+				}
+				
+				//var key = "record_" + (n+1);
+				//nodes[key] = obj;
+				nodes.push( obj );
+				
+			}//next
+		}
+		
+		return nodes;
+		
+		function __convertMultipleField( xfields){
+			var fields = [];
+			for(var item1 in xfields){
+				var _xf = xfields[item1];
+				for(var item2 in _xf){
+					
+					if( _xf[item2]["children"] ){
+						var _xff = _xf[item2]["children"];
+						//var obj = {};
+						for( var key3 in _xff ){
+							//obj[key3] = _xff[key3];
+							fields.push( _xff[key3][0] );//<li><a...>(only one tag!!!)</li>
+						}
+					} else {
+						fields.push( _xf[item2] );
+					}
+				}
+			}
+			return fields;
+		}//end __convertMultipleField()
+		
+	}//end _formNodesObj()
+
+	function _formTaxonomyObj(){
+	}//end _formTaxonomyObj()
 	
 	function __formHierarchyList(){
-	}//end __formHierarchyList()
+	}//end _formHierarchyList()
 			
 
 
