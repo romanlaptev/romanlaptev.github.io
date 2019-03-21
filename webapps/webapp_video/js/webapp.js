@@ -665,9 +665,9 @@ console.log("_buildPage()", arguments);
 //console.log(data);
 
 		var _html = _draw_wrapData({
-			"data" : data,
-			"templateID" : "tpl-list",
-			"templateListItemID" : "tpl-list-item"
+			"data": data,
+			"templateID": "tpl-feed-list",
+			"templateListItemID": "tpl-feed-item"
 		});
 console.log( _html);
 
@@ -675,6 +675,8 @@ console.log( _html);
 webApp.vars["logMsg"] = "Error generate html...";
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
+		} else {
+$("#main").html( _html );			
 		}
 
 /*		
@@ -727,7 +729,7 @@ console.log( webApp.vars["logMsg"] );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");
@@ -752,7 +754,7 @@ console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateI
 		}
 		switch( p["wrapType"] ){
 			case "item" :
-				html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
+				//html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
 			break;
 			case "list" :
 				if( !p["templateListItemID"] ){
@@ -809,7 +811,7 @@ console.log(webApp.vars["logMsg"]);
 				
 				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
 				for( var key2 in item){
-//console.log(key2, item[key2]);
+//console.log(item[key2] instanceof Array, key2, item[key2]);
 
 /*				
 					if( key2 === "childTerms" && item["childTerms"].length > 0){
@@ -831,9 +833,16 @@ console.log(webApp.vars["logMsg"]);
 						//itemHtml = itemHtml.replace("{{childTerms}}", "");
 					//}
 */			
+
+//if( itemHtml.indexOf("{{​​​producer}}") !== -1 ){
+//console.log("TEST");
+//console.log(item[key2] instanceof Array, key2, item[key2]);
+//itemHtml = itemHtml.replace("{{​​​producer}}", item[key2]+"9999");
+//}
+			
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-// //console.log(key2, item[key2]);
+//console.log(key2, item[key2]);
 						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
 					}
 				}//next
