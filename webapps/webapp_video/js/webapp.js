@@ -41,54 +41,66 @@ console.log("init webapp!");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
-		defineEvents();
-
-		//start block
-		if( this["vars"]["waitWindow"] ){
-			this["vars"]["waitWindow"].style.display="block";
-			//$("#load-progress").hide();
-		}
-
-		
-		_loadData(function(){
-//console.log(arguments);
-//console.log(window.location);	
-
-			//clear block
-//setTimeout(function(){
-			if( webApp["vars"]["waitWindow"] ){
-				webApp["vars"]["waitWindow"].style.display="none";
-			}		
-//}, 1000*3);
-
-		//_loadTemplates(function(){
-//console.log("Load templates end...", webApp.draw.vars["templates"] );		
-		//});
-
-			var parse_url = window.location.search; 
-			if( parse_url.length > 0 ){
-				webApp.vars["GET"] = func.parseGetParams(); 
-				_urlManager();
-			} else {
-				if( webApp.vars["init_url"] ){
-					//parse_url = webApp.vars["init_url"].substring(2);
-					parse_url = webApp.vars["init_url"];
-//console.log(parse_url);
-				}
-				webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-				_urlManager();
-			}
-
-			if( typeof postFunc === "function"){
-				postFunc();
-			}
+		_loadTemplates(function(){
+//console.log("Load templates end...", webApp.vars["templates"] );		
+			_runApp();
 		});
 		
-				
 	}//end init()
 	
 };//end webApp()
 console.log(webApp);
+
+
+function _runApp(){
+
+	defineEvents();
+
+	//start block
+	if( webApp["vars"]["waitWindow"] ){
+		webApp["vars"]["waitWindow"].style.display="block";
+		//$("#load-progress").hide();
+	}
+
+
+	_loadData(function(){
+//console.log(arguments);
+//console.log(window.location);	
+
+		//clear block
+//setTimeout(function(){
+		if( webApp["vars"]["waitWindow"] ){
+			webApp["vars"]["waitWindow"].style.display="none";
+		}		
+//}, 1000*3);
+
+	//_loadTemplates(function(){
+	//console.log("Load templates end...", webApp.draw.vars["templates"] );		
+	//});
+
+		var parse_url = window.location.search; 
+		if( parse_url.length > 0 ){
+			webApp.vars["GET"] = func.parseGetParams(); 
+			_urlManager();
+		} else {
+			if( webApp.vars["init_url"] ){
+				//parse_url = webApp.vars["init_url"].substring(2);
+				parse_url = webApp.vars["init_url"];
+	//console.log(parse_url);
+			}
+			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+			_urlManager();
+		}
+
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
+	});
+
+	
+}//end _runApp()
+
+
 
 function defineEvents(){
 
@@ -186,7 +198,7 @@ console.log("click...", e);
 
 			case "node":
 console.log("-- start build page --");
-				var timeStart = new Date();
+				//var timeStart = new Date();
 				_buildPage({
 					//"nid" : webApp.vars["GET"]["nid"],
 					"callback" : function(){
@@ -496,26 +508,87 @@ console.log( webApp.vars["logMsg"] );
 
 //============================== TEMPLATES
 	function _loadTemplates( callback ){
-/*
-		
-		webApp.db.loadTemplates(function( isLoadTemplates ){
+		//webApp.db.loadTemplates(function( isLoadTemplates ){
 //console.log(isLoadTemplates);			
-			if( !isLoadTemplates ){
+			//if( !isLoadTemplates ){
 				_loadTemplatesFromFile();
-			} else{
-				
-				if( typeof callback === "function"){
-					callback();
-				}
-			}
-		});//end db.loadTemplates()
+			//} else{
+				//if( typeof callback === "function"){
+					//callback();
+				//}
+			//}
+		//});//end db.loadTemplates()
 		
 		function _loadTemplatesFromFile(){
 			
-			if( webApp.vars["templates_url"].length === 0 ){
-	console.log("error in draw.loadTemplates(), not find 'templates_url' !");
+			if( !webApp.vars["templates_url"] || 
+				webApp.vars["templates_url"].length === 0 ){
+webApp.vars["logMsg"] = "- error, _loadTemplates(), not found 'templates_url'...";
+func.log("<p class='alert alert-danger'>" + webApps.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+				if( typeof callback === "function"){
+					callback(false);
+				}
 				return false;
 			}
+			
+			func.runAjax({
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["templates_url"], 
+				//"onProgress" : function( e ){},
+				//"onLoadEnd" : function( headers ){},
+				"onError" : function( xhr ){
+//console.log( "onError ", arguments);
+webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+					if( typeof callback === "function"){
+						callback(false);
+					}
+					return false;
+				},
+				
+				"callback": function( data ){
+webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
+func.log("<p class='alert alert-info'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+//console.log( data );
+
+					if( !data ){
+console.log("error, loadTemplates(), not find data templates'....");
+						if( typeof callback === "function"){
+							callback(false);
+						}
+						return false;
+					}
+
+					//xmlNodes = func.convertXmlToObj( data );
+					xmlNodes = func.parseXmlToObj( func, data );
+//console.log(xmlNodes);
+					if( xmlNodes.length > 0 ){
+						for( var n= 0; n < xmlNodes.length; n++){
+							var key = xmlNodes[n]["name"];
+
+							var value = xmlNodes[n]["html_code"]
+							.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+							.replace(/\t/g,"")
+							.replace(/\n/g,"");
+							
+							webApp.vars["templates"][key] = value;
+						}//next
+						
+						//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
+					} else {
+console.log("error, loadTemplates(), cannot parse templates data.....");
+					}
+
+					if( typeof callback === "function"){
+						callback();
+					}
+				}//end
+			});
+			
+/*
 			runAjax( {
 				"requestMethod" : "GET", 
 				"url" : webApp.vars["templates_url"], 
@@ -555,87 +628,11 @@ console.log( webApp.vars["logMsg"] );
 
 				}//end callback()
 			});
+*/
 		}//end _loadTemplatesFromFile()
 		
-*/
 	}//end _loadTemplates()
 
-/*
-		function _loadTemplates( callback ){
-			_loadTemplatesFromFile();
-			
-			function _loadTemplatesFromFile(){
-				
-				if( !_vars["templates_url"] || _vars["templates_url"].length === 0 ){
-_vars["logMsg"] = "- error in _loadTemplates(), not find 'templates_url'....";
-func.log("<div class='alert alert-danger'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-					if( typeof callback === "function"){
-						callback(false);
-					}
-					return false;
-				}
-				
-				func.runAjax( {
-					"requestMethod" : "GET", 
-					"url" : _vars["templates_url"], 
-					//"onProgress" : function( e ){},
-					//"onLoadEnd" : function( headers ){},
-					"onError" : function( xhr ){
-//console.log( "onError ", arguments);
-_vars["logMsg"] = "error ajax load " + _vars["templates_url"];
-func.log("<p class='alert alert-danger'>" + _vars["logMsg"] + "</p>");
-console.log( _vars["logMsg"] );
-						if( typeof callback === "function"){
-							callback(false);
-						}
-						return false;
-					},
-				
-					
-					"callback": function( data ){
-_vars["logMsg"] = "- read templates from <b>" + _vars["templates_url"] +"</b>";
-//func.log("<div class='alert alert-info'>" + _vars["logMsg"] + "</div>");
-//console.log( _vars["logMsg"] );
-_vars["info"].push( "<div class='alert alert-info'>" + _vars["logMsg"] + "</div>" );
-		
-//console.log( data );
-
-						if( !data ){
-console.log("error in draw.loadTemplates(), not find data templates'....");
-							if( typeof callback === "function"){
-								callback(false);
-							}
-							return false;
-						}
-
-						xmlNodes = func.parseXmlToObj( data );
-//console.log(xmlNodes);
-						if( xmlNodes.length > 0 ){
-							for( var n= 0; n < xmlNodes.length; n++){
-								var key = xmlNodes[n]["name"];
-
-								var value = xmlNodes[n]["html_code"]
-								.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-								.replace(/\t/g,"")
-								.replace(/\n/g,"");
-								
-								_vars["templates"][key] = value;
-							}//next
-							//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
-						} else {
-console.log("error in draw.loadTemplates(), cannot parse templates data.....");
-						}
-
-						if( typeof callback === "function"){
-							callback();
-						}
-					}//end
-				});
-			}//end _loadTemplatesFromFile()
-			
-		}//end _loadTemplates()
-*/
 
 
 //===============================================
@@ -665,12 +662,12 @@ console.log("_buildPage()", arguments);
 		for(var n=0; n < 10; n++){
 			data.push( webApp.vars["DB"]["nodes"][n]);
 		}//next
-		
-console.log(data);
+//console.log(data);
 
-		var _html = _draw_wrapContent({
+		var _html = _draw_wrapData({
 			"data" : data,
-			"templateID" : "tpl-feed"
+			"templateID" : "tpl-list",
+			"templateListItemID" : "tpl-list-item"
 		});
 console.log( _html);
 
@@ -718,112 +715,57 @@ console.log( webApp.vars["logMsg"] );
 
 
 //============================================== DRAW
-	function _draw_wrapContent( opt ){
+	function _draw_wrapData( opt ){
 		var p = {
 			"data": null,
 			//"type" : "",
 			//"wrapType" : "menu",
-			"templateID" : false//,
-			//"templateListID" : false
+			"templateID" : false,
+			"templateListItemID": false
 		};
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
-console.log("-- _draw_wrapContent(), error, incorrect data ...");
+console.log("-- _draw_wrapData(), error, incorrect data ...");
 			return false;
 		}
 		if( !p["templateID"] ){
-console.log("-- _draw_wrapContent(), error, templateID was not defined...");
+console.log("-- _draw_wrapData(), error, templateID was not defined...");
 			return false;
 		}
 		
 		if( !webApp.vars["templates"][p.templateID] ){
-console.log("-- _draw_wrapContent(),  error, not find template, id: " + p.templateID);
+console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
 			return false;
 		}
 		
 		var html = "";
 //console.log( p["data"].length );
-/*
+
 		p["wrapType"] = "item";
 		if( p["data"].length > 0 ){
 			p["wrapType"] = "list";
 		}
-		
 		switch( p["wrapType"] ){
 			case "item" :
-				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
+				html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
 			break;
 			case "list" :
-				if( !p["templateListID"] ){
-var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
-console.log(msg);							
-_log(msg);
+				if( !p["templateListItemID"] ){
+webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
+console.log(webApp.vars["logMsg"]);							
 					return false;
 				}
-				html = __formListHtml( _vars["templates"][ p.templateID ] );
+				html = __formListHtml( webApp.vars["templates"][ p.templateID ] );
 			break;
 		}//end switch
 		
 //console.log(html);
-*/
 		return html;
-		
-/*
-		function __formListHtml( _html ){
-			
-			var listHtml = "";
-			for( var n = 0; n < p["data"].length; n++){
-//console.log( n );
-//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-				
-				//form list items
-				var item = p["data"][n];
-					
-				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( item, itemTpl );
-				
-				var itemHtml = _vars["templates"][ p.templateListID];
-				for( var key2 in item){
-//console.log(key2, item[key2]);
-
-					if( key2 === "childTerms" && item["childTerms"].length > 0){
-						var subOrdList = _vars["templates"][ p.templateID];
-						var itemTpl = _vars["templates"][ p.templateListID];
-						var subOrdListHtml = "";
-						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
-							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
-						}//next
-//console.log( subOrdListHtml );
-						subOrdList = subOrdList
-						.replace("list-unstyled", "")
-						.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-//itemHtml += subOrdList;
-						item["childTerms"] = subOrdList;
-						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
-					} //else {
-						//itemHtml = itemHtml.replace("{{childTerms}}", "");
-					//}
-					
-					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-// //console.log(key2, item[key2]);
-						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
-					}
-				}//next
-					
-				listHtml += itemHtml;
-//console.log(items);
-//console.log(listHtml);
-			}//next
-			
-			_html = _html.replace("{{list}}", listHtml);
-			return _html;
-		}//end __formListHtml
 
 		function __formNodeHtml( data, _html ){
 			
@@ -851,5 +793,58 @@ _log(msg);
 			
 			return _html;
 		}//end __formNodeHtml()
-*/		
-	}//end _wrapContent
+		
+		function __formListHtml( _html ){
+			
+			var listHtml = "";
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
+
+				//form list items
+				var item = p["data"][n];
+					
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( item, itemTpl );
+				
+				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
+				for( var key2 in item){
+//console.log(key2, item[key2]);
+
+/*				
+					if( key2 === "childTerms" && item["childTerms"].length > 0){
+						var subOrdList = webApp.vars["templates"][ p.templateID];
+						var itemTpl = webApp.vars["templates"][ p.templateListID];
+						var subOrdListHtml = "";
+						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
+							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
+						}//next
+//console.log( subOrdListHtml );
+						subOrdList = subOrdList
+						.replace("list-unstyled", "")
+						.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+//itemHtml += subOrdList;
+						item["childTerms"] = subOrdList;
+						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+					} //else {
+						//itemHtml = itemHtml.replace("{{childTerms}}", "");
+					//}
+*/			
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+// //console.log(key2, item[key2]);
+						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+					}
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+			}//next
+			
+			_html = _html.replace("{{list}}", listHtml);
+			return _html;
+		}//end __formListHtml
+
+	}//end _wrapData()

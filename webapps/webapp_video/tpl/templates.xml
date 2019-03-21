@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+
+	<tpl name="tpl-feed">
+		<html_code>
+<![CDATA[
+	<div>{{description}}</div>
+	<div>{{​​​producer}}</div>
+	<div>{{​​​creators}}</div>
+​​​​​​
+	<div>{{published}}</div>
+	<div>{{​​​updated}}</div>
+
+	<div>{{roles}}</div>
+	<div>{{​​​tags}}</div>
+	<div>{{​​​title}}</div>
+	<div>{{​​​type}}</div>
+	<div>{{​​​ul}}</div>
+
+]]>
+		</html_code>
+	</tpl>
+	
+	<tpl name="tpl-list">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-list-item">
+		<html_code><![CDATA[
+<li>{{published}}</li>
+		]]></html_code>
+	</tpl>
+	
+<!--
+	<tpl name="tpl-block-1">
+		<html_code><![CDATA[
+	<div class="block">
+			{{block_title}}
+			<div class="content">{{content}}</div>
+	</div>			
+		]]></html_code>
+	</tpl>
+-->
+	
+<!--	
+	<tpl name="">
+		<html_code><![CDATA[
+
+		]]></html_code>
+	</tpl>
+-->	
+</templates>
