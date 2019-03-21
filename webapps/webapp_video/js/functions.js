@@ -178,7 +178,7 @@ console.log( logMsg );
 		//console.log( $_GET);
 		//**************************************
 		function _parseGetParams( parseStr ) { 
-console.log(parseStr);
+//console.log(parseStr);
 //console.log(window.location);
 
 			if( !parseStr ){
@@ -1107,7 +1107,7 @@ window.onresize = function(event) {
 //console.log("window.attachEvent:" + window.attachEvent);
 if ( window.addEventListener ) {
 	window.addEventListener("load", function(e) {
-console.log("window.addEventListener, event load");
+//console.log("window.addEventListener, event load");
 	}, false);
 } else {
 	if (window.attachEvent)	{
@@ -1120,7 +1120,7 @@ console.log("window.attachEvent, event onload");
 /* for Mozilla/Firefox/Opera 9 */
 if (document.addEventListener) {
 	document.addEventListener("DOMContentLoaded", function(){
-console.log("DOMContentLoaded");
+//console.log("DOMContentLoaded");
 	},false);//end dom load
 }
 

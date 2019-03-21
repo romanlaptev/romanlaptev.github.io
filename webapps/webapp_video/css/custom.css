@@ -125,19 +125,20 @@ word-break: break-all;
 font-size: 75%;	
 */
 }
-#log .alert,
-#service-panel .alert 
+/*
+#log .alert
 {
 margin-bottom: 0;
 padding: 10px;
 }
+*/
 
-#log p,
-#service-panel p
+/*
+#log p
 {
 margin: 0;
 }
-
+*/
 
 
 

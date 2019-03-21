@@ -132,7 +132,7 @@ console.log( "Warn! error parse url in " + target.href );
 */
 
 	$("#btn-clear-log").on("click", function(e){
-console.log("click...", e);			
+//console.log("click...", e);			
 		webApp.vars["log"].innerHTML="";
 	});//end event
 	
@@ -264,7 +264,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 
 //======================================= LOAD DATA
 function _loadData( postFunc ){
-console.log("_loadData() ", arguments);
+//console.log("_loadData() ", arguments);
 	//if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 		webApp.vars["dataStoreType"] = false;
 	//} 
@@ -384,17 +384,13 @@ console.log( webApp.vars["logMsg"] );
 
 
 	function _parseXML(xml){
-console.log("function _parseXML()");
-		//var rootTagName = xml.documentElement.nodeName;
-		//var xmlDoc = xml.getElementsByTagName( rootTagName);
-//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
+//console.log("function _parseXML()");
 
-//---------------------------- 
 var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-console.log(xmlObj);
+//console.log(xmlObj);
 delete xml;
 			webApp.vars["DB"]["nodes"] = _formNodesObj(xmlObj);
 delete xmlObj;
@@ -662,115 +658,50 @@ console.log("_buildPage()", arguments);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(opt);
+//console.log(opt);
 
+		//Get data first 10 nodes for main page feed
+		var data = [];
+		for(var n=0; n < 10; n++){
+			data.push( webApp.vars["DB"]["nodes"][n]);
+		}//next
 		
-		//draw page content
-/*		
-		if( p["nid"] ){
-			
-			//get node from DB
-			var node = webApp.db.nodeLoad({
-				"nid": p["nid"],
-				//"title": options["title"]
-				"callback" : function( node ){
-console.log( node );
-					var _data = {};
-					//var _data = {
-						//"body" : node["body"],
-						//"field_author_value" : "Майкл Паркес"
-					//};
-					
-					_data["title"] = node["title"];
-					
-					//add node BODY to the content block
-					//if( node["body"].length > 0 ){
-						_data["body"] = node["body"];
-					//}
-					
-					//add node FIELDS to the content block
-					for( var field in node["fields"] ){
-						if( !node["fields"][field] ){
-							continue;
-						}
-						if( node["fields"][field] === "NULL" ){
-							continue;
-						}
-						_data[field] = node["fields"][field];
-					}//next
-					
-					//add node TERMS to the content block
-//for test!!!
-//node["terms"] = [];
-					_data["nodeTerms"] = "test";
-					if( node["nodeTerms"].length > 0 ){
-						_data["nodeTerms"] = node["nodeTerms"];
-					}
-					
-					var opt2 = {
-						"data" : _data,
-						"templateID" : "tpl-node",
-						//"wrapType" : "node",
-					};
-//console.log( node["type"] );
-					if( node["type"].length > 0 ){
-						//"templateID" : "tpl-node_photogallery_image",
-						opt2["templateID"] = opt2["templateID"]+"_"+node["type"];
-					}
-					var _html = webApp.draw.wrapContent(opt2);
-//console.log( _html);
+console.log(data);
 
-					if( _html && _html.length > 0){
-						//html += _html;
-					} else {
-console.log("Error form node html!!!");
-					}
-					
-					
-					//draw content block
-					//if( html.length > 0 ){
-						_buildBlock({
-							"name" : "block-content",
-							"title" : node["title"], 
-							"templateID" : "tpl-block-content",
-							//"content" : _formNodeContent(node)//node["content"]
-							"content" : _html
-						});
-					//}
+		var _html = _draw_wrapContent({
+			"data" : data,
+			"templateID" : "tpl-feed"
+		});
+console.log( _html);
 
-					
-					_buildSidebar({
-						"blocks" : _vars["blocks"],
-						"callback" : function(){
-							if( typeof p["callback"] === "function"){
-								p["callback"]();//return from _buildPage()
-							}
-						}//end callback
-					});
-					
-					
-				}//end callback
-			});
-			
-		} else {
-console.log( p["nid"] );			
-_log("<p>Warn! no page,  'nid' <b class='text-danger'>is empty</b></p>");			
+		if( !_html || _html.length === 0){
+webApp.vars["logMsg"] = "Error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
 		}
 
-		// //draw sidebar blocks
-		// for( var n = 0; n < _vars["blocks"].length; n++){
-			// var opt2 = _vars["blocks"][n];
-// //console.log(opt2["visibility"], options["title"]);				
-			// if( opt2["visibility"]){
-				// if( opt2["visibility"].indexOf( p["title"] ) !== -1 ){
-					// _buildBlock( opt2 );
-				// }
-			// } else {
-				// _buildBlock( opt2 );
-			// }
-			
-		// }//next
-*/			
+/*		
+		//draw content block
+		//if( html.length > 0 ){
+			_buildBlock({
+				"name" : "block-content",
+				"title" : node["title"], 
+				"templateID" : "tpl-block-content",
+				//"content" : _formNodeContent(node)//node["content"]
+				"content" : _html
+			});
+		//}
+
+		//draw sidebar blocks
+		_buildSidebar({
+			"blocks" : _vars["blocks"],
+			"callback" : function(){
+				if( typeof p["callback"] === "function"){
+					p["callback"]();//return from _buildPage()
+				}
+			}//end callback
+		});
+*/					
 
 		//if( webApp.vars["wait"] ){
 			////webApp.vars["wait"].className="";
@@ -783,3 +714,142 @@ _log("<p>Warn! no page,  'nid' <b class='text-danger'>is empty</b></p>");
 		}
 			
 	};//end _buildPage()
+
+
+
+//============================================== DRAW
+	function _draw_wrapContent( opt ){
+		var p = {
+			"data": null,
+			//"type" : "",
+			//"wrapType" : "menu",
+			"templateID" : false//,
+			//"templateListID" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+
+		if( !p["data"] || p["data"].length === 0){
+console.log("-- _draw_wrapContent(), error, incorrect data ...");
+			return false;
+		}
+		if( !p["templateID"] ){
+console.log("-- _draw_wrapContent(), error, templateID was not defined...");
+			return false;
+		}
+		
+		if( !webApp.vars["templates"][p.templateID] ){
+console.log("-- _draw_wrapContent(),  error, not find template, id: " + p.templateID);
+			return false;
+		}
+		
+		var html = "";
+//console.log( p["data"].length );
+/*
+		p["wrapType"] = "item";
+		if( p["data"].length > 0 ){
+			p["wrapType"] = "list";
+		}
+		
+		switch( p["wrapType"] ){
+			case "item" :
+				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
+			break;
+			case "list" :
+				if( !p["templateListID"] ){
+var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
+console.log(msg);							
+_log(msg);
+					return false;
+				}
+				html = __formListHtml( _vars["templates"][ p.templateID ] );
+			break;
+		}//end switch
+		
+//console.log(html);
+*/
+		return html;
+		
+/*
+		function __formListHtml( _html ){
+			
+			var listHtml = "";
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
+				
+				//form list items
+				var item = p["data"][n];
+					
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( item, itemTpl );
+				
+				var itemHtml = _vars["templates"][ p.templateListID];
+				for( var key2 in item){
+//console.log(key2, item[key2]);
+
+					if( key2 === "childTerms" && item["childTerms"].length > 0){
+						var subOrdList = _vars["templates"][ p.templateID];
+						var itemTpl = _vars["templates"][ p.templateListID];
+						var subOrdListHtml = "";
+						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
+							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
+						}//next
+//console.log( subOrdListHtml );
+						subOrdList = subOrdList
+						.replace("list-unstyled", "")
+						.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+//itemHtml += subOrdList;
+						item["childTerms"] = subOrdList;
+						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+					} //else {
+						//itemHtml = itemHtml.replace("{{childTerms}}", "");
+					//}
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+// //console.log(key2, item[key2]);
+						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+					}
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+			}//next
+			
+			_html = _html.replace("{{list}}", listHtml);
+			return _html;
+		}//end __formListHtml
+
+		function __formNodeHtml( data, _html ){
+			
+			for( var key in data ){
+//console.log(key, data[key]);
+
+				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
+					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
+					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
+					var _listHtml = "";
+					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
+						_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
+					}//next
+//console.log( _listHtml );
+					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
+//console.log( nodeTermsList );
+					data["nodeTerms"] = nodeTermsList;
+				}
+
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, p["data"][key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+			return _html;
+		}//end __formNodeHtml()
+*/		
+	}//end _wrapContent
