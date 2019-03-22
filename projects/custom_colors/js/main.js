@@ -62,6 +62,14 @@ var _vars = {
 
 		
 		{
+			"code": "#b1d0ef"
+		},
+		
+		{
+			"code": "#4e86bf",
+			"text-color":"#fff"
+		},		
+		{
 			"styleName": "bg-lightblue",
 			"code": "#0084d1",
 			"text-color": "#fff"
@@ -105,7 +113,10 @@ var _vars = {
 		},
 
 	
-		
+		{
+			"styleName": "bg-sky-blue10",
+			"code": "#99ccff"
+		},		
 		{
 			"styleName": "bg-lightskyblue",
 			"code": "#87cefa"
@@ -114,14 +125,12 @@ var _vars = {
 			"styleName": "bg-sky-blue5",
 			"code": "#006699"
 		},
+		
 		{
-			"styleName": "bg-sky-blue7",
+			"styleName": "bg-sky-blue66",
 			"code": "#003366"
 		},
-		{
-			"styleName": "bg-sky-blue",
-			"code": "#00ccff"
-		},
+		
 		{
 			"styleName": "bg-sky-blue2",
 			"code": "#3399ff"
@@ -143,6 +152,12 @@ var _vars = {
 			"styleName": "bg-sky-blue6",
 			"code": "#0088FF"
 		},
+		
+		{
+			"styleName": "bg-sky-blue",
+			"code": "#00ccff"
+		},
+		
 		{
 			"styleName": "bg-sky-blue7",
 			"code": "#5bc0de"
@@ -151,10 +166,7 @@ var _vars = {
 			"styleName": "bg-sky-blue8",
 			"code": "#336699"
 		},
-		{
-			"styleName": "bg-sky-blue10",
-			"code": "#99ccff"
-		},
+
 
 
 		{
@@ -275,12 +287,23 @@ var _vars = {
 			"styleName": "bg-blue-grey",
 			"code": "#315570"
 		},
-		{
-			"styleName": "bg-lightblue-grey",
-			"code": "#e6e6ff",
-			"text-color": "#000000"
-		},
 				
+		
+
+		{
+			"styleName": "bg-grey1", /* comp-books.css */
+			"code": "#404050"
+		},
+		{
+			"styleName": "bg-grey2", /* comp-books.css */
+			"code": "#5E789C",
+			"text-color":"#fff"
+		},
+		{
+			"styleName": "bg-grey6",/* dm-modal */
+			"code": "#607d8b",
+			"text-color":"#fff"
+		},
 		
 		{
 			"styleName": "bg-grey-green2",
@@ -296,27 +319,7 @@ var _vars = {
 			"code": "#e6eaec"
 		},
 
-
-
-		{
-			"styleName": "bg-pale-rose-c5",
-			"code": "#d3c5be"
-		},
-		{
-			"styleName": "bg-pale-rose1",/* comp-books.css */
-			"code": "#D3C5BE"
-		},
-
-
-		{
-			"styleName": "bg-grey1", /* comp-books.css */
-			"code": "#404050"
-		},
-		{
-			"styleName": "bg-grey2", /* comp-books.css */
-			"code": "#5E789C",
-			"text-color":"#fff"
-		},
+		
 		{
 			"styleName": "bg-grey3",
 			"code": "#2C3F66"
@@ -329,11 +332,7 @@ var _vars = {
 			"styleName": "bg-grey5",/*css.html*/
 			"code": "#475570"
 		},
-		{
-			"styleName": "bg-grey6",/* dm-modal */
-			"code": "#607d8b",
-			"text-color":"#fff"
-		},
+
 
 
 		{
@@ -348,6 +347,10 @@ var _vars = {
 
 
 		{
+			"styleName": "bg-dark-violet",
+			"code": "#021859"
+		},
+		{
 			"styleName": "bg-purple",
 			"code": "#9999CC",
 			"text-color":"#000"
@@ -355,21 +358,6 @@ var _vars = {
 		{
 			"styleName": "bg-light-violet",
 			"code": "#cecefa",
-			"text-color":"#000"
-		},
-		{
-			"styleName": "bg-light-violet-lavender",
-			"code": "#e6e6fa",
-			"text-color":"#000"
-		},
-		{
-			"styleName": "bg-light-violet2",
-			"code": "#e6e6ff",
-			"text-color":"#000"
-		},
-		{
-			"styleName": "bg-light-violet3 ",/* video.css*/
-			"code": "#E6E6FF",
 			"text-color":"#000"
 		},
 		{
@@ -381,9 +369,22 @@ var _vars = {
 			"code": "rgb(200, 200, 250)"
 		},
 		{
-			"styleName": "bg-dark-violet",
-			"code": "#021859"
+			"styleName": "bg-light-violet2",
+			"code": "#e6e6ff",
+			"text-color":"#000"
+		},		
+		{
+			"styleName": "bg-light-violet-lavender",
+			"code": "#e6e6fa",
+			"text-color":"#000"
 		},
+
+		{
+			"styleName": "bg-lightblue-grey",/* video.css*/
+			"code": "#e6e6ff",
+			"text-color": "#000000"
+		},
+		
 		
 		{
 			"styleName": "bg-red-pink",
@@ -391,7 +392,16 @@ var _vars = {
 			"text-color": "#000000"
 		},
 		
+		{
+			"styleName": "bg-pale-rose-c5",
+			"code": "#d3c5be"
+		},
+		{
+			"styleName": "bg-pale-rose1",/* comp-books.css */
+			"code": "#D3C5BE"
+		},
 
+		
 		{
 			"styleName": "bg-yellow",
 			"code": "#ffd320",
@@ -426,8 +436,40 @@ var _vars = {
 		{
 			"styleName": "bg-red-brown",
 			"code": "#2f0606"
-		}
+		},
 
+
+		{
+			"styleName": "style1",
+			"code": "#CCA96E"
+		},
+		{
+			"styleName": "style1",
+			"code": "#efc8b1"
+		},
+		{
+			"styleName": "style1",
+			"code": "#bf794e"
+		},
+		{
+			"styleName": "style1",
+			"code": "#efd0b1"
+		},
+		{
+			//"styleName": "style1",
+			"code": "#f3f3f3",
+			"text-color":"#000"
+		},
+		{
+			//"styleName": "style1",
+			"code": "#bf864e"
+		},
+		{
+			//"styleName": "style1",
+			"code": "#130040"
+		},
+
+		
 		
 	]//end colors
 }
@@ -486,7 +528,9 @@ function createPalette(){
 		newDiv.setAttribute("title", "background-color: "+_color);
 		
 		newDiv.innerHTML = "<p>" + _vars["colors"][n]["code"] + "</p>";
-		newDiv.innerHTML += "<p>" + _vars["colors"][n]["styleName"] + "</p>";
+		if( _vars["colors"][n]["styleName"] ){
+			newDiv.innerHTML += "<p>" + _vars["colors"][n]["styleName"] + "</p>";
+		}
 		
 		_vars["pallete"].appendChild( newDiv );	
 	}//next
