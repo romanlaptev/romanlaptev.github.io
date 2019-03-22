@@ -467,157 +467,215 @@ var _vars = {
 		{
 			//"colorName": "style1",
 			"code": "#130040"
+		},
+		{
+			"colorName": "winxp desktop",
+			"text-color": "#ffffff",
+			"code": "rgb(77, 66, 90)"
+		},
+		{
+		
+			"text-color": "#ffffff",
+			"code": "rgb(77,92, 106)"
 		}
 		
 	], //end
 	
 	"standart_colors": [
-		{
-			"colorName": "aliceblue",
-			"code": "#f0f8ff"
-		},
 {"colorName": "antiquewhite", "code": "#faebd7", "text-color": "#000"},
-{"colorName": "aqua", "code": "#00ffff", "text-color": "#000"},
-{"colorName": "aquamarine", "code": "#7fffd4", "text-color": "#000"},
-{"colorName": "azure", "code": "#f0ffff"},
+{"colorName": "floralwhite", "code": "#fffaf0"},
+
 {"colorName": "beige", "code": "#f5f5dc", "text-color": "#000"},
 {"colorName": "bisque", "code": "#ffe4c4", "text-color": "#000"},
 {"colorName": "black", "code": "#000000"},
 {"colorName": "blanchedalmond", "code": "#ffebcd", "text-color": "#000"},
-{"colorName": "blue", "code": "#0000ff"},
-{"colorName": "blueviolet", "code": "#8a2be2"},
+
+
 {"colorName": "brown", "code": "#a52a2a"},
 {"colorName": "burlywood", "code": "#deb887"},
-{"colorName": "cadetblue", "code": "#5f9ea0"},
-{"colorName": "chartreuse", "code": "#7fff00"},
+
 {"colorName": "chocolate", "code": "#d2691e"},
 {"colorName": "coral", "code": "#ff7f50"},
-{"colorName": "cornflowerblue", "code": "#6495ed"},
+
 {"colorName": "cornsilk", "code": "#fff8dc"},
 {"colorName": "crimson", "code": "#dc143c"},
-{"colorName": "cyan", "code": "#00ffff", "text-color": "#000"},
-{"colorName": "darkblue", "code": "#00008b"},
-{"colorName": "darkcyan", "code": "#008b8b"},
+
+
 {"colorName": "darkgoldenrod", "code": "#b8860b"},
 {"colorName": "darkgray", "code": "#a9a9a9"},
+
+{"colorName": "aquamarine", "code": "#7fffd4", "text-color": "#000"},
+{"colorName": "aqua", "code": "#00ffff", "text-color": "#000"},
+
+{"colorName": "paleturquoise", "code": "#afeeee"},
+{"colorName": "lightcyan", "code": "#e0ffff", "text-color": "#000"},
+{"colorName": "cyan", "code": "#00ffff", "text-color": "#000"},
+
+{"colorName": "turquoise", "code": "#40e0d0"},
+{"colorName": "mediumturquoise", "code": "#48d1cc"},
+{"colorName": "darkturquoise", "code": "#00ced1"},
+
+{"colorName": "lightseagreen", "code": "#20b2aa"},
+{"colorName": "darkcyan", "code": "#008b8b"},
+{"colorName": "teal", "code": "#008080"},
+{"colorName": "lightsteelblue", "code": "#b0c4de"},
+
+
+{"colorName": "cadetblue", "code": "#5f9ea0"},
+{"colorName": "steelblue", "code": "#4682b4"},
+{"colorName": "lightblue", "code": "#add8e6"},
+{"colorName": "lightskyblue", "code": "#87cefa"},
+
+{"colorName": "powderblue", "code": "#b0e0e6"},
+{"colorName": "skyblue", "code": "#87ceeb"},
+
+{"colorName": "deepskyblue", "code": "#00bfff"},
+{"colorName": "dodgerblue", "code": "#1e90ff"},
+{"colorName": "cornflowerblue", "code": "#6495ed"},
+{"colorName": "royalblue", "code": "#4169e1"},
+{"colorName": "mediumblue", "code": "#0000cd"},
+{"colorName": "blue", "code": "#0000ff"},
+{"colorName": "darkblue", "code": "#00008b"},
+{"colorName": "midnightblue", "code": "#191970"},
+{"colorName": "navy", "code": "#000080"},
+
+{"colorName": "darkslateblue", "code": "#483d8b"},
+{"colorName": "slateblue", "code": "#6a5acd"},
+{"colorName": "mediumslateblue", "code": "#7b68ee"},
+{"colorName": "lightslateblue", "code": "#8470ff"},
+
+{"colorName": "indigo", "code": "#4b0082"},
+{"colorName": "darkmagenta", "code": "#8b008b"},
+{"colorName": "purple", "code": "#800080"},
+{"colorName": "mediumpurple", "code": "#9370d8"},
+{"colorName": "darkviolet", "code": "#9400d3"},
+{"colorName": "blueviolet", "code": "#8a2be2"},
+{"colorName": "darkorchid", "code": "#9932cc"},
+{"colorName": "mediumorchid", "code": "#ba55d3"},
+{"colorName": "fuchsia", "code": "#ff00ff", "text-color": "#000"},
+{"colorName": "magenta", "code": "#ff00ff", "text-color": "#000"},
+{"colorName": "orchid", "code": "#da70d6"},
+{"colorName": "violet", "code": "#ee82ee"},
+{"colorName": "violetred", "code": "#d02090"},
+{"colorName": "mediumvioletred", "code": "#c71585"},
+{"colorName": "deeppink", "code": "#ff1493"},
+{"colorName": "hotpink", "code": "#ff69b4"},
+
+{"colorName": "palevioletred", "code": "#d87093"},
+{"colorName": "plum", "code": "#dda0dd"},
+{"colorName": "thistle", "code": "#d8bfd8"},
+
+{"colorName": "pink", "code": "#ffc0cb"},
+{"colorName": "lightpink", "code": "#ffb6c1"},
+
+
+{"colorName": "darkslategray", "code": "#2f4f4f"},
+
+
+
+{"colorName": "forestgreen", "code": "#228b22"},
 {"colorName": "darkgreen", "code": "#006400"},
 {"colorName": "darkkhaki", "code": "#bdb76b"},
-{"colorName": "darkmagenta", "code": "#8b008b"},
 {"colorName": "darkolivegreen", "code": "#556b2f"},
-{"colorName": "darkorange", "code": "#ff8c00"},
-{"colorName": "darkorchid", "code": "#9932cc"},
-{"colorName": "darkred", "code": "#8b0000"},
-{"colorName": "darksalmon", "code": "#e9967a"},
 {"colorName": "darkseagreen", "code": "#8fbc8f"},
-{"colorName": "darkslateblue", "code": "#483d8b"},
-{"colorName": "darkslategray", "code": "#2f4f4f"},
-{"colorName": "darkturquoise", "code": "#00ced1"},
-{"colorName": "darkviolet", "code": "#9400d3"},
-{"colorName": "deeppink", "code": "#ff1493"},
-{"colorName": "deepskyblue", "code": "#00bfff"},
-{"colorName": "dimgray", "code": "#696969"},
-{"colorName": "dodgerblue", "code": "#1e90ff"},
-{"colorName": "feldspar", "code": "#d19275"},
-{"colorName": "firebrick", "code": "#b22222"},
-{"colorName": "floralwhite", "code": "#fffaf0"},
-{"colorName": "forestgreen", "code": "#228b22"},
-{"colorName": "fuchsia", "code": "#ff00ff", "text-color": "#000"},
-{"colorName": "gainsboro", "code": "#dcdcdc"},
-{"colorName": "ghostwhite", "code": "#f8f8ff"},
-{"colorName": "gold", "code": "#ffd700"},
-{"colorName": "goldenrod", "code": "#daa520"},
-{"colorName": "gray", "code": "#808080", "text-color": "#000"},
 {"colorName": "green", "code": "#008000"},
 {"colorName": "greenyellow", "code": "#adff2f"},
-{"colorName": "honeydew", "code": "#f0fff0"},
-{"colorName": "hotpink", "code": "#ff69b4"},
-{"colorName": "indianred", "code": "#cd5c5c"},
-{"colorName": "indigo", "code": "#4b0082"},
-{"colorName": "ivory", "code": "#fffff0"},
-{"colorName": "khaki", "code": "#f0e68c"},
-{"colorName": "lavender", "code": "#e6e6fa"},
-{"colorName": "lavenderblush", "code": "#fff0f5"},
 {"colorName": "lawngreen", "code": "#7cfc00"},
-{"colorName": "lemonchiffon", "code": "#fffacd"},
-{"colorName": "lightblue", "code": "#add8e6"},
-{"colorName": "lightcoral", "code": "#f08080"},
-{"colorName": "lightcyan", "code": "#e0ffff", "text-color": "#000"},
-{"colorName": "lightgoldenrodyellow", "code": "#fafad2"},
-{"colorName": "lightgrey", "code": "#d3d3d3"},
-{"colorName": "lightgreen", "code": "#90ee90"},
-{"colorName": "lightpink", "code": "#ffb6c1"},
-{"colorName": "lightsalmon", "code": "#ffa07a"},
-{"colorName": "lightseagreen", "code": "#20b2aa"},
-{"colorName": "lightskyblue", "code": "#87cefa"},
-{"colorName": "lightslateblue", "code": "#8470ff"},
-{"colorName": "lightslategray", "code": "#778899"},
-{"colorName": "lightsteelblue", "code": "#b0c4de"},
-{"colorName": "lightyellow", "code": "#ffffe0"},
-{"colorName": "lime", "code": "#00ff00"},
 {"colorName": "limegreen", "code": "#32cd32"},
-{"colorName": "linen", "code": "#faf0e6"},
-{"colorName": "magenta", "code": "#ff00ff", "text-color": "#000"},
-{"colorName": "maroon", "code": "#800000"},
+{"colorName": "lime", "code": "#00ff00"},
+{"colorName": "chartreuse", "code": "#7fff00"},
+{"colorName": "lightgreen", "code": "#90ee90"},
 {"colorName": "mediumaquamarine", "code": "#66cdaa"},
-{"colorName": "mediumblue", "code": "#0000cd"},
-{"colorName": "mediumorchid", "code": "#ba55d3"},
-{"colorName": "mediumpurple", "code": "#9370d8"},
+
 {"colorName": "mediumseagreen", "code": "#3cb371"},
-{"colorName": "mediumslateblue", "code": "#7b68ee"},
 {"colorName": "mediumspringgreen", "code": "#00fa9a"},
-{"colorName": "mediumturquoise", "code": "#48d1cc"},
-{"colorName": "mediumvioletred", "code": "#c71585"},
-{"colorName": "midnightblue", "code": "#191970"},
-{"colorName": "mintcream", "code": "#f5fffa"},
+{"colorName": "olive", "code": "#808000"},
+{"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
+{"colorName": "palegreen", "code": "#98fb98"},
+{"colorName": "seagreen", "code": "#2e8b57"},
+{"colorName": "springgreen", "code": "#00ff7f"},
+{"colorName": "yellowgreen", "code": "#9acd32"},
+
+
+
+{"colorName": "dimgray", "code": "#696969"},
+{"colorName": "gray", "code": "#808080", "text-color": "#000"},
+{"colorName": "slategray", "code": "#708090", "text-color": "#000"},
+{"colorName": "lightslategray", "code": "#778899"},
+{"colorName": "lightgrey", "code": "#d3d3d3"},
+{"colorName": "silver", "code": "#c0c0c0"},
+{"colorName": "gainsboro", "code": "#dcdcdc"},
+{"colorName": "lavenderblush", "code": "#fff0f5"},
+{"colorName": "lavender", "code": "#e6e6fa"},
+
+{"colorName": "linen", "code": "#faf0e6"},
+
+
 {"colorName": "mistyrose", "code": "#ffe4e1", "text-color": "#000"},
 {"colorName": "moccasin", "code": "#ffe4b5", "text-color": "#000"},
 {"colorName": "navajowhite", "code": "#ffdead", "text-color": "#000"},
-{"colorName": "navy", "code": "#000080"},
+
 {"colorName": "oldlace", "code": "#fdf5e6"},
-{"colorName": "olive", "code": "#808000"},
-{"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
-{"colorName": "orange", "code": "#ffa500"},
-{"colorName": "orangered", "code": "#ff4500"},
-{"colorName": "orchid", "code": "#da70d6"},
+
+
 {"colorName": "palegoldenrod", "code": "#eee8aa"},
-{"colorName": "palegreen", "code": "#98fb98"},
-{"colorName": "paleturquoise", "code": "#afeeee"},
-{"colorName": "palevioletred", "code": "#d87093"},
+
+
 {"colorName": "papayawhip", "code": "#ffefd5", "text-color": "#000"},
-{"colorName": "peachpuff", "code": "#ffdab9", "text-color": "#000"},
-{"colorName": "peru", "code": "#cd853f"},
-{"colorName": "pink", "code": "#ffc0cb"},
-{"colorName": "plum", "code": "#dda0dd"},
-{"colorName": "powderblue", "code": "#b0e0e6"},
-{"colorName": "purple", "code": "#800080"},
+
+
+{"colorName": "darkred", "code": "#8b0000"},
+{"colorName": "firebrick", "code": "#b22222"},
+{"colorName": "indianred", "code": "#cd5c5c"},
+{"colorName": "maroon", "code": "#800000"},
 {"colorName": "red", "code": "#ff0000"},
-{"colorName": "rosybrown", "code": "#bc8f8f"},
-{"colorName": "royalblue", "code": "#4169e1"},
-{"colorName": "saddlebrown", "code": "#8b4513"},
-{"colorName": "salmon", "code": "#fa8072"},
-{"colorName": "sandybrown", "code": "#f4a460"},
-{"colorName": "seagreen", "code": "#2e8b57"},
-{"colorName": "seashell", "code": "#fff5ee", "text-color": "#000"},
-{"colorName": "sienna", "code": "#a0522d"},
-{"colorName": "silver", "code": "#c0c0c0"},
-{"colorName": "skyblue", "code": "#87ceeb"},
-{"colorName": "slateblue", "code": "#6a5acd"},
-{"colorName": "slategray", "code": "#708090", "text-color": "#000"},
-{"colorName": "snow", "code": "#fffafa"},
-{"colorName": "springgreen", "code": "#00ff7f"},
-{"colorName": "steelblue", "code": "#4682b4"},
-{"colorName": "tan", "code": "#d2b48c"},
-{"colorName": "teal", "code": "#008080"},
-{"colorName": "thistle", "code": "#d8bfd8"},
 {"colorName": "tomato", "code": "#ff6347"},
-{"colorName": "turquoise", "code": "#40e0d0"},
-{"colorName": "violet", "code": "#ee82ee"},
-{"colorName": "violetred", "code": "#d02090"},
-{"colorName": "wheat", "code": "#f5deb3", "text-color": "#000"},
-{"colorName": "white", "code": "#ffffff"},
-{"colorName": "whitesmoke", "code": "#f5f5f5"},
+
+{"colorName": "darksalmon", "code": "#e9967a"},
+{"colorName": "lightsalmon", "code": "#ffa07a"},
+{"colorName": "salmon", "code": "#fa8072"},
+
+{"colorName": "lightcoral", "code": "#f08080"},
+
+{"colorName": "orangered", "code": "#ff4500"},
+{"colorName": "darkorange", "code": "#ff8c00"},
+{"colorName": "orange", "code": "#ffa500"},
+
+{"colorName": "gold", "code": "#ffd700"},
+{"colorName": "goldenrod", "code": "#daa520"},
+{"colorName": "peru", "code": "#cd853f"},
+
 {"colorName": "yellow", "code": "#ffff00"},
-{"colorName": "yellowgreen", "code": "#9acd32"}
+{"colorName": "lightyellow", "code": "#ffffe0"},
+{"colorName": "lightgoldenrodyellow", "code": "#fafad2"},
+{"colorName": "lemonchiffon", "code": "#fffacd"},
+
+{"colorName": "khaki", "code": "#f0e68c"},
+
+
+{"colorName": "rosybrown", "code": "#bc8f8f"},
+{"colorName": "saddlebrown", "code": "#8b4513"},
+{"colorName": "sienna", "code": "#a0522d"},
+{"colorName": "sandybrown", "code": "#f4a460"},
+{"colorName": "feldspar", "code": "#d19275"},
+
+
+{"colorName": "tan", "code": "#d2b48c"},
+{"colorName": "wheat", "code": "#f5deb3", "text-color": "#000"},
+{"colorName": "peachpuff", "code": "#ffdab9", "text-color": "#000"},
+
+{"colorName": "aliceblue", "code": "#f0f8ff"},
+{"colorName": "azure", "code": "#f0ffff"},
+{"colorName": "honeydew", "code": "#f0fff0"},
+
+{"colorName": "ghostwhite", "code": "#f8f8ff"},
+{"colorName": "mintcream", "code": "#f5fffa"},
+{"colorName": "whitesmoke", "code": "#f5f5f5"},
+
+{"colorName": "seashell", "code": "#fff5ee", "text-color": "#000"},
+{"colorName": "snow", "code": "#fffafa"},
+{"colorName": "ivory", "code": "#fffff0"},
+{"colorName": "white", "code": "#ffffff"}
 		
 	], //end
 
@@ -640,6 +698,141 @@ var _vars = {
 		"text-color": "#ffffff"
 	},
 
+{"code": "#bf794e", "text-color": "#ffffff"},
+{"code": "#efd0b1", "text-color": "#4D4128"},
+{"code": "#bf864e", "text-color": "#4D4128"},
+{"code": "#CCA96E", "text-color": "#4D4128"},
+{"code": "#e0e0c3", "text-color": "#4D4128"},
+{"code": "#ead9c2", "text-color": "#4D4128"},
+{"code": "#f1ebe2", "text-color": "#4D4128"},
+{"code": "#707070", "text-color": "#ffffff"},
+{"code": "#3f3f3f", "text-color": "#ffffff"},
+{"code": "#666", 	"text-color": "#ffffff"},
+{"code": "#beb49b", "text-color": "#ffffff"},
+{"code": "#d8c8b3", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#f3f3f3"},
+{"text-color": "#000000", "code": "#D0CCD5"},
+{"text-color": "#000000", "code": "#dedddf"},
+{"text-color": "#000084", "code": "#c6c3c6"},
+{"text-color": "#794F4B", "code": "#c6c3c6"},
+{"code": "#4D425A", "text-color": "#ffffff"},
+{"code": "#580C61", "text-color": "#ffffff"},
+{"code": "#4b0082", "text-color": "#ffffff"},
+{"code": "#2E1441", "text-color": "#ffffff"},
+{"code": "#41013D", "text-color": "#ffffff"},
+{"code": "#4f5a6e", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#D5DBE1"},
+{"code": "#a7adbc", "text-color": "#ffffff"},
+{"code": "#c9c6d3", "text-color": "#45557a"},
+{"code": "#45557a", "text-color": "#c9c6d3"},
+
+//BLUE, DARKBLUE
+{"code": "#003089", "text-color": "#ffffff"},
+{"code": "#055c80", "text-color": "#ffffff"},
+{"code": "#3d5afe", "text-color": "#ffffff"},
+{"code": "#5a5eff", "text-color": "#ffffff"},
+{"code": "#7cc0de", "text-color": "#ffffff"},
+{"code": "#00c1d5", "text-color": "#ffffff"},
+{"code": "#C7D5EC", "text-color": "#ffffff"},
+{"code": "#3950C9", "text-color": "#ffffff"},
+{"code": "#130040", "text-color": "#ffffff"},
+{"code": "#1e73be", "text-color": "#ffffff"},
+{"code": "#b1d0ef", "text-color": "#0e1f40"},
+{"code": "#4e86bf", "text-color": "#ffffff"},
+{"code": "#324f5a", "text-color": "#ffffff"},
+{"code": "#00B8D9", "text-color": "#ffffff"},
+{"code": "#ccf", "text-color": "#000"},
+{"code": "#def", "text-color": "#0088cc"},
+{"code": "#196e9c", "text-color": "#ffffff"},
+{"code": "#0060a0", "text-color": "#ffffff"},
+{"code": "#0061A0", "text-color": "#ffffff"},
+{"code": "#074e68", "text-color": "#ffffff"},
+{"code": "#2f96b4", "text-color": "#ffffff"},
+
+//GREEN
+{"code": "#ccffff", "text-color": "#0000ff"},
+{"code": "#225033", "text-color": "#ffffff"},
+{"code": "#21301f", "text-color": "#93be91"},
+{"code": "#21301f", "text-color": "#bad6c2"},
+{"code": "#004000", "text-color": "#ffffff"},
+{"code": "#1a4216", "text-color": "#ffffff"},
+{"code": "#90D389", "text-color": "#003200"},
+{"code": "#38d878", "text-color": "#ffffff"},
+{"code": "#f0fde3", "text-color": "#59af52"},
+{"code": "#cfdfcc", "text-color": "#000000"},
+{"code": "#d8efe0", "text-color": "#008000"},
+{"text-color": "#ffffff", "code": "#238f11"},
+{"code": "#d9ee7f", "text-color": "darkgreen"},
+{"code": "#a9bf4e", "text-color": "darkgreen"},
+{"code": "#E3EFB1", "text-color": "darkgreen"},
+{"code": "#b2c27a", "text-color": "#ffffff"},
+{"code": "#70D14E", "text-color": "#ffffff"},
+{"code": "#03AEA6", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#E5F2C0"},
+{"code": "#0C9E54", "text-color": "#ffffff"},
+
+{"text-color": "#000000", "code": "#00FF00","colorName": "Зелёный, #00FF00"},
+{"text-color": "#000000", "code": "#7BA05B","colorName": "Спаржа, #7BA05B"},
+{"text-color": "#000000", "code": "#66FF00","colorName": "Ярко-зелёный, #66FF00"},
+{"text-color": "#000000", "code": "#78866B","colorName": "Защитный, #78866B"},
+{"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
+{"text-color": "#000000", "code": "#7FFF00","colorName": "Шартрёз, #7FFF00"},
+{"text-color": "#000000", "code": "#50C878","colorName": "Изумрудный, #50C878"},
+{"text-color": "#000000", "code": "#4F7930","colorName": "Папоротник, #4F7930"},
+{"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа, #465945"},
+{"text-color": "#000000", "code": "#ADFF2F","colorName": "Жёлто-зелёный, #ADFF2F"},
+{"text-color": "#000000", "code": "#00A86B","colorName": "Жадеитовый цвет,Желтовато-зелёный, #00A86B"},
+{"text-color": "#000000", "code": "#40826D","colorName": "Виридиан, #40826D"},
+{"text-color": "#000000", "code": "#BFFF00","colorName": "Лайм, #BFFF00"},
+{"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
+{"text-color": "#000000", "code": "#21421E","colorName": "Мирт, #21421E"},
+{"text-color": "#000000", "code": "#808000","colorName": "Оливковый, #808000"},
+{"text-color": "#000000", "code": "#6B8E23","colorName": "Оливково-серый, #6B8E23"},
+{"text-color": "#000000", "code": "#D1E231","colorName": "Груша, #D1E231"},
+{"text-color": "#000000", "code": "#01796F","colorName": "Сосна,#01796F"},
+{"text-color": "#000000", "code": "#2E8B57","colorName": "Морская зелень, #2E8B57"},
+{"text-color": "#000000", "code": "#00FF7F","colorName": "Весенняя зелень, #00FF7F"},
+{"text-color": "#000000", "code": "#ACB78E","colorName": "Болотная зелень, #ACB78E"},
+{"text-color": "#000000", "code": "#D0F0C0","colorName": "Зелёный чай,#D0F0C0"},
+{"text-color": "#000000", "code": "#228B22","colorName": "Лесная зелень, #228B22"},
+{"text-color": "#000000", "code": "#DFFF00","colorName": "Жёлтый шартрез, #DFFF00"},
+{"text-color": "#000000", "code": "#3FFF00","colorName": "Harlequin, #3FFF00"},
+{"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
+{"text-color": "#000000", "code": "#D1E189","colorName": "Lime pulp,#D1E189"},
+{"text-color": "#000000", "code": "#355E3B","colorName": "Охотничий,Hunter_green, #355E3B"},
+{"text-color": "#000000", "code": "#00A500","colorName": "Ярко-зелёный с желтоватым отливом, #00A500"},
+{"text-color": "#000000", "code": "#009E60","colorName": "Трилистник, #009E60"},
+{"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
+{"text-color": "#000000", "code": "#32CD32","colorName": "Лаймовый, Lime_Green, #32CD32"},
+{"text-color": "#000000", "code": "#00A693","colorName": "Персидский зелёный, #00A693"},
+{"text-color": "#000000", "code": "#4D5D53","colorName": "Фельдграу, #4D5D53"},
+{"code": "#cccc99", "text-color": "#ffffff"},
+
+// YELLOW
+{"code": "#FFDF00", "text-color": "maroon"},
+{"code": "#fffbe1", "text-color": "darkgreen"},
+{"text-color": "#000000","code": "#f89406"},
+
+
+// RED
+{"code": "#E23817", "text-color": "#ffffff"},
+{"code": "#de4f00", "text-color": "#ffffff"},
+{"code": "#bd362f", "text-color": "#ffffff"},
+
+// SILVER
+{"text-color": "#000000", "code": "#BFBFBF","colorName": "Серый, #BFBFBF"},
+{"text-color": "#000000", "code": "#AFAFAF","colorName": "Стальной, #AFAFAF"},
+{"text-color": "#000000", "code": "#CECECE","colorName": "Серебристый, #CECECE"},
+{"text-color": "#000000", "code": "#C7D0CC","colorName": "Перламутровый, #C7D0CC"},
+{"text-color": "#000000", "code": "#798081","colorName": "Свинцовый, #798081"},
+{"text-color": "#000000", "code": "#9E9E9E","colorName": "Мышиный, #9E9E9E"},
+{"text-color": "#000000", "code": "#303030","colorName": "Антрацитовый, #303030"},
+{"text-color": "#000000", "code": "#79A0C1","colorName": "Сизый, #79A0C1"},
+{"text-color": "#000000", "code": "#CADABA","colorName": "Серо-зелёный чай, #CADABA"},
+{"text-color": "#000000", "code": "#505050","colorName": "Мокрый асфальт,#505050"},
+{"text-color": "#000000", "code": "#464646","colorName": "Угольный,#464646"},
+{"text-color": "#000000", "code": "#708090","colorName": "Грифельный,#708090"},
+{"colorName": "Фельдграу","code": "#4D5D53","text-color": "#ffffff"}
 
 	] //end
 
@@ -703,12 +896,14 @@ function createPalette( target, colors ){
 			
 			newDiv.style.color="#"+r+g+b;
 		}
-		newDiv.setAttribute("title", "background-color: "+_color);
-		
-		newDiv.innerHTML = "<p>" + colors[n]["code"] + "</p>";
+	
+		var colorTitle = _color;
 		if( colors[n]["colorName"] ){
-			newDiv.innerHTML += "<p>" + colors[n]["colorName"] + "</p>";
+			colorTitle += ", " + colors[n]["colorName"];
 		}
+		newDiv.setAttribute("title", colorTitle);
+		
+		//newDiv.innerHTML = "<p>" + colors[n]["code"] + "</p>";
 		
 		//_vars["pallete"].appendChild( newDiv );	
 		target.appendChild( newDiv );	
