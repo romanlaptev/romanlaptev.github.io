@@ -4,14 +4,6 @@
 var _vars = {
 	colors: [
 		{
-			"styleName": "bg-darkblue",
-			"code": "#004586"
-		},
-		{
-			"styleName": "bg-darkblue2",
-			"code": " #000080"
-		},
-		{
 			"styleName": "bg-darkblue3",
 			"code": "#0e1f40"
 		},
@@ -31,15 +23,74 @@ var _vars = {
 			"styleName": "bg-darkblue-tango2",
 			"code": "#001b33"
 		},
+
+		{
+			"styleName": "bg-darkblue",
+			"code": "#004586"
+		},
+		{
+			"styleName": "bg-darkblue2",
+			"code": " #000080"
+		},
+		
+		{
+			"styleName": "bg-lightblue2",
+			"code": "#083caf"
+		},
+		{
+			"styleName": "bg-blue1",/*css.html*/
+			"code": "#0000bb"
+		},
+		{
+			"styleName": "bg-blue5",
+			"code": "#000099"
+		},
+		
+		
+		{
+			"styleName": "bg-lightsteelblue",
+			"code": "#b0c4de"
+		},
+		{
+			"styleName": "bg-lightsteelblue2",
+			"code": "#83A0C5"
+		},
+		{
+			"styleName": "bg-lightsteelblue4",
+			"code": "#b6cfed"
+		},
+
+		
 		{
 			"styleName": "bg-lightblue",
 			"code": "#0084d1",
 			"text-color": "#fff"
 		},
+
+
 		{
-			"styleName": "bg-lightblue2",
-			"code": "#083caf"
+			"styleName": "bg-blue",
+			"code": "#3498db",
+			"text-color": "#fff"
 		},
+
+		{
+			"styleName": "bg-blue2",/*bookmarks.html*/
+			"code": "#006b9b"
+		},
+		{
+			"styleName": "bg-blue4",
+			"code": "#337ab7"
+		},
+
+
+		{
+			"styleName": "bg-blue-sky2",
+			"code": "#3465a4"
+		},
+		
+		
+		
 		{
 			"styleName": "bg-lightblue3",
 			"code": "#6aa6c0"
@@ -53,81 +104,7 @@ var _vars = {
 			"code": "#BBD8E9"
 		},
 
-		{
-			"styleName": "bg-lightsteelblue",
-			"code": "#b0c4de"
-		},
-		{
-			"styleName": "bg-lightsteelblue2",
-			"code": "#83A0C5"
-		},
-		{
-			"styleName": "bg-lightsteelblue3",
-			"code": "#3b5a6f"
-		},
-		{
-			"styleName": "bg-lightsteelblue4",
-			"code": "#b6cfed"
-		},
-
-		
-		{
-			"styleName": "bg-yellow",
-			"code": "#ffd320",
-			"text-color": "#000000"
-		},
-		{
-			"styleName": "bg-yellow2",
-			"code": "#ffcc00",
-			"text-color": "#000000"
-		},
-		
-		{
-			"styleName": "bg-orange",
-			"code": "#ff950e"
-		},
-		{
-			"styleName": "bg-orange2",
-			"code": "#ffb515"
-		},
-		{
-			"styleName": "bg-orange-tango",
-			"code": "#e09d00"
-		},
-		{
-			"styleName": "bg-orange3",
-			"code": "#ffa500"
-		},
-		{
-			"styleName": "bg-orange4",
-			"code": "#FECD90"
-		},
-		{
-			"styleName": "bg-red-brown",
-			"code": "#2f0606"
-		},
-		{
-			"styleName": "bg-red-pink",
-			"code": "#a68caa",
-			"text-color": "#000000"
-		},
-
-		
-		{
-			"styleName": "bg-grey-blue",
-			"code": "#5a819d",
-			"text-color": "#000000"
-		},
-		{
-			"styleName": "bg-blue-grey",
-			"code": "#315570"
-		},
-		{
-			"styleName": "bg-lightblue-grey",
-			"code": "#e6e6ff",
-			"text-color": "#000000"
-		},
-		
+	
 		
 		{
 			"styleName": "bg-lightskyblue",
@@ -181,6 +158,25 @@ var _vars = {
 
 
 		{
+			"styleName": "bg-lightsteelblue3",
+			"code": "#3b5a6f"
+		},
+		{
+			"styleName": "bg-blue8",
+			"code": "#669999",
+			"text-color": "#fff"
+		},
+		{
+			"styleName": "bg-blue9",
+			"code": "#99cccc"
+		},
+		{
+			"styleName": "bg-blue-c3",/* c4 */
+			"code": "#269abc",
+			"text-color": "#fff"
+		},
+		
+		{
 			"styleName": "bg-turquoise4",
 			"code": "#009b9b",
 			"text-color": "#fff"
@@ -201,49 +197,9 @@ var _vars = {
 			"styleName": "bg-turquoise9",
 			"code": "#66cc99"
 		},
-		{
-			"styleName": "bg-blue",
-			"code": "#3498db",
-			"text-color": "#fff"
-		},
-
-
-		{
-			"styleName": "bg-blue1",/*css.html*/
-			"code": "#0000bb"
-		},
-		{
-			"styleName": "bg-blue2",/*bookmarks.html*/
-			"code": "#006b9b"
-		},
-		{
-			"styleName": "bg-blue4",
-			"code": "#337ab7"
-		},
-		{
-			"styleName": "bg-blue5",
-			"code": "#000099"
-		},
-		{
-			"styleName": "bg-blue8",
-			"code": "#669999",
-			"text-color": "#fff"
-		},
-		{
-			"styleName": "bg-blue9",
-			"code": "#99cccc"
-		},
-		{
-			"styleName": "bg-blue-c3",/* c4 */
-			"code": "#269abc",
-			"text-color": "#fff"
-		},
-		{
-			"styleName": "bg-blue-sky2",
-			"code": "#3465a4"
-		},
-
 		
+		
+
 		
 		{
 			"styleName": "bg-bluegreen",
@@ -308,6 +264,24 @@ var _vars = {
 			"styleName": "bg-grey-green",
 			"code": "#c6d6de"
 		},
+		
+		
+		{
+			"styleName": "bg-grey-blue",
+			"code": "#5a819d",
+			"text-color": "#000000"
+		},
+		{
+			"styleName": "bg-blue-grey",
+			"code": "#315570"
+		},
+		{
+			"styleName": "bg-lightblue-grey",
+			"code": "#e6e6ff",
+			"text-color": "#000000"
+		},
+				
+		
 		{
 			"styleName": "bg-grey-green2",
 			"code": "#607d8b",
@@ -409,7 +383,51 @@ var _vars = {
 		{
 			"styleName": "bg-dark-violet",
 			"code": "#021859"
+		},
+		
+		{
+			"styleName": "bg-red-pink",
+			"code": "#a68caa",
+			"text-color": "#000000"
+		},
+		
+
+		{
+			"styleName": "bg-yellow",
+			"code": "#ffd320",
+			"text-color": "#000000"
+		},
+		{
+			"styleName": "bg-yellow2",
+			"code": "#ffcc00",
+			"text-color": "#000000"
+		},
+		
+		{
+			"styleName": "bg-orange",
+			"code": "#ff950e"
+		},
+		{
+			"styleName": "bg-orange2",
+			"code": "#ffb515"
+		},
+		{
+			"styleName": "bg-orange-tango",
+			"code": "#e09d00"
+		},
+		{
+			"styleName": "bg-orange3",
+			"code": "#ffa500"
+		},
+		{
+			"styleName": "bg-orange4",
+			"code": "#FECD90"
+		},
+		{
+			"styleName": "bg-red-brown",
+			"code": "#2f0606"
 		}
+
 		
 	]//end colors
 }
