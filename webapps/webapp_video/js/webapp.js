@@ -834,6 +834,7 @@ console.log("-- warning, not found template, ", tplName );
 //console.log(key2, key2 === "updated");
 
 					if( item[key2] instanceof Array ){
+						
 						if( key2 === "title" ){
 							var subOrdList = webApp.vars["templates"]["tpl-feed-list"];
 							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-title"];
@@ -844,13 +845,46 @@ console.log("-- warning, not found template, ", tplName );
 								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
 							}//next
 //console.log( subOrdListHtml );
-							subOrdList = subOrdList
-							.replace("list-unstyled", "")
-							.replace("{{list}}", subOrdListHtml);
-console.log( subOrdList );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
 							item[key2] = subOrdList;
-							//itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
 						}
+
+						if( key2 === "ul" ){
+							var subOrdList = webApp.vars["templates"]["tpl-feed-list-links"];
+							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-ul"];
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+							item[key2] = subOrdList;
+						}
+
+						if( key2 === "tags" ){
+							var subOrdList = webApp.vars["templates"]["tpl-feed-list-tags"];
+							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-tag"];
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+							item[key2] = subOrdList;
+						}
+						
+						if( key2 === "pictures" ){
+							var subOrdList = webApp.vars["templates"]["tpl-feed-list-pictures"];
+							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-img"];
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+//console.log( "subOrdListHtml: ", subOrdListHtml );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+							item[key2] = subOrdList;
+						}
+						
 					}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){

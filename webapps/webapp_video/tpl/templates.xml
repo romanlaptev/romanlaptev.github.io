@@ -11,21 +11,22 @@
 	<tpl name="tpl-feed-item--video">
 		<html_code>
 <![CDATA[
+<div class="panel-body {{type}}">
 	<div>{{title}}</div>
 	
 	<div>{{producer}}</div>
-	<div>{{roles}}</div>
+	<div class="roles">{{roles}}</div>
 
 	<div>{{published}}</div>
 	<div>{{updated}}</div>
 
-
-	<div>{{description}}</div>
+	<div>{{pictures}}</div>
+	<div class="mark description">{{description}}</div>
 
 	<div>{{tags}}</div>
-	<div>{{​type}}</div>
 	<div>{{ul}}</div>
-<hr/>	
+</div>	
+	
 ]]>
 		</html_code>
 	</tpl>
@@ -33,6 +34,7 @@
 	<tpl name="tpl-feed-item--videoclip">
 		<html_code>
 <![CDATA[
+<div class="panel-body {{type}}">
 	<div>{{title}}</div>
 
 	<div>{{creators}}</div>
@@ -40,12 +42,12 @@
 	<div>{{published}}</div>
 	<div>{{updated}}</div>
 
-	<div>{{description}}</div>
+	<div>{{pictures}}</div>
+	<div class="mark description">{{description}}</div>
 
 	<div>{{tags}}</div>
-	<div>{{​type}}</div>
 	<div>{{ul}}</div>
-<hr/>	
+</div>	
 ]]>
 		</html_code>
 	</tpl>
@@ -53,10 +55,57 @@
 	<tpl name="tpl-feed-item--video-title">
 		<html_code>
 <![CDATA[
-	<h2>{{text}}</h2>
+	<h3>{{text}}</h3>
 ]]>
 		</html_code>
 	</tpl>
+
+
+
+	<tpl name="tpl-feed-list-links">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-feed-item--video-ul">
+		<html_code>
+<![CDATA[
+	<li><a data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a></li>
+]]>
+		</html_code>
+	</tpl>
+	
+
+	<tpl name="tpl-feed-list-tags">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-feed-item--video-tag">
+		<html_code>
+<![CDATA[
+	<li><a data-tid="{{tid}}" href="#">{{text}}</a></li>
+]]>
+		</html_code>
+	</tpl>
+
+
+	<tpl name="tpl-feed-list-pictures">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-feed-item--video-img">
+		<html_code>
+<![CDATA[
+	<li><img src="{{src}}" title="{{src}}" alt="{{src}}"/></li>
+]]>
+		</html_code>
+	</tpl>
+
 	
 <!--
 	<tpl name="tpl-list">
