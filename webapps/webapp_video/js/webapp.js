@@ -665,11 +665,37 @@ console.log("_buildPage()", arguments);
 //console.log(data);
 data[1] =  webApp.vars["DB"]["nodes"][633];
 
-		//define unique template for item types "videoclip"
+		//define unique template for item
 		for(var n=0; n < data.length; n++){
+			
 			if(data[n]["type"] === "videoclip"){
 				data[n]["template"] = "tpl-feed-item--videoclip";
 			}
+			
+			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list"];
+			data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-title"];
+			
+			if( data[n]["ul"] ){
+				data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-links"];
+				data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-ul"];
+			} else {
+				data[n]["ul"] = "";
+			}
+			
+			if( data[n]["tags"] ){
+				data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-tags"];
+				data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-tag"];
+			} else {
+				data[n]["tags"] = "";
+			}
+				
+			if( data[n]["pictures"] ){
+				data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-pictures"];
+				data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-img"];
+			} else {
+				data[n]["pictures"] = "";
+			}
+			
 		}//next
 
 
@@ -835,56 +861,58 @@ console.log("-- warning, not found template, ", tplName );
 
 					if( item[key2] instanceof Array ){
 						
+						var subOrdList = item[key2]["listTpl"];
+						var itemTpl = item[key2]["itemTpl"];
+/*						
 						if( key2 === "title" ){
 							var subOrdList = webApp.vars["templates"]["tpl-feed-list"];
 							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-title"];
-							var subOrdListHtml = "";
-							
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-//console.log( item[key2][n2]["text"] );
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-//console.log( subOrdListHtml );
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-							item[key2] = subOrdList;
 						}
 
 						if( key2 === "ul" ){
 							var subOrdList = webApp.vars["templates"]["tpl-feed-list-links"];
 							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-ul"];
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-							item[key2] = subOrdList;
+							//var subOrdListHtml = "";
+							//for( var n2 = 0; n2 < item[key2].length; n2++){
+								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							//}//next
+							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+							//item[key2] = subOrdList;
 						}
 
 						if( key2 === "tags" ){
 							var subOrdList = webApp.vars["templates"]["tpl-feed-list-tags"];
 							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-tag"];
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-							item[key2] = subOrdList;
+							//var subOrdListHtml = "";
+							//for( var n2 = 0; n2 < item[key2].length; n2++){
+								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							//}//next
+							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+							//item[key2] = subOrdList;
 						}
 						
 						if( key2 === "pictures" ){
 							var subOrdList = webApp.vars["templates"]["tpl-feed-list-pictures"];
 							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-img"];
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-//console.log( "subOrdListHtml: ", subOrdListHtml );
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-							item[key2] = subOrdList;
+							//var subOrdListHtml = "";
+							//for( var n2 = 0; n2 < item[key2].length; n2++){
+								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							//}//next
+////console.log( "subOrdListHtml: ", subOrdListHtml );
+							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+////console.log( subOrdList );
+							//item[key2] = subOrdList;
 						}
-						
+*/						
+						var subOrdListHtml = "";
+						for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+							subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+						}//next
+//console.log( subOrdListHtml );
+						subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+						item[key2] = subOrdList;
 					}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){

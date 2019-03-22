@@ -79,7 +79,7 @@
 
 	<tpl name="tpl-feed-list-tags">
 		<html_code><![CDATA[
-<ul class="">{{list}}</ul>
+<ul class="list-inline">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
