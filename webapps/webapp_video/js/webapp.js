@@ -812,9 +812,11 @@ console.log(webApp.vars["logMsg"]);
 				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
 				for( var key2 in item){
 //console.log(item[key2] instanceof Array, key2, item[key2]);
+//console.log(key2, key2 === "updated");
 
+					if( item[key2] instanceof Array ){
+//console.log(key2);
 /*				
-					if( key2 === "childTerms" && item["childTerms"].length > 0){
 						var subOrdList = webApp.vars["templates"][ p.templateID];
 						var itemTpl = webApp.vars["templates"][ p.templateListID];
 						var subOrdListHtml = "";
@@ -829,15 +831,14 @@ console.log(webApp.vars["logMsg"]);
 //itemHtml += subOrdList;
 						item["childTerms"] = subOrdList;
 						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+*/			
 					} //else {
 						//itemHtml = itemHtml.replace("{{childTerms}}", "");
 					//}
-*/			
 
-//if( itemHtml.indexOf("{{​​​producer}}") !== -1 ){
-//console.log("TEST");
-//console.log(item[key2] instanceof Array, key2, item[key2]);
-//itemHtml = itemHtml.replace("{{​​​producer}}", item[key2]+"9999");
+//if( key2 === "producer" ){
+//console.log("1TEST");
+	//itemHtml = itemHtml.replace("{{producer}}", item["producer"]);
 //}
 			
 					
@@ -845,6 +846,7 @@ console.log(webApp.vars["logMsg"]);
 //console.log(key2, item[key2]);
 						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
 					}
+					
 				}//next
 					
 				listHtml += itemHtml;
