@@ -619,6 +619,28 @@ var _vars = {
 {"colorName": "yellow", "code": "#ffff00"},
 {"colorName": "yellowgreen", "code": "#9acd32"}
 		
+	], //end
+
+"wiki_colors": [
+	{
+		//"colorName": "aliceblue",
+		"code": "#2A3443",
+		"text-color": "#ffffff"
+	},
+	{
+		"code": "#242E3B",
+		"text-color": "#ffffff"
+	},
+	{
+		"code": "#2A3443",
+		"text-color": "#ffffff"
+	},
+	{
+		"code": "#efc8b1",
+		"text-color": "#ffffff"
+	},
+
+
 	] //end
 
 }
@@ -643,6 +665,9 @@ console.log("window event onload");
 	
 	var target = document.getElementById("standart-colors");
 	createPalette( target, _vars["standart_colors"] );
+	
+	var target = document.getElementById("wiki-colors");
+	createPalette( target, _vars["wiki_colors"] );
 };//end window.load
 
 
