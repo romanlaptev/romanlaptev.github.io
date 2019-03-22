@@ -665,12 +665,20 @@ console.log("_buildPage()", arguments);
 //console.log(data);
 data[1] =  webApp.vars["DB"]["nodes"][633];
 
+		//define unique template for item types "videoclip"
+		for(var n=0; n < data.length; n++){
+			if(data[n]["type"] === "videoclip"){
+				data[n]["template"] = "tpl-feed-item--videoclip";
+			}
+		}//next
+
+
 		var _html = _draw_wrapData({
 			"data": data,
 			"templateID": "tpl-feed-list",
 			"templateListItemID": "tpl-feed-item--video"
 		});
-console.log( _html);
+//console.log( _html);
 
 		if( !_html || _html.length === 0){
 webApp.vars["logMsg"] = "Error generate html...";
@@ -811,6 +819,16 @@ console.log(webApp.vars["logMsg"]);
 				//var itemHtml = __formNodeHtml( item, itemTpl );
 				
 				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
+				//load unique template for item
+				if( item["template"] && item["template"].length > 0){
+					var tplName = item["template"];
+					if( webApp.vars["templates"][ tplName ] ){
+						itemHtml = webApp.vars["templates"][ tplName ];
+					} else {
+console.log("-- warning, not found template, ", tplName );
+					}
+				}
+				
 				for( var key2 in item){
 //console.log(item[key2] instanceof Array, key2, item[key2]);
 //console.log(key2, key2 === "updated");

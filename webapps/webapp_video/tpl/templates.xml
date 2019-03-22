@@ -24,6 +24,7 @@
 	<div>{{tags}}</div>
 	<div>{{​type}}</div>
 	<div>{{ul}}</div>
+<hr/>	
 ]]>
 		</html_code>
 	</tpl>
@@ -42,7 +43,7 @@
 	<div>{{tags}}</div>
 	<div>{{​type}}</div>
 	<div>{{ul}}</div>
-
+<hr/>	
 ]]>
 		</html_code>
 	</tpl>
