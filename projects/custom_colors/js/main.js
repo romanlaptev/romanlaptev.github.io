@@ -177,8 +177,239 @@ var _vars = {
 		{
 			"styleName": "bg-sky-blue10",
 			"code": "#99ccff"
-		}
+		},
 
+
+		{
+			"styleName": "bg-turquoise4",
+			"code": "#009b9b",
+			"text-color": "#fff"
+		},
+		{
+			"styleName": "bg-turquoise5",
+			"code": "#006b6b"
+		},
+		{
+			"styleName": "bg-turquoise6",
+			"code": "#006666"
+		},
+		{
+			"styleName": "bg-turquoise7",
+			"code": "#006633"
+		},
+		{
+			"styleName": "bg-turquoise9",
+			"code": "#66cc99"
+		},
+		{
+			"styleName": "bg-blue",
+			"code": "#3498db",
+			"text-color": "#fff"
+		},
+
+
+		{
+			"styleName": "bg-blue1",/*css.html*/
+			"code": "#0000bb"
+		},
+		{
+			"styleName": "bg-blue2",/*bookmarks.html*/
+			"code": "#006b9b"
+		},
+		{
+			"styleName": "bg-blue4",
+			"code": "#337ab7"
+		},
+		{
+			"styleName": "bg-blue5",
+			"code": "#000099"
+		},
+		{
+			"styleName": "bg-blue8",
+			"code": "#669999",
+			"text-color": "#fff"
+		},
+		{
+			"styleName": "bg-blue9",
+			"code": "#99cccc"
+		},
+		{
+			"styleName": "bg-blue-c3",/* c4 */
+			"code": "#269abc",
+			"text-color": "#fff"
+		},
+		{
+			"styleName": "bg-blue-sky2",
+			"code": "#3465a4"
+		},
+
+		
+		
+		{
+			"styleName": "bg-bluegreen",
+			"code": "#006666"
+		},
+		{
+			"styleName": "bg-bluegreen2",
+			"code": "#336666"
+		},
+		{
+			"styleName": "bg-darkgreen",/* gitlab header */
+			"code": "#0d4524"
+		},
+		{
+			"styleName": "bg-darkgreen2",/* windows7 desktop */
+			"code": "#094546"
+		},
+		{
+			"styleName": "bg-darkgreen2",/* windowsXP desktop */
+			"code": "#003200"
+		},
+
+
+		{
+			"styleName": "bg-green-lime",/* video.css */
+			"code": "#98FB98",
+			"text-color": "#000"
+		},
+		{
+			"styleName": "bg-lightgreen",
+			"code": "#d9ead3"
+		},
+		{
+			"styleName": "bg-palegreen",
+			"code": "#98fb98",
+			"text-color": "#000"
+		},
+		{
+			"styleName": "bg-palegreen2",/*css.html*/
+			"code": "#99cc99"
+		},
+		{
+			"styleName": "bg-palegreen3",/*www.neberitrubku.ru/nomer-telefona/*/
+			"code": "#cfd9db",
+			"text-color": "#000"
+		},
+		{
+			"styleName": "bg-green-grass1",
+			"code": "#9c9"
+		},
+		{
+			"styleName": "bg-green-grass2",/* gitlab button, bg */
+			"code": "#1aaa55",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-green-grass3",/* gitlab button, border */
+			"code": "#18a050",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-grey-green",
+			"code": "#c6d6de"
+		},
+		{
+			"styleName": "bg-grey-green2",
+			"code": "#607d8b",
+			"text-color":"#fff"
+		},
+		{
+			"styleName": "bg-grey-green3",/* book_Rods */
+			"code": "#abbabb"
+		},
+		{
+			"styleName": "bg-grey-green4",/* book_Rods */
+			"code": "#e6eaec"
+		},
+
+
+
+		{
+			"styleName": "bg-pale-rose-c5",
+			"code": "#d3c5be"
+		},
+		{
+			"styleName": "bg-pale-rose1",/* comp-books.css */
+			"code": "#D3C5BE"
+		},
+
+
+		{
+			"styleName": "bg-grey1", /* comp-books.css */
+			"code": "#404050"
+		},
+		{
+			"styleName": "bg-grey2", /* comp-books.css */
+			"code": "#5E789C",
+			"text-color":"#fff"
+		},
+		{
+			"styleName": "bg-grey3",
+			"code": "#2C3F66"
+		},
+		{
+			"styleName": "bg-grey4", /* comp-books.css */
+			"code": "#5A5963"
+		},
+		{
+			"styleName": "bg-grey5",/*css.html*/
+			"code": "#475570"
+		},
+		{
+			"styleName": "bg-grey6",/* dm-modal */
+			"code": "#607d8b",
+			"text-color":"#fff"
+		},
+
+
+		{
+			"styleName": "bg-grey-c8",
+			"code": "#333340"
+		},
+		{
+			"styleName": "bg-grey-c9",
+			"code": "#70708c",
+			"text-color":"#000"
+		},
+
+
+		{
+			"styleName": "bg-purple",
+			"code": "#9999CC",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-light-violet",
+			"code": "#cecefa",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-light-violet-lavender",
+			"code": "#e6e6fa",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-light-violet2",
+			"code": "#e6e6ff",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-light-violet3 ",/* video.css*/
+			"code": "#E6E6FF",
+			"text-color":"#000"
+		},
+		{
+			"styleName": "bg-violet",
+			"code": "#99c"
+		},
+		{
+			"styleName": "bg-violet2",/* progress window*/
+			"code": "rgb(200, 200, 250)"
+		},
+		{
+			"styleName": "bg-dark-violet",
+			"code": "#021859"
+		}
 		
 	]//end colors
 }
