@@ -663,11 +663,12 @@ console.log("_buildPage()", arguments);
 			data.push( webApp.vars["DB"]["nodes"][n]);
 		}//next
 //console.log(data);
+data[1] =  webApp.vars["DB"]["nodes"][633];
 
 		var _html = _draw_wrapData({
 			"data": data,
 			"templateID": "tpl-feed-list",
-			"templateListItemID": "tpl-feed-item"
+			"templateListItemID": "tpl-feed-item--video"
 		});
 console.log( _html);
 
@@ -844,7 +845,8 @@ console.log(webApp.vars["logMsg"]);
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
 //console.log(key2, item[key2]);
-						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+						//itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+						itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
 					}
 					
 				}//next

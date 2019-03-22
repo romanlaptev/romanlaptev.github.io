@@ -8,21 +8,38 @@
 		]]></html_code>
 	</tpl>
 
-	<tpl name="tpl-feed-item">
+	<tpl name="tpl-feed-item--video">
 		<html_code>
 <![CDATA[
+	<div>{{​title}}</div>
 	<div>{{producer}}</div>
+	<div>{{roles}}</div>
+
+	<div>{{published}}</div>
+	<div>{{updated}}</div>
+
+
+	<div>{{description}}</div>
+
+	<div>{{tags}}</div>
+	<div>{{​type}}</div>
+	<div>{{ul}}</div>
+]]>
+		</html_code>
+	</tpl>
+	
+	<tpl name="tpl-feed-item--videoclip">
+		<html_code>
+<![CDATA[
+	<div>{{​title}}</div>
 	<div>{{creators}}</div>
 ​​​​​​
 	<div>{{published}}</div>
 	<div>{{updated}}</div>
 
-	<div>{{roles}}</div>
-
 	<div>{{description}}</div>
 
 	<div>{{tags}}</div>
-	<div>{{​title}}</div>
 	<div>{{​type}}</div>
 	<div>{{ul}}</div>
 
