@@ -34,6 +34,13 @@
   background-color: #6aa6c0 !important;
 }
 
+.bg-lightblue4 {/* video.css*/
+  background-color: #C9E0ED !important;
+}
+.bg-lightblue5 {/* video.css*/
+  background-color: #BBD8E9 !important;
+}
+
 
 .bg-lightsteelblue{
   background-color: #b0c4de !important;
@@ -69,7 +76,9 @@
 .bg-orange3 {
   background-color: #ffa500 !important;
 }
-
+.bg-orange4 {/* video.css*/
+  background-color: #FECD90 !important;
+}
 
 .bg-red-brown {
   background-color: #2f0606 !important;
@@ -201,6 +210,9 @@
   background-color: #003200 !important;
 }
 
+.bg-green-lime{/* video.css */
+  background-color: #98FB98 !important;
+}
 
 
 .bg-lightgreen{
@@ -238,8 +250,11 @@
 .bg-grey-green2{
   background-color: #607d8b !important;
 }
-.bg-grey-green3{
+.bg-grey-green3{/* book_Rods */
   background-color: #abbabb !important;
+}
+.bg-grey-green4{/* book_Rods */
+  background-color: #e6eaec !important;
 }
 
 
@@ -294,6 +309,10 @@
 .bg-light-violet2{
   background-color: #e6e6ff !important;
 }
+.bg-light-violet3 {/* video.css*/
+  background-color: #E6E6FF !important;
+}
+
 
 .bg-violet{
   background-color: #99c !important;
