@@ -782,7 +782,7 @@ console.log(webApp.vars["logMsg"]);
 			
 			for( var key in data ){
 //console.log(key, data[key]);
-
+/*
 				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
 					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
 					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
@@ -795,7 +795,7 @@ console.log(webApp.vars["logMsg"]);
 //console.log( nodeTermsList );
 					data["nodeTerms"] = nodeTermsList;
 				}
-
+*/
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, p["data"][key]);
 					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
@@ -834,32 +834,24 @@ console.log("-- warning, not found template, ", tplName );
 //console.log(key2, key2 === "updated");
 
 					if( item[key2] instanceof Array ){
-//console.log(key2);
-/*				
-						var subOrdList = webApp.vars["templates"][ p.templateID];
-						var itemTpl = webApp.vars["templates"][ p.templateListID];
-						var subOrdListHtml = "";
-						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
-							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
-						}//next
+						if( key2 === "title" ){
+							var subOrdList = webApp.vars["templates"]["tpl-feed-list"];
+							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-title"];
+							var subOrdListHtml = "";
+							
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
 //console.log( subOrdListHtml );
-						subOrdList = subOrdList
-						.replace("list-unstyled", "")
-						.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-//itemHtml += subOrdList;
-						item["childTerms"] = subOrdList;
-						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
-*/			
-					} //else {
-						//itemHtml = itemHtml.replace("{{childTerms}}", "");
-					//}
-
-//if( key2 === "producer" ){
-//console.log("1TEST");
-	//itemHtml = itemHtml.replace("{{producer}}", item["producer"]);
-//}
-			
+							subOrdList = subOrdList
+							.replace("list-unstyled", "")
+							.replace("{{list}}", subOrdListHtml);
+console.log( subOrdList );
+							item[key2] = subOrdList;
+							//itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+						}
+					}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
 //console.log(key2, item[key2]);

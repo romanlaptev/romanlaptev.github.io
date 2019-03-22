@@ -11,7 +11,8 @@
 	<tpl name="tpl-feed-item--video">
 		<html_code>
 <![CDATA[
-	<div>{{​title}}</div>
+	<div>{{title}}</div>
+	
 	<div>{{producer}}</div>
 	<div>{{roles}}</div>
 
@@ -32,7 +33,8 @@
 	<tpl name="tpl-feed-item--videoclip">
 		<html_code>
 <![CDATA[
-	<div>{{​title}}</div>
+	<div>{{title}}</div>
+
 	<div>{{creators}}</div>
 ​​​​​​
 	<div>{{published}}</div>
@@ -47,7 +49,14 @@
 ]]>
 		</html_code>
 	</tpl>
-	
+
+	<tpl name="tpl-feed-item--video-title">
+		<html_code>
+<![CDATA[
+	<h2>{{text}}</h2>
+]]>
+		</html_code>
+	</tpl>
 	
 <!--
 	<tpl name="tpl-list">
