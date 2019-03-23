@@ -1,32 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates>
 
-
 	<tpl name="tpl-videolist">
 		<html_code><![CDATA[
-<div class="panel">{{list}}</div>
+			<div class="panel-group" id="video-list-collapsible">
+{{list}}
+			</div>
 		]]></html_code>
 	</tpl>
 
 	<tpl name="tpl-videolist-item--video">
 		<html_code>
 <![CDATA[
-<div class="panel-body {{type}}">
-	<div>{{title}}</div>
+<div class="panel panel-primary video-list-item type-{{type}}">
+
+	<div class="panel-heading">
+		<div class="pull-right">
+<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn btn-info btn-sm toggle-btn">	> </a>
+		</div>
+		
+		{{title}}
+		<p class="producer">{{producer}}</p>
 	
-	<div>{{producer}}</div>
-	<div class="roles">{{roles}}</div>
+	</div>
+	
+	<div id="video-{{number}}" class="panel-collapse collapse">
+		<div class="panel-body">
+		
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="thumbnail text-center pictures">
+{{pictures}}
+	
+							<div class="panel-body play-buttons">					
+								<span class="">play video from </span>
+<a href="#link" class="btn btn-success btn-sm play-btn" target="_blank">#link-text</a>
+							</div>
+				</div>
+			</div>
+		
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="producer">{{producer}}</div>
+				<div class="roles">{{roles}}</div>
+				<div class="mark description">{{description}}</div>
+				<div class="links">
+{{ul}}							
+				</div>
+			</div>
+		
+		</div>
+		
+		<div class="panel-body">
+<b>related tags:</b>
+{{tags}}
+		</div>
+		
+		<div class="panel-footer">
+<p>published:<b>{{published}}</b>, updated:<b>{{updated}}</b></p>
+		</div>
 
-	<div>{{published}}</div>
-	<div>{{updated}}</div>
-
-	<div>{{pictures}}</div>
-	<div class="mark description">{{description}}</div>
-
-	<div>{{tags}}</div>
-	<div>{{ul}}</div>
+	</div>	
+	
 </div>	
-	
 ]]>
 		</html_code>
 	</tpl>
@@ -34,19 +68,53 @@
 	<tpl name="tpl-videolist-item--videoclip">
 		<html_code>
 <![CDATA[
-<div class="panel-body {{type}}">
-	<div>{{title}}</div>
+<div class="panel panel-info video-list-item type-{{type}}">
 
-	<div>{{creators}}</div>
-​​​​​​
-	<div>{{published}}</div>
-	<div>{{updated}}</div>
+	<div class="panel-heading">
+		<div class="pull-right">
+<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn btn-info btn-sm toggle-btn">	> </a>
+		</div>
+		
+		{{title}}
+		<p class="creators">{{creators}}</p>
+	
+	</div>
+	
+	<div id="video-{{number}}" class="panel-collapse collapse">
+		<div class="panel-body">
+		
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="thumbnail text-center pictures">
+{{pictures}}
+	
+							<div class="panel-body play-buttons">					
+								<span class="">play video from </span>
+<a href="#link" class="btn btn-success btn-sm play-btn" target="_blank">#link-text</a>
+							</div>
+				</div>
+			</div>
+		
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<div class="">{{creators}}</div>
+				<div class="mark description">{{description}}</div>
+				<div class="links">
+{{ul}}							
+				</div>
+			</div>
+		
+		</div>
+		
+		<div class="panel-body">
+<b>related tags:</b>
+{{tags}}
+		</div>
+		
+		<div class="panel-footer">
+<p>published:<b>{{published}}</b>, updated:<b>{{updated}}</b></p>
+		</div>
 
-	<div>{{pictures}}</div>
-	<div class="mark description">{{description}}</div>
-
-	<div>{{tags}}</div>
-	<div>{{ul}}</div>
+	</div>	
+	
 </div>	
 ]]>
 		</html_code>
@@ -55,7 +123,7 @@
 	<tpl name="tpl-videolist-item--title">
 		<html_code>
 <![CDATA[
-	<h3>{{text}}</h3>
+	<h3 class="video-title">{{text}}</h3>
 ]]>
 		</html_code>
 	</tpl>

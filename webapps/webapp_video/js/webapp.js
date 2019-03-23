@@ -677,6 +677,8 @@ data[1] =  webApp.vars["DB"]["nodes"][num];
 		//define unique template for item
 		for(var n=0; n < data.length; n++){
 			
+			data[n]["number"] = n;
+			
 			if(data[n]["type"] === "videoclip"){
 				data[n]["template"] = "tpl-videolist-item--videoclip";
 			}
@@ -723,7 +725,7 @@ console.log( webApp.vars["logMsg"] );
 //$("#main").html( _html );			
 			//draw content block
 			_draw_buildBlock({
-				"locationID" : "main",
+				"locationID" : "list-video",
 				"title" : "video list", 
 				"templateID" : "tpl-block-videolist",
 				"content" : _html
