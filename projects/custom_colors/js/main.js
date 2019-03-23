@@ -3,172 +3,61 @@
 //console.log("func:", func);
 var _vars = {
 	"custom_colors": [
-		{
-			"colorName": "bg-darkblue3",
-			"code": "#0e1f40"
-		},
-		{
-			"colorName": "bg-darkblue4",
-			"code": "#062237"
-		},
-		{
-			"colorName": "bg-darkblue5",
-			"code": "#153449"
-		},
-		{
-			"colorName": "bg-darkblue-tango",
-			"code": "#0c253c"
-		},
-		{
-			"colorName": "bg-darkblue-tango2",
-			"code": "#001b33"
-		},
+		{"colorName": "bg-red-brown","code": "#2f0606"},
+		{"colorName": "bg-darkblue3","code": "#0e1f40"},
+		{"colorName": "bg-darkblue4","code": "#062237"},
+		{"colorName": "bg-darkblue5","code": "#153449"},
+		{"colorName": "bg-darkblue-tango","code": "#0c253c"},
+		
+		{"colorName": "bg-dark-violet","code": "#021859"},
+		{"code": "#130040"},
 
-		{
-			"colorName": "bg-darkblue",
-			"code": "#004586"
-		},
-		{
-			"colorName": "bg-darkblue2",
-			"code": " #000080"
-		},
-		
-		{
-			"colorName": "bg-lightblue2",
-			"code": "#083caf"
-		},
-		{
-			"colorName": "bg-blue1",/*css.html*/
-			"code": "#0000bb"
-		},
-		{
-			"colorName": "bg-blue5",
-			"code": "#000099"
-		},
-		
-		
-		{
-			"colorName": "bg-lightsteelblue",
-			"code": "#b0c4de"
-		},
-		{
-			"colorName": "bg-lightsteelblue2",
-			"code": "#83A0C5"
-		},
-		{
-			"colorName": "bg-lightsteelblue4",
-			"code": "#b6cfed"
-		},
+		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
 
+		{"colorName": "bg-sky-blue66","code": "#003366"},
+		{"colorName": "bg-darkblue","code": "#004586"},
+		{"colorName": "bg-darkblue2","code": " #000080"},
 		
-		{
-			"code": "#b1d0ef"
-		},
+		{"colorName": "bg-lightblue2","code": "#083caf"},
+		{"colorName": "bg-blue1","code": "#0000bb"},/*css.html*/
+		{"colorName": "bg-blue5","code": "#000099"},
 		
-		{
-			"code": "#4e86bf",
-			"text-color":"#fff"
-		},		
-		{
-			"colorName": "bg-lightblue",
-			"code": "#0084d1",
-			"text-color": "#fff"
-		},
+		
+		{"colorName": "bg-blue-sky2","code": "#3465a4"},
+		{"colorName": "bg-blue4","code": "#337ab7"},
+		{"code": "#4e86bf",	"text-color":"#fff"	},		
+		{"colorName": "bg-sky-blue3","code": "#6699cc","text-color": "#000000"},
+		
+		{"colorName": "bg-lightblue","code": "#0084d1","text-color": "#fff"},
+
+		{"colorName": "bg-blue","code": "#3498db","text-color": "#fff"},
+		{"colorName": "bg-sky-blue4","code": "#0174e9"},
+		{"colorName": "bg-blue2","code": "#006b9b"},/*bookmarks.html*/
+		{"colorName": "bg-sky-blue6699","code": "#006699"},
+		{"colorName": "bg-sky-blue8","code": "#336699"},
+		{"colorName": "bg-sky-blue5","code": "#1e73be"},
 
 
-		{
-			"colorName": "bg-blue",
-			"code": "#3498db",
-			"text-color": "#fff"
-		},
-
-		{
-			"colorName": "bg-blue2",/*bookmarks.html*/
-			"code": "#006b9b"
-		},
-		{
-			"colorName": "bg-blue4",
-			"code": "#337ab7"
-		},
+		{"colorName": "bg-sky-blue6","code": "#0088FF"},
+		{"colorName": "bg-sky-blue2","code": "#3399ff"},
+		{"colorName": "bg-sky-blue10","code": "#99ccff"},		
+		{"colorName": "bg-lightskyblue","code": "#87cefa"},
 
 
-		{
-			"colorName": "bg-blue-sky2",
-			"code": "#3465a4"
-		},
+		{"code": "#b1d0ef"},
+		{"colorName": "bg-lightsteelblue","code": "#b0c4de"},
+		{"colorName": "bg-lightsteelblue2","code": "#83A0C5"},
+		{"colorName": "bg-lightsteelblue4","code": "#b6cfed"},
 		
 		
-		
-		{
-			"colorName": "bg-lightblue3",
-			"code": "#6aa6c0"
-		},
-		{
-			"colorName": "bg-lightblue4",
-			"code": "#C9E0ED"
-		},
-		{
-			"colorName": "bg-lightblue5",
-			"code": "#BBD8E9"
-		},
+		{"colorName": "bg-lightblue5","code": "#BBD8E9"},
+		{"colorName": "bg-lightblue4","code": "#C9E0ED"},
 
-	
-		{
-			"colorName": "bg-sky-blue10",
-			"code": "#99ccff"
-		},		
-		{
-			"colorName": "bg-lightskyblue",
-			"code": "#87cefa"
-		},
-		{
-			"colorName": "bg-sky-blue5",
-			"code": "#006699"
-		},
+		{"colorName": "bg-sky-blue","code": "#00ccff"},
+		{"colorName": "bg-sky-blue7","code": "#5bc0de"},
+		{"colorName": "bg-lightblue3","code": "#6aa6c0"},
+		{"colorName": "bg-blue-c3", "code": "#269abc","text-color": "#fff"},/* c4 */
 		
-		{
-			"colorName": "bg-sky-blue66",
-			"code": "#003366"
-		},
-		
-		{
-			"colorName": "bg-sky-blue2",
-			"code": "#3399ff"
-		},
-		{
-			"colorName": "bg-sky-blue3",
-			"code": "#6699cc",
-			"text-color": "#000000"
-		},
-		{
-			"colorName": "bg-sky-blue4",
-			"code": "#0174e9"
-		},
-		{
-			"colorName": "bg-sky-blue5",
-			"code": "#1e73be"
-		},
-		{
-			"colorName": "bg-sky-blue6",
-			"code": "#0088FF"
-		},
-		
-		{
-			"colorName": "bg-sky-blue",
-			"code": "#00ccff"
-		},
-		
-		{
-			"colorName": "bg-sky-blue7",
-			"code": "#5bc0de"
-		},
-		{
-			"colorName": "bg-sky-blue8",
-			"code": "#336699"
-		},
-
-
-
 		{
 			"colorName": "bg-lightsteelblue3",
 			"code": "#3b5a6f"
@@ -182,67 +71,30 @@ var _vars = {
 			"colorName": "bg-blue9",
 			"code": "#99cccc"
 		},
-		{
-			"colorName": "bg-blue-c3",/* c4 */
-			"code": "#269abc",
-			"text-color": "#fff"
-		},
 		
-		{
-			"colorName": "bg-turquoise4",
-			"code": "#009b9b",
-			"text-color": "#fff"
-		},
-		{
-			"colorName": "bg-turquoise5",
-			"code": "#006b6b"
-		},
-		{
-			"colorName": "bg-turquoise6",
-			"code": "#006666"
-		},
-		{
-			"colorName": "bg-turquoise7",
-			"code": "#006633"
-		},
-		{
-			"colorName": "bg-turquoise9",
-			"code": "#66cc99"
-		},
-		
-		
-
-		
-		{
-			"colorName": "bg-bluegreen",
-			"code": "#006666"
-		},
-		{
-			"colorName": "bg-bluegreen2",
-			"code": "#336666"
-		},
-		{
-			"colorName": "bg-darkgreen",/* gitlab header */
-			"code": "#0d4524"
-		},
-		{
-			"colorName": "bg-darkgreen2",/* windows7 desktop */
-			"code": "#094546"
-		},
-		{
-			"colorName": "bg-darkgreen2",/* windowsXP desktop */
-			"code": "#003200"
-		},
+		{"colorName": "bg-bluegreen2", "code": "#336666"},
+		{"text-color": "#ffffff","code": "#265a68", "colorName": "LJ header 2"},
+		{"text-color": "#ffffff","code": "#004359", "colorName": "LJ header"},
 
 
+		
+		{"colorName": "bg-bluegreen","code": "#006666"},
+		
+		{"colorName": "bg-turquoise5","code": "#006b6b"	},
+		{"colorName": "bg-turquoise6","code": "#006666"	},
+		{"colorName": "bg-turquoise4","code": "#009b9b","text-color": "#fff"},
+		
+		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
+		{"colorName": "bg-darkgreen33","code": "#003200"},/* windowsXP desktop */
+		{"colorName": "bg-darkgreen","code": "#0d4524"},/* gitlab header */
+		{"colorName": "bg-turquoise7","code": "#006633"},
+		
+		{"colorName": "bg-green-grass3","code": "#18a050","text-color":"#000"},/* gitlab button, border */
+		{"colorName": "bg-green-grass2","code": "#1aaa55","text-color":"#000"},/* gitlab button, bg */
 		{
 			"colorName": "bg-green-lime",/* video.css */
 			"code": "#98FB98",
 			"text-color": "#000"
-		},
-		{
-			"colorName": "bg-lightgreen",
-			"code": "#d9ead3"
 		},
 		{
 			"colorName": "bg-palegreen",
@@ -253,25 +105,10 @@ var _vars = {
 			"colorName": "bg-palegreen2",/*css.html*/
 			"code": "#99cc99"
 		},
-		{
-			"colorName": "bg-palegreen3",/*www.neberitrubku.ru/nomer-telefona/*/
-			"code": "#cfd9db",
-			"text-color": "#000"
-		},
-		{
-			"colorName": "bg-green-grass1",
-			"code": "#9c9"
-		},
-		{
-			"colorName": "bg-green-grass2",/* gitlab button, bg */
-			"code": "#1aaa55",
-			"text-color":"#000"
-		},
-		{
-			"colorName": "bg-green-grass3",/* gitlab button, border */
-			"code": "#18a050",
-			"text-color":"#000"
-		},
+		{"colorName": "bg-lightgreen","code": "#d9ead3"	},
+		{"colorName": "bg-green-grass1","code": "#9c9"},
+
+		{"colorName": "bg-turquoise9","code": "#66cc99"},
 		{
 			"colorName": "bg-grey-green",
 			"code": "#c6d6de"
@@ -305,11 +142,8 @@ var _vars = {
 			"text-color":"#fff"
 		},
 		
-		{
-			"colorName": "bg-grey-green2",
-			"code": "#607d8b",
-			"text-color":"#fff"
-		},
+		{"colorName": "bg-grey-green2",	"code": "#607d8b","text-color":"#fff"},
+		
 		{
 			"colorName": "bg-grey-green3",/* book_Rods */
 			"code": "#abbabb"
@@ -320,25 +154,13 @@ var _vars = {
 		},
 
 		
-		{
-			"colorName": "bg-grey3",
-			"code": "#2C3F66"
-		},
-		{
-			"colorName": "bg-grey4", /* comp-books.css */
-			"code": "#5A5963"
-		},
-		{
-			"colorName": "bg-grey5",/*css.html*/
-			"code": "#475570"
-		},
+		{"colorName": "bg-grey3","code": "#2C3F66"},
+		{"colorName": "bg-grey5","code": "#475570"},/*css.html*/
+		{"text-color": "#ffffff","code": "rgb(77,92, 106)"},
+		{"colorName": "bg-grey-c8","code": "#333340"},
+		{"colorName": "bg-grey4", "code": "#5A5963"},/* comp-books.css */
 
 
-
-		{
-			"colorName": "bg-grey-c8",
-			"code": "#333340"
-		},
 		{
 			"colorName": "bg-grey-c9",
 			"code": "#70708c",
@@ -346,10 +168,6 @@ var _vars = {
 		},
 
 
-		{
-			"colorName": "bg-dark-violet",
-			"code": "#021859"
-		},
 		{
 			"colorName": "bg-purple",
 			"code": "#9999CC",
@@ -360,10 +178,9 @@ var _vars = {
 			"code": "#cecefa",
 			"text-color":"#000"
 		},
-		{
-			"colorName": "bg-violet",
-			"code": "#99c"
-		},
+		
+		{"colorName": "bg-violet","code": "#99c"},
+		
 		{
 			"colorName": "bg-violet2",/* progress window*/
 			"code": "rgb(200, 200, 250)"
@@ -386,11 +203,8 @@ var _vars = {
 		},
 		
 		
-		{
-			"colorName": "bg-red-pink",
-			"code": "#a68caa",
-			"text-color": "#000000"
-		},
+		{"colorName": "bg-red-pink","code": "#a68caa","text-color": "#000000"},
+		{"colorName": "winxp desktop","text-color": "#ffffff","code": "rgb(77, 66, 90)"},
 		
 		{
 			"colorName": "bg-pale-rose-c5",
@@ -433,100 +247,42 @@ var _vars = {
 			"colorName": "bg-orange4",
 			"code": "#FECD90"
 		},
-		{
-			"colorName": "bg-red-brown",
-			"code": "#2f0606"
-		},
 
-
-		{
-			"colorName": "style1",
-			"code": "#CCA96E"
-		},
-		{
-			"colorName": "style1",
-			"code": "#efc8b1"
-		},
-		{
-			"colorName": "style1",
-			"code": "#bf794e"
-		},
-		{
-			"colorName": "style1",
-			"code": "#efd0b1"
-		},
-		{
-			//"colorName": "style1",
-			"code": "#f3f3f3",
-			"text-color":"#000"
-		},
-		{
-			//"colorName": "style1",
-			"code": "#bf864e"
-		},
-		{
-			//"colorName": "style1",
-			"code": "#130040"
-		},
-		{
-			"colorName": "winxp desktop",
-			"text-color": "#ffffff",
-			"code": "rgb(77, 66, 90)"
-		},
-		{
-		
-			"text-color": "#ffffff",
-			"code": "rgb(77,92, 106)"
-		}
+		{"code": "#CCA96E"},
+		{"code": "#efc8b1"},
+		{"code": "#bf794e"},
+		{"code": "#efd0b1"},
+		{"code": "#f3f3f3",	"text-color":"#000"},
+		{"code": "#bf864e"}
 		
 	], //end
 	
 	"standart_colors": [
-{"colorName": "antiquewhite", "code": "#faebd7", "text-color": "#000"},
-{"colorName": "floralwhite", "code": "#fffaf0"},
-
-{"colorName": "beige", "code": "#f5f5dc", "text-color": "#000"},
-{"colorName": "bisque", "code": "#ffe4c4", "text-color": "#000"},
 {"colorName": "black", "code": "#000000"},
-{"colorName": "blanchedalmond", "code": "#ffebcd", "text-color": "#000"},
+{"colorName": "darkslategray", "code": "#2f4f4f"},
+
+{"colorName": "teal", "code": "#008080"},
+{"colorName": "darkcyan", "code": "#008b8b"},
+{"colorName": "lightseagreen", "code": "#20b2aa"},
+{"colorName": "cadetblue", "code": "#5f9ea0"},
 
 
-{"colorName": "brown", "code": "#a52a2a"},
-{"colorName": "burlywood", "code": "#deb887"},
 
-{"colorName": "chocolate", "code": "#d2691e"},
-{"colorName": "coral", "code": "#ff7f50"},
-
-{"colorName": "cornsilk", "code": "#fff8dc"},
-{"colorName": "crimson", "code": "#dc143c"},
-
-
-{"colorName": "darkgoldenrod", "code": "#b8860b"},
-{"colorName": "darkgray", "code": "#a9a9a9"},
-
-{"colorName": "aquamarine", "code": "#7fffd4", "text-color": "#000"},
-{"colorName": "aqua", "code": "#00ffff", "text-color": "#000"},
-
-{"colorName": "paleturquoise", "code": "#afeeee"},
-{"colorName": "lightcyan", "code": "#e0ffff", "text-color": "#000"},
-{"colorName": "cyan", "code": "#00ffff", "text-color": "#000"},
-
-{"colorName": "turquoise", "code": "#40e0d0"},
 {"colorName": "mediumturquoise", "code": "#48d1cc"},
 {"colorName": "darkturquoise", "code": "#00ced1"},
+{"colorName": "turquoise", "code": "#40e0d0"},
+{"colorName": "aquamarine", "code": "#7fffd4", "text-color": "#000"},
+{"colorName": "paleturquoise", "code": "#afeeee"},
 
-{"colorName": "lightseagreen", "code": "#20b2aa"},
-{"colorName": "darkcyan", "code": "#008b8b"},
-{"colorName": "teal", "code": "#008080"},
-{"colorName": "lightsteelblue", "code": "#b0c4de"},
+{"colorName": "aqua", "code": "#00ffff", "text-color": "#000"},
+{"colorName": "cyan", "code": "#00ffff", "text-color": "#000"},
 
-
-{"colorName": "cadetblue", "code": "#5f9ea0"},
 {"colorName": "steelblue", "code": "#4682b4"},
-{"colorName": "lightblue", "code": "#add8e6"},
 {"colorName": "lightskyblue", "code": "#87cefa"},
 
-{"colorName": "powderblue", "code": "#b0e0e6"},
+
+{"colorName": "lightsteelblue", "code": "#b0c4de"},
+
 {"colorName": "skyblue", "code": "#87ceeb"},
 
 {"colorName": "deepskyblue", "code": "#00bfff"},
@@ -569,32 +325,35 @@ var _vars = {
 {"colorName": "lightpink", "code": "#ffb6c1"},
 
 
-{"colorName": "darkslategray", "code": "#2f4f4f"},
-
-
-
-{"colorName": "forestgreen", "code": "#228b22"},
 {"colorName": "darkgreen", "code": "#006400"},
-{"colorName": "darkkhaki", "code": "#bdb76b"},
-{"colorName": "darkolivegreen", "code": "#556b2f"},
-{"colorName": "darkseagreen", "code": "#8fbc8f"},
+{"colorName": "forestgreen", "code": "#228b22"},
 {"colorName": "green", "code": "#008000"},
-{"colorName": "greenyellow", "code": "#adff2f"},
-{"colorName": "lawngreen", "code": "#7cfc00"},
+{"colorName": "seagreen", "code": "#2e8b57"},
+{"colorName": "mediumseagreen", "code": "#3cb371"},
+{"colorName": "mediumaquamarine", "code": "#66cdaa"},
+{"colorName": "darkseagreen", "code": "#8fbc8f"},
+
 {"colorName": "limegreen", "code": "#32cd32"},
 {"colorName": "lime", "code": "#00ff00"},
 {"colorName": "chartreuse", "code": "#7fff00"},
-{"colorName": "lightgreen", "code": "#90ee90"},
-{"colorName": "mediumaquamarine", "code": "#66cdaa"},
 
-{"colorName": "mediumseagreen", "code": "#3cb371"},
+{"colorName": "greenyellow", "code": "#adff2f"},
+{"colorName": "lawngreen", "code": "#7cfc00"},
+{"colorName": "lightgreen", "code": "#90ee90"},
+
 {"colorName": "mediumspringgreen", "code": "#00fa9a"},
-{"colorName": "olive", "code": "#808000"},
-{"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
-{"colorName": "palegreen", "code": "#98fb98"},
-{"colorName": "seagreen", "code": "#2e8b57"},
 {"colorName": "springgreen", "code": "#00ff7f"},
+{"colorName": "palegreen", "code": "#98fb98"},
+
+{"colorName": "darkolivegreen", "code": "#556b2f"},
+{"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
+{"colorName": "olive", "code": "#808000"},
 {"colorName": "yellowgreen", "code": "#9acd32"},
+
+{"colorName": "darkkhaki", "code": "#bdb76b"},
+{"colorName": "darkgoldenrod", "code": "#b8860b"},
+{"colorName": "burlywood", "code": "#deb887"},
+
 
 
 
@@ -603,10 +362,11 @@ var _vars = {
 {"colorName": "slategray", "code": "#708090", "text-color": "#000"},
 {"colorName": "lightslategray", "code": "#778899"},
 {"colorName": "lightgrey", "code": "#d3d3d3"},
+{"colorName": "darkgray", "code": "#a9a9a9"},
+
 {"colorName": "silver", "code": "#c0c0c0"},
 {"colorName": "gainsboro", "code": "#dcdcdc"},
 {"colorName": "lavenderblush", "code": "#fff0f5"},
-{"colorName": "lavender", "code": "#e6e6fa"},
 
 {"colorName": "linen", "code": "#faf0e6"},
 
@@ -624,12 +384,16 @@ var _vars = {
 {"colorName": "papayawhip", "code": "#ffefd5", "text-color": "#000"},
 
 
+{"colorName": "brown", "code": "#a52a2a"},
+{"colorName": "maroon", "code": "#800000"},
 {"colorName": "darkred", "code": "#8b0000"},
 {"colorName": "firebrick", "code": "#b22222"},
-{"colorName": "indianred", "code": "#cd5c5c"},
-{"colorName": "maroon", "code": "#800000"},
 {"colorName": "red", "code": "#ff0000"},
+{"colorName": "crimson", "code": "#dc143c"},
+{"colorName": "indianred", "code": "#cd5c5c"},
 {"colorName": "tomato", "code": "#ff6347"},
+{"colorName": "coral", "code": "#ff7f50"},
+{"colorName": "chocolate", "code": "#d2691e"},
 
 {"colorName": "darksalmon", "code": "#e9967a"},
 {"colorName": "lightsalmon", "code": "#ffa07a"},
@@ -664,15 +428,27 @@ var _vars = {
 {"colorName": "wheat", "code": "#f5deb3", "text-color": "#000"},
 {"colorName": "peachpuff", "code": "#ffdab9", "text-color": "#000"},
 
+{"colorName": "antiquewhite", "code": "#faebd7", "text-color": "#000"},
+{"colorName": "floralwhite", "code": "#fffaf0"},
+{"colorName": "beige", "code": "#f5f5dc", "text-color": "#000"},
+{"colorName": "bisque", "code": "#ffe4c4", "text-color": "#000"},
+{"colorName": "blanchedalmond", "code": "#ffebcd", "text-color": "#000"},
+{"colorName": "cornsilk", "code": "#fff8dc"},
+{"colorName": "seashell", "code": "#fff5ee", "text-color": "#000"},
+
+{"colorName": "lightblue", "code": "#add8e6"},
+{"colorName": "powderblue", "code": "#b0e0e6"},
+{"colorName": "lavender", "code": "#e6e6fa"},
+{"colorName": "ghostwhite", "code": "#f8f8ff"},
 {"colorName": "aliceblue", "code": "#f0f8ff"},
+{"colorName": "whitesmoke", "code": "#f5f5f5"},
+{"colorName": "lightcyan", "code": "#e0ffff", "text-color": "#000"},
+
 {"colorName": "azure", "code": "#f0ffff"},
 {"colorName": "honeydew", "code": "#f0fff0"},
 
-{"colorName": "ghostwhite", "code": "#f8f8ff"},
 {"colorName": "mintcream", "code": "#f5fffa"},
-{"colorName": "whitesmoke", "code": "#f5f5f5"},
 
-{"colorName": "seashell", "code": "#fff5ee", "text-color": "#000"},
 {"colorName": "snow", "code": "#fffafa"},
 {"colorName": "ivory", "code": "#fffff0"},
 {"colorName": "white", "code": "#ffffff"}
