@@ -657,41 +657,50 @@ console.log("_buildPage()", arguments);
 		}
 //console.log(opt);
 
+		_draw_buildBlock({
+			"locationID" : "block-1",
+			"title" : "Block 1", 
+			"templateID" : "tpl-block",
+			"content" : "<u>static text in block-1</u>"
+		});
+
+
 		//Get data first 10 nodes for main page feed
 		var data = [];
 		for(var n=0; n < 10; n++){
 			data.push( webApp.vars["DB"]["nodes"][n]);
 		}//next
 //console.log(data);
-data[1] =  webApp.vars["DB"]["nodes"][633];
+var num = webApp.vars["DB"]["nodes"].length-1;
+data[1] =  webApp.vars["DB"]["nodes"][num];
 
 		//define unique template for item
 		for(var n=0; n < data.length; n++){
 			
 			if(data[n]["type"] === "videoclip"){
-				data[n]["template"] = "tpl-feed-item--videoclip";
+				data[n]["template"] = "tpl-videolist-item--videoclip";
 			}
 			
-			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list"];
-			data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-title"];
+			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist"];
+			data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
 			
 			if( data[n]["ul"] ){
-				data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-links"];
-				data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-ul"];
+				data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
+				data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
 			} else {
 				data[n]["ul"] = "";
 			}
 			
 			if( data[n]["tags"] ){
-				data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-tags"];
-				data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-tag"];
+				data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
+				data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
 			} else {
 				data[n]["tags"] = "";
 			}
 				
 			if( data[n]["pictures"] ){
-				data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-feed-list-pictures"];
-				data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-feed-item--video-img"];
+				data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
+				data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
 			} else {
 				data[n]["pictures"] = "";
 			}
@@ -701,30 +710,28 @@ data[1] =  webApp.vars["DB"]["nodes"][633];
 
 		var _html = _draw_wrapData({
 			"data": data,
-			"templateID": "tpl-feed-list",
-			"templateListItemID": "tpl-feed-item--video"
+			"templateID": "tpl-videolist",
+			"templateListItemID": "tpl-videolist-item--video"
 		});
 //console.log( _html);
 
 		if( !_html || _html.length === 0){
-webApp.vars["logMsg"] = "Error generate html...";
+webApp.vars["logMsg"] = "error generate html...";
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
 		} else {
-$("#main").html( _html );			
-		}
-
-/*		
-		//draw content block
-		//if( html.length > 0 ){
-			_buildBlock({
-				"name" : "block-content",
-				"title" : node["title"], 
-				"templateID" : "tpl-block-content",
-				//"content" : _formNodeContent(node)//node["content"]
+//$("#main").html( _html );			
+			//draw content block
+			_draw_buildBlock({
+				"locationID" : "main",
+				"title" : "video list", 
+				"templateID" : "tpl-block-videolist",
 				"content" : _html
 			});
-		//}
+		}
+
+
+/*		
 
 		//draw sidebar blocks
 		_buildSidebar({
@@ -808,20 +815,6 @@ console.log(webApp.vars["logMsg"]);
 			
 			for( var key in data ){
 //console.log(key, data[key]);
-/*
-				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
-					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
-					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
-					var _listHtml = "";
-					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
-						_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
-					}//next
-//console.log( _listHtml );
-					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
-//console.log( nodeTermsList );
-					data["nodeTerms"] = nodeTermsList;
-				}
-*/
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
 //console.log(key, p["data"][key]);
 					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
@@ -865,13 +858,13 @@ console.log("-- warning, not found template, ", tplName );
 						var itemTpl = item[key2]["itemTpl"];
 /*						
 						if( key2 === "title" ){
-							var subOrdList = webApp.vars["templates"]["tpl-feed-list"];
-							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-title"];
+							var subOrdList = webApp.vars["templates"]["tpl-videolist"];
+							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
 						}
 
 						if( key2 === "ul" ){
-							var subOrdList = webApp.vars["templates"]["tpl-feed-list-links"];
-							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-ul"];
+							var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
+							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
 							//var subOrdListHtml = "";
 							//for( var n2 = 0; n2 < item[key2].length; n2++){
 								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
@@ -881,8 +874,8 @@ console.log("-- warning, not found template, ", tplName );
 						}
 
 						if( key2 === "tags" ){
-							var subOrdList = webApp.vars["templates"]["tpl-feed-list-tags"];
-							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-tag"];
+							var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
+							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
 							//var subOrdListHtml = "";
 							//for( var n2 = 0; n2 < item[key2].length; n2++){
 								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
@@ -892,8 +885,8 @@ console.log("-- warning, not found template, ", tplName );
 						}
 						
 						if( key2 === "pictures" ){
-							var subOrdList = webApp.vars["templates"]["tpl-feed-list-pictures"];
-							var itemTpl = webApp.vars["templates"]["tpl-feed-item--video-img"];
+							var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
+							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
 							//var subOrdListHtml = "";
 							//for( var n2 = 0; n2 < item[key2].length; n2++){
 								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
@@ -932,4 +925,119 @@ console.log("-- warning, not found template, ", tplName );
 			return _html;
 		}//end __formListHtml
 
-	}//end _wrapData()
+	}//end _draw_wrapData()
+
+
+	var _draw_buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
+		var timeStart = new Date();
+		var p = {
+			"title": "",
+			"content" : "",
+			//"contentType" : "",
+			"templateID" : "tpl-block",
+			"contentTpl" : "tpl-list",//"tpl-menu"
+			"contentListTpl" : false,
+			
+			"callback" : function(){
+				var timeEnd = new Date();
+				var ms = timeEnd.getTime() - timeStart.getTime();
+				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+console.log(msg);			
+				//webApp.app.vars["runtime"].push({
+					//"source" : msg,
+					//"ms" : ms,
+					//"sec" : ms / 1000
+				//});
+				
+				//if( typeof p["callback2"] === "function"){
+					//p["callback2"]();//return from _buildBlock()
+				//}
+				
+			},//end callback
+			"callback2" : null
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		//dynamic form content
+		if( typeof p["content"] === "function"){
+/*
+			p["content"]({
+				"callback" : function( res ){
+//console.log(res);								
+					var html = webApp.draw.wrapContent({
+						"data" : res,
+						//"type" : "menu",//"list"
+						//"contentType" : p["contentType"],
+						"templateID" : p["contentTpl"],
+						"templateListID" : p["contentListTpl"]
+					});
+					
+//console.log(html);								
+					//var html = "<h1>Test!!!</h1>";
+					if( html && html.length > 0){
+						p["content"] = html;
+						webApp.draw.insertBlock( p );
+					}
+					
+				}
+			});
+*/
+		} else {
+			_draw_insertBlock( p );
+		}
+
+	};//end _draw_buildBlock()
+
+
+	var _draw_insertBlock = function( opt ){
+		var p = {
+			"templateID": false,
+			"locationID": "block-1",
+			"title" : "block",
+			"content" : false,
+			"callback":null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log("_draw_insertBlock()", p);
+
+		var templateID = p["templateID"];
+		if( !webApp.vars["templates"][templateID] ){
+webApp.vars["logMsg"] = "-- _draw_insertBlock(), error, not found template, id:" + templateID;
+//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+			return false;
+		}
+		
+		if( !p["content"] || p["content"].length === 0){
+webApp.vars["logMsg"] = "-- _draw_insertBlock(), error, not found or empty content block " + p["locationID"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+			return false;
+		}
+		
+		var html = webApp.vars["templates"][templateID];
+		html = html.replace("{{block_title}}", p["title"]);
+		html = html.replace("{{content}}", p["content"]);
+		
+		var locationBlock = func.getById( p["locationID"] );
+		if( locationBlock ){
+			locationBlock.innerHTML = html;
+		} else {
+webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+		}		
+		
+		if( typeof p["callback"] === "function"){
+			p["callback"]();
+		}
+
+	};//end _draw_insertBlock()

@@ -2,13 +2,13 @@
 <templates>
 
 
-	<tpl name="tpl-feed-list">
+	<tpl name="tpl-videolist">
 		<html_code><![CDATA[
 <div class="panel">{{list}}</div>
 		]]></html_code>
 	</tpl>
 
-	<tpl name="tpl-feed-item--video">
+	<tpl name="tpl-videolist-item--video">
 		<html_code>
 <![CDATA[
 <div class="panel-body {{type}}">
@@ -31,7 +31,7 @@
 		</html_code>
 	</tpl>
 	
-	<tpl name="tpl-feed-item--videoclip">
+	<tpl name="tpl-videolist-item--videoclip">
 		<html_code>
 <![CDATA[
 <div class="panel-body {{type}}">
@@ -52,7 +52,7 @@
 		</html_code>
 	</tpl>
 
-	<tpl name="tpl-feed-item--video-title">
+	<tpl name="tpl-videolist-item--title">
 		<html_code>
 <![CDATA[
 	<h3>{{text}}</h3>
@@ -62,13 +62,13 @@
 
 
 
-	<tpl name="tpl-feed-list-links">
+	<tpl name="tpl-videolist-list-links">
 		<html_code><![CDATA[
 <ul class="">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
-	<tpl name="tpl-feed-item--video-ul">
+	<tpl name="tpl-videolist-item--ul">
 		<html_code>
 <![CDATA[
 	<li><a data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a></li>
@@ -77,13 +77,13 @@
 	</tpl>
 	
 
-	<tpl name="tpl-feed-list-tags">
+	<tpl name="tpl-videolist-list-tags">
 		<html_code><![CDATA[
 <ul class="list-inline">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
-	<tpl name="tpl-feed-item--video-tag">
+	<tpl name="tpl-videolist-item--tag">
 		<html_code>
 <![CDATA[
 	<li><a data-tid="{{tid}}" href="#">{{text}}</a></li>
@@ -92,13 +92,13 @@
 	</tpl>
 
 
-	<tpl name="tpl-feed-list-pictures">
+	<tpl name="tpl-videolist-list-pictures">
 		<html_code><![CDATA[
 <ul class="">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
-	<tpl name="tpl-feed-item--video-img">
+	<tpl name="tpl-videolist-item--img">
 		<html_code>
 <![CDATA[
 	<li><img src="{{src}}" title="{{src}}" alt="{{src}}"/></li>
@@ -106,7 +106,32 @@
 		</html_code>
 	</tpl>
 
+
+
+
+
+	<tpl name="tpl-block">
+		<html_code><![CDATA[
+<div class="block panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="text-center">{{block_title}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>	
 	
+	<tpl name="tpl-block-videolist">
+		<html_code><![CDATA[
+<div class="block panel">
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>	
 <!--
 	<tpl name="tpl-list">
 		<html_code><![CDATA[
@@ -120,14 +145,6 @@
 		]]></html_code>
 	</tpl>
 
-	<tpl name="tpl-block-1">
-		<html_code><![CDATA[
-	<div class="block">
-			{{block_title}}
-			<div class="content">{{content}}</div>
-	</div>			
-		]]></html_code>
-	</tpl>
 -->
 	
 <!--	
@@ -137,4 +154,5 @@
 		]]></html_code>
 	</tpl>
 -->	
+
 </templates>
