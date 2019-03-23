@@ -20,8 +20,7 @@
 Микки Шугар (США), 
 Егор Красотин, 
 Алексей Полуян	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Философская притча о духовных перерождениях человека, 
+	<description>Философская притча о духовных перерождениях человека, 
 рассказанная современным языком. В основе сюжета лежит 
 жизнь мелкого наркодельца Ильи Краковского, который торгует 
 наркотиками в офисе по продаже сотовых телефонов.
@@ -41,23 +40,30 @@
 Фильм построен двояко- с одной стороны это интересный сюжет и 
 характеры «городского дна Петербурга», с другой стороны своеобразная 
 карманная культурная энциклопедия, - поскольку весь фильм построен на 
-реминисценциях, и отсылках к великим произведениям кино и литературы.
-&amp;lt;/pre&amp;gt;</description>
-	
+реминисценциях, и отсылках к великим произведениям кино и литературы.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/eeeYo2h41pE/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/eeeYo2h41pE">embed video</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
+		<item tid="28">короткометражный</item>
 		<item tid="95">Алексей Полуян</item>
 		<item tid="17">Михаил Марескин</item>
 		<item tid="22">avi</item>
 		<item tid="229">А</item>
+		<item tid="272">youtube</item>
 		<item tid="280">2008</item>
 	</tags>
 
 	<published>24-Sep-2012 09:28:16</published>
-	<updated>21-Aug-2016 20:45:30</updated>
+	<updated>23-Mar-2019 15:22:18</updated>
 </video>
 
 <video type="video">
@@ -27607,7 +27613,9 @@ https://ok.ru/video/1147112392106
 https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search
 
 https://vk.com/video-55072656_456239072</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
+	</pictures>
 
 	<ul>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/-QHha1zko1A">youtube embed video</a></li>
@@ -27619,7 +27627,7 @@ https://vk.com/video-55072656_456239072</description>
 	</tags>
 
 	<published>03-Mar-2019 17:13:24</published>
-	<updated>17-Mar-2019 22:43:20</updated>
+	<updated>23-Mar-2019 15:29:26</updated>
 </video>
 	</database>
 </xroot>

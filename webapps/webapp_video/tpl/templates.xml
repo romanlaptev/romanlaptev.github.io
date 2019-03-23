@@ -27,24 +27,18 @@
 	<div id="video-{{number}}" class="panel-collapse collapse">
 		<div class="panel-body">
 		
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="pull-left">
 				<div class="thumbnail text-center pictures">
 {{pictures}}
-	
-							<div class="panel-body play-buttons">					
-								<span class="">play video from </span>
-<a href="#link" class="btn btn-success btn-sm play-btn" target="_blank">#link-text</a>
-							</div>
+				<div class="links">{{ul}}</div>
+
 				</div>
 			</div>
 		
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="">
 				<div class="producer">{{producer}}</div>
 				<div class="roles">{{roles}}</div>
 				<div class="mark description">{{description}}</div>
-				<div class="links">
-{{ul}}							
-				</div>
 			</div>
 		
 		</div>
@@ -83,23 +77,17 @@
 	<div id="video-{{number}}" class="panel-collapse collapse">
 		<div class="panel-body">
 		
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="pull-left">
 				<div class="thumbnail text-center pictures">
 {{pictures}}
 	
-							<div class="panel-body play-buttons">					
-								<span class="">play video from </span>
-<a href="#link" class="btn btn-success btn-sm play-btn" target="_blank">#link-text</a>
-							</div>
+				<div class="links">{{ul}}</div>
 				</div>
 			</div>
 		
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="">
 				<div class="">{{creators}}</div>
 				<div class="mark description">{{description}}</div>
-				<div class="links">
-{{ul}}							
-				</div>
 			</div>
 		
 		</div>
@@ -132,14 +120,14 @@
 
 	<tpl name="tpl-videolist-list-links">
 		<html_code><![CDATA[
-<ul class="">{{list}}</ul>
+<ul class="list-inline">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
 	<tpl name="tpl-videolist-item--ul">
 		<html_code>
 <![CDATA[
-	<li><a data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a></li>
+	<li><a class="btn btn-sm btn-success" data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a></li>
 ]]>
 		</html_code>
 	</tpl>
@@ -162,7 +150,7 @@
 
 	<tpl name="tpl-videolist-list-pictures">
 		<html_code><![CDATA[
-<ul class="">{{list}}</ul>
+<ul class="list-unstyled">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
