@@ -169,15 +169,12 @@ display:block;
  text-align:center;
 }
 
+/*
 .play-buttons a {
 	margin: 1px;
 }
+*/
 
-.roles {
-	background: #D0CCD5;
-	padding: 10px;
-	border-radius: 3px;
-}
 
 #app-title {
     font-family: a_Huxley;
@@ -186,6 +183,8 @@ display:block;
     margin-bottom: 0;
 }
 
+
+
 .video-list-item{
 /*
   float: left;
@@ -193,10 +192,6 @@ display:block;
   width: 150px;
   height: 200px;
 */
-}
-
-.video-list-item .links .list-inline > li {
-	margin-bottom: 5px;
 }
 
 /*
@@ -212,3 +207,18 @@ width:100%;
 
 */
 
+.video-list-item .mark {
+	padding: 10px;
+	border-radius:6px;
+}
+
+.video-list-item .roles {
+	background: #D0CCD5;
+	padding: 10px;
+	border-radius: 6px;
+	margin:5px;
+}
+
+.video-list-item .links .list-inline > li {
+	margin-bottom: 5px;
+}
