@@ -167,7 +167,48 @@ display:block;
  -o-transform:rotate(90deg);
  transform:rotate(90deg);
  text-align:center;
+ color:#000;
+ font-weight: bold;
+/*
+padding: 6px 12px 10px 14px; 
+*/
+ border-radius:5px;
+ background-color: #c7d5ec;
 }
+/*
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.toggle-btn:active,
+.toggle-btn.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+* 
+* 
+*/
+
+.toggle-btn:hover{
+  color: #333;
+    background-color: #afeeee/*#f89406*/;
+    border-color: #afeeee/*#ffa500*/;
+}
+
+.toggle-btn:focus,
+.toggle-btn.focus {
+  outline: none;
+}
+
 
 /*
 .play-buttons a {
