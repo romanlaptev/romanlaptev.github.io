@@ -27,7 +27,7 @@
 	<div id="video-{{number}}" class="panel-collapse collapse">
 		<div class="panel-body">
 		
-			<div class="pull-left">
+			<div class="">
 				<div class="thumbnail text-center pictures">
 {{pictures}}
 				<div class="links">{{ul}}</div>
@@ -77,7 +77,7 @@
 	<div id="video-{{number}}" class="panel-collapse collapse">
 		<div class="panel-body">
 		
-			<div class="pull-left">
+			<div class="">
 				<div class="thumbnail text-center pictures">
 {{pictures}}
 	
@@ -127,7 +127,9 @@
 	<tpl name="tpl-videolist-item--ul">
 		<html_code>
 <![CDATA[
-	<li><a class="btn btn-sm btn-success" data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a></li>
+	<li>
+		<a class="btn btn-lg btn-success" data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a>
+	</li>
 ]]>
 		</html_code>
 	</tpl>

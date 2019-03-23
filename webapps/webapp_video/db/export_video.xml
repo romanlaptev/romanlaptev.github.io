@@ -46,9 +46,9 @@
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
-		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/eeeYo2h41pE">embed video</a></li>
+		<li><a data-type="local-file" title="local file" href="http://site-content/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/eeeYo2h41pE">Youtube embed video in new tab</a></li>
+		<li><a data-type="external-link" title="go to Youtube" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
 	</ul>
 
 	<tags>
@@ -63,7 +63,7 @@
 	</tags>
 
 	<published>24-Sep-2012 09:28:16</published>
-	<updated>23-Mar-2019 15:22:18</updated>
+	<updated>23-Mar-2019 20:07:08</updated>
 </video>
 
 <video type="video">
@@ -124,66 +124,24 @@ Castleway Films
 Иэн Холм (Ian Holm)
 Боб Хоскинс (Bob Hoskins)
 Майкл Пэлин (Michael Palin) 	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/brazil_eng_rus.jpg&amp;quot;/&amp;gt;
-&amp;lt;pre&amp;gt;
-Сэм Лоури – крошечный винтик в огромной заржавевшей бюрократической машине 
+	<description>Сэм Лоури – крошечный винтик в огромной заржавевшей бюрократической машине 
 тоталитарного государства будущего. Сэм старается не лезть в неприятности, 
 но однажды, заметив ошибку в документе, которая может привести к аресту 
 невинного человека, он решает исправить ее. Благое намерение скромного клерка 
 неожиданно для него вызывает целую лавину странных совпадений и загадочных событий, 
 и вскоре выясняется, что крошечная опечатка способна пошатнуть 
 могучего колосса на глиняных ногах... 
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
+--------------
+https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(%D1%84%D0%B8%D0%BB%D1%8C%D0%BC)</description>
+	<pictures>
+		<img src="/video/0_covers/brazil_eng_rus.jpg"/>
+		<img src="http://lamcdn.net/lookatme.ru/post_image-image/Rj9d1jMQzwzpxlFMwz-NAQ-article.jpg"/>
+	</pictures>
 
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/G/Gilliam/Brazil/brazil_eng_rus.avi">brazil_eng_rus.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/296256080491">embed video, OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -197,7 +155,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</tags>
 
 	<published>01-Oct-2012 23:16:15</published>
-	<updated>18-Dec-2017 22:10:50</updated>
+	<updated>23-Mar-2019 20:58:48</updated>
 </video>
 
 <video type="video">
@@ -217,23 +175,25 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 Marcela Feregrino
 Кристиан Феррер
 Эдгар Флорес	</roles>
-	<description>&amp;lt;pre&amp;gt;
+	<description>Уроженка Гондураса Сайра воссоединяется со своим отцом, 
+чтобы осуществить свою мечту о жизни в США. Переезд же 
+в Мексику является первым шагом в важном путешествии, полном неожиданных событий…
+
 американско-мексиканский фильм 2009 года о молодежных уличных бандах 
 и нелегальной миграции в Латинской Америке. Был удостоен ряда премий, 
 в том числе на кинофестивале Сандэнс в 2009 году.
-
-Уроженка Гондураса Сайра воссоединяется со своим отцом, 
-чтобы осуществить свою мечту о жизни в США. Переезд же 
-в Мексику является первым шагом в важном путешествии, полном неожиданных событий…
+-----------
 http://rutracker.org/forum/viewtopic.php?t=3796228
-&amp;lt;/pre&amp;gt;
-http://www.kinopoisk.ru/film/397878/
-http://www.youtube.com/watch?v=KoT7AXJbx7c</description>
+http://www.kinopoisk.ru/film/397878/</description>
 	<pictures>
 		<img src="/video/0_covers/Sin_nombre.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/S/Sin_nombre/Sin_nombre.avi">Sin_nombre.avi </a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/87614098065">embed video, OK.ru</a></li>
+		<li><a data-type="external-link" href="http://www.youtube.com/watch?v=KoT7AXJbx7c">"La Flaca De Las Coloradhas", soundtrack</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -252,7 +212,7 @@ http://www.youtube.com/watch?v=KoT7AXJbx7c</description>
 	</tags>
 
 	<published>01-Oct-2012 23:40:43</published>
-	<updated>17-Dec-2017 15:25:50</updated>
+	<updated>23-Mar-2019 20:44:31</updated>
 </video>
 
 <video type="video">
@@ -266,8 +226,7 @@ http://www.youtube.com/watch?v=KoT7AXJbx7c</description>
 Макс Ендерфорс / Max Enderfors
 Томми Валликари / Tommy Vallikari
 Андреас aФ Энехжелм / Andreas af Enehjelm	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Перевод: Субтитры (Avrelius)
+	<description>Перевод: Субтитры (Avrelius)
 Cубтитры: русские (внешние); шведские, финские, датские, норвежские (встроенные)
 Оригинальная аудиодорожка: шведский, финский
 
@@ -275,15 +234,14 @@ Cубтитры: русские (внешние); шведские, фински
 
 Доп. информация: Экранизация книги молодого, но необычайно популярного писателя Микаэля Ниеми (р. 1959 г.), которого называют шведским Сэлинджером, рассказывает о мире его детства - деревушке Паяле на самом севере Швеции, где люди живут не торопясь, в соответствие с издавна сложившимися устоями и традициями, и куда постепенно проникает цивилизация, меняющая и жизненный уклад, и отношения между людьми. Полная смешных и забавных ситуаций, книга написана живым, сочным языком. Герои Ниеми не стесняются в выражениях, но ведь это не сцены из жизни английских лордов...
 
-670 тысяч шведов купили книгу Микаэля Ниеми `Популярная музыка из Виттулы`. Паяле стала новой туристической Меккой. В туристических агентствах толпились люди, желавшие своими глазами увидеть Сучье болото, Паскаянкку, Лестадианский спуск, побывать в зале, где домохозяйки занимаются гимнастикой.
-&amp;lt;/pre&amp;gt;</description>
+670 тысяч шведов купили книгу Микаэля Ниеми `Популярная музыка из Виттулы`. Паяле стала новой туристической Меккой. В туристических агентствах толпились люди, желавшие своими глазами увидеть Сучье болото, Паскаянкку, Лестадианский спуск, побывать в зале, где домохозяйки занимаются гимнастикой.</description>
 	<pictures>
 		<img src="/video/0_covers/popularmusik_fran_Vittula.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/P/Popularmusik_fran_Vittulai/Popularmusik fran Vittula.mkv">Popularmusik fran Vittula.mkv</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1168090466923">embed video, OK.ru</a></li>
 	</ul>
 
 	<tags>
@@ -293,10 +251,13 @@ Cубтитры: русские (внешние); шведские, фински
 		<item tid="75">Швеция</item>
 		<item tid="150">srt</item>
 		<item tid="27">mkv</item>
+		<item tid="268">P</item>
+		<item tid="241">Н</item>
+		<item tid="313">2004</item>
 	</tags>
 
 	<published>01-Oct-2012 23:44:49</published>
-	<updated>02-Jun-2013 18:12:12</updated>
+	<updated>23-Mar-2019 21:22:52</updated>
 </video>
 
 <video type="video">
@@ -311,18 +272,17 @@ Cубтитры: русские (внешние); шведские, фински
 Эско Никкари, 
 Веса Виерикко, 
 Силу Сеппала	</roles>
-	<description>&amp;lt;pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/devushka_aki_k.png&amp;quot;&amp;gt;
+	<description>Это новое воплощение андерсеновской &amp;quot;маленькой спичечной девочки&amp;quot; - воплощение, полное тихого ужаса перед жизнью и вместе с тем дарящее катарсис, от которого, как утверждают знатоки, сладко затрещали бы кости Аристотеля. Классическая трагедия маленького человека. Современный финский вариант одной из вечных русских тем, так любимой нашими классиками. Каждый из героев живет в своем особом мире, не впуская в него даже самых близких людей, боясь порвать толстую оболочку, помочь другому и самому найти опору в ближнем. Минимум диалогов и кадры работы станков на спичечной фабрике усиливают унылое настроение всей картины.
 
-Это новое воплощение андерсеновской &amp;quot;маленькой спичечной девочки&amp;quot; - воплощение, полное тихого ужаса перед жизнью и вместе с тем дарящее катарсис, от которого, как утверждают знатоки, сладко затрещали бы кости Аристотеля. Классическая трагедия маленького человека. Современный финский вариант одной из вечных русских тем, так любимой нашими классиками. Каждый из героев живет в своем особом мире, не впуская в него даже самых близких людей, боясь порвать толстую оболочку, помочь другому и самому найти опору в ближнем. Минимум диалогов и кадры работы станков на спичечной фабрике усиливают унылое настроение всей картины.
-
-http://rutracker.org/forum/viewtopic.php?t=1548781
-&amp;lt;/pre&amp;gt;</description>
-	
+http://rutracker.org/forum/viewtopic.php?t=1548781</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/_59rN6FEkWI/sddefault.jpg"/>
+		<img src="/video/0_covers/devushka_aki_k.png"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Девушка со спичечной фабрики/devushka_aki_k.avi">devushka_aki_k.avi</a></li>
+		<li><a data-type="embed-video" href="https://youtube.ru/embed/_59rN6FEkWI">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -330,10 +290,14 @@ http://rutracker.org/forum/viewtopic.php?t=1548781
 		<item tid="42">трагикомедия</item>
 		<item tid="16">Аки Каурисмяки</item>
 		<item tid="22">avi</item>
+		<item tid="225">T</item>
+		<item tid="233">Д</item>
+		<item tid="272">youtube</item>
+		<item tid="294">1990</item>
 	</tags>
 
 	<published>01-Oct-2012 23:50:52</published>
-	<updated>11-Jun-2013 20:45:49</updated>
+	<updated>23-Mar-2019 21:32:56</updated>
 </video>
 
 <video type="video">
@@ -350,10 +314,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781
 Маркку Пелтола / Markku Peltola, 
 Матти Оннисмаа / Matti Onnismaa, 
 Шелли Фишер / Shelley Fisher	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/kauas_pilvet_karkaavat.jpg&amp;quot;&amp;gt;
-Русские субтитры: есть
-
-Проект чуть не постигла печальная судьба. 
+	<description>Проект чуть не постигла печальная судьба. 
 Незадолго до съёмок умер любимый актёр режиссёра Матти Пеллонпя. 
 Каурисмяки решил, что фильму не суждено родиться. 
 Но потом Аки переписал сценарий и сделал главной в картине Илону. Илона, 
@@ -363,41 +324,29 @@ http://rutracker.org/forum/viewtopic.php?t=1548781
 Это редкий фильм в творчестве Каурисмяки, в котором есть доля оптимизма.
 
 «Целых три месяца я думал о том, чтобы снять фильм о безработице. Я не мог больше смотреть на себя в зеркало, ибо видел в нем моральный вопрос: кто-то должен это сделать? Но прежде чем сесть за сценарий, надо было понять, кто его герой, кто именно теряет работу. В это время я находился в Японии, зашел в бар отеля, — там не было никого, кроме меня и метрдотеля. Я наблюдал за ним. Потом Матти спустился из своей комнаты, и я сказал: «Посмотри на этого человека — это твоя следующая роль...»
-&amp;lt;pre&amp;gt;
-«Этот фильм рассказывает о «старомодных» людях в этом современном мире. В нем есть главные герои и герои второго плана. Некоторые из них слегка комичны...»
 
-«До определённой степени «Облака» - это также драма супружества, чего я по сути не замечал, пока не приступил к монтажу картины»
+«Этот фильм рассказывает о «старомодных» людях в этом современном мире. В нем есть главные герои и герои второго плана. Некоторые из них слегка комичны...»</description>
+	<pictures>
+		<img src="/video/0_covers/kauas_pilvet_karkaavat.jpg"/>
+	</pictures>
 
-Каннский кинофестиваль - 1996
-Особый приз экуменического жюри
-Номинация на Золотую пальмовую ветвь
-
-Финская киноакадемия - 1997
-Призы &amp;quot;Лучший фильм&amp;quot;, &amp;quot;Лучший режиссёр&amp;quot;, &amp;quot;Лучший сценарий&amp;quot;, &amp;quot;Лучшая актриса&amp;quot;, &amp;quot;Лучшая актриса второго плана&amp;quot;
-
-São Paulo International Film Festival - 1996
-Приз зрителей за лучший фильм
-
-Tromsø International Film Festival - 1997
-Приз Import Award
-
-http://rutracker.org/forum/viewtopic.php?t=1506632
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Vdal_Uplyvajut_Oblaka/Vdal.Uplyvajut.Oblaka.avi">Vdal.Uplyvajut.Oblaka.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/909437045449">embed video, OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
 		<item tid="42">трагикомедия</item>
 		<item tid="16">Аки Каурисмяки</item>
 		<item tid="22">avi</item>
+		<item tid="217">K</item>
 		<item tid="231">В</item>
 		<item tid="311">1996</item>
 	</tags>
 
 	<published>02-Oct-2012 09:08:20</published>
-	<updated>21-Aug-2016 21:18:44</updated>
+	<updated>23-Mar-2019 21:41:46</updated>
 </video>
 
 <video type="video">
@@ -413,8 +362,7 @@ http://rutracker.org/forum/viewtopic.php?t=1506632
 Мато Валтонен
 Елина Сало
 Ирма Юннилайнен	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Замечательный фильм, в котором традиционная народная отмороженность 
+	<description>Замечательный фильм, в котором традиционная народная отмороженность 
 двух главных героев - финских рокеров средних лет, обладателей 
 автомобиля &amp;quot;Волга&amp;quot; 1965 года выпуска - сочетается с наивной восторженностью 
 двух немолодых девушек (из Казахстана и Эстонии), путешествующих по Финляндии 
@@ -428,15 +376,14 @@ http://rutracker.org/forum/viewtopic.php?t=1506632
 но разрушила культуру и человеческие чувства – и никто , похоже, об этом не жалеет» 
 Аки Каурисмяки
 
-http://rutracker.org/forum/viewtopic.php?t=1560435
-&amp;lt;/pre&amp;gt;</description>
+http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	<pictures>
 		<img src="/video/0_covers/beregi_svoiu_kosynku.png"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Береги свою косынку, Татьяна/beregi_svoiu_kosynku.aki.avi">beregi_svoiu_kosynku.aki.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/3249867003">embed video, OK.ru</a></li>
 	</ul>
 
 	<tags>
@@ -447,10 +394,12 @@ http://rutracker.org/forum/viewtopic.php?t=1560435
 		<item tid="61">Германия</item>
 		<item tid="70">Финляндия</item>
 		<item tid="22">avi</item>
+		<item tid="268">P</item>
+		<item tid="230">Б</item>
 	</tags>
 
 	<published>02-Oct-2012 09:16:12</published>
-	<updated>23-Mar-2019 12:08:16</updated>
+	<updated>23-Mar-2019 21:46:07</updated>
 </video>
 
 <video type="video">
@@ -27142,6 +27091,37 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	<updated>03-Mar-2019 15:37:19</updated>
 </video>
 
+<video type="video">
+	<title>
+		<item>Русская игра</item>
+</title>
+	
+	
+	
+	<description>Русская игра. Экранизация пьесы Николая Гоголя &amp;quot;Игроки&amp;quot;. Комедия (2007) @ Русские сериалы</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/bSOoQzMnSyw/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://youtube.ru/embed/bSOoQzMnSyw">embed video, www.youtube.com</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=bSOoQzMnSyw">www.youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="119">экранизация</item>
+		<item tid="109">Маковецкий, Сергей</item>
+		<item tid="68">Россия</item>
+		<item tid="244">Р</item>
+		<item tid="272">youtube</item>
+		<item tid="281">2007</item>
+	</tags>
+
+	<published>23-Mar-2019 20:26:30</published>
+	<updated>23-Mar-2019 20:31:22</updated>
+</video>
+
 <video type="videoclip">
 	<title>
 		<item>Blade Loki</item>
@@ -27609,25 +27589,29 @@ https://www.youtube.com/watch?v=-QHha1zko1A&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 &amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;//ok.ru/videoembed/1147112392106&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
 https://ok.ru/video/1147112392106
 
-&amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search
-
-https://vk.com/video-55072656_456239072</description>
+&amp;lt;iframe width=&amp;quot;1024&amp;quot; height=&amp;quot;768&amp;quot; src=&amp;quot;http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/-QHha1zko1A/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4">LITTLE BIG - AK-47 (music video).mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/-QHha1zko1A">youtube embed video</a></li>
 		<li><a data-type="embed-video" href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c">Rutube embed video</a></li>
+		<li><a data-type="embed-video" href="//ok.ru/videoembed/1147112392106">Ok.ru, embed video</a></li>
+		<li><a data-type="external-link" href="https://vk.com/video-55072656_456239072">go to vk.com</a></li>
+		<li><a data-type="external-link" href="https://rutube.ru/video/af8e35708f2f28c3e4a65c616f51003c/?ref=search">go to Rutube.ru</a></li>
 	</ul>
 
 	<tags>
 		<item tid="48">видеоклипы</item>
+		<item tid="218">L</item>
+		<item tid="272">youtube</item>
+		<item tid="326">2016</item>
 	</tags>
 
 	<published>03-Mar-2019 17:13:24</published>
-	<updated>23-Mar-2019 15:29:26</updated>
+	<updated>23-Mar-2019 20:05:30</updated>
 </video>
 	</database>
 </xroot>

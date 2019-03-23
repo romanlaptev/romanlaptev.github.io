@@ -194,3 +194,21 @@ display:block;
   height: 200px;
 */
 }
+
+.video-list-item .links .list-inline > li {
+	margin-bottom: 5px;
+}
+
+/*
+.video-list-item .thumbnail{
+width:50%;
+}
+.video-list-item .pull-left{
+width:50%;
+}
+.video-list-item .thumbnail img{
+width:100%;
+}
+
+*/
+
