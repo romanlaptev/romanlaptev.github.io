@@ -165,15 +165,16 @@ console.log("click...", e);
 		var target = event.target || event.srcElement;
 		
 		if( target.tagName === "A"){
-			//if ( target.href.indexOf("#?q=") !== -1){
-				if (event.preventDefault) { 
-					event.preventDefault();
-				} else {
-					event.returnValue = false;				
-				}
-			//}
-			
 			if( $(target).hasClass("toggle-btn") ){
+
+				//if ( target.href.indexOf("#?q=") !== -1){
+					if (event.preventDefault) { 
+						event.preventDefault();
+					} else {
+						event.returnValue = false;				
+					}
+				//}
+
 				//var collapseBoxId = $(target).attr("href");
 //console.log("-- collapseBoxId:", collapseBoxId );
 //console.log("-- test:", $(collapseBoxId).hasClass("in"), $(collapseBoxId).attr("aria-expanded") );
@@ -708,9 +709,14 @@ console.log("_buildPage()", arguments);
 
 		_draw_buildBlock({
 			"locationID" : "block-1",
-			"title" : "Block 1", 
+			"title" : "playlists", 
 			"templateID" : "tpl-block",
-			"content" : "<u>static text in block-1</u>"
+			"content" : "<ul class='list-unstyled'>\
+<li class='list-group-item'>films</li>\
+<li class='list-group-item'>music - classic rock</li>\
+<li class='list-group-item'>music - thrash, death, grinde</li>\
+<li class='list-group-item'>....</li>\
+</ul>"
 		});
 
 
