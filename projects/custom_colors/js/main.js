@@ -627,7 +627,11 @@ if( typeof window.jQuery === "function"){
 
 window.onload = function(){
 console.log("window event onload");
-//func.log( navigator.userAgent );
+//console.log( navigator.userAgent );
+
+	_vars["targetCopy"] = document.querySelector("#copy-color-value");
+	_vars["log"] = document.querySelector("#log");
+
 	//_vars["pallete"] = document.getElementById("custom-colors");
 	var target = document.getElementById("custom-colors");
 	createPalette( target, _vars["custom_colors"] );
@@ -681,9 +685,57 @@ function createPalette( target, colors ){
 		
 		//newDiv.innerHTML = "<p>" + colors[n]["code"] + "</p>";
 		
+		newDiv.onclick = function(e){
+//console.log("click!", this);
+//console.log( this.target );
+		   copyToClipboard( this );
+		};
+		//newDiv.addEventListener("click", copyToClipboard(e) );
+		
 		//_vars["pallete"].appendChild( newDiv );	
 		target.appendChild( newDiv );	
 		
 	}//next
 	
 }//end createPalette()
+
+
+function copyToClipboard( colorBox ){
+console.log( colorBox.title );
+
+  var copytext = colorBox.title;  
+  _vars["targetCopy"].innerHTML = copytext;
+  
+  var range = document.createRange();  
+  range.selectNode( _vars["targetCopy"] );
+  window.getSelection().addRange(range);  
+
+  try {  
+    var res = document.execCommand('copy');  
+    var logMsg = "color code copied to the clipboard";
+  } catch(err) {  
+    var logMsg = "unable copy text..";
+console.log(err);
+  } 
+  
+console.log(logMsg);
+  _vars["log"].innerHTML = "<p class=''>" + logMsg + "</p>";
+  
+  window.getSelection().removeAllRanges();  
+  
+/*
+  var copytext = document.createElement('input');  
+  copytext.value = colorBox.title;
+  document.body.appendChild(copytext);
+  copytext.select();
+ 
+  try {  
+    var res = document.execCommand('copy');  
+    var logMsg = "Copy command was " + res ? 'successful' : 'unsuccessful';
+console.log(logMsg);
+  } catch(err) {  
+    var logMsg = "unable copy...";
+console.log(logMsg);
+  } 
+*/
+}//end copyToClipboard()

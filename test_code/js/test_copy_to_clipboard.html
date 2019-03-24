@@ -8,12 +8,15 @@
 	<script src="lib/shared_functions.js"></script>
     <script src="lib/clipboard.min.js"></script>
 <script>
+var func = sharedFunc();
+console.log("func:", func);
+
 window.onload = function(e){
 
 	var logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
-	_log(logMsg);
+	func.log(logMsg);
 
-	var btn_clear_log = getById("btn-clear-log");
+	var btn_clear_log = func.getById("btn-clear-log");
 	btn_clear_log.onclick = function(e){
 		e.preventDefault();
 		log.innerHTML = "";
@@ -134,6 +137,9 @@ https://clipboardjs.com/
 https://habr.com/company/ruvds/blog/358494/
 Работа с буфером обмена в JavaScript с использованием асинхронного API Clipboard
 
+https://alligator.io/js/copying-to-clipboard/
+Copying to Clipboard Using Vanilla JavaScript
+
 		</pre>
 	
 </div><!-- end container -->
@@ -159,13 +165,13 @@ var clipboard = new ClipboardJS("#btn-copy-test	", {
 clipboard.on('success', function(e) {
 	console.log(e);
 	var logMsg = "<p class='alert alert-success'><b>Copy</b> text to clipboard: 'To be or not to be' </p>";
-	_log(logMsg);
+	func.log(logMsg);
 });
 
 clipboard.on('error', function(e) {
 	console.log(e);
 	var logMsg = "<p class='alert alert-anger'>Clipboard error...</p>";
-	_log(logMsg);
+	func.log(logMsg);
 });
 </script>
 
@@ -176,10 +182,10 @@ https://habr.com/company/ruvds/blog/358494/
 */
 if (navigator.clipboard) {
 	var logMsg = "<p class='alert alert-success'><b>navigator.clipboard</b> supported...</p>";
-	_log(logMsg);
+	func.log(logMsg);
 } else {
 	var logMsg = "<p class='alert alert-danger'><b>navigator.clipboard</b> not support...</p>";
-	_log(logMsg);
+	func.log(logMsg);
 }
 </script>
 
@@ -188,12 +194,12 @@ if (navigator.clipboard) {
 console.log( document.queryCommandSupported("copy") );
 if( document.queryCommandSupported("copy") ){
 		var logMsg = "<p class='alert alert-success'>execCommand COPY supported...</p>";
-		_log(logMsg);
+		func.log(logMsg);
 		
 		_test();
 } else {
 		var logMsg = "<p class='alert alert-danger'>This browser is not supported COPY action</p>";
-		_log(logMsg);
+		func.log(logMsg);
 }
 
 function _test(){
@@ -213,16 +219,16 @@ console.log(event);
 			msg = "Copy email command was " + msg;  
 			
 			var logMsg = "<p class='alert alert-success'>"+msg+"</p>";
-			_log(logMsg);
+			func.log(logMsg);
 	
 	  } catch(err) {  
 		var logMsg = "<p class='alert alert-success'>Fail, unable to copy</p>";
-		_log(logMsg);
+		func.log(logMsg);
 	  }  
     
-		// Снятие выделения - ВНИМАНИЕ: вы должны использовать
-		// removeRange(range) когда это возможно
-		window.getSelection().removeAllRanges();  
+	  // Снятие выделения - ВНИМАНИЕ: вы должны использовать
+	  // removeRange(range) когда это возможно
+	  window.getSelection().removeAllRanges();  
 	});//end event
 }//end _test
 
