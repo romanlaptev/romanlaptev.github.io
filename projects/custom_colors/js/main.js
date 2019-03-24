@@ -135,7 +135,9 @@ var _vars = {
 		{"colorName": "bg-grey3","code": "#2C3F66"},
 		{"colorName": "bg-grey5","code": "#475570"},/*css.html*/
 		{"text-color": "#ffffff","code": "rgb(77,92, 106)"},
+		{"colorName": "winxp desktop color2","text-color": "#ffffff","code": "rgb(65, 65, 65)"},
 		{"colorName": "bg-grey-c8","code": "#333340"},
+
 		{"colorName": "bg-grey1","code": "#404050"},/* comp-books.css */
 		{"colorName": "winxp desktop","text-color": "#ffffff","code": "rgb(77, 66, 90)"},
 		{"colorName": "bg-grey4", "code": "#5A5963"},/* comp-books.css */
@@ -509,39 +511,46 @@ var _vars = {
 {"text-color": "#000000", "code": "#E5F2C0"},
 {"code": "#0C9E54", "text-color": "#ffffff"},
 
-{"text-color": "#000000", "code": "#00FF00","colorName": "Зелёный, #00FF00"},
 {"text-color": "#000000", "code": "#7BA05B","colorName": "Спаржа, #7BA05B"},
-{"text-color": "#000000", "code": "#66FF00","colorName": "Ярко-зелёный, #66FF00"},
 {"text-color": "#000000", "code": "#78866B","colorName": "Защитный, #78866B"},
 {"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
-{"text-color": "#000000", "code": "#7FFF00","colorName": "Шартрёз, #7FFF00"},
+
 {"text-color": "#000000", "code": "#50C878","colorName": "Изумрудный, #50C878"},
 {"text-color": "#000000", "code": "#4F7930","colorName": "Папоротник, #4F7930"},
 {"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа, #465945"},
-{"text-color": "#000000", "code": "#ADFF2F","colorName": "Жёлто-зелёный, #ADFF2F"},
-{"text-color": "#000000", "code": "#00A86B","colorName": "Жадеитовый цвет,Желтовато-зелёный, #00A86B"},
-{"text-color": "#000000", "code": "#40826D","colorName": "Виридиан, #40826D"},
-{"text-color": "#000000", "code": "#BFFF00","colorName": "Лайм, #BFFF00"},
 {"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
 {"text-color": "#000000", "code": "#21421E","colorName": "Мирт, #21421E"},
 {"text-color": "#000000", "code": "#808000","colorName": "Оливковый, #808000"},
 {"text-color": "#000000", "code": "#6B8E23","colorName": "Оливково-серый, #6B8E23"},
 {"text-color": "#000000", "code": "#D1E231","colorName": "Груша, #D1E231"},
-{"text-color": "#000000", "code": "#01796F","colorName": "Сосна,#01796F"},
-{"text-color": "#000000", "code": "#2E8B57","colorName": "Морская зелень, #2E8B57"},
+
 {"text-color": "#000000", "code": "#00FF7F","colorName": "Весенняя зелень, #00FF7F"},
 {"text-color": "#000000", "code": "#ACB78E","colorName": "Болотная зелень, #ACB78E"},
+
 {"text-color": "#000000", "code": "#D0F0C0","colorName": "Зелёный чай,#D0F0C0"},
-{"text-color": "#000000", "code": "#228B22","colorName": "Лесная зелень, #228B22"},
-{"text-color": "#000000", "code": "#DFFF00","colorName": "Жёлтый шартрез, #DFFF00"},
-{"text-color": "#000000", "code": "#3FFF00","colorName": "Harlequin, #3FFF00"},
-{"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
 {"text-color": "#000000", "code": "#D1E189","colorName": "Lime pulp,#D1E189"},
-{"text-color": "#000000", "code": "#355E3B","colorName": "Охотничий,Hunter_green, #355E3B"},
-{"text-color": "#000000", "code": "#00A500","colorName": "Ярко-зелёный с желтоватым отливом, #00A500"},
-{"text-color": "#000000", "code": "#009E60","colorName": "Трилистник, #009E60"},
-{"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
+
+{"text-color": "#000000", "code": "#DFFF00","colorName": "Жёлтый шартрез, #DFFF00"},
+{"text-color": "#000000", "code": "#ADFF2F","colorName": "Жёлто-зелёный, #ADFF2F"},
+{"text-color": "#000000", "code": "#BFFF00","colorName": "Лайм, #BFFF00"},
+{"text-color": "#000000", "code": "#00FF00","colorName": "Зелёный, #00FF00"},
+{"text-color": "#000000", "code": "#66FF00","colorName": "Ярко-зелёный, #66FF00"},
+{"text-color": "#000000", "code": "#7FFF00","colorName": "Шартрёз, #7FFF00"},
+
+{"text-color": "#000000", "code": "#3FFF00","colorName": "Harlequin, #3FFF00"},
 {"text-color": "#000000", "code": "#32CD32","colorName": "Лаймовый, Lime_Green, #32CD32"},
+{"text-color": "#000000", "code": "#00A500","colorName": "Ярко-зелёный с желтоватым отливом, #00A500"},
+{"text-color": "#000000", "code": "#228B22","colorName": "Лесная зелень, #228B22"},
+{"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
+{"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
+
+{"text-color": "#000000", "code": "#355E3B","colorName": "Охотничий,Hunter_green, #355E3B"},
+{"text-color": "#000000", "code": "#2E8B57","colorName": "Морская зелень, #2E8B57"},
+{"text-color": "#000000", "code": "#009E60","colorName": "Трилистник, #009E60"},
+{"text-color": "#000000", "code": "#00A86B","colorName": "Жадеитовый цвет,Желтовато-зелёный, #00A86B"},
+{"text-color": "#000000", "code": "#01796F","colorName": "Сосна,#01796F"},
+{"text-color": "#000000", "code": "#40826D","colorName": "Виридиан, #40826D"},
+
 {"text-color": "#000000", "code": "#00A693","colorName": "Персидский зелёный, #00A693"},
 {"text-color": "#000000", "code": "#4D5D53","colorName": "Фельдграу, #4D5D53"},
 {"code": "#cccc99", "text-color": "#ffffff"},
