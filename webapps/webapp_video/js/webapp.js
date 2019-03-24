@@ -159,6 +159,48 @@ console.log("click...", e);
 		}
 	});//end event
 	
+	$("#list-video").on("click", function(event){
+//console.log("click...", e);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		
+		if( target.tagName === "A"){
+			//if ( target.href.indexOf("#?q=") !== -1){
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+			//}
+			
+			if( $(target).hasClass("toggle-btn") ){
+				//var collapseBoxId = $(target).attr("href");
+//console.log("-- collapseBoxId:", collapseBoxId );
+//console.log("-- test:", $(collapseBoxId).hasClass("in"), $(collapseBoxId).attr("aria-expanded") );
+//console.log("-- test:", target.classList );
+
+				//$("#list-video").find(".toggle-btn").each( function(index, value){
+//console.log(index, value);
+				//});
+				
+				$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
+				$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
+				
+
+				$(target).removeClass("toggle-btn-hide");
+				$(target).addClass("toggle-btn-show");
+				
+//console.log("-- test:", $(target).hasClass("collapsed") );
+				//if( $(target).hasClass("collapsed") ){
+					//$(target).removeClass("toggle-btn-show");
+					//$(target).addClass("toggle-btn-hide");
+				//}
+				
+			}
+			
+		}
+	});//end event
+	
 }//end defineEvents()
 
 
@@ -683,7 +725,7 @@ data[1] =  webApp.vars["DB"]["nodes"][num];
 				data[n]["template"] = "tpl-videolist-item--videoclip";
 			}
 			
-			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist"];
+			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
 			data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
 			
 			if( data[n]["ul"] ){
@@ -732,7 +774,6 @@ console.log( webApp.vars["logMsg"] );
 			});
 		}
 
-
 /*		
 
 		//draw sidebar blocks
@@ -750,6 +791,23 @@ console.log( webApp.vars["logMsg"] );
 			////webApp.vars["wait"].className="";
 			//webApp.vars["wait"].style.display="none";
 		//}
+
+//--------------------- add event on collapse block
+/*
+		$("#video-list-collapsible .collapse").on('shown.bs.collapse', function(e){
+func.log('<p>The collapsible content is now fully shown.</p>');
+//console.log( e.target.find(".toggle-btn") );
+		});
+		
+		$("#video-list-collapsible .collapse").on('hidden.bs.collapse', function(e){
+func.log('<p>The collapsible content is now hidden.</p>');
+//console.log( e.target.find(".toggle-btn") );
+			//$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
+			//$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
+		});
+*/
+//----------------------
+
 
 //---------------------------- return from _buildPage()
 		if( typeof p["callback"] === "function"){

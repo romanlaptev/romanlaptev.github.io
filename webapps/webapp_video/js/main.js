@@ -12,6 +12,38 @@ func.log(msg);
 		//Detect top position for scroll block
 		start_scroll_pos = $("#App").offset().top + 100;
 		end_scroll_pos = start_scroll_pos - 20;
+		
+//---------------------
+/*
+		//$(".btn-primary").click(function(){
+			//$(".collapse").collapse('toggle');
+		//});
+		
+		//$(".btn-success").click(function(){
+			//$(".collapse").collapse('show');
+		//});
+		
+		//$(".btn-warning").click(function(){
+			//$(".collapse").collapse('hide');
+		//});
+		
+		$(".collapse").on('show.bs.collapse', function(){
+func.log('<p>The collapsible content is about to be shown.</p>');
+		});
+		
+		$(".collapse").on('shown.bs.collapse', function(){
+func.log('<p>The collapsible content is now fully shown.</p>');
+		});
+		
+		$(".collapse").on('hide.bs.collapse', function(){
+func.log('<p>The collapsible content is about to be hidden.</p>');
+		});
+		
+		$(".collapse").on('hidden.bs.collapse', function(){
+func.log('<p>The collapsible content is now hidden.</p>');
+		});
+*/		
+//---------------------		
 	});//end ready	
 
 	$(window).scroll(function() {

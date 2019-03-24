@@ -14,9 +14,9 @@
 <![CDATA[
 <div class="panel panel-primary video-list-item type-{{type}}">
 
-	<div class="panel-heading">
+	<div class="panel-heading bg-blue2">
 		<div class="pull-right">
-<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn"> > </a>
+<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
 		</div>
 		
 		{{title}}
@@ -66,7 +66,7 @@
 
 	<div class="panel-heading bg-sky-blue2">
 		<div class="pull-right">
-<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn"> > </a>
+<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
 		</div>
 		
 		{{title}}
@@ -108,6 +108,14 @@
 		</html_code>
 	</tpl>
 
+
+
+	<tpl name="tpl-videolist-list-title">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
 	<tpl name="tpl-videolist-item--title">
 		<html_code>
 <![CDATA[
@@ -115,6 +123,8 @@
 ]]>
 		</html_code>
 	</tpl>
+
+
 
 
 
