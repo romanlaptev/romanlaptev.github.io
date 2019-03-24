@@ -88,13 +88,28 @@
 </header>
 
 <div class="container">
-	
+
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
 <span id="block-1"></span>
 		</div><!-- end sidebar left -->
 		
 		<div class="col-xs-10 col-sm-10 col-md-9 col-lg-8" id="main">
+			
+			<div class="panel">
+				<div class="panel-body">
+					<form>
+						<div class="pull-right">
+							<b>Page number:</b>
+<input id="page-number" type="text" value="" disabled maxlength="3" autocomplete="off">
+						</div>
+						<input id="page-range" type="range" min="1" max="60" step="1" value="1">
+<!--
+					<input type="submit">
+-->
+					</form>
+				</div>
+			</div>
 			
 <span id="list-video"></span>				
 

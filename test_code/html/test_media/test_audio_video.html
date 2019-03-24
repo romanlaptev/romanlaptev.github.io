@@ -142,9 +142,7 @@ Opera 47 (Debian) not play
 -->
 					<source src="video/video.mp4" />
 					Tag <b>video</b> not supported by this browser.... 
-				</video>
-			</div>
-			<div>
+				</video><br>
 				<button onclick="document.getElementById('player3').play()">Play</button>
 				<button onclick="document.getElementById('player3').pause()">Pause</button>
 				<pre>
@@ -166,7 +164,22 @@ Chromium 25 (ubuntu 10.04) not play
 Chrome 8 (ubuntu 10.04) ok
 
 				</pre>
+				
 			</div>
+			
+			<div>
+				<p>video, type="video/x-msvideo", small.avi</p>
+				<video width="560" height="315" controls="controls" name="media">
+					<source src="video/small.avi" type="video/x-msvideo">
+				</video>			
+				<pre>
+Epiphany/3.14.1, ok
+FF66 not play
+Chrome 65 not play
+				</pre>
+				
+			</div>
+
 
 			<div class="pull-right">2018-05-05-064753.webm
 				<video id="player4" width="560" height="315" controls="controls" poster="">

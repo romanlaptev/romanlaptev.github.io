@@ -280,3 +280,9 @@ width:100%;
 .video-list-item .links .list-inline > li {
 	margin-bottom: 5px;
 }
+
+#page-number {
+width: 40px;
+margin-left:10px;
+margin-bottom: 5px;
+}

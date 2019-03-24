@@ -201,6 +201,13 @@ console.log("click...", e);
 		}
 	});//end event
 	
+	$("#page-range").on("input", function(event){
+console.log("change range...", event.target.value);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		$("#page-number").val( target.value );
+	});//end event
+	
 }//end defineEvents()
 
 

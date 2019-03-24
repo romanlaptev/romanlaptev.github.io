@@ -272,7 +272,9 @@ Cубтитры: русские (внешние); шведские, фински
 Эско Никкари, 
 Веса Виерикко, 
 Силу Сеппала	</roles>
-	<description>Это новое воплощение андерсеновской &amp;quot;маленькой спичечной девочки&amp;quot; - воплощение, полное тихого ужаса перед жизнью и вместе с тем дарящее катарсис, от которого, как утверждают знатоки, сладко затрещали бы кости Аристотеля. Классическая трагедия маленького человека. Современный финский вариант одной из вечных русских тем, так любимой нашими классиками. Каждый из героев живет в своем особом мире, не впуская в него даже самых близких людей, боясь порвать толстую оболочку, помочь другому и самому найти опору в ближнем. Минимум диалогов и кадры работы станков на спичечной фабрике усиливают унылое настроение всей картины.
+	<description>Классическая трагедия маленького человека. Современный финский вариант одной из вечных русских тем, так любимой нашими классиками.
+ Каждый из героев живет в своем особом мире, не впуская в него даже самых близких людей, боясь порвать толстую оболочку, 
+помочь другому и самому найти опору в ближнем. Минимум диалогов и кадры работы станков на спичечной фабрике усиливают унылое настроение всей картины.
 
 http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	<pictures>
@@ -297,7 +299,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	</tags>
 
 	<published>01-Oct-2012 23:50:52</published>
-	<updated>23-Mar-2019 21:32:56</updated>
+	<updated>24-Mar-2019 16:14:16</updated>
 </video>
 
 <video type="video">
@@ -416,8 +418,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 Эми Смарт (Amy Smart)
 Бреккин Мэйер (Breckin Meyer)
 Кати Бейтс (Kathy Bates)	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/rat_race.jpg&amp;quot;&amp;gt;
-Студия: Fireworks Entertainment
+	<description>Студия: Fireworks Entertainment
 Сыграв в автоматах в казино и выиграв вместо денег загадочный жетон, 
 группа ничего не подозревающих людей оказывается втянутой 
 в придуманное эксцентричным миллионером развлечение. 
@@ -426,9 +427,14 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 раньше других. И конечно же, на пути к несметному богатству 
 с каждым героем произойдет куча невероятных и забавных приключений. 
 --------------</description>
-	
+	<pictures>
+		<img src="/video/0_covers/rat_race.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/R/rat_race.avi">rat_race.avi</a></li>
+		<li><a data-type="embed-video" href="https://youtube.ru/embed/yHWCoAkXMLs">embed video, www.youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -440,7 +446,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</tags>
 
 	<published>06-Oct-2012 12:08:23</published>
-	<updated>22-Nov-2014 23:51:22</updated>
+	<updated>24-Mar-2019 17:40:31</updated>
 </video>
 
 <video type="video">
@@ -472,7 +478,7 @@ https://www.youtube.com/watch?v=shElHjRso58
 3 серия
 https://www.youtube.com/watch?v=zejl12VpOqE
 
-&amp;lt;pre&amp;gt;
+
  Действие фильма по мотивам одноименной повести Н. Смирнова 
 развертывается в 1928 году. Сидя в американской тюрьме, Джек (Яков) 
 Восьмеркин узнает от сокамерника, что в России дают землю всем желающим - 
@@ -481,15 +487,23 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 он обучился за океаном. В Америку он попал четырнадцатилетним мальчишкой - 
 его спасли от голода - но все местные его вскоре узнали.
 Фильм во многом выигрывает, благодаря участию замечательных актеров. 
-Много музыки и песен на слова Вячеслава Вербина.
-&amp;lt;/pre&amp;gt;</description>
-	
+Много музыки и песен на слова Вячеслава Вербина.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/9hlB9vDETG4/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9hlB9vDETG4">Youtube embed video in new tab, 1</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/shElHjRso58">embed video, 2</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/zejl12VpOqE">embed video, 3</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="117">сериал</item>
+		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="233">Д</item>
 		<item tid="272">youtube</item>
@@ -497,7 +511,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</tags>
 
 	<published>07-Oct-2012 22:35:46</published>
-	<updated>14-Feb-2019 21:33:28</updated>
+	<updated>24-Mar-2019 17:30:58</updated>
 </video>
 
 <video type="video">
