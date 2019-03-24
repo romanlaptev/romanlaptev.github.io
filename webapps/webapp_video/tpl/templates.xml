@@ -25,7 +25,7 @@
 	</div>
 	
 	<div id="video-{{number}}" class="panel-collapse collapse">
-		<div class="panel-body">
+		<div class="">
 		
 			<div class="">
 				<div class="thumbnail text-center pictures">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		
-			<div class="">
+			<div class="panel-body">
 				<div class="producer">{{producer}}</div>
 				<div class="roles">{{roles}}</div>
 				<div class="mark description">{{description}}</div>
@@ -75,7 +75,7 @@
 	</div>
 	
 	<div id="video-{{number}}" class="panel-collapse collapse">
-		<div class="panel-body">
+		<div class="">
 		
 			<div class="">
 				<div class="thumbnail text-center pictures">
@@ -85,7 +85,7 @@
 				</div>
 			</div>
 		
-			<div class="">
+			<div class="panel-body">
 				<div class="">{{creators}}</div>
 				<div class="mark description">{{description}}</div>
 			</div>
