@@ -251,6 +251,7 @@ padding: 6px 12px 10px 14px;
   height: 200px;
 */
 box-shadow: 5px 5px 8px #000;
+margin-bottom: 7px !important;
 }
 
 /*
@@ -286,4 +287,8 @@ width:100%;
 width: 40px;
 margin-left:10px;
 margin-bottom: 5px;
+}
+
+.block{
+box-shadow: 5px 5px 15px #002000;
 }
