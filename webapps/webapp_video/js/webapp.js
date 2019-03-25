@@ -538,8 +538,14 @@ console.log( webApp.vars["logMsg"] );
 				
 			}//next
 		}
-		
+
+//------------------
 func.log(nodes.length, "total-records");
+var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+var numPages = nodes.length / numRecordsPerPage;
+console.log( "numPages:", numPages );
+//------------------
+
 		return nodes;
 		
 		function __convertMultipleField( xfields){
