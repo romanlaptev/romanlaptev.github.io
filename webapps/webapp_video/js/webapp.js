@@ -25,7 +25,7 @@ var webApp = {
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
-		"init_url" : "#?q=list_nodes&start_num=633",
+		"init_url" : "#?q=list_nodes&start_num=624",
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -419,7 +419,7 @@ console.log( webApp.vars["logMsg"] );
 						}
 
 						_parseAjax( data );
-						
+
 						if( typeof postFunc === "function"){
 							postFunc();
 						}
@@ -534,6 +534,7 @@ console.log( webApp.vars["logMsg"] );
 			}//next
 		}
 		
+func.log(nodes.length, "total-records");
 		return nodes;
 		
 		function __convertMultipleField( xfields){
@@ -835,11 +836,23 @@ function _data_getNodes(opt){
 		return false;
 	}
 	var startNum = p["start_num"] - 1;
-	var numRepeat = startNum + numRecordsPerPage;
+	if( startNum > webApp.vars["DB"]["nodes"].length ){
+webApp["logMsg"] = "-- warning, startNum > nodes.length "+ startNum;
+console.log(webApp["logMsg"]);
+
+		if( typeof p["callback"] === "function"){
+			p["callback"](data);
+		}
+		return false;
+	}
+
+	var numRepeat = p["start_num"] + numRecordsPerPage;
 	if( numRepeat > webApp.vars["DB"]["nodes"].length ){
 		var n = numRepeat - webApp.vars["DB"]["nodes"].length;
 		numRepeat = numRepeat - n;
+console.log("TEST...", n);
 	}
+console.log( startNum, numRecordsPerPage, numRepeat, webApp.vars["DB"]["nodes"].length);
 
 	for(var n = startNum; n < numRepeat; n++){
 		data.push( webApp.vars["DB"]["nodes"][n]);
