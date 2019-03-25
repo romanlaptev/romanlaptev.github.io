@@ -25,7 +25,7 @@ var webApp = {
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
-		"init_url" : "#?q=list_nodes&start_num=624",
+		"init_url" : "#?q=list_nodes&start_num=1",
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -203,15 +203,20 @@ console.log("click...", e);
 		}
 	});//end event
 	
-	$("#page-range").on("input", function(event){
-console.log("input range...", event.target.value);
-	});//end event
+	//$("#page-range").on("input", function(event){
+//console.log("input range...", event.target.value);
+	//});//end event
 	
 	$("#page-range").change(function(e){
 console.log("change range...", event.target.value);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		$("#page-number").val( target.value );
+		
+		var url = "?q=list_nodes&start_num="+target.value;
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+		_urlManager();
+		
 	});//end event
 	
 }//end defineEvents()
@@ -824,7 +829,7 @@ function _data_getNodes(opt){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-//console.log(opt);
+console.log(p);
 
 	var data = [];
 	var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
@@ -846,11 +851,11 @@ console.log(webApp["logMsg"]);
 		return false;
 	}
 
-	var numRepeat = p["start_num"] + numRecordsPerPage;
+	var numRepeat = parseInt( p["start_num"] ) + numRecordsPerPage;
 	if( numRepeat > webApp.vars["DB"]["nodes"].length ){
 		var n = numRepeat - webApp.vars["DB"]["nodes"].length;
 		numRepeat = numRepeat - n;
-console.log("TEST...", n);
+//console.log("TEST...", n);
 	}
 console.log( startNum, numRecordsPerPage, numRepeat, webApp.vars["DB"]["nodes"].length);
 
