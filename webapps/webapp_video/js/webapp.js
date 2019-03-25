@@ -819,11 +819,25 @@ func.log('<p>The collapsible content is now hidden.</p>');
 			//$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
 		});
 */
-//----------------------
 
+//---------------------- load images handlers
+/*
+		$("img").on("load", function( e ){
+console.log("-- image load event....", e.target.src);
+		});
+		
+		$("img").on("error", function( e ){
+console.log("-- image load error", e.target.src);
+			//var src = $(this).attr("src");
+			//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+			//$(this).attr("src", new_src);
+			//$("body").attr("data-image-load-error","1");
+			//load_img_error( $(this)[0] );
+		});
+*/
 
-//---------------------------- return from _buildPage()
-		if( typeof p["callback"] === "function"){
+		if( typeof p["callback"] === "function"){//return from _buildPage()
 			p["callback"]();
 		}
 			
