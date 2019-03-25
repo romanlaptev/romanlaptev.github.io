@@ -19,12 +19,13 @@ var webApp = {
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
-			"tagNameFilms": "video"
+			"tagNameFilms": "video",
+			"numRecordsPerPage":10
 		},
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
-		"init_url" : "#?q=node&nid=6",
+		"init_url" : "#?q=list_nodes&start_num=633",
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -203,6 +204,10 @@ console.log("click...", e);
 	});//end event
 	
 	$("#page-range").on("input", function(event){
+console.log("input range...", event.target.value);
+	});//end event
+	
+	$("#page-range").change(function(e){
 console.log("change range...", event.target.value);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
@@ -246,27 +251,35 @@ console.log("change range...", event.target.value);
 			break;
 */
 
-			case "node":
+			case "list_nodes":
 console.log("-- start build page --");
 				//var timeStart = new Date();
-				_buildPage({
-					//"nid" : webApp.vars["GET"]["nid"],
-					"callback" : function(){
 
-					//var timeEnd = new Date();
-					//var ms = timeEnd.getTime() - timeStart.getTime();
-					//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+_data_getNodes({
+	"start_num":webApp.vars["GET"]["start_num"],
+	"callback": function(data){
+//console.log(data);
+		if( !data || data.length ===0){
+			return false;
+		};
+		
+		_buildPage({
+			"pageType" : webApp.vars["GET"]["q"],//"list_nodes",
+			"pageData" : data,
+			"callback" : function(){
+
+//var timeEnd = new Date();
+//var ms = timeEnd.getTime() - timeStart.getTime();
+//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
 //_log("<p>"+msg+"</p>");			
 //console.log(msg);
 console.log("-- end build page --");
-					//webApp.app.vars["runtime"].push({
-						//"source" : msg,
-						//"ms" : ms,
-						//"sec" : ms / 1000
-					//});
-					
-					}//end callback
-				});
+			}//end callback
+		});
+		
+	}//end callback
+});
+
 			break;
 /*			
 
@@ -698,7 +711,8 @@ console.log("_buildPage()", arguments);
 			"nid": null,
 			//"templateID" : "tpl-page"
 			"title" : "",
-			//content : ""
+			"pageData" : [],
+			"pageType" : "node",
 			"callback": null
 		};
 		//extend options object
@@ -720,53 +734,8 @@ console.log("_buildPage()", arguments);
 		});
 
 
-		//Get data first 10 nodes for main page feed
-		var data = [];
-		for(var n=0; n < 10; n++){
-			data.push( webApp.vars["DB"]["nodes"][n]);
-		}//next
-//console.log(data);
-var num = webApp.vars["DB"]["nodes"].length-1;
-data[1] =  webApp.vars["DB"]["nodes"][num];
-
-		//define unique template for item
-		for(var n=0; n < data.length; n++){
-			
-			data[n]["number"] = n;
-			
-			if(data[n]["type"] === "videoclip"){
-				data[n]["template"] = "tpl-videolist-item--videoclip";
-			}
-			
-			data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
-			data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
-			
-			if( data[n]["ul"] ){
-				data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
-				data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
-			} else {
-				data[n]["ul"] = "";
-			}
-			
-			if( data[n]["tags"] ){
-				data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
-				data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
-			} else {
-				data[n]["tags"] = "";
-			}
-				
-			if( data[n]["pictures"] ){
-				data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
-				data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
-			} else {
-				data[n]["pictures"] = "";
-			}
-			
-		}//next
-
-
 		var _html = _draw_wrapData({
-			"data": data,
+			"data": p["pageData"],
 			"templateID": "tpl-videolist",
 			"templateListItemID": "tpl-videolist-item--video"
 		});
@@ -842,6 +811,82 @@ console.log("-- image load error", e.target.src);
 		}
 			
 	};//end _buildPage()
+
+
+//============================================== DATA
+function _data_getNodes(opt){
+	var p = {
+		"start_num": null,
+		"callback": null
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(opt);
+
+	var data = [];
+	var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+
+	if( !p["start_num"] || p["start_num"] === 0){
+		if( typeof p["callback"] === "function"){
+			p["callback"](data);
+		}
+		return false;
+	}
+	var startNum = p["start_num"] - 1;
+	var numRepeat = startNum + numRecordsPerPage;
+	if( numRepeat > webApp.vars["DB"]["nodes"].length ){
+		var n = numRepeat - webApp.vars["DB"]["nodes"].length;
+		numRepeat = numRepeat - n;
+	}
+
+	for(var n = startNum; n < numRepeat; n++){
+		data.push( webApp.vars["DB"]["nodes"][n]);
+	}//next
+console.log(data);
+//var num = webApp.vars["DB"]["nodes"].length-1;
+//data[1] =  webApp.vars["DB"]["nodes"][num];
+
+	//define unique template for item
+	for(var n = 0; n < data.length; n++){
+		
+		data[n]["number"] = n;
+		
+		if(data[n]["type"] === "videoclip"){
+			data[n]["template"] = "tpl-videolist-item--videoclip";
+		}
+		
+		data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
+		data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
+		
+		if( data[n]["ul"] ){
+			data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
+			data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
+		} else {
+			data[n]["ul"] = "";
+		}
+		
+		if( data[n]["tags"] ){
+			data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
+			data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
+		} else {
+			data[n]["tags"] = "";
+		}
+			
+		if( data[n]["pictures"] ){
+			data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
+			data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
+		} else {
+			data[n]["pictures"] = "";
+		}
+		
+	}//next
+
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+}//end _data_getNodes()
 
 
 
