@@ -219,6 +219,30 @@ console.log("change range...", event.target.value);
 		
 	});//end event
 	
+	
+	$("#page-number").keyup(function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		
+		if(event.keyCode == 13){
+//console.log(target.value);
+//console.log( parseInt(target.value) );
+//console.log( isNaN(target.value) );
+			if( !isNaN(target.value) ){
+//console.log("-0000000000");
+				var url = "?q=list_nodes&num_page="+target.value;
+				webApp.vars["GET"] = func.parseGetParams( url ); 
+				_urlManager();
+			} else {
+webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+			}
+			
+		}
+		event.preventDefault();
+	})
+	
 }//end defineEvents()
 
 
@@ -544,7 +568,10 @@ func.log(nodes.length, "total-records");
 
 var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
 var numPages = Math.ceil(nodes.length / numRecordsPerPage);
-$("#page-number").val(numPages);
+
+//$("#page-number").val(numPages);
+func.log(numPages, "total-pages");
+
 $("#page-range").attr("max", numPages);
 //------------------
 
