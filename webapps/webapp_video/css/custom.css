@@ -284,9 +284,11 @@ width:100%;
 }
 
 #page-number {
-width: 40px;
+display:inline;
+width: 50px;
 margin-left:10px;
 margin-bottom: 5px;
+text-align: center;
 }
 
 .block{

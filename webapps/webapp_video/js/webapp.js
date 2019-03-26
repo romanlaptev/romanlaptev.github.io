@@ -25,7 +25,7 @@ var webApp = {
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
-		"init_url" : "#?q=list_nodes&start_num=1",
+		"init_url" : "#?q=list_nodes&num_page=1",
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -213,7 +213,7 @@ console.log("change range...", event.target.value);
 		var target = event.target || event.srcElement;
 		$("#page-number").val( target.value );
 		
-		var url = "?q=list_nodes&start_num="+target.value;
+		var url = "?q=list_nodes&num_page="+target.value;
 		webApp.vars["GET"] = func.parseGetParams( url ); 
 		_urlManager();
 		
@@ -261,7 +261,7 @@ console.log("-- start build page --");
 				//var timeStart = new Date();
 
 _data_getNodes({
-	"start_num":webApp.vars["GET"]["start_num"],
+	"num_page":webApp.vars["GET"]["num_page"],
 	"callback": function(data){
 //console.log(data);
 		if( !data || data.length ===0){
@@ -541,9 +541,11 @@ console.log( webApp.vars["logMsg"] );
 
 //------------------
 func.log(nodes.length, "total-records");
+
 var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
-var numPages = nodes.length / numRecordsPerPage;
-console.log( "numPages:", numPages );
+var numPages = Math.ceil(nodes.length / numRecordsPerPage);
+$("#page-number").val(numPages);
+$("#page-range").attr("max", numPages);
 //------------------
 
 		return nodes;
@@ -828,7 +830,7 @@ console.log("-- image load error", e.target.src);
 //============================================== DATA
 function _data_getNodes(opt){
 	var p = {
-		"start_num": null,
+		"num_page": null,
 		"callback": null
 	};
 	//extend options object
@@ -838,17 +840,17 @@ function _data_getNodes(opt){
 console.log(p);
 
 	var data = [];
+	
+	var numPage = parseInt( p["num_page"] )-1;
+	//var _numPage = numPage - 1;
+	
 	var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+	
+	var startPos = numPage * numRecordsPerPage;
+	var endPos = startPos + numRecordsPerPage;
 
-	if( !p["start_num"] || p["start_num"] === 0){
-		if( typeof p["callback"] === "function"){
-			p["callback"](data);
-		}
-		return false;
-	}
-	var startNum = p["start_num"] - 1;
-	if( startNum > webApp.vars["DB"]["nodes"].length ){
-webApp["logMsg"] = "-- warning, startNum > nodes.length "+ startNum;
+	if( startPos > webApp.vars["DB"]["nodes"].length ){
+webApp["logMsg"] = "-- warning, startPos > nodes.length "+ startPos;
 console.log(webApp["logMsg"]);
 
 		if( typeof p["callback"] === "function"){
@@ -857,15 +859,14 @@ console.log(webApp["logMsg"]);
 		return false;
 	}
 
-	var numRepeat = parseInt( p["start_num"] ) + numRecordsPerPage;
-	if( numRepeat > webApp.vars["DB"]["nodes"].length ){
-		var n = numRepeat - webApp.vars["DB"]["nodes"].length;
-		numRepeat = numRepeat - n;
-//console.log("TEST...", n);
+	if( endPos > webApp.vars["DB"]["nodes"].length ){
+		var n = endPos - webApp.vars["DB"]["nodes"].length;
+		endPos = endPos - n;
+console.log("TEST...", n);
 	}
-console.log( startNum, numRecordsPerPage, numRepeat, webApp.vars["DB"]["nodes"].length);
+console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
 
-	for(var n = startNum; n < numRepeat; n++){
+	for(var n = startPos; n < endPos; n++){
 		data.push( webApp.vars["DB"]["nodes"][n]);
 	}//next
 console.log(data);

@@ -19,7 +19,7 @@
 <a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
 		</div>
 		
-		{{title}}
+		{{number}}{{title}}
 		<p class="producer">{{producer}}</p>
 	
 	</div>
@@ -69,7 +69,7 @@
 <a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
 		</div>
 		
-		{{title}}
+		{{number}}{{title}}
 		<p class="creators">{{creators}}</p>
 	
 	</div>
