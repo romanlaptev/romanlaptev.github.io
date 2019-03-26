@@ -228,8 +228,9 @@ console.log("change range...", event.target.value);
 //console.log(target.value);
 //console.log( parseInt(target.value) );
 //console.log( isNaN(target.value) );
-			if( !isNaN(target.value) ){
+			if( !isNaN(target.value) && parseInt(target.value) > 0){
 //console.log("-0000000000");
+				$("#page-range").val(target.value);
 				var url = "?q=list_nodes&num_page="+target.value;
 				webApp.vars["GET"] = func.parseGetParams( url ); 
 				_urlManager();
@@ -568,6 +569,7 @@ func.log(nodes.length, "total-records");
 
 var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
 var numPages = Math.ceil(nodes.length / numRecordsPerPage);
+webApp.vars["DB"]["numPages"] = numPages;
 
 //$("#page-number").val(numPages);
 func.log(numPages, "total-pages");
@@ -741,7 +743,7 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 
 //===============================================
 	var _buildPage = function( opt ){
-console.log("_buildPage()", arguments);
+//console.log("_buildPage()", arguments);
 
 		//if( webApp.vars["wait"] ){
 			//webApp.vars["wait"].className="modal-backdrop in";
@@ -864,7 +866,7 @@ function _data_getNodes(opt){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 	var data = [];
 	
@@ -877,8 +879,9 @@ console.log(p);
 	var endPos = startPos + numRecordsPerPage;
 
 	if( startPos > webApp.vars["DB"]["nodes"].length ){
-webApp["logMsg"] = "-- warning, startPos > nodes.length "+ startPos;
-console.log(webApp["logMsg"]);
+webApp.vars["logMsg"] = "warning, incorrect page number, not more than "+webApp.vars["DB"]["numPages"];
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
 
 		if( typeof p["callback"] === "function"){
 			p["callback"](data);
@@ -889,14 +892,14 @@ console.log(webApp["logMsg"]);
 	if( endPos > webApp.vars["DB"]["nodes"].length ){
 		var n = endPos - webApp.vars["DB"]["nodes"].length;
 		endPos = endPos - n;
-console.log("TEST...", n);
+//console.log("TEST...", n);
 	}
-console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
+//console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
 
 	for(var n = startPos; n < endPos; n++){
 		data.push( webApp.vars["DB"]["nodes"][n]);
 	}//next
-console.log(data);
+//console.log(data);
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];
 
@@ -955,7 +958,7 @@ console.log(data);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");
