@@ -1010,7 +1010,10 @@ console.log("-- warning, not found template, ", tplName );
 //console.log(key2, key2 === "updated");
 
 					if( item[key2] instanceof Array ){
-						
+if(item[key2].length === 0){
+console.log("-- warning, empty field....", key2, item[key2]);
+continue;	
+}						
 						var subOrdList = item[key2]["listTpl"];
 						var itemTpl = item[key2]["itemTpl"];
 /*						

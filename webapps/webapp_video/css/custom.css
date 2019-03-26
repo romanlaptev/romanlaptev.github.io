@@ -26,7 +26,7 @@ header .navbar {
 
 
 body {
-  background-color: #315570/*#2c5885*//*#6aa6c0*/;
+  background-color: #315570;  /*#2c5885*/  /*#2c5885*/  /*#6aa6c0*/
   margin: 0;
   padding: 15px;
 }
@@ -239,8 +239,8 @@ padding: 6px 12px 10px 14px;
     font-size: 60px;
     margin-top: 0;
     margin-bottom: 0;
+	text-shadow: 6px 5px 4px #bebebe;    
 }
-
 
 
 .video-list-item{
@@ -250,7 +250,11 @@ padding: 6px 12px 10px 14px;
   width: 150px;
   height: 200px;
 */
-box-shadow: 5px 5px 8px #000;
+/*box-shadow: 5px 5px 8px #000;*/
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+
 margin-bottom: 7px !important;
 }
 
@@ -281,6 +285,13 @@ width:100%;
 
 .video-list-item .links .list-inline > li {
 	margin-bottom: 5px;
+}
+
+
+#pager{
+position:fixed;
+right:0;
+top:145px;
 }
 
 #page-number {
