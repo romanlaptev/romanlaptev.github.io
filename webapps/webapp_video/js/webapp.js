@@ -218,16 +218,26 @@ console.log("change range...", event.target.value);
 		_urlManager();
 		
 	});//end event
-	
-	
-	$("#page-number").keyup(function(event){
+
+	//$("#page-number").keyup(function(event){
+	//$("#page-number").bind("keyup", function(event){
+	$("#page-number").bind("keydown", function(event){
 		event = event || window.event;
 		var target = event.target || event.srcElement;
-		
+//console.log(event);
+//console.log(event.key);
+
 		if(event.keyCode == 13){
 //console.log(target.value);
 //console.log( parseInt(target.value) );
 //console.log( isNaN(target.value) );
+
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;				
+			}
+
 			if( !isNaN(target.value) && parseInt(target.value) > 0){
 //console.log("-0000000000");
 				$("#page-range").val(target.value);
@@ -237,12 +247,12 @@ console.log("change range...", event.target.value);
 			} else {
 webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-//console.log( webApp.vars["logMsg"] );
+console.log( webApp.vars["logMsg"] );
 			}
-			
+
 		}
-		event.preventDefault();
-	})
+
+	})//end event	
 	
 }//end defineEvents()
 
