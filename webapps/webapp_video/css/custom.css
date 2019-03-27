@@ -292,6 +292,7 @@ width:100%;
 position:fixed;
 right:20px;
 top:145px;
+z-index: 9999;
 }
 
 #page-number {

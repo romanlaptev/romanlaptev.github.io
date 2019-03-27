@@ -538,6 +538,9 @@ echo "<br>";
 		$creators="";
 		if( isset($record["creators"]) ){
 			$creators = str_replace("{{text}}", $record["creators"], $_vars["tpl_creators"]);
+//------------------------ filter
+			$creators = str_replace('&', '&amp;', $creators);
+//------------------------------
 		} 
 		$video = str_replace("{{creators}}", $creators, $video);
 
