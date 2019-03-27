@@ -61,7 +61,7 @@ playlists
 - слайдер (qDecor)
 
 - стрелки на слайдере
-- если $("#page-range").attr("type"); !== "range", то выводить jquery.selectBox.min.js
+- если $("#page-range").attr("type"); !== "range", то выводить slider из jquery-ui.js
 
 - ссылки перехода в виде таблицы
 
