@@ -4582,19 +4582,19 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g
 Мила Липнер
 Юлия Паранова
 	</roles>
-	<description>Хоттабыч просидел в кувшине 3000 лет. Хакер Гена просидел за компом всю жизнь. 
+	<description>&amp;lt;pre&amp;gt;
+Хоттабыч просидел в кувшине 3000 лет. Хакер Гена просидел за компом всю жизнь. 
 Они бы никогда не встретились, но... Гене понадобился кувшин, с доставкой на дом. 
 Вообще-то ему нужен был чайник, но старый кувшин показался гораздо прикольней.
  В жизни хакера много проблем... В общем, Хоттабыч появился вовремя. 
 Но Гена еще не знает, что там, где возникает Хоттабыч, проблем становится еще больше...
-Первая интернет-комедия про хакера Гену и джинна Хоттабыча, попавшего в наше сумасшедшее время.</description>
-	<pictures>
-		<img src="https://i.ytimg.com/vi/hWLN8AATXlw/sddefault.jpg"/>
-	</pictures>
+Первая интернет-комедия про хакера Гену и джинна Хоттабыча, попавшего в наше сумасшедшее время.
+&amp;lt;/pre&amp;gt;</description>
+	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/X/xottabych.avi">xottabych.avi</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/hWLN8AATXlw">embed video on youtube.com</a></li>
+		<li>file:///mnt/terra</li>
+		<li>file://m:</li>
 	</ul>
 
 	<tags>
@@ -4603,12 +4603,10 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
 		<item tid="249">Х</item>
-		<item tid="272">youtube</item>
-		<item tid="282">2006</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:16:12</updated>
+	<updated>26-Apr-2014 15:16:19</updated>
 </video>
 
 <video type="video">
@@ -11163,7 +11161,6 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<li><a data-type="local-file" href="http://site-content/video/films/0/12_stulyev/12 stoels 2.avi">12 stoels 2.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/ZNZkUt0ePas">embed video on youtube.com, 1 серия</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/GyfgsOO20jU">embed video on youtube.com, 2 серия</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/P8t2dbJ7YXY">embed video on youtube.com, all series</a></li>
 	</ul>
 
 	<tags>
@@ -11183,7 +11180,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:10:43</updated>
+	<updated>27-Mar-2019 09:02:52</updated>
 </video>
 
 <video type="video">
@@ -12668,14 +12665,9 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 http://www.kinopoisk.ru/film/41431/
 http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC,_2002%29
 ----------------</description>
-	<pictures>
-		<img src="https://i.ytimg.com/vi/uONM3UvntY4/sddefault.jpg"/>
-	</pictures>
+	
 
-	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/V/Voina.2002.XviD.DVDRip.avi">Voina.2002.XviD.DVDRip.avi</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/uONM3UvntY4">embed video on youtube.com</a></li>
-	</ul>
+	
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -12686,7 +12678,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:13:41</updated>
+	<updated>21-Aug-2016 12:15:17</updated>
 </video>
 
 <video type="video">
