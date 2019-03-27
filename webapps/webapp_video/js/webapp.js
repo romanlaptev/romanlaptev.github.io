@@ -910,6 +910,7 @@ console.log( webApp.vars["logMsg"] );
 		data.push( webApp.vars["DB"]["nodes"][n]);
 	}//next
 //console.log(data);
+//for test
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];
 
@@ -1035,6 +1036,8 @@ console.log(webApp.vars["logMsg"]);
 				//var itemHtml = __formNodeHtml( item, itemTpl );
 				
 				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
+				
+				
 				//load unique template for item
 				if( item["template"] && item["template"].length > 0){
 					var tplName = item["template"];
@@ -1044,74 +1047,98 @@ console.log(webApp.vars["logMsg"]);
 console.log("-- warning, not found template, ", tplName );
 					}
 				}
+
+//--------------- get keys from template (text between {{...}} )
+				//if(n === 1){
+					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
+					for(var n1 = 0; n1 < tplKeys.length; n1++){
+						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
+					}//next
+				//console.log( tplKeys, p.templateListItemID, item );
+				//}
+//---------------
 				
-				for( var key2 in item){
+				//for( var key2 in item){
+				for( var n1 = 0; n1 < tplKeys.length; n1++){
+					var key2 = tplKeys[n1];
 //console.log(item[key2] instanceof Array, key2, item[key2]);
-//console.log(key2, key2 === "updated");
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}
 
 					if( item[key2] instanceof Array ){
-if(item[key2].length === 0){
+						if(item[key2].length === 0){
 console.log("-- warning, empty field....", key2, item[key2]);
-continue;	
-}						
-						var subOrdList = item[key2]["listTpl"];
-						var itemTpl = item[key2]["itemTpl"];
-/*						
-						if( key2 === "title" ){
-							var subOrdList = webApp.vars["templates"]["tpl-videolist"];
-							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
-						}
+//continue;	
+							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+						} else {
+							var subOrdList = item[key2]["listTpl"];
+							var itemTpl = item[key2]["itemTpl"];
+	/*						
+							if( key2 === "title" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
+							}
 
-						if( key2 === "ul" ){
-							var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
-							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
-							//var subOrdListHtml = "";
-							//for( var n2 = 0; n2 < item[key2].length; n2++){
-								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							//}//next
-							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-							//item[key2] = subOrdList;
-						}
+							if( key2 === "ul" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
 
-						if( key2 === "tags" ){
-							var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
-							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
-							//var subOrdListHtml = "";
-							//for( var n2 = 0; n2 < item[key2].length; n2++){
-								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							//}//next
-							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-							//item[key2] = subOrdList;
-						}
-						
-						if( key2 === "pictures" ){
-							var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
-							var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
-							//var subOrdListHtml = "";
-							//for( var n2 = 0; n2 < item[key2].length; n2++){
-								//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							//}//next
-////console.log( "subOrdListHtml: ", subOrdListHtml );
-							//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-////console.log( subOrdList );
-							//item[key2] = subOrdList;
-						}
-*/						
-						var subOrdListHtml = "";
-						for( var n2 = 0; n2 < item[key2].length; n2++){
-//console.log( item[key2][n2]["text"] );
-							subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-						}//next
-//console.log( subOrdListHtml );
-						subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-						item[key2] = subOrdList;
+							if( key2 === "tags" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
+							
+							if( key2 === "pictures" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+	////console.log( "subOrdListHtml: ", subOrdListHtml );
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+	////console.log( subOrdList );
+								//item[key2] = subOrdList;
+							}
+	*/						
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+	//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+	//console.log( subOrdListHtml );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+	//console.log( subOrdList );
+							item[key2] = subOrdList;
+						}							
 					}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//if(n === 1){
 //console.log(key2, item[key2]);
-						//itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
-						itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+//}						
+						if( typeof item[key2] === "undefined"){
+//if(n === 1){
+//console.log(key2, item[key2], typeof item[key2]);
+//}						
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+						} else {
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+						}
 					}
 					
 				}//next
