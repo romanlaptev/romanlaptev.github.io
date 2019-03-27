@@ -139,10 +139,18 @@ Opera 47 (Debian) not play
 <!--
 					<source src="video/norwegian-army-harlem-shake.ogv" />
 					<source src="video/norwegian-army-harlem-shake.mp4" />
+<source src="http://localhost/video/videoclips/" type='video/mpeg; codecs=""'/>
+					
 -->
-					<source src="video/video.mp4" />
-					Tag <b>video</b> not supported by this browser.... 
-				</video><br>
+					<source src="video/video.mp4" /><!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
+					<source src="video/video.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+					<source src="video/video.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+Tag <b>video</b> not supported by this browser.... 
+<object data="video/video.swf" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+	<param name="movie" value="video/video.swf">
+</object>
+				</video>
+				<br>
 				<button onclick="document.getElementById('player3').play()">Play</button>
 				<button onclick="document.getElementById('player3').pause()">Pause</button>
 				<pre>
@@ -302,6 +310,7 @@ autostart="0">
 				<param name="autoplay" value="false">
 				Tag <b>object type "video/quicktime"</b> not supported by this browser.... 
 			</object>
+			
 			<pre>
 src="video/small.avi"  
 <!--
@@ -362,6 +371,14 @@ Opera 47 (Debian) not support
 -->
 		</div>
 
+<!--
+============================== MPG
+<object data='".$videofile."' type='video/mpeg' width='640' height='480'>
+	<param name='src' value='".$videofile."'/>
+	<param name='autoplay' value='false'/>
+	<param name='autoStart' value='0'/>
+</object>"
+-->
 
 		<div class="panel-body">
 				<h3>object type "application/x-oleobject"</h3>

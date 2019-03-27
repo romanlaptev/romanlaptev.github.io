@@ -26751,8 +26751,14 @@ https://ok.ru/videoembed/900211477094?ya=1
 		<item>Служебный роман</item>
 </title>
 	
-	
-	
+	<producer>Эльдар Рязанов</producer>
+	<roles>В ролях: Андрей Мягков, Алиса Фрейндлих, 
+Светлана Немоляева, 
+Олег Басилашвили, Лия Ахеджакова, 
+Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
+Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
+Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
+Любовь Колюжная, Владимир Плотников, Александр Фатюшин.	</roles>
 	<description>&amp;lt;iframe width=&amp;quot;640&amp;quot; height=&amp;quot;480&amp;quot; src=&amp;quot;http://youtube.com/embed/hR-1QGMK75c&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
 https://www.youtube.com/watch?v=hR-1QGMK75c
 
@@ -26765,19 +26771,15 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 Режиссер: Эльдар Рязанов. 
 Авторы сценария: Эмиль Брагинский, Эльдар Рязанов. 
 Главный оператор: Владимир Нахабцев. Художники-постановщики: Александр Борисов, Сергей Воронков. 
-Композитор: Андрей Петров. 
-В ролях: Андрей Мягков, Алиса Фрейндлих, 
-Светлана Немоляева, 
-Олег Басилашвили, Лия Ахеджакова, 
-Людмила Иванова, Пётр Щербаков, Нелли Пшенная, 
-Надежда Репина, Виктор Филиппов, Алик Денисов, Гоша Заранко, Георгий Бурков, 
-Вера Бурлакова, Мария Виноградова, Олеся Иванова, Татьяна Игнатова, 
-Любовь Колюжная, Владимир Плотников, Александр Фатюшин.</description>
+Композитор: Андрей Петров.</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_43869.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="//ok.ru/videoembed/41202551490">embed video, OK.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf&amp;index=68&amp;t=0s">video on youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -26792,7 +26794,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</tags>
 
 	<published>03-Mar-2019 06:16:09</published>
-	<updated>03-Mar-2019 06:37:19</updated>
+	<updated>27-Mar-2019 05:04:56</updated>
 </video>
 
 <video type="video">

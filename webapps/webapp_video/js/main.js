@@ -82,6 +82,13 @@ func.log('<p>The collapsible content is now hidden.</p>');
 		});
 */		
 //---------------------		
+	//https://www.jqueryscript.net/form/User-Friendly-Number-Input-Spinner-with-jQuery-Bootstrap.html
+	//$("#page-number-2").bootstrapNumber({
+		//upClass: 'success',
+		//downClass: 'danger'
+	//});
+	
+//---------------------
 	});//end ready	
 
 	$(window).scroll(function() {
