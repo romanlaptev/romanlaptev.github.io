@@ -263,17 +263,19 @@ role="application" aria-label="media player">
 <b>total records:</b> <span id="total-records"></span>
 <b>number of pages:</b> <span id="total-pages"></span>
 </small>
+						<div class="">							
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">							
+									<b>Page №:</b>
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">							
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers form-control">
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
+<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
+							</div>
+						</div>		
 
-					<form>
-						<div class="pull-right">
-							<b>Page №:</b>
-<input id="page-number" type="text" value="1" size="3" class="only-numbers form-control" maxlength="3" autocomplete="off">
-						</div>
 						<input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
-<!--
-					<input type="submit">
--->
-					</form>
 				</div>
 			</div>
 			

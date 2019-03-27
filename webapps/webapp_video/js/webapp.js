@@ -208,10 +208,12 @@ console.log("click...", e);
 	//});//end event
 	
 	$("#page-range").change(function(e){
-console.log("change range...", event.target.value);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
+		
+console.log("change range...", target.value);
 		$("#page-number").val( target.value );
+		$("#page-number-2").val( target.value );
 		
 		var url = "?q=list_nodes&num_page="+target.value;
 		webApp.vars["GET"] = func.parseGetParams( url ); 
@@ -240,19 +242,39 @@ console.log("change range...", event.target.value);
 
 			if( !isNaN(target.value) && parseInt(target.value) > 0){
 //console.log("-0000000000");
+
 				$("#page-range").val(target.value);
+				$("#page-number-2").val(target.value);
+				
 				var url = "?q=list_nodes&num_page="+target.value;
 				webApp.vars["GET"] = func.parseGetParams( url ); 
 				_urlManager();
 			} else {
 webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
+//console.log( webApp.vars["logMsg"] );
 			}
 
 		}
 
 	})//end event	
+
+	$("#page-number-2").change(function(event){
+console.log("change #page-number-2...", event);
+		if( !isNaN(event.target.value) && parseInt(event.target.value) > 0){
+			$("#page-range").val(event.target.value);
+			$("#page-number").val(event.target.value);
+			
+			var url = "?q=list_nodes&num_page="+event.target.value;
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		} else {
+webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+		}
+	});//end event
+
 	
 }//end defineEvents()
 
@@ -585,6 +607,7 @@ webApp.vars["DB"]["numPages"] = numPages;
 func.log(numPages, "total-pages");
 
 $("#page-range").attr("max", numPages);
+$("#page-number-2").attr("max", numPages);
 //------------------
 
 		return nodes;
