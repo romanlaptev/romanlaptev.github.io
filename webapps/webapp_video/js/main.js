@@ -89,6 +89,18 @@ func.log('<p>The collapsible content is now hidden.</p>');
 	//});
 	
 //---------------------
+//console.log( $("#page-range").attr("type") );
+//var msg = 'page-range type: ' + $("#page-range").attr("type");
+//msg += ', page-range type: ' + $("#page-number-2").attr("type");
+//func.log("<p class='alert'>"+msg+"</p>");
+		if( $("#page-range").attr("type") !== "range"){
+			$("#page-range").hide();
+		}
+		if( $("#page-number-2").attr("type") !== "number"){
+			$("#page-number-2").hide();
+		}
+
+		
 	});//end ready	
 
 	$(window).scroll(function() {

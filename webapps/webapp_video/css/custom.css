@@ -21,7 +21,11 @@ header .nav-tabs .btn:focus {
 header .navbar {
     margin-bottom: 0;
 }
-
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	border-color: #8a6d3b;
+}
 
 
 
@@ -305,4 +309,7 @@ text-align: center;
 
 .block{
 box-shadow: 5px 5px 15px #4f5a6e;
+}
+#block-links .block {
+	box-shadow: none;
 }

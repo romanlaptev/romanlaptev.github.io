@@ -22,10 +22,34 @@ var webApp = {
 			"tagNameFilms": "video",
 			"numRecordsPerPage":10
 		},
+		
+		"blocks": [
+			{
+				"locationID" : "block-1",
+				"title" : "Playlists", 
+				"templateID" : "tpl-block",
+				"content" : "<ul class='list-unstyled'>\
+<li class='list-group-item'>films</li>\
+<li class='list-group-item'>music - classic rock</li>\
+<li class='list-group-item'>music - thrash, death, grinde</li>\
+<li class='list-group-item'>....</li>\
+</ul>",
+				"visibility" : true//"frontPage"
+			},//end block
+			
+			{
+				"locationID" : "block-links",
+				"title" : "footer links", 
+				"templateID" : "tpl-block-links",
+				"content" : "",
+				"visibility":true
+			}//end block
+		],
+		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
 		"breadcrumb": {},
-		"init_url" : "#?q=list_nodes&num_page=1",
+		"init_url" : "#?q=list_nodes&num_page=1"
 	},
 	"init" : function( postFunc ){
 console.log("init webapp!");
@@ -798,17 +822,17 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 		}
 //console.log(opt);
 
-		_draw_buildBlock({
-			"locationID" : "block-1",
-			"title" : "playlists", 
-			"templateID" : "tpl-block",
-			"content" : "<ul class='list-unstyled'>\
-<li class='list-group-item'>films</li>\
-<li class='list-group-item'>music - classic rock</li>\
-<li class='list-group-item'>music - thrash, death, grinde</li>\
-<li class='list-group-item'>....</li>\
-</ul>"
-		});
+		//draw static blocks
+		for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			var _opt = webApp.vars["blocks"][n];
+// //console.log(_opt["visibility"], p["title"]);				
+			if( _opt["visibility"]){
+				// if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
+					_draw_buildBlock( _opt );
+				// }
+			}
+			
+		}//next
 
 
 		var _html = _draw_wrapData({
@@ -1261,17 +1285,23 @@ console.log(msg);
 
 		var templateID = p["templateID"];
 		if( !webApp.vars["templates"][templateID] ){
-webApp.vars["logMsg"] = "-- _draw_insertBlock(), error, not found template, id:" + templateID;
+webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
 //func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
+console.log( "-- " + webApp.vars["logMsg"] );
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
 			return false;
 		}
 		
 		if( !p["content"] || p["content"].length === 0){
-webApp.vars["logMsg"] = "-- _draw_insertBlock(), error, not found or empty content block " + p["locationID"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-			return false;
+webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
+//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- "+webApp.vars["logMsg"] );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"]();
+			//}
+			//return false;
 		}
 		
 		var html = webApp.vars["templates"][templateID];
