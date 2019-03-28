@@ -64,7 +64,7 @@
 <![CDATA[
 <div class="panel panel-primary video-list-item type-{{type}}">
 
-	<div class="panel-heading bg-sky-blue2">
+	<div class="panel-heading bg-lightskyblue">
 		<div class="pull-right">
 <a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
 		</div>
