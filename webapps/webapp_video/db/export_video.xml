@@ -83,33 +83,32 @@
 Бэрри Миллс (Barry Mills)
 Рик Роджерс (Rick Rodgers), Ламар Дэвис (Lamar Davis), Эрнест Моран (Ernest Moran), Марк Карсон (Marc Carson), Кент Юри (Kent Urey), Джули Харман (Julie Harman), Мишель Мари Кортес (Michelle Marie Cortes)
 	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/mr.mcallisters_cigarette_holder.jpg&amp;quot;&amp;gt;
-
-&amp;lt;pre&amp;gt;
-Единственная режиссерская работа голливудского редактора Джона Дэвида Аллена, 
+	<description>Единственная режиссерская работа голливудского редактора Джона Дэвида Аллена, 
 поставленная им по замечательной одноименной новелле Марка Стедмана. Мягкая сепия, эффект выцветших фотографий, джинсы, земля и самокрутки: провинциальная кино-Америка времен Великой депрессии. Гордость мистера Макаллистера – его уникальный мундштук, с которым не расстается много-много лет. Только песня совсем не о том... А, как обычно, о любви. И о тех мелочах, в которых познается ее глубина.
 
 Castleway Films
 Сценаристы:
 Марк Стэдмен (Mark Steadman), Вэйд Стэдмен (Wade Steadman)
 Продюссеры:
-Кейт Кроффорд (Keith Crofford), Алан Джеймс Гэй (Alan James Gay)
-&amp;lt;/pre&amp;gt;</description>
-	
+Кейт Кроффорд (Keith Crofford), Алан Джеймс Гэй (Alan James Gay)</description>
+	<pictures>
+		<img src="/video/0_covers/mr.mcallisters_cigarette_holder.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/M/Mr.McAllisters_Cigarette_Holder.avi">Mr.McAllisters_Cigarette_Holder.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
 		<item tid="28">короткометражный</item>
 		<item tid="22">avi</item>
+		<item tid="219">M</item>
+		<item tid="240">М</item>
 	</tags>
 
 	<published>01-Oct-2012 00:16:06</published>
-	<updated>26-May-2013 10:12:59</updated>
+	<updated>28-Mar-2019 08:17:58</updated>
 </video>
 
 <video type="video">
@@ -1501,7 +1500,7 @@ Erich Schellow
 		<item>Кабаре</item>
 </title>
 	
-	<producer>Боб Фосси</producer>
+	<producer>Боб Фосси / Bob Fosse</producer>
 	<roles>Лайза Миннелли (Sally Bowles,), 
 Майкл Йорк (Brian Roberts), 
 Хельмут Грим (Maximilian von Heune), 
@@ -1515,8 +1514,7 @@ Gerd Vespermann (Bobby),
 Ральф Вольтер (Herr Ludwig), 
 Георг Хартманн (Willi)
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Сценарий: Кристофер Ишервуд / Christopher Isherwood, Джон Вэн Друтен / John Van Druten, Joe Masteroff, Джей Прессон Аллен / Jay Presson Allen
+	<description>Сценарий: Кристофер Ишервуд / Christopher Isherwood, Джон Вэн Друтен / John Van Druten, Joe Masteroff, Джей Прессон Аллен / Jay Presson Allen
 Продюсер: Сай Фойер / Cy Feuer, Харольд Небензал / Harold Nebenzal
 Оператор: Джефри Ансуорт / Geoffrey Unsworth
 Композитор: Джон Кэндер / John Kander
@@ -1528,11 +1526,12 @@ Gerd Vespermann (Bobby),
 с Брайаном (Майкл Йорк) - англичанином, подрабатывающим уроками, 
 которые он дает богатой молодой еврейке, и Максом - богатым немецким плейбоем.
 «Кабаре» — кинофильм, основанный на одноимённом бродвейском мюзикле, 
-который, в свою очередь, создан по мотивам берлинских рассказов Кристофера Ишервуда. 
-&amp;lt;/pre&amp;gt;</description>
+который, в свою очередь, создан по мотивам берлинских рассказов Кристофера Ишервуда.</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/C/Cabare.1972/Cabaret.1972.avi">Cabaret.1972.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -1543,63 +1542,11 @@ Gerd Vespermann (Bobby),
 		<item tid="22">avi</item>
 		<item tid="209">C</item>
 		<item tid="217">K</item>
+		<item tid="300">1972</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Jul-2015 14:20:11</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Кабаре</item>
-</title>
-	
-	<producer>Bob Fosse</producer>
-	<roles>Лайза Миннелли (Sally Bowles,), 
-Майкл Йорк (Brian Roberts), 
-Хельмут Грим (Maximilian von Heune), 
-Джоэл Грей (Master of Ceremonies), 
-Фриц Веппер (Fritz Wendel), 
-Мариза Беренсон (Natalia Landauer), 
-Elisabeth Neumann-Viertel (Fraulein Schneider), 
-Хелен Вита (Fraulein Kost), 
-Сигрид фон Рихтхофен (Fraulein Mayr), 
-Gerd Vespermann (Bobby), 
-Ральф Вольтер (Herr Ludwig), 
-Георг Хартманн (Willi)
-		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Сценарий: Кристофер Ишервуд / Christopher Isherwood, Джон Вэн Друтен / John Van Druten, Joe Masteroff, Джей Прессон Аллен / Jay Presson Allen
-Продюсер: Сай Фойер / Cy Feuer, Харольд Небензал / Harold Nebenzal
-Оператор: Джефри Ансуорт / Geoffrey Unsworth
-Композитор: Джон Кэндер / John Kander
-Американская певица Салли Боулз (Лайза Минелли) развлекает Берлин 
-эпохи Веймарской республики на подмостках кабаре Kit-Kat club. 
-За дверями клуба - политический и экономический хаос, восхождение 
-к власти нацистов, еврейские погромы. Внутри - вечный праздник. 
-Перемены в относительно беззаботную жизнь Салли вносят встреча 
-с Брайаном (Майкл Йорк) - англичанином, подрабатывающим уроками, 
-которые он дает богатой молодой еврейке, и Максом - богатым немецким плейбоем.
-«Кабаре» — кинофильм, основанный на одноимённом бродвейском мюзикле, 
-который, в свою очередь, создан по мотивам берлинских рассказов Кристофера Ишервуда. 
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="54">мелодрама</item>
-		<item tid="42">трагикомедия</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="209">C</item>
-		<item tid="217">K</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Jul-2015 14:20:11</updated>
+	<updated>28-Mar-2019 08:03:09</updated>
 </video>
 
 <video type="video">
@@ -2640,18 +2587,14 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item>Point de fuite</item>
 </title>
 	
-	<producer>Оливер Смолдерс</producer>
+	<producer>Оливер Смолдерс / Olivier Smolders</producer>
 	<roles>Catherine Aymerie
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Описание (от релизера): Обычная учительница пришла в обычную школу. Но ее ждет необычный урок. Ученики предлагают пройти ей через испытание - раздеться!
-&amp;lt;/pre&amp;gt;</description>
+	<description>Обычная учительница пришла в обычную школу. Но ее ждет необычный урок. Ученики предлагают пройти ей через испытание - раздеться!</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/P/1988 - Point de fuite/Point de fuite.avi">Point de fuite.avi</a></li>
 	</ul>
 
 	<tags>
@@ -2660,42 +2603,13 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="112">Бельгия</item>
 		<item tid="150">srt</item>
 		<item tid="22">avi</item>
+		<item tid="268">P</item>
+		<item tid="246">Т</item>
+		<item tid="297">1988</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Jun-2013 14:43:21</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Точка, стремящаяся к нулю</item>
-		<item>Point de fuite</item>
-</title>
-	
-	<producer>Olivier Smolders</producer>
-	<roles>Catherine Aymerie
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Описание (от релизера): Обычная учительница пришла в обычную школу. Но ее ждет необычный урок. Ученики предлагают пройти ей через испытание - раздеться!
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="112">Бельгия</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Jun-2013 14:43:21</updated>
+	<updated>28-Mar-2019 08:06:35</updated>
 </video>
 
 <video type="video">
@@ -2897,49 +2811,6 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 
 <video type="video">
 	<title>
-		<item>Бойцовский клуб</item>
-		<item>Fight club</item>
-</title>
-	
-	<producer>Дэвид Финчер (David Fincher)</producer>
-	<roles>Брэд Питт (Brad Pitt)
-Эдвард Нортон (Edward Norton)
-Хелена Бонэм Картер (Helena Bonham Carter)
-Мит Лоаф (Meat Loaf)
-Джаред Лето (Jared Leto)
-Зак Гренье (Zach Grenier)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Студия: 20th Century Fox
-Джек, страдает хронической бессонницей и отчаянно пытается вырваться из мучительно скучной жизни. 
-Именно тогда он встречает Тайлера Дердена, торговца с извращенной философией. Тайлер уверен, что 
-самосовершенствование — удел слабых, а саморазрушение — единственное, ради чего стоит жить. 
-И вот уже Джек и Тайлер лупят друг друга почем зря на стоянке перед баром, и очищающий мордобой 
-доставляет им высшее блаженство. Приобщая других мужчин к простым радостям физической жестокости, 
-Джек и Тайлер основывают тайный Бойцовский Клуб, который имеет огромный успех. 
-Но Джека ждет шокирующее открытие, способное изменить все...
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="4">драма</item>
-		<item tid="12">триллер</item>
-		<item tid="66">США</item>
-		<item tid="27">mkv</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:16:24</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Дневной дозор</item>
 </title>
 	
@@ -2955,67 +2826,28 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 Константин Хабенский
 Виктор Вержбицкий
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
+	<description>Сценарий:Тимур Бекмамбетов, Сергей Лукьяненко
+
 Ночью в подъезде своего дома убита молодая женщина. 
 На теле не обнаружено никаких следов насилия… 
 Зыбкое равновесие между Светлыми и Темными нарушено. 
 И чаша весов склоняется в сторону Темных. 
 Но убитая - Темная иная, а значит подозрение падает на Светлых.
-Гессер срочно собирает команду: обвинение в убийстве - серьезная проблема. Он обязан реагировать. И, прежде всего, понять кто где был и чем занимался в указанное Темными время. Выясняется, что алиби отсутствует только у Городецкого…
-&amp;lt;/pre&amp;gt;</description>
+Гессер срочно собирает команду: обвинение в убийстве - серьезная проблема. Он обязан реагировать. И, прежде всего, понять кто где был и чем занимался в указанное Темными время. Выясняется, что алиби отсутствует только у Городецкого…</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/D/dn_dozor.avi">dn_dozor.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="68">Россия</item>
+		<item tid="233">Д</item>
+		<item tid="282">2006</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>23-Sep-2013 13:28:57</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дневной дозор</item>
-</title>
-	
-	<producer>Сценарий:Тимур Бекмамбетов, Сергей Лукьяненко</producer>
-	<roles>Алексей Чадов
-Нуржуман Ихтымбаев
-Дмитрий Мартынов
-Мария Порошина
-Жанна Фриске
-Галина Тюнина
-Валерий Золотухин
-Владимир Меньшов
-Константин Хабенский
-Виктор Вержбицкий
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Ночью в подъезде своего дома убита молодая женщина. 
-На теле не обнаружено никаких следов насилия… 
-Зыбкое равновесие между Светлыми и Темными нарушено. 
-И чаша весов склоняется в сторону Темных. 
-Но убитая - Темная иная, а значит подозрение падает на Светлых.
-Гессер срочно собирает команду: обвинение в убийстве - серьезная проблема. Он обязан реагировать. И, прежде всего, понять кто где был и чем занимался в указанное Темными время. Выясняется, что алиби отсутствует только у Городецкого…
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="68">Россия</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>23-Sep-2013 13:28:57</updated>
+	<updated>28-Mar-2019 08:08:59</updated>
 </video>
 
 <video type="video">
@@ -3075,7 +2907,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 		<item>Афоня</item>
 </title>
 	
-	<producer>Александр Бородянский</producer>
+	<producer>Александр Бородянский, Георгий Данелия</producer>
 	<roles>Леонид Куравлев
 Евгения Симонова
 Евгений Леонов
@@ -3091,18 +2923,15 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 Савелий Крамаров
 Николай Гринько
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Весело и беззаботно жил слесарь-сантехник Афанасий. 
+	<description>Весело и беззаботно жил слесарь-сантехник Афанасий. 
 Не гнушался левыми заработками, любил выпить, поволочиться за девушками. 
 Так проходил день за днём, но однажды он встретил на танцах удивительную девушку 
 изменившую все. Она спасла Борщова от хулиганов, а ее наивные глаза 
-сгубили нежную душу работника труб и прокладок.&amp;lt;br&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
+сгубили нежную душу работника труб и прокладок.&amp;lt;br&amp;gt;</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/afonya.avi">afonya.avi</a></li>
 	</ul>
 
 	<tags>
@@ -3115,69 +2944,20 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="229">А</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:56:13</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Афоня</item>
-</title>
-	
-	<producer>Георгий Данелия</producer>
-	<roles>Леонид Куравлев
-Евгения Симонова
-Евгений Леонов
-Борислав Брондуков
-Валентина Талызина
-Владимир Басов
-Николай Парфенов
-Готлиб Ронинсон
-Нина Русланова
-Раиса Куркина
-Нина Маслова
-Алексей Ванин
-Савелий Крамаров
-Николай Гринько
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Весело и беззаботно жил слесарь-сантехник Афанасий. 
-Не гнушался левыми заработками, любил выпить, поволочиться за девушками. 
-Так проходил день за днём, но однажды он встретил на танцах удивительную девушку 
-изменившую все. Она спасла Борщова от хулиганов, а ее наивные глаза 
-сгубили нежную душу работника труб и прокладок.&amp;lt;br&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="175">Борислав Брондуков</item>
-		<item tid="140">Евгений Леонов</item>
-		<item tid="136">Куравлев, Леонид</item>
-		<item tid="179">Николай Гринько</item>
-		<item tid="152">Савелий Крамаров</item>
-		<item tid="45">Данелия, Георгий</item>
-		<item tid="73">СССР</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:56:13</updated>
+	<updated>28-Mar-2019 08:11:20</updated>
 </video>
 
 <video type="video">
 	<title>
 		<item>Искатели приключений</item>
+		<item>Les aventuriers</item>
 </title>
 	
-	<producer>Робер Энрико</producer>
+	<producer>Робер Энрико / Robert Enrico</producer>
 	<roles>Ален Делон (Alain Delon)
 Лино Вентура (Lino Ventura)
 Джоанна Шимкус (Joanna Shimkus)
@@ -3187,15 +2967,12 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 Ги Делорм (Guy Delorme)
 Ирен Тунк (Irene Tunc)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Опытный пилот Маню становится жертвой неудачной шутки и теряет свою лицензию. 
-Раскаявшиеся шутники сообщают ему возможное местонахождение клада, и вместе с лучшим своим другом Роланом Маню отправляется на поиски. К ним прибивается молодая художница Летиция, но их путешествие, замечательно начавшееся как романтический круиз, рискует вскоре стать опаснымэ
-&amp;lt;/pre&amp;gt;</description>
+	<description>Опытный пилот Маню становится жертвой неудачной шутки и теряет свою лицензию. 
+Раскаявшиеся шутники сообщают ему возможное местонахождение клада, и вместе с лучшим своим другом Роланом Маню отправляется на поиски. К ним прибивается молодая художница Летиция, но их путешествие, замечательно начавшееся как романтический круиз, рискует вскоре стать опасным</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/Les.Aventuriers_DUB_1.45">Les.Aventuriers_DUB_1.45</a></li>
 	</ul>
 
 	<tags>
@@ -3205,49 +2982,11 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 		<item tid="89">Франция</item>
 		<item tid="150">srt</item>
 		<item tid="22">avi</item>
+		<item tid="237">И</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:51:57</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Искатели приключений</item>
-</title>
-	
-	<producer>Robert Enrico</producer>
-	<roles>Ален Делон (Alain Delon)
-Лино Вентура (Lino Ventura)
-Джоанна Шимкус (Joanna Shimkus)
-Серж Реджани (Serge Reggiani)
-Поль Кроше (Paul Crauchet)
-Ханс Майер (Hans Meyer)
-Ги Делорм (Guy Delorme)
-Ирен Тунк (Irene Tunc)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Опытный пилот Маню становится жертвой неудачной шутки и теряет свою лицензию. 
-Раскаявшиеся шутники сообщают ему возможное местонахождение клада, и вместе с лучшим своим другом Роланом Маню отправляется на поиски. К ним прибивается молодая художница Летиция, но их путешествие, замечательно начавшееся как романтический круиз, рискует вскоре стать опаснымэ
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="14">приключения</item>
-		<item tid="67">Италия</item>
-		<item tid="89">Франция</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:51:57</updated>
+	<updated>28-Mar-2019 08:13:53</updated>
 </video>
 
 <video type="video">
@@ -3669,74 +3408,6 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 
 <video type="video">
 	<title>
-		<item>Копировальная контора / Ксерокс</item>
-</title>
-	
-	<producer>Вёрджил Видрич</producer>
-	<roles>Johannes Silberschneider .... Alfred Kager  
-Elisabeth Ebner-Haid .... Flower girl
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
- это замысловатый, визуально ошеломляющий фильм о человеке, 
-работающем в копировальном центре и копирующем себя до тех пор, 
-пока он не заполоняет весь мир. Этот фильм, номинированный на премию 
-Оскар, состоит из приблизительно 18 тысяч копированных цифровых кадров, 
-анимированных и заснятых при помощи 35-миллимметровой камеры.
-Доп. информация: фильм черно-белый
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="28">короткометражный</item>
-		<item tid="65">Австрия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:59:02</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Копировальная контора / Ксерокс</item>
-</title>
-	
-	<producer>Virgil Widrich</producer>
-	<roles>Johannes Silberschneider .... Alfred Kager  
-Elisabeth Ebner-Haid .... Flower girl
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
- это замысловатый, визуально ошеломляющий фильм о человеке, 
-работающем в копировальном центре и копирующем себя до тех пор, 
-пока он не заполоняет весь мир. Этот фильм, номинированный на премию 
-Оскар, состоит из приблизительно 18 тысяч копированных цифровых кадров, 
-анимированных и заснятых при помощи 35-миллимметровой камеры.
-Доп. информация: фильм черно-белый
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="28">короткометражный</item>
-		<item tid="65">Австрия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 12:59:02</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Его новая работа</item>
 </title>
 	
@@ -4081,240 +3752,6 @@ Monica Viegas
 
 <video type="video">
 	<title>
-		<item>Qatsi, Трилогия (Коянискацци, Повакацци, Накойкацци)</item>
-</title>
-	
-	<producer>Годфри Реджио</producer>
-	
-	<description>Год выпуска: 1983, 1988, 2002
-&amp;lt;pre&amp;gt;
-В 1975 году бывший монах Годфри Реджио дебютировал в кино. 
-человек, который провел 14 лет в молчании и молитвах, 
-неожиданно пришел к идее снять фильм в абсолютно новом стиле. 
-Он задумал взять образы из реальной жизни - эмоциональные, сырые, откровенные 
-картины - и представить их в невербальной, нелинейной форме, создав, таким образом, 
-своего рода киноконцерт, он задумал трилогию &amp;quot;Каци&amp;quot;. В каждом из фильмов трилогии 
-использован особый стиль: в первом фильме - &amp;quot;Койянискаци&amp;quot; - эффект ускоренного движения, 
-чтобы заставить сознание воспринимать образы по-другому, во втором - &amp;quot;Повакаци&amp;quot; - 
-замедленное движение, позволяющее сфокусировать внимание на чувственных 
-особенностях живой природы.
-
-Семь лет беспрерывных съемок и монтажа, 35 тысяч метров кинопленки – 
-и совершенно новый киноязык появился на свет. Благодаря содействию 
-Фрэнсиса Форда Копполы идеи Реджио были воплощены на целлулоиде. 
-
-&amp;quot;Койянискаци&amp;quot; с языка североамериканского индейского племени хопи переводится как 
-&amp;quot;жизнь, потерявшая равновесие&amp;quot;, и это была простая, но острая тема, в картине 
-раскрывалась картина урбанистического общества, движущегося 
-на фантастической скорости, отдаляющегося от естественной природы и 
-приближающегося к веку высоких технологий. 
-
-&amp;quot;Повакаци&amp;quot; переводится как &amp;quot;жизнь в трансформации&amp;quot;. Картину представляли публике 
-Джордж Лукас и Фрэнсис Форд Коппола. Для съемок режиссер отправился 
-путешествовать по миру, на родину развивающихся наций, которых редко увидишь 
-на экране в любом формате. В течение шести месяцев он со своей съемочной 
-группой побывал в 12 странах, включая Индию, Египет, Бразилию, Перу, Кению, Непал и Нигерию.
-
-В последней части трилогии - &amp;quot;Накойкаци&amp;quot;, название которой означает &amp;quot;жизнь как война&amp;quot; - 
-представляемой Стивеном Содербергом, Годфри Реджио исследует новую визуальную 
-территорию, оказываясь среди образов продвинутых технологий и цифровой обработки, 
-которые он называет &amp;quot;возрожденными образами&amp;quot;. В отличие от предыдущих фильмов, 
-в картине &amp;quot;Накойкаци&amp;quot; мало натурных съемок, вместо этого используется метод, 
-названный режиссером &amp;quot;образ как место действия&amp;quot;.
-
-&amp;quot;Koyaanisqatsi &amp;quot; - с языка индейцев племени хоппи - это безумная жизнь, беспорядочная жизнь, 
-жизнь на грани распада, жизнь вне баланса, жизнь, требующая изменений во имя продолжения жизни...
-
-Человек в процессе эволюции привык воспринимать окружающий мир в основном 
-через звуки и образы. Фильм «Koyaanisqatsi» отмечает в этом году свой двадцатилетний 
-юбилей, но до сих пор является непревзойденным шедевром по степени воздействия 
-на зрителя, с первой секунды захватывая внимание непрерывным потоком видов 
-Земли с высоты птичьего полета, где на наших глазах разыгрывается самая глобальная 
-драма в истории человечества – конфликт технологии и природы, цивилизации и того, 
-что ей предшествовало. Ядерный взрыв, рушащиеся дома, бесконечный поток людей, 
-автомобилей, конвейер во всех смыслах – и пустыня. Горы. Небо…
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="117">сериал</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="66">США</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Mar-2013 16:02:26</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Qatsi, Трилогия (Коянискацци, Повакацци, Накойкацци)</item>
-</title>
-	
-	<producer>Godfrey Reggio</producer>
-	
-	<description>Год выпуска: 1983, 1988, 2002
-&amp;lt;pre&amp;gt;
-В 1975 году бывший монах Годфри Реджио дебютировал в кино. 
-человек, который провел 14 лет в молчании и молитвах, 
-неожиданно пришел к идее снять фильм в абсолютно новом стиле. 
-Он задумал взять образы из реальной жизни - эмоциональные, сырые, откровенные 
-картины - и представить их в невербальной, нелинейной форме, создав, таким образом, 
-своего рода киноконцерт, он задумал трилогию &amp;quot;Каци&amp;quot;. В каждом из фильмов трилогии 
-использован особый стиль: в первом фильме - &amp;quot;Койянискаци&amp;quot; - эффект ускоренного движения, 
-чтобы заставить сознание воспринимать образы по-другому, во втором - &amp;quot;Повакаци&amp;quot; - 
-замедленное движение, позволяющее сфокусировать внимание на чувственных 
-особенностях живой природы.
-
-Семь лет беспрерывных съемок и монтажа, 35 тысяч метров кинопленки – 
-и совершенно новый киноязык появился на свет. Благодаря содействию 
-Фрэнсиса Форда Копполы идеи Реджио были воплощены на целлулоиде. 
-
-&amp;quot;Койянискаци&amp;quot; с языка североамериканского индейского племени хопи переводится как 
-&amp;quot;жизнь, потерявшая равновесие&amp;quot;, и это была простая, но острая тема, в картине 
-раскрывалась картина урбанистического общества, движущегося 
-на фантастической скорости, отдаляющегося от естественной природы и 
-приближающегося к веку высоких технологий. 
-
-&amp;quot;Повакаци&amp;quot; переводится как &amp;quot;жизнь в трансформации&amp;quot;. Картину представляли публике 
-Джордж Лукас и Фрэнсис Форд Коппола. Для съемок режиссер отправился 
-путешествовать по миру, на родину развивающихся наций, которых редко увидишь 
-на экране в любом формате. В течение шести месяцев он со своей съемочной 
-группой побывал в 12 странах, включая Индию, Египет, Бразилию, Перу, Кению, Непал и Нигерию.
-
-В последней части трилогии - &amp;quot;Накойкаци&amp;quot;, название которой означает &amp;quot;жизнь как война&amp;quot; - 
-представляемой Стивеном Содербергом, Годфри Реджио исследует новую визуальную 
-территорию, оказываясь среди образов продвинутых технологий и цифровой обработки, 
-которые он называет &amp;quot;возрожденными образами&amp;quot;. В отличие от предыдущих фильмов, 
-в картине &amp;quot;Накойкаци&amp;quot; мало натурных съемок, вместо этого используется метод, 
-названный режиссером &amp;quot;образ как место действия&amp;quot;.
-
-&amp;quot;Koyaanisqatsi &amp;quot; - с языка индейцев племени хоппи - это безумная жизнь, беспорядочная жизнь, 
-жизнь на грани распада, жизнь вне баланса, жизнь, требующая изменений во имя продолжения жизни...
-
-Человек в процессе эволюции привык воспринимать окружающий мир в основном 
-через звуки и образы. Фильм «Koyaanisqatsi» отмечает в этом году свой двадцатилетний 
-юбилей, но до сих пор является непревзойденным шедевром по степени воздействия 
-на зрителя, с первой секунды захватывая внимание непрерывным потоком видов 
-Земли с высоты птичьего полета, где на наших глазах разыгрывается самая глобальная 
-драма в истории человечества – конфликт технологии и природы, цивилизации и того, 
-что ей предшествовало. Ядерный взрыв, рушащиеся дома, бесконечный поток людей, 
-автомобилей, конвейер во всех смыслах – и пустыня. Горы. Небо…
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="117">сериал</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="66">США</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Mar-2013 16:02:26</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Рожденные в СССР</item>
 		<item>Born In The USSR</item>
 </title>
@@ -4369,98 +3806,6 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>15-Mar-2019 14:26:10</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Формула 51(51-ый штат)</item>
-		<item>The 51st State</item>
-</title>
-	
-	<producer>Рони Ю</producer>
-	<roles>Samuel L. Jackson /Сэмюэл Л. Джексон/
-Robert Carlyle /Роберт Карлайл/
-Rhys Ifans /Рис Айфэнс/
-Meat Loaf /Мит Лоуф/
-Emily Mortimer /Эмили Мортимер/
-Sean Pertwee /Шон Пертви/
-Ricky Tomlinson /Рикки Томлинсон/
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Гениальный химик-фармаколог Элмо Макэлрой делает отличные наркотики, 
-но хочет выйти из бизнеса. Он изобрел новый наркотик для вечеринок, 
-обещающий «личную встречу с Богом». Его босс Ящер, любящий говорить о себе в третьем лице, 
-собирается продать это зелье синдикату ведущих наркоторговцев мира. 
-Но у Макэлроя в голове совсем другие планы – отделаться от всего синдиката, 
-устроив взрыв во время встречи, и сорвать большой куш, продав наркотик на европейский рынок....
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/formula51.png"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="5">комедия</item>
-		<item tid="155">Роберт Карлайл</item>
-		<item tid="154">Сэмюэл Л. Джексон</item>
-		<item tid="60">Великобритания</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="263">5</item>
-		<item tid="248">Ф</item>
-		<item tid="252">Ш</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Oct-2014 14:42:09</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Формула 51(51-ый штат)</item>
-		<item>The 51st State</item>
-</title>
-	
-	<producer>Ronny Yu</producer>
-	<roles>Samuel L. Jackson /Сэмюэл Л. Джексон/
-Robert Carlyle /Роберт Карлайл/
-Rhys Ifans /Рис Айфэнс/
-Meat Loaf /Мит Лоуф/
-Emily Mortimer /Эмили Мортимер/
-Sean Pertwee /Шон Пертви/
-Ricky Tomlinson /Рикки Томлинсон/
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Гениальный химик-фармаколог Элмо Макэлрой делает отличные наркотики, 
-но хочет выйти из бизнеса. Он изобрел новый наркотик для вечеринок, 
-обещающий «личную встречу с Богом». Его босс Ящер, любящий говорить о себе в третьем лице, 
-собирается продать это зелье синдикату ведущих наркоторговцев мира. 
-Но у Макэлроя в голове совсем другие планы – отделаться от всего синдиката, 
-устроив взрыв во время встречи, и сорвать большой куш, продав наркотик на европейский рынок....
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/formula51.png"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="5">комедия</item>
-		<item tid="155">Роберт Карлайл</item>
-		<item tid="154">Сэмюэл Л. Джексон</item>
-		<item tid="60">Великобритания</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="263">5</item>
-		<item tid="248">Ф</item>
-		<item tid="252">Ш</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Oct-2014 14:42:09</updated>
 </video>
 
 <video type="video">
@@ -6680,7 +6025,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item>Starship Troopers</item>
 </title>
 	
-	<producer>Пол Верховен (Paul Verhoeven)</producer>
+	<producer>Пол Верховен (Paul Verhoeven), Дэвид Боуи (David Bowie)</producer>
 	<roles>Каспер Ван Дьен (Casper Van Dien)
 Дина Мейер (Dina Meyer)
 Майкл Айронсайд (Michael Ironside)
@@ -6702,8 +6047,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/S/starship troopers.avi">starship troopers.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/S/Starship Troopers.mkv">Starship Troopers.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -6715,51 +6060,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:11:56</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Звездный десант</item>
-		<item>Starship Troopers</item>
-</title>
-	
-	<producer>Дэвид Боуи (David Bowie)</producer>
-	<roles>Каспер Ван Дьен (Casper Van Dien)
-Дина Мейер (Dina Meyer)
-Майкл Айронсайд (Michael Ironside)
-Клэнси Браун (Clancy Brown)
-Дениз Ричардс (Denise Richards)
-Патрик Малдун (Patrick Muldoon)
-	</roles>
-	<description>Студия: Touchstone Pictures
-Создатели: Пол Верховен (Paul Verhoeven), Дэвид Боуи (David Bowie)
-&amp;lt;pre&amp;gt;
-В новом тысячелетии над человечеством нависла смертельная опасность. 
-Несметные полчища гигантских разумных жуков с далекой планеты Клендат 
-угрожают всему живому во вселенной. 
-Солдат элитного подразделения Джонни Рико и пилот Кармен в составе 
-звездного десанта землян на космическом военном корабле Тикондерога 
-отправляются в зловещие глубины космоса, чтобы в последней решающей 
-схватке решить судьбу Земли. В их руках — современнейшее оружие и будущее людской расы...
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="43">фантастика</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="27">mkv</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:11:56</updated>
+	<updated>28-Mar-2019 08:52:51</updated>
 </video>
 
 <video type="video">
@@ -8269,7 +7570,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item>Брат 2</item>
 </title>
 	
-	<producer>Алексей Балабанов</producer>
+	<producer>Алексей Балабанов, Сергей Михайлович Сельянов</producer>
 	<roles>Сергей Бодров Мл.
 Иван Демидов
 Лиза Джеффри
@@ -8293,7 +7594,10 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 &amp;lt;/pre&amp;gt;</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/B/Balabanov/Brat/Brat_2_2.18.avi">Brat_2_2.18.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/B/Balabanov/Brat/bart-2_about.avi">bart-2_about.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -8307,53 +7611,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Aug-2016 12:05:32</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Брат 2</item>
-</title>
-	
-	<producer>Сергей Михайлович Сельянов</producer>
-	<roles>Сергей Бодров Мл.
-Иван Демидов
-Лиза Джеффри
-Александр Дьяченко
-Дарья Лесникова
-Сергей Маковецкий
-Дмитрий Орлов
-Валдис Пельш
-Кирилл Пирогов
-Ирина Салтыкова
-Виктор Иванович Сухоруков
-Рэй Толер
-Леонид Якубович
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Участвуя в программе на телевидении, Данила Багров встречает своих друзей по Чечне. 
-Одного из них внезапно убивают. Данила знает, что у того были неприятности из-за 
-брата-хоккеиста в Америке. Данила должен разобраться. Теперь его фотография 
-ходит по рукам русской и американской мафии. Новоявленные &amp;quot;Аль Капоне&amp;quot; 
-понимают, что нарвались на профессионала.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="109">Маковецкий, Сергей</item>
-		<item tid="107">Сухоруков, Виктор</item>
-		<item tid="55">Балабанов, Алексей</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="230">Б</item>
-		<item tid="287">2000</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Aug-2016 12:05:32</updated>
+	<updated>28-Mar-2019 09:11:30</updated>
 </video>
 
 <video type="video">
@@ -8458,7 +7716,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item>Криминальное Чтиво</item>
 </title>
 	
-	<producer>Miramax Films</producer>
+	<producer>Miramax Films / Квентин Тарантино (Quentin Tarantino)</producer>
 	<roles>Сэмюэль Л. Джексон (Samuel L. Jackson), 
 Джон Траволта (John Travolta), 
 Тим Рот (Tim Roth), 
@@ -8467,120 +7725,29 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 Ума Турман (Uma Thurman), 
 Розанна Аркетт (Rosanna Arquette)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Три новеллы о современном Лос-Анджелесе, едва связанные друг с другом сюжетными линиями. 
+	<description>Три новеллы о современном Лос-Анджелесе, едва связанные друг с другом сюжетными линиями. 
 Но не в сюжете дело. Главное — та неповторимая, сразу узнаваемая интонация, 
 с которой льет на экране кровь Квентин Тарантино. Фильм сразу же стал современной классикой, 
 а у Тарантино появились последователи и подражатели, но вряд ли кто сможет повторить успех 
-этого фильма.
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;br&amp;gt;============================= LOCAL URL&amp;lt;br&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
+этого фильма.</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/pulp fiction/pulp fiction 1.avi">pulp fiction 1.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/pulp fiction/pulp fiction 2.avi">pulp fiction 2.avi</a></li>
+	</ul>
 
 	<tags>
-		<item tid="13">криминал</item>
 		<item tid="5">комедия</item>
-		<item tid="142">Квентин Тарантино</item>
+		<item tid="13">криминал</item>
 		<item tid="144">Тим Рот</item>
-		<item tid="22">avi</item>
+		<item tid="142">Квентин Тарантино</item>
 		<item tid="66">США</item>
+		<item tid="22">avi</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>09-Feb-2013 17:37:48</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Криминальное Чтиво</item>
-</title>
-	
-	<producer>Квентин Тарантино (Quentin Tarantino)</producer>
-	<roles>Сэмюэль Л. Джексон (Samuel L. Jackson), 
-Джон Траволта (John Travolta), 
-Тим Рот (Tim Roth), 
-Брюс Уиллис (Bruce Willis), 
-Харви Кейтель (Harvey Keitel), 
-Ума Турман (Uma Thurman), 
-Розанна Аркетт (Rosanna Arquette)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Три новеллы о современном Лос-Анджелесе, едва связанные друг с другом сюжетными линиями. 
-Но не в сюжете дело. Главное — та неповторимая, сразу узнаваемая интонация, 
-с которой льет на экране кровь Квентин Тарантино. Фильм сразу же стал современной классикой, 
-а у Тарантино появились последователи и подражатели, но вряд ли кто сможет повторить успех 
-этого фильма.
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;br&amp;gt;============================= LOCAL URL&amp;lt;br&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="13">криминал</item>
-		<item tid="5">комедия</item>
-		<item tid="142">Квентин Тарантино</item>
-		<item tid="144">Тим Рот</item>
-		<item tid="22">avi</item>
-		<item tid="66">США</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>09-Feb-2013 17:37:48</updated>
+	<updated>28-Mar-2019 09:15:12</updated>
 </video>
 
 <video type="video">
@@ -8588,7 +7755,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item>Отчаянный</item>
 </title>
 	
-	<producer>Роберт Родригес</producer>
+	<producer>Роберт Родригес / Robert Rodriguez</producer>
 	<roles>Антонио Бандерас
 Салма Хайек
 Хоаким Де Альмейда
@@ -8609,8 +7776,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/DESPERADO.AVI">DESPERADO.AVI</a></li>
 	</ul>
 
 	<tags>
@@ -8623,82 +7789,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Jun-2013 00:26:52</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Отчаянный</item>
-</title>
-	
-	<producer>Robert Rodriguez</producer>
-	<roles>Антонио Бандерас
-Салма Хайек
-Хоаким Де Альмейда
-Стив Бушеми
-Чич Марин
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-«Отчаянный» — боевик Роберта Родригеса, второй фильм его «Мексиканской трилогии», 
-начавшейся с фильма «Музыкант» и завершившейся в 2003 году фильмом «Однажды в Мексике». 
-Главные роли исполнили Антонио Бандерас и Сальма Хайек.
-
-Герой Бандераса раньше был великолепным музыкантом. Выступал с друзьями в барах, 
-любил прекрасную девушку. Но однажды всему этому настал конец. 
-Ему прострелили руку, убили его любимую. И теперь он больше не El Mariachi (Музыкант), 
-теперь он El Desperado (Отчаянный). В его футляре больше нет гитары, сейчас там 
-куча смертоносного оружия, которое не устанет убивать, пока не погибнет Бучо.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="5">комедия</item>
-		<item tid="13">криминал</item>
-		<item tid="74">Мексика</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Jun-2013 00:26:52</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Как я провел этим летом</item>
-</title>
-	
-	<producer>Алексей Попогребский</producer>
-	<roles>Григорий Добрыгин
-Сергей Пускепалис
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Начальник полярной станции Сергей и молодой стажер Павел — одни на острове в Северном ледовитом океане. 
-Подходит к концу их вахта. Впервые за много лет Сергей окажется на материке, где его дожидается семья. Окончится летняя практика Павла, а он не испытал и сотой доли тех приключений, на которые рассчитывал, отправляясь в Заполярье.
-Единственный канал общения с миром — неустойчивая радиосвязь с центральной базой. В отсутствие Сергея приходит сообщение, с которым Павел попросту не знает, как поступить. Он надеется, что скоро за ними придет теплоход и тогда все разрешится само собой. Но на Крайнем Севере возможно всё. И иногда приходится выбирать между своей жизнью и жизнью другого…
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="12">триллер</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="238">К</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 04:54:02</updated>
+	<updated>28-Mar-2019 09:13:11</updated>
 </video>
 
 <video type="video">
@@ -8907,80 +7998,6 @@ http://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B5%D1%80_%28%D1%84%D0%B8%D0%B
 
 <video type="video">
 	<title>
-		<item>Детектив Шафт</item>
-</title>
-	
-	<producer>Джон Синглтон</producer>
-	<roles>Сэмюэль Л. Джексон (Samuel L. Jackson)
-Ванесса Л. Уильямс (Vanessa L. Williams)
-Кристиан Бэйл (Christian Bale)
-Баста Раймс (Busta Rhymes)
-Джеффри Райт (Jeffrey Wright)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Все знают, что детектив Джон Шафт — самый крутой полицейский в городе. 
-Некоторые полагают, что его жестокие методы &amp;quot;работы с уголовниками&amp;quot; не оправданы. Это не так. Просто Джон один из тех людей в этом падшем городе, кто еще не забыл, что есть Справедливость! Вот за эту самую Справедливость Шафт и будет биться до конца. Нести нелегкую службу Шафту помогает дядя — полицейский в отставке, у которого в молодости все бандиты «стояли на ушах» и которому сам король диско, Айзик Хейс посвятил свою песню. На этот раз Шафту досталось сложное дело. Джону нужно, во что бы то ни стало, усадить за решетку безжалостного убийцу и найти единственного свидетеля, который ему в этом поможет.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="39">детектив</item>
-		<item tid="154">Сэмюэл Л. Джексон</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="233">Д</item>
-		<item tid="252">Ш</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Aug-2014 10:02:49</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Детектив Шафт</item>
-</title>
-	
-	<producer>John Singleton</producer>
-	<roles>Сэмюэль Л. Джексон (Samuel L. Jackson)
-Ванесса Л. Уильямс (Vanessa L. Williams)
-Кристиан Бэйл (Christian Bale)
-Баста Раймс (Busta Rhymes)
-Джеффри Райт (Jeffrey Wright)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Все знают, что детектив Джон Шафт — самый крутой полицейский в городе. 
-Некоторые полагают, что его жестокие методы &amp;quot;работы с уголовниками&amp;quot; не оправданы. Это не так. Просто Джон один из тех людей в этом падшем городе, кто еще не забыл, что есть Справедливость! Вот за эту самую Справедливость Шафт и будет биться до конца. Нести нелегкую службу Шафту помогает дядя — полицейский в отставке, у которого в молодости все бандиты «стояли на ушах» и которому сам король диско, Айзик Хейс посвятил свою песню. На этот раз Шафту досталось сложное дело. Джону нужно, во что бы то ни стало, усадить за решетку безжалостного убийцу и найти единственного свидетеля, который ему в этом поможет.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="39">детектив</item>
-		<item tid="154">Сэмюэл Л. Джексон</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-		<item tid="233">Д</item>
-		<item tid="252">Ш</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Aug-2014 10:02:49</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Мольер</item>
 		<item>Moliere</item>
 </title>
@@ -9029,7 +8046,7 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item>Статский советник </item>
 </title>
 	
-	<producer>Филипп Янковский</producer>
+	<producer>Филипп Янковский / Студия: ТРИТЭ</producer>
 	<roles>Олег Меньшиков
 Никита Михалков
 Масами Агава
@@ -9055,8 +8072,7 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/S/STATSKY_SOVETNIK_[tfile.ru].avi">STATSKY_SOVETNIK_[tfile.ru].avi</a></li>
 	</ul>
 
 	<tags>
@@ -9065,57 +8081,11 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
 		<item tid="245">С</item>
+		<item tid="283">2005</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Aug-2014 10:01:06</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Статский советник </item>
-</title>
-	
-	<producer>Студия: ТРИТЭ</producer>
-	<roles>Олег Меньшиков
-Никита Михалков
-Масами Агава
-Эмилия Спивак
-Константин Хабенский
-Мария Миронова
-Оксана Фандера
-Олег Табаков
-Александр Стриженов
-Владимир Машков
-Федор Бондарчук
-Михаил Ефремов
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-По мотивам одноименного авантюрного романа Бориса Акунина 
-из серии &amp;quot;Приключения Эраста Фандорина&amp;quot;.
-Блистательная детективная интрига разворачивается на фоне парадных фасадов и 
-заснеженных аллей старой Москвы, в пышных гостиных и мрачных закоулках. 
-Высокопоставленные чиновники, банкиры, террористы, загадочные красавицы и 
-налетчики действуют в &amp;quot;Статском советнике&amp;quot;, превращая историю о политических 
-убийствах конца XIX века в захватывающее зрелище.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="39">детектив</item>
-		<item tid="96">история</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="245">С</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Aug-2014 10:01:06</updated>
+	<updated>28-Mar-2019 09:16:36</updated>
 </video>
 
 <video type="video">
@@ -9782,100 +8752,6 @@ Young-min Kim,
 
 <video type="video">
 	<title>
-		<item>Цирк сгорел и клоуны разбежались</item>
-</title>
-	
-	<producer>Владимир Бортко</producer>
-	<roles>Николай Караченцов
-Татьяна Школьник
-Зинаида Шарко
-Нина Русланова
-Мария Шукшина
-Татьяна Васильева
-Ксения Качалина
-Сергей Дрейден
-Петр Зайченко
-Рудольф Фурманов
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Главный герой фильма — режиссер Николай Худокормов. Он стоит на пороге пятидесятилетия, 
-за его плечами жизнь, богатая событиями: творческие поиски, неоднократные браки, дети. 
-Все это уже в прошлом. Осталось лишь глухое безденежье, полубезумная мать и 
-безразличие к самому себе. Но Николай мучается от навязчивой идеи — 
-он должен снять главный фильм своей жизни. Он мечется в поисках чуда, которое подарит 
-ему деньги на осуществление съемок, преследуемый молодой и прекрасной женщиной, 
-убеждающей его в бренности собственной жизни. Со временем Николая начинает п
-угать её навязчивость и странность.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="5">комедия</item>
-		<item tid="166">Николай Караченцов</item>
-		<item tid="131">Бортко, Владимир</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 13:02:56</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Цирк сгорел и клоуны разбежались</item>
-</title>
-	
-	<producer>Наталья Бортко</producer>
-	<roles>Николай Караченцов
-Татьяна Школьник
-Зинаида Шарко
-Нина Русланова
-Мария Шукшина
-Татьяна Васильева
-Ксения Качалина
-Сергей Дрейден
-Петр Зайченко
-Рудольф Фурманов
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Главный герой фильма — режиссер Николай Худокормов. Он стоит на пороге пятидесятилетия, 
-за его плечами жизнь, богатая событиями: творческие поиски, неоднократные браки, дети. 
-Все это уже в прошлом. Осталось лишь глухое безденежье, полубезумная мать и 
-безразличие к самому себе. Но Николай мучается от навязчивой идеи — 
-он должен снять главный фильм своей жизни. Он мечется в поисках чуда, которое подарит 
-ему деньги на осуществление съемок, преследуемый молодой и прекрасной женщиной, 
-убеждающей его в бренности собственной жизни. Со временем Николая начинает п
-угать её навязчивость и странность.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="5">комедия</item>
-		<item tid="166">Николай Караченцов</item>
-		<item tid="131">Бортко, Владимир</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 13:02:56</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Донни Браско</item>
 </title>
 	
@@ -10052,80 +8928,6 @@ http://pycode.ru/wp-content/uploads/2011/07/ron_jones_tretia_volna.pdf
 
 <video type="video">
 	<title>
-		<item>Исчезнувшая империя</item>
-</title>
-	
-	
-	<roles>В ролях: Александр Ляпин, Лидия Милюзина, Иван Купреенко, Егор Барановский, Янина Калганова, Армен Джигарханян (Armen Dzhigarkhanyan), Ольга Тумайкина (Olga Tumajkina), Татьяна Яковенко (Tatyana Yakovenko), Василий Шахназаров, Владимир Ильин (Vladimir Ilyin), Станислав Эвентов, Екатерина Каспарова
-	</roles>
-	<description>Россия, 2008
-Студия: Мосфильм
-Создатели: Карен Шахназаров (Karen Shakhnazarov)
-&amp;lt;br&amp;gt;
-Москва, 1974-й год. Сергей — студент пединститута, таскает в комиссионку книги дедушки-археолога, на вырученные рубли покупает &amp;quot;вранглер&amp;quot;, которым, в свою очередь, соблазняет однокурсниц. Оставшаяся наличность уходит на рестораны, пластинки &amp;quot;Роллинг Стоунз&amp;quot;, купленные из-под полы с риском загреметь в милицию, и билеты в &amp;quot;Таганку&amp;quot;, где дают &amp;quot;Гамлета&amp;quot; с Высоцким. Поссорившись с любимой девушкой, Сергей сбегает с практики в Гагры, где устраивает дебош. А потом в Среднюю Азию — посмотреть на дедовы раскопки и понять, что СССР, как и Хорезм, тоже канет в Лету.
-&amp;lt;br&amp;gt;
-Драма
-&amp;lt;br&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="31">unsort</item>
-		<item tid="237">И</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 04:51:49</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Стать Джоном Ленноном</item>
-</title>
-	
-	<producer>Сэм Тейлор Вуд (Sam Taylor Wood), Джулия Бейрд (Julia Baird), Мэтт Гринхалг (Matt Greenhalgh)</producer>
-	<roles>Аарон Джонсон (Aaron Johnson)
-Кристин Скотт Томас (Kristin Scott Thomas)
-Дэвид Срелфол (David Threlfall)
-Джош Болт (Josh Bolt)
-Офелия Ловибонд (Ophelia Lovibond)
-Керри Хейз (Kerrie Hayes)
-Ангела Уолш (Angela Walsh)
-Пол Риттер (Paul Ritter)
-Ричард Симс (Richard Syms)
-Энн-мэри Дафф (Anne-marie Duff)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Художественный биографический фильм о Джоне Ленноне. 
-Фильм повествует о детстве и юности Джона — от рождения и до конца 50-х годов, 
-когда был сформирован первый музыкальный коллектив с его участием — группа «The Quarrymen». 
-Особым лейтмотивом будут показаны отношения Джона с матерью.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="60">Великобритания</item>
-		<item tid="153">Канада</item>
-		<item tid="22">avi</item>
-		<item tid="245">С</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:23:17</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Легенды Риты</item>
 		<item>Тишина после выстрела</item>
 </title>
@@ -10253,7 +9055,7 @@ time_machine.avi
 		<item>Наверное, Боги сошли с ума</item>
 </title>
 	
-	<producer>Джейми Уис</producer>
+	<producer>Джейми Уис / Jamie Uys</producer>
 	<roles>Мариус Уэйерс (Marius Weyers)
 Сандра Принсло (Sandra Prinsloo)
 Джейми Уис (Jamie Uys)
@@ -10267,49 +9069,18 @@ time_machine.avi
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/G/gods.avi">gods.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="22">avi</item>
+		<item tid="241">Н</item>
+		<item tid="305">1980</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Jun-2013 00:06:07</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Наверное, Боги сошли с ума</item>
-</title>
-	
-	<producer>Jamie Uys</producer>
-	<roles>Мариус Уэйерс (Marius Weyers)
-Сандра Принсло (Sandra Prinsloo)
-Джейми Уис (Jamie Uys)
-Кен Гэмпу (Ken Gampu)
-Никсау (N!xau)
-	</roles>
-	<description>Ботсвана, 1980
-&amp;lt;pre&amp;gt;
-Режиссеру из Южной Африки Уису удалось в одном фильме органично совместить целых три сюжета. Один — о бушмене, которому его племя поручило ответственную миссию избавления от опасного предмета, невесть как попавшей в их руки пустой бутылки из-под кока-колы (ее бросил с самолета летчик). Другой — о любовном романе между незадачливым растяпой-учителем и приехавшей в саванну исследовательницей. И, наконец, третий — о группе террористов, улепетывающих после неудавшейся попытки военного путча. И все эти линии вдруг завязываются в один клубок. В общем, весело, неожиданно, оригинально, просто и гениально.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Jun-2013 00:06:07</updated>
+	<updated>28-Mar-2019 09:05:34</updated>
 </video>
 
 <video type="video">
@@ -10360,78 +9131,6 @@ time_machine.avi
 
 <video type="video">
 	<title>
-		<item>Розенкранц и Гильденстерн мертвы</item>
-</title>
-	
-	<producer>Том Стоппард</producer>
-	<roles>Гэри Олдман (Gary Oldman)
-Джоанна Рот (Joanna Roth)
-Иэн Глен (Iain Glen)
-Ричард Дрейфус (Richard Dreyfuss)
-Тим Рот (Tim Roth)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Драматург-авангардист Том Стоппард осуществил экранизацию собственной, 
-нашумевшей в 60-е годы, пьесы. Это вольная интерпретация шекспировского &amp;quot;Гамлета&amp;quot;, 
-в которой второстепенные персонажи выдвигаются на первый план, 
-а одним из основных событий становится спектакль, разыгрываемый бродячими актерами.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="42">трагикомедия</item>
-		<item tid="144">Тим Рот</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 14:44:00</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Розенкранц и Гильденстерн мертвы</item>
-</title>
-	
-	<producer>Tom Stoppard</producer>
-	<roles>Гэри Олдман (Gary Oldman)
-Джоанна Рот (Joanna Roth)
-Иэн Глен (Iain Glen)
-Ричард Дрейфус (Richard Dreyfuss)
-Тим Рот (Tim Roth)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Драматург-авангардист Том Стоппард осуществил экранизацию собственной, 
-нашумевшей в 60-е годы, пьесы. Это вольная интерпретация шекспировского &amp;quot;Гамлета&amp;quot;, 
-в которой второстепенные персонажи выдвигаются на первый план, 
-а одним из основных событий становится спектакль, разыгрываемый бродячими актерами.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="42">трагикомедия</item>
-		<item tid="144">Тим Рот</item>
-		<item tid="66">США</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 14:44:00</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Безжалостные Люди</item>
 </title>
 	
@@ -10466,7 +9165,7 @@ Ruthless People.avi
 		<item>Замок</item>
 </title>
 	
-	<producer>Михаэль Ханеке</producer>
+	<producer>Михаэль Ханеке / Michael Haneke</producer>
 	<roles>Ульрих Мюэ (Ulrich Muhe)
 Сюзанна Лотар (Susanne Lothar)
 Франк Гирин (Frank Giering)
@@ -10487,8 +9186,7 @@ Ruthless People.avi
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/C/The Castle.avi">The Castle.avi</a></li>
 	</ul>
 
 	<tags>
@@ -10497,52 +9195,12 @@ Ruthless People.avi
 		<item tid="65">Австрия</item>
 		<item tid="61">Германия</item>
 		<item tid="22">avi</item>
+		<item tid="236">З</item>
+		<item tid="295">1997</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Jun-2013 00:02:28</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Замок</item>
-</title>
-	
-	<producer>Michael Haneke</producer>
-	<roles>Ульрих Мюэ (Ulrich Muhe)
-Сюзанна Лотар (Susanne Lothar)
-Франк Гирин (Frank Giering)
-Феликс Эйтнер (Felix Eitner)
-Николис Парила (Nikolaus Paryla)
-Андре Эйзерман (Andre Eisermann)
-Дорте Лушевский (Dorte Lyssewski)
-Инга Буш (Inga Busch)
-Норберт Швинтек (Norbert Schwientek)
-Ганс Дил (Hans Diehl)
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Господин Землемер приглашен Замком для ведения соответствующих работ. 
-Прибыв в Деревню, он с удивлением обнаруживает, что здесь его никто не ждет. 
-Попытки доказать свои права наталкивается на стену непонимания. 
-Желание проникнуть в загадочный Замок все сильнее овладевает героем…
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="36">Михаэль Ханеке</item>
-		<item tid="65">Австрия</item>
-		<item tid="61">Германия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Jun-2013 00:02:28</updated>
+	<updated>28-Mar-2019 09:07:35</updated>
 </video>
 
 <video type="video">
@@ -10767,53 +9425,6 @@ The Trial.avi
 
 <video type="video">
 	<title>
-		<item>Штрафбат</item>
-</title>
-	
-	<producer>Николай Досталь</producer>
-	<roles># Алексей Серебряков — Твердохлебов Василий Степанович, командир штрафного батальона
-# Юрий Степанов — Глымов Антип Петрович, бывший вор в законе, позже — ротный в батальоне
-# Роман Мадянов — майор Харченко, начальник особого отдела
-# Юрий Шибанов — Павел Бурыкин
-# Павел Деревянко — Цыпа
-# Николай Мачульский — Хорь, «Амба, Витюня, отбегался»
-# Анна Асташкина — жена комдива
-	</roles>
-	<description>* Автор сценария: Эдуард Володарский
-    * Режиссёр: Николай Досталь
-    * Оператор-постановщик: Алексей Родионов
-    * Оператор:
-    * Художник-постановщик: Алим Матвейчук
-    * Композитор: Алексей Шелыгин
-    * Звукорежиссёр:
-    * Монтаж:
-    * Художник-гримёр:
-    * Продюсер: Николай Досталь
-&amp;lt;pre&amp;gt;
-Штрафбат — российский телесериал кинокомпании «МакДос» 2004 года.
-Фильм рассказывает о судьбе одного из штрафных батальонов Красной Армии, существовавшего во время Великой Отечественной войны.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="169">война</item>
-		<item tid="117">сериал</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="252">Ш</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:28:22</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Исаев</item>
 </title>
 	
@@ -10932,151 +9543,6 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 <video type="video">
 	<title>
-		<item>Штурм сознания. В поисках новой Земли</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/
-&amp;quot;&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="172">Наука и техника</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>12-Oct-2012 14:42:29</published>
-	<updated>18-Jun-2013 13:59:22</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Россия 2045. Электронный мозг, Нейрогаджеты и хранилище сознания</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/
-&amp;quot;&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="172">Наука и техника</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>12-Oct-2012 14:44:59</published>
-	<updated>18-Jun-2013 14:03:03</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Всятое семейство</item>
-		<item>Wholly Family</item>
-</title>
-	
-	<producer>Терри Гиллиам / Terry Gilliam</producer>
-	<roles>Николас Конноли (Nicolas Connolly)
-Кристина Капотонди (Cristiana Capotondi), Дуглас Дин (Douglas Dean).	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/
-&amp;quot;&amp;gt;
-Жанр: короткий метр, драма, комедия, фантазия
-Год выпуска: 2011
-Продолжительность: 00:19:42
-Перевод: Субтитры
-Cубтитры: русские
-Оригинальная аудиодорожка: английский, итальянский
-
-Семья туристов на улицах Неаполя. Из-за фигурки Пульчинеллы, которую хотел купить себе мальчик, начинается ссора и в итоге мальчик оказывается запертым родителями в своей комнате отеля.
-http://rutracker.org/forum/viewtopic.php?t=4111144</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="15">Терри Гиллиам</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>12-Oct-2012 14:51:16</published>
-	<updated>18-Jun-2013 00:28:00</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Мисима: Жизнь в четырех главах</item>
-		<item>Mishima: A Life in Four Chapters</item>
-</title>
-	
-	<producer>Пол Шрэдер / Paul Schrader</producer>
-	<roles>Кенджи Савада
-Кен Огата
-Тосиюки Нагасима, Ясосуке Бандо, Масаюки Шионойя, Хироси Миками, Хироси Катсуно, Джункичи Оримото, Наоко Отани, Харуко Като, Хисако Манда, Джунья Фукуда	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/Mishima.jpg&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Юкио Мисима - самый известный из японских писателей XX века, написавший 
-за два десятилетия 35 романов, 25 пьес, 200 рассказов и 8 томов эссе, 
-прежде чем совершить ритуальное самоубийство (в возрасте 45 лет). 
-Более всего его беспокоило то, что богатейшая история Японии, история традиций, ритуалов, 
-чести самураев и религии уступала в послевоенный период место гонке за деньгами. 
-С четырьмя единомышленниками он взял в заложники генерала, потребовал 
-построить личный состав, выступил перед собравшимися с речью и после этого сделал себе харакири. 
-В картине есть моменты биографического характера, но скорее это синтез, попытка создать 
-кинематографический образ искусства художника и его взаимосвязи с личными проблемами.
- В результате получилась сложная, но впечатляющая мозаика эпизодов. 
-Шрэдер подошел к теме с большим вкусом и умом, встроив реальные события и места 
-из романов в четыре главы: &amp;quot;Красота&amp;quot;, &amp;quot;Искусство&amp;quot;, &amp;quot;Действие&amp;quot; и &amp;quot;Гармония пера и меча&amp;quot;. 
-Реальность и творчество должны слиться как бы в экстазе за пределами бытия. 
-Самым поразительным достоинством картины можно назвать визуальный стиль. 
-Изумительно яркие, театральные декорации знаменитого японского художника Эйко Исиока 
-уже сами по себе придают сценам уникальность, а если еще добавить прекрасную операторскую работу Джона Бэйли... 
-Фильм рассчитан на любителей серьезного, некоммерческого кино.
-Приз в 1985 году на МКФ в Канне за художественный вклад.
-(с) Иванов М., www.videoguide.ru
-
-Продолжительность: 02:01:26
-Перевод: профессиональный (трехголосый, закадровый) - НТВ
-Русские субтитры: есть
-
-http://rutracker.org/forum/viewtopic.php?t=963088
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="4">драма</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>12-Oct-2012 14:57:36</published>
-	<updated>18-Jun-2013 00:26:07</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Фауст</item>
 		<item>Faust</item>
 </title>
@@ -11131,106 +9597,6 @@ http://rutracker.org/forum/viewtopic.php?t=4045941
 
 <video type="video">
 	<title>
-		<item>71 фрагмент хронологии случайностей</item>
-		<item>71 Fragmente einer Chronologie des Zufalls</item>
-</title>
-	
-	<producer>Михаэль Ханеке</producer>
-	<roles>Гэбриел Космин Урдес
-Лукас Мико
-Отто Грюнмандль
-Энн Беннет
-Удо Самель
-Бранко Самаровски
-Клаудия Мартини
-Георг Фридрих
-Клаус Хендл	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Этот экспериментальный фильм — своего рода паззл, где фрагменты мозаики 
-в итоге складываются в смысловое единство. Ханеке — художник некоммерческий, 
-по складу ума философ и исследователь, по первой профессии психолог, 
-его волнует проблема &amp;quot;эмоциональной замороженности&amp;quot;, которая поразила мир. 
-Если герои Достоевского мучительно &amp;quot;переступали&amp;quot; нравственные табу, 
-то персонажи нового времени делают это, даже не замечая. 
-Автор их хладнокровно препарирует, его басня — без морали, это бесстрастная констатация реальности.
-
-&amp;quot;71 фрагмент&amp;quot; выглядит как структуралистское упражнение, напрямую исходящее из
-S/Z Роланда Барта. Картина трансформирует (реальную) историю об австрийском студенте, 
-который в один прекрасный день вдруг в ярости набрасывается на первых встречных, 
-в 71 разобщенную сцену. Кажется, что проект, который хронологизирует причины убийственного веселья, 
-как и предшествующие события из жизни жертв, практически вынужден быть мелодраматичным и патетическим. Однако Ханеке изображает эту историю освежающе непсихологично. Зрителя заставляют смотреть такие кадры, как будущий &amp;quot;убийца&amp;quot; в течение четырех минут сам с собой играет в настольный теннис, или как будущая жертва молча смотрит вечерние новости. Эти 71 момент, примечательные только лишь своей не примечательностью, формируют систему, которая заключает в себе полную схему общества, где возможно индивидуальное преступление. Как обычно, камера Ханеке схватывает отдельные события с леденящей дистанции.
-Вспышка жестокости контекстуально помещается в некий срез общества: одинокий отец, пара с расстроенными взаимоотношениями, женщина, которая хочет усыновить ребенка, румынский иммигрант. Этот фильм является предшествием к последующим точкам тяготения, в частности, обращению внимания Ханеке на неавстрийское население и культуры, в особенности, на бывшую Югославию. Такая &amp;quot;тематика иностранцев&amp;quot; вновь возникает в фильмах &amp;quot;Код неизвестен&amp;quot; и &amp;quot;Время волков&amp;quot;. &amp;quot;71 фрагмент&amp;quot; отмечает превращение Ханеке: он больше не просто австрийский режиссер, но также европейский режиссер.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="35">философская притча</item>
-		<item tid="36">Михаэль Ханеке</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>12-Oct-2012 15:19:24</published>
-	<updated>11-Jun-2013 00:13:34</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>71 фрагмент хронологии случайностей</item>
-		<item>71 Fragmente einer Chronologie des Zufalls</item>
-</title>
-	
-	<producer>Michael Haneke</producer>
-	<roles>Гэбриел Космин Урдес
-Лукас Мико
-Отто Грюнмандль
-Энн Беннет
-Удо Самель
-Бранко Самаровски
-Клаудия Мартини
-Георг Фридрих
-Клаус Хендл	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Этот экспериментальный фильм — своего рода паззл, где фрагменты мозаики 
-в итоге складываются в смысловое единство. Ханеке — художник некоммерческий, 
-по складу ума философ и исследователь, по первой профессии психолог, 
-его волнует проблема &amp;quot;эмоциональной замороженности&amp;quot;, которая поразила мир. 
-Если герои Достоевского мучительно &amp;quot;переступали&amp;quot; нравственные табу, 
-то персонажи нового времени делают это, даже не замечая. 
-Автор их хладнокровно препарирует, его басня — без морали, это бесстрастная констатация реальности.
-
-&amp;quot;71 фрагмент&amp;quot; выглядит как структуралистское упражнение, напрямую исходящее из
-S/Z Роланда Барта. Картина трансформирует (реальную) историю об австрийском студенте, 
-который в один прекрасный день вдруг в ярости набрасывается на первых встречных, 
-в 71 разобщенную сцену. Кажется, что проект, который хронологизирует причины убийственного веселья, 
-как и предшествующие события из жизни жертв, практически вынужден быть мелодраматичным и патетическим. Однако Ханеке изображает эту историю освежающе непсихологично. Зрителя заставляют смотреть такие кадры, как будущий &amp;quot;убийца&amp;quot; в течение четырех минут сам с собой играет в настольный теннис, или как будущая жертва молча смотрит вечерние новости. Эти 71 момент, примечательные только лишь своей не примечательностью, формируют систему, которая заключает в себе полную схему общества, где возможно индивидуальное преступление. Как обычно, камера Ханеке схватывает отдельные события с леденящей дистанции.
-Вспышка жестокости контекстуально помещается в некий срез общества: одинокий отец, пара с расстроенными взаимоотношениями, женщина, которая хочет усыновить ребенка, румынский иммигрант. Этот фильм является предшествием к последующим точкам тяготения, в частности, обращению внимания Ханеке на неавстрийское население и культуры, в особенности, на бывшую Югославию. Такая &amp;quot;тематика иностранцев&amp;quot; вновь возникает в фильмах &amp;quot;Код неизвестен&amp;quot; и &amp;quot;Время волков&amp;quot;. &amp;quot;71 фрагмент&amp;quot; отмечает превращение Ханеке: он больше не просто австрийский режиссер, но также европейский режиссер.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="35">философская притча</item>
-		<item tid="36">Михаэль Ханеке</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>12-Oct-2012 15:19:24</published>
-	<updated>11-Jun-2013 00:13:34</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item> Wo Hu: Operation Undercover / Ngor fu</item>
 </title>
 	
@@ -11268,7 +9634,7 @@ S/Z Роланда Барта. Картина трансформирует (ре
 		<item>Abel</item>
 </title>
 	
-	<producer>Алекс Ван Вармердам</producer>
+	<producer>Алекс Ван Вармердам / Alex van Warmerdam</producer>
 	<roles>Алекс Ван Вармердам
 Анри Гарсен
 Ольга Зёдерхук
@@ -11287,55 +9653,19 @@ S/Z Роланда Барта. Картина трансформирует (ре
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/Abel.avi">Abel.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="38">Алекс Ван Вармердам</item>
+		<item tid="207">A</item>
+		<item tid="229">А</item>
+		<item tid="306">1986</item>
 	</tags>
 
 	<published>12-Oct-2012 15:46:08</published>
-	<updated>11-Jun-2013 00:14:35</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Абель</item>
-		<item>Abel</item>
-</title>
-	
-	<producer>Alex van Warmerdam</producer>
-	<roles>Алекс Ван Вармердам
-Анри Гарсен
-Ольга Зёдерхук
-Аннет Мальэрб
-Лоес Лука
-Антон Котхёйс
-Пир Маскини
-Марк Ван Вармердам	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Описание: 32-летний Абель последние лет десять на улицу не выходил ни разу. 
-Он вместе со своими родителями обитает в полумраке своего дома, охотясь за мухами с ножницами в руках. 
-Отец делает всё, чтобы вытащить его из дома. Психиатр, магнитизёр, девушка из театрального общества - 
-ничто не помогает. Когда Абель и мать покупают телевизор, для отца это последняя капля. 
-В результате семейного скандала Абель оказывается на улице…
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="38">Алекс Ван Вармердам</item>
-	</tags>
-
-	<published>12-Oct-2012 15:46:08</published>
-	<updated>11-Jun-2013 00:14:35</updated>
+	<updated>28-Mar-2019 09:18:31</updated>
 </video>
 
 <video type="video">
@@ -11478,123 +9808,6 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<published>12-Oct-2012 16:00:36</published>
 	<updated>17-Dec-2017 06:41:20</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Три на три / 3x3</item>
-</title>
-	
-	<producer>Nuno Rocha</producer>
-	<roles>Жоау Марсал, Рикардо Азеведо	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/
-&amp;quot;&amp;gt;
-Охранник целые ночи проводит на баскетбольной площадке. Он научился так ловко забрасывать мяч в корзину,
-что никак не рассчитывал на появление соперника - ночного уборщика с оригинальной внешностью и научным подходом к делу.</description>
-	
-
-	<ul>
-		<li>http://localhost/video/films/01/#3x3 (Portugal 2009, Nuno Rocha).avi</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>12-Oct-2012 16:03:07</published>
-	<updated>12-Oct-2012 16:05:03</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Гендель: Жизнь музыкального кумира</item>
-		<item>Handel: Life of a Pop Icon</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;pre&amp;gt;
-Георг Фридрих Гендель (1685-1759) был не только гениальным музыкантом, 
-его способности к продвижению собственного творчества также были на высоте. 
-Именно благодаря его деловой хватке, в середине 18-го века весь мир узнал о 
-таких хитах Генделя как Аллилуйя, Сарабанда и Священник Садок, 
-более известный ныне как музыкальная основа Гимна Лиги чемпионов. 
-Примечателен тот факт, что первой в истории биографией композитора 
-стало именно жизнеописание эксцентричного гения Генделя. 
-В этом документальном фильме мы станем свидетелями полных драматизма и 
-юмора моментов жизни классика, а также познакомимся с его знаменитыми 
-современниками: итальянским клавесинистом-виртуозом Доменико Скарлатти, 
-немецким композитором Иоганном Маттезоном, а также со звездой оперной сцены Франческой Кузони&amp;quot;. 
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-Oct-2012 16:08:20</published>
-	<updated>01-Jan-2016 06:41:10</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Партитуры не горят. Леопольд Моцарт</item>
-</title>
-	
-	
-	
-	<description>Авторская программа А.Варгафтика</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="240">М</item>
-		<item tid="243">П</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-Oct-2012 16:12:01</published>
-	<updated>01-Jan-2016 06:15:14</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Петр Мамонов. Черным по белому</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="240">М</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-Oct-2012 16:13:53</published>
-	<updated>01-Jan-2016 06:13:58</updated>
 </video>
 
 <video type="video">
@@ -11762,125 +9975,6 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 
 	<published>18-Nov-2012 13:10:32</published>
 	<updated>26-May-2013 10:17:57</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Эрнст и свет</item>
-		<item>Ernst and Lyset</item>
-</title>
-	
-	<producer>Андерс Томас Йенсен, Томас Виллум Йенсен</producer>
-	<roles>Йенс Йорн Споттаг / Jens Jørn Spottag
-Сьорен Остергаард / Søren Østergaard	</roles>
-	<description>Бизнесмен Эрнст только что приземлился в аэропорту и спешит домой к жене. 
-На улице идёт проливной дождь и потому он берёт попутчика. 
-Они начинают разговор о ценности жизни и вскоре становится ясно, 
-что к нему в машину сел сам Иисус Христос. Но Эрнст слишком спешит домой, 
-чтобы так просто в это поверить.
-
-http://rutracker.org/forum/viewtopic.php?t=3556066
-----------------------------</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="24">mp4</item>
-		<item tid="254">Э</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>18-Nov-2012 13:24:27</published>
-	<updated>01-Jan-2016 04:20:57</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Энтони Берджесс. Механик апельсина</item>
-		<item>Anthony Burgess. The Mechanic of the Orange</item>
-</title>
-	
-	<producer>Елиза Мантин / Elisa Mantin</producer>
-	
-	<description>&amp;lt;pre&amp;gt;
-Э́нтони Бёрджесс (англ. Anthony Burgess; полное имя — Джон Э́нтони Бёрджесс Уи́лсон, англ. John Anthony Burgess Wilson, известен также как Джозеф Келл; 25 февраля 1917, Манчестер — 22 ноября 1993, Лондон) 
-— английский писатель и литературовед (занимался литературными исследованиями, особенно творчества Шекспира и Джойса), 
-также занимался сочинением музыки (симфонии, балет и опера), литературным переводом и журналистикой. 
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="230">Б</item>
-		<item tid="295">1997</item>
-	</tags>
-
-	<published>18-Nov-2012 14:44:23</published>
-	<updated>21-Aug-2016 11:58:05</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Песня Карлы</item>
-		<item>Carla's.Song</item>
-</title>
-	
-	<producer>Кен Лоуч (Ken Loach)</producer>
-	<roles>Robert Carlyle / Роберт Карлайл
-Oyanka Cabezas / Оянка Кабесас
-Scott Glenn / Скотт Гленн
-Salvador Espinoza / Сальвадор Эспиноза
-Richard Loza / Ричард Лоза
-Norma Rivera / Норма Ривера
-Gary Lewis / Гарри Льюис
-Stewart Preston / Стюарт Престон
-Paul Laverty / Пол Лаверти	</roles>
-	<description>Действие фильма известного режиссёра Кена Лоуча происходит в 1987 году - 
-в период противостояния независимой Никарагуа и военизированных отрядов 
-под руководством США. События начинают развиваться в Британии, где жизнь течёт мирно, 
-люди заняты своими повседневными проблемами и заботами, а о войнах и революциях 
-знают лишь по газетам, радио и телевизору. Но вдруг беспечный британец оказывается 
-непосредственно в зоне боевых действий, и его реакция вполне естественна 
-– вернутся назад, туда, где было спокойно и безопасно.
-Помимо исторического и революционного подтекста, в фильме прослеживается 
-сравнение двух людей, выросших в разных культурах. Отличия оказываются столь сильными, 
-что ни любовь, ни привязанность, ни жалость не способны примирить человека с тем, 
-что ему чуждо, и заставить принять другой образ жизни.
-http://rutracker.org/forum/viewtopic.php?t=2286257
-
-Перевод: Русские субтитры (перевод Евгения и Елены Феденко)
-Оригинальная аудиодорожка: английский, испанский</description>
-	<pictures>
-		<img src="/video/0_covers/carla_song.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="54">мелодрама</item>
-		<item tid="60">Великобритания</item>
-		<item tid="61">Германия</item>
-		<item tid="62">Испания</item>
-		<item tid="22">avi</item>
-		<item tid="209">C</item>
-		<item tid="238">К</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>18-Nov-2012 15:05:21</published>
-	<updated>01-Jan-2016 04:24:37</updated>
 </video>
 
 <video type="video">
@@ -12552,194 +10646,6 @@ Stage direction and lighting design: Giorgio Strehler</description>
 
 	<published>01-Dec-2012 16:24:28</published>
 	<updated>07-May-2016 16:22:08</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Альфонс Муха. Видение "Нового искусства"</item>
-		<item>Alphonce Mucha: Art Nouveau Visionary</item>
-</title>
-	
-	<producer>Susanna Boehm</producer>
-	
-	
-	
-
-	
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>01-Dec-2012 19:50:16</published>
-	<updated>01-Jan-2016 07:00:09</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Жар-птица Ивана Билибина</item>
-</title>
-	
-	<producer>Александр Шувиков</producer>
-	
-	
-	
-
-	
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>01-Dec-2012 19:57:21</published>
-	<updated>01-Jan-2016 06:59:26</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>National Geographic: Известная Вселенная.</item>
-		<item>National Geographic: Known Universe. Sizing up the Universe</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="173">Космос</item>
-		<item tid="60">Великобритания</item>
-	</tags>
-
-	<published>01-Dec-2012 20:12:56</published>
-	<updated>02-Jun-2013 08:33:35</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Вселенная глазами телескопа Хаббл</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="173">Космос</item>
-		<item tid="60">Великобритания</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>01-Dec-2012 20:16:37</published>
-	<updated>01-Jan-2016 06:52:26</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Пакт</item>
-		<item>Pact</item>
-</title>
-	
-	<producer>Скотт Паттерсон / Scott Patterson</producer>
-	<roles>Вероника Нив / Veronica Neave
-Ретт Уолтон / Rhett Walton
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Парочка принимает решение свести счеты с жизнью, причем сделать это одновременно. 
-В их распоряжении последний вечер, шампанское, свечи и две таблетки с ядом, 
-а если что-то пойдет не так — револьвер с двумя патронами.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="88">Австралия</item>
-		<item tid="24">mp4</item>
-		<item tid="243">П</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>02-Dec-2012 03:47:56</published>
-	<updated>01-Jan-2016 05:05:52</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Перекресток</item>
-		<item>Crossroad</item>
-</title>
-	
-	<producer>Мазиар Лахути / Maziar Lahooti</producer>
-	<roles>Уэйн Дэвис / Wayne Davies
-Джеймс Белл / James Bell
-Дэвид Магвайер / David Maguire	</roles>
-	<description>На лесном пересечении дорог останавливается машина, водитель пересаживается на пассажирское сиденье и засыпает...</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="28">короткометражный</item>
-		<item tid="88">Австралия</item>
-		<item tid="24">mp4</item>
-		<item tid="243">П</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>02-Dec-2012 04:02:30</published>
-	<updated>01-Jan-2016 05:06:52</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Черная дыра</item>
-		<item>The Black Hole</item>
-</title>
-	
-	<producer>Филип Сэнсом, Олли Уильямс</producer>
-	
-	<description>Притча о жадности и алчности обычного офисного клерка, в руки которого попадает листок с волшебной черной дырой.</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="60">Великобритания</item>
-		<item tid="24">mp4</item>
-	</tags>
-
-	<published>02-Dec-2012 04:23:50</published>
-	<updated>02-Jun-2013 08:41:09</updated>
 </video>
 
 <video type="video">
@@ -15060,74 +12966,6 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 <video type="video">
 	<title>
-		<item>Йоги</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
-		<item tid="68">Россия</item>
-	</tags>
-
-	<published>23-Feb-2013 12:40:47</published>
-	<updated>23-Feb-2013 12:41:25</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>В.Давыдов и Голиаф</item>
 </title>
 	
@@ -15273,7 +13111,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 		<item>Delicatessen</item>
 </title>
 	
-	<producer>Марк Каро / Marc Caro</producer>
+	<producer>Марк Каро / Marc Caro / Жан-Пьер Жёне / Jean-Pierre Jeunet</producer>
 	<roles>Доминик Пинон
 Мари-Лор Дуньяк
 Карин Виар
@@ -15298,8 +13136,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/D/Delicatessen.1991.BDRip.HQCLUB/Delicatessen.1991.BDRip.HQCLUB.avi">Delicatessen.1991.BDRip.HQCLUB.avi</a></li>
 	</ul>
 
 	<tags>
@@ -15320,63 +13157,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	</tags>
 
 	<published>18-Mar-2013 14:25:39</published>
-	<updated>17-Dec-2017 05:17:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Деликатесы</item>
-		<item>Delicatessen</item>
-</title>
-	
-	<producer>Жан-Пьер Жёне / Jean-Pierre Jeunet</producer>
-	<roles>Доминик Пинон
-Мари-Лор Дуньяк
-Карин Виар
-Жан-Клод Дрейфус
-Тикки Ольгадо
-Анн-Мари Пизани
-Эдит Кер
-Жак Мату
-Рюфюс
-Ховард Вернон	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Домовладелец хозяйничает в мясной лавке на первом этаже и кормит жильцов, 
-которые являются и клиентами, и сырьем для продукции. 
-Беда в том, что в них постоянно влюбляется близорукая и мышеподобная дочь мясника.
-В прошлом обычно гастрономия одерживала верх над романтическими устремлениями, 
-но новый претендент произвел на нее такое сильное впечатление, что фарша не получилось. 
-Мясник не может поверить в происходящее, но что-то заставляет его откладывать «разделку», 
-пока соседи не начинают жаловаться на нехватку мяса в ежедневном меню.
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/delicatessen.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="5">комедия</item>
-		<item tid="54">мелодрама</item>
-		<item tid="12">триллер</item>
-		<item tid="43">фантастика</item>
-		<item tid="149">Доминик Пинон</item>
-		<item tid="147">Жан-Пьер Жене</item>
-		<item tid="89">Франция</item>
-		<item tid="148">субтитры</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-		<item tid="210">D</item>
-		<item tid="233">Д</item>
-		<item tid="320">sub_en</item>
-	</tags>
-
-	<published>18-Mar-2013 14:25:39</published>
-	<updated>17-Dec-2017 05:17:24</updated>
+	<updated>28-Mar-2019 09:26:36</updated>
 </video>
 
 <video type="video">
@@ -15448,50 +13229,6 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 
 <video type="video">
 	<title>
-		<item>Орда / Святитель Алексий</item>
-</title>
-	
-	<producer>Андрей Прошкин</producer>
-	<roles>Максим Суханов, Роза Хайруллина, Иннокентий Дакаяров, Александр Яценко, Виталий Хаев, Алексей Егоров, Федот Львов
-Андрей Панин
-Алексей Шевченков
-Моге Ооржак
-Ромуальд Анджей Клос
-Саша Вуличевич
-Даулет Абдыгапаров, Толепберген Байсакалов, Геннадий Турантаев, Александр Цой, Оолак Ондар, Мишик Абаджян, Куприян Михайлов, Пётр Янданов, Шарафутдин Бураков, Ирина Никифорова, Деля Эрдниева, Юрий Пронин, Николай Шатохин, Сергей Макаров, Умсын Хаерлиева, Василиса Суханова, Владимир Храбров, Игорь Чигасов, Олег Руденко-Травин, Егор Моисеев, Олег Куксовский, Егор Галяндин, Антон Федоров, Евгений Харитонов, Юрий Гаркави, Александр Берлин, Владимир Кочетков, Виталий Гусев, Юнь Чень Жуань	</roles>
-	<description>&amp;lt;pre&amp;gt;
-&amp;quot;Орда&amp;quot; - веками это слово означало кровавые набеги и унизительную дань 
-для многих стран и народов. Странный и страшный мир со своими законами и обычаями. 
-В середине XIV века власть Орды простирается над большей частью Евразии. 
-Платит дань и Московское княжество. Столица Золотой Орды - город Сарай-Бату. 
-Тайдула, мать хана Джанибека, внезапно ослепла. Всевозможные лекари, знахари 
-и шаманы безрезультатно пытались вернуть ей зрение. До Орды дошли слухи о 
-московском митрополите Алексии, по молитвам которого творятся чудеса и которого 
-ордынцы считают &amp;quot;великим колдуном&amp;quot;. В Москву прибывают ханские послы и требуют, 
-чтобы Алексий поехал с ними в Орду и вылечил ханшу...
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/orda.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>19-Mar-2013 14:05:35</published>
-	<updated>16-Jun-2013 01:58:37</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Великий диктатор</item>
 		<item>The Great Dictator</item>
 </title>
@@ -15544,7 +13281,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 		<item>Bushi no ichibun</item>
 </title>
 	
-	<producer>Ёдзи Ямада</producer>
+	<producer>Ёдзи Ямада / Yôji Yamada</producer>
 	<roles>Такуя Кимура
 Рэй Дан
 Мицугоро Бандо,
@@ -15561,8 +13298,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/B/Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv">Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -15578,50 +13314,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	</tags>
 
 	<published>31-Mar-2013 14:50:41</published>
-	<updated>04-Oct-2014 15:00:03</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Любовь и честь</item>
-		<item>Bushi no ichibun</item>
-</title>
-	
-	<producer>Yôji Yamada</producer>
-	<roles>Такуя Кимура
-Рэй Дан
-Мицугоро Бандо,
-Такаси Сасано, Каори Момои, Нендзи Кобаяси, Кен Огата, Макото Акацука, Ясуо Дайчи, Токиэ Хидари, Коэн Кондо	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Лишь немного прослужив дегустатором, Синноё Мимура слепнет после того, 
-как ядовитый моллюск попадает на обед главе клана. До этого Синноё, 
-самурай низкого ранга на службе у клана с ежегодным жалованием в 30 коку риса, 
-жил небогато, но счастливо со своей женой Кайо и их старым слугой Токухеем, прислуживавшим семье еще со времен отца Синноё. Кайо и Токухею, изо всех сил потрудившись, удается спасти жизнь Синноё. Мечту учить мальчишек боевым искусствам можно забыть. Однако на какие деньги теперь жить молодой семье? В этой сложной ситуации о выживании семьи придется позаботиться жене главного героя - Кайо. Вот только какой ценой? Начальник охраны главы клана готов похлопотать насчет пенсии для пострадавшего. Правда, сначала красавица жена должна прийти к нему на свидание... Вскоре до слепого самурая доходят слухи о неверности любимой супруги...
-Последний фильм трилогии после лент «Сумрачный самурай» (2002) и «Скрытый клинок» (2004).
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/Bushi no ichibun.png"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="159">Ёдзи Ямада</item>
-		<item tid="63">Япония</item>
-		<item tid="148">субтитры</item>
-		<item tid="27">mkv</item>
-		<item tid="208">B</item>
-		<item tid="239">Л</item>
-		<item tid="251">Ч</item>
-	</tags>
-
-	<published>31-Mar-2013 14:50:41</published>
-	<updated>04-Oct-2014 15:00:03</updated>
+	<updated>28-Mar-2019 09:27:58</updated>
 </video>
 
 <video type="video">
@@ -15665,96 +13358,6 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 
 	<published>31-Mar-2013 14:56:16</published>
 	<updated>17-Dec-2017 05:14:36</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Стрела. Абсолютное оружие (Война стрел)</item>
-		<item>Choi-jong-byeong-gi Hwal</item>
-</title>
-	
-	<producer>Хан-мин Ким</producer>
-	<roles>Хае-ил Парк
-Сенг-юнг Рио
-Мун Чхэ Вон, Mu-Yeol Kim, Han-wi Lee, Kyeong-yeong Lee, Gi-woong Park, Рай Хеи Отани, Ким Гу Тхэк, Eunjin Kang	</roles>
-	<description>&amp;lt;pre&amp;gt;
- В 1636 году полчища маньчжуров пришли на земли государства Чосон, 
-неся с собой смерть и разорение. Во время нападения на одну из деревень 
-враги взяли в плен Ча Ин, юную сестру лучника Нам И, и ее жениха Со Гуна. 
-Отважный герой решает во что бы то ни стало отыскать родных и спасти 
-их от незавидной доли рабов в чужой стране. С этой целью он, повесив 
-на спину свой верный лук, доставшийся ему от отца, и колчан со стрелами, 
-отправляется в Китай, преследуя отряд, напавший на его родную деревню. 
-Вскоре слухи о выдающимся лучнике, не знающем поражения, достигают 
-маньчжурского войска. Поймать и обезвредить неуловимого Нам И поручают 
-полководцу Джушинта и его людям.
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/war_of_the_arrows.png"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="156">Корея</item>
-		<item tid="150">srt</item>
-		<item tid="27">mkv</item>
-		<item tid="229">А</item>
-		<item tid="245">С</item>
-		<item tid="320">sub_en</item>
-		<item tid="277">2011</item>
-	</tags>
-
-	<published>07-Apr-2013 06:03:23</published>
-	<updated>17-Dec-2017 05:56:31</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Стрела. Абсолютное оружие (Война стрел)</item>
-		<item>Choi-jong-byeong-gi Hwal</item>
-</title>
-	
-	<producer>Han-min Kim</producer>
-	<roles>Хае-ил Парк
-Сенг-юнг Рио
-Мун Чхэ Вон, Mu-Yeol Kim, Han-wi Lee, Kyeong-yeong Lee, Gi-woong Park, Рай Хеи Отани, Ким Гу Тхэк, Eunjin Kang	</roles>
-	<description>&amp;lt;pre&amp;gt;
- В 1636 году полчища маньчжуров пришли на земли государства Чосон, 
-неся с собой смерть и разорение. Во время нападения на одну из деревень 
-враги взяли в плен Ча Ин, юную сестру лучника Нам И, и ее жениха Со Гуна. 
-Отважный герой решает во что бы то ни стало отыскать родных и спасти 
-их от незавидной доли рабов в чужой стране. С этой целью он, повесив 
-на спину свой верный лук, доставшийся ему от отца, и колчан со стрелами, 
-отправляется в Китай, преследуя отряд, напавший на его родную деревню. 
-Вскоре слухи о выдающимся лучнике, не знающем поражения, достигают 
-маньчжурского войска. Поймать и обезвредить неуловимого Нам И поручают 
-полководцу Джушинта и его людям.
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/war_of_the_arrows.png"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="156">Корея</item>
-		<item tid="150">srt</item>
-		<item tid="27">mkv</item>
-		<item tid="229">А</item>
-		<item tid="245">С</item>
-		<item tid="320">sub_en</item>
-		<item tid="277">2011</item>
-	</tags>
-
-	<published>07-Apr-2013 06:03:23</published>
-	<updated>17-Dec-2017 05:56:31</updated>
 </video>
 
 <video type="video">
@@ -15819,22 +13422,20 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	<roles>Сатоши Цумабуки
 Йоскэ Игучи
 Юко Фуэки	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Япония, Эдо, 1868 год. Конец сегуната.
+	<description>Япония, Эдо, 1868 год. Конец сегуната.
 Второй сын в захудалом самурайском доме, Хитоширо редкостно неудачлив.
 Несмотря на таланты, он не может получить достойной должности и проявить себя.
 Его семья еле сводит концы с концами.
 Знающие люди советуют ему помолиться в чудодейственном храме Трех Кругов. 
 Тамошний Лисий Бог как никто помогает от несчастий. Хитоширо не особенно верит в такие вещи, 
-но однажды, возвращаясь домой навеселе, он набрел на святилище в диких зарослях...
-&amp;lt;/pre&amp;gt;</description>
+но однажды, возвращаясь домой навеселе, он набрел на святилище в диких зарослях...</description>
 	<pictures>
 		<img src="/video/0_covers/Tsukigami.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Tsukigami/Tsukigami_1.avi">Tsukigami_1.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Tsukigami/Tsukigami_2.avi">Tsukigami_2.avi</a></li>
 	</ul>
 
 	<tags>
@@ -15850,47 +13451,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D0
 	</tags>
 
 	<published>15-Apr-2013 14:09:24</published>
-	<updated>17-Dec-2017 05:52:10</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Горная сакура</item>
-		<item>Yamazakura</item>
-</title>
-	
-	<producer>Синохара Тэцуо</producer>
-	<roles>Ноэ Исомура: Рэна Танака / Rena Tanaka
-Яитиро Тэдзука: Нориюки Хигасияма / Noriyuki Higashiyama
-Сёдзаэмон Исомура: Тэцуя Тиба / Tetsuya Chiba
-Сидзу Тэдзука: Дзюнко Фудзи / Junko Fuji	</roles>
-	<description>&amp;lt;pre&amp;gt;
-У Ноэ Исомуры трудная жизнь: с утра и до самого вечера ей приходится работать в доме своего мужа, 
-постоянно выслушивая упрёки и недовольство свекрови. Однажды весной она возвращается из храма 
-по горной тропе и останавливается, заворожённая красотой распустившейся сакуры. 
-Сорвать с дерева цветущую ветвь ей помогает незнакомый самурай, проходящий мимо. 
-Хотя Ноэ не признаёт его, он, кажется, давно знаком с ней. Оказывается, несколько лет назад 
-он просил её руки, а ныне преподаёт кэндзюцу в городском додзё при общеобразовательной школе. 
-Между тем, начальник аграрного совета устанавливает новую земельную политику, которая ставит 
-под угрозу выживание местных крестьян...
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="63">Япония</item>
-		<item tid="150">srt</item>
-		<item tid="232">Г</item>
-		<item tid="245">С</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>15-Apr-2013 14:28:55</published>
-	<updated>01-Jan-2016 05:39:58</updated>
+	<updated>28-Mar-2019 08:25:27</updated>
 </video>
 
 <video type="video">
@@ -15993,188 +13554,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 	<published>12-May-2013 02:24:13</published>
 	<updated>12-May-2013 02:25:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Сегодня увольнения не будет</item>
-</title>
-	
-	<producer>Андрей Тарковский</producer>
-	<roles>Олег Борисов
-Леонид Куравлев
-Станислав Любшин
-Алексей Смирнов
-Петр Любешкин
-Олег Мокшанцев
-Владимир Маренков
-Игорь Косухин
-Нина Головина,
-Алексей Добронравов	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Курсовая работа режиссера Андрея Тарковского. 
-Фильм, снятый по мотивам очерка А. Сахнина «Эхо войны» по заказу Молодежной редакции Центрального телевидения 
-совместно с учебной студией ВГИКа, рассказывает о реальных событиях, произошедших в Курске. 
-Во время земляных работ на улице Советской бригада коммунального хозяйства обнаруживает в земле \
-немецкий склад боеприпасов, оставшийся со времен войны. 30 тонн взрывчатки пролежали в земле 15 лет. 
-По инструкции, разминировать нельзя — к ним и прикасаться опасно. Но и взрывать на месте невозможно — 
-вокруг жилые кварталы. Дело поручают группе капитана Галича. К 10 утра следующего дня всё население 
-эвакуируют за черту города, а в зловещем котловане семь человек начинают игру со смертью... 
-Ранние работы Тарковского отличало соединение экспериментов с занимательностью, а, кроме того, здесь 
-свои первые роли играли будущие звезды кино Олег Борисов, Леонид Куравлёв, Станислав Любшин, Алексей Смирнов, 
-а также сам Андрей Тарковский, сыгравший в фильме эпизодическую роль офицера-подрывника.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="28">короткометражный</item>
-		<item tid="105">Тарковский, Андрей</item>
-		<item tid="22">avi</item>
-		<item tid="245">С</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-May-2013 02:31:23</published>
-	<updated>01-Jan-2016 05:21:16</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Сегодня увольнения не будет</item>
-</title>
-	
-	<producer>Александр Гордон (II)</producer>
-	<roles>Олег Борисов
-Леонид Куравлев
-Станислав Любшин
-Алексей Смирнов
-Петр Любешкин
-Олег Мокшанцев
-Владимир Маренков
-Игорь Косухин
-Нина Головина,
-Алексей Добронравов	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Курсовая работа режиссера Андрея Тарковского. 
-Фильм, снятый по мотивам очерка А. Сахнина «Эхо войны» по заказу Молодежной редакции Центрального телевидения 
-совместно с учебной студией ВГИКа, рассказывает о реальных событиях, произошедших в Курске. 
-Во время земляных работ на улице Советской бригада коммунального хозяйства обнаруживает в земле \
-немецкий склад боеприпасов, оставшийся со времен войны. 30 тонн взрывчатки пролежали в земле 15 лет. 
-По инструкции, разминировать нельзя — к ним и прикасаться опасно. Но и взрывать на месте невозможно — 
-вокруг жилые кварталы. Дело поручают группе капитана Галича. К 10 утра следующего дня всё население 
-эвакуируют за черту города, а в зловещем котловане семь человек начинают игру со смертью... 
-Ранние работы Тарковского отличало соединение экспериментов с занимательностью, а, кроме того, здесь 
-свои первые роли играли будущие звезды кино Олег Борисов, Леонид Куравлёв, Станислав Любшин, Алексей Смирнов, 
-а также сам Андрей Тарковский, сыгравший в фильме эпизодическую роль офицера-подрывника.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="28">короткометражный</item>
-		<item tid="105">Тарковский, Андрей</item>
-		<item tid="22">avi</item>
-		<item tid="245">С</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-May-2013 02:31:23</published>
-	<updated>01-Jan-2016 05:21:16</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дети Сараево</item>
-		<item>Djeca</item>
-</title>
-	
-	<producer>Айда Бегич</producer>
-	<roles>Мария Пикич
-Исмир Гагула
-Божан Навоец
-Sanela Pepeljak
-Ведран Джекич
-Марио Кнезович
-Ясна Бери
-Никола Джурицко
-Штаса Дукич
-Александр Сексан	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Рахима 23-х лет и 14-летний Недим — сироты войны в Боснии. Спустя десять лет после тех трагических событий герои фильма живут в Сараево, в обществе, которое все еще не излечилось от шрамов прошлого.
-После того как юность ее во многом была связана с мелкими преступлениями, Рахима нашла утешение в исламе. Героиня картины надеется, что ее брат-подросток последует за ней. Однако у парня собственное представление о жизни.
-После того как он оказывается замешан в драке с сыном влиятельного местного политика, жизнь брата и сестры резко осложняется. Это происшествие приводит в действие целую цепь событий, которые дают Рахиме возможность понять, как же мало она в действительности знает своего брата…
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/Djeca_Children of Sarajevo.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="72">Босния-Герцеговина</item>
-		<item tid="61">Германия</item>
-		<item tid="64">Хорватия</item>
-		<item tid="233">Д</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-May-2013 02:44:18</published>
-	<updated>01-Jan-2016 04:38:10</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дети Сараево</item>
-		<item>Djeca</item>
-</title>
-	
-	<producer>Aida Begic</producer>
-	<roles>Мария Пикич
-Исмир Гагула
-Божан Навоец
-Sanela Pepeljak
-Ведран Джекич
-Марио Кнезович
-Ясна Бери
-Никола Джурицко
-Штаса Дукич
-Александр Сексан	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Рахима 23-х лет и 14-летний Недим — сироты войны в Боснии. Спустя десять лет после тех трагических событий герои фильма живут в Сараево, в обществе, которое все еще не излечилось от шрамов прошлого.
-После того как юность ее во многом была связана с мелкими преступлениями, Рахима нашла утешение в исламе. Героиня картины надеется, что ее брат-подросток последует за ней. Однако у парня собственное представление о жизни.
-После того как он оказывается замешан в драке с сыном влиятельного местного политика, жизнь брата и сестры резко осложняется. Это происшествие приводит в действие целую цепь событий, которые дают Рахиме возможность понять, как же мало она в действительности знает своего брата…
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/Djeca_Children of Sarajevo.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="72">Босния-Герцеговина</item>
-		<item tid="61">Германия</item>
-		<item tid="64">Хорватия</item>
-		<item tid="233">Д</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-May-2013 02:44:18</published>
-	<updated>01-Jan-2016 04:38:10</updated>
 </video>
 
 <video type="video">
@@ -16551,99 +13930,10 @@ Sanela Pepeljak
 
 <video type="video">
 	<title>
-		<item>Роботы</item>
-</title>
-	
-	<producer>Джилл Маршалл</producer>
-	
-	<description>&amp;lt;pre&amp;gt;
-Этот фильм о роботах снят по мотивам нашумевшей научно-популярной книги немецкого фотографа Петера Менцеля и журналиста Фейта Д'Алусио &amp;quot;Robo sapiens. Эволюция нового вида&amp;quot;.
-&amp;lt;/pre&amp;gt;
-============================
-демо роботов Boston Dynamics
-
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=wE3fmFTtP9g
-http://compulenta.computerra.ru/tehnika/robotics/10009335/
-
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=SD6Okylclb8
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=LJZQ3n-iQYE
-http://www.computerra.ru/84772/robot-vyuchnyiy-mul-i-chelovekopodobnyiy-atlas-hvastayutsya-novyimi-dostizheniyami/
-
-Big Dog
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=cHJJQ0zNNOM
-https://docs.google.com/file/d/0B0l5s_9HQLzzTTA3aERnU2oxTVU/edit?usp=sharing
-
-LS3 - Legged Squad Support System
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=R7ezXBEBE6U
-https://docs.google.com/file/d/0B0l5s_9HQLzzTU9Fc0pTb0tNaUk/edit?usp=sharing
-
-DARPA Legged Squad Support System (LS3)
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=xY42w1w0TWk
-https://docs.google.com/file/d/0B0l5s_9HQLzzMnRJa29oQk9Pczg/edit?usp=sharing
-
-LS3 Follow Tight
-http://www.youtube.com/watch?feature=player_detailpage&amp;amp;v=hNUeSUXOc-w
-https://docs.google.com/file/d/0B0l5s_9HQLzzSG56bHZNRTJ2Q0E/edit?usp=sharing
-
-RHex Rough-Terrain Robot
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=ISznqY3kESI
-https://docs.google.com/file/d/0B0l5s_9HQLzzWGlLSVhLN19ldGM/edit?usp=sharing
-
-Sand Flea Jumping Robot
-http://www.youtube.com/watch?feature=player_embedded&amp;amp;v=6b4ZZQkcNEo
-https://docs.google.com/file/d/0B0l5s_9HQLzzN09mbmRrQkRPN0U/edit?usp=sharing</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="32">документальный</item>
-		<item tid="172">Наука и техника</item>
-		<item tid="201">роботы</item>
-		<item tid="60">Великобритания</item>
-	</tags>
-
-	<published>22-May-2013 09:08:30</published>
-	<updated>08-Oct-2013 13:11:10</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Японская война в цвете</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="60">Великобритания</item>
-		<item tid="22">avi</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>22-May-2013 09:19:45</published>
-	<updated>01-Jan-2016 06:39:04</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>10 каноэ</item>
 </title>
 	
-	<producer>Рольф Де Хир</producer>
+	<producer>Рольф Де Хир, Питер Джигирр</producer>
 	<roles>Крузо Курддал
 Джейми Галпилил
 Ричард Бирринбиррин	</roles>
@@ -16659,8 +13949,7 @@ https://docs.google.com/file/d/0B0l5s_9HQLzzN09mbmRrQkRPN0U/edit?usp=sharing</de
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/T/Ten Canoes.avi">Ten Canoes.avi</a></li>
 	</ul>
 
 	<tags>
@@ -16670,42 +13959,7 @@ https://docs.google.com/file/d/0B0l5s_9HQLzzN09mbmRrQkRPN0U/edit?usp=sharing</de
 	</tags>
 
 	<published>23-May-2013 13:17:25</published>
-	<updated>23-May-2013 13:17:25</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>10 каноэ</item>
-</title>
-	
-	<producer>Питер Джигирр</producer>
-	<roles>Крузо Курддал
-Джейми Галпилил
-Ричард Бирринбиррин	</roles>
-	<description>http://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%81%D1%8F%D1%82%D1%8C_%D0%BB%D0%BE%D0%B4%D0%BE%D0%BA
-&amp;lt;pre&amp;gt;
-«Де́сять ло́док» (англ. Ten Canoes) — австралийский фильм 2006 г. в жанре драмы-комедии. 
-Это первый фильм, полностью снятый на одном из аборигенных языков Австралии. 
-Название фильма связано с одной из сюжетных линий: племя аборигенов делает 10 каноэ 
-и отправляется на них за гусиными яйцами, и по ходу их путешествия один из его участников рассказывает историю. Фильм получил специальную премию Каннского фестиваля
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="88">Австралия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>23-May-2013 13:17:25</published>
-	<updated>23-May-2013 13:17:25</updated>
+	<updated>28-Mar-2019 09:29:19</updated>
 </video>
 
 <video type="video">
@@ -17504,31 +14758,6 @@ https://docs.google.com/file/d/0B0l5s_9HQLzzN09mbmRrQkRPN0U/edit?usp=sharing</de
 
 <video type="video">
 	<title>
-		<item>Roving Mars</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="173">Космос</item>
-		<item tid="27">mkv</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>11-Jun-2013 12:12:56</published>
-	<updated>01-Jan-2016 06:45:46</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>KMFDM</item>
 </title>
 	
@@ -17553,32 +14782,6 @@ https://docs.google.com/file/d/0B0l5s_9HQLzzN09mbmRrQkRPN0U/edit?usp=sharing</de
 
 	<published>12-Jun-2013 02:11:44</published>
 	<updated>12-Jun-2013 02:11:44</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Living on the moon</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="173">Космос</item>
-		<item tid="27">mkv</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>12-Jun-2013 12:04:41</published>
-	<updated>01-Jan-2016 07:11:32</updated>
 </video>
 
 <video type="video">
@@ -17757,62 +14960,6 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 
 <video type="video">
 	<title>
-		<item>10 минут первого</item>
-</title>
-	
-	<producer>Илья Власов</producer>
-	<roles>Артем Семакин	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Что может случится с человеком за 10 минут?
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="28">короткометражный</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>15-Jun-2013 15:36:15</published>
-	<updated>15-Jun-2013 15:50:44</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Бунт Ихтиандра</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="33">биография</item>
-		<item tid="32">документальный</item>
-		<item tid="230">Б</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>15-Jun-2013 15:59:36</published>
-	<updated>01-Jan-2016 06:11:41</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>XZ, концерт</item>
 </title>
 	
@@ -17976,10 +15123,11 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 
 <video type="video">
 	<title>
-		<item>Жанна Д'Арк / The Messenger: The Story of Joan of Arc</item>
+		<item>Жанна Д'Арк</item>
+		<item>The Messenger: The Story of Joan of Arc</item>
 </title>
 	
-	<producer>Люк Бессон</producer>
+	<producer>Люк Бессон / Luc Besson</producer>
 	<roles>Милла Йовович /Milla Jovovich/
 Дастин Хоффман /Dustin Hoffman/
 Фэй Данауэй /Faye Dunaway/
@@ -17995,7 +15143,9 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 &amp;lt;/pre&amp;gt;</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/ZH/Zhanna.dArc.1999.BDRip.AVC.Megashara.com.mkv">Zhanna.dArc.1999.BDRip.AVC.Megashara.com.mkv</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -18008,44 +15158,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</tags>
 
 	<published>16-Jun-2013 09:23:18</published>
-	<updated>17-Dec-2017 05:11:34</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Жанна Д'Арк / The Messenger: The Story of Joan of Arc</item>
-</title>
-	
-	<producer>Luc Besson</producer>
-	<roles>Милла Йовович /Milla Jovovich/
-Дастин Хоффман /Dustin Hoffman/
-Фэй Данауэй /Faye Dunaway/
-Джон Малкович /John Malkovich/
-Чеки Карио /Tcheky Karyo/
-Венсен Кассель /Vincent Cassel/	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Оживает величественное и мрачное средневековье, время кровавых битв и фанатичных героев. 
-Реалистичная и пугающая постановка батальных сцен, потрясающая глубина визуальных образов и 
-волнующая музыка Эрика Серра переносят зрителя напятьсот лет назад, туда, где звуки молитв 
-заглушаются звоном мечей и где беспросветные ночи озаряются пламенем костров, пожирающих невинных жертв.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="89">Франция</item>
-		<item tid="148">субтитры</item>
-		<item tid="27">mkv</item>
-		<item tid="320">sub_en</item>
-		<item tid="288">1999</item>
-	</tags>
-
-	<published>16-Jun-2013 09:23:18</published>
-	<updated>17-Dec-2017 05:11:34</updated>
+	<updated>28-Mar-2019 09:23:48</updated>
 </video>
 
 <video type="video">
@@ -18103,51 +15216,6 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 
 	<published>18-Jun-2013 00:01:24</published>
 	<updated>18-Jun-2013 00:01:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Трофимъ. Прибытие поезда</item>
-</title>
-	
-	<producer>Алексей Балабанов</producer>
-	<roles>Сергей Маковецкий 
-Зоя Буряк
-Семен Стругачев
-Алексей Балабанов
-Алексей Герман
-Игорь Шибанов
-Владимир Богданов
-Людмила Александрова
-Дмитрий Месхиев
-Сергей Барковский
-Сергей Ражук
-Анатолий Журавлев	</roles>
-	<description>&amp;lt;pre&amp;gt;
-http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D1%82%D0%B8%D0%B5_%D0%BF%D0%BE%D0%B5%D0%B7%D0%B4%D0%B0_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC,_1995%29
-История о том, как зарубивший брата Трофим, дальше огорода-поля не ходивший, 
-сел в поезд, отхлебнул в столице империи штампованные радости и в недолгом 
-своем пути до острога глухим голосом произносил одну и ту же фразу 
-«А я брата зарубил».
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="28">короткометражный</item>
-		<item tid="109">Маковецкий, Сергей</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="246">Т</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>18-Jun-2013 00:11:16</published>
-	<updated>01-Jan-2016 05:32:02</updated>
 </video>
 
 <video type="video">
@@ -18310,116 +15378,6 @@ http://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%B1%D1%8B%D1%82%D0%B8%D0%B5_%D
 
 	<published>18-Jun-2013 14:17:02</published>
 	<updated>18-Jun-2013 14:17:02</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Диктатура мозга</item>
-</title>
-	
-	<producer>Максим Иксанов</producer>
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Фильм второй : «Диктатура мозга» По внешнему виду этого розоватого студня ни за что не догадаться, 
-что именно он — спрятанный в черепной коробке комок клеток — управляет нами и нашими поступками. 
-Даже великий Аристотель считал, что мозг — всего лишь своеобразный кондиционер для охлаждения горячей крови. 
-Однако к началу прошлого века стало понятно: именно здесь скрыты мы и все наши мысли, чувства и желания. 
-С тех пор принципы работы мозга не оставляют ученых равнодушными…
-Павел Лобков продолжает открывать сенсационные факты, неизвестные за пределами узкого круга ученых. Зрители увидят первое интервью отца психохирургии Хосе Дельгадо, которому в результате экспериментов почти удалось получить Человека Управляемого — мечту любого диктатора. А также узнают, как печально известный ученый Уолтер Фримен в поисках лечения шизофрении лишил разума тысячи пациентов.
-Автор проекта побывает в Институте мозга — в «святая святых» научного
-сообщества, хранилище гениальных разумов XX века. В СССР мозг выдающегося человека не принадлежал ни ему, ни его родственникам, но помогли ли исследования консервированных мозгов приоткрыть тайну одаренности?
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>20-Jun-2013 00:19:30</published>
-	<updated>20-Jun-2013 00:19:30</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Диктатура мозга</item>
-</title>
-	
-	<producer>Проекты Павла Лобкова</producer>
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Фильм второй : «Диктатура мозга» По внешнему виду этого розоватого студня ни за что не догадаться, 
-что именно он — спрятанный в черепной коробке комок клеток — управляет нами и нашими поступками. 
-Даже великий Аристотель считал, что мозг — всего лишь своеобразный кондиционер для охлаждения горячей крови. 
-Однако к началу прошлого века стало понятно: именно здесь скрыты мы и все наши мысли, чувства и желания. 
-С тех пор принципы работы мозга не оставляют ученых равнодушными…
-Павел Лобков продолжает открывать сенсационные факты, неизвестные за пределами узкого круга ученых. Зрители увидят первое интервью отца психохирургии Хосе Дельгадо, которому в результате экспериментов почти удалось получить Человека Управляемого — мечту любого диктатора. А также узнают, как печально известный ученый Уолтер Фримен в поисках лечения шизофрении лишил разума тысячи пациентов.
-Автор проекта побывает в Институте мозга — в «святая святых» научного
-сообщества, хранилище гениальных разумов XX века. В СССР мозг выдающегося человека не принадлежал ни ему, ни его родственникам, но помогли ли исследования консервированных мозгов приоткрыть тайну одаренности?
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>20-Jun-2013 00:19:30</published>
-	<updated>20-Jun-2013 00:19:30</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Всемирный потоп как предчувствие</item>
-</title>
-	
-	<producer>Алексей Илюхин</producer>
-	
-	<description>&amp;lt;pre&amp;gt;
-Штормы и ураганы, землетрясения и тайфуны, наводнения и жестокая засуха - все более частые гости нашей реальности.
-В сентябре 2005-го тропический ураган с красивым женским именем Катрина стер с лица Земли цветущий американский город Новый Орлеан. Европа пережила небывалые наводнения и зной, а в 2007-м - самую теплую за всю свою историю зиму. В нашей стране за последние 15 лет количество катаклизмов и неблагоприятных погодных явлений выросло в два раза.
-Проблемы учащающихся природных катастроф оказались в третьем тысячелетии столь серьезными, что отодвигают на второй план и региональные конфликты, и даже терроризм. Что происходит с планетой?
-Мир вспомнил древние пророчества: &amp;quot;В шестисотый год жизни Ноевой… разверзлись все источники великой бездны… и лился на Землю дождь сорок дней и сорок ночей… На пятнадцать локтей поднялась вода, и покрылись горы. И лишилась жизни всякая плоть, и скоты, и звери, и все гады, ползающие по земле…&amp;quot;
-Могут ли подобные события произойти и в наше время?
-Древние предания многих народов, Махатмы Востока, Нострадамус, Эдгар Кейси – все они предупреждали человечество о еще одной глобальной катастрофе.
-Что может стать основной причиной масштабной катастрофы XXI века: промышленная деятельность человека, увеличивающаяся активность солнца, изменение полюсов или что-то еще? Неужели мы на пороге &amp;quot;конца света&amp;quot;? Что будет с планетой уже через 10 лет? Кто может предсказать эти бедствия?
-Ответы на эти и другие вопросы пытаются найти авторы фильма. Вместе с ними в причинах сегодняшних аномалий пытаются разобраться современные эксперты и исследователи, непосредственные участники событий.
-В фильме принимают участие: А. Городницкий – доктор геолого-минералогических наук, профессор, академик РАЕН; М. Рукин – доктор технических наук, академик РАК; А. Скляров, кандидат технических наук, президент фонда &amp;quot;Третье тысячелетие&amp;quot;; А. Воронина, президента Российского общества по изучению проблем Атлантиды, представители Федеральной службы по гидрометеорологии и мониторингу окружающей среды.
-Авторы сценария: Армен Петросян, Алексей Горовацкий
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>20-Jun-2013 00:25:04</published>
-	<updated>01-Jan-2016 06:37:29</updated>
 </video>
 
 <video type="video">
@@ -18725,90 +15683,6 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 
 <video type="video">
 	<title>
-		<item>Дворцовые тени</item>
-</title>
-	
-	<producer>Ким Ми Чжон</producer>
-	<roles>Пак Чин Хи
-Юн Сэ А
-Со Ён Хи
-Лим Чжон Ын
-Чон Хэ Чжин	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Что стоит жизнь какой-то служанки, если ежегодно их показательно казнят на церемонии? 
-Что стоит жизнь наложницы, если после рождения сына её отправляют в монастырь? 
-Что стоит жизнь наследника трона, если для всесильной королевы-матери важнее всего вопросы крови? 
-Что стоит жизнь самой королевы-матери, если невинные жертвы мстят ей даже после смерти?..
-Самоубийство служанки Воль Лён всколыхнуло дворцовую знать. Но выяснить, что это было убийство, 
-для медсестры Чхон Нён оказывается проще, чем разобраться в хитросплетениях дворцовых интриг, 
-в которых замешаны даже слуги. Темное прошлое королевского рода таит в себе ключ к загадочному 
-настоящему и кошмарному будущему.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="39">детектив</item>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="156">Корея</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-		<item tid="233">Д</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>23-Jun-2013 03:41:03</published>
-	<updated>01-Jan-2016 05:17:30</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дворцовые тени</item>
-</title>
-	
-	<producer>Kim Mee-jeung</producer>
-	<roles>Пак Чин Хи
-Юн Сэ А
-Со Ён Хи
-Лим Чжон Ын
-Чон Хэ Чжин	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Что стоит жизнь какой-то служанки, если ежегодно их показательно казнят на церемонии? 
-Что стоит жизнь наложницы, если после рождения сына её отправляют в монастырь? 
-Что стоит жизнь наследника трона, если для всесильной королевы-матери важнее всего вопросы крови? 
-Что стоит жизнь самой королевы-матери, если невинные жертвы мстят ей даже после смерти?..
-Самоубийство служанки Воль Лён всколыхнуло дворцовую знать. Но выяснить, что это было убийство, 
-для медсестры Чхон Нён оказывается проще, чем разобраться в хитросплетениях дворцовых интриг, 
-в которых замешаны даже слуги. Темное прошлое королевского рода таит в себе ключ к загадочному 
-настоящему и кошмарному будущему.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="39">детектив</item>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="156">Корея</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-		<item tid="233">Д</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>23-Jun-2013 03:41:03</published>
-	<updated>01-Jan-2016 05:17:30</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Самсара (Рон Фрике)</item>
 </title>
 	
@@ -19033,34 +15907,6 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.
 
 	<published>25-Sep-2013 13:29:03</published>
 	<updated>25-Sep-2013 13:29:03</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Sodom - History Of Depravity 1982-1995</item>
-</title>
-	
-	
-	
-	<description>История Sodom с 1982 по 1995 год словами всех участников коллектива, когда-либо в нем игравших, а так же людей, непосредственно связанных с группой. Также имеются интервью с другими известными музыкантами, высказывающими свое мнение о Sodom, редкие концертные съемки и отрывки из выступлений на телевидении.</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="32">документальный</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="61">Германия</item>
-		<item tid="148">субтитры</item>
-		<item tid="27">mkv</item>
-		<item tid="245">С</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>25-Sep-2013 13:34:53</published>
-	<updated>27-Mar-2019 06:00:28</updated>
 </video>
 
 <video type="video">
@@ -19355,42 +16201,6 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 
 <video type="video">
 	<title>
-		<item>Злые улицы</item>
-		<item>Mean Streets</item>
-</title>
-	
-	<producer>Мартин Скорсезе</producer>
-	<roles>Харви Кейтел /Harvey Keitel/
-Роберт Де Ниро /Robert De Niro/
-Дэвид Прувал /David Proval/, Эми Робинсон /Amy Robinson/, Ричард Романус /Richard Romanus/, Виктор Арго /Victor Argo/, Роберт Каррэдайн /Robert Carradine/, Дэвид Каррэдайн /David Carradine/	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Чарли, племянник мафиозного босса из нью-йоркского квартала под названием Маленькая Италия, 
-хочет стать владельцем собственного ресторана. Для этого ему необходимо добиться расположения богатого дядюшки, соблюдать приличия, проявлять респектабельность, но главное — держаться подальше от шизанутого дружка Джонни Боя, взламывающего почтовые ящики и занимающего деньги у ростовщиков без всякого намерения их вернуть.
-Фильм рассказывает о пустой и бессмысленной трате жизни четырех друзей – Тони, Чарли, Джонни и Майкла, родившихся и выросших в итальянском квартале Нью-Йорка. Приятели, не сумев реализовать американскую мечту - стать хозяином собственной судьбы, топят свою скуку в алкоголе, наркотиках, хулиганских выходках… Часть эпизодов картины снималась в соборе Святого Патрика в Нью-Йорке, где Мартин Скорсезе в детстве был алтарным служкой.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="13">криминал</item>
-		<item tid="94">Роберт Де Ниро</item>
-		<item tid="66">США</item>
-		<item tid="148">субтитры</item>
-		<item tid="150">srt</item>
-		<item tid="22">avi</item>
-		<item tid="219">M</item>
-		<item tid="236">З</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>13-Oct-2013 14:23:02</published>
-	<updated>17-Dec-2017 04:58:24</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>"Хвалите Господа с небес", церковные песнопения</item>
 		<item>Russian Orthodox Chant</item>
 </title>
@@ -19619,64 +16429,6 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 
 <video type="video">
 	<title>
-		<item>Порох</item>
-</title>
-	
-	<producer>Виктор Аристов</producer>
-	<roles>Юрий Беляев, Светлана Брагарник, Любовь Калюжная, Вадим Макаровский, Ножери Чонишвили, Владимир Варенцов, Логман Керимов, Константин Сарынин, Герман Орлов, Владимир Труханов, Константин Лукашов, Светлана Гайтан, Татьяна Захарова, Виктор Сухоруков, Юлия Яковлева, Евгений Лисконог, Нина Мазаева, Евгений Нестеров	</roles>
-	<description>Фильм основан на реальных фактах. В сентябре 1941 года перед советскими войсками, оборонявшими Ленинград, встала проблема боеприпасов: в ход шли последние снаряды. Инспектор госконтроля Никонов (Беляев) получает задание — вместе с группой специалистов отобрать на артиллерийских складах Кронштадта необходимые боеприпасы и переправить их в Ленинград. Под непрерывным обстрелом и бомбежками противника было погружено на баржи и через Финский залив доставлено в блокадный Ленинград более 400 тонн пороха. Эта операция стоила жизни многим морякам-балтийцам. Благодаря их мужеству стало возможным продолжить оборону города.</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra#local file</li>
-	</ul>
-
-	<tags>
-		<item tid="169">война</item>
-		<item tid="4">драма</item>
-		<item tid="73">СССР</item>
-		<item tid="22">avi</item>
-		<item tid="243">П</item>
-	</tags>
-
-	<published>20-May-2015 13:46:09</published>
-	<updated>20-May-2015 13:47:08</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Космический рейс</item>
-</title>
-	
-	
-	
-	<description>«Космический рейс» — советский научно-фантастический фильм о покорении космоса, созданный киностудией «Мосфильм» в 1935 году.
-
-
-https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%80%D0%B5%D0%B9%D1%81</description>
-	
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="43">фантастика</item>
-		<item tid="73">СССР</item>
-		<item tid="24">mp4</item>
-		<item tid="217">K</item>
-		<item tid="238">К</item>
-		<item tid="271">not used video</item>
-	</tags>
-
-	<published>20-May-2015 13:52:37</published>
-	<updated>01-Jan-2016 04:56:18</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Зеркало для героя</item>
 </title>
 	
@@ -19713,39 +16465,6 @@ https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D
 
 	<published>02-Jun-2015 12:40:43</published>
 	<updated>02-Jun-2015 12:42:31</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Тарас Бульба</item>
-</title>
-	
-	<producer>Владимир Бортко</producer>
-	<roles>Богдан Ступка, Игорь Петренко, Владимир Вдовиченков, Магда Мельцаж, Владимир Ильин, Юрий Беляев, Михаил Боярский, Ада Роговцева, Борис Хмельницкий, Даниэль Ольбрыхский...	</roles>
-	<description>По мотивам одной из самых известных повестей Николая Гоголя «Тарас Бульба». События «Запорожской сечи» отсылают к тяжелому периоду в истории казачества, когда запорожцы поднялись на борьбу с Речью Посполитой.
-В самом центре политических интриг оказалась семья уважаемого казака Тараса Бульбы, переживающего глубокую личную драму. Его сын Андрий полюбил польскую аристократку и хочет бежать из Сечи. Раздираемый чувством и долгом Тарас объявляет сыну последнюю родительскую волю…</description>
-	<pictures>
-		<img src="/video/0_covers/20090517000236!TBPoster.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/d1</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="96">история</item>
-		<item tid="68">Россия</item>
-		<item tid="121">Украина</item>
-		<item tid="22">avi</item>
-		<item tid="230">Б</item>
-		<item tid="246">Т</item>
-		<item tid="271">not used video</item>
-		<item tid="279">2009</item>
-	</tags>
-
-	<published>02-Jun-2015 12:47:38</published>
-	<updated>21-Aug-2016 11:55:20</updated>
 </video>
 
 <video type="video">
@@ -19925,47 +16644,6 @@ https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D
 
 	<published>01-Aug-2015 15:02:41</published>
 	<updated>01-Aug-2015 15:03:15</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>А зори здесь тихие...</item>
-</title>
-	
-	<producer>Ренат Давлетьяров</producer>
-	<roles>Пётр Фёдоров
-Анастасия Микульчина
-Женя Малахова
-Агния Кузнецова
-Софья Лебедева
-Кристина Асмус
-Екатерина Вилкова
-Анатолий Белый
-Дарья Мороз
-Виктор Проскурин	</roles>
-	<description>Май 1942 года. В самый разгар Великой Отечественной войны вдалеке от линии фронта, у забытого богом разъезда, фашисты выбрасывают десант с целью пробраться на Кировскую железную дорогу и Беломорско-Балтийский канал. Это не обычные солдаты-пехотинцы, это опытные, тренированные диверсанты, элита войск СС, «сверхлюди». А против них — старшина Васков и пять девчонок-зенитчиц. Казалось бы, бой местного значения, но на кону — стратегически важная транспортная артерия, соединяющая значимые центры страны. Смогут ли старшина и его хрупкие новобранцы предотвратить нацистскую диверсию, и какой ценой?
-
-http://www.kinopoisk.ru/film/840754/</description>
-	<pictures>
-		<img src="/video/0_covers/840754.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra#local file</li>
-	</ul>
-
-	<tags>
-		<item tid="169">война</item>
-		<item tid="4">драма</item>
-		<item tid="68">Россия</item>
-		<item tid="22">avi</item>
-		<item tid="229">А</item>
-		<item tid="236">З</item>
-		<item tid="302">2015</item>
-	</tags>
-
-	<published>01-Aug-2015 15:18:55</published>
-	<updated>21-Aug-2016 11:32:52</updated>
 </video>
 
 <video type="video">
@@ -20377,7 +17055,9 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 		<img src="/video/0_covers/656093.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/BgWUXjbM0WM">embed video on youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -20389,7 +17069,7 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 	</tags>
 
 	<published>24-Jun-2016 14:19:31</published>
-	<updated>24-Jun-2016 14:20:44</updated>
+	<updated>28-Mar-2019 08:28:27</updated>
 </video>
 
 <video type="video">
@@ -20474,34 +17154,6 @@ https://www.youtube.com/watch?v=fr-KJOymhAQ</description>
 
 	<published>24-Jun-2016 15:10:37</published>
 	<updated>25-Jul-2016 13:33:01</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Легкая жизнь</item>
-</title>
-	
-	
-	
-	<description>Легкая жизнь (1964)
-http://www.kinopoisk.ru/film/45133/
-https://www.youtube.com/watch?v=83s905HUOLo</description>
-	<pictures>
-		<img src="/video/0_covers/45133.jpg"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="73">СССР</item>
-		<item tid="239">Л</item>
-		<item tid="272">youtube</item>
-		<item tid="290">1964</item>
-	</tags>
-
-	<published>24-Jun-2016 15:18:39</published>
-	<updated>24-Jun-2016 15:28:27</updated>
 </video>
 
 <video type="video">
@@ -20745,15 +17397,18 @@ https://www.kinopoisk.ru/film/otryv-1971-14970/</description>
 	
 	<producer>Никита Михалков</producer>
 	
-	<description>&amp;lt;iframe width=&amp;quot;800&amp;quot; height=&amp;quot;600&amp;quot; src=&amp;quot;https://www.youtube.com/embed/tcifkZWR1cA&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=tcifkZWR1cA
+	<description>https://www.youtube.com/watch?v=tcifkZWR1cA
 https://ok.ru/video/140795185664
 
 https://videopartner.kinopoisk.ru/serp_player.html?id=44062&amp;amp;provider=yavideo&amp;amp;baseorigin=https%3A%2F%2Fplus.kinopoisk.ru&amp;amp;autoplay=1&amp;amp;from=kp1&amp;amp;lcid=10712120183691154
 https://www.kinopoisk.ru/film/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh-1974-44062/</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/tcifkZWR1cA/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tcifkZWR1cA">embed video on youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -20766,7 +17421,7 @@ https://www.kinopoisk.ru/film/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh-1974-4406
 	</tags>
 
 	<published>07-Oct-2017 00:20:48</published>
-	<updated>07-Oct-2017 12:05:37</updated>
+	<updated>28-Mar-2019 08:55:24</updated>
 </video>
 
 <video type="video">
@@ -21531,7 +18186,7 @@ https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/
 	<description>https://www.kinopoisk.ru/film/idiokratiya-2005-77720/
 https://yandex.ru/video/favorites?ncrnd=6685</description>
 	<pictures>
-		<img src="https://www.kinopoisk.ru/images/film_big/77720.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_77720.jpg"/>
 	</pictures>
 
 	
@@ -21546,7 +18201,7 @@ https://yandex.ru/video/favorites?ncrnd=6685</description>
 	</tags>
 
 	<published>02-Jan-2018 07:54:43</published>
-	<updated>27-Mar-2019 05:08:48</updated>
+	<updated>28-Mar-2019 08:50:49</updated>
 </video>
 
 <video type="video">
@@ -21605,38 +18260,6 @@ https://yandex.ru/video/favorites?filmId=9299413573818940804&amp;amp;ncrnd=2339&
 
 	<published>04-Jan-2018 16:44:18</published>
 	<updated>04-Jan-2018 16:49:31</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Idiocracy</item>
-</title>
-	
-	
-	
-	<description>https://www.kinopoisk.ru/film/idiokratiya-2005-77720/</description>
-	<pictures>
-		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_77720.jpg"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra#local file</li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="43">фантастика</item>
-		<item tid="66">США</item>
-		<item tid="148">субтитры</item>
-		<item tid="150">srt</item>
-		<item tid="215">I</item>
-		<item tid="237">И</item>
-		<item tid="320">sub_en</item>
-		<item tid="283">2005</item>
-	</tags>
-
-	<published>04-Jan-2018 16:48:55</published>
-	<updated>04-Jan-2018 16:49:12</updated>
 </video>
 
 <video type="video">
