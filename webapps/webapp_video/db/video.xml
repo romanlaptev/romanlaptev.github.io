@@ -27,7 +27,25 @@
 <taxonomy_term_hierarchy>
 <taxonomy_vocabulary>
 -->
+
 		
+<!--
+		<table name="playlists">
+			<playlist created="11-March-2017" title="Russian rock" genre="rock">
+				<description>test description</description>
+				<category></category>
+				<link></link>
+				<thumbnail url="/music/0_covers/apocalyptica.jpg" />
+				<trackList>
+					<track>
+						<creator></creator>
+						<info></info>
+						<image></image>
+					</track>
+				</trackList>
+			</playlist>
+		</table>
+-->
 		<video type="film" public="1">
 			<title>
 				<item>Трио из Бельвилля</item>
