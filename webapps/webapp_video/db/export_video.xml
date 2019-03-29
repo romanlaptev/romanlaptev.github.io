@@ -9872,7 +9872,7 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 
 <video type="video">
 	<title>
-		<item>Mozart</item>
+		<item>Mozart, music video</item>
 </title>
 	
 	
@@ -9881,9 +9881,12 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Mozart - Requiem.flv">Mozart - Requiem.flv</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Mozart - Rondo alla turca.flv">Mozart - Rondo alla turca.flv</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/W. A. Mozart - Symphony № 20, K. 133.mp4">W. A. Mozart - Symphony № 20, K. 133.mp4</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Моцарт - Симфонія №25.flv">Моцарт - Симфонія №25.flv</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/В.А.Моцарт-Маленькая ночная серенада-рондо.flv">В.А.Моцарт-Маленькая ночная серенада-рондо.flv</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4">Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -9892,10 +9895,12 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="83">классика</item>
 		<item tid="85">Моцарт</item>
 		<item tid="25">flv</item>
+		<item tid="219">M</item>
+		<item tid="240">М</item>
 	</tags>
 
 	<published>01-Dec-2012 10:04:14</published>
-	<updated>04-Jun-2013 14:40:06</updated>
+	<updated>29-Mar-2019 09:02:39</updated>
 </video>
 
 <video type="video">
@@ -10257,15 +10262,16 @@ Manfred Honeck, direction	</roles>
 Дэвид Гамильтон, 
 Эдвард Газаль, 
 Чарльз Энтони	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Джоаккино Россини
+	<description>Джоаккино Россини
 Режиссёр: Джон Кокс, Брайан Лардж
 Хор и оркестр: Метрополитен Оперы
-Дирижёр: Ральф Вайкерт
-&amp;lt;/pre&amp;gt;</description>
+Дирижёр: Ральф Вайкерт</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/video_opera/parts/Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi">Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi,Севильский цирюльник. "Фигаро здесь, Фигаро там"</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/video_opera/parts/Rossini - La Gazza Ladra (BARTOLETTI) 1987/La Gazza Ladra_001.avi">La Gazza Ladra_001.avi, Сорока-воровка, увертюра</a></li>
+	</ul>
 
 	<tags>
 		<item tid="48">видеоклипы</item>
@@ -10275,10 +10281,11 @@ Manfred Honeck, direction	</roles>
 		<item tid="22">avi</item>
 		<item tid="223">R</item>
 		<item tid="244">Р</item>
+		<item tid="292">1989</item>
 	</tags>
 
 	<published>01-Dec-2012 15:28:28</published>
-	<updated>06-Oct-2015 15:03:51</updated>
+	<updated>29-Mar-2019 09:07:16</updated>
 </video>
 
 <video type="video">
@@ -17698,6 +17705,72 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 
 	<published>23-Mar-2019 11:26:30</published>
 	<updated>23-Mar-2019 11:31:22</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Вечер в мюзик-холле</item>
+		<item>A Night In The Show</item>
+</title>
+	
+	<producer>Charlie Chaplin</producer>
+	
+	<description>https://www.kinopoisk.ru/film/2151/</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/Qnp1RM6ixq8/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/Charlie Chaplin - A Night In The Show (1915).mp4">Charlie Chaplin - A Night In The Show (1915).mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Qnp1RM6ixq8">embed video on youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="28">короткометражный</item>
+		<item tid="157">Чарльз Чаплин</item>
+		<item tid="66">США</item>
+		<item tid="24">mp4</item>
+		<item tid="220">N</item>
+		<item tid="231">В</item>
+		<item tid="272">youtube</item>
+	</tags>
+
+	<published>29-Mar-2019 08:45:37</published>
+	<updated>29-Mar-2019 08:49:09</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Тесто и динамит</item>
+		<item>Dough and Dynamite</item>
+</title>
+	
+	<producer>Charlie Chaplin</producer>
+	
+	<description>https://www.youtube.com/watch?v=CwvM26yCdh4
+https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/CwvM26yCdh4/sddefault.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_2186.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/films/Dough and Dynamite (1914)(piano).flv">Dough and Dynamite (1914)(piano).flv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/CwvM26yCdh4">embed video on youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="28">короткометражный</item>
+		<item tid="157">Чарльз Чаплин</item>
+		<item tid="210">D</item>
+		<item tid="246">Т</item>
+		<item tid="272">youtube</item>
+	</tags>
+
+	<published>29-Mar-2019 08:53:07</published>
+	<updated>29-Mar-2019 08:55:42</updated>
 </video>
 
 <video type="videoclip">
