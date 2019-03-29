@@ -34,7 +34,11 @@ var webApp = {
 <li class='list-group-item'>music - thrash, death, grinde</li>\
 <li class='list-group-item'>....</li>\
 </ul>",
-				"visibility" : true//"frontPage"
+				"visibility" : true,//"frontPage"
+				"buildBlock" : function(){
+//console.log(this);
+					_draw_buildBlock( this );
+				}
 			},//end block
 			
 			{
@@ -42,8 +46,44 @@ var webApp = {
 				"title" : "footer links", 
 				"templateID" : "tpl-block-links",
 				"content" : "",
-				"visibility":true
-			}//end block
+				"visibility":true,
+				"buildBlock" : function(){
+					_draw_buildBlock( this );
+				}
+			}//, //end block
+/*
+			{
+				"locationID" : "block-list-video",
+				"title" : "test video list", 
+				"templateID" : "tpl-block-videolist",
+				"content" : function(args){
+console.log(args);
+//get data
+var res = [
+	{
+		"type":"video",
+		"title":[{"text":"Бразилия"},{"text":"Brazil"}]
+	}
+];
+res[0]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"],
+res[0]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"]
+
+
+					if( typeof args["callback"] === "function"){
+						args["callback"]( res );
+					}
+				},
+				"visibility":true,
+				"buildBlock" : function(){
+_db_getBlockContent(){
+	"callback" : function(res){
+//console.log(res);							
+		_draw_buildBlock( this );
+	}
+};
+				}
+			} //end block
+*/
 		],
 		
 		"templates_url" : "tpl/templates.xml",
@@ -821,7 +861,7 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 			p[key] = opt[key];
 		}
 //console.log(opt);
-
+/*
 		//draw static blocks
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
@@ -833,7 +873,27 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 			}
 			
 		}//next
+*/
+		for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			var _opt = webApp.vars["blocks"][n];
+			if( _opt["visibility"]){
+						
+				//closures, need for async data getting from indexedDB
+				(function(_opt_){
+					//setTimeout(function(){ 
+						//console.log("-- closure function, ", _opt_); 
+					//}, 1000);
+					//_draw_buildBlock( _opt_ );
+					if( typeof _opt_["buildBlock"] === "function"){
+						_opt_["buildBlock"]();
+					} else {
+webApp.vars["logMsg"] = "warning, not buld function....";
+console.log( "-- " + webApp.vars["logMsg"], _opt_ );
+					}
+				})(_opt);//end closure
+			}
 
+		}//next
 
 		var _html = _draw_wrapData({
 			"data": p["pageData"],
@@ -856,19 +916,6 @@ console.log( webApp.vars["logMsg"] );
 				"content" : _html
 			});
 		}
-
-/*		
-
-		//draw sidebar blocks
-		_buildSidebar({
-			"blocks" : _vars["blocks"],
-			"callback" : function(){
-				if( typeof p["callback"] === "function"){
-					p["callback"]();//return from _buildPage()
-				}
-			}//end callback
-		});
-*/					
 
 		//if( webApp.vars["wait"] ){
 			////webApp.vars["wait"].className="";
@@ -1102,7 +1149,7 @@ console.log("-- warning, not found template, ", tplName );
 					for(var n1 = 0; n1 < tplKeys.length; n1++){
 						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
 					}//next
-				//console.log( tplKeys, p.templateListItemID, item );
+//console.log( tplKeys, p.templateListItemID, item );
 				//}
 //---------------
 				
@@ -1165,12 +1212,12 @@ console.log("-- warning, empty field....", key2, item[key2]);
 	*/						
 							var subOrdListHtml = "";
 							for( var n2 = 0; n2 < item[key2].length; n2++){
-	//console.log( item[key2][n2]["text"] );
+//console.log( item[key2][n2]["text"] );
 								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
 							}//next
-	//console.log( subOrdListHtml );
+//console.log( subOrdListHtml );
 							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-	//console.log( subOrdList );
+//console.log( subOrdList );
 							item[key2] = subOrdList;
 						}							
 					}
@@ -1229,8 +1276,8 @@ console.log(msg);
 					//p["callback2"]();//return from _buildBlock()
 				//}
 				
-			},//end callback
-			"callback2" : null
+			}//,//end callback
+			//"callback2" : null
 		};
 		//extend p object
 		for(var key in opt ){
@@ -1238,30 +1285,37 @@ console.log(msg);
 		}
 //console.log(p);
 
-		//dynamic form content
-		if( typeof p["content"] === "function"){
-/*
+		if( typeof p["content"] === "function"){//dynamic form content
+/*			
 			p["content"]({
 				"callback" : function( res ){
-//console.log(res);								
-					var html = webApp.draw.wrapContent({
-						"data" : res,
-						//"type" : "menu",//"list"
-						//"contentType" : p["contentType"],
-						"templateID" : p["contentTpl"],
-						"templateListID" : p["contentListTpl"]
+console.log(res);
+					var html = _draw_wrapData({
+						"data": res,
+						"templateID": "tpl-videolist",
+						"templateListItemID": "tpl-videolist-item--video"
 					});
-					
-//console.log(html);								
-					//var html = "<h1>Test!!!</h1>";
-					if( html && html.length > 0){
-						p["content"] = html;
-						webApp.draw.insertBlock( p );
+//console.log( html);
+					if( !html || html.length === 0){
+webApp.vars["logMsg"] = "error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+					} else {
+p["content"] = html;						
+//console.log(p);
+						_draw_insertBlock( p );
+						//_draw_buildBlock({
+							//"locationID" : "list-video",
+							//"title" : "video list", 
+							//"templateID" : "tpl-block-videolist",
+							//"content" : _html
+						//});
 					}
+
 					
 				}
 			});
-*/
+*/			
 		} else {
 			_draw_insertBlock( p );
 		}
