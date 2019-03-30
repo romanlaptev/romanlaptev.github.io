@@ -3,7 +3,7 @@ if( typeof window.jQuery === "function"){
 //func.log(msg);
 
 	$(document).ready(function(){
-console.log("document ready");
+//console.log("document ready");
 
 	$("#jquery_jplayer_1").jPlayer({
 		ready: function (event) {
@@ -104,7 +104,7 @@ console.log("document ready");
 			keyEnabled: true
 		});//end playlist
 		
-console.log( playList1 );
+//console.log( playList1 );
 
 //================================= 
 //https://www.codeseek.co/renandecarlo/jplayer-playlist-with-youtube-video-yJqpPW

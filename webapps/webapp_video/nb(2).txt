@@ -23,11 +23,14 @@ VLC Plugin для Mozilla Firefox
 - при начальном запуске приложения отображать 10 видео,
 организовать добавление новых видео при прокрутке (лента, feed) или сделать прокрутку слайдером?
 *- подключить возможность постраничного вывода записей объекта nodes (video)
-выбор номера страницей происходит с помощью элемента input type="range" (полифил для старых браузеров)
+выбор номера страницей происходит с помощью элемента input type="range" (input "text" для старых браузеров)
 
-- сортировка при выдаче записей страницы: по дате создания (published)
-сортировка глобальная, весь объект nodes
-сортировка фрагмента, nodelist
+- сортировка при выдаче записей страницы: 
+	по дате создания (published)
+	по алфавиту (title)
+1)сортировка глобальная, весь объект nodes
+2)сортировка фрагмента, nodelist
+
 
 *- wrapData(), для определения отсутствующих полей и замены их кодов ( {{description}} ), нужно
 перед заменой кодов выполнять поиск в шаблоне используемых кодов.
@@ -60,8 +63,22 @@ playlists
 
 - включить в XML данные таксономии (список тегов и иерархические подшивки)
 каким образом сделать привязку тегов к нодам, через tid?
+	Теги имеют атрибут "name", который содержит кодовое название тега
+	<tags>
+		<item name="genre">драма</item>
+		<item name="video_format">короткометражный</item>
+		<item name="actor">Алексей Полуян</item>
+		<item name="actor">Михаил Марескин</item>
+		<item name="file_format">avi</item>
+		<item name="alphabetical_list">А</item>
+		<item name="location_video">youtube</item>
+		<item name="creation_year">2008</item>
+	</tags>
+select * from nodes where tags.name="creation_year" and tags.value="1918"
 
 - сделать поиск по тегу "видеоклипы", "youtube"
+select * from nodes where tags.name="type_video" and tags.value="видеоклипы"
+select * from nodes where tags.name="location_video" and tags.value="youtube"
 
 =========================== HTML,CSS
 боковая панель - список видеоклипов в виде плейлиста (или плитка из изображений-скриншотов с названиями )
