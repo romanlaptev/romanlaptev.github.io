@@ -138,7 +138,7 @@
 		<html_code>
 <![CDATA[
 	<li>
-		<a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{text}}</a>
+		<a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a>
 	</li>
 ]]>
 		</html_code>

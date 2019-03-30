@@ -20,7 +20,7 @@ var webApp = {
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
 			"tagNameFilms": "video",
-			"numRecordsPerPage":10
+			"numRecordsPerPage":5
 		},
 		
 		"blocks": [
@@ -275,7 +275,7 @@ console.log("click...", e);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		
-console.log("change range...", target.value);
+//console.log("change range...", target.value);
 		$("#page-number").val( target.value );
 		$("#page-number-2").val( target.value );
 		
@@ -325,7 +325,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 
 
 	$("#page-number-2").change(function(event){
-console.log("change #page-number-2...", event);
+//console.log("change #page-number-2...", event);
 		if( !isNaN(event.target.value) && parseInt(event.target.value) > 0){
 			$("#page-range").val(event.target.value);
 			$("#page-number").val(event.target.value);

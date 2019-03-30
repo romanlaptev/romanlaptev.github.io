@@ -106,6 +106,11 @@ select * from nodes where tags.name="location_video" and tags.value="youtube"
 - ссылки перехода в виде таблицы
 *- добавить статичный блок ссылок (в footer или в sidebar)
 
+=========================== TEMPLATES
+- сделать отдельный шаблон для ссылок с фильмами в формате Mkv
+если ссылка содержит file.mkv, то отбросить http://site-content и добавить file://path/file.mkv
+
+
 =========================== Data format, XML parse
 - необходимо считывать из XML данные в объекты с уникальными ключами (key = video_1)
 это позволит выбирать данные из JS-объекта быстрее, 
