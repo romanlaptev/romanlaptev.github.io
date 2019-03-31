@@ -189,6 +189,15 @@ Chrome 65 not play
 				
 			</div>
 
+			<div>
+				<p>video, type="video/x-flv", hippo.flv</p>
+<!--
+rtmp/flv
+-->				
+				<video width="560" height="315" controls="controls" >
+					<source src="video/hippo.flv" type="video/x-flv">
+				</video>
+			</div>
 
 			<div class="pull-right">2018-05-05-064753.webm
 				<video id="player4" width="560" height="315" controls="controls" poster="">
@@ -432,16 +441,26 @@ Opera 47 (Debian) not support
 			//file: "http://mycomp/video/mult/Killer%20Bean%202.avi",
 			//file: "http://mycomp/video/mult/maslennitca.mpg",
 			//file: "http://mycomp/video/mult/hippo.flv",
-			image: "preview.jpg",
+			//image: "preview.jpg",
     'id': 'playerID',
     'width': '650',
     'height': '240',
-    'playlistfile': 'JWPlayer/playlist.xml',
+    //'playlistfile': 'JWPlayer/playlist.xml',
+	playlist: [
+{file: "video/video.mp4", title:"video.mp4"},
+{file: "video/hippo.flv", title:"hippo.flv"}
+	],
     'playlist.position': 'right',
     'playlist.size': '250',
-    'controlbar': 'over'
+    'controlbar': 'over',
+			events: {
+				onReady: function(){ console.log("-- onReady", arguments); },
+				onVolume: function(event){ console.log("-- onVolume", event, event.volume); },
+				onComplete: function(){ console.log("-- onComplete", arguments); }
+			}
 		});
 </script>
+
 <!-- END OF THE PLAYER EMBEDDING -->
 			</div>
 

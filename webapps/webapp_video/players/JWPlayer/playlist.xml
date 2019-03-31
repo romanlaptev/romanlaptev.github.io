@@ -1,0 +1,34 @@
+<rss version="2.0" xmlns:jwplayer="http://developer.longtailvideo.com/trac/" xmlns:media="http://search.yahoo.com/mrss/"> 
+  <channel> 
+    <title>HTTP Pseudo-Streaming Playlist</title> 
+
+    <item> 
+      <title>Hippo, flv format</title> 
+      <media:content url="video/hippo.flv" /> 
+      <media:thumbnail url="" />
+      <description>no description here</description>
+      <jwplayer:provider>http</jwplayer:provider> 
+      <jwplayer:duration>33.03</jwplayer:duration> 
+    </item> 
+
+    <item> 
+      <title>Sintel</title> 
+      <media:content url="video/video.mp4" /> 
+      <media:thumbnail url="JWPlayer/preview.jpg" />
+      <description>format MP4</description>
+      <jwplayer:provider>http</jwplayer:provider> 
+      <jwplayer:duration>888.06</jwplayer:duration> 
+    </item> 
+
+    <item> 
+      <title>Elephant&#39;s Dream</title> 
+      <media:content url="video/small.avi" /> 
+      <media:thumbnail url="" />
+      <description>format AVI</description>
+      <jwplayer:provider>http</jwplayer:provider> 
+      <jwplayer:duration>653.79</jwplayer:duration> 
+    </item> 
+
+  </channel> 
+</rss>
+

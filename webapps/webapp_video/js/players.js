@@ -7,12 +7,19 @@ function _initPlayer(app){
 				title:"test MP4",
 				artist:"test artist",
 				free:true,
-				m4v: "/sites/romanlaptev.github.io/test_code/html/test_media/video/video.mp4"
+				m4v: "../../test_code/html/test_media/video/video.mp4"
 				//m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
 				//ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
 				//webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
 				//poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
-			}/*,
+			},
+			{
+				title:"test FLV",
+				artist:"test artist",
+				free:true,
+				flv: "../../test_code/html/test_media/video/hippo.flv"
+			}			
+			/*,
 			{
 				type: "youtube", // Remember to add this
 				title:"Life in da trash",
@@ -26,12 +33,7 @@ function _initPlayer(app){
 				artist:"LITTLE BIG",
 				m4v: "http://ok.ru/videoembed/1147112392106"
 			},
-			{
-				title:"test FLV",
-				artist:"test artist",
-				free:true,
-				flv: "/sites/romanlaptev.github.io/test_code/html/test_media/video/hippo.flv"
-			}*/
+*/
 		]
 	};//end playlist
 
@@ -112,11 +114,33 @@ console.log( webApp.vars["logMsg"] );
 }//_player_addTrack()
 
 
-//if( typeof window.jQuery === "function"){
+if( typeof window.jQuery === "function"){
 //var msg = 'jQuery version: ' + jQuery.fn.jquery;
 //func.log(msg);
 
-	//$(document).ready(function(){
+	$(document).ready(function(){
+
+/*		
+		jwplayer("JWplayer1").setup({
+			flashplayer: "players/JWPlayer/player.swf",
+			//file: "../../test_code/html/test_media/video/video.mp4",
+			//file: "../../test_code/html/test_media/video/hippo.flv",
+			//image: "preview.jpg",
+			'id': 'playerID',
+			'width': '650',
+			'height': '240',
+			playlist: [
+{file: "../../test_code/html/test_media/video/video.mp4", title:"video.mp4"},
+{file: "../../test_code/html/test_media/video/hippo.flv", title:"hippo.flv"}
+			],
+			//'playlistfile': 'players/JWPlayer/playlist.xml',
+			'playlist.position': 'right',
+			'playlist.size': '250',
+			'controlbar': 'over'
+		});
+console.log(jwplayer);	
+*/
+
 /*
 //================================= 
 //https://www.codeseek.co/renandecarlo/jplayer-playlist-with-youtube-video-yJqpPW
@@ -208,9 +232,9 @@ console.log( webApp.vars["logMsg"] );
 //=================================
 */
 
-	//});//end ready
+	});//end ready
 	
-//}
+}
 
 /* 
  					$("#jquery_jplayer").jPlayer("setMedia", {
