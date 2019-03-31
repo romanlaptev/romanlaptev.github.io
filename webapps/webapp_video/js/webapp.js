@@ -88,9 +88,10 @@ _db_getBlockContent(){
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
-		"breadcrumb": {},
 		"init_url" : "#?q=list_nodes&num_page=1"
-	},
+	},//end vars
+	
+	
 	"init" : function( postFunc ){
 console.log("init webapp!");
 
@@ -105,6 +106,11 @@ console.log("init webapp!");
 		//this["vars"]["parseProgressBar": func.getById("parse-progress-bar");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
+		
+		if( typeof $.jPlayer === "function"){
+			webApp.vars["playlists"] = {};
+			_initPlayer(this);
+		}
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
@@ -168,51 +174,13 @@ function _runApp(){
 
 
 function defineEvents(){
-
-/*
-//console.log( webApp.vars.pageContainer );
-	if( webApp.vars.pageContainer ){
-		webApp.vars.pageContainer.onclick = function(event){
-			event = event || window.event;
-			var target = event.target || event.srcElement;
-//console.log( event );
-//console.log( this );//page-container
-//console.log( target.textContent );
-//console.log( event.eventPhase );
-//console.log( "preventDefault: " + event.preventDefault );
-			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
-			
-			if( target.tagName === "A"){
-				if ( target.href.indexOf("#?q=") !== -1){
-					if (event.preventDefault) { 
-						event.preventDefault();
-					} else {
-						event.returnValue = false;				
-					}
-
-						//var search = target.href.split("?"); 
-						//var parseStr = search[1]; 
-						var parseStr = target.href; 
-//console.log( search, parseStr );
-						if( parseStr.length > 0 ){
-							webApp.vars["GET"] = parseGetParams( parseStr ); 
-							webApp.app.urlManager( target );
-						} else {
-console.log( "Warn! error parse url in " + target.href );
-						}
-				}
-			}
-			
-		}//end event
-	}
-*/
-
+	
 	$("#btn-clear-log").on("click", function(e){
 //console.log("click...", e);			
 		webApp.vars["log"].innerHTML="";
 	});//end event
 	
+//------------------------------------------------------------------
 	$("#btn-toggle-log").on("click", function(e){
 console.log("click...", e);			
 		if( webApp.vars["log"].style.display==="none"){
@@ -224,12 +192,15 @@ console.log("click...", e);
 		}
 	});//end event
 	
+//------------------------------------------------------------------
 	$("#list-video").on("click", function(event){
 //console.log("click...", e);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		
 		if( target.tagName === "A"){
+			
+//------------------------------------------------------------------
 			if( $(target).hasClass("toggle-btn") ){
 
 				//if ( target.href.indexOf("#?q=") !== -1){
@@ -264,7 +235,21 @@ console.log("click...", e);
 				
 			}
 			
+//------------------------------------------------------------------
+			if( $(target).hasClass("btn-add-track-pls") ){
+//console.log("click...", target.href);
+
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				
+				_player_addTrack( target );
+			}
+			
 		}
+		
 	});//end event
 	
 	//$("#page-range").on("input", function(event){
@@ -339,6 +324,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 //console.log( webApp.vars["logMsg"] );
 		}
 	});//end event
+
 
 	
 }//end defineEvents()
@@ -1001,10 +987,16 @@ console.log( webApp.vars["logMsg"] );
 	}
 //console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
 
+	//for(var n = startPos; n < endPos; n++){
+		//data.push( webApp.vars["DB"]["nodes"][n]);
+	//}//next
+	//copy objects node
 	for(var n = startPos; n < endPos; n++){
-		data.push( webApp.vars["DB"]["nodes"][n]);
+		var jsonNode = JSON.stringify( webApp.vars["DB"]["nodes"][n] );
+		data.push( JSON.parse( jsonNode) );
 	}//next
 //console.log(data);
+
 //for test
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];

@@ -1,59 +1,8 @@
-if( typeof window.jQuery === "function"){
-//var msg = 'jQuery version: ' + jQuery.fn.jquery;
-//func.log(msg);
+function _initPlayer(app){
+//console.log(app);
 
-	$(document).ready(function(){
-//console.log("document ready");
-
-	$("#jquery_jplayer_1").jPlayer({
-		ready: function (event) {
-			$(this).jPlayer("setMedia", {
-				title: "Bubble",
-				m4a: "http://jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-				oga: "http://jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-			});
-		},
-		//swfPath: "../../dist/jplayer",
-		swfPath: "players",
-		supplied: "m4a, oga",
-		wmode: "window",
-		useStateClassSkin: true,
-		autoBlur: false,
-		smoothPlayBar: true,
-		keyEnabled: true,
-		remainingDuration: true,
-		toggleDuration: true
-	});
-	
-/*	
-	var myPlaylist = new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_N",
-		cssSelectorAncestor: "#jp_container_N"
-	}, [
-		{
-			title:"Cro Magnon Man",
-			artist:"The Stark Palace",
-			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
-			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
-			poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
-		}
-	], {
-		playlistOptions: {
-			enableRemoveControls: true
-		},
-		swfPath: "players",
-		supplied: "webmv, ogv, m4v, oga, mp3",
-		useStateClassSkin: true,
-		autoBlur: false,
-		smoothPlayBar: true,
-		keyEnabled: true,
-		audioFullScreen: true
-	});
-*/
-	var playList1 = new jPlayerPlaylist({
-			jPlayer: "#jquery_jplayer_N",
-			cssSelectorAncestor: "#jp_container_N"
-		}, [
+	app["vars"]["playlists"]["testPls"] = {
+		tracks:[
 			{
 				title:"test MP4",
 				artist:"test artist",
@@ -63,14 +12,14 @@ if( typeof window.jQuery === "function"){
 				//ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
 				//webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
 				//poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
-			},
+			}/*,
 			{
 				type: "youtube", // Remember to add this
 				title:"Life in da trash",
 				artist:"LITTLE BIG",
-//http://site-content/video/videoclips/L/Little%20Big/LITTLE%20BIG%20-%20Life%20in%20da%20trash.mp4				
 				//+m4v: "http://youtube.com/embed/UVrjzOUZJI4",
-				m4v: "https://www.youtube.com/watch?v=UVrjzOUZJI4"
+				//m4v: "https://www.youtube.com/watch?v=UVrjzOUZJI4"
+				m4v: "/video/videoclips/L/Little%20Big/LITTLE%20BIG%20-%20Life%20in%20da%20trash.mp4"
 			},
 			{
 				title:"AK-47",
@@ -82,30 +31,93 @@ if( typeof window.jQuery === "function"){
 				artist:"test artist",
 				free:true,
 				flv: "/sites/romanlaptev.github.io/test_code/html/test_media/video/hippo.flv"
-			},
+			}*/
+		]
+	};//end playlist
 
-		], {
+//http://jplayer.org/latest/developer-guide/
+	app["jPlaylist"] = new jPlayerPlaylist({
+			jPlayer: "#jquery_jplayer_1",
+			cssSelectorAncestor: "#jp_container_1"
+		}, [], {
 			swfPath: "players",
-			supplied: "flv, webmv, ogv, m4v",
+			//supplied: "flv, webmv, ogv, m4v",
 			// supplied: "m4v, ogv, m4a, mp3, oga",
 			// supplied: "ogv, m4v, oga, mp3, m4a",
-			// supplied: "m4v, ogv, mp3, oga",
+			//supplied: "m4v, ogv, mp3, oga",
 			// supplied: "oga, mp3",
 			// supplied: "m4v, ogv",
 			// supplied: "m4a, mp3, m4v",
 			// supplied: "m4v, mp3",
-			// supplied: "mp3, m4v",
+			supplied: "mp3, m4v",
 			// supplied: "m4v",
 			// supplied: "rtmpv",
-			
+			size: {
+				width: "640px",
+				height: "360px",
+				cssClass: "jp-video-360p"
+			},
+			volume: 0.2,
 			useStateClassSkin: true,
 			autoBlur: false,
 			smoothPlayBar: true,
 			keyEnabled: true
-		});//end playlist
-		
-//console.log( playList1 );
+		}
+	);//end jPlaylist
+	
+//console.log( jPlaylist );
+	app["jPlaylist"].setPlaylist( app["vars"]["playlists"]["testPls"]["tracks"] );
+}//end _initPlayer()
 
+
+function _player_addTrack( target ){
+	var arr = target.href.split("track-");
+	//var numPages = webApp.vars["DB"]["numPages"];
+	//var numNodes = webApp.vars["DB"]["nodes"].length;
+	var numPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+	var numPage = webApp.vars["GET"]["num_page"];
+
+	var numTrack = ((numPage * numPerPage) - numPerPage) + parseInt( arr[1] ) ;
+console.log(arr, numTrack, webApp.vars["DB"]["nodes"][numTrack]);
+
+	var artist = webApp.vars["DB"]["nodes"][numTrack]["creators"];
+	var title = webApp.vars["DB"]["nodes"][numTrack]["title"][0]["text"];
+	
+	var links = webApp.vars["DB"]["nodes"][numTrack]["ul"];
+	var href = "";
+	
+	for( var n = 0; n < links.length; n++){
+		if( links[n]["data-type"] && links[n]["data-type"] === "local-file"){
+			if( links[n]["href"].indexOf(".mp4") !== -1){
+				
+				if ( webApp["jPlaylist"] && webApp["vars"]["playlists"]["testPls"]["tracks"]) { 
+					webApp["jPlaylist"].add({
+						title: title,
+						artist: artist,
+						free: true,
+						m4v: links[n]["href"]
+					});
+					//webApp["jPlaylist"].play(-1);
+				}
+				
+			} else {
+webApp.vars["logMsg"] = "warning, not add track, not found source file mp4 format... ";
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+				
+			}
+		} 
+		
+	}//next
+}//_player_addTrack()
+
+
+//if( typeof window.jQuery === "function"){
+//var msg = 'jQuery version: ' + jQuery.fn.jquery;
+//func.log(msg);
+
+	//$(document).ready(function(){
+/*
 //================================= 
 //https://www.codeseek.co/renandecarlo/jplayer-playlist-with-youtube-video-yJqpPW
 //https://www.codeseek.co/renandecarlo/jplayer-playlist-with-youtube-video-yJqpPW
@@ -194,7 +206,19 @@ if( typeof window.jQuery === "function"){
 	});//end event
 	
 //=================================
+*/
 
-	});//end ready
+	//});//end ready
 	
-}
+//}
+
+/* 
+ 					$("#jquery_jplayer").jPlayer("setMedia", {
+						title: "Big Buck Bunny Trailer",
+						m4v: "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+						ogv: "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+						webmv: "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm",
+						poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+					});
+ 
+ */
