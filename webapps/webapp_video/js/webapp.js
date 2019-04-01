@@ -265,7 +265,7 @@ console.log("click...", e);
 		
 //console.log("change range...", target.value);
 		$("#page-number").val( target.value );
-		$("#page-number-2").val( target.value );
+		//$("#page-number-2").val( target.value );
 		
 		var url = "?q=list_nodes&num_page="+target.value;
 		webApp.vars["GET"] = func.parseGetParams( url ); 
@@ -296,7 +296,7 @@ console.log("click...", e);
 //console.log("-0000000000");
 
 				$("#page-range").val(target.value);
-				$("#page-number-2").val(target.value);
+				//$("#page-number-2").val(target.value);
 				
 				var url = "?q=list_nodes&num_page="+target.value;
 				webApp.vars["GET"] = func.parseGetParams( url ); 
@@ -310,8 +310,30 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 
 	})//end event	
+	
+	$("#page-number-less").on("click", function(event){
+		var num = parseInt( $("#page-number").val() );
+		if( num > 1){
+			$("#page-number").val( num-1 );
+			$("#page-range").val( num-1 );
+			var url = "?q=list_nodes&num_page=" + (num-1);
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		}
+	})//end event	
+	
+	$("#page-number-more").on("click", function(event){
+		var num = parseInt( $("#page-number").val() );
+		if( num < webApp.vars["DB"]["numPages"] ){
+			$("#page-number").val( num+1 );
+			$("#page-range").val( num+1 );
+			var url = "?q=list_nodes&num_page=" + (num+1);
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		}
+	})//end event	
 
-
+/*
 	$("#page-number-2").change(function(event){
 //console.log("change #page-number-2...", event);
 		if( !isNaN(event.target.value) && parseInt(event.target.value) > 0){
@@ -327,14 +349,16 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 //console.log( webApp.vars["logMsg"] );
 		}
 	});//end event
-
+*/
 //------------------------
 	$("#select-sort").change(function(event){
 		event = event || window.event;
 		var target = event.target || event.srcElement;
-console.log("change #select-sort...", event, target.value);
+//console.log("change #select-sort...", event, target.value);
 
 		webApp.vars["DB"]["sortByKey"] =  target.value;
+		$("#page-number").val( 1 );
+		$("#page-range").val( 1 );
 		var url = "?q=list_nodes&num_page=1";
 		webApp.vars["GET"] = func.parseGetParams( url ); 
 		_urlManager();
@@ -677,7 +701,7 @@ webApp.vars["DB"]["numPages"] = numPages;
 func.log(numPages, "total-pages");
 
 $("#page-range").attr("max", numPages);
-$("#page-number-2").attr("max", numPages);
+//$("#page-number-2").attr("max", numPages);
 //------------------
 
 		return nodes;

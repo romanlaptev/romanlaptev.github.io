@@ -233,26 +233,30 @@ role="application" aria-label="media player">
 			<div class="panel block" id="pager">
 				<div class="panel-body">
 <small>					
-<b>total records:</b> <span id="total-records"></span>
-<b>number of pages:</b> <span id="total-pages"></span>
+total records: <b><span id="total-records"></span></b>
+number of pages: <b><span id="total-pages"></span></b>
 </small>
-						<div class="">							
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">							
+						<div class="block-num-page">							
+							<div class="pull-left">
 									<b>Page №:</b>
 							</div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">							
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers form-control">
+							<div class="pull-right">
+<button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+<button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
 							</div>
+<!--
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
 <input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
 							</div>
+-->
 						</div>		
 
 						<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
 				</div>
 				<div class="panel-body">
 					<label>sort by</label>
-					<select id="select-sort" class="form-control">
+					<select id="select-sort" class="form-control" autocomplete="off">
 						<option value="title" selected>first title text</option>
 						<option value="published">publication date</option>
 					</select>

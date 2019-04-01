@@ -13586,16 +13586,14 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	
 	
 	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
+	
+	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/001.avi">001.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/008.avi">008.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/009.avi">009.avi</a></li>
+		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/012.avi">012.avi</a></li>
 	</ul>
 
 	<tags>
@@ -13603,10 +13601,11 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="117">сериал</item>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
+		<item tid="207">A</item>
 	</tags>
 
 	<published>17-Jun-2013 13:20:25</published>
-	<updated>17-Jun-2013 13:20:25</updated>
+	<updated>01-Apr-2019 08:07:51</updated>
 </video>
 
 <video type="video">
@@ -13688,33 +13687,6 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 
 	<published>18-Jun-2013 00:18:00</published>
 	<updated>18-Jun-2013 00:18:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Dusty Springfield - Spooky</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-	</tags>
-
-	<published>18-Jun-2013 00:19:34</published>
-	<updated>18-Jun-2013 00:19:34</updated>
 </video>
 
 <video type="video">
@@ -15869,33 +15841,6 @@ https://www.youtube.com/watch?v=EF5sOZrVNcs
 
 <video type="video">
 	<title>
-		<item>Agni Parthene</item>
-</title>
-	
-	
-	
-	<description>https://www.youtube.com/watch?v=C7vvPXz-Qes
-Агни́ Парфе́не (греч. Αγνή Παρθένε), Чистая Дева — греческий православный гимн Пресвятой Богородице, написанный святителем Нектарием Эгинским
-https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%D0%B5%D0%BD%D0%B5</description>
-	<pictures>
-		<img src="https://i.ytimg.com/vi//C7vvPXz-Qes/sddefault.jpg"/>
-	</pictures>
-
-	<ul>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed//C7vvPXz-Qes">embed video on youtube.com</a></li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="272">youtube</item>
-	</tags>
-
-	<published>22-Oct-2017 07:55:37</published>
-	<updated>27-Mar-2019 05:45:39</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>С чего начинается Родина (сериал)</item>
 </title>
 	
@@ -17306,6 +17251,34 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 
 <video type="videoclip">
 	<title>
+		<item>Spooky</item>
+</title>
+	<creators>Dusty Springfield / Дасти Спрингфилд</creators>
+	
+	
+	<description></description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/Fola80rQop4/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Dusty Springfield - Spooky.flv">Dusty Springfield - Spooky.flv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Fola80rQop4">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="210">D</item>
+		<item tid="233">Д</item>
+		<item tid="48">видеоклипы</item>
+	</tags>
+
+	<published>18-Jun-2013 00:19:34</published>
+	<updated>01-Apr-2019 08:14:32</updated>
+</video>
+
+<video type="videoclip">
+	<title>
 		<item>Blade Loki</item>
 </title>
 	<creators>Blade Loki</creators>
@@ -17506,6 +17479,34 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 
 	<published>25-Apr-2014 14:57:12</published>
 	<updated>17-Mar-2019 13:30:52</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Agni Parthene</item>
+		<item>Агни Парфене (Чистая Дева)</item>
+</title>
+	<creators> Valaam Brethren Choir /  Валаамский братский хор</creators>
+	
+	
+	<description>https://www.youtube.com/watch?v=C7vvPXz-Qes
+Агни́ Парфе́не (греч. Αγνή Παρθένε), Чистая Дева — греческий православный гимн Пресвятой Богородице, написанный святителем Нектарием Эгинским
+https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%D0%B5%D0%BD%D0%B5</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/C7vvPXz-Qes/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/C7vvPXz-Qes">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="49">музыкальное видео</item>
+	</tags>
+
+	<published>22-Oct-2017 07:55:37</published>
+	<updated>01-Apr-2019 08:03:38</updated>
 </video>
 
 <video type="videoclip">

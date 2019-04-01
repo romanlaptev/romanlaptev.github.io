@@ -99,7 +99,7 @@ select * from nodes where tags.name="location_video" and tags.value="youtube"
 - исправить заголовок приложения при отображении в мобильных устройствах (съехал вниз...)
 - для мобильных устройств сделать скрытие сайдбаров
 
-- стрелки на слайдере
+*- стрелки на слайдере
 - если $("#page-range").attr("type"); !== "range", то выводить slider из jquery-ui.js
 *или скрывать $("#page-range"), $("#page-number-2")
 
