@@ -643,51 +643,51 @@ console.log( logMsg );
 			switch(sMonth){
 				
 				case "01":
-					sMonth = "Jan"
+					sMonth = "Jan";
 				break;
 				
 				case "02":
-					sMonth = "Feb"
+					sMonth = "Feb";
 				break;
 				
 				case "03":
-					sMonth = "Mar"
+					sMonth = "Mar";
 				break;
 				
 				case "04":
-					sMonth = "Apr"
+					sMonth = "Apr";
 				break;
 				
 				case "05":
-					sMonth = "May"
+					sMonth = "May";
 				break;
 				
 				case "06":
-					sMonth = "Jun"
+					sMonth = "Jun";
 				break;
 				
 				case "07":
-					sMonth = "Jul"
+					sMonth = "Jul";
 				break;
 				
 				case "08":
-					sMonth = "Aug"
+					sMonth = "Aug";
 				break;
 				
 				case "09":
-					sMonth = "Sep"
+					sMonth = "Sep";
 				break;
 				
 				case "10":
-					sMonth = "Okt"
+					sMonth = "Oct";
 				break;
 				
 				case "11":
-					sMonth = "Nov"
+					sMonth = "Nov";
 				break;
 				
 				case "12":
-					sMonth = "Dec"
+					sMonth = "Dec";
 				break;
 				
 			}//end switch

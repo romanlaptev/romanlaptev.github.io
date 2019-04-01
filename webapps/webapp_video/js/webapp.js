@@ -20,7 +20,10 @@ var webApp = {
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
 			"tagNameFilms": "video",
-			"numRecordsPerPage":5
+			"numRecordsPerPage":5,
+			"dateFormat": "dd-mm-yyyy hh:mm:ss",
+			"sortOrder": "asc",
+			"sortByKey": "title" //"published", 
 		},
 		
 		"blocks": [
@@ -256,7 +259,7 @@ console.log("click...", e);
 //console.log("input range...", event.target.value);
 	//});//end event
 	
-	$("#page-range").change(function(e){
+	$("#page-range").change(function(event){
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		
@@ -325,6 +328,18 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 	});//end event
 
+//------------------------
+	$("#select-sort").change(function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+console.log("change #select-sort...", event, target.value);
+
+		webApp.vars["DB"]["sortByKey"] =  target.value;
+		var url = "?q=list_nodes&num_page=1";
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+		_urlManager();
+		
+	});//end event
 
 	
 }//end defineEvents()
@@ -369,9 +384,9 @@ console.log("-- start build page --");
 				//var timeStart = new Date();
 
 _data_getNodes({
-	"num_page":webApp.vars["GET"]["num_page"],
-	"sortOrder": "asc",
-	"sortByKey": "title", //published
+	"num_page": webApp.vars["GET"]["num_page"],
+	"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
+	"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
 	"callback": function(data){
 //console.log(data);
 		if( !data || data.length ===0){
@@ -582,7 +597,7 @@ var timeStart = new Date();
 			xmlObj = func.convertXmlToObj( xml );
 //console.log(xmlObj);
 delete xml;
-			webApp.vars["DB"]["nodes"] = _formNodesObj(xmlObj);
+			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
 delete xmlObj;
 			//_vars["taxonomy"] = __formTaxonomyObj();
 			//_vars["hierarchyList"] = __formHierarchyList();
@@ -602,7 +617,7 @@ console.log( webApp.vars["logMsg"] );
 
 	}//end _parseXML()
 
-	function _formNodesObj(xmlObj){
+	function _data_formNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
 		var databases = xmlObj["xroot"]["children"]["database"];
 		var dbName = "video";
@@ -613,7 +628,6 @@ console.log( webApp.vars["logMsg"] );
 		
 		for(var n = 0; n < databases.length; n++){
 			if( databases[n]["name"] && databases[n]["name"] === dbName){
-//console.log();
 				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
 			}
 		}//next
@@ -648,6 +662,9 @@ console.log( webApp.vars["logMsg"] );
 				
 			}//next
 		}
+
+//------------------ form timestamp
+		__addTimeStamp();
 
 //------------------
 func.log(nodes.length, "total-records");
@@ -685,8 +702,96 @@ $("#page-number-2").attr("max", numPages);
 			}
 			return fields;
 		}//end __convertMultipleField()
+
+		function __addTimeStamp(){
+			for(var n = 0; n < nodes.length; n++){
+				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
+					if( webApp.vars["DB"]["dateFormat"] === "dd-mm-yyyy hh:mm:ss"){
+						var arr = nodes[n]["published"].split(" ");
+						var dateArr = arr[0].split("-");
+						var timeArr = arr[1].split(":");
+						
+						var split_values = {
+							"day" : dateArr[0],
+							"month" : dateArr[1],
+							"year" : dateArr[2],
+							"hour" : timeArr[0],
+							"min" : timeArr[1],
+							"sec" : timeArr[2]
+						};
+						
+						var _day = parseInt( split_values["day"] );
+						if ( isNaN( _day ) ){
+							_day = 0;
+						}
+
+						var _month = 0;
+				//"15-Sep-2018 22:13:00";
+						var sMonth = split_values["month"];
+						switch(sMonth){
+							
+							case "Jan":
+								_month = 1;
+							break;
+							
+							case "Feb":
+								_month = 2;
+							break;
+							
+							case "Mar":
+								_month = 3;
+							break;
+							
+							case "Apr":
+								_month = 4;
+							break;
+							
+							case "May":
+								_month = 5;
+							break;
+							
+							case "Jun":
+								_month = 6;
+							break;
+							
+							case "Jul":
+								_month = 7;
+							break;
+							
+							case "Aug":
+								_month = 8;
+							break;
+							
+							case "Sep":
+								_month = 9;
+							break;
+							
+							case "Oct":
+								_month = 10;
+							break;
+							
+							case "Nov":
+								_month = 11;
+							break;
+							
+							case "Dec":
+								_month = 12;
+							break;
+							
+						}//end switch
+
+						var _year = parseInt( split_values["year"] );
+						if ( isNaN( _year ) ){
+							_year = 0;
+						}
+
+						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
+					}
+				}
+			}//next
+		}// end __addTimeStamp()
 		
-	}//end _formNodesObj()
+	}//end _data_formNodesObj()
 
 	function _formTaxonomyObj(){
 	}//end _formTaxonomyObj()
@@ -964,13 +1069,13 @@ function _data_getNodes(opt){
 
 //------------------ sort NODES
 if(p.sortByKey && p.sortByKey.length > 0){
-	if( p.sortByKey !== webApp.vars["DB"]["sortByKey"]){
+	if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
 		_data_sortNodes({
 			records: webApp.vars["DB"]["nodes"],
 			"sortOrder": p.sortOrder, //"asc", //desc
 			"sortByKey": p.sortByKey
 		});
-		webApp.vars["DB"]["sortByKey"] = p.sortByKey;
+		webApp.vars["DB"]["prevSortKey"] = p.sortByKey;
 	}
 }
 //------------------
@@ -1087,14 +1192,22 @@ console.log( logMsg );
 			
 	p.records.sort(function(a,b){
 //console.log(a, b);
+
 		var s1,s2;
+		
+		s1 = a[p.sortByKey];
+		s2 = b[p.sortByKey];
+		
 		if( p.sortByKey === "title" ){
 			s1 = a[p.sortByKey][0]["text"].toLowerCase();
 			s2 = b[p.sortByKey][0]["text"].toLowerCase();
-		} else {
-			s1 = a[p.sortByKey];
-			s2 = b[p.sortByKey];
 		}
+		
+		if( p.sortByKey === "published" ){
+			s1 = a["timestamp"];
+			s2 = b["timestamp"];
+		}
+		
 		switch(p.sortOrder){
 			case "asc":
 				if (s1 > s2) {
