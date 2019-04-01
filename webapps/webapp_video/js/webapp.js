@@ -29,12 +29,12 @@ var webApp = {
 		"blocks": [
 			{
 				"locationID" : "block-1",
-				"title" : "Playlists", 
+				"title" : "Playlist", 
 				"templateID" : "tpl-block",
 				"content" : "<ul class='list-unstyled'>\
-<li class='list-group-item'>films</li>\
-<li class='list-group-item'>music - classic rock</li>\
-<li class='list-group-item'>music - thrash, death, grinde</li>\
+<li class='list-group-item'>Track1</li>\
+<li class='list-group-item'>Track2</li>\
+<li class='list-group-item'>Track3</li>\
 <li class='list-group-item'>....</li>\
 </ul>",
 				"visibility" : true,//"frontPage"

@@ -156,6 +156,18 @@ select * from nodes where tags.name="location_video" and tags.value="youtube"
 перебор массива и вставку в шаблон значений полей организовать в цикле
 
 - включить в XML данные таксономии (список тегов и иерархические подшивки)
+	<tags>
+		<item name="genre">драма</item>
+		<item name="video_format">короткометражный</item>
+		<item name="actor">Алексей Полуян</item>
+		<item name="actor">Михаил Марескин</item>
+		<item name="file_format">avi</item>
+		<item name="alphabetical_list">А</item>
+		<item name="location_video">youtube</item>
+		<item name="creation_year">2008</item>
+	</tags>
+
+
 *- почему дублировался "Береги свою косынку, Татьяна" ???
 в поле producer два значения
 "Аки Каурисмяки"
