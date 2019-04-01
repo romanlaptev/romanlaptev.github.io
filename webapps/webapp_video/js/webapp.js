@@ -370,6 +370,8 @@ console.log("-- start build page --");
 
 _data_getNodes({
 	"num_page":webApp.vars["GET"]["num_page"],
+	"sortOrder": "asc",
+	"sortByKey": "title", //published
 	"callback": function(data){
 //console.log(data);
 		if( !data || data.length ===0){
@@ -959,6 +961,20 @@ function _data_getNodes(opt){
 	}
 //console.log(p);
 
+
+//------------------ sort NODES
+if(p.sortByKey && p.sortByKey.length > 0){
+	if( p.sortByKey !== webApp.vars["DB"]["sortByKey"]){
+		_data_sortNodes({
+			records: webApp.vars["DB"]["nodes"],
+			"sortOrder": p.sortOrder, //"asc", //desc
+			"sortByKey": p.sortByKey
+		});
+		webApp.vars["DB"]["sortByKey"] = p.sortByKey;
+	}
+}
+//------------------
+
 	var data = [];
 	
 	var numPage = parseInt( p["num_page"] )-1;
@@ -1041,6 +1057,70 @@ console.log( webApp.vars["logMsg"] );
 	}
 }//end _data_getNodes()
 
+
+function _data_sortNodes(opt){
+//console.log(opt);
+	var p = {
+		records: [],
+		"sortOrder": "asc", //desc
+		"sortByKey": null
+	};
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+	if(p.records.length === 0 ){
+		var logMsg = "error, not found sorting records...";
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+		return false;
+	}
+			
+	if(!p.sortByKey){
+		var logMsg = "error, not found 'sortByKey'...";
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+		return false;
+	}
+			
+	p.records.sort(function(a,b){
+//console.log(a, b);
+		var s1,s2;
+		if( p.sortByKey === "title" ){
+			s1 = a[p.sortByKey][0]["text"].toLowerCase();
+			s2 = b[p.sortByKey][0]["text"].toLowerCase();
+		} else {
+			s1 = a[p.sortByKey];
+			s2 = b[p.sortByKey];
+		}
+		switch(p.sortOrder){
+			case "asc":
+				if (s1 > s2) {
+					return 1;
+				}
+				if (s1 < s2) {
+					return -1;
+				}
+				// s1 === s2
+				return 0;
+			break
+			
+			case "desc":
+				if (s1 > s2) {
+					return -1;
+				}
+				if (s1 < s2) {
+					return 1;
+				}
+				// s1 === s2
+				return 0;
+			break
+		}//end swith()
+	});//end sort
+	
+}//end _data_sortNodes()
 
 
 //============================================== DRAW
