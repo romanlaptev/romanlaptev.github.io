@@ -113,9 +113,11 @@ WHERE field_data_field_url.entity_id={{nodeNid}};
 $_vars["sql"]["getTags"] = "
 SELECT 
 taxonomy_index.tid,
-taxonomy_term_data.name
+taxonomy_term_data.name,
+taxonomy_vocabulary.name as codename
 FROM taxonomy_index
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
 WHERE taxonomy_index.nid={{nodeNid}};
 ";
 
@@ -160,7 +162,7 @@ $_vars["tpl_links"] = '<ul>{{list}}</ul>';
 $_vars["tpl_menu_item"] = '<li>{{source}}</li>';
 
 $_vars["tpl_tags"] = '<tags>{{list}}</tags>';
-$_vars["tpl_tag_item"] = '<item tid="{{tid}}">{{name}}</item>';
+$_vars["tpl_tag_item"] = '<item tid="{{tid}}" codename="{{codename}}">{{name}}</item>';
 
 
 //==============================================================
@@ -317,16 +319,6 @@ function _exportProcess(){
 	);
 	$_vars["video"] = _convertFields($_vars["films"]);
 
-	//$_vars["videoclips"] = getNodes( $_vars["sql"]["getVideoClips"] );
-	//getMultipleFields( $_vars["sql"]["getVideoTitle"], $_vars["videoclips"] );
-	//getMultipleFields( $_vars["sql"]["getVideoPictures"], $_vars["videoclips"] );
-	//$_vars["videoclips"] = _convertFields($_vars["videoclips"]);
-
-	//$_vars["video"] = array_merge($_vars["films"], $_vars["videoclips"]);
-	//echo "vars = <pre>";
-	//print_r($_vars["video"] );
-	//echo "</pre>";
-
 	if( !empty($_vars["video"]) ){
 		$_vars["xml"] = formXML($_vars["video"]);
 	}
@@ -380,6 +372,7 @@ function getVideoTags( $sql, $records, $fieldNameTrg ){
 				$tag = new stdClass();
 				$tag->tid = $result[$n2]->tid;
 				$tag->name = $result[$n2]->name;
+				$tag->codename = $result[$n2]->codename;
 				$record->{$fieldNameTrg}[] = $tag;
 			}//next
 		}
@@ -633,7 +626,8 @@ $img_str = $matches[1];
 			for( $n2 =0; $n2 < count($record["tags"]); $n2++ ){
 				$tid_str = $record["tags"][$n2]->tid;
 				$tag_str = $record["tags"][$n2]->name;
-				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}"], [$tid_str, $tag_str], $_vars["tpl_tag_item"]);
+				$codename_str = $record["tags"][$n2]->codename;
+				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}", "{{codename}}"], [$tid_str, $tag_str, $codename_str], $_vars["tpl_tag_item"]);
 			}//next
 			$tags = str_replace("{{list}}", $tags."\n\t", $_vars["tpl_tags"]);
 		}
