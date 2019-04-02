@@ -143,7 +143,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="94" codename="">Роберт Де Ниро</item>
 		<item tid="15" codename="Terry Gilliam">Терри Гиллиам</item>
@@ -246,7 +246,7 @@ Cубтитры: русские (внешние); шведские, фински
 	<tags>
 		<item tid="33" codename="">биография</item>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="75" codename="">Швеция</item>
 		<item tid="150" codename="">srt</item>
 		<item tid="27" codename="">mkv</item>
@@ -389,7 +389,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="93" codename="">Катя Оутинен</item>
 		<item tid="16" codename="Aki Kaurismaki">Аки Каурисмяки</item>
 		<item tid="61" codename="">Германия</item>
@@ -436,7 +436,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="18" codename="Jerry Zucker">Джерри Цукер</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -496,7 +496,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -534,7 +534,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="77" codename="">Гонконг</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -745,7 +745,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="158" codename="">Гай Ритчи</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -783,7 +783,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="158" codename="">Гай Ритчи</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -876,7 +876,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="62" codename="">Испания</item>
 		<item tid="76" codename="">Португалия</item>
@@ -917,7 +917,7 @@ Il Commendatore - Matti Salminen
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="85" codename="">Моцарт</item>
@@ -982,7 +982,7 @@ Manfred Honeck, direction
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -1038,7 +1038,7 @@ Manfred Honeck, direction
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="22" codename="">avi</item>
@@ -1102,7 +1102,7 @@ Manfred Honeck, direction
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="85" codename="">Моцарт</item>
 		<item tid="25" codename="">flv</item>
@@ -1154,7 +1154,7 @@ Manfred Honeck, direction
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -1351,7 +1351,7 @@ Manfred Honeck, direction
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="148" codename="">субтитры</item>
 		<item tid="27" codename="">mkv</item>
@@ -1393,7 +1393,7 @@ Erich Schellow
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="270" codename="">Хайнц Рюманн</item>
 		<item tid="61" codename="">Германия</item>
 		<item tid="150" codename="">srt</item>
@@ -1606,7 +1606,7 @@ Gerd Vespermann (Bobby),
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="42" codename="">трагикомедия</item>
 		<item tid="175" codename="">Борислав Брондуков</item>
 		<item tid="134" codename="">Гафт, Валентин</item>
@@ -1659,7 +1659,7 @@ Gerd Vespermann (Bobby),
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="42" codename="">трагикомедия</item>
 		<item tid="175" codename="">Борислав Брондуков</item>
 		<item tid="140" codename="">Евгений Леонов</item>
@@ -1811,7 +1811,7 @@ http://www.kinopoisk.ru/film/228479/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="270" codename="">Хайнц Рюманн</item>
 		<item tid="61" codename="">Германия</item>
 		<item tid="148" codename="">субтитры</item>
@@ -1893,7 +1893,7 @@ http://www.kinopoisk.ru/film/228479/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="43" codename="">фантастика</item>
@@ -1932,7 +1932,7 @@ http://www.kinopoisk.ru/film/228479/</description>
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="61" codename="">Германия</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -1998,7 +1998,7 @@ http://www.kinopoisk.ru/film/228479/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="12" codename="">триллер</item>
 		<item tid="62" codename="">Испания</item>
@@ -2151,7 +2151,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="46" codename="">Абрахамс, Джим</item>
 		<item tid="18" codename="Jerry Zucker">Джерри Цукер</item>
 		<item tid="22" codename="">avi</item>
@@ -2244,7 +2244,7 @@ Branford Marsalis
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="191" codename="">Дэнни Де Вито</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -2404,7 +2404,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="122" codename="">Стеллинг, Йос</item>
 		<item tid="69" codename="">Нидерланды</item>
@@ -2456,7 +2456,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="125" codename="">Епифанцев, Владимир</item>
 		<item tid="126" codename="">Ефремов, Михаил</item>
@@ -2495,7 +2495,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="89" codename="">Франция</item>
 		<item tid="22" codename="">avi</item>
@@ -2563,7 +2563,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="164" codename="">мюзикл</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="43" codename="">фантастика</item>
@@ -2594,7 +2594,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="112" codename="">Бельгия</item>
 		<item tid="150" codename="">srt</item>
@@ -2696,7 +2696,7 @@ http://megogo.net/ru/view/1360191-kavkazskaya-plennica-ili-novye-priklyucheniya-
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="80" codename="">Гайдай, Леонид</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -2737,7 +2737,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="80" codename="">Гайдай, Леонид</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -2789,7 +2789,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="196" codename="">Александр Демьяненко</item>
 		<item tid="180" codename="">Владимир Этуш</item>
 		<item tid="136" codename="">Куравлев, Леонид</item>
@@ -2931,7 +2931,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="175" codename="">Борислав Брондуков</item>
 		<item tid="140" codename="">Евгений Леонов</item>
 		<item tid="136" codename="">Куравлев, Леонид</item>
@@ -3070,7 +3070,7 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="141" codename="">ogv</item>
 		<item tid="216" codename="">J</item>
@@ -3153,7 +3153,7 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
@@ -3286,7 +3286,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="63" codename="">Япония</item>
@@ -3331,7 +3331,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="140" codename="">Евгений Леонов</item>
 		<item tid="139" codename="">Юрий Яковлев</item>
@@ -3389,7 +3389,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="155" codename="">Роберт Карлайл</item>
 		<item tid="44" codename="">Бойл, Дэнни</item>
@@ -3436,7 +3436,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
@@ -3490,7 +3490,7 @@ Monica Viegas
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="137" codename="">мультфильм</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="112" codename="">Бельгия</item>
@@ -3535,7 +3535,7 @@ Monica Viegas
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="200" codename="">Джеральд Даррелл</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="23" codename="">mpg</item>
@@ -3575,7 +3575,7 @@ Monica Viegas
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
@@ -3907,7 +3907,7 @@ Ten Canoes.avi
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="244" codename="">Р</item>
@@ -3946,7 +3946,7 @@ Ten Canoes.avi
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="56" codename="Stanley Kubrick">Кубрик, Стэнли</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="22" codename="">avi</item>
@@ -4031,7 +4031,7 @@ Ten Canoes.avi
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="198" codename="">Арчил Гомиашвили</item>
 		<item tid="199" codename="">Вахтанг Кикабидзе</item>
 		<item tid="140" codename="">Евгений Леонов</item>
@@ -4073,7 +4073,7 @@ Ten Canoes.avi
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="67" codename="">Италия</item>
 		<item tid="89" codename="">Франция</item>
 		<item tid="22" codename="">avi</item>
@@ -4120,7 +4120,7 @@ http://megogo.net/ru/view/1360231-brilliantovaya-ruka.html</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="133" codename="">Миронов, Андрей</item>
 		<item tid="132" codename="">Папанов, Анатолий</item>
 		<item tid="178" codename="">Юрий Никулин</item>
@@ -4252,7 +4252,7 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="129" codename="">Евстигнеев, Евгений</item>
 		<item tid="136" codename="">Куравлев, Леонид</item>
 		<item tid="73" codename="">СССР</item>
@@ -4295,7 +4295,7 @@ Monta Bell
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
@@ -4332,7 +4332,7 @@ Babe London
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
@@ -4368,7 +4368,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="187" codename="">Харольд Лойд</item>
 		<item tid="66" codename="">США</item>
@@ -4428,7 +4428,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="129" codename="">Евстигнеев, Евгений</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -4463,7 +4463,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="137" codename="">мультфильм</item>
 		<item tid="138" codename="">Исландия</item>
 		<item tid="22" codename="">avi</item>
@@ -4765,7 +4765,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="54" codename="">мелодрама</item>
 		<item tid="189" codename="">Урбен Канселье</item>
 		<item tid="147" codename="">Жан-Пьер Жене</item>
@@ -4817,7 +4817,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="140" codename="">Евгений Леонов</item>
 		<item tid="152" codename="">Савелий Крамаров</item>
@@ -4854,7 +4854,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="27" codename="">mkv</item>
 		<item tid="226" codename="">W</item>
@@ -4973,7 +4973,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -5013,7 +5013,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="110" codename="">Юрский, Сергей</item>
 		<item tid="73" codename="">СССР</item>
@@ -5179,7 +5179,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="53" codename="">Спорт</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="61" codename="">Германия</item>
 		<item tid="66" codename="">США</item>
@@ -5263,7 +5263,7 @@ http://www.kinopoisk.ru/film/2574/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="210" codename="">D</item>
@@ -5307,7 +5307,7 @@ http://www.kinopoisk.ru/film/2574/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="296" codename="">Джон Клиз</item>
 		<item tid="66" codename="">США</item>
@@ -5389,7 +5389,7 @@ http://www.kinopoisk.ru/film/2574/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="54" codename="">мелодрама</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="119" codename="">экранизация</item>
@@ -5534,7 +5534,7 @@ http://www.kinopoisk.ru/film/39872/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="164" codename="">мюзикл</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -5629,7 +5629,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="42" codename="">трагикомедия</item>
 	</tags>
 
@@ -5893,7 +5893,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -6036,7 +6036,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="198" codename="">Арчил Гомиашвили</item>
 		<item tid="151" codename="">Георгий Вицин</item>
 		<item tid="195" codename="">Михаил Пуговкин</item>
@@ -6092,7 +6092,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="174" codename="">Зиновий Гердт</item>
 		<item tid="81" codename="">Быков, Ролан</item>
 		<item tid="73" codename="">СССР</item>
@@ -6145,7 +6145,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="207" codename="">A</item>
 		<item tid="229" codename="">А</item>
@@ -6183,7 +6183,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="124" codename="">Николсон, Джек</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -6234,7 +6234,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="129" codename="">Евстигнеев, Евгений</item>
 		<item tid="133" codename="">Миронов, Андрей</item>
 		<item tid="132" codename="">Папанов, Анатолий</item>
@@ -6279,7 +6279,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -6315,7 +6315,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="66" codename="">США</item>
@@ -6362,7 +6362,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="190" codename="">Жерар Кравчик</item>
 		<item tid="89" codename="">Франция</item>
@@ -6409,7 +6409,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="190" codename="">Жерар Кравчик</item>
 		<item tid="89" codename="">Франция</item>
@@ -6452,7 +6452,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="54" codename="">мелодрама</item>
 		<item tid="199" codename="">Вахтанг Кикабидзе</item>
 		<item tid="45" codename="">Данелия, Георгий</item>
@@ -6537,7 +6537,7 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="192" codename="">Бастер Китон</item>
@@ -6581,7 +6581,7 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -6626,7 +6626,7 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="224" codename="">S</item>
@@ -6669,7 +6669,7 @@ https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%83%D1%82%D0%BE%D0%B2%D1%81%D1%82%D
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="66" codename="">США</item>
 		<item tid="27" codename="">mkv</item>
 		<item tid="243" codename="">П</item>
@@ -6712,7 +6712,7 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="12" codename="">триллер</item>
 		<item tid="109" codename="">Маковецкий, Сергей</item>
 		<item tid="145" codename="">Никита Михалков</item>
@@ -6801,7 +6801,7 @@ http://ru.wikipedia.org/wiki/%D0%9B%D0%BB%D0%BE%D0%B9%D0%B4_%D0%91%D1%80%D0%B8%D
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="214" codename="">H</item>
 		<item tid="232" codename="">Г</item>
@@ -6843,7 +6843,7 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="46" codename="">Абрахамс, Джим</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="214" codename="">H</item>
@@ -6885,7 +6885,7 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="66" codename="">США</item>
 		<item tid="27" codename="">mkv</item>
@@ -6927,7 +6927,7 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="181" codename="">Пьер Ришар</item>
 		<item tid="182" codename="">Франсис Вебер</item>
 		<item tid="89" codename="">Франция</item>
@@ -7453,7 +7453,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="57" codename="">Монти Питон</item>
 		<item tid="15" codename="Terry Gilliam">Терри Гиллиам</item>
 		<item tid="22" codename="">avi</item>
@@ -7539,7 +7539,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="144" codename="">Тим Рот</item>
 		<item tid="142" codename="">Квентин Тарантино</item>
@@ -7582,7 +7582,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="13" codename="">криминал</item>
 		<item tid="74" codename="">Мексика</item>
 		<item tid="66" codename="">США</item>
@@ -7745,7 +7745,7 @@ http://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B5%D1%80_%28%D1%84%D0%B8%D0%B
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="183" codename="">Жерар Депардье</item>
 		<item tid="181" codename="">Пьер Ришар</item>
 		<item tid="182" codename="">Франсис Вебер</item>
@@ -7788,7 +7788,7 @@ https://www.kinopoisk.ru/film/786/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="183" codename="">Жерар Депардье</item>
 		<item tid="182" codename="">Франсис Вебер</item>
 		<item tid="89" codename="">Франция</item>
@@ -7924,7 +7924,7 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="151" codename="">Георгий Вицин</item>
 		<item tid="140" codename="">Евгений Леонов</item>
 		<item tid="152" codename="">Савелий Крамаров</item>
@@ -8033,7 +8033,7 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="122" codename="">Стеллинг, Йос</item>
 		<item tid="61" codename="">Германия</item>
@@ -8070,7 +8070,7 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="107" codename="">Сухоруков, Виктор</item>
 		<item tid="106" codename="">Мамин, Юрий</item>
 		<item tid="73" codename="">СССР</item>
@@ -8119,7 +8119,7 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="108" codename="">Михайлов, Виктор</item>
 		<item tid="106" codename="">Мамин, Юрий</item>
 		<item tid="73" codename="">СССР</item>
@@ -8220,7 +8220,7 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="106" codename="">Мамин, Юрий</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="89" codename="">Франция</item>
@@ -8260,7 +8260,7 @@ https://www.youtube.com/watch?v=TC9lvj4l9F4</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="106" codename="">Мамин, Юрий</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -8411,7 +8411,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="113" codename="">Андерссон, Рой</item>
 		<item tid="71" codename="">Дания</item>
@@ -8886,7 +8886,7 @@ time_machine.avi
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="241" codename="">Н</item>
 		<item tid="305" codename="">1980</item>
@@ -8936,7 +8936,7 @@ https://www.youtube.com/watch?v=fKaFT2bR8SU&amp;amp;t=0s&amp;amp;index=58&amp;am
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="242" codename="">О</item>
@@ -9153,7 +9153,7 @@ The Trial.avi
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -9396,7 +9396,7 @@ http://rutracker.org/forum/viewtopic.php?t=4045941
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="38" codename="Alex van Warmerdam">Алекс Ван Вармердам</item>
 		<item tid="207" codename="">A</item>
 		<item tid="229" codename="">А</item>
@@ -9435,7 +9435,7 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 	<tags>
 		<item tid="39" codename="">детектив</item>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="38" codename="Alex van Warmerdam">Алекс Ван Вармердам</item>
 		<item tid="69" codename="">Нидерланды</item>
 		<item tid="148" codename="">субтитры</item>
@@ -9468,8 +9468,8 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
@@ -9571,7 +9571,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="242" codename="">О</item>
@@ -9630,7 +9630,7 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="57" codename="">Монти Питон</item>
 		<item tid="15" codename="Terry Gilliam">Терри Гиллиам</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -9659,7 +9659,7 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="57" codename="">Монти Питон</item>
 		<item tid="15" codename="Terry Gilliam">Терри Гиллиам</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -9686,7 +9686,7 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="57" codename="">Монти Питон</item>
 	</tags>
 
@@ -9711,8 +9711,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="25" codename="">flv</item>
@@ -9738,8 +9738,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 	</tags>
 
@@ -9764,8 +9764,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="84" codename="">Вивальди</item>
 	</tags>
@@ -9794,8 +9794,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="85" codename="">Моцарт</item>
 		<item tid="25" codename="">flv</item>
@@ -9824,8 +9824,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="86" codename="">Гендель</item>
 		<item tid="25" codename="">flv</item>
@@ -9923,9 +9923,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="83" codename="">классика</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -9950,8 +9950,8 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -10048,9 +10048,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="83" codename="">классика</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -10075,8 +10075,8 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -10102,7 +10102,7 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -10136,7 +10136,7 @@ Manfred Honeck, direction	</roles>
 	
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="85" codename="">Моцарт</item>
@@ -10178,8 +10178,8 @@ Manfred Honeck, direction	</roles>
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="22" codename="">avi</item>
@@ -10251,8 +10251,8 @@ http://www.taday.ru/text/538875.html
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="101" codename="">русский рок</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="23" codename="">mpg</item>
@@ -10278,8 +10278,8 @@ http://www.taday.ru/text/538875.html
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -10454,8 +10454,8 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="23" codename="">mpg</item>
 	</tags>
 
@@ -10629,9 +10629,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -10797,9 +10797,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -10965,9 +10965,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="101" codename="">русский рок</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -11133,9 +11133,9 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="101" codename="">русский рок</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -11160,8 +11160,8 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -11187,8 +11187,8 @@ height: 600,
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
 
@@ -11281,8 +11281,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="103" codename="">клоунада</item>
 		<item tid="104" codename="">Лицедеи</item>
 		<item tid="68" codename="">Россия</item>
@@ -11345,7 +11345,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="142" codename="">Квентин Тарантино</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -11538,7 +11538,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="117" codename="">сериал</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="57" codename="">Монти Питон</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -11627,7 +11627,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
@@ -11675,7 +11675,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="54" codename="">мелодрама</item>
 		<item tid="12" codename="">триллер</item>
 		<item tid="43" codename="">фантастика</item>
@@ -11748,7 +11748,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="151" codename="">Георгий Вицин</item>
 		<item tid="80" codename="">Гайдай, Леонид</item>
@@ -11796,7 +11796,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="150" codename="">srt</item>
@@ -11933,7 +11933,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="63" codename="">Япония</item>
 		<item tid="150" codename="">srt</item>
@@ -11974,7 +11974,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 
 	<tags>
 		<item tid="96" codename="">история</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="35" codename="">философская притча</item>
 		<item tid="63" codename="">Япония</item>
@@ -12034,7 +12034,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="60" codename="">Великобритания</item>
@@ -12110,7 +12110,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
 
@@ -12139,7 +12139,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="226" codename="">W</item>
 	</tags>
 
@@ -12168,7 +12168,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 09:51:24</published>
@@ -12196,7 +12196,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 09:53:57</published>
@@ -12224,7 +12224,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 09:56:13</published>
@@ -12252,7 +12252,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 09:59:09</published>
@@ -12280,7 +12280,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="137" codename="">мультфильм</item>
 		<item tid="23" codename="">mpg</item>
 	</tags>
@@ -12310,7 +12310,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
 
@@ -12338,7 +12338,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
 
@@ -12371,7 +12371,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="88" codename="">Австралия</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -12400,7 +12400,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>23-May-2013 13:30:57</published>
@@ -12427,7 +12427,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>23-May-2013 13:39:22</published>
@@ -12454,7 +12454,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>23-May-2013 13:42:01</published>
@@ -12481,7 +12481,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 	</tags>
 
 	<published>25-May-2013 13:07:55</published>
@@ -12508,7 +12508,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-May-2013 15:11:33</published>
@@ -12535,7 +12535,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-May-2013 15:13:32</published>
@@ -12562,7 +12562,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-May-2013 15:17:14</published>
@@ -12589,7 +12589,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-May-2013 15:19:16</published>
@@ -12616,7 +12616,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:22:45</published>
@@ -12643,7 +12643,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:25:04</published>
@@ -12670,7 +12670,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:26:46</published>
@@ -12697,7 +12697,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:29:24</published>
@@ -12724,7 +12724,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:30:40</published>
@@ -12751,7 +12751,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:35:27</published>
@@ -12778,7 +12778,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:36:46</published>
@@ -12805,7 +12805,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 10:40:15</published>
@@ -12832,7 +12832,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="113" codename="">Андерссон, Рой</item>
 		<item tid="75" codename="">Швеция</item>
@@ -12863,7 +12863,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>26-May-2013 12:30:47</published>
@@ -12890,7 +12890,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>28-May-2013 14:09:32</published>
@@ -12917,7 +12917,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>28-May-2013 14:11:34</published>
@@ -12944,7 +12944,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>28-May-2013 14:19:27</published>
@@ -12971,7 +12971,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>28-May-2013 14:22:00</published>
@@ -12998,7 +12998,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>28-May-2013 14:41:40</published>
@@ -13026,7 +13026,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>10-Jun-2013 12:57:35</published>
@@ -13053,7 +13053,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>10-Jun-2013 13:02:05</published>
@@ -13081,7 +13081,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>10-Jun-2013 13:12:36</published>
@@ -13109,7 +13109,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
 
@@ -13138,7 +13138,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>11-Jun-2013 00:24:45</published>
@@ -13166,7 +13166,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 	</tags>
 
@@ -13195,7 +13195,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>12-Jun-2013 02:11:44</published>
@@ -13223,7 +13223,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>13-Jun-2013 13:13:38</published>
@@ -13250,7 +13250,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>13-Jun-2013 13:15:13</published>
@@ -13277,7 +13277,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>15-Jun-2013 02:22:31</published>
@@ -13304,7 +13304,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>15-Jun-2013 13:13:43</published>
@@ -13367,7 +13367,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="192" codename="">Бастер Китон</item>
 	</tags>
@@ -13396,8 +13396,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>15-Jun-2013 16:02:08</published>
@@ -13424,7 +13424,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>15-Jun-2013 16:03:53</published>
@@ -13451,7 +13451,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>15-Jun-2013 16:09:33</published>
@@ -13478,7 +13478,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>16-Jun-2013 08:43:12</published>
@@ -13505,7 +13505,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>16-Jun-2013 08:50:35</published>
@@ -13532,7 +13532,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>16-Jun-2013 08:57:29</published>
@@ -13597,7 +13597,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -13628,7 +13628,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:01:24</published>
@@ -13655,7 +13655,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:16:20</published>
@@ -13682,7 +13682,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:18:00</published>
@@ -13709,7 +13709,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:22:28</published>
@@ -13736,7 +13736,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:23:59</published>
@@ -13763,7 +13763,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 14:17:02</published>
@@ -13790,8 +13790,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>20-Jun-2013 14:23:37</published>
@@ -13819,8 +13819,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>20-Jun-2013 14:31:25</published>
@@ -13847,7 +13847,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>20-Jun-2013 14:36:59</published>
@@ -13874,7 +13874,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>20-Jun-2013 14:38:32</published>
@@ -13901,7 +13901,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>21-Jun-2013 13:54:58</published>
@@ -13928,7 +13928,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>21-Jun-2013 13:56:57</published>
@@ -13955,7 +13955,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>21-Jun-2013 14:01:37</published>
@@ -13982,7 +13982,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>21-Jun-2013 14:03:57</published>
@@ -14009,7 +14009,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>21-Jun-2013 14:05:53</published>
@@ -14036,7 +14036,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>22-Jun-2013 08:22:46</published>
@@ -14059,7 +14059,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="85" codename="">Моцарт</item>
 		<item tid="22" codename="">avi</item>
@@ -14130,7 +14130,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>02-Jul-2013 14:41:41</published>
@@ -14158,7 +14158,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 	</tags>
 
@@ -14183,8 +14183,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>25-Sep-2013 13:07:42</published>
@@ -14211,7 +14211,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 	</tags>
 
 	<published>25-Sep-2013 13:12:07</published>
@@ -14261,7 +14261,7 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="106" codename="">Мамин, Юрий</item>
 	</tags>
@@ -14317,7 +14317,7 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-Sep-2013 13:51:50</published>
@@ -14342,7 +14342,7 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>25-Sep-2013 13:54:08</published>
@@ -14378,7 +14378,7 @@ https://www.youtube.com/watch?v=xhQ1HAQvtVQ
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 	</tags>
 
 	<published>01-Oct-2013 13:16:07</published>
@@ -14461,7 +14461,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="203" codename="">Александр Абдулов</item>
 		<item tid="204" codename="http://www.kinopoisk.ru/name/266082/">Семен Фарада</item>
@@ -14576,7 +14576,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="203" codename="">Александр Абдулов</item>
 		<item tid="204" codename="http://www.kinopoisk.ru/name/266082/">Семен Фарада</item>
 		<item tid="202" codename="">Марк Захаров</item>
@@ -14606,7 +14606,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="249" codename="">Х</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -14636,7 +14636,7 @@ http://en.wikipedia.org/wiki/Vajrapani</description>
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="239" codename="">Л</item>
 		<item tid="318" codename="">песнопения, chants</item>
 		<item tid="272" codename="">youtube</item>
@@ -14665,7 +14665,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%81%D0%BD%D1%8C_%D0%91%D0%BE%D0%B3%D
 	</ul>
 
 	<tags>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="318" codename="">песнопения, chants</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -14966,7 +14966,7 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 	<tags>
 		<item tid="33" codename="">биография</item>
 		<item tid="32" codename="">документальный</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="101" codename="">русский рок</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="22" codename="">avi</item>
@@ -15026,7 +15026,7 @@ http://www.kinopoisk.ru/film/43724/</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="252" codename="">Ш</item>
@@ -15174,7 +15174,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="60" codename="">Великобритания</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="215" codename="">I</item>
@@ -15203,7 +15203,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="270" codename="">Хайнц Рюманн</item>
 		<item tid="61" codename="">Германия</item>
 		<item tid="22" codename="">avi</item>
@@ -15235,7 +15235,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 
 	<tags>
 		<item tid="37" codename="genre">Боевик</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="75" codename="">Швеция</item>
 		<item tid="22" codename="">avi</item>
 		<item tid="238" codename="">К</item>
@@ -15272,7 +15272,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="117" codename="">сериал</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="66" codename="">США</item>
@@ -15346,7 +15346,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="191" codename="">Дэнни Де Вито</item>
 		<item tid="66" codename="">США</item>
 		<item tid="22" codename="">avi</item>
@@ -15376,7 +15376,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="166" codename="">Николай Караченцов</item>
 		<item tid="73" codename="">СССР</item>
@@ -15418,7 +15418,7 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="244" codename="">Р</item>
 		<item tid="272" codename="">youtube</item>
@@ -15443,7 +15443,7 @@ https://www.youtube.com/watch?v=QSWdP9gFSR8</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="238" codename="">К</item>
@@ -15476,7 +15476,7 @@ https://www.youtube.com/watch?v=mzpJq23cuKc
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="73" codename="">СССР</item>
 		<item tid="242" codename="">О</item>
@@ -15530,7 +15530,7 @@ https://www.youtube.com/watch?v=fr-KJOymhAQ</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="181" codename="">Пьер Ришар</item>
 		<item tid="89" codename="">Франция</item>
 		<item tid="256" codename="">Я</item>
@@ -15652,7 +15652,7 @@ http://mycomp/sites/romanlaptev.github.io/lib/cms/?q=node/1705</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="119" codename="">экранизация</item>
@@ -15735,7 +15735,7 @@ https://www.kinopoisk.ru/film/otryv-1971-14970/</description>
 
 	<tags>
 		<item tid="4" codename="">драма</item>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="160" codename="">Милош Форман</item>
 		<item tid="66" codename="">США</item>
 		<item tid="225" codename="">T</item>
@@ -16523,7 +16523,7 @@ https://yandex.ru/video/favorites?ncrnd=6685</description>
 	
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="14" codename="">приключения</item>
 		<item tid="43" codename="">фантастика</item>
 		<item tid="215" codename="">I</item>
@@ -16742,7 +16742,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="42" codename="">трагикомедия</item>
 		<item tid="115" codename="">Мягков, Андрей</item>
 		<item tid="176" codename="">Олег Басилашвили</item>
@@ -16775,7 +16775,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="119" codename="">экранизация</item>
 		<item tid="109" codename="">Маковецкий, Сергей</item>
 		<item tid="68" codename="">Россия</item>
@@ -16807,7 +16807,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="66" codename="">США</item>
@@ -16842,7 +16842,7 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 	</ul>
 
 	<tags>
-		<item tid="5" codename="">комедия</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="28" codename="">короткометражный</item>
 		<item tid="157" codename="">Чарльз Чаплин</item>
 		<item tid="210" codename="">D</item>
@@ -16888,7 +16888,7 @@ Stage direction and lighting design: Giorgio Strehler</description>
 		<item tid="282" codename="">2006</item>
 		<item tid="219" codename="">M</item>
 		<item tid="240" codename="">М</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="85" codename="">Моцарт</item>
@@ -16972,7 +16972,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="214" codename="">H</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 		<item tid="51" codename="">опера</item>
 		<item tid="86" codename="">Гендель</item>
@@ -17002,8 +17002,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="98" codename="">фолк</item>
 		<item tid="99" codename="">Psalteria</item>
 		<item tid="25" codename="">flv</item>
@@ -17033,8 +17033,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -17059,8 +17059,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="23" codename="">mpg</item>
 	</tags>
 
@@ -17085,8 +17085,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="100" codename="">панк</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -17113,8 +17113,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="102" codename="">хип-хоп</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
@@ -17140,7 +17140,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="23" codename="">mpg</item>
 	</tags>
 
@@ -17164,8 +17164,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="22" codename="">avi</item>
 	</tags>
 
@@ -17189,8 +17189,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>18-May-2013 11:41:00</published>
@@ -17215,7 +17215,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 09:47:23</published>
@@ -17270,7 +17270,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="272" codename="">youtube</item>
 		<item tid="210" codename="">D</item>
 		<item tid="233" codename="">Д</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>18-Jun-2013 00:19:34</published>
@@ -17298,7 +17298,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="208" codename="">B</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>12-Jan-2014 07:06:44</published>
@@ -17326,7 +17326,7 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="100" codename="">панк</item>
 		<item tid="128" codename="">Польша</item>
 		<item tid="24" codename="">mp4</item>
@@ -17357,7 +17357,7 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="219" codename="">M</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -17381,7 +17381,7 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="239" codename="">Л</item>
 	</tags>
 
@@ -17408,7 +17408,7 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="209" codename="">C</item>
 		<item tid="218" codename="">L</item>
 		<item tid="272" codename="">youtube</item>
@@ -17437,8 +17437,8 @@ https://www.youtube.com/watch?v=8AJDF90ETgw</description>
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="214" codename="">H</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -17471,8 +17471,8 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="219" codename="">M</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -17502,7 +17502,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>22-Oct-2017 07:55:37</published>
@@ -17578,7 +17578,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="218" codename="">L</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -17609,7 +17609,7 @@ https://www.youtube.com/watch?v=QrU1hZxSEXQ&amp;amp;t=0s&amp;amp;index=16&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
@@ -17673,7 +17673,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 07:19:25</published>
@@ -17701,7 +17701,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 07:34:42</published>
@@ -17729,7 +17729,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 07:40:01</published>
@@ -17757,7 +17757,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 07:41:53</published>
@@ -17785,7 +17785,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 07:45:20</published>
@@ -17813,7 +17813,7 @@ https://rutube.ru/video/d623bf4322e98718ce8f7a8b46bc2a4a/?ref=search</descriptio
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="218" codename="">L</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>03-Mar-2019 08:01:12</published>
@@ -17848,7 +17848,7 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="218" codename="">L</item>
 		<item tid="272" codename="">youtube</item>
 		<item tid="326" codename="">2016</item>
@@ -17876,7 +17876,7 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="214" codename="">H</item>
 		<item tid="252" codename="">Ш</item>
 		<item tid="272" codename="">youtube</item>
@@ -17904,7 +17904,7 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="220" codename="">N</item>
 		<item tid="225" codename="">T</item>
 		<item tid="272" codename="">youtube</item>
@@ -17933,7 +17933,7 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="210" codename="">D</item>
 		<item tid="217" codename="">K</item>
 		<item tid="272" codename="">youtube</item>
@@ -17962,7 +17962,7 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="214" codename="">H</item>
 		<item tid="252" codename="">Ш</item>
 		<item tid="272" codename="">youtube</item>
@@ -17991,7 +17991,7 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="225" codename="">T</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -18018,7 +18018,7 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="208" codename="">B</item>
 		<item tid="217" codename="">K</item>
 		<item tid="272" codename="">youtube</item>
@@ -18047,7 +18047,7 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="268" codename="">P</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -18074,7 +18074,7 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="268" codename="">P</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -18102,7 +18102,7 @@ Limitless Soundtrack</description>
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="226" codename="">W</item>
 		<item tid="272" codename="">youtube</item>
 	</tags>
@@ -18129,7 +18129,7 @@ Limitless Soundtrack</description>
 	</ul>
 
 	<tags>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="214" codename="">H</item>
 		<item tid="252" codename="">Ш</item>
 		<item tid="272" codename="">youtube</item>
@@ -18160,7 +18160,7 @@ Limitless Soundtrack</description>
 		<item tid="272" codename="">youtube</item>
 		<item tid="214" codename="">H</item>
 		<item tid="252" codename="">Ш</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
@@ -18190,7 +18190,7 @@ Limitless Soundtrack</description>
 		<item tid="272" codename="">youtube</item>
 		<item tid="214" codename="">H</item>
 		<item tid="252" codename="">Ш</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
@@ -18219,7 +18219,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="225" codename="">T</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="67" codename="">Италия</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
@@ -18248,7 +18248,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="241" codename="">Н</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 		<item tid="68" codename="">Россия</item>
 		<item tid="25" codename="">flv</item>
 	</tags>
@@ -18277,7 +18277,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="228" codename="">Z</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:05:09</published>
@@ -18304,7 +18304,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="228" codename="">Z</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:07:44</published>
@@ -18331,7 +18331,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="223" codename="">R</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:22:22</published>
@@ -18357,7 +18357,7 @@ Limitless Soundtrack</description>
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:28:01</published>
@@ -18384,7 +18384,7 @@ Limitless Soundtrack</description>
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="223" codename="">R</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:33:06</published>
@@ -18470,8 +18470,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="207" codename="">A</item>
-		<item tid="48" codename="">видеоклипы</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>29-Mar-2019 14:39:14</published>
@@ -18499,7 +18499,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="209" codename="">C</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 14:53:05</published>
@@ -18526,7 +18526,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="225" codename="">T</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 15:34:33</published>
@@ -18553,7 +18553,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="225" codename="">T</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 15:38:27</published>
@@ -18580,7 +18580,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="225" codename="">T</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 15:41:41</published>
@@ -18607,7 +18607,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="225" codename="">T</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>29-Mar-2019 15:44:41</published>
@@ -18637,7 +18637,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 		<item tid="272" codename="">youtube</item>
 		<item tid="268" codename="">P</item>
 		<item tid="243" codename="">П</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="24" codename="">mp4</item>
 	</tags>
 
@@ -18666,7 +18666,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 		<item tid="272" codename="">youtube</item>
 		<item tid="214" codename="">H</item>
 		<item tid="232" codename="">Г</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 	</tags>
 
@@ -18695,7 +18695,7 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D1%83%D0%BC_(%D0%B0
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>31-Mar-2019 12:58:58</published>
@@ -18723,7 +18723,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 	</tags>
 
 	<published>31-Mar-2019 13:10:50</published>
@@ -18752,7 +18752,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="210" codename="">D</item>
-		<item tid="49" codename="https://www.youtube.com/playlist?list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">музыкальное видео</item>
+		<item tid="49" codename="music_video">музыкальное видео</item>
 		<item tid="83" codename="">классика</item>
 	</tags>
 
@@ -18780,7 +18780,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="241" codename="">Н</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>01-Apr-2019 12:59:54</published>
@@ -18807,7 +18807,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="241" codename="">Н</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>01-Apr-2019 13:07:37</published>
@@ -18833,7 +18833,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 
 	<tags>
 		<item tid="272" codename="">youtube</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>01-Apr-2019 13:12:18</published>
@@ -18860,7 +18860,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	<tags>
 		<item tid="272" codename="">youtube</item>
 		<item tid="250" codename="">Ц</item>
-		<item tid="48" codename="">видеоклипы</item>
+		<item tid="48" codename="music_video">видеоклипы</item>
 	</tags>
 
 	<published>01-Apr-2019 13:15:48</published>
