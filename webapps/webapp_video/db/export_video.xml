@@ -3535,15 +3535,17 @@ Monica Viegas
 	
 
 	<tags>
-		<item tid="5" codename="genre">комедия</item>
 		<item tid="210" codename="alphabetical">D</item>
 		<item tid="233" codename="alphabetical">Д</item>
 		<item tid="240" codename="alphabetical">М</item>
+		<item tid="33" codename="genre">биография</item>
+		<item tid="5" codename="genre">комедия</item>
 		<item tid="283" codename="creation_year">2005</item>
+		<item tid="88" codename="country">Австралия</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Apr-2019 01:48:58</updated>
+	<updated>02-Apr-2019 05:04:42</updated>
 </video>
 
 <video type="video">
@@ -3978,19 +3980,16 @@ Ten Canoes.avi
 	
 
 	<ul>
-		<li>file:///mnt/d1</li>
+		<li><a data-type="local-file" href="http://site-content/video/films/W/we_from_future.avi">we_from_future.avi</a></li>
 	</ul>
 
 	<tags>
-		<item tid="14" codename="genre">приключения</item>
-		<item tid="68" codename="country">Россия</item>
-		<item tid="22" codename="file_format">avi</item>
 		<item tid="240" codename="alphabetical">М</item>
 		<item tid="271" codename="Tags">not used video</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:33:15</updated>
+	<updated>02-Apr-2019 05:09:03</updated>
 </video>
 
 <video type="video">
