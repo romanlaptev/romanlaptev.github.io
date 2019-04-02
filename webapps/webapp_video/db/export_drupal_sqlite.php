@@ -110,14 +110,24 @@ FROM field_data_field_url
 WHERE field_data_field_url.entity_id={{nodeNid}};
 ";
 
+//$_vars["sql"]["getTags"] = "
+//SELECT 
+//taxonomy_index.tid,
+//taxonomy_term_data.name,
+//taxonomy_vocabulary.name as codename
+//FROM taxonomy_index
+//LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+//LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
+//WHERE taxonomy_index.nid={{nodeNid}};
+//";
+
 $_vars["sql"]["getTags"] = "
 SELECT 
 taxonomy_index.tid,
 taxonomy_term_data.name,
-taxonomy_vocabulary.name as codename
+taxonomy_term_data.description as codename
 FROM taxonomy_index
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
-LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
 WHERE taxonomy_index.nid={{nodeNid}};
 ";
 
