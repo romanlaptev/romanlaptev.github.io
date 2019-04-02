@@ -197,7 +197,7 @@ console.log("click...", e);
 	
 //------------------------------------------------------------------
 	$("#list-video").on("click", function(event){
-//console.log("click...", e);
+//console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		
@@ -249,6 +249,19 @@ console.log("click...", e);
 				}
 				
 				_player_addTrack( target );
+			}
+			
+//------------------------------------------------------------------
+			if( $(target).hasClass("tag-link") ){
+//console.log("click...", target.href);
+
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				webApp.vars["GET"] = func.parseGetParams( target.href );
+				_urlManager();
 			}
 			
 		}
@@ -435,52 +448,42 @@ console.log("-- end build page --");
 });
 
 			break;
-/*			
-
-//taxonomy&?tid=105
-//taxonomy/term/105
-//category/info/stil/modern
-			case "taxonomy":
-				if( webApp.vars["GET"]["tid"] ){
-					
-					var block_title = "";
-					if( target.innerHTML.length > 0){
-						block_title = target.innerHTML;
-					}
-					
-					_buildBlock({//draw content block
-						"name" : "block-content",
-						//"title" : "termin_nodes", 
-						"title" : block_title, 
-						"templateID" : "tpl-block-content",
-						"contentTpl" : "tpl-termin_nodes",
-						"contentListTpl" : "tpl-termin_nodes_list",
-						"content" : function(args){
-							
-							webApp.db.getTerminNodes({//get list termin nodes
-								"tid" : webApp.vars["GET"]["tid"],
-								"callback" : function( res ){
-//console.log(res);
-									if( typeof args["callback"] === "function"){
-										args["callback"]( res );
-									}
-
-								}//end callback
-							});
-						}//end callback
-						
-					});
-					
-					
-				} else {
-console.log("Warn! not find 'tid' in query string", webApp.vars["GET"]["tid"] );
-				}
-				
-			break;
 			
+//?q=nodes-by-tag&code=genre
+			case "nodes-by-tag":
+				if( webApp.vars["GET"]["code"] ){
+					_data_getTagNodes({//get list termin nodes
+						"code" : webApp.vars["GET"]["code"],
+						"callback" : function( data ){
+//console.log(data);
+
+							var html = _draw_wrapData({
+								"data":data,
+								"templateID": "tpl-videolist",
+								"templateListItemID": "tpl-videolist-item--video"
+							});
+//console.log( html);
+		if( !html || html.length === 0){
+webApp.vars["logMsg"] = "error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+		} else {
+			//draw content block
+			_draw_buildBlock({
+				"locationID" : "list-video",
+				"title" : "video list", 
+				"templateID" : "tpl-block-videolist",
+				"content" : html
+			});
+		}
+						}//end callback
+					});
+				} else {
+console.log("Warning! not found tag 'code' ...");
+				}
+			break;
 				
 
-*/
 			default:
 console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
 			break;
@@ -1019,12 +1022,14 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 		});
 //console.log( _html);
 
+
 		if( !_html || _html.length === 0){
 webApp.vars["logMsg"] = "error generate html...";
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
 		} else {
-//$("#main").html( _html );			
+//$("#main").html( _html );
+
 			//draw content block
 			_draw_buildBlock({
 				"locationID" : "list-video",
@@ -1259,6 +1264,91 @@ console.log( logMsg );
 	
 }//end _data_sortNodes()
 
+function _data_getTagNodes( opt ){
+	var p = {
+		"code" : null,
+		"callback" : null
+	};
+	//extend options object for queryObj
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+	if( !p["code"] ){
+webApp.vars["logMsg"] = "_data_getTagNodes(), error, not found code tag";
+console.log( webApp.vars["logMsg"] );
+		return false;
+	}
+
+	var data = [];
+	for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
+		var node = webApp.vars["DB"]["nodes"][n];
+		if( !node["tags"] ){
+//console.log(node);		
+			continue;			
+		}
+		var tags = node["tags"];
+		for(var n2 = 0; n2 < tags.length; n2++){
+			if( tags[n2]["codename"] && tags[n2]["codename"] === p["code"]){
+				data.push( node );
+			}
+		}//next
+		
+	}//next
+
+
+	//define unique template for item
+	for(var n = 0; n < data.length; n++){
+		
+		data[n]["number"] = n;
+		
+		if(data[n]["type"] === "videoclip"){
+			data[n]["template"] = "tpl-videolist-item--videoclip";
+		}
+		
+		data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
+		data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
+		
+		if( data[n]["ul"] ){
+			data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
+			data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
+		} else {
+			data[n]["ul"] = "";
+		}
+		
+		if( data[n]["tags"] ){
+			data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
+			data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
+		} else {
+			data[n]["tags"] = "";
+		}
+			
+		if( data[n]["pictures"] ){
+			data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
+			data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
+		} else {
+			data[n]["pictures"] = "";
+		}
+		
+	}//next
+
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+	//return false;
+	
+	//function _postQuery( res ){
+////console.log( res );
+		//if( typeof p["callback"] === "function"){
+			//p["callback"](res);
+		//}
+		
+	//}//end _postQuery()
+	
+	
+}//end _data_getTagNodes()
+
 
 //============================================== DRAW
 	function _draw_wrapData( opt ){
@@ -1273,7 +1363,7 @@ console.log( logMsg );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");
