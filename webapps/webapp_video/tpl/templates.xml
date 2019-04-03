@@ -155,7 +155,7 @@
 	<tpl name="tpl-videolist-item--tag">
 		<html_code>
 <![CDATA[
-	<li><a class="tag-link" href="?q=nodes-by-tag&code={{codename}}">{{text}}</a></li>
+	<li><a class="tag-link" href="?q=nodes-by-tag">{{text}}</a></li>
 ]]>
 		</html_code>
 	</tpl>

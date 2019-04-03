@@ -23,7 +23,8 @@ var webApp = {
 			"numRecordsPerPage":5,
 			"dateFormat": "dd-mm-yyyy hh:mm:ss",
 			"sortOrder": "asc",
-			"sortByKey": "title" //"published", 
+			"sortByKey": "title", //"published", 
+			"queryRes": []
 		},
 		
 		"blocks": [
@@ -260,7 +261,8 @@ console.log("click...", e);
 				} else {
 					event.returnValue = false;				
 				}
-				webApp.vars["GET"] = func.parseGetParams( target.href );
+				var url = target.href+"&text="+ $(target).text();
+				webApp.vars["GET"] = func.parseGetParams( url );
 				_urlManager();
 			}
 			
@@ -421,6 +423,7 @@ console.log("-- start build page --");
 				//var timeStart = new Date();
 
 _data_getNodes({
+	"records": webApp.vars["DB"]["queryRes"],
 	"num_page": webApp.vars["GET"]["num_page"],
 	"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
 	"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
@@ -449,37 +452,50 @@ console.log("-- end build page --");
 
 			break;
 			
-//?q=nodes-by-tag&code=genre
+//?q=nodes-by-tag&text="youtube"
 			case "nodes-by-tag":
-				if( webApp.vars["GET"]["code"] ){
-					_data_getTagNodes({//get list termin nodes
-						"code" : webApp.vars["GET"]["code"],
+				if( webApp.vars["GET"]["text"] ){
+					_data_getNodesByTag({//get list termin nodes
+						"text" : webApp.vars["GET"]["text"],
 						"callback" : function( data ){
 //console.log(data);
-
+							if( !data || data.length ===0){
+								return false;
+							};
+							
+							_draw_updatePager({
+								"total_records":data.length
+							});
+		var url = "?q=list_nodes&num_page=1";
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+		_urlManager();
+							
+							/*
 							var html = _draw_wrapData({
 								"data":data,
 								"templateID": "tpl-videolist",
 								"templateListItemID": "tpl-videolist-item--video"
 							});
 //console.log( html);
-		if( !html || html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		} else {
-			//draw content block
-			_draw_buildBlock({
-				"locationID" : "list-video",
-				"title" : "video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : html
-			});
-		}
+							if( !html || html.length === 0){
+					webApp.vars["logMsg"] = "error generate html...";
+					func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+					console.log( webApp.vars["logMsg"] );
+							} else {
+								//draw content block
+								_draw_buildBlock({
+									"locationID" : "list-video",
+									"title" : "video list", 
+									"templateID" : "tpl-block-videolist",
+									"content" : html
+								});
+							}
+							*/
+							
 						}//end callback
 					});
 				} else {
-console.log("Warning! not found tag 'code' ...");
+console.log("Warning! not found tag text value...");
 				}
 			break;
 				
@@ -625,6 +641,7 @@ var timeStart = new Date();
 //console.log(xmlObj);
 delete xml;
 			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
+			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
 delete xmlObj;
 			//_vars["taxonomy"] = __formTaxonomyObj();
 			//_vars["hierarchyList"] = __formHierarchyList();
@@ -693,19 +710,9 @@ console.log( webApp.vars["logMsg"] );
 //------------------ form timestamp
 		__addTimeStamp();
 
-//------------------
-func.log(nodes.length, "total-records");
-
-var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
-var numPages = Math.ceil(nodes.length / numRecordsPerPage);
-webApp.vars["DB"]["numPages"] = numPages;
-
-//$("#page-number").val(numPages);
-func.log(numPages, "total-pages");
-
-$("#page-range").attr("max", numPages);
-//$("#page-number-2").attr("max", numPages);
-//------------------
+		_draw_updatePager({
+			"total_records":nodes.length
+		});
 
 		return nodes;
 		
@@ -1086,6 +1093,7 @@ console.log("-- image load error", e.target.src);
 //============================================== DATA
 function _data_getNodes(opt){
 	var p = {
+		records: [],
 		"num_page": null,
 		"callback": null
 	};
@@ -1100,7 +1108,7 @@ function _data_getNodes(opt){
 if(p.sortByKey && p.sortByKey.length > 0){
 	if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
 		_data_sortNodes({
-			records: webApp.vars["DB"]["nodes"],
+			records: p.records,
 			"sortOrder": p.sortOrder, //"asc", //desc
 			"sortByKey": p.sortByKey
 		});
@@ -1119,7 +1127,7 @@ if(p.sortByKey && p.sortByKey.length > 0){
 	var startPos = numPage * numRecordsPerPage;
 	var endPos = startPos + numRecordsPerPage;
 
-	if( startPos > webApp.vars["DB"]["nodes"].length ){
+	if( startPos > p.records.length ){
 webApp.vars["logMsg"] = "warning, incorrect page number, not more than "+webApp.vars["DB"]["numPages"];
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
@@ -1130,20 +1138,20 @@ console.log( webApp.vars["logMsg"] );
 		return false;
 	}
 
-	if( endPos > webApp.vars["DB"]["nodes"].length ){
-		var n = endPos - webApp.vars["DB"]["nodes"].length;
+	if( endPos > p.records.length ){
+		var n = endPos - p.records.length;
 		endPos = endPos - n;
 //console.log("TEST...", n);
 	}
-//console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
+//console.log( startPos, numRecordsPerPage, endPos, p.records.length);
 
 	for(var n = startPos; n < endPos; n++){
-		data.push( webApp.vars["DB"]["nodes"][n]);
+		data.push( p.records[n]);
 	}//next
 /*	
 	//copy objects node
 	for(var n = startPos; n < endPos; n++){
-		var jsonNode = JSON.stringify( webApp.vars["DB"]["nodes"][n] );
+		var jsonNode = JSON.stringify( p.records[n] );
 		data.push( JSON.parse( jsonNode) );
 	}//next
 */	
@@ -1153,40 +1161,7 @@ console.log( webApp.vars["logMsg"] );
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];
 
-	//define unique template for item
-	for(var n = 0; n < data.length; n++){
-		
-		data[n]["number"] = n;
-		
-		if(data[n]["type"] === "videoclip"){
-			data[n]["template"] = "tpl-videolist-item--videoclip";
-		}
-		
-		data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
-		data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
-		
-		if( data[n]["ul"] ){
-			data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
-			data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
-		} else {
-			data[n]["ul"] = "";
-		}
-		
-		if( data[n]["tags"] ){
-			data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
-			data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
-		} else {
-			data[n]["tags"] = "";
-		}
-			
-		if( data[n]["pictures"] ){
-			data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
-			data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
-		} else {
-			data[n]["pictures"] = "";
-		}
-		
-	}//next
+	_data_setTemplate(data);//define unique template for item
 
 	if( typeof p["callback"] === "function"){
 		p["callback"](data);
@@ -1266,9 +1241,9 @@ console.log( logMsg );
 	
 }//end _data_sortNodes()
 
-function _data_getTagNodes( opt ){
+function _data_getNodesByTag( opt ){
 	var p = {
-		"code" : null,
+		"text" : null,
 		"callback" : null
 	};
 	//extend options object for queryObj
@@ -1277,8 +1252,8 @@ function _data_getTagNodes( opt ){
 	}
 //console.log(p);
 
-	if( !p["code"] ){
-webApp.vars["logMsg"] = "_data_getTagNodes(), error, not found code tag";
+	if( !p["text"] ){
+webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag text value...";
 console.log( webApp.vars["logMsg"] );
 		return false;
 	}
@@ -1292,15 +1267,35 @@ console.log( webApp.vars["logMsg"] );
 		}
 		var tags = node["tags"];
 		for(var n2 = 0; n2 < tags.length; n2++){
-			if( tags[n2]["codename"] && tags[n2]["codename"] === p["code"]){
+			if( tags[n2]["text"] && tags[n2]["text"] === p["text"]){
 				data.push( node );
 			}
 		}//next
 		
 	}//next
 
+	_data_setTemplate(data);//define unique template for item
+	webApp.vars["DB"]["queryRes"] = data;
+	
 
-	//define unique template for item
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+	//return false;
+	
+	//function _postQuery( res ){
+////console.log( res );
+		//if( typeof p["callback"] === "function"){
+			//p["callback"](res);
+		//}
+		
+	//}//end _postQuery()
+	
+	
+}//end _data_getNodesByTag()
+
+
+function _data_setTemplate(data){
 	for(var n = 0; n < data.length; n++){
 		
 		data[n]["number"] = n;
@@ -1334,22 +1329,8 @@ console.log( webApp.vars["logMsg"] );
 		}
 		
 	}//next
-
-	if( typeof p["callback"] === "function"){
-		p["callback"](data);
-	}
-	//return false;
 	
-	//function _postQuery( res ){
-////console.log( res );
-		//if( typeof p["callback"] === "function"){
-			//p["callback"](res);
-		//}
-		
-	//}//end _postQuery()
-	
-	
-}//end _data_getTagNodes()
+}//_data_setTemplate()
 
 
 //============================================== DRAW
@@ -1365,7 +1346,7 @@ console.log( webApp.vars["logMsg"] );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");
@@ -1688,3 +1669,20 @@ console.log( webApp.vars["logMsg"] );
 		}
 
 	};//end _draw_insertBlock()
+
+
+	function _draw_updatePager(opt){
+		func.log("", "total-records");
+		func.log(opt["total_records"], "total-records");
+
+		var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
+		webApp.vars["DB"]["numPages"] = numPages;
+
+		//$("#page-number").val(numPages);
+		func.log("", "total-pages");
+		func.log(numPages, "total-pages");
+
+		$("#page-range").attr("max", numPages);
+		//$("#page-number-2").attr("max", numPages);
+	}//end _draw_updatePagers()
