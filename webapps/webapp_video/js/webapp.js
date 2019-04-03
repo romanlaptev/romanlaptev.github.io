@@ -138,7 +138,7 @@ function _runApp(){
 	}
 
 
-	_loadData(function(){
+	_loadData(function(res){
 //console.log(arguments);
 //console.log(window.location);	
 
@@ -149,10 +149,8 @@ function _runApp(){
 		}		
 //}, 1000*3);
 
-	//_loadTemplates(function(){
-	//console.log("Load templates end...", webApp.draw.vars["templates"] );		
-	//});
-
+//if( webApp.vars["loadDataRes"] ){
+if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 		var parse_url = window.location.search; 
 		if( parse_url.length > 0 ){
 			webApp.vars["GET"] = func.parseGetParams(); 
@@ -166,6 +164,7 @@ function _runApp(){
 			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
 			_urlManager();
 		}
+}
 
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -466,31 +465,10 @@ console.log("-- end build page --");
 							_draw_updatePager({
 								"total_records":data.length
 							});
-		var url = "?q=list_nodes&num_page=1";
-		webApp.vars["GET"] = func.parseGetParams( url ); 
-		_urlManager();
 							
-							/*
-							var html = _draw_wrapData({
-								"data":data,
-								"templateID": "tpl-videolist",
-								"templateListItemID": "tpl-videolist-item--video"
-							});
-//console.log( html);
-							if( !html || html.length === 0){
-					webApp.vars["logMsg"] = "error generate html...";
-					func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-					console.log( webApp.vars["logMsg"] );
-							} else {
-								//draw content block
-								_draw_buildBlock({
-									"locationID" : "list-video",
-									"title" : "video list", 
-									"templateID" : "tpl-block-videolist",
-									"content" : html
-								});
-							}
-							*/
+							var url = "?q=list_nodes&num_page=1";
+							webApp.vars["GET"] = func.parseGetParams( url ); 
+							_urlManager();
 							
 						}//end callback
 					});
@@ -638,26 +616,25 @@ var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-//console.log(xmlObj);
+console.log(xmlObj);
 delete xml;
 			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
 			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
 delete xmlObj;
 			//_vars["taxonomy"] = __formTaxonomyObj();
 			//_vars["hierarchyList"] = __formHierarchyList();
+			//webApp.vars["loadDataRes"] = true;
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
 
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
 func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 console.log( error );
 		}//end catch
-		
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-console.log( webApp.vars["logMsg"] );
-		
 
 	}//end _parseXML()
 
