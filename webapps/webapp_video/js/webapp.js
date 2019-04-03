@@ -1137,14 +1137,16 @@ console.log( webApp.vars["logMsg"] );
 	}
 //console.log( startPos, numRecordsPerPage, endPos, webApp.vars["DB"]["nodes"].length);
 
-	//for(var n = startPos; n < endPos; n++){
-		//data.push( webApp.vars["DB"]["nodes"][n]);
-	//}//next
+	for(var n = startPos; n < endPos; n++){
+		data.push( webApp.vars["DB"]["nodes"][n]);
+	}//next
+/*	
 	//copy objects node
 	for(var n = startPos; n < endPos; n++){
 		var jsonNode = JSON.stringify( webApp.vars["DB"]["nodes"][n] );
 		data.push( JSON.parse( jsonNode) );
 	}//next
+*/	
 //console.log(data);
 
 //for test
@@ -1451,6 +1453,13 @@ console.log("-- warning, not found template, ", tplName );
 //console.log( tplKeys, p.templateListItemID, item );
 				//}
 //---------------
+
+				//make copy object item
+				//var _tmp = {
+					//"number": item["number"]
+				//};
+				var jsonNode = JSON.stringify( item );
+				var _tmp = JSON.parse( jsonNode);
 				
 				//for( var key2 in item){
 				for( var n1 = 0; n1 < tplKeys.length; n1++){
@@ -1517,7 +1526,10 @@ console.log("-- warning, empty field....", key2, item[key2]);
 //console.log( subOrdListHtml );
 							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
 //console.log( subOrdList );
-							item[key2] = subOrdList;
+							//item[key2] = subOrdList;
+							
+							//do not add HTML code to item object!!!
+							_tmp[key2] = subOrdList;
 						}							
 					}
 					
@@ -1531,7 +1543,8 @@ console.log("-- warning, empty field....", key2, item[key2]);
 //}						
 							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
 						} else {
-							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
 						}
 					}
 					
