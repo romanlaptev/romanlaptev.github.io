@@ -421,33 +421,37 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log("-- start build page --");
 				//var timeStart = new Date();
 
-_data_getNodes({
-	"records": webApp.vars["DB"]["queryRes"],
-	"num_page": webApp.vars["GET"]["num_page"],
-	"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
-	"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
-	"callback": function(data){
-//console.log(data);
-		if( !data || data.length ===0){
-			return false;
-		};
-		
-		_buildPage({
-			"pageType" : webApp.vars["GET"]["q"],//"list_nodes",
-			"pageData" : data,
-			"callback" : function(){
+				_draw_updatePager({
+					"total_records": webApp.vars["DB"]["queryRes"].length,
+					"page_number":webApp.vars["GET"]["num_page"]
+				});		
+				_data_getNodes({
+					"records": webApp.vars["DB"]["queryRes"],
+					"num_page": webApp.vars["GET"]["num_page"],
+					"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
+					"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
+					"callback": function(data){
+				//console.log(data);
+						if( !data || data.length ===0){
+							return false;
+						};
+						
+						_buildPage({
+							"pageType" : webApp.vars["GET"]["q"],//"list_nodes",
+							"pageData" : data,
+							"callback" : function(){
 
-//var timeEnd = new Date();
-//var ms = timeEnd.getTime() - timeStart.getTime();
-//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
-//_log("<p>"+msg+"</p>");			
-//console.log(msg);
-console.log("-- end build page --");
-			}//end callback
-		});
+				//var timeEnd = new Date();
+				//var ms = timeEnd.getTime() - timeStart.getTime();
+				//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+				//_log("<p>"+msg+"</p>");			
+				//console.log(msg);
+				console.log("-- end build page --");
+							}//end callback
+						});
 		
-	}//end callback
-});
+					}//end callback
+				});
 
 			break;
 			
@@ -461,10 +465,6 @@ console.log("-- end build page --");
 							if( !data || data.length ===0){
 								return false;
 							};
-							
-							_draw_updatePager({
-								"total_records":data.length
-							});
 							
 							var url = "?q=list_nodes&num_page=1";
 							webApp.vars["GET"] = func.parseGetParams( url ); 
@@ -686,10 +686,6 @@ console.log( error );
 
 //------------------ form timestamp
 		__addTimeStamp();
-
-		_draw_updatePager({
-			"total_records":nodes.length
-		});
 
 		return nodes;
 		
@@ -1659,7 +1655,11 @@ console.log( webApp.vars["logMsg"] );
 		//$("#page-number").val(numPages);
 		func.log("", "total-pages");
 		func.log(numPages, "total-pages");
+		
+		$("#page-number").val( opt["page_number"] );
 
+		$("#page-range").val(opt["page_number"]);
 		$("#page-range").attr("max", numPages);
+		
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
