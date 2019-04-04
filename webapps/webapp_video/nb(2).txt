@@ -23,7 +23,7 @@ VLC Plugin для Mozilla Firefox
 - при начальном запуске приложения отображать 10 видео,
 организовать добавление новых видео при прокрутке (лента, feed) или сделать прокрутку слайдером?
 *- подключить возможность постраничного вывода записей объекта nodes (video)
-выбор номера страницей происходит с помощью элемента input type="range" (input "text" для старых браузеров)
++выбор номера страницей происходит с помощью элемента input type="range" (input "text" для старых браузеров)
 
 - сортировка при выдаче записей страницы: 
 	*по дате создания (published)
@@ -63,7 +63,7 @@ playlists
 
 - включить в XML данные таксономии (список тегов и иерархические подшивки)
 каким образом сделать привязку тегов к нодам, через tid?
-	Теги имеют атрибут "name", который содержит кодовое название тега
+	+Теги имеют атрибут "name", который содержит кодовое название тега
 	<tags>
 		<item name="genre">драма</item>
 		<item name="video_format">короткометражный</item>
@@ -79,9 +79,12 @@ music_video
 	</tags>
 select * from nodes where tags.name="creation_year" and tags.value="1918"
 
-- сделать поиск по тегу "видеоклипы", "youtube"
-select * from nodes where tags.name="type_video" and tags.value="видеоклипы"
-select * from nodes where tags.name="location_video" and tags.value="youtube"
+*- сделать поиск по тегу "видеоклипы", "youtube"
++select * from nodes where tags.name="type_video" and tags.value="видеоклипы"
++select * from nodes where tags.name="location_video" and tags.value="youtube"
+
+- добавить список тегов (вкл. в экспортный XML и создать соотв. блок на странице)
+- сделать поиск по ключевому слову (в title, description, producer, creators....links, имена файлов....)
 
 =========================== HTML,CSS
 боковая панель - список видеоклипов в виде плейлиста (или плитка из изображений-скриншотов с названиями )
@@ -108,6 +111,8 @@ select * from nodes where tags.name="location_video" and tags.value="youtube"
 
 - ссылки перехода в виде таблицы
 *- добавить статичный блок ссылок (в footer или в sidebar)
+
+- подобрать шрифты для заголовков, описаний....
 
 =========================== TEMPLATES
 - сделать отдельный шаблон для ссылок с фильмами в формате Mkv
