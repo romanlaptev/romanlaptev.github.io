@@ -124,11 +124,17 @@ WHERE field_data_field_url.entity_id={{nodeNid}};
 $_vars["sql"]["getTags"] = "
 SELECT 
 taxonomy_index.tid,
-taxonomy_term_data.name,
-taxonomy_term_data.description as codename
+taxonomy_term_data.name
+-- taxonomy_term_data.name,
+-- taxonomy_term_data.description as codename
 FROM taxonomy_index
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
 WHERE taxonomy_index.nid={{nodeNid}};
+";
+
+$_vars["sql"]["getTagsList"] = "
+SELECT taxonomy_term_data.tid, taxonomy_term_data.vid, taxonomy_term_data.name, taxonomy_term_data.description
+FROM taxonomy_term_data;
 ";
 
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
@@ -139,7 +145,7 @@ $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) databas
 $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="video">
-<!-- {{taxonomy_list}} -->
+{{tag_list}}
 {{video_list}}
 	</database>
 </xroot>';
@@ -172,7 +178,11 @@ $_vars["tpl_links"] = '<ul>{{list}}</ul>';
 $_vars["tpl_menu_item"] = '<li>{{source}}</li>';
 
 $_vars["tpl_tags"] = '<tags>{{list}}</tags>';
-$_vars["tpl_tag_item"] = '<item tid="{{tid}}" codename="{{codename}}">{{name}}</item>';
+$_vars["tpl_tag_item"] = '<item tid="{{tid}}">{{name}}</item>';
+//$_vars["tpl_tag_item"] = '<item tid="{{tid}}" codename="{{codename}}">{{name}}</item>';
+
+$_vars["tpl_tagList"] = '<taglist>{{list}}</taglist>';
+$_vars["tpl_termin_item"] = '<tag tid="{{tid}}" vid="{{vid}}" name="{{name}}">{{description}}</tag>';
 
 
 //==============================================================
@@ -252,8 +262,7 @@ echo "\n";
 	
 	$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
 
-	$_vars["nodes"] = getNodes( $_vars["sql"]["getNodes"] );
-
+	//$_vars["nodes"] = getNodes( $_vars["sql"]["getNodes"] );
 //echo "web:" . $_vars["web"];
 //echo "\n";
 //echo "console:" . $_vars["console"];
@@ -301,7 +310,7 @@ function runSql($db,  $query){
 }//end runSql()
 
 function _exportProcess(){
-	global $_vars;
+	global $db, $_vars;
 
 	$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
 	getMultipleFields( 
@@ -332,6 +341,20 @@ function _exportProcess(){
 	if( !empty($_vars["video"]) ){
 		$_vars["xml"] = formXML($_vars["video"]);
 	}
+
+//---------------------------
+	$result = runSql($db, $_vars["sql"]["getTagsList"]);
+	if( count( $result) > 0 ){
+		$_vars["xml_tagList"] = formTagList($result);
+		$_vars["xml"] = str_replace("{{tag_list}}", $_vars["xml_tagList"], $_vars["xml"]);
+	}
+//echo count($_vars["tags"]);
+//echo "<br>";
+//echo "<pre>";
+//print_r( $_vars["tags"] );
+//echo "</pre>";
+//exit();
+
 
 }//end _exportProcess()					
 
@@ -382,7 +405,7 @@ function getVideoTags( $sql, $records, $fieldNameTrg ){
 				$tag = new stdClass();
 				$tag->tid = $result[$n2]->tid;
 				$tag->name = $result[$n2]->name;
-				$tag->codename = $result[$n2]->codename;
+				//$tag->codename = $result[$n2]->codename;
 				$record->{$fieldNameTrg}[] = $tag;
 			}//next
 		}
@@ -485,7 +508,8 @@ function _convertFields( $records ) {
 }//end _convertFields()
 
 
-function formXML( $records){
+
+function formXML( $records ){
 	global $_vars;
 
 /*
@@ -636,8 +660,9 @@ $img_str = $matches[1];
 			for( $n2 =0; $n2 < count($record["tags"]); $n2++ ){
 				$tid_str = $record["tags"][$n2]->tid;
 				$tag_str = $record["tags"][$n2]->name;
-				$codename_str = $record["tags"][$n2]->codename;
-				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}", "{{codename}}"], [$tid_str, $tag_str, $codename_str], $_vars["tpl_tag_item"]);
+				//$codename_str = $record["tags"][$n2]->codename;
+				//$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}", "{{codename}}"], [$tid_str, $tag_str, $codename_str], $_vars["tpl_tag_item"]);
+				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}"], [$tid_str, $tag_str], $_vars["tpl_tag_item"]);
 			}//next
 			$tags = str_replace("{{list}}", $tags."\n\t", $_vars["tpl_tags"]);
 		}
@@ -647,6 +672,7 @@ $img_str = $matches[1];
 		$videoList .= "\n\n".$video;
 	}//next
 
+
 	$xml = str_replace("{{video_list}}", $videoList, $_vars["export_tpl"]);
 //echo "<pre>";
 //echo htmlspecialchars($xml);
@@ -654,6 +680,40 @@ $img_str = $matches[1];
 
 	return $xml;
 }//end formXML()
+
+
+function formTagList( $records ){
+	global $_vars;
+	
+	$tagList = "";
+
+	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+		$record = $records[$n1];
+//echo "<pre>";
+//print_r($record);
+//echo "</pre>";
+
+		$tag = $_vars["tpl_termin_item"];
+
+		$tag = str_replace("{{tid}}", $record->tid, $tag);
+		$tag = str_replace("{{vid}}", $record->vid, $tag);
+		$tag = str_replace("{{name}}", $record->name, $tag);
+
+		$description="";
+		if( isset($record->description) ){
+			$description = trim( $record->description );
+		} 
+		$tag = str_replace("{{description}}", $description, $tag);
+
+		$tagList .= "\n\t".$tag;
+	}//next
+
+	$node = str_replace("{{list}}", $tagList."\n", $_vars["tpl_tagList"]);
+	
+	return $node;
+}//end formTagList()
+
+
 
 function writeXML($xml){
 	global $_vars;
