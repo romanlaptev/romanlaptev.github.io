@@ -84,6 +84,7 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 +select * from nodes where tags.name="location_video" and tags.value="youtube"
 
 - добавить список тегов (вкл. в экспортный XML и создать соотв. блок на странице)
+
 - сделать поиск по ключевому слову (в title, description, producer, creators....links, имена файлов....)
 - сделать блокировку при выполнении запросов
 
@@ -114,6 +115,7 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 *- добавить статичный блок ссылок (в footer или в sidebar)
 
 - подобрать шрифты для заголовков, описаний....
+- сделать окно пейджера перетаскиваемым или сворачиваемым
 
 =========================== TEMPLATES
 - сделать отдельный шаблон для ссылок с фильмами в формате Mkv
@@ -175,7 +177,7 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 		<item name="location_video">youtube</item>
 		<item name="creation_year">2008</item>
 	</tags>
-
+не включать термины без нод!!!!!
 
 *- почему дублировался "Береги свою косынку, Татьяна" ???
 в поле producer два значения

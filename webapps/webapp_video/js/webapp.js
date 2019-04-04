@@ -19,6 +19,7 @@ var webApp = {
 			"dbType" : "xml",
 			//"data_url" :"db/art_correct.json",
 			//"db_type" : "json",
+			"dbName": "video",
 			"tagNameFilms": "video",
 			"numRecordsPerPage":5,
 			"dateFormat": "dd-mm-yyyy hh:mm:ss",
@@ -54,7 +55,7 @@ var webApp = {
 				"buildBlock" : function(){
 					_draw_buildBlock( this );
 				}
-			}//, //end block
+			}, //end block
 /*
 			{
 				"locationID" : "block-list-video",
@@ -88,6 +89,27 @@ _db_getBlockContent(){
 				}
 			} //end block
 */
+			{
+				"locationID" : "block-taglist",
+				"title" : "block-taglist!!!!!!!",
+				"templateID" : "tpl-block-taglist",
+				"content" : "...",
+				"visibility":true,
+				"buildBlock" : function(){
+					
+					var html = _draw_wrapData({
+						"data": webApp.vars["DB"]["tags"],
+						"templateID": "tpl-taglist",
+						"templateListItemID": "tpl-taglist-item"
+					});
+//console.log( html);
+					if( html && html.length > 0){
+						this.content = html;
+						_draw_buildBlock( this );
+					}
+				}
+			} //end block
+
 		],
 		
 		"templates_url" : "tpl/templates.xml",
@@ -196,7 +218,7 @@ console.log("click...", e);
 	});//end event
 	
 //------------------------------------------------------------------
-	$("#list-video").on("click", function(event){
+	$("#list-video, #block-taglist").on("click", function(event){
 //console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
@@ -253,7 +275,7 @@ console.log("click...", e);
 			
 //------------------------------------------------------------------
 			if( $(target).hasClass("tag-link") ){
-//console.log("click...", target.href);
+//console.log("click...", target);
 
 				if (event.preventDefault) { 
 					event.preventDefault();
@@ -263,6 +285,12 @@ console.log("click...", e);
 				var url = target.href+"&text="+ $(target).text();
 				webApp.vars["GET"] = func.parseGetParams( url );
 				_urlManager();
+				
+//console.log("-- test:", $("#collapse-search").hasClass("in") );
+				if( $("#collapse-search").hasClass("in") ){
+					$("#collapse-search").collapse('hide');
+				}
+				
 			}
 			
 		}
@@ -463,6 +491,9 @@ console.log("-- start build page --");
 						"callback" : function( data ){
 //console.log(data);
 							if( !data || data.length ===0){
+webApp.vars["logMsg"] = "not found video by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- " + webApp.vars["logMsg"] );
 								return false;
 							};
 							
@@ -616,12 +647,14 @@ var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-console.log(xmlObj);
+//console.log(xmlObj);
 delete xml;
 			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
 			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
+
+			webApp.vars["DB"]["tags"] = _data_formTagObj(xmlObj);
 delete xmlObj;
-			//_vars["taxonomy"] = __formTaxonomyObj();
+			
 			//_vars["hierarchyList"] = __formHierarchyList();
 			//webApp.vars["loadDataRes"] = true;
 var timeEnd = new Date();
@@ -641,7 +674,7 @@ console.log( error );
 	function _data_formNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
 		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = "video";
+		var dbName = webApp.vars["DB"]["dbName"];
 		var tagName = webApp.vars["DB"]["tagNameFilms"];
 		
 		//var nodes = {};
@@ -800,11 +833,28 @@ console.log( error );
 		
 	}//end _data_formNodesObj()
 
-	function _formTaxonomyObj(){
-	}//end _formTaxonomyObj()
+	function _data_formTagObj(xmlObj){
+		var databases = xmlObj["xroot"]["children"]["database"];
+		var dbName = webApp.vars["DB"]["dbName"];
+		var tagListName = "taglist";
+		var tagName = "tag";
+		
+		for(var n = 0; n < databases.length; n++){
+			if( databases[n]["name"] && databases[n]["name"] === dbName){
+var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListName][n]["children"][tagName];
+			}
+		}//next
+		
+		if( tagNodes.length > 0){
+			return tagNodes;
+		} else {
+			return false;
+		}
+				
+	}//end _data_formTagObj()
 	
-	function __formHierarchyList(){
-	}//end _formHierarchyList()
+	//function _data_formHierarchyList(){
+	//}//end _data_formHierarchyList()
 			
 
 
@@ -985,9 +1035,11 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 					//}, 1000);
 					//_draw_buildBlock( _opt_ );
 					if( typeof _opt_["buildBlock"] === "function"){
-						_opt_["buildBlock"]();
+						if( _opt_["visibility"]){
+							_opt_["buildBlock"]();
+						}
 					} else {
-webApp.vars["logMsg"] = "warning, not buld function....";
+webApp.vars["logMsg"] = "warning, not found buld function....";
 console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 					}
 				})(_opt);//end closure
