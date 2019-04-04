@@ -129,7 +129,7 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 
 - распределить данные по объектам
 	*- объект nodes (video и все дочернии теги с их атрибутами)
-	- объект taxonomy (список словарей с терминами)
+	*- объект tags (список тегов)
 	- объект hierarchyList (список подшивок Drupal, список материалов Wordpress...)
 - добавить индикатор процесса парсинга XML
 
