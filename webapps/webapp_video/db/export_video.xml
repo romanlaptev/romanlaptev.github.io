@@ -12493,31 +12493,34 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 <video type="video">
 	<title>
 		<item>Эксгибиционист</item>
+		<item>Exhibition</item>
 </title>
 	
-	
+	<producer>Юрий Пронин</producer>
 	
 	<description>&amp;lt;pre&amp;gt;
 Эксгибиционист — российский мультипликационный фильм для взрослых.
 Фильм участвовал в фестивале «Тарус-1996».
+Мультфильм Анимационной Студии «Пилот»
 &amp;lt;/pre&amp;gt;</description>
 	<pictures>
-		<img src="/video/0_covers/"/>
+		<img src="https://i.ytimg.com/vi/u5PTAbTuemk/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="http://site-content/video/mult/Exgibitionist.mpeg">Exgibitionist.mpeg</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/u5PTAbTuemk">youtube.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="137">мультфильм</item>
 		<item tid="23">mpg</item>
+		<item tid="254">Э</item>
 	</tags>
 
 	<published>20-May-2013 07:28:00</published>
-	<updated>20-May-2013 07:28:00</updated>
+	<updated>05-Apr-2019 08:38:34</updated>
 </video>
 
 <video type="video">
@@ -17331,21 +17334,26 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	<creators>In Extremo</creators>
 	
 	
-	
-	
+	<description>Weckt die Toten!
+https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/Y8j-I4qaM2o/sddefault.jpg"/>
+	</pictures>
 
 	<ul>
 		<li><a data-type="local-file" href="http://site-content/video/videoclips/E/In_Extremo_Herr Mannelig.mpg">In_Extremo_Herr Mannelig.mpg</a></li>
 		<li><a data-type="local-file" href="http://site-content/video/videoclips/E/In_Extremo_Ai Vis Lo Lop.mpg">In_Extremo_Ai Vis Lo Lop.mpg</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Y8j-I4qaM2o">youtube.com</a></li>
 	</ul>
 
 	<tags>
+		<item tid="324">1998</item>
 		<item tid="48">видеоклипы</item>
 		<item tid="23">mpg</item>
 	</tags>
 
 	<published>18-May-2013 10:06:19</published>
-	<updated>29-Mar-2019 05:28:41</updated>
+	<updated>05-Apr-2019 08:43:50</updated>
 </video>
 
 <video type="videoclip">
