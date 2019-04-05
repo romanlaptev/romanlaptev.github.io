@@ -526,7 +526,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 */
 
 			case "list_nodes":
-console.log("-- start build page --", webApp.vars["GET"]);
+console.log("-- start build page --");
 				//var timeStart = new Date();
 
 				_draw_updatePager({
@@ -555,22 +555,12 @@ console.log("-- start build page --", webApp.vars["GET"]);
 				//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
 				//_log("<p>"+msg+"</p>");			
 				//console.log(msg);
-				console.log("-- end build page --");
+console.log("-- end build page --");
 								}
 							}
 						);
 					}
 				};
-				
-				
-				if( webApp.vars["GET"]["search_field"] && 
-					webApp.vars["GET"]["search_field"].length > 0 ){
-					opt["searchField"] = webApp.vars["GET"]["search_field"];
-				}
-				if( webApp.vars["GET"]["keyword"] && 
-					webApp.vars["GET"]["keyword"].length > 0 ){
-					opt["keyword"] = webApp.vars["GET"]["keyword"];
-				}
 				
 				_data_getNodes(opt);
 			break;
@@ -583,7 +573,7 @@ console.log("-- start build page --", webApp.vars["GET"]);
 						"callback" : function( data ){
 //console.log(data);
 							if( !data || data.length ===0){
-webApp.vars["logMsg"] = "not found video by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
+webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( "-- " + webApp.vars["logMsg"] );
 								return false;
@@ -603,32 +593,26 @@ console.log("Warning! not found tag text value...");
 			case "search":
 				$("#collapse-search").collapse('hide');
 				
-				var fieldName = webApp.vars["GET"]["targetField"];
-				var keyword = webApp.vars["GET"]["keyword"];
-				var url = "?q=list_nodes&num_page=1&search_field="+fieldName+"&keyword="+keyword;
-				webApp.vars["GET"] = func.parseGetParams( url ); 
-				_urlManager();
-				
-/*				
-				_search({
-					"targetField": webApp.vars["GET"]["targetField"],
-					"keyword": webApp.vars["GET"]["keyword"],
-					"callback": function( res){
-console.log(res);
+				_data_search({
+					"targetField" : webApp.vars["GET"]["targetField"],
+					"keyword" : webApp.vars["GET"]["keyword"],
+					"callback" : function( data ){
+console.log(data);
 
-						draw.buildBlock({
-							"locationID" : "block-node",
-							"templateID" : "tpl-block--termin-nodes",
-							"content" : nodes_obj.viewNodes({
-								"nodes": sNodes,
-								"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
-								"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
-							})
-						});
+						if( !data || data.length ===0){
+webApp.vars["logMsg"] = "not found records by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- " + webApp.vars["logMsg"] );
+							return false;
+						};
+						
+						var url = "?q=list_nodes&num_page=1";
+						webApp.vars["GET"] = func.parseGetParams( url ); 
+						_urlManager();
 
 					}//end callback
 				});
-*/				
+				
 			break;
 
 			default:
@@ -1242,42 +1226,18 @@ console.log("-- image load error", e.target.src);
 			
 	};//end _buildPage()
 
-/*
-function _search( opt ){
-	var p = {
-		"targetField" : null,
-		"keyword" : null
-	};
-	//extend options object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-console.log(p);
-
-	//if( !p["targetField"] ){
-//webApp.vars["targetField"] = "_search(), error, not found 'targetField'...";
-//console.log( webApp.vars["logMsg"] );
-		//return false;
-	//}
-
-	
-};//end _search()
-*/
-
 //============================================== DATA
 function _data_getNodes(opt){
 	var p = {
 		records: [],
 		"num_page": null,
-		"callback": null,
-		"searchField": null,
-		"keyword":null
+		"callback": null
 	};
 	//extend options object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 
 //------------------ sort NODES
@@ -1320,32 +1280,9 @@ console.log( webApp.vars["logMsg"] );
 //console.log("TEST...", n);
 	}
 //console.log( startPos, numRecordsPerPage, endPos, p.records.length);
-
-//------------------- SEARCH
-if( p["searchField"] && p["searchField"].length > 0 ){
-	if( p["keyword"] && p["keyword"].length > 0 ){
-		
-		p["records"] = webApp.vars["DB"]["nodes"];
-		startPos = 0;
-		endPos = p["records"].length;
-		var filter = true;
-		//var searchField = p["searchField"];
-	}
-}
-//-------------------
-
 //------------------------------------------------- GET NODES
 	for(var n = startPos; n < endPos; n++){
-		if(filter){
-			
-			var test = p.records[n];
-			if( test["title"][0]["text"].indexOf(p["keyword"]) !== -1 ){
-				data.push( p.records[n]);
-			}
-			
-		} else {
-			data.push( p.records[n]);
-		}
+		data.push( p.records[n]);
 	}//next
 /*	
 	//copy objects node
@@ -1445,7 +1382,7 @@ function _data_getNodesByTag( opt ){
 		"text" : null,
 		"callback" : null
 	};
-	//extend options object for queryObj
+	//extend options object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
@@ -1492,6 +1429,62 @@ console.log( webApp.vars["logMsg"] );
 	
 	
 }//end _data_getNodesByTag()
+
+
+function _data_search( opt ){
+	var p = {
+		"targetField" : null,
+		"keyword" : null,
+		"callback" : null
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+console.log(p);
+
+	var fieldKey, itemKey;
+	
+	if( p["targetField"] === "title"){
+		fieldKey = "title";
+		itemKey = "text";
+	}
+	
+	if( p["targetField"] === "filename"){
+		fieldKey = "ul";
+		itemKey = "href";
+	}
+	
+	var data = [];
+	for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
+		var node = webApp.vars["DB"]["nodes"][n];
+		var item = node[fieldKey];
+//console.log(item);
+		if(!item){
+			continue;
+		}
+		for(var n2 = 0; n2 < item.length; n2++){
+			if( item[n2][itemKey]){
+				var test = item[n2][itemKey].toLowerCase();
+				var keyword = p["keyword"].toLowerCase();
+				if( test.indexOf(keyword) !==-1 ){
+					data.push( node );
+					break;
+				}
+			}
+		}//next
+		
+	}//next
+
+	_data_setTemplate(data);//define unique template for item
+	webApp.vars["DB"]["queryRes"] = data;
+	
+
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+	
+};//end _search()
 
 
 function _data_setTemplate(data){
