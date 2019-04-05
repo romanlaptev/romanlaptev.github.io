@@ -132,10 +132,16 @@ LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
 WHERE taxonomy_index.nid={{nodeNid}};
 ";
 
+// $_vars["sql"]["getTagsList"] = "
+// SELECT taxonomy_term_data.tid, taxonomy_term_data.vid, taxonomy_term_data.name, taxonomy_term_data.description
+// FROM taxonomy_term_data;
+// ";
 $_vars["sql"]["getTagsList"] = "
 SELECT taxonomy_term_data.tid, taxonomy_term_data.vid, taxonomy_term_data.name, taxonomy_term_data.description
-FROM taxonomy_term_data;
+FROM taxonomy_term_data WHERE 
+taxonomy_term_data.tid IN (SELECT DISTINCT(taxonomy_index.tid) FROM taxonomy_index);
 ";
+
 
 $_vars["exportTitle"] = "Export video info from DB Drupal (video.sqlite) database to XML file";
 

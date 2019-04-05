@@ -330,6 +330,11 @@ box-shadow: 5px 5px 15px #4f5a6e;
 	box-shadow: none;
 }
 
+#block-playlist {
+	position: fixed;
+	left: 0;
+}
+
 
 .type-videoclip .panel-heading{
 color:#000

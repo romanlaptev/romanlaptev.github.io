@@ -68,6 +68,7 @@
 					<ul class="nav nav-tabs">
 						<li><a class="btn btn-primary" href="../../index.html">index</a></li>
 						<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Player</a></li>
+						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
 						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
 					</ul>
 				</div>
@@ -215,9 +216,13 @@ role="application" aria-label="media player">
 			</div><!-- end collapse-player -->
 		</div>
 		
-		<div id="collapse-search" class="panel-collapse collapse">
+		<div id="collapse-tags" class="panel-collapse collapse">
 <span id="block-taglist"></span>				
-		</div><!-- end collapse-search -->
+		</div>
+		
+		<div id="collapse-search" class="panel-collapse collapse">
+<span id="block-search"></span>				
+		</div>
 	
 	</div><!-- end #header-links -->
 
@@ -229,7 +234,7 @@ role="application" aria-label="media player">
 
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
-<span id="block-1"></span>
+<span id="block-playlist"></span>
 		</div><!-- end sidebar left -->
 		
 		<div class="col-xs-10 col-sm-10 col-md-9 col-lg-8" id="main">
@@ -237,7 +242,7 @@ role="application" aria-label="media player">
 			<div class="panel block" id="pager">
 				<div class="panel-body">
 <small>					
-total records: <b><span id="total-records"></span></b>
+total records: <b><span id="total-records"></span></b>, 
 number of pages: <b><span id="total-pages"></span></b>
 </small>
 						<div class="block-num-page">							

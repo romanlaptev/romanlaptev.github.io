@@ -30,7 +30,7 @@ var webApp = {
 		
 		"blocks": [
 			{
-				"locationID" : "block-1",
+				"locationID" : "block-playlist",
 				"title" : "Playlist", 
 				"templateID" : "tpl-block",
 				"content" : "<ul class='list-unstyled'>\
@@ -107,6 +107,17 @@ _db_getBlockContent(){
 						this.content = html;
 						_draw_buildBlock( this );
 					}
+				}
+			}, //end block
+
+			{
+				"locationID" : "block-search",
+				"title" : "block-search",
+				"templateID" : "tpl-block-search",
+				"content" : "",
+				"visibility":true,
+				"buildBlock" : function(){
+					_draw_buildBlock( this );
 				}
 			} //end block
 
@@ -227,6 +238,7 @@ console.log("click...", e);
 			
 //------------------------------------------------------------------
 			if( $(target).hasClass("toggle-btn") ){
+//console.log(target.hash);
 
 				//if ( target.href.indexOf("#?q=") !== -1){
 					if (event.preventDefault) { 
@@ -236,28 +248,13 @@ console.log("click...", e);
 					}
 				//}
 
-				//var collapseBoxId = $(target).attr("href");
-//console.log("-- collapseBoxId:", collapseBoxId );
-//console.log("-- test:", $(collapseBoxId).hasClass("in"), $(collapseBoxId).attr("aria-expanded") );
-//console.log("-- test:", target.classList );
-
-				//$("#list-video").find(".toggle-btn").each( function(index, value){
-//console.log(index, value);
-				//});
-				
-				$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
-				$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
-				
-
-				$(target).removeClass("toggle-btn-hide");
-				$(target).addClass("toggle-btn-show");
-				
-//console.log("-- test:", $(target).hasClass("collapsed") );
-				//if( $(target).hasClass("collapsed") ){
-					//$(target).removeClass("toggle-btn-show");
-					//$(target).addClass("toggle-btn-hide");
-				//}
-				
+				if( target.hash.indexOf("video-") !== -1 ){
+					$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
+					$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
+					
+					$(target).removeClass("toggle-btn-hide");
+					$(target).addClass("toggle-btn-show");
+				}
 			}
 			
 //------------------------------------------------------------------
@@ -287,8 +284,8 @@ console.log("click...", e);
 				_urlManager();
 				
 //console.log("-- test:", $("#collapse-search").hasClass("in") );
-				if( $("#collapse-search").hasClass("in") ){
-					$("#collapse-search").collapse('hide');
+				if( $("#collapse-tags").hasClass("in") ){
+					$("#collapse-tags").collapse('hide');
 				}
 				
 			}
@@ -296,6 +293,74 @@ console.log("click...", e);
 		}
 		
 	});//end event
+
+
+	
+	$("#block-search").on("submit", "#form-search", function(event){
+//console.log("Submit form", event, this);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		
+		var form = document.forms["formSearch"]
+//console.log(form);
+//console.log(form.elements.targetField);
+//console.log(form.elements.keyword.value);
+
+		//check input values
+		var res = true;
+				
+		var _keyword = form.elements.keyword.value;
+		if( _keyword.length === 0 ){
+webApp.vars["logMsg"] = "error, empty keyword...";
+func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+//console.log( "-- " + _vars["logMsg"] );
+			res = false;
+		}
+		
+		var _targetField = false;
+		for( var n = 0; n < form.elements.targetField.length; n++){
+//console.log( n, form.elements.targetField[n] );
+
+			var $element = $(form.elements.targetField[n]);
+			var _checked = $element.prop("checked");
+//console.log( $element.attr("value"), _checked );
+			if( _checked){
+				_targetField = $element.attr("value");
+				break;
+			}
+		}//next
+		
+//console.log( "TEST:", _targetField, _targetField.length );
+
+		if( !_targetField || _targetField.length === 0 ){
+webApp.vars["logMsg"] = "error, not select search field, 'targetField'...";
+func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+//console.log( webApp.vars["logMsg"] );
+			res = false;
+		}		
+		
+		if(res){
+			var parseStr = target.action+"&targetField="+_targetField+"&keyword="+_keyword; 
+//console.log( parseStr );
+			if( parseStr.length > 0 ){
+				webApp.vars["GET"] = func.parseGetParams( parseStr ); 
+				_urlManager(target);
+			} else {
+webApp.vars["logMsg"] = "Warning! cannot parse url: " + target.action;
+func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>");
+//console.log( _vars["logMsg"] );
+			}
+		}
+						
+	});//end event
+
+
 	
 	//$("#page-range").on("input", function(event){
 //console.log("input range...", event.target.value);
@@ -406,7 +471,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		_urlManager();
 		
 	});//end event
-
 	
 }//end defineEvents()
 
@@ -508,6 +572,30 @@ console.log("Warning! not found tag text value...");
 				}
 			break;
 				
+			case "search":
+				$("#collapse-search").collapse('hide');
+				
+				_search({
+					"targetField": webApp.vars["GET"]["targetField"],
+					"keyword": webApp.vars["GET"]["keyword"],
+					"callback": function( res){
+console.log(res);
+/*				
+
+						draw.buildBlock({
+							"locationID" : "block-node",
+							"templateID" : "tpl-block--termin-nodes",
+							"content" : nodes_obj.viewNodes({
+								"nodes": sNodes,
+								"nodes_tpl": _vars["templates"]["termin_nodes_tpl"],
+								"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
+							})
+						});
+*/				
+
+					}//end callback
+				});
+			break;
 
 			default:
 console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
@@ -846,6 +934,12 @@ var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListNam
 		}//next
 		
 		if( tagNodes.length > 0){
+			func.sortRecords({
+				"records" : tagNodes,
+				"sortOrder": "asc", //desc
+				"sortByKey": "name"
+			});
+			
 			return tagNodes;
 		} else {
 			return false;
@@ -1113,6 +1207,26 @@ console.log("-- image load error", e.target.src);
 		}
 			
 	};//end _buildPage()
+
+
+function _search( opt ){
+	var p = {
+		"targetField" : null,
+		"keyword" : null
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+console.log(p);
+
+	if( !p["text"] ){
+webApp.vars["targetField"] = "_search(), error, not found 'targetField'...";
+console.log( webApp.vars["logMsg"] );
+		return false;
+	}
+	
+};//end _search()
 
 
 //============================================== DATA

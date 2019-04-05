@@ -236,7 +236,10 @@
 	<tpl name="tpl-block-taglist">
 		<html_code><![CDATA[
 			<div class="panel panel-turquoise">
-				<div class="panel-heading">Tags</div>
+				<div class="panel-heading clearfix">
+<b>Tags</b>
+<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn pull-right">x</a>
+				</div>
 				<div class="panel-body content">
 {{content}}
 				</div>
@@ -252,12 +255,41 @@
 	<tpl name="tpl-taglist-item">
 		<html_code>
 <![CDATA[
-	<li><a class="tag-link" href="?q=nodes-by-tag">{{name}}</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" href="?q=nodes-by-tag">{{name}}</a></li>
 ]]>
 		</html_code>
 	</tpl>
 
 
+	
+	<tpl name="tpl-block-search">
+		<html_code><![CDATA[
+			<div class="panel panel-primary">
+			
+				<div class="panel-heading clearfix">
+Search by keywords
+<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn pull-right">x</a>
+				</div>
+				
+<form name="formSearch" id="form-search" action="?q=search" method="GET">
+				<div class="panel-body content">
+					<div class="form-group">
+	<label class="radio-inline"><input type="radio" name="targetField" value="title">title</label>
+	<label class="radio-inline"><input type="radio" name="targetField" value="filename" >attached filename</label>
+					</div>
+					
+					<label>keyword:</label>
+<input type="text" class="form-control" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="">
+				</div>
+				
+				<div class="panel-footer">
+					<button type="submit" class="btn btn-large btn-primary">start search</button>
+					<button type="reset" class="btn btn-warning">reset parameters</button>
+				</div>
+</form>
+			</div>
+		]]></html_code>
+	</tpl>		
 	
 <!--
 	<tpl name="tpl-list">
