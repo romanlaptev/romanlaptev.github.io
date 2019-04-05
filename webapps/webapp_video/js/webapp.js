@@ -211,14 +211,30 @@ if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 
 function defineEvents(){
 	
-	$("#btn-clear-log").on("click", function(e){
+	$("#btn-clear-log").on("click", function(event){
 //console.log("click...", e);			
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+		
 		webApp.vars["log"].innerHTML="";
 	});//end event
 	
 //------------------------------------------------------------------
-	$("#btn-toggle-log").on("click", function(e){
-console.log("click...", e);			
+	$("#btn-toggle-log").on("click", function(event){
+//console.log("click...", e);			
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+		
 		if( webApp.vars["log"].style.display==="none"){
 			webApp.vars["log"].style.display="block";
 			webApp.vars["btnToggle"].innerHTML="-";
@@ -510,14 +526,15 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 */
 
 			case "list_nodes":
-console.log("-- start build page --");
+console.log("-- start build page --", webApp.vars["GET"]);
 				//var timeStart = new Date();
 
 				_draw_updatePager({
 					"total_records": webApp.vars["DB"]["queryRes"].length,
 					"page_number":webApp.vars["GET"]["num_page"]
 				});		
-				_data_getNodes({
+				
+				var opt = {
 					"records": webApp.vars["DB"]["queryRes"],
 					"num_page": webApp.vars["GET"]["num_page"],
 					"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
@@ -539,12 +556,23 @@ console.log("-- start build page --");
 				//_log("<p>"+msg+"</p>");			
 				//console.log(msg);
 				console.log("-- end build page --");
-							}//end callback
-						});
-		
-					}//end callback
-				});
-
+								}
+							}
+						);
+					}
+				};
+				
+				
+				if( webApp.vars["GET"]["search_field"] && 
+					webApp.vars["GET"]["search_field"].length > 0 ){
+					opt["searchField"] = webApp.vars["GET"]["search_field"];
+				}
+				if( webApp.vars["GET"]["keyword"] && 
+					webApp.vars["GET"]["keyword"].length > 0 ){
+					opt["keyword"] = webApp.vars["GET"]["keyword"];
+				}
+				
+				_data_getNodes(opt);
 			break;
 			
 //?q=nodes-by-tag&text="youtube"
@@ -575,12 +603,18 @@ console.log("Warning! not found tag text value...");
 			case "search":
 				$("#collapse-search").collapse('hide');
 				
+				var fieldName = webApp.vars["GET"]["targetField"];
+				var keyword = webApp.vars["GET"]["keyword"];
+				var url = "?q=list_nodes&num_page=1&search_field="+fieldName+"&keyword="+keyword;
+				webApp.vars["GET"] = func.parseGetParams( url ); 
+				_urlManager();
+				
+/*				
 				_search({
 					"targetField": webApp.vars["GET"]["targetField"],
 					"keyword": webApp.vars["GET"]["keyword"],
 					"callback": function( res){
 console.log(res);
-/*				
 
 						draw.buildBlock({
 							"locationID" : "block-node",
@@ -591,10 +625,10 @@ console.log(res);
 								"node_tpl": _vars["templates"]["termin_nodes_item_tpl"]
 							})
 						});
-*/				
 
 					}//end callback
 				});
+*/				
 			break;
 
 			default:
@@ -1208,7 +1242,7 @@ console.log("-- image load error", e.target.src);
 			
 	};//end _buildPage()
 
-
+/*
 function _search( opt ){
 	var p = {
 		"targetField" : null,
@@ -1220,27 +1254,30 @@ function _search( opt ){
 	}
 console.log(p);
 
-	if( !p["text"] ){
-webApp.vars["targetField"] = "_search(), error, not found 'targetField'...";
-console.log( webApp.vars["logMsg"] );
-		return false;
-	}
+	//if( !p["targetField"] ){
+//webApp.vars["targetField"] = "_search(), error, not found 'targetField'...";
+//console.log( webApp.vars["logMsg"] );
+		//return false;
+	//}
+
 	
 };//end _search()
-
+*/
 
 //============================================== DATA
 function _data_getNodes(opt){
 	var p = {
 		records: [],
 		"num_page": null,
-		"callback": null
+		"callback": null,
+		"searchField": null,
+		"keyword":null
 	};
 	//extend options object
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-//console.log(p);
+console.log(p);
 
 
 //------------------ sort NODES
@@ -1284,8 +1321,31 @@ console.log( webApp.vars["logMsg"] );
 	}
 //console.log( startPos, numRecordsPerPage, endPos, p.records.length);
 
+//------------------- SEARCH
+if( p["searchField"] && p["searchField"].length > 0 ){
+	if( p["keyword"] && p["keyword"].length > 0 ){
+		
+		p["records"] = webApp.vars["DB"]["nodes"];
+		startPos = 0;
+		endPos = p["records"].length;
+		var filter = true;
+		//var searchField = p["searchField"];
+	}
+}
+//-------------------
+
+//------------------------------------------------- GET NODES
 	for(var n = startPos; n < endPos; n++){
-		data.push( p.records[n]);
+		if(filter){
+			
+			var test = p.records[n];
+			if( test["title"][0]["text"].indexOf(p["keyword"]) !== -1 ){
+				data.push( p.records[n]);
+			}
+			
+		} else {
+			data.push( p.records[n]);
+		}
 	}//next
 /*	
 	//copy objects node
