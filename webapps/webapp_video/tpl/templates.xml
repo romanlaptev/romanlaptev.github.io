@@ -28,7 +28,7 @@
 		<div class="">
 		
 			<div class="">
-				<div class="thumbnail text-center pictures">
+				<div class="text-center pictures">
 {{pictures}}
 				<div class="links">{{ul}}</div>
 
@@ -79,7 +79,7 @@
 		<div class="">
 		
 			<div class="">
-				<div class="thumbnail text-center pictures">
+				<div class="text-center pictures">
 {{pictures}}
 	
 				<div class="links">{{ul}}</div>
@@ -170,7 +170,7 @@
 	<tpl name="tpl-videolist-item--img">
 		<html_code>
 <![CDATA[
-	<li><img src="{{src}}" title="{{src}}" alt="{{src}}"/></li>
+	<li class="thumbnail"><img src="{{src}}" title="{{src}}" alt="{{src}}"/></li>
 ]]>
 		</html_code>
 	</tpl>

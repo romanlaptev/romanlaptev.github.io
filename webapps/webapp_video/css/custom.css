@@ -34,6 +34,10 @@ body {
   margin: 0;
   padding: 15px;
 }
+.touch{
+background-color: #5E789C;
+}
+
 .container {
   background-color: #f8f9fa;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -245,6 +249,12 @@ padding: 6px 12px 10px 14px;
     margin-bottom: 0;
 	text-shadow: 6px 5px 4px #bebebe;    
 }
+@media screen and (max-width:768px) 
+{ 
+	#app-title{
+		display:none;
+	}
+}
 
 
 .video-list-item{
@@ -275,6 +285,10 @@ width:100%;
 
 */
 
+.video-list-item ul {
+	padding: 0;
+}
+
 .video-list-item .mark {
 	padding: 10px;
 	border-radius:6px;
@@ -291,6 +305,11 @@ width:100%;
 	margin-bottom: 5px;
 }
 
+.video-list-item .btn-orange {
+	max-width: 100%;
+	font-size: 100%;
+}
+
 
 #pager{
 position:fixed;
@@ -298,6 +317,19 @@ right:20px;
 top:145px;
 z-index: 9999;
 }
+
+.touch #pager {
+background-color:#ccffff;
+position:static;
+}
+@media screen and (max-width:1280px) 
+{ 
+	#pager{
+		background-color:#def;
+		position:static;
+	}
+}
+
 
 .block-num-page {
 	padding: 5px;

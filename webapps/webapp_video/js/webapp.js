@@ -21,7 +21,7 @@ var webApp = {
 			//"db_type" : "json",
 			"dbName": "video",
 			"tagNameFilms": "video",
-			"numRecordsPerPage":5,
+			"numRecordsPerPage":15,
 			"dateFormat": "dd-mm-yyyy hh:mm:ss",
 			"sortOrder": "asc",
 			"sortByKey": "title", //"published", 

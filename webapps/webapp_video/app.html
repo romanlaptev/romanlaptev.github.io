@@ -233,11 +233,11 @@ role="application" aria-label="media player">
 <div class="container">
 
 	<div class="row">
-		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
+		<div class="xs-hidden col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
 <span id="block-playlist"></span>
 		</div><!-- end sidebar left -->
 		
-		<div class="col-xs-10 col-sm-10 col-md-9 col-lg-8" id="main">
+		<div class="col-xs-12 col-sm-10 col-md-9 col-lg-8" id="main">
 			
 			<div class="panel block" id="pager">
 				<div class="panel-body">
@@ -245,7 +245,7 @@ role="application" aria-label="media player">
 total records: <b><span id="total-records"></span></b>, 
 number of pages: <b><span id="total-pages"></span></b>
 </small>
-						<div class="block-num-page">							
+						<div class="block-num-page clearfix">
 							<div class="pull-left">
 									<b>Page №:</b>
 							</div>
@@ -261,7 +261,9 @@ number of pages: <b><span id="total-pages"></span></b>
 -->
 						</div>		
 
-						<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+						<div class="">
+<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+						</div>
 				</div>
 				<div class="panel-body">
 					<label>sort by</label>
@@ -280,10 +282,13 @@ number of pages: <b><span id="total-pages"></span></b>
 
 		</div><!-- end main central area -->
 		
-		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
+		<div class="xs-hidden col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
 		</div><!-- end sidebar-right -->
 	</div>
 	
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+</div>
 
 </div><!-- end container -->
 
@@ -295,9 +300,6 @@ number of pages: <b><span id="total-pages"></span></b>
 
 
 
-<div class="">
-	<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
-</div>
 
 <!-- ********************** load progress bar ************************** -->	
 <div id="wait" class="hide"></div>

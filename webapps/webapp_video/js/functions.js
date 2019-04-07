@@ -1179,6 +1179,7 @@ console.log("textStatus:" + textStatus);
 }//end runAjaxJQuery();
 
 
+
 window.onload = function(){
 	//btn_scroll = getById("btn-scroll-to-top");
 }//end load
@@ -1218,10 +1219,17 @@ if (document.addEventListener) {
 }
 
 if( typeof window.jQuery === "function"){
-//var msg = 'jQuery version: ' + jQuery.fn.jquery;
-//console.log(msg);
+var msg = 'jQuery version: ' + jQuery.fn.jquery;
+console.log(msg);
 	$(document).ready(function(){
 		
+
+		if ('ontouchstart' in window){
+			document.body.className = "touch";
+//var msg = "document.body.className: ." + document.body.className;
+//alert(msg);
+		}
+	
 		//------------------------- scroll to top
 		$("#scroll-to-top").click(function(e) {
 			e.preventDefault;
@@ -1230,7 +1238,7 @@ if( typeof window.jQuery === "function"){
 				}, 500);
 			return false;
 		});
-		
+
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
 				var id = $(this).attr("href");
@@ -1282,14 +1290,6 @@ if( typeof window.jQuery === "function"){
 //var st = $(window).scrollTop();
 //document.title = st;
 //console.log ("scrollTop = " + st );
-
-			//if ( $(this).scrollTop() > start_scroll_pos  ) {
-				//$("#btn-scroll-to-top").show();
-			//} 
-
-			//if ( $(this).scrollTop() < end_scroll_pos ) {
-				//$("#btn-scroll-to-top").hide();
-			//}
 	});//end scroll
 
 }
