@@ -560,6 +560,10 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			
 		}
 
+		if( target.href.indexOf("?q=") === -1){
+			actionLink = false;
+		}
+		
 		if(	actionLink ){
 			if (event.preventDefault) { 
 				event.preventDefault();
