@@ -327,6 +327,9 @@ Search by keywords
 				<div class="panel-body content">
 					<div class="form-group">
 	<label class="radio-inline"><input type="radio" name="targetField" value="title">title</label>
+	<label class="radio-inline"><input type="radio" name="targetField" value="creators">creators</label>
+	<label class="radio-inline"><input type="radio" name="targetField" value="producer">producer</label>
+	<label class="radio-inline"><input type="radio" name="targetField" value="description">description</label>
 	<label class="radio-inline"><input type="radio" name="targetField" value="filename" >attached filename</label>
 					</div>
 					
@@ -336,7 +339,7 @@ Search by keywords
 				
 				<div class="panel-footer">
 					<button type="submit" class="btn btn-large btn-primary">start search</button>
-					<button type="reset" class="btn btn-warning">reset parameters</button>
+					<button type="reset" class="btn btn-danger pull-right">reset parameters</button>
 				</div>
 </form>
 			</div>
