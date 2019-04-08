@@ -116,6 +116,7 @@ _db_getBlockContent(){
 				"templateID" : "tpl-block-search",
 				"content" : "",
 				"visibility":true,
+				"refresh" : false,
 				"buildBlock" : function(){
 					_draw_buildBlock( this );
 				}
@@ -502,8 +503,10 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 
 
 	function _listVideoClick(target, event){
+		var actionLink = true;
 		if( $(target).hasClass("toggle-btn") ){
-	//console.log(target.hash);
+//console.log(target.href);
+			actionLink = false;
 
 			//if ( target.href.indexOf("#?q=") !== -1){
 				if (event.preventDefault) { 
@@ -525,6 +528,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	//------------------------------------------------------------------
 		if( $(target).hasClass("btn-add-track-pls") ){
 	//console.log("click...", target.href);
+			actionLink = false;
 
 			if (event.preventDefault) { 
 				event.preventDefault();
@@ -538,6 +542,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	//------------------------------------------------------------------
 		if( $(target).hasClass("tag-link") ){
 	//console.log("click...", target);
+			actionLink = false;
 
 			if (event.preventDefault) { 
 				event.preventDefault();
@@ -555,17 +560,15 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			
 		}
 
-	//------------------------------------------------------------------
-		//if( $(target).data("type") === "local-file" ){
-//console.log("click...", target, event );
-
-			//if (event.preventDefault) { 
-				//event.preventDefault();
-			//} else {
-				//event.returnValue = false;				
-			//}
-			
-		//}
+		if(	actionLink ){
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;				
+			}
+			webApp.vars["GET"] = func.parseGetParams( target.href );
+			_urlManager();
+		}
 
 	}//end _listVideoClick()
 	
@@ -657,18 +660,43 @@ console.log("-- end build page --");
 webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( "-- " + webApp.vars["logMsg"] );
-								return false;
-							};
-							
-							var url = "?q=list_nodes&num_page=1";
-							webApp.vars["GET"] = func.parseGetParams( url ); 
-							_urlManager();
+								//return false;
+							} else {
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+ webApp.vars["GET"]["text"] + "</b>&quot;";
+func.log("<p class='alert alert-success'>" + webApp.vars["logMsg"] + "</p>");
+
+//console.log($("#block-taglist ul li"));
+$("#block-taglist ul li a").removeClass("active");
+$("#block-taglist ul li a").each(function(index, value){
+//console.log(index, value);
+	var tag = $(this).text();
+	if( tag === webApp.vars["GET"]["text"]){
+console.log( tag );
+		$(this).addClass("active");
+	}
+});
+								var url = "?q=list_nodes&num_page=1";
+								webApp.vars["GET"] = func.parseGetParams( url ); 
+								_urlManager();
+							}
 							
 						}//end callback
 					});
 				} else {
 console.log("Warning! not found tag text value...");
 				}
+			break;
+			
+			case "clear-tag":
+				//_data_setTemplate(data);//define unique template for item
+				webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
+
+				var url = "?q=list_nodes&num_page=1";
+				webApp.vars["GET"] = func.parseGetParams( url ); 
+				_urlManager();
+				
+				$("#block-taglist ul li a").removeClass("active");
+				$("#collapse-tags").collapse('hide');
 			break;
 				
 			case "search":
@@ -1220,18 +1248,26 @@ console.log("error, loadTemplates(), cannot parse templates data.....");
 */
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
+			
+			//do not redraw existing block
+			if( _opt["draw"] && !_opt["refresh"]){
+				continue;
+			}
+			
 			if( _opt["visibility"]){
-						
+				
 				//closures, need for async data getting from indexedDB
 				(function(_opt_){
 					//setTimeout(function(){ 
 						//console.log("-- closure function, ", _opt_); 
 					//}, 1000);
 					//_draw_buildBlock( _opt_ );
+					
 					if( typeof _opt_["buildBlock"] === "function"){
-						if( _opt_["visibility"]){
+						//if( _opt_["visibility"]){
 							_opt_["buildBlock"]();
-						}
+							_opt_["draw"] = true;
+						//}
 					} else {
 webApp.vars["logMsg"] = "warning, not found buld function....";
 console.log( "-- " + webApp.vars["logMsg"], _opt_ );
