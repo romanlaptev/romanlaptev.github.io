@@ -42,6 +42,7 @@
 				<option value="file:///mnt/d2" selected >HDD1, file protocol</option>
 				<option value="file:///mnt/terra">external HDD, file protocol</option>
 				<option value="file://e:">HDD, windows</option>
+				<option value="http://site-content">site-content</option>
 			</select>
 		</div>
 		
