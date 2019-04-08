@@ -251,65 +251,77 @@ function defineEvents(){
 		var target = event.target || event.srcElement;
 		
 		if( target.tagName === "A"){
-			
-//------------------------------------------------------------------
-			if( $(target).hasClass("toggle-btn") ){
-//console.log(target.hash);
+			_listVideoClick(target, event);
+		}
+		
+		if( target.tagName === "BUTTON"){
+			if($(target).data("type") === "local-file"){
+//console.log("click...", $(target).data() );
+//console.log( target.form.elements.filepath );
+//console.log( $(target.form).find(".form-local-url") );
 
-				//if ( target.href.indexOf("#?q=") !== -1){
-					if (event.preventDefault) { 
-						event.preventDefault();
-					} else {
-						event.returnValue = false;				
-					}
-				//}
-
-				if( target.hash.indexOf("video-") !== -1 ){
-					$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
-					$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
-					
-					$(target).removeClass("toggle-btn-hide");
-					$(target).addClass("toggle-btn-show");
-				}
-			}
-			
-//------------------------------------------------------------------
-			if( $(target).hasClass("btn-add-track-pls") ){
-//console.log("click...", target.href);
-
-				if (event.preventDefault) { 
-					event.preventDefault();
-				} else {
-					event.returnValue = false;				
-				}
+				$(target.form).find(".form-local-url").removeClass("hidden");
 				
-				_player_addTrack( target );
+				target.form.elements.filepath.value += target.value;
+			} else {
+//console.log(target.value);				
+				window.open( target.value );
 			}
-			
-//------------------------------------------------------------------
-			if( $(target).hasClass("tag-link") ){
-//console.log("click...", target);
-
-				if (event.preventDefault) { 
-					event.preventDefault();
-				} else {
-					event.returnValue = false;				
-				}
-				var url = target.href+"&text="+ $(target).text();
-				webApp.vars["GET"] = func.parseGetParams( url );
-				_urlManager();
-				
-//console.log("-- test:", $("#collapse-search").hasClass("in") );
-				if( $("#collapse-tags").hasClass("in") ){
-					$("#collapse-tags").collapse('hide');
-				}
-				
-			}
-			
 		}
 		
 	});//end event
 
+//------------------------------------------------------------------
+	$("#list-video").on("submit", function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+//console.log("submit form ", $(target).attr("name") );
+		
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		
+		if( $(target).attr("name") === "form_local_url"){
+//console.log(target.elements.btn_replace.outerHTML);
+			var url = target.elements.filepath.value;
+			target.elements.btn_replace.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
+			//window.open( url );
+		}
+		
+	});//end event
+
+	//$("#list-video").on("reset", function(event){
+//console.log("reset...", event);
+		//event = event || window.event;
+		//var target = event.target || event.srcElement;
+		
+	//});//end event
+	
+//------------------------------------------------------------------
+	$("#list-video").on("change", function(event){
+//console.log("change...", event);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		
+		if(target.name === "select-protocol"){
+			var num = target.selectedIndex;
+			var value = target.options[num].value;
+//console.log("select ", value, target.form.elements.filepath);
+			//var newValue = value + target.form.elements.filepath.value;
+			//target.form.elements.filepath.value = newValue;
+			target.form.elements.filepath.value = value;
+		}
+	});//end event
+
+//------------------------------------------------------------------
 
 	
 	$("#block-search").on("submit", "#form-search", function(event){
@@ -487,6 +499,75 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		_urlManager();
 		
 	});//end event
+
+
+	function _listVideoClick(target, event){
+		if( $(target).hasClass("toggle-btn") ){
+	//console.log(target.hash);
+
+			//if ( target.href.indexOf("#?q=") !== -1){
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+			//}
+
+			if( target.hash.indexOf("video-") !== -1 ){
+				$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
+				$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
+				
+				$(target).removeClass("toggle-btn-hide");
+				$(target).addClass("toggle-btn-show");
+			}
+		}
+		
+	//------------------------------------------------------------------
+		if( $(target).hasClass("btn-add-track-pls") ){
+	//console.log("click...", target.href);
+
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;				
+			}
+			
+			_player_addTrack( target );
+		}
+		
+	//------------------------------------------------------------------
+		if( $(target).hasClass("tag-link") ){
+	//console.log("click...", target);
+
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;				
+			}
+			var url = target.href+"&text="+ $(target).text();
+			webApp.vars["GET"] = func.parseGetParams( url );
+			_urlManager();
+			
+	//console.log("-- test:", $("#collapse-search").hasClass("in") );
+			if( $("#collapse-tags").hasClass("in") ){
+				$("#collapse-tags").collapse('hide');
+			}
+			
+		}
+
+	//------------------------------------------------------------------
+		//if( $(target).data("type") === "local-file" ){
+//console.log("click...", target, event );
+
+			//if (event.preventDefault) { 
+				//event.preventDefault();
+			//} else {
+				//event.returnValue = false;				
+			//}
+			
+		//}
+
+	}//end _listVideoClick()
 	
 }//end defineEvents()
 
@@ -1042,6 +1123,7 @@ console.log("error, loadTemplates(), not find data templates'....");
 							
 							webApp.vars["templates"][key] = value;
 						}//next
+						delete xmlNodes;
 						
 						//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
 					} else {

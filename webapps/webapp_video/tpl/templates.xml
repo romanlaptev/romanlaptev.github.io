@@ -30,30 +30,33 @@
 			<div class="">
 				<div class="text-center pictures">
 {{pictures}}
+				</div>
+
+<form name="form_local_url" action="#" method="GET" target="_blank">
 				<div class="links">{{ul}}
-<form name="form_local_url" action="#?q=" method="GET" target="_blank">
-	<div class="form-local-url panel-body text-left">
+	<div class="form-local-url panel-body hidden">
 		<label>form local url</label>
 		
 		<div class="">
-			<select class="" onchange="console.log( this.options[this.selectedIndex].value );">
-				<option value="file:///mnt/d2">HDD1, file protocol</option>
+			<select name="select-protocol" class="" onchange="">
+				<option value="file:///mnt/d2" selected >HDD1, file protocol</option>
 				<option value="file:///mnt/terra">external HDD, file protocol</option>
+				<option value="file://e:">HDD, windows</option>
 			</select>
 		</div>
 		
 		<div class="">
-			<input type="text" class="form-control path" value="" placeholder="file path">
+			<input name="filepath" type="text" class="form-control" value="file:///mnt/d2" placeholder="file path"/>
 		</div>
 		
 		<div class="text-center">
-			<input type="submit" class="btn btn-primary path" value="open in new tab" >
+			<input name="btn_replace" type="submit" class="btn btn-primary" value="load local media file"/>
+			<!-- <input type="reset" class="btn btn-warning"/> -->
 		</div>
 	</div>					
+				</div>
 </form>	
-				</div>
 
-				</div>
 			</div>
 		
 			<div class="panel-body">
@@ -102,10 +105,8 @@
 			<div class="">
 				<div class="text-center pictures">
 {{pictures}}
-	
-					<div class="links">{{ul}}</div>
-					
 				</div>
+				<div class="links">{{ul}}</div>
 			</div>
 		
 			<div class="panel-body">
@@ -161,7 +162,8 @@
 		<html_code>
 <![CDATA[
 	<li>
-		<a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a>
+		<!-- <a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a> -->
+		<button type="button" class="btn btn-lg btn-orange" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
 	</li>
 ]]>
 		</html_code>
