@@ -651,6 +651,7 @@ function createPalette( target, colors ){
 			if( block.onmouseup === null){
 //console.log("-- block.onmouseup === null");
 				block.onmouseup = function(e) {
+//console.log("2.onmouseup...", e);
 					var _block = e.target;
 					_block.onmousemove = null;
 					_block.onmouseup = null;
@@ -667,6 +668,7 @@ function createPalette( target, colors ){
 		};//end event
 	  
 		newDiv.onmouseup = function(e) {
+//console.log("1.onmouseup...", e);
 			var block = e.target;
 			block.onmousemove = null;
 			//document.onmousemove = null;
@@ -674,7 +676,6 @@ function createPalette( target, colors ){
 			block.style.zIndex = 999;
 			//block.style.position = 'static';
 		};//end event
-	
 //----------------------------------
 		
 		//_vars["pallete"].appendChild( newDiv );	
