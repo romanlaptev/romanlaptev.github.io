@@ -627,10 +627,11 @@ function createPalette( target, colors ){
 		//newDiv.addEventListener("click", copyToClipboard(e) );
 //----------------------------------
 		
-		newDiv.ondragstart = function(e) {
-console.log("ondragstart...", e);
-		  return false;
-		};
+		// newDiv.ondragstart = function(e) {
+// console.log("ondragstart...", e);
+			// e.preventDefault();
+		  // return false;
+		// };
 		
 		newDiv.onmousedown = function(e) {
 //console.log("onmousedown....", e);
@@ -639,9 +640,28 @@ console.log("ondragstart...", e);
 			block.style.position = 'absolute';
 			block.style.zIndex = 1000;
 			moveAt(e);
+			
+			if( block.onmousemove === null){
+//console.log("-- block.onmousemove === null");
+				block.onmousemove = function(e) {
+					moveAt(e);
+				};//end event
+			}
+			
+			if( block.onmouseup === null){
+//console.log("-- block.onmouseup === null");
+				block.onmouseup = function(e) {
+					var _block = e.target;
+					_block.onmousemove = null;
+					_block.onmouseup = null;
+					_block.style.zIndex = 999;
+				};//end event
+			}
+			
 		}//end event
 		
 		newDiv.onmousemove = function(e) {
+		//document.onmousemove = function(e) {
 //console.log("onmousemove...", e);
 			moveAt(e);
 		};//end event
@@ -649,8 +669,10 @@ console.log("ondragstart...", e);
 		newDiv.onmouseup = function(e) {
 			var block = e.target;
 			block.onmousemove = null;
+			//document.onmousemove = null;
 			block.onmouseup = null;
 			block.style.zIndex = 999;
+			//block.style.position = 'static';
 		};//end event
 	
 //----------------------------------
