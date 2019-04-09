@@ -175,6 +175,7 @@ console.log(webApp);
 
 function _runApp(){
 
+	testMediaSupport();
 	defineEvents();
 
 	//start block
@@ -220,6 +221,78 @@ if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 	
 }//end _runApp()
 
+
+function testMediaSupport(){
+//for(var key in webApp.vars["player"]){
+	//if( typeof webApp.vars["player"][key] === "function"){
+//console.log(key, webApp.vars["player"][key]);
+	//}
+//}
+/*
+    video/ogg; codecs="theora, vorbis"
+    video/mp4; codecs="avc1.4D401E, mp4a.40.2"
+    video/webm; codecs="vp8.0, vorbis"
+    audio/ogg; codecs="vorbis"
+    audio/mp4; codecs="mp4a.40.5"
+
+    audio/basic: mulaw аудио, 8 кГц, 1 канал (RFC 2046)
+    audio/L24: 24bit Linear PCM аудио, 8-48 кГц, 1-N каналов (RFC 3190)
+    audio/mp4: MP4
+    audio/aac: AAC
+    audio/mpeg: MP3 или др. MPEG (RFC 3003)
+    audio/ogg: Ogg Vorbis, Speex, Flac или др. аудио (RFC 5334)
+    audio/vorbis: Vorbis (RFC 5215)
+    audio/x-ms-wma: Windows Media Audio[6]
+    audio/x-ms-wax: Windows Media Audio перенаправление
+    audio/vnd.rn-realaudio: RealAudio[7]
+    audio/vnd.wave: WAV(RFC 2361)
+    audio/webm: WebM
+    
+    video/mpeg: MPEG-1 (RFC 2045 и RFC 2046)
+    video/mp4: MP4 (RFC 4337)
+    video/ogg: Ogg Theora или другое видео (RFC 5334)
+    video/quicktime: QuickTime[12]
+    video/webm: WebM
+    video/x-ms-wmv: Windows Media Video[6]
+    video/x-flv: FLV
+    video/3gpp: .3gpp .3gp [13]
+    video/3gpp2: .3gpp2 .3g2 [13]
+    
+*/
+
+	var MIME_types = [
+//"video/MP4V-ES",
+"video/ogg",
+"video/mpeg",
+"video/mp4",
+"video/webm",
+"video/quicktime",
+"video/x-ms-wmv",
+"video/3gpp",
+"video/3gpp2",
+"video/x-flv",
+"video/x-msvideo"
+	];
+	
+	
+	var testObj = document.createElement('video');
+	
+	for(var n = 0; n < MIME_types.length; n++){
+		var type = MIME_types[n];
+		var test = testObj.canPlayType(type);
+//console.log( "test: ", test, test.length);
+		
+		if( test && test.length > 0){
+			webApp.vars["logMsg"] = "test support for media type <b>"+type+"</b>: "+test;
+			func.log("<div class='alert alert-success'>" + webApp.vars["logMsg"] + "</div>");
+		} else {
+			webApp.vars["logMsg"] = "not support for media type <b>"+type+"</b>";
+			func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>");
+console.log( "-- test: ", test, test.length);
+		}
+	}//next
+	
+}//end testMediaSupport()
 
 
 function defineEvents(){
@@ -516,14 +589,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 
 	$("#btn-play").on("click", function(event){
 		webApp.vars["player"].play();
-//for(var key in webApp.vars["player"]){
-	//if( typeof webApp.vars["player"][key] === "function"){
-//console.log(key, webApp.vars["player"][key]);
-	//}
-//}		
-		var test = webApp.vars["player"].canPlayType('video/x-msvideo');
-console.log( test, test.length );
-
 	});//end event
 
 	$("#btn-pause").on("click", function(event){
@@ -532,14 +597,6 @@ console.log( test, test.length );
 
 	$("#btn-stop").on("click", function(event){
 		//webApp.vars["player"].stop();
-		
-		//var test = webApp.vars["player"].canPlayType('video/mp4');
-//console.log( test );
-//audio/mpeg
-//audio/mp4
-//audio/ogg
-//audio/wav
-//video/x-flv
 		$(webApp.vars["player"]).attr("src","");
 	});//end event
 	
