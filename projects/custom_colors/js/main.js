@@ -557,16 +557,6 @@ var _vars = {
 }
 console.log(_vars);
 
-if( typeof window.jQuery === "function"){
-//var msg = 'jQuery version: ' + jQuery.fn.jquery;
-//func.log(msg);
-
-	$(document).ready(function(){
-//console.log("document ready");
-	});//end ready	
-
-}
-
 window.onload = function(){
 console.log("window event onload");
 //console.log( navigator.userAgent );
@@ -595,6 +585,7 @@ function createPalette( target, colors ){
 		newDiv.className = "block";
 		var _color = colors[n]["code"];
 		newDiv.setAttribute("style", "background-color:"+_color+";");
+		//newDiv.setAttribute("id", "color-"+_color.replace("#", "") );
 		
 		if( colors[n]["text-color"] ){
 			newDiv.style.color = colors[n]["text-color"];
@@ -627,12 +618,42 @@ function createPalette( target, colors ){
 		
 		//newDiv.innerHTML = "<p>" + colors[n]["code"] + "</p>";
 		
+//----------------------------------
 		newDiv.onclick = function(e){
 //console.log("click!", this);
 //console.log( this.target );
 		   copyToClipboard( this );
-		};
+		};//end event
 		//newDiv.addEventListener("click", copyToClipboard(e) );
+//----------------------------------
+		
+		newDiv.ondragstart = function(e) {
+console.log("ondragstart...", e);
+		  return false;
+		};
+		
+		newDiv.onmousedown = function(e) {
+//console.log("onmousedown....", e);
+//console.log(e.target);
+			var block = e.target;
+			block.style.position = 'absolute';
+			block.style.zIndex = 1000;
+			moveAt(e);
+		}//end event
+		
+		newDiv.onmousemove = function(e) {
+//console.log("onmousemove...", e);
+			moveAt(e);
+		};//end event
+	  
+		newDiv.onmouseup = function(e) {
+			var block = e.target;
+			block.onmousemove = null;
+			block.onmouseup = null;
+			block.style.zIndex = 999;
+		};//end event
+	
+//----------------------------------
 		
 		//_vars["pallete"].appendChild( newDiv );	
 		target.appendChild( newDiv );	
@@ -641,7 +662,12 @@ function createPalette( target, colors ){
 	
 }//end createPalette()
 
-
+function moveAt(e) {
+	var block = e.target;
+	block.style.left = e.pageX - block.offsetWidth / 2 + 'px';
+	block.style.top = e.pageY - block.offsetHeight / 2 + 'px';
+}
+		
 function copyToClipboard( colorBox ){
 console.log( colorBox.title );
 

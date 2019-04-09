@@ -6,9 +6,14 @@
 	<link rel="stylesheet" href="/css/bootstrap335.min.css">
 <!--	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
--->	
+-->
+	<script src="lib/shared_functions.js"></script>
+	
 <script>
-if (!window.console){ console = {log: function() {}} };
+	var func = sharedFunc();
+console.log("func:", func);
+
+var logMsg;
 
 	//test support
 	var test_draganddrop = function() {
@@ -19,7 +24,10 @@ console.log("Browser supports HTML5: ",  test_draganddrop() );
 
 window.onload = function(){
 
-	document.querySelector("#testRes").innerHTML = test_draganddrop();
+	func.log( navigator.userAgent );
+
+	logMsg = "Browser supports HTML5: " + test_draganddrop();
+	func.log("<div class='alert alert-info'>" + logMsg + "</div>");
 	
 	if( document.querySelector){
 		var drop = document.querySelector("#drop");
@@ -76,7 +84,10 @@ $(function(){
 	<div class="page-header">
 		<h1>test drag and drop</h1>
 	</div>
-	<h3>Browser supports HTML5: <span id="testRes"></span></h3>
+	
+	<div id="log-wrap" class="panel">
+		<div id="log"></div>
+	</div>		
 
 	<div class="panel panel-primary">
 		<pre>
