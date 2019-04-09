@@ -18,30 +18,20 @@
 <!--
 	<link rel="stylesheet" href="css/breadcrumb.css">
 -->
-
-
 	<script src="js/lib/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap/bootstrap337.min.js"></script>
 
 	<!-- https://www.jqueryscript.net/form/User-Friendly-Number-Input-Spinner-with-jQuery-Bootstrap.html -->
-<!--
-	<script src="js/bootstrap/bootstrap-number-input.js" ></script>
--->
-
 <!-- ################### player ################## -->
 <!--
 	<link type="text/css" rel="stylesheet" href="players/jPlayer-2.9.2/skin/blue.monday/css/jplayer.blue.monday.css"/>
 -->
-	<link type="text/css" rel="stylesheet" href="css/player_style.css">
 <!--
-	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.min.js"></script>
--->
+	<link type="text/css" rel="stylesheet" href="css/player_style.css">
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jplayer.playlist.min.js"></script>
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.jplayer.min.js"></script>
-<!--
-	<script type="text/javascript" src="players/JWPlayer/jwplayer.js"></script>
--->
 	<script src="js/players.js"></script>
+-->
 <!-- ################## /player ################## -->
 	
 <!--
@@ -62,22 +52,21 @@
 <body id="App">
 	
 <header class="container">
-			<nav class="navbar">
-				
-				<div class="pull-left">
-					<ul class="nav nav-tabs">
-						<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-						<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Player</a></li>
-						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
-						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
-					</ul>
-				</div>
-				<div class="pull-right">
-					<h1 id="app-title">Application title</h1>
-				</div>
-				
-			</nav>
-
+	<nav class="navbar">
+		
+		<div class="pull-left">
+			<ul class="nav nav-tabs">
+				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
+				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Player</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+			</ul>
+		</div>
+		<div class="pull-right">
+			<h1 id="app-title">Application title</h1>
+		</div>
+		
+	</nav>
 
 	<div class="log-panel panel">
 		<div class="panel-body">
@@ -96,91 +85,39 @@
 	<div class="panel-group" id="header-links">
 		<div class="panel">
 			  <div id="collapse-player" class="panel-collapse collapse">
-				
-<!-- ################################## players -->
-<!-- {{jPlayer-video}} -->
-				<div class="player">    
-					<div id="jp_container_1" 
-class="jp-video jp-video-360p"
-role="application" aria-label="media player">
-
-						<h5 id="playlist-title" class="text-center">#playlist-title</h5>
-						
-						<div class="jp-type-playlist">
-							<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-							<div class="jp-gui">
-								
-								<div class="jp-video-play">
 <!--
-				<button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+<span id="block-jplayer"></span>
+
+http://youtube.com/embed/
+//ok.ru/videoembed/
+http://rutube.ru/play/embed/
+http://www.youtube.com/embed/Td6lN_U7Ecs
 -->
-								</div>
-								
-								<div class="jp-interface">
-									<div class="jp-progress">
-										<div class="jp-seek-bar">
-											<div class="jp-play-bar"></div>
-										</div>
-									</div>
-				<!--
-									<div class="jp-current-time"></div>
-									<div class="jp-duration"></div>
-				-->
-				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+<iframe type="text/html" id="iframe-player"
+    width="640" 
+    height="385" 
+    src=""
+    frameborder="1">
+</iframe>
 
-									<div class="jp-controls-holder">
-										<div class="jp-controls">
+			<div>
+				<video id="player1" width="560" height="315" controls="controls">
+					<source src="../../test_code/html/test_media/video/video.mp4" />
+					Tag <b>video</b> not supported by this browser.... 
+				</video>
+			</div>
+
+			<div>
+				<span id="video1-current">00:00</span>
+				<span id="video1-duration">00:00</span>
 				
-<button class="jp-previous btn btn-sm btn-primary" role="button" tabindex="0">previous</button>
-<button class="jp-play btn btn-sm btn-info" role="button" tabindex="0">play</button>
-<button class="jp-next btn btn-sm btn-primary" role="button" tabindex="0">next</button>
-<button class="jp-stop btn btn-sm btn-danger" role="button" tabindex="0">stop</button>
+				<button id="btn-play" class="btn btn-primary">play</button>
+				<button id="btn-pause" class="btn btn-info">pause</button>
 				
-										</div>
-
-										<div class="jp-volume-controls">
-<button class="jp-mute btn btn-sm btn-default" role="button" tabindex="0">mute</button>
-<button class="jp-volume-max btn btn-sm btn-default" role="button" tabindex="0">max volume</button>
-				<div class="jp-volume-bar">
-					<div class="jp-volume-bar-value"></div>
-				</div>
-										</div>
-										
-				<div class="jp-toggles">
-<button class="jp-repeat btn btn-sm btn-default" role="button" tabindex="0">repeat</button>
-<button class="jp-shuffle btn btn-sm btn-default" role="button" tabindex="0">shuffle</button>
-<button class="jp-full-screen btn btn-sm btn-default" role="button" tabindex="0">full screen</button>
-				</div>
-									</div>
-									
-									<div class="jp-details">
-										<div class="jp-title" aria-label="title">&nbsp;</div>
-									</div>
-
-								</div>
-							</div>
-							<div class="jp-playlist">
-								<ul>
-									<!-- The method Playlist.displayPlaylist() uses this unordered list -->
-									<li>&nbsp;</li>
-								</ul>
-							</div>
-							<div class="jp-no-solution">
-								<span>Update Required</span>
-								To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-							</div>
-						</div>
-					</div>
-				</div><!-- end player -->
-
-<!--
-				<div class="panel-body">
-					<div id="JWplayer1">Loading JW player...</div>
-				</div>
--->
-				
-<!-- ################################## end player -->
+				<button id="btn-stop" class="btn btn-danger">stop</button>
+				<button id="btn-prev" class="btn btn-primary">prev</button>
+				<button id="btn-next" class="btn btn-primary">next</button>
+			</div>
 
 			</div><!-- end collapse-player -->
 		</div>

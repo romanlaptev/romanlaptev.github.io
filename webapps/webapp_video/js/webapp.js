@@ -56,6 +56,16 @@ var webApp = {
 					_draw_buildBlock( this );
 				}
 			}, //end block
+			{
+				"locationID" : "block-jplayer",
+				"title" : "jplayer", 
+				"templateID" : "tpl-block-jplayer",
+				"content" : "",
+				"visibility":false,
+				"buildBlock" : function(){
+					_draw_buildBlock( this );
+				}
+			}, //end block
 /*
 			{
 				"locationID" : "block-list-video",
@@ -145,13 +155,15 @@ console.log("init webapp!");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
-		if( typeof $.jPlayer === "function"){
-			webApp.vars["playlists"] = {};
-			_initPlayer(this);
-		}
+		//this.vars["player"] = func.getById("player1");
+		this.vars["player"] = func.getById("iframe-player");
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
+			//if( typeof $.jPlayer === "function"){
+				//webApp.vars["playlists"] = {};
+				//_initPlayer(webApp);
+			//}
 			_runApp();
 		});
 		
@@ -502,6 +514,44 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	});//end event
 
 
+	$("#btn-play").on("click", function(event){
+		webApp.vars["player"].play();
+//for(var key in webApp.vars["player"]){
+	//if( typeof webApp.vars["player"][key] === "function"){
+//console.log(key, webApp.vars["player"][key]);
+	//}
+//}		
+		var test = webApp.vars["player"].canPlayType('video/x-msvideo');
+console.log( test, test.length );
+
+	});//end event
+
+	$("#btn-pause").on("click", function(event){
+		webApp.vars["player"].pause();
+	});//end event
+
+	$("#btn-stop").on("click", function(event){
+		//webApp.vars["player"].stop();
+		
+		//var test = webApp.vars["player"].canPlayType('video/mp4');
+//console.log( test );
+//audio/mpeg
+//audio/mp4
+//audio/ogg
+//audio/wav
+//video/x-flv
+		$(webApp.vars["player"]).attr("src","");
+	});//end event
+	
+	$("#btn-prev").on("click", function(event){
+		$(webApp.vars["player"]).attr("src","../../test_code/html/test_media/video/2018-05-05-064753.webm");
+	});//end event
+	
+	$("#btn-next").on("click", function(event){
+		$(webApp.vars["player"]).attr("src","../../test_code/html/test_media/video/video.mp4");
+	});//end event
+
+
 	function _listVideoClick(target, event){
 		var actionLink = true;
 		if( $(target).hasClass("toggle-btn") ){
@@ -526,18 +576,18 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 		
 	//------------------------------------------------------------------
-		if( $(target).hasClass("btn-add-track-pls") ){
-	//console.log("click...", target.href);
-			actionLink = false;
+		//if( $(target).hasClass("btn-add-track-pls") ){
+	////console.log("click...", target.href);
+			//actionLink = false;
 
-			if (event.preventDefault) { 
-				event.preventDefault();
-			} else {
-				event.returnValue = false;				
-			}
+			//if (event.preventDefault) { 
+				//event.preventDefault();
+			//} else {
+				//event.returnValue = false;				
+			//}
 			
-			_player_addTrack( target );
-		}
+			//_player_addTrack( target );
+		//}
 		
 	//------------------------------------------------------------------
 		if( $(target).hasClass("tag-link") ){

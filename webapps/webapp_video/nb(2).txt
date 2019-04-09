@@ -47,7 +47,8 @@ VLC Plugin для Mozilla Firefox
 посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
 - сделать блок с JPlayer в который можно добавлять записи из выдачи videolist (nodelist)
 
-- сделать проигрывание видео в разных форматах с локального сервера
+- сделать проигрывание видео в разных форматах
+по списку изменять атрибут src у iframe или video
 <iframe width="1024" height="768" src="http://youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
 <iframe width="1024" height="768" src="//ok.ru/videoembed/" frameborder="0" allowfullscreen></iframe>
 <iframe width="1024" height="768" src="http://rutube.ru/play/embed/" frameborder="0" allowfullscreen></iframe>
