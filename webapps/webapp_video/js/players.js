@@ -14,10 +14,10 @@ function _initPlayer(app){
 				//poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 			},
 			{
-				title:"test FLV",
+				title:"test2",
 				artist:"test artist",
 				free:true,
-				flv: "../../test_code/html/test_media/video/hippo.flv"
+				m4v: "../../test_code/html/test_media/video/video.mp4"
 			}			
 			/*,
 			{
