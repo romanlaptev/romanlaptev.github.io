@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 	<title>Browser info</title>
 	
+
 <!--
 <script src="http://code.jquery.com/jquery-1.1.js"></script>
 	<script>
@@ -1109,6 +1110,60 @@ console.log( key, document.body[key]);
 	_push( tests, test );
 	
 //--------------------------------------
+	var test = {
+		"name" : "HTML5: test media support: &lt;video&gt;, &lt;audio&gt;",
+		"msg" : "HTML5 media not supported",
+		"result" : false
+	};
+	test["links"]=[];
+	var obj = {
+		"link" : "test_media/test_audio_video.html", 
+		"text" : "test_audio_video.html"
+	};
+	_push( test["links"], obj );
+	
+	var _video = document.createElement('video');
+	if( typeof _video === "object"){
+		if( typeof _video["load"] === "function"){
+			test["result"]= true;
+			test["msg"] = "creating a object VIDEO was successful.<br>";
+/*			
+			if( typeof _video["canPlayType"] === "function"){
+				test["msg"] += "video.canPlayType is a function<br>";
+			}
+			if( typeof _video["fastSeek"] === "function"){
+				test["msg"] += "video.fastSeek is a function<br>";
+			}
+			if( typeof _video["play"] === "function"){
+				test["msg"] += "video.play is a function<br>";
+			}
+			if( typeof _video["pause"] === "function"){
+				test["msg"] += "video.pause is a function<br>";
+			}
+*/			
+		} else {
+			test["result"]= false;
+			test["msg"] = "creating a object VIDEO failed.<br>";
+		}
+	}
+	
+	var _audio = document.createElement('audio');	
+//console.log(typeof _audio["load"]);
+//for( var key in _audio){
+//console.log(key, _audio[key] );
+//}
+	if( typeof _audio === "object"){
+		if( typeof _video["load"] === "function"){
+			test["result"]= true;
+			test["msg"] += "creating a object AUDIO was successful.<br>";
+		} else {
+			test["result"]= false;
+			test["msg"] += "creating a object AUDIO failed.<br>";
+		}
+	}
+	
+	_push( tests, test );
+//--------------------------------------
 
 
 //console.log(tests);
@@ -1163,23 +1218,27 @@ console.log( key, document.body[key]);
 }//end runTests()
 </script>
 
-
 <style>
-.log{
-/*
-position:absolute;
-top:10px;
-right:10px;
-width:30%;
-opacity:0.8;
-padding:10px;
-*/
+.page-header h1 {
+	/* background-color: #7BA05B; */
+	color: #fff;
+}
+
+body {
+	background-color: #95a496;/*#E5F2E5;*/
 }
 .panel{
-background-color:#ffffcc;
-border:1px dashed;
+background-color:#fffff3;
+border:1px solid #cccccc;
+}
+.relative-links{
+background-color: #dec;;
+}
+
+.log-panel{
 }
 </style>
+
 </head>
 
 <body>
@@ -1290,7 +1349,7 @@ border:1px dashed;
 </script>
 
 <script type="text/template" id="test-links-tpl">
-	<ul class="form-control list-inline"><b>test pages</b>:
+	<ul class="form-control list-inline relative-links"><b>test pages</b>:
 		{{links}}
 	</ul>
 </script>
