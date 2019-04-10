@@ -31,12 +31,15 @@ var webApp = {
 		"videoTypes" : [
 { fileType:"ogg", testStr:'video/ogg; codecs="theora, vorbis"', support:false },
 { fileType:"mp4", testStr:'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support:false },
+{ fileType:"m4v", testStr:'video/x-m4v', support:false },
 { fileType:"webm", testStr:'video/webm; codecs="vp8.0, vorbis"', support:false },
 { fileType:"mpg", testStr:'video/mpeg', support:false },//MPEG-1
 { fileType:"mov", testStr:'video/quicktime', support:false },
 { fileType:"wmv", testStr:'video/x-ms-wmv', support:false },//Windows Media Video
 { fileType:"3gp", testStr:'video/3gpp', support:false },
 { fileType:"flv", testStr:'video/x-flv', support:false },
+{ fileType:"mkv", testStr:'video/x-matroska', support:false },
+{ fileType:"vob", testStr:'video/x-ms-vob', support:false },
 { fileType:"avi", testStr:'video/x-msvideo', support:false }
 		],
 		

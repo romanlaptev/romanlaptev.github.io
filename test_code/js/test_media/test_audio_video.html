@@ -58,6 +58,7 @@ function testMediaSupport(){
 
 //"video/mp4",
 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"',
+'video/x-m4v',
 
 //"video/webm",
 'video/webm; codecs="vp8.0, vorbis"',
@@ -72,7 +73,10 @@ function testMediaSupport(){
 
 "video/x-flv",
 //"rtmp/flv",
-"video/x-msvideo"
+"video/x-msvideo",
+"video/x-matroska",
+"video/x-ms-vob",
+"model/vnd.mts"
 	];
 	
 	var _video = document.createElement('video');
@@ -324,6 +328,75 @@ Chrome 8 (ubuntu 10.04) ok
 	-->				
 					<video width="560" height="315" controls="controls" >
 						<source src="video/small.flv" type="video/x-flv">
+					</video>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/mpeg", small.mpg</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.mpg" type="video/mpeg">
+					</video>
+				</div>
+				<div class="panel-body">
+					<p>video, type="video/mpeg", small.mpeg</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.mpeg" type="video/mpeg">
+					</video>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/quicktime", small.mov</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.mov" type="video/quicktime">
+					</video>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/x-matroska", small.mkv</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.mkv" type="video/x-matroska">
+					</video>
+				</div>
+			</div>
+			
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/x-ms-wmv", small.wmv</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.wmv" type="video/x-ms-wmv">
+					</video>
+				</div>
+			</div>
+			
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/x-m4v", small.m4v</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.m4v" type="video/x-m4v">
+					</video>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/x-ms-vob", small.vob</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.vob" type="video/x-ms-vob">
+					</video>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="model/vnd.mts", small.mts</p>
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.mts" type="model/vnd.mts">
 					</video>
 				</div>
 			</div>
