@@ -40,6 +40,9 @@ var webApp = {
 { fileType:"flv", testStr:'video/x-flv', support:false },
 { fileType:"mkv", testStr:'video/x-matroska', support:false },
 { fileType:"vob", testStr:'video/x-ms-vob', support:false },
+{ fileType:"avi", testStr:'video/vnd.avi', support:false },
+{ fileType:"avi", testStr:'video/avi', support:false },
+{ fileType:"avi", testStr:'video/msvideo', support:false },
 { fileType:"avi", testStr:'video/x-msvideo', support:false }
 		],
 		

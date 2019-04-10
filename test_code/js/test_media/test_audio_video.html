@@ -48,7 +48,8 @@ function testMediaSupport(){
 'audio/mpeg; codecs="mp3"',
 'audio/mp4; codecs="mp4a.40.5"',
 'audio/x-ms-wma', //Windows Media Audio
-'audio/x-ms-wax' //Windows Media Audio перенаправление
+'audio/x-ms-wax', //Windows Media Audio перенаправление
+'audio/x-matroska'
 	];
 	
 	var videoTypes = [
@@ -73,7 +74,9 @@ function testMediaSupport(){
 
 "video/x-flv",
 //"rtmp/flv",
-"video/x-msvideo",
+
+"video/vnd.avi",  "video/avi",  "video/msvideo",  "video/x-msvideo",
+
 "video/x-matroska",
 "video/x-ms-vob",
 "model/vnd.mts"
@@ -427,6 +430,35 @@ Chrome 8 (ubuntu 10.04) ok
 	</div><!-- end panel -->
 
 	<div class="panel panel-primary">
+		<h3>add subtitles</h3>
+		<div class="panel-body">
+<video style="width: 500px; height: 375px;" controls>
+	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.mp4" type="video/mp4">
+	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.ogg" type="video/ogg">
+	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.webm" type="video/webm">
+	<track kind="subtitles" src="angels.ru.vtt" srclang="ru" label="Русский">
+	<track kind="subtitles" src="angels.en.vtt" srclang="en" label="English">
+	<track kind="subtitles" src="angels.fr.vtt" srclang="fr" lang="fr" label="Francais">
+	<track kind="subtitles" src="angels.de.vtt" srclang="de" lang="de" label="Deutsch">
+	<p>Ваш веб-браузер не поддерживает элемент "video".</p>
+</video>
+<pre>
+http://programmerbook.ru
+http://htmlbook.ru/html/track
+https://html5book.ru/html5-video/
+</pre>
+		</div>
+	</div><!-- end panel -->
+	
+
+	<div class="panel panel-primary">
+		<div class="panel-body">embed src="video/small.mov" type="video/quicktime"
+<embed src="video/small.mov" type="video/quicktime" width="640" height="480">
+<!-- <embed src="helloworld.swf"> -->
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h2>HTML4</h2>
 			<h2>tag &lt;object&gt;</h2>
@@ -772,6 +804,8 @@ HTML5 Audio — cостояние дел. Часть 1
 
 https://html5css.ru/tags/av_met_canplaytype.php
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
+
+https://html5book.ru/html5-video/
 	</pre>
 	
 </div><!-- end container -->
