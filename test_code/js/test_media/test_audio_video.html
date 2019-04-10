@@ -54,7 +54,6 @@ function testMediaSupport(){
 	var videoTypes = [
 //"video/MP4V-ES",
 
-//"video/ogg",
 'video/ogg; codecs="theora, vorbis"',
 
 //"video/mp4",
@@ -238,7 +237,9 @@ Opera 47 (Debian) not play
 		</div>
 
 		<div class="panel-body">
-			<div>video.mp4
+
+			<div class="panel panel-primary">
+				<div class="panel-body">video.mp4
 				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg">
 <!--
 					<source src="video/norwegian-army-harlem-shake.ogv" />
@@ -275,57 +276,77 @@ Tag <b>video</b> not supported by this browser....
 FF 25 (ubuntu 10.04) not play
 Chromium 25 (ubuntu 10.04) not play
 Chrome 8 (ubuntu 10.04) ok
-----------------------
-test
-<!--
-<video>
-	<source  src="video.3gp"  type='video/3gpp; codecs="mp4v.20.8, samr"'>
-</video>	
--->
+
 				</pre>
 				
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>type='video/ogg', small.ogv</p>
+					<video width="560" height="315" controls="controls" name="media">
+						<source src="video/small.ogv" type='video/ogg'>
+					</video>			
+				</div>
 			</div>
 			
-			<div>
-				<p>video, type="video/x-msvideo", small.avi</p>
-				<video width="560" height="315" controls="controls" name="media">
-					<source src="video/small.avi" type="video/x-msvideo">
-				</video>			
-				<pre>
-Epiphany/3.14.1, ok
-FF66 not play
-Chrome 65 not play
-				</pre>
-				
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>type='video/3gpp', small.3gp</p>
+					<video width="560" height="315" controls="controls" name="media">
+						<!-- <source src="video/small.3gp" type='video/3gpp; codecs="mp4v.20.8, samr"'> -->
+						<source src="video/small.3gp" type='video/3gpp'>
+					</video>			
+				</div>
+			</div>
+			
+			
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>type="video/x-msvideo", small.avi</p>
+					<video width="560" height="315" controls="controls" name="media">
+						<source src="video/small.avi" type="video/x-msvideo">
+					</video>			
+					<pre>
+	Epiphany/3.14.1, ok
+	FF66 not play
+	Chrome 65 not play
+					</pre>
+				</div>
 			</div>
 
-			<div>
-				<p>video, type="video/x-flv", hippo.flv</p>
-<!--
-rtmp/flv
--->				
-				<video width="560" height="315" controls="controls" >
-					<source src="video/hippo.flv" type="video/x-flv">
-				</video>
+			<div class="panel panel-primary">
+				<div class="panel-body">
+					<p>video, type="video/x-flv", small.flv</p>
+	<!--
+	rtmp/flv
+	-->				
+					<video width="560" height="315" controls="controls" >
+						<source src="video/small.flv" type="video/x-flv">
+					</video>
+				</div>
 			</div>
 
-			<div class="pull-right">2018-05-05-064753.webm
-				<video id="player4" width="560" height="315" controls="controls" poster="">
-					<source src="video/2018-05-05-064753.webm" />
-					Tag <b>video</b> not supported by this browser.... 
-				</video>
-				<pre>
-					IE9 not support
-					Safari 10 not support
-					Edge not support
-					FF65 ok
-FF 25 (ubuntu 10.04) ok
-Chromium 25 (ubuntu 10.04) ok
-Chrome 8 (ubuntu 10.04) ok
+			<div class="panel panel-primary">
+				<div class="panel-body">2018-05-05-064753.webm
+					<video id="player4" width="560" height="315" controls="controls" poster="">
+						<source src="video/2018-05-05-064753.webm" />
+						Tag <b>video</b> not supported by this browser.... 
+					</video>
+					<pre>
+						IE9 not support
+						Safari 10 not support
+						Edge not support
+						FF65 ok
+	FF 25 (ubuntu 10.04) ok
+	Chromium 25 (ubuntu 10.04) ok
+	Chrome 8 (ubuntu 10.04) ok
 
-Opera 47 (Debian) ok
+	Opera 47 (Debian) ok
 
-				</pre>
+					</pre>
+				</div>
 			</div>
 
 
@@ -550,7 +571,7 @@ Opera 47 (Debian) not support
 			//file: "http://mycomp/video/kvn,fun/zp%5B1%5D.avi",
 			//file: "http://mycomp/video/mult/Killer%20Bean%202.avi",
 			//file: "http://mycomp/video/mult/maslennitca.mpg",
-			//file: "http://mycomp/video/mult/hippo.flv",
+			//file: "http://mycomp/video/mult/small.flv",
 			//image: "preview.jpg",
     'id': 'playerID',
     'width': '650',
@@ -558,7 +579,7 @@ Opera 47 (Debian) not support
     //'playlistfile': 'JWPlayer/playlist.xml',
 	playlist: [
 {file: "video/video.mp4", title:"video.mp4"},
-{file: "video/hippo.flv", title:"hippo.flv"}
+{file: "video/small.flv", title:"small.flv"}
 	],
     'playlist.position': 'right',
     'playlist.size': '250',
@@ -594,7 +615,7 @@ Opera 47 (Debian) play incorrect
 					<param name="allowScriptAccess" value="always" />
 					<param name="movie" value="uflvplayer_500x375.swf" />
 					<param name="FlashVars" 
-value="way=video/hippo.flv&amp;swf=uflvplayer_500x375.swf&amp;w=400&amp;h=340&amp;pic=&amp;autoplay=0&amp;tools=1&amp;skin=greyblack&amp;volume=70&amp;q=&amp;comment=" />
+value="way=video/small.flv&amp;swf=uflvplayer_500x375.swf&amp;w=400&amp;h=340&amp;pic=&amp;autoplay=0&amp;tools=1&amp;skin=greyblack&amp;volume=70&amp;q=&amp;comment=" />
 				</object>
 		</div>
 
@@ -613,7 +634,7 @@ value="way=audio/Yankee_doodle.mp3&amp;swf=ump3player_500x70.swf&amp;w=470&amp;h
 		</div>
 
 			<pre>
-hippo.flv				
+small.flv				
 audio/Yankee_doodle.mp3
 
 need install Adobe Flash Player plugin
