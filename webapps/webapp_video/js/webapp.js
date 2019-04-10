@@ -29,18 +29,30 @@ var webApp = {
 		},
 
 		"videoTypes" : [
-{ name:"ogg", testStr:'video/ogg; codecs="theora, vorbis"', support:false },
-{ name:"mp4", testStr:'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support:false },
-{ name:"webm", testStr:'video/webm; codecs="vp8.0, vorbis"', support:false },
-{ name:"mpeg", testStr:'video/mpeg', support:false },//MPEG-1
-{ name:"video/quicktime", testStr:'video/quicktime', support:false },
-{ name:"video/x-ms-wmv", testStr:'video/x-ms-wmv', support:false },//Windows Media Video
-{ name:"video/3gpp", testStr:'video/3gpp', support:false },
-{ name:"video/3gpp2", testStr:'video/3gpp2', support:false },
-{ name:"flv", testStr:'video/x-flv', support:false },
-{ name:"avi", testStr:'video/x-msvideo', support:false }
+{ fileType:"ogg", testStr:'video/ogg; codecs="theora, vorbis"', support:false },
+{ fileType:"mp4", testStr:'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support:false },
+{ fileType:"webm", testStr:'video/webm; codecs="vp8.0, vorbis"', support:false },
+{ fileType:"mpg", testStr:'video/mpeg', support:false },//MPEG-1
+{ fileType:"mov", testStr:'video/quicktime', support:false },
+{ fileType:"wmv", testStr:'video/x-ms-wmv', support:false },//Windows Media Video
+{ fileType:"3gp", testStr:'video/3gpp', support:false },
+{ fileType:"flv", testStr:'video/x-flv', support:false },
+{ fileType:"avi", testStr:'video/x-msvideo', support:false }
 		],
 		
+		"playlist" : {
+			tracks:[
+{title:"test MP4", artist:"test artist", src: "../../test_code/js/test_media/video/video.mp4"},
+{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
+{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
+			],
+			lastNum:0
+		},
+/*		
+http://youtube.com/embed/
+//ok.ru/videoembed/
+http://rutube.ru/play/embed/
+*/		
 		"blocks": [
 			{
 				"locationID" : "block-playlist",
@@ -173,10 +185,15 @@ console.log("init webapp!");
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
+
+			if( webApp.vars["player"] ){
 			//if( typeof $.jPlayer === "function"){
 				//webApp.vars["playlists"] = {};
 				//_initPlayer(webApp);
-			//}
+				var num = webApp.vars["playlist"]["lastNum"];
+				var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
+				$(webApp.vars["player"]).attr("src", videoSrc);
+			}
 			_runApp();
 		});
 		
@@ -564,13 +581,13 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	});//end event
 
 
-	$("#btn-play").on("click", function(event){
-		webApp.vars["player"].play();
-	});//end event
+	//$("#btn-play").on("click", function(event){
+		////webApp.vars["player"].play();
+	//});//end event
 
-	$("#btn-pause").on("click", function(event){
-		webApp.vars["player"].pause();
-	});//end event
+	//$("#btn-pause").on("click", function(event){
+		////webApp.vars["player"].pause();
+	//});//end event
 
 	$("#btn-stop").on("click", function(event){
 		//webApp.vars["player"].stop();
@@ -578,11 +595,34 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	});//end event
 	
 	$("#btn-prev").on("click", function(event){
-		$(webApp.vars["player"]).attr("src","../../test_code/html/test_media/video/2018-05-05-064753.webm");
+		webApp.vars["playlist"]["lastNum"]--;
+		if( webApp.vars["playlist"]["lastNum"] >= 0){
+			
+			var num = webApp.vars["playlist"]["lastNum"];
+//console.log( num, webApp.vars["playlist"]["lastNum"]);
+			var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
+			$(webApp.vars["player"]).attr("src", videoSrc);
+//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+
+		} else {
+			$(webApp.vars["player"]).attr("src","");
+			webApp.vars["playlist"]["lastNum"] = 0;
+		}
 	});//end event
 	
 	$("#btn-next").on("click", function(event){
-		$(webApp.vars["player"]).attr("src","../../test_code/html/test_media/video/video.mp4");
+		webApp.vars["playlist"]["lastNum"]++;
+		if( webApp.vars["playlist"]["lastNum"] < webApp.vars["playlist"]["tracks"].length){
+			
+			var num = webApp.vars["playlist"]["lastNum"];
+			var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
+			$(webApp.vars["player"]).attr("src", videoSrc);
+//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+
+		} else {
+			$(webApp.vars["player"]).attr("src","");
+			webApp.vars["playlist"]["lastNum"] = webApp.vars["playlist"]["tracks"].length;
+		}
 	});//end event
 
 

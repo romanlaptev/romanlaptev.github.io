@@ -26,8 +26,8 @@
 <!--
 	<link type="text/css" rel="stylesheet" href="players/jPlayer-2.9.2/skin/blue.monday/css/jplayer.blue.monday.css"/>
 -->
-<!--
 	<link type="text/css" rel="stylesheet" href="css/player_style.css">
+<!--
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jplayer.playlist.min.js"></script>
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.jplayer.min.js"></script>
 	<script src="js/players.js"></script>
@@ -85,39 +85,33 @@
 	<div class="panel-group" id="header-links">
 		<div class="panel">
 			  <div id="collapse-player" class="panel-collapse collapse">
+<span id="block-playlist"></span>
 <!--
 <span id="block-jplayer"></span>
-
-http://youtube.com/embed/
-//ok.ru/videoembed/
-http://rutube.ru/play/embed/
-http://www.youtube.com/embed/Td6lN_U7Ecs
 -->
-<iframe type="text/html" id="iframe-player"
-    width="640" 
-    height="385" 
-    src=""
-    frameborder="1">
-</iframe>
-
-			<div>
+			<div class="wrapper">
+<iframe type="text/html" id="iframe-player" width="640" height="385" src="" frameborder="1"></iframe>
+				<div>
+<!--
 				<video id="player1" width="560" height="315" controls="controls">
-					<source src="../../test_code/html/test_media/video/video.mp4" />
+					<source src="000"/>
 					Tag <b>video</b> not supported by this browser.... 
 				</video>
+-->
+	<!--
+					<span id="video1-current">00:00</span>
+					<span id="video1-duration">00:00</span>
+					
+					<button id="btn-play" class="btn btn-primary">play</button>
+					<button id="btn-pause" class="btn btn-info">pause</button>
+	-->
+					<button id="btn-stop" class="btn btn-danger">stop</button>
+					<button id="btn-prev" class="btn btn-primary">prev track</button>
+					<button id="btn-next" class="btn btn-primary">next track</button>
+				</div>
 			</div>
 
-			<div>
-				<span id="video1-current">00:00</span>
-				<span id="video1-duration">00:00</span>
-				
-				<button id="btn-play" class="btn btn-primary">play</button>
-				<button id="btn-pause" class="btn btn-info">pause</button>
-				
-				<button id="btn-stop" class="btn btn-danger">stop</button>
-				<button id="btn-prev" class="btn btn-primary">prev</button>
-				<button id="btn-next" class="btn btn-primary">next</button>
-			</div>
+
 
 			</div><!-- end collapse-player -->
 		</div>
@@ -140,7 +134,7 @@ http://www.youtube.com/embed/Td6lN_U7Ecs
 
 	<div class="row">
 		<div class="xs-hidden col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
-<span id="block-playlist"></span>
+
 		</div><!-- end sidebar left -->
 		
 		<div class="col-xs-12 col-sm-10 col-md-9 col-lg-8" id="main">

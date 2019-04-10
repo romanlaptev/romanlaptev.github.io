@@ -1,3 +1,9 @@
+#collapse-player .wrapper{
+margin:auto;
+width:640px;
+}
+
+
 .jp-video {
   font-size: 16px;
   font-family: Verdana, Arial, sans-serif;
