@@ -6,59 +6,147 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	<script src="../lib/shared_functions.js"></script>
+<script>
+	var func = sharedFunc();
+console.log("func:", func);
+var logMsg;
 
+window.onload = function(){
+	func.log( "<h3>"+navigator.userAgent +"</h3>");
+
+	var btn_log = func.getById("btn-clear-log");
+	var log = func.getById("log");
+	btn_log.onclick = function(e){
+//console.log(e);	
+		log.innerHTML = "";
+	}//end event
+	
+	testMediaSupport();
+}//end load
+
+function testMediaSupport(){
+//for(var key in webApp.vars["player"]){
+	//if( typeof webApp.vars["player"][key] === "function"){
+//console.log(key, webApp.vars["player"][key]);
+	//}
+//}
+/*
+    audio/basic: mulaw аудио, 8 кГц, 1 канал (RFC 2046)
+    audio/L24: 24bit Linear PCM аудио, 8-48 кГц, 1-N каналов (RFC 3190)
+    audio/ogg: Ogg Vorbis, Speex, Flac или др. аудио (RFC 5334)
+    audio/vorbis: Vorbis (RFC 5215)
+    audio/vnd.rn-realaudio: RealAudio[7]
+    audio/vnd.wave: WAV(RFC 2361)
+*/
+
+	var audioTypes = [
+'audio/wav; codecs=1',
+'audio/ogg; codecs="vorbis"',
+'audio/webm',//WebM
+'audio/mpeg; codecs="mp3"',
+'audio/mp4; codecs="mp4a.40.5"',
+'audio/x-ms-wma', //Windows Media Audio
+'audio/x-ms-wax' //Windows Media Audio перенаправление
+	];
+	
+	var videoTypes = [
+//"video/MP4V-ES",
+
+//"video/ogg",
+'video/ogg; codecs="theora, vorbis"',
+
+//"video/mp4",
+'video/mp4; codecs="avc1.4D401E, mp4a.40.2"',
+
+//"video/webm",
+'video/webm; codecs="vp8.0, vorbis"',
+
+"video/mpeg",//MPEG-1
+"video/quicktime",
+"video/x-ms-wmv",//Windows Media Video
+
+"video/3gpp",
+//'video/3gpp; codecs="mp4v.20.8, samr',
+"video/3gpp2",
+
+"video/x-flv",
+//"rtmp/flv",
+"video/x-msvideo"
+	];
+	
+	var _video = document.createElement('video');
+	if( typeof _video === "object"){
+		if( typeof _video["load"] === "function"){
+
+			for(var n = 0; n < videoTypes.length; n++){
+				var type = videoTypes[n];
+				var test = _video.canPlayType(type);
+		//console.log( "test: ", test, test.length);
+				
+				if( test && test.length > 0){
+					logMsg = "test support for media type <b>"+type+"</b>: "+test;
+					func.log("<div class='alert alert-success'>" + logMsg + "</div>");
+				} else {
+					logMsg = "not support for media type <b>"+type+"</b>";
+					func.log("<div class='alert alert-warning'>" + logMsg + "</div>");
+		console.log( "-- test: ", test, test.length);
+				}
+			}//next
+			
+		} else {
+			logMsg = "creating a object VIDEO failed.";
+			func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+		}
+	}
+	
+//-----------------------------
+
+	var _audio = document.createElement('audio');
+	if( typeof _audio === "object"){
+		if( typeof _audio["load"] === "function"){
+	
+			for(var n = 0; n < audioTypes.length; n++){
+				var type = audioTypes[n];
+				var test = _audio.canPlayType(type);
+		//console.log( "test: ", test, test.length);
+				
+				if( test && test.length > 0){
+					logMsg = "test support for media type <b>"+type+"</b>: "+test;
+					func.log("<div class='alert alert-success'>" + logMsg + "</div>");
+				} else {
+					logMsg = "not support for media type <b>"+type+"</b>";
+					func.log("<div class='alert alert-warning'>" + logMsg + "</div>");
+		//console.log( "-- test: ", test, test.length);
+				}
+			}//next
+			
+		} else {
+			logMsg = "creating a object AUDIO failed.";
+			func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+		}
+	}
+	
+}//end testMediaSupport()
+
+</script>
 </head>
 
 <body>
-
 <div class="container">
 	<div class="page-header">
 		<h1>Test media support</h1>
 	</div>
-
-	<pre>
-http://html-5.ru/teg-audio-html5.php
-http://html-5.ru/teg-video-html5.php
-
-https://www.youtube.com/html5
-
-https://standaloneinstaller.com/blog/big-list-of-sample-videos-for-testers-124.html
-Big list of sample videos for testers
-
-http://techslides.com/sample-webm-ogg-and-mp4-video-files-for-html5
-
-http://jplayer.org/
-http://www.jplayer.org/latest/developer-guide/
-https://habr.com/ru/post/112776/
-
-https://flowplayer.com/
-
-https://support.jwplayer.com/
-https://support.jwplayer.com/faqs
-https://stackoverflow.com/questions/20367756/jw-player-does-not-repeat-video
-
-http://uppod.ru/help/q=video
-
-http://www.mediaelementjs.com/
-
-https://ruseller.com/lessons.php?rub=32&id=197
-Стильный аудиоплеер для сайта
-
-http://malsup.com/jquery/media/
-jQuery Media Plugin
-
-https://habr.com/ru/sandbox/49705/
-SoundManager — Проигрывание аудио в JavaScript
-
-http://www.schillmania.com/projects/soundmanager2/
-
--------------
-https://habr.com/ru/post/148368/
-HTML5 Audio — cостояние дел. Часть 1
-
-https://html5css.ru/tags/av_met_canplaytype.php
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
-	</pre>
+	
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -187,7 +275,13 @@ Tag <b>video</b> not supported by this browser....
 FF 25 (ubuntu 10.04) not play
 Chromium 25 (ubuntu 10.04) not play
 Chrome 8 (ubuntu 10.04) ok
-
+----------------------
+test
+<!--
+<video>
+	<source  src="video.3gp"  type='video/3gpp; codecs="mp4v.20.8, samr"'>
+</video>	
+-->
 				</pre>
 				
 			</div>
@@ -541,6 +635,51 @@ Opera 47 (Debian) ok
 
 	</div><!-- end panel -->
 
+	
+	<pre>
+http://html-5.ru/teg-audio-html5.php
+http://html-5.ru/teg-video-html5.php
+
+https://www.youtube.com/html5
+
+https://standaloneinstaller.com/blog/big-list-of-sample-videos-for-testers-124.html
+Big list of sample videos for testers
+
+http://techslides.com/sample-webm-ogg-and-mp4-video-files-for-html5
+
+http://jplayer.org/
+http://www.jplayer.org/latest/developer-guide/
+https://habr.com/ru/post/112776/
+
+https://flowplayer.com/
+
+https://support.jwplayer.com/
+https://support.jwplayer.com/faqs
+https://stackoverflow.com/questions/20367756/jw-player-does-not-repeat-video
+
+http://uppod.ru/help/q=video
+
+http://www.mediaelementjs.com/
+
+https://ruseller.com/lessons.php?rub=32&id=197
+Стильный аудиоплеер для сайта
+
+http://malsup.com/jquery/media/
+jQuery Media Plugin
+
+https://habr.com/ru/sandbox/49705/
+SoundManager — Проигрывание аудио в JavaScript
+
+http://www.schillmania.com/projects/soundmanager2/
+
+-------------
+https://habr.com/ru/post/148368/
+HTML5 Audio — cостояние дел. Часть 1
+
+https://html5css.ru/tags/av_met_canplaytype.php
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
+	</pre>
+	
 </div><!-- end container -->
 </body>
 </html>

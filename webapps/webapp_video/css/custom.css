@@ -14,7 +14,7 @@ header .nav-tabs .btn:focus {
 }
 
 .alert {
-	margin-bottom: 5px !important;
+	margin-bottom: 3px !important;
 	padding: 7px !important;
 }
 
@@ -24,9 +24,8 @@ header .navbar {
 .alert-warning {
 	color: #000;
 	background-color: #ffb515;
-	border-color: #8a6d3b;
+	/*border-color: #8a6d3b;*/
 }
-
 
 
 body {

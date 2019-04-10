@@ -1,0 +1,54 @@
+﻿/* fix Bootstrap */
+/*
+header .nav-tabs .btn:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+header .nav-tabs .btn:focus {
+	background: orange;
+	color: #000 !important;
+}
+
+.nav-tabs {
+	margin-bottom: 10px;
+}
+
+header .navbar {
+    margin-bottom: 0;
+}
+*/
+.alert {
+	margin-bottom: 3px !important;
+	padding: 10px !important;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
+
+.log-panel{
+background-color: #fffff3;
+margin-top: 5px;
+margin-bottom: 0;
+border:none;
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+/*
+#log .alert
+{
+margin-bottom: 0;
+padding: 10px;
+}
+*/
