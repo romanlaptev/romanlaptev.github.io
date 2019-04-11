@@ -96,7 +96,7 @@
 		
 		{{number}}{{title}}
 		<p class="creators">{{creators}}</p>
-		<a class="btn btn-sm btn-default btn-add-track-pls" href="#track-{{number}}">add to playlist</a>
+		<!-- <a class="btn btn-sm btn-default btn-add-track-pls" href="#track-{{number}}">add to playlist</a> -->
 	
 	</div>
 	

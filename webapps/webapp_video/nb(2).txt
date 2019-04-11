@@ -84,7 +84,10 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 
 =========================== Playlist
 - сделать блок с плейлистом в который можно добавлять записи из выдачи videolist (nodelist)
+
 - не изменять атрибут src для видео в неподдерживаемом формате
+также не открывать ссылки для таких файлов (или добавлять к ссылкам 'local-file' класс 'disabled', 'wrong-video-type')
+(Chrome, local-file, Apocalyptica - Path.mpg)
 
 - сделать проигрывание видео в разных форматах
 *по списку изменять атрибут src у iframe или video
@@ -95,6 +98,20 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 - добавить возможность проигрывания составных плейлистов (коллекций)
 плейлисты - это подшивки видео, музыкальных треков без иерархической вложенности
 посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
+
+- сделать смену трека по событию окончания воспроизведения
+	ended для <video>,
+		//player.addEventListener('ended',function(e){
+	//console.log(e);
+		//},false);//end event
+		//$("#player1").on("ended", function(e){
+	//console.log(e);
+		//});//end event
+	
+	для видео с Youtube.com
+		if(event.data == YT.PlayerState.ENDED){
+	alert("Video Ended;")
+		} 
 
 
 =========================== HTML,CSS

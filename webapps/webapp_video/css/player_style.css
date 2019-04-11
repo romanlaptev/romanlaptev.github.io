@@ -1,3 +1,31 @@
+#block-playlist {
+position: fixed;
+left: 0;
+width: 25%;	
+}
+@media screen and (max-width:1280px) 
+{ 
+	#block-playlist {
+		width: 20%;
+	}
+}
+@media screen and (max-width:920px) 
+{ 
+	#block-playlist {
+		position: static;
+		width: 100%;
+	}
+	#block-playlist .block {
+		box-shadow: none;
+	}
+/*
+	#block-playlist .toggle-btn {
+		display: none;
+	}
+*/
+}
+
+
 #collapse-player .wrapper{
 margin:auto;
 width:640px;
