@@ -42,19 +42,6 @@ VLC Plugin для Mozilla Firefox
 	- список видео связанных одной темой (видеоуроки, видео муз. группы и проч.	видео одного жанра, формата)
 	- отобразить иерархию как в БД, так и в шаблонах
 
-- добавить возможность проигрывания составных плейлистов (коллекций)
-плейлисты - это подшивки видео, музыкальных треков без иерархической вложенности
-посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
-
-- сделать блок с плейлистом в который можно добавлять записи из выдачи videolist (nodelist)
-
-- сделать проигрывание видео в разных форматах
-*по списку изменять атрибут src у iframe или video
-<iframe width="1024" height="768" src="http://youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
-<iframe width="1024" height="768" src="//ok.ru/videoembed/" frameborder="0" allowfullscreen></iframe>
-<iframe width="1024" height="768" src="http://rutube.ru/play/embed/" frameborder="0" allowfullscreen></iframe>
-
-
 - определить HTML-блоки с таксономией, иерархическими подшивками
 HierarchyList
 //фильмы
@@ -95,6 +82,21 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 
 - сделать блокировку при выполнении запросов
 
+=========================== Playlist
+- сделать блок с плейлистом в который можно добавлять записи из выдачи videolist (nodelist)
+- не изменять атрибут src для видео в неподдерживаемом формате
+
+- сделать проигрывание видео в разных форматах
+*по списку изменять атрибут src у iframe или video
+<iframe width="1024" height="768" src="http://youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+<iframe width="1024" height="768" src="//ok.ru/videoembed/" frameborder="0" allowfullscreen></iframe>
+<iframe width="1024" height="768" src="http://rutube.ru/play/embed/" frameborder="0" allowfullscreen></iframe>
+
+- добавить возможность проигрывания составных плейлистов (коллекций)
+плейлисты - это подшивки видео, музыкальных треков без иерархической вложенности
+посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
+
+
 =========================== HTML,CSS
 боковая панель - список видеоклипов в виде плейлиста (или плитка из изображений-скриншотов с названиями )
 панель с блоком тегов - алфавитные и тематические теги, по дате
@@ -127,8 +129,8 @@ select * from nodes where tags.name="creation_year" and tags.value="1918"
 - сделать окно пейджера перетаскиваемым или сворачиваемым
 
 =========================== TEMPLATES
-- сделать отдельный шаблон для ссылок с фильмами в формате Mkv
-если ссылка содержит file.mkv, то отбросить http://site-content и добавить file://path/file.mkv
++- сделать отдельный шаблон для ссылок с фильмами в формате Mkv
++- если ссылка содержит file.mkv, то отбросить http://site-content и добавить file://path/file.mkv
 
 
 =========================== Data format, XML parse
