@@ -355,17 +355,45 @@ left: 1px;
 }
 
 
+
 .block{
 box-shadow: 5px 5px 15px #4f5a6e;
 }
+
+
 #block-links .block {
 	box-shadow: none;
 }
+#block-links .bg-darkblue a{
+  color: #fff;  
+}
+
 
 #block-playlist {
-	position: fixed;
-	left: 0;
+position: fixed;
+left: 0;
+width: 25%;	
 }
+@media screen and (max-width:1280px) 
+{ 
+	#block-playlist {
+		width: 20%;
+	}
+}
+@media screen and (max-width:920px) 
+{ 
+	#block-playlist {
+		position: static;
+		width: 100%;
+	}
+	#block-playlist .block {
+		box-shadow: none;
+	}
+	#block-playlist .toggle-btn {
+		display: none;
+	}
+}
+
 
 
 .type-videoclip .panel-heading{

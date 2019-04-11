@@ -85,13 +85,15 @@
 	<div class="panel-group" id="header-links">
 		<div class="panel">
 			  <div id="collapse-player" class="panel-collapse collapse">
-<span id="block-playlist"></span>
+<div id="block-playlist"></div>
 <!--
 <span id="block-jplayer"></span>
 -->
 			<div class="wrapper">
+				<h2 id="track-info"></h2>
 <iframe type="text/html" id="iframe-player" width="640" height="385" src="" frameborder="1"></iframe>
-				<div>
+
+				<div id="player-buttons">
 <!--
 				<video id="player1" width="560" height="315" controls="controls">
 					<source src="000"/>
@@ -105,9 +107,9 @@
 					<button id="btn-play" class="btn btn-primary">play</button>
 					<button id="btn-pause" class="btn btn-info">pause</button>
 	-->
-					<button id="btn-stop" class="btn btn-danger">stop</button>
-					<button id="btn-prev" class="btn btn-primary">prev track</button>
-					<button id="btn-next" class="btn btn-primary">next track</button>
+					<a href="?q=stop-play" class="btn btn-danger">stop</a>
+					<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+					<a href="?q=next-track" class="btn btn-primary">next track</a>
 				</div>
 			</div>
 

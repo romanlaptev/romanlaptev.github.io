@@ -63,17 +63,25 @@ http://rutube.ru/play/embed/
 			{
 				"locationID" : "block-playlist",
 				"title" : "Playlist", 
-				"templateID" : "tpl-block",
-				"content" : "<ul class='list-unstyled'>\
-<li class='list-group-item'>Track1</li>\
-<li class='list-group-item'>Track2</li>\
-<li class='list-group-item'>Track3</li>\
-<li class='list-group-item'>....</li>\
-</ul>",
+				"templateID" : "tpl-block-playlist",
+				"content" : "",
 				"visibility" : true,//"frontPage"
 				"buildBlock" : function(){
 //console.log(this);
-					_draw_buildBlock( this );
+					for(var n = 0; n < webApp.vars["playlist"]["tracks"].length; n++){
+						webApp.vars["playlist"]["tracks"][n]["number"] = n;
+					}//next
+					
+					var html = _draw_wrapData({
+						"data": webApp.vars["playlist"]["tracks"],
+						"templateID": "tpl-playlist",
+						"templateListItemID": "tpl-playlist-item"
+					});
+//console.log( html);
+					if( html && html.length > 0){
+						this.content = html;
+						_draw_buildBlock( this );
+					}
 				}
 			},//end block
 			
@@ -87,6 +95,8 @@ http://rutube.ru/play/embed/
 					_draw_buildBlock( this );
 				}
 			}, //end block
+			
+/*			
 			{
 				"locationID" : "block-jplayer",
 				"title" : "jplayer", 
@@ -97,6 +107,8 @@ http://rutube.ru/play/embed/
 					_draw_buildBlock( this );
 				}
 			}, //end block
+*/
+			
 /*
 			{
 				"locationID" : "block-list-video",
@@ -192,14 +204,15 @@ console.log("init webapp!");
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
 
-			if( webApp.vars["player"] ){
+			//if( webApp.vars["player"] ){
 			//if( typeof $.jPlayer === "function"){
 				//webApp.vars["playlists"] = {};
 				//_initPlayer(webApp);
-				var num = webApp.vars["playlist"]["lastNum"];
-				var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
-				$(webApp.vars["player"]).attr("src", videoSrc);
-			}
+				
+				//var num = webApp.vars["playlist"]["lastNum"];
+				//var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
+				//$(webApp.vars["player"]).attr("src", videoSrc);
+			//}
 			_runApp();
 		});
 		
@@ -331,7 +344,7 @@ function defineEvents(){
 	});//end event
 	
 //------------------------------------------------------------------
-	$("#list-video, #block-taglist").on("click", function(event){
+	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
 //console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
@@ -340,7 +353,11 @@ function defineEvents(){
 			_listVideoClick(target, event);
 		}
 		
-		if( target.tagName === "BUTTON"){
+//console.log( target.form, target.form.name );
+		//local url click
+		if( target.form && 
+				target.form.name === "form_local_url" && 
+					target.tagName === "BUTTON"){
 			if($(target).data("type") === "local-file"){
 //console.log("click...", $(target).data() );
 //console.log( target.form.elements.filepath );
@@ -595,42 +612,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		////webApp.vars["player"].pause();
 	//});//end event
 
-	$("#btn-stop").on("click", function(event){
-		//webApp.vars["player"].stop();
-		$(webApp.vars["player"]).attr("src","");
-	});//end event
-	
-	$("#btn-prev").on("click", function(event){
-		webApp.vars["playlist"]["lastNum"]--;
-		if( webApp.vars["playlist"]["lastNum"] >= 0){
-			
-			var num = webApp.vars["playlist"]["lastNum"];
-//console.log( num, webApp.vars["playlist"]["lastNum"]);
-			var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
-			$(webApp.vars["player"]).attr("src", videoSrc);
-//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
-
-		} else {
-			$(webApp.vars["player"]).attr("src","");
-			webApp.vars["playlist"]["lastNum"] = 0;
-		}
-	});//end event
-	
-	$("#btn-next").on("click", function(event){
-		webApp.vars["playlist"]["lastNum"]++;
-		if( webApp.vars["playlist"]["lastNum"] < webApp.vars["playlist"]["tracks"].length){
-			
-			var num = webApp.vars["playlist"]["lastNum"];
-			var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
-			$(webApp.vars["player"]).attr("src", videoSrc);
-//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
-
-		} else {
-			$(webApp.vars["player"]).attr("src","");
-			webApp.vars["playlist"]["lastNum"] = webApp.vars["playlist"]["tracks"].length;
-		}
-	});//end event
-
 
 	function _listVideoClick(target, event){
 		var actionLink = true;
@@ -821,7 +802,7 @@ console.log("Warning! not found tag text value...");
 				}
 			break;
 			
-			case "clear-tag":
+			case "clear-query-result":
 				//_data_setTemplate(data);//define unique template for item
 				webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
 
@@ -840,7 +821,7 @@ console.log("Warning! not found tag text value...");
 					"targetField" : webApp.vars["GET"]["targetField"],
 					"keyword" : webApp.vars["GET"]["keyword"],
 					"callback" : function( data ){
-console.log(data);
+//console.log(data);
 
 						if( !data || data.length ===0){
 webApp.vars["logMsg"] = "not found records by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
@@ -857,6 +838,67 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				});
 				
 			break;
+
+
+//-------------------------------------------- PLAYER
+			case "play-track":
+				var num = webApp.vars["GET"]["num"];
+				var track = webApp.vars["playlist"]["tracks"][num];
+
+				var videoSrc = track["src"];
+				$(webApp.vars["player"]).attr("src", videoSrc);
+				
+				var track_info = track["title"] +", "+ track["artist"];
+				$("#track-info").text(track_info);
+			break;
+
+			case "stop-play":
+				//webApp.vars["player"].stop();
+				$(webApp.vars["player"]).attr("src","");
+				$("#track-info").text("");
+			break;
+			
+			case "prev-track":
+				webApp.vars["playlist"]["lastNum"]--;
+				if( webApp.vars["playlist"]["lastNum"] >= 0){
+					
+					var num = webApp.vars["playlist"]["lastNum"];
+		//console.log( num, webApp.vars["playlist"]["lastNum"]);
+					var track = webApp.vars["playlist"]["tracks"][num];
+					var videoSrc = track["src"];
+					$(webApp.vars["player"]).attr("src", videoSrc);
+		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+		
+					var track_info = track["title"] +", "+ track["artist"];
+					$("#track-info").text(track_info);
+
+				} else {
+					$(webApp.vars["player"]).attr("src","");
+					webApp.vars["playlist"]["lastNum"] = 0;
+					$("#track-info").text("");
+				}
+			break;
+			
+			case "next-track":
+				webApp.vars["playlist"]["lastNum"]++;
+				if( webApp.vars["playlist"]["lastNum"] < webApp.vars["playlist"]["tracks"].length){
+					
+					var num = webApp.vars["playlist"]["lastNum"];
+					var track = webApp.vars["playlist"]["tracks"][num];
+					var videoSrc = track["src"];
+					$(webApp.vars["player"]).attr("src", videoSrc);
+		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+		
+					var track_info = track["title"] +", "+ track["artist"];
+					$("#track-info").text(track_info);
+
+				} else {
+					$(webApp.vars["player"]).attr("src","");
+					webApp.vars["playlist"]["lastNum"] = webApp.vars["playlist"]["tracks"].length;
+					$("#track-info").text("");
+				}
+			break;
+//--------------------------------------------
 
 			default:
 console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
@@ -1693,7 +1735,7 @@ function _data_search( opt ){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log(p);
+//console.log(p);
 
 	var fieldKey = p["targetField"];
 	var itemKey;

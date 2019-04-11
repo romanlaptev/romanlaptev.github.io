@@ -280,6 +280,37 @@
 	</tpl>	
 
 
+	<tpl name="tpl-block-playlist">
+		<html_code><![CDATA[
+<div class="block panel panel-primary">
+
+	<div class="panel-heading bg-darkblue clearfix">
+		<h4 class="pull-left">{{block_title}}</h4>
+		<div class="pull-right"><a href="#" class="btn toggle-btn">&gt;</a></div>
+	</div>
+	
+	<div class="content panel-body">
+{{content}}
+	</div>
+	
+</div>			
+		]]></html_code>
+	</tpl>	
+
+	<tpl name="tpl-playlist">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+	
+	<tpl name="tpl-playlist-item">
+		<html_code>
+<![CDATA[
+	<li class='list-group-item'><a href="#?q=play-track&num={{number}}">{{title}}, {{artist}}</a></li>
+]]>
+		</html_code>
+	</tpl>
+
 
 
 	<tpl name="tpl-block-taglist">
@@ -288,7 +319,7 @@
 				<div class="panel-heading clearfix">
 <b>Tags</b>
 <div class="pull-right">
-	<a href='?q=clear-tag' class="btn btn-sm btn-danger">clear tag</a>
+	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
 	<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn">x</a>
 </div>
 				</div>
@@ -319,8 +350,11 @@
 			<div class="panel panel-primary">
 			
 				<div class="panel-heading clearfix">
-Search by keywords
-<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn pull-right">x</a>
+<b>Search by keywords</b>
+<div class="pull-right">
+	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
+	<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn">x</a>
+</div>
 				</div>
 				
 <form name="formSearch" id="form-search" action="?q=search" method="GET">
