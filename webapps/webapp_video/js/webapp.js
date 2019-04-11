@@ -611,7 +611,15 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	//$("#btn-pause").on("click", function(event){
 		////webApp.vars["player"].pause();
 	//});//end event
-
+	
+	//var player = func.getById("player1");
+	//player.addEventListener('ended',function(e){
+//console.log(e);
+	//},false);//end event
+	$("#player1").on("ended", function(e){
+console.log(e);
+	});//end event
+	    
 
 	function _listVideoClick(target, event){
 		var actionLink = true;
@@ -869,6 +877,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 					var videoSrc = track["src"];
 					$(webApp.vars["player"]).attr("src", videoSrc);
 		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+$("#player1").attr("src", videoSrc);
 		
 					var track_info = track["title"] +", "+ track["artist"];
 					$("#track-info").text(track_info);
@@ -889,6 +898,8 @@ console.log( "-- " + webApp.vars["logMsg"] );
 					var videoSrc = track["src"];
 					$(webApp.vars["player"]).attr("src", videoSrc);
 		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+//console.log( webApp.vars["player"].contentDocument.body.getElementsByTagName("video").item(0) );
+$("#player1").attr("src", videoSrc);
 		
 					var track_info = track["title"] +", "+ track["artist"];
 					$("#track-info").text(track_info);
