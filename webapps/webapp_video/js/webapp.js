@@ -847,6 +847,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 				var videoSrc = track["src"];
 				$(webApp.vars["player"]).attr("src", videoSrc);
+				webApp.vars["playlist"]["lastNum"] = num;
 				
 				var track_info = track["title"] +", "+ track["artist"];
 				$("#track-info").text(track_info);
