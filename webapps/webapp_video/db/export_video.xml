@@ -66,11 +66,8 @@
 	<tag tid="89" vid="2" name="Франция"></tag>
 	<tag tid="93" vid="2" name="Катя Оутинен"></tag>
 	<tag tid="94" vid="2" name="Роберт Де Ниро"></tag>
-	<tag tid="95" vid="2" name="Алексей Полуян"></tag>
 	<tag tid="96" vid="2" name="история"></tag>
 	<tag tid="97" vid="2" name="Волошин, Игорь"></tag>
-	<tag tid="98" vid="2" name="фолк"></tag>
-	<tag tid="99" vid="2" name="Psalteria"></tag>
 	<tag tid="100" vid="2" name="панк"></tag>
 	<tag tid="101" vid="2" name="русский рок"></tag>
 	<tag tid="102" vid="2" name="хип-хоп"></tag>
@@ -320,7 +317,6 @@
 	<tags>
 		<item tid="4">драма</item>
 		<item tid="28">короткометражный</item>
-		<item tid="95">Алексей Полуян</item>
 		<item tid="17">Михаил Марескин</item>
 		<item tid="22">avi</item>
 		<item tid="229">А</item>
@@ -329,7 +325,7 @@
 	</tags>
 
 	<published>24-Sep-2012 00:28:16</published>
-	<updated>23-Mar-2019 11:07:08</updated>
+	<updated>12-Apr-2019 08:52:10</updated>
 </video>
 
 <video type="video">
@@ -1814,7 +1810,7 @@ Gerd Vespermann (Bobby),
 		<item>О бедном гусаре замолвите слово</item>
 </title>
 	
-	
+	<producer>Эльдар Рязанов</producer>
 	<roles>Евгений Леонов — Афанасий Бубенцов
 Олег Басилашвили — граф Мерзляев
 Ирина Мазуркевич — Настя Бубенцова
@@ -1845,8 +1841,7 @@ Gerd Vespermann (Bobby),
 Готлиб Ронинсон — Марк Юльевич Мовзон
 Виктор Филиппов
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Действие картины происходит примерно через 20 лет после 
+	<description>Действие картины происходит примерно через 20 лет после 
 Отечественной войны 1812 года, в эпоху Николаевской реакции. 
 Небольшой городок взбудоражен вступлением гусарского полка. 
 В это время в город прибывает из Санкт-Петербурга чиновник III отделения 
@@ -1859,13 +1854,14 @@ Gerd Vespermann (Bobby),
 Мерзляев привлекает Бубенцова для своей операции, заставив его разыгрывать 
 роль опасного бунтовщика, которого под конвоем должен перевезти Плетнёв. 
 Бубенцов настолько входит в образ, что Плетнёв из сострадания отпускает его 
-на свободу, после чего на Бубенцова начинается уже настоящая охота…
-&amp;lt;/pre&amp;gt;</description>
-	
+на свободу, после чего на Бубенцова начинается уже настоящая охота…</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/81430.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/O/О бедном гусаре замолвите слово_AVC/О бедном гусаре замолвите слово - 1 серия.mkv">О бедном гусаре замолвите слово - 1 серия.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/O/О бедном гусаре замолвите слово_AVC/О бедном гусаре замолвите слово - 2 серия.mkv">О бедном гусаре замолвите слово - 2 серия.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -1880,10 +1876,12 @@ Gerd Vespermann (Bobby),
 		<item tid="82">Рязанов, Эльдар</item>
 		<item tid="73">СССР</item>
 		<item tid="27">mkv</item>
+		<item tid="242">О</item>
+		<item tid="305">1980</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>24-May-2013 14:28:39</updated>
+	<updated>12-Apr-2019 08:43:59</updated>
 </video>
 
 <video type="video">
@@ -1891,35 +1889,34 @@ Gerd Vespermann (Bobby),
 		<item>Осенний марафон</item>
 </title>
 	
-	
-	<roles>• Олег Басилашвили — Андрей Бузыкин
-• Марина Неёлова — Алла
-• Ольга Богданова — дочь Лена
-• Борислав Брондуков — защитник при ДТП
-• Галина Волчек — Варвара Никитична, «Дюймовочка», однокурсница Бузыкина
-• Владимир Грамматиков — Пташук, друг Аллы
-• Наталья Гундарева — Нина Евлампиевна Бузыкина
-• Георгий Данелия — офицер в кинофильме, который смотрят Бузыкины, их дочь и зять в сцене проводов на полярную станцию
-• Людмила Иванова
-• Николай Крючков — дядя Коля, сосед Аллы по коммунальной квартире, близкий друг ее умершего отца
-• Норберт Кухинке — Билл Хансен, профессор из Дании
+	<producer>Эльдар Рязанов</producer>
+	<roles>Олег Басилашвили — Андрей Бузыкин
+Марина Неёлова — Алла
+Ольга Богданова — дочь Лена
+Борислав Брондуков — защитник при ДТП
+Галина Волчек — Варвара Никитична, «Дюймовочка», однокурсница Бузыкина
+Владимир Грамматиков — Пташук, друг Аллы
+Наталья Гундарева — Нина Евлампиевна Бузыкина
+Георгий Данелия — офицер в кинофильме, который смотрят Бузыкины, их дочь и зять в сцене проводов на полярную станцию
+Людмила Иванова
+Николай Крючков — дядя Коля, сосед Аллы по коммунальной квартире, близкий друг ее умершего отца
+Норберт Кухинке — Билл Хансен, профессор из Дании
 • Евгений Леонов — Василий Игнатьич Харитонов, сосед Бузыкина
 • Дмитрий Матвеев — Виктор, зять Бузыкина
 • Вадим Медведев — Шершавников
 • Никита Подгорный — Георгий Николаевич Веригин
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Добрый и отзывчивый Бузыкин, чтобы никого не обидеть, старается всем помочь.
+	<description>Добрый и отзывчивый Бузыкин, чтобы никого не обидеть, старается всем помочь.
 Но ситуации, в которые он попадает, становятся более сложными, а главное - 
 до такой степени многочисленными, что Бузыкин уже чувствует, как в буквальном 
 смысле разрывается на части. От него уходит жена. Бузыкина оставляет любовница. 
-Он принимает решение стать другим человеком...
-&amp;lt;/pre&amp;gt;</description>
-	
+Он принимает решение стать другим человеком...</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/42799.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/O/Osenniy_marafon_DVDRip.avi">we_from_future.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1931,10 +1928,12 @@ Gerd Vespermann (Bobby),
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="242">О</item>
+		<item tid="299">1979</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>24-May-2013 14:31:18</updated>
+	<updated>12-Apr-2019 08:49:46</updated>
 </video>
 
 <video type="video">
@@ -1988,50 +1987,6 @@ Gerd Vespermann (Bobby),
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>24-May-2013 14:18:20</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Аэлита: Королева Марса</item>
-</title>
-	
-	<producer>Яков Протазанов</producer>
-	<roles>Юлия Солнцева, 
-Николай Баталов, 
-Игорь Ильинский, 
-Николай Церетели, 
-Вера Орлова, 
-Михаил Жаров, 
-Александра Перегонец, 
-Константин Эггерт, 
-Юрий Завадский, 
-Иосиф Толчанов и другие.
-		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Выпущено: Межрабпом-Русь (Киностудия им. М. Горького)
-	&amp;lt;br&amp;gt;
-Инженер Лось создает космический корабль для полета на Марс. 
-В полете его сопровождает красноармеец Гусев, мечтающий немедленно 
-организовать на Марсе революцию, и детектив Кравцов, подозревающий 
-Лося в убийстве жены. Революции на Марсе препятствуют козни первого 
-министра Эвора и противодействие красавицы Аэлиты - властительницы планеты...
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="4">драма</item>
-		<item tid="43">фантастика</item>
-		<item tid="73">СССР</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>24-May-2013 14:20:41</updated>
 </video>
 
 <video type="video">
@@ -2698,7 +2653,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 
 <video type="video">
 	<title>
-		<item>Поколение П</item>
+		<item>Generation П</item>
 </title>
 	
 	<producer>Виктор Гинзбург</producer>
@@ -2721,8 +2676,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 Игорь Григорьев
 Юлия Бордовских
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Когда-то, в свои пионерские годы, это поколение получило в подарок 
+	<description>Когда-то, в свои пионерские годы, это поколение получило в подарок 
 от советской власти «Пепси-Колу» новороссийского разлива — не просто 
 питье, это была надежда на то, что следом за «Пепси», новая, волшебная 
 жизнь, придет с той стороны моря. И она пришла, сметая все на своем пути, 
@@ -2730,11 +2684,14 @@ Ergo -- в следующий раз будьте осторожны в проб
 Герой фильма — Вавилен Татарский — поэт, выпускник лит. института и типичный 
 представитель «поколения Пепси». Оказавшись в водовороте исторических событий 
 постсоветского пространства, Вавилен становится новомодным рекламным крэйтором 
-и пытается познать тайну своего призвания
-	&amp;lt;/pre&amp;gt;</description>
-	
+и пытается познать тайну своего призвания</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/104893.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/G/Generation P.2011.DVDRip.720x304.SNS.avi">Generation P.2011.DVDRip.720x304.SNS.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -2747,10 +2704,11 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="213">G</item>
 		<item tid="268">P</item>
 		<item tid="243">П</item>
+		<item tid="277">2011</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Mar-2016 14:43:53</updated>
+	<updated>12-Apr-2019 09:16:44</updated>
 </video>
 
 <video type="video">
@@ -2806,41 +2764,15 @@ Ergo -- в следующий раз будьте осторожны в проб
 Владимир Этуш
 Ролан Быков
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-На дурака не нужен нож: ему немного подпоешь — и делай с ним, что хошь!
+	<description>На дурака не нужен нож: ему немного подпоешь — и делай с ним, что хошь!
  Деревянный человечек, которого Папа Карло выстругал из полена, получился 
 веселым, дерзким, шумным и доверчивым. Лиса Алиса и Кот Базилио завели его в 
-Страну Дураков, но мудрая Черепаха Тортилла помог
-&amp;lt;/pre&amp;gt;
-
-&amp;lt;style&amp;gt;
-.player-api object, .player-api embed {
-/*  height: 100% !important;*/
-  height: 480px;
-  position: relative;
-  width: 100% !important;
-}
-&amp;lt;/style&amp;gt;
-&amp;lt;div style=&amp;quot;width:640px;height:480px;&amp;quot;&amp;gt;
-&amp;lt;div class=&amp;quot;player-width player-height off-screen-target watch-content player-api&amp;quot; id=&amp;quot;player-api&amp;quot; style=&amp;quot;overflow: hidden;&amp;quot;&amp;gt;      
-&amp;lt;embed bgcolor=&amp;quot;#000000&amp;quot; allowfullscreen=&amp;quot;true&amp;quot; allowscriptaccess=&amp;quot;always&amp;quot; flashvars=&amp;quot;oid=dN-ZcNIRJIBdHNzC_1iJkQ&amp;amp;amp;dclk=true&amp;amp;amp;ssl=1&amp;amp;amp;ad_device=1&amp;amp;amp;fexp=937405%2C932243%2C921092%2C901450%2C911928%2C936910%2C936913&amp;amp;amp;subtitles_xlb=https%3A%2F%2Fs.ytimg.com%2Fyts%2Fxlbbin%2Fsubtitles-strings-ru_RU-vflR7CcMA.xlb&amp;amp;amp;user_gender=m&amp;amp;amp;dynamic_allocation_ad_tag=https%3A%2F%2Fad.doubleclick.net%2FN4061%2Fpfadx%2Fcom.ytpwatch.movies%2Fmain_14408092%3Bsz%3DWIDTHxHEIGHT%3Bkvid%3D4ELPlonZAQc%3Bkpu%3Dkinorussia%3Bkpeid%3DQVIbe1YVHs03TBtOyTJ4Kw%3Bkpid%3D14408092%3Bmpvid%3DAATxUAoVoBLTsoPg%3Bssl%3D1%3Bafv%3D1%3Bafvbase%3DeJxdUltzojAU_jXljZ0kXIQHHhCqrdqqFeniSyZABMq1JBHw12-0uzPtZjJzzvedk5xrXjm9UERfOTnn3YPmPqCFvMMw_JpawUVMfyVtLZlLkdJWSv1xs6va5uTuE6UmIyYpTkVPeNE2DkIAAEUyfOqoc3-hJIJxnNEmpb0DlSQnTUMr56VovK7WLTDOQEAZhw9oTs4XXDSM95TIgPOQ9rxISIW1H0D_gczvCEH4wwjNn9D-Dk2o_RcT9-IvIxjtcVk0bS8YK8h3tkjxPnyOKYzCJwa0YM63U7DS14N0mjiuO1k1dt1gPLpt2M43AWt32ZctkRao68ACNrozKb0UCcXwDjqGU3omouJ3SCsJOSmqjmRU4bibLg4dk0qkVLk3Fidd7SAD3I6St4w7CVFvUu1ErJrAQoYlO2ADXdeApuRcpu4YyEA2sBQq9a_JyN8dCKRD1d5IW5vpwHhAnq0hpGs3BcF7vp4NoG6AmwKhjSwlafueVoS3cq6aDREy7Jkxg1BpRC23gslp_yvxruKOO-4u1hZIPe3YIXRL6D-vUJPGpf80C87zcqQv1083hdtlHnRhd4a6qVmH-ctIomjPPEHJbJl_7NzrYjwmUTkcr3tvyxuPh3qsvpf7dalmH7Mst_Gjb-1qtrBWybLW-Qci-13doKwbTjWd1vHZ0zu7yFifV4-iP4t1Ct7t7NW_PB8fxcc1-PSB2QYyqigv1kos6mj9mq62rTaZcx7xzeEVGsG7Wvr-tCqOx3Wya_hemG-HwykztLfw_fo5rNQLHfrwFWdnWyT-00u5eY7Hjf-7G5on8RaVXqTaXrVdLiy3TOZVap8Ne_CisFhuzehUMsayizYZnUvHxVDrRTCxpZC7OqsOR6MPRiLwZ5yQxR-PVUFc%3Bdc_backfill%3D1%3Bdc_yt%3D1%3Bk21%3D1%3Bk5%3D3_34_36_211_316_319_613%3Bkage%3D38%3Bkar%3D5%3Bkauth%3D1%3Bkclt%3D1%3Bkga%3D1003%3Bkgender%3Dm%3Bkgg%3D1%3Bklg%3Dru%3Bkmsrd%3D1%3Bko%3Dp%3Bkpco%3D466597%3Bkr%3DF%3Bkvz%3D205%3Blongads%3D1%3Bnlfb%3D1%3Byt_vrallowed%3D1%3Bytcat%3D30%3Bytdevice%3D1%3Bytexp%3D937405%2C932243%2C921092%2C901450%2C911928%3B!c%3D14408092%3Bk2%3D3%3Bk2%3D34%3Bk2%3D36%3Bk2%3D211%3Bk2%3D316%3Bk2%3D319%3Bk2%3D613%3Bkvlg%3Dru%3B&amp;amp;amp;feature=g-high&amp;amp;amp;ad_video_pub_id=ca-pub-6219811747049371&amp;amp;amp;invideo=true&amp;amp;amp;rvs=url%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253DexfeOGszH5c%26id%3DexfeOGszH5c%26view_count%3D154%25C2%25A0442%26title%3D%25D0%259F%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BB%25D1%258E%25D1%2587%25D0%25B5%25D0%25BD%25D0%25B8%25D1%258F%2B%25D0%2591%25D1%2583%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D0%25BD%25D0%25BE%2B%2528%25D0%25A1%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2B02%2529%2B%2528%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2529%26length_seconds%3D4078%26author%3D%25D0%259A%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D0%259A%25D0%25BB%25D1%2583%25D0%25B1%2Curl%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253Df5RTTXufhX0%26id%3Df5RTTXufhX0%26view_count%3D257%25C2%25A0712%26title%3D%25D0%2593%25D0%25BE%25D1%2581%25D1%2582%25D1%258C%25D1%258F%2B%25D0%25B8%25D0%25B7%2B%25D0%25B1%25D1%2583%25D0%25B4%25D1%2583%25D1%2589%25D0%25B5%25D0%25B3%25D0%25BE%2B%2528%25D0%25A1%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2B01%2529%2B%2528%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2529%26length_seconds%3D3809%26author%3D%25D0%259A%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D0%259A%25D0%25BB%25D1%2583%25D0%25B1%2Curl%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253DdfhJswIGE4Y%26id%3DdfhJswIGE4Y%26view_count%3D239%25C2%25A0452%26title%3D%25D0%259F%25D1%2580%25D0%25BE%2B%25D0%259A%25D1%2580%25D0%25B0%25D1%2581%25D0%25BD%25D1%2583%25D1%258E%2B%25D1%2588%25D0%25B0%25D0%25BF%25D0%25BE%25D1%2587%25D0%25BA%25D1%2583%2B%2528%25D0%25A1%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2B01%2529%2B%2528%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2529%26length_seconds%3D3814%26author%3D%25D0%259A%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D0%259A%25D0%25BB%25D1%2583%25D0%25B1%2Curl%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253DRhlPZuPmOS8%26id%3DRhlPZuPmOS8%26view_count%3D245%25C2%25A0594%26title%3D%25D0%2594%25D0%25B2%25D0%25B5%25D0%25BD%25D0%25B0%25D0%25B4%25D1%2586%25D0%25B0%25D1%2582%25D1%258C%2B%25D1%2581%25D1%2582%25D1%2583%25D0%25BB%25D1%258C%25D0%25B5%25D0%25B2%2B%2528%25D0%25A1%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2B01%2529%2B%2528%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2529%26length_seconds%3D3922%26author%3D%25D0%259A%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D0%259A%25D0%25BB%25D1%2583%25D0%25B1%2Cview_count%3D200%25C2%25A0251%26author%3D%25D0%2592%25D0%25BE%2B%25D0%25B2%25D0%25BB%25D0%25B0%25D1%2581%25D1%2582%25D0%25B8%2B%25D0%2592%25D0%25B5%25D1%2581%25D0%25B5%25D0%25BB%25D1%258C%25D1%258F%26length_seconds%3D4089%26id%3DoWa9AKRFCuw%26title%3D%25D0%259F%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BB%25D1%258E%25D1%2587%25D0%25B5%25D0%25BD%25D0%25B8%25D1%258F%2B%25D0%2591%25D1%2583%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D0%25BD%25D0%25BE%2B2%2B%25D1%258F%2B%25D1%2581%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2Cview_count%3D1%25C2%25A0439%25C2%25A0794%26author%3Dvitalionce%26length_seconds%3D3862%26id%3DfBrVN3wiuV8%26title%3D%25D0%259F%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BB%25D1%258E%25D1%2587%25D0%25B5%25D0%25BD%25D0%25B8%25D1%258F%2B%25D0%2591%25D1%2583%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D0%25BD%25D0%25BE%2Cview_count%3D2%25C2%25A0679%25C2%25A0671%26author%3Dbokonline%26length_seconds%3D9110%26id%3DRe8m8QdSjhc%26title%3D%25D0%259D%25D0%25B5%25D0%25B7%25D0%25BD%25D0%25B0%25D0%25B9%25D0%25BA%25D0%25B0%2B%25D0%25BD%25D0%25B0%2B%25D0%259B%25D1%2583%25D0%25BD%25D0%25B5%2B%25281997-1999%2529%2Cplaylist_author%3D2myatv%26list%3DPLD7FB3A8A7284BAE3%26playlist_length%3D73%26video_id%3DBntf7P7M82A%26playlist_title%3D%25D0%2594%25D0%25B5%25D1%2582%25D1%2581%25D0%25BA%25D0%25B8%25D0%25B5%2B%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%25D1%258B%26thumbnail_ids%3DBntf7P7M82A%2Cview_count%3D52%25C2%25A0700%26author%3D%25D0%259D%25D0%25B0%25D1%2580%25D0%25B8%25D0%25BD%25D0%25B5%2B%25D0%2595%25D0%25B3%25D0%25B8%25D0%25B0%25D0%25B7%25D0%25B0%25D1%2580%25D1%258F%25D0%25BD%26length_seconds%3D8004%26id%3DooIAhNu5Gl0%26title%3D%25D0%259F%25D1%2580%25D0%25B8%25D0%25BA%25D0%25BB%25D1%258E%25D1%2587%25D0%25B5%25D0%25BD%25D0%25B8%25D1%258F%2B%25D0%2591%25D1%2583%25D1%2580%25D0%25B0%25D1%2582%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2Cview_count%3D998%25C2%25A0947%26author%3DOnlineTales%26length_seconds%3D4731%26id%3D8vhU238UyuA%26title%3D%25D0%25A1%25D0%25BA%25D0%25B0%25D0%25B7%25D0%25BA%25D0%25B0%2B%25D0%259C%25D0%25BE%25D1%2580%25D0%25BE%25D0%25B7%25D0%25BA%25D0%25BE%252C%2B%25D1%2581%25D0%25BC%25D0%25BE%25D1%2582%25D1%2580%25D0%25B5%25D1%2582%25D1%258C%2B%25D1%2581%25D0%25BA%25D0%25B0%25D0%25B7%25D0%25BA%25D1%2583%2B%25D0%259C%25D0%25BE%25D1%2580%25D0%25BE%25D0%25B7%25D0%25BA%25D0%25BE%2Cview_count%3D450%25C2%25A0342%26author%3DOnlineTales%26length_seconds%3D4712%26id%3D5ecNMP6rkUc%26title%3D%25D0%2597%25D0%25BE%25D0%25BB%25D1%2583%25D1%2588%25D0%25BA%25D0%25B0%252C%2B%25D1%2581%25D0%25BC%25D0%25BE%25D1%2582%25D1%2580%25D0%25B5%25D1%2582%25D1%258C%2B%25D0%25BE%25D0%25BD%25D0%25BB%25D0%25B0%25D0%25B9%25D0%25BD%2B%25D0%2597%25D0%25BE%25D0%25BB%25D1%2583%25D1%2588%25D0%25BA%25D0%25B0%2Curl%3Dhttp%253A%252F%252Fwww.youtube.com%252Fwatch%253Fv%253D6odB6-YFS_M%26id%3D6odB6-YFS_M%26view_count%3D239%25C2%25A0682%26title%3D%25D0%25A7%25D0%25B0%25D1%2580%25D0%25BE%25D0%25B4%25D0%25B5%25D0%25B8%2B%2528%25D0%25A1%25D0%25B5%25D1%2580%25D0%25B8%25D1%258F%2B01%2529%2B%2528%25D1%2584%25D0%25B8%25D0%25BB%25D1%258C%25D0%25BC%2529%26length_seconds%3D4223%26author%3D%25D0%259A%25D0%25B8%25D0%25BD%25D0%25BE%2B%25D0%259A%25D0%25BB%25D1%2583%25D0%25B1&amp;amp;amp;ad_slots=0%2C900%2C1800%2C2700%2C3600&amp;amp;amp;gut_tag=%2F4061%2Fytpwatch%2Fmain_14408092&amp;amp;amp;show_pyv_in_related=true&amp;amp;amp;afv_ad_tag_restricted_to_instream=http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fhl%3Dru%26url%3Dhttp%253A%252F%252Fwww.youtube.com%252Fvideo%252F4ELPlonZAQc%26max_ad_duration%3D20000%26ad_type%3Dvideo%26channel%3Dafv_instream%252BVertical_3%252BVertical_34%252BVertical_36%252BVertical_211%252BVertical_316%252BVertical_319%252BVertical_613%252Bafv_instream_ru%252Bafv_user_kinorussia%252Bafv_user_id_QVIbe1YVHs03TBtOyTJ4Kw%252Byt_mpvid_AATxUAoVoBLTsoPg%252Byt_cid_14408092%252Bytdevice_1%252Bytps_default%252Bytel_detailpage%26client%3Dca-pub-6219811747049371%26ytdevice%3D1%26video_cpm%3D2500000%26ht_id%3D5252908%26host%3Dca-host-pub-6082583169044303%26cust_age%3D1003%26loeid%3D937405%252C932243%252C921092%252C901450%252C911928%26cust_gender%3D1%26description_url%3Dhttp%253A%252F%252Fwww.youtube.com%252Fvideo%252F4ELPlonZAQc&amp;amp;amp;trueview=true&amp;amp;amp;loeid=937405%2C932243%2C921092%2C901450%2C911928&amp;amp;amp;adsense_video_doc_id=yt_4ELPlonZAQc&amp;amp;amp;user_age=38&amp;amp;amp;hl=ru_RU&amp;amp;amp;user_display_name=roman%20laptev&amp;amp;amp;keywords=%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%2C%D0%91%D1%83%D1%80%D0%B0%D1%82%D0%B8%D0%BD%D0%BE%2C(%D0%A1%D0%B5%D1%80%D0%B8%D1%8F%2C01)%2C%D0%9A%D0%B8%D0%BD%D0%BE%2C%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%BE%D0%B5%20%D0%9A%D0%B8%D0%BD%D0%BE%2C%D1%81%D1%81%D1%81%D1%80%2Cussr%2C%D0%9C%D0%BE%D1%81%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%2Cvjcabkmv%2CLenfilm%2C%D0%9B%D0%B5%D0%BD%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%2Cktyabkmv%2C%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%2Ctrailer%2C%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80%2CNovoekino%2C%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%BE%D0%B5%2C%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%B5%2Ccjdtncrjt%2C%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%B5%2C%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D0%BA%D0%B0%2C%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%2C%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B5%2C%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D1%8B%2Crbyj%2Cfilm%2Ckino%2Cmovie%2C%D0%BA%D0%B8%D0%BD%D0%BE%2C%D0%94%D0%BE%D0%B2%D0%B6%D0%B5%D0%BD%D0%BA%D0%BE%2C%D0%9E%D0%B4%D0%B5%D1%81%D1%81%D0%BA%D0%B0%D1%8F%2C%D0%BA%D0%B8%D0%BD%D0%BE%D1%81%D1%82%D1%83%D0%B4%D0%B8%D1%8F&amp;amp;amp;length_seconds=3910&amp;amp;amp;adaptive_fmts=url%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526dur%253D3909.781%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526burst%253D40%2526itag%253D135%2526factor%253D1.25%2526clen%253D433263629%2526signature%253DE6233E76B57C8D919E118A8CD96B707C3F79D7EC.3A72428C9479DC58D817AC670AC452CE7B753FC9%2526gir%253Dyes%2526key%253Dyt5%2526expire%253D1391247945%2526algorithm%253Dthrottle-factor%2526lmt%253D1370407062460391%2526upn%253DKg_9rEHdvq4%2526source%253Dyoutube%2526id%253De042cf9689d90107%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526sparams%253Dalgorithm%25252Cburst%25252Cclen%25252Cdur%25252Cfactor%25252Cgir%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Clmt%25252Csource%25252Cupn%25252Cexpire%2526mv%253Dm%2526ms%253Dau%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.4d401e%2522%26itag%3D135%26bitrate%3D1150059%26size%3D640x480%26index%3D707-10110%26init%3D0-706%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526dur%253D3909.781%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526burst%253D40%2526itag%253D134%2526factor%253D1.25%2526clen%253D191444512%2526signature%253D72AF3C745ACE74E9301F608DCD120FCF96C42557.6435027EF1740F4347C91CFD21848AC8F560F13A%2526gir%253Dyes%2526key%253Dyt5%2526expire%253D1391247945%2526algorithm%253Dthrottle-factor%2526lmt%253D1370407062456778%2526upn%253DKg_9rEHdvq4%2526source%253Dyoutube%2526id%253De042cf9689d90107%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526sparams%253Dalgorithm%25252Cburst%25252Cclen%25252Cdur%25252Cfactor%25252Cgir%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Clmt%25252Csource%25252Cupn%25252Cexpire%2526mv%253Dm%2526ms%253Dau%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.4d4015%2522%26itag%3D134%26bitrate%3D501653%26size%3D480x360%26index%3D708-10111%26init%3D0-707%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526dur%253D3909.781%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526burst%253D40%2526itag%253D133%2526factor%253D1.25%2526clen%253D132157348%2526signature%253DE735602DEE1AF7DB75733548FD02C0858698A14F.1F1E47F42A7E632DEDF0033ACC415C6BEC63277A%2526gir%253Dyes%2526key%253Dyt5%2526expire%253D1391247945%2526algorithm%253Dthrottle-factor%2526lmt%253D1370407063343448%2526upn%253DKg_9rEHdvq4%2526source%253Dyoutube%2526id%253De042cf9689d90107%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526sparams%253Dalgorithm%25252Cburst%25252Cclen%25252Cdur%25252Cfactor%25252Cgir%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Clmt%25252Csource%25252Cupn%25252Cexpire%2526mv%253Dm%2526ms%253Dau%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.4d400d%2522%26itag%3D133%26bitrate%3D285688%26size%3D320x240%26index%3D671-10074%26init%3D0-670%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526dur%253D3909.781%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526burst%253D40%2526itag%253D160%2526factor%253D1.25%2526clen%253D47554255%2526signature%253D49F82617D8AF25688A8CD3FA2C64C3757EC9F0CA.0D1CEC10790371BF6794CAD7566992F2B069EF60%2526gir%253Dyes%2526key%253Dyt5%2526expire%253D1391247945%2526algorithm%253Dthrottle-factor%2526lmt%253D1370407062455020%2526upn%253DKg_9rEHdvq4%2526source%253Dyoutube%2526id%253De042cf9689d90107%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526sparams%253Dalgorithm%25252Cburst%25252Cclen%25252Cdur%25252Cfactor%25252Cgir%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Clmt%25252Csource%25252Cupn%25252Cexpire%2526mv%253Dm%2526ms%253Dau%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.42c00b%2522%26itag%3D160%26bitrate%3D113499%26size%3D192x144%26index%3D672-10075%26init%3D0-671%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526dur%253D3909.868%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526burst%253D40%2526itag%253D140%2526factor%253D1.25%2526clen%253D62097165%2526signature%253D82EF09B89E0A0C02A1C8F99A5E9804BA62CD0015.648E3AECD67C57596A4BED27C81BAB846BC57CD2%2526gir%253Dyes%2526key%253Dyt5%2526expire%253D1391247945%2526algorithm%253Dthrottle-factor%2526lmt%253D1370407062453406%2526upn%253DKg_9rEHdvq4%2526source%253Dyoutube%2526id%253De042cf9689d90107%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526sparams%253Dalgorithm%25252Cburst%25252Cclen%25252Cdur%25252Cfactor%25252Cgir%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Clmt%25252Csource%25252Cupn%25252Cexpire%2526mv%253Dm%2526ms%253Dau%26type%3Daudio%252Fmp4%253B%2Bcodecs%253D%2522mp4a.40.2%2522%26itag%3D140%26bitrate%3D131549%26index%3D592-5315%26init%3D0-591&amp;amp;amp;mpvid=AATxUAoVoBLTsoPg&amp;amp;amp;timestamp=1391225975&amp;amp;amp;afv_ad_tag=http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fhl%3Dru%26url%3Dhttp%253A%252F%252Fwww.youtube.com%252Fvideo%252F4ELPlonZAQc%26max_ad_duration%3D20000%26ad_type%3Dvideo%26channel%3Dafv_instream%252BVertical_3%252BVertical_34%252BVertical_36%252BVertical_211%252BVertical_316%252BVertical_319%252BVertical_613%252Bafv_instream_ru%252Bafv_user_kinorussia%252Bafv_user_id_QVIbe1YVHs03TBtOyTJ4Kw%252Byt_mpvid_AATxUAoVoBLTsoPg%252Byt_cid_14408092%252Bytdevice_1%252Bytps_default%252Bytel_detailpage%26client%3Dca-pub-6219811747049371%26ytdevice%3D1%26video_cpm%3D2500000%26ht_id%3D5252908%26host%3Dca-host-pub-6082583169044303%26cust_age%3D1003%26loeid%3D937405%252C932243%252C921092%252C901450%252C911928%26cust_gender%3D1%26description_url%3Dhttp%253A%252F%252Fwww.youtube.com%252Fvideo%252F4ELPlonZAQc%26yt_pt%3DAPb3F2-ZPsSVAk1DIJ2ndbkDH7TfBkxeMzqAd1OGhTpVpf14638SBMxaYYQsCuea7GhjPAzFxUcYkwUzQCOtnCtV4b-WkQKk-gj7gh9_ED8PmsF8JcGm4tj2aQPmn2gpwZmeyKbfC4p9igsrhlEurfuKd0W9gNDvIUEujzTqD06oTaYYukv8JuFmYKNdJOo3y6BtYtLSN15TW-kDDyJiUUKcPntQu6RSSZg53RVWzqwJ-vewrVN_gf9ucDHMkLIbxLDXpwnHuRYkCY-9ClOGF8AkcBld9f59wCYViGO6YZksssgv3y5pAexFwm4iTysGuins7lSU5rTxau_qbcaF&amp;amp;amp;cust_age=1003&amp;amp;amp;subscribed=1&amp;amp;amp;watermark=%2Chttps%3A%2F%2Fs.ytimg.com%2Fyts%2Fimg%2Fwatermark%2Fyoutube_watermark-vflHX6b6E.png%2Chttps%3A%2F%2Fs.ytimg.com%2Fyts%2Fimg%2Fwatermark%2Fyoutube_hd_watermark-vflAzLcD6.png&amp;amp;amp;tmi=1&amp;amp;amp;cc3_module=1&amp;amp;amp;logwatch=1&amp;amp;amp;tag_for_child_directed=false&amp;amp;amp;afv_video_min_cpm=2500000&amp;amp;amp;ad_host=ca-host-pub-6082583169044303&amp;amp;amp;c=WEB&amp;amp;amp;mpu=true&amp;amp;amp;pageid=&amp;amp;amp;enablecsi=1&amp;amp;amp;allowed_ads=0%2C1%2C2%2C4%2C8%2C9%2C10&amp;amp;amp;ad_flags=0&amp;amp;amp;cc_module=https%3A%2F%2Fs.ytimg.com%2Fyts%2Fswfbin%2Fplayer-vflGtoNEK%2Fsubtitle_module.swf&amp;amp;amp;ad_channel_code_instream=afv_instream%2CVertical_3%2CVertical_34%2CVertical_36%2CVertical_211%2CVertical_316%2CVertical_319%2CVertical_613%2Cafv_instream_ru%2Cafv_user_kinorussia%2Cafv_user_id_QVIbe1YVHs03TBtOyTJ4Kw%2Cyt_mpvid_AATxUAoVoBLTsoPg%2Cyt_cid_14408092%2Cytdevice_1%2Cytps_default%2Cytel_detailpage&amp;amp;amp;iv3_module=1&amp;amp;amp;ad_preroll=1&amp;amp;amp;cafe_experiment_id=&amp;amp;amp;storyboard_spec=https%3A%2F%2Fi1.ytimg.com%2Fsb%2F4ELPlonZAQc%2Fstoryboard3_L%24L%2F%24N.jpg%7C48%2327%23100%2310%2310%230%23default%236iKMbAsdJ6JQAMzuEAbaj_muesY%7C60%2345%23392%2310%2310%2310000%23M%24M%23YHUoFgrtprAT4cE1GmwXCXpMwlo%7C120%2390%23392%235%235%2310000%23M%24M%23lfYYND86GBxAWJkV0qJvQn7hKb8&amp;amp;amp;pyv_ad_channels=afv_user_kinorussia%2Bafv_user_id_QVIbe1YVHs03TBtOyTJ4Kw%2Byt_mpvid_AATxUAoVoBLTsoPg%2Byt_cid_14408092%2Bytdevice_1&amp;amp;amp;user_display_image=https%3A%2F%2Fyt4.ggpht.com%2F-2RhbXe_HuBU%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2FX7TZH_OMg3c%2Fs28-c-k-no%2Fphoto.jpg&amp;amp;amp;iv_load_policy=1&amp;amp;amp;watch_ajax_token=pPM1vp6iMltUl0MEiJGQxOGDTdh8MTM5MTMxMjM3NUAxMzkxMjI1OTc1&amp;amp;amp;vq=auto&amp;amp;amp;ptchn=QVIbe1YVHs03TBtOyTJ4Kw&amp;amp;amp;pyv_in_related_cafe_experiment_id=&amp;amp;amp;cc_font=Arial%20Unicode%20MS%2C%20arial%2C%20verdana%2C%20_sans&amp;amp;amp;watch_xlb=https%3A%2F%2Fs.ytimg.com%2Fyts%2Fxlbbin%2Fwatch-strings-ru_RU-vfl5KgNZ7.xlb&amp;amp;amp;ldpj=-30&amp;amp;amp;cbr=Firefox&amp;amp;amp;cid=14408092&amp;amp;amp;ucid=UCQVIbe1YVHs03TBtOyTJ4Kw&amp;amp;amp;content_owner_name=QGPro3_managed&amp;amp;amp;ad3_module=1&amp;amp;amp;allow_embed=1&amp;amp;amp;host_language=ru&amp;amp;amp;pltype=content&amp;amp;amp;fmt_list=43%2F640x360%2F99%2F0%2F0%2C18%2F640x360%2F9%2F0%2F115%2C5%2F320x240%2F7%2F0%2F0%2C36%2F320x240%2F99%2F1%2F0%2C17%2F176x144%2F99%2F1%2F0&amp;amp;amp;title=%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%91%D1%83%D1%80%D0%B0%D1%82%D0%B8%D0%BD%D0%BE%20(%D0%A1%D0%B5%D1%80%D0%B8%D1%8F%2001)%20(%D1%84%D0%B8%D0%BB%D1%8C%D0%BC)&amp;amp;amp;as_launched_in_country=1&amp;amp;amp;video_id=4ELPlonZAQc&amp;amp;amp;instream=true&amp;amp;amp;show_content_thumbnail=true&amp;amp;amp;cos=X11&amp;amp;amp;account_playback_token=dXFELCl4vMEul6kyzLbrurvG_UJ8MTM5MTMxMjM3NUAxMzkxMjI1OTc1&amp;amp;amp;ptk=QGPro3_managed&amp;amp;amp;max_dynamic_allocation_ad_tag_length=2040&amp;amp;amp;idpj=-8&amp;amp;amp;no_get_video_log=1&amp;amp;amp;cbrver=25.0&amp;amp;amp;enablejsapi=1&amp;amp;amp;ad_host_tier=5252908&amp;amp;amp;cust_gender=1&amp;amp;amp;dashmpd=https%3A%2F%2Fwww.youtube.com%2Fapi%2Fmanifest%2Fdash%2Fipbits%2F0%2Ffexp%2F937405%252C932243%252C921092%252C901450%252C911928%252C936910%252C936913%2Fid%2Fe042cf9689d90107%2Fsver%2F3%2Fas%2Ffmp4_audio_clear%252Cwebm_audio_clear%252Cfmp4_sd_hd_clear%252Cwebm_sd_hd_clear%2Fexpire%2F1391247945%2Fitag%2F0%2Fip%2F212.164.166.6%2Fcmbypass%2Fyes%2Fplayback_host%2Fr5---sn-hxb54vo-v8cl.googlevideo.com%2Fupn%2FyJLZDTfVkf4%2Fsource%2Fyoutube%2Fsparams%2Fas%252Ccmbypass%252Cid%252Cip%252Cipbits%252Citag%252Cplayback_host%252Csource%252Cexpire%2Fsignature%2FC69E44CB7103CB1F9E8A9029A32D8FB8013EA40B.56132D81EA846DEA0658684C961809F644E86348%2Fkey%2Fyt5&amp;amp;amp;loaderUrl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D4ELPlonZAQc&amp;amp;amp;ad_logging_flag=1&amp;amp;amp;showpopout=1&amp;amp;amp;iv_invideo_url=https%3A%2F%2Fwww.youtube.com%2Fannotations_invideo%3Fcap_hist%3D1%26plid%3DAATxUAoUVECL13Nd%26video_id%3D4ELPlonZAQc&amp;amp;amp;iv_module=https%3A%2F%2Fs.ytimg.com%2Fyts%2Fswfbin%2Fplayer-vflGtoNEK%2Fiv_module.swf&amp;amp;amp;sdetail=p%3A%2F&amp;amp;amp;eventid=d2zsUr6ZJOuHyQPz4YHoDQ&amp;amp;amp;midroll_freqcap=270&amp;amp;amp;csi_page_type=watch%2Cwatch7ad&amp;amp;amp;cr=RU&amp;amp;amp;cc_asr=1&amp;amp;amp;sendtmp=1&amp;amp;amp;dash=1&amp;amp;amp;authuser=0&amp;amp;amp;t=vjVQa1PpcFPBLfOBFhX6Wm8oH1S5NXCdiEn_Gvq-uRM%3D&amp;amp;amp;url_encoded_fmt_stream_map=url%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526mv%253Dm%2526id%253De042cf9689d90107%2526sver%253D3%2526ratebypass%253Dyes%2526expire%253D1391247945%2526itag%253D43%2526ip%253D212.164.166.6%2526ms%253Dau%2526mt%253D1391225858%2526upn%253DyQDaET7EvQk%2526source%253Dyoutube%2526sparams%253Did%25252Cip%25252Cipbits%25252Citag%25252Cratebypass%25252Csource%25252Cupn%25252Cexpire%2526key%253Dyt5%26fallback_host%3Dtc.v24.cache2.googlevideo.com%26type%3Dvideo%252Fwebm%253B%2Bcodecs%253D%2522vp8.0%252C%2Bvorbis%2522%26sig%3D3CD018891CC5A3B8059CDB148C1C38CDDB62C790.D4E2591C84683DCF181CE22A6308ADBAC0BDD070%26itag%3D43%26quality%3Dmedium%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526mv%253Dm%2526id%253De042cf9689d90107%2526sver%253D3%2526ratebypass%253Dyes%2526expire%253D1391247945%2526itag%253D18%2526ip%253D212.164.166.6%2526ms%253Dau%2526mt%253D1391225858%2526upn%253DyQDaET7EvQk%2526source%253Dyoutube%2526sparams%253Did%25252Cip%25252Cipbits%25252Citag%25252Cratebypass%25252Csource%25252Cupn%25252Cexpire%2526key%253Dyt5%26fallback_host%3Dtc.v22.cache6.googlevideo.com%26type%3Dvideo%252Fmp4%253B%2Bcodecs%253D%2522avc1.42001E%252C%2Bmp4a.40.2%2522%26sig%3D0A88E4DF6A229904D18BEF3877666DAB8D5A2325.37ECDEE7F4361F46E21DE8339F8044B7BD1CA5F6%26itag%3D18%26quality%3Dmedium%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526mv%253Dm%2526id%253De042cf9689d90107%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526expire%253D1391247945%2526ms%253Dau%2526algorithm%253Dthrottle-factor%2526burst%253D40%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526upn%253DyQDaET7EvQk%2526source%253Dyoutube%2526sparams%253Dalgorithm%25252Cburst%25252Cfactor%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Cupn%25252Cexpire%2526itag%253D5%2526key%253Dyt5%2526factor%253D1.25%26fallback_host%3Dtc.v23.cache2.googlevideo.com%26type%3Dvideo%252Fx-flv%26sig%3DEAFA3014786D69352D8B2B58AC75798FA3FE9B4D.315BFC7EBD4589A8A087E2F36F40E2C29142AAA3%26itag%3D5%26quality%3Dsmall%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526mv%253Dm%2526id%253De042cf9689d90107%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526expire%253D1391247945%2526ms%253Dau%2526algorithm%253Dthrottle-factor%2526burst%253D40%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526upn%253DyQDaET7EvQk%2526source%253Dyoutube%2526sparams%253Dalgorithm%25252Cburst%25252Cfactor%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Cupn%25252Cexpire%2526itag%253D36%2526key%253Dyt5%2526factor%253D1.25%26fallback_host%3Dtc.v4.cache6.googlevideo.com%26type%3Dvideo%252F3gpp%253B%2Bcodecs%253D%2522mp4v.20.3%252C%2Bmp4a.40.2%2522%26sig%3DA5F81342A34AD4FACAFCAC9823DDECDA55F5F3A4.94D0E6BB5C3D799311593A62279EAC22969D840A%26itag%3D36%26quality%3Dsmall%2Curl%3Dhttps%253A%252F%252Fr5---sn-hxb54vo-v8cl.googlevideo.com%252Fvideoplayback%253Fipbits%253D0%2526mv%253Dm%2526id%253De042cf9689d90107%2526sver%253D3%2526fexp%253D937405%25252C932243%25252C921092%25252C901450%25252C911928%25252C936910%25252C936913%2526expire%253D1391247945%2526ms%253Dau%2526algorithm%253Dthrottle-factor%2526burst%253D40%2526ip%253D212.164.166.6%2526mt%253D1391225858%2526upn%253DyQDaET7EvQk%2526source%253Dyoutube%2526sparams%253Dalgorithm%25252Cburst%25252Cfactor%25252Cid%25252Cip%25252Cipbits%25252Citag%25252Csource%25252Cupn%25252Cexpire%2526itag%253D17%2526key%253Dyt5%2526factor%253D1.25%26fallback_host%3Dtc.v7.cache3.googlevideo.com%26type%3Dvideo%252F3gpp%253B%2Bcodecs%253D%2522mp4v.20.3%252C%2Bmp4a.40.2%2522%26sig%3DE4A115E7D2BA2CAB6EBD43C7CF498B33E2D9D90F.DFC5CF0EC731B76BB9EBCFD59C5156106A98B99E%26itag%3D17%26quality%3Dsmall&amp;amp;amp;aftv=true&amp;amp;amp;ad_tag=https%3A%2F%2Fad.doubleclick.net%2FN4061%2Fpfadx%2Fcom.ytpwatch.movies%2Fmain_14408092%3Bsz%3DWIDTHxHEIGHT%3Bkvid%3D4ELPlonZAQc%3Bkpu%3Dkinorussia%3Bkpeid%3DQVIbe1YVHs03TBtOyTJ4Kw%3Bkpid%3D14408092%3Bmpvid%3DAATxUAoVoBLTsoPg%3Bssl%3D1%3Bafv%3D1%3Bdc_yt%3D1%3Bk21%3D1%3Bk5%3D3_34_36_211_316_319_613%3Bkage%3D38%3Bkar%3D5%3Bkauth%3D1%3Bkclt%3D1%3Bkga%3D1003%3Bkgender%3Dm%3Bkgg%3D1%3Bklg%3Dru%3Bkmsrd%3D1%3Bko%3Dp%3Bkpco%3D466597%3Bkr%3DF%3Bkvz%3D205%3Blongads%3D1%3Bnlfb%3D1%3Byt_vrallowed%3D1%3Bytcat%3D30%3Bytdevice%3D1%3Bytexp%3D937405%2C932243%2C921092%2C901450%2C911928%3B!c%3D14408092%3Bk2%3D3%3Bk2%3D34%3Bk2%3D36%3Bk2%3D211%3Bk2%3D316%3Bk2%3D319%3Bk2%3D613%3Bkvlg%3Dru%3B&amp;amp;amp;referrer=https%3A%2F%2Fwww.youtube.com%2F%3Fgl%3DRU&amp;amp;amp;plid=AATxUAoUVECL13Nd&amp;amp;amp;sourceid=y&amp;amp;amp;loudness=-25.4489974976&amp;amp;amp;afv_instream_max=20000&amp;amp;amp;ad_eurl=http%3A%2F%2Fwww.youtube.com%2Fvideo%2F4ELPlonZAQc&amp;amp;amp;yt_pt=APb3F2-ZPsSVAk1DIJ2ndbkDH7TfBkxeMzqAd1OGhTpVpf14638SBMxaYYQsCuea7GhjPAzFxUcYkwUzQCOtnCtV4b-WkQKk-gj7gh9_ED8PmsF8JcGm4tj2aQPmn2gpwZmeyKbfC4p9igsrhlEurfuKd0W9gNDvIUEujzTqD06oTaYYukv8JuFmYKNdJOo3y6BtYtLSN15TW-kDDyJiUUKcPntQu6RSSZg53RVWzqwJ-vewrVN_gf9ucDHMkLIbxLDXpwnHuRYkCY-9ClOGF8AkcBld9f59wCYViGO6YZksssgv3y5pAexFwm4iTysGuins7lSU5rTxau_qbcaF&amp;amp;amp;tk=1&amp;amp;amp;ttsurl=https%3A%2F%2Fwww.youtube.com%2Fapi%2Ftimedtext%3Fhl%3Dru_RU%26caps%3Dasr%26signature%3D545B1A60CA312F78A48747FD2A27DFB5C89BA9B9.B56F648168945C8D7B220DB2C9465797DD3263AC%26expire%3D1391251175%26asr_langs%3Dpt%252Cen%252Cja%252Cnl%252Cde%252Cko%252Cfr%252Ces%252Cit%252Cru%26v%3D4ELPlonZAQc%26sparams%3Dasr_langs%252Ccaps%252Cv%252Cexpire%26key%3Dyttt1&amp;quot; id=&amp;quot;movie_player&amp;quot; name=&amp;quot;movie_player&amp;quot; src=&amp;quot;https://s.ytimg.com/yts/swfbin/player-vflGtoNEK/watch_as3.swf&amp;quot; type=&amp;quot;application/x-shockwave-flash&amp;quot;&amp;gt;
-  &amp;lt;noembed&amp;gt;&amp;amp;lt;div class=&amp;quot;yt-alert yt-alert-default yt-alert-error  yt-alert-player&amp;quot;&amp;amp;gt;  &amp;amp;lt;div class=&amp;quot;yt-alert-icon&amp;quot;&amp;amp;gt;
-    &amp;amp;lt;img src=&amp;quot;https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif&amp;quot; class=&amp;quot;icon master-sprite&amp;quot; alt=&amp;quot;Значок оповещения&amp;quot;&amp;amp;gt;
-  &amp;amp;lt;/div&amp;amp;gt;
-&amp;amp;lt;div class=&amp;quot;yt-alert-buttons&amp;quot;&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;amp;lt;div class=&amp;quot;yt-alert-content&amp;quot; role=&amp;quot;alert&amp;quot;&amp;amp;gt;    &amp;amp;lt;span class=&amp;quot;yt-alert-vertical-trick&amp;quot;&amp;amp;gt;&amp;amp;lt;/span&amp;amp;gt;
-    &amp;amp;lt;div class=&amp;quot;yt-alert-message&amp;quot;&amp;amp;gt;
-            Установите проигрыватель Adobe Flash Player, чтобы просмотреть это видео. &amp;amp;lt;br&amp;amp;gt; &amp;amp;lt;a href=&amp;quot;http://get.adobe.com/flashplayer/&amp;quot;&amp;amp;gt;Загрузить с сайта Adobe&amp;amp;lt;/a&amp;amp;gt;.
-    &amp;amp;lt;/div&amp;amp;gt;
-&amp;amp;lt;/div&amp;amp;gt;&amp;amp;lt;/div&amp;amp;gt;&amp;lt;/noembed&amp;gt;
-
-&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;</description>
+Страну Дураков, но мудрая Черепаха Тортилла ....</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
+		<li><a data-type="local-file" href="/video/films/A/adv_buratino.avi">adv_buratino.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/VAX8k3S0TEw">youtube.com, "Тайны кино": "Приключения Буратино"</a></li>
 	</ul>
 
 	<tags>
@@ -2848,14 +2780,17 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="164">мюзикл</item>
 		<item tid="14">приключения</item>
 		<item tid="43">фантастика</item>
+		<item tid="180">Владимир Этуш</item>
 		<item tid="179">Николай Гринько</item>
 		<item tid="81">Быков, Ролан</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="230">Б</item>
+		<item tid="323">1975</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Feb-2014 04:50:36</updated>
+	<updated>12-Apr-2019 09:29:04</updated>
 </video>
 
 <video type="video">
@@ -2982,6 +2917,10 @@ https://www.youtube.com/watch?v=P2_sjEURwgo&amp;amp;t=165s</description>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="196">Александр Демьяненко</item>
+		<item tid="180">Владимир Этуш</item>
+		<item tid="151">Георгий Вицин</item>
+		<item tid="178">Юрий Никулин</item>
 		<item tid="80">Гайдай, Леонид</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
@@ -2990,7 +2929,7 @@ https://www.youtube.com/watch?v=P2_sjEURwgo&amp;amp;t=165s</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:13:49</updated>
+	<updated>12-Apr-2019 09:13:45</updated>
 </video>
 
 <video type="video">
@@ -3028,6 +2967,9 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="196">Александр Демьяненко</item>
+		<item tid="151">Георгий Вицин</item>
+		<item tid="178">Юрий Никулин</item>
 		<item tid="80">Гайдай, Леонид</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
@@ -3037,7 +2979,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:05:12</updated>
+	<updated>12-Apr-2019 09:13:10</updated>
 </video>
 
 <video type="video">
@@ -3278,7 +3220,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item>Андрей Рублев</item>
 </title>
 	
-	
+	<producer>Андрей Тарковский</producer>
 	<roles>Анатолий Солоницын
 Иван Лапиков
 Николай Гринько
@@ -3300,16 +3242,21 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 Николай Кутузов
 Нелли Снегина
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Драма о жизни русского иконописца Андрея Рублева.
+	<description>Драма о жизни русского иконописца Андрея Рублева.
 Фильм рассказывает о жизни русского иконописца Андрея Рублёва. Повествование, разделённое на 8 новелл-эпизодов с 1400 по 1423 год, рассказывает о жизни Руси XV века, увиденной глазами странствующего монаха Рублёва.
 Отдельные новеллы сюжетно мало связаны друг с другом, но ненавязчиво рисуют общую картину средневековой Руси, складывающуюся наподобие мозаики. 
 https://www.youtube.com/watch?v=1PAhbcy8mP4
-https://www.youtube.com/watch?v=RwCJoEJFW5g
-&amp;lt;/pre&amp;gt;</description>
-	
+https://www.youtube.com/watch?v=RwCJoEJFW5g</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/8385.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/R/Rublev/rublev-video_ts-02.ogv">rublev-video_ts-02.ogv</a></li>
+		<li><a data-type="local-file" href="/video/films/R/Rublev/rublev-video_ts-03.ogv">rublev-video_ts-03.ogv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/1PAhbcy8mP4">1, youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/RwCJoEJFW5g">2, youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -3327,7 +3274,7 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Aug-2016 14:17:55</updated>
+	<updated>12-Apr-2019 08:39:00</updated>
 </video>
 
 <video type="video">
@@ -3596,7 +3543,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item>Кин-дза-дза!</item>
 </title>
 	
-	
+	<producer>Георгий Данелия</producer>
 	<roles>Георгий Данелия
 Анатолий Сиренко
 Лев Перфилов
@@ -3608,19 +3555,22 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 Станислав Любшин
 Александра Дорохина
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Прораб Владимир Николаевич Машков и не подозревал, 
+	<description>Прораб Владимир Николаевич Машков и не подозревал, 
 что обычный путь до универсама за хлебом и макаронами 
 обернется межгалактическими путешествиями. 
 А все эта встреча со студентом в кроличьей шапке с большой сумкой и 
 с каким-то маленьким устройством — «машинкой перемещения», 
 как он ее сам называл. Короче, нажал на кнопку — и оказался вместе 
 с молодым человеком в пустыне, и не в каких-нибудь Каракумах, 
-а на планете-пустыне Плюк в тентуре, галактика Кин-дза-дза в спирали…
-&amp;lt;/pre&amp;gt;</description>
-	
+а на планете-пустыне Плюк в тентуре, галактика Кин-дза-дза в спирали…</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/44811.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/K/kin-dza-dza/kin-dza-dza1.ogv">kin-dza-dza1.ogv</a></li>
+		<li><a data-type="local-file" href="/video/films/K/kin-dza-dza/kin-dza-dza2.ogv">kin-dza-dza2.ogv</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -3630,10 +3580,11 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="73">СССР</item>
 		<item tid="238">К</item>
+		<item tid="306">1986</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Nov-2015 14:34:59</updated>
+	<updated>12-Apr-2019 08:58:43</updated>
 </video>
 
 <video type="video">
@@ -4541,7 +4492,7 @@ The_Haunted_House.avi
 https://www.youtube.com/watch?v=Z6viGCs6gKQ&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf&amp;amp;index=3&amp;amp;t=5s
 https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjBPslKJhV0_cf&amp;amp;index=4&amp;amp;t=3292s</description>
 	<pictures>
-		<img src="https://i.ytimg.com/vi/Z6viGCs6gKQ/sddefault.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/45389.jpg"/>
 	</pictures>
 
 	<ul>
@@ -4554,7 +4505,9 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="129">Евстигнеев, Евгений</item>
+		<item tid="174">Зиновий Гердт</item>
 		<item tid="136">Куравлев, Леонид</item>
+		<item tid="110">Юрский, Сергей</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="272">youtube</item>
@@ -4562,7 +4515,7 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:58:03</updated>
+	<updated>12-Apr-2019 09:32:18</updated>
 </video>
 
 <video type="video">
@@ -4689,7 +4642,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 		<item>Добро пожаловать, или Посторонним вход воспрещён</item>
 </title>
 	
-	
+	<producer>Элем Климов</producer>
 	<roles>    * Евгений Евстигнеев — товарищ Дынин, начальник лагеря
     * Виктор Косых — Костя Иночкин
     * Вячеслав Царёв — мальчик с сачком
@@ -4709,11 +4662,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
     * Игорь Крюков — Марат
     * Серёжа Шаппу — мальчик-скрипач
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-    * Сценаристы: Семён Лунгин, Илья Нусинов
-    * Режиссёр-постановщик: Элем Климов
- 
-комедийный художественный фильм 1964 года. Режиссёр — Элем Климов.
+	<description>комедийный художественный фильм 1964 года. Режиссёр — Элем Климов.
 Фильм отличается юмором, специфичным для пионерских лагерей, составлявшим 
 значительную часть культурного воспитания советских детей, а также полон 
 социальной сатиры на особенности хрущёвской эпохи и жизнь в СССР в целом.
@@ -4724,11 +4673,15 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 до инфаркта своим досрочным прибытием, мальчик возвращается в лагерь и 
 «переходит на нелегальное положение», скрываясь под сценой. 
 Пионеры тайно помогают ему и предпринимают все меры, чтобы не состоялся 
-родительский день, угрожающий жизни Костиной бабушки.
-&amp;lt;/pre&amp;gt;</description>
-	
+родительский день, угрожающий жизни Костиной бабушки.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/gi7gs4EGnCI/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/dobro_pozhalovat_ili_postoronnim_vkhod_v.avi">dobro_pozhalovat_ili_postoronnim_vkhod_v.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/gi7gs4EGnCI">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -4736,10 +4689,11 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="233">Д</item>
+		<item tid="301">1966</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>10-Jan-2015 15:26:49</updated>
+	<updated>12-Apr-2019 09:27:35</updated>
 </video>
 
 <video type="video">
@@ -5011,23 +4965,18 @@ https://www.kinopoisk.ru/film/278258/</description>
 Ульрике Кунце — Анна Монс
 Марина Голуб — Верка
 	</roles>
-	<description>* Автор сценария: Сергей Герасимов совместно с Юрием Кавтарадзе
-    * Режиссёр: Сергей Герасимов
-    * Оператор: Сергей Филиппов (совм. с Х. Хардтом)
-    * Художники-постановщики: Борис Дуленков, Александр Попов (совместно с И. Келлером)
-    * Художники по костюмам: Элеонора Маклакова, Наталья Полях (совместно с Г. Шмидт)
-    * Композитор: Владимир Мартынов
-    * Звукорежиссер: Валентин Хлобынин
-продолжение фильма «Юность Петра» (1980).
+	<description>продолжение фильма «Юность Петра» (1980).
 Вторая часть исторической кинодилогии Сергея Герасимова, снятой по роману А.Толстого «Пётр Первый». 
 В конце XVII века Россия терпела огромные убытки в торговле, так как не имела выхода к морю. 
 Юный царь Петр I начинает строительство в Воронеже русского флота и берет крепость Азов. 
 А в среде бояр между тем зреет недовольство правлением молодого монарха…</description>
-	
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/45609.jpg"/>
+	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/V/v_nachale_slavnykh_del_part_1.avi">v_nachale_slavnykh_del_part_1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/V/v_nachale_slavnykh_del_part_2.avi">v_nachale_slavnykh_del_part_2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/V/v_nachale_slavnykh_del_part_1.avi">v_nachale_slavnykh_del_part_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/V/v_nachale_slavnykh_del_part_2.avi">v_nachale_slavnykh_del_part_2.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5039,7 +4988,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:40:59</updated>
+	<updated>12-Apr-2019 09:39:44</updated>
 </video>
 
 <video type="video">
@@ -5106,19 +5055,21 @@ https://www.kinopoisk.ru/film/278258/</description>
 Люсьена Овчинникова (Lyusyena Ovchinnikova), 
 Владимир Басов (Vladimir Basov)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-В вечернюю школу приходит неопытный молодой учитель, 
+	<description>В вечернюю школу приходит неопытный молодой учитель, 
 провалившийся при поступлении в аспирантуру. 
 Теперь ему предстоит осваивать сложное искусство общения 
 с людьми, и весьма непростыми: его ученики — взрослые люди, 
 отягощенные проблемами, семейными отношениями, недоразумениями 
-и... школьными уроками.
-&amp;lt;/pre&amp;gt;</description>
-	
+и... школьными уроками.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/85020.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/B/Bolshaja peremena/Bolshaja peremena - 1.avi">Bolshaja peremena - 1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Bolshaja peremena/Bolshaja peremena - 2.avi">Bolshaja peremena - 2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Bolshaja peremena/Bolshaja peremena - 3.avi">Bolshaja peremena - 3.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Bolshaja peremena/Bolshaja peremena - 4.avi">Bolshaja peremena - 4.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5129,10 +5080,11 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="81">Быков, Ролан</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="300">1972</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>22-May-2013 08:52:09</updated>
+	<updated>12-Apr-2019 08:34:28</updated>
 </video>
 
 <video type="video">
@@ -5229,26 +5181,30 @@ https://www.kinopoisk.ru/film/278258/</description>
 Тамара Макарова
 Михаил Ножкин
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Начало дилогии о российском императоре Петре Великом. 
+	<description>Начало дилогии о российском императоре Петре Великом. 
 Годы отрочества и юности царя были полны для него смертельной опасности, 
 исходившей и от части боярства, и от бунтующих стрельцов, и от стремящейся 
 к власти царевны Софьи. Однако уже в ту пору Петр выказывает глубокий, ясный ум, 
-волю и целеустремленность, которые помогают обезоружить его явных и тайных врагов.
-&amp;lt;/pre&amp;gt;</description>
-	
+волю и целеустремленность, которые помогают обезоружить его явных и тайных врагов.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/42470.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/YU/yunost_petra_part_1.avi">yunost_petra_part_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/YU/yunost_petra_part_2.avi">yunost_petra_part_2.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="33">биография</item>
 		<item tid="96">история</item>
 		<item tid="73">СССР</item>
 		<item tid="255">Ю</item>
+		<item tid="305">1980</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-May-2016 14:06:03</updated>
+	<updated>12-Apr-2019 09:42:09</updated>
 </video>
 
 <video type="video">
@@ -5584,17 +5540,17 @@ http://www.kinopoisk.ru/film/2574/</description>
 <video type="video">
 	<title>
 		<item>Рыбка по имени Ванда</item>
+		<item>A Fish Called Wanda</item>
 </title>
 	
-	
+	<producer>Чарльз Крайтон, Джон Клиз</producer>
 	<roles>Джейми Ли Кертис (Jamie Lee Curtis), 
 Кевин Кляйн (Kevin Kline), 
 Джон Клиз (John Cleese), 
 Майкл Пэлин (Michael Palin), 
 Мария Эйткен (Maria Aitken)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Ограбить ювелирный магазин — дело непростое. 
+	<description>Ограбить ювелирный магазин — дело непростое. 
 А честно поделить награбленное — задача и вовсе непосильная. 
 Когда сияющие россыпи драгоценностей попадают в жадные руки 
 компании Негодяев, кто-то из них обязательно оказывается 
@@ -5604,13 +5560,16 @@ http://www.kinopoisk.ru/film/2574/</description>
 англичанами, сумели сделать главное — стянуть отличную коллекцию 
 бриллиантов. Тут бы им все взять и поделить, да только Ванда и Отто 
 считают, что половина — это слишком мало, и сдают партнеров полиции. 
-К их несчастью, бриллианты уже перепрятаны, и кто знает, где они теперь? 
-&amp;lt;/pre&amp;gt;</description>
+К их несчастью, бриллианты уже перепрятаны, и кто знает, где они теперь?</description>
 	<pictures>
 		<img src="/video/0_covers/222899_500x800x250.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/6673.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/F/Fish Called Wanda/A.Fish.Called.Wanda.1988_HDRip_[scarabey.org].avi">A.Fish.Called.Wanda.1988_HDRip_[scarabey.org].avi</a></li>
+		<li><a data-type="local-file" href="/video/films/F/Fish Called Wanda/A.Fish.Called.Wanda.mkv">A.Fish.Called.Wanda.mkv</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -5627,7 +5586,7 @@ http://www.kinopoisk.ru/film/2574/</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Dec-2017 06:45:35</updated>
+	<updated>12-Apr-2019 09:03:04</updated>
 </video>
 
 <video type="video">
@@ -5999,19 +5958,16 @@ http://www.afisha.ru/movie/172207/review/338641/
 Владимир Кашпур
 
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Действие фильма имеет точную дату, заявленную в названии: июль 1953-го. 
+	<description>Действие фильма имеет точную дату, заявленную в названии: июль 1953-го. 
 Тогда вышло на свободу множество уголовников, амнистированных и выпущенных из лагеря 
 по приказу министра внутренних дел СССР Л. П. Берии. 
 Освобожденные уголовники, объединившись в банду, нападают на тихую рыбацкую деревню. 
 И спасти тех, кого еще не убили бандиты, выпадает &amp;quot;политическим поселенцам&amp;quot;: инженеру Старобогатову 
-и его товарищу по ссылке бывшему разведчику, попавшему в плен на один день капитану Сергею Басаргину по прозвищу Лузга.
-&amp;lt;/pre&amp;gt;</description>
+и его товарищу по ссылке бывшему разведчику, попавшему в плен на один день капитану Сергею Басаргину по прозвищу Лузга.</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/H/holodnoe_leto_53.avi">holodnoe_leto_53.avi</a></li>
 	</ul>
 
 	<tags>
@@ -6019,10 +5975,11 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="132">Папанов, Анатолий</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="249">Х</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Oct-2014 11:05:54</updated>
+	<updated>12-Apr-2019 09:49:29</updated>
 </video>
 
 <video type="video">
@@ -6189,15 +6146,14 @@ http://www.afisha.ru/movie/172207/review/338641/
 Анатолий Грачев
 Ольга Жукова
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-По мотивам одноименной повести Ю.Вяземского.
-Пользуясь интеллектуальным превосходством, подросток Валя Успенский утонченно и безжалостно мстит окружающим за малые и большие обиды. В поле его интересов попадает и молодой учитель математики Игорь Александрович, ум и тактичность которого должным образом повлияют на парня. Но юный интеллектуал потерпит сокрушительное поражение в самой, казалось бы, обычной житейской ситуации, которую подстроит ему милая, симпатичная одноклассница Ира, хотя бы для того, чтобы раз и навсегда проучить самовлюбленного шута.
-&amp;lt;/pre&amp;gt;</description>
-	
+	<description>По мотивам одноименной повести Ю.Вяземского.
+Пользуясь интеллектуальным превосходством, подросток Валя Успенский утонченно и безжалостно мстит окружающим за малые и большие обиды. В поле его интересов попадает и молодой учитель математики Игорь Александрович, ум и тактичность которого должным образом повлияют на парня. Но юный интеллектуал потерпит сокрушительное поражение в самой, казалось бы, обычной житейской ситуации, которую подстроит ему милая, симпатичная одноклассница Ира, хотя бы для того, чтобы раз и навсегда проучить самовлюбленного шута.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film/43777.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/SH/shut.avi">shut.avi</a></li>
 	</ul>
 
 	<tags>
@@ -6205,10 +6161,12 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="5">комедия</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="252">Ш</item>
+		<item tid="297">1988</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 14:28:46</updated>
+	<updated>12-Apr-2019 09:47:44</updated>
 </video>
 
 <video type="video">
@@ -6383,8 +6341,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 Микаэла Дроздовская
 
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-На одном из часовых заводов имеется молодёжная бригада, прозванная «золотой»: 
+	<description>На одном из часовых заводов имеется молодёжная бригада, прозванная «золотой»: 
 всё им удаётся, и в работе, и в общественной жизни. Но хочется ребятам совершить 
 ещё какой-нибудь поступок. Таким подвигом для них стала попытка перевоспитания 
 подростка Афанасия (Семён Морозов) из колонии для трудновоспитуемых.
@@ -6394,11 +6351,14 @@ http://www.afisha.ru/movie/172207/review/338641/
 всё равно становится явным. Вот только когда Афанасий действительно решил измениться, 
 он чуть-чуть опоздал: ибо отчаявшиеся ребята решили признать своё поражение и вернуть 
 парня обратно в колонию. 
-Но всё кончается хорошо, как и подобает советской кинокомедии.
-&amp;lt;/pre&amp;gt;</description>
-	
+Но всё кончается хорошо, как и подобает советской кинокомедии.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/43664.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/0/7_nyanek.avi">7_nyanek.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -6411,7 +6371,7 @@ http://www.afisha.ru/movie/172207/review/338641/
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-May-2015 16:29:30</updated>
+	<updated>12-Apr-2019 08:28:15</updated>
 </video>
 
 <video type="video">
@@ -6691,27 +6651,25 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item>Фортуна</item>
 </title>
 	
-	
+	<producer>Георгий Данелия</producer>
 	<roles>Ольга Волкова
 Алексей Петренко
 Вахтанг Кикабидзе
 Алексей Кравченко
 Дарья Мороз
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-В романтической комедии `Фортуна` Вахтанг Кикабидзе 
+	<description>В романтической комедии `Фортуна` Вахтанг Кикабидзе 
 играет специально написанную для него главную роль Фомы Каландадзе. 
 Его герой, в прошлом — капитан дальнего плавания, и веселая команда 
 старенькой баржи `Фортуна` неспешно развозят товар по Волге. 
 Очередной рейс, в который они берут молодоженов, превращается 
 в совершенно невероятное, полное неожиданных приключений свадебное путешествие 
 с самым настоящим кораблекрушением...
-&amp;lt;/pre&amp;gt;</description>
+https://www.kinopoisk.ru/film/41171/</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/F/Fortuna_[tfile.ru]...avi">Fortuna_[tfile.ru]...avi</a></li>
 	</ul>
 
 	<tags>
@@ -6721,10 +6679,12 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
+		<item tid="248">Ф</item>
+		<item tid="287">2000</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 15:31:23</updated>
+	<updated>12-Apr-2019 08:24:45</updated>
 </video>
 
 <video type="video">
@@ -6997,7 +6957,7 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 		<item>Собачье сердце </item>
 </title>
 	
-	
+	<producer>Владимир Бортко</producer>
 	<roles>Евгений Евстигнеев
 Б.Плотников
 В.Толоконников
@@ -7006,15 +6966,18 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 Роман Карцев
 А. Неволина
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Профессор Преображенский ставит смелые опыты, пытаясь превратить 
+	<description>Профессор Преображенский ставит смелые опыты, пытаясь превратить 
 собаку Шарика в равного себе во всем человека. 
 В результате получается некто Шариков. К сожалению, 
-опыт доказывает, что собаке лучше оставаться собакой.
-&amp;lt;/pre&amp;gt;</description>
-	
+опыт доказывает, что собаке лучше оставаться собакой.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/77335.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/S/Sobachye_serdce/Sobachye serdce_1.avi">Sobachye serdce_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/Sobachye_serdce/Sobachye serdce_2.avi">Sobachye serdce_2.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="42">трагикомедия</item>
@@ -7024,10 +6987,11 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="245">С</item>
+		<item tid="297">1988</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Dec-2015 17:13:27</updated>
+	<updated>12-Apr-2019 09:09:53</updated>
 </video>
 
 <video type="video">
@@ -8175,16 +8139,16 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 Любовь Соколова
 Олег Видов
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Влюбленный в свою профессию воспитатель детского сада — мягкий и отзывчивый Трошкин 
+	<description>Влюбленный в свою профессию воспитатель детского сада — мягкий и отзывчивый Трошкин 
 — благодаря внешнему сходству с матерым преступником и главарем 
 воровской шайки Доцентом, влип в такую ситуацию, которую безобидным 
 приключением никак не назовешь. Тем более что новые его 'воспитанники', 
-недосидевшие срок уголовники, требуют от него неординарных поступков...
-&amp;lt;/pre&amp;gt;</description>
+недосидевшие срок уголовники, требуют от него неординарных поступков...</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/DzhentelmenyUdachi.avi">DzhentelmenyUdachi.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -8194,10 +8158,11 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="22">avi</item>
 		<item tid="233">Д</item>
+		<item tid="315">1971</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>29-Nov-2015 14:24:11</updated>
+	<updated>12-Apr-2019 08:54:49</updated>
 </video>
 
 <video type="video">
@@ -11607,9 +11572,14 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 государственной собственности! Он возвращает мотор на завод. 
 Голиаф вновь забирает его, Витя – возвращает. Начинается настоящая война, 
 в которой &amp;quot;несун&amp;quot; могучего телосложения терпит сокрушительное поражение!</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/Zpye0I0_9bw/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/Davidov_i_Goliaf_DVDRip.avi">Davidov_i_Goliaf_DVDRip.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Zpye0I0_9bw">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -11621,7 +11591,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</tags>
 
 	<published>01-Mar-2013 13:05:30</published>
-	<updated>14-May-2015 15:10:53</updated>
+	<updated>12-Apr-2019 09:35:16</updated>
 </video>
 
 <video type="video">
@@ -14268,20 +14238,23 @@ https://www.youtube.com/watch?v=xhQ1HAQvtVQ
 Владимир Долинский
 Юрий Катин-Ярцев
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Комическая фантазия о жизни, любви и смерти знаменитого барона Мюнхгаузена, 
+	<description>Комическая фантазия о жизни, любви и смерти знаменитого барона Мюнхгаузена, 
 жившего в XVIII веке и ставшего героем многих веселых книг и преданий, опирается на персонажей и эпизоды знаменитого романа Р. Распе, но по сути является самостоятельным произведением.
 
 «Мыслящий человек просто обязан время от времени поднимать себя за волосы» — похоже, это и удается авторам картины. Барон хочет жениться на любимой им Марте, но церковь отказывается обвенчать их, так как имеется живая жена, «усмирявшая его 20 лет». Уставшая Марта хочет, чтобы барон стал таким, как все, но барон этого не хочет, да и не может.
-
 Герцог разрешит брак только в том случае, если барон письменно подтвердит, что все его истории лживы, а он сам — обыкновенный человек.
-&amp;lt;/pre&amp;gt;
+
 https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	<pictures>
 		<img src="/video/0_covers/cover_munhgauzen.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/77283.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/T/tot_samyy_myunkhgauzen/tot_samyy_myunkhgauzen_part_1.avi">tot_samyy_myunkhgauzen_part_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/tot_samyy_myunkhgauzen/tot_samyy_myunkhgauzen_part_2.avi">tot_samyy_myunkhgauzen_part_2.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/OWB4k-YXJUM">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -14292,10 +14265,11 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="240">М</item>
+		<item tid="299">1979</item>
 	</tags>
 
 	<published>13-Oct-2013 02:40:11</published>
-	<updated>04-Jun-2016 15:37:47</updated>
+	<updated>12-Apr-2019 09:20:25</updated>
 </video>
 
 <video type="video">
@@ -14380,7 +14354,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item>Формула любви</item>
 </title>
 	
-	
+	<producer>Марк Захаров</producer>
 	<roles>Нодар Мгалоблишвили
 Елена Аминова
 Татьяна Пельтцер, 
@@ -14393,10 +14367,16 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 Александра Захарова 	</roles>
 	<description>Музыкальная комедия по мотивам повести Алексея Толстого «Граф Калиостро» . 
 В 1780 году Джузеппе Калиостро прибыл в Россию для представления высшей знати. 
-Умыкнув под предлогом лечения отца юную Марью Ивановну, граф пытается влюбить в себя девицу, но безуспешно. В провинциальном поместье, где волею случая оказались путешественники, живет юноша, влюбленный в мраморную статую. С помощью Калиостро он надеется оживить мрамор, но встреча с живой Машей все меняет…</description>
-	
+Умыкнув под предлогом лечения отца юную Марью Ивановну, граф пытается влюбить в себя девицу, но безуспешно. 
+В провинциальном поместье, где волею случая оказались путешественники, живет юноша, влюбленный в мраморную статую. 
+С помощью Калиостро он надеется оживить мрамор, но встреча с живой Машей все меняет…</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/81432.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/F/formula_lyubvi.avi">formula_lyubvi.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -14409,7 +14389,7 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	</tags>
 
 	<published>13-Oct-2013 14:18:01</published>
-	<updated>11-Apr-2016 14:33:36</updated>
+	<updated>12-Apr-2019 09:23:20</updated>
 </video>
 
 <video type="video">
@@ -14757,21 +14737,28 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 Олег Табаков
 Армен Джигарханян
 Юрий Волынцев	</roles>
-	<description>От кабинета к кабинету мечется бедняга-писатель в поисках справедливости. Он точно знает, что на сей раз именно ондатровая шапка (на худой конец — пыжиковая), но ни в коем случае ни кроличья, должна достаться ему по распределению…
+	<description>От кабинета к кабинету мечется бедняга-писатель в поисках справедливости.
+ Он точно знает, что на сей раз именно ондатровая шапка (на худой конец — пыжиковая), 
+но ни в коем случае ни кроличья, должна достаться ему по распределению…
 http://www.kinopoisk.ru/film/43724/</description>
-	
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/43724.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/SH/SHAPKA_1990.avi">SHAPKA_1990.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="252">Ш</item>
+		<item tid="294">1990</item>
 	</tags>
 
 	<published>01-Aug-2015 15:24:13</published>
-	<updated>01-Aug-2015 15:24:38</updated>
+	<updated>12-Apr-2019 09:52:05</updated>
 </video>
 
 <video type="video">
@@ -15207,14 +15194,27 @@ https://www.youtube.com/watch?v=mzpJq23cuKc
 		<item>Две стрелы. Детектив каменного века</item>
 </title>
 	
-	
-	
+	<producer>Алла Сурикова</producer>
+	<roles>Армен Джигарханян
+Александр Кузнецов
+Николай Караченцов
+Леонид Ярмольник
+Наталья Гундарева
+Сергей Шакуров
+Ольга Кабо
+Мария Виноградова
+Станислав Садальский
+Олег Анофриев	</roles>
 	<description>Две стрелы. Детектив каменного века
 http://www.kinopoisk.ru/film/44347/
 https://www.youtube.com/watch?v=fr-KJOymhAQ</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/fr-KJOymhAQ/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/fr-KJOymhAQ">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="42">трагикомедия</item>
@@ -15225,7 +15225,7 @@ https://www.youtube.com/watch?v=fr-KJOymhAQ</description>
 	</tags>
 
 	<published>24-Jun-2016 15:10:37</published>
-	<updated>25-Jul-2016 13:33:01</updated>
+	<updated>12-Apr-2019 09:37:31</updated>
 </video>
 
 <video type="video">
@@ -16797,23 +16797,19 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/Psalteria/Psalteria - Quando el rey Nimrod.flv">Psalteria - Quando el rey Nimrod.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/Psalteria/Psalteria - Monday Morning.mp4">Psalteria - Monday Morning.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/Psalteria/Psalteria - Jovano Jovanke.flv">Psalteria - Jovano Jovanke.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/Psalteria/nazad nazad mome kalino.flv">nazad nazad mome kalino.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Psalteria/Psalteria - Quando el rey Nimrod.flv">Psalteria - Quando el rey Nimrod.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Psalteria/Psalteria - Monday Morning.mp4">Psalteria - Monday Morning.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Psalteria/Psalteria - Jovano Jovanke.flv">Psalteria - Jovano Jovanke.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Psalteria/nazad nazad mome kalino.flv">nazad nazad mome kalino.flv</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
 		<item tid="49">музыкальное видео</item>
-		<item tid="98">фолк</item>
-		<item tid="99">Psalteria</item>
 		<item tid="25">flv</item>
-		<item tid="268">P</item>
 	</tags>
 
 	<published>08-Dec-2012 07:08:11</published>
-	<updated>29-Mar-2019 05:04:52</updated>
+	<updated>12-Apr-2019 09:06:20</updated>
 </video>
 
 <video type="videoclip">
