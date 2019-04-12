@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="video">
 <taglist>
@@ -324,8 +324,8 @@
 		<item tid="280">2008</item>
 	</tags>
 
-	<published>24-Sep-2012 00:28:16</published>
-	<updated>12-Apr-2019 08:52:10</updated>
+	<published>24-Sep-2012 09:28:16</published>
+	<updated>12-Apr-2019 17:52:10</updated>
 </video>
 
 <video type="video">
@@ -369,8 +369,8 @@ Castleway Films
 		<item tid="240">М</item>
 	</tags>
 
-	<published>01-Oct-2012 00:16:06</published>
-	<updated>28-Mar-2019 08:17:58</updated>
+	<published>01-Oct-2012 09:16:06</published>
+	<updated>28-Mar-2019 17:17:58</updated>
 </video>
 
 <video type="video">
@@ -415,8 +415,8 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(
 		<item tid="320">sub_en</item>
 	</tags>
 
-	<published>01-Oct-2012 14:16:15</published>
-	<updated>23-Mar-2019 11:58:48</updated>
+	<published>01-Oct-2012 23:16:15</published>
+	<updated>23-Mar-2019 20:58:48</updated>
 </video>
 
 <video type="video">
@@ -472,8 +472,8 @@ http://www.kinopoisk.ru/film/397878/</description>
 		<item tid="279">2009</item>
 	</tags>
 
-	<published>01-Oct-2012 14:40:43</published>
-	<updated>23-Mar-2019 11:44:31</updated>
+	<published>01-Oct-2012 23:40:43</published>
+	<updated>23-Mar-2019 20:44:31</updated>
 </video>
 
 <video type="video">
@@ -517,8 +517,8 @@ Cубтитры: русские (внешние); шведские, фински
 		<item tid="313">2004</item>
 	</tags>
 
-	<published>01-Oct-2012 14:44:49</published>
-	<updated>23-Mar-2019 12:22:52</updated>
+	<published>01-Oct-2012 23:44:49</published>
+	<updated>23-Mar-2019 21:22:52</updated>
 </video>
 
 <video type="video">
@@ -559,8 +559,8 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 		<item tid="294">1990</item>
 	</tags>
 
-	<published>01-Oct-2012 14:50:52</published>
-	<updated>24-Mar-2019 07:14:16</updated>
+	<published>01-Oct-2012 23:50:52</published>
+	<updated>24-Mar-2019 16:14:16</updated>
 </video>
 
 <video type="video">
@@ -608,8 +608,8 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 		<item tid="311">1996</item>
 	</tags>
 
-	<published>02-Oct-2012 00:08:20</published>
-	<updated>23-Mar-2019 12:41:46</updated>
+	<published>02-Oct-2012 09:08:20</published>
+	<updated>23-Mar-2019 21:41:46</updated>
 </video>
 
 <video type="video">
@@ -661,8 +661,8 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 		<item tid="230">Б</item>
 	</tags>
 
-	<published>02-Oct-2012 00:16:12</published>
-	<updated>23-Mar-2019 12:46:07</updated>
+	<published>02-Oct-2012 09:16:12</published>
+	<updated>23-Mar-2019 21:46:07</updated>
 </video>
 
 <video type="video">
@@ -706,8 +706,8 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 		<item tid="238">К</item>
 	</tags>
 
-	<published>06-Oct-2012 03:08:23</published>
-	<updated>24-Mar-2019 08:40:31</updated>
+	<published>06-Oct-2012 12:08:23</published>
+	<updated>24-Mar-2019 17:40:31</updated>
 </video>
 
 <video type="video">
@@ -750,8 +750,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi</a></li>
+		<li><a data-type="local-file" href="/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_1_[tfile.ru].avi</a></li>
+		<li><a data-type="local-file" href="/video/films/D/Dzhek.vosmerkin.amerikanec_[tfile.ru]/Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi">Dzhek_vosmerkin_amerikanec_2_[tfile.ru].avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9hlB9vDETG4">Youtube, 1</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/shElHjRso58">youtube, 2</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/zejl12VpOqE">youtube, 3</a></li>
@@ -767,8 +767,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>07-Oct-2012 13:35:46</published>
-	<updated>31-Mar-2019 09:11:39</updated>
+	<published>07-Oct-2012 22:35:46</published>
+	<updated>12-Apr-2019 23:23:34</updated>
 </video>
 
 <video type="video">
@@ -801,8 +801,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 05:35:11</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Mar-2019 14:35:11</updated>
 </video>
 
 <video type="video">
@@ -830,8 +830,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 
 	
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Oct-2012 15:07:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -910,8 +910,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="246">Т</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>13-Jun-2015 10:41:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Jun-2015 19:41:45</updated>
 </video>
 
 <video type="video">
@@ -967,8 +967,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="232">Г</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-May-2014 13:02:46</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>11-May-2014 22:02:46</updated>
 </video>
 
 <video type="video">
@@ -1017,8 +1017,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="287">2000</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>23-Jul-2016 17:41:51</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>24-Jul-2016 02:41:51</updated>
 </video>
 
 <video type="video">
@@ -1056,8 +1056,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="324">1998</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-May-2018 07:06:08</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-May-2018 16:06:08</updated>
 </video>
 
 <video type="video">
@@ -1108,8 +1108,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="280">2008</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 07:45:24</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Mar-2019 16:45:24</updated>
 </video>
 
 <video type="video">
@@ -1149,8 +1149,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 		<item tid="311">1996</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 07:56:33</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Mar-2019 16:56:33</updated>
 </video>
 
 <video type="video">
@@ -1186,8 +1186,8 @@ Il Commendatore - Matti Salminen
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:59:11</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 21:59:11</updated>
 </video>
 
 <video type="video">
@@ -1249,8 +1249,8 @@ Manfred Honeck, direction
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:57:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 21:57:29</updated>
 </video>
 
 <video type="video">
@@ -1306,8 +1306,8 @@ Manfred Honeck, direction
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-May-2013 14:34:18</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-May-2013 23:34:18</updated>
 </video>
 
 <video type="video">
@@ -1370,8 +1370,8 @@ Manfred Honeck, direction
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>25-Sep-2013 13:03:01</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>25-Sep-2013 22:03:01</updated>
 </video>
 
 <video type="video">
@@ -1421,8 +1421,8 @@ Manfred Honeck, direction
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Jun-2013 08:36:16</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>02-Jun-2013 17:36:16</updated>
 </video>
 
 <video type="video">
@@ -1472,8 +1472,8 @@ Manfred Honeck, direction
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Jun-2013 08:44:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>02-Jun-2013 17:44:30</updated>
 </video>
 
 <video type="video">
@@ -1506,7 +1506,7 @@ Manfred Honeck, direction
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Трудно быть богом Аркадий и Борис Стругацких.mp4">Трудно быть богом Аркадий и Борис Стругацких.mp4</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Трудно быть богом Аркадий и Борис Стругацких.mp4">Трудно быть богом Аркадий и Борис Стругацких.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/wJ_D_eI6KMQ">embed video on youtube.com</a></li>
 	</ul>
 
@@ -1523,8 +1523,8 @@ Manfred Honeck, direction
 		<item tid="294">1990</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 08:02:55</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:13:38</updated>
 </video>
 
 <video type="video">
@@ -1575,8 +1575,8 @@ Manfred Honeck, direction
 		<item tid="66">США</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 06:32:34</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 15:32:34</updated>
 </video>
 
 <video type="video">
@@ -1621,8 +1621,8 @@ Manfred Honeck, direction
 		<item tid="279">2009</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 08:04:58</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Mar-2019 17:04:58</updated>
 </video>
 
 <video type="video">
@@ -1662,8 +1662,8 @@ Erich Schellow
 		<item tid="238">К</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 08:07:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Mar-2019 17:07:26</updated>
 </video>
 
 <video type="video">
@@ -1705,8 +1705,8 @@ Erich Schellow
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:33:02</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 14:33:02</updated>
 </video>
 
 <video type="video">
@@ -1747,8 +1747,8 @@ Erich Schellow
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:34:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 14:34:26</updated>
 </video>
 
 <video type="video">
@@ -1801,8 +1801,8 @@ Gerd Vespermann (Bobby),
 		<item tid="300">1972</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:03:09</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 17:03:09</updated>
 </video>
 
 <video type="video">
@@ -1880,8 +1880,8 @@ Gerd Vespermann (Bobby),
 		<item tid="305">1980</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:43:59</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:43:59</updated>
 </video>
 
 <video type="video">
@@ -1932,8 +1932,8 @@ Gerd Vespermann (Bobby),
 		<item tid="299">1979</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:49:46</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:49:46</updated>
 </video>
 
 <video type="video">
@@ -1985,8 +1985,8 @@ Gerd Vespermann (Bobby),
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>24-May-2013 14:18:20</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>24-May-2013 23:18:20</updated>
 </video>
 
 <video type="video">
@@ -2044,8 +2044,8 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="320">sub_en</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 06:18:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 15:18:29</updated>
 </video>
 
 <video type="video">
@@ -2131,8 +2131,8 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 13:48:04</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Apr-2019 22:48:04</updated>
 </video>
 
 <video type="video">
@@ -2166,8 +2166,8 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Jun-2013 12:19:01</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>11-Jun-2013 21:19:01</updated>
 </video>
 
 <video type="video">
@@ -2202,8 +2202,8 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="279">2009</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:37:17</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 14:37:17</updated>
 </video>
 
 <video type="video">
@@ -2235,8 +2235,8 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 02:53:48</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 11:53:48</updated>
 </video>
 
 <video type="video">
@@ -2308,8 +2308,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="68">Россия</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Feb-2013 14:29:50</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Feb-2013 23:29:50</updated>
 </video>
 
 <video type="video">
@@ -2345,8 +2345,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="267">9</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:43:25</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:43:25</updated>
 </video>
 
 <video type="video">
@@ -2390,8 +2390,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 		<item tid="305">1980</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:26:20</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:26:20</updated>
 </video>
 
 <video type="video">
@@ -2420,11 +2420,11 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_1.avi">Mesto.vstrechi.izm.nelzya_1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_2.avi">Mesto.vstrechi.izm.nelzya_2.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_3.avi">Mesto.vstrechi.izm.nelzya_3.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_4.avi">Mesto.vstrechi.izm.nelzya_4.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_5.avi">Mesto.vstrechi.izm.nelzya_5.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_1.avi">Mesto.vstrechi.izm.nelzya_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_2.avi">Mesto.vstrechi.izm.nelzya_2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_3.avi">Mesto.vstrechi.izm.nelzya_3.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_4.avi">Mesto.vstrechi.izm.nelzya_4.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mesto.vstrechi.izm.nelzya/Mesto.vstrechi.izm.nelzya_5.avi">Mesto.vstrechi.izm.nelzya_5.avi</a></li>
 	</ul>
 
 	<tags>
@@ -2433,10 +2433,11 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="240">М</item>
+		<item tid="299">1979</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:43:39</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:12:13</updated>
 </video>
 
 <video type="video">
@@ -2489,8 +2490,8 @@ https://www.kinopoisk.ru/film/1577/</description>
 		<item tid="320">sub_en</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 07:40:35</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 16:40:35</updated>
 </video>
 
 <video type="video">
@@ -2573,8 +2574,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="60">Великобритания</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Mar-2013 14:10:00</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Mar-2013 23:10:00</updated>
 </video>
 
 <video type="video">
@@ -2607,8 +2608,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="26">mov</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:47:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 14:47:26</updated>
 </video>
 
 <video type="video">
@@ -2647,8 +2648,8 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Jun-2013 12:27:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>11-Jun-2013 21:27:45</updated>
 </video>
 
 <video type="video">
@@ -2707,8 +2708,8 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="277">2011</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:16:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:16:44</updated>
 </video>
 
 <video type="video">
@@ -2743,8 +2744,8 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="313">2004</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:41:53</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:41:53</updated>
 </video>
 
 <video type="video">
@@ -2789,8 +2790,8 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="323">1975</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:29:04</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:29:04</updated>
 </video>
 
 <video type="video">
@@ -2820,8 +2821,8 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:06:35</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 17:06:35</updated>
 </video>
 
 <video type="video">
@@ -2876,8 +2877,8 @@ Cубтитры: русские (перевод мой), английские
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Dec-2017 06:07:21</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>17-Dec-2017 15:07:21</updated>
 </video>
 
 <video type="video">
@@ -2911,7 +2912,7 @@ https://www.youtube.com/watch?v=P2_sjEURwgo&amp;amp;t=165s</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Leonid_Gayday/kavkaz_1966.avi">kavkaz_1966.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/kavkaz_1966.avi">kavkaz_1966.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/P2_sjEURwgo">youtube.com</a></li>
 	</ul>
 
@@ -2928,8 +2929,8 @@ https://www.youtube.com/watch?v=P2_sjEURwgo&amp;amp;t=165s</description>
 		<item tid="301">1966</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:13:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:06:22</updated>
 </video>
 
 <video type="video">
@@ -2961,7 +2962,7 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Leonid_Gayday/shurik_1965.avi">shurik_1965.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/shurik_1965.avi">shurik_1965.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/JZ-bjMWuBt4">youtube.com</a></li>
 	</ul>
 
@@ -2978,8 +2979,8 @@ https://www.youtube.com/watch?v=JZ-bjMWuBt4</description>
 		<item tid="312">1965</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:13:10</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:05:58</updated>
 </video>
 
 <video type="video">
@@ -3014,7 +3015,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Leonid_Gayday/ivan_vasilevich_menyaet_professiyu.avi">ivan_vasilevich_menyaet_professiyu.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/ivan_vasilevich_menyaet_professiyu.avi">ivan_vasilevich_menyaet_professiyu.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/a50qT9bW2Qo">youtube.com</a></li>
 	</ul>
 
@@ -3031,8 +3032,8 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:17:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:05:39</updated>
 </video>
 
 <video type="video">
@@ -3072,8 +3073,8 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="282">2006</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:08:59</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 17:08:59</updated>
 </video>
 
 <video type="video">
@@ -3124,8 +3125,8 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 14:57:58</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>15-Jun-2013 23:57:58</updated>
 </video>
 
 <video type="video">
@@ -3157,7 +3158,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/afonya.avi">afonya.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/afonya.avi">afonya.avi</a></li>
 	</ul>
 
 	<tags>
@@ -3171,10 +3172,11 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
 		<item tid="229">А</item>
+		<item tid="323">1975</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:11:20</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:01:56</updated>
 </video>
 
 <video type="video">
@@ -3211,8 +3213,8 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="237">И</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:42:56</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:42:56</updated>
 </video>
 
 <video type="video">
@@ -3273,8 +3275,8 @@ https://www.youtube.com/watch?v=RwCJoEJFW5g</description>
 		<item tid="301">1966</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:39:00</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:39:00</updated>
 </video>
 
 <video type="video">
@@ -3319,8 +3321,8 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 		<item tid="289">1959</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 07:04:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 16:04:15</updated>
 </video>
 
 <video type="video">
@@ -3355,8 +3357,8 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 		<item tid="282">2006</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Aug-2016 11:44:32</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>21-Aug-2016 20:44:32</updated>
 </video>
 
 <video type="video">
@@ -3401,8 +3403,8 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 		<item tid="282">2006</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:16:12</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 18:16:12</updated>
 </video>
 
 <video type="video">
@@ -3488,8 +3490,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="66">США</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>02-Mar-2013 13:09:18</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>02-Mar-2013 22:09:18</updated>
 </video>
 
 <video type="video">
@@ -3534,8 +3536,8 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item tid="243">П</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>10-Jul-2014 14:03:32</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>10-Jul-2014 23:03:32</updated>
 </video>
 
 <video type="video">
@@ -3583,8 +3585,8 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:58:43</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:58:43</updated>
 </video>
 
 <video type="video">
@@ -3641,8 +3643,8 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item tid="241">Н</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>22-Oct-2017 09:18:00</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>22-Oct-2017 18:18:00</updated>
 </video>
 
 <video type="video">
@@ -3687,8 +3689,8 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 01:23:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 10:23:30</updated>
 </video>
 
 <video type="video">
@@ -3747,8 +3749,8 @@ Monica Viegas
 		<item tid="284">2003</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Mar-2019 08:34:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>17-Mar-2019 17:34:45</updated>
 </video>
 
 <video type="video">
@@ -3789,8 +3791,8 @@ Monica Viegas
 		<item tid="283">2005</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Aug-2016 06:07:28</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>21-Aug-2016 15:07:28</updated>
 </video>
 
 <video type="video">
@@ -3827,8 +3829,8 @@ Monica Viegas
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 02:52:06</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 11:52:06</updated>
 </video>
 
 <video type="video">
@@ -3868,8 +3870,8 @@ Monica Viegas
 		<item tid="244">Р</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>29-Mar-2014 17:23:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>30-Mar-2014 02:23:15</updated>
 </video>
 
 <video type="video">
@@ -3914,8 +3916,8 @@ Monica Viegas
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 16:22:35</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-Jun-2013 01:22:35</updated>
 </video>
 
 <video type="video">
@@ -3946,8 +3948,8 @@ Monica Viegas
 		<item tid="89">Франция</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 16:18:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-Jun-2013 01:18:26</updated>
 </video>
 
 <video type="video">
@@ -3987,8 +3989,8 @@ Monica Viegas
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 16:23:48</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-Jun-2013 01:23:48</updated>
 </video>
 
 <video type="video">
@@ -4045,8 +4047,8 @@ Monica Viegas
 		<item tid="244">Р</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Mar-2019 14:26:10</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>15-Mar-2019 23:26:10</updated>
 </video>
 
 <video type="video">
@@ -4074,8 +4076,8 @@ Ten Canoes.avi
 
 	
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Oct-2012 15:07:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -4119,8 +4121,8 @@ Ten Canoes.avi
 		<item tid="245">С</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>30-Mar-2019 16:08:59</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 01:08:59</updated>
 </video>
 
 <video type="video">
@@ -4159,8 +4161,8 @@ Ten Canoes.avi
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:10:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 14:10:44</updated>
 </video>
 
 <video type="video">
@@ -4197,8 +4199,8 @@ Ten Canoes.avi
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 15:19:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-Jun-2013 00:19:30</updated>
 </video>
 
 <video type="video">
@@ -4237,8 +4239,8 @@ Ten Canoes.avi
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:33:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 14:33:15</updated>
 </video>
 
 <video type="video">
@@ -4271,7 +4273,7 @@ Ten Canoes.avi
 	
 
 	<ul>
-		<li><a data-type="local-file" href="video/films/M/mimino.vob">mimino.vob</a></li>
+		<li><a data-type="local-file" href="/video/films/M/mimino.vob">mimino.vob</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/P4k2LNPRV-0">youtube.com</a></li>
 	</ul>
 
@@ -4287,8 +4289,8 @@ Ten Canoes.avi
 		<item tid="240">М</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 12:39:41</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:04:19</updated>
 </video>
 
 <video type="video">
@@ -4327,8 +4329,8 @@ Ten Canoes.avi
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 04:42:09</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 13:42:09</updated>
 </video>
 
 <video type="video">
@@ -4366,7 +4368,7 @@ https://www.youtube.com/watch?v=B-iVfLX2tvY</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Leonid_Gayday/brilliantovaya_ruka.avi">brilliantovaya_ruka.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/brilliantovaya_ruka.avi">brilliantovaya_ruka.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/B-iVfLX2tvY">youtube.com</a></li>
 	</ul>
 
@@ -4382,8 +4384,8 @@ https://www.youtube.com/watch?v=B-iVfLX2tvY</description>
 		<item tid="308">1968</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:22:02</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:04:56</updated>
 </video>
 
 <video type="video">
@@ -4431,8 +4433,8 @@ https://www.youtube.com/watch?v=B-iVfLX2tvY</description>
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 07:29:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 16:29:29</updated>
 </video>
 
 <video type="video">
@@ -4462,8 +4464,8 @@ The_Haunted_House.avi
 
 	
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Oct-2012 15:07:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -4496,8 +4498,8 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/Z/Zolotoy_telenok_DVDRip/01_Zolotoy_telenok_DVDRip.avi">01_Zolotoy_telenok_DVDRip.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/Z/Zolotoy_telenok_DVDRip/02_Zolotoy_telenok_DVDRip.avi">02_Zolotoy_telenok_DVDRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/Z/Zolotoy_telenok_DVDRip/01_Zolotoy_telenok_DVDRip.avi">01_Zolotoy_telenok_DVDRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/Z/Zolotoy_telenok_DVDRip/02_Zolotoy_telenok_DVDRip.avi">02_Zolotoy_telenok_DVDRip.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Z6viGCs6gKQ">embed video on youtube.com, 1 серия</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/X0Yk8gMPQ-s">embed video on youtube.com, 2 серия</a></li>
 	</ul>
@@ -4514,8 +4516,8 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="308">1968</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:32:18</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:07:58</updated>
 </video>
 
 <video type="video">
@@ -4556,8 +4558,8 @@ Monta Bell
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 01:30:42</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 10:30:42</updated>
 </video>
 
 <video type="video">
@@ -4594,8 +4596,8 @@ Babe London
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 01:28:59</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 10:28:59</updated>
 </video>
 
 <video type="video">
@@ -4633,8 +4635,8 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 02:53:16</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 11:53:16</updated>
 </video>
 
 <video type="video">
@@ -4692,8 +4694,8 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 		<item tid="301">1966</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:27:35</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:27:35</updated>
 </video>
 
 <video type="video">
@@ -4728,8 +4730,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 14:14:18</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Apr-2019 23:14:18</updated>
 </video>
 
 <video type="video">
@@ -4765,8 +4767,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>13-Jun-2013 00:05:56</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Jun-2013 09:05:56</updated>
 </video>
 
 <video type="video">
@@ -4810,8 +4812,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 05:14:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 14:14:15</updated>
 </video>
 
 <video type="video">
@@ -4865,8 +4867,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>01-Jan-2016 07:27:34</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>01-Jan-2016 16:27:34</updated>
 </video>
 
 <video type="video">
@@ -4911,8 +4913,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Jun-2013 12:17:52</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>11-Jun-2013 21:17:52</updated>
 </video>
 
 <video type="video">
@@ -4987,8 +4989,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="310">1981</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:39:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:39:44</updated>
 </video>
 
 <video type="video">
@@ -5029,8 +5031,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="286">2001</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:19:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 15:19:26</updated>
 </video>
 
 <video type="video">
@@ -5083,8 +5085,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="300">1972</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:34:28</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:34:28</updated>
 </video>
 
 <video type="video">
@@ -5119,8 +5121,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-May-2018 07:11:27</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-May-2018 16:11:27</updated>
 </video>
 
 <video type="video">
@@ -5161,8 +5163,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="242">О</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Apr-2016 14:47:55</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>11-Apr-2016 23:47:55</updated>
 </video>
 
 <video type="video">
@@ -5203,8 +5205,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="305">1980</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:42:09</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:42:09</updated>
 </video>
 
 <video type="video">
@@ -5241,8 +5243,8 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 01:27:52</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 10:27:52</updated>
 </video>
 
 <video type="video">
@@ -5250,7 +5252,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item>Республика Шкид</item>
 </title>
 	
-	
+	<producer>Геннадий Полока</producer>
 	<roles>Сергей Юрский
 Юлия Бурыгина
 Петр Луспекаев
@@ -5258,19 +5260,15 @@ https://www.kinopoisk.ru/film/278258/</description>
 Виолетта Жухимович
 Лев Вайнштейн
 		</roles>
-	<description>Создатели: Геннадий Полока (Gennadi Poloka)
-&amp;lt;pre&amp;gt;
-Экранизация одноименной повести Г.Белых и Л. Пантелеева, 
+	<description>Экранизация одноименной повести Г.Белых и Л. Пантелеева, 
 давно и прочно вошедший в Золотой фонд детской литературы. 
 Республикой ШКИД назвали свою Школу Имени Достоевского свободолюбивые 
 воспитанники — бывшие беспризорники. Обезоруживающие доверие педагогов 
-научило ребят достоинству, помогло не раствориться в беге смутного времени...
-&amp;lt;/pre&amp;gt;</description>
+научило ребят достоинству, помогло не раствориться в беге смутного времени...</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/R/respublika_shkid.avi">respublika_shkid.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5280,10 +5278,11 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="110">Юрский, Сергей</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="301">1966</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 16:15:37</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Apr-2019 00:05:39</updated>
 </video>
 
 <video type="video">
@@ -5357,8 +5356,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>22-May-2013 08:47:13</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>22-May-2013 17:47:13</updated>
 </video>
 
 <video type="video">
@@ -5403,8 +5402,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="301">1966</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:26:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 15:26:45</updated>
 </video>
 
 <video type="video">
@@ -5450,8 +5449,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:28:19</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 15:28:19</updated>
 </video>
 
 <video type="video">
@@ -5469,18 +5468,15 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 Иван Мокеев (Ivan Mokeyev), 
 Кирилл Датешидзе (Kirill Dateshidze)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-В фильме рассказывается о событиях, происходивших в эпоху Павла I, но, конечно же, 
+	<description>В фильме рассказывается о событиях, происходивших в эпоху Павла I, но, конечно же, 
 он посвящен времени, в котором жил Тынянов. В нем рассказан анекдотический случай далекой 
 павловской эпохи: из-за случайной ошибки писаря в бумагах возникает вместо слов &amp;quot;подпоручики же&amp;quot; 
 подпоручик Киже. Далее этот мифический персонаж начинает жить самостоятельной жизнью, 
-числиться на службе.
-&amp;lt;/pre&amp;gt;</description>
+числиться на службе.</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/SH/shagi.imperatora.avi">shagi.imperatora.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5490,8 +5486,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>22-May-2013 08:44:32</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Apr-2019 00:07:05</updated>
 </video>
 
 <video type="video">
@@ -5533,8 +5529,8 @@ http://www.kinopoisk.ru/film/2574/</description>
 		<item tid="241">Н</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:30:00</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 15:30:00</updated>
 </video>
 
 <video type="video">
@@ -5585,8 +5581,8 @@ http://www.kinopoisk.ru/film/2574/</description>
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:03:04</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:03:04</updated>
 </video>
 
 <video type="video">
@@ -5628,8 +5624,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="250">Ц</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:46:18</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:46:18</updated>
 </video>
 
 <video type="video">
@@ -5668,8 +5664,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="238">К</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-May-2016 15:18:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-May-2016 00:18:44</updated>
 </video>
 
 <video type="video">
@@ -5726,8 +5722,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="315">1971</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:46:47</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:46:47</updated>
 </video>
 
 <video type="video">
@@ -5767,8 +5763,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:43:07</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 21:43:07</updated>
 </video>
 
 <video type="video">
@@ -5796,8 +5792,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video2/films/S/sobaka.na.sene.1.avi">sobaka.na.sene.1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video2/films/S/sobaka.na.sene.2.avi">sobaka.na.sene.2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/sobaka.na.sene.1.avi">sobaka.na.sene.1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/sobaka.na.sene.2.avi">sobaka.na.sene.2.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/A7yrDk74EF8">youtube.com, embed video</a></li>
 	</ul>
 
@@ -5811,8 +5807,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="271">not used video</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:08:19</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:10:30</updated>
 </video>
 
 <video type="video">
@@ -5851,8 +5847,8 @@ https://www.kinopoisk.ru/name/181154/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 02:22:25</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 11:22:25</updated>
 </video>
 
 <video type="video">
@@ -5901,8 +5897,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="42">трагикомедия</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Apr-2013 13:29:06</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>26-Apr-2013 22:29:06</updated>
 </video>
 
 <video type="video">
@@ -5940,8 +5936,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Jun-2013 00:12:09</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>17-Jun-2013 09:12:09</updated>
 </video>
 
 <video type="video">
@@ -5978,8 +5974,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="249">Х</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:49:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:49:29</updated>
 </video>
 
 <video type="video">
@@ -6023,8 +6019,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 15:21:24</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>16-Jun-2013 00:21:24</updated>
 </video>
 
 <video type="video">
@@ -6070,8 +6066,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="288">1999</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Mar-2019 09:27:58</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 18:27:58</updated>
 </video>
 
 <video type="video">
@@ -6126,8 +6122,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>18-Jun-2013 14:12:06</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>18-Jun-2013 23:12:06</updated>
 </video>
 
 <video type="video">
@@ -6165,8 +6161,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:47:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:47:44</updated>
 </video>
 
 <video type="video">
@@ -6209,8 +6205,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="27">mkv</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:52:51</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 17:52:51</updated>
 </video>
 
 <video type="video">
@@ -6252,8 +6248,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>19-Jun-2013 00:22:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>19-Jun-2013 09:22:29</updated>
 </video>
 
 <video type="video">
@@ -6318,8 +6314,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="315">1971</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:10:43</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 18:10:43</updated>
 </video>
 
 <video type="video">
@@ -6370,8 +6366,8 @@ http://www.afisha.ru/movie/172207/review/338641/
 		<item tid="245">С</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:28:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:28:15</updated>
 </video>
 
 <video type="video">
@@ -6421,8 +6417,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="304">1982</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Aug-2016 11:40:23</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>21-Aug-2016 20:40:23</updated>
 </video>
 
 <video type="video">
@@ -6462,8 +6458,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="284">2003</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 15:05:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 00:05:15</updated>
 </video>
 
 <video type="video">
@@ -6499,7 +6495,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/BeregisAvtomobilya-.avi">BeregisAvtomobilya-.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/BeregisAvtomobilya-.avi">BeregisAvtomobilya-.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/q0nbvdj_NZo">embed video on youtube.com</a></li>
 	</ul>
 
@@ -6514,8 +6510,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:40:17</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:12:56</updated>
 </video>
 
 <video type="video">
@@ -6554,8 +6550,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 02:19:59</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>15-Jun-2013 11:19:59</updated>
 </video>
 
 <video type="video">
@@ -6595,8 +6591,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="288">1999</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>29-Mar-2019 04:46:23</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>29-Mar-2019 13:46:23</updated>
 </video>
 
 <video type="video">
@@ -6642,8 +6638,8 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 		<item tid="284">2003</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:29:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:29:44</updated>
 </video>
 
 <video type="video">
@@ -6683,8 +6679,8 @@ https://www.kinopoisk.ru/film/41171/</description>
 		<item tid="287">2000</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:24:45</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:24:45</updated>
 </video>
 
 <video type="video">
@@ -6724,8 +6720,8 @@ https://www.kinopoisk.ru/film/41171/</description>
 		<item tid="89">Франция</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 13:11:52</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>15-Jun-2013 22:11:52</updated>
 </video>
 
 <video type="video">
@@ -6773,8 +6769,8 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 		<item tid="316">1924</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Apr-2019 02:52:48</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Apr-2019 11:52:48</updated>
 </video>
 
 <video type="video">
@@ -6812,8 +6808,8 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 		<item tid="252">Ш</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Dec-2015 13:23:53</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Dec-2015 22:23:53</updated>
 </video>
 
 <video type="video">
@@ -6857,8 +6853,8 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 		<item tid="252">Ш</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Mar-2019 09:33:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 18:33:30</updated>
 </video>
 
 <video type="video">
@@ -6902,8 +6898,8 @@ https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%83%D1%82%D0%BE%D0%B2%D1%81%D1%82%D
 		<item tid="295">1997</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:21:00</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:21:00</updated>
 </video>
 
 <video type="video">
@@ -6948,8 +6944,8 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 		<item tid="283">2005</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:24:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:24:15</updated>
 </video>
 
 <video type="video">
@@ -6990,8 +6986,8 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:09:53</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 18:09:53</updated>
 </video>
 
 <video type="video">
@@ -7036,8 +7032,8 @@ http://ru.wikipedia.org/wiki/%D0%9B%D0%BB%D0%BE%D0%B9%D0%B4_%D0%91%D1%80%D0%B8%D
 		<item tid="322">1991</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:29:06</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:29:06</updated>
 </video>
 
 <video type="video">
@@ -7078,8 +7074,8 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 		<item tid="232">Г</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:30:32</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:30:32</updated>
 </video>
 
 <video type="video">
@@ -7122,8 +7118,8 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 		<item tid="251">Ч</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Oct-2015 14:49:47</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Oct-2015 23:49:47</updated>
 </video>
 
 <video type="video">
@@ -7165,8 +7161,8 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 		<item tid="293">1976</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:42:29</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:42:29</updated>
 </video>
 
 <video type="video">
@@ -7455,8 +7451,8 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 		<item tid="27">mkv</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Jun-2013 00:18:37</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>14-Jun-2013 09:18:37</updated>
 </video>
 
 <video type="video">
@@ -7494,8 +7490,8 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 		<item tid="249">Х</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:12:51</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:12:51</updated>
 </video>
 
 <video type="video">
@@ -7548,8 +7544,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:13:41</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 18:13:41</updated>
 </video>
 
 <video type="video">
@@ -7590,8 +7586,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item tid="295">1997</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:44:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 15:44:57</updated>
 </video>
 
 <video type="video">
@@ -7639,8 +7635,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item tid="287">2000</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:11:30</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:11:30</updated>
 </video>
 
 <video type="video">
@@ -7690,8 +7686,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 		<item tid="323">1975</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 15:14:02</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 00:14:02</updated>
 </video>
 
 <video type="video">
@@ -7731,8 +7727,8 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 		<item tid="323">1975</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 06:24:38</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 15:24:38</updated>
 </video>
 
 <video type="video">
@@ -7770,8 +7766,8 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:15:12</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:15:12</updated>
 </video>
 
 <video type="video">
@@ -7812,8 +7808,8 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:13:11</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:13:11</updated>
 </video>
 
 <video type="video">
@@ -7854,8 +7850,8 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Jun-2013 00:28:52</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>21-Jun-2013 09:28:52</updated>
 </video>
 
 <video type="video">
@@ -7899,8 +7895,8 @@ http://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D0%B5%D1
 		<item tid="250">Ц</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Mar-2019 09:39:16</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 18:39:16</updated>
 </video>
 
 <video type="video">
@@ -7940,8 +7936,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B5%D1%80_%28%D1%84%D0%B8%D0%B
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 13:06:15</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 22:06:15</updated>
 </video>
 
 <video type="video">
@@ -7980,8 +7976,8 @@ https://www.kinopoisk.ru/film/20897/</description>
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>08-Apr-2019 05:52:07</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>08-Apr-2019 14:52:07</updated>
 </video>
 
 <video type="video">
@@ -8025,8 +8021,8 @@ https://www.kinopoisk.ru/film/786/</description>
 		<item tid="286">2001</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Mar-2019 09:46:25</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 18:46:25</updated>
 </video>
 
 <video type="video">
@@ -8070,8 +8066,8 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Dec-2017 05:24:58</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>17-Dec-2017 14:24:58</updated>
 </video>
 
 <video type="video">
@@ -8117,8 +8113,8 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item tid="283">2005</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:16:36</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:16:36</updated>
 </video>
 
 <video type="video">
@@ -8161,8 +8157,8 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 		<item tid="315">1971</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:54:49</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 17:54:49</updated>
 </video>
 
 <video type="video">
@@ -8200,8 +8196,8 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Mar-2019 06:24:21</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>03-Mar-2019 15:24:21</updated>
 </video>
 
 <video type="video">
@@ -8236,8 +8232,8 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>20-Jun-2013 00:07:27</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>20-Jun-2013 09:07:27</updated>
 </video>
 
 <video type="video">
@@ -8269,8 +8265,8 @@ https://www.youtube.com/watch?v=LVUFc2qvFQI&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>13-Jun-2013 00:03:20</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Jun-2013 09:03:20</updated>
 </video>
 
 <video type="video">
@@ -8296,7 +8292,7 @@ https://www.youtube.com/watch?v=KmzKr2qaHrI</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mamin,Yuriy/bakenbardy.avi">bakenbardy.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mamin,Yuriy/bakenbardy.avi">bakenbardy.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/KmzKr2qaHrI">youtube.com</a></li>
 	</ul>
 
@@ -8311,8 +8307,8 @@ https://www.youtube.com/watch?v=KmzKr2qaHrI</description>
 		<item tid="294">1990</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 13:27:49</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:03:40</updated>
 </video>
 
 <video type="video">
@@ -8349,7 +8345,7 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mamin,Yuriy/Fontan.avi">Fontan.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mamin,Yuriy/Fontan.avi">Fontan.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/fSUYzDEIiH8">youtube.com</a></li>
 	</ul>
 
@@ -8363,8 +8359,8 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 13:59:06</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:07:04</updated>
 </video>
 
 <video type="video">
@@ -8419,8 +8415,8 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 		<item tid="280">2008</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:53:26</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>27-Mar-2019 17:53:26</updated>
 </video>
 
 <video type="video">
@@ -8468,8 +8464,8 @@ https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="242">О</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 13:22:11</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Apr-2019 22:22:11</updated>
 </video>
 
 <video type="video">
@@ -8499,7 +8495,7 @@ https://www.kinopoisk.ru/film/43220/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mamin,Yuriy/Prazdnik_Neptuna.avi">Prazdnik_Neptuna.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mamin,Yuriy/Prazdnik_Neptuna.avi">Prazdnik_Neptuna.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/TC9lvj4l9F4">youtube.com</a></li>
 	</ul>
 
@@ -8514,8 +8510,8 @@ https://www.kinopoisk.ru/film/43220/</description>
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Apr-2019 13:13:32</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:07:31</updated>
 </video>
 
 <video type="video">
@@ -8523,7 +8519,7 @@ https://www.kinopoisk.ru/film/43220/</description>
 		<item>Сталкер</item>
 </title>
 	
-	
+	<producer>Андрей Тарковский</producer>
 	<roles>Александр Кайдановский
 Алиса Фрейндлих
 Анатолий Солоницын
@@ -8547,9 +8543,14 @@ https://www.kinopoisk.ru/film/43220/</description>
 незнаемое, но таящее для него научный интерес.
 
 https://www.youtube.com/watch?v=TGRDYpCmMcM</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/TGRDYpCmMcM/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/S/Stalker.avi">Stalker.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/TGRDYpCmMcM">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -8562,8 +8563,8 @@ https://www.youtube.com/watch?v=TGRDYpCmMcM</description>
 		<item tid="299">1979</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>03-Mar-2017 15:17:16</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:16:24</updated>
 </video>
 
 <video type="video">
@@ -8603,8 +8604,8 @@ https://www.kinopoisk.ru/film/104215/</description>
 		<item tid="217">K</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 10:24:36</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 19:24:36</updated>
 </video>
 
 <video type="video">
@@ -8650,8 +8651,8 @@ https://www.kinopoisk.ru/film/850/</description>
 		<item tid="287">2000</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 10:23:21</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 19:23:21</updated>
 </video>
 
 <video type="video">
@@ -8701,8 +8702,8 @@ https://www.kinopoisk.ru/film/391509/</description>
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 10:21:34</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 19:21:34</updated>
 </video>
 
 <video type="video">
@@ -8749,8 +8750,8 @@ Young-min Kim,
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>13-Jun-2013 00:14:22</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Jun-2013 09:14:22</updated>
 </video>
 
 <video type="video">
@@ -8790,8 +8791,8 @@ Young-min Kim,
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Jun-2013 14:40:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>06-Jun-2013 23:40:57</updated>
 </video>
 
 <video type="video">
@@ -8831,8 +8832,8 @@ https://www.kinopoisk.ru/film/donni-brasko-1997-3984/</description>
 		<item tid="311">1996</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>31-Mar-2019 09:53:07</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>31-Mar-2019 18:53:07</updated>
 </video>
 
 <video type="video">
@@ -8852,18 +8853,16 @@ https://www.kinopoisk.ru/film/donni-brasko-1997-3984/</description>
 Анатолий Сливников
 Андрей Дударенко
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-История начальника уголовного розыска города Унчанска, Ивана Лапшина, 
+	<description>История начальника уголовного розыска города Унчанска, Ивана Лапшина, 
 короткий кусочек его жизни и его друзей, товарищей и знакомых, воспроизведен как 
 увиденный и «вспомненный» мальчиком. Иван Лапшин, ловит банду матерого бандита, 
 живет в коммуналке и ищет взаимности у актрисы местного театра...
-&amp;lt;/pre&amp;gt;
+
 http://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%B9_%D0%B4%D1%80%D1%83%D0%B3_%D0%98%D0%B2%D0%B0%D0%BD_%D0%9B%D0%B0%D0%BF%D1%88%D0%B8%D0%BD</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/D/drug_lapshin.avi">drug_lapshin.avi</a></li>
 	</ul>
 
 	<tags>
@@ -8872,10 +8871,12 @@ http://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%B9_%D0%B4%D1%80%D1%83%D0%B3_%D0%98%
 		<item tid="135">Филиппенко, Александр</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="239">Л</item>
+		<item tid="240">М</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Jul-2013 09:34:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>13-Apr-2019 00:03:43</updated>
 </video>
 
 <video type="video">
@@ -8932,8 +8933,8 @@ https://www.kinopoisk.ru/film/eksperiment-2-volna-2008-387388/</description>
 		<item tid="280">2008</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 06:28:36</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 15:28:36</updated>
 </video>
 
 <video type="video">
@@ -8965,7 +8966,7 @@ https://www.kinopoisk.ru/film/eksperiment-2-volna-2008-387388/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/I/I na kamnyah rastut derevya.avi">I na kamnyah rastut derevya.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/I/I na kamnyah rastut derevya.avi">I na kamnyah rastut derevya.avi</a></li>
 	</ul>
 
 	<tags>
@@ -8977,8 +8978,8 @@ https://www.kinopoisk.ru/film/eksperiment-2-volna-2008-387388/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:38:34</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Apr-2019 23:08:44</updated>
 </video>
 
 <video type="video">
@@ -9026,8 +9027,8 @@ http://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%88%D0%B8%D0%BD%D0%B0_%D0%BF%D0%BE%D
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 13:45:07</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Jun-2013 22:45:07</updated>
 </video>
 
 <video type="video">
@@ -9072,8 +9073,8 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BA%D0%BB%D0%BE_%28%D1%84%D0%B8%D0%B
 		<item tid="243">П</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>09-Apr-2014 12:33:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>09-Apr-2014 21:33:44</updated>
 </video>
 
 <video type="video">
@@ -9101,8 +9102,8 @@ time_machine.avi
 
 	
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Oct-2012 15:07:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -9134,8 +9135,8 @@ time_machine.avi
 		<item tid="305">1980</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:05:34</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:05:34</updated>
 </video>
 
 <video type="video">
@@ -9186,8 +9187,8 @@ https://www.youtube.com/watch?v=fKaFT2bR8SU&amp;amp;t=0s&amp;amp;index=58&amp;am
 		<item tid="322">1991</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>29-Mar-2019 04:51:44</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>29-Mar-2019 13:51:44</updated>
 </video>
 
 <video type="video">
@@ -9232,8 +9233,8 @@ https://www.kinopoisk.ru/film/12283/</description>
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 07:25:39</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 16:25:39</updated>
 </video>
 
 <video type="video">
@@ -9275,8 +9276,8 @@ https://www.kinopoisk.ru/film/12283/</description>
 		<item tid="295">1997</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:07:35</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>28-Mar-2019 18:07:35</updated>
 </video>
 
 <video type="video">
@@ -9306,8 +9307,8 @@ The Trial.avi
 
 	
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>11-Oct-2012 15:07:57</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -9383,8 +9384,8 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 		<item tid="240">М</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:28:03</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>07-Apr-2019 17:28:03</updated>
 </video>
 
 <video type="video">
@@ -9420,8 +9421,8 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>15-Jun-2013 02:25:23</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>15-Jun-2013 11:25:23</updated>
 </video>
 
 <video type="video">
@@ -9470,8 +9471,8 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 		<item tid="237">И</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>04-Nov-2014 10:47:27</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>04-Nov-2014 19:47:27</updated>
 </video>
 
 <video type="video">
@@ -9538,8 +9539,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="68">Россия</item>
 	</tags>
 
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>29-Jan-2013 13:44:23</updated>
+	<published>12-Oct-2012 00:07:57</published>
+	<updated>29-Jan-2013 22:44:23</updated>
 </video>
 
 <video type="video">
@@ -9571,8 +9572,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="238">К</item>
 	</tags>
 
-	<published>12-Oct-2012 15:28:12</published>
-	<updated>04-Sep-2015 15:19:08</updated>
+	<published>13-Oct-2012 00:28:12</published>
+	<updated>05-Sep-2015 00:19:08</updated>
 </video>
 
 <video type="video">
@@ -9611,8 +9612,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="306">1986</item>
 	</tags>
 
-	<published>12-Oct-2012 15:46:08</published>
-	<updated>28-Mar-2019 09:18:31</updated>
+	<published>13-Oct-2012 00:46:08</published>
+	<updated>28-Mar-2019 18:18:31</updated>
 </video>
 
 <video type="video">
@@ -9654,8 +9655,8 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 		<item tid="284">2003</item>
 	</tags>
 
-	<published>12-Oct-2012 16:00:36</published>
-	<updated>29-Mar-2019 04:55:57</updated>
+	<published>13-Oct-2012 01:00:36</published>
+	<updated>29-Mar-2019 13:55:57</updated>
 </video>
 
 <video type="video">
@@ -9682,8 +9683,8 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>14-Nov-2012 14:19:18</published>
-	<updated>06-Jun-2013 14:36:25</updated>
+	<published>14-Nov-2012 23:19:18</published>
+	<updated>06-Jun-2013 23:36:25</updated>
 </video>
 
 <video type="video">
@@ -9751,8 +9752,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>17-Nov-2012 11:29:22</published>
-	<updated>23-Dec-2012 13:17:14</updated>
+	<published>17-Nov-2012 20:29:22</published>
+	<updated>23-Dec-2012 22:17:14</updated>
 </video>
 
 <video type="video">
@@ -9785,8 +9786,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="242">О</item>
 	</tags>
 
-	<published>17-Nov-2012 12:34:55</published>
-	<updated>14-Feb-2016 15:03:00</updated>
+	<published>17-Nov-2012 21:34:55</published>
+	<updated>15-Feb-2016 00:03:00</updated>
 </video>
 
 <video type="video">
@@ -9821,8 +9822,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>18-Nov-2012 13:10:32</published>
-	<updated>26-May-2013 10:17:57</updated>
+	<published>18-Nov-2012 22:10:32</published>
+	<updated>26-May-2013 19:17:57</updated>
 </video>
 
 <video type="video">
@@ -9862,8 +9863,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="300">1972</item>
 	</tags>
 
-	<published>24-Nov-2012 17:07:15</published>
-	<updated>06-Apr-2019 15:17:10</updated>
+	<published>25-Nov-2012 02:07:15</published>
+	<updated>07-Apr-2019 00:17:10</updated>
 </video>
 
 <video type="video">
@@ -9889,8 +9890,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>25-Nov-2012 11:31:07</published>
-	<updated>26-May-2013 12:42:28</updated>
+	<published>25-Nov-2012 20:31:07</published>
+	<updated>26-May-2013 21:42:28</updated>
 </video>
 
 <video type="video">
@@ -9913,8 +9914,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="57">Монти Питон</item>
 	</tags>
 
-	<published>25-Nov-2012 12:29:38</published>
-	<updated>16-Jun-2013 09:15:38</updated>
+	<published>25-Nov-2012 21:29:38</published>
+	<updated>16-Jun-2013 18:15:38</updated>
 </video>
 
 <video type="video">
@@ -9941,8 +9942,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 08:58:11</published>
-	<updated>16-Jun-2013 08:48:20</updated>
+	<published>01-Dec-2012 17:58:11</published>
+	<updated>16-Jun-2013 17:48:20</updated>
 </video>
 
 <video type="video">
@@ -9968,8 +9969,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="84">Вивальди</item>
 	</tags>
 
-	<published>01-Dec-2012 09:29:30</published>
-	<updated>16-Jun-2013 08:52:38</updated>
+	<published>01-Dec-2012 18:29:30</published>
+	<updated>16-Jun-2013 17:52:38</updated>
 </video>
 
 <video type="video">
@@ -10001,8 +10002,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="240">М</item>
 	</tags>
 
-	<published>01-Dec-2012 10:04:14</published>
-	<updated>29-Mar-2019 09:02:39</updated>
+	<published>01-Dec-2012 19:04:14</published>
+	<updated>29-Mar-2019 18:02:39</updated>
 </video>
 
 <video type="video">
@@ -10029,8 +10030,8 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 10:09:10</published>
-	<updated>11-Jun-2013 12:08:49</updated>
+	<published>01-Dec-2012 19:09:10</published>
+	<updated>11-Jun-2013 21:08:49</updated>
 </video>
 
 <video type="video">
@@ -10127,8 +10128,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 10:16:56</published>
-	<updated>01-Dec-2012 10:18:37</updated>
+	<published>01-Dec-2012 19:16:56</published>
+	<updated>01-Dec-2012 19:18:37</updated>
 </video>
 
 <video type="video">
@@ -10154,8 +10155,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 10:21:58</published>
-	<updated>06-Jun-2013 14:38:21</updated>
+	<published>01-Dec-2012 19:21:58</published>
+	<updated>06-Jun-2013 23:38:21</updated>
 </video>
 
 <video type="video">
@@ -10252,8 +10253,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 10:27:50</published>
-	<updated>01-Dec-2012 10:27:50</updated>
+	<published>01-Dec-2012 19:27:50</published>
+	<updated>01-Dec-2012 19:27:50</updated>
 </video>
 
 <video type="video">
@@ -10279,8 +10280,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>01-Dec-2012 10:33:27</published>
-	<updated>16-Jun-2013 02:09:14</updated>
+	<published>01-Dec-2012 19:33:27</published>
+	<updated>16-Jun-2013 11:09:14</updated>
 </video>
 
 <video type="video">
@@ -10305,8 +10306,8 @@ height: 600,
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>01-Dec-2012 10:38:37</published>
-	<updated>07-Jun-2013 15:18:04</updated>
+	<published>01-Dec-2012 19:38:37</published>
+	<updated>08-Jun-2013 00:18:04</updated>
 </video>
 
 <video type="video">
@@ -10343,8 +10344,8 @@ Manfred Honeck, direction	</roles>
 		<item tid="240">М</item>
 	</tags>
 
-	<published>01-Dec-2012 10:44:50</published>
-	<updated>13-May-2016 15:12:46</updated>
+	<published>01-Dec-2012 19:44:50</published>
+	<updated>14-May-2016 00:12:46</updated>
 </video>
 
 <video type="video">
@@ -10386,8 +10387,8 @@ Manfred Honeck, direction	</roles>
 		<item tid="292">1989</item>
 	</tags>
 
-	<published>01-Dec-2012 15:28:28</published>
-	<updated>29-Mar-2019 09:07:16</updated>
+	<published>02-Dec-2012 00:28:28</published>
+	<updated>29-Mar-2019 18:07:16</updated>
 </video>
 
 <video type="video">
@@ -10429,8 +10430,8 @@ http://www.taday.ru/text/538875.html
 		<item tid="275">2013</item>
 	</tags>
 
-	<published>02-Dec-2012 04:33:11</published>
-	<updated>31-Mar-2019 09:56:20</updated>
+	<published>02-Dec-2012 13:33:11</published>
+	<updated>31-Mar-2019 18:56:20</updated>
 </video>
 
 <video type="video">
@@ -10456,8 +10457,8 @@ http://www.taday.ru/text/538875.html
 		<item tid="23">mpg</item>
 	</tags>
 
-	<published>08-Dec-2012 07:39:33</published>
-	<updated>18-May-2013 09:37:56</updated>
+	<published>08-Dec-2012 16:39:33</published>
+	<updated>18-May-2013 18:37:56</updated>
 </video>
 
 <video type="video">
@@ -10632,8 +10633,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:29:29</published>
-	<updated>08-Dec-2012 08:29:29</updated>
+	<published>08-Dec-2012 17:29:29</published>
+	<updated>08-Dec-2012 17:29:29</updated>
 </video>
 
 <video type="video">
@@ -10800,8 +10801,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:40:46</published>
-	<updated>08-Dec-2012 08:40:46</updated>
+	<published>08-Dec-2012 17:40:46</published>
+	<updated>08-Dec-2012 17:40:46</updated>
 </video>
 
 <video type="video">
@@ -10968,8 +10969,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:46:56</published>
-	<updated>08-Dec-2012 08:46:56</updated>
+	<published>08-Dec-2012 17:46:56</published>
+	<updated>08-Dec-2012 17:46:56</updated>
 </video>
 
 <video type="video">
@@ -11136,8 +11137,8 @@ height: 600,
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:49:13</published>
-	<updated>08-Dec-2012 08:49:13</updated>
+	<published>08-Dec-2012 17:49:13</published>
+	<updated>08-Dec-2012 17:49:13</updated>
 </video>
 
 <video type="video">
@@ -11204,8 +11205,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="68">Россия</item>
 	</tags>
 
-	<published>16-Dec-2012 05:41:49</published>
-	<updated>29-Dec-2012 15:18:09</updated>
+	<published>16-Dec-2012 14:41:49</published>
+	<updated>30-Dec-2012 00:18:09</updated>
 </video>
 
 <video type="video">
@@ -11220,8 +11221,12 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/Lizedei.Blue_Canari.DivX.TVRip.avi">Lizedei.Blue_Canari.DivX.TVRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/Polunin.Leykin.Nizzya.H.264.TVRip.avi">Polunin.Leykin.Nizzya.H.264.TVRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/Polunin.Lubov.1981.XviD.TVRip.avi">Polunin.Lubov.1981.XviD.TVRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/Бабочка. Театр Лицедеи.mp4">Бабочка. Театр Лицедеи.mp4</a></li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/Клавы Театр Лицедеи YouTube.mp4">Клавы Театр Лицедеи YouTube.mp4</a></li>
+		<li><a data-type="local-file" href="/video/funs/Lizedei/СOMEDIADA 2012 Лицедеи Русская рулетка (Actors Russian roulette) НD 3D.mp4">СOMEDIADA 2012 Лицедеи Русская рулетка (Actors Russian roulette) НD 3D.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -11232,10 +11237,11 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="68">Россия</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="310">1981</item>
 	</tags>
 
-	<published>16-Dec-2012 06:48:51</published>
-	<updated>16-Jun-2013 09:03:28</updated>
+	<published>16-Dec-2012 15:48:51</published>
+	<updated>12-Apr-2019 23:59:06</updated>
 </video>
 
 <video type="video">
@@ -11252,8 +11258,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/mult/ostrov_part1.avi">ostrov_part1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/mult/ostrov_part2.avi">ostrov_part2.avi</a></li>
+		<li><a data-type="local-file" href="/video/mult/ostrov_part1.avi">ostrov_part1.avi</a></li>
+		<li><a data-type="local-file" href="/video/mult/ostrov_part2.avi">ostrov_part2.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/O9J1INLXJNY">youtube.com</a></li>
 	</ul>
 
@@ -11265,8 +11271,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 		<item tid="297">1988</item>
 	</tags>
 
-	<published>10-Jan-2013 13:36:44</published>
-	<updated>06-Apr-2019 14:21:23</updated>
+	<published>10-Jan-2013 22:36:44</published>
+	<updated>12-Apr-2019 23:53:44</updated>
 </video>
 
 <video type="video">
@@ -11301,8 +11307,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>09-Feb-2013 17:26:01</published>
-	<updated>12-Jun-2013 13:14:27</updated>
+	<published>10-Feb-2013 02:26:01</published>
+	<updated>12-Jun-2013 22:14:27</updated>
 </video>
 
 <video type="video">
@@ -11386,8 +11392,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 		<item tid="241">Н</item>
 	</tags>
 
-	<published>16-Feb-2013 09:57:18</published>
-	<updated>29-Mar-2019 05:45:35</updated>
+	<published>16-Feb-2013 18:57:18</published>
+	<updated>29-Mar-2019 14:45:35</updated>
 </video>
 
 <video type="video">
@@ -11409,8 +11415,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 		<item tid="167">программирование</item>
 	</tags>
 
-	<published>16-Feb-2013 10:15:23</published>
-	<updated>29-Mar-2019 05:48:49</updated>
+	<published>16-Feb-2013 19:15:23</published>
+	<updated>29-Mar-2019 14:48:49</updated>
 </video>
 
 <video type="video">
@@ -11494,8 +11500,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="60">Великобритания</item>
 	</tags>
 
-	<published>23-Feb-2013 12:22:40</published>
-	<updated>23-Feb-2013 12:24:13</updated>
+	<published>23-Feb-2013 21:22:40</published>
+	<updated>23-Feb-2013 21:24:13</updated>
 </video>
 
 <video type="video">
@@ -11517,8 +11523,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="249">Х</item>
 	</tags>
 
-	<published>23-Feb-2013 12:31:50</published>
-	<updated>29-Mar-2019 05:51:59</updated>
+	<published>23-Feb-2013 21:31:50</published>
+	<updated>29-Mar-2019 14:51:59</updated>
 </video>
 
 <video type="video">
@@ -11546,8 +11552,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>23-Feb-2013 12:38:37</published>
-	<updated>29-Mar-2019 05:55:17</updated>
+	<published>23-Feb-2013 21:38:37</published>
+	<updated>29-Mar-2019 14:55:17</updated>
 </video>
 
 <video type="video">
@@ -11590,8 +11596,8 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="233">Д</item>
 	</tags>
 
-	<published>01-Mar-2013 13:05:30</published>
-	<updated>12-Apr-2019 09:35:16</updated>
+	<published>01-Mar-2013 22:05:30</published>
+	<updated>12-Apr-2019 18:35:16</updated>
 </video>
 
 <video type="video">
@@ -11648,8 +11654,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="322">1991</item>
 	</tags>
 
-	<published>18-Mar-2013 14:25:39</published>
-	<updated>08-Apr-2019 05:41:10</updated>
+	<published>18-Mar-2013 23:25:39</published>
+	<updated>08-Apr-2019 14:41:10</updated>
 </video>
 
 <video type="video">
@@ -11687,22 +11693,20 @@ https://www.kinopoisk.ru/film/8365/</description>
 Муза Крепкогорская
 Георгий Юматов
 Клара Румянова	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Фильм включает в себя три сатирических новеллы (экранизация произведений М.Зощенко) 
+	<description>Фильм включает в себя три сатирических новеллы (экранизация произведений М.Зощенко) 
 о жизни Страны Советов: 
 &amp;quot;Преступление и наказание&amp;quot;, 
 &amp;quot;Забавное приключение&amp;quot; и 
 &amp;quot;Свадебное происшествие&amp;quot;. 
 События происходят в конце &amp;quot;героических двадцатых&amp;quot;, атмосферу которых 
-мастерски описал Михаил Зощенко и экранизировал Леонид Гайдай.
-&amp;lt;/pre&amp;gt;</description>
+мастерски описал Михаил Зощенко и экранизировал Леонид Гайдай.</description>
 	<pictures>
 		<img src="/video/0_covers/88477174.jpg"/>
 		<img src="https://i.ytimg.com/vi/DZHXRy-FTuM/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Leonid_Gayday/Ne.mozhet.bit.1975_[torrents.ru].avi">Ne.mozhet.bit.1975_[torrents.ru].avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Leonid_Gayday/Ne.mozhet.bit.1975_[torrents.ru].avi">Ne.mozhet.bit.1975_[torrents.ru].avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/DZHXRy-FTuM">youtube.com</a></li>
 	</ul>
 
@@ -11717,8 +11721,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="293">1976</item>
 	</tags>
 
-	<published>18-Mar-2013 14:41:53</published>
-	<updated>07-Apr-2019 08:09:31</updated>
+	<published>18-Mar-2013 23:41:53</published>
+	<updated>12-Apr-2019 23:52:57</updated>
 </video>
 
 <video type="video">
@@ -11765,8 +11769,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="325">1940</item>
 	</tags>
 
-	<published>24-Mar-2013 05:13:20</published>
-	<updated>17-Dec-2017 05:41:10</updated>
+	<published>24-Mar-2013 14:13:20</published>
+	<updated>17-Dec-2017 14:41:10</updated>
 </video>
 
 <video type="video">
@@ -11807,8 +11811,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="251">Ч</item>
 	</tags>
 
-	<published>31-Mar-2013 14:50:41</published>
-	<updated>28-Mar-2019 09:27:58</updated>
+	<published>31-Mar-2013 23:50:41</published>
+	<updated>28-Mar-2019 18:27:58</updated>
 </video>
 
 <video type="video">
@@ -11850,8 +11854,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="313">2004</item>
 	</tags>
 
-	<published>31-Mar-2013 14:56:16</published>
-	<updated>17-Dec-2017 05:14:36</updated>
+	<published>31-Mar-2013 23:56:16</published>
+	<updated>17-Dec-2017 14:14:36</updated>
 </video>
 
 <video type="video">
@@ -11902,8 +11906,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>15-Apr-2013 13:59:11</published>
-	<updated>17-Dec-2017 05:54:02</updated>
+	<published>15-Apr-2013 22:59:11</published>
+	<updated>17-Dec-2017 14:54:02</updated>
 </video>
 
 <video type="video">
@@ -11944,8 +11948,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>15-Apr-2013 14:09:24</published>
-	<updated>28-Mar-2019 08:25:27</updated>
+	<published>15-Apr-2013 23:09:24</published>
+	<updated>28-Mar-2019 17:25:27</updated>
 </video>
 
 <video type="video">
@@ -12001,8 +12005,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>03-May-2013 14:15:47</published>
-	<updated>18-Oct-2014 11:18:34</updated>
+	<published>03-May-2013 23:15:47</published>
+	<updated>18-Oct-2014 20:18:34</updated>
 </video>
 
 <video type="video">
@@ -12046,8 +12050,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>12-May-2013 02:24:13</published>
-	<updated>12-May-2013 02:25:24</updated>
+	<published>12-May-2013 11:24:13</published>
+	<updated>12-May-2013 11:25:24</updated>
 </video>
 
 <video type="video">
@@ -12074,8 +12078,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>19-May-2013 09:28:07</published>
-	<updated>12-Jan-2014 09:29:00</updated>
+	<published>19-May-2013 18:28:07</published>
+	<updated>12-Jan-2014 18:29:00</updated>
 </video>
 
 <video type="video">
@@ -12103,8 +12107,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="226">W</item>
 	</tags>
 
-	<published>19-May-2013 09:40:26</published>
-	<updated>25-Apr-2014 14:49:11</updated>
+	<published>19-May-2013 18:40:26</published>
+	<updated>25-Apr-2014 23:49:11</updated>
 </video>
 
 <video type="video">
@@ -12131,8 +12135,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>19-May-2013 09:51:24</published>
-	<updated>19-May-2013 09:51:24</updated>
+	<published>19-May-2013 18:51:24</published>
+	<updated>19-May-2013 18:51:24</updated>
 </video>
 
 <video type="video">
@@ -12159,8 +12163,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>19-May-2013 09:53:57</published>
-	<updated>19-May-2013 09:53:57</updated>
+	<published>19-May-2013 18:53:57</published>
+	<updated>19-May-2013 18:53:57</updated>
 </video>
 
 <video type="video">
@@ -12187,8 +12191,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>19-May-2013 09:56:13</published>
-	<updated>19-May-2013 09:56:13</updated>
+	<published>19-May-2013 18:56:13</published>
+	<updated>19-May-2013 18:56:13</updated>
 </video>
 
 <video type="video">
@@ -12215,8 +12219,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>19-May-2013 09:59:09</published>
-	<updated>19-May-2013 09:59:09</updated>
+	<published>19-May-2013 18:59:09</published>
+	<updated>19-May-2013 18:59:09</updated>
 </video>
 
 <video type="video">
@@ -12246,8 +12250,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="254">Э</item>
 	</tags>
 
-	<published>20-May-2013 07:28:00</published>
-	<updated>06-Apr-2019 14:06:30</updated>
+	<published>20-May-2013 16:28:00</published>
+	<updated>06-Apr-2019 23:06:30</updated>
 </video>
 
 <video type="video">
@@ -12275,8 +12279,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>21-May-2013 13:27:47</published>
-	<updated>21-May-2013 13:29:53</updated>
+	<published>21-May-2013 22:27:47</published>
+	<updated>21-May-2013 22:29:53</updated>
 </video>
 
 <video type="video">
@@ -12303,8 +12307,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>21-May-2013 13:31:47</published>
-	<updated>21-May-2013 13:31:47</updated>
+	<published>21-May-2013 22:31:47</published>
+	<updated>21-May-2013 22:31:47</updated>
 </video>
 
 <video type="video">
@@ -12337,8 +12341,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>23-May-2013 13:17:25</published>
-	<updated>28-Mar-2019 09:29:19</updated>
+	<published>23-May-2013 22:17:25</published>
+	<updated>28-Mar-2019 18:29:19</updated>
 </video>
 
 <video type="video">
@@ -12364,8 +12368,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>23-May-2013 13:30:57</published>
-	<updated>23-May-2013 13:31:37</updated>
+	<published>23-May-2013 22:30:57</published>
+	<updated>23-May-2013 22:31:37</updated>
 </video>
 
 <video type="video">
@@ -12391,8 +12395,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>23-May-2013 13:39:22</published>
-	<updated>12-Jan-2014 09:39:49</updated>
+	<published>23-May-2013 22:39:22</published>
+	<updated>12-Jan-2014 18:39:49</updated>
 </video>
 
 <video type="video">
@@ -12418,8 +12422,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>23-May-2013 13:42:01</published>
-	<updated>23-May-2013 13:42:01</updated>
+	<published>23-May-2013 22:42:01</published>
+	<updated>23-May-2013 22:42:01</updated>
 </video>
 
 <video type="video">
@@ -12445,8 +12449,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="5">комедия</item>
 	</tags>
 
-	<published>25-May-2013 13:07:55</published>
-	<updated>17-Jun-2013 23:59:44</updated>
+	<published>25-May-2013 22:07:55</published>
+	<updated>18-Jun-2013 08:59:44</updated>
 </video>
 
 <video type="video">
@@ -12472,8 +12476,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-May-2013 15:11:33</published>
-	<updated>25-May-2013 15:11:33</updated>
+	<published>26-May-2013 00:11:33</published>
+	<updated>26-May-2013 00:11:33</updated>
 </video>
 
 <video type="video">
@@ -12499,8 +12503,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-May-2013 15:13:32</published>
-	<updated>25-May-2013 15:13:32</updated>
+	<published>26-May-2013 00:13:32</published>
+	<updated>26-May-2013 00:13:32</updated>
 </video>
 
 <video type="video">
@@ -12526,8 +12530,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-May-2013 15:17:14</published>
-	<updated>25-May-2013 15:17:14</updated>
+	<published>26-May-2013 00:17:14</published>
+	<updated>26-May-2013 00:17:14</updated>
 </video>
 
 <video type="video">
@@ -12553,8 +12557,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-May-2013 15:19:16</published>
-	<updated>25-May-2013 15:19:56</updated>
+	<published>26-May-2013 00:19:16</published>
+	<updated>26-May-2013 00:19:56</updated>
 </video>
 
 <video type="video">
@@ -12580,8 +12584,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:22:45</published>
-	<updated>26-May-2013 10:23:13</updated>
+	<published>26-May-2013 19:22:45</published>
+	<updated>26-May-2013 19:23:13</updated>
 </video>
 
 <video type="video">
@@ -12607,8 +12611,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:25:04</published>
-	<updated>26-May-2013 10:25:04</updated>
+	<published>26-May-2013 19:25:04</published>
+	<updated>26-May-2013 19:25:04</updated>
 </video>
 
 <video type="video">
@@ -12634,8 +12638,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:26:46</published>
-	<updated>26-May-2013 10:27:55</updated>
+	<published>26-May-2013 19:26:46</published>
+	<updated>26-May-2013 19:27:55</updated>
 </video>
 
 <video type="video">
@@ -12661,8 +12665,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:29:24</published>
-	<updated>26-May-2013 10:29:24</updated>
+	<published>26-May-2013 19:29:24</published>
+	<updated>26-May-2013 19:29:24</updated>
 </video>
 
 <video type="video">
@@ -12688,8 +12692,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:30:40</published>
-	<updated>26-May-2013 10:30:40</updated>
+	<published>26-May-2013 19:30:40</published>
+	<updated>26-May-2013 19:30:40</updated>
 </video>
 
 <video type="video">
@@ -12715,8 +12719,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:35:27</published>
-	<updated>26-May-2013 10:35:27</updated>
+	<published>26-May-2013 19:35:27</published>
+	<updated>26-May-2013 19:35:27</updated>
 </video>
 
 <video type="video">
@@ -12742,8 +12746,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:36:46</published>
-	<updated>26-May-2013 10:36:46</updated>
+	<published>26-May-2013 19:36:46</published>
+	<updated>26-May-2013 19:36:46</updated>
 </video>
 
 <video type="video">
@@ -12769,8 +12773,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 10:40:15</published>
-	<updated>26-May-2013 10:40:15</updated>
+	<published>26-May-2013 19:40:15</published>
+	<updated>26-May-2013 19:40:15</updated>
 </video>
 
 <video type="video">
@@ -12795,8 +12799,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>26-May-2013 10:42:49</published>
-	<updated>06-Apr-2019 15:12:10</updated>
+	<published>26-May-2013 19:42:49</published>
+	<updated>07-Apr-2019 00:12:10</updated>
 </video>
 
 <video type="video">
@@ -12822,8 +12826,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>26-May-2013 12:30:47</published>
-	<updated>11-Jun-2013 00:20:26</updated>
+	<published>26-May-2013 21:30:47</published>
+	<updated>11-Jun-2013 09:20:26</updated>
 </video>
 
 <video type="video">
@@ -12849,8 +12853,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>28-May-2013 14:11:34</published>
-	<updated>28-May-2013 14:11:34</updated>
+	<published>28-May-2013 23:11:34</published>
+	<updated>28-May-2013 23:11:34</updated>
 </video>
 
 <video type="video">
@@ -12876,8 +12880,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>28-May-2013 14:22:00</published>
-	<updated>28-May-2013 14:22:41</updated>
+	<published>28-May-2013 23:22:00</published>
+	<updated>28-May-2013 23:22:41</updated>
 </video>
 
 <video type="video">
@@ -12903,8 +12907,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>28-May-2013 14:41:40</published>
-	<updated>28-May-2013 14:42:06</updated>
+	<published>28-May-2013 23:41:40</published>
+	<updated>28-May-2013 23:42:06</updated>
 </video>
 
 <video type="video">
@@ -12931,8 +12935,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>10-Jun-2013 12:57:35</published>
-	<updated>10-Jun-2013 12:57:35</updated>
+	<published>10-Jun-2013 21:57:35</published>
+	<updated>10-Jun-2013 21:57:35</updated>
 </video>
 
 <video type="video">
@@ -12958,8 +12962,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>10-Jun-2013 13:02:05</published>
-	<updated>10-Jun-2013 13:02:05</updated>
+	<published>10-Jun-2013 22:02:05</published>
+	<updated>10-Jun-2013 22:02:05</updated>
 </video>
 
 <video type="video">
@@ -12986,8 +12990,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>10-Jun-2013 13:12:36</published>
-	<updated>10-Jun-2013 13:12:36</updated>
+	<published>10-Jun-2013 22:12:36</published>
+	<updated>10-Jun-2013 22:12:36</updated>
 </video>
 
 <video type="video">
@@ -13015,8 +13019,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>11-Jun-2013 00:22:00</published>
-	<updated>11-Jun-2013 00:22:00</updated>
+	<published>11-Jun-2013 09:22:00</published>
+	<updated>11-Jun-2013 09:22:00</updated>
 </video>
 
 <video type="video">
@@ -13043,8 +13047,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>11-Jun-2013 00:24:45</published>
-	<updated>11-Jun-2013 00:24:45</updated>
+	<published>11-Jun-2013 09:24:45</published>
+	<updated>11-Jun-2013 09:24:45</updated>
 </video>
 
 <video type="video">
@@ -13072,8 +13076,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="83">классика</item>
 	</tags>
 
-	<published>11-Jun-2013 11:57:10</published>
-	<updated>18-Oct-2014 11:23:12</updated>
+	<published>11-Jun-2013 20:57:10</published>
+	<updated>18-Oct-2014 20:23:12</updated>
 </video>
 
 <video type="video">
@@ -13100,8 +13104,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>12-Jun-2013 02:11:44</published>
-	<updated>12-Jun-2013 02:11:44</updated>
+	<published>12-Jun-2013 11:11:44</published>
+	<updated>12-Jun-2013 11:11:44</updated>
 </video>
 
 <video type="video">
@@ -13128,8 +13132,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>13-Jun-2013 13:13:38</published>
-	<updated>13-Jun-2013 13:13:38</updated>
+	<published>13-Jun-2013 22:13:38</published>
+	<updated>13-Jun-2013 22:13:38</updated>
 </video>
 
 <video type="video">
@@ -13155,8 +13159,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>13-Jun-2013 13:15:13</published>
-	<updated>13-Jun-2013 13:15:13</updated>
+	<published>13-Jun-2013 22:15:13</published>
+	<updated>13-Jun-2013 22:15:13</updated>
 </video>
 
 <video type="video">
@@ -13182,8 +13186,8 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>15-Jun-2013 02:22:31</published>
-	<updated>15-Jun-2013 02:22:31</updated>
+	<published>15-Jun-2013 11:22:31</published>
+	<updated>15-Jun-2013 11:22:31</updated>
 </video>
 
 <video type="video">
@@ -13218,8 +13222,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>15-Jun-2013 13:23:10</published>
-	<updated>15-Jun-2013 13:28:51</updated>
+	<published>15-Jun-2013 22:23:10</published>
+	<updated>15-Jun-2013 22:28:51</updated>
 </video>
 
 <video type="video">
@@ -13248,8 +13252,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="334">немое кино</item>
 	</tags>
 
-	<published>15-Jun-2013 15:02:58</published>
-	<updated>04-Apr-2019 02:51:43</updated>
+	<published>16-Jun-2013 00:02:58</published>
+	<updated>04-Apr-2019 11:51:43</updated>
 </video>
 
 <video type="video">
@@ -13276,8 +13280,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>15-Jun-2013 16:02:08</published>
-	<updated>15-Jun-2013 16:02:08</updated>
+	<published>16-Jun-2013 01:02:08</published>
+	<updated>16-Jun-2013 01:02:08</updated>
 </video>
 
 <video type="video">
@@ -13303,8 +13307,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>15-Jun-2013 16:03:53</published>
-	<updated>15-Jun-2013 16:04:39</updated>
+	<published>16-Jun-2013 01:03:53</published>
+	<updated>16-Jun-2013 01:04:39</updated>
 </video>
 
 <video type="video">
@@ -13330,8 +13334,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>15-Jun-2013 16:09:33</published>
-	<updated>15-Jun-2013 16:09:33</updated>
+	<published>16-Jun-2013 01:09:33</published>
+	<updated>16-Jun-2013 01:09:33</updated>
 </video>
 
 <video type="video">
@@ -13357,8 +13361,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>16-Jun-2013 08:50:35</published>
-	<updated>16-Jun-2013 08:50:35</updated>
+	<published>16-Jun-2013 17:50:35</published>
+	<updated>16-Jun-2013 17:50:35</updated>
 </video>
 
 <video type="video">
@@ -13384,8 +13388,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>16-Jun-2013 08:57:29</published>
-	<updated>16-Jun-2013 08:57:29</updated>
+	<published>16-Jun-2013 17:57:29</published>
+	<updated>16-Jun-2013 17:57:29</updated>
 </video>
 
 <video type="video">
@@ -13421,8 +13425,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="288">1999</item>
 	</tags>
 
-	<published>16-Jun-2013 09:23:18</published>
-	<updated>08-Apr-2019 05:38:35</updated>
+	<published>16-Jun-2013 18:23:18</published>
+	<updated>08-Apr-2019 14:38:35</updated>
 </video>
 
 <video type="video">
@@ -13450,8 +13454,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="207">A</item>
 	</tags>
 
-	<published>17-Jun-2013 13:20:25</published>
-	<updated>01-Apr-2019 08:07:51</updated>
+	<published>17-Jun-2013 22:20:25</published>
+	<updated>01-Apr-2019 17:07:51</updated>
 </video>
 
 <video type="video">
@@ -13477,8 +13481,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:01:24</published>
-	<updated>18-Jun-2013 00:01:24</updated>
+	<published>18-Jun-2013 09:01:24</published>
+	<updated>18-Jun-2013 09:01:24</updated>
 </video>
 
 <video type="video">
@@ -13504,8 +13508,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:16:20</published>
-	<updated>18-Jun-2013 00:16:20</updated>
+	<published>18-Jun-2013 09:16:20</published>
+	<updated>18-Jun-2013 09:16:20</updated>
 </video>
 
 <video type="video">
@@ -13531,8 +13535,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:22:28</published>
-	<updated>18-Jun-2013 00:22:28</updated>
+	<published>18-Jun-2013 09:22:28</published>
+	<updated>18-Jun-2013 09:22:28</updated>
 </video>
 
 <video type="video">
@@ -13558,8 +13562,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:23:59</published>
-	<updated>18-Jun-2013 00:23:59</updated>
+	<published>18-Jun-2013 09:23:59</published>
+	<updated>18-Jun-2013 09:23:59</updated>
 </video>
 
 <video type="video">
@@ -13583,8 +13587,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 14:17:02</published>
-	<updated>04-Apr-2019 12:50:08</updated>
+	<published>18-Jun-2013 23:17:02</published>
+	<updated>04-Apr-2019 21:50:08</updated>
 </video>
 
 <video type="video">
@@ -13611,8 +13615,8 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>20-Jun-2013 14:23:37</published>
-	<updated>20-Jun-2013 14:23:37</updated>
+	<published>20-Jun-2013 23:23:37</published>
+	<updated>20-Jun-2013 23:23:37</updated>
 </video>
 
 <video type="video">
@@ -13640,8 +13644,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>20-Jun-2013 14:31:25</published>
-	<updated>20-Jun-2013 14:31:25</updated>
+	<published>20-Jun-2013 23:31:25</published>
+	<updated>20-Jun-2013 23:31:25</updated>
 </video>
 
 <video type="video">
@@ -13667,8 +13671,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>20-Jun-2013 14:36:59</published>
-	<updated>20-Jun-2013 14:36:59</updated>
+	<published>20-Jun-2013 23:36:59</published>
+	<updated>20-Jun-2013 23:36:59</updated>
 </video>
 
 <video type="video">
@@ -13694,8 +13698,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>20-Jun-2013 14:38:32</published>
-	<updated>20-Jun-2013 14:38:32</updated>
+	<published>20-Jun-2013 23:38:32</published>
+	<updated>20-Jun-2013 23:38:32</updated>
 </video>
 
 <video type="video">
@@ -13721,8 +13725,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>21-Jun-2013 13:54:58</published>
-	<updated>21-Jun-2013 13:54:58</updated>
+	<published>21-Jun-2013 22:54:58</published>
+	<updated>21-Jun-2013 22:54:58</updated>
 </video>
 
 <video type="video">
@@ -13748,8 +13752,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>21-Jun-2013 13:56:57</published>
-	<updated>21-Jun-2013 13:57:55</updated>
+	<published>21-Jun-2013 22:56:57</published>
+	<updated>21-Jun-2013 22:57:55</updated>
 </video>
 
 <video type="video">
@@ -13775,8 +13779,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>21-Jun-2013 14:01:37</published>
-	<updated>21-Jun-2013 14:02:26</updated>
+	<published>21-Jun-2013 23:01:37</published>
+	<updated>21-Jun-2013 23:02:26</updated>
 </video>
 
 <video type="video">
@@ -13802,8 +13806,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>21-Jun-2013 14:03:57</published>
-	<updated>21-Jun-2013 14:03:57</updated>
+	<published>21-Jun-2013 23:03:57</published>
+	<updated>21-Jun-2013 23:03:57</updated>
 </video>
 
 <video type="video">
@@ -13829,8 +13833,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>21-Jun-2013 14:05:53</published>
-	<updated>21-Jun-2013 14:05:53</updated>
+	<published>21-Jun-2013 23:05:53</published>
+	<updated>21-Jun-2013 23:05:53</updated>
 </video>
 
 <video type="video">
@@ -13856,8 +13860,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>22-Jun-2013 08:22:46</published>
-	<updated>22-Jun-2013 13:30:14</updated>
+	<published>22-Jun-2013 17:22:46</published>
+	<updated>22-Jun-2013 22:30:14</updated>
 </video>
 
 <video type="video">
@@ -13884,8 +13888,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="240">М</item>
 	</tags>
 
-	<published>23-Jun-2013 03:13:46</published>
-	<updated>06-Oct-2015 14:42:36</updated>
+	<published>23-Jun-2013 12:13:46</published>
+	<updated>06-Oct-2015 23:42:36</updated>
 </video>
 
 <video type="video">
@@ -13922,8 +13926,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="245">С</item>
 	</tags>
 
-	<published>23-Jun-2013 06:19:09</published>
-	<updated>23-May-2015 13:38:05</updated>
+	<published>23-Jun-2013 15:19:09</published>
+	<updated>23-May-2015 22:38:05</updated>
 </video>
 
 <video type="video">
@@ -13950,8 +13954,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>02-Jul-2013 14:41:41</published>
-	<updated>02-Jul-2013 14:41:41</updated>
+	<published>02-Jul-2013 23:41:41</published>
+	<updated>02-Jul-2013 23:41:41</updated>
 </video>
 
 <video type="video">
@@ -13979,8 +13983,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="68">Россия</item>
 	</tags>
 
-	<published>06-Jul-2013 14:19:16</published>
-	<updated>06-Jul-2013 14:21:14</updated>
+	<published>06-Jul-2013 23:19:16</published>
+	<updated>06-Jul-2013 23:21:14</updated>
 </video>
 
 <video type="video">
@@ -14004,8 +14008,8 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>25-Sep-2013 13:07:42</published>
-	<updated>27-Mar-2019 06:06:12</updated>
+	<published>25-Sep-2013 22:07:42</published>
+	<updated>27-Mar-2019 15:06:12</updated>
 </video>
 
 <video type="video">
@@ -14059,8 +14063,8 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 		<item tid="295">1997</item>
 	</tags>
 
-	<published>25-Sep-2013 13:20:07</published>
-	<updated>06-Apr-2019 13:54:35</updated>
+	<published>25-Sep-2013 22:20:07</published>
+	<updated>06-Apr-2019 22:54:35</updated>
 </video>
 
 <video type="video">
@@ -14070,26 +14074,21 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 	
 	<producer>Александр Роу</producer>
 	<roles>Ольга Юкина, Татьяна Юкина, Татьяна Барышева, Анатолий Кубацкий, Андрей Файт, Лидия Вертинская, Аркадий Цинман, Андрей Стапран, Иван Кузнецов, Георгий Милляр	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-Однажды школьница Оля взглянула в самое обычное зеркало, которое висело дома в прихожей, и неожиданно отправилась путешествовать в волшебную зазеркальную страну вместе со своим отражением - озорной девочкой Яло. Вдвоем им удается вызволить из тюрьмы мальчика Гурда и разрушить злые чары кривых зеркал...
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
+	<description>Однажды школьница Оля взглянула в самое обычное зеркало, которое висело дома в прихожей, и неожиданно отправилась путешествовать в волшебную зазеркальную страну вместе со своим отражением - озорной девочкой Яло. Вдвоем им удается вызволить из тюрьмы мальчика Гурда и разрушить злые чары кривых зеркал...</description>
+	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/K/Korolevstvo krivyh zerkal.avi">Korolevstvo krivyh zerkal.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="43">фантастика</item>
 		<item tid="73">СССР</item>
+		<item tid="238">К</item>
 	</tags>
 
-	<published>25-Sep-2013 13:29:03</published>
-	<updated>25-Sep-2013 13:29:03</updated>
+	<published>25-Sep-2013 22:29:03</published>
+	<updated>12-Apr-2019 23:52:18</updated>
 </video>
 
 <video type="video">
@@ -14113,8 +14112,8 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-Sep-2013 13:51:50</published>
-	<updated>27-Mar-2019 05:59:48</updated>
+	<published>25-Sep-2013 22:51:50</published>
+	<updated>27-Mar-2019 14:59:48</updated>
 </video>
 
 <video type="video">
@@ -14138,8 +14137,8 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>25-Sep-2013 13:54:08</published>
-	<updated>27-Mar-2019 05:59:11</updated>
+	<published>25-Sep-2013 22:54:08</published>
+	<updated>27-Mar-2019 14:59:11</updated>
 </video>
 
 <video type="video">
@@ -14174,8 +14173,8 @@ https://www.youtube.com/watch?v=xhQ1HAQvtVQ
 		<item tid="5">комедия</item>
 	</tags>
 
-	<published>01-Oct-2013 13:16:07</published>
-	<updated>01-Oct-2013 13:26:22</updated>
+	<published>01-Oct-2013 22:16:07</published>
+	<updated>01-Oct-2013 22:26:22</updated>
 </video>
 
 <video type="video">
@@ -14190,23 +14189,29 @@ https://www.youtube.com/watch?v=xhQ1HAQvtVQ
 Илзе Лиепа
 Леонид Ярмольник
 Александр Домогаров, Сергей Коковкин, Олег Меньшиков, Алексей Жарков, Аристарх Ливанов, Юри Ярвет, Виктор Сергачев, Анатолий Васильев, Людмила Полякова, Андрей Дударенко, Сергей Плотников, Андрей Болтнев, Андрей Молотков, Мария Полицеймако, Лев Лемке, Марина Яковлева, Наталья Сайко, Александр Стариков, Георгий Дрозд, Иван Воронов, Сергей Варчук, Александр Ткаченок, Сос Саркисян, Георгий Тейх, Константин Тыртов, Пётр Колбасин, Игорь Иванов, Алексей Елизаветский, Ян Янакиев, Александр Шворин, Николай Прокопович, Дмитрий Писаренко, Владимир Пинчевский, Алексей Никульников, Александр Сирин, Вероника Изотова, Эльвира Жебертавичюте, Юрий Волков, Владимир Чуприков, Евгений Дворжецкий, Борис Химичев, Олегар Федоров, Александр Берда, Борис Клюев, Леонид Плешаков	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Михайло Ломоносов - многосерийный фильм о истории России XVIII века 
+	<description>Михайло Ломоносов - многосерийный фильм о истории России XVIII века 
 через жизнь и деятельность выдающегося русского учёного и литератора Михайло Ломоносова. Фильм состоит из трёх разделов: «От недр своих», «Врата учёности» и «Во славу Отечества», в каждом из которых по три серии
 Фильм 1 - &amp;quot;От Недр Своих&amp;quot;, 1984 г. (3 серии)
 Фильм охватывает детские и юношеские годы Ломоносова. Большое впечатление производит на юношу посещение Соловецкого монастыря и беседы со старообрядцем Мошкарем. Стремление учиться приводит юношу в Москву. Впереди - Петербург и необыкновенная судьба...
 Фильм 2 - &amp;quot;Врата Учености&amp;quot;, 1986 г. (3 серии)
 В Фильме &amp;quot;Врата учености&amp;quot; рассказывается о том, как Михайло Ломоносов продолжал образование в Германии, а затем, вернувшись на родину, возглавил борьбу за становление и развитие отечественной науки.
 Фильм 3 - &amp;quot;Во Славу Отечества&amp;quot;, 1986 г. (3 серии)
-В Фильме &amp;quot;Во славу Отечества&amp;quot; события происходят спустя 20 лет и рассказывают о последних годах жизни ученого, ставшего академиком и получившего мировую известность за свои научные открытия.
-&amp;lt;/pre&amp;gt;</description>
+В Фильме &amp;quot;Во славу Отечества&amp;quot; события происходят спустя 20 лет и рассказывают о последних годах жизни ученого, ставшего академиком и получившего мировую известность за свои научные открытия.</description>
 	<pictures>
 		<img src="/video/0_covers/e5d17e36631bf723b2c6a25f965fba6b.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/46628.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e01_ot_nedr_svoih.avi">mihailo_lomonosov_e01_ot_nedr_svoih.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e02_ot_nedr_svoih.avi">mihailo_lomonosov_e02_ot_nedr_svoih.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e03_ot_nedr_svoih.avi">mihailo_lomonosov_e03_ot_nedr_svoih.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e04_vrata_uchenosti.avi">mihailo_lomonosov_e04_vrata_uchenosti.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e05_vrata_uchenosti.avi">mihailo_lomonosov_e05_vrata_uchenosti.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e06_vrata_uchenosti.avi">mihailo_lomonosov_e06_vrata_uchenosti.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e07_vo_slavu_otechestva.avi">mihailo_lomonosov_e07_vo_slavu_otechestva.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e08_vo_slavu_otechestva.avi">mihailo_lomonosov_e08_vo_slavu_otechestva.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mihailo_Lomonosov/mihailo_lomonosov_e09_vo_slavu_otechestva.avi">mihailo_lomonosov_e09_vo_slavu_otechestva.avi</a></li>
 	</ul>
 
 	<tags>
@@ -14215,10 +14220,11 @@ https://www.youtube.com/watch?v=xhQ1HAQvtVQ
 		<item tid="117">сериал</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="306">1986</item>
 	</tags>
 
-	<published>12-Oct-2013 07:06:45</published>
-	<updated>12-Oct-2013 07:09:40</updated>
+	<published>12-Oct-2013 16:06:45</published>
+	<updated>12-Apr-2019 23:50:24</updated>
 </video>
 
 <video type="video">
@@ -14268,8 +14274,8 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="299">1979</item>
 	</tags>
 
-	<published>13-Oct-2013 02:40:11</published>
-	<updated>12-Apr-2019 09:20:25</updated>
+	<published>13-Oct-2013 11:40:11</published>
+	<updated>12-Apr-2019 18:20:25</updated>
 </video>
 
 <video type="video">
@@ -14300,8 +14306,8 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>13-Oct-2013 02:54:42</published>
-	<updated>13-Oct-2013 02:54:42</updated>
+	<published>13-Oct-2013 11:54:42</published>
+	<updated>13-Oct-2013 11:54:42</updated>
 </video>
 
 <video type="video">
@@ -14345,8 +14351,8 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="275">2013</item>
 	</tags>
 
-	<published>13-Oct-2013 14:11:53</published>
-	<updated>27-Mar-2019 05:58:02</updated>
+	<published>13-Oct-2013 23:11:53</published>
+	<updated>27-Mar-2019 14:58:02</updated>
 </video>
 
 <video type="video">
@@ -14388,8 +14394,8 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="248">Ф</item>
 	</tags>
 
-	<published>13-Oct-2013 14:18:01</published>
-	<updated>12-Apr-2019 09:23:20</updated>
+	<published>13-Oct-2013 23:18:01</published>
+	<updated>12-Apr-2019 18:23:20</updated>
 </video>
 
 <video type="video">
@@ -14430,8 +14436,8 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="276">2012</item>
 	</tags>
 
-	<published>02-Aug-2014 14:16:30</published>
-	<updated>21-Aug-2016 11:57:00</updated>
+	<published>02-Aug-2014 23:16:30</published>
+	<updated>21-Aug-2016 20:57:00</updated>
 </video>
 
 <video type="video">
@@ -14463,8 +14469,8 @@ http://rutracker.org/forum/viewtopic.php?t=1737687</description>
 		<item tid="248">Ф</item>
 	</tags>
 
-	<published>14-Oct-2014 13:52:04</published>
-	<updated>14-Oct-2014 14:07:41</updated>
+	<published>14-Oct-2014 22:52:04</published>
+	<updated>14-Oct-2014 23:07:41</updated>
 </video>
 
 <video type="video">
@@ -14502,8 +14508,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="277">2011</item>
 	</tags>
 
-	<published>20-May-2015 13:37:29</published>
-	<updated>27-Nov-2016 09:19:12</updated>
+	<published>20-May-2015 22:37:29</published>
+	<updated>27-Nov-2016 18:19:12</updated>
 </video>
 
 <video type="video">
@@ -14531,8 +14537,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="233">Д</item>
 	</tags>
 
-	<published>20-May-2015 13:42:13</published>
-	<updated>20-May-2015 13:42:34</updated>
+	<published>20-May-2015 22:42:13</published>
+	<updated>20-May-2015 22:42:34</updated>
 </video>
 
 <video type="video">
@@ -14548,19 +14554,21 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
     Наталья Акимова — Лида, мать Сергея Пшеничного в 1949-м
     Елена Гольянова — Роза
     Яков Степанов — Сашка-танкист (озвучивает Авангард Леонтьев)
-    Виктор Смирнов — директор шахты Тюкин
-    Николай Стоцкий — Фёдор Петренко, молодой шахтёр
-    Сергей Паршин — шахтёр-стахановец Пухарев
-    Александр Песков — милиционер Рябенко
+Виктор Смирнов — директор шахты Тюкин
+Николай Стоцкий — Фёдор Петренко, молодой шахтёр
+Сергей Паршин — шахтёр-стахановец Пухарев
+ Александр Песков — милиционер Рябенко
 	</roles>
 	<description>https://ru.wikipedia.org/wiki/%D0%97%D0%B5%D1%80%D0%BA%D0%B0%D0%BB%D0%BE_%D0%B4%D0%BB%D1%8F_%D0%B3%D0%B5%D1%80%D0%BE%D1%8F
  художественный фильм Владимира Хотиненко, по сценарию Надежды Кожушаной, фантастическая притча по мотивам одноимённой повести Святослава Рыбаса.</description>
 	<pictures>
 		<img src="/video/0_covers/zerkalo.jpg"/>
+		<img src="https://i.ytimg.com/rpg2zTvnbZs/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra#local file</li>
+		<li><a data-type="local-file" href="/video/films/Z/Zerkalo glya geroya (1987).mkv">Zerkalo glya geroya (1987).mkv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/rpg2zTvnbZs">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -14571,8 +14579,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="236">З</item>
 	</tags>
 
-	<published>02-Jun-2015 12:40:43</published>
-	<updated>02-Jun-2015 12:42:31</updated>
+	<published>02-Jun-2015 21:40:43</published>
+	<updated>12-Apr-2019 23:41:24</updated>
 </video>
 
 <video type="video">
@@ -14602,8 +14610,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="307">2014</item>
 	</tags>
 
-	<published>02-Jun-2015 12:54:26</published>
-	<updated>21-Aug-2016 11:52:49</updated>
+	<published>02-Jun-2015 21:54:26</published>
+	<updated>21-Aug-2016 20:52:49</updated>
 </video>
 
 <video type="video">
@@ -14637,8 +14645,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="307">2014</item>
 	</tags>
 
-	<published>02-Jun-2015 13:01:06</published>
-	<updated>30-Mar-2019 15:41:57</updated>
+	<published>02-Jun-2015 22:01:06</published>
+	<updated>31-Mar-2019 00:41:57</updated>
 </video>
 
 <video type="video">
@@ -14663,8 +14671,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="245">С</item>
 	</tags>
 
-	<published>01-Aug-2015 14:46:38</published>
-	<updated>01-Aug-2015 14:47:18</updated>
+	<published>01-Aug-2015 23:46:38</published>
+	<updated>01-Aug-2015 23:47:18</updated>
 </video>
 
 <video type="video">
@@ -14691,8 +14699,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="236">З</item>
 	</tags>
 
-	<published>01-Aug-2015 14:55:02</published>
-	<updated>01-Jan-2016 06:09:40</updated>
+	<published>01-Aug-2015 23:55:02</published>
+	<updated>01-Jan-2016 15:09:40</updated>
 </video>
 
 <video type="video">
@@ -14717,8 +14725,8 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="233">Д</item>
 	</tags>
 
-	<published>01-Aug-2015 15:02:41</published>
-	<updated>01-Aug-2015 15:03:15</updated>
+	<published>02-Aug-2015 00:02:41</published>
+	<updated>02-Aug-2015 00:03:15</updated>
 </video>
 
 <video type="video">
@@ -14757,8 +14765,8 @@ http://www.kinopoisk.ru/film/43724/</description>
 		<item tid="294">1990</item>
 	</tags>
 
-	<published>01-Aug-2015 15:24:13</published>
-	<updated>12-Apr-2019 09:52:05</updated>
+	<published>02-Aug-2015 00:24:13</published>
+	<updated>12-Apr-2019 18:52:05</updated>
 </video>
 
 <video type="video">
@@ -14791,8 +14799,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="275">2013</item>
 	</tags>
 
-	<published>01-Aug-2015 15:28:47</published>
-	<updated>22-Oct-2017 08:26:12</updated>
+	<published>02-Aug-2015 00:28:47</published>
+	<updated>22-Oct-2017 17:26:12</updated>
 </video>
 
 <video type="video">
@@ -14818,8 +14826,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="282">2006</item>
 	</tags>
 
-	<published>31-Dec-2015 16:00:35</published>
-	<updated>21-Aug-2016 12:09:43</updated>
+	<published>01-Jan-2016 01:00:35</published>
+	<updated>21-Aug-2016 21:09:43</updated>
 </video>
 
 <video type="video">
@@ -14849,8 +14857,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>31-Dec-2015 16:08:26</published>
-	<updated>21-Aug-2016 11:49:27</updated>
+	<published>01-Jan-2016 01:08:26</published>
+	<updated>21-Aug-2016 20:49:27</updated>
 </video>
 
 <video type="video">
@@ -14879,8 +14887,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="251">Ч</item>
 	</tags>
 
-	<published>31-Dec-2015 16:16:25</published>
-	<updated>31-Dec-2015 16:17:33</updated>
+	<published>01-Jan-2016 01:16:25</published>
+	<updated>01-Jan-2016 01:17:33</updated>
 </video>
 
 <video type="video">
@@ -14908,8 +14916,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="302">2015</item>
 	</tags>
 
-	<published>31-Dec-2015 16:23:56</published>
-	<updated>21-Aug-2016 12:08:21</updated>
+	<published>01-Jan-2016 01:23:56</published>
+	<updated>21-Aug-2016 21:08:21</updated>
 </video>
 
 <video type="video">
@@ -14949,8 +14957,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="314">1932</item>
 	</tags>
 
-	<published>31-Dec-2015 16:27:22</published>
-	<updated>12-Apr-2019 06:11:16</updated>
+	<published>01-Jan-2016 01:27:22</published>
+	<updated>12-Apr-2019 15:11:16</updated>
 </video>
 
 <video type="video">
@@ -14982,8 +14990,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="302">2015</item>
 	</tags>
 
-	<published>31-Dec-2015 16:35:32</published>
-	<updated>08-Apr-2019 12:49:46</updated>
+	<published>01-Jan-2016 01:35:32</published>
+	<updated>08-Apr-2019 21:49:46</updated>
 </video>
 
 <video type="video">
@@ -15022,8 +15030,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="249">Х</item>
 	</tags>
 
-	<published>31-Dec-2015 16:46:20</published>
-	<updated>31-Dec-2015 16:46:50</updated>
+	<published>01-Jan-2016 01:46:20</published>
+	<updated>01-Jan-2016 01:46:50</updated>
 </video>
 
 <video type="video">
@@ -15059,8 +15067,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="245">С</item>
 	</tags>
 
-	<published>31-Dec-2015 16:53:21</published>
-	<updated>31-Dec-2015 16:53:47</updated>
+	<published>01-Jan-2016 01:53:21</published>
+	<updated>01-Jan-2016 01:53:47</updated>
 </video>
 
 <video type="video">
@@ -15073,9 +15081,13 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	<description>https://www.youtube.com/watch?v=lMoiQsfp4Fo</description>
 	<pictures>
 		<img src="/video/0_covers/revizor.jpg"/>
+		<img src="https://i.ytimg.com/lMoiQsfp4Fo/sddefault.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/R/Revizor.avi">Revizor.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/lMoiQsfp4Fo">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -15087,8 +15099,8 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item tid="274">1952</item>
 	</tags>
 
-	<published>13-Jun-2016 15:01:09</published>
-	<updated>25-Jul-2016 13:39:06</updated>
+	<published>14-Jun-2016 00:01:09</published>
+	<updated>12-Apr-2019 23:31:34</updated>
 </video>
 
 <video type="video">
@@ -15127,8 +15139,8 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 		<item tid="276">2012</item>
 	</tags>
 
-	<published>24-Jun-2016 14:19:31</published>
-	<updated>28-Mar-2019 08:28:27</updated>
+	<published>24-Jun-2016 23:19:31</published>
+	<updated>28-Mar-2019 17:28:27</updated>
 </video>
 
 <video type="video">
@@ -15139,10 +15151,17 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 	<producer>Владимир Карасёв</producer>
 	<roles>Владимир Попов, Сергей Блинников, Владимир Владиславский, Осип Абдулов, Фёдор Курихин, Фаина Раневская	</roles>
 	<description>Одесская киностудия
-https://www.youtube.com/watch?v=QSWdP9gFSR8</description>
-	
+https://www.youtube.com/watch?v=QSWdP9gFSR8
+https://www.kinopoisk.ru/film/453145/</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/QSWdP9gFSR8/sddefault.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/453145.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/QSWdP9gFSR8">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/films/K/kak-possorilsya-ivan-ivanovich-s-ivanom-nikiforovichem.mp4">kak-possorilsya-ivan-ivanovich-s-ivanom-nikiforovichem.mp4</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -15153,8 +15172,8 @@ https://www.youtube.com/watch?v=QSWdP9gFSR8</description>
 		<item tid="289">1959</item>
 	</tags>
 
-	<published>24-Jun-2016 14:30:15</published>
-	<updated>25-Jul-2016 13:35:40</updated>
+	<published>24-Jun-2016 23:30:15</published>
+	<updated>12-Apr-2019 23:38:00</updated>
 </video>
 
 <video type="video">
@@ -15162,31 +15181,48 @@ https://www.youtube.com/watch?v=QSWdP9gFSR8</description>
 		<item>Обыкновенное чудо</item>
 </title>
 	
-	
-	
+	<producer>Марк Захаров</producer>
+	<roles>Олег Янковский
+Ирина Купченко
+Евгений Леонов
+Евгения Симонова
+Александр Абдулов
+Екатерина Васильева
+Андрей Миронов
+Леонид Серебренников
+Юрий Соломин
+Андрей Леонов	</roles>
 	<description>Обыкновенное чудо 1 серия
 https://www.youtube.com/watch?v=gZiKrWSzNBo
 
 Обыкновенное чудо 2 серия
 https://www.youtube.com/watch?v=mzpJq23cuKc
 
-Волшебник обещал своей жене жить как все, но как же он сможет? Это последняя, последняя сказка, и расскажет он ее так, что короли подобреют, принцессы пойдут в ученики к охотникам, придворная кавалер-дама найдет свою старую любовь, а медведь превратится в прекрасного юношу.</description>
+Волшебник обещал своей жене жить как все, но как же он сможет? Это последняя, последняя сказка, и расскажет он ее так, что короли подобреют, принцессы пойдут в ученики к охотникам, придворная кавалер-дама найдет свою старую любовь, а медведь превратится в прекрасного юношу.
+
+https://www.kinopoisk.ru/film/77282/</description>
 	<pictures>
-		<img src="/video/0_covers/"/>
+		<img src="https://i.ytimg.com/vi/gZiKrWSzNBo/sddefault.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/77282.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/gZiKrWSzNBo">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/mzpJq23cuKc">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="119">экранизация</item>
+		<item tid="202">Марк Захаров</item>
 		<item tid="73">СССР</item>
 		<item tid="242">О</item>
 		<item tid="272">youtube</item>
+		<item tid="291">1978</item>
 	</tags>
 
-	<published>24-Jun-2016 15:01:52</published>
-	<updated>24-Jun-2016 15:05:03</updated>
+	<published>25-Jun-2016 00:01:52</published>
+	<updated>12-Apr-2019 23:28:31</updated>
 </video>
 
 <video type="video">
@@ -15224,8 +15260,8 @@ https://www.youtube.com/watch?v=fr-KJOymhAQ</description>
 		<item tid="292">1989</item>
 	</tags>
 
-	<published>24-Jun-2016 15:10:37</published>
-	<updated>12-Apr-2019 09:37:31</updated>
+	<published>25-Jun-2016 00:10:37</published>
+	<updated>12-Apr-2019 18:37:31</updated>
 </video>
 
 <video type="video">
@@ -15270,8 +15306,8 @@ https://www.kinopoisk.ru/film/22911/</description>
 		<item tid="291">1978</item>
 	</tags>
 
-	<published>24-Jun-2016 15:33:03</published>
-	<updated>08-Apr-2019 05:34:26</updated>
+	<published>25-Jun-2016 00:33:03</published>
+	<updated>08-Apr-2019 14:34:26</updated>
 </video>
 
 <video type="video">
@@ -15380,8 +15416,8 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 		<item tid="286">2001</item>
 	</tags>
 
-	<published>02-Jul-2016 14:03:51</published>
-	<updated>06-Apr-2019 14:38:37</updated>
+	<published>02-Jul-2016 23:03:51</published>
+	<updated>06-Apr-2019 23:38:37</updated>
 </video>
 
 <video type="video">
@@ -15391,22 +15427,24 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 	
 	<producer>С. Райтбурт</producer>
 	<roles>В. Шестаков, А. Кайдановский, А. Покровская	</roles>
-	<description>&amp;lt;iframe width=&amp;quot;560&amp;quot; height=&amp;quot;315&amp;quot; src=&amp;quot;https://www.youtube.com/embed/52yhBkkulXw&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-Год выпуска: 1972
+	<description>Год выпуска: 1972
 Страна: СССР
 Жанр: Научно - популярный, художественный
 Продолжительность: 21 мин.
-
-Режиссер: С. Райтбурт
 
 В ролях: В. Шестаков, А. Кайдановский, А. Покровская
 
 В фильме «Математик и чёрт» (СССР, 1972 режиссёр Райтбурт) математик предлагает продать душу дьяволу за то, чтобы тот доказал или опроверг теорему Ферма
 
 http://mycomp/sites/romanlaptev.github.io/lib/cms/?q=node/1705</description>
-	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/52yhBkkulXw/sddefault.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/52yhBkkulXw">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/films/M/matematik_devil.avi">matematik_devil.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -15421,8 +15459,8 @@ http://mycomp/sites/romanlaptev.github.io/lib/cms/?q=node/1705</description>
 		<item tid="300">1972</item>
 	</tags>
 
-	<published>23-Jul-2016 14:57:40</published>
-	<updated>24-Sep-2017 05:20:59</updated>
+	<published>23-Jul-2016 23:57:40</published>
+	<updated>12-Apr-2019 23:33:55</updated>
 </video>
 
 <video type="video">
@@ -15469,8 +15507,8 @@ https://www.kinopoisk.ru/film/257386/
 		<item tid="283">2005</item>
 	</tags>
 
-	<published>03-Aug-2017 12:32:45</published>
-	<updated>30-Mar-2019 15:30:22</updated>
+	<published>03-Aug-2017 21:32:45</published>
+	<updated>31-Mar-2019 00:30:22</updated>
 </video>
 
 <video type="video">
@@ -15501,8 +15539,8 @@ https://www.kinopoisk.ru/film/otryv-1971-14970/</description>
 		<item tid="315">1971</item>
 	</tags>
 
-	<published>24-Sep-2017 05:18:16</published>
-	<updated>12-Apr-2019 06:29:05</updated>
+	<published>24-Sep-2017 14:18:16</published>
+	<updated>12-Apr-2019 15:29:05</updated>
 </video>
 
 <video type="video">
@@ -15522,7 +15560,7 @@ https://www.kinopoisk.ru/film/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh-1974-4406
 	</pictures>
 
 	<ul>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tcifkZWR1cA">embed video on youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tcifkZWR1cA">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -15535,8 +15573,8 @@ https://www.kinopoisk.ru/film/svoy-sredi-chuzhikh-chuzhoy-sredi-svoikh-1974-4406
 		<item tid="317">1974</item>
 	</tags>
 
-	<published>07-Oct-2017 00:20:48</published>
-	<updated>28-Mar-2019 08:55:24</updated>
+	<published>07-Oct-2017 09:20:48</published>
+	<updated>12-Apr-2019 23:29:05</updated>
 </video>
 
 <video type="video">
@@ -15592,8 +15630,8 @@ https://www.youtube.com/watch?v=EF5sOZrVNcs
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>22-Oct-2017 07:05:43</published>
-	<updated>22-Oct-2017 08:33:30</updated>
+	<published>22-Oct-2017 16:05:43</published>
+	<updated>22-Oct-2017 17:33:30</updated>
 </video>
 
 <video type="video">
@@ -15632,8 +15670,8 @@ https://www.youtube.com/watch?v=4DtkVaLyzqA
 		<item tid="307">2014</item>
 	</tags>
 
-	<published>22-Oct-2017 13:05:21</published>
-	<updated>22-Oct-2017 13:08:18</updated>
+	<published>22-Oct-2017 22:05:21</published>
+	<updated>22-Oct-2017 22:08:18</updated>
 </video>
 
 <video type="video">
@@ -15664,8 +15702,8 @@ https://www.youtube.com/watch?v=4DtkVaLyzqA
 		<item tid="275">2013</item>
 	</tags>
 
-	<published>28-Oct-2017 16:05:51</published>
-	<updated>27-Mar-2019 05:23:12</updated>
+	<published>29-Oct-2017 01:05:51</published>
+	<updated>27-Mar-2019 14:23:12</updated>
 </video>
 
 <video type="video">
@@ -16260,8 +16298,8 @@ https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/
 		<item tid="277">2011</item>
 	</tags>
 
-	<published>06-Nov-2017 06:49:10</published>
-	<updated>16-Nov-2017 18:47:47</updated>
+	<published>06-Nov-2017 15:49:10</published>
+	<updated>17-Nov-2017 03:47:47</updated>
 </video>
 
 <video type="video">
@@ -16300,8 +16338,8 @@ https://yandex.ru/video/favorites?ncrnd=6685</description>
 		<item tid="283">2005</item>
 	</tags>
 
-	<published>02-Jan-2018 07:54:43</published>
-	<updated>12-Apr-2019 06:00:28</updated>
+	<published>02-Jan-2018 16:54:43</published>
+	<updated>12-Apr-2019 15:00:28</updated>
 </video>
 
 <video type="video">
@@ -16328,8 +16366,8 @@ https://yandex.ru/video/favorites?filmId=9299413573818940804&amp;amp;ncrnd=2339&
 		<item tid="285">2002</item>
 	</tags>
 
-	<published>04-Jan-2018 14:20:47</published>
-	<updated>04-Jan-2018 14:22:47</updated>
+	<published>04-Jan-2018 23:20:47</published>
+	<updated>04-Jan-2018 23:22:47</updated>
 </video>
 
 <video type="video">
@@ -16358,8 +16396,8 @@ https://yandex.ru/video/favorites?filmId=9299413573818940804&amp;amp;ncrnd=2339&
 		<item tid="277">2011</item>
 	</tags>
 
-	<published>04-Jan-2018 16:44:18</published>
-	<updated>04-Jan-2018 16:49:31</updated>
+	<published>05-Jan-2018 01:44:18</published>
+	<updated>05-Jan-2018 01:49:31</updated>
 </video>
 
 <video type="video">
@@ -16413,8 +16451,8 @@ file:// protocol, open in Firefox (VLC), Epiphany</description>
 		<item tid="280">2008</item>
 	</tags>
 
-	<published>24-Feb-2018 09:54:45</published>
-	<updated>30-Mar-2019 16:05:44</updated>
+	<published>24-Feb-2018 18:54:45</published>
+	<updated>31-Mar-2019 01:05:44</updated>
 </video>
 
 <video type="video">
@@ -16441,8 +16479,8 @@ https://yandex.ru/video/search?text=%D1%87%D0%B0%D1%81%D1%82%D0%B8%D1%86%D0%B0%2
 		<item tid="326">2016</item>
 	</tags>
 
-	<published>30-Apr-2018 13:33:02</published>
-	<updated>30-Apr-2018 13:46:43</updated>
+	<published>30-Apr-2018 22:33:02</published>
+	<updated>30-Apr-2018 22:46:43</updated>
 </video>
 
 <video type="video">
@@ -16474,8 +16512,8 @@ https://ok.ru/videoembed/900211477094?ya=1
 		<item tid="232">Г</item>
 	</tags>
 
-	<published>18-Nov-2018 14:05:29</published>
-	<updated>12-Apr-2019 06:06:16</updated>
+	<published>18-Nov-2018 23:05:29</published>
+	<updated>12-Apr-2019 15:06:16</updated>
 </video>
 
 <video type="video">
@@ -16525,8 +16563,8 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="291">1978</item>
 	</tags>
 
-	<published>03-Mar-2019 06:16:09</published>
-	<updated>27-Mar-2019 05:04:56</updated>
+	<published>03-Mar-2019 15:16:09</published>
+	<updated>27-Mar-2019 14:04:56</updated>
 </video>
 
 <video type="video">
@@ -16556,8 +16594,8 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="281">2007</item>
 	</tags>
 
-	<published>23-Mar-2019 11:26:30</published>
-	<updated>23-Mar-2019 11:31:22</updated>
+	<published>23-Mar-2019 20:26:30</published>
+	<updated>23-Mar-2019 20:31:22</updated>
 </video>
 
 <video type="video">
@@ -16590,8 +16628,8 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>29-Mar-2019 08:45:37</published>
-	<updated>04-Apr-2019 01:21:18</updated>
+	<published>29-Mar-2019 17:45:37</published>
+	<updated>04-Apr-2019 10:21:18</updated>
 </video>
 
 <video type="video">
@@ -16624,8 +16662,8 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>29-Mar-2019 08:53:07</published>
-	<updated>04-Apr-2019 01:19:54</updated>
+	<published>29-Mar-2019 17:53:07</published>
+	<updated>04-Apr-2019 10:19:54</updated>
 </video>
 
 <video type="videoclip">
@@ -16652,8 +16690,8 @@ https://www.youtube.com/watch?v=wpYEfXzpYSk</description>
 		<item tid="83">классика</item>
 	</tags>
 
-	<published>01-Dec-2012 09:25:02</published>
-	<updated>07-Apr-2019 09:00:42</updated>
+	<published>01-Dec-2012 18:25:02</published>
+	<updated>07-Apr-2019 18:00:42</updated>
 </video>
 
 <video type="videoclip">
@@ -16697,8 +16735,8 @@ Stage direction and lighting design: Giorgio Strehler</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>01-Dec-2012 15:54:21</published>
-	<updated>31-Mar-2019 11:38:48</updated>
+	<published>02-Dec-2012 00:54:21</published>
+	<updated>31-Mar-2019 20:38:48</updated>
 </video>
 
 <video type="videoclip">
@@ -16782,8 +16820,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>01-Dec-2012 16:24:28</published>
-	<updated>31-Mar-2019 10:50:49</updated>
+	<published>02-Dec-2012 01:24:28</published>
+	<updated>31-Mar-2019 19:50:49</updated>
 </video>
 
 <video type="videoclip">
@@ -16808,8 +16846,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 07:08:11</published>
-	<updated>12-Apr-2019 09:06:20</updated>
+	<published>08-Dec-2012 16:08:11</published>
+	<updated>12-Apr-2019 18:06:20</updated>
 </video>
 
 <video type="videoclip">
@@ -16837,8 +16875,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 07:30:33</published>
-	<updated>29-Mar-2019 05:12:08</updated>
+	<published>08-Dec-2012 16:30:33</published>
+	<updated>29-Mar-2019 14:12:08</updated>
 </video>
 
 <video type="videoclip">
@@ -16862,8 +16900,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="23">mpg</item>
 	</tags>
 
-	<published>08-Dec-2012 08:13:54</published>
-	<updated>07-Apr-2019 08:45:02</updated>
+	<published>08-Dec-2012 17:13:54</published>
+	<updated>07-Apr-2019 17:45:02</updated>
 </video>
 
 <video type="videoclip">
@@ -16893,8 +16931,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="23">mpg</item>
 	</tags>
 
-	<published>08-Dec-2012 08:25:34</published>
-	<updated>07-Apr-2019 05:53:00</updated>
+	<published>08-Dec-2012 17:25:34</published>
+	<updated>07-Apr-2019 14:53:00</updated>
 </video>
 
 <video type="videoclip">
@@ -16920,8 +16958,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:31:42</published>
-	<updated>31-Mar-2019 10:11:39</updated>
+	<published>08-Dec-2012 17:31:42</published>
+	<updated>31-Mar-2019 19:11:39</updated>
 </video>
 
 <video type="videoclip">
@@ -16950,8 +16988,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>08-Dec-2012 08:52:08</published>
-	<updated>07-Apr-2019 06:05:00</updated>
+	<published>08-Dec-2012 17:52:08</published>
+	<updated>07-Apr-2019 15:05:00</updated>
 </video>
 
 <video type="videoclip">
@@ -16978,8 +17016,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>08-Dec-2012 08:55:21</published>
-	<updated>31-Mar-2019 10:16:54</updated>
+	<published>08-Dec-2012 17:55:21</published>
+	<updated>31-Mar-2019 19:16:54</updated>
 </video>
 
 <video type="videoclip">
@@ -17009,8 +17047,8 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>08-Dec-2012 09:03:53</published>
-	<updated>07-Apr-2019 08:52:38</updated>
+	<published>08-Dec-2012 18:03:53</published>
+	<updated>07-Apr-2019 17:52:38</updated>
 </video>
 
 <video type="videoclip">
@@ -17040,8 +17078,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="23">mpg</item>
 	</tags>
 
-	<published>18-May-2013 10:06:19</published>
-	<updated>06-Apr-2019 15:18:41</updated>
+	<published>18-May-2013 19:06:19</published>
+	<updated>07-Apr-2019 00:18:41</updated>
 </video>
 
 <video type="videoclip">
@@ -17065,8 +17103,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="22">avi</item>
 	</tags>
 
-	<published>18-May-2013 10:26:39</published>
-	<updated>29-Mar-2019 05:33:43</updated>
+	<published>18-May-2013 19:26:39</published>
+	<updated>29-Mar-2019 14:33:43</updated>
 </video>
 
 <video type="videoclip">
@@ -17089,8 +17127,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>18-May-2013 11:41:00</published>
-	<updated>30-Mar-2019 00:40:03</updated>
+	<published>18-May-2013 20:41:00</published>
+	<updated>30-Mar-2019 09:40:03</updated>
 </video>
 
 <video type="videoclip">
@@ -17114,8 +17152,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>19-May-2013 09:47:23</published>
-	<updated>29-Mar-2019 06:01:28</updated>
+	<published>19-May-2013 18:47:23</published>
+	<updated>29-Mar-2019 15:01:28</updated>
 </video>
 
 <video type="videoclip">
@@ -17141,8 +17179,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>19-May-2013 09:49:04</published>
-	<updated>26-Mar-2019 13:39:07</updated>
+	<published>19-May-2013 18:49:04</published>
+	<updated>26-Mar-2019 22:39:07</updated>
 </video>
 
 <video type="videoclip">
@@ -17168,8 +17206,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>28-May-2013 14:09:32</published>
-	<updated>07-Apr-2019 09:31:14</updated>
+	<published>28-May-2013 23:09:32</published>
+	<updated>07-Apr-2019 18:31:14</updated>
 </video>
 
 <video type="videoclip">
@@ -17195,8 +17233,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>28-May-2013 14:19:27</published>
-	<updated>07-Apr-2019 09:51:25</updated>
+	<published>28-May-2013 23:19:27</published>
+	<updated>07-Apr-2019 18:51:25</updated>
 </video>
 
 <video type="videoclip">
@@ -17218,8 +17256,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>15-Jun-2013 13:13:43</published>
-	<updated>07-Apr-2019 10:14:10</updated>
+	<published>15-Jun-2013 22:13:43</published>
+	<updated>07-Apr-2019 19:14:10</updated>
 </video>
 
 <video type="videoclip">
@@ -17248,8 +17286,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>16-Jun-2013 08:43:12</published>
-	<updated>07-Apr-2019 09:21:19</updated>
+	<published>16-Jun-2013 17:43:12</published>
+	<updated>07-Apr-2019 18:21:19</updated>
 </video>
 
 <video type="videoclip">
@@ -17273,8 +17311,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:18:00</published>
-	<updated>07-Apr-2019 09:59:25</updated>
+	<published>18-Jun-2013 09:18:00</published>
+	<updated>07-Apr-2019 18:59:25</updated>
 </video>
 
 <video type="videoclip">
@@ -17301,8 +17339,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>18-Jun-2013 00:19:34</published>
-	<updated>01-Apr-2019 08:14:32</updated>
+	<published>18-Jun-2013 09:19:34</published>
+	<updated>01-Apr-2019 17:14:32</updated>
 </video>
 
 <video type="videoclip">
@@ -17329,8 +17367,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>12-Jan-2014 07:06:44</published>
-	<updated>30-Mar-2019 00:02:06</updated>
+	<published>12-Jan-2014 16:06:44</published>
+	<updated>30-Mar-2019 09:02:06</updated>
 </video>
 
 <video type="videoclip">
@@ -17362,8 +17400,8 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>12-Jan-2014 07:20:30</published>
-	<updated>27-Mar-2019 12:50:44</updated>
+	<published>12-Jan-2014 16:20:30</published>
+	<updated>27-Mar-2019 21:50:44</updated>
 </video>
 
 <video type="videoclip">
@@ -17390,8 +17428,8 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>12-Jan-2014 07:29:45</published>
-	<updated>27-Mar-2019 12:47:17</updated>
+	<published>12-Jan-2014 16:29:45</published>
+	<updated>27-Mar-2019 21:47:17</updated>
 </video>
 
 <video type="videoclip">
@@ -17413,8 +17451,8 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 		<item tid="239">Л</item>
 	</tags>
 
-	<published>12-Jan-2014 10:44:33</published>
-	<updated>17-Mar-2019 13:32:08</updated>
+	<published>12-Jan-2014 19:44:33</published>
+	<updated>17-Mar-2019 22:32:08</updated>
 </video>
 
 <video type="videoclip">
@@ -17442,8 +17480,8 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>12-Jan-2014 11:07:41</published>
-	<updated>26-Mar-2019 12:53:18</updated>
+	<published>12-Jan-2014 20:07:41</published>
+	<updated>26-Mar-2019 21:53:18</updated>
 </video>
 
 <video type="videoclip">
@@ -17471,8 +17509,8 @@ https://www.youtube.com/watch?v=8AJDF90ETgw</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>25-Apr-2014 14:53:38</published>
-	<updated>17-Mar-2019 13:28:24</updated>
+	<published>25-Apr-2014 23:53:38</published>
+	<updated>17-Mar-2019 22:28:24</updated>
 </video>
 
 <video type="videoclip">
@@ -17505,8 +17543,8 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>25-Apr-2014 14:57:12</published>
-	<updated>17-Mar-2019 13:30:52</updated>
+	<published>25-Apr-2014 23:57:12</published>
+	<updated>17-Mar-2019 22:30:52</updated>
 </video>
 
 <video type="videoclip">
@@ -17533,8 +17571,8 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>02-May-2014 12:40:26</published>
-	<updated>11-Apr-2019 05:01:25</updated>
+	<published>02-May-2014 21:40:26</published>
+	<updated>11-Apr-2019 14:01:25</updated>
 </video>
 
 <video type="videoclip">
@@ -17567,8 +17605,8 @@ http://roerich-encyclopedia.facets.ru/slowar/TASHILAM.html</description>
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>02-May-2014 12:44:56</published>
-	<updated>11-Apr-2019 04:59:08</updated>
+	<published>02-May-2014 21:44:56</published>
+	<updated>11-Apr-2019 13:59:08</updated>
 </video>
 
 <video type="videoclip">
@@ -17595,8 +17633,8 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%81%D0%BD%D1%8C_%D0%91%D0%BE%D0%B3%D
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>11-May-2014 08:35:57</published>
-	<updated>11-Apr-2019 04:56:42</updated>
+	<published>11-May-2014 17:35:57</published>
+	<updated>11-Apr-2019 13:56:42</updated>
 </video>
 
 <video type="videoclip">
@@ -17623,8 +17661,8 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>22-Oct-2017 07:55:37</published>
-	<updated>01-Apr-2019 08:03:38</updated>
+	<published>22-Oct-2017 16:55:37</published>
+	<updated>01-Apr-2019 17:03:38</updated>
 </video>
 
 <video type="videoclip">
@@ -17649,8 +17687,8 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>22-Oct-2017 09:36:52</published>
-	<updated>27-Mar-2019 12:12:16</updated>
+	<published>22-Oct-2017 18:36:52</published>
+	<updated>27-Mar-2019 21:12:16</updated>
 </video>
 
 <video type="videoclip">
@@ -17674,8 +17712,8 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>22-Oct-2017 09:51:08</published>
-	<updated>27-Mar-2019 05:29:20</updated>
+	<published>22-Oct-2017 18:51:08</published>
+	<updated>27-Mar-2019 14:29:20</updated>
 </video>
 
 <video type="videoclip">
@@ -17701,8 +17739,8 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>03-Mar-2019 06:53:02</published>
-	<updated>27-Mar-2019 12:23:01</updated>
+	<published>03-Mar-2019 15:53:02</published>
+	<updated>27-Mar-2019 21:23:01</updated>
 </video>
 
 <video type="videoclip">
@@ -17732,8 +17770,8 @@ https://www.youtube.com/watch?v=QrU1hZxSEXQ&amp;amp;t=0s&amp;amp;index=16&amp;am
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>03-Mar-2019 07:00:17</published>
-	<updated>29-Mar-2019 13:28:53</updated>
+	<published>03-Mar-2019 16:00:17</published>
+	<updated>29-Mar-2019 22:28:53</updated>
 </video>
 
 <video type="videoclip">
@@ -17765,8 +17803,8 @@ https://ok.ru/video/3196192005</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>03-Mar-2019 07:05:27</published>
-	<updated>17-Mar-2019 13:42:11</updated>
+	<published>03-Mar-2019 16:05:27</published>
+	<updated>17-Mar-2019 22:42:11</updated>
 </video>
 
 <video type="videoclip">
@@ -17794,8 +17832,8 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 07:19:25</published>
-	<updated>29-Mar-2019 15:15:20</updated>
+	<published>03-Mar-2019 16:19:25</published>
+	<updated>30-Mar-2019 00:15:20</updated>
 </video>
 
 <video type="videoclip">
@@ -17822,8 +17860,8 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 07:34:42</published>
-	<updated>29-Mar-2019 15:22:25</updated>
+	<published>03-Mar-2019 16:34:42</published>
+	<updated>30-Mar-2019 00:22:25</updated>
 </video>
 
 <video type="videoclip">
@@ -17850,8 +17888,8 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 07:40:01</published>
-	<updated>29-Mar-2019 15:25:44</updated>
+	<published>03-Mar-2019 16:40:01</published>
+	<updated>30-Mar-2019 00:25:44</updated>
 </video>
 
 <video type="videoclip">
@@ -17878,8 +17916,8 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 07:41:53</published>
-	<updated>29-Mar-2019 15:17:50</updated>
+	<published>03-Mar-2019 16:41:53</published>
+	<updated>30-Mar-2019 00:17:50</updated>
 </video>
 
 <video type="videoclip">
@@ -17906,8 +17944,8 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 07:45:20</published>
-	<updated>29-Mar-2019 15:07:27</updated>
+	<published>03-Mar-2019 16:45:20</published>
+	<updated>30-Mar-2019 00:07:27</updated>
 </video>
 
 <video type="videoclip">
@@ -17934,8 +17972,8 @@ https://rutube.ru/video/d623bf4322e98718ce8f7a8b46bc2a4a/?ref=search</descriptio
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>03-Mar-2019 08:01:12</published>
-	<updated>29-Mar-2019 15:04:35</updated>
+	<published>03-Mar-2019 17:01:12</published>
+	<updated>30-Mar-2019 00:04:35</updated>
 </video>
 
 <video type="videoclip">
@@ -17972,8 +18010,8 @@ https://ok.ru/video/1147112392106
 		<item tid="326">2016</item>
 	</tags>
 
-	<published>03-Mar-2019 08:13:24</published>
-	<updated>23-Mar-2019 11:05:30</updated>
+	<published>03-Mar-2019 17:13:24</published>
+	<updated>23-Mar-2019 20:05:30</updated>
 </video>
 
 <video type="videoclip">
@@ -18000,8 +18038,8 @@ https://ok.ru/video/1147112392106
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>26-Mar-2019 13:16:32</published>
-	<updated>26-Mar-2019 13:27:49</updated>
+	<published>26-Mar-2019 22:16:32</published>
+	<updated>26-Mar-2019 22:27:49</updated>
 </video>
 
 <video type="videoclip">
@@ -18029,8 +18067,8 @@ https://ok.ru/video/1147112392106
 		<item tid="302">2015</item>
 	</tags>
 
-	<published>26-Mar-2019 13:21:35</published>
-	<updated>27-Mar-2019 03:51:27</updated>
+	<published>26-Mar-2019 22:21:35</published>
+	<updated>27-Mar-2019 12:51:27</updated>
 </video>
 
 <video type="videoclip">
@@ -18058,8 +18096,8 @@ https://ok.ru/video/1147112392106
 		<item tid="279">2009</item>
 	</tags>
 
-	<published>26-Mar-2019 13:25:39</published>
-	<updated>26-Mar-2019 13:26:01</updated>
+	<published>26-Mar-2019 22:25:39</published>
+	<updated>26-Mar-2019 22:26:01</updated>
 </video>
 
 <video type="videoclip">
@@ -18086,8 +18124,8 @@ https://ok.ru/video/1147112392106
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>27-Mar-2019 12:29:39</published>
-	<updated>27-Mar-2019 12:30:13</updated>
+	<published>27-Mar-2019 21:29:39</published>
+	<updated>27-Mar-2019 21:30:13</updated>
 </video>
 
 <video type="videoclip">
@@ -18114,8 +18152,8 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>27-Mar-2019 12:35:56</published>
-	<updated>27-Mar-2019 12:36:09</updated>
+	<published>27-Mar-2019 21:35:56</published>
+	<updated>27-Mar-2019 21:36:09</updated>
 </video>
 
 <video type="videoclip">
@@ -18142,8 +18180,8 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>27-Mar-2019 12:40:20</published>
-	<updated>27-Mar-2019 12:40:36</updated>
+	<published>27-Mar-2019 21:40:20</published>
+	<updated>27-Mar-2019 21:40:36</updated>
 </video>
 
 <video type="videoclip">
@@ -18170,8 +18208,8 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>28-Mar-2019 13:16:41</published>
-	<updated>28-Mar-2019 13:18:42</updated>
+	<published>28-Mar-2019 22:16:41</published>
+	<updated>28-Mar-2019 22:18:42</updated>
 </video>
 
 <video type="videoclip">
@@ -18197,8 +18235,8 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>28-Mar-2019 13:22:06</published>
-	<updated>28-Mar-2019 13:22:06</updated>
+	<published>28-Mar-2019 22:22:06</published>
+	<updated>28-Mar-2019 22:22:06</updated>
 </video>
 
 <video type="videoclip">
@@ -18225,8 +18263,8 @@ Limitless Soundtrack</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>28-Mar-2019 13:28:23</published>
-	<updated>28-Mar-2019 13:30:27</updated>
+	<published>28-Mar-2019 22:28:23</published>
+	<updated>28-Mar-2019 22:30:27</updated>
 </video>
 
 <video type="videoclip">
@@ -18253,8 +18291,8 @@ Limitless Soundtrack</description>
 		<item tid="272">youtube</item>
 	</tags>
 
-	<published>28-Mar-2019 13:34:38</published>
-	<updated>28-Mar-2019 13:34:38</updated>
+	<published>28-Mar-2019 22:34:38</published>
+	<updated>28-Mar-2019 22:34:38</updated>
 </video>
 
 <video type="videoclip">
@@ -18283,8 +18321,8 @@ Limitless Soundtrack</description>
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>29-Mar-2019 13:17:16</published>
-	<updated>29-Mar-2019 13:17:16</updated>
+	<published>29-Mar-2019 22:17:16</published>
+	<updated>29-Mar-2019 22:17:16</updated>
 </video>
 
 <video type="videoclip">
@@ -18313,8 +18351,8 @@ Limitless Soundtrack</description>
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>29-Mar-2019 13:20:23</published>
-	<updated>29-Mar-2019 13:20:23</updated>
+	<published>29-Mar-2019 22:20:23</published>
+	<updated>29-Mar-2019 22:20:23</updated>
 </video>
 
 <video type="videoclip">
@@ -18342,8 +18380,8 @@ Limitless Soundtrack</description>
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>29-Mar-2019 13:26:46</published>
-	<updated>29-Mar-2019 13:26:46</updated>
+	<published>29-Mar-2019 22:26:46</published>
+	<updated>29-Mar-2019 22:26:46</updated>
 </video>
 
 <video type="videoclip">
@@ -18371,8 +18409,8 @@ Limitless Soundtrack</description>
 		<item tid="25">flv</item>
 	</tags>
 
-	<published>29-Mar-2019 13:52:40</published>
-	<updated>29-Mar-2019 14:01:27</updated>
+	<published>29-Mar-2019 22:52:40</published>
+	<updated>29-Mar-2019 23:01:27</updated>
 </video>
 
 <video type="videoclip">
@@ -18398,8 +18436,8 @@ Limitless Soundtrack</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:05:09</published>
-	<updated>29-Mar-2019 14:14:10</updated>
+	<published>29-Mar-2019 23:05:09</published>
+	<updated>29-Mar-2019 23:14:10</updated>
 </video>
 
 <video type="videoclip">
@@ -18425,8 +18463,8 @@ Limitless Soundtrack</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:07:44</published>
-	<updated>29-Mar-2019 14:12:26</updated>
+	<published>29-Mar-2019 23:07:44</published>
+	<updated>29-Mar-2019 23:12:26</updated>
 </video>
 
 <video type="videoclip">
@@ -18452,8 +18490,8 @@ Limitless Soundtrack</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:22:22</published>
-	<updated>29-Mar-2019 14:22:22</updated>
+	<published>29-Mar-2019 23:22:22</published>
+	<updated>29-Mar-2019 23:22:22</updated>
 </video>
 
 <video type="videoclip">
@@ -18478,8 +18516,8 @@ Limitless Soundtrack</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:28:01</published>
-	<updated>29-Mar-2019 14:28:01</updated>
+	<published>29-Mar-2019 23:28:01</published>
+	<updated>29-Mar-2019 23:28:01</updated>
 </video>
 
 <video type="videoclip">
@@ -18505,8 +18543,8 @@ Limitless Soundtrack</description>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:33:06</published>
-	<updated>29-Mar-2019 14:33:06</updated>
+	<published>29-Mar-2019 23:33:06</published>
+	<updated>29-Mar-2019 23:33:06</updated>
 </video>
 
 <video type="videoclip">
@@ -18592,8 +18630,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>29-Mar-2019 14:39:14</published>
-	<updated>29-Mar-2019 14:41:49</updated>
+	<published>29-Mar-2019 23:39:14</published>
+	<updated>29-Mar-2019 23:41:49</updated>
 </video>
 
 <video type="videoclip">
@@ -18620,8 +18658,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 14:53:05</published>
-	<updated>29-Mar-2019 14:55:09</updated>
+	<published>29-Mar-2019 23:53:05</published>
+	<updated>29-Mar-2019 23:55:09</updated>
 </video>
 
 <video type="videoclip">
@@ -18647,8 +18685,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 15:34:33</published>
-	<updated>29-Mar-2019 15:34:33</updated>
+	<published>30-Mar-2019 00:34:33</published>
+	<updated>30-Mar-2019 00:34:33</updated>
 </video>
 
 <video type="videoclip">
@@ -18674,8 +18712,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 15:38:27</published>
-	<updated>29-Mar-2019 15:38:27</updated>
+	<published>30-Mar-2019 00:38:27</published>
+	<updated>30-Mar-2019 00:38:27</updated>
 </video>
 
 <video type="videoclip">
@@ -18701,8 +18739,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 15:41:41</published>
-	<updated>29-Mar-2019 15:41:41</updated>
+	<published>30-Mar-2019 00:41:41</published>
+	<updated>30-Mar-2019 00:41:41</updated>
 </video>
 
 <video type="videoclip">
@@ -18728,8 +18766,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>29-Mar-2019 15:44:41</published>
-	<updated>29-Mar-2019 15:44:41</updated>
+	<published>30-Mar-2019 00:44:41</published>
+	<updated>30-Mar-2019 00:44:41</updated>
 </video>
 
 <video type="videoclip">
@@ -18759,8 +18797,8 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 		<item tid="24">mp4</item>
 	</tags>
 
-	<published>31-Mar-2019 12:33:28</published>
-	<updated>31-Mar-2019 12:41:41</updated>
+	<published>31-Mar-2019 21:33:28</published>
+	<updated>31-Mar-2019 21:41:41</updated>
 </video>
 
 <video type="videoclip">
@@ -18788,8 +18826,8 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 		<item tid="83">классика</item>
 	</tags>
 
-	<published>31-Mar-2019 12:46:57</published>
-	<updated>31-Mar-2019 12:50:57</updated>
+	<published>31-Mar-2019 21:46:57</published>
+	<updated>31-Mar-2019 21:50:57</updated>
 </video>
 
 <video type="videoclip">
@@ -18816,8 +18854,8 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D1%83%D0%BC_(%D0%B0
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>31-Mar-2019 12:58:58</published>
-	<updated>31-Mar-2019 13:04:04</updated>
+	<published>31-Mar-2019 21:58:58</published>
+	<updated>31-Mar-2019 22:04:04</updated>
 </video>
 
 <video type="videoclip">
@@ -18844,8 +18882,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>31-Mar-2019 13:10:50</published>
-	<updated>31-Mar-2019 13:18:48</updated>
+	<published>31-Mar-2019 22:10:50</published>
+	<updated>31-Mar-2019 22:18:48</updated>
 </video>
 
 <video type="videoclip">
@@ -18874,8 +18912,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="83">классика</item>
 	</tags>
 
-	<published>31-Mar-2019 13:25:15</published>
-	<updated>31-Mar-2019 13:35:55</updated>
+	<published>31-Mar-2019 22:25:15</published>
+	<updated>31-Mar-2019 22:35:55</updated>
 </video>
 
 <video type="videoclip">
@@ -18901,8 +18939,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>01-Apr-2019 12:59:54</published>
-	<updated>01-Apr-2019 12:59:54</updated>
+	<published>01-Apr-2019 21:59:54</published>
+	<updated>01-Apr-2019 21:59:54</updated>
 </video>
 
 <video type="videoclip">
@@ -18928,8 +18966,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>01-Apr-2019 13:07:37</published>
-	<updated>01-Apr-2019 13:07:37</updated>
+	<published>01-Apr-2019 22:07:37</published>
+	<updated>01-Apr-2019 22:07:37</updated>
 </video>
 
 <video type="videoclip">
@@ -18954,8 +18992,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>01-Apr-2019 13:12:18</published>
-	<updated>01-Apr-2019 13:12:18</updated>
+	<published>01-Apr-2019 22:12:18</published>
+	<updated>01-Apr-2019 22:12:18</updated>
 </video>
 
 <video type="videoclip">
@@ -18981,8 +19019,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="48">видеоклипы</item>
 	</tags>
 
-	<published>01-Apr-2019 13:15:48</published>
-	<updated>01-Apr-2019 13:15:48</updated>
+	<published>01-Apr-2019 22:15:48</published>
+	<updated>01-Apr-2019 22:15:48</updated>
 </video>
 
 <video type="videoclip">
@@ -19010,8 +19048,8 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>02-Apr-2019 12:53:09</published>
-	<updated>02-Apr-2019 12:53:09</updated>
+	<published>02-Apr-2019 21:53:09</published>
+	<updated>02-Apr-2019 21:53:09</updated>
 </video>
 
 <video type="videoclip">
@@ -19043,8 +19081,8 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 		<item tid="49">музыкальное видео</item>
 	</tags>
 
-	<published>04-Apr-2019 13:01:51</published>
-	<updated>04-Apr-2019 13:02:06</updated>
+	<published>04-Apr-2019 22:01:51</published>
+	<updated>04-Apr-2019 22:02:06</updated>
 </video>
 	</database>
 </xroot>
