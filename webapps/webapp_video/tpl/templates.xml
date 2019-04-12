@@ -33,7 +33,7 @@
 				</div>
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center">{{ul}}
+				<div class="links text-center panel-body">{{ul}}
 	<div class="form-local-url panel-body hidden">
 		<label>form local url</label>
 		
@@ -107,8 +107,9 @@
 				<div class="text-center pictures">
 {{pictures}}
 				</div>
+				
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center">{{ul}}
+				<div class="links text-center panel-body">{{ul}}
 	<div class="form-local-url panel-body hidden">
 		<label>form local url</label>
 		
