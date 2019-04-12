@@ -33,7 +33,7 @@
 				</div>
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links">{{ul}}
+				<div class="links text-center">{{ul}}
 	<div class="form-local-url panel-body hidden">
 		<label>form local url</label>
 		
@@ -108,7 +108,7 @@
 {{pictures}}
 				</div>
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links">{{ul}}
+				<div class="links text-center">{{ul}}
 	<div class="form-local-url panel-body hidden">
 		<label>form local url</label>
 		
@@ -188,7 +188,7 @@
 <![CDATA[
 	<li>
 		<!-- <a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a> -->
-		<button type="button" class="btn btn-lg btn-orange" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
+		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
 	</li>
 ]]>
 		</html_code>

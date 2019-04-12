@@ -28,23 +28,20 @@ var webApp = {
 			"queryRes": []
 		},
 
-		"videoTypes" : [
-{ fileType:"ogg", testStr:'video/ogg; codecs="theora, vorbis"', support:false },
-{ fileType:"mp4", testStr:'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support:false },
-{ fileType:"m4v", testStr:'video/x-m4v', support:false },
-{ fileType:"webm", testStr:'video/webm; codecs="vp8.0, vorbis"', support:false },
-{ fileType:"mpg", testStr:'video/mpeg', support:false },//MPEG-1
-{ fileType:"mov", testStr:'video/quicktime', support:false },
-{ fileType:"wmv", testStr:'video/x-ms-wmv', support:false },//Windows Media Video
-{ fileType:"3gp", testStr:'video/3gpp', support:false },
-{ fileType:"flv", testStr:'video/x-flv', support:false },
-{ fileType:"mkv", testStr:'video/x-matroska', support:false },
-{ fileType:"vob", testStr:'video/x-ms-vob', support:false },
-{ fileType:"avi", testStr:'video/vnd.avi', support:false },
-{ fileType:"avi", testStr:'video/avi', support:false },
-{ fileType:"avi", testStr:'video/msvideo', support:false },
-{ fileType:"avi", testStr:'video/x-msvideo', support:false }
-		],
+		"videoTypes" : {
+"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
+"mp4" : { testParam:['video/mp4; codecs="avc1.4D401E, mp4a.40.2"'], support:false },
+"m4v" : { testParam:['video/x-m4v'], support:false },
+"webm" : { testParam:['video/webm; codecs="vp8.0, vorbis"'], support:false },
+"mpg" : { testParam:['video/mpeg'], support:false },//MPEG-1
+"mov" : { testParam:['video/quicktime'], support:false },
+"wmv" : { testParam:['video/x-ms-wmv'], support:false },//Windows Media Video
+"3gp" : { testParam:['video/3gpp'], support:false },
+"flv" : { testParam:['video/x-flv'], support:false },
+"mkv" : { testParam:['video/x-matroska'], support:false },
+"vob" : { testParam:['video/x-ms-vob'], support:false },
+"avi" : { testParam:['video/vnd.avi','video/avi','video/msvideo', 'video/x-msvideo'], support:false }
+		},
 		
 		"playlist" : {
 			tracks:[
@@ -279,28 +276,34 @@ function testMediaSupport( videoTypes ){
 //console.log(key, _video[key]);
 	//}
 //}
+
 	if( typeof _video === "object"){
 		if( typeof _video["load"] === "function"){
 
-			for(var n = 0; n < videoTypes.length; n++){
-				var type = videoTypes[n]["testStr"];
-				var test = _video.canPlayType(type);
+			for(var ext in videoTypes){
+				var testParam = videoTypes[ext]["testParam"];
+				for(var n = 0; n < testParam.length; n++){
+					var type = testParam[n];
+					var test = _video.canPlayType(type);
 //console.log( "test: ", test, test.length);
-				
-				if( test && test.length > 0){
-//webApp.vars["logMsg"] = "test support for media type <b>"+type+"</b>: "+test;
-//func.log("<div class='alert alert-success'>" + webApp.vars["logMsg"] + "</div>");
-					videoTypes[n]["support"] = true;
-				} else {
+					if( test && test.length > 0){
+	//webApp.vars["logMsg"] = "test support for media type <b>"+type+"</b>: "+test;
+	//func.log("<div class='alert alert-success'>" + webApp.vars["logMsg"] + "</div>");
+						videoTypes[ext]["support"] = true;
+						break;
+					} else {
 webApp.vars["logMsg"] = "not support for media type <b>"+type+"</b>";
 func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>");
-//console.log( "-- test: ", test, test.length);
-				}
+	//console.log( "-- test: ", test, test.length);
+					}
+					
+				}//next
+				
 			}//next
 			
 		} else {
 			webApp.vars["logMsg"] = "creating a object VIDEO failed.";
-			func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		}
 	}
 	
@@ -1122,7 +1125,8 @@ console.log( error );
 
 //------------------ form timestamp
 		__addTimeStamp();
-
+		__checkSupport();
+			
 		return nodes;
 		
 		function __convertMultipleField( xfields){
@@ -1229,6 +1233,32 @@ console.log( error );
 						}
 
 						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
+					}
+				}
+			}//next
+		}// end __addTimeStamp()
+		
+		function __checkSupport(){
+			for(var n = 0; n < nodes.length; n++){
+				var links = nodes[n]["ul"];
+				if(!links){
+					continue;
+				}
+				for( var n2 = 0; n2 < links.length; n2++){
+					//links[n2]["class-support"] = "";
+					if( links[n2]["data-type"] === "local-file"){
+						var filepath = links[n2]["href"];
+						//get file type
+						var arr = filepath.split(".");
+						var filetype = arr[ (arr.length-1) ];
+						var videoType = webApp.vars["videoTypes"][filetype];
+//console.log(filetype, videoType);
+
+						if( videoType && videoType["support"]){
+							//links[n2]["class-support"] = "1";
+						} else {
+							links[n2]["class_support"] = "wrong-video-type";
+						}
 					}
 				}
 			}//next
@@ -1902,11 +1932,15 @@ console.log(webApp.vars["logMsg"]);
 			for( var key in data ){
 //console.log(key, data[key]);
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, p["data"][key]);
+//console.log(key, data[key]);
 					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
 				}
 			}//next
 			
+//--------------- clear undefined keys (text between {{...}} )
+_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
+//--------------------			
+
 			return _html;
 		}//end __formNodeHtml()
 		

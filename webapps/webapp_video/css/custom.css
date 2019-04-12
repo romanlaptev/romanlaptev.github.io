@@ -369,9 +369,23 @@ box-shadow: 5px 5px 15px #4f5a6e;
 }
 
 
-
 .type-videoclip .panel-heading{
 color:#000
+}
+
+
+
+.wrong-video-type {
+	cursor: not-allowed;
+filter: alpha(opacity=55);
+opacity: .55;
+
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	
+background-color: #800000 !important;
+background: none;
+color: #fff;
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/::-moz-range-thumb */
