@@ -1537,7 +1537,7 @@ Manfred Honeck, direction
 		<item>Amadeus</item>
 </title>
 	
-	
+	<producer>Милош Форман / Milos Forman</producer>
 	<roles>Ф. Мюрей Абрахам (F. Murray Abraham), 
 Кенни Бэйкер (Kenny Baker), 
 Том Халс (Tom Hulce), 
@@ -1552,8 +1552,7 @@ Manfred Honeck, direction
 Барбара Брайн (Barbara Bryne), 
 Гана Брейхова (Hana Brejchova)
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
- Экранизация театральной постановки Питера Шэффера, написанная под впечатлением
+	<description>Экранизация театральной постановки Питера Шэффера, написанная под впечатлением
 от трагедии Александра Пушкина «Моцарт и Сальери» и одноименной оперы Николая Римского-Корсакова, 
 которые, в свою очередь, были вольной интерпретацией биографий композиторов
  Вольфганга Амадея Моцарта и Антонио Сальери.
@@ -1563,15 +1562,14 @@ Manfred Honeck, direction
 дворе появляется Моцарт, Сальери к своему ужасу обнаруживает, 
 что божественный музыкальный дар, которым он так желает обладать, 
 был отпущен какому-то непристойному, проказливому шуту. 
-Ослепленный завистью, он замышляет во что бы то ни стало уничтожить Моцарта...
-	&amp;lt;/pre&amp;gt;</description>
+Ослепленный завистью, он замышляет во что бы то ни стало уничтожить Моцарта...</description>
 	<pictures>
 		<img src="/video/0_covers/Amadeus.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/A/amadeus.avi">amadeus.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Amadeus (Directors Cut)_[rutracker.org]/Amadeus (Directors Cut)_[rutracker.org].avi">Amadeus (Directors Cut)_[rutracker.org].avi</a></li>
 	</ul>
 
 	<tags>
@@ -1582,7 +1580,7 @@ Manfred Honeck, direction
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>16-Jun-2013 01:52:13</updated>
+	<updated>12-Apr-2019 06:32:34</updated>
 </video>
 
 <video type="video">
@@ -2039,9 +2037,10 @@ Gerd Vespermann (Bobby),
 <video type="video">
 	<title>
 		<item>Пунш из жжёного сахара</item>
+		<item>Die Feuerzangenbowle</item>
 </title>
 	
-	
+	<producer>Гельмут Вайс</producer>
 	<roles>Heinz Rühmann, 
 Karin Himboldt, 
 Hilde Sessak, 
@@ -2069,12 +2068,16 @@ Rudi Schippel
 недель в школу, чтобы он смог сделать вещи, которые никогда 
 не делал раньше.
 &amp;lt;/pre&amp;gt;
-http://www.kinopoisk.ru/film/228479/</description>
+https://www.kinopoisk.ru/film/72293/</description>
 	<pictures>
 		<img src="/video/0_covers/punsh.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/72293.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/DieFeuerzahngenbowle/Die_Feuerzangenbowle.avi">Die_Feuerzangenbowle.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/812739201537">OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -2087,7 +2090,7 @@ http://www.kinopoisk.ru/film/228479/</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Dec-2017 06:49:05</updated>
+	<updated>12-Apr-2019 06:18:29</updated>
 </video>
 
 <video type="video">
@@ -7730,9 +7733,10 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 <video type="video">
 	<title>
 		<item>Пролетая над гнездом кукушки</item>
+		<item>One Flew Over the Cuckoo's Nest</item>
 </title>
 	
-	
+	<producer>Милош Форман / Milos Forman</producer>
 	<roles>Джек Николсон (Jack Nicholson)
 Луиз Флетчер (Louise Fletcher)
 Уилльям Редфилд (William Redfield)
@@ -7741,22 +7745,13 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 Дэнни Де Вито (Danny Devito)
 	</roles>
 	<description>Автор сценария : Бо Голдман, Кен Кизи (роман)
-&amp;lt;pre&amp;gt;
-Материал из Википедии — свободной энциклопедии
-Преступник Рэндл Патрик Макмёрфи (Джек Николсон) попадает в тюрьму на небольшой срок. Чтобы отдохнуть от тюремного труда, он симулирует умопомешательство и попадает в психиатрическую клинику для обследования. Свободный духом, оригинальный, с горячей кровью в жилах и острый на язык бунтарь наслаждается кажущейся свободой в компании очаровательных психов и надеется провести так весь остаток своего заключения. Но постепенно он понимает, насколько несвободны пациенты клиники и как их подавляет старшая медсестра Милдред Рэтчед (Луиза Флетчер), установившая в отделении строгий распорядок и неукоснительно требующая его соблюдения. Это вызывает внутренний протест в Макмёрфи и он начинает «лечить» пациентов по-своему: сначала он играет с ними в карты и баскетбол, а затем и вовсе без разрешения вывозит их на рыбалку на катере. Между Рэтчед и Макмёрфи начинается борьба за умы и сердца пациентов. Макмёрфи узнаёт, что многие пациенты находятся в лечебнице по собственной воле (в то время как он сам — на принудительном лечении) и не может с этим смириться. Он пытается показать им преимущества свободной жизни и самостоятельности. В то же время деспотичная сестра Рэтчед начинает «закручивать гайки» и указывать пациентам на их ничтожность и зависимость. Но Макмёрфи постепенно берёт верх в этой дуэли.
-
-Для закрепления своей победы он решает устроить в отделении вечеринку с выпивкой и девочками, а затем сбежать. Подкупив санитара, он проводит в больницу знакомых девушек лёгкого поведения со спиртным. Гулянка удалась на славу, но перед самым побегом он просит одну из девушек заняться сексом (возможно, избавить от девственности) с одним молодым и чрезвычайно застенчивым пациентом, к которому испытывал особое расположение. Между тем пьяный Макмёрфи засыпает (хотя окно с решёткой уже открыто и остаётся лишь вылезти наружу), и побег не удаётся. А наутро приходит медсестра Рэтчед, и, увидев повсюду хаос и беспорядок, приходит в холодную ярость. Застав молодого пациента с проституткой, она начинает укорять его, зная о его психической нестабильности, угрожая рассказать о случившемся матери пациента. Он не может вынести её укоров, выходит из себя, и санитары уводят его в отдельную палату, где он, оставшись один, кончает жизнь самоубийством. Увидев это, Макмёрфи приходит в ярость и набрасывается на сестру Рэтчед, чтобы её задушить. Его оттаскивают, признают агрессивным помешанным и подвергают лоботомии.
-
-В заключительной сцене фильма огромный пациент-индеец по кличке «Вождь» (Уилл Сэмпсон), 
-который также планировал сбежать с главным героем, сжаливается над свободолюбивым Макмёрфи, 
-который после «лечения» превратился в «овощ», и убивает его, задушив подушкой, 
-а затем сбегает один на свободу, осуществив мечту Макмёрфи.
-&amp;lt;/prr&amp;gt;</description>
+https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/O/OneFlewOverTheCokoosNest/OneFlewOverTheCokoosNest1.avi">OneFlewOverTheCokoosNest1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/O/OneFlewOverTheCokoosNest/OneFlewOverTheCokoosNest1.avi">OneFlewOverTheCokoosNest2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/O/OneFlewOverTheCokoosNest/One Flew Over The Cuckoos Nest.mkv">One Flew Over The Cuckoos Nest.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -7773,7 +7768,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>17-Dec-2017 05:28:54</updated>
+	<updated>12-Apr-2019 06:24:38</updated>
 </video>
 
 <video type="video">
@@ -14936,14 +14931,26 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 		<item>Der Stolz der 3. Kompanie</item>
 </title>
 	
-	
-	
+	<producer>Фред Зауэр</producer>
+	<roles>Хайнц Рюманн
+Антон Уолбрук
+Ойген Бург
+Фердинанд фон Альтен
+Йозеф Петерханс
+Вальтер Штайнбек
+Виктор де Кова
+Фриц Камперс
+Герхард Бинерт
+Рудольф Платте	</roles>
 	<description>http://www.kinopoisk.ru/film/73041/</description>
 	<pictures>
 		<img src="/video/0_covers/der_stolz.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/Der.Stolz.der.3.Kompanie.1932.Ger.[vo.satkur+ger].AC3.Rus.avi">Der.Stolz.der.3.Kompanie.1932.Ger.[vo.satkur+ger].AC3.Rus.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1049546787428">OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -14956,7 +14963,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	</tags>
 
 	<published>31-Dec-2015 16:27:22</published>
-	<updated>13-Sep-2016 13:02:13</updated>
+	<updated>12-Apr-2019 06:11:16</updated>
 </video>
 
 <video type="video">
@@ -15472,16 +15479,16 @@ https://www.kinopoisk.ru/film/257386/
 		<item>Taking Off</item>
 </title>
 	
+	<producer>Милош Форман / Milos Forman </producer>
 	
-	
-	<description>&amp;lt;li&amp;gt;&amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;https://yandex.ru/video/search?text=Отрыв (1971) смотреть онлайн&amp;amp;amp;duration=long&amp;quot; class=&amp;quot;btn btn-success&amp;quot;&amp;gt;Найти в Yandex »&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;https://www.google.com/#q=Отрыв (1971) смотреть онлайн&amp;amp;amp;tbm=vid&amp;amp;amp;tbs=dur:l&amp;quot; class=&amp;quot;btn btn-success&amp;quot;&amp;gt;Найти в Google »&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-http://kadu.ru/video/699660-Otryv-Film
+	<description>http://kadu.ru/video/699660-Otryv-Film
 
 https://www.kinopoisk.ru/film/otryv-1971-14970/</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/O/Otryv.1971.DUAL.BDRip.XviD.AC3.-HQCLUB.avi">Otryv.1971.DUAL.BDRip.XviD.AC3.-HQCLUB.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -15495,7 +15502,7 @@ https://www.kinopoisk.ru/film/otryv-1971-14970/</description>
 	</tags>
 
 	<published>24-Sep-2017 05:18:16</published>
-	<updated>04-Jan-2018 16:31:51</updated>
+	<updated>12-Apr-2019 06:29:05</updated>
 </video>
 
 <video type="video">
@@ -16260,17 +16267,29 @@ https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/
 <video type="video">
 	<title>
 		<item>Идиократия</item>
+		<item>Idiocracy</item>
 </title>
 	
-	
-	
+	<producer>Майк Джадж / Mike Judge</producer>
+	<roles>Люк Уилсон
+Майя Рудольф
+Дэкс Шепард
+Терри Крюс
+Энтони Кампос
+Дэвид Херман
+Сонни Кастильо
+Кевин МакЭфи
+Роберт Мусгрейв
+Майкл МакКафферти	</roles>
 	<description>https://www.kinopoisk.ru/film/idiokratiya-2005-77720/
 https://yandex.ru/video/favorites?ncrnd=6685</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_77720.jpg"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="http://ok.ru/videoembed/91456211607">OK.ru</a> </li>
+	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
@@ -16282,7 +16301,7 @@ https://yandex.ru/video/favorites?ncrnd=6685</description>
 	</tags>
 
 	<published>02-Jan-2018 07:54:43</published>
-	<updated>28-Mar-2019 08:50:49</updated>
+	<updated>12-Apr-2019 06:00:28</updated>
 </video>
 
 <video type="video">
@@ -16438,12 +16457,15 @@ https://yandex.ru/video/search?text=%D1%87%D0%B0%D1%81%D1%82%D0%B8%D1%86%D0%B0%2
 https://www.youtube.com/watch?v=1vvmo1CvvhE
 https://yandex.ru/collections/card/5bf1727d4913c77cec2782f3/
 
-&amp;lt;iframe width=&amp;quot;640&amp;quot; height=&amp;quot;480&amp;quot; src=&amp;quot;https://ok.ru/videoembed/900211477094&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
 https://ok.ru/videoembed/900211477094?ya=1
 1 серия</description>
-	
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/1118176.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/900211477094">1 серия, OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="96">история</item>
@@ -16453,7 +16475,7 @@ https://ok.ru/videoembed/900211477094?ya=1
 	</tags>
 
 	<published>18-Nov-2018 14:05:29</published>
-	<updated>18-Nov-2018 14:24:32</updated>
+	<updated>12-Apr-2019 06:06:16</updated>
 </video>
 
 <video type="video">
