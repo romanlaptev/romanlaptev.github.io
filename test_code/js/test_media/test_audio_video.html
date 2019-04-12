@@ -46,38 +46,49 @@ function testMediaSupport(){
 'audio/ogg; codecs="vorbis"',
 'audio/webm',//WebM
 'audio/mpeg; codecs="mp3"',
-'audio/mp4; codecs="mp4a.40.5"',
+'audio/x-mpeg',// (MPEG audio: mp2,mp3,mpga,mpega)
+'audio/mp4; codecs="mp4a.40.5"', //(MPEG-4 audio: mp4,mpg4)
+'audio/x-m4a', //(MPEG-4 audio: m4a)
 'audio/x-ms-wma', //Windows Media Audio
 'audio/x-ms-wax', //Windows Media Audio перенаправление
-'audio/x-matroska'
+'audio/3gpp',
+'audio/x-matroska'// (Matroska audio: mka)
 	];
 	
 	var videoTypes = [
 //"video/MP4V-ES",
 
 'video/ogg; codecs="theora, vorbis"',
+'application/ogg',
+'application/x-ogg',
 
 //"video/mp4",
-'video/mp4; codecs="avc1.4D401E, mp4a.40.2"',
+'video/mp4; codecs="avc1.4D401E, mp4a.40.2"',//(MPEG-4 video: mp4,mpg4)
 'video/x-m4v',
 
 //"video/webm",
 'video/webm; codecs="vp8.0, vorbis"',
 
 "video/mpeg",//MPEG-1
-"video/quicktime",
-"video/x-ms-wmv",//Windows Media Video
+"video/x-mpeg", //(MPEG video: mpg,mpeg,mpe)
+"video/quicktime",//(QuickTime video: mov,qt)
 
 "video/3gpp",
 //'video/3gpp; codecs="mp4v.20.8, samr',
 "video/3gpp2",
 
+"video/flv",
 "video/x-flv",
 //"rtmp/flv",
+"video/divx", //(DivX video: divx)
 
+"video/x-ms-wmv",//Windows Media Video
+"video/x-ms-wvx",//(Windows Media Video: wvx)
 "video/vnd.avi",  "video/avi",  "video/msvideo",  "video/x-msvideo",
+"video/x-ms-asf", //(Windows Media Video: asf,asx)
+"application/x-mplayer2",//(Windows Media), Windows Media Player Plugin
 
-"video/x-matroska",
+"video/x-matroska", //(Matroska video: mkv)
 "video/x-ms-vob",
 "model/vnd.mts"
 	];
