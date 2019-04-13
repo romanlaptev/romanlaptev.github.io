@@ -70,8 +70,10 @@ var _vars = {
 		{"colorName": "bg-turquoise4","code": "#009b9b","text-color": "#fff"},
 		
 		{"colorName": "bg-blue8","code": "#669999","text-color": "#fff"},
-		{"colorName": "bg-blue9","code": "#99cccc"},
+		{"colorName": "bg-green-grey1","code": "#8ebac5"},
+		{"colorName": "bg-green-grey2","code": "#99cccc"},
 
+		
 		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
 		{"colorName": "bg-darkgreen33","code": "#003200"},/* windowsXP desktop */
 		{"colorName": "bg-darkgreen","code": "#0d4524"},/* gitlab header */
