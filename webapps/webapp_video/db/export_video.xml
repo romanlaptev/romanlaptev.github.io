@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="video">
 <taglist>
@@ -1134,7 +1134,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/E/El_perro_del_hortelano/El perro del hortelano.avi">El perro del hortelano.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/E/El_perro_del_hortelano/El perro del hortelano.avi">El perro del hortelano.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1150,7 +1150,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>26-Mar-2019 16:56:33</updated>
+	<updated>14-Apr-2019 22:01:03</updated>
 </video>
 
 <video type="video">
@@ -2212,18 +2212,21 @@ https://www.kinopoisk.ru/film/72293/</description>
 		<item>La cabina</item>
 </title>
 	
-	
+	<producer>Антонио Мерсеро</producer>
 	<roles>Хосе Луис Лопес Васке
 Агустин Гонсалес
 Гойо Лебреро
 Тито Гарсия
 		</roles>
-	<description>Этот 35-минутный сюрреалистический фильм, снятый испанским режиссёром Антонио Мерсеро в 1972 году - один из тех фильмов, которые трудно забыть.</description>
-	
+	<description>Этот 35-минутный сюрреалистический фильм, снятый испанским режиссёром Антонио Мерсеро в 1972 году - один из тех фильмов, которые трудно забыть. 
+https://www.kinopoisk.ru/film/342766/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/342766.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/T/telephonnaya_budka_[torrents.ru]/La_cabina_dvdrip_1972.avi">La_cabina_dvdrip_1972.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/bKkfGG9q32c">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -2236,7 +2239,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 11:53:48</updated>
+	<updated>14-Apr-2019 18:03:56</updated>
 </video>
 
 <video type="video">
@@ -2831,7 +2834,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item>Norsk - Folk Flest Bor I Kina</item>
 </title>
 	
-	
+	<producer>Томас Робсам, Мартин Аспхауг, Арилд Фрёлих</producer>
 	<roles>Тронд Хёвик (...Лассе)
 Марит Пиа Якобсен (...Марианна, сотрудница почты)
 Свен Нордин (...Мариус, &quot;человек в костюме&quot;)
@@ -2842,11 +2845,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 Сверре Анкер Оусдаль (...Мартин)
 Оле-Йорген Нильсен (...Рагнар, лидер коммунистов)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Перевод: субтитры (софтсаб)
-Cубтитры: русские (перевод мой), английские
-Оригинальная аудиодорожка: норвежский
-Режиссеры:
+	<description>Режиссеры:
     * Мортен Тюльдум / Morten Tyldum - эпизод &amp;quot;Человек в костюме&amp;quot; (Консервативная партия) по сценарию Пера Шрайнера,
     * Арильд Фрёлих / Arild Frqhlich - эпизод &amp;quot;Дом&amp;quot; (Партия центра) по сценарию Пера Шрайнера,
     * Сара Йонсен / Sara Johnsen - эпизод &amp;quot;Безграничная любовь&amp;quot; (Христианская народная партия) по сценарию Хетиль Лисмоэн,
@@ -2859,13 +2858,14 @@ Cубтитры: русские (перевод мой), английские
 
 Фильм вдохновлён программами восьми норвежских партий и снят девятью режиссёрами по сценариям шести сценаристов.
 Владелец заправочной станции Лассе проводит всё своё свободное время за починкой старого биплана &amp;quot;Тайгер Мот&amp;quot;, мечтая однажды подняться на нём в воздух. Тем временем за день до выборов вокруг его станции начинают происходить самые разные события. Мужчину, который решает оставить семью в машине, чтобы по-быстрому искупаться в лесном озере, ожидает неприятный сюрприз. Корова съедает мобильный телефон; лесбийская пара теряет ребёнка; слепая девочка и её маленький братик продают сомнительные лотерейные билеты; парень влюбляется в девушку с заправки; пожилой мужчина подбирает на дороге нахального молодого автостопщика; трём девушкам с заглохшей машиной помогает мужчина в пижаме; девять пенсионеров находят увязшую в болоте туристку.
-&amp;lt;/pre&amp;gt;</description>
-	
+
+https://www.kinopoisk.ru/film/bolshinstvo-lyudey-zhivyot-v-kitae-2002-61490/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/61490.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
+		<li><a data-type="local-file" href="/video/films/M/Most people live in China/Norsk - Folk Flest Bor I Kina (2002).avi">Norsk - Folk Flest Bor I Kina (2002).avi</a></li>
 	</ul>
 
 	<tags>
@@ -2873,12 +2873,14 @@ Cубтитры: русские (перевод мой), английские
 		<item tid="114">Норвегия</item>
 		<item tid="150">srt</item>
 		<item tid="22">avi</item>
+		<item tid="220">N</item>
+		<item tid="230">Б</item>
 		<item tid="320">sub_en</item>
 		<item tid="285">2002</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>17-Dec-2017 15:07:21</updated>
+	<updated>14-Apr-2019 17:46:06</updated>
 </video>
 
 <video type="video">
@@ -3650,6 +3652,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 <video type="video">
 	<title>
 		<item>Его новая работа</item>
+		<item>His New Job</item>
 </title>
 	
 	<producer>Чарльз Чаплин</producer>
@@ -3673,11 +3676,15 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 Попав на площадку, он, пытаясь войти в образ, обрушивает декорации, 
 неловко лишает приму нижней юбки и вообще совершает множество 
 несуразных поступков. 
-Ситуация усугубляется ещё и тем, что его недавний соперник принят на студию помощником плотника…</description>
-	
+Ситуация усугубляется ещё и тем, что его недавний соперник принят на студию помощником плотника…
+https://www.kinopoisk.ru/film/2163/</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/z54d9ZxHrnI/sddefault.jpg"/>
+	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/CH/chaplin_his_new_job.avi">chaplin_his_new_job.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/CH/chaplin_his_new_job.avi">chaplin_his_new_job.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/z54d9ZxHrnI">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -3690,7 +3697,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 10:23:30</updated>
+	<updated>14-Apr-2019 18:22:11</updated>
 </video>
 
 <video type="video">
@@ -3798,9 +3805,10 @@ Monica Viegas
 <video type="video">
 	<title>
 		<item>День зарплаты</item>
+		<item>Pay Day</item>
 </title>
 	
-	
+	<producer>Чарльз Чаплин</producer>
 	<roles>Чарльз Чаплин
 Лойал Андервуд
 Генри Бергман, Филлис
@@ -3810,14 +3818,14 @@ Monica Viegas
 Макк Суэйн
 Сид Чаплин
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Каждый день обычного рабочего абсолютно одинаков. Раннее утро, переполненный трамвай, тяжелая работа, переполненный трамвай, жена, отбирающая всю зарплату…
-&amp;lt;/pre&amp;gt;</description>
-	
+	<description>Каждый день обычного рабочего абсолютно одинаков. Раннее утро, переполненный трамвай, тяжелая работа, переполненный трамвай, жена, отбирающая всю зарплату…</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/2124.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/CH/chaplin_pay_day.avi">chaplin_pay_day.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/bnIbv1yTyHA">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -3830,7 +3838,7 @@ Monica Viegas
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 11:52:06</updated>
+	<updated>14-Apr-2019 18:11:35</updated>
 </video>
 
 <video type="video">
@@ -4474,9 +4482,10 @@ https://www.youtube.com/watch?v=X0Yk8gMPQ-s&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 <video type="video">
 	<title>
 		<item>Искатель приключений</item>
+		<item>The Adventurer</item>
 </title>
 	
-	
+	<producer>Чарли Чаплин</producer>
 	<roles>Чарли Чаплин
 Генри Бергман
 Альберт Остин
@@ -4488,16 +4497,17 @@ Monta Bell
 Эдна Пурвинс
 Джеймс Т. Келли
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Главный герой картины сбежал с каторги. Удирая от отряда полицейских, 
+	<description>Главный герой картины сбежал с каторги. Удирая от отряда полицейских, 
 он проделывает каскад грандиозных трюков. В фильме лихо закручен сюжет: 
 здесь и преследование, и спасение из воды, и перипетии на светском рауте.
-&amp;lt;/pre&amp;gt;</description>
-	
+https://www.kinopoisk.ru/film/2134/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/2134.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/A/the_adventurer.avi">the_adventurer.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/dFh5PL0-HDc">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -4510,32 +4520,35 @@ Monta Bell
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 10:30:42</updated>
+	<updated>14-Apr-2019 18:08:34</updated>
 </video>
 
 <video type="video">
 	<title>
 		<item>День развлечений</item>
+		<item>A Day's Pleasure</item>
 </title>
 	
-	
+	<producer>Чарльз Чаплин</producer>
 	<roles>Чарльз Чаплин, 
 Лойал Андервуд, 
 Генри Бергман, 
 Babe London
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Замечательный воскресный денек - 
+	<description>Замечательный воскресный денек - 
 отличный повод провести время со своей семьей. 
 Посадить жену и детей в новую машину и поехать развлекаться. 
 Вот только воскресенье - всеобщий праздник, а потому 
 спокойного и тихого отдыха семье точно не видать.
-&amp;lt;/pre&amp;gt;</description>
-	
+
+https://www.kinopoisk.ru/film/2128/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/2128.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/A/A_Days_Pleasure.avi">A_Days_Pleasure.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/SJxcYKbawzs">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -4548,7 +4561,7 @@ Babe London
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 10:28:59</updated>
+	<updated>14-Apr-2019 18:19:49</updated>
 </video>
 
 <video type="video">
@@ -4572,7 +4585,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/An_Eastern_Westerner.avi">An_Eastern_Westerner.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/An_Eastern_Westerner.avi">An_Eastern_Westerner.avi</a></li>
 	</ul>
 
 	<tags>
@@ -4587,7 +4600,7 @@ https://www.kinopoisk.ru/film/na-dikom-zapade-1920-120402/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 11:53:16</updated>
+	<updated>14-Apr-2019 17:59:45</updated>
 </video>
 
 <video type="video">
@@ -5170,6 +5183,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 <video type="video">
 	<title>
 		<item>Новые времена</item>
+		<item>Modern Times</item>
 </title>
 	
 	<producer>Чарлз Чаплин (Charles Chaplin)</producer>
@@ -5179,18 +5193,18 @@ https://www.kinopoisk.ru/film/278258/</description>
 Хэнк Манн (Hank Mann), 
 Честер Конклин (Chester Conklin)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Бродяга борется за жизнь в новом индустриальном обществе 
+	<description>Бродяга борется за жизнь в новом индустриальном обществе 
 вместе с бездомной женщиной.
 Последний немой фильм Чарльза Чаплина, в котором 
 он предлагает сатирический взгляд на автоматизацию жизни. 
-Со знаменитыми классическими эпизодами на заводском конвейере.
-&amp;lt;/pre&amp;gt;</description>
-	
+Со знаменитыми классическими эпизодами на заводском конвейере.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/Hke2oijJN2g/sddefault.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/M/modern_times.avi">modern_times.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Hke2oijJN2g">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -5198,11 +5212,12 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="157">Чарльз Чаплин</item>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
+		<item tid="219">M</item>
 		<item tid="334">немое кино</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 10:27:52</updated>
+	<updated>14-Apr-2019 18:14:50</updated>
 </video>
 
 <video type="video">
@@ -5248,7 +5263,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item>Театральный роман</item>
 </title>
 	
-	<producer>Юрий Гольдин / Олег Бабицкий</producer>
+	<producer>Юрий Гольдин, Олег Бабицкий</producer>
 	<roles>Игорь Ларин
 Максим Суханов
 Валерий Золотухин
@@ -5268,43 +5283,16 @@ https://www.kinopoisk.ru/film/278258/</description>
 Феликс Антипов
 Михаил Швыдкой
 	</roles>
-	<description>&amp;lt;pe&amp;gt;
-Экранизация известного сатирического произведения Михаила Булгакова. 
+	<description>Экранизация известного сатирического произведения Михаила Булгакова. 
 В основе сюжета – история постановки во МХТе пьесы «Дни Турбиных», 
 названной в романе и фильме «Черный снег». 
 Прообразы главных героев – основатели Художественного театра К. С. Станиславский и 
-В. И. Немирович-Данченко, знаменитые актеры, режиссеры, писатели того времени.
-&amp;lt;/pre&amp;gt;  
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;br&amp;gt;============================= LOCAL URL&amp;lt;br&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
+В. И. Немирович-Данченко, знаменитые актеры, режиссеры, писатели того времени.</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/T/Teatralnyj.roman.KP.2003.DVDRip.avi">Teatralnyj.roman.KP.2003.DVDRip.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="42">трагикомедия</item>
@@ -5312,10 +5300,12 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 		<item tid="107">Сухоруков, Виктор</item>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
+		<item tid="246">Т</item>
+		<item tid="285">2002</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>22-May-2013 17:47:13</updated>
+	<updated>14-Apr-2019 22:02:57</updated>
 </video>
 
 <video type="video">
@@ -6709,7 +6699,7 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/SH/Sherlock.Jr.avi">Sherlock.Jr.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/SH/Sherlock.Jr.avi">Sherlock.Jr.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/bjtt_z2X7HE">youtube.com</a></li>
 	</ul>
 
@@ -6728,7 +6718,7 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>04-Apr-2019 11:52:48</updated>
+	<updated>14-Apr-2019 17:58:57</updated>
 </video>
 
 <video type="video">
@@ -7918,7 +7908,7 @@ https://www.kinopoisk.ru/film/20897/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="video/films/V/Veber/Fugitives.avi">Fugitives.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/V/Veber/Fugitives.avi">Fugitives.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/304641084098">OK.ru</a></li>
 	</ul>
 
@@ -7935,7 +7925,7 @@ https://www.kinopoisk.ru/film/20897/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>08-Apr-2019 14:52:07</updated>
+	<updated>14-Apr-2019 21:41:41</updated>
 </video>
 
 <video type="video">
@@ -7997,19 +7987,22 @@ https://www.kinopoisk.ru/film/786/</description>
 Людивин Санье (Ludivine Sagnier)
 Фанни Валетт (Fanny Valette)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-XVII век. После долгих скитаний в Париж возвращается Мольер, 
+	<description>XVII век. После долгих скитаний в Париж возвращается Мольер, 
 его ждет работа в Королевском театре. Некто месье Жордэн 
 оплачивает долги знаменитого автора, рассчитывая на то, что Мольер 
 поставит в театре его одноактную пьесу весьма пикантного содержания. 
 В жизни великого комедианта завязывается еще одна остроумная, 
 но далеко не единственная интрига. Своим домочадцам Жордэн представляет 
 Мольера ревностным католиком по имени Тартюф...
-&amp;lt;/pre&amp;gt;
-https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
-	
+https://www.kinopoisk.ru/film/256219/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/256219.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/M/Moliere.2007.DVDRip.x264.ac3.srt.tRuAVC.mkv">Moliere.2007.DVDRip.x264.ac3.srt.tRuAVC.mkv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/mGPNd-GOyQo">youtube.com</a></li>
+	</ul>
 
 	<tags>
 		<item tid="33">биография</item>
@@ -8025,7 +8018,7 @@ https://www.youtube.com/watch?v=mGPNd-GOyQo</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>17-Dec-2017 14:24:58</updated>
+	<updated>14-Apr-2019 21:40:27</updated>
 </video>
 
 <video type="video">
@@ -9441,7 +9434,7 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	
 	
 	<description>Студия &amp;quot;Крылья России&amp;quot;
-&amp;lt;pre&amp;gt;
+
 Сериал «Броня России» посвящен истории отечественных 
 боевых бронированных машин: от первых броневиков начала двадцатого века 
 до современных танков.
@@ -9456,49 +9449,34 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 Сериал содержит огромное количество хроникальных кадров, 
 ранее не доступных широкому зрителю.
 В фильмах приведены основные технические характеристики 
-боевых бронированных машин, широко использована трёхмерная компьютерная графика.
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;br&amp;gt;============================= LOCAL URL&amp;lt;br&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
+боевых бронированных машин, широко использована трёхмерная компьютерная графика.</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.01.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">1</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.02.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">2</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.03.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">3</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.04.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">4</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.05.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">5</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.06.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">6</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.07.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">7</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.08.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">8</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.09.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">9</a></li>
+		<li><a data-type="local-file" href="/video/documental_video/Bronya.Rossii.(10.serii.iz.10).2009.DivX.DVDRip_Kinozal.TV/Bronya.Rossii.10.seriya.iz.10.2009.DivX.DVDRip_Kinozal.TV.avi">10</a></li>
+	</ul>
 
 	<tags>
+		<item tid="32">документальный</item>
 		<item tid="96">история</item>
 		<item tid="117">сериал</item>
-		<item tid="32">документальный</item>
-		<item tid="22">avi</item>
 		<item tid="68">Россия</item>
+		<item tid="22">avi</item>
+		<item tid="230">Б</item>
+		<item tid="280">2008</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>29-Jan-2013 22:44:23</updated>
+	<updated>14-Apr-2019 22:30:35</updated>
 </video>
 
 <video type="video">
@@ -11857,8 +11835,7 @@ https://www.kinopoisk.ru/film/8365/</description>
 Наоми Фудзияма
 Канпэй Хадзама
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Фильм создан по мотивам известного и очень любимого в Японии
+	<description>Фильм создан по мотивам известного и очень любимого в Японии
 плутовского романа Дзиппэнся Икку &amp;quot;На своих на двоих по Токайдоскому тракту&amp;quot; (1802—1822).
 Действие происходит во времена, когда Токио ещё назывался Эдо.
 Окино - ойран (главная куртизанка) одного из веселых домов Квартала Красных Фонарей. 
@@ -11871,14 +11848,13 @@ https://www.kinopoisk.ru/film/8365/</description>
 который хочет начать все сначала где-нибудь подальше от Эдо.
 Так начинается путешествие этой забавной троицы по дорогам старинной Японии. 
 Им предстоят встречи с живописными персонажами, невероятные ситуации, трудности и радости долгого пути, 
-в конце которого их ждет самая главная награда - взаимопонимание, дружба и любовь.
-&amp;lt;/pre&amp;gt;</description>
+в конце которого их ждет самая главная награда - взаимопонимание, дружба и любовь.</description>
 	<pictures>
 		<img src="/video/0_covers/Teresuko.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>http://localhost/video/</li>
+		<li><a data-type="local-file" href="/video/films/T/Troe_v_puti/Troe_v_puti_(2007).avi">Troe_v_puti/Troe_v_puti_(2007).avi</a></li>
 	</ul>
 
 	<tags>
@@ -11892,7 +11868,7 @@ https://www.kinopoisk.ru/film/8365/</description>
 	</tags>
 
 	<published>15-Apr-2013 22:59:11</published>
-	<updated>17-Dec-2017 14:54:02</updated>
+	<updated>14-Apr-2019 21:57:08</updated>
 </video>
 
 <video type="video">
@@ -13213,32 +13189,33 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 
 <video type="video">
 	<title>
-		<item>Охотничий домик</item>
+		<item>Дом с привидениями</item>
+		<item>The Haunted House</item>
 </title>
 	
+	<producer>Клайн, Эдвард</producer>
 	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
+	<description>https://www.kinopoisk.ru/film/11396/</description>
 	<pictures>
-		<img src="/video/0_covers/"/>
+		<img src="https://st.kp.yandex.net/images/film_big/11396.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/H/The_Haunted_House.avi">The_Haunted_House.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/hYkYdjwC_CE">youtube.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="28">короткометражный</item>
 		<item tid="192">Бастер Китон</item>
+		<item tid="214">H</item>
+		<item tid="233">Д</item>
 		<item tid="334">немое кино</item>
 	</tags>
 
 	<published>16-Jun-2013 00:02:58</published>
-	<updated>04-Apr-2019 11:51:43</updated>
+	<updated>14-Apr-2019 17:58:15</updated>
 </video>
 
 <video type="video">
@@ -14481,7 +14458,9 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<img src="/video/0_covers/0c3427d468d852babac589f19271153f.png"/>
 	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/D/Duhless_2012_BDRip_by_Dalemake.avi">Duhless_2012_BDRip_by_Dalemake.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -14494,7 +14473,7 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 	</tags>
 
 	<published>20-May-2015 22:37:29</published>
-	<updated>27-Nov-2016 18:19:12</updated>
+	<updated>14-Apr-2019 22:00:01</updated>
 </video>
 
 <video type="video">
@@ -14503,14 +14482,19 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 </title>
 	
 	<producer>Роман Прыгунов</producer>
-	<roles>Данила Козловский (Макс Андреев), Мария Андреева (Юля), Милош Бикович (Роман Белкин), Павел Ворожцов (Савелов), Александра Бортич (Алёна), Кристина Бабушкина (Оксана Маслова), Сергей Бурунов (Шохин), Лев Прыгунов (Михаил Иванович), Владимир Симонов (Варенников), Доминик Пинон (Бернард)	</roles>
+	<roles>Данила Козловский (Макс Андреев), 
+Мария Андреева (Юля), 
+Милош Бикович (Роман Белкин), 
+Павел Ворожцов (Савелов), Александра Бортич (Алёна), Кристина Бабушкина (Оксана Маслова), Сергей Бурунов (Шохин), Лев Прыгунов (Михаил Иванович), Владимир Симонов (Варенников), Доминик Пинон (Бернард)	</roles>
 	<description>Он отказался от всего, что так когда-то ценил — светской жизни, успешной карьеры, роскошного пентхауса. Теперь его стихия — океан. Каждый день он рассекает на серфе теплые волны, омывающие остров Бали. Но невозможно забыть ритм большого города. Случайное знакомство возвращает его в самое сердце современной столицы — высокие технологии, сумасшедшие сделки, смертельный риск и прежняя любовь, которая больше не с ним.</description>
 	<pictures>
 		<img src="/video/0_covers/97de64b0b867213a84a15991ba9e7cbf.png"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra#local file</li>
+		<li><a data-type="local-file" href="/video/films/D/Duhless_2_2015_BDRip_by_Dalemake.avi">Duhless_2_2015_BDRip_by_Dalemake.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/H4O72uD0yPc">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/gR2U6WjK0mQ">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -14520,10 +14504,11 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 		<item tid="210">D</item>
 		<item tid="260">2</item>
 		<item tid="233">Д</item>
+		<item tid="302">2015</item>
 	</tags>
 
 	<published>20-May-2015 22:42:13</published>
-	<updated>20-May-2015 22:42:34</updated>
+	<updated>14-Apr-2019 22:12:34</updated>
 </video>
 
 <video type="video">
@@ -14825,11 +14810,13 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	
 	<description>http://www.kinopoisk.ru/film/47067/</description>
 	<pictures>
-		<img src="/video/0_covers/balzak.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/47067.jpg"/>
 	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra#local file</li>
+		<li><a data-type="local-file" href="/video/films/B/Balzak_i_portniha-kitajanochka_[torrents.ru].avi">Balzak_i_portniha-kitajanochka_[torrents.ru].avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/31858363068">OK.ru</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_q9IebHZn2c">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -14843,7 +14830,7 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 	</tags>
 
 	<published>01-Jan-2016 01:08:26</published>
-	<updated>21-Aug-2016 20:49:27</updated>
+	<updated>14-Apr-2019 21:48:29</updated>
 </video>
 
 <video type="video">
@@ -15145,14 +15132,15 @@ http://rutracker.org/forum/viewtopic.php?t=4396360</description>
 Елена Нестерова
 Василий Мичков	</roles>
 	<description>http://www.kinopoisk.ru/film/656093/
-https://www.youtube.com/watch?v=BgWUXjbM0WM
+
 Рукопись молодого писателя попадает в литературное издательство и начинает влиять на жизнь любого, кто откроет её и прочтет хотя бы страницу. Четыре рассказа из рукописи — это четыре истории с непредсказуемой развязкой.</description>
 	<pictures>
 		<img src="/video/0_covers/656093.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/BgWUXjbM0WM">embed video on youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/319116806870">OK.ru</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Jc27AJLtgdQ">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -15165,7 +15153,7 @@ https://www.youtube.com/watch?v=BgWUXjbM0WM
 	</tags>
 
 	<published>24-Jun-2016 23:19:31</published>
-	<updated>28-Mar-2019 17:28:27</updated>
+	<updated>14-Apr-2019 22:17:37</updated>
 </video>
 
 <video type="video">
@@ -15494,7 +15482,7 @@ http://mycomp/sites/romanlaptev.github.io/lib/cms/?q=node/1705</description>
 		<item>Rome</item>
 </title>
 	
-	<producer>https://www.kinopoisk.ru/film/257386/cast/#director</producer>
+	<producer>Майкл Аптед, Микаэл Саломон, Аллен Култер, ...</producer>
 	<roles>Kevin McKidd - Lucius Vorenus
 Ray Stevenson - Titus Pullo
 James Purefoy - Mark Antony
@@ -15503,18 +15491,39 @@ Polly Walker - Atia of the Julii
 Kerry Condon - Octavia of the Julii
 Lindsay Duncan - Servilia of the Junii
 	</roles>
-	<description>copy local link - 
-file:///mnt/d2/video/films/R/Rome 2005/ - 
-to new tab
-
-https://www.kinopoisk.ru/film/257386/
+	<description>https://www.kinopoisk.ru/film/257386/
 Сериал начинается в 52 году до н. э., когда Гай Юлий Цезарь завоевывает Галлию после восьмилетней войны и готовится возвращаться в Рим. Племянница Цезаря Атия с тревогой ждет его возвращения, патриции в отчаянии — они боятся, что возвращение Цезаря нарушит сложившийся статус-кво, что благополучие, которое они построили за счет плебса, будет подорвано.
 
-В сенате лидеры партии патрициев убеждают старого друга Цезаря, Помпея Великого, что Цезарь стал угрозой для процветания Рима. В это время два незадачливых легионера, Люций Варен и Тит Пуло, затевают авантюру, которая, в случае успеха, значительно повысит их благосостояние. Чем ближе легионы Цезаря продвигаются к Риму, тем больше растет напряжение между солдатами и мирными жителями, тем ближе к развязке конфликт, который навсегда изменит историю…</description>
-	
+В сенате лидеры партии патрициев убеждают старого друга Цезаря, Помпея Великого, что Цезарь стал угрозой для процветания Рима. В это время два незадачливых легионера, Люций Варен и Тит Пуло, затевают авантюру, которая, в случае успеха, значительно повысит их благосостояние. Чем ближе легионы Цезаря продвигаются к Риму, тем больше растет напряжение между солдатами и мирными жителями, тем ближе к развязке конфликт, который навсегда изменит историю…
+
+https://yandex.ru/video/%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81/%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB/%D1%80%D0%B8%D0%BC/2-%D1%81%D0%B5%D0%B7%D0%BE%D0%BD/2-%D1%81%D0%B5%D1%80%D0%B8%D1%8F?path=vh&amp;amp;source=series-nav&amp;amp;autoplay=1</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/257386.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/d2</li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1331122080301">OK.ru, 1 сезон. 1 серия#Украденный орёл</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1331122211373">OK.ru, 1 сезон. 2 серия#Как Тит Пуллон разрушил республику</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32417581711">OK.ru, 1 сезон. 3 серия#Сова в терновнике</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1331128764973">OK.ru, 1 сезон. 4 серия#Кража у Сатурна</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32378325647">OK.ru, 1 сезон. 5 серия#Таран коснулся стены</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/39621626557">OK.ru, 1 сезон. 6 серия#Эгерия</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32418040463">OK.ru, 1 сезон. 7 серия#Фарсал</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/39716391613">OK.ru, 1 сезон. 8 серия#Цезарион</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32423021199">OK.ru, 1 сезон. 9 серия#Утика</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32397527695">OK.ru, 1 сезон. 10 серия#триумф</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/203244571244">OK.ru, 1 сезон. 11 серия#Останки</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32418171535">OK.ru, 1 сезон. 12 серия#Мартовские иды</a></li>
+		<li><a data-type="embed-video" href="https://my.mail.ru/video/embed/526058245932984685">video.mail.ru, 2 сезон. 1 серия#Пасха</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32397789839">OK.ru, 2 сезон. 2 серия#Сын Аида</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/203484367586">OK.ru, 2 сезон. 3 серия#Это были слова Марка Туллия Цицерона</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32423742095">OK.ru, 2 сезон. 4 серия#Черепаха и заяц</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1331422038573">OK.ru, 2 сезон. 5 серия#Герои республики</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/204379196130">OK.ru, 2 сезон. 6 серия#Филиппы</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32379046543">OK.ru, 2 сезон. 7 серия#Посмертная маска</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/204915608290">OK.ru,2 сезон. 8 серия#Необходимый вымысел</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32418892431">OK.ru,2 сезон. 9 серия#Голодного и бог не остановит</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/32386124431">OK.ru,2 сезон. 10 серия#Что касается твоего отца…</a></li>
 	</ul>
 
 	<tags>
@@ -15533,7 +15542,7 @@ https://www.kinopoisk.ru/film/257386/
 	</tags>
 
 	<published>03-Aug-2017 21:32:45</published>
-	<updated>31-Mar-2019 00:30:22</updated>
+	<updated>14-Apr-2019 21:25:42</updated>
 </video>
 
 <video type="video">
@@ -16715,7 +16724,7 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/S/Shkola.Rok-n-rolla.1979.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi">Shkola.Rok-n-rolla.1979.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/R/Rock-n-Roll High School.1979.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi">Shkola.Rok-n-rolla.1979.DUAL.BDRip.XviD.AC3.-HQ-ViDEO.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/A5nsILjY86w">youtube.com</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/12700224188">Семь поколений рок-н-ролла. 1 - Моё поколение: Рождение Рока</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/39805848279">Семь поколений рок-н-ролла. Серия 02. Раскаленные до бела. Арт-рок</a></li>
@@ -16736,7 +16745,44 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 	</tags>
 
 	<published>13-Apr-2019 23:16:37</published>
-	<updated>13-Apr-2019 23:39:16</updated>
+	<updated>14-Apr-2019 16:45:56</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Огни большого города</item>
+		<item>City Lights</item>
+</title>
+	
+	<producer>Чарли Чаплин</producer>
+	<roles>    Вирджиния Черрилл
+    Гарри Майерс
+    Аль Эрнест Гарсиа
+    Хэнк Манн
+    Чарльз Чаплин
+    Джек Александр
+    Т.С. Александр
+    Виктор Александр
+    Альберт Остин
+    Гарри Айерс
+    ...	</roles>
+	<description></description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/0AlCzVBRPI4/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/0AlCzVBRPI4">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/NOb6k5QFgUQ">youtube.com, Box</a></li>
+	</ul>
+
+	<tags>
+		<item tid="157">Чарльз Чаплин</item>
+		<item tid="334">немое кино</item>
+	</tags>
+
+	<published>14-Apr-2019 18:32:11</published>
+	<updated>14-Apr-2019 18:39:01</updated>
 </video>
 
 <video type="videoclip">

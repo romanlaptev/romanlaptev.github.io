@@ -63,7 +63,7 @@
 			<div class="panel-body">
 				<div class="producer">{{producer}}</div>
 				<div class="roles">{{roles}}</div>
-				<div class="mark description">{{description}}</div>
+				<div class="description">{{description}}</div>
 			</div>
 		
 		</div>
@@ -137,7 +137,7 @@
 		
 			<div class="panel-body">
 				<div class="">{{creators}}</div>
-				<div class="mark description">{{description}}</div>
+				<div class="description">{{description}}</div>
 			</div>
 		
 		</div>

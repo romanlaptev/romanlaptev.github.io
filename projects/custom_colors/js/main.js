@@ -476,22 +476,19 @@ var _vars = {
 {"code": "#004000", "text-color": "#ffffff"},
 {"code": "#1a4216", "text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#4D5D53","colorName": "Фельдграу, #4D5D53"},
+{"code": "#C1CCCD"},
+{"text-color": "#000000", "code": "#CECECE","colorName": "Серебристый, #CECECE"},
+{"text-color": "#000000", "code": "#C7D0CC","colorName": "Перламутровый, #C7D0CC"},
+{"text-color": "#000000", "code": "#CADABA","colorName": "Серо-зелёный чай, #CADABA"},
 
 
 {"code": "#f0fde3", "text-color": "#59af52"},
 {"code": "#cfdfcc", "text-color": "#000000"},
 {"code": "#d8efe0", "text-color": "#008000"},
-{"code": "#d9ee7f", "text-color": "darkgreen"},
-{"code": "#a9bf4e", "text-color": "darkgreen"},
-{"code": "#E3EFB1", "text-color": "darkgreen"},
-{"code": "#b2c27a", "text-color": "#ffffff"},
-{"code": "#70D14E", "text-color": "#ffffff"},
-{"code": "#03AEA6", "text-color": "#ffffff"},
-{"text-color": "#000000", "code": "#E5F2C0"},
-{"code": "#0C9E54", "text-color": "#ffffff"},
 
 {"text-color": "#000000", "code": "#7BA05B","colorName": "Спаржа, #7BA05B"},
 {"text-color": "#000000", "code": "#78866B","colorName": "Защитный, #78866B"},
+{"text-color": "#000000", "code": "#ACB78E","colorName": "Болотная зелень, #ACB78E"},
 
 {"text-color": "#000000", "code": "#4F7930","colorName": "Папоротник, #4F7930"},
 
@@ -499,16 +496,22 @@ var _vars = {
 {"text-color": "#000000", "code": "#808000","colorName": "Оливковый, #808000"},
 {"text-color": "#000000", "code": "#6B8E23","colorName": "Оливково-серый, #6B8E23"},
 {"text-color": "#000000", "code": "#D1E231","colorName": "Груша, #D1E231"},
+{"code": "#d9ee7f", "text-color": "darkgreen"},
+{"code": "#a9bf4e", "text-color": "darkgreen"},
+{"code": "#b2c27a", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#E5F2C0"},
 
-{"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
-{"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
-{"code": "#90D389", "text-color": "#003200"},
+{"code": "#E3EFB1", "text-color": "darkgreen"},
+
 {"code": "#38d878", "text-color": "#ffffff","colorName": "FF, ctrl+f, keyword select"},
 {"text-color": "#000000", "code": "#00FF7F","colorName": "Весенняя зелень, #00FF7F"},
 {"text-color": "#000000", "code": "#50C878","colorName": "Изумрудный, #50C878"},
-{"text-color": "#000000", "code": "#ACB78E","colorName": "Болотная зелень, #ACB78E"},
+{"code": "#70D14E", "text-color": "#ffffff"},
 
 {"text-color": "#000000", "code": "#D0F0C0","colorName": "Зелёный чай,#D0F0C0"},
+{"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
+{"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
+{"code": "#90D389", "text-color": "#003200"},
 {"text-color": "#000000", "code": "#D1E189","colorName": "Lime pulp,#D1E189"},
 
 {"text-color": "#000000", "code": "#DFFF00","colorName": "Жёлтый шартрез, #DFFF00"},
@@ -522,6 +525,7 @@ var _vars = {
 {"text-color": "#000000", "code": "#32CD32","colorName": "Лаймовый, Lime_Green, #32CD32"},
 {"text-color": "#000000", "code": "#00A500","colorName": "Ярко-зелёный с желтоватым отливом, #00A500"},
 {"text-color": "#000000", "code": "#228B22","colorName": "Лесная зелень, #228B22"},
+{"code": "#0C9E54", "text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
 {"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
 {"text-color": "#ffffff", "code": "#238f11"},
@@ -533,24 +537,19 @@ var _vars = {
 {"text-color": "#000000", "code": "#01796F","colorName": "Сосна,#01796F"},
 {"text-color": "#000000", "code": "#40826D","colorName": "Виридиан, #40826D"},
 
+{"code": "#03AEA6", "text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#00A693","colorName": "Персидский зелёный, #00A693"},
 {"code": "#cccc99", "text-color": "#ffffff"},
-
-// YELLOW
-{"code": "#FFDF00", "text-color": "maroon"},
 {"code": "#fffbe1", "text-color": "darkgreen"},
+
+{"code": "#FFDF00", "text-color": "maroon"},
 {"text-color": "#000000","code": "#f89406"},
 
 
 // RED
 {"code": "#E23817", "text-color": "#ffffff"},
 {"code": "#de4f00", "text-color": "#ffffff"},
-{"code": "#bd362f", "text-color": "#ffffff"},
-
-// SILVER
-{"text-color": "#000000", "code": "#CECECE","colorName": "Серебристый, #CECECE"},
-{"text-color": "#000000", "code": "#C7D0CC","colorName": "Перламутровый, #C7D0CC"},
-{"text-color": "#000000", "code": "#CADABA","colorName": "Серо-зелёный чай, #CADABA"}
+{"code": "#bd362f", "text-color": "#ffffff"}
 
 	] //end
 
