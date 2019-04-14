@@ -29,7 +29,10 @@ footer {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
+footer .mark{
+color:#fff;
+background-color:transparent;
+}
 
 
 .navbar {

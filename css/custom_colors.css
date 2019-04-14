@@ -338,18 +338,41 @@
 
 
 
-.btn-blue-c4 {
-    color: #fff;
-	background-color: #269abc;
-/*
-    border-color: #2e6da4;	
-*/
-}
-
 .btn-blue {
 	background-color: #007bff;
 	color: #fff;
 }
+.btn-blue:hover {
+	background-color: #ff8c00;
+	color: #000 !important;
+}
+.btn-blue:focus {
+	color: #fff !important;
+}
+.btn-blue:active:focus {
+	color: #000 !important;
+}
+.btn-blue:active {
+	/*color:  #fff !important;*/
+}
+.btn-blue:visited {
+	/*color:  #000 !important;*/
+}
+
+
+.btn-blue-c4 {
+    color: #fff;
+	background-color: #269abc;
+}
+.btn-blue-c4:hover {
+	background-color: #ff8c00;
+	color: #000 !important;
+}
+.btn-blue-c4:focus {
+	color: #fff !important;
+}
+
+
 .btn-violet-fb {
 	background-color: #395697;
 	color: #fff;
