@@ -89,14 +89,14 @@
 -->
 		<!-- switch -->	
 		<div class="TriSea-technologies-Switch pull-right switch-control">
-			<input id="webapps-switch" name="" type="checkbox" autocomplete="off">
+			<input id="webapps-switch" name="" checked type="checkbox" autocomplete="off">
 			<label for="webapps-switch" class="label-default"></label>
 		</div>
 		
 	</div>
 </div>
 					</div>
-					<div class="panel-body collapse" id="webapps">
+					<div class="panel-body collapse in" id="webapps">
 						<ul class="nav text-center">
 <li><a target="_blank" href="webapps/webapp_lib/">webapp_lib</a></li>
 <li><a target="_blank" href="webapps/webapp_photos/">webapp_photos</a></li>
@@ -139,7 +139,7 @@
 				</div>
  -->
 
-				<div class="panel panel-primary">
+				<div class="panel panel-primary hidden">
 					<div class="panel-heading">
 <div class="row">
 	<div class="col-xs-9 col-sm-12 col-md-9">
@@ -165,15 +165,13 @@
 					</div>
 				</div><!-- end panel -->
 
-				<div class="panel panel-primary">
+				<div class="panel panel-primary hidden">
 					<div class="panel-heading">
 <div class="row">
 	<div class="col-xs-9 col-sm-12 col-md-9">
 		<h3>hosting sites</h3>
 	</div>
 	<div class="col-xs-3 col-sm-12 col-md-3">
-<!--		<button class="btn btn-sm btn-info pull-right" data-toggle="collapse" data-target="#host-sites">V</button>-->
-		<!-- switch -->	
 		<div class="TriSea-technologies-Switch pull-right switch-control">
 			<input id="host-sites-switch" name="" type="checkbox" autocomplete="off">
 			<label for="host-sites-switch" class="label-default"></label>
@@ -187,7 +185,7 @@
 <a class="btn btn-info" href="https://sites.google.com/site/itmyprojects">google site</a>
 <a class="btn btn-orange" href="https://romanvlaptev.wordpress.com" target="_blank">romanvlaptev.wordpress.com</a>
 						</div>
-<!--
+
 rex.dax.ru, control panel
 						<form method="post" action="http://www.wallst.ru/mainad.phtml" name="loginform" target="_blank">
 							<input type="text"     name="id"   value="301005">
@@ -196,12 +194,12 @@ rex.dax.ru, control panel
 						</form>
 <a href ="ftp://u301005:zh3oroyb@rex.dax.ru/" target="_blank">Index «ftp://u301005@rex.dax.ru/»</a>
 http://rex.dax.ru/wfm/wfm23.php
--->
+
 					</div>
-				</div><!-- end panel -->
+				</div>
 				
 			</div>
-			
+
 			<div class="col-sm-5 text-left"> 
 				<div class="panel panel-primary">
                                     
@@ -232,12 +230,11 @@ http://rex.dax.ru/wfm/wfm23.php
 					</div>
 -->
 					<div class="panel-body">
-						<ul class="">
-<li><a target="_blank" href="test_code/">test_code/</a></li>
-<li><a target="_blank" href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/test_code">test_code/, remote</a></li>
-<li><a target="_blank" href="test_code/js/browser_info.html">Browser info</a></li>
-<li><a target="_blank" href="test_code/js/test_ECMAScript_ver.html">Test ECMAScript  version for this browser</a></li>
-<li><a target="_self" href="projects/webapp_db/">webapp_db</a></li>
+						<ul class="list-unstyled">
+<li class='list-group-item'><a target="_blank" href="test_code/js/browser_info.html">Browser info</a></li>
+<li class='list-group-item'><a target="_blank" href="test_code/js/test_ECMAScript_ver.html">Test ECMAScript  version for this browser</a></li>
+<li class='list-group-item'><a target="_blank" href="test_code/">test_code/</a></li>
+<li class='list-group-item'><a target="_blank" href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/test_code">test_code/, remote</a></li>
 
 <!--							
 <li><a target="_blank" href="test_code/js/webstorage/mobapp.database/test/test_mobapp_db.html">test_mobapp_db</a></li>
@@ -254,9 +251,7 @@ http://rex.dax.ru/wfm/wfm23.php
 				<div class="panel panel-default">
 				
 					<div class="panel-body">
-
-<a class="btn btn-style1" href="projects/bookmarks/bookmarks2.html" target="_self">Bookmarks</a>
-<a class="btn btn-info" href="projects/notes/" target="_self">Notes</a>
+<a class="btn btn-blue-c4" href="projects/bookmarks/bookmarks2.html" target="_self">Bookmarks</a>
 					</div>
 					
 					
@@ -283,10 +278,21 @@ http://rex.dax.ru/wfm/wfm23.php
 
 					</div>
 					<div class="panel-body collapse" id="notes-panel">
-<a target="_blank" href="projects/notes/index.html" class="">local</a><br>
+<ul class="list-unstyled">
+	<li class='list-group-item'>
+<a target="_blank" class="btn btn-info" href="projects/notes/index.html">Notes</a>
+<!--
 <a target="_blank" href="http://graphic-art-collection.16mb.com/notes/" class="">remote host, PHP</a><br>
+-->
+	</li>
+	<li class='list-group-item'>
 <a target="_blank" href="http://romanlaptev.gearhostpreview.com/">gearhostpreview, C#</a><br>
+	</li>
+	<li class='list-group-item'>
 <a target="_blank" href="https://romanlaptev2.herokuapp.com/">herokuapp, java</a>
+	</li>
+</ul>
+						
 					</div>
 				</div><!-- end panel -->
 
