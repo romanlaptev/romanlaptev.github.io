@@ -3597,7 +3597,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 		<item>Trainsportting</item>
 </title>
 	
-	
+	<producer>Дэнни Бойл </producer>
 	<roles>Джонни Ли Миллер
 Питер Маллан
 Келли Макдоналд
@@ -3609,9 +3609,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 Роберт Карлайл
 Кевин Маккидд
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Режиссёр:Дэнни Бойл
-Сценарий:Джон Ходж, Ирвин Уэлш
+	<description>Сценарий:Джон Ходж, Ирвин Уэлш
 Выбирай жизнь. Выбирай работу. Выбирай карьеру. Выбирай семью. 
 Выбирай большие телевизоры, стиральные машины, автомобили, компакт-диск плэйеры, 
 электрические консервные ножи. Выбирай хорошее здоровье, низкий уровень холестерина 
@@ -3625,14 +3623,15 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 со стыдом напоследок своих дружков-подонков, которых ты заложил чтобы выкарабкаться. 
 Выбирай будущее. Выбирай жизнь.
 Но зачем мне все это? Я не стал выбирать жизнь… Я выбрал кое-что другое… Почему? Да потому… Какие могут быть почему, когда ты под кайфом? Когда есть героин…
-&amp;lt;/pre&amp;gt;
 
-&amp;lt;video controls width=&amp;quot;640&amp;quot; height=&amp;quot;480&amp;quot;&amp;gt;
-  &amp;lt;source src=&amp;quot;http://site-content/video/films/T/trainsportting.ogv&amp;quot; type=&amp;quot;video/ogg&amp;quot;&amp;gt;
-&amp;lt;/video&amp;gt;</description>
-	
+https://www.kinopoisk.ru/film/515/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/515.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/T/trainsportting.ogv">trainsportting.ogv</a></li>
+	</ul>
 
 	<tags>
 		<item tid="4">драма</item>
@@ -3646,7 +3645,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>22-Oct-2017 18:18:00</updated>
+	<updated>15-Apr-2019 21:56:53</updated>
 </video>
 
 <video type="video">
@@ -8998,9 +8997,7 @@ http://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%88%D0%B8%D0%BD%D0%B0_%D0%BF%D0%BE%D
 Роуз Бирн (Rose Byrne)
 Клифф Кертис (Cliff Curtis)
 	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/SunshinePosterCillian.jpg&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-2057 год. Солнце погибает, и человечество встает перед лицом вымирания. 
+	<description>2057 год. Солнце погибает, и человечество встает перед лицом вымирания. 
 Последняя надежда планеты Земля связана с «Икаром 2» — 
 космическим кораблем, экипаж которого состоит из восьми мужчин и женщин 
 во главе с капитаном Канедой. Их миссия – доставить ядерный заряд, 
@@ -9008,10 +9005,16 @@ http://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D1%88%D0%B8%D0%BD%D0%B0_%D0%BF%D0%BE%D
 «Армагеддон» Дэнни Бойла, автора «Trainspotting» и «28 дней спустя».
 
 http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BA%D0%BB%D0%BE_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC,_2007%29
-&amp;lt;/pre&amp;gt;</description>
-	
+https://www.kinopoisk.ru/film/102245/</description>
+	<pictures>
+		<img src="/video/0_covers/SunshinePosterCillian.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_big/102245.jpg"/>
+	</pictures>
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/S/sunshine.avi">sunshine.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/25999379114">OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="14">приключения</item>
@@ -9022,10 +9025,11 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%BA%D0%BB%D0%BE_%28%D1%84%D0%B8%D0%B
 		<item tid="22">avi</item>
 		<item tid="224">S</item>
 		<item tid="243">П</item>
+		<item tid="281">2007</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>09-Apr-2014 21:33:44</updated>
+	<updated>15-Apr-2019 21:52:46</updated>
 </video>
 
 <video type="video">
@@ -12158,34 +12162,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 <video type="video">
 	<title>
-		<item>Bloodhound Gang</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-	</tags>
-
-	<published>19-May-2013 18:59:09</published>
-	<updated>19-May-2013 18:59:09</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Эксгибиционист</item>
 		<item>Exhibition</item>
 </title>
@@ -12304,33 +12280,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 	<published>23-May-2013 22:17:25</published>
 	<updated>28-Mar-2019 18:29:19</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Manowar</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-	</tags>
-
-	<published>23-May-2013 22:30:57</published>
-	<updated>23-May-2013 22:31:37</updated>
 </video>
 
 <video type="video">
@@ -17300,6 +17249,64 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 
 	<published>19-May-2013 18:49:04</published>
 	<updated>26-Mar-2019 22:39:07</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Bloodhound Gang, videoclips</item>
+</title>
+	<creators>Bloodhound Gang</creators>
+	
+	
+	<description></description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/xat1GVnl8-k/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/B/Bloodhound Gang - Along Comes Mary.avi">Bloodhound Gang - Along Comes Mary.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Bloodhound Gang - Bad Touch.mpg">Bloodhound Gang - Bad Touch.mpg</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/xat1GVnl8-k">youtube.com, The Bad Touch</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Bloodhound Gang - The ballad of Chassey Lane.mpg">Bloodhound Gang - The ballad of Chassey Lane.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Bloodhound Gang - The Inevitable .mpg">Bloodhound Gang - The Inevitable .mpg</a></li>
+	</ul>
+
+	<tags>
+		<item tid="208">B</item>
+		<item tid="48">видеоклипы</item>
+	</tags>
+
+	<published>19-May-2013 18:59:09</published>
+	<updated>15-Apr-2019 21:47:28</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Manowar, videoclips</item>
+</title>
+	<creators>Manowar</creators>
+	
+	
+	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/-jFB07AMjgs/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/M/Manowar/Manowar - Blow your speakers.avi">Manowar - Blow your speakers.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Manowar/Manowar - Hail And Kill (live)1998.avi">Manowar - Hail And Kill (live)1998.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/oqv6iGo19es">youtube.com, Today is a good day to die</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/-jFB07AMjgs">youtube.com, Holy War</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/6POUitQf8v8">youtube.com, Warriors Of The World United (Official Video)</a></li>
+	</ul>
+
+	<tags>
+		<item tid="219">M</item>
+		<item tid="48">видеоклипы</item>
+	</tags>
+
+	<published>23-May-2013 22:30:57</published>
+	<updated>15-Apr-2019 21:38:27</updated>
 </video>
 
 <video type="videoclip">
