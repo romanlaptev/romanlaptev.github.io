@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>test touch events</title> 	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<!--	
+	<link href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+	
+	<link href="lib/jquery.mobile/jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+	<script src="lib/jquery.mobile/jquery-1.3.2.mobile.min.js"></script> 
+-->
+	
+	<!-- <script src="lib/jquery-latest.min.js"></script> -->
+	<!-- <script src="lib/shared_functions.js"></script> -->
+	<link rel="stylesheet" href="css/bootstrap335.min.css">
+	
+<script>
+	//var func = sharedFunc();
+//console.log("func:", func);
+
+	var logMsg;
+
+	//touchstart, touchmove, touchend и touchcancel
+	var touchSupport = 'ontouchstart' in window;
+	
+	$(document).ready(function(){
+		logMsg = "userAgent:" +navigator.userAgent +"<br>";
+		logMsg += 'jQuery version: ' + jQuery.fn.jquery +"<br>";
+		$("#log")[0].innerHTML += "<p class='alert alert-info'>"+logMsg +"</p>";
+
+		logMsg = "Touch Events support: " +touchSupport;
+		$("#log")[0].innerHTML += "<p class='alert alert-info'>"+logMsg +"</p>";
+		
+		$("#btn-clear-log").on("click",function(e){
+			e.preventDefault();
+			$("#log")[0].innerHTML = "";
+		});//end event();
+
+		if( touchSupport ){
+			startup();
+		}
+		
+	});//end ready
+
+function startup() {
+	document.addEventListener("touchstart", handleStart, false);
+	//document.addEventListener("touchend", handleEnd, false);
+	//document.addEventListener("touchcancel", handleCancel, false);
+	//document.addEventListener("touchmove", handleMove, false);
+	
+	//$("#test-area").on("touchstart", handleStart);
+}
+
+function handleStart(e) {
+	e.preventDefault();
+	
+	logMsg = "event type: " + e.type;
+	logMsg += ", screenX: " + e.targetTouches[0]["screenX"];
+	logMsg += ", screenY: " + e.targetTouches[0]["screenY"];
+	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	
+	//for( var key in e.targetTouches[0]){
+		//logMsg = key +", " + e.targetTouches[0][key];
+		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	//}
+
+/*	
+	var touches = e.changedTouches;//массив активных точек касаний
+	for( var key in touches[0]){
+		logMsg = key +", " + touches[0][key];
+		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	}
+*/	
+	//for (var n = 0; n < touches.length; n++) {
+		//logMsg = "changedTouches:" + n + "...";
+		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	//}//next
+}//end event
+
+function handleEnd(e) {
+	e.preventDefault();
+	
+	logMsg = "event type: " + e.type;
+	logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
+	logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
+	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	
+}//end event
+
+function handleMove(e) {
+	e.preventDefault();
+	
+	logMsg = "event type: " + e.type;
+	logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
+	logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
+	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+	
+}//end event
+
+</script>
+
+<style>
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+/*
+background-color: #f5f5f5;
+border: 1px solid #ccc;
+*/
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+
+</head> 
+
+<body> 
+
+<div class="container">
+	<div class="page-header">
+		<h1>Test touch events</h1>
+	</div>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+	
+	<pre>
+https://www.w3.org/TR/touch-events/
+
+https://developer.mozilla.org/ru/docs/Web/API/Touch_events
+Тач-события
+
+https://habr.com/ru/company/sibirix/blog/227175/
+Заставьте сайт работать на сенсорных устройствах
+
+https://youon.ru/%D0%90%D0%BD%D0%B4%D1%80%D0%BE%D0%B8%D0%B4/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0/touch-sobytiya-na-javascript-multitach-realizatsiya
+Touch события на javascript, мультитач - реализация
+
+	</pre>	
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>Test area</h2>
+		</div>
+		<div id="test-area" class="panel-body" >
+000000000000000
+		</div>
+	</div>
+</div><!-- end container -->
+
+</body>
+</html>

@@ -23,11 +23,22 @@ var logMsg;
 	$(document).ready(function(){
 console.log("ready");
 console.log( $.mobile );
-			logMsg = "userAgent:" +navigator.userAgent +"<br>";
-			logMsg += 'jQuery version: ' + jQuery.fn.jquery +"<br>";
-			logMsg += "jQuery Mobile version: " +$.mobile.version;
-			$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
-	});
+		logMsg = "userAgent:" +navigator.userAgent +"<br>";
+		logMsg += 'jQuery version: ' + jQuery.fn.jquery +"<br>";
+		logMsg += "jQuery Mobile version: " +$.mobile.version;
+		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+
+		//touchstart, touchmove, touchend и touchcancel
+		var test = 'ontouchstart' in window;
+		logMsg = "Touch Events support: " +test;
+		$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
+		if ( test ) {
+//........		
+		} else {
+//.........		
+		}
+		
+	});//end ready
 	
 	$(document).bind("mobileinit", function(){
 console.log("mobile init");
