@@ -15,13 +15,14 @@
 	
 	<!-- <script src="lib/jquery-latest.min.js"></script> -->
 	<!-- <script src="lib/shared_functions.js"></script> -->
-	<link rel="stylesheet" href="css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
 	
 <script>
 	//var func = sharedFunc();
 //console.log("func:", func);
 
 	var logMsg;
+	var touchOffsetX, touchOffsetY;
 
 	//touchstart, touchmove, touchend и touchcancel
 	var touchSupport = 'ontouchstart' in window;
@@ -65,20 +66,22 @@ function startup() {
 function handleStart(e) {
 	e.preventDefault();
 	logMsg = "event type: " + e.type;
-	logMsg += ", screenX: " + e.targetTouches[0]["screenX"];
-	logMsg += ", screenY: " + e.targetTouches[0]["screenY"];
-	//logMsg += ", clientX: " + e.targetTouches[0]["clientX"];
-	//logMsg += ", clientY: " + e.targetTouches[0]["clientY"];
-	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 	
 	if (e.targetTouches.length == 1) {
 		var touch=e.targetTouches[0];
-		var touchOffsetX = touch.pageX - touch.target.offsetLeft;
-		var touchOffsetY = touch.pageY - touch.target.offsetTop;
+		touchOffsetX = touch.pageX - touch.target.offsetLeft;
+		touchOffsetY = touch.pageY - touch.target.offsetTop;
 		
 		$("#box").css("left", touchOffsetX+"px");
 		$("#box").css("top", touchOffsetY+"px");
+		
+		logMsg += ", pageX: " + touch.pageX;
+		logMsg += ", pageY: " + touch.pageY;
+		logMsg += ", touchOffsetX: " + touch.pageX +" - " +touch.target.offsetLeft+" = "+touchOffsetX;
+		logMsg += ", touchOffsetY: " + touch.pageY +" - " +touch.target.offsetTop+" =" + touchOffsetY;
 	}
+
+	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 	
 	//for( var key in e.targetTouches[0]){
 		//$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
@@ -112,10 +115,19 @@ function handleMove(e) {
 	e.preventDefault();
 	
 	logMsg = "event type: " + e.type;
-	logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
-	logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
+	//logMsg += ", screenX: " + e.changedTouches[0]["screenX"];
+	//logMsg += ", screenY: " + e.changedTouches[0]["screenY"];
+/*
+	logMsg += ", touchOffsetX: " + touchOffsetX;
+	logMsg += ", touchOffsetY: " + touchOffsetY;
 	$("#log")[0].innerHTML += "<p>"+logMsg +"</p>";
 	
+	if (e.targetTouches.length == 1) {
+		var touch = e.targetTouches[0];
+		$("#box").css("left", touch.pageX-touchOffsetX+"px");
+		$("#box").css("top", touch.pageY-touchOffsetY+"px");
+	}
+*/
 }//end event
 
 function handleCancel(e) {
@@ -151,6 +163,10 @@ text-decoration:none;
 outline: none;
 }
 
+#log {
+    height: 200px;
+    overflow-y: scroll;
+}
 #log .alert {
 margin-bottom: 0;
 padding: 10px;
@@ -171,8 +187,9 @@ background-color: orange;
 position:relative;
 left:0;
 top:0;
-padding:5px;
+padding:0;
 text-align:center;
+border-radius: 25px;
 }
 </style>
 
@@ -194,8 +211,18 @@ text-align:center;
 			</div>
 		</div>
 	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>Test area</h2>
+		</div>
+		<div id="test-area" class="panel-body" >
+<div id="box">touch me....</div>
+		</div>
+	</div>
+	
 	<pre>
 https://www.w3.org/TR/touch-events/
+https://www.w3schools.com/jsref/event_touchstart.asp
 
 https://developer.mozilla.org/ru/docs/Web/API/Touch_events
 Тач-события
@@ -210,14 +237,7 @@ https://habr.com/ru/company/mailru/blog/165213/
 Touch-web: Swipe
 	</pre>	
 	
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2>Test area</h2>
-		</div>
-		<div id="test-area" class="panel-body" >
-<div id="box">touch me....</div>
-		</div>
-	</div>
+	
 </div><!-- end container -->
 
 </body>
