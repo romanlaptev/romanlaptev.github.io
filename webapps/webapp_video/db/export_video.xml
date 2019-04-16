@@ -2605,7 +2605,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 	</ul>
 
 	<tags>
-		<item tid="37">Боевик</item>
+		<item tid="370">Боевик</item>
 		<item tid="4">драма</item>
 		<item tid="43">фантастика</item>
 		<item tid="26">mov</item>
