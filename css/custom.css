@@ -118,3 +118,15 @@ header .navbar-brand h1 {
 	font-family: Impact;
 }
 */
+
+#webapps .nav > li > a:hover {
+    background-color: #004586 !important;
+    color: #fff;
+}
+#webapps .nav > li > a:focus  {
+    background-color: #4682b4 !important;
+    color: #fff;
+    outline: none;
+}
+
+
