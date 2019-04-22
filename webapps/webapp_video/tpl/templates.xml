@@ -34,26 +34,37 @@
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
 				<div class="links text-center panel-body">{{ul}}
-	<div class="form-local-url panel-body hidden">
-		<label>form local url</label>
+	<div class="form-local-url panel panel-danger">
+		<div class="panel-heading text-left">generate local file url</div>
 		
-		<div class="">
-			<select name="select-protocol" class="" onchange="">
-				<option value="file:///mnt/d2" selected >HDD1, file protocol</option>
-				<option value="file:///mnt/terra">external HDD, file protocol</option>
-				<option value="file://e:">HDD, windows</option>
-				<option value="http://site-content">site-content</option>
-			</select>
+		<div class="panel-body">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<small>select local root path:</small>
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<select name="select-protocol" class="form-control" onchange="">
+					<option value="file:///mnt/d2">HDD1, file protocol</option>
+					<option value="file:///mnt/terra" selected >external HDD, file protocol</option>
+					<option value="file://e:">HDD, windows</option>
+					<option value="http://site-content">site-content</option>
+				</select>
+			</div>
+		</div>
+			
+		<div class="panel-body">
+			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
+		</div>
+			
+		<div class="panel-body">
+			<div class="pull-left">
+				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
+				<!-- <input type="reset" class="btn btn-warning"/> -->
+			</div>
+			<div class="pull-right">
+				<button name="local_link" class="btn">...</button>
+			</div>
 		</div>
 		
-		<div class="">
-			<input name="filepath" type="text" class="form-control" value="file:///mnt/d2" placeholder="file path"/>
-		</div>
-		
-		<div class="text-center">
-			<input name="btn_replace" type="submit" class="btn btn-primary" value="load local media file"/>
-			<!-- <input type="reset" class="btn btn-warning"/> -->
-		</div>
 	</div>					
 				</div>
 </form>	
@@ -110,26 +121,36 @@
 				
 <form name="form_local_url" action="#" method="GET" target="_blank">
 				<div class="links text-center panel-body">{{ul}}
-	<div class="form-local-url panel-body hidden">
-		<label>form local url</label>
-		
-		<div class="">
-			<select name="select-protocol" class="" onchange="">
-				<option value="file:///mnt/d2" selected >HDD1, file protocol</option>
-				<option value="file:///mnt/terra">external HDD, file protocol</option>
-				<option value="file://e:">HDD, windows</option>
-				<option value="http://site-content">site-content</option>
-			</select>
+	<div class="form-local-url panel panel-danger">
+		<div class="panel-heading text-left">generate local file url</div>
+		<div class="panel-body">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<small>select local root path:</small>
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<select name="select-protocol" class="form-control" onchange="">
+					<option value="file:///mnt/d2">HDD1, file protocol</option>
+					<option value="file:///mnt/terra" selected >external HDD, file protocol</option>
+					<option value="file://e:">HDD, windows</option>
+					<option value="http://site-content">site-content</option>
+				</select>
+			</div>
+		</div>
+			
+		<div class="panel-body">
+			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
+		</div>
+			
+		<div class="panel-body">
+			<div class="pull-left">
+				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
+				<!-- <input type="reset" class="btn btn-warning"/> -->
+			</div>
+			<div class="pull-right">
+				<button name="local_link" class="btn">...</button>
+			</div>
 		</div>
 		
-		<div class="">
-			<input name="filepath" type="text" class="form-control" value="file:///mnt/d2" placeholder="file path"/>
-		</div>
-		
-		<div class="text-center">
-			<input name="btn_replace" type="submit" class="btn btn-primary" value="load local media file"/>
-			<!-- <input type="reset" class="btn btn-warning"/> -->
-		</div>
 	</div>					
 				</div>
 </form>	
