@@ -52,15 +52,17 @@
 		</div>
 			
 		<div class="panel-body">
-			<div class="">
-				<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
-			</div>
-			<br>
-			<div class="text-center">
-				<input name="btn_replace" type="submit" class="btn btn-primary" value="load local media file"/>
+			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
+		</div>
+			
+		<div class="panel-body">
+			<div class="pull-left">
+				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
-			
+			<div class="pull-right">
+				<button name="local_link" class="btn">...</button>
+			</div>
 		</div>
 		
 	</div>					
@@ -136,15 +138,17 @@
 		</div>
 			
 		<div class="panel-body">
-			<div class="">
-				<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
-			</div>
-			<br>
-			<div class="text-center">
-				<input name="btn_replace" type="submit" class="btn btn-primary" value="load local media file"/>
+			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
+		</div>
+			
+		<div class="panel-body">
+			<div class="pull-left">
+				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
-			
+			<div class="pull-right">
+				<button name="local_link" class="btn">...</button>
+			</div>
 		</div>
 		
 	</div>					

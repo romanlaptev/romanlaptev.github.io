@@ -366,9 +366,10 @@ function defineEvents(){
 //console.log( target.form.elements.filepath );
 //console.log( $(target.form).find(".form-local-url") );
 
-				$(target.form).find(".form-local-url").removeClass("hidden");
+				//$(target.form).find(".form-local-url").removeClass("hidden");
 				
 				target.form.elements.filepath.value += target.value;
+				target.form.elements.local_link.innerHTML ="...";				
 			} else {
 //console.log(target.value);				
 				window.open( target.value );
@@ -392,8 +393,10 @@ function defineEvents(){
 		if( $(target).attr("name") === "form_local_url"){
 //console.log(target.elements.btn_replace.outerHTML);
 			var url = target.elements.filepath.value;
-			target.elements.btn_replace.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
+			//target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
 			//window.open( url );
+			target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local media file in new tab</a>";
+			target.elements.filepath.value = "";
 		}
 		
 	});//end event
