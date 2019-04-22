@@ -53,7 +53,6 @@
 	<tag tid="73" vid="2" name="СССР"></tag>
 	<tag tid="74" vid="2" name="Мексика"></tag>
 	<tag tid="75" vid="2" name="Швеция"></tag>
-	<tag tid="76" vid="2" name="Португалия"></tag>
 	<tag tid="77" vid="2" name="Гонконг"></tag>
 	<tag tid="80" vid="2" name="Гайдай, Леонид"></tag>
 	<tag tid="81" vid="2" name="Быков, Ролан"></tag>
@@ -173,7 +172,6 @@
 	<tag tid="218" vid="3" name="L"></tag>
 	<tag tid="219" vid="3" name="M"></tag>
 	<tag tid="220" vid="3" name="N"></tag>
-	<tag tid="221" vid="3" name="O"></tag>
 	<tag tid="223" vid="3" name="R"></tag>
 	<tag tid="224" vid="3" name="S"></tag>
 	<tag tid="225" vid="3" name="T"></tag>
@@ -451,8 +449,8 @@ http://www.kinopoisk.ru/film/397878/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/Sin_nombre/Sin_nombre.avi">Sin_nombre.avi </a></li>
-		<li><a data-type="embed-video" href="https://ok.ru/videoembed/87614098065">embed video, OK.ru</a></li>
+		<li><a data-type="local-file" href="/video/films/S/Sin_nombre/Sin_nombre.avi">Sin_nombre.avi </a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/87614098065">OK.ru</a></li>
 		<li><a data-type="external-link" href="http://www.youtube.com/watch?v=KoT7AXJbx7c">"La Flaca De Las Coloradhas", soundtrack</a></li>
 	</ul>
 
@@ -473,7 +471,7 @@ http://www.kinopoisk.ru/film/397878/</description>
 	</tags>
 
 	<published>01-Oct-2012 14:40:43</published>
-	<updated>23-Mar-2019 11:44:31</updated>
+	<updated>22-Apr-2019 06:23:48</updated>
 </video>
 
 <video type="video">
@@ -1110,47 +1108,6 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>26-Mar-2019 07:45:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Собака на сене</item>
-		<item>El perro del hortelano</item>
-</title>
-	
-	<producer>Пилар Миро / Pilar Miro</producer>
-	<roles>Эмма Суарес (Emma Suarez), 
-Кармело Гомес (Carmelo Gomez), 
-Фернандо Конде (Fernando Conde), 
-Ана Дьуато (Ana Duato), 
-Хуан Джи (Juan Gea), 
-Мэйти Бласко (Maite Blasco),
-Рафаэль Алонсо (Rafael Alonso), 
-Бланка Портильо (Blanca Portillo)
-		</roles>
-	<description>Комедия по мотивам пьесы испанского драматурга Лопе де Вега.
-Увлекательная история капризной, вспыльчивой красавицы Дианы и 
-ее отчаянно влюбленного секретаря Теодоро...</description>
-	
-
-	<ul>
-		<li><a data-type="local-file" href="/video/films/E/El_perro_del_hortelano/El perro del hortelano.avi">El perro del hortelano.avi</a></li>
-	</ul>
-
-	<tags>
-		<item tid="5">комедия</item>
-		<item tid="119">экранизация</item>
-		<item tid="62">Испания</item>
-		<item tid="76">Португалия</item>
-		<item tid="148">субтитры</item>
-		<item tid="22">avi</item>
-		<item tid="211">E</item>
-		<item tid="245">С</item>
-		<item tid="311">1996</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>14-Apr-2019 13:01:03</updated>
 </video>
 
 <video type="video">
@@ -1862,6 +1819,7 @@ Gerd Vespermann (Bobby),
 	<ul>
 		<li><a data-type="local-file" href="/video/films/O/О бедном гусаре замолвите слово_AVC/О бедном гусаре замолвите слово - 1 серия.mkv">О бедном гусаре замолвите слово - 1 серия.mkv</a></li>
 		<li><a data-type="local-file" href="/video/films/O/О бедном гусаре замолвите слово_AVC/О бедном гусаре замолвите слово - 2 серия.mkv">О бедном гусаре замолвите слово - 2 серия.mkv</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/556661344965">OK.ru</a></li>
 	</ul>
 
 	<tags>
@@ -1881,7 +1839,7 @@ Gerd Vespermann (Bobby),
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 08:43:59</updated>
+	<updated>22-Apr-2019 06:28:12</updated>
 </video>
 
 <video type="video">
@@ -2500,6 +2458,7 @@ https://www.kinopoisk.ru/film/1577/</description>
 <video type="video">
 	<title>
 		<item>Луна 2112</item>
+		<item>Moon</item>
 </title>
 	
 	<producer>Дункан Джонс</producer>
@@ -2509,76 +2468,37 @@ https://www.kinopoisk.ru/film/1577/</description>
 Рози Шоу, 
 Эдриэнн Шоу
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Контракт Сэма подходит к концу: он провел три года на Луне, следя за 
+	<description>Контракт Сэма подходит к концу: он провел три года на Луне, следя за 
 автоматизированной станцией по добыче редкого газа. 
 Три долгих года в полном одиночестве, если не считать говорящего робота ГЕРТИ, 
 могут изменить любого. За две недели до возвращения на землю Сэм встречает 
 своего сменщика — человека, как две капли воды похожего на него. Может, это галлюцинация? 
 Или плод его больного воображения? Может, что-то случилось на Земле, и видео-сообщения из дома, 
 поддерживавшие Сэма все эти годы, ложь?
-	&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
+https://www.kinopoisk.ru/film/406671/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/406671.jpg"/>
+	</pictures>
 
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
-
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/L/Luna.2112.P.DVDRip.avi">Luna.2112.P.DVDRip.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/42854910505">OK.ru</a></li>
+	</ul>
 
 	<tags>
-		<item tid="43">фантастика</item>
-		<item tid="12">триллер</item>
 		<item tid="39">детектив</item>
-		<item tid="22">avi</item>
+		<item tid="173">Космос</item>
+		<item tid="12">триллер</item>
+		<item tid="43">фантастика</item>
 		<item tid="60">Великобритания</item>
+		<item tid="22">avi</item>
+		<item tid="219">M</item>
+		<item tid="239">Л</item>
+		<item tid="279">2009</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Mar-2013 14:10:00</updated>
+	<updated>22-Apr-2019 06:22:59</updated>
 </video>
 
 <video type="video">
@@ -2695,6 +2615,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 
 	<ul>
 		<li><a data-type="local-file" href="/video/films/G/Generation P.2011.DVDRip.720x304.SNS.avi">Generation P.2011.DVDRip.720x304.SNS.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/250775341719">OK.ru</a></li>
 	</ul>
 
 	<tags>
@@ -2712,7 +2633,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 09:16:44</updated>
+	<updated>22-Apr-2019 06:30:47</updated>
 </video>
 
 <video type="video">
@@ -6874,7 +6795,7 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/ZH/zhmurki.avi">zhmurki.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/ZH/zhmurki.avi">zhmurki.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/ygkrkyt0uFk">embed video on youtube.com</a></li>
 	</ul>
 
@@ -6892,7 +6813,7 @@ https://www.youtube.com/watch?v=ygkrkyt0uFk</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:24:15</updated>
+	<updated>22-Apr-2019 06:18:54</updated>
 </video>
 
 <video type="video">
@@ -7846,47 +7767,6 @@ http://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D0%B5%D1
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>31-Mar-2019 09:39:16</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Кодер</item>
-		<item>Cypher</item>
-</title>
-	
-	<producer> Винченцо Натали (Vincenzo Natali)</producer>
-	<roles>Джереми Нортэм (Jeremy Northam)
-Люси Лью (Lucy Liu)
-Тимоти Веббер (Timothy Webber)
-	</roles>
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/Cyphermovieposter.jpg&amp;quot;&amp;gt;
-Студия: Pandora
-Морган Салливан - безработный бухгалтер, влачащий жалкое существование 
-в пригороде, в несчастном браке и мечтах о богатой и красивой жизни. 
-В поисках спасения от мрачного быта и от властной жены, он поступает 
-на работу в мультинациональную корпорацию &amp;quot;Дигикорп&amp;quot; 
-и становится промышленным шпионом. 
-Со стертой памятью и записанной новой идентификацией личности он должен участвовать 
-в различных сделках и передавать полученную информацию своему безжалостному боссу. 
-Однажды, при выполнении очередного задания, он знакомится с таинственной красавицей Ритой. 
-Девушка сообщает Моргану, что &amp;quot;Дигикорп&amp;quot; вовсе не является тем, чем кажется, это всего лишь подделка...
--------------------
-http://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%B4%D0%B5%D1%80_%28%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%29</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="12">триллер</item>
-		<item tid="43">фантастика</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 13:06:15</updated>
 </video>
 
 <video type="video">
@@ -9313,13 +9193,13 @@ The Trial.avi
 	</roles>
 	<description>Производство: Творческая Ассоциация Международных Программ («ТАМП»), 
 при участии «Мосфильма», киностудии им. Горького, Свердловской киностудии, студии «Классика»
-&amp;lt;pre&amp;gt;
+
 «Мастер и Маргарита» Юрия Кары - экранизация одноимённого романа Михаила Булгакова, 
 снятая в 1994 году, но так и не увидевшая свет из-за разногласий режиссёра и продюсеров 
 - фирмы «ТАМП», владеющей правами на фильм, а позднее - из-за претензий С. С. Шиловского 
 и Д. В. Писарчик, потомков третьей жены Булгакова Е. С. Шиловской, которым принадлежат 
 авторские права на роман (данная точка зрения оспаривается создателями фильма).
-&amp;lt;/pre&amp;gt;
+
 https://www.youtube.com/watch?v=-PAIG7MvEQU
 https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	<pictures>
@@ -9327,7 +9207,7 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Master.i.Margarita.2011.O.DVDRip.avi">Master.i.Margarita.2011.O.DVDRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Master.i.Margarita.2011.O.DVDRip.avi">Master.i.Margarita.2011.O.DVDRip.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/-PAIG7MvEQU">youtube.com</a></li>
 	</ul>
 
@@ -9342,7 +9222,7 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>07-Apr-2019 08:28:03</updated>
+	<updated>22-Apr-2019 06:29:05</updated>
 </video>
 
 <video type="video">
@@ -13946,17 +13826,12 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 	<producer>Тимур Бекмамбетов</producer>
 	<roles>Константин Хабенский
 Владимир Меньшов, Мария Порошина, Виктор Вержбицкий, Жанна Фриске, Алексей Чадов, Галина Тюнина, Гоша Куценко, Алексей Маклаков, Александр Самойленко, Валерий Золотухин	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Когда наступает ночь, и силы Зла властвуют безраздельно, можно столкнуться с теми, с кем не встретишься днем — темными магами, вампирами и прочей нечистью. Их сила столь велика, что справиться с ними обычным оружием невозможно.
-Но по следу «ночных охотников» идут те, кто веками сражается с порождениями сумрака и побеждает их, неукоснительно соблюдая при этом Договор, заключенный тысячелетия тому назад между Светлыми и Темными… Имя им — Ночной Дозор. Их предназначение — сохранение равновесия между Добром и Злом, нарушение которого вызывает разрушения, войны, революции, вселенские катастрофы.
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
+	<description>Когда наступает ночь, и силы Зла властвуют безраздельно, можно столкнуться с теми, с кем не встретишься днем — темными магами, вампирами и прочей нечистью. Их сила столь велика, что справиться с ними обычным оружием невозможно.
+Но по следу «ночных охотников» идут те, кто веками сражается с порождениями сумрака и побеждает их, неукоснительно соблюдая при этом Договор, заключенный тысячелетия тому назад между Светлыми и Темными… Имя им — Ночной Дозор. Их предназначение — сохранение равновесия между Добром и Злом, нарушение которого вызывает разрушения, войны, революции, вселенские катастрофы.</description>
+	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://f:</li>
+		<li><a data-type="local-file" href="/video/films/N/nochnoy_dozor.avi">nochnoy_dozor.avi</a></li>
 	</ul>
 
 	<tags>
@@ -13964,55 +13839,12 @@ https://www.youtube.com/watch?v=OWB4k-YXJUM</description>
 		<item tid="43">фантастика</item>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
+		<item tid="241">Н</item>
+		<item tid="313">2004</item>
 	</tags>
 
 	<published>13-Oct-2013 02:54:42</published>
-	<updated>13-Oct-2013 02:54:42</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Обливион</item>
-		<item>Oblivion</item>
-</title>
-	
-	<producer>Джозеф Косински / Joseph Kosinski</producer>
-	<roles>Том Круз (Jack)
-Ольга Куриленко (Julia)
-Андреа Райзборо (Victoria)
-Морган Фриман (Beech)
-Николай Костер-Вальдау (Sykes)
-Мелисса Лео (Sally), Зои Белл (Kara), Эбигейл Лоу (Julia's Child), Изабель Лоу (Julia's Child), Дэвид Мэдисон (Grow Hall Survivor), Джон Л. Армихо (NASA Ground Control, в титрах не указан), Филеена Барис (Survivor, в титрах не указана)	</roles>
-	<description>Земля, пережившая войну с инопланетными захватчиками, 
-опустела; остатки человечества готовятся покинуть непригодную для жизни планету. 
-Главный герой — техник по обслуживанию дронов — находит разбившийся корабль NASA, 
-команда которого погибает у него на глазах. Ему удаётся спасти лишь 
-одну женщину — и вскоре он понимает, что это перевернёт его жизнь.</description>
-	<pictures>
-		<img src="/video/0_covers/oblivion.jpg"/>
-	</pictures>
-
-	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/O/Oblivion.2013.BDRip-AVC.mkv">Oblivion.2013.BDRip-AVC.mkv</a></li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="54">мелодрама</item>
-		<item tid="14">приключения</item>
-		<item tid="12">триллер</item>
-		<item tid="43">фантастика</item>
-		<item tid="66">США</item>
-		<item tid="148">субтитры</item>
-		<item tid="27">mkv</item>
-		<item tid="221">O</item>
-		<item tid="242">О</item>
-		<item tid="320">sub_en</item>
-		<item tid="275">2013</item>
-	</tags>
-
-	<published>13-Oct-2013 14:11:53</published>
-	<updated>27-Mar-2019 05:58:02</updated>
+	<updated>22-Apr-2019 06:25:29</updated>
 </video>
 
 <video type="video">
