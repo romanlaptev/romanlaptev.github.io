@@ -5,6 +5,7 @@ graphic-art-collection/cms
 photoalbum/cms
 video/cms
 webapps/webapp_video/db/_export_video.xml
+webapps/webapp_video/db/video.sqlite.7z
 music/cms
 music/player
 lib/cms
