@@ -32,6 +32,7 @@
 	<tag tid="46" vid="2" name="Абрахамс, Джим"></tag>
 	<tag tid="48" vid="2" name="видеоклипы">music_video</tag>
 	<tag tid="49" vid="2" name="музыкальное видео">music_video</tag>
+	<tag tid="50" vid="2" name="Saint-Saens"></tag>
 	<tag tid="51" vid="2" name="опера"></tag>
 	<tag tid="53" vid="2" name="Спорт"></tag>
 	<tag tid="54" vid="2" name="мелодрама"></tag>
@@ -61,6 +62,7 @@
 	<tag tid="84" vid="2" name="Вивальди"></tag>
 	<tag tid="85" vid="2" name="Моцарт"></tag>
 	<tag tid="86" vid="2" name="Гендель"></tag>
+	<tag tid="87" vid="2" name="Россини, Джоаккино"></tag>
 	<tag tid="88" vid="2" name="Австралия"></tag>
 	<tag tid="89" vid="2" name="Франция"></tag>
 	<tag tid="93" vid="2" name="Катя Оутинен"></tag>
@@ -1112,43 +1114,6 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 
 <video type="video">
 	<title>
-		<item>Дон Жуан</item>
-</title>
-	
-	<producer>Jurgen Flimm</producer>
-	<roles>Don Giovanni - Rodney Gilfrey
-Leporello - Laszlo Polgár
-Donna Anna - Isabel Rey
-Donna Elvira - Cecilia Bartoli
-Don Ottavio - Roberto Saccà
-Zerlina - Liliana Nikiteanu
-Masetto - Oliver Widmer
-Il Commendatore - Matti Salminen
-Описание: Chorus and orchestra of the Opernhaus Zurich
-Дирижёр - Nikolaus Harnoncourt
-		</roles>
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="51">опера</item>
-		<item tid="85">Моцарт</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Jun-2013 12:59:11</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Дон Жуан. Запись концертного исполнения на фестивале в Вербье 20 июля 2009 г.</item>
 </title>
 	
@@ -1208,127 +1173,6 @@ Manfred Honeck, direction
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>12-Jun-2013 12:57:29</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Севильский цирюльник</item>
-</title>
-	
-	
-	<roles>Исполнитель: 
-Кэтлин Бэттл, 
-Лео Нуччи, 
-Роквелл Блейк, 
-Энцо Дара, 
-Ферруччо Фурланетто, 
-Лоретта Ди Франко, 
-Дэвид Гамильтон, 
-Эдвард Газаль, 
-Чарльз Энтони
-		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Джоаккино Россини
-Год выпуска: 1989
-Режиссёр: Джон Кокс, Брайан Лардж
-Хор и оркестр: Метрополитен Оперы
-Дирижёр: Ральф Вайкерт
-	&amp;lt;br&amp;gt;
-Оперный шедевр Джоаккино Россини «Севильский цирюльник» обошёл все сцены мира, 
-арию Фигаро узнают даже дети, а фразы «Фигаро здесь, Фигаро там» и 
-«Как бомба, разрываясь, клевета всё потрясает» стали крылатыми выражениями. 
-Остроумный Россини, будучи не только прекрасным композитором, но и кулинаром, 
-создал уникальный рецепт головокружительной непрекращающейся популярности этой оперы. 
-Вот он: семь ярких персонажей, пьянящая любовная интрига, приправленная острыми на язык 
-диалогами, всю смесь сверху залить великолепными мелодиями и посыпать виртуозными ансамблями. 
-Это итальянская опера о жизнелюбии, ибо автор её, как никто, любил жизнь. 
-В ходе постановки зрители настолько вовлечены в эти невообразимые интриги, 
-что по завершении остаётся ощущение большого оптимизма и жизненной энергии. 
-Каждый момент сценического действия настолько естественен, что характеры героев 
-начинают жить по законам этого упоительного мира игры в театр, который так неразрывно переплетается с жизнью.
-&amp;lt;/pre&amp;gt;
-
-	&amp;lt;br&amp;gt;avi</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="51">опера</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-May-2013 14:34:18</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Моцарт - Женитьба Фигаро (фильм-опера), ч.1</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;pre&amp;gt;
-постановка самой популярной оперы Моцарта 
-ДЕЙСТВИЕ ПЕРВОЕ
-В замке графа Альмавивы готовятся к свадьбе его камердинера Фигаро и Сюзанны, камеристки супруги
-графа Розины.
-Событие это становится причиной многих происшествий, ведь с графом надо держать ухо востро. Взять,
-например, его подарок: он отвел молодым комнату, которая соединяет его покои с покоями графини. Не
-успеют господа их позвать, как и Фигаро, и Сюзанна тут как тут. Фигаро нравится комната, но Сюзанна…
-Что с ней? Она решительно отказывается от этого знака внимания со стороны графа. Где же твоя
-всегдашняя сообразительность, Фигаро? Ведь Альмавива наверняка хочет воспользоваться правом первой
-ночи! Сюзанне сразу стала ясна настоящая причина графской милости.
-Фигаро поражен. Граф после своей женитьбы на Розине объявил об отмене этого обычая. Как бы там ни
-было, Фигаро не даст себя провести. Он хорошо служит господину, но за свою честь сумеет постоять.
-Браку Фигаро и Сюзанны старается помешать графская экономка Марцелина и ее старый возлюбленный –
-доктор Бартоло. Бартоло до сих пор не забыл, как ловкий цирюльник одурачил его, устроив женитьбу
-Альмавивы на красавице Розине. Сейчас мстительный старик решил воспользоваться случаем, чтобы
-расправиться с Фигаро. В свое время Фигаро одолжил у Марцелины деньги и письменно обязался в случае
-неуплаты жениться на ней. Предъявляя иск Марцелины, хитроумный Бартоло рассчитывает расстроить
-свадьбу независимого Фигаро, несмотря на то что Марцелина по прежнему волнует его кровь.
-Сюзанна не на шутку озабочена создавшимся положением. С интересом слушает она юного пажа Керубино,
-повествующего о своей любви к графине. Впрочем, не к ней одной питает он нежные чувства. Юноша
-влюблен во всех женщин замка и поэтому частенько попадает в неприятные переделки. Совсем недавно
-граф застал его наедине с Барбариной, молоденькой племянницей садовника Антонио, и, разгневавшись,
-приказал выгнать юнца из замка. Только заступничество графини может смягчить гнев Альмавивы, и
-Керубино просит Сюзанну замолвить за него словечко перед госпожой. Но, как на грех, появляется граф.
-Заслышав его приближение, Керубино в испуге прячется за кресло и невольно становится свидетелем
-того, как Альмавива испрашивает свидание у Сюзанны. Однако и его светлости приходится последовать
-примеру пажа. Не желая, чтобы пришедший учитель пения Базилио застал его наедине с Сюзанной,
-Альмавива прячется. Он слышит рассказ Базилио о любви Керубино к графине. Вне себя от негодования
-выскакивает граф из своего укрытия и приходит в ярость, увидев Керубино.
-Несдобровать бы пажу, если бы не Сюзанна. Намекнув, что Керубино был свидетелем излияний графа,
-девушка несколько умерила гнев своего господина. Смущение графа еще больше усиливается, когда ему
-приходится выслушать крестьян, явившихся благодарить сеньора за то, что он отменил феодальное право
-первой ночи. Крестьян привел в замок Фигаро, который торопится скорее отпраздновать свою свадьбу с
-Сюзанной. Альмавиве ничего другого не остается, как разрешить свадьбу и милостиво согласиться быть
-на ней гостем. Воспользовавшись замешательством графа, Керубино вымаливает себе прощение. Но он
-должен немедленно отправиться в полк, на военную службу. Фигаро демонстрирует избалованному пажу
-&amp;quot;ужасы&amp;quot; военной службы.
-&amp;lt;/pre&amp;gt;</description>
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="51">опера</item>
-		<item tid="85">Моцарт</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>25-Sep-2013 13:03:01</updated>
 </video>
 
 <video type="video">
@@ -2944,6 +2788,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="119">экранизация</item>
 		<item tid="196">Александр Демьяненко</item>
 		<item tid="180">Владимир Этуш</item>
 		<item tid="136">Куравлев, Леонид</item>
@@ -2953,10 +2798,11 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 		<item tid="80">Гайдай, Леонид</item>
 		<item tid="73">СССР</item>
 		<item tid="22">avi</item>
+		<item tid="237">И</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>12-Apr-2019 14:05:39</updated>
+	<updated>23-Apr-2019 03:15:42</updated>
 </video>
 
 <video type="video">
@@ -7633,8 +7479,8 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/pulp fiction/pulp fiction 1.avi">pulp fiction 1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/pulp fiction/pulp fiction 2.avi">pulp fiction 2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Tarantino/pulp fiction/pulp fiction 1.avi">pulp fiction 1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Tarantino/pulp fiction/pulp fiction 2.avi">pulp fiction 2.avi</a></li>
 	</ul>
 
 	<tags>
@@ -7647,7 +7493,7 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:15:12</updated>
+	<updated>23-Apr-2019 03:18:16</updated>
 </video>
 
 <video type="video">
@@ -7706,18 +7552,15 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 Квентин Тарантино (Quentin Tarantino)
 
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Первая картина Квентина Тарантино, сыгравшего здесь и одну из главных ролей 
+	<description>Первая картина Квентина Тарантино, сыгравшего здесь и одну из главных ролей 
 вместе с умудренным опытом Харви Кайтелем и модным Тимом Ротом и Стивом Бушеми. 
 После неудачного ограбления ювелирного магазина оставшиеся в живых бандиты 
 устраивают кровавую разборку друг с другом: они знают, что один из них — 
-полицейский, устроивший засаду, но не знают, кто.
-&amp;lt;/pre&amp;gt;</description>
+полицейский, устроивший засаду, но не знают, кто.</description>
 	
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/T/Tarantino/ReservoirDogs/ReservoirDogs.avi">ReservoirDogs.avi</a></li>
 	</ul>
 
 	<tags>
@@ -7731,7 +7574,7 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>21-Jun-2013 00:28:52</updated>
+	<updated>23-Apr-2019 03:19:57</updated>
 </video>
 
 <video type="video">
@@ -9495,34 +9338,6 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 
 <video type="video">
 	<title>
-		<item>Сен-Санс</item>
-		<item>Шарль Камилл Сен-Санс</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="24">mp4</item>
-	</tags>
-
-	<published>14-Nov-2012 14:19:18</published>
-	<updated>06-Jun-2013 14:36:25</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Самсара</item>
 		<item>Samsara</item>
 </title>
@@ -9794,94 +9609,6 @@ http://ru.wikipedia.org/wiki/%D0%9A%D1%83%D1%80%D1%8C%D0%B5%D1%80_%28%D1%84%D0%B
 
 <video type="video">
 	<title>
-		<item>Vivaldi</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="84">Вивальди</item>
-	</tags>
-
-	<published>01-Dec-2012 09:29:30</published>
-	<updated>16-Jun-2013 08:52:38</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Mozart, music video</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Mozart - Requiem.flv">Mozart - Requiem.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Mozart - Rondo alla turca.flv">Mozart - Rondo alla turca.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/W. A. Mozart - Symphony № 20, K. 133.mp4">W. A. Mozart - Symphony № 20, K. 133.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Моцарт - Симфонія №25.flv">Моцарт - Симфонія №25.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/В.А.Моцарт-Маленькая ночная серенада-рондо.flv">В.А.Моцарт-Маленькая ночная серенада-рондо.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Mozart/Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4">Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4</a></li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="85">Моцарт</item>
-		<item tid="25">flv</item>
-		<item tid="219">M</item>
-		<item tid="240">М</item>
-	</tags>
-
-	<published>01-Dec-2012 10:04:14</published>
-	<updated>29-Mar-2019 09:02:39</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Гендель</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="86">Гендель</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>01-Dec-2012 10:09:10</published>
-	<updated>11-Jun-2013 12:08:49</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Фредерик Шопен Вальс до # минор № 7</item>
 </title>
 	
@@ -9976,265 +9703,6 @@ height: 600,
 
 	<published>01-Dec-2012 10:16:56</published>
 	<updated>01-Dec-2012 10:18:37</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Бетховен. Ода к радости</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>01-Dec-2012 10:21:58</published>
-	<updated>06-Jun-2013 14:38:21</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Charles-Camille Saint-Saens. Danse macabre</item>
-</title>
-	
-	
-	
-	<description>============================= LOCAL URL
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-
-echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='file:///mnt/terra/&amp;quot;.
-$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.
-$node-&amp;gt;field_filename['und'][0]['value'].
-&amp;quot;' target=_blank&amp;gt;linux url&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='file:///m:/&amp;quot;.
-$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.
-$node-&amp;gt;field_filename['und'][0]['value']
-.&amp;quot;' target=_blank&amp;gt;windows url&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-?&amp;gt;
-
-&amp;lt;? 
-if (arg(0) == 'node')
-{
-?&amp;gt;
-============================= AVI
-&amp;lt;div align=&amp;quot;center&amp;quot;&amp;gt;
-&amp;lt;object 
-type=&amp;quot;video/quicktime&amp;quot; 
-src=&amp;quot;file:///mnt/terra/&amp;lt;? echo $node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$node-&amp;gt;field_filename['und'][0]['value'] ?&amp;gt;&amp;quot;  
-width=&amp;quot;800&amp;quot; height=&amp;quot;600&amp;quot; 
-ShowControls=&amp;quot;1&amp;quot; 
-ShowStatusBar=&amp;quot;0&amp;quot; 
-ShowDisplay=&amp;quot;0&amp;quot; 
-autostart=&amp;quot;0&amp;quot;&amp;gt;
-&amp;lt;param name=&amp;quot;volume&amp;quot; value=&amp;quot;0&amp;quot;/&amp;gt;
-&amp;lt;param name=&amp;quot;controller&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;
-&amp;lt;param name=&amp;quot;autoplay&amp;quot; value=&amp;quot;false&amp;quot;/&amp;gt;
-&amp;lt;/object&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;?
-}
-?&amp;gt;
-======================
-&amp;lt;?php
-if (arg(0) == 'node')
-{
-	$site = &amp;quot;http://localhost&amp;quot;;
-	$subfolder = $node-&amp;gt;field_subfolder['und'][0]['value'];
-	$file = $node-&amp;gt;field_filename['und'][0]['value'];
-	$videofile = $site.&amp;quot;/&amp;quot;.$subfolder.&amp;quot;/&amp;quot;.$file;
-	global $base_url;
-//echo $base_url;
-//echo &amp;quot;&amp;lt;br&amp;gt;&amp;quot;;
-
-	echo &amp;quot;&amp;lt;div id='mediaplayer'&amp;gt;JW Player goes here&amp;lt;/div&amp;gt;&amp;quot;;
-	echo &amp;quot;&amp;lt;script type='text/javascript' src='&amp;quot;.$base_url.&amp;quot;/sites/all/players/JWPlayer/jwplayer.js'&amp;gt;&amp;lt;/script&amp;gt;&amp;quot;;
-	echo &amp;quot;&amp;lt;script type='text/javascript'&amp;gt;
-	jwplayer('mediaplayer').setup({
-		flashplayer: '&amp;quot;.$base_url.&amp;quot;/sites/all/players/JWPlayer/player.swf',
-		file: '&amp;quot;.$videofile.&amp;quot;',
-width: 800,
-height: 600,
-		image: ''
-	});
-&amp;lt;/script&amp;gt;&amp;quot;;
-}
-?&amp;gt;</description>
-	
-
-	<ul>
-		<li>http://localhost/video/</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="83">классика</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>01-Dec-2012 10:27:50</published>
-	<updated>01-Dec-2012 10:27:50</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Пахельбель, Иоганн  - Канон ре мажор</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>https://skydrive.live.com/redir?resid=1C54A2B259FA0C51!170</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="25">flv</item>
-	</tags>
-
-	<published>01-Dec-2012 10:33:27</published>
-	<updated>16-Jun-2013 02:09:14</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Carmen. G.Bizet</item>
-</title>
-	
-	
-	
-	
-	
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>01-Dec-2012 10:38:37</published>
-	<updated>07-Jun-2013 15:18:04</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Моцарт. Ария Дон Жуана "Fin ch_han dal vino"</item>
-		<item>Mozart. Don_Giovanni_Fin ch_han dal vino</item>
-</title>
-	
-	
-	<roles>Leporello - Rene Pape
-Donna Anna - Anna Samuil
-Don Giovanni - Bryn Terfel
-Commendatore - Thomas Quasthoff
-Don Ottavio - Michael Schade
-Donna Elvira - Annette Dasch
-Zerlina - Sylvia Schwartz
-Masetto - Robert Gleadow
-
-Verbier Festival Orchestra, Collegiate Chorale
-
-Manfred Honeck, direction	</roles>
-	
-	
-
-	
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="83">классика</item>
-		<item tid="51">опера</item>
-		<item tid="85">Моцарт</item>
-		<item tid="22">avi</item>
-		<item tid="219">M</item>
-		<item tid="240">М</item>
-	</tags>
-
-	<published>01-Dec-2012 10:44:50</published>
-	<updated>13-May-2016 15:12:46</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Россини</item>
-		<item>Rossini. Barbiere di Siviglia. Aria Figaro</item>
-</title>
-	
-	
-	<roles>Исполнитель: 
-Кэтлин Бэттл, 
-Лео Нуччи, 
-Роквелл Блейк, 
-Энцо Дара, 
-Ферруччо Фурланетто, 
-Лоретта Ди Франко, 
-Дэвид Гамильтон, 
-Эдвард Газаль, 
-Чарльз Энтони	</roles>
-	<description>Джоаккино Россини
-Режиссёр: Джон Кокс, Брайан Лардж
-Хор и оркестр: Метрополитен Оперы
-Дирижёр: Ральф Вайкерт</description>
-	
-
-	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/video_opera/parts/Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi">Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi,Севильский цирюльник. "Фигаро здесь, Фигаро там"</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/video_opera/parts/Rossini - La Gazza Ladra (BARTOLETTI) 1987/La Gazza Ladra_001.avi">La Gazza Ladra_001.avi, Сорока-воровка, увертюра</a></li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="51">опера</item>
-		<item tid="22">avi</item>
-		<item tid="223">R</item>
-		<item tid="244">Р</item>
-		<item tid="292">1989</item>
-	</tags>
-
-	<published>01-Dec-2012 15:28:28</published>
-	<updated>29-Mar-2019 09:07:16</updated>
 </video>
 
 <video type="video">
@@ -11783,63 +11251,6 @@ https://www.kinopoisk.ru/film/8365/</description>
 
 <video type="video">
 	<title>
-		<item>Фауст, Шарль Гуно</item>
-		<item>Charles Gounod - Faust</item>
-</title>
-	
-	
-	<roles>Исполнители:
-МАРГАРИТА - Анджела Георгиу / Angela Gheorghiu
-ФАУСТ, доктор философии - Роберто Аланья / Roberto Alagna
-МЕФИСТОФЕЛЬ, искуситель - Брин Терфель / Bryn Terfel
-ВАЛЕНТИН, солдат - Саймон Кинлисайд / Simon Keenlyside
-ЗИБЕЛЬ, юноша, влюблённый в Маргариту - Софи Кох / Sophie Koch
-МАРТА, соседка Маргариты - Делла Джонс / Della Jones
-ВАГНЕР, студент - Мэттью Роуз / Matthew Rose
-	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Хор и оркестр: Королевского оперного театра
-Дирижер: Антонио Паппано
-Режиссер/Хореограф: Дэвид Маквикар
-
-Описание: «Фауст» явился лучшим созданием Гуно. 
-Классический образец французской лирической оперы. 
-Легенда о докторе Фаустусе — это, по-видимому, идеальный сюжет, 
-привлекающий как драматургов, так и композиторов. Марло и Гёте 
-написали великие трагедии на этот сюжет. Это не считая примерно 
-тридцати менее крупных драматургов, создавших по нему пьесы. 
-Однажды Бетховен был увлечён идеей сочинить оперу на этот сюжет. 
-Вагнер сочинил увертюру «Фауст». Лист — кантату. 
-А Берлиоз, Бойто и Гуно создали каждый свою замечательную оперу на этот сюжет. 
-Менее популярны оперы Шпора и Бузони. Есть даже такая rara avis (лат. — редкая птица), 
-как опера композитора-женщины Луизы Бертин. Трактовка Гуно этого сюжета 
-безусловно самая популярная из всех существующих, а во многих отношениях и лучшая. 
-Она основана - в большей степени, чем признает большинство критиков - 
-на первой части гётевской трагедии, и её темой является, конечно же, тема продажи 
-старым немецким учёным-философом своей души дьяволу за возвращённую ему молодость.
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="51">опера</item>
-		<item tid="60">Великобритания</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>03-May-2013 14:15:47</published>
-	<updated>18-Oct-2014 11:18:34</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Спаситель</item>
 		<item>Savior</item>
 </title>
@@ -12799,35 +12210,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 <video type="video">
 	<title>
-		<item>Шопен Вальс до минор 7</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-		<li>http://localhost</li>
-	</ul>
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-	</tags>
-
-	<published>11-Jun-2013 11:57:10</published>
-	<updated>18-Oct-2014 11:23:12</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>KMFDM</item>
 </title>
 	
@@ -13447,34 +12829,6 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 
 	<published>22-Jun-2013 08:22:46</published>
 	<updated>22-Jun-2013 13:30:14</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Моцарт, Симфонии (Венский Филармонический, Карл Бём)</item>
-		<item>Mozart-Bohm - Symphnies</item>
-</title>
-	
-	
-	
-	
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="49">музыкальное видео</item>
-		<item tid="83">классика</item>
-		<item tid="85">Моцарт</item>
-		<item tid="22">avi</item>
-		<item tid="219">M</item>
-		<item tid="240">М</item>
-	</tags>
-
-	<published>23-Jun-2013 03:13:46</published>
-	<updated>06-Oct-2015 14:42:36</updated>
 </video>
 
 <video type="video">
@@ -16426,7 +15780,9 @@ https://www.youtube.com/watch?v=I0wPpCXG7b4&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	<description>Чтобы отличиться перед высоким начальством, руководство колонии решает силами заключенных поставить революционный спектакль к 100-летию Ленина. 
 Заключенные, играя роль, перевоплощаются в своих персонажей, и, воодушевившись революционным задором, готовят побег.
 
-https://www.kinopoisk.ru/film/41257/</description>
+https://www.kinopoisk.ru/film/41257/
+
+Сергей Довлатов, рассказы из цикла «Зона»</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_big/41257.jpg"/>
 	</pictures>
@@ -16444,7 +15800,100 @@ https://www.kinopoisk.ru/film/41257/</description>
 	</tags>
 
 	<published>22-Apr-2019 08:53:03</published>
-	<updated>22-Apr-2019 08:53:03</updated>
+	<updated>22-Apr-2019 08:56:42</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Дон Жуан</item>
+</title>
+	<creators>Jurgen Flimm</creators>
+	
+	
+	<description>Don Giovanni - Rodney Gilfrey
+Leporello - Laszlo Polgár
+Donna Anna - Isabel Rey
+Donna Elvira - Cecilia Bartoli
+Don Ottavio - Roberto Saccà
+Zerlina - Liliana Nikiteanu
+Masetto - Oliver Widmer
+Il Commendatore - Matti Salminen
+Описание: Chorus and orchestra of the Opernhaus Zurich
+Дирижёр - Nikolaus Harnoncourt</description>
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/video_opera/Mozart_Don_Giovanni_2001_Zurich_Flimm/don giovanni 1/DON GIOVANNI Disc1.DVDrip.by_Galmuchet.avi">DON GIOVANNI Disc1.DVDrip.by_Galmuchet.avi</a></li>
+		<li><a data-type="local-file" href="/video/video_opera/Mozart_Don_Giovanni_2001_Zurich_Flimm/don giovanni 2/DON GIOVANNI Disc2.DVDrip.by_Galmuchet.avi">DON GIOVANNI Disc2.DVDrip.by_Galmuchet.avi</a></li>
+	</ul>
+
+	<tags>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="51">опера</item>
+		<item tid="85">Моцарт</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>11-Oct-2012 15:07:57</published>
+	<updated>23-Apr-2019 03:50:13</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Севильский цирюльник</item>
+		<item>Barbiere di Siviglia</item>
+</title>
+	<creators>Джоаккино Россини</creators>
+	
+	
+	<description>Джоаккино Россини
+Год выпуска: 1989
+Режиссёр: Джон Кокс, Брайан Лардж
+Хор и оркестр: Метрополитен Оперы
+Дирижёр: Ральф Вайкерт
+
+Оперный шедевр Джоаккино Россини «Севильский цирюльник» обошёл все сцены мира, 
+арию Фигаро узнают даже дети, а фразы «Фигаро здесь, Фигаро там» и 
+«Как бомба, разрываясь, клевета всё потрясает» стали крылатыми выражениями. 
+Остроумный Россини, будучи не только прекрасным композитором, но и кулинаром, 
+создал уникальный рецепт головокружительной непрекращающейся популярности этой оперы. 
+Вот он: семь ярких персонажей, пьянящая любовная интрига, приправленная острыми на язык 
+диалогами, всю смесь сверху залить великолепными мелодиями и посыпать виртуозными ансамблями. 
+Это итальянская опера о жизнелюбии, ибо автор её, как никто, любил жизнь. 
+В ходе постановки зрители настолько вовлечены в эти невообразимые интриги, 
+что по завершении остаётся ощущение большого оптимизма и жизненной энергии. 
+Каждый момент сценического действия настолько естественен, что характеры героев 
+начинают жить по законам этого упоительного мира игры в театр, который так неразрывно переплетается с жизнью.
+
+Исполнитель: 
+Кэтлин Бэттл, 
+Лео Нуччи, 
+Роквелл Блейк, 
+Энцо Дара, 
+Ферруччо Фурланетто, 
+Лоретта Ди Франко, 
+Дэвид Гамильтон, 
+Эдвард Газаль, 
+Чарльз Энтони</description>
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/video_opera/Rossini-Il.barbiere.di.Siviglia.1989.DVDRip/Rossini-Il.barbiere.di.Siviglia.(1.iz.2).1989.DVDRip.avi">Rossini-Il.barbiere.di.Siviglia.(1.iz.2).1989.DVDRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/video_opera/Rossini-Il.barbiere.di.Siviglia.1989.DVDRip/Rossini-Il.barbiere.di.Siviglia.(2.iz.2).1989.DVDRip.avi">Rossini-Il.barbiere.di.Siviglia.(2.iz.2).1989.DVDRip.avi</a></li>
+	</ul>
+
+	<tags>
+		<item tid="292">1989</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="51">опера</item>
+		<item tid="87">Россини, Джоаккино</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>11-Oct-2012 15:07:57</published>
+	<updated>23-Apr-2019 03:29:29</updated>
 </video>
 
 <video type="videoclip">
@@ -16492,18 +15941,305 @@ https://www.youtube.com/watch?v=wpYEfXzpYSk</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Boccherini-Quintetto n. 4 G 448 - Fandango (III-parte II).flv">Boccherini-Quintetto n. 4 G 448 - Fandango (III-parte II).flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Boccherini-Quintetto n. 4 G 448 - Fandango (III-parte II).flv">Boccherini-Quintetto n. 4 G 448 - Fandango (III-parte II).flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/MLOmwmwPMxY">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/wpYEfXzpYSk">youtube.com, Boccherini - Guitar Quintet No. 4 In D Major G 448 'Fandango'</a></li>
 	</ul>
 
 	<tags>
+		<item tid="272">youtube</item>
+		<item tid="208">B</item>
+		<item tid="230">Б</item>
 		<item tid="48">видеоклипы</item>
 		<item tid="49">музыкальное видео</item>
 		<item tid="83">классика</item>
 	</tags>
 
 	<published>01-Dec-2012 09:25:02</published>
-	<updated>07-Apr-2019 09:00:42</updated>
+	<updated>23-Apr-2019 04:56:50</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Vivaldi, music video</item>
+</title>
+	<creators>Antonio Vivaldi</creators>
+	
+	
+	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/g65oWFMSoK0/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/V/Vivaldi/A. Vivaldi - Concerto No. 10 for 4-violin in B minor (RV 580).mp4">A. Vivaldi - Concerto No. 10 for 4-violin in B minor (RV 580).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/V/Vivaldi/Antonio Vivaldi La Stravaganza Concerto No.2 RV.279.flv">Antonio Vivaldi La Stravaganza Concerto No.2 RV.279.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/V/Vivaldi/Antonio Vivaldi - Summer from four seasons.flv">Antonio Vivaldi - Summer from four seasons.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/G/Winter, by Shaham Gil.mpg">Winter, by Shaham Gil.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/V/Vivaldi/"></a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/g65oWFMSoK0">youtube.com, Antonio Vivaldi - "Summer" from four seasons</a></li>
+	</ul>
+
+	<tags>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="84">Вивальди</item>
+	</tags>
+
+	<published>01-Dec-2012 09:29:30</published>
+	<updated>23-Apr-2019 04:08:34</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Mozart, music video</item>
+</title>
+	
+	
+	
+	
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/Mozart - Requiem.flv">Mozart - Requiem.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/Mozart - Rondo alla turca.flv">Mozart - Rondo alla turca.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/W. A. Mozart - Symphony № 20, K. 133.mp4">W. A. Mozart - Symphony № 20, K. 133.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/Моцарт - Симфонія №25.flv">Моцарт - Симфонія №25.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/В.А.Моцарт-Маленькая ночная серенада-рондо.flv">В.А.Моцарт-Маленькая ночная серенада-рондо.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4">Моцарт. Симфония № 40  Mozart - Symphony No. 40.mp4</a></li>
+	</ul>
+
+	<tags>
+		<item tid="219">M</item>
+		<item tid="240">М</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="85">Моцарт</item>
+		<item tid="25">flv</item>
+	</tags>
+
+	<published>01-Dec-2012 10:04:14</published>
+	<updated>23-Apr-2019 03:44:52</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Гендель</item>
+</title>
+	<creators>Гендель</creators>
+	
+	
+	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/np9MtXc_d_4/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/H/Гендель. Соната ля-минор, ч4 (флейта и клавесин).flv">Гендель. Соната ля-минор, ч4 (флейта и клавесин).flv#Соната ля-минор, ч4 (флейта и клавесин)</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/Handel - Rodelinda - Bolton - 1xDVD_001.mov">Handel - Rodelinda - Bolton - 1xDVD_001.mov#Rodelinda</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/Handel - Water music - English Baroque Festival.flv">Handel - Water music - English Baroque Festival.flv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/np9MtXc_d_4">youtube.com,  Г.Ф.ГЕНДЕЛЬ - Sarabanda</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/sG52A719Dlw">youtube.com,  Haendel - Sarabande Extended</a></li>
+	</ul>
+
+	<tags>
+		<item tid="214">H</item>
+		<item tid="232">Г</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="86">Гендель</item>
+		<item tid="25">flv</item>
+	</tags>
+
+	<published>01-Dec-2012 10:09:10</published>
+	<updated>23-Apr-2019 03:58:38</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Бетховен, music video</item>
+</title>
+	<creators>Ludwig van Beethoven / Людвиг ван Бетховен</creators>
+	
+	
+	<description>https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%82%D1%85%D0%BE%D0%B2%D0%B5%D0%BD,_%D0%9B%D1%8E%D0%B4%D0%B2%D0%B8%D0%B3_%D0%B2%D0%B0%D0%BD</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/ZTDQZkKqapw/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/B/Симфония №9 «Ода к радости» - Л.В.Бетховен.flv">Симфония №9 «Ода к радости» - Л.В.Бетховен.flv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/ZTDQZkKqapw">youtube.com, Симфония №5 до минор</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/X6s6YKlTpfw">youtube.com, Beethoven - Symphony No.9  - Freude schöner Götterfunken</a></li>
+	</ul>
+
+	<tags>
+		<item tid="208">B</item>
+		<item tid="230">Б</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="25">flv</item>
+	</tags>
+
+	<published>01-Dec-2012 10:21:58</published>
+	<updated>23-Apr-2019 04:53:36</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Сен-Санс, music video</item>
+</title>
+	<creators>Charles-Camille Saint-Saens / Шарль Камилл Сен-Санс</creators>
+	
+	
+	<description>https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BD-%D0%A1%D0%B0%D0%BD%D1%81,_%D0%9A%D0%B0%D0%BC%D0%B8%D0%BB%D1%8C</description>
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/S/Saint-Saens/Charles-Camille Saint-Saens. Danse macabre.flv">Charles-Camille Saint-Saens. Danse macabre.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/S/Saint-Saens/Saint Saens Danza Macabra Op. 40.mp4">Saint Saens Danza Macabra Op. 40.mp4#Danza Macabra Op. 40</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/S/Saint-Saens/К.Сен-Санс - Карнавал животных - Финал.avi.flv">К.Сен-Санс - Карнавал животных - Финал.avi.flv</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/0AnEzdlv0dE">youtube.com, carnaval des animaux</a></li>
+	</ul>
+
+	<tags>
+		<item tid="224">S</item>
+		<item tid="245">С</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="50">Saint-Saens</item>
+		<item tid="25">flv</item>
+	</tags>
+
+	<published>01-Dec-2012 10:27:50</published>
+	<updated>23-Apr-2019 04:39:46</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Канон ре мажор</item>
+</title>
+	<creators>Johann Pachelbel / Пахельбель, Иоганн</creators>
+	
+	
+	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/DeQsIwZP7sg/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/P/Johann Pachelbel (Иоганн Пахельбель) - Канон ре мажор.mp4">Johann Pachelbel (Иоганн Пахельбель) - Канон ре мажор.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Paсhelbel Canon In D Ensemble Vdohnovenjie.mp4">Paсhelbel Canon In D Ensemble Vdohnovenjie.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/DeQsIwZP7sg">youtube.com, Johann Pachelbel (Иоганн Пахельбель) - Канон ре мажор</a></li>
+	</ul>
+
+	<tags>
+		<item tid="268">P</item>
+		<item tid="243">П</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="25">flv</item>
+	</tags>
+
+	<published>01-Dec-2012 10:33:27</published>
+	<updated>23-Apr-2019 04:45:21</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Ария Дон Жуана "Fin ch_han dal vino"</item>
+		<item>Don_Giovanni_Fin ch_han dal vino</item>
+</title>
+	
+	
+	
+	<description>Leporello - Rene Pape
+Donna Anna - Anna Samuil
+Don Giovanni - Bryn Terfel
+Commendatore - Thomas Quasthoff
+Don Ottavio - Michael Schade
+Donna Elvira - Annette Dasch
+Zerlina - Sylvia Schwartz
+Masetto - Robert Gleadow
+
+Verbier Festival Orchestra, Collegiate Chorale
+
+Manfred Honeck, direction</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/HP55-CZG-KQ/hqdefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/M/Mozart/Mozart_Giovanni_Verbier_Don_Giovanni_Fin ch_han dal vino.avi">Mozart_Giovanni_Verbier_Don_Giovanni_Fin ch_han dal vino.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/taDlxW1DIOk">youtube.com, Mozart: Don Giovanni, No. 1 - Pape, Samuil, Terfel, Quasthoff; Honeck, VFO</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/HP55-CZG-KQ">youtube.com, Mozart: Don Giovanni, No. 11 - Terfel, Pape; Honeck, VFO</a></li>
+	</ul>
+
+	<tags>
+		<item tid="219">M</item>
+		<item tid="240">М</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="83">классика</item>
+		<item tid="51">опера</item>
+		<item tid="85">Моцарт</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>01-Dec-2012 10:44:50</published>
+	<updated>23-Apr-2019 03:42:55</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Россини</item>
+		<item>Rossini. Barbiere di Siviglia. Aria Figaro</item>
+</title>
+	<creators>Джоаккино Россини / Gioachino Rossini</creators>
+	
+	
+	<description>Джоаккино Россини
+Режиссёр: Джон Кокс, Брайан Лардж
+Хор и оркестр: Метрополитен Оперы
+Дирижёр: Ральф Вайкерт
+
+Исполнитель: 
+Кэтлин Бэттл, 
+Лео Нуччи, 
+Роквелл Блейк, 
+Энцо Дара, 
+Ферруччо Фурланетто, 
+Лоретта Ди Франко, 
+Дэвид Гамильтон, 
+Эдвард Газаль, 
+Чарльз Энтони
+1989</description>
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/video_opera/parts/Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi">Rossini-Il.barbiere.di.Siviglia.1989.DVDRip_cut01.avi,Севильский цирюльник. "Фигаро здесь, Фигаро там"</a></li>
+		<li><a data-type="local-file" href="/video/video_opera/parts/Rossini - La Gazza Ladra (BARTOLETTI) 1987/La Gazza Ladra_001.avi">La Gazza Ladra_001.avi, Сорока-воровка, увертюра</a></li>
+	</ul>
+
+	<tags>
+		<item tid="292">1989</item>
+		<item tid="223">R</item>
+		<item tid="244">Р</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="51">опера</item>
+		<item tid="87">Россини, Джоаккино</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>01-Dec-2012 15:28:28</published>
+	<updated>23-Apr-2019 03:25:49</updated>
 </video>
 
 <video type="videoclip">
@@ -16517,7 +16253,11 @@ https://www.youtube.com/watch?v=wpYEfXzpYSk</description>
 	<description>Nozze Paris
 Mozart: Le nozze di Figaro, K492
 
-Ludovic Tézier (Il Conte di Almaviva), Barbara Frittoli (La Contessa di Almaviva), Ekaterina Siurina (Susanna), Luca Pisaroni (Figaro), Karine Deshayes (Cherubino), Ann Murray (Marcellina), Robert Lloyd (Bartolo), Robin Leggate (Don Basilio), Antoine Normand (Don Curzio), Christian Tréguier (Antonio) &amp;amp; Maria Virginia Savastano (Barbarina)
+Ludovic Tézier (Il Conte di Almaviva), Barbara Frittoli (La Contessa di Almaviva), 
+Ekaterina Siurina (Susanna), Luca Pisaroni (Figaro), Karine Deshayes (Cherubino), 
+Ann Murray (Marcellina), Robert Lloyd (Bartolo), Robin Leggate (Don Basilio), 
+Antoine Normand (Don Curzio), 
+Christian Tréguier (Antonio) &amp;amp; Maria Virginia Savastano (Barbarina)
 
 Paris Opera Orchestra &amp;amp; Chorus, Philippe Jordan
 
@@ -16527,12 +16267,12 @@ Stage direction and lighting design: Giorgio Strehler</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Mozart_Figaro_Nozze_Paris/01_Nozze_Paris.avi">01_Nozze_Paris.avi#Увертюра</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Mozart_Figaro_Nozze_Paris/02_Nozze_Paris_act_I.avi">02_Nozze_Paris_act_I.avi#Акт 1, Aria 2, "Cinque... dieci... venti..."</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Mozart_Figaro_Nozze_Paris/01_Nozze_Paris.avi">01_Nozze_Paris.avi#Увертюра</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Mozart_Figaro_Nozze_Paris/02_Nozze_Paris_act_I.avi">02_Nozze_Paris_act_I.avi#Акт 1, Aria 2, "Cinque... dieci... venti..."</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/z_cx5TUYWNk">youtube.com, act 1, aria 2, "Cinque... dieci... venti..."</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Mozart_Figaro_Nozze_Paris/03_Nozze_Paris_act_I.avi">03_Nozze_Paris_act_I.avi#Act 1, Aria 4, "Se a caso Madama la notte ti chiama"</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Mozart_Figaro_Nozze_Paris/03_Nozze_Paris_act_I.avi">03_Nozze_Paris_act_I.avi#Act 1, Aria 4, "Se a caso Madama la notte ti chiama"</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/h0bum5aEUeY">youtube.com, act 1, aria 4, "Se a caso Madama la notte ti chiama"</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Mozart_Figaro_Nozze_Paris/006_Nozze_Paris_act_I_cherubino.avi">006_Nozze_Paris_act_I_cherubino.avi#Акт 1, Aria 18, "Cos'è questa commedia? (Conte, Figaro, Susanna)"</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Mozart_Figaro_Nozze_Paris/006_Nozze_Paris_act_I_cherubino.avi">006_Nozze_Paris_act_I_cherubino.avi#Акт 1, Aria 18, "Cos'è questa commedia? (Conte, Figaro, Susanna)"</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/U0fUkwNUTRg">youtube.com, act 1, aria 18, &amp;quot;Cos' questa commedia? (Conte, Figaro, Susanna)&amp;quot;</a></li>
 	</ul>
 
@@ -16548,7 +16288,7 @@ Stage direction and lighting design: Giorgio Strehler</description>
 	</tags>
 
 	<published>01-Dec-2012 15:54:21</published>
-	<updated>31-Mar-2019 11:38:48</updated>
+	<updated>23-Apr-2019 03:36:58</updated>
 </video>
 
 <video type="videoclip">
@@ -16613,11 +16353,11 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut01.avi">Handel_Julius_Caesar-1984_cut01.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut02.avi">Handel_Julius_Caesar-1984_cut02.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut03.avi">Handel_Julius_Caesar-1984_cut03.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut04.avi">Handel_Julius_Caesar-1984_cut04.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut05.avi">Handel_Julius_Caesar-1984_cut05.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut01.avi">Handel_Julius_Caesar-1984_cut01.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut02.avi">Handel_Julius_Caesar-1984_cut02.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut03.avi">Handel_Julius_Caesar-1984_cut03.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut04.avi">Handel_Julius_Caesar-1984_cut04.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Handel_Julius_Caesar_1984/Handel_Julius_Caesar-1984_cut05.avi">Handel_Julius_Caesar-1984_cut05.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/TXDCyb_3Qjs">youtube.com, Act 1 Scene 2: Upstart, Barbarian and Traitor!</a></li>
 	</ul>
 
@@ -16633,7 +16373,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>01-Dec-2012 16:24:28</published>
-	<updated>31-Mar-2019 10:50:49</updated>
+	<updated>23-Apr-2019 03:51:48</updated>
 </video>
 
 <video type="videoclip">
@@ -16861,6 +16601,71 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 
 	<published>08-Dec-2012 09:03:53</published>
 	<updated>07-Apr-2019 08:52:38</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Фауст</item>
+		<item>Faust</item>
+</title>
+	<creators>Шарль Гуно / Charles Gounod</creators>
+	
+	
+	<description>Хор и оркестр: Королевского оперного театра
+Дирижер: Антонио Паппано
+Режиссер/Хореограф: Дэвид Маквикар
+
+Описание: «Фауст» явился лучшим созданием Гуно. 
+Классический образец французской лирической оперы. 
+Легенда о докторе Фаустусе — это, по-видимому, идеальный сюжет, 
+привлекающий как драматургов, так и композиторов. Марло и Гёте 
+написали великие трагедии на этот сюжет. Это не считая примерно 
+тридцати менее крупных драматургов, создавших по нему пьесы. 
+Однажды Бетховен был увлечён идеей сочинить оперу на этот сюжет. 
+Вагнер сочинил увертюру «Фауст». Лист — кантату. 
+А Берлиоз, Бойто и Гуно создали каждый свою замечательную оперу на этот сюжет. 
+Менее популярны оперы Шпора и Бузони. Есть даже такая rara avis (лат. — редкая птица), 
+как опера композитора-женщины Луизы Бертин. Трактовка Гуно этого сюжета 
+безусловно самая популярная из всех существующих, а во многих отношениях и лучшая. 
+Она основана - в большей степени, чем признает большинство критиков - 
+на первой части гётевской трагедии, и её темой является, конечно же, тема продажи 
+старым немецким учёным-философом своей души дьяволу за возвращённую ему молодость.
+
+Исполнители:
+МАРГАРИТА - Анджела Георгиу / Angela Gheorghiu
+ФАУСТ, доктор философии - Роберто Аланья / Roberto Alagna
+МЕФИСТОФЕЛЬ, искуситель - Брин Терфель / Bryn Terfel
+ВАЛЕНТИН, солдат - Саймон Кинлисайд / Simon Keenlyside
+ЗИБЕЛЬ, юноша, влюблённый в Маргариту - Софи Кох / Sophie Koch
+МАРТА, соседка Маргариты - Делла Джонс / Della Jones
+ВАГНЕР, студент - Мэттью Роуз / Matthew Rose</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/oWLra3TrxYc/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/video_opera/Faust.Gounod.2004/Faust.act2.People die for metal.avi">Faust.act2.People die for metal.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/oWLra3TrxYc">youtube.com, Faust act2 People die for metal</a></li>
+		<li><a data-type="local-file" href="/video/video_opera/Faust.Gounod.2004/Faust.act4_return_valentine.avi">Faust.act4_return_valentine.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/cA4bP_eCKNc">youtube.com, Faust act4 return valentine</a></li>
+		<li><a data-type="local-file" href="/video/video_opera/Faust.Gounod.2004/Faust.act5_Walpurgis_Night.avi">Faust.act5_Walpurgis_Night.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tY0Vj2v-lCs">youtube.com, Faust act5 Walpurgis Night</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="313">2004</item>
+		<item tid="212">F</item>
+		<item tid="248">Ф</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="51">опера</item>
+		<item tid="60">Великобритания</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>03-May-2013 14:15:47</published>
+	<updated>23-Apr-2019 04:34:27</updated>
 </video>
 
 <video type="videoclip">
@@ -17136,6 +16941,30 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 
 <video type="videoclip">
 	<title>
+		<item>Вальс до минор 7</item>
+</title>
+	<creators>Фредерик Шопен</creators>
+	
+	
+	
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Фредерик Шопен Вальс до минор 7.flv">Фредерик Шопен Вальс до минор 7.flv</a></li>
+	</ul>
+
+	<tags>
+		<item tid="252">Ш</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+	</tags>
+
+	<published>11-Jun-2013 11:57:10</published>
+	<updated>23-Apr-2019 04:20:35</updated>
+</video>
+
+<video type="videoclip">
+	<title>
 		<item>Absorbed</item>
 </title>
 	<creators>Coroner</creators>
@@ -17392,6 +17221,36 @@ https://ru.wikipedia.org/wiki/%D0%9F%D1%81%D0%B8%D0%BB%D0%BE%D1%86%D0%B8%D0%B1%D
 
 	<published>21-Jun-2013 14:05:53</published>
 	<updated>21-Apr-2019 09:08:01</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Симфонии</item>
+		<item>Mozart-Bohm - Symphnies</item>
+</title>
+	<creators>Моцарт (Венский Филармонический, Карл Бём)</creators>
+	
+	
+	
+	
+
+	<ul>
+		<li><a data-type="local-file" href="/video/music_video/Mozart-Bohm - Symphnies/Menuet.K.409.AVI">Menuet.K.409.AVI</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Mozart-Bohm - Symphnies/Mozart_Eine_kleine_Nachtmusik_K.525.avi">Mozart_Eine_kleine_Nachtmusik_K.525.avi</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Mozart-Bohm - Symphnies/Symphonie_N25.avi">Symphonie_N25.avi</a></li>
+	</ul>
+
+	<tags>
+		<item tid="219">M</item>
+		<item tid="240">М</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="85">Моцарт</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>23-Jun-2013 03:13:46</published>
+	<updated>23-Apr-2019 03:35:37</updated>
 </video>
 
 <video type="videoclip">
@@ -18890,7 +18749,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	
 	<description></description>
 	<pictures>
-		<img src="https://i.ytimg.com/vi/JSAd3NpDi6Q/sddefault.jpg"/>
+		<img src="https://i.ytimg.com/vi/JSAd3NpDi6Q/hqdefault.jpg"/>
 	</pictures>
 
 	<ul>
@@ -18904,10 +18763,11 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 		<item tid="232">Г</item>
 		<item tid="49">музыкальное видео</item>
 		<item tid="83">классика</item>
+		<item tid="86">Гендель</item>
 	</tags>
 
 	<published>31-Mar-2019 12:46:57</published>
-	<updated>31-Mar-2019 12:50:57</updated>
+	<updated>23-Apr-2019 04:01:28</updated>
 </video>
 
 <video type="videoclip">
@@ -18968,9 +18828,9 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 
 <video type="videoclip">
 	<title>
-		<item>Queen of the Night - Mozart The Magic Flute</item>
+		<item>Queen of the Night (Mozart The Magic Flute)</item>
 </title>
-	<creators>Diana Damrau, Mozart, The Magic Flute</creators>
+	<creators>Diana Damrau</creators>
 	
 	
 	<description>https://www.youtube.com/watch?v=pZcaf9GfyWs&amp;amp;index=28&amp;amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI&amp;amp;t=0s</description>
@@ -18979,8 +18839,8 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Diana Damrau - Queen of the Night - Mozart The Magic Flute.mp4">Diana Damrau - Queen of the Night - Mozart The Magic Flute.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/opera/Diana Damrau - Queen of the night aria.mp4">Diana Damrau - Queen of the night aria.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Diana Damrau - Queen of the Night - Mozart The Magic Flute.mp4">Diana Damrau - Queen of the Night - Mozart The Magic Flute.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/opera/Diana Damrau - Queen of the night aria.mp4">Diana Damrau - Queen of the night aria.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/pZcaf9GfyWs">youtube, Diana Damrau - Queen of the Night - Mozart The Magic Flute</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/WOQ7W8-_Ekg">youtube, 2</a></li>
 	</ul>
@@ -18990,10 +18850,11 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 		<item tid="210">D</item>
 		<item tid="49">музыкальное видео</item>
 		<item tid="83">классика</item>
+		<item tid="85">Моцарт</item>
 	</tags>
 
 	<published>31-Mar-2019 13:25:15</published>
-	<updated>31-Mar-2019 13:35:55</updated>
+	<updated>23-Apr-2019 04:17:53</updated>
 </video>
 
 <video type="videoclip">
