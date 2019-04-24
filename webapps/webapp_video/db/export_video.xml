@@ -15,7 +15,6 @@
 	<tag tid="23" vid="2" name="mpg"></tag>
 	<tag tid="24" vid="2" name="mp4"></tag>
 	<tag tid="25" vid="2" name="flv"></tag>
-	<tag tid="26" vid="2" name="mov"></tag>
 	<tag tid="27" vid="2" name="mkv"></tag>
 	<tag tid="28" vid="2" name="короткометражный"></tag>
 	<tag tid="32" vid="2" name="документальный"></tag>
@@ -790,17 +789,20 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 &amp;lt;/pre&amp;gt;</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/K/killer.avi">killer.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
 		<item tid="5">комедия</item>
 		<item tid="77">Гонконг</item>
 		<item tid="22">avi</item>
+		<item tid="324">1998</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>26-Mar-2019 05:35:11</updated>
+	<updated>24-Apr-2019 05:54:47</updated>
 </video>
 
 <video type="video">
@@ -972,9 +974,10 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 <video type="video">
 	<title>
 		<item>Большой куш</item>
+		<item>Snatch</item>
 </title>
 	
-	
+	<producer>Гай Ричи / Guy Ritchie</producer>
 	<roles>Брэд Питт (Brad Pitt), 
 Джейсон Флеминг (Jason Flemyng), 
 Эвен Бремнер (Ewen Bremner), 
@@ -987,8 +990,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 Джеймс Ленни (Lennie James), 
 Бенисио Дель Торо (Benicio Del Toro)
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Четырехпалый Фрэнки должен был переправить краденный алмаз из Англии в США 
+	<description>Четырехпалый Фрэнки должен был переправить краденный алмаз из Англии в США 
 своему боссу Эви. Но вместо этого герой попадает в эпицентр больших н
 еприятностей. Сделав ставку на подпольном боксерском поединке, Фрэнки 
 попал в водоворот весьма нежелательных событий. Вокруг героя и его груза 
@@ -997,11 +999,12 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 угрюмого громилы грозного мафиози Кирпича, каждый из которых норовит в одиночку 
 сорвать Большой Куш. Настолько же опасная, настолько и анекдотичная, 
 ситуация постепенно выходит из-под контроля и превращается в огромный ком проблем 
-для ее участников, скоро катящийся к неожиданному и остроумному финалу...
-&amp;lt;/pre&amp;gt;</description>
+для ее участников, скоро катящийся к неожиданному и остроумному финалу...</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/G/Guy Ritchie/snatch.avi">snatch.avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -1016,7 +1019,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>23-Jul-2016 17:41:51</updated>
+	<updated>24-Apr-2019 05:56:42</updated>
 </video>
 
 <video type="video">
@@ -1923,7 +1926,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Avatar.EXTENDED.2010.D.HDRip.V2.ELEKTRI4KA.avi">Avatar.EXTENDED.2010.D.HDRip.V2.ELEKTRI4KA.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Avatar.EXTENDED.2010.D.HDRip.V2.ELEKTRI4KA.avi">Avatar.EXTENDED.2010.D.HDRip.V2.ELEKTRI4KA.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1940,7 +1943,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:37:17</updated>
+	<updated>24-Apr-2019 05:53:13</updated>
 </video>
 
 <video type="video">
@@ -2278,40 +2281,6 @@ https://www.kinopoisk.ru/film/406671/</description>
 
 	<published>11-Oct-2012 15:07:57</published>
 	<updated>22-Apr-2019 06:22:59</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Безмолвный Город</item>
-</title>
-	
-	<producer>Руайри Робинсон / Ruairi Robinson</producer>
-	<roles>Гарван Маккрэйз, 
-Силлиан Мерфи, 
-Дон Вичерли
-		</roles>
-	<description>Ирландский режиссер Руайри Робинсон (Ruairi Robinson) - 
-автор номинированной на Оскар 3d-короткометражки &amp;quot;Fifty Percent Grey&amp;quot;, - 
-решил открыть для свободного скачивания свой короткометражный (7 минут), live action фильм &amp;quot;The Silent City&amp;quot;. 
-Фильм повествует о судьбе 3х солдат - участников одной из войн недалекого будущего.
-Доп. информация: Для авторского фильма объем и качество выполненных пост-эффектов просто поражают. 
-Тем более, что, по словам Руайри, кроме сценария, раскадровок, режиссирования и монтажа, 
-он сделал еще и 95% всех визуальных эффектов.</description>
-	
-
-	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/Bezmolvnyj_Gorod[torrents.ru].mov">Bezmolvnyj_Gorod[torrents.ru].mov</a></li>
-	</ul>
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="4">драма</item>
-		<item tid="43">фантастика</item>
-		<item tid="26">mov</item>
-	</tags>
-
-	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 05:47:26</updated>
 </video>
 
 <video type="video">
@@ -3201,6 +3170,7 @@ for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
 <video type="video">
 	<title>
 		<item>Понедельник</item>
+		<item>Monday</item>
 </title>
 	
 	<producer>Хироюки Танака (Sabu)</producer>
@@ -3215,18 +3185,20 @@ Hideki Noda
 Нао Омори
 ichi Tsutsumi
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Однажды утром в понедельник молодой человек в черном костюме 
+	<description>Однажды утром в понедельник молодой человек в черном костюме 
 просыпается в комнате отеля. Он не имеет ни малейшего понятия с том, 
 где находится, какой сегодня день и как он сюда попал.
-Внезапно из его кармана выпадает мешочек с очищающей солью, которую по японской традиции используют во время религиозных церемоний после похорон, чтобы избавиться от злых духов. Постепенно память начинает возвращаться. «Похороны… ссора с подружкой… пьянка в баре… знакомство с боссом якудзы и его прекрасной любовницей… пистолет в руке и четверо убитых «братанов» из якудзы…» Что это? Безумный кошмар или реальные события прошедшей ночи…
-&amp;lt;/pre&amp;gt;
-http://en.wikipedia.org/wiki/Monday_(film)</description>
-	
+Внезапно из его кармана выпадает мешочек с очищающей солью, которую по японской традиции используют во время религиозных церемоний после похорон, чтобы избавиться от злых духов. 
+Постепенно память начинает возвращаться.
+
+http://en.wikipedia.org/wiki/Monday_(film)
+https://www.kinopoisk.ru/film/55152/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/55152.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/P/Ponedelnik.Monday.2000.(DVDRip, Xvid, Rus).Lifemirror.avi">Ponedelnik.Monday.2000.(DVDRip, Xvid, Rus).Lifemirror.avi</a></li>
 	</ul>
 
 	<tags>
@@ -3241,7 +3213,7 @@ http://en.wikipedia.org/wiki/Monday_(film)</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>10-Jul-2014 14:03:32</updated>
+	<updated>24-Apr-2019 06:01:05</updated>
 </video>
 
 <video type="video">
@@ -5797,8 +5769,8 @@ https://www.kinopoisk.ru/film/43777/
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/starship troopers.avi">starship troopers.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/Starship Troopers.mkv">Starship Troopers.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/S/starship troopers.avi">starship troopers.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/Starship Troopers.mkv">Starship Troopers.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -5810,7 +5782,7 @@ https://www.kinopoisk.ru/film/43777/
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 08:52:51</updated>
+	<updated>24-Apr-2019 05:51:44</updated>
 </video>
 
 <video type="video">
@@ -6389,18 +6361,22 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 Клиффорд Хьюго (Clifford Hugo)
 Олег Бернов (Oleg Bernov)
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Взрывоопасная смесь Безумного Макса и Отчаянного. 
-Мир после конца света превратился в бескрайнюю пустыню. 
+	<description>Мир после конца света превратился в бескрайнюю пустыню. 
 Банды дикарей и головорезов в жестоких схватках пытаются истребить друг друга. 
 Противостоять им может только классический супергерой. 
 Он виртуозно играет на гитаре и владеет самурайским мечом. 
 У него есть одно заветное желание — добраться до новой рок-н-рольной столицы мира — 
 затерявшегося в песках Лас Вегаса.
-&amp;lt;/pre&amp;gt;</description>
-	
 
-	
+https://www.kinopoisk.ru/film/59763/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/59763.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/S/SixStringSamurai.avi">SixStringSamurai.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/348605188715">OK.ru</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -6409,10 +6385,11 @@ https://www.youtube.com/watch?v=bjtt_z2X7HE</description>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
 		<item tid="252">Ш</item>
+		<item tid="324">1998</item>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>06-Dec-2015 13:23:53</updated>
+	<updated>24-Apr-2019 05:48:11</updated>
 </video>
 
 <video type="video">
@@ -7075,8 +7052,8 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/brave_heart/Brave_Heart1.avi">Brave_Heart1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/brave_heart/Brave_Heart2.avi">Brave_Heart2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/brave_heart/Brave_Heart1.avi">Brave_Heart1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/brave_heart/Brave_Heart2.avi">Brave_Heart2.avi</a></li>
 	</ul>
 
 	<tags>
@@ -7090,7 +7067,7 @@ https://www.youtube.com/watch?v=swMmFBvMKsI</description>
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 08:12:51</updated>
+	<updated>24-Apr-2019 05:50:09</updated>
 </video>
 
 <video type="video">
@@ -7131,7 +7108,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/V/Voina.2002.XviD.DVDRip.avi">Voina.2002.XviD.DVDRip.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/V/Voina.2002.XviD.DVDRip.avi">Voina.2002.XviD.DVDRip.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/uONM3UvntY4">embed video on youtube.com</a></li>
 	</ul>
 
@@ -7144,7 +7121,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>27-Mar-2019 09:13:41</updated>
+	<updated>24-Apr-2019 05:53:42</updated>
 </video>
 
 <video type="video">
@@ -7163,14 +7140,17 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</roles>
 	<description>https://www.youtube.com/watch?v=YewLBN43HqI
 
-Демобилизованный из армии Данила Багров возвращается в родной город. Скучная, однообразная жизнь провинции не может устроить крепкого русского парня, и он решает поехать в Питер, испытать себя. Тем более, что там, по слухам уже давно процветает его старший брат.
-Но &amp;quot;новая русская&amp;quot; жизнь северной столицы оказывается слишком неожиданной, а родной брат Данилы зарабатывает на жизнь заказными убийствами. Даниле предстоит многое узнать... и со многими разобраться.</description>
+Демобилизованный из армии Данила Багров возвращается в родной город. 
+Скучная, однообразная жизнь провинции не может устроить крепкого русского парня, и он решает поехать в Питер, испытать себя. 
+Тем более, что там, по слухам уже давно процветает его старший брат.
+Но &amp;quot;новая русская&amp;quot; жизнь северной столицы оказывается слишком неожиданной, а родной брат Данилы 
+зарабатывает на жизнь заказными убийствами. Даниле предстоит многое узнать... и со многими разобраться.</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/YewLBN43HqI/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/Balabanov/Brat/Brat.1997.HDRip.mkv">Brat.1997.HDRip.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Balabanov/Brat/Brat.1997.HDRip.mkv">Brat.1997.HDRip.mkv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/YewLBN43HqI">embed video on youtube.com</a></li>
 	</ul>
 
@@ -7186,7 +7166,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 06:44:57</updated>
+	<updated>24-Apr-2019 05:50:58</updated>
 </video>
 
 <video type="video">
@@ -7209,18 +7189,16 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 Рэй Толер
 Леонид Якубович
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Участвуя в программе на телевидении, Данила Багров встречает своих друзей по Чечне. 
+	<description>Участвуя в программе на телевидении, Данила Багров встречает своих друзей по Чечне. 
 Одного из них внезапно убивают. Данила знает, что у того были неприятности из-за 
 брата-хоккеиста в Америке. Данила должен разобраться. Теперь его фотография 
 ходит по рукам русской и американской мафии. Новоявленные &amp;quot;Аль Капоне&amp;quot; 
-понимают, что нарвались на профессионала.
-&amp;lt;/pre&amp;gt;</description>
+понимают, что нарвались на профессионала.</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/Balabanov/Brat/Brat_2_2.18.avi">Brat_2_2.18.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/Balabanov/Brat/bart-2_about.avi">bart-2_about.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Balabanov/Brat/Brat_2_2.18.avi">Brat_2_2.18.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Balabanov/Brat/bart-2_about.avi">bart-2_about.avi</a></li>
 	</ul>
 
 	<tags>
@@ -7235,7 +7213,7 @@ http://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%28%D1%84%D0%B8%D0%B
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:11:30</updated>
+	<updated>24-Apr-2019 05:52:23</updated>
 </video>
 
 <video type="video">
@@ -7397,7 +7375,7 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Tarantino/DESPERADO.AVI">DESPERADO.AVI</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Tarantino/DESPERADO.AVI">DESPERADO.AVI</a></li>
 	</ul>
 
 	<tags>
@@ -7410,7 +7388,7 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	</tags>
 
 	<published>11-Oct-2012 15:07:57</published>
-	<updated>28-Mar-2019 09:13:11</updated>
+	<updated>24-Apr-2019 05:52:52</updated>
 </video>
 
 <video type="video">
@@ -9097,7 +9075,8 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 
 <video type="video">
 	<title>
-		<item> Wo Hu: Operation Undercover / Ngor fu</item>
+		<item>Во Ху:Тайная Операция / Операция "Крадущиеся тигры"</item>
+		<item>Wo Hu: Operation Undercover / Ngor fu</item>
 </title>
 	
 	<producer>Марко Мак, Ванг Куанг-Ли</producer>
@@ -9107,14 +9086,15 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 Соня Квок
 Кью Вай Миу
 Джулиан Чеунг	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Описание: Гонконгская полиция разместила 1000 тайных агентов в различные группы Триад 
-с целью - сбить преступную волну. После того, как был раскрыт и убит один из агентов, инспектор Вай, переключается на эту группу, чтобы предотвратить гибель других...
-Чтобы разом подорвать гонконгские триады, власти объявляют операцию «Крадущиеся тигры» – одним махом они засылают в преступные организации тысячу информаторов. Проходит два года, «стукачи» вжились в роли и приблизились к верхушкам, и их связные в полиции начинают качать из них информацию. Один из таких информаторов есть и в группировке, которой управляет босс Тонг Чунг (Юэнь Хва). Но кто этот человек и насколько он близко?
-&amp;lt;/pre&amp;gt;</description>
+	<description>Описание: Гонконгская полиция разместила 1000 тайных агентов в различные группы Триад 
+с целью - сбить преступную волну. После того, как был раскрыт и убит один из агентов, 
+инспектор Вай, переключается на эту группу, чтобы предотвратить гибель других...
+Чтобы разом подорвать гонконгские триады, власти объявляют операцию «Крадущиеся тигры» – одним махом они засылают в преступные организации тысячу информаторов. Проходит два года, «стукачи» вжились в роли и приблизились к верхушкам, и их связные в полиции начинают качать из них информацию. Один из таких информаторов есть и в группировке, которой управляет босс Тонг Чунг (Юэнь Хва). Но кто этот человек и насколько он близко?</description>
 	
 
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/W/WO_HU1[1].avi">WO_HU1[1].avi</a></li>
+	</ul>
 
 	<tags>
 		<item tid="37">Боевик</item>
@@ -9122,10 +9102,11 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 		<item tid="22">avi</item>
 		<item tid="226">W</item>
 		<item tid="238">К</item>
+		<item tid="282">2006</item>
 	</tags>
 
 	<published>12-Oct-2012 15:28:12</published>
-	<updated>04-Sep-2015 15:19:08</updated>
+	<updated>24-Apr-2019 05:44:22</updated>
 </video>
 
 <video type="video">
@@ -13318,37 +13299,6 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 
 	<published>02-Jun-2015 12:40:43</published>
 	<updated>22-Apr-2019 08:09:35</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Грань будущего / Edge of Tomorrow</item>
-</title>
-	
-	<producer>Даг Лайман</producer>
-	<roles>Эмили Блант, Том Круз, Билл Пэкстон, Шарлотта Райли, Джонас Армстронг, Ли Аскит-Ко, Кик Гарри, Драгомир Мрсик, Тони Вэй, Дебора Розан, Франц Драмех, Ронан Саммерс, Бентли Калу, Марко Фламмер, Сиилан Ганасиилан, Маделин Манток, Денис Корошко, Наташа Гоулден, Уизерспун Джеймс, Джош Вичард	</roles>
-	<description>История разворачивается в недалеком будущем, когда похожая на рой раса инопланетян, названных мимиками, совершает безжалостное нападение на Землю, стерев в пыль крупные города и уничтожив миллионы жизней. Армии Земли объединят силы, чтобы вступить в последний бой с полчищами инопланетян, зная, что второго шанса у них не будет.
-Подполковник Билл Кейдж — ни разу не был на поле битвы, пока его не бросили в самую гущу боя неподготовленного и плохо снаряженного, фактически обрекая на смерть. Через считанные минуты Кейджа убивают, но он захватывает с собой и жизнь пришельца. И случается невозможное — он просыпается живым в начале того же адского дня, и вынужден сражаться и умирать… снова и снова. Прямой физический контакт с пришельцем замкнул временную петлю, и теперь Кейдж вновь и вновь идет в тот же бой.
-Но с каждым возвращением Кейдж становится более жестоким и умным в битве с мимиками, сражаясь бок о бок с бойцом спецназа Ритой Вратаски, уничтожившей больше мимиков, чем кто бы то ни было еще на Земле. Рита и Кейдж раз за разом дают бой пришельцам, и каждое повторяющееся сражение приближает их к разгадке того, как убить инопланетных захватчиков и спасти планету.</description>
-	<pictures>
-		<img src="/video/0_covers/edge-of-tomorrow.jpg"/>
-	</pictures>
-
-	
-
-	<tags>
-		<item tid="37">Боевик</item>
-		<item tid="43">фантастика</item>
-		<item tid="66">США</item>
-		<item tid="24">mp4</item>
-		<item tid="211">E</item>
-		<item tid="230">Б</item>
-		<item tid="232">Г</item>
-		<item tid="307">2014</item>
-	</tags>
-
-	<published>02-Jun-2015 12:54:26</published>
-	<updated>21-Aug-2016 11:52:49</updated>
 </video>
 
 <video type="video">
