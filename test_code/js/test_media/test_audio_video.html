@@ -17,6 +17,14 @@ var logMsg;
 
 window.onload = function(){
 	func.log( "<h3>"+navigator.userAgent +"</h3>");
+	
+	if( flashEnabled() ){
+		logMsg = "Adobe Flash supported...";
+		func.log("<div class='alert alert-success'>" + logMsg + "</div>");
+	} else {
+		logMsg = "Adobe Flash not supported...";
+		func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+	}
 
 	var btn_log = func.getById("btn-clear-log");
 	var log = func.getById("log");
@@ -89,6 +97,7 @@ function testMediaSupport(){
 //"video/MP4V-ES",
 
 'video/ogg; codecs="theora, vorbis"',
+'video/ogg; codecs="dirac, speex"',
 'application/ogg',
 'application/x-ogg',
 
@@ -118,6 +127,7 @@ function testMediaSupport(){
 "video/vnd.avi",  "video/avi",  "video/msvideo",  "video/x-msvideo",
 "video/x-ms-asf", //(Windows Media Video: asf,asx)
 "application/x-mplayer2",//(Windows Media), Windows Media Player Plugin
+//"application/x-shockwave-flash", //.swf
 
 "video/x-matroska", //(Matroska video: mkv)
 "video/x-ms-vob",
@@ -177,6 +187,26 @@ function testMediaSupport(){
 	}
 	
 }//end testMediaSupport()
+
+var flashEnabled = function() { 
+	var isFlashEnabled = false; 
+	//test, except IE 
+	if( typeof(navigator.plugins)!="undefined" && 
+			typeof(navigator.plugins["Shockwave Flash"])==="object"){
+		isFlashEnabled = true;
+	} else {
+		if (typeof  window.ActiveXObject !=="undefined") { //IE 
+			try { 
+				if (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")){
+					isFlashEnabled = true;
+				}
+			} catch(e) {
+console.log(e);				
+			}; 
+		}; 
+	}
+	return isFlashEnabled; 
+};
 
 </script>
 </head>
@@ -292,8 +322,11 @@ Opera 47 (Debian) not play
 		<div class="panel-body">
 
 			<div class="panel panel-primary">
-				<div class="panel-body">video.mp4
-				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg">
+				<div class="panel-body">video.mp4, 
+<!--
+preload="auto/metadata/none"
+-->
+				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg" preload="auto">
 <!--
 					<source src="video/norwegian-army-harlem-shake.ogv" />
 					<source src="video/norwegian-army-harlem-shake.mp4" />
@@ -338,7 +371,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type='video/ogg', small.ogv</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<source src="video/small.ogv" type='video/ogg'>
 					</video>			
 				</div>
@@ -347,7 +380,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type='video/3gpp', small.3gp</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<!-- <source src="video/small.3gp" type='video/3gpp; codecs="mp4v.20.8, samr"'> -->
 						<source src="video/small.3gp" type='video/3gpp'>
 					</video>			
@@ -358,7 +391,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type="video/x-msvideo", small.avi</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<source src="video/small.avi" type="video/x-msvideo">
 					</video>			
 					<pre>
@@ -375,7 +408,7 @@ Chrome 8 (ubuntu 10.04) ok
 	<!--
 	rtmp/flv
 	-->				
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.flv" type="video/x-flv">
 					</video>
 				</div>
@@ -384,13 +417,13 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/mpeg", small.mpg</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mpg" type="video/mpeg">
 					</video>
 				</div>
 				<div class="panel-body">
 					<p>video, type="video/mpeg", small.mpeg</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mpeg" type="video/mpeg">
 					</video>
 				</div>
@@ -399,7 +432,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/quicktime", small.mov</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mov" type="video/quicktime">
 					</video>
 				</div>
@@ -408,7 +441,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-matroska", small.mkv</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mkv" type="video/x-matroska">
 					</video>
 				</div>
@@ -417,7 +450,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-ms-wmv", small.wmv</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.wmv" type="video/x-ms-wmv">
 					</video>
 				</div>
@@ -426,7 +459,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-m4v", small.m4v</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.m4v" type="video/x-m4v">
 					</video>
 				</div>
@@ -435,7 +468,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-ms-vob", small.vob</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.vob" type="video/x-ms-vob">
 					</video>
 				</div>
@@ -444,7 +477,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="model/vnd.mts", small.mts</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mts" type="model/vnd.mts">
 					</video>
 				</div>
@@ -452,7 +485,7 @@ Chrome 8 (ubuntu 10.04) ok
 
 			<div class="panel panel-primary">
 				<div class="panel-body">2018-05-05-064753.webm
-					<video id="player4" width="560" height="315" controls="controls" poster="">
+					<video id="player4" width="560" height="315" controls="controls" poster="" preload="auto">
 						<source src="video/2018-05-05-064753.webm" />
 						Tag <b>video</b> not supported by this browser.... 
 					</video>
@@ -478,7 +511,7 @@ Chrome 8 (ubuntu 10.04) ok
 	<div class="panel panel-primary">
 		<h3>add subtitles</h3>
 		<div class="panel-body">
-<video style="width: 500px; height: 375px;" controls>
+<video style="width: 500px; height: 375px;" controls preload="metadata">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.mp4" type="video/mp4">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.ogg" type="video/ogg">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.webm" type="video/webm">
