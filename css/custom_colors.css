@@ -448,6 +448,16 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   color: #fff;
 }
 
+
+.panel-blue-c3 {
+  border-color: #269abc;
+}
+.panel-blue-c3 > .panel-heading {
+  background-color: #269abc;
+  border-color: #269abc;
+  color: #fff;
+}
+
 .panel-purple {
   border-color: #9999cc;
 }
