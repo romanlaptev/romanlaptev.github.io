@@ -43,10 +43,25 @@ function testMediaSupport(){
     audio/vnd.wave: WAV(RFC 2361)
 */
 
+//http://www.htmlquick.com/reference/mime-types.html
 	var audioTypes = [
+'audio/basic',//μ-law format, at 8 kHz, 1 channel, .au
 'audio/wav; codecs=1',
+'audio/L24',//24bit Linear PCM format, at 8–48 kHz, 1-N channels.
+
+'audio/midi',//.mid
+'audio/x-mid',//.mid
+'audio/x-midi',//.mid
+'music/crescendo',//.mid
+'x-music/x-midi',//.midi
+'application/x-midi',//.midi
+'application/x-midi',//.midi
+
+'audio/mod',//.mod
+'audio/x-mod',//.mod
+
 'audio/ogg; codecs="vorbis"',
-'audio/webm',//WebM
+'audio/webm',//WebM open media format.
 'audio/mpeg; codecs="mp3"',
 'audio/x-mpeg',// (MPEG audio: mp2,mp3,mpga,mpega)
 'audio/mp4; codecs="mp4a.40.5"', //(MPEG-4 audio: mp4,mpg4)
@@ -54,9 +69,22 @@ function testMediaSupport(){
 'audio/x-ms-wma', //Windows Media Audio
 'audio/x-ms-wax', //Windows Media Audio перенаправление
 'audio/3gpp',
+'audio/flac', //native FLAC format (FLAC in its own container).
+'audio/opus', //Opus streamed format.
+'audio/vorbis', //Vorbis streamed format.
+
+'audio/vnd.rn-realaudio', 
+'audio/x-pn-realaudio', //RealAudio format, .ra
+ 	
+'audio/x-aac', //AAC format.
+'audio/x-caf', //Apple's CAF audio files.
+
+'audio/aiff', //.aif
+'audio/x-aiff', //.aif
+
 'audio/x-matroska'// (Matroska audio: mka)
 	];
-	
+
 	var videoTypes = [
 //"video/MP4V-ES",
 
@@ -83,6 +111,7 @@ function testMediaSupport(){
 "video/x-flv",
 //"rtmp/flv",
 "video/divx", //(DivX video: divx)
+"video/x-dv", //.dif
 
 "video/x-ms-wmv",//Windows Media Video
 "video/x-ms-wvx",//(Windows Media Video: wvx)
@@ -94,7 +123,7 @@ function testMediaSupport(){
 "video/x-ms-vob",
 "model/vnd.mts"
 	];
-	
+
 	var _video = document.createElement('video');
 	if( typeof _video === "object"){
 		if( typeof _video["load"] === "function"){
@@ -790,9 +819,33 @@ Opera 47 (Debian) ok
 
 	
 	<pre>
+https://www.quirksmode.org/html5/tests/video.html
+		
+-------------
 http://html-5.ru/teg-audio-html5.php
 http://html-5.ru/teg-video-html5.php
+
+https://habr.com/ru/post/148368/
+HTML5 Audio — cостояние дел. Часть 1
+
+https://html5css.ru/tags/av_met_canplaytype.php
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
+
 https://html5book.ru/html5-video/
+
+------------ API
+https://metanit.com/web/html5/7.3.php
+Media API. Управление видео из JavaScript
+
+https://api.mail.ru/docs/
+Документация по API Mail.Ru
+
+https://developers.google.com/youtube/iframe_api_reference#Getting_Started  
+
+https://andew.ru/ru/pages/page/html5-audio-video-js-media-demonstration
+Демонстрация JS управления HTML5 video и audio
+
+------------
 
 https://www.youtube.com/html5
 https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
@@ -802,6 +855,7 @@ Big list of sample videos for testers
 
 http://techslides.com/sample-webm-ogg-and-mp4-video-files-for-html5
 
+------------------------------------- players
 http://jplayer.org/
 http://www.jplayer.org/latest/developer-guide/
 https://habr.com/ru/post/112776/
@@ -825,24 +879,12 @@ jQuery Media Plugin
 https://habr.com/ru/sandbox/49705/
 SoundManager — Проигрывание аудио в JavaScript
 
+
 http://www.schillmania.com/projects/soundmanager2/
-
--------------
-https://habr.com/ru/post/148368/
-HTML5 Audio — cостояние дел. Часть 1
-
-https://html5css.ru/tags/av_met_canplaytype.php
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
-
-https://html5book.ru/html5-video/
-------------
-https://metanit.com/web/html5/7.3.php
-Media API. Управление видео из JavaScript
-
-https://api.mail.ru/docs/
-Документация по API Mail.Ru
-
-https://developers.google.com/youtube/iframe_api_reference#Getting_Started  
+http://itmultimedia.ru/ustanovka-svobodno-rasprostranyaemogo-pleera-dash-js-dlya-vosproizvedeniya-mpeg-dash/
+Dash.js
+https://itmultimedia.ru/ustanovka-svobodno-rasprostranyaemogo-pleera-video-js-dlya-vosproizvedeniya-mpeg-dash-kontenta/
+Video.js
 
 	</pre>
 	
