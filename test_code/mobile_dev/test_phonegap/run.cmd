@@ -1,0 +1,1 @@
+node .\node_modules\phonegap\bin\phonegap.js create first_app
