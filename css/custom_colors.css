@@ -338,6 +338,8 @@
 
 
 
+
+/* Buttons */
 .btn-blue {
 	background-color: #007bff;
 	color: #fff;
@@ -442,9 +444,118 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 
 
+/*
+.mobapp-btn{
+	font-size: 100%;
+	font-weight: bold;
+	border-radius: 3px;
+	transition: opacity 200ms;
+}
+.mobapp-btn.focus{
+	border: 1px dashed #36393c !important;
+}
+.mobapp-btn, .mobapp-btn:active, .mobapp-btn.active{
+	border: 1px solid transparent;
+	color: #fff;
+}
+.mobapp-btn.registr{
+	border-width: 2px;
+}
+.mobapp-btn.registr{
+	margin-bottom: 0;
+	margin-right: 10px;
+	padding-top: 18px;
+	padding-bottom: 18px;
+	width: 100px;
+	min-width: 100px;
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+.mobapp-btn.blue{
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+}
+.mobapp-btn.blue.registr{
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+.mobapp-btn.green {
+	background-color: #1bcb49;
+	background: -webkit-linear-gradient(#4fcb4f, #00b04e); 
+	background: -o-linear-gradient(#4fcb4f, #00b04e); 
+	background: -moz-linear-gradient(#4fcb4f, #00b04e);
+	background: linear-gradient(#4fcb4f, #00b04e); 
+	border-color: #4fcb4f;
+}
+.mobapp-btn.red {
+	background: -webkit-linear-gradient(#f27966, #eb4d4d);
+	background: -o-linear-gradient(#f27966, #eb4d4d);
+	background: -moz-linear-gradient(#f27966, #eb4d4d);
+	background: linear-gradient(#f27966, #eb4d4d);
+	border-color: #f27966;
+}
+.mobapp-btn.orange {
+	background: -webkit-linear-gradient(#ffd862, #ffc30b);
+	background: -o-linear-gradient(#ffd862, #ffc30b);
+	background: -moz-linear-gradient(#ffd862, #ffc30b);
+	background: linear-gradient(#ffb644, #ff9e07);
+	border-color: #ffb644;
+}
+
+
+.mobapp-btn.disabled{
+	pointer-events: none;
+}
+
+.mobapp-btn:hover:not(:disabled):not(.disabled){
+	opacity: 0.8;
+}
+
+.mobapp-btn:focus:not(:disabled):not(.disabled){
+	outline: 0;
+	opacity: 0.9;
+}
+.mobapp-btn.blue:focus:not(:disabled):not(.disabled), .btn:focus:not(:disabled):not(.disabled){
+	border-color: #256086;
+}
+.mobapp-btn.green:focus:not(:disabled):not(.disabled){
+	border-color: #005C2A;
+}
+.mobapp-btn.red:focus:not(:disabled):not(.disabled){
+
+	border-color: #BD1615;
+}
+.mobapp-btn.orange:focus:not(:disabled):not(.disabled){
+	border-color: #B36C00;
+}
+*/
+
+
+
+/*Panels*/
 .panel-gray > .panel-heading {
   background-color: #315570;
   border-color: #315570;
+  color: #fff;
+}
+
+
+.panel-blue-c3 {
+  border-color: #269abc;
+}
+.panel-blue-c3 > .panel-heading {
+  background-color: #269abc;
+  border-color: #269abc;
   color: #fff;
 }
 

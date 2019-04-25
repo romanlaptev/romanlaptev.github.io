@@ -17,6 +17,14 @@ var logMsg;
 
 window.onload = function(){
 	func.log( "<h3>"+navigator.userAgent +"</h3>");
+	
+	if( flashEnabled() ){
+		logMsg = "Adobe Flash supported...";
+		func.log("<div class='alert alert-success'>" + logMsg + "</div>");
+	} else {
+		logMsg = "Adobe Flash not supported...";
+		func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+	}
 
 	var btn_log = func.getById("btn-clear-log");
 	var log = func.getById("log");
@@ -43,10 +51,25 @@ function testMediaSupport(){
     audio/vnd.wave: WAV(RFC 2361)
 */
 
+//http://www.htmlquick.com/reference/mime-types.html
 	var audioTypes = [
+'audio/basic',//μ-law format, at 8 kHz, 1 channel, .au
 'audio/wav; codecs=1',
+'audio/L24',//24bit Linear PCM format, at 8–48 kHz, 1-N channels.
+
+'audio/midi',//.mid
+'audio/x-mid',//.mid
+'audio/x-midi',//.mid
+'music/crescendo',//.mid
+'x-music/x-midi',//.midi
+'application/x-midi',//.midi
+'application/x-midi',//.midi
+
+'audio/mod',//.mod
+'audio/x-mod',//.mod
+
 'audio/ogg; codecs="vorbis"',
-'audio/webm',//WebM
+'audio/webm',//WebM open media format.
 'audio/mpeg; codecs="mp3"',
 'audio/x-mpeg',// (MPEG audio: mp2,mp3,mpga,mpega)
 'audio/mp4; codecs="mp4a.40.5"', //(MPEG-4 audio: mp4,mpg4)
@@ -54,13 +77,27 @@ function testMediaSupport(){
 'audio/x-ms-wma', //Windows Media Audio
 'audio/x-ms-wax', //Windows Media Audio перенаправление
 'audio/3gpp',
+'audio/flac', //native FLAC format (FLAC in its own container).
+'audio/opus', //Opus streamed format.
+'audio/vorbis', //Vorbis streamed format.
+
+'audio/vnd.rn-realaudio', 
+'audio/x-pn-realaudio', //RealAudio format, .ra
+ 	
+'audio/x-aac', //AAC format.
+'audio/x-caf', //Apple's CAF audio files.
+
+'audio/aiff', //.aif
+'audio/x-aiff', //.aif
+
 'audio/x-matroska'// (Matroska audio: mka)
 	];
-	
+
 	var videoTypes = [
 //"video/MP4V-ES",
 
 'video/ogg; codecs="theora, vorbis"',
+'video/ogg; codecs="dirac, speex"',
 'application/ogg',
 'application/x-ogg',
 
@@ -83,18 +120,20 @@ function testMediaSupport(){
 "video/x-flv",
 //"rtmp/flv",
 "video/divx", //(DivX video: divx)
+"video/x-dv", //.dif
 
 "video/x-ms-wmv",//Windows Media Video
 "video/x-ms-wvx",//(Windows Media Video: wvx)
 "video/vnd.avi",  "video/avi",  "video/msvideo",  "video/x-msvideo",
 "video/x-ms-asf", //(Windows Media Video: asf,asx)
 "application/x-mplayer2",//(Windows Media), Windows Media Player Plugin
+//"application/x-shockwave-flash", //.swf
 
 "video/x-matroska", //(Matroska video: mkv)
 "video/x-ms-vob",
 "model/vnd.mts"
 	];
-	
+
 	var _video = document.createElement('video');
 	if( typeof _video === "object"){
 		if( typeof _video["load"] === "function"){
@@ -148,6 +187,26 @@ function testMediaSupport(){
 	}
 	
 }//end testMediaSupport()
+
+var flashEnabled = function() { 
+	var isFlashEnabled = false; 
+	//test, except IE 
+	if( typeof(navigator.plugins)!="undefined" && 
+			typeof(navigator.plugins["Shockwave Flash"])==="object"){
+		isFlashEnabled = true;
+	} else {
+		if (typeof  window.ActiveXObject !=="undefined") { //IE 
+			try { 
+				if (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")){
+					isFlashEnabled = true;
+				}
+			} catch(e) {
+console.log(e);				
+			}; 
+		}; 
+	}
+	return isFlashEnabled; 
+};
 
 </script>
 </head>
@@ -263,8 +322,11 @@ Opera 47 (Debian) not play
 		<div class="panel-body">
 
 			<div class="panel panel-primary">
-				<div class="panel-body">video.mp4
-				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg">
+				<div class="panel-body">video.mp4, 
+<!--
+preload="auto/metadata/none"
+-->
+				<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg" preload="auto">
 <!--
 					<source src="video/norwegian-army-harlem-shake.ogv" />
 					<source src="video/norwegian-army-harlem-shake.mp4" />
@@ -309,7 +371,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type='video/ogg', small.ogv</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<source src="video/small.ogv" type='video/ogg'>
 					</video>			
 				</div>
@@ -318,7 +380,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type='video/3gpp', small.3gp</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<!-- <source src="video/small.3gp" type='video/3gpp; codecs="mp4v.20.8, samr"'> -->
 						<source src="video/small.3gp" type='video/3gpp'>
 					</video>			
@@ -329,7 +391,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>type="video/x-msvideo", small.avi</p>
-					<video width="560" height="315" controls="controls" name="media">
+					<video width="560" height="315" controls="controls" name="media" preload="auto">
 						<source src="video/small.avi" type="video/x-msvideo">
 					</video>			
 					<pre>
@@ -346,7 +408,7 @@ Chrome 8 (ubuntu 10.04) ok
 	<!--
 	rtmp/flv
 	-->				
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.flv" type="video/x-flv">
 					</video>
 				</div>
@@ -355,13 +417,13 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/mpeg", small.mpg</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mpg" type="video/mpeg">
 					</video>
 				</div>
 				<div class="panel-body">
 					<p>video, type="video/mpeg", small.mpeg</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mpeg" type="video/mpeg">
 					</video>
 				</div>
@@ -370,7 +432,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/quicktime", small.mov</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mov" type="video/quicktime">
 					</video>
 				</div>
@@ -379,7 +441,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-matroska", small.mkv</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mkv" type="video/x-matroska">
 					</video>
 				</div>
@@ -388,7 +450,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-ms-wmv", small.wmv</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.wmv" type="video/x-ms-wmv">
 					</video>
 				</div>
@@ -397,7 +459,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-m4v", small.m4v</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.m4v" type="video/x-m4v">
 					</video>
 				</div>
@@ -406,7 +468,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="video/x-ms-vob", small.vob</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.vob" type="video/x-ms-vob">
 					</video>
 				</div>
@@ -415,7 +477,7 @@ Chrome 8 (ubuntu 10.04) ok
 			<div class="panel panel-primary">
 				<div class="panel-body">
 					<p>video, type="model/vnd.mts", small.mts</p>
-					<video width="560" height="315" controls="controls" >
+					<video width="560" height="315" controls="controls" preload="auto">
 						<source src="video/small.mts" type="model/vnd.mts">
 					</video>
 				</div>
@@ -423,7 +485,7 @@ Chrome 8 (ubuntu 10.04) ok
 
 			<div class="panel panel-primary">
 				<div class="panel-body">2018-05-05-064753.webm
-					<video id="player4" width="560" height="315" controls="controls" poster="">
+					<video id="player4" width="560" height="315" controls="controls" poster="" preload="auto">
 						<source src="video/2018-05-05-064753.webm" />
 						Tag <b>video</b> not supported by this browser.... 
 					</video>
@@ -449,7 +511,7 @@ Chrome 8 (ubuntu 10.04) ok
 	<div class="panel panel-primary">
 		<h3>add subtitles</h3>
 		<div class="panel-body">
-<video style="width: 500px; height: 375px;" controls>
+<video style="width: 500px; height: 375px;" controls preload="metadata">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.mp4" type="video/mp4">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.ogg" type="video/ogg">
 	<source src="http://programmerbook.ru/examples/multimedia/video/Angels.webm" type="video/webm">
@@ -790,8 +852,33 @@ Opera 47 (Debian) ok
 
 	
 	<pre>
+https://www.quirksmode.org/html5/tests/video.html
+		
+-------------
 http://html-5.ru/teg-audio-html5.php
 http://html-5.ru/teg-video-html5.php
+
+https://habr.com/ru/post/148368/
+HTML5 Audio — cостояние дел. Часть 1
+
+https://html5css.ru/tags/av_met_canplaytype.php
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
+
+https://html5book.ru/html5-video/
+
+------------ API
+https://metanit.com/web/html5/7.3.php
+Media API. Управление видео из JavaScript
+
+https://api.mail.ru/docs/
+Документация по API Mail.Ru
+
+https://developers.google.com/youtube/iframe_api_reference#Getting_Started  
+
+https://andew.ru/ru/pages/page/html5-audio-video-js-media-demonstration
+Демонстрация JS управления HTML5 video и audio
+
+------------
 
 https://www.youtube.com/html5
 https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
@@ -801,6 +888,7 @@ Big list of sample videos for testers
 
 http://techslides.com/sample-webm-ogg-and-mp4-video-files-for-html5
 
+------------------------------------- players
 http://jplayer.org/
 http://www.jplayer.org/latest/developer-guide/
 https://habr.com/ru/post/112776/
@@ -824,24 +912,12 @@ jQuery Media Plugin
 https://habr.com/ru/sandbox/49705/
 SoundManager — Проигрывание аудио в JavaScript
 
+
 http://www.schillmania.com/projects/soundmanager2/
-
--------------
-https://habr.com/ru/post/148368/
-HTML5 Audio — cостояние дел. Часть 1
-
-https://html5css.ru/tags/av_met_canplaytype.php
-https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType
-
-https://html5book.ru/html5-video/
-------------
-https://metanit.com/web/html5/7.3.php
-Media API. Управление видео из JavaScript
-
-https://api.mail.ru/docs/
-Документация по API Mail.Ru
-
-https://developers.google.com/youtube/iframe_api_reference#Getting_Started  
+http://itmultimedia.ru/ustanovka-svobodno-rasprostranyaemogo-pleera-dash-js-dlya-vosproizvedeniya-mpeg-dash/
+Dash.js
+https://itmultimedia.ru/ustanovka-svobodno-rasprostranyaemogo-pleera-video-js-dlya-vosproizvedeniya-mpeg-dash-kontenta/
+Video.js
 
 	</pre>
 	

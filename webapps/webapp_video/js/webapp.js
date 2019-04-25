@@ -30,6 +30,7 @@ var webApp = {
 
 		"videoTypes" : {
 "ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
+"ogv" : { testParam:['video/ogg'], support:false },
 "mp4" : { testParam:['video/mp4; codecs="avc1.4D401E, mp4a.40.2"'], support:false },
 "m4v" : { testParam:['video/x-m4v'], support:false },
 "webm" : { testParam:['video/webm; codecs="vp8.0, vorbis"'], support:false },

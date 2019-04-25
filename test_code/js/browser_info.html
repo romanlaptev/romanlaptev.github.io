@@ -467,6 +467,15 @@ function runTests(){
 		test["result"] = true;
 		test["msg"] = "window.ontouchstart === true";
 	}
+	
+	test["links"]=[];
+	_push( test["links"],{
+		"link" : "test_jquery_mobile.html"
+	});
+	_push( test["links"],{
+		"link" : "test_touch_events.html"
+	});
+	
 	_push( tests, test );
 
 //--------------------------------------
@@ -1055,8 +1064,7 @@ document.createElement("canvas").getContext("experimental-webgl");
 		test["result"]= true;
 		test["links"]=[];
 		var obj = {
-			"link" : "test_promise.html", 
-			"text" : "test_promise.html"
+			"link" : "test_promise.html" 
 		};
 		_push( test["links"], obj );
 	}
@@ -1107,6 +1115,7 @@ console.log( key, document.body[key]);
 			test["msg"]= "";
 		}
 	}//next
+	
 	_push( tests, test );
 	
 //--------------------------------------
@@ -1117,8 +1126,7 @@ console.log( key, document.body[key]);
 	};
 	test["links"]=[];
 	var obj = {
-		"link" : "test_media/test_audio_video.html", 
-		"text" : "test_audio_video.html"
+		"link" : "test_media/test_audio_video.html" 
 	};
 	_push( test["links"], obj );
 	
@@ -1201,9 +1209,14 @@ console.log( key, document.body[key]);
 			if( test_links.length > 0  ){
 				var html_items = "";
 				for( var n2 = 0; n2 < test_links.length; n2++){
+					if( test_links[n2]["text"] && test_links[n2]["text"].length > 0){
+						var textLink = test_links[n2]["text"];
+					} else {
+						var textLink = test_links[n2]["link"];
+					}
 					html_items += test_links_item_tpl
 					.replace("{{item-link}}", test_links[n2]["link"])
-					.replace("{{item-text}}", test_links[n2]["text"]);
+					.replace("{{item-text}}", textLink);
 				};//next
 				test_links = test_links_tpl.replace("{{links}}", html_items);
 //console.log( test_links );		

@@ -34,7 +34,7 @@
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
 				<div class="links text-center panel-body">{{ul}}
-	<div class="form-local-url panel panel-danger">
+	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		
 		<div class="panel-body">
@@ -57,7 +57,7 @@
 			
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
 			<div class="pull-right">
@@ -121,7 +121,7 @@
 				
 <form name="form_local_url" action="#" method="GET" target="_blank">
 				<div class="links text-center panel-body">{{ul}}
-	<div class="form-local-url panel panel-danger">
+	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		<div class="panel-body">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -143,7 +143,7 @@
 			
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-primary" value="submit"/>
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
 			<div class="pull-right">

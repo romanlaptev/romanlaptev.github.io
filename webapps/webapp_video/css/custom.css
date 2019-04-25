@@ -377,7 +377,7 @@ box-shadow: 5px 5px 15px #4f5a6e;
 }
 
 
-.type-videoclip .panel-heading{
+.type-videoclip > .panel-heading{
 color:#000
 }
 
