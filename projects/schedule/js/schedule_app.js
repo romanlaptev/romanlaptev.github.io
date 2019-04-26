@@ -490,9 +490,9 @@ var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-console.log(xmlObj);
-//delete xml;
-			//webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
+//console.log(xmlObj);
+delete xml;
+			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
 //delete xmlObj;
 			
 			//_vars["hierarchyList"] = __formHierarchyList();
@@ -513,19 +513,21 @@ console.log( error );
 
 	function _data_formNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagName = webApp.vars["DB"]["tagNameFilms"];
+		
+		var _response = xmlObj["response"]["childNodes"]["segment"];
 		
 		//var nodes = {};
 		var nodes = [];
 		
-		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
-			}
+		for(var n = 0; n < _response.length; n++){
+			var tagNode = _response[n]["childNodes"];
+			
+			for(var key in tagNode){
+console.log( key, tagNode[key] );
+			}//next
+			
 		}//next
-		
+/*		
 		if( tagNodes.length > 0){
 			for(var n = 0; n < tagNodes.length; n++){
 				var obj = {
@@ -556,179 +558,10 @@ console.log( error );
 				
 			}//next
 		}
-
-//------------------ form timestamp
-		__addTimeStamp();
-		__checkSupport();
-			
+*/
 		return nodes;
 		
-		function __convertMultipleField( xfields){
-			var fields = [];
-			for(var item1 in xfields){
-				var _xf = xfields[item1];
-				for(var item2 in _xf){
-					
-					if( _xf[item2]["children"] ){
-						var _xff = _xf[item2]["children"];
-						//var obj = {};
-						for( var key3 in _xff ){
-							//obj[key3] = _xff[key3];
-							fields.push( _xff[key3][0] );//<li><a...>(only one tag!!!)</li>
-						}
-					} else {
-						fields.push( _xf[item2] );
-					}
-				}
-			}
-			return fields;
-		}//end __convertMultipleField()
-
-		function __addTimeStamp(){
-			for(var n = 0; n < nodes.length; n++){
-				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
-					if( webApp.vars["DB"]["dateFormat"] === "dd-mm-yyyy hh:mm:ss"){
-						var arr = nodes[n]["published"].split(" ");
-						var dateArr = arr[0].split("-");
-						var timeArr = arr[1].split(":");
-						
-						var split_values = {
-							"day" : dateArr[0],
-							"month" : dateArr[1],
-							"year" : dateArr[2],
-							"hour" : timeArr[0],
-							"min" : timeArr[1],
-							"sec" : timeArr[2]
-						};
-						
-						var _day = parseInt( split_values["day"] );
-						if ( isNaN( _day ) ){
-							_day = 0;
-						}
-
-						var _month = 0;
-				//"15-Sep-2018 22:13:00";
-						var sMonth = split_values["month"];
-						switch(sMonth){
-							
-							case "Jan":
-								_month = 1;
-							break;
-							
-							case "Feb":
-								_month = 2;
-							break;
-							
-							case "Mar":
-								_month = 3;
-							break;
-							
-							case "Apr":
-								_month = 4;
-							break;
-							
-							case "May":
-								_month = 5;
-							break;
-							
-							case "Jun":
-								_month = 6;
-							break;
-							
-							case "Jul":
-								_month = 7;
-							break;
-							
-							case "Aug":
-								_month = 8;
-							break;
-							
-							case "Sep":
-								_month = 9;
-							break;
-							
-							case "Oct":
-								_month = 10;
-							break;
-							
-							case "Nov":
-								_month = 11;
-							break;
-							
-							case "Dec":
-								_month = 12;
-							break;
-							
-						}//end switch
-
-						var _year = parseInt( split_values["year"] );
-						if ( isNaN( _year ) ){
-							_year = 0;
-						}
-
-						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
-					}
-				}
-			}//next
-		}// end __addTimeStamp()
-		
-		function __checkSupport(){
-			for(var n = 0; n < nodes.length; n++){
-				var links = nodes[n]["ul"];
-				if(!links){
-					continue;
-				}
-				for( var n2 = 0; n2 < links.length; n2++){
-					//links[n2]["class-support"] = "";
-					if( links[n2]["data-type"] === "local-file"){
-						var filepath = links[n2]["href"];
-						//get file type
-						var arr = filepath.split(".");
-						var filetype = arr[ (arr.length-1) ];
-						var videoType = webApp.vars["videoTypes"][filetype];
-//console.log(filetype, videoType);
-
-						if( videoType && videoType["support"]){
-							//links[n2]["class-support"] = "1";
-						} else {
-							links[n2]["class_support"] = "wrong-video-type";
-						}
-					}
-				}
-			}//next
-		}// end __addTimeStamp()
-		
 	}//end _data_formNodesObj()
-
-	function _data_formTagObj(xmlObj){
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagListName = "taglist";
-		var tagName = "tag";
-		
-		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListName][n]["children"][tagName];
-			}
-		}//next
-		
-		if( tagNodes.length > 0){
-			func.sortRecords({
-				"records" : tagNodes,
-				"sortOrder": "asc", //desc
-				"sortByKey": "name"
-			});
-			
-			return tagNodes;
-		} else {
-			return false;
-		}
-				
-	}//end _data_formTagObj()
-	
-	//function _data_formHierarchyList(){
-	//}//end _data_formHierarchyList()
-			
 
 
 //============================================== DRAW
