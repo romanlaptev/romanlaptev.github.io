@@ -521,7 +521,25 @@ console.log( error );
 		
 		for(var n = 0; n < _response.length; n++){
 			var tagNode = _response[n]["childNodes"];
-			
+/*			
+var node = {
+	"arrival" : "",
+	
+	"tickets_info" : {
+		"et_marker": false,
+		"place": {
+			"currency":"",
+			"price": {
+				"cents": 0
+				"whole":0
+			}
+			"name": ""
+		}
+		
+	}
+	
+};
+*/			
 			for(var key in tagNode){
 console.log( key, tagNode[key] );
 			}//next
