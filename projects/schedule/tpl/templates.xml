@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+
+<!--
+	<tpl name="tpl-list">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-list-item">
+		<html_code><![CDATA[
+<li>{{published}}</li>
+		]]></html_code>
+	</tpl>
+
+-->
+	
+	<tpl name="tpl-shedule-table">
+		<html_code><![CDATA[
+0000
+		]]></html_code>
+	</tpl>
+
+</templates>

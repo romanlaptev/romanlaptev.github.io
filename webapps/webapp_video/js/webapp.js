@@ -1321,7 +1321,7 @@ var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListNam
 			if( !webApp.vars["templates_url"] || 
 				webApp.vars["templates_url"].length === 0 ){
 webApp.vars["logMsg"] = "- error, _loadTemplates(), not found 'templates_url'...";
-func.log("<p class='alert alert-danger'>" + webApps.vars["logMsg"] + "</p>");
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 //console.log( webApp.vars["logMsg"] );
 				if( typeof callback === "function"){
 					callback(false);
@@ -1359,26 +1359,33 @@ console.log("error, loadTemplates(), not find data templates'....");
 						return false;
 					}
 
-					//xmlNodes = func.convertXmlToObj( data );
-					xmlNodes = func.parseXmlToObj( func, data );
+					try{
+						//xmlNodes = func.convertXmlToObj( data );
+						xmlNodes = func.parseXmlToObj( func, data );
 //console.log(xmlNodes);
-					if( xmlNodes.length > 0 ){
-						for( var n= 0; n < xmlNodes.length; n++){
-							var key = xmlNodes[n]["name"];
+						if( xmlNodes.length > 0 ){
+							for( var n= 0; n < xmlNodes.length; n++){
+								var key = xmlNodes[n]["name"];
 
-							var value = xmlNodes[n]["html_code"]
-							.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-							.replace(/\t/g,"")
-							.replace(/\n/g,"");
+								var value = xmlNodes[n]["html_code"]
+								.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+								.replace(/\t/g,"")
+								.replace(/\n/g,"");
+								
+								webApp.vars["templates"][key] = value;
+							}//next
+							delete xmlNodes;
 							
-							webApp.vars["templates"][key] = value;
-						}//next
-						delete xmlNodes;
+							//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
+						} else {
+	console.log("error, loadTemplates(), cannot parse templates data.....");
+						}
 						
-						//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
-					} else {
-console.log("error, loadTemplates(), cannot parse templates data.....");
-					}
+					} catch(e){
+console.log(e, typeof e);
+webApp.vars["logMsg"] = "TypeError: " + e;
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+					}//end try
 
 					if( typeof callback === "function"){
 						callback();
