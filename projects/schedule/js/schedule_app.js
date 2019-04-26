@@ -25,7 +25,8 @@ var webApp = {
 		"logMsg" : "",
 
 		"DB" : {
-			"dataUrl" : "data/2019-04-26.xml",
+			//"dataUrl" : "data/2019-04-26.xml",
+			"dataUrl" : "data/2019-04-26.json",
 			"dbType" : "" //application/xml 
 		},
 
@@ -50,6 +51,8 @@ var webApp = {
 						_draw_buildBlock( this );
 					}
 */				
+						this.content = "123434";
+						_draw_buildBlock( this );
 				}
 			}//end block
 
@@ -57,7 +60,7 @@ var webApp = {
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
-		"init_url" : "#?q=list_nodes&num_page=1"
+		"init_url" : "?q=list-nodes"
 	},//end vars
 	
 	
@@ -69,6 +72,7 @@ console.log("init webapp!");
 			appTitle.innerHTML = this.vars["app_title"];
 		}
 		
+		this["vars"]["log_btn"] = func.getById("log-btn");
 		this["vars"]["log"] = func.getById("log");
 		this["vars"]["btnToggle"] = func.getById("btn-toggle-log");
 		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
@@ -99,14 +103,10 @@ console.log(webApp);
 
 function _runApp(){
 
-	//defineEvents();
+	defineEvents();
 	_loadData(function(res){
 //console.log(arguments);
 //console.log(window.location);	
-
-/*
-//if( webApp.vars["loadDataRes"] ){
-if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 		var parse_url = window.location.search; 
 		if( parse_url.length > 0 ){
 			webApp.vars["GET"] = func.parseGetParams(); 
@@ -120,18 +120,51 @@ if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
 			_urlManager();
 		}
-}
 
 		if( typeof postFunc === "function"){
 			postFunc();
 		}
-*/
+
 	});
 	
 }//end _runApp()
 
 
 function defineEvents(){
+	
+			webApp.vars["log_btn"].onclick = function(event){
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log( event );
+//console.log( this );//page-container
+//console.log( target);
+//console.log( event.eventPhase );
+//console.log( "preventDefault: " + event.preventDefault );
+
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("?q=") !== -1){
+						
+						if (event.preventDefault) { 
+							event.preventDefault();
+						} else {
+							event.returnValue = false;				
+						}
+
+							//var search = target.href.split("?"); 
+							//var parseStr = search[1]; 
+							var parseStr = target.href; 
+//console.log( search, parseStr );
+							if( parseStr.length > 0 ){
+								webApp.vars["GET"] = func.parseGetParams( parseStr ); 
+								_urlManager( target );
+							} else {
+console.log( "Warn! error parse url in " + target.href );
+							}
+			
+					}
+				}
+
+			}//end event
 	
 }//end defineEvents()
 
@@ -140,41 +173,30 @@ function _urlManager( target ){
 //console.log(target);
 		
 		switch( webApp.vars["GET"]["q"] ) {
-/*
-			
-			case "hide-log":
-				var log = getById("log-wrap");
-				log.style.display="none";
-			break;
-			case "view-log":
-				var log = getById("log-wrap");
-				log.style.display="block";
-			break;
+
 			case "toggle-log":
-				var log = getById("log-wrap");
 //console.log(log.style.display);
-				if( log.style.display==="none"){
-					log.style.display="block";
+				if( webApp.vars["log"].style.display==="none"){
+					webApp.vars["log"].style.display="block";
 				} else {
-					log.style.display="none";
+					webApp.vars["log"].style.display="none";
 				}
 			break;
 			
 			case "clear-log":
-				var log = getById("log");
-				log.innerHTML="";
+				webApp.vars["log"].innerHTML="";
+			break;
+
+			case "list-nodes":
+console.log("-- start build page --");
+				_buildPage({"callback" : function(){
+console.log("-- end build page --");
+					}
+				});
 			break;
 			
-			case "test":
-				_test();
-			break;
-*/
-
-			case "list_nodes":
-			break;
-
 			default:
-console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
+console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 			break;
 		}//end switch
 		
@@ -278,11 +300,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		//}
 		
 		var p = {
-			"nid": null,
-			//"templateID" : "tpl-page"
-			"title" : "",
-			"pageData" : [],
-			"pageType" : "node",
 			"callback": null
 		};
 		//extend options object
@@ -290,19 +307,24 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			p[key] = opt[key];
 		}
 //console.log(opt);
-/*
-		//draw static blocks
+
+		//draw blocks
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
 // //console.log(_opt["visibility"], p["title"]);				
-			if( _opt["visibility"]){
-				// if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
-					_draw_buildBlock( _opt );
-				// }
+
+			if( typeof _opt["buildBlock"] === "function"){
+				//if( _opt_["visibility"]){
+					_opt["buildBlock"]();
+					//_opt_["draw"] = true;
+				//}
+			} else {
+webApp.vars["logMsg"] = "warning, not found buld function....";
+console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 			}
 			
 		}//next
-*/
+/*
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
 			
@@ -333,67 +355,12 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 			}
 
 		}//next
-
-		var _html = _draw_wrapData({
-			"data": p["pageData"],
-			"templateID": "tpl-videolist",
-			"templateListItemID": "tpl-videolist-item--video"
-		});
-//console.log( _html);
-
-
-		if( !_html || _html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		} else {
-//$("#main").html( _html );
-
-			//draw content block
-			_draw_buildBlock({
-				"locationID" : "list-video",
-				"title" : "video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : _html
-			});
-		}
+*/
 
 		//if( webApp.vars["wait"] ){
 			////webApp.vars["wait"].className="";
 			//webApp.vars["wait"].style.display="none";
 		//}
-
-//--------------------- add event on collapse block
-/*
-		$("#video-list-collapsible .collapse").on('shown.bs.collapse', function(e){
-func.log('<p>The collapsible content is now fully shown.</p>');
-//console.log( e.target.find(".toggle-btn") );
-		});
-		
-		$("#video-list-collapsible .collapse").on('hidden.bs.collapse', function(e){
-func.log('<p>The collapsible content is now hidden.</p>');
-//console.log( e.target.find(".toggle-btn") );
-			//$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
-			//$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
-		});
-*/
-
-//---------------------- load images handlers
-/*
-		$("img").on("load", function( e ){
-console.log("-- image load event....", e.target.src);
-		});
-		
-		$("img").on("error", function( e ){
-console.log("-- image load error", e.target.src);
-			//var src = $(this).attr("src");
-			//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-			//$(this).attr("src", new_src);
-			//$("body").attr("data-image-load-error","1");
-			//load_img_error( $(this)[0] );
-		});
-*/
 
 		if( typeof p["callback"] === "function"){//return from _buildPage()
 			p["callback"]();
@@ -447,7 +414,6 @@ console.log( webApp.vars["logMsg"] );
 //console.log(key +" : "+data[key]);
 //}
 						webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
-
 						_parseAjax( data );
 
 						if( typeof postFunc === "function"){
@@ -471,7 +437,8 @@ console.log( webApp.vars["logMsg"] );
 					_parseXML( data );
 				break;
 				
-				case "json":
+				case "application/json":
+					_parseJSON( data );
 				break;
 				
 				case "csv":
@@ -581,6 +548,22 @@ console.log( key, tagNode[key] );
 		
 	}//end _data_formNodesObj()
 
+	function _parseJSON( jsonStr ){
+		try{
+			var jsonObj = JSON.parse( jsonStr, function(key, value) {
+	//console.log( key, value );
+				return value;
+			});
+console.log( jsonObj );
+			
+		} catch(error) {
+webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
+console.log( error );
+_log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+			return;
+		}//end catch
+
+	}//end _parseJSON()
 
 //============================================== DRAW
 	function _draw_wrapData( opt ){
@@ -831,8 +814,8 @@ console.log(msg);
 		}
 //console.log(p);
 
-		if( typeof p["content"] === "function"){//dynamic form content
 /*			
+		if( typeof p["content"] === "function"){//dynamic form content
 			p["content"]({
 				"callback" : function( res ){
 console.log(res);
@@ -861,10 +844,10 @@ p["content"] = html;
 					
 				}
 			});
-*/			
 		} else {
+*/			
 			_draw_insertBlock( p );
-		}
+//		}
 
 	};//end _draw_buildBlock()
 

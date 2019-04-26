@@ -15,11 +15,87 @@
 	</tpl>
 
 -->
-	
+
 	<tpl name="tpl-shedule-table">
 		<html_code><![CDATA[
-0000
+<div class="block panel">
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>
+<table class="table table-bordered">
+	<thead>
+		<tr class="list-header success">
+			<th>​​​​number</th>
+			<th>​​​​title</th>
+			<th>{​​​departure, stops}</th>
+			<th>from {station_type_name, title}</th>
+			<th>{arrival}</th>
+			<th>to {station_type_name, title}</th>
+			<th>...</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>6404</td>
+			<td>Новосибирск-главный — Болотная</td>
+			<td>{2019-04-26T07:17:00+07:00, везде}</td>
+			<td>{станция, Новосибирск-восточный}</td>
+			<td>2019-04-26T07:37:00+07:00</td>
+			<td>{остановочный пункт, Раздолье (3362 км)}</td>
+			<td>...</td>
+		</tr>
+</tbody>
+</table>
+
+arrival: "2019-04-26T07:37:00+07:00"
+​​​arrival_platform: ""
+​​​arrival_terminal: null
+​​​departure: "2019-04-26T07:17:00+07:00"
+​​​departure_platform: ""
+​​​departure_terminal: null
+​​​duration: 1200
+has_transfers: false
+​​​start_date: "2019-04-26"
+​​​stops: "везде"
+tickets_info: null
+
+​​
+from: {
+​​​​code: "s9610190"
+​​​​codes: Object { esr: "851508" }
+​​​​popular_title: ""
+​​​​short_title: ""
+​​​​station_type: "station"
+​​​​station_type_name: "станция"
+​​​​title: "Новосибирск-восточный"
+​​​​transport_type: "train"
+​​​​type: "station"
+-------------------------
+to: Object { 
+code: "s9610235"
+​​​​codes: Object { esr: "851635" }
+​​​​popular_title: null
+​​​​short_title: null
+​​​​station_type: "stop"
+​​​​station_type_name: "остановочный пункт"
+​​​​title: "Раздолье (3362 км)"
+​​​​transport_type: "train"
+​​​​type: "station"
+--------------------------
+thread: {…}
+​​​​carrier: Object { code: 151, contacts: "Телефон горячей линии: +7 (383) 229-25-67", url: "http://www.express-prigorod.ru/", … }
+​​​​express_type: null
+​​​​number: "6404"
+​​​​short_title: "Новосибирск-главный — Болотная"
+​​​​thread_method_link: "api.rasp.yandex.net/v3/thread/?date=2019-04-26&uid=6404_0_9610189_g19_4"
+​​​​title: "Новосибирск-главный — Болотная"
+​​​​transport_subtype: Object { color: "#FF7F44", code: "suburban", title: "Пригородный поезд" }
+​​​​transport_type: "suburban"
+​​​​uid: "6404_0_9610189_g19_4"
+​​​​vehicle: null
+
 		]]></html_code>
 	</tpl>
-
+	
 </templates>

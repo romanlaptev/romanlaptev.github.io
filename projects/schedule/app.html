@@ -59,9 +59,9 @@
 
 	<div class="log-panel panel">
 		<div class="panel-body">
-			<span class="pull-right">
-				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
-				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			<span class="pull-right" id="log-btn">
+				<a href="?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a href="?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
 			</span>
 			<div id="log" class="panel-body"></div>
 		</div>
@@ -71,21 +71,36 @@
 <div class="container">
 
 	<div class="row">
+<!--	
 		<div class="xs-hidden col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
 left
-		</div><!-- end sidebar left -->
-		
-		<div class="col-xs-12 col-sm-10 col-md-9 col-lg-8" id="main">
+		</div>
+-->		
+		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-8" id="main">
 <span id="shedule-table"></span>				
 		</div><!-- end main central area -->
-		
+
+<!--
 		<div class="xs-hidden col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
 right		
-		</div><!-- end sidebar-right -->
+		</div>
+-->		
 	</div>
 	
 </div><!-- end container -->
 
+<footer class="container">
+		<div class="">
+			<ul class="list-inline text-center">
+<li><a href="https://rasp.yandex.ru/search/suburban/?fromName=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA-%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9&toName=%D0%A0%D0%B0%D0%B7%D0%B4%D0%BE%D0%BB%D1%8C%D0%B5+(3362+%D0%BA%D0%BC)&fromId=s9610190&toId=s9610235&when=26+%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&gone=y" target="_blank">yandex.ru</a></li>
+
+<li><a href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr" target="_blank">api.rasp.yandex.net, JSON</a></li>
+
+
+			</ul>
+
+		</div>
+</footer>
 
 <!-- ********************** load progress bar ************************** -->	
 <div id="wait" class="hide"></div>
