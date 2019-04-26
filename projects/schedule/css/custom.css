@@ -1,0 +1,19 @@
+﻿body, html {
+  height: 100%;
+}
+body {
+  background-color: #055c80;/*#315570*//*#2c5885*//*#6aa6c0*/
+  margin: 0;
+  padding: 15px;
+}
+
+.main-content {
+  height: 80%;
+}
+.container {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
