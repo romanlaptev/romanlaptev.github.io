@@ -17755,24 +17755,21 @@ https://ok.ru/video/1147112392106
 	
 	
 	<pictures>
-		<img src="https://i.ytimg.com/vi/-2CWsqGFgkA/sddefault.jpg"/>
+		<img src="https://i.ytimg.com/vi/-2CWsqGFgkA/hqdefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/K/Katzenjammer - Demon Kitty Rag.mp4">Katzenjammer - Demon Kitty Rag.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/K/Katzenjammer - Demon Kitty Rag.mp4">Katzenjammer - Demon Kitty Rag.mp4</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/-2CWsqGFgkA">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="210">D</item>
-		<item tid="217">K</item>
 		<item tid="272">youtube</item>
 		<item tid="279">2009</item>
 	</tags>
 
 	<published>26-Mar-2019 22:25:39</published>
-	<updated>26-Mar-2019 22:26:01</updated>
+	<updated>27-Apr-2019 20:29:22</updated>
 </video>
 
 <video type="videoclip">
@@ -18871,6 +18868,41 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 
 	<published>21-Apr-2019 19:05:53</published>
 	<updated>21-Apr-2019 19:26:17</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Red Elvises, music video</item>
+</title>
+	<creators>Red Elvises</creators>
+	
+	
+	
+	<pictures>
+		<img src="https://i.ytimg.com/vi/MsxzwVg1Ge8/hqdefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises - 02 - Boogie On The Beach.mp4">Red Elvises - 02 - Boogie On The Beach.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/aAjwGSYokQM">youtube.com, Red Elvises - 02 - Boogie On The Beach</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises - 05 - Hungarian Dance.mp4">Red Elvises - 05 - Hungarian Dance.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises -My love is killing me.mp4">Red Elvises -My love is killing me.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises - 07 - My Love Is Killing Me.mp4">Red Elvises - 07 - My Love Is Killing Me.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises - 13 - Ukrainian Dance.mp4">Red Elvises - 13 - Ukrainian Dance.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/Red Elvises/Red Elvises - Surfing In Siberia.mp4">Red Elvises - Surfing In Siberia.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/MsxzwVg1Ge8">youtube.com, Red Elvises - Surfing In Siberia</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="223">R</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="66">США</item>
+	</tags>
+
+	<published>27-Apr-2019 23:09:37</published>
+	<updated>27-Apr-2019 23:15:15</updated>
 </video>
 	</database>
 </xroot>
