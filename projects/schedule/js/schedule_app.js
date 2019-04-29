@@ -39,25 +39,8 @@ var webApp = {
 				"visibility" : true,
 				"buildBlock" : function(){
 //console.log(this);
-					var data = webApp.vars["DB"]["data"]["search"];
-					data["from_title"] = data["from"]["title"];
-					data["to_title"] = data["to"]["title"];
-					
-					var htmlSearch = _draw_wrapData({
-						"data": data,
-						"templateID": "tpl-schedule-search",
-						//"templateListItemID": "tpl-playlist-item"
-					});
-					
-					var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
-					var html = htmlSearch + htmlTable;
-console.log( html);
-
-					if( html && html.length > 0){
-						this.content = html;
-						_draw_buildBlock( this );
-					}
-					
+					this.content = _buldScheduleHtml();
+					_draw_buildBlock( this );
 				}
 			}//end block
 
@@ -570,6 +553,26 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}//end catch
 
 	}//end _parseJSON()
+	
+//==============================================
+function _buldScheduleHtml(){
+	var data = webApp.vars["DB"]["data"]["search"];
+	data["from_title"] = data["from"]["title"];
+	data["to_title"] = data["to"]["title"];
+	var htmlSearch = _draw_wrapData({
+		"data": data,
+		"templateID": "tpl-schedule-search",
+		//"templateListItemID": "tpl-playlist-item"
+	});
+	
+	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
+	var data = webApp.vars["DB"]["data"]["segment"];
+	
+	var html = htmlSearch + htmlTable;
+//console.log( html);
+
+	return html;
+}//end _buildScheduleHtml()
 
 //============================================== DRAW
 	function _draw_wrapData( opt ){
@@ -584,7 +587,7 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");
