@@ -32,27 +32,32 @@ var webApp = {
 
 		"blocks": [
 			{
-				"locationID" : "block-shedule-table",
-				"title" : "Playlist", 
-				"templateID" : "tpl-shedule-table",
+				"locationID" : "block-schedule",
+				"title" : "transport schedule", 
+				"templateID" : "tpl-schedule",
 				"content" : "",
 				"visibility" : true,
 				"buildBlock" : function(){
 //console.log(this);
-					var html = _draw_wrapData({
-						"data": webApp.vars["DB"]["data"]["search"],
-						"templateID": "tpl-shedule-search",
+					var data = webApp.vars["DB"]["data"]["search"];
+					data["from_title"] = data["from"]["title"];
+					data["to_title"] = data["to"]["title"];
+					
+					var htmlSearch = _draw_wrapData({
+						"data": data,
+						"templateID": "tpl-schedule-search",
 						//"templateListItemID": "tpl-playlist-item"
 					});
+					
+					var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
+					var html = htmlSearch + htmlTable;
 console.log( html);
-/*					
+
 					if( html && html.length > 0){
 						this.content = html;
 						_draw_buildBlock( this );
 					}
-*/				
-						this.content = "123434";
-						_draw_buildBlock( this );
+					
 				}
 			}//end block
 
@@ -604,7 +609,7 @@ console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateI
 		}
 		switch( p["wrapType"] ){
 			case "item" :
-				//html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
+				html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
 			break;
 			case "list" :
 				if( !p["templateListItemID"] ){

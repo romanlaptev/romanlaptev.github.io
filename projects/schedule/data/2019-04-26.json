@@ -397,15 +397,16 @@
 "search":
 {
 	"date":"2019-04-26",
-		"to":{"code":"s9610235",
-	"station_type":"stop",
-	"title":"Раздолье (3362 км)",
-	"popular_title":null,"short_title":null,"codes":{"esr":"851635"},
-	"transport_type":"train",
-	"station_type_name":"остановочный пункт",
-	"type":"station"},
-	"from":
-	{
+	"to":{
+		"code":"s9610235",
+		"station_type":"stop",
+		"title":"Раздолье (3362 км)",
+		"popular_title":null,"short_title":null,"codes":{"esr":"851635"},
+		"transport_type":"train",
+		"station_type_name":"остановочный пункт",
+		"type":"station"
+	},
+	"from":	{
 		"code":"s9610190",
 		"station_type":"station",
 		"title":"Новосибирск-восточный",
