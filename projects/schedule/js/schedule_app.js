@@ -32,20 +32,20 @@ var webApp = {
 
 		"blocks": [
 			{
-				"locationID" : "shedule-table",
+				"locationID" : "block-shedule-table",
 				"title" : "Playlist", 
 				"templateID" : "tpl-shedule-table",
 				"content" : "",
-				"visibility" : true,//"frontPage"
+				"visibility" : true,
 				"buildBlock" : function(){
 //console.log(this);
-/*					
 					var html = _draw_wrapData({
-						"data": webApp.vars["playlist"]["tracks"],
-						"templateID": "tpl-playlist",
-						"templateListItemID": "tpl-playlist-item"
+						"data": webApp.vars["DB"]["data"]["search"],
+						"templateID": "tpl-shedule-search",
+						//"templateListItemID": "tpl-playlist-item"
 					});
-//console.log( html);
+console.log( html);
+/*					
 					if( html && html.length > 0){
 						this.content = html;
 						_draw_buildBlock( this );
@@ -554,7 +554,8 @@ console.log( key, tagNode[key] );
 	//console.log( key, value );
 				return value;
 			});
-console.log( jsonObj );
+//console.log( jsonObj );
+			webApp.vars["DB"]["data"] = jsonObj;
 			
 		} catch(error) {
 webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
@@ -578,7 +579,7 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
 		if( !p["data"] || p["data"].length === 0){
 console.log("-- _draw_wrapData(), error, incorrect data ...");

@@ -15,85 +15,56 @@
 	</tpl>
 
 -->
+	<tpl name="tpl-shedule-search">
+		<html_code><![CDATA[
+		<div class="row text-center">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{from.title}}</div>
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">....</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{to.title}}</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{date}}</div>
+		 </div>
+		]]></html_code>
+	</tpl>
 
 	<tpl name="tpl-shedule-table">
 		<html_code><![CDATA[
 <div class="block panel">
 	<div class="panel-body">
-		<div class="content">{{content}}</div>
+		<div class="content">{{content}}
+		
+{{search}}
+
+		<div class="row text-center">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">search.from.title ("Новосибирск-восточный")</div>
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">btn</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">search.to.title ("Раздолье (3362 км)")</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">search.date ("2019-04-26"), calendar</div>
+		 </div>
+
+		<table class="table table-bordered">
+			<thead>
+				<tr class="list-header success">
+					<th>​​​​​thread.number, thread.title, thread.carrier.title</th>
+					<th>​​​departure, stops, from.title</th>
+					<th>duration (sec.)</th>
+					<th>arrival, to.title</th>
+					<th>tickets_info.places.price.whole, tickets_info.places.currency</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{6404, "Новосибирск-главный — Болотная", "Экспресс-пригород"}</td>
+					<td>{"2019-04-26T07:17:00+07:00", "везде", "Новосибирск-восточный"}</td>
+					<td>{1200.0}</td>
+					<td>{"2019-04-26T07:37:00+07:00", "Раздолье (3362 км)"}</td>
+					<td>{"26", "RUB"}</td>
+				</tr>
+		</tbody>
+		</table>
+		
+		</div>
 	</div>
 </div>
-<table class="table table-bordered">
-	<thead>
-		<tr class="list-header success">
-			<th>​​​​number</th>
-			<th>​​​​title</th>
-			<th>{​​​departure, stops}</th>
-			<th>from {station_type_name, title}</th>
-			<th>{arrival}</th>
-			<th>to {station_type_name, title}</th>
-			<th>...</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>6404</td>
-			<td>Новосибирск-главный — Болотная</td>
-			<td>{2019-04-26T07:17:00+07:00, везде}</td>
-			<td>{станция, Новосибирск-восточный}</td>
-			<td>2019-04-26T07:37:00+07:00</td>
-			<td>{остановочный пункт, Раздолье (3362 км)}</td>
-			<td>...</td>
-		</tr>
-</tbody>
-</table>
-
-arrival: "2019-04-26T07:37:00+07:00"
-​​​arrival_platform: ""
-​​​arrival_terminal: null
-​​​departure: "2019-04-26T07:17:00+07:00"
-​​​departure_platform: ""
-​​​departure_terminal: null
-​​​duration: 1200
-has_transfers: false
-​​​start_date: "2019-04-26"
-​​​stops: "везде"
-tickets_info: null
-
-​​
-from: {
-​​​​code: "s9610190"
-​​​​codes: Object { esr: "851508" }
-​​​​popular_title: ""
-​​​​short_title: ""
-​​​​station_type: "station"
-​​​​station_type_name: "станция"
-​​​​title: "Новосибирск-восточный"
-​​​​transport_type: "train"
-​​​​type: "station"
--------------------------
-to: Object { 
-code: "s9610235"
-​​​​codes: Object { esr: "851635" }
-​​​​popular_title: null
-​​​​short_title: null
-​​​​station_type: "stop"
-​​​​station_type_name: "остановочный пункт"
-​​​​title: "Раздолье (3362 км)"
-​​​​transport_type: "train"
-​​​​type: "station"
---------------------------
-thread: {…}
-​​​​carrier: Object { code: 151, contacts: "Телефон горячей линии: +7 (383) 229-25-67", url: "http://www.express-prigorod.ru/", … }
-​​​​express_type: null
-​​​​number: "6404"
-​​​​short_title: "Новосибирск-главный — Болотная"
-​​​​thread_method_link: "api.rasp.yandex.net/v3/thread/?date=2019-04-26&uid=6404_0_9610189_g19_4"
-​​​​title: "Новосибирск-главный — Болотная"
-​​​​transport_subtype: Object { color: "#FF7F44", code: "suburban", title: "Пригородный поезд" }
-​​​​transport_type: "suburban"
-​​​​uid: "6404_0_9610189_g19_4"
-​​​​vehicle: null
 
 		]]></html_code>
 	</tpl>
