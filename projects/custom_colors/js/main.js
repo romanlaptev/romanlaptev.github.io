@@ -9,14 +9,15 @@ var _vars = {
 		{"colorName": "bg-darkblue5","code": "#153449"},
 		{"colorName": "bg-darkblue-tango","code": "#0c253c"},
 		
-		{"colorName": "bg-dark-violet","code": "#021859"},
-		{"code": "#130040"},
-
 		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
+		{"code": "#130040"},
+		{"colorName": "bg-darkblue3","code": "#040053"},
+		{"colorName": "bg-dark-violet","code": "#021859"},
+		{"colorName": "bg-darkblue2","code": " #000080"},
+
 
 		{"colorName": "bg-sky-blue66","code": "#003366"},
 		{"colorName": "bg-darkblue","code": "#004586"},
-		{"colorName": "bg-darkblue2","code": " #000080"},
 		
 		{"colorName": "bg-lightblue2","code": "#083caf"},
 		{"colorName": "bg-blue1","code": "#0000bb"},/*css.html*/
@@ -43,6 +44,7 @@ var _vars = {
 		{"colorName": "bg-sky-blue10","code": "#99ccff"},
 
 		{"code": "#b1d0ef"},
+		{"code": "#D2E1F9"},
 		{"colorName": "bg-sky-blue11","code": "#cce5ff"},
 		
 		{"colorName": "bg-lightsteelblue","code": "#b0c4de"},
