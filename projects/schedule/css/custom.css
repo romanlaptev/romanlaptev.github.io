@@ -177,3 +177,14 @@ border-top: 16px solid #3498db;
 .log-panel {
 	background-color: #b0c4de;
 }
+
+.arrows{
+background-image: url("../res/favicons/mask-icon.svg");
+width: 50px;
+height: 35px;
+background-repeat: no-repeat;
+background-position: center;
+/*
+background-size: contain	
+*/
+}

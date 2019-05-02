@@ -17,11 +17,19 @@
 -->
 	<tpl name="tpl-schedule-search">
 		<html_code><![CDATA[
-		<div class="row text-center">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{from_title}}</div>
-			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">....</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{to_title}}</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">{{date}}</div>
+		<div class="panel-body row">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<input class="form-control" value="{{from_title}}"/>
+			</div>
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+				<button class="btn btn-default arrows"></button>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<input class="form-control" value="{{to_title}}"/>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+<input type="date" name="date-widget" class="form-control" value="{{date}}"  max="2019-12-30" min="2019-01-01">			
+			</div>
 		 </div>
 <!--
 		<div class="row text-center">
