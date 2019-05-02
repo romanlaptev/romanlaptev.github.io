@@ -188,3 +188,25 @@ background-position: center;
 background-size: contain	
 */
 }
+.selectDate{
+padding-top:0;
+}
+
+.TransportIcon__icon {
+ height:30px;
+ width:20px
+}
+.TransportIcon__icon {
+ fill:currentColor
+}
+.TransportIcon_type_suburban {
+ color:#1dc11d
+}
+.SegmentTransport {
+ font-size:11px;
+ line-height:15px;
+}
+.SegmentTitle__number {
+ margin:0 .9em 0 0
+}
+

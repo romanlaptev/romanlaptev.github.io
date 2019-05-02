@@ -566,12 +566,53 @@ function _buldScheduleHtml(){
 	});
 	
 	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
-	var data = webApp.vars["DB"]["data"]["segment"];
+	
+	var data = webApp.vars["DB"]["data"]["segments"];
+	var htmlTableList = "";
+	for(var n = 0; n < data.length; n++){
+		htmlTableList += __buildTableList( data[n] );
+	}//next
+	htmlTable = htmlTable.replace("{{list}}", htmlTableList);
 	
 	var html = htmlSearch + htmlTable;
 //console.log( html);
 
 	return html;
+	
+	function __buildTableList( data ){
+		//var htmlList = webApp.vars["templates"]["tpl-schedule-table--tr"];
+		var record = {};
+		
+		//copy data object
+		for(var key in data){
+//console.log(key, data[key], typeof data[key] );
+			if( typeof data[key] === "object"){
+				__addObjectFiels( key, data[key], record );
+			} else {
+				record[key] = data[key];
+			}
+		}//next
+		
+console.log(record);
+		
+		var htmlList = _draw_wrapData({
+			"data": record,
+			"templateID": "tpl-schedule-table--tr",
+		});
+		return htmlList;
+	}//end __buildTableList()
+	
+	function __addObjectFiels( parentKey, srcObj, dstObj ){
+		for(var key in srcObj){
+			if( typeof srcObj[key] === "object"){
+				__addObjectFiels( key, srcObj[key], dstObj );
+			} else {
+				var _key = parentKey+"_"+key;
+				dstObj[_key] = srcObj[key];
+			}
+		}//next
+	}//end __addObjectFields()
+	
 }//end _buildScheduleHtml()
 
 //============================================== DRAW
@@ -599,7 +640,9 @@ console.log("-- _draw_wrapData(), error, templateID was not defined...");
 		}
 		
 		if( !webApp.vars["templates"][p.templateID] ){
-console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
+webApp.vars["logMsg"] = "-- _draw_wrapData(),  error, not find template, id: " + p.templateID;
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log(webApp.vars["logMsg"]);
 			return false;
 		}
 		
