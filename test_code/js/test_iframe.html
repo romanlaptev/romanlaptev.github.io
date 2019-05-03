@@ -1,21 +1,9 @@
 ﻿<DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap335.min.css">
 <style>
-.log
-{
-	position:absolute;
-	top:10px;
-	right:10px;
-	width:40%;
-	opacity:0.8;
-	background-color:#fffaf0;
-	border:1px dashed;
-	padding:10px;
-	margin:10px;
-}
 input.invalid
 {
 	background-color:orange;
@@ -23,6 +11,36 @@ input.invalid
 input.valid
 {
 	background-color:lightgreen;
+}
+
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+/*
+border: 1px solid #ccc;
+*/
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+/*
+#log {
+    height: 200px;
+    overflow-y: scroll;
+}*/
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
 }
 
 </style>
@@ -69,25 +87,22 @@ alert( message);
 	};
 }
 
+var logMsg;
 window.onload = function(){
 
-	//send message to frame	
-	window.frames['content_frame'].document.write ('hello frame');
+	window.frames['content_frame'].document.write ("send message to frame: 'hello frame'");
 
-//init
 	if( document.querySelector){
 		var btn_load = document.querySelector("#btn-load");
-		var new_iframe_source = document.querySelector("#new-iframe-source");
+		var iframe_source = document.querySelector("#iframe-source");
 		var log = document.querySelector("#log");
 		var test_frame = document.querySelector("#test-frame");
-		//frame_info = document.querySelector("#frame-info");
-		var btn_clear_log = document.querySelector("#clear-log");
+		var btn_clear_log = document.querySelector("#btn-clear-log");
 	} else {
 		var btn_load = document.getElementById("btn-load");
-		var new_iframe_source = document.getElementById("new-iframe-source");
+		var iframe_source = document.getElementById("iframe-source");
 		var log = document.getElementById("log");
 		var test_frame = document.getElementById("test-frame");
-		//frame_info = document.getElementById("frame-info");
 		var btn_clear_log = document.getElementById("clear-log");
 	}
 //console.log(frame_info );
@@ -112,82 +127,79 @@ window.onload = function(){
 		});
 	}
 
-	new_iframe_source.onfocus = function(e){
-		new_iframe_source.className = "form-control";
-		var message = "on focus in new_iframe_source";
-		log.innerHTML += "<p>"+message+"</p>";
+	iframe_source.onfocus = function(e){
+//iframe_source.className = "form-control";
+//logMsg = "on focus in iframe_source";
+//log.innerHTML += "<p>"+logMsg+"</p>";
 	};
 	
-	new_iframe_source.onblur = function(e){
+	iframe_source.onblur = function(e){
 //alert("on blur");	
 	};
 	
-	new_iframe_source.onchange = function(e){
+	iframe_source.onchange = function(e){
 //alert("on change");	
 	};
 	
 
-	new_iframe_source.onwheel = function(e){
+	iframe_source.onwheel = function(e){
 //alert("on wheel");	
 	};
-	new_iframe_source.oncopy = function(e){
+	iframe_source.oncopy = function(e){
 //alert("on copy");	
 	};
-	new_iframe_source.oncut = function(e){
+	iframe_source.oncut = function(e){
 //alert("on cut");	
 	};
-	new_iframe_source.onpaste = function(e){
+	iframe_source.onpaste = function(e){
 //alert("on paste");	
-		var message = "on paste in new_iframe_source";
-		log.innerHTML += "<p>"+message+"</p>";
+		logMsg = "on paste in iframe_source";
+		log.innerHTML += "<p>"+logMsg+"</p>";
 	};
 
-	new_iframe_source.ondrag = function(e){
+	iframe_source.ondrag = function(e){
 //alert("on drag");	
 	};
-	new_iframe_source.ondragend = function(e){
+	iframe_source.ondragend = function(e){
 //alert("on dragend");	
 	};
-	new_iframe_source.ondragenter = function(e){
+	iframe_source.ondragenter = function(e){
 //alert("on dragenter");	
-		//var message = "on dragenter in new_iframe_source";
-		//log.innerHTML += "<p>"+message+"</p>";
+		//logMsg = "on dragenter in iframe_source";
+		//log.innerHTML += "<p>"+logMsg+"</p>";
 	};
 	
-	new_iframe_source.ondragleave = function(e){
+	iframe_source.ondragleave = function(e){
 //alert("on dragleave");	
 	};
-	new_iframe_source.ondragover = function(e){
+	iframe_source.ondragover = function(e){
 //alert("on dragover");	
 	};
-	new_iframe_source.ondragstart = function(e){
+	iframe_source.ondragstart = function(e){
 //alert("on dragstart");	
 	};
-	new_iframe_source.ondrop = function(e){
+	iframe_source.ondrop = function(e){
 //alert("on drop");	
-		var message = "on drop in new_iframe_source";
-		log.innerHTML += "<p>"+message+"</p>";
-		new_iframe_source.className = "form-control";
+		logMsg = "on drop in iframe_source";
+		log.innerHTML += "<p>"+logMsg+"</p>";
+		iframe_source.className = "form-control";
 	};
 
 };//end window.load
 
-function load_iframe()
-{
-	var new_iframe_source = document.getElementById("new-iframe-source");
-if( new_iframe_source.value.length === 0)
-{
-	var message = "enter value in <b>new iframe src</b>";
-	log.innerHTML += "<p>" +message+"</p>";
-	new_iframe_source.className += " invalid";
+function load_iframe(){
+	var iframe_source = document.getElementById("iframe-source");
+if( iframe_source.value.length === 0){
+	logMsg = "enter value in <b>new iframe src</b>";
+	log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
+	iframe_source.className += " invalid";
 	return;
 }
-	var message = "<b>new iframe src: </b>" + new_iframe_source.value;
-	log.innerHTML += "<p>" +message+"</p>";
+	logMsg = "<b>new iframe src: </b>" + iframe_source.value;
+	log.innerHTML += "<p class='alert alert-info'>" +logMsg+"</p>";
 	
 //console.log( test_frame );
-	try
-	{
+	try	{
 		var iframe = window.frames[ test_frame.name ];
 //for(var item in iframe)
 //{
@@ -195,61 +207,63 @@ if( new_iframe_source.value.length === 0)
 //}
 //alert (document.all.test_frame.src);
 //alert (iframe.location);
-		iframe.location = new_iframe_source.value;
+		iframe.location = iframe_source.value;
 //alert (frames[0].document.body.innerHTML);
 //alert( iframe.document.body.innerHTML );
 	}
-	catch(e)
-	{
-		var message = "<p><b>error</b>: " + e.message + "</p> ";
-		log.innerHTML += "<p>" +message+"</p>";
+	catch(e){
+		logMsg = "<p class='alert alert-danger'><b>error</b>: " + e.message + "</p> ";
+		log.innerHTML += "<p>" +logMsg+"</p>";
 console.log(e);
 	}
 	
 }//end load_frame()
 
-function get_iframe_info( frame_tag )
-{
+function get_iframe_info( frame_tag ){
 console.log( frame_tag );
-	var new_iframe_source = document.getElementById("new-iframe-source");
-	var frame_info = document.getElementById("frame-info");
-	frame_info.innerHTML = "";
+	var iframe_source = document.getElementById("iframe-source");
 
-	var iframe = window.frames[ frame_tag.name ];
-//for(var item in iframe.document)
-//{
-//console.log( item +" = "+ iframe.document[item]);
-//}
+	//var iframe = window.frames[ frame_tag.name ];
+	var iframe = frame_tag.contentWindow;	
 
-	var message = "<b>Main page domain</b> = " + document.domain;
-	 message += ", <b>IFRAME domain</b> = " + new_iframe_source.value;
-	frame_info.innerHTML += "<p> " + message + "</p>";
+	logMsg = "<p class='alert alert-info'><b>Main page domain</b> = " + document.domain +"</p>";
+	logMsg += "<p class='alert alert-info'><b>IFRAME domain</b> = " + iframe_source.value +"</p>";
+	log.innerHTML += logMsg;
 	
-	try
-	{
-		var message = "<b>iframe location</b> = " + iframe.location;
-		frame_info.innerHTML += "<p> " + message + "</p>";
+	try{
+		logMsg = "<b>iframe location</b> = " + iframe.location;
+		log.innerHTML += "<p class='alert alert-info'> " + logMsg + "</p>";
 	}
-	catch(e)
-	{
-		var message = "<b>iframe location, access error</b>: " + e.message;
-		frame_info.innerHTML += "<p> " + message + "</p>";
+	catch(e){
+		logMsg = "<b>iframe location, access error</b>: " + e.message;
+		log.innerHTML += "<p class='alert alert-danger'> " + logMsg + "</p>";
 console.log(e);
 	}
 
-	try
-	{
-		var message = "<b>iframe.document</b> = " + iframe.document;
-		frame_info.innerHTML += "<p> " + message + "</p>";
+	try{
+		logMsg = "<b>iframe.document</b> = " + iframe.document;
+		logMsg += "<ul>";
+		for(var item in iframe.document){
+			logMsg += "<li>"+item +" : "+ iframe.document[item]+"</li>";
+console.log( item +" = "+ iframe.document[item]);
+		}
+		logMsg += "</ul>";
+		log.innerHTML += "<p class='alert alert-info'> " + logMsg + "</p>";
 //alert( iframe_name.document.body.innerHTML );
-	}
-	catch(e)
-	{
-		var message = "<b>iframe.document, access error</b>: " + e.message;
-		frame_info.innerHTML += "<p> " + message + "</p>";
+	} catch(e) {
+		logMsg = "<b>iframe.document, access error</b>: " + e.message;
+		log.innerHTML += "<p class='alert alert-danger'> " + logMsg + "</p>";
 console.log(e);
 	}
 
+	try{
+		logMsg = "<b>frame_tag.contentDocument.body.innerHTML:</b>" + frame_tag.contentDocument.body.innerHTML;
+		log.innerHTML += "<p class='alert alert-success'> " + logMsg + "</p>";
+console.log( frame_tag.contentDocument.body.innerHTML );
+	} catch(e) {
+console.log(e);
+	}
+	
 //      window.frames['content_frame'].document.write ('hello frame');
    //document.all.filelist.src="file:///mnt/terra/clouds/cloud_mail/music/";
    
@@ -280,30 +294,48 @@ console.log(  "frame["+ item +"] =" + frame[item] );
 			<h1 class="text-center">test iframe</h1>
 		</div>
 		
-		<label>new iframe src</label>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<input class="form-control" type="text" name="new_iframe_source" id="new-iframe-source" value="" >
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
 <pre>
-http://mycomp/source/
+http://learn.javascript.ru/ajax-iframe
+AJAX-запросы через IFRAME | Учебник JavaScript
+
+https://learn.javascript.ru/xhr-crossdomain
+XMLHttpRequest: кросс-доменные запросы
+
+</pre>
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3>load url to new_iframe</h3>
+		  </div>
+		  <div class="panel-body">
+			<input id="iframe-source" class="form-control" type="text" value="" autocomplete="off"/>
+			<a href="#" class="btn btn-info" id="btn-load">load iframe</a>
+<pre>
+https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr
+http://i5
 file:///mnt/terra/clouds/cloud_mail/music/
 http://vbox5
 </pre>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<a href="#" class="btn btn-success" id="btn-load">load iframe</a>
-			</div>
+
+		  </div>
+		  
+		  <div class="panel-body">test-iframe:
+<iframe id="test-frame" width="100%" height="40%" name="test_frame" onload="get_iframe_info( this )"></iframe>
+		  </div>
+		  
 		</div>
 		
-		<div id="log-wrap" class="log">
-			<a id="clear-log" class="btn btn-small btn-danger" href="#">clear log</a>		
-			<div id="log"></div>
-		</div>
 		
-		<iframe id="test-frame" width="100%" height="40%" name="test_frame" onload="get_iframe_info( this )"></iframe>
-		<div id="frame-info"></div>
-		
+	  <div class="panel-body">content_iframe:
 <iframe width="98%" height="80%" name="content_frame" scrolling=auto style='background-color: silver;' src=""></iframe>
+	  </div>
 	
 	</div><!-- end container -->
 	
@@ -323,7 +355,5 @@ src="file:///mnt/terra/clouds/cloud_mail/music/"></iframe>
 
 <iframe id="filelist" width="80%" height="80%" name="filelist" src="file:///F:/clouds/cloud_mail/music/"></iframe>
 -->
-
-
 </body>
 </html>

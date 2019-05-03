@@ -12,6 +12,7 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Expires" content="-1">	
 -->
+	<meta name="referrer" content="no-referrer" />
 
 	<link rel="shortcut icon" type="image/x-icon" href="res/favicons/favicon.ico"/>
 	<link rel="mask-icon" sizes="any" href="res/favicons/mask-icon.svg" color="#f00"/>
@@ -30,9 +31,11 @@
 	<link type="text/css" rel="stylesheet" href="../../css/bootstrap337.min.css"/>
 	<link type="text/css" rel="stylesheet" href="../../css/custom_colors.css"/>
 	<link type="text/css" rel="stylesheet" href="css/custom.css">
-	<!-- <script src="../../js/jquery.min.js"></script> -->
+
+	<script src="../../js/jquery.min.js"></script>
 	<script src="../../test_code/js/lib/shared_functions.js"></script>
 	<script src="js/schedule_app.js"></script>
+
 	
 <!--[if lt IE 9]>
 	<script src="js/fix_IE/html5shiv.js"></script>
@@ -69,7 +72,23 @@
 </header>
 
 <div class="container">
-	<span id="block-schedule"></span>				
+	<span id="block-schedule"></span>
+<!--
+	<iframe name="test_frame"
+src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"></iframe>
+-->
+
+<!--
+<img id="test" src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
+<script>
+var test = document.querySelector("#test");
+for( var key in test){
+console.log(key, test[key]);
+}
+</script>
+-->
+
+
 </div><!-- end container -->
 
 <footer class="container">
