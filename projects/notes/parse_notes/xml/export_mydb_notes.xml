@@ -3751,8 +3751,13 @@ Windows: Запуск службы TELNET на удаленном компьют
 
 </filename>
 </node>
-<node title="XRandR: настройка режимов работы с дисплеями (мониторами) в Linux" nid="1122" mlid="3242" plid="2413" created="19-May-2015 21:54:20" changed="19-May-2015 21:59:47" weight="0">
+<node title="XRandR: настройка режимов работы с дисплеями (мониторами) в Linux" nid="1122" mlid="3242" plid="2413" created="19-May-2015 21:54:20" changed="05-May-2019 13:17:46" weight="0">
 <body_value>
+/home/roman/.screenlayout/01.sh
+#!/bin/sh
+xrandr --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --mode 1280x1024 --pos 1920x56 --rotate normal
+----------------------------
+
 http://unixforum.org/index.php?showtopic=102782
 http://linuxnow.ru/view.php?id=103
 XRandR: настройка режимов работы с дисплеями (мониторами) в GNU/Linux
