@@ -1,4 +1,4 @@
-﻿var func = sharedFunc();
+var func = sharedFunc();
 //console.log("func:", func);
 
 window.onload = function(){
@@ -26,8 +26,8 @@ var webApp = {
 
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			//"dataUrl" : "data/2019-04-26.json",
-			"dataUrl" : "https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
+			"dataUrl" : "data/2019-04-26.json",
+			//"dataUrl" : "https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
 			"dbType" : "" //application/xml 
 		},
 
@@ -363,88 +363,6 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 //============================================== DATA
 function _loadData( postFunc ){
 //console.log("_loadData() ", arguments);
-/*
-	$.ajax({
-		type: "GET",
-		url: webApp.vars["DB"]["dataUrl"],
-		dataType: "text",
-		
-		beforeSend: function(XMLHttpRequest){
-console.log("ajax beforeSend, ", arguments);
-		},				
-		
-		complete: function(xhr, state){
-console.log("ajax load complete, ", arguments);
-		},
-		
-		success: function( data ){
-console.log( data );
-		},
-		
-		error: function( data, status, errorThrown ){
-console.log( "error", arguments );
-		}
-	})
-	.done(function () {
-console.log("$.ajax, Done...");
-	})
-	.fail(function (xhr, textStatus) {
-console.log("$.ajax, Fail...", arguments);
-console.log("textStatus:" + textStatus);
-	});
-*/	
-
-/*
-var xhr = new XMLHttpRequest();
-xhr.open("GET", webApp.vars["DB"]["dataUrl"], true);
-//xhr.setRequestHeader("authorization", "Token xxxxxx");
-xhr.setRequestHeader("Version", "1");
-xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
-xhr.onload = function() {
-  alert( this.responseText );
-}
-xhr.onerror = function() {
-  alert( 'Ошибка ' + this.status );
-}
-xhr.send();
-*/
-
-
-	var script = document.createElement('script');
-	script.src = "js/test.js";
-//console.log(script);
-	//webApp.vars["log"].appendChild(script);
-	document.getElementsByTagName('head')[0].appendChild(script);
-
-	script.onload = function() {
-alert( "onload " + this.src);
-	  }
-	script.onerror = function() {
-alert( "onerror " + this.src );
-	};  
-
-
-/*
-			$.ajax({
-				type: "GET", 
-				url: "js/test.js",
-				dataType:"jsonp",
-				jsonpCallback: 'my_func',
-				//async: false,
-				//contentType: "application/json",
-				//jsonp: 'callback',
-				//crossDomain: true,
-				success: function ( data ){
-console.log(data);
-					//form_content ( data );
-				},
-					error:function( data, status, errorThrown ){
-console.log( "error function, status: " + status );
-console.log( "errorThrown: " + errorThrown );
-				}
-			});	
-*/			
-return;
 				func.runAjax( {
 					"requestMethod" : "GET", 
 					"url" : webApp.vars["DB"]["dataUrl"], 
