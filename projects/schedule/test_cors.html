@@ -20,10 +20,13 @@
 	<script src="../../js/jquery.min.js"></script>
 	<script src="../../test_code/js/lib/shared_functions.js"></script>
 -->
+	<script src="js/test.js"></script>
+
 <script>
-var vars={
-	"dataUrl":"https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"
-};
+//var vars={
+	//"dataUrl":"https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"
+//};
+
 /*
 	$.ajax({
 		type: "GET",
@@ -71,7 +74,7 @@ xhr.onerror = function() {
 xhr.send();
 */
 
-
+/*
 	var script = document.createElement('script');
 	script.src = "js/test.js";
 //console.log(script);
@@ -84,7 +87,7 @@ alert( "onload " + this.src);
 	script.onerror = function() {
 alert( "onerror " + this.src );
 	};
-
+*/
 
 /*
 			$.ajax({
@@ -109,10 +112,17 @@ console.log( "errorThrown: " + errorThrown );
 
 window.onload = function(){
 	var btn_clear_log = document.querySelector("#btn-clear-log");
-
 	//var btn_clear_log = document.getElementById("clear-log");
 	btn_clear_log.onclick = function(){
 		log.innerHTML = "";
+	};//end event
+
+	var btn_load = document.querySelector("#btn-load");
+	btn_load.onclick = function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+//console.log(target);
+		loadFrame();
 	};//end event
 
 };//end window.load
@@ -120,6 +130,10 @@ window.onload = function(){
 </script>
 
 <style>
+input.invalid{
+	background-color:orange;
+}
+
 .log-panel {
     margin-bottom: 0;
     margin-top: 5px;
@@ -166,6 +180,36 @@ margin: 0;
 			<div id="log" class="panel-body"></div>
 		</div>
 	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>load data to IFRAME</h4>
+		</div>
+		<div class="panel-body">
+			<input id="iframe-src" class="form-control" type="text" autocomplete="off"
+value="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
+			<a href="#" class="btn btn-info" id="btn-load">load iframe</a>
+<pre>
+http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr
+file:///mnt/terra/clouds/cloud_mail/music/
+http://vbox5
+</pre>
+
+	<iframe name="test_frame" width="100%" height="40%" src="" onload="getFrameInfo(this)"></iframe>
+
+<!--
+<img id="test" src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
+<script>
+var test = document.querySelector("#test");
+for( var key in test){
+console.log(key, test[key]);
+}
+</script>
+-->
+
+		</div>
+	</div>	
 <pre>
 http://javascript.ru/ajax/cross-domain-scripting
 http://javascript.ru/ajax/cross-origin-2
@@ -212,19 +256,6 @@ user_pref("capability.policy.default.XMLHttpRequest.open",
 ------------------------------
 
 </pre>
-<!--
-	<iframe name="test_frame"
-src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"></iframe>
--->
-<!--
-<img id="test" src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
-<script>
-var test = document.querySelector("#test");
-for( var key in test){
-console.log(key, test[key]);
-}
-</script>
--->
 </div><!-- end container -->
 
 </body>
