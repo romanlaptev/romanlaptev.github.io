@@ -437,10 +437,13 @@ console.log( logMsg );
 			}
 			
 			function _loadEnd(){
-				var all_headers = xhr.getAllResponseHeaders();
-		//console.log( all_headers );
+				var _headers = {
+					"all" : xhr.getAllResponseHeaders(),
+					"content-type" : xhr.getResponseHeader('content-type')
+				};
+//console.log( _headers );
 				if( typeof  p["onLoadEnd"] === "function"){
-					p["onLoadEnd"](all_headers);
+					p["onLoadEnd"]( _headers);
 				}
 			}//end _loadEnd()
 			

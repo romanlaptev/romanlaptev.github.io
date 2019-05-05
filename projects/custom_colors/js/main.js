@@ -9,14 +9,16 @@ var _vars = {
 		{"colorName": "bg-darkblue5","code": "#153449"},
 		{"colorName": "bg-darkblue-tango","code": "#0c253c"},
 		
-		{"colorName": "bg-dark-violet","code": "#021859"},
-		{"code": "#130040"},
-
 		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
+		{"code": "#130040"},
+		{"colorName": "bg-darkblue3","code": "#040053"},
+		{"colorName": "bg-dark-violet","code": "#021859"},
+		{"colorName": "bg-darkblue6","code": "#002168"},
+		{"colorName": "bg-darkblue2","code": " #000080"},
+
 
 		{"colorName": "bg-sky-blue66","code": "#003366"},
 		{"colorName": "bg-darkblue","code": "#004586"},
-		{"colorName": "bg-darkblue2","code": " #000080"},
 		
 		{"colorName": "bg-lightblue2","code": "#083caf"},
 		{"colorName": "bg-blue1","code": "#0000bb"},/*css.html*/
@@ -39,10 +41,14 @@ var _vars = {
 
 		{"colorName": "bg-sky-blue4","code": "#0174e9"},
 		{"colorName": "bg-sky-blue6","code": "#0088FF"},
+		{"colorName": "bg-sky-blue7","code": "#007dfd"},
+		
 		{"colorName": "bg-sky-blue2","code": "#3399ff"},
 		{"colorName": "bg-sky-blue10","code": "#99ccff"},
 
 		{"code": "#b1d0ef"},
+		{"code": "#D2E1F9"},
+		
 		{"colorName": "bg-sky-blue11","code": "#cce5ff"},
 		
 		{"colorName": "bg-lightsteelblue","code": "#b0c4de"},
@@ -73,7 +79,7 @@ var _vars = {
 		{"colorName": "bg-green-grey1","code": "#8ebac5"},
 		{"colorName": "bg-green-grey2","code": "#99cccc"},
 
-		
+		{"colorName": "bg-darkgreen22","code": "#003438"},
 		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
 		{"colorName": "bg-darkgreen33","code": "#003200"},/* windowsXP desktop */
 		{"colorName": "bg-darkgreen","code": "#0d4524"},/* gitlab header */
@@ -93,6 +99,7 @@ var _vars = {
 		{"colorName": "bg-lightgreen","code": "#d9ead3"	},
 		{"code": "#c3cbbe","colorName": "IIS header table block"},/* IIS header table block*/
 		{"colorName": "bg-grey-green4","code": "#e6eaec"},/* book_Rods */
+		{"code": "#e2e9ef"},
 		{"colorName": "bg-palegrey-green","code": "#f0f3f6"},
 
 		
@@ -115,7 +122,10 @@ var _vars = {
 		{"colorName": "bg-grey5","code": "#475570"},/*css.html*/
 		{"text-color": "#ffffff","code": "rgb(77,92, 106)"},
 		{"colorName": "winxp desktop color2","text-color": "#ffffff","code": "rgb(65, 65, 65)"},
+		{"colorName": "bg-grey11","code": "#3e3e3e"},
+		
 		{"colorName": "bg-grey-c8","code": "#333340"},
+		{"colorName": "bg-grey12","code": "#232323"},
 
 		{"colorName": "bg-grey1","code": "#404050"},/* comp-books.css */
 		{"colorName": "winxp desktop","text-color": "#ffffff","code": "rgb(77, 66, 90)"},
@@ -124,6 +134,7 @@ var _vars = {
 		{"colorName": "bg-grey-c9","code": "#70708c","text-color":"#000"},
 		{"colorName": "bg-red-pink","code": "#a68caa","text-color": "#000000"},
 
+		{"code": "#c0c4d7"},
 
 		{"colorName": "bg-purple","code": "#9999CC","text-color":"#000"},
 		{"colorName": "bg-violet","code": "#99c"},

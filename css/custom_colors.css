@@ -345,11 +345,12 @@
 	color: #fff;
 }
 .btn-blue:hover {
-	background-color: #ff8c00;
+	background-color: #ff8c00 !important;
 	color: #000 !important;
 }
 .btn-blue:focus {
 	color: #fff !important;
+	outline: 0;
 }
 .btn-blue:active:focus {
 	color: #000 !important;

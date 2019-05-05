@@ -1,14 +1,92 @@
-<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8"/>
+	<style>
+		.container{
+			margin:20px;
+			padding:20px;
+			background-color:#e3fff0;
+		}
+		.panel{
+			margin:20px;
+			padding:20px;
+			border:1px solid green;
+			background-color:palegreen;
+			border-radius:5px;
+		}
+		.arrows{
+			width:100px;
+			height:100px;
+			background-image:url("mask-icon.svg");
+		}
+	</style>
 </head>
-
 <body>
-	<h2>test SVG</h2>
-	<svg>
-		<circle r="55px" cx="80px" cy="70px" fill="green">
-	</svg>
-</body>
+<div class="container">
+	<h1>Test SVG</h1>
 
+	<pre>
+https://svg-art.ru/?page_id=1047
+Как добавить SVG в HTML5 страницу
+	
+http://css.yoksel.ru/svg-fill-and-stroke/
+SVG: заливка и обводка	
+	
+	</pre>
+
+	<div class="panel">
+		<h3>&lt;object&gt;</h3>
+		<object type="image/svg+xml" data="mask-icon.svg" width="200" height="200" >
+			Your browser does not support SVG
+			<img src="SvgImg.png" width="200" height="200" alt="image format png" />
+		</object>
+	</div>
+
+
+	<div class="panel">
+		<h3>&lt;iframe&gt;</h3>
+		<iframe src="mask-icon.svg">
+			<img src="SvgImg.png" width="200" height="200" alt="image format png" />
+		</iframe>
+	</div>
+
+	<div class="panel">
+		<h3>&lt;img&gt;</h3>
+		<img src="mask-icon.svg" width="300px" height="300px" onerror="this.onerror=null; this.src='image.png'">
+	</div>
+	
+	<div class="panel">
+		<h3>CSS, background-image:url("mask-icon.svg")</h3>
+		<div class="arrows"></div>
+	</div>
+
+	<div class="panel">
+		<h3>inline embed</h3>
+<!-- SVG code -->
+		<svg width="300px" height="300px" xmlns="http://www.w3.org/2000/svg">
+				<text x="10" y="50" font-size="30">My SVG</text>
+				<circle cx="200" cy="50" r="40" stroke="red"  stroke-width="1" fill="orange"/>
+		</svg>
+		
+<figure>
+	<svg width="100px" height="100px">
+	<!-- <use xlink:href="#icon-suburban"></use> -->
+		<path fill-rule="evenodd" clip-rule="evenodd" 
+d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 3.6 0 4.7 0 6v11c0 .6.4 1 1 1h14c.6 0 1-.4 1-1V6c0-1.3-2.2-2.4-5.3-2.8zM10.5 1l-1 2.1C9 3 8.5 3 8 3s-1 0-1.5.1L5.5 1h5zM9 6c0 .6-.4 1-1 1s-1-.4-1-1 .4-1 1-1 1 .4 1 1zM5 16H2v-2h3v2zm9 0h-3v-2h3v2zm0-4H2V8h12v4zM3 21h.8l-1.5 3h1.9l1.5-3h4.6l1.5 3h2l-1.5-3h.7c1.1 0 2-.9 2-2H1c0 1.1.9 2 2 2z">
+		</path>
+	</svg>
+</figure>
+		
+	</div>
+
+	<div class="panel">
+		<h3>&lt;embed&gt;</h3>
+		<embed src="red_circle.svg" type="image/svg+xml" /> 
+		<embed src="01.svg" type="image/svg+xml" /> 
+	</div>
+
+	
+</div><!-- end container -->
+
+</body>
 </html>
