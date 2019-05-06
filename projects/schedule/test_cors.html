@@ -64,6 +64,29 @@ var newContent = "<html><head></head><body></body></html>";
 		newWin.document.write(newContent);
 	};//end event
 */
+	var btn_load_json = document.querySelector("#btn-load-json");
+	btn_load_json.onclick = function(event){
+		var script = document.createElement('script');
+		script.src = vars["dataUrl"]+"?callback=insertReply";//"js/test.js";
+		//script.src = vars["dataUrl"];//"js/test.js";
+	//console.log(script);
+	
+		//document.getElementsByTagName('head')[0].appendChild(script);
+		document.body.appendChild(script);
+
+		script.onload = function() {
+console.log(arguments);		
+//alert( "onload " + this.src);
+		  }
+		script.onerror = function() {
+	alert( "onerror " + this.src );
+		};
+		
+		var insertReply = function (content) {
+console.log(content);
+		}	
+		
+	};//end event
 
 };//end window.load
 </script>
@@ -127,6 +150,11 @@ margin: 0;
 		</div>
 	</div>
 -->
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<a href="#" class="btn btn-lg btn-danger" id="btn-load-json">load json, use jsonp callback</a>
+		</div>
+	</div>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -204,6 +232,9 @@ CORS. Отправка запроса с https. Почему не работае
 
 https://learn.javascript.ru/window-methods
 Открытие окон и методы window
+
+http://qaru.site/questions/93350/no-access-control-allow-origin-header-is-present-on-the-requested-resource-when-trying-to-get-data-from-a-rest-api
+В запрошенном ресурсе нет заголовка "Access-Control-Allow-Origin" - при попытке получить данные из REST API
 
 ==========================
 Disable same origin policy in Chrome

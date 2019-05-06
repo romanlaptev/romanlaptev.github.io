@@ -1,7 +1,8 @@
 var logMsg;
 var vars={
 //"dataUrl":"https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"
-"dataUrl":"http://romanlaptev.github.io/projects/schedule/data/2019-04-26.json"
+//"dataUrl":"http://romanlaptev.github.io/projects/schedule/data/2019-04-26.json"
+"dataUrl":"http://romanlaptev.github.io/test_code/js/test_json/test_filters_jsonp/phones.json"
 };
 
 //window.location.href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr";
@@ -122,20 +123,6 @@ console.log(e);
 }//end loadData()
 
 
-/*
-	var script = document.createElement('script');
-	script.src = "js/test.js";
-//console.log(script);
-	//webApp.vars["log"].appendChild(script);
-	document.getElementsByTagName('head')[0].appendChild(script);
-
-	script.onload = function() {
-alert( "onload " + this.src);
-	  }
-	script.onerror = function() {
-alert( "onerror " + this.src );
-	};
-*/
 
 /*
 			$.ajax({
