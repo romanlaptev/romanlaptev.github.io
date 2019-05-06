@@ -78,7 +78,7 @@ console.log("textStatus:" + textStatus);
 */	
 	try{
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", url, true);
+		xhr.open("GET", "https://cors-anywhere.herokuapp.com/"+url, true);
 		//xhr.setRequestHeader("authorization", "Token xxxxxx");
 		//xhr.setRequestHeader("Version", "1");
 		//xhr.setRequestHeader("Origin", "http://vbox5");

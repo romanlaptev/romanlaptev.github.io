@@ -26,8 +26,8 @@ var webApp = {
 
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			"dataUrl" : "data/2019-04-26.json",
-			//"dataUrl" : "https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
+			//"dataUrl" : "data/2019-04-26.json",
+			"dataUrl" : "https://cors-anywhere.herokuapp.com/https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
 			"dbType" : "" //application/xml 
 		},
 
@@ -423,18 +423,14 @@ console.log( webApp.vars["logMsg"] );
 				return false;
 			}
 			
-			switch( webApp.vars["DB"]["dbType"] ){
-				case "application/xml":
-					_parseXML( data );
-				break;
-				
-				case "application/json":
-					_parseJSON( data );
-				break;
-				
-				case "csv":
-				break;
-			}//end switch
+			if( webApp.vars["DB"]["dbType"].indexOf("application/xml") !== -1){
+				_parseXML( data );
+			}
+			
+			if( webApp.vars["DB"]["dbType"].indexOf("application/json") !== -1){
+console.log("TEST1");			
+				_parseJSON( data );
+			}
 			
 		}//_parseAjax()
 		
@@ -545,7 +541,7 @@ console.log( key, tagNode[key] );
 	//console.log( key, value );
 				return value;
 			});
-//console.log( jsonObj );
+console.log( jsonObj );
 			webApp.vars["DB"]["data"] = jsonObj;
 			
 		} catch(error) {
