@@ -1,4 +1,8 @@
 var logMsg;
+var vars={
+//"dataUrl":"https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"
+"dataUrl":"http://romanlaptev.github.io/projects/schedule/data/2019-04-26.json"
+};
 
 //window.location.href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr";
 
@@ -32,9 +36,133 @@ var logMsg;
 //}
 */
 
+function loadData(){
+	var url_field = document.querySelector("#url-field");
+	var url = url_field.value;
+	if( url.length === 0){
+		logMsg = "enter url...";
+		log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
+		return;
+	}
+	
+/*
+	$.ajax({
+		type: "GET",
+		url: webApp.vars["DB"]["dataUrl"],
+		dataType: "text",
+		
+		beforeSend: function(XMLHttpRequest){
+console.log("ajax beforeSend, ", arguments);
+		},				
+		
+		complete: function(xhr, state){
+console.log("ajax load complete, ", arguments);
+		},
+		
+		success: function( data ){
+console.log( data );
+		},
+		
+		error: function( data, status, errorThrown ){
+console.log( "error", arguments );
+		}
+	})
+	.done(function () {
+console.log("$.ajax, Done...");
+	})
+	.fail(function (xhr, textStatus) {
+console.log("$.ajax, Fail...", arguments);
+console.log("textStatus:" + textStatus);
+	});
+*/	
+	try{
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", url, true);
+		//xhr.setRequestHeader("authorization", "Token xxxxxx");
+		//xhr.setRequestHeader("Version", "1");
+		//xhr.setRequestHeader("Origin", "http://vbox5");
+		//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
+		
+		xhr.onload = function(e) {
+// console.log(arguments);
+// console.log("event type:" + e.type);
+// console.log("time: " + e.timeStamp);
+// console.log("total: " + e.total);
+// console.log("loaded: " + e.loaded);	
+console.log( this.responseText );
+			var ins = document.querySelector("#insert-data");
+			ins.innerHTML = this.responseText;
+		}//end onload
+		
+		xhr.onerror = function() {
+console.log(arguments);		
+			logMsg =  "error, status: " + this.status;
+			log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
+		}
+		
+		xhr.onloadend = function(e){
+//console.log(xhr.getResponseHeader('X-Powered-By') );
+console.log( xhr.getAllResponseHeaders() );
+
+			// try{
+				// logMsg =  "Access-Control-Allow-Origin: " + xhr.getResponseHeader("Access-Control-Allow-Origin");
+				// log.innerHTML += "<p class='alert alert-info'>" +logMsg+"</p>";
+			// } catch(e){
+// console.log(e);	
+			// }
+			
+		}//end onloadend
+		
+		xhr.send();
+		
+	} catch(e){
+console.log(e);	
+	}	
+	
+}//end loadData()
+
+
+/*
+	var script = document.createElement('script');
+	script.src = "js/test.js";
+//console.log(script);
+	//webApp.vars["log"].appendChild(script);
+	document.getElementsByTagName('head')[0].appendChild(script);
+
+	script.onload = function() {
+alert( "onload " + this.src);
+	  }
+	script.onerror = function() {
+alert( "onerror " + this.src );
+	};
+*/
+
+/*
+			$.ajax({
+				type: "GET", 
+				url: "js/test.js",
+				dataType:"jsonp",
+				jsonpCallback: 'my_func',
+				//async: false,
+				//contentType: "application/json",
+				//jsonp: 'callback',
+				//crossDomain: true,
+				success: function ( data ){
+console.log(data);
+					//form_content ( data );
+				},
+					error:function( data, status, errorThrown ){
+console.log( "error function, status: " + status );
+console.log( "errorThrown: " + errorThrown );
+				}
+			});	
+*/
+
+
 var loadFrame = function(){
 	var iframe_src = document.querySelector("#iframe-src");
 	var url = iframe_src.value;
+console.log(url);
 	if( url.length === 0){
 		logMsg = "enter url...";
 		log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
@@ -75,7 +203,7 @@ console.log( frame_tag );
 	try{
 		logMsg = "<b>iframe location</b> = " + iframe.location;
 		log.innerHTML += "<p class='alert alert-info'> " + logMsg + "</p>";
-console.log( iframe.location );
+//console.log( iframe.location );
 		if( iframe.location.href === "about:blank"){
 			return;
 		}

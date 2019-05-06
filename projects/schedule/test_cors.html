@@ -23,110 +23,49 @@
 	<script src="js/test.js"></script>
 
 <script>
-//var vars={
-	//"dataUrl":"https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"
-//};
-
-/*
-	$.ajax({
-		type: "GET",
-		url: webApp.vars["DB"]["dataUrl"],
-		dataType: "text",
-		
-		beforeSend: function(XMLHttpRequest){
-console.log("ajax beforeSend, ", arguments);
-		},				
-		
-		complete: function(xhr, state){
-console.log("ajax load complete, ", arguments);
-		},
-		
-		success: function( data ){
-console.log( data );
-		},
-		
-		error: function( data, status, errorThrown ){
-console.log( "error", arguments );
-		}
-	})
-	.done(function () {
-console.log("$.ajax, Done...");
-	})
-	.fail(function (xhr, textStatus) {
-console.log("$.ajax, Fail...", arguments);
-console.log("textStatus:" + textStatus);
-	});
-*/	
-
-/*
-var xhr = new XMLHttpRequest();
-xhr.open("GET", vars["dataUrl"], true);
-//xhr.setRequestHeader("authorization", "Token xxxxxx");
-//xhr.setRequestHeader("Version", "1");
-xhr.setRequestHeader("origin", "http://i5");
-//xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
-xhr.onload = function() {
-  alert( this.responseText );
-}
-xhr.onerror = function() {
-  alert( 'error, status: ' + this.status );
-}
-xhr.send();
-*/
-
-/*
-	var script = document.createElement('script');
-	script.src = "js/test.js";
-//console.log(script);
-	//webApp.vars["log"].appendChild(script);
-	document.getElementsByTagName('head')[0].appendChild(script);
-
-	script.onload = function() {
-alert( "onload " + this.src);
-	  }
-	script.onerror = function() {
-alert( "onerror " + this.src );
-	};
-*/
-
-/*
-			$.ajax({
-				type: "GET", 
-				url: "js/test.js",
-				dataType:"jsonp",
-				jsonpCallback: 'my_func',
-				//async: false,
-				//contentType: "application/json",
-				//jsonp: 'callback',
-				//crossDomain: true,
-				success: function ( data ){
-console.log(data);
-					//form_content ( data );
-				},
-					error:function( data, status, errorThrown ){
-console.log( "error function, status: " + status );
-console.log( "errorThrown: " + errorThrown );
-				}
-			});	
-*/
-
+var newWin;
 window.onload = function(){
+
 	var btn_clear_log = document.querySelector("#btn-clear-log");
 	//var btn_clear_log = document.getElementById("clear-log");
 	btn_clear_log.onclick = function(){
 		log.innerHTML = "";
 	};//end event
 
-	var btn_load = document.querySelector("#btn-load");
-	btn_load.onclick = function(event){
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-//console.log(target);
+	var btn_load_iframe = document.querySelector("#btn-load-iframe");
+	btn_load_iframe.onclick = function(event){
 		loadFrame();
 	};//end event
+	
+	var btn_load = document.querySelector("#btn-load");
+	btn_load.onclick = function(event){
+		loadData();
+	};//end event
+
+/*
+	var btn_open = document.querySelector("#btn-open");
+	btn_open.onclick = function(event){
+
+		//newWin = window.open("test_request.html", "example", "width=600,height=400");
+//console.log("- before load, location: ", newWin.location.href); // (*) about:blank, загрузка ещё не началась		
+
+		//newWin.onload = function() {
+//alert( "onload ");
+//alert("- after load, location: "+ newWin.location.href); 
+//console.log("- body: ", newWin.document.body); 
+		//}
+
+		var newWin = window.open("about:blank", "hello", "width=200,height=200");
+		//newWin.document.write("hello world");
+		//var newContent = "<HTML><HEAD><TITLE>A New Doc</TITLE></HEAD>";
+		//newContent += "<BODY BGCOLOR=' coral '><Hl>This document is brand new. </Hl>";
+		//newContent += "</BODY></HTML>";
+var newContent = "<html><head></head><body></body></html>";
+		newWin.document.write(newContent);
+	};//end event
+*/
 
 };//end window.load
-
 </script>
 
 <style>
@@ -135,7 +74,7 @@ input.invalid{
 }
 
 .log-panel {
-    margin-bottom: 0;
+    margin-bottom: 5px;
     margin-top: 5px;
 background-color: #b0c4de;
 /*
@@ -143,7 +82,7 @@ border: 1px solid #ccc;
 */
 }
 .log-panel .panel-body{
-    padding: 5px;
+	padding: 5px;
 }
 
 .log-panel span a{
@@ -180,23 +119,58 @@ margin: 0;
 			<div id="log" class="panel-body"></div>
 		</div>
 	</div>
+	
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<a href="#" class="btn btn-lg btn-danger" id="btn-open">child window, test_request.html</a>
+		</div>
+	</div>
+-->
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>load data, crossdomain AJAX request...</h4>
+		</div>
+		<div class="panel-body">
+<input id="url-field" class="form-control" type="text" autocomplete="off" value=""/>
+<a href="#" class="btn btn-lg btn-primary" id="btn-load">load</a>
+<pre>
+test_request.html
+http://romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+
+http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+file:///mnt/terra/clouds/cloud_mail/music/
+http://vbox5
+</pre>
+
+<p>
+https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr
+</p>
+		</div>
+		<div id="insert-data" class="panel-body"></div>
+	</div>	
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h4>load data to IFRAME</h4>
 		</div>
 		<div class="panel-body">
-			<input id="iframe-src" class="form-control" type="text" autocomplete="off"
-value="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
-			<a href="#" class="btn btn-info" id="btn-load">load iframe</a>
+			<input id="iframe-src" class="form-control" type="text" autocomplete="off" value=""/>
+			<a href="#" class="btn btn-info" id="btn-load-iframe">load iframe</a>
 <pre>
 http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
-https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr
 file:///mnt/terra/clouds/cloud_mail/music/
 http://vbox5
 </pre>
+<p>
+https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr
+</p>
 
-	<iframe name="test_frame" width="100%" height="40%" src="" onload="getFrameInfo(this)"></iframe>
+			<iframe name="test_frame" width="100%" height="40%" src="" onload="getFrameInfo(this)"></iframe>
+		</div>
+	</div>	
+
 
 <!--
 <img id="test" src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
@@ -207,9 +181,7 @@ console.log(key, test[key]);
 }
 </script>
 -->
-
-		</div>
-	</div>	
+	
 <pre>
 http://javascript.ru/ajax/cross-domain-scripting
 http://javascript.ru/ajax/cross-origin-2
@@ -221,11 +193,17 @@ http://slyweb.ru/jquery/cross-domain-ajax/
 https://learn.javascript.ru/xhr-crossdomain
 XMLHttpRequest: кросс-доменные запросы
 
+https://learn.javascript.ru/same-origin-policy
+Кросс-доменные ограничения и их обход
+
 https://learn.javascript.ru/ajax-jsonp
 Протокол JSONP
 
 https://toster.ru/q/167147
 CORS. Отправка запроса с https. Почему не работает?
+
+https://learn.javascript.ru/window-methods
+Открытие окон и методы window
 
 ==========================
 Disable same origin policy in Chrome
