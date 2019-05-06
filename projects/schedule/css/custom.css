@@ -210,3 +210,6 @@ padding-top:0;
  margin:0 .9em 0 0
 }
 
+#block-schedule .panel-body{
+	padding:5px;
+}

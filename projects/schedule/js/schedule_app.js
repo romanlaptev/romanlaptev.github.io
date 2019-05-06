@@ -27,7 +27,7 @@ var webApp = {
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
 			//"dataUrl" : "data/2019-04-26.json",
-			"dataUrl" : "https://cors-anywhere.herokuapp.com/https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
+			"dataUrl" : "https://cors-anywhere.herokuapp.com/https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date={{date}}&transport_types=suburban&system=esr&show_systems=esr",
 			"dbType" : "" //application/xml 
 		},
 
@@ -361,57 +361,86 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 	};//end _buildPage()
 
 //============================================== DATA
+function _timeStampToDateStr( timestamp ){
+	var sYear = timestamp.getFullYear();
+
+	var sMonth = timestamp.getMonth() + 1;
+	//console.log( sMonth, typeof sMonth );
+		if( sMonth < 10){
+			sMonth = "0" + sMonth;
+		}
+		sMonth = "" + sMonth;
+		
+		var sDate = timestamp.getDate();
+		if( sDate < 10){
+			sDate = "0" + sDate;
+		}
+			
+		var dateStr = sYear + "-" + sMonth + "-" + sDate;
+		return dateStr;
+}//end _timeStampToDateStr()
+
+
 function _loadData( postFunc ){
 //console.log("_loadData() ", arguments);
-				func.runAjax( {
-					"requestMethod" : "GET", 
-					"url" : webApp.vars["DB"]["dataUrl"], 
-					
-					"onProgress" : function( e ){
-						var percentComplete = 0;
-						if(e.lengthComputable) {
-							percentComplete = Math.ceil(e.loaded / e.total * 100);
-						}
+
+//2019-04-26
+		var today = _timeStampToDateStr( new Date() );
+//console.log(today);
+		if( !today || today.length === 0){
+			return false;
+		}
+		webApp.vars["DB"]["dataUrl"] = webApp.vars["DB"]["dataUrl"].replace("{{date}}", today);
+		
+		func.runAjax( {
+			"requestMethod" : "GET", 
+			"url" : webApp.vars["DB"]["dataUrl"], 
+			
+			"onProgress" : function( e ){
+				var percentComplete = 0;
+				if(e.lengthComputable) {
+					percentComplete = Math.ceil(e.loaded / e.total * 100);
+				}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-						if( webApp.vars["loadProgressBar"] ){
-							webApp.vars["loadProgressBar"].className = "progress-bar";
-							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-							
-							webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
-						}
-						
-					},
-						
-					"onLoadEnd" : function( headers ){
-//console.log( headers );
-					},
+				if( webApp.vars["loadProgressBar"] ){
+					webApp.vars["loadProgressBar"].className = "progress-bar";
+					webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+					webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
 					
-					"onError" : function( xhr ){
+					webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+				}
+				
+			},
+				
+			"onLoadEnd" : function( headers ){
+//console.log( headers );
+			},
+			
+			"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
 func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 console.log( webApp.vars["logMsg"] );
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-						//return false;
-					},
+				if( typeof postFunc === "function"){
+					postFunc();
+				}
+				//return false;
+			},
 
-					"callback": function( data, runtime, xhr ){
+			"callback": function( data, runtime, xhr ){
 //console.log( "runAjax, ", typeof data );
 //console.log( data );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
-						webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
-						_parseAjax( data );
+				webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
+				_parseAjax( data );
 
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-					}//end callback()
-				});
+				if( typeof postFunc === "function"){
+					postFunc();
+				}
+			}//end callback()
+		});
 
 		//return false;
 		
