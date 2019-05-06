@@ -16,8 +16,8 @@
 
 	
 	<link type="text/css" rel="stylesheet" href="../../css/bootstrap337.min.css"/>
-<!--
 	<script src="../../js/jquery.min.js"></script>
+<!--
 	<script src="../../test_code/js/lib/shared_functions.js"></script>
 -->
 	<script src="js/test.js"></script>
@@ -66,6 +66,7 @@ var newContent = "<html><head></head><body></body></html>";
 */
 	var btn_load_json = document.querySelector("#btn-load-json");
 	btn_load_json.onclick = function(event){
+/*	
 		var script = document.createElement('script');
 		script.src = vars["dataUrl"]+"?callback=insertReply";//"js/test.js";
 		//script.src = vars["dataUrl"];//"js/test.js";
@@ -85,7 +86,17 @@ console.log(arguments);
 		var insertReply = function (content) {
 console.log(content);
 		}	
-		
+*/
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+    .done(function( data ) {
+console.log(data);
+    });
+
 	};//end event
 
 };//end window.load
