@@ -22,6 +22,19 @@ var webApp = {
 	
 	"vars" : {
 		"app_title" : "Расписание транспорта",
+		
+		"requestParams" : {
+			"from" : {
+				"title" : "Новосибирск-восточный",
+				"esr_code" : 851508
+			},
+			"to" : {
+				"title" : "Раздолье (3362 км)",
+				"esr_code" : 851635
+			},
+		},
+		
+		"apikey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 		"logMsg" : "",
 
 		"DB" : {
@@ -74,10 +87,13 @@ console.log("init webapp!");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		
-			//view overlay
-			if( webApp["vars"]["waitWindow"] ){
-				webApp["vars"]["waitWindow"].style.display="block";
-			}
+		var today = _timeStampToDateStr( new Date() );
+//console.log(today);
+		$("#date-widget").val(today);
+		//$("#date-widget").attr("max", today);
+		$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
+		$("#to-title").val( webApp.vars["requestParams"]["to"]["title"] );
+		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
 			defineEvents();
@@ -103,6 +119,10 @@ function _runRequest( opt ){
 //console.log(opt);
 	
 	webApp.vars["timers"]["request"]["start"] = new Date();
+	//view overlay
+	if( webApp["vars"]["waitWindow"] ){
+		webApp["vars"]["waitWindow"].style.display="block";
+	}
 	
 	_loadData(function(res){
 //console.log(arguments);
@@ -119,41 +139,55 @@ function _runRequest( opt ){
 
 
 function defineEvents(){
-	
-			webApp.vars["log_btn"].onclick = function(event){
-				event = event || window.event;
-				var target = event.target || event.srcElement;
+	webApp.vars["log_btn"].onclick = function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
 //console.log( event );
 //console.log( this );//page-container
 //console.log( target);
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 
-				if( target.tagName === "A"){
-					if ( target.href.indexOf("?q=") !== -1){
-						
-						if (event.preventDefault) { 
-							event.preventDefault();
-						} else {
-							event.returnValue = false;				
-						}
-
-							//var search = target.href.split("?"); 
-							//var parseStr = search[1]; 
-							var parseStr = target.href; 
-//console.log( search, parseStr );
-							if( parseStr.length > 0 ){
-								webApp.vars["GET"] = func.parseGetParams( parseStr ); 
-								_urlManager( target );
-							} else {
-console.log( "Warn! error parse url in " + target.href );
-							}
-			
-					}
+		if( target.tagName === "A"){
+			if ( target.href.indexOf("?q=") !== -1){
+				
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
 				}
 
-			}//end event
+					//var search = target.href.split("?"); 
+					//var parseStr = search[1]; 
+					var parseStr = target.href; 
+//console.log( search, parseStr );
+					if( parseStr.length > 0 ){
+						webApp.vars["GET"] = func.parseGetParams( parseStr ); 
+						_urlManager( target );
+					} else {
+console.log( "Warn! error parse url in " + target.href );
+					}
 	
+			}
+		}
+
+	}//end event
+//------------------------------------------------------------------
+
+	$("#date-widget").on("change", function(event) {
+//console.log("change...", event);
+	});//end event
+	
+	$("#btn-update").on("click", function(event) {
+//console.log("event...", $("#date-widget").val() );
+
+		_runRequest({
+			callback : function(){console.log("-- this is the end...")}
+		});
+		
+	});//end event
+
+//------------------------------------------------------------------	
 }//end defineEvents()
 
 
@@ -369,40 +403,18 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 	};//end _buildPage()
 
 //============================================== DATA
-function _timeStampToDateStr( timestamp ){
-	var sYear = timestamp.getFullYear();
-
-	var sMonth = timestamp.getMonth() + 1;
-	//console.log( sMonth, typeof sMonth );
-		if( sMonth < 10){
-			sMonth = "0" + sMonth;
-		}
-		sMonth = "" + sMonth;
-		
-		var sDate = timestamp.getDate();
-		if( sDate < 10){
-			sDate = "0" + sDate;
-		}
-			
-		var dateStr = sYear + "-" + sMonth + "-" + sDate;
-		return dateStr;
-}//end _timeStampToDateStr()
-
-
 function _loadData( postFunc ){
 //console.log("_loadData() ", arguments);
-
 //2019-04-26
-		var today = _timeStampToDateStr( new Date() );
-//console.log(today);
-		if( !today || today.length === 0){
+		var _d = $("#date-widget").val();
+		if( !_d || _d.length === 0){
 			return false;
 		}
-		webApp.vars["DB"]["dataUrl"] = webApp.vars["DB"]["dataUrl"].replace("{{date}}", today);
+		var dataUrl = webApp.vars["DB"]["dataUrl"].replace("{{date}}", _d );
 		
 		func.runAjax( {
 			"requestMethod" : "GET", 
-			"url" : webApp.vars["DB"]["dataUrl"], 
+			"url" :  dataUrl, 
 			
 			"onProgress" : function( e ){
 				var percentComplete = 0;
@@ -596,7 +608,8 @@ webApp.vars["logMsg"] = "error, not find data object..." ;
 _message( webApp.vars["logMsg"], "error");
 return false;
 	}//end catch
-		
+
+/*
 	var data = webApp.vars["DB"]["data"]["search"];
 	data["from_title"] = data["from"]["title"];
 	data["to_title"] = data["to"]["title"];
@@ -605,6 +618,7 @@ return false;
 		"templateID": "tpl-schedule-search",
 		//"templateListItemID": "tpl-playlist-item"
 	});
+*/
 	
 	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
 	
@@ -615,7 +629,8 @@ return false;
 	}//next
 	htmlTable = htmlTable.replace("{{list}}", htmlTableList);
 	
-	var html = htmlSearch + htmlTable;
+	//var html = htmlSearch + htmlTable;
+	var html = htmlTable;
 //console.log( html);
 
 	return html;
@@ -999,10 +1014,30 @@ console.log( webApp.vars["logMsg"] );
 
 	};//end _draw_insertBlock()
 
+//=================================================
+	function _timeStampToDateStr( timestamp ){
+		var sYear = timestamp.getFullYear();
+
+		var sMonth = timestamp.getMonth() + 1;
+		//console.log( sMonth, typeof sMonth );
+			if( sMonth < 10){
+				sMonth = "0" + sMonth;
+			}
+			sMonth = "" + sMonth;
+			
+			var sDate = timestamp.getDate();
+			if( sDate < 10){
+				sDate = "0" + sDate;
+			}
+				
+			var dateStr = sYear + "-" + sMonth + "-" + sDate;
+			return dateStr;
+	}//end _timeStampToDateStr()
 
 	function _getRunTime( timer){
 		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
 	}//end _getRunTime()
+
 
 	function _message( message, level ){
 		switch (level) {
@@ -1032,4 +1067,4 @@ console.log( webApp.vars["logMsg"] );
 			break;
 		}//end switch
 		
-	}//end _log
+	}//end _message()
