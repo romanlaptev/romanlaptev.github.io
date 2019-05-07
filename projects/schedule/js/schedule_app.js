@@ -3,7 +3,7 @@ var func = sharedFunc();
 
 window.onload = function(){
 //console.log("onload");
-func.log( "<p class='alert alert-info'>"+navigator.userAgent +"</p>");
+_message( navigator.userAgent, "info");
 	
 	//Start webApp
 	if( typeof webApp === "object"){
@@ -22,12 +22,33 @@ var webApp = {
 	
 	"vars" : {
 		"app_title" : "Расписание транспорта",
+		
+		"requestParams" : {
+			"from" : {
+				"title" : "Новосибирск-восточный",
+				"esr_code" : 851508
+			},
+			"to" : {
+				"title" : "Раздолье (3362 км)",
+				"esr_code" : 851635
+			},
+		},
+		
+		"apikey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 		"logMsg" : "",
 
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			"dataUrl" : "data/2019-04-26.json",
-			//"dataUrl" : "https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr",
+			//"dataUrl" : "data/2019-04-26.json",
+			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
+https://api.rasp.yandex.net/v3.0/search/?\
+from={{from_code}}&\
+to={{to_code}}&\
+apikey={{apikey}}&\
+date={{date}}&\
+transport_types=suburban&\
+system=esr&\
+show_systems=esr",
 			"dbType" : "" //application/xml 
 		},
 
@@ -52,7 +73,10 @@ var webApp = {
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
-		"init_url" : "?q=list-nodes"
+		"init_url" : "?q=list-nodes",
+		"timers": {
+			"request":{}
+		}
 	},//end vars
 	
 	
@@ -71,20 +95,22 @@ console.log("init webapp!");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		
-		//view overlay
-		if( webApp["vars"]["waitWindow"] ){
-			webApp["vars"]["waitWindow"].style.display="block";
-		}
+		var today = _timeStampToDateStr( new Date() );
+//console.log(today);
+		$("#date-widget").val(today);
+		//$("#date-widget").attr("max", today);
+		$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
+		$("#to-title").val( webApp.vars["requestParams"]["to"]["title"] );
+
+		$("#from-title").data("code", webApp.vars["requestParams"]["from"]["esr_code"]);
+		$("#to-title").data("code", webApp.vars["requestParams"]["to"]["esr_code"]);
+		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
-			_runApp();
-			
-			//hide overlay
-//setTimeout(function(){
-			if( webApp["vars"]["waitWindow"] ){
-				webApp["vars"]["waitWindow"].style.display="none";
-			}		
-//}, 1000*3);
+			defineEvents();
+			_runRequest({
+				callback : postFunc
+			});
 		});
 		
 	}//end init()
@@ -93,71 +119,113 @@ console.log("init webapp!");
 console.log(webApp);
 
 
-function _runApp(){
+function _runRequest( opt ){
+		var p = {
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(opt);
+	
+	webApp.vars["timers"]["request"]["start"] = new Date();
+	//view overlay
+	if( webApp["vars"]["waitWindow"] ){
+		webApp["vars"]["waitWindow"].style.display="block";
+	}
 
-	defineEvents();
-	_loadData(function(res){
+	_loadData({
+		"postFunc" : function(res){
 //console.log(arguments);
 //console.log(window.location);	
-		var parse_url = window.location.search; 
-		if( parse_url.length > 0 ){
-			webApp.vars["GET"] = func.parseGetParams(); 
-			_urlManager();
-		} else {
-			if( webApp.vars["init_url"] ){
-				//parse_url = webApp.vars["init_url"].substring(2);
-				parse_url = webApp.vars["init_url"];
-	//console.log(parse_url);
-			}
+			var parse_url = webApp.vars["init_url"];
 			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
 			_urlManager();
-		}
 
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
-
+			if( typeof p["callback"] === "function"){
+				p.callback();
+			}
+		}//end callback
 	});
 	
-}//end _runApp()
+}//end _runRequest()
 
 
 function defineEvents(){
-	
-			webApp.vars["log_btn"].onclick = function(event){
-				event = event || window.event;
-				var target = event.target || event.srcElement;
+	webApp.vars["log_btn"].onclick = function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
 //console.log( event );
 //console.log( this );//page-container
 //console.log( target);
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 
-				if( target.tagName === "A"){
-					if ( target.href.indexOf("?q=") !== -1){
-						
-						if (event.preventDefault) { 
-							event.preventDefault();
-						} else {
-							event.returnValue = false;				
-						}
-
-							//var search = target.href.split("?"); 
-							//var parseStr = search[1]; 
-							var parseStr = target.href; 
-//console.log( search, parseStr );
-							if( parseStr.length > 0 ){
-								webApp.vars["GET"] = func.parseGetParams( parseStr ); 
-								_urlManager( target );
-							} else {
-console.log( "Warn! error parse url in " + target.href );
-							}
-			
-					}
+		if( target.tagName === "A"){
+			if ( target.href.indexOf("?q=") !== -1){
+				
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
 				}
 
-			}//end event
+					//var search = target.href.split("?"); 
+					//var parseStr = search[1]; 
+					var parseStr = target.href; 
+//console.log( search, parseStr );
+					if( parseStr.length > 0 ){
+						webApp.vars["GET"] = func.parseGetParams( parseStr ); 
+						_urlManager( target );
+					} else {
+console.log( "Warn! error parse url in " + target.href );
+					}
 	
+			}
+		}
+
+	}//end event
+//------------------------------------------------------------------
+
+	$("#date-widget").on("change", function(event) {
+//console.log("change...", event);
+	});//end event
+	
+	$("#btn-update").on("click", function(event) {
+//console.log("event...", $("#date-widget").val() );
+
+		_runRequest({
+			callback : function(){console.log("-- this is the end...")}
+		});
+		
+	});//end event
+	
+	$("#btn-change-direction").on("click", function(event) {
+//console.log("event...", event.type );
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+
+		var code1 = $("#from-title").data("code");
+		var title1 = $("#from-title").val();
+		
+		var code2 = $("#to-title").data("code");
+		var title2 = $("#to-title").val();
+		
+		$("#from-title").data("code", code2);
+		$("#from-title").val( title2 );
+		
+		$("#to-title").data("code", code1);
+		$("#to-title").val( title1 );
+		
+	});//end event
+
+//------------------------------------------------------------------	
 }//end defineEvents()
 
 
@@ -181,7 +249,19 @@ function _urlManager( target ){
 
 			case "list-nodes":
 console.log("-- start build page --");
+
 				_buildPage({"callback" : function(){
+					
+//hide overlay
+//setTimeout(function(){
+					if( webApp["vars"]["waitWindow"] ){
+						webApp["vars"]["waitWindow"].style.display="none";
+					}		
+//}, 1000*3);
+				webApp.vars["timers"]["request"]["end"] = new Date();
+				webApp.vars["logMsg"] = "request runtime: " + _getRunTime( webApp.vars["timers"]["request"] ) + "sec";
+				_message( webApp.vars["logMsg"],"info" );
+
 console.log("-- end build page --");
 					}
 				});
@@ -204,7 +284,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 			if( !webApp.vars["templates_url"] || 
 				webApp.vars["templates_url"].length === 0 ){
 webApp.vars["logMsg"] = "- error, not found 'templates_url'...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 //console.log( webApp.vars["logMsg"] );
 				if( typeof callback === "function"){
 					callback(false);
@@ -220,7 +300,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 					if( typeof callback === "function"){
 						callback(false);
@@ -230,7 +310,7 @@ console.log( webApp.vars["logMsg"] );
 				
 				"callback": function( data ){
 webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
-func.log("<p class='alert alert-info'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "success");
 //console.log( webApp.vars["logMsg"] );
 //console.log( data );
 
@@ -267,7 +347,7 @@ console.log("error, loadTemplates(), not find data templates'....");
 					} catch(e){
 console.log(e, typeof e);
 webApp.vars["logMsg"] = "TypeError: " + e;
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 					}//end try
 
 					if( typeof callback === "function"){
@@ -361,80 +441,98 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 	};//end _buildPage()
 
 //============================================== DATA
-function _loadData( postFunc ){
+function _loadData( opt ){
 //console.log("_loadData() ", arguments);
-				func.runAjax( {
-					"requestMethod" : "GET", 
-					"url" : webApp.vars["DB"]["dataUrl"], 
-					
-					"onProgress" : function( e ){
-						var percentComplete = 0;
-						if(e.lengthComputable) {
-							percentComplete = Math.ceil(e.loaded / e.total * 100);
-						}
+		var p = {
+			"postFunc": null,
+			"from_code" : $("#from-title").data("code"),
+			"to_code" : $("#to-title").data("code"),
+			"date": $("#date-widget").val()//2019-04-26
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p.date ||  p.date.length === 0){
+			return false;
+		}
+		var dataUrl = webApp.vars["DB"]["dataUrl"]
+		.replace("{{from_code}}", p["from_code"] )
+		.replace("{{to_code}}", p["to_code"] )
+		.replace("{{apikey}}", webApp.vars["apikey"] )
+		.replace("{{date}}", p.date );
+console.log( dataUrl );		
+//return;
+
+		func.runAjax( {
+			"requestMethod" : "GET", 
+			"url" :  dataUrl, 
+			
+			"onProgress" : function( e ){
+				var percentComplete = 0;
+				if(e.lengthComputable) {
+					percentComplete = Math.ceil(e.loaded / e.total * 100);
+				}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-						if( webApp.vars["loadProgressBar"] ){
-							webApp.vars["loadProgressBar"].className = "progress-bar";
-							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-							
-							webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
-						}
-						
-					},
-						
-					"onLoadEnd" : function( headers ){
-//console.log( headers );
-					},
+				if( webApp.vars["loadProgressBar"] ){
+					webApp.vars["loadProgressBar"].className = "progress-bar";
+					webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+					webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
 					
-					"onError" : function( xhr ){
+					webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+				}
+				
+			},
+				
+			"onLoadEnd" : function( headers ){
+//console.log( headers );
+			},
+			
+			"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-						//return false;
-					},
+				if( typeof p["postFunc"] === "function"){
+					p["postFunc"]();
+				}
+				//return false;
+			},
 
-					"callback": function( data, runtime, xhr ){
+			"callback": function( data, runtime, xhr ){
 //console.log( "runAjax, ", typeof data );
 //console.log( data );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
-						webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
-						_parseAjax( data );
+				webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
+				_parseAjax( data );
 
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-					}//end callback()
-				});
+				if( typeof p["postFunc"] === "function"){
+					p["postFunc"]();
+				}
+			}//end callback()
+		});
 
 		//return false;
 		
 		function _parseAjax( data ){
 			if( webApp.vars["DB"]["dbType"].length === 0 ){
 webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 				return false;
 			}
 			
-			switch( webApp.vars["DB"]["dbType"] ){
-				case "application/xml":
-					_parseXML( data );
-				break;
-				
-				case "application/json":
-					_parseJSON( data );
-				break;
-				
-				case "csv":
-				break;
-			}//end switch
+			if( webApp.vars["DB"]["dbType"].indexOf("application/xml") !== -1){
+				_parseXML( data );
+			}
+			
+			if( webApp.vars["DB"]["dbType"].indexOf("application/json") !== -1){
+				_parseJSON( data );
+			}
 			
 		}//_parseAjax()
 		
@@ -458,12 +556,12 @@ delete xml;
 var timeEnd = new Date();
 var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+_message( webApp.vars["logMsg"], "info");
 console.log( webApp.vars["logMsg"] );
 
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
-func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+_message( webApp.vars["logMsg"], "error");
 console.log( error );
 		}//end catch
 
@@ -561,10 +659,11 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 function _buldScheduleHtml(){
 	if( !webApp.vars["DB"]["data"] ){
 webApp.vars["logMsg"] = "error, not find data object..." ;
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-		return false;
+_message( webApp.vars["logMsg"], "error");
+return false;
 	}//end catch
-		
+
+/*
 	var data = webApp.vars["DB"]["data"]["search"];
 	data["from_title"] = data["from"]["title"];
 	data["to_title"] = data["to"]["title"];
@@ -573,6 +672,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		"templateID": "tpl-schedule-search",
 		//"templateListItemID": "tpl-playlist-item"
 	});
+*/
 	
 	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
 	
@@ -583,7 +683,8 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	}//next
 	htmlTable = htmlTable.replace("{{list}}", htmlTableList);
 	
-	var html = htmlSearch + htmlTable;
+	//var html = htmlSearch + htmlTable;
+	var html = htmlTable;
 //console.log( html);
 
 	return html;
@@ -650,7 +751,7 @@ console.log("-- _draw_wrapData(), error, templateID was not defined...");
 		
 		if( !webApp.vars["templates"][p.templateID] ){
 webApp.vars["logMsg"] = "-- _draw_wrapData(),  error, not find template, id: " + p.templateID;
-func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "warning");
 console.log(webApp.vars["logMsg"]);
 			return false;
 		}
@@ -888,7 +989,7 @@ console.log(res);
 //console.log( html);
 					if( !html || html.length === 0){
 webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 					} else {
 p["content"] = html;						
@@ -930,7 +1031,7 @@ p["content"] = html;
 		var templateID = p["templateID"];
 		if( !webApp.vars["templates"][templateID] ){
 webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//_message( webApp.vars["logMsg"], "error");
 console.log( "-- " + webApp.vars["logMsg"] );
 			if( typeof p["callback"] === "function"){
 				p["callback"]();
@@ -940,7 +1041,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		
 		if( !p["content"] || p["content"].length === 0){
 webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+//_message( webApp.vars["logMsg"], "warning");
 console.log( "-- "+webApp.vars["logMsg"] );
 			//if( typeof p["callback"] === "function"){
 				//p["callback"]();
@@ -957,7 +1058,7 @@ console.log( "-- "+webApp.vars["logMsg"] );
 			locationBlock.innerHTML = html;
 		} else {
 webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 		}		
 		
@@ -966,3 +1067,58 @@ console.log( webApp.vars["logMsg"] );
 		}
 
 	};//end _draw_insertBlock()
+
+//=================================================
+	function _timeStampToDateStr( timestamp ){
+		var sYear = timestamp.getFullYear();
+
+		var sMonth = timestamp.getMonth() + 1;
+		//console.log( sMonth, typeof sMonth );
+			if( sMonth < 10){
+				sMonth = "0" + sMonth;
+			}
+			sMonth = "" + sMonth;
+			
+			var sDate = timestamp.getDate();
+			if( sDate < 10){
+				sDate = "0" + sDate;
+			}
+				
+			var dateStr = sYear + "-" + sMonth + "-" + sDate;
+			return dateStr;
+	}//end _timeStampToDateStr()
+
+	function _getRunTime( timer){
+		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
+	}//end _getRunTime()
+
+
+	function _message( message, level ){
+		switch (level) {
+			case "info":
+				message = "<p class='alert alert-info'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "warning":
+				message = "<p class='alert alert-warning'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "danger":
+			case "error":
+				message = "<p class='alert alert-danger'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "success":
+				message = "<p class='alert alert-success'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			default:
+				func.log(message);
+			break;
+		}//end switch
+		
+	}//end _message()
