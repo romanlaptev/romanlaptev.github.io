@@ -68,7 +68,7 @@
 		<tr class="list-header success">
 			<th>​</th>
 			<th class="text-center">​​​​​номер и название транспорта</th>
-			<th class="text-center">отправление и остановки</th>
+			<th class="text-center">отправление</th>
 			<th class="text-center">время в пути</th>
 			<th class="text-center">прибытие</th>
 			<th class="text-center">стоимость билета</th>
@@ -113,7 +113,7 @@ d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 
 	<p class="SegmentTransport">{{carrier_title}}</p>
 </div>
 			</td>
-			<td>{{departure}}, <b>{{from_title}}</b>, {{stops}}</td>
+			<td>{{departure}}, <b>{{from_title}}</b>, остановки: {{stops}}</td>
 			<td>{{duration}} мин.</td>
 			<td>{{arrival}}, <b>{{to_title}}</b></td>
 			<td>{{price_whole}} {{0_currency}}</td>
