@@ -71,20 +71,16 @@ console.log("init webapp!");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		
-		//view overlay
-		if( webApp["vars"]["waitWindow"] ){
-			webApp["vars"]["waitWindow"].style.display="block";
-		}
+			//view overlay
+			if( webApp["vars"]["waitWindow"] ){
+				webApp["vars"]["waitWindow"].style.display="block";
+			}
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
-			_runApp();
-			
-			//hide overlay
-//setTimeout(function(){
-			if( webApp["vars"]["waitWindow"] ){
-				webApp["vars"]["waitWindow"].style.display="none";
-			}		
-//}, 1000*3);
+			defineEvents();
+			_runRequest({
+				callback : postFunc
+			});
 		});
 		
 	}//end init()
@@ -93,33 +89,33 @@ console.log("init webapp!");
 console.log(webApp);
 
 
-function _runApp(){
-
-	defineEvents();
+function _runRequest( opt ){
+		var p = {
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(opt);
+	
+	//var webApp.vars["startRequest"] = new Date();
+			//var exec_end = new Date();
+			//var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+			//z_obj.table_data.log.push("-- draw_table(): " + runtime_s + " sec");
+	
 	_loadData(function(res){
 //console.log(arguments);
 //console.log(window.location);	
-		var parse_url = window.location.search; 
-		if( parse_url.length > 0 ){
-			webApp.vars["GET"] = func.parseGetParams(); 
-			_urlManager();
-		} else {
-			if( webApp.vars["init_url"] ){
-				//parse_url = webApp.vars["init_url"].substring(2);
-				parse_url = webApp.vars["init_url"];
-	//console.log(parse_url);
-			}
-			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-			_urlManager();
-		}
+		var parse_url = webApp.vars["init_url"];
+		webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+		_urlManager();
 
-		if( typeof postFunc === "function"){
-			postFunc();
+		if( typeof p["callback"] === "function"){
+			p.callback();
 		}
-
 	});
-	
-}//end _runApp()
+}//end _runRequest()
 
 
 function defineEvents(){
@@ -181,7 +177,14 @@ function _urlManager( target ){
 
 			case "list-nodes":
 console.log("-- start build page --");
+
 				_buildPage({"callback" : function(){
+//hide overlay
+//setTimeout(function(){
+					if( webApp["vars"]["waitWindow"] ){
+						webApp["vars"]["waitWindow"].style.display="none";
+					}		
+//}, 1000*3);
 console.log("-- end build page --");
 					}
 				});
@@ -457,7 +460,6 @@ console.log( webApp.vars["logMsg"] );
 			}
 			
 			if( webApp.vars["DB"]["dbType"].indexOf("application/json") !== -1){
-console.log("TEST1");			
 				_parseJSON( data );
 			}
 			
@@ -570,7 +572,7 @@ console.log( key, tagNode[key] );
 	//console.log( key, value );
 				return value;
 			});
-console.log( jsonObj );
+//console.log( jsonObj );
 			webApp.vars["DB"]["data"] = jsonObj;
 			
 		} catch(error) {
