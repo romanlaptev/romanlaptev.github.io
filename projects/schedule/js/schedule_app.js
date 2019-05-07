@@ -40,7 +40,15 @@ var webApp = {
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
 			//"dataUrl" : "data/2019-04-26.json",
-			"dataUrl" : "https://cors-anywhere.herokuapp.com/https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date={{date}}&transport_types=suburban&system=esr&show_systems=esr",
+			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
+https://api.rasp.yandex.net/v3.0/search/?\
+from={{from_code}}&\
+to={{to_code}}&\
+apikey={{apikey}}&\
+date={{date}}&\
+transport_types=suburban&\
+system=esr&\
+show_systems=esr",
 			"dbType" : "" //application/xml 
 		},
 
@@ -93,6 +101,9 @@ console.log("init webapp!");
 		//$("#date-widget").attr("max", today);
 		$("#from-title").val( webApp.vars["requestParams"]["from"]["title"] );
 		$("#to-title").val( webApp.vars["requestParams"]["to"]["title"] );
+
+		$("#from-title").data("code", webApp.vars["requestParams"]["from"]["esr_code"]);
+		$("#to-title").data("code", webApp.vars["requestParams"]["to"]["esr_code"]);
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
@@ -123,18 +134,21 @@ function _runRequest( opt ){
 	if( webApp["vars"]["waitWindow"] ){
 		webApp["vars"]["waitWindow"].style.display="block";
 	}
-	
-	_loadData(function(res){
+
+	_loadData({
+		"postFunc" : function(res){
 //console.log(arguments);
 //console.log(window.location);	
-		var parse_url = webApp.vars["init_url"];
-		webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-		_urlManager();
+			var parse_url = webApp.vars["init_url"];
+			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+			_urlManager();
 
-		if( typeof p["callback"] === "function"){
-			p.callback();
-		}
+			if( typeof p["callback"] === "function"){
+				p.callback();
+			}
+		}//end callback
 	});
+	
 }//end _runRequest()
 
 
@@ -184,6 +198,30 @@ console.log( "Warn! error parse url in " + target.href );
 		_runRequest({
 			callback : function(){console.log("-- this is the end...")}
 		});
+		
+	});//end event
+	
+	$("#btn-change-direction").on("click", function(event) {
+//console.log("event...", event.type );
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+
+		var code1 = $("#from-title").data("code");
+		var title1 = $("#from-title").val();
+		
+		var code2 = $("#to-title").data("code");
+		var title2 = $("#to-title").val();
+		
+		$("#from-title").data("code", code2);
+		$("#from-title").val( title2 );
+		
+		$("#to-title").data("code", code1);
+		$("#to-title").val( title1 );
 		
 	});//end event
 
@@ -403,15 +441,31 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 	};//end _buildPage()
 
 //============================================== DATA
-function _loadData( postFunc ){
+function _loadData( opt ){
 //console.log("_loadData() ", arguments);
-//2019-04-26
-		var _d = $("#date-widget").val();
-		if( !_d || _d.length === 0){
+		var p = {
+			"postFunc": null,
+			"from_code" : $("#from-title").data("code"),
+			"to_code" : $("#to-title").data("code"),
+			"date": $("#date-widget").val()//2019-04-26
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p.date ||  p.date.length === 0){
 			return false;
 		}
-		var dataUrl = webApp.vars["DB"]["dataUrl"].replace("{{date}}", _d );
-		
+		var dataUrl = webApp.vars["DB"]["dataUrl"]
+		.replace("{{from_code}}", p["from_code"] )
+		.replace("{{to_code}}", p["to_code"] )
+		.replace("{{apikey}}", webApp.vars["apikey"] )
+		.replace("{{date}}", p.date );
+console.log( dataUrl );		
+//return;
+
 		func.runAjax( {
 			"requestMethod" : "GET", 
 			"url" :  dataUrl, 
@@ -441,8 +495,8 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
 _message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
-				if( typeof postFunc === "function"){
-					postFunc();
+				if( typeof p["postFunc"] === "function"){
+					p["postFunc"]();
 				}
 				//return false;
 			},
@@ -456,8 +510,8 @@ console.log( webApp.vars["logMsg"] );
 				webApp.vars["DB"]["dbType"] = xhr.getResponseHeader('content-type');
 				_parseAjax( data );
 
-				if( typeof postFunc === "function"){
-					postFunc();
+				if( typeof p["postFunc"] === "function"){
+					p["postFunc"]();
 				}
 			}//end callback()
 		});
