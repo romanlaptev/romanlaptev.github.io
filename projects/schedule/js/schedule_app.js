@@ -3,7 +3,7 @@ var func = sharedFunc();
 
 window.onload = function(){
 //console.log("onload");
-func.log( "<p class='alert alert-info'>"+navigator.userAgent +"</p>");
+_message( navigator.userAgent, "info");
 	
 	//Start webApp
 	if( typeof webApp === "object"){
@@ -52,7 +52,10 @@ var webApp = {
 		
 		"templates_url" : "tpl/templates.xml",
 		"templates" : {},
-		"init_url" : "?q=list-nodes"
+		"init_url" : "?q=list-nodes",
+		"timers": {
+			"request":{}
+		}
 	},//end vars
 	
 	
@@ -99,10 +102,7 @@ function _runRequest( opt ){
 		}
 //console.log(opt);
 	
-	//var webApp.vars["startRequest"] = new Date();
-			//var exec_end = new Date();
-			//var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
-			//z_obj.table_data.log.push("-- draw_table(): " + runtime_s + " sec");
+	webApp.vars["timers"]["request"]["start"] = new Date();
 	
 	_loadData(function(res){
 //console.log(arguments);
@@ -179,12 +179,17 @@ function _urlManager( target ){
 console.log("-- start build page --");
 
 				_buildPage({"callback" : function(){
+					
 //hide overlay
 //setTimeout(function(){
 					if( webApp["vars"]["waitWindow"] ){
 						webApp["vars"]["waitWindow"].style.display="none";
 					}		
 //}, 1000*3);
+				webApp.vars["timers"]["request"]["end"] = new Date();
+				webApp.vars["logMsg"] = "request runtime: " + _getRunTime( webApp.vars["timers"]["request"] ) + "sec";
+				_message( webApp.vars["logMsg"],"info" );
+
 console.log("-- end build page --");
 					}
 				});
@@ -207,7 +212,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 			if( !webApp.vars["templates_url"] || 
 				webApp.vars["templates_url"].length === 0 ){
 webApp.vars["logMsg"] = "- error, not found 'templates_url'...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 //console.log( webApp.vars["logMsg"] );
 				if( typeof callback === "function"){
 					callback(false);
@@ -223,7 +228,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 					if( typeof callback === "function"){
 						callback(false);
@@ -233,7 +238,7 @@ console.log( webApp.vars["logMsg"] );
 				
 				"callback": function( data ){
 webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
-func.log("<p class='alert alert-info'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "success");
 //console.log( webApp.vars["logMsg"] );
 //console.log( data );
 
@@ -270,7 +275,7 @@ console.log("error, loadTemplates(), not find data templates'....");
 					} catch(e){
 console.log(e, typeof e);
 webApp.vars["logMsg"] = "TypeError: " + e;
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 					}//end try
 
 					if( typeof callback === "function"){
@@ -422,7 +427,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 			"onError" : function( xhr ){
 //console.log( "onError ", arguments);
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 				if( typeof postFunc === "function"){
 					postFunc();
@@ -450,7 +455,7 @@ console.log( webApp.vars["logMsg"] );
 		function _parseAjax( data ){
 			if( webApp.vars["DB"]["dbType"].length === 0 ){
 webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 				return false;
 			}
@@ -485,12 +490,12 @@ delete xml;
 var timeEnd = new Date();
 var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+_message( webApp.vars["logMsg"], "info");
 console.log( webApp.vars["logMsg"] );
 
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
-func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+_message( webApp.vars["logMsg"], "error");
 console.log( error );
 		}//end catch
 
@@ -588,8 +593,8 @@ _log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 function _buldScheduleHtml(){
 	if( !webApp.vars["DB"]["data"] ){
 webApp.vars["logMsg"] = "error, not find data object..." ;
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-		return false;
+_message( webApp.vars["logMsg"], "error");
+return false;
 	}//end catch
 		
 	var data = webApp.vars["DB"]["data"]["search"];
@@ -677,7 +682,7 @@ console.log("-- _draw_wrapData(), error, templateID was not defined...");
 		
 		if( !webApp.vars["templates"][p.templateID] ){
 webApp.vars["logMsg"] = "-- _draw_wrapData(),  error, not find template, id: " + p.templateID;
-func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "warning");
 console.log(webApp.vars["logMsg"]);
 			return false;
 		}
@@ -915,7 +920,7 @@ console.log(res);
 //console.log( html);
 					if( !html || html.length === 0){
 webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 					} else {
 p["content"] = html;						
@@ -957,7 +962,7 @@ p["content"] = html;
 		var templateID = p["templateID"];
 		if( !webApp.vars["templates"][templateID] ){
 webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//_message( webApp.vars["logMsg"], "error");
 console.log( "-- " + webApp.vars["logMsg"] );
 			if( typeof p["callback"] === "function"){
 				p["callback"]();
@@ -967,7 +972,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		
 		if( !p["content"] || p["content"].length === 0){
 webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+//_message( webApp.vars["logMsg"], "warning");
 console.log( "-- "+webApp.vars["logMsg"] );
 			//if( typeof p["callback"] === "function"){
 				//p["callback"]();
@@ -984,7 +989,7 @@ console.log( "-- "+webApp.vars["logMsg"] );
 			locationBlock.innerHTML = html;
 		} else {
 webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+_message( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 		}		
 		
@@ -993,3 +998,38 @@ console.log( webApp.vars["logMsg"] );
 		}
 
 	};//end _draw_insertBlock()
+
+
+	function _getRunTime( timer){
+		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
+	}//end _getRunTime()
+
+	function _message( message, level ){
+		switch (level) {
+			case "info":
+				message = "<p class='alert alert-info'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "warning":
+				message = "<p class='alert alert-warning'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "danger":
+			case "error":
+				message = "<p class='alert alert-danger'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			case "success":
+				message = "<p class='alert alert-success'>" + message + "</p>";
+				func.log(message);
+			break;
+			
+			default:
+				func.log(message);
+			break;
+		}//end switch
+		
+	}//end _log
