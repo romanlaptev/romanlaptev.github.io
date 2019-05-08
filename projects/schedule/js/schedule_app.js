@@ -36,10 +36,17 @@ var webApp = {
 		
 		"apikey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 		"logMsg" : "",
-
+		
+		"copyRight": {
+			"url": "https://cors-anywhere.herokuapp.com/\
+https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
+			"data": ""
+		},
+		
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
 			//"dataUrl" : "data/2019-04-26.json",
+
 			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -49,6 +56,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
+
 			"dbType" : "" //application/xml 
 		},
 
@@ -58,7 +66,7 @@ show_systems=esr",
 				"title" : "transport schedule", 
 				"templateID" : "tpl-schedule",
 				"content" : "",
-				"visibility" : true,
+				//"visibility" : true,
 				"buildBlock" : function(){
 //console.log(this);
 					var html = _buldScheduleHtml();
@@ -67,7 +75,27 @@ show_systems=esr",
 						_draw_buildBlock( this );
 					}
 				}
-			}//end block
+			}, //end block
+
+			{
+				"locationID" : "block-copyright",
+				"title" : "copy Right!", 
+				"templateID" : "tpl-copyright",
+				"content" :  "",
+				"buildBlock" : function(){
+//console.log(this);
+					var data = webApp.vars["copyRight"]["data"];
+					var html = _draw_wrapData({
+						"data": data,
+						"templateID": "tpl-copyright-content",
+					});
+//console.log(html);
+					if( html && html.length > 0 ){
+						this.content = html;
+						_draw_buildBlock( this );
+					}
+				}
+			}, //end block
 
 		],
 		
@@ -83,10 +111,10 @@ show_systems=esr",
 	"init" : function( postFunc ){
 console.log("init webapp!");
 
-		var appTitle = func.getById("app-title");
-		if( appTitle){
-			appTitle.innerHTML = this.vars["app_title"];
-		}
+		// var appTitle = func.getById("app-title");
+		// if( appTitle){
+			// appTitle.innerHTML = this.vars["app_title"];
+		// }
 		
 		this["vars"]["log_btn"] = func.getById("log-btn");
 		this["vars"]["log"] = func.getById("log");
@@ -134,18 +162,23 @@ function _runRequest( opt ){
 	if( webApp["vars"]["waitWindow"] ){
 		webApp["vars"]["waitWindow"].style.display="block";
 	}
-
+	
 	_loadData({
 		"postFunc" : function(res){
 //console.log(arguments);
 //console.log(window.location);	
-			var parse_url = webApp.vars["init_url"];
-			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-			_urlManager();
-
-			if( typeof p["callback"] === "function"){
-				p.callback();
-			}
+			_loadCopyRightCode(function(){
+				
+				var parse_url = webApp.vars["init_url"];
+				webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+				_urlManager();
+				
+				if( typeof p["callback"] === "function"){
+					p.callback();
+				}
+				
+			});
+			
 		}//end callback
 	});
 	
@@ -382,17 +415,20 @@ _message( webApp.vars["logMsg"], "error");
 
 		//draw blocks
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _opt = webApp.vars["blocks"][n];
-// //console.log(_opt["visibility"], p["title"]);				
+			var _block = webApp.vars["blocks"][n];
+//console.log(_block["title"]);				
 
-			if( typeof _opt["buildBlock"] === "function"){
-				//if( _opt_["visibility"]){
-					_opt["buildBlock"]();
-					//_opt_["draw"] = true;
+			if( typeof _block["buildBlock"] === "function"){//dynamic form content
+				//if( _block["visibility"]){
+					_block["buildBlock"]();
+					//_block["draw"] = true;
 				//}
 			} else {
-webApp.vars["logMsg"] = "warning, not found buld function....";
-console.log( "-- " + webApp.vars["logMsg"], _opt_ );
+//webApp.vars["logMsg"] = "warning, not found buld function....";
+//console.log( "-- " + webApp.vars["logMsg"], _block );
+					if( _block["content"] && _block["content"].length > 0 ){
+						_draw_buildBlock( _block );
+					}
 			}
 			
 		}//next
@@ -441,6 +477,77 @@ console.log( "-- " + webApp.vars["logMsg"], _opt_ );
 	};//end _buildPage()
 
 //============================================== DATA
+function _loadCopyRightCode( postFunc ){
+/*	
+	$.getJSON(  webApp.vars["copyRight"]["url"], function(data){
+console.log(arguments);
+		webApp.vars["copyRight"]["data"] = data;
+		if( postFunc === "function"){
+			postFunc();
+		}
+	});
+	.done(function () {
+console.log("$.ajax, Done...");
+	})
+	.fail(function (xhr, textStatus) {
+webApp.vars["logMsg"] = "$.ajax, Fail..." + webApp.vars["copyRight"]["url"];
+_message( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"], arguments );
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
+	});
+*/	
+	func.runAjax( {
+		"requestMethod" : "GET", 
+		"url" :  webApp.vars["copyRight"]["url"], 
+		
+		"onLoadEnd" : function( headers ){
+//console.log( headers );
+		},
+		
+		"onError" : function( xhr ){
+//console.log( "onError ", arguments);
+webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["copyRight"]["url"];
+_message( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+			if( typeof  postFunc === "function"){
+				postFunc();
+			}
+			//return false;
+		},
+
+		"callback": function( data, runtime, xhr ){
+//console.log( "runAjax, ", typeof data );
+//console.log( data );
+			webApp.vars["copyRight"]["data"] = __parseJSON( data );
+
+			if( typeof postFunc === "function"){
+				postFunc();
+			}
+		}//end callback()
+	});
+	
+	function __parseJSON( jsonStr ){
+		try{
+			var jsonObj = JSON.parse( jsonStr, function(key, value) {
+	//console.log( key, value );
+				return value;
+			});
+//console.log( jsonObj );
+			return jsonObj["copyright"];
+			
+		} catch(error) {
+webApp.vars["logMsg"] = "error, error JSON.parse server response data...." ;
+console.log( error );
+_message( webApp.vars["logMsg"], "error");
+			return false;
+		}//end catch
+
+	}//end __parseJSON()
+
+}//end _loadCopyRightCode()
+
 function _loadData( opt ){
 //console.log("_loadData() ", arguments);
 		var p = {
@@ -644,6 +751,25 @@ console.log( key, tagNode[key] );
 				return value;
 			});
 //console.log( jsonObj );
+
+			//correct departure, duration, arrival
+			for( var n = 0; n < jsonObj["segments"].length; n++){
+				var record = jsonObj["segments"][n];
+				record["duration"] = Math.round( record["duration"] / 60);
+				// if( record["duration"] > 60){
+					// record["duration"] = record["duration"] / 60;
+				// }
+				var _d = new Date( record["departure"] );
+				record["departure_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
+				record["departure_time"] = _d.getHours() +":"+_d.getMinutes();
+				delete record["departure"];
+				
+				var _d = new Date( record["arrival"] );
+				record["arrival_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
+				record["arrival_time"] = _d.getHours() +":"+_d.getMinutes();
+				delete record["arrival"];
+			}//next
+			
 			webApp.vars["DB"]["data"] = jsonObj;
 			
 		} catch(error) {
@@ -661,8 +787,7 @@ function _buldScheduleHtml(){
 webApp.vars["logMsg"] = "error, not find data object..." ;
 _message( webApp.vars["logMsg"], "error");
 return false;
-	}//end catch
-
+	}
 /*
 	var data = webApp.vars["DB"]["data"]["search"];
 	data["from_title"] = data["from"]["title"];
@@ -673,7 +798,6 @@ return false;
 		//"templateListItemID": "tpl-playlist-item"
 	});
 */
-	
 	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
 	
 	var data = webApp.vars["DB"]["data"]["segments"];
@@ -970,47 +1094,13 @@ console.log(msg);
 			}//,//end callback
 			//"callback2" : null
 		};
+//console.log(opt);
 		//extend p object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
 //console.log(p);
-
-/*			
-		if( typeof p["content"] === "function"){//dynamic form content
-			p["content"]({
-				"callback" : function( res ){
-console.log(res);
-					var html = _draw_wrapData({
-						"data": res,
-						"templateID": "tpl-videolist",
-						"templateListItemID": "tpl-videolist-item--video"
-					});
-//console.log( html);
-					if( !html || html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-_message( webApp.vars["logMsg"], "error");
-console.log( webApp.vars["logMsg"] );
-					} else {
-p["content"] = html;						
-//console.log(p);
-						_draw_insertBlock( p );
-						//_draw_buildBlock({
-							//"locationID" : "list-video",
-							//"title" : "video list", 
-							//"templateID" : "tpl-block-videolist",
-							//"content" : _html
-						//});
-					}
-
-					
-				}
-			});
-		} else {
-*/			
-			_draw_insertBlock( p );
-//		}
-
+		_draw_insertBlock( p );
 	};//end _draw_buildBlock()
 
 
@@ -1087,7 +1177,7 @@ console.log( webApp.vars["logMsg"] );
 			var dateStr = sYear + "-" + sMonth + "-" + sDate;
 			return dateStr;
 	}//end _timeStampToDateStr()
-
+	
 	function _getRunTime( timer){
 		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
 	}//end _getRunTime()

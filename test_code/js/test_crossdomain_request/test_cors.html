@@ -15,8 +15,8 @@
 	<meta name="referrer" content="no-referrer" />
 
 	
-	<link type="text/css" rel="stylesheet" href="../../css/bootstrap337.min.css"/>
-	<script src="../../js/jquery.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../../../css/bootstrap337.min.css"/>
+	<script src="../../../js/jquery.min.js"></script>
 <!--
 	<script src="../../test_code/js/lib/shared_functions.js"></script>
 -->
@@ -214,6 +214,13 @@ http://romanlaptev.github.io/test_code/js/test_json/test_filters_jsonp/phones.js
 http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
 file:///mnt/terra/clouds/cloud_mail/music/
 http://vbox5
+---------------------
+если удаленный сервер не возвращает заголовок "Access-Control-Allow-Origin *",
+необходимо добавить в адрес запроса прокси-сервер: https://cors-anywhere.herokuapp.com/
+.....
+		//xhr.open("GET", url, true);
+		xhr.open("GET", "https://cors-anywhere.herokuapp.com/"+url, true);
+......
 </pre>
 
 <p>
