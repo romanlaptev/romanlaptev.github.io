@@ -39,8 +39,8 @@ var webApp = {
 
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			"dataUrl" : "data/2019-04-26.json",
-/*			
+			//"dataUrl" : "data/2019-04-26.json",
+
 			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -50,7 +50,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-*/
+
 			"dbType" : "" //application/xml 
 		},
 
@@ -646,14 +646,25 @@ console.log( key, tagNode[key] );
 				return value;
 			});
 //console.log( jsonObj );
-			//correct duration
+
+			//correct departure, duration, arrival
 			for( var n = 0; n < jsonObj["segments"].length; n++){
 				var record = jsonObj["segments"][n];
 				record["duration"] = Math.round( record["duration"] / 60);
 				// if( record["duration"] > 60){
 					// record["duration"] = record["duration"] / 60;
 				// }
+				var _d = new Date( record["departure"] );
+				record["departure_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
+				record["departure_time"] = _d.getHours() +":"+_d.getMinutes();
+				delete record["departure"];
+				
+				var _d = new Date( record["arrival"] );
+				record["arrival_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
+				record["arrival_time"] = _d.getHours() +":"+_d.getMinutes();
+				delete record["arrival"];
 			}//next
+			
 			webApp.vars["DB"]["data"] = jsonObj;
 			
 		} catch(error) {
@@ -1097,7 +1108,7 @@ console.log( webApp.vars["logMsg"] );
 			var dateStr = sYear + "-" + sMonth + "-" + sDate;
 			return dateStr;
 	}//end _timeStampToDateStr()
-
+	
 	function _getRunTime( timer){
 		return ( timer.end.getTime() - timer.start.getTime() ) / 1000;
 	}//end _getRunTime()

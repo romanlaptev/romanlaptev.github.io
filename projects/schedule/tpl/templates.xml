@@ -113,9 +113,26 @@ d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 
 	<p class="SegmentTransport">{{carrier_title}}</p>
 </div>
 			</td>
-			<td>{{departure}}, <b>{{from_title}}</b>, остановки: {{stops}}</td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{departure_day}}</div>
+	<span class="Segment__time">{{departure_time}}</span>
+</div>
+<span class="Segment__stations">{{from_title}}</span>, 
+<div class="Segment__stops">остановки: {{stops}}</div>
+			</td>
+			
 			<td>{{duration}} мин.</td>
-			<td>{{arrival}}, <b>{{to_title}}</b></td>
+			
+			<td>
+<div class="Segment__dateTime Time_important">
+	<div class="Segment__date">{{arrival_day}}</div>
+	<span class="Segment__time">{{arrival_time}}</span>
+</div>
+<span class="Segment__stations">{{to_title}}</span>
+			</td>
+			
 			<td>{{price_whole}} {{0_currency}}</td>
 		</tr>
 ]]>
