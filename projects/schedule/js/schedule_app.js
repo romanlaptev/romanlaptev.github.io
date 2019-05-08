@@ -45,8 +45,8 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
-			//"dataUrl" : "data/2019-04-26.json",
-
+			"dataUrl" : "data/2019-04-26.json",
+/*
 			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
@@ -56,7 +56,7 @@ date={{date}}&\
 transport_types=suburban&\
 system=esr&\
 show_systems=esr",
-
+*/
 			"dbType" : "" //application/xml 
 		},
 
