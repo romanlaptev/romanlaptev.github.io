@@ -16,6 +16,25 @@
 
 -->
 
+	<tpl name="tpl-copyright">
+		<html_code><![CDATA[
+<div class="block panel">
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-copyright-content">
+		<html_code><![CDATA[
+{{logo_vy}}
+<p>{{text}}</p>
+<p>​​​​​{{url}}</p>
+		]]></html_code>
+	</tpl>
+
+
 <!--
 	<tpl name="tpl-schedule-search">
 		<html_code><![CDATA[
