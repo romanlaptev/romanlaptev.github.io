@@ -33,7 +33,6 @@ var webApp = {
 				"esr_code" : 851635
 			},
 		},
-		
 		"apikey" : "b07a64bc-f237-4e79-9efb-b951ec68eaf7",
 		"logMsg" : "",
 		
@@ -761,12 +760,20 @@ console.log( key, tagNode[key] );
 				// }
 				var _d = new Date( record["departure"] );
 				record["departure_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
-				record["departure_time"] = _d.getHours() +":"+_d.getMinutes();
+				var _min = _d.getMinutes();
+				if( _min < 10){
+					_min = "0" + _min;
+				}
+				record["departure_time"] = _d.getHours() +":"+_min;
 				delete record["departure"];
 				
 				var _d = new Date( record["arrival"] );
 				record["arrival_day"] = _d.getDate() +" "+ func.getMonthByNameNum( _d.getMonth(), "ru" );
-				record["arrival_time"] = _d.getHours() +":"+_d.getMinutes();
+				var _min = _d.getMinutes();
+				if( _min < 10){
+					_min = "0" + _min;
+				}
+				record["arrival_time"] = _d.getHours() +":"+_min;
 				delete record["arrival"];
 			}//next
 			

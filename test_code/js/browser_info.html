@@ -185,6 +185,17 @@ window.onload = function(){
 		ua.innerHTML = html;
 	}
 	
+//------------------------------------ screen, page size
+//http://hashcode.ru/questions/243682/javascript-%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0
+
+	var logMsg = "<ul><li><b>window.screen.width</b>: "+window.screen.width+"</li><li><b>window.screen.height</b>: "+window.screen.height+"</li><li><b>window.innerWidth</b>: "+window.innerWidth+"</li><li><b>window.innerHeight</b>: "+window.innerHeight+"</li><li><b>window.outerWidth</b>: "+window.outerWidth+"</li><li><b>window.outerHeight</b>: "+window.outerHeight+"</li><li><b>window.screen.availWidth</b>: "+window.screen.availWidth+"</li><li><b>window.screen.availWidth</b>: "+window.screen.availWidth+"</li></ul>";
+		
+	logMsg += "<ul><b>Explorer 6 Strict Mode</b><li><b>document.documentElement.clientWidth</b>: "+document.documentElement.clientWidth+"</li><li><b>document.documentElement.clientHeight</b>: "+document.documentElement.clientHeight+"</li></ul>";
+	
+	logMsg += "<ul><b>other Explorers</b><li><b>document.body.clientWidth</b>: "+document.body.clientWidth+"</li><li><b>document.body.clientHeight</b>: "+document.body.clientHeight+"</li></ul>";
+	
+	_log( logMsg, "info");
+
 //console.log("navigator.plugins, raw output");	
 //for( var item in navigator.plugins){
 //console.log(item , navigator.plugins[item]);	
