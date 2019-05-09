@@ -630,70 +630,15 @@ console.log( logMsg );
 		}//end _runAjax()
 
 		
-		function _timeStampToDateStr( timestamp ){
+		function _timeStampToDateStr( timestamp, format ){
 
 			var sYear = timestamp.getFullYear();
 
-			
 			var sMonth = timestamp.getMonth() + 1;
 	//console.log( sMonth, typeof sMonth );
 			if( sMonth < 10){
 				sMonth = "0" + sMonth;
 			}
-			sMonth = "" + sMonth;
-			
-	//"15-Sep-2018 22:13:00";
-			switch(sMonth){
-				
-				case "01":
-					sMonth = "Jan";
-				break;
-				
-				case "02":
-					sMonth = "Feb";
-				break;
-				
-				case "03":
-					sMonth = "Mar";
-				break;
-				
-				case "04":
-					sMonth = "Apr";
-				break;
-				
-				case "05":
-					sMonth = "May";
-				break;
-				
-				case "06":
-					sMonth = "Jun";
-				break;
-				
-				case "07":
-					sMonth = "Jul";
-				break;
-				
-				case "08":
-					sMonth = "Aug";
-				break;
-				
-				case "09":
-					sMonth = "Sep";
-				break;
-				
-				case "10":
-					sMonth = "Oct";
-				break;
-				
-				case "11":
-					sMonth = "Nov";
-				break;
-				
-				case "12":
-					sMonth = "Dec";
-				break;
-				
-			}//end switch
 			
 			var sDate = timestamp.getDate();
 			if( sDate < 10){
@@ -715,11 +660,18 @@ console.log( logMsg );
 				sSec = "0" + sSec;
 			}
 			
-        			
 			//var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
 			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			return dateStr;
 		}//end _timeStampToDateStr()
+
+		function _getMonthNameByNum( num, lang ){
+			var sMonth = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+			if( lang === "RU" || lang === "ru" ){
+				sMonth = ["янв", "фев", "март", "апр", "май", "июн", "июл", "авг", "сент", "окт", "ноя", "дек"];
+			}
+			return sMonth[num];
+		}//end _getMonthNameByNum()
 
 		//Convert str to Hash code
 		var _hashCode = function(str){
@@ -953,7 +905,10 @@ ONLY second LEVEL !!!!!!!!!!!!
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
 			runAjax: _runAjax,
+			
 			timeStampToDateStr: _timeStampToDateStr,
+			getMonthByNameNum: _getMonthNameByNum,
+			
 			hashCode: _hashCode,
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj

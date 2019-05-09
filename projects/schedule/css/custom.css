@@ -10,6 +10,12 @@ body {
   margin: 0;
   padding: 15px;
 }
+@media screen and (max-width:595px) 
+{ 
+	body{
+		padding:0;
+	}
+}
 
 .main-content {
   height: 80%;
@@ -20,6 +26,17 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   padding: 20px;
+}
+@media screen and (max-width:595px) 
+{ 
+	.container{
+		padding:0;
+	}
+	#block-schedule table th:first-child,
+	#block-schedule table td:first-child
+	{
+		display: none;
+	}	
 }
 
 /* fix Bootstrap */
@@ -58,6 +75,38 @@ header .navbar {
 	background-color: #b0c4de;
 }
 
+#search-panel .pull-left {
+	margin-right: 5px;
+	margin-top: 5px;
+}
+#search-panel .title {
+	width:30%;
+}
+@media screen and (max-width:670px) 
+{ 
+	#search-panel .pull-left {
+		float: none !important;
+	}
+	#search-panel .title {
+		width:auto;
+	}
+	#search-panel .s-btn {
+		text-align:center;
+	}
+}
+@media screen and (max-width:595px) 
+{ 
+	#search-panel .title {
+		margin-left: 5px;
+		margin-right: 10px;
+	}
+	#search-panel .d-widget {
+		margin-left: 5px;
+		margin-right: 10px;
+	}
+}
+
+
 .arrows{
 background-image: url("../res/favicons/mask-icon.svg");
 width: 50px;
@@ -88,6 +137,30 @@ padding-top:0;
 }
 .SegmentTitle__number {
  margin:0 .9em 0 0
+}
+
+.Segment__dateTime {
+ font-size:15px;
+ line-height:20px
+}
+.Segment__dateTime.Time_important {
+ font-weight:700
+}
+.Segment__date {
+ font-size:11px;
+ line-height:15px;
+ color:#777
+}
+
+.Segment__stations {
+ font-size:11px;
+ line-height:15px;
+ color:#444
+}
+.Segment__stops {
+ font-size:11px;
+ line-height:15px;
+ color:#999
 }
 
 #block-schedule .panel-body{

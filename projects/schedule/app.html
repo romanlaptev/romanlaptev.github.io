@@ -47,17 +47,18 @@
 <body id="App">
 	
 <header class="container">
+	<span id="block-copyright"></span>			
 	<nav class="navbar">
-		
-		<div class="pull-left">
+		<!-- <div class="pull-left"> -->
 			<ul class="nav nav-tabs">
 				<li><a class="btn btn-blue" href="../../index.html">index</a></li>
 			</ul>
+<!--		
 		</div>
 		<div class="pull-right">
 			<h1 id="app-title">App title</h1>
 		</div>
-		
+-->		
 	</nav>
 
 	<div class="log-panel panel">
@@ -73,20 +74,20 @@
 
 <div class="container">
 
-		<div class="panel-body row">
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<div id="search-panel" class="panel-body row">
+			<div class="pull-left title">
 				<input id="from-title" class="form-control" value=""/>
 			</div>
-			<div class="pull-left">
+			<div class="pull-left s-btn">
 				<a id="btn-change-direction" class="btn btn-warning arrows" href="#" title="change direction">&nbsp;</a>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			<div class="pull-left title">
 				<input id="to-title" class="form-control" value=""/>
 			</div>
-			<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+			<div class="pull-left d-widget">
 <input id="date-widget" type="date" name="date_widget" class="form-control selectDate" value=""  max="2019-12-30" min="2019-01-01">			
 			</div>
-			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<div class="pull-left s-btn">
 			  <button id="btn-update" class="btn btn-danger">update</button>
 			</div>
 		 </div>
@@ -118,7 +119,7 @@ console.log(key, test[key]);
 <li><a href="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr" target="_blank">api.rasp.yandex.net, JSON</a></li>
 <li><a href="https://developer.tech.yandex.ru/services/4/" target="_blank">developer.tech.yandex.ru, Кабинет разработчика</a></li>
 			</ul>
-
+			
 		</div>
 </footer>
 
