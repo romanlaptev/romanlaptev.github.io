@@ -50,7 +50,12 @@
 		<playlist created="11-March-2017" title="blues, rock_n_roll, swing, jazz" class="blues">
 			<location>/music/0_playlists/blues, rock_n_roll, swing, jazz.json</location>
 		</playlist>
+
+		<playlist created="12-May-2019" title="Red Elvices" class="blues">
+			<location>/music/0_playlists/red_elvices.json</location>
+		</playlist>
 			
+
 		<playlist created="11-March-2017" title="classic music" class="classic">
 			<location>/music/0_playlists/classic.json</location>
 		</playlist>
