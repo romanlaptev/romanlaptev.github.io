@@ -138,6 +138,9 @@ padding-top:0;
 .SegmentTitle__number {
  margin:0 .9em 0 0
 }
+.SegmentTitle__title {
+	font-weight: bold;
+}
 
 .Segment__dateTime {
  font-size:15px;
@@ -151,16 +154,30 @@ padding-top:0;
  line-height:15px;
  color:#777
 }
+.schedule-block-mobile .Segment__date {
+	font-size: medium;
+	color:green;
+}
+
 
 .Segment__stations {
  font-size:11px;
  line-height:15px;
- color:#444
+ color:red;
 }
-.Segment__stops {
+.schedule-block-mobile .Segment__stations {
+	font-size: medium;
+}
+
+.Segment__stops,
+.Segment__duration {
  font-size:11px;
  line-height:15px;
  color:#999
+}
+
+.schedule-block-mobile i {
+	font-size: 11px;
 }
 
 #block-schedule .panel-body{

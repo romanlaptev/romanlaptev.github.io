@@ -136,7 +136,7 @@ d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 
 	<div class="Segment__date">{{departure_day}}</div>
 	<span class="Segment__time">{{departure_time}}</span>
 </div>
-<span class="Segment__stations">{{from_title}}</span>, 
+<span class="Segment__stations">{{from_title}}</span>
 <div class="Segment__stops">остановки: {{stops}}</div>
 			</td>
 			
@@ -152,6 +152,53 @@ d="M10.7 3.2L11.8 1H13V.5c0-.3-.2-.5-.5-.5h-9c-.3 0-.5.2-.5.5V1h1.2l1.1 2.2C2.2 
 			
 			<td>{{price_whole}} {{0_currency}}</td>
 		</tr>
+]]>
+		</html_code>
+	</tpl>
+
+
+	<tpl name="tpl-schedule-mobile">
+		<html_code><![CDATA[
+<div class="schedule-block-mobile">
+	{{list}}		
+</div>
+		]]></html_code>
+	</tpl>
+	<tpl name="tpl-schedule-mobile--record">
+		<html_code>
+<![CDATA[
+		<div class="panel panel-primary">
+			<div class="panel-body">
+		
+				<div class="SegmentTitle">
+					<span class="SegmentTitle__number">{{thread_number}}</span>
+					<span class="SegmentTitle__title">{{thread_title}}</span>
+					<p class="SegmentTransport">{{carrier_title}}</p>
+				</div>
+
+				<div><i>отправление</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{departure_day}}, </span>
+						<span class="Segment__time">{{departure_time}} </span>
+					</span>
+					<span class="Segment__stations">{{from_title}}</span>
+				</div>
+							
+				<div><i>остановки</i>:<span class="Segment__stops">{{stops}}</span></div>
+				<div><i>время в пути</i>: <span class="Segment__duration">{{duration}} мин.</span></div>
+
+				<div><i>прибытие</i>:
+					<span class="Segment__dateTime Time_important">
+						<span class="Segment__date">{{arrival_day}}, </span>
+						<span class="Segment__time">{{arrival_time}} </span>
+					</span>
+					<span class="Segment__stations">{{to_title}}</span>
+				</div>			
+							
+				<div><i>билет</i>: {{price_whole}} {{0_currency}}</div>
+			
+			</div>
+		</div>
 ]]>
 		</html_code>
 	</tpl>

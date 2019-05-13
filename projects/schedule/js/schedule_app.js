@@ -806,7 +806,13 @@ return false;
 	});
 */
 	var htmlTable = webApp.vars["templates"]["tpl-schedule-table"];
-	
+	webApp.vars["tplNameList"] = "tpl-schedule-table--tr";
+	if( window.screen.width <= 460 ){
+//console.log("TEEST");
+		var htmlTable = webApp.vars["templates"]["tpl-schedule-mobile"];
+		webApp.vars["tplNameList"] = "tpl-schedule-mobile--record";
+	}
+
 	var data = webApp.vars["DB"]["data"]["segments"];
 	var htmlTableList = "";
 	for(var n = 0; n < data.length; n++){
@@ -838,7 +844,8 @@ return false;
 		
 		var htmlList = _draw_wrapData({
 			"data": record,
-			"templateID": "tpl-schedule-table--tr",
+			//"templateID": "tpl-schedule-table--tr",
+			"templateID": webApp.vars["tplNameList"],
 		});
 		return htmlList;
 	}//end __buildTableList()
