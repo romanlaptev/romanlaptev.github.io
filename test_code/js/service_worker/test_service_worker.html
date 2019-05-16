@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../../css/test_bootstrap/css/bootstrap335.min.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap335.min.css">
 <style>
 	#info {  border: 1px dashed;  padding: 10px; }
 </style>
@@ -29,62 +29,80 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 		</pre>
 		
 		<div class="panel">
-			<div class="panel-body" id="info"></div>
+			<div class="panel-body" id="log"></div>
 		</div>
 		
 	</div><!-- end container -->
 	
 <script>
-	var test =  typeof window.Promise !== "undefined";
-	var msg = "Promise support: " + test;
-	_log(msg);
+	var func = sharedFunc();
+//console.log("func:", func);
+	var logMsg;
 	
-	var test = 'serviceWorker' in navigator;
-	var msg = "serviceWorker support: " + test;
-	_log(msg);
-
-	if( window.location.protocol !== "https:"){
-		var msg = "<p class='text-danger'>error, protocol used - '" + window.location.protocol;
-		msg += "', but serviceWorker requires 'https:'</p>"
-		_log(msg);
+	var test =  typeof window.Promise !== "undefined";
+	logMsg = "Promise support:" + test;
+	if( test ){
+		func.logAlert(logMsg, "success");
 	} else {
-		var msg = "protocol used: " + window.location.protocol;
-		_log(msg);
+		func.logAlert(logMsg, "error");
+	}
+	
+	test = 'serviceWorker' in navigator;
+	logMsg = "serviceWorker support: " + test;
+	if( test ){
+		func.logAlert(logMsg, "success");
+	} else {
+		func.logAlert(logMsg, "error");
+	}
+
+	logMsg = "protocol used: " + window.location.protocol;
+	func.logAlert(logMsg, "info");
+	if( window.location.protocol !== "https:"){
+		logMsg = "error,  serviceWorker requires 'https:' protocol....";
+		func.logAlert(logMsg, "error");
 	}
 	
 	if ('serviceWorker' in navigator) {
-		_log('CLIENT: service worker registration in progress.');
+		logMsg = "<p class='alert alert-info'>CLIENT: service worker registration in progress.</p>"
+		func.log( logMsg );
 		/*
 		navigator.serviceWorker.register('/test_code/js/service_worker/js/service-worker.js')
 		.then(function() {
-			_log('CLIENT: service worker registration complete.');
+			func.log('CLIENT: service worker registration complete.');
 		}, function() {
-			_log('CLIENT: service worker registration failure.');
+			func.log('CLIENT: service worker registration failure.');
 		});
 		*/
-		navigator.serviceWorker.register('/test_code/js/service_worker/site/service-worker.js').then(function(reg) {
-_log('Registration succeeded. Scope is ' + reg.scope);
-		if(reg.installing) {
-			_log('Service worker installing');
-		} else if(reg.waiting) {
-			_log('Service worker installed');
-		} else if(reg.active) {
-			_log('Service worker active');
-		}
+		navigator.serviceWorker.register('/test_code/js/service_worker/site/service-worker.js')
+		.then(function(reg) {
+			logMsg = "Registration succeeded. Scope is " + reg.scope;
+			func.logAlert(logMsg, "success");
+			
+			if(reg.installing) {
+				func.log('Service worker installing');
+			} else 
+				if(reg.waiting) {
+					func.log('Service worker installed');
+				} else 
+					if(reg.active) {
+						func.log('Service worker active');
+				}
 		
 	  }).catch(function(error) {
-		// registration failed
-		_log('Registration failed with ' + error);
+		logMsg = "Registration failed."
+		func.logAlert(logMsg, "error");
+console.log(error);
 	  });
 		
 	} else {
-		_log('CLIENT: service worker is not supported.');
+		logMsg = "CLIENT: service worker is not supported."
+		func.logAlert(logMsg, "error");
 	}
 
 
 /*
 	if ('serviceWorker' in navigator) {
-		_log('CLIENT: service worker registration in progress.');
+		func.log('CLIENT: service worker registration in progress.');
 		navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
 		
 		if(reg.installing) {
