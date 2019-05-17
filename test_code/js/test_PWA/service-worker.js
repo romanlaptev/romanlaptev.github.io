@@ -37,14 +37,13 @@ console.log("[ServiceWorker] Pre-caching offline recources", _cache);
 */
 self.addEventListener("fetch", function(event) {
 console.log("WORKER: fetch event in progress.", event.request.url);
-console.log(event);
-
+console.log(event, event.request.mode);
 
 	if (event.request.mode !== "navigate") {// Not a page navigation, bail.
 		return;
 	}
 	event.respondWith(
-		fetch(evt.request)
+		fetch(event.request)
 		.catch(() => {
 			return caches.open(CACHE_NAME)
 			.then((cache) => {
