@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test PWA</title>
+	<meta name="description" content="A sample PWA app"/>
+	
+	<meta charset="utf8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" href="img/favicon.ico">
+	
+	<link rel="manifest" href="manifest.json"><!-- Add manifest -->
+	
+	<!-- CODELAB: Add iOS meta tags and icons -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="red" />
+	<meta name="apple-mobile-web-app-title" content="test PWA" />
+	<link rel="apple-touch-icon" href="img/apple-touch-icon-152x152.png" />
+
+	<meta name="mobile-web-app-capable" content="yes"><!-- Tell the browser it's a PWA ???? -->
+	<meta name="theme-color" content="#536878"><!-- Make sure theme-color is defined -->
+
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css">
+	<style>
+.alert {
+	margin-bottom: 3px !important;
+	padding: 7px !important;
+}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="page-header">
+			<h1>test PWA</h1>
+		</div>
+	
+		<div class="panel">
+			<div class="panel-body" id="log"></div>
+		</div>
+
+		<pre>
+https://codelabs.developers.google.com/codelabs/your-first-pwapp/
+Your First Progressive Web App
+
+https://proglib.io/p/3-steps-to-pwa/
+3 простых шага, чтобы сделать Progressive Web App из вашего сайта
+
+https://tuhub.ru/posts/progressive-web-app-with-react
+Разработка вашего первого Progressive Web App c React
+
+http://prgssr.ru/development/sozdaem-service-worker.html
+Создание сервис-воркера: разбор примера
+		</pre>
+		
+	</div><!-- end container -->
+
+	<script>
+var logMsg;
+
+if( window.location.protocol == "https:"){
+	registerServiceWorker();
+} else {
+	logMsg = "error,  serviceWorker requires 'https:' protocol....";
+_alert( logMsg, "error" );
+}
+
+function registerServiceWorker() {
+	if ('serviceWorker' in navigator) {
+	
+		window.addEventListener('load', function() {
+			navigator.serviceWorker.register('service-worker.js').
+			
+				then(function(reg) {
+					logMsg = "ServiceWorker registration successful with scope: " + reg.scope;
+_alert( logMsg, "success" );
+console.log(reg);
+
+					if(reg.installing) {
+logMsg="Service worker installing";
+_alert( logMsg, "info" );
+					}
+					if(reg.waiting) {
+logMsg="Service worker installed";
+_alert( logMsg, "info" );
+					}
+					if(reg.active) {
+logMsg="Service worker active";
+_alert( logMsg, "info" );
+					}
+					
+				}, 
+				
+				function(err) {
+logMsg="ServiceWorker registration failed";
+_alert( logMsg, "error" );
+console.log(err);
+				}).
+				
+				catch(function(err) {
+console.log(err)
+				});
+		});
+		
+	} else {
+logMsg="ServiceWorker is not supported....";
+_alert( logMsg, "error" );
+	}
+	
+}//end registerServiceWorker()
+
+function _alert( message, level ){
+	switch (level) {
+		case "info":
+			message = "<p class='alert alert-info'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "warning":
+			message = "<p class='alert alert-warning'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "danger":
+		case "error":
+			message = "<p class='alert alert-danger'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "success":
+			message = "<p class='alert alert-success'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		default:
+			_log(message);
+		break;
+	}//end switch
+	
+}//end _alert()		
+
+function _log( msg, id){
+	if(!id){
+		var id = "log";
+	}
+			
+	var output = document.querySelector("#"+id);
+	if( output ){	
+		if( msg.length == 0){
+			output.innerHTML = "";
+		} else {
+			output.innerHTML += msg;
+		}
+		
+	} else {
+console.log(msg);
+	}
+			
+}//end _log()
+
+</script>
+
+</body>
+</html>
