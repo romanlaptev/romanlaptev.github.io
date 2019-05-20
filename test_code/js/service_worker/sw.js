@@ -2,7 +2,7 @@
 
 const CACHE_NAME = "static-cache-v1";
 const FILES_TO_CACHE = [
-"offline.html",
+//"offline.html",
 //"pages/",
 "pages/index.html",
 "pages/style.css",
@@ -31,6 +31,7 @@ console.log(event, event.request.mode);
 	
 	var response;
 	event.respondWith( 
+/*	
 		caches.match( event.request ).catch(function() {
 			return fetch( event.request );
 		}).then( function(r){
@@ -40,8 +41,18 @@ console.log(event, event.request.mode);
 			});
 			return response.clone();
 		}).catch( function(){
-			return caches.match("offline.html");
+			//return caches.match("offline.html");
+			return fetch(event.request);			
 		})
+*/
+		fetch(event.request)
+		.catch(() => {
+			return caches.open(CACHE_NAME)
+			.then((cache) => {
+				return cache.match("offline.html");
+			});
+		})
+
 	);
 	
 });//end event
