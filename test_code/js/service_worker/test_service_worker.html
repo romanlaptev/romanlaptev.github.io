@@ -57,10 +57,9 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 		func.logAlert(logMsg, "error");
 	}
 
-	logMsg = "protocol used: " + window.location.protocol;
-	func.logAlert(logMsg, "info");
 	if( window.location.protocol !== "https:"){
 		logMsg = "error,  serviceWorker requires 'https:' protocol....";
+		logMsg += "but used: " + window.location.protocol;
 		func.logAlert(logMsg, "error");
 	}
 	
