@@ -60,4 +60,17 @@ console.log(event, event.request.mode);
 
 this.addEventListener("activate", function(event) {
 console.log("WORKER: activate event in progress.", event);
+
+	event.waitUntil(
+		caches.keys().then((keyList) => {
+			return Promise.all( keyList.map(
+				(key) => {
+					//if (key !== CACHE_NAME) {
+	console.log("[ServiceWorker]  cache key: ", key);
+						//return caches.delete(key);
+					//}
+				})
+			);
+		})
+	);
 });//end event
