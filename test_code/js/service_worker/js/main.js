@@ -95,6 +95,7 @@ function defineEvents(){
 	};
 	
 	var cacheNameField = document.querySelector("#cache-name");
+	var cacheKeyField = document.querySelector("#cache-key");
 	
 	var btn_list_cache_keys = document.querySelector("#btn-list-cache-keys");
 	btn_list_cache_keys.onclick = function(e){
@@ -194,17 +195,30 @@ logMsg="<b>Object cache name</b> is empty....";
 func.logAlert( logMsg, "warning" );
 			return false;
 		}
-/*		
-		caches.open(cacheName).then(function( cache ){
 		
-			cache.addAll( FILES_TO_CACHE ).then(function(){
-console.log("[ServiceWorker] Pre-caching offline recources", arguments);
-				_getKeys( cacheName );
+		//var cacheKey = "css/bootstrap335.min.css";
+		var cacheKey = cacheKeyField.value;
+//console.log(cacheKey);
+		if( !cacheKey || cacheKey.length===0 ){
+logMsg="<b>cache key</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+
+		caches.open( cacheName ).then(function( cache ){
+			cache.delete( cacheKey ).then(function( res ){
+				if(res){
+logMsg=cacheKey + " was removed....";
+func.logAlert( logMsg, "success" );
+				} else {
+logMsg=cacheKey + " not found....";
+func.logAlert( logMsg, "warning" );
+				}
+				
 			});
-			//return _cache;
 		});
-*/		
 	}//end event
+
 
 }//end defineEvents()
 
@@ -235,6 +249,7 @@ func.log(html);
 logMsg="not found cache objects...";
 func.logAlert( logMsg, "warning" );
 			}
+			
 		});
 }//end _getListCaches()		
 
