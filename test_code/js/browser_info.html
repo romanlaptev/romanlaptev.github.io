@@ -895,7 +895,28 @@ console.log(e);
 	}
 	
 	_push( tests, test );
+//--------------------------------------
+	var test = {
+		"name" : "CacheStorage API",
+		"result" : false
+	};
+	if ( typeof window.caches !== "undefined") {
+		test["result"] = true;
+		test["msg"] = "window.caches is supported, " + window.caches;
+		
+		test["links"]=[];
+		var obj = {
+			"link" : "https://developer.mozilla.org/ru/docs/Web/API/CacheStorage", 
+			"text" : "developer.mozilla.org, CacheStorage"
+		};
+		_push( test["links"], obj );
+		
+	} else {
+		test["msg"] = "window.caches not supported, " + window.caches;
+	}
 	
+	_push( tests, test );
+
 //--------------------------------------
 	var test = {
 		"name" : "HTML5, Service Worker API",
@@ -917,6 +938,10 @@ console.log(e);
 		
 	} else {
 		test["msg"] = "serviceWorker not supported, "  + result;
+		if( window.location.protocol !== "https:"){
+			test["msg"] += ",  serviceWorker requires 'https:' protocol....";
+			test["msg"] += "but used: " + window.location.protocol;
+		}
 	}
 
 	_push( tests, test );
@@ -1192,7 +1217,7 @@ console.log( key, document.body[key]);
 	//}
 
 	//form HTML
-	var testTpl = '<li class="panel-group"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</li>';
+	var testTpl = '<div class="panel"><div class="panel-body"><b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span><div class="description"><small>{{msg}}</small></div>{{test_links}}</div></div>';
 	
 	//var test_tpl = getDOMobj("test-tpl").innerHTML;
 //console.log( test_tpl );	
@@ -1373,7 +1398,7 @@ background-color: #dec;;
 </script>
 
 <script type="text/template" id="test-links-tpl">
-	<ul class="form-control list-inline relative-links"><b>test pages</b>:
+	<ul class="form-control list-inline relative-links">
 		{{links}}
 	</ul>
 </script>

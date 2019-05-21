@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="utf8">
+	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap335.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css">
 <style>
-	#info {  border: 1px dashed;  padding: 10px; }
+.bg-primary {
+	color: inherit;
+}
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
 </style>
-	<script src="../lib/shared_functions.js"></script>
 </head>
+
 <body class="bg-primary">
 	<div class="container">
 
@@ -16,6 +47,41 @@
 			<h1>test Service Worker</h1>
 		</div>
 		
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-body">
+				object cache name: <input id="cache-name" type="text" class="form-conrol" value="" autocomplete="off"/>
+			</div>
+			<div class="panel-body">
+				<button id="btn-put-cache" class="btn btn-info">put resources into object cache</button>
+				<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+				<button id="btn-delete-cache" class="btn btn-danger">delete cache, CacheStorage.delete()</button>
+			</div>
+			<div class="panel-body">
+				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys, CacheStorage.keys()</button>
+				<button id="btn-delete-key" class="btn btn-danger">delete key into object cache</button>
+			</div>
+		</div>
+<!--
+CacheStorage.match()
+    Проверяет, является ли данный Request ключом в любом из объектов Cache, отслеживаемых объектом CacheStorage, и возвращает Promise, который успешно завершится, когда найдет совпадение.
+CacheStorage.has()
+    Возвращает Promise, который успешно завершится и вернет true, если объект Cache содержит кеш с установленным cacheName.
+CacheStorage.open()
+    Возвращает Promise, который успешно завершится, когда объект Cache найдет необходимый объект с cacheName (если такого нет, то создаст новый).
+CacheStorage.delete()
+    Находит объект Cache, соответствующий cacheName, и, если такой обнаружен, удаляет объект Cache и возвращает Promise, завершающийся с true. Если объект Cache не найдет, то возвращается false.
+CacheStorage.keys()
+Возвращает Promise, который вернет массив, содержащий строки, соответствующие всем именованым объектам Cache, отслеживаемым CacheStorage. Используйте этот метод для прохода по списку всех объектов Cache.
+-->
 		<pre>
 https://caniuse.com/#search=Service%20Workers
 		
@@ -30,99 +96,10 @@ https://css-tricks.com/serviceworker-for-offline/
 https://mobiforge.com/design-development/taking-web-offline-service-workers
 		</pre>
 		
-		<div class="panel">
-			<div class="panel-body" id="log"></div>
-		</div>
-		
 	</div><!-- end container -->
-	
-<script>
-	var func = sharedFunc();
-//console.log("func:", func);
-	var logMsg;
-	
-	var test =  typeof window.Promise !== "undefined";
-	logMsg = "Promise support:" + test;
-	if( test ){
-		func.logAlert(logMsg, "success");
-	} else {
-		func.logAlert(logMsg, "error");
-	}
-	
-	test = 'serviceWorker' in navigator;
-	logMsg = "serviceWorker support: " + test;
-	if( test ){
-		func.logAlert(logMsg, "success");
-	} else {
-		func.logAlert(logMsg, "error");
-	}
 
-	logMsg = "protocol used: " + window.location.protocol;
-	func.logAlert(logMsg, "info");
-	if( window.location.protocol !== "https:"){
-		logMsg = "error,  serviceWorker requires 'https:' protocol....";
-		func.logAlert(logMsg, "error");
-	}
-	
-	if ('serviceWorker' in navigator) {
-		logMsg = "<p class='alert alert-info'>CLIENT: service worker registration in progress.</p>"
-		func.log( logMsg );
-		/*
-		navigator.serviceWorker.register('/test_code/js/service_worker/js/service-worker.js')
-		.then(function() {
-			func.log('CLIENT: service worker registration complete.');
-		}, function() {
-			func.log('CLIENT: service worker registration failure.');
-		});
-		*/
-		navigator.serviceWorker.register('/test_code/js/service_worker/site/service-worker.js')
-		.then(function(reg) {
-			logMsg = "Registration succeeded. Scope is " + reg.scope;
-			func.logAlert(logMsg, "success");
-			
-			if(reg.installing) {
-				func.log('Service worker installing');
-			} else 
-				if(reg.waiting) {
-					func.log('Service worker installed');
-				} else 
-					if(reg.active) {
-						func.log('Service worker active');
-				}
-		
-	  }).catch(function(error) {
-		logMsg = "Registration failed."
-		func.logAlert(logMsg, "error");
-console.log(error);
-	  });
-		
-	} else {
-		logMsg = "CLIENT: service worker is not supported."
-		func.logAlert(logMsg, "error");
-	}
-
-
-/*
-	if ('serviceWorker' in navigator) {
-		func.log('CLIENT: service worker registration in progress.');
-		navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
-		
-		if(reg.installing) {
-		  console.log('Service worker installing');
-		} else if(reg.waiting) {
-		  console.log('Service worker installed');
-		} else if(reg.active) {
-		  console.log('Service worker active');
-		}
-		
-	  }).catch(function(error) {
-		// registration failed
-		console.log('Registration failed with ' + error);
-	  });
-	};
-*/	
-
-</script>
+<script src="js/functions.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
