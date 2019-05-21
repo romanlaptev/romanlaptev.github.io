@@ -70,8 +70,29 @@ margin: 0;
 			<div class="panel-body">
 				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys, CacheStorage.keys()</button>
 				<button id="btn-delete-key" class="btn btn-danger">delete key into object cache</button>
+				<p>
+					<button id="btn-match-key" class="btn btn-info">cache.match()</button>
+					<small>find key into object cache</small>
+				</p>
 			</div>
 		</div>
+<!--
+Cache.match(request, options)
+    Возвращает Promise, который успешно завершается с нахождением первого совпадения для данного запроса в объекте Cache.
+Cache.matchAll(request, options)
+    Возвращает Promise, который успешно завершается и возврщает массив всех найденных совпадений для данного запроса в объекте  Cache.
+Cache.add(request)
+    Принимает в качестве параметра URL, получает данные по нему и добавляет полученный объект ответа в заданный кеш. Функциональный эквивалент  вызову fetch() с последующим вызовом Cache.put() для добавления результата в кеш.
+Cache.addAll(requests)
+    Принимает массив URL в качестве параметра, получает данные по ним, добавляет полученные объекты ответов в заданный кеш.
+Cache.put(request, response)
+    Принимает запрос и ответ на него и добавляет их в заданный кеш.
+Cache.delete(request, options)
+    Находит запись Cache, чей ключ является запросом, и, в случае находждения, удаляет запись Cache  и возвращает Promise, успешно завершающийся со значением true. Если же запись  Cache не найдена, возвращается false.
+Cache.keys(request, options)
+    Возвращает Promise, который отдает массив ключей Cache. 
+-->
+
 <!--
 CacheStorage.match()
     Проверяет, является ли данный Request ключом в любом из объектов Cache, отслеживаемых объектом CacheStorage, и возвращает Promise, который успешно завершится, когда найдет совпадение.

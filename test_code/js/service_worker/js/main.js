@@ -220,6 +220,42 @@ func.logAlert( logMsg, "warning" );
 	}//end event
 
 
+	var btn_match_key = document.querySelector("#btn-match-key");
+	btn_match_key.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+		
+		var cacheKey = cacheKeyField.value;
+//console.log(cacheKey);
+		if( !cacheKey || cacheKey.length===0 ){
+logMsg="<b>cache key</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+
+		caches.open( cacheName ).then(function( cache ){
+			cache.match( cacheKey ).then(function( response ){
+console.log(response);				
+				if( response ){
+logMsg=cacheKey + " was cached...";
+func.logAlert( logMsg, "success" );
+				} else {
+logMsg=cacheKey + " not found in cache....";
+func.logAlert( logMsg, "warning" );
+				}
+				
+			});
+		});
+	}//end event
+
 }//end defineEvents()
 
 function _getListCaches(){
