@@ -31,6 +31,12 @@ padding: 10px;
 margin: 0;
 }
 
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
 </style>
 </head>
 
@@ -52,14 +58,30 @@ margin: 0;
 		
 		<div class="panel">
 			<div class="panel-body">
-				<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+				object cache name: <input id="cache-name" type="text" class="form-conrol" value="" autocomplete="off"/>
 			</div>
 			<div class="panel-body">
-				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys</button>
-				cache name: <input id="cache-name" type="text" class="form-conrol" value="static-cache-v1"/>
+				<button id="btn-put-cache" class="btn btn-info">put resources into object cache</button>
+				<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+				<button id="btn-delete-cache" class="btn btn-danger">delete cache, CacheStorage.delete()</button>
+			</div>
+			<div class="panel-body">
+				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys, CacheStorage.keys()</button>
+				<button id="btn-delete-key" class="btn btn-danger">delete key into object cache</button>
 			</div>
 		</div>
-
+<!--
+CacheStorage.match()
+    Проверяет, является ли данный Request ключом в любом из объектов Cache, отслеживаемых объектом CacheStorage, и возвращает Promise, который успешно завершится, когда найдет совпадение.
+CacheStorage.has()
+    Возвращает Promise, который успешно завершится и вернет true, если объект Cache содержит кеш с установленным cacheName.
+CacheStorage.open()
+    Возвращает Promise, который успешно завершится, когда объект Cache найдет необходимый объект с cacheName (если такого нет, то создаст новый).
+CacheStorage.delete()
+    Находит объект Cache, соответствующий cacheName, и, если такой обнаружен, удаляет объект Cache и возвращает Promise, завершающийся с true. Если объект Cache не найдет, то возвращается false.
+CacheStorage.keys()
+Возвращает Promise, который вернет массив, содержащий строки, соответствующие всем именованым объектам Cache, отслеживаемым CacheStorage. Используйте этот метод для прохода по списку всех объектов Cache.
+-->
 		<pre>
 https://caniuse.com/#search=Service%20Workers
 		

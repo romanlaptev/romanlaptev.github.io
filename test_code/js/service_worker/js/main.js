@@ -2,6 +2,18 @@ var func = sharedFunc();
 //console.log("func:", func);
 
 var support=false;
+const FILES_TO_CACHE = [
+//"offline.html",
+//"pages/",
+"pages/index.html",
+"pages/style.css",
+"pages/app.js",
+"pages/image-list.js",
+"pages/star-wars-logo.jpg",
+"pages/gallery/bountyHunters.jpg",
+"pages/gallery/myLittleVader.jpg",
+"pages/gallery/snowTroopers.jpg"
+];
 
 var logMsg;
 logMsg = navigator.userAgent;
@@ -20,6 +32,7 @@ if( window.location.protocol !== "https:"){
 	logMsg += "but used: " + window.location.protocol;
 	func.logAlert(logMsg, "error");
 }
+
 
 registerServiceWorker();
 defineEvents();
@@ -55,6 +68,7 @@ func.logAlert( logMsg, "info" );
 			}
 			
 			support = true;
+			_getListCaches();
 		}, 
 
 		function(err) {
@@ -92,44 +106,156 @@ function defineEvents(){
 		var cacheName = cacheNameField.value;
 //console.log(cacheName);
 		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
 			return false;
 		}
 
-		caches.open( cacheName ).then( function(cache) {
-console.log("TEST:", cache);	
-			cache.keys().then( function(keyList) {
-console.log("CACHE key list:", keyList);
-				for( var n = 0; n < keyList.length; n++){
-func.logAlert( keyList[n]["url"], "info");					
-				}//next
-				
-			});
-	
+		caches.has( cacheName ).then(function(res){
+//console.log(res);	
+			if( !res){
+logMsg="Cache object " +cacheName+ " not found....";
+func.logAlert( logMsg, "warning" );
+				return false;
+			} else {
+				_getKeys( cacheName );
+			}
 		});
-		
 	}//end event
 
 	var btn_list_caches = document.querySelector("#btn-list-caches");
 	btn_list_caches.onclick = function(e){
-//console.log(e);
+		_getListCaches();
+	}//end event
+
+	var btn_delete_cache = document.querySelector("#btn-delete-cache");
+	btn_delete_cache.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+		caches.delete( cacheName ).then( function( res ){
+console.log(res);
+			if(res){
+logMsg="Cache object " +cacheName+ " was removed....";
+func.logAlert( logMsg, "success" );
+				_getListCaches();
+			} else {
+logMsg="Cache object " +cacheName+ " not found....";
+func.logAlert( logMsg, "warning" );
+			}
+		},
+		function(err) {
+console.log(err);
+		});
+
+	}//end event
+
+
+	var btn_put_cache = document.querySelector("#btn-put-cache");
+	btn_put_cache.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+		caches.open(cacheName).then(function( cache ){// add all caching resource URLs
+		
+			cache.addAll( FILES_TO_CACHE ).then(function(){
+console.log("[ServiceWorker] Pre-caching offline recources", arguments);
+				_getKeys( cacheName );
+			});
+			//return _cache;
+		});
+		
+	}//end event
+
+
+	var btn_delete_key = document.querySelector("#btn-delete-key");
+	btn_delete_key.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+/*		
+		caches.open(cacheName).then(function( cache ){
+		
+			cache.addAll( FILES_TO_CACHE ).then(function(){
+console.log("[ServiceWorker] Pre-caching offline recources", arguments);
+				_getKeys( cacheName );
+			});
+			//return _cache;
+		});
+*/		
+	}//end event
+
+}//end defineEvents()
+
+function _getListCaches(){
 		if(!support){
 			return false;
 		}
 
 		caches.keys().then( function(keyList) {
-console.log("CACHE key list:", keyList);
-func.log("");					
-			for( var n = 0; n < keyList.length; n++){
-func.logAlert( keyList[n], "info");					
-			}//next
+console.log( keyList);
+			if( keyList.length > 0){
 				
+func.log("<h4>List cache objects</h4>");
+			var html = "<ul class='list-unstyled'>{{list}}</ul>";
+			var listHtml = "";
+			for( var n = 0; n < keyList.length; n++){
+				listHtml += "<li class='list-group-item'>" + keyList[n] + "</li>";					
+			}//next
+			html = html.replace("{{list}}", listHtml);
+func.log(html);
 					// return Promise.all( keyList.map( function (key) {
 		// console.log(key);
 								// //return caches.delete(key);
 						// })
 					// );
-		});
-
-	}//end event
 	
-}//end defineEvents()
+			} else {
+logMsg="not found cache objects...";
+func.logAlert( logMsg, "warning" );
+			}
+		});
+}//end _getListCaches()		
+
+function _getKeys( cacheName ){
+	caches.open( cacheName ).then( function(cache) {
+//console.log("TEST:", cache);	
+		cache.keys().then( function(keyList) {
+				if( keyList.length > 0){
+console.log("CACHE key list:", keyList);
+func.log("<h4>Key list, cache object <b>"+cacheName+"</b></h4>");
+						var html = "<ol class='list-unstyled'>{{list}}</ol>";
+						var listHtml = "";
+						for( var n = 0; n < keyList.length; n++){
+							listHtml += "<li class='list-group-item'>" + keyList[n]["url"] + "</li>";
+						}//next
+						html = html.replace("{{list}}", listHtml);
+func.log(html);
+				} else {
+logMsg="no keys found in object cache " + cacheName;
+func.logAlert( logMsg, "warning" );
+				}
+			});
+	});
+}//end _getKeys()
