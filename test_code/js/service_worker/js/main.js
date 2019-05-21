@@ -3,16 +3,16 @@ var func = sharedFunc();
 
 var support=false;
 const FILES_TO_CACHE = [
-//"offline.html",
+"css/bootstrap335.min.css"//,
 //"pages/",
-"pages/index.html",
-"pages/style.css",
-"pages/app.js",
-"pages/image-list.js",
-"pages/star-wars-logo.jpg",
-"pages/gallery/bountyHunters.jpg",
-"pages/gallery/myLittleVader.jpg",
-"pages/gallery/snowTroopers.jpg"
+//"pages/index.html",
+//"pages/style.css",
+//"pages/app.js",
+//"pages/image-list.js",
+//"pages/star-wars-logo.jpg",
+//"pages/gallery/bountyHunters.jpg",
+//"pages/gallery/myLittleVader.jpg",
+//"pages/gallery/snowTroopers.jpg"
 ];
 
 var logMsg;
@@ -141,7 +141,7 @@ func.logAlert( logMsg, "warning" );
 			return false;
 		}
 		caches.delete( cacheName ).then( function( res ){
-console.log(res);
+//console.log(res);
 			if(res){
 logMsg="Cache object " +cacheName+ " was removed....";
 func.logAlert( logMsg, "success" );
