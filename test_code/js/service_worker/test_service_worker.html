@@ -5,10 +5,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css">
 <style>
-.alert {
-	margin-bottom: 3px !important;
-	padding: 7px !important;
+.bg-primary {
+	color: inherit;
 }
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
 </style>
 </head>
 
@@ -19,14 +41,22 @@
 			<h1>test Service Worker</h1>
 		</div>
 		
-		<div class="panel">
-			<div class="panel-body" id="log"></div>
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
 		</div>
 		
 		<div class="panel">
 			<div class="panel-body">
-				<button id="btn-list-cache" class="btn btn-primary">list cache</button>
-				<input id="cache-name" type="text" class="form-conrol text-primary" value="static-cache-v1"/>
+				<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+			</div>
+			<div class="panel-body">
+				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys</button>
+				cache name: <input id="cache-name" type="text" class="form-conrol" value="static-cache-v1"/>
 			</div>
 		</div>
 
@@ -46,7 +76,7 @@ https://mobiforge.com/design-development/taking-web-offline-service-workers
 		
 	</div><!-- end container -->
 
-<script src="js/shared_functions.js"></script>
+<script src="js/functions.js"></script>
 <script src="js/main.js"></script>
 
 </body>
