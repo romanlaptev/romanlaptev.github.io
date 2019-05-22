@@ -1,6 +1,6 @@
 "use strict";
-
-const CACHE_NAME = "static-cache-v1";
+const CACHE_NAME = "v1";
+/*
 const FILES_TO_CACHE = [
 //"offline.html",
 //"pages/",
@@ -13,21 +13,21 @@ const FILES_TO_CACHE = [
 "pages/gallery/myLittleVader.jpg",
 "pages/gallery/snowTroopers.jpg"
 ];
-
+*/
 this.addEventListener('install', function(event) {
 console.log("WORKER: install event in progress.", event);
-
+/*
 	event.waitUntil(
 		caches.open( CACHE_NAME ).then(function(cache) {
 		return cache.addAll( FILES_TO_CACHE );
 		})
 	);
-	
+*/
 });//end event
 
 this.addEventListener("fetch", function(event) {
 console.log("WORKER: fetch event in progress.", event.request.url);
-console.log(event, event.request.mode);
+console.log(event, event.request.mode, event.request);
 	
 	var response;
 	event.respondWith( 
@@ -45,12 +45,31 @@ console.log(event, event.request.mode);
 			return fetch(event.request);			
 		})
 */
+/*
 		fetch(event.request)
 		.catch(() => {
 			return caches.open(CACHE_NAME)
 			.then((cache) => {
 				return cache.match("offline.html");
 			});
+		})
+*/
+
+
+		// ищем запрашиваемый ресурс в хранилище кэша
+		caches.match(event.request).then(function(cachedResponse) {
+console.log("TEST", cachedResponse);
+
+			// выдаём кэш, если он есть
+			if (cachedResponse) {
+				return cachedResponse;
+			}
+
+			// иначе запрашиваем из сети как обычно
+			return fetch(event.request).catch(function(res){
+console.log( res );
+			});
+			
 		})
 
 	);
@@ -60,7 +79,7 @@ console.log(event, event.request.mode);
 
 this.addEventListener("activate", function(event) {
 console.log("WORKER: activate event in progress.", event);
-
+/*
 	event.waitUntil(
 		caches.keys().then((keyList) => {
 			return Promise.all( keyList.map(
@@ -73,4 +92,5 @@ console.log("WORKER: activate event in progress.", event);
 			);
 		})
 	);
+*/
 });//end event

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+	<title>test JS: Cache & Service Worker</title>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css">
@@ -12,6 +13,11 @@
     margin-bottom: 0;
     margin-top: 5px;
 background-color: #b0c4de;
+position: fixed;
+top: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
 }
 
 .log-panel .panel-body{
@@ -44,7 +50,7 @@ margin: 0;
 	<div class="container">
 
 		<div class="page-header">
-			<h1>test Service Worker</h1>
+			<h1>test Cache & Service Worker</h1>
 		</div>
 		
 		<div class="log-panel panel">
@@ -55,22 +61,114 @@ margin: 0;
 				<div id="log" class="panel-body"></div>
 			</div>
 		</div>
+
+		<div class="panel">
+			<div class="panel-heading">
+					<h2>Service worker objects</h2>			
+			</div>
+			
+			<div class="panel-body">
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+<!-- <p>scope: <input id="field-sw-scope" type="text" class="form-control" value="" autocomplete="off"/></p> -->
+<p>scriptUrl: <input id="field-sw-url" type="text" class="form-control" value="" autocomplete="off"/></p>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+						<button id="btn-sw-list" class="btn btn-info">get list service worker</button>
+						<button id="btn-sw-update" class="btn btn-primary">update service worker</button>
+						<button id="btn-sw-unregister" class="btn btn-danger">unregister service worker</button>
+					</div>
+				</div>
+<pre>
+https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update
+https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister
+</pre>				
+			</div>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-heading">
+					<h2>CacheStorage objects</h2>
+			</div>
+			
+			<div class="panel-body">
+			
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+<p>object cache name: <input id="cache-name" type="text" class="form-control" value="" autocomplete="off"/></p>
+<p>cache key: <input id="cache-key" type="text" class="form-control" value="" autocomplete="off"/></p>
+<pre>
+test_service_worker.html
+offline.html
+css/bootstrap335.min.css
+js/functions.js
+js/main.js
+pages/star-wars-logo.jpg
+pages/_star-wars-logo.jpg
+</pre>
+				</div>
+
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+					<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+					
+					<div>
+						<button id="btn-delete-cache" class="btn btn-danger">delete cache by name</button>
+	<a href="https://developer.mozilla.org/ru/docs/Web/API/CacheStorage/delete" target="_blank">developer.mozilla.org, CacheStorage.delete()</a>
+					</div>
+					
+					<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys, CacheStorage.keys()</button>
+					<button id="btn-add-key" class="btn btn-success">add one key into object cache</button>
+					<button id="btn-delete-key" class="btn btn-danger">delete one key into object cache</button>
+					
+					<div>
+						<button id="btn-match-key" class="btn btn-info">cache.match()</button>
+						<small>find key into object cache</small>
+					</div>
+					
+					<div>
+						<button id="btn-add-all-cache" class="btn btn-success">add resources (FILES_TO_CACHE) into object cache</button>
+		<a href="https://developer.mozilla.org/ru/docs/Web/API/Cache/addAll" target="_blank">developer.mozilla.org, cache.addAll()</a>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div><!-- end panel -->
+		
+		<div class="panel">
+			<div class="panel-heading">
+					<h2>TEST cache</h2>
+<p>load image 'pages/_star-wars-logo.jpg' and add to the cache as 'pages/star-wars-logo.jpg'</p>
+			</div>
+			<div class="panel-body">
+				<div  class="thumbnail col-xs-6 colsm-6 col-md-6 col-lg-6">
+					<img src="pages/star-wars-logo.jpg" alt="add to cache 'pages/_star-wars-logo.jpg'">
+				</div>
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+					<button id="btn-test" class="btn btn-lg btn-warning">run TEST</button>
+					<div id="info"></div>
+				</div>
+			</div>
+		</div><!-- end panel -->
 		
 		<div class="panel">
 			<div class="panel-body">
-				object cache name: <input id="cache-name" type="text" class="form-conrol" value="" autocomplete="off"/>
-			</div>
-			<div class="panel-body">
-				<button id="btn-put-cache" class="btn btn-info">put resources into object cache</button>
-				<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
-				<button id="btn-delete-cache" class="btn btn-danger">delete cache, CacheStorage.delete()</button>
-			</div>
-			<div class="panel-body">
-				<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys, CacheStorage.keys()</button>
-				<button id="btn-delete-key" class="btn btn-danger">delete key into object cache</button>
-			</div>
-		</div>
-<!--
+				<pre>
+Cache.match(request, options)
+    Возвращает Promise, который успешно завершается с нахождением первого совпадения для данного запроса в объекте Cache.
+Cache.matchAll(request, options)
+    Возвращает Promise, который успешно завершается и возврщает массив всех найденных совпадений для данного запроса в объекте  Cache.
+Cache.add(request)
+    Принимает в качестве параметра URL, получает данные по нему и добавляет полученный объект ответа в заданный кеш. Функциональный эквивалент  вызову fetch() с последующим вызовом Cache.put() для добавления результата в кеш.
+Cache.addAll(requests)
+    Принимает массив URL в качестве параметра, получает данные по ним, добавляет полученные объекты ответов в заданный кеш.
+Cache.put(request, response)
+    Принимает запрос и ответ на него и добавляет их в заданный кеш.
+Cache.delete(request, options)
+    Находит запись Cache, чей ключ является запросом, и, в случае находждения, удаляет запись Cache  и возвращает Promise, успешно завершающийся со значением true. Если же запись  Cache не найдена, возвращается false.
+Cache.keys(request, options)
+    Возвращает Promise, который отдает массив ключей Cache. 
+
 CacheStorage.match()
     Проверяет, является ли данный Request ключом в любом из объектов Cache, отслеживаемых объектом CacheStorage, и возвращает Promise, который успешно завершится, когда найдет совпадение.
 CacheStorage.has()
@@ -81,20 +179,25 @@ CacheStorage.delete()
     Находит объект Cache, соответствующий cacheName, и, если такой обнаружен, удаляет объект Cache и возвращает Promise, завершающийся с true. Если объект Cache не найдет, то возвращается false.
 CacheStorage.keys()
 Возвращает Promise, который вернет массив, содержащий строки, соответствующие всем именованым объектам Cache, отслеживаемым CacheStorage. Используйте этот метод для прохода по списку всех объектов Cache.
--->
-		<pre>
+				</pre>
+			
+				<pre>
 https://caniuse.com/#search=Service%20Workers
 		
 https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
 https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API#Interfaces
 https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
+https://developer.mozilla.org/ru/docs/Web/API/Cache
 
 http://prgssr.ru/development/sozdaem-service-worker.html
 Пошаговое руководство по созданию сервис-воркера для офлайн-версии сайта. Перевод статьи Лизы Денжер Гарднер.
 
 https://css-tricks.com/serviceworker-for-offline/
 https://mobiforge.com/design-development/taking-web-offline-service-workers
-		</pre>
+				</pre>
+
+			</div>
+		</div><!-- end panel -->
 		
 	</div><!-- end container -->
 
