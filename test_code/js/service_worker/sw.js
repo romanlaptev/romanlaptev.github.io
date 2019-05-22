@@ -30,7 +30,7 @@ console.log("WORKER: fetch event in progress.", event.request.url);
 console.log(event, event.request.mode, event.request);
 	
 	var response;
-	//event.respondWith( 
+	event.respondWith( 
 /*	
 		caches.match( event.request ).catch(function() {
 			return fetch( event.request );
@@ -45,7 +45,7 @@ console.log(event, event.request.mode, event.request);
 			return fetch(event.request);			
 		})
 */
-
+/*
 		fetch(event.request)
 		.catch(() => {
 			return caches.open(CACHE_NAME)
@@ -53,21 +53,26 @@ console.log(event, event.request.mode, event.request);
 				return cache.match("offline.html");
 			});
 		})
+*/
 
-/*
-		// ищем запрашиваемый ресурс в хранилище кэша
+
+		// РёС‰РµРј Р·Р°РїСЂР°С€РёРІР°РµРјС‹Р№ СЂРµСЃСѓСЂСЃ РІ С…СЂР°РЅРёР»РёС‰Рµ РєСЌС€Р°
 		caches.match(event.request).then(function(cachedResponse) {
 console.log("TEST", cachedResponse);
-			// выдаём кэш, если он есть
+
+			// РІС‹РґР°С‘Рј РєСЌС€, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
 			if (cachedResponse) {
 				return cachedResponse;
 			}
 
-			// иначе запрашиваем из сети как обычно
-			return fetch(event.request);
+			// РёРЅР°С‡Рµ Р·Р°РїСЂР°С€РёРІР°РµРј РёР· СЃРµС‚Рё РєР°Рє РѕР±С‹С‡РЅРѕ
+			return fetch(event.request).catch(function(res){
+console.log( res );
+			});
+			
 		})
-*/			
-	//);
+
+	);
 	
 });//end event
 

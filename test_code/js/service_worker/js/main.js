@@ -35,6 +35,12 @@ if( window.location.protocol !== "https:"){
 
 
 registerServiceWorker();
+
+var field_swUrl = document.querySelector("#field-sw-url");
+var btn_swList = document.querySelector("#btn-sw-list");
+var btn_swUnReg = document.querySelector("#btn-sw-unregister");
+var btn_swUpd = document.querySelector("#btn-sw-update");
+
 defineEvents();
 
 function registerServiceWorker() {
@@ -159,8 +165,8 @@ console.log(err);
 	}//end event
 
 
-	var btn_put_cache = document.querySelector("#btn-put-cache");
-	btn_put_cache.onclick = function(e){
+	var btn_add_all_cache = document.querySelector("#btn-add-all-cache");
+	btn_add_all_cache.onclick = function(e){
 		if(!support){
 			return false;
 		}
@@ -174,7 +180,9 @@ func.logAlert( logMsg, "warning" );
 		caches.open(cacheName).then(function( cache ){// add all caching resource URLs
 		
 			cache.addAll( FILES_TO_CACHE ).then(function(){
-console.log("[ServiceWorker] Pre-caching offline recources", arguments);
+logMsg="Pre-caching offline recources: " + FILES_TO_CACHE.toString();
+func.logAlert( logMsg, "success" );
+console.log(FILES_TO_CACHE.toString() );
 				_getKeys( cacheName );
 			});
 			//return _cache;
@@ -256,6 +264,154 @@ func.logAlert( logMsg, "warning" );
 		});
 	}//end event
 
+
+	var btn_addKey = document.querySelector("#btn-add-key");
+	btn_addKey.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+		
+		var url = cacheKeyField.value;
+//console.log(cacheKey);
+		if( !url || url.length===0 ){
+logMsg="<b>URL</b> is empty (field cache key)....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+
+		caches.open( cacheName ).then(function( cache ){
+			cache.add( url ).then(function( response ) {//https://developer.mozilla.org/ru/docs/Web/API/Cache/add			
+console.log( response );
+logMsg="<b>URL " +url+ "</b> loaded and added to cache " +cacheName;
+func.logAlert( logMsg, "success" );
+			});
+		});
+	}//end event
+
+
+	var btn_test = document.querySelector("#btn-test");
+	btn_test.onclick = function(e){
+		if(!support){
+			return false;
+		}
+		var cacheName = cacheNameField.value;
+//console.log(cacheName);
+		if( !cacheName || cacheName.length===0 ){
+logMsg="<b>Object cache name</b> is empty....";
+func.logAlert( logMsg, "warning" );
+			return false;
+		}
+		
+		cacheKeyField.value = "pages/_star-wars-logo.jpg";//url for load image
+		var key = "pages/star-wars-logo.jpg";//cache image under different name
+		
+		var url = cacheKeyField.value;
+//console.log(url);
+
+		caches.open( cacheName ).then(function( cache ){
+			
+			fetch( url ).then(function (response){
+console.log( response );
+				if (!response.ok) {
+					throw new TypeError('bad response status');
+				} else {
+logMsg="Image by url "+url+" cached under name " + key+", reload page and see image....";
+func.log( "<p class='alert alert-success'>"+logMsg+"</p>", "info" );
+				}
+				return cache.put( key, response);
+			})				
+
+		});
+	}//end event
+
+
+
+	btn_swList.onclick = function(e){
+		navigator.serviceWorker.getRegistrations().then(function(registrations) {
+console.log( registrations );
+			_listSW( registrations );
+		})
+	}//end event
+
+	btn_swUnReg.onclick = function(e){
+		navigator.serviceWorker.getRegistrations().then(function(registrations) {
+console.log( registrations );
+
+			var url = field_swUrl.value;
+			if( !url || url.length===0 ){
+logMsg="<b>service worker URL</b> is empty...";
+func.logAlert( logMsg, "warning" );
+				return false;
+			}
+			
+			var result = false;
+			 for(let registration of registrations) {
+//console.log( registration.active.scriptURL, url, registration.active.scriptURL === url);
+				if( registration.active.scriptURL === url ){
+					result = true;
+					registration.unregister().then( function(res) {
+console.log(res);						
+						if( res){
+logMsg="service worker by URL:<b> "+registration.active.scriptURL+"</b> was unregister...";
+func.logAlert( logMsg, "success" );
+						} else {
+logMsg="service worker by URL:<b> "+registration.active.scriptURL+"</b> was NOT unregister...";
+func.logAlert( logMsg, "error" );
+						}
+						
+					});
+					break;
+				}
+			}//next
+			
+			if(!result){
+logMsg="service worker by URL:<b>"+url+"</b> NOT found...";
+func.logAlert( logMsg, "error" );
+			}
+			
+		});
+	}//end event
+
+	btn_swUpd.onclick = function(e){
+		navigator.serviceWorker.getRegistrations().then(function(registrations) {
+console.log( registrations );
+			var url = field_swUrl.value;
+			if( !url || url.length===0 ){
+logMsg="<b>service worker URL</b> is empty...";
+func.logAlert( logMsg, "warning" );
+				return false;
+			}
+			
+			var result = false;
+			 for(let registration of registrations) {
+//console.log( registration.active.scriptURL, url, registration.active.scriptURL === url);
+				if( registration.active.scriptURL === url ){
+					result = true;
+					registration.update().then( function(res) {
+console.log(res);						
+logMsg="service worker by URL:<b> "+registration.active.scriptURL+"</b> was updated...";
+func.logAlert( logMsg, "success" );
+					});
+					break;
+				}
+			}//next
+			
+			if(!result){
+logMsg="service worker by URL:<b>"+url+"</b> NOT found...";
+func.logAlert( logMsg, "error" );
+			}
+		})
+		
+	}//end event
+
+
 }//end defineEvents()
 
 function _getListCaches(){
@@ -310,3 +466,21 @@ func.logAlert( logMsg, "warning" );
 			});
 	});
 }//end _getKeys()
+
+
+function _listSW( registrations ){
+func.log("<h4>Servise workers list</h4>");
+	var html = "<div class='panel panel-primary'>{{list}}</div>";
+	var listHtml = "";
+	 for(var n=0; n < registrations.length; n++) {
+		 var registration = registrations[n];
+		var _scopeHtml = "<p><small>scope:</small> " + registration.scope + "</p>";
+		var _stateHtml = "<p><small>state:</small> " + registration.active.state + "</p>";
+		var _urlHtml = "<p><small>scriptURL:</small> " + registration.active.scriptURL + "</p>";
+		listHtml += "<div class='panel-body'>" + _scopeHtml + _stateHtml + _urlHtml+"</div>";
+	}//next
+	html = html.replace("{{list}}", listHtml);
+func.log(html);
+	
+}//end _listSW()
+
