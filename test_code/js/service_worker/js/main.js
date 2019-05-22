@@ -309,7 +309,7 @@ func.logAlert( logMsg, "warning" );
 			return false;
 		}
 		
-		cacheKeyField.value = "pages/_star-wars-logo.jpg";//url for load image
+		cacheKeyField.value = "pages/star-wars-logo_.jpg";//url for load image
 		var key = "pages/star-wars-logo.jpg";//cache image under different name
 		
 		var url = cacheKeyField.value;
