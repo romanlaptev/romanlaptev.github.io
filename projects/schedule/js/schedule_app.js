@@ -37,7 +37,9 @@ var webApp = {
 		"logMsg" : "",
 		
 		"copyRight": {
-			"url": "https://cors-anywhere.herokuapp.com/\
+			//"url": "https://cors-anywhere.herokuapp.com/\
+//https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
+			"url": "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json",
 			"data": ""
 		},
@@ -45,8 +47,18 @@ https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951e
 		"DB" : {
 			//"dataUrl" : "data/2019-04-26.xml",
 			//"dataUrl" : "data/2019-04-26.json",
-
+/*
 			"dataUrl" : "https://cors-anywhere.herokuapp.com/\
+https://api.rasp.yandex.net/v3.0/search/?\
+from={{from_code}}&\
+to={{to_code}}&\
+apikey={{apikey}}&\
+date={{date}}&\
+transport_types=suburban&\
+system=esr&\
+show_systems=esr",
+*/
+			"dataUrl" : "https://romanlaptev-cors.herokuapp.com/\
 https://api.rasp.yandex.net/v3.0/search/?\
 from={{from_code}}&\
 to={{to_code}}&\
