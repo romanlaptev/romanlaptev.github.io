@@ -12,17 +12,7 @@ ini_set('display_errors', 1);
 //echo "</pre>";
 
 $_vars=array();
-// $_vars["config"]["dbHost"] = "localhost";
-// $_vars["config"]["dbUser"] = "root";
-// $_vars["config"]["dbPassword"] = "master";
-// $_vars["config"]["dbName"] = "db1";
-
-//https://romanlaptev.herokuapp.com/
-$_vars["config"]["dbHost"] = "ec2-184-73-189-190.compute-1.amazonaws.com";
-$_vars["config"]["dbPort"] = "5432";
-$_vars["config"]["dbUser"] = "aejvwysqgsboeb";
-$_vars["config"]["dbPassword"] = "55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c";
-$_vars["config"]["dbName"] = "d7c534mf7866o2";
+include("auth_postgresql.php");
 
 $_vars["log"] = array();
 
@@ -50,6 +40,10 @@ $_vars["log"] = array();
 		$_vars["dbInfo"][]["message"] = "database server version: " . $rows[0]["setting"];
 	//}
 	
+//--------------------------------------
+
+//--------------------------------------
+
 	// if($_vars["useMySQL"] == 1){
 		// mysql_close ( $_vars["link"] );
 	// }

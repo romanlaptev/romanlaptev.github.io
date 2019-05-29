@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test media events</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	<script src="../lib/shared_functions.js"></script>
+<script>
+	var func = sharedFunc();
+console.log("func:", func);
+var logMsg;
+
+window.onload = function(){
+	func.log( "<h3>"+navigator.userAgent +"</h3>");
+	
+	var btn_log = func.getById("btn-clear-log");
+	var log = func.getById("log");
+	btn_log.onclick = function(e){
+//console.log(e);	
+		log.innerHTML = "";
+	}//end event
+//--------------------------
+
+	var player = func.getById("player3");
+	
+	player.onloadstart = function(e){//Fires when the browser starts looking for the audio/video	
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onloadeddata = function(e){
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onloadedmetadata = function(e){
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+/*	
+	player.oncanplaythrough = function(e){
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+*/	
+	player.addEventListener("canplaythrough", function (e) {
+//console.log(e);	
+		logMsg= "event: " + e.type;
+console.log(logMsg);
+	}, false);
+	
+// If the video is in the cache of the browser,
+// the 'canplaythrough' event might have been triggered
+// before we registered the event handler.
+/*
+if (player.readyState > 3) {
+	func.logAlert( "event 'canplaythrough'");
+}
+*/	
+//--------------------------
+
+	player.oneror = function(e){
+console.log(e);
+		func.logAlert( "event: " + e.type, "error");
+	}//end event
+//--------------------------
+
+	player.onended = function(e){
+console.log(e);
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onpause = function(e){
+//console.log(e);
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onplay = function(e){
+console.log(e);
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onvolumechange = function(e){
+		logMsg= "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeupdate = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeseeking = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeseeked = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.onwaiting = function(e){//Fires when the video stops because it needs to buffer the next frame
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+
+
+}//end load
+
+</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>Test media events</h1>
+	</div>
+	
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+<br>
+	<div class="panel panel-primary">
+		<div class="panel-heading"><p>video.mp4</p></div>
+		<div class="panel-body">
+<!--
+preload="auto/metadata/none"
+-->
+		<video id="player3" width="560" height="315" controls="controls" poster="JWPlayer/preview.jpg" preload="auto">
+			<source src="video/video.mp4" type="video/mp4"/>
+Tag <b>video</b> not supported by this browser.... 
+		</video>
+		<br>
+<button onclick="document.getElementById('player3').play()">Play</button>
+<button onclick="document.getElementById('player3').pause()">Pause</button>
+		
+		</div>
+	</div>
+	
+	<pre>
+https://metanit.com/web/html5/7.3.php
+Media API. Управление видео из JavaScript
+
+https://www.w3schools.com/TAGS/ref_av_dom.asp
+HTML Audio/Video DOM Reference
+-------------------
+    canplaythrough: это событие срабатывает после загрузки страницы, если браузер определит, что он может воспроизводить это видео/аудио
+
+    pause: событие срабатывает, когда воспроизведение мультимедиа приостанавливается, и оно переводится в состояние "paused"
+
+    play: событие срабатывает, когда начинается воспроизведение файла
+
+    volumechange: срабатывает при изменении уровня звука мультимедиа
+
+    ended: срабатывает при окончании воспроизведения
+
+    timeupdate: +срабатывает при изменении времени воспроизведения
+	Fires when the current playback position has changed
+
+    error: генерируется при возникновении ошибки
+
+    loadeddata: срабатывает, когда будет загружен первый фрейм видеофайла
+
+    loadedmetadata: срабатывает после загрузки метаданных мультимедиа (длительность воспроизведения, размеры видео и т.д.)
+
+    seeking: срабатывает, когда пользователь начинает перемещать курсор по шкале воспроизведения для перемещения к новому месту аудио- или видеофайла
+
+    seeked: срабатывает, когда пользователь завершил перемещение к новому месту на шкале воспроизведения
+
+	</pre>
+	
+</div><!-- end container -->
+</body>
+</html>

@@ -19,7 +19,13 @@ $_vars=array();
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, inital-scale=1.0">
-	<link rel="stylesheet" href="/css/bootstrap337.min.css">
+	<link rel="stylesheet" href="../css/bootstrap337.min.css">
+<style>
+.alert {
+	margin-bottom: 3px !important;
+	padding: 10px !important;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -37,17 +43,30 @@ echo PHP_VERSION;
 				</div>
 				<div>PHP_OS:<?php echo PHP_OS;?></div>
 			</div>
+			
+			<div class="panel-body">
+<p class="alert alert-info">SERVER_ADDR: <?php echo $_SERVER["SERVER_ADDR"] ?></p>
+<p class="alert alert-info">SERVER_NAME: <?php echo $_SERVER["SERVER_NAME"] ?></p>
+			</div>
+			
 		<div>
-		
-		<pre>
-		</pre>
 
 <?php
-$_vars["config"]["dbHost"] = "ec2-184-73-189-190.compute-1.amazonaws.com";
-$_vars["config"]["dbPort"] = "5432";
-$_vars["config"]["dbUser"] = "aejvwysqgsboeb";
-$_vars["config"]["dbPassword"] = "55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c";
-$_vars["config"]["dbName"] = "d7c534mf7866o2";
+//include("../api/auth_postgresql.php");
+if( $_SERVER["SERVER_NAME"] == "vbox5"){
+	$_vars["config"]["dbHost"] = "localhost";
+	$_vars["config"]["dbPort"] = "5432";
+	$_vars["config"]["dbUser"] = "postgres";
+	$_vars["config"]["dbPassword"] = "master";
+	$_vars["config"]["dbName"] = "";
+}
+if( $_SERVER["SERVER_NAME"] == "romanlaptev.herokuapp.com"){
+	$_vars["config"]["dbHost"] = "ec2-184-73-189-190.compute-1.amazonaws.com";
+	$_vars["config"]["dbPort"] = "5432";
+	$_vars["config"]["dbUser"] = "aejvwysqgsboeb";
+	$_vars["config"]["dbPassword"] = "55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c";
+	$_vars["config"]["dbName"] = "d7c534mf7866o2";
+}
 
 //Port    
 //URI    postgres://aejvwysqgsboeb:55b5c22131c1d612574edb5dea0b63433293d828ab1f77196f52eb0a849a577c@ec2-184-73-189-190.compute-1.amazonaws.com:5432/d7c534mf7866o2
@@ -62,11 +81,11 @@ $_vars["config"]["dbName"] = "d7c534mf7866o2";
                // )
 // );
 
-echo PDO::ATTR_DRIVER_NAME;
+echo "<p class='alert alert-info'>PDO::ATTR_DRIVER_NAME: ".PDO::ATTR_DRIVER_NAME."<p>";
 if (!defined('PDO::ATTR_DRIVER_NAME')) {
-	// $PDOstate = "<h1>PDO unavailable</h1>";
+	$PDOstate = "PDO unavailable";
 } else {
-	$PDOstate = "<h1>PDO available</h1>";
+	$PDOstate = "PDO available";
 	
 	$dbHost = $_vars["config"]["dbHost"];
 	$dbPort = $_vars["config"]["dbPort"];
@@ -74,16 +93,16 @@ if (!defined('PDO::ATTR_DRIVER_NAME')) {
 	$dbPassword = $_vars["config"]["dbPassword"];
 	$dbName = $_vars["config"]["dbName"];
 	
-	//$dsn = "mysql:host={$dbHost};dbname={$dbName}";
 	$dsn = "pgsql:dbname='{$dbName}'; host='{$dbHost}'; port='{$dbPort}'";
+	//$dsn = "pgsql:host='{$dbHost}'; port='{$dbPort}'";
 	
 	try{
 		$_vars["link"] = new PDO( $dsn, $dbUser, $dbPassword );
-echo "Connect!";		
+		echo "<p class='alert alert-success'>connect successful.... DSN: ".$dsn."<p>";
 		_testPDO();
 		unset ($connection);
 	} catch( PDOException $exception ) {
-		echo $exception->getMessage();
+		echo "<p class='alert alert-danger'>".$exception->getMessage()."<p>";
 	}
 	
 }
@@ -134,9 +153,9 @@ function _testPDO(){
 	$_vars["dbVersion"] .= $row[0];
 	
 	$rows  = $result->fetchAll( PDO::FETCH_ASSOC );
-echo "<pre>";	
-print_r($rows);
-echo "</pre>";	
+// echo "<pre>";	
+// print_r($rows);
+// echo "</pre>";	
 //----------------------------------------------
 
 	$_vars["dbVars"] = "";
@@ -189,7 +208,7 @@ return;
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
-			<h2><?php echo $PDOstate; ?></h2>	
+			<h2>PDOstate: <?php echo $PDOstate; ?></h2>	
 		</div>
 
 		<div class="panel-body">
@@ -200,7 +219,7 @@ return;
 		</div>
 		
 		<div class="panel-body">
-			<h3> Connect to <?php echo $_vars["config"]["dbHost"] ?></h3>
+			<p class="alert alert-info">Connect to <?php echo $_vars["config"]["dbHost"] ?></p>
 		</div>
 <!--		
 		<div class="panel-body">

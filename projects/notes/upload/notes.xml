@@ -1,20 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="eng/rus books" author="anonymous" ip="37.193.108.45" client_date="2018-04-24 10:56:34" server_date="2018-04-24 03:57:29" >
+	<note title="301 редирект, .htaccess                                                                                                                                                                                                                                        " author="anonymous           " ip="10.30.222.9         " client_date="2019-05-29" server_date="2019-05-29" >
 		<text_message>
-[url]http://readli.net/chitat-online/?b=102432&amp;pg=1   |   Роберт Энсон Хайнлайн.Гражданин Галактики [/url]
-[br]
-[url]https://royallib.com/read/Heinlein_Robert/Citizen_of_the_Galaxy.html#0  |  Robert A. Heinlein.Citizen of the Galaxy [/url]
-[br]
-[url] http://samlib.ru/g/gvozdika/beauty.shtml       |       Фицджеральд Ф.С. Последняя красавица Юга!!![/url]
-[br]
-[url] https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html     |     Short Stories, by F. Scott Fitzgerald. The Last of the Belles [/url]
+[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
+[code]
+Как сделать 301 редирект
+Файл .htaccess
+301 редирект – корректная переадресация через htaccess и php header
+.htaccess: , вывод ошибок PHP
+
+Redirect /index.php http://example.com/index.php
+Redirect /data http://www.example.com/data 
+=================================
+[/code]
 		</text_message>
 	</note>
-	
-	<note title="GIT" author="anonymous" ip="37.193.108.45" client_date="2018-04-24 10:58:00" server_date="2018-04-24 03:58:55" >
+	<note title="links collection                                                                                                                                                                                                                                               " author="anonymous           " ip="10.63.250.242       " client_date="2019-05-29" server_date="2019-05-29" >
 		<text_message>
-[url] https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej  | Git - Как исправить HEAD detached from [/url]
+[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+		</text_message>
+	</note>
+	<note title="Debian 7, wheezy, list repo                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-28" server_date="2019-05-27" >
+		<text_message>
+
+#/etc/apt/sources.list[br]
+deb http://archive.debian.org/debian/ wheezy main[br]
+deb-src http://archive.debian.org/debian/ wheezy main[br]
+deb http://security.debian.org/ wheezy/updates main contrib[br]
+deb-src http://security.debian.org/ wheezy/updates main contrib[br]
+		
+		</text_message>
+	</note>
+	<note title="PostgreSQL                                                                                                                                                                                                                                                     " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-28" server_date="2019-05-27" >
+		<text_message>
+
+#http://hutpu4.net/linux-open-source/postgresql-phppgadmin-for-debian-ubuntu.html
+[br]
+apt-get install postgresql[br]
+apt-get install postgresql-contrib[br]
+apt-get install php5-pgsql[br]
+		
+		</text_message>
+	</note>
+	<note title="nslookup, узнать IP-адрес интернет-ресурса                                                                                                                                                                                                                     " author="anonymous           " ip="10.69.190.141       " client_date="2019-05-28" server_date="2019-05-28" >
+		<text_message>
+узнать IP-адрес интернет-ресурса можно введя в ту же командную строку команду nslookup Book-Science.ru
+		</text_message>
+	</note>
+	<note title="eng/rus books                                                                                                                                                                                                                                                  " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-06" server_date="2019-05-06" >
+		<text_message>
+
+[url]http://readli.net/chitat-online/?b=102432&amp;pg=1    |    Роберт Энсон Хайнлайн.Гражданин Галактики [/url]
+[br][br]
+[url]https://royallib.com/read/Heinlein_Robert/Citizen_of_the_Galaxy.html#0   |   Robert A. Heinlein.Citizen of the Galaxy [/url]
+[br]
+[url] http://samlib.ru/g/gvozdika/beauty.shtml        |        Фицджеральд Ф.С. Последняя красавица Юга!!![/url]
+[br]
+[url] https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html      |      Short Stories, by F. Scott Fitzgerald. The Last of the Belles [/url]
+		
+		</text_message>
+	</note>
+	<note title="GIT                                                                                                                                                                                                                                                            " author="anonymous           " ip="37.193.108.45       " client_date="2018-12-27" server_date="2018-12-27" >
+		<text_message>
+
+[url] http://evtuhovich.ru/blog/2009/04/03/git-reset/ | Отмена последнего коммита в git [/url] 
+[code]
+git reset --hard HEAD^
+[/code]
+
+=================
+[url] https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej   |  Git - Как исправить HEAD detached from [/url]
 
 [code]
 При работе с Git может возникнуть такая ситуация: команда git push не заливает изменения на сервер, а команда git status показывает:
@@ -56,70 +115,88 @@ git push -u origin master
 #push an existing repository from the command line 
 git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
 [/code]
+		
 		</text_message>
 	</note>
-	
-	<note title="windows FAQ, GPT" author="anonymous" ip="37.193.108.45" client_date="2018-03-20 14:49:40" server_date="2018-03-20 07:53:24" >
+	<note title="art,  Francesco Bergamini                                                                                                                                                                                                                                      " author="anonymous           " ip="37.193.108.45       " client_date="2018-03-20" server_date="2018-03-20" >
 		<text_message>
-[url]https://getpocket.com/a/read/2116352733 | В чем разница между GPT и MBR разделами диска[/url]
-		</text_message>
-	</note>
-	<note title="art,  Francesco Bergamini" author="anonymous" ip="37.193.108.45" client_date="2018-03-20 14:44:15" server_date="2018-03-20 07:47:59" >
-		<text_message>
+
+
 Francesco Bergamini (Italian, 1815–1883)[br]
 [url] http://www.artnet.com/artists/francesco-bergamini/ | www.artnet.com[/url]
+		
+		
 		</text_message>
 	</note>
-	<note title="javascript, regExp" author="anonymous" ip="37.193.108.45" client_date="2018-02-14 14:41:28" server_date="2018-02-14 07:44:35" >
+	<note title="windows FAQ, GPT                                                                                                                                                                                                                                               " author="anonymous           " ip="37.193.108.45       " client_date="2018-03-20" server_date="2018-03-20" >
 		<text_message>
+
+
+[url]https://getpocket.com/a/read/2116352733 | В чем разница между GPT и MBR разделами диска[/url]
+		
+		
+		</text_message>
+	</note>
+	<note title="javascript, regExp                                                                                                                                                                                                                                             " author="anonymous           " ip="37.193.108.45       " client_date="2018-02-14" server_date="2018-02-14" >
+		<text_message>
+
+
 убрать из разметки все комментарии
 [code]
 var value = xmlNodes[n][&quot;html_code&quot;]
-.replace(/&lt;!--([\s\S]*?)--&gt;/mig,&quot;&quot;)//remove comments
-.replace(/\t/g,&quot;&quot;)
-.replace(/\n/g,&quot;&quot;); 
+.replace(/&lt;!--([\\s\\S]*?)--&gt;/mig,&quot;&quot;)//remove comments
+.replace(/\\t/g,&quot;&quot;)
+.replace(/\\n/g,&quot;&quot;); 
 [/code]
+		
+		
 		</text_message>
 	</note>
-	<note title="Вызов jsp из Servlet" author="anonymous" ip="37.193.108.45" client_date="2017-10-02 16:04:58" server_date="2017-10-02 09:08:40" >
+	<note title="Вызов jsp из Servlet                                                                                                                                                                                                                                           " author="anonymous           " ip="37.193.108.45       " client_date="2017-10-02" server_date="2017-10-02" >
 		<text_message>
+
+
 [url]https://toster.ru/q/284566 | Вызов jsp из Servlet/ JAVA[/url]
 [code]
 Сервлет
 
-@WebServlet(urlPatterns = &amp;quot;/&amp;quot;) // javax.servlet-api 3.0
+@WebServlet(urlPatterns = &quot;/&quot;) // javax.servlet-api 3.0
 public class HomeServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    List&amp;lt;String&amp;gt; users = Arrays.asList(&amp;quot;Vaya&amp;quot;, &amp;quot;Petya&amp;quot;, &amp;quot;Fedya&amp;quot;);
+    List&lt;String&gt; users = Arrays.asList(&quot;Vaya&quot;, &quot;Petya&quot;, &quot;Fedya&quot;);
 
-    req.setAttribute(&amp;quot;users&amp;quot;, users); // с помощью атрибутов передаются данные между сервлетами
+    req.setAttribute(&quot;users&quot;, users); // с помощью атрибутов передаются данные между сервлетами
 
-    req.getRequestDispatcher(&amp;quot;/home.jsp&amp;quot;).forward(req,resp);
+    req.getRequestDispatcher(&quot;/home.jsp&quot;).forward(req,resp);
   }
 }
 ============
 JSP /home.jsp
 
-&amp;lt;%@ taglib uri=&amp;quot;http://java.sun.com/jsp/jstl/core&amp;quot; prefix=&amp;quot;c&amp;quot; %&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;body&amp;gt;
-&amp;lt;h2&amp;gt;Hello World!&amp;lt;/h2&amp;gt;
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;Hello World!&lt;/h2&gt;
 
-&amp;lt;c:forEach items=&amp;quot;${users}&amp;quot; var=&amp;quot;usr&amp;quot;&amp;gt; 
-    &amp;lt;p&amp;gt;${usr}&amp;lt;/p&amp;gt;
-&amp;lt;/c:forEach&amp;gt;
+&lt;c:forEach items=&quot;${users}&quot; var=&quot;usr&quot;&gt; 
+    &lt;p&gt;${usr}&lt;/p&gt;
+&lt;/c:forEach&gt;
 
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
 [/code]
+		
+		
 		</text_message>
 	</note>
-	<note title="cmd, get filename from args" author="anonymous" ip="37.193.108.45" client_date="2017-09-28 09:25:24" server_date="2017-09-28 02:29:00" >
+	<note title="cmd, get filename from args                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-28" server_date="2017-09-28" >
 		<text_message>
+
+
 [url]http://www.cyberforum.ru/cmd-bat/thread55211.html   |   FAQ по файлам BAT/CMD - Batch (CMD/BAT) - CyberForum.ru [/url]
 [code]
  при использовании нумерованных переменных %0-%9 можно использовать некоторые модификаторы:
@@ -145,19 +222,22 @@ JSP /home.jsp
 [br]
 compile.cmd Add.java
 [code]
-javac %1 -d c:\temp\
-pause
-java -cp c:\temp %~n1
+javac %1 -d c:\\temppause
+java -cp c:\\temp %~n1
 
 [/code]
+		
+		
 		</text_message>
 	</note>
-	<note title="opera 12, config" author="anonymous" ip="37.192.115.96" client_date="2017-09-24 17:43:57" server_date="2017-09-24 11:46:21" >
+	<note title="opera 12, config                                                                                                                                                                                                                                               " author="anonymous           " ip="37.192.115.96       " client_date="2017-09-24" server_date="2017-09-24" >
 		<text_message>
+
+
 [code]
  Opera cache 
 
-Рассмотрим настройки по кэшу, а так же выставим значения влияющие на производительность и снижающие потребление памяти. Данные параметры рассчитаны на безлимитный интернет, не ниже 1 мб\с. Сейчас технологии шагнули далеко и порой легче скачать что то с интернета, чем заставлять старенький компьютер судорожно шерстить по фрагментированному винчестеру в поисках данных в кэше.
+Рассмотрим настройки по кэшу, а так же выставим значения влияющие на производительность и снижающие потребление памяти. Данные параметры рассчитаны на безлимитный интернет, не ниже 1 мб\\с. Сейчас технологии шагнули далеко и порой легче скачать что то с интернета, чем заставлять старенький компьютер судорожно шерстить по фрагментированному винчестеру в поисках данных в кэше.
 
 Итак, в адресной строке набираем opera:config и меняем значения: 
 Редактор настроек opera:config
@@ -245,22 +325,14 @@ java -cp c:\temp %~n1
 
 soft-tuning.ru © 2013-2017
 [/code]
-		</text_message>
-	</note>
-	<note title="no subject" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 12:55:38" server_date="2017-09-22 14:55:37" >
-		<text_message>
-
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show  |  Как изменить COLLATE у базы данных?[/url]
-[br]
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/  |  Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
-[br]
-[url]http://www.cyberforum.ru/ado-net/thread251180.html  |  Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
-
+		
 		
 		</text_message>
 	</note>
-	<note title="config, windows server" author="anonymous" ip="192.168.56.1" client_date="2017-09-22 12:52:58" server_date="2017-09-22 14:52:57" >
+	<note title="config, windows server                                                                                                                                                                                                                                         " author="anonymous           " ip="192.168.56.1        " client_date="2017-09-22" server_date="2017-09-22" >
 		<text_message>
+
+
 
 
 Как отключить Ctrl-Alt-Del при входе в Windows Server 2003
@@ -303,21 +375,14 @@ soft-tuning.ru © 2013-2017
 [/code]
 		
 		
-		</text_message>
-	</note>
-	<note title="traning" author="anonymous" ip="37.193.108.45" client_date="2017-09-22 08:17:03" server_date="2017-09-22 01:20:32" >
-		<text_message>
-
-
-
-[url]http://recipehealth.ru/sportzal/bodybuilding/bodibilding-bez-otyagoshheniy-uprazhneniya-s-rezinovyim-zhgutom.html | упражнения с резиновым жгутом[/url]
-		
 		
 		
 		</text_message>
 	</note>
-	<note title="js code" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:27:56" server_date="2017-09-14 02:31:17" >
+	<note title="js code                                                                                                                                                                                                                                                        " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-14" server_date="2017-09-14" >
 		<text_message>
+
+
 
 
 
@@ -375,102 +440,14 @@ console.log(&quot;result_build = &quot; + result_build);
 		
 		
 		
-		</text_message>
-	</note>
-	<note title="playlist" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:17:17" server_date="2017-09-14 02:20:38" >
-		<text_message>
-
-
-
-[code]
-The Femme Fatale Dark Cabaret Collection 
-https://www.youtube.com/watch?v=z4DYcIQ1v7M 
-Playlist: 
-0:00:00 Vermillion Lies - Circus Fish 
-0:02:35 Clare Fader - Animal Charm 
-0:06:57 Johnny Hollow - Worse Things 
-0:10:32 Amoree Lovell - The Alphabet Serial Song 
-0:13:06 Jill Tracy - The Fine Art of Poisoning 
-0:18:36 Tragic Tantrum Cabaret - The Silent 
-0:22:16 Alice Francis - Shoot Him Down 
-0:25:55 The Electric Swing Circus - Harvey 
-0:29:56 Circus Contraption - 23 Beers 
-0:33:16 Birdeatsbaby - China Doll 
-0:36:49 Rasputina - When I Was a Young Girl 
-0:38:28 The Dresden Dolls - Missed Me 
-0:43:20 Circus Contraption - Why Can't the Clowns Get Along 
-0:45:30 Katzenjammer - Demon Kitty Rag 
-0:49:31 Red Skunk Band - The Vamp of New Orleans 
-0:53:54 Eliza Carthy - Blood on My Boots 
-1:00:15 Circus Contraption - The Bird Girl 
- 
------------ 
-The Singing Vagabond Playlist 
-https://www.youtube.com/watch?v=gt4SYFt7Ai8 
-0:00 Dirt Road Life - The Moonlighters 
-3:41 Down Down Down - Lake of Stew 
-8:12 Honey In The Hair - Blackbird Raum 
-11:31 Magpie - Rapskallion 
-15:40 Hungry Hungry Hobos - Rail Yard Ghosts 
-18:18 The Letter - Xavier Rudd 
-22:26 Cold Ground - Les Pantalons 
-25:58 Weary Head - The Resonant Rogues 
-29:19 Sacred Heart of Mary - Mojo Juju and the Snake Oil Merchants 
- 
-------- 
-Modern Noir Songs 
-https://www.youtube.com/watch?v=AU_PuF59E5g&amp;t=70s 
-Playlist: 
-0:00 San Telmo - Tarantella 
-3:12 Goodnight Moon - Shivaree 
-7:15 My Love - Kovacs 
-11:15 Hero - Lissie 
-14:50 Rosy Path - Elysian Fields 
-18:00 Cold Blooded - The Pretty Reckless 
-21:05 Happy - Kat Frankie 
-26:04 Build the Fire - Kal Cahoone 
-29:37 Between the Bars - Seth Avett &amp; Jessica Lea Mayfield 
-32:05 Handbrake - Micatone 
-36:06 Temptation - Clara Bakker (Tom Waits cover) 
-39:42 Think Twice - Groove Armada 
-45:43 Just - Ghostlight Orchestra 
-51:56 Beside the Shalimar - Kal Cahoone 
-56:16 Wicked Game - Hula-Hifi 
------ 
-The Deadly Elegant Dark Cabaret/Folk Song Collection 
-https://www.youtube.com/watch?v=IryFtcBJeZE&amp;t=2483s 
-0:00 The Hearse Song - Brillig 
-1:54 Rivolta Silenziosa - Humanwine 
-5:50 No More Room - The Scarring Party 
-7:25 Turpentine - This Way to the Egress 
-11:31 Dr. Flynn - Caravan of Thieves 
-14:26 If I Told You Once - Circus Contraption 
-19:04 The Silent - Tragic Tantrum Cabaret 
-22:44 Evil Night Together - Jill Tracy 
-27:18 One More Smoke - Reverend Glasseye 
-29:45 Mr. Green - This Way to the Egress 
-34:30 Rattlesnake - Caravan of Thieves 
-38:20 Two of Us - Curtis Eller's American Circus 
-43:22 Anywhere - The Scarring Party 
-45:55 Wake Up - Humanwine 
-50:47 Angels in Cages - Caravan of Thieves 
-55:08 The Straight Razor Cabaret - Voltaire 
-58:36 Saint - This Way to the Egress 
-1:04:38 Hot Potato - Circus Contraption 
-1:09:35 Death Blues - The Dead Brothers 
-1:12:35 Graveyard - Devil Makes Three 
-1:15:59 Sometimes Sunshine - Revue Noir 
-1:20:00 Revelator - The Scarring Party 
-1:22:50 Live Through Your Strings - This Way to the Egress 
-1:25:55 Sugar in My Coffin - Curtis Eller's American Circus
-[/code]
-		
 		
 		
 		</text_message>
 	</note>
-	<note title="config, linux, xrandr" author="anonymous" ip="37.193.108.45" client_date="2017-09-14 09:14:51" server_date="2017-09-14 02:18:12" >
+	<note title="config, linux, xrandr                                                                                                                                                                                                                                          " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-14" server_date="2017-09-14" >
 		<text_message>
+
+
 
 
 
@@ -499,7 +476,7 @@ xrandr  --newmode &quot;1600x900_60.00&quot;  118.25  1600 1696 1856 2112  900 9
 Код: [Выделить] 
 xrandr --addmode VGA1 1600x900_60.00 
  
-5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система → Параметры → Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
+5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система &gt; Параметры &gt; Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
  
 Код: [Выделить] 
 xrandr --output VGA1 --mode 1600x900_60.00 
@@ -508,10 +485,14 @@ xrandr --output VGA1 --mode 1600x900_60.00
 		
 		
 		
+		
+		
 		</text_message>
 	</note>
-	<note title="apache + mod_python" author="anonymous" ip="37.193.108.45" client_date="2017-08-30 09:15:16" server_date="2017-08-30 02:18:20" >
+	<note title="apache + mod_python                                                                                                                                                                                                                                            " author="anonymous           " ip="37.193.108.45       " client_date="2017-08-30" server_date="2017-08-30" >
 		<text_message>
+
+
 
 
 
@@ -536,8 +517,8 @@ vi /etc/apache2/sites-available/default
 vi /var/www/test_mod_python.py
 
 def index(req):
-	# req.content_type = 'text/plain'
-	req.content_type = 'text/html'
+	# req.content_type = &#39;text/plain&#39;
+	req.content_type = &#39;text/html&#39;
 	html = &quot;&lt;h1&gt;Test Apache2 + mod_python&lt;/h1&gt;&quot;
 	req.write( html )
 	test = 2+3
@@ -571,10 +552,14 @@ for n1 in range(0,10):
 		
 		
 		
+		
+		
 		</text_message>
 	</note>
-	<note title="windows faq" author="anonymous" ip="37.193.108.45" client_date="2017-08-28 15:10:44" server_date="2017-08-28 08:13:45" >
+	<note title="windows faq                                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2017-08-28" server_date="2017-08-28" >
 		<text_message>
+
+
 
 
 
@@ -586,38 +571,13 @@ for n1 in range(0,10):
 1. выделить группу файлов
 2. Нажать Shift (левый или правый)
 3. Удерживая Shift, вызвать контекстное меню
-4. Там будет команда &amp;quot;копировать как путь&amp;quot;. Ее и использовать.
+4. Там будет команда &quot;копировать как путь&quot;. Ее и использовать.
 Далее можно вставлять полные пути всех файлов в блокнот, excel, куда 
 угодно.
 
 -------------------------
 Настройка отображения меню в Проводнике
-«Упорядочить» ⇒ «Представление»  - пункт «Строка меню»
-[/code]
-		
-		
-		
-		
-		</text_message>
-	</note>
-	<note title="no subject" author="" ip="" client_date="2017-08-24 21:09:46" server_date="2017-08-24 14:11:58" >
-		<text_message>
-
-
-
-
-
-
-[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess | Директивы_.htaccess[/url]
-[code]
-Как сделать 301 редирект
-Файл .htaccess
-301 редирект – корректная переадресация через htaccess и php header
-.htaccess: , вывод ошибок PHP
-
-Redirect /index.php http://example.com/index.php
-Redirect /data http://www.example.com/data 
-=================================
+«Упорядочить» ? «Представление»  - пункт «Строка меню»
 [/code]
 		
 		
@@ -627,8 +587,10 @@ Redirect /data http://www.example.com/data
 		
 		</text_message>
 	</note>
-	<note title="test filter" author="" ip="" client_date="2017-08-24 15:36:32" server_date="2017-08-24 08:39:29" >
+	<note title="test filter                                                                                                                                                                                                                                                    " author="                    " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
 		<text_message>
+
+
 
 
 
@@ -644,36 +606,14 @@ Redirect /data http://www.example.com/data
 		
 		
 		
-		</text_message>
-	</note>
-	<note title="test filter" author="" ip="" client_date="2017-08-24 15:35:23" server_date="2017-08-24 08:38:20" >
-		<text_message>
-
-
-
-
-
-
-[code]
-https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;id=1381 
-PDO против MySQLi. Что выбрать? 
-
-https://habrahabr.ru/post/141127/ 
-MySQLi раскладываем все по полочкам 
-
-http://php.net/manual/ru/book.pdo.php 
-Объекты данных PHP
-[/code]
-		
-		
-		
-		
 		
 		
 		</text_message>
 	</note>
-	<note title="javascript, test Modernizr" author="anonymous" ip="" client_date="2017-08-24 13:13:56" server_date="2017-08-24 15:13:54" >
+	<note title="javascript, test Modernizr                                                                                                                                                                                                                                     " author="anonymous           " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
 		<text_message>
+
+
 
 
 
@@ -682,22 +622,24 @@ http://php.net/manual/ru/book.pdo.php
 
 [code]
 &lt;!DOCTYPE html&gt;
-&lt;!--[if lt IE 7]&gt;      &lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class=&#39;no-js lt-ie9 lt-ie8 lt-ie7&#39;&gt;
 &lt;![endif]--&gt;
-&lt;!--[if IE 7]&gt;         &lt;html class='no-js lt-ie9 lt-ie8'&gt; &lt;![endif]--&gt;
-&lt;!--[if IE 8]&gt;         &lt;html class='no-js lt-ie9'&gt; &lt;![endif]--&gt;
-&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class='no-js'&gt; &lt;!--&lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class=&#39;no-js lt-ie9 lt-ie8&#39;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class=&#39;no-js lt-ie9&#39;&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html class=&#39;no-js&#39;&gt; &lt;!--&lt;![endif]--&gt;
 &lt;head&gt;
-&lt;meta charset='utf-8'&gt;
+&lt;meta charset=&#39;utf-8&#39;&gt;
 &lt;title&gt;test Modernizr&lt;/title&gt;
 &lt;script
-src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&gt;&lt;/script&gt;
+src=&#39;http://yastatic.net/modernizr/2.7.1/modernizr.min.js&#39;&gt;&lt;/script&gt;
 &lt;/head&gt;
 
 &lt;h1&gt;test Modernizr&lt;/h1&gt;
 
 &lt;/html&gt;
 [/code]
+		
+		
 		
 		
 		
