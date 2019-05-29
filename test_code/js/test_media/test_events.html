@@ -27,21 +27,102 @@ window.onload = function(){
 
 	var player = func.getById("player3");
 	
+	player.onloadstart = function(e){//Fires when the browser starts looking for the audio/video	
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onloadeddata = function(e){
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onloadedmetadata = function(e){
+console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+/*	
 	player.oncanplaythrough = function(e){
 console.log(e);	
+		func.logAlert( "event: " + e.type, "info");
 	}//end event
-	//videoEl.addEventListener('canplaythrough', function () {
-		//vidControls.classList.remove('hidden');
-		//videoEl.volume = volumeControl.value;
-	//}, false);
+*/	
+	player.addEventListener("canplaythrough", function (e) {
+//console.log(e);	
+		logMsg= "event: " + e.type;
+console.log(logMsg);
+	}, false);
+	
+// If the video is in the cache of the browser,
+// the 'canplaythrough' event might have been triggered
+// before we registered the event handler.
+/*
+if (player.readyState > 3) {
+	func.logAlert( "event 'canplaythrough'");
+}
+*/	
+//--------------------------
+
+	player.oneror = function(e){
+console.log(e);
+		func.logAlert( "event: " + e.type, "error");
+	}//end event
 //--------------------------
 
 	player.onended = function(e){
 console.log(e);
-		func.logAlert( "playback " + e.type, "info");
+		func.logAlert( "event: " + e.type, "info");
 	}//end event
 //--------------------------
-		
+
+	player.onpause = function(e){
+//console.log(e);
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onplay = function(e){
+console.log(e);
+		func.logAlert( "event: " + e.type, "info");
+	}//end event
+//--------------------------
+
+	player.onvolumechange = function(e){
+		logMsg= "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeupdate = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeseeking = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.ontimeseeked = function(e){
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+	player.onwaiting = function(e){//Fires when the video stops because it needs to buffer the next frame
+		logMsg = "event: " + e.type;
+console.log(logMsg);
+	}//end event
+//--------------------------
+
+
+
 }//end load
 
 </script>
@@ -85,6 +166,30 @@ Media API. Управление видео из JavaScript
 
 https://www.w3schools.com/TAGS/ref_av_dom.asp
 HTML Audio/Video DOM Reference
+-------------------
+    canplaythrough: это событие срабатывает после загрузки страницы, если браузер определит, что он может воспроизводить это видео/аудио
+
+    pause: событие срабатывает, когда воспроизведение мультимедиа приостанавливается, и оно переводится в состояние "paused"
+
+    play: событие срабатывает, когда начинается воспроизведение файла
+
+    volumechange: срабатывает при изменении уровня звука мультимедиа
+
+    ended: срабатывает при окончании воспроизведения
+
+    timeupdate: +срабатывает при изменении времени воспроизведения
+	Fires when the current playback position has changed
+
+    error: генерируется при возникновении ошибки
+
+    loadeddata: срабатывает, когда будет загружен первый фрейм видеофайла
+
+    loadedmetadata: срабатывает после загрузки метаданных мультимедиа (длительность воспроизведения, размеры видео и т.д.)
+
+    seeking: срабатывает, когда пользователь начинает перемещать курсор по шкале воспроизведения для перемещения к новому месту аудио- или видеофайла
+
+    seeked: срабатывает, когда пользователь завершил перемещение к новому месту на шкале воспроизведения
+
 	</pre>
 	
 </div><!-- end container -->
