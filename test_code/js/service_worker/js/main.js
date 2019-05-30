@@ -1,7 +1,18 @@
+if ( navigator.onLine ) {
+	alert("navigator.onLine" + navigator.onLine);
+} else {
+	alert("navigator.onLine" + navigator.onLine);
+}
+window.addEventListener("offline", function(e) {alert("navigator.onLine" + navigator.onLine);});
+window.addEventListener("online", function(e) {alert("navigator.onLine" + navigator.onLine);});
+
 var func = sharedFunc();
 //console.log("func:", func);
 
 var support=false;
+var cacheSupport=false;
+var swSupport=false;
+
 const FILES_TO_CACHE = [
 "css/bootstrap335.min.css"//,
 //"pages/",
@@ -20,39 +31,58 @@ logMsg = navigator.userAgent;
 func.logAlert(logMsg, "info");
 
 var test =  typeof window.Promise !== "undefined";
-logMsg = "Promise support:" + test;
+logMsg = "window.Promise support: " + test;
 if( test ){
 	func.logAlert(logMsg, "success");
 } else {
 	func.logAlert(logMsg, "error");
 }
 
+test =  "caches" in window;
+logMsg = "CacheStorage API, window.caches support: " + test;
+if (test) {
+	cacheSupport=true;
+	func.logAlert(logMsg, "success");
+} else {
+	func.logAlert(logMsg, "error");
+}
+
+test = "serviceWorker" in navigator;
+logMsg = "navigator.serviceWorker support: " + test;
+if (test) {
+	swSupport=true;
+	func.logAlert(logMsg, "success");
+} else {
+	func.logAlert(logMsg, "error");
+}
+
+if( cacheSupport && swSupport){
+	support = true;
+}
+
 if( window.location.protocol !== "https:"){
 	logMsg = "error,  serviceWorker requires 'https:' protocol....";
 	logMsg += "but used: " + window.location.protocol;
 	func.logAlert(logMsg, "error");
+	support = false;
+}
+//console.log(support);
+
+if( support ){
+	registerServiceWorker();
+	
+	var field_swUrl = document.querySelector("#field-sw-url");
+	var btn_swList = document.querySelector("#btn-sw-list");
+	var btn_swUnReg = document.querySelector("#btn-sw-unregister");
+	var btn_swUpd = document.querySelector("#btn-sw-update");
+
+	defineEvents();
 }
 
 
-registerServiceWorker();
-
-var field_swUrl = document.querySelector("#field-sw-url");
-var btn_swList = document.querySelector("#btn-sw-list");
-var btn_swUnReg = document.querySelector("#btn-sw-unregister");
-var btn_swUpd = document.querySelector("#btn-sw-update");
-
-defineEvents();
-
 function registerServiceWorker() {
-	var test = "serviceWorker" in navigator;
-//console.log(test);	
-	if (!test) {
-		logMsg = "CLIENT: service worker is not supported."
-		func.logAlert(logMsg, "error");
-		return false;
-	}
 	
-	logMsg = "CLIENT: service worker registration in progress.";
+	logMsg = "navigator.serviceWorker registration in progress.";
 	func.logAlert(logMsg, "info");
 	
 	window.addEventListener('load', function() {
@@ -350,9 +380,12 @@ logMsg="<b>service worker URL</b> is empty...";
 func.logAlert( logMsg, "warning" );
 				return false;
 			}
-			
+
 			var result = false;
-			 for(let registration of registrations) {
+			//for(let registration of registrations) {
+			for(var n=0; n < registrations.length; n++) {
+				 var registration = registrations[n];
+				
 //console.log( registration.active.scriptURL, url, registration.active.scriptURL === url);
 				if( registration.active.scriptURL === url ){
 					result = true;
@@ -375,7 +408,7 @@ func.logAlert( logMsg, "error" );
 logMsg="service worker by URL:<b>"+url+"</b> NOT found...";
 func.logAlert( logMsg, "error" );
 			}
-			
+
 		});
 	}//end event
 
@@ -388,9 +421,12 @@ logMsg="<b>service worker URL</b> is empty...";
 func.logAlert( logMsg, "warning" );
 				return false;
 			}
-			
+
 			var result = false;
-			 for(let registration of registrations) {
+			//for(let registration of registrations) {
+			for(var n=0; n < registrations.length; n++) {
+				 var registration = registrations[n];
+				
 //console.log( registration.active.scriptURL, url, registration.active.scriptURL === url);
 				if( registration.active.scriptURL === url ){
 					result = true;
@@ -407,8 +443,8 @@ func.logAlert( logMsg, "success" );
 logMsg="service worker by URL:<b>"+url+"</b> NOT found...";
 func.logAlert( logMsg, "error" );
 			}
+
 		})
-		
 	}//end event
 
 

@@ -27,7 +27,9 @@ console.log("WORKER: install event in progress.", event);
 
 this.addEventListener("fetch", function(event) {
 console.log("WORKER: fetch event in progress.", event.request.url);
-console.log(event, event.request.mode, event.request);
+console.log(event);
+console.log("-- event.request:", event.request);
+console.log("-- event.request.mode:", event.request.mode);
 	
 	var response;
 	event.respondWith( 
@@ -55,10 +57,10 @@ console.log(event, event.request.mode, event.request);
 		})
 */
 
-
+//https://habr.com/ru/post/279291/
 		// ищем запрашиваемый ресурс в хранилище кэша
 		caches.match(event.request).then(function(cachedResponse) {
-console.log("TEST", cachedResponse);
+console.log("-- cachedResponse:", cachedResponse);
 
 			// выдаём кэш, если он есть
 			if (cachedResponse) {
@@ -72,6 +74,23 @@ console.log( res );
 			
 		})
 
+
+/*
+//https://codelabs.developers.google.com/codelabs/your-first-pwapp/#5
+		caches.open(DATA_CACHE_NAME).then((cache) => {
+		return fetch(evt.request)
+		.then((response) => {
+		// If the response was good, clone it and store it in the cache.
+		if (response.status === 200) {
+		cache.put(evt.request.url, response.clone());
+		}
+		return response;
+		}).catch((err) => {
+		// Network request failed, try to get it from the cache.
+		return cache.match(evt.request);
+		});
+		})
+*/	
 	);
 	
 });//end event
@@ -84,10 +103,10 @@ console.log("WORKER: activate event in progress.", event);
 		caches.keys().then((keyList) => {
 			return Promise.all( keyList.map(
 				(key) => {
-					//if (key !== CACHE_NAME) {
+					if (key !== CACHE_NAME) {
 	console.log("[ServiceWorker]  cache key: ", key);
-						//return caches.delete(key);
-					//}
+						return caches.delete(key);
+					}
 				})
 			);
 		})
