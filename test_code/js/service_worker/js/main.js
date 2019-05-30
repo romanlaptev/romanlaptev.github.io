@@ -1,11 +1,3 @@
-if ( navigator.onLine ) {
-	alert("navigator.onLine" + navigator.onLine);
-} else {
-	alert("navigator.onLine" + navigator.onLine);
-}
-window.addEventListener("offline", function(e) {alert("navigator.onLine" + navigator.onLine);});
-window.addEventListener("online", function(e) {alert("navigator.onLine" + navigator.onLine);});
-
 var func = sharedFunc();
 //console.log("func:", func);
 
@@ -29,6 +21,15 @@ const FILES_TO_CACHE = [
 var logMsg;
 logMsg = navigator.userAgent;
 func.logAlert(logMsg, "info");
+
+//--------------------------
+logMsg = "navigator.onLine: " + navigator.onLine;
+if ( navigator.onLine ) {
+	func.logAlert(logMsg, "success");
+} else {
+	func.logAlert(logMsg, "danger");
+}
+//--------------------------
 
 var test =  typeof window.Promise !== "undefined";
 logMsg = "window.Promise support: " + test;
@@ -82,12 +83,12 @@ if( support ){
 
 function registerServiceWorker() {
 	
-	logMsg = "navigator.serviceWorker registration in progress.";
+	logMsg = "-- navigator.serviceWorker registration in progress.";
 	func.logAlert(logMsg, "info");
 	
 	window.addEventListener('load', function() {
 		navigator.serviceWorker.register("sw.js").then(function(reg) {
-			logMsg = "Registration succeeded. Scope is " + reg.scope;
+			logMsg = "-- navigator.serviceWorker registration succeeded. Scope is " + reg.scope;
 func.logAlert(logMsg, "success");
 			
 			if(reg.installing) {
@@ -124,6 +125,15 @@ console.log(error);
 }//end registerServiceWorker()
 
 function defineEvents(){
+
+	window.addEventListener("offline", function(e) {
+		logMsg = "navigator.onLine: " + navigator.onLine;
+		func.logAlert(logMsg, "danger");
+	});
+	window.addEventListener("online", function(e) {
+		logMsg = "navigator.onLine: " + navigator.onLine;
+		func.logAlert(logMsg, "success");
+	});
 
 	var btn_clear_log = document.querySelector("#btn-clear-log");
 	btn_clear_log.onclick = function(){
@@ -458,21 +468,18 @@ function _getListCaches(){
 		caches.keys().then( function(keyList) {
 console.log( keyList);
 			if( keyList.length > 0){
-				
 func.log("<h4>List cache objects</h4>");
-			var html = "<ul class='list-unstyled'>{{list}}</ul>";
-			var listHtml = "";
-			for( var n = 0; n < keyList.length; n++){
-				listHtml += "<li class='list-group-item'>" + keyList[n] + "</li>";					
-			}//next
-			html = html.replace("{{list}}", listHtml);
+				var html = "<ul class='list-unstyled'>{{list}}</ul>";
+				var listHtml = "";
+				for( var n = 0; n < keyList.length; n++){
+					listHtml += "<li class='list-group-item'>" + keyList[n] + "</li>";					
+				}//next
+				html = html.replace("{{list}}", listHtml);
 func.log(html);
-					// return Promise.all( keyList.map( function (key) {
-		// console.log(key);
-								// //return caches.delete(key);
-						// })
-					// );
-	
+
+				var cacheNameField = document.querySelector("#cache-name");
+				cacheNameField.value = keyList[0];
+
 			} else {
 logMsg="not found cache objects...";
 func.logAlert( logMsg, "warning" );
