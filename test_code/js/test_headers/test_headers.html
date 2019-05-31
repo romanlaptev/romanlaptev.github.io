@@ -111,6 +111,26 @@ window.onload = function(e)
 		}
 		getUrl(url);
 	}//end event
+
+	var btnTestHEAD = document.querySelector("#btn-test-head");
+	btnTestHEAD.onclick = function(e){
+console.log(e);	
+		var url = "../../../projects/bookmarks/db/lib.json";
+		$.ajax({
+			url: url,
+			type: "HEAD",
+			success:function(data,status){
+console.log("status - " + status);
+				res = true;
+			},
+			error:function(data, status, errorThrown){
+			//console.log("data - " + data);
+console.log("status - " + status);
+			//console.log("errorThrown - " + errorThrown);
+			}
+		});	
+
+	}//end event
 	
 }//end onload
 
@@ -165,8 +185,15 @@ http://vbox1/php/test_cors.php
 		<pre id="data"></pre>
 	</div>
 	
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h2>test HEAD request</h2>
+		</div>
+		<button id="btn-test-head" class="btn btn-warning">test</button>
+	</div>
 	
 </div><!-- end container -->
+
 
 </body>
 </html>
