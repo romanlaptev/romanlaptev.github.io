@@ -115,6 +115,7 @@ window.onload = function(e)
 	var btnTestHEAD = document.querySelector("#btn-test-head");
 	btnTestHEAD.onclick = function(e){
 console.log(e);	
+
 		var url = "../../../projects/bookmarks/db/lib.json";
 		$.ajax({
 			url: url,
@@ -130,6 +131,52 @@ console.log("status - " + status);
 			}
 		});	
 
+	}//end event
+
+	var btnFetch = document.querySelector("#btn-test-fetch");
+	btnFetch.onclick = function(e){
+console.log(e);	
+		var url = "../../../projects/bookmarks/db/lib.json";
+		options = {
+			method : "HEAD"//GET
+		/*
+			headers – заголовки запроса (объект),
+			body – тело запроса: FormData, Blob, строка и т.п.
+			mode – одно из: «same-origin», «no-cors», «cors», указывает, в каком режиме кросс-доменности предполагается делать запрос.
+			credentials – одно из: «omit», «same-origin», «include», указывает, пересылать ли куки и заголовки авторизации вместе с запросом.
+			cache – одно из «default», «no-store», «reload», «no-cache», «force-cache», «only-if-cached», указывает, как кешировать запрос.
+			redirect – можно поставить «follow» для обычного поведения при коде 30x (следовать редиректу) или «error» для интерпретации редиректа как ошибки.
+		*/
+		};
+		
+//https://habr.com/ru/post/252941/
+		fetch(url, options).then( function(response){
+console.log( response.headers); 
+console.log( "Content-Type: " + response.headers.get("Content-Type") );
+console.log( "Date: " + response.headers.get("Date") );
+console.log( "Last-Modified: " + response.headers.get("Last-Modified") );
+
+console.log(response.status);  
+console.log(response.statusText);  
+console.log(response.type);  
+console.log(response.url);  
+console.log(response.text);  
+console.log(response.json);  
+
+			// Examine the text in the response  
+			//response.json().then(function(data) {  
+//console.log(data);  
+			//});  
+			
+			//return response.json();
+		})
+		//.then(function( json) {
+//console.log( json );  
+		//})
+		.catch(function(err) {  
+console.log('Fetch Error :-S', err);  
+		});
+  
 	}//end event
 	
 }//end onload
@@ -189,7 +236,8 @@ http://vbox1/php/test_cors.php
 		<div class="panel-heading">
 			<h2>test HEAD request</h2>
 		</div>
-		<button id="btn-test-head" class="btn btn-warning">test</button>
+		<button id="btn-test-head" class="btn btn-warning">test AJAX</button>
+		<button id="btn-test-fetch" class="btn btn-danger">test FETCH</button>
 	</div>
 	
 </div><!-- end container -->
