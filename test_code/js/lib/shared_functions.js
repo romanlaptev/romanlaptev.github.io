@@ -922,6 +922,36 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 		}//end _alert()		
 	
+		function _wrapLogMsg( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					return message;
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					return message;
+				break;
+				
+				default:
+					return message;
+				break;
+			}//end switch
+			
+		}//end _wrapLogMsg()
+	
 		// public interfaces
 		return{
 			getById: _getById,
@@ -943,8 +973,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj,
 			
-			logAlert: _alert
-						
+			logAlert: _alert,
+			wrapLogMsg: _wrapLogMsg
+			
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}

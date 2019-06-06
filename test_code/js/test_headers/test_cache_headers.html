@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<!-- 
+	<meta http-equiv="Cache-Control" content="private, max-age=60" /> 
+-->
+	<meta http-equiv="Expires" content="Expires: Fri, 31 May 2019 05:08:00 GMT" /> 
+	
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test cache headers</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap335.min.css" />
+</head>
+
+<body class="bg-primary">
+
+<main class="container">
+
+	<header class="header">
+		<div class="page-header">
+			<h2>test cache headers</h2>
+		</div>
+	</header>
+	
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<p>Cache-Control</p>
+	</div>
+	<div class="panel-body">
+<pre>
+https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%B3%D0%B8#Cache-Control[6]
+https://developer.mozilla.org/ru/docs/Web/HTTP/%D0%97%D0%B0%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%B8/Cache-Control
+
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+Cache-Control:
+- public
+- private
+- max-age=31536000 (1 year)
+
+&lt;meta http-equiv="Cache-Control" content="no-cache, no-store"&gt;
+Запрет на кэширование браузером и прокси-сервером 
+Оба значения обязательны, так как IE использует no-cache, а Firefox — no-store.
+
+&lt;meta http-equiv="Cache-Control" content="private"&gt;
+Запрет кэширования страницы, только браузером
+
+</pre>
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<p>Last-Modified</p>
+	</div>
+	<div class="panel-body">
+<pre>
+&lt;meta http-equiv="Last-Modified" content="Sun, 11 Sep 2001 17:31:28 GMT"&gt;
+Cache-Control:public, max-age=31536000
+Last-Modified: Mon, 03 Jan 2011 17:45:57 GMT
+.....
+If-Modified-Since: Mon, 03 Jan 2011 17:45:57 GMT
+</pre>
+	
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<p>Expires</p>
+	</div>
+	<div class="panel-body">
+<pre>
+&lt;meta http-equiv="Expires" content="-1"&gt;	
+Expires: Mon, 25 Jun 2012 21:31:12 GMT
+</pre>
+	
+	</div>
+</div>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<p>ETag</p>
+	</div>
+	<div class="panel-body">
+<pre>
+ETag: "15f0fff99ed5aae4edffdd6496d7131f"
+....
+If-None-Match: "15f0fff99ed5aae4edffdd6496d7131f"
+</pre>
+	
+	</div>
+</div>
+	
+<pre>
+	&lt;meta http-equiv="Pragma" content="no-cache"&gt;
+ устаревший, используется для совместимости со старым оборудованием	
+</pre>
+
+<pre>
+https://www.internet-technologies.ru/articles/povyshenie-proizvoditelnosti-prilozheniy-s-pomoschyu-http-zagolovkov-keshirovaniya.html
+Повышение производительности приложений с помощью HTTP-заголовков кеширования
+
+https://habr.com/ru/post/253121/
+Гид по заголовкам кэширования HTTP для начинающих
+
+https://html5.by/blog/cache/
+Основы клиентского кэширования
+</pre>	
+
+</main>
+</body>
+</html>

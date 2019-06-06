@@ -716,6 +716,28 @@ console.log(e);
 	_push( tests, test );
 //--------------------------------------
 
+	var test = {
+		"name" : "Ajax, Fetch API",
+		"result" : false
+	};
+//alert( typeof window.XMLHttpRequest);	
+	if ( typeof window.fetch !== "undefined"){
+		test["result"] = true;
+		test["msg"] = "<p class='alert alert-success'><b>window.fetch</b> supported...</p>";
+		
+		test["links"]=[];
+		var obj = {
+			"link" : "test_headers/test_headers.html", 
+			"text" : "test_headers.html"
+		};
+		_push( test["links"], obj );
+	} else {
+		test["msg"] = "<p class='alert alert-danger'><b>window.fetch</b> NOT supported...</p>";
+	}
+	_push( tests, test );
+//--------------------------------------
+
+
 
 	var test = {
 		"name" : "HTML5, Worker",
@@ -723,8 +745,9 @@ console.log(e);
 	};
 	if (typeof window.Worker != "undefined"){
 		test["result"] = true;
-		test["links"]=[];
+		test["msg"] = "<p class='alert alert-success'><b>window.Worker</b> supported...</p>";
 		
+		test["links"]=[];
 		var obj = {
 			"link" : "worker/test_background_calculations.html", 
 			"text" : "test_background_calculations.html"
@@ -732,7 +755,7 @@ console.log(e);
 		_push( test["links"], obj );
 
 	} else {
-		test["msg"] = "Object Worker not supported";
+		test["msg"] = "<p class='alert alert-danger'><b>window.Worker</b> NOT supported...</p>";
 	}
 	_push( tests, test );
 
@@ -744,7 +767,8 @@ console.log(e);
 	};
 	if( navigator.geolocation ) {
 		test["result"] = true;
-		test["msg"] = "<b>navigator.geolocation</b> supported in this browser";
+		test["msg"] = "<p class='alert alert-success'><b>navigator.geolocation</b> supported...</p>";
+		
 		test["links"]=[];
 		var obj = {
 			"link" : "geolocation.html", 
@@ -753,7 +777,7 @@ console.log(e);
 		_push( test["links"], obj );
 		
 	} else {
-		test["msg"] = "<b>navigator.geolocation</b> not supported in this browser";
+		test["msg"] = "<p class='alert alert-danger'><b>navigator.geolocation</b> NOT supported...</p>";
 	}
 	_push( tests, test );
 //--------------------------------------
@@ -881,7 +905,7 @@ console.log(e);
 	};
 	if ( typeof window.applicationCache !== "undefined") {
 		test["result"] = true;
-		test["msg"] = "window.applicationCache is supported, " + window.applicationCache;
+		test["msg"] = "window.applicationCache supported, " + window.applicationCache;
 		
 		test["links"]=[];
 		var obj = {
@@ -902,7 +926,7 @@ console.log(e);
 	};
 	if ( typeof window.caches !== "undefined") {
 		test["result"] = true;
-		test["msg"] = "window.caches is supported, " + window.caches;
+		test["msg"] = "<p class='alert alert-success'><b>window.caches</b> supported...</p>";
 		
 		test["links"]=[];
 		var obj = {
@@ -912,7 +936,7 @@ console.log(e);
 		_push( test["links"], obj );
 		
 	} else {
-		test["msg"] = "window.caches not supported, " + window.caches;
+		test["msg"] = "<p class='alert alert-danger'><b>window.caches</b> NOT supported...</p>";
 	}
 	
 	_push( tests, test );
@@ -926,9 +950,7 @@ console.log(e);
 //alert(result);	
 	if ( result ) {
 		test["result"] = true;
-		test["msg"] = "serviceWorker is supported, " + result;
-		test["msg"] += "<br>https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers ";
-
+		test["msg"] = "<p class='alert alert-success'><b>navigator.serviceWorker</b> supported...</p>";
 		test["links"]=[];
 		var obj = {
 			"link" : "service_worker/test_service_worker.html", 
@@ -937,10 +959,11 @@ console.log(e);
 		_push( test["links"], obj );
 		
 	} else {
-		test["msg"] = "serviceWorker not supported, "  + result;
+		test["msg"] = "<p class='alert alert-danger'><b>navigator.serviceWorker</b> NOT supported...</p>";
+		
 		if( window.location.protocol !== "https:"){
-			test["msg"] += ",  serviceWorker requires 'https:' protocol....";
-			test["msg"] += "but used: " + window.location.protocol;
+			var msg = "serviceWorker requires 'https:' protocol., but used: " + window.location.protocol;
+			test["msg"] += "<p class='alert alert-warning'>"+msg+"</p>";
 		}
 	}
 
@@ -971,7 +994,7 @@ console.log(e);
 		try {
 			document.createElement("canvas").getContext("2d");
 			test["result"] = true;
-			test["msg"] = "Canvas 2D is supported in this browser";
+			test["msg"] = "Canvas 2D supported in this browser";
 			
 			test["links"]=[];
 			var obj = {
@@ -1016,7 +1039,7 @@ document.createElement("canvas").getContext("experimental-webgl");
 		
 		if ( gl ) {
 			test["result"] = true;
-			test["msg"] = "Canvas WebGL is supported in this browser";
+			test["msg"] = "Canvas WebGL supported in this browser";
 			
 			test["links"]=[];
 			var obj = {
