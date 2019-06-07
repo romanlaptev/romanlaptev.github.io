@@ -1,0 +1,43 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="4">
+            <File firstVisibleLine="30" xOffset="0" scrollWidth="500" startPos="3002" endPos="3002" selMode="0" lang="&#x041E;&#x0431;&#x044B;&#x0447;&#x043D;&#x044B;&#x0439; &#x0422;&#x0435;&#x043A;&#x0441;&#x0442;" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\nb.txt" backupFilePath="" originalFileLastModifTimestamp="1979794753" originalFileLastModifTimestampHigh="30738762" mapFirstVisibleDisplayLine="30" mapFirstVisibleDocLine="30" mapLastVisibleDocLine="71" mapNbLine="42" mapHigherPos="1395" mapWidth="349" mapHeight="168" mapKByteInDoc="4" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="48" xOffset="0" scrollWidth="78722" startPos="2829" endPos="2829" selMode="0" lang="HTML" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\app.html" backupFilePath="" originalFileLastModifTimestamp="1337405410" originalFileLastModifTimestampHigh="30737791" mapFirstVisibleDisplayLine="48" mapFirstVisibleDocLine="48" mapLastVisibleDocLine="82" mapNbLine="42" mapHigherPos="2211" mapWidth="164" mapHeight="168" mapKByteInDoc="4" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="11" xOffset="0" scrollWidth="30354" startPos="795" endPos="795" selMode="0" lang="CSS" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\css\custom.css" backupFilePath="" originalFileLastModifTimestamp="1979794753" originalFileLastModifTimestampHigh="30738762" mapFirstVisibleDisplayLine="11" mapFirstVisibleDocLine="11" mapLastVisibleDocLine="53" mapNbLine="42" mapHigherPos="164" mapWidth="164" mapHeight="168" mapKByteInDoc="2" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="68" xOffset="0" scrollWidth="78722" startPos="1033" endPos="1058" selMode="0" lang="XML" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\data\2019-04-26.xml" backupFilePath="" originalFileLastModifTimestamp="-724268379" originalFileLastModifTimestampHigh="30737319" mapFirstVisibleDisplayLine="36" mapFirstVisibleDocLine="68" mapLastVisibleDocLine="109" mapNbLine="42" mapHigherPos="1797" mapWidth="164" mapHeight="168" mapKByteInDoc="21" mapWrapIndentMode="1" mapIsWrap="yes">
+                <Fold line="2" />
+                <Fold line="8" />
+                <Fold line="128" />
+                <Fold line="220" />
+                <Fold line="308" />
+                <Fold line="396" />
+                <Fold line="484" />
+                <Fold line="565" />
+                <Fold line="646" />
+            </File>
+            <File firstVisibleLine="20" xOffset="0" scrollWidth="695" startPos="957" endPos="996" selMode="0" lang="JavaScript" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\js\schedule_app.js" backupFilePath="" originalFileLastModifTimestamp="1741140754" originalFileLastModifTimestampHigh="30741984" mapFirstVisibleDisplayLine="15" mapFirstVisibleDocLine="15" mapLastVisibleDocLine="57" mapNbLine="42" mapHigherPos="353" mapWidth="164" mapHeight="168" mapKByteInDoc="24" mapWrapIndentMode="1" mapIsWrap="yes">
+                <Mark line="450" />
+            </File>
+            <File firstVisibleLine="12" xOffset="0" scrollWidth="928" startPos="576" endPos="576" selMode="0" lang="XML" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\tpl\templates.xml" backupFilePath="" originalFileLastModifTimestamp="1979794753" originalFileLastModifTimestampHigh="30738762" mapFirstVisibleDisplayLine="0" mapFirstVisibleDocLine="0" mapLastVisibleDocLine="42" mapNbLine="42" mapHigherPos="0" mapWidth="164" mapHeight="168" mapKByteInDoc="2" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="378" xOffset="0" scrollWidth="78722" startPos="14495" endPos="14518" selMode="0" lang="JSON" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\data\2019-04-26.json" backupFilePath="" originalFileLastModifTimestamp="-724348379" originalFileLastModifTimestampHigh="30737319" mapFirstVisibleDisplayLine="30" mapFirstVisibleDocLine="30" mapLastVisibleDocLine="72" mapNbLine="42" mapHigherPos="978" mapWidth="164" mapHeight="168" mapKByteInDoc="14" mapWrapIndentMode="1" mapIsWrap="yes">
+                <Mark line="4" />
+                <Mark line="9" />
+                <Mark line="20" />
+                <Mark line="21" />
+                <Mark line="45" />
+                <Mark line="46" />
+                <Mark line="398" />
+                <Mark line="401" />
+                <Mark line="410" />
+            </File>
+        </mainView>
+        <subView activeIndex="2">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1" startPos="84" endPos="1267" selMode="0" lang="HTML" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\tpl\template_yandex.html" backupFilePath="" originalFileLastModifTimestamp="-723548379" originalFileLastModifTimestampHigh="30737319" mapFirstVisibleDisplayLine="147" mapFirstVisibleDocLine="115" mapLastVisibleDocLine="148" mapNbLine="42" mapHigherPos="7976" mapWidth="164" mapHeight="168" mapKByteInDoc="9" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="829" startPos="305" endPos="287" selMode="0" lang="XML" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\tpl\templates.xml" backupFilePath="" originalFileLastModifTimestamp="1979794753" originalFileLastModifTimestampHigh="30738762" mapFirstVisibleDisplayLine="0" mapFirstVisibleDocLine="0" mapLastVisibleDocLine="42" mapNbLine="42" mapHigherPos="0" mapWidth="164" mapHeight="168" mapKByteInDoc="2" mapWrapIndentMode="1" mapIsWrap="yes" />
+            <File firstVisibleLine="578" xOffset="0" scrollWidth="693" startPos="15409" endPos="15409" selMode="0" lang="JavaScript" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\projects\schedule\js\schedule_app.js" backupFilePath="" originalFileLastModifTimestamp="1741140754" originalFileLastModifTimestampHigh="30741984" mapFirstVisibleDisplayLine="15" mapFirstVisibleDocLine="15" mapLastVisibleDocLine="57" mapNbLine="42" mapHigherPos="353" mapWidth="164" mapHeight="168" mapKByteInDoc="24" mapWrapIndentMode="1" mapIsWrap="yes">
+                <Mark line="450" />
+            </File>
+            <File firstVisibleLine="748" xOffset="0" scrollWidth="761" startPos="19224" endPos="19224" selMode="0" lang="JavaScript" encoding="-1" userReadOnly="no" filename="\\vbox5\www\sites\romanlaptev.github.io\test_code\js\lib\shared_functions.js" backupFilePath="" originalFileLastModifTimestamp="-719899234" originalFileLastModifTimestampHigh="30743625" mapFirstVisibleDisplayLine="748" mapFirstVisibleDocLine="748" mapLastVisibleDocLine="790" mapNbLine="42" mapHigherPos="18325" mapWidth="164" mapHeight="168" mapKByteInDoc="45" mapWrapIndentMode="1" mapIsWrap="yes" />
+        </subView>
+    </Session>
+</NotepadPlus>
