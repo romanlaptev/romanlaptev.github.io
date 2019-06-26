@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="301 редирект, .htaccess                                                                                                                                                                                                                                        " author="anonymous           " ip="10.30.222.9         " client_date="2019-05-29" server_date="2019-05-29" >
+	<note title='genealogy' author='anonymous' ip='37.193.108.45' client_date='2019-06-26 09:18:25' server_date='2019-06-25 20:18:28'>
 		<text_message>
+[url]https://ru.openlist.wiki/%D0%92%D0%B0%D1%81%D0%B8%D0%BD_%D0%9D%D0%B8%D0%BA%D0%B8%D1%84%D0%BE%D1%80_%D0%A4%D0%B5%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B8%D1%87_(1906)    |    Васин Никифор Федорович (1906), ru.openlist.wiki[/url]
+[br]
+[url]https://ru.openlist.wiki/%D0%9B%D0%B0%D0%BF%D1%82%D0%B5%D0%B2%D0%B0_%D0%90%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D0%B8%D1%8F_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%BD%D0%B0_(1918)    |    Лаптева Анастасия Андреевна (1918), ru.openlist.wiki[/url]
+		</text_message>
+	</note>
+	<note title='301 редирект, .htaccess                                                                                                                                                                                                                                        ' author='anonymous           ' ip='10.30.222.9         ' client_date='2019-05-29 00:00:00' server_date='2019-05-29 00:00:00'>
+		<text_message>
+
 [url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
 [code]
 Как сделать 301 редирект
@@ -13,19 +21,23 @@ Redirect /index.php http://example.com/index.php
 Redirect /data http://www.example.com/data 
 =================================
 [/code]
+		
 		</text_message>
 	</note>
-	<note title="links collection                                                                                                                                                                                                                                               " author="anonymous           " ip="10.63.250.242       " client_date="2019-05-29" server_date="2019-05-29" >
+	<note title='links collection                                                                                                                                                                                                                                               ' author='anonymous           ' ip='10.63.250.242       ' client_date='2019-05-29 00:00:00' server_date='2019-05-29 00:00:00'>
 		<text_message>
+
 [url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
 [br]
 [url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
 [br]
 [url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
+		
 		</text_message>
 	</note>
-	<note title="Debian 7, wheezy, list repo                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-28" server_date="2019-05-27" >
+	<note title='Debian 7, wheezy, list repo                                                                                                                                                                                                                                    ' author='anonymous           ' ip='37.193.108.45       ' client_date='2019-05-28 00:00:00' server_date='2019-05-27 00:00:00'>
 		<text_message>
+
 
 #/etc/apt/sources.list[br]
 deb http://archive.debian.org/debian/ wheezy main[br]
@@ -33,10 +45,12 @@ deb-src http://archive.debian.org/debian/ wheezy main[br]
 deb http://security.debian.org/ wheezy/updates main contrib[br]
 deb-src http://security.debian.org/ wheezy/updates main contrib[br]
 		
+		
 		</text_message>
 	</note>
-	<note title="PostgreSQL                                                                                                                                                                                                                                                     " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-28" server_date="2019-05-27" >
+	<note title='PostgreSQL                                                                                                                                                                                                                                                     ' author='anonymous           ' ip='37.193.108.45       ' client_date='2019-05-28 00:00:00' server_date='2019-05-27 00:00:00'>
 		<text_message>
+
 
 #http://hutpu4.net/linux-open-source/postgresql-phppgadmin-for-debian-ubuntu.html
 [br]
@@ -44,15 +58,19 @@ apt-get install postgresql[br]
 apt-get install postgresql-contrib[br]
 apt-get install php5-pgsql[br]
 		
+		
 		</text_message>
 	</note>
-	<note title="nslookup, узнать IP-адрес интернет-ресурса                                                                                                                                                                                                                     " author="anonymous           " ip="10.69.190.141       " client_date="2019-05-28" server_date="2019-05-28" >
+	<note title='nslookup, узнать IP-адрес интернет-ресурса                                                                                                                                                                                                                     ' author='anonymous           ' ip='10.69.190.141       ' client_date='2019-05-28 00:00:00' server_date='2019-05-28 00:00:00'>
 		<text_message>
+
 узнать IP-адрес интернет-ресурса можно введя в ту же командную строку команду nslookup Book-Science.ru
+		
 		</text_message>
 	</note>
-	<note title="eng/rus books                                                                                                                                                                                                                                                  " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-06" server_date="2019-05-06" >
+	<note title='eng/rus books                                                                                                                                                                                                                                                  ' author='anonymous           ' ip='37.193.108.45       ' client_date='2019-05-06 00:00:00' server_date='2019-05-06 00:00:00'>
 		<text_message>
+
 
 [url]http://readli.net/chitat-online/?b=102432&amp;pg=1    |    Роберт Энсон Хайнлайн.Гражданин Галактики [/url]
 [br][br]
@@ -62,10 +80,12 @@ apt-get install php5-pgsql[br]
 [br]
 [url] https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html      |      Short Stories, by F. Scott Fitzgerald. The Last of the Belles [/url]
 		
+		
 		</text_message>
 	</note>
-	<note title="GIT                                                                                                                                                                                                                                                            " author="anonymous           " ip="37.193.108.45       " client_date="2018-12-27" server_date="2018-12-27" >
+	<note title='GIT                                                                                                                                                                                                                                                            ' author='anonymous           ' ip='37.193.108.45       ' client_date='2018-12-27 00:00:00' server_date='2018-12-27 00:00:00'>
 		<text_message>
+
 
 [url] http://evtuhovich.ru/blog/2009/04/03/git-reset/ | Отмена последнего коммита в git [/url] 
 [code]
@@ -116,29 +136,35 @@ git push -u origin master
 git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
 [/code]
 		
+		
 		</text_message>
 	</note>
-	<note title="art,  Francesco Bergamini                                                                                                                                                                                                                                      " author="anonymous           " ip="37.193.108.45       " client_date="2018-03-20" server_date="2018-03-20" >
+	<note title='art,  Francesco Bergamini                                                                                                                                                                                                                                      ' author='anonymous           ' ip='37.193.108.45       ' client_date='2018-03-20 00:00:00' server_date='2018-03-20 00:00:00'>
 		<text_message>
+
 
 
 Francesco Bergamini (Italian, 1815–1883)[br]
 [url] http://www.artnet.com/artists/francesco-bergamini/ | www.artnet.com[/url]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="windows FAQ, GPT                                                                                                                                                                                                                                               " author="anonymous           " ip="37.193.108.45       " client_date="2018-03-20" server_date="2018-03-20" >
+	<note title='windows FAQ, GPT                                                                                                                                                                                                                                               ' author='anonymous           ' ip='37.193.108.45       ' client_date='2018-03-20 00:00:00' server_date='2018-03-20 00:00:00'>
 		<text_message>
+
 
 
 [url]https://getpocket.com/a/read/2116352733 | В чем разница между GPT и MBR разделами диска[/url]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="javascript, regExp                                                                                                                                                                                                                                             " author="anonymous           " ip="37.193.108.45       " client_date="2018-02-14" server_date="2018-02-14" >
+	<note title='javascript, regExp                                                                                                                                                                                                                                             ' author='anonymous           ' ip='37.193.108.45       ' client_date='2018-02-14 00:00:00' server_date='2018-02-14 00:00:00'>
 		<text_message>
+
 
 
 убрать из разметки все комментарии
@@ -150,10 +176,12 @@ var value = xmlNodes[n][&quot;html_code&quot;]
 [/code]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="Вызов jsp из Servlet                                                                                                                                                                                                                                           " author="anonymous           " ip="37.193.108.45       " client_date="2017-10-02" server_date="2017-10-02" >
+	<note title='Вызов jsp из Servlet                                                                                                                                                                                                                                           ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-10-02 00:00:00' server_date='2017-10-02 00:00:00'>
 		<text_message>
+
 
 
 [url]https://toster.ru/q/284566 | Вызов jsp из Servlet/ JAVA[/url]
@@ -191,10 +219,12 @@ JSP /home.jsp
 [/code]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="cmd, get filename from args                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-28" server_date="2017-09-28" >
+	<note title='cmd, get filename from args                                                                                                                                                                                                                                    ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-09-28 00:00:00' server_date='2017-09-28 00:00:00'>
 		<text_message>
+
 
 
 [url]http://www.cyberforum.ru/cmd-bat/thread55211.html   |   FAQ по файлам BAT/CMD - Batch (CMD/BAT) - CyberForum.ru [/url]
@@ -228,10 +258,12 @@ java -cp c:\\temp %~n1
 [/code]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="opera 12, config                                                                                                                                                                                                                                               " author="anonymous           " ip="37.192.115.96       " client_date="2017-09-24" server_date="2017-09-24" >
+	<note title='opera 12, config                                                                                                                                                                                                                                               ' author='anonymous           ' ip='37.192.115.96       ' client_date='2017-09-24 00:00:00' server_date='2017-09-24 00:00:00'>
 		<text_message>
+
 
 
 [code]
@@ -327,10 +359,12 @@ soft-tuning.ru © 2013-2017
 [/code]
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="config, windows server                                                                                                                                                                                                                                         " author="anonymous           " ip="192.168.56.1        " client_date="2017-09-22" server_date="2017-09-22" >
+	<note title='config, windows server                                                                                                                                                                                                                                         ' author='anonymous           ' ip='192.168.56.1        ' client_date='2017-09-22 00:00:00' server_date='2017-09-22 00:00:00'>
 		<text_message>
+
 
 
 
@@ -377,10 +411,12 @@ soft-tuning.ru © 2013-2017
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="js code                                                                                                                                                                                                                                                        " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-14" server_date="2017-09-14" >
+	<note title='js code                                                                                                                                                                                                                                                        ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-09-14 00:00:00' server_date='2017-09-14 00:00:00'>
 		<text_message>
+
 
 
 
@@ -442,10 +478,12 @@ console.log(&quot;result_build = &quot; + result_build);
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="config, linux, xrandr                                                                                                                                                                                                                                          " author="anonymous           " ip="37.193.108.45       " client_date="2017-09-14" server_date="2017-09-14" >
+	<note title='config, linux, xrandr                                                                                                                                                                                                                                          ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-09-14 00:00:00' server_date='2017-09-14 00:00:00'>
 		<text_message>
+
 
 
 
@@ -487,10 +525,12 @@ xrandr --output VGA1 --mode 1600x900_60.00
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="apache + mod_python                                                                                                                                                                                                                                            " author="anonymous           " ip="37.193.108.45       " client_date="2017-08-30" server_date="2017-08-30" >
+	<note title='apache + mod_python                                                                                                                                                                                                                                            ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-08-30 00:00:00' server_date='2017-08-30 00:00:00'>
 		<text_message>
+
 
 
 
@@ -554,10 +594,12 @@ for n1 in range(0,10):
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="windows faq                                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2017-08-28" server_date="2017-08-28" >
+	<note title='windows faq                                                                                                                                                                                                                                                    ' author='anonymous           ' ip='37.193.108.45       ' client_date='2017-08-28 00:00:00' server_date='2017-08-28 00:00:00'>
 		<text_message>
+
 
 
 
@@ -585,10 +627,12 @@ for n1 in range(0,10):
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="test filter                                                                                                                                                                                                                                                    " author="                    " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
+	<note title='test filter                                                                                                                                                                                                                                                    ' author='                    ' ip='                    ' client_date='2017-08-24 00:00:00' server_date='2017-08-24 00:00:00'>
 		<text_message>
+
 
 
 
@@ -608,10 +652,12 @@ for n1 in range(0,10):
 		
 		
 		
+		
 		</text_message>
 	</note>
-	<note title="javascript, test Modernizr                                                                                                                                                                                                                                     " author="anonymous           " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
+	<note title='javascript, test Modernizr                                                                                                                                                                                                                                     ' author='anonymous           ' ip='                    ' client_date='2017-08-24 00:00:00' server_date='2017-08-24 00:00:00'>
 		<text_message>
+
 
 
 
@@ -638,6 +684,7 @@ src=&#39;http://yastatic.net/modernizr/2.7.1/modernizr.min.js&#39;&gt;&lt;/scrip
 
 &lt;/html&gt;
 [/code]
+		
 		
 		
 		
