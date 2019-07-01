@@ -10,13 +10,12 @@
 margin-bottom: 0;
 margin-top: 5px;
 background-color: #b0c4de;
-/*
+
 position: fixed;
 top: 0;
 right:0;
 z-index: 999;
 opacity: 0.9;
-*/
 }
 
 .log-panel .panel-body{
@@ -60,6 +59,7 @@ margin: 0;
 			<div id="log" class="panel-body"></div>
 		</div>
 	</div>
+
 		
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -67,9 +67,7 @@ margin: 0;
 		</div>
 		<div class="panel-body">
 			<label class="col-sm-2 col-md-2">DB name:</label>
-			<div class="col-sm-4 col-md-4">
-				<input class="form-control" id="dbname" value="" autocomplete="off"/>
-			</div>
+			<input class="form-control" id="dbname" value="" autocomplete="off"/>
 <!--			
 			<label class="col-sm-2 col-md-2">DB version:</label>
 			<div class="col-sm-4 col-md-4">
@@ -79,14 +77,23 @@ margin: 0;
 				<button id="btn-dropDB" class="btn btn-danger">drop database</button>
 			</div>
 -->			
-
+				<label class="col-sm-2 col-md-2">Store name:</label>
+				<input class="form-control" id="storename" value="" autocomplete=off />
+				
+		<div class="">
+			<label class="col-sm-2 col-md-2">Record key:</label>
+			<input class="form-control" id="record-key" value="">
+		</div>
+		<div class="">
+			<label class="col-sm-2 col-md-2">Record value:</label>
+			<input class="form-control" id="record-value" value="">
+		</div>
+				
 		</div>
 
 		<div class="panel-body">
 			<div class="col-sm-9 col-md-9">
-				<label class="col-sm-2 col-md-2">Store name:</label>
 				<div class="col-sm-10 col-md-10">
-					<input class="form-control" id="storename" value="" autocomplete=off />
 					<select size="10" class="form-control" id="sel1" onChange="_changeValue( 'storename', this.options[this.selectedIndex].value );">
 					<!--
 						<option value="AR_ADR_LVL_1" selected>AR_ADR_LVL_1</option>
@@ -114,17 +121,6 @@ margin: 0;
 		</div>
 		
 		<div class="panel-body">
-			<label class="col-sm-2 col-md-2">Record key:</label>
-			<div class="col-sm-4 col-md-4">
-				<input class="form-control" id="record-key" value="">
-			</div>
-			<label class="col-sm-2 col-md-2">Record value:</label>
-			<div class="col-sm-4 col-md-4">
-				<input class="form-control" id="record-value" value="">
-			</div>
-		</div>
-		
-		<div class="panel-body">
 			<button id="btn-num-records" class="btn btn-info">num records</button>
 			<button id="btn-add-records" class="btn btn-success">add records (test data)</button>
 			<button id="btn-get-records" class="btn btn-success">get all records</button>
@@ -144,7 +140,92 @@ margin: 0;
 		</div>
 -->
 	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>Local Storage</h3>
+		</div>
+		<div class="panel-body">
+<button id="btn-list-localstorage" class="btn btn-info">list localStorage</button>
+<button id="btn-set-localstorage" class="btn btn-primary">set items</button>
+<button id="btn-remove-localstorage" class="btn btn-danger">remove items</button>
+<button id="btn-clear-localstorage" class="btn btn-danger">clear localStorage</button>
+<!-- <button id="btn-load-localstorage" class="btn btn-danger">load data from file</button> -->
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>WebSQL</h3>
+		</div>
+		
+		<div class="row panel-body">
+			<label class="col-sm-3 col-md-3">DB name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-name" value="" readonly />
+			</div>
+		
+			<label class="co2-sm-2 col-md-2">DB version:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-version" value="" readonly />
+			</div>
+		
+			<label class="col-sm-3 col-md-3">DB description:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-desc" value="" readonly />
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<label class="col-sm-2 col-md-2">table name:</label>
+			<input class="form-control" id="table-name" value=""/>
+		</div>
+		
+		<div class="panel-body">
+<button id="btn-websql-list" class="btn btn-info">list tables</button>
+<button id="btn-websql-create" class="btn btn-primary">create table</button>
+<button id="btn-websql-insert" class="btn btn-primary">insert record</button>
+<button id="btn-websql-select" class="btn btn-info">SELECT * from table</button>
+<button id="btn-websql-clear" class="btn btn-info">clear table (DELETE from ...)</button>
+<button id="btn-websql-drop" class="btn btn-danger">drop table</button>
+<button id="btn-websql-drop-tables" class="btn btn-danger">drop ALL tables</button>
+
+		</div>
+	</div>
 	
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-heading clearfix">
+			<h3 class="pull-left">Load catalog from local file</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-9 col-md-9">
+					<input class="form-control" id="input_file" value="../data/SL_KODIF.csv"/>
+					
+					<select size="10" class="form-control" id="sel2" onChange="_changeValue( 'input_file', this.options[this.selectedIndex].value );">
+						<option value="../data/SL_KODIF.csv" selected>SL_KODIF.csv</option>
+						<option value="../data/PANT.csv">PANT.csv</option>
+						<option value="../data/PMLP_ADR_LVL_1.csv">PMLP_ADR_LVL_1.csv</option>
+						<option value="../data/PMLP_ADR_LVL_2.csv">PMLP_ADR_LVL_2.csv</option>
+						<option value="../data/PMLP_ADR_LVL_3.csv">PMLP_ADR_LVL_3.csv</option>
+						<option value="../data/PMLP_ADR_LVL_4.csv">PMLP_ADR_LVL_4.csv</option>
+						<option value="../data/SL_KLASS_PERM.csv">SL_KLASS_PERM.csv</option>
+						<option value="../data/SIMPLE_SPR.csv">SIMPLE_SPR.csv</option>
+						<option value="../data/SL_TILTS.csv">SL_TILTS.csv</option>
+						<option value="../data/SL_LUS.csv">SL_LUS.csv</option>
+					</select>
+					
+				</div>
+				<div class="col-sm-3 col-md-3">
+					<button id="btn-load" class="btn btn-primary">load</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+-->
+
 </div><!-- end container -->
 
 	<script>
@@ -163,6 +244,7 @@ margin: 0;
 	}
 */	
 	</script>
+<script src="js/functions.js"></script>
 <script src="js/iDBmodule.js"></script>
 <script src="js/db_admin.js"></script>
 
