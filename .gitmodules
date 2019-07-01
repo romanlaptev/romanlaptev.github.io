@@ -1,0 +1,3 @@
+[submodule "projects/bookmarks/bookmarks-cache"]
+	path = projects/bookmarks/bookmarks-cache
+	url = https://github.com/romanlaptev/bookmarks.git
