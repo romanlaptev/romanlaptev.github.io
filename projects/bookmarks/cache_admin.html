@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>cache admin</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="img/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap337.min.css"/>
+<style>
+.bg-primary {
+	color: inherit;
+}
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+position: fixed;
+top: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 2px;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
+</style>
+</head>
+
+<body class="bg-primary">
+	<div class="container">
+
+		<div class="page-header">
+			<h1>Cache & Service Worker admin page</h1>
+		</div>
+		
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+		<div class="panel">
+			<div class="panel-heading">
+					<h2>Service worker objects</h2>			
+			</div>
+			
+			<div class="panel-body">
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+<!-- <p>scope: <input id="field-sw-scope" type="text" class="form-control" value="" autocomplete="off"/></p> -->
+<p>scriptUrl: <input id="field-sw-url" type="text" class="form-control" value="" autocomplete="off"/></p>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+						<button id="btn-sw-list" class="btn btn-info">get list service worker</button>
+						<button id="btn-sw-update" class="btn btn-primary">update service worker</button>
+						<button id="btn-sw-unregister" class="btn btn-danger">unregister service worker</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-heading">
+					<h2>CacheStorage objects</h2>
+			</div>
+			
+			<div class="panel-body">
+			
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+<p>object cache name: <input id="cache-name" type="text" class="form-control" value="" autocomplete="off"/></p>
+<p>cache key: <input id="cache-key" type="text" class="form-control" value="" autocomplete="off"/></p>
+<!--
+<pre>
+test_service_worker.html
+offline.html
+css/bootstrap335.min.css
+js/functions.js
+js/main.js
+pages/star-wars-logo_.jpg (pages/star-wars-logo.jpg)
+</pre>
+-->
+				</div>
+
+				<div class="col-xs-6 colsm-6 col-md-6 col-lg-6">
+<ul class="list-unstyled">
+	<li class="list-group-item">
+		<button id="btn-list-caches" class="btn btn-primary">list cache objects</button>
+	</li>
+	<li class="list-group-item">
+		<button id="btn-delete-cache" class="btn btn-danger">delete cache by name</button>
+	</li>
+	<li class="list-group-item">
+		<button id="btn-list-cache-keys" class="btn btn-primary">list cache keys</button>
+	</li>
+	<li class="list-group-item">
+		<button id="btn-add-key" class="btn btn-success">add one key into object cache</button>
+	</li>
+	<li class="list-group-item">
+		<button id="btn-delete-key" class="btn btn-danger">delete one key into object cache</button>
+	</li>
+	<li class="list-group-item">
+		<button id="btn-match-key" class="btn btn-info">cache.match()</button>
+	</li>
+</ul>
+				</div>
+				
+			</div>
+			
+		</div><!-- end panel -->
+		
+	</div><!-- end container -->
+
+<script src="js/functions.js"></script>
+<script src="js/cache_admin.js"></script>
+
+</body>
+</html>

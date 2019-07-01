@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<title>Firefox bookmarks viewer</title>
+	<script type="text/javascript" src="js/plugins/css_browser_selector.js"></script>
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script src="js/bootstrap/bootstrap232.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap232.min.css"/>	
+	<link rel="stylesheet" href="fonts/fonts.css"/>	
+
+	<script src="js/parse_bookmarks.js"></script>
+	<link rel="stylesheet" href="css/bookmarks.css"/>	
+</head>
+
+<body>
+<div class="container container-fluid">
+
+	<header class="header" id="top">
+		<ul class="nav nav-tabs">
+			<li><a class="btn-info" href="../../index.html">index</a></li>
+			<li><a href="parse_notes.html">notes</a></li>
+				<h2 class="pull-right" >Firefox bookmarks viewer</h2>
+		</ul>
+	</header>
+
+	<div class="pull-right">
+		<div class="span6">
+			  <input type="text" name="filename" value="bookmarks.json" class="span6">
+		</div>
+		<div class="span1">
+			  <input type="button" class="btn btn-info" name="action" value="parse">
+		</div>
+		<div class="span2">
+			<a target="_blank" id="get-list" href="./json/">get list of json files</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span12">
+			<b>Tags:</b><br>
+			<div id="tags"><i>Loading...</i></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<div id="insert_json"><i>Loading...</i></div>
+		</div>
+	</div>
+
+</div><!-- end container -->
+	
+<div class="top">
+<!--
+	<a id="top-link" title="наверх" href="javascript:scroll(0,0)">
+-->	
+	<a id="top-link" title="наверх" href="#">
+		<div class="arrow"></div>
+	</a>
+</div>
+
+
+<!-- MODAL DIALOG WINDOW -->
+<div class="container">
+	<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" id="tagsModal" class="modal hide fade" style="display: none;">
+		<div class="modal-header">
+			<button data-dismiss="modal" class="close" type="button">×</button>
+			<h4>Search result for <span id="search-keyword"></span></h4>
+		</div>
+		<div class="modal-body"></div>
+		<div class="modal-footer">
+			<a data-dismiss="modal" class="btn" href="#">close</a>
+		</div>
+	</div>
+</div><!-- end container -->
+
+</body>
+</html>
