@@ -108,6 +108,65 @@ function get_attr_to_obj( attr ){
 }//end get_attr_to_obj()
 
 
+function _alert( message, level ){
+	switch (level) {
+		case "info":
+			message = "<p class='alert alert-info'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "warning":
+			message = "<p class='alert alert-warning'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "danger":
+		case "error":
+			message = "<p class='alert alert-danger'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		case "success":
+			message = "<p class='alert alert-success'>" + message + "</p>";
+			_log(message);
+		break;
+		
+		default:
+			_log(message);
+		break;
+	}//end switch
+	
+}//end _alert()
+
+function _wrapLogMsg( message, level ){
+	switch (level) {
+		case "info":
+			message = "<p class='alert alert-info'>" + message + "</p>";
+			return message;
+		break;
+		
+		case "warning":
+			message = "<p class='alert alert-warning'>" + message + "</p>";
+			return message;
+		break;
+		
+		case "danger":
+		case "error":
+			message = "<p class='alert alert-danger'>" + message + "</p>";
+			return message;
+		break;
+		
+		case "success":
+			message = "<p class='alert alert-success'>" + message + "</p>";
+			return message;
+		break;
+		
+		default:
+			return message;
+		break;
+	}//end switch
+	
+}//end _wrapLogMsg()
 
 /*
 parse XML document to array
@@ -326,9 +385,9 @@ function runAjax( opt ){
 				num++;
 			}//next
 			url += "?"+ paramsStr;
-			url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+			//url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
 		} else {
-			url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
+			//url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
 		}
 		
 	//}
@@ -527,7 +586,7 @@ console.log("statusText:" + xhr.statusText);
 		var all_headers = xhr.getAllResponseHeaders();
 //console.log( all_headers );
 		if( typeof  p["onLoadEnd"] === "function"){
-			p["onLoadEnd"](all_headers);
+			p["onLoadEnd"](all_headers, xhr);
 		}
 	}//end _loadEnd()
 	
@@ -715,8 +774,8 @@ console.log("loaded: " + e.loaded);
 
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
-var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";
-console.log("<div class='alert alert-info'>" + msg + "</div>");
+var msg = "You are running jQuery version: " + jQuery.fn.jquery;
+console.log( msg );
 		
 		//------------------------- scroll to top
 		// $("#scroll-to-top").click(function(e) {
