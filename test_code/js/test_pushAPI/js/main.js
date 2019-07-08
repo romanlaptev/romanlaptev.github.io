@@ -55,11 +55,30 @@ func.logAlert(logMsg, "success");
 					var timeMs = 18000;
 					var text = "This notification will be closed after "+ timeMs / 1000 +" sec....";
 					var notification = new Notification("Title!", { body: text, icon: img });	
+					
+					notification.onshow = function() {
+logMsg = "notification.onshow....";
+func.logAlert(logMsg, "info");
+					};
+					
 					notification.onclose = function() {
 logMsg = "notification.onclose....";
 func.logAlert(logMsg, "info");
 					};
+					
+					notification.onerror = function() {
+consol.log(arguments);						
+logMsg = "notification.onerror....";
+func.logAlert(logMsg, "error");
+					};
 
+					notification.onclick = function(event) {
+						event.preventDefault(); // prevent the browser from focusing the Notification's tab
+						window.open('http://www.mozilla.org', '_blank');
+logMsg = "notification.onclick....";
+func.logAlert(logMsg, "info");
+					};
+					
 					setTimeout( notification.close.bind(notification), timeMs );
 					
 				break;
