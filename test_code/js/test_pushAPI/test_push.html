@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>test JS: push API</title>
+	<title>test JS: Notification & push API</title>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	
@@ -12,7 +12,7 @@
 .bg-primary {
 	color: inherit;
 }
-/*
+
 .log-panel {
     margin-bottom: 0;
     margin-top: 5px;
@@ -46,7 +46,7 @@ margin: 0;
 	background-color: #ffb515;
 	/*border-color: #8a6d3b;*/
 }
-*/
+
 </style>
 </head>
 
@@ -54,9 +54,9 @@ margin: 0;
 	<div class="container">
 
 		<div class="page-header">
-			<h1>test push API</h1>
+			<h1>test Notification & push API</h1>
 		</div>
-<!--		
+
 		<div class="log-panel panel">
 			<div class="panel-body">
 				<span class="pull-right">
@@ -65,21 +65,39 @@ margin: 0;
 				<div id="log" class="panel-body"></div>
 			</div>
 		</div>
--->
+
+		<div class="panel">
+				<div class="panel-heading">
+					<h2>Notification</h2>			
+				</div>
+				<div class="panel-body">
+						<button id="btn-notification-request" class="btn btn-info">Notification.requestPermission</button>
+				<pre>
+about:preferences#privacy
+Разрешения на отправку уведомлений
+				
+https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API
+https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
+				</pre>
+						
+				</div>
+		</div>
+
 		<div class="panel">
 			<div class="panel-body">
 			
 				<pre>
 http://jem-space.ru/progressive-web-apps-novyi-shagh-v-razrabotkie-vieb-prilozhienii/
-https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API
 https://developer.mozilla.org/en-US/docs/Web/API/Push_API
-
 				</pre>
 
 			</div>
 		</div><!-- end panel -->
 		
 	</div><!-- end container -->
+	
+<script src="js/functions.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
