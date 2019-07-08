@@ -45,6 +45,8 @@ function defineEvents(){
 		
 		Notification.requestPermission(function(result) {
 console.log(result);
+console.log("Notification.permission: ", Notification.permission);
+
 			switch( result ){
 				
 				case "granted":
