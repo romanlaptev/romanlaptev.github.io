@@ -3,41 +3,75 @@ var func = sharedFunc();
 
 var support = false;
 var notificationSupport=false;
+var swSupport=false;
 
 var logMsg;
 logMsg = navigator.userAgent;
 func.logAlert(logMsg, "info");
 
+//--------------------------
+logMsg = "navigator.onLine: " + navigator.onLine;
+if ( navigator.onLine ) {
+	func.logAlert(logMsg, "success");
+} else {
+	func.logAlert(logMsg, "danger");
+}
+
+//--------------------------
 var test =  typeof window.Notification !== "undefined";
 logMsg = "window.Notification support: " + test;
 if( test ){
 	func.logAlert(logMsg, "success");
 	notificationSupport=true;
-	support = true;
 } else {
 	func.logAlert(logMsg, "error");
 }
 
+//--------------------------
+test = "serviceWorker" in navigator;
+logMsg = "navigator.serviceWorker support: " + test;
+if (test) {
+	swSupport=true;
+	func.logAlert(logMsg, "success");
+} else {
+	func.logAlert(logMsg, "error");
+}
+
+
+//--------------------------
 if( window.location.protocol !== "https:"){
 	logMsg = "error,  serviceWorker requires 'https:' protocol....";
 	logMsg += "but used: " + window.location.protocol;
 	func.logAlert(logMsg, "error");
-	support = false;
+} else {
+	support = true;
 }
 
-var btn_clear_log = document.querySelector("#btn-clear-log");
-btn_clear_log.onclick = function(){
-	log.innerHTML = "";
-};
+
+defineEvents();
+
 	
-if( support ){
-	defineEvents();
-}
 
 function defineEvents(){
 
+	var btn_clear_log = document.querySelector("#btn-clear-log");
+	btn_clear_log.onclick = function(){
+		log.innerHTML = "";
+	};
+
+	if( !support ){
+		return;
+	}
+
 	var btn_notify_req = document.querySelector("#btn-notification-request");
 	btn_notify_req.onclick = function(){
+
+	if( !notificationSupport ){
+		var test =  typeof window.Notification !== "undefined";
+		logMsg = "window.Notification support: " + test;
+func.logAlert(logMsg, "error");
+		return;
+	}
 		
 		//Notification.requestPermission().then(function(result) {
 //console.log(result);
@@ -103,5 +137,64 @@ func.logAlert(logMsg, "info");
 		});
 		
 	};//end event
-	
+
+		var btn_push_reg = document.querySelector("#btn-push-reg");
+		btn_push_reg.onclick = function(){
+
+		if( !swSupport ){
+			var test = "serviceWorker" in navigator;
+			logMsg = "navigator.serviceWorker support: " + test;
+			func.logAlert(logMsg, "error");
+			return;
+		}
+		
+		//registerServiceWorker();
+		
+	};//end event
+
 }//end defineEvents()
+
+
+
+function registerServiceWorker() {
+	
+	logMsg = "-- navigator.serviceWorker registration in progress.";
+	func.logAlert(logMsg, "info");
+	
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register("sw.js").then(function(reg) {
+			logMsg = "-- navigator.serviceWorker registration succeeded. Scope is " + reg.scope;
+func.logAlert(logMsg, "success");
+			
+			if(reg.installing) {
+logMsg="Service worker installing";
+func.logAlert( logMsg, "info" );
+			}
+			if(reg.waiting) {
+logMsg="Service worker waiting";
+func.logAlert( logMsg, "info" );
+			}
+			if(reg.active) {
+logMsg="Service worker active";
+func.logAlert( logMsg, "info" );
+			}
+			
+			//support = true;
+			//_getListCaches();
+		}, 
+
+		function(err) {
+logMsg="ServiceWorker registration failed";
+func.logAlert( logMsg, "error" );
+console.log(err);
+		})
+		
+		.catch( function(error) {
+logMsg = "Registration failed."
+func.logAlert(logMsg, "error");
+console.log(error);
+		});
+	 
+	});//end event
+
+}//end registerServiceWorker()

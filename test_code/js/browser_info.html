@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+	
 	<title>Browser info</title>
 	
 
@@ -947,7 +949,8 @@ console.log(e);
 		"result" : false
 	};
 	var result = navigator.serviceWorker;
-//alert(result);	
+//alert(result);
+console.log(result);
 	if ( result ) {
 		test["result"] = true;
 		test["msg"] = "<p class='alert alert-success'><b>navigator.serviceWorker</b> supported...</p>";
