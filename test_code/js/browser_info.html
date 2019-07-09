@@ -3,8 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
-	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+	<!-- <link rel="stylesheet" href="../../css/bootstrap335.min.css"> -->
+	<!-- <link rel="stylesheet" href="css/bootstrap337.min.css"> -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 	<title>Browser info</title>
 	
@@ -971,6 +972,42 @@ console.log(result);
 	}
 
 	_push( tests, test );
+	
+//--------------------------------------
+	var test = {
+		"name" : "Notification API",
+		"result" : false
+	};
+	var testSupport =  typeof window.Notification !== "undefined";
+	if ( testSupport ) {
+		test["result"] = true;
+		test["msg"] = "<p class='alert alert-success'><b>window.Notification</b> supported...</p>";
+		test["links"]=[];
+		var obj = {
+			"link" : "test_pushAPI/test_push.html", 
+			"text" : "test_push.html"
+		};
+		_push( test["links"], obj );
+		
+	} else {
+		test["msg"] = "<p class='alert alert-danger'><b>window.Notification</b> NOT supported...</p>";
+	}
+	_push( tests, test );
+
+//--------------------------------------
+	var test = {
+		"name" : "Push API",
+		"result" : false
+	};
+	var testSupport =  typeof window.PushManager !== "undefined";
+	if ( testSupport ) {
+		test["result"] = true;
+		test["msg"] = "<p class='alert alert-success'><b>window.PushManager</b> supported...</p>";
+	} else {
+		test["msg"] = "<p class='alert alert-danger'><b>window.PushManager</b> NOT supported...</p>";
+	}
+	_push( tests, test );
+	
 //--------------------------------------
 
 	var test = {
