@@ -246,7 +246,8 @@ console.log( logMsg );
 				"callback" : null,
 				"onProgress" : null,
 				"onError" : null,
-				"onLoadEnd" : null
+				"onLoadEnd" : null,
+				"noCache" : false
 			};
 			//extend options object
 			for(var key in opt ){
@@ -273,11 +274,16 @@ console.log( logMsg );
 						num++;
 					}//next
 					url += "?"+ paramsStr;
-					//url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
-				} else {
-					//url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
 				}
 			//}
+			
+			if( p["noCache"] ){
+				if( url.indexOf("?") !== -1 ){
+					url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+				} else {
+					url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
+				}
+			}
 
 			
 			if( !url || url.length === 0){

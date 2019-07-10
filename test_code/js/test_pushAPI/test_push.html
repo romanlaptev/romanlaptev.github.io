@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>test JS: Notification & push API</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap335.min.css"/>
+<style>
+.bg-primary {
+	color: inherit;
+}
+
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+position: fixed;
+top: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
+</style>
+</head>
+
+<body class="bg-primary">
+	<div class="container">
+
+		<div class="page-header">
+			<h1>test Notification & push API</h1>
+		</div>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+		<div class="panel">
+				<div class="panel-heading">
+					<h2>Notification API</h2>			
+				</div>
+				<div class="panel-body">
+						<button id="btn-notification-request" class="btn btn-info">Notification.requestPermission</button>
+				<pre>
+about:preferences#privacy
+Разрешения на отправку уведомлений
+				
+https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API
+https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
+https://habr.com/ru/post/183630/
+
+https://htmlweb.ru/java/example/web_notification.php
+Web Notifications API
+				</pre>
+						
+				</div>
+		</div>
+
+		<div class="panel">
+				<div class="panel-heading">
+					<h2>Push API</h2>			
+				</div>
+				<div class="panel-body">
+						<button id="btn-push-reg" class="btn btn-info">registerServiceWorker</button>
+				<pre>
+https://developer.mozilla.org/en-US/docs/Web/API/Push_API
+https://habr.com/ru/post/321924/
+Web PUSH Notifications быстро и просто
+				</pre>
+						
+				</div>
+		</div>
+
+		<div class="panel">
+			<div class="panel-body">
+			
+				<pre>
+http://jem-space.ru/progressive-web-apps-novyi-shagh-v-razrabotkie-vieb-prilozhienii/
+				</pre>
+
+			</div>
+		</div><!-- end panel -->
+		
+	</div><!-- end container -->
+	
+<script src="js/functions.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
