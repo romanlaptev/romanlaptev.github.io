@@ -6,6 +6,8 @@ var notificationSupport=false;
 var pushSupport=false;
 var swSupport=false;
 
+//var isPushEnabled = false;
+
 var logMsg;
 logMsg = navigator.userAgent;
 func.logAlert(logMsg, "info");
@@ -154,6 +156,9 @@ func.logAlert(logMsg, "info");
 		
 	};//end event
 
+
+//===================================================== PUSH API
+/*
 		var btn_push_reg = document.querySelector("#btn-push-reg");
 		btn_push_reg.onclick = function(){
 
@@ -163,21 +168,37 @@ func.logAlert(logMsg, "info");
 			func.logAlert(logMsg, "error");
 			return;
 		}
-		
-		//registerServiceWorker();
+		registerServiceWorker();
+	};//end event
+
+	var btn_push_subscribe = document.querySelector("#btn-push-subscribe");
+	btn_push_subscribe.onclick = function(){
+
+		// if( !swSupport ){
+			// var test = "serviceWorker" in navigator;
+			// logMsg = "navigator.serviceWorker support: " + test;
+			// func.logAlert(logMsg, "error");
+			// return;
+		// }
+		if (isPushEnabled) {
+			unsubscribe();
+		} else {
+			subscribe();
+		}
 		
 	};//end event
+*/
 
 }//end defineEvents()
 
 
-
+/*
 function registerServiceWorker() {
-	
+
 	logMsg = "-- navigator.serviceWorker registration in progress.";
 	func.logAlert(logMsg, "info");
 	
-	window.addEventListener('load', function() {
+	//window.addEventListener('load', function() {
 		navigator.serviceWorker.register("sw.js").then(function(reg) {
 			logMsg = "-- navigator.serviceWorker registration succeeded. Scope is " + reg.scope;
 func.logAlert(logMsg, "success");
@@ -195,8 +216,7 @@ logMsg="Service worker active";
 func.logAlert( logMsg, "info" );
 			}
 			
-			//support = true;
-			//_getListCaches();
+			initialiseState();
 		}, 
 
 		function(err) {
@@ -211,6 +231,99 @@ func.logAlert(logMsg, "error");
 console.log(error);
 		});
 	 
-	});//end event
+	//});//end event
 
 }//end registerServiceWorker()
+*/
+
+/*
+//https://devhub.io/repos/eveness-web-push-api
+function initialiseState() {
+	// Проверяем создание уведомлений при помощи Service Worker API
+	  if ( !("showNotification" in ServiceWorkerRegistration.prototype) ) {
+console.warn('Уведомления не поддерживаются браузером.');
+		return;
+	}
+
+	// Проверяем не запретил ли пользователь прием уведомлений
+	if( Notification.permission === "denied" ) {  
+console.warn('Пользователь запретил прием уведомлений.');  
+		return;  
+	}
+
+	// Проверяем поддержку Push API
+	if ( !("PushManager" in window) ) {  
+console.warn("Push-сообщения не поддерживаются браузером.");  
+		return;
+	}
+
+  // Проверяем зарегистрирован ли наш сервис-воркер
+	navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
+	
+		// Проверяем наличие подписки  
+		serviceWorkerRegistration.pushManager.getSubscription().then(
+			function(subscription) {  
+				// Делаем нашу кнопку активной
+				var pushButton = document.querySelector("#btn-push-subscribe");
+				pushButton.disabled = false;
+
+				if( !subscription ) {// Если пользователь не подписан
+					return;
+				}
+
+				// Отсылаем серверу данные о подписчике
+				sendSubscriptionToServer( subscription );
+
+				// Меняем состояние кнопки
+				pushButton.textContent = "unsubscribe";  
+				isPushEnabled = true;  
+		  })  
+		.catch( function(err) {  
+console.warn('Ошибка при получении данных о подписчике.', err);
+		});
+	  
+	});  
+
+};//end initialiseState()
+*/
+
+/*
+//https://devhub.io/repos/eveness-web-push-api
+function subscribe() {
+	// Блокируем кнопку на время запроса 
+	// разрешения отправки уведомлений
+	var pushButton = document.querySelector("#btn-push-subscribe");
+	pushButton.disabled = true;
+
+	navigator.serviceWorker.ready.then( function(serviceWorkerRegistration){
+		
+		serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true}).then( 
+			function(subscription) {
+				// Подписка осуществлена
+				isPushEnabled = true;
+				pushButton.textContent = "unsubscribe";
+				pushButton.disabled = false;
+
+				// В этой функции необходимо регистрировать подписчиков
+				// на стороне сервера, используя subscription.endpoint
+				return sendSubscriptionToServer( subscription );
+			})  
+			.catch(function(err) {  
+				if (Notification.permission === "denied") {  
+				  // Если пользователь запретил присылать уведомления,
+				  // то изменить это он может лишь вручную 
+				  // в настройках браузера для сайта
+console.warn('Пользователь запретил присылать уведомления');
+					pushButton.disabled = true;  
+				} else {  
+				  // Отлавливаем другие возможные проблемы -
+				  // потеря связи, отсутствие gcm_sender_id и прочее
+console.error('Невожможно подписаться, ошибка: ', err);
+					pushButton.disabled = false;
+					pushButton.textContent = "subscribe";
+				}  
+			});  
+	});
+	  
+};//subscribe()
+*/

@@ -19,3 +19,23 @@ console.log("WORKER: fetch event in progress.", event.request.url);
 this.addEventListener("activate", function(event) {
 console.log("WORKER: activate event in progress.", event);
 });//end event
+
+/*
+self.addEventListener("push", function(event) {
+console.log('Получено push-сообщение', event);
+
+	var title = "title: it works!!!";
+	var body = "server notification received";
+	//var icon = '/icon-192x192.png';
+	var tag = 'simple-push-demo-notification-tag';
+
+	event.waitUntil( 
+		self.registration.showNotification( title, { 
+			body: body,
+			//icon: icon,
+			tag: tag
+		})
+	);
+  
+});//end event
+*/
