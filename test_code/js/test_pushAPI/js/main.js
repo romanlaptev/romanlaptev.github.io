@@ -3,6 +3,7 @@ var func = sharedFunc();
 
 var support = false;
 var notificationSupport=false;
+var pushSupport=false;
 var swSupport=false;
 
 var logMsg;
@@ -23,6 +24,16 @@ logMsg = "window.Notification support: " + test;
 if( test ){
 	func.logAlert(logMsg, "success");
 	notificationSupport=true;
+} else {
+	func.logAlert(logMsg, "error");
+}
+
+//--------------------------
+var test =  typeof window.PushManager !== "undefined";
+logMsg = "window.PushManager support: " + test;
+if( test ){
+	func.logAlert(logMsg, "success");
+	pushSupport=true;
 } else {
 	func.logAlert(logMsg, "error");
 }
@@ -90,7 +101,12 @@ func.logAlert(logMsg, "success");
 					var img = 'favicon.ico';
 					var timeMs = 18000;
 					var text = "This notification will be closed after "+ timeMs / 1000 +" sec....";
-					var notification = new Notification("Title!", { body: text, icon: img });	
+					var notification = new Notification("Title!", { 
+						tag: "note1",
+						body: text, 
+						dir: "auto", 
+						icon: img 
+					});	
 					
 					notification.onshow = function() {
 logMsg = "notification.onshow....";
