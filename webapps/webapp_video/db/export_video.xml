@@ -14044,6 +14044,14 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/r9loc1UQ9ZI">youtube.com</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 132. Шайсе.mp4">Эпизод 132. Шайсе.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/C4vZkb_juyQ">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 30. Русский панкрок.mp4">Эпизод 30. Русский панкрок.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tJofh3icVi8">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 74. Кузина.mp4">Эпизод 74. Кузина</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/wOSJJjyz_mw">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 84. Жизнь с котом.mp4">Эпизод 84. Жизнь с котом</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_cfv0LoQhsg">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня -Ктулху и пингвин с пропеллером.mp4">Ктулху и пингвин с пропеллером</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/4QvakseEc8Q">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -14060,7 +14068,7 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 	</tags>
 
 	<published>02-Jul-2016 23:03:51</published>
-	<updated>18-Jun-2019 18:27:38</updated>
+	<updated>15-Jul-2019 21:38:58</updated>
 </video>
 
 <video type="video">
@@ -18471,6 +18479,39 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 
 	<published>27-Apr-2019 23:09:37</published>
 	<updated>27-Apr-2019 23:15:15</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Корелли, Арканджело</item>
+		<item>Arcangelo Corelli</item>
+</title>
+	
+	
+	
+	<description>https://www.youtube.com/playlist?list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI</description>
+	<pictures>
+		<img src="/video/0_covers/420px-Arcangelo_Corelli,_portrait_by_Hugh_Howard_(1697)_-_2.jpg"/>
+		<img src="https://i.ytimg.com/vi/VHRdFILo_Yw/hqdefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/C/Corelli - La Follia.mp4">local file</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/VHRdFILo_Yw">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="209">C</item>
+		<item tid="238">К</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="24">mp4</item>
+	</tags>
+
+	<published>15-Jul-2019 21:47:26</published>
+	<updated>15-Jul-2019 21:59:10</updated>
 </video>
 	</database>
 </xroot>
