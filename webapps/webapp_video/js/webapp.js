@@ -47,7 +47,8 @@ var webApp = {
 		"playlist" : {
 			tracks:[
 {title:"test MP4", artist:"test artist", src: "../../test_code/js/test_media/video/video.mp4"},
-{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"}//,
+{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
+{title:"test OGV", artist:"test artist", src: "../../test_code/js/test_media/video/small.ogv"}//,
 //{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
 			],
 			lastNum:0
@@ -619,13 +620,19 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		////webApp.vars["player"].pause();
 	//});//end event
 	
-	//var player = func.getById("player1");
-	//player.addEventListener('ended',function(e){
+	if( webApp.vars["player"].nodeName === "VIDEO"){
+		
+		webApp.vars["player"].addEventListener('ended',function(e){
 //console.log(e);
-	//},false);//end event
-	//$("#player1").on("ended", function(e){
-//console.log(e);
-	//});//end event
+			var url = "?q=next-track&autoplay=TRUE";
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		},false);//end event
+		
+		//$("#player1").on("ended", function(e){
+	//console.log(e);
+		//});//end event
+	}
 	    
 
 	function _listVideoClick(target, event){
@@ -867,13 +874,13 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				var track_info = track["title"] +", "+ track["artist"];
 				$("#track-info").text(track_info);
 			break;
-
+/*
 			case "stop-play":
 				//webApp.vars["player"].stop();
 				$(webApp.vars["player"]).attr("src","");
 				$("#track-info").text("");
 			break;
-			
+*/			
 			case "prev-track":
 				if( webApp.vars["playlist"]["lastNum"] > 0){
 					webApp.vars["playlist"]["lastNum"]--;
@@ -893,9 +900,15 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 			
 			case "next-track":
+				var autoplay = false;
 				
 				if( webApp.vars["playlist"]["lastNum"] < (webApp.vars["playlist"]["tracks"].length - 1) ){
+					
 					webApp.vars["playlist"]["lastNum"]++;
+					
+					if( webApp.vars["GET"]["autoplay"] === "TRUE"){
+						autoplay = true;
+					}
 				}
 				
 				var num = webApp.vars["playlist"]["lastNum"];
@@ -910,6 +923,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	
 				var track_info = track["title"] +", "+ track["artist"];
 				$("#track-info").text(track_info);
+				
+				if( autoplay ){
+					webApp.vars["player"].play();
+				}
 				
 			break;
 //--------------------------------------------
