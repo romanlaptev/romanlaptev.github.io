@@ -47,8 +47,8 @@ var webApp = {
 		"playlist" : {
 			tracks:[
 {title:"test MP4", artist:"test artist", src: "../../test_code/js/test_media/video/video.mp4"},
-{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
-{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
+{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"}//,
+//{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
 			],
 			lastNum:0
 		},
@@ -196,8 +196,8 @@ console.log("init webapp!");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
-		//this.vars["player"] = func.getById("player1");
-		this.vars["player"] = func.getById("iframe-player");
+		this.vars["player"] = func.getById("player1");
+		//this.vars["player"] = func.getById("iframe-player");
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
@@ -875,47 +875,42 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 			
 			case "prev-track":
-				webApp.vars["playlist"]["lastNum"]--;
-				if( webApp.vars["playlist"]["lastNum"] >= 0){
-					
-					var num = webApp.vars["playlist"]["lastNum"];
-		//console.log( num, webApp.vars["playlist"]["lastNum"]);
-					var track = webApp.vars["playlist"]["tracks"][num];
-					var videoSrc = track["src"];
-					$(webApp.vars["player"]).attr("src", videoSrc);
-		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
-//$("#player1").attr("src", videoSrc);
-		
-					var track_info = track["title"] +", "+ track["artist"];
-					$("#track-info").text(track_info);
-
-				} else {
-					$(webApp.vars["player"]).attr("src","");
-					webApp.vars["playlist"]["lastNum"] = 0;
-					$("#track-info").text("");
+				if( webApp.vars["playlist"]["lastNum"] > 0){
+					webApp.vars["playlist"]["lastNum"]--;
 				}
+				
+				var num = webApp.vars["playlist"]["lastNum"];
+//console.log( num );
+				var track = webApp.vars["playlist"]["tracks"][num];
+				var videoSrc = track["src"];
+				$(webApp.vars["player"]).attr("src", videoSrc);
+	//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+//$("#player1").attr("src", videoSrc);
+	
+				var track_info = track["title"] +", "+ track["artist"];
+				$("#track-info").text(track_info);
+				
 			break;
 			
 			case "next-track":
-				webApp.vars["playlist"]["lastNum"]++;
-				if( webApp.vars["playlist"]["lastNum"] < webApp.vars["playlist"]["tracks"].length){
-					
-					var num = webApp.vars["playlist"]["lastNum"];
-					var track = webApp.vars["playlist"]["tracks"][num];
-					var videoSrc = track["src"];
-					$(webApp.vars["player"]).attr("src", videoSrc);
-		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+				
+				if( webApp.vars["playlist"]["lastNum"] < (webApp.vars["playlist"]["tracks"].length - 1) ){
+					webApp.vars["playlist"]["lastNum"]++;
+				}
+				
+				var num = webApp.vars["playlist"]["lastNum"];
+//console.log( num );
+
+				var track = webApp.vars["playlist"]["tracks"][num];
+				var videoSrc = track["src"];
+				$(webApp.vars["player"]).attr("src", videoSrc);
+//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
 //console.log( webApp.vars["player"].contentDocument.body.getElementsByTagName("video").item(0) );
 //$("#player1").attr("src", videoSrc);
-		
-					var track_info = track["title"] +", "+ track["artist"];
-					$("#track-info").text(track_info);
-
-				} else {
-					$(webApp.vars["player"]).attr("src","");
-					webApp.vars["playlist"]["lastNum"] = webApp.vars["playlist"]["tracks"].length;
-					$("#track-info").text("");
-				}
+	
+				var track_info = track["title"] +", "+ track["artist"];
+				$("#track-info").text(track_info);
+				
 			break;
 //--------------------------------------------
 
