@@ -19,7 +19,7 @@
 посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
 
 - сделать смену трека по событию окончания воспроизведения
-	ended для <video>,
+	*ended для <video>,
 		//player.addEventListener('ended',function(e){
 	//console.log(e);
 		//},false);//end event
