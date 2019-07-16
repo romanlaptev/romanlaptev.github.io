@@ -118,7 +118,7 @@
 				</div>
 				
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center panel-body">{{ul}}
+				<div class="links text-center panel-body">
 	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		<div class="panel-body">
@@ -149,7 +149,9 @@
 			</div>
 		</div>
 		
-	</div>					
+	</div>	
+	
+{{ul}}
 				</div>
 </form>	
 			</div>
