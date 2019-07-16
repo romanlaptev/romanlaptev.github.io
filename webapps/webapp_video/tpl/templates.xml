@@ -107,8 +107,6 @@
 		
 		{{number}}{{title}}
 		<p class="creators">{{creators}}</p>
-		<!-- <a class="btn btn-sm btn-default btn-add-track-pls" href="#track-{{number}}">add to playlist</a> -->
-	
 	</div>
 	
 	<div id="video-{{number}}" class="panel-collapse collapse">
@@ -211,6 +209,8 @@
 	<li>
 		<!-- <a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a> -->
 		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
+		<a class="btn btn-sm btn-primary btn-add-track-pls" href="{{href}}" data-title="{{text}}">add to playlist</a>
+		
 	</li>
 ]]>
 		</html_code>
@@ -327,7 +327,7 @@
 	<tpl name="tpl-playlist-item">
 		<html_code>
 <![CDATA[
-	<li class='list-group-item'><a href="#?q=play-track&num={{number}}">{{title}}, {{artist}}</a></li>
+	<li class='list-group-item'><a href="#?q=play-track&num={{number}}">{{title}}</a></li>
 ]]>
 		</html_code>
 	</tpl>

@@ -73,6 +73,8 @@ function _initPlayer(app){
 
 
 function _player_addTrack( target ){
+console.log( target );
+return;	
 	var arr = target.href.split("track-");
 	//var numPages = webApp.vars["DB"]["numPages"];
 	//var numNodes = webApp.vars["DB"]["nodes"].length;

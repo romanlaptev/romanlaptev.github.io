@@ -46,10 +46,10 @@ var webApp = {
 		
 		"playlist" : {
 			tracks:[
-{title:"test MP4", artist:"test artist", src: "../../test_code/js/test_media/video/video.mp4"},
-{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
-{title:"test OGV", artist:"test artist", src: "../../test_code/js/test_media/video/small.ogv"}//,
-//{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
+{title:"test MP4", src: "../../test_code/js/test_media/video/video.mp4"},
+{title:"test WEBM", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
+{title:"test OGV", src: "../../test_code/js/test_media/video/small.ogv"}//,
+//{title:"Anda Jaleo Jaleo", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
 			],
 			lastNum:0
 		},
@@ -659,18 +659,18 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 		
 	//------------------------------------------------------------------
-		//if( $(target).hasClass("btn-add-track-pls") ){
-	////console.log("click...", target.href);
-			//actionLink = false;
+		if( $(target).hasClass("btn-add-track-pls") ){
+	//console.log("click...", target.href);
+			actionLink = false;
 
-			//if (event.preventDefault) { 
-				//event.preventDefault();
-			//} else {
-				//event.returnValue = false;				
-			//}
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;				
+			}
 			
-			//_player_addTrack( target );
-		//}
+			_player_addTrack( target );
+		}
 		
 	//------------------------------------------------------------------
 		if( $(target).hasClass("tag-link") ){
@@ -871,7 +871,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				$(webApp.vars["player"]).attr("src", videoSrc);
 				webApp.vars["playlist"]["lastNum"] = num;
 				
-				var track_info = track["title"] +", "+ track["artist"];
+				var track_info = track["title"];
 				$("#track-info").text(track_info);
 			break;
 /*
@@ -894,7 +894,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
 //$("#player1").attr("src", videoSrc);
 	
-				var track_info = track["title"] +", "+ track["artist"];
+				var track_info = track["title"];
 				$("#track-info").text(track_info);
 				
 			break;
@@ -921,7 +921,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 //console.log( webApp.vars["player"].contentDocument.body.getElementsByTagName("video").item(0) );
 //$("#player1").attr("src", videoSrc);
 	
-				var track_info = track["title"] +", "+ track["artist"];
+				var track_info = track["title"];
 				$("#track-info").text(track_info);
 				
 				if( autoplay ){
