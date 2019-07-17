@@ -337,7 +337,7 @@ function defineEvents(){
 	$("#btn-toggle-log").on("click", function(event){
 //console.log("click...", e);			
 		event = event || window.event;
-		var target = event.target || event.srcElement;
+		//var target = event.target || event.srcElement;
 		if (event.preventDefault) { 
 			event.preventDefault();
 		} else {
@@ -629,7 +629,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	if( webApp.vars["player"].nodeName === "VIDEO"){
 		
 		webApp.vars["player"].addEventListener('ended',function(e){
-console.log(e);
+//console.log(e);
 			var url = "?q=next-track&autoplay=TRUE";
 			webApp.vars["GET"] = func.parseGetParams( url ); 
 			_urlManager();
@@ -942,6 +942,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				var track = webApp.vars["playlist"]["tracks"][num];
 				var videoSrc = track["src"];
 				if( track["dataType"] === "embed-video" ){
+					autoplay = false;
 					$(webApp.vars["player"]).hide();
 					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
 					$(webApp.vars["iframePlayer"]).show();

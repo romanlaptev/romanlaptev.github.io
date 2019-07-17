@@ -92,6 +92,9 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 	};
 	webApp.vars["playlist"]["tracks"].push(track);
 	
+	webApp.vars["logMsg"] = "Added track <b>" +track["title"]+ "</b> to playlist...";
+	func.logAlert( webApp.vars["logMsg"], "success");
+	
 	var html = _draw_wrapData({
 		"data": webApp.vars["playlist"]["tracks"],
 		"templateID": "tpl-playlist",
