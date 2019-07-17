@@ -397,7 +397,7 @@ function defineEvents(){
 			var url = target.elements.filepath.value;
 			//target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
 			//window.open( url );
-			target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local media file in new tab</a>";
+			target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local video file in new tab</a>";
 			target.elements.filepath.value = "";
 		}
 		

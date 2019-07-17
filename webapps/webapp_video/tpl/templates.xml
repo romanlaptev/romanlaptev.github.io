@@ -33,7 +33,7 @@
 				</div>
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center panel-body">{{ul}}
+				<div class="links text-center panel-body">
 	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		
@@ -65,7 +65,9 @@
 			</div>
 		</div>
 		
-	</div>					
+	</div>
+	
+{{ul}}	
 				</div>
 </form>	
 
@@ -210,8 +212,15 @@
 <![CDATA[
 	<li>
 		<!-- <a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a> -->
-		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
-		<a class="btn btn-sm btn-primary btn-add-track-pls" href="{{href}}" data-title="{{text}}">add to playlist</a>
+<div class="panel-body">
+	<div class="">
+		<b>{{text}}</b>, <i>{{data-type}}</i>
+	</div>
+	<div class="">
+		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">open video in new tab</button>
+		<a class="btn btn-lg btn-orange btn-add-track-pls" href="{{href}}" data-title="{{text}}">add to playlist</a>
+	</div>
+</div>
 		
 	</li>
 ]]>
