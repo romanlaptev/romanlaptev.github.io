@@ -217,8 +217,8 @@
 		<b>{{text}}</b>, <i>{{data-type}}</i>
 	</div>
 	<div class="">
-		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">open video in new tab</button>
-		<a class="btn btn-lg btn-orange btn-add-track-pls" href="{{href}}" data-title="{{text}}">add to playlist</a>
+		<button type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}" target="_blank">open video in new tab</button>
+		<a class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" href="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</a>
 	</div>
 </div>
 		
@@ -319,6 +319,11 @@
 	<div class="panel-heading bg-darkblue clearfix">
 		<h4 class="pull-left">{{block_title}}</h4>
 		<div class="pull-right"><a href="#" class="btn toggle-btn">&gt;</a></div>
+	</div>
+	
+	<div class="panel-body">
+		<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+		<a href="?q=next-track" class="btn btn-blue">next track</a>
 	</div>
 	
 	<div class="content panel-body">

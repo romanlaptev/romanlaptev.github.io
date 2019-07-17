@@ -349,7 +349,8 @@ function defineEvents(){
 	});//end event
 	
 //------------------------------------------------------------------
-	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
+	//$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
+	$("#list-video, #block-taglist, #block-search, #block-playlist").on("click", function(event){
 //console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
