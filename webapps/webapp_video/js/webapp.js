@@ -198,7 +198,7 @@ console.log("init webapp!");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
 		this.vars["player"] = func.getById("player1");
-		//this.vars["player"] = func.getById("iframe-player");
+		this.vars["iframePlayer"] = func.getById("iframe-player");
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
@@ -232,6 +232,11 @@ function _runApp(){
 		//$("#load-progress").hide();
 	}
 
+//------------------ LOAD first video to player
+	var url = "?q=load-track&num=0";
+	webApp.vars["GET"] = func.parseGetParams( url ); 
+	_urlManager();
+//------------------
 
 	_loadData(function(res){
 //console.log(arguments);
@@ -624,7 +629,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	if( webApp.vars["player"].nodeName === "VIDEO"){
 		
 		webApp.vars["player"].addEventListener('ended',function(e){
-//console.log(e);
+console.log(e);
 			var url = "?q=next-track&autoplay=TRUE";
 			webApp.vars["GET"] = func.parseGetParams( url ); 
 			_urlManager();
@@ -864,12 +869,22 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 
 //-------------------------------------------- PLAYER
-			case "play-track":
+			case "load-track":
 				var num = webApp.vars["GET"]["num"];
 				var track = webApp.vars["playlist"]["tracks"][num];
 
 				var videoSrc = track["src"];
-				$(webApp.vars["player"]).attr("src", videoSrc);
+				
+				if( track["dataType"] === "embed-video" ){
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
+					$(webApp.vars["player"]).attr("src", videoSrc);
+					$(webApp.vars["player"]).show();
+				}
+				
 				webApp.vars["playlist"]["lastNum"] = num;
 				
 				var track_info = track["title"];
@@ -891,7 +906,16 @@ console.log( "-- " + webApp.vars["logMsg"] );
 //console.log( num );
 				var track = webApp.vars["playlist"]["tracks"][num];
 				var videoSrc = track["src"];
-				$(webApp.vars["player"]).attr("src", videoSrc);
+				
+				if( track["dataType"] === "embed-video" ){
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
+					$(webApp.vars["player"]).attr("src", videoSrc);
+					$(webApp.vars["player"]).show();
+				}
 	//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
 //$("#player1").attr("src", videoSrc);
 	
@@ -917,7 +941,15 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 				var track = webApp.vars["playlist"]["tracks"][num];
 				var videoSrc = track["src"];
-				$(webApp.vars["player"]).attr("src", videoSrc);
+				if( track["dataType"] === "embed-video" ){
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
+					$(webApp.vars["player"]).attr("src", videoSrc);
+					$(webApp.vars["player"]).show();
+				}
 //console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
 //console.log( webApp.vars["player"].contentDocument.body.getElementsByTagName("video").item(0) );
 //$("#player1").attr("src", videoSrc);

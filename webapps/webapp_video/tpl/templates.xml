@@ -318,12 +318,14 @@
 
 	<div class="panel-heading bg-darkblue clearfix">
 		<h4 class="pull-left">{{block_title}}</h4>
+<!--
 		<div class="pull-right"><a href="#" class="btn toggle-btn">&gt;</a></div>
+-->
 	</div>
 	
 	<div class="panel-body">
-		<a href="?q=prev-track" class="btn btn-primary">prev track</a>
-		<a href="?q=next-track" class="btn btn-blue">next track</a>
+		<span><a href="?q=prev-track" class="btn btn-primary">prev track</a></span>
+		<span><a href="?q=next-track" class="btn btn-blue">next track</a></span>
 	</div>
 	
 	<div class="content panel-body">
@@ -343,7 +345,7 @@
 	<tpl name="tpl-playlist-item">
 		<html_code>
 <![CDATA[
-	<li class='list-group-item'><a href="#?q=play-track&num={{number}}">{{title}}</a></li>
+	<li class='list-group-item'><a href="#?q=load-track&num={{number}}">{{title}}</a></li>
 ]]>
 		</html_code>
 	</tpl>
