@@ -373,26 +373,51 @@ function defineEvents(){
 		if( target.form && 
 				target.form.name === "form_local_url" && 
 					target.tagName === "BUTTON"){
-			if($(target).data("type") === "local-file"){
-//console.log("click...", $(target).data() );
-//console.log( target.form.elements.filepath );
-//console.log( $(target.form).find(".form-local-url") );
 
-				//$(target.form).find(".form-local-url").removeClass("hidden");
-				
-				target.form.elements.filepath.value += target.value;
-				//target.form.elements.local_link.innerHTML ="...";
-				
-				var url = target.form.elements.filepath.value;
-				target.form.elements.filepath.value = "";
-				
-				//target.outerHTML ="<a href='"+url+"' class='btn btn-lg btn-orange' target='_blank'>open local video file in new tab</a>";
-				target.outerHTML = webApp.vars["templates"]["localVideoBtnUpdated"].replace("{{url}}", url);
+			if( target.name === "video_link"){
+				if( $(target).data("type") === "local-file" ){
+	//console.log("click...", $(target).data() );
+	//console.log( target.form.elements.filepath );
+	//console.log( $(target.form).find(".form-local-url") );
 
-			} else {
-//console.log(target.value);				
-				window.open( target.value );
+					//$(target.form).find(".form-local-url").removeClass("hidden");
+
+					var filePath = target.form.elements.filepath.value;
+					if( filePath.length === 0){
+webApp.vars["logMsg"] = "local video <b>file path</b> must be define.....";
+func.logAlert( webApp.vars["logMsg"], "warning");
+						return false;
+					} else {
+						target.form.elements.filepath.value += target.value;
+						
+						var url = target.form.elements.filepath.value;
+						target.form.elements.filepath.value = "";
+						
+						//update button
+						target.outerHTML = webApp.vars["templates"]["localVideoBtnUpdated"].replace("{{url}}", url);
+					}
+
+				} else {
+	//console.log(target.value);				
+					window.open( target.value );
+				}
 			}
+			
+			if( target.name === "add_pls"){
+				if( $(target).data("type") === "local-file" ){
+					var filePath = target.form.elements.filepath.value;
+					if( filePath.length === 0){
+webApp.vars["logMsg"] = "local video <b>file path</b> must be define.....";
+func.logAlert( webApp.vars["logMsg"], "warning");
+						return false;
+					} else {
+						target.value = filePath + target.value;
+					}
+				}
+//console.log( target.name, target.value );
+				_player_addTrack( target );				
+			}
+			
 		}
 		
 	});//end event
@@ -677,18 +702,18 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 		
 	//------------------------------------------------------------------
-		if( $(target).hasClass("btn-add-track-pls") ){
-	//console.log("click...", target.href);
-			actionLink = false;
+		//if( $(target).hasClass("btn-add-track-pls") ){
+	////console.log("click...", target.href);
+			//actionLink = false;
 
-			if (event.preventDefault) { 
-				event.preventDefault();
-			} else {
-				event.returnValue = false;				
-			}
+			//if (event.preventDefault) { 
+				//event.preventDefault();
+			//} else {
+				//event.returnValue = false;				
+			//}
 			
-			_player_addTrack( target );
-		}
+			//_player_addTrack( target );
+		//}
 		
 	//------------------------------------------------------------------
 		if( $(target).hasClass("tag-link") ){
@@ -1959,7 +1984,6 @@ function _data_defineBtnText(data){
 			//console.log(item);
 			}//next
 		}
-		
 	}//next
 }//_data_defineBtnText()
 

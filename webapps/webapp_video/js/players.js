@@ -84,9 +84,19 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 		return false;	
 	}
 	
+	var _sourcePath = "";
+	
+	if( $(target).attr("href") ){
+		_sourcePath = $(target).attr("href");
+	}
+	
+	if( $(target).val() ){
+		_sourcePath = $(target).val();
+	}
+	
 	var track = {
 		"title": $(target).data("title"),
-		"src": $(target).attr("href"),
+		"src": _sourcePath,
 		"dataType": $(target).data("type"),//"local-file", "embed-video"
 		"number": webApp.vars["playlist"]["tracks"].length
 	};

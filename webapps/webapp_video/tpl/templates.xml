@@ -39,7 +39,7 @@
 		
 		<div class="panel-body">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<small>select local root path:</small>
+				<small>select local file path:</small>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 				<select name="select-protocol" class="form-control" onchange="">
@@ -127,7 +127,7 @@
 		<div class="panel-heading text-left">generate local file url</div>
 		<div class="panel-body">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<small>select local root path:</small>
+				<small>select local file path:</small>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 				<select name="select-protocol" class="form-control" onchange="">
@@ -221,8 +221,11 @@
 		<b>{{text}}</b>, <i>{{data-type}}</i>
 	</div>
 	<div class="">
-		<button type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}">{{btn_text}}</button>
+		<button name="video_link" type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}">{{btn_text}}</button>
+<!--
 		<a class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" href="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</a>
+-->
+		<button name="add_pls" type="button" class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" value="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</button>
 	</div>
 </div>
 		
