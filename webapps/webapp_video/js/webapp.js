@@ -177,7 +177,11 @@ _db_getBlockContent(){
 		],
 		
 		"templates_url" : "tpl/templates.xml",
-		"templates" : {},
+		"templates" : {
+			"localVideoBtn" : "create link",
+			"embedVideoBtn" : "open video in new tab",
+			"localVideoBtnUpdated" : "<a href='{{url}}' class='btn btn-primary' target='_blank'>open local video file in new tab</a>"
+		},
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
@@ -377,7 +381,14 @@ function defineEvents(){
 				//$(target.form).find(".form-local-url").removeClass("hidden");
 				
 				target.form.elements.filepath.value += target.value;
-				target.form.elements.local_link.innerHTML ="...";				
+				//target.form.elements.local_link.innerHTML ="...";
+				
+				var url = target.form.elements.filepath.value;
+				target.form.elements.filepath.value = "";
+				
+				//target.outerHTML ="<a href='"+url+"' class='btn btn-lg btn-orange' target='_blank'>open local video file in new tab</a>";
+				target.outerHTML = webApp.vars["templates"]["localVideoBtnUpdated"].replace("{{url}}", url);
+
 			} else {
 //console.log(target.value);				
 				window.open( target.value );
@@ -387,27 +398,28 @@ function defineEvents(){
 	});//end event
 
 //------------------------------------------------------------------
-	$("#list-video").on("submit", function(event){
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-//console.log("submit form ", $(target).attr("name") );
+
+	//$("#list-video").on("submit", function(event){
+		//event = event || window.event;
+		//var target = event.target || event.srcElement;
+////console.log("submit form ", $(target).attr("name") );
 		
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;
-		}
+		//if (event.preventDefault) { 
+			//event.preventDefault();
+		//} else {
+			//event.returnValue = false;
+		//}
 		
-		if( $(target).attr("name") === "form_local_url"){
-//console.log(target.elements.btn_replace.outerHTML);
-			var url = target.elements.filepath.value;
-			//target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
-			//window.open( url );
-			target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local video file in new tab</a>";
-			target.elements.filepath.value = "";
-		}
+		//if( $(target).attr("name") === "form_local_url"){
+////console.log(target.elements.btn_replace.outerHTML);
+			//var url = target.elements.filepath.value;
+			////target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
+			////window.open( url );
+			//target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local video file in new tab</a>";
+			//target.elements.filepath.value = "";
+		//}
 		
-	});//end event
+	//});//end event
 
 	//$("#list-video").on("reset", function(event){
 //console.log("reset...", event);
@@ -1684,13 +1696,15 @@ console.log( webApp.vars["logMsg"] );
 		data.push( JSON.parse( jsonNode) );
 	}//next
 */	
-//console.log(data);
 
 //for test
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];
 
 	_data_setTemplate(data);//define unique template for item
+	_data_defineBtnText(data);// define button text {{btn_text}} for item video files
+	
+//console.log(data);
 
 	if( typeof p["callback"] === "function"){
 		p["callback"](data);
@@ -1929,6 +1943,26 @@ function _data_setTemplate(data){
 	}//next
 	
 }//_data_setTemplate()
+
+
+// add {{btn_text}}
+function _data_defineBtnText(data){
+	for(var n = 0; n < data.length; n++){
+		if( data[n]["ul"] ){
+			for( var n1 = 0; n1 < data[n]["ul"].length; n1++){
+				var item = data[n]["ul"][n1];
+				if( item["data-type"] === "local-file"){
+					item["btn_text"] = webApp.vars["templates"]["localVideoBtn"];//"create link";
+				} else {
+					item["btn_text"] = webApp.vars["templates"]["embedVideoBtn"];//"open video in new tab";
+				}
+			//console.log(item);
+			}//next
+		}
+		
+	}//next
+}//_data_defineBtnText()
+
 
 
 //============================================== DRAW
