@@ -57,17 +57,17 @@
 			
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="create link"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
 			<div class="pull-right">
 				<button name="local_link" class="btn">...</button>
 			</div>
 		</div>
+{{ul}}	
 		
 	</div>
 	
-{{ul}}	
 				</div>
 </form>	
 
@@ -143,17 +143,17 @@
 			
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="create link"/>
 				<!-- <input type="reset" class="btn btn-warning"/> -->
 			</div>
 			<div class="pull-right">
 				<button name="local_link" class="btn">...</button>
 			</div>
 		</div>
+{{ul}}
 		
 	</div>	
 	
-{{ul}}
 				</div>
 </form>	
 			</div>
@@ -217,7 +217,7 @@
 		<b>{{text}}</b>, <i>{{data-type}}</i>
 	</div>
 	<div class="">
-		<button type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}" target="_blank">open video in new tab</button>
+		<button type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}">open video in new tab</button>
 		<a class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" href="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</a>
 	</div>
 </div>
