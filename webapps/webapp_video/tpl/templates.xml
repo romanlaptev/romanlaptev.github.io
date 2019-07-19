@@ -325,14 +325,17 @@
 
 	<div class="panel-heading bg-darkblue clearfix">
 		<h4 class="pull-left">{{block_title}}</h4>
-<!--
-		<div class="pull-right"><a href="#" class="btn toggle-btn">&gt;</a></div>
--->
+		<div class="pull-right">
+			<a data-toggle="collapse" href="#collapse-player" class="btn toggle-btn">-</a>
+		</div>
 	</div>
 	
 	<div class="panel-body">
-		<span><a href="?q=prev-track" class="btn btn-primary">prev track</a></span>
-		<span><a href="?q=next-track" class="btn btn-blue">next track</a></span>
+		<ul class="list-inline">
+			<li><a href="?q=prev-track" class="btn btn-primary">prev track</a></li>
+			<li><a href="?q=next-track" class="btn btn-blue">next track</a></li>
+			<li><a href="?q=clear-playlist" class="btn btn-danger">clear playlist</a></li>
+		</ul>
 	</div>
 	
 	<div class="content panel-body">
@@ -366,7 +369,7 @@
 <b>Tags</b>
 <div class="pull-right">
 	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
-	<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn">x</a>
+	<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn">-</a>
 </div>
 				</div>
 				<div class="panel-body content">
@@ -399,7 +402,7 @@
 <b>Search by keywords</b>
 <div class="pull-right">
 	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
-	<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn">x</a>
+	<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn">-</a>
 </div>
 				</div>
 				

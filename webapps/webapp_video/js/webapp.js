@@ -365,7 +365,7 @@ function defineEvents(){
 		var target = event.target || event.srcElement;
 		
 		if( target.tagName === "A"){
-			_listVideoClick(target, event);
+			_actionClick(target, event);
 		}
 		
 //console.log( target.form, target.form.name );
@@ -415,7 +415,7 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 					}
 				}
 //console.log( target.name, target.value );
-				_player_addTrack( target );				
+				_player_addTrack( target );
 			}
 			
 		}
@@ -678,7 +678,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	}
 	    
 
-	function _listVideoClick(target, event){
+	function _actionClick(target, event){
 		var actionLink = true;
 		if( $(target).hasClass("toggle-btn") ){
 //console.log(target.href);
@@ -750,7 +750,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			_urlManager();
 		}
 
-	}//end _listVideoClick()
+	}//end _actionClick()
 	
 }//end defineEvents()
 
@@ -905,7 +905,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 
 
-//-------------------------------------------- PLAYER
+//-------------------------------------------- PLAYLIST
 			case "load-track":
 				var num = webApp.vars["GET"]["num"];
 				var track = webApp.vars["playlist"]["tracks"][num];
@@ -998,6 +998,24 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				if( autoplay ){
 					webApp.vars["player"].play();
 				}
+				
+			break;
+			
+			case "clear-playlist":
+				webApp.vars["playlist"]["tracks"] = [];
+				delete webApp.vars["playlist"]["lastNum"];
+				
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				$("#track-info").text("");
+				
+				//reload block-playlist
+				_draw_buildBlock({
+					"locationID" : "block-playlist",
+					"title" : "Playlist", 
+					"templateID" : "tpl-block-playlist",
+					"content" : ""
+				});				
 				
 			break;
 //--------------------------------------------

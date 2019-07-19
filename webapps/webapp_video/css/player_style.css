@@ -25,6 +25,10 @@ width: 25%;
 */
 }
 
+#block-playlist .list-inline > li{
+padding-right:0;
+}
+
 
 #collapse-player .wrapper{
 margin:auto;
