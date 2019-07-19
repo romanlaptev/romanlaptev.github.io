@@ -143,16 +143,17 @@
 		<div class="col-xs-12 col-sm-10 col-md-9 col-lg-8" id="main">
 			
 			<div class="panel block" id="pager">
-				<div class="panel-body">
+
+				<div class="panel-body clearfix">
+					<div class="pull-left"><h3>Navigation</h3></div>					
+					<div class="pull-right">
 <small>					
 total records: <b><span id="total-records"></span></b>, 
 number of pages: <b><span id="total-pages"></span></b>
 </small>
-						<div class="block-num-page clearfix">
-							<div class="pull-left">
-									<b>Page №:</b>
-							</div>
-							<div class="pull-right">
+						<div class="block-num-page">
+							<div class="row">
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
 <button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
 <input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
 <button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
@@ -163,7 +164,10 @@ number of pages: <b><span id="total-pages"></span></b>
 							</div>
 -->
 						</div>		
-
+					</div>
+				</div>
+				
+				<div class="panel-body">
 						<div class="">
 <input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
 						</div>
