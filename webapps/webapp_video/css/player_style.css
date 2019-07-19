@@ -1,6 +1,7 @@
 #block-playlist {
 position: fixed;
 left: 0;
+top: 100px;
 width: 25%;	
 }
 @media screen and (max-width:1280px) 
@@ -27,6 +28,8 @@ width: 25%;
 
 #block-playlist .list-inline > li{
 padding-right:0;
+padding-left: 2px;
+margin-bottom: 2px;
 }
 
 
