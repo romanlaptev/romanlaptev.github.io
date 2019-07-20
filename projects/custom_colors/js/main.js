@@ -284,10 +284,12 @@ var _vars = {
 
 {"colorName": "darkolivegreen", "code": "#556b2f"},
 {"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
-{"colorName": "olive", "code": "#808000"},
 {"colorName": "yellowgreen", "code": "#9acd32"},
+{"colorName": "olive", "code": "#808000"},
 
 {"colorName": "darkkhaki", "code": "#bdb76b"},
+{"colorName": "Grayish yellow, Серовато-желтый", "code": "#D0CCA5"},
+
 {"colorName": "darkgoldenrod", "code": "#b8860b"},
 {"colorName": "burlywood", "code": "#deb887"},
 
@@ -393,21 +395,21 @@ var _vars = {
 	], //end
 
 "wiki_colors": [
-{"text-color": "#000000", "code": "#303030","colorName": "Антрацитовый, #303030"},
-{"text-color": "#000000", "code": "#464646","colorName": "Угольный,#464646"},
+{"text-color": "#000000", "code": "#303030","colorName": "Антрацитовый"},
+{"text-color": "#000000", "code": "#464646","colorName": "Угольный"},
 {"code": "#3f3f3f", "text-color": "#ffffff"},
 {"code": "#707070", "text-color": "#ffffff"},
 {"code": "#666", 	"text-color": "#ffffff"},
-{"text-color": "#000000", "code": "#505050","colorName": "Мокрый асфальт,#505050"},
+{"text-color": "#000000", "code": "#505050","colorName": "Мокрый асфальт"},
 {"code": "#4f5a6e", "text-color": "#ffffff"},
-{"text-color": "#000000", "code": "#708090","colorName": "Грифельный,#708090"},
-{"text-color": "#000000", "code": "#BFBFBF","colorName": "Серый, #BFBFBF"},
-{"text-color": "#000000", "code": "#AFAFAF","colorName": "Стальной, #AFAFAF"},
-{"text-color": "#000000", "code": "#798081","colorName": "Свинцовый, #798081"},
-{"text-color": "#000000", "code": "#9E9E9E","colorName": "Мышиный, #9E9E9E"},
+{"text-color": "#000000", "code": "#708090","colorName": "Грифельный"},
+{"text-color": "#000000", "code": "#BFBFBF","colorName": "Серый"},
+{"text-color": "#000000", "code": "#AFAFAF","colorName": "Стальной"},
+{"text-color": "#000000", "code": "#798081","colorName": "Свинцовый"},
+{"text-color": "#000000", "code": "#9E9E9E","colorName": "Мышиный"},
 {"colorName": "Фельдграу","code": "#4D5D53","text-color": "#ffffff"},
-{"text-color": "#000000", "code": "#21421E","colorName": "Мирт, #21421E"},
-{"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа, #465945"},
+{"text-color": "#000000", "code": "#21421E","colorName": "Мирт"},
+{"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа"},
 	{
 		//"colorName": "aliceblue",
 		"code": "#2A3443",
@@ -439,7 +441,7 @@ var _vars = {
 {"code": "#41013D", "text-color": "#ffffff"},
 
 {"text-color": "#000000", "code": "#f3f3f3"},
-{"text-color": "#000000", "code": "#D0CCD5"},
+{"text-color": "#000000", "code": "#D0CCD5", "colorName": "Grayish violet, Серовато-фиолетовый"},
 {"text-color": "#000000", "code": "#dedddf"},
 {"text-color": "#000084", "code": "#c6c3c6"},
 {"text-color": "#794F4B", "code": "#c6c3c6"},
