@@ -935,6 +935,9 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 */			
 			case "prev-track":
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				
 				if( webApp.vars["playlist"]["lastNum"] > 0){
 					webApp.vars["playlist"]["lastNum"]--;
 				}
@@ -962,6 +965,9 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 			
 			case "next-track":
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				
 				var autoplay = false;
 				
 				if( webApp.vars["playlist"]["lastNum"] < (webApp.vars["playlist"]["tracks"].length - 1) ){
