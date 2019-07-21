@@ -11046,34 +11046,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 <video type="video">
 	<title>
-		<item>Шлюз, видеоклипы</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra#local file (linux)</li>
-		<li>file://m:#local file (windows)</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>19-May-2013 18:28:07</published>
-	<updated>12-Jan-2014 18:29:00</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Walls of Jericho</item>
 </title>
 	
@@ -12257,12 +12229,15 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 <video type="video">
 	<title>
 		<item>Alf</item>
+		<item>Альф</item>
 </title>
 	
+	<producer>Пол Фаско</producer>
 	
-	
-	
-	
+	<description>https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%8C%D1%84</description>
+	<pictures>
+		<img src="https://upload.wikimedia.org/wikipedia/ru/9/99/Alf_poster.jpg"/>
+	</pictures>
 
 	<ul>
 		<li><a data-type="local-file" href="/video/films/A/alf/001.avi">001.avi</a></li>
@@ -12277,10 +12252,11 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
 		<item tid="207">A</item>
+		<item tid="306">1986</item>
 	</tags>
 
 	<published>17-Jun-2013 22:20:25</published>
-	<updated>20-Jul-2019 23:19:50</updated>
+	<updated>21-Jul-2019 14:13:40</updated>
 </video>
 
 <video type="video">
@@ -15106,6 +15082,7 @@ https://www.youtube.com/channel/UCa0al69mOt_6FPat1hX89fw/videos</description>
 <video type="video">
 	<title>
 		<item>unsort films</item>
+		<item>Посмотреть!</item>
 </title>
 	
 	
@@ -15126,7 +15103,7 @@ https://www.youtube.com/channel/UCa0al69mOt_6FPat1hX89fw/videos</description>
 	</tags>
 
 	<published>21-Jul-2019 13:00:29</published>
-	<updated>21-Jul-2019 13:00:29</updated>
+	<updated>21-Jul-2019 13:01:47</updated>
 </video>
 
 <video type="videoclip">
@@ -16123,6 +16100,37 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 
 	<published>18-May-2013 20:41:00</published>
 	<updated>20-Jul-2019 23:34:19</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Шлюз, видеоклипы</item>
+</title>
+	
+	
+	
+	<description></description>
+	<pictures>
+		<img src=" "/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Актриса.avi">Шлюз - Актриса.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Актриса (клип).mp4">Шлюз - Актриса (клип).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Песня.avi">Шлюз - Песня.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/ШЛЮЗ (feat WAWAN) - Песня (live 2005).mp4">ШЛЮЗ (feat WAWAN) - Песня (live 2005).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Песня (А1 Панк блок).mpg">Шлюз - Песня (А1 Панк блок).mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Празднику Стоп (HD).mp4">Шлюз - Празднику Стоп (HD).mp4</a></li>
+	</ul>
+
+	<tags>
+		<item tid="252">Ш</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>19-May-2013 18:28:07</published>
+	<updated>21-Jul-2019 14:41:06</updated>
 </video>
 
 <video type="videoclip">
