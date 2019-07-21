@@ -814,30 +814,29 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 <video type="video">
 	<title>
 		<item>час пик 2</item>
+		<item>Hour 2</item>
 </title>
 	
-	
-	<roles>
-Крис Такер (Chris Tucker), Джеки Чан (Jackie Chan)
+	<producer>Студия: New Line Home Entertaiment Создатели: Бретт Ратнер (Brett Ratner)</producer>
+	<roles>Крис Такер (Chris Tucker), Джеки Чан (Jackie Chan)
 		</roles>
-	<description>США, 2001
-Студия: New Line Home Entertaiment
-Создатели: Бретт Ратнер (Brett Ratner)
-	&amp;lt;br&amp;gt;
-Отпуск детектива Джеймса Картера в Гонконге омрачен. Вместо того, чтобы ходить на вечеринки и встречаться с девушками, он с напарником, полицейским Ли, отправляется на поиски главы мафиозной группировки &amp;quot;Триада&amp;quot;. Дело осложняется, когда детективы узнают о существовании широко разветвленной сети производства и сбыта фальшивых денег.	
-	&amp;lt;br&amp;gt;
-Комедия, Боевик
-	&amp;lt;br&amp;gt;avi</description>
+	<description>Отпуск детектива Джеймса Картера в Гонконге омрачен. Вместо того, чтобы ходить на вечеринки и встречаться с девушками, он с напарником, полицейским Ли, отправляется на поиски главы мафиозной группировки &amp;quot;Триада&amp;quot;. Дело осложняется, когда детективы узнают о существовании широко разветвленной сети производства и сбыта фальшивых денег.</description>
 	
 
 	<ul>
-		<li>http://localhost/video/films/H/hour_2.avi</li>
+		<li><a data-type="local-file" href="/video/films/H/hour_2.avi">hour_2.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="37">Боевик</item>
+		<item tid="5">комедия</item>
+		<item tid="66">США</item>
+		<item tid="214">H</item>
+		<item tid="286">2001</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:06:17</updated>
 </video>
 
 <video type="video">
@@ -3091,6 +3090,7 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 <video type="video">
 	<title>
 		<item>Роман с камнем</item>
+		<item>Romancing the Stone</item>
 </title>
 	
 	<producer>Роберт Земекис</producer>
@@ -3102,8 +3102,7 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 Мэри Эллен Трейнор
 Ив Смит
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Джоан Уайлдер, автор популярных женских романов, 
+	<description>Джоан Уайлдер, автор популярных женских романов, 
 находит в своем почтовом ящике пакет из Колумбии, 
 от своей сестры. Телефонный звонок, подтверждает 
 самые страшные опасения - сестра похищена, и похитители 
@@ -3113,66 +3112,30 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 американского наемника спасет девушку от гибели. 
 Вместе их ждут экстремальные приключения в джунглях, 
 поиск сокровищ и конечно романтическая любовная история.
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
 
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
+https://www.kinopoisk.ru/film/12285/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_12285.jpg"/>
+	</pictures>
 
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/R/ROMANCING_STONE-001.avi">ROMANCING_STONE-001.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/87407856360">Роман с камнем, ok.ru</a></li>
+	</ul>
 
 	<tags>
-		<item tid="39">детектив</item>
+		<item tid="37">Боевик</item>
+		<item tid="5">комедия</item>
+		<item tid="54">мелодрама</item>
+		<item tid="14">приключения</item>
 		<item tid="74">Мексика</item>
 		<item tid="66">США</item>
+		<item tid="223">R</item>
+		<item tid="244">Р</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>02-Mar-2013 22:09:18</updated>
+	<updated>21-Jul-2019 20:25:18</updated>
 </video>
 
 <video type="video">
@@ -3743,35 +3706,6 @@ Monica Viegas
 
 <video type="video">
 	<title>
-		<item>Десять каноэ</item>
-</title>
-	
-	
-	<roles>
-Ричард Бирринбиррин (Richard Birrinbirrin), Джонни Банийра (Johnny Buniyira), Питер Джигирр (Peter Djigirr), Френсис Джалибинг (Frances Djulibing), Crusoe Kurddal
-	</roles>
-	<description>Австралия, 2006
-Создатели: Рольф Де Хеер (Rolf De Heer), Питер Джигирр (Peter Djigirr)
-&amp;lt;br&amp;gt;
-Уникальный фильм о культуре, быте и истории австралийских аборигенов. Далекое прошлое, целые века до прихода в Австралию белого человека. Дэйинди домогается жены старшего брата, и чтобы наставить его на истинный путь, ему рассказывают старинную историю о любви, вражде, колдовстве и мести. Будто наяву Дэйинди видит события мифического прошлого.&amp;lt;br&amp;gt;  
-Военный, Драма, Исторический, Комедия, Приключения
-&amp;lt;br&amp;gt;</description>
-	
-
-	<ul>
-		<li>http://localhost/video/films/
-Ten Canoes.avi
-</li>
-	</ul>
-
-	
-
-	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Скины</item>
 		<item>Romper-Stomper</item>
 </title>
@@ -4076,37 +4010,6 @@ https://www.youtube.com/watch?v=B-iVfLX2tvY</description>
 
 	<published>12-Oct-2012 00:07:57</published>
 	<updated>12-Apr-2019 23:04:56</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дом с привидениями</item>
-</title>
-	
-	
-	<roles>
-Эдвард Ф. Клайн, Бастер Китон, Джо Робертс, Вирджиния Фокс, Натали Талмадж
-	</roles>
-	<description>США, 1921
-Режиссёр: Эдвард Ф. Клайн, Бастер Китон
-Сценарий: Эдвард Ф. Клайн, Бастер Китон
-&amp;lt;br&amp;gt;
-Бастер в роли банковского клерка. В банк, где он работает, неожиданно нагрянули грабители. А у Бастера, как назло, проблемы с клеем. После ограбления бандиты направляются в &amp;quot;дом с привидениями&amp;quot;, который должен, по их расчету, напугать полицейских.
-&amp;lt;br&amp;gt;  
-Комедия, Ужасы
-&amp;lt;br&amp;gt;</description>
-	
-
-	<ul>
-		<li>http://localhost/video/films/
-The_Haunted_House.avi
-</li>
-	</ul>
-
-	
-
-	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -8641,30 +8544,35 @@ https://www.kinopoisk.ru/film/102245/</description>
 <video type="video">
 	<title>
 		<item>Машина Времени</item>
+		<item>Time machine</item>
 </title>
 	
-	
-	<roles>
-В ролях: Гай Пирс (Guy Pearce), Марк Эдди (Mark Addy), Филлида Лоу (Phyllida Law), Лаура Кирк (Laura Kirk), Джош Стэмберг (Josh Stamberg), Джон М. Момроу (John W. Momrow), Сиена Гиллори (Sienna Guillory), Макс Бейкер (Max Baker)
+	<producer>Студия: Dreamworks Создатели: Саймон Уэллс (Simon Wells)</producer>
+	<roles>В ролях: Гай Пирс (Guy Pearce), Марк Эдди (Mark Addy), Филлида Лоу (Phyllida Law), Лаура Кирк (Laura Kirk), Джош Стэмберг (Josh Stamberg), Джон М. Момроу (John W. Momrow), Сиена Гиллори (Sienna Guillory), Макс Бейкер (Max Baker)
 	</roles>
-	<description>США, 2002
-Студия: Dreamworks
-Создатели: Саймон Уэллс (Simon Wells)
-&amp;lt;br&amp;gt;
-Ученый-изобретатель Александр Хартдеген может пойти на всё, чтобы доказать, что путешествие во времени возможно. Его намерения осуществляются после произошедшей личной трагедии, которая заставляет его отправиться изменить прошлое. Проверяя свои теории, машина времени собственного изобретения, забрасывает Хартдегена на 800'000 лет в будущее, где он обнаруживает, что человечество разделилось на охотников и добычу...
-&amp;lt;br&amp;gt;Фантастика&amp;lt;br&amp;gt;</description>
-	
+	<description>Ученый-изобретатель Александр Хартдеген может пойти на всё, чтобы доказать, что путешествие во времени возможно. 
+Его намерения осуществляются после произошедшей личной трагедии, которая заставляет его отправиться изменить прошлое. 
+Проверяя свои теории, машина времени собственного изобретения, забрасывает Хартдегена на 800'000 лет в будущее, 
+где он обнаруживает, что человечество разделилось на охотников и добычу...</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_8109.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>http://localhost/video/films/
-time_machine.avi
-</li>
+		<li><a data-type="local-file" href="/video/films/T/time_machine.avi">time_machine.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="43">фантастика</item>
+		<item tid="119">экранизация</item>
+		<item tid="66">США</item>
+		<item tid="22">avi</item>
+		<item tid="225">T</item>
+		<item tid="285">2002</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:06:29</updated>
 </video>
 
 <video type="video">
@@ -8844,32 +8752,34 @@ https://www.kinopoisk.ru/film/12283/</description>
 <video type="video">
 	<title>
 		<item>Процесс</item>
+		<item>The Trial</item>
 </title>
 	
-	
-	<roles>
-В ролях: Кайл Маклахлан (Kyle Maclachlan), Энтони Хопкинс (Anthony Hopkins), Джейсон Робардс (Jason Robards), Джульет Стивенсон (Juliet Stevenson), Полли Уокер (Polly Walker), Альфред Молина (Alfred Molina)
+	<producer>Студия: Europanda Entertainment Создатели: Дэвид Хью Джоунс (David Hugh Jones)</producer>
+	<roles>Кайл Маклахлан (Kyle Maclachlan), 
+Энтони Хопкинс (Anthony Hopkins), 
+Джейсон Робардс (Jason Robards), 
+Джульет Стивенсон (Juliet Stevenson), 
+Полли Уокер (Polly Walker), 
+Альфред Молина (Alfred Molina)
 	</roles>
-	<description>Великобритания, 1993
-Студия: Europanda Entertainment
-Создатели: Дэвид Хью Джоунс (David Hugh Jones)
-&amp;lt;br&amp;gt;
-Проснувшись обычным будничным утром, законопослушный работник банка, господин К. обнаруживает в своих апартаментах двух незнакомцев, которые сообщают ему о том, что он арестован и находится под следствием. От чьего имени выступают эти люди и какова статья обвинения, узнать не удается. Тем не менее, все вокруг, будто сговорившись, подтверждают реальность случившегося...
-&amp;lt;br&amp;gt;
-Драма
-&amp;lt;br&amp;gt;</description>
+	<description>Проснувшись обычным будничным утром, законопослушный работник банка, господин К. обнаруживает в своих апартаментах двух незнакомцев, которые сообщают ему о том, что он арестован и находится под следствием. От чьего имени выступают эти люди и какова статья обвинения, узнать не удается. Тем не менее, все вокруг, будто сговорившись, подтверждают реальность случившегося...</description>
 	
 
 	<ul>
-		<li>http://localhost/video/films/
-The Trial.avi
-</li>
+		<li><a data-type="local-file" href="/video/films/T/The Trial.avi">The Trial.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="4">драма</item>
+		<item tid="119">экранизация</item>
+		<item tid="60">Великобритания</item>
+		<item tid="225">T</item>
+		<item tid="243">П</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:18:03</updated>
 </video>
 
 <video type="video">
@@ -11220,6 +11130,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 <video type="video">
 	<title>
 		<item>10 каноэ</item>
+		<item>Ten Canoes</item>
 </title>
 	
 	<producer>Рольф Де Хир, Питер Джигирр</producer>
@@ -11227,12 +11138,13 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 Джейми Галпилил
 Ричард Бирринбиррин	</roles>
 	<description>http://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%81%D1%8F%D1%82%D1%8C_%D0%BB%D0%BE%D0%B4%D0%BE%D0%BA
-&amp;lt;pre&amp;gt;
+
 «Де́сять ло́док» (англ. Ten Canoes) — австралийский фильм 2006 г. в жанре драмы-комедии. 
 Это первый фильм, полностью снятый на одном из аборигенных языков Австралии. 
 Название фильма связано с одной из сюжетных линий: племя аборигенов делает 10 каноэ 
 и отправляется на них за гусиными яйцами, и по ходу их путешествия один из его участников рассказывает историю. Фильм получил специальную премию Каннского фестиваля
-&amp;lt;/pre&amp;gt;</description>
+
+Уникальный фильм о культуре, быте и истории австралийских аборигенов. Далекое прошлое, целые века до прихода в Австралию белого человека. Дэйинди домогается жены старшего брата, и чтобы наставить его на истинный путь, ему рассказывают старинную историю о любви, вражде, колдовстве и мести. Будто наяву Дэйинди видит события мифического прошлого.</description>
 	<pictures>
 		<img src="/video/0_covers/"/>
 	</pictures>
@@ -11243,12 +11155,15 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="14">приключения</item>
 		<item tid="88">Австралия</item>
 		<item tid="22">avi</item>
+		<item tid="225">T</item>
+		<item tid="282">2006</item>
 	</tags>
 
 	<published>23-May-2013 22:17:25</published>
-	<updated>20-Jul-2019 23:18:07</updated>
+	<updated>21-Jul-2019 20:10:13</updated>
 </video>
 
 <video type="video">
@@ -12082,9 +11997,12 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item>The Haunted House</item>
 </title>
 	
-	<producer>Клайн, Эдвард</producer>
-	
-	<description>https://www.kinopoisk.ru/film/11396/</description>
+	<producer>Клайн, Эдвард, Бастер Китон</producer>
+	<roles>Эдвард Ф. Клайн, Бастер Китон, Джо Робертс, Вирджиния Фокс, Натали Талмадж	</roles>
+	<description>https://www.kinopoisk.ru/film/11396/
+
+Бастер в роли банковского клерка. В банк, где он работает, неожиданно нагрянули грабители.
+А у Бастера, как назло, проблемы с клеем. После ограбления бандиты направляются в &amp;quot;дом с привидениями&amp;quot;, который должен, по их расчету, напугать полицейских.</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_big/11396.jpg"/>
 	</pictures>
@@ -12098,13 +12016,14 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="5">комедия</item>
 		<item tid="28">короткометражный</item>
 		<item tid="192">Бастер Китон</item>
+		<item tid="66">США</item>
 		<item tid="214">H</item>
 		<item tid="233">Д</item>
 		<item tid="334">немое кино</item>
 	</tags>
 
 	<published>16-Jun-2013 00:02:58</published>
-	<updated>14-Apr-2019 17:58:15</updated>
+	<updated>21-Jul-2019 20:13:47</updated>
 </video>
 
 <video type="video">
