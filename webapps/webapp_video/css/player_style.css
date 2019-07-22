@@ -37,6 +37,9 @@ padding-left: 2px;
 margin-bottom: 2px;
 }
 
+.pls-buttons{
+padding-bottom:0;
+}
 
 #playlist li.active > a{
 color:#fff;
@@ -44,6 +47,8 @@ color:#fff;
 #playlist li > input {
 margin-right: 5px;
 }
+
+
 
 
 #collapse-player .wrapper{

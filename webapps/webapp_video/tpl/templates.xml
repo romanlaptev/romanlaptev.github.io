@@ -330,7 +330,7 @@
 		</div>
 	</div>
 	
-	<div class="panel-body">
+	<div class="panel-body pls-buttons">
 		<ul class="list-inline">
 			<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
 			<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
