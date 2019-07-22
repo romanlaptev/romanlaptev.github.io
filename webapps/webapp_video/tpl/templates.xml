@@ -332,9 +332,15 @@
 	
 	<div class="panel-body">
 		<ul class="list-inline">
-			<li><a href="?q=prev-track" class="btn btn-primary">prev track</a></li>
-			<li><a href="?q=next-track" class="btn btn-blue">next track</a></li>
-			<li><a href="?q=clear-playlist" class="btn btn-danger">clear playlist</a></li>
+			<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
+			<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
+			<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
+			<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
+		</ul>
+		<ul class="list-inline">
+			<li><a href="?q=check-all" class="btn btn-sm btn-orange">select all</a></li>
+			<li><a href="?q=clear-all" class="btn btn-sm btn-orange">clear all</a></li>
+			<li><a href="?q=remove-track" class="btn btn-sm btn-danger">remove selected</a></li>
 		</ul>
 	</div>
 	
@@ -348,14 +354,20 @@
 
 	<tpl name="tpl-playlist">
 		<html_code><![CDATA[
-<ul id="playlist" class="list-unstyled">{{list}}</ul>
+<ul id="playlist" class="list-unstyled">
+	{{list}}
+</ul>
+			
 		]]></html_code>
 	</tpl>
 	
 	<tpl name="tpl-playlist-item">
 		<html_code>
 <![CDATA[
-	<li class='list-group-item'><a href="#?q=load-track&num={{number}}">{{title}}</a></li>
+	<li class='list-group-item'>
+		<input type="checkbox" name="track[]" value="{{number}}"/>	
+		<a href="#?q=load-track&num={{number}}">{{title}}</a>
+	</li>
 ]]>
 		</html_code>
 	</tpl>

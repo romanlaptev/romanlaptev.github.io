@@ -26,14 +26,23 @@ width: 25%;
 */
 }
 
+#block-playlist ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 #block-playlist .list-inline > li{
 padding-right:0;
 padding-left: 2px;
 margin-bottom: 2px;
 }
 
+
 #playlist li.active > a{
 color:#fff;
+}
+#playlist li > input {
+margin-right: 5px;
 }
 
 

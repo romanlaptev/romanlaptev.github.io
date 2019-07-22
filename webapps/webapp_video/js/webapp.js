@@ -1028,7 +1028,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			
 			case "clear-playlist":
 				webApp.vars["playlist"]["tracks"] = [];
-				delete webApp.vars["playlist"]["lastNum"];
+				webApp.vars["playlist"]["lastNum"] = 0;
 				
 				$(webApp.vars["iframePlayer"]).attr("src", "");
 				$(webApp.vars["player"]).attr("src", "");
@@ -1042,6 +1042,14 @@ console.log( "-- " + webApp.vars["logMsg"] );
 					"content" : ""
 				});				
 				
+			break;
+
+			case "check-all":
+				_draw_checkAll();
+			break;
+			
+			case "clear-all":
+				_draw_clearAll();
 			break;
 //--------------------------------------------
 
@@ -2410,3 +2418,16 @@ console.log( webApp.vars["logMsg"] );
 			$(activeItem).addClass("active");
 		}
 	}//end _draw_setActiveTrack()
+
+	function _draw_checkAll(){
+		$("#playlist li input[type=checkbox]").each(function(num, item){
+//console.log(num, item);
+			$(item).prop("checked", true);
+		});//end each
+	}//end _draw_checkAll()
+
+	function _draw_clearAll(){
+		$("#playlist li input[type=checkbox]").each(function(num, item){
+			$(item).prop("checked", false);
+		});//end each
+	}//end _draw_clearAll()
