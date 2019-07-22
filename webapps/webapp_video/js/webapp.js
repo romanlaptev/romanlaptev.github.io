@@ -363,8 +363,8 @@ function defineEvents(){
 	});//end event
 	
 //------------------------------------------------------------------
-	//$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
-	$("#list-video, #block-taglist, #block-search, #block-playlist").on("click", function(event){
+	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
+	//$("#list-video, #block-taglist, #block-search, #block-playlist").on("click", function(event){
 //console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
@@ -924,7 +924,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 					return false;
 				}
 				var track = webApp.vars["playlist"]["tracks"][num];
-				
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
 				
 				var videoSrc = track["src"];
 				
@@ -962,6 +965,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				var num = webApp.vars["playlist"]["lastNum"];
 //console.log( num );
 				var track = webApp.vars["playlist"]["tracks"][num];
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
 				var videoSrc = track["src"];
 				
 				if( track["dataType"] === "embed-video" ){
@@ -1001,6 +1008,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 //console.log( num );
 
 				var track = webApp.vars["playlist"]["tracks"][num];
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
 				var videoSrc = track["src"];
 				if( track["dataType"] === "embed-video" ){
 					autoplay = false;
@@ -1044,13 +1055,54 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				
 			break;
 
-			case "check-all":
-				_draw_checkAll();
+			//case "check-all":
+				//_draw_checkAll();
+			//break;
+			
+			//case "clear-all":
+				//_draw_clearAll();
+			//break;
+			
+			case "remove-track":
+				var num = parseInt( webApp.vars["GET"]["num"] );
+//console.log(num, typeof num, isNaN(num) );
+				if( isNaN(num) ){
+					webApp.vars["logMsg"] = "not found track by num: "+ webApp.vars["GET"]["num"];
+console.log( "-- " + webApp.vars["logMsg"] );
+					return false;
+				}
+				//delete webApp.vars["playlist"]["tracks"][0];
+				webApp.vars["playlist"]["tracks"].splice(num, 1);
+//console.log(webApp.vars["playlist"]);
+
+				webApp.vars["playlist"]["lastNum"] = 0;
+				
+				if( webApp.vars["playlist"]["tracks"].length > 0){
+//------------------ LOAD first video to player
+					var url = "?q=load-track&num=0";
+					webApp.vars["GET"] = func.parseGetParams( url ); 
+					_urlManager();
+//------------------
+					//refresh block-playlist
+					var _block = webApp.vars["blocks"][0];
+					_block["buildBlock"]();
+				} else {
+					webApp.vars["playlist"]["tracks"] = [];
+					$(webApp.vars["iframePlayer"]).attr("src", "");
+					$(webApp.vars["player"]).attr("src", "");
+					$("#track-info").text("");
+					
+					//reload block-playlist
+					_draw_buildBlock({
+						"locationID" : "block-playlist",
+						"title" : "Playlist", 
+						"templateID" : "tpl-block-playlist",
+						"content" : ""
+					});				
+				}
+
 			break;
 			
-			case "clear-all":
-				_draw_clearAll();
-			break;
 //--------------------------------------------
 
 			default:
@@ -2418,7 +2470,7 @@ console.log( webApp.vars["logMsg"] );
 			$(activeItem).addClass("active");
 		}
 	}//end _draw_setActiveTrack()
-
+/*
 	function _draw_checkAll(){
 		$("#playlist li input[type=checkbox]").each(function(num, item){
 //console.log(num, item);
@@ -2431,3 +2483,4 @@ console.log( webApp.vars["logMsg"] );
 			$(item).prop("checked", false);
 		});//end each
 	}//end _draw_clearAll()
+*/

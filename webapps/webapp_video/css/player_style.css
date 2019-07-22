@@ -41,12 +41,18 @@ margin-bottom: 2px;
 padding-bottom:0;
 }
 
-#playlist li.active > a{
+#playlist .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+background-color: #004586;
+}
+#playlist li.active a.track-name{
 color:#fff;
 }
+
+/*
 #playlist li > input {
 margin-right: 5px;
 }
+*/
 
 
 

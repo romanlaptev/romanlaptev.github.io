@@ -332,15 +332,14 @@
 	
 	<div class="panel-body pls-buttons">
 		<ul class="list-inline">
-			<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
-			<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
-			<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
-			<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
-		</ul>
-		<ul class="list-inline">
+<!--			
 			<li><a href="?q=check-all" class="btn btn-sm btn-orange">select all</a></li>
 			<li><a href="?q=clear-all" class="btn btn-sm btn-orange">clear all</a></li>
 			<li><a href="?q=remove-track" class="btn btn-sm btn-danger">remove selected</a></li>
+-->			
+			<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
+			<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
+
 		</ul>
 	</div>
 	
@@ -365,8 +364,15 @@
 		<html_code>
 <![CDATA[
 	<li class='list-group-item'>
-		<input type="checkbox" name="track[]" value="{{number}}"/>	
-		<a href="#?q=load-track&num={{number}}">{{title}}</a>
+		<!-- <input type="checkbox" name="track[]" value="{{number}}"/>	-->
+		<div class="row">
+			<div class="col-xs-10 col-sm-10">
+				<a class="track-name" href="#?q=load-track&num={{number}}">{{title}}</a>
+			</div>
+			<div class="col-xs-2 col-sm-2 text-right">
+				<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&num={{number}}" title="Remove this track from playlist">x</a>
+			</div>
+		</div>
 	</li>
 ]]>
 		</html_code>
