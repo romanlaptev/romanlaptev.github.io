@@ -104,22 +104,10 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 	
 	webApp.vars["logMsg"] = "Added track <b>" +track["title"]+ "</b> to playlist...";
 	func.logAlert( webApp.vars["logMsg"], "success");
-	
-	var html = _draw_wrapData({
-		"data": webApp.vars["playlist"]["tracks"],
-		"templateID": "tpl-playlist",
-		"templateListItemID": "tpl-playlist-item"
-	});
-//console.log( html);
-	if( html && html.length > 0){
-		_draw_buildBlock({
-			"locationID" : "block-playlist",
-			"title" : "Playlist", 
-			"templateID" : "tpl-block-playlist",
-			"content" : html
-		});
-	}
-	
+
+	//refresh block-playlist
+	var _block = webApp.vars["blocks"][0];
+	_block["buildBlock"]();
 
 	//var arr = target.href.split("track-");
 	////var numPages = webApp.vars["DB"]["numPages"];

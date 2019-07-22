@@ -348,7 +348,7 @@
 
 	<tpl name="tpl-playlist">
 		<html_code><![CDATA[
-<ul class="list-unstyled">{{list}}</ul>
+<ul id="playlist" class="list-unstyled">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	

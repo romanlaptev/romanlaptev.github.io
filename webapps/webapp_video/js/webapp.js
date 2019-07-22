@@ -81,6 +81,11 @@ http://rutube.ru/play/embed/
 						this.content = html;
 						_draw_buildBlock( this );
 					}
+					
+					if( webApp.vars["playlist"]["tracks"].length > 0 ){
+						_draw_setActiveTrack(0);
+					}
+
 				}
 			},//end block
 			
@@ -747,7 +752,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				event.returnValue = false;				
 			}
 			webApp.vars["GET"] = func.parseGetParams( target.href );
-			_urlManager();
+			_urlManager( target );
 		}
 
 	}//end _actionClick()
@@ -889,7 +894,7 @@ console.log("Warning! not found tag text value...");
 //console.log(data);
 
 						if( !data || data.length ===0){
-webApp.vars["logMsg"] = "not found records by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
+webApp.vars["logMsg"] = "no records found by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( "-- " + webApp.vars["logMsg"] );
 							return false;
@@ -907,9 +912,20 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 //-------------------------------------------- PLAYLIST
 			case "load-track":
-				var num = webApp.vars["GET"]["num"];
-				var track = webApp.vars["playlist"]["tracks"][num];
+//console.log(target, $(target).parent() );
+//for test
+//webApp.vars["GET"]["num"] = "first num";
 
+				var num = parseInt(webApp.vars["GET"]["num"]);
+//console.log(num, typeof num, isNaN(num) );
+				if( isNaN(num) ){
+					webApp.vars["logMsg"] = "not found track by num: "+ webApp.vars["GET"]["num"];
+console.log( "-- " + webApp.vars["logMsg"] );
+					return false;
+				}
+				var track = webApp.vars["playlist"]["tracks"][num];
+				
+				
 				var videoSrc = track["src"];
 				
 				if( track["dataType"] === "embed-video" ){
@@ -926,6 +942,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 				
 				var track_info = track["title"];
 				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
 			break;
 /*
 			case "stop-play":
@@ -961,6 +978,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	
 				var track_info = track["title"];
 				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
 				
 			break;
 			
@@ -1000,6 +1018,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	
 				var track_info = track["title"];
 				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
 				
 				if( autoplay ){
 					webApp.vars["player"].play();
@@ -2374,3 +2393,20 @@ console.log( webApp.vars["logMsg"] );
 		
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
+
+	function _draw_setActiveTrack( activeNum ){
+//console.log(activeNum);	
+		var activeItem = false;
+		$("#playlist li").each(function(num, value){
+//console.log(num)
+			$(this).removeClass("active");
+//console.log(num, activeNum, typeof activeNum, num === activeNum);
+			if( num === activeNum){
+				activeItem = value;//this...
+			}
+		});//end each
+		
+		if( activeItem ){
+			$(activeItem).addClass("active");
+		}
+	}//end _draw_setActiveTrack()

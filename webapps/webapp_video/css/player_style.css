@@ -32,6 +32,10 @@ padding-left: 2px;
 margin-bottom: 2px;
 }
 
+#playlist li.active > a{
+color:#fff;
+}
+
 
 #collapse-player .wrapper{
 margin:auto;
