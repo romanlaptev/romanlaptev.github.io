@@ -902,27 +902,27 @@ ONLY second LEVEL !!!!!!!!!!!!
 			switch (level) {
 				case "info":
 					message = "<p class='alert alert-info'>" + message + "</p>";
-					func.log(message);
+					_log(message);
 				break;
 				
 				case "warning":
 					message = "<p class='alert alert-warning'>" + message + "</p>";
-					func.log(message);
+					_log(message);
 				break;
 				
 				case "danger":
 				case "error":
 					message = "<p class='alert alert-danger'>" + message + "</p>";
-					func.log(message);
+					_log(message);
 				break;
 				
 				case "success":
 					message = "<p class='alert alert-success'>" + message + "</p>";
-					func.log(message);
+					_log(message);
 				break;
 				
 				default:
-					func.log(message);
+					_log(message);
 				break;
 			}//end switch
 			

@@ -33,13 +33,13 @@
 				</div>
 
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center panel-body">{{ul}}
+				<div class="links text-center panel-body">
 	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		
 		<div class="panel-body">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<small>select local root path:</small>
+				<small>select local file path:</small>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 				<select name="select-protocol" class="form-control" onchange="">
@@ -55,17 +55,21 @@
 			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
 		</div>
 			
+<!--
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
-				<!-- <input type="reset" class="btn btn-warning"/> -->
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="create link"/>
+				<input type="reset" class="btn btn-warning"/>
 			</div>
 			<div class="pull-right">
 				<button name="local_link" class="btn">...</button>
 			</div>
 		</div>
+-->
+{{ul}}	
 		
-	</div>					
+	</div>
+	
 				</div>
 </form>	
 
@@ -107,8 +111,6 @@
 		
 		{{number}}{{title}}
 		<p class="creators">{{creators}}</p>
-		<!-- <a class="btn btn-sm btn-default btn-add-track-pls" href="#track-{{number}}">add to playlist</a> -->
-	
 	</div>
 	
 	<div id="video-{{number}}" class="panel-collapse collapse">
@@ -120,12 +122,12 @@
 				</div>
 				
 <form name="form_local_url" action="#" method="GET" target="_blank">
-				<div class="links text-center panel-body">{{ul}}
+				<div class="links text-center panel-body">
 	<div class="form-local-url panel panel-blue-c3">
 		<div class="panel-heading text-left">generate local file url</div>
 		<div class="panel-body">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<small>select local root path:</small>
+				<small>select local file path:</small>
 			</div>
 			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 				<select name="select-protocol" class="form-control" onchange="">
@@ -141,17 +143,21 @@
 			<input name="filepath" type="text" class="form-control" value="file:///mnt/terra" placeholder="file path"/>
 		</div>
 			
+<!--
 		<div class="panel-body">
 			<div class="pull-left">
-				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="submit"/>
-				<!-- <input type="reset" class="btn btn-warning"/> -->
+				<input name="btn_replace" type="submit" class="btn btn-blue-c4" value="create link"/>
+				<input type="reset" class="btn btn-warning"/>
 			</div>
 			<div class="pull-right">
 				<button name="local_link" class="btn">...</button>
 			</div>
 		</div>
+-->
+{{ul}}
 		
-	</div>					
+	</div>	
+	
 				</div>
 </form>	
 			</div>
@@ -210,7 +216,19 @@
 <![CDATA[
 	<li>
 		<!-- <a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a> -->
-		<button type="button" class="btn btn-lg btn-orange {{class_support}}" data-type="{{data-type}}" value="{{href}}" target="_blank">{{data-type}}, {{text}}</button>
+<div class="panel-body">
+	<div class="">
+		<b>{{text}}</b>, <i>{{data-type}}</i>
+	</div>
+	<div class="">
+		<button name="video_link" type="button" class="btn btn-lg btn-orange {{class_support}}" value="{{href}}" data-type="{{data-type}}">{{btn_text}}</button>
+<!--
+		<a class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" href="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</a>
+-->
+		<button name="add_pls" type="button" class="btn btn-lg btn-orange btn-add-track-pls {{class_support}}" value="{{href}}" data-type="{{data-type}}" data-title="{{text}}">add to playlist</button>
+	</div>
+</div>
+		
 	</li>
 ]]>
 		</html_code>
@@ -307,7 +325,22 @@
 
 	<div class="panel-heading bg-darkblue clearfix">
 		<h4 class="pull-left">{{block_title}}</h4>
-		<div class="pull-right"><a href="#" class="btn toggle-btn">&gt;</a></div>
+		<div class="pull-right">
+			<a data-toggle="collapse" href="#collapse-player" class="btn toggle-btn">-</a>
+		</div>
+	</div>
+	
+	<div class="panel-body pls-buttons">
+		<ul class="list-inline">
+<!--			
+			<li><a href="?q=check-all" class="btn btn-sm btn-orange">select all</a></li>
+			<li><a href="?q=clear-all" class="btn btn-sm btn-orange">clear all</a></li>
+			<li><a href="?q=remove-track" class="btn btn-sm btn-danger">remove selected</a></li>
+-->			
+			<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
+			<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
+
+		</ul>
 	</div>
 	
 	<div class="content panel-body">
@@ -320,14 +353,27 @@
 
 	<tpl name="tpl-playlist">
 		<html_code><![CDATA[
-<ul class="list-unstyled">{{list}}</ul>
+<ul id="playlist" class="list-unstyled">
+	{{list}}
+</ul>
+			
 		]]></html_code>
 	</tpl>
 	
 	<tpl name="tpl-playlist-item">
 		<html_code>
 <![CDATA[
-	<li class='list-group-item'><a href="#?q=play-track&num={{number}}">{{title}}, {{artist}}</a></li>
+	<li class='list-group-item'>
+		<!-- <input type="checkbox" name="track[]" value="{{number}}"/>	-->
+		<div class="row">
+			<div class="col-xs-10 col-sm-10">
+				<a class="track-name" href="#?q=load-track&num={{number}}">{{title}}</a>
+			</div>
+			<div class="col-xs-2 col-sm-2 text-right">
+				<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&num={{number}}" title="Remove this track from playlist">x</a>
+			</div>
+		</div>
+	</li>
 ]]>
 		</html_code>
 	</tpl>
@@ -341,7 +387,7 @@
 <b>Tags</b>
 <div class="pull-right">
 	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
-	<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn">x</a>
+	<a data-toggle="collapse" href="#collapse-tags" class="btn toggle-btn">-</a>
 </div>
 				</div>
 				<div class="panel-body content">
@@ -374,7 +420,7 @@
 <b>Search by keywords</b>
 <div class="pull-right">
 	<a href='?q=clear-query-result' class="btn btn-sm btn-info">reset query</a>
-	<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn">x</a>
+	<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn">-</a>
 </div>
 				</div>
 				

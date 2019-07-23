@@ -17,6 +17,7 @@
 	<tag tid="25" vid="2" name="flv"></tag>
 	<tag tid="27" vid="2" name="mkv"></tag>
 	<tag tid="28" vid="2" name="короткометражный"></tag>
+	<tag tid="31" vid="2" name="unsort"></tag>
 	<tag tid="32" vid="2" name="документальный"></tag>
 	<tag tid="33" vid="2" name="биография"></tag>
 	<tag tid="35" vid="2" name="философская притча"></tag>
@@ -261,6 +262,11 @@
 	<tag tid="325" vid="1" name="1940"></tag>
 	<tag tid="326" vid="1" name="2016"></tag>
 	<tag tid="334" vid="1" name="немое кино"></tag>
+	<tag tid="335" vid="1" name="1963"></tag>
+	<tag tid="336" vid="2" name="Джек Леммон">Jack Lemmon
+https://www.kinopoisk.ru/name/8434/</tag>
+	<tag tid="337" vid="2" name="Тони Кертис">Tony Curtis
+https://www.kinopoisk.ru/name/25873/</tag>
 </taglist>
 
 
@@ -306,7 +312,7 @@
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" title="local file" href="http://site-content/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="local-file" title="local file" href="/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
 		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/eeeYo2h41pE">Youtube embed video in new tab</a></li>
 		<li><a data-type="external-link" title="go to Youtube" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
 	</ul>
@@ -322,7 +328,7 @@
 	</tags>
 
 	<published>24-Sep-2012 09:28:16</published>
-	<updated>12-Apr-2019 17:52:10</updated>
+	<updated>20-Jul-2019 22:38:46</updated>
 </video>
 
 <video type="video">
@@ -355,7 +361,7 @@ Castleway Films
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mr.McAllisters_Cigarette_Holder.avi">Mr.McAllisters_Cigarette_Holder.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mr.McAllisters_Cigarette_Holder.avi">Mr.McAllisters_Cigarette_Holder.avi</a></li>
 	</ul>
 
 	<tags>
@@ -367,7 +373,7 @@ Castleway Films
 	</tags>
 
 	<published>01-Oct-2012 09:16:06</published>
-	<updated>28-Mar-2019 17:17:58</updated>
+	<updated>20-Jul-2019 22:39:23</updated>
 </video>
 
 <video type="video">
@@ -397,7 +403,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Gilliam/Brazil/brazil_eng_rus.avi">brazil_eng_rus.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Gilliam/Brazil/brazil_eng_rus.avi">brazil_eng_rus.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/296256080491">embed video, OK.ru</a></li>
 	</ul>
 
@@ -413,7 +419,7 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(
 	</tags>
 
 	<published>01-Oct-2012 23:16:15</published>
-	<updated>23-Mar-2019 20:58:48</updated>
+	<updated>20-Jul-2019 22:40:00</updated>
 </video>
 
 <video type="video">
@@ -498,7 +504,7 @@ Cубтитры: русские (внешние); шведские, фински
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/P/Popularmusik_fran_Vittulai/Popularmusik fran Vittula.mkv">Popularmusik fran Vittula.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/P/Popularmusik_fran_Vittulai/Popularmusik fran Vittula.mkv">Popularmusik fran Vittula.mkv</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/1168090466923">embed video, OK.ru</a></li>
 	</ul>
 
@@ -515,7 +521,7 @@ Cубтитры: русские (внешние); шведские, фински
 	</tags>
 
 	<published>01-Oct-2012 23:44:49</published>
-	<updated>23-Mar-2019 21:22:52</updated>
+	<updated>20-Jul-2019 22:40:34</updated>
 </video>
 
 <video type="video">
@@ -541,7 +547,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Девушка со спичечной фабрики/devushka_aki_k.avi">devushka_aki_k.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/K/Aki_Kaurismaki/Девушка со спичечной фабрики/devushka_aki_k.avi">devushka_aki_k.avi</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/_59rN6FEkWI">embed video, www.youtube.com</a></li>
 	</ul>
 
@@ -557,7 +563,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	</tags>
 
 	<published>01-Oct-2012 23:50:52</published>
-	<updated>24-Mar-2019 16:14:16</updated>
+	<updated>20-Jul-2019 22:41:02</updated>
 </video>
 
 <video type="video">
@@ -591,7 +597,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Vdal_Uplyvajut_Oblaka/Vdal.Uplyvajut.Oblaka.avi">Vdal.Uplyvajut.Oblaka.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/K/Aki_Kaurismaki/Vdal_Uplyvajut_Oblaka/Vdal.Uplyvajut.Oblaka.avi">Vdal.Uplyvajut.Oblaka.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/909437045449">embed video, OK.ru</a></li>
 	</ul>
 
@@ -606,7 +612,7 @@ http://rutracker.org/forum/viewtopic.php?t=1548781</description>
 	</tags>
 
 	<published>02-Oct-2012 09:08:20</published>
-	<updated>23-Mar-2019 21:41:46</updated>
+	<updated>20-Jul-2019 22:41:39</updated>
 </video>
 
 <video type="video">
@@ -642,7 +648,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/K/Aki_Kaurismaki/Береги свою косынку, Татьяна/beregi_svoiu_kosynku.aki.avi">beregi_svoiu_kosynku.aki.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/K/Aki_Kaurismaki/Береги свою косынку, Татьяна/beregi_svoiu_kosynku.aki.avi">beregi_svoiu_kosynku.aki.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/3249867003">embed video, OK.ru</a></li>
 	</ul>
 
@@ -659,7 +665,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</tags>
 
 	<published>02-Oct-2012 09:16:12</published>
-	<updated>23-Mar-2019 21:46:07</updated>
+	<updated>20-Jul-2019 22:42:14</updated>
 </video>
 
 <video type="video">
@@ -690,7 +696,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/rat_race.avi">rat_race.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/R/rat_race.avi">rat_race.avi</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/yHWCoAkXMLs">embed video, www.youtube.com</a></li>
 	</ul>
 
@@ -704,7 +710,7 @@ http://rutracker.org/forum/viewtopic.php?t=1560435</description>
 	</tags>
 
 	<published>06-Oct-2012 12:08:23</published>
-	<updated>24-Mar-2019 17:40:31</updated>
+	<updated>20-Jul-2019 22:42:41</updated>
 </video>
 
 <video type="video">
@@ -808,30 +814,29 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 <video type="video">
 	<title>
 		<item>час пик 2</item>
+		<item>Hour 2</item>
 </title>
 	
-	
-	<roles>
-Крис Такер (Chris Tucker), Джеки Чан (Jackie Chan)
+	<producer>Студия: New Line Home Entertaiment Создатели: Бретт Ратнер (Brett Ratner)</producer>
+	<roles>Крис Такер (Chris Tucker), Джеки Чан (Jackie Chan)
 		</roles>
-	<description>США, 2001
-Студия: New Line Home Entertaiment
-Создатели: Бретт Ратнер (Brett Ratner)
-	&amp;lt;br&amp;gt;
-Отпуск детектива Джеймса Картера в Гонконге омрачен. Вместо того, чтобы ходить на вечеринки и встречаться с девушками, он с напарником, полицейским Ли, отправляется на поиски главы мафиозной группировки &amp;quot;Триада&amp;quot;. Дело осложняется, когда детективы узнают о существовании широко разветвленной сети производства и сбыта фальшивых денег.	
-	&amp;lt;br&amp;gt;
-Комедия, Боевик
-	&amp;lt;br&amp;gt;avi</description>
+	<description>Отпуск детектива Джеймса Картера в Гонконге омрачен. Вместо того, чтобы ходить на вечеринки и встречаться с девушками, он с напарником, полицейским Ли, отправляется на поиски главы мафиозной группировки &amp;quot;Триада&amp;quot;. Дело осложняется, когда детективы узнают о существовании широко разветвленной сети производства и сбыта фальшивых денег.</description>
 	
 
 	<ul>
-		<li>http://localhost/video/films/H/hour_2.avi</li>
+		<li><a data-type="local-file" href="/video/films/H/hour_2.avi">hour_2.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="37">Боевик</item>
+		<item tid="5">комедия</item>
+		<item tid="66">США</item>
+		<item tid="214">H</item>
+		<item tid="286">2001</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:06:17</updated>
 </video>
 
 <video type="video">
@@ -1096,7 +1101,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/F/Friedliche Zeiten/Friedliche Zeiten.avi">Friedliche Zeiten.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/F/Friedliche Zeiten/Friedliche Zeiten.avi">Friedliche Zeiten.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1110,7 +1115,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>26-Mar-2019 16:45:24</updated>
+	<updated>20-Jul-2019 22:43:13</updated>
 </video>
 
 <video type="video">
@@ -1346,7 +1351,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/F/F.A.Q.About.Time.Travel.2009.HDTVRip.2xRUS.ENG.mkv">F.A.Q.About.Time.Travel.2009.HDTVRip.2xRUS.ENG.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/F/F.A.Q.About.Time.Travel.2009.HDTVRip.2xRUS.ENG.mkv">F.A.Q.About.Time.Travel.2009.HDTVRip.2xRUS.ENG.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -1361,7 +1366,7 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>26-Mar-2019 17:04:58</updated>
+	<updated>20-Jul-2019 22:43:44</updated>
 </video>
 
 <video type="video">
@@ -1388,7 +1393,7 @@ Erich Schellow
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/H/Der_Hauptmann_von_Kepenick/Der_Hauptmann_von_Kepenick.avi">Der_Hauptmann_von_Kepenick.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/H/Der_Hauptmann_von_Kepenick/Der_Hauptmann_von_Kepenick.avi">Der_Hauptmann_von_Kepenick.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1402,7 +1407,7 @@ Erich Schellow
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>26-Mar-2019 17:07:26</updated>
+	<updated>20-Jul-2019 22:44:14</updated>
 </video>
 
 <video type="video">
@@ -1431,7 +1436,7 @@ Erich Schellow
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/Clockwork Orange_1.46/Clockwork Orange_1.46.avi">Clockwork Orange_1.46.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/Clockwork Orange_1.46/Clockwork Orange_1.46.avi">Clockwork Orange_1.46.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1445,7 +1450,7 @@ Erich Schellow
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 14:33:02</updated>
+	<updated>20-Jul-2019 22:44:48</updated>
 </video>
 
 <video type="video">
@@ -1477,7 +1482,7 @@ Erich Schellow
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/I/Igri_razuma.avi">Igri_razuma.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/I/Igri_razuma.avi">Igri_razuma.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1487,7 +1492,7 @@ Erich Schellow
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 14:34:26</updated>
+	<updated>20-Jul-2019 22:45:15</updated>
 </video>
 
 <video type="video">
@@ -1525,7 +1530,7 @@ Gerd Vespermann (Bobby),
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/Cabare.1972/Cabaret.1972.avi">Cabaret.1972.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/Cabare.1972/Cabaret.1972.avi">Cabaret.1972.avi</a></li>
 	</ul>
 
 	<tags>
@@ -1541,7 +1546,7 @@ Gerd Vespermann (Bobby),
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 17:03:09</updated>
+	<updated>20-Jul-2019 22:45:47</updated>
 </video>
 
 <video type="video">
@@ -1838,24 +1843,24 @@ https://www.kinopoisk.ru/film/72293/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_01.avi">Гвоздь программы</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_02.avi">Йети со свалки</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_03.avi">Зомби-угонщики</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_04.avi">Свинья-оборотень</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_05.avi">Чудеса за забром</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_06.avi">Загибалово и его обитатели</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_07.avi">Жар-птицы, гномы и гиганские черви</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_08.avi">Возвращение из Зоны</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_09.avi">Домовой-алкоголик</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_10.avi">Добрая няня</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_11.avi">Братец клон</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_12.avi">Пришельцы у ручья</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_13.avi">Сиятельные кости</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_14.avi">Отходы из Мексики</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_15.avi">Картины-фантомы</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_16.avi">Город счастья</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_17.avi">Ведьмак из Блерово</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/russian_horror_stories/russian_horror_stories_18.avi">Суйский овал</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_01.avi">Гвоздь программы</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_02.avi">Йети со свалки</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_03.avi">Зомби-угонщики</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_04.avi">Свинья-оборотень</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_05.avi">Чудеса за забром</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_06.avi">Загибалово и его обитатели</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_07.avi">Жар-птицы, гномы и гиганские черви</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_08.avi">Возвращение из Зоны</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_09.avi">Домовой-алкоголик</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_10.avi">Добрая няня</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_11.avi">Братец клон</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_12.avi">Пришельцы у ручья</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_13.avi">Сиятельные кости</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_14.avi">Отходы из Мексики</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_15.avi">Картины-фантомы</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_16.avi">Город счастья</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_17.avi">Ведьмак из Блерово</a></li>
+		<li><a data-type="local-file" href="/video/films/R/russian_horror_stories/russian_horror_stories_18.avi">Суйский овал</a></li>
 	</ul>
 
 	<tags>
@@ -1872,7 +1877,7 @@ https://www.kinopoisk.ru/film/72293/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>06-Apr-2019 22:48:04</updated>
+	<updated>20-Jul-2019 22:48:08</updated>
 </video>
 
 <video type="video">
@@ -2120,7 +2125,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/airplane.avi">airplane.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/airplane.avi">airplane.avi</a></li>
 	</ul>
 
 	<tags>
@@ -2134,7 +2139,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD!_%
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 17:26:20</updated>
+	<updated>20-Jul-2019 22:48:45</updated>
 </video>
 
 <video type="video">
@@ -2218,8 +2223,8 @@ https://www.kinopoisk.ru/film/1577/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/TrowMommaFromTheTrain.avi">TrowMommaFromTheTrain.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Throw Momma from the Train.m4v">Throw Momma from the Train.m4v</a></li>
+		<li><a data-type="local-file" href="/video/films/T/TrowMommaFromTheTrain.avi">TrowMommaFromTheTrain.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Throw Momma from the Train.m4v">Throw Momma from the Train.m4v</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/30226189045">OK.ru</a></li>
 	</ul>
 
@@ -2234,7 +2239,7 @@ https://www.kinopoisk.ru/film/1577/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>07-Apr-2019 16:40:35</updated>
+	<updated>20-Jul-2019 22:49:44</updated>
 </video>
 
 <video type="video">
@@ -2286,12 +2291,12 @@ https://www.kinopoisk.ru/film/406671/</description>
 <video type="video">
 	<title>
 		<item>Бензоколонка</item>
+		<item>The Gas Station</item>
 </title>
 	
-	
+	<producer>Jos Stelling / Йос Стеллинг</producer>
 	<roles>		</roles>
-	<description>&amp;lt;pre&amp;gt;
-Мастер эмоционального диалога без слов, Йос Стеллинг, 
+	<description>Мастер эмоционального диалога без слов, Йос Стеллинг, 
 собрав немало призов за свою первую эротическую короткометражку &amp;quot;Зал ожидания&amp;quot; в 
 Голландии, России и Швейцарии, решил продолжить серию занимательным рассказом 
 о непредсказуемости поворотов судьбы в самой, казалось бы, банальной ситуации. 
@@ -2303,12 +2308,14 @@ https://www.kinopoisk.ru/film/406671/</description>
 немалое количество нервов и, в конце концов, честь. 
 Ergo -- в следующий раз будьте осторожны в пробках и опасайтесь водителей красных малолитражек. 
 Фильм, как и другие два фильма данной серии, полон юмора, острой иронии и нестадарных ситуаций. 
-	&amp;lt;/pre&amp;gt;</description>
-	
+https://www.kinopoisk.ru/film/149721/</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/tNVlYodrodg/hqdefault.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/B/Benzokolonka_[torrents.ru].avi">Benzokolonka_[torrents.ru].avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tNVlYodrodg">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -2317,10 +2324,13 @@ Ergo -- в следующий раз будьте осторожны в проб
 		<item tid="122">Стеллинг, Йос</item>
 		<item tid="69">Нидерланды</item>
 		<item tid="22">avi</item>
+		<item tid="213">G</item>
+		<item tid="230">Б</item>
+		<item tid="287">2000</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>11-Jun-2013 21:27:45</updated>
+	<updated>21-Jul-2019 20:56:20</updated>
 </video>
 
 <video type="video">
@@ -2479,7 +2489,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/P/1988 - Point de fuite/Point de fuite.avi">Point de fuite.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/P/1988 - Point de fuite/Point de fuite.avi">Point de fuite.avi</a></li>
 	</ul>
 
 	<tags>
@@ -2494,7 +2504,7 @@ Ergo -- в следующий раз будьте осторожны в проб
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 17:06:35</updated>
+	<updated>20-Jul-2019 22:50:16</updated>
 </video>
 
 <video type="video">
@@ -2737,7 +2747,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/D/dn_dozor.avi">dn_dozor.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/D/dn_dozor.avi">dn_dozor.avi</a></li>
 	</ul>
 
 	<tags>
@@ -2747,7 +2757,7 @@ https://www.youtube.com/watch?v=a50qT9bW2Qo&amp;amp;t=4130s</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 17:08:59</updated>
+	<updated>20-Jul-2019 22:50:46</updated>
 </video>
 
 <video type="video">
@@ -2979,12 +2989,14 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/J/jazz.ogv">jazz.ogv</a></li>
+		<li><a data-type="local-file" href="/video/films/J/jazz.ogv">jazz.ogv</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/15282344270">OK.ru</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="336">Джек Леммон</item>
+		<item tid="337">Тони Кертис</item>
 		<item tid="66">США</item>
 		<item tid="141">ogv</item>
 		<item tid="216">J</item>
@@ -2995,7 +3007,7 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>07-Apr-2019 16:04:15</updated>
+	<updated>21-Jul-2019 12:35:31</updated>
 </video>
 
 <video type="video">
@@ -3062,7 +3074,7 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/X/xottabych.avi">xottabych.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/X/xottabych.avi">xottabych.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/hWLN8AATXlw">embed video on youtube.com</a></li>
 	</ul>
 
@@ -3077,12 +3089,13 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 18:16:12</updated>
+	<updated>20-Jul-2019 22:51:27</updated>
 </video>
 
 <video type="video">
 	<title>
 		<item>Роман с камнем</item>
+		<item>Romancing the Stone</item>
 </title>
 	
 	<producer>Роберт Земекис</producer>
@@ -3094,8 +3107,7 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 Мэри Эллен Трейнор
 Ив Смит
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Джоан Уайлдер, автор популярных женских романов, 
+	<description>Джоан Уайлдер, автор популярных женских романов, 
 находит в своем почтовом ящике пакет из Колумбии, 
 от своей сестры. Телефонный звонок, подтверждает 
 самые страшные опасения - сестра похищена, и похитители 
@@ -3105,66 +3117,30 @@ https://www.kinopoisk.ru/film/v-dzhaze-tolko-devushki-1959-356/video/5706/</desc
 американского наемника спасет девушку от гибели. 
 Вместе их ждут экстремальные приключения в джунглях, 
 поиск сокровищ и конечно романтическая любовная история.
-&amp;lt;/pre&amp;gt;
-&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;?
-//echo &amp;quot;arg(0) == &amp;quot;.arg(0);
-if (arg(0) == 'node')
-{
-	echo &amp;quot;&amp;lt;h2&amp;gt;local url&amp;lt;/h2&amp;gt;&amp;quot;;
-	$node=node_load(arg(1));
-//echo &amp;quot;&amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($node);
-//print_r($node-&amp;gt;field_preview_img);
-//print_r($node-&amp;gt;field_url);
-//print_r($node-&amp;gt;field_subfolder);
-//print_r($node-&amp;gt;field_filename);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
 
-	//$site = &amp;quot;http://localhost&amp;quot;;
-	$site = &amp;quot;file:///mnt/terra&amp;quot;;
-	//$site = &amp;quot;file://m:&amp;quot;;
-for ($n1=0; $n1 &amp;lt; count($node-&amp;gt;field_filename['und']); $n1++)
-{
+https://www.kinopoisk.ru/film/12285/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_12285.jpg"/>
+	</pictures>
 
-//	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-//.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-//.$node-&amp;gt;field_filename['und'][$n1]['value'].&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-
-//-----------------------------------------------------------------------
-	$file=explode(&amp;quot;#&amp;quot;,$node-&amp;gt;field_filename['und'][$n1]['value']);
-//echo &amp;quot;file = &amp;lt;pre&amp;gt;&amp;quot;;
-//print_r($file);
-//echo &amp;quot;&amp;lt;/pre&amp;gt;&amp;quot;;
-	if (!empty($file[1]))
-	{
-		$link_text=$file[1];
-	}
-	else
-	{
-		$link_text=$file[0];
-	}
-
-	echo &amp;quot;&amp;lt;li&amp;gt;&amp;lt;a href='&amp;quot;
-.$site.&amp;quot;/&amp;quot;.$node-&amp;gt;field_subfolder['und'][0]['value'].&amp;quot;/&amp;quot;.$file[0].&amp;quot;' target=_blank&amp;gt;&amp;quot;
-.$link_text.&amp;quot;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;;
-}
-
-}
-?&amp;gt;</description>
-	
-
-	
+	<ul>
+		<li><a data-type="local-file" href="/video/films/R/ROMANCING_STONE-001.avi">ROMANCING_STONE-001.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/87407856360">Роман с камнем, ok.ru</a></li>
+	</ul>
 
 	<tags>
-		<item tid="39">детектив</item>
+		<item tid="37">Боевик</item>
+		<item tid="5">комедия</item>
+		<item tid="54">мелодрама</item>
+		<item tid="14">приключения</item>
 		<item tid="74">Мексика</item>
 		<item tid="66">США</item>
+		<item tid="223">R</item>
+		<item tid="244">Р</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>02-Mar-2013 22:09:18</updated>
+	<updated>21-Jul-2019 20:25:18</updated>
 </video>
 
 <video type="video">
@@ -3735,35 +3711,6 @@ Monica Viegas
 
 <video type="video">
 	<title>
-		<item>Десять каноэ</item>
-</title>
-	
-	
-	<roles>
-Ричард Бирринбиррин (Richard Birrinbirrin), Джонни Банийра (Johnny Buniyira), Питер Джигирр (Peter Djigirr), Френсис Джалибинг (Frances Djulibing), Crusoe Kurddal
-	</roles>
-	<description>Австралия, 2006
-Создатели: Рольф Де Хеер (Rolf De Heer), Питер Джигирр (Peter Djigirr)
-&amp;lt;br&amp;gt;
-Уникальный фильм о культуре, быте и истории австралийских аборигенов. Далекое прошлое, целые века до прихода в Австралию белого человека. Дэйинди домогается жены старшего брата, и чтобы наставить его на истинный путь, ему рассказывают старинную историю о любви, вражде, колдовстве и мести. Будто наяву Дэйинди видит события мифического прошлого.&amp;lt;br&amp;gt;  
-Военный, Драма, Исторический, Комедия, Приключения
-&amp;lt;br&amp;gt;</description>
-	
-
-	<ul>
-		<li>http://localhost/video/films/
-Ten Canoes.avi
-</li>
-	</ul>
-
-	
-
-	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>Скины</item>
 		<item>Romper-Stomper</item>
 </title>
@@ -3791,8 +3738,8 @@ Ten Canoes.avi
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/Skini.Romper.Stomper.avi">Skini.Romper.Stomper.avi</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/R/Romper%20Stomper%20[Dub.Eng.Goblin_Eng.SRT]%20(1992).mkv">file:///, Romper Stomper [Dub.Eng.Goblin_Eng.SRT] (1992).mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/S/Skini.Romper.Stomper.avi">Skini.Romper.Stomper.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/R/Romper%20Stomper%20[Dub.Eng.Goblin_Eng.SRT]%20(1992).mkv">Romper Stomper [Dub.Eng.Goblin_Eng.SRT] (1992).mkv</a></li>
 	</ul>
 
 	<tags>
@@ -3804,7 +3751,7 @@ Ten Canoes.avi
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>31-Mar-2019 01:08:59</updated>
+	<updated>20-Jul-2019 22:52:28</updated>
 </video>
 
 <video type="video">
@@ -4068,37 +4015,6 @@ https://www.youtube.com/watch?v=B-iVfLX2tvY</description>
 
 	<published>12-Oct-2012 00:07:57</published>
 	<updated>12-Apr-2019 23:04:56</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Дом с привидениями</item>
-</title>
-	
-	
-	<roles>
-Эдвард Ф. Клайн, Бастер Китон, Джо Робертс, Вирджиния Фокс, Натали Талмадж
-	</roles>
-	<description>США, 1921
-Режиссёр: Эдвард Ф. Клайн, Бастер Китон
-Сценарий: Эдвард Ф. Клайн, Бастер Китон
-&amp;lt;br&amp;gt;
-Бастер в роли банковского клерка. В банк, где он работает, неожиданно нагрянули грабители. А у Бастера, как назло, проблемы с клеем. После ограбления бандиты направляются в &amp;quot;дом с привидениями&amp;quot;, который должен, по их расчету, напугать полицейских.
-&amp;lt;br&amp;gt;  
-Комедия, Ужасы
-&amp;lt;br&amp;gt;</description>
-	
-
-	<ul>
-		<li>http://localhost/video/films/
-The_Haunted_House.avi
-</li>
-	</ul>
-
-	
-
-	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
 </video>
 
 <video type="video">
@@ -4376,26 +4292,28 @@ https://www.kinopoisk.ru/film/278258/</description>
 <video type="video">
 	<title>
 		<item>Марикен из Ньюмейхен</item>
+		<item>Mariken van Nieumeghen</item>
 </title>
 	
-	
+	<producer>Jos Stelling</producer>
 	<roles>Эрик Байс
 Сандер Бэс
 Кис Бэккер
 Жаклин Байер
 Харм Бегеман
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Историческая притча о девушке из фламандского простонародья 
+	<description>Историческая притча о девушке из фламандского простонародья 
 с использованием фольклорных мотивов в стиле П.Брейгеля и И.Босха - 
 любовь, насилие, кровавые сцены, уродства. 
 В ярком и гротескном действии перед зрителями словно оживают полотна великих художников.
-&amp;lt;/pre&amp;gt;</description>
-	
+https://www.kinopoisk.ru/film/130936/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/130936.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/S/Jos_Stelling/Mariken_van_Nieumeghen.avi">Mariken_van_Nieumeghen.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/43661986417">Марикен из Ньюмейхен, ok.ru</a></li>
 	</ul>
 
 	<tags>
@@ -4404,10 +4322,12 @@ https://www.kinopoisk.ru/film/278258/</description>
 		<item tid="122">Стеллинг, Йос</item>
 		<item tid="69">Нидерланды</item>
 		<item tid="22">avi</item>
+		<item tid="219">M</item>
+		<item tid="317">1974</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>13-Jun-2013 09:05:56</updated>
+	<updated>21-Jul-2019 20:36:32</updated>
 </video>
 
 <video type="video">
@@ -4601,7 +4521,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Ameli/Ameli.avi">Ameli.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Ameli/Ameli.avi">Ameli.avi</a></li>
 	</ul>
 
 	<tags>
@@ -4616,7 +4536,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>23-Apr-2019 18:32:06</updated>
+	<updated>20-Jul-2019 22:52:59</updated>
 </video>
 
 <video type="video">
@@ -4956,7 +4876,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/F/faraon.avi">faraon.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/F/faraon.avi">faraon.avi</a></li>
 	</ul>
 
 	<tags>
@@ -4970,7 +4890,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 15:26:45</updated>
+	<updated>20-Jul-2019 22:53:25</updated>
 </video>
 
 <video type="video">
@@ -5002,7 +4922,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/I/Igraj.kak.Bekhem.2002.RUS.ENG.DVDRip.vicpryl.avi">Igraj.kak.Bekhem.2002.RUS.ENG.DVDRip.vicpryl.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/I/Igraj.kak.Bekhem.2002.RUS.ENG.DVDRip.vicpryl.avi">Igraj.kak.Bekhem.2002.RUS.ENG.DVDRip.vicpryl.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5017,7 +4937,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 15:28:19</updated>
+	<updated>20-Jul-2019 22:53:57</updated>
 </video>
 
 <video type="video">
@@ -5060,6 +4980,7 @@ https://www.kinopoisk.ru/film/278258/</description>
 <video type="video">
 	<title>
 		<item>Нежная Ирма</item>
+		<item>Irma la Douce</item>
 </title>
 	
 	<producer>Билли Уалдер / Billy Wilder</producer>
@@ -5078,26 +4999,33 @@ https://www.kinopoisk.ru/film/278258/</description>
 Но проститутку не простую! Поэтому мы понимаем, что не влюбиться 
 в нее просто невозможно — так мила, так мила.
 
-http://www.kinopoisk.ru/film/2574/</description>
+http://www.kinopoisk.ru/film/2574/
+&amp;lt;a data-type=&amp;quot;embed-video&amp;quot; href=&amp;quot;https://ok.ru/videoembed/753068935895&amp;quot;&amp;gt;Квартира (1960) / The Apartment (1960), ok.ru&amp;lt;/a&amp;gt;
+&amp;lt;a data-type=&amp;quot;embed-video&amp;quot; href=&amp;quot;https://ok.ru/videoembed/272781019845&amp;quot;&amp;gt;Большие гонки (США, 1965), ok.ru&amp;lt;/a&amp;gt;
+&amp;lt;a data-type=&amp;quot;embed-video&amp;quot; href=&amp;quot;https://ok.ru/videoembed/18815060484&amp;quot;&amp;gt;Дни вина и роз - Days of Wine and Roses, ok.ru&amp;lt;/a&amp;gt;</description>
 	<pictures>
 		<img src="/video/0_covers/Irma la Douce.jpg"/>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_2574.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/I/Irma_la_Douce.avi">Irma_la_Douce.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/I/Irma_la_Douce.avi">Irma_la_Douce.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/251626850821">Нежная Ирма, ok.ru</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="336">Джек Леммон</item>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
 		<item tid="210">D</item>
 		<item tid="215">I</item>
 		<item tid="241">Н</item>
+		<item tid="335">1963</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 15:30:00</updated>
+	<updated>21-Jul-2019 12:58:53</updated>
 </video>
 
 <video type="video">
@@ -5624,7 +5552,7 @@ https://www.kinopoisk.ru/film/kholodnoe-leto-pyatdesyat-tretego-1987-7660/</desc
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/P/Piraty[1].Silikonovoy.Dolini.avi">Piraty[1].Silikonovoy.Dolini.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/P/Piraty[1].Silikonovoy.Dolini.avi">Piraty[1].Silikonovoy.Dolini.avi</a></li>
 	</ul>
 
 	<tags>
@@ -5638,7 +5566,7 @@ https://www.kinopoisk.ru/film/kholodnoe-leto-pyatdesyat-tretego-1987-7660/</desc
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>31-Mar-2019 18:27:58</updated>
+	<updated>20-Jul-2019 22:55:13</updated>
 </video>
 
 <video type="video">
@@ -5867,8 +5795,8 @@ https://www.kinopoisk.ru/film/43777/
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/0/12_stulyev/12 stoels 1.avi">12 stoels 1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/0/12_stulyev/12 stoels 2.avi">12 stoels 2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/0/12_stulyev/12 stoels 1.avi">12 stoels 1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/0/12_stulyev/12 stoels 2.avi">12 stoels 2.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/ZNZkUt0ePas">embed video on youtube.com, 1 серия</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/GyfgsOO20jU">embed video on youtube.com, 2 серия</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/P8t2dbJ7YXY">embed video on youtube.com, all series</a></li>
@@ -5891,7 +5819,7 @@ https://www.kinopoisk.ru/film/43777/
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 18:10:43</updated>
+	<updated>20-Jul-2019 22:55:59</updated>
 </video>
 
 <video type="video">
@@ -6021,7 +5949,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/angry_management.avi">angry_management.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/angry_management.avi">angry_management.avi</a></li>
 	</ul>
 
 	<tags>
@@ -6035,7 +5963,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>07-Apr-2019 00:05:15</updated>
+	<updated>20-Jul-2019 22:56:30</updated>
 </video>
 
 <video type="video">
@@ -6153,7 +6081,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/D/dogma.avi">dogma.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/D/dogma.avi">dogma.avi</a></li>
 	</ul>
 
 	<tags>
@@ -6168,7 +6096,7 @@ http://ru.wikipedia.org/wiki/%D0%90%D1%8D%D1%80%D0%BE%D0%BF%D0%BB%D0%B0%D0%BD_II
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>29-Mar-2019 13:46:23</updated>
+	<updated>20-Jul-2019 22:57:00</updated>
 </video>
 
 <video type="video">
@@ -6421,8 +6349,8 @@ https://www.kinopoisk.ru/film/59763/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/SpiesLikeUs.avi">SpiesLikeUs.avi</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/S/Spies Like Us_1985.x264.BDRip.AVC.MediaClub.mkv">Spies Like Us_1985.x264.BDRip.AVC.MediaClub.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/S/SpiesLikeUs.avi">SpiesLikeUs.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/Spies Like Us_1985.x264.BDRip.AVC.MediaClub.mkv">Spies Like Us_1985.x264.BDRip.AVC.MediaClub.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -6434,7 +6362,7 @@ https://www.kinopoisk.ru/film/59763/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>31-Mar-2019 18:33:30</updated>
+	<updated>20-Jul-2019 22:57:40</updated>
 </video>
 
 <video type="video">
@@ -6464,7 +6392,7 @@ https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%83%D1%82%D0%BE%D0%B2%D1%81%D1%82%D
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/W/Wag The Dog.mkv">Wag The Dog.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/W/Wag The Dog.mkv">Wag The Dog.mkv</a></li>
 		<li><a data-type="embed-video" href="http://ok.ru/videoembed/30599875090">embed video on OK.ru</a></li>
 	</ul>
 
@@ -6479,7 +6407,7 @@ https://ru.wikipedia.org/wiki/%D0%9F%D0%BB%D1%83%D1%82%D0%BE%D0%B2%D1%81%D1%82%D
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 17:21:00</updated>
+	<updated>20-Jul-2019 22:58:10</updated>
 </video>
 
 <video type="video">
@@ -6601,7 +6529,7 @@ http://ru.wikipedia.org/wiki/%D0%9B%D0%BB%D0%BE%D0%B9%D0%B4_%D0%91%D1%80%D0%B8%D
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/H/hot_shots.avi ">hot_shots.avi </a></li>
+		<li><a data-type="local-file" href="/video/films/H/hot_shots.avi ">hot_shots.avi </a></li>
 	</ul>
 
 	<tags>
@@ -6613,7 +6541,7 @@ http://ru.wikipedia.org/wiki/%D0%9B%D0%BB%D0%BE%D0%B9%D0%B4_%D0%91%D1%80%D0%B8%D
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 17:29:06</updated>
+	<updated>20-Jul-2019 22:58:45</updated>
 </video>
 
 <video type="video">
@@ -6643,7 +6571,7 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/H/Hot_Shots_2.DVDRip_tfile.ru.avi">Hot_Shots_2.DVDRip_tfile.ru.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/H/Hot_Shots_2.DVDRip_tfile.ru.avi">Hot_Shots_2.DVDRip_tfile.ru.avi</a></li>
 	</ul>
 
 	<tags>
@@ -6655,7 +6583,7 @@ http://ru.wikipedia.org/wiki/%D0%93%D0%BE%D1%80%D1%8F%D1%87%D0%B8%D0%B5_%D0%B3%D
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 17:30:32</updated>
+	<updated>20-Jul-2019 22:59:04</updated>
 </video>
 
 <video type="video">
@@ -7459,8 +7387,8 @@ http://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D0%B5%D1
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/F/FullMetalJacket/Цельнометаллическая оболочка.avi">Цельнометаллическая оболочка.avi</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/F/Full_Metal_Jacket_1987_eng_rus_sub_BDRip-AVC_by_Dalemake.mkv">Full_Metal_Jacket_1987_eng_rus_sub_BDRip-AVC_by_Dalemake.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/F/FullMetalJacket/Цельнометаллическая оболочка.avi">Цельнометаллическая оболочка.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/F/Full_Metal_Jacket_1987_eng_rus_sub_BDRip-AVC_by_Dalemake.mkv">Full_Metal_Jacket_1987_eng_rus_sub_BDRip-AVC_by_Dalemake.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -7472,7 +7400,7 @@ http://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D0%B5%D1
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>31-Mar-2019 18:39:16</updated>
+	<updated>20-Jul-2019 22:59:47</updated>
 </video>
 
 <video type="video">
@@ -7541,7 +7469,7 @@ https://www.kinopoisk.ru/film/786/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/V/Veber/Le_Placard.avi">Le_Placard.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/V/Veber/Le_Placard.avi">Le_Placard.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/269873056380">OK.ru</a></li>
 	</ul>
 
@@ -7557,7 +7485,7 @@ https://www.kinopoisk.ru/film/786/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>31-Mar-2019 18:46:25</updated>
+	<updated>20-Jul-2019 23:00:26</updated>
 </video>
 
 <video type="video">
@@ -7610,7 +7538,7 @@ https://www.kinopoisk.ru/film/256219/</description>
 
 <video type="video">
 	<title>
-		<item>Статский советник </item>
+		<item>Статский советник</item>
 </title>
 	
 	<producer>Филипп Янковский / Студия: ТРИТЭ</producer>
@@ -7639,7 +7567,7 @@ https://www.kinopoisk.ru/film/256219/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/S/STATSKY_SOVETNIK_[tfile.ru].avi">STATSKY_SOVETNIK_[tfile.ru].avi</a></li>
+		<li><a data-type="local-file" href="/video/films/S/STATSKY_SOVETNIK_[tfile.ru].avi">STATSKY_SOVETNIK_[tfile.ru].avi</a></li>
 	</ul>
 
 	<tags>
@@ -7652,7 +7580,7 @@ https://www.kinopoisk.ru/film/256219/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 18:16:36</updated>
+	<updated>20-Jul-2019 23:01:06</updated>
 </video>
 
 <video type="video">
@@ -7779,21 +7707,22 @@ https://www.kinopoisk.ru/film/256219/</description>
 <video type="video">
 	<title>
 		<item>Галерея</item>
+		<item>The Gallery</item>
 </title>
 	
-	
+	<producer>Jos Stelling</producer>
 	<roles>Джин Бервутс
 Анушка Винк
 Рэймонд Де Кюпер
 	</roles>
-	<description>&amp;lt;pre&amp;gt;
-Дожидаясь, пока закончится презентация нижнего белья около красочной витрины магазина, герой наслаждается крутящейся экпозицией замысловатых узоров нежного шелка и женских форм из пластмассы. Всем своим видом демонстрируя недовольство жене, он замечает сексапильную блондинку и пытается поймать ее ответный взгляд. Заметив его, девушка начинает вести себя более чем странно, не обращая внимания на посетителей торгового ценра.
-&amp;lt;/pre&amp;gt;</description>
-	
+	<description>Дожидаясь, пока закончится презентация нижнего белья около красочной витрины магазина, герой наслаждается крутящейся экпозицией замысловатых узоров нежного шелка и женских форм из пластмассы. Всем своим видом демонстрируя недовольство жене, он замечает сексапильную блондинку и пытается поймать ее ответный взгляд. Заметив его, девушка начинает вести себя более чем странно, не обращая внимания на посетителей торгового ценра.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/_gMwp1iB-C0/hqdefault.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/S/Jos_Stelling/The_Gallery.avi">The_Gallery.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_gMwp1iB-C0">youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -7803,10 +7732,13 @@ https://www.kinopoisk.ru/film/256219/</description>
 		<item tid="61">Германия</item>
 		<item tid="69">Нидерланды</item>
 		<item tid="22">avi</item>
+		<item tid="213">G</item>
+		<item tid="232">Г</item>
+		<item tid="284">2003</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>13-Jun-2013 09:03:20</updated>
+	<updated>21-Jul-2019 20:48:27</updated>
 </video>
 
 <video type="video">
@@ -7940,7 +7872,7 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mamin,Yuriy/Ne dumay pro belyh obezyan.avi">Ne dumay pro belyh obezyan.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mamin,Yuriy/Ne dumay pro belyh obezyan.avi">Ne dumay pro belyh obezyan.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/39xwafOHAdk">embed video on youtube.com</a></li>
 	</ul>
 
@@ -7956,7 +7888,7 @@ https://www.youtube.com/watch?v=fSUYzDEIiH8</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>27-Mar-2019 17:53:26</updated>
+	<updated>20-Jul-2019 23:01:40</updated>
 </video>
 
 <video type="video">
@@ -7991,7 +7923,7 @@ https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/M/Mamin,Yuriy/Okno_v_Parizh.avi">Okno_v_Parizh.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/M/Mamin,Yuriy/Okno_v_Parizh.avi">Okno_v_Parizh.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/jZt5uOWG9oU">youtube.com</a></li>
 	</ul>
 
@@ -8005,7 +7937,7 @@ https://www.youtube.com/watch?v=jZt5uOWG9oU&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>06-Apr-2019 22:22:11</updated>
+	<updated>20-Jul-2019 23:02:08</updated>
 </video>
 
 <video type="video">
@@ -8460,7 +8392,7 @@ https://www.kinopoisk.ru/film/eksperiment-2-volna-2008-387388/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/E/Eksperiment-2.2008.P.DVDRip_INTERFILM.avi">Eksperiment-2.2008.P.DVDRip_INTERFILM.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/E/Eksperiment-2.2008.P.DVDRip_INTERFILM.avi">Eksperiment-2.2008.P.DVDRip_INTERFILM.avi</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/270609550014">OK.ru</a></li>
 	</ul>
 
@@ -8474,7 +8406,7 @@ https://www.kinopoisk.ru/film/eksperiment-2-volna-2008-387388/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>07-Apr-2019 15:28:36</updated>
+	<updated>20-Jul-2019 23:02:43</updated>
 </video>
 
 <video type="video">
@@ -8625,30 +8557,35 @@ https://www.kinopoisk.ru/film/102245/</description>
 <video type="video">
 	<title>
 		<item>Машина Времени</item>
+		<item>Time machine</item>
 </title>
 	
-	
-	<roles>
-В ролях: Гай Пирс (Guy Pearce), Марк Эдди (Mark Addy), Филлида Лоу (Phyllida Law), Лаура Кирк (Laura Kirk), Джош Стэмберг (Josh Stamberg), Джон М. Момроу (John W. Momrow), Сиена Гиллори (Sienna Guillory), Макс Бейкер (Max Baker)
+	<producer>Студия: Dreamworks Создатели: Саймон Уэллс (Simon Wells)</producer>
+	<roles>В ролях: Гай Пирс (Guy Pearce), Марк Эдди (Mark Addy), Филлида Лоу (Phyllida Law), Лаура Кирк (Laura Kirk), Джош Стэмберг (Josh Stamberg), Джон М. Момроу (John W. Momrow), Сиена Гиллори (Sienna Guillory), Макс Бейкер (Max Baker)
 	</roles>
-	<description>США, 2002
-Студия: Dreamworks
-Создатели: Саймон Уэллс (Simon Wells)
-&amp;lt;br&amp;gt;
-Ученый-изобретатель Александр Хартдеген может пойти на всё, чтобы доказать, что путешествие во времени возможно. Его намерения осуществляются после произошедшей личной трагедии, которая заставляет его отправиться изменить прошлое. Проверяя свои теории, машина времени собственного изобретения, забрасывает Хартдегена на 800'000 лет в будущее, где он обнаруживает, что человечество разделилось на охотников и добычу...
-&amp;lt;br&amp;gt;Фантастика&amp;lt;br&amp;gt;</description>
-	
+	<description>Ученый-изобретатель Александр Хартдеген может пойти на всё, чтобы доказать, что путешествие во времени возможно. 
+Его намерения осуществляются после произошедшей личной трагедии, которая заставляет его отправиться изменить прошлое. 
+Проверяя свои теории, машина времени собственного изобретения, забрасывает Хартдегена на 800'000 лет в будущее, 
+где он обнаруживает, что человечество разделилось на охотников и добычу...</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_iphone/iphone360_8109.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>http://localhost/video/films/
-time_machine.avi
-</li>
+		<li><a data-type="local-file" href="/video/films/T/time_machine.avi">time_machine.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="43">фантастика</item>
+		<item tid="119">экранизация</item>
+		<item tid="66">США</item>
+		<item tid="22">avi</item>
+		<item tid="225">T</item>
+		<item tid="285">2002</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:06:29</updated>
 </video>
 
 <video type="video">
@@ -8670,7 +8607,7 @@ time_machine.avi
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/gods.avi">gods.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/G/gods.avi">gods.avi</a></li>
 	</ul>
 
 	<tags>
@@ -8681,7 +8618,7 @@ time_machine.avi
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 18:05:34</updated>
+	<updated>20-Jul-2019 23:03:14</updated>
 </video>
 
 <video type="video">
@@ -8719,7 +8656,7 @@ https://www.youtube.com/watch?v=fKaFT2bR8SU&amp;amp;t=0s&amp;amp;index=58&amp;am
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/O/oblakoray.avi">oblakoray.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/O/oblakoray.avi">oblakoray.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/fKaFT2bR8SU">embed video on youtube.com</a></li>
 	</ul>
 
@@ -8733,7 +8670,7 @@ https://www.youtube.com/watch?v=fKaFT2bR8SU&amp;amp;t=0s&amp;amp;index=58&amp;am
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>29-Mar-2019 13:51:44</updated>
+	<updated>20-Jul-2019 23:03:45</updated>
 </video>
 
 <video type="video">
@@ -8764,7 +8701,7 @@ https://www.kinopoisk.ru/film/12283/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/R/Ruthless People.avi">Ruthless People.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/R/Ruthless People.avi">Ruthless People.avi</a></li>
 		<li><a data-type="local-file" href="/video/films/R/Ruthless.People.1986.720p.Eng.Rus.mkv">Ruthless.People.1986.720p.Eng.Rus.mkv</a></li>
 		<li><a data-type="embed-video" href="https://ok.ru/videoembed/36136880717">OK.ru</a></li>
 	</ul>
@@ -8779,7 +8716,7 @@ https://www.kinopoisk.ru/film/12283/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>07-Apr-2019 16:25:39</updated>
+	<updated>20-Jul-2019 23:04:18</updated>
 </video>
 
 <video type="video">
@@ -8808,7 +8745,7 @@ https://www.kinopoisk.ru/film/12283/</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/The Castle.avi">The Castle.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/The Castle.avi">The Castle.avi</a></li>
 	</ul>
 
 	<tags>
@@ -8822,38 +8759,40 @@ https://www.kinopoisk.ru/film/12283/</description>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>28-Mar-2019 18:07:35</updated>
+	<updated>20-Jul-2019 23:04:58</updated>
 </video>
 
 <video type="video">
 	<title>
 		<item>Процесс</item>
+		<item>The Trial</item>
 </title>
 	
-	
-	<roles>
-В ролях: Кайл Маклахлан (Kyle Maclachlan), Энтони Хопкинс (Anthony Hopkins), Джейсон Робардс (Jason Robards), Джульет Стивенсон (Juliet Stevenson), Полли Уокер (Polly Walker), Альфред Молина (Alfred Molina)
+	<producer>Студия: Europanda Entertainment Создатели: Дэвид Хью Джоунс (David Hugh Jones)</producer>
+	<roles>Кайл Маклахлан (Kyle Maclachlan), 
+Энтони Хопкинс (Anthony Hopkins), 
+Джейсон Робардс (Jason Robards), 
+Джульет Стивенсон (Juliet Stevenson), 
+Полли Уокер (Polly Walker), 
+Альфред Молина (Alfred Molina)
 	</roles>
-	<description>Великобритания, 1993
-Студия: Europanda Entertainment
-Создатели: Дэвид Хью Джоунс (David Hugh Jones)
-&amp;lt;br&amp;gt;
-Проснувшись обычным будничным утром, законопослушный работник банка, господин К. обнаруживает в своих апартаментах двух незнакомцев, которые сообщают ему о том, что он арестован и находится под следствием. От чьего имени выступают эти люди и какова статья обвинения, узнать не удается. Тем не менее, все вокруг, будто сговорившись, подтверждают реальность случившегося...
-&amp;lt;br&amp;gt;
-Драма
-&amp;lt;br&amp;gt;</description>
+	<description>Проснувшись обычным будничным утром, законопослушный работник банка, господин К. обнаруживает в своих апартаментах двух незнакомцев, которые сообщают ему о том, что он арестован и находится под следствием. От чьего имени выступают эти люди и какова статья обвинения, узнать не удается. Тем не менее, все вокруг, будто сговорившись, подтверждают реальность случившегося...</description>
 	
 
 	<ul>
-		<li>http://localhost/video/films/
-The Trial.avi
-</li>
+		<li><a data-type="local-file" href="/video/films/T/The Trial.avi">The Trial.avi</a></li>
 	</ul>
 
-	
+	<tags>
+		<item tid="4">драма</item>
+		<item tid="119">экранизация</item>
+		<item tid="60">Великобритания</item>
+		<item tid="225">T</item>
+		<item tid="243">П</item>
+	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>12-Oct-2012 00:07:57</updated>
+	<updated>21-Jul-2019 20:18:03</updated>
 </video>
 
 <video type="video">
@@ -9134,7 +9073,7 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Abel.avi">Abel.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Abel.avi">Abel.avi</a></li>
 	</ul>
 
 	<tags>
@@ -9146,7 +9085,7 @@ https://www.youtube.com/watch?v=hBgPY80Cz50</description>
 	</tags>
 
 	<published>13-Oct-2012 00:46:08</published>
-	<updated>28-Mar-2019 18:18:31</updated>
+	<updated>20-Jul-2019 23:13:34</updated>
 </video>
 
 <video type="video">
@@ -9171,7 +9110,7 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/G/Grimm_Warmerdam, 2003_DVDRip-AVC.mkv">Grimm_Warmerdam, 2003_DVDRip-AVC.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/G/Grimm_Warmerdam, 2003_DVDRip-AVC.mkv">Grimm_Warmerdam, 2003_DVDRip-AVC.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -9189,7 +9128,7 @@ https://www.kinopoisk.ru/film/novye-skazki-bratev-grimm-2003-39632/</description
 	</tags>
 
 	<published>13-Oct-2012 01:00:36</published>
-	<updated>29-Mar-2019 13:55:57</updated>
+	<updated>20-Jul-2019 23:14:17</updated>
 </video>
 
 <video type="video">
@@ -10453,7 +10392,7 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/video_lessons/Yii framework/01.mp4">Yii framework/01.mp4, 1 урок</a></li>
+		<li><a data-type="local-file" href="/video/video_lessons/Yii framework/01.mp4">Yii framework/01.mp4, 1 урок</a></li>
 	</ul>
 
 	<tags>
@@ -10462,7 +10401,7 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D1%81%D0%BE%
 	</tags>
 
 	<published>16-Feb-2013 19:15:23</published>
-	<updated>29-Mar-2019 14:48:49</updated>
+	<updated>20-Jul-2019 23:15:03</updated>
 </video>
 
 <video type="video">
@@ -10828,7 +10767,7 @@ https://www.kinopoisk.ru/film/8365/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/B/Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv">Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv">Bushi.No.Ichibun.2006.x264.BDR.tRuAVC.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -10841,10 +10780,11 @@ https://www.kinopoisk.ru/film/8365/</description>
 		<item tid="208">B</item>
 		<item tid="239">Л</item>
 		<item tid="251">Ч</item>
+		<item tid="282">2006</item>
 	</tags>
 
 	<published>31-Mar-2013 23:50:41</published>
-	<updated>28-Mar-2019 18:27:58</updated>
+	<updated>20-Jul-2019 23:16:21</updated>
 </video>
 
 <video type="video">
@@ -10962,8 +10902,8 @@ https://www.kinopoisk.ru/film/8365/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Tsukigami/Tsukigami_1.avi">Tsukigami_1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Tsukigami/Tsukigami_2.avi">Tsukigami_2.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Tsukigami/Tsukigami_1.avi">Tsukigami_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Tsukigami/Tsukigami_2.avi">Tsukigami_2.avi</a></li>
 	</ul>
 
 	<tags>
@@ -10979,7 +10919,7 @@ https://www.kinopoisk.ru/film/8365/</description>
 	</tags>
 
 	<published>15-Apr-2013 23:09:24</published>
-	<updated>28-Mar-2019 17:25:27</updated>
+	<updated>20-Jul-2019 23:17:13</updated>
 </video>
 
 <video type="video">
@@ -11025,34 +10965,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 	<published>12-May-2013 11:24:13</published>
 	<updated>12-May-2013 11:25:24</updated>
-</video>
-
-<video type="video">
-	<title>
-		<item>Шлюз, видеоклипы</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra#local file (linux)</li>
-		<li>file://m:#local file (windows)</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="22">avi</item>
-	</tags>
-
-	<published>19-May-2013 18:28:07</published>
-	<updated>12-Jan-2014 18:29:00</updated>
 </video>
 
 <video type="video">
@@ -11231,6 +11143,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 <video type="video">
 	<title>
 		<item>10 каноэ</item>
+		<item>Ten Canoes</item>
 </title>
 	
 	<producer>Рольф Де Хир, Питер Джигирр</producer>
@@ -11238,28 +11151,32 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 Джейми Галпилил
 Ричард Бирринбиррин	</roles>
 	<description>http://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%81%D1%8F%D1%82%D1%8C_%D0%BB%D0%BE%D0%B4%D0%BE%D0%BA
-&amp;lt;pre&amp;gt;
+
 «Де́сять ло́док» (англ. Ten Canoes) — австралийский фильм 2006 г. в жанре драмы-комедии. 
 Это первый фильм, полностью снятый на одном из аборигенных языков Австралии. 
 Название фильма связано с одной из сюжетных линий: племя аборигенов делает 10 каноэ 
 и отправляется на них за гусиными яйцами, и по ходу их путешествия один из его участников рассказывает историю. Фильм получил специальную премию Каннского фестиваля
-&amp;lt;/pre&amp;gt;</description>
+
+Уникальный фильм о культуре, быте и истории австралийских аборигенов. Далекое прошлое, целые века до прихода в Австралию белого человека. Дэйинди домогается жены старшего брата, и чтобы наставить его на истинный путь, ему рассказывают старинную историю о любви, вражде, колдовстве и мести. Будто наяву Дэйинди видит события мифического прошлого.</description>
 	<pictures>
 		<img src="/video/0_covers/"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/T/Ten Canoes.avi">Ten Canoes.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/T/Ten Canoes.avi">Ten Canoes.avi</a></li>
 	</ul>
 
 	<tags>
 		<item tid="5">комедия</item>
+		<item tid="14">приключения</item>
 		<item tid="88">Австралия</item>
 		<item tid="22">avi</item>
+		<item tid="225">T</item>
+		<item tid="282">2006</item>
 	</tags>
 
 	<published>23-May-2013 22:17:25</published>
-	<updated>28-Mar-2019 18:29:19</updated>
+	<updated>21-Jul-2019 20:10:13</updated>
 </video>
 
 <video type="video">
@@ -11678,7 +11595,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Roy_Andersson/Roy Andersson - Commercials.avi">Roy Andersson - Commercials.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Roy_Andersson/Roy Andersson - Commercials.avi">Roy Andersson - Commercials.avi</a></li>
 	</ul>
 
 	<tags>
@@ -11690,7 +11607,7 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 	</tags>
 
 	<published>26-May-2013 19:42:49</published>
-	<updated>07-Apr-2019 00:12:10</updated>
+	<updated>20-Jul-2019 23:18:53</updated>
 </video>
 
 <video type="video">
@@ -11999,33 +11916,6 @@ http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D1%82%D0%B5%D0%BB%D1
 
 <video type="video">
 	<title>
-		<item>Va-Bank</item>
-</title>
-	
-	
-	
-	<description>&amp;lt;img src=&amp;quot;/video/0_covers/&amp;quot;&amp;gt;
-&amp;lt;pre&amp;gt;
-&amp;lt;/pre&amp;gt;</description>
-	<pictures>
-		<img src="/video/0_covers/"/>
-	</pictures>
-
-	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
-	</ul>
-
-	<tags>
-		<item tid="48">видеоклипы</item>
-	</tags>
-
-	<published>13-Jun-2013 22:15:13</published>
-	<updated>13-Jun-2013 22:15:13</updated>
-</video>
-
-<video type="video">
-	<title>
 		<item>No Doubt - Don`t Speak</item>
 </title>
 	
@@ -12093,9 +11983,12 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item>The Haunted House</item>
 </title>
 	
-	<producer>Клайн, Эдвард</producer>
-	
-	<description>https://www.kinopoisk.ru/film/11396/</description>
+	<producer>Клайн, Эдвард, Бастер Китон</producer>
+	<roles>Эдвард Ф. Клайн, Бастер Китон, Джо Робертс, Вирджиния Фокс, Натали Талмадж	</roles>
+	<description>https://www.kinopoisk.ru/film/11396/
+
+Бастер в роли банковского клерка. В банк, где он работает, неожиданно нагрянули грабители.
+А у Бастера, как назло, проблемы с клеем. После ограбления бандиты направляются в &amp;quot;дом с привидениями&amp;quot;, который должен, по их расчету, напугать полицейских.</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_big/11396.jpg"/>
 	</pictures>
@@ -12109,13 +12002,14 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="5">комедия</item>
 		<item tid="28">короткометражный</item>
 		<item tid="192">Бастер Китон</item>
+		<item tid="66">США</item>
 		<item tid="214">H</item>
 		<item tid="233">Д</item>
 		<item tid="334">немое кино</item>
 	</tags>
 
 	<published>16-Jun-2013 00:02:58</published>
-	<updated>14-Apr-2019 17:58:15</updated>
+	<updated>21-Jul-2019 20:13:47</updated>
 </video>
 
 <video type="video">
@@ -12240,18 +12134,21 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 <video type="video">
 	<title>
 		<item>Alf</item>
+		<item>Альф</item>
 </title>
 	
+	<producer>Пол Фаско</producer>
 	
-	
-	
-	
+	<description>https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%8C%D1%84</description>
+	<pictures>
+		<img src="https://upload.wikimedia.org/wikipedia/ru/9/99/Alf_poster.jpg"/>
+	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/001.avi">001.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/008.avi">008.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/009.avi">009.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/alf/012.avi">012.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/alf/001.avi">001.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/alf/008.avi">008.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/alf/009.avi">009.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/A/alf/012.avi">012.avi</a></li>
 	</ul>
 
 	<tags>
@@ -12260,10 +12157,11 @@ http://ru.wikipedia.org/wiki/%D0%92%D1%80%D0%B5%D0%BC%D1%8F_%D1%86%D1%8B%D0%B3%D
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
 		<item tid="207">A</item>
+		<item tid="306">1986</item>
 	</tags>
 
 	<published>17-Jun-2013 22:20:25</published>
-	<updated>01-Apr-2019 17:07:51</updated>
+	<updated>21-Jul-2019 14:13:40</updated>
 </video>
 
 <video type="video">
@@ -12670,9 +12568,9 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Flemish Renaissance song.flv">Flemish Renaissance song.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Italian Renaissance song 1.flv">Italian Renaissance song 1.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Tempus est Iocundum Codex Buranus, 179.mp4">Tempus est Iocundum Codex Buranus, 179.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Flemish Renaissance song.flv">Flemish Renaissance song.flv</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Italian Renaissance song 1.flv">Italian Renaissance song 1.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Tempus est Iocundum Codex Buranus, 179.mp4">Tempus est Iocundum Codex Buranus, 179.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -12681,7 +12579,7 @@ http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan
 	</tags>
 
 	<published>25-Sep-2013 22:07:42</published>
-	<updated>27-Mar-2019 15:06:12</updated>
+	<updated>20-Jul-2019 23:20:47</updated>
 </video>
 
 <video type="video">
@@ -12721,9 +12619,9 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/Sancho_s_rancho/VTS_07_1.avi">VTS_07_1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/Sancho_s_rancho/VTS_08_1.avi">VTS_08_1.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/C/Sancho_s_rancho/VTS_09_1.avi">VTS_09_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/Sancho_s_rancho/VTS_07_1.avi">VTS_07_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/Sancho_s_rancho/VTS_08_1.avi">VTS_08_1.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/C/Sancho_s_rancho/VTS_09_1.avi">VTS_09_1.avi</a></li>
 	</ul>
 
 	<tags>
@@ -12736,7 +12634,7 @@ http://rutracker.org/forum/viewtopic.php?t=2076068.</description>
 	</tags>
 
 	<published>25-Sep-2013 22:20:07</published>
-	<updated>06-Apr-2019 22:54:35</updated>
+	<updated>20-Jul-2019 23:21:35</updated>
 </video>
 
 <video type="video">
@@ -13217,7 +13115,7 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/I/Interstellar_2014_BDRip_[IMAX]_by_Dalemake.avi">Interstellar_2014_BDRip_[IMAX]_by_Dalemake.avi</a></li>
+		<li><a data-type="local-file" href="/video/films/I/Interstellar_2014_BDRip_[IMAX]_by_Dalemake.avi">Interstellar_2014_BDRip_[IMAX]_by_Dalemake.avi</a></li>
 	</ul>
 
 	<tags>
@@ -13235,7 +13133,7 @@ https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85less_%28%D1%84%D0%B8%D0%BB%D1%8C
 	</tags>
 
 	<published>02-Jun-2015 22:01:06</published>
-	<updated>31-Mar-2019 00:41:57</updated>
+	<updated>20-Jul-2019 23:22:18</updated>
 </video>
 
 <video type="video">
@@ -14029,21 +13927,33 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 19. Шоу-бизнес.mp4">Масяня. Эпизод 19. Шоу-бизнес.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 20. Даунлоад.mp4">Масяня. Эпизод 20. Даунлоад.mp4</a></li>
 		<li><a data-type="local-file" href="//video/mult/Masyanya/Масяня. Эпизод 24. Городские ужасы.mp4">Масяня. Эпизод 24. Городские ужасы.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/mult/Masyanya/Масяня. Эпизод 26. Колёса.mp4">Масяня. Эпизод 26. Колёса.mp4</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 26. Колёса.mp4">Масяня. Эпизод 26. Колёса.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 29. На измене.mp4">Масяня. Эпизод 29. На измене.mp4</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 34. Языковой барьер.mp4">Масяня. Эпизод 34. Языковой барьер.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/ivfF5B3IsSU">Эпизод 34. Языковой барьер, youtube.com</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 40. Таблетки на Блюхера.mp4">Масяня. Эпизод 40. Таблетки на Блюхера.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 43. Хомяк.mp4">Масяня. Эпизод 43. Хомяк.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 45. Принц Альберт.mp4">Масяня. Эпизод 45. Принц Альберт.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 46. Попсня.mp4">Масяня. Эпизод 46. Попсня.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 56. Околобаха.mp4">Масяня. Эпизод 56. Околобаха.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 72. Ночной эльф.mp4">Эпизод 72. Ночной эльф.mp4</a></li>
-		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 108. Ядрёный взрыв.mp4">108. Ядрёный взрыв.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 89. Джонатан Хрюндельсон.mp4">Эпизод 89. Джонатан Хрюндельсон.mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/RUr3E3Yq91k">youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/RUr3E3Yq91k">Эпизод 89. Джонатан Хрюндельсон, youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 108. Ядрёный взрыв.mp4">108. Ядрёный взрыв.mp4</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 130.  Зерцало.mp4">Эпизод 130.  Зерцало.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/r9loc1UQ9ZI">youtube.com</a></li>
 		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 132. Шайсе.mp4">Эпизод 132. Шайсе.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/C4vZkb_juyQ">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 30. Русский панкрок.mp4">Эпизод 30. Русский панкрок.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tJofh3icVi8">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 74. Кузина.mp4">Эпизод 74. Кузина</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/wOSJJjyz_mw">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 84. Жизнь с котом.mp4">Эпизод 84. Жизнь с котом</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_cfv0LoQhsg">youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня -Ктулху и пингвин с пропеллером.mp4">Ктулху и пингвин с пропеллером.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/4QvakseEc8Q">Ктулху и пингвин с пропеллером, youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/mult/Masyanya/Масяня. Эпизод 121. Будапешт.mp4">Эпизод 121. Будапешт.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_dydTviK8gY">Эпизод 121. Будапешт, youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -14060,7 +13970,7 @@ https://www.youtube.com/watch?v=GBo7kKcg3bU</description>
 	</tags>
 
 	<published>02-Jul-2016 23:03:51</published>
-	<updated>18-Jun-2019 18:27:38</updated>
+	<updated>21-Jul-2019 18:52:59</updated>
 </video>
 
 <video type="video">
@@ -14411,7 +14321,7 @@ homeland 6 сезон
 https://yandex.ru/video/search?text=%D1%80%D0%BE%D0%B4%D0%B8%D0%BD%D0%B0%20%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%20%D1%81%D1%88%D0%B0&amp;amp;path=main&amp;amp;reqid=1509951046582317-1407149330322985854761439-vla1-1916-V
 https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/</description>
 	<pictures>
-		<img src="http://site-content/video/0_covers/homeland.jpg"/>
+		<img src="/video/0_covers/homeland.jpg"/>
 		<img src="https://st.kp.yandex.net/images/film_big/574688.jpg"/>
 	</pictures>
 
@@ -14433,7 +14343,7 @@ https://www.stormo.tv/videos/122480/homeland-s01e01-hd-rus-lostfilm-tv/</descrip
 	</tags>
 
 	<published>06-Nov-2017 15:49:10</published>
-	<updated>09-May-2019 23:01:12</updated>
+	<updated>20-Jul-2019 23:24:19</updated>
 </video>
 
 <video type="video">
@@ -14741,7 +14651,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/Charlie Chaplin - A Night In The Show (1915).mp4">Charlie Chaplin - A Night In The Show (1915).mp4</a></li>
+		<li><a data-type="local-file" href="/video/films/Charlie Chaplin - A Night In The Show (1915).mp4">Charlie Chaplin - A Night In The Show (1915).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Qnp1RM6ixq8">embed video on youtube.com</a></li>
 	</ul>
 
@@ -14758,7 +14668,7 @@ https://www.youtube.com/watch?v=kUNy3NrxZAc&amp;amp;list=PL2sTusldk6UiOS6SLrbUjB
 	</tags>
 
 	<published>29-Mar-2019 17:45:37</published>
-	<updated>04-Apr-2019 10:21:18</updated>
+	<updated>20-Jul-2019 23:24:56</updated>
 </video>
 
 <video type="video">
@@ -14777,7 +14687,7 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/Dough and Dynamite (1914)(piano).flv">Dough and Dynamite (1914)(piano).flv</a></li>
+		<li><a data-type="local-file" href="/video/films/Dough and Dynamite (1914)(piano).flv">Dough and Dynamite (1914)(piano).flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/CwvM26yCdh4">embed video on youtube.com</a></li>
 	</ul>
 
@@ -14792,7 +14702,7 @@ https://www.kinopoisk.ru/film/testo-i-dinamit-1914-2186/</description>
 	</tags>
 
 	<published>29-Mar-2019 17:53:07</published>
-	<updated>04-Apr-2019 10:19:54</updated>
+	<updated>20-Jul-2019 23:25:38</updated>
 </video>
 
 <video type="video">
@@ -15076,6 +14986,33 @@ https://www.youtube.com/channel/UCa0al69mOt_6FPat1hX89fw/videos</description>
 
 	<published>01-May-2019 10:08:01</published>
 	<updated>01-May-2019 10:19:20</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>unsort films</item>
+		<item>Посмотреть!</item>
+</title>
+	
+	
+	
+	<description></description>
+	<pictures>
+		<img src=" "/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/753068935895">Квартира (1960) / The Apartment (1960), ok.ru</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/272781019845">Большие гонки (США, 1965), ok.ru</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/18815060484">Дни вина и роз - Days of Wine and Roses, ok.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="31">unsort</item>
+	</tags>
+
+	<published>21-Jul-2019 13:00:29</published>
+	<updated>21-Jul-2019 13:01:47</updated>
 </video>
 
 <video type="videoclip">
@@ -15741,22 +15678,19 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/Adicts - Chinese TakeAway.flv">Adicts - Chinese TakeAway.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/The Adicts - Johnny Was A Soldier.flv">The Adicts - Johnny Was A Soldier.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/The Adicts - Steamroller.flv">The Adicts - Steamroller.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/The Adicts - Steamroller (live - 83) [1115].flv">The Adicts - Steamroller (live - 83) [1115].flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/A/The adictsviva la revolustionjoker in the pack.flv">The adictsviva la revolustionjoker in the pack.flv</a></li>
+		<li><a data-type="local-file" href="/video/films/A/Adicts - Chinese TakeAway.flv">Adicts - Chinese TakeAway.flv</a></li>
+		<li><a data-type="local-file" href="/video/films/A/The Adicts - Johnny Was A Soldier.flv">The Adicts - Johnny Was A Soldier.flv</a></li>
+		<li><a data-type="local-file" href="/video/films/A/The Adicts - Steamroller.flv">The Adicts - Steamroller.flv</a></li>
+		<li><a data-type="local-file" href="/video/films/A/The Adicts - Steamroller (live - 83) [1115].flv">The Adicts - Steamroller (live - 83) [1115].flv</a></li>
+		<li><a data-type="local-file" href="/video/films/A/The adictsviva la revolustionjoker in the pack.flv">The adictsviva la revolustionjoker in the pack.flv</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="100">панк</item>
-		<item tid="25">flv</item>
+		<item tid="207">A</item>
 	</tags>
 
 	<published>08-Dec-2012 16:30:33</published>
-	<updated>29-Mar-2019 14:12:08</updated>
+	<updated>20-Jul-2019 23:26:39</updated>
 </video>
 
 <video type="videoclip">
@@ -15770,7 +15704,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Alizee - Live in Amsterdam.mpg">Alizee - Live in Amsterdam.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Alizee - Live in Amsterdam.mpg">Alizee - Live in Amsterdam.mpg</a></li>
 	</ul>
 
 	<tags>
@@ -15781,7 +15715,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 17:13:54</published>
-	<updated>07-Apr-2019 17:45:02</updated>
+	<updated>20-Jul-2019 23:27:10</updated>
 </video>
 
 <video type="videoclip">
@@ -15798,7 +15732,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Apocalyptica - Path.mpg">Apocalyptica - Path.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Apocalyptica - Path.mpg">Apocalyptica - Path.mpg</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/U_oaPY0Brrw">youtube.com</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tbODwqGZNTU">Apocalyptica - 'Path Vol. II' (Official Video)</a></li>
 	</ul>
@@ -15812,7 +15746,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 17:25:34</published>
-	<updated>07-Apr-2019 14:53:00</updated>
+	<updated>20-Jul-2019 23:28:13</updated>
 </video>
 
 <video type="videoclip">
@@ -15826,12 +15760,13 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/The Adicts - Steamroller.flv">The Adicts - Steamroller.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/The Adicts - Steamroller.flv">The Adicts - Steamroller.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/U45AOIOQHmI">Youtube, 1</a></li>
 	</ul>
 
 	<tags>
 		<item tid="272">youtube</item>
+		<item tid="207">A</item>
 		<item tid="48">видеоклипы</item>
 		<item tid="49">музыкальное видео</item>
 		<item tid="100">панк</item>
@@ -15839,7 +15774,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 17:31:42</published>
-	<updated>31-Mar-2019 19:11:39</updated>
+	<updated>20-Jul-2019 23:28:54</updated>
 </video>
 
 <video type="videoclip">
@@ -15855,7 +15790,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Bad Religion - I Love My Computer.flv">Bad Religion - I Love My Computer.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Bad Religion - I Love My Computer.flv">Bad Religion - I Love My Computer.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/8yY982IVqZg">youtube.com</a></li>
 	</ul>
 
@@ -15869,7 +15804,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 17:52:08</published>
-	<updated>07-Apr-2019 15:05:00</updated>
+	<updated>20-Jul-2019 23:29:35</updated>
 </video>
 
 <video type="videoclip">
@@ -15885,7 +15820,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Beastie Boys_Body Movin.avi">Beastie Boys_Body Movin.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Beastie Boys_Body Movin.avi">Beastie Boys_Body Movin.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/uvRBUw_Ls2o">youtube.com</a></li>
 	</ul>
 
@@ -15897,7 +15832,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 17:55:21</published>
-	<updated>31-Mar-2019 19:16:54</updated>
+	<updated>20-Jul-2019 23:30:14</updated>
 </video>
 
 <video type="videoclip">
@@ -15911,13 +15846,13 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Black Sabbath.avi">Black Sabbath.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Black Sabbath - Children Of The Grave (Live).mpg">Black Sabbath - Children Of The Grave (Live).mpg</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Black_Sabbath_-_Iron_Man.mpeg">Black_Sabbath_-_Iron_Man.mpeg</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Black Sabbath - N.I.B.avi">Black Sabbath - N.I.B.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Black Sabbath - Never Say Die.mpg">Black Sabbath - Never Say Die.mpg</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/BLACK SABBATH - Paranoid  (1970).MPG">BLACK SABBATH - Paranoid  (1970).MPG</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Sabbath Bloody Sabbath.avi">Sabbath Bloody Sabbath.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Black Sabbath.avi">Black Sabbath.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Black Sabbath - Children Of The Grave (Live).mpg">Black Sabbath - Children Of The Grave (Live).mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Black_Sabbath_-_Iron_Man.mpeg">Black_Sabbath_-_Iron_Man.mpeg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Black Sabbath - N.I.B.avi">Black Sabbath - N.I.B.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Black Sabbath - Never Say Die.mpg">Black Sabbath - Never Say Die.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/BLACK SABBATH - Paranoid  (1970).MPG">BLACK SABBATH - Paranoid  (1970).MPG</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Sabbath Bloody Sabbath.avi">Sabbath Bloody Sabbath.avi</a></li>
 	</ul>
 
 	<tags>
@@ -15928,7 +15863,7 @@ https://www.youtube.com/watch?v=TXDCyb_3Qjs&amp;amp;list=PL2sTusldk6UjU_GTUOs17h
 	</tags>
 
 	<published>08-Dec-2012 18:03:53</published>
-	<updated>07-Apr-2019 17:52:38</updated>
+	<updated>20-Jul-2019 23:31:32</updated>
 </video>
 
 <video type="videoclip">
@@ -16011,8 +15946,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/E/In_Extremo_Herr Mannelig.mpg">In_Extremo_Herr Mannelig.mpg</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/E/In_Extremo_Ai Vis Lo Lop.mpg">In_Extremo_Ai Vis Lo Lop.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/E/In_Extremo_Herr Mannelig.mpg">In_Extremo_Herr Mannelig.mpg</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/E/In_Extremo_Ai Vis Lo Lop.mpg">In_Extremo_Ai Vis Lo Lop.mpg</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Y8j-I4qaM2o">youtube.com</a></li>
 	</ul>
 
@@ -16024,7 +15959,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>18-May-2013 19:06:19</published>
-	<updated>07-Apr-2019 00:18:41</updated>
+	<updated>20-Jul-2019 23:32:47</updated>
 </video>
 
 <video type="videoclip">
@@ -16038,8 +15973,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/G/GrOb,Letov/Grajdanskaya Oborona_led pod nogami maiora (anime).avi">Grajdanskaya Oborona_led pod nogami maiora (anime).avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/G/GrOb,Letov/Grajdanskaya Oborona_Afganskii sindrom (anime).avi">Grajdanskaya Oborona_Afganskii sindrom (anime).avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/G/GrOb,Letov/Grajdanskaya Oborona_led pod nogami maiora (anime).avi">Grajdanskaya Oborona_led pod nogami maiora (anime).avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/G/GrOb,Letov/Grajdanskaya Oborona_Afganskii sindrom (anime).avi">Grajdanskaya Oborona_Afganskii sindrom (anime).avi</a></li>
 	</ul>
 
 	<tags>
@@ -16049,7 +15984,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>18-May-2013 19:26:39</published>
-	<updated>29-Mar-2019 14:33:43</updated>
+	<updated>20-Jul-2019 23:33:36</updated>
 </video>
 
 <video type="videoclip">
@@ -16063,8 +15998,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/Y/Yanka/amv_ratty_osoby_rezon_normal.avi">amv_ratty_osoby_rezon_normal.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/Y/Yanka/Yanka_Po tramvainim relsam.wmv">Yanka_Po tramvainim relsam.wmv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/Y/Yanka/amv_ratty_osoby_rezon_normal.avi">amv_ratty_osoby_rezon_normal.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/Y/Yanka/Yanka_Po tramvainim relsam.wmv">Yanka_Po tramvainim relsam.wmv</a></li>
 	</ul>
 
 	<tags>
@@ -16073,7 +16008,36 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>18-May-2013 20:41:00</published>
-	<updated>30-Mar-2019 09:40:03</updated>
+	<updated>20-Jul-2019 23:34:19</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Шлюз, видеоклипы</item>
+</title>
+	
+	
+	
+	<description></description>
+	<pictures>
+		<img src=" "/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Актриса.avi">Шлюз - Актриса.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Актриса (клип).mp4">Шлюз - Актриса (клип).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Песня.avi">Шлюз - Песня.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/SH/Шлюз/Шлюз - Песня (А1 Панк блок).mpg">Шлюз - Песня (А1 Панк блок).mpg</a></li>
+	</ul>
+
+	<tags>
+		<item tid="252">Ш</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="22">avi</item>
+	</tags>
+
+	<published>19-May-2013 18:28:07</published>
+	<updated>21-Jul-2019 14:55:08</updated>
 </video>
 
 <video type="videoclip">
@@ -16088,17 +16052,18 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/W/The_Who_Happy Jack.avi">The_Who_Happy Jack.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/W/The Who - Happy Jack.flv">The Who - Happy Jack.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/W/The Who - I am Free.flv">The Who - I am Free.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/W/The_Who_Happy Jack.avi">The_Who_Happy Jack.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/W/The Who - Happy Jack.flv">The Who - Happy Jack.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/W/The Who - I am Free.flv">The Who - I am Free.flv</a></li>
 	</ul>
 
 	<tags>
+		<item tid="226">W</item>
 		<item tid="48">видеоклипы</item>
 	</tags>
 
 	<published>19-May-2013 18:47:23</published>
-	<updated>29-Mar-2019 15:01:28</updated>
+	<updated>20-Jul-2019 23:35:07</updated>
 </video>
 
 <video type="videoclip">
@@ -16115,17 +16080,16 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi">The_Berzerker_-_All_The_Things_She_Said.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/The_Berzerker_-_All_The_Things_She_Said.avi">The_Berzerker_-_All_The_Things_She_Said.avi</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/DDqXXlPkRBo">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="208">B</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>19-May-2013 18:49:04</published>
-	<updated>26-Mar-2019 22:39:07</updated>
+	<updated>20-Jul-2019 23:35:45</updated>
 </video>
 
 <video type="videoclip">
@@ -16226,8 +16190,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Brutal Truth/Brutal Truth - Dead Smart 2007.AVI">Brutal Truth - Dead Smart 2007.AVI</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Brutal Truth/Brutal Truth - Sugardaddy [July 17th, 2009].AVI">Brutal Truth - Sugardaddy [July 17th, 2009].AVI</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Brutal Truth/Brutal Truth - Dead Smart 2007.AVI">Brutal Truth - Dead Smart 2007.AVI</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Brutal Truth/Brutal Truth - Sugardaddy [July 17th, 2009].AVI">Brutal Truth - Sugardaddy [July 17th, 2009].AVI</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tuoYTOcVxhg">youtube.com, Brutal Truth- Choice of a New Generation</a></li>
 	</ul>
 
@@ -16237,7 +16201,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>28-May-2013 23:09:32</published>
-	<updated>07-Apr-2019 18:31:14</updated>
+	<updated>20-Jul-2019 23:36:26</updated>
 </video>
 
 <video type="videoclip">
@@ -16251,9 +16215,9 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Das_Ich__Lava_Addendum/garten_eden.avi">garten_eden.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Das_Ich__Lava_Addendum/kain_und_abel.avi">kain_und_abel.avi</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Das_Ich__Lava_Addendum/kindgott.avi">kindgott.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Das_Ich__Lava_Addendum/garten_eden.avi">garten_eden.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Das_Ich__Lava_Addendum/kain_und_abel.avi">kain_und_abel.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Das_Ich__Lava_Addendum/kindgott.avi">kindgott.avi</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/7bzIUCJLD5c">youtube.com, Das Ich - Kain und Abel</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/7bzIUCJLD5c">youtube.com, Das Ich - Gottes tod</a></li>
 	</ul>
@@ -16264,7 +16228,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>28-May-2013 23:19:27</published>
-	<updated>07-Apr-2019 18:51:25</updated>
+	<updated>20-Jul-2019 23:37:16</updated>
 </video>
 
 <video type="videoclip">
@@ -16278,7 +16242,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/C/coroner_07. Absorbed.avi">coroner_07. Absorbed.avi</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/C/coroner_07. Absorbed.avi">coroner_07. Absorbed.avi</a></li>
 	</ul>
 
 	<tags>
@@ -16287,7 +16251,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>15-Jun-2013 22:13:43</published>
-	<updated>07-Apr-2019 19:14:10</updated>
+	<updated>20-Jul-2019 23:37:52</updated>
 </video>
 
 <video type="videoclip">
@@ -16334,8 +16298,8 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/BraAgas/BraAgas - Asentada.flv">BraAgas - Asentada.flv</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/BraAgas/Anoche - BraAgas.mp4">Anoche - BraAgas.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/BraAgas/BraAgas - Asentada.flv">BraAgas - Asentada.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/BraAgas/Anoche - BraAgas.mp4">Anoche - BraAgas.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/NGetWUOA5bo">youtube.com, Anoche</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/DoxRR7_b_8s">youtube.com, Dos Amantes</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/-JYt8pmRzd8">youtube.com, Anoche</a></li>
@@ -16347,7 +16311,7 @@ https://ru.wikipedia.org/wiki/Weckt_die_Toten!</description>
 	</tags>
 
 	<published>16-Jun-2013 17:43:12</published>
-	<updated>07-Apr-2019 18:21:19</updated>
+	<updated>20-Jul-2019 23:38:49</updated>
 </video>
 
 <video type="videoclip">
@@ -16390,8 +16354,8 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Dead Kennedys - Holiday In Cambodia (1981).mp4">Dead Kennedys - Holiday In Cambodia (1981).mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Dead Kennedys - Kill the poor.flv">Dead Kennedys - Kill the poor.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Dead Kennedys - Holiday In Cambodia (1981).mp4">Dead Kennedys - Holiday In Cambodia (1981).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Dead Kennedys - Kill the poor.flv">Dead Kennedys - Kill the poor.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/eIqESwzCGg4">youtube.com, Dead Kennedys - California Über Alles</a></li>
 	</ul>
 
@@ -16401,7 +16365,7 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	</tags>
 
 	<published>18-Jun-2013 09:18:00</published>
-	<updated>07-Apr-2019 18:59:25</updated>
+	<updated>20-Jul-2019 23:40:29</updated>
 </video>
 
 <video type="videoclip">
@@ -16417,7 +16381,7 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/D/Dusty Springfield - Spooky.flv">Dusty Springfield - Spooky.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/D/Dusty Springfield - Spooky.flv">Dusty Springfield - Spooky.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Fola80rQop4">youtube.com</a></li>
 	</ul>
 
@@ -16429,7 +16393,7 @@ https://ru.wikipedia.org/wiki/Carmina_Burana</description>
 	</tags>
 
 	<published>18-Jun-2013 09:19:34</published>
-	<updated>01-Apr-2019 17:14:32</updated>
+	<updated>20-Jul-2019 23:41:12</updated>
 </video>
 
 <video type="videoclip">
@@ -16599,8 +16563,8 @@ https://ru.wikipedia.org/wiki/%D0%9F%D1%81%D0%B8%D0%BB%D0%BE%D1%86%D0%B8%D0%B1%D
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Blade Loki/BLADE LOKI - No Pasaran (2006).mp4">BLADE LOKI - No Pasaran (2006).mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/B/Blade Loki/BLADE LOKI Kochaj mnie - Live @ Fest.Truskawka.2013.mp4">BLADE LOKI Kochaj mnie - Live @ Fest.Truskawka.2013.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Blade Loki/BLADE LOKI - No Pasaran (2006).mp4">BLADE LOKI - No Pasaran (2006).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/B/Blade Loki/BLADE LOKI Kochaj mnie - Live @ Fest.Truskawka.2013.mp4">BLADE LOKI Kochaj mnie - Live @ Fest.Truskawka.2013.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/94H-FM4i3ZQ">embed video on youtube.com, Blade Loki - Psy i Koty</a></li>
 	</ul>
 
@@ -16611,7 +16575,7 @@ https://ru.wikipedia.org/wiki/%D0%9F%D1%81%D0%B8%D0%BB%D0%BE%D1%86%D0%B8%D0%B1%D
 	</tags>
 
 	<published>12-Jan-2014 16:06:44</published>
-	<updated>30-Mar-2019 09:02:06</updated>
+	<updated>20-Jul-2019 23:42:03</updated>
 </video>
 
 <video type="videoclip">
@@ -16628,23 +16592,19 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/films/K/KSU - JABOL PUNK.mp4">KSU - JABOL PUNK.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/films/K/KSU - KTO CIE OBRONI POLSKO.mp4">KSU - KTO CIE OBRONI POLSKO.mp4</a></li>
+		<li><a data-type="local-file" href="/video/films/K/KSU - JABOL PUNK.mp4">KSU - JABOL PUNK.mp4</a></li>
+		<li><a data-type="local-file" href="/video/films/K/KSU - KTO CIE OBRONI POLSKO.mp4">KSU - KTO CIE OBRONI POLSKO.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/GM7U6HJWpDQ">Youtube embed video in new tab, JABOL PUNK</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/vTqFBuisxU0">Youtube embed video in new tab,  KTO CIE OBRONI POLSKO</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="100">панк</item>
-		<item tid="128">Польша</item>
-		<item tid="24">mp4</item>
-		<item tid="217">K</item>
 		<item tid="272">youtube</item>
+		<item tid="217">K</item>
 	</tags>
 
 	<published>12-Jan-2014 16:20:30</published>
-	<updated>27-Mar-2019 21:50:44</updated>
+	<updated>20-Jul-2019 23:42:50</updated>
 </video>
 
 <video type="videoclip">
@@ -16656,23 +16616,21 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	
 	<description>http://pl.wikipedia.org/wiki/Maanam</description>
 	<pictures>
-		<img src="https://i.ytimg.com/vi/52rBL2rqrag/sddefault.jpg"/>
+		<img src="https://i.ytimg.com/vi/52rBL2rqrag/hqdefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Maanam - Smycz.mp4">Maanam - Smycz.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Maanam - Smycz.mp4">Maanam - Smycz.mp4</a></li>
 		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/52rBL2rqrag">Smycz</a></li>
 		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/yYSv6JEWUfQ">Twist</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="219">M</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>12-Jan-2014 16:29:45</published>
-	<updated>27-Mar-2019 21:47:17</updated>
+	<updated>20-Jul-2019 23:43:40</updated>
 </video>
 
 <video type="videoclip">
@@ -16686,16 +16644,13 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	
 
 	<ul>
-		<li><a type="local-file" href="http://site-content/video/А. Лаэртский - Дети хоронят коня..mp4">local file, А. Лаэртский - Дети хоронят коня..mp4</a></li>
+		<li><a type="local-file" href="/video/А. Лаэртский - Дети хоронят коня..mp4">local file, А. Лаэртский - Дети хоронят коня..mp4</a></li>
 	</ul>
 
-	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="239">Л</item>
-	</tags>
+	
 
 	<published>12-Jan-2014 19:44:33</published>
-	<updated>17-Mar-2019 22:32:08</updated>
+	<updated>20-Jul-2019 23:53:15</updated>
 </video>
 
 <video type="videoclip">
@@ -16711,20 +16666,17 @@ https://www.youtube.com/watch?v=vTqFBuisxU0&amp;amp;list=PL2sTusldk6UjXkPp5UZGmc
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Liar Liar Castaways on Never Too Young.flv">Liar Liar Castaways on Never Too Young.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/L/Liar Liar Castaways on Never Too Young.flv">Liar Liar Castaways on Never Too Young.flv</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=DDEdFxUZ01s">youtube video</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/DDEdFxUZ01s">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="209">C</item>
-		<item tid="218">L</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>12-Jan-2014 20:07:41</published>
-	<updated>26-Mar-2019 21:53:18</updated>
+	<updated>20-Jul-2019 23:44:30</updated>
 </video>
 
 <video type="videoclip">
@@ -16764,30 +16716,24 @@ https://www.youtube.com/watch?v=8AJDF90ETgw</description>
 	
 	
 	<description>&amp;lt;iframe width=&amp;quot;640&amp;quot; height=&amp;quot;480&amp;quot; src=&amp;quot;http://youtube.com/embed/fvZO8ox0pKo&amp;quot; frameborder=&amp;quot;0&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;
-https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXadl3taitd15c&amp;amp;index=28&amp;amp;t=266s
-
-&amp;lt;video width=&amp;quot;320&amp;quot; height=&amp;quot;240&amp;quot; controls&amp;gt;
-    &amp;lt;source src=&amp;quot;http://site-content/video/videoclips/M/Massacre -  [Full Almbum].mp4&amp;quot; type=&amp;quot;video/mp4&amp;quot;&amp;gt;
-&amp;lt;/video&amp;gt;</description>
+https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXadl3taitd15c&amp;amp;index=28&amp;amp;t=266s</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/fvZO8ox0pKo/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/M/Massacre -  [Full Almbum].mp4">Massacre -  [Full Almbum].mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/fvZO8ox0pKo">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;list=PL2sTusldk6Ui1xFLMA4gXadl3taitd15c&amp;index=28&amp;t=266s">youtube video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Massacre -  [Full Almbum].mp4">Massacre -  [Full Almbum].mp4</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="49">музыкальное видео</item>
-		<item tid="219">M</item>
 		<item tid="272">youtube</item>
+		<item tid="219">M</item>
 	</tags>
 
 	<published>25-Apr-2014 23:57:12</published>
-	<updated>17-Mar-2019 22:30:52</updated>
+	<updated>20-Jul-2019 23:45:54</updated>
 </video>
 
 <video type="videoclip">
@@ -16803,8 +16749,8 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 	
 
 	<ul>
+		<li><a data-type="local-file" href="/video/music_video/chants/Russian Orthodox Chant.mp4">Russian Orthodox Chant.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/j7ahHNTTaqM">youtube embed video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/chants/Russian Orthodox Chant.mp4">Russian Orthodox Chant.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -16815,7 +16761,7 @@ https://www.youtube.com/watch?v=fvZO8ox0pKo&amp;amp;list=PL2sTusldk6Ui1xFLMA4gXa
 	</tags>
 
 	<published>02-May-2014 21:40:26</published>
-	<updated>11-Apr-2019 14:01:25</updated>
+	<updated>20-Jul-2019 23:46:42</updated>
 </video>
 
 <video type="videoclip">
@@ -16837,7 +16783,7 @@ http://roerich-encyclopedia.facets.ru/slowar/TASHILAM.html</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/chants/Lama Tashi- Vajrapani.mp4">Lama Tashi- Vajrapani.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/chants/Lama Tashi- Vajrapani.mp4">Lama Tashi- Vajrapani.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/DqSPuVps39M">embed video on youtube.com</a></li>
 	</ul>
 
@@ -16849,7 +16795,7 @@ http://roerich-encyclopedia.facets.ru/slowar/TASHILAM.html</description>
 	</tags>
 
 	<published>02-May-2014 21:44:56</published>
-	<updated>11-Apr-2019 13:59:08</updated>
+	<updated>20-Jul-2019 23:47:19</updated>
 </video>
 
 <video type="videoclip">
@@ -16866,7 +16812,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%81%D0%BD%D1%8C_%D0%91%D0%BE%D0%B3%D
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/chants/Orthodox russian chant. Песнь Богородицы.mp4">Orthodox russian chant. Песнь Богородицы.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/chants/Orthodox russian chant. Песнь Богородицы.mp4">Orthodox russian chant. Песнь Богородицы.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/M5wBmRRReys">embed video on youtube.com</a></li>
 	</ul>
 
@@ -16877,7 +16823,7 @@ http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%81%D0%BD%D1%8C_%D0%91%D0%BE%D0%B3%D
 	</tags>
 
 	<published>11-May-2014 17:35:57</published>
-	<updated>11-Apr-2019 13:56:42</updated>
+	<updated>20-Jul-2019 23:48:01</updated>
 </video>
 
 <video type="videoclip">
@@ -16921,7 +16867,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/M/Claudio Monteverdi  Magnificat (complete).flv">Claudio Monteverdi  Magnificat (complete).flv</a></li>
+		<li><a data-type="local-file" href="/video/music_video/M/Claudio Monteverdi  Magnificat (complete).flv">Claudio Monteverdi  Magnificat (complete).flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/RajAq0Yd-s4">embed video on youtube.com</a></li>
 	</ul>
 
@@ -16931,7 +16877,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	</tags>
 
 	<published>22-Oct-2017 18:36:52</published>
-	<updated>27-Mar-2019 21:12:16</updated>
+	<updated>20-Jul-2019 23:48:34</updated>
 </video>
 
 <video type="videoclip">
@@ -16947,7 +16893,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Gypsy Beats &amp; Balkan Bangers Vol. 1 [Full Album].flv">Gypsy Beats &amp; Balkan Bangers Vol. 1 [Full Album].flv</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Gypsy Beats &amp; Balkan Bangers Vol. 1 [Full Album].flv">Gypsy Beats &amp; Balkan Bangers Vol. 1 [Full Album].flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/StdSF7z6tPE">embed video on youtube.com</a></li>
 	</ul>
 
@@ -16956,7 +16902,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	</tags>
 
 	<published>22-Oct-2017 18:51:08</published>
-	<updated>27-Mar-2019 14:29:20</updated>
+	<updated>20-Jul-2019 23:49:10</updated>
 </video>
 
 <video type="videoclip">
@@ -16970,20 +16916,21 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%B3%D0%BD%D0%B8_%D0%9F%D0%B0%D1%80%D1%84%
 	
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - WITH RUSSIA FROM LOVE.mp4">LITTLE BIG - WITH RUSSIA FROM LOVE.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - WITH RUSSIA FROM LOVE.mp4">LITTLE BIG - WITH RUSSIA FROM LOVE.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/j4IgNPmaKkw">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=j4IgNPmaKkw">youtube video</a></li>
 		<li><a data-type="external-links" href="http://rutube.ru/play/embed/7da5122eecf1e02ff160c06f3b1489cb">Rutube video</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="218">L</item>
 		<item tid="272">youtube</item>
+		<item tid="218">L</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
 	</tags>
 
 	<published>03-Mar-2019 15:53:02</published>
-	<updated>27-Mar-2019 21:23:01</updated>
+	<updated>19-Jul-2019 21:11:50</updated>
 </video>
 
 <video type="videoclip">
@@ -17000,9 +16947,9 @@ https://www.youtube.com/watch?v=QrU1hZxSEXQ&amp;amp;t=0s&amp;amp;index=16&amp;am
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - Everyday I'm drinking.mp4">LITTLE BIG - Everyday I'm drinking.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/QrU1hZxSEXQ">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=QrU1hZxSEXQ">youtube video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Everyday I'm drinking.mp4">LITTLE BIG - Everyday I'm drinking.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17014,7 +16961,7 @@ https://www.youtube.com/watch?v=QrU1hZxSEXQ&amp;amp;t=0s&amp;amp;index=16&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:00:17</published>
-	<updated>29-Mar-2019 22:28:53</updated>
+	<updated>19-Jul-2019 21:11:05</updated>
 </video>
 
 <video type="videoclip">
@@ -17034,20 +16981,19 @@ https://ok.ru/video/3196192005</description>
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - Life in da trash.mp4">LITTLE BIG - Life in da trash.mp4</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=UVrjzOUZJI4&amp;list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&amp;index=17&amp;t=0s">playlist on Youtube</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/UVrjzOUZJI4">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://vk.com/video-163575186_456239090">VContacte</a></li>
 		<li><a data-type="external-links" href="https://ok.ru/video/3196192005">OK.ru</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Life in da trash.mp4">LITTLE BIG - Life in da trash.mp4</a></li>
 	</ul>
 
 	<tags>
-		<item tid="218">L</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>03-Mar-2019 16:05:27</published>
-	<updated>17-Mar-2019 22:42:11</updated>
+	<updated>19-Jul-2019 21:10:33</updated>
 </video>
 
 <video type="videoclip">
@@ -17064,9 +17010,9 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - Kind Inside, Hard Outside.mp4">LITTLE BIG - Kind Inside, Hard Outside.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/xBwtEQQ9qd0">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;t=0s&amp;index=18&amp;list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR">youtube video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - Kind Inside, Hard Outside.mp4">LITTLE BIG - Kind Inside, Hard Outside.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17076,7 +17022,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:19:25</published>
-	<updated>30-Mar-2019 00:15:20</updated>
+	<updated>19-Jul-2019 21:10:03</updated>
 </video>
 
 <video type="videoclip">
@@ -17092,9 +17038,9 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - RAVE ON (prod. DENDERTY).mp4">LITTLE BIG - RAVE ON (prod. DENDERTY).mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/cXWGpsszhpE">youtube embed video</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=cXWGpsszhpE&amp;list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&amp;index=19&amp;t=0s">youtube playlist</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - RAVE ON (prod. DENDERTY).mp4">LITTLE BIG - RAVE ON (prod. DENDERTY).mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17104,7 +17050,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:34:42</published>
-	<updated>30-Mar-2019 00:22:25</updated>
+	<updated>19-Jul-2019 21:25:04</updated>
 </video>
 
 <video type="videoclip">
@@ -17120,9 +17066,9 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - TO PARTY.mp4">LITTLE BIG - TO PARTY.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/jL083wMBMlM">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=jL083wMBMlM">youtube video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - TO PARTY.mp4">LITTLE BIG - TO PARTY.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17132,7 +17078,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:40:01</published>
-	<updated>30-Mar-2019 00:25:44</updated>
+	<updated>19-Jul-2019 21:09:34</updated>
 </video>
 
 <video type="videoclip">
@@ -17148,9 +17094,9 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</pictures>
 
 	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - POLYUSHKO POLYE.mp4">LITTLE BIG - POLYUSHKO POLYE.mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/kjilYa1zxSg">youtube embed video</a></li>
 		<li><a data-type="external-links" href="https://www.youtube.com/watch?v=kjilYa1zxSg&amp;list=PL2sTusldk6Ui2RlR4dzSdqxsKNUC1I2UR&amp;index=21&amp;t=0s">youtube video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - POLYUSHKO POLYE.mp4">LITTLE BIG - POLYUSHKO POLYE.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17160,7 +17106,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:41:53</published>
-	<updated>30-Mar-2019 00:17:50</updated>
+	<updated>19-Jul-2019 21:09:08</updated>
 </video>
 
 <video type="videoclip">
@@ -17178,7 +17124,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	<ul>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/6od76UNHt-M">youtube embed video</a></li>
 		<li><a data-type="embed-video" href="//ok.ru/videoembed/493952043634">OK video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - HATEFUL LOVE.mp4">LITTLE BIG - HATEFUL LOVE.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - HATEFUL LOVE.mp4">LITTLE BIG - HATEFUL LOVE.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17188,7 +17134,7 @@ https://www.youtube.com/watch?v=xBwtEQQ9qd0&amp;amp;t=0s&amp;amp;index=18&amp;am
 	</tags>
 
 	<published>03-Mar-2019 16:45:20</published>
-	<updated>30-Mar-2019 00:07:27</updated>
+	<updated>19-Jul-2019 21:08:39</updated>
 </video>
 
 <video type="videoclip">
@@ -17206,7 +17152,7 @@ https://rutube.ru/video/d623bf4322e98718ce8f7a8b46bc2a4a/?ref=search</descriptio
 	<ul>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/1t_sMynan_k">youtube embed video</a></li>
 		<li><a data-type="embed-video" href="http://rutube.ru/play/embed/d623bf4322e98718ce8f7a8b46bc2a4a">Rutube embed video</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG – FARADENZA (official music video).mp4">LITTLE BIG – FARADENZA (official music video).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG – FARADENZA (official music video).mp4">LITTLE BIG – FARADENZA (official music video).mp4</a></li>
 	</ul>
 
 	<tags>
@@ -17216,7 +17162,7 @@ https://rutube.ru/video/d623bf4322e98718ce8f7a8b46bc2a4a/?ref=search</descriptio
 	</tags>
 
 	<published>03-Mar-2019 17:01:12</published>
-	<updated>30-Mar-2019 00:04:35</updated>
+	<updated>19-Jul-2019 21:08:16</updated>
 </video>
 
 <video type="videoclip">
@@ -17238,7 +17184,7 @@ https://ok.ru/video/1147112392106
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4">LITTLE BIG - AK-47 (music video).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/L/Little Big/LITTLE BIG - AK-47 (music video).mp4">LITTLE BIG - AK-47 (music video).mp4</a></li>
 		<li><a data-type="embed-video" href="http://youtube.com/embed/-QHha1zko1A">youtube embed video</a></li>
 		<li><a data-type="embed-video" href="http://rutube.ru/play/embed/af8e35708f2f28c3e4a65c616f51003c">Rutube embed video</a></li>
 		<li><a data-type="embed-video" href="//ok.ru/videoembed/1147112392106">Ok.ru, embed video</a></li>
@@ -17247,14 +17193,12 @@ https://ok.ru/video/1147112392106
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="218">L</item>
 		<item tid="272">youtube</item>
 		<item tid="326">2016</item>
 	</tags>
 
 	<published>03-Mar-2019 17:13:24</published>
-	<updated>23-Mar-2019 20:05:30</updated>
+	<updated>19-Jul-2019 21:07:35</updated>
 </video>
 
 <video type="videoclip">
@@ -17270,19 +17214,16 @@ https://ok.ru/video/1147112392106
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/H/The Hatters_Кайфмэн.mp4">The Hatters_Кайфмэн.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/The Hatters_Кайфмэн.mp4">The Hatters_Кайфмэн.mp4</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/_T6C8SW_gCA">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="214">H</item>
-		<item tid="252">Ш</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>26-Mar-2019 22:16:32</published>
-	<updated>26-Mar-2019 22:27:49</updated>
+	<updated>20-Jul-2019 23:49:50</updated>
 </video>
 
 <video type="videoclip">
@@ -17298,20 +17239,17 @@ https://ok.ru/video/1147112392106
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Talco - Neverdad (Official Audio).mp4">Talco - Neverdad (Official Audio).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Neverdad (Official Audio).mp4">Talco - Neverdad (Official Audio).mp4</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/FKfA2mO4UL0">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="220">N</item>
-		<item tid="225">T</item>
 		<item tid="272">youtube</item>
 		<item tid="302">2015</item>
 	</tags>
 
 	<published>26-Mar-2019 22:21:35</published>
-	<updated>27-Mar-2019 12:51:27</updated>
+	<updated>20-Jul-2019 23:50:32</updated>
 </video>
 
 <video type="videoclip">
@@ -17353,19 +17291,16 @@ https://ok.ru/video/1147112392106
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/H/THE HATTERS - RUSSIAN STYLE.mp4">THE HATTERS - RUSSIAN STYLE.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/THE HATTERS - RUSSIAN STYLE.mp4">THE HATTERS - RUSSIAN STYLE.mp4</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/1phe0lvmgU0">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="214">H</item>
-		<item tid="252">Ш</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>27-Mar-2019 21:29:39</published>
-	<updated>27-Mar-2019 21:30:13</updated>
+	<updated>20-Jul-2019 23:51:05</updated>
 </video>
 
 <video type="videoclip">
@@ -17382,18 +17317,16 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Talco - La parabola dei battagghi (Official video).mp4">Talco - La parabola dei battagghi (Official video).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco - La parabola dei battagghi (Official video).mp4">Talco - La parabola dei battagghi (Official video).mp4</a></li>
 		<li><a data-type="embed-video" href="https://youtube.ru/embed/SGMnJGB0Oy8">embed video, www.youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="225">T</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>27-Mar-2019 21:35:56</published>
-	<updated>27-Mar-2019 21:36:09</updated>
+	<updated>20-Jul-2019 23:51:54</updated>
 </video>
 
 <video type="videoclip">
@@ -17409,19 +17342,16 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/K/Knife Party - Bonfire.mp4">Knife Party - Bonfire.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/K/Knife Party - Bonfire.mp4">Knife Party - Bonfire.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/e-IWRmpefzE">embed video on youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="208">B</item>
-		<item tid="217">K</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>27-Mar-2019 21:40:20</published>
-	<updated>27-Mar-2019 21:40:36</updated>
+	<updated>20-Jul-2019 23:53:54</updated>
 </video>
 
 <video type="videoclip">
@@ -17438,18 +17368,16 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/Prodigy - No good (original video version).mp4">Prodigy - No good (original video version).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/Prodigy - No good (original video version).mp4">Prodigy - No good (original video version).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/wENI58mXZPE">embed video on youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="268">P</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>28-Mar-2019 22:16:41</published>
-	<updated>28-Mar-2019 22:18:42</updated>
+	<updated>20-Jul-2019 23:54:29</updated>
 </video>
 
 <video type="videoclip">
@@ -17465,18 +17393,16 @@ https://www.youtube.com/watch?v=wENI58mXZPE&amp;amp;t=0s&amp;amp;list=PL2sTusldk
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/P/The Prodigy - Poison (Official Video).mp4">The Prodigy - Poison (Official Video).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/P/The Prodigy - Poison (Official Video).mp4">The Prodigy - Poison (Official Video).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/_mej5wS7viw">embed video on youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="268">P</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>28-Mar-2019 22:22:06</published>
-	<updated>28-Mar-2019 22:22:06</updated>
+	<updated>20-Jul-2019 23:55:00</updated>
 </video>
 
 <video type="videoclip">
@@ -17493,18 +17419,16 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/W/Wolfgang Gartner - Hook Shot (Limitless Soundtrack).mp4">Wolfgang Gartner - Hook Shot (Limitless Soundtrack).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/W/Wolfgang Gartner - Hook Shot (Limitless Soundtrack).mp4">Wolfgang Gartner - Hook Shot (Limitless Soundtrack).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/yv769K2T6Iw">embed video on youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="226">W</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>28-Mar-2019 22:28:23</published>
-	<updated>28-Mar-2019 22:30:27</updated>
+	<updated>20-Jul-2019 23:55:36</updated>
 </video>
 
 <video type="videoclip">
@@ -17520,19 +17444,16 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/H/THE HATTERS — NO RULES (Official Video).mp4">THE HATTERS — NO RULES (Official Video).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/THE HATTERS — NO RULES (Official Video).mp4">THE HATTERS — NO RULES (Official Video).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/hwlYm918Bao">embed video on youtube.com</a></li>
 	</ul>
 
 	<tags>
-		<item tid="48">видеоклипы</item>
-		<item tid="214">H</item>
-		<item tid="252">Ш</item>
 		<item tid="272">youtube</item>
 	</tags>
 
 	<published>28-Mar-2019 22:34:38</published>
-	<updated>28-Mar-2019 22:34:38</updated>
+	<updated>20-Jul-2019 23:56:15</updated>
 </video>
 
 <video type="videoclip">
@@ -17548,7 +17469,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/H/THE HATTERS - FOREVER YOUNG FOREVER DRUNK (feat. Just Femi).mp4">THE HATTERS - FOREVER YOUNG FOREVER DRUNK (feat. Just Femi).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/THE HATTERS - FOREVER YOUNG FOREVER DRUNK (feat. Just Femi).mp4">THE HATTERS - FOREVER YOUNG FOREVER DRUNK (feat. Just Femi).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/k9StQotPM_Q">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17562,7 +17483,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 22:17:16</published>
-	<updated>29-Mar-2019 22:17:16</updated>
+	<updated>20-Jul-2019 23:56:49</updated>
 </video>
 
 <video type="videoclip">
@@ -17578,7 +17499,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/H/THE HATTERS - EVERYDAY I'M DRINKING.mp4">THE HATTERS - EVERYDAY I'M DRINKING.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/H/THE HATTERS - EVERYDAY I'M DRINKING.mp4">THE HATTERS - EVERYDAY I'M DRINKING.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/GkSjHnZm274">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17592,7 +17513,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 22:20:23</published>
-	<updated>29-Mar-2019 22:20:23</updated>
+	<updated>20-Jul-2019 23:57:39</updated>
 </video>
 
 <video type="videoclip">
@@ -17608,7 +17529,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Talco - Il Tempo (Official Audio).mp4">Talco - Il Tempo (Official Audio).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Il Tempo (Official Audio).mp4">Talco - Il Tempo (Official Audio).mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/woLxmrm85ro">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17621,7 +17542,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 22:26:46</published>
-	<updated>29-Mar-2019 22:26:46</updated>
+	<updated>20-Jul-2019 23:58:13</updated>
 </video>
 
 <video type="videoclip">
@@ -17637,7 +17558,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/N/Ногу Свело!  Наши юные смешные голоса.flv">Ногу Свело!  Наши юные смешные голоса.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/N/Ногу Свело!  Наши юные смешные голоса.flv">Ногу Свело!  Наши юные смешные голоса.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/rUzBpj0A02U" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17650,7 +17571,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 22:52:40</published>
-	<updated>29-Mar-2019 23:01:27</updated>
+	<updated>20-Jul-2019 23:58:42</updated>
 </video>
 
 <video type="videoclip">
@@ -17666,7 +17587,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/Z/Zdob si Zdub Buna Dimineata.flv">Zdob si Zdub Buna Dimineata.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/Z/Zdob si Zdub Buna Dimineata.flv">Zdob si Zdub Buna Dimineata.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/NPJX8Io1Nxg" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17677,7 +17598,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 23:05:09</published>
-	<updated>29-Mar-2019 23:14:10</updated>
+	<updated>20-Jul-2019 23:59:18</updated>
 </video>
 
 <video type="videoclip">
@@ -17693,7 +17614,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/Z/Zdob şi Zdub  Moldovenii sau născut [official video].flv">Zdob şi Zdub  Moldovenii sau născut [official video].flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/Z/Zdob şi Zdub  Moldovenii sau născut [official video].flv">Zdob şi Zdub  Moldovenii sau născut [official video].flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/xCjzYPQfErg" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17704,7 +17625,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 23:07:44</published>
-	<updated>29-Mar-2019 23:12:26</updated>
+	<updated>20-Jul-2019 23:59:49</updated>
 </video>
 
 <video type="videoclip">
@@ -17720,7 +17641,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/R/The Rumjacks  An Irish Pub Song (Official Music Video).flv">The Rumjacks  An Irish Pub Song (Official Music Video).flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/R/The Rumjacks  An Irish Pub Song (Official Music Video).flv">The Rumjacks  An Irish Pub Song (Official Music Video).flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/tDTQQWSmo8s" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17731,7 +17652,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 23:22:22</published>
-	<updated>29-Mar-2019 23:22:22</updated>
+	<updated>21-Jul-2019 00:00:22</updated>
 </video>
 
 <video type="videoclip">
@@ -17747,7 +17668,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/C/Circus Fish  by Vermillion Lies.flv">Circus Fish  by Vermillion Lies.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/C/Circus Fish  by Vermillion Lies.flv">Circus Fish  by Vermillion Lies.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/1HrZ2CWxx6Y" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17757,7 +17678,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 23:28:01</published>
-	<updated>29-Mar-2019 23:28:01</updated>
+	<updated>21-Jul-2019 00:00:56</updated>
 </video>
 
 <video type="videoclip">
@@ -17773,7 +17694,7 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/M/Magpie  by Rapskallion.flv">Magpie  by Rapskallion.flv</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/M/Magpie  by Rapskallion.flv">Magpie  by Rapskallion.flv</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/QKMvjP7D9CU" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17784,7 +17705,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 23:33:06</published>
-	<updated>29-Mar-2019 23:33:06</updated>
+	<updated>21-Jul-2019 00:01:25</updated>
 </video>
 
 <video type="videoclip">
@@ -17859,7 +17780,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Anda Jaleo Jaleo.mp4">Anda Jaleo Jaleo.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Anda Jaleo Jaleo.mp4">Anda Jaleo Jaleo.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Td6lN_U7Ecs" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17871,7 +17792,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>29-Mar-2019 23:39:14</published>
-	<updated>29-Mar-2019 23:41:49</updated>
+	<updated>21-Jul-2019 00:01:59</updated>
 </video>
 
 <video type="videoclip">
@@ -17888,7 +17809,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/C/Canciones de la Guerra Civil Espanola Si me quieres escribir.mp4">Canciones de la Guerra Civil Espanola Si me quieres escribir.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/C/Canciones de la Guerra Civil Espanola Si me quieres escribir.mp4">Canciones de la Guerra Civil Espanola Si me quieres escribir.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/JLxa33HR3gY" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17899,7 +17820,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>29-Mar-2019 23:53:05</published>
-	<updated>29-Mar-2019 23:55:09</updated>
+	<updated>21-Jul-2019 00:03:16</updated>
 </video>
 
 <video type="videoclip">
@@ -17915,7 +17836,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Talco - Corri.mp4">Talco - Corri.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Corri.mp4">Talco - Corri.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9pPWB_ipZhQ" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17926,7 +17847,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:34:33</published>
-	<updated>30-Mar-2019 00:34:33</updated>
+	<updated>21-Jul-2019 00:03:49</updated>
 </video>
 
 <video type="videoclip">
@@ -17942,7 +17863,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/TALCO - Pirati di Sankt Pauli.mp4">TALCO - Pirati di Sankt Pauli.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/TALCO - Pirati di Sankt Pauli.mp4">TALCO - Pirati di Sankt Pauli.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/cIsZAnHH4V4" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17953,7 +17874,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:38:27</published>
-	<updated>30-Mar-2019 00:38:27</updated>
+	<updated>21-Jul-2019 00:04:32</updated>
 </video>
 
 <video type="videoclip">
@@ -17969,7 +17890,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/TALCO - Punta Raisi.mp4">TALCO - Punta Raisi.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/TALCO - Punta Raisi.mp4">TALCO - Punta Raisi.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Dh3wb6-j9VE" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -17980,7 +17901,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:41:41</published>
-	<updated>30-Mar-2019 00:41:41</updated>
+	<updated>21-Jul-2019 00:05:14</updated>
 </video>
 
 <video type="videoclip">
@@ -17996,7 +17917,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/T/Talco - Tarantella.mp4">Talco - Tarantella.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Tarantella.mp4">Talco - Tarantella.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9o-h1Kdv4Zs" target="_blank">embed video on youtube.com</a></li>
 	</ul>
 
@@ -18007,7 +17928,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:44:41</published>
-	<updated>30-Mar-2019 00:44:41</updated>
+	<updated>21-Jul-2019 00:05:48</updated>
 </video>
 
 <video type="videoclip">
@@ -18024,7 +17945,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Jocelyn Pook - Hell, Fire &amp; Damnation.mp4">Jocelyn Pook - Hell, Fire &amp; Damnation.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Jocelyn Pook - Hell, Fire &amp; Damnation.mp4">Jocelyn Pook - Hell, Fire &amp; Damnation.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9QEG2Mk184A">youtube.com</a></li>
 	</ul>
 
@@ -18038,7 +17959,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	</tags>
 
 	<published>31-Mar-2019 21:33:28</published>
-	<updated>31-Mar-2019 21:41:41</updated>
+	<updated>21-Jul-2019 00:06:28</updated>
 </video>
 
 <video type="videoclip">
@@ -18054,7 +17975,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Г.Ф.ГЕНДЕЛЬ - Sarabanda.mp4">Г.Ф.ГЕНДЕЛЬ - Sarabanda.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Г.Ф.ГЕНДЕЛЬ - Sarabanda.mp4">Г.Ф.ГЕНДЕЛЬ - Sarabanda.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/JSAd3NpDi6Q">youtube.com</a></li>
 	</ul>
 
@@ -18068,7 +17989,7 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	</tags>
 
 	<published>31-Mar-2019 21:46:57</published>
-	<updated>23-Apr-2019 13:01:28</updated>
+	<updated>21-Jul-2019 00:07:01</updated>
 </video>
 
 <video type="videoclip">
@@ -18079,14 +18000,13 @@ https://www.youtube.com/watch?v=9QEG2Mk184A&amp;amp;index=16&amp;amp;list=PL2sTu
 	
 	
 	<description>Ансамбль Органум (фр. Ensemble Organum) — французский мужской вокальный ансамбль, специализирующийся на исполнении средневековой духовной музыки.
-
 https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D1%83%D0%BC_(%D0%B0%D0%BD%D1%81%D0%B0%D0%BC%D0%B1%D0%BB%D1%8C)</description>
 	<pictures>
 		<img src="https://i.ytimg.com/vi/1HPRxm7NjxM/sddefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Messe de Toulouse- Kyrie.mp4">Messe de Toulouse- Kyrie.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Messe de Toulouse- Kyrie.mp4">Messe de Toulouse- Kyrie.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/1HPRxm7NjxM">youtube.com</a></li>
 	</ul>
 
@@ -18096,7 +18016,7 @@ https://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B3%D0%B0%D0%BD%D1%83%D0%BC_(%D0%B0
 	</tags>
 
 	<published>31-Mar-2019 21:58:58</published>
-	<updated>31-Mar-2019 22:04:04</updated>
+	<updated>21-Jul-2019 00:07:42</updated>
 </video>
 
 <video type="videoclip">
@@ -18114,7 +18034,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/Drum and Bell - Compassion_ 720HD .mp4">Drum and Bell - Compassion_ 720HD .mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/Drum and Bell - Compassion_ 720HD .mp4">Drum and Bell - Compassion_ 720HD .mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Q0yix2GOTFw">youtube.com</a></li>
 	</ul>
 
@@ -18124,7 +18044,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</tags>
 
 	<published>31-Mar-2019 22:10:50</published>
-	<updated>31-Mar-2019 22:18:48</updated>
+	<updated>21-Jul-2019 00:08:31</updated>
 </video>
 
 <video type="videoclip">
@@ -18171,7 +18091,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/N/НОЛЬ Человек и кошка. Песня о безответной любви к Родине.mp4">НОЛЬ Человек и кошка. Песня о безответной любви к Родине.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/N/НОЛЬ Человек и кошка. Песня о безответной любви к Родине.mp4">НОЛЬ Человек и кошка. Песня о безответной любви к Родине.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/s6MqouY8NSQ">youtube.com</a></li>
 	</ul>
 
@@ -18182,7 +18102,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</tags>
 
 	<published>01-Apr-2019 21:59:54</published>
-	<updated>01-Apr-2019 21:59:54</updated>
+	<updated>21-Jul-2019 00:09:05</updated>
 </video>
 
 <video type="videoclip">
@@ -18198,7 +18118,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/N/НОЛЬ - Наши лица.mp4">НОЛЬ - Наши лица.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/N/НОЛЬ - Наши лица.mp4">НОЛЬ - Наши лица.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/MKGZ1atWb2s">youtube.com</a></li>
 	</ul>
 
@@ -18209,7 +18129,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</tags>
 
 	<published>01-Apr-2019 22:07:37</published>
-	<updated>01-Apr-2019 22:07:37</updated>
+	<updated>21-Jul-2019 00:14:56</updated>
 </video>
 
 <video type="videoclip">
@@ -18225,7 +18145,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/C/Виктор Цой - Бездельник.mp4">Виктор Цой - Бездельник.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/C/Виктор Цой - Бездельник.mp4">Виктор Цой - Бездельник.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/jxoJwTlUJzo">youtube.com</a></li>
 	</ul>
 
@@ -18235,7 +18155,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</tags>
 
 	<published>01-Apr-2019 22:12:18</published>
-	<updated>01-Apr-2019 22:12:18</updated>
+	<updated>21-Jul-2019 00:09:47</updated>
 </video>
 
 <video type="videoclip">
@@ -18251,7 +18171,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/C/Виктор Цой - Дальше действовать будем мы.mp4">Виктор Цой - Дальше действовать будем мы.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/C/Виктор Цой - Дальше действовать будем мы.mp4">Виктор Цой - Дальше действовать будем мы.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/iB6Yuc0v9l4">youtube.com</a></li>
 	</ul>
 
@@ -18262,7 +18182,7 @@ https://www.youtube.com/watch?v=Q0yix2GOTFw&amp;amp;list=PL2sTusldk6UiM5fHHdHfAX
 	</tags>
 
 	<published>01-Apr-2019 22:15:48</published>
-	<updated>01-Apr-2019 22:15:48</updated>
+	<updated>21-Jul-2019 00:10:29</updated>
 </video>
 
 <video type="videoclip">
@@ -18280,7 +18200,7 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/music_video/One Hour of Progressive Trance.mp4">One Hour of Progressive Trance.mp4</a></li>
+		<li><a data-type="local-file" href="/video/music_video/One Hour of Progressive Trance.mp4">One Hour of Progressive Trance.mp4</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Z4VfdZZJKuk">youtube.com</a></li>
 		<li><a data-type="embed-video" href="https://www.youtube.com/embed/mIPtiUSIkbA">youtube.com</a></li>
 	</ul>
@@ -18291,7 +18211,7 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 	</tags>
 
 	<published>02-Apr-2019 21:53:09</published>
-	<updated>02-Apr-2019 21:53:09</updated>
+	<updated>21-Jul-2019 00:11:05</updated>
 </video>
 
 <video type="videoclip">
@@ -18307,15 +18227,15 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум - Будь Для Меня Как Банка.mp4">Аквариум - Будь Для Меня Как Банка.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум Государыня (Русский альбом).mp4">Аквариум Государыня (Русский альбом).mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум - Дубровский.mp4">Аквариум - Дубровский.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/аквариум иван и данило.mp4">аквариум иван и данило.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум Мочалкин блюз.mp4">Аквариум Мочалкин блюз.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/аквариум никита рязанский.mp4">аквариум никита рязанский.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум - Таможенный блюз.mp4">Аквариум - Таможенный блюз.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Аквариум - Фикус религиозный.mp4">Аквариум - Фикус религиозный.mp4</a></li>
-		<li><a data-type="local-file" href="http://site-content/video/videoclips/A/Аквариум/Бурлак.mp4">Бурлак.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум - Будь Для Меня Как Банка.mp4">Аквариум - Будь Для Меня Как Банка.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум Государыня (Русский альбом).mp4">Аквариум Государыня (Русский альбом).mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум - Дубровский.mp4">Аквариум - Дубровский.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/аквариум иван и данило.mp4">аквариум иван и данило.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум Мочалкин блюз.mp4">Аквариум Мочалкин блюз.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/аквариум никита рязанский.mp4">аквариум никита рязанский.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум - Таможенный блюз.mp4">Аквариум - Таможенный блюз.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Аквариум - Фикус религиозный.mp4">Аквариум - Фикус религиозный.mp4</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/A/Аквариум/Бурлак.mp4">Бурлак.mp4</a></li>
 	</ul>
 
 	<tags>
@@ -18324,7 +18244,7 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 	</tags>
 
 	<published>04-Apr-2019 22:01:51</published>
-	<updated>04-Apr-2019 22:02:06</updated>
+	<updated>21-Jul-2019 00:12:38</updated>
 </video>
 
 <video type="videoclip">
@@ -18471,6 +18391,39 @@ https://www.youtube.com/watch?v=mIPtiUSIkbA&amp;amp;list=PL2sTusldk6Ui2RlR4dzSdq
 
 	<published>27-Apr-2019 23:09:37</published>
 	<updated>27-Apr-2019 23:15:15</updated>
+</video>
+
+<video type="videoclip">
+	<title>
+		<item>Корелли, Арканджело</item>
+		<item>Arcangelo Corelli</item>
+</title>
+	
+	
+	
+	<description>https://www.youtube.com/playlist?list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI</description>
+	<pictures>
+		<img src="/video/0_covers/420px-Arcangelo_Corelli,_portrait_by_Hugh_Howard_(1697)_-_2.jpg"/>
+		<img src="https://i.ytimg.com/vi/VHRdFILo_Yw/hqdefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/videoclips/C/Corelli - La Follia.mp4">local file</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/VHRdFILo_Yw">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="272">youtube</item>
+		<item tid="209">C</item>
+		<item tid="238">К</item>
+		<item tid="48">видеоклипы</item>
+		<item tid="49">музыкальное видео</item>
+		<item tid="83">классика</item>
+		<item tid="24">mp4</item>
+	</tags>
+
+	<published>15-Jul-2019 21:47:26</published>
+	<updated>15-Jul-2019 21:59:10</updated>
 </video>
 	</database>
 </xroot>
