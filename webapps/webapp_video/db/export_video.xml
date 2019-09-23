@@ -217,6 +217,7 @@
 	<tag tid="275" vid="1" name="2013"></tag>
 	<tag tid="276" vid="1" name="2012"></tag>
 	<tag tid="277" vid="1" name="2011"></tag>
+	<tag tid="278" vid="1" name="2010"></tag>
 	<tag tid="279" vid="1" name="2009"></tag>
 	<tag tid="280" vid="1" name="2008"></tag>
 	<tag tid="281" vid="1" name="2007"></tag>
@@ -14468,21 +14469,19 @@ https://yandex.ru/video/favorites?filmId=9299413573818940804&amp;amp;ncrnd=2339&
 Стивен Майкл Квезада
 	</roles>
 	<description>https://www.kinopoisk.ru/film/vo-vse-tyazhkie-2008-404900/
-https://yandex.ru/video/search?text=%D0%B2%D0%BE%20%D0%B2%D1%81%D0%B5%20%D1%82%D1%8F%D0%B6%D0%BA%D0%B8%D0%B5%201%20%D1%81%D0%B5%D0%B7%D0%BE%D0%BD%201%20%D1%81%D0%B5%D1%80%D0%B8%D1%8F&amp;amp;path=main&amp;amp;reqid=1519466304320743-1639775908691375543362955-man1-3926-V
--------------
-file:// protocol, open in Firefox (VLC), Epiphany</description>
+https://yandex.ru/video/search?text=%D0%B2%D0%BE%20%D0%B2%D1%81%D0%B5%20%D1%82%D1%8F%D0%B6%D0%BA%D0%B8%D0%B5%201%20%D1%81%D0%B5%D0%B7%D0%BE%D0%BD%201%20%D1%81%D0%B5%D1%80%D0%B8%D1%8F&amp;amp;path=main&amp;amp;reqid=1519466304320743-1639775908691375543362955-man1-3926-V</description>
 	<pictures>
 		<img src="https://st.kp.yandex.net/images/film_big/404900.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e07.mkv">Season_02/Breaking.Bad_s02.e07.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e08.mkv">Season_02/Breaking.Bad_s02.e08.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e09.mkv">Season_02/Breaking.Bad_s02.e09.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e10.mkv">Season_02/Breaking.Bad_s02.e10.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e11.mkv">Season_02/Breaking.Bad_s02.e11.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e12.mkv">Season_02/Breaking.Bad_s02.e12.mkv</a></li>
-		<li><a data-type="local-file" href="file:///mnt/d2/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e13.mkv">Season_02/Breaking.Bad_s02.e13.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e07.mkv">Season_02/Breaking.Bad_s02.e07.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e08.mkv">Season_02/Breaking.Bad_s02.e08.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e09.mkv">Season_02/Breaking.Bad_s02.e09.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e10.mkv">Season_02/Breaking.Bad_s02.e10.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e11.mkv">Season_02/Breaking.Bad_s02.e11.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e12.mkv">Season_02/Breaking.Bad_s02.e12.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/B/Breaking.Bad_BDRip 720p(Rus.Eng)/Season_02/Breaking.Bad_s02.e13.mkv">Season_02/Breaking.Bad_s02.e13.mkv</a></li>
 	</ul>
 
 	<tags>
@@ -14501,7 +14500,7 @@ file:// protocol, open in Firefox (VLC), Epiphany</description>
 	</tags>
 
 	<published>24-Feb-2018 18:54:45</published>
-	<updated>31-Mar-2019 01:05:44</updated>
+	<updated>11-Sep-2019 15:24:11</updated>
 </video>
 
 <video type="video">
@@ -15136,6 +15135,247 @@ https://www.kinopoisk.ru/film/105034/</description>
 
 	<published>22-Aug-2019 21:52:36</published>
 	<updated>22-Aug-2019 21:55:22</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item> Кухонные байки</item>
+		<item>Salmer fra kjøkkenet</item>
+</title>
+	
+	<producer>Бент Хамер</producer>
+	<roles>Йоахим Кальмейер
+Томас Норстрем
+Бьёрн Флоберг
+Рейне Бринолфссон
+Сверре Анкер Оусдаль
+Лейф Андре
+Гард Б. Эйдсвольд
+Леннарт Якель
+Тронд Бренне
+Бьорн Йенсег	</roles>
+	<description>https://www.kinopoisk.ru/film/49063/
+В послевоенный период эксперты по дому и домашнему хозяйству обнаружили, что одна лишь правильная организация рабочего места на кухне с использованием принципов заводского конвейера может принести огромные финансовые выгоды домашнему хозяйству. Или, как было сформулировано в шведской рекламе новой идеальной кухни: вместо того, чтобы пройти расстояние от Швеции до Конго за год приготовления пищи, домохозяйке теперь потребуется дойти только до Северной Италии, чтобы поставить обед на стол.
+
+После того, как шведские ученые из Института исследования дома составили подробную карту перемещений шведской домохозяйки по кухне и досконально изучили ее поведение, они почувствовали, что готовы преодолеть поставленные перед собой географические и основанные на половом признаке ограничения. В начале 1950-х они отправили 18 наблюдателей в сельский регион Норвегии Ландстад, где был избыток холостяков, чтобы исследовать, как ведут себя на кухне неженатые мужчины.
+
+Чтобы быть наготове 24 часа в сутки, наблюдатели будут жить в яйцеобразных жилых автофургонах, установленных рядом с домами обследуемых. С высоких, изготовленных на заказ наблюдательных кресел, стратегически размещенных в каждой кухне, ничто не укроется от этой новой науки.
+
+Наблюдателем должно быть разрешено приходить и уходить, когда они пожелают, и ни при каких обстоятельствах с ними нельзя заговаривать или подключать их к тому, что делается на кухне…</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/49063.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/S/Salmer.fra/Salmer.fra.avi">Salmer.fra.avi</a></li>
+	</ul>
+
+	<tags>
+		<item tid="4">драма</item>
+		<item tid="5">комедия</item>
+		<item tid="114">Норвегия</item>
+		<item tid="75">Швеция</item>
+		<item tid="27">mkv</item>
+		<item tid="224">S</item>
+		<item tid="238">К</item>
+		<item tid="284">2003</item>
+	</tags>
+
+	<published>04-Sep-2019 21:15:52</published>
+	<updated>04-Sep-2019 21:20:11</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item> Смех в раю</item>
+		<item>Laughter in Paradise</item>
+</title>
+	
+	<producer>Марио Дзампи</producer>
+	<roles>    Аластер Сим
+    Фэй Комптон
+    Гай Миддлтон
+    Джордж Коул
+    Хью Гриффит
+    Эрнест Тесиджер
+    Беатрис Кэмпбелл
+    МакКензи Уорд
+    А.Э. Мэтьюз
+    Джойс Гринфел
+    ...	</roles>
+	<description>После смерти известного мистификатора Генри Расселла осталось письмо, в котором он завещал своим родственникам каждому по 50,000 фунтов стерлингов. Однако они не сразу могли получить эти деньги. В письме говорилось, что каждый наследник может получить означенную сумму лишь после того, как выполнит определенное условие. Эти условия были настолько необычны, что родственники были озадачены, но никто не хотел лишиться такой суммы, поэтому все как один приступили к выполнению условий.
+https://www.kinopoisk.ru/film/17728/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/17728.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/L/Laughter in Paradise_1951.avi">Laughter in Paradise_1951.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/x4h7n3iIWnU">Смех в раю 1951, Великобритания, комедия, youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/90343148201">Смех в раю 1951, ok.ru</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/egNQ3cmFCaE">Смех в раю (Англия, 1951) комедия, советский дубляж, youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="60">Великобритания</item>
+		<item tid="22">avi</item>
+		<item tid="218">L</item>
+		<item tid="245">С</item>
+		<item tid="272">youtube</item>
+	</tags>
+
+	<published>06-Sep-2019 19:22:26</published>
+	<updated>06-Sep-2019 19:25:58</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Как украсть миллион</item>
+		<item>How to Steal a Million</item>
+</title>
+	
+	<producer>Уильям Уайлер</producer>
+	<roles>Одри Хепберн
+Питер О’Тул
+Илай Уоллак
+Хью Гриффит
+Шарль Буайе
+Фернан Гравей
+Марсель Далио
+Жак Марен
+Мусташ
+Роже Тревиль	</roles>
+	<description>Действие происходит в Париже. Молодая девушка, дочь миллионера, втайне промышляющего подделкой произведений искусства, и преступник, должны выкрасть с выставки изобразительного искусства в музее один из «шедевров» отца девушки, чтобы спасти его от разоблачения.
+https://www.kinopoisk.ru/film/10156/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/10156.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/H/How to Steal a Million.avi">How to Steal a Million.avi</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/217806015191">Как украсть миллион (1966) / How to Steal a Million (1966), ok.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="13">криминал</item>
+		<item tid="54">мелодрама</item>
+		<item tid="66">США</item>
+		<item tid="22">avi</item>
+		<item tid="214">H</item>
+		<item tid="238">К</item>
+		<item tid="301">1966</item>
+	</tags>
+
+	<published>08-Sep-2019 15:33:41</published>
+	<updated>08-Sep-2019 15:39:40</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Война и мир</item>
+		<item>War &amp; Peace</item>
+</title>
+	
+	<producer>Том Харпер</producer>
+	<roles>
+    Пол Дано
+    Джеймс Нортон
+    Лили Джеймс
+    Эдриен Эдмондсон
+    Эшлин Лофтус
+    Грета Скакки
+    Джек Лауден
+    Таппенс Мидлтон
+    Анайрин Барнард
+    Джесси Бакли	</roles>
+	<description>Действие сериала развивается в России XIX века, охватывая период с 1805 по 1812 годы. В основу сюжета положен роман Льва Толстого «Война и мир», основное внимание сфокусировано на судьбах Пьера Безухова, Андрея Болконского и Наташи Ростовой.
+https://www.kinopoisk.ru/film/893150/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/893150.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e01.HDTV.1080p.mkv">War.and.Peace.2016.s01e01.HDTV.1080p.mkv</a></li>
+		<li><a data-type="embed-video" href="https://ok.ru/videoembed/53666777652">"Война и мир" _ (2016) 1серия. HDTV 720p, ok.ru</a></li>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e02.HDTV.1080p.mkv">War.and.Peace.2016.s01e02.HDTV.1080p.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e03.HDTV.1080p.mkv">War.and.Peace.2016.s01e03.HDTV.1080p.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e04.HDTV.1080p.mkv">War.and.Peace.2016.s01e04.HDTV.1080p.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e05.HDTV.1080p.mkv">War.and.Peace.2016.s01e05.HDTV.1080p.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/W/War.and.Peace/War.and.Peace.2016.s01e06.HDTV.1080p.mkv">War.and.Peace.2016.s01e06.HDTV.1080p.mkv</a></li>
+	</ul>
+
+	<tags>
+		<item tid="169">война</item>
+		<item tid="4">драма</item>
+		<item tid="96">история</item>
+		<item tid="54">мелодрама</item>
+		<item tid="117">сериал</item>
+		<item tid="60">Великобритания</item>
+		<item tid="27">mkv</item>
+		<item tid="226">W</item>
+		<item tid="231">В</item>
+		<item tid="320">sub_en</item>
+		<item tid="326">2016</item>
+	</tags>
+
+	<published>11-Sep-2019 15:32:18</published>
+	<updated>11-Sep-2019 15:32:18</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Это – Англия</item>
+</title>
+	
+	<producer>Шэйн Медоуз</producer>
+	<roles>    Томас Тургус
+    Стивен Грэм
+    Вики МакКлюр
+    Эндрю Шим
+    Розамунд Хэнсон
+    Даниэль Уотсон
+    Джозеф Гилган
+    Лира Мэй Томас
+    Билли Брайтуйэт
+    Шанель Крессвелл	</roles>
+	<description></description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/749388.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England_86 (2010)/This.Is.England_86.E01.HDRip.DD2.0.x264.mkv">This.Is.England_86.E01.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '86 (2010)/This.Is.England.'86.E02.HDRip.DD2.0.x264.mkv">This.Is.England.'86.E02.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '86 (2010)/This.Is.England.'86.E03.HDRip.DD2.0.x264.mkv">This.Is.England.'86.E03.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '86 (2010)/This.Is.England.'86.E04.HDRip.DD2.0.x264.mkv">This.Is.England.'86.E04.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '88 (2011)/This.Is.England.'88.E01.HDRip.DD2.0.x264.mkv">This.Is.England.'88.E01.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '88 (2011)/This.Is.England.'88.E02.HDRip.DD2.0.x264.mkv">This.Is.England.'88.E02.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '88 (2011)/This.Is.England.'88.E03.HDRip.DD2.0.x264.mkv">This.Is.England.'88.E03.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '90 (2015)/This.Is.England.'90.E01.Spring.HDRip.DD2.0.x264.mkv">This.Is.England.'90.E01.Spring.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '90 (2015)/This.Is.England.'90.E02.Summer.HDRip.DD2.0.x264.mkv">This.Is.England.'90.E02.Summer.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '90 (2015)/This.Is.England.'90.E03.Autumn.HDRip.DD2.0.x264.mkv">This.Is.England.'90.E03.Autumn.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England '90 (2015)/This.Is.England.'90.E04.Winter.HDRip.DD2.0.x264.mkv">This.Is.England.'90.E04.Winter.HDRip.DD2.0.x264.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/T/This Is England - The Complete Series - whip93/This Is England (2006) - Motion Picture/This.Is.England.2006.BDRip.DD2.0.x264.mkv">This.Is.England.2006.BDRip.DD2.0.x264.mkv</a></li>
+	</ul>
+
+	<tags>
+		<item tid="4">драма</item>
+		<item tid="5">комедия</item>
+		<item tid="13">криминал</item>
+		<item tid="117">сериал</item>
+		<item tid="60">Великобритания</item>
+		<item tid="225">T</item>
+		<item tid="229">А</item>
+		<item tid="302">2015</item>
+		<item tid="277">2011</item>
+		<item tid="282">2006</item>
+		<item tid="278">2010</item>
+	</tags>
+
+	<published>15-Sep-2019 19:51:45</published>
+	<updated>15-Sep-2019 19:56:45</updated>
 </video>
 
 <video type="videoclip">
