@@ -22776,7 +22776,21 @@ lib/comp_books/program/js
 Сила JavaScript
 		</bookname>
 	</node>
-	<node title="Сквер Алексей. Забво" nid="1673" mlid="2063" plid="386" type="library_book" created="01-Jan-2016 19:48:57" changed="05-Feb-2016 23:28:58" weight="0">
+	<node title="Сквер Алексей. Акс" nid="1759" mlid="2161" plid="384" type="library_book" created="25-Aug-2019 12:59:56" changed="25-Aug-2019 13:02:22" weight="0">
+		<body_value>
+ http://okopka.ru/s/skwer_a/aksarmejskajakuznicastrany.shtml
+		</body_value>
+		<subfolder>
+lib/books/S/Skver.Al
+		</subfolder>
+		<author>
+Сквер Алексей
+		</author>
+		<bookname>
+Акс (Армейская Кузница Страны), тетрадь номер раз
+		</bookname>
+	</node>
+	<node title="Сквер Алексей. Забво" nid="1673" mlid="2063" plid="386" type="library_book" created="01-Jan-2016 19:48:57" changed="25-Aug-2019 13:00:54" weight="0">
 		<body_value>
 http://royallib.com/author/skver_aleksey.html
 http://okopka.ru/s/skwer_a/
@@ -22785,7 +22799,7 @@ http://okopka.ru/s/skwer_a/zabud.shtml
 
 		</body_value>
 		<subfolder>
-lib/books/S
+lib/books/S/Skver.Al
 		</subfolder>
 		<author>
 Сквер Алексей
@@ -30993,6 +31007,9 @@ lib/art_books/book_history_engraving
 	<item entity_id="1758" bundle="library_book" delta="0">
 		<value>L_humor_Loginov Andrej.Dnevnik kachka.txt</value>
 	</item>
+	<item entity_id="1759" bundle="library_book" delta="0">
+		<value>Skver_Alexey_Aks.txt</value>
+	</item>
 	<item entity_id="8" bundle="library_book" delta="1">
 		<value>VZ_JavaScript_web.pdf#В.В.ЗАХАРКИНА JavaScript. Основы клиентского программирования, 2007</value>
 	</item>
@@ -33658,6 +33675,9 @@ http://localhost#localhost, direct link
 		<value>https://yadi.sk/d/4M0mxgw8qblbuQ
 </value>
 	</item>
+	<item entity_id="1759" bundle="library_book" delta="0">
+		<value> </value>
+	</item>
 	<item entity_id="703" bundle="library_book" delta="1">
 		<value>https://googledrive.com/host/0B0l5s_9HQLzzcGZHYnlOb1RCRUk/parser/lib_xml/image_viewer_pages.html?book_location=https://googledrive.com/host/0B0l5s_9HQLzzYTRRM1U3VXBTbWc/lib/art_books/scan_japan_gravure
 #view scan pages, google drive, roman.v.laptev cloud
@@ -35687,13 +35707,6 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1483" tid="67"/>
 	<record nid="1483" tid="147"/>
 	<record nid="1483" tid="160"/>
-	<record nid="1673" tid="39"/>
-	<record nid="1673" tid="99"/>
-	<record nid="1673" tid="179"/>
-	<record nid="1673" tid="67"/>
-	<record nid="1673" tid="147"/>
-	<record nid="1673" tid="156"/>
-	<record nid="1673" tid="196"/>
 	<record nid="1677" tid="182"/>
 	<record nid="1677" tid="100"/>
 	<record nid="1677" tid="169"/>
@@ -36547,6 +36560,19 @@ https://yadi.sk/i/95p845OLZTfCe#external, yandex disk</value>
 	<record nid="1758" tid="67"/>
 	<record nid="1758" tid="143"/>
 	<record nid="1758" tid="150"/>
+	<record nid="1673" tid="39"/>
+	<record nid="1673" tid="99"/>
+	<record nid="1673" tid="179"/>
+	<record nid="1673" tid="67"/>
+	<record nid="1673" tid="147"/>
+	<record nid="1673" tid="156"/>
+	<record nid="1673" tid="196"/>
+	<record nid="1759" tid="39"/>
+	<record nid="1759" tid="99"/>
+	<record nid="1759" tid="178"/>
+	<record nid="1759" tid="67"/>
+	<record nid="1759" tid="156"/>
+	<record nid="1759" tid="192"/>
 </taxonomy_index>
 
 <taxonomy_term_data>

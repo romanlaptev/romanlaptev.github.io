@@ -73,44 +73,81 @@ function _initPlayer(app){
 
 
 function _player_addTrack( target ){
-	var arr = target.href.split("track-");
-	//var numPages = webApp.vars["DB"]["numPages"];
-	//var numNodes = webApp.vars["DB"]["nodes"].length;
-	var numPerPage = webApp.vars["DB"]["numRecordsPerPage"];
-	var numPage = webApp.vars["GET"]["num_page"];
+//console.log( target );
+//console.log( target.classList );
+//console.log( $(target).hasClass("wrong-video-type") );
 
-	var numTrack = ((numPage * numPerPage) - numPerPage) + parseInt( arr[1] ) ;
-console.log(arr, numTrack, webApp.vars["DB"]["nodes"][numTrack]);
+	if( $(target).hasClass("wrong-video-type") ){
+webApp.vars["logMsg"] = "warning, not added track, unsupported video format...";
+func.logAlert( webApp.vars["logMsg"], "warning");
+//console.log( webApp.vars["logMsg"] );
+		return false;	
+	}
+	
+	var _sourcePath = "";
+	
+	if( $(target).attr("href") ){
+		_sourcePath = $(target).attr("href");
+	}
+	
+	if( $(target).val() ){
+		_sourcePath = $(target).val();
+	}
+	
+	var track = {
+		"title": $(target).data("title"),
+		"src": _sourcePath,
+		"dataType": $(target).data("type"),//"local-file", "embed-video"
+		"number": webApp.vars["playlist"]["tracks"].length
+	};
+	webApp.vars["playlist"]["tracks"].push(track);
+	
+	webApp.vars["logMsg"] = "Added track <b>" +track["title"]+ "</b> to playlist...";
+	func.logAlert( webApp.vars["logMsg"], "success");
 
-	var artist = webApp.vars["DB"]["nodes"][numTrack]["creators"];
-	var title = webApp.vars["DB"]["nodes"][numTrack]["title"][0]["text"];
+	//refresh block-playlist
+	var _block = webApp.vars["blocks"][0];
+	_block["buildBlock"]();
+
+	//var arr = target.href.split("track-");
+	////var numPages = webApp.vars["DB"]["numPages"];
+	////var numNodes = webApp.vars["DB"]["nodes"].length;
+	//var numPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+	//var numPage = webApp.vars["GET"]["num_page"];
+
+	//var numTrack = ((numPage * numPerPage) - numPerPage) + parseInt( arr[1] ) ;
+//console.log(arr, numTrack, webApp.vars["DB"]["nodes"][numTrack]);
+
+	//var artist = webApp.vars["DB"]["nodes"][numTrack]["creators"];
+	//var title = webApp.vars["DB"]["nodes"][numTrack]["title"][0]["text"];
 	
-	var links = webApp.vars["DB"]["nodes"][numTrack]["ul"];
-	var href = "";
+	//var links = webApp.vars["DB"]["nodes"][numTrack]["ul"];
+	//var href = "";
 	
-	for( var n = 0; n < links.length; n++){
-		if( links[n]["data-type"] && links[n]["data-type"] === "local-file"){
-			if( links[n]["href"].indexOf(".mp4") !== -1){
+	//for( var n = 0; n < links.length; n++){
+		//if( links[n]["data-type"] && links[n]["data-type"] === "local-file"){
+			//if( links[n]["href"].indexOf(".mp4") !== -1){
 				
-				if ( webApp["jPlaylist"] && webApp["vars"]["playlists"]["testPls"]["tracks"]) { 
-					webApp["jPlaylist"].add({
-						title: title,
-						artist: artist,
-						free: true,
-						m4v: links[n]["href"]
-					});
-					//webApp["jPlaylist"].play(-1);
-				}
+				//if ( webApp["jPlaylist"] && webApp["vars"]["playlists"]["testPls"]["tracks"]) { 
+					//webApp["jPlaylist"].add({
+						//title: title,
+						//artist: artist,
+						//free: true,
+						//m4v: links[n]["href"]
+					//});
+					////webApp["jPlaylist"].play(-1);
+				//}
 				
-			} else {
-webApp.vars["logMsg"] = "warning, not add track, not found source file mp4 format... ";
-func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
+			//} else {
+//webApp.vars["logMsg"] = "warning, not add track, not found source file mp4 format... ";
+//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
 				
-			}
-		} 
+			//}
+		//} 
 		
-	}//next
+	//}//next
+	
 }//_player_addTrack()
 
 

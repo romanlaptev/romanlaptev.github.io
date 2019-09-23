@@ -938,6 +938,36 @@ ONLY second LEVEL !!!!!!!!!!!!
 		}//end _parseXmlToObj()
 		
 		
+		function _alert( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				default:
+					_log(message);
+				break;
+			}//end switch
+			
+		}//end _alert()		
+		
 		// public interfaces
 		return{
 			getById: _getById,
@@ -954,7 +984,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 			timeStampToDateStr: _timeStampToDateStr,
 			hashCode: _hashCode,
 			parseXmlToObj: _parseXmlToObj,
-			convertXmlToObj: _convertXmlToObj
+			convertXmlToObj: _convertXmlToObj,
+			logAlert: _alert
+			
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}

@@ -30,8 +30,8 @@
 <!--
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jplayer.playlist.min.js"></script>
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.jplayer.min.js"></script>
-	<script src="js/players.js"></script>
 -->
+	<script src="js/players.js"></script>
 <!-- ################## /player ################## -->
 	
 <!--
@@ -57,7 +57,7 @@
 		<div class="pull-left">
 			<ul class="nav nav-tabs">
 				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Player</a></li>
+				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Playlist</a></li>
 				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
 				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
 			</ul>
@@ -84,40 +84,42 @@
 			
 	<div class="panel-group" id="header-links">
 		<div class="panel">
-			  <div id="collapse-player" class="panel-collapse collapse">
-<div id="block-playlist"></div>
+			<div id="collapse-player" class="panel-collapse collapse">
 <!--
 <span id="block-jplayer"></span>
 -->
-			<div class="wrapper">
-				<h2 id="track-info"></h2>
-<iframe type="text/html" id="iframe-player" width="640" height="385" src="" frameborder="1"></iframe>
-
-<!--
-				<video id="player1" width="640" height="385" controls="controls">
-					<source src=""/>
-					Tag <b>video</b> not supported by this browser.... 
-				</video>
--->
-
-
-				<div id="player-buttons">
-<!--
-					<span id="video1-current">00:00</span>
-					<span id="video1-duration">00:00</span>
+				<div class="wrapper">
+					<h2 id="track-info"></h2>
 					
-					<button id="btn-play" class="btn btn-primary">play</button>
-					<button id="btn-pause" class="btn btn-info">pause</button>
--->
-					<a href="?q=stop-play" class="btn btn-danger">stop</a>
-					<a href="?q=prev-track" class="btn btn-primary">prev track</a>
-					<a href="?q=next-track" class="btn btn-primary">next track</a>
+					<iframe type="text/html" id="iframe-player" width="640" height="385" src="" frameborder="1"></iframe>
+					
+					<video id="player1" width="640" height="385" controls="controls">
+						<source src=""/>
+						Tag <b>video</b> not supported by this browser.... 
+					</video>
+					<div id="player-buttons">
+	<!--
+						<span id="video1-current">00:00</span>
+						<span id="video1-duration">00:00</span>
+						
+						<button id="btn-play" class="btn btn-primary">play</button>
+						<button id="btn-pause" class="btn btn-info">pause</button>
+						<a href="?q=stop-play" class="btn btn-danger">stop</a>
+						
+						<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+						<a href="?q=next-track" class="btn btn-primary">next track</a>
+	-->
+						<ul class="list-inline">
+							<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
+							<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
+						</ul>
+					</div>
 				</div>
-			</div>
 
 
-
+<div id="block-playlist"></div>
 			</div><!-- end collapse-player -->
+			
 		</div>
 		
 		<div id="collapse-tags" class="panel-collapse collapse">
@@ -144,16 +146,17 @@
 		<div class="col-xs-12 col-sm-10 col-md-9 col-lg-8" id="main">
 			
 			<div class="panel block" id="pager">
-				<div class="panel-body">
+
+				<div class="panel-body clearfix">
+					<div class="pull-left"><h3>Navigation</h3></div>					
+					<div class="pull-right">
 <small>					
 total records: <b><span id="total-records"></span></b>, 
 number of pages: <b><span id="total-pages"></span></b>
 </small>
-						<div class="block-num-page clearfix">
-							<div class="pull-left">
-									<b>Page №:</b>
-							</div>
-							<div class="pull-right">
+						<div class="block-num-page">
+							<div class="row">
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
 <button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
 <input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
 <button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
@@ -164,7 +167,10 @@ number of pages: <b><span id="total-pages"></span></b>
 							</div>
 -->
 						</div>		
-
+					</div>
+				</div>
+				
+				<div class="panel-body">
 						<div class="">
 <input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
 						</div>

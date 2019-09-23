@@ -1,6 +1,7 @@
 #block-playlist {
 position: fixed;
 left: 0;
+top: 100px;
 width: 25%;	
 }
 @media screen and (max-width:1280px) 
@@ -24,6 +25,36 @@ width: 25%;
 	}
 */
 }
+
+#block-playlist ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#block-playlist .list-inline > li{
+padding-right:0;
+padding-left: 2px;
+margin-bottom: 2px;
+}
+
+.pls-buttons{
+padding-bottom:0;
+}
+
+#playlist .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+background-color: #004586;
+}
+#playlist li.active a.track-name{
+color:#fff;
+}
+
+/*
+#playlist li > input {
+margin-right: 5px;
+}
+*/
+
+
 
 
 #collapse-player .wrapper{

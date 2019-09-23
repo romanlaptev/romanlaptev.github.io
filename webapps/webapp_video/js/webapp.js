@@ -46,9 +46,10 @@ var webApp = {
 		
 		"playlist" : {
 			tracks:[
-{title:"test MP4", artist:"test artist", src: "../../test_code/js/test_media/video/video.mp4"},
-{title:"test WEBM", artist:"test artist", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
-{title:"Anda Jaleo Jaleo", artist:"unknown", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
+{title:"test MP4", src: "../../test_code/js/test_media/video/video.mp4"},
+{title:"test WEBM", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
+{title:"test OGV", src: "../../test_code/js/test_media/video/small.ogv"}//,
+//{title:"Anda Jaleo Jaleo", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
 			],
 			lastNum:0
 		},
@@ -80,6 +81,11 @@ http://rutube.ru/play/embed/
 						this.content = html;
 						_draw_buildBlock( this );
 					}
+					
+					if( webApp.vars["playlist"]["tracks"].length > 0 ){
+						_draw_setActiveTrack(0);
+					}
+
 				}
 			},//end block
 			
@@ -176,7 +182,11 @@ _db_getBlockContent(){
 		],
 		
 		"templates_url" : "tpl/templates.xml",
-		"templates" : {},
+		"templates" : {
+			"localVideoBtn" : "create link",
+			"embedVideoBtn" : "open video in new tab",
+			"localVideoBtnUpdated" : "<a href='{{url}}' class='btn btn-primary' target='_blank'>open local video file in new tab</a>"
+		},
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
@@ -196,8 +206,8 @@ console.log("init webapp!");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
-		//this.vars["player"] = func.getById("player1");
-		this.vars["player"] = func.getById("iframe-player");
+		this.vars["player"] = func.getById("player1");
+		this.vars["iframePlayer"] = func.getById("iframe-player");
 		
 		_loadTemplates(function(){
 //console.log("Load templates end...", webApp.vars["templates"] );		
@@ -231,6 +241,11 @@ function _runApp(){
 		//$("#load-progress").hide();
 	}
 
+//------------------ LOAD first video to player
+	var url = "?q=load-track&num=0";
+	webApp.vars["GET"] = func.parseGetParams( url ); 
+	_urlManager();
+//------------------
 
 	_loadData(function(res){
 //console.log(arguments);
@@ -331,7 +346,7 @@ function defineEvents(){
 	$("#btn-toggle-log").on("click", function(event){
 //console.log("click...", e);			
 		event = event || window.event;
-		var target = event.target || event.srcElement;
+		//var target = event.target || event.srcElement;
 		if (event.preventDefault) { 
 			event.preventDefault();
 		} else {
@@ -349,12 +364,13 @@ function defineEvents(){
 	
 //------------------------------------------------------------------
 	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
+	//$("#list-video, #block-taglist, #block-search, #block-playlist").on("click", function(event){
 //console.log("click...", event);
 		event = event || window.event;
 		var target = event.target || event.srcElement;
 		
 		if( target.tagName === "A"){
-			_listVideoClick(target, event);
+			_actionClick(target, event);
 		}
 		
 //console.log( target.form, target.form.name );
@@ -362,45 +378,78 @@ function defineEvents(){
 		if( target.form && 
 				target.form.name === "form_local_url" && 
 					target.tagName === "BUTTON"){
-			if($(target).data("type") === "local-file"){
-//console.log("click...", $(target).data() );
-//console.log( target.form.elements.filepath );
-//console.log( $(target.form).find(".form-local-url") );
 
-				//$(target.form).find(".form-local-url").removeClass("hidden");
-				
-				target.form.elements.filepath.value += target.value;
-				target.form.elements.local_link.innerHTML ="...";				
-			} else {
-//console.log(target.value);				
-				window.open( target.value );
+			if( target.name === "video_link"){
+				if( $(target).data("type") === "local-file" ){
+	//console.log("click...", $(target).data() );
+	//console.log( target.form.elements.filepath );
+	//console.log( $(target.form).find(".form-local-url") );
+
+					//$(target.form).find(".form-local-url").removeClass("hidden");
+
+					var filePath = target.form.elements.filepath.value;
+					if( filePath.length === 0){
+webApp.vars["logMsg"] = "local video <b>file path</b> must be define.....";
+func.logAlert( webApp.vars["logMsg"], "warning");
+						return false;
+					} else {
+						target.form.elements.filepath.value += target.value;
+						
+						var url = target.form.elements.filepath.value;
+						target.form.elements.filepath.value = "";
+						
+						//update button
+						target.outerHTML = webApp.vars["templates"]["localVideoBtnUpdated"].replace("{{url}}", url);
+					}
+
+				} else {
+	//console.log(target.value);				
+					window.open( target.value );
+				}
 			}
+			
+			if( target.name === "add_pls"){
+				if( $(target).data("type") === "local-file" ){
+					var filePath = target.form.elements.filepath.value;
+					if( filePath.length === 0){
+webApp.vars["logMsg"] = "local video <b>file path</b> must be define.....";
+func.logAlert( webApp.vars["logMsg"], "warning");
+						return false;
+					} else {
+						target.value = filePath + target.value;
+					}
+				}
+//console.log( target.name, target.value );
+				_player_addTrack( target );
+			}
+			
 		}
 		
 	});//end event
 
 //------------------------------------------------------------------
-	$("#list-video").on("submit", function(event){
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-//console.log("submit form ", $(target).attr("name") );
+
+	//$("#list-video").on("submit", function(event){
+		//event = event || window.event;
+		//var target = event.target || event.srcElement;
+////console.log("submit form ", $(target).attr("name") );
 		
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;
-		}
+		//if (event.preventDefault) { 
+			//event.preventDefault();
+		//} else {
+			//event.returnValue = false;
+		//}
 		
-		if( $(target).attr("name") === "form_local_url"){
-//console.log(target.elements.btn_replace.outerHTML);
-			var url = target.elements.filepath.value;
-			//target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
-			//window.open( url );
-			target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local media file in new tab</a>";
-			target.elements.filepath.value = "";
-		}
+		//if( $(target).attr("name") === "form_local_url"){
+////console.log(target.elements.btn_replace.outerHTML);
+			//var url = target.elements.filepath.value;
+			////target.elements.local_link.outerHTML = "<a href='"+url+"' target='_blank'>open in new tab</a>"
+			////window.open( url );
+			//target.elements.local_link.innerHTML ="<a href='"+url+"' target='_blank'>open local video file in new tab</a>";
+			//target.elements.filepath.value = "";
+		//}
 		
-	});//end event
+	//});//end event
 
 	//$("#list-video").on("reset", function(event){
 //console.log("reset...", event);
@@ -619,16 +668,22 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		////webApp.vars["player"].pause();
 	//});//end event
 	
-	//var player = func.getById("player1");
-	//player.addEventListener('ended',function(e){
+	if( webApp.vars["player"].nodeName === "VIDEO"){
+		
+		webApp.vars["player"].addEventListener('ended',function(e){
 //console.log(e);
-	//},false);//end event
-	//$("#player1").on("ended", function(e){
-//console.log(e);
-	//});//end event
+			var url = "?q=next-track&autoplay=TRUE";
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		},false);//end event
+		
+		//$("#player1").on("ended", function(e){
+	//console.log(e);
+		//});//end event
+	}
 	    
 
-	function _listVideoClick(target, event){
+	function _actionClick(target, event){
 		var actionLink = true;
 		if( $(target).hasClass("toggle-btn") ){
 //console.log(target.href);
@@ -697,10 +752,10 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				event.returnValue = false;				
 			}
 			webApp.vars["GET"] = func.parseGetParams( target.href );
-			_urlManager();
+			_urlManager( target );
 		}
 
-	}//end _listVideoClick()
+	}//end _actionClick()
 	
 }//end defineEvents()
 
@@ -839,7 +894,7 @@ console.log("Warning! not found tag text value...");
 //console.log(data);
 
 						if( !data || data.length ===0){
-webApp.vars["logMsg"] = "not found records by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
+webApp.vars["logMsg"] = "no records found by keyword <b>"+ webApp.vars["GET"]["keyword"] + "</b>...";
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( "-- " + webApp.vars["logMsg"] );
 							return false;
@@ -855,68 +910,199 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 
 
-//-------------------------------------------- PLAYER
-			case "play-track":
-				var num = webApp.vars["GET"]["num"];
-				var track = webApp.vars["playlist"]["tracks"][num];
+//-------------------------------------------- PLAYLIST
+			case "load-track":
+//console.log(target, $(target).parent() );
+//for test
+//webApp.vars["GET"]["num"] = "first num";
 
+				var num = parseInt(webApp.vars["GET"]["num"]);
+//console.log(num, typeof num, isNaN(num) );
+				if( isNaN(num) ){
+					webApp.vars["logMsg"] = "not found track by num: "+ webApp.vars["GET"]["num"];
+console.log( "-- " + webApp.vars["logMsg"] );
+					return false;
+				}
+				var track = webApp.vars["playlist"]["tracks"][num];
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
+				
 				var videoSrc = track["src"];
-				$(webApp.vars["player"]).attr("src", videoSrc);
+				
+				if( track["dataType"] === "embed-video" ){
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
+					$(webApp.vars["player"]).attr("src", videoSrc);
+					$(webApp.vars["player"]).show();
+				}
+				
 				webApp.vars["playlist"]["lastNum"] = num;
 				
-				var track_info = track["title"] +", "+ track["artist"];
+				var track_info = track["title"];
 				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
 			break;
-
+/*
 			case "stop-play":
 				//webApp.vars["player"].stop();
 				$(webApp.vars["player"]).attr("src","");
 				$("#track-info").text("");
 			break;
-			
+*/			
 			case "prev-track":
-				webApp.vars["playlist"]["lastNum"]--;
-				if( webApp.vars["playlist"]["lastNum"] >= 0){
-					
-					var num = webApp.vars["playlist"]["lastNum"];
-		//console.log( num, webApp.vars["playlist"]["lastNum"]);
-					var track = webApp.vars["playlist"]["tracks"][num];
-					var videoSrc = track["src"];
-					$(webApp.vars["player"]).attr("src", videoSrc);
-		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
-//$("#player1").attr("src", videoSrc);
-		
-					var track_info = track["title"] +", "+ track["artist"];
-					$("#track-info").text(track_info);
-
-				} else {
-					$(webApp.vars["player"]).attr("src","");
-					webApp.vars["playlist"]["lastNum"] = 0;
-					$("#track-info").text("");
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				
+				if( webApp.vars["playlist"]["lastNum"] > 0){
+					webApp.vars["playlist"]["lastNum"]--;
 				}
+				
+				var num = webApp.vars["playlist"]["lastNum"];
+//console.log( num );
+				var track = webApp.vars["playlist"]["tracks"][num];
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
+				var videoSrc = track["src"];
+				
+				if( track["dataType"] === "embed-video" ){
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
+					$(webApp.vars["player"]).attr("src", videoSrc);
+					$(webApp.vars["player"]).show();
+				}
+	//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+//$("#player1").attr("src", videoSrc);
+	
+				var track_info = track["title"];
+				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
+				
 			break;
 			
 			case "next-track":
-				webApp.vars["playlist"]["lastNum"]++;
-				if( webApp.vars["playlist"]["lastNum"] < webApp.vars["playlist"]["tracks"].length){
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				
+				var autoplay = false;
+				
+				if( webApp.vars["playlist"]["lastNum"] < (webApp.vars["playlist"]["tracks"].length - 1) ){
 					
-					var num = webApp.vars["playlist"]["lastNum"];
-					var track = webApp.vars["playlist"]["tracks"][num];
-					var videoSrc = track["src"];
+					webApp.vars["playlist"]["lastNum"]++;
+					
+					if( webApp.vars["GET"]["autoplay"] === "TRUE"){
+						autoplay = true;
+					}
+				}
+				
+				var num = webApp.vars["playlist"]["lastNum"];
+//console.log( num );
+
+				var track = webApp.vars["playlist"]["tracks"][num];
+				if(!track){
+console.log( "-- no track!!!!");
+					return false;
+				}				
+				var videoSrc = track["src"];
+				if( track["dataType"] === "embed-video" ){
+					autoplay = false;
+					$(webApp.vars["player"]).hide();
+					$(webApp.vars["iframePlayer"]).attr("src", videoSrc);
+					$(webApp.vars["iframePlayer"]).show();
+				} else {
+					$(webApp.vars["iframePlayer"]).hide();
 					$(webApp.vars["player"]).attr("src", videoSrc);
-		//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
+					$(webApp.vars["player"]).show();
+				}
+//console.log( num, webApp.vars["playlist"]["tracks"][num]["title"]);
 //console.log( webApp.vars["player"].contentDocument.body.getElementsByTagName("video").item(0) );
 //$("#player1").attr("src", videoSrc);
-		
-					var track_info = track["title"] +", "+ track["artist"];
-					$("#track-info").text(track_info);
-
-				} else {
-					$(webApp.vars["player"]).attr("src","");
-					webApp.vars["playlist"]["lastNum"] = webApp.vars["playlist"]["tracks"].length;
-					$("#track-info").text("");
+	
+				var track_info = track["title"];
+				$("#track-info").text(track_info);
+				_draw_setActiveTrack(num);
+				
+				if( autoplay ){
+					webApp.vars["player"].play();
 				}
+				
 			break;
+			
+			case "clear-playlist":
+				webApp.vars["playlist"]["tracks"] = [];
+				webApp.vars["playlist"]["lastNum"] = 0;
+				
+				$(webApp.vars["iframePlayer"]).attr("src", "");
+				$(webApp.vars["player"]).attr("src", "");
+				$("#track-info").text("");
+				
+				//reload block-playlist
+				_draw_buildBlock({
+					"locationID" : "block-playlist",
+					"title" : "Playlist", 
+					"templateID" : "tpl-block-playlist",
+					"content" : ""
+				});				
+				
+			break;
+
+			//case "check-all":
+				//_draw_checkAll();
+			//break;
+			
+			//case "clear-all":
+				//_draw_clearAll();
+			//break;
+			
+			case "remove-track":
+				var num = parseInt( webApp.vars["GET"]["num"] );
+//console.log(num, typeof num, isNaN(num) );
+				if( isNaN(num) ){
+					webApp.vars["logMsg"] = "not found track by num: "+ webApp.vars["GET"]["num"];
+console.log( "-- " + webApp.vars["logMsg"] );
+					return false;
+				}
+				//delete webApp.vars["playlist"]["tracks"][0];
+				webApp.vars["playlist"]["tracks"].splice(num, 1);
+//console.log(webApp.vars["playlist"]);
+
+				webApp.vars["playlist"]["lastNum"] = 0;
+				
+				if( webApp.vars["playlist"]["tracks"].length > 0){
+//------------------ LOAD first video to player
+					var url = "?q=load-track&num=0";
+					webApp.vars["GET"] = func.parseGetParams( url ); 
+					_urlManager();
+//------------------
+					//refresh block-playlist
+					var _block = webApp.vars["blocks"][0];
+					_block["buildBlock"]();
+				} else {
+					webApp.vars["playlist"]["tracks"] = [];
+					$(webApp.vars["iframePlayer"]).attr("src", "");
+					$(webApp.vars["player"]).attr("src", "");
+					$("#track-info").text("");
+					
+					//reload block-playlist
+					_draw_buildBlock({
+						"locationID" : "block-playlist",
+						"title" : "Playlist", 
+						"templateID" : "tpl-block-playlist",
+						"content" : ""
+					});				
+				}
+
+			break;
+			
 //--------------------------------------------
 
 			default:
@@ -1638,13 +1824,15 @@ console.log( webApp.vars["logMsg"] );
 		data.push( JSON.parse( jsonNode) );
 	}//next
 */	
-//console.log(data);
 
 //for test
 //var num = webApp.vars["DB"]["nodes"].length-1;
 //data[1] =  webApp.vars["DB"]["nodes"][num];
 
 	_data_setTemplate(data);//define unique template for item
+	_data_defineBtnText(data);// define button text {{btn_text}} for item video files
+	
+//console.log(data);
 
 	if( typeof p["callback"] === "function"){
 		p["callback"](data);
@@ -1883,6 +2071,25 @@ function _data_setTemplate(data){
 	}//next
 	
 }//_data_setTemplate()
+
+
+// add {{btn_text}}
+function _data_defineBtnText(data){
+	for(var n = 0; n < data.length; n++){
+		if( data[n]["ul"] ){
+			for( var n1 = 0; n1 < data[n]["ul"].length; n1++){
+				var item = data[n]["ul"][n1];
+				if( item["data-type"] === "local-file"){
+					item["btn_text"] = webApp.vars["templates"]["localVideoBtn"];//"create link";
+				} else {
+					item["btn_text"] = webApp.vars["templates"]["embedVideoBtn"];//"open video in new tab";
+				}
+			//console.log(item);
+			}//next
+		}
+	}//next
+}//_data_defineBtnText()
+
 
 
 //============================================== DRAW
@@ -2246,3 +2453,34 @@ console.log( webApp.vars["logMsg"] );
 		
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
+
+	function _draw_setActiveTrack( activeNum ){
+//console.log(activeNum);	
+		var activeItem = false;
+		$("#playlist li").each(function(num, value){
+//console.log(num)
+			$(this).removeClass("active");
+//console.log(num, activeNum, typeof activeNum, num === activeNum);
+			if( num === activeNum){
+				activeItem = value;//this...
+			}
+		});//end each
+		
+		if( activeItem ){
+			$(activeItem).addClass("active");
+		}
+	}//end _draw_setActiveTrack()
+/*
+	function _draw_checkAll(){
+		$("#playlist li input[type=checkbox]").each(function(num, item){
+//console.log(num, item);
+			$(item).prop("checked", true);
+		});//end each
+	}//end _draw_checkAll()
+
+	function _draw_clearAll(){
+		$("#playlist li input[type=checkbox]").each(function(num, item){
+			$(item).prop("checked", false);
+		});//end each
+	}//end _draw_clearAll()
+*/
