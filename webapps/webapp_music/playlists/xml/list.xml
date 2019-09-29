@@ -12,6 +12,11 @@
 			<location>/music/0_playlists/Therion.json</location>
 			<thumbnail url="/music/T/Therion/Therion.jpg" />
 		</playlist>
+
+		<playlist created="29-Sep-2019" title="Nightwish" class="">
+			<location>/music/0_playlists/Nightwish.json</location>
+			<thumbnail url="/music/N/Nightwish/Picture/n_cover.jpg" />
+		</playlist>
 	
 		<playlist created="11-March-2017" title="Russian rock" keyword="russian_rock">
 			<description>test description</description>
