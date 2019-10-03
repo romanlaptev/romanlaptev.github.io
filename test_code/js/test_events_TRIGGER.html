@@ -8,9 +8,59 @@
 	<title>test JS: events</title>
 </head>
 
+<style>
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+
+<script src="lib/shared_functions.js"></script>
+<script>
+var func = sharedFunc();
+console.log(func);
+
+var logMsg;
+
+window.onload = function(){
+	logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
+	func.log(logMsg);
+}//end load
+	
+</script>
+
 <script>
 $(document).ready(function(e){
 //console.log("ready...", e);
+
+	$("#input1").on("myEvent", function(e, p1, p2){
+		logMsg = "<p class='alert alert-info'>myEvent</p>";
+		func.log(logMsg);
+console.log(p1, p2);	
+	});//end event
+
+	$("#btn1").on("click",function(e){
+console.log(e);
+		$("#input1").trigger("myEvent", [1, 2]);
+	});//end event
+	
 });
 </script>
 
@@ -20,6 +70,15 @@ $(document).ready(function(e){
 	<div class="page-header">
 		<h1>test JS: events</h1>
 	</div>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
 
 <pre>
 https://learn.javascript.ru/dispatch-events
@@ -46,20 +105,11 @@ obj.$input.trigger("set-kodif", obj);
 </pre>
 
 <button id="btn1" class="btn btn-primary">call my event</button>
-<input id="input1" type="text" class="form-control" value="" placeholder="type text here....">
+<input id="input1" type="text" class="form-control" value="">
 		</div>
 	</div><!-- end panel -->
 
 </div><!-- end container -->
 </body>
-
-<script>
-
-var btn1 = document.querySelector("#btn1");
-btn1.onclick = function(e){
-console.log(e);
-};//end event()
-
-</script>
 
 </html>
