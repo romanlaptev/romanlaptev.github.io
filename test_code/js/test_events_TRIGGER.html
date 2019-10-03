@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: events</title>
+</head>
+
+<script>
+$(document).ready(function(e){
+//console.log("ready...", e);
+});
+</script>
+
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: events</h1>
+	</div>
+
+<pre>
+https://learn.javascript.ru/dispatch-events
+Генерация пользовательских событий
+</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>on()......trigger()</h2>
+		</div>
+		<div class="panel-body">
+		
+<pre>
+https://ruseller.com/jquery?id=130
+
+http://jquery.page2page.ru/index.php5/%D0%92%D1%8B%D0%B7%D0%BE%D0%B2_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F
+Вызов_события
+
+obj.$input.trigger("set-kodif", obj);
+......
+        _cf.$flds.parkapejs["prot-pers_status_kod"].on("set-kodif",function(e,objKodif){
+....
+        });
+</pre>
+
+<button id="btn1" class="btn btn-primary">call my event</button>
+<input id="input1" type="text" class="form-control" value="" placeholder="type text here....">
+		</div>
+	</div><!-- end panel -->
+
+</div><!-- end container -->
+</body>
+
+<script>
+
+var btn1 = document.querySelector("#btn1");
+btn1.onclick = function(e){
+console.log(e);
+};//end event()
+
+</script>
+
+</html>
