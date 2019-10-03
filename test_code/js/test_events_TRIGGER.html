@@ -40,8 +40,33 @@ console.log(func);
 var logMsg;
 
 window.onload = function(){
-	logMsg = "<p class='alert alert-info'>"+window.navigator.userAgent+"</p>";
-	func.log(logMsg);
+	func.logAlert( window.navigator.userAgent , "danger");
+	
+	var btnClear = func.getById("btn-clear-log");
+	btnClear.onclick = function(e){
+//console.log(e);
+		log.innerHTML = "";
+		e.preventDefault();
+		
+	}//end event
+	
+	//register user event
+	var h1 = document.querySelector("#header1");
+	h1.addEventListener("hello", function(event) {
+		func.logAlert( "<b>run event 'hello' </b>", "info" );
+		h1.innerHTML = event.detail;
+	});
+
+	var btn2 = func.getById("btn2");
+	btn2.onclick = function(e){
+//console.log(e);
+
+		//run event
+		//var event = new Event("hello", {bubbles: true}); 
+		var event = new CustomEvent("hello", {bubbles: true, detail: "Hello everbody!!!"}); 
+		h1.dispatchEvent( event );
+	}//end event
+
 }//end load
 	
 </script>
@@ -51,8 +76,7 @@ $(document).ready(function(e){
 //console.log("ready...", e);
 
 	$("#input1").on("myEvent", function(e, p1, p2){
-		logMsg = "<p class='alert alert-info'>myEvent</p>";
-		func.log(logMsg);
+		func.logAlert( "<b>run event 'myEvent'</b>", "info" );
 console.log(p1, p2);	
 	});//end event
 
@@ -90,6 +114,8 @@ https://learn.javascript.ru/dispatch-events
 			<h2>on()......trigger()</h2>
 		</div>
 		<div class="panel-body">
+<button id="btn1" class="btn btn-primary">call event "myEvent"</button>
+<input id="input1" type="text" class="form-control" value="">
 		
 <pre>
 https://ruseller.com/jquery?id=130
@@ -104,8 +130,46 @@ obj.$input.trigger("set-kodif", obj);
         });
 </pre>
 
-<button id="btn1" class="btn btn-primary">call my event</button>
-<input id="input1" type="text" class="form-control" value="">
+		</div>
+	</div><!-- end panel -->
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>addEventListener....dispatchEvent</h2>
+		</div>
+		<div class="panel-body">
+
+<button id="btn2" class="btn btn-primary">call event "hello"</button>
+<h1 id="header1">test element</h1>
+
+<pre>
+document.documentElement.addEventListener("click", function(e) {
+  console.log(e.type, e);
+})
+document.documentElement.addEventListener("magic", function(e) {
+  console.log(e.type, e);
+})
+
+var event = new Event("click", {bubbles : true, cancelable : true})
+var customEvent = new CustomEvent("magic", {bubbles : true, cancelable : true, detail : "<any string data>"})
+
+document.documentElement.dispatchEvent(event);
+document.documentElement.dispatchEvent(customEvent);
+
+---------
+
+  // дополнительная информация приходит в обработчик вместе с событием
+  elem.addEventListener("hello", function(event) {
+    alert(event.detail.name);
+  });
+
+  elem.dispatchEvent(new CustomEvent("hello", {
+    detail: { name: "Вася" }
+  }));
+  
+</pre>
+
 		</div>
 	</div><!-- end panel -->
 
