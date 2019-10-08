@@ -15,6 +15,7 @@
 <body>
 
 <header class="bar bar-nav">
+<!--
 		<button class="btn pull-left">Left</button>
 		<button class="btn pull-right">	Right</button>
 		<div class="segmented-control">
@@ -22,13 +23,33 @@
 			<a class="control-item">Two</a>
 			<a class="control-item">Three</a>
 		</div>	
+-->		
+		<span class="icon icon-bars pull-left"></span>
 		<h1 class="title">Test map API</h1>
 </header>
 
-<div class="content">
+<div class="content container" id="appContainer">
 	
-	<button class="btn btn-positive">Define GPS coordinates</button>
-	<button class="btn btn-primary">Show map</button>
+	<div class="card block-centered">
+
+		<div class="pull-left col-1">
+			<div class="geo-title"><b>GPS coordinates:</b></div>
+			<div id="gpscoords" class="geo-accuracy-inaccurate"></div>
+			<div class="geo-accuracy-value geo-accuracy-inaccurate" id="gpsaccuracy">
+				<b>accuracy: <span id="gpsacc">100</span>(m)</b>
+			</div>
+			<div id="adrtextname" class="geo-title"><b>Address:</b></div>
+			<div id="adrtext"></div>
+		</div>		
+
+		<div class="pull-left col-2">
+			<ul class="table-view">
+				<li class=""><button class="btn btn-block green">Get GPS coordinates</button></li>
+				<li class=""><button class="btn btn-block blue">Show map</button></li>
+			</ul>
+		</div>
+		
+	</div>
 
 </div><!-- end content -->
 
