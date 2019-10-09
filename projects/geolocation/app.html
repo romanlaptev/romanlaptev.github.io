@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/custom.css">
 	
 	<script src="js/functions.js"></script>
+	<script src="js/app.js"></script>
 	<script src="js/main.js"></script>
 	
 </head>
@@ -40,12 +41,13 @@
 			</div>	
 	-->		
 			<span class="icon icon-bars pull-left"></span>
-			<h1 class="title">Test map API</h1>
+			<h1>Test map API</h1>
 	</header>
 	
-	<div class="card block-centered">
+	<div class="card panel">
 
 		<div class="pull-left col-1">
+<div class="control-content">			
 			<div class="geo-title"><b>GPS coordinates:</b></div>
 			<div id="gpscoords" class="geo-accuracy-inaccurate"></div>
 			<div class="geo-accuracy-value geo-accuracy-inaccurate" id="gpsaccuracy">
@@ -53,11 +55,12 @@
 			</div>
 			<div id="adrtextname" class="geo-title"><b>Address:</b></div>
 			<div id="adrtext"></div>
+</div>			
 		</div>		
 
-		<div class="pull-left col-2">
+		<div class="pull-right col-2">
 			<ul class="table-view">
-				<li class=""><button class="btn btn-block green">Get GPS coordinates</button></li>
+				<li class=""><button id="get_coords" class="btn btn-block green">Get GPS coordinates</button></li>
 				<li class=""><button class="btn btn-block blue">Show map</button></li>
 			</ul>
 		</div>

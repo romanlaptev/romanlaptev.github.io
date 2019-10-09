@@ -11,13 +11,6 @@
 	width:40%;
 }
 
-.block-centered {
-	min-width: 240px;
-	max-width: 600px;
-	margin: 15px auto;
-}
-
-
 
 #appContainer{
 	width: 100%;
@@ -40,9 +33,26 @@
 #appHeader{
 position: static;
 /* width: 100%; */
-padding: 0;
+padding: 5px 10px 5px 10px;
 }
 
+#appContainer .icon {
+	padding-top: 5px;
+}
+
+#appContainer h1 {
+	font-size: 30px;
+	font-weight: 500;
+	/* line-height: 44px; */
+	color: #000;
+	text-align: right;
+	white-space: nowrap;
+}
+
+#appContainer .panel {
+	margin: 15px;
+	padding: 15px;
+}
 
 .boxShadow {
 	box-shadow: 0 1px 10px rgba(0,0,0,0.25);
