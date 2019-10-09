@@ -19,8 +19,35 @@
 
 
 
+#appContainer{
+	width: 100%;
+	min-width: 750px;
+	max-width: 990px;
+	/* padding-right: 15px; */
+	/* padding-left: 15px; */
+	margin-right: auto;
+	margin-left: auto;
+	
+	box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+	-webkit-box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+	-moz-box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+}
+
 #appContainer .btn {
 	color: #fff;
+}
+
+#appHeader{
+position: static;
+/* width: 100%; */
+padding: 0;
+}
+
+
+.boxShadow {
+	box-shadow: 0 1px 10px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0 1px 10px rgba(0,0,0,0.25);
 }
 
 .btn-block {
