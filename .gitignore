@@ -1,7 +1,6 @@
 *.*~
 projects/geolocation
 projects/bookmarks/bookmarks-cache
-
 projects/notes/.idea
 projects/notes/upload/notes.xml
 graphic-art-collection/cms
@@ -13,7 +12,6 @@ music/cms
 music/player
 lib/cms
 _export_lib.xml
-
 book_history_engraving/ci
 book_history_engraving/cms
 #book_history_engraving/export
