@@ -1,5 +1,5 @@
 *.*~
-projects/geolocation
+projects/geolocation/*.*
 projects/bookmarks/bookmarks-cache
 
 projects/notes/.idea
