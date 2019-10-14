@@ -8,6 +8,11 @@
 	<title>playlists</title>
 	<xdata>
 
+		<playlist created="13-Oct-2019" title="Manowar" class="">
+			<location>/music/0_playlists/Manowar.json</location>
+			<thumbnail url="/music/M/Manowar/image/Manowar88.jpg" />
+		</playlist>
+		
 		<playlist created="01-Sep-2019" title="Therion" class="">
 			<location>/music/0_playlists/Therion.json</location>
 			<thumbnail url="/music/T/Therion/Therion.jpg" />
