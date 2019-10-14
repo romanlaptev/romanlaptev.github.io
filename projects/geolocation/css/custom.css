@@ -1,0 +1,143 @@
+﻿.container {
+	height: 100%;
+	background-color: #F4F6F9;
+}
+
+.col-1{
+	width:50%;
+}
+
+.col-2{
+	width:40%;
+}
+
+
+#appContainer{
+	width: 100%;
+	min-width: 750px;
+	max-width: 990px;
+	/* padding-right: 15px; */
+	/* padding-left: 15px; */
+	margin-right: auto;
+	margin-left: auto;
+	
+	box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+	-webkit-box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+	-moz-box-shadow: -1px 0 25px rgba(0,0,0,0.5);
+}
+
+#appContainer .btn {
+	color: #fff;
+}
+
+#appHeader{
+position: static;
+/* width: 100%; */
+padding: 5px 10px 5px 10px;
+}
+
+#appContainer .icon {
+	padding-top: 5px;
+}
+
+#appContainer h1 {
+	font-size: 30px;
+	font-weight: 500;
+	/* line-height: 44px; */
+	color: #000;
+	text-align: right;
+	white-space: nowrap;
+}
+
+#appContainer .panel {
+	margin: 15px;
+	padding: 15px;
+}
+
+.boxShadow {
+	box-shadow: 0 1px 10px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0 1px 10px rgba(0,0,0,0.25);
+}
+
+.btn-block {
+	margin-bottom: 2px;
+}
+
+.btn.blue {
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+}
+
+.btn.green {
+	background-color: #1bcb49;
+	background: -webkit-linear-gradient(#4fcb4f, #00b04e);
+	background: -o-linear-gradient(#4fcb4f, #00b04e);
+	background: -moz-linear-gradient(#4fcb4f, #00b04e);
+	background: linear-gradient(#4fcb4f, #00b04e);
+	border-color: #4fcb4f;
+}
+
+
+
+
+
+.log-panel {
+    margin-bottom: 0;
+    margin-top: 5px;
+background-color: #b0c4de;
+position: fixed;
+bottom: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+border-radius: 4px;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+.alert-info {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+.alert-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}

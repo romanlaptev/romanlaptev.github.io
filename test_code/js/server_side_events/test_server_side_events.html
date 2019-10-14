@@ -3,6 +3,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<style>
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+	
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script>
 	if( typeof window.jQuery !== "function")
@@ -37,36 +62,47 @@ alert( "onerror " + this.href);
 			head.appendChild( local_link );
 			
 			local_link.onload = function (){
-alert( "onload " + this.href);
+//alert( "onload " + this.href);
 			}		
 			
 		}		
 	</script>
 	
 	<script>
-if( typeof window.EventSource === "undefined"){
-	alert("No server-sent events support");
-	alert("window.EventSource = " + window.EventSource);
-} else {
-	alert("window.EventSource = " + window.EventSource);
-};
 		
 window.onload = function(){
+
+	var msg;
+	var log = document.querySelector("#log");
+	
+	if( typeof window.EventSource === "undefined"){
+		alert("No server-sent events support");
+		//alert("window.EventSource = " + window.EventSource);
+	} else {
+		console.log("window.EventSource = " + window.EventSource);
+			log.innerHTML += "window.EventSource supported....";
+	};
 
 	btn_sse.onclick = function(e){
 console.log(e);		
 		//var url = "http://172.16.1.194/www/test/test_code/js/server_side_events/demo_sse.aspx";
-		var url = "http://vbox1/php/demo_sse.php";
+		//var url = "http://vbox1/php/demo_sse.php";
+		var url = "demo_sse.php";
 console.log( url );
 	
 		var eventSource = new EventSource( url );
 		
 		eventSource.onopen = function(e) {
 console.log("server connection open! ", e);
+			msg = "<p class='alert alert-info'>server connection open!</p>";
+			log.innerHTML += msg;
 		};
 		
 		eventSource.onmessage = function(e) {
-console.log("server message: " + e.data);
+			msg = "server message: " + e.data;
+console.log(msg);
+			msg = "<p class='alert alert-info'>"+msg+"</p>";
+			log.innerHTML += msg;
 		};
 
 	};
@@ -78,6 +114,18 @@ console.log("server message: " + e.data);
 
 <body>
 <div class="container">
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+<!--			
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+-->				
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h2>test server side events</h2>
@@ -89,7 +137,7 @@ https://ru.wikipedia.org/wiki/Server-sent_events
 http://caniuse.com/#feat=eventsource
 http://www.w3schools.com/html/html5_serversentevents.asp
 </pre>
-		<button id="btn_sse" class="btn btn-primary">create connection</button>
+		<button id="btn_sse" class="btn btn-primary">create connection (demo_sse.php) </button>
 	</div>
 </div><!-- end container -->
 

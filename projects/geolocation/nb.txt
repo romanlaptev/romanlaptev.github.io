@@ -1,0 +1,42 @@
+приложение дл€ работы с API Geolocation
+
+-----------
+функции:
+- определение текущих координат GPS ( 
+	navigator.geolocation.watchPosition....
+	navigator.geolocation.getCurrentPosition() 
+)
+- вывод карты местоположени€ с помощью различных API ( 
+	API яндекс. арт (https://tech.yandex.ru)
+	googleMaps (https://www.google.com/maps/)
+	OpenStreetMaps (https://www.openstreetmap.org)
+	ArcGIS
+//var __arcgisurl = "https://js.arcgis.com/3.25/";
+//var __arcgiscss = "https://js.arcgis.com/3.25/esri/css/esri.css";
+
+	Yahoo map
+	Bing map
+)
+- измерение рассто€ни€ между заданными пунктами на карте
+- поиск по названию
+- ввод координат...
+------------
+
+http://htmlbook.ru/html5/geolocation
+
+https://developer.mozilla.org/ru/docs/Web/API/Geolocation/Using_geolocation
+»спользование геолокации
+
+https://tech.yandex.ru/maps/mapsapi/
+https://tech.yandex.ru/maps/jsapi/doc/2.1/dg/concepts/geolocation-docpage/
+ќпределение местоположени€ пользовател€
+
+https://habr.com/ru/post/110460/
+Google Maps API
+
+https://habr.com/ru/post/131249/
+ѕримеры работы с разными map API
+
+
+http://uralbash.ru/articles/2012/osm_example/
+ѕример карты OpenStreetMap на своем сайте

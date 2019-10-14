@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
+	<title>test JS: events</title>
+</head>
+
+<style>
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.log-panel .panel-body{
+    padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+</style>
+
+<script src="lib/shared_functions.js"></script>
+<script>
+var func = sharedFunc();
+console.log(func);
+
+var logMsg;
+
+window.onload = function(){
+	func.logAlert( window.navigator.userAgent , "danger");
+	
+	var btnClear = func.getById("btn-clear-log");
+	btnClear.onclick = function(e){
+//console.log(e);
+		log.innerHTML = "";
+		e.preventDefault();
+		
+	}//end event
+	
+	//register user event
+	var h1 = document.querySelector("#header1");
+	h1.addEventListener("hello", function(event) {
+		func.logAlert( "<b>run event 'hello' </b>", "info" );
+		h1.innerHTML = event.detail;
+	});
+
+	var btn2 = func.getById("btn2");
+	btn2.onclick = function(e){
+//console.log(e);
+
+		//run event
+		//var event = new Event("hello", {bubbles: true}); 
+		var event = new CustomEvent("hello", {bubbles: true, detail: "Hello everbody!!!"}); 
+		h1.dispatchEvent( event );
+	}//end event
+
+}//end load
+	
+</script>
+
+<script>
+$(document).ready(function(e){
+//console.log("ready...", e);
+
+	$("#input1").on("myEvent", function(e, p1, p2){
+		func.logAlert( "<b>run event 'myEvent'</b>", "info" );
+console.log(p1, p2);	
+	});//end event
+
+	$("#btn1").on("click",function(e){
+console.log(e);
+		$("#input1").trigger("myEvent", [1, 2]);
+	});//end event
+	
+});
+</script>
+
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: events</h1>
+	</div>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+<pre>
+https://learn.javascript.ru/dispatch-events
+Генерация пользовательских событий
+</pre>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>on()......trigger()</h2>
+		</div>
+		<div class="panel-body">
+<button id="btn1" class="btn btn-primary">call event "myEvent"</button>
+<input id="input1" type="text" class="form-control" value="">
+		
+<pre>
+https://ruseller.com/jquery?id=130
+
+http://jquery.page2page.ru/index.php5/%D0%92%D1%8B%D0%B7%D0%BE%D0%B2_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D1%8F
+Вызов_события
+
+obj.$input.trigger("set-kodif", obj);
+......
+        _cf.$flds.parkapejs["prot-pers_status_kod"].on("set-kodif",function(e,objKodif){
+....
+        });
+</pre>
+
+		</div>
+	</div><!-- end panel -->
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2>addEventListener....dispatchEvent</h2>
+		</div>
+		<div class="panel-body">
+
+<button id="btn2" class="btn btn-primary">call event "hello"</button>
+<h1 id="header1">test element</h1>
+
+<pre>
+document.documentElement.addEventListener("click", function(e) {
+  console.log(e.type, e);
+})
+document.documentElement.addEventListener("magic", function(e) {
+  console.log(e.type, e);
+})
+
+var event = new Event("click", {bubbles : true, cancelable : true})
+var customEvent = new CustomEvent("magic", {bubbles : true, cancelable : true, detail : "<any string data>"})
+
+document.documentElement.dispatchEvent(event);
+document.documentElement.dispatchEvent(customEvent);
+
+---------
+
+  // дополнительная информация приходит в обработчик вместе с событием
+  elem.addEventListener("hello", function(event) {
+    alert(event.detail.name);
+  });
+
+  elem.dispatchEvent(new CustomEvent("hello", {
+    detail: { name: "Вася" }
+  }));
+  
+</pre>
+
+		</div>
+	</div><!-- end panel -->
+
+</div><!-- end container -->
+</body>
+
+</html>

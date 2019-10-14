@@ -7,6 +7,9 @@
 	<title>Check file exists</title>
 	<script src="lib/shared_functions.js"></script>
 <script>
+var func = sharedFunc();
+console.log(func);
+
 window.onload = function(){
 	
 };//end window.load	
@@ -26,11 +29,10 @@ window.onload = function(){
 
 
 	<input id="request-url" name="" placeholder="" class="form-control" value="../../test.txt" autocomplete="off" type="text">
-	<pre>
-../../test.txt
-http://graphic-art-collection.16mb.com/fonts/loginov_svyatoslav_analitik.fb2.zip
-https://cloclo20.datacloudmail.ru/weblink/get/JSDm/zciANxB6p/lib/books/L/loginov_svyatoslav_analitik.fb2.zip
-	</pre>
+	<p>
+../../test.txt</br>
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/books/L/Loginov.Sv/loginov_svyatoslav_analitik.fb2.zip
+	</p>
 
 	<input id="request-method" name="" placeholder="" class="form-control" value="HEAD" autocomplete="off" type="text">
 	<pre>
@@ -47,11 +49,11 @@ HEAD, GET
 //var url = "../../test.txt";
 //test_exists_file( url, "HEAD" );
 
-var sendBtn = getById("send-btn");
+var sendBtn = func.getById("send-btn");
 sendBtn.onclick = function(e){
 //console.log(e);	
-	var url = getById("request-url").value;
-	var method = getById("request-method").value;
+	var url = func.getById("request-url").value;
+	var method = func.getById("request-method").value;
 	test_exists_file( url, method );
 };//end event
 
@@ -59,7 +61,7 @@ sendBtn.onclick = function(e){
 function test_exists_file(requestUrl, requestMethod){
 //console.log(requestUrl, requestMethod);
 
-	runAjax( {
+	func.runAjax( {
 		"requestMethod" : requestMethod,
 		"url" : requestUrl,
 		
@@ -85,15 +87,15 @@ logMsg += ", request method: " + requestMethod + "</p>";
 			if( data.length > 0){
 logMsg += "<pre>" + data + "</pre>";
 			}
-_log("<div class='alert alert-success'>" + logMsg + "</div>");
+func.log("<div class='alert alert-success'>" + logMsg + "</div>");
 console.log( logMsg );
 
 		},//end callback()
 		
 		"onLoadEnd" : function( headers ){
-//console.log( "onLoadEnd ", headers);
-var logMsg = "Headers: <pre>" + headers + "</pre>";
-_log("<div class='alert alert-info'>" + logMsg + "</div>");
+console.log( "onLoadEnd ", headers);
+var logMsg = "Headers: <pre>" + headers["all"] + "</pre>";
+func.log("<div class='alert alert-info'>" + logMsg + "</div>");
 console.log( logMsg );
 
 		},//end callback function
@@ -103,7 +105,7 @@ console.log( logMsg );
 	
 	function _onerror( xhr ){
 var logMsg = "error, not load " + requestUrl;
-_log("<div class='alert alert-danger'>" + logMsg + "</div>");
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
 console.log( logMsg );
 	}//end _onerror()
 
