@@ -636,6 +636,89 @@ console.log( logMsg );
 		}//end _runAjax()
 
 		
+		
+		
+		var _runAjaxCorrect = function( url, callback ){
+			
+			var xhr = new XMLHttpRequest();
+			
+			var timeStart = new Date();
+			
+			xhr.open("GET", url, true);
+			
+			xhr.onreadystatechange = function(){
+//console.log("state:", xhr.readyState);
+				if( xhr.readyState === 4){
+console.log("end request, state ", xhr.readystate, ", status: ", xhr.status);
+//console.log( "xhr.responseText: ", xhr.responseText );
+//console.log( "xhr.responseXML: ", xhr.responseXML );
+
+					if( xhr.status === 200){
+						//ajax_content.innerHTML += xhr.responseText;
+//console.log( xhr.responseText );
+
+						//if browser not define callback "onloadend"
+						var test = "onloadend" in xhr;
+						if( !test ){
+							_loadEnd();
+						}
+
+					}
+					
+					if( xhr.status !== 200){
+console.log("Ajax load error, url: " + xhr.responseURL);
+console.log("status: " + xhr.status);
+console.log("statusText:" + xhr.statusText);
+
+						//if browser not define callback "onloadend"
+						var test = "onloadend" in xhr;
+						if( !test ){
+							_loadEnd();
+						}
+						
+					}
+					
+				}
+			};
+			
+			if( "onerror" in xhr ){
+//console.log( "xhr.onerror = ", xhr.onerror  );
+				xhr.onerror = function(e){
+//console.log(arguments);
+console.log("event type:" + e.type);
+console.log("time: " + e.timeStamp);
+console.log("total: " + e.total);
+console.log("loaded: " + e.loaded);
+				}
+			};
+			
+			if( "onloadend" in xhr ){
+				xhr.onloadend = function(e){
+		//console.log(arguments);
+//console.log("event type:" + e.type);
+		// console.log("time: " + e.timeStamp);
+		// console.log("total: " + e.total);
+		// console.log("loaded: " + e.loaded);
+					_loadEnd();
+				}//end event callback
+			};
+			
+			function _loadEnd(){
+				var timeEnd = new Date();
+				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+				
+				if( typeof callback === "function"){
+					var data = xhr.responseText;
+					callback( data, runtime, xhr );
+				}
+			}//end _loadEnd()
+			
+			xhr.send();
+			
+		};//_runAjaxCorrect()
+		
+		
+		
 		function _timeStampToDateStr( timestamp, format ){
 
 			var sYear = timestamp.getFullYear();
@@ -970,7 +1053,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
+			
 			runAjax: _runAjax,
+			runAjaxCorrect: _runAjaxCorrect,
 			
 			timeStampToDateStr: _timeStampToDateStr,
 			getMonthByNameNum: _getMonthNameByNum,
