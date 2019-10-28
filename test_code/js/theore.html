@@ -63,17 +63,57 @@ console.log(obj1);
 <body>
 
 <header class="container">
-	<h1>Test JS: Object methods</h1>
+	<h1>Test JS</h1>
 </header>
 
 <div class="container">
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2>context</h2>
+			</div>
+			<div class="panel-body">
+<pre>
+https://youtu.be/M_pclb-58ZY?list=WL&t=4245
+
+const person = {
+	surname: "Ivanov",
+	fullname: function( name ){
+console.log( "Name:" + name + ", Surname: " + this.surname);	
+console.log( `Name: ${name} , Surname: ${this.surname}`);	//использование шаблона для строки в апострофах
+	}
+};
+
+person.fullname( name: "John");
+
+// вызов метода объекта person с контекстом объекта person2
+
+const person2 = {
+	surname: "Petrov"
+};
+
+person.fullname.call ( person2, "Peter"); 
+person.fullname.apply ( person2, ["Peter"]);
+
+const func = person.fullname.bind ( person2, "Peter"); 
+func();
+
+</pre>
+			</div>
+		</div>
+		
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2>Object methods</h2>
+			</div>
+			<div class="panel-body">
+			
 <pre>
 https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object
 Свойства конструктора Object
 </pre>		
-
-		<div class="panel panel-default">
-			<div class="panel-body">
+			
 <p>https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/create</p>
 <p>Метод <b>Object.create()</b> создаёт новый объект с указанными объектом прототипа и свойствами.</p>
 			</div>
