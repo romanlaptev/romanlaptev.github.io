@@ -8,6 +8,27 @@
 	<title>playlists</title>
 	<xdata>
 
+
+		<playlist created="03-Nov-2019" title="Vivaldi, Antonio Lucio" class="">
+			<location>/music/0_playlists/Vivaldi.json</location>
+			<thumbnail url="/music/V/Vivaldi/images/Vivaldi.jpg" />
+		</playlist>
+
+		<playlist created="03-Nov-2019" title="Mozart, Wolfgang Amadeus" class="">
+			<location>/music/0_playlists/Mozart.json</location>
+			<thumbnail url="/music/M/Mozart/images/Mozart.jpg" />
+		</playlist>
+
+		<playlist created="03-Nov-2019" title="Bach, Johann Sebastian" class="">
+			<location>/music/0_playlists/Bach.json</location>
+			<thumbnail url="/music/B/Bach/images/Johann_Sebastian_Bach.jpg" />
+		</playlist>
+
+		<playlist created="03-Nov-2019" title="Handel, George Frideric" class="">
+			<location>/music/0_playlists/Handel.json</location>
+			<thumbnail url="/music/H/Handel/images/handel.jpg" />
+		</playlist>
+		
 		<playlist created="27-Oct-2019" title="Judas Priest" class="">
 			<location>/music/0_playlists/judas_priest.json</location>
 			<thumbnail url="/music/J/Judas Priest/images/British Steel.jpg" />

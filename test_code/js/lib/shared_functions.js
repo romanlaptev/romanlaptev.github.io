@@ -1040,7 +1040,17 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}//end switch
 			
 		}//end _wrapLogMsg()
+		
 	
+		function _addEvent( element, eventName, func ) {
+			if ( element.addEventListener ) {
+				return element.addEventListener(eventName, func, false);
+			} else if ( element.attachEvent ) {
+				return element.attachEvent("on" + eventName, func);
+			}
+		};//end _addEvent()
+		
+			
 		// public interfaces
 		return{
 			getById: _getById,
@@ -1065,7 +1075,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 			convertXmlToObj: _convertXmlToObj,
 			
 			logAlert: _alert,
-			wrapLogMsg: _wrapLogMsg
+			wrapLogMsg: _wrapLogMsg,
+			addEvent: _addEvent
 			
 			//get_content: function( params ){ 
 				//return get_content( params ); 
