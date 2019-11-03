@@ -8,6 +8,12 @@
 	<title>playlists</title>
 	<xdata>
 
+
+		<playlist created="03-Nov-2019" title="Bach, Johann Sebastian" class="">
+			<location>/music/0_playlists/Bach.json</location>
+			<thumbnail url="/music/B/Bach/images/Johann_Sebastian_Bach.jpg" />
+		</playlist>
+
 		<playlist created="03-Nov-2019" title="Handel, George Frideric" class="">
 			<location>/music/0_playlists/Handel.json</location>
 			<thumbnail url="/music/H/Handel/images/handel.jpg" />
