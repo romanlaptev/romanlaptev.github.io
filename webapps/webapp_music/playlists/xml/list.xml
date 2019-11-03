@@ -8,6 +8,11 @@
 	<title>playlists</title>
 	<xdata>
 
+		<playlist created="03-Nov-2019" title="Handel, George Frideric" class="">
+			<location>/music/0_playlists/Handel.json</location>
+			<thumbnail url="/music/H/Handel/images/handel.jpg" />
+		</playlist>
+		
 		<playlist created="27-Oct-2019" title="Judas Priest" class="">
 			<location>/music/0_playlists/judas_priest.json</location>
 			<thumbnail url="/music/J/Judas Priest/images/British Steel.jpg" />
