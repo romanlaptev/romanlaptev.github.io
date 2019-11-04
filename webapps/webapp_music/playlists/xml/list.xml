@@ -32,6 +32,9 @@
 		<playlist created="27-Oct-2019" title="Judas Priest" class="">
 			<location>/music/0_playlists/judas_priest.json</location>
 			<thumbnail url="/music/J/Judas Priest/images/British Steel.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1017</li>
+			</related_links>
 		</playlist>
 		
 		<playlist created="13-Oct-2019" title="Manowar" class="">
@@ -42,11 +45,17 @@
 		<playlist created="01-Sep-2019" title="Therion" class="">
 			<location>/music/0_playlists/Therion.json</location>
 			<thumbnail url="/music/T/Therion/Therion.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1016</li>
+			</related_links>
 		</playlist>
 
 		<playlist created="29-Sep-2019" title="Nightwish" class="">
 			<location>/music/0_playlists/Nightwish.json</location>
 			<thumbnail url="/music/N/Nightwish/Picture/n_cover.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1015</li>
+			</related_links>
 		</playlist>
 	
 		<playlist created="11-March-2017" title="Russian rock" keyword="russian_rock">

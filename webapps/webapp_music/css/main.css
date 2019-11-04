@@ -1,5 +1,5 @@
 body{
-background: #074e68;
+background:#055c80;/* #074e68;*/
 padding-top: 10px;
 }
 
@@ -37,10 +37,12 @@ top: 80px;
 .album{
 	max-width:300px;
 	margin:5px;
-	float:left;
+	/*float:left;*/
+    display: inline-block;
+    vertical-align: top;
 }
-.album img
-{
+
+.album img{
 	width:100%;
 }
 

@@ -58,6 +58,7 @@ function _init( opts ){
 
 	//read template
 	vars["templates"]["playlist_tpl"] = $("#playlist-tpl").html();
+	vars["templates"]["playlist_tpl_related_link"] = "<a href='{{location}}' class='btn btn-info' target='_blank'>yandex music</a>";
 	
 	var $list = $xml.find("xdata").children("playlist");
 	var html = "";
@@ -68,6 +69,18 @@ function _init( opts ){
 		var _location = $pls.children("location").text();
 //console.log( _title, _location );
 //console.log( $pls.children("thumbnail").length, _thumbnail );
+//-----------------------------------------
+		var _related_links_html="";
+		var $related_links = $pls.children("related_links");
+//console.log( $related_links, $related_links.length > 0 );
+		if( $related_links.length > 0){
+			$related_links.children("li").each(function(num, item){
+//console.log( num, $(item).text() );
+				_related_links_html += vars["templates"]["playlist_tpl_related_link"].replace("{{location}}", $(item).text() );
+			});
+		}
+//-----------------------------------------
+		
 
 		var _thumbnail = "";
 		var _img_alt = "";
@@ -90,7 +103,8 @@ function _init( opts ){
 		.replace("{{img_src}}", _thumbnail)
 		.replace("{{img_alt}}", _img_alt)
 		.replace("{{img_title}}", _img_title)
-		.replace("{{location}}", _location );
+		.replace("{{location}}", _location )
+		.replace("{{related_links}}", _related_links_html );
 	});
 	
 	$(vars["contentId"]).html( html );
