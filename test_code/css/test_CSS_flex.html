@@ -93,7 +93,11 @@ height:70px;
 }
 
 .sidebar-left {
-  flex: 1;
+/*flex-grow:1;*/
+/*flex-shrink:1;*/
+/*flex-basis:300px;*/
+
+  flex: 1 1 100px;
 }
 .sidebar-right {
   flex: 1;
@@ -130,6 +134,38 @@ height:70px;
 	flex-direction: row;
 	align-items: center;
 }
+
+.content .row5 {
+	display: flex;
+	flex-direction: row;
+	/*align-items: flex-start;*/
+	height: 170px;
+}
+.content .row5 .item {
+	height: 90px;
+	/* width: 100px; */
+}
+.content .row5 .item:nth-of-type(1) {
+  align-self: flex-start;
+}
+.content .row5 .item:nth-of-type(2) {
+  align-self: center;
+}
+.content .row5 .item:nth-of-type(3) {
+  align-self: flex-end;
+}
+.content .row5 .item:nth-of-type(4) {
+  align-self: center;
+}
+.content .row5 .item:nth-of-type(5) {
+  align-self: flex-start;
+}
+.content .row5 .item:nth-of-type(6) {
+  align-self: flex-end;
+}
+
+
+
 
 
 .item {
@@ -346,6 +382,33 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 					</div>
 					<div class="item">5</div>
 					<div class="item">6</div>
+				</div>
+
+				<div class="row5">
+					<div class="item">
+align-self: flex-start;
+					</div>
+
+					<div class="item">
+align-self: flex-center;
+					</div>
+
+					<div class="item">
+align-self: flex-end;
+					</div>
+
+					<div class="item">
+align-self: flex-center;
+					</div>
+
+					<div class="item">
+align-self: flex-start;
+					</div>
+
+					<div class="item">
+align-self: flex-end;
+					</div>
+
 				</div>
 
 			</div><!-- end content -->
