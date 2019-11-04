@@ -1,15 +1,7 @@
 body
 {
-
-/*   background-color: #EAE2D3; */
-/*   background-color: #E0E0E0; */
-
    background-color: #004000;
-/*   background-color: #072F07;   *//* зеленый,  для  nas */
 
-/*  background-color: #001B33;  *//* темно-синий,  для  eee-pc */
-/*  background-color: #071F2C; */
-/*  background-color: #203040;  *//* серый  */
   color: #ffffff;
 /*  margin-right: 10px; */
 }
@@ -30,10 +22,6 @@ body.b
     margin-left:5mm;
     margin-top:3mm; 
     border:0px;
-/*    background-color: #ffcc99; */ 
-/*    background-color: #e9f0f0; */ 
-/*    background-color: #E3EFB1;*/
-/*    background-color: #A9BF4E; */
     background-color: #bf794e;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size:   10pt

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width;initial-scale="1.0"/>
+	<title>Test CSS</title>
+
+	<script>
+window.onload = function(e){
+//console.log(e);
+if( document.querySelector ){
+	var ua_header = document.querySelector("#ua");
+	var flex_info = document.querySelector("#supportFlex");
+} else {
+	var ua_header = document.getElementById("ua");
+	var flex_info = document.getElementById("supportFlex");
+}
+
+	ua_header.innerHTML = navigator.userAgent;
+
+	if( typeof CSS !== "undefined" ){
+		if( typeof CSS.supports === "function" ){
+			var supportFlex = CSS.supports("display", "flex");
+			flex_info.innerHTML += "support Flex : " + supportFlex;
+		} else {
+				flex_info.innerHTML += "error, method CSS.supports not defined....";
+		}
+
+	} else {
+			flex_info.innerHTML += "error, object CSS not defined....";
+	}
+
+}//end load
+
+	</script>
+
+	<style>
+
+@supports (display : flex) {
+   #supportFlex {
+		background-color : lime;
+	}
+}
+@supports not (display : flex) {
+   #supportFlex {
+		background-color : red;
+	}
+}
+
+div {
+border:1px solid;
+}
+
+div.test {
+width:200px;
+height:70px;
+}
+
+
+.container {
+}
+
+.wrapper {
+	display: flex;
+/*	display: -webkit-flex;*/
+/*	flex-direction: column;*/
+	flex-direction: row;
+/*	flex-direction: row-reverse;*/
+}
+
+@media screen and (max-width:800px) {
+	.wrapper {
+		flex-direction: column;
+	}
+}
+
+.sidebar-left {
+  flex: 1;
+}
+.sidebar-right {
+  flex: 1;
+}
+
+.content {
+/*
+	display: flex;
+	flex: 7;
+	flex-direction: column;
+*/
+}
+
+.content .row1 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.content .row2 {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+}
+
+.content .row3 {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+.content .row4 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+
+.item {
+/*width:100px;*/
+flex: 1;
+
+/*height:200px;*/
+background-color:#ffa500;
+margin:3px;
+text-align:center;
+}
+.item:nth-of-type(2) {
+  flex: 2;
+}
+
+.sidebar-left .control{
+	display: flex;
+	flex-direction: column-reverse;
+	/*justify-content: space-around;*/
+	margin:5px;
+}
+
+.sidebar-left .control button{
+	margin:5px;
+}
+
+
+
+.sidebar-right .control{
+	display: flex;
+	align-items: center;
+/*	align-items: stretch;*/
+/*	align-items: flex-start;*/
+/*	align-items: flex-end;*/
+
+	flex-direction: column;
+	/*justify-content: space-around;*/
+	margin:5px;
+}
+.sidebar-right .control button{
+	margin:5px;
+}
+
+.sidebar-right .control button:first-child {
+  align-self: flex-start;
+}
+.sidebar-right .control button:first-child {
+  align-self: flex-start;
+}
+.sidebar-right .control button:nth-of-type(3) {
+  align-self: stretch;
+}
+.sidebar-right .control button:last-child {
+  align-self: flex-end;
+}
+
+
+.footer .row1 {
+	display: flex; 
+	flex-direction: row;
+	align-items: stretch;
+	justify-content:flex-end;
+}
+
+.footer .row2 {
+	display: flex; 
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content:flex-start;
+}
+
+.footer .row3 {
+	display: flex; 
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content:center;
+}
+
+.footer .row4 {
+	display: flex; 
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-around;
+}
+
+.footer .row5 {
+	display: flex; 
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-between;
+}
+
+.footer .box{
+	/*width: 20%; */
+	flex-basis: 20%;
+min-height:150px;
+	background-color:#d9ead3;
+	margin:3px;
+}
+
+	</style>
+
+</head>
+<body>
+		<h1>Test CSS Flexible Box Layout Module</h1>
+
+<h3 id="ua"></h3>
+<div class="test" id="supportFlex"></div>
+
+<!--
+<iframe width="100%" height="600" src="https://caniuse.com/#feat=css-grid"></iframe>
+-->
+
+<pre>
+https://caniuse.com/#search=supports
+CSS.supports() API
+
+https://caniuse.com/#search=CSS%20Flexible%20Box
+CSS Flexible Box Layout Module
+
+https://habrahabr.ru/post/336466/
+Проверяем браузер на поддержку определённого CSS свойства
+
+https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Flexbox
+
+https://html5book.ru/css3-flexbox/
+CSS flexbox
+
+http://htmlbook.ru/metki/flexbox
+
+</pre>
+
+	<div class="container">
+		<div class="header">HEADER</div>
+
+		<div class="wrapper">
+
+			<div class="sidebar-left">
+				<div class="control">
+					<button>btn-1</button>
+					<button>btn-2</button>
+					<button>btn-3</button>
+					<button>btn-4</button>
+					<button>btn-5</button>
+				</div>
+			</div>
+
+			<div class="content">
+
+				<div class="row1">
+					<div class="item">
+align-items: flex-start;
+					</div>
+					<div class="item">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					</div>
+					<div class="item">3</div>
+					<div class="item">4</div>
+					<div class="item">5</div>
+					<div class="item">6</div>
+				</div>
+
+				<div class="row2">
+					<div class="item">
+align-items: flex-end;
+					</div>
+					<div class="item">2</div>
+					<div class="item">3</div>
+					<div class="item">4</div>
+					<div class="item">5</div>
+					<div class="item">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					</div>
+				</div>
+
+				<div class="row3">
+					<div class="item">
+align-items: stretch;
+					</div>
+					<div class="item">2</div>
+					<div class="item">3</div>
+					<div class="item">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					</div>
+					<div class="item">5</div>
+					<div class="item">6</div>
+				</div>
+
+				<div class="row4">
+					<div class="item">
+align-items: center;
+					</div>
+					<div class="item">2</div>
+					<div class="item">3</div>
+					<div class="item">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+					</div>
+					<div class="item">5</div>
+					<div class="item">6</div>
+				</div>
+
+			</div><!-- end content -->
+
+			<div class="sidebar-right">
+				<div class="control">
+					<button>btn-1</button>
+					<button>btn-2</button>
+					<button>btn-3</button>
+					<button>btn-4</button>
+					<button>btn-5</button>
+				</div>
+			</div>
+
+		</div><!-- end wrapper -->
+
+		<div class="footer">
+			<div class="row1">
+				<div class="box">justify-content:flex-end;
+</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+			</div>
+
+			<div class="row2">
+				<div class="box">justify-content:flex-start;</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+				<div class="box">4</div>
+				<div class="box">5</div>
+				<div class="box">6</div>
+				<div class="box">7</div>
+				<div class="box">8</div>
+				<div class="box">9</div>
+				<div class="box">10</div>
+				<div class="box">11</div>
+			</div>
+
+			<div class="row3">
+				<div class="box">justify-content:center;</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+				<div class="box">4</div>
+				<div class="box">5</div>
+				<div class="box">6</div>
+				<div class="box">7</div>
+				<div class="box">8</div>
+				<div class="box">9</div>
+				<div class="box">10</div>
+				<div class="box">11</div>
+
+			</div>
+
+			<div class="row4">
+				<div class="box">justify-content: space-around;</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+			</div>
+
+			<div class="row5">
+				<div class="box">justify-content: space-between;</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+			</div>
+
+		</div>
+
+	</div><!-- end container -->
+
+</body>
+</html>
