@@ -3,6 +3,7 @@
 //console.log("func:", func);
 var _vars = {
 	"custom_colors": [
+
 		{"colorName": "bg-red-brown","code": "#2f0606"},
 		{"colorName": "bg-darkblue3","code": "#0e1f40"},
 		{"colorName": "bg-darkblue4","code": "#062237"},
@@ -10,12 +11,16 @@ var _vars = {
 		{"colorName": "bg-darkblue-tango","code": "#0c253c"},
 		
 		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
+		{"colorName": "bg-darkblue7","code": "#001B33"},
+		{"colorName": "bg-darkblue8","code": "#071F2C"},
+
+		{"colorName": "bg-darkbluegrey","code": "#203040"},
+
 		{"code": "#130040"},
 		{"colorName": "bg-darkblue3","code": "#040053"},
 		{"colorName": "bg-dark-violet","code": "#021859"},
 		{"colorName": "bg-darkblue6","code": "#002168"},
-		{"colorName": "bg-darkblue2","code": " #000080"},
-
+		{"colorName": "bg-darkblue2","code": "#000080"},
 
 		{"colorName": "bg-sky-blue66","code": "#003366"},
 		{"colorName": "bg-darkblue","code": "#004586"},
@@ -81,6 +86,7 @@ var _vars = {
 
 		{"colorName": "bg-darkgreen22","code": "#003438"},
 		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
+		{"colorName": "bg-darkgreen4","code": "#072F07"},
 		{"colorName": "bg-darkgreen33","code": "#003200"},/* windowsXP desktop */
 		{"colorName": "bg-darkgreen","code": "#0d4524"},/* gitlab header */
 		{"colorName": "bg-turquoise7","code": "#006633"},
@@ -88,6 +94,7 @@ var _vars = {
 		{"colorName": "bg-green-grass3","code": "#18a050","text-color":"#000"},/* gitlab button, border */
 		{"colorName": "bg-green-grass2","code": "#1aaa55","text-color":"#000"},/* gitlab button, bg */
 		{"colorName": "bg-turquoise9","code": "#66cc99"},
+
 		{"colorName": "bg-green-lime","code": "#98FB98","text-color": "#000"},/* video.css */
 		{
 			"colorName": "bg-palegreen",
@@ -181,11 +188,18 @@ var _vars = {
 		{"colorName": "bg-orange3","code": "#ffa500"
 		},
 		{"colorName": "bg-orange4","code": "#FECD90"},
+		{"colorName": "bg-orange5","code": "#ffcc99"},
 
 		{"code": "#bf794e"},
 		{"code": "#bf864e"},
 		{"code": "#CCA96E"},
 		{"colorName": "bg-pale-rose-c5","code": "#d3c5be"},/* comp-books.css */
+		{"code": "#EAE2D3"},
+
+		{"code": "#E0E0E0"},
+		{"code": "#e9f0f0"},
+
+
 		
 		{"code": "#efc8b1"},
 		{"code": "#efd0b1"},
