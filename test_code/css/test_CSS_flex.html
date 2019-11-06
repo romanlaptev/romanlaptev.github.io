@@ -57,6 +57,24 @@ height:70px;
 }
 
 
+.header {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height:100px;
+}
+
+.header .box{
+	/*flex-basis: 20%;*/
+	width: 50px;
+	height: 50px;
+	background-color:#007dfd;
+	margin:auto;
+	text-align:center;
+}
+
+
 .container {
 }
 
@@ -75,7 +93,11 @@ height:70px;
 }
 
 .sidebar-left {
-  flex: 1;
+/*flex-grow:1;*/
+/*flex-shrink:1;*/
+/*flex-basis:300px;*/
+
+  flex: 1 1 100px;
 }
 .sidebar-right {
   flex: 1;
@@ -112,6 +134,38 @@ height:70px;
 	flex-direction: row;
 	align-items: center;
 }
+
+.content .row5 {
+	display: flex;
+	flex-direction: row;
+	/*align-items: flex-start;*/
+	height: 170px;
+}
+.content .row5 .item {
+	height: 90px;
+	/* width: 100px; */
+}
+.content .row5 .item:nth-of-type(1) {
+  align-self: flex-start;
+}
+.content .row5 .item:nth-of-type(2) {
+  align-self: center;
+}
+.content .row5 .item:nth-of-type(3) {
+  align-self: flex-end;
+}
+.content .row5 .item:nth-of-type(4) {
+  align-self: center;
+}
+.content .row5 .item:nth-of-type(5) {
+  align-self: flex-start;
+}
+.content .row5 .item:nth-of-type(6) {
+  align-self: flex-end;
+}
+
+
+
 
 
 .item {
@@ -247,7 +301,14 @@ http://htmlbook.ru/metki/flexbox
 </pre>
 
 	<div class="container">
-		<div class="header">HEADER</div>
+		<div class="header">
+				<div class="box">1</div>
+				<div class="box">2</div>
+				<div class="box">3</div>
+				<div class="box">4</div>
+				<div class="box">5</div>
+				<div class="box">6</div>
+		</div>
 
 		<div class="wrapper">
 
@@ -321,6 +382,33 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 					</div>
 					<div class="item">5</div>
 					<div class="item">6</div>
+				</div>
+
+				<div class="row5">
+					<div class="item">
+align-self: flex-start;
+					</div>
+
+					<div class="item">
+align-self: flex-center;
+					</div>
+
+					<div class="item">
+align-self: flex-end;
+					</div>
+
+					<div class="item">
+align-self: flex-center;
+					</div>
+
+					<div class="item">
+align-self: flex-start;
+					</div>
+
+					<div class="item">
+align-self: flex-end;
+					</div>
+
 				</div>
 
 			</div><!-- end content -->
