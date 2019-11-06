@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test map API</title>
+	<meta name="description" content="test map API"/>
+	
+	<meta charset="utf8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> -->
+	
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="green" />
+	<meta name="apple-mobile-web-app-title" content="test map API" />
+	
+	<meta name="apple-touch-fullscreen" content="yes">
+	
+	<!-- <meta name="mobile-web-app-capable" content="yes"> --> <!-- Tell the browser it's a PWA ???? -->
+	<!-- <meta name="theme-color" content="#536878"> --><!-- Make sure theme-color is defined -->
+
+	<link rel="shortcut icon" href="img/maps.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/maps.png" />
+	<link rel="apple-touch-icon" sizes="48x48" href="img/maps48.png"/>
+	<link rel="apple-touch-icon" sizes="64x64" href="img/maps64.png"/>
+	<link rel="apple-touch-icon" sizes="72x72" href="img/maps72.png"/>
+	<link rel="apple-touch-icon" sizes="96x96" href="img/maps96.png"/>
+	<link rel="apple-touch-icon" sizes="128x128" href="img/maps128.png"/>
+	<link rel="apple-touch-icon" sizes="256x256" href="img/maps256.png"/>
+	
+<!--	
+	<link rel="manifest" href="manifest.json">
+-->
+	<link rel="stylesheet" href="css/ratchet.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+  <!-- SNAP plugin -->
+<!--
+	<link rel="stylesheet" type="text/css" href="css/snap.css" />
+	<script type="text/javascript" src="js/lib/snap.js"></script> 
+-->
+	<script src="js/functions.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/main.js"></script>
+	
+<!--
+<script src="https://api-maps.yandex.ru/2.1/?apikey=6868d08d-fea9-41c7-8f32-f3a3a33495ed&lang=ru_RU" type="text/javascript"></script>
+
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDit1piuzGn-N0JVzirMUcERxxWZ4DK4OI&ver=3.exp"></script>	
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDit1piuzGn-N0JVzirMUcERxxWZ4DK4OI" type="text/javascript"></script>
+-->  
+</head>
+
+<body>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-clear-log" href="#" title="Clear log" class="btn">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+
+<!--    
+	<div class="snap-drawers">
+		<div class="snap-drawer snap-drawer-left">
+      <div>
+        <span class="pull-right">
+				  <a id="btn-close-drawer-left" href="#" title="close" class="btn">x</a>
+			  </span>
+			</div>
+      
+      <div>
+				<ul>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">item2</a></li>
+					<li><a href="#">item3</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="snap-drawer snap-drawer-right">
+8888888888888888888    
+    </div>
+	</div>
+-->
+
+<div class="snap-drawers" id="side-menu">
+	<div class="snap-drawer snap-drawer-left" id="leftMenu">
+		<ul class="table-view">
+			<li class="table-view-divider">&nbsp;</li>
+			<li id="app-settings" class="table-view-cell"><a href="#">change API</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container snap-content" id="app-container">
+
+	<header id="app-header" class="bar bar-nav boxShadow">
+			<span id="open-left" class="icon icon-bars pull-left" title="show menu"></span>
+			<!-- <button class="btn blue pull-left" id="open-left">Left panel</button> -->
+<!--			<button class="btn blue pull-right" id="or">Right panel</button> -->
+<!--
+      <div class="segmented-control">
+				<a class="control-item active">One</a>
+				<a class="control-item">Two</a>
+				<a class="control-item">Three</a>
+			</div>	
+-->	
+      <div class="page-header pull-right">
+        <h1>Test map API</h1>
+     </div>
+  
+  </header>
+	
+	<div class="card panel">
+
+		<div class="pull-left col-1">
+		
+<!-- <div class="control-content">			 -->
+<div class="block-gps">
+			<div class=""><b>Coordinates:</b></div>
+			<ul class="table-view">
+<p>
+	<b>Latitude, (deg.):
+		<sub><mark>(широта)</mark></sub> 
+		<span id="latitude" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p> 
+
+<p>
+	<b>Longitude, (deg.):
+		<sub><mark>(долгота)</mark></sub>
+		<span id="longitude" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+
+<p>
+	<b>Accuracy, (meters):
+		<sub><mark>(погрешность)</mark></sub>
+		<span id="accuracy" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+
+<p>
+	<b>altitude, (meters):
+		<sub><mark>(высота над уровнем моря)</mark></sub>
+		<span id="altitude" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+
+<p>
+	<b>altitudeAccuracy, (meters): 
+		<span id="altitude-accuracy" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+
+<p>
+	<b>Heading:
+		<sub><mark>(направление устройства по отношению к северу)</mark></sub>
+		<span id="heading" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+
+<p>
+	<b>Speed, (m/sec.):
+		<sub><mark>(скорость)</mark></sub>
+		<span id="speed" title="" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+					
+<p>
+	<b>datetime: 
+		<sub><mark>(дата, время)</mark></sub>
+		<span id="datetime" class="geo-accuracy-inaccurate"></span>
+	</b>
+</p>
+			</ul>
+			
+			
+			<div id="addr-title"><b>Address:</b></div>
+			<div>
+				<span id="addr-text" class="geo-accuracy-inaccurate"></span>
+			</div>
+			
+</div>			
+		</div>		
+
+		<div class="pull-right col-2">
+			<ul class="table-view">
+				<li class=""><button id="btn-get-coords" class="btn btn-block green">Get coordinates</button></li>
+				<li class=""><button id="btn-get-address" class="btn btn-block blue">Get address</button></li>
+				<li class=""><button id="btn-show-map" class="btn btn-block blue disabled">Show map</button></li>
+<!--        
+				<li class=""><button id="btn-change-api" class="btn btn-block blue">change API</button></li>
+-->
+			</ul>
+		</div>
+		
+	</div><!-- end panel -->
+  
+	<div class="card panel">
+		<ul class="table-view" id="api-type">
+			<h3>API type</h3>
+			<li class="table-view-cell">
+				<input type="radio" name="api_type" value="yandexMaps" autocomplete="off" checked><label>Yandex Maps API</label>
+			</li>
+			<li class="table-view-cell">
+				<input type="radio" name="api_type" value="googleMaps" autocomplete="off"><label>Google Maps API</label>
+			</li>
+			<li class="table-view-cell">
+				<input type="radio" name="api_type" value="2GIS" autocomplete="off"><label>2GIS Maps API</label>
+			</li>
+			<li class="table-view-cell">
+				<input type="radio" name="api_type" value="OpenStreetMaps" autocomplete="off"><label>OpenStreet Maps API</label>
+			</li>
+			<li class="table-view-cell">
+				<input type="radio" name="api_type" value="ArcGIS" autocomplete="off"><label>ArcGIS Maps API</label>
+			</li>
+		</ul>
+	</div><!-- end panel -->
+  
+</div><!-- end app-container -->
+
+
+
+	<!-- <div id="wait" class="overlay open" data-state="true"> -->
+	<div id="wait" class="overlay">
+		<div>
+			<div>
+				<div class="icon-container"><img class="load-icon" src="img/icon-load.svg"/></div>
+				<div id="waitText">wait, please...</div>
+			</div>
+		</div>
+	</div>
+
+
+<div id="app-modal" class="modal">
+
+	<header class="bar bar-nav" style="padding-right: 0">
+		<span id="icon-modal-close" class="icon icon-close pull-right"></span>
+		<h1 id="modal-title" class="title"></h1>
+	</header>
+		
+	<div class="content">
+		<div class="content-modal">
+			<div id="show-map" style="width:320px;height: 400px;margin:auto;"></div>
+		</div>
+<!--		
+		<div class="buttons desktop-only">
+			<button id="btn-modal-close" class="btn btn-block blue">close</button>
+		</div>
+-->		
+	</div>
+		
+	</div>
+
+</body>
+</html>
