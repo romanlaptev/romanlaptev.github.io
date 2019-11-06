@@ -11,7 +11,7 @@ body {
   height: 80%;
 }
 .container {
-  background-color: #ffffff;
+  background-color: #e6e6fa;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -51,6 +51,7 @@ header .navbar-brand h1 {
 	/*font-family: fiddums-family;*/
 	/*font-size: 3.5em;*/
 	font-size: 60px;
+	color: #004586;
 }
 
 @media screen and (max-width:768px) 
