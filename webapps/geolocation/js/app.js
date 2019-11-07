@@ -15,9 +15,9 @@
 			
 			"ya_apiLink": "https://api-maps.yandex.ru/2.1/?apikey={{apiKey}}&lang=ru_RU",
 			"ya_apiKey" : "6868d08d-fea9-41c7-8f32-f3a3a33495ed",
-			//"ya_templateUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&geocode={{lng}},{{lat}}",
-"ya_templateUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&format=json&geocode={{lng}},{{lat}}&kind=district",
-//"ya_templateUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&format=json&geocode={{lng}},{{lat}}&kind=street",
+			//"ya_geocodeUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&geocode={{lng}},{{lat}}",
+"ya_geocodeUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&format=json&geocode={{lng}},{{lat}}&kind=district",
+//"ya_geocodeUrl" : "https://geocode-maps.yandex.ru/1.x/?apikey={{apiKey}}&format=json&geocode={{lng}},{{lat}}&kind=street",
 
 			"google_apiLink": "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{apiKey}}&ver=3.exp",
 //http://maps.google.com/maps/api/js?sensor=false			
@@ -28,6 +28,14 @@
 			
 			"os_apiLink": "https://openlayers.org/api/OpenLayers.js",
 			//"os_apiLink": "js/api/OpenLayers.js",
+			"os_geocodeUrl" : "https://nominatim.openstreetmap.org/reverse?\
+format={{format}}\
+&lat={{lat}}&lon={{lon}}\
+&addressdetails={{addr_details}}\
+&extratags={{extratags}}\
+&namedetails={{namedetails}}\
+",
+
 			
 			//"arcgis_apiLink": "https://js.arcgis.com/3.25/",
 			//"arcgis_cssLink": "https://js.arcgis.com/3.25/esri/css/esri.css"
@@ -555,7 +563,7 @@ func.logAlert(_vars["logMsg"],"error");
 			switch ( _vars["apiType"]){
 				
 				case "yandexMaps":
-					var dataUrl = _vars["ya_templateUrl"]
+					var dataUrl = _vars["ya_geocodeUrl"]
 					.replace( "{{apiKey}}", _vars["ya_apiKey"] )
 					.replace( "{{lng}}", p["lng"] )
 					.replace( "{{lat}}", p["lat"] );
@@ -564,6 +572,23 @@ func.logAlert(_vars["logMsg"],"error");
 					func.runAjaxCorrect( dataUrl, __postFunc );
 				break;
 
+				case "OpenStreetMaps":
+//https://nominatim.org/release-docs/develop/api/Lookup/
+//json_callback=<string>
+//accept-language=<browser language string>
+//email=<valid email address>
+//debug=[0|1]
+					var dataUrl = _vars["os_geocodeUrl"]
+.replace( "{{format}}", "json" )//format=[xml|json|jsonv2|geojson|geocodejson]
+.replace( "{{lat}}", p["lat"] )
+.replace( "{{lon}}", p["lng"] )
+.replace( "{{addr_details}}", 0 )//addressdetails=[0|1], Include a breakdown of the address into elements. (Default: 0)
+.replace( "{{extratags}}", 0 )//extratags=[0|1], Include additional information in the result if available, e.g. wikipedia link, opening hours. (Default: 0)
+.replace( "{{namedetails}}", 0 )//namedetails=[0|1], Include a list of alternative names in the results. These may include language variants, references, operator and brand. (Default: 0)					
+//console.log( dataUrl );		
+					func.runAjaxCorrect( dataUrl, __postFunc );
+				break;
+				
 				case "googleMaps":
 					//var google_map_pos = new google.maps.LatLng( p.lat, p.lng );
 //console.log( google_map_pos );
@@ -599,9 +624,13 @@ console.log( _vars["logMsg"] );
 //console.log( data );
 //console.log( typeof data );
 //console.log( data.length );
-				//if( data && data.length > 0){
+				if( data && data.length > 0){
 					_parseAjax( data );
-				//}
+				} else {
+_vars["logMsg"] = "error getting geolocation data..." ;
+func.logAlert( _vars["logMsg"], "error");
+					_waitWindow( "close" );
+				}
 				
 			}//end __postFunc()
 
@@ -620,7 +649,6 @@ console.log( _vars["logMsg"] );
 				if( _vars["requestFormat"].indexOf("application/json") !== -1){
 					_parseJSON( data );
 				}
-				_waitWindow( "close" );
 				
 			}//_parseAjax()
 
@@ -648,10 +676,12 @@ console.log(xmlObj);
 		_message( webApp.vars["logMsg"], "info");
 		console.log( webApp.vars["logMsg"] );
 */
+					_waitWindow( "close" );
 				} catch(error) {
 console.log( error );
 _vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
 func.logAlert( _vars["logMsg"], "error");
+					_waitWindow( "close" );
 				}//end catch
 
 			}//end _parseXML()
@@ -663,25 +693,42 @@ func.logAlert( _vars["logMsg"], "error");
 			//console.log( key, value );
 						return value;
 					});
-console.log( jsonObj );
-
-					var _result = jsonObj.response.GeoObjectCollection.featureMember;
+//console.log( jsonObj );
 					var addrText = "";
-					for( var n = 0; n < _result.length; n++){
-						var _geoObj = _result[n]["GeoObject"];
-//console.log(_geoObj.name, _geoObj.description);
-						addrText += "<p>" +_geoObj.metaDataProperty.GeocoderMetaData.text + "</p>\r\n";
-					}//next
-//console.log( addrText );
-
-				_vars["htmlObj"]["addresTitle"].style.display = "block";
-				_vars["htmlObj"]["addresText"].innerHTML = addrText;
+					
+					switch ( _vars["apiType"]){
+						case "yandexMaps":
+							var _result = jsonObj.response.GeoObjectCollection.featureMember;
+							for( var n = 0; n < _result.length; n++){
+								var _geoObj = _result[n]["GeoObject"];
+		//console.log(_geoObj.name, _geoObj.description);
+								addrText += _geoObj.metaDataProperty.GeocoderMetaData.text;
+							}//next
+	//console.log( addrText );
+							_vars["htmlObj"]["addresTitle"].style.display = "block";
+							_vars["htmlObj"]["addresText"].innerHTML = addrText;
+						break;
+						
+						case "OpenStreetMaps":
+							addrText = jsonObj["display_name"];
+							_vars["htmlObj"]["addresTitle"].style.display = "block";
+							_vars["htmlObj"]["addresText"].innerHTML = addrText;
+						break;
+					
+						default:
+	_vars["logMsg"] = "error parsing address, JSON format..." ;
+	func.logAlert(_vars["logMsg"],"error");
+						break;
+					};//end switch
+					
+					_waitWindow( "close" );
 					
 				} catch(error) {
 _vars["logMsg"] = "error, error JSON.parse server response data...." ;
 console.log( error );
 func.logAlert(_vars["logMsg"],"error");
-					return;
+					_waitWindow( "close" );
+					//return;
 				}//end catch
 
 			}//end _parseJSON()
