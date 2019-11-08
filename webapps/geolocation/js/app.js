@@ -126,11 +126,25 @@ format={{format}}\
 
 //-----------------------------------------
 			func.addEvent( _vars["htmlObj"]["blockApiType"], "click", function(e){
+//console.log( e.target );
+
 				if( e.target.nodeName ===  "INPUT"){
 //console.log( e.target.checked, e.target.value );
 					_vars["apiType"] = e.target.value;
 					_loadApi();
 				}
+
+				if( e.target.nodeName ===  "LABEL"){
+//console.log( e.target );
+//console.log( e.target.children["api_type"] );
+//console.log( e.target.children["api_type"].value, e.target.children["api_type"].checked );
+					_vars["apiType"] = e.target.children["api_type"].value;
+					_loadApi();
+          e.target.children["api_type"].checked = true;
+          e.preventDefault();
+          //e.stopPropagation();
+				}
+        
 			});//end event
 
 			
@@ -743,8 +757,8 @@ func.logAlert(_vars["logMsg"],"error");
 //------------------------------- resize map wrapper (95% screen size)
 			var _w = (window.innerWidth / 100) * 95;
 //console.log( window.innerWidth, _w);
-_vars["logMsg"] = "window.innerWidth = " + window.innerWidth+"px, map width = "+ _w+"px (95% screen size)";
-func.logAlert(_vars["logMsg"],"info");
+//_vars["logMsg"] = "window.innerWidth = " + window.innerWidth+"px, map width = "+ _w+"px (95% screen size)";
+//func.logAlert(_vars["logMsg"],"info");
 			_vars["htmlObj"]["map"].style.width = _w+"px";
 //----------------------------
 			_vars["htmlObj"]["modalTitle"].innerHTML = "yandexMaps API version: " + ymaps.meta.version;
