@@ -406,7 +406,11 @@ margin: 0;
 
 
 #api-type label {
-	margin-left: 10px;
+	/*margin-left: 10px;*/
+	padding: 10px 5px 10px 5px;
+}
+#api-type label input {
+	margin-right: 5px;
 }
 
 /*
