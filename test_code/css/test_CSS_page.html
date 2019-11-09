@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="utf8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Test CSS</title>
+
+
+<style type="text/css">
+html, body{
+	height:100%;
+margin:0;
+padding:0;
+}
+
+body {
+	background-color: #069;
+}
+
+
+.container {
+	width: 80%;
+	margin: auto;
+}
+
+.header {
+	/*height: 5%;*/
+	/* border: 1px solid; */
+	padding: 1px;
+	background-color: lightblue;
+}
+
+
+.header h1 {
+	text-align: center;
+	padding: 0;
+	/*margin: 0;*/
+}
+
+.menu {
+	background-color: dodgerblue;
+}
+
+.main {
+	height: 80%;
+/*overflow: hidden;*/
+	/* border: 1px solid; */
+	/* padding: 5px; */
+	/* clear: both; */
+}
+
+
+.sidebar{
+	float: left;
+	/* border: 1px solid; */
+	width: 20%;
+	height: 100%;
+}
+.sidebar-left {
+	background: lightblue;
+}
+.sidebar-right {
+	background: lightblue;
+}
+.content {
+	float: left;
+	/* border: 1px solid; */
+	/*background-color: lightskyblue; lavender*/
+	background-color: #ffffff;
+	width: 60%;
+	height: 100%;
+	/* padding: 5px; */
+}
+
+.footer {
+	height: 10%;
+	/* border: 1px solid; */
+	/* padding: 5px; */
+	background-color: lightblue;
+}
+
+
+.wrapper {
+/*	margin: 5px;*/
+}
+.footer .wrapper {
+/*	margin: 0 5px 0 5px;*/
+}
+
+.panel {
+	background-color: deepskyblue;
+/*	width: 100%;*/
+/*	max-height: 90%;*/
+	margin: 5px;
+	padding: 5px;
+word-wrap: break-word;
+/*word-break: break-all;*/
+}
+
+pre {
+	margin: 0;
+}
+
+
+.menu ul {
+	list-style: none;
+padding: 5px 1px 1px 1px;
+	margin: 0;
+	/* display: block; */
+	/* width: 100%; */
+	text-align: center;
+}
+.menu ul li {
+	display: inline;
+
+	/* width: 30%; */
+	font-size: 150%;
+	margin: 5px;
+	background-color: lightskyblue;
+padding: 0 10px;
+}
+
+.menu ul li {
+	display: inline-block;
+	/* width: 30%; */
+}
+.menu a {
+	text-decoration: none;
+}
+
+
+@media all and (max-width:700px){
+	body {
+		background-color: lightslategray;
+	}
+
+	.main {
+		height: auto;
+	}
+
+	.sidebar-left {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+	.content {
+		float: none;
+		width: 100%;
+	}
+	.sidebar-right {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+
+	.menu ul li {
+		font-size: 110%;
+	}
+
+}
+
+</style>
+
+</head>
+
+<body>
+	<div class="header container">
+		<div class="wrapper">
+			<h1>test CSS, page template</h1>
+		</div>
+	</div><!-- end header -->
+
+<div class="menu container">
+		<div class="wrapper">
+		  <ul>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+		  </ul>
+		</div>
+	</div>
+
+	<div class="main container">
+		<div class="sidebar sidebar-left">
+		  <div class="wrapper">
+			<div class="panel">
+		  <ul>
+			<li>item1</li>
+			<li>item2</li>
+			<li>item3</li>
+		  </ul>
+			</div>
+		  </div>
+		
+		  <div class="wrapper">
+			<div class="panel">panel1</div>
+		  </div>
+	  
+		</div><!-- end sidebar -->
+
+		<div class="content">
+		  <div class="wrapper">
+			<div class="panel">panel1</div>
+		   </div>
+		</div>
+	
+		
+		<div class="sidebar sidebar-right">
+		  <div class="wrapper">
+			<div class="panel">panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1panel1</div>
+		  </div>
+		  <div class="wrapper">
+			<div class="panel">panel2</div>
+		  </div>
+		  <div class="wrapper">
+			<div class="panel">panel3</div>
+		  </div>
+		</div><!-- end sidebar -->
+
+	</div><!-- end main -->
+
+	<div class="footer container">
+		<div class="wrapper">
+			<div class="panel">
+		<pre>
+http://www.zoomify.com/free.htm
+http://www.zoomify.com/express.htm
+		</pre>
+				</div>
+		</div>
+	</div><!-- end footer -->
+
+
+</body>
+</html>
