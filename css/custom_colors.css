@@ -597,6 +597,18 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   color: #fff;
 }
 
+.panel-deepskyblue {
+	border-color: #00bfff;
+	background-color: #00bfff;
+}
+.panel-deepskyblue > .panel-heading {
+  background-color: #00bfff;
+  border-color: #00bfff;
+}
+
+
+
+
 .bg-peach {
   border-color: #ffaa00;
   background-color: #ffcc99;
