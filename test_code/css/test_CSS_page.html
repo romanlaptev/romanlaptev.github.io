@@ -20,26 +20,32 @@ body {
 }
 
 
-.header {
+.container {
 	width: 80%;
-	/*height: 5%;*/
 	margin: auto;
+}
+
+.header {
+	/*height: 5%;*/
 	/* border: 1px solid; */
-	/* padding: 5px; */
+	padding: 1px;
 	background-color: darkcyan;
 }
+
 
 .header h1 {
 	text-align: center;
 	padding: 0;
-	margin: 0;
+	/*margin: 0;*/
 }
 
-.container {
-	width: 80%;
+.menu {
+	background-color: lightsteelblue;
+}
+
+.main {
 	height: 80%;
 /*overflow: hidden;*/
-	margin: auto;
 	/* border: 1px solid; */
 	/* padding: 5px; */
 	/* clear: both; */
@@ -58,7 +64,6 @@ body {
 .sidebar-right {
 	background: lightblue;
 }
-
 .content {
 	float: left;
 	/* border: 1px solid; */
@@ -69,11 +74,8 @@ body {
 	/* padding: 5px; */
 }
 
-
 .footer {
-	width: 80%;
 	height: 10%;
-	margin: auto;
 	/* border: 1px solid; */
 	/* padding: 5px; */
 	background-color: darkcyan;
@@ -100,18 +102,94 @@ word-break: break-all;
 pre {
 	margin: 0;
 }
+
+
+.menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	/* display: block; */
+	/* width: 100%; */
+	text-align: center;
+}
+.menu ul li {
+	display: inline-block;
+	/* width: 30%; */
+	font-size: 150%;
+	margin: 5px;
+	background-color: aquamarine;
+	padding: 5px;
+}
+
+.menu ul li {
+	display: inline-block;
+	/* width: 30%; */
+}
+.menu a {
+	text-decoration: none;
+}
+
+
+@media all and (max-width:700px){
+	body {
+		background-color: lightslategray;
+	}
+
+	.main {
+		height: auto;
+	}
+
+	.sidebar-left {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+	.content {
+		float: none;
+		width: 100%;
+	}
+	.sidebar-right {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+
+	.menu ul li {
+		font-size: 110%;
+	}
+
+}
+
 </style>
 
 </head>
 
 <body>
-	<div class="header">
-		<div class="panel">
+	<div class="header container">
+		<div class="wrapper">
 			<h1>test CSS, page template</h1>
 		</div>
 	</div><!-- end header -->
 
-	<div class="container">
+<div class="menu container">
+		<div class="wrapper">
+		  <ul>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+			<li><a href="#">item1</a></li>
+			<li><a href="#">item2</a></li>
+			<li><a href="#">item3</a></li>
+		  </ul>
+		</div>
+	</div>
+
+	<div class="main container">
 		<div class="sidebar sidebar-left">
 		  <div class="wrapper">
 			<div class="panel">
@@ -148,13 +226,14 @@ pre {
 		  </div>
 		</div><!-- end sidebar -->
 
-	</div><!-- end container -->
+	</div><!-- end main -->
 
-	<div class="footer">
+	<div class="footer container">
 		<div class="wrapper">
 			<div class="panel">
-		<pre>http://www.zoomify.com/free.htm
-		http://www.zoomify.com/express.htm
+		<pre>
+http://www.zoomify.com/free.htm
+http://www.zoomify.com/express.htm
 		</pre>
 				</div>
 		</div>
