@@ -26,7 +26,12 @@ git checkout 385d0fd31e252d76e4ec8b1b43029fff76106337
 git rm -r --cached projects/geolocation #remove directory from git cache (for .gitignore work)
 
 
-#"git clone https://app1795.scm.azurewebsites.net/app1795.git" 
-#"git clone https://github.com/romanlaptev/geolocation.git" 
 #git clone https://github.com/romanlaptev/romanlaptev.heroku.com/
 #git clone https://github.com/romanlaptev/romanlaptev2.herokuapp.com/
+#git clone  https://github.com/romanlaptev/romanlaptev.gearhostpreview.com
+#git clone  https://github.com/romanlaptev/games_mod.git
+#git clone  https://github.com/romanlaptev/bookmarks.git
+#git clone  https://github.com/romanlaptev/cors-anywhere.git
+#git clone https://github.com/romanlaptev/geolocation.git
+#git clone https://app1795.scm.azurewebsites.net/app1795.git
+
