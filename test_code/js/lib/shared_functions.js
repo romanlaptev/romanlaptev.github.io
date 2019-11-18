@@ -1050,7 +1050,36 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 		};//end _addEvent()
 		
-			
+
+		function _testSupport() {
+			return {
+				"jsonSupport" : JSON ? true : false,
+				"promiseSupport": window.Promise  ? true : false,
+				"cacheSupport" : window.caches ? true : false,
+				"serviceWorkerSupport" : navigator.serviceWorker ? true : false,
+				"indexedDBsupport" : window.indexedDB ? true : false,
+				"webSQLsupport" : window.openDatabase  ? true : false,
+				"localStorageSupport" : window['localStorage']  ? true : false,
+				"dataStoreType" : _detectDataStoreType(),
+				"geolocationSupport" :  typeof navigator.geolocation !== "undefined"
+			};
+		};//end _testSupport()
+		
+		function _detectDataStoreType(){
+			var dataStoreType = false;
+			if( window['localStorage']  ? true : false ){
+				dataStoreType = "localStorage";
+			}
+			if( window.openDatabase  ? true : false ){
+				dataStoreType = "webSQL";
+			}
+			if( window.indexedDB ? true : false ){
+				dataStoreType = "indexedDB";
+			}
+			return dataStoreType;
+		}//end _detectDataStoreType()
+		
+		
 		// public interfaces
 		return{
 			getById: _getById,
@@ -1076,7 +1105,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 			logAlert: _alert,
 			wrapLogMsg: _wrapLogMsg,
-			addEvent: _addEvent
+			addEvent: _addEvent,
+			testSupport: _testSupport
 			
 			//get_content: function( params ){ 
 				//return get_content( params ); 
