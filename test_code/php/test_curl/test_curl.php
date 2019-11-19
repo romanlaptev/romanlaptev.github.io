@@ -1,5 +1,7 @@
 <?php
 //http://easy-code.ru/lesson/advanced-curl-php
+//https://www.php.net/manual/ru/book.curl.php
+//https://htmlweb.ru/php/php_curl.php
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
@@ -64,6 +66,11 @@ echo "<br>";
 		$httpCode  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 echo "httpCode: ".$httpCode;
 echo "<br>";
+
+		$info = curl_getinfo($curl);
+echo "curl_getinfo: <pre>";
+print_r( curl_version() );
+echo "</pre>";
 
 		curl_close( $curl );
 	}
