@@ -22,12 +22,17 @@
 			"google_apiLink": "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key={{apiKey}}&ver=3.exp",
 //http://maps.google.com/maps/api/js?sensor=false			
 			"google_apiKey" : "AIzaSyDit1piuzGn-N0JVzirMUcERxxWZ4DK4OI",
+//https://maps.googleapis.com/maps/api/geocode/json?latlng=55.03146,82.92317&key=AIzaSyDit1piuzGn-N0JVzirMUcERxxWZ4DK4OI
+			"google_geocodeUrl" : "https://maps.googleapis.com/maps/api/geocode/json?\
+latlng={{lat}},{{lng}}\
+&key={{apiKey}}",
+			//"google_geocodeUrl" : "data/answer_googleMaps.json",
 			
 			//https://api.2gis.ru/doc/maps/ru/quickstart/
 			"gis_apiLink": "https://maps.api.2gis.ru/2.0/loader.js?pkg=full",
 			
 			"os_apiLink": "https://openlayers.org/api/OpenLayers.js",
-			//"os_apiLink": "js/api/OpenLayers.js",
+			//"os_apiLink": "js/api/OpenLayers2.13.1.js",
 			"os_geocodeUrl" : "https://nominatim.openstreetmap.org/reverse?\
 format={{format}}\
 &lat={{lat}}&lon={{lon}}\
@@ -37,11 +42,25 @@ format={{format}}\
 ",
 
 			
-			//"arcgis_apiLink": "https://js.arcgis.com/3.25/",
-			//"arcgis_cssLink": "https://js.arcgis.com/3.25/esri/css/esri.css"
-			"arcgis_apiLink": "https://js.arcgis.com/4.13/",
-			"arcgis_cssLink": "https://js.arcgis.com/4.13/esri/css/main.css"
+			"arcgis_apiLink": "https://js.arcgis.com/3.25/",
+			"arcgis_cssLink": "https://js.arcgis.com/3.25/esri/css/esri.css",
+			//"arcgis_apiLink": "https://js.arcgis.com/4.13/",
+			//"arcgis_cssLink": "https://js.arcgis.com/4.13/esri/css/main.css"
 			
+			"support" : func.testSupport(),
+			"templates" : {
+				tplAddr : "<div class='panel'><span class='number'>{{num}}</span>\
+<p>{{formatted_address}}</p>\
+<small>\
+<ul class='list-inline'>\
+<b>address types:</b>\
+{{list}}\
+</ul>\
+</small>\
+</div>",
+				tplAddrTypesList : "<li>{{type}}</li>"
+			},
+
 		};//end _vars
 
 		var GPS_TIMEOUT_POSITION = 300; //(sec) time that is allowed to end finding position		
@@ -50,36 +69,36 @@ format={{format}}\
 //console.log("App initialize...");
 			
 			_vars["htmlObj"]={
-				"latitude" : document.querySelector("#latitude"),
-				"longitude" : document.querySelector("#longitude"),
-				"accuracy" : document.querySelector("#accuracy"),
-				"datetime" : document.querySelector("#datetime"),
-				"altitude" : document.querySelector("#altitude"),
-				"altitudeAccuracy" : document.querySelector("#altitude-accuracy"),
-				"heading" : document.querySelector("#heading"),
-				"speed" : document.querySelector("#speed"),
-				"addresTitle": document.querySelector("#addr-title"),
-				"addresText": document.querySelector("#addr-text"),
+				"latitude" : func.getById("latitude"),
+				"longitude" : func.getById("longitude"),
+				"accuracy" : func.getById("accuracy"),
+				"datetime" : func.getById("datetime"),
+				"altitude" : func.getById("altitude"),
+				"altitudeAccuracy" : func.getById("altitude-accuracy"),
+				"heading" : func.getById("heading"),
+				"speed" : func.getById("speed"),
+				//"addresTitle": func.getById("addr-title"),
+				"addresText": func.getById("addr-text"),
 
-				"appModal": document.querySelector("#app-modal"),
+				"appModal": func.getById("app-modal"),
 				
-				"map": document.querySelector("#show-map"),
+				"map": func.getById("show-map"),
 				"mapID": "show-map",
 				
-				"modalTitle": document.querySelector("#modal-title"),
-				"iconModalClose": document.querySelector("#icon-modal-close"),
+				"modalTitle": func.getById("modal-title"),
+				"iconModalClose": func.getById("icon-modal-close"),
 				
-				"waitOverlay": document.querySelector("#wait"),
-				"btnGetCoord": document.querySelector("#btn-get-coords"),
-				"btnGetAddr": document.querySelector("#btn-get-address"),
-				"btnShowMap": document.querySelector("#btn-show-map"),
+				"waitOverlay": func.getById("wait"),
+				"btnGetCoord": func.getById("btn-get-coords"),
+				"btnGetAddr": func.getById("btn-get-address"),
+				"btnShowMap": func.getById("btn-show-map"),
 				
-				"blockApiType": document.querySelector("#api-type")
+				"blockApiType": func.getById("api-type")
 			};
 			
-			_vars["htmlObj"]["addresTitle"].style.display="none";
+			//_vars["htmlObj"]["addresTitle"].style.display="none";
 			_vars["htmlObj"]["waitOverlay"].style.display="none";
-
+			
 //----------------------------------------- load map API
 			_loadApi();
 
@@ -270,6 +289,7 @@ func.logAlert(_vars["logMsg"],"success");
 						_waitWindow( "open" );
 						script = _loadScript( _vars["os_apiLink"] );
 						script.onload = function() {
+console.log( OpenLayers );
 //alert( "onload " + this.src);
 							_waitWindow( "close" );
 _vars["logMsg"] = "load OpenStreetMaps API, version: "+OpenLayers.VERSION_NUMBER;
@@ -367,13 +387,7 @@ func.logAlert(_vars["logMsg"],"error");
 				func.logAlert(_vars["logMsg"], "success");
 				_vars["htmlObj"]["btnShowMap"].classList.remove("disabled");
 				
-				// _getAdress({
-					// lng: posObj.coords.longitude,
-					// lat: posObj.coords.latitude
-				// });
-
 				_waitWindow( "close" );
-				
 			}//end success_fn()
 			
 			function fail_fn( error ){
@@ -416,16 +430,49 @@ console.log( "googleMaps API version: " + google.maps.version );
 					
 					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
 					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					var latlng = new google.maps.LatLng(lat, lng);
 					
-					_vars.mapObj = new google.maps.Map( _vars["htmlObj"]["map"] , {
+					var _options = {
 						zoom: 16,
 						//center: new google.maps.LatLng(-34.397, 150.644),
-						center: new google.maps.LatLng(lat, lng),
+						center: latlng,
+						navigationControlOptions: {
+							style: google.maps.NavigationControlStyle.SMALL
+						},
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 						//mapTypeId: google.maps.MapTypeId.TERRAIN
-					}); 
+					};
+ 
+					_vars.mapObj = new google.maps.Map( _vars["htmlObj"]["map"] , _options); 
+//_vars.mapObj.scrollwheel=true;
+//_vars.mapObj.setOptions({ mapTypeControl:true});
+
+					//var marker = new google.maps.Marker({position: latlng, map: _vars.mapObj});
+					var marker = new google.maps.Marker({
+						position: latlng,
+						map: _vars.mapObj,
+						title: "you are here..",
+						icon: {
+							url: "../img/red-star.png",
+							scaledSize: new google.maps.Size(64, 64)
+						}
+					});
 					
-					_waitWindow( "close" );
+					var contentString = '<div class="location-balloon">Your location</div>';
+					var infowindow = new google.maps.InfoWindow({
+							content: contentString
+					});
+					google.maps.event.addListener( marker, "click", function(e) {
+//console.log(e);
+							infowindow.open( _vars.mapObj, marker);
+					});
+					
+					google.maps.event.addListener(_vars.mapObj, "idle", function() {//tilesloaded
+//console.log("idle,", arguments);
+						_waitWindow( "close" );
+					});
+					
+					
 					_vars["htmlObj"]["appModal"].classList.add("active");
 				break;
 
@@ -450,9 +497,9 @@ console.log("2GIS API version: " + DG.version);
 							zoom: 16
 						});
 						DG.marker([lat, lng]).addTo( _vars.mapObj ).bindPopup("You are here...");
+						_waitWindow( "close" );
 					});
 					
-					_waitWindow( "close" );
 					_vars["htmlObj"]["appModal"].classList.add("active");
 					
 				break;
@@ -467,11 +514,25 @@ console.log("2GIS API version: " + DG.version);
 					_vars["htmlObj"]["map"].style.width = _w+"px";
 //----------------------------
 					_vars["htmlObj"]["modalTitle"].innerHTML = "OpenStreet Maps API version: " + OpenLayers.VERSION_NUMBER;
+					_vars["htmlObj"]["appModal"].classList.add("active");
 				
 //http://uralbash.ru/articles/2012/osm_example/
 //https://wiki.openstreetmap.org/wiki/OpenLayers_Simple_Example
-					_vars.mapObj = new OpenLayers.Map( _vars["htmlObj"]["mapID"] );
+
+//vlayer = new OpenLayers.Layer.Vector( "Editable" );
+					var options = {
+						controls: [
+							new OpenLayers.Control.Navigation(),
+							new OpenLayers.Control.PanZoomBar()//,
+							//new OpenLayers.Control.Attribution(),
+							//new OpenLayers.Control.EditingToolbar(vlayer),
+							//new OpenLayers.Control.Zoom()
+						]
+					};
+					_vars.mapObj = new OpenLayers.Map( _vars["htmlObj"]["mapID"], options );
+					
 					var mapLayer = new OpenLayers.Layer.OSM();
+//console.log("mapLayer: ", mapLayer);
 					var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
 					var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 					
@@ -479,14 +540,37 @@ console.log("2GIS API version: " + DG.version);
 					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
 					var position = new OpenLayers.LonLat( lng, lat ).transform( fromProjection, toProjection);
 					
+					mapLayer.events.register("loadend", mapLayer, function (e) {
+//console.log("loadend", e);
+						_waitWindow( "close" );
+						_vars["htmlObj"]["map"].classList.remove("olMap");//fix, remove class
+					});
 					_vars.mapObj.addLayer( mapLayer );
 					//_vars.mapObj.zoomToMaxExtent();
 					
+					var markers = new OpenLayers.Layer.Markers( "Markers" );
+					_vars.mapObj.addLayer( markers );
+					markers.addMarker( new OpenLayers.Marker(position) );
+					
 					var zoom = 17; 
 					_vars.mapObj.setCenter( position, zoom);
+					
+					_vars.mapObj.addControl(new OpenLayers.Control.LayerSwitcher());
+					//_vars.mapObj.addControl(new OpenLayers.Control.Permalink());
+					//_vars.mapObj.addControl(new OpenLayers.Control.Permalink("permalink"));
+// координаты текущего положения мыши
+//_vars.mapObj.addControl(new OpenLayers.Control.MousePosition());
 
-					_waitWindow( "close" );
-					_vars["htmlObj"]["appModal"].classList.add("active");
+// обзорная карта
+_vars.mapObj.addControl(new OpenLayers.Control.OverviewMap());
+
+// горячие клавиши
+_vars.mapObj.addControl(new OpenLayers.Control.KeyboardDefaults());
+	  
+//OpenLayers.Event.isLeftClick: function(event) {
+//console.log( event );
+//};
+					
 				break;
 
 				case "ArcGIS":
@@ -498,7 +582,99 @@ console.log("2GIS API version: " + DG.version);
 					_vars["htmlObj"]["map"].style.width = _w+"px";
 //----------------------------
 					_vars["htmlObj"]["modalTitle"].innerHTML = "ArcGIS Maps API, Dojo framework version: " + dojo.version.toString();
-				
+					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+//API 3.25
+					require([
+"esri/map", 
+//"dojo/domReady!",
+//"esri/dijit/Legend",
+"esri/symbols/SimpleMarkerSymbol",
+"esri/symbols/SimpleLineSymbol",
+"esri/geometry/Point",
+"esri/Color",
+"esri/symbols/PictureMarkerSymbol",
+//"esri/arcgis/utils",
+"esri/graphic",
+"esri/layers/GraphicsLayer"//,
+//"esri/geometry/webMercatorUtils"
+						], function(
+Map,
+//Legend,
+SimpleMarkerSymbol,
+SimpleLineSymbol,
+Point,
+Color,
+PictureMarkerSymbol,
+//arcgisUtils,
+Graphic,
+GraphicsLayer//,
+//webMercatorUtils
+					) {
+							_vars.mapObj = new Map( _vars["htmlObj"]["mapID"] , {
+								//A valid basemap name.
+								basemap: "streets",
+//"topo", "streets" | "satellite" | "hybrid" | "topo" | "gray" | "dark-gray" | "oceans" | 
+//"national-geographic" | "terrain" | "osm" | "dark-gray-vector" | "gray-vector" | 
+//"streets-vector" | "streets-night-vector" | 
+//"streets-relief-vector" | "streets-navigation-vector" | "topo-vector"
+								center: [lng, lat],
+								zoom: 15
+							});
+//console.log("Point:", Point);
+						
+							_vars.mapObj.on("load", function(e) {
+console.log("load _map ", e);
+/*					
+			var symbol = new SimpleMarkerSymbol({
+			  "color": [255,255,255,64],
+			  "size": 12,
+			  "angle": -30,
+			  "xoffset": 0,
+			  "yoffset": 0,
+			  "type": "esriSMS",
+			  //"style": "esriSMSCircle",
+			  //"style": "esriSMSCross",
+			  "style": "esriSMSDiamond",
+			  "outline": {
+				"color": [0,0,0,255],
+				"width": 1,
+				"type": "esriSLS",
+				"style": "esriSLSSolid"
+			  }
+			});        
+			console.log(symbol);
+*/
+								var _gLayer = new GraphicsLayer();
+								_vars.mapObj.addLayer(_gLayer);
+								
+								var point = new Point( lng, lat);
+								_gLayer.remove(_graphic);
+								_point = new Point( point );
+
+								var _markerSymbol = new PictureMarkerSymbol({
+									//url: "https://static.arcgis.com/images/Symbols/Shapes/BlackStarLargeB.png",
+									url: "../img/BlackStarLargeB.png",
+									width: 64,
+									height: 64,
+									yoffset: 12
+								});
+
+								var _graphic = new Graphic(_point, _markerSymbol);
+								//var _graphic = new Graphic(_point, symbol);
+								_gLayer.add(_graphic);
+								
+								_waitWindow( "close" );
+							});//end event
+					
+						_vars.mapObj.on("click", function(e){
+console.log("_map click", e);
+						});//end event
+
+					});//end require
+
+//API 4.13
+/*
 					require([
 					  "esri/Map",
 					  "esri/views/MapView"
@@ -510,8 +686,6 @@ console.log("2GIS API version: " + DG.version);
 						//basemap: "topo"
 					  });
 
-					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
 
 					var view = new MapView({
 						container: _vars["htmlObj"]["mapID"],
@@ -528,13 +702,17 @@ console.log(e);
 	_waitWindow( "close" );
 }, function( error ){// This function will execute if the promise is rejected due to an error
 console.log(error);
-	_vars["logMsg"] = "error creating ArcGIS map..." ;
+// for(var key in error){
+	// _vars["logMsg"] = key+ ":" + error[key] + ", type:" + typeof error[key];
+	// func.logAlert(_vars["logMsg"],"error");
+// }
+	_vars["logMsg"] = "error creating ArcGIS map, error.message:" + error.message;
 	func.logAlert(_vars["logMsg"],"error");
+	_waitWindow( "close" );
 });
-
-						_vars["htmlObj"]["appModal"].classList.add("active");
 					});
-				
+*/
+						_vars["htmlObj"]["appModal"].classList.add("active");
 				break;
 
 				default:
@@ -573,6 +751,8 @@ func.logAlert(_vars["logMsg"],"error");
 				p[key] = opt[key];
 			}
 //console.log(p);
+//for test
+//_vars["support"]["promiseSupport"] = false;
 
 			switch ( _vars["apiType"]){
 				
@@ -583,7 +763,48 @@ func.logAlert(_vars["logMsg"],"error");
 					.replace( "{{lat}}", p["lat"] );
 		//console.log( dataUrl );		
 					
-					func.runAjaxCorrect( dataUrl, __postFunc );
+					if( _vars["support"]["promiseSupport"] ){
+								var _promiseObj = _createPromise({
+									"url": dataUrl
+									//"url" : null
+								})
+								.then (
+								function( resObj ) {
+console.log( "-- promise resolve, THEN" );
+//console.log( arguments );
+									__postFunc( 
+											resObj["data"], 
+											resObj["runtime"], 
+											resObj["xhr"] );
+								}, 
+								
+								function(error){
+console.log( "-- promise reject, ", error );
+									__postFunc(false);
+								});
+//console.log( _promiseObj);
+					}
+					
+					//.....use jQuery deferred object
+					//.....use callback style
+					if( !_vars["support"]["promiseSupport"] ){
+_vars["logMsg"]= "window.Promise support FALSE, use callback style";
+console.log(_vars["logMsg"]);
+						func.runAjaxCorrect({
+							"url" : dataUrl,
+							"onSuccess" : function( data, runtime, xhr ){
+console.log("-- onSuccess", arguments);						
+								__postFunc( data, runtime, xhr );
+							},
+							
+							"onError" : function( xhr ){
+console.log( "-- onError ", arguments);
+								__postFunc( false );
+							}
+							
+						});
+					}					
+					
 				break;
 
 				case "OpenStreetMaps":
@@ -599,20 +820,115 @@ func.logAlert(_vars["logMsg"],"error");
 .replace( "{{addr_details}}", 0 )//addressdetails=[0|1], Include a breakdown of the address into elements. (Default: 0)
 .replace( "{{extratags}}", 0 )//extratags=[0|1], Include additional information in the result if available, e.g. wikipedia link, opening hours. (Default: 0)
 .replace( "{{namedetails}}", 0 )//namedetails=[0|1], Include a list of alternative names in the results. These may include language variants, references, operator and brand. (Default: 0)					
-//console.log( dataUrl );		
-					func.runAjaxCorrect( dataUrl, __postFunc );
+//console.log( dataUrl );
+
+					if( _vars["support"]["promiseSupport"] ){
+								var _promiseObj = _createPromise({
+									"url": dataUrl
+								})
+								.then (
+								function( resObj ) {
+//console.log( "-- promise resolve, THEN" );
+									__postFunc( 
+											resObj["data"], 
+											resObj["runtime"], 
+											resObj["xhr"] );
+								}, 
+								
+								function(error){
+//console.log( "-- promise reject, ", error );
+									__postFunc(false);
+								});
+					}
+					
+					//.....use callback style
+					if( !_vars["support"]["promiseSupport"] ){
+_vars["logMsg"]= "window.Promise support FALSE, use callback style";
+console.log(_vars["logMsg"]);
+						func.runAjaxCorrect({
+							"url" : dataUrl,
+							"onSuccess" : function( data, runtime, xhr ){
+								__postFunc( data, runtime, xhr );
+							},
+							
+							"onError" : function( xhr ){
+								__postFunc( false );
+							}
+							
+						});
+					}					
+					
 				break;
 				
 				case "googleMaps":
-					//var google_map_pos = new google.maps.LatLng( p.lat, p.lng );
+
+					var google_map_pos = new google.maps.LatLng( p.lat, p.lng );
 //console.log( google_map_pos );
 
-					//var google_maps_geocoder = new google.maps.Geocoder();
-					//google_maps_geocoder.geocode({ "latLng": google_map_pos },
-						//function( results, status ) {
-//console.log( results );
-						//}
-					//);
+					var google_maps_geocoder = new google.maps.Geocoder();
+					google_maps_geocoder.geocode({ "latLng": google_map_pos },
+						function( results, status ) {
+//console.log( status, results );
+//console.log( arguments );
+//for test
+//status = "OK";
+							if( status === "OK"){
+								_parseGoogleMapsGeocoderAnswer({
+									"results": results,
+									"status": status
+								});
+							} else {
+								_vars["logMsg"] = "error getting address, Google maps API, status: " + status ;
+								func.logAlert(_vars["logMsg"],"error");
+switch (status){
+	case "ZERO_RESULTS":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " indicates that the geocode was successful but returned no results. This may occur if the geocoder was passed a non-existent address.";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+	
+	case "OVER_DAILY_LIMIT":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " indicates any of the following:\
+- The API key is missing or invalid.<br>\
+- Billing has not been enabled on your account.<br>\
+- A self-imposed usage cap has been exceeded.<br>\
+- The provided method of payment is no longer valid (for example, a credit card has expired).";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+	
+	case "OVER_QUERY_LIMIT":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " indicates that you are over your quota.";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+	
+	case "REQUEST_DENIED":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " indicates that your request was denied.";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+	
+	case "INVALID_REQUEST":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " generally indicates that the query (address, components or latlng) is missing.";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+	
+	case "UNKNOWN_ERROR":
+		_vars["logMsg"] = "<b>"+status +"</b>" + " indicates that the request could not be processed due to a server error. The request may succeed if you try again.";
+		func.logAlert(_vars["logMsg"],"info");
+	break;
+}//end switch
+								_waitWindow( "close" );
+							}
+						}
+					);
+
+					// var dataUrl = _vars["google_geocodeUrl"]
+					// .replace( "{{apiKey}}", _vars["google_apiKey"] )
+					// .replace( "{{lng}}", p["lng"] )
+					// .replace( "{{lat}}", p["lat"] );
+// //console.log( dataUrl );		
+					// func.runAjaxCorrect( dataUrl, __postFunc );
+				break;
+					
+					
 				case "2GIS":
 				case "ArcGIS":
 				default:
@@ -624,6 +940,14 @@ func.logAlert(_vars["logMsg"],"error");
 			
 			
 			function __postFunc( data, runtime, xhr ) {
+				
+				if( !data || data.length === 0){
+_vars["logMsg"] = "error getting geolocation data..." ;
+func.logAlert( _vars["logMsg"], "error");
+					_waitWindow( "close" );
+					return false;
+				}
+				
 _vars["logMsg"] = "ajax load url: <b>" + dataUrl + "</b>, runtime: " + runtime +" sec";
 console.log( _vars["logMsg"] );
 
@@ -640,10 +964,6 @@ console.log( _vars["logMsg"] );
 //console.log( data.length );
 				if( data && data.length > 0){
 					_parseAjax( data );
-				} else {
-_vars["logMsg"] = "error getting geolocation data..." ;
-func.logAlert( _vars["logMsg"], "error");
-					_waitWindow( "close" );
 				}
 				
 			}//end __postFunc()
@@ -707,7 +1027,7 @@ func.logAlert( _vars["logMsg"], "error");
 			//console.log( key, value );
 						return value;
 					});
-//console.log( jsonObj );
+//console.log( jsonObj, jsonObj["results"].length );
 					var addrText = "";
 					
 					switch ( _vars["apiType"]){
@@ -719,14 +1039,18 @@ func.logAlert( _vars["logMsg"], "error");
 								addrText += _geoObj.metaDataProperty.GeocoderMetaData.text;
 							}//next
 	//console.log( addrText );
-							_vars["htmlObj"]["addresTitle"].style.display = "block";
+							//_vars["htmlObj"]["addresTitle"].style.display = "block";
 							_vars["htmlObj"]["addresText"].innerHTML = addrText;
 						break;
 						
 						case "OpenStreetMaps":
 							addrText = jsonObj["display_name"];
-							_vars["htmlObj"]["addresTitle"].style.display = "block";
+							//_vars["htmlObj"]["addresTitle"].style.display = "block";
 							_vars["htmlObj"]["addresText"].innerHTML = addrText;
+						break;
+					
+						case "googleMaps":
+							_parseGoogleMapsGeocoderAnswer( jsonObj );
 						break;
 					
 						default:
@@ -747,6 +1071,76 @@ func.logAlert(_vars["logMsg"],"error");
 
 			}//end _parseJSON()
 			
+			function _parseGoogleMapsGeocoderAnswer( jsonObj ){
+//for test
+// jsonObj = [
+	// {
+		// formatted_address: "ул. Орджоникидзе, 27, Новосибирск, Новосибирская обл., Россия, 630099",
+		// types:  ["establishment", "point_of_interest", "store"]
+	// }
+// ];
+				var tpl_addr = _vars["templates"]["tplAddr"];
+				var tpl_list = _vars["templates"]["tplAddrTypesList"];
+				var addrText = "";
+				
+for(var n1 = 0; n1 < jsonObj["results"].length; n1++){
+	var address = jsonObj["results"][n1];
+//console.log(n1, address);
+
+	var items = address["types"];
+	var html_list = "";
+	for( var n2=0; n2 < items.length; n2++){
+		html_list += tpl_list.replace("{{type}}", items[n2]);
+	}//next
+
+	addrText += tpl_addr
+.replace("{{num}}", n1+1)
+.replace("{{list}}", html_list)
+.replace("{{formatted_address}}", address["formatted_address"]);
+
+}//next				
+//console.log(addrText);
+
+				//_vars["htmlObj"]["addresTitle"].style.display = "block";
+				_vars["htmlObj"]["addresText"].innerHTML = addrText;
+				_waitWindow( "close" );
+			}//end _parseGoogleMapsGeocoderAnswer()
+			
+			
+			function _createPromise( opt ){
+//console.log("_createPromise(): ", opt);
+				var p = {
+					"url" : false
+				};
+				//extend options object
+				for(var key in opt ){
+					p[key] = opt[key];
+				}
+//console.log(p);
+
+				return new Promise( function(resolve, reject) {
+//console.log(resolve, reject);
+					func.runAjaxCorrect({
+						"url" : p["url"],
+						//"onProgress" : null,
+						"onSuccess" : function( data, runtime, xhr ){
+//console.log("-- onSuccess", arguments);						
+							resolve({
+								"data": data,
+								"runtime" : runtime,
+								"xhr" : xhr
+							});
+						},
+						"onError" : function( xhr ){
+//console.log( "-- onError ", arguments);
+							reject( xhr.statusText );
+						}
+						
+					});
+
+				});//end promise
+			}//end __checkDate()
+		
 		};//end _getAdress()
 		
 		
