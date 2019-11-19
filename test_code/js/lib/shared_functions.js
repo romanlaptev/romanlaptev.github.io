@@ -776,11 +776,24 @@ console.log( "xhr.onerror,", e);
 				sSec = "0" + sSec;
 			}
 			
-			//var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
 			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
+			
+			switch( format ){
+				
+				case "yyyy-mm-dd":
+					dateStr = sYear + "-" + sMonth + "-" + sDate;
+				break;
+				
+				case "yyyy-mm-dd hh:min":
+					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+				break;
+				
+			}//end switch
+			
 			return dateStr;
 		}//end _timeStampToDateStr()
-
+		
+		
 		function _getMonthNameByNum( num, lang ){
 			var sMonth = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 			if( lang === "RU" || lang === "ru" ){
