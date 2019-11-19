@@ -73,6 +73,15 @@ header .navbar {
 
 .log-panel {
 	background-color: #b0c4de;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 999;
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.log-panel .panel-body {
+	padding: 5px;
 }
 
 #search-panel .pull-left {
