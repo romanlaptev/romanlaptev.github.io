@@ -31,6 +31,19 @@ margin: 0;
 		<h1>test WebGL</h1>
 	</div>
 	
+	<div id="log-wrap" class="log-panel">
+		<div id="log"></div>
+	</div>		
+
+	<div class="panel w">
+		<canvas id="test-canvas" width="640" height="480">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
+		</canvas>
+	</div>
+	
+</div><!-- end container -->
+
+
 	<pre>
 https://ru.wikipedia.org/wiki/WebGL
 
@@ -63,19 +76,6 @@ http://www.pvsm.ru/webgl/279632
 Коичи Мацуда, Роджер Ли «WebGL: программирование трехмерной графики».
 	</pre>
 
-
-	<div id="log-wrap" class="log-panel">
-		<div id="log"></div>
-	</div>		
-
-	<div class="panel w">
-		<canvas id="test-canvas" width="640" height="480">
-Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.		
-		</canvas>
-	</div>
-	
-</div><!-- end container -->
-
 <!-- фрагментный шейдер -->
 <script id="shader-fs" type="x-shader/x-fragment">
   void main(void) {
@@ -92,14 +92,20 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 </script>
 
 <script>
+var func = sharedFunc();
+//console.log("func:", func);
+
 console.log(window.WebGLRenderingContext);
 if (window.WebGLRenderingContext) {
 	var msg = "Your browser supports WebGL...";
-	_log("<div class='alert alert-success'>" + msg + "</div>");
-	console.log(msg);
+	func.logAlert(msg, "success");
+//console.log(msg);
+} else {
+	var msg = "Your browser NOT supports WebGL...";
+	func.logAlert(msg, "error");
 }
 
-	var canvas = getById("test-canvas");
+	var canvas = func.getById("test-canvas");
 console.log("canvas: " + typeof canvas.getContext);
 
 	var gl = null;
@@ -108,20 +114,20 @@ console.log("canvas: " + typeof canvas.getContext);
 		gl = canvas.getContext('webgl', options) || 	canvas.getContext('experimental-webgl', options);
 	} catch(e) {
 		var msg = "Canvas WebGL does not supported in this browser";
-		_log("<div class='alert alert-danger'>" + msg + "</div>");
+		func.logAlert( msg, "danger");
 	};
 
 console.log("WebGL context: ", gl);
 	if ( gl ) {
 		var msg = "Canvas WebGL ready for drawing...";
-		_log("<div class='alert alert-success'>" + msg + "</div>");
+		func.log("<div class='alert alert-success'>" + msg + "</div>");
 		console.log(msg);
 		
 		runTest(gl);
 	
 	 } else {
 		var msg = "This browser does not support webGL....";
-		_log("<div class='alert alert-danger'>" + msg + "</div>");
+		func.log("<div class='alert alert-danger'>" + msg + "</div>");
 	console.log(msg);
 		//throw new Error('This browser does not support webGL. Try using the canvas renderer');
 	 }
@@ -167,7 +173,7 @@ function runTest(gl){
 	   
 		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
 			var msg = "Ошибка компиляции шейдера: " + gl.getShaderInfoLog(shader);
-			_log("<div class='alert alert-danger'>" + msg + "</div>");
+			func.log("<div class='alert alert-danger'>" + msg + "</div>");
 console.log(msg);
 	
 			gl.deleteShader(shader);   
@@ -194,7 +200,7 @@ console.log(msg);
 		  
 		if ( !gl.getProgramParameter(shaderProgram, gl.LINK_STATUS) ) {
 			var msg = "- install shaders fail...";
-			_log("<div class='alert alert-danger'>" + msg + "</div>");
+			func.log("<div class='alert alert-danger'>" + msg + "</div>");
 console.log(msg);
 		}
 		  
@@ -247,7 +253,7 @@ function app2(){
     var camera, scene, renderer;
     var geometry, material, mesh;
 /*	
-	var canvas = getById("canvas2");
+	var canvas = func.getById("canvas2");
 	var gl = initWebGL(canvas); 
 	
 	if (gl) {
@@ -313,7 +319,7 @@ function app2(){
 
 		if (!gl) {
 			var msg = "Unable to initialize WebGL. Your browser may not support it.";
-			_log("<div class='alert alert-danger'>" + msg + "</div>");
+			func.log("<div class='alert alert-danger'>" + msg + "</div>");
 console.log(msg);
 			gl = null;
 		}

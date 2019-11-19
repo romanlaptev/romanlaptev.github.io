@@ -24,14 +24,14 @@ window.onload = function(){
     var sideMenu = document.querySelector("#side-menu");
 //console.log( "transform: ", appContainer.style.transform, appContainer.style.transform.length );
     
-    //if( appContainer.style.transform === ""){
-    if( sideMenu.style.display === "block"){
-      sideMenu.style.display = "none";
-      appContainer.style.transform = "";
-    } else {
-      sideMenu.style.display = "block";
-      appContainer.style.transform = "translate3d(202px, 0px, 0px)";
-    }
+		//if( appContainer.style.transform === ""){
+		if( sideMenu.style.display === "block"){
+			sideMenu.style.display = "none";
+			appContainer.style.transform = "";
+		} else {
+			sideMenu.style.display = "block";
+			appContainer.style.transform = "translate3d(202px, 0px, 0px)";
+		}
     
 	});
 
@@ -65,6 +65,7 @@ window.onload = function(){
 	defineEvents();
 
 	//--------------------------
+/*	
 	var test =  typeof navigator.geolocation !== "undefined";
 	logMsg = "navigator.geolocation support: " + test;
 	if ( test ) {
@@ -73,7 +74,7 @@ window.onload = function(){
 	} else {
 		func.logAlert(logMsg, "danger");
 	}
-	
+*/	
 	//--------------------------
 	if( window.location.protocol !== "https:"){
 		support = false;
@@ -84,7 +85,7 @@ window.onload = function(){
 	}
 
 //for test
-support = true;
+//support = true;
 
 	//Start webApp
 	if( support ){
@@ -119,3 +120,64 @@ function defineEvents(){
 
 }//end defineEvents()
 
+
+
+//================================= Element.classList
+//https://developer.mozilla.org/ru/docs/Web/API/Element/classList
+(function() {
+    // helpers
+    var regExp = function(name) {
+        return new RegExp('(^| )'+ name +'( |$)');
+    };
+    var forEach = function(list, fn, scope) {
+        for (var i = 0; i < list.length; i++) {
+            fn.call(scope, list[i]);
+        }
+    };
+
+    // class list object with basic methods
+    function ClassList(element) {
+        this.element = element;
+    }
+
+    ClassList.prototype = {
+        add: function() {
+            forEach(arguments, function(name) {
+                if (!this.contains(name)) {
+                    this.element.className += ' '+ name;
+                }
+            }, this);
+        },
+        remove: function() {
+            forEach(arguments, function(name) {
+                this.element.className =
+                    this.element.className.replace(regExp(name), '');
+            }, this);
+        },
+        toggle: function(name) {
+            return this.contains(name) 
+                ? (this.remove(name), false) : (this.add(name), true);
+        },
+        contains: function(name) {
+            return regExp(name).test(this.element.className);
+        },
+        // bonus..
+        replace: function(oldName, newName) {
+            this.remove(oldName), this.add(newName);
+        }
+    };
+
+    // IE8/9, Safari
+    if (!('classList' in Element.prototype)) {
+        Object.defineProperty(Element.prototype, 'classList', {
+            get: function() {
+                return new ClassList(this);
+            }
+        });
+    }
+
+    // replace() support for others
+    if (window.DOMTokenList && DOMTokenList.prototype.replace == null) {
+        DOMTokenList.prototype.replace = ClassList.prototype.replace;
+    }
+})();

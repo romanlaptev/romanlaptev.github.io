@@ -95,7 +95,7 @@
 	</div>
 </div>
 
-<div class="container snap-content" id="app-container">
+<div id="app-container" class="container">
 
 	<header id="app-header" class="bar bar-nav boxShadow">
 			<span id="open-left" class="icon icon-bars pull-left" title="show menu"></span>
@@ -108,123 +108,128 @@
 				<a class="control-item">Three</a>
 			</div>	
 -->	
-      <div class="page-header pull-right">
-        <h1>Test map API</h1>
-     </div>
-  
-  </header>
+		<div class="page-header pull-right">
+			<h1>Test map API</h1>
+		</div>
+	</header>
 	
-	<div class="card panel">
-
+	<div class="card">
 		<div class="pull-left col-1">
-		
-<!-- <div class="control-content">			 -->
-<div class="block-gps">
-			<div class=""><b>Coordinates:</b></div>
-			<ul class="table-view">
-<p>
-	<b>Latitude, (deg.):
-		<sub><mark>(широта)</mark></sub> 
-		<span id="latitude" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p> 
-
-<p>
-	<b>Longitude, (deg.):
-		<sub><mark>(долгота)</mark></sub>
-		<span id="longitude" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-
-<p>
-	<b>Accuracy, (meters):
-		<sub><mark>(погрешность)</mark></sub>
-		<span id="accuracy" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-
-<p>
-	<b>altitude, (meters):
-		<sub><mark>(высота над уровнем моря)</mark></sub>
-		<span id="altitude" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-
-<p>
-	<b>altitudeAccuracy, (meters): 
-		<span id="altitude-accuracy" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-
-<p>
-	<b>Heading:
-		<sub><mark>(направление устройства по отношению к северу)</mark></sub>
-		<span id="heading" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-
-<p>
-	<b>Speed, (m/sec.):
-		<sub><mark>(скорость)</mark></sub>
-		<span id="speed" title="" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-					
-<p>
-	<b>datetime: 
-		<sub><mark>(дата, время)</mark></sub>
-		<span id="datetime" class="geo-accuracy-inaccurate"></span>
-	</b>
-</p>
-			</ul>
-			
-			
-			<div id="addr-title"><b>Address:</b></div>
-			<div>
-				<span id="addr-text" class="geo-accuracy-inaccurate"></span>
+			<div class="panel">
+				<ul class="table-view col-1">
+					<li class=""><button id="btn-get-coords" class="btn btn-block green">Get coordinates</button></li>
+					<li class=""><button id="btn-get-address" class="btn btn-block blue">Get address</button></li>
+					<li class=""><button id="btn-show-map" class="btn btn-block blue disabled">Show map</button></li>
+				</ul>
 			</div>
-			
-</div>			
-		</div>		
+      
+			<div class="panel">
+
+				<div class=""><b>Coordinates:</b></div>
+
+				<ul class="table-view">
+					<p>
+						<b>Latitude, (deg.):
+							<sub><mark>(широта)</mark></sub> 
+							<span id="latitude" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p> 
+
+					<p>
+						<b>Longitude, (deg.):
+							<sub><mark>(долгота)</mark></sub>
+							<span id="longitude" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+
+					<p>
+						<b>Accuracy, (meters):
+							<sub><mark>(погрешность)</mark></sub>
+							<span id="accuracy" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+
+					<p>
+						<b>altitude, (meters):
+							<sub><mark>(высота над уровнем моря)</mark></sub>
+							<span id="altitude" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+
+					<p>
+						<b>altitudeAccuracy, (meters): 
+							<span id="altitude-accuracy" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+
+					<p>
+						<b>Heading:
+							<sub><mark>(направление устройства по отношению к северу)</mark></sub>
+							<span id="heading" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+
+					<p>
+						<b>Speed, (m/sec.):
+							<sub><mark>(скорость)</mark></sub>
+							<span id="speed" title="" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+										
+					<p>
+						<b>datetime: 
+							<sub><mark>(дата, время)</mark></sub>
+							<span id="datetime" class="geo-accuracy-inaccurate"></span>
+						</b>
+					</p>
+				</ul>
+				
+			</div>			
+      
+		</div><!-- end left col -->
 
 		<div class="pull-right col-2">
-			<ul class="table-view">
-				<li class=""><button id="btn-get-coords" class="btn btn-block green">Get coordinates</button></li>
-				<li class=""><button id="btn-get-address" class="btn btn-block blue">Get address</button></li>
-				<li class=""><button id="btn-show-map" class="btn btn-block blue disabled">Show map</button></li>
-<!--        
-				<li class=""><button id="btn-change-api" class="btn btn-block blue">change API</button></li>
--->
+
+			<ul class="table-view panel" id="api-type">
+				<h3>API type</h3>
+
+				<li class="table-view-cell">
+					<label><input type="radio" name="api_type" value="yandexMaps" autocomplete="off" checked>Yandex Maps API</label>
+					<a href="https://tech.yandex.ru/maps/mapsapi/" title="go to website" target="_blank"><img src="img/yandexMaps.png"/></a>
+				</li>
+
+				<li class="table-view-cell">
+	<label><input type="radio" name="api_type" value="googleMaps" autocomplete="off">Google Maps API</label>
+					<a href="https://developers.google.com/maps/" title="go to website" target="_blank"><img src="img/googleMaps.png"/></a>
+				</li>
+
+				<li class="table-view-cell">
+					<label><input type="radio" name="api_type" value="2GIS" autocomplete="off">2GIS Maps API</label>
+					<a href="https://api.2gis.ru/doc/maps/ru/quickstart/" title="go to website" target="_blank"><img src="img/2gisMaps.png"/></a>
+				</li>
+
+				<li class="table-view-cell">
+					<label><input type="radio" name="api_type" value="OpenStreetMaps" autocomplete="off">OpenStreet Maps API</label>
+					<a href="https://openlayers.org/en/latest/apidoc/" title="go to website" target="_blank"><img src="img/osMaps.png"/></a>
+				</li>
+
+				<li class="table-view-cell">
+					<label><input type="radio" name="api_type" value="ArcGIS" autocomplete="off">ArcGIS Maps API</label>
+					<a href="https://developers.arcgis.com/javascript/" title="go to website" target="_blank"><img src="img/arc-gis.png"/></a>
+				</li>
+
 			</ul>
-		</div>
+      
+		</div><!-- end right col -->
 		
-	</div><!-- end panel -->
+	</div><!-- end card -->
   
 	<div class="card panel">
-		<ul class="table-view" id="api-type">
-			<h3>API type</h3>
-      
-			<li class="table-view-cell">
-				<label><input type="radio" name="api_type" value="yandexMaps" autocomplete="off" checked>Yandex Maps API</label>
-			</li>
-      
-			<li class="table-view-cell">
-        <label><input type="radio" name="api_type" value="googleMaps" autocomplete="off">Google Maps API</label>
-			</li>
-      
-			<li class="table-view-cell">
-				<label><input type="radio" name="api_type" value="2GIS" autocomplete="off">2GIS Maps API</label>
-			</li>
-      
-			<li class="table-view-cell">
-				<label><input type="radio" name="api_type" value="OpenStreetMaps" autocomplete="off">OpenStreet Maps API</label>
-			</li>
-      
-			<li class="table-view-cell">
-				<label><input type="radio" name="api_type" value="ArcGIS" autocomplete="off">ArcGIS Maps API</label>
-			</li>
-      
-		</ul>
+			<div id="addr-title"><b>Address:</b></div>
+			<div>
+				<span id="addr-text" class=""></span>
+			</div>
+    
 	</div><!-- end panel -->
   
 </div><!-- end app-container -->
