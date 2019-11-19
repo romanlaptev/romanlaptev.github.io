@@ -129,5 +129,6 @@ header .navbar-brand h1 {
     color: #fff;
     outline: none;
 }
-
-
+#webapps .list-group-item {
+	padding: 5px 5px;
+}
