@@ -225,27 +225,23 @@ console.log('Fetch Error :-S', err);
   
 	}//end event
 
-/*		
-	document.getElementById("btn-ajax").onclick = function() {
-				//var url = "data/test.html";
-				//var url = document.getElementsByName("input_url")[0].value;
-				//запрос из постороннего источника заблокирован: 
-				//политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
-				//(причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
-				//var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
+	var btnAjax = func.getById("btn-ajax");
+	btnAjax.onclick = function(e){
+	
+		var inputUrl = func.getById("input-url");
 		runAjax( {
 			"requestMethod" : "GET", 
-			"url" : document.getElementsByName("input_url")[0].value, 
+			"url" : inputUrl.value, 
 			"callback": function(data){
 console.log("end ajax load, ", data[0], data.length);					
 			}//end ajax load
 		});
+
 	};//end event
-*/			
 	
 }//end load
 
-/*
+
 function runAjax( opt ){
 //console.log(arguments);
 	
@@ -306,8 +302,9 @@ console.log( all_headers );
 
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-				_log("ajax load url: " + url + ", runtime: " + runtime +" sec");
-							
+logMsg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+func.logAlert( logMsg, "info");
+				
 				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
 console.log( "xhr.response: ", xhr.response );
 console.log( "xhr.responseText: ", xhr.responseText );
@@ -320,10 +317,6 @@ console.log( "xhr.responseXML: ", xhr.responseXML );
 //console.log( "xhr.responseText: ", xhr.responseText );
 //console.log( "xhr.responseXML: ", xhr.responseXML );
 //}
-
-
-					var all_headers = xhr.getAllResponseHeaders();
-console.log( all_headers );
 
 					if( typeof callback === "function"){
 						
@@ -340,10 +333,16 @@ console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 							
 			} else {
 console.log(xhr);					
-_log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-_log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-_log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
-			}						
+
+logMsg = "Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b>";
+func.logAlert( logMsg, "error");
+
+logMsg = "Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b>";
+func.logAlert( logMsg, "error");
+
+logMsg = "Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b>";
+func.logAlert( logMsg, "error");
+			}
 						
 		}
 	};
@@ -387,7 +386,7 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	}//end createRequestObject()
 	
 }//end runAjax
-*/
+
 
 </script>
 
@@ -413,9 +412,9 @@ _log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText 
 	input url:<input type="text" class="form-control" id="input-url" name="input_url" value=""/>
 <!--	
 	load progress:<progress id="load-progress" max="100" value="0" style="width:100%"></progress>
-	<button id="btn-ajax" class="btn btn-primary" >ajax request</button>
 -->	
 	<button id="btn-test-fetch" class="btn btn-danger">test FETCH</button>
+	<button id="btn-ajax" class="btn btn-primary" >ajax request</button>
 	
 	<pre>
 ../ajax/data/test.html
