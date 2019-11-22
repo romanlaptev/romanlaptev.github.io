@@ -39,7 +39,9 @@
 
     var _loadCss = function(url) {
 
-
+	Array.prototype.in_array = function(value){
+	document.getElementsByClassName = function(cl) { 
+	create xmlhttprequest
 */
 //==============================
 
@@ -51,7 +53,15 @@
 		if(!session) cookie_string += "; expires=" + expires.toGMTString();
 		document.cookie = cookie_string;
 	};//setCookie
-
+/*
+function set_cookie(name, value, expires){
+alert(name);
+	if (!expires){
+		expires = new Date();
+	}
+	document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() +  "; path=/";
+}
+*/
 
 	var delCookie = function (name){
 		document.cookie = name + "=; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
@@ -379,6 +389,118 @@
         document.getElementsByTagName("head")[0].appendChild(link);
     };//_loadCss
 
+
+//=================================
+//if not arr1.indefOf()....arr1.in_array()
+Array.prototype.in_array = function(value){
+	var _len = this.length;
+	for (var n = 0; n < _len; n++)
+		if (this[n] === value) {
+      return true;
+    }
+	return false;
+};
+// var arr1 = [1,2,3];
+// var test = arr1.in_array(2);
+// console.log(test);
+
+//=================================
+if(document.getElementsByClassName == undefined) { 
+   document.getElementsByClassName = function(cl) { 
+      var retnode = []; 
+      var myclass = new RegExp('\\b'+cl+'\\b'); 
+      var elem = this.getElementsByTagName('*'); 
+      for (var i = 0; i < elem.length; i++) { 
+         var classes = elem[i].className; 
+         if (myclass.test(classes)) { 
+            retnode.push(elem[i]); 
+         } 
+      } 
+      return retnode; 
+   } 
+}; 
+
+//================================= create xmlhttprequest
+/*
+var request = false;
+
+try {
+
+	request = new XMLHttpRequest();
+  
+} catch (trymicrosoft) {
+
+	try {
+
+   		request = new ActiveXObject("Msxml2.XMLHTTP");
+
+ 	} catch (othermicrosoft) {
+
+   		try {
+
+     		request = new ActiveXObject("Microsoft.XMLHTTP");
+
+   		} catch (failed) {
+
+    		request = false;
+
+   		}  
+ 	}
+}   
+*/
+
+//=================================
+/*
+$(document).ready(
+	function()
+	{
+	
+		$("#attach-pdf-submit").click(
+			function()
+			{
+				$("#attach-filelist").empty();
+			}
+		);
+	
+		$("#attach-pdf-remove").click(
+			function()
+			{
+				var attach_file = $("#attach-file").text();
+//console.log("attach_file = " + attach_file);			
+				var category_id = $("input[name=attach_pdf_category_id]").val();
+//console.log("category_id = " + category_id);			
+
+				$.ajax({
+					type: 'POST',
+					url: '/templates/qdec2/includes/attach_pdf.php',
+					data: 'action=remove&category_id=' + category_id + '&attach_file=' + attach_file,
+						success: function(data){
+console.log(data);			
+							//var error = 0;
+						},
+						error: function(data) {
+console.log("error, " + data);			
+							//var error = 1;
+						}
+				});
+				$("#attach-file").empty();
+
+			}
+		);
+		
+	}
+);//end ready
+*/
+
+//=================================
+
+
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
 //=================================
 //=================================
 //=================================
