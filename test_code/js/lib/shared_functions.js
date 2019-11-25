@@ -236,7 +236,10 @@ console.log( logMsg );
 			
 			var p = {
 				"requestMethod" : "GET", 
-				"responseType" : "", //arraybuffer, blob, document, ms-stream, text
+				
+				//https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/responseType
+				"responseType" : "", //"", "arraybuffer", "blob", "document","json","text","moz-chunked-arraybuffer","ms-stream"				
+				
 				"enctype" : "application/x-www-form-urlencoded",
 				//"enctype" : "multipart/form-data",
 				"url" : false, 
