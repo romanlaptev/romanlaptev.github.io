@@ -519,9 +519,9 @@ console.log( logMsg );
 				}
 			}
 
-		//console.log(xhr.upload);
+console.log(xhr.upload);
 			if( xhr.upload ){
-				
+/*				
 				xhr.upload.onerror = function(e){
 		console.log(arguments);
 		console.log("event type:" + e.type);
@@ -577,7 +577,7 @@ console.log( logMsg );
 		console.log("total: " + e.total);
 		console.log("loaded: " + e.loaded);
 				};
-
+*/
 			}
 			
 			//send query	
