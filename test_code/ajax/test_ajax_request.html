@@ -26,25 +26,27 @@ var url_field;
 
 window.onload = function(){
 
-	var btn_clear_log = document.querySelector("#btn-clear-log");
+	//var btn_clear_log = document.querySelector("#btn-clear-log");
 	//var btn_clear_log = document.getElementById("clear-log");
-	btn_clear_log.onclick = function(){
-		log.innerHTML = "";
-	};//end event
+	//btn_clear_log.onclick = function(){
+		//log.innerHTML = "";
+	//};//end event
 
 	//var btn_load_iframe = document.querySelector("#btn-load-iframe");
 	//btn_load_iframe.onclick = function(event){
 		//loadFrame();
 	//};//end event
 	
-	var btn_load = document.querySelector("#btn-load");
+	//var btn_load = document.querySelector("#btn-load");
+	var btn_load = document.getElementById("btn-load");
 	
 	btn_load.onclick = function(event){
-		url_field = document.querySelector("#url-field");
-		//loadData();
-		_serverRequestAppDate( function(data){
-console.log("end request..", data);
-		});
+		//url_field = document.querySelector("#url-field");
+		url_field = document.getElementById("url-field");
+		loadData();
+		//_serverRequestAppDate( function(data){
+//console.log("end request..", data);
+		//});
 		
 	};//end event
 

@@ -110,8 +110,8 @@ console.log( this.response );
 		
 		xhr.onerror = function() {
 console.log(arguments);		
-			logMsg =  "error, status: " + this.status;
-			log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
+			//logMsg =  "error, status: " + this.status;
+			//log.innerHTML += "<p class='alert alert-danger'>" +logMsg+"</p>";
 		}
 		
 		xhr.onloadend = function(e){
