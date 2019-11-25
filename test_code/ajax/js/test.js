@@ -162,7 +162,7 @@ console.log(e);
 			"requestMethod" : "GET", 
 			"url" : url, 
 			//"noCache" : true,
-			"responseType":"json",
+			//"responseType":"json",
 			
 			"onProgress" : function( e ){
 				var percentComplete = 0;
@@ -335,45 +335,39 @@ var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
 //console.log( "xhr.response: ", xhr.response );
 
-if( "responseType" in xhr){
-// // console.log( "xhr.response: ", xhr.response );
+					if( "responseType" in xhr){
+					// // console.log( "xhr.response: ", xhr.response );
 console.log( "responseType: " + xhr.responseType );
-}
+					}
 
-try{
+					try{
 console.log( "xhr.responseText: ", xhr.responseText );
-} catch(e){
+					} catch(e){
 console.log( e );
-}
+					}
 
-try{
+					try{
 console.log( "xhr.responseXML: ", xhr.responseXML );
-} catch(e){
+					} catch(e){
 console.log( e );
-}
+					}
 
 					if( typeof callback === "function"){
 						
-						if( xhr.responseXML ){
-//var test = xhr.responseXML.selectNodes("//pma_xml_export");	
-//var test = xhr.responseXML.getElementsByTagName("database");
-//console.log( test.item(0).nodeName);
-
+							var data = xhr.response;
 							//fix IE8
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 							var contentType = xhr.getResponseHeader("Content-Type");
 							if( contentType === "application/xml" ||
 								contentType === "text/xml"){
-								var data = xhr.responseXML;
-							} else {
-								var data = xhr.responseText;
-							}
-
+								data = xhr.responseXML;
+							} 
+							
+							if( contentType === "text/plain"){
+								data = xhr.responseText;
+							} 
+							
 							callback(data, runtime);
-						} else {
-							var data = xhr.responseText;
-							callback(data, runtime);
-						}
 					}
 					//if browser not define callback "onloadend"
 					var test = "onloadend" in xhr;
