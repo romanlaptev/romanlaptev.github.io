@@ -1,7 +1,7 @@
 *.*~
 projects/app1795
 projects/geolocation
-projects/bookmarks/bookmarks-cache
+#projects/bookmarks/bookmarks-cache
 projects/bookmarks-cache
 projects/notes/.idea
 projects/notes/upload/notes.xml
