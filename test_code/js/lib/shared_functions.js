@@ -1204,59 +1204,6 @@ if (!window.console){
 //code1_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
 
 
-//Мышь: IE8-, исправление события
-//https://learn.javascript.ru/fixevent
-// elem.onclick = function(event) {
-// если IE8-, то получить объект события window.event и исправить его
-// event = event || fixEvent.call(this, window.event);
-// ...
-// }
-function fixEvent(e) {
-	e.currentTarget = this;
-	e.target = e.srcElement;
-
-	if (e.type == 'mouseover' || e.type == 'mouseenter') e.relatedTarget = e.fromElement;
-	if (e.type == 'mouseout' || e.type == 'mouseleave') e.relatedTarget = e.toElement;
-
-	if (e.pageX == null && e.clientX != null) {
-		var html = document.documentElement;
-		var body = document.body;
-
-		e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
-		e.pageX -= html.clientLeft || 0;
-
-		e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
-		e.pageY -= html.clientTop || 0;
-	}
-
-	if (!e.which && e.button) {
-		e.which = e.button & 1 ? 1 : (e.button & 2 ? 3 : (e.button & 4 ? 2 : 0));
-	}
-	return e;
-}//end fixEvent()
-
-/*addListener(). Use:
-		addListener(btn_test, 'click', function (event) {
-console.log("btn_test, click");			
-console.log(event);			
-			event.stopPropagation();
-		});
-dont work under iE8...why?
-*/
-if (document.addEventListener) {
-	function addListener(object, event, listener) {
-		event = event || fixEvent.call(this, window.event);
-		if (object && event && listener) {
-			if (object.addEventListener) {
-				object.addEventListener(event, listener, false);
-			} else if (object.attachEvent) {
-				object.attachEvent('on' + event, listener);
-			}
-		}
-	}//end addListener()
-}
-
-
 //**************************************
 //var dirname = getenv("dirname");
 //**************************************
