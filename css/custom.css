@@ -22,13 +22,16 @@ header {
   margin-bottom: 5px;
 }
 header.container {
-  padding: 0 20px;
+  padding: 10px;
 }
+
 
 footer {
   margin-top: 5px;
   margin-bottom: 5px;
+padding: 10px 10px 0 10px !important;
 }
+
 footer .mark{
 color:#fff;
 background-color:transparent;
@@ -38,6 +41,11 @@ background-color:transparent;
 .navbar {
 	margin-bottom: 0;
 }
+header.container .navbar {
+	background-color: #004586;
+	padding: 5px;
+}
+
 .navbar-brand {
   padding: 0;
 	height: auto;
@@ -51,7 +59,7 @@ header .navbar-brand h1 {
 	/*font-family: fiddums-family;*/
 	/*font-size: 3.5em;*/
 	font-size: 60px;
-	color: #004586;
+	color: #fff;
 }
 
 @media screen and (max-width:768px) 
