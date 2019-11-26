@@ -282,44 +282,29 @@ console.log( logMsg );
 			
 			if( p["noCache"] ){
 				if( url.indexOf("?") !== -1 ){
-					url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+					url += "&noCache=";
 				} else {
-					url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
+					url += "?noCache=";
 				}
+				url += (new Date().getTime()) + Math.random(); //no cache
 			}
 
 			
 			if( !url || url.length === 0){
-				var msg = "Parameters error, needed 'url'";			
-		console.log( msg );
-		//_log( "<p  class='text-danger'>" +msg+"</p>");
+				var msg = "error,  'url' is empty....";			
+console.log( msg );
 				return false;
 			}
+
 			
 			var xhr = _createRequestObject();
-
 			if ( !xhr ) {
-		console.log("error, ", xhr);
+console.log("error, ", xhr);
 				var msg = "_createRequestObject() error";			
-		console.log( msg, xhr );
-		//_log( "<p  class='text-danger'>" +msg+"</p>");
+console.log( msg, xhr );
 				return false;
 			}
 
-		/*
-			//block overlay and wait window
-			var overlay = getById("overlay");
-			if( overlay ){
-				overlay.className="modal-backdrop in";
-				overlay.style.display="block";
-			}
-			var waitWindow = getById("wait-window");
-			if( waitWindow ){
-				waitWindow.className="modal-dialog";
-				waitWindow.style.display="block";
-			}
-		*/
-			
 			var timeStart = new Date();
 
 			xhr.open( requestMethod, url, async );
@@ -329,9 +314,9 @@ console.log( logMsg );
 		//https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
 		//Error, "The response type cannot be changed for synchronous requests made from a document."
 			// Opera 12 crash!!!!
-			// if( "responseType" in xhr && p["async"] ){
-				// xhr.responseType = p["responseType"];
-			// }
+			if( "responseType" in xhr && p["async"] ){
+				xhr.responseType = p["responseType"];
+			}
 				
 			xhr.onreadystatechange  = function() { 
 		//console.log("state:", xhr.readyState);
@@ -344,63 +329,50 @@ console.log( logMsg );
 		//console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 		//console.log( "xhr.onerror = ", xhr.onerror  );
 
-		/*
-						//hide block overlay and wait window
-						if( overlay ){
-							//overlay.className="";
-							overlay.style.display="none";
-						}
-						if( waitWindow ){
-							waitWindow.style.display="none";
-						}
-		*/					
+				
 						if( xhr.status === 200){
 							
 							var timeEnd = new Date();
 							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-		var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
-		console.log(msg);
-		// console.log( "xhr.responseText: ", xhr.responseText );
-		// console.log( "xhr.responseXML: ", xhr.responseXML );
-		// if( "responseType" in xhr){
-		// console.log( "xhr.response: ", xhr.response );
-		// console.log( "responseType: " + xhr.responseType );
-		// }
-
-		// try{
-		// console.log( "xhr.responseText: ", xhr.responseText );
-		// } catch(e){
-		// console.log( e );
-		// }
-
-		// try{
-		// console.log( "xhr.responseXML: ", xhr.responseXML );
-		// } catch(e){
-		// console.log( e );
-		// }
-							if( typeof callback === "function"){
-								
-								if( xhr.responseXML ){
-		//var test = xhr.responseXML.selectNodes("//pma_xml_export");	
-		//var test = xhr.responseXML.getElementsByTagName("database");
-		//console.log( test.item(0).nodeName);
-
-									//fix IE8
-		//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
-									var contentType = xhr.getResponseHeader("Content-Type");
-									if( contentType === "application/xml" ||
-										contentType === "text/xml"){
-										var data = xhr.responseXML;
-									} else {
-										var data = xhr.responseText;
-									}
-
-									callback( data, runtime, xhr );
-								} else {
-									var data = xhr.responseText;
-									callback( data, runtime, xhr );
-								}
+var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+console.log(msg);
+// console.log( "xhr.responseText: ", xhr.responseText );
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+							if( "responseType" in xhr){
+					console.log( "xhr.response: ", xhr.response );
+					console.log( "responseType: " + xhr.responseType );
 							}
+
+							try{
+					console.log( "xhr.responseText: ", xhr.responseText );
+							} catch(e){
+					console.log( e );
+							}
+
+							try{
+					console.log( "xhr.responseXML: ", xhr.responseXML );
+							} catch(e){
+					console.log( e );
+							}
+
+							if( typeof callback === "function"){
+								var data = xhr.response;
+								
+//fix IE8 (not property "responseType")
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+								var contentType = xhr.getResponseHeader("Content-Type");
+								if( contentType === "application/xml" ||
+									contentType === "text/xml"){
+									data = xhr.responseXML;
+								}
+								
+								if( contentType === "text/plain"){
+									data = xhr.responseText;
+								} 
+
+								callback( data, runtime, xhr );
+							}
+							
 							//if browser not define callback "onloadend"
 							var test = "onloadend" in xhr;
 							if( !test ){
@@ -412,13 +384,6 @@ console.log( logMsg );
 		console.log("Ajax load error, url: " + xhr.responseURL);
 		console.log("status: " + xhr.status);
 		console.log("statusText:" + xhr.statusText);
-
-		// var msg = "";
-		// msg += "<p>Ajax load error</p>";
-		// msg += "<p>url: " + xhr.responseURL + "</p>";
-		// msg += "<p>status: " + xhr.status + "</p>";
-		// msg += "<p>status text: " + xhr.statusText + "</p>";
-		// _log("<div class='alert alert-danger'>" + msg + "</div");
 
 							if( typeof  p["onError"] === "function"){
 								p["onError"](xhr);
