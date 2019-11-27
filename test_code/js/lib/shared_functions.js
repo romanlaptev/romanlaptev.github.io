@@ -220,6 +220,31 @@ console.log( logMsg );
 
 
 
+		function _parseHashParams( parseStr ) { 
+//console.log(parseStr);
+//console.log(window.hash);
+			if( !parseStr ){
+				var parse_url = window.location.hash.substring(1).split("&"); 
+			} else {
+				p = parseStr.split("#");
+			//console.log(p);
+				parseStr = p["1"];
+				var parse_url = parseStr.split("&"); 
+			}
+			
+			var $_GET = {}; 
+			for(var n = 0; n < parse_url.length; n++) { 
+			var getVar = parse_url[n].split("="); 
+				if( typeof(getVar[1])=="undefined" ){
+					$_GET[ getVar[0] ] = "";
+				} else {
+				 $_GET[ getVar[0] ] = getVar[1];
+				}
+			}//next
+			return $_GET; 
+		}//end _parseHashParams() 
+
+
 		/*
 			runAjax( {
 				"requestMethod" : "GET", 
@@ -1100,6 +1125,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
+			parseHashParams: _parseHashParams,
 			
 			runAjax: _runAjax,
 			runAjaxCorrect: _runAjaxCorrect,
