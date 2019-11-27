@@ -4,7 +4,7 @@ var webApp = {
 		//"log" : [],
 		"logMsg" : "",
 		//"data_url" : "db/bookmarks.json",
-		"data_url" : "db/bookmarks_notes.json",
+		"data_url" : "bookmarks-cache/db/bookmarks_notes.json",
 		//"data_url" : "db/lib.json",
 		"userDataUrl" : getById("user-data-url"),
 		"userDataFile" : getById("user-data-file"),
@@ -815,6 +815,7 @@ console.log( webApp.vars["logMsg"] );
 				webApp.vars["GET"] = parseGetParams( parseUrl ); 
 				webApp.app.urlManager();
 			}
+
 
 		});//end webApp initialize
 	//});

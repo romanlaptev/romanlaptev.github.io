@@ -10,7 +10,7 @@ echo "<h2>Test run shell command</h2>";
 echo "<h3>system(), passthru(), exec(), shell_exec()</h3>";
 
 $list_disabled_functions = ini_get('disable_functions'); 
-echo "List diasbled functions: ".$list_disabled_functions;
+echo "List disabled functions: ".$list_disabled_functions;
 echo "<br>";
 echo "<br>";
 

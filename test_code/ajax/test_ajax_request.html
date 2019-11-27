@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>test</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	<meta name="referrer" content="no-referrer" />
+-->
+
+<!--
+	<link type="text/css" rel="stylesheet" href="../../css/bootstrap337.min.css"/>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../test_code/js/lib/shared_functions.js"></script>
+-->
+	<script src="js/test.js"></script>
+
+<script>
+var newWin;
+var url_field;
+
+window.onload = function(){
+
+	//var btn_clear_log = document.querySelector("#btn-clear-log");
+	//var btn_clear_log = document.getElementById("clear-log");
+	//btn_clear_log.onclick = function(){
+		//log.innerHTML = "";
+	//};//end event
+
+	//var btn_load_iframe = document.querySelector("#btn-load-iframe");
+	//btn_load_iframe.onclick = function(event){
+		//loadFrame();
+	//};//end event
+	
+	//var btn_load = document.querySelector("#btn-load");
+	var btn_load = document.getElementById("btn-load");
+	
+	btn_load.onclick = function(event){
+		//url_field = document.querySelector("#url-field");
+		url_field = document.getElementById("url-field");
+		loadData();
+		//_serverRequestAppDate( function(data){
+//console.log("end request..", data);
+		//});
+		
+	};//end event
+
+};//end window.load
+</script>
+
+<style>
+input.invalid{
+	background-color:orange;
+}
+
+.log-panel {
+    margin-bottom: 5px;
+    margin-top: 5px;
+background-color: #b0c4de;
+/*
+border: 1px solid #ccc;
+*/
+}
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+/*
+#log {
+    height: 200px;
+    overflow-y: scroll;
+}*/
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h3>test ajax request</h3>
+	</div>
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+	
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<a href="#" class="btn btn-lg btn-danger" id="btn-open">child window, test_request.html</a>
+		</div>
+	</div>
+-->
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<a href="#" class="btn btn-lg btn-danger" id="btn-load-json">load json, use jsonp callback</a>
+		</div>
+	</div>
+-->
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>load data, crossdomain AJAX request...</h4>
+		</div>
+		<div class="panel-body">
+<input id="url-field" class="form-control" type="text" autocomplete="off" value=""/>
+<a href="#" class="btn btn-lg btn-primary" id="btn-load">load</a>
+<pre>
+test_request.html
+https://romanlaptev.github.io/projects/bookmarks/nb.txt
+https://romanlaptev.github.io/projects/bookmarks/db/bookmarks.json
+http://romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+http://romanlaptev.github.io/test_code/js/test_json/test_filters_jsonp/phones.json
+http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+file:///mnt/terra/clouds/cloud_mail/music/
+http://vbox5
+</pre>
+
+		</div>
+		<div id="insert-data" class="panel-body"></div>
+	</div>	
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>load data to IFRAME</h4>
+		</div>
+		<div class="panel-body">
+			<input id="iframe-src" class="form-control" type="text" autocomplete="off" value=""/>
+			<a href="#" class="btn btn-info" id="btn-load-iframe">load iframe</a>
+<pre>
+http://i5/sites/romanlaptev.github.io/projects/schedule/data/2019-04-26.json
+http://romanlaptev.github.io/test_code/js/test_json/test_filters_jsonp/phones.json
+file:///mnt/terra/clouds/cloud_mail/music/
+http://vbox5
+</pre>
+<p>https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr</p>
+<p>https://api.rasp.yandex.net/v3.0/copyright/?apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&format=json</p>
+
+			<iframe name="test_frame" width="100%" height="40%" src="" onload="getFrameInfo(this)"></iframe>
+		</div>
+	</div>	
+-->
+
+<!--
+<img id="test" src="https://api.rasp.yandex.net/v3.0/search/?from=851508&to=851635&apikey=b07a64bc-f237-4e79-9efb-b951ec68eaf7&date=2019-04-26&transport_types=suburban&system=esr&show_systems=esr"/>
+<script>
+var test = document.querySelector("#test");
+for( var key in test){
+console.log(key, test[key]);
+}
+</script>
+-->
+	
+<pre>
+http://javascript.ru/ajax/cross-domain-scripting
+http://javascript.ru/ajax/cross-origin-2
+Обмен данными для документов с разных доменов
+
+http://slyweb.ru/jquery/cross-domain-ajax/
+Кросс-доменный ajax
+
+https://learn.javascript.ru/xhr-crossdomain
+XMLHttpRequest: кросс-доменные запросы
+
+https://learn.javascript.ru/same-origin-policy
+Кросс-доменные ограничения и их обход
+
+https://learn.javascript.ru/ajax-jsonp
+Протокол JSONP
+
+https://toster.ru/q/167147
+CORS. Отправка запроса с https. Почему не работает?
+
+https://learn.javascript.ru/window-methods
+Открытие окон и методы window
+
+http://qaru.site/questions/93350/no-access-control-allow-origin-header-is-present-on-the-requested-resource-when-trying-to-get-data-from-a-rest-api
+В запрошенном ресурсе нет заголовка "Access-Control-Allow-Origin" - при попытке получить данные из REST API
+
+https://github.com/Rob--W/cors-anywhere/
+CORS Anywhere is a NodeJS reverse proxy which adds CORS headers to the proxied request
+
+//Create own proxy server
+git clone https://github.com/Rob--W/cors-anywhere.git
+cd cors-anywhere/
+npm install
+heroku create
+git push heroku master
+
+https://romanlaptev-cors.herokuapp.com/
+
+==========================
+Disable same origin policy in Chrome
+ run browser - 
+ +chromium-browser --disable-web-security
+chromium --disable-web-security --user-data-dir=/mnt/d2/temp/0
+
+ERROR:chrome_content_browser_client.cc(2479)] Web security may only be disabled if '--user-data-dir' is also specified.
+
+-------------------
+
+Disable firefox same origin policy
+ about:config -> security.fileuri.strict_origin_policy -> false
+----------------------
+
+Where to disable cross-network protection in Opera?
+opera:config#Network|AllowCrossNetworkNavigation is the right preference.
+--------------------
+
+
+Enabling Cross-Domain AJAX in Firefox
+Close Firefox
+Edit the file prefs.js in your Firefox user profile folder
+Add the following line anywhere in the file:
+user_pref("capability.policy.default.XMLHttpRequest.open",
+          "allAccess");
+!!!!!!!!!!Versions of Firefox prior to Firefox 3 allowed you to set the preference capability.policy..XMLHttpRequest.open to allAccess to give specific sites cross-site access. This is no longer supported.
+------------------------------
+
+</pre>
+</div><!-- end container -->
+
+</body>
+</html>

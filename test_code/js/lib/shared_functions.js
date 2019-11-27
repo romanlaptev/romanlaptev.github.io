@@ -220,6 +220,31 @@ console.log( logMsg );
 
 
 
+		function _parseHashParams( parseStr ) { 
+//console.log(parseStr);
+//console.log(window.hash);
+			if( !parseStr ){
+				var parse_url = window.location.hash.substring(1).split("&"); 
+			} else {
+				p = parseStr.split("#");
+			//console.log(p);
+				parseStr = p["1"];
+				var parse_url = parseStr.split("&"); 
+			}
+			
+			var $_GET = {}; 
+			for(var n = 0; n < parse_url.length; n++) { 
+			var getVar = parse_url[n].split("="); 
+				if( typeof(getVar[1])=="undefined" ){
+					$_GET[ getVar[0] ] = "";
+				} else {
+				 $_GET[ getVar[0] ] = getVar[1];
+				}
+			}//next
+			return $_GET; 
+		}//end _parseHashParams() 
+
+
 		/*
 			runAjax( {
 				"requestMethod" : "GET", 
@@ -236,7 +261,10 @@ console.log( logMsg );
 			
 			var p = {
 				"requestMethod" : "GET", 
-				"responseType" : "", //arraybuffer, blob, document, ms-stream, text
+				
+				//https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/responseType
+				"responseType" : "", //"", "arraybuffer", "blob", "document","json","text","moz-chunked-arraybuffer","ms-stream"				
+				
 				"enctype" : "application/x-www-form-urlencoded",
 				//"enctype" : "multipart/form-data",
 				"url" : false, 
@@ -279,44 +307,29 @@ console.log( logMsg );
 			
 			if( p["noCache"] ){
 				if( url.indexOf("?") !== -1 ){
-					url += "&noCache=" + (new Date().getTime()) + Math.random(); //no cache
+					url += "&noCache=";
 				} else {
-					url += "?noCache=" + (new Date().getTime()) + Math.random(); //no cache
+					url += "?noCache=";
 				}
+				url += (new Date().getTime()) + Math.random(); //no cache
 			}
 
 			
 			if( !url || url.length === 0){
-				var msg = "Parameters error, needed 'url'";			
-		console.log( msg );
-		//_log( "<p  class='text-danger'>" +msg+"</p>");
+				var msg = "error,  'url' is empty....";			
+console.log( msg );
 				return false;
 			}
+
 			
 			var xhr = _createRequestObject();
-
 			if ( !xhr ) {
-		console.log("error, ", xhr);
+console.log("error, ", xhr);
 				var msg = "_createRequestObject() error";			
-		console.log( msg, xhr );
-		//_log( "<p  class='text-danger'>" +msg+"</p>");
+console.log( msg, xhr );
 				return false;
 			}
 
-		/*
-			//block overlay and wait window
-			var overlay = getById("overlay");
-			if( overlay ){
-				overlay.className="modal-backdrop in";
-				overlay.style.display="block";
-			}
-			var waitWindow = getById("wait-window");
-			if( waitWindow ){
-				waitWindow.className="modal-dialog";
-				waitWindow.style.display="block";
-			}
-		*/
-			
 			var timeStart = new Date();
 
 			xhr.open( requestMethod, url, async );
@@ -326,9 +339,9 @@ console.log( logMsg );
 		//https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
 		//Error, "The response type cannot be changed for synchronous requests made from a document."
 			// Opera 12 crash!!!!
-			// if( "responseType" in xhr && p["async"] ){
-				// xhr.responseType = p["responseType"];
-			// }
+			if( "responseType" in xhr && p["async"] ){
+				xhr.responseType = p["responseType"];
+			}
 				
 			xhr.onreadystatechange  = function() { 
 		//console.log("state:", xhr.readyState);
@@ -341,63 +354,50 @@ console.log( logMsg );
 		//console.log("end request, state " + xhr.readyState + ", status: " + xhr.status);
 		//console.log( "xhr.onerror = ", xhr.onerror  );
 
-		/*
-						//hide block overlay and wait window
-						if( overlay ){
-							//overlay.className="";
-							overlay.style.display="none";
-						}
-						if( waitWindow ){
-							waitWindow.style.display="none";
-						}
-		*/					
+				
 						if( xhr.status === 200){
 							
 							var timeEnd = new Date();
 							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-		var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
-		console.log(msg);
-		// console.log( "xhr.responseText: ", xhr.responseText );
-		// console.log( "xhr.responseXML: ", xhr.responseXML );
-		// if( "responseType" in xhr){
-		// console.log( "xhr.response: ", xhr.response );
-		// console.log( "responseType: " + xhr.responseType );
-		// }
-
-		// try{
-		// console.log( "xhr.responseText: ", xhr.responseText );
-		// } catch(e){
-		// console.log( e );
-		// }
-
-		// try{
-		// console.log( "xhr.responseXML: ", xhr.responseXML );
-		// } catch(e){
-		// console.log( e );
-		// }
-							if( typeof callback === "function"){
-								
-								if( xhr.responseXML ){
-		//var test = xhr.responseXML.selectNodes("//pma_xml_export");	
-		//var test = xhr.responseXML.getElementsByTagName("database");
-		//console.log( test.item(0).nodeName);
-
-									//fix IE8
-		//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
-									var contentType = xhr.getResponseHeader("Content-Type");
-									if( contentType === "application/xml" ||
-										contentType === "text/xml"){
-										var data = xhr.responseXML;
-									} else {
-										var data = xhr.responseText;
-									}
-
-									callback( data, runtime, xhr );
-								} else {
-									var data = xhr.responseText;
-									callback( data, runtime, xhr );
-								}
+var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+console.log(msg);
+// console.log( "xhr.responseText: ", xhr.responseText );
+// console.log( "xhr.responseXML: ", xhr.responseXML );
+							if( "responseType" in xhr){
+					console.log( "xhr.response: ", xhr.response );
+					console.log( "responseType: " + xhr.responseType );
 							}
+
+							try{
+					console.log( "xhr.responseText: ", xhr.responseText );
+							} catch(e){
+					console.log( e );
+							}
+
+							try{
+					console.log( "xhr.responseXML: ", xhr.responseXML );
+							} catch(e){
+					console.log( e );
+							}
+
+							if( typeof callback === "function"){
+								var data = xhr.response;
+								
+//fix IE8 (not property "responseType")
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+								var contentType = xhr.getResponseHeader("Content-Type");
+								if( contentType === "application/xml" ||
+									contentType === "text/xml"){
+									data = xhr.responseXML;
+								}
+								
+								if( contentType === "text/plain"){
+									data = xhr.responseText;
+								} 
+
+								callback( data, runtime, xhr );
+							}
+							
 							//if browser not define callback "onloadend"
 							var test = "onloadend" in xhr;
 							if( !test ){
@@ -409,13 +409,6 @@ console.log( logMsg );
 		console.log("Ajax load error, url: " + xhr.responseURL);
 		console.log("status: " + xhr.status);
 		console.log("statusText:" + xhr.statusText);
-
-		// var msg = "";
-		// msg += "<p>Ajax load error</p>";
-		// msg += "<p>url: " + xhr.responseURL + "</p>";
-		// msg += "<p>status: " + xhr.status + "</p>";
-		// msg += "<p>status text: " + xhr.statusText + "</p>";
-		// _log("<div class='alert alert-danger'>" + msg + "</div");
 
 							if( typeof  p["onError"] === "function"){
 								p["onError"](xhr);
@@ -519,9 +512,9 @@ console.log( logMsg );
 				}
 			}
 
-		//console.log(xhr.upload);
+console.log(xhr.upload);
 			if( xhr.upload ){
-				
+/*				
 				xhr.upload.onerror = function(e){
 		console.log(arguments);
 		console.log("event type:" + e.type);
@@ -577,7 +570,7 @@ console.log( logMsg );
 		console.log("total: " + e.total);
 		console.log("loaded: " + e.loaded);
 				};
-
+*/
 			}
 			
 			//send query	
@@ -1132,6 +1125,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 			sortRecords: _sortRecords,
 			parseGetParams: _parseGetParams,
+			parseHashParams: _parseHashParams,
 			
 			runAjax: _runAjax,
 			runAjaxCorrect: _runAjaxCorrect,
@@ -1199,59 +1193,6 @@ if (!window.console){
 //var source_txt = document.getElementById("code1");
 //code1_out.innerHTML +="<br><br>";
 //code1_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
-
-
-//Мышь: IE8-, исправление события
-//https://learn.javascript.ru/fixevent
-// elem.onclick = function(event) {
-// если IE8-, то получить объект события window.event и исправить его
-// event = event || fixEvent.call(this, window.event);
-// ...
-// }
-function fixEvent(e) {
-	e.currentTarget = this;
-	e.target = e.srcElement;
-
-	if (e.type == 'mouseover' || e.type == 'mouseenter') e.relatedTarget = e.fromElement;
-	if (e.type == 'mouseout' || e.type == 'mouseleave') e.relatedTarget = e.toElement;
-
-	if (e.pageX == null && e.clientX != null) {
-		var html = document.documentElement;
-		var body = document.body;
-
-		e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
-		e.pageX -= html.clientLeft || 0;
-
-		e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
-		e.pageY -= html.clientTop || 0;
-	}
-
-	if (!e.which && e.button) {
-		e.which = e.button & 1 ? 1 : (e.button & 2 ? 3 : (e.button & 4 ? 2 : 0));
-	}
-	return e;
-}//end fixEvent()
-
-/*addListener(). Use:
-		addListener(btn_test, 'click', function (event) {
-console.log("btn_test, click");			
-console.log(event);			
-			event.stopPropagation();
-		});
-dont work under iE8...why?
-*/
-if (document.addEventListener) {
-	function addListener(object, event, listener) {
-		event = event || fixEvent.call(this, window.event);
-		if (object && event && listener) {
-			if (object.addEventListener) {
-				object.addEventListener(event, listener, false);
-			} else if (object.attachEvent) {
-				object.attachEvent('on' + event, listener);
-			}
-		}
-	}//end addListener()
-}
 
 
 //**************************************

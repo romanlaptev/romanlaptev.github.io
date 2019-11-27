@@ -311,10 +311,10 @@ _log( "Document info, runTime = " + runTime + " sec.<br>");
 		}
 	}//end event
 
-	var btn5 = getDOMobj("btn5");
-	btn5.onclick = function(){
-		btn5_click();
-	}//end event
+//	var btn5 = getDOMobj("btn5");
+//	btn5.onclick = function(){
+//		btn5_click();
+//	}//end event
 	
 };//end load
 
@@ -734,6 +734,12 @@ console.log(e);
 			"text" : "test_headers.html"
 		};
 		_push( test["links"], obj );
+		
+		var obj = {
+			"link" : "test_ajax_FETCH.html" 
+		};
+		_push( test["links"], obj );
+		
 	} else {
 		test["msg"] = "<p class='alert alert-danger'><b>window.fetch</b> NOT supported...</p>";
 	}
