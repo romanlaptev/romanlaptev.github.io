@@ -551,6 +551,17 @@ console.log("error, " + data);
 
 //=================================
 
+if ( window.console ){ 
+	if("time" in console){
+console.time( "timer_loadData" );
+	}
+}
+//......
+if ( window.console ){ 
+	if("timeEnd" in console){
+console.timeEnd( "timer_loadData");
+	}
+}
 
 //=================================
 //=================================
