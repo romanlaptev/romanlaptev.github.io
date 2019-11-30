@@ -160,6 +160,22 @@ alert(name);
 		}
 		return supportsTouch;
 	};//_isMobile
+	
+//if ( navigator.userAgent.match(/Mobi/) ) {
+	//test["result"] = true;
+//}
+//.........
+// if( ('ontouchstart' in window) ||
+	// (navigator.maxTouchPoints > 0) ||
+	// (navigator.msMaxTouchPoints > 0)
+// ){
+	// test["result"] = true;
+	// //test["msg"] = "browser with either Touch Events of Pointer Events running on touch-capable device";
+// }
+// if ( typeof window.orientation !== "undefined") {
+	// test["result"] = true;
+	// test["msg"] = "window.orientation = " + window.orientation;
+// }
 
 	var _isMSIEPhone = function(){
 		var uAgent;

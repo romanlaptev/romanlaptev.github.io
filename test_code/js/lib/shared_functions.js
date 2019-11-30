@@ -1094,7 +1094,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"webSQLsupport" : window.openDatabase  ? true : false,
 				"localStorageSupport" : window['localStorage']  ? true : false,
 				"dataStoreType" : _detectDataStoreType(),
-				"geolocationSupport" :  typeof navigator.geolocation !== "undefined"
+				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
+				"supportTouch" : _supportTouch()
 			};
 		};//end _testSupport()
 		
@@ -1111,6 +1112,21 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 			return dataStoreType;
 		}//end _detectDataStoreType()
+		
+		var _supportTouch = function() {
+			//return !!('ontouchstart' in window);
+			
+			var supportTouch = false;
+			if ('ontouchstart' in window) {
+				//iOS & Android
+				supportTouch = true;
+			//} else if(window.navigator.msPointerEnabled) { // msPointerEnabled does not detect mobile, it also exists in desktop IE, use msMaxTouchPoints/maxTouchPoints instead!
+			} else if(window.navigator.msMaxTouchPoints) {
+				//WinPhone
+				supportTouch = true;
+			}
+			return supportTouch;
+		};//end _supportTouch
 		
 		
 		// public interfaces
