@@ -1,4 +1,27 @@
 /*
+function _trim(str){
+function _hideObject(obj){
+function _hideObjectV(obj){
+function _showObject(obj){
+function _showObjectV(obj){
+
+function _getXMLVersion(){
+function _getXMLVersionNumber(){
+function _isXML(version){
+function _isXML30(){
+function _isXML40(){
+function _isXML60(){
+
+function _msgbox(text, onok, mode, title, hint, features){
+function alert_e(e, sender){
+
+function escapeXML(str){
+function unescapeXML(str){
+
+function get_user_name(){
+function get_user_id(){
+
+
 	function fixEvent(e) {
 	function addListener(object, event, listener) {
 	
@@ -579,12 +602,252 @@ console.timeEnd( "timer_loadData");
 	}
 }
 
+//================================= from Z.Engine
+function _trim(str){
+	var re = /[ \s\t\n\r]+/gi;
+	//alert('['+str+'], [' + str.replace(re, "") + ']');
+	return str.replace(re, "");
+}
+
+if(Array.prototype.item == undefined)
+{
+	Array.prototype.item = function(i) { return this[i]; }
+}
+
+//================================= 
+function _hideObject(obj){
+	try{
+		if(obj.style.display != "none"){
+			//alert("hide object: " + obj.id);
+			obj.style.display		= "none";
+		}
+	}catch(e){
+		//alert("Could not hide object: " + e.message);
+		return;
+	}
+}
+
+
+function _hideObjectV(obj){
+	try{
+		if(obj.style.visibility != "hidden"){
+			obj.style.visibility = "hidden";
+		}
+	}catch(e){
+		return;
+	}
+}
+
+
+function _showObject(obj){
+	try{
+		if(obj.style.display != "inline"){
+			obj.style.display		= "inline";
+		}
+	}catch(e){
+		return;
+	}
+}
+
+
+function _showObjectV(obj){
+	try{
+		if(obj.style.visibility != "visible"){
+			obj.style.visibility	= "visible";
+		}
+	}catch(e){
+		return;
+	}
+}
+
 //=================================
+
+function _getXMLVersion(){
+	if(_isXML("6.0")) return ".6.0";
+	if(_isXML("4.0")) return ".4.0";
+	if(_isXML("3.0")) return ".3.0";
+	return "";
+}
+
+function _getXMLVersionNumber(){
+	if(_isXML("6.0")) return 6;
+	if(_isXML("4.0")) return 4;
+	if(_isXML("3.0")) return 3;
+	return 0;
+}
+
+function _isXML(version){
+	var obj;
+	try{
+		obj = new ActiveXObject("Msxml2.DOMDocument." + version);
+	}
+	catch(e){
+		return false;
+	}
+	obj = undefined;
+	return true;
+}
+
+function _isXML30(){
+	return _isXML("3.0");
+}
+
+function _isXML40(){
+	return _isXML("4.0");
+}
+
+function _isXML60(){
+	return _isXML("6.0");
+}
+
 //=================================
+function _msgbox(text, onok, mode, title, hint, features){
+	if(features == undefined) features = '';
+	if(!document.all._msg_div_){
+		var dvw = document.createElement('<div id="_msg_wait_div_" class="msg-wait-div">&#xA0;</div>');
+		var dv = document.createElement('<div id="_msg_div_" class="msg-div"></div>');
+		var divHTML = "";
+
+		divHTML += '	<table width="100%" height="100%" border="0">';
+		divHTML += '		<tr><td align="center" valign="middle">';
+		divHTML += '			<div id="_msg_title_" class="msg-box-title" style="display:none"></div>';
+		divHTML += '			<div class="msg-box">';
+		divHTML += '				<table width="100%" border="0">';
+		divHTML += '					<tr><td align="center" id="_msg_text_td_" class="msg-text"><div id="_msg_text_" style="width:100%;height:100%;overflow:auto;text-align:center"></div></td></tr>';
+		divHTML += '					<tr><td align="center"><hr class="msg-box-hr"></td></tr>';
+		divHTML += '					<tr><td align="center" nowrap="1">';
+
+		divHTML += '						<input type="button" id="_msg_ok_" value="$res:msgbox.ok$" class="doc-button" onclick="_msgboxclose();">';
+
+		divHTML += '						<input type="button" id="_msg_yes_" value="$res:msgbox.yes$" class="doc-button" style="display:none">';
+		divHTML += '						<input type="button" id="_msg_no_" value="$res:msgbox.no$" class="doc-button" style="display:none">';
+		divHTML += '						<input type="button" id="_msg_cancel_" value="$res:msgbox.cancel$" class="doc-button" style="display:none">';
+
+		divHTML += '					</td></tr>';
+		divHTML += '				</table>';
+		divHTML += '			</div>';
+		divHTML += '		</td></tr>';
+		divHTML += '	</table>';
+
+		dv.innerHTML = divHTML;
+
+		document.body.appendChild(dvw);
+		document.body.appendChild(dv);
+	}
+
+	if(title){
+//
+	}
+
+	if(text){
+		if(mode == "html")
+			document.all._msg_text_.innerHTML = text;
+		else
+			document.all._msg_text_.innerText = text;
+	}
+
+	if(hint)
+		document.all._msg_text_.title = hint;
+	else
+		document.all._msg_text_.title = '';
+
+	_msgboxData.onok = undefined;
+
+	// init msgbox with only _msg_ok_
+	_hideObject(document.all._msg_yes_);
+	_hideObject(document.all._msg_no_);
+	_hideObject(document.all._msg_cancel_);
+	_showObject(document.all._msg_ok_);
+
+	if(onok){
+		if(onok.push){
+			_hideObject(document.all._msg_ok_);
+			_showObject(document.all._msg_yes_);
+			_showObject(document.all._msg_no_);
+
+			document.all._msg_yes_.onclick	= onok[0];
+			document.all._msg_no_.onclick	= onok[1];
+			if(onok.length == 3){
+				_showObject(document.all._msg_cancel_);
+				document.all._msg_cancel_.onclick = onok[2];
+			}
+		}else{
+			_msgboxData.onok = onok;
+			document.all._msg_ok_.onclick = _msgbox_onok;
+		}
+	}else{
+		document.all._msg_ok_.onclick = _msgboxclose;
+	}
+
+	_showObject(document.all._msg_wait_div_);
+	_showObject(document.all._msg_div_);
+
+	if(features != ''){
+		var feature = _get_feature(features, 'text-align');
+		if(feature) document.all._msg_text_.style.textAlign = feature;
+	}
+
+	var h = parseInt(document.body.clientHeight * 0.30, 10);
+	if(document.all._msg_text_td_.offsetHeight > h)
+		document.all._msg_text_td_.style.height = h;
+
+	if(!onok){
+		document.all._msg_ok_.focus();
+	}else{
+		if(!onok.push){
+			document.all._msg_ok_.focus();
+		}else{
+			if(onok.length == 3)
+				document.all._msg_cancel_.focus();
+			else
+				document.all._msg_yes_.focus();
+		}
+	}
+}
+
 //=================================
+function escapeXML(str){
+	var amp_re	= /\&/gi;
+	var gt_re	= /\>/gi;
+	var lt_re	= /\</gi;
+	var quot_re	= /\"/gi;
+	var apos_re	= /\'/gi;
+	return str.replace(amp_re, "&amp;").replace(gt_re, "&gt;").replace(lt_re, "&lt;").replace(quot_re, "&quot;").replace(apos_re, "&apos;");
+}
+
+function unescapeXML(str){
+	var amp_re	= /\&amp\;/gi;
+	var gt_re	= /\&gt\;/gi;
+	var lt_re	= /\&lt\;/gi;
+	var quot_re	= /\&quot\;/gi;
+	var apos_re	= /\&apos\;/gi;
+	return str.replace(amp_re, "&").replace(gt_re, ">").replace(lt_re, "<").replace(quot_re, '"').replace(apos_re, "'");
+}
+
 //=================================
+function alert_e(e, sender){
+	if(sender == undefined) sender = "";
+	var mess = "";
+	if(e.constructor == Error || e.constructor == '[object Error]')
+		mess = "message: " + e.message + "\ndescription: " + e.description + "\nfacilty: " + (e.number>>16 & 0x1FFF) + "\ncode: " + (e.number & 0xFFFF);
+	else
+		mess = e;
+	alert("EXCEPTION - " + sender + ":\n------------------------\n" + mess);
+}
+
+
 //=================================
-//=================================
+function get_user_name(){
+	var username = _nvl(getCookie('IIS_Authorizied_Username'), 'unknow_user');
+	return username;
+}
+
+function get_user_id(){
+	var userid = _nvl(getCookie('IIS_Authorizied_Userid'), '0');
+	return userid;
+}
+
+
 //=================================
 //=================================
 //=================================
