@@ -283,6 +283,7 @@ console.log( logMsg );
 			}
 		//console.log(p);
 
+			var logMsg;
 			var requestMethod = p["requestMethod"]; 
 			var url = p["url"]; 
 			var async = p["async"]; 
@@ -316,8 +317,13 @@ console.log( logMsg );
 
 			
 			if( !url || url.length === 0){
-				var msg = "error,  'url' is empty....";			
-console.log( msg );
+				logMsg = "error,  empty 'url' value.";			
+console.log( logMsg );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : logMsg
+					});
+				}
 				return false;
 			}
 
@@ -325,14 +331,31 @@ console.log( msg );
 			var xhr = _createRequestObject();
 			if ( !xhr ) {
 console.log("error, ", xhr);
-				var msg = "_createRequestObject() error";			
-console.log( msg, xhr );
+				logMsg = "_createRequestObject() error";			
+console.log( logMsg, xhr );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : "error creating XHR...."
+					});
+				}
 				return false;
 			}
 
 			var timeStart = new Date();
 
-			xhr.open( requestMethod, url, async );
+			try{
+				xhr.open( requestMethod, url, async );
+			} catch(e){
+				//logMsg = "ajax request error...";			
+//console.log( logMsg );
+//for( var key in e){
+//console.log(key +" : "+ e[key]);
+//}//next
+				if( typeof  p["onError"] === "function"){
+					p["onError"](e);
+				}
+				return false;
+			}//end catch
 			
 			//Check responseType support:
 		//https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
@@ -386,12 +409,13 @@ console.log(msg);
 //fix IE8 (not property "responseType")
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 								var contentType = xhr.getResponseHeader("Content-Type");
-								if( contentType === "application/xml" ||
-									contentType === "text/xml"){
+								//if( contentType === "application/xml" || contentType === "text/xml"){
+								if( contentType.indexOf("application/xml") !== -1 || contentType.indexOf("text/xml") !== -1 ){
 									data = xhr.responseXML;
 								}
 								
-								if( contentType === "text/plain"){
+								//if( contentType === "text/plain"){
+								if( contentType.indexOf("text/plain") !== -1){
 									data = xhr.responseText;
 								} 
 
@@ -405,13 +429,17 @@ console.log(msg);
 							}
 
 						} else {
-		//console.log(xhr);					
-		console.log("Ajax load error, url: " + xhr.responseURL);
-		console.log("status: " + xhr.status);
-		console.log("statusText:" + xhr.statusText);
-
+//console.log(xhr);					
+//console.log("Ajax load error, url: " + xhr.responseURL);
+//console.log("status: " + xhr.status);
+//console.log("statusText:" + xhr.statusText);
 							if( typeof  p["onError"] === "function"){
-								p["onError"](xhr);
+								p["onError"]({
+									"message" : "ajax load request error.",
+									"url" : xhr.responseURL,
+									"xhr.status" : xhr.status,
+									"xhr.statusText" : xhr.statusText
+								});
 							}
 						}
 						
@@ -575,7 +603,18 @@ console.log(xhr.upload);
 			
 			//send query	
 			if( requestMethod !== "POST"){
-				xhr.send();
+				try{
+					xhr.send();
+				}catch(e){
+console.log(e);
+					if( typeof  p["onError"] === "function"){
+						p["onError"]({
+							"message" : "error send XHR...."
+						});
+					}
+				}
+				
+				
 			} else {
 				
 				//http://learn.javascript.ru/xhr-forms
