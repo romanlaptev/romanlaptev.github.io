@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>test</title>
+	<title>test JS: Ajax</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 	
 	<meta charset="utf-8"/>
@@ -13,18 +13,27 @@
 	<meta name="referrer" content="no-referrer" />
 -->
 
+	<link rel="stylesheet" href="../../../css/bootstrap337.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	
 <!--
-	<link type="text/css" rel="stylesheet" href="../../css/bootstrap337.min.css"/>
-	<script src="../../js/jquery.min.js"></script>
-	<script src="../../test_code/js/lib/shared_functions.js"></script>
+	<script src="../lib/jquery.min.js"></script>
 -->
+	<script src="../lib/shared_functions.js"></script>
 	<script src="js/test.js"></script>
 
 <script>
+	var func = sharedFunc();
+//console.log("func:", func);
+var logMsg;
+
 var newWin;
 var url_field;
 
 window.onload = function(){
+
+	logMsg = navigator.userAgent;
+	func.logAlert(logMsg, "info");
 
 	//var btn_clear_log = document.querySelector("#btn-clear-log");
 	//var btn_clear_log = document.getElementById("clear-log");
@@ -57,38 +66,8 @@ window.onload = function(){
 input.invalid{
 	background-color:orange;
 }
-
-.log-panel {
-    margin-bottom: 5px;
-    margin-top: 5px;
-background-color: #b0c4de;
-/*
-border: 1px solid #ccc;
-*/
-}
-.log-panel .panel-body{
-	padding: 5px;
-}
-
-.log-panel span a{
-text-decoration:none;
-outline: none;
-}
-/*
-#log {
-    height: 200px;
-    overflow-y: scroll;
-}*/
-#log .alert {
-margin-bottom: 0;
-padding: 10px;
-}
-
-#log p{
-margin: 0;
-}
-
 </style>
+
 </head>
 
 <body>

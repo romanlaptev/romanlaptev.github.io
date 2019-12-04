@@ -1,76 +1,30 @@
 /*
-function _trim(str){
-function _hideObject(obj){
-function _hideObjectV(obj){
-function _showObject(obj){
-function _showObjectV(obj){
-
-function _getXMLVersion(){
-function _getXMLVersionNumber(){
-function _isXML(version){
-function _isXML30(){
-function _isXML40(){
-function _isXML60(){
-
-function _msgbox(text, onok, mode, title, hint, features){
-function alert_e(e, sender){
-
-function escapeXML(str){
-function unescapeXML(str){
-
-function get_user_name(){
-function get_user_id(){
-
-
-	function fixEvent(e) {
-	function addListener(object, event, listener) {
-	
-	var setCookie = function (name, value, session){
-	var delCookie = function (name){
-	var getCookie = function (name){
-	var getOrientation = function(){
-
-	var _isMobile = function() {
-	var _isMSIEPhone = function(){
-	var _isMSIE = function(){
-	var _isCEF = function(){
-	var _isPOS = function(){
-	var _isAndroidPhone = function(){
-    var _isAndroidPhoneKeyboard = function(textChr){
-	var _isAndroidPhoneFF = function(){
-	var _isMSIETablet = function(){
-	var _isIphoneIpad = function(){
-	var _getMSIEVersion = function(){
-	var _getOS = function(){
-	var _getOSVersion = function(){
-	var _isWin10MS11 = function(){
-		
-	var _getStringDate = function(date){
-	var _getStringSysDateTime = function(date){
-
-	var _setTimer = function (){
-	var _getTimer = function (time){
-
-	var _setSessionObj = function(key,data){
-	var _getSessionObj = function(key){
-	var _setStorageObj = function(key,data){
-	var _getStorageObj = function(key){
-	var _clearStorage = function(key){
-	var _clearSession = function(key){
-
-	var _translit = function(str){
-	var _hashCode = function(str){
-
-	var _getID = function(name){
-
-    var _loadCss = function(url) {
-
-	Array.prototype.in_array = function(value){
-	document.getElementsByClassName = function(cl) { 
-	create xmlhttprequest
+//====== FIREBUG on mobile
+//====== EVENTS
+//====== COOKIES
+//====== DATE
+//====== XML
+//====== FORMS
+//====== DETECT BROWSERS, navigator.userAgent
+//====== AJAX
 */
 
-//==============================
+//================================= FIREBUG on mobile
+
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
+
+//============================== EVENTS
 
 //Мышь: IE8-, исправление события
 //https://learn.javascript.ru/fixevent
@@ -123,7 +77,17 @@ function addListener(object, event, listener) {
 }//end addListener()
 
 
-//==============================
+//============================== COOKIES
+
+function set_cookie(name, value, expires){
+alert(name);
+	if (!expires){
+		expires = new Date();
+	}
+//http://javascript.ru/date/togmtstring	
+	document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() +  "; path=/";
+}//end set_cookie
+
 
 	var setCookie = function (name, value, session){
 		if(session == undefined) session = false;
@@ -163,211 +127,7 @@ alert(name);
 
 
 
-//==============================
-	var getOrientation = function(){
-		if(_isMobile()) return (screen.height > screen.width)?"portrait":"landscape";
-		else return((window.orientation == -90 || window.orientation == 90)?"landscape":"portrait");
-	};//getOrientation
-
-	var _isMobile = function() {
-		//return !!('ontouchstart' in window);
-		
-		var supportsTouch = false;
-		if ('ontouchstart' in window) {
-			//iOS & Android
-			supportsTouch = true;
-		//} else if(window.navigator.msPointerEnabled) { // msPointerEnabled does not detect mobile, it also exists in desktop IE, use msMaxTouchPoints/maxTouchPoints instead!
-		} else if(window.navigator.msMaxTouchPoints) {
-			//WinPhone
-			supportsTouch = true;
-		}
-		return supportsTouch;
-	};//_isMobile
-	
-//if ( navigator.userAgent.match(/Mobi/) ) {
-	//test["result"] = true;
-//}
-//.........
-// if( ('ontouchstart' in window) ||
-	// (navigator.maxTouchPoints > 0) ||
-	// (navigator.msMaxTouchPoints > 0)
-// ){
-	// test["result"] = true;
-	// //test["msg"] = "browser with either Touch Events of Pointer Events running on touch-capable device";
-// }
-// if ( typeof window.orientation !== "undefined") {
-	// test["result"] = true;
-	// test["msg"] = "window.orientation = " + window.orientation;
-// }
-
-	var _isMSIEPhone = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:/i) || uAgent.match(/EDGE/i)) && uAgent.match(/Windows Phone/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isMSIEPhone
-
-	var _isMSIE = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:11/i))){
-				return true;
-			}
-		}
-		return false;
-	};//_isMSIE
-
-	var _isCEF = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if (uAgent.match(/CEF/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isCEF
-
-	var _isPOS = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if (uAgent.match(/POS/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isPOS
-
-	var _isAndroidPhone = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = (navigator.userAgent).toLowerCase();
-			if (!uAgent.match(/windows/i) && uAgent.match(/android/i) && uAgent.match(/chrome/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isAndroidPhone
-
-    var _isAndroidPhoneKeyboard = function(textChr){
-        if (_isAndroidPhone() && textChr==229) return true;
-        return false;
-    };//_isAndroidPhoneKeyboard
-
-	var _isAndroidPhoneFF = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = (navigator.userAgent).toLowerCase();
-			if (!uAgent.match(/windows/i) && uAgent.match(/android/i) && uAgent.match(/firefox/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isAndroidPhoneFF
-
-	var _isMSIETablet = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:/i) || uAgent.match(/EDGE/i)) && uAgent.match(/Windows NT/i)){
-				return true;
-			}
-		}
-		return false;
-	};//_isMSIEPhone
-
-	var _isIphoneIpad = function(){
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent;
-			if (uAgent.match(/(iPod|iPhone|iPad)/)){
-				return true;
-			}
-		}
-
-		return false;
-	};//_isIphoneIpad
-
-	var _getMSIEVersion = function(){
-		return 10;
-		var uAgent;
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent.toUpperCase();
-			var pos = uAgent.indexOf('MSIE');
-			if (pos !=- 1) return parseInt(uAgent.substr(pos + 5, uAgent.indexOf('.', pos) - pos), 10);
-			var pos = uAgent.indexOf('RV:');
-			if (pos !=- 1) return parseInt(uAgent.substr(pos + 3, 2), 10);
-		}
-		return 0;
-	};//_getMSIEVersion
-
-	var _getOS = function(){
-		var _ios = /iPhone OS |iPad; CPU OS /i;
-		var _and = /Android /i;
-		var _wd = /Windows NT /i;
-		var _wm = /Windows Phone /i;
-		var ua = navigator.userAgent;
-
-		var os;
-		os = _wd.exec(ua);
-		if(os) return 'Windows NT';
-		os = _wm.exec(ua);
-		if(os) return 'Windows Phone';
-		os = _ios.exec(ua);
-		if(os) return 'iOS';
-		os = _and.exec(ua);
-		if(os) return 'Android';
-
-		return null;
-	};//_getOS
-
-	var _getOSVersion = function(){
-		var _ios = /iPhone OS ([\.\_\d]+)|iPad; CPU OS ([\.\_\d]+)/i;
-		var _and = /Android ([\.\d]+)/i;
-		var _wd = /Windows NT ([\.\d]+)/i;
-		var _wm = /Windows Phone ([\.\d]+)/i;
-		var ua = navigator.userAgent;
-
-		var os;
-		os = _wd.exec(ua);
-		if(os) return os[1];
-		os = _wm.exec(ua);
-		if(os) return os[1];
-		os = _ios.exec(ua);
-		if(os) return (os[1] ? os[1] : os[2]);
-		os = _and.exec(ua);
-		if(os) return os[1];
-
-		return null;
-	};//_getOSVersion
-	
-	var _isWin10MS11 = function(){
-		var uAgent,
-			ie,
-			win;
-	
-		if (navigator && navigator.userAgent){
-			uAgent = navigator.userAgent.toUpperCase();
-			ie = uAgent.indexOf('RV:');
-			if (ie !=- 1) ie = parseInt(uAgent.substr(ie + 3, 2), 10);
-			win = uAgent.indexOf('WINDOWS NT ');
-			if (win !=- 1) win=parseInt(uAgent.substr(win + 10, 3), 10);
-			
-			if (win == 10 && ie == 11) return true;
-			
-		}
-		
-		return false;
-				
-	};//_isWin10MS11
-
-//==============================
+//============================== DATE
 
 	//get date format like dd.mm.yyyy
 	var _getStringDate = function(date){
@@ -402,6 +162,34 @@ alert(name);
 		return dd+'.'+mm+'.'+yyyy+' '+hh+':'+mi+':'+se;
 
 	};//_getStringSysDateTime
+
+
+function convertTimestamp(timestamp) {
+	var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
+	yyyy = d.getFullYear(),
+	mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
+	dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
+	hh = d.getHours(),
+	h = hh,
+	min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
+	ampm = 'AM',
+	time;
+			
+	if (hh > 12) {
+		h = hh - 12;
+		ampm = 'PM';
+	} else if (hh === 12) {
+		h = 12;
+		ampm = 'PM';
+	} else if (hh == 0) {
+		h = 12;
+	}
+	
+	// ie: 2013-02-18, 8:35 AM	
+	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+		
+	return time;
+}//end convertTimestamp()
 	
 	//=================================
 		var _setTimer = function (){
@@ -660,7 +448,36 @@ function _showObjectV(obj){
 	}
 }
 
-//=================================
+//================================= XML
+
+function create_MSXML(){
+	if (typeof (ActiveXObject) === "undefined") {
+		return false;
+	}
+	var progIDs = [
+					"Msxml2.DOMDocument.6.0", 
+					"Msxml2.DOMDocument.5.0", 
+					"Msxml2.DOMDocument.4.0", 
+					"Msxml2.DOMDocument.3.0", 
+					"MSXML2.DOMDocument", 
+					"MSXML.DOMDocument"
+				  ];
+	for(var n = 0; n < progIDs.length; n++) {
+		try { 
+			var xml = {
+				"xml_obj" : new ActiveXObject( progIDs[n] ),
+				"version" : progIDs[n]
+			}
+			return xml; 
+		}  catch(e) {
+console.log("error: " + e);
+			for( var item in e )	{
+console.log(item + ": " + e[item]);
+			}
+		};
+	}
+}//end create_MSXML()
+
 
 function _getXMLVersion(){
 	if(_isXML("6.0")) return ".6.0";
@@ -848,6 +665,557 @@ function get_user_id(){
 }
 
 
+// слои
+//-----------------------------------------------------------
+  function init() {
+     IE = (document.all)
+     NC = (document.layers)
+     Opera = (document.getElementById)
+   }
+
+  function hiddenLayer(filename)  {
+    init();
+    if (IE) eval('document.all["desc"].style.visibility = "hidden"')
+    if (NC) eval('document.layers["desc"].visibility = "hidden"')
+    if (Opera) eval('document.getElementById("desc").style.visibility = "hidden"')
+   }
+
+  function showLayer(filename) {
+    init();
+    if (IE) eval('document.all["desc"].style.visibility = "visible"')
+    if (NC) eval('document.layers["desc"].visibility = "visible"')
+    if (Opera) eval('document.getElementById("desc").style.visibility = "visible"')
+   }
+
+  function processnode111(nnodeid)
+   {
+    if (document.getElementById("div_" + nnodeid).style.display == "none")
+      {
+      document.getElementById("div_" + nnodeid).style.display = ""
+      }
+    else
+      {
+      document.getElementById("div_" + nnodeid).style.display = "none"
+      }
+   }
+
+  function processnode(nnodeid)
+   {
+    if (document.getElementById(nnodeid).style.display == "none")
+      {
+      document.getElementById(nnodeid).style.display = ""
+      }
+    else
+      {
+      document.getElementById(nnodeid).style.display = "none"
+      }
+   }
+
+//================================= FORMS
+
+//-----------------------------------------------------------
+// очистить помеченные checkbox
+//-----------------------------------------------------------
+function clear_checkbox (){
+      var frm = document.form_ls;
+      for ( var n2=1; n2 < frm.elements.length; n2++)
+         {
+          var elmnt = frm.elements[n2];
+          if  (elmnt.type=='checkbox') 
+            {
+              elmnt.checked = false;
+            }
+         }
+}//end
+
+//-----------------------------------------------------------
+
+function select_checkbox() {
+   var frm = document.form_ls;
+   for (var n1=1; n1 < frm.elements.length; n1++)
+      {
+        var elmnt = frm.elements[n1];
+        if (elmnt.type == 'checkbox')
+          {
+            elmnt.checked = true;
+          }
+      }
+ }//end function
+
+function select_change_action() {
+   var num = 0;
+   var a = '';
+   num = document.forms.form_ls.change_action.selectedIndex;
+   a = document.forms.form_ls.change_action[num].value;
+//   window.alert (a);
+}//end 
+ 
+// Вывод всех элементов формы
+function print_forms() {
+	var frm = document.form_ls;
+	for ( var n2=1; n2 < frm.elements.length; n2++)
+	   {
+		var elmnt = frm.elements[n2];
+		document.write ("element " + n2 + "= " + elmnt.name+", ");
+		document.write (elmnt.type + ", ");
+		document.write (elmnt.value+"<br>");
+	   }
+}//end print_forms()
+
+
+function check_form(){
+//console.log(document.forms.sendform[0].value);
+	var error = true;
+	var error_text = "";
+	var frm = document.forms.sendform;
+	for (item in frm.elements) {
+		if (item == "email")
+		{
+//console.log(frm.elements[item].value);
+			var email_value = frm.elements[item].value;
+			if (email_value.length > 0)
+			{
+// /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
+				var reg = /^\w+([\.-]?\w+)*@\w+([\.-]\w+)*(\.\w{2,4})+$/;
+				if (email_value.search(reg) !=-1 )
+				{
+					error = false;
+				}
+
+			} else {
+				error_text += "enter email";
+				//frm.elements[item].styles="enter email!!!";
+			}
+		}
+	}
+
+	if (!error){
+		document.forms.sendform.submit();
+//return false;
+	} else {
+		alert ('Error: ' + error_text);
+	}
+}//end check_form()
+
+
+// фильтрация ввода, только цифры
+function filter_input(e,regexp){
+  e=e || window.event;
+  var target=e.target || e.srcElement;
+  var isIE=document.all;
+
+  if (target.tagName.toUpperCase()=='INPUT')
+  {
+    var code=isIE ? e.keyCode : e.which;
+    if (code<32 || e.ctrlKey || e.altKey) return true;
+
+    var _char=String.fromCharCode(code);
+    if (!regexp.test( _char )) return false;
+  }
+  return true;
+}
+
+
+//=================================
+//Dump for object
+/*  
+print_f (cell_hover_top.style); //Dump IE styles
+.......
+textDecorationBlink
+scrollbarFaceColor
+.......
+*/
+function print_f( id ){
+	var str = '';
+   if(typeof(id) == "object"){
+      for(a in id){
+         str += (a +"<br>");   
+      }   
+   }
+	document.write (str);
+}//end
+
+
+//================================= DETECT BROWSERS, navigator.userAgent
+function detectBrowsers(){
+	var out = navigator.userAgent+"\n\r";
+	var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
+	var isiPad = navigator.userAgent.toLowerCase().indexOf("ipad");
+	var isiPod = navigator.userAgent.toLowerCase().indexOf("ipod");
+	var Chrome = navigator.userAgent.toLowerCase().indexOf("chrome");
+	var Firefox = navigator.userAgent.toLowerCase().indexOf("firefox");
+	  if(isiPhone > -1){
+			out += "iPhone detect\n\r";
+			$("body").addClass("iphone");
+		   var iHeight = window.screen.height;
+		   if(iHeight <= 480) {
+			  out += 'iPhone 2 or iPhone 3 or iPhone 3GS\n\r';
+		   }
+		   else if(iHeight > 480 && iHeight <=960) {
+			   out += 'iPhone 4\n\r';
+		   }
+		   else if(iHeight > 960) {
+			  out += 'iPhone 5\n\r';
+		   }
+	  }
+	  if(isiPad > -1) {
+			out += "iPad detect\n\r";
+	  }
+	  if(isiPod > -1) {
+			out = "iPod detect\n\r";
+	  }
+	  if( Chrome > -1) {
+			out += "Chrome detect\n\r";
+			$("body").addClass("chrome");
+	  }
+	  if( Firefox > -1) {
+			out += "Firefox detect\n\r";
+			$("body").addClass("firefox");
+	  }
+
+}//end detectBrowsers
+
+	/*
+		if ((navigator.appName == "Microsoft Internet Explorer"))
+		{
+			if(navigator.userAgent.indexOf("MSIE 9")!=-1)
+					{
+					..............
+			}
+		}
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.indexOf("msie 9.0") != -1) {
+		}
+
+		// Gecko = Mozilla + Firefox + Netscape
+		if (ua.indexOf("gecko") != -1) {
+		}
+	*/
+
+function getNameBrowser() {
+	var ua = navigator.userAgent.toLowerCase();
+	// Internet Explorer
+	if (ua.indexOf("msie") != -1 && ua.indexOf("opera") == -1 && ua.indexOf("webtv") == -1) {
+		return "msie"
+	}
+	// Opera
+	if (ua.indexOf("opera") != -1) {
+		return "opera"
+	}
+	// Gecko = Mozilla + Firefox + Netscape
+	if (ua.indexOf("gecko") != -1) {
+		return "gecko";
+	}
+	// Safari, используется в MAC OS
+	if (ua.indexOf("safari") != -1) {
+		return "safari";
+	}
+	// Konqueror, используется в UNIX-системах
+	if (ua.indexOf("konqueror") != -1) {
+		return "konqueror";
+	}
+	return "unknown";
+}//end getNameBrowser
+
+//-----------------
+	var getOrientation = function(){
+		if(_isMobile()) return (screen.height > screen.width)?"portrait":"landscape";
+		else return((window.orientation == -90 || window.orientation == 90)?"landscape":"portrait");
+	};//getOrientation
+
+	var _isMobile = function() {
+		//return !!('ontouchstart' in window);
+		
+		var supportsTouch = false;
+		if ('ontouchstart' in window) {
+			//iOS & Android
+			supportsTouch = true;
+		//} else if(window.navigator.msPointerEnabled) { // msPointerEnabled does not detect mobile, it also exists in desktop IE, use msMaxTouchPoints/maxTouchPoints instead!
+		} else if(window.navigator.msMaxTouchPoints) {
+			//WinPhone
+			supportsTouch = true;
+		}
+		return supportsTouch;
+	};//_isMobile
+	
+//if ( navigator.userAgent.match(/Mobi/) ) {
+	//test["result"] = true;
+//}
+//.........
+// if( ('ontouchstart' in window) ||
+	// (navigator.maxTouchPoints > 0) ||
+	// (navigator.msMaxTouchPoints > 0)
+// ){
+	// test["result"] = true;
+	// //test["msg"] = "browser with either Touch Events of Pointer Events running on touch-capable device";
+// }
+// if ( typeof window.orientation !== "undefined") {
+	// test["result"] = true;
+	// test["msg"] = "window.orientation = " + window.orientation;
+// }
+
+	var _isMSIEPhone = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:/i) || uAgent.match(/EDGE/i)) && uAgent.match(/Windows Phone/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isMSIEPhone
+
+	var _isMSIE = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:11/i))){
+				return true;
+			}
+		}
+		return false;
+	};//_isMSIE
+
+	var _isCEF = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if (uAgent.match(/CEF/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isCEF
+
+	var _isPOS = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if (uAgent.match(/POS/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isPOS
+
+	var _isAndroidPhone = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = (navigator.userAgent).toLowerCase();
+			if (!uAgent.match(/windows/i) && uAgent.match(/android/i) && uAgent.match(/chrome/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isAndroidPhone
+
+    var _isAndroidPhoneKeyboard = function(textChr){
+        if (_isAndroidPhone() && textChr==229) return true;
+        return false;
+    };//_isAndroidPhoneKeyboard
+
+	var _isAndroidPhoneFF = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = (navigator.userAgent).toLowerCase();
+			if (!uAgent.match(/windows/i) && uAgent.match(/android/i) && uAgent.match(/firefox/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isAndroidPhoneFF
+
+	var _isMSIETablet = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if ((uAgent.match(/MSIE/i) || uAgent.match(/RV:/i) || uAgent.match(/EDGE/i)) && uAgent.match(/Windows NT/i)){
+				return true;
+			}
+		}
+		return false;
+	};//_isMSIEPhone
+
+	var _isIphoneIpad = function(){
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent;
+			if (uAgent.match(/(iPod|iPhone|iPad)/)){
+				return true;
+			}
+		}
+
+		return false;
+	};//_isIphoneIpad
+
+	var _getMSIEVersion = function(){
+		return 10;
+		var uAgent;
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent.toUpperCase();
+			var pos = uAgent.indexOf('MSIE');
+			if (pos !=- 1) return parseInt(uAgent.substr(pos + 5, uAgent.indexOf('.', pos) - pos), 10);
+			var pos = uAgent.indexOf('RV:');
+			if (pos !=- 1) return parseInt(uAgent.substr(pos + 3, 2), 10);
+		}
+		return 0;
+	};//_getMSIEVersion
+
+	var _getOS = function(){
+		var _ios = /iPhone OS |iPad; CPU OS /i;
+		var _and = /Android /i;
+		var _wd = /Windows NT /i;
+		var _wm = /Windows Phone /i;
+		var ua = navigator.userAgent;
+
+		var os;
+		os = _wd.exec(ua);
+		if(os) return 'Windows NT';
+		os = _wm.exec(ua);
+		if(os) return 'Windows Phone';
+		os = _ios.exec(ua);
+		if(os) return 'iOS';
+		os = _and.exec(ua);
+		if(os) return 'Android';
+
+		return null;
+	};//_getOS
+
+	var _getOSVersion = function(){
+		var _ios = /iPhone OS ([\.\_\d]+)|iPad; CPU OS ([\.\_\d]+)/i;
+		var _and = /Android ([\.\d]+)/i;
+		var _wd = /Windows NT ([\.\d]+)/i;
+		var _wm = /Windows Phone ([\.\d]+)/i;
+		var ua = navigator.userAgent;
+
+		var os;
+		os = _wd.exec(ua);
+		if(os) return os[1];
+		os = _wm.exec(ua);
+		if(os) return os[1];
+		os = _ios.exec(ua);
+		if(os) return (os[1] ? os[1] : os[2]);
+		os = _and.exec(ua);
+		if(os) return os[1];
+
+		return null;
+	};//_getOSVersion
+	
+	var _isWin10MS11 = function(){
+		var uAgent,
+			ie,
+			win;
+	
+		if (navigator && navigator.userAgent){
+			uAgent = navigator.userAgent.toUpperCase();
+			ie = uAgent.indexOf('RV:');
+			if (ie !=- 1) ie = parseInt(uAgent.substr(ie + 3, 2), 10);
+			win = uAgent.indexOf('WINDOWS NT ');
+			if (win !=- 1) win=parseInt(uAgent.substr(win + 10, 3), 10);
+			
+			if (win == 10 && ie == 11) return true;
+			
+		}
+		
+		return false;
+				
+	};//_isWin10MS11
+
+
+//=================================
+//print source code
+//var source_txt = document.getElementById("code1");
+//code1_out.innerHTML +="<br><br>";
+//code1_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
+
+
+//**************************************
+//var dirname = getenv("dirname");
+//**************************************
+/*
+function getenv(i){
+	if (!i.length) 
+	{ 
+		return false; 
+	}  
+	qStr = document.location.href;
+	strpos = qStr.indexOf("?"+i+"=");
+
+	if ( strpos ==-1) 
+	{ 
+		strpos = qStr.indexOf("&"+i+"="); 
+	}
+
+	if ( strpos == qStr.length || strpos ==-1 )
+	{
+		return false; 
+	}
+
+	val = qStr.substring( (strpos+i.length)+2, qStr.length);
+
+	strpos = val.indexOf("&");
+
+	if ( strpos !=-1 ) 
+	{ 
+		val = val.substring(0, strpos ); 
+	}
+
+	if ( !val.length ) 
+	{ 
+		return false; 
+	}
+	else 
+	{ 
+		return val; 
+	}
+
+}//end getenv
+*/
+
+
+//================================= AJAX
+//**************************************
+//  создать объект XMLHttpRequest
+//**************************************
+function getXMLDocument(url)  {  
+	var xml;  
+	if(window.XMLHttpRequest) {  
+		xml=new window.XMLHttpRequest();  
+		xml.open("GET", url, false);  
+		xml.send("");  
+		//alert (xml.responseText);
+		return xml.responseXML;  
+	}  else  {
+		if(window.ActiveXObject) {  
+			xml=new ActiveXObject("Microsoft.XMLDOM");  
+			xml.async=false;  
+			xml.load(url);  
+			return xml;  
+		}  else  {  
+			alert("XML download is not supported in this browser");  
+			return null;  
+		}  
+	}
+}//end getXMLDocument
+
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
+//=================================
 //=================================
 //=================================
 //=================================

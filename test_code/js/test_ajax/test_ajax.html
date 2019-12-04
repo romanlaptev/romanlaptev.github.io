@@ -4,12 +4,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=10">
-	<link rel="stylesheet" href="../css/bootstrap335.min.css">
+	
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	<script src="../lib/shared_functions.js"></script>
+	
 	<title>test JS: Ajax</title>
 	
 <script>
+	var func = sharedFunc();
+//console.log("func:", func);
+var logMsg;
+
 window.onload = function() {
-		
+
+	logMsg = navigator.userAgent;
+	func.logAlert(logMsg, "info");
+
 	document.getElementById("ajax-btn").onclick = function() {
 				//var url = "data/test.html";
 				//var url = document.getElementsByName("input_url")[0].value;
@@ -202,19 +213,38 @@ console.log( arguments );
 	<div class="page-header">
 		<h1>test Ajax</h1>
 	</div>
-	<input type="text" class="form-control" id="request_url" name="input_url" value=""/>
-	load progress:<progress id="load-progress" max="100" value="0" style="width:100%"></progress>
 	
-	<button class="btn btn-primary" id="ajax-btn">ajax request</button>
-	<div class="panel" id="ajax-content"></div>
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+	
+		<div class="panel panel-default">
+			<div class="panel-body">
+	
+	input url:<input type="text" class="form-control" id="input-url" name="input_url" value=""/>
+<!--	
+	load progress:<progress id="load-progress" max="100" value="0" style="width:100%"></progress>
+-->
+				<button id="ajax-btn" class="btn btn-primary">ajax request</button>
+			</div>
+		</div>
+	
+		<div class="panel panel-default">
+			<div class="panel-body" id="ajax-content"></div>
+		</div>
 	
 	<pre>
 data/test.html
 data/test.xml
 data/test.json
 /sites/romanlaptev.github.io/projects/notes/api/test.php
-http://comp:88/test/data/ar_adr_lvl_5/ar_adr_lvl_5_ORDER.csv
-http://comp:88/test/data/ar_adr_lvl_5/p1_100000.csv
+
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/lib.json
 для загрузки данных с удаленного сервера создать в папке с данными .htaccess или web.config
 
 APACHE
@@ -279,94 +309,5 @@ IE 10:      8
 Chrome:     6
 	</pre>
 </div>	
-
-<script>
-	if ('ontouchstart' in window){
-		var script = document.createElement('script');
-		script.src = "https://getfirebug.com/firebug-lite.js";
-		//document.body.appendChild( script );
-		document.getElementsByTagName('head')[0].appendChild(script);
-		script.onload = function() {
-//alert( "onload " + this.src);
-		};
-		script.onerror = function(e) {
-//alert( "error load script " + this.src);
-		};  
-	}
-	
-//console.log for old IE
-//alert(typeof window.console);
-if (!window.console){ 
-	window.console = {
-		"log" : function( msg ){
-			var log = getDOMobj("log");
-			if(log){
-				log.innerHTML += msg +"<br>";
-			} else {
-				alert(msg);
-				//document.writeln(msg);
-			}
-		}
-	}
-};
-
-
-function _log( msg, id){
-//console.log(arguments);
-//alert(arguments.length);
-//		for( var n = 0; n < arguments.length; n++){
-//			var _s = "<li> arguments." + n +" = "+ arguments[n] + "</li>";
-//alert( _s );
-//		}
-	var id = id || arguments[1];//IE4 fix
-//alert( msg );
-//alert( id );
-
-	if(!id){
-		var id = "log";
-	}
-	
-	var output = getDOMobj(id);
-	if( output ){
-	
-		if( msg.length == 0){
-			output.innerHTML = "";
-		} else {
-			output.innerHTML += msg;
-		}
-		
-	} else {
-		console.log(msg);
-		//document.writeln(msg);
-	}
-}//end _log()
-
-function getDOMobj(id){
-	
-	if( document.querySelector ){
-		var obj = document.querySelector("#"+id);
-		return obj;
-	}
-	
-	if( document.getElementById ){
-		var obj = document.getElementById(id);
-		return obj;
-	}
-	
-	if( document.all ){
-		var obj = document.all[id];
-		return obj;
-	}
-	
-	//if( document.layers ){
-		//var obj = document.layers[id];
-		//return obj;
-	//}
-	
-	return false;
-}//end getDOMobj()
-	
-</script>
-
 </body>
 </html>
