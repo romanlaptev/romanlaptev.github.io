@@ -404,7 +404,13 @@ console.log(msg);
 							}
 
 							if( typeof callback === "function"){
-								var data = xhr.response;
+//alert("responseText" in xhr);	true in IE6
+//alert("response" in xhr);	false in IE6
+								if( "response" in xhr){
+									var data = xhr.response;
+								} else {
+									var data = xhr.responseText;
+								}
 								
 //fix IE8 (not property "responseType")
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
@@ -1400,24 +1406,24 @@ window.onresize = function(event) {
 
 //console.log("window.addEventListener:" + window.addEventListener);
 //console.log("window.attachEvent:" + window.attachEvent);
-if ( window.addEventListener ) {
-	window.addEventListener("load", function(e) {
-console.log("window.addEventListener, event load");
-	}, false);
-} else {
-	if (window.attachEvent)	{
-		window.attachEvent("onload", function(){
-console.log("window.attachEvent, event onload");
-		});
-	}
-};
+//if ( window.addEventListener ) {
+	//window.addEventListener("load", function(e) {
+//console.log("window.addEventListener, event load");
+	//}, false);
+//} else {
+	//if (window.attachEvent)	{
+		//window.attachEvent("onload", function(){
+//console.log("window.attachEvent, event onload");
+		//});
+	//}
+//};
 
 /* for Mozilla/Firefox/Opera 9 */
-if (document.addEventListener) {
-	document.addEventListener("DOMContentLoaded", function(){
-console.log("DOMContentLoaded");
-	},false);//end dom load
-}
+//if (document.addEventListener) {
+	//document.addEventListener("DOMContentLoaded", function(){
+//console.log("DOMContentLoaded");
+	//},false);//end dom load
+//}
 
 if( typeof window.jQuery === "function"){
 //var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
@@ -1533,45 +1539,3 @@ console.log("image load error", e);
 	});//end scroll
 
 }
-//============================= IMAGES Load error
-/*
-window.onload = function(){
-console.log("window.onload");	
-//console.log( "jQuery is " + typeof $);
-
-	//+Обработка проблем загрузки изображений (загрузить с облака гугла)
-//	var images = document.getElementsByTagName("img");
-//console.log( "images =  ", images, images.length);
-//	for( var n = 0; n < images.length; n++){
-//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
-//		if( images[n].clientHeight === 0 ){
-//			load_img_error( images[n] );
-//		};
-//	};
-
-
-};//end load
-
-(function($){
-    $(function() {
-console.log("TEST");
-
-//handler for error load images
-		$("img").on("error", function( e ){
-console.log("image load error");
-			//var src = $(this).attr("src");
-			//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-			//$(this).attr("src", new_src);
-			$("body").attr("data-image-load-error","1");
-			//load_img_error( $(this)[0] );
-		});
-
-		$("img").on("load", function( e ){
-console.log("image load event", e);
-		});
-
-    });
-})(jQuery);
-*/
-

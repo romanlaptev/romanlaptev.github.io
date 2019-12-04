@@ -5,6 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=10">
 	
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	<meta name="referrer" content="no-referrer" />
+	
 	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
 	<link rel="stylesheet" href="../../../css/shared.css">
 	<script src="../lib/shared_functions.js"></script>
@@ -20,6 +24,10 @@ window.onload = function() {
 
 	logMsg = navigator.userAgent;
 	func.logAlert(logMsg, "info");
+	
+	testSupportAjax();
+
+	var ajaxContent = func.getById("ajax-content");
 
 	document.getElementById("ajax-btn").onclick = function() {
 				//var url = "data/test.html";
@@ -32,7 +40,12 @@ window.onload = function() {
 			"requestMethod" : "GET", 
 			"url" : document.getElementsByName("input_url")[0].value, 
 			"callback": function(data){
-console.log("end ajax load, ", data[0], data.length);					
+//alert(typeof data);
+//alert( data.length );
+//alert( data[0] );
+console.log("end ajax load, " + data[0] + data.length);
+				ajaxContent.innerHTML = data;
+
 			}//end ajax load
 		});
 	};//end event
@@ -69,6 +82,7 @@ console.log( msg );
 	}	
 
 	var xhr = _createRequestObject();
+	
 	if ( !xhr ) {
 console.log("error, ", xhr);
 		var msg = "_createRequestObject() error";			
@@ -78,7 +92,16 @@ console.log( msg, xhr );
 	}
 				
 	var timeStart = new Date();
-	xhr.open( requestMethod, url, async );
+	try{
+		xhr.open( requestMethod, url, async );
+	} catch(e){
+		logMsg = "ajax request error...";			
+console.log( logMsg );
+for( var key in e){
+console.log(key +" : "+ e[key]);
+}//next
+		return false;
+	}//end catch
 	
 	//Check responseType support:
 	//if( "responseType" in xhr){
@@ -105,15 +128,13 @@ console.log("xhr.status -" + xhr.status);
 //console.log(xhr.getResponseHeader('X-Powered-By') );
 				var all_headers = xhr.getAllResponseHeaders();
 console.log( all_headers );
-
 				var timeEnd = new Date();
 				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-				_log("ajax load url: " + url + ", runtime: " + runtime +" sec");
-							
+logMsg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+func.logAlert( logMsg, "success" );
+
 				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
-console.log( "xhr.response: ", xhr.response );
-console.log( "xhr.responseText: ", xhr.responseText );
-console.log( "xhr.responseXML: ", xhr.responseXML );
+//console.log( "xhr.response: " + xhr.response );
 /*				
 if( "responseType" in xhr){
 console.log( xhr.response );
@@ -123,28 +144,53 @@ console.log( "xhr.responseText: ", xhr.responseText );
 console.log( "xhr.responseXML: ", xhr.responseXML );
 }
 */
+/*
+							try{
+					console.log( "xhr.responseText: " + xhr.responseText );
+							} catch(e){
+					console.log( e );
+							}
 
+							try{
+					console.log( "xhr.responseXML: " + xhr.responseXML );
+							} catch(e){
+					console.log( e );
+							}
+*/
 					var all_headers = xhr.getAllResponseHeaders();
 console.log( all_headers );
 
 					if( typeof callback === "function"){
-						
-						if( xhr.responseXML ){
-//Content-Type: application/xml						
-console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );						
-							var data = xhr.responseXML;
+//alert("responseText" in xhr);	
+//alert("response" in xhr);	
+						if( "response" in xhr){
+							var data = xhr.response;
 						} else {
 							var data = xhr.responseText;
 						}
-						callback(data);
-					}
+						
+//fix IE8 (not property "responseType")
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+						var contentType = xhr.getResponseHeader("Content-Type");
+						//if( contentType === "application/xml" || contentType === "text/xml"){
+						if( contentType.indexOf("application/xml") !== -1 || contentType.indexOf("text/xml") !== -1 ){
+							data = xhr.responseXML;
+						}
+						
+						//if( contentType === "text/plain"){
+						if( contentType.indexOf("text/plain") !== -1){
+							data = xhr.responseText;
+						} 
 
-							
+						callback( data, runtime, xhr );
+					}
+					
 			} else {
-console.log(xhr);					
-_log("<p>Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b></p>");
-_log("<p>Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b></p>");
-_log("<p>Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b></p>");
+console.log(xhr);	
+logMsg = "Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b><br>";
+logMsg += "Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b><br>";
+logMsg += "Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b><br>";
+func.logAlert( logMsg, "error" );
 			}						
 						
 		}
@@ -204,6 +250,66 @@ console.log( supportASPX );
 console.log( arguments );
 			});
 */
+
+function testSupportAjax(){
+	if ( typeof window.XMLHttpRequest !== "undefined"){
+		logMsg = "Browser supports window.XMLHttpRequest";
+		func.logAlert( logMsg, "success");
+	} else {
+		logMsg = "<b>window.XMLHttpRequest</b> NOT supported...";
+		func.logAlert( logMsg, "error");
+	}
+	
+	try{
+		var xhr = new XMLHttpRequest();
+		
+		if ( typeof xhr.responseType !== "undefined" ){
+				logMsg = "XMLHttpRequest Level 2 supported ( 'responseType' in xhr)";
+				func.logAlert( logMsg, "success");
+			} else {
+				logMsg = "<b>XMLHttpRequest Level 2 ( 'responseType' in xhr )</b> NOT supported...";
+				func.logAlert( logMsg, "error");
+			}
+
+	}catch(e){
+for(var key in e){
+console.log(key +" : "+ e[key]);
+}
+	}
+	
+	if( window.ActiveXObject){
+	
+		try {
+			var request = new ActiveXObject("Microsoft.XMLHTTP");
+			logMsg = "ActiveXObject('Microsoft.XMLHTTP') created";
+			func.logAlert( logMsg, "success");
+		} catch(e){
+			test["msg"] = e.description;
+			for(var key in e){
+			console.log(key +" : "+ e[key]);
+			}//next
+		}
+		
+		try {
+			var request = new ActiveXObject('Msxml2.XMLHTTP');
+			logMsg = "ActiveXObject('Msxml2.XMLHTTP') created";
+			func.logAlert( logMsg, "success");
+		} catch(e){
+			for(var key in e){
+			console.log(key +" : "+ e[key]);
+			}//next
+		}
+		
+	}
+
+	if ( typeof window.fetch !== "undefined"){
+		logMsg = "Browser supports window.fetch";
+		func.logAlert( logMsg, "success");
+	} else {
+		logMsg = "<b>window.fetch</b> NOT supported...";
+		func.logAlert( logMsg, "error");
+	}
+}//end testSupport()	
 
 </script>
 

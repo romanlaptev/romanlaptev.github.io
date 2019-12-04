@@ -1198,6 +1198,50 @@ function getXMLDocument(url)  {
 	}
 }//end getXMLDocument
 
+
+//============================= IMAGES Load error
+/*
+window.onload = function(){
+console.log("window.onload");	
+//console.log( "jQuery is " + typeof $);
+
+	//+Обработка проблем загрузки изображений (загрузить с облака гугла)
+//	var images = document.getElementsByTagName("img");
+//console.log( "images =  ", images, images.length);
+//	for( var n = 0; n < images.length; n++){
+//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+//		if( images[n].clientHeight === 0 ){
+//			load_img_error( images[n] );
+//		};
+//	};
+
+
+};//end load
+
+(function($){
+    $(function() {
+console.log("TEST");
+
+//handler for error load images
+		$("img").on("error", function( e ){
+console.log("image load error");
+			//var src = $(this).attr("src");
+			//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+			//$(this).attr("src", new_src);
+			$("body").attr("data-image-load-error","1");
+			//load_img_error( $(this)[0] );
+		});
+
+		$("img").on("load", function( e ){
+console.log("image load event", e);
+		});
+
+    });
+})(jQuery);
+*/
+
+
 //=================================
 //=================================
 //=================================
