@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+.clearfix{zoom:1}
+.icon, .menu ul li, .btn, .item, .head span, .direction article, .top-nav ul li, .head-catalog ul li, .catalog article, .baner, .option, .option article, .color-main a, .tekst, .baner.prop{
+	zoom:1;
+	*display:inline;
+}
+
+.bank-pfoto span {-pie-background: linear-gradient(#b82705, #ed5306);}
+
+*+html .main-slide  {
+	height:372px;
+	border-radius:0
+}
+*+html .slide-main {border-radius:0}
+*+html .txt-sl {border-radius:0;}
+*+html .slide-main header {border-radius:0;}
+*+html .menu-left{border-radius:0;}
+*+html .menu-left header{border-radius:0;} 
+*+html .backet{border-radius:0;box-shadow:none} 
+*+html .center-bck{border-radius:0;} 
+*+html .menu-info{border-radius:0;}
+*+html .menu-info header{border-radius:0;} 
+*+html .option {border-radius:0}
+*+html .main-slide .flex-control-nav {
+	bottom: 6px; 
+}
+
+.center-bck {-pie-background:rgba(233,202,190,0.6)}
+.center-bck.whr{-pie-background:rgba(255,255,255,0.3)}
+
+*+html .item span {
+	bottom:6px;
+	left:10px;
+	margin-left:0;
+}
+*+html .item span span {
+	display:block;
+	line-height:1.2em
+}
+*+html .top-nav ul li {
+	margin-right:4px;
+	line-height:1.4em
+}
+*+html .btn {
+	padding:0px 12px 6px 12px !important;
+}
+*+html .backet .btn{padding:4px 0 !important;width:90px} 
+*+html .h-product .btn {margin-top:0}
+*+html .head-catalog ul li {margin-right:2px}

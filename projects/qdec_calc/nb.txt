@@ -1,0 +1,3 @@
+- восстановить cropper.php
+files/crop_image/crop_filters.php?filename=images/WP-14-1093.jpg&sepia=&desaturate=&transform=&texture=&texture_name=&x=0&y=0&w=412.7731092436975&h=320&w_cm=307&h_cm=238
+
