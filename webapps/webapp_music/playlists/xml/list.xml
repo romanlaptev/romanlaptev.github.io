@@ -37,6 +37,11 @@
 			</related_links>
 		</playlist>
 		
+		<playlist created="05-Dec-2019" title="Master" class="">
+			<location>/music/0_playlists/Master.json</location>
+			<thumbnail url="/music/M/Master/cover.jpg" />
+		</playlist>
+
 		<playlist created="13-Oct-2019" title="Manowar" class="">
 			<location>/music/0_playlists/Manowar.json</location>
 			<thumbnail url="/music/M/Manowar/image/Manowar88.jpg" />
