@@ -412,7 +412,7 @@ font-family: 'PT Serif Caption', serif;
 	text-align:right;
 	white-space:nowrap;
 	line-height:38px;
-	background:url(../images/bg-h-opt.png) no-repeat;
+	/*background:url(../images/bg-h-opt.png) no-repeat;*/
 	border-bottom:1px solid #e1e1e1;
 	color:#218e9e;
 	#font-family: 'ds_gooseregular';
@@ -643,14 +643,17 @@ background: -ms-linear-gradient(top,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5
 background: linear-gradient(to bottom,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5 52%,#eaeaea 100%); /* W3C */
 }
 .tem .selectBox {max-width:140px}
+
 .selectBox.fnt {
 	font-size:16px;
 	font-weight:normal;
+/*
 	#font-family: 'Conv_segoepr';
 font-family: 'PT Serif Caption', serif;
-	padding-right:60px;
+*/
+	/*padding-right:60px;*/
 	color:#218e9e;
-	margin-left:22px
+	/*margin-left:22px*/
 }
 .selectBox:hover {
 	text-decoration: none
@@ -702,7 +705,7 @@ font-family: 'PT Serif Caption', serif;
 	margin-right:14px;
 }
 .option.filtr header {
-  background: url("../images/bg-f-opt.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  /*background: url("../images/bg-f-opt.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);*/
   border-bottom: 1px solid #E1E1E1;
   color: #218E9E;
   #font-family: 'ds_gooseregular';
@@ -752,6 +755,7 @@ font-family: 'PT Serif Caption', serif;
 	vertical-align:top;
 	margin:0 0 8px 12px 
 }
+/*
 .price-block {
 	height:75px;
 	border:1px solid #e1e1e1;
@@ -801,6 +805,9 @@ font-family: 'PT Serif Caption', serif;
 	color:#218e9e
 }
 .price-block ul  li:nth-child(odd) {background:#b8dbe0;color:#fff}
+*/
+
+
 .l-pr {
 	display:block;
 	float:left;
@@ -836,7 +843,8 @@ cursor:pointer;
 
 
 #target {
-   cursor: url(../images/zoom2.png), auto;
+/*   cursor: url(../images/zoom2.png), auto;*/
+	width:100%;
 }
 
 

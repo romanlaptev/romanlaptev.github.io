@@ -71,9 +71,12 @@ var init_h = 250;
 	<div class="row-1 rows">
 		<div class="">
 			<div class="im-product">
+
 					<a id="large-img" class="fancybox" href="images/bg_WP-14-1093.jpg">
 						<img src="images/bg_WP-14-1093.jpg" id="target" alt="">
 					</a>
+
+
 				<span></span>
 				<div id="guides-block">
 					<div class="guides"></div>
@@ -85,114 +88,71 @@ var init_h = 250;
 
 		</div>
 	</div>
+	<a title="Увеличить изображение" id="zoom-link" href="javascript:void(0)"></a>
 
 <!--
 <div class="row-2 rows"></div>
 -->	
 </div><!-- end panel -->
 
-<div class="panel">
-	<a title="Увеличить изображение" id="zoom-link" href="javascript:void(0)"></a>
-</div><!-- end panel -->
-
-	
-<div class="panel">
-	<div class="block-line"> 
-		<h3>Выберите материал, на который будет нанесено изображение</h3>
-		<span class="help-text"> 
-		</span>
-		
-		<select class="fnt selectBox" id="material" style="display: none;">
-		  <option id="no-material" value="0">выбрать</option>
-		  <option id="flizelin" value="0.9" selected="selected">Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м</option>
-		  <option value="1">Полиэстер самоклеющийся ширина полосы 1 м</option>
-		  <option value="1.5">Полиэстер самоклеющийся ширина полосы 1,5 м</option>
-		</select>
-	</div>
-</div><!-- end panel -->
+			<div class="panel">
+				<div class="filters"> 
+					<h3>Используйте фильтры</h3>
+					<a id="sepia-link" href="javascript:void(0)" class="btn mn">Сепия</a> 
+					<a id="desaturate-link" href="javascript:void(0)" class="btn mn">Ч/Б</a> 
+					<a id="flip_horizontal" href="javascript:void(0)" class="btn mn hor">Зеркально</a> 
+					<a id="reset-link" href="javascript:void(0)" class="btn">убрать фильтры</a> 
+				</div>
+				<div class=""> 
+					<span class="help-text">Как клеим:</span>
+					<a id="left-right" href="javascript:void(0)" class="btn mn">слева направо</a> 
+					<a id="right-left" href="javascript:void(0)" class="btn mn">справа налево</a> 
+					<input type="button" value="Сохранить изображение" class="save-image-btn btn">
+				</div>
+			</div><!-- end panel -->
 
 
-<div class="panel">
-		<div class="block-line"> 
-			<div class="show_visual">
-<!--			
-			<span class="help-text"> 
-<p>3) Зайдите в раздел "Посмотреть обои в интерьере" и сравните 
-насколько выбранное подрезанное изображение cоотносится с размерами 
-различных бытовых предметов.</p>
-			</span>
--->			
-	<!--		<a href="#inter" class="btn al scroll-to">Посмотреть эти обои в интерьере</a> -->			
-				<a href="#" class="btn al">Посмотреть эти обои в интерьере</a>
-			</div> 
-		</div>
 
-</div><!-- end panel -->
+			<div class="panel">
+	<h3>Укажите размеры изображения на стене</h3>
+    <span class="help-text">Задайте высоту и ширину Ваших обоев: двигайте ползунок или введите значения вручную.</span> 
 			
-              <div class="price-block panel">
-                <header>Расчёт стоимости</header>
-						<div class="product-price cols">
-							<input type="text" name="decor_product_price" id="pr-price" value="9800.00" readonly="readonly"> руб.
-						</div>
-						<div class="order-btn cols">
-							<input type="submit" class="btn zk" title="Заказать" value="Заказать">						
-						</div>
-						
-<input type="hidden" name="product_id" value="1251">
-<input type="hidden" name="flypage" value="shopdecor-wallpapers">
-<!--
-<input type="hidden" name="cartReset" value="N">
-<input type="hidden" name="page" value="checkout.index">
--->
-<input type="hidden" value="shop.cart" name="page">
-<input type="hidden" name="manufacturer_id" value="1">
-<input type="hidden" name="category_id" value="15">
-<input type="hidden" name="func" value="cartAdd">
-<input type="hidden" name="option" value="com_virtuemart">
-<input type="hidden" name="Itemid" value="1">
+	<div class="block-line">
+		<div class="option filtr">
+			<header> Ширина (см) </header>
 
-<input type="hidden" name="transform" value="Отражение по горизонтали:нет">
-<input type="hidden" name="transform_check" value="">
+			<input type="text" id="amount" value="300">
+			<div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 58.3333%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 58.3333%;"></a></div>
 
-<input type="hidden" name="sepia" value="Сепия: нет">
-<input type="hidden" name="sepia_check" value="">
+			<span class="b-ug"></span> 
+			<span class="option-notes">*Размер ширины может влиять на количество рулонов обоев</span> 
+		</div>
+		
+		<div class="option filtr">
+			<header> Высота (см) </header>
 
-<input type="hidden" name="desaturate" value="ч/б: нет">
-<input type="hidden" name="desaturate_check" value="">
+			<input type="text" id="amount-ui" value="250">
+			<div id="slider-ui" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 61.5385%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 61.5385%;"></a></div>
 
-<input type="hidden" name="inp_material" value="Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м">
-<input type="hidden" name="texture" value="">
-<input type="hidden" name="texture_src" value="">
-<input type="hidden" name="w_cm" value="300">
-<input type="hidden" name="h_cm" value="250">
-<input type="hidden" name="decor_dynamic_size" id="decor_dynamic_size_field" value="300x250">
-<input type="hidden" name="num_roll" value="4">
+			<span class="b-ug"></span> 
+			<span class="option-notes">*Будет учтено в заказе</span> 
+		</div>
+	</div>
+	<div class="block-line">
+		<span class="help-text">
+* Вертикальные черные линии определяют стыки полос обоев. Ширина целых 
+полос составляет 0,9 / 1 / 1,5 м в зависимости от выбранного материала.
+		</span> 
+	</div>
+	
+	<div class="block-line">
+		<span class="help-text">Максимально рекомендуемый размер печати фотообоев для этого типа изображения: 0x0 </span> 
+	</div>
+			
+			</div><!-- end panel -->
+	
+			
 
-<input type="hidden" id="x" name="x" value="0">
-<input type="hidden" id="y" name="y" value="0">
-<input type="hidden" id="w" name="w" value="384.0000000000001">
-<input type="hidden" id="h" name="h" value="320">
-<span id="crop-url-parent" style="display:none;">
-	<a href="#" target="_blank" id="crop-url">Ссылка на выбранный фрагмент</a>
-</span>
-<input type="hidden" name="inp_crop_url">
-<!--
-<input type="hidden" name="inp_crop_url_title" value="Ссылка на выбранный фрагмент"/>
--->
-<input type="hidden" name="direction_check" value="">
-<input type="hidden" name="direction_text" value="Как клеим: слева направо">
-
-<!-- Цены на печать на флизелиновых обоях -->
-<input type="hidden" name="print_price1" value="980">
-
-<!-- Цены на печать на на полиэстере 1м -->
-<input type="hidden" name="print_price2" value="950">
-
-<!-- Цены на печать на на полиэстере 1,5м -->
-<input type="hidden" name="print_price3" value="1425">
-
-
-              </div>
 </div><!-- #product-all -->
 </form>
 <!--
@@ -233,62 +193,42 @@ $("#target").error(function(){
 		<!-- end sidebar -->
 		
 		<div class="sidebar sidebar-right">
-		  <div class="wrapper">
-		  
-			<div class="panel">
-	<h3>Укажите размеры изображения на стене</h3>
-    <span class="help-text">Задайте высоту и ширину Ваших обоев: двигайте ползунок или введите значения вручную.</span> 
-			
-	<div class="block-line">
-		<div class="option filtr">
-			<header> Ширина (см) </header>
+			<div class="wrapper">
 
-			<input type="text" id="amount" value="300">
-			<div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 58.3333%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 58.3333%;"></a></div>
-
-			<span class="b-ug"></span> 
-			<span class="option-notes">*Размер ширины может влиять на количество рулонов обоев</span> 
-		</div>
+<div class="panel">
+	<div class="block-line"> 
+		<h3>Выберите материал, на который будет нанесено изображение</h3>
+		<span class="help-text"> 
+		</span>
 		
-		<div class="option filtr">
-			<header> Высота (см) </header>
+		<select class="fnt selectBox" id="material" style="display: none;">
+		  <option id="no-material" value="0">выбрать</option>
+		  <option id="flizelin" value="0.9" selected="selected">Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м</option>
+		  <option value="1">Полиэстер самоклеющийся ширина полосы 1 м</option>
+		  <option value="1.5">Полиэстер самоклеющийся ширина полосы 1,5 м</option>
+		</select>
+	</div>
+</div><!-- end panel -->
 
-			<input type="text" id="amount-ui" value="250">
-			<div id="slider-ui" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 61.5385%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 61.5385%;"></a></div>
 
-			<span class="b-ug"></span> 
-			<span class="option-notes">*Будет учтено в заказе</span> 
+<div class="panel">
+		<div class="block-line"> 
+			<div class="show_visual">
+<!--			
+			<span class="help-text"> 
+<p>3) Зайдите в раздел "Посмотреть обои в интерьере" и сравните 
+насколько выбранное подрезанное изображение cоотносится с размерами 
+различных бытовых предметов.</p>
+			</span>
+-->			
+	<!--		<a href="#inter" class="btn al scroll-to">Посмотреть эти обои в интерьере</a> -->			
+				<a href="#" class="btn al">Посмотреть эти обои в интерьере</a>
+			</div> 
 		</div>
-	</div>
-	<div class="block-line">
-		<span class="help-text">
-* Вертикальные черные линии определяют стыки полос обоев. Ширина целых 
-полос составляет 0,9 / 1 / 1,5 м в зависимости от выбранного материала.
-		</span> 
-	</div>
-	
-	<div class="block-line">
-		<span class="help-text">Максимально рекомендуемый размер печати фотообоев для этого типа изображения: 0x0 </span> 
-	</div>
-			
-			</div><!-- end panel -->
 
+</div><!-- end panel -->
+		  
 
-			<div class="panel">
-				<div class="filters"> 
-					<h3>Используйте фильтры</h3>
-					<a id="sepia-link" href="javascript:void(0)" class="btn mn">Сепия</a> 
-					<a id="desaturate-link" href="javascript:void(0)" class="btn mn">Ч/Б</a> 
-					<a id="flip_horizontal" href="javascript:void(0)" class="btn mn hor">Зеркально</a> 
-					<a id="reset-link" href="javascript:void(0)" class="btn">убрать фильтры</a> 
-				</div>
-
-				<span class="help-text">Как клеим:</span>
-				<a id="left-right" href="javascript:void(0)" class="btn mn">слева направо</a> 
-				<a id="right-left" href="javascript:void(0)" class="btn mn">справа налево</a> 
-				<input type="button" value="Сохранить изображение" class="save-image-btn btn">
-			</div><!-- end panel -->
-			
 			
 <div class="panel">
 <div class="select_tov">
@@ -438,6 +378,73 @@ $("#target").error(function(){
 </div>
 </div><!-- end panel -->
 			
+			
+			
+<div class="price-block panel">
+                <header>Расчёт стоимости</header>
+						<div class="product-price cols">
+							<input type="text" name="decor_product_price" id="pr-price" value="" readonly="readonly"> руб.
+						</div>
+						<div class="order-btn cols">
+							<input type="submit" class="btn zk" title="Заказать" value="Заказать">						
+						</div>
+						
+<input type="hidden" name="product_id" value="1251">
+<input type="hidden" name="flypage" value="shopdecor-wallpapers">
+<!--
+<input type="hidden" name="cartReset" value="N">
+<input type="hidden" name="page" value="checkout.index">
+-->
+<input type="hidden" value="shop.cart" name="page">
+<input type="hidden" name="manufacturer_id" value="1">
+<input type="hidden" name="category_id" value="15">
+<input type="hidden" name="func" value="cartAdd">
+<input type="hidden" name="option" value="com_virtuemart">
+<input type="hidden" name="Itemid" value="1">
+
+<input type="hidden" name="transform" value="Отражение по горизонтали:нет">
+<input type="hidden" name="transform_check" value="">
+
+<input type="hidden" name="sepia" value="Сепия: нет">
+<input type="hidden" name="sepia_check" value="">
+
+<input type="hidden" name="desaturate" value="ч/б: нет">
+<input type="hidden" name="desaturate_check" value="">
+
+<input type="hidden" name="inp_material" value="Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м">
+<input type="hidden" name="texture" value="">
+<input type="hidden" name="texture_src" value="">
+<input type="hidden" name="w_cm" value="300">
+<input type="hidden" name="h_cm" value="250">
+<input type="hidden" name="decor_dynamic_size" id="decor_dynamic_size_field" value="300x250">
+<input type="hidden" name="num_roll" value="4">
+
+<input type="hidden" id="x" name="x" value="0">
+<input type="hidden" id="y" name="y" value="0">
+<input type="hidden" id="w" name="w" value="384.0000000000001">
+<input type="hidden" id="h" name="h" value="320">
+<span id="crop-url-parent" style="display:none;">
+	<a href="#" target="_blank" id="crop-url">Ссылка на выбранный фрагмент</a>
+</span>
+<input type="hidden" name="inp_crop_url">
+<!--
+<input type="hidden" name="inp_crop_url_title" value="Ссылка на выбранный фрагмент"/>
+-->
+<input type="hidden" name="direction_check" value="">
+<input type="hidden" name="direction_text" value="Как клеим: слева направо">
+
+<!-- Цены на печать на флизелиновых обоях -->
+<input type="hidden" name="print_price1" value="980">
+
+<!-- Цены на печать на на полиэстере 1м -->
+<input type="hidden" name="print_price2" value="950">
+
+<!-- Цены на печать на на полиэстере 1,5м -->
+<input type="hidden" name="print_price3" value="1425">
+
+
+</div><!-- end panel -->
+              
 		  </div><!-- end wrapper -->
 		</div><!-- end sidebar -->
 

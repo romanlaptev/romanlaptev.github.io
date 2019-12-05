@@ -38,12 +38,8 @@ margin-right: 0px;
   width: 128px;
 }
 
-.save-image-btn
-{
+.save-image-btn{
 cursor: pointer;
-font-size: 11px;
-height: 35px;
-width: 160px;
 }
 
 .col-2 .filters {
