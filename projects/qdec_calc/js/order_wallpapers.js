@@ -8,17 +8,18 @@ var init_h = 250;
 var action = "";
 var rest_left = 0;
 
+
 $(window).load(
     function() 
 	{
-	//----------------------- определить размеры изображения товара
+	//----------------------- РѕРїСЂРµРґРµР»РёС‚СЊ СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ С‚РѕРІР°СЂР°
 		img_w = $("#target").width();
 //console.log ("img_w = " + img_w);
 		img_h = $("#target").height();
 //console.log('img_h = ' + img_h);
 		img_src = $("#target").attr("src");
 
-		if ( $("#target").width() == 0)//если нет изображения обоев
+		if ( $("#target").width() == 0)//РµСЃР»Рё РЅРµС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РѕР±РѕРµРІ
 		{
 			img_w = '568';
 			img_h = '320';
@@ -33,27 +34,27 @@ $(window).load(
 			flypage == "shopdecor-design-2" )
 		{
 			set_guides_mod();
-			//-------------- записать длину и ширину в поля для сабмита формы
-			$('input[name=w_cm]').val('Ширина: ' + init_w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + init_h + ' см');
+			//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + init_w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + init_h + ' СЃРј');
 		}
 		
 		if ( flypage == "shopdecor-design" )
 		{
 			$(".shopdecor-design #target").hide();
 
-			// установить нач. значение ширины
+			// СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°С‡. Р·РЅР°С‡РµРЅРёРµ С€РёСЂРёРЅС‹
 			var roll_width = $('#material option:selected').val();
-			roll_width_cm = roll_width * 100; //перевести ширину обоев в см
+			roll_width_cm = roll_width * 100; //РїРµСЂРµРІРµСЃС‚Рё С€РёСЂРёРЅСѓ РѕР±РѕРµРІ РІ СЃРј
 			init_w = roll_width_cm;
 			init_h = roll_width_cm;
 			$( "#amount" ).val( init_w );
 			$( "#slider-range" ).slider( "value",init_w );
 			$( "#amount-ui" ).val( init_h );
 			$( "#slider-ui" ).slider( "value",init_h );
-			//-------------- записать длину и ширину в поля для сабмита формы
-			$('input[name=w_cm]').val('Ширина: ' + init_w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + init_h + ' см');
+			//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + init_w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + init_h + ' СЃРј');
 			
 			//$(".im-product").css("background-size", img_w + "px") ;
 			set_guides_design();
@@ -75,7 +76,7 @@ $(function() {
 //console.log("prev_w_cm = " + prev_w_cm);		
 		$( "#amount" ).val( "" + ui.value );
 		
-//-------------- записать длину и ширину в поля для сабмита формы
+//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
 		var w = $( "#amount" ).val();
 		var h = $( "#amount-ui" ).val();
 
@@ -84,16 +85,16 @@ $(function() {
 		if ( flypage =="shopdecor-wallpapers" ||
 			flypage == "shopdecor-design-2" )
 		{
-			set_guides_mod();//установить направляющие
-			$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h + ' см');
+			set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 		}
 		
 		if ( flypage == "shopdecor-design" )
 		{
-			set_guides_design();//установить направляющие
-			$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h + ' см');
+			set_guides_design();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 		}
 		
 	  }
@@ -110,7 +111,7 @@ $(function() {
 	  value: init_h,
 	  slide: function( event, ui ) {
 		$( "#amount-ui" ).val( "" + ui.value );
-//-------------- записать длину и ширину в поля для сабмита формы
+//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
 		var w = $( "#amount" ).val();
 		var h = $( "#amount-ui" ).val();
 
@@ -119,15 +120,15 @@ $(function() {
 		if ( flypage =="shopdecor-wallpapers" ||
 			flypage == "shopdecor-design-2" )
 		{
-			set_guides_mod();//установить направляющие
-			$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h + ' см');
+			set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 		}
 		if ( flypage == "shopdecor-design" )
 		{
-			set_guides_design();//установить направляющие
-			$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h + ' см');
+			set_guides_design();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 		}
 //----------------------------------------------
 	  }
@@ -330,7 +331,7 @@ function()
 				$(".im-product").css("background-image","url( '" + new_src + "' )");
 			}
 
-//--------------------записать номер выбранного цвета в поле заказа
+//--------------------Р·Р°РїРёСЃР°С‚СЊ РЅРѕРјРµСЂ РІС‹Р±СЂР°РЅРЅРѕРіРѕ С†РІРµС‚Р° РІ РїРѕР»Рµ Р·Р°РєР°Р·Р°
 			$("input[name=color]").val( $(this).attr('title') );
 			
 			if ($('.jcrop-holder').is(':visible'))
@@ -345,7 +346,7 @@ function()
 			}
 			$('#target').removeClass('transform-class');
 
-			//сменить картинку в блоке "Посмотреть эти обои в интерьере"
+			//СЃРјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ РІ Р±Р»РѕРєРµ "РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЌС‚Рё РѕР±РѕРё РІ РёРЅС‚РµСЂСЊРµСЂРµ"
 			$("#interior-wall").attr("src",new_src);
 			$("#rapport-size").css("background-image","url('"+new_src+"')");
 			
@@ -355,10 +356,10 @@ function()
 			}
 			else
 				$("#interior-wall").removeClass('transform-class');
-			//сменить картинку в блоке текстур
+			//СЃРјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ РІ Р±Р»РѕРєРµ С‚РµРєСЃС‚СѓСЂ
 			$(".select_tov .textur1").css("background-image","url("+new_src+")");
 
-			//сменить ссылку на большую картинку при клике
+			//СЃРјРµРЅРёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° Р±РѕР»СЊС€СѓСЋ РєР°СЂС‚РёРЅРєСѓ РїСЂРё РєР»РёРєРµ
 			var large_src = new_src.replace('pre_320','water');
 			$('#large-img').attr('href',large_src);
 
@@ -383,13 +384,13 @@ function()
 				$('.jcrop-holder div img').hasClass('transform-class') )
 			{
 				$("#interior-wall").addClass('transform-class');
-				$("input[name=transform]").val("Отражение по горизонтали: есть");
+				$("input[name=transform]").val("РћС‚СЂР°Р¶РµРЅРёРµ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё: РµСЃС‚СЊ");
 				$("input[name=transform_check]").val("1");
 			}
 			else
 			{
 				$("#interior-wall").removeClass('transform-class');
-				$("input[name=transform]").val("Отражение по горизонтали: нет");
+				$("input[name=transform]").val("РћС‚СЂР°Р¶РµРЅРёРµ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё: РЅРµС‚");
 				$("input[name=transform_check]").val("");
 			}
 
@@ -430,7 +431,7 @@ function()
 		{
 			$("#guides-block").removeClass("transform-class");
 			$("input[name=direction_check]").val("1");
-			$("input[name=direction_text]").val("Как клеим: слева направо");
+			$("input[name=direction_text]").val("РљР°Рє РєР»РµРёРј: СЃР»РµРІР° РЅР°РїСЂР°РІРѕ");
 			//-----------------------------------
 			if (jQuery.browser.msie)
 			{
@@ -449,7 +450,7 @@ function()
 		{
 			$("#guides-block").addClass("transform-class");
 			$("input[name=direction_check]").val("2");
-			$("input[name=direction_text]").val("Как клеим: справа налево");
+			$("input[name=direction_text]").val("РљР°Рє РєР»РµРёРј: СЃРїСЂР°РІР° РЅР°Р»РµРІРѕ");
 			
 			//-----------------------------------
 			if (jQuery.browser.msie)
@@ -466,7 +467,7 @@ function()
 	);
 	
 	$('.interior-pics a').click(
-		//сменить картинку интерьера в блоке "Посмотреть эти обои в интерьере"
+		//СЃРјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ РёРЅС‚РµСЂСЊРµСЂР° РІ Р±Р»РѕРєРµ "РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЌС‚Рё РѕР±РѕРё РІ РёРЅС‚РµСЂСЊРµСЂРµ"
 		function()
 		{
 			var bg = $(this).find('img').attr('src');
@@ -478,7 +479,7 @@ console.log(filename);
 			$("#interior").css("background-image","url("+ new_bg +")");
 			$("#interior-design-wall").css("background-image","url("+ new_bg +")");
 			
-			// для дизайнерских обоев, выравнивание фрагмента по центру интерьера
+			// РґР»СЏ РґРёР·Р°Р№РЅРµСЂСЃРєРёС… РѕР±РѕРµРІ, РІС‹СЂР°РІРЅРёРІР°РЅРёРµ С„СЂР°РіРјРµРЅС‚Р° РїРѕ С†РµРЅС‚СЂСѓ РёРЅС‚РµСЂСЊРµСЂР°
 			var flypage = $("input[name=flypage]").val();
 			if ( flypage == "shopdecor-design" )
 			{
@@ -581,11 +582,11 @@ console.log(filename);
 		}
 	);
 	
-	$(".select_tov .item_block .item").click(//Выбор текстуры
+	$(".select_tov .item_block .item").click(//Р’С‹Р±РѕСЂ С‚РµРєСЃС‚СѓСЂС‹
 		function()
 		{
 			$(".choose-texture").show();
-//----------------------------------- наложить текстуру на главное изображение		
+//----------------------------------- РЅР°Р»РѕР¶РёС‚СЊ С‚РµРєСЃС‚СѓСЂСѓ РЅР° РіР»Р°РІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ		
 			$('#product-texture').show();
 			
 			var bg = $(this).find('.textur0').attr('style');
@@ -622,7 +623,7 @@ console.log(filename);
 			
 			$('#product-texture').css("margin-bottom","-" + (img_h) + "px");
 			
-//---------------------------------------- заполнить поля заказа
+//---------------------------------------- Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕР»СЏ Р·Р°РєР°Р·Р°
 			var texture_name = $(this).attr('title');
 			$("#texture-name").text(texture_name);
 			$("input[name=texture]").val(texture_name);
@@ -631,7 +632,7 @@ console.log(filename);
 			$("input[name=texture_src]").val(texture_src);
 //console.log("input[name=texture_src]" + $("input[name=texture_src]").val());		
 			
-//---------------------------------------- модальное окно выбора текстуры
+//---------------------------------------- РјРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ РІС‹Р±РѕСЂР° С‚РµРєСЃС‚СѓСЂС‹
 			if ( $("#fancybox-image-id").is(":visible") )
 			{
 				//var new_src = $("#fancybox-image-id").attr("src");
@@ -648,7 +649,7 @@ console.log(filename);
 			return false;
 		}
 	);
-//----------------------------	Сохранение изображения с наложенными фильтрами/текстурами и параметрами ширины/высоты
+//----------------------------	РЎРѕС…СЂР°РЅРµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃ РЅР°Р»РѕР¶РµРЅРЅС‹РјРё С„РёР»СЊС‚СЂР°РјРё/С‚РµРєСЃС‚СѓСЂР°РјРё Рё РїР°СЂР°РјРµС‚СЂР°РјРё С€РёСЂРёРЅС‹/РІС‹СЃРѕС‚С‹
 	$(".save-image-btn").click(
 		function()
 		{
@@ -722,7 +723,7 @@ console.log(filename);
 		
 				crop_flag=1;
 
-				//исправление исчезания картинки
+				//РёСЃРїСЂР°РІР»РµРЅРёРµ РёСЃС‡РµР·Р°РЅРёСЏ РєР°СЂС‚РёРЅРєРё
 				var new_src = $('#large-img').attr('href');
 				var new_src = new_src.replace('water','pre_320');
 				$('#large-img').html('<img alt="" id="target" src="'+ new_src +'">');
@@ -731,11 +732,11 @@ console.log(filename);
 			filter_desaturate_mod("target");
 			
 			//$('#target').removeClass('sepia');
-			$("input[name=sepia]").val("Сепия: нет");
+			$("input[name=sepia]").val("РЎРµРїРёСЏ: РЅРµС‚");
 			$("input[name=sepia_check]").val("");
 
 			//$('#target').addClass('grayscale');
-			$("input[name=desaturate]").val("ч/б: есть");
+			$("input[name=desaturate]").val("С‡/Р±: РµСЃС‚СЊ");
 			$("input[name=desaturate_check]").val("1");
 			
 			//-----------------------------------
@@ -778,7 +779,7 @@ console.log(filename);
 
 				crop_flag=1;
 				
-				//исправление исчезания картинки
+				//РёСЃРїСЂР°РІР»РµРЅРёРµ РёСЃС‡РµР·Р°РЅРёСЏ РєР°СЂС‚РёРЅРєРё
 				var new_src = $('#large-img').attr('href');
 				var new_src = new_src.replace('water','pre_320');
 				$('#large-img').html('<img alt="" id="target" src="'+ new_src +'">');
@@ -787,11 +788,11 @@ console.log(filename);
 			filter_sepia_mod("target");
 		
 			//$('#target').removeClass('grayscale');
-			$("input[name=desaturate]").val("ч/б: нет");
+			$("input[name=desaturate]").val("С‡/Р±: РЅРµС‚");
 			$("input[name=desaturate_check]").val("");
 
 			//$('#target').addClass('sepia');
-			$("input[name=sepia]").val("Сепия: есть");
+			$("input[name=sepia]").val("РЎРµРїРёСЏ: РµСЃС‚СЊ");
 			$("input[name=sepia_check]").val("1");
 			
 			//-----------------------------------
@@ -855,7 +856,7 @@ console.log ( new_top );
 
 				crop_flag=1;
 
-				//исправление исчезания картинки при комбинации фильтр+кадрирование, а затем убрать фильтр
+				//РёСЃРїСЂР°РІР»РµРЅРёРµ РёСЃС‡РµР·Р°РЅРёСЏ РєР°СЂС‚РёРЅРєРё РїСЂРё РєРѕРјР±РёРЅР°С†РёРё С„РёР»СЊС‚СЂ+РєР°РґСЂРёСЂРѕРІР°РЅРёРµ, Р° Р·Р°С‚РµРј СѓР±СЂР°С‚СЊ С„РёР»СЊС‚СЂ
 				var new_src = $('#large-img').attr('href');
 				var new_src = new_src.replace('water','pre_320');
 				$('#large-img').html('<img alt="" id="target" src="'+ new_src +'">');
@@ -872,15 +873,15 @@ console.log ( new_top );
 					},100
 				);
 			}
-			//set_guides_mod();//установить направляющие
+			//set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 
-			$("input[name=transform]").val("Отражение по горизонтали: нет");
+			$("input[name=transform]").val("РћС‚СЂР°Р¶РµРЅРёРµ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё: РЅРµС‚");
 			$("input[name=transform_check]").val("");
 
-			$("input[name=sepia]").val("Сепия: нет");
+			$("input[name=sepia]").val("РЎРµРїРёСЏ: РЅРµС‚");
 			$("input[name=sepia_check]").val("");
 			
-			$("input[name=desaturate]").val("ч/б: нет");
+			$("input[name=desaturate]").val("С‡/Р±: РЅРµС‚");
 			$("input[name=desaturate_check]").val("");
 
 			//$("input[name=texture]").val('');
@@ -900,7 +901,7 @@ console.log ( new_top );
 				flypage == "shopdecor-design-2" )
 			{
 				var roll_width = $('#material option:selected').val();
-				roll_width_cm = roll_width * 100; //перевести ширину обоев в см
+				roll_width_cm = roll_width * 100; //РїРµСЂРµРІРµСЃС‚Рё С€РёСЂРёРЅСѓ РѕР±РѕРµРІ РІ СЃРј
 				$( "#slider-range" ).slider( "option", "min", roll_width_cm );
 				$( "#slider-ui" ).slider( "option", "min", roll_width_cm );
 				
@@ -913,7 +914,7 @@ console.log ( new_top );
 					var h = parseInt( $(".jcrop-holder div:first").css("height") );
 					jcrop_api.destroy();
 					
-					//исправление исчезания картинки при комбинации фильтр+кадрирование, а затем убрать фильтр
+					//РёСЃРїСЂР°РІР»РµРЅРёРµ РёСЃС‡РµР·Р°РЅРёСЏ РєР°СЂС‚РёРЅРєРё РїСЂРё РєРѕРјР±РёРЅР°С†РёРё С„РёР»СЊС‚СЂ+РєР°РґСЂРёСЂРѕРІР°РЅРёРµ, Р° Р·Р°С‚РµРј СѓР±СЂР°С‚СЊ С„РёР»СЊС‚СЂ
 					var new_src = $('#large-img').attr('href');
 					var new_src = new_src.replace('water','pre_320');
 					$('#large-img').html('<img alt="" id="target" src="'+ new_src +'">');
@@ -927,13 +928,13 @@ console.log ( new_top );
 					);
 				}
 				//----------------------------
-				set_guides_mod();//установить направляющие
+				set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 			}
 
 			if ( flypage == "shopdecor-design" )
 			{
 				var roll_width = $('#material option:selected').val();
-				roll_width_cm = roll_width * 100; //перевести ширину обоев в см
+				roll_width_cm = roll_width * 100; //РїРµСЂРµРІРµСЃС‚Рё С€РёСЂРёРЅСѓ РѕР±РѕРµРІ РІ СЃРј
 				
 				if ( $( "#amount" ).val() < roll_width_cm  && $( "#amount-ui" ).val() < roll_width_cm )
 				{
@@ -951,9 +952,9 @@ console.log ( new_top );
 				set_guides_design();
 			}
 			
-			$("input[name=inp_material]").val("Материал: " + $('#material option:selected').text());
+			$("input[name=inp_material]").val("РњР°С‚РµСЂРёР°Р»: " + $('#material option:selected').text());
 
-			//если выбран материал, отличный от Обои на флизелиновой основе, убрать текстуру
+			//РµСЃР»Рё РІС‹Р±СЂР°РЅ РјР°С‚РµСЂРёР°Р», РѕС‚Р»РёС‡РЅС‹Р№ РѕС‚ РћР±РѕРё РЅР° С„Р»РёР·РµР»РёРЅРѕРІРѕР№ РѕСЃРЅРѕРІРµ, СѓР±СЂР°С‚СЊ С‚РµРєСЃС‚СѓСЂСѓ
 			if (!$("#flizelin").is(":selected")) 
 			{
 				$('#product-texture').hide();
@@ -969,12 +970,12 @@ console.log ( new_top );
 		{
 //console.log('code - ' + e.which);
 //console.log($('#amount').val());
-//-------------- изм. размеры области кадрирования 
+//-------------- РёР·Рј. СЂР°Р·РјРµСЂС‹ РѕР±Р»Р°СЃС‚Рё РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ 
 			var w = $( "#amount" ).val();
 			var h = $( "#amount-ui" ).val();
 
-			$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h + ' см');
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 			if (w <= max_w)
 			{
 				$( "#slider-range" ).slider( "value",w );
@@ -986,17 +987,17 @@ console.log ( new_top );
 				$( "#slider-range" ).slider( "value", max_w);
 			}
 
-				//-------------- записать длину и ширину в поля для сабмита формы
+				//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
 			var flypage = $("input[name=flypage]").val();
 //console.log(flypage);		
 			if ( flypage =="shopdecor-wallpapers" ||
 				flypage == "shopdecor-design-2" )
 			{
-				set_guides_mod();//установить направляющие
+				set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 			}
 			if ( flypage == "shopdecor-design" )
 			{
-				set_guides_design();//установить направляющие
+				set_guides_design();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 			}
 			
 		}
@@ -1006,7 +1007,7 @@ console.log ( new_top );
 		function(e)
 		{
 			
-//-------------- изм. размеры области кадрирования 
+//-------------- РёР·Рј. СЂР°Р·РјРµСЂС‹ РѕР±Р»Р°СЃС‚Рё РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ 
 			var w = $( "#amount" ).val();
 			var h = $( "#amount-ui" ).val();
 			var flypage = $("input[name=flypage]").val();
@@ -1015,19 +1016,19 @@ console.log ( new_top );
 			if (h <= max_h)
 			{
 				$( "#slider-ui" ).slider( "value",h );
-	//-------------- записать длину и ширину в поля для сабмита формы
+	//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
 				if ( flypage =="shopdecor-wallpapers" ||
 					flypage == "shopdecor-design-2" )
 				{
-					set_guides_mod();//установить направляющие
-					$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-					$('input[name=h_cm]').val('Высота: ' + h + ' см');
+					set_guides_mod();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+					$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+					$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 				}
 				if ( flypage == "shopdecor-design" )
 				{
-					set_guides_design();//установить направляющие
-					$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-					$('input[name=h_cm]').val('Высота: ' + h + ' см');
+					set_guides_design();//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
+					$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+					$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 				}
 				
 			}
@@ -1035,8 +1036,8 @@ console.log ( new_top );
 			{
 				$( "#amount-ui" ).val("" + init_h);
 				$( "#slider-ui" ).slider( "value", init_h);
-				$('input[name=h_cm]').val('Высота: ' + init_h + ' см');
-				$('input[name=h_cm]').val('Высота: ' + init_h + ' см');
+				$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + init_h + ' СЃРј');
+				$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + init_h + ' СЃРј');
 			}
 			
 		}
@@ -1050,7 +1051,7 @@ console.log ( new_top );
 		}
 	});
 
-//--------------------------- перезаписать значение цены/кол-ва в корзине
+//--------------------------- РїРµСЂРµР·Р°РїРёСЃР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ С†РµРЅС‹/РєРѕР»-РІР° РІ РєРѕСЂР·РёРЅРµ
 	var amount = $('#s-amount').text();
 	$('#d-amount').text(amount);
 	//$('#deferred').text(amount);
@@ -1077,7 +1078,7 @@ console.log ( new_top );
 			var error=false;
 			if ($("#no-material").is(":selected")) 
 			{
-alert( "Пожалуйста, выберите из выпадающего списка материал товара.");	
+alert( "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР° РјР°С‚РµСЂРёР°Р» С‚РѕРІР°СЂР°.");	
 				error=true;
 			}
 
@@ -1085,7 +1086,7 @@ alert( "Пожалуйста, выберите из выпадающего списка материал товара.");
 			{
 				if ($("input[name=texture]").val()=="") 
 				{
-alert( "Пожалуйста, выберите текстуру материала.");	
+alert( "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ С‚РµРєСЃС‚СѓСЂСѓ РјР°С‚РµСЂРёР°Р»Р°.");	
 					error=true;
 				}
 			}
@@ -1097,7 +1098,7 @@ alert( "Пожалуйста, выберите текстуру материала.");
 			else
 			{
 //$("#addtocart-decor-wallpapers").submit();
-				//получить ссылку для кадрированого фрагмента изображения
+				//РїРѕР»СѓС‡РёС‚СЊ СЃСЃС‹Р»РєСѓ РґР»СЏ РєР°РґСЂРёСЂРѕРІР°РЅРѕРіРѕ С„СЂР°РіРјРµРЅС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 				if ( parseInt($('#w').val()) ) 
 				{
 					get_crop_url();
@@ -1105,7 +1106,7 @@ alert( "Пожалуйста, выберите текстуру материала.");
 				
 				//------------------------
 				var texture_name = $("input[name=texture]").val();
-				texture_name = "Текстура: "+texture_name;
+				texture_name = "РўРµРєСЃС‚СѓСЂР°: "+texture_name;
 				$("input[name=texture]").val(texture_name);
 				
 //return false;
@@ -1119,7 +1120,7 @@ alert( "Пожалуйста, выберите текстуру материала.");
 			var error=false;
 			if ($("#no-material").is(":selected")) 
 			{
-alert( "Пожалуйста, выберите из выпадающего списка материал товара.");	
+alert( "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РёР· РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР° РјР°С‚РµСЂРёР°Р» С‚РѕРІР°СЂР°.");	
 				error=true;
 			}
 
@@ -1127,7 +1128,7 @@ alert( "Пожалуйста, выберите из выпадающего списка материал товара.");
 			{
 				if ($("input[name=texture]").val()=="") 
 				{
-alert( "Пожалуйста, выберите текстуру материала.");	
+alert( "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ С‚РµРєСЃС‚СѓСЂСѓ РјР°С‚РµСЂРёР°Р»Р°.");	
 					error=true;
 				}
 			}
@@ -1138,15 +1139,15 @@ alert( "Пожалуйста, выберите текстуру материала.");
 			}
 			else
 			{
-//----------------------- сохранить в поля заказа значения ширины и высоты стены
+//----------------------- СЃРѕС…СЂР°РЅРёС‚СЊ РІ РїРѕР»СЏ Р·Р°РєР°Р·Р° Р·РЅР°С‡РµРЅРёСЏ С€РёСЂРёРЅС‹ Рё РІС‹СЃРѕС‚С‹ СЃС‚РµРЅС‹
 				w = $("#amount").val();
 				h = $("#amount-ui").val();
-				$('input[name=w_cm]').val('Ширина: ' + w + ' см');
-				$('input[name=h_cm]').val('Высота: ' + h + ' см');
+				$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w + ' СЃРј');
+				$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h + ' СЃРј');
 
 				if ($('#rapport option:selected').val() != "0")
 				{
-$("input[name=repeat_pattern]").val("Повторить узор по ширине полосы: " + $('#rapport option:selected').text());
+$("input[name=repeat_pattern]").val("РџРѕРІС‚РѕСЂРёС‚СЊ СѓР·РѕСЂ РїРѕ С€РёСЂРёРЅРµ РїРѕР»РѕСЃС‹: " + $('#rapport option:selected').text());
 				}
 				else
 				{
@@ -1155,7 +1156,7 @@ $("input[name=repeat_pattern]").val("Повторить узор по ширине полосы: " + $('#ra
 				
 				//------------------------
 				var texture_name = $("input[name=texture]").val();
-				texture_name = "Текстура: "+texture_name;
+				texture_name = "РўРµРєСЃС‚СѓСЂР°: "+texture_name;
 				$("input[name=texture]").val(texture_name);
 				
 //return false;
@@ -1164,7 +1165,7 @@ $("input[name=repeat_pattern]").val("Повторить узор по ширине полосы: " + $('#ra
 	);
 
 
-//Отложенные товары
+//РћС‚Р»РѕР¶РµРЅРЅС‹Рµ С‚РѕРІР°СЂС‹
 $( ".main-star" ).click(
 	function() 
 	{
@@ -1185,7 +1186,7 @@ $( ".main-star" ).click(
 	}
 );
 
-//вывести кол-во отложенных товаров
+//РІС‹РІРµСЃС‚Рё РєРѕР»-РІРѕ РѕС‚Р»РѕР¶РµРЅРЅС‹С… С‚РѕРІР°СЂРѕРІ
 $.ajax({
   type: 'POST',
   url: '/templates/qdec2/includes/favorite_products.php',
@@ -1201,7 +1202,7 @@ $.ajax({
 		return false;
 	});
 
-//-------------------------- скрыть полный текст описания товара
+//-------------------------- СЃРєСЂС‹С‚СЊ РїРѕР»РЅС‹Р№ С‚РµРєСЃС‚ РѕРїРёСЃР°РЅРёСЏ С‚РѕРІР°СЂР°
 	var product_short_description = $(".product-short-description").text();
 	if (product_short_description.length > 0)
 	{
@@ -1220,11 +1221,11 @@ $.ajax({
 			//$(".more-desc").hide();
 			if ($(".product-description").is(':visible'))
 			{
-				$(".more-desc").text("скрыть");
+				$(".more-desc").text("СЃРєСЂС‹С‚СЊ");
 			}
 			else
 			{
-				$(".more-desc").text("читать дальше");
+				$(".more-desc").text("С‡РёС‚Р°С‚СЊ РґР°Р»СЊС€Рµ");
 			}
 			return false;
 		}
@@ -1238,11 +1239,11 @@ $.ajax({
 			$(".more_v").toggle();
 			if ($(".more_v").is(':visible'))
 			{
-				$(".collapsible a").text("Скрыть");
+				$(".collapsible a").text("РЎРєСЂС‹С‚СЊ");
 			}
 			else
 			{
-				$(".collapsible a").text("Читать полностью...");
+				$(".collapsible a").text("Р§РёС‚Р°С‚СЊ РїРѕР»РЅРѕСЃС‚СЊСЋ...");
 			}
 			return false;
 		}
@@ -1282,7 +1283,7 @@ $.ajax({
 		}
 	);	
 	
-//--------------------------------------- Посмотреть в интерьере
+//--------------------------------------- РџРѕСЃРјРѕС‚СЂРµС‚СЊ РІ РёРЅС‚РµСЂСЊРµСЂРµ
     $(".show_visual a").click(function(){
 		$('.slidingVisual').modal();
 		in_interior();
@@ -1443,18 +1444,18 @@ function set_guides_mod(x, y, w, h)
 //console.log("w - " + w);
 //console.log("h - " + h);
 
-	if ( $("#target").width() == 0)//если нет изображения обоев
+	if ( $("#target").width() == 0)//РµСЃР»Рё РЅРµС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РѕР±РѕРµРІ
 	{
 		return;	
 	}
 
 	var roll_width = $('#material option:selected').val();
-	roll_width = roll_width * 100; //перевести ширину обоев в см
+	roll_width = roll_width * 100; //РїРµСЂРµРІРµСЃС‚Рё С€РёСЂРёРЅСѓ РѕР±РѕРµРІ РІ СЃРј
 
 	img_w = $("#target").width();
 	img_h = $("#target").height();
 	
-	//получить px в см
+	//РїРѕР»СѓС‡РёС‚СЊ px РІ СЃРј
 	var a = max_w / img_w;
 	var b = img_w / roll_width;
 
@@ -1464,10 +1465,10 @@ function set_guides_mod(x, y, w, h)
 	var num_px_in_cm = b / e;
 //console.log("num_px_in_cm = " + num_px_in_cm);
 
-	//получить размер полосы в px
+	//РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ РїРѕР»РѕСЃС‹ РІ px
 	var roll_width_px = num_px_in_cm * roll_width;
 
-	//получить кол-во полос
+	//РїРѕР»СѓС‡РёС‚СЊ РєРѕР»-РІРѕ РїРѕР»РѕСЃ
 	var wall_width = $("#amount").val();
 	var num_roll = wall_width / roll_width; 
 	if (wall_width > max_w)
@@ -1475,13 +1476,13 @@ function set_guides_mod(x, y, w, h)
 		wall_width = max_w;
 	}
 	
-	//получить ширину области кадрирования
+	//РїРѕР»СѓС‡РёС‚СЊ С€РёСЂРёРЅСѓ РѕР±Р»Р°СЃС‚Рё РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ
 	var crop_w = roll_width_px * num_roll;
 
 //-----------------------------------------------
 	var wall_height = $("#amount-ui").val();
 	
-	//получить px в см
+	//РїРѕР»СѓС‡РёС‚СЊ px РІ СЃРј
 	var a1 = max_h / img_h;
 	var b1 = img_h / roll_width;
 
@@ -1491,7 +1492,7 @@ function set_guides_mod(x, y, w, h)
 	var num_px_in_cm_h = b1 / e1;
 //console.log("num_px_in_cm_h = " + num_px_in_cm_h);
 	
-	//получить высоту в px
+	//РїРѕР»СѓС‡РёС‚СЊ РІС‹СЃРѕС‚Сѓ РІ px
 	var crop_h = wall_height / num_px_in_cm_h;
 
 	crop_h = crop_h * (num_px_in_cm_h * num_px_in_cm);
@@ -1518,13 +1519,13 @@ function set_guides_mod(x, y, w, h)
 			ms=200;
 		}
 	}
-	setTimeout (//задержка для IE
+	setTimeout (//Р·Р°РґРµСЂР¶РєР° РґР»СЏ IE
 		function()
 		{
-			// расставить направляющие
+			// СЂР°СЃСЃС‚Р°РІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 			var num_guides = Math.floor(wall_width / roll_width);
 			
-			// исправить k для размещения полос по области кадрирования
+			// РёСЃРїСЂР°РІРёС‚СЊ k РґР»СЏ СЂР°Р·РјРµС‰РµРЅРёСЏ РїРѕР»РѕСЃ РїРѕ РѕР±Р»Р°СЃС‚Рё РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ
 			var crop_w = $(".jcrop-holder div:first").width();
 //console.log( "crop_w = " + crop_w );
 //alert( "crop_w = " + crop_w );
@@ -1569,7 +1570,7 @@ function set_guides_mod(x, y, w, h)
 
 function set_guides_design()
 {
-	if ( $("#target").width() == 0)//если нет изображения обоев
+	if ( $("#target").width() == 0)//РµСЃР»Рё РЅРµС‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РѕР±РѕРµРІ
 	{
 		return;	
 	}
@@ -1579,12 +1580,12 @@ function set_guides_design()
 	{
 		return;
 	}
-	roll_width_cm = roll_width * 100; //перевести ширину обоев в см
+	roll_width_cm = roll_width * 100; //РїРµСЂРµРІРµСЃС‚Рё С€РёСЂРёРЅСѓ РѕР±РѕРµРІ РІ СЃРј
 
-	//ширина полосы в px
+	//С€РёСЂРёРЅР° РїРѕР»РѕСЃС‹ РІ px
 	var roll_width_px = img_w;
 
-	//получить px в см
+	//РїРѕР»СѓС‡РёС‚СЊ px РІ СЃРј
 	var num_px_in_cm = roll_width_px / roll_width_cm;
 
 	var w_cm = parseInt( $( "#amount" ).val() );
@@ -1597,7 +1598,7 @@ function set_guides_design()
 	var w_px = w_cm * num_px_in_cm;
 	var h_px = h_cm * num_px_in_cm;
 	
-	// масштабируем фон
+	// РјР°СЃС€С‚Р°Р±РёСЂСѓРµРј С„РѕРЅ
 	
 	//---------------------
 	if ( w_cm >= (roll_width_cm * 2) )
@@ -1607,7 +1608,7 @@ function set_guides_design()
 	}
 
 	//---------------------
-	//восстановление высоты и ширины блока 
+	//РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РІС‹СЃРѕС‚С‹ Рё С€РёСЂРёРЅС‹ Р±Р»РѕРєР° 
 	$(".im-product").css("height", img_h + "px");
 	$(".im-product").css("margin-bottom", "");
 	if (w_cm == roll_width_cm)
@@ -1616,7 +1617,7 @@ function set_guides_design()
 	}
 		
 	//========================================================
-	// применить значения масштабирования
+	// РїСЂРёРјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ
 	//========================================================
 	scale_wallpapers ( w_cm, 
 			h_cm, 
@@ -1624,14 +1625,14 @@ function set_guides_design()
 			roll_width_px,
 			w_px );
 		
-	//------------------------------------------------------------------ расставить направляющие
+	//------------------------------------------------------------------ СЂР°СЃСЃС‚Р°РІРёС‚СЊ РЅР°РїСЂР°РІР»СЏСЋС‰РёРµ
 	var img_w2 = $(".im-product").width();
 	var img_h2 = $(".im-product").height();
 	
-	//получить кол-во полос (кол-во направляющих)
+	//РїРѕР»СѓС‡РёС‚СЊ РєРѕР»-РІРѕ РїРѕР»РѕСЃ (РєРѕР»-РІРѕ РЅР°РїСЂР°РІР»СЏСЋС‰РёС…)
 	var num_guides = Math.floor(w_cm / roll_width_cm);
 	
-	var k = img_w2 / w_cm;//ширина полосы в px
+	var k = img_w2 / w_cm;//С€РёСЂРёРЅР° РїРѕР»РѕСЃС‹ РІ px
 	
 	$('#guides-block').empty();
 	var guide = "<div class='guides'></div>";
@@ -1709,7 +1710,7 @@ function select_crop(c)
 {
 
 	//------------------------ new size in cm
-	if ( action == "jcrop-dragbar" )//если область кадрирование переместили
+	if ( action == "jcrop-dragbar" )//РµСЃР»Рё РѕР±Р»Р°СЃС‚СЊ РєР°РґСЂРёСЂРѕРІР°РЅРёРµ РїРµСЂРµРјРµСЃС‚РёР»Рё
 	{
 console.log('action - '+ action);
 		if ( $('#w').val() )
@@ -1727,12 +1728,12 @@ console.log('action - '+ action);
 			var w1_cm = $( "#amount" ).val();
 			var h1_cm = $( "#amount-ui" ).val();
 
-			var p_w = w2_px / (w1_px / 100);// % изменений по ширине
-			var p_h = h2_px / ( h1_px / 100);// % изменений по высоте
+			var p_w = w2_px / (w1_px / 100);// % РёР·РјРµРЅРµРЅРёР№ РїРѕ С€РёСЂРёРЅРµ
+			var p_h = h2_px / ( h1_px / 100);// % РёР·РјРµРЅРµРЅРёР№ РїРѕ РІС‹СЃРѕС‚Рµ
 //console.log("p_w = " + p_w);	
 //console.log("p_h = " + p_h);	
 			
-			var w2_cm = Math.round( (w1_cm / 100) * p_w );// изменения по ширине в см
+			var w2_cm = Math.round( (w1_cm / 100) * p_w );// РёР·РјРµРЅРµРЅРёСЏ РїРѕ С€РёСЂРёРЅРµ РІ СЃРј
 			var h2_cm = Math.round( ( h1_cm / 100 ) * p_h );
 //console.log("w2_cm = " + w2_cm);	
 //console.log("h2_cm = " + h2_cm);	
@@ -1742,9 +1743,9 @@ console.log('action - '+ action);
 			$( "#slider-range" ).slider( "value", w2_cm );			
 			$( "#slider-ui" ).slider( "value", h2_cm );
 			
-			//-------------- записать длину и ширину в поля для сабмита формы
-			$('input[name=w_cm]').val('Ширина: ' + w2_cm + ' см');
-			$('input[name=h_cm]').val('Высота: ' + h2_cm + ' см');
+			//-------------- Р·Р°РїРёСЃР°С‚СЊ РґР»РёРЅСѓ Рё С€РёСЂРёРЅСѓ РІ РїРѕР»СЏ РґР»СЏ СЃР°Р±РјРёС‚Р° С„РѕСЂРјС‹
+			$('input[name=w_cm]').val('РЁРёСЂРёРЅР°: ' + w2_cm + ' СЃРј');
+			$('input[name=h_cm]').val('Р’С‹СЃРѕС‚Р°: ' + h2_cm + ' СЃРј');
 			
 		}
 	}
@@ -1842,7 +1843,7 @@ console.log('Jcrop release!');
 	}
 //-----------------------------
 
-//получить ссылку для кадрированого фрагмента изображения
+//РїРѕР»СѓС‡РёС‚СЊ СЃСЃС‹Р»РєСѓ РґР»СЏ РєР°РґСЂРёСЂРѕРІР°РЅРѕРіРѕ С„СЂР°РіРјРµРЅС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 function get_crop_url()
 {
 	var crop_url = "files/crop_image/crop.php";
@@ -1867,7 +1868,7 @@ $("#crop-url").attr("href", crop_url);
 }
 
 
-//--------------------------------------- Посмотреть в интерьере
+//--------------------------------------- РџРѕСЃРјРѕС‚СЂРµС‚СЊ РІ РёРЅС‚РµСЂСЊРµСЂРµ
 function in_interior()
 {
 	$("body").append("<div class='fancybox-overlay fancybox-overlay-fixed'></div>");
@@ -1985,7 +1986,7 @@ $(".slidingVisual .simplemodal-close").css("background-image","url(/templates/qd
 				$("#interior-texture").css("top","15px");
 			}
 */				
-			// ---------------- масштабировать изображение при необходимости
+			// ---------------- РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё
 			var crop_w = $(".wrap-interior-img div:first").width();
 			var crop_h = $(".wrap-interior-img div:first").height();
 			var test_w = $("#interior-wall").width()
@@ -1995,24 +1996,24 @@ $(".slidingVisual .simplemodal-close").css("background-image","url(/templates/qd
 			
 			if ( crop_h > 290 )
 			{
-				// ---------------- масштабировать изображение
+				// ---------------- РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 				var k = test_w / test_h;
 				var new_h = 290;
 				var new_w = new_h * k;
 				$("#interior-wall").css("width",new_w + "px");
 				$("#interior-wall").css("height",new_h + "px");
 				
-				//----------------- исправить левый отступ
+				//----------------- РёСЃРїСЂР°РІРёС‚СЊ Р»РµРІС‹Р№ РѕС‚СЃС‚СѓРї
 				var k3 = test_w / test_left;
 				var new_left = new_w / k3;
 				$("#interior-wall").css("left","-" + new_left + "px");
 
-				// ---------------- масштабировать область кадрирования
+				// ---------------- РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ РѕР±Р»Р°СЃС‚СЊ РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ
 				var k2 = crop_w / crop_h;
 				var new_w = new_h * k2;
 				$(".wrap-interior-img div:first").css("width",new_w + "px");
 			}
-			//---------------------- выравнивание по середине
+			//---------------------- РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РїРѕ СЃРµСЂРµРґРёРЅРµ
 			var img_w = $(".wrap-interior-img").width();	
 			var crop_w = $(".wrap-interior-img div:first").width();	
 			var new_margin = Math.abs( (img_w - crop_w) / 2 );	
@@ -2074,25 +2075,25 @@ $(".slidingVisual .simplemodal-close").css("background-image","url(/templates/qd
 
 			if ( crop_h > 290 )
 			{
-				// ---------------- масштабировать изображение
+				// ---------------- РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 				var k = test_w / test_h;
 				var new_h = 290;
 				var new_w = new_h * k;
 				$(".wrap-interior-img img:last").css("width",new_w + "px");
 				$(".wrap-interior-img img:last").css("height",new_h + "px");
 
-				//----------------- исправить левый отступ
+				//----------------- РёСЃРїСЂР°РІРёС‚СЊ Р»РµРІС‹Р№ РѕС‚СЃС‚СѓРї
 				var k3 = test_w / test_left;
 				var new_left = new_w / k3;
 				$(".wrap-interior-img img:last").css("left","-" + new_left + "px");
 				
-				// ---------------- масштабировать область кадрирования
+				// ---------------- РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°С‚СЊ РѕР±Р»Р°СЃС‚СЊ РєР°РґСЂРёСЂРѕРІР°РЅРёСЏ
 				var k2 = crop_w / crop_h;
 				var new_w = new_h * k2;
 				$(".wrap-interior-img div:first").css("width",new_w + "px");
 			}
 
-			//---------------------- выравнивание по середине
+			//---------------------- РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РїРѕ СЃРµСЂРµРґРёРЅРµ
 			var img_w = $(".wrap-interior-img").width();	
 			var crop_w = $(".wrap-interior-img div:first").width();	
 			var new_margin = Math.abs( (img_w - crop_w) / 2 );	
@@ -2133,7 +2134,7 @@ function in_interior_design()
 	var w1 = $("#rapport-size").width();
 	var w2 = $(".im-product-modal").width();
 
-	if (w2 > w1) // масштабирование фрагмента обоев, если необходимо
+	if (w2 > w1) // РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ С„СЂР°РіРјРµРЅС‚Р° РѕР±РѕРµРІ, РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ
 	{
 		var s2 = parseFloat ( $(".im-product-modal").css("background-size") );
 		var k = w2 / s2;
@@ -2181,7 +2182,7 @@ function in_interior_design_mod()
 	interior_img = interior_img.replace("\"","");
 	interior_img = interior_img.replace(")","");
 
-	// масштабирование 
+	// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ 
 	var w1 = $("#rapport-size").width(); //530
 	var w2 = $(".im-product-modal").width(); //640
 	var w_cm = 400;
@@ -2203,7 +2204,7 @@ function in_interior_design_mod()
 
 }//------------------- end func
 
-// Сохранение изображения с наложенными фильтрами/текстурами и параметрами ширины/высоты
+// РЎРѕС…СЂР°РЅРµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃ РЅР°Р»РѕР¶РµРЅРЅС‹РјРё С„РёР»СЊС‚СЂР°РјРё/С‚РµРєСЃС‚СѓСЂР°РјРё Рё РїР°СЂР°РјРµС‚СЂР°РјРё С€РёСЂРёРЅС‹/РІС‹СЃРѕС‚С‹
 function save_image()
 {
 //console.log ("function save_image()");
@@ -2221,10 +2222,10 @@ function save_image()
 			texture_src = texture_src.substring(texture_src.indexOf('/')+1, texture_src.length);
 			var texture_name = $("input[name=texture]").val();
 
-//--------------- пересчет координат для учета масштабирования изображения (watermark)
+//--------------- РїРµСЂРµСЃС‡РµС‚ РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ СѓС‡РµС‚Р° РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ (watermark)
 			var w_crop = $('#w').val();//147
 			
-			//очистить стиль мастабированного изображения  для получения реальной ширины и высоты
+			//РѕС‡РёСЃС‚РёС‚СЊ СЃС‚РёР»СЊ РјР°СЃС‚Р°Р±РёСЂРѕРІР°РЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ  РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂРµР°Р»СЊРЅРѕР№ С€РёСЂРёРЅС‹ Рё РІС‹СЃРѕС‚С‹
 			$("#fancybox-image-id").removeClass("fancybox-image");
 			var w_water = $("#fancybox-image-id").width();//945
 			var img_width = $('#target').width();//568
@@ -2235,7 +2236,7 @@ function save_image()
 			var h_crop = $('#h').val();//105
 			var h_water = $("#fancybox-image-id").height();//646
 			
-			//вернуть стиль масштабированного изображения
+			//РІРµСЂРЅСѓС‚СЊ СЃС‚РёР»СЊ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 			$("#fancybox-image-id").addClass("fancybox-image");
 			
 			var img_height = $('#target').height();//388
@@ -2274,7 +2275,7 @@ function save_image()
 			location.href=url;
 }//------------------ end func
 
-//функция без пересчета координат для учета масштабирования изображения
+//С„СѓРЅРєС†РёСЏ Р±РµР· РїРµСЂРµСЃС‡РµС‚Р° РєРѕРѕСЂРґРёРЅР°С‚ РґР»СЏ СѓС‡РµС‚Р° РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 function save_image_pre()
 {
 	var filename_src = $("#large-img").attr("href");
@@ -2375,7 +2376,7 @@ function filter_sepia_mod(id) {
 }
 
 //===============================================================
-// масштабируем фон при выборе высоты ширины дизайнерских обоев
+// РјР°СЃС€С‚Р°Р±РёСЂСѓРµРј С„РѕРЅ РїСЂРё РІС‹Р±РѕСЂРµ РІС‹СЃРѕС‚С‹ С€РёСЂРёРЅС‹ РґРёР·Р°Р№РЅРµСЂСЃРєРёС… РѕР±РѕРµРІ
 // ==============================================================
 function scale_wallpapers ( w_cm, 
 				h_cm, 
@@ -2383,7 +2384,7 @@ function scale_wallpapers ( w_cm,
 				roll_width_px,
 				w_px )
 {
-		// масштабирование по x
+		// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ x
 		scale_wall_x (roll_width_cm, w_cm);
 
 		if ( h_cm >= w_cm )
@@ -2396,14 +2397,14 @@ function scale_wallpapers ( w_cm,
 //console.log("s = " + s);				
 				//if  ( h_cm >= (w_cm*s) ) //90x180, 180x180
 				//{
-					// коррекция ширины
+					// РєРѕСЂСЂРµРєС†РёСЏ С€РёСЂРёРЅС‹
 					var k2 = h_cm / roll_width_cm;
 //console.log("w_px = " + w_px);				
 //console.log("k2 = " + k2);				
 					var new_width = w_px / k2 ;
 					$(".im-product").css("width", new_width + "px");
 
-					// масштабирование по Y
+					// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ Y
 					scale_wall_y (roll_width_cm, h_cm);
 				//}
 			}
@@ -2419,14 +2420,14 @@ function scale_wallpapers ( w_cm,
 			//{
 				//if (h_cm >= (roll_width_cm*2) )
 				//{
-					// масштабирование по Y
+					// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ Y
 					scale_wall_y (roll_width_cm, h_cm);
 
 
-					// коррекция ширины
+					// РєРѕСЂСЂРµРєС†РёСЏ С€РёСЂРёРЅС‹
 					var w_px = $(".im-product").width();
 
-					//var roll_px = w_px / w_cm;//ширина полосы в px;
+					//var roll_px = w_px / w_cm;//С€РёСЂРёРЅР° РїРѕР»РѕСЃС‹ РІ px;
 					var roll_px = parseInt( $(".im-product").css("background-size") );
 //console.log("roll_px = " + roll_px);			
 					//var new_width = w_px - (roll_width_cm * roll_px); 
@@ -2442,12 +2443,12 @@ function scale_wallpapers ( w_cm,
 			{
 				if (h_cm <= (roll_width_cm*7) )//450x270, 450x360
 				{
-					// коррекция ширины
+					// РєРѕСЂСЂРµРєС†РёСЏ С€РёСЂРёРЅС‹
 					var w_px = $(".im-product").width();
 					var new_width = roll_width_px * 2 ;
 					$(".im-product").css("width", new_width + "px");
 
-					// масштабирование по x
+					// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ x
 					scale_wall_x (roll_width_cm, w_cm);
 				}
 
@@ -2458,7 +2459,7 @@ function scale_wallpapers ( w_cm,
 			{
 //console.log("fix w_cm >= (roll_width_cm*3) ");
 				//----------------------
-				// коррекция высоты
+				// РєРѕСЂСЂРµРєС†РёСЏ РІС‹СЃРѕС‚С‹
 
 				var h_px = $(".im-product").height();
 				var roll_px = parseInt( $(".im-product").css("background-size") );
@@ -2471,10 +2472,10 @@ function scale_wallpapers ( w_cm,
 				else
 				{
 
-					// масштабирование по Y
+					// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ Y
 					scale_wall_y (roll_width_cm, h_cm);
 
-					// коррекция ширины
+					// РєРѕСЂСЂРµРєС†РёСЏ С€РёСЂРёРЅС‹
 					var w_px = $(".im-product").width();
 					var roll_px = parseInt( $(".im-product").css("background-size") );
 					var new_width = roll_px * (w_cm / roll_width_cm);
@@ -2490,7 +2491,7 @@ function scale_wallpapers ( w_cm,
 			}
 
 			//----------------------
-			// коррекция ширины, высоты и масштаба
+			// РєРѕСЂСЂРµРєС†РёСЏ С€РёСЂРёРЅС‹, РІС‹СЃРѕС‚С‹ Рё РјР°СЃС€С‚Р°Р±Р°
 
 			var w_px = $(".im-product").width();
 			var h_px = $(".im-product").height();
@@ -2572,7 +2573,7 @@ function scale_wallpapers ( w_cm,
 
 
 //=========================
-// масштабирование по X
+// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ X
 //=========================
 function scale_wall_x (roll_width_cm, w_cm)
 {
@@ -2607,7 +2608,7 @@ function scale_wall_x (roll_width_cm, w_cm)
 }//--------- end func
 
 //=========================
-// масштабирование по Y
+// РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ РїРѕ Y
 //=========================
 function scale_wall_y (roll_width_cm, h_cm)
 {
