@@ -790,16 +790,18 @@ margin: 0 auto;
 padding: 5px 0 15px;
 width: 266px;
 }
+
 #amount, #amount-ui {
-border: 2px solid #BCDDE2;
-border-radius: 8px;
-color: #218E9E;
-font-family: 'Conv_segoeprb';
-font-size: 14px;
-margin-bottom: 8px;
-padding: 0 10px;
- width: 225px;
+	/* border: 2px solid #BCDDE2; */
+	/* border-radius: 8px; */
+	/* color: #218E9E; */
+	/* font-family: 'Conv_segoeprb'; */
+	/* font-size: 14px; */
+	margin: 5px;
+	padding: 0;
+	/* width: 225px; */
 }
+
 .ui-widget-content {
 	border:0;
 }
