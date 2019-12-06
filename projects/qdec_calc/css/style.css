@@ -193,6 +193,9 @@ border-radius: 3px;
 }
 
 @media all and (max-width:1600px){
+	.container {
+		width: 95%;
+	}
 	.panel-img, .panel-filters {
 		float: none !important;
 		width: 100%  !important;
@@ -474,18 +477,14 @@ height: 45px;
 	-moz-border-radius:2px 0 0 2px;
 	border-radius:2px 0 0 2px;
 }
+
+/*
 .tem .selectBox {max-width:140px}
 
 .selectBox.fnt {
 	font-size:16px;
 	font-weight:normal;
-/*
-	#font-family: 'Conv_segoepr';
-font-family: 'PT Serif Caption', serif;
-*/
-	/*padding-right:60px;*/
 	color:#218e9e;
-	/*margin-left:22px*/
 }
 .selectBox:hover {
 	text-decoration: none
@@ -531,7 +530,7 @@ font-family: 'PT Serif Caption', serif;
 	text-decoration: none;
 	background:#e3dfdf
 }
-
+*/
 
 .option.filtr {
 	width:307px;
