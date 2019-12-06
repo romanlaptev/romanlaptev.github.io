@@ -103,17 +103,20 @@ header, nav, section, article, aside, footer { display: block}
 	height: 100%;
 }
 .sidebar-left {
-	background-color: #e6e6fa;
+	/*background-color: #e6e6fa;*/
+	background-color: #b0e0e6;
 }
 .sidebar-right {
 	width: 40%;
-	background-color: #e6e6fa;
+	/*background-color: #e6e6fa;*/
+	background-color: #b0e0e6;
 }
 .content {
 	float: left;
 	/* border: 1px solid; */
 	/*background-color: lightskyblue; lavender*/
-	background-color: #e6e6fa;
+	/*background-color: #e6e6fa;*/
+	background-color: #b0e0e6;
 	width: 60%;
 	height: 100%;
 	/* padding: 5px; */
@@ -189,6 +192,13 @@ border-radius: 3px;
 	color: #fff;
 }
 
+@media all and (max-width:1600px){
+	.panel-img, .panel-filters {
+		float: none !important;
+		width: 100%  !important;
+	}
+}
+
 
 @media all and (max-width:1200px){
 	body {
@@ -219,7 +229,6 @@ border-radius: 3px;
 	.menu ul li {
 		font-size: 110%;
 	}
-
 }
 
 /*================================*/
@@ -228,6 +237,9 @@ border-radius: 3px;
 }
 .w20{
 	width:20%;
+}
+.w25{
+	width:25%;
 }
 .w30{
 	width:30%;
@@ -240,6 +252,9 @@ border-radius: 3px;
 }
 .w60{
 	width:60%;
+}
+.w65{
+	width:65%;
 }
 .w70{
 	width:70%;
@@ -809,13 +824,13 @@ z-index:8011 !important;
 
 
 #zoom-link {
-background: url("../images/zoomplus.png") no-repeat scroll 0 0 / 30% auto rgba(0, 0, 0, 0);
-display: block;
-float: right;
-height: 128px;
-left: 45px;
-margin-bottom: -128px;
-position: relative;
-top: -50px;
-width: 128px;
+	background: url("../images/zoomplus.png") no-repeat scroll 0 0 / 30% auto rgba(0, 0, 0, 0);
+	display: block;
+	/* float: right; */
+	height: 128px;
+	left: 0;
+	margin-bottom: -128px;
+	position: relative;
+	top: 50px;
+	width: 128px;
 }
