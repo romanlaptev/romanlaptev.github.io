@@ -49,11 +49,11 @@ body {
 
 
 .col-1{
-	width:65%;
+	width:50%;
 }
 
 .col-2{
-	width:35%;
+	width:50%;
 }
 
 
@@ -85,6 +85,7 @@ padding: 5px 10px 5px 10px;
 #app-container .panel {
 	margin: 15px;
 	padding: 15px;
+	border: 1px solid #bebebe;	
 }
 
 .boxShadow {
@@ -120,8 +121,17 @@ padding: 5px 10px 5px 10px;
 	width: calc(30% - 0.5px);
 color: #fff;	
 }
-
-
+/*
+.btn-group {
+	width: 50%;
+	margin: auto;
+}
+*/
+@media (max-width: 700px) {
+  #btn-group {
+    width: 100%;
+  }
+}
 
 
 .log-panel {
@@ -181,16 +191,34 @@ margin: 0;
 }
 
 
+
+#addr-text .panel {
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid #bebebe;	
+}
+#addr-text .number {
+	color: #000;
+	font-size: 50%;
+}
+#addr-text ul > li {
+	color: red;
+	font-size: 80%;
+}
+
+
+
 /* wait window */
 .overlay{
 	z-index: 9998;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(100,100,100,0.25);
-	opacity: 0;
+	/*background-color: rgba(100,100,100,0.25);*/
+	background-color: rgba(0, 0, 0, 0.65);
+	/*opacity: 0;*/
 	will-change: opacity;
 	transition: all 200ms;
 }
@@ -298,11 +326,49 @@ margin: 0;
  /* height: 400px; */
 }
 
+
+#api-type label {
+	/*margin-left: 10px;*/
+	padding: 10px 5px 10px 5px;
+	float: left;
+}
+#api-type label input {
+	margin-right: 5px;
+}
+#api-type a {
+	float: right;
+	text-align: center;
+	width: 150px;
+}
+#api-type a img {
+	width: 100%;
+}
+@media (max-width: 370px) {
+  #api-type a {
+    float: none;
+  }
+}
+
+
+.list-inline {
+	/* padding-left: 0; */
+	/* margin-left: -5px; */
+	list-style: none;
+margin: 0;
+padding: 0;	
+}
+.list-inline > li {
+	display: inline-block;
+	padding-right: 5px;
+	/* padding-left: 5px; */
+}
+
+
 /* LEFT MENU*/
 #side-menu{
   display: none;
 }
-
+/*
 .snap-drawers {
 	width: 100%;
 	min-width: 750px;
@@ -324,7 +390,6 @@ margin: 0;
 }
 
 .snap-drawers {
-  /*! background: #323949; */
 }
 
 .snap-drawer {
@@ -394,7 +459,7 @@ margin: 0;
   padding: 15px;
   font-size: 12px;
 }
-
+*/
 /*
 #btn-close-drawer-left {
 	padding: 1px 4px 2px 4px;
@@ -403,15 +468,6 @@ margin: 0;
 }
 */
 
-
-
-#api-type label {
-	/*margin-left: 10px;*/
-	padding: 10px 5px 10px 5px;
-}
-#api-type label input {
-	margin-right: 5px;
-}
 
 /*
 .bar-title {

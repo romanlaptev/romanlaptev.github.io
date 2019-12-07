@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru" debug="true">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" href="css/bootstrap337.min.css">
+<style>
+.log-panel {
+margin-bottom: 0;
+margin-top: 5px;
+background-color: #b0c4de;
+
+position: fixed;
+top: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+}
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 2px;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+
+</style>	
+</head>
+
+<body>
+<div class="container">
+
+	<div class="page-header">
+		<h1>DB admin</h1>
+	</div>
+		
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+
+		
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>IndexedDB API</h3>
+		</div>
+		<div class="panel-body">
+			<label class="col-sm-2 col-md-2">DB name:</label>
+			<input class="form-control" id="dbname" value="" autocomplete="off"/>
+<!--			
+			<label class="col-sm-2 col-md-2">DB version:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="dbversion" value="1.0"/>
+			</div>
+			<div class="col-sm-2 col-md-2">
+				<button id="btn-dropDB" class="btn btn-danger">drop database</button>
+			</div>
+-->			
+				<label class="col-sm-2 col-md-2">Store name:</label>
+				<input class="form-control" id="storename" value="" autocomplete=off />
+				
+		<div class="">
+			<label class="col-sm-2 col-md-2">Record key:</label>
+			<input class="form-control" id="record-key" value="">
+		</div>
+		<div class="">
+			<label class="col-sm-2 col-md-2">Record value:</label>
+			<input class="form-control" id="record-value" value="">
+		</div>
+				
+		</div>
+
+		<div class="panel-body">
+			<div class="col-sm-9 col-md-9">
+				<div class="col-sm-10 col-md-10">
+					<select size="10" class="form-control" id="sel1" onChange="_changeValue( 'storename', this.options[this.selectedIndex].value );">
+					<!--
+						<option value="AR_ADR_LVL_1" selected>AR_ADR_LVL_1</option>
+						<option value="AR_ADR_LVL_2">AR_ADR_LVL_2</option>
+						<option value="AR_ADR_LVL_3">AR_ADR_LVL_3</option>
+						<option value="AR_ADR_LVL_4">AR_ADR_LVL_4</option>
+						<option value="AR_ADR_LVL_5">AR_ADR_LVL_5</option>
+					-->
+					</select>
+				</div>
+				<!--
+				<div class="col-sm-5 col-md-5">
+					<div class="mark" id="store-list"></div>
+				</div>
+				-->
+			</div>
+			
+			<div class="col-sm-3 col-md-3">
+				<p><button id="btn-dropDB" class="btn btn-danger">drop database</button></p>
+				<p><button id="btn-create" class="btn btn-primary">create store</button></p>
+				<p><button id="btn-list" class="btn btn-info">list stories</button></p>
+				<p><button id="btn-clear-store" class="btn btn-warning">clear selected object store</button></p>
+				<p><button id="btn-delete-store" class="btn btn-danger">delete selected store</button></p>
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<button id="btn-num-records" class="btn btn-info">num records</button>
+			<button id="btn-add-records" class="btn btn-success">add records (test data)</button>
+			<button id="btn-get-records" class="btn btn-success">get all records</button>
+			<button id="btn-get-records-obj" class="btn btn-info">get records object</button>
+		</div>
+			
+		<div class="panel-body">
+			<button id="btn-add-record" class="btn btn-primary">add record</button>
+			<button id="btn-get-record" class="btn btn-default">get record</button>
+			<button id="btn-delete-record" class="btn btn-danger">delete record</button>
+		</div>
+<!--		
+		<div class="panel-body">
+			<button id="btn-run-query" class="btn btn-primary">run query</button>
+			<button id="btn-get-info" class="btn btn-info">get info</button>
+			<button id="btn-import" class="btn btn-success">CSV import</button>
+		</div>
+-->
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>Local Storage</h3>
+		</div>
+		<div class="panel-body">
+<button id="btn-list-localstorage" class="btn btn-info">list localStorage</button>
+<button id="btn-set-localstorage" class="btn btn-primary">set items</button>
+<button id="btn-remove-localstorage" class="btn btn-danger">remove items</button>
+<button id="btn-clear-localstorage" class="btn btn-danger">clear localStorage</button>
+<!-- <button id="btn-load-localstorage" class="btn btn-danger">load data from file</button> -->
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>WebSQL</h3>
+		</div>
+		
+		<div class="row panel-body">
+			<label class="col-sm-3 col-md-3">DB name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-name" value="" readonly />
+			</div>
+		
+			<label class="co2-sm-2 col-md-2">DB version:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-version" value="" readonly />
+			</div>
+		
+			<label class="col-sm-3 col-md-3">DB description:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="db-desc" value="" readonly />
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<label class="col-sm-2 col-md-2">table name:</label>
+			<input class="form-control" id="table-name" value=""/>
+		</div>
+		
+		<div class="panel-body">
+<button id="btn-websql-list" class="btn btn-info">list tables</button>
+<button id="btn-websql-create" class="btn btn-primary">create table</button>
+<button id="btn-websql-insert" class="btn btn-primary">insert record</button>
+<button id="btn-websql-select" class="btn btn-info">SELECT * from table</button>
+<button id="btn-websql-clear" class="btn btn-info">clear table (DELETE from ...)</button>
+<button id="btn-websql-drop" class="btn btn-danger">drop table</button>
+<button id="btn-websql-drop-tables" class="btn btn-danger">drop ALL tables</button>
+
+		</div>
+	</div>
+	
+<!--
+	<div class="panel panel-primary">
+		<div class="panel-heading clearfix">
+			<h3 class="pull-left">Load catalog from local file</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-9 col-md-9">
+					<input class="form-control" id="input_file" value="../data/SL_KODIF.csv"/>
+					
+					<select size="10" class="form-control" id="sel2" onChange="_changeValue( 'input_file', this.options[this.selectedIndex].value );">
+						<option value="../data/SL_KODIF.csv" selected>SL_KODIF.csv</option>
+						<option value="../data/PANT.csv">PANT.csv</option>
+						<option value="../data/PMLP_ADR_LVL_1.csv">PMLP_ADR_LVL_1.csv</option>
+						<option value="../data/PMLP_ADR_LVL_2.csv">PMLP_ADR_LVL_2.csv</option>
+						<option value="../data/PMLP_ADR_LVL_3.csv">PMLP_ADR_LVL_3.csv</option>
+						<option value="../data/PMLP_ADR_LVL_4.csv">PMLP_ADR_LVL_4.csv</option>
+						<option value="../data/SL_KLASS_PERM.csv">SL_KLASS_PERM.csv</option>
+						<option value="../data/SIMPLE_SPR.csv">SIMPLE_SPR.csv</option>
+						<option value="../data/SL_TILTS.csv">SL_TILTS.csv</option>
+						<option value="../data/SL_LUS.csv">SL_LUS.csv</option>
+					</select>
+					
+				</div>
+				<div class="col-sm-3 col-md-3">
+					<button id="btn-load" class="btn btn-primary">load</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+-->
+
+</div><!-- end container -->
+
+	<script>
+/*	
+	if ('ontouchstart' in window){
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+	}
+*/	
+	</script>
+<script src="js/functions.js"></script>
+<script src="js/iDBmodule.js"></script>
+<script src="js/db_admin.js"></script>
+
+</body>
+</html>
