@@ -306,6 +306,7 @@ console.log( logMsg );
 			}
 		//console.log(p);
 
+			var logMsg;
 			var requestMethod = p["requestMethod"]; 
 			var url = p["url"]; 
 			var async = p["async"]; 
@@ -337,24 +338,45 @@ console.log( logMsg );
 				url += (new Date().getTime()) + Math.random(); //no cache
 			}
 
-			
 			if( !url || url.length === 0){
-				var msg = "error,  'url' is empty....";			
-console.log( msg );
+				logMsg = "error,  empty 'url' value.";			
+console.log( logMsg );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : logMsg
+					});
+				}
 				return false;
 			}
 			
 			var xhr = _createRequestObject();
 			if ( !xhr ) {
 console.log("error, ", xhr);
-				var msg = "_createRequestObject() error";			
-console.log( msg, xhr );
+				logMsg = "_createRequestObject() error";			
+console.log( logMsg, xhr );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : "error creating XHR...."
+					});
+				}
 				return false;
 			}
 
 
 			var timeStart = new Date();
-			xhr.open( requestMethod, url, async );
+			try{
+				xhr.open( requestMethod, url, async );
+			} catch(e){
+				//logMsg = "ajax request error...";			
+//console.log( logMsg );
+//for( var key in e){
+//console.log(key +" : "+ e[key]);
+//}//next
+				if( typeof  p["onError"] === "function"){
+					p["onError"](e);
+				}
+				return false;
+			}//end catch
 			
 			//Check responseType support:
 		//https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
@@ -381,9 +403,9 @@ console.log( msg, xhr );
 							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
 var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
 console.log(msg);
-// console.log( "xhr.responseText: ", xhr.responseText );
+//console.log( "xhr.responseText: ", xhr.responseText.length, typeof xhr.responseText );
 // console.log( "xhr.responseXML: ", xhr.responseXML );
-							//if( "responseType" in xhr){
+//							if( "responseType" in xhr){
 //console.log( "xhr.response: ", xhr.response );
 //console.log( "responseType: " + xhr.responseType );
 							//}
@@ -404,15 +426,17 @@ console.log(msg);
 								var data = xhr.response;
 								
 //fix IE8 (not property "responseType")
-//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+//console.log("Content-Type: " + xhr.getResponseHeader("Content-Type") );
 	
 								var contentType = xhr.getResponseHeader("Content-Type");
-								if( contentType === "application/xml" ||
-									contentType === "text/xml"){
+
+								//if( contentType === "application/xml" ||contentType === "text/xml"){
+								if( contentType.indexOf("application/xml") !== -1 || contentType.indexOf("text/xml") !== -1 ){
 									data = xhr.responseXML;
 								}
 								
-								if( contentType === "text/plain"){
+								//if( contentType === "text/plain"){
+								if( contentType.indexOf("text/plain") !== -1){
 									data = xhr.responseText;
 								} 
 
@@ -426,14 +450,19 @@ console.log(msg);
 							}
 
 						} else {
-		//console.log(xhr);					
-		console.log("Ajax load error, url: " + xhr.responseURL);
-		console.log("status: " + xhr.status);
-		console.log("statusText:" + xhr.statusText);
-
+//console.log(xhr);					
+//console.log("Ajax load error, url: " + xhr.responseURL);
+//console.log("status: " + xhr.status);
+//console.log("statusText:" + xhr.statusText);
 							if( typeof  p["onError"] === "function"){
-								p["onError"](xhr);
+								p["onError"]({
+									"message" : "ajax load request error.",
+									"url" : xhr.responseURL,
+									"xhr.status" : xhr.status,
+									"xhr.statusText" : xhr.statusText
+								});
 							}
+
 						}
 						
 				}
@@ -596,7 +625,16 @@ console.log(msg);
 			
 			//send query	
 			if( requestMethod !== "POST"){
-				xhr.send();
+				try{
+					xhr.send();
+				}catch(e){
+				console.log(e);
+					if( typeof  p["onError"] === "function"){
+						p["onError"]({
+							"message" : "error send XHR...."
+						});
+					}
+				}
 			} else {
 				
 				//http://learn.javascript.ru/xhr-forms
@@ -701,7 +739,7 @@ console.log(msg);
 		function _getMonthNameByNum( num, lang ){
 			var sMonth = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 			if( lang === "RU" || lang === "ru" ){
-				sMonth = ["ˇÌ‚", "ÙÂ‚", "Ï‡Ú", "‡Ô", "Ï‡È", "Ë˛Ì", "Ë˛Î", "‡‚„", "ÒÂÌÚ", "ÓÍÚ", "ÌÓˇ", "‰ÂÍ"];
+				sMonth = ["—è–Ω–≤", "—Ñ–µ–≤", "–º–∞—Ä—Ç", "–∞–ø—Ä", "–º–∞–π", "–∏—é–Ω", "–∏—é–ª", "–∞–≤–≥", "—Å–µ–Ω—Ç", "–æ–∫—Ç", "–Ω–æ—è", "–¥–µ–∫"];
 			}
 			return sMonth[num];
 		}//end _getMonthNameByNum()
@@ -1005,7 +1043,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"webSQLsupport" : window.openDatabase  ? true : false,
 				"localStorageSupport" : window['localStorage']  ? true : false,
 				"dataStoreType" : _detectDataStoreType(),
-				"geolocationSupport" :  typeof navigator.geolocation !== "undefined"
+				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
+				"supportTouch" : _supportTouch()
 			};
 		};//end _testSupport()
 		
@@ -1022,6 +1061,21 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 			return dataStoreType;
 		}//end _detectDataStoreType()
+		
+		var _supportTouch = function() {
+			//return !!('ontouchstart' in window);
+			
+			var supportTouch = false;
+			if ('ontouchstart' in window) {
+				//iOS & Android
+				supportTouch = true;
+			//} else if(window.navigator.msPointerEnabled) { // msPointerEnabled does not detect mobile, it also exists in desktop IE, use msMaxTouchPoints/maxTouchPoints instead!
+			} else if(window.navigator.msMaxTouchPoints) {
+				//WinPhone
+				supportTouch = true;
+			}
+			return supportTouch;
+		};//end _supportTouch
 		
 		
 		// public interfaces
@@ -1096,3 +1150,22 @@ if (!window.console){
 		}
 	}
 };
+
+//======================= trim() polyfill (< IE8)
+if (!String.prototype.trim) {
+	String.prototype.trim = function () {
+		return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+	};
+}
+
+//================================= textContent polyfill
+if (document.documentElement.textContent === undefined) {
+	Object.defineProperty(HTMLElement.prototype, "textContent", {
+		get: function() {
+			return this.innerText;
+		},
+		set: function(value) {
+			this.innerText = value;
+		}
+	});
+}

@@ -1,0 +1,148 @@
+body {
+	/*background-color: #eef;*/
+	background-color: #105590;
+	/*color: #fff*/
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+header h1{
+	color: #fff;
+	text-align: right;
+}
+
+#root {
+	background-color: #51a1e6;
+	border: none;
+	margin: 0;
+	border-radius: 10px;
+}
+
+.breadcrumb {
+	background-color: #0e3f6a;
+	/*background-color: #fff;*/
+	/*border: none;*/
+	border-radius: 5px;
+	margin: 15px;
+	padding: 15px;	
+}
+/*
+.breadcrumb ul {
+	padding: 0;
+	margin: 0;
+}
+.breadcrumb li {
+	list-style: none;
+}
+.breadcrumb li a{
+	color: #fff;
+}
+*/
+.ant-breadcrumb > span:last-child {
+	color: #fff;
+}
+.ant-breadcrumb a {
+	/*color: #0000ff;*/
+	color: orange;
+}
+.ant-breadcrumb-separator {
+	color: #fff;
+}
+
+
+.ant-select {
+	margin: 0;
+	padding: 10px;
+	display: block;
+	/*width: 100px;*/
+	/*min-height: 100px;*/
+	/*word-break: normal;*/
+}
+
+.bookmarks-container {
+	background-color: #ffcc99;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 10px;
+	float:left;
+}
+.link {
+	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #e6e6ff;
+	clear:both;
+}
+
+
+
+
+
+#clear-log {
+	float: right;
+	/*
+	position: relative;
+	left: 100%;
+	top: -20px;
+	*/
+}
+.log-panel {
+	min-height: 45px;
+}
+
+
+.btn-violet,
+.ant-btn-btn-violet
+{
+	color: #fff;
+	background-color: #395697;
+	border-color: #1890ff;
+}
+
+/*.ant-btn:hover,*/
+.ant-btn.btn-violet:focus,
+.ant-btn-btn-violet:focus
+ {
+	color: #fff;
+	background-color: #395697;
+  /*border-color: #40a9ff;*/
+}
+
+.btn-orange {
+	border-color: #925c23;
+	box-shadow: 0 1px 2px #777;
+	color: #694219;
+	background-color: #f5c489;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FED99A), to(#ECAE78));
+	background: -moz-linear-gradient(top, #FED99A, #ECAE78);
+	background: -o-linear-gradient(top, #FED99A, #ECAE78);
+	background: linear-gradient(top, #FED99A, #ECAE78);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED99A', endColorstr='#ECAE78');
+}

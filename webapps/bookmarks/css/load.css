@@ -85,22 +85,23 @@ border-top: 16px solid #3498db;
 
 .dm-modal {
     display: inline-block;
-
-    max-width: 50em;
-
 	/*background: #607d8b;*/
 	/*background-color: rgb(200, 200, 250);*/
 	background-color: #b0c4de;
 
 	border-radius: 10px;
 	padding: 10px;
-	width: 300px;
+	
+	max-width: 50em;
+	min-width: 300px;
+	/*width: 300px;*/
+	
 	z-index: 1042;
-
+/*
     -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
-
+*/
     /*color: #cfd8dc;*/
 	color: #000;
     text-align: left;

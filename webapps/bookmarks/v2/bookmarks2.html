@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firefox bookmarks</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap/bootstrap337.min.js"></script>
+	<!-- <script src="js/bootstrap/bootstrap.file-input.js"></script> -->
+	<script>
+var start_scroll_pos, end_scroll_pos;
+
+$(document).ready(function(){
+
+		//--------------------- Scroll
+		//Detect top position for scroll block #insert-json
+		start_scroll_pos = $("#insert-json").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
+
+/*
+	//$("input[type=file]").bootstrapFileInput();
+	
+	$("img").on("load", "#insert-json", function( e ){
+console.log("image load event", e);
+	});
+	
+	$("img").on("error", "#insert-json", function( e ){
+console.log("image load error", e);
+		//var src = $(this).attr("src");
+		//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+		//$(this).attr("src", new_src);
+	});
+*/
+});//end ready	
+
+$(window).scroll(function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+
+		if ( $(this).scrollTop() > start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+});//end scroll
+
+
+	</script>
+	
+<!--[if lt IE 9]>
+	<script src="js/fix_IE/html5shiv.js"></script>
+	<script src="js/fix_IE/respond.min.js"></script>
+<![endif]-->
+
+	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/load.css">
+	<link rel="stylesheet" href="fonts/fonts.css"/>	
+</head>
+
+<body>
+<div class="container" id="page-container">
+
+<div class="row">
+	<div class="col-sm-1 col-md-1 col-lg-1"></div>
+	<div id="content-column" class="col-sm-10 col-md-10 col-lg-10">
+
+		<header>
+			<ul class="nav nav-tabs">
+				<li><a class="btn btn-primary" href="../../../index.html">index</a></li>
+				<li><a href="#" class="btn btn-blue" data-toggle="modal" data-target="#serviceModal">Service</a></li>
+				<h1 class="text-right" id="app-title">Application title</h1>
+			</ul>
+			
+			<div id="control-btn" class="nav">
+			</div>
+		</header>
+
+		<div class="log-panel">
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="">x</a>
+			</span>
+	<!--
+			<div class="progress">ajax load:
+				<div id="load-progress-bar" class="progress-bar hide"></div>
+			</div>
+	-->
+			<div id="log" class="panel-body"></div>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body" id="insert-json"></div>
+		</div>
+
+		<footer>
+			<div class="col-sm-3 col-md-3">
+				<div class="btn-group">
+					<a class="btn btn-sm btn-info" href="parse_bookmarks.html">previous version</a>
+					<a class="btn btn-sm btn-primary" href="../bookmarks-react/build/">React version</a>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6"></div>
+			<div class="col-sm-3 col-md-3 text-right">
+				<a class="btn btn-sm btn-greygreen" href="tests_app/SpecRunner.html" target="_blank">tests application, Jasmine 2.8</a>		
+			</div>
+		</footer>
+		
+	</div><!-- end content column -->
+	
+	<div class="col-sm-1 col-md-1 col-lg-1"></div>
+</div><!-- end row -->
+
+
+	
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+
+
+<!-- ********************** load progress bar ************************** -->	
+<!--
+<div id="wait-window" class="">
+	<h1 class="text-center">wait...</h1>
+	<div class="loader loader2"></div> 
+	ajax load:
+	<div class="progress">
+		<div id="load-progress-bar" class="progress-bar hide"></div>
+	</div>
+</div>
+<div id="overlay" class="overlay"></div>
+-->
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+        <div class="dm-cell">
+            <div class="dm-modal">
+                <h1 class="text-center">wait...</h1>
+
+				<div class="loader loader2"></div> 
+ajax load:
+				<div class="progress">
+					<div id="load-progress-bar" class="progress-bar hide"></div>
+				</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ********************** serviceModal ************************** -->	
+	<div id="serviceModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Specify data file</h4>
+				</div>
+				<div class="modal-body">
+				
+					<div class="form-group">
+					
+						<label>URL:</label>
+						<div class="row correct1">
+							<div class="column1 col-sm-11 col-md-11 col-lg-11">
+<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="" autocomplete="off">
+							</div>
+							<div class="column2 col-sm-1 col-md-1 col-lg-1">
+<button id="btn-clear" class="btn btn-danger">x</button>
+							</div>
+						</div>
+							
+<p class="help-block"><small>bookmarks-cache/db/bookmarks.json</small></p>
+<p class="help-block"><small>db/3D.json</small></p>
+<p class="help-block"><small>db/lib.json</small></p>
+<p class="help-block"><small>db/bookmarks-2015-03-31.json</small></p>
+<p class="help-block"><small>https://romanlaptev-cors.herokuapp.com/https://romanlaptev.github.io/projects/bookmarks/db/lib.json</small></p>
+					</div>
+				
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="col-sm-8 col-md-8 col-lg-8">
+								<label>Select local file:</label>
+<input type="file" id="user-data-file" name="data_file" title="" class="" accept="application/json, .json">
+							</div>
+<!--
+							<div class="col-sm-4 col-md-4 col-lg-4">
+	<a id="btn-upload" href="#?q=upload" class="btn btn-primary">Upload file on server</a>
+							</div>
+-->
+						</div>
+					</div>
+							
+				</div><!-- end modal-body-->
+				
+				<div class="modal-footer">
+					<a id="btn-parse" href="#?q=parse-json" class="btn btn-violet-fb">Parse file</a>
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+				</div>
+				
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end serviceModal -->
+
+</div><!-- end container -->
+
+
+
+<script src="js/plugins/json2.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/bookmarks2.js"></script>
+<script>
+	if ('ontouchstart' in window){
+		document.body.className = "touch";
+_log( document.body.className );	
+/*
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+*/
+	}
+		
+//Start webApp
+if( typeof webApp === "object"){
+_runApp();
+}
+
+</script>
+
+</body>
+</html>

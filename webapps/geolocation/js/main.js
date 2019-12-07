@@ -76,6 +76,7 @@ window.onload = function(){
 	}
 */	
 	//--------------------------
+/*	
 	if( window.location.protocol !== "https:"){
 		support = false;
 		logMsg = "error, <b>navigator.geolocation</b> requires <b>'https:'</b> protocol....";
@@ -86,11 +87,11 @@ window.onload = function(){
 
 //for test
 //support = true;
-
+*/
 	//Start webApp
-	if( support ){
+	//if( support ){
 		_runApp();
-	}
+	//}
 
 	function _runApp(){
 		var _app = App();
@@ -106,6 +107,7 @@ console.log("_app:", _app);
 function defineEvents(){
 
 	var btn_clear_log = func.getById("btn-clear-log");
+	var logPanel = func.getById("log");
 	btn_clear_log.onclick = function( event ){
 //console.log("click...", e);			
 		event = event || window.event;
@@ -115,7 +117,7 @@ function defineEvents(){
 		} else {
 			event.returnValue = false;				
 		}
-		log.innerHTML = "";
+		logPanel.innerHTML = "";
 	};//end event
 
 }//end defineEvents()
