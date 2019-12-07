@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firefox bookmarks</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="img/icons/favicon.png">
+
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap/bootstrap337.min.js"></script>
+	<script>
+var start_scroll_pos, end_scroll_pos;
+
+$(document).ready(function(){
+
+		//--------------------- Scroll
+		//Detect top position for scroll block #insert-json
+		start_scroll_pos = $("#insert-json").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
+});//end ready	
+
+$(window).scroll(function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+
+		if ( $(this).scrollTop() > start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+});//end scroll
+
+
+	</script>
+	
+<!--[if lt IE 9]>
+	<script src="js/fix_IE/html5shiv.js"></script>
+	<script src="js/fix_IE/respond.min.js"></script>
+<![endif]-->
+
+	<link rel="stylesheet" href="css/bootstrap337.min.css"/>	
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/load.css">
+	<link rel="stylesheet" href="fonts/fonts.css"/>	
+</head>
+
+<body>
+
+<div id="collapse-panel-service" class="panel-collapse collapse container" aria-expanded="false">
+	<div class="panel panel-default">
+		<div class="panel-body">
+<a data-toggle="collapse" href="#collapse-panel-service" aria-expanded="true" class="close" title="close panel">&times;</a>		
+			<ul class="list-inline">
+				<li><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#serviceModal">change data source</a></li>
+				<li><a href="#" id="btn-update-cache" class="btn btn-danger">update localcache</a></li>
+				<li><a href="db_admin.html" class="" target="_blank">DB admin</a></li>
+				<li><a href="cache_admin.html" class="" target="_blank">cache admin</a></li>
+			</ul>
+
+			<ul class="list-unstyled">
+<li><a class="" href="index.html?data_url=https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks_notes.json">bookmarks_notes.json</a></li>
+<li><a class="" href="index.html?data_url=https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/3D.json">3D.json</a></li>
+			</ul>
+
+		</div>
+	</div>
+</div><!-- end collapse-panel-service -->
+
+<div class="container" id="page-container">
+
+<div class="row">
+	<div class="col-sm-1 col-md-1 col-lg-1"></div>
+	<div id="content-column" class="col-sm-10 col-md-10 col-lg-10">
+
+		<header>
+			<ul class="nav nav-tabs">
+				<li><a class="btn btn-primary" href="../index.html"><i class="glyphicon glyphicon-home"></i></a></li>
+				<li>
+<a class="btn btn-primary" data-toggle="collapse" href="#collapse-panel-service" aria-expanded="false" title="Service panel">
+<i class="glyphicon glyphicon-cog"></i></a>
+</li>
+				<a href="./"><h1 class="text-right" id="app-title">Application title</h1></a>
+			</ul>
+			
+			<div id="control-btn" class="nav">
+			</div>
+		</header>
+
+		<div class="log-panel panel">
+			<div class="panel-body">
+				<span class="pull-right">
+					<a id="btn-toggle-log" href="#q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+					<a id="btn-clear-log" href="#q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+				</span>
+				<div id="log" class="panel-body"></div>
+			</div>
+		</div>
+		
+
+		<div class="panel panel-primary">
+			<div class="panel-body" id="insert-json"></div>
+		</div>
+
+		<footer>
+			<div class="col-sm-3 col-md-3">
+<!--
+				<div class="btn-group">
+					<a class="btn btn-sm btn-info" href="../bookmarks2.html">previous version</a>
+				</div>
+-->
+			</div>
+			<div class="col-sm-6 col-md-6"></div>
+			<div class="col-sm-3 col-md-3 text-right">
+<!--
+				<a class="btn btn-sm btn-primary" href="../bookmarks-react/build/">React version</a>
+-->
+			</div>
+		</footer>
+		
+	</div><!-- end content column -->
+	
+	<div class="col-sm-1 col-md-1 col-lg-1"></div>
+</div><!-- end row -->
+
+
+	
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-info scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+	<div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+				<h4 class="text-center">please, wait...</h4>
+
+				<div class="loader loader2"></div> 
+					<div id="load-progress">
+						<div class="text-center">
+<small>
+ajax load data
+							<span id="percent-complete"></span>
+							<span id="num-total-load"></span>
+</small>
+						</div>
+						<div class="progress">
+							<div id="load-progress-bar" class="progress-bar"></div>
+						</div>
+						<div id="load-info" class="text-center">
+<small>
+Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+</small>
+						</div>
+					</div>
+<!--
+prepare data:
+	<div class="progress">
+		<div id="parse-progress-bar" class="progress-bar"></div>
+	</div>
+-->
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- ********************** serviceModal ************************** -->	
+	<div id="serviceModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Specify data file</h4>
+				</div>
+				
+				<div class="modal-body">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<label>URL:</label>
+						</div>
+						<div class="panel-body">
+								<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+	<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="" autocomplete="off">
+								</div>
+								<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+	<button id="btn-clear" class="btn btn-danger">x</button>
+								</div>
+						</div>
+						<div class="panel-body help-block small">
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/3D.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/lib.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks-2015-03-31.json<br/>
+https://romanlaptev-cors.herokuapp.com/https://romanlaptev.github.io/projects/bookmarks/db/lib.json<br/>
+						</div>
+					</div>
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<label>Select local file:</label>
+						</div>
+						<div class="panel-body">
+							<div class="col-sm-8 col-md-8 col-lg-8">
+<input type="file" id="user-data-file" name="data_file" title="" class="" accept="application/json, .json">
+							</div>
+<!--
+							<div class="col-sm-4 col-md-4 col-lg-4">
+	<a id="btn-upload" href="#q=upload" class="btn btn-primary">Upload file on server</a>
+							</div>
+-->
+						</div>
+					</div>
+					<div class="text-center">
+						<a id="btn-parse" href="#q=get-data" class="btn btn-violet-fb">Parse file</a>
+					</div>
+				</div><!-- end modal-body-->
+
+<!--
+				<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+				</div>
+-->
+
+			</div><!-- end modal-content-->
+		</div>
+	</div><!-- end serviceModal -->
+
+</div><!-- end container -->
+
+
+
+<script src="js/plugins/json2.js"></script>
+<script src="js/functions.js"></script>
+
+<script src="js/iDBmodule.js"></script>
+<script src="js/webSQLmodule.js"></script>
+<script src="js/storage.js"></script>
+
+<script src="js/bookmarks4.js"></script>
+<script src="js/templates.js"></script>
+
+<script>
+//Start webApp
+if( typeof webApp === "object"){
+_runApp({
+		"tplName": "bootstrap_tpl"
+	});
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firefox bookmarks</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="img/icons/favicon.png">
+
+	<link rel="stylesheet" href="css/materialize.min.css"/>	
+	<link rel="stylesheet" href="css/materialize_custom.css" media="screen,projection">
+	<link rel="stylesheet" href="fonts/fonts.css"/>	
+	
+	<script src="js/lib/jquery-1.11.3.min.js"></script>
+<!--	
+	<script src="js/lib/jquery-2.1.1.min.js"></script>	
+-->	
+	<script src="js/materialize/materialize.min.js"></script>
+	<script>
+var start_scroll_pos, end_scroll_pos;
+
+$(document).ready(function(){
+		//--------------------- Scroll
+		//Detect top position for scroll block #insert-json
+		start_scroll_pos = $("#insert-json").offset().top + 100;
+		end_scroll_pos = start_scroll_pos - 20;
+		
+		$("#nav-mobile").sidenav();
+		
+		$(".modal").modal();
+
+		$("#btn-dev").on("click", function(){
+			webApp.vars["waitWindow"].style.display="block";
+			webApp.vars["loadProgress"].style.display="block";
+		
+//Loaded 38388 bytes of total 516853
+			var totalBytes = 516800;
+			$("#total").html( totalBytes );
+			$("#total-mb").html( (( totalBytes / 1024) / 1024).toFixed(2) );
+			
+			var arrayBytes = 5168;
+			var totalLoadedBytes = 0;
+			var percentComplete = 0;
+			
+			var num = 1;
+			var interval = setInterval(function(){
+				num++;
+//console.log(num);
+				
+				totalLoadedBytes += arrayBytes;
+				$("#loaded").html( totalLoadedBytes.toFixed(2) );
+
+				if( num > 100){
+					clearInterval(interval);
+					//webApp.vars["waitWindow"].style.display="none";
+					$("#num-total-load").html( totalLoadedBytes.toFixed(2)  + " bytes" );
+				}
+				
+				percentComplete = Math.ceil( totalLoadedBytes / totalBytes * 100);
+				var msg = "Loaded " + totalLoadedBytes.toFixed(2) + " bytes of total " + totalBytes;
+console.log( msg, percentComplete +"%" );
+				
+				webApp.vars["loadProgressBar"].style.width = num+"%";
+				$("#percent-complete").html(percentComplete+"%");
+
+			}, 500);
+			
+		});
+});//end ready	
+
+$(window).scroll(function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+
+		if ( $(this).scrollTop() > start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+});//end scroll
+
+
+	</script>
+
+<style>
+#btn-scroll-to-top {
+	position: fixed;
+	bottom: 5px;
+	left: 50%;
+	margin-left: -45px;
+	display: none;
+}	
+</style>
+
+<!--[if lt IE 9]>
+	<script src="js/fix_IE/html5shiv.js"></script>
+	<script src="js/fix_IE/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+<!--
+<img src="img/icons/baseline_menu_black_18dp.png">
+<img src="img/icons/menu-24px.svg">
+-->
+<div class="container" id="page-container">
+
+
+	<div id="content-column" class="">
+
+		<header>
+			<nav class="light-blue darken-4" role="navigation">
+				<div class="nav-wrapper">
+
+					<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<!--
+<i class="material-icons">&#e5d2;</i>
+-->
+					
+					<div class="right">
+<a href="./">
+						<h1 class="right-align" id="app-title">Application title</h1>
+</a>
+					</div>
+					
+					<ul id="nav-mobile" class="sidenav">
+					
+						<li class="">
+<a class="sidenav-close" href="#!"><i class="material-icons">close</i></a>
+						</li>
+						
+						<li><a href="../index.html">index</a></li>
+<li><a href="#serviceModal" class="btn modal-trigger">load another data file</a></li>
+<li><a href="#" id="btn-update-cache" class="btn blue">update localcache</a></li>
+<li><a href="db_admin.html" class="btn" target="_blank">DB admin</a></li>
+<li><a href="cache_admin.html" class="btn" target="_blank">cache admin</a></li>
+<li><a href="_index.html" class="btn">change theme</a></li>
+						<li><a class="" href="v2/bookmarks2.html">previous version</a></li>
+						<li><a class="" href="bookmarks-react/build/">React version</a></li>
+<li><a class="" href="index.html?data_url=https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks_notes.json">bookmarks_notes.json</a></li>
+<li><a class="" href="index.html?data_url=https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/3D.json">3D.json</a></li>
+
+<li><a href="#" id="btn-dev" class="btn red">dev</a></li>
+					</ul>
+
+				</div>
+			</nav>
+		</header>
+
+
+		<div class="log-panel">
+			<div class="panel-body">
+					<div class="right button-group">
+						<a id="btn-toggle-log" href="#q=toggle-log" title="Toggle log" class="button">-</a>
+						<a id="btn-clear-log" href="#q=clear-log" title="Clear log" class="button">x</a>
+					</div>
+				<div id="log" class=""></div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-panel" id="insert-json"></div>
+		</div>
+<!--
+		<footer class="page-footer cyan">
+			<div class="row">
+				<div class="col s3 m3 l3 xl3"></div>
+				
+				<div class="col s6 m6 l6 xl6">
+				</div>
+				
+				<div class="col s3 m3 l3 xl3"></div>
+			</div>
+		</footer>
+-->
+		
+	</div><!-- end content column -->
+	
+
+
+	
+	<div class="center-align">
+		<button id="btn-scroll-to-top" class="btn scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+			
+				<div class="center-align">
+					<h4>please, wait...</h4>
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+						
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
+				<div id="load-progress">
+					<div class="center-align">ajax load data 
+						<span id="percent-complete"></span>
+						<span id="num-total-load"></span>
+					</div>
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate blue center-align"></div>
+					</div>
+					<div id="load-info">
+<small>
+						Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+</small>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- ********************** serviceModal ************************** -->	
+	<div id="serviceModal" class="modal">
+		
+			<div class="modal-content">
+				<div class="right">
+					<i class="material-icons modal-close">close</i>
+				</div>
+				
+				<h4 class="">Specify data file</h4>
+				
+				<div class="">
+				
+					<div class="">
+						<div class="panel-heading">
+							<label>URL:</label>
+						</div>
+						<div class="row">
+								<div class="col s11 m11 l11 xl11">
+	<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="" autocomplete="off">
+								</div>
+								<div class="col s1 m1 l1 xl1">
+	<button id="btn-clear" class="btn btn-small red lighten-2">clear input</button>
+								</div>
+						</div>
+						<div class="row help-block small">
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/3D.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/lib.json<br/>
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks-2015-03-31.json<br/>
+https://romanlaptev-cors.herokuapp.com/https://romanlaptev.github.io/projects/bookmarks/db/lib.json<br/>
+						</div>
+					</div>
+				
+					<div class="">
+						<div class="">
+							<label>Select local file:</label>
+						</div>
+						<div class="row">
+							<div class="col s8 m8 l8 xl8">
+<input type="file" id="user-data-file" name="data_file" title="" class="" accept="application/json, .json">
+							</div>
+<!--
+							<div class="col-sm-4 col-md-4 col-lg-4">
+	<a id="btn-upload" href="#q=upload" class="btn btn-primary">Upload file on server</a>
+							</div>
+-->
+						</div>
+					</div>
+					<div class="center-align">
+						<a id="btn-parse" href="#q=get-data" class="btn btn-small">Parse file</a>
+					</div>
+				</div><!-- end modal-body-->
+
+			</div><!-- end modal-content-->
+			
+			<div class="modal-footer"></div>
+			
+	</div><!-- end serviceModal -->
+
+</div><!-- end container -->
+
+
+
+<script src="js/plugins/json2.js"></script>
+<script src="js/functions.js"></script>
+
+<script src="js/iDBmodule.js"></script>
+<script src="js/webSQLmodule.js"></script>
+<script src="js/storage.js"></script>
+
+<script src="js/bookmarks4.js"></script>
+<script src="js/templates.js"></script>
+
+<script>
+//Start webApp
+if( typeof webApp === "object"){
+_runApp({
+		"tplName": "materialize_tpl"
+	});
+}
+</script>
+
+</body>
+</html>
