@@ -48,6 +48,19 @@ if (!String.prototype.trim) {
 }
 
 
+//================================= textContent polyfill
+if (document.documentElement.textContent === undefined) {
+	Object.defineProperty(HTMLElement.prototype, "textContent", {
+		get: function() {
+			return this.innerText;
+		},
+		set: function(value) {
+			this.innerText = value;
+		}
+	});
+}
+
+  
 //================================= Element.classList
 //https://developer.mozilla.org/ru/docs/Web/API/Element/classList
 (function() {

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru" debug="true">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	<meta name="referrer" content="no-referrer" />
+	
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	<script src="../lib/shared_functions.js"></script>
+	
+	<title>test JS: Ajax</title>
+	
+<script>
+	var func = sharedFunc();
+//console.log("func:", func);
+var logMsg;
+
+window.onload = function() {
+
+	logMsg = navigator.userAgent;
+	func.logAlert(logMsg, "info");
+	
+	testSupportAjax();
+
+	var ajaxContent = func.getById("ajax-content");
+
+	document.getElementById("ajax-btn").onclick = function() {
+				//var url = "data/test.html";
+				//var url = document.getElementsByName("input_url")[0].value;
+				//запрос из постороннего источника заблокирован: 
+				//политика одного источника запрещает чтение удаленного ресурса на http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml. 
+				//(причина: отсутствует заголовок CORS 'Access-Control-Allow-Origin').
+				//var url = "http://localhost/www/IIS_DEV_files/xml/menu_id=5711.xml";
+		runAjax( {
+			"requestMethod" : "GET", 
+			"url" : document.getElementsByName("input_url")[0].value, 
+			"callback": function(data){
+//alert(typeof data);
+//alert( data.length );
+//alert( data[0] );
+console.log("end ajax load, " + data[0] + data.length);
+				ajaxContent.innerHTML = data;
+
+			}//end ajax load
+		});
+	};//end event
+			
+}//end load
+
+function runAjax( opt ){
+//console.log(arguments);
+	
+	var p = {
+		"requestMethod" : "GET", 
+		"url" : false, 
+		"params": "",
+		"async" :  true,
+		"callback" : null
+	};
+	
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+	
+	var requestMethod = p["requestMethod"]; 
+	var url = p["url"]; 
+	var async = p["async"]; 
+	var callback = p["callback"]; 
+	
+	if( !url || url.length === 0){
+		var msg = "Parameters error, needed 'url'";			
+console.log( msg );
+//_log( "<p  class='text-danger'>" +msg+"</p>");
+		return false;
+	}	
+
+	var xhr = _createRequestObject();
+	
+	if ( !xhr ) {
+console.log("error, ", xhr);
+		var msg = "_createRequestObject() error";			
+console.log( msg, xhr );
+//_log( "<p  class='text-danger'>" +msg+"</p>");
+		return false;
+	}
+				
+	var timeStart = new Date();
+	try{
+		xhr.open( requestMethod, url, async );
+	} catch(e){
+		logMsg = "ajax request error...";			
+console.log( logMsg );
+for( var key in e){
+console.log(key +" : "+ e[key]);
+}//next
+		return false;
+	}//end catch
+	
+	//Check responseType support:
+	//if( "responseType" in xhr){
+		//xhr.responseType = "document";
+	//}
+/*
+https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
+https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType
+arraybuffer
+blob
+document
+ms-stream
+text
+*/	
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4){
+console.log("xhr.status -" + xhr.status);
+//console.log( xhr  );
+//for(var key in xhr){
+//console.log( key +" : "+xhr[key] );
+//}
+			if (xhr.status == 200){
+//console.log(xhr.getResponseHeader('X-Powered-By') );
+				var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+				var timeEnd = new Date();
+				var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+logMsg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+func.logAlert( logMsg, "success" );
+
+				//document.getElementById("ajax-content").innerHTML += xhr.responseText;
+//console.log( "xhr.response: " + xhr.response );
+/*				
+if( "responseType" in xhr){
+console.log( xhr.response );
+console.log( "responseType:: " + xhr.responseType );
+} else {
+console.log( "xhr.responseText: ", xhr.responseText );
+console.log( "xhr.responseXML: ", xhr.responseXML );
+}
+*/
+/*
+							try{
+					console.log( "xhr.responseText: " + xhr.responseText );
+							} catch(e){
+					console.log( e );
+							}
+
+							try{
+					console.log( "xhr.responseXML: " + xhr.responseXML );
+							} catch(e){
+					console.log( e );
+							}
+*/
+					var all_headers = xhr.getAllResponseHeaders();
+console.log( all_headers );
+
+					if( typeof callback === "function"){
+//alert("responseText" in xhr);	
+//alert("response" in xhr);	
+						if( "response" in xhr){
+							var data = xhr.response;
+						} else {
+							var data = xhr.responseText;
+						}
+						
+//fix IE8 (not property "responseType")
+//console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
+						var contentType = xhr.getResponseHeader("Content-Type");
+						//if( contentType === "application/xml" || contentType === "text/xml"){
+						if( contentType.indexOf("application/xml") !== -1 || contentType.indexOf("text/xml") !== -1 ){
+							data = xhr.responseXML;
+						}
+						
+						//if( contentType === "text/plain"){
+						if( contentType.indexOf("text/plain") !== -1){
+							data = xhr.responseText;
+						} 
+
+						callback( data, runtime, xhr );
+					}
+					
+			} else {
+console.log(xhr);	
+logMsg = "Ajax load error, url: <b class='text-danger'>" + xhr.responseURL + "</b><br>";
+logMsg += "Ajax load error, status: <b class='text-danger'>" + xhr.status + "</b><br>";
+logMsg += "Ajax load error, statusText: <b class='text-danger'>" + xhr.statusText + "</b><br>";
+func.logAlert( logMsg, "error" );
+			}						
+						
+		}
+	};
+				
+//console.log( "onprogress" in xhr  );
+//console.log( xhr.responseType, typeof xhr.responseType );
+//console.log( window.ProgressEvent, typeof  window.ProgressEvent);
+	if( "onprogress" in xhr ){
+		xhr.onprogress = function(e){
+			var percentComplete = 0;
+			if(e.lengthComputable) {
+				percentComplete = Math.ceil(e.loaded / e.total * 100);
+			}
+	console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+			if( document.getElementById("load-progress") ){
+				document.getElementById("load-progress").value = percentComplete;
+			}
+		};
+	}
+				
+	xhr.send();
+
+	function _createRequestObject(){
+			var request = false;
+			if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+//console.log("try use XMLHttpRequest");		
+				request = new XMLHttpRequest();
+			} 
+
+			if(!request) { // IE
+//console.log("try use Microsoft.XMLHTTP");		
+				request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			if(!request) {
+//console.log("try use Msxml2.XMLHTTP");		
+				request=new ActiveXObject('Msxml2.XMLHTTP');
+			}
+//console.log(request);		
+			return request;
+	}//end createRequestObject()
+	
+}//end runAjax
+
+/*
+			//parallel ajax
+			$.when(
+				$.ajax( _vars["tests"]["checkPHP"] ),
+				$.ajax( _vars["tests"]["checkASPX"] )
+			).then( 
+				function( supportPHP, supportASPX){
+console.log( supportPHP );
+console.log( supportASPX );
+			})
+			.fail(function(){
+console.log( arguments );
+			});
+*/
+
+function testSupportAjax(){
+	if ( typeof window.XMLHttpRequest !== "undefined"){
+		logMsg = "Browser supports window.XMLHttpRequest";
+		func.logAlert( logMsg, "success");
+	} else {
+		logMsg = "<b>window.XMLHttpRequest</b> NOT supported...";
+		func.logAlert( logMsg, "error");
+	}
+	
+	try{
+		var xhr = new XMLHttpRequest();
+		
+		if ( typeof xhr.responseType !== "undefined" ){
+				logMsg = "XMLHttpRequest Level 2 supported ( 'responseType' in xhr)";
+				func.logAlert( logMsg, "success");
+			} else {
+				logMsg = "<b>XMLHttpRequest Level 2 ( 'responseType' in xhr )</b> NOT supported...";
+				func.logAlert( logMsg, "error");
+			}
+
+	}catch(e){
+for(var key in e){
+console.log(key +" : "+ e[key]);
+}
+	}
+	
+	if( window.ActiveXObject){
+	
+		try {
+			var request = new ActiveXObject("Microsoft.XMLHTTP");
+			logMsg = "ActiveXObject('Microsoft.XMLHTTP') created";
+			func.logAlert( logMsg, "success");
+		} catch(e){
+			test["msg"] = e.description;
+			for(var key in e){
+			console.log(key +" : "+ e[key]);
+			}//next
+		}
+		
+		try {
+			var request = new ActiveXObject('Msxml2.XMLHTTP');
+			logMsg = "ActiveXObject('Msxml2.XMLHTTP') created";
+			func.logAlert( logMsg, "success");
+		} catch(e){
+			for(var key in e){
+			console.log(key +" : "+ e[key]);
+			}//next
+		}
+		
+	}
+
+	if ( typeof window.fetch !== "undefined"){
+		logMsg = "Browser supports window.fetch";
+		func.logAlert( logMsg, "success");
+	} else {
+		logMsg = "<b>window.fetch</b> NOT supported...";
+		func.logAlert( logMsg, "error");
+	}
+}//end testSupport()	
+
+</script>
+
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test Ajax</h1>
+	</div>
+	
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+	
+		<div class="panel panel-default">
+			<div class="panel-body">
+	
+	input url:<input type="text" class="form-control" id="input-url" name="input_url" value=""/>
+<!--	
+	load progress:<progress id="load-progress" max="100" value="0" style="width:100%"></progress>
+-->
+				<button id="ajax-btn" class="btn btn-primary">ajax request</button>
+			</div>
+		</div>
+	
+		<div class="panel panel-default">
+			<div class="panel-body" id="ajax-content"></div>
+		</div>
+	
+	<pre>
+data/test.html
+data/test.xml
+data/test.json
+/sites/romanlaptev.github.io/projects/notes/api/test.php
+
+https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/lib.json
+для загрузки данных с удаленного сервера создать в папке с данными .htaccess или web.config
+
+APACHE
+.htaccess
+Header set Access-Control-Allow-Origin "*"
+------
+IIS
+web.config
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;configuration&gt;
+&lt;!--
+https://www.iis.net/configreference/system.webserver
+https://professorweb.ru/my/ASP_NET/base/level4/4_4.php
+--&gt;
+	&lt;appSettings /&gt;
+	&lt;connectionStrings /&gt;
+	&lt;system.webServer&gt;
+	
+		&lt;directoryBrowse enabled="true" showFlags="Extension, Size" /&gt;
+&lt;!--		
+		&lt;directoryBrowse enabled="true" showFlags="Date, Time, Size, Extension, LongDate" /&gt;
+--&gt;
+	
+	&lt;defaultDocument enabled="true"&gt;
+		&lt;files&gt;
+			&lt;add value="_Index.html" /&gt;
+		&lt;/files&gt;
+	&lt;/defaultDocument&gt;
+   
+&lt;!--	
+		+&lt;httpRedirect enabled="true" destination="http://yandex.ru/" /&gt;
+--&gt;
+		&lt;httpProtocol&gt;
+			&lt;customHeaders&gt;
+				&lt;add name="Access-Control-Allow-Origin" value="*" /&gt;
+				&lt;add name="Test" value="test1" /&gt;
+			&lt;/customHeaders&gt;
+		&lt;/httpProtocol&gt;
+
+	&lt;/system.webServer&gt;
+&lt;/configuration&gt;
+
+	</pre>
+	
+	<pre>
+http://www.internet-technologies.ru/articles/article_1845.html
+Несколько одновременных Ajax запросов (с одним обратным вызовом)
+
+https://habrahabr.ru/company/bankrot-pro/blog/230441/
+JQuery Deferred — примеры использования
+
+Ограничение одновременных запросов http
+Firefox 2:  2
+Firefox 3+: 6
+Opera 9.26: 4
+Opera 12:   6
+Safari 3:   4
+Safari 5:   6
+IE 7:       2
+IE 8:       6
+IE 10:      8
+Chrome:     6
+	</pre>
+</div>	
+</body>
+</html>

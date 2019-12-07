@@ -46,6 +46,8 @@ format={{format}}\
 			"arcgis_cssLink": "https://js.arcgis.com/3.25/esri/css/esri.css",
 			//"arcgis_apiLink": "https://js.arcgis.com/4.13/",
 			//"arcgis_cssLink": "https://js.arcgis.com/4.13/esri/css/main.css"
+
+			"position": {},
 			
 			"support" : func.testSupport(),
 			"templates" : {
@@ -69,8 +71,12 @@ format={{format}}\
 //console.log("App initialize...");
 			
 			_vars["htmlObj"]={
-				"latitude" : func.getById("latitude"),
-				"longitude" : func.getById("longitude"),
+				"latitudeInput" : func.getById("latitude-input"),
+				"latitudeRange": func.getById("latitude-range"),
+				
+				"longitudeInput" : func.getById("longitude-input"),
+				"longitudeRange": func.getById("longitude-range"),
+				
 				"accuracy" : func.getById("accuracy"),
 				"datetime" : func.getById("datetime"),
 				"altitude" : func.getById("altitude"),
@@ -98,76 +104,19 @@ format={{format}}\
 			
 			//_vars["htmlObj"]["addresTitle"].style.display="none";
 			_vars["htmlObj"]["waitOverlay"].style.display="none";
+			_vars["position"]["latitude_input"] = parseFloat( _vars["htmlObj"]["latitudeInput"].value );
+			_vars["position"]["longitude_input"] = parseFloat( _vars["htmlObj"]["longitudeInput"].value );
+			
+			_vars["htmlObj"]["latitudeRange"].value  = parseFloat( _vars["htmlObj"]["latitudeInput"].value );
+			_vars["htmlObj"]["longitudeRange"].value  = parseFloat( _vars["htmlObj"]["longitudeInput"].value );
 			
 //----------------------------------------- load map API
 			_loadApi();
 
 //-----------------------------------------
-			_vars["htmlObj"]["btnGetCoord"].onclick = function(e){
-//console.log(e);
-				_waitWindow( "open" );
-				_handleCoordinateBtn();
-			}//end event
-			
-//-----------------------------------------
-			func.addEvent( _vars["htmlObj"]["btnGetAddr"], "click", function(){
-				
-				if( !_vars["position"] ){
-					_vars["logMsg"] = "Error, first you need to get the coordinates.";
-					func.logAlert(_vars["logMsg"], "error");
-					return false;
-				}
-				
-				_waitWindow( "open" );
-				_getAdress({
-					lng: _vars["position"]["coords"].longitude,
-					lat: _vars["position"]["coords"].latitude
-				});
-			
-			});//end event
-			
-//-----------------------------------------
-			_vars["htmlObj"]["btnShowMap"].onclick = function(e){
-//console.log(e);
-				if( !_vars["position"] ){
-					_vars["logMsg"] = "Error, first you need to get the coordinates.";
-					func.logAlert(_vars["logMsg"], "error");
-					return false;
-				}
-				_handleMapBtn();
-			}//end event
-			
-//-----------------------------------------
-			_vars["htmlObj"]["iconModalClose"].onclick = function(e){
-				_vars["htmlObj"]["appModal"].classList.remove("active");
-				_destroyMap( _vars["apiType"] );
-			}//end event
+			defineEvents();
 
-//-----------------------------------------
-			func.addEvent( _vars["htmlObj"]["blockApiType"], "click", function(e){
-//console.log( e.target );
-
-				if( e.target.nodeName ===  "INPUT"){
-//console.log( e.target.checked, e.target.value );
-					_vars["apiType"] = e.target.value;
-					_loadApi();
-				}
-
-				if( e.target.nodeName ===  "LABEL"){
-//console.log( e.target );
-//console.log( e.target.children["api_type"] );
-//console.log( e.target.children["api_type"].value, e.target.children["api_type"].checked );
-					_vars["apiType"] = e.target.children["api_type"].value;
-					_loadApi();
-          e.target.children["api_type"].checked = true;
-          e.preventDefault();
-          //e.stopPropagation();
-				}
-        
-			});//end event
-
-			
-		};// end _init
+		};// end _init()
 
 
 		function _loadApi(){
@@ -360,6 +309,129 @@ func.logAlert(_vars["logMsg"],"error");
 			return _cDate;
 		};//end _getDateTime()
 		
+
+
+		function defineEvents(){
+			
+		//-----------------------------------------
+			_vars["htmlObj"]["btnGetCoord"].onclick = function(e){
+//console.log(e);
+				_waitWindow( "open" );
+				_handleCoordinateBtn();
+			}//end event
+			
+		//-----------------------------------------
+			func.addEvent( _vars["htmlObj"]["btnGetAddr"], "click", function(){
+				
+				// if( !_vars["position"] ){
+					// _vars["logMsg"] = "Error, first you need to get the coordinates.";
+					// func.logAlert(_vars["logMsg"], "error");
+					// return false;
+				// }
+				
+				_waitWindow( "open" );
+				_getAdress({
+					lng: _vars["position"]["longitude_input"],
+					lat: _vars["position"]["latitude_input"]
+				});
+			
+			});//end event
+
+		//-----------------------------------------
+			_vars["htmlObj"]["btnShowMap"].onclick = function(e){
+		//console.log(e);
+				// if( !_vars["position"] ){
+					// _vars["logMsg"] = "Error, first you need to get the coordinates.";
+					// func.logAlert(_vars["logMsg"], "error");
+					// return false;
+				// }
+				_handleMapBtn();
+			}//end event
+			
+		//-----------------------------------------
+			_vars["htmlObj"]["iconModalClose"].onclick = function(e){
+				_vars["htmlObj"]["appModal"].classList.remove("active");
+				_destroyMap( _vars["apiType"] );
+			}//end event
+
+		//-----------------------------------------
+			func.addEvent( _vars["htmlObj"]["blockApiType"], "click", function(e){
+		//console.log( e.target );
+
+				if( e.target.nodeName ===  "INPUT"){
+		//console.log( e.target.checked, e.target.value );
+					_vars["apiType"] = e.target.value;
+					_loadApi();
+				}
+
+				if( e.target.nodeName ===  "LABEL"){
+		//console.log( e.target );
+		//console.log( e.target.children["api_type"] );
+		//console.log( e.target.children["api_type"].value, e.target.children["api_type"].checked );
+					_vars["apiType"] = e.target.children["api_type"].value;
+					_loadApi();
+		  e.target.children["api_type"].checked = true;
+		  e.preventDefault();
+		  //e.stopPropagation();
+				}
+
+			});//end event
+			
+			//-----------------------------------------
+			//_vars["htmlObj"]["latitudeInput"].onkeydown = function(e) {
+			_vars["htmlObj"]["latitudeInput"].onchange = function(event) {
+			//_vars["htmlObj"]["latitudeInput"].oninput = function( event ) {
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log(event);
+//console.log(event.key);
+//console.log( target.value, typeof  target.value);
+				_vars["position"]["latitude_input"] = _InputCoordsHandler( target.value );
+				_vars["htmlObj"]["latitudeRange"].value  = _vars["position"]["latitude_input"];
+			};//end event
+			
+			_vars["htmlObj"]["longitudeInput"].onchange = function(event) {
+			//_vars["htmlObj"]["longitudeInput"].oninput = function(event) {
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+				_vars["position"]["longitude_input"] = _InputCoordsHandler( target.value );
+				_vars["htmlObj"]["longitudeRange"].value  = _vars["position"]["longitude_input"];
+			};//end event
+
+			//-----------------------------------------
+			//_vars["htmlObj"]["latitudeRange"].onchange = function(event) {
+			_vars["htmlObj"]["latitudeRange"].oninput = function(event) {
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log("change latitude:", target.value);
+				_vars["htmlObj"]["latitudeInput"].value = target.value;
+				_vars["position"]["latitude_input"] = _InputCoordsHandler( target.value );
+			};//end event
+			
+			//_vars["htmlObj"]["longitudeRange"].onchange = function(event) {
+			_vars["htmlObj"]["longitudeRange"].oninput = function(event) {
+				event = event || window.event;
+				var target = event.target || event.srcElement;
+//console.log("change longitude:", target.value);
+				_vars["htmlObj"]["longitudeInput"].value = target.value;
+				_vars["position"]["longitude_input"] = _InputCoordsHandler( target.value );
+			};//end event
+			
+		}//end defineEvents()
+
+
+		function _InputCoordsHandler( value ){
+			var _num = parseFloat(value);
+//console.log( _num );
+			if( !isNaN( _num) ){
+				return _num;
+			} else {
+_vars["logMsg"] = "Incorrect input value, only numbers...";
+func.logAlert(_vars["logMsg"], "warning");
+				return false;
+			}
+		}//end _InputCoordsHandler()
+
 		
 		var _handleCoordinateBtn = function(){
 
@@ -371,8 +443,15 @@ func.logAlert(_vars["logMsg"],"error");
 // for(var item in posObj.coords){
 	// console.log( item, posObj.coords[item] );
 // }
-				_vars["htmlObj"]["latitude"].innerHTML = posObj.coords.latitude;
-				_vars["htmlObj"]["longitude"].innerHTML = posObj.coords.longitude;
+				//_vars["htmlObj"]["latitudeInput"].innerHTML = posObj.coords.latitude;
+				_vars["htmlObj"]["latitudeInput"].value = posObj.coords.latitude;
+				_vars["position"]["latitude_input"] = posObj.coords.latitude;
+				_vars["htmlObj"]["latitudeRange"].value  = posObj.coords.latitude.toFixed(1);
+				
+				_vars["htmlObj"]["longitudeInput"].value = posObj.coords.longitude;
+				_vars["position"]["longitude_input"] = posObj.coords.longitude;
+				_vars["htmlObj"]["longitudeRange"].value  = posObj.coords.longitude.toFixed(1);
+				
 				_vars["htmlObj"]["accuracy"].innerHTML = posObj.coords.accuracy;
 				_vars["htmlObj"]["datetime"].innerHTML = _getDateTime( posObj.timestamp );
 				
@@ -381,17 +460,18 @@ func.logAlert(_vars["logMsg"],"error");
 				_vars["htmlObj"]["heading"].innerHTML = posObj.coords.heading;
 				_vars["htmlObj"]["speed"].innerHTML = posObj.coords.speed;
 				
-				_vars["position"] = posObj;
+				_vars["position"]["posObj"] = posObj;
 				
 				_vars["logMsg"] = "Your coordinates were determined successfully.";
 				func.logAlert(_vars["logMsg"], "success");
-				_vars["htmlObj"]["btnShowMap"].classList.remove("disabled");
 				
+				//_vars["htmlObj"]["btnShowMap"].classList.remove("disabled");
 				_waitWindow( "close" );
 			}//end success_fn()
 			
 			function fail_fn( error ){
 				var errorTypes = {
+					0: "Required https",
 					1: "Permission denied",
 					2: "Position is not available",
 					3: "Request timeout"
@@ -399,6 +479,8 @@ func.logAlert(_vars["logMsg"],"error");
 				_vars["logMsg"] = "Error code: " + error.code + ", " + errorTypes[error.code] + ", " + error.message;
 console.log(error);
 				func.logAlert(_vars["logMsg"], "error");
+				
+				_waitWindow( "close" );
 			}//end fail_fn()
 
 			
@@ -428,12 +510,17 @@ console.log( "googleMaps API version: " + google.maps.version );
 //----------------------------
 					_vars["htmlObj"]["modalTitle"].innerHTML = "googleMaps API version: " + google.maps.version;
 					
-					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					//var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+					//var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					
+					var lat = _vars["position"]["latitude_input"].toFixed(5);// 55.03146
+					var lng = _vars["position"]["longitude_input"].toFixed(5);// 82.92317
+					
 					var latlng = new google.maps.LatLng(lat, lng);
 					
 					var _options = {
-						zoom: 16,
+						zoom: 6,
+						//zoom: 16,
 						//center: new google.maps.LatLng(-34.397, 150.644),
 						center: latlng,
 						navigationControlOptions: {
@@ -488,13 +575,17 @@ console.log("2GIS API version: " + DG.version);
 //----------------------------
 					_vars["htmlObj"]["modalTitle"].innerHTML = "2GIS Maps API version: " + DG.version;
 
-					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					//var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+					//var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					var lat = _vars["position"]["latitude_input"].toFixed(5);// 55.03146
+					var lng = _vars["position"]["longitude_input"].toFixed(5);// 82.92317
+					
 					DG.then(function () {
 						_vars.mapObj = DG.map( _vars["htmlObj"]["map"], {
 							//center: [54.98, 82.89],
 							center: [lat, lng],
-							zoom: 16
+							//zoom: 16
+							zoom: 10
 						});
 						DG.marker([lat, lng]).addTo( _vars.mapObj ).bindPopup("You are here...");
 						_waitWindow( "close" );
@@ -536,8 +627,11 @@ console.log("2GIS API version: " + DG.version);
 					var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
 					var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
 					
-					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					//var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+					//var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					var lat = _vars["position"]["latitude_input"].toFixed(5);// 55.03146
+					var lng = _vars["position"]["longitude_input"].toFixed(5);// 82.92317
+					
 					var position = new OpenLayers.LonLat( lng, lat ).transform( fromProjection, toProjection);
 					
 					mapLayer.events.register("loadend", mapLayer, function (e) {
@@ -552,7 +646,8 @@ console.log("2GIS API version: " + DG.version);
 					_vars.mapObj.addLayer( markers );
 					markers.addMarker( new OpenLayers.Marker(position) );
 					
-					var zoom = 17; 
+					//var zoom = 17; 
+					var zoom = 6; 
 					_vars.mapObj.setCenter( position, zoom);
 					
 					_vars.mapObj.addControl(new OpenLayers.Control.LayerSwitcher());
@@ -582,8 +677,11 @@ _vars.mapObj.addControl(new OpenLayers.Control.KeyboardDefaults());
 					_vars["htmlObj"]["map"].style.width = _w+"px";
 //----------------------------
 					_vars["htmlObj"]["modalTitle"].innerHTML = "ArcGIS Maps API, Dojo framework version: " + dojo.version.toString();
-					var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-					var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					//var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+					//var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+					var lat = _vars["position"]["latitude_input"].toFixed(5);// 55.03146
+					var lng = _vars["position"]["longitude_input"].toFixed(5);// 82.92317
+					
 //API 3.25
 					require([
 "esri/map", 
@@ -619,7 +717,8 @@ GraphicsLayer//,
 //"streets-vector" | "streets-night-vector" | 
 //"streets-relief-vector" | "streets-navigation-vector" | "topo-vector"
 								center: [lng, lat],
-								zoom: 15
+								//zoom: 15
+								zoom: 6
 							});
 //console.log("Point:", Point);
 						
@@ -727,16 +826,30 @@ func.logAlert(_vars["logMsg"],"error");
 
 		var  _getCoordinates = function(success_fn, fail_fn){
 //console.log(arguments);
+//console.log(window.location.protocol, window.location.protocol !== "https:");
+
+			if( window.location.protocol !== "https:"){
+				fail_fn({
+					code: 0,
+					message: "<b>navigator.geolocation</b> requires <b>'https:'</b> protocol...."
+				});
+				return false;
+			}
 
 			var opts = {
 				enableHighAccuracy: true,  // high accuracy
 				maximumAge: 0,  // no cache
 				timeout: ( GPS_TIMEOUT_POSITION * 1000) // timeout
 			};
-			navigator.geolocation.getCurrentPosition(
-				success_fn,
-				fail_fn,
-				opts);
+			//try {
+				navigator.geolocation.getCurrentPosition(
+					success_fn,
+					fail_fn,
+					opts);
+			//} catch(e){
+//console.log(e);				
+			//}
+			
 		};//end _getCoordinates()
 		
 		
@@ -1028,6 +1141,7 @@ func.logAlert( _vars["logMsg"], "error");
 						return value;
 					});
 //console.log( jsonObj, jsonObj["results"].length );
+console.log( jsonObj );
 					var addrText = "";
 					
 					switch ( _vars["apiType"]){
@@ -1157,14 +1271,17 @@ for(var n1 = 0; n1 < jsonObj["results"].length; n1++){
 //----------------------------
 			_vars["htmlObj"]["modalTitle"].innerHTML = "yandexMaps API version: " + ymaps.meta.version;
 			
-			var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
-			var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+			//var lat = _vars["position"]["coords"].latitude.toFixed(5);// 55.03146
+			//var lng = _vars["position"]["coords"].longitude.toFixed(5);// 82.92317
+			var lat = _vars["position"]["latitude_input"].toFixed(5);// 55.03146
+			var lng = _vars["position"]["longitude_input"].toFixed(5);// 82.92317
 //console.log( lat, lng );
 		
 			_vars.mapObj = new ymaps.Map( _vars["htmlObj"]["map"], {
 				//center: [55.76, 37.64],
 				center: [ lat, lng],
-				zoom: 15
+				//zoom: 15
+				zoom: 5
 			}, {
 					searchControlProvider: 'yandex#search'
 			}),

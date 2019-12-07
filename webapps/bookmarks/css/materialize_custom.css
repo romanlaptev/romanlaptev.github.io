@@ -1,0 +1,324 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+font-feature-settings: 'liga';
+-moz-font-feature-settings: 'liga';
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+
+nav a.sidenav-trigger {
+	display: block;
+	outline:none;
+}
+/* nav .nav-wrapper {
+	padding:10px;
+} */
+nav .sidenav-trigger {
+	/*float: none;*/
+}
+
+#nav-mobile .sidenav-close{
+	padding: 0;
+}
+#nav-mobile .sidenav-close i {
+	float: right;
+	margin: 0px 5px 0px 0px;
+}
+
+
+#app-title {
+	margin: 0;
+	padding: 15px 15px 0px 0px;
+	line-height: 100%;
+	font-family: hattori_hanzolight;
+	font-size: 210%;
+}
+
+
+
+.folder2 {
+	/* float: left; */
+	/* margin: 10px; */
+	/* background-color: #64b5f6; */
+	padding: 30px 0;
+	margin: 2px;
+	border-radius: 3px;
+	width: 128px;
+	min-height: 80px;
+	word-break: normal;
+	/* border: 2px outset #000000; */
+	/* -webkit-box-shadow: 5px 5px 5px #abc, 1px 1px 6px #bbc; */
+	display: inline-block;
+	background-image: url('../img/folder.png');
+	height: 128px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.folder2:hover {
+	opacity:0.6;
+}
+
+.folder2 .collection-item {
+	background-color: inherit;
+	/*! line-height: 1.5rem; */
+	/*! padding: 10px 20px; */
+	/*! margin: 0; */
+	/*border-bottom: 1px solid #e0e0e0;*/
+	color: #fff !important;
+/*font-size: 130%;*/
+text-align: center;
+/*font-weight: bold;*/
+}
+
+.folder2:hover .collection-item{
+	color: #000080  !important;
+}
+
+
+.link {
+	/* float: left; */
+	border-radius: 3px;
+	margin: 2px;
+	padding: 10px;
+	background-color: #c6d6de;
+	/* background-color: #87cefa; */
+	width: 160px;
+	/* min-height: 100px; */
+	/*word-break: normal;*/
+word-break: break-all;
+	/*border: 1px solid #87cefa;*/
+	/* -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3); */
+	/* -webkit-box-shadow: 5px 5px 5px #999, 1px 1px 6px #555; */
+	/* box-shadow: 5px 5px silver; */
+	display: inline-block;
+	vertical-align: top;
+}
+
+.link a {
+	/*color: #31708f;*/
+	color: #000;
+}
+
+.link:hover {
+/*background-color:#4682b4;*/
+opacity:0.6;
+}
+.link:hover a{
+	color: #000080;
+}
+
+
+#insert-json .collection a.collection-item {
+	color: #039be5;
+	width:120px;
+	height:80px;
+}
+
+#insert-json .collection a.collection-item:hover {
+	background-color: inherit;
+	color: #fff;
+}
+
+
+
+
+.breadcrumb-custom {
+	padding: 1px 0 1px 10px;
+}
+.breadcrumb-custom li {
+	display: inline-block;
+background:#0097a7;
+margin: 3px;
+padding: 5px;
+border-radius: 3px;
+/*box-shadow: 1px 2px 2px #fff, 3px 2px 3px #fff;*/
+}
+
+.breadcrumb-custom li + li:before {
+	padding: 0 5px;
+	color: #fff;
+	content: "/\00a0";
+}
+
+.breadcrumb-custom li a {
+	color: #fff;
+	outline: none;
+}
+
+
+.icon-uri {
+max-width: 32px;
+height: auto;
+margin: 0 5px 0 0;
+}
+
+
+
+.log-panel {
+    /* margin-bottom: 0; */
+    /* margin-top: 5px; */
+background-color: #b0c4de;
+position: fixed;
+bottom: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+border-radius: 4px;
+}
+
+.log-panel .panel-body{
+	padding: 10px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+.alert-info {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+.alert-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.log-panel .button-group  {
+	margin-top: -4px;
+	margin-right: -4px;
+}
+
+.log-panel .button {
+  height: 16px;
+  width:16px;
+  background-color:#fff;
+	border: 1px solid;  
+	border-color:#ccc;
+  color:#333;
+padding: 5px 10px;
+font-size: 12px;
+line-height: 1.5;
+border-radius: 3px;  
+}
+
+/*--------------------- LOAD --------------*/
+/* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
+.dm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.dm-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.dm-cell {
+    display: table-cell;
+    padding: 0 1em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.dm-modal {
+    display: inline-block;
+
+    max-width: 50em;
+
+	/*background: #607d8b;*/
+	/*background-color: rgb(200, 200, 250);*/
+	background-color: #b0c4de;
+
+	border-radius: 10px;
+	padding: 25px;
+	/* width: 300px; */
+	z-index: 1042;
+
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+
+    /*color: #cfd8dc;*/
+	color: #000;
+    text-align: left;
+}
+
+#win1 .circle-clipper .circle {
+	border-width: 10px;
+}
+
+#win1 .progress {
+	height: 20px;
+	background-color: #fff;
+	border-radius: 3px;
+}

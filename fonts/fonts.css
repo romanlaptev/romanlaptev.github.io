@@ -276,5 +276,23 @@ src:url('OpenSans/webfonts/OpenSans-SemiboldItalic-webfont.eot?#iefix') format('
 	font-style: normal;
 }
 
+@font-face { font-family: 'avantgarde';
+src: url('AVANTGAR/AVANTGAR.eot');
+src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
+  url('AVANTGAR/AVANTGAR.woff2') format('woff2'),
+  url('AVANTGAR/AVANTGAR.woff') format('woff'),
+  url('AVANTGAR/AVANTGAR.ttf') format('truetype'),
+  url('AVANTGAR/AVANTGAR.svg#AGREVC') format('svg');
+}
 
 
+@font-face {
+    font-family: segoe-ui-webfont;
+    src: url('segoe-ui/segoe-ui-webfont.eot');
+    src: url('segoe-ui/segoe-ui-webfont.eot?#iefix') format('embedded-opentype'),
+         url('segoe-ui/segoe-ui-webfont.woff') format('woff'),
+         url('segoe-ui/segoe-ui-webfont.ttf') format('truetype'),
+         url('segoe-ui/segoe-ui-webfont.svg#segoe-ui-webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,70 @@
+.select_tov {
+	padding:7px 14px;
+	margin:0 0 7px 0;
+	overflow:hidden;	
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+
+
+.o_hidden {
+	width:100%;
+	overflow:hidden;
+}
+.item_block {
+	overflow:hidden;
+	width:140px;
+	float:left;
+	text-align:left;
+	margin:1px;
+}
+
+.item_block .item {
+	max-height:75px;
+	display: block;
+	float:left;
+	background: #fff;
+}
+
+.textur {
+	border:2px #cCC solid;
+	overflow:hidden;
+	background:#FFF;
+	width:400px;
+	padding:7px;
+}
+
+
+.textur:hover {
+	border:2px #00d3df solid;
+}
+
+.textur.active {
+	border:2px #00d3df solid;
+}
+
+.window .textur {
+	background:url('../images/bum_tm.jpg') repeat !important;
+}
+.textur1 {
+	float:left;
+}
+.textur2 {
+	float:left;
+}
+.textur0 {
+	width:200px;
+	height:200px;
+}
+.mini {
+	width:124px;
+	padding:4px;
+}
+.mini .textur0 {
+	width:62px;
+	height:62px;
+}
+.textur0,.textur1 {
+	/*background-size:150%;*/
+}

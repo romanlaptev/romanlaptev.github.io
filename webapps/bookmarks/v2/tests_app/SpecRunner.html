@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v2.8.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.8.0/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-2.8.0/jasmine.css">
+
+	<script src="lib/jasmine-2.8.0/jasmine.js"></script>
+	<script src="lib/jasmine-2.8.0/jasmine-html.js"></script>
+	<script src="lib/jasmine-2.8.0/boot.js"></script>
+
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/jasmine-jquery.js"></script>
+<!--	
+	<script src="../js/bootstrap/bootstrap337.min.js"></script>
+	<script src="../js/bootstrap/bootstrap.file-input.js"></script>
+-->
+</head>
+
+<body>
+	<div class="container">
+		<h1>Test code with Jasmine <span id="ver"></span></h1>
+	</div>
+<!--
+	<div id="test-html" style="display:block">Ajax load test HTML here....	</div>
+<div id="content-column"></div>
+<input type="text" id="user-data-url" name="data_url" placeholder="" class="form-control" value="">
+-->
+		
+<script>
+	$("#ver").text( jasmine.version );
+/*	
+console.log("Load start...");	
+	//$("#test-html").load("../bookmarks2.html #content-column", 
+	$("#test-html").load("../bookmarks2.html #page-container", 
+		function(){
+console.log("Load end...");	
+
+//-----------------	
+		var script = document.createElement('script');
+		script.src = "../js/bookmarks2.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+		
+		script.onload = function() {
+console.log("onload " + this.src);
+			//_loadJS("spec/testApp.js");
+		};
+		
+		script.onerror = function(e) {
+console.log("error load script " + this.src);
+		};  
+		
+	});	
+*/
+	
+/*	
+//-----------------	
+function _loadJS(scriptName){
+console.log("Load script " + scriptName);
+	var script = document.createElement('script');
+	script.src = scriptName;
+	//document.body.appendChild( script );
+	document.getElementsByTagName('head')[0].appendChild(script);
+		
+	script.onload = function() {
+console.log("onload " + this.src);
+	};
+	script.onerror = function(e) {
+console.log("error load script " + this.src);
+	};  
+}//end _loadJS()
+*/	
+
+</script>
+
+<!--
+<iframe 
+id="tpl-frame"
+name="tpl_frame"
+src="html/bookmarks2.html" width="400" height="100"
+onload="console.log('LOAD tpl_frame!');"></iframe>
+-->
+
+<script src="spec/testApp.js"></script>
+<script src="../js/functions.js"></script>
+<script src="../js/bookmarks2.js"></script>
+
+</body>
+</html>

@@ -283,6 +283,7 @@ console.log( logMsg );
 			}
 		//console.log(p);
 
+			var logMsg;
 			var requestMethod = p["requestMethod"]; 
 			var url = p["url"]; 
 			var async = p["async"]; 
@@ -316,8 +317,13 @@ console.log( logMsg );
 
 			
 			if( !url || url.length === 0){
-				var msg = "error,  'url' is empty....";			
-console.log( msg );
+				logMsg = "error,  empty 'url' value.";			
+console.log( logMsg );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : logMsg
+					});
+				}
 				return false;
 			}
 
@@ -325,14 +331,31 @@ console.log( msg );
 			var xhr = _createRequestObject();
 			if ( !xhr ) {
 console.log("error, ", xhr);
-				var msg = "_createRequestObject() error";			
-console.log( msg, xhr );
+				logMsg = "_createRequestObject() error";			
+console.log( logMsg, xhr );
+				if( typeof  p["onError"] === "function"){
+					p["onError"]({
+						"message" : "error creating XHR...."
+					});
+				}
 				return false;
 			}
 
 			var timeStart = new Date();
 
-			xhr.open( requestMethod, url, async );
+			try{
+				xhr.open( requestMethod, url, async );
+			} catch(e){
+				//logMsg = "ajax request error...";			
+//console.log( logMsg );
+//for( var key in e){
+//console.log(key +" : "+ e[key]);
+//}//next
+				if( typeof  p["onError"] === "function"){
+					p["onError"](e);
+				}
+				return false;
+			}//end catch
 			
 			//Check responseType support:
 		//https://msdn.microsoft.com/ru-ru/library/hh872882(v=vs.85).aspx
@@ -381,17 +404,24 @@ console.log(msg);
 							}
 
 							if( typeof callback === "function"){
-								var data = xhr.response;
+//alert("responseText" in xhr);	true in IE6
+//alert("response" in xhr);	false in IE6
+								if( "response" in xhr){
+									var data = xhr.response;
+								} else {
+									var data = xhr.responseText;
+								}
 								
 //fix IE8 (not property "responseType")
 //console.log("Content-Type:: " + xhr.getResponseHeader("Content-Type") );
 								var contentType = xhr.getResponseHeader("Content-Type");
-								if( contentType === "application/xml" ||
-									contentType === "text/xml"){
+								//if( contentType === "application/xml" || contentType === "text/xml"){
+								if( contentType.indexOf("application/xml") !== -1 || contentType.indexOf("text/xml") !== -1 ){
 									data = xhr.responseXML;
 								}
 								
-								if( contentType === "text/plain"){
+								//if( contentType === "text/plain"){
+								if( contentType.indexOf("text/plain") !== -1){
 									data = xhr.responseText;
 								} 
 
@@ -405,13 +435,17 @@ console.log(msg);
 							}
 
 						} else {
-		//console.log(xhr);					
-		console.log("Ajax load error, url: " + xhr.responseURL);
-		console.log("status: " + xhr.status);
-		console.log("statusText:" + xhr.statusText);
-
+//console.log(xhr);					
+//console.log("Ajax load error, url: " + xhr.responseURL);
+//console.log("status: " + xhr.status);
+//console.log("statusText:" + xhr.statusText);
 							if( typeof  p["onError"] === "function"){
-								p["onError"](xhr);
+								p["onError"]({
+									"message" : "ajax load request error.",
+									"url" : xhr.responseURL,
+									"xhr.status" : xhr.status,
+									"xhr.statusText" : xhr.statusText
+								});
 							}
 						}
 						
@@ -575,7 +609,18 @@ console.log(xhr.upload);
 			
 			//send query	
 			if( requestMethod !== "POST"){
-				xhr.send();
+				try{
+					xhr.send();
+				}catch(e){
+console.log(e);
+					if( typeof  p["onError"] === "function"){
+						p["onError"]({
+							"message" : "error send XHR...."
+						});
+					}
+				}
+				
+				
 			} else {
 				
 				//http://learn.javascript.ru/xhr-forms
@@ -1094,7 +1139,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"webSQLsupport" : window.openDatabase  ? true : false,
 				"localStorageSupport" : window['localStorage']  ? true : false,
 				"dataStoreType" : _detectDataStoreType(),
-				"geolocationSupport" :  typeof navigator.geolocation !== "undefined"
+				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
+				"supportTouch" : _supportTouch()
 			};
 		};//end _testSupport()
 		
@@ -1111,6 +1157,21 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 			return dataStoreType;
 		}//end _detectDataStoreType()
+		
+		var _supportTouch = function() {
+			//return !!('ontouchstart' in window);
+			
+			var supportTouch = false;
+			if ('ontouchstart' in window) {
+				//iOS & Android
+				supportTouch = true;
+			//} else if(window.navigator.msPointerEnabled) { // msPointerEnabled does not detect mobile, it also exists in desktop IE, use msMaxTouchPoints/maxTouchPoints instead!
+			} else if(window.navigator.msMaxTouchPoints) {
+				//WinPhone
+				supportTouch = true;
+			}
+			return supportTouch;
+		};//end _supportTouch
 		
 		
 		// public interfaces
@@ -1186,192 +1247,6 @@ if (!window.console){
 		}
 	}
 };
-
-
-
-//print source code
-//var source_txt = document.getElementById("code1");
-//code1_out.innerHTML +="<br><br>";
-//code1_out.appendChild( document.createTextNode( source_txt.outerHTML ) );
-
-
-//**************************************
-//var dirname = getenv("dirname");
-//**************************************
-/*
-function getenv(i){
-	if (!i.length) 
-	{ 
-		return false; 
-	}  
-	qStr = document.location.href;
-	strpos = qStr.indexOf("?"+i+"=");
-
-	if ( strpos ==-1) 
-	{ 
-		strpos = qStr.indexOf("&"+i+"="); 
-	}
-
-	if ( strpos == qStr.length || strpos ==-1 )
-	{
-		return false; 
-	}
-
-	val = qStr.substring( (strpos+i.length)+2, qStr.length);
-
-	strpos = val.indexOf("&");
-
-	if ( strpos !=-1 ) 
-	{ 
-		val = val.substring(0, strpos ); 
-	}
-
-	if ( !val.length ) 
-	{ 
-		return false; 
-	}
-	else 
-	{ 
-		return val; 
-	}
-
-}//end getenv
-*/
-
-
-function detectBrowsers(){
-	var out = navigator.userAgent+"\n\r";
-	var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
-	var isiPad = navigator.userAgent.toLowerCase().indexOf("ipad");
-	var isiPod = navigator.userAgent.toLowerCase().indexOf("ipod");
-	var Chrome = navigator.userAgent.toLowerCase().indexOf("chrome");
-	var Firefox = navigator.userAgent.toLowerCase().indexOf("firefox");
-	  if(isiPhone > -1){
-			out += "iPhone detect\n\r";
-			$("body").addClass("iphone");
-		   var iHeight = window.screen.height;
-		   if(iHeight <= 480) {
-			  out += 'iPhone 2 or iPhone 3 or iPhone 3GS\n\r';
-		   }
-		   else if(iHeight > 480 && iHeight <=960) {
-			   out += 'iPhone 4\n\r';
-		   }
-		   else if(iHeight > 960) {
-			  out += 'iPhone 5\n\r';
-		   }
-	  }
-	  if(isiPad > -1) {
-			out += "iPad detect\n\r";
-	  }
-	  if(isiPod > -1) {
-			out = "iPod detect\n\r";
-	  }
-	  if( Chrome > -1) {
-			out += "Chrome detect\n\r";
-			$("body").addClass("chrome");
-	  }
-	  if( Firefox > -1) {
-			out += "Firefox detect\n\r";
-			$("body").addClass("firefox");
-	  }
-
-}//end detectBrowsers
-
-	/*
-		if ((navigator.appName == "Microsoft Internet Explorer"))
-		{
-			if(navigator.userAgent.indexOf("MSIE 9")!=-1)
-					{
-					..............
-			}
-		}
-		var ua = navigator.userAgent.toLowerCase();
-		if (ua.indexOf("msie 9.0") != -1) {
-		}
-
-		// Gecko = Mozilla + Firefox + Netscape
-		if (ua.indexOf("gecko") != -1) {
-		}
-	*/
-
-function getNameBrowser() {
-	var ua = navigator.userAgent.toLowerCase();
-	// Internet Explorer
-	if (ua.indexOf("msie") != -1 && ua.indexOf("opera") == -1 && ua.indexOf("webtv") == -1) {
-		return "msie"
-	}
-	// Opera
-	if (ua.indexOf("opera") != -1) {
-		return "opera"
-	}
-	// Gecko = Mozilla + Firefox + Netscape
-	if (ua.indexOf("gecko") != -1) {
-		return "gecko";
-	}
-	// Safari, используется в MAC OS
-	if (ua.indexOf("safari") != -1) {
-		return "safari";
-	}
-	// Konqueror, используется в UNIX-системах
-	if (ua.indexOf("konqueror") != -1) {
-		return "konqueror";
-	}
-	return "unknown";
-}//end getNameBrowser
-
-
-//**************************************
-//  создать объект XMLHttpRequest
-//**************************************
-function getXMLDocument(url)  {  
-	var xml;  
-	if(window.XMLHttpRequest) {  
-		xml=new window.XMLHttpRequest();  
-		xml.open("GET", url, false);  
-		xml.send("");  
-		//alert (xml.responseText);
-		return xml.responseXML;  
-	}  else  {
-		if(window.ActiveXObject) {  
-			xml=new ActiveXObject("Microsoft.XMLDOM");  
-			xml.async=false;  
-			xml.load(url);  
-			return xml;  
-		}  else  {  
-			alert("XML download is not supported in this browser");  
-			return null;  
-		}  
-	}
-}//end getXMLDocument
-
-function create_MSXML(){
-	if (typeof (ActiveXObject) === "undefined") {
-		return false;
-	}
-	var progIDs = [
-					"Msxml2.DOMDocument.6.0", 
-					"Msxml2.DOMDocument.5.0", 
-					"Msxml2.DOMDocument.4.0", 
-					"Msxml2.DOMDocument.3.0", 
-					"MSXML2.DOMDocument", 
-					"MSXML.DOMDocument"
-				  ];
-	for(var n = 0; n < progIDs.length; n++) {
-		try { 
-			var xml = {
-				"xml_obj" : new ActiveXObject( progIDs[n] ),
-				"version" : progIDs[n]
-			}
-			return xml; 
-		}  catch(e) {
-console.log("error: " + e);
-			for( var item in e )	{
-console.log(item + ": " + e[item]);
-			}
-		};
-	}
-}//end create_MSXML()
-
 
 
 function runAjaxJQuery( params ) {
@@ -1502,56 +1377,7 @@ console.log("textStatus:" + textStatus);
 }//end runAjaxJQuery();
 
 
-// фильтрация ввода, только цифры
-function filter_input(e,regexp){
-  e=e || window.event;
-  var target=e.target || e.srcElement;
-  var isIE=document.all;
 
-  if (target.tagName.toUpperCase()=='INPUT')
-  {
-    var code=isIE ? e.keyCode : e.which;
-    if (code<32 || e.ctrlKey || e.altKey) return true;
-
-    var _char=String.fromCharCode(code);
-    if (!regexp.test( _char )) return false;
-  }
-  return true;
-}
-
-function check_form(){
-//console.log(document.forms.sendform[0].value);
-	var error = true;
-	var error_text = "";
-	var frm = document.forms.sendform;
-	for (item in frm.elements) {
-		if (item == "email")
-		{
-//console.log(frm.elements[item].value);
-			var email_value = frm.elements[item].value;
-			if (email_value.length > 0)
-			{
-// /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
-				var reg = /^\w+([\.-]?\w+)*@\w+([\.-]\w+)*(\.\w{2,4})+$/;
-				if (email_value.search(reg) !=-1 )
-				{
-					error = false;
-				}
-
-			} else {
-				error_text += "enter email";
-				//frm.elements[item].styles="enter email!!!";
-			}
-		}
-	}
-
-	if (!error){
-		document.forms.sendform.submit();
-//return false;
-	} else {
-		alert ('Error: ' + error_text);
-	}
-}//end check_form()
 
 
 window.onload = function(){
@@ -1580,24 +1406,24 @@ window.onresize = function(event) {
 
 //console.log("window.addEventListener:" + window.addEventListener);
 //console.log("window.attachEvent:" + window.attachEvent);
-if ( window.addEventListener ) {
-	window.addEventListener("load", function(e) {
-console.log("window.addEventListener, event load");
-	}, false);
-} else {
-	if (window.attachEvent)	{
-		window.attachEvent("onload", function(){
-console.log("window.attachEvent, event onload");
-		});
-	}
-};
+//if ( window.addEventListener ) {
+	//window.addEventListener("load", function(e) {
+//console.log("window.addEventListener, event load");
+	//}, false);
+//} else {
+	//if (window.attachEvent)	{
+		//window.attachEvent("onload", function(){
+//console.log("window.attachEvent, event onload");
+		//});
+	//}
+//};
 
 /* for Mozilla/Firefox/Opera 9 */
-if (document.addEventListener) {
-	document.addEventListener("DOMContentLoaded", function(){
-console.log("DOMContentLoaded");
-	},false);//end dom load
-}
+//if (document.addEventListener) {
+	//document.addEventListener("DOMContentLoaded", function(){
+//console.log("DOMContentLoaded");
+	//},false);//end dom load
+//}
 
 if( typeof window.jQuery === "function"){
 //var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
@@ -1713,195 +1539,3 @@ console.log("image load error", e);
 	});//end scroll
 
 }
-//============================= IMAGES Load error
-/*
-window.onload = function(){
-console.log("window.onload");	
-//console.log( "jQuery is " + typeof $);
-
-	//+Обработка проблем загрузки изображений (загрузить с облака гугла)
-//	var images = document.getElementsByTagName("img");
-//console.log( "images =  ", images, images.length);
-//	for( var n = 0; n < images.length; n++){
-//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
-//		if( images[n].clientHeight === 0 ){
-//			load_img_error( images[n] );
-//		};
-//	};
-
-
-};//end load
-
-(function($){
-    $(function() {
-console.log("TEST");
-
-//handler for error load images
-		$("img").on("error", function( e ){
-console.log("image load error");
-			//var src = $(this).attr("src");
-			//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-			//$(this).attr("src", new_src);
-			$("body").attr("data-image-load-error","1");
-			//load_img_error( $(this)[0] );
-		});
-
-		$("img").on("load", function( e ){
-console.log("image load event", e);
-		});
-
-    });
-})(jQuery);
-*/
-
-
-// Вывод всех элементов формы
-function print_forms() {
-	var frm = document.form_ls;
-	for ( var n2=1; n2 < frm.elements.length; n2++)
-	   {
-		var elmnt = frm.elements[n2];
-		document.write ("element " + n2 + "= " + elmnt.name+", ");
-		document.write (elmnt.type + ", ");
-		document.write (elmnt.value+"<br>");
-	   }
-}//end print_forms()
-
-//Dump for object
-/*  
-print_f (cell_hover_top.style); //Dump IE styles
-.......
-textDecorationBlink
-scrollbarFaceColor
-.......
-*/
-function print_f( id ){
-	var str = '';
-   if(typeof(id) == "object"){
-      for(a in id){
-         str += (a +"<br>");   
-      }   
-   }
-	document.write (str);
-}//end
-
-function select_checkbox() {
-   var frm = document.form_ls;
-   for (var n1=1; n1 < frm.elements.length; n1++)
-      {
-        var elmnt = frm.elements[n1];
-        if (elmnt.type == 'checkbox')
-          {
-            elmnt.checked = true;
-          }
-      }
- }//end function
-
-function select_change_action() {
-   var num = 0;
-   var a = '';
-   num = document.forms.form_ls.change_action.selectedIndex;
-   a = document.forms.form_ls.change_action[num].value;
-//   window.alert (a);
-}//end 
- 
-//-----------------------------------------------------------
-// очистить помеченные checkbox
-//-----------------------------------------------------------
-function clear_checkbox (){
-      var frm = document.form_ls;
-      for ( var n2=1; n2 < frm.elements.length; n2++)
-         {
-          var elmnt = frm.elements[n2];
-          if  (elmnt.type=='checkbox') 
-            {
-              elmnt.checked = false;
-            }
-         }
-}//end
-
-//-----------------------------------------------------------
-// слои
-//-----------------------------------------------------------
-  function init() {
-     IE = (document.all)
-     NC = (document.layers)
-     Opera = (document.getElementById)
-   }
-
-  function hiddenLayer(filename)  {
-    init();
-    if (IE) eval('document.all["desc"].style.visibility = "hidden"')
-    if (NC) eval('document.layers["desc"].visibility = "hidden"')
-    if (Opera) eval('document.getElementById("desc").style.visibility = "hidden"')
-   }
-
-  function showLayer(filename) {
-    init();
-    if (IE) eval('document.all["desc"].style.visibility = "visible"')
-    if (NC) eval('document.layers["desc"].visibility = "visible"')
-    if (Opera) eval('document.getElementById("desc").style.visibility = "visible"')
-   }
-
-  function processnode111(nnodeid)
-   {
-    if (document.getElementById("div_" + nnodeid).style.display == "none")
-      {
-      document.getElementById("div_" + nnodeid).style.display = ""
-      }
-    else
-      {
-      document.getElementById("div_" + nnodeid).style.display = "none"
-      }
-   }
-
-  function processnode(nnodeid)
-   {
-    if (document.getElementById(nnodeid).style.display == "none")
-      {
-      document.getElementById(nnodeid).style.display = ""
-      }
-    else
-      {
-      document.getElementById(nnodeid).style.display = "none"
-      }
-   }
-
-   
-function set_cookie(name, value, expires){
-alert(name);
-	if (!expires){
-		expires = new Date();
-	}
-//http://javascript.ru/date/togmtstring	
-	document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() +  "; path=/";
-}//end set_cookie
-
-
-function convertTimestamp(timestamp) {
-	var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
-	yyyy = d.getFullYear(),
-	mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
-	dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
-	hh = d.getHours(),
-	h = hh,
-	min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
-	ampm = 'AM',
-	time;
-			
-	if (hh > 12) {
-		h = hh - 12;
-		ampm = 'PM';
-	} else if (hh === 12) {
-		h = 12;
-		ampm = 'PM';
-	} else if (hh == 0) {
-		h = 12;
-	}
-	
-	// ie: 2013-02-18, 8:35 AM	
-	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
-		
-	return time;
-}//end convertTimestamp()

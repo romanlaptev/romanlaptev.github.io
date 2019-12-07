@@ -316,11 +316,31 @@ func.logAlert( webApp.vars.logMsg, indexedDatabase.dbInfo["iDBparams"]["runStatu
 webApp.logMsg = "SQL error, code:" +response["errorSql"].code+ ", "+response["errorSql"].message;
 func.logAlert( webApp.logMsg, "error");
 								} else {
-//console.log("Response: ", response["SQLResultSet"].rows.length );
-									data = response["SQLResultSet"].rows.item(0)["jsonStr"];
+//console.log("Response: ", response );
+console.log("Response.rows.length: ", response["SQLResultSet"].rows.length );
+
+									try{
+											data = response["SQLResultSet"].rows.item(0)["jsonStr"];
 webApp.vars.logMsg = "Get data from webSQL, db: <b>"+ webApp.vars["cache"]["dbName"] + "</b>\
 , table: <b>"+ webApp.vars["cache"]["dataTableName"] +"</b>, runtime: " + response["runtime"];
 func.logAlert( webApp.vars.logMsg, "success" );
+									} catch(e){
+console.log(e);
+
+webApp.logMsg = "error, webSqlDb.selectRecords(), SELECT jsonStr FROM bookmarks_json, Response.rows.length:" + response["SQLResultSet"].rows.length;
+func.logAlert( webApp.logMsg, "error");
+
+webApp.logMsg = "<ul>DOMException";
+webApp.logMsg += "<li><b>code: </b>" + e.code +"</li>";
+webApp.logMsg += "<li><b>line: </b>" + e.line +"</li>";
+webApp.logMsg += "<li><b>message: </b>" + e.message +"</li>";
+webApp.logMsg += "<li><b>name: </b>" + e.name +"</li>";
+webApp.logMsg += "<li><b>sourceURL: </b>" + e.sourceURL +"</li>";
+webApp.logMsg += "</ul>";
+func.logAlert( webApp.logMsg, "error");
+
+									}
+
 								}
 								
 								if(typeof p["callback"] === "function"){

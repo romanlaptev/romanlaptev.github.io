@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>PhotoPrint: order value calculator</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index, follow">
+	<link rel="icon" href="images/favicon.png">
+	<link rel="shortcut icon" href="images/favicon.png">
+	
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css/textures.css" type="text/css">
+
+<!--[if IE]><script src="js/html5.js"></script><![endif]-->
+<!--[if lte IE 6 ]><script type="text/javascript">window.location.href="ie6_close/index_ru.html";</script><![endif]-->
+<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/all_ie.css"><![endif]-->
+<!--[if lt IE 10]><script type="text/javascript" src="js/pie.js"></script><![endif]-->
+	
+
+	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css">
+    <script src="js/jquery-1.7.1.min.js"></script>
+
+	<script src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+
+	<script type="text/javascript" src="js/pixastic/pixastic.core.js"></script>
+	<script type="text/javascript" src="js/pixastic/filters.js"></script>
+<!--
+	<script src="js/jquery.selectBox.min.js"></script>
+-->
+	<link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css">
+	<script src="js/jquery.Jcrop.min.js"></script>
+
+	<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css">
+	<script src="js/fancybox/jquery.fancybox.pack.js"></script>
+
+    <script src="js/main.js"></script>
+	<script src="js/calc_wallpapers.js"></script>
+	<script src="js/order_wallpapers2.js"></script>
+
+</head>
+
+<body>
+<!--
+<div class="result"></div>
+-->
+
+
+	<div class="header container">
+		<div class="wrapper">
+			<h1>PhotoPrint: калькулятор стоимости заказа</h1>
+			<h3>выбор фргамента фотообоев для печати</h3>
+		</div>
+	</div>
+
+
+	<div class="container">
+	
+		<div class="content">
+			<div class="wrapper">
+
+<form id="addtocart-decor-wallpapers" name="addtocart" method="post" action="index.php">
+<div class="row">
+			<div class="panel panel-img pull-left w65">
+				<div class="im-product">
+						<a id="large-img" class="fancybox" href="images/WP-14-1093.jpg">
+							<img src="images/WP-14-1093.jpg" id="target" alt="">
+						</a>
+					<span></span>
+					<div id="guides-block">
+						<div class="guides"></div>
+						<div class="guides"></div>
+						<div class="guides"></div>
+					</div>		
+					<div id="product-texture"></div>
+				</div>
+
+				<div class="">
+Вертикальные черные линии определяют стыки полос обоев. <br>
+Ширина целых полос составляет 0,9 / 1 / 1,5 м в зависимости от выбранного материала.
+				</div>
+
+			</div><!-- end panel -->
+
+			<div class="panel panel-filters pull-left w25">
+				<div class="filters"> 
+					<h3>Используйте фильтры</h3>
+					<a id="sepia-link" href="javascript:void(0)" class="btn mn">Сепия</a> 
+					<a id="desaturate-link" href="javascript:void(0)" class="btn mn">Ч/Б</a> 
+					<a id="flip_horizontal" href="javascript:void(0)" class="btn mn hor">Зеркально</a> 
+					<a id="reset-link" href="javascript:void(0)" class="btn">убрать фильтры</a> 
+				</div>
+				<div class=""> 
+					<span class="help-text">Как клеим:</span>
+					<a id="left-right" href="javascript:void(0)" class="btn mn">слева направо</a> 
+					<a id="right-left" href="javascript:void(0)" class="btn mn">справа налево</a> 
+					<input type="button" value="Сохранить изображение" class="save-image-btn btn">
+				</div>
+
+				<div class=""> 
+					<a title="Увеличить изображение" id="zoom-link" href="#"></a>
+				</div>
+
+			</div><!-- end panel -->
+</div>
+
+
+			<div class="panel">
+				<h3>Укажите размеры изображения на стене</h3>
+			
+	<div class="row">
+
+		<div class="pull-left w50">
+			<div class="option filtr">
+				<header> Ширина (см) </header>
+				<input type="text" id="amount" value="300">
+				<div id="slider-range"></div>
+			</div>
+			<small>Размер ширины может влиять на количество рулонов обоев</small> 
+		</div>
+		
+		<div class="pull-left w50">
+			<div class="option filtr">
+				<header> Высота (см) </header>
+				<input type="text" id="amount-ui" value="250">
+				<div id="slider-ui"></div>
+			</div>
+		</div>
+
+	</div>
+	
+			
+			</div><!-- end panel -->
+	
+			
+
+</div>
+</form>
+
+			
+
+		</div>
+	
+<!--
+		<div class="sidebar sidebar-left">
+		  <div class="wrapper">
+		  
+			<div class="panel">
+			
+			</div>
+			
+		  </div>
+		</div>
+-->		
+		<!-- end sidebar -->
+		
+		<div class="sidebar sidebar-right">
+			<div class="wrapper">
+
+<div class="panel">
+	<div class=""> 
+		<h3>Выберите материал, на который будет нанесено изображение</h3>
+		<span class="help-text"> 
+		</span>
+		
+		<select class="fnt" id="material">
+<!--
+			<option id="no-material" value="0">выбрать</option>
+-->
+			<option id="flizelin" value="0.9" selected="selected">Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м</option>
+			<option value="1">Полиэстер самоклеющийся ширина полосы 1 м</option>
+			<option value="1.5">Полиэстер самоклеющийся ширина полосы 1,5 м</option>
+		</select>
+
+	</div>
+</div><!-- end panel -->
+
+
+<div class="panel">
+		<div class=""> 
+			<div class="show_visual">
+<!--			
+			<span class="help-text"> 
+<p>3) Зайдите в раздел "Посмотреть обои в интерьере" и сравните 
+насколько выбранное подрезанное изображение cоотносится с размерами 
+различных бытовых предметов.</p>
+			</span>
+-->			
+				<a href="#" class="btn al">Посмотреть эти обои в интерьере</a>
+			</div> 
+		</div>
+
+</div><!-- end panel -->
+		  
+
+			
+<div class="panel">
+<div class="select_tov">
+		<a href="javascript:void(0);" class="texture-close-btn" title="Закрыть"></a>
+		<h3>Выберите текстуру</h3>
+		
+<!-- НАЧАЛО ТЕКСТУРЫ -->
+<div class="sp o_hidden" style="margin-top:7px;">
+                <div class="item_block">
+					<a class="item" href="javascript:void(0)" title="лён матовый">
+						<div class="textur mini">
+							<div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+								<div class="textur0" style="background:url(images/t_len.png);"></div>
+							</div>
+
+							<div class="textur2">
+								<div class="textur0" style="background:url(images/t_len.png);"></div>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="item_block">
+					<a class="item selectitem" href="javascript:void(0)" title="песок матовый">
+                    <div class="textur mini">
+					
+						<div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+							<div class="textur0" style="background:url(images/t_pes.png);"></div>
+						</div>
+						  
+						<div class="textur2">
+							<div class="textur0" style="background:url(images/t_pes.png);"></div>
+						</div>
+					  
+					</div>
+                    </a>
+				</div>
+
+                  <div class="item_block"><a class="item" href="#" title="лён с блёстками">
+                    <div class="textur mini">
+                      <div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+                        <div class="textur0" style="background:url(images/t_len_sb.png);"></div>
+                      </div>
+                      <div class="textur2">
+                        <div class="textur0" style="background:url(images/t_len_sb.png);"></div>
+                      </div>
+                    </div>
+                    </a>
+		</div>
+
+                  <div class="item_block"> <a class="item" href="#" title="песок с блёстками">
+                    <div class="textur mini">
+                      <div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+                        <div class="textur0" style="background:url(images/t_pes_sb.png);"></div>
+                      </div>
+                      <div class="textur2">
+                        <div class="textur0" style="background:url(images/t_pes_sb.png);"></div>
+                      </div>
+                    </div>
+                    </a>
+		</div>
+
+                  <div class="item_block"> <a class="item" href="#" title="снежинки">
+                    <div class="textur mini">
+                      <div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+                        <div class="textur0" style="background:url(images/t_luhhi.png);"></div>
+                      </div>
+                      <div class="textur2">
+                        <div class="textur0" style="background:url(images/t_luhhi.png);"></div>
+                      </div>
+                    </div>
+                    </a>
+		</div>
+
+                  <div class="item_block"> <a class="item" href="#" title="линии">
+                    <div class="textur mini">
+                      <div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+                        <div class="textur0" style="background:url(images/t_volokno.png);"></div>
+                      </div>
+                      <div class="textur2">
+                        <div class="textur0" style="background:url(images/t_volokno.png);"></div>
+                      </div>
+                    </div>
+                    </a>
+		</div>
+
+                  <div class="item_block"> <a class="item" href="#" title="линии с блестками">
+                    <div class="textur mini">
+                      <div class="textur1" style="background:url('images/WP-14-1093.jpg');">
+                        <div class="textur0" style="background:url(images/t_volokno_sb.png);"></div>
+                      </div>
+                      <div class="textur2">
+                        <div class="textur0" style="background:url(images/t_volokno_sb.png);"></div>
+                      </div>
+                    </div>
+                    </a>
+		</div>
+<!-- КОНЕЦ ТЕКСТУРЫ -->
+
+</div>
+				<p class="choose-texture" style="display: none;">Выбрана текстура: <span id="texture-name"></span>
+				<input type="button" value="Убрать текстуру" class="remove-texture btn"></p>
+				<input type="button" value="Сохранить изображение" class="modal-save-image-btn btn">
+             </div>
+
+              <a name="inter" id="inter"></a>
+<div class="slidingVisual" style="display: none;">
+		<a class="simplemodal-close"></a>
+              <div class="window">
+                <div id="interior-preview" class="rapport w530">
+					<div class="wrap-interior-img">
+						<img id="interior-wall" src="images/WP-14-1093.jpg" alt="" width="568">
+					</div>
+					<div id="interior-texture"></div>
+					<div id="interior" class="interior w530" style="background:url(images/530_376_g4.png);"></div>
+                </div>
+				
+                <div class="interior-pics"> 
+<a href="#"><img src="images/g2.png" alt=""></a> 
+<a href="#"><img src="images/g3.png" alt=""></a> 
+<a href="#"><img src="images/g4.png" alt=""></a> 
+<a href="#"><img src="images/g5.png" alt=""></a> 
+<a href="#"><img src="images/d1.png" alt=""></a> 
+<a href="#"><img src="images/d3.png" alt=""></a> 
+<a href="#"><img src="images/s1.png" alt=""></a> 
+<a href="#"><img src="images/s2.png" alt=""></a> 
+<a href="#"><img src="images/of1.png" alt=""></a> 
+<a href="#"><img src="images/kux1.png" alt=""></a> 
+				</div>
+              </div>
+</div>
+</div><!-- end panel -->
+			
+			
+			
+<div class="price-block panel">
+    <h3>Предварительный расчет стоимости заказа</h3>
+	<div class="row">	
+		<div class="pull-left w50">
+			<input type="text" name="decor_product_price" id="pr-price" value="" readonly="readonly"> руб.
+		</div>
+		<div class="pull-left w50 text-right">
+			<input type="submit" class="btn zk" title="Заказать" value="Заказать">						
+		</div>
+	</div>
+						
+<input type="hidden" name="product_id" value="1251">
+<input type="hidden" name="flypage" value="shopdecor-wallpapers">
+<!--
+<input type="hidden" name="cartReset" value="N">
+<input type="hidden" name="page" value="checkout.index">
+-->
+<input type="hidden" value="shop.cart" name="page">
+<input type="hidden" name="manufacturer_id" value="1">
+<input type="hidden" name="category_id" value="15">
+<input type="hidden" name="func" value="cartAdd">
+<input type="hidden" name="option" value="com_virtuemart">
+<input type="hidden" name="Itemid" value="1">
+
+<input type="hidden" name="transform" value="Отражение по горизонтали:нет">
+<input type="hidden" name="transform_check" value="">
+
+<input type="hidden" name="sepia" value="Сепия: нет">
+<input type="hidden" name="sepia_check" value="">
+
+<input type="hidden" name="desaturate" value="ч/б: нет">
+<input type="hidden" name="desaturate_check" value="">
+
+<input type="hidden" name="inp_material" value="Обои на флизелиновой основе без ПВХ, ширина полосы 0,9 м">
+<input type="hidden" name="texture" value="">
+<input type="hidden" name="texture_src" value="">
+<input type="hidden" name="w_cm" value="300">
+<input type="hidden" name="h_cm" value="250">
+<input type="hidden" name="decor_dynamic_size" id="decor_dynamic_size_field" value="300x250">
+<input type="hidden" name="num_roll" value="4">
+
+<input type="hidden" id="x" name="x" value="0">
+<input type="hidden" id="y" name="y" value="0">
+<input type="hidden" id="w" name="w" value="384.0000000000001">
+<input type="hidden" id="h" name="h" value="320">
+<span id="crop-url-parent" style="display:none;">
+	<a href="#" target="_blank" id="crop-url">Ссылка на выбранный фрагмент</a>
+</span>
+<input type="hidden" name="inp_crop_url">
+<!--
+<input type="hidden" name="inp_crop_url_title" value="Ссылка на выбранный фрагмент"/>
+-->
+<input type="hidden" name="direction_check" value="">
+<input type="hidden" name="direction_text" value="Как клеим: слева направо">
+
+<!-- Цены на печать на флизелиновых обоях -->
+<input type="hidden" name="print_price1" value="980">
+
+<!-- Цены на печать на на полиэстере 1м -->
+<input type="hidden" name="print_price2" value="950">
+
+<!-- Цены на печать на на полиэстере 1,5м -->
+<input type="hidden" name="print_price3" value="1425">
+
+
+</div><!-- end panel -->
+              
+		  </div><!-- end wrapper -->
+		</div><!-- end sidebar -->
+
+	</div><!-- end main -->
+
+	<div class="footer container">
+		<div class="wrapper">
+			<div class="panel"></div>
+		</div>
+	</div><!-- end footer -->
+
+</body>
+</html>
