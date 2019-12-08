@@ -774,3 +774,11 @@ width: 266px;
 	box-shadow: inset 0 36px 38px -38px #fff;
 }
 
+.ui-slider-horizontal {
+	height: 100% !important;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	top: -2px !important;
+}
+
+
