@@ -62,8 +62,9 @@ header .navbar-brand h1 {
 */
 	/*font-family: fiddums-family;*/
 	/*font-size: 3.5em;*/
-	font-size: 60px;
+	font-size: 36px;
 	color: #fff;
+margin-top: 10px;
 }
 
 @media screen and (max-width:768px) 
