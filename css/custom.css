@@ -22,14 +22,18 @@ header {
   margin-bottom: 5px;
 }
 header.container {
-  padding: 10px;
+  padding: 3px;
 }
 
 
 footer {
   margin-top: 5px;
   margin-bottom: 5px;
-padding: 10px 10px 0 10px !important;
+padding: 3px 3px 3px 3px !important;
+}
+
+footer .panel {
+	margin-bottom: 0;
 }
 
 footer .mark{
