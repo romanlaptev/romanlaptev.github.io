@@ -155,6 +155,11 @@
 			<location>/music/0_playlists/apocalyptica.json</location>
 			<thumbnail url="/music/0_covers/apocalyptica.jpg" />
 		</playlist>
+
+		<playlist created="09-Dec-2019" title="" class="Korpiklaani">
+			<location>/music/0_playlists/Korpiklaani.json</location>
+			<thumbnail url="/music/K/Korpiklaani/cover.jpg" />
+		</playlist>
 			
 		<playlist created="11-March-2017" title="transe, hip-hop, latin" class="hip-hop">
 			<location>/music/0_playlists/mix_transe, hip-hop, latin.json</location>
