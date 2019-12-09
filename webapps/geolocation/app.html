@@ -114,84 +114,90 @@
 	</header>
 	
 	<div class="card">
-		<div class="pull-left col-1">
-			<div class="panel">
-				<ul class="table-view col-1">
+		<div id="column-left" class="pull-left w50">
+			<div id="btn-group" class="panel">
+				<ul class="table-view w50">
 					<li class=""><button id="btn-get-coords" class="btn btn-block green">Get coordinates</button></li>
 					<li class=""><button id="btn-get-address" class="btn btn-block blue">Get address</button></li>
-					<li class=""><button id="btn-show-map" class="btn btn-block blue disabled">Show map</button></li>
+					<li class=""><button id="btn-show-map" class="btn btn-block blue">Show map</button></li>
 				</ul>
 			</div>
       
-			<div class="panel">
-
-				<div class=""><b>Coordinates:</b></div>
-
-				<ul class="table-view">
-					<p>
-						<b>Latitude, (deg.):
-							<sub><mark>(широта)</mark></sub> 
-							<span id="latitude" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p> 
-
-					<p>
-						<b>Longitude, (deg.):
-							<sub><mark>(долгота)</mark></sub>
-							<span id="longitude" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-
-					<p>
-						<b>Accuracy, (meters):
-							<sub><mark>(погрешность)</mark></sub>
-							<span id="accuracy" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-
-					<p>
-						<b>altitude, (meters):
-							<sub><mark>(высота над уровнем моря)</mark></sub>
-							<span id="altitude" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-
-					<p>
-						<b>altitudeAccuracy, (meters): 
-							<span id="altitude-accuracy" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-
-					<p>
-						<b>Heading:
-							<sub><mark>(направление устройства по отношению к северу)</mark></sub>
-							<span id="heading" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-
-					<p>
-						<b>Speed, (m/sec.):
-							<sub><mark>(скорость)</mark></sub>
-							<span id="speed" title="" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-										
-					<p>
-						<b>datetime: 
-							<sub><mark>(дата, время)</mark></sub>
-							<span id="datetime" class="geo-accuracy-inaccurate"></span>
-						</b>
-					</p>
-				</ul>
+			<div id="coord" class="panel">
+				<h4>Coordinates</h4>
+				<div class="panel-body">
 				
-			</div>			
+					<div class="row panel">
+							<div class="">
+								<small>Latitude <mark>(широта), 90...-90 deg./град.</mark>:</small> 
+							</div>
+							<div class="">
+<input id="latitude-input" name="coord_lat" type="text" value="0"  autocomplete="off" placeholder="">
+<input id="latitude-range" type="range" class="range" min="-90" max="90" step="0.05" value="" autocomplete="off">
+							</div>
+					</div>
+					
+					<div class="row panel">
+							<div class="">
+								<small>Longitude <mark>(долгота), -180...180 deg./град.</mark>:</small> 
+							</div>
+							<div class="">
+<input id="longitude-input" name="coord_long" type="text" value="-60"  autocomplete="off" placeholder="">
+<input id="longitude-range" type="range" class="range" min="-180" max="180" step="0.05" value="" autocomplete="off">
+							</div>
+					</div>
+					
+					<div class="row">
+						<small>Accuracy <mark>(точность)</mark>: </small>
+						<span id="accuracy" title="" class="geo-accuracy-inaccurate"></span>
+						<small>m.</small>
+					</div>
+
+					<div class="row">
+						<small>altitude <mark>(высота над уровнем моря)</mark>: </small>
+						<span id="altitude" title="" class="geo-accuracy-inaccurate"></span>
+						<small>m.</small>
+					</div>
+
+					<div class="row">
+						<small>altitudeAccuracy: </small>
+						<span id="altitude-accuracy" class="geo-accuracy-inaccurate"></span>
+						<small>m.</small>
+					</div>
+
+					<div class="row">
+						<small>Heading <mark>(направление устройства по отношению к северу)</mark>: </small>
+						<span id="heading" title="" class="geo-accuracy-inaccurate"></span>
+					</div>
+
+					<div class="row">
+						<small>Speed <mark>(скорость)</mark>: </small>
+						<span id="speed" title="" class="geo-accuracy-inaccurate"></span>
+						<small>m/sec.</small>
+					</div>
+										
+					<div class="row">
+						<small>datetime <mark>(дата, время)</mark>:</small>
+						<span id="datetime" class="geo-accuracy-inaccurate"></span>
+					</div>
+          
+				</div>
+				
+			</div><!-- end #coord -->
       
 		</div><!-- end left col -->
 
-		<div class="pull-right col-2">
+		<div id="column-right" class="pull-right w50">
+		
+			<div class="panel">
+				<h4 id="addr-title">Address</h4>
+				<div class="panel-body">
+					<span id="addr-text"></span>
+				</div>
+			</div>
 
 			<ul class="table-view panel" id="api-type">
-				<h3>API type</h3>
+				<h4>API type</h4>
 
 				<li class="table-view-cell">
 					<label><input type="radio" name="api_type" value="yandexMaps" autocomplete="off" checked>Yandex Maps API</label>
@@ -223,14 +229,14 @@
 		</div><!-- end right col -->
 		
 	</div><!-- end card -->
-  
+<!--  
 	<div class="card panel">
-			<div id="addr-title"><b>Address:</b></div>
-			<div>
-				<span id="addr-text" class=""></span>
+			<h4 id="addr-title">Address</h4>
+			<div class="panel-body">
+				<span id="addr-text"></span>
 			</div>
-    
-	</div><!-- end panel -->
+	</div>
+-->
   
 </div><!-- end app-container -->
 

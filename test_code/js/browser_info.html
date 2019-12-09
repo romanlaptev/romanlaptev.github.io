@@ -626,7 +626,7 @@ function runTests(){
 		try{
 			var xhr = new XMLHttpRequest();
 			var test = {
-				"name" : "Ajax, XMLHttpRequest2 support",
+				"name" : "Ajax, XMLHttpRequest Level 2 support",
 				"result" : false,
 				"msg" : " 'responseType' not in XMLHttpRequest object"
 			};
@@ -636,7 +636,11 @@ function runTests(){
 			} 
 			_push( tests, test );
 		}catch(e){
-console.log(e);
+//console.log(e);
+for(var key in e){
+console.log(key +" : "+ e[key]);
+}
+
 		}
 /*@
 	@else

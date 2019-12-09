@@ -33,19 +33,16 @@ header .navbar {
 .log-panel {
 	margin-bottom: 0;
 	margin-top: 5px;
+	background-color: #b0c4de;
+	position: fixed;
+	bottom: 0;
+	right:0;
+	z-index: 999;
+	opacity: 0.9;
+	border-radius: 4px;
 }
 .log-panel .panel-body{
 	padding: 5px;
-}
-
-.log-panel {
-background-color: #b0c4de;
-/*
-background-color: #fffff3;
-border:none;
--webkit-box-shadow: none;
-box-shadow: none;
-*/
 }
 
 .log-panel span a{

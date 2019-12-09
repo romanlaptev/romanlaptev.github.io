@@ -9,7 +9,7 @@ var webApp = {
 		"logMsg" : "",
 		
 		"dataUrl" : "https://raw.githubusercontent.com/romanlaptev/bookmarks/master/db/bookmarks.json",
-		//"dataUrl" : "",
+		//"dataUrl" : "http://vbox5/2018.11.01",
 		//"dataUrl" : "db/bookmarks.json",
 		//"dataUrl" : "db/lib.json",
 		
@@ -26,7 +26,6 @@ var webApp = {
 		"userDataUrl" : func.getById("user-data-url"),
 		"userDataFile" : func.getById("user-data-file"),
 		
-		//"templates_url" : "tpl/templates.xml",
 		"GET" : {},
 		"pageContainer" : func.getById("content-column"),
 		"insertContainer" : func.getById("insert-json"),
@@ -34,49 +33,44 @@ var webApp = {
 		
 		"wait" : func.getById("wait"),
 		"waitWindow" : func.getById("win1"),
+		"loadProgress" : func.getById("load-progress")	,
 		"loadProgressBar" : func.getById("load-progress-bar")	,
 		"numTotalLoad" : func.getById("num-total-load"),
+		"percentComplete" : func.getById("percent-complete"),
+		"totalBytes" : func.getById("total"),
+		"totalMBytes" : func.getById("total-mb"),
+		"loaded" : func.getById("loaded"),
+		"loadInfo" : func.getById("load-info"),
 		
 		"log" : func.getById("log"),
 		"btnToggle" : func.getById("btn-toggle-log"),
 		
 		"targetHtmlBlockID" : "insert-json",
-		"templates" : {
-			"container_tpl" : "<div class='panel panel-primary'>\
-<div class='panel-heading'>\
-<ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
-<div class='panel-body'>{{children}}</div>\
-</div>",
-			"folder_tpl" : "<div class='folder2'>\
-<a class='' href='#q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
-{{annos}}\
-</div>",
-			"link_tpl" : "<div class='link'>\
-<a class='' href='{{uri}}' target='_blank' title='{{tooltip}}'>{{iconuri}}{{title}}</a>\
-{{annos}}\
-</div>",
-			"annos_tpl" : "<div class='annos'>{{annos}}</div>",
-			"iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
-			"tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}",
-			"breadcrumbs_item_tpl" : "<li><a href='#q=view-container&id={{id}}'>{{title}}</a></li>"
-		},
+		
+		// "templates" : {
+			// "container_tpl" : "<div class='panel panel-primary'>\
+// <div class='panel-heading'>\
+// <ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul></div>\
+// <div class='panel-body'>{{children}}</div>\
+// </div>",
+			// "folder_tpl" : "<div class='folder2'>\
+// <a class='' href='#q=view-container&id={{id}}' title='{{tooltip}}'>{{title}}</a>\
+// {{annos}}\
+// </div>",
+			// "link_tpl" : "<div class='link'>\
+// <a class='' href='{{uri}}' target='_blank' title='{{tooltip}}'>{{iconuri}}{{title}}</a>\
+// {{annos}}\
+// </div>",
+			// "annos_tpl" : "<div class='annos'>{{annos}}</div>",
+			// "iconuri_tpl" : "<img class='icon-uri' src='{{iconuri}}'/>",
+			// "tooltip_tpl" : "created: {{dateAdded}}, modified:{{lastModified}}",
+			// "breadcrumbs_item_tpl" : "<li><a href='#q=view-container&id={{id}}'>{{title}}</a></li>"
+		// },
+		
 		"breadcrumbs": {},
 		"imageNotLoad": "img/image_not_load.png",
-		
-		"support" : {
-			"jsonSupport" : JSON ? true : false,
-			
-			"cacheSupport" : window.caches ? true : false,
-			"swSupport" : navigator.serviceWorker ? true : false,
-			"promiseSupport": window.Promise  ? true : false,
-			
-			"indexedDBsupport" : window.indexedDB ? true : false,
-			"webSQLsupport" : window.openDatabase  ? true : false,
-			"localStorageSupport" : window['localStorage']  ? true : false,
-			"dataStoreType" : _detectDataStore()
-//for test
-//"dataStoreType" : "webSQL"
-		},
+
+		"support" : func.testSupport(),
 		
 		"timers": {
 			"loadData" : {},
@@ -100,6 +94,18 @@ console.log("init webapp!");
 		if( app_title){
 			app_title.innerHTML = this.vars["app_title"];
 		}
+		webApp.vars["loadProgress"].style.display="none";
+		
+//---------------
+		if( webApp.vars["support"]["supportTouch"]){
+webApp.vars["logMsg"] = "mobile device, supportTouch:" + webApp.vars["support"]["supportTouch"];
+func.logAlert( webApp.vars["logMsg"], "info");
+//console.log( webApp.vars["logMsg"] );
+		}
+
+//for test
+//webApp.vars["support"]["dataStoreType"] = "webSQL";
+
 		
 		if( typeof postFunc === "function"){
 			postFunc();
@@ -169,8 +175,17 @@ function _app( opt ){
 				event = event || window.event;
 				var target = event.target || event.srcElement;
 //console.log( event );
-
-				$("#serviceModal").modal("hide");
+				
+//----------------------
+					hideModalWindow();
+					
+//----------------------
+				if( webApp.vars["userDataUrl"].value.length === 0){
+					webApp.vars["userDataUrl"].value = "";
+webApp.vars["logMsg"] = "error, not find URL, empty input field...";
+func.logAlert( webApp.vars["logMsg"], "warning");
+					return false;
+				}
 
 				if( target.tagName === "A"){
 					//if ( target.href.indexOf("#") !== -1){
@@ -206,15 +221,20 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 				_parseLocalFile( event.target.files );
 			} else {
 				webApp.logMsg = "Your browser does not support File API";
-				func.log("<div class='alert alert-warning'>" + webApp.logMsg + "</div>");
-				$("#serviceModal").modal("hide");
+				func.logAlert( webApp.logMsg, "warning");
+				
+//----------------------
+				hideModalWindow();
+				
 				return false;
 			}
 		});//end event
 		
 		$("#btn-update-cache").on("click", function(e){
-			$("#serviceModal").modal("hide");
+//----------------------
+			hideModalWindow();
 			
+//----------------------
 			if( webApp.vars["waitWindow"] ){
 				webApp.vars["waitWindow"].style.display="block";
 			}
@@ -309,6 +329,11 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 				}
 			
 				webApp.vars["timers"]["loadData"]["start"] = new Date();
+if ( window.console ){ 
+	if("time" in console){
+console.time( "timer_loadData" );
+	}
+}
 				_loadData(function( data ){
 						//var t = setTimeout(function(){
 //console.log("end of wait..", arguments);				
@@ -321,6 +346,12 @@ console.log("FileList support is " + window.FileList , typeof window.FileList);
 						if( data ){
 							_parseAjax( data );
 							webApp.vars["timers"]["loadData"]["end"] = new Date();
+if ( window.console ){ 
+	if("timeEnd" in console){
+console.timeEnd( "timer_loadData");
+	}
+}
+
 webApp.vars["logMsg"] = "Load application data, total runtime: </small>" + _getRunTime( webApp.vars["timers"]["loadData"] ) + " sec</small>";
 func.logAlert( webApp.vars["logMsg"], "info");
 						}
@@ -505,6 +536,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 			return false;
 		}
 
+		webApp.vars["loadProgress"].style.display="block";
 		func.runAjax( {
 			"requestMethod" : "GET", 
 			"url" : webApp.vars["dataUrl"], 
@@ -512,17 +544,25 @@ func.logAlert( webApp.vars["logMsg"], "error");
 			//"responseType":"json",
 			
 			"onProgress" : function( e ){
+
 				var percentComplete = 0;
+				
 				if(e.lengthComputable) {
 					percentComplete = Math.ceil(e.loaded / e.total * 100);
 				}
 console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+//for( var key in e){
+//console.log( key +" : " + e[key]);
+//}
+				webApp.vars["totalBytes"].innerHTML = e.total;
+				webApp.vars["totalMBytes"].innerHTML = (( e.total / 1024) / 1024).toFixed(2);
+				webApp.vars["loaded"].innerHTML = e.loaded;
+
 				if( webApp.vars["loadProgressBar"] ){
-					webApp.vars["loadProgressBar"].className = "progress-bar";
+					//webApp.vars["loadProgressBar"].className = "progress-bar";
 					webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-					webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-					
-					webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+					webApp.vars["percentComplete"].innerHTML = percentComplete+"%";
+					//webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
 				}
 				
 			},
@@ -535,10 +575,21 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 					
 					//window.location.replace("index.html");
 					//window.location.search = "";
+				webApp.vars["loadProgress"].style.display="none";
+				//webApp.vars["logMsg"] = webApp.vars["loadInfo"].innerHTML;
+				var logMsg = webApp.vars["loadInfo"].textContent.trim();
+//console.log("--  " + logMsg);				
+				func.logAlert( logMsg, "warning");
 			},
 			
-			"onError" : function( xhr ){
+			"onError" : function( e ){
 //console.log( "onError ", arguments);
+				for( var key in e){
+					webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ e[key];
+					func.logAlert( webApp.vars["logMsg"], "error");
+				//console.log( webApp.vars["logMsg"] );
+				}//next
+
 				webApp.vars["userDataUrl"].value = "";
 
 webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["dataUrl"];
@@ -555,7 +606,7 @@ console.log( webApp.vars["logMsg"] );
 webApp.vars["logMsg"] = "load <b>" + webApp.vars["dataUrl"]  +"</b>, runtime: "+ runtime +" sec";
 func.logAlert( webApp.vars["logMsg"], "success");
 //console.log( webApp.vars["logMsg"] );
-//console.log( "runAjax, ", typeof data );
+console.log( "runAjax, ", typeof data );
 //console.log( data );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
@@ -774,7 +825,7 @@ dateAdded: 1526981203879000
 				delete webApp.vars["breadcrumbs"][item];
 			} else {
 				var itemTitle = webApp.vars["breadcrumbs"][item];
-				breadcrumbs += webApp.vars["templates"]["breadcrumbs_item_tpl"]
+				breadcrumbs += templates[ webApp.vars.tplName ]["breadcrumbs_item_tpl"]
 				.replace("{{id}}", itemID)
 				.replace("{{title}}", itemTitle);
 			}
@@ -790,7 +841,7 @@ dateAdded: 1526981203879000
 //console.log( breadcrumbs );
 
 		//-------------------------------- insert breadcrumbs
-		webApp.vars["htmlCode"] = webApp.vars["templates"]["container_tpl"]
+		webApp.vars["htmlCode"] = templates[ webApp.vars.tplName ]["container_tpl"]
 		.replace("{{breadcrumbs}}", breadcrumbs );
 				
 		if( !container["children"] || container["children"].length === 0){
@@ -845,17 +896,17 @@ webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 			if( _child["annos"] && _child["annos"].length > 0){
 //console.log( _child["annos"] );
 				if( _child["annos"][0]["value"].length > 0){
-					annos = webApp.vars["templates"]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
+					annos = templates[ webApp.vars.tplName ]["annos_tpl"].replace( "{{annos}}", _child["annos"][0]["value"] );
 				}
 			}
 			
 			var iconUri = "";
 			if( _child["iconuri"] && _child["iconuri"].length > 0){
 //console.log( _child["iconuri"] );
-				iconUri = webApp.vars["templates"]["iconuri_tpl"].replace( "{{iconuri}}", _child["iconuri"] );
+				iconUri = templates[ webApp.vars.tplName ]["iconuri_tpl"].replace( "{{iconuri}}", _child["iconuri"] );
 			}
 
-			var toolTip = webApp.vars["templates"]["tooltip_tpl"];
+			var toolTip = templates[ webApp.vars.tplName ]["tooltip_tpl"];
 			var dateAdded = "";
 			var lastModified = "";
 			
@@ -871,7 +922,7 @@ webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 			}
 			
 			if( _child["type"] === "text/x-moz-place-container"){
-				html += webApp.vars["templates"]["folder_tpl"]
+				html += templates[ webApp.vars.tplName ]["folder_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{id}}", _child["id"] )
 				.replace("{{tooltip}}", toolTip )
@@ -885,7 +936,7 @@ webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 					continue;
 				}
 
-				html += webApp.vars["templates"]["link_tpl"]
+				html += templates[ webApp.vars.tplName ]["link_tpl"]
 				.replace("{{annos}}", annos )
 				.replace("{{iconuri}}", iconUri )
 				.replace("{{uri}}", _child["uri"] )
@@ -960,10 +1011,11 @@ console.log( "reader, onload" );
 				var dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
 
 				webApp.logMsg += ", date2: "+ dateStr;
+				func.logAlert( webApp.logMsg, "info");
 				
-				func.log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+//----------------------
+				hideModalWindow();
 				
-				$("#serviceModal").modal("hide");
 			};
 			
 			reader.onloadstart = function(e){
@@ -983,6 +1035,17 @@ console.log( "reader, progress");
 		
 	}//end _parseLocalFile
 	
+	
+	function hideModalWindow(){
+		if( typeof M === "object"){//is used Materialize framework
+console.log( "Materialize framework verson: " + M.version );
+			$("#serviceModal").modal("close");
+		} else {
+//console.log( $.fn );
+console.log( "Bootstrap JS plugin version: " + $.fn.modal.Constructor.VERSION );
+			$("#serviceModal").modal("hide");
+		}
+	}//end hideModalWindow()
 	
 	// public interfaces
 	return{
@@ -1045,7 +1108,7 @@ console.log(error);
 	
 }//end registerServiceWorker()
 */
-
+/*
 function _detectDataStore(){
 //console.log(arguments);		
 //console.log( this );		
@@ -1062,13 +1125,15 @@ function _detectDataStore(){
 	
 	return dataStoreType;
 }//end _detectDataStore()
+*/
 
 
-
-function _runApp(){
+function _runApp(opt){
 	//var html = runTests();
 	//func.log( html );
+console.log(opt);
 	
+	webApp.vars.tplName = opt["tplName"];
 	webApp.vars["isRunApp"] = false;
 /*
 	for( var n = 0; n < webApp.vars["tests"].length; n++ ){

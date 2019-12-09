@@ -1,0 +1,676 @@
+﻿<!DOCTYPE HTML>
+<html lang="ru" dir="ltr">
+    <head>
+        <script type="text/javascript" src="js/prices.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>test UIKit</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+<!--
+        <link rel="stylesheet" type="text/css" href="uikit/css/uikit.min.css">
+        <link rel="stylesheet" type="text/css" href="uikit/css/addons/uikit.addons.min.css">
+        <script type="text/javascript" src="uikit/js/uikit.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="http://mycomp/pages/css/uikit/css/uikit.css">
+        <script type="text/javascript" src="http://mycomp/pages/css/uikit/js/uikit.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/css/uikit.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.21.0/js/uikit.min.js"></script>
+        
+-->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/js/uikit.min.js"></script>
+
+    </head>
+
+    <body>
+
+<pre>
+https://getuikit.com/
+http://yootheme.su/features/uikit    
+</pre>
+
+   <div class="uk-container uk-container-center">
+
+<div class="uk-grid">
+  <div class="uk-width-1-1">
+    <div class="uk-button-group">
+      <button type="submit" class="uk-button">Button</button>
+      <div data-uk-dropdown="" class="">
+	<a href="#" class="uk-button"></a>
+	<div class="uk-dropdown uk-dropdown-width-2" style="">
+	  <div class="uk-grid">
+	  
+	    <div class="uk-width-1-2">
+	      <ul class="uk-nav uk-nav-dropdown uk-panel">
+		<li class="uk-nav-header">Header</li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li class="uk-nav-divider"></li>
+		<li><a href="#">Separated item</a></li>
+		<li class="uk-parent"><a href="#">Parent</a>
+		  <ul class="uk-nav-sub">
+		    <li><a href="#">Sub item</a>
+		      <ul>
+			<li><a href="#">Sub item</a></li>
+		      </ul>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </div>
+	    
+	    <div class="uk-width-1-2">
+	      <ul class="uk-nav uk-nav-dropdown uk-panel">
+		<li class="uk-nav-header">Header</li>
+		<li><a href="#">Item</a></li>
+		<li><a href="#">Item</a></li>
+		<li class="uk-nav-divider"></li>
+		<li><a href="#">Separated item</a></li>
+		<li class="uk-parent"><a href="#">Parent</a>
+		  <ul class="uk-nav-sub">
+		    <li><a href="#">Sub item</a>
+		      <ul>
+			<li><a href="#">Sub item</a></li>
+		      </ul>
+		    </li>
+		  </ul>
+		</li>
+	      </ul>
+	    </div>
+	    
+	</div>
+    </div>
+    </div>
+    </div>
+    <div class="uk-button-group"><button type="submit" class="uk-button uk-button-primary">Primary</button>
+    <div data-uk-dropdown="" class=""><a href="#" class="uk-button uk-button-primary"></a>
+    <div class="uk-dropdown uk-dropdown-small" style="">
+    <ul class="uk-nav uk-nav-dropdown">
+    <li class="uk-nav-header">Header</li>
+    <li><a href="#">Item</a></li>
+    <li><a href="#">Item</a></li>
+    <li class="uk-nav-divider"></li>
+    <li><a href="#">Separated item</a></li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a>
+    <ul>
+    <li><a href="#">Sub item</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="uk-button-group"><button type="submit" class="uk-button uk-button-success">Success</button>
+    <div data-uk-dropdown="" class=""><a href="#" class="uk-button uk-button-success"></a>
+    <div class="uk-dropdown" style="">
+    <ul class="uk-nav uk-nav-dropdown">
+    <li class="uk-nav-header">Header</li>
+    <li><a href="#">Item</a></li>
+    <li><a href="#">Item</a></li>
+    <li class="uk-nav-divider"></li>
+    <li><a href="#">Separated item</a></li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a>
+    <ul>
+    <li><a href="#">Sub item</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="uk-button-group"><button type="submit" class="uk-button uk-button-danger">Danger</button>
+    <div data-uk-dropdown="" class=""><a href="#" class="uk-button uk-button-danger"></a>
+    <div class="uk-dropdown" style="">
+    <ul class="uk-nav uk-nav-dropdown">
+    <li class="uk-nav-header">Header</li>
+    <li><a href="#">Item</a></li>
+    <li><a href="#">Item</a></li>
+    <li class="uk-nav-divider"></li>
+    <li><a href="#">Separated item</a></li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a>
+    <ul>
+    <li><a href="#">Sub item</a></li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <button disabled="disabled" type="submit" class="uk-button">Disabled</button> <button data-uk-tooltip="" title="" class="uk-button" data-cached-title="Bazinga!">Tooltip</button> <button data-uk-modal="{target:'#modal-1'}" class="uk-button">Modal</button>
+    <div class="uk-modal" id="modal-1">
+    <div class="uk-modal-dialog"><button type="button" class="uk-modal-close uk-close"></button>
+    <h1>Headline</h1>
+    <p>Кнопка открывающая модальное окно</p>
+    </div>
+    </div>
+    <button data-uk-offcanvas="{target:'#offcanvas-3'}" class="uk-button">Off-canvas</button> <button type="submit" class="uk-button-link">Button link</button>
+    <div class="uk-offcanvas" id="offcanvas-3">
+    <div class="uk-offcanvas-bar">
+    <ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+    <li><a href="#">Item</a></li>
+    <li class="uk-active"><a href="#">Active</a></li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <div style="overflow:hidden;height:0;position:relative;"><ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a></li>
+    <li><a href="#">Sub item</a>
+    <ul>
+    <li><a href="#">Sub item</a></li>
+    <li><a href="#">Sub item</a></li>
+    </ul>
+    </li>
+    </ul></div>
+    </li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <div style="overflow:hidden;height:0;position:relative;"><ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a></li>
+    <li><a href="#">Sub item</a></li>
+    </ul></div>
+    </li>
+    <li><a href="#">Item</a></li>
+    <li class="uk-nav-header">Header</li>
+    <li><a href="#"> Item</a></li>
+    <li><a href="#"> Item</a></li>
+    <li class="uk-nav-divider"></li>
+    <li><a href="#"> Item</a></li>
+    </ul>
+    <form class="uk-search"><input type="search" class="uk-search-field"> <button type="reset" class="uk-search-close"></button></form>
+    <div class="uk-panel">
+    <h3 class="uk-panel-title">Title</h3>
+    Lorem ipsum dolor sit amet, <a href="#">consetetur</a> sadipscing elitr.</div>
+    <div class="uk-panel">
+    <h3 class="uk-panel-title">Title</h3>
+    Lorem ipsum dolor sit amet, <a href="#">consetetur</a> sadipscing elitr.</div>
+    </div>
+  </div>
+    <a href="#" class="uk-close"></a> <a href="#" class="uk-close uk-close-alt"></a>
+  </div>
+</div>
+
+    <hr class="uk-grid-divider">
+
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-medium-1-2">
+    <div data-uk-grid-margin="" class="uk-grid">
+      <div class="uk-width-1-1">
+	<ul class="uk-breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Blog</a></li>
+	<li><span>Category</span></li>
+	<li class="uk-active"><span>Post</span></li>
+	</ul>
+      </div>
+    <div class="uk-width-1-1 uk-grid-margin">
+    <h1 class="uk-article-title">Article title</h1>
+    <p class="uk-article-meta">Работа с изображением в статье</p>
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-medium-1-2">
+    <div class="uk-overlay"><img alt="" src="http://placekitten.com/300/90">
+    <div class="uk-overlay-area"> </div>
+    </div>
+    <div class="uk-thumbnail-caption">Котик</div>
+    </div>
+    <div class="uk-width-medium-1-2">
+    <div class="uk-overlay"><img alt="" src="http://placekitten.com/300/90">
+    <div class="uk-overlay-caption">Котяра</div>
+    </div>
+    <div class="uk-thumbnail-caption">Котик</div>
+    </div>
+    </div>
+    <p class="uk-article-lead">Эффекты с изображениями</p>
+    <p>Раньше для этого необходимо было установить отдельный модуль, теперь расширенные возможности работы с картинками и фото заложены в систему управления сайтом и не вызывает дополнительной нагрузки на сервер, априори - это сделает работу сайта ещё быстрее</p>
+    <pre><code>&lt;div class="myclass"&gt;...&lt;/div&gt;</code></pre>
+    <hr class="uk-article-divider">
+    <p class="uk-article-lead">Оформление текста с помощью классов</p>
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-medium-1-5"><span class="uk-text-muted">text-muted</span><br> <span class="uk-text-info">text-info</span><br> <span class="uk-text-success">text-success</span><br> <span class="uk-text-warning">text-warning</span><br> <span class="uk-text-danger">text-danger</span></div>
+    <div class="uk-width-medium-3-10"><a href="#">a element</a><br> <em>em element</em><br> <strong>strong</strong><br> <code>code element</code><br> <del>del element</del></div>
+    <div class="uk-width-medium-2-5"><ins>ins element</ins><br> mark element<br> <q>q <q>inside</q> a q element </q><br> <abbr title="Abbreviation Element">abbr element</abbr><br> <dfn title="Defines a definition term">dfn element</dfn></div>
+    <div class="uk-width-1-1 uk-grid-margin">
+    <p class="uk-text-center"><span class="uk-badge">Badge</span> <span class="uk-badge uk-badge-notification">1</span> <span class="uk-badge uk-badge-success">Success</span> <span class="uk-badge uk-badge-success uk-badge-notification">4</span> <span class="uk-badge uk-badge-warning">Warning</span> <span class="uk-badge uk-badge-warning uk-badge-notification">3</span> <span class="uk-badge uk-badge-danger">Danger</span> <span class="uk-badge uk-badge-danger uk-badge-notification">4</span></p>
+    </div>
+    <p class="uk-article-lead uk-grid-margin">Разметка страниц</p>
+    <div class="uk-width-medium-1-2 uk-grid-margin">
+    <h1 class="uk-display-inline">h1</h1>
+    <h2 class="uk-display-inline">h2</h2>
+    <h3 class="uk-display-inline">h3</h3>
+    <h4 class="uk-display-inline">h4</h4>
+    <h5 class="uk-display-inline">h5</h5>
+    <h6 class="uk-display-inline">h6</h6>
+    </div>
+    <div class="uk-width-medium-1-2 uk-grid-margin">
+    <blockquote>
+    <p>Lorem ipsum dolor.</p>
+    <small>Someone famous</small></blockquote>
+    </div>
+    </div>
+    </div>
+    <div class="uk-width-1-1 uk-grid-margin">
+    <ul class="uk-comment-list">
+    <li><img alt="" src="http://placekitten.com/50/50" class="uk-comment-avatar">
+    <h4 class="uk-comment-title">Автор</h4>
+    <p class="uk-comment-meta">24 августа, 2090 г. в 21:05</p>
+    <div class="uk-comment-body">
+    <p>Информация о авторе рубрики</p>
+    </div>
+    </li>
+    </ul>
+    </div>
+    <div class="uk-width-1-1 uk-grid-margin">
+    <ul class="uk-pagination">
+    <li class="uk-disabled"><span>«</span></li>
+    <li class="uk-active"><span>1</span></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><span>...</span></li>
+    <li><a href="#">20</a></li>
+    <li><a href="#">»</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="uk-width-medium-1-2">
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-medium-1-2">
+    <div class="uk-panel">
+    <ul data-uk-nav="" class="uk-nav uk-nav-side uk-nav-parent-icon">
+    <li class="uk-nav-header">Header</li>
+    <li class="uk-nav-divider"></li>
+    <li class="uk-active"><a href="#">Active</a></li>
+    <li class="uk-parent"><a href="#">Parent</a>
+    <div style="overflow:hidden;height:0;position:relative;"><ul class="uk-nav-sub">
+    <li><a href="#">Sub item</a></li>
+    <li><a href="#">Sub item</a>
+    <ul>
+    <li><a href="#">Sub item</a></li>
+    <li><a href="#">Sub item</a></li>
+    </ul>
+    </li>
+    </ul></div>
+    </li>
+    <li><a href="#">Item</a></li>
+    </ul>
+    </div>
+    <div class="uk-panel uk-panel-divider">
+    <h3 class="uk-panel-title">Divider</h3>
+    Вверху <a href="#">меню</a> с произвольными страницами</div>
+    <div class="uk-panel uk-panel-header">
+    <h3 class="uk-panel-title">Header</h3>
+    Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipisicing elit.</div>
+    </div>
+    <div class="uk-width-medium-1-2">
+    <div class="uk-panel uk-panel-box">
+    <h3 class="uk-panel-title">Box</h3>
+    Это не модуль, а простое оформление стиля (uk-panel-box) с помощью UIkit</div>
+    <div class="uk-panel uk-panel-box uk-panel-box-primary">
+    <h3 class="uk-panel-title">Box primary</h3>
+    И это не модуль, а простое оформление стиля (uk-panel-box-primary) с помощью UIkit</div>
+    <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+    <h3 class="uk-panel-title">Box secondary</h3>
+    Так же, не модуль, а простое оформление стиля (uk-panel-box-secondary) с помощью UIkit</div>
+    </div>
+    </div>
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-1-2">
+    <div data-uk-alert="" class="uk-alert"><a class="uk-alert-close uk-close"></a>
+    <p>Информационное сообщение</p>
+    </div>
+    </div>
+    <div class="uk-width-1-2">
+    <div data-uk-alert="" class="uk-alert uk-alert-success"><a class="uk-alert-close uk-close"></a>
+    <p>Подтверждение</p>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div data-uk-alert="" class="uk-alert uk-alert-warning"><a class="uk-alert-close uk-close"></a>
+    <p>Предупреждение</p>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div data-uk-alert="" class="uk-alert uk-alert-danger"><a class="uk-alert-close uk-close"></a>
+    <p>Сообщение о ошибке</p>
+    </div>
+    </div>
+    <p class="uk-grid-margin"></p>
+    <p class="uk-grid-margin">Прогресс бары с цветным оформлением:</p>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div class="uk-progress">
+    <div style="width: 35%;" class="uk-progress-bar">35%</div>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div class="uk-progress uk-progress-success">
+    <div style="width: 55%;" class="uk-progress-bar">55%</div>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div class="uk-progress uk-progress-warning">
+    <div style="width: 65%;" class="uk-progress-bar">65%</div>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin">
+    <div class="uk-progress uk-progress-danger">
+    <div style="width: 85%;" class="uk-progress-bar">85%</div>
+    </div>
+    </div>
+    <div class="uk-width-1-2 uk-grid-margin"><fieldset class="uk-form"><legend>Стили оформления форм</legend>
+    <div class="uk-form-row"><input type="text" class="uk-width-1-1"></div>
+    <div class="uk-form-row"><input type="text" value="form-success" class="uk-width-1-1 uk-form-success"></div>
+    <div class="uk-form-row"><input type="text" value="form-danger" class="uk-width-1-1 uk-form-danger"></div>
+    <div class="uk-form-row"><input type="text" disabled="disabled" class="uk-width-1-1"></div>
+    </fieldset></div>
+    <div class="uk-width-1-2 uk-grid-margin"><fieldset class="uk-form"><legend>Размеры форм</legend>
+    <div class="uk-form-row"><input type="text" class="uk-form-large uk-form-width-small"> <button type="reset" class="uk-button uk-button-large">Большая</button></div>
+    <div class="uk-form-row"><input type="text" class="uk-form-small uk-form-width-small"> <button type="reset" class="uk-button uk-button-small">Маленькая</button></div>
+    <div class="uk-form-row"><input type="text" class="uk-form-width-small uk-form-blank"> <button type="reset" class="uk-button uk-button-mini">Мини</button></div>
+    </fieldset></div>
+    </div>
+    </div>
+    </div>
+
+    <div data-uk-grid-margin="" class="uk-grid">
+    <div class="uk-width-medium-1-4">
+    <ul class="uk-subnav uk-subnav-line">
+    <li class="uk-active"><a href="#">Active</a></li>
+    <li><a href="#">Item</a></li>
+    <li><span>Disabled</span></li>
+    </ul>
+    </div>
+    <div class="uk-width-medium-1-4">
+    <ul class="uk-subnav uk-subnav-pill">
+    <li class="uk-active"><a href="#">Active</a></li>
+    <li><a href="#">Item</a></li>
+    <li><span>Disabled</span></li>
+    </ul>
+    </div>
+    <div class="uk-width-medium-1-4">
+    <ul data-uk-tab="" class="uk-tab">
+    <li class="uk-active"><a href="#">Active</a></li>
+    <li><a href="#">Item</a></li>
+    <li class="uk-disabled"><a href="#">Disabled</a></li>
+    <li class="uk-tab-responsive uk-active uk-hidden"><a>Active</a><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav uk-nav-dropdown"></ul><div></div></div></li></ul>
+    </div>
+    <div class="uk-width-medium-1-4"> </div>
+    </div>
+
+    <hr class="uk-grid-divider">
+
+    <div data-uk-grid-margin="" class="uk-grid uk-grid-divider">
+    <div class="uk-width-medium-1-4">
+    <ul class="uk-list uk-list-line">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+    </ul>
+    </div>
+    <div class="uk-width-medium-1-4">
+    <ul class="uk-list uk-list-striped">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+    </ul>
+    </div>
+    <div class="uk-width-medium-1-4">
+    <table class="uk-table uk-table-striped uk-table-condensed uk-table-hover"><caption>Table caption</caption>
+    <thead>
+    <tr><th>Table</th><th>Heading</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Table</td>
+    <td>Data</td>
+    </tr>
+    <tr>
+    <td>Table</td>
+    <td>Data</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    <div class="uk-width-medium-1-4"><dl class="uk-description-list uk-description-list-line"><dt>Description lists</dt><dd>Description text.</dd><dt>Description lists</dt><dd>Description text.</dd></dl></div>
+    </div>
+   </div>
+   
+            <div class="uk-container uk-container-center">
+                <nav class="uk-navbar">
+                    <ul class="uk-navbar-nav" data-uk-scrollspy-nav="{smoothscroll:{closest:'li',offset:70}}">
+                        <li><a href="index.html#tm-features">tm-features</a></li>
+                        <li><a href="index.html#tm-about">tm-about</a></li>
+                        <li><a href="index.html#tm-reviews">tm-reviews</a></li>
+                        <li><a href="index.html#tm-order">tm-order</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        
+            <div class="uk-container uk-container-center uk-container-center-alt">
+
+                <header class="uk-grid">
+                    <div class="uk-width-medium-1-2">
+                        <div class="uk-panel">
+
+                            <h2 class="uk-text-right uk-h1 uk-hidden-medium uk-hidden-large">
+                                <span class="uk-heading-large">class="uk-heading-large"</span><br>
+                                <span class="uk-h4 uk-text-left">class="uk-h4 uk-text-left"</span>
+                                <span class="uk-heading-xlarge uk-text-normal uk-text-secondary">Aire</span>
+				</h2>
+
+                            <div class="uk-text-center-small">class="uk-text-center-small"</div>
+
+                        </div>
+                    </div>
+                    <div class="uk-width-medium-1-2">
+                        <div class="uk-panel">
+
+			<h1 class="uk-text-right uk-hidden-small">
+                                <span class="uk-heading-large tm-text-primary">class="uk-heading-large tm-text-primary"</span>
+			</h1>
+
+                            <div class="uk-margin-top-large uk-text-center-small">
+                                <a href="index.html#tm-order" class="uk-button uk-button-large">tm-order</a>
+                                <div class="uk-margin-top uk-text-large">
+					<span class="uk-h3 uk-text-semibold">3383</span> 
+					<span class="uk-text-muted uk-h4">class="uk-text-muted uk-h4"</span>
+					<span class="uk-h2 uk-text-semibold">990</span>
+					<span class="uk-text-secondary">class="uk-text-secondary"</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </header>
+
+                    <div class="uk-container uk-container-center">
+                        <ul class="uk-grid uk-grid-width-small-1-3" data-uk-grid-match data-uk-grid-margin>
+                            <li class="uk-flex uk-flex-middle">class="uk-flex uk-flex-middle"</li>
+                            <li class="uk-flex uk-flex-middle">class="uk-flex uk-flex-middle"</li>
+                            <li class="uk-flex uk-flex-middle">class="uk-flex uk-flex-middle"</li>
+                        </ul>
+                    </div>
+
+            </div>
+        
+
+
+            <div class="uk-container uk-container-center uk-container-center-alt">
+
+                <section>
+
+		<h2 class="uk-text-primary">
+			<span class="uk-text-normal">class="uk-text-normal"</span><br>
+			<span class="uk-h2">class="uk-h2"</span>
+		</h2>
+
+                    <p class="uk-hidden-large">class="uk-hidden-large"</p>
+
+                    <div class="uk-width-medium-3-5">
+class="uk-width-medium-3-5"
+                        <p class="uk-text-bold"> class="uk-text-bold"</p>
+                    </div>
+
+                    <ul class="uk-list uk-list-space">
+                        <li>class="uk-list uk-list-space"</li>
+                        <li>class="uk-list uk-list-space"</li>
+                        <li>class="uk-list uk-list-space"</li>
+                        <li>class="uk-list uk-list-space"</li>
+                    </ul>
+                </section>
+
+            </div>
+
+
+        
+            <div class="uk-container uk-container-center uk-container-center-alt">
+
+                <section class="uk-grid" data-uk-grid-match>
+
+                    <div class="uk-width-small-1-2 uk-flex uk-flex-middle">
+                        <div class="uk-panel uk-text-center-small">
+
+<h3 class="uk-h2 uk-text-primary">Внимание 
+<span class="uk-text-secondary uk-text-uppercase">class="uk-text-secondary uk-text-uppercase"</span>!
+</h3>
+
+                            <div class="uk-margin uk-hidden-medium uk-hidden-large">
+                                <div class="uk-text-large uk-margin-bottom-medium">
+                                    <span class="uk-h3 uk-text-semibold">uk-text-semibold</span>
+                                    <span class="uk-text-muted uk-h4">class="uk-text-muted uk-h4"</span>
+                                </div>
+                                <a href="index.html#tm-order" class="uk-button ">tm-order!</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="uk-width-small-1-2 uk-flex uk-flex-middle">class="uk-width-small-1-2 uk-flex uk-flex-middle"
+                        <div class="uk-panel uk-display-block uk-width-1-1">uk-width-1-1
+
+
+
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        
+
+
+            <div class="uk-container uk-container-center">
+
+                <section>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-2">
+                            <div class="uk-panel">
+                                <h3 class="uk-text-primary uk-h4 uk-text-normal">class="uk-text-primary uk-h4 uk-text-normal"</h3>
+
+                                <ul class="uk-subnav">
+                                    <li>
+                                        <a class="uk-button">L</a>
+                                    </li>
+                                    <li>
+                                        <a class="uk-button">XL</a>
+                                    </li>
+                                    <li>
+                                        <a class="uk-button">XXL</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-2">
+                            <div class="uk-panel">class="uk-panel"
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        
+
+
+            <div class="uk-container uk-container-center">
+
+                <section class="uk-text-center-small">
+                    <div>
+
+                        <div class="uk-grid uk-grid-preserve uk-hidden-small">
+                            <div class="uk-width-1-2">class="uk-width-1-2"
+
+                                <h4>
+                                    <span class="uk-h5">class="uk-h5"</span></h4>
+
+                            </div>
+                            <div class="uk-width-1-2">class="uk-width-1-2"
+                                <h2 class="uk-text-primary">Оформление заказа</h2>
+                            </div>
+                        </div>
+
+                        <div class="uk-grid uk-grid-preserve uk-grid-divider" data-uk-grid-match data-uk-grid-margin>
+                            <div class="uk-width-medium-1-2">
+
+                                <h4 class="tm-order-heading uk-hidden-medium uk-hidden-large">
+                                    <span class="tm-font-elsie-swash uk-h5 tm-text-primary">Slim‘n’Slide</span>
+                                    <span class="tm-font-rosa uk-h3 uk-text-normal uk-text-secondary uk-text-right uk-margin-right-large">Aire</span></h4>
+
+                                <div class="uk-text-primary uk-text-bold uk-h4">class="uk-text-primary uk-text-bold uk-h4"</div>
+                                <div class="uk-text-secondary uk-text-bold uk-h3">class="uk-text-secondary uk-text-bold uk-h3"</div>
+
+
+                            </div>
+                            <div class="uk-width-medium-1-2">
+                                <form class="uk-form" method="post">
+
+                                    <h2 class="uk-text-primary uk-visible-small">Оформление заказа</h2>
+
+                                    <div class="uk-form-row">class="uk-form-row"
+                                        <select class="uk-width-1-1 uk-form-large">
+                                            <option>Выберите размер</option>
+                                            <option value="l">L</option>
+                                            <option value="x">X</option>
+                                            <option value="xxl">XXL</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="uk-form-row">class="uk-form-row"
+                                        <input type="text" name="client" class="uk-width-1-1 uk-form-large" placeholder="Фамилия Имя Отчество">
+                                    </div>
+
+                                    <div class="uk-form-row">class="uk-form-row"
+                                        <input type="text" name="tel" id="phone" class="uk-width-1-1 uk-form-large" placeholder="Номер телефона">
+                                    </div>
+
+                                    <div class="uk-form-row uk-margin-top-medium uk-text-center">
+                                        <button class="uk-button uk-button-large">Заказать сейчас!</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+    
+</body>
+</html>
