@@ -374,6 +374,14 @@ border: 1px solid #004586;
 	/*color:  #000 !important;*/
 }
 
+.btn-steelblue {
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+}
 
 .btn-blue-c4 {
     color: #fff;
@@ -584,6 +592,15 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 */
 
+.btn-green {
+	background-color: #1bcb49;
+	background: -webkit-linear-gradient(#4fcb4f, #00b04e);
+	background: -o-linear-gradient(#4fcb4f, #00b04e);
+	background: -moz-linear-gradient(#4fcb4f, #00b04e);
+	background: linear-gradient(#4fcb4f, #00b04e);
+	border-color: #4fcb4f;
+}
+
 .btn-green-shadow {
 /*
 	display: inline-block;
@@ -618,7 +635,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 	border-color: #ff8c00;
 	background-color: #ff8c00;
 }
-
 
 
 
@@ -684,9 +700,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   background-color: #00bfff;
   border-color: #00bfff;
 }
-
-
-
 
 .bg-peach {
   border-color: #ffaa00;
