@@ -2,6 +2,8 @@ var init_w = 300;
 var init_h = 250;
 
 $(document).ready( function(){
+console.log("jQuery version:" + $.fn.jquery);
+console.log("jQuery UI version:" + $.ui.version);
 
 	/* PIE */
 	if (window.PIE) {

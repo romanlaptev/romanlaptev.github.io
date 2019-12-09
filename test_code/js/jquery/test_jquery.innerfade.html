@@ -20,12 +20,12 @@
 	<script language="javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.innerfade/0.1/jquery.innerfade.js"></script>
 -->	
-	<script language="javascript" src="../lib//jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../lib//jquery.innerfade.js"></script>
+	<script language="javascript" src="../lib//jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/jquery.innerfade.js"></script>
 	<script>
 	$(document).ready(function(){
 //alert('Ready!');	
-		$('.red_paint').on("click",function()
+		$('.red-paint').on("click",function()
 			{
 				$('#block1').css('background','');
 				$('#block1').addClass('red-paint');
@@ -33,7 +33,7 @@
 			}
 		);
 		
-		$('.green_paint').click(function()
+		$('.green-paint').click(function()
 			{
 				$('#block1').removeClass('red-paint');
 				$('#block1').css('background','lightgreen');
@@ -74,8 +74,8 @@
 
 <div id="block1">block1</div>
 
-<a class="red_paint" href="javascript:void(0);">Red paint</a><br>
-<a class="green_paint" href="javascript:void(0);">Green paint</a><br>
+<a class="red-paint" href="javascript:void(0);">Red paint</a><br>
+<a class="green-paint" href="javascript:void(0);">Green paint</a><br>
 <a id="toggle_btn" href="javascript:void(0);">Toggle</a><br>
 <a id="toggle_btn2" href="javascript:void(0);">Slide toggle</a><br>
 <a id="btn3" href="javascript:void(0);">Fade</a><br>
