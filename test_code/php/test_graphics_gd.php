@@ -104,6 +104,7 @@ echo $msg;
 	}//next
 
 	imagepng ($im);
+	imagedestroy($im);
 
 
 	/*
