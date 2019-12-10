@@ -1,4 +1,6 @@
 <?php 
+//encoding ANSI or UTF without BOM!!!!
+
 //https://www.php.net/manual/ru/refs.utilspec.image.php
 //https://www.php.net/manual/ru/intro.image.php
 //https://www.php.net/manual/ru/function.imagecreate.php
@@ -20,7 +22,7 @@ ini_set('display_errors', 1);
 //https://www.php.net/manual/ru/function.get-loaded-extensions.php
 $loadedExt = get_loaded_extensions();
 if ( !in_array("gd", $loadedExt ) ) {
-	$msg = "<p>-- error, GD graphical module  is not in the list loaded extensions...</p>";
+	$msg = "<p>-- error, GD graphical module  is not in of the list loaded extensions...</p>";
 	echo $msg;
 echo "loaded_extensions:<pre>";
 print_r( $loadedExt );
