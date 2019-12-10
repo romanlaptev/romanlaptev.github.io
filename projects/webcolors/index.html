@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<title>Custom colors</title>
+	<title>web colors</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, layout=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=10">
 	
 	<link rel="stylesheet" href="../../css/bootstrap335.min.css">
-	<!-- <link rel="stylesheet" href="../../css/custom_colors.css"> -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../../css/colors.css">
 	<!-- <script src="../../test_code/js/lib/shared_functions.js"></script> -->
-  <script src="js/main.js"></script>
-  <style>
-.block{
-width:80px;
-height:80px;
-
-margin:3px;
-pagging:3px;
-
-float:left;
-
-color:#fff;
-text-align:center;
-font-size:80%;
-}
-
-.target-color{
-position:fixed;
-
-top: 5%;
-left: 50%;
-width: 400px;
-margin-left: -170px;
-
-z-index:999;
-
-background-color:#fffbe1;
-padding:5px;
-text-align:center;
-}
-.target-color h3{
-margin:0;
-}
-
-  </style>
+	<script src="js/main.js"></script>
 </head>
 
 <body>
 
-
 <div class="container">
-    <h1 class="page-header">web colors</h1>
-    
-    <div class="panel target-color">
-	  <div class="">
-	      <h3 id="copy-color-value" class=""></h3>
-	  </div>
-	<div class="log-panel">
-	   <div id="log">Click and copy color...</div>
-	</div>		
-    </div>
+	<h1 class="page-header">web colors</h1>
+	
+	<div class="log-panel panel">
+		<div class="panel-body">
+<!--		
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="">x</a>
+			</span>
+-->			
+			<div id="log" class="panel-body">
+				<h3 id="copy-color-value" class="alert alert-info"></h3>
+			</div>
+		</div>
+	</div>
 
 	
 	<div class="row panel">
@@ -119,74 +89,7 @@ https://www.colorhexa.com/055c80
 			
 		<div class="panel-body">
 https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D0%BB%D1%8C%D0%B4%D0%B3%D1%80%D0%B0%D1%83
-
 <!--
-<style>
-.colorbox
-{
-	padding:5px;
-}
-.bold
-{
-	font-weight:bold;
-}
-.italic
-{
-	font-style:italic;
-}
-</style>
--->
-
-
-<!--
-<div style="color:#ffffff;background:#bf794e; " class="colorbox">
-color:#ffffff;background:#bf794e
-</div>
-
-<div style="color:#4D4128;background:#efd0b1; " class="colorbox">
-color:#4D4128;background:#efd0b1
-</div>
-
-<div style="color:#4D4128;background:#bf864e; " class="colorbox">
-color:#4D4128;background:#bf864e
-</div>
-
-<div style="color:#4D4128;background:#CCA96E; " class="colorbox">
-color: #4D4128,background: #CCA96E;
-</div>
-<div style="color:#4D4128;background:#e0e0c3; " class="colorbox bold">
-color: #4D4128,background: #e0e0c3;
-</div>
-
-<div style="color:#4D4128;background:#ead9c2;" class="colorbox">
-color:#4D4128;background:#ead9c2;
-</div>
-
-<div style="color:#4D4128;background:#f1ebe2;" class="colorbox">
-color:#4D4128;background:#f1ebe2;
-</div>
-
-<div style="color:#ffffff;background:#707070;" class="colorbox">
-color: #ffffff,background: #707070;
-</div>
-<div style="color:#ffffff;background:#3f3f3f;" class="colorbox">
-color: #ffffff,background: #3f3f3f;
-</div>
-<div style="color:#ffffff;background:#666;" class="colorbox">
-color:#ffffff;background:#666;
-</div>
-
-<div style="color:#ffffff;background:#beb49b;" class="colorbox">
-color:#ffffff;background:#beb49b;
-</div>
-
-<div style="color:#ffffff;background:#d8c8b3;" class="colorbox">
-color:#ffffff;background:#d8c8b3;
-</div>
-
-
-
-
 <div style="color:#000000;background:#f3f3f3;" class="colorbox">
 color: #000000,background: #f3f3f3;
 </div>
@@ -712,6 +615,39 @@ color:#ffffff;background:silver
 -->
 	</div>		
 
+
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="text-left">buttons</h2>
+		</div>
+		<div class="panel-body">
+
+			<ul class="list-unstyled">
+<li class="list-group-item">
+	<a class="btn btn-darkblue" href="#">btn btn-darkblue</a>
+	<a class="btn btn-blue" href="#" >btn btn-blue</a>
+	<a class="btn btn-style1" href="#" >btn btn-style1</a>
+	<a class="btn btn-blue-c4" href="#" >btn btn-blue-c4</a>
+</li>
+<li class="list-group-item">
+	<a class="btn btn-blue-green" href="#" >btn btn-blue-green</a>
+	<a class="btn btn-greygreen" href="#" >btn btn-greygreen</a>
+	<a class="btn btn-violet-fb" href="#" >btn btn-violet-fb</a>
+</li>
+<li class="list-group-item">
+	<a class="btn btn-green-shadow" href="#" >btn btn-green-shadow</a>
+	<a class="btn btn-green" href="#" >btn btn-green</a>
+</li>
+<li class="list-group-item">
+	<a class="btn btn-red" href="#" >btn btn-red</a>
+	<a class="btn btn-orange" href="#" >btn btn-orange</a>
+	<a class="btn btn-orange-m" href="#" >btn btn-orange-m</a>
+</li>
+
+			</ul>
+		</div>
+	</div><!-- end panel -->
+						
 </div><!-- end container -->
 
 </body>

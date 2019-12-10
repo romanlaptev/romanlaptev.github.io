@@ -729,14 +729,14 @@ console.log( colorBox.title );
 
   try {  
     var res = document.execCommand('copy');  
-    var logMsg = "color code copied to the clipboard";
+    //var logMsg = "color code copied to the clipboard";
   } catch(err) {  
     var logMsg = "unable copy text..";
 console.log(err);
   } 
   
 console.log(logMsg);
-  _vars["log"].innerHTML = "<p class=''>" + logMsg + "</p>";
+//_vars["log"].innerHTML = "<p class=''>" + logMsg + "</p>";
   
   window.getSelection().removeAllRanges();  
   
