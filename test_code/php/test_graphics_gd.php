@@ -15,7 +15,6 @@ ini_set('display_errors', 1);
 // print_r ($_SERVER);
 // print_r ($_REQUEST);
 // //print_r($_FILES);
-//print_r( gd_info() );
 //echo "</pre>";
 
 //https://www.php.net/manual/ru/function.get-loaded-extensions.php
@@ -55,11 +54,11 @@ if (!extension_loaded("gd") ) {
 } else {
 	//$msg = "<p>-- success, graphical module GD available...</p>";
 	//echo $msg;
-	runApp();
+	runTest();
 }
 
 
-function runApp(){
+function runTest(){
 /*
 //https://www.php.net/manual/ru/function.get-extension-funcs.php
 echo "extension_funcs in module GD:<pre>";
@@ -78,6 +77,10 @@ echo $msg;
 */	
 
 	header ("Content-type: image/png");
+	//for upload image after creating
+	//$filename = "test.png";
+	//header("Content-Disposition: attachment; filename=".$filename.'');
+	//header('Content-Transfer-Encoding: binary');
 
 	$im = @imagecreate (200, 200) or die ("Cannot Initialize new GD image stream");
 	$im2 = @imagecreate (200, 200) or die ("Cannot Initialize new GD image stream");
@@ -121,5 +124,5 @@ echo $msg;
 	ImagePng ($im); 
 */
 	
-}//end runApp()
+}//end runTest()
 ?>
