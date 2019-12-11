@@ -25,7 +25,7 @@ $module_name = "curl";
 //https://www.php.net/manual/ru/function.get-loaded-extensions.php
 $loadedExt = get_loaded_extensions();
 if ( !in_array( $module_name, $loadedExt ) ) {
-	$msg = "<p>-- error, <b>".$module_name."</b> module  is not in of the list loaded extensions...</p>";
+	$msg = "<p>-- error, <b>".$module_name."</b> module  is not in the list of loaded extensions...</p>";
 	echo $msg;
 echo "loaded extensions: <pre>";
 print_r( $loadedExt );
