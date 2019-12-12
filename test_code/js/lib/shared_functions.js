@@ -782,34 +782,39 @@ console.log( "xhr.onerror,", e);
 		};//_runAjaxCorrect()
 		
 		
-		
-		
+		//================================
+		//Usage :  var today = func.timeStampToDateStr( timestamp, "yyyy-mm-dd hh:min" );
+		//================================
 		function _timeStampToDateStr( timestamp, format ){
 
-			var sYear = timestamp.getFullYear();
+			//var date = new Date();
+			//date.setTime( timestamp);
+			var d = new Date(timestamp);
+			
+			var sYear = d.getFullYear();
 
-			var sMonth = timestamp.getMonth() + 1;
+			var sMonth = d.getMonth() + 1;
 	//console.log( sMonth, typeof sMonth );
 			if( sMonth < 10){
 				sMonth = "0" + sMonth;
 			}
 			
-			var sDate = timestamp.getDate();
+			var sDate = d.getDate();
 			if( sDate < 10){
 				sDate = "0" + sDate;
 			}
 			
-			var sHours = timestamp.getHours();
+			var sHours = d.getHours();
 			if( sHours < 10){
 				sHours = "0" + sHours;
 			}
 			
-			var sMinutes = timestamp.getMinutes();
+			var sMinutes = d.getMinutes();
 			if( sMinutes < 10){
 				sMinutes = "0" + sMinutes;
 			}
 			
-			var sSec = timestamp.getSeconds();
+			var sSec = d.getSeconds();
 			if( sSec < 10){
 				sSec = "0" + sSec;
 			}
@@ -1140,7 +1145,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"localStorageSupport" : window['localStorage']  ? true : false,
 				"dataStoreType" : _detectDataStoreType(),
 				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
-				"supportTouch" : _supportTouch()
+				"supportTouch" : _supportTouch(),
+				"fileAPI" :  _supportFileAPI()
 			};
 		};//end _testSupport()
 		
@@ -1172,6 +1178,13 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 			return supportTouch;
 		};//end _supportTouch
+		
+		var _supportFileAPI = function(){
+			if( window.File && window.FileList && window.FileReader ){
+				return true;
+			}
+			return false;
+		}//end __supportFileAPI()
 		
 		
 		// public interfaces

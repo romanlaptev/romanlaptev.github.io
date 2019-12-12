@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Test JS: Canvas, drawImage()</title>
+	<meta charset="utf8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	
+	<link href="../../../../css/bootstrap335.min.css" rel="stylesheet">	
+	<link rel="stylesheet" href="../../../../css/shared.css">
+	<script src="../../lib/shared_functions.js"></script>
+	
+<script>
+	var func = sharedFunc();
+//console.log("func:", func);
+	var _testObj = {
+		"logMsg": ""
+	};
+console.log( _testObj );
+
+window.onload = function(){
+
+	_testObj.logMsg = navigator.userAgent;
+	func.logAlert( _testObj.logMsg, "info");
+
+	//test support
+/*
+    tests['canvastext'] = function() {
+        return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
+    };
+*/
+
+	try {
+		var element = document.createElement("canvas");
+//console.log( element.getContext );			
+//console.log( element.getContext("2d") );
+		_testObj.logMsg = "Canvas 2D is supported in this browser";
+		func.logAlert( _testObj.logMsg, "success");
+		
+		//init test object
+		_testObj["log"] = func.getById("log");
+		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
+		_testObj["inputUrl"] = func.getById("input-url");
+		_testObj["btnLoad"] = func.getById("btn-load-img");
+		_testObj["btnUserFile"] = func.getById("user-data-file");
+		_testObj["canvas"] = func.getById("canvas1");
+		_testObj["context"] = _testObj["canvas"].getContext("2d");
+		_testObj["testImage"] = func.getById("test-img");
+		_runTest();
+		
+	} catch (e) {
+console.log( e );
+		_testObj.logMsg = "Canvas 2D is not supported in this browser";
+		func.logAlert( _testObj.logMsg, "error");
+		
+		for( var key in e ){
+			_testObj.logMsg = key + ": " + e[key];
+			func.logAlert( _testObj.logMsg, "error");
+		}			
+	}//end try
+
+	_testObj["btn_clear_log"].onclick = function( event ){
+//console.log("click...", e);			
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+		_testObj.log.innerHTML = "";
+	};//end event
+	
+}//end load()
+
+function _runTest(){
+//===============================
+	_testObj["btnLoad"].onclick = function( event ){
+//console.log("click...", e);			
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) { 
+			event.preventDefault();
+		} else {
+			event.returnValue = false;				
+		}
+		
+		var img = new Image();
+		//img.src = "cat.png";
+		
+		var url = _testObj["inputUrl"].value;
+console.log(url);
+/*
+img.addEventListener("load", function() {
+  // здесь выполняет drawImage функцию
+}, false);
+*/
+		img.src = url;
+		
+		img.onload = function(e) {
+console.log(e);
+			_testObj["context"].drawImage( img, 0, 0 );
+			_testObj["context"].drawImage( img, 50, 50 );
+			_testObj["context"].drawImage( img, 100, 100 );
+		};
+			
+	};//end event
+
+//===============================
+	_testObj["btnUserFile"].onchange = function(event){
+		event = event || window.event;
+//console.log( event.type, event.target.files);
+//console.log( window.FileList , typeof window.FileList);
+
+		//if( window.File && window.FileList && window.FileReader ){
+		if( window.FileList ){
+			_parseLocalFile( event.target.files );
+		} else {
+			_testObj.logMsg = "Your browser does not support File API";
+			func.logAlert( _testObj.logMsg, "error");
+			return false;
+		}
+	};//end event
+
+
+}//end _runTest()
+
+	function _parseLocalFile( fileList){
+		if( !fileList || fileList.length === 0){
+			return false;
+		}
+/*
+lastModified: 1247549551674​
+name: "Tulips.jpg"​
+size: 620888
+type: "image/jpeg"
+*/
+		for( var n = 0; n < fileList.length; n++){
+			var file = fileList[n];
+			for(var key in file){
+console.log(key, file[key]);	
+			}//next
+			__processFile(file);
+		}//next
+		
+		function __processFile(file){
+			//check file type
+			//webApp._testObj.logMsg = "file type:" + file["type"];
+			//func.log("<div class='alert alert-info'>" + webApp.logMsg + "</div>");
+			
+			var reader = new FileReader();
+			
+			reader.onabort = function(e){
+console.log( "reader, onabort", e );
+			};
+			
+			reader.onerror = function(e){
+console.log( "reader, onerror", e );
+			};
+			
+			reader.onload = function(e){
+console.log( "reader, onload", e );
+//console.log(e.target.result);
+
+				_drawImageFile( e.target.result );
+
+				_testObj.logMsg = "Load file " + file.name;
+				_testObj.logMsg += ", size: " + file.size;
+				_testObj.logMsg += ", type: " + file.type;
+				
+				//logMsg += ", date: " + file.lastModified;
+				var timestamp = file.lastModified;
+				var dateStr = func.timeStampToDateStr( timestamp, "yyyy-mm-dd hh:min" );
+//console.log(dateStr);
+				_testObj.logMsg += ", date: "+ dateStr;
+				func.logAlert( _testObj.logMsg, "info");
+//----------------------
+			};
+			
+			reader.onloadstart = function(e){
+console.log( "reader, loadstart" );
+			};
+			
+			reader.onloadend = function(e){
+console.log( "reader, loadend" );
+			};
+			
+			reader.onprogress = function(e){
+console.log( "reader, progress");
+			};
+			
+			//reader.readAsText(file);
+			reader.readAsDataURL( file );
+		}//end __processFile()
+		
+	}//end _parseLocalFile
+
+	function _drawImageFile( imageData ){
+//console.log( typeof imageData, imageData);
+		_testObj["testImage"].src = imageData;
+
+		var img = new Image();
+		img.src = imageData;
+		img.onload = function(){
+console.log(arguments);		
+			try{
+				//_testObj["context"].drawImage( img, 0, 0 );
+				_testObj["context"].drawImage( img, 0, 0, 300, 300 );
+			} catch(e){
+	console.log( e );
+				for( var key in e ){
+					_testObj.logMsg = key + ": " + e[key];
+					func.logAlert( _testObj.logMsg, "error");
+				}			
+			}
+		};		
+		
+	}//end _drawImageFile()
+	
+	</script>
+	
+<style>
+canvas{
+	border:1px solid #ccc;
+}
+</style>
+	
+</head>
+
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>test JS: Canvas, drawImage()</h1>
+	</div>
+	
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+
+	<div class="panel">
+	
+		<div class="panel-body">
+			<canvas id="canvas1" width="600" height="300">
+Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
+			</canvas>
+		</div>
+			
+		<div class="panel-body">
+			<label>input url:</label>
+			<input type="text" class="form-control" id="input-url" name="input_url" value="cat.png"/>
+			<button id="btn-load-img" class="btn btn-primary" >load image</button>
+<pre>
+cat.png
+../../../../projects/photoprint/images/WP-14-1093.jpg
+</pre>			
+		</div>
+		
+		<div class="panel-body">
+			<label>select local image (File API):</label>
+			<input type="file" id="user-data-file" name="data_file" title="" class="" accept="image/jpeg, .jpg">			
+		</div>
+		<img id="test-img" width="400"/>
+		
+	</div>
+
+<pre>
+https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial
+Руководство по Canvas
+
+https://metanit.com/web/html5/10.1.php
+
+http://htmlbook.ru/html5/canvas
+http://professorweb.ru/my/html/html5/level4/4_1.php
+
+http://www.w3schools.com/tags/ref_canvas.asp
+HTML Canvas Reference
+
+https://www.html5rocks.com/en/tutorials/canvas/imagefilters/
+Image Filters with Canvas
+
+http://html5ru.com/metod-drawimage.html
+http://html5ru.com/html5/grafika-v-html5
+
+</pre>
+
+</div><!-- end container -->
+
+</body>
+</html>

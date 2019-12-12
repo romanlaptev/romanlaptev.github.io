@@ -65,49 +65,7 @@ console.log( e );
 
 function _runTest(){
 
-	if(document.querySelector){
-		var context = document.querySelector("#first-canvas").getContext("2d");
-		//var ctx = document.getElementById("ctx").getContext("2d");
-	} else {
-		var context = document.getElementById("first-canvas").getContext("2d");
-	}
-		
-//===============================
-	var inputUrl = func.getById("input-url");
-
-	var btnLoad = func.getById("btn-load-img");
-	btnLoad.onclick = function( event ){
-//console.log("click...", e);			
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;				
-		}
-		
-		var canvas2 = func.getById("canvas2");
-		var context2 = canvas2.getContext("2d");
-			 
-		var img = new Image();
-		//img.src = "cat.png";
-		
-		var url = inputUrl.value;
-console.log(url);
-/*
-img.addEventListener("load", function() {
-  // здесь выполняет drawImage функцию
-}, false);
-*/
-		img.src = url;
-		
-		img.onload = function(e) {
-console.log(e);
-			context2.drawImage( img, 0, 0 );
-			//context2.drawImage( img, 50, 50 );
-		};
-			
-	};//end event
+	var context = func.getById("first-canvas").getContext("2d");
 
 //===============================
 	// Толщина и цвет для всех линий
@@ -202,18 +160,6 @@ Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> ele
 				</canvas>
 			</div>
 			
-			<div class="w">
-				<canvas id="canvas2" width="600" height="300">
-Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
-				</canvas>
-			</div>
-			
-			input url:<input type="text" class="form-control" id="input-url" name="input_url" value=""/>
-			<button id="btn-load-img" class="btn btn-primary" >load image ( drawImage() )</button>
-<pre>
-cat.png
-../../../../projects/photoprint/images/WP-14-1093.jpg
-</pre>			
 		</div>
 	</div>
 
