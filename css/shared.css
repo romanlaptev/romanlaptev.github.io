@@ -41,6 +41,7 @@ header .navbar {
 	opacity: 0.9;
 	border-radius: 4px;
 }
+
 .log-panel .panel-body{
 	padding: 5px;
 }
@@ -49,6 +50,24 @@ header .navbar {
 text-decoration:none;
 outline: none;
 }
+
+#log{
+/*	
+	height: 400px;
+	overflow-y: auto;	
+*/	
+}
+
+#btn-clear-log {
+/*	
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+*/	
+}
+	
+
 #log .alert {
 margin-bottom: 0;
 padding: 10px;
