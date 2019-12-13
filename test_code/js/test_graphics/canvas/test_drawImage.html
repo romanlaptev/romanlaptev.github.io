@@ -14,7 +14,8 @@
 	var func = sharedFunc();
 //console.log("func:", func);
 	var _testObj = {
-		"logMsg": ""
+		"logMsg": "",
+		"filename": "test.png"
 	};
 console.log( _testObj );
 
@@ -42,6 +43,7 @@ window.onload = function(){
 		_testObj["btn_clear_log"] = func.getById("btn-clear-log");
 		_testObj["inputUrl"] = func.getById("input-url");
 		_testObj["btnLoad"] = func.getById("btn-load-img");
+		_testObj["btnSave"] = func.getById("btn-save-canvas");
 		_testObj["btnUserFile"] = func.getById("user-data-file");
 		_testObj["canvas"] = func.getById("canvas1");
 		_testObj["context"] = _testObj["canvas"].getContext("2d");
@@ -105,6 +107,32 @@ console.log(e);
 		};
 			
 	};//end event
+
+//===============================
+	func.addEvent( 
+		_testObj["btnSave"], 
+		"click", 
+		function(e){
+//console.log( e );
+			var dataURL = _testObj["canvas"].toDataURL();//PNG
+console.log(dataURL)	;
+			//_saveImage();
+			_testObj["btnSave"].href = dataURL;
+		}
+	);//end event
+
+function _saveImage(){
+
+	//canvas.toDataURL('image/jpeg', quality)
+	//canvas.toBlob(callback, mimeType, qualityArgument);//0..1
+
+	var aLink = document.createElement("a");
+	aLink.download = _testObj["filename"];
+	aLink.href = dataURL;
+	document.body.appendChild( aLink );
+	aLink.click();	
+	
+}//end _saveImage()
 
 //===============================
 	_testObj["btnUserFile"].onchange = function(event){
@@ -267,6 +295,7 @@ canvas{
 			<canvas id="canvas1" width="600" height="300">
 Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.	
 			</canvas>
+			<a id="btn-save-canvas" download="test.png" href="#" class="btn btn-success">save canvas as test.png</a>			
 		</div>
 			
 		<div class="panel-body">
@@ -307,6 +336,9 @@ http://html5ru.com/html5/grafika-v-html5
 
 https://habr.com/ru/post/145816/
 Манипуляция пикселями на холсте с использованием Javascript
+
+https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
+https://developer.mozilla.org/ru/docs/Web/API/HTMLCanvasElement/toBlob
 </pre>
 
 </div><!-- end container -->
