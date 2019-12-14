@@ -28,6 +28,16 @@
 			<location>/music/0_playlists/Handel.json</location>
 			<thumbnail url="/music/H/Handel/images/handel.jpg" />
 		</playlist>
+
+		<playlist created="11-March-2017" title="classic music" class="classic">
+			<location>/music/0_playlists/classic.json</location>
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1007</li>
+			</related_links>
+		</playlist>
+
+
+
 		
 		<playlist created="27-Oct-2019" title="Judas Priest" class="">
 			<location>/music/0_playlists/judas_priest.json</location>
@@ -88,16 +98,40 @@
 	-->		
 		</playlist>
 
+
+		<playlist created="14-March-2017" title="KSU" class="punk">
+			<location>/music/0_playlists/KSU.json</location>
+			<thumbnail url="/music/K/KSU/cover.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1020</li>
+			</related_links>
+		</playlist>
+
 		<playlist created="09-Feb-2019" title="punk, hardcore" class="rus-punk">
 			<location>/music/0_playlists/punk, hardcore.json</location>
 		</playlist>
 		
 		<playlist created="23-April-2018" title="Russian punk" class="rus-punk">
 			<location>/music/0_playlists/rus_punk.json</location>
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1010</li>
+			</related_links>
 		</playlist>
+
+		<playlist created="11-March-2017" title="Гражданская оборона" class="grob">
+			<location>/music/0_playlists/GrOb.json</location>
+			<thumbnail url="/music/0_covers/grob.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1006</li>
+			</related_links>
+		</playlist>
+
 		
 		<playlist created="11-March-2017" title="Ska" class="ska">
 			<location>/music/0_playlists/ska.json</location>
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1012</li>
+			</related_links>
 		</playlist>
 		
 		<playlist created="11-March-2017" title="thrash, death, grindecore, hardcore" class="thrash">
@@ -117,9 +151,6 @@
 		</playlist>
 			
 
-		<playlist created="11-March-2017" title="classic music" class="classic">
-			<location>/music/0_playlists/classic.json</location>
-		</playlist>
 			
 		<playlist created="11-March-2017" title="disko, pop" class="disko">
 			<location>/music/0_playlists/disko, pop.json</location>
@@ -129,10 +160,6 @@
 			<location>/music/0_playlists/folk, chants.json</location>
 		</playlist>
 			
-		<playlist created="11-March-2017" title="Гражданская оборона" class="grob">
-			<location>/music/0_playlists/GrOb.json</location>
-			<thumbnail url="/music/0_covers/grob.jpg" />
-		</playlist>
 			
 		<playlist created="11-March-2017" title="heavy,speed,power metal" class="heavy">
 			<location>/music/0_playlists/heavy,speed,power.json</location>
@@ -148,7 +175,10 @@
 			
 		<playlist created="11-March-2017" title="Metallica" class="Metallica">
 			<location>/music/0_playlists/metallica.json</location>
-			<thumbnail url="playlists/images/covers/And_Justice_For_All.jpg" />
+			<thumbnail url="/music/M/Metallica/covers/Kill_Em_All.jpg" />
+			<related_links>
+				<li>https://music.yandex.ru/users/roman-laptev/playlists/1019</li>
+			</related_links>
 		</playlist>
 			
 		<playlist created="11-March-2017" title="Apocalyptica" class="Apocalyptica">
@@ -169,10 +199,6 @@
 			<location>/music/0_playlists/rock.json</location>
 		</playlist>
 		
-		<playlist created="14-March-2017" title="KSU" class="punk">
-			<location>/music/0_playlists/KSU.json</location>
-			<thumbnail url="/music/K/KSU/1988%20Pod%20Prad%20(Reedycja%202011)%20[320%20kbps]/pod_prad.jpg" />
-		</playlist>
 		
 	</xdata>
 </xroot>
