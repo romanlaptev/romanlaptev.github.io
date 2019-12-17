@@ -3,16 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/css/bootstrap335.min.css">
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
+	<script src="../../../codebase/js/jquery/jquery.min.js"></script>
 	<script>
-	window.onload = function()
-	{
+	window.onload = function(){
 		document.getElementById("test-inp").onchange = function(){
 			var message = document.getElementById("log").innerHTML;
 			document.getElementById("log").innerHTML = message + "input text in " + this.name + "<br>";
 		}
-
 	}
 
 //==========================

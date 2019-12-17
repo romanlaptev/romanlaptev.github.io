@@ -281,7 +281,7 @@ console.log( logMsg );
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-		//console.log(p);
+console.log(p);
 
 			var logMsg;
 			var requestMethod = p["requestMethod"]; 
@@ -782,14 +782,28 @@ console.log( "xhr.onerror,", e);
 		};//_runAjaxCorrect()
 		
 		
-		//================================
-		//Usage :  var today = func.timeStampToDateStr( timestamp, "yyyy-mm-dd hh:min" );
-		//================================
-		function _timeStampToDateStr( timestamp, format ){
-
-			//var date = new Date();
+//================================
+//Usage :  var today = func.timeStampToDateStr({
+//timestamp : ....timestamp string....,
+//format : "yyyy-mm-dd hh:min" 
+//});
+//================================
+		function _timeStampToDateStr( opt ){
+			var p = {
+				"timestamp" : null,
+				"format" : ""
+			};
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log( p );
+			
 			//date.setTime( timestamp);
-			var d = new Date(timestamp);
+			if( !p.timestamp || p.timestamp.length === 0){
+				var d = new Date();
+			} else {
+				var d = new Date( p.timestamp );
+			}
 			
 			var sYear = d.getFullYear();
 
@@ -821,7 +835,7 @@ console.log( "xhr.onerror,", e);
 			
 			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			
-			switch( format ){
+			switch( p.format ){
 				
 				case "yyyy-mm-dd":
 					dateStr = sYear + "-" + sMonth + "-" + sDate;
@@ -829,6 +843,10 @@ console.log( "xhr.onerror,", e);
 				
 				case "yyyy-mm-dd hh:min":
 					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+				break;
+				
+				case "yyyy-mm-dd hh:min:sec":
+					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes + ":" + sSec;
 				break;
 				
 			}//end switch
