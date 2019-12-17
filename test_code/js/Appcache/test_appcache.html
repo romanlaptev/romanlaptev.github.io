@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html manifest="appcache.manifest">
+<!--
+<html manifest="appcache.txt">
+-->
+<head>
+<!-- Запрет на кэширование браузером и прокси-сервером -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store">
+
+<!-- Запрет кэширования страницы, только браузером -->
+<!--
+<meta http-equiv="Cache-Control" content="private">
+-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test AppCache</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap336.css">
+<style>
+#info {  border: 1px dashed;  padding: 10px; }
+</style>
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>test AppCache</h1>
+<p>version 44</p>
+		</div>
+		
+		<div class="panel">
+			<div class="panel-body" id="info"></div>
+		</div>
+		
+		<p><button id="cache-status" class="btn btn-lg btn-info">window.applicationCache.status</button></p>
+		<p><button id="cache-update" class="btn btn-lg btn-primary">window.applicationCache.update()</button></p>
+
+<pre>
+http://caniuse.com/#feat=offline-apps
+http://caniuse.com/#feat=serviceworkers
+http://manifest-validator.com/
+http://www.onlinewebcheck.com/
+
+https://msdn.microsoft.com/ru-ru/library/hh673545%28v=vs.85%29.aspx
+https://habrahabr.ru/post/151815/
+https://habrahabr.ru/company/paysto/blog/254619/
+http://htmlbook.ru/html5/offline
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
+https://developer.mozilla.org/en-US/docs/Web/API/Window/applicationCache
+https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIDOMOfflineResourceList
+https://developer.mozilla.org/en-US/docs/Web/API/Window/caches
+http://html5doctor.com/go-offline-with-application-cache/
+http://www.html5rocks.com/ru/tutorials/appcache/beginner/ - "Объем кэшированных данных для сайтов не может превышать 5 МБ......."
+
+https://html.spec.whatwg.org/#applicationcache
+http://w3pro.ru/article/zapusk-veb-prilozhenii-v-offlain-s-pomoshchyu-html5-appcache
+
+
+
+FF 44, "Application Cache API (AppCache) устарел и в будущем будет удалён. Для поддержки автономной работы, пожалуйста, рассмотрите применение ServiceWorker."
+
+CHROME 51
+Use of the Application Cache is deprecated on insecure origins. 
+Support will be removed in the future. 
+You should consider switching your application to a secure origin, such as HTTPS. 
+See https://goo.gl/rStTGz for more details.
+https://bugs.chromium.org/p/chromium/issues/detail?id=588931
+
+ServiceWorker
+https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API/Using_Service_Workers
+http://prgssr.ru/development/sozdaem-service-worker.html
+https://css-tricks.com/serviceworker-for-offline/
+https://mobiforge.com/design-development/taking-web-offline-service-workers
+
+Cache Manifest Tutorial HTML5 
+https://www.youtube.com/watch?v=15e4tzEEDB8
+https://www.youtube.com/embed/15e4tzEEDB8
+
+https://www.youtube.com/embed/OGK4PcMZ6eQ
+</pre>
+
+<pre>
+Getting Offline Access with HTML5 Application Cache
+https://www.youtube.com/watch?v=kXZA9eS6nCw
+https://youtube.com/embed/kXZA9eS6nCw
+---------------------------
+Сервер Apache
+браузер Chrome, Версия 41.0.2272.76
+браузер IE10-11, 
+
+1.создать manifest.appcache, где описать кешируемые ресурсы
+можно manifest.txt
+IE, Firefox 18 не кеширует при manifest.txt!!!!!!
+
+2.создать .htaccess, где определен тип ответа для запроса файлов manifest
+AddType text/cache-manifest manifest
+для txt не нужно
+
+3.Загрузить страницу test_appcache.html, в консоле будут сообщения о кэшировании ресурсов
+(
+Creating Application Cache with manifest http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/appcache.manifest
+test_appcache.html:1 Application Cache Checking event
+test_appcache.html:1 Application Cache Downloading event
+test_appcache.html:1 Application Cache Progress event (0 of 4) http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/test_appcache.html
+test_appcache.html:1 Application Cache Progress event (1 of 4) http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/scripts/main.js
+test_appcache.html:1 Application Cache Progress event (2 of 4) http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/css/bootstrap336.css
+test_appcache.html:1 Application Cache Progress event (3 of 4) http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/images/img1.jpg
+bootstrap.css.map:1 GET http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/css/bootstrap.css.map 404 (Not Found)
+test_appcache.html:1 Application Cache Progress event (4 of 4) 
+test_appcache.html:1 Application Cache Cached event
+)
+4. Остановить сервер
+/etc/init.d/apache2 stop
+
+5. Обновить страницу test_appcache.html, в консоле
+(
+Document was loaded from Application Cache with manifest http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/appcache.manifest
+test_appcache.html:1 Application Cache Checking event
+test_appcache.html:1 Application Cache Error event: Manifest fetch failed (6) http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/appcache.manifest
+)
+
+6. Старт сервер
+/etc/init.d/apache2 start
+(
+Document was loaded from Application Cache with manifest http://mycomp/sites/romanlaptev.github.io/test_code/js/appcache/appcache.manifest
+test_appcache.html:1 Application Cache Checking event
+test_appcache.html:1 Application Cache NoUpdate event
+)
+страница все равно загружается из кэша.....
+после очистки кэша ( chrome://settings/clearBrowserData ) загрузилась новая версия страницы
+</pre>
+
+<pre>
+	chrome://chrome-urls/
+	chrome://appcache-internals/
+	удаление элементов кэша приложений
+
+	
+	Firefox, Information about the Network Cache Storage Service
+	about:cache
+	about:cache?storage=appcache
+	about:preferences#advanced
+
+	
+	IE
+	Сервис - Св-ва браузера - Общие - параметры - кэш и базы данных
+</pre>
+
+	</div><!-- end container -->
+
+<script>
+if (!window.applicationCache) {
+	var msg = "<h3> + window.applicationCache not supported, " + window.applicationCache + "</h3>";
+	_log( msg );
+} else {
+	var msg = "<h3>window.applicationCache is supported, " + window.applicationCache + "</h3>";
+	_log( msg );
+	addEvents();
+/*
+setInterval(function () { 
+	window.applicationCache.update();
+	}, 3600000); // Check for an updated manifest file every 60 minutes. If it's updated, download a new cache as defined by the new manifest file.
+	addEventListener('onupdateready', function(){ // when an updated cache is downloaded and ready to be used
+		window.applicationCache.swapCache(); //swap to the newest version of the cache
+	}, false);
+*/
+//	for( var item in window.applicationCache){
+//_log( item + " - " +  window.applicationCache[item] );
+//console.log( item,  window.applicationCache[item] );
+	//}
+	
+}
+//--------------------------------------
+
+	var test = {
+		"name" : "Service Worker API",
+		"result" : false
+	};
+	var result = 'serviceWorker' in navigator;
+	if ( 'serviceWorker' in navigator) {
+		var msg = "<h3> serviceWorker is supported, " + result + "</h3>";
+		_log( msg );
+	} else {
+		var msg = "serviceWorker not supported, "  + result;
+		_log( msg );
+	}
+//--------------------------------------
+
+document.getElementById("cache-status").onclick = function(){
+	if (!window.applicationCache) {
+		var msg = "<h3> + window.applicationCache not supported, " + window.applicationCache + "</h3>";
+		_log( msg );
+		return false;
+	}
+	var status = window.applicationCache.status;
+	var text_status = "";
+	switch (status){
+		case 0:
+			text_status = "(0), UNCACHED – кэш ещё не инициализирован";
+		break;
+		case 1:
+			text_status = "(1), IDLE – никаких действий с кэшем не производиться";
+		break;
+		case 2:
+			text_status = "(2), CHECKING – производиться проверка файла .manifest";
+		break;
+		case 3:
+			text_status = "(3), DOWNLOADING – производится загрузка ресурсов для помещения их в кэш";
+		break;
+		case 4:
+			text_status = "(4), UPDATEREADY – загрузка необходимых ресурсов выполнена и требуется их инициализация при помощи метода swapCache()";
+		break;
+		case 5:
+			text_status = "(5), OBSOLETE – текущий кэш является устаревшим";
+		break;
+		
+		default:
+			text_status = "?";
+		break;
+		
+	}
+	var msg = "window.applicationCache.status - " + window.applicationCache.status;
+	msg += ",  " + text_status;
+	_log(msg);
+}//end event
+
+document.getElementById("cache-update").onclick = function(){
+	if (!window.applicationCache) {
+		var msg = "<h3> + window.applicationCache not supported, " + window.applicationCache + "</h3>";
+		_log( msg );
+		return false;
+	}
+	
+	var msg = "window.applicationCache.update() - проверка файла .manifest и последующее скачивание необходимых ресурсов" ;
+	_log(msg);
+	
+	var appCache = window.applicationCache;
+	appCache.update();
+	
+/*
+Метод переключает браузер на использование новых кэшированных файлов вместо старых. 
+Перерисовки страницы не происходит, только при последующем обращении к кэшированным файлам они берутся уже из обновлённого кэша.
+Простой альтернативой метода является перезагрузка страницы, например, при помощи location.reload().	
+*/
+/*
+	if ( appCache.status == window.applicationCache.UPDATEREADY ) {
+		appCache.swapCache();  // The fetch was successful, swap in the new cache.
+var msg = "window.applicationCache.swapCache() - The fetch was successful, swap in the new cache" ;
+_log(msg);
+	}
+*/	
+}//end event
+
+/*
+    cached – происходит при формировании первого кэша в хранилище;
+    checking – происходит при отправке запроса получения файла .manifest;
+    downloading – происходит при загрузке ресурсов в кэш;
+    progress – происходит при загрузке каждого ресурса по отдельности;
+    error – произошла ошибка при обращении к файлам ресурсов или файлу .manifest;
+    noupdate – происходит при подтверждение, что файл .manifest не обновился;
+    obsolete – происходит при подтверждение, что кэш в хранилище устарел и будет удалён;
+    updateready – происходит при окончании загрузки обновлённого кэша.
+*/
+function addEvents(){
+	// Fired after the first cache of the manifest.
+	window.applicationCache.addEventListener('cached', function(e){
+		var msg = "window.applicationCache, CACHED" ;
+		_log(msg);
+	}, false);
+
+	// Checking for an update. Always the first event fired in the sequence.
+	window.applicationCache.addEventListener('checking', function(e){
+		var msg = "window.applicationCache, CHECKING" ;
+		_log(msg);
+	}, false);
+
+	// An update was found. The browser is fetching resources.
+	window.applicationCache.addEventListener('downloading', function(e){
+		var msg = "window.applicationCache, DOWNLOADING" ;
+		_log(msg);
+	}, false);
+
+	// The manifest returns 404 or 410, the download failed,
+	// or the manifest changed while the download was in progress.
+	window.applicationCache.addEventListener('error', function(e){
+		var msg = "window.applicationCache, ERROR" ;
+		_log(msg);
+console.log(e);
+	}, false);
+
+	// Fired after the first download of the manifest.
+	window.applicationCache.addEventListener('noupdate', function(e){
+		var msg = "window.applicationCache, NOUPDATE" ;
+		_log(msg);
+	}, false);
+
+	// Fired if the manifest file returns a 404 or 410.
+	// This results in the application cache being deleted.
+	window.applicationCache.addEventListener('obsolete', function(e){
+		var msg = "window.applicationCache, OBSOLETE" ;
+		_log(msg);
+	}, false);
+
+	// Fired for each resource listed in the manifest as it is being fetched.
+	window.applicationCache.addEventListener('progress', function(e){
+		var msg = "window.applicationCache, PROGRESS" ;
+		_log(msg);
+	}, false);
+
+	// Fired when the manifest resources have been newly redownloaded.
+	window.applicationCache.addEventListener('updateready', function(e){
+		var msg = "window.applicationCache, UPDATEREADY" ;
+		_log(msg);
+		
+		window.applicationCache.swapCache();
+		var msg = "window.applicationCache.swapCache() - The fetch was successful, swap in the new cache" ;
+		_log(msg);
+		//window.location.reload();
+		
+	}, false);
+}//end addEvents()
+
+
+function _log(msg, id){
+	if(!id) id = "info";
+	if( msg.length === 0){
+		document.getElementById( id ).innerHTML = "";
+	}
+	//if(console && console.log) console.log(msg);
+	document.getElementById( id ).innerHTML +="<p>" + msg + "</p>";
+}//end _log
+</script>
+
+
+</body>
+</html>

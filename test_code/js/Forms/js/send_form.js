@@ -188,30 +188,13 @@ console.log( p );
 	
 	func.runAjax( {
 		"requestMethod" : p["requestMethod"],
+		//"responseType" : "json",
 		"enctype" : p["enctype"],
 		"url" : p["url"],
 		"params" : params,
 		"formData" : formData,
-		"callback": function( log ){
-console.log(arguments);
-/*
-// var msg = "<p>"+log+"</p>";
-			// var _className = "alert-success";
-			// if( log.indexOf("error") !== -1){
-			// _className = "alert-danger";
-			// }
-// _log("<div class='alert " +_className+ "'>" + msg + "</div>");
-			// loadNotes();
-			parseLog({
-				"jsonLog" : log,
-				//"onSuccess" : function(){},
-				//"onError" : function( errorCode ){},
-				"callback" : function(){
-					loadNotes();
-				}//end callback
-			});
-*/
-			
+		"callback": function( data, runtime, xhr){
+console.log(data);
 		}//end callback()
 	});
 	

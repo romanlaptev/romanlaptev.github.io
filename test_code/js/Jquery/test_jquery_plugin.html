@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test jquery plugin</title>
+<!--	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+-->
+	<link rel="stylesheet" href="/css/bootstrap335.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../lib/jquery-1.10.2.min.js"><\/script>')</script>
+
+<script>
+window.onload = function(){
+console.log("onload");
+};
+
+//add global function
+$.myPlugin1 = function(){
+	$("#log").append( "<p>This is a global function myPlugin1</p>" );
+};
+
+jQuery.fn.myPlugin2 = function( a ){
+	$("#log").append( "<p>This is a myPlugin2</p>" );
+	return a+1;
+};
+
+//for no conflict
+(function( $ ) {
+	$.fn.myPlugin3 = function() {
+		$("#log").append( "<p>This is a myPlugin3</p>" );
+console.log( this );		
+		return this;
+	};
+	
+	$.fn.myPlugin4 = function( option ) {
+		$("#log").append( "<p>This is a myPlugin4</p>" );
+console.log( this );		
+		var setting={size:'2.4em',color:'red'};
+		if ( option ) {
+			$.extend( setting,option );
+		}
+		this.css("font-size", setting.size);
+		this.css("color", setting.color);		
+		return this;
+	};
+})(jQuery);
+
+$(document).ready( function(){
+	var version = "lib version: " + $.fn.jquery;
+	$("#ver").html( version );
+	
+	$.myPlugin1();
+	
+	var b = jQuery.fn.myPlugin2( 10 );
+console.log( b ) ;
+	
+	$.fn.myPlugin3();
+	
+	$("#test").myPlugin4().append("<p>test chain operation, plugin add font-size 2.4em and return this object for next operation.... </p>");
+	$("#test2").myPlugin4({"size":"0.9em", "color":"blue"}).append("<p>test plugin option, change text color</p>");
+});
+</script>
+
+</head>
+
+<body>
+	<div class="container">
+	
+		<div class="page-header">
+			<h1>create jQuery plugin</h1>
+			<h3 id="ver"></h3>
+		</div>
+	
+		<pre>
+http://www.wisdomweb.ru/JQ/plugin.php
+http://jquery.page2page.ru/index.php5/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%B0_jQuery
+https://habrahabr.ru/post/158235/
+http://anton.shevchuk.name/javascript/jquery-for-beginners-write-plugins/
+http://jquerylist.ru/tutorials/writing-your-own-plugins.html
+		</pre>
+		
+		<div class="panel panel-primary">
+			<div class="panel-body" id="log"></div>
+		</div>
+		
+		<div class="panel panel-danger">
+			<div class="panel-body" id="test"></div>
+			<div class="panel-body" id="test2"></div>
+		</div>
+		
+	</div><!-- end container -->
+
+</body>
+</html>

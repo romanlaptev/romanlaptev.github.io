@@ -281,7 +281,7 @@ console.log( logMsg );
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-console.log(p);
+//console.log(p);
 
 			var logMsg;
 			var requestMethod = p["requestMethod"]; 
@@ -382,26 +382,24 @@ console.log( logMsg, xhr );
 							
 							var timeEnd = new Date();
 							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
-console.log(msg);
-// console.log( "xhr.responseText: ", xhr.responseText );
-// console.log( "xhr.responseXML: ", xhr.responseXML );
-							if( "responseType" in xhr){
-					console.log( "xhr.response: ", xhr.response );
-					console.log( "responseType: " + xhr.responseType );
-							}
+//var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+//console.log(msg);
+							// if( "responseType" in xhr){
+					// console.log( "xhr.response: ", xhr.response );
+					// console.log( "responseType: " + xhr.responseType );
+							// }
 
-							try{
-					console.log( "xhr.responseText: ", xhr.responseText );
-							} catch(e){
-					console.log( e );
-							}
+							// try{
+					// console.log( "xhr.responseText: ", xhr.responseText );
+							// } catch(e){
+					// console.log( e );
+							// }
 
-							try{
-					console.log( "xhr.responseXML: ", xhr.responseXML );
-							} catch(e){
-					console.log( e );
-							}
+							// try{
+					// console.log( "xhr.responseXML: ", xhr.responseXML );
+							// } catch(e){
+					// console.log( e );
+							// }
 
 							if( typeof callback === "function"){
 //alert("responseText" in xhr);	true in IE6

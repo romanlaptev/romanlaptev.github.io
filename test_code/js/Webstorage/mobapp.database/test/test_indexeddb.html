@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+#log-wrap {
+position:fixed;
+top:10px;
+right:10px;
+width:30%;
+opacity:0.8;
+border:1px dashed;
+padding:30px;
+}
+</style>
+	<script src="js/test_db.js"></script>
+	<script>
+window.onload = function(){
+	document.getElementById("indexeddb-connect").onclick = function(){
+		if (document.querySelector) {
+			var dbname = document.querySelector("#indexeddb-name").value;
+		} else {
+			var dbname = document.getElementById("indexeddb-name").value;
+		}
+		
+		var store_name = document.getElementById("indexeddb-store").value;
+		//var version = parseInt( document.getElementById("indexeddb-ver").value );
+		connect_indexedDB( dbname, store_name);
+		//connect_indexedDB( dbname );
+	}//end event
+	
+	document.getElementById("indexeddb-get-version").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		get_version_indexedDB( dbname);
+	}//end event
+	
+	document.getElementById("indexeddb-drop").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		drop_db( dbname );
+	}//end event
+
+	document.getElementById("indexeddb-add").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var value = document.getElementById("indexeddb-value").value;
+		var key = document.getElementById("indexeddb-recordkey").value;
+console.log(key, value);
+		add_value( dbname, store_name, value, key );
+	}//end event
+
+	document.getElementById("indexeddb-delete-record").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		
+		var recordkey = parseInt( document.getElementById("indexeddb-recordkey").value );
+console.log(recordkey);
+		if( isNaN(recordkey) ){
+			var recordkey = document.getElementById("indexeddb-recordkey").value;
+		}
+		
+		delete_record( dbname, store_name, recordkey );
+	}//end event
+
+	document.getElementById("indexeddb-get-record").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		
+		var key = parseInt( document.getElementById("indexeddb-recordkey").value );
+console.log( key, typeof key );
+		if( isNaN(key) ){
+			var key = document.getElementById("indexeddb-recordkey").value;
+		}
+		
+		//var key = document.querySelector("#key").value;
+		//if(key === "" || isNaN(key)) return;
+		//var request = store.get(Number(key));
+		
+		get_record( dbname, store_name, key );
+	}//end event
+	
+	document.getElementById("indexeddb-get-record-key-string").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var key = document.getElementById("indexeddb-recordkey").value;
+console.log( key, typeof key );
+		get_record( dbname, store_name, key );
+	}//end event
+	
+	document.getElementById("indexeddb-clear-store").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		clear_store( dbname, store_name );
+	}//end event
+	
+	document.getElementById("indexeddb-delete-store").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var version = parseInt( document.getElementById("indexeddb-ver").value );
+		delete_store( dbname, store_name, version );
+	}//end event
+	
+};//end window.load
+	</script>
+</head>
+
+<body>
+	<div class="container">
+
+		
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h1>Test IndexedDB</h1>
+			</div>
+			<div class="panel-body">
+				
+<pre>		
+https://developer.mozilla.org/ru/docs/IndexedDB/Using_IndexedDB
+http://habrahabr.ru/post/213515/
+https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore
+
+ff, DB disk location:
+"C:\Users\laptev\AppData\Roaming\Mozilla\Firefox\Profiles\yc4zqh79.default\storage\default\http+++172.16.1.194\idb\*.sqlite"
+</pre>
+				<div class="row">
+					<pre>
+Версия определяет схему базы данных - хранилище объектов  и их структуру . 
+Если база данных еще не существует, то она создается операцией open, 
+затем срабатывает триггер события onupgradeneeded и после этого  ваш обработчик 
+этого события создает схему базы данных. 
+Если же база данных уже существует, а вы указываете новый номер версии, 
+то сразу же срабатывает триггер события onupgradeneeded, позволяя вам обновить 
+схему базы данных в обработчике.
+					</pre>
+					<p class="mark">
+Когда вы увеличиваете номер версии, будет инициировано событие onupgradeneeded. 
+В этот момент БД будет хранить старые объекты. 
+Но для всякого объекта прошлой версии стоит создать новый объект, 
+совместимый с новой версией. 
+Если вам необходимо исправить существующий объект в БД (
+например, для изменения keyPath), то вы можете удалить объект и создать его вновь 
+с новыми параметрами 
+(помните, что удаление стирает информацию, так что не забывайте сохранять то, 
+что вам нужно).					
+					</p>
+					<pre>
+https://developer.mozilla.org/ru/docs/Web/API/IDBFactory/open					
+version
+    Optional. The version to open the database with. 
+	If the version is not provided and the database exists, 
+	then a connection to the database will be opened without changing its version. 
+	If the version is not provided and the database does not exist, then it will be 
+	created with version 1.					
+					</pre>
+				</div>
+
+			</div>
+			
+			
+		</div>
+	
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3>test parameters</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<label class="col-xs-2">db name:</label>
+					<div class="col-xs-10">
+						<input class="form-control" id="indexeddb-name" value="mobapp"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<label class="col-xs-2">Object store name:</label>
+					<div class="col-xs-10">
+						<input class="form-control" id="indexeddb-store" value="ObjectStore1"/>
+					</div>
+					<pre>
+PANT
+SIMPLE_SPR
+PMLP_ADR_LVL_1
+PMLP_ADR_LVL_2
+PMLP_ADR_LVL_3
+PMLP_ADR_LVL_4
+SL_KLASS_PERM
+SL_KODIF
+SL_LUS
+SL_TILTS
+SYSTEM_CFG
+					</pre>
+				</div>
+				
+				<div class="row">
+					<label class="col-xs-2">DB version:</label>
+					<div class="col-xs-10">
+						<input class="form-control" id="indexeddb-ver" value=""/>
+<button id="indexeddb-get-version" class="btn btn-info">get version info</button>
+Current DB version: <span id="current-version"></span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row panel-body">
+				<label class="col-xs-2">Key:</label>
+				<div class="col-xs-10">
+					<input class="form-control" id="indexeddb-recordkey" value=""/>
+					<pre>1, key1</pre>
+				</div>
+			</div>
+			
+			<div class="row">
+				<label class="col-xs-2">Value:</label>
+				<div class="col-xs-10">
+					<input class="form-control" id="indexeddb-value"/>
+				</div>
+				<p>
+{"SL_LUS_ID":"1122521", "LUS_TYPE":"IF", "OPER":"=", "TRUE_LUS_ID":"1123541", "FALSE_LUS_ID":"", "P1":"advancedForm.sl_valsts", "P2":"LUX", "ENTRY_NAME":"EUCARIS_ENABLE"}
+				</p>
+			</div>
+			
+		</div>
+
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3>test operation</h3>
+			</div>
+			
+			<button id="indexeddb-connect" class="btn btn-primary">create DB & object store in database</button>
+			<button id="indexeddb-delete-store" class="btn btn-danger">delete object store</button>
+			<button id="indexeddb-drop" class="btn btn-danger">drop database</button>
+
+			<div class="btn-group">
+				<button id="indexeddb-add" class="btn btn-primary">add value(record)</button>
+				<button id="indexeddb-delete-record" class="btn btn-warning">delete record</button>
+				<button id="indexeddb-clear-store" class="btn btn-primary">clear object store</button>
+			</div>
+			
+			<div class="btn-group">
+				<button id="indexeddb-get-record" class="btn btn-success">get record (typeof key - number)</button>
+				<button id="indexeddb-get-record-key-string" class="btn btn-info">get record (typeof key - string)</button>
+			</div>
+			
+			<div id="result"></div>
+			
+		</div>
+
+		<div id="log-wrap" class="panel panel-primary">
+			<div id="log"></div>
+		</div>
+		
+	</div><!-- end container -->
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿CACHE MANIFEST
+# version 44
+
+CACHE:
+# Defines resources to be cached.
+scripts/main.js
+images/img1.jpg
+
+FALLBACK:
+# Defines resources to be used if non-cached
+# resources cannot be downloaded, for example
+# when the browser is offline..
+css/bootstrap336.css css/offline.css
+/ offline.html
+
+NETWORK:
+# Defines resources that will not be cached.
+#figure3.png
+appcache.manifest
+*

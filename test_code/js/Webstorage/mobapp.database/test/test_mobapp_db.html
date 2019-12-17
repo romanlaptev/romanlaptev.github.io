@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/test_mobapp_db.js"></script>
+	<script>
+function createRequestObject(){
+
+	var request = false;
+	if (window.XMLHttpRequest) { // Mozilla, Safari, Opera ...
+		request = new XMLHttpRequest();
+	} 
+
+	if(!request) { // IE
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	if(!request) {
+		request=new ActiveXObject('Msxml2.XMLHTTP');
+	}
+	return request;
+}//end createRequestObject()
+
+window.onload = function(){
+	//var dbname = "mobapp";
+	var dbname = document.getElementById("indexeddb-name").value;
+	var params = {
+		"dbname":dbname
+	};
+//console.log( typeof DB );	
+	DB( params );
+	
+	if ( 'localStorage' in window && window['localStorage'] !== null ){
+			var storage_length = localStorage.length;
+var message = "Number elements in LocalStorage : " + storage_length;
+console.log(message);				
+log.innerHTML += "<p class='text-info'>" + message + "</p>";
+		} else {
+alert("Your browser does not have support localStorage");
+		}
+	
+
+	document.getElementById("btn-load").onclick = function(){
+		var url = document.getElementById("input_file").value;
+		var pos_last_dot = url.lastIndexOf(".");
+		var pos_last = url.length;
+		var type = url.substring( pos_last_dot + 1, pos_last );
+					
+		var xhr = createRequestObject();
+		xhr.open("GET", url, true);
+		xhr.onreadystatechange = function(){
+//console.log("State:" + xhr.readyState );
+			if( xhr.readyState === 4){
+//console.log("Status: " + xhr.status );
+				if( xhr.status === 200){
+					//document.getElementById("log").innerHTML += xhr.responseText;
+					
+					var data = xhr.responseText;
+					//var pos_last_slash = url.lastIndexOf("/");
+					//var pos_last = url.length;
+					//var store_name = url.substring( pos_last_slash + 1, pos_last );
+					document.getElementById("search-store").value = document.getElementById("store-name").value;
+					
+					var params = {
+						"dbname" : document.getElementById("indexeddb-name").value,
+						"storename": document.getElementById("store-name").value,
+						"load_data" : data,
+						"import_type" : type//,
+						//"fields" : [
+							//{"name":"kod","unique":true},
+							//{"name":"text","unique":false}
+						//]
+					};
+					add_data( params );
+				}
+			}
+		};
+		xhr.send();
+	}//end event
+	
+/*	
+	document.getElementById("btn-search-code").onclick = function(){
+		var params = {
+			"dbname" : document.getElementById("indexeddb-name").value,
+			"store_name" : document.getElementById("search-store").value,
+			"code" : document.getElementById("search-code").value,
+			"use_index" : document.getElementById('use-index').checked,
+			"use_cursor" : document.getElementById('use-cursor').checked
+		};
+		search( params );
+	}//end event
+*/	
+	document.getElementById("btn-search").onclick = function(){
+		var n = document.getElementById("search-field").options.selectedIndex;
+		var search_field = document.getElementById("search-field").options[n].value;
+		var params = {
+			"dbname" : document.getElementById("indexeddb-name").value,
+			"store_name" : document.getElementById("search-store").value,
+			"search_value" : document.getElementById("search-value").value,
+			"search_field" : search_field, // catalog fields name - 'text', 'kod'....., required
+			"use_index" : document.getElementById('use-index').checked,
+			"use_cursor" : document.getElementById('use-cursor').checked
+		};
+		search( params );
+	}//end event
+	
+	document.getElementById("indexeddb-drop").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		drop_db( dbname );
+	}//end event
+
+	document.getElementById("indexeddb-delete-store").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var params = {
+			"dbname":dbname,
+			"store_name":store_name,
+			"action":"delete_store"
+		};
+		DB( params );
+	}//end event
+	
+	document.getElementById("indexeddb-delete-record").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var recordkey = parseInt( document.getElementById("indexeddb-recordkey").value );
+console.log(recordkey);
+		if( isNaN(recordkey) ){
+			var recordkey = document.getElementById("indexeddb-recordkey").value;
+		}
+		var params = {
+			"dbname":dbname,
+			"store_name":store_name,
+			"action":"delete_record",
+			"key" : recordkey
+		};
+		DB( params );
+		
+	}//end event
+	
+	document.getElementById("indexeddb-get-record").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var recordkey = parseInt( document.getElementById("indexeddb-recordkey").value );
+console.log(recordkey);
+		if( isNaN(recordkey) ){
+			var recordkey = document.getElementById("indexeddb-recordkey").value;
+		}
+		var params = {
+			"dbname":dbname,
+			"store_name":store_name,
+			"action":"get_record",
+			"key" : recordkey
+		};
+		DB( params );
+	}//end event
+	
+	document.getElementById("indexeddb-get-num-records").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var storename = document.getElementById("indexeddb-store").value;
+		var params = {
+			"dbname":dbname,
+			"store_name":storename,
+			"action":"number_records",
+			"callback":function( num ){ 
+console.log("number_records, callback function.");
+				var html = "<p class='text-info'>";
+				html += "Database <b>"+dbname+"</b>, ";
+				html += "object store <b>" +storename+ "</b>, ";
+				html += "<b>"+num+"</b> records, ";
+				html += "</p>";
+				log.innerHTML += html;
+			}
+		};
+		DB( params );
+		
+	};//end event
+	
+	
+	document.getElementById("indexeddb-get-records").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		
+		var exec_start = new Date();
+		var params = {
+			"dbname":dbname,
+			"store_name":store_name,
+			"action":"get_records",
+			"callback" : function( result ){ 
+//console.log("get_records, callback function.....", arguments);
+				out_text( result );
+				
+			}
+		};
+		
+		DB( params );
+		
+		function out_text( res ){
+			var exec_end = new Date();
+			var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+			var html = "";
+			html += "<div class='text-info'>";
+			html += "<b>search time:</b> " + runtime_s + " sec";
+			if( res.length > 0 ){
+				html += "<ol>";
+				for( var n = 0; n < res.length; n++){
+//console.log( res[n] );
+					html += "<li>";
+					for( var item in res[n]){
+						html += res[n][item] + " ";
+					}
+					html += "</li>";
+				}//next
+				html += "</ol>";
+			} else {
+				html += "<p class='text-danger'>not found</p>";
+			}
+			html += "</div>";
+			document.getElementById("search-result").innerHTML = html;
+		}//end out_text()
+		
+	}//end event
+
+	document.getElementById("indexeddb-clear-store").onclick = function(){
+		var dbname = document.getElementById("indexeddb-name").value;
+		var store_name = document.getElementById("indexeddb-store").value;
+		var params = {
+			"dbname":dbname,
+			"store_name":store_name,
+			"action":"clear_store"
+		};
+		DB( params );
+		
+	}//end event
+	
+//localstorage
+
+	document.getElementById("btn-localstorage-clear").onclick = function(){
+		if ( 'localStorage' in window && window['localStorage'] !== null ) {
+//alert("LocalStorage is supported");
+			localStorage.clear();
+console.log(window.localStorage);
+		}
+		else {
+alert("Your browser does not have support localStorage");
+		}
+	}//end event
+	
+	document.getElementById("btn-localstorage-list").onclick = function(){
+		if ( 'localStorage' in window && window['localStorage'] !== null ){
+console.log(window.localStorage);
+for(var item in localStorage)
+{
+console.log(item, localStorage[item]);
+}
+		} else {
+alert("Your browser does not have support localStorage");
+		}
+	}//end event
+/*
+	document.getElementById("btn-localstorage-add").onclick = function(){
+		if ( 'localStorage' in window && window['localStorage'] !== null ){
+			localStorage.setItem("a", 1);
+			localStorage.setItem("b", 2);
+			localStorage["c"] = 3;
+			console.log(window.localStorage);
+			for(var item in localStorage)
+			{
+			console.log(item, localStorage[item]);
+			}
+		} else {
+alert("Your browser does not have support localStorage");
+		}
+	}//end event
+*/
+	document.getElementById("btn-localstorage-load").onclick = function(){
+		if ( 'localStorage' in window && window['localStorage'] !== null ){
+		
+			var exec_start = new Date();
+			
+			var url = document.getElementById("json_file").value;
+			var xhr = createRequestObject();
+			xhr.open("GET", url, true);
+			xhr.onreadystatechange = function(){
+//console.log("State:" + xhr.readyState );
+				if( xhr.readyState === 4){
+//console.log("Status: " + xhr.status );
+					if( xhr.status === 200){
+						//document.getElementById("log").innerHTML += xhr.responseText;
+						var json = xhr.responseText;
+						var key = document.getElementById("store-name").value;
+						try{
+							localStorage.setItem( key, json );
+							
+							var exec_end = new Date();
+							var runtime_s = (exec_end.getTime() - exec_start.getTime()) / 1000;
+							
+							var html = "";
+							html +="<p class='text-success'>Load data from " + url + ' in localStorage with key <b>' + key +'</b>';
+							html += ", runtime: <b>" + runtime_s + "</b> sec";
+							html += "</p>";
+							log.innerHTML += html;
+							
+						}catch(e){
+							if( isQuotaExceeded(e) )
+							{
+								log.innerHTML += "<p class='text-danger'>QuotaExceededError, no save " + key + ", " + e.message +"</p>";
+							}
+						}
+						
+					}
+				}
+			};
+			xhr.send();
+		} else {
+alert("Your browser does not have support localStorage");
+		}
+	}//end event
+	
+};//end window.load
+	</script>
+<style>
+#progress {
+/*
+position:fixed;
+top:10px;
+right:10px;
+width:30%;
+opacity:0.5;
+*/
+border:1px dashed;
+padding:30px;
+bacrgound-color:#cfe;
+}
+</style>
+	
+</head>
+
+<body>
+<div class="container">
+
+	<div class="page-header">
+		<h1>Test MobApp DB</h1>
+	</div>
+
+	
+	<div id="log-wrap" class="panel panel-info">
+		<div class="panel-heading clearfix">
+			<h3 class="pull-left">log panel</h3>
+			<button id="clear-log" class="btn btn-danger btn-sm pull-right" onclick="log.innerHTML='';">clear</button>
+		</div>
+		<div id="log" class="panel-body"></div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>загрузить справочник в хранилище объектов ( object store )</h3>
+		</div>
+		
+		<div class="panel-body">
+		
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<label>входные данные:</label>
+					<input class="form-control" id="input_file" value=""/>
+	<pre>
+data/test.json
+data/test.csv
+data/test.txt
+data/test_1mb.txt
+data/test_1mb.json
+data/test_1mb_2.json
+data/test_20mb.json
+
+data/PMLP_ADR_LVL_4.json
+data/PMLP_ADR_LVL_4_translit.json
+data/PMLP_ADR_LVL_4.csv
+	</pre>
+				</div>
+			</div>
+
+
+			<div id="progress">
+				<p id="progress-txt"></p>
+				<span id="num-record"></span>
+			</div>
+
+			<label>идентификатор справочника (название хранилища объектов):</label>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<input class="form-control" id="store-name" value="test1"/>
+				</div>
+				<div class="col-sm-2 col-md-2">
+					<button id="btn-load" class="btn btn-primary">загрузить в IndexedDB</button>
+				</div>
+				<div class="col-sm-2 col-md-2">
+					<button class="btn btn-info" id="btn-localstorage-load">load data in localStorage</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+		
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3>поиск по загруженным справочникам ( данные из хранилища объектов )</h3>
+		</div>
+		<div class="panel-body row">
+		
+			<div class="clearfix">
+				<label class="col-sm-2 col-md-2">ид справочника: <span class="text-danger">*</span></label>
+				<div class="col-sm-4 col-md-4">
+					<input class="form-control" id="search-store" value=""/>
+				</div>
+				<div class="col-sm-4 col-md-4">
+					<b>список загруженных справочников:</b>
+					<div class="mark" id="store-list2"></div>
+				</div>
+			</div>
+			
+		</div>
+		
+
+	<div class="panel-body row">
+	
+		<div class="col-sm-12 col-md-12">
+<!--		
+			<div class="panel row">
+				<label class="col-sm-2 col-md-2">код:</label>
+				<div class="col-sm-6 col-md-6">
+					<input class="form-control" id="search-code"/>
+					<small>точное соответствие при использовании индекса</small>
+				</div>
+				<div class="col-sm-2 col-md-2">
+					<button id="btn-search-code" class="btn btn-primary">поиск</button>
+				</div>
+			</div>
+-->
+			
+			<div class="panel row">
+				<div class="col-sm-6 col-md-6">
+				
+					<label>значение:</label>
+					<input class="form-control" id="search-value"/>
+					
+					<label>поле поиска(необх. для подключения индекса), text, kod</label>
+					<select id="search-field" name="search_field" class="form-control">
+						<option value="text">text</option>
+						<option value="kod">kod</option>
+					</select>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<li><small>без использования индекса - полнотекстовый поиск по подстроке (LIKE '%строка%')</small></li>
+					<li><small>при использовании индекса - поиск LIKE 'строка%'</small></li>
+				</div>
+			</div>
+			
+			<div class="panel row">
+				<div class="col-sm-3 col-md-3">
+	<input type="checkbox" id="use-index">
+	<label>использовать индексы</label>
+				</div>
+				
+				<div class="col-sm-3 col-md-3">
+	<input type="checkbox" id="use-cursor" checked="checked">
+	<label>использовать в процессе поиска метод чтения курсора (для FF, Chrome отключение ускорит поиск)</label>
+				</div>
+				
+				<div class="col-sm- col-md-2">
+					<button id="btn-search" class="btn btn-primary">поиск</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+		
+		<div class="panel-heading">
+			<h4>результаты поиска</h4>
+		</div>
+		<div class="panel-body">
+			<button id="clear-search" class="btn btn-danger btn-sm pull-right" onclick="document.getElementById('search-result').innerHTML='';">clear</button>
+			<div id="search-result"></div>
+		</div>
+	</div>
+
+	
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<h3>параметры БД</h3>
+		</div>
+		<div class="row panel-body">
+			<label class="col-sm-2 col-md-2">DB name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="indexeddb-name" value="mobapp"/>
+			</div>
+			<div class="col-sm-2 col-md-2">
+				<button id="indexeddb-drop" class="btn btn-danger">drop database</button>
+			</div>
+		</div>
+		
+		<div class="row panel-body">
+			<label class="col-sm-2 col-md-2">DB object store name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="indexeddb-store" value=""/>
+				<button id="indexeddb-delete-store" class="btn btn-danger">delete object store</button>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<b>list object stores</b>
+				<div class="mark" id="store-list"></div>
+			</div>
+			<div class="col-sm-2 col-md-2">
+			</div>
+		</div>
+		
+		<div class="row panel-body">
+			<label class="col-sm-2 col-md-2">DB record key:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="indexeddb-recordkey" value=""/>
+			</div>
+			<button id="indexeddb-get-record" class="btn btn-info">get record</button>
+			<button id="indexeddb-get-records" class="btn btn-success">get all records</button>
+			<button id="indexeddb-get-num-records" class="btn btn-info">num records</button>
+			<button id="indexeddb-delete-record" class="btn btn-warning">delete record</button>
+			<button id="indexeddb-clear-store" class="btn btn-primary">clear object store</button>
+		</div>
+		
+		<div class="row panel-body">
+<button class="btn btn-primary" id="btn-localstorage-clear">clear localStorage</button>
+<!--
+<button class="btn btn-primary" id="btn-localstorage-add">add items in localStorage</button>
+-->
+<button class="btn btn-primary" id="btn-localstorage-list">list items in localStorage</button>
+		</div>
+		
+	</div>
+		
+	<div class="panel panel-default">
+		<pre>
+Расположение БД в файловой системе:
+
+Desktop, win7
+
+FF - 
+"C:\Users\username\AppData\Roaming\Mozilla\Firefox\Profiles\yc4zqh79.default\storage\default\http+++172.16.1.194\idb\2034112231mpopba.sqlite"
+"C:\Users\username\AppData\Roaming\Mozilla\Firefox\Profiles\qkijzsgw.default\indexedDB"
+
+загрузка справочника с данными 1,84 мб, 46384 records ( runtime: 5.374 sec ), строки в JSON формате
+файловый размер хранилища 2034112231mpopba.sqlite 
+9,14 МБ, 5,07 МБ без 2 индексов
+
+загруженные данные 3,68 мб
+файловый размер хранилища 2034112231mpopba.sqlite 
+18,4 МБ, 10,1 МБ без 2 индексов
+
+загруженные данные 5,52 мб
+файловый размер хранилища 2034112231mpopba.sqlite 
+27,7 МБ, 15,2 МБ без 2 индексов
+
+загруженные данные 7,36 мб
+файловый размер хранилища 2034112231mpopba.sqlite 
+36,9 МБ, 20,3 МБ без 2 индексов
+
+-----------------
+
+Chrome - 
+"C:\Users\username\AppData\Local\Google\Chrome\User Data\Default\IndexedDB\http_172.16.1.194_0.indexeddb.leveldb"
+
+загрузка справочника с данными 1,84 мб, 46384 records ( runtime: 5.31 sec ), строки в JSON формате
+файловый размер хранилища: domain.indexeddb.leveldb (8,68 МБ)
+
+загруженные данные 3,68 мб
+файловый размер хранилища: domain.indexeddb.leveldb (16,4 МБ)
+
+загруженные данные 5,52 мб
+файловый размер хранилища: domain.indexeddb.leveldb (24,3 МБ)
+
+загруженные данные 7,36 мб
+файловый размер хранилища: domain.indexeddb.leveldb (32,1 МБ)
+
+----------------
+
+IE - 
+"C:\Users\username\AppData\Local\Microsoft\Internet Explorer\Indexed DB"
+
+- после загрузки 2-го мб данных, появляется запрос на разрешение использовать дополнительное место
+отказ вызвал событие "transaction.onabort, QuotaExceededError!", "Database opening aborted!"
+
+1.загрузка справочника с данными 1,84 мб, 46384 records ( runtime: 38.5 sec ), строки в JSON формате
+файловый размер хранилища:  
+52,0 МБ, 32,5 МБ без 2 индексов
+
+2.
+загруженные данные 3,68 мб
+файловый размер хранилища: 
+64,5 МБ, 36,0 МБ без 2 индексов
+
+3.
+загруженные данные 5,52 мб
+файловый размер хранилища: 
+84,0 МБ, 47,5 МБ без 2 индексов
+
+4.
+загруженные данные 7,36 мб
+файловый размер хранилища: 
+102 МБ, 54,5 МБ без 2 индексов
+
+5.
+загруженные данные 9,2 мб
+файловый размер хранилища: 
+118 МБ, 62,5 МБ без 2 индексов
+
+......
+10.
+загруженные данные 18,4 мб
+файловый размер хранилища: 
+164 МБ, 96,5 МБ без 2 индексов
+
+....
+15.
+загруженные данные 27,6 мб
+файловый размер хранилища: 
+127 МБ, 132 МБ без 2 индексов
+
+загрузка 16 справочника (38-го при загрузке без создания индексов) вызвало событие 
+"transaction.onabort, QuotaExceededError!", "Database opening aborted!"
+создание базы с другим именем также вызвало исключение
+
+----------------
+
+EDGE (desktop, virtualbox)
+"C:\Users\username\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AppData\User\Default\Indexed DB\IndexedDB.edb"
+
+загрузка справочника с данными 1,84 мб 
+- файловый размер хранилища: IndexedDB.edb(18 мб) + лог-файлы = 57,5 мб
+
+загрузка 2 справочников ( 3,68 мб ) 
+- файловый размер хранилища: IndexedDB.edb(35 мб) + лог-файлы = 74 мб
+
+загрузка 3 справочников ( 5,52 мб ) 
+- файловый размер хранилища: IndexedDB.edb(52 мб) + лог-файлы = 90 мб
+
+загрузка 4 справочников ( 7,36 мб ) вызвало сообщение transaction.onabort QuotaExceededError!, 
+файловый размер хранилища: IndexedDB.edb(68 мб) + лог-файлы = 80 мб
+
+т.е. загружаемые данные на порядок увеличиваются
+
+сохранение в цикле строки размером 1024 байт (не строятся индексы и простой формат данных):
+- 20 мб за 15,289 сек, данные доступны, 20480 records, файловый размер хранилища: IndexedDB.edb(91 мб)
+- 22 мб за 15,936 сек, данные доступны, 22527 records, файловый размер хранилища: IndexedDB.edb(112 мб)!!!!!!!!!!!!!!!!
+- 23 мб за 18 сек, данные недоступны
+- 25 мб за 19 сек, данные недоступны, файловый размер хранилища: IndexedDB.edb(124 мб)
+- 40 мб за 30,5 сек, данные недоступны
+
+-----------------
+Lumia 550
+Windows Phone 10
+EDGE
+
+загрузка справочника с данными 1,84 мб  (runtime: 46,3 sec)
+- загрузка с созданием индексов вызывает сообщение о превышении квоты
+- загрузка без создания индексов вызывает сообщение о превышении квоты для 2-го справочника
+поиск строки "ZEM" без индексов через 48 сек выдал 457 совпадений
+
+добавление 100000 х 64 байта записей - 3 мин
+записи не читаются....
+
+сохранение в цикле строки размером 1024 байт (не строятся индексы и простой формат данных):
+- 10 мб за 26,263 сек (1024*10), данные не читаются
+- 5119 строк, 5 мб за 16,692 сек, данные не читаются, 0 records
+- 4404 строк, 4.3 мб за 6.96 сек, данные доступны, 4404 records!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- 4095 строк, 4 мб за 10,075 сек, данные доступны, 4096 records
+- 3071 строк, 3 мб за 7,639 сек, данные доступны, 3072 records
+- 2047 строк, 2 мб за 3.2-5,6 сек, данные доступны, 2048 records
+------------------
+NOKIA Lumia 720
+Windows Phone 8.1, IE Mobile 11
+
+загрузка справочника с данными 1,84 мб  (runtime: 66 sec)
+5x1.84 = 9,2 мб
+
+поиск без индексов по справочнику улиц, runtime: 60 s
+
+<h3>настройка очистки кэша при выходе из браузера должна быть отключена!!!! не сохраняется БД</h3>
+
+data/test_1mb.txt
+test_mobapp_db.html
+Database mobapp, object store test2, add 35841 records, total size: 1048576 bytes (1004544 symbols), 1024.00 Kb, runtime: 1.455 sec
+
+test_idb.html
+Total time: 1.365 sec.
+Bytes: 1048576,kbytes: 1024.00
+Store test1 contains 35841 records.
+
+transaction.oncomplete
+Total time: 1.306 sec.
+1004544 bytes stored.
+Store test1 contains 35841 records.
+
+transaction.oncomplete
+Total time: 1.402 sec.
+1048576 bytes stored.
+Store test1 contains 35841 records.
+
+data/test_1mb_.txt
+Total time: 0.096 sec.
+2096128 bytes stored.?????????????????????
+Store test1 contains 1023 records.
+
+файл из большого кол-ва коротких строк (data/test_1mb.txt, 1048576 bytes, 35841 records, 1.342 sec)
+будет импортирован в БД медленее чем
+файл из меньшего кол-ва строк, но с таким же объемом информации (data/test_1mb_.txt, 1049596 bytes, 1024 records, 0.096 sec)
+
+
+================================= TEST IE 10
+
+data/test_1mb.txt 
+после загрузки данных,  БД занимает 5 мб, 
+IE10, Internet options - Settings - Caches and databases)
+
+data/test_1mb.json
+1024 строки размером 1024 байта, общий размер 1 мб, время импорта - 0,03 - 0,3 сек
+после загрузки данных,  БД занимает 3 мб, 
+IE10, Internet options - Settings - Caches and databases
+
+data/test_1mb_2.json 
+19821 строка размером 52 байта, общий размер 0,98 мб, время импорта - 0,8 - 2,9 сек
+после загрузки данных,  БД занимает 4 мб, 
+IE10, Internet options - Settings - Caches and databases
+
+data/test_20mb.json
+после загрузки данных ( 70-90 сек),  БД занимает 47 мб, 
+IE10, Internet options - Settings - Caches and databases
+
+		</pre>
+	</div>
+
+		
+</div><!-- end container -->
+</body>
+</html>

@@ -5,18 +5,60 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-echo "<pre>";
+//echo "<pre>";
 //print_r ($_SERVER);
-print_r ($_REQUEST);
-print_r($_FILES);
-echo "</pre>";
+//print_r ($_REQUEST);
+//print_r($_FILES);
+//echo "</pre>";
 
-	// $action = "";
-	// if( !empty($_REQUEST['action']) ){
-		// $action = $_REQUEST['action'];
-	// } else {
-		// $_vars["log"][] = "{\"error_code\" : \"noaction\", \"message\" : \"error, undefined var 'action'\"}";
-	// }
+$_vars=array();
+$_vars["log"] = array();
+
+$action = "";
+if( !empty($_REQUEST['action']) ){
+	$action = $_REQUEST['action'];
+} else {
+	$_vars["log"][] = "{\"error_code\" : \"noaction\", \"message\" : \"error, undefined var 'action'\"}";
+}
+
+switch ($action){
+	case "save_message":
+		//saveNote();
+echo "<pre>";
+print_r ($_REQUEST);
+echo "</pre>";
+	break;
+	
+	case "upload":
+		//uploadFile();
+	break;
+	
+	default:
+		$_vars["log"][] = "{\"error_code\" : \"wrong_action\", \"message\" : \"wrong action...\"}";
+	break;
+}//end switch
+
+viewLog();
+//=========================================== end
+
+//output log in JSON format
+function viewLog(){
+	global $_vars;
+	
+	if( count( $_vars["log"] ) > 0){
+		 $logStr = "[";
+		for( $n = 0; $n < count( $_vars["log"] ); $n++){
+			if( $n > 0){
+				$logStr .= ", ";
+			}
+			$logStr .= $_vars["log"][$n];
+		}
+		$logStr .="]";
+		// logStr = logStr.Replace("\\", "&#92;");//replace slash			
+		//$logStr = str_replace("`", "&#39", $logStr);//replace apostrophe
+		echo $logStr;
+	}
+}//end viewLog
 
 /*
 function uploadFile(){

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!--	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+-->	
+
+    <script>
+/*
+		try{
+			window.indexedDB.open = null;
+		} 
+		catch(e){ 
+			console.log("not support indexedDB");
+			console.dir(e);
+		}
+		
+		try {
+			window.localStorage.setItem = null;
+		} 
+		catch(e){
+			console.log("not support localStorage");
+			console.dir(e);
+		}
+		try {
+			window.openDatabase = null;
+		} 
+		catch(e)
+		{
+			console.log("Your browser does not have support for WebSQL");
+			console.dir(e);
+		}
+*/		
+    </script>
+
+    <script src="localforage.js"></script>
+	<script>
+//fix ie8 
+if (!window.console){ console = {log: function() {}} };
+
+	function test_storage() {
+	  try {
+		return 'localStorage' in window && window['localStorage'] !== null;
+	} catch (e) {
+console.dir(e);	
+		return false;
+	  }
+	}
+
+	// Force localStorage to be the backend driver.
+	//localforage.setDriver(localforage.LOCALSTORAGE);
+
+	// Supply a list of drivers, in order of preference.
+	//localforage.setDriver([localforage.WEBSQL, localforage.INDEXEDDB]);
+
+	localforage.ready(function() {
+		console.log('localForage ready', arguments);
+		console.log('localforage.driver():', localforage.driver());
+
+	});
+	
+window.onload = function(){
+
+	if( document.querySelector)
+	{
+		var list = document.querySelector("#list");
+		var input_key = document.querySelector("#key");
+		var input_value = document.querySelector("#value");
+	}
+	else
+	{
+		var list = document.getElementById("list");
+		var input_key = document.getElementById("key");
+		var input_value = document.getElementById("value");
+	}
+
+	localforage.length(function(err, numberOfKeys) {
+console.log(numberOfKeys);
+console.dir(err);
+		out = 'length of the database - ' + numberOfKeys;
+		list.innerHTML = out;
+	});
+	
+	document.getElementById("localstorage-btn1").onclick = function(){
+		var test = test_storage();
+		if (!test)
+		{
+alert("Your browser does not have support localStorage");
+		}
+		else
+		{
+//alert("LocalStorage is supported");
+			localStorage.clear();
+console.log(window.localStorage);
+			document.getElementById("localstorage-btn3").click();
+		}
+	}
+	
+	document.getElementById("localstorage-btn2").onclick = function(){
+		var test = test_storage();
+		if (!test)
+		{
+alert("Your browser does not have support localStorage");
+		}
+		else
+		{
+			try 
+			{
+				localStorage.setItem("a", 1);
+				localStorage.setItem("b", 2);
+				localStorage["c"] = 3;
+			} 
+			catch (e) 
+			{
+				if (e.description == 'QUOTA_EXCEEDED_ERR') {
+					alert('localStorage: QUOTA_EXCEEDED_ERR');
+				} else {
+					alert('localStorage: undefined error');
+				}
+			}
+			
+console.log(window.localStorage);
+			document.getElementById("localstorage-btn3").click();
+		}
+	}//end event
+	
+	document.getElementById("localstorage-btn3").onclick = function(){
+		var out = "";
+		if( localStorage.remainingSpace )
+		{
+			out += "remainingSpace = " + localStorage.remainingSpace + " bytes<br>";
+		}
+		else
+		{
+			out += "max size: (1024 * 1024 * 5) bytes <br>";
+		}
+		out += "data length = " + localStorage.length + "<br>";
+		
+		for(var item in localStorage)
+		{
+			out += "<li>";
+			out += item + " = " + localStorage[item];
+			out += "</li>";
+		}
+		list.innerHTML = out;
+	}//end event
+
+	document.getElementById("localforage-set").onclick = function(){
+		var key = input_key.value;
+		var value = input_value.value;
+		var out = "";
+        localforage.setItem(key, value, function() {
+console.log('Saved: ' + value);
+			out = 'Saved: ' + value;
+			list.innerHTML = out;
+         });
+	}//end event
+
+	document.getElementById("localforage-get").onclick = function(){
+		var key = input_key.value;
+		var out = "";
+        localforage.getItem(key, function(err, readValue) {
+console.log('Read: ', readValue);
+			out = 'Read ' + key + " = " + readValue;
+			list.innerHTML = out;
+         });
+	}//end event
+	
+	document.getElementById("localforage-remove").onclick = function(){
+		var key = input_key.value;
+		var out = "";
+        localforage.removeItem(key, function(err) {
+console.log("Remove " +key);
+console.dir(err);
+			out = 'Remove ' + key;
+			list.innerHTML = out;
+         });
+	}//end event
+	
+	document.getElementById("localforage-clear").onclick = function(){
+		var out = "";
+		localforage.clear(function(err) {
+console.log('Clear storage');
+console.dir(err);
+			out = 'Clear storage ';
+			list.innerHTML = out;
+		});
+	}//end event
+	
+	document.getElementById("localforage-key").onclick = function(){
+//Get the name of a key based on its ID.	
+		var keyIndex = parseInt( input_key.value );
+		localforage.key( keyIndex, function(err, keyName) {
+console.log(keyName);
+			out = 'keyName ' + keyName;
+			list.innerHTML = out;
+		});
+		 
+	}//end event
+	
+	document.getElementById("localforage-keys").onclick = function(){
+		// An array of all the key names.
+		var keyIndex = input_key.value;
+		localforage.keys( function(err, keys) {
+console.log(keys);
+			out = keys;
+			list.innerHTML = out;
+		});
+	}//end event
+	
+	document.getElementById("localforage-clear").onclick = function(){
+		var out = "";
+		localforage.clear(function(err) {
+console.log('Clear storage');
+console.dir(err);
+			out = 'Clear storage ';
+			list.innerHTML = out;
+		});
+	}//end event
+	
+	document.getElementById("localforage-iterate").onclick = function(){
+    // Resulting key/value pair -- this callback
+    // will be executed for every item in the
+    // database.
+		var out = "";
+		localforage.iterate(function(value, key, iterationNumber) {
+console.log([key, value]);
+			out += "<p>" + key + ' - ' + value + "</p>";
+		}, function(err) {
+			if (!err) {
+console.log('Iteration has completed');
+				out += '<p>Iteration has completed</p>';
+			}
+			list.innerHTML = out;
+		});
+		
+	}//end event
+	
+
+};//end window.load	
+		
+	</script>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>test localForage</h1>
+		</div>
+	
+		<div class="panel panel-success">
+<button id="localstorage-btn3" class="btn btn-primary">list localStorage</button>
+<button id="localstorage-btn1" class="btn btn-primary">clear localStorage</button>
+<button id="localstorage-btn2" class="btn btn-primary">add items in localStorage</button>
+		</div>
+<pre>
+https://mozilla.github.io/localForage/
+https://github.com/mozilla/localForage
+http://blog.teamtreehouse.com/using-localforage-offline-data-storage
+</pre>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h1>localForage methods</h1>
+			</div>
+			
+			key or keyIndex:<input class="form-control" id="key" type="text" value="">
+			value:<input class="form-control" id="value" type="text" value="">
+			
+			<button id="localforage-set" class="btn btn-info">set item</button>
+			<button id="localforage-get" class="btn btn-info">get item</button>
+			<button id="localforage-remove" class="btn btn-danger">remove item</button>
+			<button id="localforage-clear" class="btn btn-danger">clear storage</button>
+			<button id="localforage-key" class="btn btn-primary">key</button>
+			<button id="localforage-keys" class="btn btn-primary">all keys</button>
+			<button id="localforage-iterate" class="btn btn-primary">iterate</button>
+		</div>
+		
+		<div class="panel panel-info" id="list"></div>
+
+	</div><!-- end container -->
+
+</body>
+</html>

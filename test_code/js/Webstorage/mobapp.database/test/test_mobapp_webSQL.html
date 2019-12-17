@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru" debug="true">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<!--
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="js/test_mobapp_webSQL.js"></script>
+
+<script>
+</script>
+
+	<script>
+window.onload = function(){
+
+	if ( !window.openDatabase ) {
+		var msg = "<h2>Your browser does not have support for WebSQL!!!</h2>";
+		_log( msg );
+	} else {
+		init();
+	};
+	
+	var ua = document.getElementById("ua");
+	var tpl = ua.innerHTML;
+	var html = tpl
+	.replace("{{userAgent}}", navigator.userAgent);
+	//.replace("{{product}}", navigator.product)
+	//.replace("{{appCodeName}}", navigator.appCodeName)
+	//.replace("{{appName}}", navigator.appName)
+	//.replace("{{appVersion}}", navigator.appVersion)
+	//.replace("{{appMinorVersion}}", navigator.appMinorVersion)
+	//.replace("{{cookieEnabled}}", navigator.cookieEnabled)
+	//.replace("{{language}}", navigator.language)
+	//.replace("{{systemLanguage}}", navigator.systemLanguage)
+	//.replace("{{userLanguage}}", navigator.userLanguage)
+	//.replace("{{onLine}}", navigator.onLine)
+	//.replace("{{platform}}", navigator.platform)
+	//.replace("{{cpuClass}}", navigator.cpuClass)
+	//.replace("{{oscpu}}", navigator.oscpu);
+	ua.innerHTML = html;
+//---------------------------------
+
+	var tests = [];
+	
+	var test = {
+		"name" : "indexedDB support",
+		"result" : false
+	};
+	window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	if (!window.indexedDB) {
+		test["msg"] = "IndexedDB not supported";
+	} else {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "Web SQL database",
+		"result" : false
+	};
+	if (window.openDatabase) {
+		test["result"] = true;
+	}
+	tests.push(test);
+//--------------------------------------
+	var test = {
+		"name" : "is mobile device",
+		"result" : false
+	};
+	if ( navigator.userAgent.match(/Mobi/) ) {
+		test["result"] = true;
+		test["msg"] = "navigator.userAgent.match(/Mobi/) === true";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "touch supported",
+		"result" : false
+	};
+	var supportsTouch = false;
+	if ('ontouchstart' in window) {
+		test["result"] = true;
+		test["msg"] = "'ontouchstart' in window === true //iOS & android";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "msPointerEnabled",
+		"result" : false
+	};
+	if(window.navigator.msPointerEnabled) {
+		test["result"] = true;
+		test["msg"] = "window.navigator.msPointerEnabled === true //Windows 8";
+	}
+	tests.push(test);
+//--------------------------------------
+
+	var test = {
+		"name" : "detect Microsoft mobile device",
+		"result" : false
+	};
+	if( (navigator.maxTouchPoints > 0) || 
+			(navigator.msMaxTouchPoints > 0) ){
+		test["result"] = true;
+		test["msg"] = "maxTouchPoints > 0 || msMaxTouchPoints > 0";
+	}
+	tests.push(test);
+//--------------------------------------
+
+//console.log(tests);	
+
+	var test_tpl = document.getElementById("test-tpl").innerHTML;
+//console.log( test_tpl);	
+	var tests_out = document.getElementById("tests-out");
+	var html = "";
+	for (var n = 0; n < tests.length; n++){
+		if( tests[n] ){
+			var msg = tests[n]["msg"];
+			if(!msg){
+				var msg = "";
+			}
+			
+			html += test_tpl
+			.replace("{{name}}", tests[n]["name"])
+			.replace("{{result}}", tests[n]["result"])
+			.replace("{{msg}}", msg);
+		}
+	}//next
+	tests_out.innerHTML = html;
+	
+};//end window.load
+
+	</script>
+</head>
+
+<body>
+<div class="container">
+
+	<div class="page-header">
+		<h1>Test MobApp DB (WebSQL)</h1>
+	</div>
+
+	<div class="panel panel-primary">
+<!--	
+		<div class="panel-heading clearfix">
+			<h3 class="pull-left">Browser info</h3>
+		</div>
+-->		
+		<div class="panel-body">
+			<div id="ua">
+				<h4 class="text-center">{{userAgent}}</h4>
+		<!--		
+				<ul>
+		<li>navigator.product: <b>{{product}}</b></b></li>
+		<li>navigator.appCodeName: <b>{{appCodeName}}</b></li>
+		<li>navigator.appName: <b>{{appName}}</b></li>
+		<li>navigator.appVersion: <b>{{appVersion}}</b></li>
+		<li>navigator.appMinorVersion: <b>{{appMinorVersion}}</b></li>
+		<li>navigator.cookieEnabled: <b>{{cookieEnabled}}</b></li>
+		<li>navigator.language: <b>{{language}}</b></li>
+		<li>navigator.systemLanguage: <b>{{systemLanguage}}</b></li>
+		<li>navigator.userLanguage: <b>{{userLanguage}}</b></li>
+		<li>navigator.onLine: <b>{{onLine}}</b></li>
+		<li>navigator.platform: <b>{{platform}}</b></li>
+		<li>navigator.cpuClass: <b>{{cpuClass}}</b></li>
+		<li>navigator.oscpu: <b>{{oscpu}}</b></li>
+				</ul>
+		-->
+			</div>
+		</div>
+		
+		<div class="panel-body">
+			<ul id="tests-out">
+				<span id="test-tpl">
+					<li>
+<b>{{name}}</b> : <span class="text-info text-uppercase"><b>{{result}}</b></span> 
+<p><small>{{msg}}</small></p>
+					</li>
+				</span>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<div id="log-wrap" class="panel panel-primary">
+		<div class="panel-body">
+			<h3 id="wait" class="pull-left">Log messages:</h3>
+			<button id="clear-log" class="btn btn-danger btn-sm pull-right" onclick="log.innerHTML='';">clear</button>
+		</div>
+		<div id="log" class="panel-body"></div>
+	</div>
+
+	<div class="panel text-center">
+		<button id="btn-run-test" class="btn btn-warning btn-lg">Run test</button>
+	</div>
+	
+	<div class="panel panel-danger">
+	
+		<div class="panel-heading">
+			<h3>DB Admin</h3>
+		</div>
+	
+		<div class="row panel-body">
+			<label class="col-sm-2 col-md-2">DB name:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="dbname" value="mobapp"/>
+			</div>
+			<label class="col-sm-2 col-md-2">DB version:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="dbversion" value="1.0"/>
+			</div>
+			
+			<label class="col-sm-2 col-md-2">DB description:</label>
+			<div class="col-sm-4 col-md-4">
+				<input class="form-control" id="dbdesc" value="mobapp database"/>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<p class="mark">init DB size: 1 Mb</p>
+			</div>
+		</div>
+
+		<div class="row panel-body">
+			<label class="col-sm-2 col-md-2">table name:</label>
+			<input class="form-control" id="tablename" value="SL_KODIF"/>
+		</div>
+		
+		<div class="row panel-body">
+			<div class="col-sm-9 col-md-9">
+				<select size="10" class="form-control" id="sel1" onChange="_changeValue( 'tablename', this.options[this.selectedIndex].value );">
+					<option value="SL_KODIF" selected>SL_KODIF</option>
+					<option value="PANT">PANT</option>
+					<option value="PMLP_ADR_LVL_1">PMLP_ADR_LVL_1</option>
+					<option value="PMLP_ADR_LVL_2">PMLP_ADR_LVL_2</option>
+					<option value="PMLP_ADR_LVL_3">PMLP_ADR_LVL_3</option>
+					<option value="PMLP_ADR_LVL_4">PMLP_ADR_LVL_4</option>
+					<option value="SL_KLASS_PERM">SL_KLASS_PERM</option>
+					<option value="SIMPLE_SPR">SIMPLE_SPR</option>
+					<option value="SL_TILTS">SL_TILTS</option>
+					<option value="SL_LUS">SL_LUS</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-3 col-md-3 btn-group-vertical">
+				<button id="websql-create" class="btn btn-primary">create table</button>
+				<button id="websql-drop" class="btn btn-danger">drop table</button>
+				<button class="btn btn-primary" id="btn-insert">insert record</button>
+				<button class="btn btn-info" id="btn-select">SELECT * from table</button>
+			</div>
+			<p>&nbsp;</p>
+			<div class="">
+				<button id="btn-list" class="btn btn-info">list tables</button>
+				<button id="btn-drop-tables" class="btn btn-danger">drop ALL tables</button>
+			</div>
+		</div>
+		
+	</div>
+		
+	<div class="panel panel-primary">
+		<div class="panel-heading clearfix">
+			<h3 class="pull-left">Load catalog from local file</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-9 col-md-9">
+					<input class="form-control" id="input_file" value="../data/SL_KODIF.csv"/>
+					
+					<select size="10" class="form-control" id="sel2" onChange="_changeValue( 'input_file', this.options[this.selectedIndex].value );">
+						<option value="../data/SL_KODIF.csv" selected>SL_KODIF.csv</option>
+						<option value="../data/PANT.csv">PANT.csv</option>
+						<option value="../data/PMLP_ADR_LVL_1.csv">PMLP_ADR_LVL_1.csv</option>
+						<option value="../data/PMLP_ADR_LVL_2.csv">PMLP_ADR_LVL_2.csv</option>
+						<option value="../data/PMLP_ADR_LVL_3.csv">PMLP_ADR_LVL_3.csv</option>
+						<option value="../data/PMLP_ADR_LVL_4.csv">PMLP_ADR_LVL_4.csv</option>
+						<option value="../data/SL_KLASS_PERM.csv">SL_KLASS_PERM.csv</option>
+						<option value="../data/SIMPLE_SPR.csv">SIMPLE_SPR.csv</option>
+						<option value="../data/SL_TILTS.csv">SL_TILTS.csv</option>
+						<option value="../data/SL_LUS.csv">SL_LUS.csv</option>
+					</select>
+					
+				</div>
+				<div class="col-sm-3 col-md-3">
+					<button id="btn-load" class="btn btn-primary">load</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+		
+	<div class="panel">
+<style>
+textarea.form-control {
+height: 300px;
+}		
+</style>
+<!--
+<textarea  class="form-control" name="sql_code" id="sql-code"></textarea>
+-->
+
+<pre class="mark">
+SELECT * FROM table1
+SELECT * FROM SIMPLE_SPR LIMIT 2117,1
+
+CREATE TABLE IF NOT EXISTS table1 (food_name TEXT PRIMARY KEY, calories REAL, servings TEXT);
+
+CREATE TABLE people(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL DEFAULT "John Doe", shirt TEXT NOT NULL DEFAULT "Purple");
+insert into people (name, shirt) VALUES ("Joe", "Green");
+insert into people (name, shirt) VALUES ("Mark", "Blue");
+insert into people (name, shirt) VALUES ("Phil", "Orange");
+insert into people (name, shirt) VALUES ("jdoe", "Purple");
+
+DROP TABLE table1;
+CREATE TABLE tizenTable (id INTEGER PRIMARY KEY, title TEXT, content TEXT, insertDay DATETIME)
+</pre>
+
+	</div>
+		
+
+	<pre>
+	
+upload time:
+
+iPhone:
+	- SL_KODIF.csv, 48 строк, 6324 bytes, 0.191 c.
+	- PANT.csv, 4389 строк, 367 КБ (376 331 байт), 2.759 c.
+	- PMLP_ADR_LVL_1.csv, 166 строк, 5,81 КБ (5 958 байт), 0.234 c.
+	- PMLP_ADR_LVL_2.csv, 1695 строк, 130 КБ (133 811 байт), 1.119 c.
+	- PMLP_ADR_LVL_3.csv, 20201 строк, 1,76 МБ (1 849 741 байт), 14.782 c.
+	
+	- PMLP_ADR_LVL_4.csv, 46384 строк, 2,65 МБ (2 786 630 байт), 18.404 c.
+при загрузке запрос на увеличение места хранилища!!!	
+
+	- SL_KLASS_PERM.csv, 229 строк, 10,8 КБ (11 155 байт), 2.346 c.
+	- SIMPLE_SPR.csv,  строк, 1,33 МБ (1 398 706 байт), 15.12 c.
+	- SL_TILTS.csv, 1906 строк, 122 КБ (125 283 байт), 1.278 c.
+	- SL_LUS.csv,  575 строк, 73,5 КБ (75 357 байт), 0.076 c.
+	
+total: 6,88 МБ (7 223 747 байт), 56.309 c.
+---
+
+iPad:
+	- SL_KODIF.csv, 48 строк, 6324 bytes, 0.237 c.
+	- PANT.csv, 4389 строк, 367 КБ (376 331 байт), 1.982 c.
+	- PMLP_ADR_LVL_1.csv, 166 строк, 5,81 КБ (5 958 байт), 0.18 c.
+	- PMLP_ADR_LVL_2.csv, 1695 строк, 130 КБ (133 811 байт), 0.811 c.
+	- PMLP_ADR_LVL_3.csv, 20201 строк, 1,76 МБ (1 849 741 байт), 8.399 c.
+	- PMLP_ADR_LVL_4.csv, 46384 строк, 2,65 МБ (2 786 630 байт), 17.564 c.
+	- SL_KLASS_PERM.csv, 229 строк, 10,8 КБ (11 155 байт), 0.267 c.
+	- SIMPLE_SPR.csv,  строк, 1,33 МБ (1 398 706 байт), 10.82 c.
+	- SL_TILTS.csv, 1906 строк, 122 КБ (125 283 байт), 0.887 c.
+	- SL_LUS.csv,  575 строк, 73,5 КБ (75 357 байт), 0.423 c.
+	
+total: 6,88 МБ (7 223 747 байт), 41,57 c.
+---
+
+--------	
+<h3>DB file location</h3>
+windows, Chrome:
+C:\Users\username\AppData\Local\Google\Chrome\User Data\Default\databases\domen
+--------
+
+https://developer.tizen.org/development/tutorials/web-application/w3chtml5supplementary-features/storage/web-sql-database
+Web SQL Database: Creating and Querying Databases
+--------
+
+https://www.w3.org/TR/webdatabase/#errors-and-exceptions	
+
+Constant 	Code 	Situation
+UNKNOWN_ERR 	0 	The transaction failed for reasons unrelated to the database itself and not covered by any other error code.
+DATABASE_ERR 	1 	The statement failed for database reasons not covered by any other error code.
+VERSION_ERR 	2 	The operation failed because the actual database version was not what it should be. For example, a statement found that the actual database version no longer matched the expected version of the Database or DatabaseSync object, or the Database.changeVersion() or DatabaseSync.changeVersion() methods were passed a version that doesn't match the actual database version.
+TOO_LARGE_ERR 	3 	The statement failed because the data returned from the database was too large. The SQL "LIMIT" modifier might be useful to reduce the size of the result set.
+QUOTA_ERR 	4 	The statement failed because there was not enough remaining storage space, or the storage quota was reached and the user declined to give more space to the database.
+SYNTAX_ERR 	5 	The statement failed because of a syntax error, or the number of arguments did not match the number of ? placeholders in the statement, or the statement tried to use a statement that is not allowed, such as BEGIN, COMMIT, or ROLLBACK, or the statement tried to use a verb that could modify the database but the transaction was read-only.
+CONSTRAINT_ERR 	6 	An INSERT, UPDATE, or REPLACE statement failed due to a constraint failure. For example, because a row was being inserted and the value given for the primary key column duplicated the value of an existing row.
+TIMEOUT_ERR 	7 	A lock for the transaction could not be obtained in a reasonable time. 
+------
+
+chrome://settings/cookies/
+drop DB
+	</pre>
+
+	
+</div><!-- end container -->
+	
+	<script>
+	if ('ontouchstart' in window){
+/*	
+		var script = document.createElement('script');
+		script.src = "https://getfirebug.com/firebug-lite.js";
+		//document.body.appendChild( script );
+		document.getElementsByTagName('head')[0].appendChild(script);
+*/		
+/*
+		script.onload = function() {
+//alert( "onload " + this.src);
+		};
+		script.onerror = function(e) {
+//alert( "error load script " + this.src);
+		};  
+*/		
+	}
+	</script>
+	
+</body>
+</html>

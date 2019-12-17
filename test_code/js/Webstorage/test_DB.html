@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!--	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+-->	
+	<script>
+	
+	var db;//indexeddb link
+
+	function test_storage() {
+	  try {
+		return 'localStorage' in window && window['localStorage'] !== null;
+	} catch (e) {
+		return false;
+	  }
+	}
+
+	
+	function connect_indexedDB( dbname )
+	{
+		idbSupported = false;
+		if("indexedDB" in window) {
+			idbSupported = true;
+		}
+		else
+		{
+			var message = "IndexedDB not supported";
+			if (window.console)
+			{
+console.log( message );
+			}
+			else
+			{
+alert( message );
+			}
+		}
+	 
+		if(idbSupported) {
+			var request = indexedDB.open( dbname, 1 );
+	 
+			request.onupgradeneeded = function(e) {
+console.log("Upgrading...");
+//console.dir(e);
+				db = e.target.result;
+				if(!db.objectStoreNames.contains("ObjectStore1")) {
+					var store = db.createObjectStore("ObjectStore1");
+				}
+				//var titleIndex = store.createIndex("by_title", "title");
+			}
+	 
+			request.onsuccess = function(e) {
+console.log("Success!");
+//console.dir(e);
+				db = e.target.result;
+			}
+	 
+			request.onerror = function(e) {
+console.log("Error");
+console.dir(e);
+			}
+	 
+		}
+/*	
+		// проверяем существования префикса.
+		window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+		window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+		window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+		if (!window.indexedDB) {
+		
+			if (window.console)
+			{
+console.log("IndexedDB not supported");
+			}
+			else
+			{
+alert("IndexedDB not supported");
+			}
+		
+		}
+		
+		var request = indexedDB.open( dbname, 1);
+		request.onerror = function(err){
+			if (window.console)
+			{
+console.log(err);
+			}
+			else
+			{
+alert(err);
+			}
+		};
+		request.onsuccess = function(){//объект БД
+			var db = request.result;
+			if (window.console)
+			{
+console.log(db);
+			}
+			else
+			{
+alert(db);
+			}
+		};
+		request.onupgradeneeded = function(e){
+console.log("request.onupgradeneeded");
+console.dir(e);
+			// Если БД еще не существует, то создаем хранилище объектов.
+			//e.currentTarget.result.createObjectStore("myObjectStore", { keyPath: "key" });
+			//connectDB();
+		};		
+*/		
+	}//end connect_indexedDB()
+	
+/* для Mozilla/Firefox/Opera 9 */
+if (document.addEventListener)	
+{
+	document.addEventListener("DOMContentLoaded", function(){
+console.log("DOMContentLoaded !!!!");
+	},false);
+}
+	
+window.onload = function(){
+
+	document.getElementById("btn1").onclick = function(){
+		var test = test_storage();
+		if (!test)
+		{
+alert("Your browser does not have support localStorage");
+		}
+		else
+		{
+//alert("LocalStorage is supported");
+			localStorage.clear();
+console.log(window.localStorage);
+		}
+	}
+	document.getElementById("btn2").onclick = function(){
+		var test = test_storage();
+		if (!test)
+		{
+alert("Your browser does not have support localStorage");
+		}
+		else
+		{
+			localStorage.setItem("a", 1);
+			localStorage.setItem("b", 2);
+			localStorage["c"] = 3;
+console.log(window.localStorage);
+for(var item in localStorage)
+{
+console.log(item, localStorage[item]);
+}
+		}
+	}
+	
+//===========================
+
+	document.getElementById("websql-connect").onclick = function(){
+		if(window.openDatabase){
+		
+//creates a database with version number 1.0, 
+//description as 'Web SQL Demo Database' 
+//and a size of 10MB.		
+			var shortName = 'db_a';
+			var version = '1.0';
+			var displayName = 'User Settings Database';
+			var maxSize = 3*1024*1024; // = 3MB
+			db = openDatabase( shortName, version, displayName, maxSize );   
+			if(!db)
+			{
+console.log("Failed to connect to database " + shortName);
+			}
+			else
+			{
+				db.transaction(
+				function(t){ 
+					t.executeSql("CREATE TABLE IF NOT EXISTS table1 (food_name TEXT PRIMARY KEY, calories REAL, servings TEXT)");
+					}
+				);
+			}
+			
+		} else{
+			if(window.console)
+			{
+console.log("Your browser does not have support for WebSQL");
+			}
+			else
+			{
+alert("Your browser does not have support for WebSQL");
+			}
+		}
+
+	}
+	
+	document.getElementById("websql-insert").onclick = function(){
+		if(window.openDatabase){
+			var shortName = 'db_a';
+			var version = '1.0';
+			var displayName = 'User Settings Database';
+			var maxSize = 3*1024*1024; // = 3MB
+			db = openDatabase( shortName, version, displayName, maxSize );   
+			if(!db)
+			{
+console.log("Failed to connect to database " + shortName);
+			}
+			else
+			{
+				var food_name = "pizza";
+				var amount_of_calories = 320;
+				var serving_size = "one slice";
+				db.transaction(
+				function(t){ 
+					t.executeSql("INSERT INTO table1 VALUES (?, ?, ?)", [food_name, amount_of_calories, serving_size]);
+					}
+				);
+
+			}
+		} else{
+			if(window.console)
+			{
+console.log("Your browser does not have support for WebSQL");
+			}
+			else
+			{
+alert("Your browser does not have support for WebSQL");
+			}
+		}
+
+	}
+	
+
+	document.getElementById("websql-select").onclick = function(){
+		if(window.openDatabase){
+			var shortName = 'db_a';
+			var version = '1.0';
+			var displayName = 'User Settings Database';
+			var maxSize = 3*1024*1024; // = 3MB
+			db = openDatabase( shortName, version, displayName, maxSize );   
+			if(!db)
+			{
+console.log("Failed to connect to database " + shortName);
+			}
+			else
+			{
+var list = document.getElementById("list");
+db.transaction(
+function(tx) {
+	tx.executeSql("SELECT * FROM table1", [], function(tx, result)	{
+//console.log(result, result.rows.length);
+		for(var n = 0; n < result.rows.length; n++)
+		{
+			list.innerHTML += "<ul>";
+			for(var item in result.rows.item(n) )
+			{
+				list.innerHTML += "<li>item: " + result.rows.item(n)[item] + "</li>";
+			}
+			list.innerHTML += "</ul>";
+		}
+	}, 
+	function(t,e) {alert(e.message);}
+	);
+}
+);
+
+			}
+		} else{
+			if(window.console)
+			{
+console.log("Your browser does not have support for WebSQL");
+			}
+			else
+			{
+alert("Your browser does not have support for WebSQL");
+			}
+		}
+
+	}
+
+	
+	
+	document.getElementById("websql-drop").onclick = function(){
+		if(window.openDatabase){
+			var shortName = 'db_a';
+			var version = '1.0';
+			var displayName = 'User Settings Database';
+			var maxSize = 3*1024*1024; // = 3MB
+			db = openDatabase( shortName, version, displayName, maxSize );   
+			if(!db)
+			{
+console.log("Failed to connect to database " + shortName);
+			}
+			else
+			{
+				db.transaction(function (t) {
+					 t.executeSql("DROP TABLE table1",[], 
+						 function(t,results){
+							 console.error("table1 dropped");
+						 },
+						 function(t,error){
+							 console.error("Error: " + error.message);
+						 }
+					 )
+				});	
+
+			}
+		} else{
+			if(window.console)
+			{
+console.log("Your browser does not have support for WebSQL");
+			}
+			else
+			{
+alert("Your browser does not have support for WebSQL");
+			}
+		}
+
+	}
+	
+//===========================
+	document.getElementById("indexeddb-connect").onclick = function(){
+		if (document.querySelector) {
+			var dbname = document.querySelector("#indexeddb-name").value;
+		}
+		else 
+		{
+			var dbname = document.getElementById("indexeddb-name").value;
+		}	
+		connect_indexedDB( dbname );	
+	}
+	
+	document.getElementById("indexeddb-drop").onclick = function(){
+		if (document.querySelector) {
+			var dbname = document.querySelector("#indexeddb-name").value;
+		}
+		else 
+		{
+			var dbname = document.getElementById("indexeddb-name").value;
+		}	
+		
+		idbSupported = false;
+		if("indexedDB" in window) {
+			idbSupported = true;
+		}
+		
+		if( idbSupported )
+		{
+			if(db)
+			{
+				db.close();
+			}
+			var req = indexedDB.deleteDatabase(dbname);
+			req.onsuccess = function () {
+console.log("Deleted database " + dbname + " successfully");
+			};
+			req.onerror = function () {
+console.log("Couldn't delete database " + dbname);
+			};
+			req.onblocked = function () {
+console.log("Couldn't delete database " + dbname + " due to the operation being blocked");
+			};			
+		}
+	}
+
+	document.getElementById("indexeddb-add").onclick = function(){
+		var transaction = db.transaction(["ObjectStore1"],"readwrite");
+		transaction.oncomplete = function(event) {
+			console.log("transaction.oncomplete");
+		};
+		transaction.onerror = function(event) {
+			console.log("transaction.onerror");
+		};  
+		var store = transaction.objectStore("ObjectStore1");
+ 
+		var data = "test value2";
+		var request = store.add( data, 2 );
+		request.onerror = function(e) {
+			console.log("Error add ",e.target.error.name);
+		}
+		request.onsuccess = function(e) {
+			console.log("Success add ", e);
+		}
+		
+		//store.put( "3333333", 1);
+	}
+
+	document.getElementById("indexeddb-delete").onclick = function(){
+		var transaction = db.transaction(["ObjectStore1"],"readwrite");
+		transaction.oncomplete = function(event) {
+			console.log("transaction.oncomplete");
+		};
+		transaction.onerror = function(event) {
+			console.log("transaction.onerror");
+		};  
+		var store = transaction.objectStore("ObjectStore1");
+		if (document.querySelector) {
+			var recordkey = document.querySelector("#indexeddb-recordkey").value;
+		}
+		else 
+		{
+			var recordkey = document.getElementById("indexeddb-recordkey").value;
+		}	
+		//var recordkey = 1;
+		var request = store.delete( parseInt(recordkey) );
+		request.onerror = function(e) {
+			console.log("error delete, ",e.target.error.name);
+		}
+		request.onsuccess = function(e) {
+			console.log("success delete ", recordkey);
+		}
+	}
+	
+};//end window.load
+	</script>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Test browser cache</h1>
+		</div>
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h1>test localStorage</h1>
+			</div>
+<pre>
+http://htmlbook.ru/html5/storage	
+
+localstorage location:
+IE
+reestr - HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\DOMStorage	
+filesystem - C:\Users\laptev\AppData\Local\Microsoft\Internet Explorer\DOMStore	.....domain.xml (win7)
+C:\Documents and Settings\winxpsp3\winuser\Local Settings\Application Data\Microsoft\Internet Explorer\DOMStore....(winxp)
+"C:\Users\laptev\AppData\Local\Microsoft\Internet Explorer\DOMStore\C9ZBK8P6\comp[1].xml"
+</pre>
+<button id="btn1" class="btn btn-primary">clear localStorage</button>
+<button id="btn2" class="btn btn-primary">add items in localStorage</button>
+
+		</div>
+
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h1>test WebSQL</h1>
+			</div>
+<pre>
+http://habrahabr.ru/post/117123/
+http://habrahabr.ru/post/84654/
+</pre>
+<button id="websql-connect" class="btn btn-primary">connect</button>
+<button id="websql-insert" class="btn btn-primary">insert</button>
+<button id="websql-select" class="btn btn-primary">select</button>
+<button id="websql-drop" class="btn btn-primary">drop table</button>
+<div id="list">list</div>
+
+		</div>
+
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h1>Test IndexedDB</h1>
+			</div>
+		</div>
+<pre>		
+https://developer.mozilla.org/ru/docs/IndexedDB/Using_IndexedDB
+http://habrahabr.ru/post/213515/
+https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore
+</pre>
+			<div class="row">
+				<div class="col-md-1">
+					<label>db name:</label>
+				</div>
+				<div class="col-md-3">
+					<input class="form-control" id="indexeddb-name" value="db1"/>			
+				</div>
+			</div>
+			
+			<button id="indexeddb-connect" class="btn btn-primary">connect & create object storage in database</button>
+			<button id="indexeddb-drop" class="btn btn-danger">drop database</button>
+			<button id="indexeddb-add" class="btn btn-primary">add data</button>
+<br>			
+<br>			
+			<div class="row">
+				<div class="col-sm-2 col-md-2">
+					<label>recordKey:</label>
+				</div>
+				<div class="col-sm-3 col-md-3">
+					<input class="form-control" id="indexeddb-recordkey" value="1"/>			
+				</div>
+				<div class="col-sm-3 col-md-3">
+					<button id="indexeddb-delete" class="btn btn-primary">delete</button>
+				</div>
+			</div>
+
+		</div>
+
+		
+
+	</div><!-- end container -->
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+Необходимо разработать JavaScript модуль, выполняющий следующие функции:
+
+	*сохранение данных справочников в хранилище. 
+Справочников много, у каждого есть свой уникальный идентификатор. 
+Состав одной записи справочника - текст и код.
+
+	*поиск по справочнику 
+- должен быть обеспечен поиск по подстроке в любом месте текстового значения и/или кода.
+
+	*выдача результата (набора записей) в виде объекта JavaScript
+
+Требования:
+*Модуль должен быть оформлен согласно общей архитектуре приложения. 
+Будет эксплуатироваться с использованием RequireJS. 
+Имя модуля "database", имя файла mobapp.database.js
+
+В качестве хранилища на данный момент используем IndexedDB, соответствующие требования к браузерам согласованы. 
+Работу с IndexedDB реализуем напрямую, без использования сторонних библиотек. 
+Нам нужно как можно меньше кода и к тому же оптимизированного под наши конкретные нужды и форматы.
+
+ВАЖНО!
+На первом этапе разработки необходимо:
+ознакомиться с существующим форматом данных справочников 
+(в этом формате идет обмен данными с сервером). 
+Информацией владеет Виталий Рычажков.
+
+разработать формат хранения справочника в IndexedDB с учетом минимального потребления объема хранилища, 
+максимальной скорости чтения и записи (в частности поиска по заданной подстроке).
+
+*реализовать базовые функции записи и чтения данных (модуль по всем правилам пока не оформлять, просто код)
+
+*разработать простую тестовую HTML страницу для проверки вместимости хранилища и скорости работы на разных устройствах. 
+
+В нее войдет, для начала:
+	*Кнопка "Load" - загрузка данных с сервера или из локального файла (все справочники) и сохранение их в хранилище в нужном формате. 
+	*Замер времени сохранения. 
+	*Отслеживание ошибок переполнения.
+Нет гарантии что все справочники поместятся в хранилище, на мобильных платформах есть серьезные ограничения. 
+Поэтому в случае переполнения, нужно будет складировать их в память, аналогично как с кэшем в Z
+на тестовой страничке можно просто сообщение выдать что закончилось место, чтобы нам на этом этапе оценить вместимость.
+
+	*Кнопка "Search" - поиск по подстроке в тексте и/или коде, введенной в поле ввода. 
+	
+	*Формирование результата, можно без визуальной выдачи. Замер времени поиска и количества выбранных записей.
+
+	
+Особенности:
+Возможно придется использовать несколько экземпляров базы данных для сохранения всего объема данных справочников. 
+См. WIKI, https://castor.infonetsoft.ru:8073/redmine/projects/mobapp3/wiki/Indexeddb_issues
+
+	- Поиск по текстовой части должен работать даже если буквы вводим без нац. особенностей, 
+например ž и z должны работать. Видимо придется делать доп индекс, который будет содержать 
+транслитерированные значения (где убраны все хохоряшки), если такое вообще возможно.
+
+
+	Особенности IndexedDB. Некоторые результаты тестирования доступного объема:
+
+на десктопе Chrome, IE, FF ограничений не имеют, по крайней мере удалось поместить туда 100+ MB
+мобильные:
+
+	iOS/Safari (webSQL). 
+Говорит что расширяет до 50MB, но реально вместилось 25MB (25 строк по 1MB). 
+Причем в процессе заполнения Safari задает три вопроса про расширение хранилища, про 10, 25 и 50MB и это никак не лечится. 
+Использовалась библиотека localForage, возможно есть ее косяки, но скорее всего это особенность Safari. 
+Проверить IndexedDB на iOS возможности нет, у нас все устройства до сих пор на iOS7. 
+Есть подозрения, что на iOS8-9 IndexedDB имеет схожие ограничения.
+
+	Android/Chrome (indexedDB). 
+Сохраняет пока есть место на устройстве.
+
+	Windows 10 Mobile/MS Edge (indexedDB). 
+Размер одной базы не более 24MB, но можно сделать несколько баз (Microsoft Lumia 550).
+========================================================================================================
+
+- модуль работы с БД, mobapp.database
+	- импорт данных в хранилище
+	- обновление данных
+	- выборка данных
+	- поиск данных
+	- удаление, очистка
+	
+- модуль получения данных справочников из хранилища по правилам из таблицы sl_kodif, mobapp.sl_kodif
+
+========================================================================================================
+-------------------------------------------------------- FORMAT
+valsts_eucaris_va.json
+[{"text":"LATVIJAS REPUBLIKA", "nomer":"LVA"}]
+
+CREATE TABLE PANT (
+    PANT_VEID_KOD TEXT(10),
+	PANTS TEXT(5),
+	ZIME TEXT(5),
+	DALA TEXT(5),
+	APAKS_DALA TEXT(5),
+	NOSAUK TEXT(500),
+	PANT_ID INTEGER,
+	ARCHIVE_STAT INTEGER
+)
+
+
+CREATE TABLE SIMPLE_SPR (    
+	NOMER INTEGER,     
+	KOD TEXT(30),     
+	KOD_MAIN TEXT(30),     
+	TXT TEXT(100),     
+	TEXT2 TEXT(100),	 
+	ORDER_BY INTEGER,     
+	ARCHIVE_STAT INTEGER,     
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE PMLP_ADR_LVL_1 (    
+	KOD TEXT(10),
+	TXT TEXT(100),
+	ORD_LOV INTEGER,
+	ARCHIVE_STAT INTEGER,
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE PMLP_ADR_LVL_2 (
+    KOD TEXT(10),
+	TXT TEXT(100),
+	TXT_FULL TEXT(250),
+	LVL_1_KOD TEXT(10),
+	ORD_LOV INTEGER,
+	ARCHIVE_STAT INTEGER,
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE PMLP_ADR_LVL_3 (
+    KOD TEXT(10),
+	TXT TEXT(100),
+	TXT_FULL TEXT(250),
+	LVL_1_KOD TEXT(10),
+	LVL_2_KOD TEXT(10),
+	ORD_LOV INTEGER,
+	ARCHIVE_STAT INTEGER,
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE PMLP_ADR_LVL_4 (
+    KOD TEXT(10),
+	TXT TEXT(100),
+	LVL_1_KOD TEXT(10),
+	LVL_2_KOD TEXT(10),
+	LVL_3_KOD TEXT(10),
+	ORD_LOV INTEGER,
+	ARCHIVE_STAT INTEGER,
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE SL_KLASS_PERM (
+	PERM_NAME TEXT(30),
+	NOMER INTEGER,
+	TABLE_NAME TEXT(30),
+	ZAPRET TEXT(1),
+	KOD TEXT(30),
+	ID INTEGER
+)
+
+CREATE TABLE SL_KODIF (
+	TABLE_NAME TEXT(30),
+	BLOCK_NAME TEXT(30),
+	FIELD_NAME TEXT(30),
+	FIELD_MAIN_NAME TEXT(70),
+	KLASS_NOM INTEGER,
+	KLASS_TYPE INTEGER,
+	KOD_TEXT INTEGER,
+	ARCHIVE_STAT TEXT(10),
+	CONDITION TEXT(1000),
+	FIELDS TEXT(500),
+	PERM_NAME TEXT(30),
+	ORDER_BY TEXT(50),
+	LUS_POINT TEXT(30),
+	ID INTEGER
+)
+
+CREATE TABLE SL_LUS (
+	SL_LUS_ID INTEGER,
+	LUS_TYPE TEXT(10),
+	OPER TEXT(10),
+	TRUE_LUS_ID INTEGER,
+	FALSE_LUS_ID INTEGER,
+	P1 TEXT(300),
+	P1_NVL TEXT(50),
+	P1_TO_TYPE TEXT(10),
+	P1_FORMAT TEXT(20),
+	P2 TEXT(300),
+	P2_NVL TEXT(50),
+	P2_TO_TYPE TEXT(10),
+	P2_FORMAT TEXT(20),
+	ENTRY_NAME TEXT(30),
+	ENTRY_COMMENT TEXT(300),
+	GO_FIELD TEXT(50),
+	ORDER_BY INTEGER
+)
+
+CREATE TABLE SL_TILTS (
+	KOD INTEGER,
+	RAJONS_KOD TEXT(10),
+	PILSETA_KOD TEXT(10),
+	CEL_KOD TEXT(10),
+	TXT TEXT(100),
+	KM TEXT(100),
+	ARCHIVE_STAT INTEGER,
+	TXT_TRANSLITER TEXT(100)
+)
+
+CREATE TABLE SYSTEM_CFG (
+	NAME TEXT(100),
+	VALUE TEXT(100)
+)
+================================================= SQL
+-- таблица справочников
+select count(KOD) from sl_klass;//54413
+select count(KOD) from PMLP_ADR_LVL_4;
+
+
+SELECT * FROM SIMPLE_SPR WHERE kod="26"
+"75","26",,"AIZLIEGUMS IEGŪT TRANSP.LĪDZ.VADĪŠANAS TIESĪBAS",,"999","0","AIZLIEGUMS IEGUT TRANSP.LIDZ.VADISANAS TIESIBAS"
+"163","26",,"KONKRĒTAS VIELAS LIETOŠANAS FAKTS",,"999","0","KONKRETAS VIELAS LIETOSANAS FAKTS"
+"14","26",,"PUNKTAINS",,"999","0","PUNKTAINS"
+
+3 записи с одинаковым кодом справочника (26), но разными ид справочника (75, 163, 14)
+в пределах одного справочника код - уникальное значение
+
+те. нужно выбирать из таблицы БД записи с учетом ид справочника (NOMER)
+SELECT DISTINCT(NOMER) FROM SIMPLE_SPR
+23 справочника
+
+SELECT NOMER, KOD, TXT FROM SIMPLE_SPR WHERE NOMER IN (
+	SELECT DISTINCT(NOMER) FROM SIMPLE_SPR
+);
+
+Хранить все справочники в одном Object store ( autoincrement key, value.toJson)
+или
+каждый справочник в отдельном Object store ( уникальный текстовый ключ, строка значения )
+
+================================================ STAT
+
+FF
+add 46384 records, total size: 1001468 bytes (968355 symbols), 978.00 Kbytes, runtime: 2.137 sec
+....
+55 справочников
+978*55 = 53790
+файловый размер "C:\Users\username\AppData\Roaming\Mozilla\Firefox\Profiles\yc4zqh79.default\storage\default\http+++172.16.1.194\idb\2034112231mpopba.sqlite"
+132,176 Кб
+
+----------
+Chrome
+add 46384 records, total size: 1001468 bytes (968355 symbols), 978.00 Kbytes, 
+runtime: 2.5 - 3.5 sec
+
+справочников 55
+"C:\Users\username\AppData\Local\Google\Chrome\User Data\Default\IndexedDB\http_comp_0.indexeddb.leveldb"
+194 МБ (203 867 544 байт)
+
+--------------------------- search runtime
+
+--------------- SEARCH kod
+s_value: 9813000603
+use index: true
+search time: 0.078 sec, 0.053 sec
+	cursor: ... 98130006032 Object { kod="98130006032",  text="BESTES CEĻŠ"}
+	cursor: ... 98130006033 Object { kod="98130006033",  text="ZLĒKU CEĻŠ"}
+
+    98130006032 : BESTES CEĻŠ
+    98130006033 : ZLĒKU CEĻŠ
+	
+
+s_value: 9813000603
+use index: false
+search time: 2.723 sec
+    -98130006032 : BESTES CEĻŠ
+    -98130006033 : ZLĒKU IELA
+    98130006032 : BESTES CEĻŠ
+    98130006033 : ZLĒKU CEĻŠ
+
+
+old format, mobapp2
+no index
+search time: 0.171 sec
+
+    -98130006032 : BESTES CEĻŠ
+    -98130006033 : ZLĒKU IELA
+    98130006032 : BESTES CEĻŠ
+    98130006033 : ZLĒKU CEĻŠ
+	
+	
+--------------- SEARCH text
+
+s_value: "ZLĒKU CEĻŠ"
+use index: false
+search time: 2.73 sec
+    98130006033 : ZLĒKU CEĻŠ
+	
+use index: true
+search time: 0.041 sec
+    98130006033 : ZLĒKU CEĻŠ
+
+s_value: "IELA"
+
+search time: 2.571 sec, 17026 records
+    62800706516 : IELA UZ ATTĪRĪŠANAS IEKĀRTĀM
+    -00471136 : IELEJAS IELA
+	.....
+
+	
+------------------------------------------------ TODO
+*- сделать разделение поиска на поиск по коду (точное соответствие) и
+поиск по тексту (полнотекстовый). Оба поиска используют или нет, индексы.
+
+- перевести в json имеющиеся справочники
+- сделать кнопку загрузки всех справочников.
+
+*- сделать обработку ситуации, когда в ие отрицательно отвечают на запрос дополнительного места для хранилища
+( 
+db.onabort, "Database opening aborted!", 
+transaction.onabort, "transaction.onabort, QuotaExceededError!"
+)
+
+*- сделать кнопку дополнительной загрузки в LocalStorage
+
++ сделать запрос с транслитерацией
+	Поиск по текстовой части должен работать даже если буквы вводим без нац. особенностей, 
+например ž и z должны работать. Видимо придется делать доп индекс, который будет содержать 
+транслитерированные значения (где убраны все хохоряшки), если такое вообще возможно.
+
+если в поиской строке присутствует символ, соответ. таблице транслитерации 
+(т.е. если нашли в этой таблице соответствие z=ž ), то делаем два запроса и результаты сводим в один массив и отдаем....
+один запрос с "z", другой с "ž"
+этот алгоритм предварит. обработки поискового запроса будет зашит в коде. И таблица транслитерации, 26 записей
+
+[15:30:15] Grek: только запроса будет не два, а все варианты,
+например žuķ раскладывается в 
+- zuk
+- žuķ
+- zuķ
+- žuk
+[15:31:35] Grek: и чем больше нац символов в строке, тем больше таких вариантов
+
+	поисковый запрос с транслитом раскладывается на большое кол-во латышских аналогов и вызовет замедление поиска
+
+-------------------------------------- TRANSLIT TABLE
+Ū	U
+	"-1000005631","21. JŪLIJA IELA","21. JULIJA IELA"
+	HTML Entity (decimal) 	&#362;
+	HTML Entity (hex) 	&#x16a;
+	How to type in Microsoft Windows 	Alt +016A
+	UTF-8 (hex) 	0xC5 0xAA (c5aa)
+	UTF-8 (binary) 	11000101:10101010
+	UTF-16 (hex) 	0x016A (016a)
+	UTF-16 (decimal) 	362
+	UTF-32 (hex) 	0x0000016A (016a)
+	UTF-32 (decimal) 	362
+	C/C++/Java source code 	"\u016A"
+	Python source code 	u"\u016A"
+http://www.fileformat.info/info/unicode/char/016a/index.htm
+	
+Ē	E
+	"-1000108","1. ŠĶĒRSIELA","1. SKERSIELA"
+	HTML Entity (decimal) 	&#274;
+	HTML Entity (hex) 	&#x112;
+	How to type in Microsoft Windows 	Alt +0112
+	UTF-8 (hex) 	0xC4 0x92 (c492)
+	UTF-8 (binary) 	11000100:10010010
+	UTF-16 (hex) 	0x0112 (0112)
+	UTF-16 (decimal) 	274
+	UTF-32 (hex) 	0x00000112 (0112)
+	UTF-32 (decimal) 	274
+	C/C++/Java source code 	"\u0112"
+	Python source code 	u"\u0112"
+
+Č	C
+	"-40720902458","A. LĀČA IELA","A. LACA IELA"
+	HTML Entity (decimal) 	&#268;
+	HTML Entity (hex) 	&#x10c;
+	How to type in Microsoft Windows 	Alt +010C
+	UTF-8 (hex) 	0xC4 0x8C (c48c)
+	UTF-8 (binary) 	11000100:10001100
+	UTF-16 (hex) 	0x010C (010c)
+	UTF-16 (decimal) 	268
+	UTF-32 (hex) 	0x0000010C (010c)
+	UTF-32 (decimal) 	268
+	C/C++/Java source code 	"\u010C"
+	Python source code 	u"\u010C"
+
+Ž	Z
+	"-1000000033","AINAŽU IELA","AINAZU IELA"
+	HTML Entity (decimal) 	&#379;
+	HTML Entity (hex) 	&#x17b;
+	How to type in Microsoft Windows 	Alt +017B
+	UTF-8 (hex) 	0xC5 0xBB (c5bb)
+	UTF-8 (binary) 	11000101:10111011
+	UTF-16 (hex) 	0x017B (017b)
+	UTF-16 (decimal) 	379
+	UTF-32 (hex) 	0x0000017B (017B)
+	UTF-32 (decimal) 	379
+	C/C++/Java source code 	"\u017B"
+	Python source code 	u"\u017B"
+
+Š	S
+	"-1000108","1. ŠĶĒRSIELA","1. SKERSIELA"
+	console.log('\u0160');
+
+
+Ķ	K
+	"-1000108","1. ŠĶĒRSIELA","1. SKERSIELA"
+	console.log('\u0136');
+	HTML Entity (decimal) 	&#310;
+	HTML Entity (hex) 	&#x136;
+	How to type in Microsoft Windows 	Alt +0136
+	UTF-8 (hex) 	0xC4 0xB6 (c4b6)
+	UTF-8 (binary) 	11000100:10110110
+	UTF-16 (hex) 	0x0136 (0136)
+	UTF-16 (decimal) 	310
+	UTF-32 (hex) 	0x00000136 (0136)
+	UTF-32 (decimal) 	310
+	C/C++/Java source code 	"\u0136"
+	http://www.fileformat.info/info/unicode/char/0136/index.htm
+
+Ņ	N
+	"-32600002449","A. LAZDIŅA IELA","A. LAZDINA IELA"
+	console.log('\u0145');
+
+Ī	I
+	"-40680000035","AIRĪTES IELA","AIRITES IELA"
+	HTML Entity (decimal) 	&#298;
+	HTML Entity (hex) 	&#x12a;
+	How to type in Microsoft Windows 	Alt +012A
+	UTF-8 (hex) 	0xC4 0xAA (c4aa)
+	UTF-8 (binary) 	11000100:10101010
+	UTF-16 (hex) 	0x012A (012a)
+	UTF-16 (decimal) 	298
+	UTF-32 (hex) 	0x0000012A (012a)
+	UTF-32 (decimal) 	298
+	C/C++/Java source code 	"\u012A"
+	Python source code 	u"\u012A"
+
+Ā	A
+	"-1000000007","ACĀLIJU IELA","ACALIJU IELA"
+	HTML Entity (decimal) 	&#256;
+	HTML Entity (hex) 	&#x100;
+	How to type in Microsoft Windows 	Alt +0100
+	UTF-8 (hex) 	0xC4 0x80 (c480)
+	UTF-8 (binary) 	11000100:10000000
+	UTF-16 (hex) 	0x0100 (0100)
+	UTF-16 (decimal) 	256
+	UTF-32 (hex) 	0x00000100 (0100)
+	UTF-32 (decimal) 	256
+	C/C++/Java source code 	"\u0100"
+	Python source code 	u"\u0100"
+
+Ļ	L
+	"-1000000011","ADMIRĀĻA LAZAREVA IELA","ADMIRALA LAZAREVA IELA"
+	HTML Entity (decimal) 	&#315;
+	HTML Entity (hex) 	&#x13b;
+	How to type in Microsoft Windows 	Alt +013B
+	UTF-8 (hex) 	0xC4 0xBB (c4bb)
+	UTF-8 (binary) 	11000100:10111011
+	UTF-16 (hex) 	0x013B (013b)
+	UTF-16 (decimal) 	315
+	UTF-32 (hex) 	0x0000013B (013B)
+	UTF-32 (decimal) 	315
+	C/C++/Java source code 	"\u013B"
+	Python source code 	u"\u013B"
+
+Ģ	G
+	"-1000000027","AĢES IELA","AGES IELA"
+	HTML Entity (decimal) 	&#290;
+	HTML Entity (hex) 	&#x122;
+	How to type in Microsoft Windows 	Alt +0122
+	UTF-8 (hex) 	0xC4 0xA2 (c4a2)
+	UTF-8 (binary) 	11000100:10100010
+	UTF-16 (hex) 	0x0122 (0122)
+	UTF-16 (decimal) 	290
+	UTF-32 (hex) 	0x00000122 (0122)
+	UTF-32 (decimal) 	290
+	C/C++/Java source code 	"\u0122"
+	Python source code 	u"\u0122"
+
+
+-------------------------------------------
++ исправить поиск по тексту с использованием индексов: сделать возможность полнотекстового поиска LIKE %keyword%
+использование двух фильтров с диапазоном - 
+keyRange = IDBKeyRange.bound( s_value, s_value + '\uffff');//LIKE 's_value%'
+keyRange = IDBKeyRange.bound(  'a', s_value);
+
+полнотекстовый поиск по тексту с использованием индекса работает медленнее чем
+полнотекстовый поиск по тексту без индекса
+
+т.к. индекс не всегда является уникальным, то необходимо отслеживать ситуацию, когда создание уникального индекса
+завершается ошибкой и пытаться создать неуникальный индекс
+
+- сделать возможность загрузки данных в CSV (таблица SL_KODIF), 
+сменить входной формат данных с JSON на CSV
+
+*- перенести функции в модуль
+- настроить локальное приложение MobApp
+
+*- добавить в массив информации о результатах загрузки, number_records для загруженного справочника
+*- исправить ошибку загрузки справочников при созданном индексе
+(
+для поля текст создается неверный индекс с уникальностью
+{"name":"text","keyPath":"text","unique":true,"multiEntry":false}
+)
+
+*- при передаче пустых параметров 
+		"dbname" : "mobapp",
+		"storename" : "object_store_name",
+		"search_value" : "object_store_name", //any symbol register
+		"search_field" : "field_name"// 'text', 'kod'
+возвращаются все записи из первого store в списке DB mobapp
+*ошибка при передаче поисковой строки и пустого search_field
+
+
+- сделать программный вызов для 
+*удаления БД, 
+*отдельного хранилища, 
+*записи, 
+*очистки всех записей,
+*получение записи
+*получение всех записей
+
+*- при загрузке нескольких справочников в одно хранилище происходит дополнение списка?
+- для возможности частичного обновления справочников, определить формирование ключей на основе уникального кода
+сделать возможность при создании хранилища объектов, определять keyPath
+
+- сделать поиск с использованием транслитерации
+
+- поискать в гугле информацию по ускорению поиска 
+- mobapp.database, разместить параметры БД в общем массиве database
+- сделать очистку store при загрузке даных (при повторном добавлении данных, совпадающие записи вызывают ошибку, вероятно из-за невозможности обновить уникальный индекс)
+- IE11, Edge: почему при загрузке данных возникают сообщения "Database " + dbname + " being blocked";
+
+=================================== TEST BROWSERS
+[12:41:54] Grek: Привет.
+Начал тестировать твою страничку по IndexedDB.
+На данный момент вот что накопал:
+1) В Chrome на десктопе. 
+Загружаю справочник PMLP (без транслитерации), 
+делаю поиск по подстроке admi, 
+опция "использовать в процессе поиска метод чтения курсора" отключена. 
+поиск с использованием индекса search time: 0.852 sec, 
+БЕЗ использовани индекса search time: 0.572 sec. 
+Количество найденных элементов одинаково и в том и в другом случае.
+
+Два вопроса:
+- почему такая разница во времени
+- это максимум скорости, или можно что-то еще сделать? 
+На данный момент скорость не радует. 
+Визуально это будет медленно... 
+Какое-то чуство что там просто полный перебор значений идет, 
+ну это так, по ощущениям :)
+
+
+2) На устройстве с Windows 10 Mobile + Edge при попытке загрузить pmlp справочник, 
+какое-то время висит, затем выдает сообщение transaction.onabort QuotaExceededError! 
+Ну это я тебе устройство принесу, сам попробуешь.
+
+[12:45:57] Grek: да, но справоник то маленький совсем  1.84 Mb
+[12:46:01] Grek: это и смущает
+
+- выяснить причины разницы между размером загружаемых справочников и файловым размером БД
+(в ие, эдже разница на порядок!!!!) 
+.....возможно формат сохраняемых данных - json или plain text
+
++- сделать сохранение в хранилище данных в формате простых строк (повышается скорость импорта)
+не тратится время на разбор значений
+
+*- устранить разницу в скоросте импорта данных, 
+в тестах различается скорость, вероятно из-за ошибке в структуре вызовов функций
+после создания хранилища нужно не закрывать БД, а сразу импортировать данные
+потеря времени из-за повторного открытия БД
+
+- создать тест для проверки реального размера хранилища. 
+Запись данных и тестовое чтение.
+
+------------------
+Продолжаю гонять тестовую страницу на мобильных платформах.
+На моем телефоне, HTC One X+, Android 4.2, Chrome
+- первый поиск без индексов - 7 с лишним секунд
+- повторные - 3.345 секунды
+Видимо что-то сам браузер еще кэширует.
+На десктопном хроме кстати тоже такая тенденция, повторные поиски быстрее чем самый первый, но не стабильно.
+
+Если не придумаем как глобально ускорить поиск, видимо придется переключаться на массивы в памяти, 
+а IndexedDB использовать только в качестве хранилища.
+Хотя массивы тоже еще проверить нужно, забитая память тоже может вызвать тормоза.
+--------------------
