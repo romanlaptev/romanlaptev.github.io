@@ -49,7 +49,7 @@
 
 				<div class="form-group">
 					<label id="text-message-label">*Text message: </label>
-					<textarea id="notes-text" name="text_message" class="form-control" rows="3"></textarea>
+					<textarea name="text_message" class="form-control" rows="3"></textarea>
 				</div>						
 				
 				<div>
@@ -60,17 +60,31 @@
 	</div><!-- end panel -->
 </form>
 
-			<!-- <h4>upload XML  to server</h4> -->
-<!-- <form name="form1" id="import-form" action="upload.php" method="POST" enctype="multipart/form-data"> -->
-<!--
-				<div>
-	<input type="file" name="upload_file" title="Search for a file to add" class="btn-primary"><br>
-	<input type="hidden" name="action" value="upload">
-<input type="file" name="upload_files[]" id="file-select" multiple>
-				upload_max_filesize = '.$upload_max_filesize.'
-					
+
+<form name="form_upload" id="upload-form" action="" method="POST" enctype="multipart/form-data">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>Attach file and send form to server (Ajax request, POST method)</h4>
+		</div>
+		<div class="panel-body">
+
+				<div class="form-group">
+<label id="file-label">Select file: </label>
+<input type="file" name="upload_file" class="btn-primary">
 				</div>
--->	
+
+				<div class="form-group">
+<label>Comment: </label>
+<textarea id="comment-text" name="comment_message" class="form-control" rows="3"></textarea>
+				</div>						
+				
+				<div>
+					<button type="submit" class="btn btn-primary">send form</button>
+				</div>
+				
+		</div>
+	</div><!-- end panel -->
+</form>
 
 </div><!-- end container -->
 

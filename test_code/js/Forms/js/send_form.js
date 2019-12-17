@@ -25,6 +25,8 @@ window.onload = function(){
 	_vars["formMessage"] = func.getById("message-form");
 	_vars["nameLabel"] = func.getById("name-label");
 	_vars["messageLabel"] = func.getById("text-message-label");
+
+	_vars["formUpload"] = func.getById("upload-form");
 	
 	//===============================
 	_vars["btnClearLog"].onclick = function( event ){
@@ -50,6 +52,17 @@ window.onload = function(){
 			});
 		return false;
 	}//end event
+	
+	//=============================== UPLOAD
+	//document.forms["form_upload"].onsubmit = function(e) {
+	_vars["formUpload"].onsubmit = function(e){
+		e.preventDefault();
+			checkForm({
+				"form" : this,
+				"action" : "upload"
+			});
+		//_upload( document.forms["form_import"] );
+	};//end event
 	
 }//end load()
 
@@ -81,55 +94,82 @@ function checkForm(opt){
 	};
 	
 	var isValid = true;
-	var name = form.elements.author_name.value;
+
+	//console.log (form.elements);
+	if( form.elements["author_name"] ){
+		var name = form.elements.author_name.value;
 	//console.log (name, name.length);
-	if(name.length === 0){
-		_vars["nameLabel"].className="alert-danger";
-		form.elements.author_name.className = "form-control alert-danger";
-		isValid = false;
-	} else {
-		_vars["nameLabel"].className="";
-		form.elements.author_name.className = "form-control";
-		formValues["authorName"] = name;
+
+		if(name.length === 0){
+			isValid = false;
+			_vars["nameLabel"].className="alert-danger";
+			form.elements.author_name.className = "form-control alert-danger";
+		} else {
+			_vars["nameLabel"].className="";
+			form.elements.author_name.className = "form-control";
+			formValues["authorName"] = name;
+		}
+	}
+		
+	if( form.elements["title"] ){
+		var title = form.elements.title.value;
+		if( title.length > 0){
+			formValues["title"] = title;
+		}
 	}
 	
-	var title = form.elements.title.value;
-	if( title.length > 0){
-		formValues["title"] = title;
-	}
-	
-	var _text = form.elements.text_message.value;
-	//console.log (text, text.length);
-	if( _text.length === 0){
-		_vars["messageLabel"].className="alert-danger";
-		form.elements.text_message.className = "form-control alert-danger";
-		isValid = false;
-	} else {
-		_vars["messageLabel"].className="";
-		form.elements.text_message.className = "form-control";
-//filter
-		
-		_text = _text
-		//.replace(/\n/g, "\\u000A")//replace end of line
-		//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
-		//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
-		
-		//remove old special symbols
-			.replace(/\&amp;/g, "&")
-			.replace(/\&lt;/g, "<")
-			.replace(/\&gt;/g, ">")
-			.replace(/\&quot;/g, "\"")
+	var nameElement = "text_message";
+	if( form.elements[ nameElement ] ){
+		var _text = form.elements[ nameElement ].value;
+		//console.log (text, text.length);
+		if( _text.length === 0){
+			isValid = false;
+			_vars["messageLabel"].className="alert-danger";
+			form.elements[ nameElement ].className = "form-control alert-danger";
+		} else {
+			_vars["messageLabel"].className="";
+			form.elements[ nameElement ].className = "form-control";
+	//filter
 			
-			//insert special symbols re-new
-			.replace(/&/g, "&amp;")
-			.replace(/"/g, "&quot;")
-			.replace(/\</g, "&lt;")
-			.replace(/\>/g, "&gt;")
-			.replace(/'/g, "&#39;");
-		
-		formValues["textMessage"] = _text;
+			_text = _text
+			//.replace(/\n/g, "\\u000A")//replace end of line
+			//.replace(/\r/g, "\\r")//replace end of line (for correct JSON parsing)
+			//.replace(/\n/g, "\\n")//replace end of line (for correct JSON parsing)
+			
+			//remove old special symbols
+				.replace(/\&amp;/g, "&")
+				.replace(/\&lt;/g, "<")
+				.replace(/\&gt;/g, ">")
+				.replace(/\&quot;/g, "\"")
+				
+				//insert special symbols re-new
+				.replace(/&/g, "&amp;")
+				.replace(/"/g, "&quot;")
+				.replace(/\</g, "&lt;")
+				.replace(/\>/g, "&gt;")
+				.replace(/'/g, "&#39;");
+			
+			formValues["textMessage"] = _text;
+		}
 	}
-	
+
+	var nameElement = "upload_file";
+	if( form.elements[ nameElement ] ){
+		
+		if( _vars["support"].fileAPI ){
+			
+			var files = form.upload_file.files;
+	console.log( files, files.length );
+			if( files.length === 0){
+				isValid = false;
+			}
+			
+		} else {
+				isValid = false;
+		}
+		
+	}
+
 	// if( form.elements.id && form.elements.id.value.length > 0){
 		// formValues["id"] = form.elements.id.value;
 	// }
@@ -201,25 +241,6 @@ console.log(data);
 }//end sendForm
 
 
-/*
-		//UPLOAD
-		document.forms["form_import"].onsubmit = function(e) {
-			e.preventDefault();
-			if( !_vars["supportPHP"] &&
-				!_vars["supportASPX"] &&
-				!_vars["supportJAVA"]){
-				return false;
-			}
-			
-			if( !_vars["supportMySQL"] &&
-				!_vars["supportPostgreSQL"] &&
-				!_vars["supportMSSQL"] &&
-				!_vars["supportMySQL_java"]){
-				return false;
-			}
-			_upload( document.forms["form_import"] );
-		};//end event
-*/		
 		/*
 			$("form[name='form_import']").submit(function(e) {
 				var formData = new FormData($(this)[0]);
