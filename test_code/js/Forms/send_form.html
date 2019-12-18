@@ -31,6 +31,37 @@
 		</div>
 	</div>
 	
+<form name="form1" id="form1" action="getRequest.php" method="POST" enctype="application/x-www-form-urlencoded">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>simply request, POST method</h4>
+		</div>
+		<div class="panel-body">
+				<div class="form-group">
+					<label>Name: </label>
+					<input type="text" class="form-control" name="author_name" value="">
+				</div>
+				
+				<div class="form-group">
+					<label>Title: </label>
+					<input type="text" class="form-control" name="title" value="">
+				</div>
+
+				<div class="form-group">
+					<label>Text message: </label>
+					<textarea name="text_message" class="form-control" rows="3"></textarea>
+				</div>						
+				
+				<div>
+<input type="text" name="action" value="save_message">
+					<button type="reset" class="btn btn-large btn-danger">reset form</button>
+					<button type="submit" class="btn btn-info">send form</button>
+				</div>
+		</div>
+	</div><!-- end panel -->
+</form>
+
+	
 <form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -64,7 +95,7 @@
 <form name="form_upload" id="upload-form" action="" method="POST" enctype="multipart/form-data">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h4>Attach file and send form to server (Ajax request, POST method)</h4>
+			<h4>Attach file and image, send form to server (Ajax request, POST method)</h4>
 		</div>
 		<div class="panel-body">
 
@@ -93,6 +124,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
 
 https://learn.javascript.ru/formdata
 http://learn.javascript.ru/xhr-forms 
+https://learn.javascript.ru/xmlhttprequest
 </pre>
 
 </div><!-- end container -->

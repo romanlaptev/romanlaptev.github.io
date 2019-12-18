@@ -621,6 +621,7 @@ console.log(e);
 			
 //------------------------------------- form POST body
 			if( requestMethod === "POST"){ //http://learn.javascript.ru/xhr-forms 
+			
 				if( p["enctype"] === "multipart/form-data"){
 					xhr.send( p["formData"] );
 				}
