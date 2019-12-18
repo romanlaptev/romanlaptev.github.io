@@ -750,6 +750,26 @@ console.log(key +" : "+ e[key]);
 	_push( tests, test );
 //--------------------------------------
 
+	var test = {
+		"name" : "FormData",
+		"result" : false
+	};
+	if ( typeof window.FormData === "function"){
+		test["result"] = true;
+		test["msg"] = "<p class='alert alert-success'><b>window.FormData</b> supported...</p>";
+		
+		test["links"]=[];
+		var obj = {
+			"link" : "https://developer.mozilla.org/ru/docs/Web/API/FormData", 
+			"text" : "Интерфейсы веб API | FormData"
+		};
+		_push( test["links"], obj );
+		
+	} else {
+		test["msg"] = "<p class='alert alert-danger'><b>window.FormData</b> does NOT support...</p>";
+	}
+	_push( tests, test );
+//--------------------------------------
 
 
 	var test = {

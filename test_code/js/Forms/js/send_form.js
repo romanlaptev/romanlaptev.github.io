@@ -13,10 +13,26 @@ window.onload = function(){
 	func.logAlert( _vars.logMsg, "info");
 	
 	if( _vars["support"]["fileAPI"] ){
-		_vars.logMsg = "Your browser supports File API";
+		_vars.logMsg = "This browser supports File API";
 		func.logAlert( _vars.logMsg, "success");
 	} else {
-		_vars.logMsg = "Your browser does not support File API";
+		_vars.logMsg = "This browser does not support File API";
+		func.logAlert( _vars.logMsg, "error");
+	}
+
+	if( _vars["support"]["formData"] ){
+		_vars.logMsg = "This browser supports FormData object";
+		func.logAlert( _vars.logMsg, "success");
+	} else {
+		_vars.logMsg = "This browser does not support FormData object";
+		func.logAlert( _vars.logMsg, "error");
+	}
+	
+	if( _vars["support"]["promiseSupport"] ){
+		_vars.logMsg = "This browser supports Promise object";
+		func.logAlert( _vars.logMsg, "success");
+	} else {
+		_vars.logMsg = "This browser does not support Promise object";
 		func.logAlert( _vars.logMsg, "error");
 	}
 	
@@ -27,7 +43,17 @@ window.onload = function(){
 	_vars["messageLabel"] = func.getById("text-message-label");
 
 	_vars["formUpload"] = func.getById("upload-form");
+	_vars["fileLabel"] = func.getById("file-label");
 	
+	_vars["canvas"] = func.getById("canvas1");
+	_vars["context"] = _vars["canvas"].getContext("2d");
+//console.log( _vars["context"] );		
+	//create test image
+	_vars["context"].strokeStyle = "red";
+	_vars["context"].fillRect(10,10,50,50);
+	_vars["context"].stroke();	
+
+
 	//===============================
 	_vars["btnClearLog"].onclick = function( event ){
 //console.log("click...", e);			
@@ -63,6 +89,23 @@ window.onload = function(){
 			});
 		//_upload( document.forms["form_import"] );
 	};//end event
+
+	//===============================
+/*	
+	//_vars["canvas"].onmousemove = function(e) {
+	_vars["canvas"].onclick = function(e) {
+console.log(e.type, e.clientX, e.clientY);
+console.log(e);
+		
+_vars["context"].moveTo(e.clientX, e.clientY);
+_vars["context"].lineTo(100, 0);
+
+		// _vars["context"].lineWidth = 2;
+		// _vars["context"].strokeStyle = "#000000";
+		// _vars["context"].lineTo(e.clientX, e.clientY);
+		_vars["context"].stroke();
+	};
+*/
 	
 }//end load()
 
@@ -88,6 +131,7 @@ function checkForm(opt){
 	
 	var form = p["form"];
 	var formValues = {
+		"form" : p["form"],
 		"action" : p["action"],
 		"requestMethod" : form.getAttribute("method"),
 		"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null
@@ -153,6 +197,7 @@ function checkForm(opt){
 		}
 	}
 
+/*
 	var nameElement = "upload_file";
 	if( form.elements[ nameElement ] ){
 		
@@ -160,15 +205,34 @@ function checkForm(opt){
 			
 			var files = form.upload_file.files;
 	console.log( files, files.length );
+	
 			if( files.length === 0){
 				isValid = false;
+				_vars["fileLabel"].className="alert-danger";
+				form.elements[ nameElement ].className = "form-control alert-danger";
+			}
+				
+			if( files.length > 0){
+					//check upload file type
+					// var file = files[0];
+					// if ( file.type !== "text/xml") {
+						// _vars.logMsg = "error, incorrect file type, " + file.name +", " +file.type;
+						// func.logAlert( _vars.logMsg, "error");
+						// return false;
+					// }
+					
+				_vars["fileLabel"].className="";
+				form.elements[ nameElement ].className = "form-control";
 			}
 			
 		} else {
-				isValid = false;
+			_vars.logMsg = "This browser does not support File API";
+			func.logAlert( _vars.logMsg, "error");
+			return false;
 		}
 		
 	}
+*/
 
 	// if( form.elements.id && form.elements.id.value.length > 0){
 		// formValues["id"] = form.elements.id.value;
@@ -185,12 +249,10 @@ function checkForm(opt){
 }//end checkForm()
 
 function sendForm( opt ){
+	//default parameters
 	var p = {
+		"form": null,
 		"id": null,
-		"creation_date" : "",
-		"authorName" : "anonymous",
-		"title" : "no subject",
-		"textMessage" : "",
 		"action": "",
 		"url" : _vars["requestUrl"],
 		"requestMethod" : "GET",
@@ -202,30 +264,33 @@ function sendForm( opt ){
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
-console.log( p );
-	
-	//get creation date
-	p["creation_date"] = func.timeStampToDateStr({
-		"format": "yyyy-mm-dd hh:min:sec"
-	});
-	
+//console.log( p );
+
 	var params = {
 		"action" : p["action"],
-		"date" : p["creation_date"]
+		"date" : func.timeStampToDateStr({"format": "yyyy-mm-dd hh:min:sec"})
 	};
 	
+	var form = p["form"];
+//console.log (form.elements);
+
+//---------------------------------- create Form Data
+if( !p["enctype"]){
+	_vars.logMsg = "error, undefined form attribute <b>'enctype'</b> ";
+	func.logAlert( _vars.logMsg, "error");
+	return false;
+}
+
+	
+if( p["enctype"] === "application/x-www-form-urlencoded"){
+
 	var formData = {
 		"id" : p["id"],
 		"author_name" : p["authorName"],
 		"title" : p["title"],
 		"text_message" : p["textMessage"]
 	};
-// for(var key in form_message){
-// console.log( key, form_message[key]);
-// }
-//console.log( formData );
-//return false;
-	
+//----------------------------------
 	func.runAjax( {
 		"requestMethod" : p["requestMethod"],
 		//"responseType" : "json",
@@ -235,161 +300,97 @@ console.log( p );
 		"formData" : formData,
 		"callback": function( data, runtime, xhr){
 console.log(data);
+			func.logAlert( data, "info");
 		}//end callback()
 	});
 	
+}
+
+//if( p["action"] === "upload"){
+if( p["enctype"] === "multipart/form-data"){
+	var formData = new FormData( form );
+//console.log( formData );
+//for( var key in formData){
+//console.log(key, formData[key]);
+//}
+
+// // Display the key/value pairs
+// for (var pair of formData.entries()) {
+	// console.log(pair[0]+ ', ' + pair[1]);
+// }
+
+// //Display the keys
+// for (var key of formData.keys()) {
+// console.log(key);
+// }
+	//add new fields (input, file..)
+	formData.append("firstName", "John");
+	//let imageBlob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
+	//_getTestImage();
+
+//for test
+_vars["support"]["promiseSupport"] = false;
+
+	if( _vars["support"]["promiseSupport"] ){
+		_getTestImage().then( function( imageBlob ){
+console.log(arguments);
+			formData.append("image", imageBlob, "testImage.png");
+			func.runAjax( {
+				"requestMethod" : p["requestMethod"],
+				//"responseType" : "json",
+				"enctype" : p["enctype"],
+				"url" : p["url"],
+				"params" : params,
+				"formData" : formData,
+				"callback": function( data, runtime, xhr){
+console.log(data);
+					func.logAlert( data, "info");
+				}//end callback()
+			});
+		});
+		
+	} else {
+		
+		_getTestImageCallBack(function( imageBlob){
+console.log(imageBlob);
+			formData.append("image", imageBlob, "testImage.png");
+			func.runAjax( {
+				"requestMethod" : p["requestMethod"],
+				//"responseType" : "json",
+				"enctype" : p["enctype"],
+				"url" : p["url"],
+				"params" : params,
+				"formData" : formData,
+				"callback": function( data, runtime, xhr){
+	console.log(data);
+					func.logAlert( data, "info");
+				}//end callback()
+			});
+		});
+		
+	}
+
+}
+
+	
 }//end sendForm
 
+function _getTestImage(){
+	//return new Promise(resolve => _vars["canvas"].toBlob(resolve, "image/png"));
+//https://developer.mozilla.org/ru/docs/Web/API/HTMLCanvasElement/toBlob
+	return new Promise(function(resolve, reject){
+		_vars["canvas"].toBlob( 	function callback( blobObj){
+console.log(arguments);
+			resolve( blobObj );
+		}, "image/png");
+	});
+}//end _getTestImage()
 
-		/*
-			$("form[name='form_import']").submit(function(e) {
-				var formData = new FormData($(this)[0]);
-		
-				$.ajax({
-					url: _vars["requestUrl"],
-					type: "POST",
-					data: formData,
-					async: false,
-					success: function (msg) {
-						alert(msg);
-					},
-					error: function(msg) {
-						alert('Ошибка!');
-					},
-					cache: false,
-					contentType: false,
-					processData: false
-				});
-				e.preventDefault();
-			});
-		*/
-
-
-
-
-	function _upload( form ){
-		if( window.FileList ){
-			
-			//var fileSelect = getById("file-select");
-			//if( fileSelect ){
-			//var formData = _getUploadFiles({
-			//"fileSelect" : fileSelect
-			//});
-			
-			//check file type
-			var files = form.upload_file.files;
-//console.log( files );
-			var file = files[0];
-			if ( file.type !== "text/xml") {
-				var msg = "<p>Skip file, incorrect type! " + file.name +",  " +file.type +"</p>";
-				_log("<div class='alert alert-warning'>" + msg + "</div>");
-				$("#importModal").modal("hide");
-				return false;
-			}
-			
-			//var formData = new FormData();
-			var formData = new FormData( form );
-			//formData.append("upload_file", form.upload_file);
-			//if( formData ){
-			var p = {
-				"url" : _vars["requestUrl"],
-				"requestMethod" : form.getAttribute("method"),
-				"enctype" : form.getAttribute("enctype") ? form.getAttribute("enctype") : null,
-				"params" : { "action" : "upload" },
-				"formData" : formData,
-				"callback": _postUpload
-			};
-			runAjax( p );
-			/*
-			//test
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', _vars["requestUrl"], true);
-			// xhr.setRequestHeader("Cache-Control", "no-cache");
-			// xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-			// xhr.setRequestHeader("Content-Type", "multipart/form-data");
-			xhr.send(formData);
-			//----------
-			*/
-			//}
-			//}
-			
-		} else {
-			var msg = "<p>Your browser does not support File API</p>";
-			_log("<div class='alert alert-warning'>" + msg + "</div>");
-		}
-		
-		
-		/*
-		//http://blog.teamtreehouse.com/uploading-files-ajax
-		//https://developer.mozilla.org/en-US/docs/Web/API/FormData/get
-			function _getUploadFiles(opt){
-				var p = {
-					"fileSelect" : null
-				};
-				
-				//extend options object
-				for(var key in opt ){
-					p[key] = opt[key];
-				}
-		//console.log( p );
-
-				if( !p["fileSelect"]){
-		var msg = "<p>No selected files</p>";
-		_log("<div class='alert alert-warning'>" + msg + "</div>");
-					return false;
-				}
-				// Get the selected files from the input.
-				var files = p["fileSelect"].files;
-		console.log( files );
-
-				// Create a new FormData object.
-				var formData = new FormData();
-				
-				// Loop through each of the selected files.
-				for (var n = 0; n < files.length; n++) {
-					var file = files[n];
-					
-					// Check the file type.
-					//if (!file.type.match('image.*')) {
-					if ( file.type !== "text/xml") {
-		//console.log("Skip file, incorrect type!", file.name, file.type);
-						//continue;
-					}
-
-					// Add the file to the request.
-					formData.append("upload_files[]", file, file.name);
-				}//next
-		// for( var key in formData){
-		// console.log(key, formData[key]);
-		// }
-
-		// // Display the key/value pairs
-		// for (var pair of formData.entries()) {
-			// console.log(pair[0]+ ', ' + pair[1]);
-		// }
-
-		// Display the keys
-		// for (var key of formData.keys()) {
-		   // console.log(key);
-		// }
-				var test = formData.getAll("upload_files[]");
-		//console.log( test.length );
-				if( test.length > 0 ){
-					//formData.append("action", "upload");
-					return formData;
-				} else {
-					return false;
-				}
-				
-			}//end _getUploadFiles()
-		*/
-		function _postUpload( data ){
+function _getTestImageCallBack( callback ){
+	_vars["canvas"].toBlob( getBlobObj, "image/png");
+	
+	function getBlobObj( blobObj){
 //console.log(arguments);
-			parseLog({
-				"jsonLog" : data
-			});
-			$("#importModal").modal("hide");
-			loadNotes();
-		}//end _postUpload()
-		
-	}//end _upload()	
+		callback( blobObj );
+	}		
+}//end _getTestImageCallback()

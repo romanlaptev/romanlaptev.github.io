@@ -617,12 +617,14 @@ console.log(e);
 						});
 					}
 				}
+			}
+			
+//------------------------------------- form POST body
+			if( requestMethod === "POST"){ //http://learn.javascript.ru/xhr-forms 
+				if( p["enctype"] === "multipart/form-data"){
+					xhr.send( p["formData"] );
+				}
 				
-				
-			} else {
-				
-				//http://learn.javascript.ru/xhr-forms
-				//form POST body
 				if( p["enctype"] === "application/x-www-form-urlencoded"){
 					
 					var test = "setRequestHeader" in xhr;
@@ -643,9 +645,8 @@ console.log(e);
 					}//next
 		//console.log( body );
 					xhr.send( body );
-				} else {
-					xhr.send( p["formData"] );
-				}
+				} 
+				
 			}
 
 			function _createRequestObject() {
@@ -673,7 +674,7 @@ console.log(e);
 
 		
 		
-		
+//test and remove!!!!!!
 		var _runAjaxCorrect = function( opt ){
 			
 			var p = {
@@ -1162,7 +1163,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"dataStoreType" : _detectDataStoreType(),
 				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
 				"supportTouch" : _supportTouch(),
-				"fileAPI" :  _supportFileAPI()
+				"fileAPI" :  _supportFileAPI(),
+				"formData": typeof window.FormData === "function"
 			};
 		};//end _testSupport()
 		
