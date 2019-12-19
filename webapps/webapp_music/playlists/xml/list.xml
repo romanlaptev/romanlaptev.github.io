@@ -9,6 +9,14 @@
 	<xdata>
 
 
+		<playlist created="20-Dec-2019" title="Jazz and swing" class="">
+			<location>/music/0_playlists/Jazz and swing.json</location>
+			<thumbnail url="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"/>
+		</playlist>
+		<playlist created="20-Dec-2019" title="blues, rock_n_roll, swing, jazz." class="">
+			<location>/music/0_playlists/blues, rock_n_roll, swing, jazz.json</location>
+		</playlist>
+
 		<playlist created="03-Nov-2019" title="Vivaldi, Antonio Lucio" class="">
 			<location>/music/0_playlists/Vivaldi.json</location>
 			<thumbnail url="/music/V/Vivaldi/images/Vivaldi.jpg" />
