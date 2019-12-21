@@ -114,11 +114,15 @@ var _vars = {
 		{"colorName": "bg-grey-blue","code": "#5a819d","text-color": "#000000"},
 
 		{"colorName": "bg-grey2","code": "#5E789C","text-color":"#fff"},/* comp-books.css */
-		{"colorName": "bg-lightsteelblue2","code": "#83A0C5"},
+		{"colorName": "steel-grey",	"code": "#53687c","text-color":"#fff"},
+
 		
 		{"colorName": "bg-grey6, dm-modal","code": "#607d8b","text-color":"#fff"},/* dm-modal */
 		
 		{"colorName": "bg-grey-green2",	"code": "#607d8b","text-color":"#fff"},
+		{"colorName": "bg-lightsteelblue2","code": "#83A0C5"},
+
+
 		{"colorName": "bg-grey-green3","code": "#abbabb"},
 		
 		{"colorName": "bg-grey-green","code": "#c6d6de"},
