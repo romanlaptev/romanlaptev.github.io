@@ -1,4 +1,16 @@
 @font-face {
+    font-family: 'ticker_taperegular';
+    src: url('Ticker_Tape/ticker_tape-webfont.eot');
+    src: url('Ticker_Tape/ticker_tape-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ticker_Tape/ticker_tape-webfont.woff2') format('woff2'),
+         url('Ticker_Tape/ticker_tape-webfont.woff') format('woff'),
+		url("Ticker_Tape/Ticker_Tape.ttf")  format('truetype'),
+         url('Ticker_Tape/ticker_tape-webfont.svg#ticker_taperegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
 	font-family:a_Huxley;
     src: url("a_Huxley/a_Huxley Bold.eot");
     src: url("a_Huxley/a_Huxley Bold.eot?#iefix") format("embedded-opentype"),
