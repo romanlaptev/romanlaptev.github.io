@@ -361,6 +361,10 @@ border: 1px solid #004586;
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
 	-moz-box-shadow: inset 0 36px 38px -38px #fff;
 	box-shadow: inset 0 36px 38px -38px #fff;
+	
+  font-family: avantgarde;
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-blue:hover {
 	background-color: #ff8c00 !important;
@@ -419,6 +423,9 @@ border: 1px solid #004586;
 	box-shadow: inset 0 36px 38px -38px #fff;
 	border-color: #3f9cca;
 	color: #fff;
+  font-family: ticker_taperegular;
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-darkblue:hover {
 	background-color: #ff8c00;
@@ -619,6 +626,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
 	-moz-box-shadow: inset 0 36px 38px -38px #fff;
 	box-shadow: inset 0 36px 38px -38px #fff;
+	
+  font-family: Lobster;
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-green-shadow:hover, 
 .btn-green-shadow:focus 

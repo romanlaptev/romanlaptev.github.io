@@ -11,6 +11,26 @@
 }
 
 @font-face {
+font-family:hattori_hanzolight_italic;
+src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot');
+src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot?#iefix') format('embedded-opentype'),
+url('hattori_hanzo/hattori_hanzo_italic-webfont.woff') format('woff'),
+url('hattori_hanzo/hattori_hanzo_italic-webfont.ttf') format('truetype');
+font-weight:400;
+font-style:normal
+}
+@font-face {
+font-family:hattori_hanzolight;
+src:url('hattori_hanzo/hattori_hanzo-webfont.eot');
+src:url('hattori_hanzo/hattori_hanzo-webfont.eot?#iefix') format('embedded-opentype'),
+url('hattori_hanzo/hattori_hanzo-webfont.woff') format('woff'),
+url('hattori_hanzo/hattori_hanzo-webfont.ttf') format('truetype');
+font-weight:400;
+font-style:normal
+}
+
+
+@font-face {
 	font-family:a_Huxley;
     src: url("a_Huxley/a_Huxley Bold.eot");
     src: url("a_Huxley/a_Huxley Bold.eot?#iefix") format("embedded-opentype"),
