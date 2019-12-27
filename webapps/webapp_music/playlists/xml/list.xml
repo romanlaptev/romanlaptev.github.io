@@ -46,6 +46,10 @@
 
 
 
+		<playlist created="26-Dec-2019" title="Башня Rowan" class="">
+			<location>/music/0_playlists/Rowan.json</location>
+			<thumbnail url="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg" />
+		</playlist>
 		
 		<playlist created="27-Oct-2019" title="Judas Priest" class="">
 			<location>/music/0_playlists/judas_priest.json</location>
@@ -107,6 +111,11 @@
 		</playlist>
 
 
+		<playlist created="26-Dec-2019" title="Kreator" class="">
+			<location>/music/0_playlists/Kreator.json</location>
+			<thumbnail url="/music/K/Kreator/cover.jpg" />
+		</playlist>
+		
 		<playlist created="14-March-2017" title="KSU" class="punk">
 			<location>/music/0_playlists/KSU.json</location>
 			<thumbnail url="/music/K/KSU/cover.jpg" />
@@ -115,6 +124,7 @@
 			</related_links>
 		</playlist>
 
+		
 		<playlist created="09-Feb-2019" title="punk, hardcore" class="rus-punk">
 			<location>/music/0_playlists/punk, hardcore.json</location>
 		</playlist>
