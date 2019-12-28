@@ -7,7 +7,8 @@ var vars = {
 };
 console.log( "vars:" , vars );
 
-_load( "playlists/xml/list.xml", _init );
+//_load( "playlists/xml/list.xml", _init );
+_load( "db/list.xml", _init );
 
 function _load ( file, callBack ) {
 	var _startTime = new Date();
