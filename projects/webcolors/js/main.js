@@ -193,20 +193,20 @@ var _vars = {
 		},
 		{"colorName": "bg-orange4","code": "#FECD90"},
 		{"colorName": "bg-orange5","code": "#ffcc99"},
+		{"colorName": "bg-orange55","code": "#E9B96E"},
+
 
 		{"code": "#bf794e"},
 		{"code": "#bf864e"},
 		{"code": "#CCA96E"},
+		{"code": "#efd0b1"},
+		{"code": "#efc8b1"},
+
 		{"colorName": "bg-pale-rose-c5","code": "#d3c5be"},/* comp-books.css */
 		{"code": "#EAE2D3"},
-
 		{"code": "#E0E0E0"},
 		{"code": "#e9f0f0"},
-
-
 		
-		{"code": "#efc8b1"},
-		{"code": "#efd0b1"},
 		{"code": "#f3f3f3","text-color":"#000"}
 		
 		
