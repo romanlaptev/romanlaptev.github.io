@@ -2,15 +2,18 @@
 <xroot>
 	<database name="music">
 	
+	<tag_groups>
+		<group vid=".." name="alphabetical_voc"></tag>		
+	</tag_groups>
+	
 	<taglist>
-		<tag tid=".." vid=".." name="music_style"></tag>		
+		<tag tid=".." vid=".." group_name="music_style"></tag>		
 		.....
 	</taglist>
 
 <node type="playlist">
 	<title>
 		<item>Metallica</item>
-....		
 	</title>
 	
 	<images>
@@ -25,7 +28,7 @@
 	</related_links>
 	
 	<tags>
-		<item name="music_styles">thrash</item>
+		<item group_name="music_styles">thrash</item>
 ....		
 	</tags>
 	
