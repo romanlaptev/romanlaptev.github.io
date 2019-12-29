@@ -1,3 +1,117 @@
+============================== EXPORT
+<xroot>
+	<database name="music">
+	
+	<taglist>
+		<tag tid=".." vid=".." name="music_style"></tag>		
+		.....
+	</taglist>
+
+<node type="playlist">
+	<title>
+		<item>Metallica</item>
+....		
+	</title>
+	
+	<images>
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
+....		
+	</images>
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1019">music.yandex.ru</a></li>
+....		
+	</related_links>
+	
+	<tags>
+		<item name="music_styles">thrash</item>
+....		
+	</tags>
+	
+	<created format="dd:mm:yyyy">11-March-2017</created>
+	<updated format="dd:mm:yyyy hh:mm:ss">20-Jul-2019 22:38:46</updated>
+</node>
+
+	</database>
+</xroot>
+----------------------------		
+
+<xroot>
+	<database name="video">
+	<taglist>
+		<tag tid="4" vid="2" name="драма"></tag>		
+		.....
+	</taglist>
+<node type="video">
+	<title>
+		<item lang="ru">Аргентина. Интервью с мёртвым наркодилером</item>
+		<item lang="en">.....</item>
+	</title>
+	
+	<producer></producer>
+	<roles></roles>
+	<description></description>
+	
+	<images>
+		<img src="https://i.ytimg.com/vi/eeeYo2h41pE/sddefault.jpg"/>
+....		
+	</images>
+
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/eeeYo2h41pE">Youtube embed video in new tab</a></li>
+		<li><a data-type="external-link" title="go to Youtube" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
+	</related_links>
+
+	<tags>
+		<item tid="4" name="драма"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">24-Sep-2012 09:28:16</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">20-Jul-2019 22:38:46</updated>
+</node>
+	</database>
+</xroot>
+
+----------------------------
+<xroot>
+	<database name="lib">
+	<taglist>
+		<tag tid="7" vid="2" name="biography"></tag>
+		<tag tid="8" vid="2" name="classical prose"></tag>		
+		<tag tid="9" vid="2" name="criminal"></tag>		
+		<tag tid="11" vid="2" name="словари, справочники"></tag>		
+		.....
+	</taglist>
+
+<node nid="1480" mlid="1455" plid="1870" type="library_book"  weight="-15">
+	<title>
+		<item>Туннель в небе</item>
+		<item type="bookname">Туннель в небе</item>
+....		
+	</title>
+	
+	<description></description>
+	<author>Хайнлайн Роберт</author>
+	
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/lib/books/H/Heinlein.Robert/....txt">....txt</a></li>
+		<li><a data-type="external-link" href="....">....</a></li>
+	</related_links>
+	
+	<tags>
+		<item tid="7" name="biography"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">28-Jul-2013 19:19:23</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">17-Aug-2014 20:25:24</updated>
+</node>
+	</database>
+</xroot>
+	
 ============================== IMPORT
 *- добавить поле в материал "плейлист"
 <related_links>
