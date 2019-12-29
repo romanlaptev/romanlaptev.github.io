@@ -18,13 +18,8 @@ $_vars=array();
 //echo PHP_OS;
 $_vars["phpversion"] = phpversion();
 
-//$exportBookName = "";
-//фильмы
-//видеоклипы, музыкальное видео
-//видеоуроки, программирование
-//мультипликация
-$_vars["filename"] = "export_video.xml";
-$sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
+$_vars["filename"] = "export_music.xml";
+$sqlite_path = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite";
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
@@ -45,48 +40,9 @@ LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
 LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
 WHERE 
 node.status=1 AND 
-node.type IN ('video', 'videoclip');
+node.type IN ('playlist');
 ";
 
-/*
-$_vars["sql"]["getVideo"] = "
-SELECT 
-node.nid, 
--- node.title, 
-node.type, 
-node.created, 
-node.changed, 
-node.status,
-field_data_field_producer.field_producer_value,
-field_data_field_roles.field_roles_value
--- field_data_body.body_value
-FROM node
-LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
-LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
-LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
-WHERE 
-node.status=1 AND 
-node.type='video';
-";
-
-$_vars["sql"]["getVideoClips"] = "
-SELECT 
-node.nid, 
--- node.title, 
-field_data_field_creators.field_creators_value,
-node.type, 
-node.created, 
-node.changed, 
-node.status,
-field_data_body.body_value
-FROM node
-LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
-LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
-WHERE 
-node.status=1 AND 
-node.type='videoclip';
-";
-*/
 
 $_vars["sql"]["getTitle"] = "
 SELECT 
