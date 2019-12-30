@@ -177,7 +177,6 @@ echo $logMsg."\n";
 				$db = new PDO( $_vars["dbPath"] ) or die("Could not open database");
 				
 				_exportProcess();
-exit();				
 				if( !empty($_vars["xml"]) ){
 					writeXML($_vars["xml"]);
 				}
@@ -650,10 +649,10 @@ function writeXML($xml){
 		if ( $_vars["runType"] == "console") {
 			$num_bytes = file_put_contents ( $_vars["filename"], $xml);
 			if ($num_bytes > 0){
-_log("Write ".$num_bytes." bytes  in ".$_vars["filename"] . "\n");
+_log("Write ".$num_bytes." bytes  in ".$_vars["filename"]);
 			} else {
 _log( getcwd() );
-_log("Write error in ".$_vars["filename"]."\n");
+_log("Write error in ".$_vars["filename"]);
 			}
 		}
 		
