@@ -20,7 +20,7 @@ $_vars["phpversion"] = phpversion();
 
 $_vars["appTitle"] = "Export playlists info from DB Drupal database to XML file";
 $_vars["filename"] = "export_music.xml";
-$sqlite_path = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite";
+$_vars["dbPath"] = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite";
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
@@ -30,10 +30,10 @@ node.type,
 node.created, 
 node.changed, 
 -- node.status,
-field_data_field_file_location.field_file_location_value,
+-- field_data_field_file_location.field_file_location_value,
 field_data_body.body_value
 FROM node
-LEFT JOIN field_data_field_file_location ON field_data_field_file_location.entity_id=node.nid
+-- LEFT JOIN field_data_field_file_location ON field_data_field_file_location.entity_id=node.nid
 LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
 WHERE 
 node.status=1 AND 
@@ -49,7 +49,7 @@ FROM field_data_field_title
 WHERE field_data_field_title.entity_id={{nodeNid}};
 ";
 
-$_vars["sql"]["getPictures"] = "
+$_vars["sql"]["getImages"] = "
 SELECT 
 field_data_field_img_cover.field_img_cover_value
 FROM field_data_field_img_cover
@@ -67,7 +67,7 @@ $_vars["sql"]["getNodeTags"] = "
 SELECT
 taxonomy_term_data.vid,
 taxonomy_index.tid,
-taxonomy_vocabulary.name,
+taxonomy_vocabulary.name as group_name,
 taxonomy_term_data.name
 FROM taxonomy_index
 LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
@@ -79,9 +79,10 @@ $_vars["sql"]["getTagsList"] = "
 SELECT 
 taxonomy_term_data.tid, 
 taxonomy_term_data.vid, 
-taxonomy_term_data.name, 
-taxonomy_term_data.description
+taxonomy_vocabulary.name as group_name,
+taxonomy_term_data.name 
 FROM taxonomy_term_data 
+LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
 WHERE 
 taxonomy_term_data.tid IN (SELECT DISTINCT(taxonomy_index.tid) FROM taxonomy_index);
 ";
@@ -100,14 +101,14 @@ $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 	</database>
 </xroot>';
 
-$_vars["tpl_node"] = '<video type="{{type}}">
-	<title>{{title}}</title>
+$_vars["tplNode"] = '<node type="{{type}}">
+	<title>{{playlist_titles}}</title>
 	{{images}}
 	{{related_links}}
-	{{tags}}
+	{{nodeTags}}
 	<published format="dd:mm:yyyy hh:mm:ss">{{published}}</published>
 	<updated format="dd:mm:yyyy hh:mm:ss">{{updated}}</updated>
-</video>';
+</node>';
 
 $_vars["tpl_item"] = '<item>{{text}}</item>';
 
@@ -120,8 +121,8 @@ $_vars["tpl_links_item"] = '<li>{{source}}</li>';
 $_vars["tplNodeTags"] = '<tags>{{list}}</tags>';
 $_vars["tplNodeTagsItem"] = '<item vid="{{vid}}" tid="{{tid}}" group_name="{{group_name}}">{{name}}</item>';
 
-$_vars["tpl_tagList"] = '<taglist>{{list}}</taglist>';
-$_vars["tpl_termin_item"] = '<tag tid="{{tid}}" vid="{{vid}}" name="{{name}}">{{description}}</tag>';
+$_vars["tplTagList"] = '<taglist>{{list}}</taglist>';
+$_vars["tplTagListItem"] = '<tag tid="{{tid}}" vid="{{vid}}" group_name="{{group_name}}">{{name}}</tag>';
 
 
 //==============================================================
@@ -160,17 +161,17 @@ if ( $_vars["runType"] == "web") {
 					$_vars["filename"] = $_REQUEST['filename'];
 				}
 				
-				if(empty($_REQUEST['sqlite_path'])){
-echo "<p> -- error, not found <b>sqlite_path</b></p>";
+				if(empty($_REQUEST['db_path'])){
+$logMsg = "-- error, not found <b>db_path</b>";
+echo $logMsg."\n";
 					exit();
 				}
-				//$_vars["exportBookName"] = $_REQUEST['book_title'];
 				
-				$_vars["sqlite_path"] = $_REQUEST['sqlite_path'];
-				$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
+				$_vars["dbPath"] = $_REQUEST['db_path'];
+				$db = new PDO( $_vars["dbPath"] ) or die("Could not open database");
 				
 				_exportProcess();
-				
+exit();				
 				if( !empty($_vars["xml"]) ){
 					writeXML($_vars["xml"]);
 				}
@@ -186,26 +187,24 @@ echo "<p> -- error, not found <b>sqlite_path</b></p>";
 if ( $_vars["runType"] == "console") {
 //print_r($argv);
 //$_SERVER["argv"]
-$_vars["console"] = true;
+	$_vars["console"] = true;
 
-	echo $_vars["appTitle"]."\n";
-	echo "PHP version: ".$_vars["phpversion"]."\n";
-echo "SAPI name: ".php_sapi_name();
-echo "\n";
-echo "PHP_SAPI: ".PHP_SAPI;
-echo "\n";
-	
-	//$_vars["exportBookName"] = $exportBookName;
-	//$_vars["filename"] = $filename;
-	$_vars["sqlite_path"] = $sqlite_path;
-	
-	$db = new PDO( $_vars["sqlite_path"] ) or die("Could not open database");
+	_log( $_vars["appTitle"] );
 
-	//$_vars["nodes"] = getNodes( $_vars["sql"]["getNodes"] );
-//echo "web:" . $_vars["web"];
-//echo "\n";
-//echo "console:" . $_vars["console"];
-//echo "\n";
+	$logMsg = "PHP version: ".phpversion();
+	_log( $logMsg );
+
+	$logMsg = "SAPI name: ".php_sapi_name();
+	_log( $logMsg );
+
+	$logMsg = "PHP_SAPI: ".PHP_SAPI;
+	_log( $logMsg );
+
+	//$logMsg = "Drupal version: ".VERSION;
+	//_log( $logMsg );
+	
+	$db = new PDO( $_vars["dbPath"] ) or die("Could not open database");
+
 	_exportProcess();
 
 	if ( !empty($_vars["xml"]) ) {
@@ -216,9 +215,11 @@ echo "\n";
 			$newfile = "_".$_vars["filename"];
 			
 			if (rename ($oldfile, $newfile)) {
-				_log("- rename $oldfile (old version) to $newfile\n");
+				$logMsg = "- rename $oldfile (old version) to $newfile";
+				_log( $logMsg );
 			} else {
-				_log("- unable to rename file $oldfile\n");
+				$logMsg = "- unable to rename file $oldfile";
+				_log( $logMsg );
 			}
 			writeXML($_vars["xml"]);
 		}
@@ -233,7 +234,10 @@ echo "\n";
 function _log( $message ){
 	global $_vars;
 	if ( $_vars["runType"] == "console") {
-		echo $message;
+		echo $message."\n";
+	}
+	if ( $_vars["runType"] == "web") {
+		//echo "<div class='alert alert-info'>".$message."</div>";
 	}
 }//end _log()
 
@@ -251,31 +255,40 @@ function runSql($db,  $query){
 function _exportProcess(){
 	global $db, $_vars;
 
-	$_vars["films"] = getNodes( $_vars["sql"]["getNodes"] );
+	$_vars["nodes"] = getNodes( $_vars["sql"]["getNodes"] );
+	
+//get text fields	
 	getMultipleFields( 
 		$_vars["sql"]["getTitle"], 
-		$_vars["films"],
+		$_vars["nodes"],
 		"field_title_value", 
-		"title" 
+		"playlist_titles" 
 	);
+	
 	getMultipleFields( 
-		$_vars["sql"]["getPictures"], 
-		$_vars["films"],
+		$_vars["sql"]["getImages"], 
+		$_vars["nodes"],
 		"field_img_cover_value", 
-		"pictures" 
+		"images" 
 	);
+	
 	getMultipleFields( 
 		$_vars["sql"]["getLinks"], 
-		$_vars["films"],
-		"field_url_value", 
-		"links" 
+		$_vars["nodes"],
+		"field_related_links_value", 
+		"related_links" 
 	);
+	
+//get taxonomy fields	
 	getNodeTags( 
 		$_vars["sql"]["getNodeTags"], 
-		$_vars["films"],
+		$_vars["nodes"],
 		"tags" 
 	);
-	$_vars["video"] = _convertFields($_vars["films"]);
+print_r($_vars);
+exit();
+	
+	$_vars["video"] = _convertFields($_vars["nodes"]);
 
 	if( !empty($_vars["video"]) ){
 		$_vars["xml"] = formXML($_vars["video"]);
@@ -301,7 +314,7 @@ function _exportProcess(){
 function getNodes( $sql ) {
 	global $db, $_vars;
 	$result = runSql($db,  $sql);
-//_log("-- get node info\n");
+_log("-- get node info");
 	return $result;
 }//end getNodes()
 
@@ -343,8 +356,8 @@ function getNodeTags( $sql, $records, $fieldNameTrg ){
 			for( $n2 = 0; $n2 < count( $result ); $n2++){
 				$tag = new stdClass();
 				$tag->tid = $result[$n2]->tid;
+				$tag->group_name = $result[$n2]->group_name;
 				$tag->name = $result[$n2]->name;
-				//$tag->codename = $result[$n2]->codename;
 				$record->{$fieldNameTrg}[] = $tag;
 			}//next
 		}
@@ -367,23 +380,18 @@ function _convertFields( $records ) {
 //echo $field;
 //echo "<br>";
 
-			if( $key === "title"){
-				$recordVideo["title"] = $field;
+			if( $key === "playlist_titles"){
+				$recordVideo["playlist_titles"] = $field;
 			}
-			//if( $key === "title1"){
-				//$recordVideo["title1"] = $field;
-			//}
-			//if( $key === "title2"){
-				//$recordVideo["title2"] = $field;
-			//}
-			if( $key === "pictures"){
+
+			if( $key === "images"){
 				if( !empty( $field ) ){
-					$recordVideo["pictures"] = $field;
+					$recordVideo["images"] = $field;
 				}
 			}
-			if( $key === "links"){
+			if( $key === "relative_links"){
 				if( !empty( $field ) ){
-					$recordVideo["links"] = $field;
+					$recordVideo["relative_links"] = $field;
 				}
 			}
 			
@@ -463,7 +471,7 @@ function formXML( $records ){
 		exit();
 	}
 
-$test = str_replace("{{title}}", "#title", $_vars["xml_template"]);
+$test = str_replace("{{playlist_titles}}", "#title", $_vars["xml_template"]);
 echo htmlspecialchars ( $test );
 */
 
@@ -494,7 +502,7 @@ echo "<br>";
 //print_r($record);
 //echo "</pre>";
 
-		$node = $_vars["tpl_node"];
+		$node = $_vars["tplNode"];
 
 		$node = str_replace("{{type}}", $record["type"], $node);
 		$node = str_replace("{{published}}", $record["published"], $node);
@@ -539,7 +547,7 @@ echo "<br>";
 //------------------------------
 			$titles .= "\n\t\t".str_replace("{{text}}", $title, $_vars["tpl_item"]);
 		}
-		$node = str_replace("{{title}}", $titles."\n", $node);
+		$node = str_replace("{{playlist_titles}}", $titles."\n", $node);
 //---------------
 
 //--------------- links
@@ -597,14 +605,16 @@ $img_str = $matches[1];
 		if( isset($record["tags"]) ){
 			for( $n2 =0; $n2 < count($record["tags"]); $n2++ ){
 				$tid_str = $record["tags"][$n2]->tid;
+				$groupNameStr = $record["tags"][$n2]->group_name;
 				$tag_str = $record["tags"][$n2]->name;
-				//$codename_str = $record["tags"][$n2]->codename;
-				//$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}", "{{codename}}"], [$tid_str, $tag_str, $codename_str], $_vars["tplNodeTagsItem"]);
-				$tags .= "\n\t\t".str_replace(["{{tid}}", "{{name}}"], [$tid_str, $tag_str], $_vars["tplNodeTagsItem"]);
+				$tags .= "\n\t\t".str_replace(
+					["{{tid}}", "{{group_name}}", "{{name}}"], 
+					[$tid_str, $groupNameStr, $tag_str], 
+					$_vars["tplNodeTagsItem"]);
 			}//next
 			$tags = str_replace("{{list}}", $tags."\n\t", $_vars["tplNodeTags"]);
 		}
-		$node = str_replace("{{tags}}", $tags."\n", $node);
+		$node = str_replace("{{nodeTags}}", $tags."\n", $node);
 //---------------
 
 		$nodeList .= "\n\n".$node;
@@ -631,22 +641,17 @@ function formTagList( $records ){
 //print_r($record);
 //echo "</pre>";
 
-		$tag = $_vars["tpl_termin_item"];
+		$tag = $_vars["tplTagListItem"];
 
 		$tag = str_replace("{{tid}}", $record->tid, $tag);
 		$tag = str_replace("{{vid}}", $record->vid, $tag);
+		$tag = str_replace("{{group_name}}", $record->group_name, $tag);
 		$tag = str_replace("{{name}}", $record->name, $tag);
-
-		$description="";
-		if( isset($record->description) ){
-			$description = trim( $record->description );
-		} 
-		$tag = str_replace("{{description}}", $description, $tag);
 
 		$tagList .= "\n\t".$tag;
 	}//next
 
-	$node = str_replace("{{list}}", $tagList."\n", $_vars["tpl_tagList"]);
+	$node = str_replace("{{list}}", $tagList."\n", $_vars["tplTagList"]);
 	
 	return $node;
 }//end formTagList()
@@ -682,7 +687,6 @@ _log("Write error in ".$_vars["filename"]."\n");
 function view_form(){
 	global $_vars;
 	//global $exportBookName;
-	global $sqlite_path;
 	
 echo "
 <html>
@@ -713,13 +717,13 @@ echo "
 </div>
 
 <div>
-	<label>sqlite_path</label>
+	<label>db_path</label>
 	<input 
 	class='form-control'
 	type='text' 
-	name='sqlite_path' 
+	name='db_path' 
 	size='80'
-	value='".$sqlite_path."'/>
+	value='".$_vars["dbPath"]."'/>
 </div>
 <pre>
 sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite
