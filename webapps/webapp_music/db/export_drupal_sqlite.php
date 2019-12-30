@@ -25,7 +25,7 @@ $_vars["dbPath"] = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlit
 $_vars["sql"]["getNodes"] = "
 SELECT 
 node.nid, 
-node.title, 
+node.title as node_title, 
 node.type, 
 node.created, 
 node.changed, 
@@ -101,16 +101,19 @@ $_vars["export_tpl"] = '<?xml version="1.0" encoding="UTF-8" ?>
 	</database>
 </xroot>';
 
+$_vars["dateFormat"] = 'd-M-Y H:i:s';
 $_vars["tplNode"] = '<node type="{{type}}">
 	<title>{{playlist_titles}}</title>
 	{{images}}
+	{{description}}
 	{{related_links}}
 	{{nodeTags}}
-	<published format="dd:mm:yyyy hh:mm:ss">{{published}}</published>
-	<updated format="dd:mm:yyyy hh:mm:ss">{{updated}}</updated>
+	<published format="'.$_vars["dateFormat"].'">{{published}}</published>
+	<updated format="'.$_vars["dateFormat"].'">{{updated}}</updated>
 </node>';
 
 $_vars["tpl_item"] = '<item>{{text}}</item>';
+$_vars["tpl_description"] = '<description>{{text}}</description>';
 
 $_vars["tpl_images"] = '<images>{{list}}</images>';
 $_vars["tpl_image"] = '<img src="{{source}}"/>';
@@ -121,8 +124,11 @@ $_vars["tpl_links_item"] = '<li>{{source}}</li>';
 $_vars["tplNodeTags"] = '<tags>{{list}}</tags>';
 $_vars["tplNodeTagsItem"] = '<item vid="{{vid}}" tid="{{tid}}" group_name="{{group_name}}">{{name}}</item>';
 
-$_vars["tplTagList"] = '<taglist>{{list}}</taglist>';
+$_vars["tplTagList"] = '<tag_list>{{list}}</tag_list>';
 $_vars["tplTagListItem"] = '<tag tid="{{tid}}" vid="{{vid}}" group_name="{{group_name}}">{{name}}</tag>';
+
+$_vars["tplTagGroups"] = '<tag_groups>{{list}}</tag_groups>';
+$_vars["tplTagGroupItem"] = '<item vid="{{vid}}" name="{{name}}"></item>';
 
 
 //==============================================================
@@ -285,14 +291,13 @@ function _exportProcess(){
 		$_vars["nodes"],
 		"tags" 
 	);
-print_r($_vars);
-exit();
 	
-	$_vars["video"] = _convertFields($_vars["nodes"]);
+	$_vars["xmlData"] = _convertNodes($_vars["nodes"]);
 
-	if( !empty($_vars["video"]) ){
-		$_vars["xml"] = formXML($_vars["video"]);
+	if( !empty($_vars["xmlData"]) ){
+		$_vars["xml"] = formXML( $_vars["xmlData"] );
 	}
+
 
 //---------------------------
 	$result = runSql($db, $_vars["sql"]["getTagsList"]);
@@ -300,12 +305,16 @@ exit();
 		$_vars["xml_tagList"] = formTagList($result);
 		$_vars["xml"] = str_replace("{{tag_list}}", $_vars["xml_tagList"], $_vars["xml"]);
 	}
+	
+	$result = runSql($db, $_vars["sql"]["getTagsGroups"]);
+print_r( $result );
+	
 //echo count($_vars["tags"]);
 //echo "<br>";
 //echo "<pre>";
-//print_r( $_vars["tags"] );
+//print_r( $_vars["xml"] );
 //echo "</pre>";
-//exit();
+exit();
 
 
 }//end _exportProcess()					
@@ -355,6 +364,7 @@ function getNodeTags( $sql, $records, $fieldNameTrg ){
 			$record->{$fieldNameTrg} = array();
 			for( $n2 = 0; $n2 < count( $result ); $n2++){
 				$tag = new stdClass();
+				$tag->vid = $result[$n2]->vid;
 				$tag->tid = $result[$n2]->tid;
 				$tag->group_name = $result[$n2]->group_name;
 				$tag->name = $result[$n2]->name;
@@ -366,134 +376,82 @@ function getNodeTags( $sql, $records, $fieldNameTrg ){
 }//getNodeTags()
 
 
-function _convertFields( $records ) {
-	$newRecords = array();
-	
+function _convertNodes( $nodesObj ) {
+	global $_vars;
 
-	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
-		$record = $records[$n1];
+	$arr1 = array();
+	for( $n1 = 0; $n1 < count( $nodesObj ); $n1++)	{
+		$recordObj = $nodesObj[$n1];
 //echo $record->title;
 //echo "<br>";
-		$recordVideo = array();
-		foreach( $record as $key=>$field )	{
+		$record = array();
+		foreach( $recordObj as $key=>$field )	{
 //echo $key;
 //echo $field;
 //echo "<br>";
 
+			if( $key === "node_title"){
+				$record["node_title"] = $field;
+			}
+			
 			if( $key === "playlist_titles"){
-				$recordVideo["playlist_titles"] = $field;
+				$record["playlist_titles"] = $field;
 			}
 
 			if( $key === "images"){
 				if( !empty( $field ) ){
-					$recordVideo["images"] = $field;
+					$record["images"] = $field;
 				}
 			}
-			if( $key === "relative_links"){
+			if( $key === "related_links"){
 				if( !empty( $field ) ){
-					$recordVideo["relative_links"] = $field;
+					$record["related_links"] = $field;
 				}
 			}
 			
 			if( $key === "tags"){
 				if( !empty( $field ) ){
-					$recordVideo["tags"] = $field;
+					$record["tags"] = $field;
 				}
 			}
 
 			if( $key === "type"){
-				$recordVideo["type"] = $field;
+				$record["type"] = $field;
 			}
-			//if( $key === "status"){
-				//$recordVideo["public_status"] = $field;
-			//}
+
 			if( $key === "created"){
-				$recordVideo["published"] = date('d-M-Y H:i:s', $field);
+				$record["published"] = date($_vars["dateFormat"], $field);
 			}
 			if( $key === "changed"){
-				$recordVideo["updated"] = date('d-M-Y H:i:s', $field);
+				$record["updated"] = date($_vars["dateFormat"], $field);
 			}
+
 			if( $key === "body_value"){
 				if( !empty( $field ) ){
 					$body = htmlspecialchars ($field);
 	//echo $body;
 	//echo "<br>";
 //------------------------ filter
-	$body = str_replace('', '', $body);
-	$body = str_replace('&', '&amp;', $body);
+//$body = str_replace('', '', $body);
+$body = str_replace('&', '&amp;', $body);
 //------------------------------
-
-					$recordVideo["description"] = $body;
+					$record["description"] = $body;
 				}
 			}
 
-
-			if( $key === "field_creators_value" ){
-				if( !empty( $field ) ){
-					$recordVideo["creators"] = $field;
-				}
-			}
-
-			if( $key === "field_producer_value"){
-				if( !empty( $field ) ){
-					$recordVideo["producer"] = $field;
-				}
-			}
-			
-			if( $key === "field_roles_value"){
-				if( !empty( $field ) ){
-					$recordVideo["roles"] = $field;
-				}
-			}
 			
 		}//next
-		$newRecords[] = $recordVideo;
+		$arr1[] = $record;
 	}//next
 	
-	//$newRecords = $records;
-	return $newRecords;
-}//end _convertFields()
+	return $arr1;
+}//end _convertNodes()
 
 
 
 function formXML( $records ){
 	global $_vars;
 
-/*
-	if( file_exists( dirname(__FILE__)."/".$_vars["export_tpl"] ) ){
-		$_vars["xml_template"] = file_get_contents( dirname(__FILE__)."/".$_vars["export_tpl"] );
-//echo "<pre>";
-//print_r($_vars);
-//echo "</pre>";
-
-	} else {
-		echo "<p> -- error, not found <b>".dirname(__FILE__)."/".$_vars["export_tpl"] ."</b></p>";
-		exit();
-	}
-
-$test = str_replace("{{playlist_titles}}", "#title", $_vars["xml_template"]);
-echo htmlspecialchars ( $test );
-*/
-
-/*
-//http://php.net/manual/ru/ref.simplexml.php
-	$filename = dirname(__FILE__)."/".$_vars["export_tpl"];
-	$xmlTpl = simplexml_load_file($filename);
-	if(!$xmlTpl){
-		exit("Failed to open ".$filename);
-	} else {
-	  //echo "Use SimpleXML for read data from ".$xml_file."<br>\n"; 
-
-echo "<pre>";
-print_r($xmlTpl);
-echo "</pre>";
-
-echo sizeof($xmlTpl->database->video);
-echo "<br>";
-echo "Type:".$xmlTpl->database->video[0]["type"];
-echo "<br>";
-	  }
-*/
 	$nodeList = "";
 
 	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
@@ -508,28 +466,6 @@ echo "<br>";
 		$node = str_replace("{{published}}", $record["published"], $node);
 		$node = str_replace("{{updated}}", $record["updated"], $node);
 
-		$creators="";
-		if( isset($record["creators"]) ){
-			$creators = str_replace("{{text}}", $record["creators"], $_vars["tpl_creators"]);
-//------------------------ filter
-			$creators = str_replace('&', '&amp;', $creators);
-//------------------------------
-		} 
-		$node = str_replace("{{creators}}", $creators, $node);
-
-		$producer="";
-		if( isset($record["producer"]) ){
-			$producer = str_replace("{{text}}", $record["producer"], $_vars["tpl_producer"]);
-		} 
-		$node = str_replace("{{producer}}", $producer, $node);
-
-
-		$roles="";
-		if( isset($record["roles"]) ){
-			$roles = str_replace("{{text}}", $record["roles"]."\t", $_vars["tpl_roles"]);
-		} 
-		$node = str_replace("{{roles}}", $roles, $node);
-
 
 		$description="";
 		if( isset($record["description"]) ){
@@ -538,23 +474,33 @@ echo "<br>";
 		} 
 		$node = str_replace("{{description}}", $description, $node);
 
+
 //--------------- title
 		$titles = "";
-		for( $n2 =0; $n2 < count($record["title"]); $n2++ ){
-			$title = $record["title"][$n2];
+if( isset( $record["playlist_titles"] ) ){
+	if( count( $record["playlist_titles"] > 0) ){
+		for( $n2 =0; $n2 < count($record["playlist_titles"]); $n2++ ){
+			$title = $record["playlist_titles"][$n2];
 //------------------------ filter
 			$title = str_replace('&', '&amp;', $title);
 //------------------------------
 			$titles .= "\n\t\t".str_replace("{{text}}", $title, $_vars["tpl_item"]);
-		}
-		$node = str_replace("{{playlist_titles}}", $titles."\n", $node);
+		}//next
+	}
+} else {
+		$title = $record["node_title"];
+		$titles .= "\n\t\t".str_replace("{{text}}", $title, $_vars["tpl_item"]);
+}
+		$node = str_replace("{{playlist_titles}}", $titles."\n\t", $node);
 //---------------
+
+
 
 //--------------- links
 		$links = "";
-		if( isset($record["links"]) ){
-			for( $n2 =0; $n2 < count($record["links"]); $n2++ ){
-				$link_str = $record["links"][$n2];
+		if( isset($record["related_links"]) ){
+			for( $n2 =0; $n2 < count($record["related_links"]); $n2++ ){
+				$link_str = $record["related_links"][$n2];
 //------------------------ filter
 				$link_str = str_replace('&', '&amp;', $link_str);
 //------------------------------
@@ -565,11 +511,13 @@ echo "<br>";
 		$node = str_replace("{{related_links}}", $links."\n", $node);
 //---------------
 
-//--------------- pictures
+
+
+//--------------- images
 		$pics = "";
-		if( isset($record["pictures"]) ){
-			for( $n2 =0; $n2 < count($record["pictures"]); $n2++ ){
-				$img_str = $record["pictures"][$n2];
+		if( isset($record["images"]) ){
+			for( $n2 =0; $n2 < count($record["images"]); $n2++ ){
+				$img_str = $record["images"][$n2];
 				if( count($img_str) === 0){
 					continue;
 				}
@@ -600,16 +548,18 @@ $img_str = $matches[1];
 		$node = str_replace("{{images}}", $pics."\n", $node);
 //---------------
 
+
 //--------------- tags
 		$tags = "";
 		if( isset($record["tags"]) ){
 			for( $n2 =0; $n2 < count($record["tags"]); $n2++ ){
+				$vid_str = $record["tags"][$n2]->vid;
 				$tid_str = $record["tags"][$n2]->tid;
 				$groupNameStr = $record["tags"][$n2]->group_name;
 				$tag_str = $record["tags"][$n2]->name;
 				$tags .= "\n\t\t".str_replace(
-					["{{tid}}", "{{group_name}}", "{{name}}"], 
-					[$tid_str, $groupNameStr, $tag_str], 
+					["{{vid}}", "{{tid}}", "{{group_name}}", "{{name}}"], 
+					[$vid_str, $tid_str, $groupNameStr, $tag_str], 
 					$_vars["tplNodeTagsItem"]);
 			}//next
 			$tags = str_replace("{{list}}", $tags."\n\t", $_vars["tplNodeTags"]);
@@ -651,9 +601,9 @@ function formTagList( $records ){
 		$tagList .= "\n\t".$tag;
 	}//next
 
-	$node = str_replace("{{list}}", $tagList."\n", $_vars["tplTagList"]);
+	$xmlList = str_replace("{{list}}", $tagList."\n", $_vars["tplTagList"]);
 	
-	return $node;
+	return $xmlList;
 }//end formTagList()
 
 

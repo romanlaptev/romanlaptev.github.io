@@ -32,8 +32,10 @@
 ....		
 	</tags>
 	
-	<created format="dd:mm:yyyy">11-March-2017</created>
-	<updated format="dd:mm:yyyy hh:mm:ss">20-Jul-2019 22:38:46</updated>
+	<description></description>
+	
+	<created format="d-M-Y H:i:s">11-March-2017</created>
+	<updated format="d-M-Y H:i:s">20-Jul-2019 22:38:46</updated>
 </node>
 
 	</database>

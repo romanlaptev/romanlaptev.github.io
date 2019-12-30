@@ -3,3012 +3,1216 @@ PHP version: 5.4.4-14+deb7u8
 SAPI name: cli
 PHP_SAPI: cli
 -- get node info
-Array
-(
-    [phpversion] => 5.4.4-14+deb7u8
-    [appTitle] => Export playlists info from DB Drupal database to XML file
-    [filename] => export_music.xml
-    [dbPath] => sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite
-    [sql] => Array
-        (
-            [getNodes] => 
-SELECT 
-node.nid, 
-node.title, 
-node.type, 
-node.created, 
-node.changed, 
--- node.status,
--- field_data_field_file_location.field_file_location_value,
-field_data_body.body_value
-FROM node
--- LEFT JOIN field_data_field_file_location ON field_data_field_file_location.entity_id=node.nid
-LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
-WHERE 
-node.status=1 AND 
-node.type IN ('playlist');
-
-            [getTitle] => 
-SELECT 
-field_data_field_title.field_title_value
--- field_data_field_title.delta 
-FROM field_data_field_title 
-WHERE field_data_field_title.entity_id={{nodeNid}};
-
-            [getImages] => 
-SELECT 
-field_data_field_img_cover.field_img_cover_value
-FROM field_data_field_img_cover
-WHERE field_data_field_img_cover.entity_id={{nodeNid}};
-
-            [getLinks] => 
-SELECT 
-field_data_field_related_links.field_related_links_value
-FROM field_data_field_related_links
-WHERE field_data_field_related_links.entity_id={{nodeNid}};
-
-            [getNodeTags] => 
-SELECT
-taxonomy_term_data.vid,
-taxonomy_index.tid,
-taxonomy_vocabulary.name as group_name,
-taxonomy_term_data.name
-FROM taxonomy_index
-LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
-LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
-WHERE taxonomy_index.nid={{nodeNid}};
-
-            [getTagsList] => 
-SELECT 
-taxonomy_term_data.tid, 
-taxonomy_term_data.vid, 
-taxonomy_vocabulary.name as group_name,
-taxonomy_term_data.name 
-FROM taxonomy_term_data 
-LEFT JOIN taxonomy_vocabulary ON taxonomy_vocabulary.vid=taxonomy_term_data.vid
-WHERE 
-taxonomy_term_data.tid IN (SELECT DISTINCT(taxonomy_index.tid) FROM taxonomy_index);
-
-            [getTagGroups] => 
-SELECT vid, name FROM taxonomy_vocabulary;
-
-        )
-
-    [export_tpl] => <?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="music">
 {{tag_groups}}
-{{tag_list}}
-{{nodelist}}
+<taglist>
+	<tag tid="10" vid="2" group_name="music_styles">heavy metal</tag>
+	<tag tid="11" vid="2" group_name="music_styles">speed</tag>
+	<tag tid="12" vid="2" group_name="music_styles">power</tag>
+	<tag tid="15" vid="2" group_name="music_styles">фолк-метал</tag>
+	<tag tid="17" vid="2" group_name="music_styles">thrash</tag>
+	<tag tid="22" vid="2" group_name="music_styles">death</tag>
+	<tag tid="23" vid="2" group_name="music_styles">doom</tag>
+	<tag tid="24" vid="2" group_name="music_styles">симфоник-метал</tag>
+	<tag tid="32" vid="2" group_name="music_styles">rave</tag>
+	<tag tid="33" vid="2" group_name="music_styles">techno</tag>
+	<tag tid="34" vid="2" group_name="music_styles">classic rock</tag>
+	<tag tid="39" vid="2" group_name="music_styles">русский рок</tag>
+	<tag tid="45" vid="2" group_name="music_styles">punk</tag>
+	<tag tid="50" vid="4" group_name="country">Швеция</tag>
+	<tag tid="51" vid="4" group_name="country">Германия</tag>
+	<tag tid="53" vid="5" group_name="alphabetical_voc">А</tag>
+	<tag tid="54" vid="5" group_name="alphabetical_voc">Б</tag>
+	<tag tid="55" vid="5" group_name="alphabetical_voc">В</tag>
+	<tag tid="56" vid="5" group_name="alphabetical_voc">Г</tag>
+	<tag tid="62" vid="5" group_name="alphabetical_voc">К</tag>
+	<tag tid="64" vid="5" group_name="alphabetical_voc">М</tag>
+	<tag tid="65" vid="5" group_name="alphabetical_voc">Н</tag>
+	<tag tid="67" vid="5" group_name="alphabetical_voc">П</tag>
+	<tag tid="68" vid="5" group_name="alphabetical_voc">Р</tag>
+	<tag tid="70" vid="5" group_name="alphabetical_voc">Т</tag>
+	<tag tid="77" vid="5" group_name="alphabetical_voc">Ш</tag>
+	<tag tid="83" vid="5" group_name="alphabetical_voc">A</tag>
+	<tag tid="84" vid="5" group_name="alphabetical_voc">B</tag>
+	<tag tid="85" vid="5" group_name="alphabetical_voc">D</tag>
+	<tag tid="89" vid="5" group_name="alphabetical_voc">H</tag>
+	<tag tid="91" vid="5" group_name="alphabetical_voc">J</tag>
+	<tag tid="92" vid="5" group_name="alphabetical_voc">K</tag>
+	<tag tid="94" vid="5" group_name="alphabetical_voc">M</tag>
+	<tag tid="95" vid="5" group_name="alphabetical_voc">N</tag>
+	<tag tid="96" vid="5" group_name="alphabetical_voc">P</tag>
+	<tag tid="98" vid="5" group_name="alphabetical_voc">R</tag>
+	<tag tid="99" vid="5" group_name="alphabetical_voc">S</tag>
+	<tag tid="100" vid="5" group_name="alphabetical_voc">T</tag>
+	<tag tid="101" vid="5" group_name="alphabetical_voc">V</tag>
+	<tag tid="105" vid="2" group_name="music_styles">black</tag>
+	<tag tid="107" vid="2" group_name="music_styles">rock</tag>
+	<tag tid="108" vid="2" group_name="music_styles">art-rock</tag>
+	<tag tid="109" vid="2" group_name="music_styles">hard-rock</tag>
+	<tag tid="110" vid="2" group_name="music_styles">alternative rock</tag>
+	<tag tid="112" vid="2" group_name="music_styles">psychedelic rock</tag>
+	<tag tid="116" vid="4" group_name="country">США</tag>
+	<tag tid="118" vid="3" group_name="music_formats">aria</tag>
+	<tag tid="119" vid="3" group_name="music_formats">live</tag>
+	<tag tid="120" vid="3" group_name="music_formats">studio album</tag>
+	<tag tid="121" vid="3" group_name="music_formats">collection</tag>
+	<tag tid="122" vid="9" group_name="music_genre">Рок</tag>
+	<tag tid="123" vid="9" group_name="music_genre">Фолк</tag>
+	<tag tid="124" vid="9" group_name="music_genre">Блюз</tag>
+	<tag tid="125" vid="9" group_name="music_genre">Джаз</tag>
+	<tag tid="126" vid="9" group_name="music_genre">Шансон, романс, авторская песня</tag>
+	<tag tid="127" vid="9" group_name="music_genre">Электронная музыка</tag>
+	<tag tid="129" vid="9" group_name="music_genre">Ска</tag>
+	<tag tid="130" vid="2" group_name="music_styles">Свинг</tag>
+	<tag tid="131" vid="3" group_name="music_formats">chants</tag>
+	<tag tid="132" vid="4" group_name="country">Великобритания</tag>
+	<tag tid="133" vid="4" group_name="country">Польша</tag>
+	<tag tid="134" vid="9" group_name="music_genre">Академическая музыка</tag>
+	<tag tid="137" vid="2" group_name="music_styles">Опера</tag>
+	<tag tid="138" vid="2" group_name="music_styles">Барокко</tag>
+	<tag tid="139" vid="2" group_name="music_styles">Классицизм</tag>
+	<tag tid="140" vid="2" group_name="music_styles">Оркестровая музыка</tag>
+	<tag tid="141" vid="2" group_name="music_styles">Возрождение</tag>
+	<tag tid="142" vid="2" group_name="music_styles">Средневековье</tag>
+	<tag tid="143" vid="4" group_name="country">Австрия</tag>
+	<tag tid="144" vid="3" group_name="music_formats">Концерт</tag>
+	<tag tid="145" vid="4" group_name="country">Италия</tag>
+	<tag tid="146" vid="4" group_name="country">Чехия</tag>
+	<tag tid="147" vid="4" group_name="country">Финляндия</tag>
+	<tag tid="149" vid="4" group_name="country">Россия</tag>
+	<tag tid="150" vid="4" group_name="country">СССР</tag>
+	<tag tid="151" vid="2" group_name="music_styles">рок-н-ролл</tag>
+	<tag tid="152" vid="2" group_name="music_styles">фолк-рок</tag>
+	<tag tid="153" vid="2" group_name="music_styles">регги</tag>
+	<tag tid="154" vid="2" group_name="music_styles">блюз-рок</tag>
+	<tag tid="155" vid="2" group_name="music_styles">джаз-фьюжн</tag>
+	<tag tid="156" vid="4" group_name="country">Испания</tag>
+	<tag tid="157" vid="2" group_name="music_styles">ска-панк</tag>
+	<tag tid="158" vid="4" group_name="country">Бразилия</tag>
+	<tag tid="159" vid="2" group_name="music_styles">рокабилли</tag>
+	<tag tid="160" vid="2" group_name="music_styles">pop music</tag>
+	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
+</taglist>
+
+
+<node type="playlist">
+	<title>
+		<item>Psalteria</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
+		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="142" group_name="music_styles">Средневековье</item>
+		<item vid="4" tid="146" group_name="country">Чехия</item>
+		<item vid="3" tid="131" group_name="music_formats">chants</item>
+		<item vid="3" tid="119" group_name="music_formats">live</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">20-Nov-2012 22:46:06</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:59</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Крематорий</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="62" group_name="alphabetical_voc">К</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">27-Jan-2013 19:51:34</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:30</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Шлюз</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="77" group_name="alphabetical_voc">Ш</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Jul-2013 13:15:33</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:50</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>SKA-P</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="129" group_name="music_genre">Ска</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="156" group_name="country">Испания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">31-Jul-2013 22:12:08</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:24</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Ramones</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">04-Aug-2013 22:47:17</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:40</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Путти</item>
+	</title>
+	
+
+	<description>http://rutracker.org/forum/viewtopic.php?t=424290</description>
+	
+
+	<tags>
+		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">04-Aug-2013 23:05:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:00</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Пикник</item>
+	</title>
+	
+
+	<description>http://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D0%BA%D0%BD%D0%B8%D0%BA_%28%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0%29</description>
+	
+
+	<tags>
+		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">04-Aug-2013 23:22:08</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:11</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Аквариум</item>
+	</title>
+	
+
+	<description>https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)</description>
+	
+
+	<tags>
+		<item vid="5" tid="53" group_name="alphabetical_voc">А</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="154" group_name="music_styles">блюз-рок</item>
+		<item vid="2" tid="155" group_name="music_styles">джаз-фьюжн</item>
+		<item vid="2" tid="153" group_name="music_styles">регги</item>
+		<item vid="2" tid="151" group_name="music_styles">рок-н-ролл</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">07-Aug-2013 22:13:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:35</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Slayer</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:51:35</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:31</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Sepultura</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="158" group_name="country">Бразилия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:57:59</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:14</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>T-Rex</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">11-Aug-2013 22:03:19</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:01</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Трофим</item>
+	</title>
+	
+
+	
+	
+
+	<tags>
+		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
+		<item vid="9" tid="126" group_name="music_genre">Шансон, романс, авторская песня</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">11-Aug-2013 22:10:52</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:21</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Metallica</item>
+	</title>
+	<images>
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/metallica.json"]metallica.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="120" group_name="music_formats">studio album</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">15-May-2015 09:58:16</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:37:38</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Jazz and swing</item>
+	</title>
+	<images>
+		<img src="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1021">music.yandex.ru</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Jazz and swing.json"]Jazz and swing.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="91" group_name="alphabetical_voc">J</item>
+		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
+		<item vid="9" tid="125" group_name="music_genre">Джаз</item>
+		<item vid="2" tid="130" group_name="music_styles">Свинг</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:56:23</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>blues, rock_n_roll, swing, jazz</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json"]blues, rock_n_roll, swing, jazz.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="124" group_name="music_genre">Блюз</item>
+		<item vid="9" tid="125" group_name="music_genre">Джаз</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="130" group_name="music_styles">Свинг</item>
+		<item vid="2" tid="154" group_name="music_styles">блюз-рок</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:24:25</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Vivaldi, Antonio Lucio</item>
+	</title>
+	<images>
+		<img src="/music/V/Vivaldi/images/Vivaldi.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Vivaldi.json"]Vivaldi.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="101" group_name="alphabetical_voc">V</item>
+		<item vid="5" tid="55" group_name="alphabetical_voc">В</item>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="2" tid="139" group_name="music_styles">Классицизм</item>
+		<item vid="4" tid="145" group_name="country">Италия</item>
+		<item vid="3" tid="144" group_name="music_formats">Концерт</item>
+		<item vid="3" tid="118" group_name="music_formats">aria</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:02:56</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Mozart, Wolfgang Amadeus</item>
+	</title>
+	<images>
+		<img src="/music/M/Mozart/images/Mozart.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Mozart.json"]Mozart.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="5" tid="64" group_name="alphabetical_voc">М</item>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="2" tid="139" group_name="music_styles">Классицизм</item>
+		<item vid="4" tid="143" group_name="country">Австрия</item>
+		<item vid="3" tid="144" group_name="music_formats">Концерт</item>
+		<item vid="3" tid="118" group_name="music_formats">aria</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:04:50</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Bach, Johann Sebastian</item>
+	</title>
+	<images>
+		<img src="/music/B/Bach/images/Johann_Sebastian_Bach.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Bach.json"]Bach.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="84" group_name="alphabetical_voc">B</item>
+		<item vid="5" tid="54" group_name="alphabetical_voc">Б</item>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="2" tid="138" group_name="music_styles">Барокко</item>
+		<item vid="4" tid="51" group_name="country">Германия</item>
+		<item vid="3" tid="131" group_name="music_formats">chants</item>
+		<item vid="3" tid="144" group_name="music_formats">Концерт</item>
+		<item vid="3" tid="118" group_name="music_formats">aria</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:03:53</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Handel, George Frideric</item>
+	</title>
+	<images>
+		<img src="/music/H/Handel/images/handel.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Handel.json"]Handel.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="89" group_name="alphabetical_voc">H</item>
+		<item vid="5" tid="56" group_name="alphabetical_voc">Г</item>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="2" tid="138" group_name="music_styles">Барокко</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="4" tid="51" group_name="country">Германия</item>
+		<item vid="3" tid="118" group_name="music_formats">aria</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:06:01</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>classic music</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>https://music.yandex.ru/users/roman-laptev/playlists/1007</li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/classic.json"]classic.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="2" tid="138" group_name="music_styles">Барокко</item>
+		<item vid="2" tid="141" group_name="music_styles">Возрождение</item>
+		<item vid="2" tid="139" group_name="music_styles">Классицизм</item>
+		<item vid="2" tid="137" group_name="music_styles">Опера</item>
+		<item vid="2" tid="140" group_name="music_styles">Оркестровая музыка</item>
+		<item vid="2" tid="142" group_name="music_styles">Средневековье</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:25:42</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Башня Rowan</item>
+	</title>
+	<images>
+		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Rowan.json">Rowan.json</a></li>
+	</related_links>
+
+	<tags>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:36:30</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Judas Priest</item>
+	</title>
+	<images>
+		<img src="/music/J/Judas Priest/images/British Steel.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>https://music.yandex.ru/users/roman-laptev/playlists/1017</li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/judas_priest.json"]judas_priest.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="91" group_name="alphabetical_voc">J</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:18</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>My dying bride</item>
+	</title>
+	<images>
+		<img src="/music/M/My dying bride/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/My dying bride.json"]My dying bride.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:37:54</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Master</item>
+	</title>
+	<images>
+		<img src="/music/M/Master/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Master.json"]Master.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="64" group_name="alphabetical_voc">М</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:26:19</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Manowar</item>
+	</title>
+	<images>
+		<img src="/music/M/Manowar/image/Manowar88.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Manowar.json"]Manowar.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:38:59</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Therion</item>
+	</title>
+	<images>
+		<img src="/music/T/Therion/Therion.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Therion.json"]Therion.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
+		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
+		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
+		<item vid="4" tid="50" group_name="country">Швеция</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:00:31</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Nightwish</item>
+	</title>
+	<images>
+		<img src="/music/N/Nightwish/Picture/n_cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Nightwish.json"]Nightwish.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="95" group_name="alphabetical_voc">N</item>
+		<item vid="5" tid="65" group_name="alphabetical_voc">Н</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
+		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="4" tid="147" group_name="country">Финляндия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:12</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Russian rock</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/russian.json"]russian.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="39" group_name="music_styles">русский рок</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:39:55</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Kreator</item>
+	</title>
+	<images>
+		<img src="/music/K/Kreator/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Kreator.json"]Kreator.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="51" group_name="country">Германия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:07:40</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>KSU</item>
+	</title>
+	<images>
+		<img src="/music/K/KSU/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1020">music.yandex.ru</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/KSU.json"]KSU.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="133" group_name="country">Польша</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:06:48</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>punk, hardcore</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/punk, hardcore.json"]punk, hardcore.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:41:20</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Russian punk</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>https://music.yandex.ru/users/roman-laptev/playlists/1010</li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/rus_punk.json"]rus_punk.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:44:24</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Гражданская оборона</item>
+	</title>
+	<images>
+		<img src="/music/0_covers/grob.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>https://music.yandex.ru/users/roman-laptev/playlists/1006</li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/GrOb.json"]GrOb.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="56" group_name="alphabetical_voc">Г</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="39" group_name="music_styles">русский рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:45:33</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Ska</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>https://music.yandex.ru/users/roman-laptev/playlists/1012</li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/ska.json"]ska.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="129" group_name="music_genre">Ска</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:46:45</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>thrash, death, grindecore, hardcore</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/thrash, death, grindecore, hardcore.json"]thrash, death, grindecore, hardcore.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="105" group_name="music_styles">black</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="22" group_name="music_styles">death</item>
+		<item vid="2" tid="23" group_name="music_styles">doom</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:48:26</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>trance, rave, hip-hop, electronic</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/trance, rave, hip-hop, electronic.json"]trance, rave, hip-hop, electronic.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="127" group_name="music_genre">Электронная музыка</item>
+		<item vid="2" tid="32" group_name="music_styles">rave</item>
+		<item vid="2" tid="33" group_name="music_styles">techno</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:25:07</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Red Elvices</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/red_elvices.json"]red_elvices.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="151" group_name="music_styles">рок-н-ролл</item>
+		<item vid="2" tid="159" group_name="music_styles">рокабилли</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:51:42</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>disko, pop</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/disko, pop.json"]disko, pop.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="85" group_name="alphabetical_voc">D</item>
+		<item vid="2" tid="160" group_name="music_styles">pop music</item>
+		<item vid="2" tid="161" group_name="music_styles">диско</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:55:06</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>folk, chants</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://www.youtube.com/playlist?list=PL2sTusldk6UhJ9XXBSCA5Kb-r4e3q0qt4">music - medieval, church, youtube</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/folk, chants.json"]folk, chants.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:09:23</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>heavy,speed,power metal</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a></li>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/heavy,speed,power.json"]heavy,speed,power.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="11" group_name="music_styles">speed</item>
+		<item vid="2" tid="12" group_name="music_styles">power</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:19:28</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>indian music</item>
+	</title>
+	
+
+	<description>SATYAA and PARI</description>
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/indian.json"]indian.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:49</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>melodic, folk metal</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/melodic, folk metal.json"]melodic, folk metal.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:53</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Apocalyptica</item>
+	</title>
+	<images>
+		<img src="/music/0_covers/apocalyptica.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/apocalyptica.json"]apocalyptica.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="83" group_name="alphabetical_voc">A</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
+		<item vid="4" tid="147" group_name="country">Финляндия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:21:05</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Korpiklaani</item>
+	</title>
+	<images>
+		<img src="/music/K/Korpiklaani/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/Korpiklaani.json"]Korpiklaani.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="4" tid="147" group_name="country">Финляндия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:23:41</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>transe, hip-hop, latin</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/mix_transe, hip-hop, latin.json"]mix_transe, hip-hop, latin.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="9" tid="127" group_name="music_genre">Электронная музыка</item>
+		<item vid="2" tid="33" group_name="music_styles">techno</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:57:32</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Rock</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li>[a data-type="playlist-file" href="/music/0_playlists/rock.json"]rock.json[/a]</li>
+	</related_links>
+
+	<tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
+</node>
 	</database>
 </xroot>
-    [tplNode] => <node type="{{type}}">
-	<title>{{playlist_titles}}</title>
-	{{images}}
-	{{related_links}}
-	{{nodeTags}}
-	<published format="dd:mm:yyyy hh:mm:ss">{{published}}</published>
-	<updated format="dd:mm:yyyy hh:mm:ss">{{updated}}</updated>
-</node>
-    [tpl_item] => <item>{{text}}</item>
-    [tpl_images] => <images>{{list}}</images>
-    [tpl_image] => <img src="{{source}}"/>
-    [tpl_links] => <related_links>{{list}}</related_links>
-    [tpl_links_item] => <li>{{source}}</li>
-    [tplNodeTags] => <tags>{{list}}</tags>
-    [tplNodeTagsItem] => <item vid="{{vid}}" tid="{{tid}}" group_name="{{group_name}}">{{name}}</item>
-    [tplTagList] => <taglist>{{list}}</taglist>
-    [tplTagListItem] => <tag tid="{{tid}}" vid="{{vid}}" group_name="{{group_name}}">{{name}}</tag>
-    [runType] => console
-    [console] => 1
-    [nodes] => Array
-        (
-            [0] => stdClass Object
-                (
-                    [nid] => 6
-                    [title] => Psalteria
-                    [type] => playlist
-                    [created] => 1353419166
-                    [changed] => 1577678519
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Psalteria
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 96
-                                    [group_name] => alphabetical_voc
-                                    [name] => P
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 67
-                                    [group_name] => alphabetical_voc
-                                    [name] => П
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 142
-                                    [group_name] => music_styles
-                                    [name] => Средневековье
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 146
-                                    [group_name] => country
-                                    [name] => Чехия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 131
-                                    [group_name] => music_formats
-                                    [name] => chants
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 119
-                                    [group_name] => music_formats
-                                    [name] => live
-                                )
-
-                        )
-
-                )
-
-            [1] => stdClass Object
-                (
-                    [nid] => 26
-                    [title] => Крематорий
-                    [type] => playlist
-                    [created] => 1359283894
-                    [changed] => 1577678310
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Крематорий
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 62
-                                    [group_name] => alphabetical_voc
-                                    [name] => К
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 108
-                                    [group_name] => music_styles
-                                    [name] => art-rock
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [2] => stdClass Object
-                (
-                    [nid] => 31
-                    [title] => Шлюз
-                    [type] => playlist
-                    [created] => 1374984933
-                    [changed] => 1577678330
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Шлюз
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 77
-                                    [group_name] => alphabetical_voc
-                                    [name] => Ш
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 157
-                                    [group_name] => music_styles
-                                    [name] => ска-панк
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [3] => stdClass Object
-                (
-                    [nid] => 33
-                    [title] => SKA-P
-                    [type] => playlist
-                    [created] => 1375276328
-                    [changed] => 1577678364
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => SKA-P
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 99
-                                    [group_name] => alphabetical_voc
-                                    [name] => S
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 129
-                                    [group_name] => music_genre
-                                    [name] => Ска
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 157
-                                    [group_name] => music_styles
-                                    [name] => ска-панк
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 152
-                                    [group_name] => music_styles
-                                    [name] => фолк-рок
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 110
-                                    [group_name] => music_styles
-                                    [name] => alternative rock
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 156
-                                    [group_name] => country
-                                    [name] => Испания
-                                )
-
-                            [8] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [4] => stdClass Object
-                (
-                    [nid] => 92
-                    [title] => Ramones
-                    [type] => playlist
-                    [created] => 1375624037
-                    [changed] => 1577678320
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Ramones
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 98
-                                    [group_name] => alphabetical_voc
-                                    [name] => R
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 116
-                                    [group_name] => country
-                                    [name] => США
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [5] => stdClass Object
-                (
-                    [nid] => 95
-                    [title] => Путти
-                    [type] => playlist
-                    [created] => 1375625148
-                    [changed] => 1577678340
-                    [body_value] => http://rutracker.org/forum/viewtopic.php?t=424290
-
-                    [playlist_titles] => Array
-                        (
-                            [0] => Путти
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 67
-                                    [group_name] => alphabetical_voc
-                                    [name] => П
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 157
-                                    [group_name] => music_styles
-                                    [name] => ска-панк
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [6] => stdClass Object
-                (
-                    [nid] => 97
-                    [title] => Пикник
-                    [type] => playlist
-                    [created] => 1375626128
-                    [changed] => 1577678291
-                    [body_value] => http://ru.wikipedia.org/wiki/%D0%9F%D0%B8%D0%BA%D0%BD%D0%B8%D0%BA_%28%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0%29
-                    [playlist_titles] => Array
-                        (
-                            [0] => Пикник
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 67
-                                    [group_name] => alphabetical_voc
-                                    [name] => П
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [7] => stdClass Object
-                (
-                    [nid] => 99
-                    [title] => Аквариум
-                    [type] => playlist
-                    [created] => 1375881228
-                    [changed] => 1577678375
-                    [body_value] => https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)
-                    [playlist_titles] => Array
-                        (
-                            [0] => Аквариум
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 53
-                                    [group_name] => alphabetical_voc
-                                    [name] => А
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 154
-                                    [group_name] => music_styles
-                                    [name] => блюз-рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 155
-                                    [group_name] => music_styles
-                                    [name] => джаз-фьюжн
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 153
-                                    [group_name] => music_styles
-                                    [name] => регги
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 151
-                                    [group_name] => music_styles
-                                    [name] => рок-н-ролл
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 152
-                                    [group_name] => music_styles
-                                    [name] => фолк-рок
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 112
-                                    [group_name] => music_styles
-                                    [name] => psychedelic rock
-                                )
-
-                            [8] => stdClass Object
-                                (
-                                    [tid] => 108
-                                    [group_name] => music_styles
-                                    [name] => art-rock
-                                )
-
-                            [9] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [10] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [11] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [8] => stdClass Object
-                (
-                    [nid] => 100
-                    [title] => Slayer
-                    [type] => playlist
-                    [created] => 1376225495
-                    [changed] => 1577678911
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Slayer
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 99
-                                    [group_name] => alphabetical_voc
-                                    [name] => S
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 116
-                                    [group_name] => country
-                                    [name] => США
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [9] => stdClass Object
-                (
-                    [nid] => 101
-                    [title] => Sepultura
-                    [type] => playlist
-                    [created] => 1376225879
-                    [changed] => 1577678354
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Sepultura
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 99
-                                    [group_name] => alphabetical_voc
-                                    [name] => S
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 158
-                                    [group_name] => country
-                                    [name] => Бразилия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [10] => stdClass Object
-                (
-                    [nid] => 102
-                    [title] => T-Rex
-                    [type] => playlist
-                    [created] => 1376226199
-                    [changed] => 1577678281
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => T-Rex
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 70
-                                    [group_name] => alphabetical_voc
-                                    [name] => Т
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 132
-                                    [group_name] => country
-                                    [name] => Великобритания
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [11] => stdClass Object
-                (
-                    [nid] => 103
-                    [title] => Сергей Трофимов
-                    [type] => playlist
-                    [created] => 1376226652
-                    [changed] => 1577678301
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Трофим
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 70
-                                    [group_name] => alphabetical_voc
-                                    [name] => Т
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 126
-                                    [group_name] => music_genre
-                                    [name] => Шансон, романс, авторская песня
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [12] => stdClass Object
-                (
-                    [nid] => 110
-                    [title] => Metallica
-                    [type] => playlist
-                    [created] => 1431651496
-                    [changed] => 1577680658
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Metallica
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/M/Metallica/covers/Kill_Em_All.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/metallica.json"]metallica.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 94
-                                    [group_name] => alphabetical_voc
-                                    [name] => M
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 116
-                                    [group_name] => country
-                                    [name] => США
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 120
-                                    [group_name] => music_formats
-                                    [name] => studio album
-                                )
-
-                        )
-
-                )
-
-            [13] => stdClass Object
-                (
-                    [nid] => 155
-                    [title] => Jazz
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678183
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Jazz and swing
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a href="https://music.yandex.ru/users/roman-laptev/playlists/1021">music.yandex.ru</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/Jazz and swing.json"]Jazz and swing.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 91
-                                    [group_name] => alphabetical_voc
-                                    [name] => J
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 99
-                                    [group_name] => alphabetical_voc
-                                    [name] => S
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 125
-                                    [group_name] => music_genre
-                                    [name] => Джаз
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 130
-                                    [group_name] => music_styles
-                                    [name] => Свинг
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [14] => stdClass Object
-                (
-                    [nid] => 156
-                    [title] => blues
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679865
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => blues, rock_n_roll, swing, jazz
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json"]blues, rock_n_roll, swing, jazz.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 124
-                                    [group_name] => music_genre
-                                    [name] => Блюз
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 125
-                                    [group_name] => music_genre
-                                    [name] => Джаз
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 130
-                                    [group_name] => music_styles
-                                    [name] => Свинг
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 154
-                                    [group_name] => music_styles
-                                    [name] => блюз-рок
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 107
-                                    [group_name] => music_styles
-                                    [name] => rock
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [15] => stdClass Object
-                (
-                    [nid] => 157
-                    [title] => Vivaldi
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678576
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Vivaldi, Antonio Lucio
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/V/Vivaldi/images/Vivaldi.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a>
-                            [1] => <a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a>
-                            [2] => [a data-type="playlist-file" href="/music/0_playlists/Vivaldi.json"]Vivaldi.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 101
-                                    [group_name] => alphabetical_voc
-                                    [name] => V
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 55
-                                    [group_name] => alphabetical_voc
-                                    [name] => В
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 139
-                                    [group_name] => music_styles
-                                    [name] => Классицизм
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 145
-                                    [group_name] => country
-                                    [name] => Италия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 144
-                                    [group_name] => music_formats
-                                    [name] => Концерт
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 118
-                                    [group_name] => music_formats
-                                    [name] => aria
-                                )
-
-                        )
-
-                )
-
-            [16] => stdClass Object
-                (
-                    [nid] => 158
-                    [title] => Mozart
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678690
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Mozart, Wolfgang Amadeus
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/M/Mozart/images/Mozart.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a>
-                            [1] => <a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a>
-                            [2] => [a data-type="playlist-file" href="/music/0_playlists/Mozart.json"]Mozart.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 94
-                                    [group_name] => alphabetical_voc
-                                    [name] => M
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 64
-                                    [group_name] => alphabetical_voc
-                                    [name] => М
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 139
-                                    [group_name] => music_styles
-                                    [name] => Классицизм
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 143
-                                    [group_name] => country
-                                    [name] => Австрия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 144
-                                    [group_name] => music_formats
-                                    [name] => Концерт
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 118
-                                    [group_name] => music_formats
-                                    [name] => aria
-                                )
-
-                        )
-
-                )
-
-            [17] => stdClass Object
-                (
-                    [nid] => 159
-                    [title] => Bach
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678633
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Bach, Johann Sebastian
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/B/Bach/images/Johann_Sebastian_Bach.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a>
-                            [1] => <a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a>
-                            [2] => [a data-type="playlist-file" href="/music/0_playlists/Bach.json"]Bach.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 84
-                                    [group_name] => alphabetical_voc
-                                    [name] => B
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 54
-                                    [group_name] => alphabetical_voc
-                                    [name] => Б
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 138
-                                    [group_name] => music_styles
-                                    [name] => Барокко
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 51
-                                    [group_name] => country
-                                    [name] => Германия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 131
-                                    [group_name] => music_formats
-                                    [name] => chants
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 144
-                                    [group_name] => music_formats
-                                    [name] => Концерт
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 118
-                                    [group_name] => music_formats
-                                    [name] => aria
-                                )
-
-                        )
-
-                )
-
-            [18] => stdClass Object
-                (
-                    [nid] => 160
-                    [title] => Handel
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678761
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Handel, George Frideric
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/H/Handel/images/handel.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a>
-                            [1] => <a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a>
-                            [2] => [a data-type="playlist-file" href="/music/0_playlists/Handel.json"]Handel.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 89
-                                    [group_name] => alphabetical_voc
-                                    [name] => H
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 56
-                                    [group_name] => alphabetical_voc
-                                    [name] => Г
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 138
-                                    [group_name] => music_styles
-                                    [name] => Барокко
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 132
-                                    [group_name] => country
-                                    [name] => Великобритания
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 51
-                                    [group_name] => country
-                                    [name] => Германия
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 118
-                                    [group_name] => music_formats
-                                    [name] => aria
-                                )
-
-                        )
-
-                )
-
-            [19] => stdClass Object
-                (
-                    [nid] => 161
-                    [title] => classic music
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679942
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => https://music.yandex.ru/users/roman-laptev/playlists/1007
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/classic.json"]classic.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 138
-                                    [group_name] => music_styles
-                                    [name] => Барокко
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 141
-                                    [group_name] => music_styles
-                                    [name] => Возрождение
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 139
-                                    [group_name] => music_styles
-                                    [name] => Классицизм
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 137
-                                    [group_name] => music_styles
-                                    [name] => Опера
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 140
-                                    [group_name] => music_styles
-                                    [name] => Оркестровая музыка
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 142
-                                    [group_name] => music_styles
-                                    [name] => Средневековье
-                                )
-
-                        )
-
-                )
-
-            [20] => stdClass Object
-                (
-                    [nid] => 162
-                    [title] => Башня Rowan
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577676990
-                    [body_value] => 
-                    [images] => Array
-                        (
-                            [0] => /music/B/Башня Rowan/0_info/Тикки Шельен.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="playlist-file" href="/music/0_playlists/Rowan.json">Rowan.json</a>
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 107
-                                    [group_name] => music_styles
-                                    [name] => rock
-                                )
-
-                        )
-
-                )
-
-            [21] => stdClass Object
-                (
-                    [nid] => 163
-                    [title] => Judas Priest
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678898
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Judas Priest
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/J/Judas Priest/images/British Steel.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => https://music.yandex.ru/users/roman-laptev/playlists/1017
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/judas_priest.json"]judas_priest.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 91
-                                    [group_name] => alphabetical_voc
-                                    [name] => J
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 34
-                                    [group_name] => music_styles
-                                    [name] => classic rock
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 10
-                                    [group_name] => music_styles
-                                    [name] => heavy metal
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 132
-                                    [group_name] => country
-                                    [name] => Великобритания
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [22] => stdClass Object
-                (
-                    [nid] => 164
-                    [title] => My dying bride
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677074
-                    [body_value] => 
-                    [images] => Array
-                        (
-                            [0] => /music/M/My dying bride/cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/My dying bride.json"]My dying bride.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 107
-                                    [group_name] => music_styles
-                                    [name] => rock
-                                )
-
-                        )
-
-                )
-
-            [23] => stdClass Object
-                (
-                    [nid] => 165
-                    [title] => Master
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679979
-                    [body_value] => 
-                    [images] => Array
-                        (
-                            [0] => /music/M/Master/cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/Master.json"]Master.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 64
-                                    [group_name] => alphabetical_voc
-                                    [name] => М
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 107
-                                    [group_name] => music_styles
-                                    [name] => rock
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [24] => stdClass Object
-                (
-                    [nid] => 166
-                    [title] => Manowar
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677139
-                    [body_value] => 
-                    [images] => Array
-                        (
-                            [0] => /music/M/Manowar/image/Manowar88.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/Manowar.json"]Manowar.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 94
-                                    [group_name] => alphabetical_voc
-                                    [name] => M
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 10
-                                    [group_name] => music_styles
-                                    [name] => heavy metal
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 116
-                                    [group_name] => country
-                                    [name] => США
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [25] => stdClass Object
-                (
-                    [nid] => 167
-                    [title] => Therion
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678431
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Therion
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/T/Therion/Therion.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/Therion.json"]Therion.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 100
-                                    [group_name] => alphabetical_voc
-                                    [name] => T
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 70
-                                    [group_name] => alphabetical_voc
-                                    [name] => Т
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 134
-                                    [group_name] => music_genre
-                                    [name] => Академическая музыка
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 24
-                                    [group_name] => music_styles
-                                    [name] => симфоник-метал
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 50
-                                    [group_name] => country
-                                    [name] => Швеция
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [26] => stdClass Object
-                (
-                    [nid] => 168
-                    [title] => Nightwish
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678472
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Nightwish
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/N/Nightwish/Picture/n_cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/Nightwish.json"]Nightwish.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 95
-                                    [group_name] => alphabetical_voc
-                                    [name] => N
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 65
-                                    [group_name] => alphabetical_voc
-                                    [name] => Н
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 24
-                                    [group_name] => music_styles
-                                    [name] => симфоник-метал
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 15
-                                    [group_name] => music_styles
-                                    [name] => фолк-метал
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 147
-                                    [group_name] => country
-                                    [name] => Финляндия
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [27] => stdClass Object
-                (
-                    [nid] => 169
-                    [title] => Russian rock
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677195
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/russian.json"]russian.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 39
-                                    [group_name] => music_styles
-                                    [name] => русский рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [28] => stdClass Object
-                (
-                    [nid] => 170
-                    [title] => Kreator
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678860
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Kreator
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/K/Kreator/cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/Kreator.json"]Kreator.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 92
-                                    [group_name] => alphabetical_voc
-                                    [name] => K
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 51
-                                    [group_name] => country
-                                    [name] => Германия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [29] => stdClass Object
-                (
-                    [nid] => 171
-                    [title] => KSU
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678808
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => KSU
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/K/KSU/cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1020">music.yandex.ru</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/KSU.json"]KSU.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 92
-                                    [group_name] => alphabetical_voc
-                                    [name] => K
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 133
-                                    [group_name] => country
-                                    [name] => Польша
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [30] => stdClass Object
-                (
-                    [nid] => 172
-                    [title] => punk
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677280
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => punk, hardcore
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/punk, hardcore.json"]punk, hardcore.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 96
-                                    [group_name] => alphabetical_voc
-                                    [name] => P
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [31] => stdClass Object
-                (
-                    [nid] => 173
-                    [title] => Russian punk
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677464
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => https://music.yandex.ru/users/roman-laptev/playlists/1010
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/rus_punk.json"]rus_punk.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 67
-                                    [group_name] => alphabetical_voc
-                                    [name] => П
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [32] => stdClass Object
-                (
-                    [nid] => 174
-                    [title] => Гражданская оборона
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677533
-                    [body_value] => 
-                    [images] => Array
-                        (
-                            [0] => /music/0_covers/grob.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => https://music.yandex.ru/users/roman-laptev/playlists/1006
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/GrOb.json"]GrOb.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 56
-                                    [group_name] => alphabetical_voc
-                                    [name] => Г
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 39
-                                    [group_name] => music_styles
-                                    [name] => русский рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 45
-                                    [group_name] => music_styles
-                                    [name] => punk
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 149
-                                    [group_name] => country
-                                    [name] => Россия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 150
-                                    [group_name] => country
-                                    [name] => СССР
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [33] => stdClass Object
-                (
-                    [nid] => 175
-                    [title] => Ska
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677605
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => https://music.yandex.ru/users/roman-laptev/playlists/1012
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/ska.json"]ska.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 99
-                                    [group_name] => alphabetical_voc
-                                    [name] => S
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 129
-                                    [group_name] => music_genre
-                                    [name] => Ска
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 157
-                                    [group_name] => music_styles
-                                    [name] => ска-панк
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [34] => stdClass Object
-                (
-                    [nid] => 176
-                    [title] => thrash
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677706
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => thrash, death, grindecore, hardcore
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/thrash, death, grindecore, hardcore.json"]thrash, death, grindecore, hardcore.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 94
-                                    [group_name] => alphabetical_voc
-                                    [name] => M
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 100
-                                    [group_name] => alphabetical_voc
-                                    [name] => T
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 105
-                                    [group_name] => music_styles
-                                    [name] => black
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 17
-                                    [group_name] => music_styles
-                                    [name] => thrash
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 22
-                                    [group_name] => music_styles
-                                    [name] => death
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 23
-                                    [group_name] => music_styles
-                                    [name] => doom
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [35] => stdClass Object
-                (
-                    [nid] => 177
-                    [title] => electronic music
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679907
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => trance, rave, hip-hop, electronic
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/trance, rave, hip-hop, electronic.json"]trance, rave, hip-hop, electronic.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 127
-                                    [group_name] => music_genre
-                                    [name] => Электронная музыка
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 32
-                                    [group_name] => music_styles
-                                    [name] => rave
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 33
-                                    [group_name] => music_styles
-                                    [name] => techno
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [36] => stdClass Object
-                (
-                    [nid] => 179
-                    [title] => Red Elvices
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577677902
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/red_elvices.json"]red_elvices.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 98
-                                    [group_name] => alphabetical_voc
-                                    [name] => R
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 151
-                                    [group_name] => music_styles
-                                    [name] => рок-н-ролл
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 159
-                                    [group_name] => music_styles
-                                    [name] => рокабилли
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 116
-                                    [group_name] => country
-                                    [name] => США
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [37] => stdClass Object
-                (
-                    [nid] => 180
-                    [title] => disko, pop
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678106
-                    [body_value] => 
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/disko, pop.json"]disko, pop.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 85
-                                    [group_name] => alphabetical_voc
-                                    [name] => D
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 160
-                                    [group_name] => music_styles
-                                    [name] => pop music
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 161
-                                    [group_name] => music_styles
-                                    [name] => диско
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [38] => stdClass Object
-                (
-                    [nid] => 181
-                    [title] => folk
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678963
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => folk, chants
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a data-type="external-link" href="https://www.youtube.com/playlist?list=PL2sTusldk6UhJ9XXBSCA5Kb-r4e3q0qt4">music - medieval, church, youtube</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/folk, chants.json"]folk, chants.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 107
-                                    [group_name] => music_styles
-                                    [name] => rock
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [39] => stdClass Object
-                (
-                    [nid] => 182
-                    [title] => heavy,speed,power metal
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679568
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => heavy,speed,power metal
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => <a href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a>
-                            [1] => [a data-type="playlist-file" href="/music/0_playlists/heavy,speed,power.json"]heavy,speed,power.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 94
-                                    [group_name] => alphabetical_voc
-                                    [name] => M
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 11
-                                    [group_name] => music_styles
-                                    [name] => speed
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 12
-                                    [group_name] => music_styles
-                                    [name] => power
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 10
-                                    [group_name] => music_styles
-                                    [name] => heavy metal
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [40] => stdClass Object
-                (
-                    [nid] => 183
-                    [title] => indian music
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678509
-                    [body_value] => SATYAA and PARI
-                    [playlist_titles] => Array
-                        (
-                            [0] => indian music
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/indian.json"]indian.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [41] => stdClass Object
-                (
-                    [nid] => 184
-                    [title] => folk metal
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679773
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => melodic, folk metal
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/melodic, folk metal.json"]melodic, folk metal.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 15
-                                    [group_name] => music_styles
-                                    [name] => фолк-метал
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [42] => stdClass Object
-                (
-                    [nid] => 185
-                    [title] => Apocalyptica
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679665
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Apocalyptica
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/0_covers/apocalyptica.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/apocalyptica.json"]apocalyptica.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 83
-                                    [group_name] => alphabetical_voc
-                                    [name] => A
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 24
-                                    [group_name] => music_styles
-                                    [name] => симфоник-метал
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 147
-                                    [group_name] => country
-                                    [name] => Финляндия
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [43] => stdClass Object
-                (
-                    [nid] => 186
-                    [title] => Korpiklaani
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679821
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Korpiklaani
-                        )
-
-                    [images] => Array
-                        (
-                            [0] => /music/K/Korpiklaani/cover.jpg
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/Korpiklaani.json"]Korpiklaani.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 92
-                                    [group_name] => alphabetical_voc
-                                    [name] => K
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 123
-                                    [group_name] => music_genre
-                                    [name] => Фолк
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 15
-                                    [group_name] => music_styles
-                                    [name] => фолк-метал
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 147
-                                    [group_name] => country
-                                    [name] => Финляндия
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [44] => stdClass Object
-                (
-                    [nid] => 187
-                    [title] => transe
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577678252
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => transe, hip-hop, latin
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/mix_transe, hip-hop, latin.json"]mix_transe, hip-hop, latin.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 127
-                                    [group_name] => music_genre
-                                    [name] => Электронная музыка
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 33
-                                    [group_name] => music_styles
-                                    [name] => techno
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-            [45] => stdClass Object
-                (
-                    [nid] => 188
-                    [title] => Rock
-                    [type] => playlist
-                    [created] => 1577510064
-                    [changed] => 1577679727
-                    [body_value] => 
-                    [playlist_titles] => Array
-                        (
-                            [0] => Rock
-                        )
-
-                    [related_links] => Array
-                        (
-                            [0] => [a data-type="playlist-file" href="/music/0_playlists/rock.json"]rock.json[/a]
-                        )
-
-                    [tags] => Array
-                        (
-                            [0] => stdClass Object
-                                (
-                                    [tid] => 98
-                                    [group_name] => alphabetical_voc
-                                    [name] => R
-                                )
-
-                            [1] => stdClass Object
-                                (
-                                    [tid] => 68
-                                    [group_name] => alphabetical_voc
-                                    [name] => Р
-                                )
-
-                            [2] => stdClass Object
-                                (
-                                    [tid] => 122
-                                    [group_name] => music_genre
-                                    [name] => Рок
-                                )
-
-                            [3] => stdClass Object
-                                (
-                                    [tid] => 112
-                                    [group_name] => music_styles
-                                    [name] => psychedelic rock
-                                )
-
-                            [4] => stdClass Object
-                                (
-                                    [tid] => 110
-                                    [group_name] => music_styles
-                                    [name] => alternative rock
-                                )
-
-                            [5] => stdClass Object
-                                (
-                                    [tid] => 109
-                                    [group_name] => music_styles
-                                    [name] => hard-rock
-                                )
-
-                            [6] => stdClass Object
-                                (
-                                    [tid] => 34
-                                    [group_name] => music_styles
-                                    [name] => classic rock
-                                )
-
-                            [7] => stdClass Object
-                                (
-                                    [tid] => 108
-                                    [group_name] => music_styles
-                                    [name] => art-rock
-                                )
-
-                            [8] => stdClass Object
-                                (
-                                    [tid] => 121
-                                    [group_name] => music_formats
-                                    [name] => collection
-                                )
-
-                        )
-
-                )
-
-        )
-
-)
