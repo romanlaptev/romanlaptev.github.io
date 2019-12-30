@@ -1,13 +1,15 @@
-﻿Export playlists info from DB Drupal database to XML file
-PHP version: 5.4.4-14+deb7u8
-SAPI name: cli
-PHP_SAPI: cli
--- get node info
 <?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="music">
-{{tag_groups}}
-<taglist>
+<tag_groups>
+	<item vid="2" name="music_styles"></item>
+	<item vid="3" name="music_formats"></item>
+	<item vid="4" name="country"></item>
+	<item vid="5" name="alphabetical_voc"></item>
+	<item vid="8" name="music_band"></item>
+	<item vid="9" name="music_genre"></item>
+</tag_groups>
+<tag_list>
 	<tag tid="10" vid="2" group_name="music_styles">heavy metal</tag>
 	<tag tid="11" vid="2" group_name="music_styles">speed</tag>
 	<tag tid="12" vid="2" group_name="music_styles">power</tag>
@@ -94,7 +96,7 @@ PHP_SAPI: cli
 	<tag tid="159" vid="2" group_name="music_styles">рокабилли</tag>
 	<tag tid="160" vid="2" group_name="music_styles">pop music</tag>
 	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
-</taglist>
+</tag_list>
 
 
 <node type="playlist">

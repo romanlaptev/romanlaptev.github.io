@@ -306,16 +306,18 @@ function _exportProcess(){
 		$_vars["xml"] = str_replace("{{tag_list}}", $_vars["xml_tagList"], $_vars["xml"]);
 	}
 	
-	$result = runSql($db, $_vars["sql"]["getTagsGroups"]);
-print_r( $result );
+	$result = runSql($db, $_vars["sql"]["getTagGroups"]);
+	if( count( $result) > 0 ){
+		$_vars["xml_tagGroups"] = formTagGroups($result);
+		$_vars["xml"] = str_replace("{{tag_groups}}", $_vars["xml_tagGroups"], $_vars["xml"]);
+	}
 	
 //echo count($_vars["tags"]);
 //echo "<br>";
 //echo "<pre>";
 //print_r( $_vars["xml"] );
 //echo "</pre>";
-exit();
-
+//exit();
 
 }//end _exportProcess()					
 
@@ -323,7 +325,7 @@ exit();
 function getNodes( $sql ) {
 	global $db, $_vars;
 	$result = runSql($db,  $sql);
-_log("-- get node info");
+//_log("-- get node info");
 	return $result;
 }//end getNodes()
 
@@ -605,6 +607,31 @@ function formTagList( $records ){
 	
 	return $xmlList;
 }//end formTagList()
+
+
+function formTagGroups( $records ){
+	global $_vars;
+	
+	$tagList = "";
+
+	for( $n1 = 0; $n1 < count( $records ); $n1++)	{
+		$record = $records[$n1];
+//echo "<pre>";
+//print_r($record);
+//echo "</pre>";
+
+		$tag = $_vars["tplTagGroupItem"];
+
+		$tag = str_replace("{{vid}}", $record->vid, $tag);
+		$tag = str_replace("{{name}}", $record->name, $tag);
+
+		$tagList .= "\n\t".$tag;
+	}//next
+
+	$xmlList = str_replace("{{list}}", $tagList."\n", $_vars["tplTagGroups"]);
+	
+	return $xmlList;
+}//end formTagGroups()
 
 
 
