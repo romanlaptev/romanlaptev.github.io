@@ -1,8 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>Music collection</title>
-
+	<title>Music collection</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,18 +27,118 @@
 	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	
-<!--[if lt IE 9]>
-	<script src="js/fix_IE/html5shiv.js"></script>
-	<script src="js/fix_IE/respond.min.js"></script>
-<![endif]-->
-
 	<script src="js/functions.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/app.js"></script>
 	<script src="js/main.js"></script>
-	
 </head>
 
 <body id="App">
+
+<header class="container">
+	<nav class="navbar">
+
+		<div class="pull-left">
+			<ul class="nav nav-tabs">
+				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>
+				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Playlist</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+			</ul>
+		</div>
+		<div class="pull-right">
+			<h1 id="app-title">Application title</h1>
+		</div>
+	</nav>
+
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+</header>
+
+
+<div class="container">
+
+	<div class="row">
+		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-left"></div><!-- end sidebar left -->
+		
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" id="main">
+		
+			<div class="panel block" id="pager">
+
+				<div class="panel-body clearfix">
+					<div class="pull-left"><h3>Navigation</h3></div>					
+					<div class="pull-right">
+<small>					
+total records: <b><span id="total-records"></span></b>, 
+number of pages: <b><span id="total-pages"></span></b>
+</small>
+						<div class="block-num-page">
+							<div class="row">
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
+<button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+<button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
+							</div>
+<!--
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
+<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
+							</div>
+-->
+						</div>		
+					</div>
+				</div>
+				
+				<div class="panel-body">
+						<div class="">
+<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+						</div>
+				</div>
+				<div class="panel-body">
+					<label>sort by</label>
+					<select id="select-sort" class="form-control" autocomplete="off">
+						<option value="title" selected>first title text</option>
+						<option value="published">publication date</option>
+					</select>
+				</div>
+				
+			</div>
+			
+
+			<span id="playlist"></span>				
+
+		</div><!-- end main central area -->
+
+		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-right"></div><!-- end sidebar-right -->
+	</div>
+
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+	</div>
+
+</div><!-- end container -->
+
+<footer class="container">
+	<div class="bg-darkblue">
+<span id="block-links"></span>
+				<ul class="nav navbar-nav navbar-right">
+<li><a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a></li>
+<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+<li><a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>
+<li><a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>
+<li><a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>
+<!--
+<li><a class="" href="http://10tracks.com/player.ru.html#songs" target="_blank">music on 10tracks.com</a></li>
+-->
+				</ul>
+
+	</div>
+</footer>
 
 </body>
 </html>
