@@ -39,12 +39,14 @@
 
 		<div class="pull-left">
 			<ul class="nav nav-tabs">
-				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>
-				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Playlist</a></li>
-				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
-				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
-			</ul>
-		</div>
+				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>
+<!--				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Playlist</a></li>-->
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+			</ul>
+
+		</div>
+
 		<div class="pull-right">
 			<h1 id="app-title">Application title</h1>
 		</div>
@@ -62,63 +64,87 @@
 </header>
 
 
-<div class="container">
-
-	<div class="row">
+<div class="container">
+
+
+
+	<div class="row">
 		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-left"></div><!-- end sidebar left -->
-		
 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" id="main">
 		
-			<div class="panel block" id="pager">
+			<div class="panel block" id="pager">
+				<div class="panel-body clearfix">
+					<div class="pull-left"><h3>Navigation</h3></div>					
+					<div class="pull-right">
+<small>					
+total records: <b><span id="total-records"></span></b>, 
+number of pages: <b><span id="total-pages"></span></b>
+</small>
+						<div class="block-num-page">
+							<div class="row">
+<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
+<button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+<button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
+							</div>
 
-				<div class="panel-body clearfix">
-					<div class="pull-left"><h3>Navigation</h3></div>					
-					<div class="pull-right">
-<small>					
-total records: <b><span id="total-records"></span></b>, 
-number of pages: <b><span id="total-pages"></span></b>
-</small>
-						<div class="block-num-page">
-							<div class="row">
-<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
-<button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
-<button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
-							</div>
-<!--
-							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
-<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
-							</div>
--->
-						</div>		
-					</div>
-				</div>
-				
-				<div class="panel-body">
-						<div class="">
-<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
-						</div>
-				</div>
-				<div class="panel-body">
-					<label>sort by</label>
-					<select id="select-sort" class="form-control" autocomplete="off">
-						<option value="title" selected>first title text</option>
-						<option value="published">publication date</option>
-					</select>
-				</div>
-				
-			</div>
-			
+<!--
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
+<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
+							</div>
+-->
+						</div>		
 
-			<span id="playlist"></span>				
-
-		</div><!-- end main central area -->
+					</div>
+
+				</div>
+
+				
+
+				<div class="panel-body">
+
+						<div class="">
+
+<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+
+						</div>
+
+				</div>
+
+				<div class="panel-body">
+
+					<label>sort by</label>
+
+					<select id="select-sort" class="form-control" autocomplete="off">
+
+						<option value="title" selected>first title text</option>
+
+						<option value="published">publication date</option>
+
+					</select>
+
+				</div>
+
+				
+
+			</div>
+
+			
+
+
+			<span id="playlist"></span>				
+
+
+
+		</div><!-- end main central area -->
+
 
 		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-right"></div><!-- end sidebar-right -->
 	</div>
 
 	<div class="">
-		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+
 	</div>
 
 </div><!-- end container -->
