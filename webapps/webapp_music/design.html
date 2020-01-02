@@ -11,6 +11,10 @@
 	<link rel="apple-touch-icon" href="img/icons/favicon.png">
 	
 <!--	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>-->
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="uikit323/css/uikit.min.css">
+	<script type="text/javascript" src="uikit323/js/uikit.min.js"></script>
+
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	
 <!--	
@@ -21,19 +25,27 @@
 	-->
 </head>
 
-<body id="App">
+<body>
 
 <div class="header container">
 	<div class="row">
 
 		<div class="pull-left">
-			<ul class="nav nav-tabs">
-<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
-				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#navigation">Playlists</a></li>
-				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
-				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
-			</ul>
-
+<!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		-->
+			<button uk-toggle="target: #off-canvas1" type="button">menu</button>
+<!--	    <a href="#off-canvas1" uk-toggle></a>-->
+			<div id="off-canvas1" uk-offcanvas="overlay: true;mode: reveal">
+				<div class="uk-offcanvas-bar">
+					<button class="uk-offcanvas-close" type="button" uk-close></button>
+					<ul class="list-unstyled">
+		<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
+						<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#navigation">Playlists</a></li>
+						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+					</ul>
+					
+				</div>
+			</div>
 		</div>
 
 		<div class="pull-right">
