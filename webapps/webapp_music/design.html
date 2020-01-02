@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Music collection</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset=utf-8 />
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="img/icons/favicon.png">
+	
+<!--	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>-->
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	
+<!--	
+	<script src="js/functions.js"></script>
+	<script src="js/webapp.js"></script>
+
+	<script src="js/main.js"></script>
+	-->
+</head>
+
+<body id="App">
+
+<div class="header container">
+	<div class="row">
+
+		<div class="pull-left">
+			<ul class="nav nav-tabs">
+<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
+				<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#navigation">Playlists</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+				<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+			</ul>
+
+		</div>
+
+		<div class="pull-right">
+			<h1 id="app-title">Application title</h1>
+		</div>
+	</div>
+
+	<div class="log-panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+		<div id="main" class="" >
+		
+<!-- pager -->
+			<div id="pager" class="panel w60">
+				<div class="row panel-body">
+					<div class="pull-left w70">
+<div class="row">
+	<div class="pull-left">
+	total records: <b><span id="total-records"></span></b>, 
+	number of pages: <b><span id="total-pages"></span></b>
+	</div>
+							
+	<div class="block-num-page pull-right">
+		<div class="row">
+<div class="pull-left"><br>
+<button id="page-number-less" class="btn btn-sm btn-info">-</button>
+</div>
+<div class="pull-left">
+<b>Page №:</b><br>
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+</div>
+<div class="pull-left"><br>
+<button id="page-number-more" class="btn btn-sm btn-info">+</button>
+</div>
+		</div>
+<!--
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
+<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
+		</div>
+-->
+	</div>		
+							
+							
+</div>
+<div class="row">
+<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+</div>
+					</div>
+					
+					<div class="pull-right">
+						<div class="panel-body">
+							<label>sort by</label>
+							<select id="select-sort" class="form-control" autocomplete="off">
+								<option value="title" selected="">title</option>
+								<option value="published">publication date</option>
+							</select>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+<!-- end pager -->
+			
+<!--			<span id="playlist"></span>				-->
+		</div><!-- end main central area -->
+
+
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+
+	</div>
+
+</div><!-- end container -->
+
+<footer class="container">
+	<div class="bg-darkblue">
+<span id="block-links">
+	<div class="content">
+				<ul class="list-inline text-center">
+<li><a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a></li>
+<li><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+<li><a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>
+<li><a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>
+<li><a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>
+<!--
+<li><a class="" href="http://10tracks.com/player.ru.html#songs" target="_blank">music on 10tracks.com</a></li>
+-->
+				</ul>
+	</div>
+</span>
+
+	</div>
+</footer>
+
+
+<!--  progress bar -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+				<div class="center-align">
+					<h4>please, wait...</h4>
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="load-progress">
+					<div class="center-align">ajax load data 
+						<span id="percent-complete"></span>
+						<span id="num-total-load"></span>
+					</div>
+
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate blue center-align"></div>
+					</div>
+
+					<div id="load-info">
+<small>
+						Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+</small>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<!--  end progress bar -->	
+
+
+</body>
+</html>
