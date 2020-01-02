@@ -65,14 +65,10 @@
 
 
 <div class="container">
-
-
-
-	<div class="row">
-		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-left"></div><!-- end sidebar left -->
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" id="main">
+		<div id="main" class="" >
 		
-			<div class="panel block" id="pager">
+<!-- pager -->
+			<div id="pager" class="panel block">
 				<div class="panel-body clearfix">
 					<div class="pull-left"><h3>Navigation</h3></div>					
 					<div class="pull-right">
@@ -99,48 +95,27 @@ number of pages: <b><span id="total-pages"></span></b>
 
 				</div>
 
-				
-
 				<div class="panel-body">
-
 						<div class="">
-
 <input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
-
 						</div>
-
 				</div>
 
 				<div class="panel-body">
-
 					<label>sort by</label>
-
 					<select id="select-sort" class="form-control" autocomplete="off">
-
 						<option value="title" selected>first title text</option>
-
 						<option value="published">publication date</option>
-
 					</select>
-
 				</div>
-
-				
 
 			</div>
-
+<!-- end pager -->
 			
-
-
-			<span id="playlist"></span>				
-
-
+<!--			<span id="playlist"></span>				-->
 
 		</div><!-- end main central area -->
 
-
-		<div class="xs-hidden col-sm-1 col-md-1 col-lg-1" id="sidebar-right"></div><!-- end sidebar-right -->
-	</div>
 
 	<div class="">
 		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
