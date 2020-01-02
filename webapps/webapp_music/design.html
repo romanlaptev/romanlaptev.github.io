@@ -12,8 +12,12 @@
 	
 <!--	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>-->
 	<script src="js/jquery-2.1.1.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="uikit323/css/uikit.min.css">
 	<script type="text/javascript" src="uikit323/js/uikit.min.js"></script>
+
+<!--	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/js/uikit.min.js"></script>-->
 
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 	
@@ -26,43 +30,90 @@
 </head>
 
 <body>
-
+<!--
 <div class="header container">
-	<div class="row">
+    <button data-uk-offcanvas="{target:'#offcanvas-3'}" class="uk-button">Off-canvas</button>
+    <button type="submit" class="uk-button-link">Button link</button>
+    <div class="uk-offcanvas" id="offcanvas-3">
+		<div class="uk-offcanvas-bar">
+			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+				<li><a href="#">Item</a></li>
+				<li class="uk-active"><a href="#">Active</a></li>
+				<li class="uk-parent"><a href="#">Parent</a>
+					<div style="overflow:hidden;height:0;position:relative;">
+						<ul class="uk-nav-sub">
+							<li><a href="#">Sub item</a></li>
+							<li><a href="#">Sub item</a>
+								<ul>
+									<li><a href="#">Sub item</a></li>
+									<li><a href="#">Sub item</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</li>
+				
+				<li class="uk-parent"><a href="#">Parent</a>
+					<div style="overflow:hidden;height:0;position:relative;">
+						<ul class="uk-nav-sub">
+							<li><a href="#">Sub item</a></li>
+							<li><a href="#">Sub item</a></li>
+						</ul>
+					</div>
+				</li>
+		
+				<li><a href="#">Item</a></li>
+				<li class="uk-nav-header">Header</li>
+				<li><a href="#"> Item</a></li>
+				<li><a href="#"> Item</a></li>
+				<li class="uk-nav-divider"></li>
+				<li><a href="#"> Item</a></li>
+			</ul>
+<form class="uk-search">
+	<input type="search" class="uk-search-field">
+	<button type="reset" class="uk-search-close"></button>
+</form>
+			<div class="uk-panel">
+				<h3 class="uk-panel-title">Title</h3>
+				Lorem ipsum dolor sit amet, <a href="#">consetetur</a> sadipscing elitr.
+			</div>
+			<div class="uk-panel">
+				<h3 class="uk-panel-title">Title</h3>
+				Lorem ipsum dolor sit amet, <a href="#">consetetur</a> sadipscing elitr.
+			</div>
+		</div>
+	</div>
+    <a href="#" class="uk-close"></a> <a href="#" class="uk-close uk-close-alt"></a>
+</div>
+-->
+
+<div id="top" class="header">
+	<div class="row top-bar">
 
 		<div class="pull-left">
 <!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		-->
 			<button uk-toggle="target: #off-canvas1" type="button">menu</button>
 <!--	    <a href="#off-canvas1" uk-toggle></a>-->
-			<div id="off-canvas1" uk-offcanvas="overlay: true;mode: reveal">
-				<div class="uk-offcanvas-bar">
-					<button class="uk-offcanvas-close" type="button" uk-close></button>
-					<ul class="list-unstyled">
-		<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
-						<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#navigation">Playlists</a></li>
-						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
-						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
-					</ul>
-					
-				</div>
-			</div>
 		</div>
 
 		<div class="pull-right">
 			<h1 id="app-title">Application title</h1>
 		</div>
 	</div>
-
-	<div class="log-panel">
-		<div class="panel-body">
-			<span class="pull-right">
-				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
-				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
-			</span>
-			<div id="log" class="panel-body"></div>
-		</div>
-	</div>
 </div>
+
+			<div id="off-canvas1" uk-offcanvas="overlay:true;mode:slide">
+				<div class="uk-offcanvas-bar">
+					<button class="uk-offcanvas-close" type="button" uk-close></button>
+					<ul class="list-unstyled">
+		<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
+						<li><a class="btn btn-blue-c4 w100" data-toggle="collapse" href="#navigation">Playlists</a></li>
+						<li><a class="btn btn-blue w100" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
+						<li><a class="btn btn-blue w100" data-toggle="collapse" href="#collapse-search">Search</a></li>
+					</ul>
+					
+				</div>
+			</div>
 
 
 <div class="container">
@@ -842,6 +893,18 @@
 
 	</div>
 </footer>
+
+
+
+	<div class="log-panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
 
 
 <!--  progress bar -->	
