@@ -7,7 +7,7 @@ padding:0;
 
 body {
   background-color: #055c80;
-  padding: 60px 15px 0 15px;
+  padding: 90px 0 0 0;
 }
 
 a {
@@ -22,7 +22,7 @@ a {
 	/* margin: 0; */
 	/* padding: 0; */
 	height: 60px;
-	margin-left: -15px;
+/*	margin-left: -15px;*/
 	z-index: 99;
 /*opacity: 0.8;*/
 }
@@ -45,7 +45,7 @@ margin: auto;
 .container {
 padding: 20px;
   background-color: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  /*border: 1px solid rgba(0, 0, 0, 0.15);*/
   border-radius: 4px;
 /*
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -54,7 +54,7 @@ padding: 20px;
 
 .top-bar {
 background-color: #004586;
-padding: 10px;
+padding: 20px;
 }
 
 footer {
