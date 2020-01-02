@@ -107,7 +107,700 @@
 			</div>
 <!-- end pager -->
 			
-<!--			<span id="playlist"></span>				-->
+
+<span id="block-tag-groups">
+	<div class="panel">
+	<div class="panel-heading">
+		<b>Tag groups</b>
+		<div class="pull-right">
+			<a href="#collapse-tags" class="btn toggle-btn">-</a>
+		</div>
+	</div>
+	<div class="panel-body content">
+		<ul class="list-inline">
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="2" href="?q=tag-group">music_styles</a>
+		</li>
+
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="3" href="?q=tag-group">music_formats</a>
+		</li>
+		
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="4" href="?q=tag-group">country</a>
+		</li>
+		
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="5" href="?q=tag-group">alphabetical_voc</a>
+		</li>
+		
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="8" href="?q=tag-group">music_band</a>
+		</li>
+		
+		<li>
+			<a class="tag-link btn btn-sn btn-default" data-vid="9" href="?q=tag-group">music_genre</a>
+		</li>
+
+		</ul>
+	</div>
+</div>
+
+</span>
+
+<span id="block-taglist">
+	<div class="panel">
+		<div class="panel-body content">
+			<ul class="list-inline">
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="10">heavy metal</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="11">speed</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="12">power</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="15">фолк-метал</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="17">thrash</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="22">death</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="23">doom</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="24">симфоник-метал</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="32">rave</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="33">techno</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="34">classic rock</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="39">русский рок</a></li>
+<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="45">punk</a></li>
+			</ul>
+		</div>
+	</div>
+</span>
+
+<span id="block-search">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+		<b>Search by keywords</b>
+			<div class="pull-right">
+				<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn" >-</a>
+			</div>
+		</div>
+	<form name="formSearch" id="form-search" action="?q=search" method="GET">
+		<div class="panel-body content">
+			<div class="form-group">
+				<label class="radio-inline">
+					<input type="radio" name="targetField" value="title">title
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="targetField" value="creators">creators
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="targetField" value="producer">producer
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="targetField" value="description">description
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="targetField" value="filename">attached filename
+				</label>
+			</div>
+			<label>keyword:</label>
+			<input type="text" class="form-control" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="">
+		</div>
+		<div class="panel-footer">
+			<button type="submit" class="btn btn-large btn-primary">start search</button>
+			<button type="reset" class="btn btn-danger">reset parameters</button>
+		</div>
+	</form>
+	</div>
+</span>
+
+
+<span id="player">
+	<div class="panel">
+		<div id="collapse-player" class="panel-collapse collapse in" aria-expanded="true" style="">
+<!--
+<span id="block-jplayer"></span>
+-->
+				<div class="wrapper">
+					<h2 id="pls-name">Jazz and swing</h2>
+					
+					<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
+
+			<h3>Yankee_doodle.mp3</h3>
+			<div>
+				<audio controls="controls">
+						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
+					Tag <b>audio</b> not supported by this browser.... 
+				</audio>
+			</div>
+<!--					
+					<video id="player1" controls="controls" src="../../test_code/js/test_media/video/video.mp4" width="640" height="385">
+						<source src="">
+						Tag <b>video</b> not supported by this browser.... 
+					</video>
+-->					
+					<div id="player-buttons">
+	<!--
+						<span id="video1-current">00:00</span>
+						<span id="video1-duration">00:00</span>
+						
+						<button id="btn-play" class="btn btn-primary">play</button>
+						<button id="btn-pause" class="btn btn-info">pause</button>
+						<a href="?q=stop-play" class="btn btn-danger">stop</a>
+						
+						<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+						<a href="?q=next-track" class="btn btn-primary">next track</a>
+	-->
+						<ul class="list-inline">
+							<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
+							<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
+						</ul>
+					</div>
+				</div>
+
+
+<div id="block-playlist">
+	<div class="block panel panel-primary">
+		<div class="panel-heading bg-darkblue clearfix">
+			<h4 class="pull-left">Track list</h4>
+			<div class="pull-right">
+				<a data-toggle="collapse" href="#collapse-player" class="btn toggle-btn" aria-expanded="true">-</a>
+			</div>
+		</div>
+		<div class="panel-body pls-buttons">
+			<ul class="list-inline">
+				<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
+				<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
+			</ul>
+		</div>
+		<div class="content panel-body">
+			<ul id="playlist" class="list-unstyled">
+				<li class="list-group-item active">
+					<div class="row">
+						<div class="col-xs-10 col-sm-10">
+							<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
+						</div>
+						<div class="col-xs-2 col-sm-2 text-right">
+							<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="row">
+						<div class="col-xs-10 col-sm-10">
+							<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
+						</div>
+						<div class="col-xs-2 col-sm-2 text-right">
+							<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&amp;num=1" title="Remove this track from playlist">x</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+			</div><!-- end collapse-player -->
+			
+	</div>
+</span>
+
+
+<span id="playlist">
+
+	<div class="panel panel-primary  album pls-0">
+		<div class="panel-heading">
+				<h1>Jazz and swing</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg" alt="Jazz and swing" title="Jazz and swing">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Jazz and swing.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	
+
+	<div class="panel panel-primary  album pls-2">
+		<div class="panel-heading">
+				<h1>Vivaldi, Antonio Lucio</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/V/Vivaldi/images/Vivaldi.jpg" alt="Vivaldi, Antonio Lucio" title="Vivaldi, Antonio Lucio">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Vivaldi.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-3">
+		<div class="panel-heading">
+				<h1>Mozart, Wolfgang Amadeus</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/M/Mozart/images/Mozart.jpg" alt="Mozart, Wolfgang Amadeus" title="Mozart, Wolfgang Amadeus">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Mozart.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-4">
+		<div class="panel-heading">
+				<h1>Bach, Johann Sebastian</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/B/Bach/images/Johann_Sebastian_Bach.jpg" alt="Bach, Johann Sebastian" title="Bach, Johann Sebastian">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Bach.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-5">
+		<div class="panel-heading">
+				<h1>Handel, George Frideric</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/H/Handel/images/handel.jpg" alt="Handel, George Frideric" title="Handel, George Frideric">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Handel.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	
+
+	<div class="panel panel-primary  album pls-7">
+		<div class="panel-heading">
+				<h1>Башня Rowan</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg" alt="Башня Rowan" title="Башня Rowan">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Rowan.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-8">
+		<div class="panel-heading">
+				<h1>Judas Priest</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/J/Judas Priest/images/British Steel.jpg" alt="Judas Priest" title="Judas Priest">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/judas_priest.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-9">
+		<div class="panel-heading">
+				<h1>My dying bride</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/M/My dying bride/cover.jpg" alt="My dying bride" title="My dying bride">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/My dying bride.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-10">
+		<div class="panel-heading">
+				<h1>Master</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/M/Master/cover.jpg" alt="Master" title="Master">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Master.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-11">
+		<div class="panel-heading">
+				<h1>Manowar</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/M/Manowar/image/Manowar88.jpg" alt="Manowar" title="Manowar">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Manowar.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-12">
+		<div class="panel-heading">
+				<h1>Therion</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/T/Therion/Therion.jpg" alt="Therion" title="Therion">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Therion.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-13">
+		<div class="panel-heading">
+				<h1>Nightwish</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/N/Nightwish/Picture/n_cover.jpg" alt="Nightwish" title="Nightwish">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Nightwish.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-14">
+		<div class="panel-heading">
+				<h1>Russian rock</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/russian.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-15">
+		<div class="panel-heading">
+				<h1>Kreator</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/K/Kreator/cover.jpg" alt="Kreator" title="Kreator">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Kreator.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-punk">
+		<div class="panel-heading">
+				<h1>KSU</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/K/KSU/cover.jpg" alt="KSU" title="KSU">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/KSU.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-rus-punk">
+		<div class="panel-heading">
+				<h1>punk, hardcore</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/punk, hardcore.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-rus-punk">
+		<div class="panel-heading">
+				<h1>Russian punk</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/rus_punk.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-grob">
+		<div class="panel-heading">
+				<h1>Гражданская оборона</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/0_covers/grob.jpg" alt="Гражданская оборона" title="Гражданская оборона">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/GrOb.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-ska">
+		<div class="panel-heading">
+				<h1>Ska</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/ska.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-thrash">
+		<div class="panel-heading">
+				<h1>thrash, death, grindecore, hardcore</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/thrash, death, grindecore, hardcore.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-trance">
+		<div class="panel-heading">
+				<h1>trance, rave, hip-hop, electronic</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/trance, rave, hip-hop, electronic.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-blues">
+		<div class="panel-heading">
+				<h1>blues, rock_n_roll, swing, jazz</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-blues">
+		<div class="panel-heading">
+				<h1>Red Elvices</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/red_elvices.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-disko">
+		<div class="panel-heading">
+				<h1>disko, pop</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/disko, pop.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-folk">
+		<div class="panel-heading">
+				<h1>folk, chants</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/folk, chants.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-heavy">
+		<div class="panel-heading">
+				<h1>heavy,speed,power metal</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/heavy,speed,power.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-indian">
+		<div class="panel-heading">
+				<h1>indian music</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/indian.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-melodic-metal">
+		<div class="panel-heading">
+				<h1>melodic, folk metal</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/melodic, folk metal.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-Metallica">
+		<div class="panel-heading">
+				<h1>Metallica</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg" alt="Metallica" title="Metallica">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/metallica.json" class="btn btn-default load-playlist">load playlist</a>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-Apocalyptica">
+		<div class="panel-heading">
+				<h1>Apocalyptica</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/0_covers/apocalyptica.jpg" alt="Apocalyptica" title="Apocalyptica">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/apocalyptica.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-Korpiklaani">
+		<div class="panel-heading">
+				<h1></h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="/music/K/Korpiklaani/cover.jpg" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/Korpiklaani.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-hip-hop">
+		<div class="panel-heading">
+				<h1>transe, hip-hop, latin</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/mix_transe, hip-hop, latin.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+
+	<div class="panel panel-primary  album pls-rock">
+		<div class="panel-heading">
+				<h1>Rock</h1>
+			</div>
+		
+	<div class="panel-body">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="panel-footer">
+			<a href="/music/0_playlists/rock.json" class="btn btn-default load-playlist">load playlist</a>
+
+		</div>
+	</div>
+</span>
+
 		</div><!-- end main central area -->
 
 
