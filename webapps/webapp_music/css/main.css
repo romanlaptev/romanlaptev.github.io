@@ -4,7 +4,6 @@ margin:0;
 padding:0;
 }
 
-
 body {
   background-color: #055c80;
   padding: 90px 0 0 0;
@@ -115,43 +114,29 @@ footer {
 }
 
 
-
 .row {
-
 	/* float: none; */
-
 	clear: both;
-
 	overflow: hidden;
-
 }
 
 .pull-left {
-
 	float: left;
-
 }
 
 .pull-right {
-
 	float: right;
-
 }
 
 .text-right{
-
 text-align:right;
-
 }
 
 .text-center{
-
 text-align:center;
-
 }
 
 /*================================*/
-
 
 /* LOG panel */
 .log-panel {
