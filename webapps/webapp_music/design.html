@@ -46,12 +46,11 @@
 				<div class="uk-offcanvas-bar">
 					<button class="uk-offcanvas-close" type="button" uk-close></button>
 					<ul class="list-unstyled">
-		<!--				<li><a class="btn btn-primary" href="../../index.html"><i class="glyphicon glyphicon-home"></i></a></li>-->
-						<li><a class="btn btn-blue-c4 w100" data-toggle="collapse" href="#navigation">Playlists</a></li>
-						<li><a class="btn btn-blue w100" data-toggle="collapse" href="#collapse-tags">Tags</a></li>
-						<li><a class="btn btn-blue w100" data-toggle="collapse" href="#collapse-search">Search</a></li>
+<li><button uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" class="uk-button uk-button-default w100" type="button">Tags list</button></li>
+<li><button uk-toggle="target: #block-search" class="uk-button uk-button-default w100" href="#">search</button></li>
+<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-tracklist" href="#">track list</a></li>
+<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-file-manager" href="#">file manager</a></li>
 					</ul>
-					
 				</div>
 			</div>
 
@@ -59,175 +58,97 @@
 <div class="container">
 		<div id="main" class="" >
 		
-<!-- pager -->
-			<div id="pager" class="panel w60">
-				<div class="row panel-body">
-					<div class="pull-left w70">
-<div class="row">
-	<div class="pull-left">
-	total records: <b><span id="total-records"></span></b>, 
-	number of pages: <b><span id="total-pages"></span></b>
+<span id="block-tags" hidden>
+	<div class="pull-right">
+		<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-default">x</a>
 	</div>
-							
-	<div class="block-num-page pull-right">
-		<div class="row">
-<div class="pull-left"><br>
-<button id="page-number-less" class="btn btn-sm btn-info">-</button>
-</div>
-<div class="pull-left">
-<b>Page №:</b><br>
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
-</div>
-<div class="pull-left"><br>
-<button id="page-number-more" class="btn btn-sm btn-info">+</button>
-</div>
+
+	<span id="block-tag-groups">
+		<div class="panel">
+		<div class="panel-heading">
+			<b>Tag groups</b>
 		</div>
-<!--
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">							
-<input id="page-number-2" type="number" value="1" min="1" max="10" step="1" autocomplete="off" class="form-control">
-		</div>
--->
-	</div>		
-							
-							
-</div>
-<div class="row">
-<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
-</div>
-					</div>
-					
-					<div class="pull-right">
-						<div class="panel-body">
-							<label>sort by</label>
-							<select id="select-sort" class="form-control" autocomplete="off">
-								<option value="title" selected="">title</option>
-								<option value="published">publication date</option>
-							</select>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-<!-- end pager -->
-			
-
-<span id="block-tag-groups">
-	<div class="panel">
-	<div class="panel-heading">
-		<b>Tag groups</b>
-		<div class="pull-right">
-			<a href="#collapse-tags" class="btn toggle-btn">-</a>
-		</div>
-	</div>
-	<div class="panel-body content">
-		<ul class="list-inline">
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="2" href="?q=tag-group">music_styles</a>
-		</li>
-
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="3" href="?q=tag-group">music_formats</a>
-		</li>
-		
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="4" href="?q=tag-group">country</a>
-		</li>
-		
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="5" href="?q=tag-group">alphabetical_voc</a>
-		</li>
-		
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="8" href="?q=tag-group">music_band</a>
-		</li>
-		
-		<li>
-			<a class="tag-link btn btn-sn btn-default" data-vid="9" href="?q=tag-group">music_genre</a>
-		</li>
-
-		</ul>
-	</div>
-</div>
-
-</span>
-
-<span id="block-taglist">
-	<div class="panel">
 		<div class="panel-body content">
 			<ul class="list-inline">
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="10">heavy metal</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="11">speed</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="12">power</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="15">фолк-метал</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="17">thrash</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="22">death</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="23">doom</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="24">симфоник-метал</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="32">rave</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="33">techno</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="34">classic rock</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="39">русский рок</a></li>
-<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="45">punk</a></li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="2" href="?q=tag-group">music_styles</a>	</li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="3" href="?q=tag-group">music_formats</a></li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="4" href="?q=tag-group">country</a>	</li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="5" href="?q=tag-group">alphabetical_voc</a></li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="8" href="?q=tag-group">music_band</a></li>
+				<li><a class="tag-link btn btn-sn btn-default" data-vid="9" href="?q=tag-group">music_genre</a></li>
 			</ul>
 		</div>
 	</div>
-</span>
 
-<span id="block-search">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-		<b>Search by keywords</b>
-			<div class="pull-right">
-				<a data-toggle="collapse" href="#collapse-search" class="btn toggle-btn" >-</a>
+	</span>
+
+	<span id="block-taglist">
+		<div class="panel">
+			<div class="panel-body content">
+				<ul class="list-inline">
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="10">heavy metal</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="11">speed</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="12">power</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="15">фолк-метал</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="17">thrash</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="22">death</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="23">doom</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="24">симфоник-метал</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="32">rave</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="33">techno</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="34">classic rock</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="39">русский рок</a></li>
+	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="45">punk</a></li>
+				</ul>
 			</div>
 		</div>
+	</span>
+
+</span><!-- end block-tags -->
+
+<span id="block-search" uk-modal="" class="uk-modal">
+	<div class="uk-card uk-modal-dialog">
+		<div class="uk-card-header">
+				<div class="pull-left"><b>Search by keywords</b></div>
+				<div class="pull-right"><button class="uk-modal-close" type="button">x</button></div>
+		</div>
+		
 	<form name="formSearch" id="form-search" action="?q=search" method="GET">
-		<div class="panel-body content">
+		<div class="uk-card-body">
 			<div class="form-group">
-				<label class="radio-inline">
-					<input type="radio" name="targetField" value="title">title
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="targetField" value="creators">creators
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="targetField" value="producer">producer
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="targetField" value="description">description
-				</label>
-				<label class="radio-inline">
-					<input type="radio" name="targetField" value="filename">attached filename
-				</label>
+					<input class="uk-radio" name="targetField" value="title" type="radio">title
+					<input class="uk-radio" name="targetField" value="description" type="radio">description
+					<input class="uk-radio" name="targetField" value="filename" type="radio">playlist filename
 			</div>
 			<label>keyword:</label>
-			<input type="text" class="form-control" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="">
+			<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
 		</div>
-		<div class="panel-footer">
-			<button type="submit" class="btn btn-large btn-primary">start search</button>
-			<button type="reset" class="btn btn-danger">reset parameters</button>
+		<div class="uk-card-footer">
+			<button type="submit" class="uk-button uk-button-large uk-button-primary">start search</button>
+			<button type="reset" class="uk-button">reset parameters</button>
 		</div>
 	</form>
 	</div>
 </span>
 
 
-<span id="player">
-	<div class="panel">
-		<div id="collapse-player" class="panel-collapse collapse in" aria-expanded="true" style="">
+<span id="block-tracklist" hidden>
+	<div class="uk-card uk-card-default">
 <!--
 <span id="block-jplayer"></span>
 -->
-				<div class="wrapper">
-					<h2 id="pls-name">Jazz and swing</h2>
+		<div class="pull-right">
+			<a uk-toggle="target:#block-tracklist; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-primary">x</a>
+		</div>
+		<div class="uk-card-body">
+				<h2 id="pls-name">Jazz and swing</h2>
 					
-					<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
-
+<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
 			<h3>Yankee_doodle.mp3</h3>
 			<div>
 				<audio controls="controls">
 						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
-					Tag <b>audio</b> not supported by this browser.... 
+Tag <b>audio</b> not supported by this browser.... 
 				</audio>
 			</div>
 <!--					
@@ -253,24 +174,26 @@
 							<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
 						</ul>
 					</div>
-				</div>
-
-
-<div id="block-playlist">
-	<div class="block panel panel-primary">
-		<div class="panel-heading bg-darkblue clearfix">
-			<h4 class="pull-left">Track list</h4>
-			<div class="pull-right">
-				<a data-toggle="collapse" href="#collapse-player" class="btn toggle-btn" aria-expanded="true">-</a>
-			</div>
 		</div>
-		<div class="panel-body pls-buttons">
+
+
+<div class="uk-card-body">
+
+	<div class="block panel panel-primary">
+	
+		<div class="uk-card-header">
+			<h4 class="uk-card-title">Track list</h4>
+		</div>
+		
+		<div class="uk-card-body pls-buttons">
 			<ul class="list-inline">
 				<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
 				<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
 			</ul>
 		</div>
-		<div class="content panel-body">
+		
+		<div class="uk-card-body">
+		
 			<ul id="playlist" class="list-unstyled">
 				<li class="list-group-item active">
 					<div class="row">
@@ -293,16 +216,78 @@
 					</div>
 				</li>
 			</ul>
+			
 		</div>
 	</div>
+	
 </div>
-			</div><!-- end collapse-player -->
 			
 	</div>
 </span>
 
 
-<span id="playlist">
+
+<!-- block-file-manager -->
+<span id="block-file-manager" hidden>
+			<div class="uk-card uk-card-default">
+				<div class="pull-right">
+					<a uk-toggle="target:#block-file-manager; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-primary">x</a>
+				</div>
+				<div class="uk-card-body">
+00000000000000
+				</div>
+			</div>
+</span>
+<!-- end block-file-manager -->
+
+
+
+<span id="block-playlist">
+
+<!-- pager -->
+			<div id="block-pager" class="uk-card uk-card-primary w60">
+				<div class="uk-card-body">
+					<div class="pull-left w70">
+<div class="row">
+	<div class="pull-left">
+	total records: <b><span id="total-records"></span></b>, 
+	number of pages: <b><span id="total-pages"></span></b>
+	</div>
+							
+	<div class="block-num-page pull-right">
+		<div class="row">
+<div class="pull-left"><br>
+<button id="page-number-less" class="btn btn-sm btn-info">-</button>
+</div>
+<div class="pull-left">
+<b>Page №:</b><br>
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+</div>
+<div class="pull-left"><br>
+<button id="page-number-more" class="btn btn-sm btn-info">+</button>
+</div>
+		</div>
+	</div>		
+							
+</div>
+<div class="row">
+<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+</div>
+					</div>
+					
+					<div class="pull-right">
+						<div class="panel-body">
+							<label>sort by</label>
+							<select id="select-sort" class="form-control" autocomplete="off">
+								<option value="title" selected="">title</option>
+								<option value="published">publication date</option>
+							</select>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+<!-- end pager -->
 
 	<div class="panel panel-primary  album pls-0">
 		<div class="panel-heading">

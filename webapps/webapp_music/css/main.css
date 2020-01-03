@@ -395,21 +395,14 @@ input[type="range"] {
 	border-color: #4cadd4;
 	color: #fff;
 }
-
 .btn-blue-green:hover {
 	background: #ff8c00;
 	border-color: #ff8c00;
 	color: #000 !important;
 }
-
-
-
 .btn-blue-green:focus {
 	color: #fff !important;
 }
-
-
-
 
 
 .btn-darkblue {
@@ -435,7 +428,6 @@ input[type="range"] {
 }
 
 
-
 .btn-violet-fb {
 	background-color: #395697;
 	color: #fff;
@@ -451,7 +443,6 @@ input[type="range"] {
 	background-color: #6298A5;
 	color: #fff;
 }
-
 .btn-greygreen:hover {
 	background-color: orange;
 	color: #000 !important;
@@ -460,9 +451,6 @@ input[type="range"] {
 .btn-greygreen:visited {
 	color: #fff;
 }
-
-
-
 
 
 .btn-style1 {
@@ -739,31 +727,19 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 
 
-
-
-
 #pager{
-
-	background-color:#b0c4de;
 /*
+background-color:#b0c4de;
 position:fixed;
 right:20px;
 top:145px;
 z-index: 9999;
 */
 }
-
-
-
 .touch #pager {
 background-color:#ccffff;
 /*position:static;*/
 }
-
-
-
-
-
 @media screen and (max-width:1280px) 
 { 
 	#pager{
