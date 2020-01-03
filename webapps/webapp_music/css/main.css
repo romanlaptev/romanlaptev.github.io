@@ -410,6 +410,7 @@ left: 1px;
 	display: inline-block;
 	vertical-align: top;
 border: 1px solid;	
+text-align: center;
 }
 
 .album img {
