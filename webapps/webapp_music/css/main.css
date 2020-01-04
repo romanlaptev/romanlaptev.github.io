@@ -9,6 +9,7 @@ body {
   padding: 90px 0 0 0;
 }
 
+
 a {
 	color: #337ab7;
 	text-decoration: none;
@@ -136,6 +137,16 @@ text-align:right;
 text-align:center;
 }
 
+/* ICONS */
+@font-face {
+	font-family:FontAwesome;
+	src:url(../fonts/fontawesome-webfont.eot);
+	src:url(../fonts/fontawesome-webfont.eot?#iefix)format("embedded-opentype"),url(../fonts/fontawesome-webfont.woff2)format('woff2'),url(../fonts/fontawesome-webfont.woff)format("woff"),url(../fonts/fontawesome-webfont.ttf)format("truetype");
+	font-weight:400;
+	font-style:normal
+}
+
+
 /*================================*/
 
 /* LOG panel */
@@ -177,46 +188,14 @@ padding: 10px;
 margin: 0;
 }*/
 
-
-.alert {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
+/* COLORS */
+.bg-darkblue {
+  background-color: #004586 !important;
+}
+.bg-white {
+  background-color: #ffffff !important;
 }
 
-.alert-warning {
-	color: #000;
-	background-color: #ffb515;
-	/*border-color: #8a6d3b;*/
-}
-
-.alert-info {
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
-
-.alert-success {
-	color: #3c763d;
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
-}
-
-.alert-danger {
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
-}
-
-#btn-clear-log {
-/*	
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 1000;
-*/	
-}
 /*============================*/
 
 
@@ -227,13 +206,79 @@ margin: 0;
 /*.uk-offcanvas-container {
 overflow-y: auto !important;
 }*/
-.uk-offcanvas-bar {
-	overflow-y: auto;
-	opacity:0.8;
+
+
+.my-offcanvas {
+	display:none;
+/*display: block !important;*/
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	touch-action: none;
+	background: rgba(0,0,0,.1);
 }
 
 
+.my-offcanvas-bar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	z-index: 1001;
+	width: 0;
+	max-width: 100%;
+	background: #000;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	-webkit-transition: -webkit-transform .3s ease-in-out;
+	transition: transform .3s ease-in-out;
+	-ms-scroll-chaining: none;
+	
+	opacity:0.8;
+}
 
+.my-offcanvas-bar .uk-nav-offcanvas a {
+	color: #fff;
+}
+.my-offcanvas-bar .uk-nav-offcanvas a:hover {
+	color: red;
+}
+
+.my-close {
+	-webkit-appearance: none;
+	margin: 0;
+	border: none;
+	overflow: visible;
+	font: inherit;
+	color: inherit;
+	text-transform: none;
+	padding: 0;
+	background: 0 0;
+	display: inline-block;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	width: 20px;
+	line-height: 20px;
+	text-align: center;
+	vertical-align: middle;
+	opacity: .3;
+}
+.my-close::after {
+	display: block;
+	content: "\f00d";
+	font-family: FontAwesome;
+}
+.my-close-alt {
+	padding: 2px;
+	border-radius: 50%;
+	background: #eee;
+	opacity: 1;
+}
 
 
 

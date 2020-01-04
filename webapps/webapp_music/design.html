@@ -11,18 +11,77 @@
 	<link rel="apple-touch-icon" href="img/icons/favicon.png">
 	
 <!--	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>-->
+	
 	<script src="js/jquery-2.1.1.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="uikit323/css/uikit.min.css">
-	<script type="text/javascript" src="uikit323/js/uikit.min.js"></script>
+<!--	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="js/UIkit/uikit323.min.js"></script>
 
-	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/UIkit/core.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/offcanvas.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/toggle.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/uikit221.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/uikit221.min.css">
+-->
+	<link rel="stylesheet" type="text/css" href="css/uikit323.min.css">
 	
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
 <!--	
 	<script src="js/functions.js"></script>
 	<script src="js/webapp.js"></script>
 	<script src="js/main.js"></script>
-	-->
+-->
+<script>
+var menuWidth = 270;//270px
+
+if( typeof window.jQuery === "function"){
+	$(document).ready(function(){
+//console.log( "-- ready" );
+
+		$("#btn-toggle-menu").on("click", function(e){
+//console.log( e.type );
+			//e.preventDefault();
+			//return false;
+			toggleMenu();
+		});//end event
+		
+		$("#btn-close-menu").on("click", function(e){
+//console.log( e.type );
+			toggleMenu();
+		});//end event
+		
+		
+	});//end ready
+}
+
+// window.onload = function(){
+// 	var _btnToggleMenu = document.querySelector("#btn-toggle-menu");
+// 	_btnToggleMenu.onclick = function(e){
+// console.log( e.type );
+// 	}//end event
+// 	
+// }//end load
+
+function toggleMenu(){
+	var $offcanvas = $("#off-canvas2");
+	var $offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+	
+	var _w = parseInt( $offcanvasBar.css("width") );
+//console.log( $offcanvasBar.css("width"), _w);
+	
+	if( _w == 0){
+		$offcanvas.css("display","block");
+		$offcanvasBar.css("width", menuWidth);
+	}
+
+	if( parseInt(_w) == menuWidth){
+		$offcanvas.css("display","none");
+		$offcanvasBar.css("width", 0);
+	}
+}//end toggleMenu()
+
+</script>
+
 </head>
 
 <body>
@@ -31,9 +90,16 @@
 	<div class="row top-bar">
 
 		<div class="pull-left">
-<!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		-->
+<!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		
 			<button uk-toggle="target: #off-canvas1" type="button">menu</button>
-<!--	    <a href="#off-canvas1" uk-toggle></a>-->
+<a href="#off-canvas1" uk-toggle></a>
+-->
+			
+<!-- 
+https://getuikit.com/v2/docs/offcanvas.html 
+			<a class="uk-button" href="#off-canvas2" data-uk-offcanvas="{mode: 'slide'}">Menu</a>
+-->
+			<a id="btn-toggle-menu" class="uk-button uk-button-default bg-white" href="#off-canvas2">Menu</a>
 		</div>
 
 		<div class="pull-right">
@@ -42,7 +108,27 @@
 	</div>
 </div>
 
-			<div id="off-canvas1" uk-offcanvas="mode:slide;overlay:false">
+    <div class="my-offcanvas" id="off-canvas2">
+		<div class="my-offcanvas-bar">
+			<div class="pull-right">
+				<a id="btn-close-menu" href="#off-canvas2" class="my-close my-close-alt"></a>
+			</div>
+<br/>
+<br/>
+			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+				<li><a data-uk-toggle="{target:'#block-tags'}" class="uk-button uk-button-default w100" href="#">Tags list</a></li>
+				<li><a class="uk-button uk-button-default w100" href="#">Search</a></li>
+				<li><a class="uk-button uk-button-default w100" href="#">Track list</a></li>
+				<li><a class="uk-button uk-button-default w100" href="#">File manager</a></li>
+			</ul>
+		</div>
+	</div>
+    
+	</div>
+</div>
+
+
+<!--			<div id="off-canvas1" uk-offcanvas="mode:slide;overlay:false">
 				<div class="uk-offcanvas-bar">
 					<button class="uk-offcanvas-close" type="button" uk-close></button>
 					<ul class="uk-list">
@@ -52,14 +138,14 @@
 <li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-file-manager" href="#">file manager</a></li>
 					</ul>
 				</div>
-			</div>
+			</div>-->
 
 
 <div class="container">
 		<div id="main" class="" >
 		
 		
-<span id="block-tags" hidden>
+<span id="block-tags" class="uk-hidden">
 
 	<div class="row">
 		<div class="pull-right">
@@ -887,7 +973,6 @@ Tag <b>audio</b> not supported by this browser....
 </div>
 
 <!--  end progress bar -->	
-
 
 </body>
 </html>
