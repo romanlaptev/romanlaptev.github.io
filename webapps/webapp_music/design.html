@@ -83,7 +83,6 @@ $(".collapse").hide();
 		
 	_vars.$closeButtons.on("click", function(e){
 //console.log( e.target );
-			$(".collapse").hide();
 
 			var _target = $( e.target ).data("toggle");
 //console.log( _target );
@@ -204,14 +203,14 @@ https://getuikit.com/v2/docs/offcanvas.html
 			</div>
 		</div>
 		
-		<div class="uk-card-body">
-			<ul class="uk-list uk-list-striped">
-				<li class="uk-inline"><a class="tag-link" data-vid="2" href="?q=tag-group">music_styles</a>	</li>
-				<li class="uk-inline"><a class="tag-link" data-vid="3" href="?q=tag-group">music_formats</a></li>
-				<li class="uk-inline"><a class="tag-link" data-vid="4" href="?q=tag-group">country</a>	</li>
-				<li class="uk-inline"><a class="tag-link" data-vid="5" href="?q=tag-group">alphabetical_voc</a></li>
-				<li class="uk-inline"><a class="tag-link" data-vid="8" href="?q=tag-group">music_band</a></li>
-				<li class="uk-inline"><a class="tag-link" data-vid="9" href="?q=tag-group">music_genre</a></li>
+		<div class="uk-card-body uk-padding-small">
+			<ul class="uk-list tag-list">
+				<li><a  href="?q=get-tag-group&vid=2">music_styles</a>	</li>
+				<li><a  href="?q=get-tag-group&vid=3">music_formats</a></li>
+				<li><a  href="?q=get-tag-group&vid=4">country</a></li>
+				<li><a  href="?q=get-tag-group&vid=5">alphabetical_voc</a></li>
+				<li><a  href="?q=get-tag-group&vid=8">music_band</a></li>
+				<li><a  href="?q=get-tag-group&vid=9">music_genre</a></li>
 			</ul>
 		</div>
 	</div>
@@ -220,21 +219,21 @@ https://getuikit.com/v2/docs/offcanvas.html
 	
 	<div id="block-taglist">
 		<div class="uk-card uk-card-secondary">
-			<div class="uk-card-body">
-				<ul class="uk-list">
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="10">heavy metal</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="11">speed</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="12">power</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="15">фолк-метал</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="17">thrash</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="22">death</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="23">doom</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="24">симфоник-метал</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="32">rave</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="33">techno</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="34">classic rock</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="39">русский рок</a></li>
-	<li><a class="tag-link btn btn-sn btn-default" data-vid="2" data-tid="45">punk</a></li>
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="?q=get-tag&vid=2&vid=10">heavy metal</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=11">speed</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=12">power</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=15">фолк-метал</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=17">thrash</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=22">death</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=23">doom</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=24">симфоник-метал</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=32">rave</a></li>
+	<li><a href="?q=get-tag&vid=2&vid=33">techno</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=34">classic rock</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=39">русский рок</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=45">punk</a></li>
 				</ul>
 			</div>
 		</div>
@@ -424,78 +423,88 @@ Tag <b>audio</b> not supported by this browser....
 <!-- end pager -->
 
 	<div class="uk-card uk-card-default album pls-0">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Jazz and swing</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg" alt="Jazz and swing" title="Jazz and swing">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Jazz and swing.json" class="btn btn-default load-playlist">load playlist</a>
-
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+				<li><a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a></li>
+			</ul>
 		</div>
 	</div>
 
 	
 
 	<div class="uk-card uk-card-default album pls-2">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Vivaldi, Antonio Lucio</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/V/Vivaldi/images/Vivaldi.jpg" alt="Vivaldi, Antonio Lucio" title="Vivaldi, Antonio Lucio">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Vivaldi.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Vivaldi.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-3">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Mozart, Wolfgang Amadeus</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/M/Mozart/images/Mozart.jpg" alt="Mozart, Wolfgang Amadeus" title="Mozart, Wolfgang Amadeus">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Mozart.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Mozart.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-4">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Bach, Johann Sebastian</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/B/Bach/images/Johann_Sebastian_Bach.jpg" alt="Bach, Johann Sebastian" title="Bach, Johann Sebastian">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Bach.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Bach.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-5">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Handel, George Frideric</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/H/Handel/images/handel.jpg" alt="Handel, George Frideric" title="Handel, George Frideric">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Handel.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Handel.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
@@ -503,421 +512,477 @@ Tag <b>audio</b> not supported by this browser....
 	
 
 	<div class="uk-card uk-card-default album pls-7">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Башня Rowan</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg" alt="Башня Rowan" title="Башня Rowan">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Rowan.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Rowan.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-8">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Judas Priest</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/J/Judas Priest/images/British Steel.jpg" alt="Judas Priest" title="Judas Priest">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/judas_priest.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/judas_priest.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-9">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>My dying bride</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/M/My dying bride/cover.jpg" alt="My dying bride" title="My dying bride">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/My dying bride.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/My dying bride.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-10">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Master</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/M/Master/cover.jpg" alt="Master" title="Master">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Master.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Master.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-11">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Manowar</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/M/Manowar/image/Manowar88.jpg" alt="Manowar" title="Manowar">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Manowar.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Manowar.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-12">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Therion</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/T/Therion/Therion.jpg" alt="Therion" title="Therion">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Therion.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Therion.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-13">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Nightwish</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/N/Nightwish/Picture/n_cover.jpg" alt="Nightwish" title="Nightwish">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Nightwish.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Nightwish.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-14">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Russian rock</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/russian.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/russian.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-15">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Kreator</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/K/Kreator/cover.jpg" alt="Kreator" title="Kreator">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Kreator.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Kreator.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-punk">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>KSU</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/K/KSU/cover.jpg" alt="KSU" title="KSU">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/KSU.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/KSU.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-rus-punk">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>punk, hardcore</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/punk, hardcore.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/punk, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-rus-punk">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Russian punk</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/rus_punk.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/rus_punk.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-grob">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Гражданская оборона</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/0_covers/grob.jpg" alt="Гражданская оборона" title="Гражданская оборона">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/GrOb.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/GrOb.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-ska">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Ska</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/ska.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/ska.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-thrash">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>thrash, death, grindecore, hardcore</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/thrash, death, grindecore, hardcore.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-trance">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>trance, rave, hip-hop, electronic</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/trance, rave, hip-hop, electronic.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-blues">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>blues, rock_n_roll, swing, jazz</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-blues">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Red Elvices</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/red_elvices.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/red_elvices.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-disko">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>disko, pop</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/disko, pop.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/disko, pop.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-folk">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>folk, chants</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/folk, chants.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/folk, chants.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-heavy">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>heavy,speed,power metal</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/heavy,speed,power.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/heavy,speed,power.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-indian">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>indian music</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/indian.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/indian.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-melodic-metal">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>melodic, folk metal</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/melodic, folk metal.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/melodic, folk metal.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-Metallica">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Metallica</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg" alt="Metallica" title="Metallica">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/metallica.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/metallica.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-Apocalyptica">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Apocalyptica</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/0_covers/apocalyptica.jpg" alt="Apocalyptica" title="Apocalyptica">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/apocalyptica.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/apocalyptica.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-Korpiklaani">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3></h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="/music/K/Korpiklaani/cover.jpg" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/Korpiklaani.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Korpiklaani.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-hip-hop">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>transe, hip-hop, latin</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/mix_transe, hip-hop, latin.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
 
 	<div class="uk-card uk-card-default album pls-rock">
-		<div class="uk-card-header">
+		<div class="uk-card-header uk-padding-small">
 				<h3>Rock</h3>
 			</div>
 		
-	<div class="uk-card-body">
+	<div class="uk-card-body uk-padding-small">
 		<img src="" alt="" title="">
 	</div>
 		
-		<div class="uk-card-footer">
-			<a href="/music/0_playlists/rock.json" class="btn btn-default load-playlist">load playlist</a>
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/rock.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			</ul>
 
 		</div>
 	</div>
