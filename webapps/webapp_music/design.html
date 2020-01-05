@@ -123,7 +123,7 @@ function toggleMenu(){
 <div id="top" class="header">
 	<div class="row top-bar">
 
-		<div class="pull-left">
+		<div class="uk-float-left">
 <!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		
 			<button uk-toggle="target: #off-canvas1" type="button">menu</button>
 <a href="#off-canvas1" uk-toggle></a>
@@ -136,7 +136,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 			<a id="btn-toggle-menu" class="uk-button uk-button-default bg-white" href="#off-canvas2">Menu</a>
 		</div>
 
-		<div class="pull-right">
+		<div class="uk-float-right">
 			<h1 id="app-title">Application title</h1>
 		</div>
 	</div>
@@ -144,25 +144,22 @@ https://getuikit.com/v2/docs/offcanvas.html
 
     <div class="my-offcanvas" id="off-canvas2">
 		<div class="my-offcanvas-bar">
-			<div class="pull-right">
+			<div class="uk-float-right">
 				<a id="btn-close-menu" href="#" class="my-close my-close-alt"></a>
 			</div>
 <br/>
 <br/>
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
-				<li><a data-toggle="#block-tags" class="uk-button uk-button-default w100" href="#">Tags list</a></li>
-				<li><a data-toggle="#block-search" class="uk-button uk-button-default w100" href="#">Search</a></li>
-				<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default w100" href="#">Track list</a></li>
-				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default w100" href="#">File manager</a></li>
+				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
+				<li><a data-toggle="#block-search" class="uk-button uk-button-default" href="#">Search</a></li>
+				<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default" href="#">Track list</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
 				<li><a class="uk-button uk-button-default w100" href="#">Add new playlist</a></li>
 			</ul>
 		</div>
 	</div>
 
-    
-
 	</div>
-
 </div>
 
 
@@ -187,18 +184,20 @@ https://getuikit.com/v2/docs/offcanvas.html
 <!-- block-tags -->
 <div id="block-tags">
 
-	<div class="row">
-		<div class="pull-right">
-<!--			<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-danger">x</a>-->
-			<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-danger">x</a>
-		</div>
-	</div>
 
 	<div id="block-tag-groups">
 		<div class="uk-card uk-card-primary">
-		<div class="uk-card-header">
-			<b>Tag groups</b>
+		
+		<div class="row">
+			<div class="uk-float-left uk-padding-small">
+				<b>Tag groups</b>
+			</div>
+			<div class="uk-float-right">
+	<!--			<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-small uk-button-danger">x</a>-->
+				<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
 		</div>
+		
 		<div class="uk-card-body">
 			<ul class="uk-list uk-list-striped">
 				<li class="uk-inline"><a class="tag-link" data-vid="2" href="?q=tag-group">music_styles</a>	</li>
@@ -240,20 +239,14 @@ https://getuikit.com/v2/docs/offcanvas.html
 
 <div id="block-search">
 	<div class="uk-card">
-		<div class="uk-card-header row">
-				<div class="pull-left"><b>Search by keywords</b></div>
-				<div class="pull-right">
-					<a data-toggle="#block-search" href="#close" class="uk-button uk-button-danger">x</a>
-				</div>
+
+		<div class="row">
+			<div class="uk-float-left uk-padding-small"><b>Search by keywords</b></div>
+			<div class="uk-float-right">
+					<a data-toggle="#block-search" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
 		</div>
 		
-	<form name="formSearch" id="form-search" action="?q=search" method="GET">
-		<div class="uk-card-body">
-			<div class="form-group">
-					<input class="uk-radio" name="targetField" value="title" type="radio">title
-					<input class="uk-radio" name="targetField" value="description" type="radio">description
-					<input class="uk-radio" name="targetField" value="filename" type="radio">playlist filename
-			</div>
 			<label>keyword:</label>
 			<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
 		</div>
@@ -271,14 +264,19 @@ https://getuikit.com/v2/docs/offcanvas.html
 <!--
 <div id="block-jplayer"></div>
 -->
-		<div class="uk-card-header row">
-			<div class="pull-right">
-				<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-danger">x</a>
+
+		<div class="row">
+			<div class="uk-float-left uk-padding-small">
+				<span id="pls-name">
+					<b>Jazz and swing</b>
+				</span>
+			</div>
+			<div class="uk-float-right">
+					<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
 			</div>
 		</div>
 		
 		<div class="uk-card-body">
-				<h2 id="pls-name">Jazz and swing</h2>
 					
 <iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
 			<h3>Yankee_doodle.mp3</h3>
@@ -365,11 +363,15 @@ Tag <b>audio</b> not supported by this browser....
 <!-- block-file-manager -->
 <div id="block-file-manager">
 		<div class="uk-card uk-card-default">
-			<div class="uk-card-header row">
-				<div class="pull-right">
-					<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-danger">x</a>
-				</div>
+			
+		<div class="row">
+			<div class="uk-float-left uk-padding-small">
+					<b>File manager</b>
 			</div>
+			<div class="uk-float-right">
+					<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
 				
 			<div class="uk-card-body">
 00000000000000
@@ -385,23 +387,23 @@ Tag <b>audio</b> not supported by this browser....
 <!-- pager -->
 			<div id="block-pager" class="uk-card uk-card-primary w60">
 				<div class="uk-card-body">
-					<div class="pull-left w70">
+					<div class="uk-float-left w70">
 <div class="row">
-	<div class="pull-left">
+	<div class="uk-float-left">
 	total records: <b><span id="total-records"></span></b>, 
 	number of pages: <b><span id="total-pages"></span></b>
 	</div>
 							
-	<div class="block-num-page pull-right">
+	<div class="block-num-page uk-float-right">
 		<div class="row">
-<div class="pull-left"><br>
+<div class="uk-float-left"><br>
 <button id="page-number-less" class="btn btn-sm btn-info">-</button>
 </div>
-<div class="pull-left">
+<div class="uk-float-left">
 <b>Page №:</b><br>
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="uk-float-left only-numbers form-control">
 </div>
-<div class="pull-left"><br>
+<div class="uk-float-left"><br>
 <button id="page-number-more" class="btn btn-sm btn-info">+</button>
 </div>
 		</div>
@@ -413,7 +415,7 @@ Tag <b>audio</b> not supported by this browser....
 </div>
 					</div>
 					
-					<div class="pull-right">
+					<div class="uk-float-right">
 						<div class="panel-body">
 							<label>sort by</label>
 							<select id="select-sort" class="form-control" autocomplete="off">
@@ -961,7 +963,7 @@ Tag <b>audio</b> not supported by this browser....
 
 	<div class="log-panel">
 		<div class="panel-body">
-			<span class="pull-right">
+			<span class="uk-float-right">
 				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
 				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
 			</span>

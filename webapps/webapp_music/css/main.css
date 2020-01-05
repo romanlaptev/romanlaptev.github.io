@@ -121,14 +121,6 @@ footer {
 	overflow: hidden;
 }
 
-.pull-left {
-	float: left;
-}
-
-.pull-right {
-	float: right;
-}
-
 .text-right{
 text-align:right;
 }
