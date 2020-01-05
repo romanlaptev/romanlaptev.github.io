@@ -51,9 +51,10 @@ if( typeof window.jQuery === "function"){
 
 		_vars.$blockTags = $("#block-tags");
 		_vars.$blockTags.hide();
-$("#block-search").hide();
-$("#block-tracklist").hide();
-$("#block-file-manager").hide();
+//$("#block-search").hide();
+//$("#block-tracklist").hide();
+//$("#block-file-manager").hide();
+$(".collapse").hide();
 
 		$("#btn-toggle-menu").on("click", function(e){
 //console.log( e.type );
@@ -68,18 +69,22 @@ $("#block-file-manager").hide();
 
 		_vars.$offcanvasMenu.on("click", function(e){
 //console.log( e.target );
-console.log( $( e.target ).data()  );
+			$(".collapse").hide();
+			
+//console.log( $( e.target ).data()  );
 			var _target = $( e.target ).data("toggle");
-console.log( _target );
+//console.log( _target );
 			//$( _target ).slideToggle( _vars.duration, function(e){
 			$( _target ).show( _vars.duration, function(e){
-console.log(arguments)
+//console.log(arguments)
 				toggleMenu();
 			});
 		});//end event
 		
 	_vars.$closeButtons.on("click", function(e){
 //console.log( e.target );
+			$(".collapse").hide();
+
 			var _target = $( e.target ).data("toggle");
 //console.log( _target );
 			$( _target ).slideToggle( _vars.duration , function(e){
@@ -154,7 +159,8 @@ https://getuikit.com/v2/docs/offcanvas.html
 				<li><a data-toggle="#block-search" class="uk-button uk-button-default" href="#">Search</a></li>
 				<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default" href="#">Track list</a></li>
 				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
-				<li><a class="uk-button uk-button-default w100" href="#">Add new playlist</a></li>
+				<li><a class="uk-button uk-button-default" href="#">Add new playlist</a></li>
+				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
 			</ul>
 		</div>
 	</div>
@@ -182,7 +188,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 		
 		
 <!-- block-tags -->
-<div id="block-tags">
+<div id="block-tags"  class="collapse">
 
 
 	<div id="block-tag-groups">
@@ -237,7 +243,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 </div>
 <!-- end block-tags -->
 
-<div id="block-search">
+<div id="block-search" class="collapse">
 	<div class="uk-card">
 
 		<div class="row">
@@ -259,7 +265,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 </div>
 
 
-<div id="block-tracklist">
+<div id="block-tracklist" class="collapse">
 	<div class="uk-card uk-card-default">
 <!--
 <div id="block-jplayer"></div>
@@ -361,7 +367,7 @@ Tag <b>audio</b> not supported by this browser....
 
 
 <!-- block-file-manager -->
-<div id="block-file-manager">
+<div id="block-file-manager" class="collapse">
 		<div class="uk-card uk-card-default">
 			
 		<div class="row">
