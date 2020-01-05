@@ -16,11 +16,10 @@
 <!--	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="js/UIkit/uikit323.min.js"></script>
-
-	<script type="text/javascript" src="js/UIkit/core.min.js"></script>
-	<script type="text/javascript" src="js/UIkit/offcanvas.min.js"></script>
-	<script type="text/javascript" src="js/UIkit/toggle.min.js"></script>
-	<script type="text/javascript" src="js/UIkit/uikit221.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/core.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/offcanvas.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/toggle.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/uikit221.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/uikit221.min.css">
 -->
 	<link rel="stylesheet" type="text/css" href="css/uikit323.min.css">
@@ -32,11 +31,29 @@
 	<script src="js/main.js"></script>
 -->
 <script>
-var menuWidth = 270;//270px
+var _vars = {
+	menuWidth : 270,//270px
+	duration : 600,
+	 $offcanvas : null,
+	 $offcanvasBar : null,
+	 $offcanvasMenu : null
+};
+console.log( _vars );
 
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
 //console.log( "-- ready" );
+
+		_vars.$offcanvas = $("#off-canvas2");
+		_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+		_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+		_vars.$closeButtons = $("a[href='#close']");
+
+		_vars.$blockTags = $("#block-tags");
+		_vars.$blockTags.hide();
+$("#block-search").hide();
+$("#block-tracklist").hide();
+$("#block-file-manager").hide();
 
 		$("#btn-toggle-menu").on("click", function(e){
 //console.log( e.type );
@@ -46,11 +63,30 @@ if( typeof window.jQuery === "function"){
 		});//end event
 		
 		$("#btn-close-menu").on("click", function(e){
-//console.log( e.type );
 			toggleMenu();
 		});//end event
+
+		_vars.$offcanvasMenu.on("click", function(e){
+//console.log( e.target );
+console.log( $( e.target ).data()  );
+			var _target = $( e.target ).data("toggle");
+console.log( _target );
+			//$( _target ).slideToggle( _vars.duration, function(e){
+			$( _target ).show( _vars.duration, function(e){
+console.log(arguments)
+				toggleMenu();
+			});
+		});//end event
 		
-		
+	_vars.$closeButtons.on("click", function(e){
+//console.log( e.target );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			$( _target ).slideToggle( _vars.duration , function(e){
+//console.log(arguments)
+			});
+		});//end event
+
 	});//end ready
 }
 
@@ -63,20 +99,18 @@ if( typeof window.jQuery === "function"){
 // }//end load
 
 function toggleMenu(){
-	var $offcanvas = $("#off-canvas2");
-	var $offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
 	
-	var _w = parseInt( $offcanvasBar.css("width") );
-//console.log( $offcanvasBar.css("width"), _w);
+	var _w = parseInt( _vars.$offcanvasBar.css("width") );
+//console.log( _vars.$offcanvasBar.css("width"), _w);
 	
 	if( _w == 0){
-		$offcanvas.css("display","block");
-		$offcanvasBar.css("width", menuWidth);
+		_vars.$offcanvas.css("display","block");
+		_vars.$offcanvasBar.css("width", _vars.menuWidth);
 	}
 
-	if( parseInt(_w) == menuWidth){
-		$offcanvas.css("display","none");
-		$offcanvasBar.css("width", 0);
+	if( parseInt(_w) == _vars.menuWidth){
+		_vars.$offcanvas.css("display","none");
+		_vars.$offcanvasBar.css("width", 0);
 	}
 }//end toggleMenu()
 
@@ -108,24 +142,29 @@ https://getuikit.com/v2/docs/offcanvas.html
 	</div>
 </div>
 
-    <div class="my-offcanvas" id="off-canvas2">
-		<div class="my-offcanvas-bar">
+    <div class="my-offcanvas" id="off-canvas2">
+		<div class="my-offcanvas-bar">
 			<div class="pull-right">
-				<a id="btn-close-menu" href="#off-canvas2" class="my-close my-close-alt"></a>
+				<a id="btn-close-menu" href="#" class="my-close my-close-alt"></a>
 			</div>
 <br/>
 <br/>
-			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
-				<li><a data-uk-toggle="{target:'#block-tags'}" class="uk-button uk-button-default w100" href="#">Tags list</a></li>
-				<li><a class="uk-button uk-button-default w100" href="#">Search</a></li>
-				<li><a class="uk-button uk-button-default w100" href="#">Track list</a></li>
-				<li><a class="uk-button uk-button-default w100" href="#">File manager</a></li>
-			</ul>
-		</div>
-	</div>
-    
-	</div>
-</div>
+			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+				<li><a data-toggle="#block-tags" class="uk-button uk-button-default w100" href="#">Tags list</a></li>
+				<li><a data-toggle="#block-search" class="uk-button uk-button-default w100" href="#">Search</a></li>
+				<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default w100" href="#">Track list</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default w100" href="#">File manager</a></li>
+				<li><a class="uk-button uk-button-default w100" href="#">Add new playlist</a></li>
+			</ul>
+		</div>
+	</div>
+
+    
+
+	</div>
+
+</div>
+
 
 
 <!--			<div id="off-canvas1" uk-offcanvas="mode:slide;overlay:false">
@@ -145,15 +184,17 @@ https://getuikit.com/v2/docs/offcanvas.html
 		<div id="main" class="" >
 		
 		
-<span id="block-tags" class="uk-hidden">
+<!-- block-tags -->
+<div id="block-tags">
 
 	<div class="row">
 		<div class="pull-right">
-			<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-danger">x</a>
+<!--			<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-danger">x</a>-->
+			<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-danger">x</a>
 		</div>
 	</div>
 
-	<span id="block-tag-groups">
+	<div id="block-tag-groups">
 		<div class="uk-card uk-card-primary">
 		<div class="uk-card-header">
 			<b>Tag groups</b>
@@ -170,9 +211,9 @@ https://getuikit.com/v2/docs/offcanvas.html
 		</div>
 	</div>
 
-	</span>
-
-	<span id="block-taglist">
+	</div>
+	
+	<div id="block-taglist">
 		<div class="uk-card uk-card-secondary">
 			<div class="uk-card-body">
 				<ul class="uk-list">
@@ -192,16 +233,18 @@ https://getuikit.com/v2/docs/offcanvas.html
 				</ul>
 			</div>
 		</div>
-	</span>
+	</div>
 
-</span>
+</div>
 <!-- end block-tags -->
 
-<span id="block-search" uk-modal="" class="uk-modal">
-	<div class="uk-card uk-modal-dialog">
-		<div class="uk-card-header">
+<div id="block-search">
+	<div class="uk-card">
+		<div class="uk-card-header row">
 				<div class="pull-left"><b>Search by keywords</b></div>
-				<div class="pull-right"><button class="uk-modal-close" type="button">x</button></div>
+				<div class="pull-right">
+					<a data-toggle="#block-search" href="#close" class="uk-button uk-button-danger">x</a>
+				</div>
 		</div>
 		
 	<form name="formSearch" id="form-search" action="?q=search" method="GET">
@@ -220,17 +263,20 @@ https://getuikit.com/v2/docs/offcanvas.html
 		</div>
 	</form>
 	</div>
-</span>
+</div>
 
 
-<span id="block-tracklist" hidden>
+<div id="block-tracklist">
 	<div class="uk-card uk-card-default">
 <!--
-<span id="block-jplayer"></span>
+<div id="block-jplayer"></div>
 -->
-		<div class="pull-right">
-			<a uk-toggle="target:#block-tracklist; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-primary">x</a>
+		<div class="uk-card-header row">
+			<div class="pull-right">
+				<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-danger">x</a>
+			</div>
 		</div>
+		
 		<div class="uk-card-body">
 				<h2 id="pls-name">Jazz and swing</h2>
 					
@@ -269,9 +315,7 @@ Tag <b>audio</b> not supported by this browser....
 
 
 <div class="uk-card-body">
-
 	<div class="block panel panel-primary">
-	
 		<div class="uk-card-header">
 			<h4 class="uk-card-title">Track list</h4>
 		</div>
@@ -314,26 +358,29 @@ Tag <b>audio</b> not supported by this browser....
 </div>
 			
 	</div>
-</span>
+</div>
 
 
 
 <!-- block-file-manager -->
-<span id="block-file-manager" hidden>
-			<div class="uk-card uk-card-default">
+<div id="block-file-manager">
+		<div class="uk-card uk-card-default">
+			<div class="uk-card-header row">
 				<div class="pull-right">
-					<a uk-toggle="target:#block-file-manager; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-primary">x</a>
-				</div>
-				<div class="uk-card-body">
-00000000000000
+					<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-danger">x</a>
 				</div>
 			</div>
-</span>
+				
+			<div class="uk-card-body">
+00000000000000
+			</div>
+		</div>
+</div>
 <!-- end block-file-manager -->
 
 
 
-<span id="block-playlist">
+<div id="block-playlist">
 
 <!-- pager -->
 			<div id="block-pager" class="uk-card uk-card-primary w60">
@@ -878,7 +925,7 @@ Tag <b>audio</b> not supported by this browser....
 
 		</div>
 	</div>
-</span>
+</div>
 
 		</div><!-- end main central area -->
 
@@ -892,7 +939,7 @@ Tag <b>audio</b> not supported by this browser....
 
 <footer class="container">
 	<div class="">
-<span id="block-links">
+<div id="block-links">
 	<div class="uk-card uk-card-primary">
 				<ul class="uk-card-body text-center">
 <li class="uk-inline"><a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a></li>
@@ -905,7 +952,7 @@ Tag <b>audio</b> not supported by this browser....
 -->
 				</ul>
 	</div>
-</span>
+</div>
 
 	</div>
 </footer>
