@@ -466,3 +466,29 @@ background-color: #cfdfe6;
 #block-playlist .uk-list li {
 	display: inline-block;
 }
+
+#block-player .button-group li {
+	display: inline-block;
+}
+#block-tracklist {
+	position: fixed;
+	right: 0;
+	top: 100px;
+	width: 25%;
+	background: #C7D5EC;
+	padding: 10px;
+	margin: 5px;
+	z-index: 999;
+}
+
+.list-group-item {
+/*	position: relative;
+	display: block;*/
+	padding: 10px 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}

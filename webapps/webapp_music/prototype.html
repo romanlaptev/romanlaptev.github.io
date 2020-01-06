@@ -52,7 +52,7 @@ if( typeof window.jQuery === "function"){
 		_vars.$blockTags = $("#block-tags");
 		_vars.$blockTags.hide();
 //$("#block-search").hide();
-//$("#block-tracklist").hide();
+//$("#block-player").hide();
 //$("#block-file-manager").hide();
 $(".collapse").hide();
 
@@ -156,7 +156,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 				<li><a data-toggle="#block-search" class="uk-button uk-button-default" href="#">Search</a></li>
-				<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default" href="#">Track list</a></li>
+				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
 				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Add new playlist</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
@@ -175,7 +175,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 					<ul class="uk-list">
 <li><button uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" class="uk-button uk-button-default w100" type="button">Tags list</button></li>
 <li><button uk-toggle="target: #block-search" class="uk-button uk-button-default w100" href="#">search</button></li>
-<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-tracklist" href="#">track list</a></li>
+<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-player" href="#">track list</a></li>
 <li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-file-manager" href="#">file manager</a></li>
 					</ul>
 				</div>
@@ -183,7 +183,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 
 
 <div class="container">
-		<div id="main" class="" >
+	<div id="main" class="" >
 		
 		
 <!-- block-tags -->
@@ -242,9 +242,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 </div>
 <!-- end block-tags -->
 
-<div id="block-search" class="collapse">
-	<div class="uk-card">
-
+<div id="block-search" class="collapse uk-card">
 		<div class="row">
 			<div class="uk-float-left uk-padding-small"><b>Search by keywords</b></div>
 			<div class="uk-float-right">
@@ -252,117 +250,121 @@ https://getuikit.com/v2/docs/offcanvas.html
 			</div>
 		</div>
 		
-			<label>keyword:</label>
-			<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
+<form name="formSearch" id="form-search" action="?q=search" method="GET">
+		<div class="uk-card-body">
+				<label class="uk-label">keyword:</label>
+				<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
 		</div>
+	
 		<div class="uk-card-footer">
-			<button type="submit" class="uk-button uk-button-large uk-button-primary">start search</button>
-			<button type="reset" class="uk-button">reset parameters</button>
+				<button type="submit" class="uk-button uk-button-large uk-button-primary">start search</button>
+				<button type="reset" class="uk-button">reset parameters</button>
 		</div>
-	</form>
-	</div>
+</form>
+
 </div>
+<!-- end block-search -->
 
 
-<div id="block-tracklist" class="collapse">
+<div id="block-player" class="collapse">
 	<div class="uk-card uk-card-default">
-<!--
-<div id="block-jplayer"></div>
--->
 
 		<div class="row">
-			<div class="uk-float-left uk-padding-small">
-				<span id="pls-name">
-					<b>Jazz and swing</b>
-				</span>
-			</div>
 			<div class="uk-float-right">
-					<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+					<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
 			</div>
 		</div>
 		
 		<div class="uk-card-body">
-					
-<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
-			<h3>Yankee_doodle.mp3</h3>
 			<div>
+				<b>Yankee_doodle.mp3</b><br>
 				<audio controls="controls">
 						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
 Tag <b>audio</b> not supported by this browser.... 
 				</audio>
 			</div>
-<!--					
-					<video id="player1" controls="controls" src="../../test_code/js/test_media/video/video.mp4" width="640" height="385">
+			
+			<div class="uk-hidden">
+<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
+				<video id="player1" controls="controls" src="" width="640" height="385">
 						<source src="">
 						Tag <b>video</b> not supported by this browser.... 
-					</video>
--->					
-					<div id="player-buttons">
-	<!--
-						<span id="video1-current">00:00</span>
-						<span id="video1-duration">00:00</span>
-						
-						<button id="btn-play" class="btn btn-primary">play</button>
-						<button id="btn-pause" class="btn btn-info">pause</button>
-						<a href="?q=stop-play" class="btn btn-danger">stop</a>
-						
-						<a href="?q=prev-track" class="btn btn-primary">prev track</a>
-						<a href="?q=next-track" class="btn btn-primary">next track</a>
-	-->
-						<ul class="list-inline">
-							<li><a href="?q=prev-track" class="btn btn-sm btn-primary">prev track</a></li>
-							<li><a href="?q=next-track" class="btn btn-sm btn-blue">next track</a></li>
-						</ul>
-					</div>
+				</video>
+			</div>
+			
+			<div id="player-buttons">
+<!--
+				<span id="video1-current">00:00</span>
+				<span id="video1-duration">00:00</span>
+				
+				<button id="btn-play" class="btn btn-primary">play</button>
+				<button id="btn-pause" class="btn btn-info">pause</button>
+				<a href="?q=stop-play" class="btn btn-danger">stop</a>
+				
+				<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+				<a href="?q=next-track" class="btn btn-primary">next track</a>
+-->
+				<ul class="button-group uk-list">
+					<button id="btn-play" class="uk-button uk-button-small uk-button-default">play</button>
+					<button id="btn-pause" class="uk-button uk-button-small uk-button-default">pause</button>
+					<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>
+					<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>
+				</ul>
+			</div>
 		</div>
 
 
-<div class="uk-card-body">
-	<div class="block panel panel-primary">
-		<div class="uk-card-header">
-			<h4 class="uk-card-title">Track list</h4>
-		</div>
-		
-		<div class="uk-card-body pls-buttons">
-			<ul class="list-inline">
-				<li><a href="?q=clear-playlist" class="btn btn-sm btn-danger">clear playlist</a></li>
-				<li><a href="?q=ins-track" class="btn btn-sm btn-info">insert track (local file or url)</a></li>
-			</ul>
-		</div>
-		
-		<div class="uk-card-body">
-		
-			<ul id="playlist" class="list-unstyled">
-				<li class="list-group-item active">
-					<div class="row">
-						<div class="col-xs-10 col-sm-10">
-							<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
-						</div>
-						<div class="col-xs-2 col-sm-2 uk-text-right">
-							<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
-						</div>
+		<div id="block-tracklist" class="">
+			<div class="">
+				<div class="row">
+					<div class="uk-float-left">
+						<h4>Track list</h4>
 					</div>
-				</li>
-				<li class="list-group-item">
-					<div class="row">
-						<div class="col-xs-10 col-sm-10">
-							<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
-						</div>
-						<div class="col-xs-2 col-sm-2 uk-text-right">
-							<a class="btn btn-sm btn-blue-c4" href="#?q=remove-track&amp;num=1" title="Remove this track from playlist">x</a>
-						</div>
+					<div class="uk-float-right">
+							<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
 					</div>
-				</li>
-			</ul>
+				</div>
+				
+				<div class="pls-buttons">
+					<ul class="button-group uk-list">
+						<li><a href="?q=clear-playlist" class="uk-button uk-button-danger uk-button-small">clear playlist</a></li>
+						<li><a href="?q=ins-track" class="uk-button uk-button-primary uk-button-small">insert track (local file or url)</a></li>
+					</ul>
+				</div>
+				
+				<div class="">
+				
+					<ul id="playlist" class="list-unstyled">
+						<li class="list-group-item">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
 			
 		</div>
-	</div>
-	
-</div>
 			
 	</div>
 </div>
-
+<!-- end block-player -->
 
 
 <!-- block-file-manager -->
@@ -398,14 +400,14 @@ Tag <b>audio</b> not supported by this browser....
 	<div class="row">
 		<div class="block-num-page">
 			<div class="uk-float-left"><br>
-<button id="page-number-less" class="">-</button>
+<button id="page-number-less" class="uk-button uk-button-small uk-button-primary">-</button>
 			</div>
 			<div class="uk-float-left">
 				<b>Page №:</b><br>
 <input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="uk-float-left only-numbers form-control">
 			</div>
 			<div class="uk-float-left"><br>
-<button id="page-number-more" class="">+</button>
+<button id="page-number-more" class="uk-button uk-button-small uk-button-primary">+</button>
 			</div>
 		</div>
 <input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">
@@ -433,7 +435,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 				<li><a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a></li>
 			</ul>
 		</div>
@@ -452,7 +454,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Vivaldi.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Vivaldi.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -469,7 +471,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Mozart.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Mozart.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -486,7 +488,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Bach.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Bach.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -503,7 +505,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Handel.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Handel.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -522,7 +524,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Rowan.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Rowan.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -539,7 +541,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/judas_priest.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/judas_priest.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -556,7 +558,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/My dying bride.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/My dying bride.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -573,7 +575,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Master.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Master.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -590,7 +592,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Manowar.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Manowar.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -607,7 +609,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Therion.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Therion.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -624,7 +626,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Nightwish.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Nightwish.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -641,7 +643,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/russian.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/russian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -658,7 +660,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Kreator.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Kreator.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -675,7 +677,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/KSU.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/KSU.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -692,7 +694,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/punk, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/punk, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -709,7 +711,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/rus_punk.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/rus_punk.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -726,7 +728,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/GrOb.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/GrOb.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -743,7 +745,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/ska.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/ska.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -760,7 +762,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -777,7 +779,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -794,7 +796,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -811,7 +813,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/red_elvices.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/red_elvices.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -828,7 +830,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/disko, pop.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/disko, pop.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -845,7 +847,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/folk, chants.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/folk, chants.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -862,7 +864,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/heavy,speed,power.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/heavy,speed,power.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -879,7 +881,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/indian.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/indian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -896,7 +898,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/melodic, folk metal.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/melodic, folk metal.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -913,7 +915,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/metallica.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/metallica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -930,7 +932,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/apocalyptica.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/apocalyptica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -947,7 +949,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/Korpiklaani.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/Korpiklaani.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -964,7 +966,7 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
@@ -981,19 +983,18 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
-			<li><a href="?q=play-list&url=/music/0_playlists/rock.json" class="uk-button uk-button-primary uk-button-small load-playlist">play</a></li>
+			<li><a href="?q=play-list&url=/music/0_playlists/rock.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
 			</ul>
 
 		</div>
 	</div>
 </div>
 
-		</div><!-- end main central area -->
+	</div><!-- end main central area -->
 
 
 	<div class="">
-		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
-
+		<button id="btn-scroll-to-top" class="uk-button uk-button-primary scroll-to" data-target="top">scroll to top</button>
 	</div>
 
 </div><!-- end container -->
