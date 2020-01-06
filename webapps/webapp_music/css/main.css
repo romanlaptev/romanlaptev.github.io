@@ -180,6 +180,12 @@ margin: 0;
 .bg-white {
   background-color: #ffffff !important;
 }
+.bg-lightsteelblue6 {
+	background-color: #C7D5EC;
+}
+.bg-lightsteelblue7{
+  background-color: #AABAD5 !important;
+}
 
 /*============================*/
 
@@ -471,15 +477,31 @@ background-color: #cfdfe6;
 	display: inline-block;
 }
 
+
+
 #block-player .button-group li {
 	display: inline-block;
 }
+/*#block-player .list-group-item.active {
+	background-color: #337ab7;
+}*/
+/*#block-player .list-group-item.active a {
+	color: #fff;
+}*/
+#block-player .list-group-item.active .track-name{
+	border:1px solid;
+	padding:5px;
+}
+
 #block-tracklist {
 	position: fixed;
 	right: 0;
 	top: 100px;
 	width: 25%;
-	background: #C7D5EC;
+background-color:#87cefa;
+/*background-color: #b1d0ef;
+border: 1px solid #004586;*/
+
 	padding: 10px;
 	margin: 5px;
 	z-index: 999;
