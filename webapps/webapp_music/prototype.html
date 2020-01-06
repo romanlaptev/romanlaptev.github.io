@@ -157,8 +157,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 				<li><a data-toggle="#block-search" class="uk-button uk-button-default" href="#">Search</a></li>
 				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
-				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
-				<li><a class="uk-button uk-button-default" href="#">Add new playlist</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">Form new playlist</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
 			</ul>
 		</div>
@@ -242,7 +241,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 </div>
 <!-- end block-tags -->
 
-<div id="block-search" class="collapse uk-card uk-card-default">
+<div id="block-search" class="collapse uk-card uk-card-primary">
 		<div class="row">
 			<div class="uk-float-left uk-padding-small"><b>Search by keywords</b></div>
 			<div class="uk-float-right">
@@ -250,15 +249,16 @@ https://getuikit.com/v2/docs/offcanvas.html
 			</div>
 		</div>
 		
-<form name="formSearch" id="form-search" action="?q=search" method="GET">
+<form name="formSearch" id="form-search" action="?q=search" method="GET">
+
 		<div class="uk-card-body">
 				<label class="uk-label">keyword:</label>
 				<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
 		</div>
 	
 		<div class="uk-card-footer">
-				<button type="submit" class="uk-button uk-button-large uk-button-primary">start search</button>
-				<button type="reset" class="uk-button">reset parameters</button>
+				<button type="submit" class="uk-button uk-button-small uk-button-default">start search</button>
+				<button type="reset" class="uk-button uk-button-small uk-button-default">reset parameters</button>
 		</div>
 </form>
 
