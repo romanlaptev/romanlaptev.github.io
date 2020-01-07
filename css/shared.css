@@ -499,6 +499,12 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 .icon-bars:before {
   content: "\f0c9";
 }
+.icon-level-up:before {
+  content: "\f148";
+}
+.icon-level-down:before {
+  content: "\f149";
+}
 
 
 @font-face {

@@ -431,26 +431,26 @@ Tag <b>audio</b> not supported by this browser....
 						<li><a id="save-pls" href="#modal-save-pls" class="uk-button uk-button-default">Save playlists (JSON)</a></li>
 						<li><a id="edit-pls" href="#modal-edit-pls" class="uk-button uk-button-default">Edit playlists</a></li>
 					</ul>
-					<ul class="button-group">
-						<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-default">new folder</a>	</li>
-						<li><a href="#modal-copy" class="copy uk-button uk-button-default">copy</a></li>
-						<li><a href="#modal-copy" class="move uk-button uk-button-default">move</a></li>
-						<li><a href="#modal-rename" class="rename uk-button uk-button-default">rename</a></li>
-						<li><a class="group-remove uk-button uk-button-danger" href="#">delete</a></li>
-					</ul>
 				</div>
 
 <!--
 <form method="post" name="filelist" action="">
 -->
 		<div class="uk-padding">
-  <div class="button-group">
-			<button id="checkAll">select all</button>
-			<button id="clearAll">clear all</button>
+  <div class="menu-file-action">
+		<ul class="button-group">
+			<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-small uk-button-default">new folder</a>	</li>
+			<li><a href="#modal-copy" class="copy uk-button uk-button-small uk-button-default">copy</a></li>
+			<li><a href="#modal-copy" class="move uk-button uk-button-small uk-button-default">move</a></li>
+			<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename</a></li>
+			<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete</a></li>
+		</ul>
+		<button id="checkAll">select all</button>
+		<button id="clearAll">clear all</button>
 	</div>
 	
 			<div class="uk-padding-small">
-				<a class="up-link btn" href="/mnt/d2">up</a>
+				<a class="up-link btn" href="/mnt/d2"><span class="icon-level-up"></span></a>
 				<span class="dirname">/mnt/d2/music</span>
 			</div>
 
