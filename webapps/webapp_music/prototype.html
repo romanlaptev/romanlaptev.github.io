@@ -36,13 +36,20 @@ var _vars = {
 	duration : 600,
 	 $offcanvas : null,
 	 $offcanvasBar : null,
-	 $offcanvasMenu : null
+	 $offcanvasMenu : null,
+	 start_scroll_pos:0,
+	 end_scroll_pos:0
 };
 console.log( _vars );
 
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
 //console.log( "-- ready" );
+
+		//--------------------- Scroll
+		//Detect top position for scroll block
+		_vars.start_scroll_pos = $("#main").offset().top + 100;
+		_vars.end_scroll_pos = _vars.start_scroll_pos - 20;
 
 		_vars.$offcanvas = $("#off-canvas2");
 		_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
@@ -51,10 +58,20 @@ if( typeof window.jQuery === "function"){
 
 		_vars.$blockTags = $("#block-tags");
 		_vars.$blockTags.hide();
-//$("#block-search").hide();
 //$("#block-player").hide();
 //$("#block-file-manager").hide();
 $(".collapse").hide();
+$("#btn-scroll-to-top").hide();
+
+
+//--------------------------------- hide input type="range" if not support
+//https://learn.javascript.ru/dom-polyfill
+var testRangeSupport = document.getElementById("page-range").type;
+//console.log( testRangeSupport );
+if( testRangeSupport !== "range"){
+	document.getElementById("page-range").style.display="none";
+}
+//---------------------------------
 
 		$("#btn-toggle-menu").on("click", function(e){
 //console.log( e.type );
@@ -91,7 +108,41 @@ $(".collapse").hide();
 			});
 		});//end event
 
+		$(".scroll-to").addClass("nolink").on("click", function(){
+			if($(this).attr("href")){
+				var id = $(this).attr("href");
+			} else {
+				var id = "#" + $(this).attr("data-target");
+			}
+//console.log("id: " , id);
+
+			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
+
+			var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
+			 start_scroll_pos = start_scroll_pos - 100;// minus height, padding #top block
+//console.log("start_scroll_pos: " , start_scroll_pos);
+
+			$('html,body').animate({
+				scrollTop: start_scroll_pos
+				}, 500);
+			return false;
+		});//end event
+		
 	});//end ready
+	
+	$(window).scroll( function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+		if ( $(this).scrollTop() > _vars.start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < _vars.end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+	});//end scroll
+	
 }
 
 // window.onload = function(){
@@ -119,11 +170,9 @@ function toggleMenu(){
 }//end toggleMenu()
 
 </script>
-
 </head>
 
 <body>
-
 <div id="top" class="header">
 	<div class="row top-bar">
 
@@ -137,7 +186,9 @@ function toggleMenu(){
 https://getuikit.com/v2/docs/offcanvas.html 
 			<a class="uk-button" href="#off-canvas2" data-uk-offcanvas="{mode: 'slide'}">Menu</a>
 -->
-			<a id="btn-toggle-menu" class="uk-button uk-button-default bg-white" href="#off-canvas2">Menu</a>
+			<a id="btn-toggle-menu" title="Menu" class="" href="#off-canvas2">
+				<span class="icon-bars"></span>
+			</a>
 		</div>
 
 		<div class="uk-float-right">
@@ -155,7 +206,6 @@ https://getuikit.com/v2/docs/offcanvas.html
 <br/>
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
-				<li><a data-toggle="#block-search" class="uk-button uk-button-default" href="#">Search</a></li>
 				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
 				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">Form new playlist</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
@@ -173,7 +223,6 @@ https://getuikit.com/v2/docs/offcanvas.html
 					<button class="uk-offcanvas-close" type="button" uk-close></button>
 					<ul class="uk-list">
 <li><button uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" class="uk-button uk-button-default w100" type="button">Tags list</button></li>
-<li><button uk-toggle="target: #block-search" class="uk-button uk-button-default w100" href="#">search</button></li>
 <li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-player" href="#">track list</a></li>
 <li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-file-manager" href="#">file manager</a></li>
 					</ul>
@@ -240,30 +289,6 @@ https://getuikit.com/v2/docs/offcanvas.html
 
 </div>
 <!-- end block-tags -->
-
-<div id="block-search" class="collapse uk-card uk-card-primary">
-		<div class="row">
-			<div class="uk-float-left uk-padding-small"><b>Search by keywords</b></div>
-			<div class="uk-float-right">
-					<a data-toggle="#block-search" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
-			</div>
-		</div>
-		
-<form name="formSearch" id="form-search" action="?q=search" method="GET">
-
-		<div class="uk-card-body">
-				<label class="uk-label">keyword:</label>
-				<input class="uk-input" name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text">
-		</div>
-	
-		<div class="uk-card-footer">
-				<button type="submit" class="uk-button uk-button-small uk-button-default">start search</button>
-				<button type="reset" class="uk-button uk-button-small uk-button-default">reset parameters</button>
-		</div>
-</form>
-
-</div>
-<!-- end block-search -->
 
 
 <div id="block-player" class="collapse">
@@ -393,27 +418,37 @@ Tag <b>audio</b> not supported by this browser....
 
 <!-- pager -->
 <div id="block-pager" class="uk-padding-small bg-lightsteelblue6">
-	<div class="">
-			total records: <b><span id="total-records">40</span></b>, 
-			number of pages: <b><span id="total-pages">4</span></b>
-	</div>
 	<div class="row">
-		<div class="block-num-page">
-			<div class="uk-float-left"><br>
-<button id="page-number-less" class="uk-button uk-button-small uk-button-primary">-</button>
-			</div>
 			<div class="uk-float-left">
-				<b>Page №:</b><br>
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="uk-float-left only-numbers form-control">
+total records: <b><span id="total-records">40</span></b>, 
+number of pages: <b><span id="total-pages">4</span></b>
 			</div>
-			<div class="uk-float-left"><br>
-<button id="page-number-more" class="uk-button uk-button-small uk-button-primary">+</button>
+			<div class="uk-float-right">
+<form name="formSearch" id="form-search" action="?q=search" method="GET">
+				<ul class="button-group">
+					<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>
+					<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><span class="icon-search"></span></button></li>
+					<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><span class="icon-remove"></span></button></li>
+				</ul>
+</form>
 			</div>
+			
+	</div>
+	
+	<div class="row">
+		<div class="block-num-page uk-float-left w20">
+			<button id="page-number-less" class="">-</button>
+			<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">
+			<button id="page-number-more" class="">+</button>
 		</div>
+		
+		<div class="uk-float-left w60 box-range">
 <input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">
+		</div>
+		
 		<div class="uk-float-right">
-			<label>sort by</label>
-			<select id="select-sort" class="form-control" autocomplete="off">
+			<label class="uk-label">sort by</label>
+			<select id="select-sort" class="" autocomplete="off">
 				<option value="title" selected="">title</option>
 				<option value="published">publication date</option>
 			</select>
@@ -994,7 +1029,7 @@ Tag <b>audio</b> not supported by this browser....
 
 
 	<div class="">
-		<button id="btn-scroll-to-top" class="uk-button uk-button-primary scroll-to" data-target="top">scroll to top</button>
+		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="main">scroll to top</button>
 	</div>
 
 </div><!-- end container -->

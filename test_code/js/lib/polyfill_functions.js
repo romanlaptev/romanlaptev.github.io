@@ -1,3 +1,12 @@
+//--------------------------------- hide input type="range" if not support
+//https://learn.javascript.ru/dom-polyfill
+var testRangeSupport = document.getElementById("page-range").type;
+console.log( testRangeSupport );
+if( testRangeSupport !== "range"){
+	document.getElementById("page-range").style.display="none";
+}
+//---------------------------------
+
 //======================= trim() polyfill (< IE8)
 
 //https://cdn.polyfill.io/v3/url-builder/

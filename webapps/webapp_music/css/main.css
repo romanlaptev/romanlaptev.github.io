@@ -56,6 +56,9 @@ padding: 20px;
 background-color: #004586;
 padding: 20px;
 }
+#btn-toggle-menu{
+	color:#fff;
+}
 
 footer {
   margin-top: 5px;
@@ -67,53 +70,18 @@ footer {
 }
 
 /* GRID */
-.w10{
-	width:10%;
-}
-
-.w20{
-	width:20%;
-}
-
-.w25{
-	width:25%;
-}
-
-.w30{
-	width:30%;
-}
-
-.w33{
-	width:33%;
-}
-
-.w50{
-	width:50%;
-}
-
-.w60{
-	width:60%;
-}
-
-.w65{
-	width:65%;
-}
-
-.w70{
-	width:70%;
-}
-
-.w80{
-	width:80%;
-}
-
-.w90{
-	width:90%;
-}
-.w100{
-	width:100%;
-}
-
+.w10{width:10%;}
+.w20{width:20%;}
+.w25{width:25%;}
+.w30{width:30%;}
+.w33{width:33%;}
+.w50{width:50%;}
+.w60{width:60%;}
+.w65{width:65%;}
+.w70{width:70%;}
+.w80{width:80%;}
+.w90{width:90%;}
+.w100{width:100%;}
 
 .row {
 	/* float: none; */
@@ -131,6 +99,35 @@ footer {
 	font-style:normal
 }
 
+[class*='icon-'] {
+  font-family: FontAwesome;
+  display: inline-block;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*='icon-'],
+[class*='icon-']:hover,
+[class*='icon-']:focus {
+  text-decoration: none;
+}
+
+.icon-search:before {
+  content: "\f002";
+}
+.icon-remove:before,
+.icon-close:before,
+.icon-times:before {
+  content: "\f00d";
+}
+.icon-navicon:before,
+.icon-reorder:before,
+.icon-bars:before {
+  content: "\f0c9";
+}
 
 /*================================*/
 
@@ -188,6 +185,45 @@ margin: 0;
 }
 
 /*============================*/
+
+/* BUTTONS */
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	
+	outline:none;
+}
+.btn-blue-c4 {
+    color: #fff;
+	background-color: #269abc;
+}
+.btn-blue-c4:hover {
+	background-color: #ff8c00;
+	color: #000 !important;
+}
+.btn-blue-c4:focus {
+	color: #fff !important;
+}
+.btn-blue-c4:active {
+	background-color: red;
+}
 
 
 /* fix UIkit */
@@ -280,7 +316,7 @@ overflow-y: auto !important;
 	bottom: 5px;
 	left: 50%;
 	margin-left: -45px;
-	display:none;
+/*	display:none !important;*/
 }
 
 #app-title {
@@ -302,9 +338,7 @@ overflow-y: auto !important;
 
 
 /*--------------------- LOAD --------------*/
-
 /* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
-
 .dm-overlay {
     position: fixed;
     top: 0;
@@ -316,8 +350,6 @@ overflow-y: auto !important;
     height: 100%;
     z-index: 1000;
 }
-
-
 
 .dm-table {
     display: table;
@@ -335,7 +367,6 @@ overflow-y: auto !important;
 
 
 .dm-modal {
-
     display: inline-block;
     max-width: 50em;
 	/*background: #607d8b;*/
@@ -356,81 +387,47 @@ overflow-y: auto !important;
 
 
 #win1 .circle-clipper .circle {
-
 	border-width: 10px;
-
 }
-
-
-
 #win1 .progress {
 	height: 20px;
 	background-color: #fff;
 	border-radius: 3px;
 }
 
-
-#pager{
-/*
-background-color:#b0c4de;
-position:fixed;
-right:20px;
-top:145px;
-z-index: 9999;
-*/
-}
-.touch #pager {
-background-color:#ccffff;
-/*position:static;*/
-}
-@media screen and (max-width:1280px) 
-{ 
-	#pager{
-		/*background-color:#def;*/
-		/*position:static;*/
-	}
+#block-playlist{
+text-align:center;
 }
 
-
-
-
+#block-pager{
+}
 
 .block-num-page {
-
-	padding: 5px;
-
+padding: 5px;
 }
 
 #page-number {
-
-display:inline;
-
+/*display:inline;*/
 width: 50px;
-
 /*margin-left:10px;*/
-margin-bottom: 5px;
-
+/*margin-bottom: 5px;*/
 text-align: center;
-
 }
 #page-number-less {
-
 /*position: relative;
-
 bottom: -3px;
-
 left: -1px;
 */
 }
 
 #page-number-more {
-
 /*position: relative;
-
 bottom: -3px;
-
 left: 1px;
 */
+}
+#block-pager .box-range {
+	padding-top: 5px;
 }
 
 
@@ -478,8 +475,7 @@ background-color: #cfdfe6;
 }
 
 
-
-#block-player .button-group li {
+.button-group li {
 	display: inline-block;
 }
 /*#block-player .list-group-item.active {
