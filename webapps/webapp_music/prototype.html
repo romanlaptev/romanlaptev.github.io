@@ -223,7 +223,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
-				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">Form new playlist</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">Create new playlist</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
 			</ul>
 		</div>
@@ -423,269 +423,234 @@ Tag <b>audio</b> not supported by this browser....
 				
 			<div class="uk-card-body">
 
-
-
-
-	
-	<div class="topmenu uk-card uk-card-primary">
-
-		<ul class="uk-list">
-					<li class="text-center">
-						<button id="btn-clear-playlist" class="uk-button uk-button-default">clear playlist</button>
-					</li>
-					<li>
-<a id="add-track" href="#modal-add-track" class="uk-button uk-button-default">Add track to playlist</a>
-					</li>
-					<li><a id="load-pls" class="uk-button uk-button-default" href="#">Load playlist from JSON</a></li>
-					<li>
-<a id="save-pls" href="#modal-save-pls" class="uk-button uk-button-default">Save playlists (JSON)</a>
-					</li>
-
-					<li>
-<a id="edit-pls" href="#modal-edit-pls" class="uk-button uk-button-default">Edit playlists</a>
-					</li>
-
-</ul>
-
-
-		<ul class="uk-list">
-					
-			
-					<li>
-		<a href="#modal-mkdir" class="mkdir uk-button uk-button-default">new folder</a>
-					</li>
-
-					<li>
-		<a href="#modal-copy" class="copy uk-button uk-button-default">copy</a>
-					</li>
-					<li>
-		<a href="#modal-copy" class="move uk-button uk-button-default">move</a>
-					</li>
-
-					<li>
-		<a href="#modal-rename" class="rename uk-button uk-button-default">rename</a>
-					</li>
-					
-			<li><a class="group-remove uk-button uk-button-danger" href="#">delete</a></li>
-		</ul>
-
-		
-	</div>
-
+				<div class="topmenu uk-card uk-card-primary uk-padding-small">
+					<ul class="button-group">
+						<li><button id="btn-clear-playlist" class="uk-button uk-button-default">clear playlist</button></li>
+						<li><a id="add-track" href="#modal-add-track" class="uk-button uk-button-default">Add track to playlist</a>	</li>
+						<li><a id="load-pls" class="uk-button uk-button-default" href="#">Load playlist from JSON</a></li>
+						<li><a id="save-pls" href="#modal-save-pls" class="uk-button uk-button-default">Save playlists (JSON)</a></li>
+						<li><a id="edit-pls" href="#modal-edit-pls" class="uk-button uk-button-default">Edit playlists</a></li>
+					</ul>
+					<ul class="button-group">
+						<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-default">new folder</a>	</li>
+						<li><a href="#modal-copy" class="copy uk-button uk-button-default">copy</a></li>
+						<li><a href="#modal-copy" class="move uk-button uk-button-default">move</a></li>
+						<li><a href="#modal-rename" class="rename uk-button uk-button-default">rename</a></li>
+						<li><a class="group-remove uk-button uk-button-danger" href="#">delete</a></li>
+					</ul>
+				</div>
 
 <!--
 <form method="post" name="filelist" action="">
 -->
-		<div class="uk-card uk-card-default">
+		<div class="uk-padding">
   <div class="button-group">
 			<button id="checkAll">select all</button>
 			<button id="clearAll">clear all</button>
 	</div>
 	
-			<div class="uk-breadcrumb">
+			<div class="uk-padding-small">
 				<a class="up-link btn" href="/mnt/d2">up</a>
 				<span class="dirname">/mnt/d2/music</span>
 			</div>
 
 			<div class="wfm">
-				<div id="listing">
-
 					<div class="folders-list">
 						<ul class="uk-list">
 							<li>
 								<input name="file[]" value="E" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/E"><small>+</small> E</a>
+								<a class="subfolder" href="/mnt/d2/music/E"><span class="icon-folder"></span> E</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0"><small>+</small> 0</a>
+								<a class="subfolder" href="/mnt/d2/music/0"><span class="icon-folder"></span> 0</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_classic_music" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_classic_music"><small>+</small> 0_classic_music</a>
+								<a class="subfolder" href="/mnt/d2/music/0_classic_music"><span class="icon-folder"></span> 0_classic_music</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_covers" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_covers"><small>+</small> 0_covers</a>
+								<a class="subfolder" href="/mnt/d2/music/0_covers"><span class="icon-folder"></span> 0_covers</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_folk, chant" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_folk, chant"><small>+</small> 0_folk, chant</a>
+								<a class="subfolder" href="/mnt/d2/music/0_folk, chant"><span class="icon-folder"></span> 0_folk, chant</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_Jazz and swing" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_Jazz and swing"><small>+</small> 0_Jazz and swing</a>
+								<a class="subfolder" href="/mnt/d2/music/0_Jazz and swing"><span class="icon-folder"></span> 0_Jazz and swing</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_marshes, hymnes" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_marshes, hymnes"><small>+</small> 0_marshes, hymnes</a>
+								<a class="subfolder" href="/mnt/d2/music/0_marshes, hymnes"><span class="icon-folder"></span> 0_marshes, hymnes</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_playlists" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_playlists"><small>+</small> 0_playlists</a>
+								<a class="subfolder" href="/mnt/d2/music/0_playlists"><span class="icon-folder"></span> 0_playlists</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_soundtracks" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_soundtracks"><small>+</small> 0_soundtracks</a>
+								<a class="subfolder" href="/mnt/d2/music/0_soundtracks"><span class="icon-folder"></span> 0_soundtracks</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="0_trance,rave,electronic" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/0_trance,rave,electronic"><small>+</small> 0_trance,rave,electronic</a>
+								<a class="subfolder" href="/mnt/d2/music/0_trance,rave,electronic"><span class="icon-folder"></span> 0_trance,rave,electronic</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="A" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/A"><small>+</small> A</a>
+								<a class="subfolder" href="/mnt/d2/music/A"><span class="icon-folder"></span> A</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="B" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/B"><small>+</small> B</a>
+								<a class="subfolder" href="/mnt/d2/music/B"><span class="icon-folder"></span> B</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="C" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/C"><small>+</small> C</a>
+								<a class="subfolder" href="/mnt/d2/music/C"><span class="icon-folder"></span> C</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="CH" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/CH"><small>+</small> CH</a>
+								<a class="subfolder" href="/mnt/d2/music/CH"><span class="icon-folder"></span> CH</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="D" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/D"><small>+</small> D</a>
+								<a class="subfolder" href="/mnt/d2/music/D"><span class="icon-folder"></span> D</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="EU" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/EU"><small>+</small> EU</a>
+								<a class="subfolder" href="/mnt/d2/music/EU"><span class="icon-folder"></span> EU</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="F" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/F"><small>+</small> F</a>
+								<a class="subfolder" href="/mnt/d2/music/F"><span class="icon-folder"></span> F</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="G" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/G"><small>+</small> G</a>
+								<a class="subfolder" href="/mnt/d2/music/G"><span class="icon-folder"></span> G</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="H" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/H"><small>+</small> H</a>
+								<a class="subfolder" href="/mnt/d2/music/H"><span class="icon-folder"></span> H</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="I" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/I"><small>+</small> I</a>
+								<a class="subfolder" href="/mnt/d2/music/I"><span class="icon-folder"></span> I</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="J" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/J"><small>+</small> J</a>
+								<a class="subfolder" href="/mnt/d2/music/J"><span class="icon-folder"></span> J</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="K" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/K"><small>+</small> K</a>
+								<a class="subfolder" href="/mnt/d2/music/K"><span class="icon-folder"></span> K</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="L" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/L"><small>+</small> L</a>
+								<a class="subfolder" href="/mnt/d2/music/L"><span class="icon-folder"></span> L</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="M" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/M"><small>+</small> M</a>
+								<a class="subfolder" href="/mnt/d2/music/M"><span class="icon-folder"></span> M</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="N" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/N"><small>+</small> N</a>
+								<a class="subfolder" href="/mnt/d2/music/N"><span class="icon-folder"></span> N</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="O" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/O"><small>+</small> O</a>
+								<a class="subfolder" href="/mnt/d2/music/O"><span class="icon-folder"></span> O</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="P" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/P"><small>+</small> P</a>
+								<a class="subfolder" href="/mnt/d2/music/P"><span class="icon-folder"></span> P</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="Q" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/Q"><small>+</small> Q</a>
+								<a class="subfolder" href="/mnt/d2/music/Q"><span class="icon-folder"></span> Q</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="R" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/R"><small>+</small> R</a>
+								<a class="subfolder" href="/mnt/d2/music/R"><span class="icon-folder"></span> R</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="S" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/S"><small>+</small> S</a>
+								<a class="subfolder" href="/mnt/d2/music/S"><span class="icon-folder"></span> S</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="SH" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/SH"><small>+</small> SH</a>
+								<a class="subfolder" href="/mnt/d2/music/SH"><span class="icon-folder"></span> SH</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="T" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/T"><small>+</small> T</a>
+								<a class="subfolder" href="/mnt/d2/music/T"><span class="icon-folder"></span> T</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="U" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/U"><small>+</small> U</a>
+								<a class="subfolder" href="/mnt/d2/music/U"><span class="icon-folder"></span> U</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="V" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/V"><small>+</small> V</a>
+								<a class="subfolder" href="/mnt/d2/music/V"><span class="icon-folder"></span> V</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="W" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/W"><small>+</small> W</a>
+								<a class="subfolder" href="/mnt/d2/music/W"><span class="icon-folder"></span> W</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="X" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/X"><small>+</small> X</a>
+								<a class="subfolder" href="/mnt/d2/music/X"><span class="icon-folder"></span> X</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="Y" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/Y"><small>+</small> Y</a>
+								<a class="subfolder" href="/mnt/d2/music/Y"><span class="icon-folder"></span> Y</a>
 							</li>
 						
 							<li>
 								<input name="file[]" value="Z" type="checkbox">
-								<a class="subfolder" href="/mnt/d2/music/Z"><small>+</small> Z</a>
+								<a class="subfolder" href="/mnt/d2/music/Z"><span class="icon-folder"></span> Z</a>
 							</li>
 						</ul>
 					</div>
 
 					<div class="files-list">
-						<ul class="file-tpl">
+						<ul class="uk-list">
 							<li>
 								<div class="file">
 									<input name="file[]" value="log.txt" type="checkbox">
@@ -715,14 +680,6 @@ Tag <b>audio</b> not supported by this browser....
 							</li>
 						</ul>
 					</div>
-
-				</div>
-<!--
-			<iframe id="filelist" 
-			width="100%" height="100%" 
-			name="filelist" 
-			src=""></iframe>
--->
 				
 			</div><!-- /wfm -->
 	
