@@ -128,6 +128,18 @@ footer {
 .icon-bars:before {
   content: "\f0c9";
 }
+.icon-folder:before {
+  content: "\f07b";
+  margin: 5px;
+}
+.icon-folder-open:before {
+  content: "\f07c";
+  margin: 5px;
+}
+
+/*.subfolder > small {
+  content: "\f07b";
+}*/
 
 /*================================*/
 
