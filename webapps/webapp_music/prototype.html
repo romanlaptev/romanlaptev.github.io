@@ -65,7 +65,7 @@ if( typeof window.jQuery === "function"){
 //$("#block-player").hide();
 //$("#block-file-manager").hide();
 $(".collapse").hide();
-//$("#block-playlist").show();
+//$("#block-nodelist").show();
 $("#btn-scroll-to-top").hide();
 
 
@@ -208,7 +208,7 @@ https://getuikit.com/v2/docs/offcanvas.html
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
-				<li><a data-toggle="#block-playlist" class="uk-button uk-button-default" href="#">Playlists</a></li>
+				<li><a data-toggle="#block-nodelist" class="uk-button uk-button-default" href="#">Playlists</a></li>
 				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
 			</ul>
@@ -288,7 +288,7 @@ Tag <b>audio</b> not supported by this browser....
 			<div class="wrapper">
 				<div class="row">
 					<div class="uk-float-left">
-						<h4>Music tracks</h4>
+						<h4>new playlist</h4>
 					</div>
 					<div class="uk-float-right">
 							<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
@@ -418,14 +418,17 @@ Tag <b>audio</b> not supported by this browser....
 		
 			<div class="">
 				<ul class="menu-file-action button-group">
+					<button id="checkAll">select all</button>
+					<button id="clearAll">clear all</button>
+<!--
 					<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-small uk-button-default">new folder</a>	</li>
 					<li><a href="#modal-copy" class="copy uk-button uk-button-small uk-button-default">copy</a></li>
 					<li><a href="#modal-copy" class="move uk-button uk-button-small uk-button-default">move</a></li>
-					<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename</a></li>
-					<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete</a></li>
+-->
+					<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>
+					<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete selected</a></li>
+					<li><a href="#modal-" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>
 				</ul>
-				<button id="checkAll">select all</button>
-				<button id="clearAll">clear all</button>
 			</div>
 	
 			<div class="uk-padding-small">
@@ -675,7 +678,7 @@ Tag <b>audio</b> not supported by this browser....
 
 
 
-<div id="block-playlist" class="uk-card uk-card-default">
+<div id="block-nodelist" class="uk-card uk-card-default">
 
 <!-- pager -->
 <div id="block-pager" class="uk-padding-small bg-lightsteelblue6">

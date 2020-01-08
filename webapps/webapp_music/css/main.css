@@ -426,7 +426,7 @@ overflow-y: auto !important;
 	border-radius: 3px;
 }
 
-#block-playlist{
+#block-nodelist{
 text-align:center;
 }
 
@@ -488,7 +488,7 @@ background-color: #cfdfe6;
 
 
 /*
-#block-playlist {
+#block-nodelist {
 	position: fixed;
 	left: 0;
 	top: 100px;
@@ -501,7 +501,7 @@ background-color: #cfdfe6;
 	border: 1px solid;
 }
 
-#block-playlist .uk-list li {
+#block-nodelist .uk-list li {
 	display: inline-block;
 }
 

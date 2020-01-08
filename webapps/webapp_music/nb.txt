@@ -2,7 +2,7 @@
 	- module localStorage
 	- module fileManager
 	- module mediaPlayer
-	- module playLists (nodeList?)
+	- module nodeList (playLists?)
 	
 ============================== EXPORT
 <xroot>
