@@ -1,3 +1,9 @@
+- object App
+	- module localStorage
+	- module fileManager
+	- module mediaPlayer
+	- module playLists
+	
 ============================== EXPORT
 <xroot>
 	<database name="music">
