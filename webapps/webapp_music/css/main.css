@@ -534,9 +534,13 @@ background-color:#87cefa;
 /*background-color: #b1d0ef;
 border: 1px solid #004586;*/
 
-	padding: 10px;
+	padding: 5px;
 	margin: 5px;
 	z-index: 999;
+}
+#block-tracklist .wrapper {
+	border: 1px solid #004586;
+	padding: 10px;
 }
 
 .list-group-item {
@@ -557,4 +561,9 @@ border: 1px solid #004586;*/
 .uk-list-striped > li:nth-of-type(2n+1) {
 	/* background: #e9f0f0; */
 	background-color: #dee4ef;
+}
+
+#block-file-manager .wrapper {
+	border: 1px solid #5392ce;
+	padding: 5px;
 }
