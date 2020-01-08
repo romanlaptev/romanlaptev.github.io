@@ -65,6 +65,7 @@ if( typeof window.jQuery === "function"){
 //$("#block-player").hide();
 //$("#block-file-manager").hide();
 $(".collapse").hide();
+//$("#block-playlist").show();
 $("#btn-scroll-to-top").hide();
 
 
@@ -91,7 +92,6 @@ if( testRangeSupport !== "range"){
 		_vars.$offcanvasMenu.on("click", function(e){
 //console.log( e.target );
 			$(".collapse").hide();
-			
 //console.log( $( e.target ).data()  );
 			var _target = $( e.target ).data("toggle");
 //console.log( _target );
@@ -104,7 +104,6 @@ if( testRangeSupport !== "range"){
 		
 	_vars.$closeButtons.on("click", function(e){
 //console.log( e.target );
-
 			var _target = $( e.target ).data("toggle");
 //console.log( _target );
 			$( _target ).slideToggle( _vars.duration , function(e){
@@ -135,30 +134,17 @@ if( testRangeSupport !== "range"){
 	});//end ready
 	
 	$(window).scroll( function() {
-
 //var st = $(window).scrollTop();
-
 //document.title = st;
-
 //console.log ("scrollTop = " + st );
-
 		if ( $(this).scrollTop() > _vars.start_scroll_pos  ) {
-
 			$("#btn-scroll-to-top").show();
-
 		} 
 
-
-
 		if ( $(this).scrollTop() < _vars.end_scroll_pos ) {
-
 			$("#btn-scroll-to-top").hide();
-
 		}
-
 	});//end scroll
-
-	
 }
 
 // window.onload = function(){
@@ -170,7 +156,6 @@ if( testRangeSupport !== "range"){
 // }//end load
 
 function toggleMenu(){
-	
 	var _w = parseInt( _vars.$offcanvasBar.css("width") );
 //console.log( _vars.$offcanvasBar.css("width"), _w);
 	
@@ -223,7 +208,8 @@ https://getuikit.com/v2/docs/offcanvas.html
 			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
 				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
-				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">Create new playlist</a></li>
+				<li><a data-toggle="#block-playlist" class="uk-button uk-button-default" href="#">Playlists</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
 				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
 			</ul>
 		</div>
@@ -250,6 +236,111 @@ https://getuikit.com/v2/docs/offcanvas.html
 	<div id="main" class="" >
 		
 		
+<div id="block-player">
+	<div class="uk-card uk-card-default">
+
+		<div class="row">
+			<div class="uk-float-right">
+					<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+		
+		<div class="uk-card-body w60">
+			<div>
+				<b>Yankee_doodle.mp3</b><br>
+				<audio controls="controls" class="w100">
+						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
+Tag <b>audio</b> not supported by this browser.... 
+				</audio>
+			</div>
+			
+			<div class="uk-hidden">
+<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
+				<video id="player1" controls="controls" src="" width="640" height="385">
+						<source src="">
+						Tag <b>video</b> not supported by this browser.... 
+				</video>
+			</div>
+			
+			<div id="player-buttons">
+<!--
+				<span id="video1-current">00:00</span>
+				<span id="video1-duration">00:00</span>
+				
+				<button id="btn-play" class="btn btn-primary">play</button>
+				<button id="btn-pause" class="btn btn-info">pause</button>
+				<a href="?q=stop-play" class="btn btn-danger">stop</a>
+				
+				<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+				<a href="?q=next-track" class="btn btn-primary">next track</a>
+-->
+				<ul class="button-group uk-list">
+					<button id="btn-play" class="uk-button uk-button-small uk-button-default">play</button>
+					<button id="btn-pause" class="uk-button uk-button-small uk-button-default">pause</button>
+					<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>
+					<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div id="block-tracklist" class="">
+			<div class="">
+				<div class="row">
+					<div class="uk-float-left">
+						<h4>Music tracks</h4>
+					</div>
+					<div class="uk-float-right">
+							<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+					</div>
+				</div>
+				
+				<div class="pls-buttons">
+					<ul class="menu-track-action button-group uk-list">
+						<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>
+						<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>
+						<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>
+						<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>
+					</ul>
+				</div>
+				
+				<div class="">
+				
+					<ul id="playlist" class="list-unstyled">
+						<li class="list-group-item">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="" href="#?q=edit-track&amp;num=0">edit</a> | 
+									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item active">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="" href="#?q=edit-track&amp;num=0">edit</a> | 
+									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+			
+		</div>
+			
+	</div>
+</div>
+<!-- end block-player -->
+
+
 <!-- block-tags -->
 <div id="block-tags"  class="collapse">
 
@@ -306,108 +397,6 @@ https://getuikit.com/v2/docs/offcanvas.html
 </div>
 <!-- end block-tags -->
 
-
-<div id="block-player" class="collapse">
-	<div class="uk-card uk-card-default">
-
-		<div class="row">
-			<div class="uk-float-right">
-					<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
-			</div>
-		</div>
-		
-		<div class="uk-card-body w60">
-			<div>
-				<b>Yankee_doodle.mp3</b><br>
-				<audio controls="controls" class="w100">
-						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
-Tag <b>audio</b> not supported by this browser.... 
-				</audio>
-			</div>
-			
-			<div class="uk-hidden">
-<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
-				<video id="player1" controls="controls" src="" width="640" height="385">
-						<source src="">
-						Tag <b>video</b> not supported by this browser.... 
-				</video>
-			</div>
-			
-			<div id="player-buttons">
-<!--
-				<span id="video1-current">00:00</span>
-				<span id="video1-duration">00:00</span>
-				
-				<button id="btn-play" class="btn btn-primary">play</button>
-				<button id="btn-pause" class="btn btn-info">pause</button>
-				<a href="?q=stop-play" class="btn btn-danger">stop</a>
-				
-				<a href="?q=prev-track" class="btn btn-primary">prev track</a>
-				<a href="?q=next-track" class="btn btn-primary">next track</a>
--->
-				<ul class="button-group uk-list">
-					<button id="btn-play" class="uk-button uk-button-small uk-button-default">play</button>
-					<button id="btn-pause" class="uk-button uk-button-small uk-button-default">pause</button>
-					<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>
-					<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>
-				</ul>
-			</div>
-		</div>
-
-
-		<div id="block-tracklist" class="">
-			<div class="">
-				<div class="row">
-					<div class="uk-float-left">
-						<h4>Track list</h4>
-					</div>
-					<div class="uk-float-right">
-							<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
-					</div>
-				</div>
-				
-				<div class="pls-buttons">
-					<ul class="button-group uk-list">
-						<li><a href="?q=clear-playlist" class="uk-button uk-button-danger uk-button-small">clear playlist</a></li>
-						<li><a href="?q=ins-track" title="insert track (local file or url" class="uk-button uk-button-primary uk-button-small">insert track</a></li>
-					</ul>
-				</div>
-				
-				<div class="">
-				
-					<ul id="playlist" class="list-unstyled">
-						<li class="list-group-item">
-							<div class="uk-clearfix">
-								<div class="uk-float-left">
-									<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
-								</div>
-								<div class="uk-float-right">
-									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
-								</div>
-							</div>
-						</li>
-						<li class="list-group-item active">
-							<div class="uk-clearfix">
-								<div class="uk-float-left">
-									<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
-								</div>
-								<div class="uk-float-right">
-									<a class="" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
-								</div>
-							</div>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
-			
-		</div>
-			
-	</div>
-</div>
-<!-- end block-player -->
-
-
 <!-- block-file-manager -->
 <div id="block-file-manager" class="collapse">
 		<div class="uk-card uk-card-default">
@@ -421,33 +410,23 @@ Tag <b>audio</b> not supported by this browser....
 			</div>
 		</div>
 				
-			<div class="uk-card-body">
-
-				<div class="topmenu uk-card uk-card-primary uk-padding-small">
-					<ul class="button-group">
-						<li><button id="btn-clear-playlist" class="uk-button uk-button-default">clear playlist</button></li>
-						<li><a id="add-track" href="#modal-add-track" class="uk-button uk-button-default">Add track to playlist</a>	</li>
-						<li><a id="load-pls" class="uk-button uk-button-default" href="#">Load playlist from JSON</a></li>
-						<li><a id="save-pls" href="#modal-save-pls" class="uk-button uk-button-default">Save playlists (JSON)</a></li>
-						<li><a id="edit-pls" href="#modal-edit-pls" class="uk-button uk-button-default">Edit playlists</a></li>
-					</ul>
-				</div>
-
+			<div class="uk-card-body uk-padding-small">
 <!--
 <form method="post" name="filelist" action="">
 -->
-		<div class="uk-padding">
-  <div class="menu-file-action">
-		<ul class="button-group">
-			<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-small uk-button-default">new folder</a>	</li>
-			<li><a href="#modal-copy" class="copy uk-button uk-button-small uk-button-default">copy</a></li>
-			<li><a href="#modal-copy" class="move uk-button uk-button-small uk-button-default">move</a></li>
-			<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename</a></li>
-			<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete</a></li>
-		</ul>
-		<button id="checkAll">select all</button>
-		<button id="clearAll">clear all</button>
-	</div>
+		<div class="uk-padding-small">
+		
+			<div class="">
+				<ul class="menu-file-action button-group">
+					<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-small uk-button-default">new folder</a>	</li>
+					<li><a href="#modal-copy" class="copy uk-button uk-button-small uk-button-default">copy</a></li>
+					<li><a href="#modal-copy" class="move uk-button uk-button-small uk-button-default">move</a></li>
+					<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename</a></li>
+					<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete</a></li>
+				</ul>
+				<button id="checkAll">select all</button>
+				<button id="clearAll">clear all</button>
+			</div>
 	
 			<div class="uk-padding-small">
 				<a class="up-link btn" href="/mnt/d2"><span class="icon-level-up"></span></a>
@@ -455,8 +434,7 @@ Tag <b>audio</b> not supported by this browser....
 			</div>
 
 			<div class="wfm">
-					<div class="folders-list">
-						<ul class="uk-list">
+						<ul class="folders-list uk-list uk-list-striped">
 							<li>
 								<input name="file[]" value="E" type="checkbox">
 								<a class="subfolder" href="/mnt/d2/music/E"><span class="icon-folder"></span> E</a>
@@ -647,10 +625,8 @@ Tag <b>audio</b> not supported by this browser....
 								<a class="subfolder" href="/mnt/d2/music/Z"><span class="icon-folder"></span> Z</a>
 							</li>
 						</ul>
-					</div>
 
-					<div class="files-list">
-						<ul class="uk-list">
+						<ul class="files-list uk-list uk-list-striped">
 							<li>
 								<div class="file">
 									<input name="file[]" value="log.txt" type="checkbox">
@@ -679,7 +655,6 @@ Tag <b>audio</b> not supported by this browser....
 								</div>
 							</li>
 						</ul>
-					</div>
 				
 			</div><!-- /wfm -->
 	
