@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>music file manager</title>
+	<link rel="stylesheet" href="css/musFM.css">
+	<link rel="stylesheet" href="css/bootstrap232.min.css"/>	
+	
+<!--
+	<link rel="stylesheet" href="/fonts/css/fonts.css"/>	
+-->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap232.js"></script>	
+
+<link href="jQuery.jPlayer.2.5.0/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="jQuery.jPlayer.2.5.0/js/jplayer.playlist.min.js"></script>
+
+<link rel="stylesheet" href="css/player_style.css">
+
+<script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/musFM.js"></script>
+
+<script src="js/jquery-ui_1.12.1.min.js" type="text/javascript"></script>
+<!--
+<link type="text/css" href="js/plugins/jquery-ui-1.8.9.custom.css" rel="stylesheet" />
+<script type="text/javascript">
+$(function(){
+  $("#sortable").sortable();
+});
+</script>
+-->
+</head>
+
+<body>
+	<div class="container container-fluid">
+
+	<div class="row-fluid topmenu">
+
+		<ul class="nav nav-tabs span6">
+			  <li class="view-media-player active"><a href="#">Player</a></li>
+			  <li class="view-file-panel"><a  href="#">Files</a></li>
+<!--
+			<button id="btn-load-filelist" class="btn btn-success">Load filelist</button>
+-->			
+			<li class="dropdown pull-right">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage playlists
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li class="text-center">
+						<button id="btn-clear-playlist" class="btn btn-info">clear playlist</button>
+					</li>
+					<li>
+<a id="add-track" href="#modal-add-track" role="button" data-toggle="modal" data-keyboard="true">Add track to playlist</a>
+					</li>
+					<li><a id="load-pls" href="#">Load playlist from JSON</a></li>
+					<li>
+<a id="save-pls" href="#modal-save-pls" role="button" data-toggle="modal" data-keyboard="true">Save playlists (JSON)</a>
+					</li>
+<!--					
+					<li>
+<a id="edit-pls" href="#modal-edit-pls" role="button" data-toggle="modal" data-keyboard="true">Edit playlists</a>
+					</li>
+-->
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="span6 inline">
+					
+			<button id="clear-log" class="clear-log btn btn-warning">clear log</button>
+					<li>
+		<a href="#modal-mkdir" role="button" class="mkdir btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">new folder</a>
+					</li>
+
+					<li>
+		<a href="#modal-copy" role="button" class="copy btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">copy</a>
+					</li>
+					<li>
+		<a href="#modal-copy" role="button" class="move btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">move</a>
+					</li>
+
+					<li>
+		<a href="#modal-rename" role="button" class="rename btn btn-primary" 
+		data-toggle="modal" data-keyboard="true">rename</a>
+					</li>
+					
+			<li><a class="group-remove btn btn-danger" href="#">delete</a></li>
+		</ul>
+
+		
+	</div>
+
+
+<div class="row-fluid panels">
+	<div class="span6 left-panel">
+
+<!-- ################################## player -->
+		<div id="jp_container_N" class="jp-video jp-video-270p">
+			<h5 id="playlist-title" class="text-center">&nbsp;</h5>
+			<div class="jp-type-playlist">
+				<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+				<div class="jp-gui">
+					<div class="jp-video-play">
+						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+					</div>
+					<div class="jp-interface">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+						<div class="jp-controls-holder">
+							<ul class="jp-controls">
+								<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+								<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+							</ul>
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+							<ul class="jp-toggles">
+								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+								<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+								<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+							</ul>
+						</div>
+						<div class="jp-title">
+							<ul>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="jp-playlist">
+					<ul>
+						<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+						<li></li>
+					</ul>
+				</div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+				</div>
+			</div>
+<!--			
+<div class="row panel-buttons">
+	<div class="offset1">
+		<ul>
+			<button id="btn-load-filelist" class="btn btn-success">Load filelist</button>
+			<button id="btn-load-pls" class="btn btn-info">Load playlist from JSON</button>
+		</ul>
+	</div>
+</div>
+-->
+		</div>
+<!-- ################################## /player -->
+
+
+	</div><!-- #left-panel-->
+
+
+	<div class="span6 right-panel active-panel">
+<!--
+<form method="post" name="filelist" action="">
+-->
+		<div class="files">
+
+			<div class="">
+				<a class="up-link btn" href="#">up</a>
+				<span class="dirname"></span>
+			</div>
+
+			<div class="wfm">
+				<div id="listing">
+
+					<div class="folders-list">
+						<ul class="subfolder-tpl">
+							<li>
+								<input type="checkbox" name="file[]" value="sname">
+								<a class="subfolder" href="#"><small>+</small> sname</a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="files-list">
+						<ul class="file-tpl">
+							<li>
+								<div class="file">
+									<input type="checkbox" name="file[]" value="fname">
+									<a href="#" target="_blank">fname</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+<!--
+			<iframe id="filelist" 
+			width="100%" height="100%" 
+			name="filelist" 
+			src=""></iframe>
+-->
+				
+			</div><!-- /wfm -->
+			
+			<div class="btn-group">
+				<button id="checkAll">select all</button>
+				<button id="clearAll">clear all</button>
+			</div>
+
+		</div><!-- /files -->
+<!-- 
+		<input type="submit" value="submit">
+	</form> 
+-->
+	</div><!-- /right-panel -->
+
+</div><!-- /panels -->
+
+
+		<div id="log" class=""></div>
+
+	</div><!-- /container -->
+
+<footer class="container-fluid text-center">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+<!--				
+				<ul class="nav navbar-nav navbar-right">
+<li><a class="" href="musFM.html" target="_self">form playlist with music file manager</a></li>
+				</ul>
+-->      
+			</div>
+		</div>
+</footer>
+	
+<!-- MODAL DIALOG WINDOW -->
+	<div class="modal hide" id="modal-copy" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3><span class="file-op">copy</span> file</h3>
+		</div>
+		<div class="modal-body">
+			<div class="row-fluid">  
+			  <div class="span2">from:</div>
+			  <div class="span7"><input type="text" name="src_folder" value=""></div> 
+			</div>
+			  
+			<div class="row-fluid">  
+				<div class="span2">to:</div>
+				<div class="span7"><input type="text" name="dst_folder" value=""></div>
+				<div class="span3">
+					<a class="btn-large btn-primary action-btn" href="#">
+						<span class="file-op">copy</span>
+					</a>
+				</div>
+			</div>
+			<input type="hidden" name="movefiles" value="0">
+			
+		</div>
+	</div>
+
+	<div class="modal hide" id="modal-rename" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>change filename</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+<input type="hidden" disabled name="old_name" value="">
+enter new name: <input type="text" name="new_name" value="">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">rename</a>
+			</div>
+		</div>
+	</div>
+
+	<div 
+class="modal hide fade" 
+id="modal-mkdir" 
+role="dialog" 
+tabindex='-1' 
+aria-labelledby="myModalLabel" 
+aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3 id="myModalLabel">create new folder</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+Enter folder name: <input type="text" name="new_name" value="">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">create</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal hide" id="modal-load-pls" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Load playlist</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+enter file name: 
+<input type="text" name="filename" value="" autocomplete="off">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">load</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal hide" id="modal-save-pls" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Save playlist</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left">
+enter new name: 
+<input type="text" name="new_name" value="" autocomplete="off">
+<!--
+<input type="text" name="new_name" readonly onfocus="this.removeAttribute('readonly')" value="newplaylist.json">
+-->
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">save</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="modal-edit-pls" class="modal hide" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Edit track</h3>
+			<input type="hidden" name="trackNum" value="">			
+		</div>
+		
+		<div class="modal-body text-center">
+			<div class="row-fluid">  
+			  <div class="span1">Title:</div>
+			  <div class="span10"><input type="text" name="trackTitle" value=""></div> 
+			</div>
+			  
+			<div class="row-fluid">  
+				<div class="span1">Url:</div>
+				<div class="span10"><input type="text" name="trackUrl" value=""></div>
+			</div>
+			
+			<a href="#" class="btn btn-primary action-btn">apply changes</a>
+		</div>
+	</div><!-- end modal-edit-pls -->
+	
+<!--
+	<div class="modal hide" id="modal-add-track" role="dialog" tabindex='-1'>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h3>Add track to playlist</h3>
+		</div>
+		<div class="modal-body">
+			<div class="pull-left span4">
+<input type="text" name="track" value="" class="span4">
+			</div>
+			<div class="pull-left">
+				<a href="#" class="btn btn-primary action-btn">ok</a>
+			</div>
+		</div>
+	</div>
+-->
+
+</body>
+</html>

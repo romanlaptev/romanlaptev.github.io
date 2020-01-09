@@ -9,6 +9,17 @@
 <!--	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="../../../css/bootstrap335.min.css">
 	<link rel="stylesheet" href="../../../css/shared.css">
+	<style>
+.log-panel {
+	position: static;
+}
+
+#log{
+	height: 400px;
+	overflow-y: auto;	
+}
+	</style>
+	
 	<script src="../lib/shared_functions.js"></script>
 <script>
 	var func = sharedFunc();
@@ -16,7 +27,7 @@ console.log("func:", func);
 var logMsg;
 
 window.onload = function(){
-	func.log( "<h3>"+navigator.userAgent +"</h3>");
+	func.logAlert( navigator.userAgent ,"info");
 	
 	if( flashEnabled() ){
 		logMsg = "Adobe Flash supported...";

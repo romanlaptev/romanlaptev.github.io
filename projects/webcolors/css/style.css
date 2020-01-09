@@ -1,0 +1,75 @@
+.block{
+width:80px;
+height:80px;
+
+margin:3px;
+pagging:3px;
+
+float:left;
+
+color:#fff;
+text-align:center;
+font-size:80%;
+}
+
+/*==================LOG===========*/
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+background-color: #b0c4de;
+position: fixed;
+top: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+border-radius: 4px;
+}
+
+.log-panel .panel-body{
+	padding: 0;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+#log h3{
+margin: 0;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+/*
+.alert-info {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+.alert-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+*/

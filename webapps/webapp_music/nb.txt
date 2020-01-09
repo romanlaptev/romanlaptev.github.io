@@ -1,3 +1,219 @@
+============================== EXPORT
+<xroot>
+	<database name="music">
+	
+	<tag_groups>
+		<group vid=".." name="alphabetical_voc"></tag>		
+	</tag_groups>
+	
+	<taglist>
+		<tag tid=".." vid=".." group_name="music_style"></tag>		
+		.....
+	</taglist>
+
+<node type="playlist">
+	<title>
+		<item>Metallica</item>
+	</title>
+	
+	<images>
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
+....		
+	</images>
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1019">music.yandex.ru</a></li>
+....		
+	</related_links>
+	
+	<tags>
+		<item group_name="music_styles">thrash</item>
+....		
+	</tags>
+	
+	<description></description>
+	
+	<created format="d-M-Y H:i:s">11-March-2017</created>
+	<updated format="d-M-Y H:i:s">20-Jul-2019 22:38:46</updated>
+</node>
+
+	</database>
+</xroot>
+----------------------------		
+
+<xroot>
+	<database name="video">
+	<taglist>
+		<tag tid="4" vid="2" name="драма"></tag>		
+		.....
+	</taglist>
+<node type="video">
+	<title>
+		<item lang="ru">Аргентина. Интервью с мёртвым наркодилером</item>
+		<item lang="en">.....</item>
+	</title>
+	
+	<producer></producer>
+	<roles></roles>
+	<description></description>
+	
+	<images>
+		<img src="https://i.ytimg.com/vi/eeeYo2h41pE/sddefault.jpg"/>
+....		
+	</images>
+
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/eeeYo2h41pE">Youtube embed video in new tab</a></li>
+		<li><a data-type="external-link" title="go to Youtube" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
+	</related_links>
+
+	<tags>
+		<item tid="4" name="драма"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">24-Sep-2012 09:28:16</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">20-Jul-2019 22:38:46</updated>
+</node>
+	</database>
+</xroot>
+
+----------------------------
+<xroot>
+	<database name="lib">
+	<taglist>
+		<tag tid="7" vid="2" name="biography"></tag>
+		<tag tid="8" vid="2" name="classical prose"></tag>		
+		<tag tid="9" vid="2" name="criminal"></tag>		
+		<tag tid="11" vid="2" name="словари, справочники"></tag>		
+		.....
+	</taglist>
+
+<node nid="1480" mlid="1455" plid="1870" type="library_book"  weight="-15">
+	<title>
+		<item>Туннель в небе</item>
+		<item type="bookname">Туннель в небе</item>
+....		
+	</title>
+	
+	<description></description>
+	<author>Хайнлайн Роберт</author>
+	
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/lib/books/H/Heinlein.Robert/....txt">....txt</a></li>
+		<li><a data-type="external-link" href="....">....</a></li>
+	</related_links>
+	
+	<tags>
+		<item tid="7" name="biography"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">28-Jul-2013 19:19:23</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">17-Aug-2014 20:25:24</updated>
+</node>
+	</database>
+</xroot>
+	
+============================== IMPORT
+*- добавить поле в материал "плейлист"
+<related_links>
+	<a href="https://music.yandex.ru/users/roman-laptev/playlists/1020">music.yandex.ru</a>
+</related_links>
+
+
+
+*- сделать импорт существующих плейлистов (list.xml) в БД music.sqlite
+результат импорта - добавление новых нод типа "плейлист"
+
+- треки плейлиста пока хранятся в файлах из  0_playlist/*.json
+
+----??????
+?- сделать загрузку треков плейлиста в книгу Drupal 
+из json-файла, 
+из списка указанной директории
+
+1) Имя книги-подшивки (плейлист), destination
+2) Название json-файла (папка ФС), source
+
+файлы-треки импортируются в поле field_url как ссылки
+<a 
+data-type="local-file" 
+href="/music/M/Manowar/1982 - Battle Hymns_Dark Avenger.mp3">
+1982 - Battle Hymns_Dark Avenger</a>
+
+============================== TAXONOMY
+- добавить группы плейлистов, к-рые могут включать плейлисты и отдельные треки
+аналог - книги-подшивки в CMS Drupal
+вариант - плейлисты могут включать в себя вложенные плейлисты
+
+
+----
+- определить HTML-блоки с таксономией, иерархическими подшивками
+HierarchyList -->	group playlists --> playlist (tracklist as list URL)
+
+	<tags>
+		<item name="alphabetical_list">M</item>
+		<item name="music_genre">Rock</item>
+		<item name="music_format">soundtrack, aria, live, studio album, collection</item>
+		<item name="music_style">thrash-metal</item>
+		<item name="music_band">Metallica</item>
+		<item name="music_author"></item>
+		<item name="file_format">avi</item>
+		<item name="creation_year">1983</item>
+		<item name="country">USA</item>
+	</tags>
+
+
+==============================
+---
+Альбомы (по алф.)
+Исполнители (по алф.)
+Подборки
+	Саундтреки
+По дате
+	50-х
+	60-х
+	70-х
+Жанры
+	Поп
+	Инди
+	Рок
+	Метал
+	Альтернатива
+	Электроника
+	Танцевальная
+	Рэп и хип-хоп
+	R&B
+	Джаз
+	Блюз
+	Регги
+	Ска
+	Панк
+	Музыка мира
+	Классика
+	Эстрада
+	Шансон
+	Кантри
+	Саундтреки
+	Авторская песня
+---------------------------------------
+
+- Нужен интерфейс для редактирования list.xml (экспорт из CMS или отдельная форма редактирования)
+- Необходима кнопка  сохранения отредактированного плейлиста ( после удаления трека )
+кнопка использует имеющиеся значения названия плейлиста и файлового пути сохранения
+только нажать для перезаписи плейлиста
+
+*при загрузке страницы получать список плейлистов
+*список - XML-файл со списком плейлистов
+- название плейлиста
+- описание
+- картинка
+- расположение плейлиста, /music/0_playlists/JSON-файла (или другие форматы )
+
+---------------------------------------
 - branch dev..
 
 ======================
@@ -51,53 +267,6 @@ var relativePath = "t/music_unsort/Def Leppard/1983 - Pyromania";
 "music"+"t/music_unsort/Def Leppard/1983 - Pyromania"
 
 
-
-*при загрузке страницы получать список плейлистов
-
-*список - XML-файл со списком плейлистов
-- название плейлиста
-- описание
-- картинка
-- расположение плейлиста, /music/0_playlists/JSON-файла (или другие форматы )
-
-- Необходима кнопка  сохранения отредактированного плейлиста ( после удаления трека )
-кнопка использует имеющиеся значения названия плейлиста и файлового пути сохранения
-только нажать для перезаписи плейлиста
-
-- Нужен интерфейс для редактирования list.xml (экспорт из CMS или отдельная форма редактирования)
-	
----
-	Разделить музыку на
-Альбомы (по алф.)
-Исполнители (по алф.)
-Подборки
-	Саундтреки
-По дате
-	50-х
-	60-х
-	70-х
-Жанры
-	Поп
-	Инди
-	Рок
-	Метал
-	Альтернатива
-	Электроника
-	Танцевальная
-	Рэп и хип-хоп
-	R&B
-	Джаз
-	Блюз
-	Регги
-	Ска
-	Панк
-	Музыка мира
-	Классика
-	Эстрада
-	Шансон
-	Кантри
-	Саундтреки
-	Авторская песня
 
 
 ========================== Music WFM

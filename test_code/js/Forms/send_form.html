@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test JS: send form</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	
+	<link rel="stylesheet" href="../../../css/bootstrap337.min.css">
+	<link rel="stylesheet" href="../../../css/shared.css">
+	<script src="../lib/shared_functions.js"></script>
+	<script src="js/send_form.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+	<div class="page-header">
+		<h2>Test JS: send form</h2>
+	</div>
+
+	<div class="log-panel panel">
+		<div class="panel-body">
+			<span class="pull-right">
+				<a id="btn-clear-log" href="#" title="Clear log" class="btn">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+	
+<form name="form1" id="form1" action="getRequest.php" method="POST" enctype="application/x-www-form-urlencoded">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>simply request, POST method</h4>
+		</div>
+		<div class="panel-body">
+				<div class="form-group">
+					<label>Name: </label>
+					<input type="text" class="form-control" name="author_name" value="">
+				</div>
+				
+				<div class="form-group">
+					<label>Title: </label>
+					<input type="text" class="form-control" name="title" value="">
+				</div>
+
+				<div class="form-group">
+					<label>Text message: </label>
+					<textarea name="text_message" class="form-control" rows="3"></textarea>
+				</div>						
+				
+				<div>
+<input type="text" name="action" value="save_message">
+					<button type="reset" class="btn btn-large btn-danger">reset form</button>
+					<button type="submit" class="btn btn-info">send form</button>
+				</div>
+		</div>
+	</div><!-- end panel -->
+</form>
+
+	
+<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>Send text note to server (Ajax request, POST method)</h4>
+		</div>
+		<div class="panel-body">
+				<div class="form-group">
+					<label id="name-label">*Name: </label>
+					<input type="text" class="form-control" name="author_name" value="">
+				</div>
+				
+				<div class="form-group">
+					<label id="title-label">Title (subject): </label>
+					<input type="text" class="form-control" name="title" value="">
+				</div>
+
+				<div class="form-group">
+					<label id="text-message-label">*Text message: </label>
+					<textarea name="text_message" class="form-control" rows="3"></textarea>
+				</div>						
+				
+				<div>
+					<button type="reset" class="btn btn-large btn-warning">reset form</button>
+					<button type="submit" class="btn btn-primary">send form</button>
+				</div>
+		</div>
+	</div><!-- end panel -->
+</form>
+
+
+<form name="form_upload" id="upload-form" action="" method="POST" enctype="multipart/form-data">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4>Attach file and image, send form to server (Ajax request, POST method)</h4>
+		</div>
+		<div class="panel-body">
+
+				<div class="form-group">
+<label id="file-label">Select file: </label>
+<input type="file" name="upload_file" class="btn-primary">
+				</div>
+
+				<div class="form-group">
+<label>Comment: </label>
+<textarea id="comment-text" name="comment_message" class="form-control" rows="3"></textarea>
+				</div>						
+				
+				<div>
+					<button type="submit" class="btn btn-primary">send form</button>
+				</div>
+				
+		</div>
+	</div><!-- end panel -->
+</form>
+<canvas id="canvas1" width="100" height="80" style="border:1px solid"></canvas>
+
+<pre>
+https://developer.mozilla.org/ru/docs/Web/API/FormData
+https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+
+https://learn.javascript.ru/formdata
+http://learn.javascript.ru/xhr-forms 
+https://learn.javascript.ru/xmlhttprequest
+</pre>
+
+</div><!-- end container -->
+
+</body>
+</html>

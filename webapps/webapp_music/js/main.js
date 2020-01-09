@@ -1,51 +1,58 @@
-$(document).ready(function(){
+var func = sharedFunc();
+//console.log("func:", func);
 
-	var myPlaylist = new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_N",
-		cssSelectorAncestor: "#jp_container_N"
-	},
-	[
-	], 
-	{
-		playlistOptions: {
-			enableRemoveControls: true
-		},
-		swfPath: "../players/jPlayer-2.5.0/js",
-		//supplied: "webmv, ogv, m4v, oga, mp3",
-		supplied: "mp3",
-		smoothPlayBar: true,
-		keyEnabled: true,
-		audioFullScreen: true
-	});
+var _testObj = {
+	"logMsg": ""
+};
+console.log( _testObj );
 
-	vars["playlistObj"] = myPlaylist;
-//console.log(vars);	
+window.onload = function(){
+	_testObj.logMsg = navigator.userAgent;
+	func.logAlert( _testObj.logMsg, "info");
 
-/*
-	var playlist = new Array();
+/*	
+	//init test object
+	_testObj["log"] = func.getById("log");
+	_testObj["btn_clear_log"] = func.getById("btn-clear-log");
 
-	var filename = "test";
-	var artist = "test";
-	var mp3 = "/music/A/ABBA - SOS.mp3";
-	//var mp3 = "/music/A/Amorphis - Thousand lakes.mp3";//error format!
-	
-	var link_to_media =  true;
-
-	var track = {
-		title: filename,
-		"artist": artist,
-		mp3: mp3,
-		free: link_to_media, 
-	};
-	playlist.push(track);
-	myPlaylist.setPlaylist( playlist );
+	_testObj["btn_clear_log"].onclick = function( event ){
+//console.log("click...", e);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) {
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		_testObj.log.innerHTML = "";
+	};//end event
 */
-//=========================================	
 
-	$('.top').click(function (e) {
-	  e.preventDefault();
-	  $('html,body').animate({scrollTop: $('#top').offset().top-150}, 400);
-	});
+//===============================
+/*
+	func.addEvent( 
+		_testObj["btnSave"], 
+		"click", 
+		function(e){
+//console.log( e );
+			var dataURL = _testObj["canvas"].toDataURL();//PNG
+console.log(dataURL)	;
+			//_saveImage();
+			_testObj["btnSave"].href = dataURL;
+		}
+	);//end event
+*/
 
-});
+	//Start webApp
+	if( typeof webApp === "object"){
+		_runApp();
+	}
+
+	function _runApp(){
+		webApp.init(function(){
+console.log("end webApp initialize....");
+		});//end webApp initialize
 
+	}//end _runApp()
+
+}//end load()

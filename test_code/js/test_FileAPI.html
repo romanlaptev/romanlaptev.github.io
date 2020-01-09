@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>test JS: File API</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=10">
+	<link rel="stylesheet" type="text/css" href="../../css/uikit.min.css">
+<!--	
+	//cdnjs.cloudflare.com/ajax/libs/uikit/2.0.0/css/uikit.min.css">
+-->	
+<script>
+//if (window.File && window.FileReader && window.FileList && window.Blob) {
+if( window.File && window.FileList && window.FileReader ){
+	_process();
+} else {
+  alert('Your browser does not support File API');
+}
+
+function _process(){
+//console.log("test!!!!");
+}//end _process()
+
+ 
+// Handle errors
+function errorHandler(e) {
+	var msg = '';
+	switch (e.code){
+	
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg = 'QUOTA_EXCEEDED_ERR';
+		break;
+		
+		case FileError.NOT_FOUND_ERR:
+			msg = 'NOT_FOUND_ERR';
+		break;
+		
+		case FileError.SECURITY_ERR:
+			msg = 'SECURITY_ERR';
+		break;
+		
+		case FileError.INVALID_MODIFICATION_ERR:
+			msg = 'INVALID_MODIFICATION_ERR';
+		break;
+		
+		case FileError.INVALID_STATE_ERR:
+			msg = 'INVALID_STATE_ERR';
+		break;
+		
+		default:
+			msg = 'Unknown Error';
+		break;
+	};
+	console.log('Error: ' + msg);
+}//end errorHandler()
+
+// Init and write some data to a file
+function onInitFs(fs) {
+console.log('Opened file system: ' + fs.name, fs);
+/*
+	fs.root.getFile('log-f-api.txt', {create: true}, function(fileEntry) {
+		fileEntry.isFile === true;
+		fileEntry.name == 'log-f-api.txt';
+		fileEntry.fullPath == '/log-f-api.txt';
+		
+		// Create a FileWriter object for our FileEntry (log.txt).
+		fileEntry.createWriter(function(fileWriter) {
+		
+			fileWriter.onwriteend = function(e) {
+				console.log('Write completed.');
+			};
+			
+			fileWriter.onerror = function(e) {
+				console.log('Write failed: ' + e);
+			};
+			
+		//Create a new Blob and write it to log.txt.
+		if(!window.BlobBuilder && window.WebKitBlobBuilder)
+			window.BlobBuilder = window.WebKitBlobBuilder; // in Chrome 12.
+			
+			var bb = new BlobBuilder(); 
+			bb.append("some stuff");
+console.log("bb size:"+bb.size);
+
+			bb.append('put some nice text in our file....');
+			var ourData = bb.getBlob('text/plain');
+			fileWriter.write(ourData); 
+		}, errorHandler);
+	}, errorHandler);
+*/	
+}//end onInitFs
+
+//https://developer.mozilla.org/ru/docs/Web/API/FileReader/readAsDataURL
+function previewFile() {
+	var preview = document.querySelector("#preview-img");
+	var fileList = document.querySelector("#preview-file");
+//for( var key in fileList){
+//console.log( key, fileList[key] );	
+//}
+	var file = fileList.files[0];
+	
+	var reader = new FileReader();
+
+	reader.onloadend = function(e) {
+console.log("reader.onloadend! ", e);	
+		preview.src = reader.result;
+	}
+
+	if (file) {
+		reader.readAsDataURL(file);
+	} else {
+		preview.src = "";
+	}
+}//end previewFile()
+
+window.onload = function(){
+	document.getElementById("clear-log").onclick = function(){
+		document.getElementById("log").innerHTML="";
+	};
+
+	var fileslist = document.getElementById("files-list"); 
+	fileslist.onchange = function(event){
+console.log(event.target.files);
+		var files = event.target.files;
+		for( var n =0; n < files.length; n++)
+		{
+			var message = "Load file " + event.target.files[n].name ;
+			message += "<br> size: " + event.target.files[n].size ;
+			message += "<br> type: " + event.target.files[n].type ;
+			message += "<br> date: " + event.target.files[n].lastModifiedDate ;
+			document.getElementById("log").innerHTML += "<p>" + message +"</p>";
+		}
+	};
+
+	var one_file = document.getElementById("one-file"); 
+	one_file.onchange = function(event){
+		var file = event.target.files[0];
+		
+		var message = "Load file " + file.name ;
+		message += "<br> size: " + file.size ;
+		message += "<br> type: " + file.type ;
+		message += "<br> date: " + file.lastModifiedDate ;
+		document.getElementById("log").innerHTML += "<p>" + message +"</p>";
+		//if( file.type === "text/plain" )
+		//{
+			var reader = new FileReader();
+			
+			reader.onabort = function(e){
+console.log( "reader, onabort", e );
+			};
+			
+			reader.onerror = function(e){
+console.log( "reader, onerror", e );
+			};
+			
+			reader.onload = function(e){
+console.log( "reader, onload", e );
+console.log(e.target.result);
+			};
+			
+			reader.onloadstart = function(e){
+console.log( "reader, loadstart", e );
+			};
+			
+			reader.onloadend = function(e){
+console.log( "reader, loadend", e );
+				document.getElementById('file-content').textContent = e.target.result;
+			};
+			
+			reader.onprogress = function(e){
+console.log( "reader, progress", e );
+			};
+			
+			reader.readAsText(file);
+		//}
+	}
+	
+//--------------------------------
+	document.getElementById("btn2").onclick = function(e){
+console.log("window.requestFileSystem = " + window.requestFileSystem);
+console.log("window.webkitRequestFileSystem = " + window.webkitRequestFileSystem);
+//window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+	
+		if (window.webkitRequestFileSystem) {
+			var requestedBytes = 1024*1024*10; // 10MB		
+			window.webkitRequestFileSystem( window.PERSISTENT, requestedBytes, onInitFs, errorHandler);
+		}
+		
+		if (window.requestFileSystem) {
+			var requestedBytes = 1024*1024*10; // 10MB		
+			window.requestFileSystem( window.PERSISTENT, requestedBytes, onInitFs, errorHandler);
+		}
+		
+	}//end event
+
+}//end load	
+</script>
+
+<style>
+#log-wrap{
+position:fixed;
+bottom:10px;
+right:10px;
+width:30%;
+opacity:0.8;
+border:1px dashed;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="uk-container uk-container-center">
+		<div class="uk-panel uk-panel-box uk-panel-box-primary">
+			<div class="uk-panel-header">
+				<h1 class="uk-text-center">Test HTML5 FileAPI</h1>
+			</div>
+<pre>
+https://codepen.io/romanlaptev/pen/ExaZZOE
+
+http://caniuse.com/#feat=filereader
+http://caniuse.com/#feat=filesystem
+
+https://developer.mozilla.org/en-US/docs/Web/API/LocalFileSystem
+https://developer.mozilla.org/ru/docs/Web/API/FileReader
+https://developer.mozilla.org/ru/docs/Web/API/FileReader/readAsDataURL
+
+https://books.google.ru/books?id=C3kabcBG0ZsC&pg=PT756&lpg=PT756
+Закас Н. JavaScript для профессиональных веб-разработчиков 
+
+http://javascript.maxsage.co.uk/Ch25/FileAPIExample03.htm
+
+https://habrahabr.ru/post/112286/
+https://jsfiddle.net/0GiS0/Yvgc2/
+
+https://dev.w3.org/2009/dap/file-system/file-writer.html
+http://www.html5rocks.com/ru/tutorials/file/filesystem/
+
+https://gist.github.com/greenido/979770
+Simple test to FileSystem APIs (HTML5)
+
+http://xdan.ru/Working-with-files-in-JavaScript-Part-1-The-Basics.html
+http://xdan.ru/Working-with-files-in-JavaScript-Part-2-FileReader.html
+
+https://www.html5rocks.com/ru/tutorials/file/dndfiles/
+</pre>
+			<h2>File info</h2>
+			<p>selected files info: <input type="file" multiple id="files-list"/></p>
+			
+			<h2>File reader</h2>
+			<p>load text file: <input type="file" id="one-file"/></p>
+			<div>
+				<pre id="file-content"></pre>
+			</div>
+			
+		</div>
+		
+		<div class="uk-panel uk-panel-box">
+			<button id="btn2" class="uk-button uk-button-primary">requestFileSystem (only Chrome)</button>
+		</div>
+		
+		<div class="uk-panel uk-panel-box">
+			<h3>Image preview</h3>
+			<input type="file" id="preview-file" onchange="previewFile()"><br>
+			<img src="" id="preview-img">
+		</div>
+		
+	</div><!-- end container -->
+
+	<div id="log-wrap" class="uk-panel-box uk-panel-box-primary">
+		<a id="clear-log" class="uk-button uk-button-small uk-button-danger" href="#">clear log</a>		
+		<div id="log"></div>
+	</div>
+	
+</body>
+</html>

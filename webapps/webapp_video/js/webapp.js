@@ -2470,6 +2470,7 @@ console.log( webApp.vars["logMsg"] );
 			$(activeItem).addClass("active");
 		}
 	}//end _draw_setActiveTrack()
+
 /*
 	function _draw_checkAll(){
 		$("#playlist li input[type=checkbox]").each(function(num, item){

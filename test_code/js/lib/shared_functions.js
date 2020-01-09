@@ -281,7 +281,7 @@ console.log( logMsg );
 			for(var key in opt ){
 				p[key] = opt[key];
 			}
-		//console.log(p);
+//console.log(p);
 
 			var logMsg;
 			var requestMethod = p["requestMethod"]; 
@@ -382,26 +382,24 @@ console.log( logMsg, xhr );
 							
 							var timeEnd = new Date();
 							var runtime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
-console.log(msg);
-// console.log( "xhr.responseText: ", xhr.responseText );
-// console.log( "xhr.responseXML: ", xhr.responseXML );
-							if( "responseType" in xhr){
-					console.log( "xhr.response: ", xhr.response );
-					console.log( "responseType: " + xhr.responseType );
-							}
+//var msg = "ajax load url: " + url + ", runtime: " + runtime +" sec";
+//console.log(msg);
+							// if( "responseType" in xhr){
+					// console.log( "xhr.response: ", xhr.response );
+					// console.log( "responseType: " + xhr.responseType );
+							// }
 
-							try{
-					console.log( "xhr.responseText: ", xhr.responseText );
-							} catch(e){
-					console.log( e );
-							}
+							// try{
+					// console.log( "xhr.responseText: ", xhr.responseText );
+							// } catch(e){
+					// console.log( e );
+							// }
 
-							try{
-					console.log( "xhr.responseXML: ", xhr.responseXML );
-							} catch(e){
-					console.log( e );
-							}
+							// try{
+					// console.log( "xhr.responseXML: ", xhr.responseXML );
+							// } catch(e){
+					// console.log( e );
+							// }
 
 							if( typeof callback === "function"){
 //alert("responseText" in xhr);	true in IE6
@@ -619,12 +617,15 @@ console.log(e);
 						});
 					}
 				}
+			}
+			
+//------------------------------------- form POST body
+			if( requestMethod === "POST"){ //http://learn.javascript.ru/xhr-forms 
+			
+				if( p["enctype"] === "multipart/form-data"){
+					xhr.send( p["formData"] );
+				}
 				
-				
-			} else {
-				
-				//http://learn.javascript.ru/xhr-forms
-				//form POST body
 				if( p["enctype"] === "application/x-www-form-urlencoded"){
 					
 					var test = "setRequestHeader" in xhr;
@@ -645,9 +646,8 @@ console.log(e);
 					}//next
 		//console.log( body );
 					xhr.send( body );
-				} else {
-					xhr.send( p["formData"] );
-				}
+				} 
+				
 			}
 
 			function _createRequestObject() {
@@ -675,7 +675,7 @@ console.log(e);
 
 		
 		
-		
+//test and remove!!!!!!
 		var _runAjaxCorrect = function( opt ){
 			
 			var p = {
@@ -782,41 +782,60 @@ console.log( "xhr.onerror,", e);
 		};//_runAjaxCorrect()
 		
 		
-		
-		
-		function _timeStampToDateStr( timestamp, format ){
+//================================
+//Usage :  var today = func.timeStampToDateStr({
+//timestamp : ....timestamp string....,
+//format : "yyyy-mm-dd hh:min" 
+//});
+//================================
+		function _timeStampToDateStr( opt ){
+			var p = {
+				"timestamp" : null,
+				"format" : ""
+			};
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log( p );
+			
+			//date.setTime( timestamp);
+			if( !p.timestamp || p.timestamp.length === 0){
+				var d = new Date();
+			} else {
+				var d = new Date( p.timestamp );
+			}
+			
+			var sYear = d.getFullYear();
 
-			var sYear = timestamp.getFullYear();
-
-			var sMonth = timestamp.getMonth() + 1;
+			var sMonth = d.getMonth() + 1;
 	//console.log( sMonth, typeof sMonth );
 			if( sMonth < 10){
 				sMonth = "0" + sMonth;
 			}
 			
-			var sDate = timestamp.getDate();
+			var sDate = d.getDate();
 			if( sDate < 10){
 				sDate = "0" + sDate;
 			}
 			
-			var sHours = timestamp.getHours();
+			var sHours = d.getHours();
 			if( sHours < 10){
 				sHours = "0" + sHours;
 			}
 			
-			var sMinutes = timestamp.getMinutes();
+			var sMinutes = d.getMinutes();
 			if( sMinutes < 10){
 				sMinutes = "0" + sMinutes;
 			}
 			
-			var sSec = timestamp.getSeconds();
+			var sSec = d.getSeconds();
 			if( sSec < 10){
 				sSec = "0" + sSec;
 			}
 			
 			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
 			
-			switch( format ){
+			switch( p.format ){
 				
 				case "yyyy-mm-dd":
 					dateStr = sYear + "-" + sMonth + "-" + sDate;
@@ -824,6 +843,10 @@ console.log( "xhr.onerror,", e);
 				
 				case "yyyy-mm-dd hh:min":
 					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+				break;
+				
+				case "yyyy-mm-dd hh:min:sec":
+					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes + ":" + sSec;
 				break;
 				
 			}//end switch
@@ -1140,7 +1163,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 				"localStorageSupport" : window['localStorage']  ? true : false,
 				"dataStoreType" : _detectDataStoreType(),
 				"geolocationSupport" :  typeof navigator.geolocation !== "undefined",
-				"supportTouch" : _supportTouch()
+				"supportTouch" : _supportTouch(),
+				"fileAPI" :  _supportFileAPI(),
+				"formData": typeof window.FormData === "function"
 			};
 		};//end _testSupport()
 		
@@ -1172,6 +1197,13 @@ ONLY second LEVEL !!!!!!!!!!!!
 			}
 			return supportTouch;
 		};//end _supportTouch
+		
+		var _supportFileAPI = function(){
+			if( window.File && window.FileList && window.FileReader ){
+				return true;
+			}
+			return false;
+		}//end __supportFileAPI()
 		
 		
 		// public interfaces

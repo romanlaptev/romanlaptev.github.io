@@ -182,6 +182,7 @@
 	<tag tid="231" vid="3" name="В"></tag>
 	<tag tid="232" vid="3" name="Г"></tag>
 	<tag tid="233" vid="3" name="Д"></tag>
+	<tag tid="234" vid="3" name="Е"></tag>
 	<tag tid="235" vid="3" name="Ж"></tag>
 	<tag tid="236" vid="3" name="З"></tag>
 	<tag tid="237" vid="3" name="И"></tag>
@@ -229,6 +230,7 @@
 	<tag tid="287" vid="1" name="2000"></tag>
 	<tag tid="288" vid="1" name="1999"></tag>
 	<tag tid="289" vid="1" name="1959"></tag>
+	<tag tid="290" vid="1" name="1964"></tag>
 	<tag tid="291" vid="1" name="1978"></tag>
 	<tag tid="292" vid="1" name="1989"></tag>
 	<tag tid="293" vid="1" name="1976"></tag>
@@ -1173,9 +1175,10 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 <video type="video">
 	<title>
 		<item>Евангелие от Матфея</item>
+		<item>Il vangelo secondo Matteo</item>
 </title>
 	
-	
+	<producer>Пьер Паоло Пазолини</producer>
 	<roles>Энрике Иразоки /Enrique Irazoqui/, 
 Маргерита Карузо /Margherita Caruso/, 
 Сюзанна Пазолини
@@ -1187,7 +1190,8 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 Джакомо Моранте
 Альфонсо Гатто
 		</roles>
-	<description>&amp;lt;pre&amp;gt;
+	<description>https://www.kinopoisk.ru/film/39876/
+
 В полудокументальной манере с использованием непрофессиональных актеров 
 в черно-белом изображении рассказывается о жизни Иисуса Христа - 
 мать режиссера снялась в роли Богоматери. 
@@ -1199,26 +1203,33 @@ https://www.youtube.com/watch?v=zejl12VpOqE
 Те, кто посмотрит картину, будут удивлены, узнав, что сам режиссер был не только атеистом, 
 но и марксистом впридачу. Как будто для того, чтобы подчеркнуть неортодоксальность фильма, 
 Пазолини включил в саундтрек американский &amp;quot;спиричуал&amp;quot; &amp;quot;Sometimes I Feel Like a Motherless Child&amp;quot; 
-в исполнении певицы Одетты.
-&amp;lt;/pre&amp;gt;</description>
-	
+в исполнении певицы Одетты.</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/39876.jpg"/>
+	</pictures>
 
 	<ul>
-		<li>file:///mnt/terra</li>
-		<li>file://m:</li>
+		<li><a data-type="local-file" href="/video/films/P/Pasolini/Il vangelo secondo Matteo.avi">Il vangelo secondo Matteo.avi</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/SsAJVBRC8R0">Фильм Евангелие от Матфея, youtube.com</a></li>
 	</ul>
 
 	<tags>
+		<item tid="33">биография</item>
 		<item tid="4">драма</item>
+		<item tid="96">история</item>
 		<item tid="111">Пазолини, Пьер Паоло</item>
 		<item tid="67">Италия</item>
 		<item tid="89">Франция</item>
 		<item tid="150">srt</item>
 		<item tid="22">avi</item>
+		<item tid="215">I</item>
+		<item tid="268">P</item>
+		<item tid="234">Е</item>
+		<item tid="290">1964</item>
 	</tags>
 
 	<published>12-Oct-2012 00:07:57</published>
-	<updated>02-Jun-2013 17:44:30</updated>
+	<updated>05-Jan-2020 19:39:16</updated>
 </video>
 
 <video type="video">
@@ -15374,6 +15385,80 @@ https://www.kinopoisk.ru/film/893150/</description>
 
 	<published>15-Sep-2019 19:51:45</published>
 	<updated>15-Sep-2019 19:56:45</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>По ту сторону</item>
+</title>
+	
+	<producer>Фёдор Филиппов</producer>
+	<roles>Вера Алтайская
+Григорий Белов
+Людмила Касаткина
+Елена Муратова
+Юрий Пузырёв
+Всеволод Сафонов
+Любовь Студнева
+Сергей Калинин
+Владимир Емельянов
+Сергей Филиппов
+	</roles>
+	<description>https://www.kinopoisk.ru/film/43017/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film/43017.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/w3_eGRb2Iec">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="169">война</item>
+		<item tid="54">мелодрама</item>
+		<item tid="243">П</item>
+	</tags>
+
+	<published>01-Jan-2020 16:46:20</published>
+	<updated>01-Jan-2020 17:45:07</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Оптимистическая трагедия</item>
+</title>
+	
+	<producer>Самсон Самсонов</producer>
+	<roles>Маргарита Володина
+Борис Андреев
+Вячеслав Тихонов
+Всеволод Санаев
+Орко Биернинен
+Всеволод Сафонов
+Иван Жеваго
+Даниил Нетребин
+Григорий Михайлов
+Петр Соболевский
+	</roles>
+	<description>https://www.kinopoisk.ru/film/42784/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film/42784.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/i82jKH2Dlps">youtube.com</a></li>
+	</ul>
+
+	<tags>
+		<item tid="169">война</item>
+		<item tid="4">драма</item>
+		<item tid="96">история</item>
+		<item tid="242">О</item>
+		<item tid="335">1963</item>
+	</tags>
+
+	<published>01-Jan-2020 17:41:57</published>
+	<updated>01-Jan-2020 17:44:46</updated>
 </video>
 
 <video type="videoclip">

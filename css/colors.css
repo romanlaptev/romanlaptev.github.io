@@ -1,0 +1,1459 @@
+.border-box{
+border: 1px solid #004586;
+}
+
+.bg-darkblue {/*Диаграмма 1*/
+  background-color: #004586 !important;
+}
+
+
+.bg-darkblue2{ /* comp-books.css */
+  background-color: #000080 !important;
+}
+.bg-darkblue3{/*css.html*/
+  background-color: #0e1f40 !important;
+}
+.bg-darkblue4{
+  background-color: #062237 !important;
+}
+.bg-darkblue5{
+  background-color: #153449 !important;
+}
+.bg-darkblue-tango{
+  background-color: #0c253c !important;
+}
+.bg-darkblue-tango2{
+  background-color: #001b33 !important;
+}
+
+
+.bg-lightblue {/*Диаграмма 12*/
+  background-color: #0084d1 !important;
+}
+.bg-lightblue2 {/*Диаграмма 6*/
+  background-color: #083caf !important;
+}
+.bg-lightblue3 {/*bootstrap 2 primary ???*/
+  background-color: #6aa6c0 !important;
+}
+
+.bg-lightblue4 {/* video.css*/
+  background-color: #C9E0ED !important;
+}
+.bg-lightblue5 {/* video.css*/
+  background-color: #BBD8E9 !important;
+}
+
+
+.bg-steelblue{
+  background-color: #4682b4 !important;
+}
+.bg-lightsteelblue{
+  background-color: #b0c4de !important;
+}
+.bg-lightsteelblue2{ /* comp-books.css */
+  background-color: #83A0C5 !important;
+}
+.bg-lightsteelblue3{
+  background-color: #3b5a6f !important;
+}
+.bg-lightsteelblue4{
+  background-color: #b6cfed !important;
+}
+.bg-lightsteelblue5{
+  background-color: #77a2cf !important;
+}
+.bg-lightsteelblue6{
+  background-color: #C7D5EC !important;
+}
+
+
+.bg-yellow {
+  background-color: #ffd320 !important;
+}
+.bg-yellow2 {
+  background-color: #ffcc00 !important;
+}
+
+.bg-orange {
+  background-color: #ff950e !important;
+}
+.bg-orange2 {
+  background-color: #ffb515 !important;
+}
+.bg-orange-tango {
+  background-color: #e09d00 !important;
+}
+.bg-orange3 {
+  background-color: #ffa500 !important;
+}
+.bg-orange4 {/* video.css*/
+  background-color: #FECD90 !important;
+}
+.bg-orange5 {
+  background-color: #E9B96E !important;
+}
+
+
+.bg-red-brown {
+  background-color: #2f0606 !important;
+}
+.bg-red-pink {
+  background-color: #a68caa !important;
+}
+
+
+
+.bg-grey-blue {
+  background-color: #5a819d !important;
+}
+.bg-blue-grey {/*c1*/
+  background-color: #315570 !important;
+}
+.bg-lightblue-grey {
+  background-color: #e6e6ff !important;
+}
+
+
+.bg-lightskyblue{
+  background-color: #87cefa !important;
+}
+
+.bg-sky-blue5{
+  background-color: #006699 !important;
+}
+.bg-sky-blue66{
+  background-color: #003366 !important;
+}
+
+
+.bg-sky-blue{
+  background-color: #00ccff !important;
+}
+.bg-sky-blue2{
+  background-color: #3399ff !important;
+}
+.bg-sky-blue3{
+  background-color: #6699cc !important;
+}
+.bg-sky-blue4{ /*selection*/
+  background-color: #0174e9 !important;
+}
+.bg-sky-blue5{ /*wordpress header*/
+  background-color: #1e73be !important;
+}
+.bg-sky-blue6 {/*css.html*/
+  background-color: #0088FF !important;
+}
+.bg-sky-blue7 {
+  background-color: #5bc0de !important;
+}
+.bg-sky-blue8{
+  background-color: #336699 !important;
+}
+.bg-sky-blue10{
+  background-color: #99ccff !important;
+}
+
+
+
+.bg-turquoise4{
+  background-color: #009b9b !important;
+}
+.bg-turquoise5{
+  background-color: #006b6b !important;
+}
+.bg-turquoise6{
+  background-color: #006666 !important;
+}
+.bg-turquoise7{
+  background-color: #006633 !important;
+}
+.bg-turquoise9{
+  background-color: #66cc99 !important;
+}
+
+
+
+
+.bg-blue{
+  background-color: #3498db !important;
+}
+
+.bg-blue1{/*css.html*/
+  background-color: #0000bb !important;
+}
+.bg-blue2{/*bookmarks.html*/
+  background-color: #006b9b !important;
+}
+
+.bg-blue4{
+  background-color: #337ab7 !important;
+}
+.bg-blue5{
+  background-color: #000099 !important;
+}
+.bg-blue8{
+  background-color: #669999 !important;
+}
+.bg-blue9{
+  background-color: #99cccc !important;
+}
+.bg-blue-c3{/* c4 */
+  background-color: #269abc !important;
+}
+
+.bg-blue-sky2{
+  background-color: #3465a4 !important;
+}
+
+
+
+.bg-bluegreen{
+  background-color: #006666;
+}
+.bg-bluegreen2{
+  background-color: #336666 !important;
+}
+.bg-darkgreen{/* gitlab header */
+  background-color: #0d4524 !important;
+}
+.bg-darkgreen2{/* windows7 desktop */
+  background-color: #094546 !important;
+}
+.bg-darkgreen2{/* windowsXP desktop */
+  background-color: #003200 !important;
+}
+
+.bg-green-lime{/* video.css */
+  background-color: #98FB98 !important;
+}
+
+
+.bg-lightgreen{
+  background-color: #d9ead3 !important;
+}
+
+
+.bg-palegreen{
+  background-color: #98fb98 !important;
+}
+.bg-palegreen2{/*css.html*/
+  background-color: #99cc99 !important;
+}
+
+.bg-palegreen3{/*www.neberitrubku.ru/nomer-telefona/*/
+  background-color: #cfd9db !important;
+  color: #679f41;/* ligth-green */
+}
+
+
+
+.bg-green-grass1{
+  background-color: #9c9 !important;
+}
+.bg-green-grass2{/* gitlab button, bg */
+  background-color: #1aaa55 !important;
+}
+.bg-green-grass3{/* gitlab button, border */
+  background-color: #18a050 !important;
+}
+
+.bg-grey-green{
+  background-color: #c6d6de !important;
+}
+.bg-grey-green2{
+  background-color: #607d8b !important;
+}
+
+.steel-grey{
+  background-color: #53687c !important;
+}
+
+
+.bg-grey-green3{/* book_Rods */
+  background-color: #abbabb !important;
+}
+.bg-grey-green4{/* book_Rods */
+  background-color: #e6eaec !important;
+}
+.bg-grey-green5{
+  background-color: #cfdfe6 !important;
+}
+
+.bg-palegrey-green{
+  background-color: #f0f3f6 !important;
+}
+
+
+
+.bg-pale-rose-c5{
+  background-color: #d3c5be !important;
+}
+.bg-pale-rose1{/* comp-books.css */
+  background-color: #D3C5BE !important;
+}
+
+
+.bg-grey1{ /* comp-books.css */
+  background-color: #404050 !important;
+}
+.bg-grey2{ /* comp-books.css */
+  background-color: #5E789C !important;
+}
+.bg-grey3{
+  background-color: #2C3F66 !important;
+}
+.bg-grey4{ /* comp-books.css */
+  background-color: #5A5963 !important;
+}
+.bg-grey5{/*css.html*/
+  background-color: #475570 !important;
+}
+.bg-grey6{/* dm-modal */
+  background-color: #607d8b !important;
+}
+
+
+
+.bg-grey-c8{
+  background-color: #333340 !important;
+}
+.bg-grey-c9{
+  background-color: #70708c !important;
+}
+
+
+.bg-purple{
+  background-color: #9999CC !important;
+}
+
+
+.bg-light-violet{
+  background-color: #cecefa !important;
+}
+.bg-light-violet-lavender{
+  background-color: #e6e6fa !important;
+}
+.bg-light-violet2{
+  background-color: #e6e6ff !important;
+}
+.bg-light-violet3 {/* video.css*/
+  background-color: #E6E6FF !important;
+}
+
+
+.bg-violet{
+  background-color: #99c !important;
+}
+.bg-violet2{/* progress window*/
+  background-color: rgb(200, 200, 250) !important;
+}
+
+
+.bg-dark-violet{
+  background-color: #021859 !important;
+}
+
+
+
+
+/* Buttons */
+.btn-blue {
+	background-color: #007bff;
+	color: #fff;
+	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
+	-moz-box-shadow: inset 0 36px 38px -38px #fff;
+	box-shadow: inset 0 36px 38px -38px #fff;
+	
+  font-family: avantgarde;
+  font-size: 14px;
+  font-weight: 400;
+}
+.btn-blue:hover {
+	background-color: #ff8c00 !important;
+	color: #000 !important;
+}
+.btn-blue:focus {
+	color: #fff !important;
+	outline: 0;
+}
+.btn-blue:active:focus {
+	color: #000 !important;
+}
+.btn-blue:active {
+	/*color:  #fff !important;*/
+}
+.btn-blue:visited {
+	/*color:  #000 !important;*/
+}
+
+.btn-blue-c4 {
+    color: #fff;
+	background-color: #269abc;
+}
+.btn-blue-c4:hover {
+	background-color: #ff8c00;
+	color: #000 !important;
+}
+.btn-blue-c4:focus {
+	color: #fff !important;
+}
+
+.btn-blue-green {
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+	color: #fff;
+}
+.btn-blue-green:hover {
+	background: #ff8c00;
+	border-color: #ff8c00;
+	color: #000 !important;
+}
+
+.btn-blue-green:focus {
+	color: #fff !important;
+}
+
+
+.btn-darkblue {
+	background-color: #004586;
+	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
+	-moz-box-shadow: inset 0 36px 38px -38px #fff;
+	box-shadow: inset 0 36px 38px -38px #fff;
+	border-color: #3f9cca;
+	color: #fff;
+  font-family: ticker_taperegular;
+  font-size: 14px;
+  font-weight: 400;
+}
+.btn-darkblue:hover {
+	background-color: #ff8c00;
+	border-color: #ff8c00;
+	color: #000 !important;
+}
+.btn-darkblue:focus {
+	color: #fff !important;
+}
+
+
+
+.btn-violet-fb {
+	background-color: #395697;
+	color: #fff;
+}
+.btn-violet-fb:hover {
+	color: #fff;
+}
+
+.btn-greygreen {
+	background-color: #6298A5;
+	color: #fff;
+}
+.btn-greygreen:hover {
+	background-color: orange;
+	color: #000 !important;
+}
+.btn-greygreen:visited {
+	color: #fff;
+}
+
+
+
+.btn-style1 {
+	background-color: #4986a1;
+	color: #fff;
+	border-color: #adadad;
+}
+
+.btn-style1:hover {
+	background-color: #65a3be;
+	color: #fff !important;
+	border-color: #ccc;
+}
+
+.btn-style1.focus, .btn-style1:focus {
+	color: #fff !important;
+    border-color: #8c8c8c;
+}
+
+.btn-orange {
+  border-color: #925c23;
+  /*box-shadow: 0 1px 2px #777;*/
+  color: #694219;
+
+background-color:#f5c489;
+background:-webkit-gradient(linear, left top, left bottom, from(#FED99A), to(#ECAE78));
+background:-moz-linear-gradient(top, #FED99A, #ECAE78);
+background:-o-linear-gradient(top, #FED99A, #ECAE78);
+background:linear-gradient(top, #FED99A, #ECAE78);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED99A', endColorstr='#ECAE78');
+
+}
+
+.btn-orange:hover, 
+.btn-orange:focus 
+{
+background-color:#f3b871;
+background:-webkit-gradient(linear, left top, left bottom, from(#fed081), to(#e9a162));
+background:-moz-linear-gradient(top, #fed081, #e9a162);
+background:-o-linear-gradient(top, #fed081, #e9a162);
+background:linear-gradient(top, #fed081, #e9a162);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endColorstr='#e9a162');
+    border-color: #925c23;
+    box-shadow: 0 1px 2px #777;
+    color: #694219;
+}
+
+.btn-orange-m {
+	background: -webkit-linear-gradient(#ffd862, #ffc30b);
+	background: -o-linear-gradient(#ffd862, #ffc30b);
+	background: -moz-linear-gradient(#ffd862, #ffc30b);
+	background: linear-gradient(#ffb644, #ff9e07);
+	border-color: #ffb644;
+	color:#000;
+}
+.btn-orange-m:focus:not(:disabled):not(.disabled){
+	border-color: #B36C00;
+}
+
+
+/*
+.mobapp-btn{
+	font-size: 100%;
+	font-weight: bold;
+	border-radius: 3px;
+	transition: opacity 200ms;
+}
+.mobapp-btn.focus{
+	border: 1px dashed #36393c !important;
+}
+.mobapp-btn, .mobapp-btn:active, .mobapp-btn.active{
+	border: 1px solid transparent;
+	color: #fff;
+}
+.mobapp-btn.registr{
+	border-width: 2px;
+}
+.mobapp-btn.registr{
+	margin-bottom: 0;
+	margin-right: 10px;
+	padding-top: 18px;
+	padding-bottom: 18px;
+	width: 100px;
+	min-width: 100px;
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+
+.mobapp-btn.blue.registr{
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+
+
+.mobapp-btn.disabled{
+	pointer-events: none;
+}
+
+.mobapp-btn:hover:not(:disabled):not(.disabled){
+	opacity: 0.8;
+}
+
+.mobapp-btn:focus:not(:disabled):not(.disabled){
+	outline: 0;
+	opacity: 0.9;
+}
+.mobapp-btn.blue:focus:not(:disabled):not(.disabled), .btn:focus:not(:disabled):not(.disabled){
+	border-color: #256086;
+}
+*/
+
+.btn-red {
+	background: -webkit-linear-gradient(#f27966, #eb4d4d);
+	background: -o-linear-gradient(#f27966, #eb4d4d);
+	background: -moz-linear-gradient(#f27966, #eb4d4d);
+	background: linear-gradient(#f27966, #eb4d4d);
+	border-color: #f27966;
+	color:#fff;
+}
+.btn-red:focus:not(:disabled):not(.disabled){
+	border-color: #BD1615;
+}
+
+
+.btn-green {
+	background-color: #1bcb49;
+	background: -webkit-linear-gradient(#4fcb4f, #00b04e);
+	background: -o-linear-gradient(#4fcb4f, #00b04e);
+	background: -moz-linear-gradient(#4fcb4f, #00b04e);
+	background: linear-gradient(#4fcb4f, #00b04e);
+	border-color: #4fcb4f;
+}
+.btn-green:focus:not(:disabled):not(.disabled){
+	border-color: #005C2A;
+}
+
+.btn-green-shadow {
+/*
+	display: inline-block;
+	padding: 10px;
+	margin: 3px;
+*/
+	/* font-size: 12px; */
+	/* font-weight: bold; */
+	/* font-family: Tahoma, Geneva, sans-serif; */
+/*
+	line-height: 1.2em;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+*/
+	color: #fff;
+	background-color: #008b8b;
+	border-color: #008b8b;
+/*
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+*/
+	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
+	-moz-box-shadow: inset 0 36px 38px -38px #fff;
+	box-shadow: inset 0 36px 38px -38px #fff;
+	
+/*  font-family: Lobster;*/
+  font-size: 14px;
+  font-weight: 400;
+}
+.btn-green-shadow:hover, 
+.btn-green-shadow:focus 
+{
+    color: #000;
+	border-color: #ff8c00;
+	background-color: #ff8c00;
+}
+
+
+
+/*Panels*/
+.panel-gray > .panel-heading {
+  background-color: #315570;
+  border-color: #315570;
+  color: #fff;
+}
+
+
+.panel-blue-c3 {
+  border-color: #269abc;
+}
+.panel-blue-c3 > .panel-heading {
+  background-color: #269abc;
+  border-color: #269abc;
+  color: #fff;
+}
+
+.panel-purple {
+  border-color: #9999cc;
+}
+.panel-purple > .panel-heading {
+  background-color: #9999cc;
+  border-color: #9999cc;
+  color: #fff;
+}
+
+.panel-turquoise {
+  border-color: #009688;
+}
+.panel-turquoise > .panel-heading {
+  background-color: #009688;
+  border-color: #009688;
+  color: #fff;
+}
+
+.panel-grey {
+  border-color: #728ca4;
+}
+.panel-grey > .panel-heading {
+  background-color: #728ca4;
+  border-color: #728ca4;
+  color: #fff;
+}
+
+
+.panel-violet {
+  border-color: #434e7b;
+}
+.panel-violet > .panel-heading {
+  background-color: #434e7b;
+  border-color: #434e7b;
+  color: #fff;
+}
+
+.panel-deepskyblue {
+	border-color: #00bfff;
+	background-color: #00bfff;
+}
+.panel-deepskyblue > .panel-heading {
+  background-color: #00bfff;
+  border-color: #00bfff;
+}
+
+.bg-peach {
+  border-color: #ffaa00;
+  background-color: #ffcc99;
+}
+
+
+/*
+
+#CCA96E
+#efc8b1;
+#bf794e;
+#efd0b1;
+#f3f3f3;
+#bf864e;
+#b1d0ef;
+#4e86bf;
+#130040;
+
+https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D0%BB%D1%8C%D0%B4%D0%B3%D1%80%D0%B0%D1%83
+
+<style>
+.colorbox
+{
+	padding:5px;
+}
+.bold
+{
+	font-weight:bold;
+}
+.italic
+{
+	font-style:italic;
+}
+</style>
+
+<div style="color:#ffffff;background:#2A3443;" class="colorbox">
+color:#ffffff;background:#2A3443;
+</div>
+<div style="color:#ffffff;background:#242E3B;" class="colorbox">
+color:#ffffff;background:#242E3B;
+</div>
+
+<div style="color:#ffffff;background:#efc8b1; " class="colorbox">
+color:#ffffff;background:#efc8b1
+</div>
+
+<div style="color:#ffffff;background:#bf794e; " class="colorbox">
+color:#ffffff;background:#bf794e
+</div>
+
+<div style="color:#4D4128;background:#efd0b1; " class="colorbox">
+color:#4D4128;background:#efd0b1
+</div>
+
+<div style="color:#4D4128;background:#bf864e; " class="colorbox">
+color:#4D4128;background:#bf864e
+</div>
+
+<div style="color:#4D4128;background:#CCA96E; " class="colorbox">
+color: #4D4128,background: #CCA96E;
+</div>
+<div style="color:#4D4128;background:#e0e0c3; " class="colorbox bold">
+color: #4D4128,background: #e0e0c3;
+</div>
+
+<div style="color:#4D4128;background:#ead9c2;" class="colorbox">
+color:#4D4128;background:#ead9c2;
+</div>
+
+<div style="color:#4D4128;background:#f1ebe2;" class="colorbox">
+color:#4D4128;background:#f1ebe2;
+</div>
+
+<div style="color:#ffffff;background:#707070;" class="colorbox">
+color: #ffffff,background: #707070;
+</div>
+<div style="color:#ffffff;background:#3f3f3f;" class="colorbox">
+color: #ffffff,background: #3f3f3f;
+</div>
+<div style="color:#ffffff;background:#666;" class="colorbox">
+color:#ffffff;background:#666;
+</div>
+
+<div style="color:#ffffff;background:#beb49b;" class="colorbox">
+color:#ffffff;background:#beb49b;
+</div>
+
+<div style="color:#ffffff;background:#d8c8b3;" class="colorbox">
+color:#ffffff;background:#d8c8b3;
+</div>
+
+
+
+
+<div style="color:#000000;background:#f3f3f3;" class="colorbox">
+color: #000000,background: #f3f3f3;
+</div>
+
+<div style="color:#000000;background:#D0CCD5" class="colorbox">
+color:#000000;background:#D0CCD5
+</div>
+
+
+<div style="color:#000000;background:#dedddf;" class="colorbox">
+color: #000000,background:#dedddf;
+</div>
+
+
+
+<div style="color:#000084;background:#c6c3c6;" class="colorbox">
+text-#000084,background-#c6c3c6
+</div>
+<div style="color:#794F4B;background:#c6c3c6;" class="colorbox">
+text-#794F4B,background-#c6c3c6
+</div>
+
+
+
+<div style="color:#ffffff;background:rgb(77,66,90); " class="colorbox">
+color: #ffffff,background: rgb(77, 66, 90)
+</div>
+<div style="color:#ffffff;background:#4D425A; " class="colorbox">
+color: #ffffff,background: #4D425A;
+</div>
+
+<div style="color:#ffffff;background:#580C61;" class="colorbox">
+color: #ffffff,background: #580C61;
+</div>
+
+
+<div style="color:#ffffff;background:#4b0082;" class="colorbox">
+color: #ffffff,background: #4b0082;
+</div>
+<div style="color:#ffffff;background:#2E1441;" class="colorbox">
+color: #ffffff,background: #2E1441;
+</div>
+<div style="color:#ffffff;background:#41013D;" class="colorbox">
+color: #ffffff,background: #41013D;
+</div>
+
+<div style="color:#ffffff;background:rgb(77,92,106); " class="colorbox">
+color: #ffffff,background: rgb(77,92, 106)
+</div>
+
+<div style="color:#ffffff;background:#4f5a6e;" class="colorbox">
+color:#ffffff;background:#4f5a6e;
+</div>
+
+
+<div style="color:#000000;background:#D5DBE1;" class="colorbox">
+color: #000000,background: #D5DBE1;
+</div>
+
+<div style="color:#ffffff;background:#a7adbc;" class="colorbox">
+color:#ffffff;background:#a7adbc;
+</div>
+
+
+
+<div style="color:#45557a;background:#c9c6d3;" class="colorbox bold">
+color:#45557a;background:#c9c6d3;
+</div>
+
+<div style="color:#c9c6d3;background:#45557a;" class="colorbox bold">
+color:#c9c6d3;background:#45557a;
+</div>
+
+
+<!-- BLUE, DARKBLUE -->
+
+<div style="color:#ffffff;background:#003089;" class="colorbox">
+color:#ffffff;background:#003089;
+</div>
+<div style="color:#ffffff;background:#055c80;" class="colorbox">
+color:#ffffff;background:#055c80;
+</div>
+<div style="color:#ffffff;background:#3d5afe;" class="colorbox">
+color:#ffffff;background:#3d5afe;
+</div>
+<div style="color:#ffffff;background:#5a5eff;" class="colorbox">
+color:#ffffff;background:#5a5eff;
+</div>
+<div style="color:#ffffff;background:#7cc0de;" class="colorbox">
+color:#ffffff;background:#7cc0de;
+</div>
+<div style="color:#ffffff;background:#00c1d5;" class="colorbox">
+color:#ffffff;background:#00c1d5;
+</div>
+<div style="color:#ffffff;background:#C7D5EC;" class="colorbox">
+color:#ffffff;background:#C7D5EC;
+</div>
+<div style="color:#ffffff;background:#3950C9;" class="colorbox">
+color:#ffffff;background:#3950C9;
+</div>
+
+
+<div style="color:#ffffff;background:#130040;" class="colorbox">
+color:#ffffff;background:#130040;
+</div>
+
+
+<div style="color:#ffffff;background:darkblue;" class="colorbox">
+color: #ffffff,background: darkblue;
+</div>
+
+<div style="color:#ffffff;background:steelblue;" class="colorbox">
+color: #ffffff,background: steelblue;
+</div>
+
+<div style="color:#ffffff;background:#1e73be;" class="colorbox">
+color: #ffffff,background: #1e73be;
+</div>
+
+
+
+<div style="color:#0e1f40;background:#b1d0ef;" class="colorbox bold italic">
+color:#0e1f40;background:#b1d0ef;
+</div>
+
+<div style="color:#ffffff;background:#4e86bf;" class="colorbox">
+color:#ffffff;background:#4e86bf;
+</div>
+
+<div style="color:#ffffff;background:#324f5a; " class="colorbox">
+color: #ffffff,background: #324f5a
+</div>
+
+<div style="color:#ffffff;background:#00B8D9;" class="colorbox">
+color:#ffffff;background:#00B8D9 (голубой цвет);
+</div>
+
+
+<div style="color:darkblue;background:#ccf;" class="colorbox">
+color:darkblue;background:#ccf;
+</div>
+
+<div style="color:#0088cc;background:#def;" class="colorbox bold">
+color:#0088cc;background:#def;
+</div>
+
+
+<div style="color:#ffffff;background:blue;" class="colorbox">
+color: #ffffff,background: blue;
+</div>
+
+
+<div style="color:#ffffff;background:#196e9c; " class="colorbox">
+color: #ffffff,background: #196e9c;
+</div>
+
+<div style="color:#ffffff;background:#0060a0;" class="colorbox">
+color:#ffffff;background:#0060a0;
+</div>
+
+
+<div style="color:#ffffff;background:#0061A0; " class="colorbox">
+color: #ffffff,background: #0061A0;
+</div>
+
+<div style="color:#ffffff;background:#074e68;" class="colorbox">
+text-#ffffff,background:#074e68;
+</div>
+
+<div style="color:#ffffff;background:#2f96b4;" class="colorbox">
+color:#ffffff;background:#2f96b4;
+</div>
+
+
+
+<!-- GREEN -->
+<div style="color:#ffffff;background:green;" class="colorbox">
+color: #ffffff,background:green;
+</div>
+
+<div style="color:#0000ff;background:#ccffff;" class="colorbox">
+color:#0000ff,background:#ccffff;
+</div>
+
+
+
+<div style="color:#ffffff;background:#225033;" class="colorbox">
+color: #ffffff,background:#225033;
+</div>
+
+<div style="color:#93be91;background:#21301f;" class="colorbox">
+color: color:#93be91;background:#21301f;
+</div>
+
+<div style="color:#bad6c2;background:#21301f;" class="colorbox bold">
+color: color:#bad6c2;background:#21301f;
+</div>
+
+<div style="color:#ffffff;background:#004000;" class="colorbox">
+color:#ffffff;background:#004000;
+</div>
+<div style="color:#ffffff;background:#1a4216;" class="colorbox">
+color:#ffffff;background:#1a4216;
+</div>
+
+<div style="color:#003200; background:#90D389;" class="colorbox">
+color: color:#003200; background:#90D389;
+</div>
+
+<div style="color:#ffffff;background:#38d878;" class="colorbox">
+color:#ffffff;background:#38d878;
+</div>
+
+<div style="color:#003200;background:palegreen;" class="colorbox">
+color: color:#003200;background:palegreen;
+</div>
+
+<div style="color:#59af52;background:#f0fde3;border: 2px solid #aada75;" class="colorbox">
+color: color:#59af52;background:#f0fde3;
+</div>
+
+
+
+<div style="color:#000000;background:#cfdfcc;" class="colorbox">
+color: color:#000000;background:#cfdfcc;
+</div>
+
+
+
+<div style="color:#008000;background:#d8efe0;" class="colorbox bold">
+color: color:#008000;background:#d8efe0;
+</div>
+
+
+<div style="color:#ffffff;background:#238f11;"class="colorbox">
+color:#ffffff;background:#238f11;
+</div>
+
+<div style="color:#008000;background:lime;" class="colorbox bold">
+color: #008000,background:lime;
+</div>
+
+<div style="color:darkgreen;background:#d9ee7f;" class="colorbox">
+color:darkgreen;background:#d9ee7f;
+</div>
+
+<div style="color:darkgreen;background:#a9bf4e;" class="colorbox">
+color:darkgreen;background:#a9bf4e;
+</div>
+
+<div style="color:darkgreen;background:#E3EFB1;" class="colorbox">
+color:darkgreen;background:#E3EFB1;
+</div>
+
+<div style="color:#ffffff;background:darkgreen;" class="colorbox">
+color: #ffffff,background:darkgreen;
+</div>
+
+<div style="color:#ffffff;background:#b2c27a;" class="colorbox">
+color: #ffffff,background:#b2c27a;
+</div>
+<div style="color:#ffffff;background:#70D14E;" class="colorbox">
+color: #ffffff,background:#70D14E;
+</div>
+<div style="color:#ffffff;background:#03AEA6;" class="colorbox">
+color: #ffffff,background:#03AEA6;
+</div>
+<div style="color:#000000;background:#E5F2C0;" class="colorbox">
+color: #000000,background:#E5F2C0;
+</div>
+<div style="color:#ffffff;background:#0C9E54;" class="colorbox">
+color: #ffffff,background:#0C9E54;
+</div>
+
+<h3>Оттенки зелёного цвета</h3>
+<div style="color:#000000; background:#00FF00;" class="colorbox">
+<span style="color:black">Зелёный, #00FF00</span>
+</div>
+<div style="color:#000000; background:#7BA05B;" class="colorbox">
+<span style="color:white">Спаржа, #7BA05B</span>
+</div>
+<div style="color:#000000; background:#66FF00;" class="colorbox">
+<span style="color:black">Ярко-зелёный, #66FF00</span>
+</div>
+<div style="color:#000000; background:#78866B;" class="colorbox">
+<span style="color:white">Защитный, #78866B</span>
+</div>
+<div style="color:#000000; background:#ACE1AF;" class="colorbox">
+<span style="color:black">Серо-зелёный, #ACE1AF</span>
+</div>
+<div style="color:#000000; background:#7FFF00;" class="colorbox">
+<span style="color:black">Шартрёз, #7FFF00</span>
+</div>
+<div style="color:#000000; background:#50C878;" class="colorbox">
+<span style="color:black">Изумрудный, #50C878</span>
+</div>
+<div style="color:#000000; background:#4F7930;" class="colorbox">
+<span style="color:white">Папоротник, #4F7930</span>
+</div>
+<div style="color:#000000; background:#465945;" class="colorbox">
+<span style="color:white">Серая спаржа, #465945</span>
+</div>
+
+<div style="color:#000000; background:#ADFF2F;" class="colorbox">
+<span style="color:black">Жёлто-зелёный, #ADFF2F</span>
+</div>
+<div style="color:#000000; background:#00A86B;" class="colorbox">
+<span style="color:black">Жадеитовый цвет,Желтовато-зелёный, #00A86B</span>
+</div>
+<div style="color:#000000; background:#40826D;" class="colorbox">
+<span style="color:white">Виридиан, #40826D</span>
+</div>
+<div style="color:#000000; background:#BFFF00;" class="colorbox">
+<span style="color:black">Лайм, #BFFF00</span>
+</div>
+<div style="color:#000000; background:#ADDFAD;" class="colorbox">
+<span style="color:black">Мох, #ADDFAD</span>
+</div>
+<div style="color:#000000; background:#21421E;" class="colorbox">
+<span style="color:white">Мирт, #21421E</span>
+</div>
+<div style="color:#000000; background:#808000;" class="colorbox">
+<span style="color:white">Оливковый, #808000</span>
+</div>
+<div style="color:#000000; background:#6B8E23;" class="colorbox">
+<span style="color:white">Оливково-серый, #6B8E23</span>
+</div>
+<div style="color:#000000; background:#D1E231;" class="colorbox">
+<span style="color:black">Груша, #D1E231</span>
+</div>
+
+
+<div style="color:#000000; background:#01796F;" class="colorbox">
+<span style="color:white">Сосна,#01796F</span>
+</div>
+
+<div style="color:#000000; background:#2E8B57;" class="colorbox">
+<span style="color:white">Морская зелень, #2E8B57</span>
+</div>
+
+<div style="color:#000000; background:#00FF7F;" class="colorbox">
+<span style="color:black">Весенняя зелень, #00FF7F</span>
+</div>
+
+<div style="color:#000000; background:#ACB78E;" class="colorbox">
+<span style="color:black">Болотная зелень, #ACB78E</span>
+</div>
+
+<div style="color:#000000; background:#D0F0C0;" class="colorbox">
+<span style="color:black">Зелёный чай,#D0F0C0</span>
+</div>
+
+<div style="color:#000000; background:#228B22;" class="colorbox">
+<span style="color:white">Лесная зелень, #228B22</span>
+</div>
+
+<div style="color:#000000; background:#DFFF00;" class="colorbox">
+<span style="color:black">Жёлтый шартрез, #DFFF00</span>
+</div>
+
+<div style="color:#000000; background:#3FFF00;" class="colorbox">
+<span style="color:black">Harlequin, #3FFF00</span>
+</div>
+
+<div style="color:#000000; background:#008000;" class="colorbox">
+<span style="color:white">Office green, #008000</span>
+</div>
+
+<div style="color:#000000; background:#D1E189;" class="colorbox">
+<span style="color:black">Lime pulp,#D1E189</span>
+</div>
+
+<div style="color:#000000; background:#355E3B;" class="colorbox">
+<span style="color:white">Охотничий,Hunter_green, #355E3B</span>
+</div>
+
+<div style="color:#000000; background:#00A500;" class="colorbox">
+<span style="color:white">Ярко-зелёный с желтоватым отливом, #00A500</span>
+</div>
+
+<div style="color:#000000; background:#009E60;" class="colorbox">
+<span style="color:white">Трилистник, #009E60</span>
+</div>
+
+<div style="color:#000000; background:#009900;" class="colorbox">
+<span style="color:white">Мусульманский,Islamic_green, #009900</span>
+</div>
+
+<div style="color:#000000; background:#32CD32;" class="colorbox">
+<span style="color:black">Лаймовый, Lime_Green, #32CD32</span>
+</div>
+
+<div style="color:#000000; background:#00A693;" class="colorbox">
+<span style="color:white">Персидский зелёный, #00A693</span>
+</div>
+
+<div style="color:#000000; background:#4D5D53;" class="colorbox">
+<span style="color:white">Фельдграу, #4D5D53</span>
+</div>
+
+
+<!-- END GREEN -->
+
+
+
+<div style="color:#ffffff;background:#cccc99;" class="colorbox">
+color:#ffffff;background:#cccc99;
+</div>
+
+
+<!-- YELLOW -->
+<div style="color:maroon;background:#FFDF00;" class="colorbox">
+color:maroon;background:#FFDF00; (жёлтый цвет)
+</div>
+<div style="color:darkgreen;background:#fffbe1;" class="colorbox">
+color:darkgreen;background:#fffbe1; 
+</div>
+<!-- END YELLOW -->
+
+
+<div style="color:#ffffff;background:orange" class="colorbox">
+color:#ffffff;background:orange
+</div>
+
+<div style="color:#000000;background:#f89406;" class="colorbox bold">
+color:#000000;background:#f89406;
+</div>
+
+<!-- RED -->
+<div style="color:#ffffff;background:red" class="colorbox">
+color:#ffffff;background:red
+</div>
+
+<div style="color:#ffffff;background:#E23817;" class="colorbox">
+color:#ffffff;background:#E23817;
+</div>
+
+<div style="color:#ffffff;background:#de4f00;" class="colorbox">
+color:#ffffff;background:#de4f00;
+</div>
+<div style="color:#ffffff;background:#bd362f;" class="colorbox">
+color:#ffffff;background:#bd362f;
+</div>
+<div style="color:#ffffff;background:darkred" class="colorbox">
+color:#ffffff;background:darkred
+</div>
+<!-- END RED -->
+
+
+<div style="color:#ffffff;background:silver" class="colorbox">
+color:#ffffff;background:silver
+</div>
+
+
+<h3>Оттенки серого цвета</h3>
+
+<div style="color:#000000; background:#BFBFBF;" class="colorbox">
+<span style="color:black">Серый, #BFBFBF</span>
+</div>
+
+<div style="color:#000000; background:#AFAFAF;" class="colorbox">
+<span style="color:black">Стальной, #AFAFAF</span>
+</div>
+
+<div style="color:#000000; background:#CECECE;" class="colorbox">
+<span style="color:black">Серебристый, #CECECE</span>
+</div>
+
+<div style="color:#000000; background:#C7D0CC;" class="colorbox">
+<span style="color:black">Перламутровый, #C7D0CC</span>
+</div>
+
+<div style="color:#000000; background:#798081;" class="colorbox">
+<span style="color:white">Свинцовый, #798081</span>
+</div>
+
+<div style="color:#000000; background:#9E9E9E;" class="colorbox">
+<span style="color:white">Мышиный, #9E9E9E</span>
+</div>
+
+<div style="color:#000000; background:#303030;" class="colorbox">
+<span style="color:white">Антрацитовый, #303030</span>
+</div>
+
+<div style="color:#000000; background:#79A0C1;" class="colorbox">
+<span style="color:black">Сизый, #79A0C1</span>
+</div>
+
+<div style="color:#000000; background:#CADABA;" class="colorbox">
+<span style="color:black">Серо-зелёный чай, #CADABA</span>
+</div>
+
+<div style="color:#000000; background:#505050;" class="colorbox">
+<span style="color:white">Мокрый асфальт,#505050
+</span>
+</div>
+
+<div style="color:#000000; background:#464646;" class="colorbox">
+<span style="color:white">Угольный,#464646</span>
+</div>
+
+<div style="color:#000000; background:#708090;" class="colorbox">
+<span style="color:white">Грифельный,#708090</span>
+</div>
+
+<div style="color:#000000; background:#4D5D53;" class="colorbox">
+<span style="color:white">Фельдграу,#4D5D53</span>
+</div>
+
+
+        aliceblue: "#f0f8ff",
+        antiquewhite: "#faebd7",
+        aqua: "#00ffff",
+        aquamarine: "#7fffd4",
+        azure: "#f0ffff",
+        beige: "#f5f5dc",
+        bisque: "#ffe4c4",
+        black: "#000000",
+        blanchedalmond: "#ffebcd",
+        blue: "#0000ff",
+        blueviolet: "#8a2be2",
+        brown: "#a52a2a",
+        burlywood: "#deb887",
+        cadetblue: "#5f9ea0",
+        chartreuse: "#7fff00",
+        chocolate: "#d2691e",
+        coral: "#ff7f50",
+        cornflowerblue: "#6495ed",
+        cornsilk: "#fff8dc",
+        crimson: "#dc143c",
+        cyan: "#00ffff",
+        darkblue: "#00008b",
+        darkcyan: "#008b8b",
+        darkgoldenrod: "#b8860b",
+        darkgray: "#a9a9a9",
+        darkgreen: "#006400",
+        darkkhaki: "#bdb76b",
+        darkmagenta: "#8b008b",
+        darkolivegreen: "#556b2f",
+        darkorange: "#ff8c00",
+        darkorchid: "#9932cc",
+        darkred: "#8b0000",
+        darksalmon: "#e9967a",
+        darkseagreen: "#8fbc8f",
+        darkslateblue: "#483d8b",
+        darkslategray: "#2f4f4f",
+        darkturquoise: "#00ced1",
+        darkviolet: "#9400d3",
+        deeppink: "#ff1493",
+        deepskyblue: "#00bfff",
+        dimgray: "#696969",
+        dodgerblue: "#1e90ff",
+        feldspar: "#d19275",
+        firebrick: "#b22222",
+        floralwhite: "#fffaf0",
+        forestgreen: "#228b22",
+        fuchsia: "#ff00ff",
+        gainsboro: "#dcdcdc",
+        ghostwhite: "#f8f8ff",
+        gold: "#ffd700",
+        goldenrod: "#daa520",
+        gray: "#808080",
+        green: "#008000",
+        greenyellow: "#adff2f",
+        honeydew: "#f0fff0",
+        hotpink: "#ff69b4",
+        indianred: "#cd5c5c",
+        indigo: "#4b0082",
+        ivory: "#fffff0",
+        khaki: "#f0e68c",
+        lavender: "#e6e6fa",
+        lavenderblush: "#fff0f5",
+        lawngreen: "#7cfc00",
+        lemonchiffon: "#fffacd",
+        lightblue: "#add8e6",
+        lightcoral: "#f08080",
+        lightcyan: "#e0ffff",
+        lightgoldenrodyellow: "#fafad2",
+        lightgrey: "#d3d3d3",
+        lightgreen: "#90ee90",
+        lightpink: "#ffb6c1",
+        lightsalmon: "#ffa07a",
+        lightseagreen: "#20b2aa",
+        lightskyblue: "#87cefa",
+        lightslateblue: "#8470ff",
+        lightslategray: "#778899",
+        lightsteelblue: "#b0c4de",
+        lightyellow: "#ffffe0",
+        lime: "#00ff00",
+        limegreen: "#32cd32",
+        linen: "#faf0e6",
+        magenta: "#ff00ff",
+        maroon: "#800000",
+        mediumaquamarine: "#66cdaa",
+        mediumblue: "#0000cd",
+        mediumorchid: "#ba55d3",
+        mediumpurple: "#9370d8",
+        mediumseagreen: "#3cb371",
+        mediumslateblue: "#7b68ee",
+        mediumspringgreen: "#00fa9a",
+        mediumturquoise: "#48d1cc",
+        mediumvioletred: "#c71585",
+        midnightblue: "#191970",
+        mintcream: "#f5fffa",
+        mistyrose: "#ffe4e1",
+        moccasin: "#ffe4b5",
+        navajowhite: "#ffdead",
+        navy: "#000080",
+        oldlace: "#fdf5e6",
+        olive: "#808000",
+        olivedrab: "#6b8e23",
+        orange: "#ffa500",
+        orangered: "#ff4500",
+        orchid: "#da70d6",
+        palegoldenrod: "#eee8aa",
+        palegreen: "#98fb98",
+        paleturquoise: "#afeeee",
+        palevioletred: "#d87093",
+        papayawhip: "#ffefd5",
+        peachpuff: "#ffdab9",
+        peru: "#cd853f",
+        pink: "#ffc0cb",
+        plum: "#dda0dd",
+        powderblue: "#b0e0e6",
+        purple: "#800080",
+        red: "#ff0000",
+        rosybrown: "#bc8f8f",
+        royalblue: "#4169e1",
+        saddlebrown: "#8b4513",
+        salmon: "#fa8072",
+        sandybrown: "#f4a460",
+        seagreen: "#2e8b57",
+        seashell: "#fff5ee",
+        sienna: "#a0522d",
+        silver: "#c0c0c0",
+        skyblue: "#87ceeb",
+        slateblue: "#6a5acd",
+        slategray: "#708090",
+        snow: "#fffafa",
+        springgreen: "#00ff7f",
+        steelblue: "#4682b4",
+        tan: "#d2b48c",
+        teal: "#008080",
+        thistle: "#d8bfd8",
+        tomato: "#ff6347",
+        turquoise: "#40e0d0",
+        violet: "#ee82ee",
+        violetred: "#d02090",
+        wheat: "#f5deb3",
+        white: "#ffffff",
+        whitesmoke: "#f5f5f5",
+        yellow: "#ffff00",
+        yellowgreen: "#9acd32"
+
+ * /

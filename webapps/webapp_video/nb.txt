@@ -1,3 +1,44 @@
+- исправить формат экспорта
+
+<xroot>
+	<database name="video">
+	<taglist>
+		<tag tid="4" vid="2" name="драма"></tag>		
+		.....
+	</taglist>
+<node type="video">
+	<title>
+		<item lang="ru">Аргентина. Интервью с мёртвым наркодилером</item>
+		<item lang="en">.....</item>
+	</title>
+	
+	<producer></producer>
+	<roles></roles>
+	<description></description>
+	
+	<images>
+		<img src="https://i.ytimg.com/vi/eeeYo2h41pE/sddefault.jpg"/>
+....		
+	</images>
+
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/video/films/A/Argentina.2008.DVDRip.avi">Argentina.2008.DVDRip.avi</a></li>
+		<li><a data-type="embed-video" title="embed video in new tab" href="https://www.youtube.com/embed/eeeYo2h41pE">Youtube embed video in new tab</a></li>
+		<li><a data-type="external-link" title="go to Youtube" href="https://www.youtube.com/watch?v=eeeYo2h41pE">film on Yotube</a></li>
+	</related_links>
+
+	<tags>
+		<item tid="4" name="драма"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">24-Sep-2012 09:28:16</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">20-Jul-2019 22:38:46</updated>
+</node>
+	</database>
+</xroot>
+
+
 +- сделать возможность перетаскивания окна навигатора
 
 =========================== Playlist
