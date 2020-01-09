@@ -58,14 +58,15 @@ if( typeof window.jQuery === "function"){
 		_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
 		_vars.$closeButtons = $("a[href='#close']");
 		_vars.$modalButtons = $("a[href^='#modal']");
+		_vars.$getTagGroups = $("a[href^='#get-tag-group']");
 
 		_vars.$blockTags = $("#block-tags");
-		_vars.$blockTags.hide();
+//_vars.$blockTags.hide();
 //$("#block-player").hide();
 //$("#block-file-manager").hide();
-$(".collapse").hide();
+		$(".collapse").hide();
 //$("#block-nodelist").show();
-$("#btn-scroll-to-top").hide();
+		$("#btn-scroll-to-top").hide();
 
 
 //--------------------------------- hide input type="range" if not support
@@ -128,6 +129,16 @@ if( testRangeSupport !== "range"){
 			
 		});//end event
 
+		_vars.$getTagGroups.on("click", function(e){
+//console.log( e.target );
+			$("#block-tags").find(".collapse").hide();
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			$( _target ).slideToggle( _vars.duration , function(e){
+//console.log(arguments)
+			});
+		});//end event
+
 
 		$(document).on("keydown", function(e) {
 //console.log(e);
@@ -137,6 +148,7 @@ if( testRangeSupport !== "range"){
 				_closeModal( "#modal-edit-node" );
 			}
 		});//end event
+
 
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
@@ -445,12 +457,12 @@ Tag <b>audio</b> not supported by this browser....
 		
 		<div class="uk-card-body uk-padding-small">
 			<ul class="uk-list tag-list">
-				<li><a  href="?q=get-tag-group&vid=2">music_styles</a>	</li>
-				<li><a  href="?q=get-tag-group&vid=3">music_formats</a></li>
-				<li><a  href="?q=get-tag-group&vid=4">country</a></li>
-				<li><a  href="?q=get-tag-group&vid=5">alphabetical_voc</a></li>
-				<li><a  href="?q=get-tag-group&vid=8">music_band</a></li>
-				<li><a  href="?q=get-tag-group&vid=9">music_genre</a></li>
+				<li><a data-toggle="#tags-music-syles" href="#get-tag-group&vid=2">music_styles</a>	</li>
+				<li><a data-toggle="#tags-music-formats" href="#get-tag-group&vid=3">music_formats</a></li>
+				<li><a data-toggle="#tags-country" href="#get-tag-group&vid=4">country</a></li>
+				<li><a data-toggle="#tags-alpha" href="#get-tag-group&vid=5">alphabetical_voc</a></li>
+				<li><a data-toggle="#tags-music-band" href="#get-tag-group&vid=8">music_band</a></li>
+				<li><a data-toggle="#tags-music-genre" href="#get-tag-group&vid=9">music_genre</a></li>
 			</ul>
 		</div>
 	</div>
@@ -458,25 +470,71 @@ Tag <b>audio</b> not supported by this browser....
 	</div>
 	
 	<div id="block-taglist">
-		<div class="uk-card uk-card-secondary">
+	
+		<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">
 			<div class="uk-card-body uk-padding-small">
 				<ul class="uk-list tag-list">
-	<li><a  href="?q=get-tag&vid=2&vid=10">heavy metal</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=11">speed</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=12">power</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=15">фолк-метал</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=17">thrash</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=22">death</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=23">doom</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=24">симфоник-метал</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=32">rave</a></li>
-	<li><a href="?q=get-tag&vid=2&vid=33">techno</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=34">classic rock</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=39">русский рок</a></li>
-	<li><a  href="?q=get-tag&vid=2&vid=45">punk</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=10">heavy metal</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=11">speed</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=12">power</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=15">фолк-метал</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=17">thrash</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=22">death</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=23">doom</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=24">симфоник-метал</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=32">rave</a></li>
+	<li><a href="#?q=get-tag&vid=2&tid=33">techno</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=34">classic rock</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=39">русский рок</a></li>
+	<li><a  href="#?q=get-tag&vid=2&tid=45">punk</a></li>
 				</ul>
 			</div>
 		</div>
+
+		<div class="uk-card uk-card-secondary collapse" id="tags-music-formats">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="#?q=get-tag&vid=3&tid=120">studio album</a></li>
+				
+				</ul>
+			</div>
+		</div>
+
+		<div class="uk-card uk-card-secondary collapse" id="tags-country">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="#?q=get-tag&vid=4&tid=143">Австрия</a></li>
+				
+				</ul>
+			</div>
+		</div>
+
+		<div class="uk-card uk-card-secondary collapse" id="tags-alpha">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="#?q=get-tag&vid=53tid=5">А</a></li>
+				
+				</ul>
+			</div>
+		</div>
+
+		<div class="uk-card uk-card-secondary collapse" id="tags-music-band">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+				
+				</ul>
+			</div>
+		</div>
+
+		<div class="uk-card uk-card-secondary collapse" id="tags-music-genre">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>
+				
+				</ul>
+			</div>
+		</div>
+		
 	</div>
 
 </div>
@@ -1543,7 +1601,7 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 	_vars.blockNodeList = document.querySelector("#block-nodelist");
 //console.log(_vars);	
 	var images = _vars.blockNodeList.getElementsByTagName("img");
-console.log( "images =  ", images, images.length);
+//console.log( "images =  ", images, images.length);
 
 	for( var n = 0; n < images.length; n++){
 		//if( images[n].clientHeight === 0 ){
