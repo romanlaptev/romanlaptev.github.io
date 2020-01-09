@@ -55,7 +55,7 @@ if( typeof window.jQuery === "function"){
 		_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
 		_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
 		_vars.$closeButtons = $("a[href='#close']");
-		_vars.$modalButtons = $("a[href='#modal']");
+		_vars.$modalButtons = $("a[href^='#modal']");
 
 		_vars.$blockTags = $("#block-tags");
 		_vars.$blockTags.hide();
@@ -112,6 +112,18 @@ if( testRangeSupport !== "range"){
 //console.log( e.target );
 			var id = $( e.target ).data("toggle");
 			_toggleModal( id );
+			
+			if( $( e.target ).attr("href").indexOf("&") !== -1 ){
+				var arr = $( e.target ).attr("href").split("&");
+				arr = arr[1].split("=");
+//console.log(arr);
+				var nodeId = arr[1];
+//console.log(nodeId);
+				if( id === "#modal-edit-node"){
+					_getFieldValues(id, nodeId);
+				}
+			}
+			
 		});//end event
 
 
@@ -160,17 +172,16 @@ if( testRangeSupport !== "range"){
 	});//end scroll
 }
 
-window.onload = function(){
+//window.onload = function(){
 // 	var _btnToggleMenu = document.querySelector("#btn-toggle-menu");
 // 	_btnToggleMenu.onclick = function(e){
 // console.log( e.type );
 // 	}//end event
 
-	document.onkeydown = function(e) {
-	//document.getElementById("modal-edit-node").onkeydown = function(e) {
-console.log(e);
-console.log(e.type);
 /*	
+	document.onkeydown = function(e) {
+//console.log(e);
+//console.log(e.type);
 		e=e || window.event;
 		var target = e.target || e.srcElement; //srcElement, for old IE
 //for( var item in e){
@@ -185,10 +196,10 @@ console.log( e.keyCode );
 		if( e.keyCode === 27 ){//ESC
 			$(".uk-modal").toggle();
 		}
-*/		
 	}//end event
+*/		
 	
-}//end load
+//}//end load
 
 function toggleMenu(){
 	var _w = parseInt( _vars.$offcanvasBar.css("width") );
@@ -231,6 +242,16 @@ function _closeModal( id ){
 		$m.removeClass("uk-open");
 	}
 }//end _toggleModal()
+
+
+function _getFieldValues(id, nodeId){
+	if( id === "#modal-edit-node"){
+		var form = document.forms["form_playlist_node"];
+//console.log(form);
+console.log(form.elements);
+console.log(nodeId);
+	}
+}//_getFieldValues()
 
 </script>
 </head>
@@ -794,7 +815,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal&id=1" class="">edit</a></li>
 			</ul>
 		</div>
 	</div>
