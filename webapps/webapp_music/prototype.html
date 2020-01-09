@@ -47,18 +47,15 @@ if( typeof window.jQuery === "function"){
 //console.log( "-- ready" );
 
 		//--------------------- Scroll
-
 		//Detect top position for scroll block
-
 		_vars.start_scroll_pos = $("#main").offset().top + 100;
-
 		_vars.end_scroll_pos = _vars.start_scroll_pos - 20;
-
 
 		_vars.$offcanvas = $("#off-canvas2");
 		_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
 		_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
 		_vars.$closeButtons = $("a[href='#close']");
+		_vars.$modalButtons = $("a[href='#modal']");
 
 		_vars.$blockTags = $("#block-tags");
 		_vars.$blockTags.hide();
@@ -111,6 +108,46 @@ if( testRangeSupport !== "range"){
 			});
 		});//end event
 
+	_vars.$modalButtons.on("click", function(e){
+//console.log( e.target );
+			var _target = $( e.target ).data("toggle");
+			if( $(_target).hasClass("uk-open") ){
+				$(_target).hide( _vars.duration );
+				//$(_target).slideUp( _vars.duration, function () {
+				//$(_target).fadeOut( 600, function () {
+//console.log("-- end of hide....");				
+				//});
+				$(_target).removeClass("uk-open");
+				
+			} else {
+				//$(_target).show("fast", function () {
+				$(_target).slideDown( _vars.duration, function () {
+				//$(_target).fadeIn( 600, function () {
+//console.log("-- end of show....");				
+				});
+				$(_target).addClass("uk-open");
+			}
+		});//end event
+
+/*		
+		$("#modal-edit-node").on("keydown", function(e) {
+console.log("e.keyCode = " + e.keyCode );
+			if (e.keyCode == 27) {
+console.log("press ESC ", e.target);
+			}
+		});
+
+	$("#modal-edit-node").keypress(function(e){
+		if ( e.which == 27 )	{
+console.log("press ESC ", e);
+			//return false;
+		}
+	})		
+*/
+
+
+
+
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
 				var id = $(this).attr("href");
@@ -147,13 +184,35 @@ if( testRangeSupport !== "range"){
 	});//end scroll
 }
 
-// window.onload = function(){
+window.onload = function(){
 // 	var _btnToggleMenu = document.querySelector("#btn-toggle-menu");
 // 	_btnToggleMenu.onclick = function(e){
 // console.log( e.type );
 // 	}//end event
-// 	
-// }//end load
+
+	document.onkeydown = function(e) {
+	//document.getElementById("modal-edit-node").onkeydown = function(e) {
+console.log(e);
+console.log(e.type);
+/*	
+		e=e || window.event;
+		var target = e.target || e.srcElement; //srcElement, for old IE
+//for( var item in e){
+	//alert( item +": "+e[item] );
+//}		
+console.log( target );
+console.log( e.keyCode );
+		//if( e.keyCode === 192 ){//`
+			//view_log( info );
+			//$("#service-panel").show();
+		//}
+		if( e.keyCode === 27 ){//ESC
+			$(".uk-modal").toggle();
+		}
+*/		
+	}//end event
+	
+}//end load
 
 function toggleMenu(){
 	var _w = parseInt( _vars.$offcanvasBar.css("width") );
@@ -668,9 +727,6 @@ Tag <b>audio</b> not supported by this browser....
 	</form> 
 --><!-- /panels -->	
 			
-			
-			
-			
 			</div>
 		</div>
 </div>
@@ -735,7 +791,11 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
-				<li><a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a></li>
+				<li>
+<!-- <a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a> -->
+<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a>
+
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -1330,6 +1390,49 @@ number of pages: <b><span id="total-pages">4</span></b>
 		</div>
 	</div>
 
+<!--  MODAL dialog -->	
+
+<div id="modal-edit-node" class="uk-modal">
+	<div class="uk-modal-dialog">
+	
+		<div class="">
+			<b class="uk-padding-small">Edit playlist</b>
+			<div class="uk-float-right">
+				<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+<form name="form_playlist_node" id="node-edit-form" action="?q=save-node" method="GET">
+<!-- method="POST" enctype="application/x-www-form-urlencoded"> -->
+		
+		<div class="uk-modal-body">
+			<p class="uk-text-right">
+id:<input type="text" name="id" value="00" size="3" readonly />
+			</p>
+
+			<label class="label-title">*title: </label>
+			<input type="text" name="input_title" value="" class="uk-input"/>
+
+			<label class="label-image url">image url: </label>
+			<input type="text" name="input_image_url" value="" class="uk-input"/>
+
+			<label class="label-filepath">playlist filepath: </label>
+			<input type="text" name="input_filepath" value="/music/0_playlist/new_paylist.json" class="uk-input"/>
+		</div>
+		
+		<div class="uk-modal-footer">
+			<div class="uk-float-left">
+				<button type="reset" class="uk-button uk-button-small uk-button-danger">reset field values</button>
+				<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-default uk-button-small">cancel edit</a>
+			</div>
+			<div class="uk-float-right">
+				<button type="submit" class="uk-button uk-button-primary uk-button-small">save</button>
+				<button class="uk-button uk-button-danger uk-button-small" type="button">remove node</button>
+			</div>
+		</div>
+</form>
+		
+	</div>
+</div>
 
 <!--  progress bar -->	
 <div id="wait" class="hide"></div>
@@ -1377,7 +1480,6 @@ number of pages: <b><span id="total-pages">4</span></b>
 		</div>
 
 	</div>
-
 </div>
 
 <!--  end progress bar -->	

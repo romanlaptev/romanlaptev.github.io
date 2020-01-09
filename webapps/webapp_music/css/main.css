@@ -89,6 +89,10 @@ footer {
 	overflow: hidden;
 }
 
+label {
+	font-weight: bold;
+	color: #000;
+}
 
 /* ICONS */
 @font-face {
@@ -258,12 +262,19 @@ margin: 0;
 
 
 /* fix UIkit */
-.uk-modal-page {
+/* .uk-modal-page { 
 	overflow: inherit !important;
-}
+} */
 /*.uk-offcanvas-container {
 overflow-y: auto !important;
 }*/
+.uk-button {
+	text-transform: none;
+}
+.uk-input, .uk-select, .uk-textarea {
+	border: 1px solid #b5b5b5;
+}
+
 
 
 .my-offcanvas {

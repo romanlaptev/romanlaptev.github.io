@@ -1343,6 +1343,4 @@ if( typeof window.jQuery === "function"){
 
 	
 	});//end ready	
-
-
 }
