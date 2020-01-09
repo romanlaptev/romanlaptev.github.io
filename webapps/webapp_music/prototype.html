@@ -110,43 +110,19 @@ if( testRangeSupport !== "range"){
 
 	_vars.$modalButtons.on("click", function(e){
 //console.log( e.target );
-			var _target = $( e.target ).data("toggle");
-			if( $(_target).hasClass("uk-open") ){
-				$(_target).hide( _vars.duration );
-				//$(_target).slideUp( _vars.duration, function () {
-				//$(_target).fadeOut( 600, function () {
-//console.log("-- end of hide....");				
-				//});
-				$(_target).removeClass("uk-open");
-				
-			} else {
-				//$(_target).show("fast", function () {
-				$(_target).slideDown( _vars.duration, function () {
-				//$(_target).fadeIn( 600, function () {
-//console.log("-- end of show....");				
-				});
-				$(_target).addClass("uk-open");
-			}
+			var id = $( e.target ).data("toggle");
+			_toggleModal( id );
 		});//end event
 
-/*		
-		$("#modal-edit-node").on("keydown", function(e) {
-console.log("e.keyCode = " + e.keyCode );
+
+		$(document).on("keydown", function(e) {
+//console.log(e);
+//console.log("e.keyCode = " + e.keyCode );
 			if (e.keyCode == 27) {
-console.log("press ESC ", e.target);
+//console.log("press ESC ", e.target);
+				_closeModal( "#modal-edit-node" );
 			}
-		});
-
-	$("#modal-edit-node").keypress(function(e){
-		if ( e.which == 27 )	{
-console.log("press ESC ", e);
-			//return false;
-		}
-	})		
-*/
-
-
-
+		});//end event
 
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
@@ -228,6 +204,33 @@ function toggleMenu(){
 		_vars.$offcanvasBar.css("width", 0);
 	}
 }//end toggleMenu()
+
+function _toggleModal( id ){
+	$m = $(id);
+	if( $m.hasClass("uk-open") ){
+		$m.hide( _vars.duration );
+		//$m.slideUp( _vars.duration, function () {
+		//$m.fadeOut( 600, function () {
+//console.log("-- end of hide....");				
+		//});
+		$m.removeClass("uk-open");
+	} else {
+		//$m.show("fast", function () {
+		$m.slideDown( _vars.duration, function () {
+		//$m.fadeIn( 600, function () {
+//console.log("-- end of show....");				
+		});
+		$m.addClass("uk-open");
+	}
+}//end _toggleModal()
+
+function _closeModal( id ){
+	$m = $(id);
+	if( $m.hasClass("uk-open") ){
+		$m.hide( _vars.duration );
+		$m.removeClass("uk-open");
+	}
+}//end _toggleModal()
 
 </script>
 </head>
@@ -791,11 +794,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
-				<li>
-<!-- <a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a> -->
-<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a>
-
-				</li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 		</div>
 	</div>
@@ -814,6 +813,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Vivaldi.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -831,6 +831,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Mozart.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -848,6 +849,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Bach.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -865,6 +867,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Handel.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -884,6 +887,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Rowan.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -901,6 +905,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/judas_priest.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -918,6 +923,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/My dying bride.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -935,6 +941,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Master.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -952,6 +959,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Manowar.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -969,6 +977,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Therion.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -986,6 +995,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Nightwish.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1003,6 +1013,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/russian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1020,6 +1031,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Kreator.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1037,6 +1049,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/KSU.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1054,6 +1067,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/punk, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1071,6 +1085,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/rus_punk.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1088,6 +1103,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/GrOb.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1105,6 +1121,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/ska.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1122,6 +1139,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1139,6 +1157,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1156,6 +1175,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1173,6 +1193,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/red_elvices.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1190,6 +1211,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/disko, pop.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1207,6 +1229,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/folk, chants.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1224,6 +1247,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/heavy,speed,power.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1241,6 +1265,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/indian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1258,6 +1283,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/melodic, folk metal.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1275,6 +1301,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/metallica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1292,6 +1319,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/apocalyptica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1309,6 +1337,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/Korpiklaani.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1326,6 +1355,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
@@ -1343,6 +1373,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-footer uk-padding-small">
 			<ul class="uk-list">
 			<li><a href="?q=play-list&url=/music/0_playlists/rock.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
 			</ul>
 
 		</div>
