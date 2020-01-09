@@ -14,6 +14,7 @@
 	
 	<script src="js/jquery-2.1.1.min.js"></script>
 <!--	
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="js/UIkit/uikit323.min.js"></script>
 	<script type="text/javascript" src="js/UIkit/core.min.js"></script>
@@ -38,7 +39,8 @@ var _vars = {
 	 $offcanvasBar : null,
 	 $offcanvasMenu : null,
 	 start_scroll_pos:0,
-	 end_scroll_pos:0
+	 end_scroll_pos:0,
+	 "imageNotLoad": "img/image_not_load.png"
 };
 console.log( _vars );
 
@@ -172,13 +174,14 @@ if( testRangeSupport !== "range"){
 	});//end scroll
 }
 
-//window.onload = function(){
+window.onload = function(){
+//onsole.log("onLoad()");
 // 	var _btnToggleMenu = document.querySelector("#btn-toggle-menu");
 // 	_btnToggleMenu.onclick = function(e){
 // console.log( e.type );
 // 	}//end event
 
-/*	
+/*
 	document.onkeydown = function(e) {
 //console.log(e);
 //console.log(e.type);
@@ -193,13 +196,12 @@ console.log( e.keyCode );
 			//view_log( info );
 			//$("#service-panel").show();
 		//}
-		if( e.keyCode === 27 ){//ESC
-			$(".uk-modal").toggle();
-		}
+		//if( e.keyCode === 27 ){//ESC
+			//$(".uk-modal").toggle();
+		//}
 	}//end event
-*/		
-	
-//}//end load
+*/
+}//end load
 
 function toggleMenu(){
 	var _w = parseInt( _vars.$offcanvasBar.css("width") );
@@ -1536,5 +1538,30 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 
 <!--  end progress bar -->	
 
+<script>
+	//------------------------ Image load error
+	_vars.blockNodeList = document.querySelector("#block-nodelist");
+//console.log(_vars);	
+	var images = _vars.blockNodeList.getElementsByTagName("img");
+console.log( "images =  ", images, images.length);
+
+	for( var n = 0; n < images.length; n++){
+		//if( images[n].clientHeight === 0 ){
+//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+//console.log( "img load error: ", images[n].getAttribute("src") );	
+			images[n].onerror = function(e){
+_vars["logMsg"] = "error, image not load: " + e.target["src"];
+_vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+//func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( _vars["logMsg"] );
+				e.target.src = _vars["imageNotLoad"];
+				e.target.style.width = "72px";
+			}
+			
+		//};
+	};//next
+	//------------------------
+
+</script>
 </body>
 </html>
