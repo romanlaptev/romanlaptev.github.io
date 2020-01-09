@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!--
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">	
+
+<meta name="referrer" content="no-referrer" />
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="robots" content="index, follow">
+
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="green" />
+<meta name="apple-mobile-web-app-title" content="test map API" />
+<meta name="apple-touch-fullscreen" content="yes">
+-->
+	
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="img/icons/favicon.png">
+<!--
+	<link rel="shortcut icon" type="image/x-icon" href="res/favicons/favicon.ico"/>
+	<link rel="mask-icon" sizes="any" href="res/favicons/mask-icon.svg" color="#f00"/>
+	<link rel="icon" type="image/png" sizes="16x16" href="res/favicons/favicon-16x16.png"/>
+	<link rel="icon" type="image/png" sizes="32x32" href="res/favicons/favicon-32x32.png"/>
+	<link rel="icon" type="image/png" sizes="96x96" href="res/favicons/favicon-96x96.png"/>
+	<link rel="apple-touch-icon" sizes="57x57" href="res/apple-touch-icon-57x57.png"/>
+	<link rel="apple-touch-icon" sizes="60x60" href="res/favicons/apple-touch-icon-60x60.png"/>
+	<link rel="apple-touch-icon" sizes="67x67" href="res/favicons/apple-touch-icon-76x76.png"/>
+	<link rel="apple-touch-icon" sizes="72x72" href="res/favicons/apple-touch-icon-72x72.png"/>
+	<link rel="apple-touch-icon" sizes="114x114" href="res/favicons/apple-touch-icon-114x114.png"/>
+	<link rel="apple-touch-icon" sizes="120x120" href="res/favicons/apple-touch-icon-120x120.png"/>
+	<link rel="apple-touch-icon" sizes="144x144" href="res/favicons/apple-touch-icon-144x144.png"/>
+	<link rel="apple-touch-icon" sizes="152x152" href="res/favicons/apple-touch-icon-152x152.png"/>
+-->
+
+
+<!--[if lt IE 9]>
+	<script src="js/fix_IE/html5shiv.js"></script>
+	<script src="js/fix_IE/respond.min.js"></script>
+<![endif]-->
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+<!--	
+	<link rel="stylesheet" href="css/style.css"/>
+-->
+
+
+<!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/main.js"></script>
+-->
+
+</head>
+
+<body>
+
+<style>
+html, body{
+	height:100%;
+margin:0;
+padding:0;
+}
+
+body {
+	background-color: #055c80;
+}
+
+
+.container {
+	width: 80%;
+	margin: auto;
+}
+
+.header {
+	/*height: 5%;*/
+	/* border: 1px solid; */
+	padding: 1px;
+	background-color: #e6e6fa;
+}
+
+
+.header h1 {
+	text-align: center;
+	padding: 0;
+	/*margin: 0;*/
+}
+
+.menu {
+	background-color: #004586;
+/*height: 5%;*/
+}
+
+.main {
+	height: 80%;
+/*overflow: hidden;*/
+	/* border: 1px solid; */
+	/* padding: 5px; */
+	/* clear: both; */
+}
+
+
+.sidebar{
+	float: left;
+	/* border: 1px solid; */
+	width: 20%;
+	height: 100%;
+}
+.sidebar-left {
+	background: #e6e6fa;
+}
+.sidebar-right {
+	background: #e6e6fa;
+}
+.content {
+	float: left;
+	/* border: 1px solid; */
+	/*background-color: lightskyblue; lavender*/
+	background-color: #ffffff;
+	width: 60%;
+	height: 100%;
+	/* padding: 5px; */
+}
+
+.footer {
+	height: 10%;
+	/* border: 1px solid; */
+	/* padding: 5px; */
+	background-color: #e6e6fa;
+}
+
+
+
+.wrapper {
+/*	margin: 5px;*/
+}
+.footer .wrapper {
+	margin: 0 5px 0 5px;
+	/* height: 100%; */
+	padding-top: 10px;
+}
+
+.panel {
+	background-color: deepskyblue;
+/*	width: 100%;*/
+/*	max-height: 90%;*/
+	margin: 5px;
+	padding: 5px;
+word-wrap: break-word;
+/*word-break: break-all;*/
+}
+
+pre {
+	margin: 0;
+}
+
+.menu .wrapper {
+padding: 10px;
+}
+
+.menu ul {
+	list-style: none;
+padding: 5px 1px 1px 1px;
+	margin: 0;
+	/* display: block; */
+	/* width: 100%; */
+	text-align: center;
+}
+
+.menu ul li {
+	display: inline;
+
+	/* width: 30%; */
+	font-size: 150%;
+	margin: 5px;
+	background-color: dodgerblue;
+padding: 0 10px;
+text-align:center;
+border-radius: 3px;
+}
+.menu ul li:hover {
+	background-color: deepskyblue;
+}
+
+.menu a {
+	text-decoration: none;
+	color: lightblue;
+	font-family: Arial,Verdana;
+	/* font-weight: bold; */
+}
+.menu a:hover {
+	color: #fff;
+}
+
+
+@media all and (max-width:700px){
+	body {
+		background-color: lightslategray;
+	}
+
+	.main {
+		height: auto;
+	}
+
+	.sidebar-left {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+	.content {
+		float: none;
+		width: 100%;
+	}
+	.sidebar-right {
+		float: none;
+		/*display:none;*/
+		width: 100%;
+		height: auto;
+	}
+
+	.menu ul li {
+		font-size: 110%;
+	}
+
+}
+
+
+/* GRID */
+.w10{
+	width:10%;
+}
+.w20{
+	width:20%;
+}
+.w25{
+	width:25%;
+}
+.w30{
+	width:30%;
+}
+.w33{
+	width:33%;
+}
+.w50{
+	width:50%;
+}
+.w60{
+	width:60%;
+}
+.w65{
+	width:65%;
+}
+.w70{
+	width:70%;
+}
+.w80{
+	width:80%;
+}
+.w90{
+	width:90%;
+}
+
+.row {
+	/* float: none; */
+	clear: both;
+	overflow: hidden;
+}
+.pull-left {
+	float: left;
+}
+.pull-right {
+	float: right;
+}
+.text-right{
+text-align:right;
+}
+.text-center{
+text-align:center;
+}
+/*================================*/
+
+/*==================LOG===========*/
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+background-color: #b0c4de;
+position: fixed;
+bottom: 0;
+right:0;
+z-index: 999;
+opacity: 0.9;
+border-radius: 4px;
+}
+
+.log-panel .panel-body{
+	padding: 0;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+#log .alert {
+margin-bottom: 0;
+padding: 10px;
+}
+
+#log p{
+margin: 0;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+}
+.alert-info {
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+.alert-success {
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+</style>
+
+	<div class="header container">
+		<div class="wrapper">
+			<h1>website</h1>
+		</div>
+	</div><!-- end header -->
+
+	<div class="menu container">
+		<div class="wrapper">
+		  <ul>
+				<li><a href="#">item1</a></li>
+				<li><a href="#">item2</a></li>
+				<li><a href="#">item3</a></li>
+				<li><a href="#">item1</a></li>
+				<li><a href="#">item2</a></li>
+				<li><a href="#">item3</a></li>
+				<li><a href="#">item1</a></li>
+				<li><a href="#">item2</a></li>
+				<li><a href="#">item3</a></li>
+		  </ul>
+		</div>
+	</div><!-- end menu -->
+
+	<div class="main container">
+
+		<div class="sidebar sidebar-left">
+		  <div class="wrapper">
+			<div class="panel"></div>
+		  </div>
+		
+		  <div class="wrapper">
+			<div class="panel"></div>
+		  </div>
+	  
+		</div><!-- end sidebar -->
+
+		<div class="content">
+		  <div class="wrapper">
+				<div class="panel">
+				  <ul>
+						<li><a href="#">000000000000</a></li>
+				  </ul>
+				</div>
+			</div>
+		</div><!-- end content -->
+	
+		
+		<div class="sidebar sidebar-right">
+		  <div class="wrapper">
+			<div class="panel"></div>
+		  </div>
+		</div><!-- end sidebar -->
+
+	</div><!-- end main -->
+
+	<div class="footer container">
+		<div class="wrapper">
+			<div class="panel"></div>
+		</div>
+	</div><!-- end footer -->
+
+
+
+	<div class="center-align">
+		<button id="btn-scroll-to-top" class="btn scroll-to nolink" data-target="insert-json">scroll to top</button>
+	</div>
+
+<!--  progress bar -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+			
+				<div class="center-align">
+					<h4>please, wait...</h4>
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+						
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
+				<div id="load-progress">
+					<div class="center-align">ajax load data 
+						<span id="percent-complete"></span>
+						<span id="num-total-load"></span>
+					</div>
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate blue center-align"></div>
+					</div>
+					<div id="load-info">
+<small>
+						Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+</small>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+<!--  end progress bar -->	
+
+<script>
+var func = sharedFunc();
+//console.log("func:", func);
+
+var _testObj = {
+	"logMsg": ""
+};
+console.log( _testObj );
+
+window.onload = function(){
+	_testObj.logMsg = navigator.userAgent;
+	func.logAlert( _testObj.logMsg, "info");
+
+	//init test object
+	_testObj["log"] = func.getById("log");
+	_testObj["btn_clear_log"] = func.getById("btn-clear-log");
+
+	_testObj["btn_clear_log"].onclick = function( event ){
+//console.log("click...", e);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		if (event.preventDefault) {
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+		_testObj.log.innerHTML = "";
+	};//end event
+//===============================
+/*
+	func.addEvent( 
+		_testObj["btnSave"], 
+		"click", 
+		function(e){
+//console.log( e );
+			var dataURL = _testObj["canvas"].toDataURL();//PNG
+console.log(dataURL)	;
+			//_saveImage();
+			_testObj["btnSave"].href = dataURL;
+		}
+	);//end event
+*/
+
+}//end load()
+
+</script>
+
+</body>
+</html>

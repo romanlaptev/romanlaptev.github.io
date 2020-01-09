@@ -1,5 +1,42 @@
-#d9ead3
-св-зеленый
+----------------------------------
+- исправить формат экспорта
+<xroot>
+	<database name="lib">
+	<taglist>
+		<tag tid="7" vid="2" name="biography"></tag>
+		<tag tid="8" vid="2" name="classical prose"></tag>		
+		<tag tid="9" vid="2" name="criminal"></tag>		
+		<tag tid="11" vid="2" name="словари, справочники"></tag>		
+		.....
+	</taglist>
+
+<node nid="1480" mlid="1455" plid="1870" type="library_book"  weight="-15">
+	<title>
+		<item>Туннель в небе</item>
+		<item type="bookname">Туннель в небе</item>
+....		
+	</title>
+	
+	<description></description>
+	<author>Хайнлайн Роберт</author>
+	
+	<related_links>
+		<li><a data-type="local-file" title="local file" href="/lib/books/H/Heinlein.Robert/....txt">....txt</a></li>
+		<li><a data-type="external-link" href="....">....</a></li>
+	</related_links>
+	
+	<tags>
+		<item tid="7" name="biography"></item>
+....		
+	</tags>
+	
+	<published format="dd:mm:yyyy hh:mm:ss">28-Jul-2013 19:19:23</published>
+	<updated format="dd:mm:yyyy hh:mm:ss">17-Aug-2014 20:25:24</updated>
+</node>
+	</database>
+</xroot>
+
+
 ----------------------------------- db_admin
 сделать возможность указать название хранилища для операций
 чтения, записи, удаления

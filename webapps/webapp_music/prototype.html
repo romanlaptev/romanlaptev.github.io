@@ -1,0 +1,1386 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Music collection</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset=utf-8 />
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icons/favicon.ico">
+	<link rel="apple-touch-icon" href="img/icons/favicon.png">
+	
+<!--	<link type="text/css" rel="stylesheet" href="css/bootstrap335.min.css"/>-->
+	
+	<script src="js/jquery-2.1.1.min.js"></script>
+<!--	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="js/UIkit/uikit323.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/core.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/offcanvas.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/toggle.min.js"></script>
+	<script type="text/javascript" src="js/UIkit/uikit221.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/uikit221.min.css">
+-->
+	<link rel="stylesheet" type="text/css" href="css/uikit323.min.css">
+	
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+<!--	
+	<script src="js/functions.js"></script>
+	<script src="js/webapp.js"></script>
+	<script src="js/main.js"></script>
+-->
+<script>
+var _vars = {
+	menuWidth : 270,//270px
+	duration : 600,
+	 $offcanvas : null,
+	 $offcanvasBar : null,
+	 $offcanvasMenu : null,
+	 start_scroll_pos:0,
+	 end_scroll_pos:0
+};
+console.log( _vars );
+
+if( typeof window.jQuery === "function"){
+	$(document).ready(function(){
+//console.log( "-- ready" );
+
+		//--------------------- Scroll
+
+		//Detect top position for scroll block
+
+		_vars.start_scroll_pos = $("#main").offset().top + 100;
+
+		_vars.end_scroll_pos = _vars.start_scroll_pos - 20;
+
+
+		_vars.$offcanvas = $("#off-canvas2");
+		_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+		_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+		_vars.$closeButtons = $("a[href='#close']");
+
+		_vars.$blockTags = $("#block-tags");
+		_vars.$blockTags.hide();
+//$("#block-player").hide();
+//$("#block-file-manager").hide();
+$(".collapse").hide();
+//$("#block-nodelist").show();
+$("#btn-scroll-to-top").hide();
+
+
+//--------------------------------- hide input type="range" if not support
+//https://learn.javascript.ru/dom-polyfill
+var testRangeSupport = document.getElementById("page-range").type;
+//console.log( testRangeSupport );
+if( testRangeSupport !== "range"){
+	document.getElementById("page-range").style.display="none";
+}
+//---------------------------------
+
+		$("#btn-toggle-menu").on("click", function(e){
+//console.log( e.type );
+			//e.preventDefault();
+			//return false;
+			toggleMenu();
+		});//end event
+		
+		$("#btn-close-menu").on("click", function(e){
+			toggleMenu();
+		});//end event
+
+		_vars.$offcanvasMenu.on("click", function(e){
+//console.log( e.target );
+			$(".collapse").hide();
+//console.log( $( e.target ).data()  );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			//$( _target ).slideToggle( _vars.duration, function(e){
+			$( _target ).show( _vars.duration, function(e){
+//console.log(arguments)
+				toggleMenu();
+			});
+		});//end event
+		
+	_vars.$closeButtons.on("click", function(e){
+//console.log( e.target );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			$( _target ).slideToggle( _vars.duration , function(e){
+//console.log(arguments)
+			});
+		});//end event
+
+		$(".scroll-to").addClass("nolink").on("click", function(){
+			if($(this).attr("href")){
+				var id = $(this).attr("href");
+			} else {
+				var id = "#" + $(this).attr("data-target");
+			}
+//console.log("id: " , id);
+
+			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
+
+			var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
+			 start_scroll_pos = start_scroll_pos - 100;// minus height, padding #top block
+//console.log("start_scroll_pos: " , start_scroll_pos);
+
+			$('html,body').animate({
+				scrollTop: start_scroll_pos
+				}, 500);
+			return false;
+		});//end event
+		
+	});//end ready
+	
+	$(window).scroll( function() {
+//var st = $(window).scrollTop();
+//document.title = st;
+//console.log ("scrollTop = " + st );
+		if ( $(this).scrollTop() > _vars.start_scroll_pos  ) {
+			$("#btn-scroll-to-top").show();
+		} 
+
+		if ( $(this).scrollTop() < _vars.end_scroll_pos ) {
+			$("#btn-scroll-to-top").hide();
+		}
+	});//end scroll
+}
+
+// window.onload = function(){
+// 	var _btnToggleMenu = document.querySelector("#btn-toggle-menu");
+// 	_btnToggleMenu.onclick = function(e){
+// console.log( e.type );
+// 	}//end event
+// 	
+// }//end load
+
+function toggleMenu(){
+	var _w = parseInt( _vars.$offcanvasBar.css("width") );
+//console.log( _vars.$offcanvasBar.css("width"), _w);
+	
+	if( _w == 0){
+		_vars.$offcanvas.css("display","block");
+		_vars.$offcanvasBar.css("width", _vars.menuWidth);
+	}
+
+	if( parseInt(_w) == _vars.menuWidth){
+		_vars.$offcanvas.css("display","none");
+		_vars.$offcanvasBar.css("width", 0);
+	}
+}//end toggleMenu()
+
+</script>
+</head>
+
+<body>
+<div id="top" class="header">
+	<div class="row top-bar">
+
+		<div class="uk-float-left">
+<!--https://3uikit.ru/offcanvas#-off-canvas-uikit-3		
+			<button uk-toggle="target: #off-canvas1" type="button">menu</button>
+<a href="#off-canvas1" uk-toggle></a>
+-->
+			
+<!-- 
+https://getuikit.com/v2/docs/offcanvas.html 
+			<a class="uk-button" href="#off-canvas2" data-uk-offcanvas="{mode: 'slide'}">Menu</a>
+-->
+			<a id="btn-toggle-menu" title="Menu" class="" href="#off-canvas2">
+				<span class="icon-bars"></span>
+			</a>
+		</div>
+
+		<div class="uk-float-right">
+			<h1 id="app-title">Application title</h1>
+		</div>
+	</div>
+</div>
+
+    <div class="my-offcanvas" id="off-canvas2">
+		<div class="my-offcanvas-bar">
+			<div class="uk-float-right">
+				<a id="btn-close-menu" href="#" class="my-close my-close-alt"></a>
+			</div>
+<br/>
+<br/>
+			<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+				<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
+				<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
+				<li><a data-toggle="#block-nodelist" class="uk-button uk-button-default" href="#">Playlists</a></li>
+				<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
+				<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
+			</ul>
+		</div>
+	</div>
+
+	</div>
+</div>
+
+
+
+<!--			<div id="off-canvas1" uk-offcanvas="mode:slide;overlay:false">
+				<div class="uk-offcanvas-bar">
+					<button class="uk-offcanvas-close" type="button" uk-close></button>
+					<ul class="uk-list">
+<li><button uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" class="uk-button uk-button-default w100" type="button">Tags list</button></li>
+<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-player" href="#">track list</a></li>
+<li><a class="uk-button uk-button-default w100" data-uk-toggle="target:#block-file-manager" href="#">file manager</a></li>
+					</ul>
+				</div>
+			</div>-->
+
+
+<div class="container">
+	<div id="main" class="" >
+		
+		
+<div id="block-player">
+	<div class="uk-card uk-card-default">
+
+		<div class="row">
+			<div class="uk-float-right">
+					<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+		
+		<div class="uk-card-body w60">
+			<div>
+				<b>Yankee_doodle.mp3</b><br>
+				<audio controls="controls" class="w100">
+						<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />
+Tag <b>audio</b> not supported by this browser.... 
+				</audio>
+			</div>
+			
+			<div class="uk-hidden">
+<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>
+				<video id="player1" controls="controls" src="" width="640" height="385">
+						<source src="">
+						Tag <b>video</b> not supported by this browser.... 
+				</video>
+			</div>
+			
+			<div id="player-buttons">
+<!--
+				<span id="video1-current">00:00</span>
+				<span id="video1-duration">00:00</span>
+				
+				<button id="btn-play" class="btn btn-primary">play</button>
+				<button id="btn-pause" class="btn btn-info">pause</button>
+				<a href="?q=stop-play" class="btn btn-danger">stop</a>
+				
+				<a href="?q=prev-track" class="btn btn-primary">prev track</a>
+				<a href="?q=next-track" class="btn btn-primary">next track</a>
+-->
+				<ul class="button-group uk-list">
+					<button id="btn-play" class="uk-button uk-button-small uk-button-default">play</button>
+					<button id="btn-pause" class="uk-button uk-button-small uk-button-default">pause</button>
+					<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>
+					<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div id="block-tracklist" class="">
+			<div class="wrapper">
+				<div class="row">
+					<div class="uk-float-left">
+						<h4>new playlist</h4>
+					</div>
+					<div class="uk-float-right">
+							<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+					</div>
+				</div>
+				
+				<div class="pls-buttons">
+					<ul class="menu-track-action button-group uk-list">
+						<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>
+						<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>
+						<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>
+						<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>
+					</ul>
+				</div>
+				
+				<div class="">
+				
+					<ul id="playlist" class="list-unstyled">
+						<li class="list-group-item">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | 
+									<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item active">
+							<div class="uk-clearfix">
+								<div class="uk-float-left">
+									<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>
+								</div>
+								<div class="uk-float-right">
+									<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | 
+									<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+			
+		</div>
+			
+	</div>
+</div>
+<!-- end block-player -->
+
+
+<!-- block-tags -->
+<div id="block-tags"  class="collapse">
+
+
+	<div id="block-tag-groups">
+		<div class="uk-card uk-card-primary">
+		
+		<div class="row">
+			<div class="uk-float-left uk-padding-small">
+				<b>Tag groups</b>
+			</div>
+			<div class="uk-float-right">
+	<!--			<a uk-toggle="target:#block-tags; animation: uk-animation-slide-top;  duration: 300" href="#" class="uk-button uk-button-small uk-button-danger">x</a>-->
+				<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+		
+		<div class="uk-card-body uk-padding-small">
+			<ul class="uk-list tag-list">
+				<li><a  href="?q=get-tag-group&vid=2">music_styles</a>	</li>
+				<li><a  href="?q=get-tag-group&vid=3">music_formats</a></li>
+				<li><a  href="?q=get-tag-group&vid=4">country</a></li>
+				<li><a  href="?q=get-tag-group&vid=5">alphabetical_voc</a></li>
+				<li><a  href="?q=get-tag-group&vid=8">music_band</a></li>
+				<li><a  href="?q=get-tag-group&vid=9">music_genre</a></li>
+			</ul>
+		</div>
+	</div>
+
+	</div>
+	
+	<div id="block-taglist">
+		<div class="uk-card uk-card-secondary">
+			<div class="uk-card-body uk-padding-small">
+				<ul class="uk-list tag-list">
+	<li><a  href="?q=get-tag&vid=2&vid=10">heavy metal</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=11">speed</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=12">power</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=15">фолк-метал</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=17">thrash</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=22">death</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=23">doom</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=24">симфоник-метал</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=32">rave</a></li>
+	<li><a href="?q=get-tag&vid=2&vid=33">techno</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=34">classic rock</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=39">русский рок</a></li>
+	<li><a  href="?q=get-tag&vid=2&vid=45">punk</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- end block-tags -->
+
+<!-- block-file-manager -->
+<div id="block-file-manager" class="collapse">
+		<div class="uk-card uk-card-default">
+			
+		<div class="row">
+			<div class="uk-float-left uk-padding-small">
+					<b>File manager</b>
+			</div>
+			<div class="uk-float-right">
+					<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+				
+			<div class="uk-card-body uk-padding-small">
+<!--
+<form method="post" name="filelist" action="">
+-->
+		<div class="wrapper">
+		
+			<div class="">
+				<ul class="menu-file-action button-group">
+					<button id="checkAll">select all</button>
+					<button id="clearAll">clear all</button>
+<!--
+					<li><a href="#modal-mkdir" class="mkdir uk-button uk-button-small uk-button-default">new folder</a>	</li>
+					<li><a href="#modal-copy" class="copy uk-button uk-button-small uk-button-default">copy</a></li>
+					<li><a href="#modal-copy" class="move uk-button uk-button-small uk-button-default">move</a></li>
+-->
+					<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>
+					<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete selected</a></li>
+					<li><a href="#modal-" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>
+				</ul>
+			</div>
+	
+			<div class="uk-padding-small">
+				<a class="up-link btn" href="/mnt/d2"><span class="icon-level-up"></span></a>
+				<span class="dirname">/mnt/d2/music</span>
+			</div>
+
+			<div class="wfm">
+						<ul class="folders-list uk-list uk-list-striped">
+							<li>
+								<input name="file[]" value="E" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/E"><span class="icon-folder"></span> E</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0"><span class="icon-folder"></span> 0</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_classic_music" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_classic_music"><span class="icon-folder"></span> 0_classic_music</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_covers" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_covers"><span class="icon-folder"></span> 0_covers</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_folk, chant" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_folk, chant"><span class="icon-folder"></span> 0_folk, chant</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_Jazz and swing" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_Jazz and swing"><span class="icon-folder"></span> 0_Jazz and swing</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_marshes, hymnes" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_marshes, hymnes"><span class="icon-folder"></span> 0_marshes, hymnes</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_playlists" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_playlists"><span class="icon-folder"></span> 0_playlists</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_soundtracks" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_soundtracks"><span class="icon-folder"></span> 0_soundtracks</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="0_trance,rave,electronic" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/0_trance,rave,electronic"><span class="icon-folder"></span> 0_trance,rave,electronic</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="A" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/A"><span class="icon-folder"></span> A</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="B" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/B"><span class="icon-folder"></span> B</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="C" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/C"><span class="icon-folder"></span> C</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="CH" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/CH"><span class="icon-folder"></span> CH</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="D" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/D"><span class="icon-folder"></span> D</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="EU" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/EU"><span class="icon-folder"></span> EU</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="F" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/F"><span class="icon-folder"></span> F</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="G" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/G"><span class="icon-folder"></span> G</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="H" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/H"><span class="icon-folder"></span> H</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="I" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/I"><span class="icon-folder"></span> I</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="J" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/J"><span class="icon-folder"></span> J</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="K" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/K"><span class="icon-folder"></span> K</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="L" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/L"><span class="icon-folder"></span> L</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="M" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/M"><span class="icon-folder"></span> M</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="N" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/N"><span class="icon-folder"></span> N</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="O" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/O"><span class="icon-folder"></span> O</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="P" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/P"><span class="icon-folder"></span> P</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="Q" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/Q"><span class="icon-folder"></span> Q</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="R" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/R"><span class="icon-folder"></span> R</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="S" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/S"><span class="icon-folder"></span> S</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="SH" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/SH"><span class="icon-folder"></span> SH</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="T" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/T"><span class="icon-folder"></span> T</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="U" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/U"><span class="icon-folder"></span> U</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="V" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/V"><span class="icon-folder"></span> V</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="W" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/W"><span class="icon-folder"></span> W</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="X" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/X"><span class="icon-folder"></span> X</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="Y" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/Y"><span class="icon-folder"></span> Y</a>
+							</li>
+						
+							<li>
+								<input name="file[]" value="Z" type="checkbox">
+								<a class="subfolder" href="/mnt/d2/music/Z"><span class="icon-folder"></span> Z</a>
+							</li>
+						</ul>
+
+						<ul class="files-list uk-list uk-list-striped">
+							<li>
+								<div class="file">
+									<input name="file[]" value="log.txt" type="checkbox">
+									<a href="/music/log.txt" target="_blank">log.txt</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="file">
+									<input name="file[]" value="robocopy.txt" type="checkbox">
+									<a href="/music/robocopy.txt" target="_blank">robocopy.txt</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="file">
+									<input name="file[]" value="sync_folder.cmd" type="checkbox">
+									<a href="/music/sync_folder.cmd" target="_blank">sync_folder.cmd</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="file">
+									<input name="file[]" value="sync_folder.sh" type="checkbox">
+									<a href="/music/sync_folder.sh" target="_blank">sync_folder.sh</a>
+								</div>
+							</li>
+						</ul>
+				
+			</div><!-- /wfm -->
+	
+
+		</div><!-- /files -->
+<!-- 
+		<input type="submit" value="submit">
+	</form> 
+--><!-- /panels -->	
+			
+			
+			
+			
+			</div>
+		</div>
+</div>
+<!-- end block-file-manager -->
+
+
+
+<div id="block-nodelist" class="uk-card uk-card-default">
+
+<!-- pager -->
+<div id="block-pager" class="uk-padding-small bg-lightsteelblue6">
+	<div class="row">
+			<div class="uk-float-left">
+total records: <b><span id="total-records">40</span></b>, 
+number of pages: <b><span id="total-pages">4</span></b>
+			</div>
+			<div class="uk-float-right">
+<form name="formSearch" id="form-search" action="?q=search" method="GET">
+				<ul class="button-group">
+					<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>
+					<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><span class="icon-search"></span></button></li>
+					<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><span class="icon-remove"></span></button></li>
+				</ul>
+</form>
+			</div>
+			
+	</div>
+	
+	<div class="row">
+		<div class="block-num-page uk-float-left w20">
+			<button id="page-number-less" class="">-</button>
+			<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">
+			<button id="page-number-more" class="">+</button>
+		</div>
+		
+		<div class="uk-float-left w60 box-range">
+<input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">
+		</div>
+		
+		<div class="uk-float-right">
+			<label class="uk-label">sort by</label>
+			<select id="select-sort" class="" autocomplete="off">
+				<option value="title" selected="">title</option>
+				<option value="published">publication date</option>
+			</select>
+		</div>
+
+	</div>
+					
+</div>
+<!-- end pager -->
+
+	<div class="uk-card uk-card-default album pls-0">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Jazz and swing</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg" alt="Jazz and swing" title="Jazz and swing">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+				<li><a href="?q=play-list&url=/music/0_playlists/Jazz and swing.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+				<li><a href="?q=edit-playlist&id=2" class="uk-button uk-button-secondary uk-button-small load-playlist">edit</a></li>
+			</ul>
+		</div>
+	</div>
+
+	
+
+	<div class="uk-card uk-card-default album pls-2">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Vivaldi, Antonio Lucio</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/V/Vivaldi/images/Vivaldi.jpg" alt="Vivaldi, Antonio Lucio" title="Vivaldi, Antonio Lucio">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Vivaldi.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-3">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Mozart, Wolfgang Amadeus</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/M/Mozart/images/Mozart.jpg" alt="Mozart, Wolfgang Amadeus" title="Mozart, Wolfgang Amadeus">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Mozart.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-4">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Bach, Johann Sebastian</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/B/Bach/images/Johann_Sebastian_Bach.jpg" alt="Bach, Johann Sebastian" title="Bach, Johann Sebastian">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Bach.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-5">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Handel, George Frideric</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/H/Handel/images/handel.jpg" alt="Handel, George Frideric" title="Handel, George Frideric">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Handel.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	
+
+	<div class="uk-card uk-card-default album pls-7">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Башня Rowan</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg" alt="Башня Rowan" title="Башня Rowan">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Rowan.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-8">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Judas Priest</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/J/Judas Priest/images/British Steel.jpg" alt="Judas Priest" title="Judas Priest">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/judas_priest.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-9">
+		<div class="uk-card-header uk-padding-small">
+				<h3>My dying bride</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/M/My dying bride/cover.jpg" alt="My dying bride" title="My dying bride">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/My dying bride.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-10">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Master</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/M/Master/cover.jpg" alt="Master" title="Master">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Master.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-11">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Manowar</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/M/Manowar/image/Manowar88.jpg" alt="Manowar" title="Manowar">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Manowar.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-12">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Therion</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/T/Therion/Therion.jpg" alt="Therion" title="Therion">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Therion.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-13">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Nightwish</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/N/Nightwish/Picture/n_cover.jpg" alt="Nightwish" title="Nightwish">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Nightwish.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-14">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Russian rock</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/russian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-15">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Kreator</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/K/Kreator/cover.jpg" alt="Kreator" title="Kreator">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Kreator.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-punk">
+		<div class="uk-card-header uk-padding-small">
+				<h3>KSU</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/K/KSU/cover.jpg" alt="KSU" title="KSU">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/KSU.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-rus-punk">
+		<div class="uk-card-header uk-padding-small">
+				<h3>punk, hardcore</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/punk, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-rus-punk">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Russian punk</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/rus_punk.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-grob">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Гражданская оборона</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/0_covers/grob.jpg" alt="Гражданская оборона" title="Гражданская оборона">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/GrOb.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-ska">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Ska</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/ska.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-thrash">
+		<div class="uk-card-header uk-padding-small">
+				<h3>thrash, death, grindecore, hardcore</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-trance">
+		<div class="uk-card-header uk-padding-small">
+				<h3>trance, rave, hip-hop, electronic</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-blues">
+		<div class="uk-card-header uk-padding-small">
+				<h3>blues, rock_n_roll, swing, jazz</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-blues">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Red Elvices</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/red_elvices.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-disko">
+		<div class="uk-card-header uk-padding-small">
+				<h3>disko, pop</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/disko, pop.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-folk">
+		<div class="uk-card-header uk-padding-small">
+				<h3>folk, chants</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/folk, chants.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-heavy">
+		<div class="uk-card-header uk-padding-small">
+				<h3>heavy,speed,power metal</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/heavy,speed,power.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-indian">
+		<div class="uk-card-header uk-padding-small">
+				<h3>indian music</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/indian.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-melodic-metal">
+		<div class="uk-card-header uk-padding-small">
+				<h3>melodic, folk metal</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/melodic, folk metal.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-Metallica">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Metallica</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg" alt="Metallica" title="Metallica">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/metallica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+<a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-Apocalyptica">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Apocalyptica</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/0_covers/apocalyptica.jpg" alt="Apocalyptica" title="Apocalyptica">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/apocalyptica.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-Korpiklaani">
+		<div class="uk-card-header uk-padding-small">
+				<h3></h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="/music/K/Korpiklaani/cover.jpg" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/Korpiklaani.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-hip-hop">
+		<div class="uk-card-header uk-padding-small">
+				<h3>transe, hip-hop, latin</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div class="uk-card uk-card-default album pls-rock">
+		<div class="uk-card-header uk-padding-small">
+				<h3>Rock</h3>
+			</div>
+		
+	<div class="uk-card-body uk-padding-small">
+		<img src="" alt="" title="">
+	</div>
+		
+		<div class="uk-card-footer uk-padding-small">
+			<ul class="uk-list">
+			<li><a href="?q=play-list&url=/music/0_playlists/rock.json" class="uk-button uk-button-primary uk-button-small load-playlist">add to player</a></li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+	</div><!-- end main central area -->
+
+
+	<div class="">
+		<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="main">scroll to top</button>
+	</div>
+
+</div><!-- end container -->
+
+<footer class="container">
+	<div class="">
+<div id="block-links">
+	<div class="uk-card uk-card-primary">
+				<ul class="uk-card-body uk-text-center">
+<li class="uk-inline"><a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a></li>
+<li class="uk-inline"><a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+<li class="uk-inline"><a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>
+<li class="uk-inline"><a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>
+<li class="uk-inline"><a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>
+<!--
+<li><a class="" href="http://10tracks.com/player.ru.html#songs" target="_blank">music on 10tracks.com</a></li>
+-->
+				</ul>
+	</div>
+</div>
+
+	</div>
+</footer>
+
+
+
+	<div class="log-panel">
+		<div class="panel-body">
+			<span class="uk-float-right">
+				<a id="btn-toggle-log" href="#?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a id="btn-clear-log" href="#?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
+		</div>
+	</div>
+
+
+<!--  progress bar -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="win1">
+    <div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+				<div class="center-align">
+					<h4>please, wait...</h4>
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="load-progress">
+					<div class="center-align">ajax load data 
+						<span id="percent-complete"></span>
+						<span id="num-total-load"></span>
+					</div>
+
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate blue center-align"></div>
+					</div>
+
+					<div id="load-info">
+<small>
+						Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+</small>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<!--  end progress bar -->	
+
+</body>
+</html>

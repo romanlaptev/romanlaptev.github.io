@@ -66,6 +66,10 @@ border: 1px solid #004586;
 .bg-lightsteelblue6{
   background-color: #C7D5EC !important;
 }
+.bg-lightsteelblue7{
+  background-color: #AABAD5 !important;
+}
+
 
 
 .bg-yellow {
@@ -90,6 +94,10 @@ border: 1px solid #004586;
 .bg-orange4 {/* video.css*/
   background-color: #FECD90 !important;
 }
+.bg-orange5 {
+  background-color: #E9B96E !important;
+}
+
 
 .bg-red-brown {
   background-color: #2f0606 !important;
@@ -261,6 +269,12 @@ border: 1px solid #004586;
 .bg-grey-green2{
   background-color: #607d8b !important;
 }
+
+.steel-grey{
+  background-color: #53687c !important;
+}
+
+
 .bg-grey-green3{/* book_Rods */
   background-color: #abbabb !important;
 }
@@ -355,6 +369,10 @@ border: 1px solid #004586;
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
 	-moz-box-shadow: inset 0 36px 38px -38px #fff;
 	box-shadow: inset 0 36px 38px -38px #fff;
+	
+  font-family: avantgarde;
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-blue:hover {
 	background-color: #ff8c00 !important;
@@ -413,6 +431,9 @@ border: 1px solid #004586;
 	box-shadow: inset 0 36px 38px -38px #fff;
 	border-color: #3f9cca;
 	color: #fff;
+  font-family: ticker_taperegular;
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-darkblue:hover {
 	background-color: #ff8c00;
@@ -613,6 +634,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
 	-moz-box-shadow: inset 0 36px 38px -38px #fff;
 	box-shadow: inset 0 36px 38px -38px #fff;
+	
+/*  font-family: Lobster;*/
+  font-size: 14px;
+  font-weight: 400;
 }
 .btn-green-shadow:hover, 
 .btn-green-shadow:focus 

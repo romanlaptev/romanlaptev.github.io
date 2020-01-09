@@ -353,6 +353,10 @@ console.log(data);
 		
 		_getTestImageCallBack(function( imageBlob){
 console.log(imageBlob);
+if(!imageBlob){
+return false;
+}
+
 			formData.append("image", imageBlob, "testImage.png");
 			func.runAjax( {
 				"requestMethod" : p["requestMethod"],
@@ -387,6 +391,11 @@ console.log(arguments);
 }//end _getTestImage()
 
 function _getTestImageCallBack( callback ){
+if( !_vars["canvas"].toBlob ){
+	_vars.logMsg = "error, not support method <b>canvas.toBlob</b> ";
+	func.logAlert( _vars.logMsg, "error");
+	return false;
+}
 	_vars["canvas"].toBlob( getBlobObj, "image/png");
 	
 	function getBlobObj( blobObj){
