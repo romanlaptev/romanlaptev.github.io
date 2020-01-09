@@ -606,7 +606,8 @@ console.log(xhr.upload);
 			}
 			
 			//send query	
-			if( requestMethod !== "POST"){
+			//if( requestMethod !== "POST"){
+			if( requestMethod.toUpperCase() !== "POST" ){
 				try{
 					xhr.send();
 				}catch(e){
@@ -620,7 +621,8 @@ console.log(e);
 			}
 			
 //------------------------------------- form POST body
-			if( requestMethod === "POST"){ //http://learn.javascript.ru/xhr-forms 
+			//if( requestMethod === "POST"){ //http://learn.javascript.ru/xhr-forms 
+			if( requestMethod.toUpperCase() === "POST" ){
 			
 				if( p["enctype"] === "multipart/form-data"){
 					xhr.send( p["formData"] );

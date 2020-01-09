@@ -329,7 +329,7 @@ if( p["enctype"] === "multipart/form-data"){
 	//_getTestImage();
 
 //for test
-_vars["support"]["promiseSupport"] = false;
+//_vars["support"]["promiseSupport"] = false;
 
 	if( _vars["support"]["promiseSupport"] ){
 		_getTestImage().then( function( imageBlob ){
