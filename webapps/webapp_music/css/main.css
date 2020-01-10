@@ -160,6 +160,13 @@ label {
   content: "\f178";
 }
 
+.icon-chevron-up:before {
+  content: "\f077";
+}
+.icon-chevron-down:before {
+  content: "\f078";
+}
+
 /*.subfolder > small {
   content: "\f07b";
 }*/
@@ -259,7 +266,15 @@ margin: 0;
 .btn-blue-c4:active {
 	background-color: red;
 }
-
+.btn-dropdown {
+	background-color: #aecdd5;
+	border-radius: 100%;
+	border: 2px solid #8fabb2;
+padding: 7px 7px 7px 7px;
+position: relative;
+top: 7px;	
+outline:none;
+}
 
 /* fix UIkit */
 /* .uk-modal-page { 
@@ -485,8 +500,8 @@ left: 1px;
 	/* float: left; */
 	display: inline-block;
 	vertical-align: top;
-border: 1px solid #ccc;
-text-align: center;
+border: 2px solid #8fabb2;
+/* text-align: center; */
 background-color: #cfdfe6;
 }
 
@@ -506,6 +521,17 @@ margin: auto;
 word-break: break-all;
 }
 
+.node .block-content{
+display:none;
+}
+.node .related-links{
+	text-align: left;
+	font-size: 80%;
+}
+.node .description{
+	text-align: left;
+	font-size: 80%;
+}
 
 
 /*

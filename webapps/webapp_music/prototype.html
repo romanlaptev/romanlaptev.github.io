@@ -59,6 +59,7 @@ if( typeof window.jQuery === "function"){
 		_vars.$closeButtons = $("a[href='#close']");
 		_vars.$modalButtons = $("a[href^='#modal']");
 		_vars.$getTagGroups = $("a[href^='#get-tag-group']");
+		_vars.$toggleContent = $(".toggle-content");
 
 		_vars.$blockTags = $("#block-tags");
 //_vars.$blockTags.hide();
@@ -137,6 +138,35 @@ if( testRangeSupport !== "range"){
 			$( _target ).slideToggle( _vars.duration , function(e){
 //console.log(arguments)
 			});
+		});//end event
+
+		_vars.$toggleContent.on("click", function(e){
+//console.log( e.target );
+
+			var test = $(e.target).hasClass("icon-chevron-down");
+//console.log( test );
+			var test2 = $(e.target).hasClass("icon-chevron-up");
+//console.log( test2 );
+
+if( test || test2 ){
+			var _p = e.target.parentNode;
+//console.log( _p );
+			var $blockContent = $(_p).find(".block-content");
+//console.log( $blockContent );
+			$blockContent.slideToggle(_vars.duration);
+
+			var $buttonDropDown = $(e.target);
+//console.log( $buttonDropDown );
+			var test = $buttonDropDown.hasClass("icon-chevron-down");
+			if( test ){
+				$buttonDropDown.removeClass("icon-chevron-down");
+				$buttonDropDown.addClass("icon-chevron-up");
+			} else {
+				$buttonDropDown.removeClass("icon-chevron-up");
+				$buttonDropDown.addClass("icon-chevron-down");
+			}
+}
+			
 		});//end event
 
 
@@ -871,15 +901,25 @@ number of pages: <b><span id="total-pages">4</span></b>
 	<div class="uk-card-body uk-padding-small block-images">
 		<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg" alt="Judas Priest" title="Judas Priest">
 	</div>
-		
-		<div class="uk-card-body uk-padding-small block-content">
-<a href="?q=load_playlist&url=/music/0_playlists/judas_priest.json" class="load-playlist">add to playlist</a>		
-			<ul class="uk-list">
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
-<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="btn btn-info" target="_blank">yandex music</a></li>
-			</ul>
-			
+	
+		<div class="toggle-content">
+			<button class="btn-dropdown icon-chevron-down"></button>
+			<div class="uk-card-body uk-padding-small block-content">
+				<ul class="uk-list">
+	<li><a href="#?q=load_playlist&url=/music/0_playlists/judas_priest.json" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>
+	<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
+				</ul>
+				<ul class="related-links">
+	<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="" target="_blank">music.yandex.ru</a></li>
+	<li><a href="#" class="" target="_blank">youtube playlists</a></li> 
+	<li><a href="#" class="" target="_blank">music on VK.com </a></li>
+	<li><a href="#" class="" target="_blank">music on OK.ru </a></li>
+	<li><a href="#" class="" target="_blank">music on cloud.mail.ru</a></li>
+				</ul>
+				<div class="description">description</div>
+			</div>
 		</div>
+		
 	</div>
 
 	<div class="uk-card uk-card-default node pls-0">
@@ -894,7 +934,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 				<li><a href="?q=load_playlist&url=/music/0_playlists/Jazz and swing.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal&id=1" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal&id=1" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 		</div>
 	</div>
@@ -913,7 +953,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Vivaldi.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -931,7 +971,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Mozart.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -949,7 +989,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Bach.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -967,7 +1007,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Handel.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -987,7 +1027,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Rowan.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1006,7 +1046,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/My dying bride.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1024,7 +1064,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Master.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1042,7 +1082,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Manowar.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1060,7 +1100,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Therion.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1016" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1078,7 +1118,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Nightwish.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1015" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1096,7 +1136,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/russian.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1114,7 +1154,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Kreator.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1132,7 +1172,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/KSU.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1020" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1150,7 +1190,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/punk, hardcore.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1168,7 +1208,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/rus_punk.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1010" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1186,7 +1226,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/GrOb.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1006" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1204,7 +1244,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/ska.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1012" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1222,7 +1262,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/thrash, death, grindecore, hardcore.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1240,7 +1280,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/trance, rave, hip-hop, electronic.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1258,7 +1298,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/blues, rock_n_roll, swing, jazz.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1276,7 +1316,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/red_elvices.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1294,7 +1334,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/disko, pop.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1312,7 +1352,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/folk, chants.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1330,7 +1370,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/heavy,speed,power.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1348,7 +1388,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/indian.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1366,7 +1406,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/melodic, folk metal.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1384,7 +1424,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/metallica.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 <a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a>
 		</div>
@@ -1402,7 +1442,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/apocalyptica.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1420,7 +1460,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/Korpiklaani.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1438,7 +1478,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/mix_transe, hip-hop, latin.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1456,7 +1496,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 		<div class="uk-card-body uk-padding-small block-content">
 			<ul class="uk-list">
 			<li><a href="?q=load_playlist&url=/music/0_playlists/rock.json" class="load-playlist">add to playlist</a></li>
-<li><a data-toggle="#modal-edit-node" href="#modal" class="">edit</a></li>
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>
 			</ul>
 
 		</div>
@@ -1603,7 +1643,12 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 	_vars.blockNodeList = document.querySelector("#block-nodelist");
 //console.log(_vars);	
 	var images = _vars.blockNodeList.getElementsByTagName("img");
-//console.log( "images =  ", images, images.length);
+//console.log( "images =  " + images.length);
+//console.log( "images.onerror =  "+ typeof images[0].onerror);
+
+//if( typeof images[0].onerror !== "object"){
+//console.log( "error, 'images.onerror' callback not supported...");
+//} else {
 
 	for( var n = 0; n < images.length; n++){
 		//if( images[n].clientHeight === 0 ){
@@ -1621,19 +1666,24 @@ _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 				
 //console.log(e.target.parentNode);				
 				var _blockImages = e.target.parentNode;
-				_blockImages.style.background = "#ff6347";
-				_blockImages.style.color = "#fff";
+				_blockImages.style.background = "#ffa500";
+				_blockImages.style.color = "#000";
 				_blockImages.innerHTML = _vars["logMsg"];
 			}
 
 			images[n].onload = function(e){
-console.log(e);
+//console.log(e);
 				var _blockImages = e.target.parentNode;
 				_blockImages.style.background = "transparent";
 			}
 			
 		//};
 	};//next
+
+	
+//}
+
+
 	//------------------------
 
 </script>
