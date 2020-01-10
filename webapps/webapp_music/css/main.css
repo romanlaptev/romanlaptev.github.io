@@ -306,6 +306,13 @@ position: relative;
 top: 7px;	
 outline:none;
 }
+.btn-dropdown:active {
+background-color:  green;
+outline:none;
+}
+.btn-dropdown:focus {
+outline:none;
+}
 
 /* fix UIkit */
 /* .uk-modal-page { 
