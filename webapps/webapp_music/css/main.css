@@ -307,11 +307,13 @@ top: 7px;
 outline:none;
 }
 .btn-dropdown:active {
-background-color:  green;
+background-color:  #269abc;
 outline:none;
 }
 .btn-dropdown:focus {
 outline:none;
+}
+.btn-dropdown:hover {
 }
 
 /* fix UIkit */
