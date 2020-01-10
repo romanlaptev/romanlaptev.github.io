@@ -303,7 +303,7 @@ margin: 0;
 	border: 2px solid #8fabb2;
 padding: 7px 7px 7px 7px;
 position: relative;
-top: 7px;	
+top: 25px;	
 outline:none;
 }
 .btn-dropdown:active {
@@ -537,7 +537,7 @@ left: 1px;
 	/* max-width: 300px; */
 	width: 250px;
 min-height: 380px;	
-	margin: 5px;
+	margin: 7px;
 	/* float: left; */
 	display: inline-block;
 	vertical-align: top;
@@ -567,6 +567,8 @@ word-break: break-all;
 
 .node .block-content{
 display:none;
+border-top: 1px dashed;
+margin-top: 10px;
 }
 .node .related-links{
 	text-align: left;
