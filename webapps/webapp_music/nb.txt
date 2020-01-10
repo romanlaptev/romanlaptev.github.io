@@ -28,6 +28,15 @@
 - сделать верстку элемента из блока blok-nodelist
 область со связанными ссылками и описанием нужно сделать
 разворачиваемой
+
+{{title}}
+{{images}}
+<button>add to playlist</button>
+{{description}}
+{{related_links}}
+{{published}}
+{{updated}}
+{{tags}}
 ============================== EXPORT
 <xroot>
 	<database name="music">

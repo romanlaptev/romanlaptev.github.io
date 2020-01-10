@@ -478,8 +478,9 @@ left: 1px;
 }
 
 
-.album {
-	max-width: 300px;
+.node {
+	/* max-width: 300px; */
+	width: 250px;
 	margin: 5px;
 	/* float: left; */
 	display: inline-block;
@@ -489,11 +490,20 @@ text-align: center;
 background-color: #cfdfe6;
 }
 
-.album img {
+.node img {
 	width: 100%;
 }
-.album h3 {
+.node h3 {
 	background-color: #aecdd5;
+	padding:5px;
+	font-size: 120%;
+}
+.node .block-images {
+background: url("../img/icons/icon-load.gif") no-repeat center;
+width: 200px;
+min-height: 200px;
+margin: auto;
+word-break: break-all;
 }
 
 
