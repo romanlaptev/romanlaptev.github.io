@@ -504,6 +504,9 @@ border: 2px solid #8fabb2;
 /* text-align: center; */
 background-color: #cfdfe6;
 }
+.node .uk-card-header {
+	border-bottom: 1px solid #8fabb2;
+}
 
 .node img {
 	width: 100%;
@@ -532,7 +535,10 @@ display:none;
 	text-align: left;
 	font-size: 80%;
 }
-
+.node-tags {
+	padding: 0;
+	background-color: #e5ecef;
+}
 
 /*
 #block-nodelist {
@@ -600,6 +606,9 @@ border: 1px solid #004586;*/
 .list-unstyled {
 	padding-left: 0;
 	list-style: none;
+}
+.list-inline li {
+	display: inline-block;
 }
 
 .uk-list-striped > li {
