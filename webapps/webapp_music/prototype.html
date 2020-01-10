@@ -402,8 +402,8 @@ Tag <b>audio</b> not supported by this browser....
 				<a href="?q=next-track" class="btn btn-primary">next track</a>
 -->
 				<ul class="button-group uk-list">
-					<button id="btn-play" class="uk-button uk-button-small uk-button-default">play</button>
-					<button id="btn-pause" class="uk-button uk-button-small uk-button-default">pause</button>
+					<button id="btn-play" class="btn btn-blue">play</button>
+					<button id="btn-pause" class="btn btn-blue">pause</button>
 					<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>
 					<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>
 				</ul>
@@ -918,7 +918,7 @@ number of pages: <b><span id="total-pages">4</span></b>
 	<li><a href="#" class="" target="_blank">music on cloud.mail.ru</a></li>
 				</ul>
 				
-				<div class="description">description</div>
+				<div class="description">https://ru.wikipedia.org/wiki/Korpiklaani</div>
 				
 				<ul class="list-inline node-tags">
 <small><b>related tags:</b></small>
@@ -1669,7 +1669,7 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 //console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
 //console.log( "img load error: ", images[n].getAttribute("src") );	
 			images[n].onerror = function(e){
-_vars["logMsg"] = "error, image not load: " + e.target["src"];
+_vars["logMsg"] = "error, image not load: <small><b>" + e.target["src"] + "</b></small>";
 _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 //func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 //console.log( _vars["logMsg"] );
@@ -1680,9 +1680,9 @@ _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 				
 //console.log(e.target.parentNode);				
 				var _blockImages = e.target.parentNode;
-				_blockImages.style.background = "#ffa500";
-				_blockImages.style.color = "#000";
-				_blockImages.innerHTML = _vars["logMsg"];
+				//_blockImages.style.background = "#ffa500";
+				//_blockImages.style.color = "#000";
+				_blockImages.innerHTML = "<div class='uk-alert uk-alert-danger'>"+_vars["logMsg"] +"</div>";
 			}
 
 			images[n].onload = function(e){
