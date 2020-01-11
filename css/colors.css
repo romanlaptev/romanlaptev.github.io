@@ -173,6 +173,9 @@ border: 1px solid #004586;
 .bg-turquoise7{
   background-color: #006633 !important;
 }
+.bg-turquoise8{
+  background-color: #00848c !important;
+}
 .bg-turquoise9{
   background-color: #66cc99 !important;
 }
@@ -269,6 +272,11 @@ border: 1px solid #004586;
 .bg-grey-green2{
   background-color: #607d8b !important;
 }
+.bg-grey-green3{
+  background-color: #dae9ea !important;
+color: #00848c;
+}
+
 
 .steel-grey{
   background-color: #53687c !important;
