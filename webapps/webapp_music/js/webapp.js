@@ -25,36 +25,16 @@ var webApp = {
 // 			"queryRes": []
 		},
 
-		"videoTypes" : {
-"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
-"ogv" : { testParam:['video/ogg'], support:false },
-"mp4" : { testParam:['video/mp4; codecs="avc1.4D401E, mp4a.40.2"'], support:false },
-"m4v" : { testParam:['video/x-m4v'], support:false },
-"webm" : { testParam:['video/webm; codecs="vp8.0, vorbis"'], support:false },
-"mpg" : { testParam:['video/mpeg'], support:false },//MPEG-1
-"mov" : { testParam:['video/quicktime'], support:false },
-"wmv" : { testParam:['video/x-ms-wmv'], support:false },//Windows Media Video
-"3gp" : { testParam:['video/3gpp'], support:false },
-"flv" : { testParam:['video/x-flv'], support:false },
-"mkv" : { testParam:['video/x-matroska'], support:false },
-"vob" : { testParam:['video/x-ms-vob'], support:false },
-"avi" : { testParam:['video/vnd.avi','video/avi','video/msvideo', 'video/x-msvideo'], support:false }
+		"audioTypes" : {
+//"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
 		
 		"playlist" : {
 			tracks:[
-{title:"test MP4", src: "../../test_code/js/test_media/video/video.mp4"},
-{title:"test WEBM", src: "../../test_code/js/test_media/video/2018-05-05-064753.webm"},
-{title:"test OGV", src: "../../test_code/js/test_media/video/small.ogv"}//,
 //{title:"Anda Jaleo Jaleo", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
 			],
 			lastNum:0
 		},
-/*		
-http://youtube.com/embed/
-//ok.ru/videoembed/
-http://rutube.ru/play/embed/
-*/		
 		"blocks": [
 			{
 				"locationID" : "block-playlist",
@@ -96,19 +76,6 @@ http://rutube.ru/play/embed/
 					_draw_buildBlock( this );
 				}
 			}, //end block
-			
-/*			
-			{
-				"locationID" : "block-jplayer",
-				"title" : "jplayer", 
-				"templateID" : "tpl-block-jplayer",
-				"content" : "",
-				"visibility":false,
-				"buildBlock" : function(){
-					_draw_buildBlock( this );
-				}
-			}, //end block
-*/
 			
 /*
 			{
@@ -177,13 +144,7 @@ _db_getBlockContent(){
 			} //end block
 
 		],
-		
-		"templates_url" : "tpl/templates.xml",
-		"templates" : {
-			"localVideoBtn" : "create link",
-			"embedVideoBtn" : "open video in new tab",
-			"localVideoBtnUpdated" : "<a href='{{url}}' class='btn btn-primary' target='_blank'>open local video file in new tab</a>"
-		},
+
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
@@ -221,7 +182,13 @@ return;
 			_runApp();
 		});
 		
-	}//end init()
+	},//end init()
+	
+	//Modules
+	//"db" : _db(),
+	//"iDBmodule" : iDBmodule(),
+	//"draw" : _draw(),
+	//"app" : _app(),
 	
 };//end webApp()
 console.log(webApp);
@@ -325,39 +292,6 @@ func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 
 
 function defineEvents(){
-	
-	$("#btn-clear-log").on("click", function(event){
-//console.log("click...", e);			
-		event = event || window.event;
-		var target = event.target || event.srcElement;
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;				
-		}
-		
-		webApp.vars["log"].innerHTML="";
-	});//end event
-	
-//------------------------------------------------------------------
-	$("#btn-toggle-log").on("click", function(event){
-//console.log("click...", e);			
-		event = event || window.event;
-		//var target = event.target || event.srcElement;
-		if (event.preventDefault) { 
-			event.preventDefault();
-		} else {
-			event.returnValue = false;				
-		}
-		
-		if( webApp.vars["log"].style.display==="none"){
-			webApp.vars["log"].style.display="block";
-			webApp.vars["btnToggle"].innerHTML="-";
-		} else {
-			webApp.vars["log"].style.display="none";
-			webApp.vars["btnToggle"].innerHTML="+";
-		}
-	});//end event
 	
 //------------------------------------------------------------------
 	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
@@ -657,28 +591,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	});//end event
 
 
-	//$("#btn-play").on("click", function(event){
-		////webApp.vars["player"].play();
-	//});//end event
-
-	//$("#btn-pause").on("click", function(event){
-		////webApp.vars["player"].pause();
-	//});//end event
-	
-	if( webApp.vars["player"].nodeName === "VIDEO"){
-		
-		webApp.vars["player"].addEventListener('ended',function(e){
-//console.log(e);
-			var url = "?q=next-track&autoplay=TRUE";
-			webApp.vars["GET"] = func.parseGetParams( url ); 
-			_urlManager();
-		},false);//end event
-		
-		//$("#player1").on("ended", function(e){
-	//console.log(e);
-		//});//end event
-	}
-	    
 
 	function _actionClick(target, event){
 		var actionLink = true;
@@ -761,36 +673,6 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 //console.log(target);
 		
 		switch( webApp.vars["GET"]["q"] ) {
-/*
-			
-			case "hide-log":
-				var log = getById("log-wrap");
-				log.style.display="none";
-			break;
-			case "view-log":
-				var log = getById("log-wrap");
-				log.style.display="block";
-			break;
-			case "toggle-log":
-				var log = getById("log-wrap");
-//console.log(log.style.display);
-				if( log.style.display==="none"){
-					log.style.display="block";
-				} else {
-					log.style.display="none";
-				}
-			break;
-			
-			case "clear-log":
-				var log = getById("log");
-				log.innerHTML="";
-			break;
-			
-			case "test":
-				_test();
-			break;
-*/
-
 			case "list_nodes":
 console.log("-- start build page --");
 				//var timeStart = new Date();
@@ -1108,7 +990,6 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 	}//end _urlManager()
-
 
 
 
@@ -2451,33 +2332,3 @@ console.log( webApp.vars["logMsg"] );
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
 
-	function _draw_setActiveTrack( activeNum ){
-//console.log(activeNum);	
-		var activeItem = false;
-		$("#playlist li").each(function(num, value){
-//console.log(num)
-			$(this).removeClass("active");
-//console.log(num, activeNum, typeof activeNum, num === activeNum);
-			if( num === activeNum){
-				activeItem = value;//this...
-			}
-		});//end each
-		
-		if( activeItem ){
-			$(activeItem).addClass("active");
-		}
-	}//end _draw_setActiveTrack()
-/*
-	function _draw_checkAll(){
-		$("#playlist li input[type=checkbox]").each(function(num, item){
-//console.log(num, item);
-			$(item).prop("checked", true);
-		});//end each
-	}//end _draw_checkAll()
-
-	function _draw_clearAll(){
-		$("#playlist li input[type=checkbox]").each(function(num, item){
-			$(item).prop("checked", false);
-		});//end each
-	}//end _draw_clearAll()
-*/

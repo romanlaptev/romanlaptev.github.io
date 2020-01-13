@@ -1416,6 +1416,7 @@ console.log("textStatus:" + textStatus);
 
 window.onload = function(){
 //console.log("window event onload");
+//console.log("-- document.readyState = " + document.readyState);
 	
 	//btn_scroll = getById("btn-scroll-to-top");
 	
@@ -1453,16 +1454,32 @@ window.onresize = function(event) {
 //};
 
 /* for Mozilla/Firefox/Opera 9 */
-//if (document.addEventListener) {
-	//document.addEventListener("DOMContentLoaded", function(){
-//console.log("DOMContentLoaded");
-	//},false);//end dom load
-//}
+//https://developer.mozilla.org/ru/docs/Web/Events/DOMContentLoaded
+//https://learn.javascript.ru/onload-ondomcontentloaded
+/*
+if (document.addEventListener) {
+	document.addEventListener("DOMContentLoaded", function(){
+console.log("DOMContentLoaded");
+console.log("-- document.readyState = " + document.readyState);
+	},false);//end dom load
+}
+*/
+
+//https://developer.mozilla.org/ru/docs/Web/API/Document/readyState
+// альтернатива событию DOMContentLoaded
+/*
+document.onreadystatechange = function () {
+  if (document.readyState == "interactive") {
+    initApplication();
+  }
+}
+*/
 
 if( typeof window.jQuery === "function"){
 //var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
 //_log(msg);
 	$(document).ready(function(){
+//console.log("-- document.readyState = " + document.readyState);
 		
 		//ввод только цифр
 		$('.only-numbers').on('keydown', function(event) {
