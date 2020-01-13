@@ -3,14 +3,14 @@ var func = sharedFunc();
 
 var _vars = {
 	"logMsg": "",
-	menuWidth : 270,//270px
-	duration : 600,
-	$offcanvas : null,
-	$offcanvasBar : null,
-	$offcanvasMenu : null,
+	//menuWidth : 270,//270px
+	//duration : 600,
+	//$offcanvas : null,
+	//$offcanvasBar : null,
+	//$offcanvasMenu : null,
 	start_scroll_pos:0,
-	end_scroll_pos:0,
-	"imageNotLoad": "img/image_not_load.png"
+	end_scroll_pos:0//,
+	//"imageNotLoad": "img/image_not_load.png"
 };
 console.log( _vars );
 
@@ -29,7 +29,7 @@ if (document.addEventListener) {
 	document.addEventListener("DOMContentLoaded", function(){////DOM ready, but not load images
 console.log("DOMContentLoaded");
 console.log("-- document.readyState = " + document.readyState);
-	initApplication();
+	//initApplication();
 	},false);//end dom load
 }
 
@@ -88,6 +88,7 @@ function initApplication(){
 		}
 	);//end event
 
+/*
 //------------------------ Image load error
 	_vars.blockNodeList = document.querySelector("#block-nodelist");
 //console.log(_vars);	
@@ -123,7 +124,7 @@ _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 	};//next
 //}
 //------------------------
-	
+*/
 }//end initApplication()
 
 
@@ -135,7 +136,7 @@ console.log("end webApp initialize....");
 }//end _runApp()
 
 function _initPage(){
-
+/*
 	_vars.$offcanvas = $("#off-canvas2");
 	_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
 	_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
@@ -255,7 +256,7 @@ function _initPage(){
 		}
 	});//end event
 	
-	
+*/	
 //--------------------- Scroll
 	//Detect top position for scroll block
 	_vars.start_scroll_pos = $("#main").offset().top + 100;

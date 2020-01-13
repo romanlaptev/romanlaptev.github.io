@@ -77,19 +77,6 @@ var webApp = {
 				}
 			}, //end block
 			
-/*			
-			{
-				"locationID" : "block-jplayer",
-				"title" : "jplayer", 
-				"templateID" : "tpl-block-jplayer",
-				"content" : "",
-				"visibility":false,
-				"buildBlock" : function(){
-					_draw_buildBlock( this );
-				}
-			}, //end block
-*/
-			
 /*
 			{
 				"locationID" : "block-list-video",
