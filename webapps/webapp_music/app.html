@@ -26,6 +26,12 @@
 -->
 
 	<script src="js/functions.js"></script>
+<!--	
+<script src="js/iDBmodule.js"></script>
+<script src="js/webSQLmodule.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/templates.js"></script>
+-->	
 	<script src="js/webapp.js"></script>	<script src="js/main.js"></script>
 </head>
 
@@ -1275,8 +1281,6 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 </div>
 
 <!--  progress bar -->	
-<div id="wait" class="hide"></div>
-
 <div class="dm-overlay" id="win1">
     <div class="dm-table">
 
@@ -1284,38 +1288,24 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 			<div class="dm-modal">
 				<div class="center-align">
 					<h4>please, wait...</h4>
-					<div class="preloader-wrapper big active">
-						<div class="spinner-layer spinner-blue-only">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
-							</div>
+					<!-- <div class="loader loader2"></div> -->
+					<div id="load-progress">
+						<div class="center-align">ajax load data 
+							<span id="percent-complete"></span>
+							<span id="num-total-load"></span>
+						</div>
+
+						<div class="progress">
+							<div id="load-progress-bar" class="determinate blue center-align"></div>
+						</div>
+
+						<div id="load-info">
+	<small>
+							Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
+	</small>
+
 						</div>
 					</div>
-				</div>
-
-				<div id="load-progress">
-					<div class="center-align">ajax load data 
-						<span id="percent-complete"></span>
-						<span id="num-total-load"></span>
-					</div>
-
-					<div class="progress">
-						<div id="load-progress-bar" class="determinate blue center-align"></div>
-					</div>
-
-					<div id="load-info">
-<small>
-						Loaded <span id="loaded">...</span> bytes of total <span id="total">...</span>( <span id="total-mb"></span> Mb)
-</small>
-
-					</div>
-				</div>
 			</div>
 		</div>
 

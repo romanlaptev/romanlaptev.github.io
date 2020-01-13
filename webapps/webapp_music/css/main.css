@@ -481,8 +481,6 @@ overflow-y: auto !important;
     text-align: left;
 }
 
-
-
 #win1 .circle-clipper .circle {
 	border-width: 10px;
 }
@@ -491,7 +489,28 @@ overflow-y: auto !important;
 	background-color: #fff;
 	border-radius: 3px;
 }
+#win1 .loader {
+/* border: 20px solid #fff; */
+border-radius: 50%;
+width: 80px;
+height: 80px;
+margin: auto;
+animation: spin 2s linear infinite;
+/* animation: spin 3s alternate infinite; */
+}
+#win1 .loader2 {
+border-bottom: 20px solid #1c5a83;
+border-top: 20px solid #1c5a83;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
 
+
+
+
+/*---------------------------------------------*/
 #block-nodelist{
 text-align:center;
 }

@@ -1,8 +1,12 @@
-- object App
-	- module localStorage
-	- module fileManager
-	- module mediaPlayer
-	- module nodeList (playLists?)
+- object App (webapp.js)
+	- module nodeList (node_list.js)
+	- module mediaPlayer (player.js)
+	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
+	- module fileManager (file_manager.js)
+
+---------------------------
+- сделать тест браузера на доступные аудио-форматы 
+testMediaSupport( webApp.vars["audioTypes"]);
 
 ---------------------------
 - сделать прелоад изображений
