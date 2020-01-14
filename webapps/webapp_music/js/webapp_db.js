@@ -25,7 +25,7 @@ function _db( opt ){
 	};
 
 	var _init = function( opt ){
-console.log("_db: ", _vars);
+//console.log("_db: ", _vars);
 // console.log( "indexedDBsupport: " + _vars["indexedDBsupport"] );			
 // console.log( "webSQLsupport: " + _vars["webSQLsupport"] );			
 // console.log( "localStorageSupport: " + _vars["localStorageSupport"] );			
@@ -61,7 +61,7 @@ console.log("_db: ", _vars);
 
 	
 	function _getData( postFunc ){
-console.log("webApp.db.getData() ", arguments);
+//console.log("webApp.db.getData() ", arguments);
 
 		// if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
 			// _vars["dataStoreType"] = false;
@@ -230,7 +230,7 @@ var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-console.log(xmlObj);
+//console.log(xmlObj);
 delete xml;
 			_vars["nodes"] = _getNodesObj(xmlObj);
 			//_vars["queryRes"] = _vars["nodes"];

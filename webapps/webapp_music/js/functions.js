@@ -15,20 +15,6 @@ use module:
 //(function(){
 	var sharedFunc =  sharedFunc || function(){
 
-
-		if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
-
-			$(document).ready(function(){
-//....				
-			});//end ready	
-
-		}
-		
-		// private variables and functions
-		//.......
-
 		function _getById(id){
 			
 			if( document.querySelector ){
@@ -544,7 +530,7 @@ console.log( logMsg, xhr );
 				}
 			}
 
-console.log(xhr.upload);
+//console.log(xhr.upload);
 			if( xhr.upload ){
 /*				
 				xhr.upload.onerror = function(e){

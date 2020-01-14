@@ -12,7 +12,7 @@ var _vars = {
 	end_scroll_pos:0//,
 	//"imageNotLoad": "img/image_not_load.png"
 };
-console.log( _vars );
+//console.log( _vars );
 
 /*
 document.onreadystatechange = function(e){
@@ -27,15 +27,15 @@ console.log("--- document.readyState = " + document.readyState, typeof document.
 
 if (document.addEventListener) {
 	document.addEventListener("DOMContentLoaded", function(){////DOM ready, but not load images
-console.log("DOMContentLoaded");
-console.log("-- document.readyState = " + document.readyState);
+//console.log("DOMContentLoaded");
+//console.log("-- document.readyState = " + document.readyState);
 		initApplication();
 	},false);//end dom load
 }
 
 window.onload = function(){
-console.log("window.onload");
-console.log("-- document.readyState = " + document.readyState);
+//console.log("window.onload");
+//console.log("-- document.readyState = " + document.readyState);
 	//Start webApp
 	if( typeof webApp === "object"){
 		webApp.init(function(){
@@ -46,8 +46,8 @@ console.log("end webApp initialize....");
 
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
-console.log( "jQuery: document.ready" );
-console.log("-- document.readyState = " + document.readyState);
+//console.log( "jQuery: document.ready" );
+//console.log("-- document.readyState = " + document.readyState);
 		_initPage();
 	});//end ready()
 	

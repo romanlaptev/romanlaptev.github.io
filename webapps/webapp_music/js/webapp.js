@@ -53,7 +53,8 @@ var webApp = {
 			}, //end block
 */
 		],
-		"init_action" : "get-data"
+		"init_action" : "get_data",
+		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
 	
@@ -552,38 +553,36 @@ function _urlManager( target ){
 		
 		switch( webApp.vars["GET"]["q"] ) {
 			
-			case "get-data":
+			case "get_data":
 				webApp.db.getData(function(res){
 			//console.log(arguments);
 			//console.log(window.location);	
 
-			/*
-					//clear block
-			//setTimeout(function(){
-					if( webApp["vars"]["waitWindow"] ){
-						webApp["vars"]["waitWindow"].style.display="none";
-					}		
-			//}, 1000*3);
-			*/
 
-			/*
-			//if( webApp.vars["getDataRes"] ){
-			if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
-					var parse_url = window.location.search; 
-					if( parse_url.length > 0 ){
-						webApp.vars["GET"] = func.parseGetParams(); 
-						_urlManager();
-					} else {
-						if( webApp.vars["init_url"] ){
-							//parse_url = webApp.vars["init_url"].substring(2);
-							parse_url = webApp.vars["init_url"];
-				//console.log(parse_url);
-						}
-						webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-						_urlManager();
+					//clear block
+			// //setTimeout(function(){
+					// if( webApp["vars"]["waitWindow"] ){
+						// webApp["vars"]["waitWindow"].style.display="none";
+					// }		
+			// //}, 1000*3);
+
+
+					if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+							var parse_url = window.location.search; 
+							if( parse_url.length > 0 ){
+								webApp.vars["GET"] = func.parseGetParams(); 
+								_urlManager();
+							} else {
+								if( webApp.vars["init_url"] ){
+									//parse_url = webApp.vars["init_url"].substring(2);
+									parse_url = webApp.vars["init_url"];
+						//console.log(parse_url);
+								}
+								webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+								_urlManager();
+							}
 					}
-			}
-			*/
+
 					//if( typeof postFunc === "function"){
 						//postFunc();
 					//}
@@ -591,8 +590,8 @@ function _urlManager( target ){
 			break;
 			
 			case "list_nodes":
-/*			
 console.log("-- start build page --");
+/*			
 				//var timeStart = new Date();
 
 				_draw_updatePager({
