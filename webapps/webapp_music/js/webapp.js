@@ -8,9 +8,7 @@ var webApp = {
 			//"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>",
 			//"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
 		//},
-		//"templates_url" : "tpl/templates.xml",
-		//"GET" : {},
-
+		"GET" : {},
 		"audioTypes" : {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
@@ -55,8 +53,7 @@ var webApp = {
 			}, //end block
 */
 		],
-
-		//"init_url" : "#?q=list_nodes&num_page=1"
+		"init_action" : "get-data"
 	},//end vars
 	
 	
@@ -105,43 +102,13 @@ function _runApp(){
 	if( webApp["vars"]["waitWindow"] ){
 		webApp["vars"]["waitWindow"].style.display="block";
 	}
-
-	webApp.db.getData(function(res){
-//console.log(arguments);
-//console.log(window.location);	
-
-/*
-		//clear block
-//setTimeout(function(){
-		if( webApp["vars"]["waitWindow"] ){
-			webApp["vars"]["waitWindow"].style.display="none";
-		}		
-//}, 1000*3);
-*/
-
-/*
-//if( webApp.vars["getDataRes"] ){
-if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
-		var parse_url = window.location.search; 
-		if( parse_url.length > 0 ){
+	
+	webApp.vars["GET"]["q"] = webApp.vars["init_action"]; 
+	var parseUrl = window.location.search; 
+	if( parseUrl.length > 0 ){
 			webApp.vars["GET"] = func.parseGetParams(); 
-			_urlManager();
-		} else {
-			if( webApp.vars["init_url"] ){
-				//parse_url = webApp.vars["init_url"].substring(2);
-				parse_url = webApp.vars["init_url"];
-	//console.log(parse_url);
-			}
-			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-			_urlManager();
-		}
-}
-*/
-		//if( typeof postFunc === "function"){
-			//postFunc();
-		//}
-	});
-
+	}		
+	_urlManager();
 	
 }//end _runApp()
 
@@ -579,12 +546,52 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 */
 }//end defineEvents()
 
-/*
+
 function _urlManager( target ){
 //console.log(target);
 		
 		switch( webApp.vars["GET"]["q"] ) {
+			
+			case "get-data":
+				webApp.db.getData(function(res){
+			//console.log(arguments);
+			//console.log(window.location);	
+
+			/*
+					//clear block
+			//setTimeout(function(){
+					if( webApp["vars"]["waitWindow"] ){
+						webApp["vars"]["waitWindow"].style.display="none";
+					}		
+			//}, 1000*3);
+			*/
+
+			/*
+			//if( webApp.vars["getDataRes"] ){
+			if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+					var parse_url = window.location.search; 
+					if( parse_url.length > 0 ){
+						webApp.vars["GET"] = func.parseGetParams(); 
+						_urlManager();
+					} else {
+						if( webApp.vars["init_url"] ){
+							//parse_url = webApp.vars["init_url"].substring(2);
+							parse_url = webApp.vars["init_url"];
+				//console.log(parse_url);
+						}
+						webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+						_urlManager();
+					}
+			}
+			*/
+					//if( typeof postFunc === "function"){
+						//postFunc();
+					//}
+				});
+			break;
+			
 			case "list_nodes":
+/*			
 console.log("-- start build page --");
 				//var timeStart = new Date();
 
@@ -622,10 +629,12 @@ console.log("-- end build page --");
 				};
 				
 				_data_getNodes(opt);
+*/				
 			break;
 			
 //?q=nodes-by-tag&text="youtube"
 			case "nodes-by-tag":
+/*			
 				if( webApp.vars["GET"]["text"] ){
 					_data_getNodesByTag({//get list termin nodes
 						"text" : webApp.vars["GET"]["text"],
@@ -660,9 +669,11 @@ console.log( tag );
 				} else {
 console.log("Warning! not found tag text value...");
 				}
+*/				
 			break;
 			
 			case "clear-query-result":
+/*			
 				//_data_setTemplate(data);//define unique template for item
 				webApp.db.vars["queryRes"] = webApp.db.vars["nodes"];
 
@@ -696,12 +707,13 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 					}//end callback
 				});
-				
+*/				
 			break;
 
 
 //-------------------------------------------- PLAYLIST
 			case "load-track":
+/*			
 //console.log(target, $(target).parent() );
 //for test
 //webApp.vars["GET"]["num"] = "first num";
@@ -736,15 +748,19 @@ console.log( "-- no track!!!!");
 				var track_info = track["title"];
 				$("#track-info").text(track_info);
 				_draw_setActiveTrack(num);
+*/				
 			break;
 
 			case "stop-play":
+/*			
 				//webApp.vars["player"].stop();
 				$(webApp.vars["player"]).attr("src","");
 				$("#track-info").text("");
+*/				
 			break;
 
 			case "prev-track":
+/*			
 				$(webApp.vars["iframePlayer"]).attr("src", "");
 				$(webApp.vars["player"]).attr("src", "");
 				
@@ -776,10 +792,11 @@ console.log( "-- no track!!!!");
 				var track_info = track["title"];
 				$("#track-info").text(track_info);
 				_draw_setActiveTrack(num);
-				
+*/				
 			break;
 			
 			case "next-track":
+/*			
 				$(webApp.vars["iframePlayer"]).attr("src", "");
 				$(webApp.vars["player"]).attr("src", "");
 				
@@ -821,10 +838,11 @@ console.log( "-- no track!!!!");
 				if( autoplay ){
 					webApp.vars["player"].play();
 				}
-				
+*/
 			break;
 			
 			case "clear-playlist":
+/*			
 				webApp.vars["playlist"]["tracks"] = [];
 				webApp.vars["playlist"]["lastNum"] = 0;
 				
@@ -839,7 +857,7 @@ console.log( "-- no track!!!!");
 					"templateID" : "tpl-block-playlist",
 					"content" : ""
 				});				
-				
+*/				
 			break;
 
 			//case "check-all":
@@ -851,6 +869,7 @@ console.log( "-- no track!!!!");
 			//break;
 			
 			case "remove-track":
+/*			
 				var num = parseInt( webApp.vars["GET"]["num"] );
 //console.log(num, typeof num, isNaN(num) );
 				if( isNaN(num) ){
@@ -887,18 +906,17 @@ console.log( "-- " + webApp.vars["logMsg"] );
 						"content" : ""
 					});				
 				}
-
+*/
 			break;
 			
 //--------------------------------------------
-
 			default:
 console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);			
 			break;
 		}//end switch
 		
 	}//end _urlManager()
-*/
+
 
 
 
