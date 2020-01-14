@@ -29,7 +29,7 @@ if (document.addEventListener) {
 	document.addEventListener("DOMContentLoaded", function(){////DOM ready, but not load images
 console.log("DOMContentLoaded");
 console.log("-- document.readyState = " + document.readyState);
-	//initApplication();
+		initApplication();
 	},false);//end dom load
 }
 
@@ -38,7 +38,9 @@ console.log("window.onload");
 console.log("-- document.readyState = " + document.readyState);
 	//Start webApp
 	if( typeof webApp === "object"){
-		_runApp();
+		webApp.init(function(){
+console.log("end webApp initialize....");
+		});//end webApp initialize
 	}
 }//end load()
 
@@ -127,13 +129,6 @@ _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 */
 }//end initApplication()
 
-
-
-function _runApp(){
-	webApp.init(function(){
-console.log("end webApp initialize....");
-	});//end webApp initialize
-}//end _runApp()
 
 function _initPage(){
 /*

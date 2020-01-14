@@ -129,14 +129,14 @@ var templates = {
 				<div class="uk-card uk-card-secondary collapse" id="tags-country">\
 					<div class="uk-card-body uk-padding-small">\
 						<ul class="uk-list tag-list">\
-			<li><a  href="#?q=get-tag&vid=4&tid=143">Австрия</a></li>\
+			<li><a  href="#?q=get-tag&vid=4&tid=143">РђРІСЃС‚СЂРёСЏ</a></li>\
 						</ul>\
 					</div>\
 				</div>\
 				<div class="uk-card uk-card-secondary collapse" id="tags-alpha">\
 					<div class="uk-card-body uk-padding-small">\
 						<ul class="uk-list tag-list">\
-			<li><a  href="#?q=get-tag&vid=53tid=5">А</a></li>\
+			<li><a  href="#?q=get-tag&vid=53tid=5">Рђ</a></li>\
 						</ul>\
 					</div>\
 				</div>\
@@ -149,7 +149,7 @@ var templates = {
 				<div class="uk-card uk-card-secondary collapse" id="tags-music-genre">\
 					<div class="uk-card-body uk-padding-small">\
 						<ul class="uk-list tag-list">\
-			<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>\
+			<li><a  href="#?q=get-tag&vid=9&vid=122">Р РѕРє</a></li>\
 						</ul>\
 					</div>\
 				</div>'
@@ -204,10 +204,6 @@ var templates = {
 					</div><!-- /files -->\
 				</div>\
 			</div>'
-	},
-	
-	"blockNodelist" : {
-		"container_tpl" : "{{block-pager}}{{block-list}}"
 	},
 	
 	"blockPager" : {
@@ -275,10 +271,10 @@ var templates = {
 						<ul class="list-inline node-tags">\
 		<small><b>related tags:</b></small>\
 				<li><a href="#" data-group-name="alphabetical_voc">J</a></li>\
-				<li><a href="#" data-group-name="music_genre">Рок</a></li>\
+				<li><a href="#" data-group-name="music_genre">Р РѕРє</a></li>\
 				<li><a href="#" data-group-name="music_styles">classic rock</a></li>\
 				<li><a href="#" data-group-name="music_styles">heavy metal</a></li>\
-				<li><a href="#" data-group-name="country">Великобритания</a></li>\
+				<li><a href="#" data-group-name="country">Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ</a></li>\
 				<li><a href="#" data-group-name="music_formats">collection</a></li>\
 						</ul>\
 					</div>\

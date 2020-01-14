@@ -12,7 +12,6 @@ var webApp = {
 		//"GET" : {},
 		"DB" : {
 			"dataUrl" : "db/export_music.xml",
-
 			"dbType" : "xml",
 			//"db_type" : "json",
 			"dbName": "music",
@@ -37,36 +36,6 @@ var webApp = {
 		},
 		"blocks": [
 			{
-				"locationID" : "block-playlist",
-				"title" : "Playlist", 
-				"templateID" : "tpl-block-playlist",
-				"content" : "",
-				"visibility" : true,//"frontPage"
-				"buildBlock" : function(){
-//console.log(this);
-					for(var n = 0; n < webApp.vars["playlist"]["tracks"].length; n++){
-						webApp.vars["playlist"]["tracks"][n]["number"] = n;
-					}//next
-					
-					var html = _draw_wrapData({
-						"data": webApp.vars["playlist"]["tracks"],
-						"templateID": "tpl-playlist",
-						"templateListItemID": "tpl-playlist-item"
-					});
-//console.log( html);
-					if( html && html.length > 0){
-						this.content = html;
-						_draw_buildBlock( this );
-					}
-					
-					if( webApp.vars["playlist"]["tracks"].length > 0 ){
-						_draw_setActiveTrack(0);
-					}
-
-				}
-			},//end block
-			
-			{
 				"locationID" : "block-links",
 				"title" : "footer links", 
 				"templateID" : "tpl-block-links",
@@ -76,40 +45,7 @@ var webApp = {
 					_draw_buildBlock( this );
 				}
 			}, //end block
-			
-/*
-			{
-				"locationID" : "block-list-video",
-				"title" : "test video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : function(args){
-console.log(args);
-//get data
-var res = [
-	{
-		"type":"video",
-		"title":[{"text":"Бразилия"},{"text":"Brazil"}]
-	}
-];
-res[0]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"],
-res[0]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"]
-
-
-					if( typeof args["callback"] === "function"){
-						args["callback"]( res );
-					}
-				},
-				"visibility":true,
-				"buildBlock" : function(){
-_db_getBlockContent(){
-	"callback" : function(res){
-//console.log(res);							
-		_draw_buildBlock( this );
-	}
-};
-				}
-			} //end block
-*/
+/*			
 			{
 				"locationID" : "block-taglist",
 				"title" : "block-taglist!!!!!!!",
@@ -130,22 +66,10 @@ _db_getBlockContent(){
 					}
 				}
 			}, //end block
-
-			{
-				"locationID" : "block-search",
-				"title" : "block-search",
-				"templateID" : "tpl-block-search",
-				"content" : "",
-				"visibility":true,
-				"refresh" : false,
-				"buildBlock" : function(){
-					_draw_buildBlock( this );
-				}
-			} //end block
-
+*/
 		],
 
-		"init_url" : "#?q=list_nodes&num_page=1"
+		//"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
 	
@@ -157,35 +81,27 @@ console.log("init webapp!");
 			appTitle.innerHTML = this.vars["app_title"];
 		}
 		
-		this["vars"]["log"] = func.getById("log");
-		this["vars"]["btnToggle"] = func.getById("btn-toggle-log");
-		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
-		//this["vars"]["parseProgressBar": func.getById("parse-progress-bar");
-		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
-		this["vars"]["waitWindow"] = func.getById("win1");
-return;		
-		//this.vars["player"] = func.getById("player1");
-		//this.vars["iframePlayer"] = func.getById("iframe-player");
-		
-		_loadTemplates(function(){
-//console.log("Load templates end...", webApp.vars["templates"] );		
+		webApp.db.init();
+		//webApp.iDBmodule.init();
+//console.log(iDBmodule, typeof iDBmodule);			
+		//webApp.draw.init();
+		//webApp.app.init();
 
-			//if( webApp.vars["player"] ){
-			//if( typeof $.jPlayer === "function"){
-				//webApp.vars["playlists"] = {};
-				//_initPlayer(webApp);
-				
-				//var num = webApp.vars["playlist"]["lastNum"];
-				//var videoSrc = webApp.vars["playlist"]["tracks"][num]["src"];
-				//$(webApp.vars["player"]).attr("src", videoSrc);
-			//}
-			_runApp();
-		});
+		this["vars"]["waitWindow"] = func.getById("win1");
+		this["vars"]["loadProgress"] = func.getById("load-progress");
+		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
+		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
+		this["vars"]["percentComplete"] = func.getById("percent-complete");
+		this["vars"]["totalBytes"] = func.getById("total");
+		this["vars"]["totalMBytes"] = func.getById("total-mb");
+		this["vars"]["loaded"] = func.getById("loaded");
+		this["vars"]["loadInfo"] = func.getById("load-info");
 		
+		_runApp();
 	},//end init()
 	
 	//Modules
-	//"db" : _db(),
+	"db" : _db(),
 	//"iDBmodule" : iDBmodule(),
 	//"draw" : _draw(),
 	//"app" : _app(),
@@ -195,34 +111,29 @@ console.log(webApp);
 
 
 function _runApp(){
-
-	testMediaSupport( webApp.vars["videoTypes"]);
+	//testMediaSupport( webApp.vars["audioTypes"]);
 	defineEvents();
 
 	//start block
 	if( webApp["vars"]["waitWindow"] ){
 		webApp["vars"]["waitWindow"].style.display="block";
-		//$("#load-progress").hide();
 	}
 
-//------------------ LOAD first video to player
-	var url = "?q=load-track&num=0";
-	webApp.vars["GET"] = func.parseGetParams( url ); 
-	_urlManager();
-//------------------
-
-	_loadData(function(res){
+	webApp.db.getData(function(res){
 //console.log(arguments);
 //console.log(window.location);	
 
+/*
 		//clear block
 //setTimeout(function(){
 		if( webApp["vars"]["waitWindow"] ){
 			webApp["vars"]["waitWindow"].style.display="none";
 		}		
 //}, 1000*3);
+*/
 
-//if( webApp.vars["loadDataRes"] ){
+/*
+//if( webApp.vars["getDataRes"] ){
 if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 		var parse_url = window.location.search; 
 		if( parse_url.length > 0 ){
@@ -238,16 +149,16 @@ if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
 			_urlManager();
 		}
 }
-
-		if( typeof postFunc === "function"){
-			postFunc();
-		}
+*/
+		//if( typeof postFunc === "function"){
+			//postFunc();
+		//}
 	});
 
 	
 }//end _runApp()
 
-
+/*
 function testMediaSupport( videoTypes ){
 	
 	var _video = document.createElement('video');
@@ -289,9 +200,21 @@ func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 	
 	
 }//end testMediaSupport()
-
+*/
 
 function defineEvents(){
+	
+	webApp.vars.$closeButtons = $("a[href='#close']");
+	webApp.vars.$closeButtons.on("click", function(e){
+//console.log( e.target );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			$( _target ).slideToggle( _vars.duration , function(e){
+//console.log(arguments)
+			});
+		});//end event
+	
+/*
 	
 //------------------------------------------------------------------
 	$("#list-video, #block-taglist, #block-search, #block-playlist, #player-buttons").on("click", function(event){
@@ -558,7 +481,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 	})//end event	
 
-/*
+
 	$("#page-number-2").change(function(event){
 //console.log("change #page-number-2...", event);
 		if( !isNaN(event.target.value) && parseInt(event.target.value) > 0){
@@ -574,7 +497,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 //console.log( webApp.vars["logMsg"] );
 		}
 	});//end event
-*/
+
 //------------------------
 	$("#select-sort").change(function(event){
 		event = event || window.event;
@@ -666,10 +589,11 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 
 	}//end _actionClick()
 	
+*/
 }//end defineEvents()
 
-
-	function _urlManager( target ){
+/*
+function _urlManager( target ){
 //console.log(target);
 		
 		switch( webApp.vars["GET"]["q"] ) {
@@ -826,13 +750,13 @@ console.log( "-- no track!!!!");
 				$("#track-info").text(track_info);
 				_draw_setActiveTrack(num);
 			break;
-/*
+
 			case "stop-play":
 				//webApp.vars["player"].stop();
 				$(webApp.vars["player"]).attr("src","");
 				$("#track-info").text("");
 			break;
-*/			
+
 			case "prev-track":
 				$(webApp.vars["iframePlayer"]).attr("src", "");
 				$(webApp.vars["player"]).attr("src", "");
@@ -873,11 +797,8 @@ console.log( "-- no track!!!!");
 				$(webApp.vars["player"]).attr("src", "");
 				
 				var autoplay = false;
-				
 				if( webApp.vars["playlist"]["lastNum"] < (webApp.vars["playlist"]["tracks"].length - 1) ){
-					
 					webApp.vars["playlist"]["lastNum"]++;
-					
 					if( webApp.vars["GET"]["autoplay"] === "TRUE"){
 						autoplay = true;
 					}
@@ -990,384 +911,12 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 	}//end _urlManager()
-
-
-
-//======================================= LOAD DATA
-function _loadData( postFunc ){
-//console.log("_loadData() ", arguments);
-	//if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
-		webApp.vars["dataStoreType"] = false;
-	//} 
-		switch(webApp.vars["dataStoreType"]) {				
-			case "indexedDB":
-			break;
-			
-			case "webSQL":
-			break;
-			
-			case "localStorage":
-			break;
-
-			default:
-				if( !webApp.vars["DB"]["dataUrl"] ||
-					webApp.vars["DB"]["dataUrl"].length === 0 ){
-webApp.vars["logMsg"] = "error, not found or incorrect 'dataUrl'...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-					return false;
-				}
-
-				func.runAjax( {
-					"requestMethod" : "GET", 
-					"url" : webApp.vars["DB"]["dataUrl"], 
-					
-					"onProgress" : function( e ){
-						var percentComplete = 0;
-						if(e.lengthComputable) {
-							percentComplete = Math.ceil(e.loaded / e.total * 100);
-						}
-console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
-						if( webApp.vars["loadProgressBar"] ){
-							webApp.vars["loadProgressBar"].className = "progress-bar";
-							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
-							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
-							
-							webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
-						}
-						
-					},
-						
-					"onLoadEnd" : function( headers ){
-//console.log( headers );
-					},
-					
-					"onError" : function( xhr ){
-//console.log( "onError ", arguments);
-webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-						//return false;
-					},
-
-					"callback": function( data ){
-
-webApp.vars["logMsg"] = "Load data file " + webApp.vars["DB"]["dataUrl"];
-func.log("<p class='alert alert-success'>" + webApp.vars["logMsg"] + "</p>");
-//console.log( webApp.vars["logMsg"] );
-
-//console.log( "runAjax, ", typeof data );
-//console.log( data );
-//for( var key in data){
-//console.log(key +" : "+data[key]);
-//}
-						if( !data ){
-webApp.vars["logMsg"] = "error, no data in " + webApp.vars["DB"]["dataUrl"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-							if( typeof postFunc === "function"){
-								postFunc(false);
-							}
-							return false;
-						}
-
-						_parseAjax( data );
-
-						if( typeof postFunc === "function"){
-							postFunc();
-						}
-
-					}//end callback()
-				});
-
-			break;
-		}//end switch
-		
-		//return false;
-		
-		function _parseAjax( data ){
-			if( webApp.vars["DB"]["dbType"].length === 0 ){
-webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-				return false;
-			}
-			
-			switch( webApp.vars["DB"]["dbType"] ){
-				case "xml":
-					_parseXML( data );
-				break;
-				
-				case "json":
-				break;
-				
-				case "csv":
-					//_parseCSVBlocks(data);
-				break;
-			}//end switch
-			
-		}//_parseAjax()
-		
-	}//end _loadData()
-
-
-	function _parseXML(xml){
-//console.log("function _parseXML()");
-
-var timeStart = new Date();
-
-		try{
-			xmlObj = func.convertXmlToObj( xml );
-//console.log(xmlObj);
-delete xml;
-			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
-			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
-
-			webApp.vars["DB"]["tags"] = _data_formTagObj(xmlObj);
-delete xmlObj;
-			
-			//_vars["hierarchyList"] = __formHierarchyList();
-			//webApp.vars["loadDataRes"] = true;
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-console.log( webApp.vars["logMsg"] );
-
-		} catch(error) {
-webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
-func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
-console.log( error );
-		}//end catch
-
-	}//end _parseXML()
-
-	function _data_formNodesObj(xmlObj){
-//console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagName = webApp.vars["DB"]["tagNameFilms"];
-		
-		//var nodes = {};
-		var nodes = [];
-		
-		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
-			}
-		}//next
-		
-		if( tagNodes.length > 0){
-			for(var n = 0; n < tagNodes.length; n++){
-				var obj = {
-					"type" : tagNodes[n]["type"]
-				};
-
-				for(var item in tagNodes[n]["children"]){
-					var _content = tagNodes[n]["children"][item][0]["text"];
-//"producer"
-//"roles"
-//"creators"
-//"description"
-//"published"
-//"updated"
-					
-					if( !_content ){
-//tags
-//title
-//ul
-						_content = __convertMultipleField( tagNodes[n]["children"][item][0]["children"]);
-					}
-					obj[item] = _content;
-				}
-				
-				//var key = "record_" + (n+1);
-				//nodes[key] = obj;
-				nodes.push( obj );
-				
-			}//next
-		}
-
-//------------------ form timestamp
-		__addTimeStamp();
-		__checkSupport();
-			
-		return nodes;
-		
-		function __convertMultipleField( xfields){
-			var fields = [];
-			for(var item1 in xfields){
-				var _xf = xfields[item1];
-				for(var item2 in _xf){
-					
-					if( _xf[item2]["children"] ){
-						var _xff = _xf[item2]["children"];
-						//var obj = {};
-						for( var key3 in _xff ){
-							//obj[key3] = _xff[key3];
-							fields.push( _xff[key3][0] );//<li><a...>(only one tag!!!)</li>
-						}
-					} else {
-						fields.push( _xf[item2] );
-					}
-				}
-			}
-			return fields;
-		}//end __convertMultipleField()
-
-		function __addTimeStamp(){
-			for(var n = 0; n < nodes.length; n++){
-				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
-					if( webApp.vars["DB"]["dateFormat"] === "dd-mm-yyyy hh:mm:ss"){
-						var arr = nodes[n]["published"].split(" ");
-						var dateArr = arr[0].split("-");
-						var timeArr = arr[1].split(":");
-						
-						var split_values = {
-							"day" : dateArr[0],
-							"month" : dateArr[1],
-							"year" : dateArr[2],
-							"hour" : timeArr[0],
-							"min" : timeArr[1],
-							"sec" : timeArr[2]
-						};
-						
-						var _day = parseInt( split_values["day"] );
-						if ( isNaN( _day ) ){
-							_day = 0;
-						}
-
-						var _month = 0;
-				//"15-Sep-2018 22:13:00";
-						var sMonth = split_values["month"];
-						switch(sMonth){
-							
-							case "Jan":
-								_month = 1;
-							break;
-							
-							case "Feb":
-								_month = 2;
-							break;
-							
-							case "Mar":
-								_month = 3;
-							break;
-							
-							case "Apr":
-								_month = 4;
-							break;
-							
-							case "May":
-								_month = 5;
-							break;
-							
-							case "Jun":
-								_month = 6;
-							break;
-							
-							case "Jul":
-								_month = 7;
-							break;
-							
-							case "Aug":
-								_month = 8;
-							break;
-							
-							case "Sep":
-								_month = 9;
-							break;
-							
-							case "Oct":
-								_month = 10;
-							break;
-							
-							case "Nov":
-								_month = 11;
-							break;
-							
-							case "Dec":
-								_month = 12;
-							break;
-							
-						}//end switch
-
-						var _year = parseInt( split_values["year"] );
-						if ( isNaN( _year ) ){
-							_year = 0;
-						}
-
-						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
-					}
-				}
-			}//next
-		}// end __addTimeStamp()
-		
-		function __checkSupport(){
-			for(var n = 0; n < nodes.length; n++){
-				var links = nodes[n]["ul"];
-				if(!links){
-					continue;
-				}
-				for( var n2 = 0; n2 < links.length; n2++){
-					//links[n2]["class-support"] = "";
-					if( links[n2]["data-type"] === "local-file"){
-						var filepath = links[n2]["href"];
-						//get file type
-						var arr = filepath.split(".");
-						var filetype = arr[ (arr.length-1) ];
-						var videoType = webApp.vars["videoTypes"][filetype];
-//console.log(filetype, videoType);
-
-						if( videoType && videoType["support"]){
-							//links[n2]["class-support"] = "1";
-						} else {
-							links[n2]["class_support"] = "wrong-video-type";
-						}
-					}
-				}
-			}//next
-		}// end __addTimeStamp()
-		
-	}//end _data_formNodesObj()
-
-	function _data_formTagObj(xmlObj){
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagListName = "taglist";
-		var tagName = "tag";
-		
-		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListName][n]["children"][tagName];
-			}
-		}//next
-		
-		if( tagNodes.length > 0){
-			func.sortRecords({
-				"records" : tagNodes,
-				"sortOrder": "asc", //desc
-				"sortByKey": "name"
-			});
-			
-			return tagNodes;
-		} else {
-			return false;
-		}
-				
-	}//end _data_formTagObj()
-	
-	//function _data_formHierarchyList(){
-	//}//end _data_formHierarchyList()
-			
-
+*/
 
 
 
 //============================== TEMPLATES
+/*
 	function _loadTemplates( callback ){
 		//webApp.db.loadTemplates(function( isLoadTemplates ){
 //console.log(isLoadTemplates);			
@@ -1457,54 +1006,14 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				}//end
 			});
 			
-/*
-			runAjax( {
-				"requestMethod" : "GET", 
-				"url" : webApp.vars["templates_url"], 
-				"callback": function( data ){
-	var msg = "load " + webApp.vars["templates_url"] ;
-	console.log(msg);
-	//webApp.vars["log"].push(msg);
-	//console.log( data );
-					if( !data ){
-	console.log("error in draw.loadTemplates(), not find data templates'....");
-						return false;
-					}
-					
-					xmlNodes = _parseXmlToObj( data );
-	//console.log(xmlNodes);
-					if( xmlNodes.length > 0 ){
-						for( var n= 0; n < xmlNodes.length; n++){
-							var key = xmlNodes[n]["name"];
-
-							var value = xmlNodes[n]["html_code"]
-							.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-							.replace(/\t/g,"")
-							.replace(/\n/g,"");
-							
-							webApp.draw.vars["templates"][key] = value;
-						}//next
-						
-						webApp.db.saveTemplates( webApp.draw.vars["templates"] );
-						
-						if( typeof callback === "function"){
-							callback();
-						}
-						
-					} else {
-	console.log("error in draw.loadTemplates(), cannot parse templates data.....");
-					}
-
-				}//end callback()
-			});
-*/
 		}//end _loadTemplatesFromFile()
 		
 	}//end _loadTemplates()
-
+*/
 
 
 //===============================================
+/*
 	var _buildPage = function( opt ){
 //console.log("_buildPage()", arguments);
 
@@ -1526,19 +1035,19 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			p[key] = opt[key];
 		}
 //console.log(opt);
-/*
-		//draw static blocks
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _opt = webApp.vars["blocks"][n];
-// //console.log(_opt["visibility"], p["title"]);				
-			if( _opt["visibility"]){
-				// if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
-					_draw_buildBlock( _opt );
-				// }
-			}
+
+		// //draw static blocks
+		// for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			// var _opt = webApp.vars["blocks"][n];
+// // //console.log(_opt["visibility"], p["title"]);				
+			// if( _opt["visibility"]){
+				// // if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
+					// _draw_buildBlock( _opt );
+				// // }
+			// }
 			
-		}//next
-*/
+		// }//next
+
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
 			
@@ -1599,375 +1108,13 @@ console.log( webApp.vars["logMsg"] );
 			//webApp.vars["wait"].style.display="none";
 		//}
 
-//--------------------- add event on collapse block
-/*
-		$("#video-list-collapsible .collapse").on('shown.bs.collapse', function(e){
-func.log('<p>The collapsible content is now fully shown.</p>');
-//console.log( e.target.find(".toggle-btn") );
-		});
-		
-		$("#video-list-collapsible .collapse").on('hidden.bs.collapse', function(e){
-func.log('<p>The collapsible content is now hidden.</p>');
-//console.log( e.target.find(".toggle-btn") );
-			//$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
-			//$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
-		});
-*/
-
-//---------------------- load images handlers
-/*
-		$("img").on("load", function( e ){
-console.log("-- image load event....", e.target.src);
-		});
-		
-		$("img").on("error", function( e ){
-console.log("-- image load error", e.target.src);
-			//var src = $(this).attr("src");
-			//var new_src = sitecontent + src;
-//console.log("fixing image source = " + new_src);
-			//$(this).attr("src", new_src);
-			//$("body").attr("data-image-load-error","1");
-			//load_img_error( $(this)[0] );
-		});
-*/
 
 		if( typeof p["callback"] === "function"){//return from _buildPage()
 			p["callback"]();
 		}
 			
 	};//end _buildPage()
-
-//============================================== DATA
-function _data_getNodes(opt){
-	var p = {
-		records: [],
-		"num_page": null,
-		"callback": null
-	};
-	//extend options object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-
-//------------------ sort NODES
-if(p.sortByKey && p.sortByKey.length > 0){
-	if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
-		_data_sortNodes({
-			records: p.records,
-			"sortOrder": p.sortOrder, //"asc", //desc
-			"sortByKey": p.sortByKey
-		});
-		webApp.vars["DB"]["prevSortKey"] = p.sortByKey;
-	}
-}
-//------------------
-
-	var data = [];
-	
-	var numPage = parseInt( p["num_page"] )-1;
-	//var _numPage = numPage - 1;
-	
-	var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
-	
-	var startPos = numPage * numRecordsPerPage;
-	var endPos = startPos + numRecordsPerPage;
-
-	if( startPos > p.records.length ){
-webApp.vars["logMsg"] = "warning, incorrect page number, not more than "+webApp.vars["DB"]["numPages"];
-func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-
-		if( typeof p["callback"] === "function"){
-			p["callback"](data);
-		}
-		return false;
-	}
-
-	if( endPos > p.records.length ){
-		var n = endPos - p.records.length;
-		endPos = endPos - n;
-//console.log("TEST...", n);
-	}
-//console.log( startPos, numRecordsPerPage, endPos, p.records.length);
-//------------------------------------------------- GET NODES
-	for(var n = startPos; n < endPos; n++){
-		data.push( p.records[n]);
-	}//next
-/*	
-	//copy objects node
-	for(var n = startPos; n < endPos; n++){
-		var jsonNode = JSON.stringify( p.records[n] );
-		data.push( JSON.parse( jsonNode) );
-	}//next
-*/	
-
-//for test
-//var num = webApp.vars["DB"]["nodes"].length-1;
-//data[1] =  webApp.vars["DB"]["nodes"][num];
-
-	_data_setTemplate(data);//define unique template for item
-	_data_defineBtnText(data);// define button text {{btn_text}} for item video files
-	
-//console.log(data);
-
-	if( typeof p["callback"] === "function"){
-		p["callback"](data);
-	}
-}//end _data_getNodes()
-
-
-function _data_sortNodes(opt){
-//console.log(opt);
-	var p = {
-		records: [],
-		"sortOrder": "asc", //desc
-		"sortByKey": null
-	};
-	//extend p object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if(p.records.length === 0 ){
-		var logMsg = "error, not found sorting records...";
-func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
-console.log( logMsg );
-		return false;
-	}
-			
-	if(!p.sortByKey){
-		var logMsg = "error, not found 'sortByKey'...";
-func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
-console.log( logMsg );
-		return false;
-	}
-			
-	p.records.sort(function(a,b){
-//console.log(a, b);
-
-		var s1,s2;
-		
-		s1 = a[p.sortByKey];
-		s2 = b[p.sortByKey];
-		
-		if( p.sortByKey === "title" ){
-			s1 = a[p.sortByKey][0]["text"].toLowerCase();
-			s2 = b[p.sortByKey][0]["text"].toLowerCase();
-		}
-		
-		if( p.sortByKey === "published" ){
-			s1 = a["timestamp"];
-			s2 = b["timestamp"];
-		}
-		
-		switch(p.sortOrder){
-			case "asc":
-				if (s1 > s2) {
-					return 1;
-				}
-				if (s1 < s2) {
-					return -1;
-				}
-				// s1 === s2
-				return 0;
-			break
-			
-			case "desc":
-				if (s1 > s2) {
-					return -1;
-				}
-				if (s1 < s2) {
-					return 1;
-				}
-				// s1 === s2
-				return 0;
-			break
-		}//end swith()
-	});//end sort
-	
-}//end _data_sortNodes()
-
-function _data_getNodesByTag( opt ){
-	var p = {
-		"text" : null,
-		"callback" : null
-	};
-	//extend options object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	if( !p["text"] ){
-webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag text value...";
-console.log( webApp.vars["logMsg"] );
-		return false;
-	}
-
-	var data = [];
-	for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
-		var node = webApp.vars["DB"]["nodes"][n];
-		if( !node["tags"] ){
-//console.log(node);		
-			continue;			
-		}
-		var tags = node["tags"];
-		for(var n2 = 0; n2 < tags.length; n2++){
-			if( tags[n2]["text"] && tags[n2]["text"] === p["text"]){
-				data.push( node );
-			}
-		}//next
-		
-	}//next
-
-	_data_setTemplate(data);//define unique template for item
-	webApp.vars["DB"]["queryRes"] = data;
-	
-
-	if( typeof p["callback"] === "function"){
-		p["callback"](data);
-	}
-	//return false;
-	
-	//function _postQuery( res ){
-////console.log( res );
-		//if( typeof p["callback"] === "function"){
-			//p["callback"](res);
-		//}
-		
-	//}//end _postQuery()
-	
-	
-}//end _data_getNodesByTag()
-
-
-function _data_search( opt ){
-	var p = {
-		"targetField" : null,
-		"keyword" : null,
-		"callback" : null
-	};
-	//extend options object
-	for(var key in opt ){
-		p[key] = opt[key];
-	}
-//console.log(p);
-
-	var fieldKey = p["targetField"];
-	var itemKey;
-	
-	if( fieldKey === "title"){
-		itemKey = "text";
-	}
-	
-	if( fieldKey === "filename"){
-		fieldKey = "ul";
-		itemKey = "href";
-	}
-	
-	var data = [];
-	for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
-		var node = webApp.vars["DB"]["nodes"][n];
-		var item = node[fieldKey];
-//console.log(item);
-		if(!item){
-			continue;
-		}
-		
-		if( itemKey && itemKey.length > 0){//search into multi fields
-			for(var n2 = 0; n2 < item.length; n2++){
-				if( item[n2][itemKey]){
-					var test = item[n2][itemKey].toLowerCase();
-					var keyword = p["keyword"].toLowerCase();
-					if( test.indexOf(keyword) !==-1 ){
-						data.push( node );
-						break;
-					}
-				}
-			}//next
-		} else {
-//console.log(node[fieldKey], typeof node[fieldKey]);
-			if( typeof node[fieldKey] !== "string"){
-				continue;
-			}
-			var test = node[fieldKey].toLowerCase();
-			var keyword = p["keyword"].toLowerCase();
-			if( test.indexOf(keyword) !==-1 ){
-				data.push( node );
-			}
-		}
-		
-	}//next
-
-	_data_setTemplate(data);//define unique template for item
-	webApp.vars["DB"]["queryRes"] = data;
-	
-
-	if( typeof p["callback"] === "function"){
-		p["callback"](data);
-	}
-	
-};//end _search()
-
-
-function _data_setTemplate(data){
-	for(var n = 0; n < data.length; n++){
-		
-		data[n]["number"] = n;
-		
-		if(data[n]["type"] === "videoclip"){
-			data[n]["template"] = "tpl-videolist-item--videoclip";
-		}
-		
-		data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
-		data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
-		
-		if( data[n]["ul"] ){
-			data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
-			data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
-		} else {
-			data[n]["ul"] = "";
-		}
-		
-		if( data[n]["tags"] ){
-			data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
-			data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
-		} else {
-			data[n]["tags"] = "";
-		}
-			
-		if( data[n]["pictures"] ){
-			data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
-			data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
-		} else {
-			data[n]["pictures"] = "";
-		}
-		
-	}//next
-	
-}//_data_setTemplate()
-
-
-// add {{btn_text}}
-function _data_defineBtnText(data){
-	for(var n = 0; n < data.length; n++){
-		if( data[n]["ul"] ){
-			for( var n1 = 0; n1 < data[n]["ul"].length; n1++){
-				var item = data[n]["ul"][n1];
-				if( item["data-type"] === "local-file"){
-					item["btn_text"] = webApp.vars["templates"]["localVideoBtn"];//"create link";
-				} else {
-					item["btn_text"] = webApp.vars["templates"]["embedVideoBtn"];//"open video in new tab";
-				}
-			//console.log(item);
-			}//next
-		}
-	}//next
-}//_data_defineBtnText()
-
+*/
 
 
 //============================================== DRAW

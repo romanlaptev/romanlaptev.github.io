@@ -1082,26 +1082,26 @@ ONLY second LEVEL !!!!!!!!!!!!
 
 		}//end _parseXmlToObj()
 
-		function _alert( message, level ){
+		function _alertUIkit( message, level ){
 			switch (level) {
 				case "info":
-					message = "<p class='alert alert-info'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-primary'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "warning":
-					message = "<p class='alert alert-warning'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-warning'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "danger":
 				case "error":
-					message = "<p class='alert alert-danger'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-danger'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "success":
-					message = "<p class='alert alert-success'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-success'>" + message + "</p>";
 					_log(message);
 				break;
 				
@@ -1230,7 +1230,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj,
 			
-			logAlert: _alert,
+			//logAlert: _alert,
+			logAlert: _alertUIkit,
 			wrapLogMsg: _wrapLogMsg,
 			addEvent: _addEvent,
 			testSupport: _testSupport
