@@ -8,6 +8,20 @@ function _db( opt ){
 		// "localStorageSupport" : window['localStorage']  ? true : false,
 		// // "dataStoreType" : _detectDataStore(),
 		// // "tables": {}
+		"dataUrl" : "db/export_music.xml",
+		"dbType" : "xml",
+		//"db_type" : "json",
+		"dbName": "music",
+			
+		"tagNameNodes": "node",
+		"tagName": "tag",
+		"tagListName": "tag_list",
+		"tagGroupsName": "tag_groups",
+		
+//		"numRecordsPerPage":10,
+//		"sortOrder": "asc",
+//		"sortByKey": "title", //"published", 
+//		"queryRes": []
 	};
 
 	var _init = function( opt ){
@@ -77,8 +91,8 @@ console.log("webApp.db.getData() ", arguments);
 			break;
 			
 			default:
-				if( !webApp.vars["DB"]["dataUrl"] ||
-					webApp.vars["DB"]["dataUrl"].length === 0 ){
+				if( !_vars["dataUrl"] ||
+					_vars["dataUrl"].length === 0 ){
 webApp.vars["logMsg"] = "error, not found or incorrect 'dataUrl'...";
 func.logAlert( webApp.vars["logMsg"], "error");
 //console.log( webApp.vars["logMsg"] );
@@ -91,7 +105,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 				webApp.vars["loadProgress"].style.display="block";
 				func.runAjax( {
 					"requestMethod" : "GET", 
-					"url" : webApp.vars["DB"]["dataUrl"], 
+					"url" : _vars["dataUrl"], 
 					
 					"onProgress" : function( e ){
 						var percentComplete = 0;
@@ -115,7 +129,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 //console.log( headers );
 						//webApp.vars["loadProgress"].style.display="none";
 						var logMsg = webApp.vars["loadInfo"].textContent.trim();
-						logMsg += ", " + webApp.vars["DB"]["dataUrl"];
+						logMsg += ", " + _vars["dataUrl"];
 						func.logAlert( logMsg, "info");
 					},
 					
@@ -127,7 +141,7 @@ console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComput
 //console.log( webApp.vars["logMsg"] );
 						}//next
 
-webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
+webApp.vars["logMsg"] = "error, ajax load failed..." + _vars["dataUrl"];
 func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 						if( typeof postFunc === "function"){
@@ -137,13 +151,13 @@ console.log( webApp.vars["logMsg"] );
 					},
 
 					"callback": function( data ){
-console.log( "runAjax, ", typeof data );
+//console.log( "runAjax, ", typeof data );
 //console.log( data );
 //for( var key in data){
 //console.log(key +" : "+data[key]);
 //}
 						if( !data ){
-webApp.vars["logMsg"] = "error, no data in " + webApp.vars["DB"]["dataUrl"];
+webApp.vars["logMsg"] = "error, no data in " + _vars["dataUrl"];
 func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 							if( typeof postFunc === "function"){
@@ -185,16 +199,15 @@ console.log( webApp.vars["logMsg"] );
 			
 		function _parseAjax( data ){
 			
-			if( webApp.vars["DB"]["dbType"].length === 0 ){
-webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
+			if( _vars["dbType"].length === 0 ){
+webApp.vars["logMsg"] = "error, no found or incorrect " + _vars["dbType"];
 console.log( webApp.vars["logMsg"] );
 				return false;
 			}
 			
-			switch( webApp.vars["DB"]["dbType"] ){
+			switch( _vars["dbType"] ){
 				case "xml":
-console.log( "_parseAjax, ", typeof data );
-//_parseXML( data );
+					_parseXML( data );
 				break;
 				
 				case "json":
@@ -213,85 +226,67 @@ console.log( "_parseAjax, ", typeof data );
 	
 	function _parseXML(xml){
 //console.log("function _parseXML()");
-
 var timeStart = new Date();
 
 		try{
 			xmlObj = func.convertXmlToObj( xml );
-//console.log(xmlObj);
+console.log(xmlObj);
 delete xml;
-			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
-			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
-
-			webApp.vars["DB"]["tags"] = _data_formTagObj(xmlObj);
+			_vars["nodes"] = _getNodesObj(xmlObj);
+			//_vars["queryRes"] = _vars["nodes"];
+			_vars["tagList"] = _getTagListObj(xmlObj);
+			_vars["tagGroups"] = _getTagGroupsObj(xmlObj);
 delete xmlObj;
-			
+
 			//_vars["hierarchyList"] = __formHierarchyList();
 			//webApp.vars["getDataRes"] = true;
-var timeEnd = new Date();
-var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
-webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
-func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
-console.log( webApp.vars["logMsg"] );
+
+			var timeEnd = new Date();
+			var runTime = ( timeEnd.getTime() - timeStart.getTime() ) / 1000;
+			webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
+			func.logAlert( webApp.vars["logMsg"], "info");
+//console.log( webApp.vars["logMsg"] );
 
 		} catch(error) {
 webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
-func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+func.logAlert( webApp.vars["logMsg"], "error");
 console.log( error );
+				for( var key in error ){
+					webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ error[key];
+					func.logAlert( webApp.vars["logMsg"], "error");
+				}//next
+
 		}//end catch
 
 	}//end _parseXML()
-	
-	// public interfaces
-	return{
-		vars : _vars,
-		init:	function(args){ 
-//console.log(arguments);
-			return _init(args); 
-		},
-		getData:	function( opt ){ 
-			return _getData( opt ); 
-		}
-	};
-}//end _db()
 
-
-/*
-	function _data_formNodesObj(xmlObj){
+	function _getNodesObj(xmlObj){
 //console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagName = webApp.vars["DB"]["tagNameFilms"];
+		var databases = xmlObj["xroot"]["childNodes"]["database"];
+		var dbName = _vars["dbName"];
+		var tagName = _vars["tagNameNodes"];
 		
 		//var nodes = {};
 		var nodes = [];
 		
 		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
+//console.log(databases[n].attributes.name, dbName);
+			if( databases[n].attributes.name === dbName){
+				var tagNodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagName];
 			}
 		}//next
-		
+
 		if( tagNodes.length > 0){
 			for(var n = 0; n < tagNodes.length; n++){
 				var obj = {
-					"type" : tagNodes[n]["type"]
+					"type" : tagNodes[n].attributes.type
 				};
 
-				for(var item in tagNodes[n]["children"]){
-					var _content = tagNodes[n]["children"][item][0]["text"];
-//"producer"
-//"roles"
-//"creators"
-//"description"
-//"published"
-//"updated"
-					
+				for(var item in tagNodes[n]["childNodes"]){
+					var _content = tagNodes[n]["childNodes"][item][0]["text"];
+
 					if( !_content ){
-//tags
-//title
-//ul
-						_content = __convertMultipleField( tagNodes[n]["children"][item][0]["children"]);
+						_content = __convertMultipleField( tagNodes[n]["childNodes"][item][0]["childNodes"]);
 					}
 					obj[item] = _content;
 				}
@@ -299,14 +294,10 @@ console.log( error );
 				//var key = "record_" + (n+1);
 				//nodes[key] = obj;
 				nodes.push( obj );
-				
 			}//next
 		}
 
-//------------------ form timestamp
-		__addTimeStamp();
-		__checkSupport();
-			
+		//__checkSupport();
 		return nodes;
 		
 		function __convertMultipleField( xfields){
@@ -315,8 +306,8 @@ console.log( error );
 				var _xf = xfields[item1];
 				for(var item2 in _xf){
 					
-					if( _xf[item2]["children"] ){
-						var _xff = _xf[item2]["children"];
+					if( _xf[item2]["childNodes"] ){
+						var _xff = _xf[item2]["childNodes"];
 						//var obj = {};
 						for( var key3 in _xff ){
 							//obj[key3] = _xff[key3];
@@ -330,94 +321,8 @@ console.log( error );
 			return fields;
 		}//end __convertMultipleField()
 
-		function __addTimeStamp(){
-			for(var n = 0; n < nodes.length; n++){
-				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
-					if( webApp.vars["DB"]["dateFormat"] === "dd-mm-yyyy hh:mm:ss"){
-						var arr = nodes[n]["published"].split(" ");
-						var dateArr = arr[0].split("-");
-						var timeArr = arr[1].split(":");
-						
-						var split_values = {
-							"day" : dateArr[0],
-							"month" : dateArr[1],
-							"year" : dateArr[2],
-							"hour" : timeArr[0],
-							"min" : timeArr[1],
-							"sec" : timeArr[2]
-						};
-						
-						var _day = parseInt( split_values["day"] );
-						if ( isNaN( _day ) ){
-							_day = 0;
-						}
-
-						var _month = 0;
-				//"15-Sep-2018 22:13:00";
-						var sMonth = split_values["month"];
-						switch(sMonth){
-							
-							case "Jan":
-								_month = 1;
-							break;
-							
-							case "Feb":
-								_month = 2;
-							break;
-							
-							case "Mar":
-								_month = 3;
-							break;
-							
-							case "Apr":
-								_month = 4;
-							break;
-							
-							case "May":
-								_month = 5;
-							break;
-							
-							case "Jun":
-								_month = 6;
-							break;
-							
-							case "Jul":
-								_month = 7;
-							break;
-							
-							case "Aug":
-								_month = 8;
-							break;
-							
-							case "Sep":
-								_month = 9;
-							break;
-							
-							case "Oct":
-								_month = 10;
-							break;
-							
-							case "Nov":
-								_month = 11;
-							break;
-							
-							case "Dec":
-								_month = 12;
-							break;
-							
-						}//end switch
-
-						var _year = parseInt( split_values["year"] );
-						if ( isNaN( _year ) ){
-							_year = 0;
-						}
-
-						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
-					}
-				}
-			}//next
-		}// end __addTimeStamp()
 		
+/*		
 		function __checkSupport(){
 			for(var n = 0; n < nodes.length; n++){
 				var links = nodes[n]["ul"];
@@ -442,37 +347,75 @@ console.log( error );
 					}
 				}
 			}//next
-		}// end __addTimeStamp()
-		
-	}//end _data_formNodesObj()
-*/
+		}// end __checkSupport()
+*/		
+	}//end _getNodesObj()
 
-/*
-	function _data_formTagObj(xmlObj){
-		var databases = xmlObj["xroot"]["children"]["database"];
-		var dbName = webApp.vars["DB"]["dbName"];
-		var tagListName = "taglist";
-		var tagName = "tag";
+
+	function _getTagListObj(xmlObj){
+		var databases = xmlObj["xroot"]["childNodes"]["database"];
+		var dbName = _vars["dbName"];
+		var tagListName = _vars["tagListName"];//"tag_list"
+		var tagName = _vars["tagName"];//"tag"
 		
 		for(var n = 0; n < databases.length; n++){
-			if( databases[n]["name"] && databases[n]["name"] === dbName){
-var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListName][n]["children"][tagName];
+//console.log(databases[n].attributes.name, dbName);
+			if( databases[n].attributes.name === dbName){
+				var nodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagListName][n]["childNodes"][tagName];
 			}
 		}//next
 		
-		if( tagNodes.length > 0){
+		if( nodes.length > 0){
 			func.sortRecords({
-				"records" : tagNodes,
+				"records" : nodes,
 				"sortOrder": "asc", //desc
-				"sortByKey": "name"
+				"sortByKey": "text"
 			});
 			
-			return tagNodes;
+			return nodes;
 		} else {
 			return false;
 		}
 				
-	}//end _data_formTagObj()
-*/	
-	//function _data_formHierarchyList(){
-	//}//end _data_formHierarchyList()
+	}//end _getTagListObj()
+
+
+	function _getTagGroupsObj(xmlObj){
+		var databases = xmlObj["xroot"]["childNodes"]["database"];
+		var dbName = _vars["dbName"];
+		var tagName = "item";
+		var tagGroupsName = _vars["tagGroupsName"];//"tag_groups"
+		
+		for(var n = 0; n < databases.length; n++){
+//console.log(databases[n].attributes.name, dbName);
+			if( databases[n].attributes.name === dbName){
+				var nodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagGroupsName][n]["childNodes"][tagName];
+			}
+		}//next
+		
+		if( nodes.length > 0){
+			func.sortRecords({
+				"records" : nodes,
+				"sortOrder": "asc", //desc
+				"sortByKey": "text"
+			});
+			
+			return nodes;
+		} else {
+			return false;
+		}
+				
+	}//end _getTagGroupsObj()
+	
+	// public interfaces
+	return{
+		vars : _vars,
+		init:	function(args){ 
+//console.log(arguments);
+			return _init(args); 
+		},
+		getData:	function( opt ){ 
+			return _getData( opt ); 
+		}
+	};
+}//end _db()

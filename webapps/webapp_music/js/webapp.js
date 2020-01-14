@@ -10,19 +10,6 @@ var webApp = {
 		//},
 		//"templates_url" : "tpl/templates.xml",
 		//"GET" : {},
-		"DB" : {
-			"dataUrl" : "db/export_music.xml",
-			"dbType" : "xml",
-			//"db_type" : "json",
-			"dbName": "music",
-			
-// 			"tagNameFilms": "video",
-// 			"numRecordsPerPage":10,
-// 			"dateFormat": "dd-mm-yyyy hh:mm:ss",
-// 			"sortOrder": "asc",
-// 			"sortByKey": "title", //"published", 
-// 			"queryRes": []
-		},
 
 		"audioTypes" : {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
@@ -55,7 +42,7 @@ var webApp = {
 				"buildBlock" : function(){
 					
 					var html = _draw_wrapData({
-						"data": webApp.vars["DB"]["tags"],
+						"data": webApp.db.vars["tags"],
 						"templateID": "tpl-taglist",
 						"templateListItemID": "tpl-taglist-item"
 					});
@@ -134,7 +121,7 @@ function _runApp(){
 
 /*
 //if( webApp.vars["getDataRes"] ){
-if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
+if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
 		var parse_url = window.location.search; 
 		if( parse_url.length > 0 ){
 			webApp.vars["GET"] = func.parseGetParams(); 
@@ -472,7 +459,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 	
 	$("#page-number-more").on("click", function(event){
 		var num = parseInt( $("#page-number").val() );
-		if( num < webApp.vars["DB"]["numPages"] ){
+		if( num < webApp.db.vars["numPages"] ){
 			$("#page-number").val( num+1 );
 			$("#page-range").val( num+1 );
 			var url = "?q=list_nodes&num_page=" + (num+1);
@@ -504,7 +491,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		var target = event.target || event.srcElement;
 //console.log("change #select-sort...", event, target.value);
 
-		webApp.vars["DB"]["sortByKey"] =  target.value;
+		webApp.db.vars["sortByKey"] =  target.value;
 		$("#page-number").val( 1 );
 		$("#page-range").val( 1 );
 		var url = "?q=list_nodes&num_page=1";
@@ -602,15 +589,15 @@ console.log("-- start build page --");
 				//var timeStart = new Date();
 
 				_draw_updatePager({
-					"total_records": webApp.vars["DB"]["queryRes"].length,
+					"total_records": webApp.db.vars["queryRes"].length,
 					"page_number":webApp.vars["GET"]["num_page"]
 				});		
 				
 				var opt = {
-					"records": webApp.vars["DB"]["queryRes"],
+					"records": webApp.db.vars["queryRes"],
 					"num_page": webApp.vars["GET"]["num_page"],
-					"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
-					"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
+					"sortOrder": webApp.db.vars["sortOrder"], //"asc",
+					"sortByKey": webApp.db.vars["sortByKey"], //"published", //"title"
 					"callback": function(data){
 				//console.log(data);
 						if( !data || data.length ===0){
@@ -677,7 +664,7 @@ console.log("Warning! not found tag text value...");
 			
 			case "clear-query-result":
 				//_data_setTemplate(data);//define unique template for item
-				webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
+				webApp.db.vars["queryRes"] = webApp.db.vars["nodes"];
 
 				var url = "?q=list_nodes&num_page=1";
 				webApp.vars["GET"] = func.parseGetParams( url ); 
@@ -1463,9 +1450,9 @@ console.log( webApp.vars["logMsg"] );
 		func.log("", "total-records");
 		func.log(opt["total_records"], "total-records");
 
-		var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
 		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
-		webApp.vars["DB"]["numPages"] = numPages;
+		webApp.db.vars["numPages"] = numPages;
 
 		//$("#page-number").val(numPages);
 		func.log("", "total-pages");
