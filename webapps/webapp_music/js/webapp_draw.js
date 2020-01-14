@@ -1,0 +1,951 @@
+function _draw( opt ){
+//console.log(arguments);	
+
+	// private variables and functions
+	var _vars = {
+		"templates":{
+			
+			"blockPlayer" : {
+				"html" : '<div class="uk-card uk-card-default">\
+						<div class="row">\
+							<div class="uk-float-right">\
+									<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+							</div>\
+						</div>\
+						<div class="uk-card-body w60">\
+							<div>\
+								<b>Yankee_doodle.mp3</b><br>\
+								<audio controls="controls" class="w100">\
+										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
+				Tag <b>audio</b> not supported by this browser.... \
+								</audio>\
+							</div>\
+							<div class="uk-hidden">\
+				<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>\
+								<video id="player1" controls="controls" src="" width="640" height="385">\
+										<source src="">\
+										Tag <b>video</b> not supported by this browser.... \
+								</video>\
+							</div>\
+							<div id="player-buttons">\
+								<ul class="button-group uk-list">\
+									<button id="btn-play" class="btn btn-blue">play</button>\
+									<button id="btn-pause" class="btn btn-blue">pause</button>\
+									<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
+									<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+						<div id="block-tracklist" class="">\
+							<div class="wrapper">\
+								<div class="row">\
+									<div class="uk-float-left">\
+										<h4>new playlist</h4>\
+									</div>\
+									<div class="uk-float-right">\
+											<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+									</div>\
+								</div>\
+								<div class="pls-buttons">\
+									<ul class="menu-track-action button-group uk-list">\
+		<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
+		<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
+		<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
+		<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
+									</ul>\
+								</div>\
+								<div class="">\
+									<ul id="playlist" class="list-unstyled">\
+										<li class="list-group-item">\
+											<div class="uk-clearfix">\
+												<div class="uk-float-left">\
+													<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>\
+												</div>\
+												<div class="uk-float-right">\
+		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
+		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+												</div>\
+											</div>\
+										</li>\
+										<li class="list-group-item active">\
+											<div class="uk-clearfix">\
+												<div class="uk-float-left">\
+		<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>\
+												</div>\
+												<div class="uk-float-right">\
+		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
+		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+												</div>\
+											</div>\
+										</li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</div>'
+			},
+			
+			"blockTags" : {
+				"html" : "{{block-tag-groups}} {{block-taglist}}"
+			},
+			
+			"blockTagGroups" : {
+				"html" : '\
+						<div class="uk-card uk-card-primary">\
+						<div class="row">\
+							<div class="uk-float-left uk-padding-small">\
+								<b>Tag groups</b>\
+							</div>\
+							<div class="uk-float-right">\
+								<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+							</div>\
+						</div>\
+						<div class="uk-card-body uk-padding-small">\
+							<ul class="uk-list tag-list">\
+								<li><a data-toggle="#tags-music-syles" href="#get-tag-group&vid=2">music_styles</a>	</li>\
+								<li><a data-toggle="#tags-music-formats" href="#get-tag-group&vid=3">music_formats</a></li>\
+								<li><a data-toggle="#tags-country" href="#get-tag-group&vid=4">country</a></li>\
+								<li><a data-toggle="#tags-alpha" href="#get-tag-group&vid=5">alphabetical_voc</a></li>\
+								<li><a data-toggle="#tags-music-band" href="#get-tag-group&vid=8">music_band</a></li>\
+								<li><a data-toggle="#tags-music-genre" href="#get-tag-group&vid=9">music_genre</a></li>\
+							</ul>\
+						</div>\
+					</div>'
+			},
+			
+			"blockTagList" : {
+				"html" : '\
+						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+					<li><a  href="#?q=get-tag&vid=2&tid=10">heavy metal</a></li>\
+					<li><a  href="#?q=get-tag&vid=2&tid=11">speed</a></li>\
+					<li><a  href="#?q=get-tag&vid=2&tid=12">power</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+						<div class="uk-card uk-card-secondary collapse" id="tags-music-formats">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+					<li><a  href="#?q=get-tag&vid=3&tid=120">studio album</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+						<div class="uk-card uk-card-secondary collapse" id="tags-country">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+					<li><a  href="#?q=get-tag&vid=4&tid=143">Австрия</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+						<div class="uk-card uk-card-secondary collapse" id="tags-alpha">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+					<li><a  href="#?q=get-tag&vid=53tid=5">А</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+						<div class="uk-card uk-card-secondary collapse" id="tags-music-band">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+								</ul>\
+							</div>\
+						</div>\
+						<div class="uk-card uk-card-secondary collapse" id="tags-music-genre">\
+							<div class="uk-card-body uk-padding-small">\
+								<ul class="uk-list tag-list">\
+					<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>\
+								</ul>\
+							</div>\
+						</div>'
+			},
+			
+			"blockFileManager" : {
+				"html" : '\
+					<div class="uk-card uk-card-default">\
+						<div class="row">\
+							<div class="uk-float-left uk-padding-small">\
+									<b>File manager</b>\
+							</div>\
+							<div class="uk-float-right">\
+		<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+							</div>\
+						</div>\
+						<div class="uk-card-body uk-padding-small">\
+							<div class="wrapper">\
+								<div class="">\
+									<ul class="menu-file-action button-group">\
+										<button id="checkAll">select all</button>\
+										<button id="clearAll">clear all</button>\
+		<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
+		<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete selected</a></li>\
+		<li><a href="#modal-" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
+									</ul>\
+								</div>\
+								<div class="uk-padding-small">\
+									<a class="up-link btn" href="/mnt/d2"><span class="icon-level-up"></span></a>\
+									<span class="dirname">/mnt/d2/music</span>\
+								</div>\
+								<div class="wfm">\
+											<ul class="folders-list uk-list uk-list-striped">\
+												<li>\
+													<input name="file[]" value="E" type="checkbox">\
+													<a class="subfolder" href="/mnt/d2/music/E"><span class="icon-folder"></span> E</a>\
+												</li>\
+												<li>\
+													<input name="file[]" value="0" type="checkbox">\
+													<a class="subfolder" href="/mnt/d2/music/0"><span class="icon-folder"></span> 0</a>\
+												</li>\
+											</ul>\
+											<ul class="files-list uk-list uk-list-striped">\
+												<li>\
+													<div class="file">\
+														<input name="file[]" value="log.txt" type="checkbox">\
+														<a href="/music/log.txt" target="_blank">log.txt</a>\
+													</div>\
+												</li>\
+											</ul>\
+								</div><!-- /wfm -->\
+							</div><!-- /files -->\
+						</div>\
+					</div>'
+			},
+			
+			"blockPager" : '<div class="row">\
+							<div class="uk-float-left">\
+				total records: <b><span id="total-records">40</span></b>, \
+				number of pages: <b><span id="total-pages">4</span></b>\
+							</div>\
+							<div class="uk-float-right">\
+				<form name="formSearch" id="form-search" action="?q=search" method="GET">\
+								<ul class="button-group">\
+									<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
+									<li><button type="submit" class="uk-button uk-button-small uk-button-primary">\
+									<span class="icon-search"></span></button></li>\
+									<li><button type="reset" class="uk-button uk-button-small uk-button-danger">\
+									<span class="icon-remove"></span></button></li>\
+								</ul>\
+				</form>\
+							</div>\
+					</div>\
+					<div class="row">\
+						<div class="block-num-page uk-float-left w20">\
+							<button id="page-number-less" class="">-</button>\
+							<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">\
+							<button id="page-number-more" class="">+</button>\
+						</div>\
+						<div class="uk-float-left w60 box-range">\
+				<input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">\
+						</div>\
+						<div class="uk-float-right">\
+							<label class="uk-label">sort by</label>\
+							<select id="select-sort" class="" autocomplete="off">\
+								<option value="title" selected="">title</option>\
+								<option value="published">publication date</option>\
+							</select>\
+						</div>\
+			</div>',
+			
+			"blockListItem" : '<div class="uk-card uk-card-default node pls-8">\
+						<div class="uk-card-header uk-padding-small block-titles">\
+								<h3>{{title}}</h3>\
+							</div>\
+					<div class="uk-card-body uk-padding-small block-images">\
+		<img src="{{img_path}}" alt="{{title}}" title="{{title}}">\
+					</div>\
+						<div class="toggle-content">\
+							<button class="btn-dropdown icon-chevron-down"></button>\
+							<div class="uk-card-body uk-padding-small block-content">\
+								<ul class="uk-list">\
+		<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
+					<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
+								</ul>\
+								<ul class="related-links">\
+					<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="" target="_blank">music.yandex.ru</a></li>\
+					<li><a href="#" class="" target="_blank">youtube playlists</a></li> \
+					<li><a href="#" class="" target="_blank">music on VK.com </a></li>\
+					<li><a href="#" class="" target="_blank">music on OK.ru </a></li>\
+					<li><a href="#" class="" target="_blank">music on cloud.mail.ru</a></li>\
+								</ul>\
+								<div class="description">https://ru.wikipedia.org/wiki/Korpiklaani</div>\
+								<ul class="list-inline node-tags">\
+				<small><b>related tags:</b></small>\
+						<li><a href="#" data-group-name="alphabetical_voc">J</a></li>\
+						<li><a href="#" data-group-name="music_genre">Рок</a></li>\
+						<li><a href="#" data-group-name="music_styles">classic rock</a></li>\
+						<li><a href="#" data-group-name="music_styles">heavy metal</a></li>\
+						<li><a href="#" data-group-name="country">Великобритания</a></li>\
+						<li><a href="#" data-group-name="music_formats">collection</a></li>\
+								</ul>\
+							</div>\
+						</div>\
+			</div>',
+			
+		"blockLinks" : '<h2>{{block_title}}</h2>\
+<div class="uk-card uk-card-primary">\
+{{content}}\
+</div>'
+		},//end templates
+		
+		"footerLinksContent" : '<ul class="uk-card-body uk-text-center">\
+		<li class="uk-inline">\
+		<a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a>\
+		</li>\
+		<li class="uk-inline">\
+		<a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a>\
+		</li>\
+		<li class="uk-inline">\
+		<a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>\
+		<li class="uk-inline">\
+		<a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>\
+		<li class="uk-inline">\
+		<a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>\
+	</ul>'
+	};
+
+	var _init = function(){
+//console.log("init _draw");
+	};
+	
+	var _buildPage = function( opt ){
+		var p = {
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(opt);
+
+		for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			_buildBlock( webApp.vars["blocks"][n] );
+		}//next
+		
+	};//end _buildPage()
+
+
+	var _buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
+		var timeStart = new Date();
+		var p = {
+			"title": "",
+			"content" : "",
+			//"contentType" : "",
+			"templateID" : "tpl-block",
+			"contentTpl" : "tpl-list",//"tpl-menu"
+			"contentListTpl" : false,
+			
+			"callback" : function(){
+				var timeEnd = new Date();
+				var ms = timeEnd.getTime() - timeStart.getTime();
+				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+console.log(msg);			
+				//webApp.app.vars["runtime"].push({
+					//"source" : msg,
+					//"ms" : ms,
+					//"sec" : ms / 1000
+				//});
+				
+				//if( typeof p["callback2"] === "function"){
+					//p["callback2"]();//return from _buildBlock()
+				//}
+				
+			}//,//end callback
+			//"callback2" : null
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( typeof p["content"] === "function"){//dynamic form content
+/*			
+			p["content"]({
+				"callback" : function( res ){
+console.log(res);
+					var html = _draw_wrapData({
+						"data": res,
+						"templateID": "tpl-videolist",
+						"templateListItemID": "tpl-videolist-item--video"
+					});
+//console.log( html);
+					if( !html || html.length === 0){
+webApp.vars["logMsg"] = "error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+					} else {
+p["content"] = html;						
+//console.log(p);
+						_draw_insertBlock( p );
+						//_draw_buildBlock({
+							//"locationID" : "list-video",
+							//"title" : "video list", 
+							//"templateID" : "tpl-block-videolist",
+							//"content" : _html
+						//});
+					}
+
+					
+				}
+			});
+*/			
+		} else {
+			_insertBlock( p );
+		}
+
+	};//end _buildBlock()
+	
+	
+	var _insertBlock = function( opt ){
+		var p = {
+			"templateID": false,
+			"locationID": "block-1",
+			"title" : "block",
+			"content" : false,
+			"callback":null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log("_draw_insertBlock()", p);
+
+		var templateID = p["templateID"];
+		if( !webApp.draw.vars["templates"][templateID] ){
+webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
+func.logAlert( webApp.vars["logMsg"], "error");
+console.log( "-- " + webApp.vars["logMsg"] );
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			return false;
+		}
+		
+		if( !p["content"] || p["content"].length === 0){
+webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
+//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- "+webApp.vars["logMsg"] );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"]();
+			//}
+			//return false;
+		}
+		
+		var html = webApp.draw.vars["templates"][templateID];
+		html = html.replace("{{block_title}}", p["title"]);
+		html = html.replace("{{content}}", p["content"]);
+		
+		var locationBlock = func.getById( p["locationID"] );
+		if( locationBlock ){
+			locationBlock.innerHTML = html;
+		} else {
+webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
+func.logAlert( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+		}		
+		
+		if( typeof p["callback"] === "function"){
+			p["callback"]();
+		}
+
+	};//end _insertBlock()
+
+
+
+	function _wrapContent( opt ){
+		var p = {
+			"data": null,
+			//"type" : "",
+			//"wrapType" : "menu",
+			"templateID" : false,
+			"templateListID" : false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+
+		if( !p["data"] ){
+_log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
+			return false;
+		}
+		if( p["data"].length === 0 ){
+			return false;
+		}
+		if( !p["templateID"] ){
+_log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b></p>");
+			return false;
+		}
+		
+		if( !_vars["templates"][p.templateID] ){
+_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+			return false;
+		}
+		var html = "";
+
+//console.log( p["data"].length );
+		p["wrapType"] = "item";
+		if( p["data"].length > 0 ){
+			p["wrapType"] = "list";
+		}
+		
+		switch( p["wrapType"] ){
+			case "item" :
+				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
+			break;
+			case "list" :
+				if( !p["templateListID"] ){
+var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
+console.log(msg);							
+_log(msg);
+					return false;
+				}
+				html = __formListHtml( _vars["templates"][ p.templateID ] );
+			break;
+		}//end switch
+		
+//console.log(html);
+		return html;
+
+		function __formListHtml( _html ){
+			
+			var listHtml = "";
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
+				
+				//form list items
+				var item = p["data"][n];
+					
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( item, itemTpl );
+				
+				var itemHtml = _vars["templates"][ p.templateListID];
+				for( var key2 in item){
+//console.log(key2, item[key2]);
+
+					if( key2 === "childTerms" && item["childTerms"].length > 0){
+						var subOrdList = _vars["templates"][ p.templateID];
+						var itemTpl = _vars["templates"][ p.templateListID];
+						var subOrdListHtml = "";
+						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
+							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
+						}//next
+//console.log( subOrdListHtml );
+						subOrdList = subOrdList
+						.replace("list-unstyled", "")
+						.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+//itemHtml += subOrdList;
+						item["childTerms"] = subOrdList;
+						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
+					} //else {
+						//itemHtml = itemHtml.replace("{{childTerms}}", "");
+					//}
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+// //console.log(key2, item[key2]);
+						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+					}
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+			}//next
+			
+			_html = _html.replace("{{list}}", listHtml);
+			return _html;
+		}//end __formListHtml
+
+		function __formNodeHtml( data, _html ){
+			
+			for( var key in data ){
+//console.log(key, data[key]);
+
+				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
+					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
+					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
+					var _listHtml = "";
+					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
+						_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
+					}//next
+//console.log( _listHtml );
+					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
+//console.log( nodeTermsList );
+					data["nodeTerms"] = nodeTermsList;
+				}
+
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, p["data"][key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+			return _html;
+		}//end __formNodeHtml()
+		
+	}//end _wrapContent
+
+	
+	// public interfaces
+	return{
+		vars : _vars,
+		init:	function(){ 
+			return _init(); 
+		},
+		buildPage: _buildPage,
+		buildBlock: _buildBlock,
+		insertBlock:	function( opt ){ 
+			return _insertBlock( opt ); 
+		},
+		wrapContent:	function( opt ){ 
+			return _wrapContent( opt ); 
+		}
+	};
+}//end _draw()
+
+
+
+
+/*
+	var _buildPage = function( opt ){
+//console.log("_buildPage()", arguments);
+
+		//if( webApp.vars["wait"] ){
+			//webApp.vars["wait"].className="modal-backdrop in";
+			//webApp.vars["wait"].style.display="block";
+		//}
+		
+		var p = {
+			"nid": null,
+			//"templateID" : "tpl-page"
+			"title" : "",
+			"pageData" : [],
+			"pageType" : "node",
+			"callback": null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(opt);
+
+		// //draw static blocks
+		// for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			// var _opt = webApp.vars["blocks"][n];
+// // //console.log(_opt["visibility"], p["title"]);				
+			// if( _opt["visibility"]){
+				// // if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
+					// _draw_buildBlock( _opt );
+				// // }
+			// }
+			
+		// }//next
+
+		for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			var _opt = webApp.vars["blocks"][n];
+			
+			//do not redraw existing block
+			if( _opt["draw"] && !_opt["refresh"]){
+				continue;
+			}
+			
+			if( _opt["visibility"]){
+				
+				//closures, need for async data getting from indexedDB
+				(function(_opt_){
+					//setTimeout(function(){ 
+						//console.log("-- closure function, ", _opt_); 
+					//}, 1000);
+					//_draw_buildBlock( _opt_ );
+					
+					if( typeof _opt_["buildBlock"] === "function"){
+						//if( _opt_["visibility"]){
+							_opt_["buildBlock"]();
+							_opt_["draw"] = true;
+						//}
+					} else {
+webApp.vars["logMsg"] = "warning, not found buld function....";
+console.log( "-- " + webApp.vars["logMsg"], _opt_ );
+					}
+				})(_opt);//end closure
+			}
+
+		}//next
+
+		var _html = _draw_wrapData({
+			"data": p["pageData"],
+			"templateID": "tpl-videolist",
+			"templateListItemID": "tpl-videolist-item--video"
+		});
+//console.log( _html);
+
+
+		if( !_html || _html.length === 0){
+webApp.vars["logMsg"] = "error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+		} else {
+//$("#main").html( _html );
+
+			//draw content block
+			_draw_buildBlock({
+				"locationID" : "list-video",
+				"title" : "video list", 
+				"templateID" : "tpl-block-videolist",
+				"content" : _html
+			});
+		}
+
+		//if( webApp.vars["wait"] ){
+			////webApp.vars["wait"].className="";
+			//webApp.vars["wait"].style.display="none";
+		//}
+
+
+		if( typeof p["callback"] === "function"){//return from _buildPage()
+			p["callback"]();
+		}
+			
+	};//end _buildPage()
+	
+*/
+
+	function _draw_wrapData( opt ){
+		var p = {
+			"data": null,
+			//"type" : "",
+			//"wrapType" : "menu",
+			"templateID" : false,
+			"templateListItemID": false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] || p["data"].length === 0){
+console.log("-- _draw_wrapData(), error, incorrect data ...");
+			return false;
+		}
+		if( !p["templateID"] ){
+console.log("-- _draw_wrapData(), error, templateID was not defined...");
+			return false;
+		}
+		
+		if( !webApp.draw.vars["templates"][p.templateID] ){
+console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
+			return false;
+		}
+		
+		var html = "";
+//console.log( p["data"].length );
+
+		p["wrapType"] = "item";
+		if( p["data"].length > 0 ){
+			p["wrapType"] = "list";
+		}
+		switch( p["wrapType"] ){
+			case "item" :
+				//html = __formNodeHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
+			break;
+			case "list" :
+				if( !p["templateListItemID"] ){
+webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
+console.log(webApp.vars["logMsg"]);							
+					return false;
+				}
+				html = __formListHtml( webApp.draw.vars["templates"][ p.templateID ] );
+			break;
+		}//end switch
+		
+//console.log(html);
+		return html;
+
+		function __formNodeHtml( data, _html ){
+			
+			for( var key in data ){
+//console.log(key, data[key]);
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, data[key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+//--------------- clear undefined keys (text between {{...}} )
+_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
+//--------------------			
+
+			return _html;
+		}//end __formNodeHtml()
+		
+		function __formListHtml( _html ){
+			
+			var listHtml = "";
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
+
+				//form list items
+				var item = p["data"][n];
+					
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( item, itemTpl );
+				
+				var itemHtml = webApp.draw.vars["templates"][ p.templateListItemID];
+				
+				
+				//load unique template for item
+				if( item["template"] && item["template"].length > 0){
+					var tplName = item["template"];
+					if( webApp.draw.vars["templates"][ tplName ] ){
+						itemHtml = webApp.draw.vars["templates"][ tplName ];
+					} else {
+console.log("-- warning, not found template, ", tplName );
+					}
+				}
+
+//--------------- get keys from template (text between {{...}} )
+				//if(n === 1){
+					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
+					for(var n1 = 0; n1 < tplKeys.length; n1++){
+						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
+					}//next
+//console.log( tplKeys, p.templateListItemID, item );
+				//}
+//---------------
+
+				//make copy object item
+				//var _tmp = {
+					//"number": item["number"]
+				//};
+				var jsonNode = JSON.stringify( item );
+				var _tmp = JSON.parse( jsonNode);
+				
+				//for( var key2 in item){
+				for( var n1 = 0; n1 < tplKeys.length; n1++){
+					var key2 = tplKeys[n1];
+//console.log(item[key2] instanceof Array, key2, item[key2]);
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}
+
+					if( item[key2] instanceof Array ){
+						if(item[key2].length === 0){
+console.log("-- warning, empty field....", key2, item[key2]);
+//continue;	
+							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+						} else {
+							var subOrdList = item[key2]["listTpl"];
+							var itemTpl = item[key2]["itemTpl"];
+	/*						
+							if( key2 === "title" ){
+								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist"];
+								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-title"];
+							}
+
+							if( key2 === "ul" ){
+								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-links"];
+								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-ul"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
+
+							if( key2 === "tags" ){
+								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-tags"];
+								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-tag"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
+							
+							if( key2 === "pictures" ){
+								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-pictures"];
+								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-img"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+	////console.log( "subOrdListHtml: ", subOrdListHtml );
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+	////console.log( subOrdList );
+								//item[key2] = subOrdList;
+							}
+	*/						
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+//console.log( subOrdListHtml );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+							//item[key2] = subOrdList;
+							
+							//do not add HTML code to item object!!!
+							_tmp[key2] = subOrdList;
+						}							
+					}
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}						
+						if( typeof item[key2] === "undefined"){
+//if(n === 1){
+//console.log(key2, item[key2], typeof item[key2]);
+//}						
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+						} else {
+							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
+						}
+					}
+					
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+			}//next
+			
+			_html = _html.replace("{{list}}", listHtml);
+			return _html;
+		}//end __formListHtml
+
+	}//end _draw_wrapData()
+
+
+
+
+
+
+	function _draw_updatePager(opt){
+		func.log("", "total-records");
+		func.log(opt["total_records"], "total-records");
+
+		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
+		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
+		webApp.db.vars["numPages"] = numPages;
+
+		//$("#page-number").val(numPages);
+		func.log("", "total-pages");
+		func.log(numPages, "total-pages");
+		
+		$("#page-number").val( opt["page_number"] );
+
+		$("#page-range").val(opt["page_number"]);
+		$("#page-range").attr("max", numPages);
+		
+		//$("#page-number-2").attr("max", numPages);
+	}//end _draw_updatePagers()

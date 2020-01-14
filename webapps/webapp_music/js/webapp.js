@@ -1,5 +1,11 @@
 var webApp = {
 	
+//Modules
+	"db" : _db(),
+	//"iDBmodule" : iDBmodule(),
+	"draw" : _draw(),
+	//"app" : _app(),
+
 	"vars" : {
 		"app_title" : "music collection",
 		"logMsg" : "",
@@ -21,15 +27,57 @@ var webApp = {
 		},
 		"blocks": [
 			{
+				"locationID" : "block-player",
+				"title" : "block player", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
+				"locationID" : "block-tag-groups",
+				"title" : "block tag groups", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
+				"locationID" : "block-taglist",
+				"title" : "block taglist", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
+				"locationID" : "block-file-manager",
+				"title" : "block file manager", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
+				"locationID" : "block-pager",
+				"title" : "block pager", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
+				"locationID" : "block-list",
+				"title" : "block list", 
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+			}, //end block
+
+			{
 				"locationID" : "block-links",
 				"title" : "footer links", 
-				"templateID" : "tpl-block-links",
-				"content" : "",
-				"visibility":true,
-				"buildBlock" : function(){
-					_draw_buildBlock( this );
-				}
-			}, //end block
+				"templateID" : "blockLinks",
+				"content" : "<u>static text</u>",
+				"visibility":true//,
+				//"buildBlock" : function(){
+					//_draw_buildBlock( this );
+				//}
+			} //end block
 /*			
 			{
 				"locationID" : "block-taglist",
@@ -69,7 +117,7 @@ console.log("init webapp!");
 		webApp.db.init();
 		//webApp.iDBmodule.init();
 //console.log(iDBmodule, typeof iDBmodule);			
-		//webApp.draw.init();
+		webApp.draw.init();
 		//webApp.app.init();
 
 		this["vars"]["waitWindow"] = func.getById("win1");
@@ -85,11 +133,6 @@ console.log("init webapp!");
 		_runApp();
 	},//end init()
 	
-	//Modules
-	"db" : _db(),
-	//"iDBmodule" : iDBmodule(),
-	//"draw" : _draw(),
-	//"app" : _app(),
 	
 };//end webApp()
 console.log(webApp);
@@ -557,16 +600,14 @@ function _urlManager( target ){
 				webApp.db.getData(function(res){
 			//console.log(arguments);
 			//console.log(window.location);	
-
-
-					//clear block
-			// //setTimeout(function(){
-					// if( webApp["vars"]["waitWindow"] ){
-						// webApp["vars"]["waitWindow"].style.display="none";
-					// }		
-			// //}, 1000*3);
-
-
+			
+//clear block
+//setTimeout(function(){
+					if( webApp["vars"]["waitWindow"] ){
+						webApp["vars"]["waitWindow"].style.display="none";
+					}		
+//}, 1000*3);
+			
 					if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
 							var parse_url = window.location.search; 
 							if( parse_url.length > 0 ){
@@ -591,6 +632,8 @@ function _urlManager( target ){
 			
 			case "list_nodes":
 console.log("-- start build page --");
+				webApp.draw.buildPage();
+console.log("-- end build page --");
 /*			
 				//var timeStart = new Date();
 
@@ -1014,472 +1057,4 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		
 	}//end _loadTemplates()
 */
-
-
-//===============================================
-/*
-	var _buildPage = function( opt ){
-//console.log("_buildPage()", arguments);
-
-		//if( webApp.vars["wait"] ){
-			//webApp.vars["wait"].className="modal-backdrop in";
-			//webApp.vars["wait"].style.display="block";
-		//}
-		
-		var p = {
-			"nid": null,
-			//"templateID" : "tpl-page"
-			"title" : "",
-			"pageData" : [],
-			"pageType" : "node",
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(opt);
-
-		// //draw static blocks
-		// for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			// var _opt = webApp.vars["blocks"][n];
-// // //console.log(_opt["visibility"], p["title"]);				
-			// if( _opt["visibility"]){
-				// // if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
-					// _draw_buildBlock( _opt );
-				// // }
-			// }
-			
-		// }//next
-
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _opt = webApp.vars["blocks"][n];
-			
-			//do not redraw existing block
-			if( _opt["draw"] && !_opt["refresh"]){
-				continue;
-			}
-			
-			if( _opt["visibility"]){
-				
-				//closures, need for async data getting from indexedDB
-				(function(_opt_){
-					//setTimeout(function(){ 
-						//console.log("-- closure function, ", _opt_); 
-					//}, 1000);
-					//_draw_buildBlock( _opt_ );
-					
-					if( typeof _opt_["buildBlock"] === "function"){
-						//if( _opt_["visibility"]){
-							_opt_["buildBlock"]();
-							_opt_["draw"] = true;
-						//}
-					} else {
-webApp.vars["logMsg"] = "warning, not found buld function....";
-console.log( "-- " + webApp.vars["logMsg"], _opt_ );
-					}
-				})(_opt);//end closure
-			}
-
-		}//next
-
-		var _html = _draw_wrapData({
-			"data": p["pageData"],
-			"templateID": "tpl-videolist",
-			"templateListItemID": "tpl-videolist-item--video"
-		});
-//console.log( _html);
-
-
-		if( !_html || _html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		} else {
-//$("#main").html( _html );
-
-			//draw content block
-			_draw_buildBlock({
-				"locationID" : "list-video",
-				"title" : "video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : _html
-			});
-		}
-
-		//if( webApp.vars["wait"] ){
-			////webApp.vars["wait"].className="";
-			//webApp.vars["wait"].style.display="none";
-		//}
-
-
-		if( typeof p["callback"] === "function"){//return from _buildPage()
-			p["callback"]();
-		}
-			
-	};//end _buildPage()
-*/
-
-
-//============================================== DRAW
-	function _draw_wrapData( opt ){
-		var p = {
-			"data": null,
-			//"type" : "",
-			//"wrapType" : "menu",
-			"templateID" : false,
-			"templateListItemID": false
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		if( !p["data"] || p["data"].length === 0){
-console.log("-- _draw_wrapData(), error, incorrect data ...");
-			return false;
-		}
-		if( !p["templateID"] ){
-console.log("-- _draw_wrapData(), error, templateID was not defined...");
-			return false;
-		}
-		
-		if( !webApp.vars["templates"][p.templateID] ){
-console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
-			return false;
-		}
-		
-		var html = "";
-//console.log( p["data"].length );
-
-		p["wrapType"] = "item";
-		if( p["data"].length > 0 ){
-			p["wrapType"] = "list";
-		}
-		switch( p["wrapType"] ){
-			case "item" :
-				//html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
-			break;
-			case "list" :
-				if( !p["templateListItemID"] ){
-webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
-console.log(webApp.vars["logMsg"]);							
-					return false;
-				}
-				html = __formListHtml( webApp.vars["templates"][ p.templateID ] );
-			break;
-		}//end switch
-		
-//console.log(html);
-		return html;
-
-		function __formNodeHtml( data, _html ){
-			
-			for( var key in data ){
-//console.log(key, data[key]);
-				if( _html.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, data[key]);
-					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
-				}
-			}//next
-			
-//--------------- clear undefined keys (text between {{...}} )
-_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
-//--------------------			
-
-			return _html;
-		}//end __formNodeHtml()
-		
-		function __formListHtml( _html ){
-			
-			var listHtml = "";
-			for( var n = 0; n < p["data"].length; n++){
-//console.log( n );
-//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-
-				//form list items
-				var item = p["data"][n];
-					
-				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( item, itemTpl );
-				
-				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
-				
-				
-				//load unique template for item
-				if( item["template"] && item["template"].length > 0){
-					var tplName = item["template"];
-					if( webApp.vars["templates"][ tplName ] ){
-						itemHtml = webApp.vars["templates"][ tplName ];
-					} else {
-console.log("-- warning, not found template, ", tplName );
-					}
-				}
-
-//--------------- get keys from template (text between {{...}} )
-				//if(n === 1){
-					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
-					for(var n1 = 0; n1 < tplKeys.length; n1++){
-						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
-					}//next
-//console.log( tplKeys, p.templateListItemID, item );
-				//}
-//---------------
-
-				//make copy object item
-				//var _tmp = {
-					//"number": item["number"]
-				//};
-				var jsonNode = JSON.stringify( item );
-				var _tmp = JSON.parse( jsonNode);
-				
-				//for( var key2 in item){
-				for( var n1 = 0; n1 < tplKeys.length; n1++){
-					var key2 = tplKeys[n1];
-//console.log(item[key2] instanceof Array, key2, item[key2]);
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}
-
-					if( item[key2] instanceof Array ){
-						if(item[key2].length === 0){
-console.log("-- warning, empty field....", key2, item[key2]);
-//continue;	
-							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
-						} else {
-							var subOrdList = item[key2]["listTpl"];
-							var itemTpl = item[key2]["itemTpl"];
-	/*						
-							if( key2 === "title" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
-							}
-
-							if( key2 === "ul" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-
-							if( key2 === "tags" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-							
-							if( key2 === "pictures" ){
-								var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
-								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-	////console.log( "subOrdListHtml: ", subOrdListHtml );
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-	////console.log( subOrdList );
-								//item[key2] = subOrdList;
-							}
-	*/						
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-//console.log( item[key2][n2]["text"] );
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-//console.log( subOrdListHtml );
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-							//item[key2] = subOrdList;
-							
-							//do not add HTML code to item object!!!
-							_tmp[key2] = subOrdList;
-						}							
-					}
-					
-					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}						
-						if( typeof item[key2] === "undefined"){
-//if(n === 1){
-//console.log(key2, item[key2], typeof item[key2]);
-//}						
-							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
-						} else {
-							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
-							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
-						}
-					}
-					
-				}//next
-					
-				listHtml += itemHtml;
-//console.log(items);
-//console.log(listHtml);
-			}//next
-			
-			_html = _html.replace("{{list}}", listHtml);
-			return _html;
-		}//end __formListHtml
-
-	}//end _draw_wrapData()
-
-
-	var _draw_buildBlock = function(opt){
-//console.log("_buildBlock()", arguments);
-		var timeStart = new Date();
-		var p = {
-			"title": "",
-			"content" : "",
-			//"contentType" : "",
-			"templateID" : "tpl-block",
-			"contentTpl" : "tpl-list",//"tpl-menu"
-			"contentListTpl" : false,
-			
-			"callback" : function(){
-				var timeEnd = new Date();
-				var ms = timeEnd.getTime() - timeStart.getTime();
-				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-console.log(msg);			
-				//webApp.app.vars["runtime"].push({
-					//"source" : msg,
-					//"ms" : ms,
-					//"sec" : ms / 1000
-				//});
-				
-				//if( typeof p["callback2"] === "function"){
-					//p["callback2"]();//return from _buildBlock()
-				//}
-				
-			}//,//end callback
-			//"callback2" : null
-		};
-		//extend p object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		if( typeof p["content"] === "function"){//dynamic form content
-/*			
-			p["content"]({
-				"callback" : function( res ){
-console.log(res);
-					var html = _draw_wrapData({
-						"data": res,
-						"templateID": "tpl-videolist",
-						"templateListItemID": "tpl-videolist-item--video"
-					});
-//console.log( html);
-					if( !html || html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-					} else {
-p["content"] = html;						
-//console.log(p);
-						_draw_insertBlock( p );
-						//_draw_buildBlock({
-							//"locationID" : "list-video",
-							//"title" : "video list", 
-							//"templateID" : "tpl-block-videolist",
-							//"content" : _html
-						//});
-					}
-
-					
-				}
-			});
-*/			
-		} else {
-			_draw_insertBlock( p );
-		}
-
-	};//end _draw_buildBlock()
-
-
-	var _draw_insertBlock = function( opt ){
-		var p = {
-			"templateID": false,
-			"locationID": "block-1",
-			"title" : "block",
-			"content" : false,
-			"callback":null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log("_draw_insertBlock()", p);
-
-		var templateID = p["templateID"];
-		if( !webApp.vars["templates"][templateID] ){
-webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
-//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( "-- " + webApp.vars["logMsg"] );
-			if( typeof p["callback"] === "function"){
-				p["callback"]();
-			}
-			return false;
-		}
-		
-		if( !p["content"] || p["content"].length === 0){
-webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
-console.log( "-- "+webApp.vars["logMsg"] );
-			//if( typeof p["callback"] === "function"){
-				//p["callback"]();
-			//}
-			//return false;
-		}
-		
-		var html = webApp.vars["templates"][templateID];
-		html = html.replace("{{block_title}}", p["title"]);
-		html = html.replace("{{content}}", p["content"]);
-		
-		var locationBlock = func.getById( p["locationID"] );
-		if( locationBlock ){
-			locationBlock.innerHTML = html;
-		} else {
-webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		}		
-		
-		if( typeof p["callback"] === "function"){
-			p["callback"]();
-		}
-
-	};//end _draw_insertBlock()
-
-
-	function _draw_updatePager(opt){
-		func.log("", "total-records");
-		func.log(opt["total_records"], "total-records");
-
-		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
-		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
-		webApp.db.vars["numPages"] = numPages;
-
-		//$("#page-number").val(numPages);
-		func.log("", "total-pages");
-		func.log(numPages, "total-pages");
-		
-		$("#page-number").val( opt["page_number"] );
-
-		$("#page-range").val(opt["page_number"]);
-		$("#page-range").attr("max", numPages);
-		
-		//$("#page-number-2").attr("max", numPages);
-	}//end _draw_updatePagers()
 
