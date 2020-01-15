@@ -70,13 +70,13 @@ var webApp = {
 			{
 				"locationID" : "block-list",
 				//"title" : "block list", 
-				"templateID" : "blockList",
+				"templateID" : "blockNodes",
 				"visibility":true,
 				"content" : function(){
 					var html = webApp.draw.wrapData({
 						"data": webApp.db.vars["blockList"],
-						"templateID": "blockListItem",
-						//"templateListItemID": "blockLinksListItem"
+						"templateID": "blockList",
+						"templateListItemID": "blockListItem"
 					});
 //console.log( html );
 					if( html && html.length > 0){

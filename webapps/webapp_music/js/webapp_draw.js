@@ -246,7 +246,8 @@ function _draw( opt ){
 						</div>\
 			</div>',
 			
-			"blockList" : '<div>{{content}}</div>',
+			"blockNodes" : '{{content}}',
+			"blockList" : '<div>{{list}}</div>',
 			"blockListItem" : '<div class="uk-card uk-card-default node pls-8">\
 						<div class="uk-card-header uk-padding-small block-titles">\
 								<h3>{{title}}</h3>\

@@ -18,12 +18,19 @@ function _db( opt ){
 		"tagListName": "tag_list",
 		"tagGroupsName": "tag_groups",
 		
-		"blockList" : {
+		"blockList" : [
+		{
 			title: "Judas Priest",
 			img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg",
 			description : "ru.wikipedia.org/wiki/Korpiklaani",
 			playlist_filepath : "/music/0_playlists/judas_priest.json"
 		},
+		{
+			title: "Jazz and swing",
+			img_path : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg",
+			playlist_filepath : "/music/0_playlists/Jazz and swing.json"
+		}
+		],
 		"footerLinks" : [
 { url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },
 { url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" },
