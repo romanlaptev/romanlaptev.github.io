@@ -20,7 +20,9 @@ function _db( opt ){
 		
 		"blockList" : {
 			title: "Judas Priest",
-			img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg"
+			img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg",
+			description : "ru.wikipedia.org/wiki/Korpiklaani",
+			playlist_filepath : "/music/0_playlists/judas_priest.json"
 		},
 		"footerLinks" : [
 { url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },

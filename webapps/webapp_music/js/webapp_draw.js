@@ -263,12 +263,11 @@ function _draw( opt ){
 								</ul>\
 								<ul class="related-links">\
 					<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="" target="_blank">music.yandex.ru</a></li>\
-					<li><a href="#" class="" target="_blank">youtube playlists</a></li> \
 					<li><a href="#" class="" target="_blank">music on VK.com </a></li>\
 					<li><a href="#" class="" target="_blank">music on OK.ru </a></li>\
 					<li><a href="#" class="" target="_blank">music on cloud.mail.ru</a></li>\
 								</ul>\
-								<div class="description">https://ru.wikipedia.org/wiki/Korpiklaani</div>\
+								<div class="description">{{description}}</div>\
 								<ul class="list-inline node-tags">\
 				<small><b>related tags:</b></small>\
 						<li><a href="#" data-group-name="alphabetical_voc">J</a></li>\
