@@ -19,17 +19,36 @@ function _db( opt ){
 		"tagGroupsName": "tag_groups",
 		
 		"blockList" : [
-		{
-			title: "Judas Priest",
-			img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg",
-			description : "ru.wikipedia.org/wiki/Korpiklaani",
-			playlist_filepath : "/music/0_playlists/judas_priest.json"
-		},
-		{
-			title: "Jazz and swing",
-			img_path : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg",
-			playlist_filepath : "/music/0_playlists/Jazz and swing.json"
-		}
+{
+	title: "Judas Priest",
+	img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg",
+	playlist_filepath : "/music/0_playlists/judas_priest.json",
+	description : "ru.wikipedia.org/wiki/Korpiklaani",
+	related_links : [
+{ url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru"},
+{ url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" },
+{ url : "https://vk.com/audios36466377", title: "music on VK.com"},
+{ url : "https://ok.ru/music/profile/508693848602", title: "music on OK.ru" },
+{ url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" }
+	],
+	node_tags : [
+{ data_group_name: "alphabetical_voc", text: "J"},
+{ data_group_name: "music_genre", text: "Рок"},
+{ data_group_name: "music_styles", text: "classic rock"},
+{ data_group_name: "music_styles", text: "heavy metal"},
+{ data_group_name: "country", text: "Великобритания"},
+{ data_group_name: "music_formats", text: "collection"}
+	
+	]
+},
+{
+	title: "Jazz and swing",
+	img_path : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg",
+	playlist_filepath : "/music/0_playlists/Jazz and swing.json",
+	description : "",
+	related_links : [],
+	node_tags : []
+}
 		],
 		"footerLinks" : [
 { url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },
@@ -70,6 +89,11 @@ function _db( opt ){
 		}
 */
 		//storage.init();// _init_cache
+		_vars["blockList"][0]["related_links"]["listTpl"] = webApp.draw.vars.templates["relatedLinksList"];
+		_vars["blockList"][0]["related_links"]["itemTpl"] = webApp.draw.vars.templates["relatedLinksListItem"];
+		_vars["blockList"][0]["node_tags"]["listTpl"] = webApp.draw.vars.templates["nodeTagList"];
+		_vars["blockList"][0]["node_tags"]["itemTpl"] = webApp.draw.vars.templates["nodeTagListItem"];
+
 	};//end _init()
 
 	function _detectDataStore(){

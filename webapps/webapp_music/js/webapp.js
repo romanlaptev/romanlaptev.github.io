@@ -69,7 +69,7 @@ var webApp = {
 //===========================================
 			{
 				"locationID" : "block-list",
-				//"title" : "block list", 
+				"title" : "block node list", 
 				"templateID" : "blockNodes",
 				"visibility":true,
 				"content" : function(){

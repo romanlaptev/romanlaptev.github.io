@@ -253,34 +253,27 @@ function _draw( opt ){
 								<h3>{{title}}</h3>\
 							</div>\
 					<div class="uk-card-body uk-padding-small block-images">\
-		<img src="{{img_path}}" alt="{{title}}" title="{{title}}">\
+<img src="{{img_path}}" alt="{{title}}" title="{{title}}">\
 					</div>\
 						<div class="toggle-content">\
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content" style="display:block">\
 								<ul class="uk-list">\
-		<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
-					<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
+<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
+<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
-								<ul class="related-links">\
-					<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1017" class="" target="_blank">music.yandex.ru</a></li>\
-					<li><a href="#" class="" target="_blank">music on VK.com </a></li>\
-					<li><a href="#" class="" target="_blank">music on OK.ru </a></li>\
-					<li><a href="#" class="" target="_blank">music on cloud.mail.ru</a></li>\
-								</ul>\
+{{related_links}}\
 								<div class="description">{{description}}</div>\
-								<ul class="list-inline node-tags">\
-				<small><b>related tags:</b></small>\
-						<li><a href="#" data-group-name="alphabetical_voc">J</a></li>\
-						<li><a href="#" data-group-name="music_genre">Рок</a></li>\
-						<li><a href="#" data-group-name="music_styles">classic rock</a></li>\
-						<li><a href="#" data-group-name="music_styles">heavy metal</a></li>\
-						<li><a href="#" data-group-name="country">Великобритания</a></li>\
-						<li><a href="#" data-group-name="music_formats">collection</a></li>\
-								</ul>\
+{{node_tags}}\
 							</div>\
 						</div>\
 			</div>',
+
+"relatedLinksList" : '<ul class="related-links">{{list}}</ul>', 
+"relatedLinksListItem" : '<li><a href="{{url}}" target="_blank">{{title}}</a></li>',
+
+"nodeTagList" : '<ul class="list-inline node-tags">{{list}}</ul>', 
+"nodeTagListItem" : '<li><a href="#" data-group-name="{{data_group_name}}">{{text}}</a></li>',
 			
 		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
 <div class="uk-card uk-card-primary">\
@@ -315,7 +308,7 @@ function _draw( opt ){
 			//_buildBlock( webApp.vars["blocks"][n] );
 		//}//next
 		_buildBlock( webApp.vars["blocks"][5] );
-		_buildBlock( webApp.vars["blocks"][6] );
+		//_buildBlock( webApp.vars["blocks"][6] );
 		
 	};//end _buildPage()
 
@@ -532,6 +525,9 @@ console.log("-- warning, empty field....", key2, item[key2]);
 						} else {
 							var subOrdList = item[key2]["listTpl"];
 							var itemTpl = item[key2]["itemTpl"];
+//console.log(subOrdList);
+//console.log(itemTpl);
+//console.log(item[key2], key2);
 				
 							var subOrdListHtml = "";
 							for( var n2 = 0; n2 < item[key2].length; n2++){
