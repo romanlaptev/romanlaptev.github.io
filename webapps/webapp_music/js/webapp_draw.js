@@ -269,11 +269,15 @@ function _draw( opt ){
 						</div>\
 			</div>',
 
-"relatedLinksList" : '<ul class="related-links">{{list}}</ul>', 
-"relatedLinksListItem" : '<li><a href="{{url}}" target="_blank">{{title}}</a></li>',
-
-"nodeTagList" : '<ul class="list-inline node-tags">{{list}}</ul>', 
-"nodeTagListItem" : '<li><a href="#" data-group-name="{{data_group_name}}">{{text}}</a></li>',
+//sub LISTs
+			related_links : {
+				"listTpl" : '<ul class="related-links">{{list}}</ul>', 
+				"itemTpl" : '<li><a href="{{url}}" target="_blank">{{title}}</a></li>',
+			},
+			node_tags : {
+				"listTpl" : '<ul class="list-inline node-tags">{{list}}</ul>', 
+				"itemTpl" : '<li><a href="#" data-group-name="{{data_group_name}}">{{text}}</a></li>',
+			},
 			
 		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
 <div class="uk-card uk-card-primary">\
@@ -308,7 +312,7 @@ function _draw( opt ){
 			//_buildBlock( webApp.vars["blocks"][n] );
 		//}//next
 		_buildBlock( webApp.vars["blocks"][5] );
-		//_buildBlock( webApp.vars["blocks"][6] );
+		_buildBlock( webApp.vars["blocks"][6] );
 		
 	};//end _buildPage()
 
@@ -523,8 +527,9 @@ console.log("-- warning, empty field....", key2, item[key2]);
 //continue;	
 							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
 						} else {
-							var subOrdList = item[key2]["listTpl"];
-							var itemTpl = item[key2]["itemTpl"];
+							//read templates for sub list
+							var subOrdList = _vars["templates"][key2]["listTpl"];
+							var itemTpl = _vars["templates"][key2]["itemTpl"];
 //console.log(subOrdList);
 //console.log(itemTpl);
 //console.log(item[key2], key2);
