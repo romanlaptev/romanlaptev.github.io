@@ -134,14 +134,14 @@ function _draw( opt ){
 						<div class="uk-card uk-card-secondary collapse" id="tags-country">\
 							<div class="uk-card-body uk-padding-small">\
 								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=4&tid=143">Австрия</a></li>\
+					<li><a  href="#?q=get-tag&vid=4&tid=143">РђРІСЃС‚СЂРёСЏ</a></li>\
 								</ul>\
 							</div>\
 						</div>\
 						<div class="uk-card uk-card-secondary collapse" id="tags-alpha">\
 							<div class="uk-card-body uk-padding-small">\
 								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=53tid=5">А</a></li>\
+					<li><a  href="#?q=get-tag&vid=53tid=5">Рђ</a></li>\
 								</ul>\
 							</div>\
 						</div>\
@@ -154,7 +154,7 @@ function _draw( opt ){
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-genre">\
 							<div class="uk-card-body uk-padding-small">\
 								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>\
+					<li><a  href="#?q=get-tag&vid=9&vid=122">Р РѕРє</a></li>\
 								</ul>\
 							</div>\
 						</div>'
@@ -246,6 +246,7 @@ function _draw( opt ){
 						</div>\
 			</div>',
 			
+			"blockList" : '<div>{{content}}</div>',
 			"blockListItem" : '<div class="uk-card uk-card-default node pls-8">\
 						<div class="uk-card-header uk-padding-small block-titles">\
 								<h3>{{title}}</h3>\
@@ -255,7 +256,7 @@ function _draw( opt ){
 					</div>\
 						<div class="toggle-content">\
 							<button class="btn-dropdown icon-chevron-down"></button>\
-							<div class="uk-card-body uk-padding-small block-content">\
+							<div class="uk-card-body uk-padding-small block-content" style="display:block">\
 								<ul class="uk-list">\
 		<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
 					<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
@@ -271,10 +272,10 @@ function _draw( opt ){
 								<ul class="list-inline node-tags">\
 				<small><b>related tags:</b></small>\
 						<li><a href="#" data-group-name="alphabetical_voc">J</a></li>\
-						<li><a href="#" data-group-name="music_genre">Рок</a></li>\
+						<li><a href="#" data-group-name="music_genre">Р РѕРє</a></li>\
 						<li><a href="#" data-group-name="music_styles">classic rock</a></li>\
 						<li><a href="#" data-group-name="music_styles">heavy metal</a></li>\
-						<li><a href="#" data-group-name="country">Великобритания</a></li>\
+						<li><a href="#" data-group-name="country">Р’РµР»РёРєРѕР±СЂРёС‚Р°РЅРёСЏ</a></li>\
 						<li><a href="#" data-group-name="music_formats">collection</a></li>\
 								</ul>\
 							</div>\
@@ -288,7 +289,7 @@ function _draw( opt ){
 		"blockLinksList" : '<ul class="uk-card-body uk-text-center">{{list}}</ul>',
 		//"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
 		"blockLinksListItem" : '<li><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
-		"blockLinksListItem3" : '<li>use specific template: {{template}}, {{url}} {{title}}</li>'//,
+		"blockLinksListItem3" : '<li>use specific template: {{template}},<br> {{url}} {{title}}</li>'//,
 		
 		//"blockLinksListItem6" : '<li>use specific template: {{template}}, {{url}} {{titles}}</li>',
 		//"blockLinksListItem6_listTpl" : '<ul>{{list}}</ul>',
@@ -313,6 +314,7 @@ function _draw( opt ){
 		//for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			//_buildBlock( webApp.vars["blocks"][n] );
 		//}//next
+		_buildBlock( webApp.vars["blocks"][5] );
 		_buildBlock( webApp.vars["blocks"][6] );
 		
 	};//end _buildPage()

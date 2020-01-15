@@ -1,10 +1,10 @@
 var webApp = {
 	
 //Modules
+	"app" : _app(),
 	"db" : _db(),
 	//"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
-	//"app" : _app(),
 
 	"vars" : {
 		"app_title" : "music collection",
@@ -26,6 +26,7 @@ var webApp = {
 			lastNum:0
 		},
 		"blocks": [
+//===========================================
 			{
 				"locationID" : "block-player",
 				"title" : "block player", 
@@ -33,6 +34,7 @@ var webApp = {
 				"content" : "<u>static text</u>",
 			}, //end block
 
+//===========================================
 			{
 				"locationID" : "block-tag-groups",
 				"title" : "block tag groups", 
@@ -40,6 +42,7 @@ var webApp = {
 				"content" : "<u>static text</u>",
 			}, //end block
 
+//===========================================
 			{
 				"locationID" : "block-taglist",
 				"title" : "block taglist", 
@@ -47,6 +50,7 @@ var webApp = {
 				"content" : "<u>static text</u>",
 			}, //end block
 
+//===========================================
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
@@ -54,6 +58,7 @@ var webApp = {
 				"content" : "<u>static text</u>",
 			}, //end block
 
+//===========================================
 			{
 				"locationID" : "block-pager",
 				"title" : "block pager", 
@@ -61,13 +66,27 @@ var webApp = {
 				"content" : "<u>static text</u>",
 			}, //end block
 
+//===========================================
 			{
 				"locationID" : "block-list",
-				"title" : "block list", 
-				"templateID" : "blockLinks",
-				"content" : "<u>static text</u>",
+				//"title" : "block list", 
+				"templateID" : "blockList",
+				"visibility":true,
+				"content" : function(){
+					var html = webApp.draw.wrapData({
+						"data": webApp.db.vars["blockList"],
+						"templateID": "blockListItem",
+						//"templateListItemID": "blockLinksListItem"
+					});
+//console.log( html );
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
-
+			
+//===========================================
 			{
 				"locationID" : "block-links",
 				"title" : "footer links", 
@@ -90,28 +109,6 @@ var webApp = {
 					}
 				}
 			} //end block
-/*			
-			{
-				"locationID" : "block-taglist",
-				"title" : "block-taglist!!!!!!!",
-				"templateID" : "tpl-block-taglist",
-				"content" : "...",
-				"visibility":true,
-				"buildBlock" : function(){
-					
-					var html = _draw_wrapData({
-						"data": webApp.db.vars["tags"],
-						"templateID": "tpl-taglist",
-						"templateListItemID": "tpl-taglist-item"
-					});
-//console.log( html);
-					if( html && html.length > 0){
-						this.content = html;
-						_draw_buildBlock( this );
-					}
-				}
-			}, //end block
-*/
 		],
 		"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
@@ -126,11 +123,11 @@ console.log("init webapp!");
 			appTitle.innerHTML = this.vars["app_title"];
 		}
 		
+		webApp.app.init();
 		webApp.db.init();
 		//webApp.iDBmodule.init();
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
-		//webApp.app.init();
 
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["loadProgress"] = func.getById("load-progress");
@@ -973,100 +970,38 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 
 
 
+function _app( opt ){
+//console.log(arguments);	
 
-//============================== TEMPLATES
-/*
-	function _loadTemplates( callback ){
-		//webApp.db.loadTemplates(function( isLoadTemplates ){
-//console.log(isLoadTemplates);			
-			//if( !isLoadTemplates ){
-				_loadTemplatesFromFile();
-			//} else{
-				//if( typeof callback === "function"){
-					//callback();
-				//}
-			//}
-		//});//end db.loadTemplates()
+	// private variables and functions
+	var _vars = {
+	};// _vars
+	
+	var _init = function( opt ){
+console.log("init app");
+	};//end _init()
+	
+	
+	// public interfaces
+	return{
+		vars : _vars,
+		init:	function(opt){ 
+			return _init(opt); 
+		},
+		//urlManager:	function( target ){ 
+			//return _urlManager( target ); 
+		//},
 		
-		function _loadTemplatesFromFile(){
-			
-			if( !webApp.vars["templates_url"] || 
-				webApp.vars["templates_url"].length === 0 ){
-webApp.vars["logMsg"] = "- error, _loadTemplates(), not found 'templates_url'...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-//console.log( webApp.vars["logMsg"] );
-				if( typeof callback === "function"){
-					callback(false);
-				}
-				return false;
-			}
-			
-			func.runAjax({
-				"requestMethod" : "GET", 
-				"url" : webApp.vars["templates_url"], 
-				//"onProgress" : function( e ){},
-				//"onLoadEnd" : function( headers ){},
-				"onError" : function( xhr ){
-//console.log( "onError ", arguments);
-webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-					if( typeof callback === "function"){
-						callback(false);
-					}
-					return false;
-				},
-				
-				"callback": function( data ){
-webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
-func.log("<p class='alert alert-info'>" + webApp.vars["logMsg"] + "</p>");
-//console.log( webApp.vars["logMsg"] );
-//console.log( data );
-
-					if( !data ){
-console.log("error, loadTemplates(), not find data templates'....");
-						if( typeof callback === "function"){
-							callback(false);
-						}
-						return false;
-					}
-
-					try{
-						//xmlNodes = func.convertXmlToObj( data );
-						xmlNodes = func.parseXmlToObj( func, data );
-//console.log(xmlNodes);
-						if( xmlNodes.length > 0 ){
-							for( var n= 0; n < xmlNodes.length; n++){
-								var key = xmlNodes[n]["name"];
-
-								var value = xmlNodes[n]["html_code"]
-								.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
-								.replace(/\t/g,"")
-								.replace(/\n/g,"");
-								
-								webApp.vars["templates"][key] = value;
-							}//next
-							delete xmlNodes;
-							
-							//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
-						} else {
-	console.log("error, loadTemplates(), cannot parse templates data.....");
-						}
-						
-					} catch(e){
-console.log(e, typeof e);
-webApp.vars["logMsg"] = "TypeError: " + e;
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-					}//end try
-
-					if( typeof callback === "function"){
-						callback();
-					}
-				}//end
-			});
-			
-		}//end _loadTemplatesFromFile()
-		
-	}//end _loadTemplates()
-*/
-
+		//buildBlock:	function(opt){ 
+			//return _buildBlock(opt); 
+		//},
+		//buildPage:	function(opt){ 
+			//return _buildPage(opt); 
+		//},
+		//serverRequest:	function(opt){ 
+			//return _serverRequest(opt); 
+		//},
+		//loadTemplates : _loadTemplates,
+		//formQueryObj : _formQueryObj
+	};
+}//end _app()

@@ -1,4 +1,9 @@
-- object App (webapp.js)
+- object webApp 
+
+webApp.app()
+webApp.db()
+webApp.draw()
+
 	- module nodeList (node_list.js)?
 	- module mediaPlayer (player.js)
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
