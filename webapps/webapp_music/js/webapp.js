@@ -72,11 +72,23 @@ var webApp = {
 				"locationID" : "block-links",
 				"title" : "footer links", 
 				"templateID" : "blockLinks",
-				"content" : "<u>static text</u>",
-				"visibility":true//,
-				//"buildBlock" : function(){
-					//_draw_buildBlock( this );
-				//}
+				"visibility":true,
+				"content" : function(){
+					//var html = "<i>static text!!!!</i>";
+					var html = webApp.draw.wrapData({
+						//"data": webApp.db.vars["footerLinks"][0],
+						//"templateID": "blockLinksListItem"
+						
+						"data": webApp.db.vars["footerLinks"],
+						"templateID": "blockLinksList",
+						"templateListItemID": "blockLinksListItem"
+					});
+//console.log( html );
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			} //end block
 /*			
 			{

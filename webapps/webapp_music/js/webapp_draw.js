@@ -281,26 +281,20 @@ function _draw( opt ){
 						</div>\
 			</div>',
 			
-		"blockLinks" : '<h2>{{block_title}}</h2>\
+		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
 <div class="uk-card uk-card-primary">\
 {{content}}\
-</div>'
-		},//end templates
+</div>',
+		"blockLinksList" : '<ul class="uk-card-body uk-text-center">{{list}}</ul>',
+		//"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
+		"blockLinksListItem" : '<li><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
+		"blockLinksListItem3" : '<li>use specific template: {{template}}, {{url}} {{title}}</li>'//,
 		
-		"footerLinksContent" : '<ul class="uk-card-body uk-text-center">\
-		<li class="uk-inline">\
-		<a class="" href="https://music.yandex.ru/users/roman-laptev/playlists" target="_blank">music.yandex.ru</a>\
-		</li>\
-		<li class="uk-inline">\
-		<a class="" href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a>\
-		</li>\
-		<li class="uk-inline">\
-		<a class="" href="https://vk.com/audios36466377" target="_blank">music on VK.com</a></li>\
-		<li class="uk-inline">\
-		<a class="" href="https://ok.ru/music/profile/508693848602" target="_blank">music on OK.ru</a></li>\
-		<li class="uk-inline">\
-		<a class="" href="https://cloud.mail.ru/public/bbb2f6a3eb1d/music" target="_blank">music on cloud.mail.ru</a></li>\
-	</ul>'
+		//"blockLinksListItem6" : '<li>use specific template: {{template}}, {{url}} {{titles}}</li>',
+		//"blockLinksListItem6_listTpl" : '<ul>{{list}}</ul>',
+		//"blockLinksListItem6_itemTpl" : '<li>{{url}} {{title}}</li>'
+		}//end templates
+		
 	};
 
 	var _init = function(){
@@ -316,9 +310,10 @@ function _draw( opt ){
 		}
 //console.log(opt);
 
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			_buildBlock( webApp.vars["blocks"][n] );
-		}//next
+		//for( var n = 0; n < webApp.vars["blocks"].length; n++){
+			//_buildBlock( webApp.vars["blocks"][n] );
+		//}//next
+		_buildBlock( webApp.vars["blocks"][6] );
 		
 	};//end _buildPage()
 
@@ -329,77 +324,36 @@ function _draw( opt ){
 		var p = {
 			"title": "",
 			"content" : "",
-			//"contentType" : "",
 			"templateID" : "tpl-block",
-			"contentTpl" : "tpl-list",//"tpl-menu"
-			"contentListTpl" : false,
-			
+			//"contentType" : "",
+			//"contentTpl" : "tpl-list",//"tpl-menu"
+			//"contentListTpl" : false,
 			"callback" : function(){
 				var timeEnd = new Date();
 				var ms = timeEnd.getTime() - timeStart.getTime();
 				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
 console.log(msg);			
-				//webApp.app.vars["runtime"].push({
-					//"source" : msg,
-					//"ms" : ms,
-					//"sec" : ms / 1000
-				//});
-				
-				//if( typeof p["callback2"] === "function"){
-					//p["callback2"]();//return from _buildBlock()
-				//}
-				
 			}//,//end callback
-			//"callback2" : null
 		};
 		//extend p object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
 //console.log(p);
+//console.log( typeof p["content"]);
 
 		if( typeof p["content"] === "function"){//dynamic form content
-/*			
-			p["content"]({
-				"callback" : function( res ){
-console.log(res);
-					var html = _draw_wrapData({
-						"data": res,
-						"templateID": "tpl-videolist",
-						"templateListItemID": "tpl-videolist-item--video"
-					});
-//console.log( html);
-					if( !html || html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-					} else {
-p["content"] = html;						
-//console.log(p);
-						_draw_insertBlock( p );
-						//_draw_buildBlock({
-							//"locationID" : "list-video",
-							//"title" : "video list", 
-							//"templateID" : "tpl-block-videolist",
-							//"content" : _html
-						//});
-					}
-
-					
-				}
-			});
-*/			
+			p["content"]();
 		} else {
 			_insertBlock( p );
 		}
-
 	};//end _buildBlock()
 	
 	
 	var _insertBlock = function( opt ){
 		var p = {
 			"templateID": false,
-			"locationID": "block-1",
+			"locationID": "",
 			"title" : "block",
 			"content" : false,
 			"callback":null
@@ -412,7 +366,7 @@ p["content"] = html;
 
 		var templateID = p["templateID"];
 		if( !webApp.draw.vars["templates"][templateID] ){
-webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
+webApp.vars["logMsg"] = "_insertBlock(), error, not found template, id:" + templateID;
 func.logAlert( webApp.vars["logMsg"], "error");
 console.log( "-- " + webApp.vars["logMsg"] );
 			if( typeof p["callback"] === "function"){
@@ -422,8 +376,8 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		}
 		
 		if( !p["content"] || p["content"].length === 0){
-webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
-//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+webApp.vars["logMsg"] = "_insertBlock(), warning, not found or empty content block " + p["locationID"];
+//func.logAlert( webApp.vars["logMsg"], "warning");
 console.log( "-- "+webApp.vars["logMsg"] );
 			//if( typeof p["callback"] === "function"){
 				//p["callback"]();
@@ -451,142 +405,175 @@ console.log( webApp.vars["logMsg"] );
 	};//end _insertBlock()
 
 
-
-	function _wrapContent( opt ){
+	function _wrapData( opt ){
 		var p = {
 			"data": null,
 			//"type" : "",
 			//"wrapType" : "menu",
 			"templateID" : false,
-			"templateListID" : false
+			"templateListItemID": false
 		};
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
-		if( !p["data"] ){
-_log("<p>wrapContent(), error, var data: <b class='text-danger'>" + p["data"] + "</b></p>");
-			return false;
-		}
-		if( p["data"].length === 0 ){
+		if( !p["data"] || p["data"].length === 0){
+console.log("-- _draw.wrapData(), error, incorrect data ...");
 			return false;
 		}
 		if( !p["templateID"] ){
-_log("<p>wrapContent(), error, var templateID <b class='text-danger'>is empty</b></p>");
+console.log("-- _draw.wrapData(), error, templateID was not defined...");
 			return false;
 		}
 		
-		if( !_vars["templates"][p.templateID] ){
-_log("<p>draw.wrapContent(),  error, not find template, id: <b class='text-danger'>" + p.templateID + "</b></p>");
+		if( !webApp.draw.vars["templates"][p.templateID] ){
+console.log("-- _draw.wrapData(),  error, not find template, id: " + p.templateID);
 			return false;
 		}
+		
 		var html = "";
-
 //console.log( p["data"].length );
+
 		p["wrapType"] = "item";
 		if( p["data"].length > 0 ){
 			p["wrapType"] = "list";
 		}
-		
 		switch( p["wrapType"] ){
 			case "item" :
-				html = __formNodeHtml( p["data"], _vars["templates"][ p.templateID ] );
+				html = __formNodeHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
 			break;
 			case "list" :
-				if( !p["templateListID"] ){
-var msg = "<p>wrapContent(), error, var templateListID <b class='text-danger'>is empty</b></p>";
-console.log(msg);							
-_log(msg);
+				if( !p["templateListItemID"] ){
+webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
+console.log(webApp.vars["logMsg"]);							
 					return false;
 				}
-				html = __formListHtml( _vars["templates"][ p.templateID ] );
+				html = __formListHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
 			break;
 		}//end switch
 		
 //console.log(html);
 		return html;
 
-		function __formListHtml( _html ){
+		function __formNodeHtml( data, _html ){
+			for( var key in data ){
+//console.log(key, data[key]);
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, data[key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+//--------------- clear undefined keys (text between {{...}} )
+			_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
+
+			return _html;
+		}//end __formNodeHtml()
+		
+		function __formListHtml( data, _html ){
+//console.log( data);
+//console.log( data instanceof Array, data);
+			var test = data instanceof Array;
+			if( !test){
+console.log("-- error, info block data  is not instanceof Array: ", typeof data, data );
+				return false;
+			}
 			
 			var listHtml = "";
-			for( var n = 0; n < p["data"].length; n++){
+			for( var n = 0; n < data.length; n++){
 //console.log( n );
-//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-				
-				//form list items
-				var item = p["data"][n];
-					
-				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( item, itemTpl );
-				
-				var itemHtml = _vars["templates"][ p.templateListID];
-				for( var key2 in item){
-//console.log(key2, item[key2]);
+//console.log( data[n], typeof data[n], data.length);
 
-					if( key2 === "childTerms" && item["childTerms"].length > 0){
-						var subOrdList = _vars["templates"][ p.templateID];
-						var itemTpl = _vars["templates"][ p.templateListID];
-						var subOrdListHtml = "";
-						for( var n2 = 0; n2 < item["childTerms"].length; n2++){
-							subOrdListHtml += __formNodeHtml( item["childTerms"][n2], itemTpl );
-						}//next
+				//form list items
+				var item = data[n];
+				
+				var itemHtml = webApp.draw.vars["templates"][ p.templateListItemID];
+				//load unique template for data element
+				if( item["template"] && item["template"].length > 0){
+					var tplName = item["template"];
+					if( webApp.draw.vars["templates"][ tplName ] ){
+						itemHtml = webApp.draw.vars["templates"][ tplName ];
+					} else {
+console.log("-- warning, not found template, ", tplName );
+					}
+				}
+
+//--------------- get keys from template (text between {{...}} )
+				//if(n === 1){
+					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
+					for(var n1 = 0; n1 < tplKeys.length; n1++){
+						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
+					}//next
+//console.log( tplKeys, p.templateListItemID, item, itemHtml );
+				//}
+//---------------
+
+				//make copy object item
+				var jsonNode = JSON.stringify( item );
+				var _tmp = JSON.parse( jsonNode);
+				
+				//for( var key2 in item){
+				for( var n1 = 0; n1 < tplKeys.length; n1++){
+					var key2 = tplKeys[n1];
+//console.log(item[key2] instanceof Array, key2, item[key2]);
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}
+
+					if( item[key2] instanceof Array ){//child array in data element
+						if(item[key2].length === 0){
+console.log("-- warning, empty field....", key2, item[key2]);
+//continue;	
+							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+						} else {
+							var subOrdList = item[key2]["listTpl"];
+							var itemTpl = item[key2]["itemTpl"];
+				
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
 //console.log( subOrdListHtml );
-						subOrdList = subOrdList
-						.replace("list-unstyled", "")
-						.replace("{{list}}", subOrdListHtml);
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
 //console.log( subOrdList );
-//itemHtml += subOrdList;
-						item["childTerms"] = subOrdList;
-						itemHtml = itemHtml.replace("</li>", "{{childTerms}}</li>");
-					} //else {
-						//itemHtml = itemHtml.replace("{{childTerms}}", "");
-					//}
+							//item[key2] = subOrdList;
+							
+							//do not add HTML code to item object!!!
+							_tmp[key2] = subOrdList;
+						}							
+					}
 					
 					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-// //console.log(key2, item[key2]);
-						itemHtml = itemHtml.replace("{{"+key2+"}}", item[key2]);
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}						
+						if( typeof item[key2] === "undefined"){
+//if(n === 1){
+//console.log(key2, item[key2], typeof item[key2]);
+//}						
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+						} else {
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
+						}
 					}
+					
 				}//next
 					
 				listHtml += itemHtml;
 //console.log(items);
 //console.log(listHtml);
+
 			}//next
 			
 			_html = _html.replace("{{list}}", listHtml);
 			return _html;
+			
 		}//end __formListHtml
 
-		function __formNodeHtml( data, _html ){
-			
-			for( var key in data ){
-//console.log(key, data[key]);
-
-				if( key === "nodeTerms" && data["nodeTerms"].length > 0){
-					var nodeTermsList = _vars["templates"]["tpl_node_terms"];
-					var itemTpl = _vars["templates"]["tpl-taxonomy-menu_list"];
-					var _listHtml = "";
-					for( var n2 = 0; n2 < data["nodeTerms"].length; n2++){
-						_listHtml += __formNodeHtml( data["nodeTerms"][n2], itemTpl );
-					}//next
-//console.log( _listHtml );
-					nodeTermsList = nodeTermsList.replace("{{list}}", _listHtml);
-//console.log( nodeTermsList );
-					data["nodeTerms"] = nodeTermsList;
-				}
-
-				if( _html.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, p["data"][key]);
-					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
-				}
-			}//next
-			
-			return _html;
-		}//end __formNodeHtml()
-		
-	}//end _wrapContent
+	}//end _wrapData()
 
 	
 	// public interfaces
@@ -600,8 +587,8 @@ _log(msg);
 		insertBlock:	function( opt ){ 
 			return _insertBlock( opt ); 
 		},
-		wrapContent:	function( opt ){ 
-			return _wrapContent( opt ); 
+		wrapData:	function( opt ){ 
+			return _wrapData( opt ); 
 		}
 	};
 }//end _draw()
@@ -712,218 +699,6 @@ console.log( webApp.vars["logMsg"] );
 	};//end _buildPage()
 	
 */
-
-	function _draw_wrapData( opt ){
-		var p = {
-			"data": null,
-			//"type" : "",
-			//"wrapType" : "menu",
-			"templateID" : false,
-			"templateListItemID": false
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(p);
-
-		if( !p["data"] || p["data"].length === 0){
-console.log("-- _draw_wrapData(), error, incorrect data ...");
-			return false;
-		}
-		if( !p["templateID"] ){
-console.log("-- _draw_wrapData(), error, templateID was not defined...");
-			return false;
-		}
-		
-		if( !webApp.draw.vars["templates"][p.templateID] ){
-console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
-			return false;
-		}
-		
-		var html = "";
-//console.log( p["data"].length );
-
-		p["wrapType"] = "item";
-		if( p["data"].length > 0 ){
-			p["wrapType"] = "list";
-		}
-		switch( p["wrapType"] ){
-			case "item" :
-				//html = __formNodeHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
-			break;
-			case "list" :
-				if( !p["templateListItemID"] ){
-webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
-console.log(webApp.vars["logMsg"]);							
-					return false;
-				}
-				html = __formListHtml( webApp.draw.vars["templates"][ p.templateID ] );
-			break;
-		}//end switch
-		
-//console.log(html);
-		return html;
-
-		function __formNodeHtml( data, _html ){
-			
-			for( var key in data ){
-//console.log(key, data[key]);
-				if( _html.indexOf("{{"+key+"}}") !== -1 ){
-//console.log(key, data[key]);
-					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
-				}
-			}//next
-			
-//--------------- clear undefined keys (text between {{...}} )
-_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
-//--------------------			
-
-			return _html;
-		}//end __formNodeHtml()
-		
-		function __formListHtml( _html ){
-			
-			var listHtml = "";
-			for( var n = 0; n < p["data"].length; n++){
-//console.log( n );
-//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
-
-				//form list items
-				var item = p["data"][n];
-					
-				//var itemTpl = _vars["templates"][ p.templateListID];
-				//var itemHtml = __formNodeHtml( item, itemTpl );
-				
-				var itemHtml = webApp.draw.vars["templates"][ p.templateListItemID];
-				
-				
-				//load unique template for item
-				if( item["template"] && item["template"].length > 0){
-					var tplName = item["template"];
-					if( webApp.draw.vars["templates"][ tplName ] ){
-						itemHtml = webApp.draw.vars["templates"][ tplName ];
-					} else {
-console.log("-- warning, not found template, ", tplName );
-					}
-				}
-
-//--------------- get keys from template (text between {{...}} )
-				//if(n === 1){
-					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
-					for(var n1 = 0; n1 < tplKeys.length; n1++){
-						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
-					}//next
-//console.log( tplKeys, p.templateListItemID, item );
-				//}
-//---------------
-
-				//make copy object item
-				//var _tmp = {
-					//"number": item["number"]
-				//};
-				var jsonNode = JSON.stringify( item );
-				var _tmp = JSON.parse( jsonNode);
-				
-				//for( var key2 in item){
-				for( var n1 = 0; n1 < tplKeys.length; n1++){
-					var key2 = tplKeys[n1];
-//console.log(item[key2] instanceof Array, key2, item[key2]);
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}
-
-					if( item[key2] instanceof Array ){
-						if(item[key2].length === 0){
-console.log("-- warning, empty field....", key2, item[key2]);
-//continue;	
-							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
-						} else {
-							var subOrdList = item[key2]["listTpl"];
-							var itemTpl = item[key2]["itemTpl"];
-	/*						
-							if( key2 === "title" ){
-								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist"];
-								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-title"];
-							}
-
-							if( key2 === "ul" ){
-								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-links"];
-								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-ul"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-
-							if( key2 === "tags" ){
-								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-tags"];
-								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-tag"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-								//item[key2] = subOrdList;
-							}
-							
-							if( key2 === "pictures" ){
-								var subOrdList = webApp.draw.vars["templates"]["tpl-videolist-pictures"];
-								var itemTpl = webApp.draw.vars["templates"]["tpl-videolist-item--video-img"];
-								//var subOrdListHtml = "";
-								//for( var n2 = 0; n2 < item[key2].length; n2++){
-									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-								//}//next
-	////console.log( "subOrdListHtml: ", subOrdListHtml );
-								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-	////console.log( subOrdList );
-								//item[key2] = subOrdList;
-							}
-	*/						
-							var subOrdListHtml = "";
-							for( var n2 = 0; n2 < item[key2].length; n2++){
-//console.log( item[key2][n2]["text"] );
-								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
-							}//next
-//console.log( subOrdListHtml );
-							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
-//console.log( subOrdList );
-							//item[key2] = subOrdList;
-							
-							//do not add HTML code to item object!!!
-							_tmp[key2] = subOrdList;
-						}							
-					}
-					
-					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
-//if(n === 1){
-//console.log(key2, item[key2]);
-//}						
-						if( typeof item[key2] === "undefined"){
-//if(n === 1){
-//console.log(key2, item[key2], typeof item[key2]);
-//}						
-							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
-						} else {
-							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
-							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
-						}
-					}
-					
-				}//next
-					
-				listHtml += itemHtml;
-//console.log(items);
-//console.log(listHtml);
-			}//next
-			
-			_html = _html.replace("{{list}}", listHtml);
-			return _html;
-		}//end __formListHtml
-
-	}//end _draw_wrapData()
 
 
 

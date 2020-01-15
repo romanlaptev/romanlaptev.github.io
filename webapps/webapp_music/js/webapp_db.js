@@ -18,6 +18,22 @@ function _db( opt ){
 		"tagListName": "tag_list",
 		"tagGroupsName": "tag_groups",
 		
+		"footerLinks" : [
+{ url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },
+{ url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" },
+{ url : "https://vk.com/audios36466377", title: "music on VK.com", template : "blockLinksListItem3" },
+{ url : "https://ok.ru/music/profile/508693848602", title: "music on OK.ru" },
+{ url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" },
+{ titles: [ 
+				//"listTpl":"blockLinksListItem6_listTpl", 
+				//"itemTpl":"blockLinksListItem6_itemTpl", 
+				{ url: "#1", titile: "title1"}, 
+				{url: "#2", title: "title2"}
+			], 
+	template : "blockLinksListItem6" 
+},
+		]
+		
 //		"numRecordsPerPage":10,
 //		"sortOrder": "asc",
 //		"sortByKey": "title", //"published", 
