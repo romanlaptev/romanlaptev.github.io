@@ -249,11 +249,13 @@ function _draw( opt ){
 			"blockNodes" : '{{content}}',
 			"blockList" : '<div>{{list}}</div>',
 			"blockListItem" : '<div class="uk-card uk-card-default node pls-8">\
+<div class="node-wrap">\
 						<div class="uk-card-header uk-padding-small block-titles">\
-								<h3>{{title}}</h3>\
-							</div>\
-<div class="uk-card-body uk-padding-small block-images">\
-	<img src="{{main_picture}}">\
+{{title}}\
+						</div>\
+						<div class="uk-card-body uk-padding-small block-images">\
+							<img src="{{main_picture}}">\
+						</div>\
 </div>\
 						<div class="toggle-content">\
 							<button class="btn-dropdown icon-chevron-down"></button>\
@@ -262,10 +264,10 @@ function _draw( opt ){
 <li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
 <li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
-{{images}}\
 {{related_links}}\
 								<div class="description">{{description}}</div>\
 {{node_tags}}\
+{{images}}\
 								<div>\
 									<small>published: {{published}},	updated: {{updated}}</small>\
 								</div>\
@@ -274,6 +276,10 @@ function _draw( opt ){
 			</div>',
 
 //sub LISTs
+			title : {
+				"listTpl" : '{{list}}', 
+				"itemTpl" : '<h3>{{text}}</h3>',
+			},
 			images : {
 				"listTpl" : '<div class="uk-card-body uk-padding-small block-images">{{list}}</div>', 
 				"itemTpl" : '<img src="{{src}}" alt="" title="">',
@@ -335,6 +341,7 @@ function _draw( opt ){
 			if( test || test2 ){
 				var _p = e.target.parentNode;
 		//console.log( _p );
+				
 				var $blockContent = $(_p).find(".block-content");
 		//console.log( $blockContent );
 				$blockContent.slideToggle(_vars.duration);
@@ -345,9 +352,11 @@ function _draw( opt ){
 				if( test ){
 					$buttonDropDown.removeClass("icon-chevron-down");
 					$buttonDropDown.addClass("icon-chevron-up");
+					//$blockContent.slideDown(_vars.duration);
 				} else {
 					$buttonDropDown.removeClass("icon-chevron-up");
 					$buttonDropDown.addClass("icon-chevron-down");
+					//$blockContent.slideUp(_vars.duration);
 				}
 			}
 		});//end event

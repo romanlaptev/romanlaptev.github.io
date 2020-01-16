@@ -20,7 +20,9 @@ function _db( opt ){
 		
 		"blockList" : [
 {
-	title: "Judas Priest",
+	title: [
+		{text: "Judas Priest"}
+	],
 	images : [
 { src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg", template : "hide element"},
 { src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg"}
@@ -45,11 +47,13 @@ function _db( opt ){
 
 
 {
-	title: "Jazz and swing",
+	title: [
+		{text: "Jazz and swing"}
+	],
 	//images: [
 //{src : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"}
 	//],
-	playlist_filepath : "/music/0_playlists/Jazz and swing.json",
+	//playlist_filepath : "/music/0_playlists/Jazz and swing.json",
 	//description : "",
 	//related_links : [],
 	//node_tags : []
