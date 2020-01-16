@@ -28,7 +28,7 @@ function _db( opt ){
 	//playlist_filepath : "/music/0_playlists/judas_priest.json",
 	description : "ru.wikipedia.org/wiki/Korpiklaani",
 	related_links : [
-{ href : "/music/0_playlists/judas_priest.json", "data-type": "playlist-file", text: "judas_priest.json", template : "123" },
+{ href : "/music/0_playlists/judas_priest.json", "data-type": "playlist-file", text: "judas_priest.json", template : "hide element" },
 { href : "https://music.yandex.ru/users/roman-laptev/playlists/1017", "data-type": "external-link", text: "music.yandex.ru" }
 	],
 	node_tags : [
@@ -95,7 +95,17 @@ function _db( opt ){
 		}
 */
 		//storage.init();// _init_cache
-		_vars["blockList"][0]["playlist_filepath"] = _vars["blockList"][0]["related_links"][0]["href"];
+		
+//---------------------
+		var related_links = _vars["blockList"][0]["related_links"];
+		for(var n = 0; n < related_links.length; n++){
+			var link = related_links[0];
+			if( link["data-type"] === "playlist-file"){
+				_vars["blockList"][0]["playlist_filepath"] = link["href"];
+			}
+		}//next
+		
+		//_vars["blockList"][0]["playlist_filepath"] = _vars["blockList"][0]["related_links"][0]["href"];
 	};//end _init()
 
 	function _detectDataStore(){

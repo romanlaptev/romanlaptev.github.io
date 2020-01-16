@@ -464,14 +464,11 @@ console.log(webApp.vars["logMsg"]);
 
 		//function __formNodeHtml( data, _html ){
 		function __formNodeHtml( data, template ){
-//console.log(data["template"]);
 //----------------- load unique template for data element
+//hide element - write not defined template ID
 		if( data["template"]){
-			
-			if( data["template"].length === 0){
-console.log("-- warning, not found template, no draw element..." );
-					return "";
-			}
+//console.log(data);
+//console.log(data["template"].length);
 			
 			if( data["template"].length > 0){
 				var tplName = data["template"];
