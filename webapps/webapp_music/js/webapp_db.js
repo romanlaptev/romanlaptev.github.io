@@ -21,29 +21,38 @@ function _db( opt ){
 		"blockList" : [
 {
 	title: "Judas Priest",
-	img_path : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg",
-	playlist_filepath : "/music/0_playlists/judas_priest.json",
+	images : [
+{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg"},
+{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg"}
+	],
+	//playlist_filepath : "/music/0_playlists/judas_priest.json",
 	description : "ru.wikipedia.org/wiki/Korpiklaani",
 	related_links : [
-{ url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru"},
-{ url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" }
+{ href : "/music/0_playlists/judas_priest.json", "data-type": "playlist-file", text: "judas_priest.json", template : "123" },
+{ href : "https://music.yandex.ru/users/roman-laptev/playlists/1017", "data-type": "external-link", text: "music.yandex.ru" }
 	],
 	node_tags : [
-{ data_group_name: "alphabetical_voc", text: "J"},
-{ data_group_name: "music_genre", text: "Рок"},
-{ data_group_name: "music_styles", text: "classic rock"},
-{ data_group_name: "music_styles", text: "heavy metal"},
-{ data_group_name: "country", text: "Великобритания"},
-{ data_group_name: "music_formats", text: "collection"}
-	]
+{ group_name: "alphabetical_voc", text: "J"},
+{ group_name: "music_genre", text: "Рок"},
+{ group_name: "music_styles", text: "classic rock"},
+{ group_name: "music_styles", text: "heavy metal"},
+{ group_name: "country", text: "Великобритания"},
+{ group_name: "music_formats", text: "collection"}
+	],
+	published: "28-Dec-2019 14:14:24",
+	updated: "30-Dec-2019 13:08:18"
 },
+
+
 {
 	title: "Jazz and swing",
-	img_path : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg",
+	//images: [
+//{src : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"}
+	//],
 	playlist_filepath : "/music/0_playlists/Jazz and swing.json",
-	description : "",
-	related_links : [],
-	node_tags : []
+	//description : "",
+	//related_links : [],
+	//node_tags : []
 }
 		],
 		
@@ -86,11 +95,7 @@ function _db( opt ){
 		}
 */
 		//storage.init();// _init_cache
-		
-		//_vars["blockList"][0]["related_links"]["listTpl"] = webApp.draw.vars.templates["relatedLinksList"];
-		//_vars["blockList"][0]["related_links"]["itemTpl"] = webApp.draw.vars.templates["relatedLinksListItem"];
-		//_vars["blockList"][0]["node_tags"]["listTpl"] = webApp.draw.vars.templates["nodeTagList"];
-		//_vars["blockList"][0]["node_tags"]["itemTpl"] = webApp.draw.vars.templates["nodeTagListItem"];
+		_vars["blockList"][0]["playlist_filepath"] = _vars["blockList"][0]["related_links"][0]["href"];
 	};//end _init()
 
 	function _detectDataStore(){
@@ -371,7 +376,6 @@ console.log( error );
 			return fields;
 		}//end __convertMultipleField()
 
-		
 /*		
 		function __checkSupport(){
 			for(var n = 0; n < nodes.length; n++){

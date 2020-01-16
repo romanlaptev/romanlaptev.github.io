@@ -376,7 +376,7 @@
 	
 	<related_links>
 		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/metallica.json"]metallica.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
 	</related_links>
 
 	<tags>
@@ -616,8 +616,12 @@
 
 	
 	<related_links>
-		<li>https://music.yandex.ru/users/roman-laptev/playlists/1017</li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/judas_priest.json"]judas_priest.json[/a]</li>
+		<li>
+<a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1017">music.yandex.ru</a>
+		</li>
+		<li>
+<a data-type="playlist-file" href="/music/0_playlists/judas_priest.json">judas_priest.json</a>
+		</li>
 	</related_links>
 
 	<tags>

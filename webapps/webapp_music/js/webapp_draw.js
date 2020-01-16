@@ -252,9 +252,7 @@ function _draw( opt ){
 						<div class="uk-card-header uk-padding-small block-titles">\
 								<h3>{{title}}</h3>\
 							</div>\
-					<div class="uk-card-body uk-padding-small block-images">\
-<img src="{{img_path}}" alt="{{title}}" title="{{title}}">\
-					</div>\
+{{images}}\
 						<div class="toggle-content">\
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content" style="display:block">\
@@ -265,18 +263,26 @@ function _draw( opt ){
 {{related_links}}\
 								<div class="description">{{description}}</div>\
 {{node_tags}}\
+								<div>\
+									<small>published: {{published}},	updated: {{updated}}</small>\
+								</div>\
 							</div>\
 						</div>\
 			</div>',
 
 //sub LISTs
+			images : {
+				"listTpl" : '<div class="uk-card-body uk-padding-small block-images">{{list}}</div>', 
+				"itemTpl" : '<img src="{{src}}" alt="" title="">',
+			},
 			related_links : {
-				"listTpl" : '<ul class="related-links">{{list}}</ul>', 
-				"itemTpl" : '<li><a href="{{url}}" target="_blank">{{title}}</a></li>',
+				"listTpl" : '<ul class="related-links"><small><b>related links:</b></small>{{list}}</ul>', 
+				"itemTpl" : '<li><a href="{{href}}" data-type="{{data-type}}" target="_blank">{{text}}</a></li>',
+//{ href : "/music/0_playlists/judas_priest.json", data-type:"playlist-file", text: "judas_priest.json" }
 			},
 			node_tags : {
-				"listTpl" : '<ul class="list-inline node-tags">{{list}}</ul>', 
-				"itemTpl" : '<li><a href="#" data-group-name="{{data_group_name}}">{{text}}</a></li>',
+				"listTpl" : '<div><small><b>related tags:</b></small><ul class="list-inline node-tags">{{list}}</ul></div>', 
+				"itemTpl" : '<li><a href="#" data-group-name="{{group_name}}">{{text}}</a></li>',
 			},
 			
 		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
@@ -456,7 +462,30 @@ console.log(webApp.vars["logMsg"]);
 //console.log(html);
 		return html;
 
-		function __formNodeHtml( data, _html ){
+		//function __formNodeHtml( data, _html ){
+		function __formNodeHtml( data, template ){
+//console.log(data["template"]);
+//----------------- load unique template for data element
+		if( data["template"]){
+			
+			if( data["template"].length === 0){
+console.log("-- warning, not found template, no draw element..." );
+					return "";
+			}
+			
+			if( data["template"].length > 0){
+				var tplName = data["template"];
+				if( webApp.draw.vars["templates"][ tplName ] ){
+					template = webApp.draw.vars["templates"][ tplName ];
+				} else {
+console.log("-- warning, not defined template, " + tplName + ", no draw element...");
+					return "";
+				}
+			}
+
+		}
+			
+			var _html = template;
 			for( var key in data ){
 //console.log(key, data[key]);
 				if( _html.indexOf("{{"+key+"}}") !== -1 ){
@@ -489,13 +518,14 @@ console.log("-- error, info block data  is not instanceof Array: ", typeof data,
 				var item = data[n];
 				
 				var itemHtml = webApp.draw.vars["templates"][ p.templateListItemID];
-				//load unique template for data element
+//----------------- load unique template for data element
 				if( item["template"] && item["template"].length > 0){
 					var tplName = item["template"];
 					if( webApp.draw.vars["templates"][ tplName ] ){
 						itemHtml = webApp.draw.vars["templates"][ tplName ];
 					} else {
 console.log("-- warning, not found template, ", tplName );
+						continue;
 					}
 				}
 
@@ -704,10 +734,7 @@ console.log( webApp.vars["logMsg"] );
 */
 
 
-
-
-
-
+/*
 	function _draw_updatePager(opt){
 		func.log("", "total-records");
 		func.log(opt["total_records"], "total-records");
@@ -727,3 +754,4 @@ console.log( webApp.vars["logMsg"] );
 		
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
+*/
