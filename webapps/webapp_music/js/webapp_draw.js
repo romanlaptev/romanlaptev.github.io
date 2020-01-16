@@ -252,14 +252,17 @@ function _draw( opt ){
 						<div class="uk-card-header uk-padding-small block-titles">\
 								<h3>{{title}}</h3>\
 							</div>\
-{{images}}\
+<div class="uk-card-body uk-padding-small block-images">\
+	<img src="{{main_picture}}">\
+</div>\
 						<div class="toggle-content">\
 							<button class="btn-dropdown icon-chevron-down"></button>\
-							<div class="uk-card-body uk-padding-small block-content" style="display:block">\
+							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
 <li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
 <li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
+{{images}}\
 {{related_links}}\
 								<div class="description">{{description}}</div>\
 {{node_tags}}\
@@ -319,6 +322,35 @@ function _draw( opt ){
 		//}//next
 		_buildBlock( webApp.vars["blocks"][5] );
 		_buildBlock( webApp.vars["blocks"][6] );
+
+//------------------------------------------------------------------
+	webApp.vars.$toggleContent = $(".toggle-content");
+	webApp.vars.$toggleContent.on("click", function(e){
+//console.log( e.target );
+			var test = $(e.target).hasClass("icon-chevron-down");
+//console.log( test );
+			var test2 = $(e.target).hasClass("icon-chevron-up");
+//console.log( test2 );
+
+			if( test || test2 ){
+				var _p = e.target.parentNode;
+		//console.log( _p );
+				var $blockContent = $(_p).find(".block-content");
+		//console.log( $blockContent );
+				$blockContent.slideToggle(_vars.duration);
+
+				var $buttonDropDown = $(e.target);
+		//console.log( $buttonDropDown );
+				var test = $buttonDropDown.hasClass("icon-chevron-down");
+				if( test ){
+					$buttonDropDown.removeClass("icon-chevron-down");
+					$buttonDropDown.addClass("icon-chevron-up");
+				} else {
+					$buttonDropDown.removeClass("icon-chevron-up");
+					$buttonDropDown.addClass("icon-chevron-down");
+				}
+			}
+		});//end event
 		
 	};//end _buildPage()
 
@@ -476,6 +508,7 @@ console.log(webApp.vars["logMsg"]);
 					template = webApp.draw.vars["templates"][ tplName ];
 				} else {
 console.log("-- warning, not defined template, " + tplName + ", no draw element...");
+console.log(data);
 					return "";
 				}
 			}

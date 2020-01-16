@@ -22,7 +22,7 @@ function _db( opt ){
 {
 	title: "Judas Priest",
 	images : [
-{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg"},
+{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg", template : "hide element"},
 { src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg"}
 	],
 	//playlist_filepath : "/music/0_playlists/judas_priest.json",
@@ -105,7 +105,7 @@ function _db( opt ){
 			}
 		}//next
 		
-		//_vars["blockList"][0]["playlist_filepath"] = _vars["blockList"][0]["related_links"][0]["href"];
+		_vars["blockList"][0]["main_picture"] = _vars["blockList"][0]["images"][0]["src"];
 	};//end _init()
 
 	function _detectDataStore(){
