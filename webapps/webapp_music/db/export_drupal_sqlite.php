@@ -121,7 +121,7 @@ $_vars["tpl_image"] = '<img src="{{source}}"/>';
 $_vars["tpl_links"] = '<related_links>{{list}}</related_links>';
 $_vars["tpl_links_item"] = '<li>{{source}}</li>';
 
-$_vars["tplNodeTags"] = '<tags>{{list}}</tags>';
+$_vars["tplNodeTags"] = '<node_tags>{{list}}</node_tags>';
 $_vars["tplNodeTagsItem"] = '<item vid="{{vid}}" tid="{{tid}}" group_name="{{group_name}}">{{name}}</item>';
 
 $_vars["tplTagList"] = '<tag_list>{{list}}</tag_list>';

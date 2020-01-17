@@ -101,15 +101,15 @@ function _db( opt ){
 		//storage.init();// _init_cache
 		
 //---------------------
-		var related_links = _vars["blockList"][0]["related_links"];
-		for(var n = 0; n < related_links.length; n++){
-			var link = related_links[0];
-			if( link["data-type"] === "playlist-file"){
-				_vars["blockList"][0]["playlist_filepath"] = link["href"];
-			}
-		}//next
+		// var related_links = _vars["blockList"][0]["related_links"];
+		// for(var n = 0; n < related_links.length; n++){
+			// var link = related_links[n];
+			// if( link["data-type"] === "playlist-file"){
+				// _vars["blockList"][0]["playlist_filepath"] = link["href"];
+			// }
+		// }//next
+		//_vars["blockList"][0]["main_picture"] = _vars["blockList"][0]["images"][0]["src"];
 		
-		_vars["blockList"][0]["main_picture"] = _vars["blockList"][0]["images"][0]["src"];
 	};//end _init()
 
 	function _detectDataStore(){
@@ -353,10 +353,13 @@ console.log( error );
 
 				for(var item in tagNodes[n]["childNodes"]){
 					var _content = tagNodes[n]["childNodes"][item][0]["text"];
+//console.log( item, _content );	
 
-					if( !_content ){
+					//if( !_content ){
+					if( tagNodes[n]["childNodes"][item][0]["childNodes"] ){
 						_content = __convertMultipleField( tagNodes[n]["childNodes"][item][0]["childNodes"]);
 					}
+					
 					obj[item] = _content;
 				}
 				
@@ -373,17 +376,38 @@ console.log( error );
 			var fields = [];
 			for(var item1 in xfields){
 				var _xf = xfields[item1];
+//console.log( item1, _xf );	
 				for(var item2 in _xf){
-					
 					if( _xf[item2]["childNodes"] ){
 						var _xff = _xf[item2]["childNodes"];
 						//var obj = {};
 						for( var key3 in _xff ){
 							//obj[key3] = _xff[key3];
-							fields.push( _xff[key3][0] );//<li><a...>(only one tag!!!)</li>
+//console.log(_xff[key3][0]);	
+							//fields.push( _xff[key3][0]["attributes"] );//<li><a...>(only one tag!!!)</li>
+							var obj = {};
+							if( _xff[key3][0]["attributes"] ){
+								obj = _xff[key3][0]["attributes"];
+							}
+							if( _xff[key3][0]["text"] ){
+								obj["text"] = _xff[key3][0]["text"];
+							}
+							fields.push( obj );
+							
 						}
 					} else {
-						fields.push( _xf[item2] );
+//console.log( _xf[item2] );	
+						//fields.push( _xf[item2] );
+						
+						var obj = {};
+						if( _xf[item2]["attributes"] ){
+							obj = _xf[item2]["attributes"];
+						}
+						if( _xf[item2]["text"] ){
+							obj["text"] = _xf[item2]["text"];
+						}
+						fields.push( obj );
+						
 					}
 				}
 			}

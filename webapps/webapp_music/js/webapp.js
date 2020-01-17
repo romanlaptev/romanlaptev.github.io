@@ -73,8 +73,20 @@ var webApp = {
 				"templateID" : "blockNodes",
 				"visibility":true,
 				"content" : function(){
+//fake data					
+webApp.db.vars["nodes"][0]["images"][0]["template"]= "hide";
+webApp.db.vars["nodes"][0]["main_picture"] = webApp.db.vars["nodes"][0]["images"][0]["src"];
+var related_links = webApp.db.vars["nodes"][0]["related_links"];
+for(var n = 0; n < related_links.length; n++){
+	var link = related_links[n];
+	if( link["data-type"] === "playlist-file"){
+		webApp.db.vars["nodes"][0]["playlist_filepath"] = link["href"];
+	}
+}//next
+					
 					var html = webApp.draw.wrapData({
-						"data": webApp.db.vars["blockList"],
+						//"data": webApp.db.vars["blockList"],
+						"data": [ webApp.db.vars["nodes"][0] ],
 						"templateID": "blockList",
 						"templateListItemID": "blockListItem"
 					});
