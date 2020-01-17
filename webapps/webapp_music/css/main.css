@@ -570,8 +570,8 @@ left: 1px;
 }
 
 .node-wrap {
-border: 2px solid #8fabb2;
-background-color: #cfdfe6;
+border: 2px solid #8C93BD/*#8fabb2*/;
+background-color: #DADDED/*#cfdfe6*/;
 min-height: 380px;	
 }
 
@@ -579,7 +579,7 @@ min-height: 380px;
 	width: 100%;
 }
 .node h3 {
-	background-color: #aecdd5;
+	background-color: #fff/*#aecdd5*/;
 	padding:5px;
 	font-size: 120%;
 }
@@ -597,7 +597,7 @@ display:none;
 /* margin-top: 10px; */
 border: 1px solid #8C93BD;
 width: 200%;
-background-color:#E3E5F1;
+background-color: /*#E3E5F1*/#DADDED;
 position: relative;
 top: -20px;
 z-index: 1;
