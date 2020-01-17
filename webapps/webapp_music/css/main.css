@@ -300,9 +300,9 @@ border-radius: 3px;
 
 
 .btn-dropdown {
-	background-color: #aecdd5;
+	background-color: /*#aecdd5*/#b8d2ec;
 	border-radius: 100%;
-	border: 2px solid #8fabb2;
+	border: 2px solid /*#8fabb2*/#9fbad5;
 padding: 7px 7px 7px 7px;
 position: relative;
 top: -15px;	
