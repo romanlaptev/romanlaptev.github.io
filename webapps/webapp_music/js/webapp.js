@@ -30,7 +30,7 @@ var webApp = {
 			{
 				"locationID" : "block-player",
 				"title" : "block player", 
-				"templateID" : "blockLinks",
+				"templateID" : "blockFooterLinks",
 				"content" : "<u>static text</u>",
 			}, //end block
 
@@ -38,23 +38,29 @@ var webApp = {
 			{
 				"locationID" : "block-tag-groups",
 				"title" : "block tag groups", 
-				"templateID" : "blockLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockTagGroups",
+				"content" : function(){
+					var html = webApp.app.formHtmlTagGroups();
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
 			{
 				"locationID" : "block-taglist",
 				"title" : "block taglist", 
-				"templateID" : "blockLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockTagList",
+				//"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
-				"templateID" : "blockLinks",
+				"templateID" : "blockFooterLinks",
 				"content" : "<u>static text</u>",
 			}, //end block
 
@@ -62,8 +68,8 @@ var webApp = {
 			{
 				"locationID" : "block-pager",
 				"title" : "block pager", 
-				"templateID" : "blockLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockPager",
+				//"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
@@ -85,7 +91,7 @@ var webApp = {
 			{
 				"locationID" : "block-links",
 				"title" : "footer links", 
-				"templateID" : "blockLinks",
+				"templateID" : "blockFooterLinks",
 				"visibility":true,
 				"content" : function(){
 					//var html = "<i>static text!!!!</i>";
@@ -311,6 +317,13 @@ webApp.db.vars["nodes"][1]
 //console.log( html );
 		return html;
 	}//_formHtmlNodeList()
+
+
+	function _formHtmlTagGroups(){
+		var html = "<h2>test</h2>";
+//console.log( html );
+		return html;
+	}//_formHtmlTagGroups()
 	
 	// public interfaces
 	return{
@@ -318,7 +331,8 @@ webApp.db.vars["nodes"][1]
 		init:	function(opt){ 
 			return _init(opt); 
 		},
-		formHtmlNodeList : _formHtmlNodeList
+		formHtmlNodeList : _formHtmlNodeList,
+		formHtmlTagGroups : _formHtmlTagGroups
 		//urlManager:	function( target ){ 
 			//return _urlManager( target ); 
 		//},

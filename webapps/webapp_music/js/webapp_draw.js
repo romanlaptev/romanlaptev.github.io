@@ -85,12 +85,9 @@ function _draw( opt ){
 					</div>'
 			},
 			
-			"blockTags" : {
-				"html" : "{{block-tag-groups}} {{block-taglist}}"
-			},
+			"blockTags" : "{{block-tag-groups}} {{block-taglist}}",
 			
-			"blockTagGroups" : {
-				"html" : '\
+			"blockTagGroups" : '\
 						<div class="uk-card uk-card-primary">\
 						<div class="row">\
 							<div class="uk-float-left uk-padding-small">\
@@ -101,6 +98,10 @@ function _draw( opt ){
 							</div>\
 						</div>\
 						<div class="uk-card-body uk-padding-small">\
+{{content}}\
+						</div>\
+					</div>',
+/*
 							<ul class="uk-list tag-list">\
 								<li><a data-toggle="#tags-music-syles" href="#get-tag-group&vid=2">music_styles</a>	</li>\
 								<li><a data-toggle="#tags-music-formats" href="#get-tag-group&vid=3">music_formats</a></li>\
@@ -109,12 +110,8 @@ function _draw( opt ){
 								<li><a data-toggle="#tags-music-band" href="#get-tag-group&vid=8">music_band</a></li>\
 								<li><a data-toggle="#tags-music-genre" href="#get-tag-group&vid=9">music_genre</a></li>\
 							</ul>\
-						</div>\
-					</div>'
-			},
-			
-			"blockTagList" : {
-				"html" : '\
+*/			
+			"blockTagList" : '\
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
 							<div class="uk-card-body uk-padding-small">\
 								<ul class="uk-list tag-list">\
@@ -157,11 +154,9 @@ function _draw( opt ){
 					<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>\
 								</ul>\
 							</div>\
-						</div>'
-			},
+						</div>',
 			
-			"blockFileManager" : {
-				"html" : '\
+			"blockFileManager" : '\
 					<div class="uk-card uk-card-default">\
 						<div class="row">\
 							<div class="uk-float-left uk-padding-small">\
@@ -208,8 +203,7 @@ function _draw( opt ){
 								</div><!-- /wfm -->\
 							</div><!-- /files -->\
 						</div>\
-					</div>'
-			},
+					</div>',
 			
 			"blockPager" : '<div class="row">\
 							<div class="uk-float-left">\
@@ -294,7 +288,7 @@ function _draw( opt ){
 				"itemTpl" : '<li><a href="#?q=nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
 			},
 			
-		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
+		"blockFooterLinks" : '<!-- <h2>{{block_title}}</h2>-->\
 <div class="uk-card uk-card-primary">\
 {{content}}\
 </div>',
@@ -325,8 +319,11 @@ function _draw( opt ){
 		//for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			//_buildBlock( webApp.vars["blocks"][n] );
 		//}//next
-		_buildBlock( webApp.vars["blocks"][5] );
-		_buildBlock( webApp.vars["blocks"][6] );
+		_buildBlock( webApp.vars["blocks"][1] );//blockTagGroups
+		//_buildBlock( webApp.vars["blocks"][2] );//blockTagList
+		_buildBlock( webApp.vars["blocks"][4] );//blockPager
+		_buildBlock( webApp.vars["blocks"][5] );//blockNodes
+		_buildBlock( webApp.vars["blocks"][6] );//blockFooterLinks
 
 //------------------------------------------------------------------
 	webApp.vars.$toggleContent = $(".toggle-content");

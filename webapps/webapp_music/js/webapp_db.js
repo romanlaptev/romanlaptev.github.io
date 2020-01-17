@@ -433,10 +433,23 @@ console.log( error );
 		var tagListName = _vars["tagListName"];//"tag_list"
 		var tagName = _vars["tagName"];//"tag"
 		
+		var nodes = [];
 		for(var n = 0; n < databases.length; n++){
 //console.log(databases[n].attributes.name, dbName);
 			if( databases[n].attributes.name === dbName){
-				var nodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagListName][n]["childNodes"][tagName];
+//var nodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagListName][n]["childNodes"][tagName];
+var xTagList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagListName][n]["childNodes"][tagName];
+				for( var n2 = 0; n2 < xTagList.length; n2++ ){
+					var obj = {};
+					if( xTagList[n2]["attributes"] ){
+						obj = xTagList[n2]["attributes"];
+					}
+					if( xTagList[n2]["text"] ){
+						obj["text"] = xTagList[n2]["text"];
+					}
+					nodes.push( obj );
+				}//next
+				
 			}
 		}//next
 		
@@ -461,10 +474,23 @@ console.log( error );
 		var tagName = "item";
 		var tagGroupsName = _vars["tagGroupsName"];//"tag_groups"
 		
+		var nodes = [];
 		for(var n = 0; n < databases.length; n++){
 //console.log(databases[n].attributes.name, dbName);
 			if( databases[n].attributes.name === dbName){
-				var nodes = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagGroupsName][n]["childNodes"][tagName];
+				var xTagGroupList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagGroupsName][n]["childNodes"][tagName];
+//console.log( xTagGroupList);	
+				for( var n2 = 0; n2 < xTagGroupList.length; n2++ ){
+					var obj = {};
+					if( xTagGroupList[n2]["attributes"] ){
+						obj = xTagGroupList[n2]["attributes"];
+					}
+					if( xTagGroupList[n2]["text"] ){
+						obj["text"] = xTagGroupList[n2]["text"];
+					}
+					nodes.push( obj );
+					
+				}//next
 			}
 		}//next
 		
