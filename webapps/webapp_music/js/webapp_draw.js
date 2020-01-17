@@ -299,9 +299,8 @@ function _draw( opt ){
 {{content}}\
 </div>',
 		"blockLinksList" : '<ul class="uk-card-body uk-text-center">{{list}}</ul>',
-		//"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
-		"blockLinksListItem" : '<li><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
-		"blockLinksListItem3" : '<li>use specific template: {{template}},<br> {{url}} {{title}}</li>'//,
+		"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
+		//"blockLinksListItem3" : '<li>use specific template: {{template}},<br> {{url}} {{title}}</li>'//,
 		
 		//"blockLinksListItem6" : '<li>use specific template: {{template}}, {{url}} {{titles}}</li>',
 		//"blockLinksListItem6_listTpl" : '<ul>{{list}}</ul>',
@@ -516,8 +515,8 @@ console.log(webApp.vars["logMsg"]);
 				if( webApp.draw.vars["templates"][ tplName ] ){
 					template = webApp.draw.vars["templates"][ tplName ];
 				} else {
-console.log("-- warning, not defined template, " + tplName + ", no draw element...");
-console.log(data);
+console.log("-- warning, no draw element because not defined template: '" + tplName + "'...");
+//console.log(data);
 					return "";
 				}
 			}

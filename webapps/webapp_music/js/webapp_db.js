@@ -17,7 +17,7 @@ function _db( opt ){
 		"tagName": "tag",
 		"tagListName": "tag_list",
 		"tagGroupsName": "tag_groups",
-		
+/*		
 		"blockList" : [
 {
 	title: [
@@ -59,21 +59,14 @@ function _db( opt ){
 	//node_tags : []
 }
 		],
-		
+*/		
 		"footerLinks" : [
 { url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },
 { url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" },
-{ url : "https://vk.com/audios36466377", title: "music on VK.com", template : "blockLinksListItem3" },
+//{ url : "https://vk.com/audios36466377", title: "music on VK.com", template : "blockLinksListItem3" },
+{ url : "https://vk.com/audios36466377", title: "music on VK.com" },
 { url : "https://ok.ru/music/profile/508693848602", title: "music on OK.ru" },
-{ url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" }//,
-// { titles: [ 
-				// //"listTpl":"blockLinksListItem6_listTpl", 
-				// //"itemTpl":"blockLinksListItem6_itemTpl", 
-				// { url: "#1", titile: "title1"}, 
-				// {url: "#2", title: "title2"}
-			// ], 
-	// template : "blockLinksListItem6" 
-// },
+{ url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" }
 		]
 		
 //		"numRecordsPerPage":10,
@@ -99,17 +92,7 @@ function _db( opt ){
 		}
 */
 		//storage.init();// _init_cache
-		
 //---------------------
-		// var related_links = _vars["blockList"][0]["related_links"];
-		// for(var n = 0; n < related_links.length; n++){
-			// var link = related_links[n];
-			// if( link["data-type"] === "playlist-file"){
-				// _vars["blockList"][0]["playlist_filepath"] = link["href"];
-			// }
-		// }//next
-		//_vars["blockList"][0]["main_picture"] = _vars["blockList"][0]["images"][0]["src"];
-		
 	};//end _init()
 
 	function _detectDataStore(){
