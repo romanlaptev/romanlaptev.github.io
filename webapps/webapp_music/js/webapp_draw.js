@@ -291,7 +291,7 @@ function _draw( opt ){
 			},
 			node_tags : {
 				"listTpl" : '<div><small><b>related tags:</b></small><ul class="list-inline node-tags">{{list}}</ul></div>', 
-				"itemTpl" : '<li><a href="#" data-group-name="{{group_name}}">{{text}}</a></li>',
+				"itemTpl" : '<li><a href="#?q=nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
 			},
 			
 		"blockLinks" : '<!-- <h2>{{block_title}}</h2>-->\
