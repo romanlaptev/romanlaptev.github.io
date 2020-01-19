@@ -598,8 +598,9 @@ display:none;
 /* border-top: 1px dashed; */
 /* margin-top: 10px; */
 /*border: 1px solid #8C93BD;*/
+/*border: 1px solid  #9bb9d7;*/
 /*width: 200%;*/
-background-color: /*#E3E5F1*/ /*#DADDED*/ #E6E9F4;
+background-color: /*#E3E5F1*/ /*#DADDED*/ /*#E6E9F4*/ /*#D2E1F9*/ /*#def*/ #c7d5ec;
 position: relative;
 top: 0;
 z-index: 1;
