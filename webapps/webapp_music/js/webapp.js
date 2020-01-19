@@ -299,13 +299,17 @@ function _app( opt ){
 		webApp.db.vars["nodes"][1]["images"][0]["template"]= "hide";
 		webApp.db.vars["nodes"][1]["main_picture"] = webApp.db.vars["nodes"][1]["images"][0]["src"];
 		webApp.db.vars["nodes"][1]["playlist_filepath"] = "";
+
+		webApp.db.vars["nodes"][2]["images"][0]["template"]= "hide";
+		webApp.db.vars["nodes"][2]["main_picture"] = webApp.db.vars["nodes"][2]["images"][0]["src"];
+		webApp.db.vars["nodes"][2]["playlist_filepath"] = "";
 						
 		var html = webApp.draw.wrapData({
 			//"data": webApp.db.vars["blockList"],
 			"data": [ 
 webApp.db.vars["nodes"][0], 
 webApp.db.vars["nodes"][1],
-webApp.db.vars["nodes"][0], 
+webApp.db.vars["nodes"][2], 
 webApp.db.vars["nodes"][1],
 webApp.db.vars["nodes"][0], 
 webApp.db.vars["nodes"][1] 

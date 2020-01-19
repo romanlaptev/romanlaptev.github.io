@@ -305,7 +305,7 @@ border-radius: 3px;
 	border: 2px solid /*#8fabb2*/#9fbad5;
 padding: 7px 7px 7px 7px;
 position: relative;
-top: -15px;	
+top: 10px;
 z-index: 2;
 outline:none;
 }
@@ -564,15 +564,17 @@ left: 1px;
 	display: inline-block;
 	vertical-align: top;
 /* text-align: center; */
+box-shadow: none;
+background-color: #cfdfe6;
 }
 .node .uk-card-header {
 	border-bottom: 1px solid #8fabb2;
 }
 
 .node-wrap {
-border: 2px solid #8C93BD/*#8fabb2*/;
-background-color: #DADDED/*#cfdfe6*/;
-min-height: 380px;	
+/*border: 2px solid #8C93BD*//*#8fabb2*/;
+background-color: /*#DADDED*/#cfdfe6;
+/*min-height: 380px;	*/
 }
 
 .node img {
@@ -595,11 +597,11 @@ word-break: break-all;
 display:none;
 /* border-top: 1px dashed; */
 /* margin-top: 10px; */
-border: 1px solid #8C93BD;
-width: 200%;
-background-color: /*#E3E5F1*/#DADDED;
+/*border: 1px solid #8C93BD;*/
+/*width: 200%;*/
+background-color: /*#E3E5F1*/ /*#DADDED*/ #E6E9F4;
 position: relative;
-top: -20px;
+top: 0;
 z-index: 1;
 }
 .node .related-links{

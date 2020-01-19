@@ -163,6 +163,29 @@
 
 <node type="playlist">
 	<title>
+		<item>My dying bride</item>
+	</title>
+	<images>
+		<img src="http://www.metal-archives.com/images/6/2/2/1/622155.jpg"/>
+		<img src="/music/M/My dying bride/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/My dying bride.json">My dying bride.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:37:54</updated>
+</node>
+
+
+<node type="playlist">
+	<title>
 		<item>Psalteria</item>
 	</title>
 	
@@ -643,26 +666,6 @@
 	<updated format="d-M-Y H:i:s">30-Dec-2019 12:36:30</updated>
 </node>
 
-<node type="playlist">
-	<title>
-		<item>My dying bride</item>
-	</title>
-	<images>
-		<img src="/music/M/My dying bride/cover.jpg"/>
-	</images>
-
-	
-	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/My dying bride.json"]My dying bride.json[/a]</li>
-	</related_links>
-
-	<node_tags>
-		<item vid="2" tid="107" group_name="music_styles">rock</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:37:54</updated>
-</node>
 
 <node type="playlist">
 	<title>
