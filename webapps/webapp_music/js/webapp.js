@@ -333,7 +333,7 @@ console.log("-- end build page --");
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTagList"] );
 			break;
 			
-			case "get-tag-nodes":
+			case "get-nodes-by-tag":
 			break;
 
 //-------------------------------------------- PLAYLIST
@@ -413,9 +413,19 @@ webApp.db.vars["nodes"][1]
 
 
 	function _formHtmlTagGroups(){
+
+		var _tagGroupsList = [];
+		for( var n =0; n < webApp.db.vars["tagGroups"].length; n++){
+			_group = webApp.db.vars["tagGroups"][n];
+			var _tagList = _getTagsByGroupName( _group["name"], webApp.db.vars["tagList"] );
+			if( _tagList.length > 0 ){
+				_group["num"] = _tagList.length;
+				_tagGroupsList.push( _group );
+			}
+		}//next
 		
 		var html = webApp.draw.wrapData({
-			"data": webApp.db.vars["tagGroups"], 
+			"data": _tagGroupsList, 
 			"templateID": "tagGroupsList",
 			"templateListItemID": "tagGroupsListItem"
 		});		
@@ -434,6 +444,15 @@ webApp.db.vars["nodes"][1]
 		}
 //console.log(p);
 		var _filterList = _getTagsByGroupName(  p["group_name"], webApp.db.vars["tagList"] );
+		
+		for( var n =0; n < _filterList.length; n++){
+			var _nodeList = _getNodesByTag( _filterList[n], webApp.db.vars["nodes"] );
+console.log( _nodeList );
+			_filterList[n]["num"] = "0";
+			if( _nodeList.length > 0 ){
+				_filterList[n]["num"] = _nodeList.length;
+			}
+		}//next
 		
 		var html = webApp.draw.wrapData({
 			"data": _filterList, 
@@ -455,6 +474,32 @@ webApp.db.vars["nodes"][1]
 		}//next
 		return tags;
 	}//end _getTagsByGroupName()
+
+	function _getNodesByTag( tagObj, nodeList ){
+		var nodes = [];
+		for( var n =0; n < nodeList.length; n++){
+//console.log(nodeList[n]["node_tags"]);
+
+			if( nodeList[n]["node_tags"]){
+				if( nodeList[n]["node_tags"].length > 0){
+					
+					var _nodeTags = nodeList[n]["node_tags"];
+					for( var n2 =0; n2 < _nodeTags.length; n2++){
+						
+						//if( _nodeTags[n2]["vid"] === tagObj["vid"] ){
+						//if( _nodeTags[n2]["tid"] === tagObj["tid"] ){
+						if( _nodeTags[n2]["text"] === tagObj["text"] ){
+							nodes.push( nodeList[n] );
+						}
+						
+					}//next
+					
+				}
+			}
+		}//next
+		return nodes;
+	}//end _getNodesByTag()
+
 
 /*
 	//------------------------------------------------------------------ EVENTS for dynamic content
