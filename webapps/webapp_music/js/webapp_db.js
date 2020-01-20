@@ -17,49 +17,6 @@ function _db( opt ){
 		"tagName": "tag",
 		"tagListName": "tag_list",
 		"tagGroupsName": "tag_groups",
-/*		
-		"blockList" : [
-{
-	title: [
-		{text: "Judas Priest"}
-	],
-	images : [
-{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg", template : "hide element"},
-{ src : "https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg"}
-	],
-	//playlist_filepath : "/music/0_playlists/judas_priest.json",
-	description : "ru.wikipedia.org/wiki/Korpiklaani",
-	related_links : [
-{ href : "/music/0_playlists/judas_priest.json", "data-type": "playlist-file", text: "judas_priest.json", template : "hide element" },
-{ href : "https://music.yandex.ru/users/roman-laptev/playlists/1017", "data-type": "external-link", text: "music.yandex.ru" }
-	],
-	node_tags : [
-{ group_name: "alphabetical_voc", text: "J"},
-{ group_name: "music_genre", text: "Рок"},
-{ group_name: "music_styles", text: "classic rock"},
-{ group_name: "music_styles", text: "heavy metal"},
-{ group_name: "country", text: "Великобритания"},
-{ group_name: "music_formats", text: "collection"}
-	],
-	published: "28-Dec-2019 14:14:24",
-	updated: "30-Dec-2019 13:08:18"
-},
-
-
-{
-	title: [
-		{text: "Jazz and swing"}
-	],
-	//images: [
-//{src : "/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"}
-	//],
-	//playlist_filepath : "/music/0_playlists/Jazz and swing.json",
-	//description : "",
-	//related_links : [],
-	//node_tags : []
-}
-		],
-*/		
 		"footerLinks" : [
 { url : "https://music.yandex.ru/users/roman-laptev/playlists", title: "music.yandex.ru" },
 { url : "https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists", title: "youtube playlists" },
@@ -67,12 +24,12 @@ function _db( opt ){
 { url : "https://vk.com/audios36466377", title: "music on VK.com" },
 { url : "https://ok.ru/music/profile/508693848602", title: "music on OK.ru" },
 { url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" }
-		]
+		],
 		
-//		"numRecordsPerPage":10,
+		"numRecordsPerPage":5,
 //		"sortOrder": "asc",
 //		"sortByKey": "title", //"published", 
-//		"queryRes": []
+		"buffer": []
 	};
 
 	var _init = function( opt ){
@@ -285,7 +242,13 @@ var timeStart = new Date();
 //console.log(xmlObj);
 delete xml;
 			_vars["nodes"] = _getNodesObj(xmlObj);
-			//_vars["queryRes"] = _vars["nodes"];
+			
+//--------------------			
+			for( var n = 0; n < _vars.numRecordsPerPage; n++){
+				_vars["buffer"].push( _vars["nodes"][n] );
+			}//next
+//--------------------			
+			
 			_vars["tagList"] = _getTagListObj(xmlObj);
 			_vars["tagGroups"] = _getTagGroupsObj(xmlObj);
 delete xmlObj;
@@ -508,6 +471,61 @@ var xTagList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagLis
 				
 	}//end _getTagGroupsObj()
 	
+	
+	function _getNodesByTag( opt ){
+/*
+		var p = {
+			"text" : null,
+			"callback" : null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+	//console.log(p);
+
+		if( !p["text"] ){
+	webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag text value...";
+	console.log( webApp.vars["logMsg"] );
+			return false;
+		}
+
+		var data = [];
+		for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
+			var node = webApp.vars["DB"]["nodes"][n];
+			if( !node["tags"] ){
+	//console.log(node);		
+				continue;			
+			}
+			var tags = node["tags"];
+			for(var n2 = 0; n2 < tags.length; n2++){
+				if( tags[n2]["text"] && tags[n2]["text"] === p["text"]){
+					data.push( node );
+				}
+			}//next
+			
+		}//next
+
+		_data_setTemplate(data);//define unique template for item
+		webApp.vars["DB"]["queryRes"] = data;
+		
+
+		if( typeof p["callback"] === "function"){
+			p["callback"](data);
+		}
+		//return false;
+		
+		//function _postQuery( res ){
+	////console.log( res );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"](res);
+			//}
+			
+		//}//end _postQuery()
+*/	
+		
+	}//end _getNodesByTag()
+	
 	// public interfaces
 	return{
 		vars : _vars,
@@ -517,6 +535,7 @@ var xTagList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagLis
 		},
 		getData:	function( opt ){ 
 			return _getData( opt ); 
-		}
+		},
+		getNodesByTag: _getNodesByTag
 	};
 }//end _db()

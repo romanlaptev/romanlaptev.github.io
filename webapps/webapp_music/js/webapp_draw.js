@@ -102,7 +102,7 @@ function _draw( opt ){
 						</div>\
 					</div>',
 			"tagGroupsList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-group&vid={{vid}}&group_name={{name}}">{{name}} <small>({{num}})</small></a></li>',
+"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-group&vid={{vid}}&group_name={{name}}">{{name}} </a><small>({{num}})</small></li>',
 					
 			"blockTagList" : '\
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
@@ -111,7 +111,7 @@ function _draw( opt ){
 							</div>\
 						</div>',
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-"tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} <small>({{num}})</small></a></li>',
+"tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
 			
 			"blockFileManager" : '\
 					<div class="uk-card uk-card-default">\

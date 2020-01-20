@@ -10,7 +10,6 @@ var _vars = {
 	//$offcanvasMenu : null,
 	start_scroll_pos:0,
 	end_scroll_pos:0//,
-	//"imageNotLoad": "img/image_not_load.png"
 };
 //console.log( _vars );
 

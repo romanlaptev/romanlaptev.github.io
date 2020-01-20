@@ -122,6 +122,7 @@ var webApp = {
 			} //end block
 		],
 		"blocksByName": {},
+		"imageNotLoad": "img/image_not_load.png",
 		
 		"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
@@ -261,15 +262,25 @@ function _app( opt ){
 					}
 				}
 
+				if( target.tagName === "A"){
+					
 //------------------------------- get tag list
 //#?q=get-tag-group&vid=2				
-				if( target.tagName === "A"){
 					if ( target.href.indexOf("get-tag-group") !== -1){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
-				}
 				
+//------------------------------- get node tags
+//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
+					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.vars["GET"]["tag_name"] = $(target).text();
+						webApp.app.urlManager();
+					}
+					
+				}
+
 		}//end _clickHandler()
 		
 	}//end _defineEvents()
@@ -334,6 +345,9 @@ console.log("-- end build page --");
 			break;
 			
 			case "get-nodes-by-tag":
+console.log( webApp.vars["GET"] );
+				//_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
+				_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 			break;
 
 //-------------------------------------------- PLAYLIST
@@ -372,7 +386,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	}//end _urlManager()
 
 	function _formHtmlNodeList(){
-		
+/*		
 		//fake data					
 		webApp.db.vars["nodes"][0]["images"][0]["template"]= "hide";
 		webApp.db.vars["nodes"][0]["main_picture"] = webApp.db.vars["nodes"][0]["images"][0]["src"];
@@ -403,6 +417,35 @@ webApp.db.vars["nodes"][1],
 webApp.db.vars["nodes"][0], 
 webApp.db.vars["nodes"][1] 
 ],
+			"templateID": "blockList",
+			"templateListItemID": "blockListItem"
+		});
+*/
+		for( var n = 0; n < webApp.db.vars["buffer"].length; n++){
+			
+			webApp.db.vars["buffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			if( webApp.db.vars["buffer"][n]["images"] ){
+				webApp.db.vars["buffer"][n]["images"][0]["template"]= "hide";
+				webApp.db.vars["buffer"][n]["main_picture"] = webApp.db.vars["buffer"][n]["images"][0]["src"];
+			}
+	
+	
+			if( webApp.db.vars["buffer"][n].related_links ){
+				var related_links = webApp.db.vars["buffer"][n].related_links;
+//console.log( related_links );
+				for(var n2 = 0; n2 < related_links.length; n2++){
+					var link = related_links[n2];
+					if( link["data-type"] === "playlist-file"){
+						webApp.db.vars["buffer"][n]["playlist_filepath"] = link["href"];
+						link["template"] = "hide element";
+					}
+				}//next
+			}
+			
+		}//next
+						
+		var html = webApp.draw.wrapData({
+			"data": webApp.db.vars["buffer"],
 			"templateID": "blockList",
 			"templateListItemID": "blockListItem"
 		});
@@ -447,7 +490,7 @@ webApp.db.vars["nodes"][1]
 		
 		for( var n =0; n < _filterList.length; n++){
 			var _nodeList = _getNodesByTag( _filterList[n], webApp.db.vars["nodes"] );
-console.log( _nodeList );
+//console.log( _nodeList );
 			_filterList[n]["num"] = "0";
 			if( _nodeList.length > 0 ){
 				_filterList[n]["num"] = _nodeList.length;
