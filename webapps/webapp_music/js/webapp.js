@@ -54,7 +54,16 @@ var webApp = {
 				"locationID" : "block-taglist",
 				"title" : "block taglist", 
 				"templateID" : "blockTagList",
-				"content" : "<u>static text</u>",
+				"content" : function(){
+					var html = webApp.app.formHtmlTagList({
+						"vid" : webApp.vars["GET"].vid,
+						"group_name": webApp.vars["GET"].group_name
+					});
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
@@ -135,7 +144,7 @@ console.log("init webapp!");
 
 		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][1];
 		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
-		this["vars"]["blocksByName"]["blockTaglist"] = 	this.vars["blocks"][2];
+		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][2];
 		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][5];
 		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][6];
 		
@@ -320,8 +329,8 @@ console.log("-- end build page --");
 //-------------------------------------------- TAGLIST
 //href="#?q=get-tag-group&vid={{vid}}"			
 			case "get-tag-group":
-console.log( webApp.vars["GET"] );
-				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTaglist"] );
+//console.log( webApp.vars["GET"] );
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTagList"] );
 			break;
 			
 			case "get-tag-nodes":
@@ -404,6 +413,7 @@ webApp.db.vars["nodes"][1]
 
 
 	function _formHtmlTagGroups(){
+		
 		var html = webApp.draw.wrapData({
 			"data": webApp.db.vars["tagGroups"], 
 			"templateID": "tagGroupsList",
@@ -412,6 +422,39 @@ webApp.db.vars["nodes"][1]
 //console.log( html );
 		return html;
 	}//_formHtmlTagGroups()
+	
+	function _formHtmlTagList( opt ){
+		var p = {
+			"vid" : null,
+			"group_name" : null
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+		var _filterList = _getTagsByGroupName(  p["group_name"], webApp.db.vars["tagList"] );
+		
+		var html = webApp.draw.wrapData({
+			"data": _filterList, 
+			"templateID": "tagList",
+			"templateListItemID": "tagListItem"
+		});		
+//console.log( html );
+		return html;
+		
+		
+	}//_formHtmlTagList()
+
+	function _getTagsByGroupName( groupName, tagList ){
+		var tags = [];
+		for( var n =0; n < tagList.length; n++){
+			if( tagList[n]["group_name"] === groupName ){
+				tags.push( tagList[n] );
+			}
+		}//next
+		return tags;
+	}//end _getTagsByGroupName()
 
 /*
 	//------------------------------------------------------------------ EVENTS for dynamic content
@@ -460,6 +503,7 @@ webApp.db.vars["nodes"][1]
 		},
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
+		formHtmlTagList : _formHtmlTagList
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 

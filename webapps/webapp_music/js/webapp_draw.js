@@ -111,7 +111,7 @@ function _draw( opt ){
 							</div>\
 						</div>',
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-			"tagListItem" :  '<li><a href="#?q=get-tag-nodes&vid={{vid}}&tid={{tid}}&group_name={{name}}">{{name}}</a></li>',
+			"tagListItem" :  '<li><a href="#?q=get-tag-nodes&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}}</a></li>',
 			
 			"blockFileManager" : '\
 					<div class="uk-card uk-card-default">\
