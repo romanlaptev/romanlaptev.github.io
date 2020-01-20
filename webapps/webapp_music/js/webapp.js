@@ -25,6 +25,7 @@ var webApp = {
 			],
 			lastNum:0
 		},
+		
 		"blocks": [
 //===========================================
 			{
@@ -53,7 +54,7 @@ var webApp = {
 				"locationID" : "block-taglist",
 				"title" : "block taglist", 
 				"templateID" : "blockTagList",
-				//"content" : "<u>static text</u>",
+				"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
@@ -111,6 +112,8 @@ var webApp = {
 				}
 			} //end block
 		],
+		"blocksByName": {},
+		
 		"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
@@ -130,6 +133,12 @@ console.log("init webapp!");
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
 
+		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][1];
+		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
+		this["vars"]["blocksByName"]["blockTaglist"] = 	this.vars["blocks"][2];
+		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][5];
+		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][6];
+		
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["loadProgress"] = func.getById("load-progress");
 		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
@@ -150,7 +159,7 @@ console.log(webApp);
 
 function _runApp(){
 	//testMediaSupport( webApp.vars["audioTypes"]);
-	defineEvents();
+	webApp.app.defineEvents();
 
 	//start block
 	if( webApp["vars"]["waitWindow"] ){
@@ -162,27 +171,101 @@ function _runApp(){
 	if( parseUrl.length > 0 ){
 			webApp.vars["GET"] = func.parseGetParams(); 
 	}		
-	_urlManager();
-	
+	webApp.app.urlManager();
+
 }//end _runApp()
 
 
-function defineEvents(){
-	
-	webApp.vars.$closeButtons = $("a[href='#close']");
-	webApp.vars.$closeButtons.on("click", function(e){
-//console.log( e.target );
-			var _target = $( e.target ).data("toggle");
-//console.log( _target );
-			$( _target ).slideToggle( _vars.duration , function(e){
-//console.log(arguments)
-			});
-		});//end event
-	
-}//end defineEvents()
 
 
-function _urlManager( target ){
+function _app( opt ){
+//console.log(arguments);	
+
+	// private variables and functions
+	var _vars = {
+		duration : 600//speed toggle animation
+	};// _vars
+	
+	//var _init = function( opt ){
+//console.log("init app");
+	//};//end _init()
+
+	function _defineEvents(){
+		
+		// webApp.vars.$closeButtons = $("a[href='#close']");
+		// webApp.vars.$closeButtons.on("click", function(e){
+	// //console.log( e.target );
+				// var _target = $( e.target ).data("toggle");
+	// //console.log( _target );
+				// $( _target ).slideToggle( _vars.duration , function(e){
+	// //console.log(arguments)
+				// });
+			// });//end event
+		
+		$(document).on("click", function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+//console.log( event );
+//console.log( this );//page-container
+//console.log( target.textContent );
+//console.log( event.eventPhase );
+//console.log( "preventDefault: " + event.preventDefault );
+			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+			_clickHandler( target );
+		});
+		
+		function _clickHandler( target ){
+//console.log( target.tagName );
+
+//---------------------------- toggle node
+				if( target.className.indexOf("btn-dropdown") !== -1){
+//console.log( target );
+					var _p = target.parentNode;
+					var $blockContent = $(_p).find(".block-content");
+			//console.log( $blockContent );
+					$blockContent.slideToggle(_vars.duration);
+					
+					var $buttonDropDown = $(target);
+			//console.log( $buttonDropDown );
+					var test = $buttonDropDown.hasClass("icon-chevron-down");
+					if( test ){
+						$buttonDropDown.removeClass("icon-chevron-down");
+						$buttonDropDown.addClass("icon-chevron-up");
+						//$blockContent.slideDown(_vars.duration);
+					} else {
+						$buttonDropDown.removeClass("icon-chevron-up");
+						$buttonDropDown.addClass("icon-chevron-down");
+						//$blockContent.slideUp(_vars.duration);
+					}
+
+				}
+
+//-------------------------------
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("#close") !== -1){
+						var id = $( target ).data("toggle");
+	//console.log( id );
+						$( id ).slideToggle( _vars.duration , function(e){
+	//console.log(arguments)
+						});
+					}
+				}
+
+//------------------------------- get tag list
+//#?q=get-tag-group&vid=2				
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("get-tag-group") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+				}
+				
+		}//end _clickHandler()
+		
+	}//end _defineEvents()
+
+	function _urlManager( target ){
 //console.log(target);
 		
 		switch( webApp.vars["GET"]["q"] ) {
@@ -228,12 +311,21 @@ console.log("-- end build page --");
 			break;
 			
 //?q=nodes-by-tag&text="youtube"
-			case "nodes-by-tag":
+			//case "nodes-by-tag":
+			//break;
+			
+			//case "clear-query-result":
+			//break;
+			
+//-------------------------------------------- TAGLIST
+//href="#?q=get-tag-group&vid={{vid}}"			
+			case "get-tag-group":
+console.log( webApp.vars["GET"] );
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTaglist"] );
 			break;
 			
-			case "clear-query-result":
+			case "get-tag-nodes":
 			break;
-
 
 //-------------------------------------------- PLAYLIST
 			case "load-track":
@@ -269,18 +361,6 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		}//end switch
 		
 	}//end _urlManager()
-
-
-
-function _app( opt ){
-//console.log(arguments);	
-
-	// private variables and functions
-	//var _vars = {};// _vars
-	
-	//var _init = function( opt ){
-//console.log("init app");
-	//};//end _init()
 
 	function _formHtmlNodeList(){
 		
@@ -324,23 +404,63 @@ webApp.db.vars["nodes"][1]
 
 
 	function _formHtmlTagGroups(){
-		var html = "<h2>test</h2>";
+		var html = webApp.draw.wrapData({
+			"data": webApp.db.vars["tagGroups"], 
+			"templateID": "tagGroupsList",
+			"templateListItemID": "tagGroupsListItem"
+		});		
 //console.log( html );
 		return html;
 	}//_formHtmlTagGroups()
-	
+
+/*
+	//------------------------------------------------------------------ EVENTS for dynamic content
+	function _setToggleContentEvents(){
+		webApp.vars.$toggleContent = $(".toggle-content");
+		webApp.vars.$toggleContent.on("click", function(e){
+	//console.log( e.target );
+				var test = $(e.target).hasClass("icon-chevron-down");
+	//console.log( test );
+				var test2 = $(e.target).hasClass("icon-chevron-up");
+	//console.log( test2 );
+
+				if( test || test2 ){
+					var _p = e.target.parentNode;
+			//console.log( _p );
+					
+					var $blockContent = $(_p).find(".block-content");
+			//console.log( $blockContent );
+					$blockContent.slideToggle(_vars.duration);
+
+					var $buttonDropDown = $(e.target);
+			//console.log( $buttonDropDown );
+					var test = $buttonDropDown.hasClass("icon-chevron-down");
+					if( test ){
+						$buttonDropDown.removeClass("icon-chevron-down");
+						$buttonDropDown.addClass("icon-chevron-up");
+						//$blockContent.slideDown(_vars.duration);
+					} else {
+						$buttonDropDown.removeClass("icon-chevron-up");
+						$buttonDropDown.addClass("icon-chevron-down");
+						//$blockContent.slideUp(_vars.duration);
+					}
+				}
+			});//end event
+	}//_setToggleContentEvents()
+*/	
 	// public interfaces
 	return{
 		//vars : _vars,
-		init:	function(opt){ 
-			return _init(opt); 
+		//init:	function(opt){ 
+			//return _init(opt); 
+		//},
+		defineEvents: _defineEvents,
+		urlManager:	function(){ 
+			return _urlManager(); 
 		},
 		formHtmlNodeList : _formHtmlNodeList,
-		formHtmlTagGroups : _formHtmlTagGroups
-		//urlManager:	function( target ){ 
-			//return _urlManager( target ); 
-		//},
-		
+		formHtmlTagGroups : _formHtmlTagGroups,
+		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 
 		//},

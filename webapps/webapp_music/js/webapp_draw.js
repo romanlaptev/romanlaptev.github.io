@@ -101,60 +101,17 @@ function _draw( opt ){
 {{content}}\
 						</div>\
 					</div>',
-/*
-							<ul class="uk-list tag-list">\
-								<li><a data-toggle="#tags-music-syles" href="#get-tag-group&vid=2">music_styles</a>	</li>\
-								<li><a data-toggle="#tags-music-formats" href="#get-tag-group&vid=3">music_formats</a></li>\
-								<li><a data-toggle="#tags-country" href="#get-tag-group&vid=4">country</a></li>\
-								<li><a data-toggle="#tags-alpha" href="#get-tag-group&vid=5">alphabetical_voc</a></li>\
-								<li><a data-toggle="#tags-music-band" href="#get-tag-group&vid=8">music_band</a></li>\
-								<li><a data-toggle="#tags-music-genre" href="#get-tag-group&vid=9">music_genre</a></li>\
-							</ul>\
-*/			
+			"tagGroupsList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
+			"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-group&vid={{vid}}&group_name={{name}}">{{name}}</a></li>',
+					
 			"blockTagList" : '\
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
 							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=2&tid=10">heavy metal</a></li>\
-					<li><a  href="#?q=get-tag&vid=2&tid=11">speed</a></li>\
-					<li><a  href="#?q=get-tag&vid=2&tid=12">power</a></li>\
-								</ul>\
-							</div>\
-						</div>\
-						<div class="uk-card uk-card-secondary collapse" id="tags-music-formats">\
-							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=3&tid=120">studio album</a></li>\
-								</ul>\
-							</div>\
-						</div>\
-						<div class="uk-card uk-card-secondary collapse" id="tags-country">\
-							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=4&tid=143">Австрия</a></li>\
-								</ul>\
-							</div>\
-						</div>\
-						<div class="uk-card uk-card-secondary collapse" id="tags-alpha">\
-							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=53tid=5">А</a></li>\
-								</ul>\
-							</div>\
-						</div>\
-						<div class="uk-card uk-card-secondary collapse" id="tags-music-band">\
-							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-								</ul>\
-							</div>\
-						</div>\
-						<div class="uk-card uk-card-secondary collapse" id="tags-music-genre">\
-							<div class="uk-card-body uk-padding-small">\
-								<ul class="uk-list tag-list">\
-					<li><a  href="#?q=get-tag&vid=9&vid=122">Рок</a></li>\
-								</ul>\
+{{content}}\
 							</div>\
 						</div>',
+			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
+			"tagListItem" :  '<li><a href="#?q=get-tag-nodes&vid={{vid}}&tid={{tid}}&group_name={{name}}">{{name}}</a></li>',
 			
 			"blockFileManager" : '\
 					<div class="uk-card uk-card-default">\
@@ -319,44 +276,12 @@ function _draw( opt ){
 		//for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			//_buildBlock( webApp.vars["blocks"][n] );
 		//}//next
-		_buildBlock( webApp.vars["blocks"][1] );//blockTagGroups
-		//_buildBlock( webApp.vars["blocks"][2] );//blockTagList
-		_buildBlock( webApp.vars["blocks"][4] );//blockPager
-		_buildBlock( webApp.vars["blocks"][5] );//blockNodes
-		_buildBlock( webApp.vars["blocks"][6] );//blockFooterLinks
-
-//------------------------------------------------------------------
-	webApp.vars.$toggleContent = $(".toggle-content");
-	webApp.vars.$toggleContent.on("click", function(e){
-//console.log( e.target );
-			var test = $(e.target).hasClass("icon-chevron-down");
-//console.log( test );
-			var test2 = $(e.target).hasClass("icon-chevron-up");
-//console.log( test2 );
-
-			if( test || test2 ){
-				var _p = e.target.parentNode;
-		//console.log( _p );
-				
-				var $blockContent = $(_p).find(".block-content");
-		//console.log( $blockContent );
-				$blockContent.slideToggle(_vars.duration);
-
-				var $buttonDropDown = $(e.target);
-		//console.log( $buttonDropDown );
-				var test = $buttonDropDown.hasClass("icon-chevron-down");
-				if( test ){
-					$buttonDropDown.removeClass("icon-chevron-down");
-					$buttonDropDown.addClass("icon-chevron-up");
-					//$blockContent.slideDown(_vars.duration);
-				} else {
-					$buttonDropDown.removeClass("icon-chevron-up");
-					$buttonDropDown.addClass("icon-chevron-down");
-					//$blockContent.slideUp(_vars.duration);
-				}
-			}
-		});//end event
 		
+		_buildBlock( webApp.vars["blocksByName"]["blockTagGroups"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
+
 	};//end _buildPage()
 
 
@@ -370,12 +295,16 @@ function _draw( opt ){
 			//"contentType" : "",
 			//"contentTpl" : "tpl-list",//"tpl-menu"
 			//"contentListTpl" : false,
-			"callback" : function(){
+			"postFunc" : function(){
 				var timeEnd = new Date();
 				var ms = timeEnd.getTime() - timeStart.getTime();
 				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
-console.log(msg);			
-			}//,//end callback
+console.log(msg);
+				if( typeof p["callback"] === "function"){
+					p["callback"]();//return from _buildBlock()
+				}
+			},//end postFunc
+			"callback" : null
 		};
 		//extend p object
 		for(var key in opt ){
@@ -398,7 +327,7 @@ console.log(msg);
 			"locationID": "",
 			"title" : "block",
 			"content" : false,
-			"callback":null
+			"postFunc":null
 		};
 		//extend options object
 		for(var key in opt ){
@@ -440,8 +369,8 @@ func.logAlert( webApp.vars["logMsg"], "error");
 console.log( webApp.vars["logMsg"] );
 		}		
 		
-		if( typeof p["callback"] === "function"){
-			p["callback"]();
+		if( typeof p["postFunc"] === "function"){
+			p["postFunc"]();
 		}
 
 	};//end _insertBlock()
