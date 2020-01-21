@@ -242,7 +242,7 @@ function _draw( opt ){
 			},
 			node_tags : {
 				"listTpl" : '<div><small><b>related tags:</b></small><ul class="list-inline node-tags">{{list}}</ul></div>', 
-				"itemTpl" : '<li><a href="#?q=nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
+				"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
 			},
 			
 		"blockFooterLinks" : '<!-- <h2>{{block_title}}</h2>-->\
