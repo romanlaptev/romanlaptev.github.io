@@ -28,6 +28,7 @@ function _db( opt ){
 		
 		"numRecordsPerPage": 5,
 		"numberPage": 1,
+		"numPages": null,
 //		"sortOrder": "asc",
 //		"sortByKey": "title", //"published", 
 		"outputBuffer": [],

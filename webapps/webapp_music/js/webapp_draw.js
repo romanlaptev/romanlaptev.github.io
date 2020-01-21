@@ -164,7 +164,7 @@ function _draw( opt ){
 			
 			"blockPager" : '<div class="row">{{content}}\
 							<div class="uk-float-right">search\
-				<form name="formSearch" id="form-search" action="?q=search" method="GET">\
+<form name="formSearch" id="form-search" action="?q=search" method="GET">\
 								<ul class="button-group">\
 									<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
 									<li><button type="submit" class="uk-button uk-button-small uk-button-primary">\
@@ -172,18 +172,18 @@ function _draw( opt ){
 									<li><button type="reset" class="uk-button uk-button-small uk-button-danger">\
 									<span class="icon-remove"></span></button></li>\
 								</ul>\
-				</form>\
+</form>\
 							</div>\
 					</div>\
 					<div class="row">\
 						<div class="block-num-page uk-float-left w20">\
 <small>page №:</small>\
-							<button id="page-number-less" class="">-</button>\
-<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">\
-							<button id="page-number-more" class="">+</button>\
+<button id="btn-page-number-less" class="">-</button>\
+<input id="page-number" type="text" value="" size="3" maxlength="3" autocomplete="off" class="only-numbers">\
+<button id="btn-page-number-more" class="">+</button>\
 						</div>\
 						<div class="uk-float-left w60 box-range">\
-				<input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">\
+<input id="page-range" type="range" min="1" max="5" step="1" value="1" autocomplete="off" class="range uk-width-1-1">\
 						</div>\
 					</div>\
 					<div class="row">\

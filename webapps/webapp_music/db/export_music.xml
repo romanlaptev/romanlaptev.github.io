@@ -100,31 +100,6 @@
 
 <node type="playlist">
 	<title>
-		<item>Rock</item>
-	</title>
-	<related_links>
-		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
-		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
-		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
-		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
-		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
-		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
-</node>
-
-
-<node type="playlist">
-	<title>
 		<item>Judas Priest</item>
 	</title>
 	<images>
@@ -210,12 +185,33 @@
 
 <node type="playlist">
 	<title>
+		<item>Rock</item>
+	</title>
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
+</node>
+
+<node type="playlist">
+	<title>
 		<item>Psalteria</item>
 	</title>
-	
 
-	
-	
 
 	<node_tags>
 		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>

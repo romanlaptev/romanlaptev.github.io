@@ -86,6 +86,9 @@ var webApp = {
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
+					$("#page-number").val( webApp.db.vars["numberPage"] );
+					$("#page-range").val( webApp.db.vars["numberPage"] );
+					$("#page-range").attr("max", webApp.db.vars["numPages"]);
 				}
 			}, //end block
 
@@ -220,6 +223,7 @@ function _app( opt ){
 				// });
 			// });//end event
 		
+//---------------------------------
 		$(document).on("click", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
@@ -232,6 +236,72 @@ function _app( opt ){
 			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 			_clickHandler( target );
 		});
+		
+		$(document).on("keydown", function(event) {
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+//console.log(e);
+//console.log("e.keyCode = " + e.keyCode );
+
+//----------------------------
+			//if (e.keyCode == 27) {
+	//console.log("press ESC ", e.target);
+				//_closeModal( "#modal-edit-node" );
+			//}
+			
+//---------------------------- input page number
+			if( target.getAttribute("id") === "page-number"){
+//console.log("event.keyCode = " + event.keyCode );
+
+				if (event.keyCode == 13) {
+					//return;
+//console.log(target.value);
+//console.log( parseInt(target.value) );
+//console.log( isNaN(target.value) );
+					var num = parseInt( target.value );
+					if( !isNaN(num) ){
+		
+						if( num === 0 ){
+console.log( "--error, wrong num page:", num, webApp.db.vars["numPages"], num > webApp.db.vars["numPages"]);
+							num = 1;
+							$("#page-number").val( num );
+						}
+						if( num > webApp.db.vars["numPages"] ){
+console.log( "--error, wrong num page:", num, webApp.db.vars["numPages"], num > webApp.db.vars["numPages"]);
+							num = webApp.db.vars["numPages"];
+							$("#page-number").val( num );
+						}
+						
+						$("#page-range").val( num );
+						// var url = "?q=list_nodes&num_page="+num;
+						// webApp.vars["GET"] = func.parseGetParams( url ); 
+						// _urlManager();
+					} else {
+ webApp.vars["logMsg"] = "-- error, incorrect input, only numbers...";
+// func.logAlert( webApp.vars["logMsg"], "danger");
+console.log( webApp.vars["logMsg"] );
+					}
+				}
+				
+				if ( event.keyCode == 46 || 
+					event.keyCode == 8 || 
+					event.keyCode == 9 || 
+					event.keyCode == 27 ||
+						(event.keyCode == 65 && event.ctrlKey === true) ||
+							(event.keyCode >= 35 && event.keyCode <= 39)
+				) {
+					return;
+				} else {
+					if ( (event.keyCode < 48 || event.keyCode > 57) &&
+						(event.keyCode < 96 || event.keyCode > 105 )
+					) {
+						event.preventDefault();
+					}
+				}
+
+			}//end event
+			
+		});//end event
 		
 		function _clickHandler( target ){
 //console.log( target.tagName );
@@ -257,7 +327,7 @@ function _app( opt ){
 						//$blockContent.slideUp(_vars.duration);
 					}
 
-				}
+				}//end event
 
 //-------------------------------
 				if( target.tagName === "A"){
@@ -268,7 +338,7 @@ function _app( opt ){
 	//console.log(arguments)
 						});
 					}
-				}
+				}//end event
 
 				if( target.tagName === "A"){
 					
@@ -287,7 +357,31 @@ function _app( opt ){
 						webApp.app.urlManager();
 					}
 					
-				}
+				}//end event
+				
+//------------------------------- page number
+//console.log( target.getAttribute("id") );
+				if( target.getAttribute("id") === "btn-page-number-more"){
+					var num = parseInt( $("#page-number").val() );
+					if( num < webApp.db.vars["numPages"] ){
+						$("#page-number").val( num+1 );
+						$("#page-range").val( num+1 );
+						// var url = "?q=list_nodes&num_page=" + (num+1);
+						// webApp.vars["GET"] = func.parseGetParams( url ); 
+						// _urlManager();
+					}
+				}//end event
+				
+				if( target.getAttribute("id") === "btn-page-number-less"){
+					var num = parseInt( $("#page-number").val() );
+					if( num > 1){
+						$("#page-number").val( num-1 );
+						$("#page-range").val( num-1 );
+						// var url = "?q=list_nodes&num_page=" + (num-1);
+						// webApp.vars["GET"] = func.parseGetParams( url ); 
+						// _urlManager();
+					}					
+				}//end event
 
 		}//end _clickHandler()
 		
@@ -480,6 +574,7 @@ console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
 		}
 		
 		var numPages = Math.ceil( totalNodes / webApp.db.vars["numRecordsPerPage"]);
+		webApp.db.vars["numPages"] = numPages;
 		
 		var html = webApp.draw.wrapData({
 			"data": {
