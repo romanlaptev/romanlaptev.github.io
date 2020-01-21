@@ -29,7 +29,8 @@ function _db( opt ){
 		"numRecordsPerPage":5,
 //		"sortOrder": "asc",
 //		"sortByKey": "title", //"published", 
-		"buffer": []
+		"outputBuffer": []//,
+		//"queryRes":[]
 	};
 
 	var _init = function( opt ){
@@ -245,7 +246,7 @@ delete xml;
 			
 //--------------------			
 			for( var n = 0; n < _vars.numRecordsPerPage; n++){
-				_vars["buffer"].push( _vars["nodes"][n] );
+				_vars["outputBuffer"].push( _vars["nodes"][n] );
 			}//next
 //--------------------			
 			
@@ -473,58 +474,51 @@ var xTagList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagLis
 	
 	
 	function _getNodesByTag( opt ){
-/*
 		var p = {
-			"text" : null,
+			"tagName" : null,
 			"callback" : null
 		};
 		//extend options object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-	//console.log(p);
 
-		if( !p["text"] ){
-	webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag text value...";
-	console.log( webApp.vars["logMsg"] );
+		if( !p["tagName"] || p["tagName"].length === 0){
+webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag name value...";
+console.log( webApp.vars["logMsg"] );
 			return false;
 		}
 
 		var data = [];
-		for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
-			var node = webApp.vars["DB"]["nodes"][n];
-			if( !node["tags"] ){
-	//console.log(node);		
+		for(var n = 0; n < _vars["nodes"].length; n++){
+			var node = _vars["nodes"][n];
+			if( !node["node_tags"] ){
+console.log(node);		
 				continue;			
 			}
-			var tags = node["tags"];
+			var tags = node["node_tags"];
 			for(var n2 = 0; n2 < tags.length; n2++){
-				if( tags[n2]["text"] && tags[n2]["text"] === p["text"]){
+//console.log( tags[n2]["text"], tags[n2]["text"].length, p["tagName"], p["tagName"].length, tags[n2]["text"] === p["tagName"]);
+				var tagName = p["tagName"].trim();
+				var nodeTagName = tags[n2]["text"].trim();
+//console.log( nodeTagName, nodeTagName.length, tagName, tagName.length, nodeTagName === tagName);
+				if( nodeTagName === tagName){
 					data.push( node );
 				}
 			}//next
 			
 		}//next
 
-		_data_setTemplate(data);//define unique template for item
-		webApp.vars["DB"]["queryRes"] = data;
-		
+		//_vars["queryRes"] = data;
 
 		if( typeof p["callback"] === "function"){
 			p["callback"](data);
 		}
 		//return false;
 		
-		//function _postQuery( res ){
-	////console.log( res );
-			//if( typeof p["callback"] === "function"){
-				//p["callback"](res);
-			//}
-			
-		//}//end _postQuery()
-*/	
-		
 	}//end _getNodesByTag()
+
+
 	
 	// public interfaces
 	return{

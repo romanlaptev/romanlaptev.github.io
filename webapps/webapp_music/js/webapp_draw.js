@@ -363,6 +363,13 @@ console.log( "-- "+webApp.vars["logMsg"] );
 		var locationBlock = func.getById( p["locationID"] );
 		if( locationBlock ){
 			locationBlock.innerHTML = html;
+			
+			//show block if hidden
+			if( locationBlock.style.display === "none"){
+				locationBlock.style.display = "block";
+			}
+//console.log( locationBlock, locationBlock.style.display );
+			
 		} else {
 webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
 func.logAlert( webApp.vars["logMsg"], "error");
@@ -441,7 +448,7 @@ console.log(webApp.vars["logMsg"]);
 				if( webApp.draw.vars["templates"][ tplName ] ){
 					template = webApp.draw.vars["templates"][ tplName ];
 				} else {
-console.log("-- warning, no draw element because not defined template: '" + tplName + "'...");
+//console.log("-- warning, no draw element because not defined template: '" + tplName + "'...");
 //console.log(data);
 					return "";
 				}

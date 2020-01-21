@@ -345,9 +345,31 @@ console.log("-- end build page --");
 			break;
 			
 			case "get-nodes-by-tag":
-console.log( webApp.vars["GET"] );
-				//_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
-				_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+//console.log( webApp.vars["GET"] );
+
+				webApp.db.getNodesByTag({
+						"tagName" : webApp.vars["GET"]["tag_name"],
+						"callback" : function( data ){
+//console.log(data);
+							if( !data || data.length ===0){
+webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["tag_name"] + "</b>...";
+func.logAlert(webApp.vars["logMsg"], "warning");
+console.log( "-- " + webApp.vars["logMsg"] );
+							} else {
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
+func.logAlert( webApp.vars["logMsg"], "success");
+								webApp.db.vars["outputBuffer"] = data;
+								//_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
+								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+								
+								//hide block tag list
+								var id = "#"+webApp.vars["blocksByName"]["blockTagList"]["locationID"];
+//console.log(id, $( id ) );
+								$( id ).slideToggle( _vars.duration , function(e){});
+								
+							}
+						}//end callback
+				});
 			break;
 
 //-------------------------------------------- PLAYLIST
@@ -386,66 +408,34 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	}//end _urlManager()
 
 	function _formHtmlNodeList(){
-/*		
-		//fake data					
-		webApp.db.vars["nodes"][0]["images"][0]["template"]= "hide";
-		webApp.db.vars["nodes"][0]["main_picture"] = webApp.db.vars["nodes"][0]["images"][0]["src"];
-		var related_links = webApp.db.vars["nodes"][0]["related_links"];
-		for(var n = 0; n < related_links.length; n++){
-			var link = related_links[n];
-			if( link["data-type"] === "playlist-file"){
-				webApp.db.vars["nodes"][0]["playlist_filepath"] = link["href"];
-				link["template"] = "hide element";
-			}
-		}//next
 
-		webApp.db.vars["nodes"][1]["images"][0]["template"]= "hide";
-		webApp.db.vars["nodes"][1]["main_picture"] = webApp.db.vars["nodes"][1]["images"][0]["src"];
-		webApp.db.vars["nodes"][1]["playlist_filepath"] = "";
-
-		webApp.db.vars["nodes"][2]["images"][0]["template"]= "hide";
-		webApp.db.vars["nodes"][2]["main_picture"] = webApp.db.vars["nodes"][2]["images"][0]["src"];
-		webApp.db.vars["nodes"][2]["playlist_filepath"] = "";
-						
-		var html = webApp.draw.wrapData({
-			//"data": webApp.db.vars["blockList"],
-			"data": [ 
-webApp.db.vars["nodes"][0], 
-webApp.db.vars["nodes"][1],
-webApp.db.vars["nodes"][2], 
-webApp.db.vars["nodes"][1],
-webApp.db.vars["nodes"][0], 
-webApp.db.vars["nodes"][1] 
-],
-			"templateID": "blockList",
-			"templateListItemID": "blockListItem"
-		});
-*/
-		for( var n = 0; n < webApp.db.vars["buffer"].length; n++){
+//filter outputBuffer nodes
+		for( var n = 0; n < webApp.db.vars["outputBuffer"].length; n++){
 			
-			webApp.db.vars["buffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
-			if( webApp.db.vars["buffer"][n]["images"] ){
-				webApp.db.vars["buffer"][n]["images"][0]["template"]= "hide";
-				webApp.db.vars["buffer"][n]["main_picture"] = webApp.db.vars["buffer"][n]["images"][0]["src"];
+			webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			if( webApp.db.vars["outputBuffer"][n]["images"] ){
+				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
+				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
 			}
 	
 	
-			if( webApp.db.vars["buffer"][n].related_links ){
-				var related_links = webApp.db.vars["buffer"][n].related_links;
+			if( webApp.db.vars["outputBuffer"][n].related_links ){
+				var related_links = webApp.db.vars["outputBuffer"][n].related_links;
 //console.log( related_links );
 				for(var n2 = 0; n2 < related_links.length; n2++){
 					var link = related_links[n2];
 					if( link["data-type"] === "playlist-file"){
-						webApp.db.vars["buffer"][n]["playlist_filepath"] = link["href"];
+						webApp.db.vars["outputBuffer"][n]["playlist_filepath"] = link["href"];
 						link["template"] = "hide element";
 					}
 				}//next
 			}
 			
 		}//next
-						
+//------------------------
+
 		var html = webApp.draw.wrapData({
-			"data": webApp.db.vars["buffer"],
+			"data": webApp.db.vars["outputBuffer"],
 			"templateID": "blockList",
 			"templateListItemID": "blockListItem"
 		});

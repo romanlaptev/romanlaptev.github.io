@@ -98,6 +98,30 @@
 	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
 </tag_list>
 
+<node type="playlist">
+	<title>
+		<item>Rock</item>
+	</title>
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
+</node>
+
 
 <node type="playlist">
 	<title>
@@ -462,7 +486,7 @@
 	
 	<related_links>
 		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1021">music.yandex.ru</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Jazz and swing.json"]Jazz and swing.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Jazz and swing.json">Jazz and swing.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -485,7 +509,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json"]blues, rock_n_roll, swing, jazz.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/blues, rock_n_roll, swing, jazz.json">blues, rock_n_roll, swing, jazz.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -514,7 +538,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Vivaldi.json"]Vivaldi.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Vivaldi.json">Vivaldi.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -543,7 +567,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Mozart.json"]Mozart.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Mozart.json">Mozart.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -572,7 +596,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Bach.json"]Bach.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -602,7 +626,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Handel.json"]Handel.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Handel.json">Handel.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -628,7 +652,7 @@
 	
 	<related_links>
 		<li>https://music.yandex.ru/users/roman-laptev/playlists/1007</li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/classic.json"]classic.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/classic.json">classic.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -677,7 +701,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Master.json"]Master.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Master.json">Master.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -703,7 +727,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Manowar.json"]Manowar.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Manowar.json">Manowar.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -729,7 +753,7 @@
 	
 	<related_links>
 		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Therion.json"]Therion.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Therion.json">Therion.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -757,7 +781,7 @@
 	
 	<related_links>
 		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Nightwish.json"]Nightwish.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Nightwish.json">Nightwish.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -783,7 +807,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/russian.json"]russian.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/russian.json">russian.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -808,7 +832,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Kreator.json"]Kreator.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Kreator.json">Kreator.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -834,7 +858,7 @@
 	
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1020">music.yandex.ru</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/KSU.json"]KSU.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/KSU.json">KSU.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -857,7 +881,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/punk, hardcore.json"]punk, hardcore.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/punk, hardcore.json">punk, hardcore.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -880,7 +904,7 @@
 	
 	<related_links>
 		<li>https://music.yandex.ru/users/roman-laptev/playlists/1010</li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/rus_punk.json"]rus_punk.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/rus_punk.json">rus_punk.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -907,7 +931,7 @@
 	
 	<related_links>
 		<li>https://music.yandex.ru/users/roman-laptev/playlists/1006</li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/GrOb.json"]GrOb.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/GrOb.json">GrOb.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -933,7 +957,7 @@
 	
 	<related_links>
 		<li>https://music.yandex.ru/users/roman-laptev/playlists/1012</li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/ska.json"]ska.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/ska.json">ska.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -956,7 +980,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/thrash, death, grindecore, hardcore.json"]thrash, death, grindecore, hardcore.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/thrash, death, grindecore, hardcore.json">thrash, death, grindecore, hardcore.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -982,7 +1006,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/trance, rave, hip-hop, electronic.json"]trance, rave, hip-hop, electronic.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/trance, rave, hip-hop, electronic.json">trance, rave, hip-hop, electronic.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1004,7 +1028,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/red_elvices.json"]red_elvices.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/red_elvices.json">red_elvices.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1029,7 +1053,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/disko, pop.json"]disko, pop.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/disko, pop.json">disko, pop.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1052,7 +1076,7 @@
 	
 	<related_links>
 		<li><a data-type="external-link" href="https://www.youtube.com/playlist?list=PL2sTusldk6UhJ9XXBSCA5Kb-r4e3q0qt4">music - medieval, church, youtube</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/folk, chants.json"]folk, chants.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/folk, chants.json">folk, chants.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1074,7 +1098,7 @@
 	
 	<related_links>
 		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a></li>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/heavy,speed,power.json"]heavy,speed,power.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/heavy,speed,power.json">heavy,speed,power.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1098,7 +1122,7 @@
 
 	<description>SATYAA and PARI</description>
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/indian.json"]indian.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/indian.json">indian.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1118,7 +1142,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/melodic, folk metal.json"]melodic, folk metal.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/melodic, folk metal.json">melodic, folk metal.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1141,7 +1165,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/apocalyptica.json"]apocalyptica.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/apocalyptica.json">apocalyptica.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1166,7 +1190,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/Korpiklaani.json"]Korpiklaani.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Korpiklaani.json">Korpiklaani.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1190,7 +1214,7 @@
 
 	
 	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/mix_transe, hip-hop, latin.json"]mix_transe, hip-hop, latin.json[/a]</li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/mix_transe, hip-hop, latin.json">mix_transe, hip-hop, latin.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1203,31 +1227,5 @@
 	<updated format="d-M-Y H:i:s">30-Dec-2019 12:57:32</updated>
 </node>
 
-<node type="playlist">
-	<title>
-		<item>Rock</item>
-	</title>
-	
-
-	
-	<related_links>
-		<li>[a data-type="playlist-file" href="/music/0_playlists/rock.json"]rock.json[/a]</li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
-		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
-		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
-		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
-		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
-		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
-</node>
 	</database>
 </xroot>

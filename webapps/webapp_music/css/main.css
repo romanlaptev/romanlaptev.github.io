@@ -332,7 +332,10 @@ overflow-y: auto !important;
 .uk-input, .uk-select, .uk-textarea {
 	border: 1px solid #b5b5b5;
 }
-
+.uk-alert-success {
+	background: #42af44;
+	color: #fff;
+}
 
 
 .my-offcanvas {
