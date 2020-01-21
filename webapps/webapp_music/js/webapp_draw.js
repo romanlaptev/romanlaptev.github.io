@@ -162,12 +162,8 @@ function _draw( opt ){
 						</div>\
 					</div>',
 			
-			"blockPager" : '<div class="row">\
-							<div class="uk-float-left">\
-				total records: <b><span id="total-records">40</span></b>, \
-				number of pages: <b><span id="total-pages">4</span></b>\
-							</div>\
-							<div class="uk-float-right">\
+			"blockPager" : '<div class="row">{{content}}\
+							<div class="uk-float-right">search\
 				<form name="formSearch" id="form-search" action="?q=search" method="GET">\
 								<ul class="button-group">\
 									<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
@@ -181,13 +177,16 @@ function _draw( opt ){
 					</div>\
 					<div class="row">\
 						<div class="block-num-page uk-float-left w20">\
+<small>page №:</small>\
 							<button id="page-number-less" class="">-</button>\
-							<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">\
+<input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="only-numbers">\
 							<button id="page-number-more" class="">+</button>\
 						</div>\
 						<div class="uk-float-left w60 box-range">\
 				<input id="page-range" type="range" min="1" max="10" step="1" value="1" autocomplete="off" class="range uk-width-1-1">\
 						</div>\
+					</div>\
+					<div class="row">\
 						<div class="uk-float-right">\
 							<label class="uk-label">sort by</label>\
 							<select id="select-sort" class="" autocomplete="off">\
@@ -195,6 +194,10 @@ function _draw( opt ){
 								<option value="published">publication date</option>\
 							</select>\
 						</div>\
+					</div>',
+			"pageInfo" : '<div class="uk-float-left">\
+records: <b><span id="total-records">{{total_nodes}}</span></b> \
+<small>(<b><span id="num-pages">{{num_pages}}</span></b> pages )</small> \
 			</div>',
 			
 			"blockNodes" : '{{content}}',
@@ -278,7 +281,6 @@ function _draw( opt ){
 		//}//next
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockTagGroups"] );
-		_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
 

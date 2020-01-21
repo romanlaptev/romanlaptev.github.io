@@ -79,7 +79,14 @@ var webApp = {
 				"locationID" : "block-pager",
 				"title" : "block pager", 
 				"templateID" : "blockPager",
-				//"content" : "<u>static text</u>",
+				"visibility":true,
+				"content" : function(){
+					var html = webApp.app.formHtmlPager();
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
@@ -89,6 +96,7 @@ var webApp = {
 				"templateID" : "blockNodes",
 				"visibility":true,
 				"content" : function(){
+					webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 					var html = webApp.app.formHtmlNodeList();
 					if( html && html.length > 0){
 						this.content = html;
@@ -358,8 +366,8 @@ console.log( "-- " + webApp.vars["logMsg"] );
 							} else {
 webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
 func.logAlert( webApp.vars["logMsg"], "success");
-								webApp.db.vars["outputBuffer"] = data;
-								//_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
+
+								webApp.db.vars["queryRes"] = data;
 								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 								
 								//hide block tag list
@@ -409,6 +417,24 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 
 	function _formHtmlNodeList(){
 
+//------------ fill output buffer from query result
+if( webApp.db.vars["queryRes"].length > 0 ){
+	
+		webApp.db.vars["outputBuffer"] = [];
+		var startPos = webApp.db.vars["numberPage"] - 1;
+		var endPos = startPos + webApp.db.vars["numRecordsPerPage"];
+console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
+		
+		if( webApp.db.vars["queryRes"].length > webApp.db.vars["numRecordsPerPage"] ){
+			for( var n = startPos; n < endPos; n++){
+				webApp.db.vars["outputBuffer"].push( webApp.db.vars["queryRes"][n] );
+			}
+		} else {
+			webApp.db.vars["outputBuffer"] = webApp.db.vars["queryRes"];
+		}
+		
+}
+		
 //filter outputBuffer nodes
 		for( var n = 0; n < webApp.db.vars["outputBuffer"].length; n++){
 			
@@ -443,6 +469,28 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 //console.log( html );
 		return html;
 	}//_formHtmlNodeList()
+
+
+	function _formHtmlPager(){
+		//var html = webApp.draw.vars["templates"]["pageInfo"];
+		if( webApp.db.vars["queryRes"].length === 0){
+			var totalNodes = webApp.db.vars["nodes"].length;
+		} else {
+			var totalNodes = webApp.db.vars["queryRes"].length;
+		}
+		
+		var numPages = Math.ceil( totalNodes / webApp.db.vars["numRecordsPerPage"]);
+		
+		var html = webApp.draw.wrapData({
+			"data": {
+total_nodes: totalNodes,
+num_pages: numPages
+			},
+			"templateID": "pageInfo"
+		});
+//console.log( html );
+		return html;
+	}//_formHtmlPager()
 
 
 	function _formHtmlTagGroups(){
@@ -579,6 +627,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		urlManager:	function(){ 
 			return _urlManager(); 
 		},
+		formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList

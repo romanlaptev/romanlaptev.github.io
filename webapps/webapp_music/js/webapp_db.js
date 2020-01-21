@@ -26,11 +26,12 @@ function _db( opt ){
 { url : "https://cloud.mail.ru/public/bbb2f6a3eb1d/music", title: "music on cloud.mail.ru" }
 		],
 		
-		"numRecordsPerPage":5,
+		"numRecordsPerPage": 5,
+		"numberPage": 1,
 //		"sortOrder": "asc",
 //		"sortByKey": "title", //"published", 
-		"outputBuffer": []//,
-		//"queryRes":[]
+		"outputBuffer": [],
+		"queryRes":[]
 	};
 
 	var _init = function( opt ){
