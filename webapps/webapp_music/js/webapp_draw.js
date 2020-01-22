@@ -94,7 +94,7 @@ function _draw( opt ){
 								<b>Tag groups</b>\
 							</div>\
 							<div class="uk-float-right">\
-								<a data-toggle="#block-tags" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+<a data-toggle="#block-tags" href="#close" title="reset tags select" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
 						<div class="uk-card-body uk-padding-small">\

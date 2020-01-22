@@ -354,7 +354,12 @@ console.log( target, target.value );
 						var id = $( target ).data("toggle");
 	//console.log( id );
 						$( id ).slideToggle( _vars.duration , function(e){
-	//console.log(arguments)
+	//console.log(arguments);
+							if( id === "#block-tags"){// reset tags select
+								webApp.db.vars["queryRes"] = [];
+								webApp.vars["GET"]["q"] = "reset_tags_select"; 
+								_urlManager();
+							}
 						});
 					}
 				}//end event
@@ -476,6 +481,7 @@ webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+
 func.logAlert( webApp.vars["logMsg"], "success");
 
 								webApp.db.vars["queryRes"] = data;
+								webApp.db.vars["numberPage"] = 1;
 								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 								
 								//hide block tag list
@@ -486,6 +492,12 @@ func.logAlert( webApp.vars["logMsg"], "success");
 							}
 						}//end callback
 				});
+			break;
+			
+			case "reset_tags_select":
+				webApp.db.vars["queryRes"] = [];
+				webApp.db.vars["numberPage"] = 1;
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 			break;
 
 //-------------------------------------------- PLAYLIST
@@ -524,25 +536,13 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	}//end _urlManager()
 
 	function _formHtmlNodeList(){
-/*
-//------------ fill output buffer from query result
-if( webApp.db.vars["queryRes"].length > 0 ){
-	
-		webApp.db.vars["outputBuffer"] = [];
-		var startPos = webApp.db.vars["numberPage"] - 1;
-		var endPos = startPos + webApp.db.vars["numRecordsPerPage"];
-//console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
-		
-		if( webApp.db.vars["queryRes"].length > webApp.db.vars["numRecordsPerPage"] ){
-			for( var n = startPos; n < endPos; n++){
-				webApp.db.vars["outputBuffer"].push( webApp.db.vars["queryRes"][n] );
-			}
-		} else {
-			webApp.db.vars["outputBuffer"] = webApp.db.vars["queryRes"];
-		}
-		
-}
-*/
+
+	webApp.db.vars["records"] = webApp.db.vars["nodes"];
+	//------------ fill output buffer from query result
+	if( webApp.db.vars["queryRes"].length > 0 ){
+		webApp.db.vars["records"] = webApp.db.vars["queryRes"];
+	}
+
 //--------------------	get page data, copy nodes to outputBuffer
 		webApp.db.vars["outputBuffer"] = [];
 		
@@ -551,7 +551,7 @@ if( webApp.db.vars["queryRes"].length > 0 ){
 		var startPos = numPage * numRecordsPerPage;
 		var endPos = startPos + numRecordsPerPage;
 		
-		if( startPos > webApp.db.vars["nodes"].length ){
+		if( startPos > webApp.db.vars["records"].length ){
 webApp.vars["logMsg"] = "-- warning, incorrect page number, not more than " + webApp.db.vars["numPages"];
 //func.logAlert( webApp.vars["logMsg"], "warning");
 console.log( webApp.vars["logMsg"] );
@@ -560,15 +560,15 @@ console.log( webApp.vars["logMsg"] );
 			//}
 			return false;
 		}
-		if( endPos > webApp.db.vars["nodes"].length ){
-			var n = endPos - webApp.db.vars["nodes"].length;
+		if( endPos > webApp.db.vars["records"].length ){
+			var n = endPos - webApp.db.vars["records"].length;
 			endPos = endPos - n;
 //console.log("TEST...", n);
 		}
-//console.log( startPos, numRecordsPerPage, endPos, webApp.db.vars["nodes"].length);
+//console.log( startPos, numRecordsPerPage, endPos, webApp.db.vars["records"].length);
 		
 		for( var n = startPos; n < endPos; n++){
-			webApp.db.vars["outputBuffer"].push( webApp.db.vars["nodes"][n] );
+			webApp.db.vars["outputBuffer"].push( webApp.db.vars["records"][n] );
 		}
 //console.log( webApp.db.vars["outputBuffer"] );
 //--------------------	
