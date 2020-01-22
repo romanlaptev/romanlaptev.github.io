@@ -294,7 +294,7 @@ console.log( target, target.value );
 		$("#page-number").on("blur", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
-console.log( event.type, event);
+//console.log( event.type, event);
 			_changePage( target.value );
 		});//end event
 
@@ -353,8 +353,8 @@ console.log( event.type, event);
 				if( target.tagName === "A"){
 					
 //------------------------------- get tag list
-//#?q=get-tag-group&vid=2				
-					if ( target.href.indexOf("get-tag-group") !== -1){
+//#?q=get-tag-list&vid=2				
+					if ( target.href.indexOf("get-tag-list") !== -1){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
@@ -376,7 +376,7 @@ console.log( event.type, event);
 					if( num < webApp.db.vars["numPages"] ){
 						$("#page-number").val( num+1 );
 						$("#page-range").val( num+1 );
-						//_changePage( $("#page-range").val );
+						_changePage( $("#page-range").val() );
 					}
 				}//end event
 				
@@ -385,7 +385,7 @@ console.log( event.type, event);
 					if( num > 1){
 						$("#page-number").val( num-1 );
 						$("#page-range").val( num-1 );
-						//_changePage( $("#page-range").val );
+						_changePage( $("#page-range").val() );
 					}					
 				}//end event
 
@@ -445,8 +445,8 @@ console.log("-- end build page --");
 			//break;
 			
 //-------------------------------------------- TAGLIST
-//href="#?q=get-tag-group&vid={{vid}}"			
-			case "get-tag-group":
+//href="#?q=get-tag-list&vid={{vid}}"			
+			case "get-tag-list":
 //console.log( webApp.vars["GET"] );
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTagList"] );
 			break;
@@ -683,6 +683,7 @@ num_pages: numPages
 
 
 	function _changePage( pageNumValue){
+//console.log( pageNumValue );
 		//var num = parseInt( target.value );
 		var num = parseInt( pageNumValue );
 		
@@ -712,9 +713,42 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		}
 		
 		$("#page-range").val( num );
+		webApp.db.vars["numberPage"] = num;
+		
 		// var url = "?q=list_nodes&num_page="+num;
 		// webApp.vars["GET"] = func.parseGetParams( url ); 
 		// _urlManager();
+		
+//--------------------	get page data, copy nodes to outputBuffer
+		webApp.db.vars["outputBuffer"] = [];
+		
+		var numPage = parseInt( webApp.db.vars["numberPage"] )-1;
+		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
+		var startPos = numPage * numRecordsPerPage;
+		var endPos = startPos + numRecordsPerPage;
+		
+		if( startPos > webApp.db.vars["nodes"].length ){
+webApp.vars["logMsg"] = "-- warning, incorrect page number, not more than " + webApp.db.vars["numPages"];
+//func.logAlert( webApp.vars["logMsg"], "warning");
+console.log( webApp.vars["logMsg"] );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"](data);
+			//}
+			return false;
+		}
+		if( endPos > webApp.db.vars["nodes"].length ){
+			var n = endPos - webApp.db.vars["nodes"].length;
+			endPos = endPos - n;
+//console.log("TEST...", n);
+		}
+//console.log( startPos, numRecordsPerPage, endPos, webApp.db.vars["nodes"].length);
+		
+		for( var n = startPos; n < endPos; n++){
+			webApp.db.vars["outputBuffer"].push( webApp.db.vars["nodes"][n] );
+		}
+//--------------------	
+//console.log( webApp.db.vars["outputBuffer"] );
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 		
 	}//end _changePage()
 

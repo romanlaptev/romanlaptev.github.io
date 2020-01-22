@@ -102,7 +102,7 @@ function _draw( opt ){
 						</div>\
 					</div>',
 			"tagGroupsList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-group&vid={{vid}}&group_name={{name}}">{{name}} </a><small>({{num}})</small></li>',
+"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-list&vid={{vid}}&group_name={{name}}">{{name}} </a><small>({{num}})</small></li>',
 					
 			"blockTagList" : '\
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
