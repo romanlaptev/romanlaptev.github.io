@@ -549,9 +549,12 @@ func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>")
 
 
 	
-	//$("#page-range").on("input", function(event){
+	$("#page-range").on("input", function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
 //console.log("input range...", event.target.value);
-	//});//end event
+		$("#page-number").val( target.value );
+	});//end event
 	
 	$("#page-range").change(function(event){
 		event = event || window.event;

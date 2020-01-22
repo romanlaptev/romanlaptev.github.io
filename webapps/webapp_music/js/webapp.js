@@ -270,7 +270,7 @@ function _app( opt ){
 //console.log( event.type, event);
 //console.log( target, target.value );
 
-//---------------------------- move input range
+//---------------------------- end of moving  'input range'
 			if( target.getAttribute("id") === "page-range"){
 //console.log( target, target.value );
 				$("#page-number").val( target.value );
@@ -288,6 +288,15 @@ console.log( target, target.value );
 				// _urlManager();
 			}//end event
 
+		});//end event
+
+
+//---------------------------- move input range
+		$("#page-range").on("input", function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+//console.log("input range...", event.target.value);
+			$("#page-number").val( target.value );
 		});//end event
 
 //---------------------------- end input to "#page-number", loss of focus field
@@ -515,7 +524,7 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	}//end _urlManager()
 
 	function _formHtmlNodeList(){
-
+/*
 //------------ fill output buffer from query result
 if( webApp.db.vars["queryRes"].length > 0 ){
 	
@@ -533,8 +542,38 @@ if( webApp.db.vars["queryRes"].length > 0 ){
 		}
 		
 }
+*/
+//--------------------	get page data, copy nodes to outputBuffer
+		webApp.db.vars["outputBuffer"] = [];
 		
-//filter outputBuffer nodes
+		var numPage = parseInt( webApp.db.vars["numberPage"] )-1;
+		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
+		var startPos = numPage * numRecordsPerPage;
+		var endPos = startPos + numRecordsPerPage;
+		
+		if( startPos > webApp.db.vars["nodes"].length ){
+webApp.vars["logMsg"] = "-- warning, incorrect page number, not more than " + webApp.db.vars["numPages"];
+//func.logAlert( webApp.vars["logMsg"], "warning");
+console.log( webApp.vars["logMsg"] );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"](data);
+			//}
+			return false;
+		}
+		if( endPos > webApp.db.vars["nodes"].length ){
+			var n = endPos - webApp.db.vars["nodes"].length;
+			endPos = endPos - n;
+//console.log("TEST...", n);
+		}
+//console.log( startPos, numRecordsPerPage, endPos, webApp.db.vars["nodes"].length);
+		
+		for( var n = startPos; n < endPos; n++){
+			webApp.db.vars["outputBuffer"].push( webApp.db.vars["nodes"][n] );
+		}
+//console.log( webApp.db.vars["outputBuffer"] );
+//--------------------	
+		
+//------------------- filter outputBuffer nodes
 		for( var n = 0; n < webApp.db.vars["outputBuffer"].length; n++){
 			
 			webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
@@ -569,29 +608,6 @@ if( webApp.db.vars["queryRes"].length > 0 ){
 		return html;
 	}//_formHtmlNodeList()
 
-/*
-	function _formHtmlPager(){
-		//var html = webApp.draw.vars["templates"]["pageInfo"];
-		if( webApp.db.vars["queryRes"].length === 0){
-			var totalNodes = webApp.db.vars["nodes"].length;
-		} else {
-			var totalNodes = webApp.db.vars["queryRes"].length;
-		}
-		
-		var numPages = Math.ceil( totalNodes / webApp.db.vars["numRecordsPerPage"]);
-		webApp.db.vars["numPages"] = numPages;
-		
-		var html = webApp.draw.wrapData({
-			"data": {
-total_nodes: totalNodes,
-num_pages: numPages
-			},
-			"templateID": "pageInfo"
-		});
-//console.log( html );
-		return html;
-	}//_formHtmlPager()
-*/
 
 	function _formHtmlTagGroups(){
 
@@ -642,9 +658,8 @@ num_pages: numPages
 		});		
 //console.log( html );
 		return html;
-		
-		
 	}//_formHtmlTagList()
+
 
 	function _getTagsByGroupName( groupName, tagList ){
 		var tags = [];
@@ -715,41 +730,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		$("#page-range").val( num );
 		webApp.db.vars["numberPage"] = num;
 		
-		// var url = "?q=list_nodes&num_page="+num;
-		// webApp.vars["GET"] = func.parseGetParams( url ); 
-		// _urlManager();
-		
-//--------------------	get page data, copy nodes to outputBuffer
-		webApp.db.vars["outputBuffer"] = [];
-		
-		var numPage = parseInt( webApp.db.vars["numberPage"] )-1;
-		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
-		var startPos = numPage * numRecordsPerPage;
-		var endPos = startPos + numRecordsPerPage;
-		
-		if( startPos > webApp.db.vars["nodes"].length ){
-webApp.vars["logMsg"] = "-- warning, incorrect page number, not more than " + webApp.db.vars["numPages"];
-//func.logAlert( webApp.vars["logMsg"], "warning");
-console.log( webApp.vars["logMsg"] );
-			//if( typeof p["callback"] === "function"){
-				//p["callback"](data);
-			//}
-			return false;
-		}
-		if( endPos > webApp.db.vars["nodes"].length ){
-			var n = endPos - webApp.db.vars["nodes"].length;
-			endPos = endPos - n;
-//console.log("TEST...", n);
-		}
-//console.log( startPos, numRecordsPerPage, endPos, webApp.db.vars["nodes"].length);
-		
-		for( var n = startPos; n < endPos; n++){
-			webApp.db.vars["outputBuffer"].push( webApp.db.vars["nodes"][n] );
-		}
-//--------------------	
-//console.log( webApp.db.vars["outputBuffer"] );
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
-		
 	}//end _changePage()
 
 
