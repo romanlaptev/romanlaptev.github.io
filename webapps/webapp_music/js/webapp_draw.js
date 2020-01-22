@@ -162,7 +162,11 @@ function _draw( opt ){
 						</div>\
 					</div>',
 			
-			"blockPager" : '<div class="row">{{content}}\
+			"blockPager" : '<div class="row">\
+<div class="uk-float-left">\
+records: <b><span id="total-records">{{total_nodes}}</span></b> \
+(<small><b><span id="num-pages">{{num_pages}}</span></b> pages</small>)\
+</div>\
 							<div class="uk-float-right">search\
 <form name="formSearch" id="form-search" action="?q=search" method="GET">\
 								<ul class="button-group">\
@@ -195,10 +199,10 @@ function _draw( opt ){
 							</select>\
 						</div>\
 					</div>',
-			"pageInfo" : '<div class="uk-float-left">\
-records: <b><span id="total-records">{{total_nodes}}</span></b> \
-<small>(<b><span id="num-pages">{{num_pages}}</span></b> pages )</small> \
-			</div>',
+			// "pageInfo" : '<div class="uk-float-left">\
+// records: <b><span id="total-records">{{total_nodes}}</span></b> \
+// <small>(<b><span id="num-pages">{{num_pages}}</span></b> pages )</small> \
+			// </div>',
 			
 			"blockNodes" : '{{content}}',
 			"blockList" : '<div>{{list}}</div>',
@@ -281,6 +285,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 		//}//next
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockTagGroups"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
 
@@ -582,6 +587,27 @@ console.log("-- warning, empty field....", key2, item[key2]);
 	}//end _wrapData()
 
 	
+	function _updatePager(opt){
+		
+		if( webApp.db.vars["queryRes"].length === 0){
+			var totalNodes = webApp.db.vars["nodes"].length;
+		} else {
+			var totalNodes = webApp.db.vars["queryRes"].length;
+		}
+		var numPages = Math.ceil( totalNodes / webApp.db.vars["numRecordsPerPage"]);
+		webApp.db.vars["numPages"] = numPages;
+		
+		$("#total-records").text( totalNodes );
+		$("#num-pages").text( numPages );
+		
+//---------------------------------
+		$("#page-number").val( webApp.db.vars["numberPage"] );
+		$("#page-range").val( webApp.db.vars["numberPage"] );
+		$("#page-range").attr("max", webApp.db.vars["numPages"]);
+		
+	}//end _updatePager()
+
+
 	// public interfaces
 	return{
 		vars : _vars,
@@ -595,7 +621,8 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		},
 		wrapData:	function( opt ){ 
 			return _wrapData( opt ); 
-		}
+		},
+		updatePager: _updatePager
 	};
 }//end _draw()
 
@@ -704,27 +731,4 @@ console.log( webApp.vars["logMsg"] );
 			
 	};//end _buildPage()
 	
-*/
-
-
-/*
-	function _draw_updatePager(opt){
-		func.log("", "total-records");
-		func.log(opt["total_records"], "total-records");
-
-		var numRecordsPerPage = webApp.db.vars["numRecordsPerPage"];
-		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
-		webApp.db.vars["numPages"] = numPages;
-
-		//$("#page-number").val(numPages);
-		func.log("", "total-pages");
-		func.log(numPages, "total-pages");
-		
-		$("#page-number").val( opt["page_number"] );
-
-		$("#page-range").val(opt["page_number"]);
-		$("#page-range").attr("max", numPages);
-		
-		//$("#page-number-2").attr("max", numPages);
-	}//end _draw_updatePagers()
 */

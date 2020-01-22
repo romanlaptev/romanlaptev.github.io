@@ -79,17 +79,14 @@ var webApp = {
 				"locationID" : "block-pager",
 				"title" : "block pager", 
 				"templateID" : "blockPager",
-				"visibility":true,
-				"content" : function(){
-					var html = webApp.app.formHtmlPager();
-					if( html && html.length > 0){
-						this.content = html;
-						webApp.draw.buildBlock( this );
-					}
-					$("#page-number").val( webApp.db.vars["numberPage"] );
-					$("#page-range").val( webApp.db.vars["numberPage"] );
-					$("#page-range").attr("max", webApp.db.vars["numPages"]);
-				}
+				"visibility":true//,
+				// "content" : function(){
+					// var html = webApp.app.formHtmlPager();
+					// if( html && html.length > 0){
+						// this.content = html;
+						// webApp.draw.buildBlock( this );
+					// }
+				// }
 			}, //end block
 
 //===========================================
@@ -99,12 +96,12 @@ var webApp = {
 				"templateID" : "blockNodes",
 				"visibility":true,
 				"content" : function(){
-					webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 					var html = webApp.app.formHtmlNodeList();
 					if( html && html.length > 0){
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
+					webApp.draw.updatePager();
 				}
 			}, //end block
 			
@@ -517,7 +514,7 @@ if( webApp.db.vars["queryRes"].length > 0 ){
 		webApp.db.vars["outputBuffer"] = [];
 		var startPos = webApp.db.vars["numberPage"] - 1;
 		var endPos = startPos + webApp.db.vars["numRecordsPerPage"];
-console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
+//console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
 		
 		if( webApp.db.vars["queryRes"].length > webApp.db.vars["numRecordsPerPage"] ){
 			for( var n = startPos; n < endPos; n++){
@@ -564,7 +561,7 @@ console.log(startPos, endPos, webApp.db.vars["numRecordsPerPage"]);
 		return html;
 	}//_formHtmlNodeList()
 
-
+/*
 	function _formHtmlPager(){
 		//var html = webApp.draw.vars["templates"]["pageInfo"];
 		if( webApp.db.vars["queryRes"].length === 0){
@@ -586,7 +583,7 @@ num_pages: numPages
 //console.log( html );
 		return html;
 	}//_formHtmlPager()
-
+*/
 
 	function _formHtmlTagGroups(){
 
@@ -722,7 +719,7 @@ num_pages: numPages
 		urlManager:	function(){ 
 			return _urlManager(); 
 		},
-		formHtmlPager : _formHtmlPager,
+		//formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList
