@@ -177,7 +177,6 @@ console.log(webApp);
 
 function _runApp(){
 	//testMediaSupport( webApp.vars["audioTypes"]);
-	webApp.app.defineEvents();
 
 	//start block
 	if( webApp["vars"]["waitWindow"] ){
@@ -220,20 +219,7 @@ function _app( opt ){
 				// });
 			// });//end event
 		
-//---------------------------------
-		$(document).on("click", function(event){
-			event = event || window.event;
-			var target = event.target || event.srcElement;
-//console.log( event );
-//console.log( this );//page-container
-//console.log( target.textContent );
-//console.log( event.eventPhase );
-//console.log( "preventDefault: " + event.preventDefault );
-			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
-			_clickHandler( target );
-		});
-		
+//------------------------------------------------------------------
 		$(document).on("keydown", function(event) {
 			event = event || window.event;
 			var target = event.target || event.srcElement;
@@ -255,29 +241,7 @@ function _app( opt ){
 //console.log(target.value);
 //console.log( parseInt(target.value) );
 //console.log( isNaN(target.value) );
-					var num = parseInt( target.value );
-					if( !isNaN(num) ){
-		
-						if( num === 0 ){
-console.log( "--error, wrong num page:", num, webApp.db.vars["numPages"], num > webApp.db.vars["numPages"]);
-							num = 1;
-							$("#page-number").val( num );
-						}
-						if( num > webApp.db.vars["numPages"] ){
-console.log( "--error, wrong num page:", num, webApp.db.vars["numPages"], num > webApp.db.vars["numPages"]);
-							num = webApp.db.vars["numPages"];
-							$("#page-number").val( num );
-						}
-						
-						$("#page-range").val( num );
-						// var url = "?q=list_nodes&num_page="+num;
-						// webApp.vars["GET"] = func.parseGetParams( url ); 
-						// _urlManager();
-					} else {
- webApp.vars["logMsg"] = "-- error, incorrect input, only numbers...";
-// func.logAlert( webApp.vars["logMsg"], "danger");
-console.log( webApp.vars["logMsg"] );
-					}
+					_changePage( target.value );
 				}
 				
 				if ( event.keyCode == 46 || 
@@ -300,6 +264,55 @@ console.log( webApp.vars["logMsg"] );
 			
 		});//end event
 		
+		$(document).on("change", function(event) {
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+//console.log( event.type, event);
+//console.log( target, target.value );
+
+//---------------------------- move input range
+			if( target.getAttribute("id") === "page-range"){
+//console.log( target, target.value );
+				$("#page-number").val( target.value );
+				_changePage( target.value );
+			}//end event
+			
+//---------------------------- select sort type
+			if( target.getAttribute("id") === "select-sort"){
+console.log( target, target.value );
+				// webApp.vars["DB"]["sortByKey"] =  target.value;
+				// $("#page-number").val( 1 );
+				// $("#page-range").val( 1 );
+				// var url = "?q=list_nodes&num_page=1";
+				// webApp.vars["GET"] = func.parseGetParams( url ); 
+				// _urlManager();
+			}//end event
+
+		});//end event
+
+//---------------------------- end input to "#page-number", loss of focus field
+		$("#page-number").on("blur", function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+console.log( event.type, event);
+			_changePage( target.value );
+		});//end event
+
+//------------------------------------------------------------------
+		$(document).on("click", function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+//console.log( event );
+//console.log( this );//page-container
+//console.log( target.textContent );
+//console.log( event.eventPhase );
+//console.log( "preventDefault: " + event.preventDefault );
+			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+			_clickHandler( target );
+		});
+	
+//------------------------------------------------------------------
 		function _clickHandler( target ){
 //console.log( target.tagName );
 
@@ -363,9 +376,7 @@ console.log( webApp.vars["logMsg"] );
 					if( num < webApp.db.vars["numPages"] ){
 						$("#page-number").val( num+1 );
 						$("#page-range").val( num+1 );
-						// var url = "?q=list_nodes&num_page=" + (num+1);
-						// webApp.vars["GET"] = func.parseGetParams( url ); 
-						// _urlManager();
+						//_changePage( $("#page-range").val );
 					}
 				}//end event
 				
@@ -374,15 +385,14 @@ console.log( webApp.vars["logMsg"] );
 					if( num > 1){
 						$("#page-number").val( num-1 );
 						$("#page-range").val( num-1 );
-						// var url = "?q=list_nodes&num_page=" + (num-1);
-						// webApp.vars["GET"] = func.parseGetParams( url ); 
-						// _urlManager();
+						//_changePage( $("#page-range").val );
 					}					
 				}//end event
 
 		}//end _clickHandler()
 		
 	}//end _defineEvents()
+
 
 	function _urlManager( target ){
 //console.log(target);
@@ -414,12 +424,10 @@ console.log( webApp.vars["logMsg"] );
 								}
 								webApp.vars["GET"] = func.parseGetParams( parse_url ); 
 								_urlManager();
+								_defineEvents();
 							}
 					}
 
-					//if( typeof postFunc === "function"){
-						//postFunc();
-					//}
 				});
 			break;
 			
@@ -674,41 +682,43 @@ num_pages: numPages
 	}//end _getNodesByTag()
 
 
-/*
-	//------------------------------------------------------------------ EVENTS for dynamic content
-	function _setToggleContentEvents(){
-		webApp.vars.$toggleContent = $(".toggle-content");
-		webApp.vars.$toggleContent.on("click", function(e){
-	//console.log( e.target );
-				var test = $(e.target).hasClass("icon-chevron-down");
-	//console.log( test );
-				var test2 = $(e.target).hasClass("icon-chevron-up");
-	//console.log( test2 );
+	function _changePage( pageNumValue){
+		//var num = parseInt( target.value );
+		var num = parseInt( pageNumValue );
+		
+		if( isNaN(num) ){
+webApp.vars["logMsg"] = "-- error, incorrect input " + num;
+func.logAlert( webApp.vars["logMsg"], "danger");
+console.log( webApp.vars["logMsg"] );
+			num = 1;
+			$("#page-number").val( num );
+			return false;
+		}
+			
+		if( num === 0 ){
+webApp.vars["logMsg"] = "-- error, wrong num page";
+func.logAlert( webApp.vars["logMsg"], "danger");
+console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
+			num = 1;
+			$("#page-number").val( num );
+		}
+		
+		if( num > webApp.db.vars["numPages"] ){
+webApp.vars["logMsg"] = "-- error, wrong num page";
+func.logAlert( webApp.vars["logMsg"], "danger");
+console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
+			num = webApp.db.vars["numPages"];
+			$("#page-number").val( num );
+		}
+		
+		$("#page-range").val( num );
+		// var url = "?q=list_nodes&num_page="+num;
+		// webApp.vars["GET"] = func.parseGetParams( url ); 
+		// _urlManager();
+		
+	}//end _changePage()
 
-				if( test || test2 ){
-					var _p = e.target.parentNode;
-			//console.log( _p );
-					
-					var $blockContent = $(_p).find(".block-content");
-			//console.log( $blockContent );
-					$blockContent.slideToggle(_vars.duration);
 
-					var $buttonDropDown = $(e.target);
-			//console.log( $buttonDropDown );
-					var test = $buttonDropDown.hasClass("icon-chevron-down");
-					if( test ){
-						$buttonDropDown.removeClass("icon-chevron-down");
-						$buttonDropDown.addClass("icon-chevron-up");
-						//$blockContent.slideDown(_vars.duration);
-					} else {
-						$buttonDropDown.removeClass("icon-chevron-up");
-						$buttonDropDown.addClass("icon-chevron-down");
-						//$blockContent.slideUp(_vars.duration);
-					}
-				}
-			});//end event
-	}//_setToggleContentEvents()
-*/	
 	// public interfaces
 	return{
 		//vars : _vars,
