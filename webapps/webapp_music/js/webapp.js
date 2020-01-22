@@ -291,6 +291,71 @@ console.log( target, target.value );
 		});//end event
 
 
+//---------------------------- search form submit
+		//$("#block-search").on("submit", "#form-search", function(event){
+		$("#form-search").on("submit", function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+			
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+//console.log("Submit form", event, this);
+			var form = document.forms["formSearch"]
+//console.log(form);
+//console.log(form.elements.targetField, form.elements.targetField.length);
+//console.log(form.elements.keyword.value);
+			//------------------- check input values
+			var res = true;
+			
+			var _keyword = form.elements.keyword.value;
+			if( _keyword.length === 0 ){
+webApp.vars["logMsg"] = "error, empty keyword...";
+func.logAlert( webApp.vars["logMsg"], "error");
+//console.log( "-- " + _vars["logMsg"] );
+				res = false;
+			}
+			
+			var _targetField = false;
+//fix
+if( form.elements.targetField.length > 0){
+			for( var n = 0; n < form.elements.targetField.length; n++){
+//console.log( n, form.elements.targetField[n] );
+
+				var $element = $(form.elements.targetField[n]);
+				var _checked = $element.prop("checked");
+	//console.log( $element.attr("value"), _checked );
+				if( _checked){
+					_targetField = $element.attr("value");
+					break;
+				}
+			}//next
+} else {
+	_targetField = form.elements.targetField.value;
+}
+//console.log( "TEST:", _targetField, _targetField.length );
+
+			// if( !_targetField || _targetField.length === 0 ){
+// webApp.vars["logMsg"] = "error, not select search field, 'targetField'...";
+// func.logAlert( webApp.vars["logMsg"], "error");
+// //console.log( webApp.vars["logMsg"] );
+				// res = false;
+			// }		
+
+			if(res){
+				webApp.vars["GET"] = {
+					q: "search",
+					"targetField" : _targetField,
+					"keyword": _keyword
+				}; 
+				_urlManager();
+			}
+
+		});//end event
+
+
 //---------------------------- move input range
 		$("#page-range").on("input", function(event){
 			event = event || window.event;
@@ -500,6 +565,31 @@ func.logAlert( webApp.vars["logMsg"], "success");
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 			break;
 
+//-------------------------------------------- SEARCH
+			case "search":
+				
+				webApp.db.search({
+					"targetField" : webApp.vars["GET"]["targetField"],
+					"keyword" : webApp.vars["GET"]["keyword"],
+					"callback" : function( data ){
+console.log(data);
+
+						if( !data || data.length ===0){
+webApp.vars["logMsg"] = "no records found by keyword <b>&quot;"+ webApp.vars["GET"]["keyword"] + "&quot;</b>...";
+func.logAlert( webApp.vars["logMsg"], "warning");
+console.log( "-- " + webApp.vars["logMsg"] );
+							return false;
+						};
+						
+						webApp.db.vars["queryRes"] = data;
+						webApp.db.vars["numberPage"] = 1;
+						webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+
+					}//end callback
+				});
+				
+			break;
+			
 //-------------------------------------------- PLAYLIST
 			case "load-track":
 			break;

@@ -521,6 +521,72 @@ console.log(node);
 	}//end _getNodesByTag()
 
 
+	function _search( opt ){
+		var p = {
+			"targetField" : null,
+			"keyword" : null,
+			"callback" : null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+	//console.log(p);
+		var fieldKey = p["targetField"];
+		var itemKey;
+		
+		if( fieldKey === "title"){
+			itemKey = "text";
+		}
+		
+		//if( fieldKey === "filename"){
+			//fieldKey = "ul";
+			//itemKey = "href";
+		//}
+		
+		var data = [];
+		for(var n = 0; n < _vars["nodes"].length; n++){
+			var node = _vars["nodes"][n];
+			var item = node[fieldKey];
+//console.log(item);
+
+			if(!item){
+				continue;
+			}
+
+			if( itemKey && itemKey.length > 0){//search into multi fields
+				for(var n2 = 0; n2 < item.length; n2++){
+					if( item[n2][itemKey]){
+						var test = item[n2][itemKey].toLowerCase();
+						var keyword = p["keyword"].toLowerCase();
+						if( test.indexOf(keyword) !==-1 ){
+							data.push( node );
+							break;
+						}
+					}
+				}//next
+			} else {
+	//console.log(node[fieldKey], typeof node[fieldKey]);
+				if( typeof node[fieldKey] !== "string"){
+					continue;
+				}
+				var test = node[fieldKey].toLowerCase();
+				var keyword = p["keyword"].toLowerCase();
+				if( test.indexOf(keyword) !==-1 ){
+					data.push( node );
+				}
+			}
+			
+		}//next
+
+		_vars["queryRes"] = data;
+
+		if( typeof p["callback"] === "function"){
+			p["callback"](data);
+		}
+
+	};//end _search()
+
 	
 	// public interfaces
 	return{
@@ -532,6 +598,7 @@ console.log(node);
 		getData:	function( opt ){ 
 			return _getData( opt ); 
 		},
-		getNodesByTag: _getNodesByTag
+		getNodesByTag: _getNodesByTag,
+		search: _search
 	};
 }//end _db()

@@ -167,15 +167,18 @@ function _draw( opt ){
 records: <b><span id="total-records">{{total_nodes}}</span></b> \
 (<small><b><span id="num-pages">{{num_pages}}</span></b> pages</small>)\
 </div>\
-							<div class="uk-float-right">search\
-<form name="formSearch" id="form-search" action="?q=search" method="GET">\
-								<ul class="button-group">\
-									<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
-									<li><button type="submit" class="uk-button uk-button-small uk-button-primary">\
-									<span class="icon-search"></span></button></li>\
-									<li><button type="reset" class="uk-button uk-button-small uk-button-danger">\
-									<span class="icon-remove"></span></button></li>\
-								</ul>\
+							<div class="uk-float-right">\
+<form name="formSearch" id="form-search" action="">\
+	<div class="form-group">search by: \
+		<label><input type="radio" name="targetField" value="title" checked>title</label>\
+<!--		<label><input type="radio" name="targetField" value="description">description</label> -->\
+<!--		<label><input type="radio" name="targetField" value="filename" >attached filename</label>-->\
+	</div>\
+	<ul class="button-group">\
+		<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
+		<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><span class="icon-search"></span></button></li>\
+		<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><span class="icon-remove"></span></button></li>\
+	</ul>\
 </form>\
 							</div>\
 					</div>\
