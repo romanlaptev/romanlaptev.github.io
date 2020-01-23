@@ -31,7 +31,7 @@ function _db( opt ){
 		"numPages": null,
 		
 		"sortOrder": "asc",
-		"sortByKey": "", //"title", //"published", 
+		"sortByKey": "", //"title", //"updated", 
 		"dateFormat": "dd-mm-yyyy hh:mm:ss",
 
 		"outputBuffer": [],
@@ -321,7 +321,7 @@ console.log( error );
 			}//next
 		}
 
-//------------------ form timestamp (for sort by 'published')
+//------------------ form timestamp (for sort by 'updated')
 		__addTimeStamp();
 		//__checkSupport();
 		return nodes;
@@ -375,8 +375,8 @@ console.log( error );
 			}
 			
 			for(var n = 0; n < nodes.length; n++){
-				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
-					var arr = nodes[n]["published"].split(" ");
+				if( nodes[n]["updated"] && nodes[n]["updated"].length > 0){
+					var arr = nodes[n]["updated"].split(" ");
 					var dateArr = arr[0].split("-");
 					var timeArr = arr[1].split(":");
 						
@@ -656,7 +656,7 @@ console.log( logMsg );
 				s2 = b[p.sortByKey][0]["text"].toLowerCase();
 			}
 			
-			if( p.sortByKey === "published" ){
+			if( p.sortByKey === "updated" ){
 				s1 = a["timestamp"];
 				s2 = b["timestamp"];
 			}

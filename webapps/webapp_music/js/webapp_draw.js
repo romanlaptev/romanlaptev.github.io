@@ -196,7 +196,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<select id="select-sort" class="" autocomplete="off">\
 								<option value="" selected=""></option>\
 								<option value="title">title</option>\
-								<option value="published">publication date</option>\
+								<option value="updated">update date</option>\
 							</select>\
 						</div>\
 					</div>',
