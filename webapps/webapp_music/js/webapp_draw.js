@@ -5,8 +5,7 @@ function _draw( opt ){
 	var _vars = {
 		"templates":{
 			
-			"blockPlayer" : {
-				"html" : '<div class="uk-card uk-card-default">\
+			"blockPlayer" : '<div class="uk-card uk-card-default">\
 						<div class="row">\
 							<div class="uk-float-right">\
 									<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
@@ -82,8 +81,7 @@ function _draw( opt ){
 								</div>\
 							</div>\
 						</div>\
-					</div>'
-			},
+					</div>',
 			
 			"blockTags" : "{{block-tag-groups}} {{block-taglist}}",
 			
@@ -113,8 +111,7 @@ function _draw( opt ){
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
 "tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
 			
-			"blockFileManager" : '\
-					<div class="uk-card uk-card-default">\
+			"blockFileManager" : '<div class="uk-card uk-card-default">\
 						<div class="row">\
 							<div class="uk-float-left uk-padding-small">\
 									<b>File manager</b>\
@@ -291,6 +288,10 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 		_buildBlock( webApp.vars["blocksByName"]["blockTagGroups"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+		
+		_buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+		
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
 
 	};//end _buildPage()

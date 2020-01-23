@@ -31,8 +31,8 @@ var webApp = {
 			{
 				"locationID" : "block-player",
 				"title" : "block player", 
-				"templateID" : "blockFooterLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockPlayer",
+				//"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
@@ -70,8 +70,8 @@ var webApp = {
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
-				"templateID" : "blockFooterLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockFileManager",
+				//"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
@@ -151,9 +151,11 @@ console.log("init webapp!");
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
 
+		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
 		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][1];
-		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
 		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][2];
+		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][3];
+		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
 		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][5];
 		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][6];
 		

@@ -628,7 +628,7 @@ console.log(node);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-..console.log(p);
+//console.log(p);
 
 		if(p.records.length === 0 ){
 			var logMsg = "error, not found sorting records...";
