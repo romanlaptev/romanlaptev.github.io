@@ -15461,6 +15461,58 @@ https://www.kinopoisk.ru/film/893150/</description>
 	<updated>01-Jan-2020 17:44:46</updated>
 </video>
 
+<video type="video">
+	<title>
+		<item>Компьютерщики</item>
+		<item>The IT Crowd</item>
+</title>
+	
+	<producer>Грэхэм Лайнхэн</producer>
+	<roles>Крис О’Дауд
+Ричард Айоади
+Кэтрин Паркинсон
+Мэтт Берри
+Кристофер Моррис
+Ноэль Филдинг
+Грэхэм Лайнхэн
+Том Биннс
+Льюис Маклауд
+Белинда Стюарт-Уилсон	</roles>
+	<description>https://www.kinopoisk.ru/film/386715/</description>
+	<pictures>
+		<img src="https://st.kp.yandex.net/images/film_big/386715.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 1/s01e01 - Yesterdays Jam.mkv">season 1, s01e01 - Yesterdays Jam.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 1/s01e02 - Calamity Jen.mkv">season 1, s01e02 - Calamity Jen</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 1/s01e03 - Fifty-Fifty.mkv">season 1, s01e03 - Fifty-Fifty.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 1/s01e04 - The Red Door.mkv">season 1, s01e04 - The Red Door.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 2/s02e01 - The Work Outing.mkv">season 2, s02e01 - The Work Outing.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 2/s02e04 - The Dinner Party.mkv">season 2, s02e04 - The Dinner Party.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e01 - From Hell.mkv">season 3, s03e01 - From Hell.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e02 - Are We Not Men.mkv">season 3, s03e02 - Are We Not Men.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e03 - Tramps Like Us.mkv">season 3, s03e03 - Tramps Like Us.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e04 - The Speech.mkv">season 3, s03e04 - The Speech.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e05 - Friendface.mkv">season 3, s03e05 - Friendface.mkv</a></li>
+		<li><a data-type="local-file" href="/video/films/I/The IT Crowd/season 3/s03e06 - Calendar Geeks.mkv">season 3, s03e06 - Calendar Geeks.mkv</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="117">сериал</item>
+		<item tid="60">Великобритания</item>
+		<item tid="215">I</item>
+		<item tid="238">К</item>
+		<item tid="275">2013</item>
+		<item tid="280">2008</item>
+		<item tid="282">2006</item>
+	</tags>
+
+	<published>12-Jan-2020 13:27:26</published>
+	<updated>12-Jan-2020 13:27:26</updated>
+</video>
+
 <video type="videoclip">
 	<title>
 		<item>Дон Жуан</item>
@@ -17685,17 +17737,19 @@ https://ok.ru/video/1147112392106
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Neverdad (Official Audio).mp4">Talco - Neverdad (Official Audio).mp4</a></li>
-		<li><a data-type="embed-video" href="https://youtube.ru/embed/FKfA2mO4UL0">embed video, www.youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/Talco - Neverdad (Official Audio).mp4">Talco - Neverdad (Official Audio).mp4</a></li>
+		<li><a data-type="embed-video" href="https://youtube.ru/embed/FKfA2mO4UL0">Talco - Neverdad (Official Audio), youtube.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="272">youtube</item>
 		<item tid="302">2015</item>
+		<item tid="225">T</item>
+		<item tid="48">видеоклипы</item>
 	</tags>
 
 	<published>26-Mar-2019 22:21:35</published>
-	<updated>20-Jul-2019 23:50:32</updated>
+	<updated>06-Jan-2020 11:32:21</updated>
 </video>
 
 <video type="videoclip">
@@ -17763,16 +17817,18 @@ https://www.youtube.com/watch?v=SGMnJGB0Oy8&amp;amp;list=PL2sTusldk6UiwuEYM-kfQK
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Talco - La parabola dei battagghi (Official video).mp4">Talco - La parabola dei battagghi (Official video).mp4</a></li>
-		<li><a data-type="embed-video" href="https://youtube.ru/embed/SGMnJGB0Oy8">embed video, www.youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/Talco - La parabola dei battagghi (Official video).mp4">Talco - La parabola dei battagghi (Official video).mp4</a></li>
+		<li><a data-type="embed-video" href="https://youtube.ru/embed/SGMnJGB0Oy8">Talco - La parabola dei battagghi (Official video), youtube.com</a></li>
 	</ul>
 
 	<tags>
 		<item tid="272">youtube</item>
+		<item tid="225">T</item>
+		<item tid="48">видеоклипы</item>
 	</tags>
 
 	<published>27-Mar-2019 21:35:56</published>
-	<updated>20-Jul-2019 23:51:54</updated>
+	<updated>06-Jan-2020 11:31:48</updated>
 </video>
 
 <video type="videoclip">
@@ -17975,8 +18031,8 @@ Limitless Soundtrack</description>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Il Tempo (Official Audio).mp4">Talco - Il Tempo (Official Audio).mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/woLxmrm85ro">embed video on youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/Talco - Il Tempo (Official Audio).mp4">Talco - Il Tempo (Official Audio).mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/woLxmrm85ro">Talco - Il Tempo (Official Audio), youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -17988,7 +18044,7 @@ Limitless Soundtrack</description>
 	</tags>
 
 	<published>29-Mar-2019 22:26:46</published>
-	<updated>20-Jul-2019 23:58:13</updated>
+	<updated>06-Jan-2020 11:31:10</updated>
 </video>
 
 <video type="videoclip">
@@ -18278,12 +18334,12 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	
 	<description>https://www.youtube.com/watch?v=9pPWB_ipZhQ&amp;amp;index=24&amp;amp;list=PL2sTusldk6UiwuEYM-kfQKob-Zz8__AZU&amp;amp;t=0s</description>
 	<pictures>
-		<img src="https://i.ytimg.com/vi/9pPWB_ipZhQ/sddefault.jpg"/>
+		<img src="https://i.ytimg.com/vi/9pPWB_ipZhQ/hqdefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Corri.mp4">Talco - Corri.mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9pPWB_ipZhQ" target="_blank">embed video on youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/Talco - Corri.mp4">Talco - Corri.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9pPWB_ipZhQ" target="_blank">Talco - Corri, youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -18293,7 +18349,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:34:33</published>
-	<updated>21-Jul-2019 00:03:49</updated>
+	<updated>06-Jan-2020 11:33:05</updated>
 </video>
 
 <video type="videoclip">
@@ -18309,8 +18365,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/TALCO - Pirati di Sankt Pauli.mp4">TALCO - Pirati di Sankt Pauli.mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/cIsZAnHH4V4" target="_blank">embed video on youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/TALCO - Pirati di Sankt Pauli.mp4">TALCO - Pirati di Sankt Pauli.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/cIsZAnHH4V4" target="_blank">Pirati di Sankt Pauli, youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -18320,7 +18376,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:38:27</published>
-	<updated>21-Jul-2019 00:04:32</updated>
+	<updated>06-Jan-2020 11:33:39</updated>
 </video>
 
 <video type="videoclip">
@@ -18332,12 +18388,12 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	
 	<description>https://www.youtube.com/watch?v=Dh3wb6-j9VE&amp;amp;list=PL2sTusldk6UiwuEYM-kfQKob-Zz8__AZU&amp;amp;index=22&amp;amp;t=0s</description>
 	<pictures>
-		<img src="https://i.ytimg.com/vi/Dh3wb6-j9VE/sddefault.jpg"/>
+		<img src="https://i.ytimg.com/vi/Dh3wb6-j9VE/hqdefault.jpg"/>
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/TALCO - Punta Raisi.mp4">TALCO - Punta Raisi.mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Dh3wb6-j9VE" target="_blank">embed video on youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/TALCO - Punta Raisi.mp4">TALCO - Punta Raisi.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/Dh3wb6-j9VE" target="_blank">TALCO - Punta Raisi, youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -18347,7 +18403,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:41:41</published>
-	<updated>21-Jul-2019 00:05:14</updated>
+	<updated>06-Jan-2020 11:34:15</updated>
 </video>
 
 <video type="videoclip">
@@ -18363,8 +18419,8 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</pictures>
 
 	<ul>
-		<li><a data-type="local-file" href="/video/videoclips/T/Talco - Tarantella.mp4">Talco - Tarantella.mp4</a></li>
-		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9o-h1Kdv4Zs" target="_blank">embed video on youtube.com</a></li>
+		<li><a data-type="local-file" href="/video/videoclips/T/Talco/Talco - Tarantella.mp4">Talco - Tarantella.mp4</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/9o-h1Kdv4Zs" target="_blank">Talco - Tarantella, youtube.com</a></li>
 	</ul>
 
 	<tags>
@@ -18374,7 +18430,7 @@ https://lyricstranslate.com/ru/anda-jaleo-%D0%BD%D1%83-%D0%B8-%D0%B1%D0%B5%D0%B4
 	</tags>
 
 	<published>30-Mar-2019 00:44:41</published>
-	<updated>21-Jul-2019 00:05:48</updated>
+	<updated>06-Jan-2020 11:34:55</updated>
 </video>
 
 <video type="videoclip">

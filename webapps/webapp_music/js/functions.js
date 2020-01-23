@@ -15,20 +15,6 @@ use module:
 //(function(){
 	var sharedFunc =  sharedFunc || function(){
 
-
-		if( typeof window.jQuery === "function"){
-var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-_log(msg);
-
-			$(document).ready(function(){
-//....				
-			});//end ready	
-
-		}
-		
-		// private variables and functions
-		//.......
-
 		function _getById(id){
 			
 			if( document.querySelector ){
@@ -544,7 +530,7 @@ console.log( logMsg, xhr );
 				}
 			}
 
-console.log(xhr.upload);
+//console.log(xhr.upload);
 			if( xhr.upload ){
 /*				
 				xhr.upload.onerror = function(e){
@@ -1082,26 +1068,26 @@ ONLY second LEVEL !!!!!!!!!!!!
 
 		}//end _parseXmlToObj()
 
-		function _alert( message, level ){
+		function _alertUIkit( message, level ){
 			switch (level) {
 				case "info":
-					message = "<p class='alert alert-info'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-primary'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "warning":
-					message = "<p class='alert alert-warning'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-warning'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "danger":
 				case "error":
-					message = "<p class='alert alert-danger'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-danger'>" + message + "</p>";
 					_log(message);
 				break;
 				
 				case "success":
-					message = "<p class='alert alert-success'>" + message + "</p>";
+					message = "<p class='uk-alert uk-alert-success'>" + message + "</p>";
 					_log(message);
 				break;
 				
@@ -1230,7 +1216,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 			parseXmlToObj: _parseXmlToObj,
 			convertXmlToObj: _convertXmlToObj,
 			
-			logAlert: _alert,
+			//logAlert: _alert,
+			logAlert: _alertUIkit,
 			wrapLogMsg: _wrapLogMsg,
 			addEvent: _addEvent,
 			testSupport: _testSupport
@@ -1284,32 +1271,8 @@ if (!window.console){
 
 if( typeof window.jQuery === "function"){
 //var msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
-//_log(msg);
+//console.log(msg);
 	$(document).ready(function(){
-		
-		//ввод только цифр
-		$('.only-numbers').on('keydown', function(event) {
-//console.log("event.keyCode = " + event.keyCode );
-			if (event.keyCode == 13) {
-				return;
-			}
-
-			if ( event.keyCode == 46 || 
-				event.keyCode == 8 || 
-				event.keyCode == 9 || 
-				event.keyCode == 27 ||
-					(event.keyCode == 65 && event.ctrlKey === true) ||
-						(event.keyCode >= 35 && event.keyCode <= 39)
-			) {
-				return;
-			} else {
-				if ( (event.keyCode < 48 || event.keyCode > 57) &&
-					(event.keyCode < 96 || event.keyCode > 105 )
-				) {
-					event.preventDefault();
-				}
-			}
-		});
 		
 		//------------------------- scroll to top
 		$("#scroll-to-top").click(function(e) {
@@ -1320,29 +1283,5 @@ if( typeof window.jQuery === "function"){
 			return false;
 		});
 
-/*		
-		$(".scroll-to").addClass("nolink").on("click", function(){
-			if($(this).attr("href")){
-				var id = $(this).attr("href");
-			} else {
-				var id = "#" + $(this).attr("data-target");
-			}
-//console.log("id: " , id);
-
-			//$('body').scrollTo( elem, 800, {offset: -50});//need jquery.scrollTo-1.4.3.1-min.js!!!!
-
-			var start_scroll_pos = $(id).offset().top;// Get  start position for scroll block
-//console.log("start_scroll_pos: " , start_scroll_pos);
-
-			$('html,body').animate({
-				scrollTop: start_scroll_pos
-				}, 500);
-			return false;
-		});
-*/
-
-	
 	});//end ready	
-
-
 }

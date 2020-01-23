@@ -78,11 +78,13 @@ var _vars = {
 		
 		{"colorName": "bg-turquoise5","code": "#006b6b"	},
 		{"colorName": "bg-turquoise6","code": "#006666"	},
+		{"colorName": "bg-turquoise8","code": "#00848c"},
 		{"colorName": "bg-turquoise4","code": "#009b9b","text-color": "#fff"},
 		
 		{"colorName": "bg-blue8","code": "#669999","text-color": "#fff"},
 		{"colorName": "bg-green-grey1","code": "#8ebac5"},
 		{"colorName": "bg-green-grey2","code": "#99cccc"},
+
 
 		{"colorName": "bg-darkgreen22","code": "#003438"},
 		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
@@ -127,6 +129,7 @@ var _vars = {
 		
 		{"colorName": "bg-grey-green","code": "#c6d6de"},
 		{"colorName": "bg-grey-green5","code": "#cfdfe6"},
+		{"colorName": "bg-green-grey3","code": "#dae9ea","text-color": "#00848c"},
 
 		
 		{"colorName": "bg-grey3","code": "#2C3F66"},

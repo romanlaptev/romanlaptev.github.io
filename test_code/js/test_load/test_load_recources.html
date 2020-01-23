@@ -86,6 +86,24 @@ window.onload = function(){
 	pirobox_style.setAttribute("href", "themes/gravura/js/pirobox/pirobox.css");
 	document.getElementsByTagName("head")[0].appendChild(pirobox_style);
 		</pre>
+		
+<pre>
+https://qna.habr.com/q/220124
+Предварительная загрузка изображений 
+
+function preloadImages() {
+  for (var i = 0; i < arguments.length; i++) {
+    new Image().src = arguments[i];
+  }
+}
+
+preloadImages(
+  "images-1.jpg",
+  "images-2.jpg",
+  "images-3.jpg"
+);
+</pre>
+
 	</div><!-- end container -->
 
 </body>

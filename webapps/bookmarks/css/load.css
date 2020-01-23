@@ -51,6 +51,7 @@ animation: spin 2s linear infinite;
 border-bottom: 16px solid #3498db;
 border-top: 16px solid #3498db;
 }
+/*https://learn.javascript.ru/css-transitions*/
 @keyframes spin {
 0% { transform: rotate(0deg); }
 100% { transform: rotate(360deg); }

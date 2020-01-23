@@ -79,39 +79,18 @@ margin: 0;
 
 
 /* GRID */
-.w10{
-	width:10%;
-}
-.w20{
-	width:20%;
-}
-.w25{
-	width:25%;
-}
-.w30{
-	width:30%;
-}
-.w33{
-	width:33%;
-}
-.w50{
-	width:50%;
-}
-.w60{
-	width:60%;
-}
-.w65{
-	width:65%;
-}
-.w70{
-	width:70%;
-}
-.w80{
-	width:80%;
-}
-.w90{
-	width:90%;
-}
+.w10{width:10%;}
+.w20{width:20%;}
+.w25{width:25%;}
+.w30{width:30%;}
+.w33{width:33%;}
+.w50{width:50%;}
+.w60{width:60%;}
+.w65{width:65%;}
+.w70{width:70%;}
+.w80{width:80%;}
+.w90{width:90%;}
+.w100{width:100%;}
 
 .row {
 	/* float: none; */
@@ -474,7 +453,12 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }*/
 
 
-/* ICONS */
+/* ICONS
+ https://getuikit.com/v2/docs/icon.html
+ https://getuikit.com/docs/icon
+ https://getbootstrap.com/docs/3.3/components/
+ */
+
 /*
 @font-face {
 	font-family:FontAwesome;
@@ -483,7 +467,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 	font-weight:400;
 	font-style:normal
 }
-[class*='uk-icon-'] {
+[class*='icon-'] {
   font-family: FontAwesome;
   display: inline-block;
   font-weight: normal;
@@ -493,15 +477,35 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class*='uk-icon-'],
-[class*='uk-icon-']:hover,
-[class*='uk-icon-']:focus {
+[class*='icon-'],
+[class*='icon-']:hover,
+[class*='icon-']:focus {
   text-decoration: none;
 }
 
-.uk-icon-home:before {
+.icon-home:before {
   content: "\f015";
 }
+.icon-search:before {
+  content: "\f002";
+}
+.icon-remove:before,
+.icon-close:before,
+.icon-times:before {
+  content: "\f00d";
+}
+.icon-navicon:before,
+.icon-reorder:before,
+.icon-bars:before {
+  content: "\f0c9";
+}
+.icon-level-up:before {
+  content: "\f148";
+}
+.icon-level-down:before {
+  content: "\f149";
+}
+
 
 @font-face {
   font-family: 'Glyphicons Halflings';
