@@ -71,6 +71,11 @@ preloadImages(
 {{updated}}
 {{tags}}
 ============================== EXPORT
+----------------- SQL
+UPDATE "field_data_field_related_links" SET field_related_links_value = REPLACE(field_related_links_value, '[a', '<a')
+UPDATE "field_data_field_related_links" SET field_related_links_value = REPLACE(field_related_links_value, 'json"]', 'json">')
+
+-----------------
 <xroot>
 	<database name="music">
 	

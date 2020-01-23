@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <xroot>
 	<database name="music">
 <tag_groups>
@@ -98,120 +98,15 @@
 	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
 </tag_list>
 
-<node type="playlist">
-	<title>
-		<item>Judas Priest</item>
-	</title>
-	<images>
-		<img src="https://rokstok.ru/wp-content/uploads/2016/06/futbolka-judas-priest-british-steel-face-180x180.jpg"/>
-		<!-- <img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/02.german.jpg"/> -->
-		<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg"/>
-		<img src="/music/J/Judas Priest/images/British Steel.jpg"/>
-	</images>
-
-	
-	<related_links>
-		<li>
-<a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1017">music.yandex.ru</a>
-		</li>
-		<li>
-<a data-type="playlist-file" href="/music/0_playlists/judas_priest.json">judas_priest.json</a>
-		</li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="91" group_name="alphabetical_voc">J</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
-		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
-		<item vid="4" tid="132" group_name="country">Великобритания</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:18</updated>
-</node>
-
-
-<node type="playlist">
-	<title>
-		<item>Metallica</item>
-	</title>
-	<images>
-		<img src="https://upload.wikimedia.org/wikipedia/hr/a/a4/M-KA.jpg"/>
-		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
-	</images>
-
-	
-	<related_links>
-		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1019" class="btn btn-info" target="_blank">yandex music</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
-		<item vid="4" tid="116" group_name="country">США</item>
-		<item vid="3" tid="120" group_name="music_formats">studio album</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">15-May-2015 09:58:16</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:37:38</updated>
-</node>
-
-<node type="playlist">
-	<title>
-		<item>My dying bride</item>
-	</title>
-	<images>
-		<img src="http://www.metal-archives.com/images/6/2/2/1/622155.jpg"/>
-		<img src="/music/M/My dying bride/cover.jpg"/>
-	</images>
-
-	
-	<related_links>
-		<li><a data-type="playlist-file" href="/music/0_playlists/My dying bride.json">My dying bride.json</a></li>
-	</related_links>
-
-	<node_tags>
-		<item vid="2" tid="107" group_name="music_styles">rock</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:37:54</updated>
-</node>
-
-
-<node type="playlist">
-	<title>
-		<item>Rock</item>
-	</title>
-	<related_links>
-		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
-		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
-		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
-		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
-		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
-		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
-</node>
 
 <node type="playlist">
 	<title>
 		<item>Psalteria</item>
 	</title>
+	
 
+	
+	
 
 	<node_tags>
 		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
@@ -223,8 +118,8 @@
 		<item vid="3" tid="119" group_name="music_formats">live</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">20-Nov-2012 22:46:06</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:59</updated>
+	<published format="d-M-Y H:i:s">20-Nov-2012 21:46:06</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:59</updated>
 </node>
 
 <node type="playlist">
@@ -245,8 +140,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">27-Jan-2013 19:51:34</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:30</updated>
+	<published format="d-M-Y H:i:s">27-Jan-2013 18:51:34</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:30</updated>
 </node>
 
 <node type="playlist">
@@ -266,8 +161,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Jul-2013 13:15:33</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:50</updated>
+	<published format="d-M-Y H:i:s">28-Jul-2013 12:15:33</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:50</updated>
 </node>
 
 <node type="playlist">
@@ -291,8 +186,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">31-Jul-2013 22:12:08</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:24</updated>
+	<published format="d-M-Y H:i:s">31-Jul-2013 21:12:08</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:24</updated>
 </node>
 
 <node type="playlist">
@@ -312,8 +207,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 22:47:17</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:40</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 21:47:17</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:40</updated>
 </node>
 
 <node type="playlist">
@@ -335,8 +230,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 23:05:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:00</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 22:05:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:00</updated>
 </node>
 
 <node type="playlist">
@@ -356,8 +251,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 23:22:08</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:11</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 22:22:08</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:11</updated>
 </node>
 
 <node type="playlist">
@@ -384,8 +279,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">07-Aug-2013 22:13:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:35</updated>
+	<published format="d-M-Y H:i:s">07-Aug-2013 21:13:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:35</updated>
 </node>
 
 <node type="playlist">
@@ -405,8 +300,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 21:51:35</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:31</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 20:51:35</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:08:31</updated>
 </node>
 
 <node type="playlist">
@@ -426,8 +321,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 21:57:59</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:14</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 20:57:59</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:14</updated>
 </node>
 
 <node type="playlist">
@@ -446,8 +341,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 22:03:19</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:01</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:03:19</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:01</updated>
 </node>
 
 <node type="playlist">
@@ -466,10 +361,36 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 22:10:52</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:21</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:10:52</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:21</updated>
 </node>
 
+<node type="playlist">
+	<title>
+		<item>Metallica</item>
+	</title>
+	<images>
+		<img src="https://upload.wikimedia.org/wikipedia/hr/a/a4/M-KA.jpg"/>
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1019" target="_blank">yandex music</a></li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="120" group_name="music_formats">studio album</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">15-May-2015 08:58:16</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:05:01</updated>
+</node>
 
 <node type="playlist">
 	<title>
@@ -481,7 +402,7 @@
 
 	
 	<related_links>
-		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1021">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1021">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Jazz and swing.json">Jazz and swing.json</a></li>
 	</related_links>
 
@@ -493,8 +414,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:56:23</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:56:23</updated>
 </node>
 
 <node type="playlist">
@@ -518,8 +439,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:24:25</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:24:25</updated>
 </node>
 
 <node type="playlist">
@@ -533,7 +454,7 @@
 	
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
-		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Vivaldi.json">Vivaldi.json</a></li>
 	</related_links>
 
@@ -547,8 +468,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:02:56</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:02:56</updated>
 </node>
 
 <node type="playlist">
@@ -576,8 +497,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:04:50</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:04:50</updated>
 </node>
 
 <node type="playlist">
@@ -591,7 +512,7 @@
 	
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
-		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 	</related_links>
 
@@ -606,8 +527,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:03:53</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:51:45</updated>
 </node>
 
 <node type="playlist">
@@ -635,8 +556,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:06:01</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:52:52</updated>
 </node>
 
 <node type="playlist">
@@ -647,7 +568,7 @@
 
 	
 	<related_links>
-		<li>https://music.yandex.ru/users/roman-laptev/playlists/1007</li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/classic.json">classic.json</a></li>
 	</related_links>
 
@@ -661,8 +582,8 @@
 		<item vid="2" tid="142" group_name="music_styles">Средневековье</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:25:42</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:54:00</updated>
 </node>
 
 <node type="playlist">
@@ -682,10 +603,64 @@
 		<item vid="2" tid="107" group_name="music_styles">rock</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:36:30</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:36:30</updated>
 </node>
 
+<node type="playlist">
+	<title>
+		<item>Judas Priest</item>
+	</title>
+	<images>
+		<img src="https://rokstok.ru/wp-content/uploads/2016/06/futbolka-judas-priest-british-steel-face-180x180.jpg"/>
+		<img src="/music/J/Judas Priest/images/British Steel.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1017">music.yandex.ru</a></li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/judas_priest.json">judas_priest.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="91" group_name="alphabetical_voc">J</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:47:43</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>My dying bride</item>
+	</title>
+	<images>
+		<img src="http://www.metal-archives.com/images/6/2/2/1/622155.jpg"/>
+		<img src="/music/M/My dying bride/cover.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/My dying bride.json">My dying bride.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="22" group_name="music_styles">death</item>
+		<item vid="2" tid="23" group_name="music_styles">doom</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:57:48</updated>
+</node>
 
 <node type="playlist">
 	<title>
@@ -709,8 +684,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:26:19</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:26:19</updated>
 </node>
 
 <node type="playlist">
@@ -734,8 +709,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:38:59</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:38:59</updated>
 </node>
 
 <node type="playlist">
@@ -748,7 +723,7 @@
 
 	
 	<related_links>
-		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Therion.json">Therion.json</a></li>
 	</related_links>
 
@@ -762,8 +737,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:00:31</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:00:31</updated>
 </node>
 
 <node type="playlist">
@@ -776,7 +751,7 @@
 
 	
 	<related_links>
-		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Nightwish.json">Nightwish.json</a></li>
 	</related_links>
 
@@ -791,8 +766,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:12</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:12</updated>
 </node>
 
 <node type="playlist">
@@ -814,8 +789,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:39:55</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:39:55</updated>
 </node>
 
 <node type="playlist">
@@ -839,8 +814,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:07:40</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:07:40</updated>
 </node>
 
 <node type="playlist">
@@ -848,7 +823,6 @@
 		<item>KSU</item>
 	</title>
 	<images>
-		<img src="https://im0-tub-ru.yandex.net/i?id=12d7beb449e38777ddb47defa69b8cef&amp;n=13"/>
 		<img src="/music/K/KSU/cover.jpg"/>
 	</images>
 
@@ -866,8 +840,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:06:48</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:54:53</updated>
 </node>
 
 <node type="playlist">
@@ -888,8 +862,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:41:20</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:41:20</updated>
 </node>
 
 <node type="playlist">
@@ -900,8 +874,8 @@
 
 	
 	<related_links>
-		<li>https://music.yandex.ru/users/roman-laptev/playlists/1010</li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/rus_punk.json">rus_punk.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1010">music.yandex.ru</a></li>
 	</related_links>
 
 	<node_tags>
@@ -913,8 +887,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:44:24</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:55:38</updated>
 </node>
 
 <node type="playlist">
@@ -927,7 +901,7 @@
 
 	
 	<related_links>
-		<li>https://music.yandex.ru/users/roman-laptev/playlists/1006</li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1006">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/GrOb.json">GrOb.json</a></li>
 	</related_links>
 
@@ -941,8 +915,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:45:33</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:45:33</updated>
 </node>
 
 <node type="playlist">
@@ -953,7 +927,7 @@
 
 	
 	<related_links>
-		<li>https://music.yandex.ru/users/roman-laptev/playlists/1012</li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1012">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/ska.json">ska.json</a></li>
 	</related_links>
 
@@ -965,8 +939,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:46:45</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:46:45</updated>
 </node>
 
 <node type="playlist">
@@ -991,8 +965,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:48:26</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:48:26</updated>
 </node>
 
 <node type="playlist">
@@ -1013,8 +987,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:25:07</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:25:07</updated>
 </node>
 
 <node type="playlist">
@@ -1038,8 +1012,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:51:42</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:51:42</updated>
 </node>
 
 <node type="playlist">
@@ -1060,8 +1034,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:55:06</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:55:06</updated>
 </node>
 
 <node type="playlist">
@@ -1082,8 +1056,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:09:23</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:09:23</updated>
 </node>
 
 <node type="playlist">
@@ -1094,7 +1068,7 @@
 
 	
 	<related_links>
-		<li><a href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/heavy,speed,power.json">heavy,speed,power.json</a></li>
 	</related_links>
 
@@ -1107,8 +1081,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:19:28</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:19:28</updated>
 </node>
 
 <node type="playlist">
@@ -1127,8 +1101,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:49</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:49</updated>
 </node>
 
 <node type="playlist">
@@ -1148,8 +1122,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:53</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:22:53</updated>
 </node>
 
 <node type="playlist">
@@ -1173,8 +1147,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:21:05</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:21:05</updated>
 </node>
 
 <node type="playlist">
@@ -1200,8 +1174,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:23:41</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 16:48:54</updated>
 </node>
 
 <node type="playlist">
@@ -1221,9 +1195,35 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:57:32</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 11:57:32</updated>
 </node>
 
+<node type="playlist">
+	<title>
+		<item>Rock</item>
+	</title>
+	
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
+		<item vid="2" tid="34" group_name="music_styles">classic rock</item>
+		<item vid="2" tid="108" group_name="music_styles">art-rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:22:07</updated>
+</node>
 	</database>
 </xroot>
