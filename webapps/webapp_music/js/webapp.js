@@ -131,6 +131,7 @@ var webApp = {
 		],
 		"blocksByName": {},
 		"imageNotLoad": "img/image_not_load.png",
+		"menuWidth" : 270,//270px
 		
 		"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
@@ -168,6 +169,18 @@ console.log("init webapp!");
 		this["vars"]["totalMBytes"] = func.getById("total-mb");
 		this["vars"]["loaded"] = func.getById("loaded");
 		this["vars"]["loadInfo"] = func.getById("load-info");
+		
+		this["vars"].$offcanvas = $("#off-canvas2");
+		this["vars"].$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+		this["vars"].$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+		
+		// hide input type="range" if not support
+		//https://learn.javascript.ru/dom-polyfill
+		var _testRangeType = $("#page-range").attr("type");
+//console.log( _testRangeType );
+		if( _testRangeType !== "range"){
+			$("#page-range").hide();
+		}
 		
 		_runApp();
 	},//end init()
@@ -382,6 +395,31 @@ if( form.elements.targetField.length > 0){
 			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 			_clickHandler( target );
 		});
+		
+//---------------------------------
+		$("#btn-toggle-menu").on("click", function(e){
+//console.log( e.type );
+			_toggleMenu();
+		});//end event
+		
+		$("#btn-close-menu").on("click", function(e){
+//console.log( e.type );
+			_toggleMenu();
+		});//end event
+		
+		webApp.vars.$offcanvasMenu.on("click", function(e){
+//console.log( e.target );
+			$(".collapse").hide();
+//console.log( $( e.target ).data()  );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			//$( _target ).slideToggle( _vars.duration, function(e){
+			$( _target ).show( _vars.duration, function(e){
+//console.log(arguments)
+				_toggleMenu();
+			});
+		});//end event
+
 	
 //------------------------------------------------------------------
 		function _clickHandler( target ){
@@ -837,6 +875,22 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 	}//end _changePage()
+
+
+	function _toggleMenu(){
+		var _w = parseInt( webApp.vars.$offcanvasBar.css("width") );
+//console.log( webApp.vars.$offcanvasBar.css("width"), _w);
+		
+		if( _w == 0){
+			webApp.vars.$offcanvas.css("display","block");
+			webApp.vars.$offcanvasBar.css("width", webApp.vars.menuWidth);
+		}
+
+		if( parseInt(_w) == webApp.vars.menuWidth){
+			webApp.vars.$offcanvas.css("display","none");
+			webApp.vars.$offcanvasBar.css("width", 0);
+		}
+	}//end _toggleMenu()
 
 
 	// public interfaces

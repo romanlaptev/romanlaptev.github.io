@@ -280,7 +280,7 @@ function _initPage(){
 	
 }//_initPage()
 
-
+/*
 function toggleMenu(){
 	var _w = parseInt( _vars.$offcanvasBar.css("width") );
 //console.log( _vars.$offcanvasBar.css("width"), _w);
@@ -295,6 +295,7 @@ function toggleMenu(){
 		_vars.$offcanvasBar.css("width", 0);
 	}
 }//end toggleMenu()
+*/
 
 function _toggleModal( id ){
 	$m = $(id);
