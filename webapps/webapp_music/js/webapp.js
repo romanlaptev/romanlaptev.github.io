@@ -580,12 +580,11 @@ console.log("-- end build page --");
 				}
 			}
 			
-			var form = document.forms["form_playlist_node"];
-	//console.log(form);
-	console.log(form.elements);
-	console.log(nodeId);			
 */			
-			
+			var form = document.forms["form_node"];
+//console.log(form);
+console.log(form.elements);
+				form.elements.id.value = webApp.vars["GET"]["nid"];
 			break;
 			
 			//case "clear-query-result":
