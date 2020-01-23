@@ -372,6 +372,10 @@ overflow-y: auto !important;
 	opacity:0.8;
 }
 
+.my-offcanvas-bar .uk-nav-offcanvas {
+	margin: 10px;
+}
+
 .my-offcanvas-bar .uk-nav-offcanvas a {
 	color: #fff;
 }
