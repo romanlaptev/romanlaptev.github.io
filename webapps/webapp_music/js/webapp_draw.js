@@ -197,7 +197,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 						<div class="uk-float-right">\
 							<label class="uk-label">sort by</label>\
 							<select id="select-sort" class="" autocomplete="off">\
-								<option value="title" selected="">title</option>\
+								<option value="" selected=""></option>\
+								<option value="title">title</option>\
 								<option value="published">publication date</option>\
 							</select>\
 						</div>\
@@ -628,110 +629,3 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		updatePager: _updatePager
 	};
 }//end _draw()
-
-
-
-
-/*
-	var _buildPage = function( opt ){
-//console.log("_buildPage()", arguments);
-
-		//if( webApp.vars["wait"] ){
-			//webApp.vars["wait"].className="modal-backdrop in";
-			//webApp.vars["wait"].style.display="block";
-		//}
-		
-		var p = {
-			"nid": null,
-			//"templateID" : "tpl-page"
-			"title" : "",
-			"pageData" : [],
-			"pageType" : "node",
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(opt);
-
-		// //draw static blocks
-		// for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			// var _opt = webApp.vars["blocks"][n];
-// // //console.log(_opt["visibility"], p["title"]);				
-			// if( _opt["visibility"]){
-				// // if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
-					// _draw_buildBlock( _opt );
-				// // }
-			// }
-			
-		// }//next
-
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _opt = webApp.vars["blocks"][n];
-			
-			//do not redraw existing block
-			if( _opt["draw"] && !_opt["refresh"]){
-				continue;
-			}
-			
-			if( _opt["visibility"]){
-				
-				//closures, need for async data getting from indexedDB
-				(function(_opt_){
-					//setTimeout(function(){ 
-						//console.log("-- closure function, ", _opt_); 
-					//}, 1000);
-					//_draw_buildBlock( _opt_ );
-					
-					if( typeof _opt_["buildBlock"] === "function"){
-						//if( _opt_["visibility"]){
-							_opt_["buildBlock"]();
-							_opt_["draw"] = true;
-						//}
-					} else {
-webApp.vars["logMsg"] = "warning, not found buld function....";
-console.log( "-- " + webApp.vars["logMsg"], _opt_ );
-					}
-				})(_opt);//end closure
-			}
-
-		}//next
-
-		var _html = _draw_wrapData({
-			"data": p["pageData"],
-			"templateID": "tpl-videolist",
-			"templateListItemID": "tpl-videolist-item--video"
-		});
-//console.log( _html);
-
-
-		if( !_html || _html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		} else {
-//$("#main").html( _html );
-
-			//draw content block
-			_draw_buildBlock({
-				"locationID" : "list-video",
-				"title" : "video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : _html
-			});
-		}
-
-		//if( webApp.vars["wait"] ){
-			////webApp.vars["wait"].className="";
-			//webApp.vars["wait"].style.display="none";
-		//}
-
-
-		if( typeof p["callback"] === "function"){//return from _buildPage()
-			p["callback"]();
-		}
-			
-	};//end _buildPage()
-	
-*/

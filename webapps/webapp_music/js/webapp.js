@@ -279,20 +279,15 @@ function _app( opt ){
 			
 //---------------------------- select sort type
 			if( target.getAttribute("id") === "select-sort"){
-console.log( target, target.value );
-				// webApp.vars["DB"]["sortByKey"] =  target.value;
-				// $("#page-number").val( 1 );
-				// $("#page-range").val( 1 );
-				// var url = "?q=list_nodes&num_page=1";
-				// webApp.vars["GET"] = func.parseGetParams( url ); 
-				// _urlManager();
+//console.log( target, target.value );
+				webApp.db.vars["sortByKey"] =  target.value;
+				_changePage( 1 );
 			}//end event
 
 		});//end event
 
 
 //---------------------------- search form submit
-		//$("#block-search").on("submit", "#form-search", function(event){
 		$("#form-search").on("submit", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
@@ -538,11 +533,11 @@ console.log("-- end build page --");
 						"callback" : function( data ){
 //console.log(data);
 							if( !data || data.length ===0){
-webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["tag_name"] + "</b>...";
+webApp.vars["logMsg"] = "not found records for tag <b>"+ webApp.vars["GET"]["tag_name"] + "</b>...";
 func.logAlert(webApp.vars["logMsg"], "warning");
 console.log( "-- " + webApp.vars["logMsg"] );
 							} else {
-webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records for tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
 func.logAlert( webApp.vars["logMsg"], "success");
 
 								webApp.db.vars["queryRes"] = data;
@@ -579,7 +574,10 @@ webApp.vars["logMsg"] = "no records found by keyword <b>&quot;"+ webApp.vars["GE
 func.logAlert( webApp.vars["logMsg"], "warning");
 console.log( "-- " + webApp.vars["logMsg"] );
 							return false;
-						};
+						} else {
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by keyword &quot;<b>"+ webApp.vars["GET"]["keyword"] + "</b>&quot;";
+func.logAlert( webApp.vars["logMsg"], "success");
+						}
 						
 						webApp.db.vars["queryRes"] = data;
 						webApp.db.vars["numberPage"] = 1;
@@ -625,6 +623,8 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		
 	}//end _urlManager()
 
+
+
 	function _formHtmlNodeList(){
 
 	webApp.db.vars["records"] = webApp.db.vars["nodes"];
@@ -632,6 +632,19 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	if( webApp.db.vars["queryRes"].length > 0 ){
 		webApp.db.vars["records"] = webApp.db.vars["queryRes"];
 	}
+
+	//------------------ sort NODES
+	if( webApp.db.vars["sortByKey"] && webApp.db.vars["sortByKey"].length > 0){
+		//if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
+			webApp.db.sortNodes({
+				records: webApp.db.vars["records"],
+				"sortOrder": webApp.db.vars["sortOrder"], //"asc", //desc
+				"sortByKey": webApp.db.vars["sortByKey"]
+			});
+			//webApp.vars["DB"]["prevSortKey"] = p.sortByKey;
+		//}
+	}
+	//------------------
 
 //--------------------	get page data, copy nodes to outputBuffer
 		webApp.db.vars["outputBuffer"] = [];
