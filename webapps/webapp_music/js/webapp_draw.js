@@ -221,7 +221,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
 <li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
-<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
+<li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\
 								<div class="description">{{description}}</div>\

@@ -297,6 +297,7 @@ function toggleMenu(){
 }//end toggleMenu()
 */
 
+/*
 function _toggleModal( id ){
 	$m = $(id);
 	if( $m.hasClass("uk-open") ){
@@ -324,7 +325,6 @@ function _closeModal( id ){
 	}
 }//end _toggleModal()
 
-
 function _getFieldValues(id, nodeId){
 	if( id === "#modal-edit-node"){
 		var form = document.forms["form_playlist_node"];
@@ -333,3 +333,4 @@ console.log(form.elements);
 console.log(nodeId);
 	}
 }//_getFieldValues()
+*/

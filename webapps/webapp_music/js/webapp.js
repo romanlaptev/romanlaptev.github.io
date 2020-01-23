@@ -242,10 +242,10 @@ function _app( opt ){
 //console.log("e.keyCode = " + e.keyCode );
 
 //----------------------------
-			//if (e.keyCode == 27) {
-	//console.log("press ESC ", e.target);
-				//_closeModal( "#modal-edit-node" );
-			//}
+			if (event.keyCode == 27) {
+//console.log("press ESC ", e.target);
+				_closeModal( "#modal-edit-node" );
+			}
 			
 //---------------------------- input page number
 			if( target.getAttribute("id") === "page-number"){
@@ -259,6 +259,7 @@ function _app( opt ){
 					_changePage( target.value );
 				}
 				
+				//filter input, only numbers
 				if ( event.keyCode == 46 || 
 					event.keyCode == 8 || 
 					event.keyCode == 9 || 
@@ -482,6 +483,19 @@ if( form.elements.targetField.length > 0){
 					}
 					
 				}//end event
+
+//------------------------------- get modal window
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("edit-node") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+					if ( target.href.indexOf("#close-modal") !== -1){
+						var id = $( target ).data("toggle");
+						_toggleModal( id );
+					}
+				}//end event
+				
 				
 //------------------------------- page number
 //console.log( target.getAttribute("id") );
@@ -551,9 +565,28 @@ console.log("-- start build page --");
 console.log("-- end build page --");
 			break;
 			
-//?q=nodes-by-tag&text="youtube"
-			//case "nodes-by-tag":
-			//break;
+//?q=edit-node&nid={{nid}}
+			case "edit-node":
+				_toggleModal( "#modal-edit-node" );
+/*
+			if( $( target ).attr("href").indexOf("&") !== -1 ){
+				var arr = $( e.target ).attr("href").split("&");
+				arr = arr[1].split("=");
+//console.log(arr);
+				var nodeId = arr[1];
+//console.log(nodeId);
+				if( id === "#modal-edit-node"){
+					_getFieldValues(id, nodeId);
+				}
+			}
+			
+			var form = document.forms["form_playlist_node"];
+	//console.log(form);
+	console.log(form.elements);
+	console.log(nodeId);			
+*/			
+			
+			break;
 			
 			//case "clear-query-result":
 			//break;
@@ -892,6 +925,33 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		}
 	}//end _toggleMenu()
 
+	function _toggleModal( id ){
+		$modalWindow = $(id);
+		if( $modalWindow.hasClass("uk-open") ){
+			$modalWindow.hide( _vars.duration );
+			//$modalWindow.slideUp( _vars.duration, function () {
+			//$modalWindow.fadeOut( 600, function () {
+	//console.log("-- end of hide....");				
+			//});
+			$modalWindow.removeClass("uk-open");
+		} else {
+			//$modalWindow.show("fast", function () {
+			$modalWindow.slideDown( _vars.duration, function () {
+			//$modalWindow.fadeIn( 600, function () {
+	//console.log("-- end of show....");				
+			});
+			$modalWindow.addClass("uk-open");
+		}
+	}//end _toggleModal()
+	
+	function _closeModal( id ){
+		$m = $(id);
+		if( $m.hasClass("uk-open") ){
+			$m.hide( _vars.duration );
+			$m.removeClass("uk-open");
+		}
+	}//end _toggleModal()
+	
 
 	// public interfaces
 	return{

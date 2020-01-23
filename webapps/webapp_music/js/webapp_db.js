@@ -315,6 +315,8 @@ console.log( error );
 					obj[item] = _content;
 				}
 				
+				obj["nid"] = n;//create unique id for node
+				
 				//var key = "record_" + (n+1);
 				//nodes[key] = obj;
 				nodes.push( obj );
