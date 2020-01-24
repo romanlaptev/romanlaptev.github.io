@@ -79,6 +79,9 @@ console.log("load(), default callback...", arguments);
 		var url = $("#json_url").val();
 //console.log( "url = ", url);
 console.log( "getJSON = ", $.getJSON);
+
+//https://api.jquery.com/jQuery.getJSON/
+//https://jquery-docs.ru/jQuery.getJSON/
 			$.getJSON( url, function(){
 console.log("getJSON, default...");
 			} )
@@ -106,13 +109,13 @@ html += "</div>";
 			.complete(function(){
 console.log("getJSON, Complete...", arguments);
 			})
-			.done(function(){
+			.done(function( data, textStatus, jqXHR ){
 console.log("getJSON, Done...");
 			})
 			//.then(function(){
 //console.log("getJSON, Then...");
 			//})
-			.fail(function(){
+			.fail(function( xhr, status, error ){
 console.log("getJSON, Fail...", arguments);
 			})
 			.error(function(){

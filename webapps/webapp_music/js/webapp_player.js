@@ -20,6 +20,66 @@ function _player( opt ){
 		}
 console.log(p);
 		
+//for test
+//db\Manowar.json
+//db\metallica.json
+//db\Korpiklaani.json
+p.url = "db/metallica.json";
+
+		$.getJSON( p.url, function(){
+console.log("getJSON, default...");
+			})
+			
+			//.abort(function(){
+//console.log("getJSON, Abort...", arguments);
+			//})
+			
+			//.success(function( data, textStatus, jqXHR ){
+//console.log("getJSON, Success...", arguments);
+			//})
+			
+			//.complete(function(){
+//console.log("getJSON, Complete...", arguments);
+			//})
+			
+			.done(function( data, textStatus, jqXHR ){
+//console.log("getJSON, Done...", arguments);
+webApp.vars["logMsg"] = "getJSON done";
+webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ p.url;
+func.logAlert( webApp.vars["logMsg"], "success");
+
+console.log(data);
+/*
+				$.each(data,function(entryIndex,entry){
+var html = "<div class='entry'>";
+html += "<p><b>" + entryIndex + ":</b>" + entry + "</p>";
+html += "</div>";
+//alert (html);
+					$('#insert_json').append(html);
+				});
+*/
+				//var json_str =   jqXHR.responseText;
+				//$('#insert_json').append(  jqXHR.responseText );
+
+			})
+			
+			.fail(function( xhr, status, error ){
+webApp.vars["logMsg"] = "error, getJSON fail";
+webApp.vars["logMsg"] += ",  " + error +", "+ p.url;
+func.logAlert( webApp.vars["logMsg"], "error");
+console.log(xhr);
+			})
+			// .error(function(){
+// console.log("getJSON, Error...", arguments);
+			// })
+			
+			.always(function( data, textStatus, jqXHR ){
+//console.log("getJSON, Always...", textStatus);
+//console.log(" jqXHR: ",  jqXHR);
+//console.log(" status: ",  jqXHR.status);
+//console.log(" statusText: ",  jqXHR.statusText);
+			});
+		
 	}//end _loadPlaylist()
 	
 	// public interfaces
