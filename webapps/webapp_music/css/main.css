@@ -634,15 +634,23 @@ color: #000;
 	text-align: left;
 	font-size: 80%;
 	background-color: #f5f6f7;
-	padding: 3px;
+	padding: 5px;
 }
 .node-tags {
-	padding: 0;
-	margin:0;
-	background-color: #f5f6f7;
+	padding: 5px;
+	margin: 5px;
+	/*background-color: #b1ceda;*/
+	/*border: 2px solid #b1ceda;*/
+}
+.node-tags li {
+	/*background-color: #87ceeb;*/
+	margin: 3px;
 }
 .node-tags a {
-	padding: 3px;
+	/* padding: 2px; */
+	/*background-color: #2368ad;*/
+	/*background-color: #3f73aa;*/
+	/*background-color: #005cb3;*/
 }
 
 /*

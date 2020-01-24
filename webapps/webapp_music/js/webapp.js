@@ -749,7 +749,7 @@ console.log( webApp.vars["logMsg"] );
 				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
 				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
 				if( webApp.db.vars["outputBuffer"][n]["images"].length === 1){//if only one attached image
-console.log(webApp.db.vars["outputBuffer"][n]["images"]);
+//console.log(webApp.db.vars["outputBuffer"][n]["images"]);
 					webApp.db.vars["outputBuffer"][n]["images"] = [];
 				}
 			}
@@ -960,7 +960,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 	//console.log( "img load error: ", images[n].getAttribute("src") );	
 				images[n].onerror = function(e){
 	//console.log(e.type, e);
-					webApp.vars["logMsg"] = "error, image not load: <small><b>" + e.target["src"] + "</b></small>";
+					webApp.vars["logMsg"] = "error, image not load, <small><b>" + e.target["src"] + "</b></small>";
 					//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 	//console.log(e.target.parentNode);				
 					var _blockImages = e.target.parentNode;
@@ -969,7 +969,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 				}
 
 				images[n].onload = function(e){
-	console.log(e.type, e);
+	//console.log(e.type, e);
 					var _blockImages = e.target.parentNode;
 					_blockImages.style.background = "transparent";
 				}

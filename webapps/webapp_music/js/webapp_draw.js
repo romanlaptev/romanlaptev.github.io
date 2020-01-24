@@ -235,6 +235,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 			</div>',
 
 //sub LISTs
+
 			title : {
 				"listTpl" : '{{list}}', 
 				"itemTpl" : '<h3>{{text}}</h3>',
@@ -249,8 +250,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 //{ href : "/music/0_playlists/judas_priest.json", data-type:"playlist-file", text: "judas_priest.json" }
 			},
 			node_tags : {
-				"listTpl" : '<div><small><b>related tags:</b></small><ul class="list-inline node-tags">{{list}}</ul></div>', 
-				"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
+"listTpl" : '<div><ul class="list-inline node-tags">{{list}}</ul></div>', 
+"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}" class="">{{text}}</a></li>',
 			},
 			
 		"blockFooterLinks" : '<!-- <h2>{{block_title}}</h2>-->\
@@ -538,7 +539,7 @@ console.log("-- warning, not found template, ", tplName );
 						if(item[key2].length === 0){
 console.log("-- warning, empty field....", key2, item[key2]);
 //continue;	
-							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+							item[key2] = "<span class='not-found-item 1'>not found " + key2 +"</span>";
 						} else {
 							//read templates for sub list
 							var subOrdList = _vars["templates"][key2]["listTpl"];
@@ -570,7 +571,8 @@ console.log("-- warning, empty field....", key2, item[key2]);
 //if(n === 1){
 //console.log(key2, item[key2], typeof item[key2]);
 //}						
-							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+							//itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item 2'>not found " + key2 +"</span>");
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "");
 						} else {
 							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
 						}
