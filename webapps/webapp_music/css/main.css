@@ -336,7 +336,17 @@ overflow-y: auto !important;
 	background: #42af44;
 	color: #fff;
 }
-
+.uk-alert-danger {
+	background: #ff5251;
+	color: #fff;
+}
+/*
+.img-not-load {
+	background: #ff5251;
+	color: #ffcdd0;
+	padding: 15px 29px 15px 15px;
+}
+*/
 
 .my-offcanvas {
 	display:none;
@@ -587,11 +597,14 @@ background-color: /*#DADDED*/#cfdfe6;
 .node img {
 	width: 100%;
 }
+
 .node h3 {
-	background-color: #fff/*#aecdd5*/;
+	background-color: #008080/*#aecdd5*/;
 	padding:5px;
 	font-size: 120%;
+	color: #cfdfe6;
 }
+
 .node .block-images {
 background: url("../img/icons/icon-load.gif") no-repeat center;
 width: 200px;

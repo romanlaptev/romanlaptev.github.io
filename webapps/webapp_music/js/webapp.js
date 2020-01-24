@@ -101,35 +101,7 @@ var webApp = {
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
-//---------------------
-//console.log( webApp.vars.$blockList );
-	var images = webApp.vars.$blockList.getElementsByTagName("img");
-//console.log( "images =  " + images.length);
-//console.log( "images.onerror =  "+ typeof images[0].onerror);
-	for( var n = 0; n < images.length; n++){
-		//if( images[n].clientHeight === 0 ){
-//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
-//console.log( "img load error: ", images[n].getAttribute("src") );	
-			images[n].onerror = function(e){
-//console.log(e.type, e);
-				webApp.vars["logMsg"] = "error, image not load: <small><b>" + e.target["src"] + "</b></small>";
-				//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
-//console.log(e.target.parentNode);				
-				var _blockImages = e.target.parentNode;
-				_blockImages.style.background = "transparent";
-				e.target.outerHTML = "<div class='uk-alert uk-alert-danger'>"+ webApp.vars["logMsg"] +"</div>";
-			}
-
-			images[n].onload = function(e){
-console.log(e.type, e);
-				var _blockImages = e.target.parentNode;
-				_blockImages.style.background = "transparent";
-			}
-			
-		//};
-	};//next
-
-//---------------------
+					webApp.app.imagesLoadEventHandler();
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -253,16 +225,6 @@ function _app( opt ){
 	//};//end _init()
 
 	function _defineEvents(){
-		
-		// webApp.vars.$closeButtons = $("a[href='#close']");
-		// webApp.vars.$closeButtons.on("click", function(e){
-	// //console.log( e.target );
-				// var _target = $( e.target ).data("toggle");
-	// //console.log( _target );
-				// $( _target ).slideToggle( _vars.duration , function(e){
-	// //console.log(arguments)
-				// });
-			// });//end event
 		
 //------------------------------------------------------------------
 		$(document).on("keydown", function(event) {
@@ -669,7 +631,7 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					"targetField" : webApp.vars["GET"]["targetField"],
 					"keyword" : webApp.vars["GET"]["keyword"],
 					"callback" : function( data ){
-console.log(data);
+//console.log(data);
 
 						if( !data || data.length ===0){
 webApp.vars["logMsg"] = "no records found by keyword <b>&quot;"+ webApp.vars["GET"]["keyword"] + "&quot;</b>...";
@@ -786,6 +748,10 @@ console.log( webApp.vars["logMsg"] );
 			if( webApp.db.vars["outputBuffer"][n]["images"] ){
 				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
 				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
+				if( webApp.db.vars["outputBuffer"][n]["images"].length === 1){//if only one attached image
+console.log(webApp.db.vars["outputBuffer"][n]["images"]);
+					webApp.db.vars["outputBuffer"][n]["images"] = [];
+				}
 			}
 	
 	
@@ -983,6 +949,35 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 	}//end _toggleModal()
 	
 
+	function _imagesLoadEventHandler(){
+	//console.log( webApp.vars.$blockList );
+		var images = webApp.vars.$blockList.getElementsByTagName("img");
+	//console.log( "images =  " + images.length);
+	//console.log( "images.onerror =  "+ typeof images[0].onerror);
+		for( var n = 0; n < images.length; n++){
+			//if( images[n].clientHeight === 0 ){
+	//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+	//console.log( "img load error: ", images[n].getAttribute("src") );	
+				images[n].onerror = function(e){
+	//console.log(e.type, e);
+					webApp.vars["logMsg"] = "error, image not load: <small><b>" + e.target["src"] + "</b></small>";
+					//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+	//console.log(e.target.parentNode);				
+					var _blockImages = e.target.parentNode;
+					_blockImages.style.background = "transparent";
+					e.target.outerHTML = "<div class='img-not-load'>"+ webApp.vars["logMsg"] +"</div>";
+				}
+
+				images[n].onload = function(e){
+	console.log(e.type, e);
+					var _blockImages = e.target.parentNode;
+					_blockImages.style.background = "transparent";
+				}
+				
+			//};
+		};//next
+	}//end _imagesLoadEventHandler()
+
 	// public interfaces
 	return{
 		//vars : _vars,
@@ -996,7 +991,8 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		//formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
-		formHtmlTagList : _formHtmlTagList
+		formHtmlTagList : _formHtmlTagList,
+		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 
