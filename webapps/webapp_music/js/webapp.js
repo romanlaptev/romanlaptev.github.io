@@ -5,6 +5,7 @@ var webApp = {
 	"db" : _db(),
 	//"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
+	"player" : _player(),
 
 	"vars" : {
 		"app_title" : "music collection",
@@ -102,6 +103,7 @@ var webApp = {
 						webApp.draw.buildBlock( this );
 					}
 					webApp.app.imagesLoadEventHandler();
+					$("a[href='#?q=load_playlist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -509,6 +511,14 @@ if( form.elements.targetField.length > 0){
 					}					
 				}//end event
 
+//------------------------------- load playlist
+				if( target.tagName === "A"){
+					if ( target.href.indexOf("load-playlist") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+				}//end event
+
 		}//end _clickHandler()
 		
 	}//end _defineEvents()
@@ -653,6 +663,12 @@ func.logAlert( webApp.vars["logMsg"], "success");
 			break;
 			
 //-------------------------------------------- PLAYLIST
+			case "load-playlist":
+				webApp.player.loadPlaylist({
+					"playlistUrl": webApp.vars["GET"]["url"]
+				});
+			break;
+			
 			case "load-track":
 			break;
 

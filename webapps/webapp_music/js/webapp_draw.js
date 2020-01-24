@@ -220,7 +220,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
+<li><a href="#?q=load-playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
 <li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\
