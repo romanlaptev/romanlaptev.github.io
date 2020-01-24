@@ -103,7 +103,7 @@ var webApp = {
 						webApp.draw.buildBlock( this );
 					}
 					webApp.app.imagesLoadEventHandler();
-					$("a[href='#?q=load_playlist&url=']").hide();//hide button if empty playlist_filepath
+					$("a[href='#?q=load-playlist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
