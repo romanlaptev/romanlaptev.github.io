@@ -101,6 +101,35 @@ var webApp = {
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
+//---------------------
+//console.log( webApp.vars.$blockList );
+	var images = webApp.vars.$blockList.getElementsByTagName("img");
+//console.log( "images =  " + images.length);
+//console.log( "images.onerror =  "+ typeof images[0].onerror);
+	for( var n = 0; n < images.length; n++){
+		//if( images[n].clientHeight === 0 ){
+//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+//console.log( "img load error: ", images[n].getAttribute("src") );	
+			images[n].onerror = function(e){
+//console.log(e.type, e);
+				webApp.vars["logMsg"] = "error, image not load: <small><b>" + e.target["src"] + "</b></small>";
+				//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+//console.log(e.target.parentNode);				
+				var _blockImages = e.target.parentNode;
+				_blockImages.style.background = "transparent";
+				e.target.outerHTML = "<div class='uk-alert uk-alert-danger'>"+ webApp.vars["logMsg"] +"</div>";
+			}
+
+			images[n].onload = function(e){
+console.log(e.type, e);
+				var _blockImages = e.target.parentNode;
+				_blockImages.style.background = "transparent";
+			}
+			
+		//};
+	};//next
+
+//---------------------
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -173,6 +202,7 @@ console.log("init webapp!");
 		this["vars"].$offcanvas = $("#off-canvas2");
 		this["vars"].$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
 		this["vars"].$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+		this["vars"].$blockList = document.querySelector("#block-list");
 		
 		// hide input type="range" if not support
 		//https://learn.javascript.ru/dom-polyfill
@@ -751,7 +781,8 @@ console.log( webApp.vars["logMsg"] );
 //------------------- filter outputBuffer nodes
 		for( var n = 0; n < webApp.db.vars["outputBuffer"].length; n++){
 			
-			webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			//webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			webApp.db.vars["outputBuffer"][n]["main_picture"] = "";
 			if( webApp.db.vars["outputBuffer"][n]["images"] ){
 				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
 				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
