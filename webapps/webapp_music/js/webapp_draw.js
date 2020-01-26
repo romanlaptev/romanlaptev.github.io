@@ -539,7 +539,7 @@ console.log("-- warning, not found template, ", tplName );
 						if(item[key2].length === 0){
 console.log("-- warning, empty field....", key2, item[key2]);
 //continue;	
-							item[key2] = "<span class='not-found-item 1'>not found " + key2 +"</span>";
+							//item[key2] = "<span class='not-found-item 1'>not found " + key2 +"</span>";
 						} else {
 							//read templates for sub list
 							var subOrdList = _vars["templates"][key2]["listTpl"];

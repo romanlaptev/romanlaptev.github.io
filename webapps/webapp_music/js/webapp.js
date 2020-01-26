@@ -764,10 +764,13 @@ console.log( webApp.vars["logMsg"] );
 			if( webApp.db.vars["outputBuffer"][n]["images"] ){
 				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
 				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
+/*				
 				if( webApp.db.vars["outputBuffer"][n]["images"].length === 1){//if only one attached image
 //console.log(webApp.db.vars["outputBuffer"][n]["images"]);
-					webApp.db.vars["outputBuffer"][n]["images"] = [];
+					//webApp.db.vars["outputBuffer"][n]["images"] = [];
+					delete webApp.db.vars["outputBuffer"][n]["images"];
 				}
+*/
 			}
 	
 	
