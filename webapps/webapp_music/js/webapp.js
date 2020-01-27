@@ -898,7 +898,7 @@ console.log( webApp.vars["logMsg"] );
 		var _playList = [
 	{
 		"title" : "Hit The Lights",
-		"artist" : "Metallica",
+		//"artist" : "Metallica",
 		"mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
 	},
 	{
@@ -920,13 +920,14 @@ console.log( webApp.vars["logMsg"] );
 				// _tagGroupsList.push( _group );
 			// }
 		// }//next
-		
+
 		var html = webApp.draw.wrapData({
 			"data": _playList, 
 			"templateID": "playList",
 			"templateListItemID": "playListItem"
 		});		
 //console.log( html );
+
 		return html;
 	}//_formHtmlPlayList()
 
