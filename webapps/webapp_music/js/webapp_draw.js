@@ -241,8 +241,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 				"itemTpl" : '<h3>{{text}}</h3>',
 			},
 			images : {
-				"listTpl" : '<div class="uk-card-body uk-padding-small block-images">{{list}}</div>', 
-				"itemTpl" : '<img src="{{src}}" alt="" title="">',
+				"listTpl" : '<div class="uk-card-body uk-padding-small">{{list}}</div>', 
+				"itemTpl" : '<div class="block-images"><img src="{{src}}" alt="" title=""></div>',
 			},
 			related_links : {
 				"listTpl" : '<ul class="related-links"><small><b>related links:</b></small>{{list}}</ul>', 
