@@ -20,13 +20,6 @@ var webApp = {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
 		
-		"playlist" : {
-			tracks:[
-//{title:"Anda Jaleo Jaleo", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
-			],
-			lastNum:0
-		},
-		
 		"blocks": [
 //===========================================
 			{
@@ -109,7 +102,7 @@ var webApp = {
 						webApp.draw.buildBlock( this );
 					}
 					webApp.app.imagesLoadEventHandler();
-					$("a[href='#?q=load-playlist&url=']").hide();//hide button if empty playlist_filepath
+					$("a[href='#?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -388,12 +381,12 @@ if( form.elements.targetField.length > 0){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
 //console.log( event );
-//console.log( this );//page-container
+//console.log( this );
 //console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
-			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+			event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
 			_clickHandler( target );
 		});
 		
@@ -517,9 +510,10 @@ if( form.elements.targetField.length > 0){
 					}					
 				}//end event
 
-//------------------------------- load playlist
 				if( target.tagName === "A"){
-					if ( target.href.indexOf("load-playlist") !== -1){
+					
+//------------------------------- load playlist file
+					if ( target.href.indexOf("load-tracklist") !== -1){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
@@ -537,6 +531,14 @@ if( form.elements.targetField.length > 0){
 						
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
+					}
+					
+//------------------------------- clear tracklist
+					if ( target.href.indexOf("clear-tracklist") !== -1){
+						if( webApp.db.vars["trackList"].length > 0){
+							webApp.vars["GET"] = func.parseGetParams( target.href );
+							webApp.app.urlManager();
+						}
 					}
 
 				}//end event
@@ -686,11 +688,11 @@ func.logAlert( webApp.vars["logMsg"], "success");
 			break;
 			
 //-------------------------------------------- PLAYLIST
-			case "load-playlist":
+			case "load-tracklist":
 				var _nid = webApp.vars["GET"]["nid"];
-				webApp.player.loadPlaylist({
-					//"playlistTitle": webApp.db.vars["nodes"][_nid]["title"][0]["text"],
-					"playlistUrl": webApp.vars["GET"]["url"]
+				webApp.player.loadTrackList({
+					//"trackListTitle": webApp.db.vars["nodes"][_nid]["title"][0]["text"],
+					"trackListUrl": webApp.vars["GET"]["url"]
 				})
 				.then(
 					function( res ){
@@ -711,6 +713,14 @@ console.log(arguments);
 				})
 			break;
 
+			case "clear-tracklist":
+				webApp.db.vars["trackList"] = [];
+				webApp.db.vars["trackListTitle"] = "new_playlist";
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+			break;
+
+//insert-track
+
 			case "stop-play":
 			break;
 
@@ -720,8 +730,6 @@ console.log(arguments);
 			case "next-track":
 			break;
 			
-			case "clear-playlist":
-			break;
 
 			//case "check-all":
 				//_draw_checkAll();
@@ -928,9 +936,9 @@ console.log( webApp.vars["logMsg"] );
 
 	function _formHtmlPlayList(){
 
-		if( webApp.db.vars["playList"].length > 0 ){
+		if( webApp.db.vars["trackList"].length > 0 ){
 			var html = webApp.draw.wrapData({
-				"data": webApp.db.vars["playList"], 
+				"data": webApp.db.vars["trackList"], 
 				"templateID": "trackList",
 				"templateListItemID": "trackListItem"
 			});
@@ -938,7 +946,7 @@ console.log( webApp.vars["logMsg"] );
 			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
 		}
 //console.log( html );
-		html = html.replace("{{playlist_title}}", webApp.db.vars["playlistTitle"]);
+		html = html.replace("{{tracklist_title}}", webApp.db.vars["trackListTitle"]);
 		
 		return html;
 	}//_formHtmlPlayList()

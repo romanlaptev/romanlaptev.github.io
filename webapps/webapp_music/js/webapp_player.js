@@ -10,10 +10,10 @@ function _player( opt ){
 	};//end _init()
 
 
-	function _loadPlaylist(opt){
+	function _loadTrackList(opt){
 		var p = {
-			//"playlistTitle": false,
-			"playlistUrl": false
+			//"trackListTitle": false,
+			"tracklistUrl": false
 		};
 		//extend p object
 		for(var key in opt ){
@@ -48,8 +48,8 @@ console.log("getJSON, default...");
 	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ p.url;
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
-					webApp.db.vars["playList"] = data;
-					webApp.db.vars["playlistTitle"] = p["playlistUrl"];
+					webApp.db.vars["trackList"] = data;
+					webApp.db.vars["trackListTitle"] = p["tracklistUrl"];
 					resolve( textStatus );
 				})
 				
@@ -76,7 +76,7 @@ console.log("getJSON, default...");
 //console.log( _df );
 		return _df;
 		
-	}//end _loadPlaylist()
+	}//end _loadTrackList()
 	
 	function _loadTrack( opt ){
 		var p = {
@@ -88,6 +88,7 @@ console.log("getJSON, default...");
 		}
 //console.log(p);
 		document.querySelector("#block-player audio source").setAttribute("src", p["trackUrl"] );
+		document.querySelector("#block-player h5").innerHTML = p["trackUrl"];
 	}//end _loadTrack()
 	
 	
@@ -98,7 +99,7 @@ console.log("getJSON, default...");
 //console.log(arguments);
 			return _init(); 
 		},
-		loadPlaylist: _loadPlaylist,
+		loadTrackList: _loadTrackList,
 		loadTrack: _loadTrack
 	};
 }//end _player()

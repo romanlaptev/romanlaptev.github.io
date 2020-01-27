@@ -13,7 +13,7 @@ function _draw( opt ){
 						</div>\
 						<div class="uk-card-body w60">\
 							<div>\
-								<b>Yankee_doodle.mp3</b><br>\
+								<h5>Yankee_doodle.mp3</h5>\
 								<audio controls="controls" class="w100">\
 										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
 				Tag <b>audio</b> not supported by this browser.... \
@@ -41,7 +41,7 @@ function _draw( opt ){
 							<div class="wrapper">\
 								<div class="row">\
 									<div class="uk-float-left">\
-										<h4>{{playlist_title}}</h4>\
+										<h4>{{tracklist_title}}</h4>\
 									</div>\
 									<div class="uk-float-right">\
 											<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
@@ -210,7 +210,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load-playlist&url={{playlist_filepath}}&nid={{nid}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
+<li><a href="#?q=load-tracklist&url={{playlist_filepath}}&nid={{nid}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
 <li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\

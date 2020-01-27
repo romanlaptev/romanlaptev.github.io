@@ -178,7 +178,8 @@ label {
 	margin-top: 5px;
 	background-color: #b0c4de;
 	position: fixed;
-	bottom: 0;
+	/*bottom: 0;*/
+	top: 10px;
 	right:0;
 	z-index: 999;
 	opacity: 0.9;
@@ -682,9 +683,13 @@ margin: 3px;
 /*#block-player .list-group-item.active a {
 	color: #fff;
 }*/
+#block-player  .track-name{
+	text-decoration:none;
+}
 #block-player  .track-name.active{
-	border:1px solid;
 	padding:5px;
+background-color: #0f7ae5;
+color: #fff;
 }
 #block-player .track-name,
 #block-player .edit-track,
@@ -695,7 +700,7 @@ margin: 3px;
 #block-tracklist {
 	position: fixed;
 	right: 0;
-	top: 100px;
+	/*top: 100px;*/
 	/*width: 25%;*/
 background-color:#87cefa;
 /*background-color: #b1d0ef;
