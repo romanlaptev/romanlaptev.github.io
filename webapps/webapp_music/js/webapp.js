@@ -33,7 +33,13 @@ var webApp = {
 				"locationID" : "block-player",
 				"title" : "block player", 
 				"templateID" : "blockPlayer",
-				//"content" : "<u>static text</u>",
+				"content" : function(){
+					var html = webApp.app.formHtmlPlayList();
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
@@ -887,6 +893,43 @@ console.log( webApp.vars["logMsg"] );
 		return nodes;
 	}//end _getNodesByTag()
 
+	function _formHtmlPlayList(){
+
+		var _playList = [
+	{
+		"title" : "Hit The Lights",
+		"artist" : "Metallica",
+		"mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
+	},
+	{
+		"title" : "The Four Horsemen",
+		"artist" : "Metallica",
+		"mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"
+	},
+	{
+		"title" : "Motorbreath",
+		"artist" : "Metallica",
+		"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"
+	}
+		];
+		// for( var n =0; n < webApp.db.vars["tagGroups"].length; n++){
+			// _group = webApp.db.vars["tagGroups"][n];
+			// var _tagList = _getTagsByGroupName( _group["name"], webApp.db.vars["tagList"] );
+			// if( _tagList.length > 0 ){
+				// _group["num"] = _tagList.length;
+				// _tagGroupsList.push( _group );
+			// }
+		// }//next
+		
+		var html = webApp.draw.wrapData({
+			"data": _playList, 
+			"templateID": "playList",
+			"templateListItemID": "playListItem"
+		});		
+//console.log( html );
+		return html;
+	}//_formHtmlPlayList()
+
 
 	function _changePage( pageNumValue){
 //console.log( pageNumValue );
@@ -1011,6 +1054,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
+		formHtmlPlayList : _formHtmlPlayList,
 		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 

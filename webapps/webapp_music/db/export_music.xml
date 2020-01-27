@@ -103,6 +103,34 @@
 
 <node type="playlist">
 	<title>
+		<item>Metallica</item>
+	</title>
+	<images>
+		<img src="https://upload.wikimedia.org/wikipedia/hr/a/a4/M-KA.jpg"/>
+		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1019" target="_blank">yandex music</a></li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="120" group_name="music_formats">studio album</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">15-May-2015 09:58:16</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:05:01</updated>
+</node>
+
+
+<node type="playlist">
+	<title>
 		<item>Psalteria</item>
 	</title>
 	
@@ -367,32 +395,6 @@
 	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:21</updated>
 </node>
 
-<node type="playlist">
-	<title>
-		<item>Metallica</item>
-	</title>
-	<images>
-		<img src="https://upload.wikimedia.org/wikipedia/hr/a/a4/M-KA.jpg"/>
-		<img src="/music/M/Metallica/covers/Kill_Em_All.jpg"/>
-	</images>
-
-	
-	<related_links>
-		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1019" target="_blank">yandex music</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/metallica.json">metallica.json</a></li>
-	</related_links>
-
-	<node_tags>
-		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
-		<item vid="4" tid="116" group_name="country">США</item>
-		<item vid="3" tid="120" group_name="music_formats">studio album</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">15-May-2015 09:58:16</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 17:05:01</updated>
-</node>
 
 <node type="playlist">
 	<title>

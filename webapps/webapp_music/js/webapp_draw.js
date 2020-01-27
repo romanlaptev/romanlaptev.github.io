@@ -54,37 +54,50 @@ function _draw( opt ){
 									</ul>\
 								</div>\
 								<div class="">\
-									<ul id="playlist" class="list-unstyled">\
-										<li class="list-group-item">\
-											<div class="uk-clearfix">\
-												<div class="uk-float-left">\
-													<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>\
-												</div>\
-												<div class="uk-float-right">\
-		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
-		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
-												</div>\
-											</div>\
-										</li>\
-										<li class="list-group-item active">\
-											<div class="uk-clearfix">\
-												<div class="uk-float-left">\
-		<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>\
-												</div>\
-												<div class="uk-float-right">\
-		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
-		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
-												</div>\
-											</div>\
-										</li>\
-									</ul>\
+{{content}}\
 								</div>\
 							</div>\
 						</div>\
 					</div>',
+			"playList" :  '<ul id="playlist" class="list-unstyled">\
+	<li class="list-group-item">\
+		<div class="uk-clearfix">\
+			<div class="uk-float-left">\
+				<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>\
+			</div>\
+			<div class="uk-float-right">\
+<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
+<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+			</div>\
+		</div>\
+	</li>\
+	<li class="list-group-item active">\
+		<div class="uk-clearfix">\
+			<div class="uk-float-left">\
+<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>\
+			</div>\
+			<div class="uk-float-right">\
+<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
+<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+			</div>\
+		</div>\
+	</li>\
+{{list}}\
+</ul>',
+"playListItem" :  '<li class="list-group-item">\
+		<div class="uk-clearfix">\
+			<div class="uk-float-left">\
+				<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>\
+			</div>\
+			<div class="uk-float-right">\
+<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
+<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+			</div>\
+		</div>\
+</li>',
+
 			
 			"blockTags" : "{{block-tag-groups}} {{block-taglist}}",
-			
 			"blockTagGroups" : '\
 						<div class="uk-card uk-card-primary">\
 						<div class="row">\
