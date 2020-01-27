@@ -682,7 +682,7 @@ margin: 3px;
 /*#block-player .list-group-item.active a {
 	color: #fff;
 }*/
-#block-player .list-group-item.active .track-name{
+#block-player  .track-name.active{
 	border:1px solid;
 	padding:5px;
 }

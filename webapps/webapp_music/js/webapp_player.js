@@ -19,7 +19,7 @@ function _player( opt ){
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 		
 //for test
 //db\Manowar.json
@@ -78,6 +78,19 @@ console.log("getJSON, default...");
 		
 	}//end _loadPlaylist()
 	
+	function _loadTrack( opt ){
+		var p = {
+			"trackUrl": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+		document.querySelector("#block-player audio source").setAttribute("src", p["trackUrl"] );
+	}//end _loadTrack()
+	
+	
 	// public interfaces
 	return{
 		vars : _vars,
@@ -85,6 +98,7 @@ console.log("getJSON, default...");
 //console.log(arguments);
 			return _init(); 
 		},
-		loadPlaylist: _loadPlaylist
+		loadPlaylist: _loadPlaylist,
+		loadTrack: _loadTrack
 	};
 }//end _player()

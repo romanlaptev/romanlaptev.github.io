@@ -523,7 +523,24 @@ if( form.elements.targetField.length > 0){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
+//------------------------------- load track to player
+					if ( target.href.indexOf("load-track") !== -1){
+						
+						var trackLinks = document.querySelectorAll("#playlist a.track-name");
+						for( var n = 0; n < trackLinks.length; n++){
+							var trackLink = trackLinks[n];
+							if( trackLink.className.indexOf("active") !== -1){
+								trackLink.className = "track-name";
+							}
+						}//next
+						target.className = "track-name active";
+						
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+
 				}//end event
+
 
 		}//end _clickHandler()
 		
@@ -689,6 +706,9 @@ console.log(arguments);
 			break;
 			
 			case "load-track":
+				webApp.player.loadTrack({
+					"trackUrl": webApp.vars["GET"]["url"]
+				})
 			break;
 
 			case "stop-play":
