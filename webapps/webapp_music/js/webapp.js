@@ -670,9 +670,22 @@ func.logAlert( webApp.vars["logMsg"], "success");
 			
 //-------------------------------------------- PLAYLIST
 			case "load-playlist":
+				var _nid = webApp.vars["GET"]["nid"];
 				webApp.player.loadPlaylist({
+					//"playlistTitle": webApp.db.vars["nodes"][_nid]["title"][0]["text"],
 					"playlistUrl": webApp.vars["GET"]["url"]
-				});
+				})
+				.then(
+					function( res ){
+//console.log( "-- promise resolve, THEN" );
+//console.log(res);
+						webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+					},
+					function( error ){
+console.log( "-- promise reject, ", error );
+console.log(arguments);					
+					}
+				);
 			break;
 			
 			case "load-track":
@@ -895,39 +908,18 @@ console.log( webApp.vars["logMsg"] );
 
 	function _formHtmlPlayList(){
 
-		var _playList = [
-	{
-		"title" : "Hit The Lights",
-		//"artist" : "Metallica",
-		"mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
-	},
-	{
-		"title" : "The Four Horsemen",
-		"artist" : "Metallica",
-		"mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"
-	},
-	{
-		"title" : "Motorbreath",
-		"artist" : "Metallica",
-		"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"
-	}
-		];
-		// for( var n =0; n < webApp.db.vars["tagGroups"].length; n++){
-			// _group = webApp.db.vars["tagGroups"][n];
-			// var _tagList = _getTagsByGroupName( _group["name"], webApp.db.vars["tagList"] );
-			// if( _tagList.length > 0 ){
-				// _group["num"] = _tagList.length;
-				// _tagGroupsList.push( _group );
-			// }
-		// }//next
-
-		var html = webApp.draw.wrapData({
-			"data": _playList, 
-			"templateID": "playList",
-			"templateListItemID": "playListItem"
-		});		
+		if( webApp.db.vars["playList"].length > 0 ){
+			var html = webApp.draw.wrapData({
+				"data": webApp.db.vars["playList"], 
+				"templateID": "trackList",
+				"templateListItemID": "trackListItem"
+			});
+		} else {
+			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
+		}
 //console.log( html );
-
+		html = html.replace("{{playlist_title}}", webApp.db.vars["playlistTitle"]);
+		
 		return html;
 	}//_formHtmlPlayList()
 

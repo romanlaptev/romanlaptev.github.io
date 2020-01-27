@@ -35,11 +35,13 @@ function _draw( opt ){
 								</ul>\
 							</div>\
 						</div>\
-						<div id="block-tracklist" class="">\
+{{content}}\
+					</div>',
+			"trackList" :  '<div id="block-tracklist" class="">\
 							<div class="wrapper">\
 								<div class="row">\
 									<div class="uk-float-left">\
-										<h4>new playlist</h4>\
+										<h4>{{playlist_title}}</h4>\
 									</div>\
 									<div class="uk-float-right">\
 											<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
@@ -47,20 +49,19 @@ function _draw( opt ){
 								</div>\
 								<div class="pls-buttons">\
 									<ul class="menu-track-action button-group uk-list">\
-		<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
-		<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
-		<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
-		<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
+<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
+<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
+<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
+<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
 									</ul>\
 								</div>\
-								<div class="">\
-{{content}}\
+								<div class="media-list">\
+<ul id="playlist" class="list-unstyled">{{list}}</ul>\
 								</div>\
 							</div>\
-						</div>\
-					</div>',
-			"playList" :  '<ul id="playlist" class="list-unstyled">{{list}}</ul>',
-			"playListItem" :  '<li class="list-group-item">\
+						</div>',
+						
+			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
 		<div class="uk-float-left">\
 			<a class="track-name" href="#?q=load-track&amp;url={{mp3}}">{{artist}} {{title}}</a>\
@@ -209,7 +210,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load-playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
+<li><a href="#?q=load-playlist&url={{playlist_filepath}}&nid={{nid}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
 <li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\

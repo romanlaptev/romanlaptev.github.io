@@ -709,6 +709,11 @@ border: 1px solid #004586;*/
 	border: 1px solid #004586;
 	padding: 10px;
 }
+#block-tracklist .media-list {
+	overflow-y: auto;
+	height: 250px;
+}
+
 
 .list-group-item {
 /*	position: relative;
