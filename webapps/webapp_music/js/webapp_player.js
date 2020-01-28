@@ -13,7 +13,7 @@ function _player( opt ){
 	function _loadTrackList(opt){
 		var p = {
 			//"trackListTitle": false,
-			"tracklistUrl": false
+			"trackListUrl": false
 		};
 		//extend p object
 		for(var key in opt ){
@@ -30,7 +30,7 @@ p.url = "db/metallica.json";
 		var _df =  new Promise( function(resolve, reject) {
 //console.log(resolve, reject);
 			$.getJSON( p.url, function(){
-console.log("getJSON, default...");
+//console.log("getJSON, default...");
 				})
 				//.abort(function(){
 	//console.log("getJSON, Abort...", arguments);
@@ -49,7 +49,7 @@ console.log("getJSON, default...");
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
 					webApp.db.vars["trackList"] = data;
-					webApp.db.vars["trackListTitle"] = p["tracklistUrl"];
+					webApp.db.vars["trackListTitle"] = p["trackListUrl"];
 					resolve( textStatus );
 				})
 				
@@ -87,7 +87,7 @@ console.log("getJSON, default...");
 			p[key] = opt[key];
 		}
 //console.log(p);
-		document.querySelector("#block-player audio source").setAttribute("src", p["trackUrl"] );
+		document.querySelector("#block-player audio").setAttribute("src", p["trackUrl"] );
 		document.querySelector("#block-player h5").innerHTML = p["trackUrl"];
 	}//end _loadTrack()
 	

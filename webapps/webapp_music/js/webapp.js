@@ -513,13 +513,12 @@ if( form.elements.targetField.length > 0){
 				if( target.tagName === "A"){
 					
 //------------------------------- load playlist file
-					if ( target.href.indexOf("load-tracklist") !== -1){
+					if ( target.href.indexOf("q=load-tracklist&") !== -1){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
 //------------------------------- load track to player
-					if ( target.href.indexOf("load-track") !== -1){
-						
+					if ( target.href.indexOf("q=load-track&") !== -1){
 						var trackLinks = document.querySelectorAll("#playlist a.track-name");
 						for( var n = 0; n < trackLinks.length; n++){
 							var trackLink = trackLinks[n];
