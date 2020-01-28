@@ -13,7 +13,7 @@ function _draw( opt ){
 						</div>\
 						<div class="uk-card-body w60">\
 							<div>\
-								<h5>Yankee_doodle.mp3</h5>\
+								<h5 id="track-info">Yankee_doodle.mp3</h5>\
 								<audio id="audio-player" controls="controls" class="w100">\
 										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
 				Tag <b>audio</b> not supported by this browser.... \
@@ -30,8 +30,8 @@ function _draw( opt ){
 								<ul class="button-group uk-list">\
 									<button id="btn-play" class="btn btn-blue">play</button>\
 									<button id="btn-pause" class="btn btn-blue">pause</button>\
-									<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
-									<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
+<li><a href="#?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
+<li><a href="#?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
 								</ul>\
 							</div>\
 						</div>\
@@ -64,7 +64,7 @@ function _draw( opt ){
 			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
 		<div class="uk-float-left">\
-			<a class="track-name" href="#?q=load-track&amp;url={{mp3}}">{{artist}} {{title}}</a>\
+			<a class="track-name" href="#?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
 		</div>\
 		<div class="uk-float-right">\
 <a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \

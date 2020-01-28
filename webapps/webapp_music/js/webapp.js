@@ -520,6 +520,8 @@ if( form.elements.targetField.length > 0){
 					}
 //------------------------------- load track to player
 					if ( target.href.indexOf("q=load-track&") !== -1){
+						
+						//set active track
 						var trackLinks = document.querySelectorAll("#playlist a.track-name");
 						for( var n = 0; n < trackLinks.length; n++){
 							var trackLink = trackLinks[n];
@@ -540,6 +542,17 @@ if( form.elements.targetField.length > 0){
 							webApp.app.urlManager();
 						}
 					}
+					
+//------------------------------- change track
+					if ( target.href.indexOf("prev-track") !== -1 ||
+							target.href.indexOf("next-track") !== -1
+					){
+						if( webApp.player.vars["trackList"].length > 0){
+							webApp.vars["GET"] = func.parseGetParams( target.href );
+							webApp.app.urlManager();
+						}
+					}
+
 
 				}//end event
 
@@ -707,11 +720,6 @@ console.log(arguments);
 				);
 			break;
 			
-			case "load-track":
-				webApp.player.loadTrack({
-					"trackUrl": webApp.vars["GET"]["url"]
-				})
-			break;
 
 			case "clear-tracklist":
 				webApp.player.vars["trackList"] = [];
@@ -724,10 +732,18 @@ console.log(arguments);
 			case "stop-play":
 			break;
 
+			case "load-track":
+				webApp.player.loadTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
+			break;
+
 			case "prev-track":
+console.log(webApp.vars["GET"]["q"]);
 			break;
 			
 			case "next-track":
+				webApp.player.nextTrack();
 			break;
 			
 

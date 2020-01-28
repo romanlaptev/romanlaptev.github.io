@@ -9,6 +9,7 @@ function _player( opt ){
 // {"title" : "The Four Horsemen","artist" : "Metallica","mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"},
 // {"title" : "Motorbreath",	"artist" : "Metallica",	"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
 ],
+		"numTrack": 0
 	};
 
 	var _init = function( opt ){
@@ -61,8 +62,14 @@ p.url = "db/metallica.json";
 	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ p.url;
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
-					webApp.player.vars["trackList"] = data;
-					webApp.player.vars["trackListTitle"] = p["trackListUrl"];
+	
+//----------------- add track order number 
+for( var n = 0; n < data.length; n++){
+	data[n]["number"] = n;
+}//next
+//-----------------
+					_vars["trackList"] = data;
+					_vars["trackListTitle"] = p["trackListUrl"];
 					resolve( textStatus );
 				})
 				
@@ -93,20 +100,67 @@ p.url = "db/metallica.json";
 	
 	function _loadTrack( opt ){
 		var p = {
-			"trackUrl": false
+			"trackNum": false
 		};
 		//extend p object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
 //console.log(p);
-		//$(_vars.$audioplayer).attr("src", p["trackUrl"] );
-		_vars.$audioplayer.setAttribute("src", p["trackUrl"] );
-		//document.querySelector("#block-player audio").setAttribute("src", p["trackUrl"] );
+				
+		var numTrack = p.trackNum;
+		_vars["numTrack"] = numTrack;
+		
+//console.log( numTrack, _vars["trackList"][numTrack], trackUrl );
+		if( _vars["trackList"][numTrack] ){
+			var track = _vars["trackList"][numTrack];
+			var trackUrl = track["mp3"];
+		} else {
+			webApp.vars["logMsg"] = "not found track by num: "+ numTrack;
+console.log( "-- " + webApp.vars["logMsg"] );
+			return false;
+		}
+		
+		//$(_vars.$audioplayer).attr("src", trackUrl );
+		_vars.$audioplayer.setAttribute("src", trackUrl );
+		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
-		document.querySelector("#block-player h5").innerHTML = p["trackUrl"];
+		$("#track-info").text( track["title"] );
 	}//end _loadTrack()
 	
+
+	function _nextTrack(){
+		$(_vars.$audioplayer).attr("src", "");
+		//var autoplay = false;
+		
+		if( _vars["numTrack"] < ( _vars["trackList"].length - 1) ){
+			_vars["numTrack"]++;
+			//if( webApp.vars["GET"]["autoplay"] === "TRUE"){
+				//autoplay = true;
+			//}
+		}
+		var num = _vars["numTrack"];
+//console.log( num );
+		var track = _vars["trackList"][num];
+		if( !track ){
+console.log( "-- no track!!!!");
+			return false;
+		}				
+		var mediaSrc = track["mp3"];
+//console.log(mediaSrc);		
+		$(_vars.$audioplayer).attr("src", mediaSrc);
+		
+		var track_info = track["title"];
+		$("#track-info").text( track_info );
+		
+		//if( autoplay ){
+			//_vars.$audioplayer.play();
+		//}
+
+	}//end _nextTrack()
+	
+	function _prevTrack(){
+	}//end _prevTrack()
 	
 	// public interfaces
 	return{
@@ -116,6 +170,8 @@ p.url = "db/metallica.json";
 			return _init(); 
 		},
 		loadTrackList: _loadTrackList,
-		loadTrack: _loadTrack
+		loadTrack: _loadTrack,
+		nextTrack: _nextTrack,
+		prevTrack: _prevTrack
 	};
 }//end _player()
