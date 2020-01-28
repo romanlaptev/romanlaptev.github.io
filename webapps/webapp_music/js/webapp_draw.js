@@ -14,7 +14,7 @@ function _draw( opt ){
 						<div class="uk-card-body w60">\
 							<div>\
 								<h5>Yankee_doodle.mp3</h5>\
-								<audio controls="controls" class="w100">\
+								<audio id="audio-player" controls="controls" class="w100">\
 										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
 				Tag <b>audio</b> not supported by this browser.... \
 								</audio>\

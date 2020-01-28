@@ -32,6 +32,7 @@ var webApp = {
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
+					webApp.player.init();
 				}
 			}, //end block
 
@@ -534,7 +535,7 @@ if( form.elements.targetField.length > 0){
 					
 //------------------------------- clear tracklist
 					if ( target.href.indexOf("clear-tracklist") !== -1){
-						if( webApp.db.vars["trackList"].length > 0){
+						if( webApp.player.vars["trackList"].length > 0){
 							webApp.vars["GET"] = func.parseGetParams( target.href );
 							webApp.app.urlManager();
 						}
@@ -713,8 +714,8 @@ console.log(arguments);
 			break;
 
 			case "clear-tracklist":
-				webApp.db.vars["trackList"] = [];
-				webApp.db.vars["trackListTitle"] = "new_playlist";
+				webApp.player.vars["trackList"] = [];
+				webApp.player.vars["trackListTitle"] = "new_playlist";
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
 			break;
 
@@ -935,9 +936,9 @@ console.log( webApp.vars["logMsg"] );
 
 	function _formHtmlPlayList(){
 
-		if( webApp.db.vars["trackList"].length > 0 ){
+		if( webApp.player.vars["trackList"].length > 0 ){
 			var html = webApp.draw.wrapData({
-				"data": webApp.db.vars["trackList"], 
+				"data": webApp.player.vars["trackList"], 
 				"templateID": "trackList",
 				"templateListItemID": "trackListItem"
 			});
@@ -945,7 +946,7 @@ console.log( webApp.vars["logMsg"] );
 			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
 		}
 //console.log( html );
-		html = html.replace("{{tracklist_title}}", webApp.db.vars["trackListTitle"]);
+		html = html.replace("{{tracklist_title}}", webApp.player.vars["trackListTitle"]);
 		
 		return html;
 	}//_formHtmlPlayList()

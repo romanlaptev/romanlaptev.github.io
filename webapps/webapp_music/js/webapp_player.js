@@ -3,10 +3,23 @@ function _player( opt ){
 
 	// private variables and functions
 	var _vars = {
+		"trackListTitle": "new playlist",
+		"trackList":  [
+// {"title" : "Hit The Lights", "mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
+// {"title" : "The Four Horsemen","artist" : "Metallica","mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"},
+// {"title" : "Motorbreath",	"artist" : "Metallica",	"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
+],
 	};
 
 	var _init = function( opt ){
-//console.log("_player: ", _vars);
+		//_vars.$audioplayer = $("#audio-player")[0];
+		_vars.$audioplayer = func.getById("audio-player");
+		_vars.$audioplayer.volume = 0.4;
+
+		$(_vars.$audioplayer).on("ended", function(e){
+console.log(e);
+		});//end event
+		
 	};//end _init()
 
 
@@ -48,8 +61,8 @@ p.url = "db/metallica.json";
 	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ p.url;
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
-					webApp.db.vars["trackList"] = data;
-					webApp.db.vars["trackListTitle"] = p["trackListUrl"];
+					webApp.player.vars["trackList"] = data;
+					webApp.player.vars["trackListTitle"] = p["trackListUrl"];
 					resolve( textStatus );
 				})
 				
@@ -87,7 +100,10 @@ p.url = "db/metallica.json";
 			p[key] = opt[key];
 		}
 //console.log(p);
-		document.querySelector("#block-player audio").setAttribute("src", p["trackUrl"] );
+		//$(_vars.$audioplayer).attr("src", p["trackUrl"] );
+		_vars.$audioplayer.setAttribute("src", p["trackUrl"] );
+		//document.querySelector("#block-player audio").setAttribute("src", p["trackUrl"] );
+
 		document.querySelector("#block-player h5").innerHTML = p["trackUrl"];
 	}//end _loadTrack()
 	
