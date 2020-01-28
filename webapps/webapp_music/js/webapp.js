@@ -386,8 +386,10 @@ if( form.elements.targetField.length > 0){
 //console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
+if( target.tagName === "A"){
 			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-			event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+			event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+}
 			_clickHandler( target );
 		});
 		
@@ -521,15 +523,15 @@ if( form.elements.targetField.length > 0){
 //------------------------------- load track to player
 					if ( target.href.indexOf("q=load-track&") !== -1){
 						
-						//set active track
-						var trackLinks = document.querySelectorAll("#playlist a.track-name");
-						for( var n = 0; n < trackLinks.length; n++){
-							var trackLink = trackLinks[n];
-							if( trackLink.className.indexOf("active") !== -1){
-								trackLink.className = "track-name";
-							}
-						}//next
-						target.className = "track-name active";
+						// //set active track
+						// var trackLinks = document.querySelectorAll("#playlist a.track-name");
+						// for( var n = 0; n < trackLinks.length; n++){
+							// var trackLink = trackLinks[n];
+							// if( trackLink.className.indexOf("active") !== -1){
+								// trackLink.className = "track-name";
+							// }
+						// }//next
+						// target.className = "track-name active";
 						
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
@@ -739,7 +741,7 @@ console.log(arguments);
 			break;
 
 			case "prev-track":
-console.log(webApp.vars["GET"]["q"]);
+				webApp.player.prevTrack();
 			break;
 			
 			case "next-track":

@@ -17,10 +17,17 @@ function _player( opt ){
 		_vars.$audioplayer = func.getById("audio-player");
 		_vars.$audioplayer.volume = 0.4;
 
+//--------------------------
 		$(_vars.$audioplayer).on("ended", function(e){
 console.log(e);
 		});//end event
 		
+//--------------------------
+		$(_vars.$audioplayer).onerror = function(e){
+console.log(e);
+			//func.logAlert( "event: " + e.type, "error");
+		}//end event
+	
 	};//end _init()
 
 
@@ -39,11 +46,12 @@ console.log(e);
 //db\Manowar.json
 //db\metallica.json
 //db\Korpiklaani.json
-p.url = "db/metallica.json";
+//p.url = "db/metallica.json";
 
+		var url = p["trackListUrl"];
 		var _df =  new Promise( function(resolve, reject) {
 //console.log(resolve, reject);
-			$.getJSON( p.url, function(){
+			$.getJSON( url, function(){
 //console.log("getJSON, default...");
 				})
 				//.abort(function(){
@@ -126,6 +134,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
 		$("#track-info").text( track["title"] );
+		_setActiveTrack( numTrack );
 	}//end _loadTrack()
 	
 
@@ -152,6 +161,8 @@ console.log( "-- no track!!!!");
 		
 		var track_info = track["title"];
 		$("#track-info").text( track_info );
+
+		_setActiveTrack( num );
 		
 		//if( autoplay ){
 			//_vars.$audioplayer.play();
@@ -159,8 +170,60 @@ console.log( "-- no track!!!!");
 
 	}//end _nextTrack()
 	
+	
 	function _prevTrack(){
+		$(_vars.$audioplayer).attr("src", "");
+		if( _vars["numTrack"] > 0){
+			_vars["numTrack"]--;
+		}
+		
+		var num = _vars["numTrack"];
+//console.log( num );
+		var track = _vars["trackList"][num];
+		if( !track ){
+console.log( "-- no track!!!!");
+			return false;
+		}				
+		var mediaSrc = track["mp3"];
+//console.log(mediaSrc);		
+		$(_vars.$audioplayer).attr("src", mediaSrc);
+		
+		var track_info = track["title"];
+		$("#track-info").text( track_info );
+
+		_setActiveTrack( num );
+		//if( autoplay ){
+			//_vars.$audioplayer.play();
+		//}
+		
 	}//end _prevTrack()
+	
+
+	function _setActiveTrack( num ){
+//console.log(num);
+		var activeNum = parseInt( num );
+//console.log(num, typeof num, isNaN(num) );
+		if( isNaN(activeNum) ){
+webApp.vars["logMsg"] = "not found track by num: "+ activeNum;
+console.log( "-- error, " + webApp.vars["logMsg"] );
+			return false;
+		}
+
+		var activeItem = false;
+		$("#playlist a.track-name").each(function(num, value){
+//console.log(num)
+			$(this).removeClass("active");
+//console.log(num, activeNum, typeof activeNum, num === activeNum);
+			if( num === activeNum){
+				activeItem = value;//this...
+			}
+		});//end each
+		
+		if( activeItem ){
+			$(activeItem).addClass("active");
+		}
+	}//end _setActiveTrack()
+	
 	
 	// public interfaces
 	return{
