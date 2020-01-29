@@ -446,54 +446,6 @@ if( target.tagName === "A" || target.tagName === "SPAN"){
 
 				}//end event
 
-//-------------------------------
-				if( target.tagName === "A"){
-					if ( target.href.indexOf("#close") !== -1){
-						var id = $( target ).data("toggle");
-	//console.log( id );
-						$( id ).slideToggle( _vars.duration , function(e){
-	//console.log(arguments);
-							if( id === "#block-tags"){// reset tags select
-								webApp.db.vars["queryRes"] = [];
-								webApp.vars["GET"]["q"] = "reset_tags_select"; 
-								_urlManager();
-							}
-						});
-					}
-				}//end event
-
-				if( target.tagName === "A"){
-					
-//------------------------------- get tag list
-//#?q=get-tag-list&vid=2				
-					if ( target.href.indexOf("get-tag-list") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
-					}
-				
-//------------------------------- get node tags
-//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
-					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.vars["GET"]["tag_name"] = $(target).text();
-						webApp.app.urlManager();
-					}
-					
-				}//end event
-
-//------------------------------- get modal window
-				if( target.tagName === "A"){
-					if ( target.href.indexOf("edit-node") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
-					}
-					if ( target.href.indexOf("#close-modal") !== -1){
-						var id = $( target ).data("toggle");
-						_toggleModal( id );
-					}
-				}//end event
-				
-				
 //------------------------------- page number
 //console.log( target.getAttribute("id") );
 				if( target.getAttribute("id") === "btn-page-number-more"){
@@ -515,47 +467,64 @@ if( target.tagName === "A" || target.tagName === "SPAN"){
 				}//end event
 
 				if( target.tagName === "A"){
-					
-//------------------------------- load playlist file
-					if ( target.href.indexOf("q=load-tracklist&") !== -1){
+
+//------------------------------- close buttons
+					if ( target.href.indexOf("#close") !== -1){
+						var id = $( target ).data("toggle");
+	//console.log( id );
+						$( id ).slideToggle( _vars.duration , function(e){
+	//console.log(arguments);
+							if( id === "#block-tags"){// reset tags select
+								webApp.db.vars["queryRes"] = [];
+								webApp.vars["GET"]["q"] = "reset_tags_select"; 
+								_urlManager();
+							}
+						});
+					}
+
+//------------------------------- get modal window
+					if ( target.href.indexOf("edit-node") !== -1){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
-//------------------------------- load track to player
-					if ( target.href.indexOf("q=load-track&") !== -1){
-						
-						// //set active track
-						// var trackLinks = document.querySelectorAll("#playlist a.track-name");
-						// for( var n = 0; n < trackLinks.length; n++){
-							// var trackLink = trackLinks[n];
-							// if( trackLink.className.indexOf("active") !== -1){
-								// trackLink.className = "track-name";
-							// }
-						// }//next
-						// target.className = "track-name active";
-						
+					if ( target.href.indexOf("#close-modal") !== -1){
+						var id = $( target ).data("toggle");
+						_toggleModal( id );
+					}
+
+//------------------------------- get tag list
+//#?q=get-tag-list&vid=2				
+					if ( target.href.indexOf("get-tag-list") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+				
+//------------------------------- get node tags
+//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
+					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.vars["GET"]["tag_name"] = $(target).text();
+						webApp.app.urlManager();
+					}
+					
+//------------------------------- player, tracklist actions
+					if ( target.href.indexOf("q=load-tracklist&") !== -1 ){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
 					
-//------------------------------- clear tracklist
-					if ( target.href.indexOf("clear-tracklist") !== -1){
-						if( webApp.player.vars["trackList"].length > 0){
-							webApp.vars["GET"] = func.parseGetParams( target.href );
-							webApp.app.urlManager();
-						}
-					}
-					
-//------------------------------- change track
-					if ( target.href.indexOf("prev-track") !== -1 ||
-							target.href.indexOf("next-track") !== -1
+					if ( target.href.indexOf("q=load-track&") !== -1 ||
+							target.href.indexOf("prev-track") !== -1 ||
+								target.href.indexOf("next-track") !== -1 ||
+									target.href.indexOf("clear-tracklist") !== -1 ||
+										target.href.indexOf("remove-track") !== -1 ||
+											target.href.indexOf("edit-track") !== -1
 					){
 						if( webApp.player.vars["trackList"].length > 0){
 							webApp.vars["GET"] = func.parseGetParams( target.href );
 							webApp.app.urlManager();
 						}
 					}
-
 
 				}//end event
 
@@ -767,6 +736,15 @@ console.log(arguments);
 			//break;
 			
 			case "remove-track":
+				webApp.player.removeTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
+			break;
+
+			case "edit-track":
+				webApp.player.editTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
 			break;
 			
 //--------------------------------------------

@@ -64,8 +64,8 @@ function _draw( opt ){
 			<a class="track-name" href="#?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
 		</div>\
 		<div class="uk-float-right">\
-<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
-<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
+<a class="edit-track" href="#?q=edit-track&amp;num={{number}}">edit</a> | \
+<a class="remove-track" href="#?q=remove-track&amp;num={{number}}" title="Remove this track from tracklist">x</a>\
 		</div>\
 	</div>\
 </li>',

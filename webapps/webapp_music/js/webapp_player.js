@@ -29,6 +29,7 @@ console.log(e);
 //console.log(e);
 console.log( _vars.$audioplayer.error);
 			var err = _vars.$audioplayer.error;
+if(err){
 			//for( var key in err){
 				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
 				//func.logAlert( webApp.vars["logMsg"], "error");
@@ -37,7 +38,7 @@ webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
 webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
 webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
-				
+}
 		});//end event
 	
 	};//end _init()
@@ -138,7 +139,6 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		_vars.$audioplayer.setAttribute("src", trackUrl );
 		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
-		$("#track-info").text( track["title"] );
 		_setActiveTrack( numTrack );
 	}//end _loadTrack()
 	
@@ -223,6 +223,60 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		
 	}//end _setActiveTrack()
 	
+
+	function _removeTrack( opt ){
+		var p = {
+			"trackNum": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+				
+		$(_vars.$audioplayer).attr("src", "");
+		
+		var numTrack = p.trackNum-1;
+//console.log( numTrack, _vars["trackList"][numTrack] );
+		
+		//remove track
+		delete _vars["trackList"][numTrack];
+//console.log( _vars["trackList"] );
+		
+		//squeeze tracklist
+		var arr = webApp.player.vars.trackList.filter(function(obj) {
+		  return typeof obj !== "undefined";
+		});
+		
+		//reorder tracklist
+		arr.forEach( function(item, n, arr) {
+			item["number"] = n+1;
+		});
+//console.log( arr );
+
+		webApp.player.vars["trackList"] = arr;
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		
+		//_setActiveTrack( numTrack );
+	}//end _removeTrack()
+
+
+	function _editTrack( opt ){
+		var p = {
+			"trackNum": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+				
+		var numTrack = p.trackNum-1;
+		//_vars["numTrack"] = numTrack;
+		
+console.log( numTrack, _vars["trackList"][numTrack] );
+	}//end _editTrack()
+
 	
 	// public interfaces
 	return{
@@ -235,6 +289,8 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		loadTrack: _loadTrack,
 		setActiveTrack: _setActiveTrack,
 		nextTrack: _nextTrack,
-		prevTrack: _prevTrack
+		prevTrack: _prevTrack,
+		removeTrack: _removeTrack,
+		editTrack: _editTrack
 	};
 }//end _player()
