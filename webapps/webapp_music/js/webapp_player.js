@@ -112,6 +112,29 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		
 	}//end _loadTrackList()
 	
+	function _formTrackList(tracks){
+		
+		//----------------- add track order number 
+		for( var n = 0; n < tracks.length; n++){
+			tracks[n]["number"] = n+1;
+		}//next
+		
+		if( _vars["trackList"].length > 0){
+			_vars["trackList"] = _vars["trackList"].concat( tracks);
+			_vars["trackList"].forEach( function(item, n, arr) {//reorder tracklist
+				item["number"] = n+1;
+			});
+		} else {
+			_vars["trackList"] = tracks;
+		}
+		
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		_vars["numTrack"] = 0;
+		webApp.player.setActiveTrack( _vars["numTrack"] );
+		
+	}//end _formTrackList()
+	
+	
 	function _loadTrack( opt ){
 		var p = {
 			"trackNum": false
@@ -286,6 +309,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 			return _init(); 
 		},
 		loadTrackList: _loadTrackList,
+		formTrackList: _formTrackList,
 		loadTrack: _loadTrack,
 		setActiveTrack: _setActiveTrack,
 		nextTrack: _nextTrack,

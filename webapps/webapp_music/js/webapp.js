@@ -680,18 +680,10 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					"trackListUrl": webApp.vars["GET"]["url"]
 				})
 				.then(
-					function( data, url ){
+					function( data ){
 //console.log( "-- THEN, promise resolve" );
 //console.log(data);
-						//----------------- add track order number 
-						for( var n = 0; n < data.length; n++){
-							data[n]["number"] = n+1;
-						}//next
-						//-----------------
-						webApp.player.vars["trackList"] = data;
-						webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
-						_vars["numTrack"] = 0;
-						webApp.player.setActiveTrack( _vars["numTrack"] );
+						webApp.player.formTrackList(data);
 					},
 					function( error ){
 console.log( "-- THEN, promise reject, ", error );
