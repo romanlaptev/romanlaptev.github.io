@@ -21,11 +21,12 @@ function _player( opt ){
 //--------------------------
 		$(_vars.$audioplayer).on("ended", function(e){
 console.log(e);
+			_nextTrack();
 		});//end event
 		
 //--------------------------
 		$(_vars.$audioplayer).on("error",  function(e){
-console.log(e);
+//console.log(e);
 console.log( _vars.$audioplayer.error);
 			var err = _vars.$audioplayer.error;
 			//for( var key in err){
@@ -120,7 +121,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		}
 //console.log(p);
 				
-		var numTrack = p.trackNum;
+		var numTrack = p.trackNum-1;
 		_vars["numTrack"] = numTrack;
 		
 //console.log( numTrack, _vars["trackList"][numTrack], trackUrl );
@@ -143,21 +144,18 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	
 
 	function _nextTrack(){
-		$(_vars.$audioplayer).attr("src", "");
-		
 		if( _vars["numTrack"] < ( _vars["trackList"].length - 1) ){
 			_vars["numTrack"]++;
+			_setActiveTrack( _vars["numTrack"] );
 		}
-		_setActiveTrack( _vars["numTrack"] );
 	}//end _nextTrack()
 	
 	
 	function _prevTrack(){
-		$(_vars.$audioplayer).attr("src", "");
 		if( _vars["numTrack"] > 0){
 			_vars["numTrack"]--;
+			_setActiveTrack( _vars["numTrack"] );
 		}
-		_setActiveTrack( _vars["numTrack"] );
 	}//end _prevTrack()
 	
 
@@ -171,6 +169,8 @@ console.log( "-- error, " + webApp.vars["logMsg"] );
 			return false;
 		}
 
+		$(_vars.$audioplayer).attr("src", "");
+		
 		//load and play track by num
 		var track = _vars["trackList"][ activeNum ];
 		if( !track ){
