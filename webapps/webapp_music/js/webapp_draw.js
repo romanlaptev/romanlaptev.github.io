@@ -13,11 +13,8 @@ function _draw( opt ){
 						</div>\
 						<div class="uk-card-body w60">\
 							<div>\
-								<h5 id="track-info">Yankee_doodle.mp3</h5>\
-								<audio id="audio-player" controls="controls" class="w100">\
-										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
-				Tag <b>audio</b> not supported by this browser.... \
-								</audio>\
+								<h5 id="track-info"></h5>\
+<audio id="audio-player" controls="controls" class="w100"><source src="" />Tag <b>audio</b> not supported by this browser....</audio>\
 							</div>\
 							<div class="uk-hidden">\
 				<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>\

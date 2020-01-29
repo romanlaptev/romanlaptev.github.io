@@ -182,7 +182,20 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 //console.log(mediaSrc);		
 		$(_vars.$audioplayer).attr("src", mediaSrc);
 		
-		var track_info = track["title"];
+		//form track text title
+		var track_info = "";
+		if( track["artist"] && track["artist"].length > 0){
+			track_info += track["artist"];
+		}
+		if( track["title"] && track["title"].length > 0){
+			if( track_info.length > 0){
+				track_info += ", ";
+			}
+			track_info += track["title"];
+		}
+		if( track_info.length === 0){
+			track_info = track["mp3"];
+		}
 		$("#track-info").text( track_info );
 		
 		if( _vars["autoplay"] ){
