@@ -128,7 +128,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 			_vars["trackList"] = tracks;
 		}
 		
-		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		_vars["numTrack"] = 0;
 		webApp.player.setActiveTrack( _vars["numTrack"] );
 		
@@ -257,7 +257,8 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 //console.log(p);
 				
-		$(_vars.$audioplayer).attr("src", "");
+		//$(_vars.$audioplayer).attr("src", "");
+		_vars.$audioplayer.pause();
 		
 		var numTrack = p.trackNum-1;
 //console.log( numTrack, _vars["trackList"][numTrack] );
@@ -278,7 +279,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 //console.log( arr );
 
 		webApp.player.vars["trackList"] = arr;
-		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
 		//_setActiveTrack( numTrack );
 	}//end _removeTrack()

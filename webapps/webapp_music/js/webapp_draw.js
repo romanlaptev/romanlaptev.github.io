@@ -4,7 +4,7 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {
 		"templates":{
-			
+
 			"blockPlayer" : '<div class="uk-card uk-card-default">\
 						<div class="row">\
 							<div class="uk-float-right">\
@@ -34,29 +34,28 @@ function _draw( opt ){
 						</div>\
 {{content}}\
 					</div>',
-			"trackList" :  '<div id="block-tracklist" class="">\
-							<div class="wrapper">\
-								<div class="row">\
-									<div class="uk-float-left">\
-										<h4>{{tracklist_title}}</h4>\
-									</div>\
-									<div class="uk-float-right">\
-											<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
-									</div>\
-								</div>\
-								<div class="pls-buttons">\
-									<ul class="menu-track-action button-group uk-list">\
+			
+			"blockTrackList" : '<div class="wrapper">{{content}}</div>',
+			"trackList" : '\
+<div class="row">\
+			<div class="uk-float-left">\
+				<h4>{{tracklist_title}}</h4>\
+			</div>\
+			<div class="uk-float-right">\
+					<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+			</div>\
+</div>\
+		<div class="pls-buttons">\
+			<ul class="menu-track-action button-group uk-list">\
 <li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
 <li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
 <li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
 <li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
-									</ul>\
-								</div>\
-								<div class="media-list">\
-<ul id="playlist" class="list-unstyled">{{list}}</ul>\
-								</div>\
-							</div>\
-						</div>',
+			</ul>\
+		</div>\
+<div class="media-list">\
+	<ul id="playlist" class="list-unstyled">{{list}}</ul>\
+</div>',
 						
 			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
@@ -277,6 +276,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockFM"] );
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );

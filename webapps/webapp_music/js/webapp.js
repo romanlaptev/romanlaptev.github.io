@@ -27,12 +27,22 @@ var webApp = {
 				"title" : "block player", 
 				"templateID" : "blockPlayer",
 				"content" : function(){
-					var html = webApp.app.formHtmlPlayList();
+					this.content = "";
+					webApp.draw.buildBlock( this );
+					webApp.player.init();
+				}
+			}, //end block
+
+			{
+				"locationID" : "block-tracklist",
+				"title" : "block tracklist", 
+				"templateID" : "blockTrackList",
+				"content" : function(){
+					var html = webApp.app.formHtmlTrackList();
 					if( html && html.length > 0){
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
-					webApp.player.init();
 				}
 			}, //end block
 
@@ -156,12 +166,13 @@ console.log("init webapp!");
 		webApp.draw.init();
 
 		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
-		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][1];
-		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][2];
-		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][3];
-		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
-		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][5];
-		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][6];
+		this["vars"]["blocksByName"]["blockTrackList"] = 	this.vars["blocks"][1];
+		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][2];
+		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][3];
+		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][4];
+		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][5];
+		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][6];
+		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][7];
 		
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["loadProgress"] = func.getById("load-progress");
@@ -696,7 +707,7 @@ console.log(arguments);
 			case "clear-tracklist":
 				webApp.player.vars["trackList"] = [];
 				webApp.player.vars["trackListTitle"] = "new_playlist";
-				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 			break;
 
 //insert-track
@@ -931,7 +942,7 @@ console.log( webApp.vars["logMsg"] );
 		return nodes;
 	}//end _getNodesByTag()
 
-	function _formHtmlPlayList(){
+	function _formHtmlTrackList(){
 
 		if( webApp.player.vars["trackList"].length > 0 ){
 			var html = webApp.draw.wrapData({
@@ -946,7 +957,7 @@ console.log( webApp.vars["logMsg"] );
 		html = html.replace("{{tracklist_title}}", webApp.player.vars["trackListTitle"]);
 		
 		return html;
-	}//_formHtmlPlayList()
+	}//_formHtmlTrackList()
 
 
 	function _changePage( pageNumValue){
@@ -1072,7 +1083,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
-		formHtmlPlayList : _formHtmlPlayList,
+		formHtmlTrackList : _formHtmlTrackList,
 		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 
