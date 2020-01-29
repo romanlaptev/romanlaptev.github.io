@@ -54,7 +54,7 @@ function _draw( opt ){
 			</ul>\
 		</div>\
 <div class="media-list">\
-	<ul id="playlist" class="list-unstyled">{{list}}</ul>\
+	<ul id="track-list" class="list-unstyled">{{list}}</ul>\
 </div>',
 						
 			"trackListItem" :  '<li class="list-group-item">\

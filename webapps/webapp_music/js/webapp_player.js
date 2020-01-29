@@ -130,7 +130,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		_vars["numTrack"] = 0;
-		webApp.player.setActiveTrack( _vars["numTrack"] );
+		_setActiveTrack( _vars["numTrack"] );
 		
 	}//end _formTrackList()
 	
@@ -231,7 +231,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 
 		//set active style
 		var activeItem = false;
-		$("#playlist a.track-name").each(function(num, value){
+		$("#track-list a.track-name").each(function(num, value){
 //console.log(num)
 			$(this).removeClass("active");
 //console.log(num, activeNum, typeof activeNum, num === activeNum);
