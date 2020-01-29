@@ -28,8 +28,8 @@ function _draw( opt ){
 							</div>\
 							<div id="player-buttons">\
 								<ul class="button-group uk-list">\
-									<button id="btn-play" class="btn btn-blue">play</button>\
-									<button id="btn-pause" class="btn btn-blue">pause</button>\
+<!--<button id="btn-play" class="btn btn-blue">play</button>\
+<button id="btn-pause" class="btn btn-blue">pause</button>-->\
 <li><a href="#?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
 <li><a href="#?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
 								</ul>\
@@ -163,8 +163,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 	</div>\
 	<ul class="button-group">\
 		<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
-		<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><span class="icon-search"></span></button></li>\
-		<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><span class="icon-remove"></span></button></li>\
+		<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><i class="icon-search"></i></button></li>\
+		<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><i class="icon-remove"></i></button></li>\
 	</ul>\
 </form>\
 							</div>\

@@ -307,7 +307,7 @@ function _app( opt ){
 			} else {
 				event.returnValue = false;
 			}
-//console.log("Submit form", event, this);
+console.log("Submit form", event, this);
 			var form = document.forms["formSearch"]
 //console.log(form);
 //console.log(form.elements.targetField, form.elements.targetField.length);
@@ -381,12 +381,13 @@ if( form.elements.targetField.length > 0){
 		$(document).on("click", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
-//console.log( event );
+console.log( event, event.type, target.tagName );
 //console.log( this );
 //console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
-if( target.tagName === "A"){
+
+if( target.tagName === "A" || target.tagName === "SPAN"){
 			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 			event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 }
