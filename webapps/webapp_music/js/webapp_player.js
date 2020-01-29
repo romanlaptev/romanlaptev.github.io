@@ -9,7 +9,8 @@ function _player( opt ){
 // {"title" : "The Four Horsemen","artist" : "Metallica","mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"},
 // {"title" : "Motorbreath",	"artist" : "Metallica",	"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
 ],
-		"numTrack": 0
+		"numTrack": 0,
+		"autoplay" : true
 	};
 
 	var _init = function( opt ){
@@ -23,10 +24,20 @@ console.log(e);
 		});//end event
 		
 //--------------------------
-		$(_vars.$audioplayer).onerror = function(e){
+		$(_vars.$audioplayer).on("error",  function(e){
 console.log(e);
-			//func.logAlert( "event: " + e.type, "error");
-		}//end event
+console.log( _vars.$audioplayer.error);
+			var err = _vars.$audioplayer.error;
+			//for( var key in err){
+				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
+				//func.logAlert( webApp.vars["logMsg"], "error");
+			//}//next
+webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
+webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
+webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
+func.logAlert( webApp.vars["logMsg"], "error");
+				
+		});//end event
 	
 	};//end _init()
 
@@ -67,18 +78,11 @@ console.log(e);
 				.done(function( data, textStatus, jqXHR ){
 	//console.log("getJSON, Done...", arguments);
 	webApp.vars["logMsg"] = "getJSON done";
-	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ p.url;
+	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ url;
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
-	
-//----------------- add track order number 
-for( var n = 0; n < data.length; n++){
-	data[n]["number"] = n;
-}//next
-//-----------------
-					_vars["trackList"] = data;
-					_vars["trackListTitle"] = p["trackListUrl"];
-					resolve( textStatus );
+					_vars["trackListTitle"] = url;
+					resolve( data );
 				})
 				
 				.fail(function( xhr, status, error ){
@@ -140,34 +144,11 @@ console.log( "-- " + webApp.vars["logMsg"] );
 
 	function _nextTrack(){
 		$(_vars.$audioplayer).attr("src", "");
-		//var autoplay = false;
 		
 		if( _vars["numTrack"] < ( _vars["trackList"].length - 1) ){
 			_vars["numTrack"]++;
-			//if( webApp.vars["GET"]["autoplay"] === "TRUE"){
-				//autoplay = true;
-			//}
 		}
-		var num = _vars["numTrack"];
-//console.log( num );
-		var track = _vars["trackList"][num];
-		if( !track ){
-console.log( "-- no track!!!!");
-			return false;
-		}				
-		var mediaSrc = track["mp3"];
-//console.log(mediaSrc);		
-		$(_vars.$audioplayer).attr("src", mediaSrc);
-		
-		var track_info = track["title"];
-		$("#track-info").text( track_info );
-
-		_setActiveTrack( num );
-		
-		//if( autoplay ){
-			//_vars.$audioplayer.play();
-		//}
-
+		_setActiveTrack( _vars["numTrack"] );
 	}//end _nextTrack()
 	
 	
@@ -176,26 +157,7 @@ console.log( "-- no track!!!!");
 		if( _vars["numTrack"] > 0){
 			_vars["numTrack"]--;
 		}
-		
-		var num = _vars["numTrack"];
-//console.log( num );
-		var track = _vars["trackList"][num];
-		if( !track ){
-console.log( "-- no track!!!!");
-			return false;
-		}				
-		var mediaSrc = track["mp3"];
-//console.log(mediaSrc);		
-		$(_vars.$audioplayer).attr("src", mediaSrc);
-		
-		var track_info = track["title"];
-		$("#track-info").text( track_info );
-
-		_setActiveTrack( num );
-		//if( autoplay ){
-			//_vars.$audioplayer.play();
-		//}
-		
+		_setActiveTrack( _vars["numTrack"] );
 	}//end _prevTrack()
 	
 
@@ -204,11 +166,34 @@ console.log( "-- no track!!!!");
 		var activeNum = parseInt( num );
 //console.log(num, typeof num, isNaN(num) );
 		if( isNaN(activeNum) ){
-webApp.vars["logMsg"] = "not found track by num: "+ activeNum;
+webApp.vars["logMsg"] = "wrong activeNum: "+ activeNum;
 console.log( "-- error, " + webApp.vars["logMsg"] );
 			return false;
 		}
 
+		//load and play track by num
+		var track = _vars["trackList"][ activeNum ];
+		if( !track ){
+console.log( "-- error, no track by activeNum = " + activeNum);
+			return false;
+		}
+		
+		var mediaSrc = track["mp3"];
+//console.log(mediaSrc);		
+		$(_vars.$audioplayer).attr("src", mediaSrc);
+		
+		var track_info = track["title"];
+		$("#track-info").text( track_info );
+		
+		if( _vars["autoplay"] ){
+			//try{
+				_vars.$audioplayer.play();
+			//} catch(e){
+//console.log(e);	
+			//}
+		}
+
+		//set active style
 		var activeItem = false;
 		$("#playlist a.track-name").each(function(num, value){
 //console.log(num)
@@ -222,6 +207,7 @@ console.log( "-- error, " + webApp.vars["logMsg"] );
 		if( activeItem ){
 			$(activeItem).addClass("active");
 		}
+		
 	}//end _setActiveTrack()
 	
 	
@@ -234,6 +220,7 @@ console.log( "-- error, " + webApp.vars["logMsg"] );
 		},
 		loadTrackList: _loadTrackList,
 		loadTrack: _loadTrack,
+		setActiveTrack: _setActiveTrack,
 		nextTrack: _nextTrack,
 		prevTrack: _prevTrack
 	};

@@ -63,7 +63,7 @@ function _draw( opt ){
 						
 			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
-		<div class="uk-float-left">\
+		<div class="uk-float-left">{{number}}.\
 			<a class="track-name" href="#?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
 		</div>\
 		<div class="uk-float-right">\
@@ -210,7 +210,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load-tracklist&url={{playlist_filepath}}&nid={{nid}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
+<li><a href="#?q=load-tracklist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
 <li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\

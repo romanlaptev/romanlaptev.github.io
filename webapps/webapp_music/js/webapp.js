@@ -307,7 +307,7 @@ function _app( opt ){
 			} else {
 				event.returnValue = false;
 			}
-console.log("Submit form", event, this);
+//console.log("Submit form", event, this);
 			var form = document.forms["formSearch"]
 //console.log(form);
 //console.log(form.elements.targetField, form.elements.targetField.length);
@@ -381,7 +381,7 @@ if( form.elements.targetField.length > 0){
 		$(document).on("click", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
-console.log( event, event.type, target.tagName );
+//console.log( event, event.type, target.tagName );
 //console.log( this );
 //console.log( target.textContent );
 //console.log( event.eventPhase );
@@ -705,19 +705,27 @@ func.logAlert( webApp.vars["logMsg"], "success");
 			
 //-------------------------------------------- PLAYLIST
 			case "load-tracklist":
-				var _nid = webApp.vars["GET"]["nid"];
+				//var _nid = webApp.vars["GET"]["nid"];
 				webApp.player.loadTrackList({
 					//"trackListTitle": webApp.db.vars["nodes"][_nid]["title"][0]["text"],
 					"trackListUrl": webApp.vars["GET"]["url"]
 				})
 				.then(
-					function( res ){
-//console.log( "-- promise resolve, THEN" );
-//console.log(res);
+					function( data, url ){
+//console.log( "-- THEN, promise resolve" );
+//console.log(data);
+						//----------------- add track order number 
+						for( var n = 0; n < data.length; n++){
+							data[n]["number"] = n+1;
+						}//next
+						//-----------------
+						webApp.player.vars["trackList"] = data;
 						webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+						_vars["numTrack"] = 0;
+						webApp.player.setActiveTrack( _vars["numTrack"] );
 					},
 					function( error ){
-console.log( "-- promise reject, ", error );
+console.log( "-- THEN, promise reject, ", error );
 console.log(arguments);					
 					}
 				);
