@@ -29,8 +29,11 @@ function _db( opt ){
 		"numRecordsPerPage": 5,
 		"numberPage": 1,
 		"numPages": null,
-//		"sortOrder": "asc",
-//		"sortByKey": "title", //"published", 
+		
+		"sortOrder": "asc",
+		"sortByKey": "", //"title", //"updated", 
+		"dateFormat": "dd-mm-yyyy hh:mm:ss",
+
 		"outputBuffer": [],
 		"queryRes":[]
 	};
@@ -312,12 +315,16 @@ console.log( error );
 					obj[item] = _content;
 				}
 				
+				obj["nid"] = n;//create unique id for node
+				
 				//var key = "record_" + (n+1);
 				//nodes[key] = obj;
 				nodes.push( obj );
 			}//next
 		}
 
+//------------------ form timestamp (for sort by 'updated')
+		__addTimeStamp();
 		//__checkSupport();
 		return nodes;
 		
@@ -363,6 +370,31 @@ console.log( error );
 			return fields;
 		}//end __convertMultipleField()
 
+
+		function __addTimeStamp(){
+			if( webApp.db.vars["dateFormat"] !== "dd-mm-yyyy hh:mm:ss"){
+				return false;
+			}
+			
+			for(var n = 0; n < nodes.length; n++){
+				if( nodes[n]["updated"] && nodes[n]["updated"].length > 0){
+					var arr = nodes[n]["updated"].split(" ");
+					var dateArr = arr[0].split("-");
+					var timeArr = arr[1].split(":");
+						
+					var split_values = {
+						"day" : dateArr[0],
+						"month" : dateArr[1],
+						"year" : dateArr[2],
+						"hour" : timeArr[0],
+						"min" : timeArr[1],
+						"sec" : timeArr[2]
+					};
+					nodes[n]["timestamp"] = func.getTimeStampFromDateStr( split_values );
+				}
+			}//next
+		}// end __addTimeStamp()
+		
 /*		
 		function __checkSupport(){
 			for(var n = 0; n < nodes.length; n++){
@@ -587,6 +619,77 @@ console.log(node);
 
 	};//end _search()
 
+
+	function _sortNodes(opt){
+		var p = {
+			records: [],
+			"sortOrder": "asc", //desc
+			"sortByKey": null
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if(p.records.length === 0 ){
+			var logMsg = "error, not found sorting records...";
+func.logAlert( logMsg, "error");
+console.log( logMsg );
+			return false;
+		}
+				
+		if(!p.sortByKey){
+			var logMsg = "error, not found 'sortByKey'...";
+func.logAlert( logMsg, "error");
+console.log( logMsg );
+			return false;
+		}
+				
+		p.records.sort(function(a,b){
+	//console.log(a, b);
+			var s1,s2;
+			
+			s1 = a[p.sortByKey];
+			s2 = b[p.sortByKey];
+			
+			if( p.sortByKey === "title" ){
+				s1 = a[p.sortByKey][0]["text"].toLowerCase();
+				s2 = b[p.sortByKey][0]["text"].toLowerCase();
+			}
+			
+			if( p.sortByKey === "updated" ){
+				s1 = a["timestamp"];
+				s2 = b["timestamp"];
+			}
+			
+			switch(p.sortOrder){
+				case "asc":
+					if (s1 > s2) {
+						return 1;
+					}
+					if (s1 < s2) {
+						return -1;
+					}
+					// s1 === s2
+					return 0;
+				break
+				
+				case "desc":
+					if (s1 > s2) {
+						return -1;
+					}
+					if (s1 < s2) {
+						return 1;
+					}
+					// s1 === s2
+					return 0;
+				break
+			}//end swith()
+		});//end sort
+		
+	}//end _sortNodes()
+
 	
 	// public interfaces
 	return{
@@ -599,6 +702,7 @@ console.log(node);
 			return _getData( opt ); 
 		},
 		getNodesByTag: _getNodesByTag,
-		search: _search
+		search: _search,
+		sortNodes: _sortNodes
 	};
 }//end _db()

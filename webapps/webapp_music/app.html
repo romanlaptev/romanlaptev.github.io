@@ -35,7 +35,7 @@
 -->	
 	<script src="js/webapp_draw.js"></script>
 	<script src="js/webapp_db.js"></script>
-	<script src="js/templates.js"></script>
+	<script src="js/webapp_player.js"></script>
 	<script src="js/webapp.js"></script>	<script src="js/main.js"></script>
 </head>
 
@@ -65,11 +65,13 @@
 <br/>
 <br/>
 		<ul data-uk-nav="" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon">
+			<!-- <li><a data-toggle="#block-nodelist" class="uk-button uk-button-default" href="#">Music list</a></li> -->
 			<li><a data-toggle="#block-tags" class="uk-button uk-button-default" href="#">Tags list</a></li>
 			<li><a data-toggle="#block-player" class="uk-button uk-button-default" href="#">Player</a></li>
-			<li><a data-toggle="#block-nodelist" class="uk-button uk-button-default" href="#">Playlists</a></li>
+			<li><a data-toggle="#block-tracklist" class="uk-button uk-button-default" href="#">Track list</a></li>
 			<li><a data-toggle="#block-file-manager" class="uk-button uk-button-default" href="#">File manager</a></li>
-			<li><a class="uk-button uk-button-default" href="#">Export playlists</a></li>
+<li><a class="uk-button uk-button-default" href="http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/db/export_drupal_sqlite.php" target="_blank">Export playlists</a></li>
+<li><a class="uk-button uk-button-default" href="#?q=add-playlist">Add new playlist</a></li>
 		</ul>
 	</div>
 </div>
@@ -80,16 +82,17 @@
 	<div id="main" class="" >
 		
 		<div id="block-player"></div>
+		<div id="block-tracklist"></div>
 		<div id="block-tags"  class="collapse">
 			<div id="block-tag-groups"></div>
 			<div id="block-taglist"></div>
 		</div>
 
-		<div id="block-file-manager" class="collapse"></div>
 		<div id="block-nodelist" class="uk-card uk-card-default">
 			<div id="block-pager" class="uk-padding-small bg-lightsteelblue6"></div>
 			<div id="block-list" class=""></div>
 		</div>
+		<div id="block-file-manager" class="collapse"></div>
 
 	</div><!-- end main central area -->
 	<div class="">
@@ -121,10 +124,10 @@
 		<div class="">
 			<b class="uk-padding-small">Edit playlist</b>
 			<div class="uk-float-right">
-				<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-small uk-button-danger">x</a>
+				<a data-toggle="#modal-edit-node" href="#close-modal" class="uk-button uk-button-small uk-button-danger">x</a>
 			</div>
 		</div>
-<form name="form_playlist_node" id="node-edit-form" action="?q=save-node" method="GET">
+<form name="form_node" id="node-edit-form" action="?q=save-node" method="GET">
 <!-- method="POST" enctype="application/x-www-form-urlencoded"> -->
 		
 		<div class="uk-modal-body">

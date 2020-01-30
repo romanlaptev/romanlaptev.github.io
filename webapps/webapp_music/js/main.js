@@ -3,11 +3,6 @@ var func = sharedFunc();
 
 var _vars = {
 	"logMsg": "",
-	//menuWidth : 270,//270px
-	//duration : 600,
-	//$offcanvas : null,
-	//$offcanvasBar : null,
-	//$offcanvasMenu : null,
 	start_scroll_pos:0,
 	end_scroll_pos:0//,
 };
@@ -42,6 +37,7 @@ console.log("end webApp initialize....");
 		});//end webApp initialize
 	}
 }//end load()
+
 
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
@@ -89,6 +85,7 @@ function initApplication(){
 		}
 	);//end event
 
+
 /*
 //------------------------ Image load error
 	_vars.blockNodeList = document.querySelector("#block-nodelist");
@@ -130,127 +127,7 @@ _vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 
 
 function _initPage(){
-/*
-	_vars.$offcanvas = $("#off-canvas2");
-	_vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
-	_vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
-	_vars.$closeButtons = $("a[href='#close']");
-	_vars.$modalButtons = $("a[href^='#modal']");
-	_vars.$getTagGroups = $("a[href^='#get-tag-group']");
-	_vars.$toggleContent = $(".toggle-content");
-	_vars.$blockTags = $("#block-tags");
-	$(".collapse").hide();
 	
-//--------------------------------- hide input type="range" if not support
-//https://learn.javascript.ru/dom-polyfill
-	var _testRangeType = $("#page-range").attr("type");
-	//console.log( _testRangeType );
-	if( _testRangeType !== "range"){
-		$("#page-range").hide();
-	}
-	
-//---------------------------------
-	$("#btn-toggle-menu").on("click", function(e){
-//console.log( e.type );
-		//e.preventDefault();
-		//return false;
-		toggleMenu();
-	});//end event
-	
-	$("#btn-close-menu").on("click", function(e){
-		toggleMenu();
-	});//end event
-	
-	_vars.$offcanvasMenu.on("click", function(e){
-//console.log( e.target );
-		$(".collapse").hide();
-//console.log( $( e.target ).data()  );
-		var _target = $( e.target ).data("toggle");
-//console.log( _target );
-		//$( _target ).slideToggle( _vars.duration, function(e){
-		$( _target ).show( _vars.duration, function(e){
-//console.log(arguments)
-			toggleMenu();
-		});
-	});//end event
-	
-	
-	_vars.$closeButtons.on("click", function(e){
-//console.log( e.target );
-			var _target = $( e.target ).data("toggle");
-//console.log( _target );
-			$( _target ).slideToggle( _vars.duration , function(e){
-//console.log(arguments)
-			});
-		});//end event
-
-	_vars.$modalButtons.on("click", function(e){
-//console.log( e.target );
-			var id = $( e.target ).data("toggle");
-			_toggleModal( id );
-			
-			if( $( e.target ).attr("href").indexOf("&") !== -1 ){
-				var arr = $( e.target ).attr("href").split("&");
-				arr = arr[1].split("=");
-//console.log(arr);
-				var nodeId = arr[1];
-//console.log(nodeId);
-				if( id === "#modal-edit-node"){
-					_getFieldValues(id, nodeId);
-				}
-			}
-			
-		});//end event
-
-	_vars.$getTagGroups.on("click", function(e){
-//console.log( e.target );
-		$("#block-tags").find(".collapse").hide();
-		var _target = $( e.target ).data("toggle");
-//console.log( _target );
-		$( _target ).slideToggle( _vars.duration , function(e){
-//console.log(arguments)
-		});
-	});//end event
-
-
-	_vars.$toggleContent.on("click", function(e){
-//console.log( e.target );
-		var test = $(e.target).hasClass("icon-chevron-down");
-//console.log( test );
-		var test2 = $(e.target).hasClass("icon-chevron-up");
-//console.log( test2 );
-
-		if( test || test2 ){
-			var _p = e.target.parentNode;
-	//console.log( _p );
-			var $blockContent = $(_p).find(".block-content");
-	//console.log( $blockContent );
-			$blockContent.slideToggle(_vars.duration);
-
-			var $buttonDropDown = $(e.target);
-	//console.log( $buttonDropDown );
-			var test = $buttonDropDown.hasClass("icon-chevron-down");
-			if( test ){
-				$buttonDropDown.removeClass("icon-chevron-down");
-				$buttonDropDown.addClass("icon-chevron-up");
-			} else {
-				$buttonDropDown.removeClass("icon-chevron-up");
-				$buttonDropDown.addClass("icon-chevron-down");
-			}
-		}
-		
-	});//end event
-
-	$(document).on("keydown", function(e) {
-//console.log(e);
-//console.log("e.keyCode = " + e.keyCode );
-		if (e.keyCode == 27) {
-//console.log("press ESC ", e.target);
-			_closeModal( "#modal-edit-node" );
-		}
-	});//end event
-	
-*/	
 //--------------------- Scroll
 	//Detect top position for scroll block
 	_vars.start_scroll_pos = $("#main").offset().top + 100;
@@ -279,56 +156,3 @@ function _initPage(){
 	//---------------------
 	
 }//_initPage()
-
-
-function toggleMenu(){
-	var _w = parseInt( _vars.$offcanvasBar.css("width") );
-//console.log( _vars.$offcanvasBar.css("width"), _w);
-	
-	if( _w == 0){
-		_vars.$offcanvas.css("display","block");
-		_vars.$offcanvasBar.css("width", _vars.menuWidth);
-	}
-
-	if( parseInt(_w) == _vars.menuWidth){
-		_vars.$offcanvas.css("display","none");
-		_vars.$offcanvasBar.css("width", 0);
-	}
-}//end toggleMenu()
-
-function _toggleModal( id ){
-	$m = $(id);
-	if( $m.hasClass("uk-open") ){
-		$m.hide( _vars.duration );
-		//$m.slideUp( _vars.duration, function () {
-		//$m.fadeOut( 600, function () {
-//console.log("-- end of hide....");				
-		//});
-		$m.removeClass("uk-open");
-	} else {
-		//$m.show("fast", function () {
-		$m.slideDown( _vars.duration, function () {
-		//$m.fadeIn( 600, function () {
-//console.log("-- end of show....");				
-		});
-		$m.addClass("uk-open");
-	}
-}//end _toggleModal()
-
-function _closeModal( id ){
-	$m = $(id);
-	if( $m.hasClass("uk-open") ){
-		$m.hide( _vars.duration );
-		$m.removeClass("uk-open");
-	}
-}//end _toggleModal()
-
-
-function _getFieldValues(id, nodeId){
-	if( id === "#modal-edit-node"){
-		var form = document.forms["form_playlist_node"];
-//console.log(form);
-console.log(form.elements);
-console.log(nodeId);
-	}
-}//_getFieldValues()

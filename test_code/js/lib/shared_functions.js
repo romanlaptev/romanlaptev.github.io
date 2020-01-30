@@ -856,6 +856,52 @@ console.log( "xhr.onerror,", e);
 			return dateStr;
 		}//end _timeStampToDateStr()
 		
+
+//================================
+// "15-May-2015 09:58:16" --> 1431662296000
+// var arr = "15-May-2015 09:58:16".split(" ");
+// var dateArr = arr[0].split("-");
+// var timeArr = arr[1].split(":");
+// var split_values = {
+//	"day" : dateArr[0],
+//	"month" : dateArr[1],
+//	"year" : dateArr[2],
+//	"hour" : timeArr[0],
+//	"min" : timeArr[1],
+//	"sec" : timeArr[2]
+// };
+// var timeStamp = func.getTimeStampFromDateStr( split_values );
+//================================
+		function _getTimeStampFromDateStr( dateObj ){
+			var _day = parseInt( dateObj["day"] );
+			if ( isNaN( _day ) ){
+				_day = 0;
+			}
+			
+			var _month = 0;
+			_month = _getNumMonthByName( dateObj["month"] );
+
+			var _year = parseInt( dateObj["year"] );
+			if ( isNaN( _year ) ){
+				_year = 0;
+			}
+
+			var _hour = parseInt( dateObj["hour"] );
+			if ( isNaN( _hour ) ){
+				_hour = 0;
+			}
+			var _min = parseInt( dateObj["min"] );
+			if ( isNaN( _min ) ){
+				_min = 0;
+			}
+			var _sec = parseInt( dateObj["sec"] );
+			if ( isNaN( _sec ) ){
+				_sec = 0;
+			}
+			var timeStamp = new Date ( _year, _month, _day, _hour, _min, _sec).getTime();
+			return timeStamp;
+		}//end _getTimeStampFromDateStr()
+
 		
 		function _getMonthNameByNum( num, lang ){
 			var sMonth = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -864,6 +910,18 @@ console.log( "xhr.onerror,", e);
 			}
 			return sMonth[num];
 		}//end _getMonthNameByNum()
+
+		function _getNumMonthByName( monthName, lang ){
+			var sMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			if( lang ){
+				if( lang === "RU" || lang === "ru" ){
+					sMonth = ["Янв", "Фев", "Март", "Апр", "Май", "Июн", "Июл", "Авг", "Сент", "Окт", "Ноя", "Дек"];
+				}
+			}
+			var num = sMonth.indexOf(monthName);
+			return num;
+		}//end _getNumMonthByName()
+	
 
 		//Convert str to Hash code
 		var _hashCode = function(str){
@@ -1226,7 +1284,9 @@ ONLY second LEVEL !!!!!!!!!!!!
 			runAjaxCorrect: _runAjaxCorrect,
 			
 			timeStampToDateStr: _timeStampToDateStr,
+			getTimeStampFromDateStr: _getTimeStampFromDateStr,
 			getMonthByNameNum: _getMonthNameByNum,
+			getNumMonthByName: _getNumMonthByName,
 			
 			hashCode: _hashCode,
 			parseXmlToObj: _parseXmlToObj,

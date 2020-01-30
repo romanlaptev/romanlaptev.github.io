@@ -5,6 +5,7 @@ var webApp = {
 	"db" : _db(),
 	//"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
+	"player" : _player(),
 
 	"vars" : {
 		"app_title" : "music collection",
@@ -19,20 +20,30 @@ var webApp = {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
 		
-		"playlist" : {
-			tracks:[
-//{title:"Anda Jaleo Jaleo", src: "http://www.youtube.com/embed/Td6lN_U7Ecs"}
-			],
-			lastNum:0
-		},
-		
 		"blocks": [
 //===========================================
 			{
 				"locationID" : "block-player",
 				"title" : "block player", 
-				"templateID" : "blockFooterLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockPlayer",
+				"content" : function(){
+					this.content = "";
+					webApp.draw.buildBlock( this );
+					webApp.player.init();
+				}
+			}, //end block
+
+			{
+				"locationID" : "block-tracklist",
+				"title" : "block tracklist", 
+				"templateID" : "blockTrackList",
+				"content" : function(){
+					var html = webApp.app.formHtmlTrackList();
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
@@ -70,8 +81,8 @@ var webApp = {
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
-				"templateID" : "blockFooterLinks",
-				"content" : "<u>static text</u>",
+				"templateID" : "blockFileManager",
+				//"content" : "<u>static text</u>",
 			}, //end block
 
 //===========================================
@@ -101,6 +112,8 @@ var webApp = {
 						this.content = html;
 						webApp.draw.buildBlock( this );
 					}
+					webApp.app.imagesLoadEventHandler();
+					$("a[href='#?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -131,6 +144,7 @@ var webApp = {
 		],
 		"blocksByName": {},
 		"imageNotLoad": "img/image_not_load.png",
+		"menuWidth" : 270,//270px
 		
 		"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
@@ -151,11 +165,14 @@ console.log("init webapp!");
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
 
-		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][1];
-		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][4];
-		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][2];
-		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][5];
-		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][6];
+		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
+		this["vars"]["blocksByName"]["blockTrackList"] = 	this.vars["blocks"][1];
+		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][2];
+		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][3];
+		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][4];
+		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][5];
+		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][6];
+		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][7];
 		
 		this["vars"]["waitWindow"] = func.getById("win1");
 		this["vars"]["loadProgress"] = func.getById("load-progress");
@@ -166,6 +183,19 @@ console.log("init webapp!");
 		this["vars"]["totalMBytes"] = func.getById("total-mb");
 		this["vars"]["loaded"] = func.getById("loaded");
 		this["vars"]["loadInfo"] = func.getById("load-info");
+		
+		this["vars"].$offcanvas = $("#off-canvas2");
+		this["vars"].$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+		this["vars"].$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+		this["vars"].$blockList = document.querySelector("#block-list");
+		
+		// hide input type="range" if not support
+		//https://learn.javascript.ru/dom-polyfill
+		var _testRangeType = $("#page-range").attr("type");
+//console.log( _testRangeType );
+		if( _testRangeType !== "range"){
+			$("#page-range").hide();
+		}
 		
 		_runApp();
 	},//end init()
@@ -209,16 +239,6 @@ function _app( opt ){
 
 	function _defineEvents(){
 		
-		// webApp.vars.$closeButtons = $("a[href='#close']");
-		// webApp.vars.$closeButtons.on("click", function(e){
-	// //console.log( e.target );
-				// var _target = $( e.target ).data("toggle");
-	// //console.log( _target );
-				// $( _target ).slideToggle( _vars.duration , function(e){
-	// //console.log(arguments)
-				// });
-			// });//end event
-		
 //------------------------------------------------------------------
 		$(document).on("keydown", function(event) {
 			event = event || window.event;
@@ -227,10 +247,10 @@ function _app( opt ){
 //console.log("e.keyCode = " + e.keyCode );
 
 //----------------------------
-			//if (e.keyCode == 27) {
-	//console.log("press ESC ", e.target);
-				//_closeModal( "#modal-edit-node" );
-			//}
+			if (event.keyCode == 27) {
+//console.log("press ESC ", e.target);
+				_closeModal( "#modal-edit-node" );
+			}
 			
 //---------------------------- input page number
 			if( target.getAttribute("id") === "page-number"){
@@ -244,6 +264,7 @@ function _app( opt ){
 					_changePage( target.value );
 				}
 				
+				//filter input, only numbers
 				if ( event.keyCode == 46 || 
 					event.keyCode == 8 || 
 					event.keyCode == 9 || 
@@ -279,20 +300,15 @@ function _app( opt ){
 			
 //---------------------------- select sort type
 			if( target.getAttribute("id") === "select-sort"){
-console.log( target, target.value );
-				// webApp.vars["DB"]["sortByKey"] =  target.value;
-				// $("#page-number").val( 1 );
-				// $("#page-range").val( 1 );
-				// var url = "?q=list_nodes&num_page=1";
-				// webApp.vars["GET"] = func.parseGetParams( url ); 
-				// _urlManager();
+//console.log( target, target.value );
+				webApp.db.vars["sortByKey"] =  target.value;
+				_changePage( 1 );
 			}//end event
 
 		});//end event
 
 
 //---------------------------- search form submit
-		//$("#block-search").on("submit", "#form-search", function(event){
 		$("#form-search").on("submit", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
@@ -376,15 +392,45 @@ if( form.elements.targetField.length > 0){
 		$(document).on("click", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
-//console.log( event );
-//console.log( this );//page-container
+//console.log( event, event.type, target.tagName );
+//console.log( this );
 //console.log( target.textContent );
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
-			//event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
-			//event.preventDefault ? event.preventDefault() : (event.returnValue = false);				
+
+//if( target.href === "A" || target.tagName === "SPAN"){
+//if( target.href === "A"){
+if( target.className.indexOf("no-block-link") === -1){
+			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
+			event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 			_clickHandler( target );
+}
 		});
+		
+//---------------------------------
+		$("#btn-toggle-menu").on("click", function(e){
+//console.log( e.type );
+			_toggleMenu();
+		});//end event
+		
+		$("#btn-close-menu").on("click", function(e){
+//console.log( e.type );
+			_toggleMenu();
+		});//end event
+		
+		webApp.vars.$offcanvasMenu.on("click", function(e){
+//console.log( e.target );
+			$(".collapse").hide();
+//console.log( $( e.target ).data()  );
+			var _target = $( e.target ).data("toggle");
+//console.log( _target );
+			//$( _target ).slideToggle( _vars.duration, function(e){
+			$( _target ).show( _vars.duration, function(e){
+//console.log(arguments)
+				_toggleMenu();
+			});
+		});//end event
+
 	
 //------------------------------------------------------------------
 		function _clickHandler( target ){
@@ -413,41 +459,6 @@ if( form.elements.targetField.length > 0){
 
 				}//end event
 
-//-------------------------------
-				if( target.tagName === "A"){
-					if ( target.href.indexOf("#close") !== -1){
-						var id = $( target ).data("toggle");
-	//console.log( id );
-						$( id ).slideToggle( _vars.duration , function(e){
-	//console.log(arguments);
-							if( id === "#block-tags"){// reset tags select
-								webApp.db.vars["queryRes"] = [];
-								webApp.vars["GET"]["q"] = "reset_tags_select"; 
-								_urlManager();
-							}
-						});
-					}
-				}//end event
-
-				if( target.tagName === "A"){
-					
-//------------------------------- get tag list
-//#?q=get-tag-list&vid=2				
-					if ( target.href.indexOf("get-tag-list") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
-					}
-				
-//------------------------------- get node tags
-//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
-					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.vars["GET"]["tag_name"] = $(target).text();
-						webApp.app.urlManager();
-					}
-					
-				}//end event
-				
 //------------------------------- page number
 //console.log( target.getAttribute("id") );
 				if( target.getAttribute("id") === "btn-page-number-more"){
@@ -467,6 +478,81 @@ if( form.elements.targetField.length > 0){
 						_changePage( $("#page-range").val() );
 					}					
 				}//end event
+
+				if( target.tagName === "A"){
+
+//------------------------------- close, toggle buttons
+					if ( target.href.indexOf("#close") !== -1 ||
+							 target.href.indexOf("#toggle") !== -1
+						){
+						var id = $( target ).data("toggle");
+	//console.log( id );
+							if( id === "#field-tracklist-url"){
+								$( id ).toggleClass("uk-hidden");
+								return;
+							}
+
+						$( id ).slideToggle( _vars.duration , function(e){
+	//console.log(arguments);
+							if( id === "#block-tags"){// reset tags select
+								webApp.db.vars["queryRes"] = [];
+								webApp.vars["GET"]["q"] = "reset_tags_select"; 
+								_urlManager();
+							}
+						});
+					}
+
+//------------------------------- get modal window
+					if ( target.href.indexOf("edit-node") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+					if ( target.href.indexOf("#close-modal") !== -1){
+						var id = $( target ).data("toggle");
+						_toggleModal( id );
+					}
+
+//------------------------------- get tag list
+//#?q=get-tag-list&vid=2				
+					if ( target.href.indexOf("get-tag-list") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+				
+//------------------------------- get node tags
+//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
+					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.vars["GET"]["tag_name"] = $(target).text();
+						webApp.app.urlManager();
+					}
+					
+//------------------------------- player, tracklist actions
+					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
+							target.href.indexOf("q=get-tracklist-url") !== -1
+					){
+						webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager();
+					}
+					
+					if ( target.href.indexOf("q=load-track&") !== -1 ||
+							target.href.indexOf("prev-track") !== -1 ||
+								target.href.indexOf("next-track") !== -1 ||
+									target.href.indexOf("clear-tracklist") !== -1 ||
+										target.href.indexOf("remove-track") !== -1 ||
+											target.href.indexOf("edit-track") !== -1
+					){
+						if( webApp.player.vars["trackList"].length > 0){
+							webApp.vars["GET"] = func.parseGetParams( target.href );
+							webApp.app.urlManager();
+						} else {
+webApp.vars["logMsg"] = "warning, not load media track list ...";
+func.logAlert(webApp.vars["logMsg"], "warning");
+						}
+					}
+
+				}//end event
+
 
 		}//end _clickHandler()
 		
@@ -516,9 +602,27 @@ console.log("-- start build page --");
 console.log("-- end build page --");
 			break;
 			
-//?q=nodes-by-tag&text="youtube"
-			//case "nodes-by-tag":
-			//break;
+//?q=edit-node&nid={{nid}}
+			case "edit-node":
+				_toggleModal( "#modal-edit-node" );
+/*
+			if( $( target ).attr("href").indexOf("&") !== -1 ){
+				var arr = $( e.target ).attr("href").split("&");
+				arr = arr[1].split("=");
+//console.log(arr);
+				var nodeId = arr[1];
+//console.log(nodeId);
+				if( id === "#modal-edit-node"){
+					_getFieldValues(id, nodeId);
+				}
+			}
+			
+*/			
+			var form = document.forms["form_node"];
+//console.log(form);
+console.log(form.elements);
+				form.elements.id.value = webApp.vars["GET"]["nid"];
+			break;
 			
 			//case "clear-query-result":
 			//break;
@@ -538,11 +642,11 @@ console.log("-- end build page --");
 						"callback" : function( data ){
 //console.log(data);
 							if( !data || data.length ===0){
-webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["tag_name"] + "</b>...";
+webApp.vars["logMsg"] = "not found records for tag <b>"+ webApp.vars["GET"]["tag_name"] + "</b>...";
 func.logAlert(webApp.vars["logMsg"], "warning");
 console.log( "-- " + webApp.vars["logMsg"] );
 							} else {
-webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records for tag &quot;<b>"+ webApp.vars["GET"]["tag_name"] + "</b>&quot;";
 func.logAlert( webApp.vars["logMsg"], "success");
 
 								webApp.db.vars["queryRes"] = data;
@@ -572,14 +676,17 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					"targetField" : webApp.vars["GET"]["targetField"],
 					"keyword" : webApp.vars["GET"]["keyword"],
 					"callback" : function( data ){
-console.log(data);
+//console.log(data);
 
 						if( !data || data.length ===0){
 webApp.vars["logMsg"] = "no records found by keyword <b>&quot;"+ webApp.vars["GET"]["keyword"] + "&quot;</b>...";
 func.logAlert( webApp.vars["logMsg"], "warning");
 console.log( "-- " + webApp.vars["logMsg"] );
 							return false;
-						};
+						} else {
+webApp.vars["logMsg"] = "found <b>"+data.length+"</b> records by keyword &quot;<b>"+ webApp.vars["GET"]["keyword"] + "</b>&quot;";
+func.logAlert( webApp.vars["logMsg"], "success");
+						}
 						
 						webApp.db.vars["queryRes"] = data;
 						webApp.db.vars["numberPage"] = 1;
@@ -591,20 +698,66 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 			
 //-------------------------------------------- PLAYLIST
-			case "load-track":
+			case "load-tracklist":
+				//var _nid = webApp.vars["GET"]["nid"];
+				
+				if( !webApp.vars["GET"]["url"] || 
+						webApp.vars["GET"]["url"].length === 0){
+					//webApp.vars["GET"]["url"] = "/music/0_playlists/Korpiklaani.json";
+					//_toggleModal( "#modal-edit-node" );
+					return false;
+				}
+				
+				webApp.player.loadTrackList({
+					"trackListUrl": webApp.vars["GET"]["url"]
+				})
+				.then(
+					function( data ){
+//console.log( "-- THEN, promise resolve" );
+//console.log(data);
+						webApp.player.formTrackList(data);
+					},
+					function( error ){
+console.log( "-- THEN, promise reject, ", error );
+//console.log(arguments);					
+					}
+				);
 			break;
+			
+			case "get-tracklist-url":
+//console.log( $("#field-tracklist-url input").val() );			
+				$("#field-tracklist-url").addClass("uk-hidden");
+				webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
+				webApp.vars["GET"]["q"] = "load-tracklist";
+				_urlManager();
+			break;
+
+			case "clear-tracklist":
+				webApp.player.vars["numTrack"] = 0;
+				webApp.player.vars["trackList"] = [];
+				webApp.player.vars["trackListTitle"] = webApp.player.vars["trackListName"];
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+			break;
+
+//insert-track
 
 			case "stop-play":
 			break;
 
+			case "load-track":
+				webApp.player.loadTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
+			break;
+
 			case "prev-track":
+				webApp.player.prevTrack();
 			break;
 			
 			case "next-track":
+				webApp.player.nextTrack();
 			break;
 			
-			case "clear-playlist":
-			break;
 
 			//case "check-all":
 				//_draw_checkAll();
@@ -615,6 +768,15 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			//break;
 			
 			case "remove-track":
+				webApp.player.removeTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
+			break;
+
+			case "edit-track":
+				webApp.player.editTrack({
+					"trackNum": webApp.vars["GET"]["num"]
+				});
 			break;
 			
 //--------------------------------------------
@@ -625,6 +787,8 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 		
 	}//end _urlManager()
 
+
+
 	function _formHtmlNodeList(){
 
 	webApp.db.vars["records"] = webApp.db.vars["nodes"];
@@ -632,6 +796,19 @@ console.log("function _urlManager(),  GET query string: ", webApp.vars["GET"]);
 	if( webApp.db.vars["queryRes"].length > 0 ){
 		webApp.db.vars["records"] = webApp.db.vars["queryRes"];
 	}
+
+	//------------------ sort NODES
+	if( webApp.db.vars["sortByKey"] && webApp.db.vars["sortByKey"].length > 0){
+		//if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
+			webApp.db.sortNodes({
+				records: webApp.db.vars["records"],
+				"sortOrder": webApp.db.vars["sortOrder"], //"asc", //desc
+				"sortByKey": webApp.db.vars["sortByKey"]
+			});
+			//webApp.vars["DB"]["prevSortKey"] = p.sortByKey;
+		//}
+	}
+	//------------------
 
 //--------------------	get page data, copy nodes to outputBuffer
 		webApp.db.vars["outputBuffer"] = [];
@@ -666,10 +843,18 @@ console.log( webApp.vars["logMsg"] );
 //------------------- filter outputBuffer nodes
 		for( var n = 0; n < webApp.db.vars["outputBuffer"].length; n++){
 			
-			webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			//webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.vars["imageNotLoad"];
+			webApp.db.vars["outputBuffer"][n]["main_picture"] = "";
 			if( webApp.db.vars["outputBuffer"][n]["images"] ){
 				webApp.db.vars["outputBuffer"][n]["images"][0]["template"]= "hide";
 				webApp.db.vars["outputBuffer"][n]["main_picture"] = webApp.db.vars["outputBuffer"][n]["images"][0]["src"];
+/*				
+				if( webApp.db.vars["outputBuffer"][n]["images"].length === 1){//if only one attached image
+//console.log(webApp.db.vars["outputBuffer"][n]["images"]);
+					//webApp.db.vars["outputBuffer"][n]["images"] = [];
+					delete webApp.db.vars["outputBuffer"][n]["images"];
+				}
+*/
 			}
 	
 	
@@ -786,6 +971,23 @@ console.log( webApp.vars["logMsg"] );
 		return nodes;
 	}//end _getNodesByTag()
 
+	function _formHtmlTrackList(){
+
+		if( webApp.player.vars["trackList"].length > 0 ){
+			var html = webApp.draw.wrapData({
+				"data": webApp.player.vars["trackList"], 
+				"templateID": "trackList",
+				"templateListItemID": "trackListItem"
+			});
+		} else {
+			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
+		}
+//console.log( html );
+		html = html.replace("{{tracklist_title}}", webApp.player.vars["trackListTitle"]);
+		
+		return html;
+	}//_formHtmlTrackList()
+
 
 	function _changePage( pageNumValue){
 //console.log( pageNumValue );
@@ -824,6 +1026,79 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 	}//end _changePage()
 
 
+	function _toggleMenu(){
+		var _w = parseInt( webApp.vars.$offcanvasBar.css("width") );
+//console.log( webApp.vars.$offcanvasBar.css("width"), _w);
+		
+		if( _w == 0){
+			webApp.vars.$offcanvas.css("display","block");
+			webApp.vars.$offcanvasBar.css("width", webApp.vars.menuWidth);
+		}
+
+		if( parseInt(_w) == webApp.vars.menuWidth){
+			webApp.vars.$offcanvas.css("display","none");
+			webApp.vars.$offcanvasBar.css("width", 0);
+		}
+	}//end _toggleMenu()
+
+	function _toggleModal( id ){
+		$modalWindow = $(id);
+		if( $modalWindow.hasClass("uk-open") ){
+			$modalWindow.hide( _vars.duration );
+			//$modalWindow.slideUp( _vars.duration, function () {
+			//$modalWindow.fadeOut( 600, function () {
+	//console.log("-- end of hide....");				
+			//});
+			$modalWindow.removeClass("uk-open");
+		} else {
+			//$modalWindow.show("fast", function () {
+			$modalWindow.slideDown( _vars.duration, function () {
+			//$modalWindow.fadeIn( 600, function () {
+	//console.log("-- end of show....");				
+			});
+			$modalWindow.addClass("uk-open");
+		}
+	}//end _toggleModal()
+	
+	function _closeModal( id ){
+		$m = $(id);
+		if( $m.hasClass("uk-open") ){
+			$m.hide( _vars.duration );
+			$m.removeClass("uk-open");
+		}
+	}//end _toggleModal()
+	
+
+	function _imagesLoadEventHandler(){
+	//console.log( webApp.vars.$blockList );
+		var images = webApp.vars.$blockList.getElementsByTagName("img");
+	//console.log( "images =  " + images.length);
+	//console.log( "images.onerror =  "+ typeof images[0].onerror);
+		for( var n = 0; n < images.length; n++){
+			//if( images[n].clientHeight === 0 ){
+	//console.log(images[n].src,  " ,image.clientHeight =  ", images[n].clientHeight );
+	//console.log( "img load error: ", images[n].getAttribute("src") );	
+				images[n].onerror = function(e){
+	//console.log(e.type, e);
+					webApp.vars["logMsg"] = "error, image not load, <small><b>" + e.target["src"] + "</b></small>";
+					//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
+	//console.log(e.target.parentNode);				
+					var _blockImages = e.target.parentNode;
+					//_blockImages.style.background = "transparent";
+					_blockImages.className = "block-images-not-load";
+					e.target.outerHTML = "<div class='img-not-load'>"+ webApp.vars["logMsg"] +"</div>";
+				}
+
+				images[n].onload = function(e){
+	//console.log(e.type, e);
+					var _blockImages = e.target.parentNode;
+					_blockImages.style.background = "transparent";
+				}
+				
+			//};
+		};//next
+	}//end _imagesLoadEventHandler()
+
 	// public interfaces
 	return{
 		//vars : _vars,
@@ -837,7 +1112,9 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		//formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
-		formHtmlTagList : _formHtmlTagList
+		formHtmlTagList : _formHtmlTagList,
+		formHtmlTrackList : _formHtmlTrackList,
+		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 

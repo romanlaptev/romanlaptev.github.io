@@ -4,21 +4,17 @@ function _draw( opt ){
 	// private variables and functions
 	var _vars = {
 		"templates":{
-			
-			"blockPlayer" : {
-				"html" : '<div class="uk-card uk-card-default">\
+
+			"blockPlayer" : '<div class="uk-card uk-card-default uk-margin-small">\
 						<div class="row">\
 							<div class="uk-float-right">\
 									<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
-						<div class="uk-card-body w60">\
+						<div class="uk-card-body w60 uk-padding-small wrapper">\
 							<div>\
-								<b>Yankee_doodle.mp3</b><br>\
-								<audio controls="controls" class="w100">\
-										<source src="../../test_code/js/test_media/audio/Yankee_doodle.mp3" />\
-				Tag <b>audio</b> not supported by this browser.... \
-								</audio>\
+								<h5 id="track-info"></h5>\
+<audio id="audio-player" controls="controls" class="w100"><source src="" />Tag <b>audio</b> not supported by this browser....</audio>\
 							</div>\
 							<div class="uk-hidden">\
 				<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>\
@@ -29,64 +25,56 @@ function _draw( opt ){
 							</div>\
 							<div id="player-buttons">\
 								<ul class="button-group uk-list">\
-									<button id="btn-play" class="btn btn-blue">play</button>\
-									<button id="btn-pause" class="btn btn-blue">pause</button>\
-									<li><a href="?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
-									<li><a href="?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
+<!--<button id="btn-play" class="btn btn-blue">play</button>\
+<button id="btn-pause" class="btn btn-blue">pause</button>-->\
+<li><a href="#?q=prev-track" class="btn btn-blue">previous track</a></li>\
+<li><a href="#?q=next-track" class="btn btn-blue">next track</a></li>\
 								</ul>\
 							</div>\
 						</div>\
-						<div id="block-tracklist" class="">\
-							<div class="wrapper">\
-								<div class="row">\
-									<div class="uk-float-left">\
-										<h4>new playlist</h4>\
-									</div>\
-									<div class="uk-float-right">\
-											<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
-									</div>\
-								</div>\
-								<div class="pls-buttons">\
-									<ul class="menu-track-action button-group uk-list">\
-		<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
-		<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
-		<li><a href="#?q=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
-		<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
-									</ul>\
-								</div>\
-								<div class="">\
-									<ul id="playlist" class="list-unstyled">\
-										<li class="list-group-item">\
-											<div class="uk-clearfix">\
-												<div class="uk-float-left">\
-													<a class="track-name" href="#?q=load-track&amp;num=0">test MP4</a>\
-												</div>\
-												<div class="uk-float-right">\
-		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
-		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
-												</div>\
-											</div>\
-										</li>\
-										<li class="list-group-item active">\
-											<div class="uk-clearfix">\
-												<div class="uk-float-left">\
-		<a class="track-name" href="#?q=load-track&amp;num=1">test WEBM</a>\
-												</div>\
-												<div class="uk-float-right">\
-		<a class="edit-track" href="#?q=edit-track&amp;num=0">edit</a> | \
-		<a class="remove-track" href="#?q=remove-track&amp;num=0" title="Remove this track from playlist">x</a>\
-												</div>\
-											</div>\
-										</li>\
-									</ul>\
-								</div>\
-							</div>\
-						</div>\
-					</div>'
-			},
+{{content}}\
+					</div>',
+			
+			"blockTrackList" : '<div class="wrapper">{{content}}</div>',
+			"trackList" : '\
+<div class="row">\
+			<div class="uk-float-left">\
+				<h4>{{tracklist_title}}</h4>\
+			</div>\
+			<div class="uk-float-right">\
+					<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+			</div>\
+</div>\
+		<div class="">\
+			<ul class="menu-track-action button-group uk-list">\
+<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
+<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
+<li><a href="#toggle" data-toggle="#field-tracklist-url" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
+<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
+			</ul>\
+<div id="field-tracklist-url" class="uk-hidden">\
+<input type="text" name="input_tracklist_url" value="/music/0_playlists/Korpiklaani.json" placeholder="enter track list url" class="uk-input w80">\
+<a href="#?q=get-tracklist-url" class="btn btn-blue">load</a><a data-toggle="#field-tracklist-url" href="#close" class="btn">x</a>\
+</div>\
+		</div>\
+<div class="media-list">\
+	<ul id="track-list" class="list-unstyled">{{list}}</ul>\
+</div>',
+						
+			"trackListItem" :  '<li class="list-group-item">\
+	<div class="uk-clearfix">\
+		<div class="uk-float-left">{{number}}.\
+			<a class="track-name" href="#?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
+		</div>\
+		<div class="uk-float-right">\
+<a class="edit-track" href="#?q=edit-track&amp;num={{number}}">edit</a> | \
+<a class="remove-track" href="#?q=remove-track&amp;num={{number}}" title="Remove this track from tracklist">x</a>\
+		</div>\
+	</div>\
+</li>',
+
 			
 			"blockTags" : "{{block-tag-groups}} {{block-taglist}}",
-			
 			"blockTagGroups" : '\
 						<div class="uk-card uk-card-primary">\
 						<div class="row">\
@@ -113,8 +101,7 @@ function _draw( opt ){
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
 "tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
 			
-			"blockFileManager" : '\
-					<div class="uk-card uk-card-default">\
+			"blockFileManager" : '<div class="uk-card uk-card-default">\
 						<div class="row">\
 							<div class="uk-float-left uk-padding-small">\
 									<b>File manager</b>\
@@ -176,8 +163,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 	</div>\
 	<ul class="button-group">\
 		<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
-		<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><span class="icon-search"></span></button></li>\
-		<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><span class="icon-remove"></span></button></li>\
+		<li><button type="submit" class="uk-button uk-button-small uk-button-primary no-block-link"><i class="icon-search no-block-link"></i></button></li>\
+		<li><button type="reset" class="uk-button uk-button-small uk-button-danger no-block-link"><i class="icon-remove no-block-link"></i></button></li>\
 	</ul>\
 </form>\
 							</div>\
@@ -197,8 +184,9 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 						<div class="uk-float-right">\
 							<label class="uk-label">sort by</label>\
 							<select id="select-sort" class="" autocomplete="off">\
-								<option value="title" selected="">title</option>\
-								<option value="published">publication date</option>\
+								<option value="" selected=""></option>\
+								<option value="title">title</option>\
+								<option value="updated">update date</option>\
 							</select>\
 						</div>\
 					</div>',
@@ -222,8 +210,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load_playlist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-playlist">add to playlist</a></li>\
-<li><a data-toggle="#modal-edit-node" href="#modal" class="btn btn-blue-c4">edit</a></li>\
+<li><a href="#?q=load-tracklist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
+<li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\
 								<div class="description">{{description}}</div>\
@@ -237,22 +225,22 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 			</div>',
 
 //sub LISTs
+
 			title : {
 				"listTpl" : '{{list}}', 
 				"itemTpl" : '<h3>{{text}}</h3>',
 			},
 			images : {
-				"listTpl" : '<div class="uk-card-body uk-padding-small block-images">{{list}}</div>', 
-				"itemTpl" : '<img src="{{src}}" alt="" title="">',
+				"listTpl" : '<div class="uk-card-body uk-padding-small">{{list}}</div>', 
+				"itemTpl" : '<div class="block-images"><img src="{{src}}" alt="" title=""></div>',
 			},
 			related_links : {
-				"listTpl" : '<ul class="related-links"><small><b>related links:</b></small>{{list}}</ul>', 
+				"listTpl" : '<ul class="related-links">{{list}}</ul>', 
 				"itemTpl" : '<li><a href="{{href}}" data-type="{{data-type}}" target="_blank">{{text}}</a></li>',
-//{ href : "/music/0_playlists/judas_priest.json", data-type:"playlist-file", text: "judas_priest.json" }
 			},
 			node_tags : {
-				"listTpl" : '<div><small><b>related tags:</b></small><ul class="list-inline node-tags">{{list}}</ul></div>', 
-				"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}">{{text}}</a></li>',
+"listTpl" : '<div><ul class="list-inline node-tags">{{list}}</ul></div>', 
+"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}" class="">{{text}}</a></li>',
 			},
 			
 		"blockFooterLinks" : '<!-- <h2>{{block_title}}</h2>-->\
@@ -260,7 +248,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 {{content}}\
 </div>',
 		"blockLinksList" : '<ul class="uk-card-body uk-text-center">{{list}}</ul>',
-		"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
+		"blockLinksListItem" : '<li class="uk-inline"><a class="no-block-link" href="{{url}}" target="_blank">{{title}}</a></li>',
 		//"blockLinksListItem3" : '<li>use specific template: {{template}},<br> {{url}} {{title}}</li>'//,
 		
 		//"blockLinksListItem6" : '<li>use specific template: {{template}}, {{url}} {{titles}}</li>',
@@ -290,6 +278,11 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 		_buildBlock( webApp.vars["blocksByName"]["blockTagGroups"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockPager"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockNodes"] );
+		
+		_buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+		_buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+		
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
 
 	};//end _buildPage()
@@ -536,7 +529,7 @@ console.log("-- warning, not found template, ", tplName );
 						if(item[key2].length === 0){
 console.log("-- warning, empty field....", key2, item[key2]);
 //continue;	
-							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+							//item[key2] = "<span class='not-found-item 1'>not found " + key2 +"</span>";
 						} else {
 							//read templates for sub list
 							var subOrdList = _vars["templates"][key2]["listTpl"];
@@ -568,7 +561,8 @@ console.log("-- warning, empty field....", key2, item[key2]);
 //if(n === 1){
 //console.log(key2, item[key2], typeof item[key2]);
 //}						
-							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+							//itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item 2'>not found " + key2 +"</span>");
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "");
 						} else {
 							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
 						}
@@ -628,110 +622,3 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		updatePager: _updatePager
 	};
 }//end _draw()
-
-
-
-
-/*
-	var _buildPage = function( opt ){
-//console.log("_buildPage()", arguments);
-
-		//if( webApp.vars["wait"] ){
-			//webApp.vars["wait"].className="modal-backdrop in";
-			//webApp.vars["wait"].style.display="block";
-		//}
-		
-		var p = {
-			"nid": null,
-			//"templateID" : "tpl-page"
-			"title" : "",
-			"pageData" : [],
-			"pageType" : "node",
-			"callback": null
-		};
-		//extend options object
-		for(var key in opt ){
-			p[key] = opt[key];
-		}
-//console.log(opt);
-
-		// //draw static blocks
-		// for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			// var _opt = webApp.vars["blocks"][n];
-// // //console.log(_opt["visibility"], p["title"]);				
-			// if( _opt["visibility"]){
-				// // if( opt["visibility"].indexOf( p["title"] ) !== -1 ){
-					// _draw_buildBlock( _opt );
-				// // }
-			// }
-			
-		// }//next
-
-		for( var n = 0; n < webApp.vars["blocks"].length; n++){
-			var _opt = webApp.vars["blocks"][n];
-			
-			//do not redraw existing block
-			if( _opt["draw"] && !_opt["refresh"]){
-				continue;
-			}
-			
-			if( _opt["visibility"]){
-				
-				//closures, need for async data getting from indexedDB
-				(function(_opt_){
-					//setTimeout(function(){ 
-						//console.log("-- closure function, ", _opt_); 
-					//}, 1000);
-					//_draw_buildBlock( _opt_ );
-					
-					if( typeof _opt_["buildBlock"] === "function"){
-						//if( _opt_["visibility"]){
-							_opt_["buildBlock"]();
-							_opt_["draw"] = true;
-						//}
-					} else {
-webApp.vars["logMsg"] = "warning, not found buld function....";
-console.log( "-- " + webApp.vars["logMsg"], _opt_ );
-					}
-				})(_opt);//end closure
-			}
-
-		}//next
-
-		var _html = _draw_wrapData({
-			"data": p["pageData"],
-			"templateID": "tpl-videolist",
-			"templateListItemID": "tpl-videolist-item--video"
-		});
-//console.log( _html);
-
-
-		if( !_html || _html.length === 0){
-webApp.vars["logMsg"] = "error generate html...";
-func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
-console.log( webApp.vars["logMsg"] );
-		} else {
-//$("#main").html( _html );
-
-			//draw content block
-			_draw_buildBlock({
-				"locationID" : "list-video",
-				"title" : "video list", 
-				"templateID" : "tpl-block-videolist",
-				"content" : _html
-			});
-		}
-
-		//if( webApp.vars["wait"] ){
-			////webApp.vars["wait"].className="";
-			//webApp.vars["wait"].style.display="none";
-		//}
-
-
-		if( typeof p["callback"] === "function"){//return from _buildPage()
-			p["callback"]();
-		}
-			
-	};//end _buildPage()
-	
-*/

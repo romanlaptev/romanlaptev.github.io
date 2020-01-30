@@ -9,11 +9,42 @@ webApp.draw()
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
 	- module fileManager (file_manager.js)
 
+--------------------------- PLAYER, mediaPlayer
+- сделать возможность формировать составные плейлисты
+и сохранять их (или прямо на диск, или в локальный кэш)
+
+- где сохранять и в каком формате сформированные списки (как треклист или как плейлист с изображением, описанием, прикрепленными треклистами)?
+
+- как организовать иерархию?
+плейлист (?) может содержать ссылки на несколько треклистов
+
+- нужно добавлять произвольный трек в треклист
+
+*- нужно добавлять треки из другого плейлиста( не очищать треклист при добавлении новых треков)
+
+- сделать чтение информации из MP3-тегов
+- разработать шаблон для формата треклиста
+
 ---------------------------
 - сделать тест браузера на доступные аудио-форматы 
 testMediaSupport( webApp.vars["audioTypes"]);
 
+- сделать сброс сортировки нод к первоначальному порядку
+
+- для сортировки по полю "updated" сделать получение из атрибута ноды строки формата даты 
+и использовать этот шаблон при получении времени в мс.
+строка шаблона определяет порядок и название ключей в массиве split_values
+
+- сделать деления на слайдере смены страниц 
+расстояние между делениями определяется кол-вом страниц
+width слайдера / кол-во страниц = ширина одного деления
+
+*- ИСПРАВИТЬ, если у ноды нет дополнительных картинок, то блок images не выводится
++и убрать стили высоты и фона
+
+- сделать работу приложения с ФС через файловое АПИ node.js
 ---------------------------
+- сделать анимацию для offcanvas
 - сделать прелоад изображений
 
 https://qna.habr.com/q/220124
@@ -36,7 +67,7 @@ preloadImages(
 редактирование в *модальном окне
 	+- поля названия и область изображения становятся доступными для редактирования
 	- появл. кнопки сохранения изменений (в локальное хранилище) и удаления ноды 
-	- также появл. поле с названием json файла списка треков
+	- также появл. поле с названием json файла списка треков (возможно прикрепить дополнительный треклист)
 
 - как удалить несколько нод-плейлистов?
 
@@ -47,12 +78,10 @@ preloadImages(
 - при загрузке получать список плейлистов из /music/0_playlist
 для сравнения с количеством node
 
--------- mediaPlayer
-- сделать чтение информации из MP3-тегов
 
 -------------- верстка, шаблоны
-- сделать верстку элемента из блока blok-nodelist
-область со связанными ссылками и описанием нужно сделать
+*- сделать верстку элемента из блока blok-nodelist
+*область со связанными ссылками и описанием нужно сделать
 разворачиваемой
 
 {{title}}
@@ -64,6 +93,11 @@ preloadImages(
 {{updated}}
 {{tags}}
 ============================== EXPORT
+----------------- SQL
+UPDATE "field_data_field_related_links" SET field_related_links_value = REPLACE(field_related_links_value, '[a', '<a')
+UPDATE "field_data_field_related_links" SET field_related_links_value = REPLACE(field_related_links_value, 'json"]', 'json">')
+
+-----------------
 <xroot>
 	<database name="music">
 	
@@ -389,3 +423,16 @@ HTTP_REFERER = http://i5/sites/romanlaptev.github.io/webapps/webapp_music/musFM.
     *несохраненный плейлист имеет в заголовке название - “Новый плейлист”
     *добавить кнопку Save playlist - запрос сохранения json-плейлиста плеера в файл (доработать для ASPX API)
     *добавление в плейлист треков происходит при копировании файлов из файловой панели в панель плейлиста
+	
+========================= DIRECT WEB LINK
+https://cloclo12.datacloudmail.ru/weblink/view/31T7PNEnzYTm/05%20-%20Last%20Caress-Green%20Hell.mp3
+
+https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/icons/02.jpg
+
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/Heinlein_Citizen%20of%20the%20Galaxy_eng.html
+
+https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg
+
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/03_Motorbreath.mp3
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/06_Whiplash.mp3
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/04_Jump_In_The_Fire.mp3
