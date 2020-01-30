@@ -481,10 +481,17 @@ if( target.className.indexOf("no-block-link") === -1){
 
 				if( target.tagName === "A"){
 
-//------------------------------- close buttons
-					if ( target.href.indexOf("#close") !== -1){
+//------------------------------- close, toggle buttons
+					if ( target.href.indexOf("#close") !== -1 ||
+							 target.href.indexOf("#toggle") !== -1
+						){
 						var id = $( target ).data("toggle");
 	//console.log( id );
+							if( id === "#field-tracklist-url"){
+								$( id ).toggleClass("uk-hidden");
+								return;
+							}
+
 						$( id ).slideToggle( _vars.duration , function(e){
 	//console.log(arguments);
 							if( id === "#block-tags"){// reset tags select
@@ -521,7 +528,9 @@ if( target.className.indexOf("no-block-link") === -1){
 					}
 					
 //------------------------------- player, tracklist actions
-					if ( target.href.indexOf("q=load-tracklist&") !== -1 ){
+					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
+							target.href.indexOf("q=get-tracklist-url") !== -1
+					){
 						webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager();
 					}
@@ -691,8 +700,15 @@ func.logAlert( webApp.vars["logMsg"], "success");
 //-------------------------------------------- PLAYLIST
 			case "load-tracklist":
 				//var _nid = webApp.vars["GET"]["nid"];
+				
+				if( !webApp.vars["GET"]["url"] || 
+						webApp.vars["GET"]["url"].length === 0){
+					//webApp.vars["GET"]["url"] = "/music/0_playlists/Korpiklaani.json";
+					//_toggleModal( "#modal-edit-node" );
+					return false;
+				}
+				
 				webApp.player.loadTrackList({
-					//"trackListTitle": webApp.db.vars["nodes"][_nid]["title"][0]["text"],
 					"trackListUrl": webApp.vars["GET"]["url"]
 				})
 				.then(
@@ -703,11 +719,18 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					},
 					function( error ){
 console.log( "-- THEN, promise reject, ", error );
-console.log(arguments);					
+//console.log(arguments);					
 					}
 				);
 			break;
 			
+			case "get-tracklist-url":
+//console.log( $("#field-tracklist-url input").val() );			
+				$("#field-tracklist-url").addClass("uk-hidden");
+				webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
+				webApp.vars["GET"]["q"] = "load-tracklist";
+				_urlManager();
+			break;
 
 			case "clear-tracklist":
 				webApp.player.vars["trackList"] = [];

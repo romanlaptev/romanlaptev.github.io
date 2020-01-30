@@ -56,7 +56,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 		
 //for test
 //db\Manowar.json
@@ -67,6 +67,11 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		var url = p["trackListUrl"];
 		var _df =  new Promise( function(resolve, reject) {
 //console.log(resolve, reject);
+			if(!url){
+				reject( "-- error, empty url....", url );
+				return _df;
+			}
+			
 			$.getJSON( url, function(){
 //console.log("getJSON, default...");
 				})
@@ -92,7 +97,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 				
 				.fail(function( xhr, status, error ){
 	webApp.vars["logMsg"] = "error, getJSON fail";
-	webApp.vars["logMsg"] += ",  " + error +", "+ p.url;
+	webApp.vars["logMsg"] += ",  " + error +", "+ url;
 	func.logAlert( webApp.vars["logMsg"], "error");
 	console.log(xhr);
 					reject( status );
