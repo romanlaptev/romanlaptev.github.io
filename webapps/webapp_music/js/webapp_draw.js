@@ -5,13 +5,13 @@ function _draw( opt ){
 	var _vars = {
 		"templates":{
 
-			"blockPlayer" : '<div class="uk-card uk-card-default">\
+			"blockPlayer" : '<div class="uk-card uk-card-default uk-margin-small">\
 						<div class="row">\
 							<div class="uk-float-right">\
 									<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
-						<div class="uk-card-body w60">\
+						<div class="uk-card-body w60 uk-padding-small wrapper">\
 							<div>\
 								<h5 id="track-info"></h5>\
 <audio id="audio-player" controls="controls" class="w100"><source src="" />Tag <b>audio</b> not supported by this browser....</audio>\
@@ -27,8 +27,8 @@ function _draw( opt ){
 								<ul class="button-group uk-list">\
 <!--<button id="btn-play" class="btn btn-blue">play</button>\
 <button id="btn-pause" class="btn btn-blue">pause</button>-->\
-<li><a href="#?q=prev-track" class="uk-button uk-button-small uk-button-primary">previous track</a></li>\
-<li><a href="#?q=next-track" class="uk-button uk-button-small uk-button-default">next track</a></li>\
+<li><a href="#?q=prev-track" class="btn btn-blue">previous track</a></li>\
+<li><a href="#?q=next-track" class="btn btn-blue">next track</a></li>\
 								</ul>\
 							</div>\
 						</div>\
@@ -159,8 +159,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 	</div>\
 	<ul class="button-group">\
 		<li><input name="keyword" id="input-keyword" placeholder="enter keyword" autocomplete="off" value="" type="text" class="uk-input"></li>\
-		<li><button type="submit" class="uk-button uk-button-small uk-button-primary"><i class="icon-search"></i></button></li>\
-		<li><button type="reset" class="uk-button uk-button-small uk-button-danger"><i class="icon-remove"></i></button></li>\
+		<li><button type="submit" class="uk-button uk-button-small uk-button-primary no-block-link"><i class="icon-search no-block-link"></i></button></li>\
+		<li><button type="reset" class="uk-button uk-button-small uk-button-danger no-block-link"><i class="icon-remove no-block-link"></i></button></li>\
 	</ul>\
 </form>\
 							</div>\
@@ -244,7 +244,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 {{content}}\
 </div>',
 		"blockLinksList" : '<ul class="uk-card-body uk-text-center">{{list}}</ul>',
-		"blockLinksListItem" : '<li class="uk-inline"><a class="" href="{{url}}" target="_blank">{{title}}</a></li>',
+		"blockLinksListItem" : '<li class="uk-inline"><a class="no-block-link" href="{{url}}" target="_blank">{{title}}</a></li>',
 		//"blockLinksListItem3" : '<li>use specific template: {{template}},<br> {{url}} {{title}}</li>'//,
 		
 		//"blockLinksListItem6" : '<li>use specific template: {{template}}, {{url}} {{titles}}</li>',

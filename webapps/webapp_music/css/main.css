@@ -176,7 +176,8 @@ label {
 .log-panel {
 	margin-bottom: 0;
 	margin-top: 5px;
-	background-color: #b0c4de;
+	/* background-color: #b0c4de; */
+background-color: #c1d4ee;
 	position: fixed;
 	/*bottom: 0;*/
 	top: 10px;
@@ -341,13 +342,11 @@ overflow-y: auto !important;
 	background: #ff5251;
 	color: #fff;
 }
-/*
-.img-not-load {
-	background: #ff5251;
-	color: #ffcdd0;
-	padding: 15px 29px 15px 15px;
+.uk-alert-warning {
+	background: #ffb515;
+	color: #000;
 }
-*/
+
 
 .my-offcanvas {
 	display:none;
@@ -613,6 +612,11 @@ min-height: 200px;
 margin: auto;
 word-break: break-all;
 }
+.node .block-images-not-load {
+padding: 0px 5px 0px 5px;
+color: #666;
+}
+
 
 .node .block-content{
 display:none;
@@ -676,6 +680,12 @@ margin: 3px;
 
 .button-group li {
 	display: inline-block;
+}
+
+
+#block-player .wrapper {
+	border: 1px solid #ccc;
+	margin: auto;
 }
 
 #block-tracklist {

@@ -3,7 +3,8 @@ function _player( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"trackListTitle": "new playlist",
+		"trackListName": "new track list",
+		"trackListTitle": "",
 		"trackList":  [
 // {"title" : "Hit The Lights", "mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
 // {"title" : "The Four Horsemen","artist" : "Metallica","mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"},
@@ -14,10 +15,12 @@ function _player( opt ){
 	};
 
 	var _init = function( opt ){
+		
+		_vars["trackListTitle"] =  _vars["trackListName"];
+		
 		//_vars.$audioplayer = $("#audio-player")[0];
 		_vars.$audioplayer = func.getById("audio-player");
 		_vars.$audioplayer.volume = 0.4;
-
 //--------------------------
 		$(_vars.$audioplayer).on("ended", function(e){
 console.log(e);

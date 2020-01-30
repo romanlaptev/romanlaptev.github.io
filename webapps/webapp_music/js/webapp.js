@@ -398,11 +398,13 @@ if( form.elements.targetField.length > 0){
 //console.log( event.eventPhase );
 //console.log( "preventDefault: " + event.preventDefault );
 
-if( target.tagName === "A" || target.tagName === "SPAN"){
+//if( target.href === "A" || target.tagName === "SPAN"){
+//if( target.href === "A"){
+if( target.className.indexOf("no-block-link") === -1){
 			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 			event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-}
 			_clickHandler( target );
+}
 		});
 		
 //---------------------------------
@@ -534,6 +536,9 @@ if( target.tagName === "A" || target.tagName === "SPAN"){
 						if( webApp.player.vars["trackList"].length > 0){
 							webApp.vars["GET"] = func.parseGetParams( target.href );
 							webApp.app.urlManager();
+						} else {
+webApp.vars["logMsg"] = "warning, not load media track list ...";
+func.logAlert(webApp.vars["logMsg"], "warning");
 						}
 					}
 
@@ -706,7 +711,7 @@ console.log(arguments);
 
 			case "clear-tracklist":
 				webApp.player.vars["trackList"] = [];
-				webApp.player.vars["trackListTitle"] = "new_playlist";
+				webApp.player.vars["trackListTitle"] = webApp.player.vars["trackListName"];
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 			break;
 
@@ -1055,7 +1060,8 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 					//webApp.vars["logMsg"] += ", waiting time: " + e["timeStamp"] / 1000 + " sec";
 	//console.log(e.target.parentNode);				
 					var _blockImages = e.target.parentNode;
-					_blockImages.style.background = "transparent";
+					//_blockImages.style.background = "transparent";
+					_blockImages.className = "block-images-not-load";
 					e.target.outerHTML = "<div class='img-not-load'>"+ webApp.vars["logMsg"] +"</div>";
 				}
 
