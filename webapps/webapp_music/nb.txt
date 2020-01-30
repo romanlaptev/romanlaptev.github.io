@@ -422,3 +422,16 @@ HTTP_REFERER = http://i5/sites/romanlaptev.github.io/webapps/webapp_music/musFM.
     *несохраненный плейлист имеет в заголовке название - “Новый плейлист”
     *добавить кнопку Save playlist - запрос сохранения json-плейлиста плеера в файл (доработать для ASPX API)
     *добавление в плейлист треков происходит при копировании файлов из файловой панели в панель плейлиста
+	
+========================= DIRECT WEB LINK
+https://cloclo12.datacloudmail.ru/weblink/view/31T7PNEnzYTm/05%20-%20Last%20Caress-Green%20Hell.mp3
+
+https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/icons/02.jpg
+
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/Heinlein_Citizen%20of%20the%20Galaxy_eng.html
+
+https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/book_history_engraving/img_preview/05.French_engraving.jpg
+
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/03_Motorbreath.mp3
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/06_Whiplash.mp3
+https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/04_Jump_In_The_Fire.mp3
