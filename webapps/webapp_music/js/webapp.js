@@ -733,6 +733,7 @@ console.log( "-- THEN, promise reject, ", error );
 			break;
 
 			case "clear-tracklist":
+				webApp.player.vars["numTrack"] = 0;
 				webApp.player.vars["trackList"] = [];
 				webApp.player.vars["trackListTitle"] = webApp.player.vars["trackListName"];
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );

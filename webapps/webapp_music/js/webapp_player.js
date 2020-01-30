@@ -133,11 +133,11 @@ console.log(p);
 				item["number"] = n+1;
 			});
 		} else {
+			_vars["numTrack"] = 0;
 			_vars["trackList"] = tracks;
 		}
 		
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
-		//_vars["numTrack"] = 0;
 		_setActiveTrack( _vars["numTrack"] );
 		
 	}//end _formTrackList()
