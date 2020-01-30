@@ -129,7 +129,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		}
 		
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
-		_vars["numTrack"] = 0;
+		//_vars["numTrack"] = 0;
 		_setActiveTrack( _vars["numTrack"] );
 		
 	}//end _formTrackList()
@@ -281,7 +281,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		webApp.player.vars["trackList"] = arr;
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
-		//_setActiveTrack( numTrack );
+		_setActiveTrack( _vars["numTrack"] );
 	}//end _removeTrack()
 
 
