@@ -568,9 +568,13 @@ left: 1px;
 }
 
 
-#block-links .content a {
-	color: #fff;
+#block-links li {
+	padding: 5px;
 }
+
+/* #block-links a {
+	color: #fff;
+} */
 
 
 .node {
