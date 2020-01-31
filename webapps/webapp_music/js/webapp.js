@@ -80,12 +80,11 @@ var webApp = {
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
-				"templateID" : "blockFileManager",
-				"content" : function(){
-					this.content = "";
-					webApp.draw.buildBlock( this );
-					webApp.fileManager.init();
-				}
+				"templateID" : "blockFileManager"//,
+				//"content" : function(){
+					//this.content = "";
+					//webApp.draw.buildBlock( this );
+				//}
 			}, //end block
 
 //===========================================
@@ -167,6 +166,10 @@ console.log("init webapp!");
 		//webApp.iDBmodule.init();
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
+		
+		if( webApp.vars["use_file_manager"] ){
+			webApp.fileManager.init();
+		}
 
 		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
 		this["vars"]["blocksByName"]["blockTrackList"] = 	this.vars["blocks"][1];

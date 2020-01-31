@@ -4,17 +4,21 @@
 //echo phpversion();
 //echo PHP_OS;
 
-//$logMsg = "PHP version: ".phpversion();
-//_log( $logMsg );
 
-echo 2+2;
+//echo 2+2;
 
-$_vars=array();
+if ( function_exists("json_encode") ){
+	$info["testResult"] = 2+2;
+	$info["version"] = phpversion();
+	$jsonStr = json_encode($info);
+	echo $jsonStr;
+} else {
+	//$msg = "error, not support function json_encode(). incorrect PHP version - ".phpversion().", need PHP >= 5.2.0";
+	//$info = "{\"error_code\" : \"notSupportJSON\", \"message\" : \""+$msg+"\"}";
+	//formJSON();
+}
 
-$msg = "error, not support function json_encode(). incorrect PHP version - ".phpversion().", need PHP >= 5.2.0";
-$_vars["log"][] = "{\"error_code\" : \"notSupportJSON\", \"message\" : \""+$msg+"\"}";
-//formJSON();
-
+/*
 //output log in JSON format
 function formJSON(){
 	global $_vars;
@@ -33,5 +37,6 @@ function formJSON(){
 		echo $logStr;
 	}
 }//end formJSON()
+*/
 
 ?>
