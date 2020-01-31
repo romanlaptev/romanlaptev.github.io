@@ -281,7 +281,10 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockPlayer"] );
 		_buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
-		_buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+		
+		if( webApp.vars["use_file_manager"] ){
+			_buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+		}
 		
 		_buildBlock( webApp.vars["blocksByName"]["blockFooterLinks"] );
 

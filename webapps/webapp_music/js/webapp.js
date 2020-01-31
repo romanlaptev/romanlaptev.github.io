@@ -6,19 +6,18 @@ var webApp = {
 	//"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
 	"player" : _player(),
-
+	"fileManager" : _fileManager(),
+	
 	"vars" : {
 		"app_title" : "music collection",
 		"logMsg" : "",
-		//"messages" : {
-			////"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
-			//"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>",
-			//"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
-		//},
 		"GET" : {},
 		"audioTypes" : {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
+		
+		"use_file_manager": true,
+		"support" : func.testSupport(),
 		
 		"blocks": [
 //===========================================
@@ -82,7 +81,11 @@ var webApp = {
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
 				"templateID" : "blockFileManager",
-				//"content" : "<u>static text</u>",
+				"content" : function(){
+					this.content = "";
+					webApp.draw.buildBlock( this );
+					webApp.fileManager.init();
+				}
 			}, //end block
 
 //===========================================
