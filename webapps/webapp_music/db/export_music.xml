@@ -183,6 +183,7 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/SkaP.json">SkaP.json.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1022">music.yandex.ru</a></li>
 	</related_links>
 
 	<node_tags>
@@ -198,7 +199,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">31-Jul-2013 22:12:08</published>
-	<updated format="d-M-Y H:i:s">01-Feb-2020 08:27:47</updated>
+	<updated format="d-M-Y H:i:s">01-Feb-2020 23:27:01</updated>
 </node>
 
 <node type="playlist">

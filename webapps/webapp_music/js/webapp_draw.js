@@ -236,7 +236,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 			},
 			related_links : {
 				"listTpl" : '<ul class="related-links">{{list}}</ul>', 
-				"itemTpl" : '<li><a href="{{href}}" data-type="{{data-type}}" target="_blank">{{text}}</a></li>',
+				"itemTpl" : '<li><a href="{{href}}" data-type="{{data-type}}" target="_blank" class="no-block-link">{{text}}</a></li>',
 			},
 			node_tags : {
 "listTpl" : '<div><ul class="list-inline node-tags">{{list}}</ul></div>', 
