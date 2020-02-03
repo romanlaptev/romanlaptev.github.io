@@ -4,16 +4,30 @@ function _fileManager( opt ){
 	// private variables and functions
 	var _vars = {
 		"testPHP_url": "api/test.php",
-		"supportPHP": false//,
+		"supportPHP": false,
 		//"testUrlASPX": "api/aspx/test.aspx",
-	};
+		
+		"alias" : "/music",
+		"startFsPath" : "/home/www/music"
+	};//end _vars
 
 	var _init = function( opt ){
 //console.log("init _fileManager");
+
+
 		_phpSupport().then(
 			function( res ){
 //console.log( "-- THEN, promise resolve" );
 //console.log(res);
+					//_vars["copy_url"] = "api/copy.php";
+					//_vars["rename_url"] = "api/rename.php";
+					//_vars["remove_url"] = "api/remove.php";
+					//_vars["mkdir_url"] = "api/mkdir.php";
+					//_vars["save_pls_url"] = "api/save_pls.php"
+					_getFileList({
+						"fileListUrl": "api/filelist.php", 
+						"dirName" : _vars["startFsPath"]
+					});
 			}, 
 			function( error ){
 //console.log( "-- THEN, promise reject, ", error );
@@ -65,41 +79,83 @@ console.log( "-- errorThrown: ", errorThrown );
 		func.logAlert( _vars.logMsg, "error");
 	}//end
 	
-	function _getFileList(){
-		
-		var fsNames = {
-			"folders" : [
-{"name": "A","fs_path": "/mnt/d2/music/A"},
-{"name": "E","fs_path": "/mnt/d2/music/E"}
-			],
-			"files": [
-{"name": "log.txt", "url": "/music/log.txt"}
-			]
+	function _getFileList(opt){
+		var p = {
+			"fileListUrl": false, 
+			"dirName" : false
 		};
-		
-		var html_subfolders =  webApp.draw.wrapData({
-			"data": fsNames["folders"],
-			"templateID": "subfolders_listTpl",
-			"templateListItemID": "subfolders_itemTpl"
-		});
-//console.log( html_subfolders );
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
 
-		var html_files =  webApp.draw.wrapData({
-			"data": fsNames["files"],
-			"templateID": "files_listTpl",
-			"templateListItemID": "files_itemTpl"
-		});
+		if( !p.fileListUrl || !p.dirName){
+_vars["logMsg"] = "-- error, incorrect input parameters....";
+console.log( _vars["logMsg"] );
+			return false;
+		}
 
-		var html = webApp.draw.wrapData({
-			"data": {
-				"subfolders": html_subfolders,
-				"files": html_files
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			url: p.fileListUrl,
+			data: ({dir: p.dirName}),
+			success: function(data, status){
+//console.log("-- status: " + status);
+console.log("-- data: ", data);
+				//__formHtml( data );
 			},
-			"templateID": "fileList"
+			
+			error:function (XMLHttpRequest, textStatus, errorThrown) {
+//console.log( "XMLHttpRequest: ", XMLHttpRequest );
+//console.log( "textStatus: ", textStatus );
+console.log( "-- errorThrown: ", errorThrown );
+			}
 		});
 		
-//console.log( html );
-		return html;
+		function __formHtml( data ){
+			// var data = {
+				// "folders" : [
+	// {"name": "A","fs_path": "/mnt/d2/music/A"},
+	// {"name": "E","fs_path": "/mnt/d2/music/E"}
+				// ],
+				// "files": [
+	// {"name": "log.txt", "url": "/music/log.txt"}
+				// ]
+			// };
+
+			var html_subfolders = "";
+			if( data["subfolders"] ){
+				html_subfolders =  webApp.draw.wrapData({
+					"data": data["subfolders"],
+					"templateID": "subfolders_listTpl",
+					"templateListItemID": "subfolders_itemTpl"
+				});
+			}
+	//console.log( html_subfolders );
+
+			var html_files = "";
+			if( data["files"] ){
+				html_files =  webApp.draw.wrapData({
+					"data": data["files"],
+					"templateID": "files_listTpl",
+					"templateListItemID": "files_itemTpl"
+				});
+			}
+
+			var html = webApp.draw.wrapData({
+				"data": {
+					"subfolders": html_subfolders,
+					"files": html_files
+				},
+				"templateID": "fileList"
+			});
+			
+	//console.log( html );
+			return html;
+		}//end __formHtml()
+		
 	}//end _getFileList()
 	
 	// public interfaces
