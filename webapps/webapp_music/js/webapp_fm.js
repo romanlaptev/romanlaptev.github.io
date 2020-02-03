@@ -65,13 +65,51 @@ console.log( "-- errorThrown: ", errorThrown );
 		func.logAlert( _vars.logMsg, "error");
 	}//end
 	
+	function _getFileList(){
+		
+		var fsNames = {
+			"folders" : [
+{"name": "A","fs_path": "/mnt/d2/music/A"},
+{"name": "E","fs_path": "/mnt/d2/music/E"}
+			],
+			"files": [
+{"name": "log.txt", "url": "/music/log.txt"}
+			]
+		};
+		
+		var html_subfolders =  webApp.draw.wrapData({
+			"data": fsNames["folders"],
+			"templateID": "subfolders_listTpl",
+			"templateListItemID": "subfolders_itemTpl"
+		});
+//console.log( html_subfolders );
+
+		var html_files =  webApp.draw.wrapData({
+			"data": fsNames["files"],
+			"templateID": "files_listTpl",
+			"templateListItemID": "files_itemTpl"
+		});
+
+		var html = webApp.draw.wrapData({
+			"data": {
+				"subfolders": html_subfolders,
+				"files": html_files
+			},
+			"templateID": "fileList"
+		});
+		
+//console.log( html );
+		return html;
+	}//end _getFileList()
+	
 	// public interfaces
 	return{
 		vars : _vars,
 		init:	function(){ 
 //console.log(arguments);
 			return _init(); 
-		}
+		},
+		getFileList: _getFileList
 	};
 	
 }//end _fileManager()

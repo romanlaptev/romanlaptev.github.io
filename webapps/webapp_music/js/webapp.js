@@ -80,11 +80,15 @@ var webApp = {
 			{
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
-				"templateID" : "blockFileManager"//,
-				//"content" : function(){
-					//this.content = "";
-					//webApp.draw.buildBlock( this );
-				//}
+				"templateID" : "blockFileManager",
+				"content" : function(){
+					var html = webApp.app.formHtmlFileManager();
+//console.log( html );
+					if( html && html.length > 0){
+						this.content = html;
+						webApp.draw.buildBlock( this );
+					}
+				}
 			}, //end block
 
 //===========================================
@@ -994,6 +998,20 @@ console.log( webApp.vars["logMsg"] );
 		return html;
 	}//_formHtmlTrackList()
 
+	function _formHtmlFileManager(){
+		var html = webApp.draw.wrapData({
+			"data": {
+				"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
+				"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
+				"filelist" : webApp.fileManager.getFileList()
+			}, 
+			"templateID": "contentFileManager"
+		});
+//console.log( html );
+		return html;
+		
+	}//_formHtmlFileManager()
+
 
 	function _changePage( pageNumValue){
 //console.log( pageNumValue );
@@ -1120,6 +1138,7 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
 		formHtmlTrackList : _formHtmlTrackList,
+		formHtmlFileManager: _formHtmlFileManager,
 		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 

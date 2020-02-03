@@ -5,6 +5,7 @@ function _draw( opt ){
 	var _vars = {
 		"templates":{
 
+//=========================================
 			"blockPlayer" : '<div class="uk-card uk-card-default uk-margin-small">\
 						<div class="row">\
 							<div class="uk-float-right">\
@@ -35,6 +36,7 @@ function _draw( opt ){
 {{content}}\
 					</div>',
 			
+//=========================================
 			"blockTrackList" : '<div class="wrapper">{{content}}</div>',
 			"trackList" : '\
 <div class="row">\
@@ -74,6 +76,7 @@ function _draw( opt ){
 </li>',
 
 			
+//=========================================
 			"blockTags" : "{{block-tag-groups}} {{block-taglist}}",
 			"blockTagGroups" : '\
 						<div class="uk-card uk-card-primary">\
@@ -101,8 +104,9 @@ function _draw( opt ){
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
 "tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
 			
-			"blockFileManager" : '<div class="uk-card uk-card-default">\
-						<div class="row">\
+//=========================================
+			"blockFileManager" : '<div class="uk-card uk-card-default wrapper">{{content}}</div>',
+			"contentFileManager" : '<div class="row">\
 							<div class="uk-float-left uk-padding-small">\
 									<b>File manager</b>\
 							</div>\
@@ -112,43 +116,45 @@ function _draw( opt ){
 						</div>\
 						<div class="uk-card-body uk-padding-small">\
 							<div class="wrapper">\
-								<div class="">\
-									<ul class="menu-file-action button-group">\
-										<button id="checkAll">select all</button>\
-										<button id="clearAll">clear all</button>\
-		<li><a href="#modal-rename" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
-		<li><a class="group-remove uk-button uk-button-small uk-button-danger" href="#">delete selected</a></li>\
-		<li><a href="#modal-" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
-									</ul>\
-								</div>\
-								<div class="uk-padding-small">\
-									<a class="up-link btn" href="/mnt/d2"><span class="icon-level-up"></span></a>\
-									<span class="dirname">/mnt/d2/music</span>\
-								</div>\
-								<div class="wfm">\
-											<ul class="folders-list uk-list uk-list-striped">\
-												<li>\
-													<input name="file[]" value="E" type="checkbox">\
-													<a class="subfolder" href="/mnt/d2/music/E"><span class="icon-folder"></span> E</a>\
-												</li>\
-												<li>\
-													<input name="file[]" value="0" type="checkbox">\
-													<a class="subfolder" href="/mnt/d2/music/0"><span class="icon-folder"></span> 0</a>\
-												</li>\
-											</ul>\
-											<ul class="files-list uk-list uk-list-striped">\
-												<li>\
-													<div class="file">\
-														<input name="file[]" value="log.txt" type="checkbox">\
-														<a href="/music/log.txt" target="_blank">log.txt</a>\
-													</div>\
-												</li>\
-											</ul>\
-								</div><!-- /wfm -->\
-							</div><!-- /files -->\
-						</div>\
-					</div>',
-			
+{{buttons_fs_action}}\
+{{btn_change_level}}\
+{{filelist}}\
+							</div>\
+						</div>',
+					
+			"buttonsFSaction": '<div class="">\
+	<ul class="btn-fs-action button-group">\
+		<button id="checkAll">select all</button>\
+		<button id="clearAll">clear all</button>\
+<li><a href="#?q=rename-file" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
+<li><a href="#?q=delete-file" class="group-remove uk-button uk-button-small uk-button-danger" >delete selected</a></li>\
+<li><a href="#?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
+	</ul>\
+</div>',
+
+		"btnChangeLevel": '<div class="uk-padding-small">\
+	<a class="up-link btn" href="#{{fs_level_up}}"><span class="icon-level-up"></span></a>\
+	<span class="dirname">{{fs_path}}</span>\
+</div>',
+
+			"fileList": '<div class="wfm">{{subfolders}}{{files}}</div>',
+
+			"subfolders_listTpl" : '<ul class="folders-list uk-list uk-list-striped">{{list}}</ul>', 
+			"subfolders_itemTpl" : '<li>\
+<input name="file[]" value="{{name}}" type="checkbox">\
+<a class="subfolder" href="{{fs_path}}"><span class="icon-folder"></span>{{name}}</a>\
+</li>',
+
+		"files_listTpl" : '<ul class="files-list uk-list uk-list-striped">{{list}}</ul>', 
+		"files_itemTpl" : '<li>\
+	<div class="file">\
+		<input name="file[]" value="{{name}}" type="checkbox">\
+		<a href="{{url}}" target="_blank">{{name}}</a>\
+	</div>\
+</li>',
+
+
+//=========================================
 			"blockPager" : '<div class="row">\
 <div class="uk-float-left">\
 records: <b><span id="total-records">{{total_nodes}}</span></b> \
@@ -243,6 +249,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 "itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}" class="">{{text}}</a></li>',
 			},
 			
+//=========================================
 		"blockFooterLinks" : '<!-- <h2>{{block_title}}</h2>-->\
 <div class="uk-card uk-card-primary">\
 {{content}}\
@@ -392,8 +399,6 @@ console.log( webApp.vars["logMsg"] );
 	function _wrapData( opt ){
 		var p = {
 			"data": null,
-			//"type" : "",
-			//"wrapType" : "menu",
 			"templateID" : false,
 			"templateListItemID": false
 		};
@@ -420,23 +425,11 @@ console.log("-- _draw.wrapData(),  error, not find template, id: " + p.templateI
 		var html = "";
 //console.log( p["data"].length );
 
-		p["wrapType"] = "item";
 		if( p["data"].length > 0 ){
-			p["wrapType"] = "list";
+			html = __formListHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
+		} else {
+			html = __formNodeHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
 		}
-		switch( p["wrapType"] ){
-			case "item" :
-				html = __formNodeHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
-			break;
-			case "list" :
-				if( !p["templateListItemID"] ){
-webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
-console.log(webApp.vars["logMsg"]);							
-					return false;
-				}
-				html = __formListHtml( p["data"], webApp.draw.vars["templates"][ p.templateID ] );
-			break;
-		}//end switch
 		
 //console.log(html);
 		return html;
@@ -586,6 +579,192 @@ console.log("-- warning, empty field....", key2, item[key2]);
 
 	}//end _wrapData()
 
+/*
+	function _wrapDataMod( opt ){
+		var p = {
+			"data": null,
+			"templateID" : false,
+			"template" : false,
+			"templateListItemID": false,
+			"templateListItem": false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] || p["data"].length === 0){
+console.log("-- _draw.wrapData(), error, incorrect data ...");
+			return false;
+		}
+		
+		var _template = p.templateID;
+console.log(_template);
+
+		if( ! _template || _template.length === 0 ){
+console.log("-- error, _draw.wrapData(),  template is not defined...");
+			return false;
+		}
+		
+		
+		var html = "";
+//console.log( p["data"].length );
+
+		if( p["data"].length > 0 ){
+			html = __formListHtml( p["data"], _template );
+		} else {
+			html = __formNodeHtml( p["data"], _template );
+		}
+		
+//console.log(html);
+		return html;
+
+		//function __formNodeHtml( data, _html ){
+		function __formNodeHtml( data, tpl ){
+//----------------- load unique template for data element
+//hide element - write not defined template ID
+		if( data["template"]){
+//console.log(data);
+//console.log(data["template"].length);
+			
+			if( data["template"].length > 0){
+				var tplName = data["template"];
+				if( webApp.draw.vars["templates"][ tplName ] ){
+					tpl = webApp.draw.vars["templates"][ tplName ];
+				} else {
+//console.log("-- warning, no draw element because not defined template: '" + tplName + "'...");
+//console.log(data);
+					return "";
+				}
+			}
+
+		}
+			
+			var _html = tpl;
+			for( var key in data ){
+//console.log(key, data[key]);
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, data[key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+//--------------- clear undefined keys (text between {{...}} )
+			_html = _html.replace( new RegExp(/{{(.*?)}}/g), "");
+
+			return _html;
+		}//end __formNodeHtml()
+		
+		function __formListHtml( data, tpl ){
+//console.log( data);
+//console.log( data instanceof Array, data);
+			var test = data instanceof Array;
+			if( !test){
+console.log("-- error, info block data  is not instanceof Array: ", typeof data, data );
+				return false;
+			}
+			
+			var listHtml = "";
+			for( var n = 0; n < data.length; n++){
+//console.log( n );
+//console.log( data[n], typeof data[n], data.length);
+
+				//form list items
+				var item = data[n];
+				
+				var itemHtml = tpl;
+//----------------- load unique template for data element
+				if( item["template"] && item["template"].length > 0){
+					var tplName = item["template"];
+					if( webApp.draw.vars["templates"][ tplName ] ){
+						itemHtml = webApp.draw.vars["templates"][ tplName ];
+					} else {
+console.log("-- warning, not found template, ", tplName );
+						continue;
+					}
+				}
+
+//--------------- get keys from template (text between {{...}} )
+				//if(n === 1){
+					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
+					for(var n1 = 0; n1 < tplKeys.length; n1++){
+						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
+					}//next
+//console.log( tplKeys, p.templateListItemID, item, itemHtml );
+				//}
+//---------------
+
+				//make copy object item
+				var jsonNode = JSON.stringify( item );
+				var _tmp = JSON.parse( jsonNode);
+				
+				//for( var key2 in item){
+				for( var n1 = 0; n1 < tplKeys.length; n1++){
+					var key2 = tplKeys[n1];
+//console.log(item[key2] instanceof Array, key2, item[key2]);
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}
+
+					if( item[key2] instanceof Array ){//child array in data element
+						if(item[key2].length === 0){
+console.log("-- warning, empty field....", key2, item[key2]);
+//continue;	
+							//item[key2] = "<span class='not-found-item 1'>not found " + key2 +"</span>";
+						} else {
+							//read templates for sub list
+							var subOrdList = _vars["templates"][key2]["listTpl"];
+							var itemTpl = _vars["templates"][key2]["itemTpl"];
+//console.log(subOrdList);
+//console.log(itemTpl);
+//console.log(item[key2], key2);
+				
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+//console.log( subOrdListHtml );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+							//item[key2] = subOrdList;
+							
+							//do not add HTML code to item object!!!
+							_tmp[key2] = subOrdList;
+						}							
+					}
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}						
+						if( typeof item[key2] === "undefined"){
+//if(n === 1){
+//console.log(key2, item[key2], typeof item[key2]);
+//}						
+							//itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item 2'>not found " + key2 +"</span>");
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "");
+						} else {
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
+						}
+					}
+					
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+
+			}//next
+			
+			_html = tpl.replace("{{list}}", listHtml);
+			return _html;
+			
+		}//end __formListHtml
+
+	}//end _wrapDataMod()
+*/
 	
 	function _updatePager(opt){
 		
@@ -622,6 +801,7 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		wrapData:	function( opt ){ 
 			return _wrapData( opt ); 
 		},
+		//wrapDataMod: _wrapDataMod,
 		updatePager: _updatePager
 	};
 }//end _draw()
