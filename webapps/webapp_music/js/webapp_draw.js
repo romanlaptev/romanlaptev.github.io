@@ -148,7 +148,13 @@ function _draw( opt ){
 		"files_itemTpl" : '<li>\
 	<div>\
 		<input name="file[]" value="{{name}}" type="checkbox">\
-		<a class="file" href="#?q=get-file&filename={{name}}" target="_blank">{{name}}</a>\
+		<a class="file no-block-link" href="{{url}}" target="_blank">{{name}}</a>\
+	</div>\
+</li>',
+		"files_itemTpl_block" : '<li>\
+	<div>\
+		<input name="file[]" value="{{name}}" type="checkbox">\
+		<a class="file" href="{{url}}">{{name}}</a>\
 	</div>\
 </li>',
 

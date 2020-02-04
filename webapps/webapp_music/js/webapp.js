@@ -575,7 +575,7 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 
 //------------------------------- File system actions
 					if ( target.href.indexOf("q=get-folder") !== -1 ||
-							target.href.indexOf("q=get-file") !== -1 ||
+							//target.href.indexOf("q=get-file") !== -1 ||
 							target.href.indexOf("q=level-up") !== -1
 					){
 						webApp.fileManager.urlManager( target );

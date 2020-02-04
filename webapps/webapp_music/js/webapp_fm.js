@@ -152,6 +152,20 @@ console.log( "-- errorThrown: ", errorThrown );
 
 			var html_files = "";
 			if( data["files"] ){
+//----------------------- create url path
+for( var n = 0; n < data["files"].length; n++){
+	var _file = data["files"][n];
+	var startPos = _vars.fsPath.indexOf( _vars.alias );
+	if( startPos !== -1){
+		var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
+		_file["url"] = urlPath + "/" + _file["name"];
+	} else {
+		_file["url"] = "#";
+		_file["template"] = "files_itemTpl_block";
+	}
+}//next				
+//-----------------------
+
 				html_files =  webApp.draw.wrapData({
 					"data": data["files"],
 					"templateID": "files_listTpl",
@@ -242,11 +256,7 @@ console.log( "-- THEN, promise rejected", res );
 						}
 					}
 				});
-
 			break;
-			
-			//case "get-file":
-			//break;
 			
 //--------------------------------------------
 			default:
