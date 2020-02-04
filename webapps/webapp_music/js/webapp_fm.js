@@ -87,6 +87,10 @@ console.log( "-- errorThrown: ", errorThrown );
 	
 	
 	function _getFileList(opt){
+		
+		var $d = $.Deferred();
+//console.log( $d );
+
 		var p = {
 			"dirName" : false
 		};
@@ -99,11 +103,9 @@ console.log(p);
 		if( !p.dirName){
 _vars["logMsg"] = "-- error, incorrect input parameters....";
 console.log( _vars["logMsg"] );
-			return false;
+			$d.reject( false );
 		}
 		
-		var $d = $.Deferred();
-//console.log( $d );
 		
 		$.ajax({
 			type: "GET",
@@ -120,7 +122,7 @@ console.log("-- data: ", data);
 			
 			error:function (XMLHttpRequest, textStatus, errorThrown) {
 //console.log( "XMLHttpRequest: ", XMLHttpRequest );
-//console.log( "textStatus: ", textStatus );
+console.log( "textStatus: ", textStatus );
 console.log( "-- errorThrown: ", errorThrown );
 				$d.reject( false );
 			}
@@ -196,6 +198,9 @@ console.log( "-- errorThrown: ", errorThrown );
 			
 			function(res){
 console.log( "-- THEN, promise rejected", res );
+					if( typeof opt["postFunc"] === "function"){
+						opt["postFunc"]( res );
+					}
 			}
 			
 		);//end then
