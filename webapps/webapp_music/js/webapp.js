@@ -82,12 +82,17 @@ var webApp = {
 				"title" : "block file manager", 
 				"templateID" : "blockFileManager",
 				"content" : function(){
-					var html = webApp.app.formHtmlFileManager();
+					
+					webApp.fileManager.formHtmlFileManager({
+						"postFunc" : function(html){
 //console.log( html );
-					if( html && html.length > 0){
-						this.content = html;
-						webApp.draw.buildBlock( this );
-					}
+							if( html && html.length > 0){
+								webApp.vars["blocksByName"]["blockFM"].content = html;
+								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+							}
+						}
+					});
+					
 				}
 			}, //end block
 
@@ -172,42 +177,49 @@ console.log("init webapp!");
 		webApp.draw.init();
 		
 		if( webApp.vars["use_file_manager"] ){
-			webApp.fileManager.init();
+			webApp.fileManager.init({
+				"postFunc" : _initCallback
+			});
+		} else {
+			_initCallback();
 		}
 
-		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
-		this["vars"]["blocksByName"]["blockTrackList"] = 	this.vars["blocks"][1];
-		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][2];
-		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][3];
-		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][4];
-		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][5];
-		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][6];
-		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][7];
+		function _initCallback(){
+			webApp.vars["blocksByName"]["blockPlayer"] = 	webApp.vars["blocks"][0];
+			webApp.vars["blocksByName"]["blockTrackList"] = 	webApp.vars["blocks"][1];
+			webApp.vars["blocksByName"]["blockTagGroups"] = 	webApp.vars["blocks"][2];
+			webApp.vars["blocksByName"]["blockTagList"] = 	webApp.vars["blocks"][3];
+			webApp.vars["blocksByName"]["blockFM"] = 	webApp.vars["blocks"][4];
+			webApp.vars["blocksByName"]["blockPager"] = 	webApp.vars["blocks"][5];
+			webApp.vars["blocksByName"]["blockNodes"] = 	webApp.vars["blocks"][6];
+			webApp.vars["blocksByName"]["blockFooterLinks"] = 	webApp.vars["blocks"][7];
+			
+			webApp.vars["waitWindow"] = func.getById("win1");
+			webApp.vars["loadProgress"] = func.getById("load-progress");
+			webApp.vars["loadProgressBar"] = func.getById("load-progress-bar");
+			webApp.vars["numTotalLoad"] = func.getById("num-total-load");
+			webApp.vars["percentComplete"] = func.getById("percent-complete");
+			webApp.vars["totalBytes"] = func.getById("total");
+			webApp.vars["totalMBytes"] = func.getById("total-mb");
+			webApp.vars["loaded"] = func.getById("loaded");
+			webApp.vars["loadInfo"] = func.getById("load-info");
+			
+			webApp.vars.$offcanvas = $("#off-canvas2");
+			webApp.vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+			webApp.vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+			webApp.vars.$blockList = document.querySelector("#block-list");
+			
+			// hide input type="range" if not support
+			//https://learn.javascript.ru/dom-polyfill
+			var _testRangeType = $("#page-range").attr("type");
+	//console.log( _testRangeType );
+			if( _testRangeType !== "range"){
+				$("#page-range").hide();
+			}
+			
+			_runApp();
+		}//end _initCallback()
 		
-		this["vars"]["waitWindow"] = func.getById("win1");
-		this["vars"]["loadProgress"] = func.getById("load-progress");
-		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
-		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
-		this["vars"]["percentComplete"] = func.getById("percent-complete");
-		this["vars"]["totalBytes"] = func.getById("total");
-		this["vars"]["totalMBytes"] = func.getById("total-mb");
-		this["vars"]["loaded"] = func.getById("loaded");
-		this["vars"]["loadInfo"] = func.getById("load-info");
-		
-		this["vars"].$offcanvas = $("#off-canvas2");
-		this["vars"].$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
-		this["vars"].$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
-		this["vars"].$blockList = document.querySelector("#block-list");
-		
-		// hide input type="range" if not support
-		//https://learn.javascript.ru/dom-polyfill
-		var _testRangeType = $("#page-range").attr("type");
-//console.log( _testRangeType );
-		if( _testRangeType !== "range"){
-			$("#page-range").hide();
-		}
-		
-		_runApp();
 	},//end init()
 	
 	
@@ -559,6 +571,14 @@ if( target.className.indexOf("no-block-link") === -1){
 webApp.vars["logMsg"] = "warning, not load media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
 						}
+					}
+
+//------------------------------- File system actions
+					if ( target.href.indexOf("q=get-folder") !== -1 ||
+							target.href.indexOf("q=get-file") !== -1 ||
+							target.href.indexOf("q=level-up") !== -1
+					){
+						webApp.fileManager.urlManager( target );
 					}
 
 				}//end event
@@ -998,19 +1018,8 @@ console.log( webApp.vars["logMsg"] );
 		return html;
 	}//_formHtmlTrackList()
 
-	function _formHtmlFileManager(){
-		var html = webApp.draw.wrapData({
-			"data": {
-				"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
-				"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
-				"filelist" : webApp.fileManager.getFileList()
-			}, 
-			"templateID": "contentFileManager"
-		});
-//console.log( html );
-		return html;
-		
-	}//_formHtmlFileManager()
+
+
 
 
 	function _changePage( pageNumValue){
@@ -1138,7 +1147,6 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
 		formHtmlTrackList : _formHtmlTrackList,
-		formHtmlFileManager: _formHtmlFileManager,
 		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 

@@ -34,7 +34,11 @@ function DirFiles($dir, $media_types)
 		{ 
 			if(is_dir($dir."/".$file)) 
 			{ 
-				$files['subfolders'][] = ($dir."/".$file); 
+				$obj=new stdClass(); 
+				$obj->name=$file; 
+				//$obj->fs_path=$dir."/".$file;
+				$files['subfolders'][] = $obj; 
+				//$files['subfolders'][] = ($dir."/".$file); 
 			} 
 			else 
 			{ 
@@ -42,7 +46,10 @@ function DirFiles($dir, $media_types)
 				//$type = end($filename_arr);
 				//if (in_array($type, $media_types))
 				//{
-					$files['files'][] = $dir."/".$file; 
+					$obj=new stdClass(); 
+					$obj->name=$file; 
+					$files['files'][] = $obj; 
+					//$files['files'][] = $dir."/".$file; 
 				//}
 			} 
 		} 

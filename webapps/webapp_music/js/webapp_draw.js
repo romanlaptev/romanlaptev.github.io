@@ -133,8 +133,7 @@ function _draw( opt ){
 </div>',
 
 		"btnChangeLevel": '<div class="uk-padding-small">\
-	<a class="up-link btn" href="#{{fs_level_up}}"><span class="icon-level-up"></span></a>\
-	<span class="dirname">{{fs_path}}</span>\
+<a class="up-link icon-level-up" href="#?q=level-up"></a>\
 </div>',
 
 			"fileList": '<div class="wfm">{{subfolders}}{{files}}</div>',
@@ -142,14 +141,14 @@ function _draw( opt ){
 			"subfolders_listTpl" : '<ul class="folders-list uk-list uk-list-striped">{{list}}</ul>', 
 			"subfolders_itemTpl" : '<li>\
 <input name="file[]" value="{{name}}" type="checkbox">\
-<a class="subfolder" href="{{fs_path}}"><span class="icon-folder"></span>{{name}}</a>\
+<a class="subfolder" href="#?q=get-folder&foldername={{name}}"><span class="icon-folder"></span>{{name}}</a>\
 </li>',
 
 		"files_listTpl" : '<ul class="files-list uk-list uk-list-striped">{{list}}</ul>', 
 		"files_itemTpl" : '<li>\
-	<div class="file">\
+	<div>\
 		<input name="file[]" value="{{name}}" type="checkbox">\
-		<a href="{{url}}" target="_blank">{{name}}</a>\
+		<a class="file" href="#?q=get-file&filename={{name}}" target="_blank">{{name}}</a>\
 	</div>\
 </li>',
 

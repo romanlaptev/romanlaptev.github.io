@@ -8,30 +8,34 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		"startFsPath" : "/home/www/music"
+		"fsPath" : "/home/www/music",
+		"GET" : {}
 	};//end _vars
 
 	var _init = function( opt ){
-//console.log("init _fileManager");
-
-
+//console.log("init _fileManager", opt);
 		_phpSupport().then(
 			function( res ){
 //console.log( "-- THEN, promise resolve" );
 //console.log(res);
+					_vars["fileListUrl"] = "api/filelist.php"
 					//_vars["copy_url"] = "api/copy.php";
 					//_vars["rename_url"] = "api/rename.php";
 					//_vars["remove_url"] = "api/remove.php";
 					//_vars["mkdir_url"] = "api/mkdir.php";
 					//_vars["save_pls_url"] = "api/save_pls.php"
-					_getFileList({
-						"fileListUrl": "api/filelist.php", 
-						"dirName" : _vars["startFsPath"]
-					});
+					if( typeof opt["postFunc"] === "function"){
+						opt["postFunc"]();
+					}
+					return false;
 			}, 
 			function( error ){
 //console.log( "-- THEN, promise reject, ", error );
 				_noPHPSupport();
+				if( typeof opt["postFunc"] === "function"){
+					opt["postFunc"]();
+				}
+				return false;
 			}
 		);
 	};//end _init()
@@ -79,44 +83,53 @@ console.log( "-- errorThrown: ", errorThrown );
 		func.logAlert( _vars.logMsg, "error");
 	}//end
 	
+	
+	
+	
 	function _getFileList(opt){
 		var p = {
-			"fileListUrl": false, 
 			"dirName" : false
 		};
 		//extend p object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-//console.log(p);
+console.log(p);
 
-		if( !p.fileListUrl || !p.dirName){
+		if( !p.dirName){
 _vars["logMsg"] = "-- error, incorrect input parameters....";
 console.log( _vars["logMsg"] );
 			return false;
 		}
-
+		
+		var $d = $.Deferred();
+//console.log( $d );
+		
 		$.ajax({
 			type: "GET",
 			dataType: "json",
-			url: p.fileListUrl,
+			url: _vars["fileListUrl"],
 			data: ({dir: p.dirName}),
 			success: function(data, status){
 //console.log("-- status: " + status);
 console.log("-- data: ", data);
-				//__formHtml( data );
+				var html = __formHtml( data );
+//console.log( html );
+				$d.resolve( html );
 			},
 			
 			error:function (XMLHttpRequest, textStatus, errorThrown) {
 //console.log( "XMLHttpRequest: ", XMLHttpRequest );
 //console.log( "textStatus: ", textStatus );
 console.log( "-- errorThrown: ", errorThrown );
+				$d.reject( false );
 			}
 		});
+		return $d;
 		
 		function __formHtml( data ){
 			// var data = {
-				// "folders" : [
+				// "subfolders" : [
 	// {"name": "A","fs_path": "/mnt/d2/music/A"},
 	// {"name": "E","fs_path": "/mnt/d2/music/E"}
 				// ],
@@ -133,7 +146,7 @@ console.log( "-- errorThrown: ", errorThrown );
 					"templateListItemID": "subfolders_itemTpl"
 				});
 			}
-	//console.log( html_subfolders );
+//console.log( html_subfolders );
 
 			var html_files = "";
 			if( data["files"] ){
@@ -152,20 +165,103 @@ console.log( "-- errorThrown: ", errorThrown );
 				"templateID": "fileList"
 			});
 			
-	//console.log( html );
+//console.log( html );
 			return html;
 		}//end __formHtml()
 		
 	}//end _getFileList()
 	
+	
+	function _formHtmlFileManager(opt){
+
+		_getFileList({
+			"dirName" : _vars["fsPath"]
+		}).then(
+			
+			function( html ){
+//console.log( "-- THEN, promise resolved", html );
+					var html = webApp.draw.wrapData({
+						"data": {
+							"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
+							"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
+							"filelist" : html
+						}, 
+						"templateID": "contentFileManager"
+					});
+//console.log( html );
+					if( typeof opt["postFunc"] === "function"){
+						opt["postFunc"]( html );
+					}
+			}, 
+			
+			function(res){
+console.log( "-- THEN, promise rejected", res );
+			}
+			
+		);//end then
+
+	}//_formHtmlFileManager()
+
+	
+	
+	function _urlManager( target ){
+//console.log(target);
+		_vars["GET"] = func.parseGetParams( target.href );
+		switch( _vars["GET"]["q"] ) {
+			
+			case "get-folder":
+				_vars["fsPath"] = _vars["fsPath"] + "/" +_vars["GET"]["foldername"];
+				_formHtmlFileManager({
+					"postFunc" : function(html){
+//console.log( html );
+						if( html && html.length > 0){
+							webApp.vars["blocksByName"]["blockFM"].content = html;
+							webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+						}
+					}
+				});
+			break;
+			
+			case "level-up":
+				var upLink = _vars["fsPath"].substring( 0, _vars["fsPath"].lastIndexOf("/") );
+//console.log(_vars["fsPath"]);
+//console.log( upLink );
+
+				_vars["fsPath"] = upLink;
+				_formHtmlFileManager({
+					"postFunc" : function(html){
+//console.log( html );
+						if( html && html.length > 0){
+							webApp.vars["blocksByName"]["blockFM"].content = html;
+							webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+						}
+					}
+				});
+
+			break;
+			
+			//case "get-file":
+			//break;
+			
+//--------------------------------------------
+			default:
+console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);			
+			break;
+		}//end switch
+
+	}//end _urlManager()
+	
+	
 	// public interfaces
 	return{
 		vars : _vars,
-		init:	function(){ 
+		init:	function(opt){ 
 //console.log(arguments);
-			return _init(); 
+			return _init(opt); 
 		},
-		getFileList: _getFileList
+		getFileList: _getFileList,
+		formHtmlFileManager: _formHtmlFileManager,
+		urlManager:	_urlManager
 	};
 	
 }//end _fileManager()
