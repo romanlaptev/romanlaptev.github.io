@@ -518,7 +518,7 @@ var xTagList = xmlObj["xroot"]["childNodes"]["database"][n]["childNodes"][tagLis
 		}
 
 		if( !p["tagName"] || p["tagName"].length === 0){
-webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag name value...";
+webApp.vars["logMsg"] = "-- error, not found tag name value, webApp.db.getNodesByTag()...";
 console.log( webApp.vars["logMsg"] );
 			return false;
 		}

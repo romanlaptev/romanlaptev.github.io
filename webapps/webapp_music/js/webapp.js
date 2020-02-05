@@ -158,7 +158,7 @@ var webApp = {
 		"imageNotLoad": "img/image_not_load.png",
 		"menuWidth" : 270,//270px
 		
-		"init_action" : "get_data",
+		//"init_action" : "get_data",
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
@@ -236,14 +236,37 @@ function _runApp(){
 		webApp["vars"]["waitWindow"].style.display="block";
 	}
 	
-	webApp.vars["GET"]["q"] = webApp.vars["init_action"]; 
-	//var parseUrl = window.location.search; 
-	//if( parseUrl.length > 0 ){
-			//webApp.vars["GET"] = func.parseGetParams(); 
-	//}		
-	webApp.app.urlManager();
+	webApp.db.getData(function(res){
+//console.log(arguments);
+//console.log(window.location);	
+
+//clear block
+//setTimeout(function(){
+		if( webApp["vars"]["waitWindow"] ){
+			webApp["vars"]["waitWindow"].style.display="none";
+		}		
+//}, 1000*3);
+
+		if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+			_postLoad();
+		}
+	});
 
 }//end _runApp()
+
+function _postLoad(){
+
+	var parse_url = window.location.search; 
+	if( parse_url.length > 0 ){
+		webApp.app.urlManager( parse_url );
+	}
+	webApp.app.defineEvents();
+//-----------------
+console.log("-- start build page --");
+	webApp.draw.buildPage();
+console.log("-- end build page --");
+	
+}//_postLoad()
 
 
 
@@ -384,12 +407,12 @@ if( form.elements.targetField.length > 0){
 			// }		
 
 			if(res){
-				webApp.vars["GET"] = {
-					q: "search",
-					"targetField" : _targetField,
-					"keyword": _keyword
-				}; 
-				_urlManager();
+				// webApp.vars["GET"] = {
+					// q: "search",
+					// "targetField" : _targetField,
+					// "keyword": _keyword
+				// }; 
+				_urlManager( "#?q=search&targetField="+_targetField+"&keyword="+_keyword );
 			}
 
 		});//end event
@@ -519,16 +542,16 @@ if( target.className.indexOf("no-block-link") === -1){
 	//console.log(arguments);
 							if( id === "#block-tags"){// reset tags select
 								webApp.db.vars["queryRes"] = [];
-								webApp.vars["GET"]["q"] = "reset_tags_select"; 
-								_urlManager();
+								//webApp.vars["GET"]["q"] = "reset_tags_select"; 
+								_urlManager("?q=reset_tags_select");
 							}
 						});
 					}
 
 //------------------------------- get modal window
 					if ( target.href.indexOf("edit-node") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager( target.href );
 					}
 					if ( target.href.indexOf("#close-modal") !== -1){
 						var id = $( target ).data("toggle");
@@ -538,24 +561,24 @@ if( target.className.indexOf("no-block-link") === -1){
 //------------------------------- get tag list
 //#?q=get-tag-list&vid=2				
 					if ( target.href.indexOf("get-tag-list") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager( target.href );
 					}
 				
 //------------------------------- get node tags
 //#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
 					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.vars["GET"]["tag_name"] = $(target).text();
-						webApp.app.urlManager();
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						//webApp.vars["GET"]["tag_name"] = $(target).text();
+						webApp.app.urlManager( target.href+"&tag_name="+$(target).text() );
 					}
 					
 //------------------------------- player, tracklist actions
 					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
 							target.href.indexOf("q=get-tracklist-url") !== -1
 					){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager( target.href );
 					}
 					
 					if ( target.href.indexOf("q=load-track&") !== -1 ||
@@ -566,8 +589,8 @@ if( target.className.indexOf("no-block-link") === -1){
 											target.href.indexOf("edit-track") !== -1
 					){
 						if( webApp.player.vars["trackList"].length > 0){
-							webApp.vars["GET"] = func.parseGetParams( target.href );
-							webApp.app.urlManager();
+							//webApp.vars["GET"] = func.parseGetParams( target.href );
+							webApp.app.urlManager( target.href );
 						} else {
 webApp.vars["logMsg"] = "warning, not load media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
@@ -579,7 +602,7 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 							//target.href.indexOf("q=get-file") !== -1 ||
 							target.href.indexOf("q=level-up") !== -1
 					){
-						webApp.fileManager.urlManager( target );
+						webApp.fileManager.urlManager( target.href );
 					}
 
 				}//end event
@@ -590,48 +613,56 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 	}//end _defineEvents()
 
 
-	function _urlManager( target ){
-//console.log(target);
+	function _urlManager( url ){
+//console.log(url);
+		// if( url.indexOf("#") !== -1){
+			// url = url.replace("#", "");
+		// }
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+
+		if( webApp.vars["GET"]["num_page"] && webApp.vars["GET"]["num_page"].length > 0){
+			webApp.db.vars["numberPage"] = webApp.vars["GET"]["num_page"];
+		}
 		
 		switch( webApp.vars["GET"]["q"] ) {
 			
-			case "get_data":
-				webApp.db.getData(function(res){
-			//console.log(arguments);
-			//console.log(window.location);	
+			// case "get_data":
+				// webApp.db.getData(function(res){
+			// //console.log(arguments);
+			// //console.log(window.location);	
 			
-//clear block
-//setTimeout(function(){
-					if( webApp["vars"]["waitWindow"] ){
-						webApp["vars"]["waitWindow"].style.display="none";
-					}		
-//}, 1000*3);
+// //clear block
+// //setTimeout(function(){
+					// if( webApp["vars"]["waitWindow"] ){
+						// webApp["vars"]["waitWindow"].style.display="none";
+					// }		
+// //}, 1000*3);
 			
-					if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
-							var parse_url = window.location.search; 
-							if( parse_url.length > 0 ){
-								webApp.vars["GET"] = func.parseGetParams(); 
-								_urlManager();
-							} else {
-								if( webApp.vars["init_url"] ){
-									//parse_url = webApp.vars["init_url"].substring(2);
-									parse_url = webApp.vars["init_url"];
-						//console.log(parse_url);
-								}
-								webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-								_urlManager();
-								_defineEvents();
-							}
-					}
+					// if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+							// var parse_url = window.location.search; 
+							// if( parse_url.length > 0 ){
+								// webApp.vars["GET"] = func.parseGetParams(); 
+								// _urlManager();
+							// } else {
+								// if( webApp.vars["init_url"] ){
+									// //parse_url = webApp.vars["init_url"].substring(2);
+									// parse_url = webApp.vars["init_url"];
+						// //console.log(parse_url);
+								// }
+								// webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+								// _urlManager();
+								// _defineEvents();
+							// }
+					// }
 
-				});
-			break;
+				// });
+			// break;
 			
-			case "list_nodes":
-console.log("-- start build page --");
-				webApp.draw.buildPage();
-console.log("-- end build page --");
-			break;
+			// case "list_nodes":
+// console.log("-- start build page --");
+				// webApp.draw.buildPage();
+// console.log("-- end build page --");
+			// break;
 			
 //?q=edit-node&nid={{nid}}
 			case "edit-node":
@@ -758,9 +789,9 @@ console.log( "-- THEN, promise reject, ", error );
 			case "get-tracklist-url":
 //console.log( $("#field-tracklist-url input").val() );			
 				$("#field-tracklist-url").addClass("uk-hidden");
-				webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
-				webApp.vars["GET"]["q"] = "load-tracklist";
-				_urlManager();
+				//webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
+				//webApp.vars["GET"]["q"] = "load-tracklist";
+				_urlManager("?q=load-tracklist&url="+$("#field-tracklist-url input").val() );
 			break;
 
 			case "clear-tracklist":
@@ -1140,8 +1171,8 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 			//return _init(opt); 
 		//},
 		defineEvents: _defineEvents,
-		urlManager:	function(){ 
-			return _urlManager(); 
+		urlManager:	function(url){ 
+			return _urlManager(url); 
 		},
 		//formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,

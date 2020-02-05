@@ -8,8 +8,8 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		"aliasLocation" : "/home/www/music",
-		//"aliasLocation" : "d:/temp/music",
+		//"aliasLocation" : "/home/www/music",
+		"aliasLocation" : "d:/temp/music",
 		"fsPath" : "",
 		"GET" : {}
 	};//end _vars
@@ -272,9 +272,9 @@ console.log( "-- THEN, promise rejected", res );
 
 	
 	
-	function _urlManager( target ){
-//console.log(target);
-		_vars["GET"] = func.parseGetParams( target.href );
+	function _urlManager( url ){
+//console.log(url);
+		_vars["GET"] = func.parseGetParams( url );
 		switch( _vars["GET"]["q"] ) {
 			
 			case "get-folder":
