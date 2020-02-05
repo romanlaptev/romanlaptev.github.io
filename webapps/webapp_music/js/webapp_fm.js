@@ -8,12 +8,16 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		"fsPath" : "/home/www/music",
+		"aliasLocation" : "/home/www/music",
+		"fsPath" : "",
 		"GET" : {}
 	};//end _vars
 
 	var _init = function( opt ){
 //console.log("init _fileManager", opt);
+		
+		_vars["fsPath"] = _vars["aliasLocation"];
+
 		_phpSupport().then(
 			function( res ){
 //console.log( "-- THEN, promise resolve" );
@@ -98,14 +102,21 @@ console.log( "-- errorThrown: ", errorThrown );
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
+//console.log(p);
+
+		if( p.dirName.length === 0){
+_vars["logMsg"] = "-- warning, root level ...";
+console.log( _vars["logMsg"] );
 console.log(p);
+			p.dirName = "/";
+		}
 
 		if( !p.dirName){
 _vars["logMsg"] = "-- error, incorrect input parameters....";
 console.log( _vars["logMsg"] );
+console.log(p);
 			$d.reject( false );
 		}
-		
 		
 		$.ajax({
 			type: "GET",
@@ -115,9 +126,21 @@ console.log( _vars["logMsg"] );
 			success: function(data, status){
 //console.log("-- status: " + status);
 console.log("-- data: ", data);
-				var html = __formHtml( data );
+
+				if( data["eventType"] && data["eventType"] === "error"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "error");
+					$d.reject( false );
+				}
+
+				if( data["subfolders"] || data["files"]){
+					var html = __formHtml( data );
 //console.log( html );
-				$d.resolve( html );
+					$d.resolve( html );
+				} else {
+					$d.reject( false );
+				}
+				
 			},
 			
 			error:function (XMLHttpRequest, textStatus, errorThrown) {
@@ -155,6 +178,7 @@ console.log( "-- errorThrown: ", errorThrown );
 //----------------------- create url path
 for( var n = 0; n < data["files"].length; n++){
 	var _file = data["files"][n];
+	
 	var startPos = _vars.fsPath.indexOf( _vars.alias );
 	if( startPos !== -1){
 		var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
@@ -163,6 +187,7 @@ for( var n = 0; n < data["files"].length; n++){
 		_file["url"] = "#";
 		_file["template"] = "files_itemTpl_block";
 	}
+	
 }//next				
 //-----------------------
 
@@ -194,20 +219,30 @@ for( var n = 0; n < data["files"].length; n++){
 			"dirName" : _vars["fsPath"]
 		}).then(
 			
-			function( html ){
+			function( htmlFilelist ){
 //console.log( "-- THEN, promise resolved", html );
-					var html = webApp.draw.wrapData({
-						"data": {
-							"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
-							"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
-							"filelist" : html
-						}, 
-						"templateID": "contentFileManager"
-					});
+
+				_dataObj = {
+					"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
+					"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
+					"fs_path" : _vars["fsPath"],
+					"filelist" : htmlFilelist
+				};
+				//----------- hide change level button on FS root level
+				if( _vars["fsPath"].length === 0){
+					delete _dataObj["btn_change_level"];
+					_dataObj["fs_path"] = "/";
+				}
+				
+				var html = webApp.draw.wrapData({
+					"data": _dataObj, 
+					"templateID": "contentFileManager"
+				});
 //console.log( html );
-					if( typeof opt["postFunc"] === "function"){
-						opt["postFunc"]( html );
-					}
+
+				if( typeof opt["postFunc"] === "function"){
+					opt["postFunc"]( html );
+				}
 			}, 
 			
 			function(res){

@@ -90,6 +90,7 @@ var webApp = {
 								webApp.vars["blocksByName"]["blockFM"].content = html;
 								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
 							}
+							
 						}
 					});
 					

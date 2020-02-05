@@ -117,7 +117,10 @@ function _draw( opt ){
 						<div class="uk-card-body uk-padding-small">\
 							<div class="wrapper">\
 {{buttons_fs_action}}\
-{{btn_change_level}}\
+<div class="row">\
+	{{btn_change_level}}\
+	<div class="uk-float-left w90"><input type="text" value="{{fs_path}}" class="uk-input"></div>\
+</div>\
 {{filelist}}\
 							</div>\
 						</div>',
@@ -132,7 +135,7 @@ function _draw( opt ){
 	</ul>\
 </div>',
 
-		"btnChangeLevel": '<div class="uk-padding-small">\
+		"btnChangeLevel": '<div class="uk-padding-small uk-float-left">\
 <a class="up-link icon-level-up" href="#?q=level-up"></a>\
 </div>',
 
@@ -154,7 +157,7 @@ function _draw( opt ){
 		"files_itemTpl_block" : '<li>\
 	<div>\
 		<input name="file[]" value="{{name}}" type="checkbox">\
-		<a class="file" href="{{url}}">{{name}}</a>\
+		<span class="file">{{name}}</span>\
 	</div>\
 </li>',
 

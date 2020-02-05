@@ -11,37 +11,44 @@ header("Access-Control-Allow-Origin: *");
 
 //$media_types = array("wav","mp3","MP3","ogg","avi","wmv","mkv","m4a","mpg","mp4","m4v","flv","flac");
 
-if (!empty($_REQUEST['dir']) )
-{
-	$dir = $_REQUEST['dir'];
-}
-else
-{
+if (!isset($_REQUEST['dir']) ){
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, undefined GET parameter 'dir'...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
 	exit;
 }
 
-$files = DirFiles($dir, $media_types);
-echo json_encode($files);
+if (!empty($_REQUEST['dir']) ){
+	$dir = $_REQUEST['dir'];
+} else {
+	$dir = "/";
+}
 
 
-function DirFiles($dir, $media_types)
-{
+if (is_dir($dir)) {
+	$files = DirFiles($dir, $media_types);
+	echo json_encode($files);
+} else {
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "fail, <b>".$dir."</b> is not directory...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
+}
+
+function DirFiles($dir, $media_types){
 	$files = array(); 
 	$handle = opendir($dir) or die("Can't open directory $dir"); 
-	while (false !== ($file = readdir($handle))) 
-	{
-	    if ($file != "." && $file != "..") 
-		{ 
-			if(is_dir($dir."/".$file)) 
-			{ 
+	while (false !== ( $file = readdir($handle) ) ) {
+		if ($file != "." && $file != "..") { 
+		
+			if(is_dir($dir."/".$file)) { 
 				$obj=new stdClass(); 
 				$obj->name=$file; 
 				//$obj->fs_path=$dir."/".$file;
 				$files['subfolders'][] = $obj; 
 				//$files['subfolders'][] = ($dir."/".$file); 
-			} 
-			else 
-			{ 
+			} else { 
 				//$filename_arr = explode(".", $file);
 				//$type = end($filename_arr);
 				//if (in_array($type, $media_types))
@@ -51,12 +58,13 @@ function DirFiles($dir, $media_types)
 					$files['files'][] = $obj; 
 					//$files['files'][] = $dir."/".$file; 
 				//}
-			} 
+			}
+			
 		} 
-	}//--------------------------- end while
+	}//next
 									     
 	closedir ($handle);
 	return $files;
-}//-------------------- end func
+}// end func
 
 ?>
