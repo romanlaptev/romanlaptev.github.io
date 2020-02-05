@@ -28,7 +28,15 @@ if (!empty($_REQUEST['dir']) ){
 
 if (is_dir($dir)) {
 	$files = DirFiles($dir, $media_types);
+	if ( empty($files) ){
+		$logMsg["eventType"] = "error";
+		$logMsg["message"] = "error, empty file list, directory: <b>".$dir."</b>";
+		$jsonStr = json_encode($logMsg);
+		echo $jsonStr;
+		exit;
+	}
 	echo json_encode($files);
+	
 } else {
 	$logMsg["eventType"] = "error";
 	$logMsg["message"] = "fail, <b>".$dir."</b> is not directory...";
@@ -39,6 +47,7 @@ if (is_dir($dir)) {
 function DirFiles($dir, $media_types){
 	$files = array(); 
 	$handle = opendir($dir) or die("Can't open directory $dir"); 
+//echo $handle;
 	while (false !== ( $file = readdir($handle) ) ) {
 		if ($file != "." && $file != "..") { 
 		

@@ -247,6 +247,13 @@ for( var n = 0; n < data["files"].length; n++){
 			
 			function(res){
 console.log( "-- THEN, promise rejected", res );
+
+				//correct fs path after unread directory (/opt)
+				var upLink = _vars["fsPath"].substring( 0, _vars["fsPath"].lastIndexOf("/") );
+//console.log(_vars["fsPath"]);
+//console.log( upLink );
+				_vars["fsPath"] = upLink;
+
 					if( typeof opt["postFunc"] === "function"){
 						opt["postFunc"]( res );
 					}
