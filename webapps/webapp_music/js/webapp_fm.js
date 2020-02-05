@@ -9,6 +9,7 @@ function _fileManager( opt ){
 		
 		"alias" : "/music",
 		"aliasLocation" : "/home/www/music",
+		//"aliasLocation" : "d:/temp/music",
 		"fsPath" : "",
 		"GET" : {}
 	};//end _vars
@@ -17,7 +18,13 @@ function _fileManager( opt ){
 //console.log("init _fileManager", opt);
 		
 		_vars["fsPath"] = _vars["aliasLocation"];
+//-----------------
+//var parseUrl = window.location.search; 
+//if( parseUrl.length > 0 ){
+	//_vars["GET"] = func.parseGetParams(); 
+//}
 
+//-----------------
 		_phpSupport().then(
 			function( res ){
 //console.log( "-- THEN, promise resolve" );

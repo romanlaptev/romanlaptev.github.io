@@ -237,10 +237,10 @@ function _runApp(){
 	}
 	
 	webApp.vars["GET"]["q"] = webApp.vars["init_action"]; 
-	var parseUrl = window.location.search; 
-	if( parseUrl.length > 0 ){
-			webApp.vars["GET"] = func.parseGetParams(); 
-	}		
+	//var parseUrl = window.location.search; 
+	//if( parseUrl.length > 0 ){
+			//webApp.vars["GET"] = func.parseGetParams(); 
+	//}		
 	webApp.app.urlManager();
 
 }//end _runApp()
