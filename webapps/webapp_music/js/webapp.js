@@ -37,7 +37,7 @@ var webApp = {
 				"title" : "block tracklist", 
 				"templateID" : "blockTrackList",
 				"content" : function(){
-					var html = webApp.app.formHtmlTrackList();
+					var html = webApp.player.formHtmlTrackList();
 					if( html && html.length > 0){
 						this.content = html;
 						webApp.draw.buildBlock( this );
@@ -125,7 +125,7 @@ var webApp = {
 						webApp.draw.buildBlock( this );
 					}
 					webApp.app.imagesLoadEventHandler();
-					$("a[href='#?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
+					$("a[href='?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -159,7 +159,7 @@ var webApp = {
 		"menuWidth" : 270,//270px
 		
 		//"init_action" : "get_data",
-		"init_url" : "#?q=list_nodes&num_page=1"
+		//"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
 	
@@ -257,6 +257,9 @@ function _runApp(){
 function _postLoad(){
 
 	var parse_url = window.location.search; 
+	//var parse_url = window.location.hash;
+//console.log( parse_url );
+	
 	if( parse_url.length > 0 ){
 		webApp.app.urlManager( parse_url );
 	}
@@ -412,7 +415,7 @@ if( form.elements.targetField.length > 0){
 					// "targetField" : _targetField,
 					// "keyword": _keyword
 				// }; 
-				_urlManager( "#?q=search&targetField="+_targetField+"&keyword="+_keyword );
+				_urlManager( "?q=search&targetField="+_targetField+"&keyword="+_keyword );
 			}
 
 		});//end event
@@ -528,11 +531,15 @@ if( target.className.indexOf("no-block-link") === -1){
 				if( target.tagName === "A"){
 
 //------------------------------- close, toggle buttons
-					if ( target.href.indexOf("#close") !== -1 ||
-							 target.href.indexOf("#toggle") !== -1
+					//if ( target.href.indexOf("#close") !== -1 ||
+							 //target.href.indexOf("#toggle") !== -1
+					if ( target.href.indexOf("?q=close") !== -1 ||
+							 target.href.indexOf("?q=toggle") !== -1
 						){
+//console.log( "TEST3", target.href);
+							
 						var id = $( target ).data("toggle");
-	//console.log( id );
+//console.log( id );
 							if( id === "#field-tracklist-url"){
 								$( id ).toggleClass("uk-hidden");
 								return;
@@ -542,10 +549,13 @@ if( target.className.indexOf("no-block-link") === -1){
 	//console.log(arguments);
 							if( id === "#block-tags"){// reset tags select
 								webApp.db.vars["queryRes"] = [];
-								//webApp.vars["GET"]["q"] = "reset_tags_select"; 
 								_urlManager("?q=reset_tags_select");
 							}
 						});
+
+						//target.href = "1111";
+						//window.location.hash="";//clear url#close
+//console.log( "TEST4", target.href);
 					}
 
 //------------------------------- get modal window
@@ -553,23 +563,22 @@ if( target.className.indexOf("no-block-link") === -1){
 						//webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager( target.href );
 					}
-					if ( target.href.indexOf("#close-modal") !== -1){
+					//if ( target.href.indexOf("#close-modal") !== -1){
+					if ( target.href.indexOf("?q=close-modal") !== -1){
 						var id = $( target ).data("toggle");
 						_toggleModal( id );
 					}
 
 //------------------------------- get tag list
-//#?q=get-tag-list&vid=2				
+//?q=get-tag-list&vid=2				
 					if ( target.href.indexOf("get-tag-list") !== -1){
 						//webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager( target.href );
 					}
 				
 //------------------------------- get node tags
-//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
+//?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
 					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
-						//webApp.vars["GET"] = func.parseGetParams( target.href );
-						//webApp.vars["GET"]["tag_name"] = $(target).text();
 						webApp.app.urlManager( target.href+"&tag_name="+$(target).text() );
 					}
 					
@@ -577,7 +586,7 @@ if( target.className.indexOf("no-block-link") === -1){
 					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
 							target.href.indexOf("q=get-tracklist-url") !== -1
 					){
-						//webApp.vars["GET"] = func.parseGetParams( target.href );
+//console.log("TEST2", target.href);
 						webApp.app.urlManager( target.href );
 					}
 					
@@ -588,8 +597,8 @@ if( target.className.indexOf("no-block-link") === -1){
 										target.href.indexOf("remove-track") !== -1 ||
 											target.href.indexOf("edit-track") !== -1
 					){
+//console.log("TEST1");						
 						if( webApp.player.vars["trackList"].length > 0){
-							//webApp.vars["GET"] = func.parseGetParams( target.href );
 							webApp.app.urlManager( target.href );
 						} else {
 webApp.vars["logMsg"] = "warning, not load media track list ...";
@@ -767,6 +776,8 @@ func.logAlert( webApp.vars["logMsg"], "success");
 						webApp.vars["GET"]["url"].length === 0){
 					//webApp.vars["GET"]["url"] = "/music/0_playlists/Korpiklaani.json";
 					//_toggleModal( "#modal-edit-node" );
+_vars["logMsg"] = "error, not found playlist url...";
+func.logAlert( _vars.logMsg, "error");
 					return false;
 				}
 				
@@ -1033,23 +1044,6 @@ console.log( webApp.vars["logMsg"] );
 		return nodes;
 	}//end _getNodesByTag()
 
-	function _formHtmlTrackList(){
-
-		if( webApp.player.vars["trackList"].length > 0 ){
-			var html = webApp.draw.wrapData({
-				"data": webApp.player.vars["trackList"], 
-				"templateID": "trackList",
-				"templateListItemID": "trackListItem"
-			});
-		} else {
-			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
-		}
-//console.log( html );
-		html = html.replace("{{tracklist_title}}", webApp.player.vars["trackListTitle"]);
-		
-		return html;
-	}//_formHtmlTrackList()
-
 
 
 
@@ -1178,7 +1172,6 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
-		formHtmlTrackList : _formHtmlTrackList,
 		imagesLoadEventHandler: _imagesLoadEventHandler
 		//setToggleContentEvents: _setToggleContentEvents
 		//buildBlock:	function(opt){ 

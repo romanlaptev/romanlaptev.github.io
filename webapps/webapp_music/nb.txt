@@ -9,6 +9,28 @@ webApp.draw()
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
 	- module fileManager (file_manager.js)
 
+=========================
+сделать возможность обращения к функциям приложения через GET-параметры
+http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/
+app.html?q=load-tracklist&url=/music/0_playlists/metallica.json
+app.html?dir=/mnt/d2/music
+
+наличие заполненной строки window.location.search
+(?q=load-tracklist&url=/music/0_playlists/metallica.json)
+вызывает неправильную работу закрытия блоков с помощью значения #close
+срабатывают сразу 2 события
+TEST3 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=load-tracklist&url=/music/0_playlists/metallica.json#close - закрытие #block-file-manager
+
+TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=load-tracklist&url=/music/0_playlists/metallica.json#close - повторная загрузка треклиста
+
++почему при закрытии блока стало добавляться #close?
+
+вместо # в ссылках использовать ?q=action
+#close --> ?q=close
+#toggle -- ?q=toggle
+#close-modal -- ?q=close-modal
+
+
 --------------------------- PLAYER, mediaPlayer
 - сделать возможность формировать составные плейлисты
 и сохранять их (или прямо на диск, или в локальный кэш)

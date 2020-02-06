@@ -9,7 +9,7 @@ function _draw( opt ){
 			"blockPlayer" : '<div class="uk-card uk-card-default uk-margin-small">\
 						<div class="row">\
 							<div class="uk-float-right">\
-									<a data-toggle="#block-player" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+									<a data-toggle="#block-player" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
 						<div class="uk-card-body w60 uk-padding-small wrapper">\
@@ -28,8 +28,8 @@ function _draw( opt ){
 								<ul class="button-group uk-list">\
 <!--<button id="btn-play" class="btn btn-blue">play</button>\
 <button id="btn-pause" class="btn btn-blue">pause</button>-->\
-<li><a href="#?q=prev-track" class="btn btn-blue">previous track</a></li>\
-<li><a href="#?q=next-track" class="btn btn-blue">next track</a></li>\
+<li><a href="?q=prev-track" class="btn btn-blue">previous track</a></li>\
+<li><a href="?q=next-track" class="btn btn-blue">next track</a></li>\
 								</ul>\
 							</div>\
 						</div>\
@@ -44,19 +44,19 @@ function _draw( opt ){
 				<h4>{{tracklist_title}}</h4>\
 			</div>\
 			<div class="uk-float-right">\
-					<a data-toggle="#block-tracklist" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+					<a data-toggle="#block-tracklist" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>\
 			</div>\
 </div>\
 		<div class="">\
 			<ul class="menu-track-action button-group uk-list">\
-<li><a href="#?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
-<li><a href="#?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
-<li><a href="#toggle" data-toggle="#field-tracklist-url" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
-<li><a href="#?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
+<li><a href="?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
+<li><a href="?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
+<li><a href="?q=toggle" data-toggle="#field-tracklist-url" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
+<li><a href="?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
 			</ul>\
 <div id="field-tracklist-url" class="uk-hidden">\
 <input type="text" name="input_tracklist_url" value="/music/0_playlists/Korpiklaani.json" placeholder="enter track list url" class="uk-input w80">\
-<a href="#?q=get-tracklist-url" class="btn btn-blue">load</a><a data-toggle="#field-tracklist-url" href="#close" class="btn">x</a>\
+<a href="?q=get-tracklist-url" class="btn btn-blue">load</a><a data-toggle="#field-tracklist-url" href="?q=close" class="btn">x</a>\
 </div>\
 		</div>\
 <div class="media-list">\
@@ -66,11 +66,11 @@ function _draw( opt ){
 			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
 		<div class="uk-float-left">{{number}}.\
-			<a class="track-name" href="#?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
+			<a class="track-name" href="?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
 		</div>\
 		<div class="uk-float-right">\
-<a class="edit-track" href="#?q=edit-track&amp;num={{number}}">edit</a> | \
-<a class="remove-track" href="#?q=remove-track&amp;num={{number}}" title="Remove this track from tracklist">x</a>\
+<a class="edit-track" href="?q=edit-track&amp;num={{number}}">edit</a> | \
+<a class="remove-track" href="?q=remove-track&amp;num={{number}}" title="Remove this track from tracklist">x</a>\
 		</div>\
 	</div>\
 </li>',
@@ -85,7 +85,7 @@ function _draw( opt ){
 								<b>Tag groups</b>\
 							</div>\
 							<div class="uk-float-right">\
-<a data-toggle="#block-tags" href="#close" title="reset tags select" class="uk-button uk-button-small uk-button-danger">x</a>\
+<a data-toggle="#block-tags" href="?q=close" title="reset tags select" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
 						<div class="uk-card-body uk-padding-small">\
@@ -93,7 +93,7 @@ function _draw( opt ){
 						</div>\
 					</div>',
 			"tagGroupsList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-"tagGroupsListItem" :  '<li><a  href="#?q=get-tag-list&vid={{vid}}&group_name={{name}}">{{name}} </a><small>({{num}})</small></li>',
+"tagGroupsListItem" :  '<li><a  href="?q=get-tag-list&vid={{vid}}&group_name={{name}}">{{name}} </a><small>({{num}})</small></li>',
 					
 			"blockTagList" : '\
 						<div class="uk-card uk-card-secondary collapse" id="tags-music-syles">\
@@ -102,7 +102,7 @@ function _draw( opt ){
 							</div>\
 						</div>',
 			"tagList" :  '<ul class="uk-list tag-list">{{list}}</ul>',
-"tagListItem" :  '<li><a href="#?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
+"tagListItem" :  '<li><a href="?q=get-nodes-by-tag&vid={{vid}}&tid={{tid}}&group_name={{group_name}}">{{text}} </a><small>({{num}})</small></li>',
 			
 //=========================================
 			"blockFileManager" : '<div class="uk-card uk-card-default wrapper">{{content}}</div>',
@@ -111,7 +111,7 @@ function _draw( opt ){
 									<b>File manager</b>\
 							</div>\
 							<div class="uk-float-right">\
-		<a data-toggle="#block-file-manager" href="#close" class="uk-button uk-button-small uk-button-danger">x</a>\
+		<a data-toggle="#block-file-manager" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
 						<div class="uk-card-body uk-padding-small">\
@@ -129,14 +129,14 @@ function _draw( opt ){
 	<ul class="btn-fs-action button-group">\
 		<button id="checkAll">select all</button>\
 		<button id="clearAll">clear all</button>\
-<li><a href="#?q=rename-file" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
-<li><a href="#?q=delete-file" class="group-remove uk-button uk-button-small uk-button-danger" >delete selected</a></li>\
-<li><a href="#?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
+<li><a href="?q=rename-file" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
+<li><a href="?q=delete-file" class="group-remove uk-button uk-button-small uk-button-danger" >delete selected</a></li>\
+<li><a href="?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
 	</ul>\
 </div>',
 
 		"btnChangeLevel": '<div class="uk-padding-small uk-float-left">\
-<a class="up-link icon-level-up" href="#?q=level-up"></a>\
+<a class="up-link icon-level-up" href="?q=level-up"></a>\
 </div>',
 
 			"fileList": '<div class="wfm">{{subfolders}}{{files}}</div>',
@@ -144,7 +144,7 @@ function _draw( opt ){
 			"subfolders_listTpl" : '<ul class="folders-list uk-list uk-list-striped">{{list}}</ul>', 
 			"subfolders_itemTpl" : '<li>\
 <input name="file[]" value="{{name}}" type="checkbox">\
-<a class="subfolder" href="#?q=get-folder&foldername={{name}}"><span class="icon-folder"></span>{{name}}</a>\
+<a class="subfolder" href="?q=get-folder&foldername={{name}}"><span class="icon-folder"></span>{{name}}</a>\
 </li>',
 
 		"files_listTpl" : '<ul class="files-list uk-list uk-list-striped">{{list}}</ul>', 
@@ -224,8 +224,8 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 							<button class="btn-dropdown icon-chevron-down"></button>\
 							<div class="uk-card-body uk-padding-small block-content">\
 								<ul class="uk-list">\
-<li><a href="#?q=load-tracklist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
-<li><a href="#?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
+<li><a href="?q=load-tracklist&url={{playlist_filepath}}" class="btn btn-blue-c4 btn-load-tracklist">add to tracklist</a></li>\
+<li><a href="?q=edit-node&nid={{nid}}" class="btn btn-blue-c4">edit</a></li>\
 								</ul>\
 {{related_links}}\
 								<div class="description">{{description}}</div>\
@@ -254,7 +254,7 @@ records: <b><span id="total-records">{{total_nodes}}</span></b> \
 			},
 			node_tags : {
 "listTpl" : '<div><ul class="list-inline node-tags">{{list}}</ul></div>', 
-"itemTpl" : '<li><a href="#?q=get-nodes-by-tag&group-name={{group_name}}" class="">{{text}}</a></li>',
+"itemTpl" : '<li><a href="?q=get-nodes-by-tag&group-name={{group_name}}" class="">{{text}}</a></li>',
 			},
 			
 //=========================================

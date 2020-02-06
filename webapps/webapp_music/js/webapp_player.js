@@ -120,8 +120,26 @@ console.log(p);
 		
 	}//end _loadTrackList()
 	
-	function _formTrackList(tracks){
+	
+	
+	function _formHtmlTrackList(){
+		if( _vars["trackList"].length > 0 ){
+			var html = webApp.draw.wrapData({
+				"data": _vars["trackList"], 
+				"templateID": "trackList",
+				"templateListItemID": "trackListItem"
+			});
+		} else {
+			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
+		}
+//console.log( html );
+		html = html.replace("{{tracklist_title}}", _vars["trackListTitle"]);
 		
+		return html;
+	}//_formHtmlTrackList()
+
+	
+	function _formTrackList(tracks){
 		//----------------- add track order number 
 		for( var n = 0; n < tracks.length; n++){
 			tracks[n]["number"] = n+1;
@@ -175,6 +193,7 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	
 
 	function _nextTrack(){
+//console.log( _vars["numTrack"], _vars["trackList"].length);
 		if( _vars["numTrack"] < ( _vars["trackList"].length - 1) ){
 			_vars["numTrack"]++;
 			_setActiveTrack( _vars["numTrack"] );
@@ -231,6 +250,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		
 		if( _vars["autoplay"] ){
 			//try{
+//console.log( _vars.$audioplayer.getAttribute("src") );
 				_vars.$audioplayer.play();
 			//} catch(e){
 //console.log(e);	
@@ -317,8 +337,11 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 //console.log(arguments);
 			return _init(); 
 		},
+		
+		formHtmlTrackList : _formHtmlTrackList,
 		loadTrackList: _loadTrackList,
 		formTrackList: _formTrackList,
+		
 		loadTrack: _loadTrack,
 		setActiveTrack: _setActiveTrack,
 		nextTrack: _nextTrack,
