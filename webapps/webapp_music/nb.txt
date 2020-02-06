@@ -31,7 +31,9 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 #close --> ?q=close
 #toggle -- ?q=toggle
 #close-modal -- ?q=close-modal
-
+--------------------
+- необходимо распределить шаблоны по модулям, 
+для этого потребуется изменить функцию draw.buildBlock - передаются не имена шаблонов, а сами строки-шаблоны...
 
 --------------------------- PLAYER, mediaPlayer
 - сделать возможность формировать составные плейлисты

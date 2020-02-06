@@ -115,6 +115,14 @@ function _draw( opt ){
 							</div>\
 						</div>\
 						<div class="uk-card-body uk-padding-small">\
+<b>Define location music collection</b>\
+<a href="?q=toggle" data-toggle="#field-location" class="uk-button icon-chevron-down"></a>\
+<div id="field-location" class="wrapper uk-margin-small uk-padding-small">\
+	<input name="inp_location_path" id="input-location-path" value="{{location}}" type="text" class="uk-input w80">\
+	<a href="?q=define-location" class="btn btn-blue">Reload</a>\
+	<a data-toggle="#field-location" href="?q=close" class="btn">x</a>\
+	<p>/mnt/d2/music; /home/www/music; d:/music</p>\
+</div>\
 							<div class="wrapper">\
 {{buttons_fs_action}}\
 <div class="row">\

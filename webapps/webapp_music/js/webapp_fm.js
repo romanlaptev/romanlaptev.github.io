@@ -9,9 +9,9 @@ function _fileManager( opt ){
 		
 		"alias" : "/music",
 		//"aliasLocation" : "/home/www/music",
-		"aliasLocation" : "d:/temp/music",
-		"fsPath" : "",
-		"GET" : {}
+		//"aliasLocation" : "d:/temp/music",
+		"aliasLocation" : "./",
+		"fsPath" : ""
 	};//end _vars
 
 	var _init = function( opt ){
@@ -230,6 +230,7 @@ for( var n = 0; n < data["files"].length; n++){
 //console.log( "-- THEN, promise resolved", html );
 
 				_dataObj = {
+					"location" : _vars["aliasLocation"],
 					"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
 					"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
 					"fs_path" : _vars["fsPath"],
