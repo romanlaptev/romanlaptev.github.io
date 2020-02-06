@@ -633,6 +633,11 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 			webApp.db.vars["numberPage"] = webApp.vars["GET"]["num_page"];
 		}
 		
+		if( webApp.vars["GET"]["dir"] && webApp.vars["GET"]["dir"].length > 0){
+			webApp.fileManager.vars["aliasLocation"] = webApp.vars["GET"]["dir"];
+			webApp.fileManager.vars["fsPath"] = webApp.vars["GET"]["dir"];
+		}
+		
 		switch( webApp.vars["GET"]["q"] ) {
 			
 			// case "get_data":

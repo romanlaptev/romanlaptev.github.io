@@ -12,9 +12,11 @@ webApp.draw()
 =========================
 сделать возможность обращения к функциям приложения через GET-параметры
 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/
-app.html?q=load-tracklist&url=/music/0_playlists/metallica.json
-app.html?dir=/mnt/d2/music
+*app.html?q=load-tracklist&url=/music/0_playlists/metallica.json
+*app.html?dir=/mnt/d2/music
+*app.html?dir=/home/www/music
 
+*----------- ИСПРАВИТЬ
 наличие заполненной строки window.location.search
 (?q=load-tracklist&url=/music/0_playlists/metallica.json)
 вызывает неправильную работу закрытия блоков с помощью значения #close

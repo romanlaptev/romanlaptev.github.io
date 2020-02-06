@@ -8,8 +8,8 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		"aliasLocation" : "/home/www/music",
-		//"aliasLocation" : "d:/temp/music",
+		//"aliasLocation" : "/home/www/music",
+		"aliasLocation" : "d:/temp/music",
 		"fsPath" : "",
 		"GET" : {}
 	};//end _vars
