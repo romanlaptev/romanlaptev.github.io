@@ -122,8 +122,8 @@
 		<item vid="3" tid="119" group_name="music_formats">live</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">20-Nov-2012 21:46:06</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:59</updated>
+	<published format="d-M-Y H:i:s">20-Nov-2012 22:46:06</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:59</updated>
 </node>
 
 <node type="playlist">
@@ -144,8 +144,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">27-Jan-2013 18:51:34</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:30</updated>
+	<published format="d-M-Y H:i:s">27-Jan-2013 19:51:34</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:30</updated>
 </node>
 
 <node type="playlist">
@@ -154,6 +154,7 @@
 	</title>
 	<images>
 		<img src="/mnt/d2/music/SH/Шлюз/unnamed.jpg"/>
+		<img src="https://d1ob8phwwne29y.cloudfront.net/content/images/1067727/x_16854098.jpg"/>
 	</images>
 
 	
@@ -169,8 +170,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Jul-2013 12:15:33</published>
-	<updated format="d-M-Y H:i:s">01-Feb-2020 07:38:29</updated>
+	<published format="d-M-Y H:i:s">28-Jul-2013 13:15:33</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 17:20:44</updated>
 </node>
 
 <node type="playlist">
@@ -179,6 +180,7 @@
 	</title>
 	<images>
 		<img src="/music/S/Ska-P/1995 - Ska-P/cover.jpg"/>
+		<img src="https://lh3.googleusercontent.com/kIH8vx9OcWI6_YhOMm-5r7r1j6Mq_W_KNzuOHGYg9m131NixVkYQTD9RE7CgqrJ-ytIPlv9HSJI=w300"/>
 	</images>
 
 	
@@ -200,8 +202,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">31-Jul-2013 21:12:08</published>
-	<updated format="d-M-Y H:i:s">02-Feb-2020 21:21:25</updated>
+	<published format="d-M-Y H:i:s">31-Jul-2013 22:12:08</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 17:18:06</updated>
 </node>
 
 <node type="playlist">
@@ -226,8 +228,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 21:47:17</published>
-	<updated format="d-M-Y H:i:s">01-Feb-2020 07:21:58</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 22:47:17</published>
+	<updated format="d-M-Y H:i:s">01-Feb-2020 08:21:58</updated>
 </node>
 
 <node type="playlist">
@@ -249,8 +251,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 22:05:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:00</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 23:05:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:00</updated>
 </node>
 
 <node type="playlist">
@@ -270,8 +272,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">04-Aug-2013 22:22:08</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:11</updated>
+	<published format="d-M-Y H:i:s">04-Aug-2013 23:22:08</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:11</updated>
 </node>
 
 <node type="playlist">
@@ -298,8 +300,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">07-Aug-2013 21:13:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:35</updated>
+	<published format="d-M-Y H:i:s">07-Aug-2013 22:13:48</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:35</updated>
 </node>
 
 <node type="playlist">
@@ -319,8 +321,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 20:51:35</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:08:31</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:51:35</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:31</updated>
 </node>
 
 <node type="playlist">
@@ -340,8 +342,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 20:57:59</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:14</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 21:57:59</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:14</updated>
 </node>
 
 <node type="playlist">
@@ -360,8 +362,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 21:03:19</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:01</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 22:03:19</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:01</updated>
 </node>
 
 <node type="playlist">
@@ -380,8 +382,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">11-Aug-2013 21:10:52</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:21</updated>
+	<published format="d-M-Y H:i:s">11-Aug-2013 22:10:52</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:58:21</updated>
 </node>
 
 <node type="playlist">
@@ -407,8 +409,8 @@
 		<item vid="3" tid="120" group_name="music_formats">studio album</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">15-May-2015 08:58:16</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:05:01</updated>
+	<published format="d-M-Y H:i:s">15-May-2015 09:58:16</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:05:01</updated>
 </node>
 
 <node type="playlist">
@@ -433,8 +435,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:56:23</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:56:23</updated>
 </node>
 
 <node type="playlist">
@@ -458,8 +460,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:24:25</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:24:25</updated>
 </node>
 
 <node type="playlist">
@@ -487,8 +489,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:02:56</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:02:56</updated>
 </node>
 
 <node type="playlist">
@@ -516,8 +518,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:04:50</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:04:50</updated>
 </node>
 
 <node type="playlist">
@@ -530,9 +532,9 @@
 
 	
 	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -546,8 +548,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:51:45</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 17:22:15</updated>
 </node>
 
 <node type="playlist">
@@ -560,9 +562,9 @@
 
 	
 	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Handel.json">Handel.json</a></li>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/Handel.json">Handel.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -575,8 +577,8 @@
 		<item vid="3" tid="118" group_name="music_formats">aria</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:52:52</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 17:21:49</updated>
 </node>
 
 <node type="playlist">
@@ -601,8 +603,8 @@
 		<item vid="2" tid="142" group_name="music_styles">Средневековье</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:54:00</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:54:00</updated>
 </node>
 
 <node type="playlist">
@@ -611,19 +613,26 @@
 	</title>
 	<images>
 		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/51766/9941293.1024.33401/200x200?1581076983458"/>
 	</images>
 
-	
+	<description>https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan</description>
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Rowan.json">Rowan.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1024">music.yandex.ru</a></li>
 	</related_links>
 
 	<node_tags>
-		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="54" group_name="alphabetical_voc">Б</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+		<item vid="3" tid="144" group_name="music_formats">Концерт</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:36:30</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 21:22:55</updated>
 </node>
 
 <node type="playlist">
@@ -650,8 +659,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:47:43</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:47:43</updated>
 </node>
 
 <node type="playlist">
@@ -677,8 +686,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:57:48</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:57:48</updated>
 </node>
 
 <node type="playlist">
@@ -703,8 +712,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:26:19</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:26:19</updated>
 </node>
 
 <node type="playlist">
@@ -728,8 +737,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:38:59</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:38:59</updated>
 </node>
 
 <node type="playlist">
@@ -756,8 +765,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:00:31</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:00:31</updated>
 </node>
 
 <node type="playlist">
@@ -785,8 +794,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:12</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:12</updated>
 </node>
 
 <node type="playlist">
@@ -808,8 +817,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:39:55</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:39:55</updated>
 </node>
 
 <node type="playlist">
@@ -833,8 +842,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:07:40</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:07:40</updated>
 </node>
 
 <node type="playlist">
@@ -859,8 +868,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:54:53</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:54:53</updated>
 </node>
 
 <node type="playlist">
@@ -881,8 +890,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:41:20</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:41:20</updated>
 </node>
 
 <node type="playlist">
@@ -906,8 +915,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:55:38</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:55:38</updated>
 </node>
 
 <node type="playlist">
@@ -934,8 +943,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:45:33</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:45:33</updated>
 </node>
 
 <node type="playlist">
@@ -958,8 +967,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:46:45</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:46:45</updated>
 </node>
 
 <node type="playlist">
@@ -984,8 +993,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:48:26</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:48:26</updated>
 </node>
 
 <node type="playlist">
@@ -1006,8 +1015,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:25:07</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:25:07</updated>
 </node>
 
 <node type="playlist">
@@ -1031,8 +1040,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:51:42</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:51:42</updated>
 </node>
 
 <node type="playlist">
@@ -1053,8 +1062,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:55:06</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:55:06</updated>
 </node>
 
 <node type="playlist">
@@ -1075,8 +1084,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:09:23</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:09:23</updated>
 </node>
 
 <node type="playlist">
@@ -1100,8 +1109,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:19:28</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:19:28</updated>
 </node>
 
 <node type="playlist">
@@ -1120,8 +1129,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:49</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:49</updated>
 </node>
 
 <node type="playlist">
@@ -1141,8 +1150,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:22:53</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:53</updated>
 </node>
 
 <node type="playlist">
@@ -1166,8 +1175,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:21:05</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:21:05</updated>
 </node>
 
 <node type="playlist">
@@ -1193,8 +1202,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:48:54</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">23-Jan-2020 17:48:54</updated>
 </node>
 
 <node type="playlist">
@@ -1214,8 +1223,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:57:32</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 12:57:32</updated>
 </node>
 
 <node type="playlist">
@@ -1241,8 +1250,8 @@
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:22:07</updated>
+	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
+	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
 </node>
 
 <node type="playlist">
@@ -1265,8 +1274,8 @@
 		<item vid="3" tid="117" group_name="music_formats">soundtrack</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">26-Jan-2020 13:20:57</published>
-	<updated format="d-M-Y H:i:s">26-Jan-2020 13:25:26</updated>
+	<published format="d-M-Y H:i:s">26-Jan-2020 14:20:57</published>
+	<updated format="d-M-Y H:i:s">26-Jan-2020 14:25:26</updated>
 </node>
 
 <node type="playlist">
@@ -1292,8 +1301,8 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">28-Jan-2020 15:44:33</published>
-	<updated format="d-M-Y H:i:s">28-Jan-2020 15:50:16</updated>
+	<published format="d-M-Y H:i:s">28-Jan-2020 16:44:33</published>
+	<updated format="d-M-Y H:i:s">28-Jan-2020 16:50:16</updated>
 </node>
 
 <node type="playlist">
@@ -1321,8 +1330,8 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
-	<published format="d-M-Y H:i:s">07-Feb-2020 16:13:03</published>
-	<updated format="d-M-Y H:i:s">07-Feb-2020 16:13:03</updated>
+	<published format="d-M-Y H:i:s">07-Feb-2020 17:13:03</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 17:13:03</updated>
 </node>
 	</database>
 </xroot>
