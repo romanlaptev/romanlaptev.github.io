@@ -47,6 +47,99 @@ func.logAlert( webApp.vars["logMsg"], "error");
 	};//end _init()
 
 
+	function _urlManager( url ){
+//console.log(url);
+		_vars["GET"] = func.parseGetParams( url );
+		switch( _vars["GET"]["q"] ) {
+
+			case "load-tracklist":
+				//var _nid = webApp.vars["GET"]["nid"];
+				
+				if( !_vars["GET"]["url"] || 
+						_vars["GET"]["url"].length === 0){
+_vars["logMsg"] = "error, not found playlist url...";
+func.logAlert( _vars.logMsg, "error");
+					return false;
+				}
+				
+				_loadTrackList({
+					"trackListUrl": _vars["GET"]["url"]
+				})
+				.then(
+					function( data ){
+//console.log( "-- THEN, promise resolve" );
+//console.log(data);
+						_formTrackList(data);
+					},
+					function( error ){
+console.log( "-- THEN, promise reject, ", error );
+//console.log(arguments);					
+					}
+				);
+			break;
+			
+			case "get-tracklist-url":
+//console.log( $("#field-tracklist-url input").val() );			
+				$("#field-tracklist-url").addClass("uk-hidden");
+				var _url = "?q=load-tracklist&url="+$("#field-tracklist-url input").val();
+				_urlManager( _url );
+			break;
+
+			case "clear-tracklist":
+				_vars["numTrack"] = 0;
+				_vars["trackList"] = [];
+				_vars["trackListTitle"] = _vars["trackListName"];
+				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+			break;
+
+//insert-track
+			//case "stop-play":
+			//break;
+
+			case "load-track":
+				_loadTrack({
+					"trackNum": _vars["GET"]["num"]
+				});
+			break;
+
+			case "prev-track":
+				_prevTrack();
+			break;
+			
+			case "next-track":
+				_nextTrack();
+			break;
+			
+
+			//case "check-all":
+				//_draw_checkAll();
+			//break;
+			
+			//case "clear-all":
+				//_draw_clearAll();
+			//break;
+			
+			case "remove-track":
+				_removeTrack({
+					"trackNum": _vars["GET"]["num"]
+				});
+			break;
+
+			case "edit-track":
+				_editTrack({
+					"trackNum": _vars["GET"]["num"]
+				});
+			break;
+			
+//--------------------------------------------
+			default:
+console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);			
+			break;
+		}//end switch
+
+	}//end _urlManager()
+	
+
 	function _loadTrackList(opt){
 		var p = {
 			//"trackListTitle": false,
@@ -342,11 +435,12 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		loadTrackList: _loadTrackList,
 		formTrackList: _formTrackList,
 		
-		loadTrack: _loadTrack,
-		setActiveTrack: _setActiveTrack,
-		nextTrack: _nextTrack,
-		prevTrack: _prevTrack,
-		removeTrack: _removeTrack,
-		editTrack: _editTrack
+		//loadTrack: _loadTrack,
+		//setActiveTrack: _setActiveTrack,
+		//nextTrack: _nextTrack,
+		//prevTrack: _prevTrack,
+		//removeTrack: _removeTrack,
+		//editTrack: _editTrack,
+		urlManager:	_urlManager
 	};
 }//end _player()

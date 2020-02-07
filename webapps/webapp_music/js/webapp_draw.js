@@ -55,7 +55,7 @@ function _draw( opt ){
 <li><a href="?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
 			</ul>\
 <div id="field-tracklist-url" class="uk-hidden">\
-<input type="text" name="input_tracklist_url" value="/music/0_playlists/Korpiklaani.json" placeholder="enter track list url" class="uk-input w80">\
+<input type="text" name="input_tracklist_url" value="" placeholder="enter track list url" class="uk-input w80">\
 <a href="?q=get-tracklist-url" class="btn btn-blue">load</a><a data-toggle="#field-tracklist-url" href="?q=close" class="btn">x</a>\
 </div>\
 		</div>\
@@ -134,11 +134,11 @@ function _draw( opt ){
 					
 			"buttonsFSaction": '<div class="">\
 	<ul class="btn-fs-action button-group">\
-		<button id="checkAll">select all</button>\
-		<button id="clearAll">clear all</button>\
+<li><a href="?q=check-all" class="btn btn-blue">select all</a></li>\
+<li><a href="?q=clear-all" class="btn btn-blue">clear all</a></li>\
 <li><a href="?q=rename-file" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
 <li><a href="?q=delete-file" class="group-remove uk-button uk-button-small uk-button-danger" >delete selected</a></li>\
-<li><a href="?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to playlist</a></li>\
+<li><a href="?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to tracklist</a></li>\
 	</ul>\
 </div>',
 
@@ -150,14 +150,14 @@ function _draw( opt ){
 
 			"subfolders_listTpl" : '<ul class="folders-list uk-list uk-list-striped">{{list}}</ul>', 
 			"subfolders_itemTpl" : '<li>\
-<input name="file[]" value="{{name}}" type="checkbox">\
+<input name="file[]" value="{{name}}" type="checkbox" class="no-block-link">\
 <a class="subfolder" href="?q=get-folder&foldername={{name}}"><span class="icon-folder"></span>{{name}}</a>\
 </li>',
 
 		"files_listTpl" : '<ul class="files-list uk-list uk-list-striped">{{list}}</ul>', 
 		"files_itemTpl" : '<li>\
 	<div>\
-		<input name="file[]" value="{{name}}" type="checkbox">\
+		<input name="file[]" value="{{name}}" type="checkbox" class="no-block-link">\
 		<a class="file no-block-link" href="{{url}}" target="_blank">{{name}}</a>\
 	</div>\
 </li>',

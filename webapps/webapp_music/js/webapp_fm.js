@@ -8,9 +8,9 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		//"aliasLocation" : "/home/www/music",
+		"aliasLocation" : "/home/www/music",
 		//"aliasLocation" : "d:/temp/music",
-		"aliasLocation" : "./",
+		//"aliasLocation" : "./",
 		"fsPath" : ""
 	};//end _vars
 
@@ -278,6 +278,7 @@ console.log( "-- THEN, promise rejected", res );
 		_vars["GET"] = func.parseGetParams( url );
 		switch( _vars["GET"]["q"] ) {
 			
+//--------------------------------------------
 			case "get-folder":
 				_vars["fsPath"] = _vars["fsPath"] + "/" +_vars["GET"]["foldername"];
 				_formHtmlFileManager({
@@ -291,6 +292,7 @@ console.log( "-- THEN, promise rejected", res );
 				});
 			break;
 			
+//--------------------------------------------
 			case "level-up":
 				var upLink = _vars["fsPath"].substring( 0, _vars["fsPath"].lastIndexOf("/") );
 //console.log(_vars["fsPath"]);
@@ -308,9 +310,10 @@ console.log( "-- THEN, promise rejected", res );
 				});
 			break;
 			
+//--------------------------------------------
 			case "define-location":
 				var fsLocation = $("#input-location-path").val();
-console.log( fsLocation);
+//console.log( fsLocation);
 				if( !fsLocation || fsLocation.length === 0){
 					return false;
 				}
@@ -339,6 +342,27 @@ console.log( fsLocation);
 				});
 				
 			break;
+			
+//--------------------------------------------
+			case "check-all":
+			
+				$("#block-file-manager").find(".wfm input[type=checkbox]").each( function(num, item){
+//console.log(num, item);
+					$(item).prop("checked", true);
+				});				
+			break;
+			
+			case "clear-all":
+				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
+//console.log(num, item);
+					$(item).prop("checked", false);
+				});				
+			break;
+			
+//"?q=rename-file"
+//"?q=delete-file"
+//"?q=add-track"
+			
 //--------------------------------------------
 			default:
 console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);			

@@ -587,7 +587,7 @@ if( target.className.indexOf("no-block-link") === -1){
 							target.href.indexOf("q=get-tracklist-url") !== -1
 					){
 //console.log("TEST2", target.href);
-						webApp.app.urlManager( target.href );
+						webApp.player.urlManager( target.href );
 					}
 					
 					if ( target.href.indexOf("q=load-track&") !== -1 ||
@@ -599,7 +599,7 @@ if( target.className.indexOf("no-block-link") === -1){
 					){
 //console.log("TEST1");						
 						if( webApp.player.vars["trackList"].length > 0){
-							webApp.app.urlManager( target.href );
+							webApp.player.urlManager( target.href );
 						} else {
 webApp.vars["logMsg"] = "warning, not load media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
@@ -609,7 +609,12 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 //------------------------------- File system actions
 					if ( target.href.indexOf("q=get-folder") !== -1 ||
 							target.href.indexOf("q=define-location") !== -1 ||
-							target.href.indexOf("q=level-up") !== -1
+							target.href.indexOf("q=level-up") !== -1 ||
+							target.href.indexOf("q=check-all") !== -1 ||
+							target.href.indexOf("q=clear-all") !== -1 ||
+							target.href.indexOf("q=rename-file") !== -1 ||
+							target.href.indexOf("q=delete-file") !== -1 ||
+							target.href.indexOf("q=add-track") !== -1
 					){
 						webApp.fileManager.urlManager( target.href );
 					}
@@ -771,90 +776,6 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					}//end callback
 				});
 				
-			break;
-			
-//-------------------------------------------- PLAYLIST
-			case "load-tracklist":
-				//var _nid = webApp.vars["GET"]["nid"];
-				
-				if( !webApp.vars["GET"]["url"] || 
-						webApp.vars["GET"]["url"].length === 0){
-					//webApp.vars["GET"]["url"] = "/music/0_playlists/Korpiklaani.json";
-					//_toggleModal( "#modal-edit-node" );
-_vars["logMsg"] = "error, not found playlist url...";
-func.logAlert( _vars.logMsg, "error");
-					return false;
-				}
-				
-				webApp.player.loadTrackList({
-					"trackListUrl": webApp.vars["GET"]["url"]
-				})
-				.then(
-					function( data ){
-//console.log( "-- THEN, promise resolve" );
-//console.log(data);
-						webApp.player.formTrackList(data);
-					},
-					function( error ){
-console.log( "-- THEN, promise reject, ", error );
-//console.log(arguments);					
-					}
-				);
-			break;
-			
-			case "get-tracklist-url":
-//console.log( $("#field-tracklist-url input").val() );			
-				$("#field-tracklist-url").addClass("uk-hidden");
-				//webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
-				//webApp.vars["GET"]["q"] = "load-tracklist";
-				_urlManager("?q=load-tracklist&url="+$("#field-tracklist-url input").val() );
-			break;
-
-			case "clear-tracklist":
-				webApp.player.vars["numTrack"] = 0;
-				webApp.player.vars["trackList"] = [];
-				webApp.player.vars["trackListTitle"] = webApp.player.vars["trackListName"];
-				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
-			break;
-
-//insert-track
-
-			case "stop-play":
-			break;
-
-			case "load-track":
-				webApp.player.loadTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
-			break;
-
-			case "prev-track":
-				webApp.player.prevTrack();
-			break;
-			
-			case "next-track":
-				webApp.player.nextTrack();
-			break;
-			
-
-			//case "check-all":
-				//_draw_checkAll();
-			//break;
-			
-			//case "clear-all":
-				//_draw_clearAll();
-			//break;
-			
-			case "remove-track":
-				webApp.player.removeTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
-			break;
-
-			case "edit-track":
-				webApp.player.editTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
 			break;
 			
 //--------------------------------------------

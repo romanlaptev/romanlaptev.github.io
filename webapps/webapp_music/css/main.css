@@ -755,7 +755,13 @@ color: #fff;
 	background-color: #dee4ef;
 }
 
+
+
 #block-file-manager .wrapper {
 	border: 1px solid #5392ce;
 	padding: 5px;
+}
+#block-file-manager .btn-fs-action {
+	/* margin: 0; */
+	padding: 0;
 }
