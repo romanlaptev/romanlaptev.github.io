@@ -264,6 +264,8 @@ function _postLoad(){
 		webApp.app.urlManager( parse_url );
 	}
 	webApp.app.defineEvents();
+console.log( $("#form-search").onsubmit);
+
 //-----------------
 console.log("-- start build page --");
 	webApp.draw.buildPage();
