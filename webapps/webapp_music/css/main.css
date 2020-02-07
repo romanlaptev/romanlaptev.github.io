@@ -166,6 +166,10 @@ label {
   content: "\f078";
 }
 
+.icon-cog:before {
+  content: "\f013";
+}
+
 /*.subfolder > small {
   content: "\f07b";
 }*/

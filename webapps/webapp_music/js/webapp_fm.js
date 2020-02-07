@@ -308,6 +308,37 @@ console.log( "-- THEN, promise rejected", res );
 				});
 			break;
 			
+			case "define-location":
+				var fsLocation = $("#input-location-path").val();
+console.log( fsLocation);
+				if( !fsLocation || fsLocation.length === 0){
+					return false;
+				}
+
+				//save old values
+				_alias_loc = _vars["aliasLocation"];
+				_fs_path = _vars["fsPath"];
+				
+				//get new values
+				_vars["aliasLocation"] = fsLocation.trim();
+				_vars["fsPath"] = _vars["aliasLocation"];
+				
+				_formHtmlFileManager({
+					"postFunc" : function(html){
+//console.log( html );
+						if( html && html.length > 0){
+							webApp.vars["blocksByName"]["blockFM"].content = html;
+							webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+						} else {
+							//restore old values if access to the folder fails
+							_vars["aliasLocation"] = _alias_loc;
+							_vars["fsPath"] = _fs_path;
+						}
+						
+					}
+				});
+				
+			break;
 //--------------------------------------------
 			default:
 console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);			

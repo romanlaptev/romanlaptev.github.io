@@ -540,7 +540,7 @@ if( target.className.indexOf("no-block-link") === -1){
 							
 						var id = $( target ).data("toggle");
 //console.log( id );
-							if( id === "#field-tracklist-url"){
+							if( id === "#field-tracklist-url" || id === "#fm-settings"){
 								$( id ).toggleClass("uk-hidden");
 								return;
 							}
@@ -608,7 +608,7 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 
 //------------------------------- File system actions
 					if ( target.href.indexOf("q=get-folder") !== -1 ||
-							//target.href.indexOf("q=get-file") !== -1 ||
+							target.href.indexOf("q=define-location") !== -1 ||
 							target.href.indexOf("q=level-up") !== -1
 					){
 						webApp.fileManager.urlManager( target.href );
