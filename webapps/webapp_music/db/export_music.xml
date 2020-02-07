@@ -620,6 +620,7 @@
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Rowan.json">Rowan.json</a></li>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1024">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="http://rowan.hole.ru/">http://rowan.hole.ru/</a></li>
 	</related_links>
 
 	<node_tags>
@@ -632,7 +633,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">07-Feb-2020 21:22:55</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 21:40:26</updated>
 </node>
 
 <node type="playlist">
@@ -1310,7 +1311,8 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 		<item>Talco</item>
 	</title>
 	<images>
-		<img src="https://yt3.ggpht.com/a/AGF-l79xYLSV9U3GKpwTnfLrze9bKKnxkEbYvalpBw=s240-c-k-c0xffffffff-no-rj-mo"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1023.79408/200x200?1581079890149"/>
+		<img src="/music/T/Talco/Folder.jpg"/>
 	</images>
 
 	<description>https://ru.wikipedia.org/wiki/Talco</description>
@@ -1323,6 +1325,7 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
 		<item vid="9" tid="129" group_name="music_genre">Ска</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
 		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
 		<item vid="2" tid="43" group_name="music_styles">ska</item>
 		<item vid="2" tid="45" group_name="music_styles">punk</item>
@@ -1331,7 +1334,7 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">07-Feb-2020 17:13:03</published>
-	<updated format="d-M-Y H:i:s">07-Feb-2020 17:13:03</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 21:52:48</updated>
 </node>
 	</database>
 </xroot>
