@@ -692,8 +692,12 @@ margin: 3px;
 
 
 #block-player .wrapper {
-	border: 1px solid #ccc;
-	margin: auto;
+border: 1px solid #ccc;
+margin: auto;
+background-image: linear-gradient(to bottom, #000, #eefaff);
+}
+#track-info {
+	color: #fff;
 }
 
 #block-tracklist {
