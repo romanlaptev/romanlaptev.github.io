@@ -8,9 +8,9 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		"aliasLocation" : "/home/www/music",
+		//"aliasLocation" : "/home/www/music",
 		//"aliasLocation" : "d:/temp/music",
-		//"aliasLocation" : "./",
+		"aliasLocation" : "./",
 		"fsPath" : ""
 	};//end _vars
 
@@ -64,7 +64,7 @@ function _fileManager( opt ){
 				url: _vars["testPHP_url"],
 				success: function(data, status){
 //console.log("-- status: " + status);
-console.log("-- data: ", data);
+//console.log("-- data: ", data);
 
 					if (data["testResult"] === 4 ){
 						_vars["supportPHP"] = true;
@@ -133,7 +133,7 @@ console.log(p);
 			data: ({dir: p.dirName}),
 			success: function(data, status){
 //console.log("-- status: " + status);
-console.log("-- data: ", data);
+//console.log("-- data: ", data);
 
 				if( data["eventType"] && data["eventType"] === "error"){
 _vars["logMsg"] = data["message"];
@@ -382,7 +382,7 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 		var startPos = _vars.fsPath.indexOf( _vars.alias );
 		if( startPos !== -1){
 			var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
-	console.log(urlPath);
+//console.log(urlPath);
 			return urlPath;
 		} else {
 			return false;

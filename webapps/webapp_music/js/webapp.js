@@ -263,16 +263,17 @@ function _postLoad(){
 	if( parse_url.length > 0 ){
 		webApp.app.urlManager( parse_url );
 	}
-	webApp.app.defineEvents();
-console.log( $("#form-search").onsubmit);
 
 //-----------------
 console.log("-- start build page --");
 	webApp.draw.buildPage();
 console.log("-- end build page --");
+
+	webApp.app.defineEvents();
+//console.log( $("#form-search").onsubmit);
+//console.log( document.forms["formSearch"] );
 	
 }//_postLoad()
-
 
 
 
@@ -360,7 +361,8 @@ function _app( opt ){
 
 
 //---------------------------- search form submit
-		$("#form-search").on("submit", function(event){
+		document.forms["formSearch"].onsubmit = function(event){
+		//$("#form-search").on("submit", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
 			
@@ -374,6 +376,7 @@ function _app( opt ){
 //console.log(form);
 //console.log(form.elements.targetField, form.elements.targetField.length);
 //console.log(form.elements.keyword.value);
+
 			//------------------- check input values
 			var res = true;
 			
@@ -412,16 +415,12 @@ if( form.elements.targetField.length > 0){
 			// }		
 
 			if(res){
-				// webApp.vars["GET"] = {
-					// q: "search",
-					// "targetField" : _targetField,
-					// "keyword": _keyword
-				// }; 
-				_urlManager( "?q=search&targetField="+_targetField+"&keyword="+_keyword );
+				var _url = "?q=search&targetField="+_targetField+"&keyword="+_keyword;
+				_urlManager( _url );
 			}
 
-		});//end event
-
+		//});//end event
+		};//end event
 
 //---------------------------- move input range
 		$("#page-range").on("input", function(event){

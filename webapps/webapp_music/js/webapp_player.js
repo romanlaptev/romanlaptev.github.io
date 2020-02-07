@@ -149,7 +149,7 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 		
 //for test
 //db\Manowar.json
