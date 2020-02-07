@@ -18,6 +18,7 @@ function _fileManager( opt ){
 //console.log("init _fileManager", opt);
 		
 		_vars["fsPath"] = _vars["aliasLocation"];
+		_vars["urlPath"] = _vars["alias"];
 //-----------------
 //var parseUrl = window.location.search; 
 //if( parseUrl.length > 0 ){
@@ -186,9 +187,8 @@ console.log( "-- errorThrown: ", errorThrown );
 for( var n = 0; n < data["files"].length; n++){
 	var _file = data["files"][n];
 	
-	var startPos = _vars.fsPath.indexOf( _vars.alias );
-	if( startPos !== -1){
-		var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
+	var urlPath = _getUrlPath();
+	if( urlPath ){
 		_file["url"] = urlPath + "/" + _file["name"];
 	} else {
 		_file["url"] = "#";
@@ -234,6 +234,7 @@ for( var n = 0; n < data["files"].length; n++){
 					"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
 					"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
 					"fs_path" : _vars["fsPath"],
+					"url_path" : _getUrlPath(),
 					"filelist" : htmlFilelist
 				};
 				//----------- hide change level button on FS root level
@@ -299,6 +300,10 @@ console.log( "-- THEN, promise rejected", res );
 //console.log( upLink );
 
 				_vars["fsPath"] = upLink;
+				
+				//change url path
+				_vars["urlPath"] = _getUrlPath();
+				
 				_formHtmlFileManager({
 					"postFunc" : function(html){
 //console.log( html );
@@ -371,6 +376,19 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 
 	}//end _urlManager()
 	
+
+	//change url path
+	function _getUrlPath(){
+		var startPos = _vars.fsPath.indexOf( _vars.alias );
+		if( startPos !== -1){
+			var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
+	console.log(urlPath);
+			return urlPath;
+		} else {
+			return false;
+		}
+	}//end
+
 	
 	// public interfaces
 	return{

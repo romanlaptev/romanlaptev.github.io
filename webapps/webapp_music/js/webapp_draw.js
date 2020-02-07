@@ -126,7 +126,7 @@ function _draw( opt ){
 {{buttons_fs_action}}\
 <div class="row">\
 	{{btn_change_level}}\
-	<div class="breadcrumbs uk-float-left w90">{{fs_path}}</div>\
+	<div class="breadcrumbs uk-float-left w90"><p><b>fs path</b>: {{fs_path}}</p> <p><b>url path</b>: {{url_path}}</p></div>\
 </div>\
 {{filelist}}\
 							</div>\

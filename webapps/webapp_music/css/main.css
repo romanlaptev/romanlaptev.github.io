@@ -765,3 +765,8 @@ color: #fff;
 	/* margin: 0; */
 	padding: 0;
 }
+#block-file-manager .breadcrumbs p {
+	padding: 0;
+	margin: 0;
+	font-size: 80%;
+}

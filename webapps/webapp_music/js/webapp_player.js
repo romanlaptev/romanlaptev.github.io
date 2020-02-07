@@ -249,6 +249,10 @@ console.log(p);
 		}
 		
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+		
+		if( !$("#block-player").is(":visible") ){
+			$("#block-player").show();
+		}
 		_setActiveTrack( _vars["numTrack"] );
 		
 	}//end _formTrackList()
@@ -432,9 +436,8 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		},
 		
 		formHtmlTrackList : _formHtmlTrackList,
-		loadTrackList: _loadTrackList,
-		formTrackList: _formTrackList,
-		
+		//loadTrackList: _loadTrackList,
+		//formTrackList: _formTrackList,
 		//loadTrack: _loadTrack,
 		//setActiveTrack: _setActiveTrack,
 		//nextTrack: _nextTrack,
