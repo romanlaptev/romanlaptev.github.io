@@ -107,10 +107,14 @@
 	<title>
 		<item>Psalteria</item>
 	</title>
-	
+	<images>
+		<img src="/music/P/Psalteria/Psalteria+band.jpg"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Psalteria.json">Psalteria.json</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
@@ -123,7 +127,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">20-Nov-2012 22:46:06</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:01:59</updated>
+	<updated format="d-M-Y H:i:s">08-Feb-2020 20:17:52</updated>
 </node>
 
 <node type="playlist">
@@ -217,7 +221,7 @@
 
 	
 	<related_links>
-		<li><a data-type="playlist-file" href="/music/0_playlists/Ramones.json">Ramones.json.json</a></li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Ramones.json">Ramones.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -229,30 +233,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">04-Aug-2013 22:47:17</published>
-	<updated format="d-M-Y H:i:s">01-Feb-2020 08:21:58</updated>
-</node>
-
-<node type="playlist">
-	<title>
-		<item>Путти</item>
-	</title>
-	
-
-	<description>http://rutracker.org/forum/viewtopic.php?t=424290</description>
-	
-
-	<node_tags>
-		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
-		<item vid="2" tid="45" group_name="music_styles">punk</item>
-		<item vid="4" tid="149" group_name="country">Россия</item>
-		<item vid="4" tid="150" group_name="country">СССР</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">04-Aug-2013 23:05:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:59:00</updated>
+	<updated format="d-M-Y H:i:s">08-Feb-2020 19:41:20</updated>
 </node>
 
 <node type="playlist">
