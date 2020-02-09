@@ -1230,12 +1230,15 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1018">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=fKpbxGKzmYI&amp;list=PL2sTusldk6UiWkBs4SFoffeRLBjOD5Ce5">youtube.com</a></li>
 	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
 		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
 		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
 		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
 		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
@@ -1245,7 +1248,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:22:07</updated>
+	<updated format="d-M-Y H:i:s">09-Feb-2020 10:25:59</updated>
 </node>
 
 <node type="playlist">
