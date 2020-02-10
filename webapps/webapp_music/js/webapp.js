@@ -532,32 +532,32 @@ if( target.className.indexOf("no-block-link") === -1){
 				if( target.tagName === "A"){
 
 //------------------------------- close, toggle buttons
-					//if ( target.href.indexOf("#close") !== -1 ||
-							 //target.href.indexOf("#toggle") !== -1
+if( target.getAttribute("data-toggle") ){
+//console.log( target.getAttribute("data-toggle"), target.getAttribute("data-toggle").length );
+					var id = $( target ).data("toggle");
+//console.log( id );
+
 					if ( target.href.indexOf("?q=close") !== -1 ||
 							 target.href.indexOf("?q=toggle") !== -1
 						){
-//console.log( "TEST3", target.href);
-							
-						var id = $( target ).data("toggle");
-//console.log( id );
-							if( id === "#field-tracklist-url" || id === "#fm-settings"){
-								$( id ).toggleClass("uk-hidden");
-								return;
-							}
+
+						if( $( id ).hasClass("uk-hidden") ){
+	console.log( target.href );
+							//$( id ).toggleClass("uk-hidden");
+							$( id ).removeClass("uk-hidden");
+							$( id ).hide();
+							//return;
+						}
 
 						$( id ).slideToggle( _vars.duration , function(e){
-	//console.log(arguments);
+//console.log(arguments);
 							if( id === "#block-tags"){// reset tags select
 								webApp.db.vars["queryRes"] = [];
 								_urlManager("?q=reset_tags_select");
 							}
 						});
-
-						//target.href = "1111";
-						//window.location.hash="";//clear url#close
-//console.log( "TEST4", target.href);
 					}
+}
 
 //------------------------------- get modal window
 					if ( target.href.indexOf("edit-node") !== -1){
@@ -584,9 +584,7 @@ if( target.className.indexOf("no-block-link") === -1){
 					}
 					
 //------------------------------- player, tracklist actions
-					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
-							target.href.indexOf("q=get-tracklist-url") !== -1
-					){
+					if ( target.href.indexOf("q=get-tracklist-url") !== -1 ){
 						webApp.player.urlManager( target.href );
 					}
 					
@@ -601,7 +599,7 @@ if( target.className.indexOf("no-block-link") === -1){
 						if( webApp.player.vars["trackList"].length > 0){
 							webApp.player.urlManager( target.href );
 						} else {
-webApp.vars["logMsg"] = "warning, not load media track list ...";
+webApp.vars["logMsg"] = "warning, empty media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
 						}
 					}

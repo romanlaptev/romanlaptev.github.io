@@ -51,13 +51,9 @@ function _draw( opt ){
 			<ul class="menu-track-action button-group uk-list">\
 <li><a href="?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
 <li><a href="?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
-<li><a href="?q=toggle" data-toggle="#field-tracklist-url" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
-<li><a href="?q=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
+<li><a href="?q=get-tracklist-url&action=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
+<li><a href="?q=get-tracklist-url&action=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
 			</ul>\
-<div id="field-tracklist-url" class="uk-hidden">\
-<input type="text" name="input_tracklist_url" value="" placeholder="enter track list url" class="uk-input w80">\
-<a href="?q=get-tracklist-url" class="btn btn-blue">load</a><a data-toggle="#field-tracklist-url" href="?q=close" class="btn">x</a>\
-</div>\
 		</div>\
 <div class="media-list">\
 	<ul id="track-list" class="list-unstyled">{{list}}</ul>\
@@ -820,3 +816,11 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		updatePager: _updatePager
 	};
 }//end _draw()
+
+/*
+<div id="field-tracklist-url" class="uk-hidden uk-margin-small">\
+<input type="text" name="input_tracklist_url" value="" placeholder="enter track list url" class="uk-input w80">\
+<a href="?q=get-tracklist-url" class="btn btn-blue">load</a>\
+<a data-toggle="#field-tracklist-url" href="?q=close" class="btn">x</a>\
+</div>\
+*/

@@ -3,7 +3,7 @@ function _player( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"trackListName": "new track list",
+		"trackListName": "/music/0_playlists/new_tracklist.json",
 		"trackListTitle": "",
 		"trackList":  [
 // {"title" : "Hit The Lights", "mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
@@ -52,12 +52,38 @@ func.logAlert( webApp.vars["logMsg"], "error");
 		_vars["GET"] = func.parseGetParams( url );
 		switch( _vars["GET"]["q"] ) {
 
+			case "get-tracklist-url":
+				if( _vars["GET"]["action"] === "load-tracklist" ){
+					var _trackListPath = window.prompt("Load track list, enter url:", _vars["trackListName"]);
+//console.log( _trackListPath );
+					if( _trackListPath && _trackListPath.length > 0 ){
+						var _url = "?q=load-tracklist&url="+_trackListPath;
+						_urlManager( _url );
+					}
+				}
+				
+				if( _vars["GET"]["action"] === "save-tracklist" ){
+				var _trackListPath = window.prompt("Save track list, enter url:", _vars["trackListName"]);
+					if( _trackListPath && _trackListPath.length > 0 ){
+
+						if( _vars["trackList"].length > 0){
+							var _url = "?q=save-tracklist&url="+_trackListPath;
+							_urlManager( _url );
+						} else {
+webApp.vars["logMsg"] = "warning, empty media track list ...";
+func.logAlert(webApp.vars["logMsg"], "warning");
+						}
+						
+					}
+				}
+			break;
+			
 			case "load-tracklist":
 				//var _nid = webApp.vars["GET"]["nid"];
 				
 				if( !_vars["GET"]["url"] || 
 						_vars["GET"]["url"].length === 0){
-_vars["logMsg"] = "error, not found playlist url...";
+_vars["logMsg"] = "error, not found tracklist url...";
 func.logAlert( _vars.logMsg, "error");
 					return false;
 				}
@@ -77,12 +103,30 @@ console.log( "-- THEN, promise reject, ", error );
 					}
 				);
 			break;
-			
-			case "get-tracklist-url":
-//console.log( $("#field-tracklist-url input").val() );			
-				$("#field-tracklist-url").addClass("uk-hidden");
-				var _url = "?q=load-tracklist&url="+$("#field-tracklist-url input").val();
-				_urlManager( _url );
+
+
+			case "save-tracklist":
+				
+				if( !_vars["GET"]["url"] || 
+						_vars["GET"]["url"].length === 0){
+_vars["logMsg"] = "error, not found tracklist url...";
+func.logAlert( _vars.logMsg, "error");
+					return false;
+				}
+				
+				_saveTrackList({
+					"trackListUrl": _vars["GET"]["url"]
+				})
+				.then(
+					function( data ){
+console.log( "-- THEN, promise resolve" );
+console.log(data);
+					},
+					function( error ){
+console.log( "-- THEN, promise reject, ", error );
+//console.log(arguments);					
+					}
+				);
 			break;
 
 			case "clear-tracklist":
@@ -257,6 +301,33 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 		
 	}//end _formTrackList()
 	
+
+	function _saveTrackList(opt){
+		var p = {
+			"trackListUrl": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+		var url = p["trackListUrl"];
+		var _df =  new Promise( function(resolve, reject) {
+//console.log(resolve, reject);
+			if(!url){
+				reject( "-- error, empty url....", url );
+				return _df;
+			}
+			
+			resolve();
+		});//end promise
+		
+//console.log( _df );
+		return _df;
+
+	}//end _saveTrackList()
+
+
 	
 	function _loadTrack( opt ){
 		var p = {
