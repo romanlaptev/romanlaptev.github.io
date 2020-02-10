@@ -587,7 +587,6 @@ if( target.className.indexOf("no-block-link") === -1){
 					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
 							target.href.indexOf("q=get-tracklist-url") !== -1
 					){
-//console.log("TEST2", target.href);
 						webApp.player.urlManager( target.href );
 					}
 					
@@ -617,7 +616,12 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 							target.href.indexOf("q=delete-file") !== -1 ||
 							target.href.indexOf("q=add-track") !== -1
 					){
-						webApp.fileManager.urlManager( target.href );
+						var url = target.href;
+						if( target.href.indexOf("q=get-folder") !== -1 ) {
+//console.log("TEST2", target.getAttribute("href") );
+							url = target.getAttribute("href");//without url decode, without replacing the space charaster %20
+						}
+						webApp.fileManager.urlManager( url );
 					}
 
 				}//end event
