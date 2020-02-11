@@ -3,7 +3,7 @@ function _player( opt ){
 
 	// private variables and functions
 	var _vars = {
-		"trackListName": "/music/0_playlists/new_tracklist.json",
+		"trackListName": "new_tracklist.json*",
 		"trackListTitle": "",
 		"trackList":  [
 // {"title" : "Hit The Lights", "mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
@@ -11,7 +11,8 @@ function _player( opt ){
 // {"title" : "Motorbreath",	"artist" : "Metallica",	"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
 ],
 		"numTrack": 0,
-		"autoplay" : true
+		"autoplay" : true//,
+		//"unSavedTrackList": false
 	};
 
 	var _init = function( opt ){
@@ -54,7 +55,8 @@ func.logAlert( webApp.vars["logMsg"], "error");
 
 			case "get-tracklist-url":
 				if( _vars["GET"]["action"] === "load-tracklist" ){
-					var _trackListPath = window.prompt("Load track list, enter url:", _vars["trackListName"]);
+					var _defaultValue = webApp.fileManager.vars["alias"] + "/0_playlists/" +_vars["trackListName"].replace("*","");
+					var _trackListPath = window.prompt("Load track list, enter url:", _defaultValue);
 //console.log( _trackListPath );
 					if( _trackListPath && _trackListPath.length > 0 ){
 						var _url = "?q=load-tracklist&url="+_trackListPath;
@@ -63,17 +65,16 @@ func.logAlert( webApp.vars["logMsg"], "error");
 				}
 				
 				if( _vars["GET"]["action"] === "save-tracklist" ){
-				var _trackListPath = window.prompt("Save track list, enter url:", _vars["trackListName"]);
-					if( _trackListPath && _trackListPath.length > 0 ){
-
-						if( _vars["trackList"].length > 0){
-							var _url = "?q=save-tracklist&url="+_trackListPath;
+					if( _vars["trackList"].length > 0){
+						var _defaultValue = webApp.fileManager.vars["aliasLocation"] + "/0_playlists/" +_vars["trackListName"].replace("*","");
+						var _trackListPath = window.prompt("Save track list, enter file system path:", _defaultValue );
+						if( _trackListPath && _trackListPath.length > 0 ){
+						var _url = "?q=save-tracklist&fs_path="+_trackListPath;
 							_urlManager( _url );
-						} else {
+						}
+					} else {
 webApp.vars["logMsg"] = "warning, empty media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
-						}
-						
 					}
 				}
 			break;
@@ -107,20 +108,23 @@ console.log( "-- THEN, promise reject, ", error );
 
 			case "save-tracklist":
 				
-				if( !_vars["GET"]["url"] || 
-						_vars["GET"]["url"].length === 0){
-_vars["logMsg"] = "error, not found tracklist url...";
+				if( !_vars["GET"]["fs_path"] || 
+						_vars["GET"]["fs_path"].length === 0){
+_vars["logMsg"] = "error, not found tracklist fs_path...";
 func.logAlert( _vars.logMsg, "error");
 					return false;
 				}
 				
 				_saveTrackList({
-					"trackListUrl": _vars["GET"]["url"]
+					"trackListFsPath": _vars["GET"]["fs_path"]
 				})
 				.then(
 					function( data ){
 console.log( "-- THEN, promise resolve" );
-console.log(data);
+//console.log(data);
+						_vars["unSavedTrackList"] = false;
+						_vars["trackListTitle"] = 	webApp.fileManager.getUrlPath( _vars["GET"]["fs_path"] );
+						webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 					},
 					function( error ){
 console.log( "-- THEN, promise reject, ", error );
@@ -225,7 +229,7 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 				.done(function( data, textStatus, jqXHR ){
 	//console.log("getJSON, Done...", arguments);
 	webApp.vars["logMsg"] = "getJSON done";
-	webApp.vars["logMsg"] += ",  "+textStatus +" load playlist file "+ url;
+	webApp.vars["logMsg"] += ",  "+textStatus +" load track list file <b>"+ url +"</b>";
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
 					_vars["trackListTitle"] = url;
@@ -270,8 +274,17 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
 		}
 //console.log( html );
+
+//---------------------------- mark unsaved tracklist name
+		if( _vars["unSavedTrackList"] ){
+			if( _vars["trackListTitle"].indexOf("*") === -1){
+				_vars["trackListTitle"] =  _vars["trackListTitle"] + "*";
+			}
+		} else {
+			_vars["trackListTitle"] =  _vars["trackListTitle"].replace("*", "");
+		}
+
 		html = html.replace("{{tracklist_title}}", _vars["trackListTitle"]);
-		
 		return html;
 	}//_formHtmlTrackList()
 
@@ -304,22 +317,78 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 
 	function _saveTrackList(opt){
 		var p = {
-			"trackListUrl": false
+			"trackListFsPath": false
 		};
 		//extend p object
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
-		var url = p["trackListUrl"];
+//console.log(p);
+
+		var _param = {
+			"filename": p["trackListFsPath"], 
+			"playlist": _vars["trackList"]
+		};
+
 		var _df =  new Promise( function(resolve, reject) {
 //console.log(resolve, reject);
-			if(!url){
-				reject( "-- error, empty url....", url );
-				return _df;
-			}
-			
-			resolve();
+
+			$.ajax({
+				type: "POST",
+				url: webApp.fileManager.vars["saveTrackListUrl"],
+				//dataType: "json",
+				data: _param, 
+				
+//				beforeSend: function(){
+//console.log("beforeSend:", arguments);					
+					//return false; //cancel
+//				},
+				
+				success: function( data,textStatus ){
+//console.log( arguments );
+/*	
+					//$("#log").html( textStatus );
+					$("#log").append( data );
+
+					var dirname = $(".files .dirname").text();
+					var files_panel = ".right-panel";
+					get_filelist( vars["filelist_url"], dirname, files_panel, true );
+*/			
+					if( data["eventType"] && data["eventType"] === "error"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "error");
+						reject( false );
+					}
+/*
+				if( data["subfolders"] || data["files"]){
+					var html = __formHtml( data );
+//console.log( html );
+					$d.resolve( html );
+				} else {
+					$d.reject( false );
+				}
+*/
+webApp.vars["logMsg"] = "ajax server query done";
+webApp.vars["logMsg"] += ",  "+textStatus +" save track list file <b>"+ p["trackListFsPath"] +"</b>";
+func.logAlert( webApp.vars["logMsg"], "success");
+
+					resolve();
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown){
+console.log( "textStatus: " + textStatus );
+console.log( "errorThrown: " + errorThrown );
+	/*
+					var msg = "<p class='alert alert-error'>";
+					msg += "<b>url:</b> " + vars["save_pls_url"] +", ";
+					msg += "<b>textStatus:</b> " + textStatus +", ";
+					msg += "<b>errorThrown</b>: " + errorThrown;
+					msg += "</p>";
+					$("#log").append( msg );
+*/					
+					reject( false);
+				}
+			});//end ajax query
+
 		});//end promise
 		
 //console.log( _df );
@@ -464,7 +533,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 //console.log( _vars["trackList"] );
 		
 		//squeeze tracklist
-		var arr = webApp.player.vars.trackList.filter(function(obj) {
+		var arr = _vars.trackList.filter(function(obj) {
 		  return typeof obj !== "undefined";
 		});
 		
@@ -474,10 +543,13 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		});
 //console.log( arr );
 
-		webApp.player.vars["trackList"] = arr;
+		_vars["unSavedTrackList"] = true;
+		
+//----------------------------
+		_vars["trackList"] = arr;
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
-		_setActiveTrack( _vars["numTrack"] );
+		//_setActiveTrack( _vars["numTrack"] );
 	}//end _removeTrack()
 
 

@@ -35,7 +35,7 @@ function _fileManager( opt ){
 					//_vars["rename_url"] = "api/rename.php";
 					//_vars["remove_url"] = "api/remove.php";
 					//_vars["mkdir_url"] = "api/mkdir.php";
-					//_vars["save_pls_url"] = "api/save_pls.php"
+					_vars["saveTrackListUrl"] = "api/save_pls.php"
 					if( typeof opt["postFunc"] === "function"){
 						opt["postFunc"]();
 					}
@@ -153,8 +153,8 @@ func.logAlert( _vars["logMsg"], "error");
 			
 			error:function (XMLHttpRequest, textStatus, errorThrown) {
 //console.log( "XMLHttpRequest: ", XMLHttpRequest );
-console.log( "textStatus: ", textStatus );
-console.log( "-- errorThrown: ", errorThrown );
+console.log( "textStatus: " +  textStatus );
+console.log( "-- errorThrown: " + errorThrown );
 				$d.reject( false );
 			}
 		});
@@ -187,7 +187,7 @@ console.log( "-- errorThrown: ", errorThrown );
 for( var n = 0; n < data["files"].length; n++){
 	var _file = data["files"][n];
 	
-	var urlPath = _getUrlPath();
+	var urlPath = _getUrlPath( _vars.fsPath );
 	if( urlPath ){
 		_file["url"] = urlPath + "/" + _file["name"];
 	} else {
@@ -234,7 +234,7 @@ for( var n = 0; n < data["files"].length; n++){
 					"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
 					"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
 					"fs_path" : _vars["fsPath"],
-					"url_path" : _getUrlPath(),
+					"url_path" : _getUrlPath( _vars.fsPath ),
 					"filelist" : htmlFilelist
 				};
 				//----------- hide change level button on FS root level
@@ -302,7 +302,7 @@ console.log( "-- THEN, promise rejected", res );
 				_vars["fsPath"] = upLink;
 				
 				//change url path
-				_vars["urlPath"] = _getUrlPath();
+				_vars["urlPath"] = _getUrlPath( _vars.fsPath );
 				
 				_formHtmlFileManager({
 					"postFunc" : function(html){
@@ -378,10 +378,10 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 	
 
 	//change url path
-	function _getUrlPath(){
-		var startPos = _vars.fsPath.indexOf( _vars.alias );
+	function _getUrlPath( fsPath ){
+		var startPos = fsPath.indexOf( _vars.alias );
 		if( startPos !== -1){
-			var urlPath = _vars.fsPath.substring( startPos, _vars.fsPath.length );
+			var urlPath = fsPath.substring( startPos, fsPath.length );
 //console.log(urlPath);
 			return urlPath;
 		} else {
@@ -399,7 +399,8 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 		},
 		getFileList: _getFileList,
 		formHtmlFileManager: _formHtmlFileManager,
-		urlManager:	_urlManager
+		urlManager:	_urlManager,
+		getUrlPath: _getUrlPath
 	};
 	
 }//end _fileManager()
