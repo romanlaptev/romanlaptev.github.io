@@ -39,30 +39,49 @@ if ( !function_exists("json_encode") ){//PHP 5 >= 5.2.0
 		//http://php.net/manual/ru/function.json-encode.php
 		$logMsg["message"] = "<p>error, not support function <b>json_last_error()</b>. incorrect PHP version - ".phpversion().", need PHP >= 5.3.0</p>";
 		
-		$num_bytes = file_put_contents ($filename, $json_string);
-		if ($num_bytes > 0){
-			$logMsg["message"] .= "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+		$dir = dirname( $filename );
+		$perms = substr(sprintf('%o', fileperms( $dir ) ), -4);
+		if (is_writable( $dir )){
+			$num_bytes = file_put_contents ($filename, $json_string);
+			if ($num_bytes > 0){
+				$logMsg["message"] .= "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+			} else {
+				$logMsg["message"] .= getcwd();
+				$logMsg["message"] .= "<p>Write error in ".$filename."</p>";
+			}
 		} else {
-			$logMsg["message"] .= getcwd();
-			$logMsg["message"] .= "<p>Write error in ".$filename."</p>";
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Cannot write $dir, access rights: $perms";
 		}
+		
 		$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
 		echo $jsonStr;
 		exit ();
 	}
-		
+
+//https://www.php.net/manual/en/function.json-last-error.php
 	switch ( json_last_error() ) {
 		case JSON_ERROR_NONE:
 			$logMsg["eventType"] = "success";
-			
-			$num_bytes = file_put_contents ($filename, $json_string);
-			if ($num_bytes > 0){
-$logMsg["message"] = "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+
+			$dir = dirname( $filename );
+			$perms = substr(sprintf('%o', fileperms( $dir ) ), -4);
+			if (is_writable( $dir )){
+
+				$num_bytes = file_put_contents ($filename, $json_string);
+				if ($num_bytes > 0){
+	$logMsg["message"] = "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+				} else {
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = getcwd();
+	$logMsg["message"] = "<p>Write error in ".$filename."</p>";
+				}
+
 			} else {
 $logMsg["eventType"] = "error";
-$logMsg["message"] = getcwd();
-$logMsg["message"] = "<p>Write error in ".$filename."</p>";
+$logMsg["message"] = "Cannot write $dir, access rights: $perms";
 			}
+			
 /*
 		header('Content-Type: application/json');
 		header('Content-Disposition: attachment; filename='.$filename.'');
@@ -71,23 +90,71 @@ $logMsg["message"] = "<p>Write error in ".$filename."</p>";
 		echo $json_string;;
 */
 		break;
+		
 		case JSON_ERROR_DEPTH:
-			echo ' - Достигнута максимальная глубина стека';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "The maximum stack depth has been exceeded";
+			//echo "The maximum stack depth has been exceeded";//' - Достигнута максимальная глубина стека';
 		break;
+
 		case JSON_ERROR_STATE_MISMATCH:
-			echo ' - Некорректные разряды или не совпадение режимов';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Invalid or malformed JSON";
+			//echo "Invalid or malformed JSON";//' - Некорректные разряды или не совпадение режимов';
 		break;
+
 		case JSON_ERROR_CTRL_CHAR:
-			echo ' - Некорректный управляющий символ';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Control character error, possibly incorrectly encoded";
+			//echo "Control character error, possibly incorrectly encoded";//'- Некорректный управляющий символ';
 		break;
+
 		case JSON_ERROR_SYNTAX:
-			echo ' - Синтаксическая ошибка, не корректный JSON';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Syntax error";
+			//echo "Syntax error";//' - Синтаксическая ошибка, не корректный JSON';
 		break;
+		
 		case JSON_ERROR_UTF8:
-			echo ' - Некорректные символы UTF-8, возможно неверная кодировка';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Malformed UTF-8 characters, possibly incorrectly encoded";
+			//echo "Malformed UTF-8 characters, possibly incorrectly encoded";//' - Некорректные символы UTF-8, возможно неверная кодировка';
 		break;
+		
+		case JSON_ERROR_RECURSION:
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "One or more recursive references in the value to be encoded";
+//One or more recursive references in the value to be encoded 	PHP 5.5.0
+		break;
+
+		case JSON_ERROR_INF_OR_NAN:
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "One or more NAN or INF values in the value to be encoded";
+//One or more NAN or INF values in the value to be encoded 	PHP 5.5.0
+		break;
+
+		case JSON_ERROR_UNSUPPORTED_TYPE:
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "A value of a type that cannot be encoded was given";
+//A value of a type that cannot be encoded was given 	PHP 5.5.0
+		break;
+
+		case JSON_ERROR_INVALID_PROPERTY_NAME:
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "A property name that cannot be encoded was given";
+//A property name that cannot be encoded was given 	PHP 7.0.0
+		break;
+
+		case JSON_ERROR_UTF16:
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "Malformed UTF-16 characters, possibly incorrectly encoded";
+//Malformed UTF-16 characters, possibly incorrectly encoded 	PHP 7.0.0
+		break;
+		
 		default:
-			echo ' - Неизвестная ошибка';
+$logMsg["eventType"] = "error";
+$logMsg["message"] = "json_last_error(), Unknown error";
+			//echo "Unknown error";//' - Неизвестная ошибка';
 		break;
 	}//end switch
 	
