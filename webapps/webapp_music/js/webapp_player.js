@@ -228,7 +228,7 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 				
 				.done(function( data, textStatus, jqXHR ){
 	//console.log("getJSON, Done...", arguments);
-	webApp.vars["logMsg"] = "getJSON done";
+	webApp.vars["logMsg"] = "server query done";
 	webApp.vars["logMsg"] += ",  "+textStatus +" load track list file <b>"+ url +"</b>";
 	func.logAlert( webApp.vars["logMsg"], "success");
 	//console.log(data);
@@ -327,6 +327,7 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 
 		var _param = {
 			"filename": p["trackListFsPath"], 
+			//"filename": "", //test
 			"playlist": _vars["trackList"]
 		};
 
@@ -336,7 +337,7 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 			$.ajax({
 				type: "POST",
 				url: webApp.fileManager.vars["saveTrackListUrl"],
-				//dataType: "json",
+				dataType: "json",
 				data: _param, 
 				
 //				beforeSend: function(){
@@ -345,46 +346,33 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 //				},
 				
 				success: function( data,textStatus ){
-//console.log( arguments );
-/*	
-					//$("#log").html( textStatus );
-					$("#log").append( data );
-
-					var dirname = $(".files .dirname").text();
-					var files_panel = ".right-panel";
-					get_filelist( vars["filelist_url"], dirname, files_panel, true );
-*/			
+console.log( data );
 					if( data["eventType"] && data["eventType"] === "error"){
 _vars["logMsg"] = data["message"];
 func.logAlert( _vars["logMsg"], "error");
 						reject( false );
 					}
-/*
-				if( data["subfolders"] || data["files"]){
-					var html = __formHtml( data );
-//console.log( html );
-					$d.resolve( html );
-				} else {
-					$d.reject( false );
-				}
-*/
-webApp.vars["logMsg"] = "ajax server query done";
+
+					if( data["eventType"] && data["eventType"] === "success"){
+webApp.vars["logMsg"] = "server query done";
 webApp.vars["logMsg"] += ",  "+textStatus +" save track list file <b>"+ p["trackListFsPath"] +"</b>";
 func.logAlert( webApp.vars["logMsg"], "success");
-
-					resolve();
+						resolve(data);
+					}/* else {
+_vars["logMsg"] = "unknown server request error....";
+func.logAlert( _vars["logMsg"], "error");
+						reject( false );
+					}*/
+					
 				},
 				error: function (XMLHttpRequest, textStatus, errorThrown){
 console.log( "textStatus: " + textStatus );
 console.log( "errorThrown: " + errorThrown );
-	/*
-					var msg = "<p class='alert alert-error'>";
-					msg += "<b>url:</b> " + vars["save_pls_url"] +", ";
-					msg += "<b>textStatus:</b> " + textStatus +", ";
-					msg += "<b>errorThrown</b>: " + errorThrown;
-					msg += "</p>";
-					$("#log").append( msg );
-*/					
+
+_vars["logMsg"] = "server request error....";
+_vars["logMsg"] += ", <b>textStatus</b>: " + textStatus;
+_vars["logMsg"] += ", <b>errorThrown</b>: " + errorThrown;
+func.logAlert( _vars["logMsg"], "error");
 					reject( false);
 				}
 			});//end ajax query

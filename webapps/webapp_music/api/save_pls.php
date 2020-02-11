@@ -1,63 +1,67 @@
 <?php
-echo "<pre>";
-print_r($_REQUEST);
-echo "</pre>";
-exit;
+//echo "<pre>";
+//print_r($_REQUEST);
+//echo "</pre>";
+//exit;
 
-	if( empty($_REQUEST['filename']) )
-	{
-		$message .= "<p class='alert alert-error'>error, empty filename</p>";
-		echo $message;
+if (!isset($_REQUEST['filename']) || empty($_REQUEST['filename'])){
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, undefined parameter 'filename'...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
+	exit;
+}
+
+if (!isset($_REQUEST['playlist']) || empty($_REQUEST['playlist'])){
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, undefined parameter 'playlist'...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
+	exit;
+}
+
+//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
+//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
+//https://gist.github.com/jorgeatorres/1239453
+if ( !function_exists("json_encode") ){//PHP 5 >= 5.2.0
+		$logMsg["eventType"] = "error";
+		$logMsg["message"] = "error, not support function <b>json_encode()</b>. incorrect PHP version - ".phpversion().", need PHP >= 5.2.0";
+		$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
+		echo $jsonStr;
 		exit ();
-	}
-
-	if( empty($_REQUEST['playlist']) )
-	{
-		$message .= "<p class='alert alert-error'>error, empty playlist</p>";
-		echo $message;
-		exit ();
-	}
-
-	$filename = $_REQUEST['filename'];
-
-	if ( !function_exists("json_encode") ){//PHP 5 >= 5.2.0
-		//https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
-		//http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
-		//https://gist.github.com/jorgeatorres/1239453
-//echo "error, not support function json_encode(). incorrect PHP version - ".$_vars["config"]["phpversion"].", need PHP >= 5.2.0";
-//$msg = "<p class='alert alert-error'>error, not support function json_encode(). incorrect PHP version - ".phpversion().", need PHP >= 5.2.0</p>";
-$msg = "<p class='alert alert-error'>PHP version - ".phpversion().",  json_encode support ". function_exists("json_encode")."</p>";
-		echo $msg;
-		exit ();
-	}
+}
 	
+	$filename = $_REQUEST['filename'];
 	$json_string = json_encode( $_REQUEST['playlist'] );
 		
 	if ( !function_exists("json_last_error") ){ //PHP 5 >= 5.3.0
+		$logMsg["eventType"] = "error";
 		//http://php.net/manual/ru/function.json-encode.php
-		$msg = "<p class='alert alert-error'>error, not support function json_last_error(). incorrect PHP version - ".phpversion().", need PHP >= 5.3.0</p>";
+		$logMsg["message"] = "<p>error, not support function <b>json_last_error()</b>. incorrect PHP version - ".phpversion().", need PHP >= 5.3.0</p>";
+		
 		$num_bytes = file_put_contents ($filename, $json_string);
 		if ($num_bytes > 0){
-			$msg .= "<p class='alert alert-success'>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+			$logMsg["message"] .= "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
 		} else {
-			$msg .= getcwd();
-			$msg .= "<p class='alert alert-error'>Write error in ".$filename."</p>";
+			$logMsg["message"] .= getcwd();
+			$logMsg["message"] .= "<p>Write error in ".$filename."</p>";
 		}
-		echo $msg;
+		$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
+		echo $jsonStr;
 		exit ();
 	}
 		
 	switch ( json_last_error() ) {
 		case JSON_ERROR_NONE:
+			$logMsg["eventType"] = "success";
+			
 			$num_bytes = file_put_contents ($filename, $json_string);
-			if ($num_bytes > 0)
-			{
-$message .= "<p class='alert alert-success'>Write ".$num_bytes." bytes  in ".$filename . "</p>";
-			}
-			else
-			{
-$message .= getcwd();
-$message .= "<p class='alert alert-error'>Write error in ".$filename."</p>";
+			if ($num_bytes > 0){
+$logMsg["message"] = "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+			} else {
+$logMsg["eventType"] = "error";
+$logMsg["message"] = getcwd();
+$logMsg["message"] = "<p>Write error in ".$filename."</p>";
 			}
 /*
 		header('Content-Type: application/json');
@@ -87,6 +91,7 @@ $message .= "<p class='alert alert-error'>Write error in ".$filename."</p>";
 		break;
 	}//end switch
 	
-	echo $message;
+	$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
+	echo $jsonStr;
 	
 ?>

@@ -155,6 +155,12 @@ func.logAlert( _vars["logMsg"], "error");
 //console.log( "XMLHttpRequest: ", XMLHttpRequest );
 console.log( "textStatus: " +  textStatus );
 console.log( "-- errorThrown: " + errorThrown );
+
+_vars["logMsg"] = "server request error....";
+_vars["logMsg"] += ", <b>textStatus</b>: " + textStatus;
+_vars["logMsg"] += ", <b>errorThrown</b>: " + errorThrown;
+func.logAlert( _vars["logMsg"], "error");
+
 				$d.reject( false );
 			}
 		});
