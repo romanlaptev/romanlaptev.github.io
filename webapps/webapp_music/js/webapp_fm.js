@@ -133,7 +133,7 @@ console.log(p);
 			data: ({dir: p.dirName}),
 			success: function(data, status){
 //console.log("-- status: " + status);
-console.log("-- data: ", data);
+//console.log("-- data: ", data);
 
 				if( data["eventType"] && data["eventType"] === "error"){
 _vars["logMsg"] = data["message"];
@@ -478,7 +478,7 @@ func.logAlert( _vars["logMsg"], "error");
 					}
 
 					if( data["eventType"] && data["eventType"] === "success"){
-_vars["logMsg"] += data["message"];
+_vars["logMsg"] = data["message"];
 func.logAlert( _vars["logMsg"], "success");
 						_formHtmlFileManager({
 							"postFunc" : function(html){

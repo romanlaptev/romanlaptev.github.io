@@ -42,23 +42,23 @@ for( $n1=0; $n1 < count($file); $n1++ ){
 
 	if( is_dir($filename) ){
 		if( rmdir( $filename ) ){
-			$logMsg["message"] .= "<p class='msg-success'><b>rmdir empty folder</b> $filename</p>\n";
+			$logMsg["message"] .= "<p class='msg-success'><b>rmdir empty folder</b> $filename</p>";
 		} else {
 			$res=false;
 			$res=RemoveTree($filename);
 			if ($res){
-				$logMsg["message"] .= "<p class='msg-success'><b>remove tree</b> $filename</p>\n";
+				$logMsg["message"] .= "<p class='msg-success'><b>remove tree</b> $filename</p>";
 			} else {
-				$logMsg["message"] .= "<p class='msg-warning'><b>cannot rmdir</b> $filename</p>\n";
+				$logMsg["message"] .= "<p class='msg-warning'><b>cannot rmdir</b> $filename</p>";
 			}
 		}
 	}
 
 	if ( is_file($filename) ){
 		if (unlink ($filename)){
-			$logMsg["message"] .= "<p class='msg-success'><b>delete</b> $filename</p>\n";
+			$logMsg["message"] .= "<p class='msg-success'><b>delete</b> $filename</p>";
 		} else {
-			$logMsg["message"] .= "<p class='msg-error'><b>cannot delete</b> $filename</p>\n";
+			$logMsg["message"] .= "<p class='msg-error'><b>cannot delete</b> $filename</p>";
 		}
 	}
 
@@ -79,13 +79,13 @@ function RemoveTree($dir)
 		if ($file != "." && $file != "..") { 
 			if( is_file($dir."/".$file) ) { 
 				if( unlink($dir."/".$file) ) {
-					$logMsg["message"] .= "<p class='msg-success'><b>delete</b> $file</p>\n";
+					$logMsg["message"] .= "<p class='msg-success'><b>delete</b> $file</p>";
 				} 
 			} 
 			if(is_dir($dir."/".$file)) { 
 				RemoveTree($dir."/".$file);
 				if( rmdir($dir."/".$file) ) {
-					$logMsg["message"] .= "<p class='msg-success'><b>rmdir</b> $dir."/".$file</p>\n";
+					$logMsg["message"] .= "<p class='msg-success'><b>rmdir</b> $dir."/".$file</p>";
 				} 
 			} 
 			
@@ -94,7 +94,7 @@ function RemoveTree($dir)
 	closedir($handle); 
 	
 	if(rmdir($dir)){
-		$logMsg["message"] .= "<p class='msg-success'><b>rmdir</b> $dir</p>\n";
+		$logMsg["message"] .= "<p class='msg-success'><b>rmdir</b> $dir</p>";
 		return true;
 	} 
 }//end
