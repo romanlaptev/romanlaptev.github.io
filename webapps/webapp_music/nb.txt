@@ -49,7 +49,32 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 *- нужно добавлять треки из другого плейлиста( не очищать треклист при добавлении новых треков)
 
 - сделать чтение информации из MP3-тегов
+
+-----------------------------------
 - разработать шаблон для формата треклиста
+- сделать возможным загрузку треклистов в др. форматах (.m3u, xml)
+#EXTM3U
+#EXTINF:227,Clawfinger - Nigger
+01-Deaf Dumb Blind 1993\01-Nigger.mp3
+-----
+			{
+				title:"Cro Magnon Man",
+				artist:"The Stark Palace",
+				mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+				oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+				poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
+			},
+			{
+				title:"Finding Nemo Teaser",
+				artist:"Pixar",
+				m4v: "http://www.jplayer.org/video/m4v/Finding_Nemo_Teaser.m4v",
+				ogv: "http://www.jplayer.org/video/ogv/Finding_Nemo_Teaser.ogv",
+				webmv: "http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm",
+				poster: "http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png"
+			},
+			
+- как совместить видео и аудио треки в одном плейлисте?
+-----------------------------------
 
 - сделать изменение порядка треков в треклисте перетаскиванием
 - при добавлении в плеер трека в формате видео тег <audio> меняется на <video> (toggle)
