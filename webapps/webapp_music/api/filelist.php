@@ -29,8 +29,9 @@ if (!empty($_REQUEST['dir']) ){
 if (is_dir($dir)) {
 	$files = DirFiles($dir, $media_types);
 	if ( empty($files) ){
-		$logMsg["eventType"] = "error";
-		$logMsg["message"] = "error, empty file list, directory: <b>".$dir."</b>";
+		$logMsg["eventType"] = "warning";
+		//$logMsg["code"] = "empty_dir";
+		$logMsg["message"] = "warning, empty file list, directory: <b>".$dir."</b>";
 		$jsonStr = json_encode($logMsg);
 		echo $jsonStr;
 		exit;

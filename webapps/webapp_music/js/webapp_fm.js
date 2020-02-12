@@ -8,9 +8,9 @@ function _fileManager( opt ){
 		//"testUrlASPX": "api/aspx/test.aspx",
 		
 		"alias" : "/music",
-		//"aliasLocation" : "/home/www/music",
+		"aliasLocation" : "/home/www/music",
 		//"aliasLocation" : "d:/temp/music",
-		"aliasLocation" : "./",
+		//"aliasLocation" : "./",
 		"fsPath" : ""
 	};//end _vars
 
@@ -33,7 +33,7 @@ function _fileManager( opt ){
 					_vars["fileListUrl"] = "api/filelist.php"
 					//_vars["copy_url"] = "api/copy.php";
 					//_vars["rename_url"] = "api/rename.php";
-					//_vars["remove_url"] = "api/remove.php";
+					_vars["removeUrl"] = "api/remove.php";
 					//_vars["mkdir_url"] = "api/mkdir.php";
 					_vars["saveTrackListUrl"] = "api/save_pls.php"
 					if( typeof opt["postFunc"] === "function"){
@@ -133,12 +133,18 @@ console.log(p);
 			data: ({dir: p.dirName}),
 			success: function(data, status){
 //console.log("-- status: " + status);
-//console.log("-- data: ", data);
+console.log("-- data: ", data);
 
 				if( data["eventType"] && data["eventType"] === "error"){
 _vars["logMsg"] = data["message"];
 func.logAlert( _vars["logMsg"], "error");
 					$d.reject( false );
+				}
+				
+				if( data["eventType"] && data["eventType"] === "warning"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "warning");
+					data["files"] =[{}];
 				}
 
 				if( data["subfolders"] || data["files"]){
@@ -356,7 +362,6 @@ console.log( "-- THEN, promise rejected", res );
 			
 //--------------------------------------------
 			case "check-all":
-			
 				$("#block-file-manager").find(".wfm input[type=checkbox]").each( function(num, item){
 //console.log(num, item);
 					$(item).prop("checked", true);
@@ -370,8 +375,32 @@ console.log( "-- THEN, promise rejected", res );
 				});				
 			break;
 			
+			case "delete-file":
+
+				var checkedFiles = [];
+				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
+//console.log(num, item);
+					checkedFiles.push( $(item).val() );
+				});
+				
+				_deleteFile({
+					"fsPath": _vars["fsPath"],
+					"files": checkedFiles
+				})
+				.then(
+					function( data ){
+//console.log( "-- THEN, promise resolve" );
+//console.log(data);
+					},
+					function( error ){
+//console.log( "-- THEN, promise reject, ", error );
+//console.log(arguments);					
+					}
+				);
+
+			break;
+			
 //"?q=rename-file"
-//"?q=delete-file"
 //"?q=add-track"
 			
 //--------------------------------------------
@@ -395,7 +424,96 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 		}
 	}//end
 
-	
+
+//==================== delete file(s), directory(ies)
+	function _deleteFile(opt){
+		var p = {
+			"fsPath": false,
+			"files": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["fsPath"] || p["fsPath"].length === 0){
+_vars["logMsg"] = "error, incorrect parameter fsPath...";
+console.log( _vars.logMsg);
+			return false;
+		}
+		
+		if( !p["files"] || p["files"].length === 0){
+_vars["logMsg"] = "error, wrong parameter files...";
+console.log( _vars.logMsg);
+			return false;
+		}
+		
+		var _param = {
+			fs_path: p["fsPath"], 
+			file: p["files"]
+		};
+
+		var _df =  new Promise( function(resolve, reject) {
+//console.log(resolve, reject);
+
+			$.ajax({
+				type: "POST",
+				url: webApp.fileManager.vars["removeUrl"],
+				dataType: "json",
+				data: _param, 
+				
+//				beforeSend: function(){
+//console.log("beforeSend:", arguments);					
+					//return false; //cancel
+//				},
+				
+				success: function( data,textStatus ){
+console.log( data );
+
+					if( data["eventType"] && data["eventType"] === "error"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "error");
+						reject( false );
+					}
+
+					if( data["eventType"] && data["eventType"] === "success"){
+_vars["logMsg"] += data["message"];
+func.logAlert( _vars["logMsg"], "success");
+						_formHtmlFileManager({
+							"postFunc" : function(html){
+		//console.log( html );
+								if( html && html.length > 0){
+									webApp.vars["blocksByName"]["blockFM"].content = html;
+									webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+								}
+							}
+						});
+
+						resolve(data);
+					}
+					
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown){
+console.log( "textStatus: " + textStatus );
+console.log( "errorThrown: " + errorThrown );
+
+_vars["logMsg"] = "server request error....";
+_vars["logMsg"] += ", <b>textStatus</b>: " + textStatus;
+_vars["logMsg"] += ", <b>errorThrown</b>: " + errorThrown;
+func.logAlert( _vars["logMsg"], "error");
+					reject( false);
+				}
+			});//end ajax query
+
+		});//end promise
+		
+//console.log( _df );
+		return _df;
+
+	}//end _deleteFile()
+
+
 	// public interfaces
 	return{
 		vars : _vars,

@@ -4,22 +4,6 @@
 //echo "</pre>";
 //exit;
 
-if (!isset($_REQUEST['filename']) || empty($_REQUEST['filename'])){
-	$logMsg["eventType"] = "error";
-	$logMsg["message"] = "error, undefined parameter 'filename'...";
-	$jsonStr = json_encode($logMsg);
-	echo $jsonStr;
-	exit;
-}
-
-if (!isset($_REQUEST['playlist']) || empty($_REQUEST['playlist'])){
-	$logMsg["eventType"] = "error";
-	$logMsg["message"] = "error, undefined parameter 'playlist'...";
-	$jsonStr = json_encode($logMsg);
-	echo $jsonStr;
-	exit;
-}
-
 //https://www.abeautifulsite.net/using-json-encode-and-json-decode-in-php4
 //http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 //https://gist.github.com/jorgeatorres/1239453
@@ -30,7 +14,23 @@ if ( !function_exists("json_encode") ){//PHP 5 >= 5.2.0
 		echo $jsonStr;
 		exit ();
 }
-	
+
+if (!isset($_REQUEST['filename']) || empty($_REQUEST['filename'])){
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, undefined or empty parameter 'filename'...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
+	exit;
+}
+
+if (!isset($_REQUEST['playlist']) || empty($_REQUEST['playlist'])){
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, undefined or empty parameter 'playlist'...";
+	$jsonStr = json_encode($logMsg);
+	echo $jsonStr;
+	exit;
+}
+
 	$filename = $_REQUEST['filename'];
 	$json_string = json_encode( $_REQUEST['playlist'] );
 		

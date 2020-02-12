@@ -351,6 +351,24 @@ overflow-y: auto !important;
 	color: #000;
 }
 
+.msg-success{
+	font-size:80%;
+	padding: 5px;
+	background: #42af44;
+	color: #fff;
+}
+.msg-warning{
+	font-size:80%;
+	padding: 5px;
+	background: #ffb515;
+	color: #000;
+}
+.msg-error{
+	font-size:80%;
+	padding: 5px;
+	background: #ff5251;
+	color: #fff;
+}
 
 .my-offcanvas {
 	display:none;
