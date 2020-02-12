@@ -584,7 +584,8 @@ if( target.getAttribute("data-toggle") ){
 					}
 					
 //------------------------------- player, tracklist actions
-					if ( target.href.indexOf("q=get-tracklist-url") !== -1 ){
+					if ( target.href.indexOf("q=get-tracklist-url") !== -1 ||
+							target.href.indexOf("q=load-tracklist") !== -1 ){
 						webApp.player.urlManager( target.href );
 					}
 					

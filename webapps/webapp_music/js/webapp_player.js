@@ -158,15 +158,6 @@ console.log( "-- THEN, promise reject, ", error );
 				_nextTrack();
 			break;
 			
-
-			//case "check-all":
-				//_draw_checkAll();
-			//break;
-			
-			//case "clear-all":
-				//_draw_clearAll();
-			//break;
-			
 			case "remove-track":
 				_removeTrack({
 					"trackNum": _vars["GET"]["num"]
