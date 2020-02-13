@@ -469,7 +469,7 @@ console.log( _vars.logMsg);
 //				},
 				
 				success: function( data,textStatus ){
-console.log( data );
+//console.log( data );
 
 					if( data["eventType"] && data["eventType"] === "error"){
 _vars["logMsg"] = data["message"];

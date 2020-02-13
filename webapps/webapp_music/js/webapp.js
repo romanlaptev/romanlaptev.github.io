@@ -195,6 +195,7 @@ console.log("init webapp!");
 			webApp.vars["blocksByName"]["blockNodes"] = 	webApp.vars["blocks"][6];
 			webApp.vars["blocksByName"]["blockFooterLinks"] = 	webApp.vars["blocks"][7];
 			
+			webApp.vars["logPanel"] = func.getById("log");
 			webApp.vars["waitWindow"] = func.getById("win1");
 			webApp.vars["loadProgress"] = func.getById("load-progress");
 			webApp.vars["loadProgressBar"] = func.getById("load-progress-bar");
@@ -542,7 +543,7 @@ if( target.getAttribute("data-toggle") ){
 						){
 
 						if( $( id ).hasClass("uk-hidden") ){
-	console.log( target.href );
+//console.log( target.href );
 							//$( id ).toggleClass("uk-hidden");
 							$( id ).removeClass("uk-hidden");
 							$( id ).hide();
@@ -554,6 +555,9 @@ if( target.getAttribute("data-toggle") ){
 							if( id === "#block-tags"){// reset tags select
 								webApp.db.vars["queryRes"] = [];
 								_urlManager("?q=reset_tags_select");
+							}
+							if( id === "#log"){
+								webApp.vars["logPanel"].innerHTML = "";
 							}
 						});
 					}

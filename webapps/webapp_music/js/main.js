@@ -68,6 +68,7 @@ function initApplication(){
 	func.logAlert( _vars.logMsg, "info");
 
 //===============================
+/*
 	_vars["logPanel"] = func.getById("log");
 	func.addEvent( 
 		func.getById("btn-clear-log"), 
@@ -84,7 +85,7 @@ function initApplication(){
 			_vars.logPanel.innerHTML = "";
 		}
 	);//end event
-
+*/
 
 /*
 //------------------------ Image load error

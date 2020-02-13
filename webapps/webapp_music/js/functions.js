@@ -70,9 +70,12 @@ use module:
 				//document.writeln(msg);
 			}
 			
-			if( typeof _showHiddenLog === "function"){
+			//if( typeof _showHiddenLog === "function"){
 		//console.log(_showHiddenLog);
-				_showHiddenLog();
+				//_showHiddenLog();
+			//}
+			if( output.style.display !== "block"){
+				output.style.display = "block";
 			}
 			
 		}//end _log()
