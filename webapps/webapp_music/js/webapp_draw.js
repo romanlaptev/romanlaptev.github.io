@@ -132,7 +132,7 @@ function _draw( opt ){
 	<ul class="btn-fs-action button-group">\
 <li><a href="?q=check-all" class="btn btn-blue">select all</a></li>\
 <li><a href="?q=clear-all" class="btn btn-blue">clear all</a></li>\
-<li><a href="?q=rename-file" class="rename uk-button uk-button-small uk-button-default">rename selected</a></li>\
+<li><a href="?q=rename-file" class="btn btn-orange">rename selected</a></li>\
 <li><a href="?q=delete-file" class="group-remove uk-button uk-button-small uk-button-danger" >delete selected</a></li>\
 <li><a href="?q=add-track" class="uk-button uk-button-small uk-button-primary">add track to tracklist</a></li>\
 	</ul>\
@@ -151,16 +151,16 @@ function _draw( opt ){
 </li>',
 
 		"files_listTpl" : '<ul class="files-list uk-list uk-list-striped">{{list}}</ul>', 
-		"files_itemTpl" : '<li>\
-	<div>\
+		
+		"files_itemTpl" : '<li><div>\
 		<input name="file[]" value="{{name}}" type="checkbox" class="no-block-link">\
-		<a class="file no-block-link" href="{{url}}" target="_blank">{{name}}</a>\
-	</div>\
-</li>',
+		<a class="file-name no-block-link" href="{{url}}" target="_blank">{{name}}</a>\
+	</div></li>',
+	
 		"files_itemTpl_block" : '<li>\
 	<div>\
-		<input name="file[]" value="{{name}}" type="checkbox">\
-		<span class="file">{{name}}</span>\
+		<input name="file[]" value="{{name}}" type="checkbox" class="no-block-link">\
+		<span class="file-name">{{name}}</span>\
 	</div>\
 </li>',
 

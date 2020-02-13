@@ -8,11 +8,11 @@
 //http://www.epigroove.com/blog/how-to-use-json-in-php-4-or-php-51x
 //https://gist.github.com/jorgeatorres/1239453
 if ( !function_exists("json_encode") ){//PHP 5 >= 5.2.0
-		$logMsg["eventType"] = "error";
-		$logMsg["message"] = "error, not support function <b>json_encode()</b>. incorrect PHP version - ".phpversion().", need PHP >= 5.2.0";
-		$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
-		echo $jsonStr;
-		exit ();
+	$logMsg["eventType"] = "error";
+	$logMsg["message"] = "error, not support function <b>json_encode()</b>. incorrect PHP version - ".phpversion().", need PHP >= 5.2.0";
+	$jsonStr = '{"eventType": "'.$logMsg["eventType"].'", "message": "'.$logMsg["message"].'"}';
+	echo $jsonStr;
+	exit ();
 }
 
 if (!isset($_REQUEST['file']) || empty($_REQUEST['file'])){

@@ -32,7 +32,7 @@ function _fileManager( opt ){
 //console.log(res);
 					_vars["fileListUrl"] = "api/filelist.php"
 					//_vars["copy_url"] = "api/copy.php";
-					//_vars["rename_url"] = "api/rename.php";
+					_vars["renameUrl"] = "api/rename.php";
 					_vars["removeUrl"] = "api/remove.php";
 					//_vars["mkdir_url"] = "api/mkdir.php";
 					_vars["saveTrackListUrl"] = "api/save_pls.php"
@@ -375,8 +375,8 @@ console.log( "-- THEN, promise rejected", res );
 				});				
 			break;
 			
+//--------------------------------------------
 			case "delete-file":
-
 				var checkedFiles = [];
 				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
 //console.log(num, item);
@@ -393,14 +393,43 @@ console.log( "-- THEN, promise rejected", res );
 //console.log(data);
 					},
 					function( error ){
-//console.log( "-- THEN, promise reject, ", error );
+console.log( "-- THEN, promise reject, ", error );
 //console.log(arguments);					
 					}
 				);
 
 			break;
 			
-//"?q=rename-file"
+//-------------------------------------------- rename, move FIRST selected file
+			case "rename-file":
+				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
+//console.log(num, item);
+					if( num === 0){
+						var _oldName = _vars["fsPath"] + "/"+ $(item).val();
+
+						_renameFile({
+							"fsPath": _vars["fsPath"],
+							"oldName": _oldName,
+							"newName": _inputNewFileName( _oldName )
+						})
+						.then(
+							function( data ){
+		console.log( "-- THEN, promise resolve" );
+		//console.log(data);
+							},
+							function( error ){
+		console.log( "-- THEN, promise reject, ", error );
+		//console.log(arguments);					
+							}
+						);
+						
+					} else {
+						$(item).prop("checked", false);
+					}
+				});
+			
+			break;
+			
 //"?q=add-track"
 			
 //--------------------------------------------
@@ -424,6 +453,13 @@ console.log("-- fileManager.urlManager(),  GET query string: ", _vars["GET"]);
 		}
 	}//end
 
+
+	function _inputNewFileName( oldName ){
+		var _newFileName = window.prompt("rename/move file, enter new path/name:", oldName );
+		// if( _newFileName && _newFileName.length > 0 ){
+		// }
+		return _newFileName;
+	}//end _inputNewFileName()
 
 //==================== delete file(s), directory(ies)
 	function _deleteFile(opt){
@@ -513,6 +549,94 @@ func.logAlert( _vars["logMsg"], "error");
 
 	}//end _deleteFile()
 
+
+//=============================== rename files
+	function _renameFile(opt){
+		var p = {
+			"oldName": false, 
+			"newName": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+
+		if( !p["oldName"] || p["oldName"].length === 0){
+_vars["logMsg"] = "error, incorrect parameter oldName...";
+console.log( _vars.logMsg);
+			return false;
+		}
+		
+		if( !p["newName"] || p["newName"].length === 0){
+_vars["logMsg"] = "error, wrong parameter newName...";
+console.log( _vars.logMsg);
+			return false;
+		}
+		
+		var _param = {
+			"old_name": p.oldName, 
+			"new_name": p.newName
+		};
+
+		var _df =  new Promise( function(resolve, reject) {
+//console.log(resolve, reject);
+
+			$.ajax({
+				type: "POST",
+				url: webApp.fileManager.vars["renameUrl"],
+				dataType: "json",
+				data: _param, 
+				
+//				beforeSend: function(){
+//console.log("beforeSend:", arguments);					
+					//return false; //cancel
+//				},
+				
+				success: function( data,textStatus ){
+console.log( data );
+
+					if( data["eventType"] && data["eventType"] === "error"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "error");
+						reject( false );
+					}
+
+					if( data["eventType"] && data["eventType"] === "success"){
+_vars["logMsg"] = data["message"];
+func.logAlert( _vars["logMsg"], "success");
+						_formHtmlFileManager({
+							"postFunc" : function(html){
+		//console.log( html );
+								if( html && html.length > 0){
+									webApp.vars["blocksByName"]["blockFM"].content = html;
+									webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+								}
+							}
+						});
+
+						resolve(data);
+					}
+					
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown){
+console.log( "textStatus: " + textStatus );
+console.log( "errorThrown: " + errorThrown );
+
+_vars["logMsg"] = "server request error....";
+_vars["logMsg"] += ", <b>textStatus</b>: " + textStatus;
+_vars["logMsg"] += ", <b>errorThrown</b>: " + errorThrown;
+func.logAlert( _vars["logMsg"], "error");
+					reject( false);
+				}
+			});//end ajax query
+
+		});//end promise
+		
+//console.log( _df );
+		return _df;
+
+	}//end _renameFile()
 
 	// public interfaces
 	return{
