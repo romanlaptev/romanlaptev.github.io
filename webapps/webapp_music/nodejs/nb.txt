@@ -1,0 +1,2 @@
+//create project packages.json
+npm init
