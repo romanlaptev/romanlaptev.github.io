@@ -289,10 +289,15 @@
 	<title>
 		<item>Slayer</item>
 	</title>
-	
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1026.55002/200x200?1581595293150"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Slayer.json">Slayer.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1026">music.yandex.ru</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
@@ -303,7 +308,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">11-Aug-2013 21:51:35</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 13:08:31</updated>
+	<updated format="d-M-Y H:i:s">13-Feb-2020 21:08:38</updated>
 </node>
 
 <node type="playlist">
