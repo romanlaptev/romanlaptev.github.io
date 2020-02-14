@@ -88,7 +88,7 @@ _log(msg);
 		//console.log(_showHiddenLog);
 				//_showHiddenLog();
 			//}
-			if( output.style.display !== "block"){
+			if( output && output.style.display !== "block"){
 				output.style.display = "block";
 			}
 			
