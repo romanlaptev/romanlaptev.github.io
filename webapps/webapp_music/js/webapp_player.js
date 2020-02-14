@@ -145,7 +145,7 @@ console.log( "-- THEN, promise reject, ", error );
 			//break;
 
 			case "load-track":
-				_loadTrack({
+				_loadTrackToPlayer({
 					"trackNum": _vars["GET"]["num"]
 				});
 			break;
@@ -377,7 +377,7 @@ func.logAlert( _vars["logMsg"], "error");
 
 
 	
-	function _loadTrack( opt ){
+	function _loadTrackToPlayer( opt ){
 		var p = {
 			"trackNum": false
 		};
@@ -405,7 +405,8 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
 		_setActiveTrack( numTrack );
-	}//end _loadTrack()
+	}//end _loadTrackToPlayer()
+	
 	
 
 	function _nextTrack(){
@@ -560,7 +561,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		formHtmlTrackList : _formHtmlTrackList,
 		//loadTrackList: _loadTrackList,
 		//formTrackList: _formTrackList,
-		//loadTrack: _loadTrack,
+		//loadTrackToPlayer: _loadTrackToPlayer,
 		//setActiveTrack: _setActiveTrack,
 		//nextTrack: _nextTrack,
 		//prevTrack: _prevTrack,

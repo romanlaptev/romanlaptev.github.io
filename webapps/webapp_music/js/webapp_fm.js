@@ -196,18 +196,18 @@ func.logAlert( _vars["logMsg"], "error");
 			var html_files = "";
 			if( data["files"] ){
 //----------------------- create url path
+_vars["urlPath"] = _getUrlPath( _vars.fsPath );
 for( var n = 0; n < data["files"].length; n++){
 	var _file = data["files"][n];
 	
-	var urlPath = _getUrlPath( _vars.fsPath );
-	if( urlPath ){
-		_file["url"] = urlPath + "/" + _file["name"];
+	if( _vars["urlPath"] ){
+		_file["url"] = _vars["urlPath"] + "/" + _file["name"];
 	} else {
 		_file["url"] = "#";
 		_file["template"] = "files_itemTpl_block";
 	}
 	
-}//next				
+}//next
 //-----------------------
 
 				html_files =  webApp.draw.wrapData({
@@ -430,7 +430,47 @@ console.log( "-- THEN, promise reject, ", error );
 			
 			break;
 			
-//"?q=add-track"
+//--------------------------------------------
+			case "add-track":
+				var checkedFiles = [];
+				//$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
+				$("#block-file-manager").find(".files-list :checkbox:checked").each( function(num, item){
+//console.log(num, item);
+					var _fileName = $(item).val();
+					if( _vars["urlPath"] ){
+						
+						if( _checkMediaType(_fileName) ){
+							checkedFiles.push( _vars["urlPath"] + "/"+ _fileName);
+						} else {
+_vars["logMsg"] = "- warning, could not add file "+ _fileName +" to tracklist, incorrect media type...."
+//func.logAlert( _vars["logMsg"], "warning" );
+console.log( _vars["logMsg"] );
+							
+						}
+						
+					} else {
+_vars["logMsg"] = "- warning, could not add file "+ _fileName +" to tracklist, incorrect web-alias...."
+//func.logAlert( _vars["logMsg"], "warning" );
+console.log( _vars["logMsg"] );
+					}
+				});//next
+				
+				//clear checked checkboxes
+				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
+//console.log(num, item);
+					$(item).prop("checked", false);
+				});				
+				
+				if( checkedFiles.length > 0){
+					_addTrackToTrackList({
+						"fileList" : checkedFiles
+					});
+				} else {
+_vars["logMsg"] = "- warning, could not add selected files  to tracklist...."
+func.logAlert( _vars["logMsg"], "warning" );
+				}
+				
+			break;
 			
 //--------------------------------------------
 			default:
@@ -637,6 +677,68 @@ func.logAlert( _vars["logMsg"], "error");
 		return _df;
 
 	}//end _renameFile()
+
+
+//=============================== add track to playlist
+	function _addTrackToTrackList( opt ){
+		var p = {
+			"fileList": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+console.log(p);
+/*				
+				webApp.player.vars["trackList"]
+artist: "Metallica"
+title: "Motorbreath"
+mp3: "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"
+*/
+
+/*				
+		var numTrack = p.trackNum-1;
+		_vars["numTrack"] = numTrack;
+		
+//console.log( numTrack, _vars["trackList"][numTrack], trackUrl );
+		if( _vars["trackList"][numTrack] ){
+			var track = _vars["trackList"][numTrack];
+			var trackUrl = track["mp3"];
+		} else {
+			webApp.vars["logMsg"] = "not found track by num: "+ numTrack;
+console.log( "-- " + webApp.vars["logMsg"] );
+			return false;
+		}
+		
+		//$(_vars.$audioplayer).attr("src", trackUrl );
+		_vars.$audioplayer.setAttribute("src", trackUrl );
+		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
+
+		_setActiveTrack( numTrack );
+*/		
+	}//end _addTrackToTrackList()
+	
+
+	function _checkMediaType(_fileName){
+		var checkRes = false;
+		
+		var mediaTypes = [".mp3", ".ogg", ".wav", ".mp4"];
+		
+		for( var n = 0; n < mediaTypes.length; n++){
+			
+			var testType = mediaTypes[n];
+			var testFileName = _fileName.toLowerCase();
+			if( testFileName.lastIndexOf( testType) > 0 ){
+				var checkRes = true;
+				return checkRes;
+			}
+			
+		}//next
+		
+		return checkRes;
+	}//end _checkMediaType()
+
+
 
 	// public interfaces
 	return{
