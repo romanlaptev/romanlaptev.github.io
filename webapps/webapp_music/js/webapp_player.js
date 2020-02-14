@@ -6,10 +6,15 @@ function _player( opt ){
 		"trackListName": "new_tracklist.json*",
 		"trackListTitle": "",
 		"trackList":  [
-// {"title" : "Hit The Lights", "mp3" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
-// {"title" : "The Four Horsemen","artist" : "Metallica","mp3" : "/music/M/Metallica/1983_Kill_em_All/02_The_Four_Horsemen.mp3"},
-// {"title" : "Motorbreath",	"artist" : "Metallica",	"mp3" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
+// {"title" : "Hit The Lights", "source_url" : "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"},
+// {"title" : "Motorbreath",	"artist" : "Metallica",	"source_url" : "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"}
 ],
+		"trackFormat":  {
+			"title" : "Hit The Lights",
+			"artist" : "Metallica",
+			"source_url": "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
+		},
+		
 		"numTrack": 0,
 		"autoplay" : true//,
 		//"unSavedTrackList": false
@@ -393,7 +398,14 @@ func.logAlert( _vars["logMsg"], "error");
 //console.log( numTrack, _vars["trackList"][numTrack], trackUrl );
 		if( _vars["trackList"][numTrack] ){
 			var track = _vars["trackList"][numTrack];
-			var trackUrl = track["mp3"];
+
+			if( track["mp3"] ){
+				var trackUrl = track["mp3"];
+			}
+			if( track["source_url"] ){
+				var trackUrl = track["source_url"];
+			}
+			
 		} else {
 			webApp.vars["logMsg"] = "not found track by num: "+ numTrack;
 console.log( "-- " + webApp.vars["logMsg"] );
@@ -445,7 +457,13 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 			return false;
 		}
 		
-		var mediaSrc = track["mp3"];
+		if( track["mp3"] ){
+			var mediaSrc = track["mp3"];
+		}
+		if( track["source_url"] ){
+			var mediaSrc = track["source_url"];
+		}
+		
 //console.log(mediaSrc);		
 		$(_vars.$audioplayer).attr("src", mediaSrc);
 		
@@ -461,7 +479,14 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 			track_info += track["title"];
 		}
 		if( track_info.length === 0){
-			track_info = track["mp3"];
+			
+			if( track["mp3"] ){
+				track_info = track["mp3"];
+			}
+			if( track["source_url"] ){
+				track_info = track["source_url"];
+			}
+			
 		}
 		$("#track-info").text( track_info );
 		
@@ -560,7 +585,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		
 		formHtmlTrackList : _formHtmlTrackList,
 		//loadTrackList: _loadTrackList,
-		//formTrackList: _formTrackList,
+		formTrackList: _formTrackList,
 		//loadTrackToPlayer: _loadTrackToPlayer,
 		//setActiveTrack: _setActiveTrack,
 		//nextTrack: _nextTrack,

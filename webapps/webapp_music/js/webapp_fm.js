@@ -440,7 +440,13 @@ console.log( "-- THEN, promise reject, ", error );
 					if( _vars["urlPath"] ){
 						
 						if( _checkMediaType(_fileName) ){
-							checkedFiles.push( _vars["urlPath"] + "/"+ _fileName);
+							var _fileObj = {
+								"artist" : _getLastDirName( _vars["urlPath"] ),
+								"title" : _fileName,
+								"source_url" : _vars["urlPath"] + "/"+ _fileName
+							}
+							checkedFiles.push( _fileObj );
+							
 						} else {
 _vars["logMsg"] = "- warning, could not add file "+ _fileName +" to tracklist, incorrect media type...."
 //func.logAlert( _vars["logMsg"], "warning" );
@@ -689,33 +695,37 @@ func.logAlert( _vars["logMsg"], "error");
 			p[key] = opt[key];
 		}
 console.log(p);
-/*				
-				webApp.player.vars["trackList"]
-artist: "Metallica"
-title: "Motorbreath"
-mp3: "/music/M/Metallica/1983_Kill_em_All/03_Motorbreath.mp3"
-*/
 
-/*				
-		var numTrack = p.trackNum-1;
-		_vars["numTrack"] = numTrack;
-		
-//console.log( numTrack, _vars["trackList"][numTrack], trackUrl );
-		if( _vars["trackList"][numTrack] ){
-			var track = _vars["trackList"][numTrack];
-			var trackUrl = track["mp3"];
-		} else {
-			webApp.vars["logMsg"] = "not found track by num: "+ numTrack;
-console.log( "-- " + webApp.vars["logMsg"] );
+		if( !p["fileList"] || p["fileList"].length === 0){
+_vars["logMsg"] = "error, incorrect parameter fileList...";
+console.log( _vars.logMsg);
 			return false;
 		}
-		
-		//$(_vars.$audioplayer).attr("src", trackUrl );
-		_vars.$audioplayer.setAttribute("src", trackUrl );
-		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
-		_setActiveTrack( numTrack );
-*/		
+		var _trackFormat = webApp.player.vars["trackFormat"];
+		var _trackList = [];
+		
+		for( var n = 0; n < p.fileList.length; n++){
+			
+			var _trackObj = {};
+			// for( var key in _trackFormat ){
+				// _trackObj[key] = "";
+			// }//next
+//console.log( _trackObj );
+			
+			//check _fileObj matching "trackFormat" and write values to _trackObj
+			var _fileObj = p.fileList[n];
+			for( var key in _fileObj ){
+				_trackObj[key] = _fileObj[key];
+			}//next
+//console.log( _fileObj );
+			
+			_trackList.push( _trackObj );
+		}//next
+		
+console.log( _trackList );
+		webApp.player.formTrackList( _trackList );
+		
 	}//end _addTrackToTrackList()
 	
 
@@ -738,6 +748,27 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		return checkRes;
 	}//end _checkMediaType()
 
+	function _getLastDirName( fsPath ){
+		
+		// var pos1 = fsPath.lastIndexOf("/")+1;
+		// var pos2 = fsPath.length;
+		// var _dirName = fsPath.substring( pos1, pos2 );
+		
+		// var _fsPath2 = fsPath.substring( 0, pos1-1 );
+		// var pos1 = _fsPath2.lastIndexOf("/")+1;
+		// var pos2 = _fsPath2.length;
+		// var _prevDirName = _fsPath2.substring( pos1, pos2 );
+		
+		var _fsPath = fsPath.split("/");
+		
+		var n1 = _fsPath.length-1;
+		var n2 = _fsPath.length-2;
+		
+		var _dirName = _fsPath[ n1 ];
+		var _prevDirName = _fsPath[ n2 ];
+		
+		return _prevDirName +", "+ _dirName;
+	}//end _getLastDirName()
 
 
 	// public interfaces

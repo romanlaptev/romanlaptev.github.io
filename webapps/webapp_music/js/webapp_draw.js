@@ -62,7 +62,7 @@ function _draw( opt ){
 			"trackListItem" :  '<li class="list-group-item">\
 	<div class="uk-clearfix">\
 		<div class="uk-float-left">{{number}}.\
-			<a class="track-name" href="?q=load-track&amp;num={{number}}">{{artist}} {{title}}</a>\
+			<a class="track-name" href="?q=load-track&amp;num={{number}}">{{artist}}, {{title}}</a>\
 		</div>\
 		<div class="uk-float-right">\
 <a class="edit-track" href="?q=edit-track&amp;num={{number}}">edit</a> | \
