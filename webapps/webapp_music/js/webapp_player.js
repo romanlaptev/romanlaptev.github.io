@@ -51,8 +51,9 @@ function _player( opt ){
 		_vars["trackListTitle"] =  _vars["trackListName"];
 		
 		//_vars.$mediaplayer = $("#audio-player")[0];
-		_vars.$mediaplayer = func.getById("audio-player");
-		//_vars.$mediaplayer = func.getById("video-player");
+		_vars.$audioplayer = func.getById("audio-player");
+		_vars.$videoplayer = func.getById("video-player");
+		_vars.$mediaplayer = _vars.$audioplayer;
 		
 		_vars.$mediaplayer.volume = 0.4;
 //--------------------------
@@ -499,22 +500,10 @@ console.log( "-- error, " + webApp.vars["logMsg"] );
 		
 		//load and play track by num
 		var track = _vars["trackList"][ activeNum ];
+		
 		if( !track ){
 console.log( "-- error, no track by activeNum = " + activeNum);
 			return false;
-		}
-		
-		if( track["mp3"] ){
-			var mediaSrc = track["mp3"];
-		}
-		if( track["source_url"] ){
-			var mediaSrc = track["source_url"];
-		}
-		
-//console.log(mediaSrc);		
-		if( p.autoplay ){
-			//$(_vars.$mediaplayer).attr("src", "");
-			$(_vars.$mediaplayer).attr("src", mediaSrc);
 		}
 		
 		//form track text title
@@ -540,9 +529,30 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 		$("#track-info").text( track_info );
 		
+
+		if( track["mp3"] ){
+			var mediaSrc = track["mp3"];
+		}
+		if( track["source_url"] ){
+			var mediaSrc = track["source_url"];
+		}
+console.log(mediaSrc );
+
 		if( p.autoplay ){
+			
+//------------------------- choose media player: audio, video, or iframe-video
+if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
+console.log("t1");	
+	_vars.$mediaplayer = _vars.$videoplayer;
+} else{
+console.log("t2");	
+	_vars.$mediaplayer = _vars.$audioplayer;
+}
+			
+//-------------------------
 			//try{
 //console.log( _vars.$mediaplayer.getAttribute("src") );
+				$(_vars.$mediaplayer).attr("src", mediaSrc);
 				_vars.$mediaplayer.play();
 			//} catch(e){
 //console.log(e);	
