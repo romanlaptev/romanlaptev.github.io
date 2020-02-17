@@ -11,29 +11,44 @@ console.log(arguments);
 function _requestListener( req, resp){
 //console.log("-- request: ", req);
 //console.log("-- response: ", resp);
-
-console.log("Request received.");
 	//resp.writeHead(200, {"Content-Type": "text/plain"});
 	//resp.writeHead(200, {"Content-Type": "text/html"});
 	//resp.write("<h1>Hello World</h1>");
 	
-console.log( req.url );
-	if( req.url === "/"){
+//console.log( req.url );
+	//var _filePath = _path.join( __dirname, "nb.txt");
+	//var _filePath = "../app.html";
+	var _filePath = ".." + req.url;
+//console.log( _filePath );
+	var _ext = _path.extname(_filePath);
+
+	var contentType = "text/html";
+	switch ( _ext ) {
+		case ".css":
+			contentType = "text/css";
+		break;
 		
-		//var _filePath = _path.join( __dirname, "nb.txt");
-		var _filePath = "../app.html";
-		_fs.readFile( _filePath, function(err, data ){
-//console.log("readFile, err:", err);
-			if(err){
-				throw(err);
-			}
-			resp.writeHead( 200, {"Content-Type": "text/html"});
+		case ".js":
+			contentType = "application/javascript";
+		break;
+	
+		default:
+			contentType = "text/html";
+	}//end switch
+	
+	
+	
+	_fs.readFile( _filePath, function(err, data ){
+console.log("readFile, err:", err);
+		if(err){
+			throw(err);
+		} else {
+			resp.writeHead( 200, {"Content-Type": contentType });
 			resp.end( data );
-			
-		});
-	}
-	
-	
+		}
+		
+	});
+
 	//resp.end("Hello world! !");
 	//resp.end();
 }//end
