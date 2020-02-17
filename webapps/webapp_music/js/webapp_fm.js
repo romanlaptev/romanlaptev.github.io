@@ -731,12 +731,10 @@ console.log( _trackList );
 
 	function _checkMediaType(_fileName){
 		var checkRes = false;
-		
-		var mediaTypes = [".mp3", ".ogg", ".wav", ".mp4"];
-		
-		for( var n = 0; n < mediaTypes.length; n++){
+
+		for( var _type in webApp.player.vars["mediaTypes"] ){
+			var testType = webApp.player.vars["mediaTypes"][_type]["extension"];
 			
-			var testType = mediaTypes[n];
 			var testFileName = _fileName.toLowerCase();
 			if( testFileName.lastIndexOf( testType) > 0 ){
 				var checkRes = true;

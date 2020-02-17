@@ -17,13 +17,13 @@ function _draw( opt ){
 								<h5 id="track-info"></h5>\
 <audio id="audio-player" controls="controls" class="w100"><source src="" />Tag <b>audio</b> not supported by this browser....</audio>\
 							</div>\
-							<div class="uk-hidden">\
-				<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>\
-								<video id="player1" controls="controls" src="" width="640" height="385">\
-										<source src="">\
-										Tag <b>video</b> not supported by this browser.... \
-								</video>\
-							</div>\
+							<div class="">\
+<iframe type="text/html" id="iframe-player" src="" style="display: none;" width="640" height="385" frameborder="1"></iframe>\
+<video id="video-player" controls="controls" src="" width="640" height="385">\
+	<source src="">\
+		Tag <b>video</b> not supported by this browser.... \
+	</video>\
+</div>\
 							<div id="player-buttons">\
 								<ul class="button-group uk-list">\
 <!--<button id="btn-play" class="btn btn-blue">play</button>\

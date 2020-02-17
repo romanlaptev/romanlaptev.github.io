@@ -15,29 +15,57 @@ function _player( opt ){
 			"source_url": "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
 		},
 		
-		"numTrack": 0//,
+		"numTrack": 0,
 		//"autoplay" : true//,
 		//"unSavedTrackList": false
-	};
+		
+		"mediaTypes" : {
+			"mp3" : { "extension" : ".mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
+			"wav" : {"extension" : ".wav", "testString" : 'audio/wav; codecs=1', support: false },
+			"ogg" : { "extension" : ".ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
+			"ogv" : {"extension" : ".ogv", "testString" : 'video/ogg', support: false },
+			"mp4" : {"extension" : ".mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false }
+		}
+/*
+		"videoTypes" : {
+"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
+"ogv" : { testParam:['video/ogg'], support:false },
+"mp4" : { testParam:['video/mp4; codecs="avc1.4D401E, mp4a.40.2"'], support:false },
+"m4v" : { testParam:['video/x-m4v'], support:false },
+"webm" : { testParam:['video/webm; codecs="vp8.0, vorbis"'], support:false },
+"mpg" : { testParam:['video/mpeg'], support:false },//MPEG-1
+"mov" : { testParam:['video/quicktime'], support:false },
+"wmv" : { testParam:['video/x-ms-wmv'], support:false },//Windows Media Video
+"3gp" : { testParam:['video/3gpp'], support:false },
+"flv" : { testParam:['video/x-flv'], support:false },
+"mkv" : { testParam:['video/x-matroska'], support:false },
+"vob" : { testParam:['video/x-ms-vob'], support:false },
+"avi" : { testParam:['video/vnd.avi','video/avi','video/msvideo', 'video/x-msvideo'], support:false }
+		},
+
+*/		
+	};//end _vars
 
 	var _init = function( opt ){
 		
 		_vars["trackListTitle"] =  _vars["trackListName"];
 		
-		//_vars.$audioplayer = $("#audio-player")[0];
-		_vars.$audioplayer = func.getById("audio-player");
-		_vars.$audioplayer.volume = 0.4;
+		//_vars.$mediaplayer = $("#audio-player")[0];
+		_vars.$mediaplayer = func.getById("audio-player");
+		//_vars.$mediaplayer = func.getById("video-player");
+		
+		_vars.$mediaplayer.volume = 0.4;
 //--------------------------
-		$(_vars.$audioplayer).on("ended", function(e){
+		$(_vars.$mediaplayer).on("ended", function(e){
 console.log(e);
 			_nextTrack();
 		});//end event
 		
 //--------------------------
-		$(_vars.$audioplayer).on("error",  function(e){
+		$(_vars.$mediaplayer).on("error",  function(e){
 //console.log(e);
-console.log( _vars.$audioplayer.error);
-			var err = _vars.$audioplayer.error;
+console.log( _vars.$mediaplayer.error);
+			var err = _vars.$mediaplayer.error;
 if(err){
 			//for( var key in err){
 				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
@@ -45,7 +73,7 @@ if(err){
 			//}//next
 webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
 webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
-webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
+webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$mediaplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
 }
 		});//end event
@@ -415,8 +443,8 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			return false;
 		}
 		
-		//$(_vars.$audioplayer).attr("src", trackUrl );
-		_vars.$audioplayer.setAttribute("src", trackUrl );
+		//$(_vars.$mediaplayer).attr("src", trackUrl );
+		_vars.$mediaplayer.setAttribute("src", trackUrl );
 		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
 		_setActiveTrack({
@@ -485,8 +513,8 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		
 //console.log(mediaSrc);		
 		if( p.autoplay ){
-			//$(_vars.$audioplayer).attr("src", "");
-			$(_vars.$audioplayer).attr("src", mediaSrc);
+			//$(_vars.$mediaplayer).attr("src", "");
+			$(_vars.$mediaplayer).attr("src", mediaSrc);
 		}
 		
 		//form track text title
@@ -514,8 +542,8 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		
 		if( p.autoplay ){
 			//try{
-//console.log( _vars.$audioplayer.getAttribute("src") );
-				_vars.$audioplayer.play();
+//console.log( _vars.$mediaplayer.getAttribute("src") );
+				_vars.$mediaplayer.play();
 			//} catch(e){
 //console.log(e);	
 			//}
@@ -549,8 +577,8 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 //console.log(p);
 				
-		//$(_vars.$audioplayer).attr("src", "");
-		//_vars.$audioplayer.pause();
+		//$(_vars.$mediaplayer).attr("src", "");
+		//_vars.$mediaplayer.pause();
 		
 		var numTrack = p.trackNum-1;
 //console.log( numTrack, _vars["trackList"][numTrack] );
