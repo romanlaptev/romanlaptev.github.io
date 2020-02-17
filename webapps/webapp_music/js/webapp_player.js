@@ -15,8 +15,8 @@ function _player( opt ){
 			"source_url": "/music/M/Metallica/1983_Kill_em_All/01_Hit_The_Lights.mp3"
 		},
 		
-		"numTrack": 0,
-		"autoplay" : true//,
+		"numTrack": 0//,
+		//"autoplay" : true//,
 		//"unSavedTrackList": false
 	};
 
@@ -306,7 +306,10 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 		if( !$("#block-player").is(":visible") ){
 			$("#block-player").show();
 		}
-		_setActiveTrack( _vars["numTrack"] );
+
+		_setActiveTrack({
+			num : _vars["numTrack"]
+		});
 		
 	}//end _formTrackList()
 	
@@ -416,7 +419,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 		_vars.$audioplayer.setAttribute("src", trackUrl );
 		//document.querySelector("#block-player audio").setAttribute("src", trackUrl );
 
-		_setActiveTrack( numTrack );
+		_setActiveTrack({
+			num : _vars["numTrack"]
+		});
+		
 	}//end _loadTrackToPlayer()
 	
 	
@@ -425,7 +431,10 @@ console.log( "-- " + webApp.vars["logMsg"] );
 //console.log( _vars["numTrack"], _vars["trackList"].length);
 		if( _vars["numTrack"] < ( _vars["trackList"].length - 1) ){
 			_vars["numTrack"]++;
-			_setActiveTrack( _vars["numTrack"] );
+			_setActiveTrack({
+				num : _vars["numTrack"]
+			});
+			
 		}
 	}//end _nextTrack()
 	
@@ -433,22 +442,32 @@ console.log( "-- " + webApp.vars["logMsg"] );
 	function _prevTrack(){
 		if( _vars["numTrack"] > 0){
 			_vars["numTrack"]--;
-			_setActiveTrack( _vars["numTrack"] );
+			_setActiveTrack({
+				num : _vars["numTrack"]
+			});
 		}
 	}//end _prevTrack()
 	
 
-	function _setActiveTrack( num ){
-//console.log(num);
-		var activeNum = parseInt( num );
+	function _setActiveTrack( opt ){
+		var  p = {
+			num : null, 
+			autoplay: true
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+		
+		var activeNum = parseInt( p.num );
 //console.log(num, typeof num, isNaN(num) );
-		if( isNaN(activeNum) ){
+		if( isNaN( activeNum ) ){
 webApp.vars["logMsg"] = "wrong activeNum: "+ activeNum;
 console.log( "-- error, " + webApp.vars["logMsg"] );
 			return false;
 		}
 
-		$(_vars.$audioplayer).attr("src", "");
 		
 		//load and play track by num
 		var track = _vars["trackList"][ activeNum ];
@@ -465,7 +484,10 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 		
 //console.log(mediaSrc);		
-		$(_vars.$audioplayer).attr("src", mediaSrc);
+		if( p.autoplay ){
+			//$(_vars.$audioplayer).attr("src", "");
+			$(_vars.$audioplayer).attr("src", mediaSrc);
+		}
 		
 		//form track text title
 		var track_info = "";
@@ -490,7 +512,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 		$("#track-info").text( track_info );
 		
-		if( _vars["autoplay"] ){
+		if( p.autoplay ){
 			//try{
 //console.log( _vars.$audioplayer.getAttribute("src") );
 				_vars.$audioplayer.play();
@@ -528,7 +550,7 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 //console.log(p);
 				
 		//$(_vars.$audioplayer).attr("src", "");
-		_vars.$audioplayer.pause();
+		//_vars.$audioplayer.pause();
 		
 		var numTrack = p.trackNum-1;
 //console.log( numTrack, _vars["trackList"][numTrack] );
@@ -554,7 +576,11 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		_vars["trackList"] = arr;
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
-		//_setActiveTrack( _vars["numTrack"] );
+		_setActiveTrack({
+			num : _vars["numTrack"], 
+			autoplay: false 
+		});
+
 	}//end _removeTrack()
 
 
