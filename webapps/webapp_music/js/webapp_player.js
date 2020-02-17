@@ -56,17 +56,23 @@ function _player( opt ){
 		_vars.$mediaplayer = _vars.$audioplayer;
 		
 		_vars.$mediaplayer.volume = 0.4;
+		
 //--------------------------
-		$(_vars.$mediaplayer).on("ended", function(e){
+		$(_vars.$audioplayer).on("ended", function(e){
+console.log(e);
+			_nextTrack();
+		});//end event
+		
+		$(_vars.$videoplayer).on("ended", function(e){
 console.log(e);
 			_nextTrack();
 		});//end event
 		
 //--------------------------
-		$(_vars.$mediaplayer).on("error",  function(e){
+		$(_vars.$audioplayer).on("error",  function(e){
 //console.log(e);
-console.log( _vars.$mediaplayer.error);
-			var err = _vars.$mediaplayer.error;
+console.log( _vars.$audioplayer.error);
+			var err = _vars.$audioplayer.error;
 if(err){
 			//for( var key in err){
 				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
@@ -74,7 +80,19 @@ if(err){
 			//}//next
 webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
 webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
-webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$mediaplayer.src;
+webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
+func.logAlert( webApp.vars["logMsg"], "error");
+}
+		});//end event
+	
+		$(_vars.$videoplayer).on("error",  function(e){
+//console.log(e);
+console.log( _vars.$videoplayer.error);
+			var err = _vars.$videoplayer.error;
+if(err){
+webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
+webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
+webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$videoplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
 }
 		});//end event
@@ -536,16 +554,15 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		if( track["source_url"] ){
 			var mediaSrc = track["source_url"];
 		}
-console.log(mediaSrc );
+//console.log(mediaSrc );
 
 		if( p.autoplay ){
-			
 //------------------------- choose media player: audio, video, or iframe-video
 if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
-console.log("t1");	
+//console.log("t1");	
 	_vars.$mediaplayer = _vars.$videoplayer;
 } else{
-console.log("t2");	
+//console.log("t2");	
 	_vars.$mediaplayer = _vars.$audioplayer;
 }
 			
