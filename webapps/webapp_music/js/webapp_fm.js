@@ -769,6 +769,19 @@ console.log( _trackList );
 	}//end _getLastDirName()
 
 
+	function _getFileType( fsPath ){
+		var _fsPath = fsPath.split("/");
+		
+		var n1 = _fsPath.length-1;
+		
+		var _fileName = _fsPath[ n1 ];
+		var _file = _fileName.split(".");
+		var _fileType = _file[1];
+		
+		return _fileType;
+	}//end _getFileType()
+
+
 	// public interfaces
 	return{
 		vars : _vars,
@@ -779,7 +792,8 @@ console.log( _trackList );
 		getFileList: _getFileList,
 		formHtmlFileManager: _formHtmlFileManager,
 		urlManager:	_urlManager,
-		getUrlPath: _getUrlPath
+		getUrlPath: _getUrlPath,
+		getFileType: _getFileType
 	};
 	
 }//end _fileManager()

@@ -20,9 +20,22 @@ function _player( opt ){
 		//"unSavedTrackList": false
 		
 		"mediaTypes" : [
-{ "extension" : "mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
 {"extension" : "wav", "testString" : 'audio/wav; codecs=1', support: false },
 { "extension" : "ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
+//{ "extension" : "au", "testString" : 'audio/basic', support: false},
+//{"extension" : "wav", "testString" : 'audio/L24', support: false, name: "24bit Linear PCM format, at 8-48 kHz, 1-N channels"},
+{ "extension" : "webm", "testString" : 'audio/webm', support: false, name: "WebM open media format."},
+{ "extension" : "mp2,mp3,mpga,mpega", "testString" : 'audio/x-mpeg', support: false, name: "MPEG audio"},
+{ "extension" : "mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
+{ "extension" : "mp4,mpg4", "testString" : 'audio/mp4; codecs="mp4a.40.5"', support: false, name: "MPEG-4 audio"},
+{ "extension" : "m4a", "testString" : 'audio/x-m4a', support: false, name: "MPEG-4 audio"},
+{ "extension" : "wma", "testString" : 'audio/x-ms-wma', support: false, name: "Windows Media Audio"},
+{ "extension" : "wma", "testString" : 'audio/x-ms-wax', support: false, name: "Windows Media Audio"},
+{ "extension" : "3gp", "testString" : 'audio/3gpp', support: false},
+{ "extension" : "flac", "testString" : 'audio/flac', support: false, name: "native FLAC format (FLAC in its own container)."},
+{ "extension" : "ape", "testString" : 'audio/ape', support: false},
+{ "extension" : "mka", "testString" : 'audio/x-matroska', support: false, name: "Matroska audio"},
+
 { "extension" : "ogg", "testString" : 'video/ogg; codecs="theora, vorbis"', support: false},
 {"extension" : "ogv", "testString" : 'video/ogg', support: false },
 {"extension" : "mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false , name: "MPEG-4 video"},
@@ -34,17 +47,15 @@ function _player( opt ){
 {"extension" : "wmv", "testString" : 'video/x-ms-wmv', support: false, name: "Windows Media Video" },
 {"extension" : "3gp", "testString" : 'video/3gpp', support: false},
 {"extension" : "flv", "testString" : 'video/x-flv', support: false},
-{"extension" : "mkv", "testString" : 'video/x-matroska', support: false, name: "Matroska video"}
+{"extension" : "mkv", "testString" : 'video/x-matroska', support: false, name: "Matroska video"},
+{"extension" : "vob", "testString" : 'video/x-ms-vob', support: false},
+{"extension" : "avi", "testString" : 'video/vnd.avi', support: false},
+{"extension" : "avi", "testString" : 'video/avi', support: false},
+{"extension" : "avi", "testString" : 'video/msvideo', support: false},
+{"extension" : "avi", "testString" : 'video/x-msvideo', support: false}
 		],
 		"playVideo": false,
 		"playAudio": false
-/*
-		"videoTypes" : {
-"vob" : { testParam:['video/x-ms-vob'], support:false },
-"avi" : { testParam:['video/vnd.avi','video/avi','video/msvideo', 'video/x-msvideo'], support:false }
-		},
-
-*/		
 	};//end _vars
 
 	var _init = function( opt ){
@@ -566,7 +577,11 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		
 		if( p.autoplay ){
 //------------------------- choose media player: audio, video, or iframe-video
-if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
+//console.log( webApp.fileManager.getFileType(mediaSrc) );	
+	var _fileType = webApp.fileManager.getFileType(mediaSrc);
+
+//if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
+if( _fileType === "mp4" || _fileType === "ogv" ){
 //console.log("t1");	
 	_vars.$mediaplayer = _vars.$videoplayer;
 } else{
@@ -691,15 +706,16 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 			}
 		}
 		
-		if( _vars["playVideo"] ){
-			__testTypeSupport( _videoObj );
-		}
 		if( _vars["playAudio"] ){
 			__testTypeSupport( _audioObj );
 		}
 		
+		if( _vars["playVideo"] ){
+			__testTypeSupport( _videoObj );
+		}
+		
 		function __testTypeSupport( mediaObj ){
-console.log( mediaObj );
+//console.log( mediaObj );
 
 			for(var n = 0; n < _vars["mediaTypes"].length; n++ ){
 				
@@ -714,7 +730,7 @@ console.log( mediaObj );
 				if( _testString.indexOf( _mediaTypeString ) !== -1){
 					
 					var _test = mediaObj.canPlayType( _testString );
-console.log( "test " + _mediaTypeString + " format: ", _test, _test.length, _testString);
+//console.log( "test " + _mediaTypeString + " format: ", _test, _test.length, _testString);
 					if( _test && _test.length > 0){
 	_vars["logMsg"] = "test support media format <b>"+ _ext +", "+_name+"</b>, <i>"+ _testString +"</i>: " + _test;
 	func.logAlert( _vars["logMsg"], "success");
@@ -722,7 +738,7 @@ console.log( "test " + _mediaTypeString + " format: ", _test, _test.length, _tes
 						//break;
 					} else {
 	_vars["logMsg"] = "not support media format <b>"+ _ext +", "+_name+"</b>, <i>" + _testString +"</i>";
-	func.logAlert( _vars["logMsg"], "error");
+	func.logAlert( _vars["logMsg"], "warning");
 					}
 					
 				}
