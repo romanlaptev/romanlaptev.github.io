@@ -19,27 +19,27 @@ function _player( opt ){
 		//"autoplay" : true//,
 		//"unSavedTrackList": false
 		
-		"mediaTypes" : {
-			"mp3" : { "extension" : ".mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
-			"wav" : {"extension" : ".wav", "testString" : 'audio/wav; codecs=1', support: false },
-			"ogg" : { "extension" : ".ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
-			"ogg_" : { "extension" : ".ogg", "testString" : 'video/ogg; codecs="theora, vorbis"', support: false},
-			"ogv" : {"extension" : ".ogv", "testString" : 'video/ogg', support: false },
-			"mp4" : {"extension" : ".mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false },
-			"m4v" : {"extension" : ".m4v", "testString" : 'video/x-m4v', support: false },
-			"webm" : {"extension" : ".webm", "testString" : 'video/webm; codecs="vp8.0, vorbis"', support: false },
-			"mpg" : {"extension" : ".mpg", "testString" : 'video/mpeg', support: false },//MPEG-1
-			"mpg_" : {"extension" : "mpg,mpeg,mpe", "testString" : 'video/x-mpeg', support: false },//MPEG video
-			"mov" : {"extension" : ".mov", "testString" : 'video/quicktime', support: false }
-		},
+		"mediaTypes" : [
+{ "extension" : "mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
+{"extension" : "wav", "testString" : 'audio/wav; codecs=1', support: false },
+{ "extension" : "ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
+{ "extension" : "ogg", "testString" : 'video/ogg; codecs="theora, vorbis"', support: false},
+{"extension" : "ogv", "testString" : 'video/ogg', support: false },
+{"extension" : "mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false , name: "MPEG-4 video"},
+{"extension" : "m4v", "testString" : 'video/x-m4v', support: false },
+{"extension" : "webm", "testString" : 'video/webm; codecs="vp8.0, vorbis"', support: false },
+{"extension" : "mpg", "testString" : 'video/mpeg', support: false, name: "MPEG-1" },
+{"extension" : "mpg,mpeg,mpe", "testString" : 'video/x-mpeg', support: false, name: "MPEG video" },
+{"extension" : "mov", "testString" : 'video/quicktime', support: false },
+{"extension" : "wmv", "testString" : 'video/x-ms-wmv', support: false, name: "Windows Media Video" },
+{"extension" : "3gp", "testString" : 'video/3gpp', support: false},
+{"extension" : "flv", "testString" : 'video/x-flv', support: false},
+{"extension" : "mkv", "testString" : 'video/x-matroska', support: false, name: "Matroska video"}
+		],
 		"playVideo": false,
 		"playAudio": false
 /*
 		"videoTypes" : {
-"wmv" : { testParam:['video/x-ms-wmv'], support:false },//Windows Media Video
-"3gp" : { testParam:['video/3gpp'], support:false },
-"flv" : { testParam:['video/x-flv'], support:false },
-"mkv" : { testParam:['video/x-matroska'], support:false },
 "vob" : { testParam:['video/x-ms-vob'], support:false },
 "avi" : { testParam:['video/vnd.avi','video/avi','video/msvideo', 'video/x-msvideo'], support:false }
 		},
@@ -700,22 +700,28 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		
 		function __testTypeSupport( mediaObj ){
 console.log( mediaObj );
-			for(var _type in _vars["mediaTypes"] ){
-				var _testString = _vars["mediaTypes"][_type]["testString"];
-				var _ext = _vars["mediaTypes"][_type]["extension"];
 
+			for(var n = 0; n < _vars["mediaTypes"].length; n++ ){
+				
+				var _testString = _vars["mediaTypes"][n]["testString"];
+				var _ext = _vars["mediaTypes"][n]["extension"];
+				var _name = "";
+				if( _vars["mediaTypes"][n]["name"] ){
+					_name = "(" + _vars["mediaTypes"][n]["name"] + ")";
+				}
+				
 				var _mediaTypeString = mediaObj.tagName.toLowerCase(); // video or audio
 				if( _testString.indexOf( _mediaTypeString ) !== -1){
 					
 					var _test = mediaObj.canPlayType( _testString );
 console.log( "test " + _mediaTypeString + " format: ", _test, _test.length, _testString);
 					if( _test && _test.length > 0){
-	_vars["logMsg"] = "test support media format "+ _ext+"<b>, "+ _testString +"</b>: " + _test;
+	_vars["logMsg"] = "test support media format <b>"+ _ext +", "+_name+"</b>, <i>"+ _testString +"</i>: " + _test;
 	func.logAlert( _vars["logMsg"], "success");
-						_vars["mediaTypes"][_type]["support"] = true;
+						_vars["mediaTypes"][n]["support"] = true;
 						//break;
 					} else {
-	_vars["logMsg"] = "not support media format "+ _ext+"<b>, " + _testString +"</b>, " + _test;
+	_vars["logMsg"] = "not support media format <b>"+ _ext +", "+_name+"</b>, <i>" + _testString +"</i>";
 	func.logAlert( _vars["logMsg"], "error");
 					}
 					
