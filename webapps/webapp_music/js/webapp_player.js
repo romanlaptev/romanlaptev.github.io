@@ -23,18 +23,19 @@ function _player( opt ){
 			"mp3" : { "extension" : ".mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
 			"wav" : {"extension" : ".wav", "testString" : 'audio/wav; codecs=1', support: false },
 			"ogg" : { "extension" : ".ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
+			"ogg_" : { "extension" : ".ogg", "testString" : 'video/ogg; codecs="theora, vorbis"', support: false},
 			"ogv" : {"extension" : ".ogv", "testString" : 'video/ogg', support: false },
-			"mp4" : {"extension" : ".mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false }
-		}
+			"mp4" : {"extension" : ".mp4", "testString" : 'video/mp4; codecs="avc1.4D401E, mp4a.40.2"', support: false },
+			"m4v" : {"extension" : ".m4v", "testString" : 'video/x-m4v', support: false },
+			"webm" : {"extension" : ".webm", "testString" : 'video/webm; codecs="vp8.0, vorbis"', support: false },
+			"mpg" : {"extension" : ".mpg", "testString" : 'video/mpeg', support: false },//MPEG-1
+			"mpg_" : {"extension" : "mpg,mpeg,mpe", "testString" : 'video/x-mpeg', support: false },//MPEG video
+			"mov" : {"extension" : ".mov", "testString" : 'video/quicktime', support: false }
+		},
+		"playVideo": false,
+		"playAudio": false
 /*
 		"videoTypes" : {
-"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
-"ogv" : { testParam:['video/ogg'], support:false },
-"mp4" : { testParam:['video/mp4; codecs="avc1.4D401E, mp4a.40.2"'], support:false },
-"m4v" : { testParam:['video/x-m4v'], support:false },
-"webm" : { testParam:['video/webm; codecs="vp8.0, vorbis"'], support:false },
-"mpg" : { testParam:['video/mpeg'], support:false },//MPEG-1
-"mov" : { testParam:['video/quicktime'], support:false },
 "wmv" : { testParam:['video/x-ms-wmv'], support:false },//Windows Media Video
 "3gp" : { testParam:['video/3gpp'], support:false },
 "flv" : { testParam:['video/x-flv'], support:false },
@@ -662,6 +663,69 @@ if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
 console.log( numTrack, _vars["trackList"][numTrack] );
 	}//end _editTrack()
 
+
+	function _testMediaSupport(){
+
+		var _videoObj = document.createElement("video");
+	//for(var key in _video){
+		//if( typeof _video[key] === "function"){
+	//console.log(key, _video[key]);
+		//}
+	//}
+		if( typeof _videoObj === "object"){
+			if( typeof _videoObj["load"] !== "function"){
+	_vars["logMsg"] = "creating a object VIDEO failed.";
+	func.logAlert(_vars["logMsg"], "error");
+			} else {
+				_vars["playVideo"] = true;
+			}
+		}
+		
+		var _audioObj = document.createElement("audio");
+		if( typeof _audioObj === "object"){
+			if( typeof _audioObj["load"] !== "function"){
+	_vars["logMsg"] = "creating a object AUDIO failed.";
+	func.logAlert(_vars["logMsg"], "error");
+			} else {
+				_vars["playAudio"] = true;
+			}
+		}
+		
+		if( _vars["playVideo"] ){
+			__testTypeSupport( _videoObj );
+		}
+		if( _vars["playAudio"] ){
+			__testTypeSupport( _audioObj );
+		}
+		
+		function __testTypeSupport( mediaObj ){
+console.log( mediaObj );
+			for(var _type in _vars["mediaTypes"] ){
+				var _testString = _vars["mediaTypes"][_type]["testString"];
+				var _ext = _vars["mediaTypes"][_type]["extension"];
+
+				var _mediaTypeString = mediaObj.tagName.toLowerCase(); // video or audio
+				if( _testString.indexOf( _mediaTypeString ) !== -1){
+					
+					var _test = mediaObj.canPlayType( _testString );
+console.log( "test " + _mediaTypeString + " format: ", _test, _test.length, _testString);
+					if( _test && _test.length > 0){
+	_vars["logMsg"] = "test support media format "+ _ext+"<b>, "+ _testString +"</b>: " + _test;
+	func.logAlert( _vars["logMsg"], "success");
+						_vars["mediaTypes"][_type]["support"] = true;
+						//break;
+					} else {
+	_vars["logMsg"] = "not support media format "+ _ext+"<b>, " + _testString +"</b>, " + _test;
+	func.logAlert( _vars["logMsg"], "error");
+					}
+					
+				}
+	
+			}//next
+		}//end __testTypeSupport()
+		
+	}//end testMediaSupport()
+
 	
 	// public interfaces
 	return{
@@ -680,6 +744,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		//prevTrack: _prevTrack,
 		//removeTrack: _removeTrack,
 		//editTrack: _editTrack,
-		urlManager:	_urlManager
+		urlManager:	_urlManager,
+		testMediaSupport: _testMediaSupport
 	};
 }//end _player()

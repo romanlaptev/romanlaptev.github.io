@@ -176,6 +176,7 @@ console.log("init webapp!");
 		//webApp.iDBmodule.init();
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
+		webApp.player.testMediaSupport();
 		
 		if( webApp.vars["use_file_manager"] ){
 			webApp.fileManager.init({
