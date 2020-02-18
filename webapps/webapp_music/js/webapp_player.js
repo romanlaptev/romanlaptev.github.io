@@ -53,9 +53,9 @@ function _player( opt ){
 		//_vars.$mediaplayer = $("#audio-player")[0];
 		_vars.$audioplayer = func.getById("audio-player");
 		_vars.$videoplayer = func.getById("video-player");
-		_vars.$mediaplayer = _vars.$audioplayer;
 		
-		_vars.$mediaplayer.volume = 0.4;
+		_vars.$audioplayer.volume = 0.4;
+		_vars.$videoplayer.volume = 0.4;
 		
 //--------------------------
 		$(_vars.$audioplayer).on("ended", function(e){
@@ -85,6 +85,7 @@ func.logAlert( webApp.vars["logMsg"], "error");
 }
 		});//end event
 	
+//--------------------------
 		$(_vars.$videoplayer).on("error",  function(e){
 //console.log(e);
 console.log( _vars.$videoplayer.error);
@@ -96,6 +97,9 @@ webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$videoplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
 }
 		});//end event
+
+//--------------------------
+		_vars.$mediaplayer = _vars.$audioplayer;
 	
 	};//end _init()
 
@@ -556,6 +560,9 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		}
 //console.log(mediaSrc );
 
+		_vars.$audioplayer.pause();
+		_vars.$videoplayer.pause();
+		
 		if( p.autoplay ){
 //------------------------- choose media player: audio, video, or iframe-video
 if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
