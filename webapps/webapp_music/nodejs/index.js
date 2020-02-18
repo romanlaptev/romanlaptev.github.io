@@ -19,7 +19,7 @@ function _requestListener( req, resp){
 	//var _filePath = _path.join( __dirname, "nb.txt");
 	//var _filePath = "../app.html";
 	var _filePath = ".." + req.url;
-//console.log( _filePath );
+console.log( _filePath );
 	var _ext = _path.extname(_filePath);
 
 	var contentType = "text/html";
@@ -31,6 +31,14 @@ function _requestListener( req, resp){
 		case ".js":
 			contentType = "application/javascript";
 		break;
+		
+		case ".json":
+			contentType = "application/json";
+		break;
+		
+		case ".xml":
+			contentType = "application/xml";
+		break;
 	
 		default:
 			contentType = "text/html";
@@ -41,7 +49,8 @@ function _requestListener( req, resp){
 	_fs.readFile( _filePath, function(err, data ){
 console.log("readFile, err:", err);
 		if(err){
-			throw(err);
+			resp.writeHead( 404 );
+			resp.end("<h1>error....</h1>");
 		} else {
 			resp.writeHead( 200, {"Content-Type": contentType });
 			resp.end( data );
