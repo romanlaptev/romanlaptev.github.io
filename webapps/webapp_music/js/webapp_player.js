@@ -387,10 +387,31 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 		}
 //console.log(p);
 
+//------------------------ filter track list
+		var _trackFormat = _vars["trackFormat"];
+		var _trackList = [];
+		for( var n = 0; n < _vars["trackList"].length; n++){
+			var _trackObj = {};
+			for( var key in _trackFormat ){
+				_trackObj[key] = "";
+			}//next
+//console.log( _trackObj );
+
+			//write key:value to _track ( only matching  keys by "trackFormat" )
+			var _track = _vars["trackList"][n];
+			for( var key in _trackObj ){
+				_trackObj[key] = _track[key];
+			}//next
+//console.log( _track );
+			_trackList.push( _trackObj );
+		}//next
+console.log( _trackList );
+
+//------------------------
 		var _param = {
 			"filename": p["trackListFsPath"], 
 			//"filename": "", //test
-			"playlist": _vars["trackList"]
+			"playlist": _trackList
 		};
 
 		var _df =  new Promise( function(resolve, reject) {

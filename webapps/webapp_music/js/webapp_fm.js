@@ -694,7 +694,7 @@ func.logAlert( _vars["logMsg"], "error");
 		for(var key in opt ){
 			p[key] = opt[key];
 		}
-console.log(p);
+//console.log(p);
 
 		if( !p["fileList"] || p["fileList"].length === 0){
 _vars["logMsg"] = "error, incorrect parameter fileList...";
@@ -708,14 +708,14 @@ console.log( _vars.logMsg);
 		for( var n = 0; n < p.fileList.length; n++){
 			
 			var _trackObj = {};
-			// for( var key in _trackFormat ){
-				// _trackObj[key] = "";
-			// }//next
+			for( var key in _trackFormat ){
+				_trackObj[key] = "";
+			}//next
 //console.log( _trackObj );
 			
-			//check _fileObj matching "trackFormat" and write values to _trackObj
+			//write key:value to _fileObj ( only matching  keys by "trackFormat" )
 			var _fileObj = p.fileList[n];
-			for( var key in _fileObj ){
+			for( var key in _trackObj ){
 				_trackObj[key] = _fileObj[key];
 			}//next
 //console.log( _fileObj );
@@ -723,7 +723,7 @@ console.log( _vars.logMsg);
 			_trackList.push( _trackObj );
 		}//next
 		
-console.log( _trackList );
+//console.log( _trackList );
 		webApp.player.formTrackList( _trackList );
 		
 	}//end _addTrackToTrackList()
