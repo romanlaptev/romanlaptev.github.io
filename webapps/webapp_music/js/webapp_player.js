@@ -157,6 +157,12 @@ func.logAlert( _vars.logMsg, "error");
 					return false;
 				}
 				
+				if( !webApp.vars.support["promiseSupport"]){
+					_vars["logMsg"] = "error, window.Promise not supported...";
+					func.logAlert( _vars["logMsg"], "error" );
+					return false;
+				}
+				
 				_loadTrackList({
 					"trackListUrl": _vars["GET"]["url"]
 				})
@@ -180,6 +186,12 @@ console.log( "-- THEN, promise reject, ", error );
 						_vars["GET"]["fs_path"].length === 0){
 _vars["logMsg"] = "error, not found tracklist fs_path...";
 func.logAlert( _vars.logMsg, "error");
+					return false;
+				}
+				
+				if( !webApp.vars.support["promiseSupport"]){
+_vars["logMsg"] = "error, window.Promise not supported...";
+func.logAlert( _vars["logMsg"], "error" );
 					return false;
 				}
 				

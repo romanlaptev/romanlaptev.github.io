@@ -26,6 +26,15 @@ function _fileManager( opt ){
 //}
 
 //-----------------
+		if( !webApp.vars.support["promiseSupport"]){
+			_vars["supportPHP"] = false;
+			_noPHPSupport();
+			if( typeof opt["postFunc"] === "function"){
+				opt["postFunc"]();
+			}
+			return false;
+		}
+		
 		_phpSupport().then(
 			function( res ){
 //console.log( "-- THEN, promise resolve" );
@@ -234,6 +243,16 @@ for( var n = 0; n < data["files"].length; n++){
 	
 	function _formHtmlFileManager(opt){
 
+		if( !webApp.vars.support["promiseSupport"]){
+			_vars["logMsg"] = "error, window.Promise not supported...";
+			func.logAlert( _vars["logMsg"], "error" );
+			
+			if( typeof opt["postFunc"] === "function"){
+				opt["postFunc"]();
+			}
+			return false;
+		}
+
 		_getFileList({
 			"dirName" : _vars["fsPath"]
 		}).then(
@@ -382,6 +401,12 @@ console.log( "-- THEN, promise rejected", res );
 //console.log(num, item);
 					checkedFiles.push( $(item).val() );
 				});
+
+				if( !webApp.vars.support["promiseSupport"]){
+					_vars["logMsg"] = "error, window.Promise not supported...";
+					func.logAlert( _vars["logMsg"], "error" );
+					return false;
+				}
 				
 				_deleteFile({
 					"fsPath": _vars["fsPath"],
@@ -404,6 +429,12 @@ console.log( "-- THEN, promise reject, ", error );
 			case "rename-file":
 				$("#block-file-manager").find(".wfm :checkbox:checked").each( function(num, item){
 //console.log(num, item);
+					if( !webApp.vars.support["promiseSupport"]){
+						_vars["logMsg"] = "error, window.Promise not supported...";
+						func.logAlert( _vars["logMsg"], "error" );
+						return false;
+					}
+					
 					if( num === 0){
 						var _oldName = _vars["fsPath"] + "/"+ $(item).val();
 
