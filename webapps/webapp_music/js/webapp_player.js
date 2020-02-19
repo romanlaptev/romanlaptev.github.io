@@ -24,8 +24,8 @@ function _player( opt ){
 { "extension" : "ogg", "testString" : 'audio/ogg; codecs="vorbis"', support: false},
 //{ "extension" : "au", "testString" : 'audio/basic', support: false},
 //{"extension" : "wav", "testString" : 'audio/L24', support: false, name: "24bit Linear PCM format, at 8-48 kHz, 1-N channels"},
-{ "extension" : "webm", "testString" : 'audio/webm', support: false, name: "WebM open media format."},
-{ "extension" : "mp2,mp3,mpga,mpega", "testString" : 'audio/x-mpeg', support: false, name: "MPEG audio"},
+//{ "extension" : "webm", "testString" : 'audio/webm', support: false, name: "WebM open media format."},
+{ "extension" : "mp2,mpga,mpega", "testString" : 'audio/x-mpeg', support: false, name: "MPEG audio"},
 { "extension" : "mp3", "testString" : 'audio/mpeg; codecs="mp3"', support: false },
 { "extension" : "mp4,mpg4", "testString" : 'audio/mp4; codecs="mp4a.40.5"', support: false, name: "MPEG-4 audio"},
 { "extension" : "m4a", "testString" : 'audio/x-m4a', support: false, name: "MPEG-4 audio"},
@@ -609,27 +609,14 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		_vars.$videoplayer.pause();
 		
 		if( p.autoplay ){
-//------------------------- choose media player: audio, video, or iframe-video
-//console.log( webApp.fileManager.getFileType(mediaSrc) );	
-	var _fileType = webApp.fileManager.getFileType(mediaSrc);
-
-//if( mediaSrc.indexOf(".mp4") > 0 || mediaSrc.indexOf(".ogv") > 0 ){
-if( _fileType === "mp4" || _fileType === "ogv" ){
-//console.log("t1");	
-	_vars.$mediaplayer = _vars.$videoplayer;
-} else{
-//console.log("t2");	
-	_vars.$mediaplayer = _vars.$audioplayer;
-}
-			
-//-------------------------
-			//try{
-//console.log( _vars.$mediaplayer.getAttribute("src") );
+			var _canPlay = _setMediaPlayer( mediaSrc );
+			if( _canPlay){
 				$(_vars.$mediaplayer).attr("src", mediaSrc);
 				_vars.$mediaplayer.play();
-			//} catch(e){
-//console.log(e);	
-			//}
+			} else {
+_vars["logMsg"] = "Cannot play media file "+ mediaSrc;
+func.logAlert( _vars["logMsg"], "error" );
+			}
 		}
 
 		//set active style
@@ -780,6 +767,37 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		}//end __testTypeSupport()
 		
 	}//end testMediaSupport()
+
+
+	function _setMediaPlayer( filePath ){
+		var _canPlay = false;
+
+		var _fileType = webApp.fileManager.getFileType( filePath );
+//console.log( _fileType );	
+		for( var n =0; n < _vars["mediaTypes"].length; n++){
+			var _testString = _vars["mediaTypes"][n]["testString"];
+			var _ext = _vars["mediaTypes"][n]["extension"];
+			var _support = _vars["mediaTypes"][n]["support"];
+			
+			if( _fileType === _ext ){
+				if( _support ){
+					_canPlay = true;
+//------------------------- choose media player: audio, video, or iframe-video
+					if( _testString.indexOf("video") !== -1){
+						_vars.$mediaplayer = _vars.$videoplayer;
+					}
+					if( _testString.indexOf("audio") !== -1){
+						_vars.$mediaplayer = _vars.$audioplayer;
+					}
+
+					break;
+				}
+			}
+			
+		}//next
+
+		return _canPlay;
+	}//end _setMediaPlayer()
 
 	
 	// public interfaces
