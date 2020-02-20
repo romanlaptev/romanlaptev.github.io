@@ -88,3 +88,19 @@ console.log("Uptime:" + _os.uptime() );
 //----------------------------
 console.log( "ENV variables: ", process.env );
 
+
+
+//---------------------------- INPUT
+const _readLine = require("readline");
+const rl = _readLine.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
+
+console.log('Test input, enter any string (type \'.exit\' for quit from program):');
+rl.on("line", function(line){
+	console.log('You typed %s', line);
+	if( line === ".exit"){
+		rl.close();
+	}
+});
