@@ -55,6 +55,13 @@ console.log("appendFile, err:", err);
 
 
 function _readFile( _fsPath ){
+
+	_fs.exists( _fsPath, function(res){
+		if(res){
+	console.log( _fsPath + " is exists...");
+		}
+	});
+
 	_fs.readFile( _fsPath, function(err, _content){
 console.log("readFile, err:", err);
 		if(err){
