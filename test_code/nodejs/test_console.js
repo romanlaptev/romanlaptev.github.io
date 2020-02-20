@@ -1,7 +1,7 @@
 var _path = require("path");
 var _fs = require("fs");
 var _os = require("os");
-
+var _util = require("util");
 
 console.log( "dirname: " + __dirname );
 console.log( "filename: " + __filename );
@@ -75,7 +75,11 @@ console.log( fileContent );
 //------------------------- test module OS
 console.log("Operation system platform:" + _os.platform() );
 console.log("Processor architecture:" + _os.arch() );
-console.log("Processor info:" + _os.cpus() );
+
+var _cpuInfo = _util.inspect( _os.cpus() ); 
+console.log("Processor info:" +  _cpuInfo);
+console.log("Number of processor cores:" + _os.cpus().length );
+
 console.log("Free memory:" + _os.freemem() );
 console.log("Total memory:" + _os.totalmem() );
 console.log("Home directory:" + _os.homedir() );

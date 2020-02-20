@@ -1,9 +1,11 @@
 var _http = require("http");
 var _path = require("path");
 var _fs = require("fs");
+var pid = process.pid;
 
 _http.createServer( _requestListener ).listen(3000, function(){
-console.log("Server has been started.");
+console.log("Server has been started, process ID:" + pid);
+console.log(`-- process ID: ${pid}`);
 console.log(arguments);
 });
 
@@ -16,13 +18,10 @@ function _requestListener( req, resp){
 	//resp.write("<h1>Hello World</h1>");
 	
 //console.log( req.url );
-
-//--------------------------- www content location ( __dirname/publiv/app.html(css, js, json....) )
-	var _filePath = _path.join( __dirname, "public", req.url);
+	//var _filePath = _path.join( __dirname, "nb.txt");
 	//var _filePath = "../app.html";
-	//var _filePath = ".." + req.url;
+	var _filePath = ".." + req.url;
 console.log( _filePath );
-
 	var _ext = _path.extname(_filePath);
 
 	var contentType = "text/html";
