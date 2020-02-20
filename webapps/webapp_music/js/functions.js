@@ -61,7 +61,7 @@ use module:
 				if( msg.length == 0){
 					output.innerHTML = "";
 				} else {
-					output.innerHTML += msg;
+					output.innerHTML = msg + output.innerHTML;
 				}
 				
 			} else {

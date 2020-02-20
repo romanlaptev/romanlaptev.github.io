@@ -220,9 +220,9 @@ console.log( "-- THEN, promise reject, ", error );
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 			break;
 
-//insert-track
-			//case "stop-play":
-			//break;
+			case "insert-track":
+console.log(url);			
+			break;
 
 			case "load-track":
 				_loadTrackToPlayer({

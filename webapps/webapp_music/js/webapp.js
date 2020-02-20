@@ -303,7 +303,20 @@ function _app( opt ){
 //----------------------------
 			if (event.keyCode == 27) {
 //console.log("press ESC ", e.target);
-				_closeModal( "#modal-edit-node" );
+
+				var id = "#modal-edit-node";
+				var $modalWindow = $(id);
+				
+				if( $modalWindow.is(":visible") ){
+					_toggleBlock( id );
+				}
+				
+				id = "#modal-insert-track";
+				$modalWindow = $(id);
+				if( $modalWindow.is(":visible") ){
+					_toggleBlock( id );
+				}
+				
 			}
 			
 //---------------------------- input page number
@@ -384,8 +397,8 @@ function _app( opt ){
 			
 			var _keyword = form.elements.keyword.value;
 			if( _keyword.length === 0 ){
-webApp.vars["logMsg"] = "error, empty keyword...";
-func.logAlert( webApp.vars["logMsg"], "error");
+_vars["logMsg"] = "error, empty keyword...";
+func.logAlert( _vars["logMsg"], "error");
 //console.log( "-- " + _vars["logMsg"] );
 				res = false;
 			}
@@ -423,6 +436,56 @@ if( form.elements.targetField.length > 0){
 
 		//});//end event
 		};//end event
+
+//---------------------------- insert track form submit
+		document.forms["form_insert_track"].onsubmit = function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+			
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+			
+//console.log("Submit form", event, this);
+			var form = document.forms["form_insert_track"]
+//console.log(form);
+//console.log(form.elements, form.elements.length);
+//console.log(form.action);
+
+			//------------------- check input values
+			var _url = form.action;
+			var res = true;
+			for( var n = 0; n < form.elements.length; n++){
+				var _element = form.elements[n];
+				
+				if( _element.type === "text" ){
+					
+					if( _element.className.indexOf("require-form-element") !== -1 ){
+	//console.log( _element.value );
+							if( _element.value.length === 0 ){
+								var res = false;
+	_vars["logMsg"] = "error, empty input field <b>'" + _element.name +"'</b>";
+	func.logAlert( _vars["logMsg"], "error");
+								break;
+							}
+					}
+					
+					if( _element.value.length > 0 ){
+						_url += "&"+ _element.name + "=" + _element.value;
+					}
+					
+				}
+				
+			}//next
+//console.log( _url );
+			
+			if(res){
+				_urlManager( _url );
+			}
+			
+		};//end event submit
 
 //---------------------------- move input range
 		$("#page-range").on("input", function(event){
@@ -534,46 +597,27 @@ if( target.className.indexOf("no-block-link") === -1){
 				if( target.tagName === "A"){
 
 //------------------------------- close, toggle buttons
-if( target.getAttribute("data-toggle") ){
+					if( target.getAttribute("data-toggle") ){
 //console.log( target.getAttribute("data-toggle"), target.getAttribute("data-toggle").length );
-					var id = $( target ).data("toggle");
+						var id = $( target ).data("toggle");
 //console.log( id );
-
-					if ( target.href.indexOf("?q=close") !== -1 ||
-							 target.href.indexOf("?q=toggle") !== -1
-						){
-
-						if( $( id ).hasClass("uk-hidden") ){
-//console.log( target.href );
-							//$( id ).toggleClass("uk-hidden");
-							$( id ).removeClass("uk-hidden");
-							$( id ).hide();
-							//return;
+						if ( target.href.indexOf("?q=close") !== -1 ||
+								 target.href.indexOf("?q=toggle") !== -1
+							){
+								_toggleBlock( id );
 						}
-
-						$( id ).slideToggle( _vars.duration , function(e){
-//console.log(arguments);
-							if( id === "#block-tags"){// reset tags select
-								webApp.db.vars["queryRes"] = [];
-								_urlManager("?q=reset_tags_select");
-							}
-							if( id === "#log"){
-								webApp.vars["logPanel"].innerHTML = "";
-							}
-						});
 					}
-}
 
 //------------------------------- get modal window
-					if ( target.href.indexOf("edit-node") !== -1){
+					if ( target.href.indexOf("q=edit-node") !== -1){
 						//webApp.vars["GET"] = func.parseGetParams( target.href );
 						webApp.app.urlManager( target.href );
 					}
-					//if ( target.href.indexOf("#close-modal") !== -1){
-					if ( target.href.indexOf("?q=close-modal") !== -1){
-						var id = $( target ).data("toggle");
-						_toggleModal( id );
-					}
+					// //if ( target.href.indexOf("#close-modal") !== -1){
+					// if ( target.href.indexOf("?q=close-modal") !== -1){
+						// var id = $( target ).data("toggle");
+						// _toggleModal( id );
+					// }
 
 //------------------------------- get tag list
 //?q=get-tag-list&vid=2				
@@ -694,7 +738,7 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 			
 //?q=edit-node&nid={{nid}}
 			case "edit-node":
-				_toggleModal( "#modal-edit-node" );
+				_toggleBlock( "#modal-edit-node" );
 /*
 			if( $( target ).attr("href").indexOf("&") !== -1 ){
 				var arr = $( e.target ).attr("href").split("&");
@@ -710,7 +754,7 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 */			
 			var form = document.forms["form_node"];
 //console.log(form);
-console.log(form.elements);
+//console.log(form.elements);
 				form.elements.id.value = webApp.vars["GET"]["nid"];
 			break;
 			
@@ -785,6 +829,11 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					}//end callback
 				});
 				
+			break;
+			
+//--------------------------------------------
+			case "insert-track":
+				webApp.player.urlManager( url );
 			break;
 			
 //--------------------------------------------
@@ -1035,33 +1084,65 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		}
 	}//end _toggleMenu()
 
-	function _toggleModal( id ){
-		$modalWindow = $(id);
-		if( $modalWindow.hasClass("uk-open") ){
-			$modalWindow.hide( _vars.duration );
-			//$modalWindow.slideUp( _vars.duration, function () {
-			//$modalWindow.fadeOut( 600, function () {
-	//console.log("-- end of hide....");				
-			//});
-			$modalWindow.removeClass("uk-open");
+	// function _toggleModal( id ){
+		// $modalWindow = $(id);
+		// if( $modalWindow.hasClass("uk-open") ){
+			// $modalWindow.hide( _vars.duration );
+			// //$modalWindow.slideUp( _vars.duration, function () {
+			// //$modalWindow.fadeOut( 600, function () {
+	// //console.log("-- end of hide....");				
+			// //});
+			// $modalWindow.removeClass("uk-open");
+		// } else {
+			// //$modalWindow.show("fast", function () {
+			// $modalWindow.slideDown( _vars.duration, function () {
+			// //$modalWindow.fadeIn( 600, function () {
+	// //console.log("-- end of show....");				
+			// });
+			// $modalWindow.addClass("uk-open");
+		// }
+	// }//end _toggleModal()
+	
+	// function _closeModal( id ){
+		// $m = $(id);
+		// if( $m.hasClass("uk-open") ){
+			// $m.hide( _vars.duration );
+			// $m.removeClass("uk-open");
+		// }
+	// }//end _toggleModal()
+	
+
+	function _toggleBlock( id ){
+//console.log( id );
+		
+		if( $( id ).hasClass("uk-hidden") ){
+			//$( id ).toggleClass("uk-hidden");
+			$( id ).removeClass("uk-hidden");
+			$( id ).hide();
+			//return;
+		}
+
+		if( $( id ).hasClass("uk-open") ){
+			$( id ).removeClass("uk-open");
+			//$( id ).hide( _vars.duration );
 		} else {
-			//$modalWindow.show("fast", function () {
-			$modalWindow.slideDown( _vars.duration, function () {
-			//$modalWindow.fadeIn( 600, function () {
-	//console.log("-- end of show....");				
-			});
-			$modalWindow.addClass("uk-open");
-		}
-	}//end _toggleModal()
-	
-	function _closeModal( id ){
-		$m = $(id);
-		if( $m.hasClass("uk-open") ){
-			$m.hide( _vars.duration );
-			$m.removeClass("uk-open");
-		}
-	}//end _toggleModal()
-	
+			$( id ).addClass("uk-open");
+		};
+
+		$( id ).slideToggle( _vars.duration , function(e){
+//console.log(arguments);
+			// if( id === "#block-tags"){// reset tags select
+				// webApp.db.vars["queryRes"] = [];
+				// _urlManager("?q=reset_tags_select");
+			// }
+			if( id === "#log"){
+				webApp.vars["logPanel"].innerHTML = "";
+			}
+		});
+		
+	}//end _toggleBlock()
+
+
 
 	function _imagesLoadEventHandler(){
 	//console.log( webApp.vars.$blockList );

@@ -50,7 +50,7 @@ function _draw( opt ){
 		<div class="">\
 			<ul class="menu-track-action button-group uk-list">\
 <li><a href="?q=clear-tracklist" class="uk-button uk-button-danger uk-button-small">clear track list</a></li>\
-<li><a href="?q=insert-track" title="insert track (local file or url)" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
+<li><a href="?q=toggle" data-toggle="#modal-insert-track" class="uk-button uk-button-primary uk-button-small">insert track</a></li>\
 <li><a href="?q=get-tracklist-url&action=load-tracklist" title="load track list from JSON file" class="uk-button uk-button-primary uk-button-small">Load track list</a></li>\
 <li><a href="?q=get-tracklist-url&action=save-tracklist" title="save track list to JSON file" class="uk-button uk-button-primary uk-button-small">Save track lists</a></li>\
 			</ul>\

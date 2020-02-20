@@ -76,6 +76,7 @@ _log(msg);
 					output.innerHTML = "";
 				} else {
 					output.innerHTML += msg;
+					//output.innerHTML = msg + output.innerHTML;
 				}
 				
 			} else {

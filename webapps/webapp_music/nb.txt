@@ -5,9 +5,9 @@ webApp.db()
 webApp.draw()
 
 	+- module nodeList (node_list.js)?
-	- module mediaPlayer (player.js)
+	*- module mediaPlayer (player.js)
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
-	- module fileManager (file_manager.js)
+	*- module fileManager (file_manager.js)
 
 =========================
 сделать возможность обращения к функциям приложения через GET-параметры
@@ -15,6 +15,9 @@ http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/
 *app.html?q=load-tracklist&url=/music/0_playlists/metallica.json
 *app.html?dir=/mnt/d2/music
 *app.html?dir=/home/www/music
+app.html?alias=music
+app.html?alias=video
+как еще менять алиас ? смена алиаса во время работы приложения..?
 
 *----------- ИСПРАВИТЬ
 наличие заполненной строки window.location.search
@@ -36,7 +39,7 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 для этого потребуется изменить функцию draw.buildBlock - передаются не имена шаблонов, а сами строки-шаблоны...
 
 --------------------------- PLAYER, mediaPlayer
-- сделать возможность формировать составные плейлисты
+- сделать возможность *формировать составные плейлисты
 и сохранять их (или прямо на диск, или в локальный кэш)
 
 - где сохранять и в каком формате сформированные списки (как треклист или как плейлист с изображением, описанием, прикрепленными треклистами)?
@@ -96,7 +99,7 @@ width слайдера / кол-во страниц = ширина одного 
 *- ИСПРАВИТЬ, если у ноды нет дополнительных картинок, то блок images не выводится
 +и убрать стили высоты и фона
 
-- сделать работу приложения с ФС через файловое АПИ node.js
+- сделать работу приложения с ФС через файловое АПИ nodejs
 ---------------------------
 - сделать анимацию для offcanvas
 - сделать прелоад изображений
