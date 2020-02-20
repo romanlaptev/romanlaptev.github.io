@@ -86,5 +86,5 @@ console.log("Home directory:" + _os.homedir() );
 console.log("Uptime:" + _os.uptime() );
 
 //----------------------------
-console.log( "ENV variables: " + process.env );
+console.log( "ENV variables: ", process.env );
 
