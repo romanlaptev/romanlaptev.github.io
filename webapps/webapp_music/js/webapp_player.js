@@ -255,6 +255,16 @@ console.log( "-- THEN, promise reject, ", error );
 				});
 			break;
 			
+			case "update-track":
+//console.log(url);
+				_updateTrack({
+					"number": _vars["GET"]["number"],
+					"title": _vars["GET"]["input_title"],
+					"artist": _vars["GET"]["input_artist"],
+					"source_url": _vars["GET"]["input_source_url"]
+				});
+			break;
+			
 //--------------------------------------------
 			default:
 console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);			
@@ -701,6 +711,22 @@ func.logAlert( _vars["logMsg"], "error" );
 		//_vars["numTrack"] = numTrack;
 		
 console.log( numTrack, _vars["trackList"][numTrack] );
+
+		$("#insert-track-form").attr("action", "?q=update-track");
+		
+		document.forms["form_insert_track"].elements["input_title"].value = _vars["trackList"][numTrack]["title"];
+		document.forms["form_insert_track"].elements["input_artist"].value = _vars["trackList"][numTrack]["artist"];
+		
+		if( _vars["trackList"][numTrack]["mp3"] && _vars["trackList"][numTrack]["mp3"].length > 0){
+			document.forms["form_insert_track"].elements["input_source_url"].value = _vars["trackList"][numTrack]["mp3"];
+		}
+		if( _vars["trackList"][numTrack]["source_url"] && _vars["trackList"][numTrack]["source_url"].length > 0){
+			document.forms["form_insert_track"].elements["input_source_url"].value = _vars["trackList"][numTrack]["source_url"];
+		}
+		document.forms["form_insert_track"].elements["number"].value = _vars["trackList"][numTrack]["number"];
+		
+		webApp.app.toggleBlock( "#modal-insert-track" );
+		
 	}//end _editTrack()
 
 
@@ -721,7 +747,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		if( !p["artist"]){
 			p["artist"] = webApp.fileManager.getLastDirName( p["source_url"] );
 		}
-console.log(p);
+//console.log(p);
 
 		var _trackFormat = _vars["trackFormat"];
 		var _trackObj = {};
@@ -757,6 +783,63 @@ console.log(p);
 		
 		webApp.app.toggleBlock( "#modal-insert-track" );
 	}//end _insertTrack()
+
+
+	function _updateTrack( opt ){
+		var p = {
+			"number": false,
+			"title": false,
+			"artist": false,
+			"source_url": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+		//--------------------------------
+		if( !p["title"]){
+			p["title"] = webApp.fileManager.getFileName( p["source_url"], true );
+		}
+		if( !p["artist"]){
+			p["artist"] = webApp.fileManager.getLastDirName( p["source_url"] );
+		}
+console.log(p);
+/*
+		var _trackFormat = _vars["trackFormat"];
+		var _trackObj = {};
+		for( var key in _trackFormat ){
+			_trackObj[key] = "";
+		}//next
+		
+		//write key:value to _track ( only matching  keys by "trackFormat" )
+		var _track = p;
+		for( var key in _trackObj ){
+			_trackObj[key] = _track[key];
+		}//next
+//console.log( _track );
+	
+		_vars["trackList"].push( _trackObj );
+		
+		//----------------- add track order number 
+		for( var n = 0; n < _vars["trackList"].length; n++){
+			_vars["trackList"][n]["number"] = n+1;
+		}//next
+		
+		_vars["unSavedTrackList"] = true;
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+		
+		if( !$("#block-player").is(":visible") ){
+			$("#block-player").show();
+		}
+
+		_vars["numTrack"] = _vars["trackList"].length-1;
+		_setActiveTrack({
+			num : _vars["numTrack"]
+		});
+		
+		webApp.app.toggleBlock( "#modal-insert-track" );
+*/		
+	}//end _updateTrack()
 
 
 

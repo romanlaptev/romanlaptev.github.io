@@ -437,7 +437,7 @@ if( form.elements.targetField.length > 0){
 		//});//end event
 		};//end event
 
-//---------------------------- insert track form submit
+//---------------------------- insert/update track form submit handler
 		document.forms["form_insert_track"].onsubmit = function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
