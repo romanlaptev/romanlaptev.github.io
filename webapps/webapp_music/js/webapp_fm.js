@@ -790,13 +790,13 @@ console.log( _vars.logMsg);
 		
 		var _fsPath = fsPath.split("/");
 		
-		var n1 = _fsPath.length-1;
-		var n2 = _fsPath.length-2;
-		
-		var _dirName = _fsPath[ n1 ];
-		var _prevDirName = _fsPath[ n2 ];
-		
-		return _prevDirName +", "+ _dirName;
+		var num = _fsPath.length - 1;
+		if( _fsPath[ num ].indexOf(".") !== -1){//exclude filename.type
+			num = _fsPath.length-2;
+		}
+		var _dirName = _fsPath[ num ];
+
+		return _dirName;
 	}//end _getLastDirName()
 
 
@@ -811,6 +811,24 @@ console.log( _vars.logMsg);
 		
 		return _fileType;
 	}//end _getFileType()
+	
+	function _getFileName( fsPath, addType ){
+		var _fsPath = fsPath.split("/");
+		
+		var n1 = _fsPath.length-1;
+		
+		var _fileName = _fsPath[ n1 ];
+		
+		if( addType){
+			return _fileName;
+		}
+		
+		var _file = _fileName.split(".");
+		var _name = _file[0];
+		//var _fileType = _file[1];
+		
+		return _name;
+	}//end _getFileName()
 
 
 	// public interfaces
@@ -824,7 +842,9 @@ console.log( _vars.logMsg);
 		formHtmlFileManager: _formHtmlFileManager,
 		urlManager:	_urlManager,
 		getUrlPath: _getUrlPath,
-		getFileType: _getFileType
+		getFileType: _getFileType,
+		getFileName: _getFileName,
+		getLastDirName: _getLastDirName
 	};
 	
 }//end _fileManager()

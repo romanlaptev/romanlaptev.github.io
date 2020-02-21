@@ -220,10 +220,6 @@ console.log( "-- THEN, promise reject, ", error );
 				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 			break;
 
-			case "insert-track":
-console.log(url);			
-			break;
-
 			case "load-track":
 				_loadTrackToPlayer({
 					"trackNum": _vars["GET"]["num"]
@@ -247,6 +243,15 @@ console.log(url);
 			case "edit-track":
 				_editTrack({
 					"trackNum": _vars["GET"]["num"]
+				});
+			break;
+
+			case "insert-track":
+//console.log(url);
+				_insertTrack({
+					"title": _vars["GET"]["input_title"],
+					"artist": _vars["GET"]["input_artist"],
+					"source_url": _vars["GET"]["input_source_url"]
 				});
 			break;
 			
@@ -697,6 +702,62 @@ func.logAlert( _vars["logMsg"], "error" );
 		
 console.log( numTrack, _vars["trackList"][numTrack] );
 	}//end _editTrack()
+
+
+	function _insertTrack( opt ){
+		var p = {
+			"title": false,
+			"artist": false,
+			"source_url": false
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+		//--------------------------------
+		if( !p["title"]){
+			p["title"] = webApp.fileManager.getFileName( p["source_url"], true );
+		}
+		if( !p["artist"]){
+			p["artist"] = webApp.fileManager.getLastDirName( p["source_url"] );
+		}
+console.log(p);
+
+		var _trackFormat = _vars["trackFormat"];
+		var _trackObj = {};
+		for( var key in _trackFormat ){
+			_trackObj[key] = "";
+		}//next
+		
+		//write key:value to _track ( only matching  keys by "trackFormat" )
+		var _track = p;
+		for( var key in _trackObj ){
+			_trackObj[key] = _track[key];
+		}//next
+//console.log( _track );
+	
+		_vars["trackList"].push( _trackObj );
+		
+		//----------------- add track order number 
+		for( var n = 0; n < _vars["trackList"].length; n++){
+			_vars["trackList"][n]["number"] = n+1;
+		}//next
+		
+		_vars["unSavedTrackList"] = true;
+		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
+		
+		if( !$("#block-player").is(":visible") ){
+			$("#block-player").show();
+		}
+
+		_vars["numTrack"] = _vars["trackList"].length-1;
+		_setActiveTrack({
+			num : _vars["numTrack"]
+		});
+		
+		webApp.app.toggleBlock( "#modal-insert-track" );
+	}//end _insertTrack()
+
 
 
 	function _testMediaSupport(){

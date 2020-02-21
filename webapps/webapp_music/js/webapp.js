@@ -466,7 +466,7 @@ if( form.elements.targetField.length > 0){
 	//console.log( _element.value );
 							if( _element.value.length === 0 ){
 								var res = false;
-	_vars["logMsg"] = "error, empty input field <b>'" + _element.name +"'</b>";
+	_vars["logMsg"] = "error, empty required input field <b>'" + _element.name +"'</b>";
 	func.logAlert( _vars["logMsg"], "error");
 								break;
 							}
@@ -482,7 +482,7 @@ if( form.elements.targetField.length > 0){
 //console.log( _url );
 			
 			if(res){
-				_urlManager( _url );
+				webApp.player.urlManager( _url );
 			}
 			
 		};//end event submit
@@ -829,11 +829,6 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					}//end callback
 				});
 				
-			break;
-			
-//--------------------------------------------
-			case "insert-track":
-				webApp.player.urlManager( url );
 			break;
 			
 //--------------------------------------------
@@ -1188,8 +1183,8 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
-		imagesLoadEventHandler: _imagesLoadEventHandler
-		//setToggleContentEvents: _setToggleContentEvents
+		imagesLoadEventHandler: _imagesLoadEventHandler,
+		toggleBlock: _toggleBlock
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 
 		//},
