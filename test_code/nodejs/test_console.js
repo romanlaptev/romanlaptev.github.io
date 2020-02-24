@@ -12,6 +12,8 @@ console.log( "filename: " + __filename );
 // console.log("Extension name:" + _path.extname(__filename) );
 
 // console.log( _path.join( __dirname, "/server/", "index.html") );
+// console.log( _path.isAbsolute( __dirname );
+// console.log( _path.isAbsolute( "public/myProjects" );
 
 
 //------------------------- test module FS
