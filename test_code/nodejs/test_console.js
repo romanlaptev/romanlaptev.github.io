@@ -142,7 +142,26 @@ console.log("Run time: ");
 console.timeEnd("first");// time in ms
 console.log("===================================");
 
+
+
+//---------------------------- Buffer
+console.log("===================================");
+var _buff1 = Buffer.alloc(10);
+console.log("New empty (fill of  0) buffer: ", _buff1);
+console.log("Length buffer 1: ", _buff1.length);
+
+var _buff2 = Buffer.allocUnsafe(10);
+console.log("New uninitialized buffer: ", _buff2);
+
+var _testStr = "Hello world!";
+console.log( "Test string: " + _testStr );
+console.log( "Number of bytes: ", Buffer.byteLength( _testStr, "utf-8") );//"utf", "ascii", "binary", "base64", "hex"
+
+var _buff3 = Buffer.from(  _testStr, "utf-8" );
+console.log( "Code view: ", _buff3 );
+
 //---------------------------- INPUT
+console.log("===================================");
 const _readLine = require("readline");
 const rl = _readLine.createInterface({
 	input: process.stdin,
