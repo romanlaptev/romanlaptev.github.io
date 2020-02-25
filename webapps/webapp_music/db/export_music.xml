@@ -22,6 +22,7 @@
 	<tag tid="33" vid="2" group_name="music_styles">techno</tag>
 	<tag tid="34" vid="2" group_name="music_styles">classic rock</tag>
 	<tag tid="39" vid="2" group_name="music_styles">русский рок</tag>
+	<tag tid="43" vid="2" group_name="music_styles">ska</tag>
 	<tag tid="45" vid="2" group_name="music_styles">punk</tag>
 	<tag tid="50" vid="4" group_name="country">Швеция</tag>
 	<tag tid="51" vid="4" group_name="country">Германия</tag>
@@ -106,10 +107,14 @@
 	<title>
 		<item>Psalteria</item>
 	</title>
-	
+	<images>
+		<img src="/music/P/Psalteria/Psalteria+band.jpg"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Psalteria.json">Psalteria.json</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
@@ -122,7 +127,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">20-Nov-2012 21:46:06</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:59</updated>
+	<updated format="d-M-Y H:i:s">08-Feb-2020 19:17:52</updated>
 </node>
 
 <node type="playlist">
@@ -151,10 +156,15 @@
 	<title>
 		<item>Шлюз</item>
 	</title>
-	
+	<images>
+		<img src="/mnt/d2/music/SH/Шлюз/unnamed.jpg"/>
+		<img src="https://d1ob8phwwne29y.cloudfront.net/content/images/1067727/x_16854098.jpg"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Шлюз.json">Шлюз.json.json</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="77" group_name="alphabetical_voc">Ш</item>
@@ -165,17 +175,24 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Jul-2013 12:15:33</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:50</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 16:20:44</updated>
 </node>
 
 <node type="playlist">
 	<title>
 		<item>SKA-P</item>
 	</title>
-	
+	<images>
+		<img src="/music/S/Ska-P/1995 - Ska-P/cover.jpg"/>
+		<img src="https://lh3.googleusercontent.com/kIH8vx9OcWI6_YhOMm-5r7r1j6Mq_W_KNzuOHGYg9m131NixVkYQTD9RE7CgqrJ-ytIPlv9HSJI=w300"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/SkaP.json">SkaP.json.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1022">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.deezer.com/ru/playlist/7201880584">Ska-P, deezer.com</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
@@ -190,17 +207,22 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">31-Jul-2013 21:12:08</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:24</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 16:18:06</updated>
 </node>
 
 <node type="playlist">
 	<title>
 		<item>Ramones</item>
 	</title>
-	
+	<images>
+		<img src="https://i.pinimg.com/originals/95/ef/d4/95efd4af350e291cf1e491c28477845c.jpg"/>
+		<img src="/music/R/Ramones/cover.jpg"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Ramones.json">Ramones.json</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
@@ -211,30 +233,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">04-Aug-2013 21:47:17</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:40</updated>
-</node>
-
-<node type="playlist">
-	<title>
-		<item>Путти</item>
-	</title>
-	
-
-	<description>http://rutracker.org/forum/viewtopic.php?t=424290</description>
-	
-
-	<node_tags>
-		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
-		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
-		<item vid="2" tid="45" group_name="music_styles">punk</item>
-		<item vid="4" tid="149" group_name="country">Россия</item>
-		<item vid="4" tid="150" group_name="country">СССР</item>
-		<item vid="3" tid="121" group_name="music_formats">collection</item>
-	</node_tags>
-
-	<published format="d-M-Y H:i:s">04-Aug-2013 22:05:48</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:59:00</updated>
+	<updated format="d-M-Y H:i:s">08-Feb-2020 18:41:20</updated>
 </node>
 
 <node type="playlist">
@@ -290,10 +289,15 @@
 	<title>
 		<item>Slayer</item>
 	</title>
-	
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1026.55002/200x200?1581595293150"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Slayer.json">Slayer.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1026">music.yandex.ru</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
@@ -304,7 +308,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">11-Aug-2013 20:51:35</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:08:31</updated>
+	<updated format="d-M-Y H:i:s">13-Feb-2020 20:08:38</updated>
 </node>
 
 <node type="playlist">
@@ -332,20 +336,32 @@
 	<title>
 		<item>T-Rex</item>
 	</title>
-	
+	<images>
+		<img src="/music/T/T-Rex/Images/1972 - The Slider.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/70586/9941293.1025.43952/200x200?1581165440760"/>
+	</images>
 
 	
-	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/T-Rex.json">T-Rex.json</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/T._Rex_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wikipedia</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1025">music.yandex.ru</a></li>
+	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="151" group_name="music_styles">рок-н-ролл</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
+		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
 		<item vid="4" tid="132" group_name="country">Великобритания</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">11-Aug-2013 21:03:19</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:58:01</updated>
+	<updated format="d-M-Y H:i:s">08-Feb-2020 20:43:47</updated>
 </node>
 
 <node type="playlist">
@@ -514,9 +530,9 @@
 
 	
 	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/Bach.json">Bach.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -531,7 +547,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:51:45</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 16:22:15</updated>
 </node>
 
 <node type="playlist">
@@ -544,9 +560,9 @@
 
 	
 	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Handel.json">Handel.json</a></li>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1007">music.yandex.ru</a></li>
 		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=7lC1lRz5Z_s&amp;list=PL2sTusldk6UjU_GTUOs17hBo_pVe1ZauI">youtube</a></li>
-		<li><a data-type="playlist-file" href="/music/0_playlists/Handel.json">Handel.json</a></li>
 	</related_links>
 
 	<node_tags>
@@ -560,7 +576,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:52:52</updated>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 16:21:49</updated>
 </node>
 
 <node type="playlist">
@@ -595,19 +611,28 @@
 	</title>
 	<images>
 		<img src="/music/B/Башня Rowan/0_info/Тикки Шельен.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/51766/9941293.1024.33401/200x200?1581076983458"/>
 	</images>
 
-	
+	<description>https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan</description>
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Rowan.json">Rowan.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1024">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="http://rowan.hole.ru/">http://rowan.hole.ru/</a></li>
+		<li><a data-type="external-link" href="http://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%88%D0%BD%D1%8F_Rowan">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
-		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
+		<item vid="5" tid="54" group_name="alphabetical_voc">Б</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+		<item vid="3" tid="144" group_name="music_formats">Концерт</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:36:30</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:47:43</updated>
 </node>
 
 <node type="playlist">
@@ -650,6 +675,7 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/My dying bride.json">My dying bride.json</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/My_Dying_Bride">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
@@ -662,7 +688,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:57:48</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 13:02:12</updated>
 </node>
 
 <node type="playlist">
@@ -702,6 +728,8 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Manowar.json">Manowar.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1004">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/Manowar">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
@@ -713,7 +741,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:38:59</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:58:13</updated>
 </node>
 
 <node type="playlist">
@@ -728,6 +756,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1016">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Therion.json">Therion.json</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/Therion">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
@@ -741,7 +770,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:00:31</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:59:38</updated>
 </node>
 
 <node type="playlist">
@@ -756,6 +785,7 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1015">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Nightwish.json">Nightwish.json</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/Nightwish">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
@@ -770,7 +800,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:01:12</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 13:00:28</updated>
 </node>
 
 <node type="playlist">
@@ -906,6 +936,8 @@
 	<related_links>
 		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1006">music.yandex.ru</a></li>
 		<li><a data-type="playlist-file" href="/music/0_playlists/GrOb.json">GrOb.json</a></li>
+		<li><a data-type="external-link" href="http://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D0%B0_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wikipedia</a></li>
+		<li><a data-type="external-link" href="http://ru.wikipedia.org/wiki/%D0%95%D0%B3%D0%BE%D1%80_%D0%9B%D0%B5%D1%82%D0%BE%D0%B2">wikipedia, Letov</a></li>
 	</related_links>
 
 	<node_tags>
@@ -919,7 +951,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 11:45:33</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 13:03:50</updated>
 </node>
 
 <node type="playlist">
@@ -1166,6 +1198,8 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Korpiklaani.json">Korpiklaani.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1028">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="http://ru.wikipedia.org/wiki/Korpiklaani">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
@@ -1178,7 +1212,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 16:48:54</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:53:36</updated>
 </node>
 
 <node type="playlist">
@@ -1211,12 +1245,15 @@
 	
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/rock.json">rock.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1018">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=fKpbxGKzmYI&amp;list=PL2sTusldk6UiWkBs4SFoffeRLBjOD5Ce5">youtube.com</a></li>
 	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="98" group_name="alphabetical_voc">R</item>
 		<item vid="5" tid="68" group_name="alphabetical_voc">Р</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
 		<item vid="2" tid="112" group_name="music_styles">psychedelic rock</item>
 		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
 		<item vid="2" tid="109" group_name="music_styles">hard-rock</item>
@@ -1226,7 +1263,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 13:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:22:07</updated>
+	<updated format="d-M-Y H:i:s">09-Feb-2020 09:25:59</updated>
 </node>
 
 <node type="playlist">
@@ -1265,19 +1302,79 @@
 https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 	<related_links>
 		<li><a data-type="playlist-file" href="/music/0_playlists/Elakelaiset.json">Elakelaiset.json</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/El%C3%A4kel%C3%A4iset">wikipedia</a></li>
 	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="86" group_name="alphabetical_voc">E</item>
 		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
 		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
-		<item vid="2" tid="107" group_name="music_styles">rock</item>
 		<item vid="4" tid="147" group_name="country">Финляндия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Jan-2020 15:44:33</published>
-	<updated format="d-M-Y H:i:s">28-Jan-2020 15:50:16</updated>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:55:49</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Talco</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1023.79408/200x200?1581079890149"/>
+		<img src="/music/T/Talco/Folder.jpg"/>
+	</images>
+
+	<description>https://ru.wikipedia.org/wiki/Talco</description>
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Talco.json">Talco.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1023">music.yandex.ru</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="129" group_name="music_genre">Ска</item>
+		<item vid="2" tid="157" group_name="music_styles">ска-панк</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="43" group_name="music_styles">ska</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="145" group_name="country">Италия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">07-Feb-2020 16:13:03</published>
+	<updated format="d-M-Y H:i:s">07-Feb-2020 20:52:48</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>The Pogeus</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/51766/9941293.1027.3879/200x200?1582027734565"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/The Pogeus.json">The Pogeus.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1027">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/The_Pogues">wikipedia</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="132" group_name="country">Великобритания</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">19-Feb-2020 12:41:21</published>
+	<updated format="d-M-Y H:i:s">19-Feb-2020 12:45:47</updated>
 </node>
 	</database>
 </xroot>

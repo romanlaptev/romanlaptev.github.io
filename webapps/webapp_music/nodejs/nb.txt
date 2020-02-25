@@ -1,0 +1,3 @@
+//create project packages.json
+npm init
+npm i nodemon -D

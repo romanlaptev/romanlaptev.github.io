@@ -76,6 +76,7 @@ _log(msg);
 					output.innerHTML = "";
 				} else {
 					output.innerHTML += msg;
+					//output.innerHTML = msg + output.innerHTML;
 				}
 				
 			} else {
@@ -84,9 +85,12 @@ _log(msg);
 				//document.writeln(msg);
 			}
 			
-			if( typeof _showHiddenLog === "function"){
+			//if( typeof _showHiddenLog === "function"){
 		//console.log(_showHiddenLog);
-				_showHiddenLog();
+				//_showHiddenLog();
+			//}
+			if( output && output.style.display !== "block"){
+				output.style.display = "block";
 			}
 			
 		}//end _log()

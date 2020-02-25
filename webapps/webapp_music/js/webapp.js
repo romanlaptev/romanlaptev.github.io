@@ -6,19 +6,18 @@ var webApp = {
 	//"iDBmodule" : iDBmodule(),
 	"draw" : _draw(),
 	"player" : _player(),
-
+	"fileManager" : _fileManager(),
+	
 	"vars" : {
 		"app_title" : "music collection",
 		"logMsg" : "",
-		//"messages" : {
-			////"storeNotFound" : "<p class='alert alert-danger'>Object store not exists in DB!!!</p>"
-			//"nodeNotFound" : "<p class='alert alert-danger'>node not found!!!</p>",
-			//"templateNotFound" : "<p class='alert alert-danger'>Not find template, id: <b>{{templateID}}</b></p>"
-		//},
 		"GET" : {},
 		"audioTypes" : {
 //"ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
 		},
+		
+		"use_file_manager": true,
+		"support" : func.testSupport(),
 		
 		"blocks": [
 //===========================================
@@ -38,7 +37,7 @@ var webApp = {
 				"title" : "block tracklist", 
 				"templateID" : "blockTrackList",
 				"content" : function(){
-					var html = webApp.app.formHtmlTrackList();
+					var html = webApp.player.formHtmlTrackList();
 					if( html && html.length > 0){
 						this.content = html;
 						webApp.draw.buildBlock( this );
@@ -82,7 +81,20 @@ var webApp = {
 				"locationID" : "block-file-manager",
 				"title" : "block file manager", 
 				"templateID" : "blockFileManager",
-				//"content" : "<u>static text</u>",
+				"content" : function(){
+					
+					webApp.fileManager.formHtmlFileManager({
+						"postFunc" : function(html){
+//console.log( html );
+							if( html && html.length > 0){
+								webApp.vars["blocksByName"]["blockFM"].content = html;
+								webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
+							}
+							
+						}
+					});
+					
+				}
 			}, //end block
 
 //===========================================
@@ -113,7 +125,7 @@ var webApp = {
 						webApp.draw.buildBlock( this );
 					}
 					webApp.app.imagesLoadEventHandler();
-					$("a[href='#?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
+					$("a[href='?q=load-tracklist&url=']").hide();//hide button if empty playlist_filepath
 					webApp.draw.updatePager();
 				}
 			}, //end block
@@ -146,8 +158,8 @@ var webApp = {
 		"imageNotLoad": "img/image_not_load.png",
 		"menuWidth" : 270,//270px
 		
-		"init_action" : "get_data",
-		"init_url" : "#?q=list_nodes&num_page=1"
+		//"init_action" : "get_data",
+		//"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
 	
@@ -164,40 +176,53 @@ console.log("init webapp!");
 		//webApp.iDBmodule.init();
 //console.log(iDBmodule, typeof iDBmodule);			
 		webApp.draw.init();
-
-		this["vars"]["blocksByName"]["blockPlayer"] = 	this.vars["blocks"][0];
-		this["vars"]["blocksByName"]["blockTrackList"] = 	this.vars["blocks"][1];
-		this["vars"]["blocksByName"]["blockTagGroups"] = 	this.vars["blocks"][2];
-		this["vars"]["blocksByName"]["blockTagList"] = 	this.vars["blocks"][3];
-		this["vars"]["blocksByName"]["blockFM"] = 	this.vars["blocks"][4];
-		this["vars"]["blocksByName"]["blockPager"] = 	this.vars["blocks"][5];
-		this["vars"]["blocksByName"]["blockNodes"] = 	this.vars["blocks"][6];
-		this["vars"]["blocksByName"]["blockFooterLinks"] = 	this.vars["blocks"][7];
+		webApp.player.testMediaSupport();
 		
-		this["vars"]["waitWindow"] = func.getById("win1");
-		this["vars"]["loadProgress"] = func.getById("load-progress");
-		this["vars"]["loadProgressBar"] = func.getById("load-progress-bar");
-		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
-		this["vars"]["percentComplete"] = func.getById("percent-complete");
-		this["vars"]["totalBytes"] = func.getById("total");
-		this["vars"]["totalMBytes"] = func.getById("total-mb");
-		this["vars"]["loaded"] = func.getById("loaded");
-		this["vars"]["loadInfo"] = func.getById("load-info");
-		
-		this["vars"].$offcanvas = $("#off-canvas2");
-		this["vars"].$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
-		this["vars"].$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
-		this["vars"].$blockList = document.querySelector("#block-list");
-		
-		// hide input type="range" if not support
-		//https://learn.javascript.ru/dom-polyfill
-		var _testRangeType = $("#page-range").attr("type");
-//console.log( _testRangeType );
-		if( _testRangeType !== "range"){
-			$("#page-range").hide();
+		if( webApp.vars["use_file_manager"] ){
+			webApp.fileManager.init({
+				"postFunc" : _initCallback
+			});
+		} else {
+			_initCallback();
 		}
+
+		function _initCallback(){
+			webApp.vars["blocksByName"]["blockPlayer"] = 	webApp.vars["blocks"][0];
+			webApp.vars["blocksByName"]["blockTrackList"] = 	webApp.vars["blocks"][1];
+			webApp.vars["blocksByName"]["blockTagGroups"] = 	webApp.vars["blocks"][2];
+			webApp.vars["blocksByName"]["blockTagList"] = 	webApp.vars["blocks"][3];
+			webApp.vars["blocksByName"]["blockFM"] = 	webApp.vars["blocks"][4];
+			webApp.vars["blocksByName"]["blockPager"] = 	webApp.vars["blocks"][5];
+			webApp.vars["blocksByName"]["blockNodes"] = 	webApp.vars["blocks"][6];
+			webApp.vars["blocksByName"]["blockFooterLinks"] = 	webApp.vars["blocks"][7];
+			
+			webApp.vars["logPanel"] = func.getById("log");
+			webApp.vars["waitWindow"] = func.getById("win1");
+			webApp.vars["loadProgress"] = func.getById("load-progress");
+			webApp.vars["loadProgressBar"] = func.getById("load-progress-bar");
+			webApp.vars["numTotalLoad"] = func.getById("num-total-load");
+			webApp.vars["percentComplete"] = func.getById("percent-complete");
+			webApp.vars["totalBytes"] = func.getById("total");
+			webApp.vars["totalMBytes"] = func.getById("total-mb");
+			webApp.vars["loaded"] = func.getById("loaded");
+			webApp.vars["loadInfo"] = func.getById("load-info");
+			
+			webApp.vars.$offcanvas = $("#off-canvas2");
+			webApp.vars.$offcanvasBar = $("#off-canvas2 .my-offcanvas-bar");
+			webApp.vars.$offcanvasMenu = $("#off-canvas2 .uk-nav-offcanvas > li > a");
+			webApp.vars.$blockList = document.querySelector("#block-list");
+			
+			// hide input type="range" if not support
+			//https://learn.javascript.ru/dom-polyfill
+			var _testRangeType = $("#page-range").attr("type");
+	//console.log( _testRangeType );
+			if( _testRangeType !== "range"){
+				$("#page-range").hide();
+			}
+			
+			_runApp();
+		}//end _initCallback()
 		
-		_runApp();
 	},//end init()
 	
 	
@@ -213,15 +238,44 @@ function _runApp(){
 		webApp["vars"]["waitWindow"].style.display="block";
 	}
 	
-	webApp.vars["GET"]["q"] = webApp.vars["init_action"]; 
-	var parseUrl = window.location.search; 
-	if( parseUrl.length > 0 ){
-			webApp.vars["GET"] = func.parseGetParams(); 
-	}		
-	webApp.app.urlManager();
+	webApp.db.getData(function(res){
+//console.log(arguments);
+//console.log(window.location);	
+
+//clear block
+//setTimeout(function(){
+		if( webApp["vars"]["waitWindow"] ){
+			webApp["vars"]["waitWindow"].style.display="none";
+		}		
+//}, 1000*3);
+
+		if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+			_postLoad();
+		}
+	});
 
 }//end _runApp()
 
+function _postLoad(){
+
+	var parse_url = window.location.search; 
+	//var parse_url = window.location.hash;
+//console.log( parse_url );
+	
+	if( parse_url.length > 0 ){
+		webApp.app.urlManager( parse_url );
+	}
+
+//-----------------
+console.log("-- start build page --");
+	webApp.draw.buildPage();
+console.log("-- end build page --");
+
+	webApp.app.defineEvents();
+//console.log( $("#form-search").onsubmit);
+//console.log( document.forms["formSearch"] );
+	
+}//_postLoad()
 
 
 
@@ -249,7 +303,20 @@ function _app( opt ){
 //----------------------------
 			if (event.keyCode == 27) {
 //console.log("press ESC ", e.target);
-				_closeModal( "#modal-edit-node" );
+
+				var id = "#modal-edit-node";
+				var $modalWindow = $(id);
+				
+				if( $modalWindow.is(":visible") ){
+					_toggleBlock( id );
+				}
+				
+				id = "#modal-insert-track";
+				$modalWindow = $(id);
+				if( $modalWindow.is(":visible") ){
+					_toggleBlock( id );
+				}
+				
 			}
 			
 //---------------------------- input page number
@@ -309,7 +376,8 @@ function _app( opt ){
 
 
 //---------------------------- search form submit
-		$("#form-search").on("submit", function(event){
+		document.forms["formSearch"].onsubmit = function(event){
+		//$("#form-search").on("submit", function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
 			
@@ -323,13 +391,14 @@ function _app( opt ){
 //console.log(form);
 //console.log(form.elements.targetField, form.elements.targetField.length);
 //console.log(form.elements.keyword.value);
+
 			//------------------- check input values
 			var res = true;
 			
 			var _keyword = form.elements.keyword.value;
 			if( _keyword.length === 0 ){
-webApp.vars["logMsg"] = "error, empty keyword...";
-func.logAlert( webApp.vars["logMsg"], "error");
+_vars["logMsg"] = "error, empty keyword...";
+func.logAlert( _vars["logMsg"], "error");
 //console.log( "-- " + _vars["logMsg"] );
 				res = false;
 			}
@@ -361,16 +430,62 @@ if( form.elements.targetField.length > 0){
 			// }		
 
 			if(res){
-				webApp.vars["GET"] = {
-					q: "search",
-					"targetField" : _targetField,
-					"keyword": _keyword
-				}; 
-				_urlManager();
+				var _url = "?q=search&targetField="+_targetField+"&keyword="+_keyword;
+				_urlManager( _url );
 			}
 
-		});//end event
+		//});//end event
+		};//end event
 
+//---------------------------- insert/update track form submit handler
+		document.forms["form_insert_track"].onsubmit = function(event){
+			event = event || window.event;
+			var target = event.target || event.srcElement;
+			
+			if (event.preventDefault) { 
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+			
+//console.log("Submit form", event, this);
+			var form = document.forms["form_insert_track"]
+//console.log(form);
+//console.log(form.elements, form.elements.length);
+//console.log(form.action);
+
+			//------------------- check input values
+			var _url = form.action;
+			var res = true;
+			for( var n = 0; n < form.elements.length; n++){
+				var _element = form.elements[n];
+				
+				//if( _element.type === "text" ){
+					
+					if( _element.className.indexOf("require-form-element") !== -1 ){
+	//console.log( _element.value );
+							if( _element.value.length === 0 ){
+								var res = false;
+	_vars["logMsg"] = "error, empty required input field <b>'" + _element.name +"'</b>";
+	func.logAlert( _vars["logMsg"], "error");
+								break;
+							}
+					}
+					
+					if( _element.value.length > 0 ){
+						_url += "&"+ _element.name + "=" + _element.value;
+					}
+					
+				//}
+				
+			}//next
+//console.log( _url );
+			
+			if(res){
+				webApp.player.urlManager( _url );
+			}
+			
+		};//end event submit
 
 //---------------------------- move input range
 		$("#page-range").on("input", function(event){
@@ -482,57 +597,45 @@ if( target.className.indexOf("no-block-link") === -1){
 				if( target.tagName === "A"){
 
 //------------------------------- close, toggle buttons
-					if ( target.href.indexOf("#close") !== -1 ||
-							 target.href.indexOf("#toggle") !== -1
-						){
+					if( target.getAttribute("data-toggle") ){
+//console.log( target.getAttribute("data-toggle"), target.getAttribute("data-toggle").length );
 						var id = $( target ).data("toggle");
-	//console.log( id );
-							if( id === "#field-tracklist-url"){
-								$( id ).toggleClass("uk-hidden");
-								return;
-							}
-
-						$( id ).slideToggle( _vars.duration , function(e){
-	//console.log(arguments);
-							if( id === "#block-tags"){// reset tags select
-								webApp.db.vars["queryRes"] = [];
-								webApp.vars["GET"]["q"] = "reset_tags_select"; 
-								_urlManager();
-							}
-						});
+//console.log( id );
+						if ( target.href.indexOf("?q=close") !== -1 ||
+								 target.href.indexOf("?q=toggle") !== -1
+							){
+								_toggleBlock( id );
+						}
 					}
 
 //------------------------------- get modal window
-					if ( target.href.indexOf("edit-node") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+					if ( target.href.indexOf("q=edit-node") !== -1){
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager( target.href );
 					}
-					if ( target.href.indexOf("#close-modal") !== -1){
-						var id = $( target ).data("toggle");
-						_toggleModal( id );
-					}
+					// //if ( target.href.indexOf("#close-modal") !== -1){
+					// if ( target.href.indexOf("?q=close-modal") !== -1){
+						// var id = $( target ).data("toggle");
+						// _toggleModal( id );
+					// }
 
 //------------------------------- get tag list
-//#?q=get-tag-list&vid=2				
+//?q=get-tag-list&vid=2				
 					if ( target.href.indexOf("get-tag-list") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+						//webApp.vars["GET"] = func.parseGetParams( target.href );
+						webApp.app.urlManager( target.href );
 					}
 				
 //------------------------------- get node tags
-//#?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
+//?q=get-nodes-by-tag&vid=2&tid=110&group_name=music_styles
 					if ( target.href.indexOf("get-nodes-by-tag") !== -1){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.vars["GET"]["tag_name"] = $(target).text();
-						webApp.app.urlManager();
+						webApp.app.urlManager( target.href+"&tag_name="+$(target).text() );
 					}
 					
 //------------------------------- player, tracklist actions
-					if ( target.href.indexOf("q=load-tracklist") !== -1 ||
-							target.href.indexOf("q=get-tracklist-url") !== -1
-					){
-						webApp.vars["GET"] = func.parseGetParams( target.href );
-						webApp.app.urlManager();
+					if ( target.href.indexOf("q=get-tracklist-url") !== -1 ||
+							target.href.indexOf("q=load-tracklist") !== -1 ){
+						webApp.player.urlManager( target.href );
 					}
 					
 					if ( target.href.indexOf("q=load-track&") !== -1 ||
@@ -542,13 +645,31 @@ if( target.className.indexOf("no-block-link") === -1){
 										target.href.indexOf("remove-track") !== -1 ||
 											target.href.indexOf("edit-track") !== -1
 					){
+//console.log("TEST1");						
 						if( webApp.player.vars["trackList"].length > 0){
-							webApp.vars["GET"] = func.parseGetParams( target.href );
-							webApp.app.urlManager();
+							webApp.player.urlManager( target.href );
 						} else {
-webApp.vars["logMsg"] = "warning, not load media track list ...";
+webApp.vars["logMsg"] = "warning, empty media track list ...";
 func.logAlert(webApp.vars["logMsg"], "warning");
 						}
+					}
+
+//------------------------------- File system actions
+					if ( target.href.indexOf("q=get-folder") !== -1 ||
+							target.href.indexOf("q=define-location") !== -1 ||
+							target.href.indexOf("q=level-up") !== -1 ||
+							target.href.indexOf("q=check-all") !== -1 ||
+							target.href.indexOf("q=clear-all") !== -1 ||
+							target.href.indexOf("q=rename-file") !== -1 ||
+							target.href.indexOf("q=delete-file") !== -1 ||
+							target.href.indexOf("q=add-track") !== -1
+					){
+						var url = target.href;
+						if( target.href.indexOf("q=get-folder") !== -1 ) {
+//console.log("TEST2", target.getAttribute("href") );
+							url = target.getAttribute("href");//without url decode, without replacing the space charaster %20
+						}
+						webApp.fileManager.urlManager( url );
 					}
 
 				}//end event
@@ -559,52 +680,65 @@ func.logAlert(webApp.vars["logMsg"], "warning");
 	}//end _defineEvents()
 
 
-	function _urlManager( target ){
-//console.log(target);
+	function _urlManager( url ){
+//console.log(url);
+		// if( url.indexOf("#") !== -1){
+			// url = url.replace("#", "");
+		// }
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+
+		if( webApp.vars["GET"]["num_page"] && webApp.vars["GET"]["num_page"].length > 0){
+			webApp.db.vars["numberPage"] = webApp.vars["GET"]["num_page"];
+		}
+		
+		if( webApp.vars["GET"]["dir"] && webApp.vars["GET"]["dir"].length > 0){
+			webApp.fileManager.vars["aliasLocation"] = webApp.vars["GET"]["dir"];
+			webApp.fileManager.vars["fsPath"] = webApp.vars["GET"]["dir"];
+		}
 		
 		switch( webApp.vars["GET"]["q"] ) {
 			
-			case "get_data":
-				webApp.db.getData(function(res){
-			//console.log(arguments);
-			//console.log(window.location);	
+			// case "get_data":
+				// webApp.db.getData(function(res){
+			// //console.log(arguments);
+			// //console.log(window.location);	
 			
-//clear block
-//setTimeout(function(){
-					if( webApp["vars"]["waitWindow"] ){
-						webApp["vars"]["waitWindow"].style.display="none";
-					}		
-//}, 1000*3);
+// //clear block
+// //setTimeout(function(){
+					// if( webApp["vars"]["waitWindow"] ){
+						// webApp["vars"]["waitWindow"].style.display="none";
+					// }		
+// //}, 1000*3);
 			
-					if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
-							var parse_url = window.location.search; 
-							if( parse_url.length > 0 ){
-								webApp.vars["GET"] = func.parseGetParams(); 
-								_urlManager();
-							} else {
-								if( webApp.vars["init_url"] ){
-									//parse_url = webApp.vars["init_url"].substring(2);
-									parse_url = webApp.vars["init_url"];
-						//console.log(parse_url);
-								}
-								webApp.vars["GET"] = func.parseGetParams( parse_url ); 
-								_urlManager();
-								_defineEvents();
-							}
-					}
+					// if( webApp.db.vars["nodes"] && webApp.db.vars["nodes"].length > 0){
+							// var parse_url = window.location.search; 
+							// if( parse_url.length > 0 ){
+								// webApp.vars["GET"] = func.parseGetParams(); 
+								// _urlManager();
+							// } else {
+								// if( webApp.vars["init_url"] ){
+									// //parse_url = webApp.vars["init_url"].substring(2);
+									// parse_url = webApp.vars["init_url"];
+						// //console.log(parse_url);
+								// }
+								// webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+								// _urlManager();
+								// _defineEvents();
+							// }
+					// }
 
-				});
-			break;
+				// });
+			// break;
 			
-			case "list_nodes":
-console.log("-- start build page --");
-				webApp.draw.buildPage();
-console.log("-- end build page --");
-			break;
+			// case "list_nodes":
+// console.log("-- start build page --");
+				// webApp.draw.buildPage();
+// console.log("-- end build page --");
+			// break;
 			
 //?q=edit-node&nid={{nid}}
 			case "edit-node":
-				_toggleModal( "#modal-edit-node" );
+				_toggleBlock( "#modal-edit-node" );
 /*
 			if( $( target ).attr("href").indexOf("&") !== -1 ){
 				var arr = $( e.target ).attr("href").split("&");
@@ -620,7 +754,7 @@ console.log("-- end build page --");
 */			
 			var form = document.forms["form_node"];
 //console.log(form);
-console.log(form.elements);
+//console.log(form.elements);
 				form.elements.id.value = webApp.vars["GET"]["nid"];
 			break;
 			
@@ -695,88 +829,6 @@ func.logAlert( webApp.vars["logMsg"], "success");
 					}//end callback
 				});
 				
-			break;
-			
-//-------------------------------------------- PLAYLIST
-			case "load-tracklist":
-				//var _nid = webApp.vars["GET"]["nid"];
-				
-				if( !webApp.vars["GET"]["url"] || 
-						webApp.vars["GET"]["url"].length === 0){
-					//webApp.vars["GET"]["url"] = "/music/0_playlists/Korpiklaani.json";
-					//_toggleModal( "#modal-edit-node" );
-					return false;
-				}
-				
-				webApp.player.loadTrackList({
-					"trackListUrl": webApp.vars["GET"]["url"]
-				})
-				.then(
-					function( data ){
-//console.log( "-- THEN, promise resolve" );
-//console.log(data);
-						webApp.player.formTrackList(data);
-					},
-					function( error ){
-console.log( "-- THEN, promise reject, ", error );
-//console.log(arguments);					
-					}
-				);
-			break;
-			
-			case "get-tracklist-url":
-//console.log( $("#field-tracklist-url input").val() );			
-				$("#field-tracklist-url").addClass("uk-hidden");
-				webApp.vars["GET"]["url"] = $("#field-tracklist-url input").val();
-				webApp.vars["GET"]["q"] = "load-tracklist";
-				_urlManager();
-			break;
-
-			case "clear-tracklist":
-				webApp.player.vars["numTrack"] = 0;
-				webApp.player.vars["trackList"] = [];
-				webApp.player.vars["trackListTitle"] = webApp.player.vars["trackListName"];
-				webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
-			break;
-
-//insert-track
-
-			case "stop-play":
-			break;
-
-			case "load-track":
-				webApp.player.loadTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
-			break;
-
-			case "prev-track":
-				webApp.player.prevTrack();
-			break;
-			
-			case "next-track":
-				webApp.player.nextTrack();
-			break;
-			
-
-			//case "check-all":
-				//_draw_checkAll();
-			//break;
-			
-			//case "clear-all":
-				//_draw_clearAll();
-			//break;
-			
-			case "remove-track":
-				webApp.player.removeTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
-			break;
-
-			case "edit-track":
-				webApp.player.editTrack({
-					"trackNum": webApp.vars["GET"]["num"]
-				});
 			break;
 			
 //--------------------------------------------
@@ -971,22 +1023,8 @@ console.log( webApp.vars["logMsg"] );
 		return nodes;
 	}//end _getNodesByTag()
 
-	function _formHtmlTrackList(){
 
-		if( webApp.player.vars["trackList"].length > 0 ){
-			var html = webApp.draw.wrapData({
-				"data": webApp.player.vars["trackList"], 
-				"templateID": "trackList",
-				"templateListItemID": "trackListItem"
-			});
-		} else {
-			var html = webApp.draw.vars.templates["trackList"].replace("{{list}}", "");
-		}
-//console.log( html );
-		html = html.replace("{{tracklist_title}}", webApp.player.vars["trackListTitle"]);
-		
-		return html;
-	}//_formHtmlTrackList()
+
 
 
 	function _changePage( pageNumValue){
@@ -1041,33 +1079,65 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 		}
 	}//end _toggleMenu()
 
-	function _toggleModal( id ){
-		$modalWindow = $(id);
-		if( $modalWindow.hasClass("uk-open") ){
-			$modalWindow.hide( _vars.duration );
-			//$modalWindow.slideUp( _vars.duration, function () {
-			//$modalWindow.fadeOut( 600, function () {
-	//console.log("-- end of hide....");				
-			//});
-			$modalWindow.removeClass("uk-open");
+	// function _toggleModal( id ){
+		// $modalWindow = $(id);
+		// if( $modalWindow.hasClass("uk-open") ){
+			// $modalWindow.hide( _vars.duration );
+			// //$modalWindow.slideUp( _vars.duration, function () {
+			// //$modalWindow.fadeOut( 600, function () {
+	// //console.log("-- end of hide....");				
+			// //});
+			// $modalWindow.removeClass("uk-open");
+		// } else {
+			// //$modalWindow.show("fast", function () {
+			// $modalWindow.slideDown( _vars.duration, function () {
+			// //$modalWindow.fadeIn( 600, function () {
+	// //console.log("-- end of show....");				
+			// });
+			// $modalWindow.addClass("uk-open");
+		// }
+	// }//end _toggleModal()
+	
+	// function _closeModal( id ){
+		// $m = $(id);
+		// if( $m.hasClass("uk-open") ){
+			// $m.hide( _vars.duration );
+			// $m.removeClass("uk-open");
+		// }
+	// }//end _toggleModal()
+	
+
+	function _toggleBlock( id ){
+//console.log( id );
+		
+		if( $( id ).hasClass("uk-hidden") ){
+			//$( id ).toggleClass("uk-hidden");
+			$( id ).removeClass("uk-hidden");
+			$( id ).hide();
+			//return;
+		}
+
+		if( $( id ).hasClass("uk-open") ){
+			$( id ).removeClass("uk-open");
+			//$( id ).hide( _vars.duration );
 		} else {
-			//$modalWindow.show("fast", function () {
-			$modalWindow.slideDown( _vars.duration, function () {
-			//$modalWindow.fadeIn( 600, function () {
-	//console.log("-- end of show....");				
-			});
-			$modalWindow.addClass("uk-open");
-		}
-	}//end _toggleModal()
-	
-	function _closeModal( id ){
-		$m = $(id);
-		if( $m.hasClass("uk-open") ){
-			$m.hide( _vars.duration );
-			$m.removeClass("uk-open");
-		}
-	}//end _toggleModal()
-	
+			$( id ).addClass("uk-open");
+		};
+
+		$( id ).slideToggle( _vars.duration , function(e){
+//console.log(arguments);
+			// if( id === "#block-tags"){// reset tags select
+				// webApp.db.vars["queryRes"] = [];
+				// _urlManager("?q=reset_tags_select");
+			// }
+			if( id === "#log"){
+				webApp.vars["logPanel"].innerHTML = "";
+			}
+		});
+		
+	}//end _toggleBlock()
+
+
 
 	function _imagesLoadEventHandler(){
 	//console.log( webApp.vars.$blockList );
@@ -1106,16 +1176,15 @@ console.log( webApp.vars["logMsg"], num, webApp.db.vars["numPages"]);
 			//return _init(opt); 
 		//},
 		defineEvents: _defineEvents,
-		urlManager:	function(){ 
-			return _urlManager(); 
+		urlManager:	function(url){ 
+			return _urlManager(url); 
 		},
 		//formHtmlPager : _formHtmlPager,
 		formHtmlNodeList : _formHtmlNodeList,
 		formHtmlTagGroups : _formHtmlTagGroups,
 		formHtmlTagList : _formHtmlTagList,
-		formHtmlTrackList : _formHtmlTrackList,
-		imagesLoadEventHandler: _imagesLoadEventHandler
-		//setToggleContentEvents: _setToggleContentEvents
+		imagesLoadEventHandler: _imagesLoadEventHandler,
+		toggleBlock: _toggleBlock
 		//buildBlock:	function(opt){ 
 			//return _buildBlock(opt); 
 		//},

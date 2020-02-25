@@ -68,6 +68,7 @@ function initApplication(){
 	func.logAlert( _vars.logMsg, "info");
 
 //===============================
+/*
 	_vars["logPanel"] = func.getById("log");
 	func.addEvent( 
 		func.getById("btn-clear-log"), 
@@ -84,7 +85,7 @@ function initApplication(){
 			_vars.logPanel.innerHTML = "";
 		}
 	);//end event
-
+*/
 
 /*
 //------------------------ Image load error
@@ -154,5 +155,24 @@ function _initPage(){
 		return false;
 	});//end event
 	//---------------------
+
+		// document.forms["formSearch"].onsubmit = function(event){
+			
+			// event = event || window.event;
+			// var target = event.target || event.srcElement;
+			
+			// if (event.preventDefault) { 
+				// event.preventDefault();
+			// } else {
+				// event.returnValue = false;
+			// }
+// console.log("Submit form", event, this);
+			// var form = document.forms["formSearch"]
+// console.log(form);
+// //console.log(form.elements.targetField, form.elements.targetField.length);
+// //console.log(form.elements.keyword.value);
+
+		// };//end event
+//console.log( document.forms["formSearch"] );
 	
 }//_initPage()

@@ -26,6 +26,7 @@
 -->
 
 	<script src="js/functions.js"></script>
+	<script src="js/main.js"></script>
 <!--	
 <script src="js/iDBmodule.js"></script>
 <script src="js/webSQLmodule.js"></script>
@@ -36,8 +37,8 @@
 	<script src="js/webapp_draw.js"></script>
 	<script src="js/webapp_db.js"></script>
 	<script src="js/webapp_player.js"></script>
-	<script src="js/webapp.js"></script>	<script src="js/main.js"></script>
-</head>
+	<script src="js/webapp_fm.js"></script>
+	<script src="js/webapp.js"></script></head>
 
 <body>
 
@@ -110,21 +111,23 @@
 
 	<div class="log-panel">
 		<div class="panel-body row">
-			<div id="log" class="uk-float-left"></div>
 			<div class="uk-float-right">
-				<a id="btn-clear-log" href="#" title="Clear log" class=""><span class="icon-remove"></span></a>
+				<a id="btn-clear-log" href="?q=close" data-toggle="#log" title="log panel" class="icon-remove"></a>
 			</div>
+			<div id="log" class=""></div>
 		</div>
 	</div>
 
 <!--  MODAL dialog -->	
+
+<!-- EDIT playlist (group tracklists with images and external urls) -->
 <div id="modal-edit-node" class="uk-modal">
 	<div class="uk-modal-dialog">
 	
 		<div class="">
 			<b class="uk-padding-small">Edit playlist</b>
 			<div class="uk-float-right">
-				<a data-toggle="#modal-edit-node" href="#close-modal" class="uk-button uk-button-small uk-button-danger">x</a>
+				<a data-toggle="#modal-edit-node" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>
 			</div>
 		</div>
 <form name="form_node" id="node-edit-form" action="?q=save-node" method="GET">
@@ -147,18 +150,61 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 		
 		<div class="uk-modal-footer">
 			<div class="uk-float-left">
-				<button type="reset" class="uk-button uk-button-small uk-button-danger">reset field values</button>
-				<a data-toggle="#modal-edit-node" href="#modal" class="uk-button uk-button-default uk-button-small">cancel edit</a>
+				<button type="reset" class="no-block-link uk-button uk-button-small uk-button-danger">reset field values</button>
+				<a data-toggle="#modal-edit-node" href="?q=close" class="uk-button uk-button-default uk-button-small">cancel edit</a>
 			</div>
 			<div class="uk-float-right">
-				<button type="submit" class="uk-button uk-button-primary uk-button-small">save</button>
-				<button class="uk-button uk-button-danger uk-button-small" type="button">remove node</button>
+				<button type="submit" class="no-block-link uk-button uk-button-primary uk-button-small">save</button>
+				<button class="no-block-link uk-button uk-button-danger uk-button-small" type="button">remove node</button>
 			</div>
 		</div>
 </form>
 		
 	</div>
 </div>
+
+<!-- INSERT TRACK to track list -->
+<div id="modal-insert-track" class="uk-modal">
+	<div class="uk-modal-dialog">
+	
+		<div class="">
+			<b class="uk-padding-small">Change  track parameters</b>
+			<div class="uk-float-right">
+				<a data-toggle="#modal-insert-track" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>
+			</div>
+		</div>
+<form name="form_insert_track" id="insert-track-form" action="?q=insert-track" method="GET">
+		
+		<div class="uk-modal-body">
+
+			<label class="label-title">Title: </label>
+			<input type="text" name="input_title" value="" class="uk-input"/>
+
+			<label class="label-artist">Artist: </label>
+			<input type="text" name="input_artist" value="" class="uk-input"/>
+
+			<label class="label-source-url">*Source url: </label>
+			<input type="text" name="input_source_url" value="/music/" class="uk-input require-form-element"/>
+<!--			
+			<label class="label-source-url">Select local media file: </label>
+			<input type="file" name="select_local_media" class="no-block-link">
+-->			
+			<input type="hidden" name="number" value="" class=""/>
+		</div>
+		
+		<div class="uk-modal-footer">
+			<div class="uk-float-left">
+				<button type="reset" class="no-block-link uk-button uk-button-small uk-button-danger">reset field values</button>
+			</div>
+			<div class="uk-float-right">
+				<button type="submit" class="no-block-link uk-button uk-button-primary uk-button-small">change</button>
+			</div>
+		</div>
+</form>
+	</div>
+</div>
+
+
 
 <!--  progress bar -->	
 <div class="dm-overlay" id="win1">
@@ -185,7 +231,7 @@ id:<input type="text" name="id" value="00" size="3" readonly />
 
 						</div>
 					</div>
-					<a data-toggle="#win1" href="#close" title="" class="uk-button uk-button-primary uk-margin-top">ok</a>
+					<a data-toggle="#win1" href="?q=close" title="" class="uk-button uk-button-primary uk-margin-top">ok</a>
 
 			</div>
 		</div>

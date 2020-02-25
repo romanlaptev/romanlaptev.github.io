@@ -5,12 +5,41 @@ webApp.db()
 webApp.draw()
 
 	+- module nodeList (node_list.js)?
-	- module mediaPlayer (player.js)
+	*- module mediaPlayer (player.js)
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
-	- module fileManager (file_manager.js)
+	*- module fileManager (file_manager.js)
+
+=========================
+сделать возможность обращения к функциям приложения через GET-параметры
+http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/
+*app.html?q=load-tracklist&url=/music/0_playlists/metallica.json
+*app.html?dir=/mnt/d2/music
+*app.html?dir=/home/www/music
+app.html?alias=music
+app.html?alias=video
+как еще менять алиас ? смена алиаса во время работы приложения..?
+
+*----------- ИСПРАВИТЬ
+наличие заполненной строки window.location.search
+(?q=load-tracklist&url=/music/0_playlists/metallica.json)
+вызывает неправильную работу закрытия блоков с помощью значения #close
+срабатывают сразу 2 события
+TEST3 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=load-tracklist&url=/music/0_playlists/metallica.json#close - закрытие #block-file-manager
+
+TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=load-tracklist&url=/music/0_playlists/metallica.json#close - повторная загрузка треклиста
+
++почему при закрытии блока стало добавляться #close?
+
+вместо # в ссылках использовать ?q=action
+#close --> ?q=close
+#toggle -- ?q=toggle
+#close-modal -- ?q=close-modal
+--------------------
+- необходимо распределить шаблоны по модулям, 
+для этого потребуется изменить функцию draw.buildBlock - передаются не имена шаблонов, а сами строки-шаблоны...
 
 --------------------------- PLAYER, mediaPlayer
-- сделать возможность формировать составные плейлисты
+- сделать возможность *формировать составные плейлисты
 и сохранять их (или прямо на диск, или в локальный кэш)
 
 - где сохранять и в каком формате сформированные списки (как треклист или как плейлист с изображением, описанием, прикрепленными треклистами)?
@@ -18,12 +47,43 @@ webApp.draw()
 - как организовать иерархию?
 плейлист (?) может содержать ссылки на несколько треклистов
 
-- нужно добавлять произвольный трек в треклист
+*- нужно добавлять произвольный трек в треклист
++указать ссылку или выбрать локальный файл
++document.forms.form_insert_track.elements.select_local_media.files
+копировать путь файла средствами файлового менеджера в буфер и вставлять в поле sourcе_url
 
 *- нужно добавлять треки из другого плейлиста( не очищать треклист при добавлении новых треков)
 
 - сделать чтение информации из MP3-тегов
+
+-----------------------------------
 - разработать шаблон для формата треклиста
+- сделать возможным загрузку треклистов в др. форматах (.m3u, xml)
+#EXTM3U
+#EXTINF:227,Clawfinger - Nigger
+01-Deaf Dumb Blind 1993\01-Nigger.mp3
+-----
+			{
+				title:"Cro Magnon Man",
+				artist:"The Stark Palace",
+				mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+				oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+				poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
+			},
+			{
+				title:"Finding Nemo Teaser",
+				artist:"Pixar",
+				m4v: "http://www.jplayer.org/video/m4v/Finding_Nemo_Teaser.m4v",
+				ogv: "http://www.jplayer.org/video/ogv/Finding_Nemo_Teaser.ogv",
+				webmv: "http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm",
+				poster: "http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png"
+			},
+			
+*- как совместить видео и аудио треки в одном плейлисте?
++- при добавлении в плеер трека в формате видео тег <audio> меняется на <video> (toggle)
+
+- как сделать добавление ссылки на видеофайл через FManager, если используется веб-алиас /music (а нужен /video)
+- сделать изменение порядка треков в треклисте перетаскиванием
 
 ---------------------------
 - сделать тест браузера на доступные аудио-форматы 
@@ -42,7 +102,7 @@ width слайдера / кол-во страниц = ширина одного 
 *- ИСПРАВИТЬ, если у ноды нет дополнительных картинок, то блок images не выводится
 +и убрать стили высоты и фона
 
-- сделать работу приложения с ФС через файловое АПИ node.js
+- сделать работу приложения с ФС через файловое АПИ nodejs
 ---------------------------
 - сделать анимацию для offcanvas
 - сделать прелоад изображений
@@ -74,10 +134,15 @@ preloadImages(
 -------- localStorage
 - сделать импорт/экспорт nodes в/из локальное хранилище
 
--------- fileManager
-- при загрузке получать список плейлистов из /music/0_playlist
+======================================================= fileManager, API
++- при загрузке получать список плейлистов из /music/0_playlist
 для сравнения с количеством node
 
+- сделать добавление медиа треков в треклист из выбранной папки
+
+- сделать варианты API-скриптов на java, nodejs
+
+- в файловой панели выводить размер файла, права доступа
 
 -------------- верстка, шаблоны
 *- сделать верстку элемента из блока blok-nodelist
