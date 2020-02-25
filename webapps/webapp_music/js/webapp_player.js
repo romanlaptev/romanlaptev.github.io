@@ -712,7 +712,7 @@ func.logAlert( _vars["logMsg"], "error" );
 		
 console.log( numTrack, _vars["trackList"][numTrack] );
 
-		$("#insert-track-form").attr("action", "?q=update-track");
+		$("#insert-track-form").attr("action", "?q=update-track");//change form action
 		
 		document.forms["form_insert_track"].elements["input_title"].value = _vars["trackList"][numTrack]["title"];
 		document.forms["form_insert_track"].elements["input_artist"].value = _vars["trackList"][numTrack]["artist"];
@@ -804,7 +804,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 			p["artist"] = webApp.fileManager.getLastDirName( p["source_url"] );
 		}
 console.log(p);
-/*
+
 		var _trackFormat = _vars["trackFormat"];
 		var _trackObj = {};
 		for( var key in _trackFormat ){
@@ -817,10 +817,11 @@ console.log(p);
 			_trackObj[key] = _track[key];
 		}//next
 //console.log( _track );
-	
-		_vars["trackList"].push( _trackObj );
+
+		var _num = _track.number - 1;
+		_vars["trackList"][ _num ] = _trackObj;
 		
-		//----------------- add track order number 
+		//----------------- update track order number 
 		for( var n = 0; n < _vars["trackList"].length; n++){
 			_vars["trackList"][n]["number"] = n+1;
 		}//next
@@ -832,13 +833,12 @@ console.log(p);
 			$("#block-player").show();
 		}
 
-		_vars["numTrack"] = _vars["trackList"].length-1;
 		_setActiveTrack({
 			num : _vars["numTrack"]
 		});
 		
+		$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
 		webApp.app.toggleBlock( "#modal-insert-track" );
-*/		
 	}//end _updateTrack()
 
 

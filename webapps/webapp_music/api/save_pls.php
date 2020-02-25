@@ -44,10 +44,10 @@ if (!isset($_REQUEST['playlist']) || empty($_REQUEST['playlist'])){
 		if (is_writable( $dir )){
 			$num_bytes = file_put_contents ($filename, $json_string);
 			if ($num_bytes > 0){
-				$logMsg["message"] .= "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+				$logMsg["message"] .= "Write ".$num_bytes." bytes  in ".$filename;
 			} else {
-				$logMsg["message"] .= getcwd();
-				$logMsg["message"] .= "<p>Write error in ".$filename."</p>";
+				//$logMsg["message"] .= getcwd();
+				$logMsg["message"] .= "Write error in ".$filename;
 			}
 		} else {
 $logMsg["eventType"] = "error";
@@ -65,16 +65,25 @@ $logMsg["message"] = "Cannot write $dir, access rights: $perms";
 			$logMsg["eventType"] = "success";
 
 			$dir = dirname( $filename );
+			if ( !is_dir($dir)) {
+				$logMsg["eventType"] = "error";
+				$logMsg["message"] = "fail, <b>".$dir."</b> not a directory...";
+				$jsonStr = json_encode($logMsg);
+				echo $jsonStr;
+				exit ();
+			}
+			
 			$perms = substr(sprintf('%o', fileperms( $dir ) ), -4);
 			if (is_writable( $dir )){
 
 				$num_bytes = file_put_contents ($filename, $json_string);
 				if ($num_bytes > 0){
-	$logMsg["message"] = "<p>Write ".$num_bytes." bytes  in ".$filename . "</p>";
+	$logMsg["message"] = "Write ".$num_bytes." bytes  in ".$filename ;
 				} else {
-	$logMsg["eventType"] = "error";
-	$logMsg["message"] = getcwd();
-	$logMsg["message"] = "<p>Write error in ".$filename."</p>";
+					$logMsg["eventType"] = "error";
+					$logMsg["message"] = "Write error in ".$filename;
+					$perms = substr(sprintf('%o', fileperms( $filename ) ), -4);
+					$logMsg["message"] .= ", access rights: $perms";
 				}
 
 			} else {

@@ -40,7 +40,7 @@ if (is_dir($dir)) {
 	
 } else {
 	$logMsg["eventType"] = "error";
-	$logMsg["message"] = "fail, <b>".$dir."</b> is not directory...";
+	$logMsg["message"] = "fail, <b>".$dir."</b> not a directory...";
 	$jsonStr = json_encode($logMsg);
 	echo $jsonStr;
 }
