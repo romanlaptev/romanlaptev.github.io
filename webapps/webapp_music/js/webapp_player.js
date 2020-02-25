@@ -803,7 +803,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		if( !p["artist"]){
 			p["artist"] = webApp.fileManager.getLastDirName( p["source_url"] );
 		}
-console.log(p);
+//console.log(p);
 
 		var _trackFormat = _vars["trackFormat"];
 		var _trackObj = {};

@@ -460,7 +460,7 @@ if( form.elements.targetField.length > 0){
 			for( var n = 0; n < form.elements.length; n++){
 				var _element = form.elements[n];
 				
-				if( _element.type === "text" ){
+				//if( _element.type === "text" ){
 					
 					if( _element.className.indexOf("require-form-element") !== -1 ){
 	//console.log( _element.value );
@@ -476,7 +476,7 @@ if( form.elements.targetField.length > 0){
 						_url += "&"+ _element.name + "=" + _element.value;
 					}
 					
-				}
+				//}
 				
 			}//next
 //console.log( _url );

@@ -261,6 +261,7 @@ for( var n = 0; n < data["files"].length; n++){
 //console.log( "-- THEN, promise resolved", html );
 
 				_dataObj = {
+					"web_alias" : _vars["alias"],
 					"location" : _vars["aliasLocation"],
 					"buttons_fs_action" : webApp.draw.vars.templates["buttonsFSaction"],
 					"btn_change_level" : webApp.draw.vars.templates["btnChangeLevel"],
@@ -353,14 +354,17 @@ console.log( "-- THEN, promise rejected", res );
 				if( !fsLocation || fsLocation.length === 0){
 					return false;
 				}
+				var webAlias = $("#input-web-alias").val();
 
 				//save old values
+				_alias = _vars["alias"];
 				_alias_loc = _vars["aliasLocation"];
 				_fs_path = _vars["fsPath"];
 				
 				//get new values
 				_vars["aliasLocation"] = fsLocation.trim();
 				_vars["fsPath"] = _vars["aliasLocation"];
+				_vars["alias"] = webAlias.trim();
 				
 				_formHtmlFileManager({
 					"postFunc" : function(html){
@@ -370,6 +374,7 @@ console.log( "-- THEN, promise rejected", res );
 							webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockFM"] );
 						} else {
 							//restore old values if access to the folder fails
+							_vars["alias"] = _alias;
 							_vars["aliasLocation"] = _alias_loc;
 							_vars["fsPath"] = _fs_path;
 						}

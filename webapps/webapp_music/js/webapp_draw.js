@@ -117,6 +117,8 @@ function _draw( opt ){
 	<input name="inp_location_path" id="input-location-path" value="{{location}}" type="text" class="uk-input w80">\
 	<a href="?q=define-location" class="btn btn-blue">Reload</a>\
 	<p>/mnt/d2/music; /home/www/music; d:/music</p>\
+	<b>web alias:</b><input name="inp_web_alias" id="input-web-alias" value="{{web_alias}}" type="text" class="uk-input w60">\
+	<p>/music; /www; /video....</p>\
 </div>\
 							<div class="wrapper">\
 {{buttons_fs_action}}\
