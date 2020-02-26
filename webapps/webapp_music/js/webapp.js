@@ -456,9 +456,9 @@ if( form.elements.targetField.length > 0){
 console.log( webApp.player.vars["GET"]);
 
 			//change form action for UPDATE track
-			//if( form.elements["number"] && form.elements["number"].value.length > 0){
-			var _action = webApp.player.vars["GET"]["q"];
-			if( _action === "edit-track" ){
+			if( form.elements["number"] && form.elements["number"].value.length > 0){
+			//var _action = webApp.player.vars["GET"]["q"];
+			//if( _action === "edit-track" ){
 				$("#insert-track-form").attr("action", "?q=update-track");
 			} else {
 				$("#insert-track-form").attr("action", "?q=insert-track");
