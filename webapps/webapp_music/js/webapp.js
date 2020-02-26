@@ -621,6 +621,8 @@ if( target.className.indexOf("no-block-link") === -1){
 								 target.href.indexOf("?q=toggle") !== -1
 							){
 								_toggleBlock( id );
+							//fix (clear last action in player, need for insert/edit track)
+							webApp.player.vars["GET"] = {};
 						}
 					}
 
