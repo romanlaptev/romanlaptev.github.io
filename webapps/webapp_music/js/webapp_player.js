@@ -18,6 +18,7 @@ function _player( opt ){
 		"numTrack": 0,
 		//"autoplay" : true//,
 		//"unSavedTrackList": false
+		"GET" : {},
 		
 		"mediaTypes" : [
 {"extension" : "wav", "testString" : 'audio/wav; codecs=1', support: false },
