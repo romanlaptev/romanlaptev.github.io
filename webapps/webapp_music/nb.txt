@@ -9,6 +9,11 @@ webApp.draw()
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
 	*- module fileManager (file_manager.js)
 
+----------- ИСПРАВИТЬ
+- ошибки воспроизведения аудио файлов из-за символов в имени файла
+- не воспроизводятся файлы из папки с именем, где присутствует знак "%"
+- не воспроизводятся файлы с именем, где присутствуют несколько точек
+
 =========================
 сделать возможность обращения к функциям приложения через GET-параметры
 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/

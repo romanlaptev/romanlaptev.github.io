@@ -90,7 +90,7 @@ if(err){
 				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
 				//func.logAlert( webApp.vars["logMsg"], "error");
 			//}//next
-webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
+webApp.vars["logMsg"] = "MediaError, <b>code:</b> : "+ err["code"];
 webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
 webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
@@ -712,7 +712,7 @@ func.logAlert( _vars["logMsg"], "error" );
 		
 console.log( numTrack, _vars["trackList"][numTrack] );
 
-		$("#insert-track-form").attr("action", "?q=update-track");//change form action
+		//$("#insert-track-form").attr("action", "?q=update-track");//change form action
 		
 		document.forms["form_insert_track"].elements["input_title"].value = _vars["trackList"][numTrack]["title"];
 		document.forms["form_insert_track"].elements["input_artist"].value = _vars["trackList"][numTrack]["artist"];
@@ -837,7 +837,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 			num : _vars["numTrack"]
 		});
 		
-		$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
+		//$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
 		webApp.app.toggleBlock( "#modal-insert-track" );
 	}//end _updateTrack()
 

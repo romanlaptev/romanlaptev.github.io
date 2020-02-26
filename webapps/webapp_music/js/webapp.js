@@ -452,10 +452,19 @@ if( form.elements.targetField.length > 0){
 			var form = document.forms["form_insert_track"]
 //console.log(form);
 //console.log(form.elements, form.elements.length);
-//console.log(form.action);
+console.log(form.elements["number"]);
 
+			//change form action for UPDATE track
+			if( form.elements["number"] && form.elements["number"].value.length > 0){
+				$("#insert-track-form").attr("action", "?q=update-track");
+			} else {
+				$("#insert-track-form").attr("action", "?q=insert-track");
+			}
+console.log(form.action);
+			
 			//------------------- check input values
 			var _url = form.action;
+
 			var res = true;
 			for( var n = 0; n < form.elements.length; n++){
 				var _element = form.elements[n];
@@ -484,6 +493,10 @@ if( form.elements.targetField.length > 0){
 			if(res){
 				webApp.player.urlManager( _url );
 			}
+			
+			//clear form input ( number edit track) 
+			document.forms["form_insert_track"].elements["number"].value = "";
+			//document.forms["form_insert_track"].reset();
 			
 		};//end event submit
 
