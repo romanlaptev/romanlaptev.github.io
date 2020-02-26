@@ -271,7 +271,7 @@ console.log( "-- THEN, promise reject, ", error );
 console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);			
 			break;
 		}//end switch
-
+		
 	}//end _urlManager()
 	
 
