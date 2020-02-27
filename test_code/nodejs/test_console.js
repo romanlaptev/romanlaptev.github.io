@@ -7,18 +7,29 @@ console.log( "dirname: " + __dirname );
 console.log( "filename: " + __filename );
 
 //------------------------- test module PATH
-// console.log("File name:" + _path.basename(__filename) );
-// console.log("Dir name:" + _path.dirname(__filename) );
-// console.log("Extension name:" + _path.extname(__filename) );
+console.log("File name:" + _path.basename(__filename) );
+console.log("Dir name:" + _path.dirname(__filename) );
+console.log("Extension name:" + _path.extname(__filename) );
 
-// console.log( _path.join( __dirname, "/server/", "index.html") );
-// console.log( _path.isAbsolute( __dirname ) );
-// console.log( _path.isAbsolute( "public/myProjects" ) );
+console.log( _path.join( __dirname, "/server/", "index.html") );
+console.log( _path.isAbsolute( __dirname ) );
+console.log( _path.isAbsolute( "public/myProjects" ) );
 
-//var pathParts = _path.parse( __dirname );
-//console.log( pathParts );
+var pathParts = _path.parse( __dirname );
+console.log( pathParts );
 
-// console.log( "System separator: " +_path.sep );
+console.log( "System separator: " +_path.sep );
+
+var _path1 = "/data/orandea/test/aaa";
+var _path2 = "/data/orandea/imp1/bbb";
+console.log("Relative path:" + _path.relative( _path1, _path2) );
+
+_path1 = "/foo/bar";
+_path2 = "./baz";
+console.log("Resolve path:" + _path.resolve( _path1, _path2) );
+
+_path1 = "C:\\temp\\\\foo\\bar\\..\\";
+console.log("Normalize path:" + _path.normalize( _path1 ) );
 
 
 //------------------------- test module FS
@@ -114,7 +125,13 @@ console.log( "ENV variables: ", process.env );
 console.log( "server path: ", process.execPath );
 console.log( "Node version: ", process.version );
 console.log( "Memory usage: ", process.memoryUsage() );
+console.log( "Process title: ", process.title );
+console.log( "Process PID: ", process.pid );
+console.log( "Process CWDirectory: ", process.cwd() );
 
+process.on("exit", function(code){
+	console.log("exit code: " + code);
+});
 
 //------------------------- test module UTILS
 console.log("===================================");
@@ -173,5 +190,8 @@ rl.on("line", function(line){
 	console.log('You typed %s', line);
 	if( line === ".exit"){
 		rl.close();
+	}
+	if( line === ".quit"){
+		process.exit(404);
 	}
 });
