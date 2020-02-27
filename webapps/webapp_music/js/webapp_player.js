@@ -634,7 +634,13 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		if( p.autoplay ){
 			var _canPlay = _setMediaPlayer( mediaSrc );
 			if( _canPlay){
-				$(_vars.$mediaplayer).attr("src", mediaSrc);
+				
+//https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/encodeuri
+//1.Yankee_doodle 99%.mp3;
+				var encoded = encodeURI(mediaSrc);
+				//console.log(encoded);
+
+				$(_vars.$mediaplayer).attr("src", encoded);
 				_vars.$mediaplayer.play();
 			} else {
 _vars["logMsg"] = "Cannot play media file "+ mediaSrc;
@@ -925,7 +931,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		var _canPlay = false;
 
 		var _fileType = webApp.fileManager.getFileType( filePath );
-//console.log( _fileType );	
+//console.log( _fileType );
 		for( var n =0; n < _vars["mediaTypes"].length; n++){
 			var _testString = _vars["mediaTypes"][n]["testString"];
 			var _ext = _vars["mediaTypes"][n]["extension"];

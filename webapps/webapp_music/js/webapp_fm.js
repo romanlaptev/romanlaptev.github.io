@@ -812,7 +812,9 @@ console.log( _vars.logMsg);
 		
 		var _fileName = _fsPath[ n1 ];
 		var _file = _fileName.split(".");
-		var _fileType = _file[1];
+//console.log(_file);
+		var _lastNum = _file.length -1;
+		var _fileType = _file[ _lastNum ];
 		
 		return _fileType;
 	}//end _getFileType()
