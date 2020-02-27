@@ -377,9 +377,16 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 
 	
 	function _formTrackList(tracks){
-		//----------------- add track order number 
+		
 		for( var n = 0; n < tracks.length; n++){
-			tracks[n]["number"] = n+1;
+			tracks[n]["number"] = n+1;// add track order number 
+			
+			//convert media URL: "mp3" to "source_url"
+			if( "mp3" in tracks[n]){
+				tracks[n]["source_url"] = tracks[n]["mp3"];
+				delete tracks[n]["mp3"];
+			}
+			
 		}//next
 		
 		if( _vars["trackList"].length > 0){

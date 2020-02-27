@@ -1328,7 +1328,28 @@ files_html += vars["templates"]["file_tpl"]
 		//var url = "pls/" + filename;
 		$.getJSON( url )
 			.done( function( json ) {
-				
+console.log(json);
+
+//---------------------- convert media URL: "source_url" to "mp3", "oga", "wav"
+for( var n = 0; n < json.length; n++){
+	var _track = json[n];
+	if( "source_url" in _track ){
+		if ( _track["source_url"].toLowerCase().lastIndexOf(".mp3") > 0){
+			_track["mp3"] = _track["source_url"];
+		}
+		
+		if ( _track["source_url"].toLowerCase().lastIndexOf(".ogg") > 0){
+			_track["ogg"] = _track["source_url"];
+		}
+		
+		if ( _track["source_url"].toLowerCase().lastIndexOf(".wav") > 0){
+			_track["wav"] = _track["source_url"];
+		}
+		delete _track["source_url"];
+	}
+}//next
+//----------------------
+
 			myPlaylist.setPlaylist( json );
 			changePlaylistItem( url );
 			
@@ -1363,8 +1384,30 @@ console.log( "error: " + error );
 					playlist[n]["ogg"].indexOf( vars["website"] ) !== -1){
 				playlist[n]["ogg"] = playlist[n]["ogg"].replace( vars["website"], "");
 			}
-		}
+		}//next
 //console.log( filename, playlist );
+
+//---------------------- convert media URL: "mp3", "oga", "wav" to "source_url"
+		for( var n = 0; n < playlist.length; n++){
+			var _track = playlist[n];
+			
+			if( "mp3" in _track ){
+				_track["source_url"] = _track["mp3"];
+				delete _track["mp3"];
+			}
+				
+			if( "ogg" in _track ){
+				_track["source_url"] = _track["ogg"];
+				delete _track["ogg"];
+			}
+			
+			if( "wav" in _track ){
+				_track["source_url"] = _track["wav"];
+				delete _track["wav"];
+			}
+			
+		}//next
+//----------------------
 
 		var param = {
 			"filename": filename, 
