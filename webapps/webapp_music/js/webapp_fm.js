@@ -9,8 +9,9 @@ function _fileManager( opt ){
 		
 		"alias" : "/music",
 		//"aliasLocation" : "/home/www/music",
+		"aliasLocation" : "/mnt/d2/music",
 		//"aliasLocation" : "d:/temp/music",
-		"aliasLocation" : "./",
+		//"aliasLocation" : "./",
 		"fsPath" : ""
 	};//end _vars
 

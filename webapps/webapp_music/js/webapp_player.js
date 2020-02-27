@@ -387,6 +387,9 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 				delete tracks[n]["mp3"];
 			}
 			
+			//filter "source_url", replace %20 to space
+			tracks[n]["source_url"] = tracks[n]["source_url"].replace(/%20/g, " ");
+			
 		}//next
 		
 		if( _vars["trackList"].length > 0){
@@ -637,10 +640,14 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 				
 //https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/encodeuri
 //1.Yankee_doodle 99%.mp3;
-				var encoded = encodeURI(mediaSrc);
-				//console.log(encoded);
+				var encoded = encodeURI (mediaSrc);
+				//encoded = encoded.replace(/%2520/g, "%20");
+				//var encoded = encodeURIComponent(mediaSrc);
+console.log(encoded);
 
 				$(_vars.$mediaplayer).attr("src", encoded);
+				
+				//$(_vars.$mediaplayer).attr("src", mediaSrc);
 				_vars.$mediaplayer.play();
 			} else {
 _vars["logMsg"] = "Cannot play media file "+ mediaSrc;
@@ -843,13 +850,13 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		_vars["unSavedTrackList"] = true;
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
-		if( !$("#block-player").is(":visible") ){
-			$("#block-player").show();
-		}
-
-		_setActiveTrack({
-			num : _vars["numTrack"]
-		});
+// 		if( !$("#block-player").is(":visible") ){
+// 			$("#block-player").show();
+// 		}
+// 
+// 		_setActiveTrack({
+// 			num : _vars["numTrack"]
+// 		});
 		
 		//$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
 		webApp.app.toggleBlock( "#modal-insert-track" );
