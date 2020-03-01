@@ -96,6 +96,12 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 позволит добавлять в треклист ссылки на потоковое видео, аудио других видеохостингов
 (открывать в ифрейме)
 
+---- EMBED AUDIO
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
+src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/5214471&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+</iframe>
+
+
 -----------------------------------
 - разработать шаблон для формата треклиста
 - сделать возможным загрузку треклистов в др. форматах (.m3u, xml)
