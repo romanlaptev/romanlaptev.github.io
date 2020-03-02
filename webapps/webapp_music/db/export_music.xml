@@ -183,6 +183,7 @@
 		<item>SKA-P</item>
 	</title>
 	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1022.34502/200x200?1583144009290"/>
 		<img src="/music/S/Ska-P/1995 - Ska-P/cover.jpg"/>
 		<img src="https://lh3.googleusercontent.com/kIH8vx9OcWI6_YhOMm-5r7r1j6Mq_W_KNzuOHGYg9m131NixVkYQTD9RE7CgqrJ-ytIPlv9HSJI=w300"/>
 	</images>
@@ -207,7 +208,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">31-Jul-2013 22:12:08</published>
-	<updated format="d-M-Y H:i:s">07-Feb-2020 17:18:06</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:13:55</updated>
 </node>
 
 <node type="playlist">
@@ -337,8 +338,8 @@
 		<item>T-Rex</item>
 	</title>
 	<images>
-		<img src="/music/T/T-Rex/Images/1972 - The Slider.jpg"/>
 		<img src="https://avatars.yandex.net/get-music-user-playlist/70586/9941293.1025.43952/200x200?1581165440760"/>
+		<img src="/music/T/T-Rex/Images/1972 - The Slider.jpg"/>
 	</images>
 
 	
@@ -349,7 +350,7 @@
 	</related_links>
 
 	<node_tags>
-		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
+		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
 		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
 		<item vid="2" tid="151" group_name="music_styles">рок-н-ролл</item>
@@ -361,7 +362,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">11-Aug-2013 22:03:19</published>
-	<updated format="d-M-Y H:i:s">08-Feb-2020 21:43:47</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:19:42</updated>
 </node>
 
 <node type="playlist">
@@ -416,7 +417,7 @@
 		<item>Jazz and swing</item>
 	</title>
 	<images>
-		<img src="/music/0_Jazz and swing/Imperial Swing Orchestra/poster.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/51766/9941293.1021.35347/200x200?1583144530521"/>
 	</images>
 
 	
@@ -434,7 +435,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 12:56:23</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:22:43</updated>
 </node>
 
 <node type="playlist">
@@ -749,6 +750,7 @@
 		<item>Therion</item>
 	</title>
 	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1016.15313/200x200?1583144827470"/>
 		<img src="/music/T/Therion/Therion.jpg"/>
 	</images>
 
@@ -770,7 +772,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">19-Feb-2020 13:59:38</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:26:43</updated>
 </node>
 
 <node type="playlist">
@@ -778,7 +780,7 @@
 		<item>Nightwish</item>
 	</title>
 	<images>
-		<img src="/music/N/Nightwish/Picture/n_cover.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/71140/9941293.1015.58666/200x200?1583144746651"/>
 	</images>
 
 	
@@ -800,7 +802,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">19-Feb-2020 14:00:28</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:25:27</updated>
 </node>
 
 <node type="playlist">
@@ -856,7 +858,7 @@
 		<item>KSU</item>
 	</title>
 	<images>
-		<img src="/music/K/KSU/cover.jpg"/>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1020.88522/200x200?1583144193960"/>
 	</images>
 
 	
@@ -874,7 +876,7 @@
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 14:14:24</published>
-	<updated format="d-M-Y H:i:s">23-Jan-2020 17:54:53</updated>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:16:20</updated>
 </node>
 
 <node type="playlist">
