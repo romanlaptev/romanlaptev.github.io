@@ -9,6 +9,40 @@ webApp.draw()
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
 	*- module fileManager (file_manager.js)
 
+=================================================================== ИСПРАВИТЬ
+- ошибка редактирования названия трека в загруженном треклисте, возникает иногда
+1. загрузить SkaP.json
+2. перейти к редактированию трека  /music/S/Ska-P/2008 - Lagrimas y Gozos/01. Ni Fu Ni Fa.mp3
+3. иногда, вместо "update-track" выполнятся ветка "insert-track" и добавляется новый трек
+
+*- не воспроизводятся файлы из папки с именем, где присутствует знак "%" (encodeURI)
+*- не воспроизводятся файлы с именем, где присутствуют несколько точек
+
+*- при сохранении треклиста взамен существующего (Ramones.json, старый формат с ключом "mp3")
+происходит удаление "mp3"
+
+было  - {"title":"33 - I Don't Wanna Walk Around with You (live).mp3","mp3":"\/music\/R\/Ramones\/1990 All The Stuff (And More) CD1\/33 - I Don't Wanna Walk Around with You (live).mp3"}
+стало - {"title":"33 - I Don't Wanna Walk Around with You (live).mp3"}
+*нужно добавить конвертацию из "mp3" -> "source_url" (сразу, при загрузке треклиста в старом формате)
+
+*---------
+- возникает ошибка при добавлении /  редактировании трека в списке
+1.Добавить трек1
+2.Добавить трек2
+3.Редактирование трека2
+4.Открыть окно редактирования трека и закрыть кнопкой CLOSE (сабмит формы не выполняется, в GET массиве остался указатель на действие "edit-track")
+5.Добавление трека3 приведет к перезаписи последнего редактированного трека
+
+webapp.js, FIX
+//------------------------------- close, toggle buttons
+					if( target.getAttribute("data-toggle") ){
+......
+							//fix (clear last action in player, need for insert/edit track)
+							webApp.player.vars["GET"] = {};
+						}
+					}
+---------
+
 =========================
 сделать возможность обращения к функциям приложения через GET-параметры
 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/
@@ -39,6 +73,7 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 для этого потребуется изменить функцию draw.buildBlock - передаются не имена шаблонов, а сами строки-шаблоны...
 
 --------------------------- PLAYER, mediaPlayer
+
 - сделать возможность *формировать составные плейлисты
 и сохранять их (или прямо на диск, или в локальный кэш)
 
@@ -55,6 +90,17 @@ TEST2 http://vbox5/sites/romanlaptev.github.io/webapps/webapp_music/app.html?q=l
 *- нужно добавлять треки из другого плейлиста( не очищать треклист при добавлении новых треков)
 
 - сделать чтение информации из MP3-тегов
+
+
+- добавить новый параметр в формат трека - "type" : local/internet/.....
+позволит добавлять в треклист ссылки на потоковое видео, аудио других видеохостингов
+(открывать в ифрейме)
+
+---- EMBED AUDIO
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
+src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/5214471&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+</iframe>
+
 
 -----------------------------------
 - разработать шаблон для формата треклиста
@@ -501,3 +547,12 @@ https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/03_Motorbreath.mp3
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/06_Whiplash.mp3
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/04_Jump_In_The_Fire.mp3
+
+
+------------------------
+https://github.com/yandex/audio-js/blob/master/tutorial/web-audio-api.md
+Web Audio API
+
+https://yandex.ru/dev/audio/jsapi/doc/intro/index-docpage/
+https://yandex.ru/dev/audio/jsapi/doc/dg/concepts/load-docpage/
+YandexAudio API 

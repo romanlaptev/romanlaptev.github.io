@@ -452,10 +452,23 @@ if( form.elements.targetField.length > 0){
 			var form = document.forms["form_insert_track"]
 //console.log(form);
 //console.log(form.elements, form.elements.length);
-//console.log(form.action);
+//console.log(form.elements["number"]);
+//console.log( webApp.player.vars["GET"]);
 
+			//change form action for UPDATE track
+			//if( form.elements["number"] && form.elements["number"].value.length > 0){
+			var _action = webApp.player.vars["GET"]["q"];
+console.log(_action, webApp.player.vars["GET"]);
+			if( _action === "edit-track" ){
+				$("#insert-track-form").attr("action", "?q=update-track");
+			} else {
+				$("#insert-track-form").attr("action", "?q=insert-track");
+			}
+console.log(form.action);
+			
 			//------------------- check input values
 			var _url = form.action;
+
 			var res = true;
 			for( var n = 0; n < form.elements.length; n++){
 				var _element = form.elements[n];
@@ -484,6 +497,10 @@ if( form.elements.targetField.length > 0){
 			if(res){
 				webApp.player.urlManager( _url );
 			}
+			
+			//clear form input ( number edit track) 
+			//document.forms["form_insert_track"].elements["number"].value = "";
+			//document.forms["form_insert_track"].reset();
 			
 		};//end event submit
 
@@ -605,6 +622,8 @@ if( target.className.indexOf("no-block-link") === -1){
 								 target.href.indexOf("?q=toggle") !== -1
 							){
 								_toggleBlock( id );
+							//fix (clear last action in player, need for insert/edit track)
+							webApp.player.vars["GET"] = {};
 						}
 					}
 

@@ -18,6 +18,7 @@ function _player( opt ){
 		"numTrack": 0,
 		//"autoplay" : true//,
 		//"unSavedTrackList": false
+		"GET" : {},
 		
 		"mediaTypes" : [
 {"extension" : "wav", "testString" : 'audio/wav; codecs=1', support: false },
@@ -90,7 +91,7 @@ if(err){
 				//webApp.vars["logMsg"] = "<b>"+key +"</b> : "+ err[key];
 				//func.logAlert( webApp.vars["logMsg"], "error");
 			//}//next
-webApp.vars["logMsg"] = "<b>code:</b> : "+ err["code"];
+webApp.vars["logMsg"] = "MediaError, <b>code:</b> : "+ err["code"];
 webApp.vars["logMsg"] += ", <b>message:</b> : "+ err["message"];
 webApp.vars["logMsg"] += ", <b>src:</b> : "+ _vars.$audioplayer.src;
 func.logAlert( webApp.vars["logMsg"], "error");
@@ -270,7 +271,7 @@ console.log( "-- THEN, promise reject, ", error );
 console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);			
 			break;
 		}//end switch
-
+		
 	}//end _urlManager()
 	
 
@@ -376,9 +377,19 @@ console.log("-- player.urlManager(),  GET query string: ", _vars["GET"]);
 
 	
 	function _formTrackList(tracks){
-		//----------------- add track order number 
+		
 		for( var n = 0; n < tracks.length; n++){
-			tracks[n]["number"] = n+1;
+			tracks[n]["number"] = n+1;// add track order number 
+			
+			//convert media URL: "mp3" to "source_url"
+			if( "mp3" in tracks[n]){
+				tracks[n]["source_url"] = tracks[n]["mp3"];
+				delete tracks[n]["mp3"];
+			}
+			
+			//filter "source_url", replace %20 to space
+			tracks[n]["source_url"] = tracks[n]["source_url"].replace(/%20/g, " ");
+			
 		}//next
 		
 		if( _vars["trackList"].length > 0){
@@ -626,7 +637,17 @@ console.log( "-- error, no track by activeNum = " + activeNum);
 		if( p.autoplay ){
 			var _canPlay = _setMediaPlayer( mediaSrc );
 			if( _canPlay){
-				$(_vars.$mediaplayer).attr("src", mediaSrc);
+				
+//https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/encodeuri
+//1.Yankee_doodle 99%.mp3;
+				var encoded = encodeURI (mediaSrc);
+				//encoded = encoded.replace(/%2520/g, "%20");
+				//var encoded = encodeURIComponent(mediaSrc);
+console.log(encoded);
+
+				$(_vars.$mediaplayer).attr("src", encoded);
+				
+				//$(_vars.$mediaplayer).attr("src", mediaSrc);
 				_vars.$mediaplayer.play();
 			} else {
 _vars["logMsg"] = "Cannot play media file "+ mediaSrc;
@@ -712,7 +733,7 @@ func.logAlert( _vars["logMsg"], "error" );
 		
 console.log( numTrack, _vars["trackList"][numTrack] );
 
-		$("#insert-track-form").attr("action", "?q=update-track");//change form action
+		//$("#insert-track-form").attr("action", "?q=update-track");//change form action
 		
 		document.forms["form_insert_track"].elements["input_title"].value = _vars["trackList"][numTrack]["title"];
 		document.forms["form_insert_track"].elements["input_artist"].value = _vars["trackList"][numTrack]["artist"];
@@ -829,15 +850,15 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		_vars["unSavedTrackList"] = true;
 		webApp.draw.buildBlock( webApp.vars["blocksByName"]["blockTrackList"] );
 		
-		if( !$("#block-player").is(":visible") ){
-			$("#block-player").show();
-		}
-
-		_setActiveTrack({
-			num : _vars["numTrack"]
-		});
+// 		if( !$("#block-player").is(":visible") ){
+// 			$("#block-player").show();
+// 		}
+// 
+// 		_setActiveTrack({
+// 			num : _vars["numTrack"]
+// 		});
 		
-		$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
+		//$("#insert-track-form").attr("action", "?q=insert-track");//restore form action
 		webApp.app.toggleBlock( "#modal-insert-track" );
 	}//end _updateTrack()
 
@@ -917,7 +938,7 @@ console.log( numTrack, _vars["trackList"][numTrack] );
 		var _canPlay = false;
 
 		var _fileType = webApp.fileManager.getFileType( filePath );
-//console.log( _fileType );	
+//console.log( _fileType );
 		for( var n =0; n < _vars["mediaTypes"].length; n++){
 			var _testString = _vars["mediaTypes"][n]["testString"];
 			var _ext = _vars["mediaTypes"][n]["extension"];
