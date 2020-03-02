@@ -100,6 +100,7 @@
 	<tag tid="159" vid="2" group_name="music_styles">рокабилли</tag>
 	<tag tid="160" vid="2" group_name="music_styles">pop music</tag>
 	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
+	<tag tid="162" vid="5" group_name="alphabetical_voc">C</tag>
 </tag_list>
 
 
@@ -1403,6 +1404,32 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 
 	<published format="d-M-Y H:i:s">01-Mar-2020 02:29:28</published>
 	<updated format="d-M-Y H:i:s">01-Mar-2020 02:29:28</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Cage the Elephant</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-content/49876/5c066dd1.a.3135706-1/200x200"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Cage the Elephant.json">Cage the Elephant.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1009">music.yandex.ru</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="162" group_name="alphabetical_voc">C</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="45" group_name="music_styles">punk</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="120" group_name="music_formats">studio album</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">02-Mar-2020 19:39:38</published>
+	<updated format="d-M-Y H:i:s">02-Mar-2020 19:43:51</updated>
 </node>
 	</database>
 </xroot>
