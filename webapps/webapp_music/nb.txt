@@ -547,3 +547,11 @@ https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/lib/eng_books/H/Heinlein/03_Motorbreath.mp3
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/06_Whiplash.mp3
 https://cloclo20.datacloudmail.ru/weblink/view/JSDm/zciANxB6p/music/M/Metallica/1983_Kill_em_All/04_Jump_In_The_Fire.mp3
+
+
+------------------------
+https://github.com/yandex/audio-js/blob/master/tutorial/web-audio-api.md
+Web Audio API
+
+https://yandex.ru/dev/audio/jsapi/doc/intro/index-docpage/
+YandexAudio API 
