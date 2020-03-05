@@ -27,4 +27,6 @@ grunt-init gruntfile
 #edit Gruntfile.js
 #Build project
 grunt
-
+====================================
+https://www.youtube.com/watch?v=Cxo1vVI9--E
+Grunt - Обзор системы сборки
