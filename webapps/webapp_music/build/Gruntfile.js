@@ -25,8 +25,8 @@ grunt.initConfig({
 
     uglify: {
       dist: {
-        src: '../js/webapp_player.js',
-        dest: '../js/webapp_player.min.js'
+        src: '../js/app.js',
+        dest: '../js/app.min.js'
       }
     }
 
@@ -41,7 +41,6 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
   //grunt.loadNpmTasks('grunt-contrib-watch');
 
 // Default task.
-grunt.registerTask('default', ['concat']);
-//grunt.registerTask('default', [ 'uglify' ]);
-
+//grunt.registerTask('default', ['concat']);
+grunt.registerTask('default', [ 'uglify' ]);
 };
