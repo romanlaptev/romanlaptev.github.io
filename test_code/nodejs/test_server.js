@@ -12,7 +12,7 @@ var _url = require("url");
 
 http.createServer(onRequest).listen(3000, function(){
 console.log("Server has been started.");
-	//3_sendInitRequest();
+	//_sendInitRequest();
 });
 
 function onRequest(request, response) {
