@@ -21,12 +21,34 @@ var webApp = {
 			//"db_type" : "json",
 			"dbName": "video",
 			"tagNameFilms": "video",
+<<<<<<< HEAD
+			"numRecordsPerPage":5,
+=======
 			"numRecordsPerPage":10,
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			"dateFormat": "dd-mm-yyyy hh:mm:ss",
 			"sortOrder": "asc",
 			"sortByKey": "title", //"published", 
 			"queryRes": []
 		},
+<<<<<<< HEAD
+		
+		"blocks": [
+			{
+				"locationID" : "block-1",
+				"title" : "Playlist", 
+				"templateID" : "tpl-block",
+				"content" : "<ul class='list-unstyled'>\
+<li class='list-group-item'>Track1</li>\
+<li class='list-group-item'>Track2</li>\
+<li class='list-group-item'>Track3</li>\
+<li class='list-group-item'>....</li>\
+</ul>",
+				"visibility" : true,//"frontPage"
+				"buildBlock" : function(){
+//console.log(this);
+					_draw_buildBlock( this );
+=======
 
 		"videoTypes" : {
 "ogg" : { testParam:['video/ogg; codecs="theora, vorbis"'], support:false },
@@ -86,6 +108,7 @@ http://rutube.ru/play/embed/
 						_draw_setActiveTrack(0);
 					}
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 				}
 			},//end block
 			
@@ -99,6 +122,8 @@ http://rutube.ru/play/embed/
 					_draw_buildBlock( this );
 				}
 			}, //end block
+<<<<<<< HEAD
+=======
 			
 /*			
 			{
@@ -113,6 +138,7 @@ http://rutube.ru/play/embed/
 			}, //end block
 */
 			
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 /*
 			{
 				"locationID" : "block-list-video",
@@ -165,6 +191,8 @@ _db_getBlockContent(){
 						_draw_buildBlock( this );
 					}
 				}
+<<<<<<< HEAD
+=======
 			}, //end block
 
 			{
@@ -177,16 +205,21 @@ _db_getBlockContent(){
 				"buildBlock" : function(){
 					_draw_buildBlock( this );
 				}
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			} //end block
 
 		],
 		
 		"templates_url" : "tpl/templates.xml",
+<<<<<<< HEAD
+		"templates" : {},
+=======
 		"templates" : {
 			"localVideoBtn" : "create link",
 			"embedVideoBtn" : "open video in new tab",
 			"localVideoBtnUpdated" : "<a href='{{url}}' class='btn btn-primary' target='_blank'>open local video file in new tab</a>"
 		},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		"init_url" : "#?q=list_nodes&num_page=1"
 	},//end vars
 	
@@ -206,6 +239,19 @@ console.log("init webapp!");
 		this["vars"]["numTotalLoad"] = func.getById("num-total-load");
 		this["vars"]["waitWindow"] = func.getById("win1");
 		
+<<<<<<< HEAD
+		if( typeof $.jPlayer === "function"){
+			webApp.vars["playlists"] = {};
+			_initPlayer(this);
+		}
+		
+		_loadTemplates(function(){
+//console.log("Load templates end...", webApp.vars["templates"] );		
+			_runApp();
+		});
+		
+	}//end init()
+=======
 		this.vars["player"] = func.getById("player1");
 		this.vars["iframePlayer"] = func.getById("iframe-player");
 		
@@ -323,10 +369,59 @@ func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
 		}
 	}
 	
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	
 }//end testMediaSupport()
 
 
+<<<<<<< HEAD
+function _runApp(){
+
+	defineEvents();
+
+	//start block
+	if( webApp["vars"]["waitWindow"] ){
+		webApp["vars"]["waitWindow"].style.display="block";
+		//$("#load-progress").hide();
+	}
+
+
+	_loadData(function(res){
+//console.log(arguments);
+//console.log(window.location);	
+
+		//clear block
+//setTimeout(function(){
+		if( webApp["vars"]["waitWindow"] ){
+			webApp["vars"]["waitWindow"].style.display="none";
+		}		
+//}, 1000*3);
+
+//if( webApp.vars["loadDataRes"] ){
+if( webApp.vars["DB"]["nodes"] && webApp.vars["DB"]["nodes"].length > 0){
+		var parse_url = window.location.search; 
+		if( parse_url.length > 0 ){
+			webApp.vars["GET"] = func.parseGetParams(); 
+			_urlManager();
+		} else {
+			if( webApp.vars["init_url"] ){
+				//parse_url = webApp.vars["init_url"].substring(2);
+				parse_url = webApp.vars["init_url"];
+	//console.log(parse_url);
+			}
+			webApp.vars["GET"] = func.parseGetParams( parse_url ); 
+			_urlManager();
+		}
+}
+
+		if( typeof postFunc === "function"){
+			postFunc();
+		}
+	});
+
+	
+}//end _runApp()
+=======
 function defineEvents(){
 	
 	$("#btn-clear-log").on("click", function(event){
@@ -450,6 +545,7 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 		//}
 		
 	//});//end event
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 	//$("#list-video").on("reset", function(event){
 //console.log("reset...", event);
@@ -482,6 +578,106 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 
 //------------------------------------------------------------------
 
+<<<<<<< HEAD
+function defineEvents(){
+	
+	$("#btn-clear-log").on("click", function(e){
+//console.log("click...", e);			
+		webApp.vars["log"].innerHTML="";
+	});//end event
+	
+//------------------------------------------------------------------
+	$("#btn-toggle-log").on("click", function(e){
+console.log("click...", e);			
+		if( webApp.vars["log"].style.display==="none"){
+			webApp.vars["log"].style.display="block";
+			webApp.vars["btnToggle"].innerHTML="-";
+		} else {
+			webApp.vars["log"].style.display="none";
+			webApp.vars["btnToggle"].innerHTML="+";
+		}
+	});//end event
+	
+//------------------------------------------------------------------
+	$("#list-video, #block-taglist").on("click", function(event){
+//console.log("click...", event);
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+		
+		if( target.tagName === "A"){
+			
+//------------------------------------------------------------------
+			if( $(target).hasClass("toggle-btn") ){
+
+				//if ( target.href.indexOf("#?q=") !== -1){
+					if (event.preventDefault) { 
+						event.preventDefault();
+					} else {
+						event.returnValue = false;				
+					}
+				//}
+
+				//var collapseBoxId = $(target).attr("href");
+//console.log("-- collapseBoxId:", collapseBoxId );
+//console.log("-- test:", $(collapseBoxId).hasClass("in"), $(collapseBoxId).attr("aria-expanded") );
+//console.log("-- test:", target.classList );
+
+				//$("#list-video").find(".toggle-btn").each( function(index, value){
+//console.log(index, value);
+				//});
+				
+				$("#video-list-collapsible .toggle-btn").removeClass("toggle-btn-show");
+				$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
+				
+
+				$(target).removeClass("toggle-btn-hide");
+				$(target).addClass("toggle-btn-show");
+				
+//console.log("-- test:", $(target).hasClass("collapsed") );
+				//if( $(target).hasClass("collapsed") ){
+					//$(target).removeClass("toggle-btn-show");
+					//$(target).addClass("toggle-btn-hide");
+				//}
+				
+			}
+			
+//------------------------------------------------------------------
+			if( $(target).hasClass("btn-add-track-pls") ){
+//console.log("click...", target.href);
+
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				
+				_player_addTrack( target );
+			}
+			
+//------------------------------------------------------------------
+			if( $(target).hasClass("tag-link") ){
+//console.log("click...", target);
+
+				if (event.preventDefault) { 
+					event.preventDefault();
+				} else {
+					event.returnValue = false;				
+				}
+				var url = target.href+"&text="+ $(target).text();
+				webApp.vars["GET"] = func.parseGetParams( url );
+				_urlManager();
+				
+//console.log("-- test:", $("#collapse-search").hasClass("in") );
+				if( $("#collapse-search").hasClass("in") ){
+					$("#collapse-search").collapse('hide');
+				}
+				
+			}
+			
+		}
+		
+	});//end event
+=======
 	
 	$("#block-search").on("submit", "#form-search", function(event){
 //console.log("Submit form", event, this);
@@ -548,6 +744,7 @@ func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>")
 	});//end event
 
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	
 	$("#page-range").on("input", function(event){
 		event = event || window.event;
@@ -588,6 +785,47 @@ func.log("<div class='alert alert-warning'>" + webApp.vars["logMsg"] + "</div>")
 			} else {
 				event.returnValue = false;				
 			}
+<<<<<<< HEAD
+
+			if( !isNaN(target.value) && parseInt(target.value) > 0){
+//console.log("-0000000000");
+
+				$("#page-range").val(target.value);
+				//$("#page-number-2").val(target.value);
+				
+				var url = "?q=list_nodes&num_page="+target.value;
+				webApp.vars["GET"] = func.parseGetParams( url ); 
+				_urlManager();
+			} else {
+webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+			}
+
+		}
+
+	})//end event	
+	
+	$("#page-number-less").on("click", function(event){
+		var num = parseInt( $("#page-number").val() );
+		if( num > 1){
+			$("#page-number").val( num-1 );
+			$("#page-range").val( num-1 );
+			var url = "?q=list_nodes&num_page=" + (num-1);
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		}
+	})//end event	
+	
+	$("#page-number-more").on("click", function(event){
+		var num = parseInt( $("#page-number").val() );
+		if( num < webApp.vars["DB"]["numPages"] ){
+			$("#page-number").val( num+1 );
+			$("#page-range").val( num+1 );
+			var url = "?q=list_nodes&num_page=" + (num+1);
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+=======
 
 			if( !isNaN(target.value) && parseInt(target.value) > 0){
 //console.log("-0000000000");
@@ -746,8 +984,44 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 
 		if( target.href.indexOf("?q=") === -1){
 			actionLink = false;
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		}
+	})//end event	
+
+/*
+	$("#page-number-2").change(function(event){
+//console.log("change #page-number-2...", event);
+		if( !isNaN(event.target.value) && parseInt(event.target.value) > 0){
+			$("#page-range").val(event.target.value);
+			$("#page-number").val(event.target.value);
+			
+			var url = "?q=list_nodes&num_page="+event.target.value;
+			webApp.vars["GET"] = func.parseGetParams( url ); 
+			_urlManager();
+		} else {
+webApp.vars["logMsg"] = "error, incorrect input, only numbers...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+		}
+	});//end event
+*/
+//------------------------
+	$("#select-sort").change(function(event){
+		event = event || window.event;
+		var target = event.target || event.srcElement;
+//console.log("change #select-sort...", event, target.value);
+
+		webApp.vars["DB"]["sortByKey"] =  target.value;
+		$("#page-number").val( 1 );
+		$("#page-range").val( 1 );
+		var url = "?q=list_nodes&num_page=1";
+		webApp.vars["GET"] = func.parseGetParams( url ); 
+		_urlManager();
 		
+<<<<<<< HEAD
+	});//end event
+
+=======
 		if(	actionLink ){
 			if (event.preventDefault) { 
 				event.preventDefault();
@@ -759,6 +1033,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 		}
 
 	}//end _actionClick()
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	
 }//end defineEvents()
 
@@ -800,6 +1075,41 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			case "list_nodes":
 console.log("-- start build page --");
 				//var timeStart = new Date();
+<<<<<<< HEAD
+
+				_draw_updatePager({
+					"total_records": webApp.vars["DB"]["queryRes"].length,
+					"page_number":webApp.vars["GET"]["num_page"]
+				});		
+				_data_getNodes({
+					"records": webApp.vars["DB"]["queryRes"],
+					"num_page": webApp.vars["GET"]["num_page"],
+					"sortOrder": webApp.vars["DB"]["sortOrder"], //"asc",
+					"sortByKey": webApp.vars["DB"]["sortByKey"], //"published", //"title"
+					"callback": function(data){
+				//console.log(data);
+						if( !data || data.length ===0){
+							return false;
+						};
+						
+						_buildPage({
+							"pageType" : webApp.vars["GET"]["q"],//"list_nodes",
+							"pageData" : data,
+							"callback" : function(){
+
+				//var timeEnd = new Date();
+				//var ms = timeEnd.getTime() - timeStart.getTime();
+				//var msg = "Generate content block, nid: " + this.nid +", runtime:" + ms / 1000 + " sec";
+				//_log("<p>"+msg+"</p>");			
+				//console.log(msg);
+				console.log("-- end build page --");
+							}//end callback
+						});
+		
+					}//end callback
+				});
+
+=======
 
 				_draw_updatePager({
 					"total_records": webApp.vars["DB"]["queryRes"].length,
@@ -835,6 +1145,7 @@ console.log("-- end build page --");
 				};
 				
 				_data_getNodes(opt);
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			break;
 			
 //?q=nodes-by-tag&text="youtube"
@@ -845,6 +1156,17 @@ console.log("-- end build page --");
 						"callback" : function( data ){
 //console.log(data);
 							if( !data || data.length ===0){
+<<<<<<< HEAD
+webApp.vars["logMsg"] = "not found video by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- " + webApp.vars["logMsg"] );
+								return false;
+							};
+							
+							var url = "?q=list_nodes&num_page=1";
+							webApp.vars["GET"] = func.parseGetParams( url ); 
+							_urlManager();
+=======
 webApp.vars["logMsg"] = "not found records by tag <b>"+ webApp.vars["GET"]["text"] + "</b>...";
 func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
 console.log( "-- " + webApp.vars["logMsg"] );
@@ -867,6 +1189,7 @@ console.log( tag );
 								webApp.vars["GET"] = func.parseGetParams( url ); 
 								_urlManager();
 							}
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 							
 						}//end callback
 					});
@@ -874,6 +1197,8 @@ console.log( tag );
 console.log("Warning! not found tag text value...");
 				}
 			break;
+<<<<<<< HEAD
+=======
 			
 			case "clear-query-result":
 				//_data_setTemplate(data);//define unique template for item
@@ -889,6 +1214,7 @@ console.log("Warning! not found tag text value...");
 				
 			case "search":
 				$("#collapse-search").collapse('hide');
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 				
 				_data_search({
 					"targetField" : webApp.vars["GET"]["targetField"],
@@ -913,6 +1239,32 @@ console.log( "-- " + webApp.vars["logMsg"] );
 			break;
 
 
+<<<<<<< HEAD
+
+
+//======================================= LOAD DATA
+function _loadData( postFunc ){
+//console.log("_loadData() ", arguments);
+	//if( !webApp.iDBmodule.dbInfo["allowIndexedDB"] ){
+		webApp.vars["dataStoreType"] = false;
+	//} 
+		switch(webApp.vars["dataStoreType"]) {				
+			case "indexedDB":
+			break;
+			
+			case "webSQL":
+			break;
+			
+			case "localStorage":
+			break;
+
+			default:
+				if( !webApp.vars["DB"]["dataUrl"] ||
+					webApp.vars["DB"]["dataUrl"].length === 0 ){
+webApp.vars["logMsg"] = "error, not found or incorrect 'dataUrl'...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+=======
 //-------------------------------------------- PLAYLIST
 			case "load-track":
 //console.log(target, $(target).parent() );
@@ -1013,6 +1365,7 @@ console.log( "-- no track!!!!");
 				var track = webApp.vars["playlist"]["tracks"][num];
 				if(!track){
 console.log( "-- no track!!!!");
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 					return false;
 				}				
 				var videoSrc = track["src"];
@@ -1037,6 +1390,407 @@ console.log( "-- no track!!!!");
 				if( autoplay ){
 					webApp.vars["player"].play();
 				}
+<<<<<<< HEAD
+
+				func.runAjax( {
+					"requestMethod" : "GET", 
+					"url" : webApp.vars["DB"]["dataUrl"], 
+					
+					"onProgress" : function( e ){
+						var percentComplete = 0;
+						if(e.lengthComputable) {
+							percentComplete = Math.ceil(e.loaded / e.total * 100);
+						}
+console.log( "Loaded " + e.loaded + " bytes of total " + e.total, e.lengthComputable, percentComplete+"%" );
+						if( webApp.vars["loadProgressBar"] ){
+							webApp.vars["loadProgressBar"].className = "progress-bar";
+							webApp.vars["loadProgressBar"].style.width = percentComplete+"%";
+							webApp.vars["loadProgressBar"].innerHTML = percentComplete+"%";
+							
+							webApp.vars["numTotalLoad"].innerHTML = ((e.total / 1024) / 1024).toFixed(2)  + " Mb";
+						}
+						
+					},
+						
+					"onLoadEnd" : function( headers ){
+//console.log( headers );
+					},
+					
+					"onError" : function( xhr ){
+//console.log( "onError ", arguments);
+webApp.vars["logMsg"] = "error, ajax load failed..." + webApp.vars["DB"]["dataUrl"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+						//return false;
+					},
+
+					"callback": function( data ){
+
+webApp.vars["logMsg"] = "Load data file " + webApp.vars["DB"]["dataUrl"];
+func.log("<p class='alert alert-success'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+
+//console.log( "runAjax, ", typeof data );
+//console.log( data );
+//for( var key in data){
+//console.log(key +" : "+data[key]);
+//}
+						if( !data ){
+webApp.vars["logMsg"] = "error, no data in " + webApp.vars["DB"]["dataUrl"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+							if( typeof postFunc === "function"){
+								postFunc(false);
+							}
+							return false;
+						}
+
+						_parseAjax( data );
+
+						if( typeof postFunc === "function"){
+							postFunc();
+						}
+
+					}//end callback()
+				});
+
+			break;
+		}//end switch
+		
+		//return false;
+		
+		function _parseAjax( data ){
+			if( webApp.vars["DB"]["dbType"].length === 0 ){
+webApp.vars["logMsg"] = "error, no found or incorrect " + webApp.vars["DB"]["dbType"];
+//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+				return false;
+			}
+			
+			switch( webApp.vars["DB"]["dbType"] ){
+				case "xml":
+					_parseXML( data );
+				break;
+				
+				case "json":
+				break;
+				
+				case "csv":
+					//_parseCSVBlocks(data);
+				break;
+			}//end switch
+			
+		}//_parseAjax()
+		
+	}//end _loadData()
+
+
+	function _parseXML(xml){
+//console.log("function _parseXML()");
+
+var timeStart = new Date();
+
+		try{
+			xmlObj = func.convertXmlToObj( xml );
+//console.log(xmlObj);
+delete xml;
+			webApp.vars["DB"]["nodes"] = _data_formNodesObj(xmlObj);
+			webApp.vars["DB"]["queryRes"] = webApp.vars["DB"]["nodes"];
+
+			webApp.vars["DB"]["tags"] = _data_formTagObj(xmlObj);
+delete xmlObj;
+			
+			//_vars["hierarchyList"] = __formHierarchyList();
+			//webApp.vars["loadDataRes"] = true;
+var timeEnd = new Date();
+var runTime = (timeEnd.getTime() - timeStart.getTime()) / 1000;
+webApp.vars["logMsg"] = "- convertXmlToObj(), runtime: <b>" + runTime  + "</b> sec";
+func.log("<div class='alert alert-info'>" + webApp.vars["logMsg"] + "</div>");
+console.log( webApp.vars["logMsg"] );
+
+		} catch(error) {
+webApp.vars["logMsg"] = "convertXmlToObj(), error parse XML..." ;
+func.log("<div class='alert alert-danger'>" + webApp.vars["logMsg"] + "</div>");
+console.log( error );
+		}//end catch
+
+	}//end _parseXML()
+
+	function _data_formNodesObj(xmlObj){
+//console.log(xmlObj["xroot"]["children"]["database"][0]["name"]);
+		var databases = xmlObj["xroot"]["children"]["database"];
+		var dbName = webApp.vars["DB"]["dbName"];
+		var tagName = webApp.vars["DB"]["tagNameFilms"];
+		
+		//var nodes = {};
+		var nodes = [];
+		
+		for(var n = 0; n < databases.length; n++){
+			if( databases[n]["name"] && databases[n]["name"] === dbName){
+				var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagName];
+			}
+		}//next
+		
+		if( tagNodes.length > 0){
+			for(var n = 0; n < tagNodes.length; n++){
+				var obj = {
+					"type" : tagNodes[n]["type"]
+				};
+
+				for(var item in tagNodes[n]["children"]){
+					var _content = tagNodes[n]["children"][item][0]["text"];
+//"producer"
+//"roles"
+//"creators"
+//"description"
+//"published"
+//"updated"
+					
+					if( !_content ){
+//tags
+//title
+//ul
+						_content = __convertMultipleField( tagNodes[n]["children"][item][0]["children"]);
+					}
+					obj[item] = _content;
+				}
+				
+				//var key = "record_" + (n+1);
+				//nodes[key] = obj;
+				nodes.push( obj );
+				
+			}//next
+		}
+
+//------------------ form timestamp
+		__addTimeStamp();
+
+		return nodes;
+		
+		function __convertMultipleField( xfields){
+			var fields = [];
+			for(var item1 in xfields){
+				var _xf = xfields[item1];
+				for(var item2 in _xf){
+					
+					if( _xf[item2]["children"] ){
+						var _xff = _xf[item2]["children"];
+						//var obj = {};
+						for( var key3 in _xff ){
+							//obj[key3] = _xff[key3];
+							fields.push( _xff[key3][0] );//<li><a...>(only one tag!!!)</li>
+						}
+					} else {
+						fields.push( _xf[item2] );
+					}
+				}
+			}
+			return fields;
+		}//end __convertMultipleField()
+
+		function __addTimeStamp(){
+			for(var n = 0; n < nodes.length; n++){
+				if( nodes[n]["published"] && nodes[n]["published"].length > 0){
+					if( webApp.vars["DB"]["dateFormat"] === "dd-mm-yyyy hh:mm:ss"){
+						var arr = nodes[n]["published"].split(" ");
+						var dateArr = arr[0].split("-");
+						var timeArr = arr[1].split(":");
+						
+						var split_values = {
+							"day" : dateArr[0],
+							"month" : dateArr[1],
+							"year" : dateArr[2],
+							"hour" : timeArr[0],
+							"min" : timeArr[1],
+							"sec" : timeArr[2]
+						};
+						
+						var _day = parseInt( split_values["day"] );
+						if ( isNaN( _day ) ){
+							_day = 0;
+						}
+
+						var _month = 0;
+				//"15-Sep-2018 22:13:00";
+						var sMonth = split_values["month"];
+						switch(sMonth){
+							
+							case "Jan":
+								_month = 1;
+							break;
+							
+							case "Feb":
+								_month = 2;
+							break;
+							
+							case "Mar":
+								_month = 3;
+							break;
+							
+							case "Apr":
+								_month = 4;
+							break;
+							
+							case "May":
+								_month = 5;
+							break;
+							
+							case "Jun":
+								_month = 6;
+							break;
+							
+							case "Jul":
+								_month = 7;
+							break;
+							
+							case "Aug":
+								_month = 8;
+							break;
+							
+							case "Sep":
+								_month = 9;
+							break;
+							
+							case "Oct":
+								_month = 10;
+							break;
+							
+							case "Nov":
+								_month = 11;
+							break;
+							
+							case "Dec":
+								_month = 12;
+							break;
+							
+						}//end switch
+
+						var _year = parseInt( split_values["year"] );
+						if ( isNaN( _year ) ){
+							_year = 0;
+						}
+
+						nodes[n]["timestamp"] = new Date ( _year, _month -1 , _day).getTime();
+					}
+				}
+			}//next
+		}// end __addTimeStamp()
+		
+	}//end _data_formNodesObj()
+
+	function _data_formTagObj(xmlObj){
+		var databases = xmlObj["xroot"]["children"]["database"];
+		var dbName = webApp.vars["DB"]["dbName"];
+		var tagListName = "taglist";
+		var tagName = "tag";
+		
+		for(var n = 0; n < databases.length; n++){
+			if( databases[n]["name"] && databases[n]["name"] === dbName){
+var tagNodes = xmlObj["xroot"]["children"]["database"][n]["children"][tagListName][n]["children"][tagName];
+			}
+		}//next
+		
+		if( tagNodes.length > 0){
+			return tagNodes;
+		} else {
+			return false;
+		}
+				
+	}//end _data_formTagObj()
+	
+	//function _data_formHierarchyList(){
+	//}//end _data_formHierarchyList()
+			
+
+
+
+
+//============================== TEMPLATES
+	function _loadTemplates( callback ){
+		//webApp.db.loadTemplates(function( isLoadTemplates ){
+//console.log(isLoadTemplates);			
+			//if( !isLoadTemplates ){
+				_loadTemplatesFromFile();
+			//} else{
+				//if( typeof callback === "function"){
+					//callback();
+				//}
+			//}
+		//});//end db.loadTemplates()
+		
+		function _loadTemplatesFromFile(){
+			
+			if( !webApp.vars["templates_url"] || 
+				webApp.vars["templates_url"].length === 0 ){
+webApp.vars["logMsg"] = "- error, _loadTemplates(), not found 'templates_url'...";
+func.log("<p class='alert alert-danger'>" + webApps.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+				if( typeof callback === "function"){
+					callback(false);
+				}
+				return false;
+			}
+			
+			func.runAjax({
+				"requestMethod" : "GET", 
+				"url" : webApp.vars["templates_url"], 
+				//"onProgress" : function( e ){},
+				//"onLoadEnd" : function( headers ){},
+				"onError" : function( xhr ){
+//console.log( "onError ", arguments);
+webApp.vars["logMsg"] = "error ajax load " + webApp.vars["templates_url"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+					if( typeof callback === "function"){
+						callback(false);
+					}
+					return false;
+				},
+				
+				"callback": function( data ){
+webApp.vars["logMsg"] = "- read templates from <b>" + webApp.vars["templates_url"] +"</b>";
+func.log("<p class='alert alert-info'>" + webApp.vars["logMsg"] + "</p>");
+//console.log( webApp.vars["logMsg"] );
+//console.log( data );
+
+					if( !data ){
+console.log("error, loadTemplates(), not find data templates'....");
+						if( typeof callback === "function"){
+							callback(false);
+						}
+						return false;
+					}
+
+					//xmlNodes = func.convertXmlToObj( data );
+					xmlNodes = func.parseXmlToObj( func, data );
+//console.log(xmlNodes);
+					if( xmlNodes.length > 0 ){
+						for( var n= 0; n < xmlNodes.length; n++){
+							var key = xmlNodes[n]["name"];
+
+							var value = xmlNodes[n]["html_code"]
+							.replace(/<!--([\s\S]*?)-->/mig,"")//remove comments
+							.replace(/\t/g,"")
+							.replace(/\n/g,"");
+							
+							webApp.vars["templates"][key] = value;
+						}//next
+						
+						//webApp.db.saveTemplates( webApp.draw.vars["templates"] );
+					} else {
+console.log("error, loadTemplates(), cannot parse templates data.....");
+					}
+
+					if( typeof callback === "function"){
+						callback();
+					}
+				}//end
+			});
+			
+=======
 				
 			break;
 			
@@ -1582,6 +2336,7 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 				}//end
 			});
 			
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 /*
 			runAjax( {
 				"requestMethod" : "GET", 
@@ -1666,6 +2421,10 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 */
 		for( var n = 0; n < webApp.vars["blocks"].length; n++){
 			var _opt = webApp.vars["blocks"][n];
+<<<<<<< HEAD
+			if( _opt["visibility"]){
+						
+=======
 			
 			//do not redraw existing block
 			if( _opt["draw"] && !_opt["refresh"]){
@@ -1674,18 +2433,26 @@ func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
 			
 			if( _opt["visibility"]){
 				
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 				//closures, need for async data getting from indexedDB
 				(function(_opt_){
 					//setTimeout(function(){ 
 						//console.log("-- closure function, ", _opt_); 
 					//}, 1000);
 					//_draw_buildBlock( _opt_ );
+<<<<<<< HEAD
+					if( typeof _opt_["buildBlock"] === "function"){
+						if( _opt_["visibility"]){
+							_opt_["buildBlock"]();
+						}
+=======
 					
 					if( typeof _opt_["buildBlock"] === "function"){
 						//if( _opt_["visibility"]){
 							_opt_["buildBlock"]();
 							_opt_["draw"] = true;
 						//}
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 					} else {
 webApp.vars["logMsg"] = "warning, not found buld function....";
 console.log( "-- " + webApp.vars["logMsg"], _opt_ );
@@ -1738,6 +2505,8 @@ func.log('<p>The collapsible content is now hidden.</p>');
 			//$("#video-list-collapsible .toggle-btn").addClass("toggle-btn-hide");
 		});
 */
+<<<<<<< HEAD
+=======
 
 //---------------------- load images handlers
 /*
@@ -1774,8 +2543,191 @@ function _data_getNodes(opt){
 		p[key] = opt[key];
 	}
 //console.log(p);
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
+
+//---------------------- load images handlers
+/*
+		$("img").on("load", function( e ){
+console.log("-- image load event....", e.target.src);
+		});
+		
+		$("img").on("error", function( e ){
+console.log("-- image load error", e.target.src);
+			//var src = $(this).attr("src");
+			//var new_src = sitecontent + src;
+//console.log("fixing image source = " + new_src);
+			//$(this).attr("src", new_src);
+			//$("body").attr("data-image-load-error","1");
+			//load_img_error( $(this)[0] );
+		});
+*/
+
+<<<<<<< HEAD
+		if( typeof p["callback"] === "function"){//return from _buildPage()
+			p["callback"]();
+		}
+			
+	};//end _buildPage()
 
 
+//============================================== DATA
+function _data_getNodes(opt){
+	var p = {
+		records: [],
+		"num_page": null,
+		"callback": null
+	};
+	//extend options object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+
+//------------------ sort NODES
+if(p.sortByKey && p.sortByKey.length > 0){
+	if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
+		_data_sortNodes({
+			records: p.records,
+			"sortOrder": p.sortOrder, //"asc", //desc
+			"sortByKey": p.sortByKey
+		});
+		webApp.vars["DB"]["prevSortKey"] = p.sortByKey;
+	}
+}
+//------------------
+
+	var data = [];
+	
+	var numPage = parseInt( p["num_page"] )-1;
+	//var _numPage = numPage - 1;
+	
+	var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+	
+	var startPos = numPage * numRecordsPerPage;
+	var endPos = startPos + numRecordsPerPage;
+
+	if( startPos > p.records.length ){
+webApp.vars["logMsg"] = "warning, incorrect page number, not more than "+webApp.vars["DB"]["numPages"];
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+
+		if( typeof p["callback"] === "function"){
+			p["callback"](data);
+		}
+		return false;
+	}
+
+	if( endPos > p.records.length ){
+		var n = endPos - p.records.length;
+		endPos = endPos - n;
+//console.log("TEST...", n);
+	}
+//console.log( startPos, numRecordsPerPage, endPos, p.records.length);
+
+	for(var n = startPos; n < endPos; n++){
+		data.push( p.records[n]);
+	}//next
+/*	
+	//copy objects node
+	for(var n = startPos; n < endPos; n++){
+		var jsonNode = JSON.stringify( p.records[n] );
+		data.push( JSON.parse( jsonNode) );
+	}//next
+*/	
+//console.log(data);
+
+//for test
+//var num = webApp.vars["DB"]["nodes"].length-1;
+//data[1] =  webApp.vars["DB"]["nodes"][num];
+
+	_data_setTemplate(data);//define unique template for item
+
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+}//end _data_getNodes()
+
+
+function _data_sortNodes(opt){
+//console.log(opt);
+	var p = {
+		records: [],
+		"sortOrder": "asc", //desc
+		"sortByKey": null
+	};
+	//extend p object
+	for(var key in opt ){
+		p[key] = opt[key];
+	}
+//console.log(p);
+
+	if(p.records.length === 0 ){
+		var logMsg = "error, not found sorting records...";
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+		return false;
+	}
+			
+	if(!p.sortByKey){
+		var logMsg = "error, not found 'sortByKey'...";
+func.log("<div class='alert alert-danger'>" + logMsg + "</div>");
+console.log( logMsg );
+		return false;
+	}
+			
+	p.records.sort(function(a,b){
+//console.log(a, b);
+
+		var s1,s2;
+		
+		s1 = a[p.sortByKey];
+		s2 = b[p.sortByKey];
+		
+		if( p.sortByKey === "title" ){
+			s1 = a[p.sortByKey][0]["text"].toLowerCase();
+			s2 = b[p.sortByKey][0]["text"].toLowerCase();
+		}
+		
+		if( p.sortByKey === "published" ){
+			s1 = a["timestamp"];
+			s2 = b["timestamp"];
+		}
+		
+		switch(p.sortOrder){
+			case "asc":
+				if (s1 > s2) {
+					return 1;
+				}
+				if (s1 < s2) {
+					return -1;
+				}
+				// s1 === s2
+				return 0;
+			break
+			
+			case "desc":
+				if (s1 > s2) {
+					return -1;
+				}
+				if (s1 < s2) {
+					return 1;
+				}
+				// s1 === s2
+				return 0;
+			break
+		}//end swith()
+	});//end sort
+	
+}//end _data_sortNodes()
+
+function _data_getNodesByTag( opt ){
+	var p = {
+		"text" : null,
+		"callback" : null
+	};
+	//extend options object for queryObj
+=======
 //------------------ sort NODES
 if(p.sortByKey && p.sortByKey.length > 0){
 	if( p.sortByKey !== webApp.vars["DB"]["prevSortKey"]){
@@ -1976,11 +2928,436 @@ function _data_search( opt ){
 		"callback" : null
 	};
 	//extend options object
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	for(var key in opt ){
 		p[key] = opt[key];
 	}
 //console.log(p);
 
+<<<<<<< HEAD
+	if( !p["text"] ){
+webApp.vars["logMsg"] = "_data_getNodesByTag(), error, not found tag text value...";
+console.log( webApp.vars["logMsg"] );
+		return false;
+	}
+
+	var data = [];
+	for(var n = 0; n < webApp.vars["DB"]["nodes"].length; n++){
+		var node = webApp.vars["DB"]["nodes"][n];
+		if( !node["tags"] ){
+//console.log(node);		
+			continue;			
+		}
+		var tags = node["tags"];
+		for(var n2 = 0; n2 < tags.length; n2++){
+			if( tags[n2]["text"] && tags[n2]["text"] === p["text"]){
+				data.push( node );
+			}
+		}//next
+		
+	}//next
+
+	_data_setTemplate(data);//define unique template for item
+	webApp.vars["DB"]["queryRes"] = data;
+	
+
+	if( typeof p["callback"] === "function"){
+		p["callback"](data);
+	}
+	//return false;
+	
+	//function _postQuery( res ){
+////console.log( res );
+		//if( typeof p["callback"] === "function"){
+			//p["callback"](res);
+		//}
+		
+	//}//end _postQuery()
+	
+	
+}//end _data_getNodesByTag()
+
+
+function _data_setTemplate(data){
+	for(var n = 0; n < data.length; n++){
+		
+		data[n]["number"] = n;
+		
+		if(data[n]["type"] === "videoclip"){
+			data[n]["template"] = "tpl-videolist-item--videoclip";
+		}
+		
+		data[n]["title"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-title"];
+		data[n]["title"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--title"];
+		
+		if( data[n]["ul"] ){
+			data[n]["ul"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-links"];
+			data[n]["ul"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--ul"];
+		} else {
+			data[n]["ul"] = "";
+		}
+		
+		if( data[n]["tags"] ){
+			data[n]["tags"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-tags"];
+			data[n]["tags"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--tag"];
+		} else {
+			data[n]["tags"] = "";
+		}
+			
+		if( data[n]["pictures"] ){
+			data[n]["pictures"]["listTpl"] = webApp.vars["templates"]["tpl-videolist-list-pictures"];
+			data[n]["pictures"]["itemTpl"] = webApp.vars["templates"]["tpl-videolist-item--img"];
+		} else {
+			data[n]["pictures"] = "";
+		}
+		
+	}//next
+	
+}//_data_setTemplate()
+
+
+//============================================== DRAW
+	function _draw_wrapData( opt ){
+		var p = {
+			"data": null,
+			//"type" : "",
+			//"wrapType" : "menu",
+			"templateID" : false,
+			"templateListItemID": false
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( !p["data"] || p["data"].length === 0){
+console.log("-- _draw_wrapData(), error, incorrect data ...");
+			return false;
+		}
+		if( !p["templateID"] ){
+console.log("-- _draw_wrapData(), error, templateID was not defined...");
+			return false;
+		}
+		
+		if( !webApp.vars["templates"][p.templateID] ){
+console.log("-- _draw_wrapData(),  error, not find template, id: " + p.templateID);
+			return false;
+		}
+		
+		var html = "";
+//console.log( p["data"].length );
+
+		p["wrapType"] = "item";
+		if( p["data"].length > 0 ){
+			p["wrapType"] = "list";
+		}
+		switch( p["wrapType"] ){
+			case "item" :
+				//html = __formNodeHtml( p["data"], webApp.vars["templates"][ p.templateID ] );
+			break;
+			case "list" :
+				if( !p["templateListItemID"] ){
+webApp.vars["logMsg"] = "-- wrapData(), error, var templateListItemID incorrect...";
+console.log(webApp.vars["logMsg"]);							
+					return false;
+				}
+				html = __formListHtml( webApp.vars["templates"][ p.templateID ] );
+			break;
+		}//end switch
+		
+//console.log(html);
+		return html;
+
+		function __formNodeHtml( data, _html ){
+			
+			for( var key in data ){
+//console.log(key, data[key]);
+				if( _html.indexOf("{{"+key+"}}") !== -1 ){
+//console.log(key, p["data"][key]);
+					_html = _html.replace( new RegExp("{{"+key+"}}", "g"), data[key] );
+				}
+			}//next
+			
+			return _html;
+		}//end __formNodeHtml()
+		
+		function __formListHtml( _html ){
+			
+			var listHtml = "";
+			for( var n = 0; n < p["data"].length; n++){
+//console.log( n );
+//console.log( p["data"][n], typeof p["data"][n], p["data"].length);
+
+				//form list items
+				var item = p["data"][n];
+					
+				//var itemTpl = _vars["templates"][ p.templateListID];
+				//var itemHtml = __formNodeHtml( item, itemTpl );
+				
+				var itemHtml = webApp.vars["templates"][ p.templateListItemID];
+				
+				
+				//load unique template for item
+				if( item["template"] && item["template"].length > 0){
+					var tplName = item["template"];
+					if( webApp.vars["templates"][ tplName ] ){
+						itemHtml = webApp.vars["templates"][ tplName ];
+					} else {
+console.log("-- warning, not found template, ", tplName );
+					}
+				}
+
+//--------------- get keys from template (text between {{...}} )
+				//if(n === 1){
+					var tplKeys = itemHtml.match(/{{(.*?)}}/g);
+					for(var n1 = 0; n1 < tplKeys.length; n1++){
+						tplKeys[n1] = tplKeys[n1].replace("{{","").replace("}}","");
+					}//next
+//console.log( tplKeys, p.templateListItemID, item );
+				//}
+//---------------
+
+				//make copy object item
+				//var _tmp = {
+					//"number": item["number"]
+				//};
+				var jsonNode = JSON.stringify( item );
+				var _tmp = JSON.parse( jsonNode);
+				
+				//for( var key2 in item){
+				for( var n1 = 0; n1 < tplKeys.length; n1++){
+					var key2 = tplKeys[n1];
+//console.log(item[key2] instanceof Array, key2, item[key2]);
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}
+
+					if( item[key2] instanceof Array ){
+						if(item[key2].length === 0){
+console.log("-- warning, empty field....", key2, item[key2]);
+//continue;	
+							item[key2] = "<span class='not-found-item'>not found " + key2 +"</span>";
+						} else {
+							var subOrdList = item[key2]["listTpl"];
+							var itemTpl = item[key2]["itemTpl"];
+	/*						
+							if( key2 === "title" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-title"];
+							}
+
+							if( key2 === "ul" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-links"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-ul"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
+
+							if( key2 === "tags" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-tags"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-tag"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+								//item[key2] = subOrdList;
+							}
+							
+							if( key2 === "pictures" ){
+								var subOrdList = webApp.vars["templates"]["tpl-videolist-pictures"];
+								var itemTpl = webApp.vars["templates"]["tpl-videolist-item--video-img"];
+								//var subOrdListHtml = "";
+								//for( var n2 = 0; n2 < item[key2].length; n2++){
+									//subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+								//}//next
+	////console.log( "subOrdListHtml: ", subOrdListHtml );
+								//subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+	////console.log( subOrdList );
+								//item[key2] = subOrdList;
+							}
+	*/						
+							var subOrdListHtml = "";
+							for( var n2 = 0; n2 < item[key2].length; n2++){
+//console.log( item[key2][n2]["text"] );
+								subOrdListHtml += __formNodeHtml( item[key2][n2], itemTpl );
+							}//next
+//console.log( subOrdListHtml );
+							subOrdList = subOrdList.replace("{{list}}", subOrdListHtml);
+//console.log( subOrdList );
+							//item[key2] = subOrdList;
+							
+							//do not add HTML code to item object!!!
+							_tmp[key2] = subOrdList;
+						}							
+					}
+					
+					if( itemHtml.indexOf("{{"+key2+"}}") !== -1 ){
+//if(n === 1){
+//console.log(key2, item[key2]);
+//}						
+						if( typeof item[key2] === "undefined"){
+//if(n === 1){
+//console.log(key2, item[key2], typeof item[key2]);
+//}						
+							itemHtml = itemHtml.replace(new RegExp("{{"+key2+"}}", "g"), "<span class='not-found-item'>not found " + key2 +"</span>");
+						} else {
+							//itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), item[key2] );
+							itemHtml = itemHtml.replace( new RegExp("{{"+key2+"}}", "g"), _tmp[key2] );
+						}
+					}
+					
+				}//next
+					
+				listHtml += itemHtml;
+//console.log(items);
+//console.log(listHtml);
+			}//next
+			
+			_html = _html.replace("{{list}}", listHtml);
+			return _html;
+		}//end __formListHtml
+
+	}//end _draw_wrapData()
+
+
+	var _draw_buildBlock = function(opt){
+//console.log("_buildBlock()", arguments);
+		var timeStart = new Date();
+		var p = {
+			"title": "",
+			"content" : "",
+			//"contentType" : "",
+			"templateID" : "tpl-block",
+			"contentTpl" : "tpl-list",//"tpl-menu"
+			"contentListTpl" : false,
+			
+			"callback" : function(){
+				var timeEnd = new Date();
+				var ms = timeEnd.getTime() - timeStart.getTime();
+				var msg = "Generate block '" + this.title +"', "+this.templateID+", runtime:" + ms / 1000 + " sec";
+console.log(msg);			
+				//webApp.app.vars["runtime"].push({
+					//"source" : msg,
+					//"ms" : ms,
+					//"sec" : ms / 1000
+				//});
+				
+				//if( typeof p["callback2"] === "function"){
+					//p["callback2"]();//return from _buildBlock()
+				//}
+				
+			}//,//end callback
+			//"callback2" : null
+		};
+		//extend p object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log(p);
+
+		if( typeof p["content"] === "function"){//dynamic form content
+/*			
+			p["content"]({
+				"callback" : function( res ){
+console.log(res);
+					var html = _draw_wrapData({
+						"data": res,
+						"templateID": "tpl-videolist",
+						"templateListItemID": "tpl-videolist-item--video"
+					});
+//console.log( html);
+					if( !html || html.length === 0){
+webApp.vars["logMsg"] = "error generate html...";
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+					} else {
+p["content"] = html;						
+//console.log(p);
+						_draw_insertBlock( p );
+						//_draw_buildBlock({
+							//"locationID" : "list-video",
+							//"title" : "video list", 
+							//"templateID" : "tpl-block-videolist",
+							//"content" : _html
+						//});
+					}
+
+					
+				}
+			});
+*/			
+		} else {
+			_draw_insertBlock( p );
+		}
+
+	};//end _draw_buildBlock()
+
+
+	var _draw_insertBlock = function( opt ){
+		var p = {
+			"templateID": false,
+			"locationID": "block-1",
+			"title" : "block",
+			"content" : false,
+			"callback":null
+		};
+		//extend options object
+		for(var key in opt ){
+			p[key] = opt[key];
+		}
+//console.log("_draw_insertBlock()", p);
+
+		var templateID = p["templateID"];
+		if( !webApp.vars["templates"][templateID] ){
+webApp.vars["logMsg"] = "_draw_insertBlock(), error, not found template, id:" + templateID;
+//func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- " + webApp.vars["logMsg"] );
+			if( typeof p["callback"] === "function"){
+				p["callback"]();
+			}
+			return false;
+		}
+		
+		if( !p["content"] || p["content"].length === 0){
+webApp.vars["logMsg"] = "_draw_insertBlock(), warning, not found or empty content block " + p["locationID"];
+//func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( "-- "+webApp.vars["logMsg"] );
+			//if( typeof p["callback"] === "function"){
+				//p["callback"]();
+			//}
+			//return false;
+		}
+		
+		var html = webApp.vars["templates"][templateID];
+		html = html.replace("{{block_title}}", p["title"]);
+		html = html.replace("{{content}}", p["content"]);
+		
+		var locationBlock = func.getById( p["locationID"] );
+		if( locationBlock ){
+			locationBlock.innerHTML = html;
+		} else {
+webApp.vars["logMsg"] = "error, not found block location id: " + p["locationID"];
+func.log("<p class='alert alert-danger'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+		}		
+		
+		if( typeof p["callback"] === "function"){
+			p["callback"]();
+		}
+
+	};//end _draw_insertBlock()
+
+
+	function _draw_updatePager(opt){
+		func.log("", "total-records");
+		func.log(opt["total_records"], "total-records");
+=======
 	var fieldKey = p["targetField"];
 	var itemKey;
 	
@@ -2307,8 +3684,20 @@ console.log("-- warning, empty field....", key2, item[key2]);
 		}//end __formListHtml
 
 	}//end _draw_wrapData()
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
+		var numRecordsPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+		var numPages = Math.ceil( opt["total_records"] / numRecordsPerPage);
+		webApp.vars["DB"]["numPages"] = numPages;
 
+<<<<<<< HEAD
+		//$("#page-number").val(numPages);
+		func.log("", "total-pages");
+		func.log(numPages, "total-pages");
+		
+		$("#page-number").val( opt["page_number"] );
+
+=======
 	var _draw_buildBlock = function(opt){
 //console.log("_buildBlock()", arguments);
 		var timeStart = new Date();
@@ -2451,11 +3840,14 @@ console.log( webApp.vars["logMsg"] );
 		
 		$("#page-number").val( opt["page_number"] );
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		$("#page-range").val(opt["page_number"]);
 		$("#page-range").attr("max", numPages);
 		
 		//$("#page-number-2").attr("max", numPages);
 	}//end _draw_updatePagers()
+<<<<<<< HEAD
+=======
 
 	function _draw_setActiveTrack( activeNum ){
 //console.log(activeNum);	
@@ -2488,3 +3880,4 @@ console.log( webApp.vars["logMsg"] );
 		});//end each
 	}//end _draw_clearAll()
 */
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d

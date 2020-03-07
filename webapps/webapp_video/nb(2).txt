@@ -1,0 +1,293 @@
+============
+- сделать начальное тестирование браузера на поддержку видеостандартов
+https://www.youtube.com/html5
+youtube, ответы на часто задаваемые вопросы о видео HTML5.
+
+https://developers.google.com/youtube/player_parameters
+Как встроить проигрыватель YouTube
+
+https://stackoverflow.com/questions/13650071/jplayer-video-from-youtube
+https://www.codeseek.co/renandecarlo/jplayer-playlist-with-youtube-video-yJqpPW
+
+https://habr.com/ru/post/306726/
+Youtube Player — создание собственного плеера на JavaScript
+
+http://vlc-mediaplayer.ru/vlc-plugin-firefox
+VLC Plugin для Mozilla Firefox
+
+
+- сделать возможность перехода к определенному плейлисту, или материалу, или списку тега
+необходим адрес перехода
+
+============================ NODES
+- при начальном запуске приложения отображать 10 видео,
+организовать добавление новых видео при прокрутке (лента, feed) или сделать прокрутку слайдером?
+*- подключить возможность постраничного вывода записей объекта nodes (video)
++выбор номера страницей происходит с помощью элемента input type="range" (input "text" для старых браузеров)
+
+- сортировка при выдаче записей страницы: 
+	*по дате создания (published)
+	*по алфавиту (title)
+1)сортировка глобальная, весь объект nodes
+2)сортировка фрагмента, nodelist
+
+
+*- wrapData(), для определения отсутствующих полей и замены их кодов ( {{description}} ), нужно
+перед заменой кодов выполнять поиск в шаблоне используемых кодов.
+Полученный массив кодов (где содержаться все используемые поля) будет необходим для
+последующей замены кодов данными.
+
+============================ TAXONOMY
+- сделать возможность использование в приложении иерархических списков: 
+	- список видео связанных одной темой (видеоуроки, видео муз. группы и проч.	видео одного жанра, формата)
+	- отобразить иерархию как в БД, так и в шаблонах
+
+- добавить возможность проигрывания составных плейлистов (коллекций) с помощью jPlayer
+плейлисты - это подшивки видео, музыкальных треков без иерархической вложенности
+посм. используемый плеер на др. сайтах (Яндекс.Музыка, Яндекс.Видео)
+- сделать блок с JPlayer в который можно добавлять записи из выдачи videolist (nodelist)
+
+- сделать проигрывание видео в разных форматах с локального сервера
+<iframe width="1024" height="768" src="http://youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+<iframe width="1024" height="768" src="//ok.ru/videoembed/" frameborder="0" allowfullscreen></iframe>
+<iframe width="1024" height="768" src="http://rutube.ru/play/embed/" frameborder="0" allowfullscreen></iframe>
+
+
+- определить HTML-блоки с таксономией, иерархическими подшивками
+HierarchyList
+//фильмы
+//видеоклипы, музыкальное видео
+//видеоуроки, программирование
+//мультипликация
+playlists
+
+- включить в XML данные таксономии (список тегов и иерархические подшивки)
+каким образом сделать привязку тегов к нодам, через tid?
+	+Теги имеют атрибут "name", который содержит кодовое название тега
+	<tags>
+		<item name="genre">драма</item>
+		<item name="video_format">короткометражный</item>
+		<item name="person_actor">Алексей Полуян</item>
+		<item name="person_producer"></item>
+		<item name="person_composer"></item>
+		<item name="file_format">avi</item>
+		<item name="alphabetical_list">А</item>
+		<item name="location_video">youtube</item>
+		<item name="creation_year">2008</item>
+country	
+music_video	
+	</tags>
+select * from nodes where tags.name="creation_year" and tags.value="1918"
+
+*- сделать поиск по тегу "видеоклипы", "youtube"
++select * from nodes where tags.name="type_video" and tags.value="видеоклипы"
++select * from nodes where tags.name="location_video" and tags.value="youtube"
+
+- добавить список тегов (вкл. в экспортный XML и создать соотв. блок на странице)
+
+- сделать поиск по ключевому слову (в title, description, producer, creators....links, имена файлов....)
+- сделать блокировку при выполнении запросов
+
+=========================== HTML,CSS
+боковая панель - список видеоклипов в виде плейлиста (или плитка из изображений-скриншотов с названиями )
+панель с блоком тегов - алфавитные и тематические теги, по дате
+
++рассмотреть интерфейсы - youtube, - yandex video, - twitter
+
+- по возможности, испльзовать canvas, webGl-графику
+
+*- добавить аккордеон для вывода видео
+- сделать вариант верстки с карточками видео, где находится заголовок и иконка
+- сделать вариант верстки, где для перехода от заголовка видео к отображению
+полной информации используется модальное окно
+- добавить строку навигации?
+- добавить виджет календаря для выборки видео по дате создания
+*- добавить индикатор во время загрузки данных и блокирующий слой.
+
+- исправить заголовок приложения при отображении в мобильных устройствах (съехал вниз...)
+- для мобильных устройств сделать скрытие сайдбаров
+
+*- стрелки на слайдере
+- если $("#page-range").attr("type"); !== "range", то выводить slider из jquery-ui.js
+*или скрывать $("#page-range"), $("#page-number-2")
+
+- ссылки перехода в виде таблицы
+*- добавить статичный блок ссылок (в footer или в sidebar)
+
+- подобрать шрифты для заголовков, описаний....
+- сделать окно пейджера перетаскиваемым или сворачиваемым
+
+=========================== TEMPLATES
+- сделать отдельный шаблон для ссылок с фильмами в формате Mkv
+если ссылка содержит file.mkv, то отбросить http://site-content и добавить file://path/file.mkv
+
+
+=========================== Data format, XML parse
+- необходимо считывать из XML данные в объекты с уникальными ключами (key = video_1)
+это позволит выбирать данные из JS-объекта быстрее, 
+тк используется обращение по ключу, а не перебор....
+
+- распределить данные по объектам
+	*- объект nodes (video и все дочернии теги с их атрибутами)
+	- объект taxonomy (список словарей с терминами)
+	- объект hierarchyList (список подшивок Drupal, список материалов Wordpress...)
+- добавить индикатор процесса парсинга XML
+
+*- _buildPage(), для циклического вывода блоков использовать замыкание
+
+- сделать метод _db_getBlockContent() для получения данных блока вывода (в т.ч. и асинхронно, из indexedDB)
+и формирования HTML с помощью _draw_wrapData({})
+
+
+=========================== ИМПОРТ, ЭКСПОРТ
+*- сделать скрипт импорта из БД Друпал в XML
+необходимо конвертировать данные массивов, полученных после  SQL запросов по правилам
+соответсвия полей ( 
+
+	field_data_field_title.field_title_value (delta=0)-->	video->title_ru
+	field_data_field_title.field_title_value (delta=1)-->	video->title_en
+	
+	node.type -->									video->type
+
+	field_data_field_producer.field_producer_value	-->	video->creators->producer
+<music_band>?
+
+	field_data_field_img_cover.field_img_cover_value --> video->pictures
+	field_data_field_url.field_url_value --> 		video->links (delta!)
+	field_data_body.body_value --> 					video->description
+	node.status --> 								video->public
+	node.created -->								video->published
+	node.changed -->								video->updated
+...
+)
+
+*- полученный массив данных вставить в XML, который формируется на основе шаблона, где места
+вставки данных обозначены кодами, названия которых совпадают с наименованием полей в 
+сконвертированном массиве данных.
+перебор массива и вставку в шаблон значений полей организовать в цикле
+
+- включить в XML данные таксономии (список тегов и иерархические подшивки)
+	<tags>
+		<item name="genre">драма</item>
+		<item name="video_format">короткометражный</item>
+		<item name="actor">Алексей Полуян</item>
+		<item name="actor">Михаил Марескин</item>
+		<item name="file_format">avi</item>
+		<item name="alphabetical_list">А</item>
+		<item name="location_video">youtube</item>
+		<item name="creation_year">2008</item>
+	</tags>
+не включать термины без нод!!!!!
+
+*- почему дублировался "Береги свою косынку, Татьяна" ???
+в поле producer два значения
+"Аки Каурисмяки"
+"Aki Kaurismaki"
+
+--------- SQL test (double records)
+SELECT 
+node.nid, 
+taxonomy_index.tid,
+taxonomy_term_data.name,
+-- node.vid, 
+node.title, 
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_field_title.field_title_value,
+field_data_field_title.delta,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_field_img_cover.field_img_cover_value,
+field_data_field_url.field_url_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
+LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='video' AND 
+node.title LIKE ('%Бельвилля%');
+
+------ one record
+SELECT 
+node.nid, 
+node.title, 
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_field_producer.field_producer_value,
+field_data_field_roles.field_roles_value,
+field_data_body.body_value
+FROM node
+LEFT JOIN field_data_field_producer ON field_data_field_producer.entity_id=node.nid
+LEFT JOIN field_data_field_roles ON field_data_field_roles.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='video';
+-- AND node.title LIKE ('%Бельвилля%');
+
+SELECT 
+node.nid, 
+node.title, 
+field_data_field_creators.field_creators_value,
+node.type, 
+node.created, 
+node.changed, 
+node.status,
+field_data_body.body_value
+FROM node
+LEFT JOIN field_data_field_creators ON field_data_field_creators.entity_id=node.nid
+LEFT JOIN field_data_body ON field_data_body.entity_id=node.nid
+WHERE 
+node.status=1 AND 
+node.type='videoclip' 
+-- AND node.title LIKE ('%Life%');
+
+
+------ get title (video->title_ru, video->title_en)
+SELECT 
+field_data_field_title.field_title_value,
+-- field_data_field_title.delta
+FROM node
+LEFT JOIN field_data_field_title ON field_data_field_title.entity_id=node.nid
+-- WHERE 
+-- node.nid=745;
+
+------ get pictures (video->pictures->img, video->pictures->poster)
+SELECT 
+field_data_field_img_cover.field_img_cover_value
+FROM node
+LEFT JOIN field_data_field_img_cover ON field_data_field_img_cover.entity_id=node.nid
+WHERE 
+node.nid=745;
+1283
+
+------ get links (video->links)
+SELECT 
+field_data_field_url.field_url_value
+FROM node
+LEFT JOIN field_data_field_url ON field_data_field_url.entity_id=node.nid
+WHERE 
+node.nid=745;
+1283
+
+------ get tags (video->tags)
+SELECT 
+taxonomy_index.tid,
+-- taxonomy_term_data.name
+FROM node
+LEFT JOIN taxonomy_index ON taxonomy_index.nid=node.nid
+-- LEFT JOIN taxonomy_term_data ON taxonomy_term_data.tid=taxonomy_index.tid
+WHERE 
+node.nid=745;
+1283

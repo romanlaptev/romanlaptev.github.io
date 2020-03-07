@@ -437,6 +437,12 @@ console.log( logMsg );
 			}
 			
 			function _loadEnd(){
+<<<<<<< HEAD
+				var all_headers = xhr.getAllResponseHeaders();
+		//console.log( all_headers );
+				if( typeof  p["onLoadEnd"] === "function"){
+					p["onLoadEnd"](all_headers);
+=======
 				var _headers = {
 					"all" : xhr.getAllResponseHeaders(),
 					"content-type" : xhr.getResponseHeader('content-type')
@@ -444,6 +450,7 @@ console.log( logMsg );
 //console.log( _headers );
 				if( typeof  p["onLoadEnd"] === "function"){
 					p["onLoadEnd"]( _headers);
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 				}
 			}//end _loadEnd()
 			
@@ -938,6 +945,8 @@ ONLY second LEVEL !!!!!!!!!!!!
 		}//end _parseXmlToObj()
 		
 		
+<<<<<<< HEAD
+=======
 		function _alert( message, level ){
 			switch (level) {
 				case "info":
@@ -968,6 +977,7 @@ ONLY second LEVEL !!!!!!!!!!!!
 			
 		}//end _alert()		
 		
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		// public interfaces
 		return{
 			getById: _getById,
@@ -984,9 +994,13 @@ ONLY second LEVEL !!!!!!!!!!!!
 			timeStampToDateStr: _timeStampToDateStr,
 			hashCode: _hashCode,
 			parseXmlToObj: _parseXmlToObj,
+<<<<<<< HEAD
+			convertXmlToObj: _convertXmlToObj
+=======
 			convertXmlToObj: _convertXmlToObj,
 			logAlert: _alert
 			
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			//get_content: function( params ){ 
 				//return get_content( params ); 
 			//}
@@ -1214,7 +1228,10 @@ console.log("textStatus:" + textStatus);
 }//end runAjaxJQuery();
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 window.onload = function(){
 	//btn_scroll = getById("btn-scroll-to-top");
 }//end load
@@ -1254,6 +1271,12 @@ if (document.addEventListener) {
 }
 
 if( typeof window.jQuery === "function"){
+<<<<<<< HEAD
+//var msg = 'jQuery version: ' + jQuery.fn.jquery;
+//console.log(msg);
+	$(document).ready(function(){
+		
+=======
 var msg = 'jQuery version: ' + jQuery.fn.jquery;
 console.log(msg);
 	$(document).ready(function(){
@@ -1265,6 +1288,7 @@ console.log(msg);
 //alert(msg);
 		}
 	
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		//------------------------- scroll to top
 		$("#scroll-to-top").click(function(e) {
 			e.preventDefault;
@@ -1273,7 +1297,11 @@ console.log(msg);
 				}, 500);
 			return false;
 		});
+<<<<<<< HEAD
+		
+=======
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
 				var id = $(this).attr("href");
@@ -1325,6 +1353,17 @@ console.log(msg);
 //var st = $(window).scrollTop();
 //document.title = st;
 //console.log ("scrollTop = " + st );
+<<<<<<< HEAD
+
+			//if ( $(this).scrollTop() > start_scroll_pos  ) {
+				//$("#btn-scroll-to-top").show();
+			//} 
+
+			//if ( $(this).scrollTop() < end_scroll_pos ) {
+				//$("#btn-scroll-to-top").hide();
+			//}
+=======
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	});//end scroll
 
 }

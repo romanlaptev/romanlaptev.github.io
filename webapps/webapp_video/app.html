@@ -18,18 +18,39 @@
 <!--
 	<link rel="stylesheet" href="css/breadcrumb.css">
 -->
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	<script src="js/lib/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap/bootstrap337.min.js"></script>
 
 	<!-- https://www.jqueryscript.net/form/User-Friendly-Number-Input-Spinner-with-jQuery-Bootstrap.html -->
+<<<<<<< HEAD
+<!--
+	<script src="js/bootstrap/bootstrap-number-input.js" ></script>
+-->
+
+=======
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 <!-- ################### player ################## -->
 <!--
 	<link type="text/css" rel="stylesheet" href="players/jPlayer-2.9.2/skin/blue.monday/css/jplayer.blue.monday.css"/>
 -->
 	<link type="text/css" rel="stylesheet" href="css/player_style.css">
 <!--
+<<<<<<< HEAD
+	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.min.js"></script>
+-->
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jplayer.playlist.min.js"></script>
 	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.jplayer.min.js"></script>
+<!--
+	<script type="text/javascript" src="players/JWPlayer/jwplayer.js"></script>
+=======
+	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" src="players/jPlayer-2.9.2/js/jquery.jplayer.min.js"></script>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 -->
 	<script src="js/players.js"></script>
 <!-- ################## /player ################## -->
@@ -52,6 +73,23 @@
 <body id="App">
 	
 <header class="container">
+<<<<<<< HEAD
+			<nav class="navbar">
+				
+				<div class="pull-left">
+					<ul class="nav nav-tabs">
+						<li><a class="btn btn-primary" href="../../index.html">index</a></li>
+						<li><a class="btn btn-blue-c4" data-toggle="collapse" href="#collapse-player">Player</a></li>
+						<li><a class="btn btn-blue" data-toggle="collapse" href="#collapse-search">Search</a></li>
+					</ul>
+				</div>
+				<div class="pull-right">
+					<h1 id="app-title">Application title</h1>
+				</div>
+				
+			</nav>
+
+=======
 	<nav class="navbar">
 		
 		<div class="pull-left">
@@ -67,6 +105,7 @@
 		</div>
 		
 	</nav>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 	<div class="log-panel panel">
 		<div class="panel-body">
@@ -84,6 +123,132 @@
 			
 	<div class="panel-group" id="header-links">
 		<div class="panel">
+<<<<<<< HEAD
+			  <div id="collapse-player" class="panel-collapse collapse">
+				
+<!-- ################################## players -->
+<!-- {{jPlayer-video}} -->
+				<div class="player">    
+					<div id="jp_container_1" 
+class="jp-video jp-video-360p"
+role="application" aria-label="media player">
+
+						<h5 id="playlist-title" class="text-center">#playlist-title</h5>
+						
+						<div class="jp-type-playlist">
+							<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+							<div class="jp-gui">
+								<div class="jp-video-play">
+				<!--
+				<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+				-->
+				<button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+								</div>
+								<div class="jp-interface">
+									<div class="jp-progress">
+										<div class="jp-seek-bar">
+											<div class="jp-play-bar"></div>
+										</div>
+									</div>
+				<!--
+									<div class="jp-current-time"></div>
+									<div class="jp-duration"></div>
+				-->
+				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+
+									<div class="jp-controls-holder">
+				<!--
+				<ul class="jp-controls">
+				<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+				<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+				<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+				<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+				<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+				<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+				<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+				<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				-->
+										<div class="jp-controls">
+				
+				<button class="jp-previous btn btn-sm btn-primary" role="button" tabindex="0">previous</button>
+				<button class="jp-play btn btn-sm btn-info" role="button" tabindex="0">play</button>
+				<button class="jp-next btn btn-sm btn-primary" role="button" tabindex="0">next</button>
+				<button class="jp-stop btn btn-sm btn-danger" role="button" tabindex="0">stop</button>
+				
+										</div>
+
+										<div class="jp-volume-bar">
+				<!--
+				<div class="jp-volume-bar-value"></div>
+				-->
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+				<div class="jp-volume-bar-value"></div>
+				</div>
+										</div>
+										
+				<!--
+				<ul class="jp-toggles">
+				<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+				<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+				<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+				<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+				<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+				<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+				</ul>
+				-->
+				<div class="jp-toggles">
+				<button class="jp-repeat" role="button" tabindex="0">repeat</button>
+				<button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+				<button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+				</div>
+									</div>
+									
+				<!--
+				<div class="jp-title">
+				<ul>
+				<li></li>
+				</ul>
+				</div>
+				-->
+									<div class="jp-details">
+										<div class="jp-title" aria-label="title">&nbsp;</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="jp-playlist">
+								<ul>
+									<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+									<li>&nbsp;</li>
+								</ul>
+							</div>
+							<div class="jp-no-solution">
+								<span>Update Required</span>
+								To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+							</div>
+						</div>
+					</div>
+				</div><!-- end player -->
+
+<!--
+				<div class="panel-body">
+					<div id="JWplayer1">Loading JW player...</div>
+				</div>
+-->
+				
+<!-- ################################## end player -->
+
+			</div><!-- end collapse-player -->
+		</div>
+		
+		<div id="collapse-search" class="panel-collapse collapse">
+<span id="block-taglist"></span>				
+		</div><!-- end collapse-search -->
+=======
 			<div id="collapse-player" class="panel-collapse collapse">
 <!--
 <span id="block-jplayer"></span>
@@ -129,6 +294,7 @@
 		<div id="collapse-search" class="panel-collapse collapse">
 <span id="block-search"></span>				
 		</div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	
 	</div><!-- end #header-links -->
 
@@ -139,6 +305,25 @@
 <div class="container">
 
 	<div class="row">
+<<<<<<< HEAD
+		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
+<span id="block-1"></span>
+		</div><!-- end sidebar left -->
+		
+		<div class="col-xs-10 col-sm-10 col-md-9 col-lg-8" id="main">
+			
+			<div class="panel block" id="pager">
+				<div class="panel-body">
+<small>					
+total records: <b><span id="total-records"></span></b>
+number of pages: <b><span id="total-pages"></span></b>
+</small>
+						<div class="block-num-page">							
+							<div class="pull-left">
+									<b>Page №:</b>
+							</div>
+							<div class="pull-right">
+=======
 		<div class="xs-hidden col-sm-1 col-md-2 col-lg-2" id="sidebar-left">
 
 		</div><!-- end sidebar left -->
@@ -157,6 +342,7 @@ number of pages: <b><span id="total-pages"></span></b>
 						<div class="block-num-page">
 							<div class="row">
 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"><b>Page №:</b></div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 <button id="page-number-less" class="pull-left btn btn-sm btn-info">-</button>
 <input id="page-number" type="text" value="1" size="3" maxlength="3" autocomplete="off" class="pull-left only-numbers form-control">
 <button id="page-number-more" class="pull-left btn btn-sm btn-info">+</button>
@@ -167,6 +353,10 @@ number of pages: <b><span id="total-pages"></span></b>
 							</div>
 -->
 						</div>		
+<<<<<<< HEAD
+
+						<input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
+=======
 					</div>
 				</div>
 				
@@ -174,6 +364,7 @@ number of pages: <b><span id="total-pages"></span></b>
 						<div class="">
 <input id="page-range" class="range" type="range" min="1" max="10" step="1" value="1" autocomplete="off">
 						</div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 				</div>
 				<div class="panel-body">
 					<label>sort by</label>
@@ -192,6 +383,12 @@ number of pages: <b><span id="total-pages"></span></b>
 
 		</div><!-- end main central area -->
 		
+<<<<<<< HEAD
+		<div class="col-xs-1 col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
+		</div><!-- end sidebar-right -->
+	</div>
+	
+=======
 		<div class="xs-hidden col-sm-1 col-md-1 col-lg-2" id="sidebar-right">
 		</div><!-- end sidebar-right -->
 	</div>
@@ -199,6 +396,7 @@ number of pages: <b><span id="total-pages"></span></b>
 <div class="">
 	<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
 </div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 </div><!-- end container -->
 
@@ -210,6 +408,12 @@ number of pages: <b><span id="total-pages"></span></b>
 
 
 
+<<<<<<< HEAD
+<div class="">
+	<button id="btn-scroll-to-top" class="btn btn-blue-c4 scroll-to" data-target="App">scroll to top</button>
+</div>
+=======
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 <!-- ********************** load progress bar ************************** -->	
 <div id="wait" class="hide"></div>

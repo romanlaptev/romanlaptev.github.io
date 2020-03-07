@@ -14,10 +14,17 @@ function _initPlayer(app){
 				//poster:"http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
 			},
 			{
+<<<<<<< HEAD
+				title:"test FLV",
+				artist:"test artist",
+				free:true,
+				flv: "../../test_code/html/test_media/video/hippo.flv"
+=======
 				title:"test2",
 				artist:"test artist",
 				free:true,
 				m4v: "../../test_code/html/test_media/video/video.mp4"
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			}			
 			/*,
 			{
@@ -73,6 +80,46 @@ function _initPlayer(app){
 
 
 function _player_addTrack( target ){
+<<<<<<< HEAD
+	var arr = target.href.split("track-");
+	//var numPages = webApp.vars["DB"]["numPages"];
+	//var numNodes = webApp.vars["DB"]["nodes"].length;
+	var numPerPage = webApp.vars["DB"]["numRecordsPerPage"];
+	var numPage = webApp.vars["GET"]["num_page"];
+
+	var numTrack = ((numPage * numPerPage) - numPerPage) + parseInt( arr[1] ) ;
+console.log(arr, numTrack, webApp.vars["DB"]["nodes"][numTrack]);
+
+	var artist = webApp.vars["DB"]["nodes"][numTrack]["creators"];
+	var title = webApp.vars["DB"]["nodes"][numTrack]["title"][0]["text"];
+	
+	var links = webApp.vars["DB"]["nodes"][numTrack]["ul"];
+	var href = "";
+	
+	for( var n = 0; n < links.length; n++){
+		if( links[n]["data-type"] && links[n]["data-type"] === "local-file"){
+			if( links[n]["href"].indexOf(".mp4") !== -1){
+				
+				if ( webApp["jPlaylist"] && webApp["vars"]["playlists"]["testPls"]["tracks"]) { 
+					webApp["jPlaylist"].add({
+						title: title,
+						artist: artist,
+						free: true,
+						m4v: links[n]["href"]
+					});
+					//webApp["jPlaylist"].play(-1);
+				}
+				
+			} else {
+webApp.vars["logMsg"] = "warning, not add track, not found source file mp4 format... ";
+func.log("<p class='alert alert-warning'>" + webApp.vars["logMsg"] + "</p>");
+console.log( webApp.vars["logMsg"] );
+				
+			}
+		} 
+		
+	}//next
+=======
 //console.log( target );
 //console.log( target.classList );
 //console.log( $(target).hasClass("wrong-video-type") );
@@ -148,6 +195,7 @@ func.logAlert( webApp.vars["logMsg"], "warning");
 		
 	//}//next
 	
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 }//_player_addTrack()
 
 

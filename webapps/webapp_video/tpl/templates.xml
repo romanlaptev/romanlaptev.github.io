@@ -28,6 +28,13 @@
 		<div class="">
 		
 			<div class="">
+<<<<<<< HEAD
+				<div class="thumbnail text-center pictures">
+{{pictures}}
+				<div class="links">{{ul}}</div>
+
+				</div>
+=======
 				<div class="text-center pictures">
 {{pictures}}
 				</div>
@@ -73,12 +80,17 @@
 				</div>
 </form>	
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			</div>
 		
 			<div class="panel-body">
 				<div class="producer">{{producer}}</div>
 				<div class="roles">{{roles}}</div>
+<<<<<<< HEAD
+				<div class="mark description">{{description}}</div>
+=======
 				<div class="description">{{description}}</div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 			</div>
 		
 		</div>
@@ -95,6 +107,8 @@
 	</div>	
 	
 </div>	
+<<<<<<< HEAD
+=======
 ]]>
 		</html_code>
 	</tpl>
@@ -197,6 +211,7 @@
 		<html_code>
 <![CDATA[
 	<h3 class="video-title">{{text}}</h3>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 ]]>
 		</html_code>
 	</tpl>
@@ -211,6 +226,79 @@
 		]]></html_code>
 	</tpl>
 	
+<<<<<<< HEAD
+	<tpl name="tpl-videolist-item--videoclip">
+		<html_code>
+<![CDATA[
+<div class="panel panel-primary video-list-item type-{{type}}">
+
+	<div class="panel-heading bg-lightskyblue">
+		<div class="pull-right">
+<a data-toggle="collapse" data-parent="#video-list-collapsible" href="#video-{{number}}" class="btn toggle-btn toggle-btn-hide">&gt;</a>
+		</div>
+		
+		{{number}}{{title}}
+		<p class="creators">{{creators}}</p>
+		<a class="btn btn-sm btn-default btn-add-track-pls" href="#track-{{number}}">add to playlist</a>
+	
+	</div>
+	
+	<div id="video-{{number}}" class="panel-collapse collapse">
+		<div class="">
+		
+			<div class="">
+				<div class="thumbnail text-center pictures">
+{{pictures}}
+	
+				<div class="links">{{ul}}</div>
+				</div>
+			</div>
+		
+			<div class="panel-body">
+				<div class="">{{creators}}</div>
+				<div class="mark description">{{description}}</div>
+			</div>
+		
+		</div>
+		
+		<div class="panel-body">
+<b>related tags:</b>
+{{tags}}
+		</div>
+		
+		<div class="panel-footer">
+<p>published:<b>{{published}}</b>, updated:<b>{{updated}}</b></p>
+		</div>
+
+	</div>	
+	
+</div>	
+]]>
+		</html_code>
+	</tpl>
+
+
+
+	<tpl name="tpl-videolist-list-title">
+		<html_code><![CDATA[
+<ul class="">{{list}}</ul>
+		]]></html_code>
+	</tpl>
+
+	<tpl name="tpl-videolist-item--title">
+		<html_code>
+<![CDATA[
+	<h3 class="video-title">{{text}}</h3>
+]]>
+		</html_code>
+	</tpl>
+
+
+
+
+
+	<tpl name="tpl-videolist-list-links">
+=======
 	<tpl name="tpl-videolist-item--ul">
 		<html_code>
 <![CDATA[
@@ -236,11 +324,26 @@
 	
 
 	<tpl name="tpl-videolist-list-tags">
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		<html_code><![CDATA[
 <ul class="list-inline">{{list}}</ul>
 		]]></html_code>
 	</tpl>
 	
+<<<<<<< HEAD
+	<tpl name="tpl-videolist-item--ul">
+		<html_code>
+<![CDATA[
+	<li>
+		<a class="btn btn-lg btn-orange" data-type="{{data-type}}" href="{{href}}" target="_blank">{{data-type}}, {{text}}</a>
+	</li>
+]]>
+		</html_code>
+	</tpl>
+	
+
+	<tpl name="tpl-videolist-list-tags">
+=======
 	<tpl name="tpl-videolist-item--tag">
 		<html_code>
 <![CDATA[
@@ -269,6 +372,7 @@
 
 
 	<tpl name="tpl-block">
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		<html_code><![CDATA[
 <div class="block panel panel-primary">
 	<div class="panel-heading bg-darkblue">
@@ -281,6 +385,20 @@
 		]]></html_code>
 	</tpl>	
 	
+<<<<<<< HEAD
+	<tpl name="tpl-videolist-item--tag">
+		<html_code>
+<![CDATA[
+	<li><a class="tag-link" href="?q=nodes-by-tag">{{text}}</a></li>
+]]>
+		</html_code>
+	</tpl>
+
+
+	<tpl name="tpl-videolist-list-pictures">
+		<html_code><![CDATA[
+<ul class="list-unstyled">{{list}}</ul>
+=======
 	<tpl name="tpl-block-videolist">
 		<html_code><![CDATA[
 <div class="block panel">
@@ -315,6 +433,7 @@
 		
 	</div>
 </div>			
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		]]></html_code>
 	</tpl>	
 
@@ -343,6 +462,30 @@
 		</ul>
 	</div>
 	
+<<<<<<< HEAD
+	<tpl name="tpl-videolist-item--img">
+		<html_code>
+<![CDATA[
+	<li><img src="{{src}}" title="{{src}}" alt="{{src}}"/></li>
+]]>
+		</html_code>
+	</tpl>
+
+
+
+
+
+	<tpl name="tpl-block">
+		<html_code><![CDATA[
+<div class="block panel panel-primary">
+	<div class="panel-heading bg-darkblue">
+		<h3 class="text-center">{{block_title}}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+=======
 	<div class="content panel-body">
 {{content}}
 	</div>
@@ -357,9 +500,66 @@
 	{{list}}
 </ul>
 			
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		]]></html_code>
-	</tpl>
+	</tpl>	
 	
+<<<<<<< HEAD
+	<tpl name="tpl-block-videolist">
+		<html_code><![CDATA[
+<div class="block panel">
+	<div class="panel-body">
+		<div class="content">{{content}}</div>
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>	
+
+	<tpl name="tpl-block-links">
+		<html_code><![CDATA[
+<div class="block">
+	<div class="content">
+	
+		<ul class="list-inline text-center">
+			<li><a href="https://www.youtube.com/channel/UCgp8hFrPYEx2F1SqEB8yUMg/playlists" target="_blank">youtube playlists</a></li>
+			<li><a href="https://yandex.ru/collections/user/roman-laptev/moi_video/" target="_blank">yandex.ru, collection</a></li>
+			<li><a href="https://yandex.ru/video/" title="">yandex.ru/video</a></li>
+			<li><a href="https://rutube.ru/" target="_blank">Видеохостинг Rutube</a></li>
+			<li><a href="http://megogo.net/ru" target="_blank">megogo.net</a></li>
+			<li><a href="https://www.kinopoisk.ru/mykp/movies/" target="_blank">Мой КиноПоиск</a></li>
+<!--
+			<li><a href="https://www.kinopoisk.ru/mykp/movies/list/type/6/" target="_blank">Мой Кинопоиск &gt; Любимые фильмы</a></li>
+-->
+		</ul>
+
+		<ul class="list-inline text-center">
+			<li><a href="../../test_code/html/test_media/test_audio_video.html" target="_blank">test_audio_video</a></li>
+			<li><a href="db/export_drupal_sqlite.php" target="_blank">export from Drupal, (sqlite, PHP)</a></li>
+			<li><a href="/sites/video/cms/" target="_blank">video, CMS Drupal</a></li>
+		</ul>
+		
+	</div>
+</div>			
+		]]></html_code>
+	</tpl>	
+
+
+
+
+	<tpl name="tpl-block-taglist">
+		<html_code><![CDATA[
+			<div class="panel panel-turquoise">
+				<div class="panel-heading">Tags</div>
+				<div class="panel-body content">
+{{content}}
+				</div>
+			</div>
+		]]></html_code>
+	</tpl>		
+	<tpl name="tpl-taglist">
+		<html_code><![CDATA[
+<ul class="list-inline">{{list}}</ul>
+=======
 	<tpl name="tpl-playlist-item">
 		<html_code>
 <![CDATA[
@@ -444,9 +644,21 @@
 				</div>
 </form>
 			</div>
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		]]></html_code>
 	</tpl>		
 	
+<<<<<<< HEAD
+	<tpl name="tpl-taglist-item">
+		<html_code>
+<![CDATA[
+	<li><a class="tag-link" href="?q=nodes-by-tag">{{name}}</a></li>
+]]>
+		</html_code>
+	</tpl>
+
+
+=======
 
 
 
@@ -532,6 +744,7 @@ role="application" aria-label="media player">
 		]]></html_code>
 	</tpl>	
 	
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	
 <!--
 	<tpl name="tpl-list">

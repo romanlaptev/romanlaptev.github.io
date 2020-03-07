@@ -3,13 +3,26 @@
 //console.log("func:", func);
 var _vars = {
 	"custom_colors": [
+<<<<<<< HEAD
+=======
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-red-brown","code": "#2f0606"},
 		{"colorName": "bg-darkblue3","code": "#0e1f40"},
 		{"colorName": "bg-darkblue4","code": "#062237"},
 		{"colorName": "bg-darkblue5","code": "#153449"},
 		{"colorName": "bg-darkblue-tango","code": "#0c253c"},
 		
+<<<<<<< HEAD
+		{"colorName": "bg-dark-violet","code": "#021859"},
+		{"code": "#130040"},
+
+		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
+
+		{"colorName": "bg-sky-blue66","code": "#003366"},
+		{"colorName": "bg-darkblue","code": "#004586"},
+		{"colorName": "bg-darkblue2","code": " #000080"},
+=======
 		{"colorName": "bg-darkblue-tango2",	"code": "#001b33"},
 		{"colorName": "bg-darkblue7","code": "#001B33"},
 		{"colorName": "bg-darkblue8","code": "#071F2C"},
@@ -24,6 +37,7 @@ var _vars = {
 
 		{"colorName": "bg-sky-blue66","code": "#003366"},
 		{"colorName": "bg-darkblue","code": "#004586"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		
 		{"colorName": "bg-lightblue2","code": "#083caf"},
 		{"colorName": "bg-blue1","code": "#0000bb"},/*css.html*/
@@ -46,6 +60,16 @@ var _vars = {
 
 		{"colorName": "bg-sky-blue4","code": "#0174e9"},
 		{"colorName": "bg-sky-blue6","code": "#0088FF"},
+<<<<<<< HEAD
+		{"colorName": "bg-sky-blue2","code": "#3399ff"},
+		{"colorName": "bg-sky-blue10","code": "#99ccff"},		
+		{"colorName": "bg-lightskyblue","code": "#87cefa"},
+
+
+		{"code": "#b1d0ef"},
+		{"colorName": "bg-lightsteelblue","code": "#b0c4de"},
+		{"colorName": "bg-lightsteelblue2","code": "#83A0C5"},
+=======
 		{"colorName": "bg-sky-blue7","code": "#007dfd"},
 		
 		{"colorName": "bg-sky-blue2","code": "#3399ff"},
@@ -57,13 +81,17 @@ var _vars = {
 		{"colorName": "bg-sky-blue11","code": "#cce5ff"},
 		
 		{"colorName": "bg-lightsteelblue","code": "#b0c4de"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-lightsteelblue4","code": "#b6cfed"},
 		
 		
 		{"colorName": "bg-lightblue5","code": "#BBD8E9"},
 		{"colorName": "bg-lightblue4","code": "#C9E0ED"},
 
+<<<<<<< HEAD
+=======
 		{"colorName": "bg-lightskyblue","code": "#87cefa"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-sky-blue","code": "#00ccff"},
 		{"colorName": "bg-sky-blue7","code": "#5bc0de"},
 		{"colorName": "bg-lightblue3","code": "#6aa6c0"},
@@ -82,6 +110,11 @@ var _vars = {
 		{"colorName": "bg-turquoise4","code": "#009b9b","text-color": "#fff"},
 		
 		{"colorName": "bg-blue8","code": "#669999","text-color": "#fff"},
+<<<<<<< HEAD
+		{"colorName": "bg-blue9","code": "#99cccc"},
+
+		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
+=======
 		{"colorName": "bg-green-grey1","code": "#8ebac5"},
 		{"colorName": "bg-green-grey2","code": "#99cccc"},
 
@@ -89,6 +122,7 @@ var _vars = {
 		{"colorName": "bg-darkgreen22","code": "#003438"},
 		{"colorName": "bg-darkgreen2","code": "#094546"},/* windows7 desktop */
 		{"colorName": "bg-darkgreen4","code": "#072F07"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-darkgreen33","code": "#003200"},/* windowsXP desktop */
 		{"colorName": "bg-darkgreen","code": "#0d4524"},/* gitlab header */
 		{"colorName": "bg-turquoise7","code": "#006633"},
@@ -96,7 +130,10 @@ var _vars = {
 		{"colorName": "bg-green-grass3","code": "#18a050","text-color":"#000"},/* gitlab button, border */
 		{"colorName": "bg-green-grass2","code": "#1aaa55","text-color":"#000"},/* gitlab button, bg */
 		{"colorName": "bg-turquoise9","code": "#66cc99"},
+<<<<<<< HEAD
+=======
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-green-lime","code": "#98FB98","text-color": "#000"},/* video.css */
 		{
 			"colorName": "bg-palegreen",
@@ -108,17 +145,28 @@ var _vars = {
 		{"colorName": "bg-lightgreen","code": "#d9ead3"	},
 		{"code": "#c3cbbe","colorName": "IIS header table block"},/* IIS header table block*/
 		{"colorName": "bg-grey-green4","code": "#e6eaec"},/* book_Rods */
+<<<<<<< HEAD
+=======
 		{"code": "#e2e9ef"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-palegrey-green","code": "#f0f3f6"},
 
 		
 		{"colorName": "bg-blue-grey","code": "#315570"},
 		{"colorName": "bg-grey-blue","code": "#5a819d","text-color": "#000000"},
 
+<<<<<<< HEAD
+		{
+			"colorName": "bg-grey2", /* comp-books.css */
+			"code": "#5E789C",
+			"text-color":"#fff"
+		},
+=======
 		{"colorName": "bg-grey2","code": "#5E789C","text-color":"#fff"},/* comp-books.css */
 		{"colorName": "steel-grey",	"code": "#53687c","text-color":"#fff"},
 
 		
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		{"colorName": "bg-grey6, dm-modal","code": "#607d8b","text-color":"#fff"},/* dm-modal */
 		
 		{"colorName": "bg-grey-green2",	"code": "#607d8b","text-color":"#fff"},
@@ -136,10 +184,14 @@ var _vars = {
 		{"colorName": "bg-grey5","code": "#475570"},/*css.html*/
 		{"text-color": "#ffffff","code": "rgb(77,92, 106)"},
 		{"colorName": "winxp desktop color2","text-color": "#ffffff","code": "rgb(65, 65, 65)"},
+<<<<<<< HEAD
+		{"colorName": "bg-grey-c8","code": "#333340"},
+=======
 		{"colorName": "bg-grey11","code": "#3e3e3e"},
 		
 		{"colorName": "bg-grey-c8","code": "#333340"},
 		{"colorName": "bg-grey12","code": "#232323"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 		{"colorName": "bg-grey1","code": "#404050"},/* comp-books.css */
 		{"colorName": "winxp desktop","text-color": "#ffffff","code": "rgb(77, 66, 90)"},
@@ -148,7 +200,10 @@ var _vars = {
 		{"colorName": "bg-grey-c9","code": "#70708c","text-color":"#000"},
 		{"colorName": "bg-red-pink","code": "#a68caa","text-color": "#000000"},
 
+<<<<<<< HEAD
+=======
 		{"code": "#c0c4d7"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 		{"colorName": "bg-purple","code": "#9999CC","text-color":"#000"},
 		{"colorName": "bg-violet","code": "#99c"},
@@ -195,9 +250,15 @@ var _vars = {
 		{"colorName": "bg-orange3","code": "#ffa500"
 		},
 		{"colorName": "bg-orange4","code": "#FECD90"},
+<<<<<<< HEAD
+=======
 		{"colorName": "bg-orange5","code": "#ffcc99"},
+<<<<<<< HEAD:projects/custom_colors/js/main.js
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
+=======
 		{"colorName": "bg-orange55","code": "#E9B96E"},
 
+>>>>>>> dev:projects/webcolors/js/main.js
 
 		{"code": "#bf794e"},
 		{"code": "#bf864e"},
@@ -206,9 +267,17 @@ var _vars = {
 		{"code": "#efc8b1"},
 
 		{"colorName": "bg-pale-rose-c5","code": "#d3c5be"},/* comp-books.css */
+<<<<<<< HEAD
+=======
 		{"code": "#EAE2D3"},
 		{"code": "#E0E0E0"},
 		{"code": "#e9f0f0"},
+<<<<<<< HEAD:projects/custom_colors/js/main.js
+
+
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
+=======
+>>>>>>> dev:projects/webcolors/js/main.js
 		
 		{"code": "#f3f3f3","text-color":"#000"}
 		
@@ -305,12 +374,19 @@ var _vars = {
 
 {"colorName": "darkolivegreen", "code": "#556b2f"},
 {"colorName": "olivedrab", "code": "#6b8e23", "text-color": "#fff"},
+<<<<<<< HEAD
+{"colorName": "olive", "code": "#808000"},
+{"colorName": "yellowgreen", "code": "#9acd32"},
+
+{"colorName": "darkkhaki", "code": "#bdb76b"},
+=======
 {"colorName": "yellowgreen", "code": "#9acd32"},
 {"colorName": "olive", "code": "#808000"},
 
 {"colorName": "darkkhaki", "code": "#bdb76b"},
 {"colorName": "Grayish yellow, Серовато-желтый", "code": "#D0CCA5"},
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"colorName": "darkgoldenrod", "code": "#b8860b"},
 {"colorName": "burlywood", "code": "#deb887"},
 
@@ -416,6 +492,8 @@ var _vars = {
 	], //end
 
 "wiki_colors": [
+<<<<<<< HEAD
+=======
 {"text-color": "#000000", "code": "#303030","colorName": "Антрацитовый"},
 {"text-color": "#000000", "code": "#464646","colorName": "Угольный"},
 {"code": "#3f3f3f", "text-color": "#ffffff"},
@@ -431,6 +509,7 @@ var _vars = {
 {"colorName": "Фельдграу","code": "#4D5D53","text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#21421E","colorName": "Мирт"},
 {"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 	{
 		//"colorName": "aliceblue",
 		"code": "#2A3443",
@@ -451,15 +530,34 @@ var _vars = {
 {"code": "#e0e0c3", "text-color": "#4D4128"},
 {"code": "#ead9c2", "text-color": "#4D4128"},
 {"code": "#f1ebe2", "text-color": "#4D4128"},
+<<<<<<< HEAD
+{"code": "#707070", "text-color": "#ffffff"},
+{"code": "#3f3f3f", "text-color": "#ffffff"},
+{"code": "#666", 	"text-color": "#ffffff"},
+{"code": "#beb49b", "text-color": "#ffffff"},
+{"code": "#d8c8b3", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#f3f3f3"},
+{"text-color": "#000000", "code": "#D0CCD5"},
+{"text-color": "#000000", "code": "#dedddf"},
+{"text-color": "#000084", "code": "#c6c3c6"},
+{"text-color": "#794F4B", "code": "#c6c3c6"},
+=======
 
 {"code": "#beb49b", "text-color": "#ffffff"},
 {"code": "#d8c8b3", "text-color": "#ffffff"},
 
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"code": "#4D425A", "text-color": "#ffffff"},
 {"code": "#580C61", "text-color": "#ffffff"},
 {"code": "#4b0082", "text-color": "#ffffff"},
 {"code": "#2E1441", "text-color": "#ffffff"},
 {"code": "#41013D", "text-color": "#ffffff"},
+<<<<<<< HEAD
+{"code": "#4f5a6e", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#D5DBE1"},
+{"code": "#a7adbc", "text-color": "#ffffff"},
+{"code": "#c9c6d3", "text-color": "#45557a"},
+=======
 
 {"text-color": "#000000", "code": "#f3f3f3"},
 {"text-color": "#000000", "code": "#D0CCD5", "colorName": "Grayish violet, Серовато-фиолетовый"},
@@ -471,10 +569,28 @@ var _vars = {
 {"code": "#c9c6d3", "text-color": "#45557a"},
 
 {"code": "#130040", "text-color": "#ffffff"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"code": "#45557a", "text-color": "#c9c6d3"},
 
 //BLUE, DARKBLUE
 {"code": "#003089", "text-color": "#ffffff"},
+<<<<<<< HEAD
+{"code": "#055c80", "text-color": "#ffffff"},
+{"code": "#3d5afe", "text-color": "#ffffff"},
+{"code": "#5a5eff", "text-color": "#ffffff"},
+{"code": "#7cc0de", "text-color": "#ffffff"},
+{"code": "#00c1d5", "text-color": "#ffffff"},
+{"code": "#C7D5EC", "text-color": "#ffffff"},
+{"code": "#3950C9", "text-color": "#ffffff"},
+{"code": "#130040", "text-color": "#ffffff"},
+{"code": "#1e73be", "text-color": "#ffffff"},
+{"code": "#b1d0ef", "text-color": "#0e1f40"},
+{"code": "#4e86bf", "text-color": "#ffffff"},
+{"code": "#324f5a", "text-color": "#ffffff"},
+{"code": "#00B8D9", "text-color": "#ffffff"},
+{"code": "#ccf", "text-color": "#000"},
+{"code": "#def", "text-color": "#0088cc"},
+=======
 
 {"code": "#3d5afe", "text-color": "#ffffff"},
 {"code": "#5a5eff", "text-color": "#ffffff"},
@@ -496,6 +612,7 @@ var _vars = {
 {"code": "#324f5a", "text-color": "#ffffff"},
 
 {"code": "#055c80", "text-color": "#ffffff"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"code": "#196e9c", "text-color": "#ffffff"},
 {"code": "#0060a0", "text-color": "#ffffff"},
 {"code": "#0061A0", "text-color": "#ffffff"},
@@ -509,6 +626,40 @@ var _vars = {
 {"code": "#21301f", "text-color": "#bad6c2"},
 {"code": "#004000", "text-color": "#ffffff"},
 {"code": "#1a4216", "text-color": "#ffffff"},
+<<<<<<< HEAD
+{"code": "#90D389", "text-color": "#003200"},
+{"code": "#38d878", "text-color": "#ffffff"},
+{"code": "#f0fde3", "text-color": "#59af52"},
+{"code": "#cfdfcc", "text-color": "#000000"},
+{"code": "#d8efe0", "text-color": "#008000"},
+{"text-color": "#ffffff", "code": "#238f11"},
+{"code": "#d9ee7f", "text-color": "darkgreen"},
+{"code": "#a9bf4e", "text-color": "darkgreen"},
+{"code": "#E3EFB1", "text-color": "darkgreen"},
+{"code": "#b2c27a", "text-color": "#ffffff"},
+{"code": "#70D14E", "text-color": "#ffffff"},
+{"code": "#03AEA6", "text-color": "#ffffff"},
+{"text-color": "#000000", "code": "#E5F2C0"},
+{"code": "#0C9E54", "text-color": "#ffffff"},
+
+{"text-color": "#000000", "code": "#7BA05B","colorName": "Спаржа, #7BA05B"},
+{"text-color": "#000000", "code": "#78866B","colorName": "Защитный, #78866B"},
+{"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
+
+{"text-color": "#000000", "code": "#50C878","colorName": "Изумрудный, #50C878"},
+{"text-color": "#000000", "code": "#4F7930","colorName": "Папоротник, #4F7930"},
+{"text-color": "#000000", "code": "#465945","colorName": "Серая спаржа, #465945"},
+{"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
+{"text-color": "#000000", "code": "#21421E","colorName": "Мирт, #21421E"},
+{"text-color": "#000000", "code": "#808000","colorName": "Оливковый, #808000"},
+{"text-color": "#000000", "code": "#6B8E23","colorName": "Оливково-серый, #6B8E23"},
+{"text-color": "#000000", "code": "#D1E231","colorName": "Груша, #D1E231"},
+
+{"text-color": "#000000", "code": "#00FF7F","colorName": "Весенняя зелень, #00FF7F"},
+{"text-color": "#000000", "code": "#ACB78E","colorName": "Болотная зелень, #ACB78E"},
+
+{"text-color": "#000000", "code": "#D0F0C0","colorName": "Зелёный чай,#D0F0C0"},
+=======
 {"text-color": "#000000", "code": "#4D5D53","colorName": "Фельдграу, #4D5D53"},
 {"code": "#C1CCCD"},
 {"text-color": "#000000", "code": "#CECECE","colorName": "Серебристый, #CECECE"},
@@ -546,6 +697,7 @@ var _vars = {
 {"text-color": "#000000", "code": "#ADDFAD","colorName": "Мох, #ADDFAD"},
 {"text-color": "#000000", "code": "#ACE1AF","colorName": "Серо-зелёный, #ACE1AF"},
 {"code": "#90D389", "text-color": "#003200"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"text-color": "#000000", "code": "#D1E189","colorName": "Lime pulp,#D1E189"},
 
 {"text-color": "#000000", "code": "#DFFF00","colorName": "Жёлтый шартрез, #DFFF00"},
@@ -559,10 +711,15 @@ var _vars = {
 {"text-color": "#000000", "code": "#32CD32","colorName": "Лаймовый, Lime_Green, #32CD32"},
 {"text-color": "#000000", "code": "#00A500","colorName": "Ярко-зелёный с желтоватым отливом, #00A500"},
 {"text-color": "#000000", "code": "#228B22","colorName": "Лесная зелень, #228B22"},
+<<<<<<< HEAD
+{"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
+{"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
+=======
 {"code": "#0C9E54", "text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#009900","colorName": "Мусульманский,Islamic_green, #009900"},
 {"text-color": "#000000", "code": "#008000","colorName": "Office green, #008000"},
 {"text-color": "#ffffff", "code": "#238f11"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 {"text-color": "#000000", "code": "#355E3B","colorName": "Охотничий,Hunter_green, #355E3B"},
 {"text-color": "#000000", "code": "#2E8B57","colorName": "Морская зелень, #2E8B57"},
@@ -571,25 +728,67 @@ var _vars = {
 {"text-color": "#000000", "code": "#01796F","colorName": "Сосна,#01796F"},
 {"text-color": "#000000", "code": "#40826D","colorName": "Виридиан, #40826D"},
 
+<<<<<<< HEAD
+{"text-color": "#000000", "code": "#00A693","colorName": "Персидский зелёный, #00A693"},
+{"text-color": "#000000", "code": "#4D5D53","colorName": "Фельдграу, #4D5D53"},
+{"code": "#cccc99", "text-color": "#ffffff"},
+
+// YELLOW
+{"code": "#FFDF00", "text-color": "maroon"},
+{"code": "#fffbe1", "text-color": "darkgreen"},
+=======
 {"code": "#03AEA6", "text-color": "#ffffff"},
 {"text-color": "#000000", "code": "#00A693","colorName": "Персидский зелёный, #00A693"},
 {"code": "#cccc99", "text-color": "#ffffff"},
 {"code": "#fffbe1", "text-color": "darkgreen"},
 
 {"code": "#FFDF00", "text-color": "maroon"},
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 {"text-color": "#000000","code": "#f89406"},
 
 
 // RED
 {"code": "#E23817", "text-color": "#ffffff"},
 {"code": "#de4f00", "text-color": "#ffffff"},
+<<<<<<< HEAD
+{"code": "#bd362f", "text-color": "#ffffff"},
+
+// SILVER
+{"text-color": "#000000", "code": "#BFBFBF","colorName": "Серый, #BFBFBF"},
+{"text-color": "#000000", "code": "#AFAFAF","colorName": "Стальной, #AFAFAF"},
+{"text-color": "#000000", "code": "#CECECE","colorName": "Серебристый, #CECECE"},
+{"text-color": "#000000", "code": "#C7D0CC","colorName": "Перламутровый, #C7D0CC"},
+{"text-color": "#000000", "code": "#798081","colorName": "Свинцовый, #798081"},
+{"text-color": "#000000", "code": "#9E9E9E","colorName": "Мышиный, #9E9E9E"},
+{"text-color": "#000000", "code": "#303030","colorName": "Антрацитовый, #303030"},
+{"text-color": "#000000", "code": "#79A0C1","colorName": "Сизый, #79A0C1"},
+{"text-color": "#000000", "code": "#CADABA","colorName": "Серо-зелёный чай, #CADABA"},
+{"text-color": "#000000", "code": "#505050","colorName": "Мокрый асфальт,#505050"},
+{"text-color": "#000000", "code": "#464646","colorName": "Угольный,#464646"},
+{"text-color": "#000000", "code": "#708090","colorName": "Грифельный,#708090"},
+{"colorName": "Фельдграу","code": "#4D5D53","text-color": "#ffffff"}
+=======
 {"code": "#bd362f", "text-color": "#ffffff"}
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 
 	] //end
 
 }
 console.log(_vars);
 
+<<<<<<< HEAD
+if( typeof window.jQuery === "function"){
+//var msg = 'jQuery version: ' + jQuery.fn.jquery;
+//func.log(msg);
+
+	$(document).ready(function(){
+//console.log("document ready");
+	});//end ready	
+
+}
+
+=======
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 window.onload = function(){
 console.log("window event onload");
 //console.log( navigator.userAgent );
@@ -618,7 +817,10 @@ function createPalette( target, colors ){
 		newDiv.className = "block";
 		var _color = colors[n]["code"];
 		newDiv.setAttribute("style", "background-color:"+_color+";");
+<<<<<<< HEAD
+=======
 		//newDiv.setAttribute("id", "color-"+_color.replace("#", "") );
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		
 		if( colors[n]["text-color"] ){
 			newDiv.style.color = colors[n]["text-color"];
@@ -651,11 +853,18 @@ function createPalette( target, colors ){
 		
 		//newDiv.innerHTML = "<p>" + colors[n]["code"] + "</p>";
 		
+<<<<<<< HEAD
+=======
 //----------------------------------
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		newDiv.onclick = function(e){
 //console.log("click!", this);
 //console.log( this.target );
 		   copyToClipboard( this );
+<<<<<<< HEAD
+		};
+		//newDiv.addEventListener("click", copyToClipboard(e) );
+=======
 		};//end event
 		//newDiv.addEventListener("click", copyToClipboard(e) );
 //----------------------------------
@@ -710,6 +919,7 @@ function createPalette( target, colors ){
 			//block.style.position = 'static';
 		};//end event
 //----------------------------------
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 		
 		//_vars["pallete"].appendChild( newDiv );	
 		target.appendChild( newDiv );	
@@ -718,12 +928,16 @@ function createPalette( target, colors ){
 	
 }//end createPalette()
 
+<<<<<<< HEAD
+
+=======
 function moveAt(e) {
 	var block = e.target;
 	block.style.left = e.pageX - block.offsetWidth / 2 + 'px';
 	block.style.top = e.pageY - block.offsetHeight / 2 + 'px';
 }
 		
+>>>>>>> b3027fd39200407f359bf11f6922977309f52c7d
 function copyToClipboard( colorBox ){
 console.log( colorBox.title );
 
