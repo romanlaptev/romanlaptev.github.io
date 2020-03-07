@@ -1,8 +1,0 @@
-npm install gulp --save-dev
-npm i gulp-sass --save-dev
-npm install browser-sync --save-dev
-
-gulp default
-gulp task_sass
-gulp task_browser-sync
-

@@ -42,5 +42,12 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 
 // Default task.
 //grunt.registerTask('default', ['concat']);
-grunt.registerTask('default', [ 'uglify' ]);
+grunt.registerTask('default', 
+[
+	'concat',
+	'uglify'
+]
+	
+);
+
 };
