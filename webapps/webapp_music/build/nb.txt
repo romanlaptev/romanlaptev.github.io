@@ -1,0 +1,10 @@
+npm init
+npm install grunt
+npm install grunt-contrib-concat
+npm install grunt-contrib-uglify
+
+touch Gruntfile.js
+#edit Gruntfile.js
+#Build project
+grunt
+

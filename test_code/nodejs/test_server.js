@@ -9,8 +9,10 @@ http.createServer(function(request, response) {
 var http = require("http");
 var _url = require("url");
 
+
 http.createServer(onRequest).listen(3000, function(){
 console.log("Server has been started.");
+	//_sendInitRequest();
 });
 
 function onRequest(request, response) {
@@ -67,5 +69,40 @@ console.log( urlParsed );
 
 }//end onRequest()
 
+//http://localhost:3000/echo?message=Hello
+function _sendInitRequest(){
+/*
+var url = "http://yandex.ru";
+//var url = "http://localhost/sites";
+http.get( url, function(res){
+console.log("-- init request");
+//console.log(arguments);
+console.log(res.statusCode);
+console.log(res.headers);
+console.log("-------------------");
+}).on("error", function(e){
+	console.error(e);
+});
+ */
 
+/*
+	var reqObj = {
+hostname: "localhost",
+//port: 3000,
+//path: "/echo?message=initRequest",
+port: 80,
+path: "/sites",
+method: "GET"
+};
+	http	.request( reqObj, function( res ){
+console.log("-- init request");
+console.log( res );
+console.log("-------------------");
+	})
+	.on("error", function(e){
+console.error(e);
+	});
+*/
+
+}//end _sendInitRequest()
 
