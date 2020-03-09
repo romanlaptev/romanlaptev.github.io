@@ -1,4 +1,6 @@
 <?php
+//readfile('http://rex.dax.ru/index.php');
+
 	$html=file_get_contents("https://drive.google.com/folderview?hl=ru&id=0B0l5s_9HQLzzTzBfTzFtRVVyNlU#list");
 	//echo htmlspecialchars($html);
 	echo $html;
