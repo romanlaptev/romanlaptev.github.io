@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml_data date-update="15.06.2015, 17:14">
+	<courses>
+		<course id="1">
+			<title>Javascript</title>
+			<description>Hexlet University</description>
+		</course>
+		<course id="2">
+			<title>Yii framework</title>
+			<description>Чапурин Вл. Yii framework. Основной курс</description>
+		</course>
+		<course id="4">
+			<title>HTML-верстка на Bootstrap</title>
+			<description></description>
+		</course>
+		<course id="5">
+			<title>1.jQuery</title>
+			<description></description>
+		</course>
+	</courses>
+	<lessons>
+		<lesson id="1" course_id="1">
+			<title>лекция 3 Функции. Замыкания</title>
+			<description>Hexlet University</description>
+			<url>http://mycomp/video/video_lessons/js_HexletUniversity/JavaScript,%20%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F%203%20%D0%A4%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8.%20%D0%97%D0%B0%D0%BC%D1%8B%D0%BA%D0%B0%D0%BD%D0%B8%D1%8F.mp4</url>
+		</lesson>
+		<lesson id="2" course_id="1">
+			<title>лекция 4. Наследование</title>
+			<description>Hexlet University</description>
+			<url>http://mycomp/video/video_lessons/js_HexletUniversity/JavaScript, лекция 4 Наследование.mp4</url>
+		</lesson>
+		<lesson id="3" course_id="1">
+			<title>лекция 6 Регулярные выражения</title>
+			<description>Hexlet University</description>
+			<url>http://mycomp/video/video_lessons/js_HexletUniversity/JavaScript, лекция 6 Регулярные выражения.mp4</url>
+		</lesson>
+		<lesson id="4" course_id="1">
+			<title>лекция 7 Сравнения, var, eval и заключение</title>
+			<description>Hexlet University</description>
+			<url>http://mycomp/video/video_lessons/js_HexletUniversity/JavaScript, лекция 7 Сравнения, var, eval и заключение.mp4</url>
+		</lesson>
+		<lesson id="5" course_id="4">
+			<title>Подключение Bootstrap</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/HTML-верстка на Bootstrap/1 Подключение Bootstrap.mp4</url>
+		</lesson>
+		<lesson id="6" course_id="0">
+			<title>Bootstrap: Как создаются современные адаптивные сайты</title>
+			<description>test2</description>
+			<url>https://www.youtube.com/embed/-wcy1Bsq-Ls</url>
+		</lesson>
+		<lesson id="7" course_id="4">
+			<title>Container и Row - что это</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/HTML-верстка на Bootstrap/2 Container и Row - что это.mp4</url>
+		</lesson>
+		<lesson id="8" course_id="4">
+			<title>Navbar - разметка навигации для сайта</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/HTML-верстка на Bootstrap/3 Navbar - разметка навигации для сайта.mp4</url>
+		</lesson>
+		<lesson id="9" course_id="2">
+			<title>урок 1</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/Yii framework/01.mp4</url>
+		</lesson>
+		<lesson id="10" course_id="2">
+			<title>урок 2</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/Yii framework/02.mp4</url>
+		</lesson>
+		<lesson id="11" course_id="2">
+			<title>урок 3</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/Yii framework/03.mp4</url>
+		</lesson>
+		<lesson id="12" course_id="2">
+			<title>урок 04. Controllers</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/Yii framework/04_Controllers.mp4</url>
+		</lesson>
+		<lesson id="13" course_id="2">
+			<title>урок 05. Model</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/Yii framework/05_Model.mp4</url>
+		</lesson>
+		<lesson id="14" course_id="5">
+			<title>Селекторы и фильтры, Lesson1</title>
+			<description></description>
+			<url>http://mycomp/video/video_lessons/1.jQuery/chapter1/1.Селекторы и фильтры/Lesson1.mp4</url>
+		</lesson>
+	</lessons>
+</xml_data>
