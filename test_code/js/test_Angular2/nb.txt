@@ -2,3 +2,7 @@ npm install
 npm start 
 rem node .\node_modules\typescript\bin\tsc --help
 rem node .\node_modules\typescript\bin\tsc app\app.component.ts
+
+https://www.youtube.com/watch?v=Rf54BH35yrY
+Angular 8 Основы. Полный Курс для начинающих
+
