@@ -1,0 +1,17 @@
+#http://getinstance.info/articles/tools/9-gulp-plugins/
+
+#npm install gulp --save-dev
+npm install gulp
+gulp -v
+npm i gulp-concat
+npm i gulp-uglify
+npm i gulp-util
+
+npm i gulp-sass --save-dev
+npm install browser-sync --save-dev
+
+gulp default
+gulp task_sass
+gulp task_browser-sync
+gulp test_build
+
