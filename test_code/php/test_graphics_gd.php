@@ -22,7 +22,7 @@ ini_set('display_errors', 1);
 //https://www.php.net/manual/ru/function.get-loaded-extensions.php
 $loadedExt = get_loaded_extensions();
 if ( !in_array("gd", $loadedExt ) ) {
-	$msg = "<p>-- error, GD graphical module  is not in of the list loaded extensions...</p>";
+	$msg = "<p>-- error, GD graphical module  is not in the list of loaded extensions...</p>";
 	echo $msg;
 echo "loaded_extensions:<pre>";
 print_r( $loadedExt );
@@ -38,7 +38,7 @@ if (!extension_loaded("gd") ) {
 		if ( dl("gd.so") ) {//try dynamic load module
 			//$msg = "<p>-- success, graphical module GD available...</p>";
 			//echo $msg;
-			runApp();
+			runTest();
 		} else {
 			$msg = "<p>-- error, graphical module GD not loaded...</p>";
 			$msg .= "<p>-- failed load gd.so..</p>";
