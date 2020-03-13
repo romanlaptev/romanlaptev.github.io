@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 1);
 
 class FirstClass {
 	private $name;
@@ -10,7 +12,7 @@ class FirstClass {
 	function __construct($argv){//PHP5
 
 		$this->className = get_class( $this);
-echo "Object of class ".$this->className." was created. "."\n";
+echo "Object of class ".$this->className." was created. "."<br>\n";
 
 		$this->greeting = $argv;
 		$this->name = "Roman";
@@ -24,7 +26,7 @@ echo "my age: ".$this->age."\n";
 	}//end
 
 	function __destruct(){
-echo "Object of class ".$this->className." was destroyed. "."\n";
+echo "Object of class ".$this->className." was destroyed. "."<br>\n";
 	}//end
 
 }//end class
