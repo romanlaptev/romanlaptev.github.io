@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <table name='notes'>
-	<note title="lxde, autostart                                                                                                                                                                                                                                                " author="anonymous           " ip="10.63.23.236        " client_date="2019-11-16" server_date="2019-11-16" >
+	<note title="grep                                                                                                                                                                                                                                                           " author="anonymous           " ip="10.9.216.41         " client_date="2020-03-12" server_date="2020-03-12" >
 		<text_message>
+grep -r --include=*.php &amp;quot;search string&amp;quot; /path/to/dir
+		</text_message>
+	</note>
+	<note title="обновить nodejs                                                                                                                                                                                                                                                " author="nodejs, update      " ip="10.79.206.66        " client_date="2020-02-09" server_date="2020-02-09" >
+		<text_message>
+[code]
+First update npm,
+npm install -g npm stable
+
+Then update node,
+npm install -g node or npm install -g n
+
+check after version installation,
+node --version or node -v
+https://stackoverflow.com/questions/8191459/how-do-i-update-node-js
+[/code]
+		</text_message>
+	</note>
+	<note title="lxde, autostart                                                                                                                                                                                                                                                " author="anonymous           " ip="10.186.239.155      " client_date="2019-12-11" server_date="2019-12-11" >
+		<text_message>
+test[br]
 /home/roman/.config/lxsession/LXDE/autostart[br]
 [br]
 @lxpanel --profile LXDE[br]
@@ -9,7 +30,15 @@
 @xscreensaver -no-splash[br]
 [br]
 setxkbmap -layout us,ru -option grp:ctrl_shift_toggle,grp_led:caps,ctrl:nocaps
-
+		</text_message>
+	</note>
+	<note title="links collection                                                                                                                                                                                                                                               " author="anonymous           " ip="10.63.250.242       " client_date="2019-05-29" server_date="2019-05-29" >
+		<text_message>
+[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
 		</text_message>
 	</note>
 	<note title="301 редирект, .htaccess                                                                                                                                                                                                                                        " author="anonymous           " ip="10.30.222.9         " client_date="2019-05-29" server_date="2019-05-29" >
@@ -25,15 +54,6 @@ Redirect /index.php http://example.com/index.php
 Redirect /data http://www.example.com/data 
 =================================
 [/code]
-		</text_message>
-	</note>
-	<note title="links collection                                                                                                                                                                                                                                               " author="anonymous           " ip="10.63.250.242       " client_date="2019-05-29" server_date="2019-05-29" >
-		<text_message>
-[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
-[br]
-[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
-[br]
-[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]
 		</text_message>
 	</note>
 	<note title="Debian 7, wheezy, list repo                                                                                                                                                                                                                                    " author="anonymous           " ip="37.193.108.45       " client_date="2019-05-28" server_date="2019-05-27" >
@@ -599,29 +619,6 @@ for n1 in range(0,10):
 		
 		</text_message>
 	</note>
-	<note title="test filter                                                                                                                                                                                                                                                    " author="                    " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
-		<text_message>
-
-
-
-
-
-
-
-
-[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
-[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
-[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
-		
-		
-		
-		
-		
-		
-		
-		
-		</text_message>
-	</note>
 	<note title="javascript, test Modernizr                                                                                                                                                                                                                                     " author="anonymous           " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
 		<text_message>
 
@@ -650,6 +647,29 @@ src=&#39;http://yastatic.net/modernizr/2.7.1/modernizr.min.js&#39;&gt;&lt;/scrip
 
 &lt;/html&gt;
 [/code]
+		
+		
+		
+		
+		
+		
+		
+		
+		</text_message>
+	</note>
+	<note title="test filter                                                                                                                                                                                                                                                    " author="                    " ip="                    " client_date="2017-08-24" server_date="2017-08-24" >
+		<text_message>
+
+
+
+
+
+
+
+
+[url]https://ruseller.com/lessons.php?rub=37&amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
+[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
+[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
 		
 		
 		
