@@ -12,6 +12,9 @@ if ( $sapi_type == 'apache2handler' || $sapi_type == 'cli-server') {
 if ( $sapi_type == 'cli') {
 	$_vars["runType"] = "console";
 }
+if ( $sapi_type == 'cgi') {
+	$_vars["runType"] = "console";
+}
 $msg = "Run method (php_sapi_name): ". $sapi_type;
 echo logAlert($msg, "info");
 
