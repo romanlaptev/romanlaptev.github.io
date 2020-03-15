@@ -206,10 +206,31 @@ interface _InterFace1 {
 	public function method2();
 }//end 
 
+interface _InterFace2 {
+	public function getStatus();
+}//end 
+
+interface _InterFace3 extends _InterFace1, _InterFace2 {}
+
+//-------
+
 class Class6 implements _InterFace1 {
 	public function method2(){
 echo "A Implementation of the method from  _InterFace1"."<br>\n";
 	}//end
+}//end class
+
+
+class Class61 implements _InterFace3 {
+
+	public function method2(){
+echo "A Implementation of the method from  _InterFace1"."<br>\n";
+	}//end
+
+	public function getStatus(){
+echo "A Implementation of the method from  _InterFace2"."<br>\n";
+	}//end
+
 }//end class
 
 /*
@@ -327,6 +348,29 @@ $obj_x->render();//This is object of class X
 $obj_y->render();//This is object of class Y ||||||||||||||| poliymorphism, call function through $this
 */
 
+//======================= TRAIT
+//https://www.youtube.com/watch?v=HkvfyY_NeAQ&list=PLVfMKQXDAhGV1kj1gEGTgdzXt2jHwg-if&index=12
+/*
+class Base {
+	public function sayHello(){
+		echo "Hello ";
+	}//end
+}//end class
+
+trait sayWorld {
+	public function sayHello(){
+		parent::sayHello();
+		echo "World!!! ";
+	}//end
+}//end trait
+
+class myHelloWorld extends Base {
+	use sayWorld;
+}//end class
+
+$obj99 = new myHelloWorld();
+$obj99->sayHello();
+*/
 
 
 //============================
@@ -428,6 +472,7 @@ https://www.php.net/manual/ru/language.oop5.overloading.php
 Перегрузка 
 
 https://www.youtube.com/watch?v=ZamZAhczTzQ&list=PLD-piGJ3Dtl06_K36ABZRwLa3Q3b3JoHk&index=3
+https://www.youtube.com/watch?v=ph4K1XlOSGg&list=PLVfMKQXDAhGV1kj1gEGTgdzXt2jHwg-if&index=11
 </pre>
 	<div class="panel">
 		<div class="panel-body">
