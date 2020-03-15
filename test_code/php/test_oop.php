@@ -34,6 +34,11 @@ class FirstClass {
 		$this->greeting = $argv;
 		$this->name = "Roman";
 		$this->age = 44;
+
+		$msg = "List of THIS: ";
+		echo logAlert($msg, "");
+		print_r($this);
+
 	}//end constructor
 
 	public function getName(){
@@ -230,8 +235,101 @@ $msg = "Object1 instanceof  of class Class4: ";
 echo $msg;
 var_dump( $object1 instanceof Class4 );
 
+//============================ Polymorphism
+//https://www.youtube.com/watch?v=ZamZAhczTzQ&list=PLD-piGJ3Dtl06_K36ABZRwLa3Q3b3JoHk&index=3
+/*
+class Page {
+	public $title;
+	public $content;
+
+	public function __construct( $title, $content ) {
+		$this->slide = $slide;
+		$this->news = $news;
+	}
+
+	public function render_body() {
+		$str = "<h1>". $this->title ."</h1>";
+		$str .= "<p>". $this->content ."</p>";
+		return $str;
+	}
+
+	public function test() {
+		echo $this->render_body();
+	}
+
+}//end class
+
+class IndexPage extends Page {
+	public $slide;
+	public $news;
+
+	public function __construct($title, $content,  $slide, $news) {
+		parent::construct( $title, $content );
+		$this->slide = $slide;
+		$this->news = $news;
+	}
+
+	public function render_body() {
+		$str = parent::render_body();
+		$str .= "<p>". $this->slide ."</p>";
+		$str .= "<p>". $this->news ."</p>";
+		return $str;
+	}
+
+}//end class
+
+class Poly {
+	public $ob;
+	public function save_obj ($Page $_var){
+		$this->ob[] = $_var;	
+	}
+
+	public function get_result(){
+		foreach( $this->ob as $item){
+			$item->test();
+		}//next
+	}
+
+}//end class
+
+$page = new Page("title1","content1");
+$index_page = new IndexPage("title2","content2", "slide show", "news");
+
+//$page->render_body();
+//$index_page->render_body();
+
+$obj_poly = new Poly();
+$obj_poly->save_obj( $page );
+$obj_poly->save_obj( $index_page );
+
+//---------------------------- ex2
+class X {
+	public function get(){
+		echo "This is object of class X";
+	}
+	
+	public function render(){
+		$this->get();
+	}
+
+}//end class
+
+class Y extends X {
+	public function get(){
+		echo "This is object of class Y";
+	}
+}//end class
+
+$obj_x = new X();
+$obj_y = new Y();
+
+$obj_x->render();//This is object of class X
+$obj_y->render();//This is object of class Y ||||||||||||||| poliymorphism, call function through $this
+*/
 
 
+
+//============================
 function logAlert( $msg, $level){
 //global $sapi_type;
 global $_vars;
@@ -275,7 +373,7 @@ global $_vars;
 		
 		default:
 			if ( $_vars["runType"] == "web" ) {
-				return "<div class='alert alert-info'>".$msg. "</div>";
+				return $msg. "<br/>";
 			}
 			if ( $_vars["runType"] == "console" ) {
 				return $msg."\n";
@@ -323,9 +421,13 @@ php -S localhost:8000 -t test_code/php
 php._obekty_shablony_i_metodiki_programmirovaniya.djvu
 p82
 
+https://www.php.net/manual/ru/language.oop5.php
+Классы и объекты
+
 https://www.php.net/manual/ru/language.oop5.overloading.php
 Перегрузка 
 
+https://www.youtube.com/watch?v=ZamZAhczTzQ&list=PLD-piGJ3Dtl06_K36ABZRwLa3Q3b3JoHk&index=3
 </pre>
 	<div class="panel">
 		<div class="panel-body">
