@@ -218,6 +218,20 @@ class testChildClass extends finalClass {//error, do not inherit from final clas
 }//end class
 */
 
+//Check type object
+//https://www.php.net/manual/ru/language.operators.type.php
+$msg = "Object1 instanceof  of class FirstClass: ";
+echo $msg;
+var_dump( $object1 instanceof FirstClass );
+
+echo "<br>\n";
+
+$msg = "Object1 instanceof  of class Class4: ";
+echo $msg;
+var_dump( $object1 instanceof Class4 );
+
+
+
 function logAlert( $msg, $level){
 //global $sapi_type;
 global $_vars;
