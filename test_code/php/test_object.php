@@ -5,14 +5,21 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
+//===========================
+
 class FirstClass {
 	private $name;
 	private $age;
 
 	function __construct(){
+echo "Object of class ".__CLASS__." was created. "."<br>\n";
 		$this->name = "Roman";
 		$this->age = 44;
 	}//end constructor
+
+	function __toString(){
+		return "method __toString() for print object.."."<br>\n";
+	}//end 
 
 	function __destruct(){
 echo "Object of class ".get_class( $this)." was destroyed. "."<br>\n";
@@ -31,6 +38,8 @@ $obj2 = clone $obj1;
 echo "OBJ2: <pre>";
 print_r( $obj2);
 echo "</pre>";
+
+echo $obj1;
 
 unset($obj1);
 
@@ -61,7 +70,15 @@ echo "OBJ4: <pre>";
 print_r( $obj4);
 echo "</pre>";
 
-echo "//============================ disable clone <br>\n";
+//=========================== test __autoload function - if not load file before using
+/*
+function __autoload( $className ){
+	require_once("classes/$className.php");
+}//end
+
+$obj88 = new Class88();
+*/
+//============================ disable clone;
 
 class Class3 {
 	private $name;
@@ -81,10 +98,11 @@ echo "OBJ5: <pre>";
 print_r( $obj5);
 echo "</pre>";
 
-$obj6 = clone $obj5;//error cloning!!!!!!!!!!!!!!!!!!!!!
+	$obj6 = clone $obj5;//error cloning!!!!!!!!!!!!!!!!!!!!!
 
 echo "OBJ6: <pre>";
 print_r( $obj6);
 echo "</pre>";
+
 
 ?>
