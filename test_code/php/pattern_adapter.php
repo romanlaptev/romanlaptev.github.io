@@ -3,7 +3,7 @@
 //Реализация паттернов ООП в PHP
 
 interface WeatherService {
-	//function setPosition( string $city );
+	//function setPosition( string $city );//PHP7
 	function setPosition( $city );
 	function getTemperature();
 	function getWind();
@@ -14,7 +14,7 @@ class RussianWeather implements WeatherService {
 
 	private $city = null;
 
-	//public function setPosition( string $city) {
+	//public function setPosition( string $city) {//PHP7
 	public function setPosition( $city) {
 		$this->city = $city;
 	}//end
@@ -49,7 +49,7 @@ class RussianWeather implements WeatherService {
 
 class USWeatherService {
 
-	//public function getTemperature( float $latitude, float $longtitude ) {
+	//public function getTemperature( float $latitude, float $longtitude ) {//PHP7
 	public function getTemperature( $latitude, $longtitude ) {
 
 		if( $latitude == 38.53 && $longtitude == 77.02 ) {//Washington
@@ -63,7 +63,7 @@ class USWeatherService {
 		return 80;
 	}//end
 
-	//public function getWind( float $latitude, float $longtitude ) {
+	//public function getWind( float $latitude, float $longtitude ) {//PHP7
 	public function getWind( $latitude, $longtitude ) {
 		if( $latitude == 38.53 && $longtitude == 77.02 ) {//Washington
 			return 1000;
@@ -82,7 +82,7 @@ class USWeatherService {
 
 class USWeatherAdapter  implements WeatherService {
 	private $latitude;
-	private $longitude;
+	private $longtitude;
 	private $service;
 
 	public function __construct( USWeatherService $service ) {
@@ -90,12 +90,12 @@ class USWeatherAdapter  implements WeatherService {
 	}//end
 
 	public function getTemperature() {
-		$temperature_f = $this ->service->getTemperature( $this->latitude, $this->longitude );
+		$temperature_f = $this ->service->getTemperature( $this->latitude, $this->longtitude );
 		return ( $temperature_f-32)*5/9;// convert F -> C
 	}//end
 
 	public function getWind() {
-		$wind_foot_min = $this ->service->getWind( $this->latitude, $this->longitude );
+		$wind_foot_min = $this ->service->getWind( $this->latitude, $this->longtitude );
 		return $wind_foot_min/196.85;// convert ft/min -> m/s
 	}//end
 
@@ -106,7 +106,7 @@ class USWeatherAdapter  implements WeatherService {
 		return $feels_temperature;
 	}//end
 
-	//public function setPosition( string $city ) {
+	//public function setPosition( string $city ) {//PHP7
 	public function setPosition( $city ) {
 
 		switch( $city ){
