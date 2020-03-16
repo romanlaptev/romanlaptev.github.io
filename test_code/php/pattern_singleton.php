@@ -17,9 +17,13 @@ class Config {
 		}
 		return self::$instance;
 	}
+	
+	private function __clone(){} //Do not use this for creating object......
+	private function __wakeup(){}//Do not use this for creating object......
 
 }//end class
 
+//$config = new Config();// ERROR!!!! Do not use new for creating object......
 $config = Config::getInstance();
 echo $config->data."\n";
 
