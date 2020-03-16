@@ -3,7 +3,7 @@
 //Реализация паттернов ООП в PHP
 
 interface WeatherService {
-	//function setPosition( String $city );
+	//function setPosition( string $city );
 	function setPosition( $city );
 	function getTemperature();
 	function getWind();
@@ -14,7 +14,7 @@ class RussianWeather implements WeatherService {
 
 	private $city = null;
 
-	//public function setPosition( String $city) {
+	//public function setPosition( string $city) {
 	public function setPosition( $city) {
 		$this->city = $city;
 	}//end
@@ -106,7 +106,7 @@ class USWeatherAdapter  implements WeatherService {
 		return $feels_temperature;
 	}//end
 
-	//public function setPosition( String $city ) {
+	//public function setPosition( string $city ) {
 	public function setPosition( $city ) {
 
 		switch( $city ){
