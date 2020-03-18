@@ -1,5 +1,6 @@
 <?php
-
+//https://www.php.net/manual/ru/language.namespaces.rationale.php
+//(PHP 5 >= 5.3.0, PHP 7)
 namespace space1 {
 	class Class1 {
 
