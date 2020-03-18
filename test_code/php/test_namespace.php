@@ -1,10 +1,22 @@
 <?php
 //https://www.php.net/manual/ru/language.namespaces.rationale.php
 //(PHP 5 >= 5.3.0, PHP 7)
+
+namespace  {//global_space
+	$global_var = "this is GLOBAL variable...";
+
+	//echo space2\get_var()."\n";
+	echo namespace\space2\get_var()."\n";
+
+}//end namespace
+
+
 namespace space1 {
+
 	class Class1 {
 
 		private $msg="";
+		public $object_ns = "object_ns, this variable from space1";
 
 		public function __construct() {
 			$this->msg = "Object of the ". __CLASS__ ." was created.";
@@ -14,13 +26,28 @@ namespace space1 {
 	}//end class
 
 	$obj1 = new Class1();
-
-	$some_var = 123;
-	function func1( $num ){
-		return $num++;
-	}//end
-	echo "Test name space 'space1': ".func1( $some_var )."\n";
+//-----------------
 	
+	$some_var = 123;
+	const CONST1 = 3.14;
+
+
+	function func1( $n ){
+		$n++;
+		return $n;
+	}//end
+
+	function test(){
+		return "\space1\\test()";
+	}//end
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo "-- change uniquie variable 'some_var': ".func1( $some_var )."\n";
+
+	echo "-- global variable avaible here: ".$global_var."\n";
+	$global_var = 0;
+	echo \space2\subspace1\test()."\n";
+
 }//end namespace
 
 
@@ -28,7 +55,7 @@ namespace space2 {
 	class Class1 {
 
 		private $msg="";
-		public $object_ns = "this variable from space2";
+		public $object_ns = "object_ns, this variable from space2";
 
 		public function __construct() {
 			$this->msg = "Object of the ". __CLASS__ ." was created.";
@@ -41,10 +68,24 @@ namespace space2 {
 //print_r( $obj1 );
 
 	$some_var = 456;
-	function func1( $num ){
-		return $num++;
+
+	function get_var(){
+		//global $some_var;
+//echo $some_var;
+		return "test,  \space2\get_var()";
 	}//end
-	echo "Test name space 'space2': ".func1( $some_var )."\n";
+
+	function func1( $n ){
+		$n++;
+		return $n;
+	}//end
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo "-- change uniquie variable 'some_var': ".func1( $some_var )."\n";
+	echo "-- global variable avaible here: ".$global_var."\n";
+
+	echo "-- constant from another namespace: ".\space1\CONST1 ."\n";
+
 
 }//end namespace
 
@@ -59,8 +100,19 @@ echo $msg."\n";
 	}//end class
 
 	$obj1 = new Class1();
-print_r( $obj1 );
-//echo $obj1->object_ns."\n";
+//print_r( $obj1 );
+//echo \space2\$some_var."\n";
+
+	$some_var = 789;
+
+	echo "Test namespace ".__NAMESPACE__."\n";
+	echo \space2\get_var()."\n";
+	echo \space1\test()."\n";
+
+	function test(){
+		$t1= 102030;
+		return "\space2\subspace1\\test()".$t1;
+	}//end
 
 }//end namespace
 
