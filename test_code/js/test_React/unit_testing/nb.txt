@@ -1,2 +1,0 @@
-create-react-app --help 
-create-react-app app1 

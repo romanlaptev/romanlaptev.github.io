@@ -36,6 +36,7 @@
 	<tag tid="67" vid="5" group_name="alphabetical_voc">П</tag>
 	<tag tid="68" vid="5" group_name="alphabetical_voc">Р</tag>
 	<tag tid="70" vid="5" group_name="alphabetical_voc">Т</tag>
+	<tag tid="74" vid="5" group_name="alphabetical_voc">Ц</tag>
 	<tag tid="77" vid="5" group_name="alphabetical_voc">Ш</tag>
 	<tag tid="83" vid="5" group_name="alphabetical_voc">A</tag>
 	<tag tid="84" vid="5" group_name="alphabetical_voc">B</tag>
@@ -53,6 +54,7 @@
 	<tag tid="100" vid="5" group_name="alphabetical_voc">T</tag>
 	<tag tid="101" vid="5" group_name="alphabetical_voc">V</tag>
 	<tag tid="105" vid="2" group_name="music_styles">black</tag>
+	<tag tid="106" vid="2" group_name="music_styles">post-punk</tag>
 	<tag tid="107" vid="2" group_name="music_styles">rock</tag>
 	<tag tid="108" vid="2" group_name="music_styles">art-rock</tag>
 	<tag tid="109" vid="2" group_name="music_styles">hard-rock</tag>
@@ -1430,6 +1432,35 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 
 	<published format="d-M-Y H:i:s">02-Mar-2020 19:39:38</published>
 	<updated format="d-M-Y H:i:s">02-Mar-2020 19:43:51</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Кино</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/34120/9941293.1031.35240/200x200?1584187254662"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/Kino.json">Kino.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1031">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%9A%D0%B8%D0%BD%D0%BE_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="62" group_name="alphabetical_voc">К</item>
+		<item vid="5" tid="74" group_name="alphabetical_voc">Ц</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="2" tid="106" group_name="music_styles">post-punk</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="4" tid="150" group_name="country">СССР</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">14-Mar-2020 21:06:44</published>
+	<updated format="d-M-Y H:i:s">14-Mar-2020 21:11:15</updated>
 </node>
 	</database>
 </xroot>

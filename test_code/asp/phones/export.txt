@@ -1,3 +1,0 @@
-use phones2003
-create table phones (PHONE VARCHAR(15), Addphone VARCHAR(15), ABONENT VARCHAR(120), STREET VARCHAR (124), Building VARCHAR (72), FLAT VARCHAR (10),  RegDATE VARCHAR (19),  Zip VARCHAR (2),  Sign VARCHAR (2));
-load data infile 'phones_2003.txt' into table phones2003.phones;

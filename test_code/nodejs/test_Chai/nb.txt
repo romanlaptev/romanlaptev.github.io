@@ -1,4 +1,0 @@
-rem npm install chai --save-dev 
-rem npm install selenium-webdriver
-rem npm install chai-webdriver
-node js/sw.js

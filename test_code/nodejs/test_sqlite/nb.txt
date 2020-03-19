@@ -1,3 +1,0 @@
-#http://www.sqlitetutorial.net/sqlite-nodejs/connect/
-
-npm install sqlite3 
