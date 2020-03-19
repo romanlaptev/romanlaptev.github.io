@@ -16,13 +16,15 @@ $loadedExt = get_loaded_extensions();
 
 $module_name = "PDO";
 if ( !in_array( $module_name, $loadedExt ) ) {
-	$msg = "<p>-- error, <b>".$module_name."</b> module  is not in the list of loaded extensions...</p>";
+	$msg = "<p>-- error, <b>".$module_name."</b> module  is not in the list of loaded extensions...</p>\n";
 	echo $msg;
-echo "loaded extensions: <pre>";
+echo "loaded extensions: <pre>\n";
 print_r( $loadedExt );
-echo "</pre>";
+echo "</pre>\n";
 	exit;
 }
+echo "Loaded " . $module_name . ": " ,extension_loaded( $module_name );
+echo "<br/>\n";
 
 $_vars=array();
 
@@ -167,7 +169,8 @@ if (!defined('PDO::ATTR_DRIVER_NAME')) {
 
 MySQL_ way:
 $result = mysql_query( $query, [$dbh] ) or die( mysql_error() );
-$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+//$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+$result  = $connection->query( $query ) or die( $connection->errorInfo() );
 ----------
 
 MySQL_ way:
@@ -247,7 +250,10 @@ function _testPDO(){
 
 	$_vars["dbList"] = "";
 	$query = "SHOW DATABASES";
-	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	
+//	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	$result  = $connection->query( $query ) or die( $connection->errorInfo() );
+	
 	//$row = $result->fetch( PDO::FETCH_NUM );
 	//$totRows = $stmt->rowCount();
 	$rows  = $result->fetchAll( PDO::FETCH_NUM );
@@ -261,14 +267,20 @@ function _testPDO(){
 	
 	$_vars["dbVersion"] = "";
 	$query = "SELECT VERSION()";
-	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	
+	//$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	$result  = $connection->query( $query ) or die( $connection->errorInfo() );
+	
 	$row = $result->fetch( PDO::FETCH_NUM );
 	$_vars["dbVersion"] .= $row[0];
 //----------------------------------------------
 
 	$_vars["dbVars"] = "";
 	$query = "SHOW VARIABLES";
-	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	
+	//$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	$result  = $connection->query( $query ) or die( $connection->errorInfo() );
+	
 	$rows  = $result->fetchAll( PDO::FETCH_ASSOC );
 //echo count($rows);	
 	$vars = "";
@@ -295,7 +307,10 @@ function _testPDO(){
 //----------------------------------------------
 	$_vars["dbTables"] = "";
 	$query = "SHOW TABLES";
-	$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	
+	//$result  = $connection->query( $query ) or die( $connection->errorInfo()[2] );
+	$result  = $connection->query( $query ) or die( $connection->errorInfo() );
+	
 	$rows  = $result->fetchAll( PDO::FETCH_NUM );
 	for( $n = 0; $n < count($rows); $n++){
 		$_vars["dbTables"] .= "<li>" . $rows[$n][0] ."</li>";
@@ -350,3 +365,4 @@ function _testPDO(){
 </div><!-- end container -->
 </body>
 </html>
+
