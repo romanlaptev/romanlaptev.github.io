@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="ZoomifyImageViewer_test.js"></script>
+<style type="text/css"> 
+#myContainer
+{ 
+width:900px; height:550px; margin:auto; border:1px; border-style:solid; border-color:#696969;
+} 
+</style>
+		
+<script type="text/javascript">
+
+	var zoom_img_path = "/site-content/authors/Nilson/zoom/01_Januarius";
+	Z.showImage("myContainer", zoom_img_path);
+</script>
+
+<script>
+window.onload = function(){
+	//btn1.onclick = function(e){
+		//var zoom_img_path = "/site-content/authors/Nilson/zoom/02_Februarius";
+		//Z.showImage("myContainer", zoom_img_path);
+	//};
+}//end load
+</script>
+
+</head>
+
+<body class="use-pirobox">
+<!--
+	<button id="btn1">load detail picture</button>
+-->	
+	<div id="myContainer"></div>
+	<div style="text-align:center;" >
+	
+		<span style="display:inline-block; vertical-align:middle; padding:10px;" >
+			<a href="javascript:void(0);" 
+onMouseDown="Z.Viewer.setImagePath('/site-content/authors/Nilson/zoom/01_Januarius')" 
+onTouchStart="Z.Viewer.setImagePath('/site-content/authors/Nilson/zoom/01_Januarius')">
+				<img src="/site-content/authors/Nilson/zoom/01_Januarius/TileGroup0/0-0-0.jpg">
+			</a>
+		</span>
+		
+		<span style="display:inline-block; vertical-align:middle; padding:10px;" >
+			<a href="javascript:void(0);" 
+onMouseDown="Z.Viewer.setImagePath('/site-content/authors/Nilson/zoom/02_Februarius')" 
+onTouchStart="Z.Viewer.setImagePath('/site-content/authors/Nilson/zoom/02_Februarius')">
+				<img src="/site-content/authors/Nilson/zoom/02_Februarius/TileGroup0/0-0-0.jpg">
+			</a>
+		</span>
+		
+	</div>
+
+</body>
+</html>
