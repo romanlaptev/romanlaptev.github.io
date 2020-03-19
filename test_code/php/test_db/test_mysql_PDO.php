@@ -8,9 +8,22 @@
 error_reporting(E_ALL|E_STRICT);
 ini_set('display_errors', 1);
 
-//echo "<pre>";
-//print_r ($_REQUEST);
+//https://www.php.net/manual/ru/function.get-loaded-extensions.php
+$loadedExt = get_loaded_extensions();
+//echo "loaded extensions: <pre>";
+//print_r( $loadedExt );
 //echo "</pre>";
+
+$module_name = "PDO";
+if ( !in_array( $module_name, $loadedExt ) ) {
+	$msg = "<p>-- error, <b>".$module_name."</b> module  is not in the list of loaded extensions...</p>";
+	echo $msg;
+echo "loaded extensions: <pre>";
+print_r( $loadedExt );
+echo "</pre>";
+	exit;
+}
+
 $_vars=array();
 
 ?>
