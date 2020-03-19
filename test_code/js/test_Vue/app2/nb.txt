@@ -1,4 +1,0 @@
-vue init webpack app2 
-cd app2 
-npm run dev 
-npm install --save bootstrap3 
