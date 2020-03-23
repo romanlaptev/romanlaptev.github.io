@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
 // var func = sharedFunc();
 //console.log("func:", func);
@@ -766,4 +764,4 @@ console.log(logMsg);
   } 
 */
 }//end copyToClipboard()
->>>>>>> dev
+
