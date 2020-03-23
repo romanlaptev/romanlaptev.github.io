@@ -1,4 +1,4 @@
-//console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
+// console.log("module sharedFunc:", typeof sharedFunc, sharedFunc);
 //var func = sharedFunc();
 //console.log("func:", func);
 var _vars = {
