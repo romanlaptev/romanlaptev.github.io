@@ -388,9 +388,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 	color:#fff;
 
 }
-
 .btn-red:focus:not(:disabled):not(.disabled){
 	border-color: #BD1615;
+}
+.btn-red:hover {
+	color: #000 !important;
 }
 
 
