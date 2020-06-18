@@ -22,14 +22,15 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=6
+current_page=5
 FILE_NAME_0=0;None;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fnb.txt;0;4
 FILE_NAME_1=9302;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Findex.html;0;4
-FILE_NAME_2=15805;XML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fparse_notes%2Fxml%2Fexport_mydb_notes.xml;0;4
-FILE_NAME_3=40947;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Fnotes.js;0;4
+FILE_NAME_2=40947;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Fnotes.js;0;4
+FILE_NAME_3=15805;XML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fparse_notes%2Fxml%2Fexport_mydb_notes.xml;0;4
 FILE_NAME_4=183;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fcss%2Fbreadcrumb.css;0;4
-FILE_NAME_5=2138;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fcss%2Fcustom.css;0;4
+FILE_NAME_5=166;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fcss%2Fcustom.css;0;4
 FILE_NAME_6=0;PHP;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Ffiles%2Fexport_drupal_book.php;0;4
+FILE_NAME_7=2498;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Ffiles%2Ftest_API.html;0;4
 
 [VTE]
 last_dir=/mnt/d2/www
