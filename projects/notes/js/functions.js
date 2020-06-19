@@ -190,6 +190,122 @@ console.log( "nodeName: "+ nodeXml.nodeName);
 }//end _parseXmlToObj()
 
 
+		function _convertXmlToObj(xml){
+//console.log( xml.childNodes.item(0).nodeName );			
+//console.log( xml.firstChild.nodeName );			
+//console.log( xml.documentElement.nodeName );			
+			var rootTagName = xml.documentElement.nodeName;
+			var xmlDoc = xml.getElementsByTagName( rootTagName);
+//console.log( xmlDoc, typeof xmlDoc) ;
+//console.log( xmlDoc.item(0), typeof xmlDoc.item(0)) ;
+//console.log( xmlDoc.length) ;
+//console.log( xmlDoc.item(0).childNodes.length ) ;
+//console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
+// }
+			var xmlObj = {};
+			for(var n1 = 0; n1 < xmlDoc.length; n1++){
+//console.log( xmlDoc.item(n1) );
+//console.log( xmlDoc.item(n1).childNodes ) ;
+				var _node = xmlDoc.item(n1);
+				var key = _node.nodeName;
+				xmlObj[key] = {};
+				_parseChildNodes( _node, xmlObj[key] );
+			}
+			//console.log(xmlObj);				
+			return xmlObj;
+
+			function _parseChildNodes( node, nodeObj ){
+				var _childNodes = node.childNodes;
+// if( !node.children){
+// console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
+// }
+				if( _childNodes.length > 0){
+					if( _childNodes.length === 1 &&
+						_childNodes.item(0).nodeType === 3
+					){//one child node of type TEXT cannot contain the "children" property!!!!
+							//_ch["_itemType"] = ;
+					} else {
+						nodeObj["childNodes"] = {};
+					}
+				}
+				
+				for(var n = 0; n < _childNodes.length; n++){
+					var child = _childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+//console.log( "nodeName: "+ child.nodeName);
+
+					if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+						if (child.nodeType === 3){// #text
+							
+							var _text = "";
+							if ("textContent" in child){
+								_text = child.textContent;
+								
+							} else {
+								_text = child.text;
+							}
+							
+							_text = _text.trim();
+							if( _text.length > 0){
+								if( 
+									_text !== "\n" &&
+									_text !== "\n\n" &&
+									_text !== "\n\n\n"
+								){
+									nodeObj["text"] = _text;
+								}
+							}
+						}
+					} else {
+//console.log( "nodeName: "+ child.nodeName);
+						var key = child.nodeName;
+
+						//if( !nodeObj["children"] ){
+							//nodeObj["children"] = {};
+						//}
+						if( !nodeObj["childNodes"][key] ){
+							nodeObj["childNodes"][key] = [];
+						}
+
+						var _ch = {
+							//"_length": child.childNodes.length
+						};
+						var attr = __getAttrToObject(child.attributes);
+						if(attr){
+							_ch["attributes"] = attr;
+						}
+						
+						//if( child.childNodes.length === 1){
+							////continue;
+							//_ch["nodeType"] = child.nodeType;
+							//_ch["_child_nodes"] = child.childNodes;
+							//_ch["_item"] = child.childNodes.item(0);
+							//_ch["_itemType"] = child.childNodes.item(0).nodeType;
+						//}
+						
+						nodeObj["childNodes"][key].push(_ch);
+
+						_parseChildNodes(child, _ch );
+					}
+				}
+			}//end _parseChildNodes()
+
+			function __getAttrToObject( attr ){
+				if( attr.length === 0){
+					return false;
+				}
+				var item_attr = {};
+				for(var item = 0; item < attr.length; item++) {
+					item_attr[attr[item].name] = attr[item].value;
+				}
+				return item_attr;
+			}//end _get_attr_to_obj()
+		
+		}//end _convertXmlToObj()		
+
+
 
 //**************************************
 //musFM.html?dirname=/music/A&pls=/music/0_playlists/russian.json
@@ -701,6 +817,36 @@ console.log("loaded: " + e.loaded);
 }//end runAjax()
 
 
+		function _alert( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				default:
+					_log(message);
+				break;
+			}//end switch
+			
+		}//end _alert()		
+		
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
 var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";

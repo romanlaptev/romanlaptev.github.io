@@ -28,17 +28,17 @@
 	<link rel="stylesheet" href="css/breadcrumb.css">
 	
 	<script src="js/functions.js"></script>
-	<script src="js/notes.js"></script>
+	<script src="js/app.js"></script>
+
 	<script>
 window.onload = function(){
-	var webNotes = _notes();
-console.log( webNotes );	
-	webNotes.init();
+	var webApp = _app();
+console.log( webApp );	
+	webApp.init();
 }//end load
 
 $(document).ready(function(){
 	$("input[type=file]").bootstrapFileInput();
-	
 	//$(".collapse").collapse();
 });//end ready	
 	</script>
@@ -56,33 +56,7 @@ $(document).ready(function(){
 				<h2 class="text-right">Notes: <span id="num-notes">0</span></h2>
 			</ul>
 		</div>
-<!--
-	<div class=" panel panel-primary">
-		<div class="panel-body" id="control-btn">
-			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-				<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
-				
-				<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-				<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
-				
-				<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
-				<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
-				<a href="tests_app/SpecRunner.html" class="">test code</a>
-			</div>
-			<a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
-		</div>
-		
-		<div class="panel-body">
-			<ul class="list-inline">
-				<li><a href="parse_notes/parse_notes.html" class="">previous version</a></li>
-				<li><a href="?q=load-notes" class="">test, load notes from DB</a></li>
-				<li><a href="?q=load-xml-book" class="">test, load notes from XML</a></li>
-				<li><a href="export/export_drupal_book.php" class="">export_drupal_book</a></li>
-			</ul>
-		</div>
-		
-	</div>
--->
+
 		
 	<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
@@ -122,37 +96,6 @@ $(document).ready(function(){
 	</div> 
 
 
-<!-- https://bootsnipp.com/snippets/GaqB2 -->
-<!--	
-<div class="panel">
-    <div class="row">
-        
-        <div class="btn-group btn-breadcrumb breadcrumb-default">
-            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-            <div class="visible-lg-block">
-        		<div class="btn btn-warning btn-derecha"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
-        		<div class="btn btn-danger btn-derecha">ATENCIÓN</div>
-        	</div>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Snippets</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Breadcrumbs text</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Section</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Category</a>
-            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
-            <div class="btn btn-info"><b>Item Actual</b></div>
-        </div>
-        
-	</div>
-	<div class="btn-group btn-breadcrumb breadcrumb-primary">
-		<a href="#" class="btn btn-primary">Home</a>
-		<a href="#" class="btn btn-primary">Snippets</a>
-		<a href="#" class="btn btn-primary">Breadcrumbs text</a>
-		<a href="#" class="btn btn-primary">Section</a>
-		<a href="#" class="btn btn-primary">Category</a>
-		<div class="btn btn-info"><b>Item Actual</b></div>
-	</div>
-</div>
--->    
-
 	<div class="panel">
 <!--
 			<div class="panel-heading">
@@ -163,13 +106,7 @@ $(document).ready(function(){
 	</div>
 </div><!-- end container -->
 
-<!--
-<div class="top">
-	<a title="scroll to top page" href="#top" class="">
-		<div class="arrow"></div>
-	</a>
-</div>
--->	
+
 <div class="">
 	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
 </div>
@@ -241,10 +178,10 @@ $(document).ready(function(){
 </script>
 	
 <!-- ********************** list notes ************************** -->	
-<script id="tpl-notes-list" type="text/template">
+<script id="tpl-node-list" type="text/template">
 	<div class="row">
 	
-		<div class="bookpage" id="note-{{nid}}" data-mlid="{{mlid}}" data-plid="{{plid}}">
+		<div class="bookpage" id="page-{{nid}}">
 		
 			<div class="panel btn-group btn-breadcrumb breadcrumb-primary breadcrumb-custom">
 				{{breadcrumbs}}

@@ -1,0 +1,989 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xroot>
+	<schema>
+		<xdata db_name="" db_type="" export_date="" export_time="">
+			<content>
+					<node id="" type="">
+						<title></title>
+						<created></created>
+						<changed></changed>
+						<body_value body_format=""></body_value>
+					</node>
+			</content>
+
+			<content_links>
+				<item content_id="" parent_id=""></item>
+			</content_links>		
+
+			<tag_groups>
+				<item id="" name=""></item>
+			</tag_groups>		
+
+			<tag_links>
+				<item content_id="" term_id=""></item>
+			</tag_links>		
+
+			<tag_list>
+				<item id="" term_group_id="" parent_id="" name=""></item>
+			</tag_list>		
+
+		</xdata>
+	</schema>
+
+	<xdata db_name="notes.sqlite" db_type="sqlite" export_date="23-May-2020 13:30:33" export_time="1590215433">
+		<content_links>
+<item content_id="2459" parent_id="2487"></item>
+<item content_id="2460" parent_id="2478"></item>
+<item content_id="2461" parent_id="2484"></item>
+<item content_id="2462" parent_id="2467"></item>
+<item content_id="2463" parent_id="2481"></item>
+<item content_id="2464" parent_id="2487"></item>
+<item content_id="2465" parent_id="2480"></item>
+<item content_id="2466" parent_id="2491"></item>
+<item content_id="2467" parent_id="2481"></item>
+<item content_id="2468" parent_id="2478"></item>
+<item content_id="2469" parent_id="2491"></item>
+<item content_id="2470" parent_id="2480"></item>
+<item content_id="2471" parent_id="2478"></item>
+<item content_id="2472" parent_id="2484"></item>
+<item content_id="2473" parent_id="2484"></item>
+<item content_id="2474" parent_id="2484"></item>
+<item content_id="2475" parent_id="2481"></item>
+<item content_id="2476" parent_id="2478"></item>
+<item content_id="2477" parent_id="2478"></item>
+<item content_id="2478" parent_id="2481"></item>
+<item content_id="2479" parent_id="2478"></item>
+<item content_id="2480" parent_id="2481"></item>
+<item content_id="2481" parent_id="0"></item>
+<item content_id="2482" parent_id="2467"></item>
+<item content_id="2483" parent_id="2487"></item>
+<item content_id="2484" parent_id="2481"></item>
+<item content_id="2485" parent_id="2484"></item>
+<item content_id="2486" parent_id="2481"></item>
+<item content_id="2487" parent_id="2481"></item>
+<item content_id="2488" parent_id="2491"></item>
+<item content_id="2489" parent_id="2491"></item>
+<item content_id="2490" parent_id="2491"></item>
+<item content_id="2491" parent_id="2481"></item>
+<item content_id="2492" parent_id="2484"></item>
+<item content_id="2493" parent_id="2484"></item>
+		</content_links>		
+		<content>
+			
+<node id="2459" type='note'>
+		<title>301 редирект, .htaccess</title>
+		<created>1590213479</created>
+		<changed>1590213479</changed>
+		<body_value>[url]http://ru.wikibooks.org/wiki/%D0%94%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D1%8B_.htaccess  |  Директивы_.htaccess[/url]
+[code]
+Как сделать 301 редирект
+Файл .htaccess
+301 редирект – корректная переадресация через htaccess и php header
+.htaccess: , вывод ошибок PHP
+
+Redirect /index.php http://example.com/index.php
+Redirect /data http://www.example.com/data 
+=================================
+[/code]</body_value>
+	</node>
+<node id="2460" type='note'>
+		<title>Debian 7, wheezy, list repo</title>
+		<created>1590213459</created>
+		<changed>1590213459</changed>
+		<body_value>#/etc/apt/sources.list[br]
+deb http://archive.debian.org/debian/ wheezy main[br]
+deb-src http://archive.debian.org/debian/ wheezy main[br]
+deb http://security.debian.org/ wheezy/updates main contrib[br]
+deb-src http://security.debian.org/ wheezy/updates main contrib[br]</body_value>
+	</node>
+<node id="2461" type='note'>
+		<title>GIT</title>
+		<created>1590213735</created>
+		<changed>1590213735</changed>
+		<body_value>[url] http://evtuhovich.ru/blog/2009/04/03/git-reset/ | Отмена последнего коммита в git [/url] 
+[code]
+git reset --hard HEAD^
+[/code]
+
+=================
+[url] https://webhamster.ru/mytetrashare/index/mtb0/1413010541hzh3175lej   |  Git - Как исправить HEAD detached from [/url]
+
+[code]
+При работе с Git может возникнуть такая ситуация: команда git push не заливает изменения на сервер, а команда git status показывает:
+
+$ git status
+HEAD detached from 87dc87b
+
+Это может означать, что вы делали какую-то навигацию по истории коммитов, и неправильно вернулись к последнему коммиту.
+
+Исправить эту проблему можно 4-мя командами:
+
+git branch temp
+git checkout temp
+git branch -f master temp
+git checkout master
+И, опционально,
+git branch -d temp
+
+Еще один вариант, короткий !!!!!!!!!!
+git checkout имяВеткиГдеВыНаходитесь
+
+- эта команда переключит проект в последний коммит текущей ветки. Точнее, в состоянии detached head, проект не находится ни в какой ветке. git checkout branchname просто переключит проект на последний коммит той ветки, которая указана. Это значит, что до появления ошибки нужно знать, в какой ветке ты находишься. Для того чтобы посмотреть, где находился, можно воспользовтьася командой:
+
+git reflog
+
+Самый правильный вариант
+git checkout HEAD@{1}
+[/code]
+
+[code]
+-------------
+GIT, create a new repository on the command line
+echo &amp;amp;amp;amp;quot;# lib&amp;amp;amp;amp;quot; &amp;amp;amp;amp;gt;&amp;amp;amp;amp;gt; README.md 
+git init 
+git add README.md 
+git commit -m &amp;amp;amp;amp;quot;first commit&amp;amp;amp;amp;quot; 
+git remote add origin https://github.com/romanlaptev/lib.git 
+git push -u origin master  
+#push an existing repository from the command line 
+git remote add origin https://github.com/romanlaptev/lib.gitgit push -u origin master
+[/code]</body_value>
+	</node>
+<node id="2462" type='note'>
+		<title>PostgreSQL</title>
+		<created>1590213387</created>
+		<changed>1590213387</changed>
+		<body_value>#http://hutpu4.net/linux-open-source/postgresql-phppgadmin-for-debian-ubuntu.html
+[br]
+apt-get install postgresql[br]
+apt-get install postgresql-contrib[br]
+apt-get install php5-pgsql[br]</body_value>
+	</node>
+<node id="2463" type='note'>
+		<title>android</title>
+		<created>1527220029</created>
+		<changed>1527228320</changed>
+		<body_value>#update Android SDK
+/home/jack/android_soft/android-sdk-linux/tools/android update sdk
+
+#list installed platforms (Android 4.4 etc.)
+/home/jack/android_soft/android-sdk-linux/tools/android list targets
+
+#create project
+/home/jack/android_soft/android-sdk-linux/tools/android -v create project --target android-19 --name Application1 --path App1 --activity MainActivity --package com.laptev.app1
+
+========================= Добавить пути SDK в PATH
+.bashrc
+#export PATH=$PATH:/home/jack/android_soft/android-sdk-linux/tools
+
+if [ -d &amp;amp;amp;quot;$HOME/android_soft/android-sdk-linux/tools&amp;amp;amp;quot; ] ; then
+    PATH=&amp;amp;amp;quot;$HOME/android_soft/android-sdk-linux/tools:$PATH&amp;amp;amp;quot;
+fi
+
+if [ -d &amp;amp;amp;quot;$HOME/android_soft/android-sdk-linux/platform-tools&amp;amp;amp;quot; ] ; then
+    PATH=&amp;amp;amp;quot;$HOME/android_soft/android-sdk-linux/platform-tools:$PATH&amp;amp;amp;quot;
+fi</body_value>
+	</node>
+<node id="2464" type='note'>
+		<title>apache + mod_python</title>
+		<created>1590213967</created>
+		<changed>1590213967</changed>
+		<body_value>[code]
+https://www.howtoforge.com/embedding-python-in-apache2-with-mod_python-debian-etch
+https://wiki.archlinux.org/index.php/Mod_python_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+http://adw0rd.com/2009/08/28/modpython/
+https://www.stableit.ru/2009/12/apache-modpython-centos-54.html
+
+apt-get install libapache2-mod-python
+yum install -y httpd mod_python
+
+vi /etc/apache2/sites-available/default
+
+        &amp;amp;amp;amp;lt;Directory /var/www/&amp;amp;amp;amp;gt;
+...
+		AddHandler mod_python .py
+                PythonHandler mod_python.publisher
+                PythonDebug On
+        &amp;amp;amp;amp;lt;/Directory&amp;amp;amp;amp;gt;
+
+vi /var/www/test_mod_python.py
+
+def index(req):
+	# req.content_type = 'text/plain'
+	req.content_type = 'text/html'
+	html = &amp;amp;amp;amp;quot;&amp;amp;amp;amp;lt;h1&amp;amp;amp;amp;gt;Test Apache2 + mod_python&amp;amp;amp;amp;lt;/h1&amp;amp;amp;amp;gt;&amp;amp;amp;amp;quot;
+	req.write( html )
+	test = 2+3
+	return test;
+
+
+------------- Python Server Pages
+
+vi /etc/apache2/sites-available/default
+        &amp;amp;amp;amp;lt;Directory /var/www/&amp;amp;amp;amp;gt;
+....
+                AddHandler mod_python .psp
+                PythonHandler mod_python.psp
+                PythonDebug On
+        &amp;amp;amp;amp;lt;/Directory&amp;amp;amp;amp;gt;
+
+PSP test script:
+
+vi /var/www/test_mod_python.psp
+
+&amp;amp;amp;amp;lt;html&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;body&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;%
+for n1 in range(0,10):
+    req.write(&amp;amp;amp;amp;quot;&amp;amp;amp;amp;lt;h1&amp;amp;amp;amp;gt;Hello Python world!&amp;amp;amp;amp;lt;/h1&amp;amp;amp;amp;gt;&amp;amp;amp;amp;quot;)
+    print &amp;amp;amp;amp;quot;&amp;amp;amp;amp;lt;br&amp;amp;amp;amp;gt;&amp;amp;amp;amp;quot;
+%&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;/body&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;/html&amp;amp;amp;amp;gt;
+[/code]</body_value>
+	</node>
+<node id="2465" type='note'>
+		<title>art,  Francesco Bergamini</title>
+		<created>1590213768</created>
+		<changed>1590213768</changed>
+		<body_value>Francesco Bergamini (Italian, 1815–1883)[br]
+[url] http://www.artnet.com/artists/francesco-bergamini/ | www.artnet.com[/url]</body_value>
+	</node>
+<node id="2466" type='note'>
+		<title>cmd, get filename from args</title>
+		<created>1590213809</created>
+		<changed>1590213809</changed>
+		<body_value>[url]http://www.cyberforum.ru/cmd-bat/thread55211.html   |   FAQ по файлам BAT/CMD - Batch (CMD/BAT) - CyberForum.ru [/url]
+[code]
+ при использовании нумерованных переменных %0-%9 можно использовать некоторые модификаторы:
+
+        %~1         - разворачивает %1, удаляя кавычки (&amp;amp;amp;amp;quot;)
+        %~f1        - разворачивает %1 в полный квалифицированный путь
+        %~d1        - разворачивает %1 в букву диска
+        %~p1        - разворачивает %1 в путь
+        %~n1        - разворачивает %1 в имя файла
+        %~x1        - разворачивает %1 в расширение файла
+        %~s1        - развернутый путь будет содержать только короткие имена
+        %~a1        - разворачивает %1 в атрибуты файла
+        %~t1        - разворачивает %1 в дату/время создания файла
+        %~z1        - разворачивает %1 в размер файла
+        %~$PATH:1   - Ищет в каталогах, перечисленных в переменной среды PATH,
+                       и разворачивает %1 в полное квалифицированное имя 
+                       первого совпадения. Если имя перменной среды
+                       не определено, или если файл не найден, этот 
+                       модификатор вернет пустую строку
+[/code]
+
+-------- Java compile, file *.class locate to temp
+[br]
+compile.cmd Add.java
+[code]
+javac %1 -d c:\\temppause
+java -cp c:\\temp %~n1
+
+[/code]</body_value>
+	</node>
+<node id="2467" type='note'>
+		<title>config</title>
+		<created>1337690669</created>
+		<changed>1428116651</changed>
+		<body_value>-----------------------------------
+ADSL Port 	Enable
+Downstream Line Rate 	6133
+Upstream Line Rate 	638
+LAN IP Address 	192.168.0.2
+Default Gateway 	213.228.116.8
+Primary DNS Server 	217.70.96.34
+Secondary DNS Server 	217.70.106.5
+Ethernet MAC Address 	00:15:EB:B6:73:C1
+Firmware Version 	ZXDSL 831IIV5.5.1a_E09_OV
+------------------------------------
+&amp;amp;amp;lt;note&amp;amp;amp;gt;
+Офис: Excel, Word
+&amp;amp;amp;lt;pre&amp;amp;amp;gt;
+как в excel задать размер ячееек в мм или см: 
+Если делать вручную, без VBA, можно воспользоваться следующим трюком: 
+1.нарисовать прямоугольник (панель &amp;amp;amp;quot;рисование&amp;amp;amp;quot;)
+2.задать ему нужные размеры (эти размеры задаются в см)
+3.отметить в его свойствах &amp;amp;amp;quot;не менять размеры и не перемещать с ячейками&amp;amp;amp;quot;
+4.подогнать границы колонок так, чтобы они совпали с границами прямоугольника. 
+&amp;amp;amp;lt;/pre&amp;amp;amp;gt;
+&amp;amp;amp;lt;/note&amp;amp;amp;gt;</body_value>
+	</node>
+<node id="2468" type='note'>
+		<title>config, linux, xrandr</title>
+		<created>1590213338</created>
+		<changed>1590213338</changed>
+		<body_value>[code]
+.... монитор при подключении к VGA неправильно выдает список поддерживаемых разрешений. Поэтому в стандартной утилите настройки дисплея я могу поставить разрешение не больше 1024x768. Я же хотел поставить разрешение 1600x900. Это делается так: 
+ 
+1. Открываем консоль. Узнаем список видеовыходов и поддерживаемых разрешений для каждого выхода командой 
+ 
+Код: [Выделить] 
+xrandrУ меня выходы назывались LVDS1 (монитор ноутбука) и VGA1 (внешний монитор). 
+ 
+2. Создаем Modeline для нужного режима: 
+ 
+Код: [Выделить] 
+cvt 1600 900 60Первые два числа — разрешение, третье — частота обновления экрана (можно не задавать, по умолчанию будет 60). Команда выдаст примерно следующее: 
+ 
+Код: [Выделить] 
+Modeline &amp;amp;amp;amp;quot;1600x900_60.00&amp;amp;amp;amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync 
+3. Создаем режим: 
+ 
+Код: [Выделить] 
+xrandr  --newmode &amp;amp;amp;amp;quot;1600x900_60.00&amp;amp;amp;amp;quot;  118.25  1600 1696 1856 2112  900 903 908 934 -hsync +vsync(после --newmode вставляем вывод команды cvt без слова Modeline). 
+ 
+4. Добавляем новый режим к нужному выходу: 
+ 
+Код: [Выделить] 
+xrandr --addmode VGA1 1600x900_60.00 
+ 
+5. Вводим xrandr и видим, что режим добавился. Теперь можно запустить стандартную утилиту (Система &amp;amp;amp;amp;gt; Параметры &amp;amp;amp;amp;gt; Экран) и поставить всё, что нужно. Из консоли поменять разрешение монитора можно так: 
+ 
+Код: [Выделить] 
+xrandr --output VGA1 --mode 1600x900_60.00 
+(Положительный эффект не гарантирую. У меня мой способ работает на одной видеокарточке, но не работает на другой (с тем же монитором), ругается на 4-м пункте. При этом под виндой в обоих можно выставить правильное разрешение.)
+[/code]</body_value>
+	</node>
+<node id="2469" type='note'>
+		<title>config, windows server</title>
+		<created>1590213364</created>
+		<changed>1590213364</changed>
+		<body_value>Как отключить Ctrl-Alt-Del при входе в Windows Server 2003
+[code]
+Запускаем Редактор локальной групповой политики: Пуск – Выполнить – вводим gpedit.msc.
+
+Далее в открывшимся окне:
+
+    Конфигурация компьютера -&amp;amp;amp;amp;gt; Конфигурация Windows –&amp;amp;amp;amp;gt; Параметры безопасности –&amp;amp;amp;amp;gt; Локальные политики -&amp;amp;amp;amp;gt; Параметры безопасности -&amp;amp;amp;amp;gt; Интерактивный вход: не требовать нажатия сочетания клавиш CTRL+ALT+DEL –&amp;amp;amp;amp;gt; Отключен
+
+В нерусифицированной версии винды:
+
+    Computer Configuration –&amp;amp;amp;amp;gt; Windows Settings –&amp;amp;amp;amp;gt; Security Settings –&amp;amp;amp;amp;gt; Local Policies –&amp;amp;amp;amp;gt; Security Options –&amp;amp;amp;amp;gt; Interactive logon: Do not require CTRL+ALT+DEL — Enabled
+[/code]
+
+Как отключить Event Tracker?
+[code]
+Пуск – Выполнить – вводим gpedit.msc.
+
+Далее в открывшимся окне:
+
+    Конфигурация компьютера –&amp;amp;amp;amp;gt; Административные шаблоны –&amp;amp;amp;amp;gt; Система –&amp;amp;amp;amp;gt; Отображать диалог слежения за завершением работы –&amp;amp;amp;amp;gt; Отключен
+
+В нерусифицированной версии винды:
+
+    Computer Configuration –&amp;amp;amp;amp;gt; Administrative Templates –&amp;amp;amp;amp;gt; System –&amp;amp;amp;amp;gt; Display Shutdown Event Tracker –&amp;amp;amp;amp;gt; Disabled
+[/code]
+[url]http://did5.ru/it/windows/kak-otklyuchit-ctrl-alt-del-pri-vxode-v-windows-server-2003.html  |  Блог did5.ru[/url]
+[br]
+Как выключить Windows Server без залогинивания
+[code]
+Для того чтобы так сделать вам нужно изменить локальную политику безопасности.
+Для этого откройте:
+
+&amp;amp;amp;amp;quot;Редактор локальной групповой политики&amp;amp;amp;amp;quot; командой gpedit.msc и найдите ветку &amp;amp;amp;amp;quot;Конфигурация компьютера -&amp;amp;amp;amp;gt; Конфигурация Windows -&amp;amp;amp;amp;gt; Параметры безопасности -&amp;amp;amp;amp;gt; Локальные политики -&amp;amp;amp;amp;gt; Параметры безопасности&amp;amp;amp;amp;quot;.
+Найдите политику:
+
+&amp;amp;amp;amp;quot;Завершение работы: разрешить завершение работы системы без выполнения входа в систему&amp;amp;amp;amp;quot;
+и измените её статус на Включен.
+[/code]</body_value>
+	</node>
+<node id="2470" type='note'>
+		<title>eng/rus books</title>
+		<created>1590213722</created>
+		<changed>1590213722</changed>
+		<body_value>[url]http://readli.net/chitat-online/?b=102432&amp;amp;amp;amp;amp;pg=1    |    Роберт Энсон Хайнлайн.Гражданин Галактики [/url]
+[br][br]
+[url]https://royallib.com/read/Heinlein_Robert/Citizen_of_the_Galaxy.html#0   |   Robert A. Heinlein.Citizen of the Galaxy [/url]
+[br]
+[url] http://samlib.ru/g/gvozdika/beauty.shtml        |        Фицджеральд Ф.С. Последняя красавица Юга!!![/url]
+[br]
+[url] https://ebooks.adelaide.edu.au/f/fitzgerald/f_scott/short/chapter23.html      |      Short Stories, by F. Scott Fitzgerald. The Last of the Belles [/url]</body_value>
+	</node>
+<node id="2471" type='note'>
+		<title>grep</title>
+		<created>1590213667</created>
+		<changed>1590213667</changed>
+		<body_value>grep -r --include=*.php &amp;amp;amp;amp;quot;search string&amp;amp;amp;amp;quot; /path/to/dir</body_value>
+	</node>
+<node id="2472" type='note'>
+		<title>javascript, regExp</title>
+		<created>1590213751</created>
+		<changed>1590213751</changed>
+		<body_value>убрать из разметки все комментарии
+
+var value = xmlNodes[n][&amp;amp;amp;amp;quot;html_code&amp;amp;amp;amp;quot;]
+.replace(/&amp;amp;amp;amp;lt;!--([\\s\\S]*?)--&amp;amp;amp;amp;gt;/mig,&amp;amp;amp;amp;quot;&amp;amp;amp;amp;quot;)//remove comments
+.replace(/\\t/g,&amp;amp;amp;amp;quot;&amp;amp;amp;amp;quot;)
+.replace(/\\n/g,&amp;amp;amp;amp;quot;&amp;amp;amp;amp;quot;);</body_value>
+	</node>
+<node id="2473" type='note'>
+		<title>javascript, test Modernizr</title>
+		<created>1590213947</created>
+		<changed>1590213947</changed>
+		<body_value>[code]
+&amp;amp;amp;amp;lt;!DOCTYPE html&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!--[if lt IE 7]&amp;amp;amp;amp;gt;      &amp;amp;amp;amp;lt;html class='no-js lt-ie9 lt-ie8 lt-ie7'&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;![endif]--&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!--[if IE 7]&amp;amp;amp;amp;gt;         &amp;amp;amp;amp;lt;html class='no-js lt-ie9 lt-ie8'&amp;amp;amp;amp;gt; &amp;amp;amp;amp;lt;![endif]--&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!--[if IE 8]&amp;amp;amp;amp;gt;         &amp;amp;amp;amp;lt;html class='no-js lt-ie9'&amp;amp;amp;amp;gt; &amp;amp;amp;amp;lt;![endif]--&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;!--[if gt IE 8]&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;!--&amp;amp;amp;amp;gt; &amp;amp;amp;amp;lt;html class='no-js'&amp;amp;amp;amp;gt; &amp;amp;amp;amp;lt;!--&amp;amp;amp;amp;lt;![endif]--&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;head&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;meta charset='utf-8'&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;title&amp;amp;amp;amp;gt;test Modernizr&amp;amp;amp;amp;lt;/title&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;script
+src='http://yastatic.net/modernizr/2.7.1/modernizr.min.js'&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;/script&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;/head&amp;amp;amp;amp;gt;
+
+&amp;amp;amp;amp;lt;h1&amp;amp;amp;amp;gt;test Modernizr&amp;amp;amp;amp;lt;/h1&amp;amp;amp;amp;gt;
+
+&amp;amp;amp;amp;lt;/html&amp;amp;amp;amp;gt;
+[/code]</body_value>
+	</node>
+<node id="2474" type='note'>
+		<title>js code</title>
+		<created>1590213871</created>
+		<changed>1590213871</changed>
+		<body_value>[code]
+//пример конструктора
+function Point(x, y){
+  this.x = x;
+  this.y = y;
+}
+
+var topLeft = new Point(0, 0);
+var topRight = new Point(100, 0);
+var bottomLeft = new Point(0, 100);
+var bottomRight = new Point(100, 100);
+
+console.log(&amp;amp;amp;amp;quot;topLeft x = &amp;amp;amp;amp;quot; + topLeft.x);
+console.log(&amp;amp;amp;amp;quot;topRight x = &amp;amp;amp;amp;quot; + topRight.x);
+console.log(&amp;amp;amp;amp;quot;bottomLeft x = &amp;amp;amp;amp;quot; + bottomLeft.x);
+console.log(&amp;amp;amp;amp;quot;bottomRight x = &amp;amp;amp;amp;quot; + bottomRight.x);
+
+//замыкание
+(function(){
+	var ZList = ZList || function(options){
+
+		//обязательный элемент здесь будет автоматически хранится версия
+		// из version control
+		var _repositoryRevision = &amp;amp;amp;amp;quot;$Rev$&amp;amp;amp;amp;quot;; 
+
+		// private variables and functions
+		var _init = function(){
+		};
+
+		var _build = function(target){
+			return target + &amp;amp;amp;amp;quot; is building!&amp;amp;amp;amp;quot;;
+		};
+		
+		// public interfaces
+		return{
+			revision:_repositoryRevision,
+			build:	function(target){ 
+				return _build(target); 
+			}
+		};
+	};
+	window.ZList = ZList;	
+})();
+---------------
+использование в main.js
+	var a = ZList(&amp;amp;amp;amp;quot;some options&amp;amp;amp;amp;quot;);
+console.log(&amp;amp;amp;amp;quot;a.revision = &amp;amp;amp;amp;quot; + a.revision);
+
+	var result_build = a.build(&amp;amp;amp;amp;quot;table1&amp;amp;amp;amp;quot;);
+console.log(&amp;amp;amp;amp;quot;result_build = &amp;amp;amp;amp;quot; + result_build);
+[/code]</body_value>
+	</node>
+<node id="2475" type='note'>
+		<title>links collection</title>
+		<created>1590213558</created>
+		<changed>1590213558</changed>
+		<body_value>[url]http://kbyte.ru/ru/Programming/Sources.aspx?id=1044&amp;amp;amp;amp;amp;mode=show   |   Как изменить COLLATE у базы данных?[/url]
+[br]
+[url]https://it3xl.wordpress.com/2011/02/17/windows-xp-failed-to-access-iis-metabase-hostingenvironmentexception-%D1%81%D0%B1%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B5-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF/   |   Windows XP – Failed to access IIS metabase. HostingEnvironmentException. Сбой при попытке доступа к метабазе IIS. [/url]
+[br]
+[url]http://www.cyberforum.ru/ado-net/thread251180.html   |   Развертывание программы с SQLite-ом на других компьютерах - C#[/url]</body_value>
+	</node>
+<node id="2476" type='note'>
+		<title>linux, date, установить системную дату/время</title>
+		<created>1590213651</created>
+		<changed>1590213651</changed>
+		<body_value>date -s &amp;amp;amp;amp;quot;2015-05-27 14:53:00&amp;amp;amp;amp;quot;</body_value>
+	</node>
+<node id="2477" type='note'>
+		<title>linux, mount</title>
+		<created>1590213692</created>
+		<changed>1590213692</changed>
+		<body_value>[code]
+nofail 	
+Используется в случае, если в fstab прописаны некоторые другие жёсткие диски, кроме основого (с системой, которая загружается), 
+но в данный момент они физически не подключены к ПК. 
+Чтобы при загрузке не выдавалась ошибка, приводящая 
+к невозможности загрузки (система ищет по fstab 
+отключенные диски, но не находит их), 
+в строчках fstab-а с этими дисками и следует 
+установить такой флаг - тогда эти диски будут проигнорированы 
+при загрузке (до их подключения к ПК). 
+При применении этого флага к подключенным дискам, 
+никакого эффекта не наступает, флаг игнорируется. 
+https://ru.wikipedia.org/wiki/Fstab
+[/code]</body_value>
+	</node>
+<node id="2478" type='note'>
+		<title>linux_faq</title>
+		<created>1356914737</created>
+		<changed>1432918307</changed>
+		<body_value>=========================================================
+SUID
+
+три бита специальных прав: SUID(set UID), SGID(set GID) и sticky bit.
+ Право SetUID, установленное на файл, при запуске этого файла дает программе права владельца файла, 
+а не права того, кто эту программу запустил. Например, команда смены пароля должна иметь возможность 
+писать в файл паролей, а пользователь не должен иметь такой возможности.
+ Соответственно на программу изменения паролей (/bin/passwd) ставится SUID и владельцем этой 
+программы является root. А значит, будучи запущенной, она всегда имеет права root'а.
+ В строке прав SUID показан буквой s вместо x в правах пользователя (если права выполненя нет, то S):
+
+ Аналогично действует право SGID, но в этом случае меняется группа программы.
+ Также для каталогов в Linux при установленном этом бите создаваемые в каталоге файлы 
+всегда будут иметь ту же группу, что и каталог. В строке прав это право указывается 
+буквой s вместо x в правах группы.
+ В Linux есть ещё одно использование этого права: если есть это право и нет права для 
+группы на выполнение, то при открытии этого файла используется 
+механизм принудительного захвата (mandatory locking).
+ То есть можно запретить открывать этот файл кому-либо ещё, пока он открыт. Для всех прочих файлов 
+используется механизм добровольного захвата (advisory locking): 
+можно установить запрет на открытие, но остальные программы должны проверять статус этого запрета 
+и могут игнорировать захват.
+
+sticky bit в прошлом использовался, чтобы программа с данным битом после закрытия 
+не выгружалась из памяти. В настоящее время, единственное его использование: 
+если каталог имеет это право, то удалить из него файл имеет право только владелец файла 
+или владелец каталога. Как правило это право устанавливается на каталог /tmp.
+=====================</body_value>
+	</node>
+<node id="2479" type='note'>
+		<title>lxde, autostart</title>
+		<created>1590213590</created>
+		<changed>1590213590</changed>
+		<body_value>test[br]
+/home/roman/.config/lxsession/LXDE/autostart[br]
+[br]
+@lxpanel --profile LXDE[br]
+@pcmanfm --desktop --profile LXDE[br]
+@xscreensaver -no-splash[br]
+[br]
+setxkbmap -layout us,ru -option grp:ctrl_shift_toggle,grp_led:caps,ctrl:nocaps</body_value>
+	</node>
+<node id="2480" type='note'>
+		<title>mix</title>
+		<created>1363003280</created>
+		<changed>1552738336</changed>
+		<body_value></body_value>
+	</node>
+<node id="2481" type='note'>
+		<title>notes</title>
+		<created>1331352390</created>
+		<changed>1544790498</changed>
+		<body_value>place for notes, short comments....</body_value>
+	</node>
+<node id="2482" type='note'>
+		<title>nslookup, узнать IP-адрес интернет-ресурса</title>
+		<created>1590213433</created>
+		<changed>1590213433</changed>
+		<body_value>узнать IP-адрес интернет-ресурса можно введя в ту же командную строку команду nslookup Book-Science.ru</body_value>
+	</node>
+<node id="2483" type='note'>
+		<title>opera 12, config</title>
+		<created>1590213830</created>
+		<changed>1590213830</changed>
+		<body_value>[code]
+ Opera cache 
+
+Рассмотрим настройки по кэшу, а так же выставим значения влияющие на производительность и снижающие потребление памяти. Данные параметры рассчитаны на безлимитный интернет, не ниже 1 мб\\с. Сейчас технологии шагнули далеко и порой легче скачать что то с интернета, чем заставлять старенький компьютер судорожно шерстить по фрагментированному винчестеру в поисках данных в кэше.
+
+Итак, в адресной строке набираем opera:config и меняем значения: 
+Редактор настроек opera:config
+
+[BitTorrent] – Enable — Отключаем встроенный клиент BitTorrent. Для скачивания используем внешнее приложение – 0
+[Cache] — Cache Docs – Сохранять документы в кэш—памяти – Отключаем если оперативной памяти мало.
+[Cache] — Cache Figs – Сохранять изображения в кэш—памяти – Отключаем. Аналогично.
+[Cache] — Cache HTTPS After Sessions — Сохранять HTTPS страницы в кэше при закрытии Opera – Отключаем
+[Cache] — Check Expiry History — Проверять окончание срока хранения при доступе к страницам из истории. – 2
+[Cache] — Check Expiry Load — Проверять срок хранения при загрузке страницы – 2
+[Cache] — Document — Размер кэша документов, КБ – 0
+[Cache] — Figure — Размер кэша изображений, КБ – 0
+[Cache] — SVG Cache Size — Размер кэша векторных изображений SVG , КБ – 10240
+
+[Disk Cache] — Cache Docs – Кэшировать документы — 0
+[Disk Cache] — Cache Figs — Кэшировать изображения 0 
+[Disk Cache] — Cache Other — Кэшировать другое содержимое страниц – 0
+[Disk Cache] — Docs Modification — Проверять, обновились ли на сервере документы, сохранённые в кэш – 0
+[Disk Cache] — Enabled — Включить дисковый кэш. – 1
+[Disk Cache] — Figs Modification — Проверять, обновились ли на сервере изображения, сохранённые в кэш – 0
+[Disk Cache] — Media Cache Size — Размер кэша мультимедийных данных, КБ – тут нужно экспериментировать и выставить значения 5120 или 51200. Этот параметр позволяет не расходовать оперативку и скидывать загружаемый медиа—файл на диск. Если вы часто смотрите фильмы, то чтобы опера не расходовала много ОП, укажите большее значение.
+[Disk Cache] — Multimedia Stream Always — Постоянный мультимедийный поток (тег audio/video), расходует пропускную способность, но экономит дисковое пространство. — 1
+[Disk Cache] — Multimedia Stream Size — Размер буфера мультимедийного потока, КБ – 2048. Здесь размер можно указать побольше, чтобы потоковое видео не подтормаживало при онлайн—трансляции.
+[Disk Cache] — Multimedia Stream in RAM — Мультимедийный поток в оперативной памяти. – 1
+[Disk Cache] — Other Modification — Проверять изменения другого содержимого страниц на сервере: — 0
+[Disk Cache] — Size — Размер дискового кэша, КБ – 5120
+
+[Extensions] – EcmaScriptJIT — Включает формирование машинного кода для ECMAScript. – 1
+[Geolocation] — Enable geolocation — Включить/отключить геолокацию. – 0
+[Geolocation] — Google2011 Location Provider Access Token — Маркер доступа, используемый для поставщика местоположения – оставляем пустым
+[Geolocation] — Location Provider URL — URL для поставщика данных о положении, основанных на точках доступа Wi—Fi, информации сотового телефона и т.д. – оставляем пустым
+[Geolocation] — Send location request only on change — Посылать запрос местоположения, только если некоторые из поставщиков данных (Wi—Fi, сота и т.д.) на самом деле изменились – 0
+
+[Network] — Check Local HostName — Искать компьютеры в локальной сети перед попыткой автозавершения. – 0
+[Network] — DNS Prefetching — Предварительный запрос DNS—сервера при наведении указателя мыши на ссылку. – 0
+[Network] — Enable Do Not Track Header — Включить передачу заголовка Do_not_track, чтобы веб—сайты третьих сторон (например, рекламные сети) не отслеживали ваши личные данные между веб—сайтами. – 1
+[Network] — Enable HostName Expansion — Включить автозавершение имени сервера. – 0
+[Network] — Enable NTLM — Включить поддержку NTLM. Только в Windows. – 0
+[Network] — Use Spdy2 – Использовать протокол SPDY 2 — 0
+[Network] — Use Spdy2 — Использовать протокол SPDY 3 — 0 
+
+[Opera Sync] — Sync Bookmarks — Синхронизировать закладки. – 0
+[Opera Sync] — Sync Extensions — Синхронизировать Расширения. – 0
+[Opera Sync] — Sync Notes — Синхронизировать Заметки. – 0
+[Opera Sync] — Sync Personalbar — Синхронизировать Панель закладок. — 0
+[Opera Sync] — Sync Searches — Синхронизировать Службы поиска. — 0
+[Opera Sync] — Sync Speed Dial — Синхронизировать Экспресс—панель. — 0
+[Opera Sync] — Sync Typed History — Синхронизировать Введённые адреса. — 0
+[Opera Sync] — Sync URL Filter — Синхронизировать Правила блокировки содержимого. – 0
+
+[Performance] — Extra Idle Connections — Открывать дополнительные простаивающие соединения с текущим сервером. – 1
+[Performance] — Max Connections Server — Разрешённое число одновременных подключений к серверу. – 16
+[Performance] — Max Connections Total — Общее разрешённое число одновременных подключений. – 64
+[Performance] — Max Persistent Connections Server — Разрешённое число постоянных подключений к серверу. – 8
+[Performance] — Network Buffer Size — Размер сетевого буфера, КБ. — 512
+[Performance] — Non—Compliant Server 100 Continue — Упрощать запросы к нестандартным серверам. — 1
+
+[Proxy] — Enable Proxy – Использовать прокси для всех серверов, кроме перечисленных – 0
+[Sounds] – Enabled — Включить звуковые уведомления в Opera. – 0
+
+[User Prefs] — Automatic RAM Cache — Выбирать размер кэша в памяти автоматически. – 0
+[User Prefs] — Enable Service Discovery Notifications — Показать/скрыть оповещения об обнаружении локально размещенных приложений Unite. – 0
+[User Prefs] — Enable Trust Rating — Включить защиту от мошенничества и вредоносного ПО. – 0
+[User Prefs] — Enable UI Animations — Включить анимацию пользовательского интерфейса. – 0
+[User Prefs] — Enable Unite — Включить службы Opera Unite. – 0
+[User Prefs] — Enable Usage Statistics — Включить сбор статистики использования функций Opera, отправляемой в Opera Software. – 0
+[User Prefs] — Enable Webfonts — Включить использование внедряемых шрифтов (веб—шрифтов). – 0
+[User Prefs] — First Update Delay — Задержка перерисовки страницы в миллисекундах. – 500
+[User Prefs] — Opera Turbo Mode — Режим Opera Turbo: — 2
+[User Prefs] — Show Network Speed Notification — Показывать уведомления о скорости соединения. — 0
+[User Prefs] — Spellcheck enabled by default — Включение проверки орфографии. – 0
+[User Prefs] — Visited Pages — Помнить содержимое посещённых страниц. – 0
+
+[Web Server] – Enable — Включить. – 0
+[Web Server] – Listen To All Networks — Прослушивать все сети. – 0
+[Web Server] – UPnP Enabled — Разрешить Opera Unite использовать переадресацию портов UPnP. – 0
+[Web Server] – UPnP Service Discovery Enabled — Разрешить Opera Unite использовать службу обнаружения UPnP. – 0
+[Web Server] – Use Opera Account — Использовать учётную запись Opera. — 0
+[Web Server] – Webserver Always On — Веб—сервер всегда включён. — 0
+[Web Server] – Webserver Used — Веб—сервер используется. – 0
+[Web Server] – robots.txt Enabled — Включает создание стандартного файла robots.txt, запрещающего поисковым роботам сканирование вашего персонального сервера Opera Unite. – 1
+
+Как видно из описания настроек opera:config список параметров влияющих на производительность достаточно внушительный. Данный перечень рассматривался на версии Opera 12.17
+
+
+soft-tuning.ru © 2013-2017
+[/code]</body_value>
+	</node>
+<node id="2484" type='note'>
+		<title>program</title>
+		<created>1337690509</created>
+		<changed>1437201058</changed>
+		<body_value>========================= music wfm
+добавить кнопку Save playlist - запрос сохранения json-плейлиста плеера в файл
+добавление в плейлист треков происходит при копировании файлов из файловой панели в панель плейлиста
+несохраненный плейлист имеет в заголовке название - “Новый плейлист”
+
+========================= parse bookmarks
+добавить поле для фильтра по ссылкам
+вводимый текст через функцию $().contains фильтрует ссылки: скрывается все и отображаеются совпадающие ссылки
+
+========================= remote DB
+сделать json запросы к удаленной mysql-базе
+ответы с результатами SQL-запросов приходят в json-формате
+
+- для сайта на хостинге гугл сделать получение данных от удаленного sql-сервера на хостинге 500mb.net (по запросу от сайта с гугл-площадки, скрипт отдает результаты sql-запроса в json)
+====================================
+
+#!/usr/bin/perl
+print &amp;amp;amp;quot;Content-Type: text/html\n\n&amp;amp;amp;quot;;
+print &amp;amp;amp;quot;&amp;amp;amp;lt;h1&amp;amp;amp;gt;Hello Perl world&amp;amp;amp;lt;/h1&amp;amp;amp;gt;&amp;amp;amp;quot;;</body_value>
+	</node>
+<node id="2485" type='note'>
+		<title>test filter</title>
+		<created>1590213931</created>
+		<changed>1590213931</changed>
+		<body_value>[url]https://ruseller.com/lessons.php?rub=37&amp;amp;amp;amp;amp;id=1381 | PDO против MySQLi. Что выбрать?[/url][br]
+[url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
+[url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]</body_value>
+	</node>
+<node id="2486" type='note'>
+		<title>user programs</title>
+		<created>1428814276</created>
+		<changed>1432984359</changed>
+		<body_value></body_value>
+	</node>
+<node id="2487" type='note'>
+		<title>web</title>
+		<created>1351774672</created>
+		<changed>1429540925</changed>
+		<body_value>=========================================
+ &amp;amp;amp;lt;link media=&amp;amp;amp;quot;only screen and (max-device-width: 370px)&amp;amp;amp;quot; rel=&amp;amp;amp;quot;alternate&amp;amp;amp;quot; href=&amp;amp;amp;quot;http://seondo.loc/phone/index.html&amp;amp;amp;quot;/&amp;amp;amp;gt;??????????
+=========================================
+1. php+apache+mysql ( редко oracle) самый дешевый
+2. .NET+IIS+mssql
+3. j2ee+ mssql или oracle (tomcat если не java-машина).
+
+=========================================
+Стандарт HTML 4.01 Strict (строгий), Transitional (переходный), Frameset (с фреймами)
+
+&amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;quot;-//W3C//DTD HTML 4.01//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/html4/strict.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+&amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;quot;-//W3C//DTD HTML 4.01 Transitional//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/html4/loose.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+&amp;amp;amp;lt;!DOCTYPE HTML PUBLIC &amp;amp;amp;quot;-//W3C//DTD HTML 4.01 Frameset//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/html4/frameset.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+
+Стандарт XHTML 1.0 Strict (строгий), Transitional (переходный), Frameset (с фреймами)
+
+&amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Strict//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+&amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Transitional//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+&amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;quot;-//W3C//DTD XHTML 1.0 Frameset//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+
+Стандарт XHTML 1.1 DTD
+
+&amp;amp;amp;lt;!DOCTYPE html PUBLIC &amp;amp;amp;quot;-//W3C//DTD XHTML 1.1//EN&amp;amp;amp;quot; &amp;amp;amp;quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&amp;amp;amp;quot;&amp;amp;amp;gt;
+
+http://www.webmascon.com/topics/coding/25a.asp
+-----------------------------------
+- font-family: &amp;amp;amp;quot;Museo&amp;amp;amp;quot;,&amp;amp;amp;quot;Trebuchet MS&amp;amp;amp;quot;,Trebuchet,Tahoma,Arial,sans-serif;
+-----------------------------------
+
+=========================
+атрибут download, скачать файл вместо открытия
+&amp;amp;amp;lt;a href=&amp;amp;amp;quot;myFolder/myImage.png&amp;amp;amp;quot; download&amp;amp;amp;gt;Download image&amp;amp;amp;lt;/a&amp;amp;amp;gt;</body_value>
+	</node>
+<node id="2488" type='note'>
+		<title>windows FAQ, GPT</title>
+		<created>1590213785</created>
+		<changed>1590213785</changed>
+		<body_value>[url]https://getpocket.com/a/read/2116352733 | В чем разница между GPT и MBR разделами диска[/url]</body_value>
+	</node>
+<node id="2489" type='note'>
+		<title>windows howto</title>
+		<created>1590215363</created>
+		<changed>1590215363</changed>
+		<body_value>[url] http://answers.microsoft.com/ru-ru/windows/forum/windows_7-files/windows-7-%D0%BA%D0%B0%D0%BA/45b99053-120e-4779-a684-7008420b83ed | url,answers.microsoft.com[/url]
+[br]
+[code]
+Как штатными средствами вывести список файлов
+1. выделить группу файлов
+2. Нажать Shift (левый или правый)
+3. Удерживая Shift, вызвать контекстное меню
+4. Там будет команда &amp;amp;amp;amp;quot;копировать как путь&amp;amp;amp;amp;quot;. Ее и использовать.
+Далее можно вставлять полные пути всех файлов в блокнот, excel, куда 
+угодно.
+
+-------------------------
+Настройка отображения меню в Проводнике
+«Упорядочить» ? «Представление»  - пункт «Строка меню»
+[/code]</body_value>
+	</node>
+<node id="2490" type='note'>
+		<title>windows, Команды windows для командной строки</title>
+		<created>1590213708</created>
+		<changed>1590213708</changed>
+		<body_value>[code]
+https://elims.org.ua/blog/windows-zapusk-osnastok-i-elementov-upravleniya-iz-komandnoj-stroki/
+---
+Команды для запуска элементов управления:
+
+    Сетевые подключения: ncpa.cpl
+    Свойства системы: sysdm.cpl
+    Установка и удаление программ: appwiz.cpl
+    Учетные записи пользователей: nusrmgr.cpl
+    Дата и время: timedate.cpl
+    Свойства экрана: desk.cpl
+    Брэндмауэр Windows: firewall.cpl
+    Мастер установки оборудования: hdwwiz.cpl
+    Свойства Интернет: inetcpl.cpl
+    Специальные возможности: access.cpl
+    Свойства мыши: control Main.cpl
+    Свойства клавиатуры: control Main.cpl,@1
+    Язык и региональные возможности: intl.cpl
+    Игровые устройства: joy.cpl
+    Свойства: Звуки и аудиоустройства: mmsys.cpl
+    Мастер настройки сети: netsetup.cpl
+    Управление электропитанием: powercfg.cpl
+    Центр обеспечения безопасности: wscui.cpl
+    Автоматическое обновление: wuaucpl.cpl
+    control - Панель управления
+    control admintools — Администрирование
+    control desktop — Настройки экрана / Персонализация
+    control folders — Свойства папок
+    control fonts — Шрифты
+    control keyboard — Свойства клавиатуры
+    control mouse — Свойства мыши
+    control printers — Устройства и принтеры
+    control schedtasks — Планировщик заданий
+
+Запускать из окружения пользователя, от другого имени, можно запускать большинство элементов управления, кроме тех, которые используют explorer. Например Панель &amp;amp;amp;amp;quot;Сетевые подключения&amp;amp;amp;amp;quot; использует explorer.
+Команды windows для запуска оснасток
+
+    Управление компьютером (Computer Management): compmgmt.msc
+    Редактор объектов локальной политики (Group Policy Object Editor): gpedit.msc
+    Результирующая политика (результат применения политик): rsop.msc
+    Службы (Services): services.msc
+    Общие папки (Shared Folders): fsmgmt.msc
+    Диспетчер устройств (Device Manager): devmgmt.msc
+    Локальные пользователи и группы (Local users and Groups): lusrmgr.msc
+    Локальная политика безопасности (Local Security Settings): secpol.msc
+    Управление дисками (Disk Management): diskmgmt.msc
+    eventvwr.msc: Просмотр событий
+    certmgr.msc: Сертификаты - текущий пользователь
+    tpm.msc - управление доверенным платформенным модулем (TPM) на локальном компьютере.
+
+&amp;amp;amp;amp;quot;Серверные&amp;amp;amp;amp;quot; оснастки:
+
+    Active Directory Пользователи и компьютеры (AD Users and Computers): dsa.msc
+    Диспетчер служб терминалов (Terminal Services Manager): tsadmin.msc
+    Консоль управления GPO (Group Policy Management Console): gpmc.msc
+    Настройка терминального сервера (TS Configuration): tscc.msc
+    Маршрутизация и удаленый доступ (Routing and Remote Access): rrasmgmt.msc
+    Active Directory Домены и Доверие (AD Domains and Trusts): domain.msc
+    Active Directory Сайты и Доверие (AD Sites and Trusts): dssite.msc
+    Политика безопасности домена (Domain Security Settings): dompol.msc
+    Политика безопасности контроллера домена (DC Security Settings): dcpol.msc
+    Распределенная файловая система DFS (Distributed File System): dfsgui.msc
+
+[/code]</body_value>
+	</node>
+<node id="2491" type='note'>
+		<title>windows_faq</title>
+		<created>1367984728</created>
+		<changed>1505133480</changed>
+		<body_value>------------------------------------
+Windows XP SP2
+cd-key: FKG7H-4F3V6-VM38J-4QYPG-M23QY 
+
+Windows 8.1 Preview
+http://windows.microsoft.com/ru-ru/windows-8/preview-download
+Ключ продукта: NTTX3-RV7VB-T7X7F-WQYYY-9Y92F 
+
+windows 2000 prof rus SP2
+M9G4D-R4T4R-J9QQ6-4VXBW-9YM43
+
+windows xp home rus
+VXK7M-JQJG9-DBQH6-H4QQW-BPJPG
+
+win 2003 server
+JB88F-WT2Q3-DPXTT-Y8GHG-7YYQY
+------------------------------------
+
+  Microsoft Windows 2000 Service Pack 1 Русская версия
+  Операционная система с встроенной поддержкой Internet.
+  CD-Key: M9G4D-R4T4R-J9QQ6-4VXBW-9YM43
+
+  Microsoft Windows Millennium Edition Русская версия
+  Операционная система с встроенной поддержкой Internet.
+  CD-Key: RFHM2-TPX47-YD6RT-H4KDR-D3DYD
+
+  Microsoft Windows 98 Second Edition v4.10.2222 Русская версия
+  CD-Key: J3QQ4-H7H2V-2HCH4-M3HK8-6M8VW
+
+  Microsoft Windows 98 Second Edition v4.10.2222 ПанЕвро версия
+  CD-Key: HQ6K2-QPC42-3HWDM-BF4KJ-W4XWJ
+
+win98se
+DYB3T-F2QYQ-9CRXR-DBC4V-CC4YG</body_value>
+	</node>
+<node id="2492" type='note'>
+		<title>Вызов jsp из Servlet</title>
+		<created>1590213846</created>
+		<changed>1590213846</changed>
+		<body_value>[url]https://toster.ru/q/284566 | Вызов jsp из Servlet/ JAVA[/url]
+[code]
+Сервлет
+
+@WebServlet(urlPatterns = &amp;amp;amp;amp;quot;/&amp;amp;amp;amp;quot;) // javax.servlet-api 3.0
+public class HomeServlet extends HttpServlet {
+
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    List&amp;amp;amp;amp;lt;String&amp;amp;amp;amp;gt; users = Arrays.asList(&amp;amp;amp;amp;quot;Vaya&amp;amp;amp;amp;quot;, &amp;amp;amp;amp;quot;Petya&amp;amp;amp;amp;quot;, &amp;amp;amp;amp;quot;Fedya&amp;amp;amp;amp;quot;);
+
+    req.setAttribute(&amp;amp;amp;amp;quot;users&amp;amp;amp;amp;quot;, users); // с помощью атрибутов передаются данные между сервлетами
+
+    req.getRequestDispatcher(&amp;amp;amp;amp;quot;/home.jsp&amp;amp;amp;amp;quot;).forward(req,resp);
+  }
+}
+============
+JSP /home.jsp
+
+&amp;amp;amp;amp;lt;%@ taglib uri=&amp;amp;amp;amp;quot;http://java.sun.com/jsp/jstl/core&amp;amp;amp;amp;quot; prefix=&amp;amp;amp;amp;quot;c&amp;amp;amp;amp;quot; %&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;html&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;body&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;h2&amp;amp;amp;amp;gt;Hello World!&amp;amp;amp;amp;lt;/h2&amp;amp;amp;amp;gt;
+
+&amp;amp;amp;amp;lt;c:forEach items=&amp;amp;amp;amp;quot;${users}&amp;amp;amp;amp;quot; var=&amp;amp;amp;amp;quot;usr&amp;amp;amp;amp;quot;&amp;amp;amp;amp;gt; 
+    &amp;amp;amp;amp;lt;p&amp;amp;amp;amp;gt;${usr}&amp;amp;amp;amp;lt;/p&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;/c:forEach&amp;amp;amp;amp;gt;
+
+&amp;amp;amp;amp;lt;/body&amp;amp;amp;amp;gt;
+&amp;amp;amp;amp;lt;/html&amp;amp;amp;amp;gt;
+
+[/code]</body_value>
+	</node>
+<node id="2493" type='note'>
+		<title>обновить nodejs</title>
+		<created>1590213606</created>
+		<changed>1590213606</changed>
+		<body_value>[code]
+First update npm,
+npm install -g npm stable
+
+Then update node,
+npm install -g node or npm install -g n
+
+check after version installation,
+node --version or node -v
+https://stackoverflow.com/questions/8191459/how-do-i-update-node-js
+[/code]</body_value>
+	</node>
+		</content>		
+
+		<tag_groups>
+<item id="11" name="notes"></item>
+<item id="12" name="tags"></item>
+		</tag_groups>		
+		
+		<tag_list>
+<item id="225" term_group_id="11" parent_id="146" name="ASPLinux"></item>
+<item id="227" term_group_id="11" parent_id="146" name="Debian"></item>
+<item id="224" term_group_id="11" parent_id="146" name="Fedora"></item>
+<item id="273" term_group_id="11" parent_id="137" name="GIT"></item>
+<item id="147" term_group_id="11" parent_id="146" name="Mandriva"></item>
+<item id="223" term_group_id="11" parent_id="146" name="Runtu"></item>
+<item id="228" term_group_id="11" parent_id="146" name="Suse"></item>
+<item id="222" term_group_id="11" parent_id="146" name="Ubuntu"></item>
+<item id="229" term_group_id="11" parent_id="146" name="X"></item>
+<item id="233" term_group_id="11" parent_id="232" name="ajax"></item>
+<item id="146" term_group_id="11" parent_id="165" name="linux"></item>
+<item id="137" term_group_id="11" parent_id="0" name="program"></item>
+<item id="165" term_group_id="11" parent_id="0" name="system"></item>
+<item id="232" term_group_id="11" parent_id="0" name="tags"></item>
+		</tag_list>		
+		
+		<tag_links>
+<item content_id="724" term_id="137"></item>
+<item content_id="726" term_id="137"></item>
+<item content_id="727" term_id="137"></item>
+		</tag_links>		
+	
+	</xdata>
+</xroot>
