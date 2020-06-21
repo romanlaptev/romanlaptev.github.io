@@ -8,8 +8,8 @@ var _app = function ( opt ){
 //console.log(arguments);
 	var _vars = {
 		"init_url" : "?q=load-xml",
-		//"init_url" : "?q=load-notes",
 		"requestUrl" : "data/export.xml",
+		//"requestUrl" : "/mnt/d2/temp/export_mydb_allnodes.xml",
 		
 		"messages" : getById("messages"),
 		"templates" : {
@@ -18,17 +18,19 @@ var _app = function ( opt ){
 			"tpl-page-list-item" : _getTpl("tpl-page-list-item"),
 			"tpl-booklist" : "<h3>Book list</h3><ul>{{list}}</ul>"
 		},
+		"appContainer" : getById("App"),
 		"contentList" : getById("content-list"),
 		//"controlPanel" : getById("control-btn"),
 		"log" :  getById("log"),
+		"btnToggle" : getById("btn-toggle-log"),
 
 		"$num_notes" : getById("num-notes"),
-		"breadcrumbs": []
+		"breadcrumbs": {}
 	};
 	
 	
 	var _init = function(){
-console.log("init _notes");
+console.log("init webapp!");
 		_defineEvents();
 		
 		var parseUrl = window.location.search; 
@@ -56,13 +58,13 @@ console.log(parseUrl);
 	function _defineEvents(){
 //console.log("_defineEvents()");
 
-		if( !_vars.contentList ){
-_vars["logMsg"] = "error, html container 'contentList' undefined, _defineEvents()";
+		if( !_vars.appContainer ){
+_vars["logMsg"] = "error, 'appContainer' undefined, _defineEvents()";
 _alert(_vars["logMsg"], "error");
 			return false;
 		}
 			
-		_vars.contentList.onclick = function(event){
+		_vars.appContainer.onclick = function(event){
 			event = event || window.event;
 			var target = event.target || event.srcElement;
 //console.log( event );
@@ -95,32 +97,29 @@ _alert(_vars["logMsg"], "error");
 //console.log(target, _vars["GET"]);
 
 		switch( _vars["GET"]["q"] ) {
-/*
-			
-			case "hide-log":
-				webApp.vars["log"].style.display="none";
-			break;
-			case "view-log":
-				webApp.vars["log"].style.display="block";
-			break;
+
 			case "toggle-log":
 //console.log(webApp.vars["log"]..style.display);
-				if( webApp.vars["log"].style.display==="none"){
-					webApp.vars["log"].style.display="block";
+				if( _vars["log"].style.display==="none"){
+					_vars["log"].style.display="block";
+					_vars["btnToggle"].innerHTML="-";
 				} else {
-					webApp.vars["log"].style.display="none";
+					_vars["log"].style.display="none";
+					_vars["btnToggle"].innerHTML="+";
 				}
 			break;
-*/			
-			//case "clear-log":
-				//_vars["log"].innerHTML="";
-			//break;
-			
+		
+			case "clear-log":
+				_vars["log"].innerHTML="";
+			break;
+						
 			case "load-xml":
 				loadXml();
 			break;
 			
 			case "book-list"://output content hierarchy
+			
+				_vars["breadcrumbs"] = {"top":"book list"}//?q=book-list
 			
 				//form book list (parent_id=0)
 				var bookList = _getPageList({
@@ -443,16 +442,80 @@ _alert(_vars["logMsg"], "error");
 				html = html.replace("{{child_nodes}}", linkedHtml);
 			}
 		}
+
+//-------------------------------- convert timestamp to string Data		
+		if( node["created"] ){
+			if( node["created"].length > 0){
+				node["created"] = _timeStampToDateStr({
+					timestamp : node["created"],
+					format : "yyyy-mm-dd hh:min" 
+				});
+//console.log(created);
+			}
+		}
+		if( node["changed"] ){
+			if( node["changed"].length > 0){
+				node["changed"] = _timeStampToDateStr({
+					timestamp : node["changed"],
+					format : "yyyy-mm-dd hh:min" 
+				});
+			}
+		}
+		
 //------------------------------- insert data into template
 		for( var key in node){
 //console.log(key, node[key]);
 			var key2 = "{{"+key+"}}";
 			if( html.indexOf(key2) !== -1 ){
 //console.log(key, node[key]);
-				html = html.replace(new RegExp(key2, 'g'), node[key]);
+				if( node[key] ){
+					html = html.replace(new RegExp(key2, 'g'), node[key]);
+				} else {
+_vars["logMsg"] = "warning, undefined key "+key+",_drawNode()";
+_alert(_vars["logMsg"], "warning");
+					html = html.replace(new RegExp(key2, 'g'), "");
+				}
 			}
 		}//next
 		
+		
+//-------------------------------- form breadcrumbs
+		//add container link to breadcrumbs
+		_vars["breadcrumbs"][ "key_" + node.id ] = node["title"];
+//console.log("add breadcrumb item: ", node.id);
+		//form breadcrumbs line
+		var breadcrumbs = "";
+		var clear = false;
+		for( var item in _vars["breadcrumbs"] ){
+
+			if( item === "top"){
+				var itemTitle = _vars["breadcrumbs"][item];
+				breadcrumbs = "<a href='?q=book-list' class='btn'>" + itemTitle + "</a> >> ";
+				continue;
+			}
+			
+			var itemID = item.replace("key_", "");
+			
+			if( clear ){//clear unuseful tail breadrumbs
+				delete _vars["breadcrumbs"][item];
+			} else {
+				var itemTitle = _vars["breadcrumbs"][item];
+				if( itemID !== node.id ){
+					breadcrumbs += "<a href='?q=view-node&id="+itemID+"' class='btn'>" + itemTitle + "</a> >> ";
+				} else {
+					breadcrumbs += "<span class='btn active-item'>" + itemTitle + "</span>";
+				}
+			}
+//console.log( itemID, node.id, itemID === node.id );
+//console.log( typeof itemID, typeof node.id );
+			if( itemID === node.id ){//detect unuseful tail breadrumbs
+				clear = true;
+			}
+			
+		}//next
+//console.log( breadcrumbs );
+
+		html = html.replace("{{breadcrumbs}}", breadcrumbs);
 //console.log(html);
 		return html;
 	}//end _formNode()

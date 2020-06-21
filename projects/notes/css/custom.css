@@ -17,42 +17,62 @@ background-color: #fff;
 border-radius: 10px;
 }
 
-#log .alert {
-margin-bottom: 0;
-padding: 10px;
+
+/* LOG panel */
+.log-panel {
+	margin-bottom: 0;
+	margin-top: 5px;
+	background-color: #b0c4de;
+	position: fixed;
+	bottom: 0;
+	right:0;
+	z-index: 999;
+	opacity: 0.9;
+	border-radius: 4px;
 }
+
+.log-panel .panel-body{
+	padding: 5px;
+}
+
+.log-panel span a{
+text-decoration:none;
+outline: none;
+}
+
+#log{
+/*	
+	height: 400px;
+	overflow-y: auto;	
+*/	
+}
+
+#btn-clear-log {
+/*	
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+*/	
+}
+	
+
 
 #log p{
 margin: 0;
 }
 
-/* .top { */
-  /* background: #0088cc none repeat scroll 0 0; */
-  /* border-radius: 5pc; */
-  /* bottom: -35px; */
-  /* cursor: pointer; */
-  /* height: 70px; */
-  /* left: 49%; */
-  /* line-height: 25px; */
-  /* opacity: 0.7; */
-  /* position: fixed; */
-  /* text-align: center; */
-  /* width: 70px; */
-/* } */
-/* .top a { */
-  /* outline: medium none; */
-  /* text-decoration: none; */
-/* } */
-/* .top .arrow { */
-  /* border-left: 5px solid #ffffff; */
-  /* border-top: 5px solid #ffffff; */
-  /* font-size: 30px; */
-  /* height: 20px; */
-  /* margin-left: 23px; */
-  /* margin-top: 18px; */
-  /* transform: rotate(45deg); */
-  /* width: 20px; */
-/* } */
+.alert {
+	margin-bottom: 3px !important;
+	padding: 10px !important;
+}
+.alert-warning {
+	color: #000;
+	background-color: #ffb515;
+	/*border-color: #8a6d3b;*/
+	border-color: #ffb515;
+}
+
 
 #btn-scroll-to-top {
 	/*left: 44%;*/
@@ -69,9 +89,6 @@ margin: 0;
 	}
 }*/
 
-#control-btn .btn {
-  margin-top: 5px;
-}
 
 #wait-window.modal-dialog {
 background-color: rgb(200, 200, 250);
@@ -108,13 +125,31 @@ border-top: 16px solid #3498db;
 }
 
 
+
+
 .breadcrumb-custom {
-	/*background-color: #b1d0ef;*/
-	background-color: inherit;
+	/*background-color: #b1d0ef !important;*/
+	/*background-color: inherit;*/
 }
-.breadcrumb-custom a {
+.breadcrumb-custom .btn {
+	background-color: #fff;
+	border: 1px solid #337ab7;
+	margin-left: 5px;
+	color: #000;
+}
+.breadcrumb-custom .btn:hover {
+	background-color: #337ab7;
 	color: #fff;
 }
+
+.breadcrumb-custom .active-item {
+	background-color: #def;
+}
+.breadcrumb-custom .active-item:hover {
+	background-color: #def;
+	color: #000;
+}
+
 
 .bookpage .panel-primary > .panel-heading {
 	background-color: #006b9b;
