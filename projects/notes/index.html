@@ -14,10 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 -->
 	<link rel="stylesheet" href="css/bootstrap337.min.css">
-	<!-- <script src="../../js/jquery321.min.js"></script> -->
+<!--
 	<script src="js/lib/jquery191.min.js"></script>
-	<script src="js/bootstrap/bootstrap337.min.js"></script>
-	<script src="js/bootstrap/bootstrap.file-input.js"></script>
+-->
 <!--[if lt IE 9]>
 	<script src="js/fix_IE/html5shiv.js"></script>
 	<script src="js/fix_IE/respond.min.js"></script>
@@ -25,154 +24,51 @@
 
 	<!-- <link rel="stylesheet" href="css/fonts.css"> -->
 	<link rel="stylesheet" href="css/custom.css">
+<!--
 	<link rel="stylesheet" href="css/breadcrumb.css">
+-->
 	
 	<script src="js/functions.js"></script>
-	<script src="js/notes.js"></script>
-	<script>
-window.onload = function(){
-	var webNotes = _notes();
-console.log( webNotes );	
-	webNotes.init();
-}//end load
-
-$(document).ready(function(){
-	$("input[type=file]").bootstrapFileInput();
-	
-	//$(".collapse").collapse();
-});//end ready	
-	</script>
-	
+	<script src="js/app.js"></script>
 </head>
 <body>
 		
-<div class="container" id="top">
+<div class="container" id="App">
 
 		<div class="panel-body">
 			<ul class="nav nav-tabs">
 				<li><a class="btn btn-primary" href="../../index.html">index</a></li>
-				<!-- <li><a href="#" class="btn btn-blue">Service</a></li> -->
-				<!-- <h1 class="text-right" id="app-title">Application title</h1> -->
-				<h2 class="text-right">Notes: <span id="num-notes">0</span></h2>
+<!-- <li><a href="#" class="btn btn-blue">Service</a></li> -->
+<li><a href="parse_notes/parse_notes.html" class="btn btn-default">previous version</a></li>
+<!-- <h1 class="text-right" id="app-title">Application title</h1> -->
+				<h2 class="text-right">elements: <span id="num-notes">0</span></h2>
 			</ul>
 		</div>
-<!--
-	<div class=" panel panel-primary">
-		<div class="panel-body" id="control-btn">
-			<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-				<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
-				
-				<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-				<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
-				
-				<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
-				<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
-				<a href="tests_app/SpecRunner.html" class="">test code</a>
-			</div>
-			<a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a>
-		</div>
+
 		
+				
+	<div class="log-panel panel">
 		<div class="panel-body">
-			<ul class="list-inline">
-				<li><a href="parse_notes/parse_notes.html" class="">previous version</a></li>
-				<li><a href="?q=load-notes" class="">test, load notes from DB</a></li>
-				<li><a href="?q=load-xml-book" class="">test, load notes from XML</a></li>
-				<li><a href="export/export_drupal_book.php" class="">export_drupal_book</a></li>
-			</ul>
+			<span class="pull-right">
+				<a id="btn-toggle-log" href="?q=toggle-log" title="Toggle log" class="btn btn-sm btn-default">-</a>
+				<a id="btn-clear-log" href="?q=clear-log" title="Clear log" class="btn btn-sm btn-default">x</a>
+			</span>
+			<div id="log" class="panel-body"></div>
 		</div>
-		
 	</div>
--->
-		
-	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
-			  <div class="panel-heading">
-				<h4 class="panel-title">
-				  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">service</a>
-				</h4>
-			  </div>
-			  <div id="collapse1" class="panel-collapse collapse in">
-					<div class="btn-group">
-						<a href="parse_notes/parse_notes.html" class="btn btn-default">previous version</a>
-						<a href="?q=load-notes" class="btn btn-default">test, load notes from DB</a>
-						<a href="?q=load-xml-book" class="btn btn-default">test, load notes from XML</a>
-						<a href="export/export_drupal_book.php" class="btn btn-default">export_drupal_book</a>
-					</div>
-					
-					<div class="panel-body" id="control-btn">
-						<div class="col-xs-8 col-sm-11 col-md-11 col-lg-11">
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newModal" id="btn-new">add new note</button>
-<a href="#" class="btn btn-sm btn-warning" id="btn-export">export in XML</a>
-<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#importModal">import from XML</button>
-						
-<a href="#clear_notes" class="btn btn-sm btn-danger">remove all notes</a>
-<a href="#remove_table" class="btn btn-sm btn-danger">refresh table</a>
-<a href="tests_app/SpecRunner.html" class="">test code</a>
-						</div>
-<!-- <a href="?q=clear-log" id="clear-log" class="btn btn-sm btn-danger pull-right">clear log</a> -->
-					</div>
-					
-					<div id="log-wrap" class="log-panel">
-						<div id="log"></div>
-					</div>		
-					
-			  </div>
-		</div>
-	
-	</div> 
-
-
-<!-- https://bootsnipp.com/snippets/GaqB2 -->
-<!--	
-<div class="panel">
-    <div class="row">
-        
-        <div class="btn-group btn-breadcrumb breadcrumb-default">
-            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-            <div class="visible-lg-block">
-        		<div class="btn btn-warning btn-derecha"><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
-        		<div class="btn btn-danger btn-derecha">ATENCIÓN</div>
-        	</div>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Snippets</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Breadcrumbs text</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Section</a>
-            <a href="#" class="btn btn-default visible-lg-block visible-md-block">Category</a>
-            <div class="btn btn-default visible-xs-block hidden-xs visible-sm-block ">...</div>
-            <div class="btn btn-info"><b>Item Actual</b></div>
-        </div>
-        
-	</div>
-	<div class="btn-group btn-breadcrumb breadcrumb-primary">
-		<a href="#" class="btn btn-primary">Home</a>
-		<a href="#" class="btn btn-primary">Snippets</a>
-		<a href="#" class="btn btn-primary">Breadcrumbs text</a>
-		<a href="#" class="btn btn-primary">Section</a>
-		<a href="#" class="btn btn-primary">Category</a>
-		<div class="btn btn-info"><b>Item Actual</b></div>
-	</div>
-</div>
--->    
 
 	<div class="panel">
-<!--
-			<div class="panel-heading">
-				<h4>list of notes:</h4>
-			</div>
--->
-		<div class="panel-body" id="messages"></div>
+		<div class="panel-body" id="content-list"></div>
 	</div>
+	
 </div><!-- end container -->
 
+
 <!--
-<div class="top">
-	<a title="scroll to top page" href="#top" class="">
-		<div class="arrow"></div>
-	</a>
-</div>
--->	
 <div class="">
 	<button id="btn-scroll-to-top" class="btn btn-sm btn-info scroll-to nolink" data-target="top">scroll to top</button>
 </div>
+-->
 
 <div id="wait-window" class="modal-dialog hide">
 	<h1 class="text-center">wait...</h1>
@@ -202,77 +98,39 @@ $(document).ready(function(){
 -->
 
 <!-- ********************** TEMPLATES ************************** -->	
-<!-- ********************** message-list ************************** -->	
-<script id="tpl-message-list" type="text/template">
-<div class="row">
-	<div class="" id="note-{{id}}">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<strong class="title">{{title}}</strong> 
-				<!--<a href="#edit_note-{{id}}" class="btn btn-sm btn-warning">edit</a>-->
-<div class="pull-right">
-	<button class="btn btn-info btn-sm btn-edit-note" data-toggle="modal" data-target="#editModal" data-id="{{id}}">edit note</button>
-	<a href="?q=delete-note&id={{id}}" class="btn btn-sm btn-danger btn-delete-note">delete note</a>
-</div>
- <br><br>
- 
-			</div>
-			
-			<div class="panel-footer">
-				<p class="text-muted">
-					<small>created:</small><strong class="author">{{author}}</strong>, 
-					<span class="date">
-						<small>date:</small> {{client_date}} 
-					</span>
-					<span class="server-date">
-						<small>( server date: {{server_date}})</small>,
-					</span>
-					<span class="ip">
-						<small>send from ip: {{ip}}</small>
-					</span>
-				</p>
-			</div>
-			
-			<div class="panel-body text-message">{{text_message}}</div>
-			
-		</div><!-- /panel -->
-	</div>
-</div><!-- end row -->
-</script>
-	
-<!-- ********************** list notes ************************** -->	
-<script id="tpl-notes-list" type="text/template">
+
+<script id="tpl-node" type="text/template">
 	<div class="row">
 	
-		<div class="bookpage" id="note-{{nid}}" data-mlid="{{mlid}}" data-plid="{{plid}}">
+		<div class="bookpage" id="page-{{id}}">
 		
-			<div class="panel btn-group btn-breadcrumb breadcrumb-primary breadcrumb-custom">
-				{{breadcrumbs}}
+			<div class="panel breadcrumb-custom">
+{{breadcrumbs}}
 			</div>
 		
-			<div class="panel panel-primary">
-<!--
-				<div class="panel-heading">
-					<strong class="title">{{title}}</strong>  
-					<ul class='breadcrumb breadcrumb-custom'>{{breadcrumbs}}</ul>
+			<div class="panel panel-info">
+
+				<div class="panel-heading text-center">
+					<strong class="title">
+{{title}}
+					</strong>  
 				</div>
--->
 				
-				<div class="linked-nodes">
+				<div class="child-nodes">
 					<!-- <ul class="list-group"> -->
 					<!-- <ul class="list-inline linked-nodes"> -->
-					<ul>
-	{{linked_nodes}}
-					</ul>
+{{child_nodes}}
 				</div>
 					
-				<div class="panel-body"><pre>{{body_value}}</pre></div>
+				<div class="panel-body">
+<pre>{{body_value}}</pre>
+				</div>
 
 				<div class="panel-footer">
 					<p class="">
 						<span class="date"><small>
-							<b>created:</b> {{created}}
-							<b>changed:</b> {{changed}} 
+<b>created:</b> {{created}}
+<b>changed:</b> {{changed}} 
 							</small>
 						</span>
 					</p>
@@ -283,158 +141,14 @@ $(document).ready(function(){
 		</div>
 	</div><!-- end row -->
 </script>
+	
 
-<!-- ********************** linked notes ************************** -->	
-<script id="tpl-linked-nodes" type="text/template">
-	<!-- <li class="list-group-item"> -->
-	<li>
-		<a href="?q=view-node&nid={{nid}}" class="">{{title}}</a>
-	</li>
+<script id="tpl-page-list" type="text/template">
+	<ul>{{list}}</ul>
 </script>
-	
-<!-- ********************** newModal ************************** -->	
-	<div id="newModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-
-			<div class="modal-content">
-			
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">add new note</h4>
-				</div>
-				
-<form name="form_message" id="message-form" action="" method="POST" enctype="application/x-www-form-urlencoded">
-				<div class="modal-body">
-				
-					<div class=" panel panel-primary">
-						<div class="panel-body">
-							<div class="form-group">
-								<label id="name-label">*Name: </label>
-								<input type="text" class="form-control" name="author_name" value="anonymous">
-							</div>
-
-							<div class="form-group">
-								<label id="title-label">Title (subject): </label>
-								<input type="text" class="form-control" name="title" value="">
-							</div>
-
-							<div class="form-group">
-								<label id="text-message-label">*text message: </label>
-								<textarea id="notes-text" name="text_message" class="form-control" rows="10"></textarea>
-							</div>						
-	<p><small>
-	use <b>[code] unformatted text [/code]</b>,
-	<b>[url] url | text [/url]</b> for link adding, 
-	<b>[br]</b> for break line
-	</small>
-	</p>
-						</div>
-						
-						<div class="panel-footer">
-							<button type="reset" class="btn btn-large btn-warning">reset form</button>
-							<button type="submit" class="btn btn-large btn-primary">save</button>
-						</div>
-					</div><!-- end panel-->
-					
-				</div><!-- end modal-body-->
-</form>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				
-			</div><!-- end modal-content-->
-		</div>
-	</div><!-- end newModal -->
-
-<!-- ********************** editModal ************************** -->	
-	<div id="editModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">edit note</h4>
-				</div>
-				
-<form 
-name="form_message_edit" 
-id="message-edit-form" 
-action=""
-method="POST" 
-enctype="application/x-www-form-urlencoded">
-<!-- action="?action=edit_note"  -->
-				<div class="modal-body">
-					<div class=" panel panel-primary">
-						<div class="panel-body">
-							<input type="text" name="id" value="32" readonly>
-							<div class="form-group">
-								<label id="name-label-edit">*Name: </label>
-								<input type="text" class="form-control test" name="author_name" value="">
-							</div>
-
-							<div class="form-group">
-								<label id="title-label-edit">Title (subject): </label>
-								<input type="text" class="form-control test" name="title" value="">
-							</div>
-
-							<div class="form-group">
-								<label id="text-message-label-edit">*text message: </label>
-								<textarea id="notes-text" name="text_message" class="form-control test" rows="10"></textarea>
-							</div>						
-	<p><small>
-	use <b>[code] unformatted text [/code]</b>,
-	<b>[url] url | text [/url]</b> for link adding, 
-	<b>[br]</b> for break line
-	</small>
-	</p>
-						</div>
-						<div id="form-edit-log"></div>
-						<div class="panel-footer">
-							<!-- <button type="reset" class="btn btn-large btn-warning">reset form</button> -->
-							<button type="submit" class="btn btn-large btn-primary">save</button>
-						</div>
-					</div><!-- end panel-->
-				</div><!-- end modal-body-->
-</form>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				
-			</div><!-- end modal-content-->
-		</div>
-	</div><!-- end editModal -->
-	
-<!-- ********************** importModal ************************** -->	
-	<div id="importModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">upload XML and import notes to DB</h4>
-				</div>
-				
-<form name="form_import" id="import-form" action="api/notes_mysql.php" method="POST" enctype="multipart/form-data">
-				<div class="modal-body">
-	<input type="file" name="upload_file" title="Search for a file to add" class="btn-primary"><br>
-<!--
-	<input type="hidden" name="action" value="upload">
-<input type="file" name="upload_files[]" id="file-select" multiple>
-				upload_max_filesize = '.$upload_max_filesize.'
--->	
-					
-				</div><!-- end modal-body-->
-				
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">upload & import</button>
-					<button id="btn-import" class="btn btn-warning">import</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-</form>
-				
-			</div><!-- end modal-content-->
-		</div>
-	</div><!-- end importModal -->
+<script id="tpl-page-list-item" type="text/template">
+	<li><a href="?q=view-node&id={{id}}" class="">{{title}}</a></li>
+</script>
 
 </body>
 </html>

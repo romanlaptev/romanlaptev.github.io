@@ -91,103 +91,120 @@ function get_attr_to_obj( attr ){
 
 
 
-/*
-parse XML document to array
-<table><note>....</note>, <note>...</note></table>
-
-IN:
-<templates>
-	<tpl name="tpl-node_photogallery_image">
-		<html_code><![CDATA[
-......
-		]]></html_code>
-	</tpl>
-.................
-</templates>
-
-OUT:
-[ { name: "attr value", html_code: "......" },
-{ name: "attr value", html_code: "......" }]
-ONLY second LEVEL !!!!!!!!!!!!							  
-*/
-function _parseXmlToObj(xml){
+		function _convertXmlToObj(xml){
 //console.log( xml.childNodes.item(0).nodeName );			
 //console.log( xml.firstChild.nodeName );			
 //console.log( xml.documentElement.nodeName );			
-	var rootTagName = xml.documentElement.nodeName;
-	var xmlDoc = xml.getElementsByTagName( rootTagName);
-	//var xmlDoc = xml.getElementsByTagName( "nodes");
-
-//console.log( xmlDoc, xmlDoc.item(0),  xmlDoc.length) ;
-//console.log( xmlDoc.childNodes.length ) ;
+			var rootTagName = xml.documentElement.nodeName;
+			var xmlDoc = xml.getElementsByTagName( rootTagName);
+//console.log( xmlDoc, typeof xmlDoc) ;
+//console.log( xmlDoc.item(0), typeof xmlDoc.item(0)) ;
+//console.log( xmlDoc.length) ;
+//console.log( xmlDoc.item(0).childNodes.length ) ;
 //console.log( xmlDoc.item(0).childNodes.item(1).nodeName ) ;
-//console.log( xmlDoc.item(0).childNodes,  xmlDoc.item(0).childNodes.length) ;
-
-//for(var key in xmlDoc){
-//console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
-//}
-
-	var xmlObj = [];
-	for (var n = 0; n < xmlDoc.item(0).childNodes.length; n++) {
-		var child = xmlDoc.item(0).childNodes.item(n);//<=IE9
-//console.log( "nodeType: "+ child.nodeType);
-		if (child.nodeType !== 1){// not Node.ELEMENT_NODE
-			continue;
-		}
-//console.log( child, child.childNodes, child.childNodes.length );			
-		var node = __parseChildNode( child );
-//console.log(node);			
-		xmlObj.push ( node );
-	}//next
-//console.log(xmlObj);				
-	return xmlObj;
-	
-	function __parseChildNode( nodeXml ){
-console.log( "nodeName: "+ nodeXml.nodeName);
-//console.log( "text: "+ nodeXml.text);
-//console.log( "textContent: "+ nodeXml.textContent);
-// var test = nodeXml;				
-// for(var key in test ){
-// console.log( key +", "+ test[key]+ ", " + typeof test[key]);
+// for(var key in xmlDoc){
+// console.log( key +", "+ xmlDoc[key]+ ", " + typeof xmlDoc[key]);
 // }
-		var nodeObj = get_attr_to_obj( nodeXml.attributes ) ;
-		
-//console.log( nodeXml, nodeXml.childNodes, nodeXml.childNodes.length );			
-		
-		for (var n2 = 0; n2 < nodeXml.childNodes.length; n2++) {
-			var _child = nodeXml.childNodes.item(n2);
-//console.log( "nodeType: "+ _child.nodeType);
-			if ( _child.nodeType !== 1){// not Node.ELEMENT_NODE
-				continue;
+			var xmlObj = {};
+			for(var n1 = 0; n1 < xmlDoc.length; n1++){
+//console.log( xmlDoc.item(n1) );
+//console.log( xmlDoc.item(n1).childNodes ) ;
+				var _node = xmlDoc.item(n1);
+				var key = _node.nodeName;
+				xmlObj[key] = {};
+				_parseChildNodes( _node, xmlObj[key] );
 			}
-// console.log( "nodeName: "+ _child.nodeName);
-// console.log( "text: "+ _child.text);
-// console.log( "textContent: "+ _child.textContent);
-//console.log( _child, _child.childNodes, _child.childNodes.length);
-//console.log( "nodeType: " + _child.childNodes.item(0).nodeType );
-//console.log( _child.childNodes.length > 1 );
+			//console.log(xmlObj);				
+			return xmlObj;
 
-			if( _child.childNodes.length > 1 ){
-//.....				
-			} else {
-				
-				var _name = _child.nodeName;
-				if ("textContent" in _child){
-					nodeObj[_name] = _child.textContent;
-				} else {
-					nodeObj[_name] = _child.text;
-				}
-			}
-			
-		}//next
-
-// if( !record.children){
+			function _parseChildNodes( node, nodeObj ){
+				var _childNodes = node.childNodes;
+// if( !node.children){
 // console.log("Internet Explorer (including version 11!) does not support the .children property om XML elements.!!!!");
 // }
-		return nodeObj;
-	}//end __parseChildNode()
+				if( _childNodes.length > 0){
+					if( _childNodes.length === 1 &&
+						_childNodes.item(0).nodeType === 3
+					){//one child node of type TEXT cannot contain the "children" property!!!!
+							//_ch["_itemType"] = ;
+					} else {
+						nodeObj["childNodes"] = {};
+					}
+				}
+				
+				for(var n = 0; n < _childNodes.length; n++){
+					var child = _childNodes.item(n);//<=IE9
+//console.log( "nodeType: "+ child.nodeType);
+//console.log( "nodeName: "+ child.nodeName);
 
-}//end _parseXmlToObj()
+					if (child.nodeType !== 1){// not Node.ELEMENT_NODE
+						if (child.nodeType === 3){// #text
+							
+							var _text = "";
+							if ("textContent" in child){
+								_text = child.textContent;
+								
+							} else {
+								_text = child.text;
+							}
+							
+							_text = _text.trim();
+							if( _text.length > 0){
+								if( 
+									_text !== "\n" &&
+									_text !== "\n\n" &&
+									_text !== "\n\n\n"
+								){
+									nodeObj["text"] = _text;
+								}
+							}
+						}
+					} else {
+//console.log( "nodeName: "+ child.nodeName);
+						var key = child.nodeName;
+
+						//if( !nodeObj["children"] ){
+							//nodeObj["children"] = {};
+						//}
+						if( !nodeObj["childNodes"][key] ){
+							nodeObj["childNodes"][key] = [];
+						}
+
+						var _ch = {
+							//"_length": child.childNodes.length
+						};
+						var attr = __getAttrToObject(child.attributes);
+						if(attr){
+							_ch["attributes"] = attr;
+						}
+						
+						//if( child.childNodes.length === 1){
+							////continue;
+							//_ch["nodeType"] = child.nodeType;
+							//_ch["_child_nodes"] = child.childNodes;
+							//_ch["_item"] = child.childNodes.item(0);
+							//_ch["_itemType"] = child.childNodes.item(0).nodeType;
+						//}
+						
+						nodeObj["childNodes"][key].push(_ch);
+
+						_parseChildNodes(child, _ch );
+					}
+				}
+			}//end _parseChildNodes()
+
+			function __getAttrToObject( attr ){
+				if( attr.length === 0){
+					return false;
+				}
+				var item_attr = {};
+				for(var item = 0; item < attr.length; item++) {
+					item_attr[attr[item].name] = attr[item].value;
+				}
+				return item_attr;
+			}//end _get_attr_to_obj()
+		
+		}//end _convertXmlToObj()		
 
 
 
@@ -223,55 +240,6 @@ function parseGetParams( parseStr ) {
 	return $_GET; 
 }//end parseGetParams() 
 
-
-function getXMLDocument(url)  {  
-	var xml;  
-	if(window.XMLHttpRequest) {  
-		xml=new window.XMLHttpRequest();  
-		xml.open("GET", url, false);  
-		xml.send("");  
-		//alert (xml.responseText);
-		return xml.responseXML;  
-	}  else  {
-		if(window.ActiveXObject) {  
-			xml=new ActiveXObject("Microsoft.XMLDOM");  
-			xml.async=false;  
-			xml.load(url);  
-			return xml;  
-		}  else  {  
-			alert("Загрузка XML не поддерживается браузером");  
-			return null;  
-		}  
-	}
-}//end getXMLDocument
-
-function create_MSXML(){
-	if (typeof (ActiveXObject) === "undefined") {
-		return false;
-	}
-	var progIDs = [
-					"Msxml2.DOMDocument.6.0", 
-					"Msxml2.DOMDocument.5.0", 
-					"Msxml2.DOMDocument.4.0", 
-					"Msxml2.DOMDocument.3.0", 
-					"MSXML2.DOMDocument", 
-					"MSXML.DOMDocument"
-				  ];
-	for(var n = 0; n < progIDs.length; n++) {
-		try { 
-			var xml = {
-				"xml_obj" : new ActiveXObject( progIDs[n] ),
-				"version" : progIDs[n]
-			}
-			return xml; 
-		}  catch(e) {
-console.log("error: " + e);
-			for( var item in e )	{
-console.log(item + ": " + e[item]);
-			}
-		};
-	}
-}//end create_MSXML()
 
 /*
 	runAjax( {
@@ -701,6 +669,117 @@ console.log("loaded: " + e.loaded);
 }//end runAjax()
 
 
+		function _alert( message, level ){
+			switch (level) {
+				case "info":
+					message = "<p class='alert alert-info'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "warning":
+					message = "<p class='alert alert-warning'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "danger":
+				case "error":
+					message = "<p class='alert alert-danger'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				case "success":
+					message = "<p class='alert alert-success'>" + message + "</p>";
+					_log(message);
+				break;
+				
+				default:
+					_log(message);
+				break;
+			}//end switch
+			
+		}//end _alert()		
+
+//================================
+//Usage :  var today = func.timeStampToDateStr({
+//timestamp : ....timestamp string....,
+//format : "yyyy-mm-dd hh:min" 
+//});
+
+//https://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript
+// Create a new JavaScript Date object based on the timestamp
+// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+//var date = new Date(unix_timestamp * 1000)
+
+//================================
+		function _timeStampToDateStr( opt ){
+			var p = {
+				"timestamp" : null,
+				"format" : ""
+			};
+			for(var key in opt ){
+				p[key] = opt[key];
+			}
+//console.log( p );
+			
+			//date.setTime( timestamp);
+			if( !p.timestamp || p.timestamp.length === 0){
+				var d = new Date();
+			} else {
+				// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+				timestamp = p.timestamp * 1000;
+				var d = new Date( timestamp );
+			}
+//console.log( d );
+			
+			var sYear = d.getFullYear();
+
+			var sMonth = d.getMonth() + 1;
+	//console.log( sMonth, typeof sMonth );
+			if( sMonth < 10){
+				sMonth = "0" + sMonth;
+			}
+			
+			var sDate = d.getDate();
+			if( sDate < 10){
+				sDate = "0" + sDate;
+			}
+			
+			var sHours = d.getHours();
+			if( sHours < 10){
+				sHours = "0" + sHours;
+			}
+			
+			var sMinutes = d.getMinutes();
+			if( sMinutes < 10){
+				sMinutes = "0" + sMinutes;
+			}
+			
+			var sSec = d.getSeconds();
+			if( sSec < 10){
+				sSec = "0" + sSec;
+			}
+			
+			var dateStr =  sDate + "-" + sMonth + "-" + sYear + " " + sHours + ":" + sMinutes + ":" + sSec;
+			
+			switch( p.format ){
+				
+				case "yyyy-mm-dd":
+					dateStr = sYear + "-" + sMonth + "-" + sDate;
+				break;
+				
+				case "yyyy-mm-dd hh:min":
+					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes;
+				break;
+				
+				case "yyyy-mm-dd hh:min:sec":
+					dateStr = sYear + "-" + sMonth + "-" + sDate + " " + sHours + ":" + sMinutes + ":" + sSec;
+				break;
+				
+			}//end switch
+			
+			return dateStr;
+		}//end _timeStampToDateStr()
+		
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
 var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";
