@@ -446,19 +446,21 @@ _alert(_vars["logMsg"], "error");
 //-------------------------------- convert timestamp to string Data		
 		if( node["created"] ){
 			if( node["created"].length > 0){
-				node["created"] = _timeStampToDateStr({
+				var createdString = _timeStampToDateStr({
 					timestamp : node["created"],
 					format : "yyyy-mm-dd hh:min" 
 				});
-//console.log(created);
+				html = html.replace("{{created}}", createdString);
+//console.log(createdString);
 			}
 		}
 		if( node["changed"] ){
 			if( node["changed"].length > 0){
-				node["changed"] = _timeStampToDateStr({
+				var changedString = _timeStampToDateStr({
 					timestamp : node["changed"],
 					format : "yyyy-mm-dd hh:min" 
 				});
+				html = html.replace("{{changed}}", changedString);
 			}
 		}
 		
@@ -471,7 +473,7 @@ _alert(_vars["logMsg"], "error");
 				if( node[key] ){
 					html = html.replace(new RegExp(key2, 'g'), node[key]);
 				} else {
-_vars["logMsg"] = "warning, undefined key "+key+",_drawNode()";
+_vars["logMsg"] = "warning, undefined key "+key+", title: <b>"+node["title"]+"</b>,_drawNode()";
 _alert(_vars["logMsg"], "warning");
 					html = html.replace(new RegExp(key2, 'g'), "");
 				}
@@ -490,7 +492,7 @@ _alert(_vars["logMsg"], "warning");
 
 			if( item === "top"){
 				var itemTitle = _vars["breadcrumbs"][item];
-				breadcrumbs = "<a href='?q=book-list' class='btn'>" + itemTitle + "</a> >> ";
+				breadcrumbs = "<a href='?q=book-list' class='btn'>" + itemTitle + "</a> > ";
 				continue;
 			}
 			
@@ -501,9 +503,9 @@ _alert(_vars["logMsg"], "warning");
 			} else {
 				var itemTitle = _vars["breadcrumbs"][item];
 				if( itemID !== node.id ){
-					breadcrumbs += "<a href='?q=view-node&id="+itemID+"' class='btn'>" + itemTitle + "</a> >> ";
+					breadcrumbs += "<a href='?q=view-node&id="+itemID+"' class='btn'>" + itemTitle + "</a> > ";
 				} else {
-					breadcrumbs += "<span class='btn active-item'>" + itemTitle + "</span>";
+					breadcrumbs += "<span class='active-item'>" + itemTitle + "</span>";
 				}
 			}
 //console.log( itemID, node.id, itemID === node.id );

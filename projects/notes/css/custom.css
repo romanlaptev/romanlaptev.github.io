@@ -14,7 +14,7 @@ body {
 
 .container{
 background-color: #fff;
-border-radius: 10px;
+border-radius: 5px;
 }
 
 
@@ -143,11 +143,9 @@ border-top: 16px solid #3498db;
 }
 
 .breadcrumb-custom .active-item {
-	background-color: #def;
-}
-.breadcrumb-custom .active-item:hover {
-	background-color: #def;
-	color: #000;
+	border-bottom: 1px solid #0000ff;
+	padding:5px;
+	font-weight:bold;
 }
 
 
