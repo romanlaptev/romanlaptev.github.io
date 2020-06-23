@@ -22,15 +22,15 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
+current_page=7
 FILE_NAME_0=59;None;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fnb.txt;0;4
-FILE_NAME_1=3319;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Findex.html;0;4
-FILE_NAME_2=13142;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Fapp.js;0;4
-FILE_NAME_3=18563;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Ffunctions.js;0;4
+FILE_NAME_1=3428;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Findex.html;0;4
+FILE_NAME_2=13113;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Fapp.js;0;4
+FILE_NAME_3=17957;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fjs%2Ffunctions.js;0;4
 FILE_NAME_4=0;HTML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Ffiles%2Ftest_API.html;0;4
 FILE_NAME_5=45991;XML;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fdata%2Fexport.xml;0;4
 FILE_NAME_6=0;Javascript;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Ffiles%2Fnotes.js;0;4
-FILE_NAME_7=132;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fcss%2Fcustom.css;0;4
+FILE_NAME_7=2376;CSS;0;EUTF-8;1;1;0;%2Fmnt%2Fd2%2Fwww%2Fsites%2Fromanlaptev.github.io%2Fprojects%2Fnotes%2Fcss%2Fcustom.css;0;4
 
 [VTE]
 last_dir=/mnt/d2/www

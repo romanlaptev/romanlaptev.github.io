@@ -132,14 +132,13 @@ border-top: 16px solid #3498db;
 	/*background-color: inherit;*/
 }
 .breadcrumb-custom .btn {
-	background-color: #fff;
-	border: 1px solid #337ab7;
-	margin-left: 5px;
-	color: #000;
-}
-.breadcrumb-custom .btn:hover {
 	background-color: #337ab7;
 	color: #fff;
+	margin: 5px;
+	padding: 5px;	
+}
+.breadcrumb-custom .btn:hover {
+	background-color: #26557d;
 }
 
 .breadcrumb-custom .active-item {
@@ -156,24 +155,15 @@ border-top: 16px solid #3498db;
 }
 
 
-.linked-nodes {
-	padding-top: 20px;
-}
-.linked-nodes a {
-	color: #0000ff;
-}
-
-
 .bookpage pre {
 	background-color: #cFdFCc;
+	padding:10px;
 }
 
 /* fix Bootstrap */
 .nav-tabs .btn:hover {
-	background-color: orange;
-	color: #000 !important;
+	background-color: #26557d;
 }
 .nav-tabs .btn:focus {
-	background: orange;
-	color: #000 !important;
+	background-color: #26557d;
 }

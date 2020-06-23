@@ -1,0 +1,41 @@
+@font-face {
+font-family:hattori_hanzolight_italic;
+src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot');
+src:url('hattori_hanzo/hattori_hanzo_italic-webfont.eot?#iefix') format('embedded-opentype'),url('hattori_hanzo/hattori_hanzo_italic-webfont.woff') format('woff'),url('hattori_hanzo/hattori_hanzo_italic-webfont.ttf') format('truetype');
+font-weight:400;
+font-style:normal
+}
+@font-face {
+font-family:hattori_hanzolight;
+src:url('hattori_hanzo/hattori_hanzo-webfont.eot');
+src:url('hattori_hanzo/hattori_hanzo-webfont.eot?#iefix') format('embedded-opentype'),url('hattori_hanzo/hattori_hanzo-webfont.woff') format('woff'),url('hattori_hanzo/hattori_hanzo-webfont.ttf') format('truetype');
+font-weight:400;
+font-style:normal
+}
+
+/*
+@font-face {
+  	font-family: 'Material Icons';
+	font-style: normal;
+  	font-weight: 400;
+  	src: url('MaterialIcons/MaterialIcons-Regular.eot');
+  	src: local('Material Icons'),
+		local('MaterialIcons-Regular'),
+		url('MaterialIcons/MaterialIcons-Regular.woff2') format('woff2'),
+		url('MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
+		url('MaterialIcons/MaterialIcons-Regular.ttf') format('truetype');
+}
+*/
+
+@font-face {
+	font-family: 'Material Icons';
+		src: url('MaterialIcons/MaterialIcons-Regular.eot');                                    /* IE9 Compat Modes */
+		src: url('MaterialIcons/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('MaterialIcons/MaterialIcons-Regular.woff2') format('woff2'),                  /* Новейшие браузеры */
+		url('MaterialIcons/MaterialIcons-Regular.woff') format('woff'),                    /* Новые браузеры и IE9+ */
+		url('MaterialIcons/MaterialIcons-Regular.ttf')  format('truetype'),                /* Старые Safari, Android, iOS */
+		url('MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');          /* Древние Safari, iOS, Android */
+	font-weight: 400;
+	font-style: normal;
+}
+

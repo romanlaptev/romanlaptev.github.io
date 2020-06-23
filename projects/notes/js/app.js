@@ -10,8 +10,6 @@ var _app = function ( opt ){
 		"init_url" : "?q=load-xml",
 		"requestUrl" : "data/export.xml",
 		//"requestUrl" : "/mnt/d2/temp/export_mydb_allnodes.xml",
-		
-		"messages" : getById("messages"),
 		"templates" : {
 			"tpl-node" : _getTpl("tpl-node"),
 			"tpl-page-list" : _getTpl("tpl-page-list"),
@@ -23,7 +21,6 @@ var _app = function ( opt ){
 		//"controlPanel" : getById("control-btn"),
 		"log" :  getById("log"),
 		"btnToggle" : getById("btn-toggle-log"),
-
 		"$num_notes" : getById("num-notes"),
 		"breadcrumbs": {}
 	};
@@ -38,14 +35,14 @@ console.log("init webapp!");
 			_vars["GET"] = parseGetParams(); 
 			_urlManager();
 		} else {
-				if( _vars["init_url"] ){
-						//parseUrl = _vars["init_url"].substring(2);
-						parseUrl = _vars["init_url"];
+			if( _vars["init_url"] ){
+					//parseUrl = _vars["init_url"].substring(2);
+					parseUrl = _vars["init_url"];
 console.log(parseUrl);					
-				}
-				_vars["GET"] = parseGetParams( parseUrl ); 
-				_urlManager();
 			}
+			_vars["GET"] = parseGetParams( parseUrl ); 
+			_urlManager();
+		}
 		
 	};//end _init()
 	
@@ -130,6 +127,7 @@ _alert(_vars["logMsg"], "error");
 					"pages" : bookList,
 					"html": _vars["templates"]["tpl-booklist"]
 				});
+//console.log(html);
 				_vars["contentList"].innerHTML = html;
 			break;
 
@@ -503,7 +501,7 @@ _alert(_vars["logMsg"], "warning");
 			} else {
 				var itemTitle = _vars["breadcrumbs"][item];
 				if( itemID !== node.id ){
-					breadcrumbs += "<a href='?q=view-node&id="+itemID+"' class='btn'>" + itemTitle + "</a> > ";
+					breadcrumbs += "<a href='?q=view-node&id="+itemID+"' class=''>" + itemTitle + "</a> > ";
 				} else {
 					breadcrumbs += "<span class='active-item'>" + itemTitle + "</span>";
 				}
