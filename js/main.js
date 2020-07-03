@@ -45,20 +45,3 @@ var numDays = Days % numDaysInYear;
 document.getElementById("uptime2").innerHTML = numYears +" year "+numDays;
 	 
 };//end load
-
-$(document).ready(function(){
-//console.log("Ready!!!");
-
-
-	$(".switch-control").on("click", function(e){
-		var panelId = e.target.id.replace("-switch", "");
-		if( panelId.length > 0){
-//console.log(e.target.id, panelId);	
-			$("#" + panelId).collapse("toggle");
-		}
-	});//end event
-	
-	$("#notes-panel-switch").prop("checked", true);
-	$("#notes-panel").collapse("show");
-	
-});
