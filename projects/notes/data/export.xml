@@ -30,20 +30,20 @@
 		</xdata>
 	</schema>
 
-	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="21-Jun-2020 12:25:47" export_time="1592717147">
+	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="01-Jul-2020 13:27:13" export_time="1593584833">
 
 
 
 		<content_links>
-<item content_id="669" parent_id="437"></item>
+<item content_id="669" parent_id="750"></item>
 <item content_id="437" parent_id="0"></item>
 <item content_id="673" parent_id="437"></item>
-<item content_id="674" parent_id="437"></item>
+<item content_id="674" parent_id="1114"></item>
 <item content_id="675" parent_id="820"></item>
 <item content_id="676" parent_id="437"></item>
 <item content_id="693" parent_id="673"></item>
 <item content_id="697" parent_id="673"></item>
-<item content_id="721" parent_id="674"></item>
+<item content_id="721" parent_id="1114"></item>
 <item content_id="722" parent_id="437"></item>
 <item content_id="724" parent_id="1155"></item>
 <item content_id="725" parent_id="724"></item>
@@ -52,9 +52,9 @@
 <item content_id="728" parent_id="673"></item>
 <item content_id="729" parent_id="673"></item>
 <item content_id="731" parent_id="729"></item>
-<item content_id="735" parent_id="674"></item>
+<item content_id="735" parent_id="722"></item>
 <item content_id="736" parent_id="729"></item>
-<item content_id="737" parent_id="674"></item>
+<item content_id="737" parent_id="1114"></item>
 <item content_id="739" parent_id="437"></item>
 <item content_id="741" parent_id="673"></item>
 <item content_id="742" parent_id="741"></item>
@@ -96,10 +96,10 @@
 <item content_id="781" parent_id="729"></item>
 <item content_id="782" parent_id="729"></item>
 <item content_id="783" parent_id="737"></item>
-<item content_id="784" parent_id="674"></item>
+<item content_id="784" parent_id="1114"></item>
 <item content_id="788" parent_id="1166"></item>
 <item content_id="790" parent_id="741"></item>
-<item content_id="791" parent_id="674"></item>
+<item content_id="791" parent_id="1114"></item>
 <item content_id="792" parent_id="1155"></item>
 <item content_id="793" parent_id="737"></item>
 <item content_id="794" parent_id="739"></item>
@@ -205,7 +205,7 @@
 <item content_id="920" parent_id="818"></item>
 <item content_id="921" parent_id="818"></item>
 <item content_id="929" parent_id="673"></item>
-<item content_id="930" parent_id="674"></item>
+<item content_id="930" parent_id="1114"></item>
 <item content_id="931" parent_id="930"></item>
 <item content_id="932" parent_id="930"></item>
 <item content_id="933" parent_id="930"></item>
@@ -237,7 +237,7 @@
 <item content_id="991" parent_id="974"></item>
 <item content_id="992" parent_id="974"></item>
 <item content_id="993" parent_id="722"></item>
-<item content_id="994" parent_id="674"></item>
+<item content_id="994" parent_id="1114"></item>
 <item content_id="995" parent_id="1114"></item>
 <item content_id="996" parent_id="930"></item>
 <item content_id="997" parent_id="820"></item>
@@ -258,7 +258,7 @@
 <item content_id="1012" parent_id="741"></item>
 <item content_id="1013" parent_id="995"></item>
 <item content_id="1014" parent_id="673"></item>
-<item content_id="1015" parent_id="674"></item>
+<item content_id="1015" parent_id="1114"></item>
 <item content_id="1016" parent_id="1017"></item>
 <item content_id="1017" parent_id="673"></item>
 <item content_id="1018" parent_id="673"></item>
@@ -286,7 +286,7 @@
 <item content_id="1041" parent_id="929"></item>
 <item content_id="1042" parent_id="722"></item>
 <item content_id="1043" parent_id="929"></item>
-<item content_id="1044" parent_id="674"></item>
+<item content_id="1044" parent_id="1114"></item>
 <item content_id="1045" parent_id="929"></item>
 <item content_id="1047" parent_id="727"></item>
 <item content_id="1048" parent_id="929"></item>
@@ -308,25 +308,25 @@
 <item content_id="1065" parent_id="727"></item>
 <item content_id="1066" parent_id="995"></item>
 <item content_id="1067" parent_id="721"></item>
-<item content_id="1068" parent_id="674"></item>
+<item content_id="1068" parent_id="1114"></item>
 <item content_id="1069" parent_id="721"></item>
 <item content_id="1072" parent_id="995"></item>
-<item content_id="1073" parent_id="674"></item>
+<item content_id="1073" parent_id="1114"></item>
 <item content_id="1075" parent_id="848"></item>
-<item content_id="1076" parent_id="674"></item>
+<item content_id="1076" parent_id="1114"></item>
 <item content_id="1077" parent_id="675"></item>
 <item content_id="1078" parent_id="727"></item>
 <item content_id="1079" parent_id="722"></item>
 <item content_id="1080" parent_id="795"></item>
 <item content_id="1081" parent_id="929"></item>
 <item content_id="1082" parent_id="832"></item>
-<item content_id="1084" parent_id="674"></item>
+<item content_id="1084" parent_id="1114"></item>
 <item content_id="1085" parent_id="727"></item>
 <item content_id="1086" parent_id="721"></item>
 <item content_id="1087" parent_id="929"></item>
 <item content_id="1088" parent_id="929"></item>
 <item content_id="1089" parent_id="739"></item>
-<item content_id="1090" parent_id="674"></item>
+<item content_id="1090" parent_id="804"></item>
 <item content_id="1091" parent_id="739"></item>
 <item content_id="1092" parent_id="722"></item>
 <item content_id="1093" parent_id="846"></item>
@@ -394,7 +394,7 @@
 <item content_id="1169" parent_id="929"></item>
 <item content_id="1170" parent_id="673"></item>
 <item content_id="1171" parent_id="1155"></item>
-<item content_id="1172" parent_id="674"></item>
+<item content_id="1172" parent_id="1114"></item>
 <item content_id="1173" parent_id="1172"></item>
 <item content_id="1174" parent_id="675"></item>
 <item content_id="1175" parent_id="675"></item>
@@ -412,7 +412,7 @@
 <item content_id="1188" parent_id="826"></item>
 <item content_id="1189" parent_id="729"></item>
 <item content_id="1193" parent_id="1091"></item>
-<item content_id="1194" parent_id="674"></item>
+<item content_id="1194" parent_id="1114"></item>
 <item content_id="1195" parent_id="727"></item>
 <item content_id="1197" parent_id="804"></item>
 <item content_id="1198" parent_id="804"></item>
@@ -438,7 +438,7 @@
 <item content_id="1244" parent_id="750"></item>
 <item content_id="1245" parent_id="729"></item>
 <item content_id="1246" parent_id="929"></item>
-<item content_id="1279" parent_id="674"></item>
+<item content_id="1279" parent_id="1114"></item>
 <item content_id="1278" parent_id="848"></item>
 <item content_id="1277" parent_id="817"></item>
 <item content_id="1276" parent_id="817"></item>
@@ -502,7 +502,7 @@
 <node id="737" type='page'>
 	<title>apache</title>
 	<created>1356355690</created>
-	<changed>1397907337</changed>
+	<changed>1593573805</changed>
 	<body_value body_format="plain_text">
 
 	</body_value>
@@ -545,7 +545,7 @@ sticky bit в прошлом использовался, чтобы програ
 <node id="721" type='page'>
 	<title>firefox</title>
 	<created>1351175094</created>
-	<changed>1412515151</changed>
+	<changed>1593573756</changed>
 	<body_value body_format="plain_text">
 ---------------------------
 Firefox,
@@ -884,7 +884,7 @@ http://www.webmascon.com/topics/coding/25a.asp
 <node id="735" type='page'>
 	<title>IE</title>
 	<created>1353243074</created>
-	<changed>1415425267</changed>
+	<changed>1593573896</changed>
 	<body_value body_format="plain_text">
 ie9, условное форматирование
 &lt;!--[if IE 9]&gt;
@@ -905,9 +905,9 @@ onclick="return {'bg': '#EFEFEF', 'target': '_self', 'language': 'ru', 'suggest'
 	</body_value>
 </node>
 <node id="673" type='page'>
-	<title>program</title>
+	<title>programming</title>
 	<created>1337690509</created>
-	<changed>1590382928</changed>
+	<changed>1593573618</changed>
 	<body_value body_format="plain_text">
 ========================= music wfm
 добавить кнопку Save playlist - запрос сохранения json-плейлиста плеера в файл
@@ -982,9 +982,9 @@ index.tpl
 	</body_value>
 </node>
 <node id="674" type='page'>
-	<title>config</title>
+	<title>config_info</title>
 	<created>1337690669</created>
-	<changed>1590382928</changed>
+	<changed>1593574748</changed>
 	<body_value body_format="plain_text">
 -----------------------------------
 ADSL Port 	Enable
@@ -996,18 +996,18 @@ Primary DNS Server 	217.70.96.34
 Secondary DNS Server 	217.70.106.5
 Ethernet MAC Address 	00:15:EB:B6:73:C1
 Firmware Version 	ZXDSL 831IIV5.5.1a_E09_OV
+
 ------------------------------------
-&amp;amp;amp;lt;note&amp;amp;amp;gt;
 Офис: Excel, Word
-&amp;amp;amp;lt;pre&amp;amp;amp;gt;
+
 как в excel задать размер ячееек в мм или см: 
 Если делать вручную, без VBA, можно воспользоваться следующим трюком: 
-1.нарисовать прямоугольник (панель &amp;amp;amp;quot;рисование&amp;amp;amp;quot;)
+1.нарисовать прямоугольник (панель "рисование")
 2.задать ему нужные размеры (эти размеры задаются в см)
-3.отметить в его свойствах &amp;amp;amp;quot;не менять размеры и не перемещать с ячейками&amp;amp;amp;quot;
+3.отметить в его свойствах "не менять размеры и не перемещать с ячейками"
 4.подогнать границы колонок так, чтобы они совпали с границами прямоугольника. 
-&amp;amp;amp;lt;/pre&amp;amp;amp;gt;
-&amp;amp;amp;lt;/note&amp;amp;amp;gt;
+
+
 	</body_value>
 </node>
 <node id="676" type='page'>
@@ -1025,7 +1025,7 @@ Firmware Version 	ZXDSL 831IIV5.5.1a_E09_OV
 <node id="669" type='page'>
 	<title>портфолио</title>
 	<created>1337515916</created>
-	<changed>1590724372</changed>
+	<changed>1593524098</changed>
 	<body_value body_format="plain_text">
 Программирование
 
@@ -2333,7 +2333,7 @@ Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 <node id="1068" type='page'>
 	<title>CORS, отключить блокировку кроссдоменных запросов</title>
 	<created>1412353337</created>
-	<changed>1412355292</changed>
+	<changed>1593574242</changed>
 	<body_value body_format="plain_text">
 Disable same origin policy in Chrome
  run browser - 
@@ -3433,7 +3433,7 @@ Now, we can login to nas using telnet, user root without password.
 <node id="1172" type='page'>
 	<title>NetBeans</title>
 	<created>1462456952</created>
-	<changed>1462692919</changed>
+	<changed>1593573838</changed>
 	<body_value body_format="plain_text">
 Настройка табуляции в NetBeans
 
@@ -6022,7 +6022,7 @@ default-character-set=cp1251
 <node id="1076" type='page'>
 	<title>chrome</title>
 	<created>1415425214</created>
-	<changed>1483206802</changed>
+	<changed>1593573940</changed>
 	<body_value body_format="plain_text">
 //Запуск браузера с переносом папок кэша, настроек и отключением междоменного ограничения по загрузке данных
 
@@ -6476,9 +6476,9 @@ xrandr --output VGA1 --mode 1600x900_60.00
 	</body_value>
 </node>
 <node id="995" type='page'>
-	<title>convert</title>
+	<title>convert video,audio</title>
 	<created>1397906790</created>
-	<changed>1429412283</changed>
+	<changed>1593523917</changed>
 	<body_value body_format="plain_text">
 http://www.linux.org.ru/wiki/en/%D0%A0%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B8_%D0%BF%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_%D0%B0%D1%83%D0%B4%D0%B8%D0%BE_%D0%B8_%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE_%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2
 Редактирование и преобразование аудио и видео файлов
@@ -8434,7 +8434,7 @@ Game: MoH: Allied Assault Spearhead
 <node id="1044" type='page'>
 	<title>games</title>
 	<created>1402630265</created>
-	<changed>1402630954</changed>
+	<changed>1593574142</changed>
 	<body_value body_format="plain_text">
 painkiller
 pmloadlevel название_уровня, при этом подставляя следующие названия уровней:
@@ -9021,7 +9021,7 @@ echo "header test!";
 <node id="1194" type='page'>
 	<title>hosts, block banners</title>
 	<created>1490791010</created>
-	<changed>1490791010</changed>
+	<changed>1593574280</changed>
 	<body_value body_format="plain_text">
 http://remontka.pro/ubrat-reklamu-skype/
 https://community.skype.com/t5/Windows-desktop-client/Block-Skype-Ads-Quick-and-Easy/td-p/3222434
@@ -9144,7 +9144,7 @@ ErrorDocument 404 /temp/missing.html
 <node id="1015" type='page'>
 	<title>iis</title>
 	<created>1397985846</created>
-	<changed>1488767549</changed>
+	<changed>1593574038</changed>
 	<body_value body_format="plain_text">
 как в IIS 5.1 подключить расширение .aspx?
 
@@ -10474,7 +10474,7 @@ setxkbmap -layout us,ru -option grp:ctrl_shift_toggle,grp_led:caps,ctrl:nocaps
 <node id="930" type='page'>
 	<title>mail</title>
 	<created>1390058047</created>
-	<changed>1428215543</changed>
+	<changed>1593574498</changed>
 	<body_value body_format="plain_text">
 Доступ к SMTP через telnet (отправка почты)
 
@@ -10587,14 +10587,6 @@ Content-Length: 119
 &lt;a href="http://www.vitaminov.net/rus-27600-676661586-arthrosis-6828.html"&gt; Артроз: лечение народными средствами&lt;/a&gt;&lt;br/&gt;
 &lt;a href="http://spinet.ru/arthrosis/l_nar.php"&gt; Артроз: лечение народными средствами&lt;/a&gt;&lt;br/&gt;
 &lt;a href="http://www.meduhod.ru/deseases/artroz.shtml"&gt; Уход за больным с артрозом &lt;/a&gt;&lt;br/&gt;
-
-	</body_value>
-</node>
-<node id="750" type='page'>
-	<title>mix</title>
-	<created>1363003280</created>
-	<changed>1590382928</changed>
-	<body_value body_format="plain_text">
 
 	</body_value>
 </node>
@@ -10726,6 +10718,14 @@ http://www.indiz.fr/photo-artiste
 
 	</body_value>
 </node>
+<node id="750" type='page'>
+	<title>mixed notes</title>
+	<created>1363003280</created>
+	<changed>1593524146</changed>
+	<body_value body_format="plain_text">
+
+	</body_value>
+</node>
 <node id="1181" type='page'>
 	<title>mobile debug</title>
 	<created>1469836656</created>
@@ -10742,7 +10742,7 @@ https://getfirebug.com/firebuglite/
 <node id="1084" type='page'>
 	<title>mobile phones, siemens</title>
 	<created>1421076505</created>
-	<changed>1478354666</changed>
+	<changed>1593574524</changed>
 	<body_value body_format="plain_text">
 ЗНАЧЕНИЕ «PUSH» СООБЩЕНИЙ
 
@@ -10967,7 +10967,7 @@ SELECT * FROM anketa
 <node id="791" type='page'>
 	<title>mysql</title>
 	<created>1367896271</created>
-	<changed>1583731881</changed>
+	<changed>1593574095</changed>
 	<body_value body_format="plain_text">
 расширить права phpmyadmin@localhost для работы с MySQL через phpMyAdmin
 https://zalinux.ru/?p=1135
@@ -11322,7 +11322,7 @@ app.listen( 8080 );
 <node id="1073" type='page'>
 	<title>notepad++</title>
 	<created>1413896591</created>
-	<changed>1413896591</changed>
+	<changed>1593573784</changed>
 	<body_value body_format="plain_text">
 Column Mode Editing
 
@@ -12455,7 +12455,7 @@ gem install rails -v=2.3.5
 <node id="1090" type='page'>
 	<title>samba, общий доступ</title>
 	<created>1425181726</created>
-	<changed>1425181726</changed>
+	<changed>1593574192</changed>
 	<body_value body_format="plain_text">
 smb.conf
 
@@ -13107,6 +13107,14 @@ net use /user:пользователь \\host\share пароль
 ------------
 монтирование через /etc/fstab
 //192.168.1.217/pub /mnt/network/alpha/pub smbfs username=admin,password=super,iocharset=cp1251,codepage=cp866,rw 0 0
+
+	</body_value>
+</node>
+<node id="1114" type='page'>
+	<title>soft_config</title>
+	<created>1428814276</created>
+	<changed>1593574070</changed>
+	<body_value body_format="plain_text">
 
 	</body_value>
 </node>
@@ -15248,7 +15256,7 @@ echo "&lt;/html&gt;"
 <node id="784" type='page'>
 	<title>totalcmd</title>
 	<created>1364562157</created>
-	<changed>1367986339</changed>
+	<changed>1593573970</changed>
 	<body_value body_format="plain_text">
 totalcmd, запуск с альтер. конфигурационными файлами
 
@@ -15821,14 +15829,6 @@ print "&lt;/html&gt;"
 &lt;input type="submit" value="upload"&gt;
 &lt;/fieldset&gt;
 &lt;/form&gt;
-
-	</body_value>
-</node>
-<node id="1114" type='page'>
-	<title>user programs</title>
-	<created>1428814276</created>
-	<changed>1590382928</changed>
-	<body_value body_format="plain_text">
 
 	</body_value>
 </node>
@@ -16904,7 +16904,7 @@ https://ru.wikipedia.org/wiki/%D0%A4%D0%B5%D0%BB%D1%8C%D0%B4%D0%B3%D1%80%D0%B0%D
 <node id="994" type='page'>
 	<title>wget</title>
 	<created>1397906565</created>
-	<changed>1406384059</changed>
+	<changed>1593574000</changed>
 	<body_value body_format="plain_text">
 #      r - скачивать рекурсивно
 #     E - дописывать при необходимости расширение .html
@@ -18015,7 +18015,7 @@ mobile_phones.txt
 <node id="1357" type='page'>
 	<title>Извлечение субтитров из файлов mkv</title>
 	<created>1592444342</created>
-	<changed>1592445140</changed>
+	<changed>1593523869</changed>
 	<body_value body_format="plain_text">
 https://ubuntugeeks.com/questions/2457/extract-subtitle-from-mkv-files
 Извлечение субтитров из файлов mkv
@@ -18038,6 +18038,13 @@ mkvinfo S05E01.mkv
 .....
 
 - mkvextract tracks S05E01.mkv 2:test1.srt
+
+========================================
+
+rem D:\soft\app\MKVtoolnix\mkvinfo.exe War.and.Peace.2016.s01e01.HDTV.1080p.mkv
+rem D:\soft\app\MKVtoolnix\mkvextract tracks s01e01.mkv 4:s01e01_en.srt
+D:\soft\app\MKVtoolnix\mkvextract tracks s01e01.mkv 3:s01e01_ru.srt
+	
 	
 	</body_value>
 </node>
@@ -21264,7 +21271,7 @@ foo(); // works now because it is in scope
 <node id="1279" type='page'>
 	<title>обновить nodejs</title>
 	<created>1590213606</created>
-	<changed>1590383175</changed>
+	<changed>1593574581</changed>
 	<body_value body_format="plain_text">
 [code]
 First update npm,

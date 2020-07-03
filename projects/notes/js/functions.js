@@ -75,12 +75,7 @@ function getById(id){
 	return false;
 }//end getById()
 
-/*
-	var item_attr = get_attr_to_obj( this.attributes );
-	for(attr in item_attr){
-		column_obj[attr] = item_attr[attr];
-	}
-*/
+
 function get_attr_to_obj( attr ){
 	var item_attr = {};
 	for(var item = 0; item < attr.length; item++) {
@@ -782,17 +777,9 @@ console.log("loaded: " + e.loaded);
 		
 if( typeof window.jQuery === "function"){
 	$(document).ready(function(){
-var msg = "<p>You are running jQuery version: " + jQuery.fn.jquery +"<p>";
-console.log("<div class='alert alert-info'>" + msg + "</div>");
+		var msg = "jQuery version: " + jQuery.fn.jquery;
+		_alert(msg, "info");
 		
-		//------------------------- scroll to top
-		// $("#scroll-to-top").click(function(e) {
-			// e.preventDefault;
-			// $('html,body').animate({
-				// scrollTop: 0
-				// }, 500);
-			// return false;
-		// });
 		
 		$(".scroll-to").addClass("nolink").on("click", function(){
 			if($(this).attr("href")){
