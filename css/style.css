@@ -21,3 +21,17 @@ a{
 .panel.pull-left {
 margin:5px;
 }
+
+.page-header {
+	border-bottom: 1px solid #000;
+}
+.page-header h1 {
+	font-family: ticker_taperegular;
+/*
+	font-family: Lobster;
+	font-family: Victorian LET Regular;
+*/
+	/*font-family: fiddums-family;*/
+	/*font-size: 3.5em;*/
+	font-size: 36px;
+}
