@@ -30,7 +30,7 @@
 		</xdata>
 	</schema>
 
-	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="16-Jul-2020 11:35:37" export_time="1594874137">
+	<xdata db_name="db/mydb.sqlite" db_type="sqlite" export_date="25-Jul-2020 20:33:02" export_time="1595683982">
 
 
 
@@ -495,6 +495,7 @@
 <item content_id="1361" parent_id="1114"></item>
 <item content_id="1365" parent_id="729"></item>
 <item content_id="1364" parent_id="1108"></item>
+<item content_id="1366" parent_id="1108"></item>
 		</content_links>		
 		<content>
 <node id="737" type='page'>
@@ -14946,6 +14947,24 @@ foreach($user-&amp;gt;roles as $k =&amp;gt; $v)print $k . &amp;quot; = &amp;quot
 [url]https://habrahabr.ru/post/141127/ |MySQLi раскладываем все по полочкам [/url][br]
 [url]http://php.net/manual/ru/book.pdo.php | Объекты данных PHP[/url][br]
 	
+	</body_value>
+</node>
+<node id="1366" type='page'>
+	<title>test filters</title>
+	<created>1595683968</created>
+	<changed>1595683968</changed>
+	<body_value body_format="plain_text">
+//------------------------ TEST FILTERS
+$hookName = "the_title";
+$filterName = "wfm_title";
+add_filter( $hookName, $filterName);
+
+function wfm_title( $title ){
+	if( is_admin() ){
+		return $title;
+	}
+	return mb_convert_case( $title, MB_CASE_UPPER, "UTF-8");
+}//end
 	</body_value>
 </node>
 <node id="913" type='page'>
