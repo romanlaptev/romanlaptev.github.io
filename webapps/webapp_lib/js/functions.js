@@ -837,6 +837,44 @@ console.log(summa);
 	//window.Lib = Lib;
 //})();
 
+function getenv(i){
+	if (!i.length) 
+	{ 
+		return false; 
+	}  
+	qStr = document.location.href;
+	strpos = qStr.indexOf("?"+i+"=");
+
+	if ( strpos ==-1) 
+	{ 
+		strpos = qStr.indexOf("&"+i+"="); 
+	}
+
+	if ( strpos == qStr.length || strpos ==-1 )
+	{
+		return false; 
+	}
+
+	val = qStr.substring( (strpos+i.length)+2, qStr.length);
+
+	strpos = val.indexOf("&");
+
+	if ( strpos !=-1 ) 
+	{ 
+		val = val.substring(0, strpos ); 
+	}
+
+	if ( !val.length ) 
+	{ 
+		return false; 
+	}
+	else 
+	{ 
+		return val; 
+	}
+
+}//end
+
 
 		//console.log for old IE
 		if (!window.console){ 
