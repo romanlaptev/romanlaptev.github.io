@@ -20,7 +20,8 @@ $_vars["phpversion"] = phpversion();
 
 $_vars["appTitle"] = "Export playlists info from DB Drupal database to XML file";
 $_vars["filename"] = "export_music.xml";
-$_vars["dbPath"] = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite";
+//$_vars["dbPath"] = "sqlite:/home/www/sites/music/cms/music_drupal/db/music.sqlite";
+$_vars["dbPath"] = "sqlite:/mnt/serv_d1/www/sites/music/cms/music_drupal/db/music.sqlite";
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
