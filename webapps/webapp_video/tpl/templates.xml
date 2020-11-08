@@ -308,9 +308,8 @@
 		</ul>
 
 		<ul class="list-inline text-center">
+			<li><a href="/video/cms/" target="_blank">video, CMS</a></li>
 			<li><a href="../../test_code/js/test_media/test_audio_video.html" target="_blank">test_audio_video</a></li>
-			<li><a href="db/export_drupal_sqlite.php" target="_blank">export from Drupal, (sqlite, PHP)</a></li>
-			<li><a href="/sites/video/cms/" target="_blank">video, CMS Drupal</a></li>
 		</ul>
 		
 	</div>
