@@ -1,0 +1,300 @@
+[Document 0]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=None
+Indentation Mode=normal
+Mode=
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt
+
+[Document 1]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=HTML
+Indentation Mode=normal
+Mode=HTML
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/app.html
+
+[Document 2]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=HTML
+Indentation Mode=normal
+Mode=HTML
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/video.html
+
+[Document 3]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=XML
+Indentation Mode=xml
+Mode=XML
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/tpl/templates.xml
+
+[Document 4]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=JavaScript
+Indentation Mode=cstyle
+Mode=JavaScript
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/main.js
+
+[Document 5]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=JavaScript
+Indentation Mode=cstyle
+Mode=JavaScript
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/webapp.js
+
+[Document 6]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=JavaScript
+Indentation Mode=cstyle
+Mode=JavaScript
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/players.js
+
+[Document 7]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=JavaScript
+Indentation Mode=cstyle
+Mode=JavaScript
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/functions.js
+
+[Document 8]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=CSS
+Indentation Mode=cstyle
+Mode=CSS
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/css/custom.css
+
+[Document 9]
+Bookmarks=
+Encoding=UTF-8
+Highlighting=PHP (HTML)
+Indentation Mode=normal
+Mode=PHP (HTML)
+URL=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/db/export_drupal_sqlite.php
+
+[Kate Plugins]
+kate_kttsd=false
+katebacktracebrowserplugin=false
+katebuildplugin=false
+katecloseexceptplugin=true
+katectagsplugin=false
+katefilebrowserplugin=false
+katefiletemplates=false
+katefiletreeplugin=true
+kategdbplugin=false
+katekonsoleplugin=false
+katemailfilesplugin=false
+kateopenheaderplugin=false
+kateprojectplugin=true
+katereplicodeplugin=false
+katesearchplugin=true
+katesnippetsplugin=false
+katesqlplugin=false
+katesymbolviewerplugin=false
+katetabbarextensionplugin=false
+katetabifyplugin=false
+katetextfilterplugin=false
+katexmlcheckplugin=false
+katexmltoolsplugin=false
+
+[MainWindow0]
+Active ViewSpace=0
+Characters Count Visible=false
+Cursor Position Visible=true
+Document Name Visible=true
+Encoding Visible=true
+Height 1024=1025
+Height 1080=1081
+Insertion Mode Visible=true
+Kate-MDI-H-Splitter=230,1013,200
+Kate-MDI-Sidebar-0-Splitter=876,0
+Kate-MDI-Sidebar-1-Splitter=
+Kate-MDI-Sidebar-2-Splitter=
+Kate-MDI-Sidebar-3-Splitter=0,0
+Kate-MDI-Sidebar-Style=2
+Kate-MDI-Sidebar-Visible=true
+Kate-MDI-ToolView-kate_plugin_katesearch-Persistent=false
+Kate-MDI-ToolView-kate_plugin_katesearch-Position=3
+Kate-MDI-ToolView-kate_plugin_katesearch-Sidebar-Position=0
+Kate-MDI-ToolView-kate_plugin_katesearch-Visible=false
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Persistent=false
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Position=0
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Sidebar-Position=0
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Visible=true
+Kate-MDI-ToolView-kateproject-Persistent=false
+Kate-MDI-ToolView-kateproject-Position=0
+Kate-MDI-ToolView-kateproject-Sidebar-Position=1
+Kate-MDI-ToolView-kateproject-Visible=false
+Kate-MDI-ToolView-kateprojectinfo-Persistent=false
+Kate-MDI-ToolView-kateprojectinfo-Position=3
+Kate-MDI-ToolView-kateprojectinfo-Sidebar-Position=1
+Kate-MDI-ToolView-kateprojectinfo-Visible=false
+Kate-MDI-V-Splitter=150,844,484
+Selection Mode Visible=true
+State=AAAA/wAAAAD9AAAAAAAABQAAAANsAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAAAAADGgAAAAAAAAAA
+Width 1280=1281
+Width 1920=1921
+
+[MainWindow0][Toolbar mainToolBar]
+ToolButtonStyle=TextUnderIcon
+
+[MainWindow0-Splitter 0]
+Children=MainWindow0-ViewSpace 0
+Orientation=2
+Sizes=844
+
+[MainWindow0-ViewSpace 0]
+Active View=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/db/export_drupal_sqlite.php
+Count=6
+View 0=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt
+View 1=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/app.html
+View 2=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/tpl/templates.xml
+View 3=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/webapp.js
+View 4=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/css/custom.css
+View 5=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/db/export_drupal_sqlite.php
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/app.html]
+CursorColumn=0
+CursorLine=243
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/css/custom.css]
+CursorColumn=28
+CursorLine=31
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/db/export_drupal_sqlite.php]
+CursorColumn=60
+CursorLine=759
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/functions.js]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/main.js]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/js/webapp.js]
+CursorColumn=0
+CursorLine=1461
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/tpl/templates.xml]
+CursorColumn=8
+CursorLine=295
+JumpList=
+ViMarks=.,316,0,[,316,0,],316,0
+
+[MainWindow0-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/video.html]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[MainWindow1]
+Active ViewSpace=0
+Characters Count Visible=false
+Cursor Position Visible=true
+Document Name Visible=true
+Encoding Visible=true
+Height 1080=1081
+Insertion Mode Visible=true
+Kate-MDI-H-Splitter=182,1920,200
+Kate-MDI-Sidebar-0-Splitter=
+Kate-MDI-Sidebar-1-Splitter=
+Kate-MDI-Sidebar-2-Splitter=
+Kate-MDI-Sidebar-3-Splitter=
+Kate-MDI-Sidebar-Style=2
+Kate-MDI-Sidebar-Visible=true
+Kate-MDI-V-Splitter=150,930,484
+Selection Mode Visible=true
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAOiAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAAAAADGgAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1920=1921
+
+[MainWindow1][Toolbar mainToolBar]
+ToolButtonStyle=TextUnderIcon
+
+[MainWindow1-Splitter 0]
+Children=MainWindow1-ViewSpace 0
+Orientation=2
+Sizes=930
+
+[MainWindow1-ViewSpace 0]
+Active View=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt
+Count=1
+View 0=file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt
+
+[MainWindow1-ViewSpace 0 file:///mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/nb.txt]
+CursorColumn=0
+CursorLine=0
+JumpList=
+ViMarks=
+
+[Open Documents]
+Count=10
+
+[Open MainWindows]
+Count=1
+
+[Plugin:katecloseexceptplugin:menu]
+ShowConfirmation=true
+
+[Plugin:katesearchplugin:MainWindow:0:search-plugin]
+BinaryFiles=false
+CurrentExcludeFilter=0
+CurrentFilter=0
+ExcludeFilters=\\0
+ExpandSearchResults=false
+Filters=\\0
+FollowSymLink=false
+HiddenFiles=false
+MatchCase=true
+Place=0
+Recursive=true
+Search=http://mycomp/pages/book_history_engraving/,bg-f-opt.png,.add,setMedia,play,volume,jp-video-360p
+SearchDiskFiles=/run/user/1000/gvfs/sftp:host=vbox1,user=root/mnt/serv_d2/www/pages/xml_pages/book_history_engraving/02.german_engraving
+SearchDiskFiless=
+UseRegExp=true
+
+[Recent Files]
+File1[$e]=/mnt/d2/www/projects/8points/8points.git/odetta.su/files_ignore/backup/27-10-2020/odetta_dump.sql
+File2[$e]=/mnt/d2/www/projects/romanlaptev.heroku/projects/webapp_notes/data/export.xml
+File3[$e]=/mnt/d2/temp/test_export.xml
+File4[$e]=/mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/tpl/templates.xml
+File5[$e]=/mnt/d2/www/projects/8points/8points.git/0_files/css/colors.css
+File6[$e]=/mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/css/colors.css
+File7[$e]=/mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/css/custom.css
+File8[$e]=/mnt/d2/www/projects/8points/8points.git/bambini-club.su/info.html
+File9[$e]=/mnt/d2/www/sites/romanlaptev.github.io/webapps/webapp_video/db/export_drupal_sqlite.php
+Name1[$e]=odetta_dump.sql
+Name2[$e]=export.xml
+Name3[$e]=test_export.xml
+Name4[$e]=templates.xml
+Name5[$e]=colors.css
+Name6[$e]=colors.css
+Name7[$e]=custom.css
+Name8[$e]=info.html
+Name9[$e]=export_drupal_sqlite.php
