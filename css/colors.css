@@ -1,6 +1,13 @@
 .text-white {
   color: #fff !important;
 }
+.bg-white {
+  background-color: #fff;
+}
+.border-white{
+border: 1px solid #fff;
+}
+
 
 .border-box{
 border: 1px solid #004586;
@@ -28,6 +35,10 @@ border: 1px solid #004586;
 }
 .bg-darkblue-tango2{
   background-color: #001b33 !important;
+}
+
+.bg-darkblue-project{
+	background-color: #082844;
 }
 
 

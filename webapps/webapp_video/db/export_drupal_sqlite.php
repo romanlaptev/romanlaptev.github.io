@@ -24,7 +24,8 @@ $_vars["phpversion"] = phpversion();
 //видеоуроки, программирование
 //мультипликация
 $_vars["filename"] = "export_video.xml";
-$sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
+//$sqlite_path = "sqlite:/home/www/sites/video/cms/db/video.sqlite";
+$sqlite_path = "sqlite:/mnt/serv_d1/www/sites/video/cms/db/video.sqlite";
 
 $_vars["sql"]["getNodes"] = "
 SELECT 
