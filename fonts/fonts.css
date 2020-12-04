@@ -1,4 +1,11 @@
 @font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url('glyphicons-halflings-regular.eot');
+	src: url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+			url('glyphicons-halflings-regular.woff2') format('woff2'), 
+			url('glyphicons-halflings-regular.woff') format('woff'), 
+			url('glyphicons-halflings-regular.ttf') format('truetype'), 
+			url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 	font-display: swap;
 }
 
@@ -12,6 +19,7 @@
          url('Ticker_Tape/ticker_tape-webfont.svg#ticker_taperegular') format('svg');
     font-weight: normal;
     font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -319,6 +327,7 @@ src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
   url('AVANTGAR/AVANTGAR.woff') format('woff'),
   url('AVANTGAR/AVANTGAR.ttf') format('truetype'),
   url('AVANTGAR/AVANTGAR.svg#AGREVC') format('svg');
+	font-display: swap;
 }
 
 
