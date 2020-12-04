@@ -1,9 +1,4 @@
 @font-face {
-  font-family: 'Glyphicons Halflings';
-	font-display: swap;
-}
-
-@font-face {
     font-family: 'ticker_taperegular';
     src: url('Ticker_Tape/ticker_tape-webfont.eot');
     src: url('Ticker_Tape/ticker_tape-webfont.eot?#iefix') format('embedded-opentype'),
