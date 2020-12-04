@@ -1,5 +1,4 @@
 @font-face {
-  font-family: 'Glyphicons Halflings';
 	font-display: swap;
 }
 
@@ -13,7 +12,6 @@
          url('Ticker_Tape/ticker_tape-webfont.svg#ticker_taperegular') format('svg');
     font-weight: normal;
     font-style: normal;
-	font-display: swap;
 }
 
 @font-face {
@@ -24,7 +22,6 @@ url('hattori_hanzo/hattori_hanzo_italic-webfont.woff') format('woff'),
 url('hattori_hanzo/hattori_hanzo_italic-webfont.ttf') format('truetype');
 font-weight:400;
 font-style:normal
-	font-display: swap;
 }
 @font-face {
 font-family:hattori_hanzolight;
@@ -34,7 +31,6 @@ url('hattori_hanzo/hattori_hanzo-webfont.woff') format('woff'),
 url('hattori_hanzo/hattori_hanzo-webfont.ttf') format('truetype');
 font-weight:400;
 font-style:normal
-	font-display: swap;
 }
 
 
@@ -48,7 +44,6 @@ font-style:normal
          url('a_Huxley/a_huxley_bold-webfont.svg#a_huxleybold') format('svg');
     font-weight: normal;
     font-style: normal;
-	font-display: swap;
 }
 
 /*
@@ -324,7 +319,6 @@ src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
   url('AVANTGAR/AVANTGAR.woff') format('woff'),
   url('AVANTGAR/AVANTGAR.ttf') format('truetype'),
   url('AVANTGAR/AVANTGAR.svg#AGREVC') format('svg');
-	font-display: swap;
 }
 
 
@@ -337,5 +331,4 @@ src: url('AVANTGAR/AVANTGAR.eot?#iefix') format('embedded-opentype'),
          url('segoe-ui/segoe-ui-webfont.svg#segoe-ui-webfont') format('svg');
     font-weight: normal;
     font-style: normal;
-	font-display: swap;
 }
