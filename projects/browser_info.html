@@ -1300,7 +1300,18 @@ console.log( key, document.body[key]);
 	}
 	
 	_push( tests, test );
-//--------------------------------------
+
+//-------------------------------------- attribute loading
+//https://habr.com/ru/company/ruvds/blog/448914/
+	var test = {
+			"name" : "image attribute loading",
+			"result" : false,
+			//"msg" : "not support..."
+	};
+	if ( 'loading' in HTMLImageElement.prototype ){ 
+			test["result"]= true;
+	}
+	_push( tests, test );
 
 
 //console.log(tests);
