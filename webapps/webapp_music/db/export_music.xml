@@ -30,6 +30,7 @@
 	<tag tid="54" vid="5" group_name="alphabetical_voc">Б</tag>
 	<tag tid="55" vid="5" group_name="alphabetical_voc">В</tag>
 	<tag tid="56" vid="5" group_name="alphabetical_voc">Г</tag>
+	<tag tid="57" vid="5" group_name="alphabetical_voc">Д</tag>
 	<tag tid="62" vid="5" group_name="alphabetical_voc">К</tag>
 	<tag tid="64" vid="5" group_name="alphabetical_voc">М</tag>
 	<tag tid="65" vid="5" group_name="alphabetical_voc">Н</tag>
@@ -1499,6 +1500,36 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 
 	<published format="d-M-Y H:i:s">24-Oct-2020 21:45:14</published>
 	<updated format="d-M-Y H:i:s">24-Oct-2020 21:49:03</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Духи</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-content/2383988/6545cfd3.a.8845508-1/300x300"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/D/Духи/playlist.json">Духи.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1037">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%94%D1%83%D1%85%D0%B8_(%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0)">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="54" group_name="alphabetical_voc">Б</item>
+		<item vid="5" tid="57" group_name="alphabetical_voc">Д</item>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="152" group_name="music_styles">фолк-рок</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">26-Dec-2020 16:48:27</published>
+	<updated format="d-M-Y H:i:s">26-Dec-2020 17:14:36</updated>
 </node>
 	</database>
 </xroot>
