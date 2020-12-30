@@ -83,3 +83,12 @@ border: 1px solid #337ab7;
 color: #337ab7;
 }
 */
+
+#content-list li {
+cursor:pointer;
+color:#004586;
+}
+#content-list li.active {
+font-weight:bold;
+cursor:default;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test load progress</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="-1">	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<!--
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>	
+-->
+	<link rel="stylesheet" href="../css/test_materialize/css/materialize.min.css"/>	
+<style>
+
+/*--------------------- LOAD --------------*/
+/* http://dbmast.ru/adaptivnoe-modalnoe-okno-strogo-po-centru */
+.dm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.dm-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.dm-cell {
+    display: table-cell;
+    padding: 0 1em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.dm-modal {
+    display: inline-block;
+
+    max-width: 50em;
+
+	/*background: #607d8b;*/
+	/*background-color: rgb(200, 200, 250);*/
+	background-color: #b0c4de;
+
+	border-radius: 10px;
+	padding: 25px;
+	/* width: 300px; */
+	z-index: 1042;
+
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.22), 0px 19px 60px rgba(0, 0, 0, 0.3);
+
+    /*color: #cfd8dc;*/
+	color: #000;
+    text-align: left;
+}
+
+#win1 .circle-clipper .circle {
+	border-width: 10px;
+}
+
+#win1 .progress {
+	height: 20px;
+	background-color: #fff;
+	border-radius: 3px;
+}
+
+</style>
+	
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!--	
+	<script src="js/lib/jquery-2.1.1.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+-->	
+	<script>
+
+$(document).ready(function(){
+		
+
+		$("#btn-dev").on("click", function(){
+			
+			$("#modal-wait-window").show();
+			$("#load-progress").show();
+		
+//Loaded 38388 bytes of total 516853
+			var totalBytes = 516800;
+			$("#total").html( totalBytes );
+			$("#total-mb").html( (( totalBytes / 1024) / 1024).toFixed(2) );
+			
+			var sizeBlockBytes = 5168;
+			var totalLoadedBytes = 0;
+			var percentComplete = 0;
+			var bytesPerPercent = totalBytes / 100;
+			
+			var num = 1;
+			var interval = setInterval(function(){
+				num++;
+//console.log(num);
+				
+				totalLoadedBytes += sizeBlockBytes;
+				$("#loaded").html( totalLoadedBytes );
+
+				if( num > 100){
+					clearInterval(interval);
+					//$("#num-total-load").html( totalLoadedBytes.toFixed(2)  + " bytes" );
+				}
+				
+				percentComplete = Math.ceil( totalLoadedBytes / totalBytes * 100);
+				
+				test = Math.ceil( totalLoadedBytes / bytesPerPercent );
+				
+//var msg = "Loaded " + totalLoadedBytes + " bytes of total " + totalBytes;
+//console.log( msg, percentComplete +"%" );
+
+				$("#load-progress-bar").css("width", num+"%");
+				$("#percent-complete").html(percentComplete+"%");
+				$("#percent-complete-test").html(test+"%");
+
+			}, 500);
+			
+		});
+});//end ready	
+
+	</script>
+
+</head>
+
+<body>
+<div class="container" id="page-container">
+
+	<div id="content-column" class="">
+		<header>
+			<nav class="light-blue darken-4" role="navigation">
+				<div class="nav-wrapper">
+					<h3 class="right-align" id="app-title">Test load progress</h3>
+				</div>
+			</nav>
+		</header>
+		
+		<div class="card">
+			<div class="card-panel">
+<a href="#" id="btn-dev" class="btn red">run test</a>
+			</div>
+		</div>
+		
+	</div><!-- end content column -->
+
+<!-- ********************** load progress bar ************************** -->	
+<div id="wait" class="hide"></div>
+
+<div class="dm-overlay" id="modal-wait-window">
+    <div class="dm-table">
+
+		<div class="dm-cell">
+			<div class="dm-modal">
+			
+				<div class="center-align">
+					<h4>please, wait...</h4>
+					<div class="preloader-wrapper big active">
+						<div class="spinner-layer spinner-blue-only">
+						
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="load-progress" class="">
+					<div class="center-align">ajax load data 
+						<span id="percent-complete"></span>
+						<span id="percent-complete-test"></span>
+						<span id="num-total-load"></span>
+					</div>
+					<div class="progress">
+						<div id="load-progress-bar" class="determinate blue center-align"></div>
+					</div>
+					<div>
+Loaded <span id="loaded"></span> bytes of total <span id="total"></span>( <span id="total-mb"></span> Mb)
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</div><!-- end container -->
+
+</body>
+</html>
