@@ -20,7 +20,7 @@ console.log(msg);
 //console.log(arguments);
 
 
-	url = "_content_list.html";
+	url = "content_list.html";
 //https://jquery-docs.ru/jQuery.get/
 	var _contentList = $.get( url, function( data, res ){
 		if( data.length > 0 ){
