@@ -1,0 +1,162 @@
+﻿<html>
+	<title> test modal windows</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<head>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+if( typeof window.jQuery !== "function"){
+	var message = "jQuery load error, https://code.jquery.com/jquery-latest.js " + window.jQuery + ", ....loading local jQuery.....";
+	document.write('<h2>' +message+ '</h2>');
+	document.write('<script src="../../codebase/js/jquery/jquery1.4.js"><\/script>');
+}
+</script>
+
+<script>
+$(document).ready(function() {   
+
+	var logMsg = "<ul><li><b>window.screen.width</b>: "+window.screen.width+"</li><li><b>window.screen.height</b>: "+window.screen.height
++"</li><li><b>window.innerWidth</b>: "+window.innerWidth
++"</li><li><b>window.innerHeight</b>: "+window.innerHeight+"</li><li><b>window.outerWidth</b>: "+window.outerWidth
++"</li><li><b>window.outerHeight</b>: "+window.outerHeight+"</li><li><b>window.screen.availWidth</b>: "+window.screen.availWidth
++"</li><li><b>window.screen.availWidth</b>: "+window.screen.availWidth+"</li></ul>";
+		
+	logMsg += "<ul><b>Explorer 6 Strict Mode</b><li><b>document.documentElement.clientWidth</b>: "+document.documentElement.clientWidth
++"</li><li><b>document.documentElement.clientHeight</b>: "+document.documentElement.clientHeight
++"</li></ul>";
+	
+	logMsg += "<ul><b>other Explorers</b><li><b>document.body.clientWidth</b>: "+document.body.clientWidth+"</li><li><b>document.body.clientHeight</b>: "+document.body.clientHeight+"</li></ul>";
+	
+	$("#log").html( logMsg );
+
+	$('a[name=modal]').click(function(e) {
+		e.preventDefault();
+		var id = $(this).attr('href');
+  
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+  
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+  
+		$('#mask').fadeIn(1000); 
+		$('#mask').fadeTo("slow",0.8); 
+  
+		var winH = $(window).height();
+		var winW = $(window).width();
+  
+		var _h = winH / 2 - $(id).height() / 2;
+		$(id).css('top',  _h);
+
+		var _w = winW / 2 - $(id).width() / 2;
+		$(id).css('left', _w);
+  
+		$(id).fadeIn(2000); 
+	});
+  
+    $('.window .btn-close-popup').click(function (e) {
+			e.preventDefault();
+			$('#mask, .window').hide();
+    }); 
+ 
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	}); 
+  
+});  
+</script>
+
+<style>
+body {    }  
+a { text-decoration:none}
+a:hover { text-decoration:none}  
+
+#mask {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:9000;
+    background-color:#000;
+    display:none;
+}
+  
+.window {
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:30%;
+    height:30%;
+
+    display:none;
+    z-index:9999;
+    padding:20px;
+background-color: #fff;
+}  
+
+#dialog {}  
+#dialog1 {}  
+#dialog1 .d-header {}  
+
+#dialog1 .d-header input {
+    padding:10px;
+    margin:5px;
+}  
+#dialog1 .d-login {}
+
+.btn-close-popup {
+	float: right;
+	position: relative;
+	top: -10px;
+	left: 10px;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+	line-height: 20px;
+	background-color: #000;
+	color: #fff;
+	border-radius: 15px;
+	font-weight: bold;
+	text-align:center;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<h2>test modal windows</h2>
+<ul>
+    <li><a href="#dialog" name="modal">Простое модальное окно</a></li>
+    <li><a href="#dialog1" name="modal">Форма для логина</a></li>
+</ul>
+
+
+	<div class="panel">
+		<div class="panel-body">Log panel
+			<div id="log"></div>
+		</div>
+	</div>
+
+
+<div id="dialog" class="window">Простое модальное окно
+    <a href="#"class="btn-close-popup"/>x</a>
+</div>
+    
+<div id="dialog1" class="window">
+    <a href="#"class="btn-close-popup"/>x</a>
+	<div class="d-header">
+		<input type="text" value="username" onclick="this.value=''"/><br/>
+  		<input type="password" value="Password" onclick="this.value=''"/> 
+	</div>
+
+	<div class="d-login">
+		<input type="button" alt="Login" title="Login" value="enter"/>
+	</div>  
+</div>
+   
+<div id="mask"></div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test  plugin Highslide JS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<link href="../../css/bootstrap335.min.css" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="../../codebase/js/plugins/highslide/highslide.css">
+	<script type="text/javascript" src="../../codebase/js/plugins/highslide/highslide.min.js"></script>
+	
+<script type="text/javascript">
+
+	//http://highslide.com/ref/hs.expand
+	hs.graphicsDir = "../../codebase/js/plugins/highslide/graphics/";
+	hs.wrapperClassName = 'wide-border';
+	hs.showCredits = false;
+	//hs.align = 'center';
+	//hs.transitions = ['expand', 'crossfade'];
+	
+	hs.restoreCursor = null;
+	hs.lang.restoreTitle = 'Click for next image';
+
+	// Add the simple close button
+	hs.registerOverlay({
+		html: '<div class="closebutton" onclick="return hs.close(this)" title="Close"></div>',
+		position: 'top right',
+		fade: 2 // fading the semi-transparent overlay looks bad in IE
+	});
+	
+</script>
+
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header">
+		<h2>Demo test,  Highslide JS plugin</h2>
+	</div>
+		
+	<div class="panel panel-default">
+	
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+			
+				<div class="thumbnail">
+						<a class="highslide" rel="highslide" href="
+		https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" onclick="return hs.expand(this)">
+		<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/anry_laik.jpg" alt="Laik, Anry Nemo (Андрей Иванченко), 1999" border="0">
+						</a>
+		<div class="highslide-caption">highslide-caption, Laik, Anry Nemo (Андрей Иванченко), 1999</div>
+					
+						<div class="caption">
+		<a class="highslide" href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" onclick="return hs.expand(this)">zoom</a>
+
+		<p class="img_title">Laik, Anry Nemo (Андрей Иванченко), 1999</p>
+						</div>
+				</div><!-- end thumbnail -->
+				
+			</div>
+
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				
+		<a class="highslide" rel="highslide" href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/w1024/kagaya_058.jpg" onclick="return hs.expand(this)">
+		<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/preview_gallery_img/kagaya_058.jpg" alt="Безмятежность" border="0">
+						</a>
+		<div class="highslide-caption">Безмятежность, серия "Небесное путешествие", Ютака Кагайя, 2003</div>
+				
+					<div class="caption">
+		<a class="highslide" href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/w1024/kagaya_058.jpg" onclick="return hs.expand(this)">zoom</a>
+		<p class="img_title">Безмятежность, серия "Небесное путешествие", Ютака Кагайя, 2003</p>
+					</div>
+					
+				</div><!-- end thumbnail -->
+			</div>
+
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+
+		<a class="highslide" rel="highslide" href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/w1024/dominic_davison_newtown_harbour.jpg" onclick="return hs.expand(this)">
+		<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/preview_gallery_img/dominic_davison_newtown_harbour.jpg" alt="Newtown Harbour" border="0">
+						</a>
+		<div class="highslide-caption">this is highslide-caption</div>
+				
+					<div class="caption">
+		<p class="img_title">Доминик Дэвисон, гавань Ньютауна, Newtown Harbour</p>
+					</div>
+				</div><!-- end thumbnail -->
+			</div>
+
+		</div>
+	</div><!-- end panel -->
+		
+
+		<pre>
+http://highslide.com
+Highslide JS is an image, media and gallery viewer written in JavaScript.
+
+http://highslide.com/ref/
+http://highslide.com/ref/hs.addSlideshow
+Highslide JS API Reference
+http://highslide.com/ref/hs.expand
+		</pre>
+
+</div><!-- end container -->
+
+
+</body>
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css">
+<script src="../../codebase/js/jquery/jquery321.min.js"></script>
+<script src="../../js/main.js"></script>
+
+</html>
