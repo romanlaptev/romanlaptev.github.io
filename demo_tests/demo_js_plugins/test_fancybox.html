@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>photoalbum,  fancybox</title>
 
 <script src="../../codebase/js/jquery/jquery191.min.js"></script>
@@ -69,20 +70,25 @@ console.log("onClosed", arguments);
 </script>
 
 <style>
-.container {width:80%;margin:auto;}
 .ag_thumbclassic{display:inline-block;width:300px;vertical-align:top;}
 </style>
 
 </head>
 <body>
 
-<div class="container">
+<div class="lr-container w80 bg-lightsteelblue4">
 
 	<div class="page-header">
 		<h2>Demo test,  Fancybox plugin</h2>
 		<h3>plugin version: <span id="fancybox-version"></span>,  jquery version: <span id="jquery-version"></span></h3>
 	</div>
 		
+	<div class="lr-panel padding-small">
+		<ul class="lr-breadcrumbs lr-list-inline">
+			<li><a href="../index.html">Home</a></li>
+		</ul>
+	</div><!-- end panel breadcrumbs-->
+
 	<ul>
 		<li class="ag_thumbclassic">
 			<a href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/anry_laik.jpg" title="Laik, Anry Nemo (Андрей Иванченко), 1999" 
@@ -113,11 +119,17 @@ target="_blank">
 https://fancyapps.com/fancybox/
 </pre>
 
+	<div class="lr-panel padding-small">
+		<ul class="lr-breadcrumbs lr-list-inline">
+			<li><a href="../index.html">Home</a></li>
+		</ul>
+	</div><!-- end panel breadcrumbs-->
 
 </div>
 </body>
 
 <!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
 <link type="text/css" rel="stylesheet" href="../../css/colors.css">
 <link type="text/css" rel="stylesheet" href="../../css/style.css">
 <script src="../../js/main.js"></script>
