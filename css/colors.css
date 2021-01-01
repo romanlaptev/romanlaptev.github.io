@@ -164,7 +164,7 @@ border: 1px solid #004586;
 .bg-turquoise9{  background-color: #66cc99 !important;}
 
 
-.steel-grey{
+.bg-steel-grey{
   background-color: #53687c !important;
 }
 
@@ -354,7 +354,7 @@ border: 1px solid #004586;
 
 .bg-brown {background-color: #a52a2a;}
 .bg-burlywood {background-color: #deb887;}
-.bg-chartreuse {background-color: #7fff00;}
+
 .bg-chocolate {background-color: #d2691e;}
 .bg-coral {background-color: #ff7f50;}
 .bg-cornsilk {background-color: #fff8dc;}
@@ -437,15 +437,21 @@ border: 1px solid #004586;
 
 /*Оттенки зелёного цвета*/
 .bg-color-test100FF00 { background:#00FF00;}
-.bg-color-test17BA05B { background:#7BA05B;}  /* Спаржа, #7BA05B */
 .bg-color-test166FF00 { background:#66FF00;}  /* Ярко-зелёный, #66FF00 */
+.bg-chartreuse {background-color: #7fff00;}  /*Шартрёз, #7FFF00 */
+.bg-color-test1ADFF2F { background:#ADFF2F;}  /*Жёлто-зелёный, #ADFF2F */
+
+.bg-color-test17BA05B { background:#7BA05B;}  /* Спаржа, #7BA05B */
+
+
 .bg-color-test178866B { background:#78866B;}  /* Защитный, #78866B */
 .bg-color-test1ACE1AF { background:#ACE1AF;}  /*Серо-зелёный, #ACE1AF */
-.bg-color-test17FFF00 { background:#7FFF00;}  /*Шартрёз, #7FFF00 */
+
+
 .bg-color-test150C878 { background:#50C878;}  /*Изумрудный, #50C878 */
 .bg-color-test14F7930 { background:#4F7930;}  /*:Папоротник, #4F7930 */
 .bg-color-test1465945 { background:#465945;}  /*:Серая спаржа, #465945 */
-.bg-color-test1ADFF2F { background:#ADFF2F;}  /*Жёлто-зелёный, #ADFF2F */
+
 .bg-color-test100A86B { background:#00A86B;}  /*Жадеитовый цвет,Желтовато-зелёный, #00A86B */
 .bg-color-test140826D { background:#40826D;}  /*:Виридиан, #40826D */
 .bg-color-test1BFFF00 { background:#BFFF00;}  /*Лайм, #BFFF00 */
