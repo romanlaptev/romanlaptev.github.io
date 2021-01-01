@@ -6,15 +6,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<link href="../../css/bootstrap335.min.css" rel="stylesheet">	
-	<link rel="stylesheet" type="text/css" href="../../codebase/js/plugins/highslide/highslide.css">
-	<script type="text/javascript" src="../../codebase/js/plugins/highslide/highslide.min.js"></script>
 	
+	<link rel="stylesheet" type="text/css" href="../../codebase/js/plugins/highslide/highslide.css">
+<!--	
+	<script type="text/javascript" src="../../codebase/js/plugins/highslide/highslide.min.js"></script>
+-->
+<script type="text/javascript" src="../../codebase/js/plugins/highslide/highslide-full.packed.js"></script>
+
 <script type="text/javascript">
 
 	//http://highslide.com/ref/hs.expand
 	hs.graphicsDir = "../../codebase/js/plugins/highslide/graphics/";
 	hs.wrapperClassName = 'wide-border';
 	hs.showCredits = false;
+	hs.outlineType = 'rounded-white';
 	//hs.align = 'center';
 	//hs.transitions = ['expand', 'crossfade'];
 	
@@ -96,8 +101,16 @@
 			</div>
 
 		</div>
+		
 	</div><!-- end panel -->
 		
+
+	<div>
+		<a href="#" onclick="return hs.htmlExpand(this)" class="btn btn-blue">popup window</a>
+<div class="highslide-maincontent">
+000000
+</div>
+	</div><!-- end panel -->
 
 		<pre>
 http://highslide.com
