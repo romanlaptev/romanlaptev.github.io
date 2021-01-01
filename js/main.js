@@ -19,7 +19,7 @@ console.log(msg);
 	$(document).ready(function(e){
 //console.log(arguments);
 
-
+/*
 	url = "content_list.html";
 //https://jquery-docs.ru/jQuery.get/
 	var _contentList = $.get( url, function( data, res ){
@@ -29,16 +29,15 @@ console.log(msg);
 			_contentClick();
 		}
 	})
-/*
-	  .done(function() {
-console.log( "promise callback done..." );
-		})
-	  .fail(function() {
-console.log( "promise callback fail...", arguments );
-		})
-	  .always(function() {
-//console.log( "promise callback always...", arguments );
-		});
+//	  .done(function() {
+//console.log( "promise callback done..." );
+//		})
+//	  .fail(function() {
+//console.log( "promise callback fail...", arguments );
+//		})
+//	  .always(function() {
+////console.log( "promise callback always...", arguments );
+//		});
 */
 
 	});//end ready

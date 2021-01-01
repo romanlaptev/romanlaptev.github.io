@@ -59,8 +59,7 @@ jQuery(document).ready(function() {
 
 <style>
 .jcarousel-skin-tango .jcarousel-container {
-   border-radius: 10px;
-    background: #CDE9F7;
+    background: #fff;
     border: 1px solid #346F97;
 }
 
@@ -70,7 +69,6 @@ jQuery(document).ready(function() {
 
 .jcarousel-skin-tango .jcarousel-container-horizontal {
     border: 0px solid red;
-    width: 80%;
 	margin:auto;
 	/*padding-left: 20px;*/
 	padding-top: 20px;
@@ -224,21 +222,20 @@ jQuery(document).ready(function() {
 });
 </script>
 
-<style>
-.container{
-width:80%;
-margin:auto;
-}
-</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="lr-container w80 bg-lightsteelblue4">
 
 	<div class="page-header">
 		<h2>Demo test : PiroBox plugin, jquery.jcarousel plugin</h2>
 	</div>
+
+	<div class="lr-panel padding-small lr-breadcrumbs">
+		<a href="../index.html">Home</a>
+	</div><!-- end panel -->
+
 		<pre>
 http://www.gmarwaha.com/jquery/jcarousellite/
 jCarouselLite - Project 
@@ -255,7 +252,6 @@ http://www.htmldrive.net/items/show/789/Very-useful-images-lightbox-with-jquery-
 
 		</pre>
 
-</div><!-- end container -->
 
 <div class="page">
 	<ul id="mycarousel" class="jcarousel-skin-tango">
@@ -317,9 +313,12 @@ http://www.htmldrive.net/items/show/789/Very-useful-images-lightbox-with-jquery-
 	<div class="clear_both"></div>
 </div> <!-- end page -->
 
+</div><!-- end container -->
+
 </body>
 
 <!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
 <link type="text/css" rel="stylesheet" href="../../css/colors.css">
 <link type="text/css" rel="stylesheet" href="../../css/style.css">
 <script src="../../js/main.js"></script>

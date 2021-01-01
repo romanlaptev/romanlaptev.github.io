@@ -37,10 +37,6 @@
 </script>
 
 <style>
-.container{
-width:70%;
-margin:auto;
-}
 .list-inline{
 list-style: disclosure-closed;
 }
@@ -59,43 +55,20 @@ list-style: disclosure-closed;
 	color: #fff;
 	text-decoration: none;
 }
-
-/* GRID */
-.w10{width:10%;}
-.w20{width:20%;}
-.w25{width:25%;}
-.w30{width:30%;}
-.w33{width:33%;}
-.w50{width:50%;}
-.w60{width:60%;}
-.w65{width:65%;}
-.w70{width:70%;}
-.w80{width:80%;}
-.w90{width:90%;}
-.w100{width:100%;}
-
-.row {
-	/* float: none; */
-	clear: both;
-	overflow: hidden;
-}
-.clearfix {
-	clear: both;
-}
-
-.float-left, .pull-left {
-	float: left;
-}
-
 </style>
 
 </head>
 
 <body>
-	<div class="container">
+	<div class="lr-container w80 bg-lightsteelblue4">
 
 <h1>Demo test,  Slides, a slideshow plugin for jQuery</h1>
 
+	<div class="lr-panel padding-small">
+		<ul class="lr-breadcrumbs lr-list-inline">
+			<li><a href="../index.html">Home</a></li>
+		</ul>
+	</div><!-- end panel breadcrumbs-->
 <pre>
 http://slidesjs.com/
 </pre>
@@ -162,6 +135,7 @@ http://slidesjs.com/
 </body>
 
 <!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
 <link type="text/css" rel="stylesheet" href="../../css/colors.css">
 <link type="text/css" rel="stylesheet" href="../../css/style.css">
 <script src="../../js/main.js"></script>

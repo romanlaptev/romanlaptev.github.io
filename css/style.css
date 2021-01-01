@@ -31,30 +31,15 @@ a{
 	font-weight: bold;
 }
 
-.panel {
-	/*background-color: #51a1e6;*/
-}
 .panel-inline {
-margin:5px;
-display: inline-block;
-vertical-align: top;
-	background-color: #fff;
-	border: 1px solid transparent;
-/*
-	border-radius: 4px;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-	box-shadow: 0 1px 1px rgba(0,0,0,.05);
-*/
+	margin:5px;
+	display: inline-block;
+	vertical-align: top;
+    background-color: #fff;
 }
 
-
-.padding-small{
-padding:10px;
-}
-.margin-small{
-margin:10px;
-}
-
+.padding-small{padding:10px;}
+.margin-small{margin:10px;}
 
 .nav>li>a:focus,
 .nav>li>a:hover {
