@@ -158,7 +158,9 @@ border: 1px solid #004586;
 
 .bg-turquoise4{  background-color: #009b9b !important;}
 .bg-turquoise5{  background-color: #006b6b !important;}
-.bg-turquoise6{  background-color: #006666 !important;}
+
+.bg-obscure-dull-cyan{  background-color: #006666 !important;}
+
 .bg-turquoise7{  background-color: #006633 !important;}
 .bg-turquoise8{  background-color: #00848c !important;}
 .bg-turquoise9{  background-color: #66cc99 !important;}
@@ -253,7 +255,10 @@ border: 1px solid #004586;
 .bg-color-test1def { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
-.bg-color-test10061A0 { background:#0061A0; }
+
+.bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
+.bg-light-blue-darken-40 { background:#0061A0; }
+
 .bg-color-test1074e68 { background:#074e68;}
 .bg-color-test12f96b4 { background:#2f96b4;}
 
@@ -351,7 +356,6 @@ border: 1px solid #004586;
 .bg-blue-sky2{  background-color: #3465a4 !important;}
 
 
-
 .bg-brown {background-color: #a52a2a;}
 .bg-burlywood {background-color: #deb887;}
 
@@ -431,7 +435,8 @@ border: 1px solid #004586;
 .bg-color-test1E3EFB1 { background:#E3EFB1;}
 .bg-color-test1b2c27a { background:#b2c27a;}
 .bg-color-test170D14E { background:#70D14E;}
-.bg-color-test103AEA6 { background:#03AEA6;}
+
+
 .bg-color-test1E5F2C0 { background:#E5F2C0;}
 .bg-color-test10C9E54 { background:#0C9E54;}
 
@@ -475,7 +480,11 @@ border: 1px solid #004586;
 .bg-color-test1009E60 { background:#009E60;}  /*:Трилистник, #009E60 */
 .bg-color-test1009900 { background:#009900;}  /*:Мусульманский,Islamic_green, #009900 */
 .bg-color-test132CD32 { background:#32CD32;}  /*Лаймовый, Lime_Green, #32CD32 */
-.bg-color-test100A693 { background:#00A693;}  /*:Персидский зелёный, #00A693 */
+
+.bg-persian-green { background:#00A693;}  /*:Персидский зелёный, #00A693 */
+/*https://cpalettes.com/color/03aea6*/
+.bg-persian-green2 { background:#03AEA6;}
+
 .bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу, #4D5D53 */
 
 
@@ -670,7 +679,10 @@ border: 1px solid #004586;
 .bg-color-test1beb49b { background:#beb49b;}
 .bg-color-test1d8c8b3 { background:#d8c8b3;}
 .bg-color-test1f3f3f3 { background:#f3f3f3;}
-.bg-color-test1D0CCD5 { background:#D0CCD5}
+
+/* https://www.omiod.com/colors/?rgb=d0ccd5 */
+.bg-light-purple { background:#D0CCD5}
+
 .bg-color-test1dedddf { background:#dedddf;}
 .bg-color-test1c6c3c6 { background:#c6c3c6;}
 .bg-color-test1c6c3c6 { background:#c6c3c6;}
