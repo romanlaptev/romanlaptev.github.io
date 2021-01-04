@@ -66,7 +66,6 @@
 	<tag tid="88" vid="2" name="Австралия"></tag>
 	<tag tid="89" vid="2" name="Франция"></tag>
 	<tag tid="93" vid="2" name="Катя Оутинен"></tag>
-	<tag tid="94" vid="2" name="Роберт Де Ниро"></tag>
 	<tag tid="96" vid="2" name="история"></tag>
 	<tag tid="97" vid="2" name="Волошин, Игорь"></tag>
 	<tag tid="100" vid="2" name="панк"></tag>
@@ -92,7 +91,6 @@
 	<tag tid="121" vid="2" name="Украина"></tag>
 	<tag tid="122" vid="2" name="Стеллинг, Йос"></tag>
 	<tag tid="124" vid="2" name="Николсон, Джек"></tag>
-	<tag tid="125" vid="2" name="Епифанцев, Владимир"></tag>
 	<tag tid="126" vid="2" name="Ефремов, Михаил"></tag>
 	<tag tid="127" vid="2" name="Охлобыстин, Иван"></tag>
 	<tag tid="128" vid="2" name="Польша"></tag>
@@ -110,8 +108,6 @@
 	<tag tid="140" vid="2" name="Евгений Леонов"></tag>
 	<tag tid="141" vid="2" name="ogv"></tag>
 	<tag tid="142" vid="2" name="Квентин Тарантино"></tag>
-	<tag tid="143" vid="2" name="Стив Бушеми"></tag>
-	<tag tid="144" vid="2" name="Тим Рот"></tag>
 	<tag tid="145" vid="2" name="Никита Михалков"></tag>
 	<tag tid="146" vid="2" name="видеоуроки"></tag>
 	<tag tid="147" vid="2" name="Жан-Пьер Жене"></tag>
@@ -153,7 +149,6 @@
 	<tag tid="195" vid="2" name="Михаил Пуговкин"></tag>
 	<tag tid="196" vid="2" name="Александр Демьяненко"></tag>
 	<tag tid="198" vid="2" name="Арчил Гомиашвили"></tag>
-	<tag tid="199" vid="2" name="Вахтанг Кикабидзе"></tag>
 	<tag tid="200" vid="2" name="Джеральд Даррелл"></tag>
 	<tag tid="202" vid="2" name="Марк Захаров"></tag>
 	<tag tid="203" vid="2" name="Александр Абдулов"></tag>
@@ -271,6 +266,7 @@ https://www.kinopoisk.ru/name/8434/</tag>
 	<tag tid="337" vid="2" name="Тони Кертис">Tony Curtis
 https://www.kinopoisk.ru/name/25873/</tag>
 	<tag tid="338" vid="1" name="1985"></tag>
+	<tag tid="339" vid="2" name="Роман Мадянов"></tag>
 </taglist>
 
 
@@ -414,7 +410,6 @@ https://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D0%B7%D0%B8%D0%BB%D0%B8%D1%8F_(
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="43">фантастика</item>
-		<item tid="94">Роберт Де Ниро</item>
 		<item tid="15">Терри Гиллиам</item>
 		<item tid="22">avi</item>
 		<item tid="208">B</item>
@@ -2392,7 +2387,6 @@ https://www.kinopoisk.ru/film/149721/</description>
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="43">фантастика</item>
-		<item tid="125">Епифанцев, Владимир</item>
 		<item tid="126">Ефремов, Михаил</item>
 		<item tid="127">Охлобыстин, Иван</item>
 		<item tid="68">Россия</item>
@@ -3928,7 +3922,6 @@ Monica Viegas
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="198">Арчил Гомиашвили</item>
-		<item tid="199">Вахтанг Кикабидзе</item>
 		<item tid="140">Евгений Леонов</item>
 		<item tid="152">Савелий Крамаров</item>
 		<item tid="45">Данелия, Георгий</item>
@@ -6193,7 +6186,6 @@ https://www.kinopoisk.ru/film/41171/</description>
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="54">мелодрама</item>
-		<item tid="199">Вахтанг Кикабидзе</item>
 		<item tid="45">Данелия, Георгий</item>
 		<item tid="68">Россия</item>
 		<item tid="22">avi</item>
@@ -7286,7 +7278,6 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	<tags>
 		<item tid="5">комедия</item>
 		<item tid="13">криминал</item>
-		<item tid="144">Тим Рот</item>
 		<item tid="142">Квентин Тарантино</item>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
@@ -7366,8 +7357,6 @@ https://www.kinopoisk.ru/film/proletaya-nad-gnezdom-kukushki-1975-336/</descript
 	<tags>
 		<item tid="4">драма</item>
 		<item tid="13">криминал</item>
-		<item tid="143">Стив Бушеми</item>
-		<item tid="144">Тим Рот</item>
 		<item tid="142">Квентин Тарантино</item>
 		<item tid="66">США</item>
 		<item tid="22">avi</item>
@@ -15555,6 +15544,45 @@ http://vse-subtitri.ru/tv-shows/game-of-thrones-1492.html</description>
 
 	<published>19-Jun-2020 13:33:39</published>
 	<updated>19-Jun-2020 13:35:20</updated>
+</video>
+
+<video type="video">
+	<title>
+		<item>Бабло</item>
+</title>
+	
+	<producer>Константин Буслов</producer>
+	<roles>Роман Мадянов
+Яков Кучеревский
+Мария Берсенева
+Георгий Гургулия
+Миша Месхи
+Гия Гогишвили
+Владимир Сычев
+Александр Фисенко
+Дмитрий Куличков
+Борис Георгиевский	</roles>
+	<description>Москва. Наши дни. В центре города из машины двое воришек крадут сумку с миллионом евро, думая, что им, наконец, повезло, и даже не представляя, во что на самом деле они ввязались. За деньгами начинается настоящая охота. Перед искушением не может устоять никто. Сумма в виде двух пачек денег по полмиллиона евро делает абсолютно разных людей одинаковыми в своих поступках и желаниях. А началось все с того, что «миллионщик» Григорий не захотел честно платить налоги.</description>
+	<pictures>
+		<img src="https://i.ytimg.com/vi/eeCLMZcGZLM/sddefault.jpg"/>
+	</pictures>
+
+	<ul>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?v=eeCLMZcGZLM">online, youtube.com</a></li>
+		<li><a data-type="embed-video" href="https://www.youtube.com/embed/eeCLMZcGZLM">embed video on youtube.com</a></li>
+		<li><a data-type="external-link" href="https://www.kinopoisk.ru/film/542574/">kinopoisk.ru</a></li>
+	</ul>
+
+	<tags>
+		<item tid="5">комедия</item>
+		<item tid="13">криминал</item>
+		<item tid="339">Роман Мадянов</item>
+		<item tid="230">Б</item>
+		<item tid="277">2011</item>
+	</tags>
+
+	<published>03-Jan-2021 20:37:37</published>
+	<updated>03-Jan-2021 20:39:12</updated>
 </video>
 
 <video type="videoclip">
