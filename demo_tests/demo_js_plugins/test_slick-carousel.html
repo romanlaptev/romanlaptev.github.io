@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Slick carousel</title>
+
+<script src="../../codebase/js/jquery/jquery.min.js"></script>
+<!--
+<script src="../../codebase/js/plugins/slick-carousel/slick.min.js"></script>
+<link rel='stylesheet'  href='../../codebase/js/plugins/slick-carousel/slick.css' type='text/css' media='all' />
+
+<script type='text/javascript' src='https://viveska902.ru/wp-content/themes/artrium/js/slick.min.js'></script>
+<link rel='stylesheet' id='slick-style-css'  href='https://viveska902.ru/wp-content/themes/artrium/css/slick.css?ver=5.5.3' type='text/css' media='all' />
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" 
+integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+<!--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
+
+https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css.map
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" 
+integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" 
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" 
+integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" />
+<script>
+    lightbox.option({
+		alwaysShowNavOnTouchDevices: true,
+//'resizeDuration': 200,
+//'wrapAround': true
+    })
+</script>
+
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+	$('.slider1').slick({
+		dots: true,
+		infinite: true,
+		speed: 300,
+		slidesToShow: 2,
+		slidesToScroll: 2,
+		mobileFirst: true,
+		prevArrow: "<button class='prev'>Prev</button>",
+		nextArrow: "<button class='next'>Next</button>",
+		responsive: [
+		    {
+		        breakpoint: 1500,
+		        settings: {
+		            slidesToShow: 5.6,
+		            slidesToScroll: 1,
+		            arrows: true
+		        }
+		    },
+		    {
+		        breakpoint: 760,
+		        settings: {
+		            slidesToShow: 3.6,
+		            slidesToScroll: 1,
+		            arrows: true
+		        }
+		    },
+		    {
+		        breakpoint: 400,
+		        settings: {
+		            slidesToShow: 1,
+		            slidesToScroll: 1,
+		            arrows: true
+		        }
+		    },
+		    {
+		        breakpoint: 300,
+		        settings: {
+		            slidesToShow: 1,
+		            slidesToScroll: 1,
+		            arrows: true
+		        }
+		    }
+		]
+	});
+
+
+});//end ready
+</script>
+
+<style>
+.slider1 {
+	max-width: 1200px;
+	margin: auto;
+	padding-top: 50px;
+}
+.slider1 .slick-arrow {
+	position: absolute;
+	/*bottom: 0;*/
+	z-index: 999;
+}
+.slider1 .prev {
+	left: -100px;
+	top:0;
+}
+.slider1 .next {
+	right: -100px;
+	top:0;
+}
+.slide {
+	text-align:center;
+}
+.slider1 .slick-slide img {
+	/*display: inline !important;*/
+	width:100%;
+}
+
+.artwork-title{ }
+.autor-name{ font-size: 80% }
+.artwork-year{ font-size: 80%}
+
+
+.slick-dots {
+	list-style: none;
+	overflow: hidden;
+}
+.slick-dots button {
+	float: left;
+}
+
+
+@media screen and (max-width:1439px){
+	.slider1 {
+		max-width: 1100px;
+	}
+	.slider1 .prev {
+		left: -80px;
+	}
+	.slider1 .next {
+		right: -80px;
+	}
+}
+
+@media screen and (max-width:1280px){
+
+	.slider1 .prev {
+		/*top: -50px;*/
+		left: 10px;
+	}
+	.slider1 .next {
+		/*top: -50px;*/
+		right: 10px;
+	}
+
+}
+
+@media screen and (max-width:1023px){
+	.slider1 {
+		/*max-width: 708px;*/
+	}
+}
+
+@media screen and (max-width:550px){
+}
+
+@media screen and (max-width:479px){
+/*
+	.slider1 {
+		max-width: 340px;
+	}
+*/
+}
+
+.slider1 .slick-slide {
+	margin-left: 20px;
+	margin-right: 20px;
+	outline: none;
+}
+.slider1 .slide-caption {
+	padding: 5px 10px;
+}
+
+.picture {
+	padding: 10px;
+	border: 1px solid;
+	box-shadow: 5px 5px silver;
+	background-color:#fff;
+}
+.picture:hover {
+	box-shadow: 0 0 5px inset;
+}
+
+</style>
+
+
+</head>
+
+<body>
+	<div class="lr-container w80 bg-lightsteelblue4">
+
+	<div class="lr-panel lr-row">
+		<div class="float-left w70">
+			<h1>Demo test,  Slick carousel <span>version: 1.8.1</span></h1>
+			<h2>Lightbox2 <span>version: 2.11.3</span></h2>
+
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a href="../index.html">Home</a></li>
+			</ul>
+
+		</div>
+
+		<div class="float-right w30">
+		</div>
+	</div>
+
+
+
+<div class="slider1">
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Мадонна в беседке из роз" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/lochner_stephan.madonna_3.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/lochner_stephan.madonna_3.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Мадонна в беседке из роз</h4>
+<div class="text-right">
+	<span class="autor-name">Стефан Лохнер<span>
+	<span class="artwork-year">1440</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Мадонна с младенцем, со святыми Бенедиктом и Квентином и двумя ангелами" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/francesco_marmitta_-_virgin_and_child.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/francesco_marmitta_-_virgin_and_child.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Мадонна с младенцем, со святыми Бенедиктом и Квентином и двумя ангелами</h4>
+<div class="text-right">
+	<span class="autor-name">Мармитта Франческо<span>
+	<span class="artwork-year">1496-1504</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет четы Арнольфини" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/van_eyck_-_arnolfini_portrait.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/van_eyck_-_arnolfini_portrait.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет четы Арнольфини</h4>
+<div class="text-right">
+	<span class="autor-name">Ян ван Эйк</span>
+	<span class="artwork-year">1434</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Мадонна канцлера Ролена" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/jan_van_eyck_madonna_kanclera_rolena_1441.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jan_van_eyck_madonna_kanclera_rolena_1441.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Мадонна канцлера Ролена</h4>
+<div class="text-right">
+	<span class="autor-name">Ян ван Эйк</span>
+	<span class="artwork-year">ок. 1441</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Аньес Сорель в облике Богоматери" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/jean_fouquet_-_anes_sorel_v_oblike_bogomateri.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jean_fouquet_-_anes_sorel_v_oblike_bogomateri.jpg">
+</a>
+				</div>
+				<div class="slide-caption"> 
+<h4 class="artwork-title text-darkblue">Аньес Сорель в облике Богоматери</h4>
+<div class="text-right">
+	<span class="autor-name">Жан Фуке</span>
+	<span class="artwork-year">ок.1450</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет Марии Магдалены Портинари" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/memling_hans_portrait-of-maria-maddalena-portinari_1470.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/memling_hans_portrait-of-maria-maddalena-portinari_1470.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет Марии Магдалены Портинари</h4>
+<div class="text-right">
+	<span class="autor-name">Ганс Мемлинг</span>
+	<span class="artwork-year">1470</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Дофин Карл Орлеанский" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/hey_zhan_dofin_karl_orleanskiy.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/hey_zhan_dofin_karl_orleanskiy.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Дофин Карл Орлеанский</h4>
+<div class="text-right">
+	<span class="autor-name">Жан Хэй</span>
+	<span class="artwork-year">1480-1500</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет рыцаря" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/gallery_images/imagecache/w1024/gallery_images/carpaccio_vittore_knight.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/carpaccio_vittore_knight.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет рыцаря</h4>
+<div class="text-right">
+	<span class="autor-name">Витторе Карпаччо</span>
+	<span class="artwork-year">1510</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+<pre>
+http://kenwheeler.github.io/slick/
+https://github.com/kenwheeler/slick/
+
+https://lokeshdhakar.com/projects/lightbox2/#getting-started
+</pre>
+
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+<link type="text/css" rel="stylesheet" href="../../css/style.css">
+<script src="../../js/main.js"></script>
+
+</html>
