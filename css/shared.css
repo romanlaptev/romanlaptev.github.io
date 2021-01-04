@@ -42,6 +42,7 @@ a:active, a:focus { outline: none; }
 	float: right;
 }
 
+.text-left{text-align:left;}
 .text-right{text-align:right;}
 .text-center{text-align:center;}
 
@@ -242,7 +243,7 @@ border-top: 16px solid #1c5a83;
 }
 
 /* BUTTONS */
-/*.btn {
+.lr-btn {
 	display: inline-block;
 	padding: 6px 12px;
 	margin-bottom: 0;
@@ -264,7 +265,7 @@ border-top: 16px solid #1c5a83;
 	border-radius: 4px;
 }
 
-.btn-blue {
+.lr-btn-blue {
 	background-color: #007bff;
 	color: #fff;
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
@@ -274,26 +275,24 @@ border-top: 16px solid #1c5a83;
   font-weight: 400;
 }
 
-.btn-blue:hover {
+.lr-btn-blue:hover {
 	background-color: #ff8c00 !important;
 	color: #000 !important;
 }
 
-.btn-blue:focus {
+.lr-btn-blue:focus {
 	color: #fff !important;
 	outline: 0;
 }
 
-.btn-blue:active:focus {
+.lr-btn-blue:active:focus {
 	color: #000 !important;
 }
-.btn-blue:active {
-}
-.btn-blue:visited {
-}
+.lr-btn-blue:active {}
+.lr-btn-blue:visited {}
 
 
-
+/*
 .btn-blue-c4 {
     color: #fff;
 	background-color: #269abc;
@@ -326,9 +325,9 @@ border-top: 16px solid #1c5a83;
 .btn-blue-green:focus {
 	color: #fff !important;
 }
+*/
 
-
-.btn-darkblue {
+.lr-btn-darkblue {
 	background-color: #004586;
 	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
 	-moz-box-shadow: inset 0 36px 38px -38px #fff;
@@ -339,28 +338,18 @@ border-top: 16px solid #1c5a83;
   font-weight: 400;
 }
 
-.btn-darkblue:hover {
+.lr-btn-darkblue:hover {
 	background-color: #ff8c00;
 	border-color: #ff8c00;
 	color: #000 !important;
 }
 
-.btn-darkblue:focus {
+.lr-btn-darkblue:focus {
 	color: #fff !important;
 }
 
 
-.btn-violet-fb {
-	background-color: #395697;
-	color: #fff;
-}
-
-.btn-violet-fb:hover {
-	color: #fff;
-}
-
-
-
+/*
 .btn-greygreen {
 	background-color: #6298A5;
 	color: #fff;
