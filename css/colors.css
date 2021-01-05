@@ -155,6 +155,7 @@ border: 1px solid #004586;
 
 /* Background colors */
 
+.bg-dark-blue-gray{  background-color: #334455 !important;}
 
 .bg-turquoise4{  background-color: #009b9b !important;}
 .bg-turquoise5{  background-color: #006b6b !important;}
