@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Slick carousel</title>
+
+<!--
+<script src="../../codebase/js/jquery/jquery.min.js"></script>
+-->
+<!--
+<script src="/webdisk/js/jquery.min.js"></script>
+<script type="text/javascript" src="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/jquery.nivo.slider.js"></script> 
+<link rel="stylesheet" href="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+-->
+
+<!--
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
++<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js" integrity="sha512-rwjQKesPaeXWoFNcTVz8rPBqsU06+JhcsudIQfpUiOhxGHqymn9aSJpG7NPu4MZJ7V32Cq4YjT1qV5vVngYA1g==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/nivo-slider.min.css" integrity="sha512-nabQX023kkkPP+H9ptetp5lK0CQ4rv6lG/slhMi5eONKfC1fI4lClHXubH6VP6PgXExycfzlAQHufX1oHMzUew==" crossorigin="anonymous" />
+
+<script type="text/javascript">
+console.log("-- load");
+console.log("jQuery version: ", $.fn.jquery);
+
+	$(window).load(function() {
+		$('#slider1').nivoSlider({
+effect: 'random',
+slices: 15,
+boxCols: 8,
+boxRows: 4,
+animSpeed: 500,
+pauseTime: 3000,
+startSlide: 0,
+directionNav: true,
+controlNav: true,
+controlNavThumbs: false,
+pauseOnHover: true,
+manualAdvance: false,
+prevText: "<button>prev</button>",
+nextText: "<button>next</button>",
+randomStart: false,
+beforeChange: function(){},
+afterChange: function(){},
+slideshowEnd: function(){},
+lastSlide: function(){},
+afterLoad: function(){}
+});
+
+	});
+</script> 
+
+<script>
+$(document).ready(function(){
+console.log("-- ready");
+
+});//end ready
+</script>
+
+
+</head>
+
+<body class="bg-darkblue-project">
+<div class="lr-container w80 bg-lightsteelblue4">
+
+		<div class="lr-panel lr-row">
+
+				<h1>Demo test js plugin</h1>
+				<h2>jQuery Nivo Slider <span>version: 3.2</span></h2>
+
+				<div class="bg-lightsteelblue padding-small">
+					<ul class="lr-breadcrumbs lr-list-inline">
+						<li><a href="../index.html">Home</a></li>
+					</ul>
+				</div>
+		</div>
+
+<!--
+		<div class="nivoSlider" id="slider1">
+<img src="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/toystory.jpg" 
+data-thumb="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/toystory.jpg" alt="" />
+
+			<a href="http://dev7studios.com">
+<img src="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/up.jpg" 
+data-thumb="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/up.jpg" 
+alt="" title="This is an example of a caption" />
+			</a>
+
+<img src="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/walle.jpg" 
+data-thumb="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/walle.jpg" 
+alt="" data-transition="slideInLeft" />
+
+<img src="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/nemo.jpg" 
+data-thumb="/webdisk/codebase/js/js_plugins_libs/sliders/nivo-slider/demo/images/nemo.jpg" 
+alt="" title="#htmlcaption" />
+
+		</div>
+
+-->
+		<div class="nivoSlider w30" id="slider1">
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/lochner_stephan.madonna_3.jpg" 
+data-thumb="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/lochner_stephan.madonna_3.jpg" alt="" />
+
+			<a href="#">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/francesco_marmitta_-_virgin_and_child.jpg" 
+data-thumb="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/w1024/gallery_images/francesco_marmitta_-_virgin_and_child.jpg" 
+alt="" title="This is an example of a caption" />
+			</a>
+
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/van_eyck_-_arnolfini_portrait.jpg" 
+data-thumb="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/van_eyck_-_arnolfini_portrait.jpg" 
+alt="" data-transition="slideInLeft" />
+
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jan_van_eyck_madonna_kanclera_rolena_1441.jpg" 
+data-thumb="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jan_van_eyck_madonna_kanclera_rolena_1441.jpg" 
+alt="" title="#htmlcaption" />
+
+		</div>
+
+		<div id="htmlcaption" class="nivo-html-caption">
+			<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
+		</div>
+
+<pre>
+https://www.jqueryscript.net/slider/nivo-slider.html
+
+https://webformyself.com/slajder-nivo-slider-ustanovka-i-nastrojka/
+https://cdnjs.com/libraries/jquery-nivoslider
+</pre>
+
+</div><!-- end container -->
+
+
+
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="/webdisk/css/shared.css">
+<link type="text/css" rel="stylesheet" href="/webdisk/css/colors.css">
+<!--
+<link type="text/css" rel="stylesheet" href="../../css/style.css">
+<script src="../../js/main.js"></script>
+-->
+
+</html>
