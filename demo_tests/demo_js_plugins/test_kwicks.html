@@ -1,0 +1,373 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Kwicks for jQuery (v2.2.1)</title>
+
+<script src="../../codebase/js/jquery/jquery.min.js"></script>
+<script src="../../codebase/js/plugins/Kwicks/jquery.kwicks221.min.js"></script>
+<script src='../../codebase/js/plugins/Kwicks//jquery.easing.1.3.js' type='text/javascript'></script>
+<link rel='stylesheet'  href="../../codebase/js/plugins/Kwicks/jquery.kwicks221.min.css" type='text/css' media='all' />
+
+<!--
+https://raw.githubusercontent.com/jmar777/kwicks/v2.2.1/jquery.kwicks.min.js
+https://raw.githubusercontent.com/jmar777/kwicks/v2.2.1/jquery.kwicks.min.css
+-->
+
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+console.log("jQuery version: ", $.fn.jquery);
+
+	$("#ex1-kwicks").kwicks({
+		maxSize : 250,
+		behavior: 'menu'
+	});	
+	
+	$("#ex2 .kwicks").kwicks({
+		maxSize : 220,
+		behavior: 'menu',
+		isVertical: true
+	});	
+
+	$("#ex-easing .kwicks").kwicks({
+minSize : 40,
+duration: 750,
+behavior: 'menu',
+easing: 'easeOutBounce'
+	});	
+	
+	$(".expand-controls a").click(function(e) {
+		e.preventDefault();
+		var index = $(this).data("index");
+		
+		var container_id = $(this).attr("href");
+		var $container = $(container_id);
+console.log($container);	
+		
+		$container.kwicks("expand", index);
+	});
+				
+});//end ready
+</script>
+
+<style type='text/css'>
+	.colorbox {
+		height: 100px;
+		width: 125px;
+	}
+	.float-left, .pull-left {
+		float: left;
+	}
+	.margin-small{margin:5px;}
+	
+	.bg-green-slack { background-color: #53b388; }
+	.bg-blue-ariel { background-color: #5a69a9; }
+	.bg-pink-aurora { background-color: #c26468; }
+	.bg-light-purple2 { background-color: #bf7cc7; }
+
+	#ex1 .kwicks,
+	#ex-easing .kwicks {
+		width: 515px;
+		height: 100px;
+	}
+	
+	#ex2 .kwicks{
+		width: 125px;
+		height: 415px;
+	}
+	
+</style>
+		
+</head>
+
+<body class="bg-darkblue-project">
+	<div class="lr-container w80 bg-lightsteelblue4">
+
+	<div class="lr-panel lr-row">
+		<h2>Kwicks for jQuery <span>version: v2.2.1</span></h2>
+
+		<div class="bg-blue-ariel2 padding-small">
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a href="../index.html"><span class="text-white text-underline">Home</span></a></li>
+			</ul>
+<pre>
+http://devsmash.com/projects/kwicks
+https://mottie.github.io/Kwicks/
+https://ruseller.com/adds/adds2276/example/
+</pre>
+			
+		</div>
+	</div>
+	
+<div class="lr-row">
+
+	<div id="ex1" class="lr-panel-inline">
+		<h3>Example: Horizontal</h3>
+<pre>
+behavior: 'menu'
+</pre>		
+		<div class="expand-controls">
+			<strong>expand-controls: </strong>
+			<a href="#ex1-kwicks" data-index='0'>Expand panel 1</a>|
+			<a href="#ex1-kwicks" data-index='1'>Expand panel 2</a>|
+			<a href="#ex1-kwicks" data-index='2'>Expand panel 3</a>|
+			<a href="#ex1-kwicks" data-index='-1'>none</a>.
+		</div>
+
+		<ul id="ex1-kwicks" class='kwicks kwicks-horizontal'>
+			<li class="colorbox margin-small float-left bg-green-slack"></li>
+			<li class="colorbox margin-small float-left bg-blue-ariel"></li>
+			<li class="colorbox margin-small float-left bg-pink-aurora"></li>
+			<li class="colorbox margin-small float-left bg-light-purple2"></li>
+		</ul>
+		
+	</div><!-- end panel -->
+
+	<div id="ex2"  class="lr-panel-inline">
+<pre>
+behavior: 'menu'
+isVertical: true
+</pre>		
+		<ul class='kwicks kwicks-vertical'>
+			<li class="colorbox margin-small float-left bg-green-slack"></li>
+			<li class="colorbox margin-small float-left bg-blue-ariel"></li>
+			<li class="colorbox margin-small float-left bg-pink-aurora"></li>
+			<li class="colorbox margin-small float-left bg-light-purple2"></li>
+		</ul>
+	</div><!-- end panel -->
+	
+	<div id="ex-easing" class="">
+		<h3>Example: Easing</h3>
+<pre>
+jquery.easing.1.3.js
+---
+minSize : 40,
+duration: 750,
+behavior: 'menu',
+easing: 'easeOutBounce'
+</pre>		
+		<ul class='kwicks kwicks-horizontal'>
+			<li class="colorbox margin-small float-left bg-green-slack"></li>
+			<li class="colorbox margin-small float-left bg-blue-ariel"></li>
+			<li class="colorbox margin-small float-left bg-pink-aurora"></li>
+			<li class="colorbox margin-small float-left bg-light-purple2"></li>
+		</ul>
+	</div><!-- end panel -->
+
+
+
+<style>
+#ex-expand-event .kwicks {
+	width: 515px;
+	height: 140px;
+	border: 5px solid #333;
+	background-color: #333;
+}
+
+#ex-expand-event #content {
+	width: 515px;
+	height: 140px;
+	background-color: #333;
+}
+</style>
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+	var $content = $("#content");
+
+	var $container = $("#ex-expand-event .kwicks").kwicks({
+maxSize : 250,
+behavior: 'menu',
+selectOnClick: false
+	});	
+
+
+	$container.on("expand.kwicks", function(e, data) {
+console.log(data);
+		var newColor;
+		if (data.expanded) {
+			newColor = $(data.expanded).css("background-color");
+		} else {
+			newColor = '#333';
+		}
+		
+		$container.css({
+			"border-color": newColor,
+			"background-color": newColor
+		});
+		
+		$content.css({
+			"background-color": newColor
+		});
+		
+	});
+				
+});//end ready
+</script>
+
+	<div id="ex-expand-event" class="">
+		<h3>Example: Expand Event</h3>
+<pre>
+---
+</pre>		
+		<ul class='kwicks kwicks-horizontal'>
+			<li class="colorbox margin-small float-left bg-green-slack">A</li>
+			<li class="colorbox margin-small float-left bg-blue-ariel">B</li>
+			<li class="colorbox margin-small float-left bg-pink-aurora">C</li>
+			<li class="colorbox margin-small float-left bg-light-purple2">D</li>
+		</ul>
+		<div id="content" class="padding-small">content</div>
+	</div><!-- end panel -->
+
+
+
+<style type='text/css'>
+#ex-slideshow .kwicks {
+width: 515px;
+height: 300px;
+}
+#ex-slideshow .kwicks > li {
+	height: 300px;
+}
+#ex-slideshow .kwicks img {
+	width: 100%;
+}
+</style>
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+
+	$("#ex-slideshow .kwicks").kwicks({
+		minSize: 20,
+		behavior: 'slideshow',
+		duration: 3000,
+		interval: 6000
+	});	
+			
+});//end ready
+</script>
+	<div id="ex-slideshow" class="">
+		<h3>Example: Slideshow	</h3>
+<pre>
+behavior: 'slideshow'
+</pre>		
+		<ul class='kwicks kwicks-horizontal'>
+			<li class="margin-small float-left bg-green-slack">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael_whelan_green_angel_tower_1993.jpg">	
+			</li>
+			<li class="margin-small float-left bg-blue-ariel">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael_whelan_the_dark_tower_the_crimson_king_2004.jpg">
+			</li>
+			<li class="kwicks-selected margin-small float-left bg-pink-aurora">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/computer_graphics/imagecache/preview_gallery_img/dominic_davison_maiden_voyage.jpg">
+			</li>
+			<li class="margin-small float-left bg-light-purple2">D</li>
+		</ul>
+	</div><!-- end panel -->
+
+<div class=" margin-small padding20"></div>
+
+
+<style type='text/css'>
+#ex-nested .wrapper {
+	width: 653px;
+	height: 650px;
+	padding-top: 5px;
+}
+	#ex-nested .kwicks-vertical {
+		width: 645px;
+		height: 645px;
+	}
+	#ex-nested .kwicks-vertical > li {
+		height: 145px;
+		/*margin-top: 5px;*/
+	}
+	#ex-nested .kwicks-horizontal {
+		width: 645px;
+		height: 100%;
+	}
+	#ex-nested .kwicks-horizontal > li {
+		height: 100%;
+		width: 145px;
+		float: left;
+		/*margin-left: 5px;*/
+		background-color: #ffaa00;
+	}
+	#ex-nested .kwicks img {
+		width: 100%;
+	}
+</style>
+
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+
+	$("#ex-nested .kwicks-vertical").kwicks({
+		maxSize: 295,
+		isVertical: true,
+		behavior: "menu",
+		selectOnClick: false
+	});	
+			
+	$("#ex-nested .kwicks-horizontal").kwicks({
+		maxSize: 295,
+		behavior: "menu",
+		selectOnClick: false
+	});	
+			
+});//end ready
+</script>
+	<div id="ex-nested" class="w80 margin-auto text-center padding20">
+		<h3>Example: Nested</h3>
+<pre>
+
+</pre>		
+<div class="wrapper bg-dark-violet margin-auto">
+		<ul class="kwicks kwicks-vertical margin-auto">
+		
+			<li class="">
+				<ul class="kwicks kwicks-horizontal">
+					<li>1</li>
+					<li>2</li>
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/bannik.jpg">					
+					</li>
+				</ul>
+			</li>
+			
+			<li class="">
+				<ul class="kwicks kwicks-horizontal">
+					<li>4</li>
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/book_illustrate/imagecache/preview_gallery_img/the_cloud-ladies_water_the_earth.jpg">					
+					</li>
+					<li>6</li>
+				</ul>
+			</li>
+			
+			<li class="">
+				<ul class="kwicks kwicks-horizontal">
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/relativity-1953.jpg">					
+					</li>
+					<li>8</li>
+					<li>9</li>
+				</ul>
+			</li>
+			
+		</ul>
+</div>
+	</div><!-- end panel -->
+
+
+</div><!-- end row -->
+
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+
+</html>
