@@ -45,6 +45,8 @@ a:active, a:focus { outline: none; }
 .text-left{text-align:left;}
 .text-right{text-align:right;}
 .text-center{text-align:center;}
+.text-underline{text-decoration:underline;}
+.text-bold{font-weight:bold;}
 
 .margin-small{margin:5px;}
 .margin-auto{margin:auto;}
