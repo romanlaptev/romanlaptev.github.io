@@ -1,0 +1,175 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Carousel, Materialize v1</title>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" 
+integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" 
+crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" 
+integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==" 
+crossorigin="anonymous"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+console.log( M );
+	document.querySelector("#version").innerHTML = M.version;
+
+	var elems = document.querySelector("#ex1 .slider");
+	var opt = {
+duration: 250,
+interval: 3000,
+height: 200,
+indicators: true
+	};
+	var slider1 = M.Slider.init(elems, opt);
+
+	var btnNext = document.querySelector("#ex1 .next-slide");
+	btnNext.addEventListener("click", function(e){
+console.log(e.type, slider1);
+		slider1.next();	
+	});//end event;
+	
+	var btnPrev = document.querySelector("#ex1 .prev-slide");
+	btnPrev.addEventListener("click", function(e){
+console.log(e.type, slider1);
+		slider1.prev();	
+	});//end event;
+
+//--------------------
+	var elems2 = document.querySelector("#ex2 .slider");
+	var opt2 = {
+duration: 500,
+interval: 6000,
+height: 400,
+indicators: true
+	};
+	var slider2 = M.Slider.init(elems2, opt2);
+	
+});//end
+</script>
+		
+</head>
+<body class="bg-darkblue-project padding-top-20">
+	<div class="lr-container w80 bg-lightsteelblue4">
+
+	<div class="lr-panel lr-row">
+		<h2>Slider, Materialize version: <span id="version"></span></h2>
+
+		<div class="bg-dove-colored padding-small">
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a class="btn bg-darkblue" href="../index.html"><span class="">Home</span></a></li>
+			</ul>
+<pre>
+https://materializecss.com/media.html
+https://materializecss.com/getting-started.html
+</pre>
+			
+		</div>
+	</div>
+	
+	<div class="lr-container w80 bg-lightsteelblue4">
+<style>
+#ex1 .slider {}
+.artwork-title{ margin: 3px; }
+.autor-name{ font-size: 80% }
+.artwork-year{ font-size: 80%}
+
+.carousel1 .slide-caption {
+	padding: 5px 10px;
+}
+.picture {
+	padding: 10px;
+	border: none !important;
+	box-shadow: 5px 5px silver;
+	background-color:#fff;
+}
+.picture:hover {
+	box-shadow: 0 0 5px inset;
+}
+</style>
+	
+<div class="row">
+		<div id="ex1" class="col s6">
+<button class="prev-slide">prev</button>
+<button class="next-slide">next</button>
+			<div class="slider">
+				<ul class="slides">
+					<li class="teal darken-2">
+							<div class="caption center-align">
+								<h3>slide1</h3>
+								<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+							</div>
+					</li>
+					
+					<li class="purple darken-3">
+					<div class="caption left-align">
+							<h3>slide2</h3>
+							<h5 class="light grey-text text-lighten-3">Left Aligned Caption</h5>
+					</div>
+					</li>
+					
+					<li class="blue darken-1">
+						<div class="caption right-align">
+							<h3>slide3</h3>
+							<h5 class="light grey-text text-lighten-3">Right Aligned Caption</h5>
+						</div>
+					</li>
+					
+					<li class="cyan">
+					<div class="">
+						<h3>Slide4</h3>
+					</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div id="ex2" class="col s6">
+			<div class="slider">
+			
+				<ul class="slides">
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content//albums/plakat/imagecache/preview_gallery_img/steinlein-chatnoirt.-a._steynlen_chyornyy_kot._plakat_odnoimyonnogo_kabare.jpg">
+					</li>
+					
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/1910_klinger_zoologischer_garten_berlin.jpg">
+<div class="">
+		<h5 class="">Клингер, Юлиус. Zoologischer garten. Berlin, 1910</h5>
+</div>
+					</li>
+					
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/ludwig_hohlwein_sudana.jpg">
+<div class="">
+		<h5 class="">Sudana, реклама шоколада, 1926, Людвиг Холвейн</h5>
+</div>
+					</li>
+					
+					<li>
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/ludwig_hohlwein_riquet_pralinen_tea_1920.jpg">
+<div class="">
+		<h5 class="">Riquet Pralinen Tea, реклама шоколада, 1920</h5>
+</div>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+</div>
+
+	</div><!-- end container -->
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+
+</html>

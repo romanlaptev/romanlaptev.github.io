@@ -16,6 +16,8 @@ crossorigin="anonymous"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+console.log( M );
+	document.querySelector("#version").innerHTML = M.version;
 
 	var elems = document.querySelectorAll("#ex1 .carousel");
 	var opt = {
@@ -66,7 +68,7 @@ console.log( instances );
 	<div class="lr-container w80 bg-lightsteelblue4">
 
 	<div class="lr-panel lr-row">
-		<h2>Carousel, Materialize <span>version: v1</span></h2>
+		<h2>Carousel, Materialize version: <span id="version"></span></h2>
 
 		<div class="bg-violet1 padding-small">
 			<ul class="lr-breadcrumbs lr-list-inline">
