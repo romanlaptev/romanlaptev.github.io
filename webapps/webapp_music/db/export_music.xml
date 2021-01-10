@@ -18,6 +18,7 @@
 	<tag tid="22" vid="2" group_name="music_styles">death</tag>
 	<tag tid="23" vid="2" group_name="music_styles">doom</tag>
 	<tag tid="24" vid="2" group_name="music_styles">симфоник-метал</tag>
+	<tag tid="31" vid="2" group_name="music_styles">disco</tag>
 	<tag tid="32" vid="2" group_name="music_styles">rave</tag>
 	<tag tid="33" vid="2" group_name="music_styles">techno</tag>
 	<tag tid="34" vid="2" group_name="music_styles">classic rock</tag>
@@ -102,8 +103,9 @@
 	<tag tid="158" vid="4" group_name="country">Бразилия</tag>
 	<tag tid="159" vid="2" group_name="music_styles">рокабилли</tag>
 	<tag tid="160" vid="2" group_name="music_styles">pop music</tag>
-	<tag tid="161" vid="2" group_name="music_styles">диско</tag>
 	<tag tid="162" vid="5" group_name="alphabetical_voc">C</tag>
+	<tag tid="163" vid="9" group_name="music_genre">кабаре</tag>
+	<tag tid="164" vid="9" group_name="music_genre">Танцевальная музыка</tag>
 </tag_list>
 
 
@@ -1034,24 +1036,27 @@
 
 <node type="playlist">
 	<title>
-		<item>disko, pop</item>
+		<item>Dance music</item>
 	</title>
-	
+	<images>
+		<img src="/music/0_covers/Disco_Dancers.jpg"/>
+	</images>
 
 	
 	<related_links>
-		<li><a data-type="playlist-file" href="/music/0_playlists/disko, pop.json">disko, pop.json</a></li>
+		<li><a data-type="playlist-file" href="/music/0_playlists/dance_music.json">dance_music.json</a></li>
 	</related_links>
 
 	<node_tags>
 		<item vid="5" tid="85" group_name="alphabetical_voc">D</item>
+		<item vid="9" tid="164" group_name="music_genre">Танцевальная музыка</item>
 		<item vid="2" tid="160" group_name="music_styles">pop music</item>
-		<item vid="2" tid="161" group_name="music_styles">диско</item>
+		<item vid="2" tid="31" group_name="music_styles">disco</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
 	<published format="d-M-Y H:i:s">28-Dec-2019 12:14:24</published>
-	<updated format="d-M-Y H:i:s">30-Dec-2019 10:55:06</updated>
+	<updated format="d-M-Y H:i:s">09-Jan-2021 21:32:37</updated>
 </node>
 
 <node type="playlist">
@@ -1530,6 +1535,34 @@ https://ru.wikipedia.org/wiki/%D0%A5%D1%83%D0%BC%D0%BF%D0%BF%D0%B0</description>
 
 	<published format="d-M-Y H:i:s">26-Dec-2020 16:48:27</published>
 	<updated format="d-M-Y H:i:s">26-Dec-2020 17:14:36</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Dark Cabaret</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/27701/9941293.1038.29152/300x300?1610196035887"/>
+	</images>
+
+	<description>https://rapskallion.bandcamp.com/
+https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/dark_cabaret_folk.json">dark_cabaret_folk.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1038">music.yandex.ru</a></li>
+		<li><a data-type="external-link" href="https://ru.wikipedia.org/wiki/%D0%94%D0%B0%D1%80%D0%BA-%D0%BA%D0%B0%D0%B1%D0%B0%D1%80%D0%B5">wiki</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="85" group_name="alphabetical_voc">D</item>
+		<item vid="9" tid="163" group_name="music_genre">кабаре</item>
+		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
+		<item vid="2" tid="110" group_name="music_styles">alternative rock</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">09-Jan-2021 19:41:33</published>
+	<updated format="d-M-Y H:i:s">09-Jan-2021 22:10:52</updated>
 </node>
 	</database>
 </xroot>

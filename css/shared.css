@@ -42,6 +42,12 @@ a:active, a:focus { outline: none; }
 	float: right;
 }
 
+
+.lr-page-header, 
+.page-header {
+	border-bottom: 1px solid #000;
+}
+
 .text-left{text-align:left;}
 .text-right{text-align:right;}
 .text-center{text-align:center;}
@@ -49,10 +55,12 @@ a:active, a:focus { outline: none; }
 .text-bold{font-weight:bold;}
 
 .margin-small{margin:5px;}
+.margin-top-20{margin-top:20px;}
 .margin-auto{margin:auto;}
 
 .padding-small{padding:5px;}
-.padding20{padding:20px;}
+.padding-10{padding:10px;}
+.padding-20, .padding20 {padding:20px;}
 .padding-top-10 {padding-top: 10px;}
 .padding-top-20 {padding-top: 20px;}
 .padding-top-30 {padding-top: 30px;}
