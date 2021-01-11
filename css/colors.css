@@ -154,11 +154,15 @@ border: 1px solid #004586;
 
 
 /* Background colors */
-
-
+/*
+https://cpalettes.com/color/03aea6
+https://www.omiod.com/colors/?rgb=d0ccd5
+*/
 .bg-turquoise4{  background-color: #009b9b !important;}
 .bg-turquoise5{  background-color: #006b6b !important;}
-.bg-turquoise6{  background-color: #006666 !important;}
+
+.bg-obscure-dull-cyan{  background-color: #006666 !important;}
+
 .bg-turquoise7{  background-color: #006633 !important;}
 .bg-turquoise8{  background-color: #00848c !important;}
 .bg-turquoise9{  background-color: #66cc99 !important;}
@@ -196,6 +200,7 @@ border: 1px solid #004586;
   background-color: #607d8b !important;
 }
 
+.bg-dark-gray{  background-color: #222222 !important;}
 
 
 .bg-grey-c8{  background-color: #333340 !important;}
@@ -231,9 +236,16 @@ border: 1px solid #004586;
 .bg-blanchedalmond {background-color: #ffebcd;}
 
 
+.bg-green-slack { background-color: #53b388; }
+.bg-blue-ariel { background-color: #5a69a9; }
+.bg-blue-ariel2 { background-color: #50869e; }
+.bg-pink-aurora { background-color: #c26468; }
+.bg-light-purple2 { background-color: #bf7cc7; }
+
+
 /* BLUE, DARKBLUE */
 
-.back-ground-blue {background-color: #0000ff;}
+.bg-color-blue {background-color: #0000ff;}
 .bg-blueviolet {background-color: #8a2be2;}
 .bg-color-test1003089 { background:#003089;}
 .bg-color-test1055c80 { background:#055c80;}
@@ -248,12 +260,17 @@ border: 1px solid #004586;
 .bg-color-test1b1d0ef { background:#b1d0ef;}
 .bg-color-test14e86bf { background:#4e86bf;}
 .bg-color-test1324f5a { background:#324f5a; }
-.bg-color-test100B8D9 { background:#00B8D9;}  /* голубой цвет) */
+
+.bg-vivid-teal { background:#00B8D9;}
+
 .bg-color-test1ccf { background:#ccf;}
 .bg-color-test1def { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
-.bg-color-test10061A0 { background:#0061A0; }
+
+.bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
+.bg-light-blue-darken-40 { background:#0061A0; }
+
 .bg-color-test1074e68 { background:#074e68;}
 .bg-color-test12f96b4 { background:#2f96b4;}
 
@@ -275,6 +292,7 @@ border: 1px solid #004586;
 .bg-darkblue-tango{  background-color: #0c253c !important;}
 .bg-darkblue-tango2{  background-color: #001b33 !important;}
 .bg-darkblue-project{	background-color: #082844;}
+.bg-darkblue-gray{	background-color: #335566;}
 
 
 .bg-lightblue1 {/*Диаграмма 12*/
@@ -352,6 +370,7 @@ border: 1px solid #004586;
 
 
 
+
 .bg-brown {background-color: #a52a2a;}
 .bg-burlywood {background-color: #deb887;}
 
@@ -372,7 +391,10 @@ border: 1px solid #004586;
 .bg-darkolivegreen {background-color: #556b2f;}
 .bg-darkorange {background-color: #ff8c00;}
 .bg-darkorchid {background-color: #9932cc;}
+
 .bg-darkred {background-color: #8b0000;}
+.bg-very-darkred {background-color: #2F0709;}
+
 .bg-darksalmon {background-color: #e9967a;}
 .bg-darkseagreen {background-color: #8fbc8f;}
 .bg-darkslateblue {background-color: #483d8b;}
@@ -394,6 +416,7 @@ border: 1px solid #004586;
 .bg-goldenrod {background-color: #daa520;}
 
 /*Оттенки серого цвета*/
+.bg-dark-blue-gray{  background-color: #334455 !important;}
 .bg-gray {background-color: #808080;}
 .bg-color-test1BFBFBF { background:#BFBFBF;}  /*Серый, #BFBFBF */
 .bg-color-test1AFAFAF { background:#AFAFAF;}  /*Стальной, #AFAFAF */
@@ -402,7 +425,10 @@ border: 1px solid #004586;
 .bg-color-test1798081 { background:#798081;}  /*:Свинцовый, #798081 */
 .bg-color-test19E9E9E { background:#9E9E9E;}  /*:Мышиный, #9E9E9E */
 .bg-color-test1303030 { background:#303030;}  /*:Антрацитовый, #303030 */
-.bg-color-test179A0C1 { background:#79A0C1;}  /*Сизый, #79A0C1 */
+
+.bg-dove-colored { background:#79A0C1;}  /*Сизый*/
+
+
 .bg-color-test1CADABA { background:#CADABA;}  /*Серо-зелёный чай, #CADABA */
 .bg-color-test1505050 { background:#505050;}  /*:Мокрый асфальт,#505050 */
 .bg-color-test1464646 { background:#464646;}  /*:Угольный,#464646 */
@@ -431,7 +457,10 @@ border: 1px solid #004586;
 .bg-color-test1E3EFB1 { background:#E3EFB1;}
 .bg-color-test1b2c27a { background:#b2c27a;}
 .bg-color-test170D14E { background:#70D14E;}
-.bg-color-test103AEA6 { background:#03AEA6;}
+
+.bg-vivid-very-light-green{  background-color: #f8fff0 !important;}/* Drupal info alert */
+.bg-light-green{  background-color: #bbee77 !important;}/* Drupal info alert */
+
 .bg-color-test1E5F2C0 { background:#E5F2C0;}
 .bg-color-test10C9E54 { background:#0C9E54;}
 
@@ -475,7 +504,11 @@ border: 1px solid #004586;
 .bg-color-test1009E60 { background:#009E60;}  /*:Трилистник, #009E60 */
 .bg-color-test1009900 { background:#009900;}  /*:Мусульманский,Islamic_green, #009900 */
 .bg-color-test132CD32 { background:#32CD32;}  /*Лаймовый, Lime_Green, #32CD32 */
-.bg-color-test100A693 { background:#00A693;}  /*:Персидский зелёный, #00A693 */
+
+.bg-persian-green { background:#00A693;}  /*:Персидский зелёный, #00A693 */
+/*https://cpalettes.com/color/03aea6*/
+.bg-persian-green2 { background:#03AEA6;}
+
 .bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу, #4D5D53 */
 
 
@@ -670,7 +703,10 @@ border: 1px solid #004586;
 .bg-color-test1beb49b { background:#beb49b;}
 .bg-color-test1d8c8b3 { background:#d8c8b3;}
 .bg-color-test1f3f3f3 { background:#f3f3f3;}
-.bg-color-test1D0CCD5 { background:#D0CCD5}
+
+/* https://www.omiod.com/colors/?rgb=d0ccd5 */
+.bg-light-purple { background:#D0CCD5}
+
 .bg-color-test1dedddf { background:#dedddf;}
 .bg-color-test1c6c3c6 { background:#c6c3c6;}
 .bg-color-test1c6c3c6 { background:#c6c3c6;}
@@ -687,11 +723,8 @@ border: 1px solid #004586;
 .bg-color-test1c9c6d3 { background:#c9c6d3;}
 .bg-color-test145557a { background:#45557a;}
 
-.bg-peach {
-  border-color: #ffaa00;
-  background-color: #ffcc99;
-}
-
+.bg-peach {  background-color: #ffcc99;}
+.bg-vivid-orange {  background-color:  #ffaa00;}
 
 
 /* Buttons */

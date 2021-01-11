@@ -1,0 +1,225 @@
+<DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Carousel, Materialize v1</title>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" 
+integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" 
+crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" 
+integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q==" 
+crossorigin="anonymous"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+console.log( M );
+	document.querySelector("#version").innerHTML = M.version;
+
+	var elems = document.querySelectorAll("#ex1 .carousel");
+	var opt = {
+duration: 500,
+dist: -50, //Perspective zoom
+shift: 10,
+indicators: true
+	};
+	var instances = M.Carousel.init(elems, opt);
+	
+	elems = document.querySelectorAll("#ex2 .carousel");
+	var opt = {
+fullWidth: true,
+indicators: true,
+numVisible: 3,
+padding: 10,
+	};
+	var instances = M.Carousel.init(elems, opt);
+console.log( instances );
+	
+});
+</script>
+
+<style>
+#ex1 .carousel {}
+.artwork-title{ margin: 3px; }
+.autor-name{ font-size: 80% }
+.artwork-year{ font-size: 80%}
+
+.carousel1 .slide-caption {
+	padding: 5px 10px;
+}
+.picture {
+	padding: 10px;
+	border: none !important;
+	box-shadow: 5px 5px silver;
+	background-color:#fff;
+}
+.picture:hover {
+	box-shadow: 0 0 5px inset;
+}
+
+</style>
+		
+</head>
+
+<body class="bg-darkblue-project">
+	<div class="lr-container w80 bg-lightsteelblue4">
+
+	<div class="lr-panel lr-row">
+		<h2>Carousel, Materialize version: <span id="version"></span></h2>
+
+		<div class="bg-violet1 padding-small">
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a href="../index.html"><span class="text-white text-underline">Home</span></a></li>
+			</ul>
+<pre>
+https://materializecss.com/carousel.html
+https://materializecss.com/getting-started.html
+</pre>
+			
+		</div>
+	</div>
+	
+	<div class="lr-container w80 bg-lightsteelblue4">
+	
+<h4>Perspective zoom carousel</h4>
+<div id="ex1">
+	<div class="carousel">
+<a class="carousel-item" href="#one!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content//albums/plakat/imagecache/preview_gallery_img/steinlein-chatnoirt.-a._steynlen_chyornyy_kot._plakat_odnoimyonnogo_kabare.jpg">
+</a>
+
+<a class="carousel-item" href="#two!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/1910_klinger_zoologischer_garten_berlin.jpg">
+</a>
+
+<a class="carousel-item" href="#three!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/ludwig_hohlwein_sudana.jpg">
+</a>
+
+<a class="carousel-item" href="#four!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/ludwig_hohlwein_riquet_pralinen_tea_1920.jpg">
+</a>
+
+<a class="carousel-item" href="#five!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/plakat/imagecache/preview_gallery_img/le_047.jpg">
+</a>
+
+<a class="carousel-item" href="#six!">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gravura/imagecache/preview_gallery_img/zh.-e.laburer_transhei_v_derevne._1916_278_p0030.jpg">
+</a>
+
+	</div>
+</div>
+
+<div class="margin-small padding20"></div>
+
+<h4>fullWidth carousel</h4>
+<div id="ex2" class="w70 margin-auto bg-dove-colored padding20">
+	<div class="carousel">
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/johannes_vermeer_1632-1675_-_the_girl_with_the_pearl_earring_1665.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Ян Вермеер Дельфтский<span>
+			<span class="artwork-year">1665</span>
+		</div>
+		<p class="artwork-title">Девушка с жемчужной серёжкой</p>
+	</div>
+</a>
+
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/jan_vermeer_van_delft_-_the_glass_of_wine_-_google_art_project.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Ян Вермеер Дельфтский<span>
+			<span class="artwork-year">1660-1661</span>
+		</div>
+		<p class="artwork-title">Бокал вина</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/rubens-lady.of_.the_.chamber.to_.infanta.isabella.jpg">
+ 	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Питер Пауль Рубенс<span>
+			<span class="artwork-year">1623—1626 гг.</span>
+		</div>
+		<p class="artwork-title">Портрет камеристки инфанты Изабеллы</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/portret_saksonskogo_princa_1515.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Лукас Кранах Старший<span>
+			<span class="artwork-year">1515</span>
+		</div>
+		<p class="artwork-title">Портрет саксонского принца</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/portret_saksonskoy_princessy_1515.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Лукас Кранах Старший<span>
+			<span class="artwork-year">1515</span>
+		</div>
+		<p class="artwork-title">Портрет саксонской принцессы</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/margarita_elizaveta_fon_ansbah-bayroyt_1549.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Лукас Кранах Младший<span>
+			<span class="artwork-year">1549</span>
+		</div>
+		<p class="artwork-title">Маргарита Елизавета фон Ансбах-Байройт</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/muzhskoe_portret_1564.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Лукас Кранах Младший<span>
+			<span class="artwork-year">1564</span>
+		</div>
+		<p class="artwork-title">Мужское портрет</p>
+	</div>
+</a>
+
+<a class="carousel-item" href="#">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/lebrun_1661_chancellor-seguier-on-horseback_ggw-309.jpg">
+	<div class="slide-caption text-darkblue">
+		<div class="text-right">
+			<span class="autor-name">Лебрен Шарль<span>
+			<span class="artwork-year">1661</span>
+		</div>
+		<p class="artwork-title">Канцлер Сегье</p>
+	</div>
+</a>
+
+	</div>
+</div>
+
+
+
+		
+	</div><!-- end container -->
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+
+</html>

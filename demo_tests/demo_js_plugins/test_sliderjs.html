@@ -3,141 +3,116 @@
 <head>
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slides, A Slideshow Plugin for jQuery</title>
+<title>Demo test,  Slider JS</title>
+
 <!--
-<link rel="stylesheet" href="../../codebase/js/plugins/slides/css/global.css">
+<link rel='stylesheet'  href="http://localhost/webdisk/codebase/js/js_plugins_libs/sliders/sliderJS/slider.min.css" type='text/css' media='all' />
+<script type="text/javascript" src="http://localhost/webdisk/codebase/js/js_plugins_libs/sliders/sliderJS/slider.min.js"></script>
 -->
-<script src="../../codebase/js/jquery/jquery.min.js"></script>
-<script src="../../codebase/js/plugins/slides/slides.min.jquery.js"></script>
+
+<link rel='stylesheet'  href="../../codebase/js/plugins/sliderJS/slider2.min.css" type='text/css' media='all' />
+<script src="../../codebase/js/plugins/sliderJS/slider2.min.js"></script>
 
 <script>
-		$(function(){
-			// Set starting slide to 1
-			var startSlide = 1;
-			// Get slide number if it exists
-			if (window.location.hash) {
-				startSlide = window.location.hash.replace('#','');
-			}
-			// Initialize Slides
-			$('#slides').slides({
-				preload: true,
-				preloadImage: '../../codebase/js/plugins/slides/img/loading.gif',
-				generatePagination: true,
-				play: 0,
-				pause: 2500,
-				hoverPause: true,
-				// Get the starting slide
-				start: startSlide,
-				animationComplete: function(current){
-					// Set the slide number as a hash
-					window.location.hash = '#' + current;
-				}
-			});
-		});
-</script>
+window.onload = function(){
+//console.log("--ready");
 
-<style>
-.list-inline{
-list-style: disclosure-closed;
-}
-.pagination {
-	text-align: center;
-}
-.pagination li {
-	display: inline-block;
-	padding: 10px 17px;
-	background-color: #000;
-	color: #fff;
-	border-radius: 35px;
-	margin: 0 10px;
-}
-.pagination li a {
-	color: #fff;
-	text-decoration: none;
-}
-</style>
+	var _slides = [
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/bbb-splash.png", 
+"legend": "Big Buck Bunny - splash", 
+"link": "http://bigbuckbunny.org/" 
+		},
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/bird1.jpg", 
+"legend": "Big Buck Bunny - bird", 
+"link": "http://bigbuckbunny.org/"
+		},
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/evil-frank.png", 
+"legend": "Big Buck Bunny - evil frank", 
+"link": "http://bigbuckbunny.org/" 
+		},
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/s1_proog.jpg", 
+"legend": "Elephant Dreams - proog", 
+"link": "http://orange.blender.org/" 
+		},
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/s6_both.jpg", 
+"legend": "Elephant Dreams - proog & emo", 
+"link": "http://orange.blender.org/" 
+		},
+
+		{ 
+"image" : "../../codebase/js/plugins/sliderJS/images/s8_emocu.jpg", 
+"legend": "Elephant Dreams - emo", 
+"link": "http://orange.blender.org/" 
+		}
+
+	];
+	
+	var _sliderElement = document.getElementById("slider1");
+//console.log(_sliderElement);
+
+	new sliderjs.Slider( _sliderElement, 	{
+			width: 550, 
+			height: 305,
+			slides: _slides,
+			transitions: {
+				transitions: [
+					[{ mode: 'glsl', name: 'deformation' }, {mode: 'canvas', name: 'squares'}],
+					[{ mode: 'glsl', name: 'smoothl' }, {mode: 'css', name: 'left'}],
+					{mode: 'canvas', name: 'verticalSunblind'},
+					{ mode: 'canvas', name: 'squares' },
+					{ mode: 'css', name: 'rotatezoomin' },
+					{ mode: 'css', name: 'cardflip' }
+				],
+				change: "circular"
+			}
+		}
+	);
+
+};//end load
+</script>
 
 </head>
 
-<body>
-	<div class="lr-container w80 bg-lightsteelblue4">
+<body class="bg-darkblue-project">
+	<div class="lr-container w80 bg-dark-blue-gray text-white">
 
-<h1>Demo test,  Slides, a slideshow plugin for jQuery</h1>
+	<div class="lr-panel">
+			<h1>Demo test,  Slider JS</h1>
 
-	<div class="lr-panel padding-small">
-		<ul class="lr-breadcrumbs lr-list-inline">
-			<li><a href="../index.html">Home</a></li>
-		</ul>
-	</div><!-- end panel breadcrumbs-->
-<pre>
-http://slidesjs.com/
-</pre>
-
-		<div id="slides" class="row">
-
-			<div class="float-left w20">
-				<ul class="list-inline">			
-					<li><a href="#4" class="link">fourth slide</a></li>
-					<li><a href="#5" class="link">fifth slide</a></li>
-					<li><a href="#1" class="link">first slide</a></li>
-					<li><a href="#6" class="link">sixth slide</a></li>
-					<li><a href="#7" class="link">seventh slide</a></li>
-					<li><a href="#1" class="link">first slide</a></li>
-					<li><a href="#3" class="link">third slide</a></li>
-				</ul>
-			</div>
-
-	<div class="float-left w80">
-					<div class="slides_container">
-				
-						<div class="slide">
-							<h1>First Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Second Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Third Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Fourth Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Fifth Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Sixth Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-						<div class="slide">
-							<h1>Seventh Slide</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-						</div>
-					
-					</div>
-					<a href="#" class="prev"><img src="../../codebase/js/plugins/slides/img/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
-					<a href="#" class="next"><img src="../../codebase/js/plugins/slides/img/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
-				</div>
+		<div class="bg-lightsteelblue padding-small">
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a href="../index.html">Home</a></li>
+			</ul>
+		</div>
 	</div>
 
-</div>
+	<div class="lr-panel">
+		<div id="slider1"></div>
+	</div>
+
+<pre>
+https://github.com/gre/unmaintained-slider.js
+https://www.npmjs.com/package/sliderjs
+
+https://twitter.com/sliderjsorg
+Slider.js - The best Slideshow Engine - Taking the best of WebGL, CSS and Canvas, transparently
+
+</pre>
+
 </body>
 
 <!-- shared site styles, scripts -->
 <link type="text/css" rel="stylesheet" href="../../css/shared.css">
 <link type="text/css" rel="stylesheet" href="../../css/colors.css">
-<link type="text/css" rel="stylesheet" href="../../css/style.css">
-<script src="../../js/main.js"></script>
 
 </html>

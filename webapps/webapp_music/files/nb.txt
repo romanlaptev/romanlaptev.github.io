@@ -10,12 +10,22 @@ webApp.draw()
 	*- module fileManager (file_manager.js)
 
 =================================================================== ИСПРАВИТЬ
-- в файловом менеджере невозможно перейти в папку /music/R/Red Elvises/2004 - Lunatics & Poets
 
-- ошибка редактирования названия трека в загруженном треклисте, возникает иногда
+-------- в файловом менеджере невозможно перейти в папку /music/R/Red Elvises/2004 - Lunatics & Poets
+
+-------- ошибка редактирования названия трека в загруженном треклисте, возникает иногда
 1. загрузить SkaP.json
 2. перейти к редактированию трека  /music/S/Ska-P/2008 - Lagrimas y Gozos/01. Ni Fu Ni Fa.mp3
 3. иногда, вместо "update-track" выполнятся ветка "insert-track" и добавляется новый трек
+
+также
+		- не получается отредактировать в треклисте, трек с названием:
+		No More Room (The Scarring Party, alb. Come Away from the Light).mp3 -> No More Room (Come Away from the Light)
+		отредактированный трек вставляется как новая копия в конец треклиста
+		если исправлять так:
+		No More Room (The Scarring Party, alb. Come Away from the Light).mp3 -> No More Room - Come Away from the Light
+		то ОК
+
 
 *- не воспроизводятся файлы из папки с именем, где присутствует знак "%" (encodeURI)
 *- не воспроизводятся файлы с именем, где присутствуют несколько точек
