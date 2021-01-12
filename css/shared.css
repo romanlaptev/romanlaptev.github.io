@@ -115,7 +115,6 @@ textarea {resize:horizontal;}
 	display: inline-block;
 	vertical-align: top;
 }
-
 /*================================*/
 
 
@@ -715,5 +714,12 @@ padding: 10px;
 }
 .picture:hover {
 	box-shadow: 0 0 5px inset;
+}
+
+/*====== MEDIA styles =======*/
+@media (max-width: 480px){
+	.lr-panel-inline {
+		display: block;
+	}
 }
 
