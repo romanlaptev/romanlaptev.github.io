@@ -728,34 +728,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 
 /* Buttons */
-.btn-blue {
-	background-color: #007bff;
-	color: #fff;
-	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
-	-moz-box-shadow: inset 0 36px 38px -38px #fff;
-	box-shadow: inset 0 36px 38px -38px #fff;
-	
-  font-family: avantgarde;
-  font-size: 14px;
-  font-weight: 400;
-}
-.btn-blue:hover {
-	background-color: #ff8c00 !important;
-	color: #000 !important;
-}
-.btn-blue:focus {
-	color: #fff !important;
-	outline: 0;
-}
-.btn-blue:active:focus {
-	color: #000 !important;
-}
-.btn-blue:active {
-	/*color:  #fff !important;*/
-}
-.btn-blue:visited {
-	/*color:  #000 !important;*/
-}
 
 .btn-blue-c4 {
     color: #fff;
@@ -787,28 +759,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .btn-blue-green:focus {
 	color: #fff !important;
 }
-
-
-.btn-darkblue {
-	background-color: #004586;
-	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
-	-moz-box-shadow: inset 0 36px 38px -38px #fff;
-	box-shadow: inset 0 36px 38px -38px #fff;
-	border-color: #3f9cca;
-	color: #fff;
-  font-family: ticker_taperegular;
-  font-size: 14px;
-  font-weight: 400;
-}
-.btn-darkblue:hover {
-	background-color: #ff8c00;
-	border-color: #ff8c00;
-	color: #000 !important;
-}
-.btn-darkblue:focus {
-	color: #fff !important;
-}
-
 
 
 .btn-violet-fb {
@@ -961,56 +911,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 }
 
 
-.btn-green {
-	background-color: #1bcb49;
-	background: -webkit-linear-gradient(#4fcb4f, #00b04e);
-	background: -o-linear-gradient(#4fcb4f, #00b04e);
-	background: -moz-linear-gradient(#4fcb4f, #00b04e);
-	background: linear-gradient(#4fcb4f, #00b04e);
-	border-color: #4fcb4f;
-}
-.btn-green:focus:not(:disabled):not(.disabled){
-	border-color: #005C2A;
-}
-
-.btn-green-shadow {
-/*
-	display: inline-block;
-	padding: 10px;
-	margin: 3px;
-*/
-	/* font-size: 12px; */
-	/* font-weight: bold; */
-	/* font-family: Tahoma, Geneva, sans-serif; */
-/*
-	line-height: 1.2em;
-	text-align: center;
-	text-decoration: none;
-	vertical-align: middle;
-*/
-	color: #fff;
-	background-color: #008b8b;
-	border-color: #008b8b;
-/*
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-*/
-	-webkit-box-shadow: inset 0 36px 38px -38px #fff;
-	-moz-box-shadow: inset 0 36px 38px -38px #fff;
-	box-shadow: inset 0 36px 38px -38px #fff;
-	
-/*  font-family: Lobster;*/
-  font-size: 14px;
-  font-weight: 400;
-}
-.btn-green-shadow:hover, 
-.btn-green-shadow:focus 
-{
-    color: #000;
-	border-color: #ff8c00;
-	background-color: #ff8c00;
-}
 
 
 

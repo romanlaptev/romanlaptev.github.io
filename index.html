@@ -21,8 +21,8 @@ cache lifetime: 1 year=31536000 sec
 <!--
 https://developer.mozilla.org/ru/docs/Web/HTML/Preloading_content 
 https://web.dev/codelab-preload-web-fonts/
--->
 	<link rel="preload" href="css/bootstrap335.min.css" as="style">
+-->
 
 	<link rel="preload" href="fonts/glyphicons-halflings-regular.eot" as="font" type="application/vnd.ms-fontobject" crossorigin="anonymous">
 	<link rel="preload" href="fonts/glyphicons-halflings-regular.svg" as="font" type="image/svg+xml" crossorigin="anonymous">
@@ -53,6 +53,7 @@ https://web.dev/codelab-preload-web-fonts/
 -->
 	<link rel="stylesheet" href="css/shared.css">
 	<link rel="stylesheet" href="fonts/fonts.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/glyphicon.css" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="css/colors.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -62,7 +63,7 @@ https://web.dev/codelab-preload-web-fonts/
 
 <body class="bg-darkblue-project">
 
-	<div class="lr-container bg-lightsteelblue4">
+	<div class="lr-container w80 bg-lightsteelblue4">
 					
 		<div class="page-header">
 			<h1 class="text-right">Roman Laptev personal site...</h1>
@@ -76,46 +77,46 @@ https://web.dev/codelab-preload-web-fonts/
 			</div>
 
 			<div class="lr-panel-body">
-<a  href="projects/schedule/app.html" class="lr-btn btn-green-shadow" target="_blank">
+<a  href="projects/schedule/app.html" class="lr-btn lr-btn-green-shadow" target="_blank">
 	<i class="glyphicon glyphicon-star"></i>Расписание транспорта</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/projects/schedule" 
-class="lr-btn btn-sm btn-default" title="GitHub repository" target="_blank">	GitHub</a>
+class="lr-btn btn-sm lr-btn-default" title="GitHub repository" target="_blank">	GitHub</a>
 			</div>
 
 			<div class="lr-panel-body">
 <a href="https://romanlaptev.herokuapp.com/projects/schedule_app/" 
-class="lr-btn btn-blue" target="_blank">Transport schedule</a>
+class="lr-btn lr-btn-blue" target="_blank">Transport schedule</a>
 <a href="https://github.com/romanlaptev/romanlaptev.heroku.com/tree/master/projects/schedule_app" 
-class="lr-btn btn-sm btn-default" title="GitHub repository" target="_blank">	GitHub</a>
+class="lr-btn btn-sm lr-btn-default" title="GitHub repository" target="_blank">	GitHub</a>
 <br>
 <small>ver2 (JS, Yandex API, PHP redirect proxy)</small>
 			</div>
 
 			<div class="lr-panel-body">
-<a  href="webapps/bookmarks/" target="_blank" class="lr-btn btn-blue">Bookmarks application</a>
+<a  href="webapps/bookmarks/" target="_blank" class="lr-btn lr-btn-blue">Bookmarks application</a>
 <a href="https://github.com/romanlaptev/bookmarks" target="_blank"
-class="lr-btn btn-sm btn-default" title="GitHub repository">GitHub</a>
-<a class="lr-btn btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-bookmarks.glitch.me">
+class="lr-btn btn-sm lr-btn-default" title="GitHub repository">GitHub</a>
+<a class="lr-btn lr-btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-bookmarks.glitch.me">
 	<i class="glyphicon glyphicon-cog"></i>
 </a>
 			</div>
 
 			<div class="lr-panel-body">
-<a href="webapps/webapp_video/app.html" target="_blank" class="lr-btn btn-blue">webapp_video</a>
+<a href="webapps/webapp_video/app.html" target="_blank" class="lr-btn lr-btn-blue">webapp_video</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_video" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
 			</div>
 
 			<div class="lr-panel-body">
-<a href="webapps/webapp_lib/" target="_blank" class="lr-btn btn-blue">webapp_lib</a>
+<a href="webapps/webapp_lib/" target="_blank" class="lr-btn lr-btn-blue">webapp_lib</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_lib" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
 			</div>
 
 			<div class="lr-panel-body">
-<a href="webapps/webapp_music/" target="_blank" class="lr-btn btn-primary">webapp_music</a>
+<a href="webapps/webapp_music/" target="_blank" class="lr-btn lr-btn-blue">webapp_music</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_music" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
 			</div>
 
 			<div class="lr-panel-body text-right">
@@ -135,18 +136,19 @@ class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
 <i class="glyphicon glyphicon-ok-circle"></i>
 Browser info</a>
 -->
-				  <ul class="lr-list-group lr-nav">
-<li class="">
-	<a class="" target="_blank" href="projects/browser_info.html"><i class="glyphicon glyphicon-ok-circle"></i>
+<div>
+	<a class="lr-btn lr-btn-darkblue" target="_blank" href="projects/browser_info.html"><i class="glyphicon glyphicon-ok-circle"></i>
 <span class="">Browser info</span></a>
 	<a target="_blank" href="projects/test_ECMAScript_ver.html">Test ECMAScript </a>
-</li>
+</div>
+
+				  <ul class="lr-list-group lr-nav">
 <li class="">
 	<b>testing, learning code</b><br>
 	<a href="https://github.com/romanlaptev/test_code" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
 	<a href="/projects/test_code.git/" 
-class="lr-btn btn-default" target="_blank">localhost</a>
+class="lr-btn lr-btn-default" target="_blank">localhost</a>
 </li>
 				  </ul>
 
@@ -157,17 +159,17 @@ class="lr-btn btn-default" target="_blank">localhost</a>
 	<a target="_blank" href="projects/webcolors/test_CSS_colors.html">test colors.css</a>
 </li>
 <li class="">
-<a href="projects/notes/index.html" target="_blank" class="lr-btn btn-darkblue"><i class="glyphicon glyphicon-star"></i>Notes</a>
+<a href="projects/notes/index.html" target="_blank" class="lr-btn lr-btn-darkblue"><i class="glyphicon glyphicon-star"></i>Notes</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/projects/notes" 
 class="" title="GitHub repository" target="_blank">GitHub</a> |
 <a target="_blank" class="" href="/projects/romanlaptev.heroku/projects/db_admin/">Db admin</a> |
 <a target="_blank" href="projects/notes/files/test_API.html">test DB API</a>
 </li>
 <li class="">
-<a class="lr-btn btn-darkblue" target="_blank" href="webapps/geolocation/app.html">test map API</a>
-<a class="lr-btn btn-default" title="GitHub repository" target="_blank" 
+<a class="lr-btn lr-btn-darkblue" target="_blank" href="webapps/geolocation/app.html">test map API</a>
+<a class="lr-btn lr-btn-default" title="GitHub repository" target="_blank" 
 href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/geolocation">	GitHub</a>
-<a class="lr-btn btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-geolocation.glitch.me/app.html">
+<a class="lr-btn lr-btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-geolocation.glitch.me/app.html">
 	<i class="glyphicon glyphicon-cog"></i>
 </a>
 </li>
@@ -195,8 +197,8 @@ href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/g
 <small>(PHP, PostgreSQL)</small>
 <br>
 <a href="https://github.com/romanlaptev/romanlaptev.heroku.com/tree/master" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
-<a href="/projects/romanlaptev.heroku/" class="lr-btn btn-default" target="_blank">localhost</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
+<a href="/projects/romanlaptev.heroku/" class="lr-btn lr-btn-default" target="_blank">localhost</a>
 	</li>
 
 	<li class="">
@@ -204,8 +206,8 @@ class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
 <small>(C#,  Microsoft SQL Server)</small>
 <br>
 <a href="https://github.com/romanlaptev/romanlaptev.gearhostpreview.com/tree/master" 
-class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
-<a href="/sites/romanlaptev.gearhostpreview.com/" class="lr-btn btn-default" target="_blank">localhost</a>
+class="lr-btn lr-btn-default" title="GitHub repository" target="_blank">GitHub</a>
+<a href="/sites/romanlaptev.gearhostpreview.com/" class="lr-btn lr-btn-default" target="_blank">localhost</a>
 	</li>
 </ul>
 
@@ -219,7 +221,7 @@ class="lr-btn btn-default" title="GitHub repository" target="_blank">GitHub</a>
 
 	<div style="height:3px">&nbsp;</div>
 
-	<footer class="lr-container padding-10 bg-lightsteelblue4">
+	<footer class="lr-container w80 padding-10 bg-lightsteelblue4">
 		<div class="bg-darkblue">
 			<div class="lr-panel-body text-right">
 <p class="text-white">
