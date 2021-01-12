@@ -1,20 +1,24 @@
-﻿body{
-	/*background-color: #055c80;*/
-	/*background-color: #082844;*/
-}
-a{
-/*color:#0000ee;*/
+html {
+    font-family: segoe-ui-webfont, OpenSans-Regular, hattori_hanzolight, 'ComfortaaLight';
 }
 
-.container {
+body{
+/*font-family: Helvetica, Arial, sans-serif;*/
+/*font-size:14px;*/
+	padding-top: 1%;
+}
+
+.lr-container {
 /*background-color: #b6cfed;	*/
 /*border: 1px solid rgba(0, 0, 0, 0.15);*/
 border-radius: 4px;
 /*box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);*/
+	padding: 1%;
 }
 
 .page-header {
 	border-bottom: 1px solid #000;
+margin-bottom: 1%;
 }
 .page-header h1 {
 	font-family: ticker_taperegular;
@@ -24,15 +28,9 @@ border-radius: 4px;
 */
 	/*font-family: fiddums-family;*/
 	/*font-size: 3.5em;*/
-	font-size: 36px;
+	font-size: 200%;
+	/*font-size: 36px;*/
 	font-weight: bold;
-}
-
-.panel-inline {
-	margin:5px;
-	display: inline-block;
-	vertical-align: top;
-    background-color: #fff;
 }
 
 .nav>li>a:focus,
@@ -73,45 +71,74 @@ font-weight:bold;
 cursor:default;
 }
 
-
-/*----------------------------------------- */
-@media(max-width:1280px){
-  .panel-inline {
-margin:0;
-	}	
+.lr-panel-inline {
+	width: 30%;
+border-radius: 5px;
+margin: 0;
 }
-@media(max-width: 990px){
-	.container {
-		width: 99%;
+
+
+.lr-btn-darkblue {
+	font-family: ticker_taperegular;
+}
+.lr-btn-blue {
+	font-family: avantgarde;
+	padding: 10px 15px;
+}
+.lr-btn-green-shadow {
+	/*font-family: Lobster;*/
+	padding: 10px 15px;
+}
+
+
+/*====== MEDIA styles =======*/
+@media screen and (max-width:1600px){}
+@media screen and (max-width:1300px){}
+@media screen and (max-width:1280px){}
+@media screen and (max-width:1090px){}
+
+@media screen and (max-width: 990px){
+/*
+	body {
+		padding-top: 5px;
+	}
+*/
+	.lr-container {
+		width: 90%;
 	}
 	.list-group-item a {
 		display: block;
 	}
-	.panel-body {
-		padding: 3px;
-	}
 }
+
+@media screen and (max-width:870px){}
 
 @media(max-width: 800px){
-	.container {
-		padding: 0 20px;
+	.lr-panel-inline {
+		width: auto;
 	}
 }
 
-@media(max-width: 768px){
-}
+@media screen and (max-width:790px){}
+@media(max-width: 768px){}
 
 @media(max-width: 750px){
-	.panel-body {
-		padding: 10px;
-	}
-	.page-header {
-		padding-bottom: 0;
-		margin: 0 0 10px;
-	}
 	.page-header h1 {
-		font-size: 20px;
+		font-size: 150%;
 	}
-
 }
 
+@media screen and (max-width:690px){}
+@media screen and (max-width:610px){}
+
+@media screen and (max-width:480px){
+	.lr-container {
+		width: 99%;
+	}
+	.page-header h1 {
+		font-size: 120%;
+	}
+}
+
+@media screen and (max-width:340px){
+}
