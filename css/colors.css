@@ -512,7 +512,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу, #4D5D53 */
 
 
-.bg-color-test1cccc99 { background:#cccc99;}
+.bg-light-weak-yellow { background:#cccc99;}
 
 .bg-bluegreen{  background-color: #006666;}
 .bg-bluegreen2{  background-color: #336666 !important;}
@@ -570,7 +570,17 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-indianred {background-color: #cd5c5c;}
 .bg-indigo {background-color: #4b0082;}
 .bg-ivory {background-color: #fffff0;}
+
 .bg-khaki {background-color: #f0e68c;}
+
+.bg-khaki-desktop {background-color: #7E735F;}/* win10, desktop color*/
+.bg-moss {background-color: #486860;}/* win10, desktop color*/
+.bg-sea-desktop {background-color: #038387;}/* win10, desktop color*/
+.bg-mint {background-color: #018574;}/* win10, desktop color*/
+.bg-golden {background-color: #FF8C00;}/* win10, desktop color, light-orange*/
+
+
+
 .bg-lavender {background-color: #e6e6fa;}
 .bg-lavenderblush {background-color: #fff0f5;}
 .bg-lawngreen {background-color: #7cfc00;}
