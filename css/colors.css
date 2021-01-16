@@ -738,6 +738,123 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-medium-teal {  background-color:  #65a3be;}
 .bg-medium-blue {  background-color:  #5f99cf;}
+.bg-facebook-blue {  background-color:  #3C5A99;}
+.bg-dark-blue-lib {  background-color:  #45557a;}
+
+
+/* Gradients */
+.bg-gradient-blue {  /*.mobapp-btn.blue.registr*/
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+.bg-gradient-blue-green {
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+}
+.bg-gradient-blue-white {
+background: #b3dced;
+background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
+background: -o-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
+background: linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);	
+}
+
+
+.bg-gradient-orange {
+	border-color: #925c23;
+	/*box-shadow: 0 1px 2px #777;*/
+	color: #694219;
+	background-color:#f5c489;
+	background:-webkit-gradient(linear, left top, left bottom, from(#FED99A), to(#ECAE78));
+	background:-moz-linear-gradient(top, #FED99A, #ECAE78);
+	background:-o-linear-gradient(top, #FED99A, #ECAE78);
+	background:linear-gradient(top, #FED99A, #ECAE78);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED99A', endColorstr='#ECAE78');
+}
+.bg-gradient-orange2 {
+	background: -webkit-linear-gradient(#ffd862, #ffc30b);
+	background: -o-linear-gradient(#ffd862, #ffc30b);
+	background: -moz-linear-gradient(#ffd862, #ffc30b);
+	background: linear-gradient(#ffb644, #ff9e07);
+	border-color: #ffb644;
+}
+.bg-gradient-red {
+	background: -webkit-linear-gradient(#f27966, #eb4d4d);
+	background: -o-linear-gradient(#f27966, #eb4d4d);
+	background: -moz-linear-gradient(#f27966, #eb4d4d);
+	background: linear-gradient(#f27966, #eb4d4d);
+	border-color: #f27966;
+}
+.bg-gradient-grey-V {
+background: #2c5885; /* Old browsers */
+background: -moz-linear-gradient(left, #2c5885 7%, #4682b2 20%, #172e46 56%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(7%,#2c5885), color-stop(20%,#4682b2), color-stop(56%,#172e46)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* IE10+ */
+background: linear-gradient(to right, #2c5885 7%,#4682b2 20%,#172e46 56%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c5885', endColorstr='#172e46',GradientType=1 ); /* IE6-9 */
+}
+
+.bg-gradient-greywhite-left {
+background: #a2a2a2; 
+background: -moz-linear-gradient(left, #a2a2a2 35%, #ffffff 100%); 
+background: -webkit-gradient(linear, left top, right top, color-stop(35%,#a2a2a2), color-stop(100%,#ffffff)); 
+background: -webkit-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: -o-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: -ms-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: linear-gradient(to right, #a2a2a2 35%,#ffffff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2a2a2', endColorstr='#ffffff',GradientType=1 ); 
+}
+
+.bg-gradient-greywhite-right {
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(left, #ffffff 35%, #a2a2a2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(35%,#ffffff), color-stop(100%,#a2a2a2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* IE10+ */
+background: linear-gradient(to right, #ffffff 35%,#a2a2a2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a2a2a2',GradientType=1 ); /* IE6-9 */
+}
+
+.bg-gradient-left {/* webapp_lib*/
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #ffffff -30%, #aaaaaa 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-right {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #aaaaaa 0%, #ffffff 130%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-left-darkblue {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #45557a 0%, #021838 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-right-darkblue {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #021838 0%, #45557a 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-grey-navbar {
+background: #f7f7f7;
+border: 1px solid rgba(0, 0, 0, 0.1);
+background-origin: border-box;
+background-image: -webkit-linear-gradient(top, #ffffff, #eeeeee);
+background-image: linear-gradient(to bottom, #ffffff, #eeeeee);
+}
+
+.bg-gradient-test {
+}
+.bg-gradient-test {
+}
+
+
 
 /* Buttons */
 
@@ -870,28 +987,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 .mobapp-btn.registr{
 	border-width: 2px;
 }
-.mobapp-btn.registr{
-	margin-bottom: 0;
-	margin-right: 10px;
-	padding-top: 18px;
-	padding-bottom: 18px;
-	width: 100px;
-	min-width: 100px;
-	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
-	background: -o-linear-gradient(#7fbeea, #5ba2d3);
-	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
-	background: linear-gradient(#7fbeea, #5ba2d3);
-	border-color: #7fbeea;
-}
-
-.mobapp-btn.blue.registr{
-	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
-	background: -o-linear-gradient(#7fbeea, #5ba2d3);
-	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
-	background: linear-gradient(#7fbeea, #5ba2d3);
-	border-color: #7fbeea;
-}
-
 
 .mobapp-btn.disabled{
 	pointer-events: none;
