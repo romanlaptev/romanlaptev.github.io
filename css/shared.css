@@ -277,6 +277,19 @@ border-top: 16px solid #1c5a83;
 	border-radius: 4px;
 }
 
+.lr-btn:hover,
+.lr-btn:focus {
+/*
+  color: #333333;
+  text-decoration: none;
+*/ 
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
 .lr-btn-default {
     color: #333;
     background-color: #fff;

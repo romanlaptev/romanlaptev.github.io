@@ -838,7 +838,8 @@ background: linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
-.bg-gradient-primary {/* Bootstrap button */
+.bg-gradient-primary,
+.lr-btn-primary {/* Bootstrap button */
 	color:#fff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	
@@ -1082,18 +1083,54 @@ background: linear-gradient(transparent,rgba(0,0,0,0.95));
 
 
 /* Buttons */
+.lr-btn.bg-gradient-primary:hover,
+.lr-btn.bg-gradient-primary:focus,
+.lr-btn.bg-gradient-primary:active,
+.lr-btn.bg-gradient-primary.active,
+.lr-btn.bg-gradient-primary.disabled,
+.lr-btn.bg-gradient-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
 
-.btn-blue-c4 {
+.lr-btn.bg-gradient-primary:active,
+.lr-btn.bg-gradient-primary.active {
+  background-color: #003399 \9;
+}
+
+/*
+.lr-btn-primary:hover,
+.lr-btn-primary:focus,
+.lr-btn-primary:active,
+.lr-btn-primary.active,
+.lr-btn-primary.disabled,
+.lr-btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.lr-btn-primary:active,
+.lr-btn-primary.active {
+  background-color: #003399 \9;
+}
+*/
+
+
+.lr-btn-teal {
     color: #fff;
 	background-color: #269abc;
 }
-.btn-blue-c4:hover {
+.lr-btn-teal:hover {
 	background-color: #ff8c00;
 	color: #000 !important;
 }
-.btn-blue-c4:focus {
+.lr-btn-teal:focus {
 	color: #fff !important;
 }
+
+
 
 .btn-blue-green {
 	background-color: #3f9cca;

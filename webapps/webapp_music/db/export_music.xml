@@ -1564,5 +1564,30 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 	<published format="d-M-Y H:i:s">09-Jan-2021 19:41:33</published>
 	<updated format="d-M-Y H:i:s">09-Jan-2021 22:10:52</updated>
 </node>
+
+<node type="playlist">
+	<title>
+		<item>Painkiller soundtracks</item>
+	</title>
+	<images>
+		<img src="/music/0_covers/painkiller.jpeg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/painkiller_soundtracks.json">painkiller_soundtracks.json</a></li>
+		<li><a data-type="external-link" href="https://www.youtube.com/watch?app=desktop&amp;v=EaJvX6Djq38">youtube.com, Painkiller - Original Soundtrack</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="3" tid="117" group_name="music_formats">soundtrack</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">17-Jan-2021 06:47:28</published>
+	<updated format="d-M-Y H:i:s">17-Jan-2021 06:48:38</updated>
+</node>
 	</database>
 </xroot>
