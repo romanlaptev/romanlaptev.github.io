@@ -201,6 +201,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 
 .bg-dark-gray{  background-color: #222222 !important;}
+.bg-light-gray{  background-color: #999999 !important;}
 
 
 .bg-grey-c8{  background-color: #333340 !important;}
@@ -255,19 +256,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test100c1d5 { background:#00c1d5;}
 .bg-color-test1C7D5EC { background:#C7D5EC;}
 .bg-color-test13950C9 { background:#3950C9;}
-.bg-color-test1130040 { background:#130040;}
+.bg-very-dark-blue { background:#130040;}
 .bg-color-test11e73be { background:#1e73be;}
-.bg-color-test1b1d0ef { background:#b1d0ef;}
-.bg-color-test14e86bf { background:#4e86bf;}
+.bg-lightblue-ef { background:#b1d0ef;}
+.bg-mediumblue-light { background:#4e86bf;}
 .bg-color-test1324f5a { background:#324f5a; }
 
-.bg-vivid-teal { background:#00B8D9;}
 
 .bg-color-test1ccf { background:#ccf;}
 .bg-color-test1def { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
 
+.bg-light-blue-a {  background-color: #9bb4d5;}
 .bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
 .bg-light-blue-darken-40 { background:#0061A0; }
 
@@ -280,6 +281,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkblue {/*Диаграмма 1*/
   background-color: #004586 !important;
 }
+.bg-dark-blue {background-color: #00008b;}
 
 .bg-darkblue2{ /* comp-books.css */
   background-color: #000080 !important;
@@ -293,6 +295,14 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkblue-tango2{  background-color: #001b33 !important;}
 .bg-darkblue-project{	background-color: #082844;}
 .bg-darkblue-gray{	background-color: #335566;}
+.bg-very-darkblue{  background-color: #001B33;}
+
+.bg-medium-blue {  background-color:  #5f99cf;}
+.bg-facebook-blue {  background-color:  #3C5A99;}
+.bg-dark-blue-lib {  background-color:  #45557a;}
+.bg-dark-blue-a {  background-color:  #003aaa;}
+.bg-dark-blue-v {  background-color:  #040053;} /* vodmir */
+
 
 
 .bg-lightblue1 {/*Диаграмма 12*/
@@ -311,6 +321,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightblue5 {/* video.css*/
   background-color: #BBD8E9 !important;
 }
+.bg-lightblue-v {/* vodmir */
+  background-color: #d2e1f9 !important;
+}
+
 
 
 .bg-steelblue1{  background-color: #4682b4 !important;}
@@ -332,6 +346,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 .bg-lightblue-grey {  background-color: #e6e6ff !important;}
 
+.bg-pale-dull-azure{ background:#99CCFF;}
 .bg-lightskyblue1{  background-color: #87cefa !important;}
 .bg-sky-blue5{  background-color: #006699 !important;}
 .bg-sky-blue66{  background-color: #003366 !important;}
@@ -369,18 +384,25 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blue-sky2{  background-color: #3465a4 !important;}
 
 
+.bg-deepskyblue {background-color: #00bfff;}
+.bg-dodgerblue {background-color: #1e90ff;}
+.bg-blue-h {background-color: #5A819D;}
+.bg-light-cyan-azure {background-color: #33ccff;}
+
 
 
 .bg-brown {background-color: #a52a2a;}
+.bg-red-brown {background-color: #5A2000;}
+
 .bg-burlywood {background-color: #deb887;}
 
 .bg-chocolate {background-color: #d2691e;}
 .bg-coral {background-color: #ff7f50;}
-.bg-cornsilk {background-color: #fff8dc;}
+.bg-cornsilk {background-color: #fff8dc;border:1px solid #ccc;}
+
 .bg-crimson {background-color: #dc143c;}
 .bg-cyan {background-color: #00ffff;}
 
-.bg-dark-blue {background-color: #00008b;}
 
 .bg-darkcyan {background-color: #008b8b;}
 .bg-darkgoldenrod {background-color: #b8860b;}
@@ -389,11 +411,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkkhaki {background-color: #bdb76b;}
 .bg-darkmagenta {background-color: #8b008b;}
 .bg-darkolivegreen {background-color: #556b2f;}
-.bg-darkorange {background-color: #ff8c00;}
 .bg-darkorchid {background-color: #9932cc;}
 
-.bg-darkred {background-color: #8b0000;}
-.bg-very-darkred {background-color: #2F0709;}
 
 .bg-darksalmon {background-color: #e9967a;}
 .bg-darkseagreen {background-color: #8fbc8f;}
@@ -402,9 +421,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkturquoise {background-color: #00ced1;}
 .bg-darkviolet {background-color: #9400d3;}
 .bg-deeppink {background-color: #ff1493;}
-.bg-deepskyblue {background-color: #00bfff;}
+
+
 .bg-dimgray {background-color: #696969;}
-.bg-dodgerblue {background-color: #1e90ff;}
 .bg-feldspar {background-color: #d19275;}
 .bg-firebrick {background-color: #b22222;}
 .bg-floralwhite {background-color: #fffaf0;}
@@ -417,14 +436,19 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 /*Оттенки серого цвета*/
 .bg-dark-blue-gray{  background-color: #334455 !important;}
+.bg-blue-gray{  background-color: #203040;}
 .bg-gray {background-color: #808080;}
+.bg-light-grey {background-color: #d3d3d3;}
+.bg-very-light-grey {background-color: #E0E0E0;}
+
 .bg-color-test1BFBFBF { background:#BFBFBF;}  /*Серый, #BFBFBF */
 .bg-color-test1AFAFAF { background:#AFAFAF;}  /*Стальной, #AFAFAF */
 .bg-color-test1CECECE { background:#CECECE;}  /*Серебристый, #CECECE */
 .bg-color-test1C7D0CC { background:#C7D0CC;}  /*Перламутровый, #C7D0CC */
 .bg-color-test1798081 { background:#798081;}  /*:Свинцовый, #798081 */
 .bg-color-test19E9E9E { background:#9E9E9E;}  /*:Мышиный, #9E9E9E */
-.bg-color-test1303030 { background:#303030;}  /*:Антрацитовый, #303030 */
+
+.bg-anthracite { background:#303030;}  /*:Антрацитовый, #303030 */
 
 .bg-dove-colored { background:#79A0C1;}  /*Сизый*/
 
@@ -444,7 +468,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1225033 { background:#225033;}
 .bg-color-test121301f { background:#21301f;}
 .bg-color-test121301f { background:#21301f;}
-.bg-color-test1004000 { background:#004000;}
+
+.bg-very-dark-green{ background:#004000;}
+.bg-very-dark-green2{ background:#072F07;}
+
+
 .bg-color-test11a4216 { background:#1a4216;}
 .bg-color-test190D389 { background:#90D389;}
 .bg-color-test138d878 { background:#38d878;}
@@ -458,13 +486,15 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1b2c27a { background:#b2c27a;}
 .bg-color-test170D14E { background:#70D14E;}
 
-.bg-vivid-very-light-green{  background-color: #f8fff0 !important;}/* Drupal info alert */
-.bg-light-green{  background-color: #bbee77 !important;}/* Drupal info alert */
+.bg-vivid-very-light-green{  background-color: #f8fff0; border:1px solid #009900;}/* Drupal info alert */
+.bg-lightgreen-d{  background-color: #bbee77;}/* Drupal info alert */
+.bg-lightgreen-t{  background-color: #94db8a;}/* landing */
+
+.bg-honeydew {background-color: #f0fff0;border:1px solid #009900;}
 
 .bg-color-test1E5F2C0 { background:#E5F2C0;}
 .bg-color-test10C9E54 { background:#0C9E54;}
 
-/*Оттенки зелёного цвета*/
 .bg-color-test100FF00 { background:#00FF00;}
 .bg-color-test166FF00 { background:#66FF00;}  /* Ярко-зелёный, #66FF00 */
 .bg-chartreuse {background-color: #7fff00;}  /*Шартрёз, #7FFF00 */
@@ -512,7 +542,15 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test14D5D53 { background:#4D5D53;}  /*:Фельдграу, #4D5D53 */
 
 
-.bg-color-test1cccc99 { background:#cccc99;}
+
+.bg-lawngreen {background-color: #7cfc00;}
+.bg-lightseagreen {background-color: #20b2aa;}
+.bg-mediumspringgreen {background-color: #00fa9a;}
+.bg-mediumseagreen {background-color: #3cb371;}
+.bg-lime {background-color: #00ff00;}
+.bg-limegreen {background-color: #32cd32;}
+
+.bg-light-weak-yellow { background:#cccc99;}
 
 .bg-bluegreen{  background-color: #006666;}
 .bg-bluegreen2{  background-color: #336666 !important;}
@@ -531,6 +569,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 
 .bg-lightgreen{  background-color: #d9ead3 !important;}
+.bg-lightgreen2 {background-color: #bee4ce;}
+.bg-lightgreen3 {background-color: #90ee90;}
+
 .bg-palegreen1{  background-color: #98fb98 !important;}
 .bg-palegreen2{/*css.html*/
   background-color: #99cc99 !important;
@@ -540,8 +581,6 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #cfd9db !important;
   color: #679f41;/* ligth-green */
 }
-
-
 
 .bg-green-grass1{  background-color: #9c9 !important;}
 .bg-green-grass2{/* gitlab button, bg */
@@ -563,44 +602,58 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-palegrey-green{  background-color: #f0f3f6 !important;}
 
 
+.bg-teal {background-color: #008080;}
+.bg-vivid-teal { background:#00B8D9;}
+.bg-dark-teal {  background-color:  #003438;}
+.bg-medium-teal {  background-color:  #65a3be;}
 
 
-.bg-honeydew {background-color: #f0fff0;}
+
 .bg-hotpink {background-color: #ff69b4;}
 .bg-indianred {background-color: #cd5c5c;}
 .bg-indigo {background-color: #4b0082;}
 .bg-ivory {background-color: #fffff0;}
+
 .bg-khaki {background-color: #f0e68c;}
+
+.bg-khaki-desktop {background-color: #7E735F;}/* win10, desktop color*/
+.bg-moss {background-color: #486860;}/* win10, desktop color*/
+.bg-sea-desktop {background-color: #038387;}/* win10, desktop color*/
+.bg-mint {background-color: #018574;}/* win10, desktop color*/
+
+
+
 .bg-lavender {background-color: #e6e6fa;}
 .bg-lavenderblush {background-color: #fff0f5;}
-.bg-lawngreen {background-color: #7cfc00;}
+.bg-lavender-h {background-color: #C9C6D3;}/* lib body color*/
+
+
 .bg-lemonchiffon {background-color: #fffacd;}
 .bg-lightblue {background-color: #add8e6;}
 .bg-lightcoral {background-color: #f08080;}
 .bg-lightcyan {background-color: #e0ffff;}
 .bg-lightgoldenrodyellow {background-color: #fafad2;}
-.bg-lightgrey {background-color: #d3d3d3;}
-.bg-lightgreen {background-color: #90ee90;}
+
+
 .bg-lightpink {background-color: #ffb6c1;}
 .bg-lightsalmon {background-color: #ffa07a;}
-.bg-lightseagreen {background-color: #20b2aa;}
+
+
 .bg-lightskyblue {background-color: #87cefa;}
 .bg-lightslateblue {background-color: #8470ff;}
 .bg-lightslategray {background-color: #778899;}
 .bg-lightsteelblue {background-color: #b0c4de;}
 .bg-lightyellow {background-color: #ffffe0;}
-.bg-lime {background-color: #00ff00;}
-.bg-limegreen {background-color: #32cd32;}
 .bg-linen {background-color: #faf0e6;}
 .bg-magenta {background-color: #ff00ff;}
-.bg-maroon {background-color: #800000;}
+
 .bg-mediumaquamarine {background-color: #66cdaa;}
 .bg-mediumblue {background-color: #0000cd;}
 .bg-mediumorchid {background-color: #ba55d3;}
 .bg-mediumpurple {background-color: #9370d8;}
-.bg-mediumseagreen {background-color: #3cb371;}
 .bg-mediumslateblue {background-color: #7b68ee;}
-.bg-mediumspringgreen {background-color: #00fa9a;}
+
+
 .bg-mediumturquoise {background-color: #48d1cc;}
 .bg-mediumvioletred {background-color: #c71585;}
 .bg-midnightblue {background-color: #191970;}
@@ -612,8 +665,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-oldlace {background-color: #fdf5e6;}
 .bg-olive {background-color: #808000;}
 .bg-olivedrab {background-color: #6b8e23;}
-.bg-orange {background-color: #ffa500;}
-.bg-orangered {background-color: #ff4500;}
+
+
 .bg-orchid {background-color: #da70d6;}
 .bg-palegoldenrod {background-color: #eee8aa;}
 .bg-palegreen {background-color: #98fb98;}
@@ -628,8 +681,43 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-purple {background-color: #800080;}
 
 
+
+/* ORANGE */
+.bg-orange1 {  background-color: #ff950e !important;}
+.bg-orange2 {  background-color: #ffb515 !important;}
+.bg-orange-tango {  background-color: #e09d00 !important;}
+.bg-orange3 {  background-color: #ffa500 !important;}
+.bg-orange4 {/* video.css*/
+  background-color: #FECD90 !important;
+}
+.bg-orange5 {  background-color: #E9B96E !important;}
+
+.bg-light-orange {background-color: #EDD4A0;}
+.bg-light-orange2 {background-color: #EAE2D3;}
+.bg-light-orange3 {background-color: #cac2b1;}/* Thor bg */
+.bg-light-orange4 {background-color: #f2eadb;}
+
+
+.bg-orange {background-color: #ffa500;}
+.bg-orangered {background-color: #ff4500;}
+.bg-vivid-orange {  background-color:  #ffaa00;}
+.bg-vivid-orange2 {background-color: #FFB515;}
+.bg-vivid-orange3 {background-color: #FFAC19;}
+.bg-vivid-orange4 {background-color: #fedab8;}
+.bg-golden {background-color: #FF8C00;}/* win10, desktop color, light-orange*/
+.bg-darkorange {background-color: #ff8c00;}
+.bg-darkorange2 { background:#bf864e; }
+
+
 /* RED */
+.bg-maroon {background-color: #800000;}
+.bg-darkred {background-color: #8b0000;}
+.bg-very-darkred {background-color: #2F0709;}
+.bg-marlboro-red {background-color: #C80000;}
 .bg-red {background-color: #ff0000;}
+.bg-lightred-t{  background-color: #cec1bc;}/* landing */
+
+
 .bg-color-test1E23817 { background:#E23817;}
 .bg-color-test1de4f00 { background:#de4f00;}
 .bg-color-test1bd362f { background:#bd362f;}
@@ -651,7 +739,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-springgreen {background-color: #00ff7f;}
 .bg-steelblue {background-color: #4682b4;}
 .bg-tan {background-color: #d2b48c;}
-.bg-teal {background-color: #008080;}
+
+
 .bg-thistle {background-color: #d8bfd8;}
 
 .bg-turquoise {background-color: #40e0d0;}
@@ -668,32 +757,27 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-yellowgreen {background-color: #9acd32;}
 
 .bg-color-test1FFDF00 { background:#FFDF00;}
-.bg-color-test1fffbe1 { background:#fffbe1;}
+.bg-vivid-light-yellow{ background:#fffbe1;border:1px solid #ccc;}
 
 .bg-color-test1f89406 { background:#f89406;}
 
 .bg-yellow1 {  background-color: #ffd320 !important;}
 .bg-yellow2 {  background-color: #ffcc00 !important;}
 
-.bg-orange1 {  background-color: #ff950e !important;}
-.bg-orange2 {  background-color: #ffb515 !important;}
-.bg-orange-tango {  background-color: #e09d00 !important;}
-.bg-orange3 {  background-color: #ffa500 !important;}
-.bg-orange4 {/* video.css*/
-  background-color: #FECD90 !important;
-}
-.bg-orange5 {  background-color: #E9B96E !important;}
+
 .bg-red-brown {  background-color: #2f0606 !important;}
 .bg-red-pink {  background-color: #a68caa !important;}
 
 
 .bg-color-test12A3443 { background:#2A3443;}
 .bg-color-test1242E3B { background:#242E3B;}
-.bg-color-test1efc8b1 { background:#efc8b1; }
-.bg-color-test1bf794e { background:#bf794e; }
-.bg-color-test1efd0b1 { background:#efd0b1; }
-.bg-color-test1bf864e { background:#bf864e; }
-.bg-color-test1CCA96E { background:#CCA96E; }
+.bg-light-beige { background:#efc8b1; }
+.bg-middlebrown { background:#bf794e; }
+.bg-peach2 { background:#efd0b1; }
+
+
+.bg-deeporange { background:#CCA96E; }
+
 .bg-color-test1e0e0c3 { background:#e0e0c3;}
 .bg-color-test1ead9c2 { background:#ead9c2;}
 .bg-color-test1f1ebe2 { background:#f1ebe2;}
@@ -702,10 +786,13 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1666 { background:#666;}
 .bg-color-test1beb49b { background:#beb49b;}
 .bg-color-test1d8c8b3 { background:#d8c8b3;}
-.bg-color-test1f3f3f3 { background:#f3f3f3;}
+
+.bg-concrete { background:#f3f3f3;}
 
 /* https://www.omiod.com/colors/?rgb=d0ccd5 */
-.bg-light-purple { background:#D0CCD5}
+.bg-light-purple { background:#D0CCD5}/*.film_description*/
+.bg-light-yellow { background:#D0CCA5;}/*.film_roles*/
+
 
 .bg-color-test1dedddf { background:#dedddf;}
 .bg-color-test1c6c3c6 { background:#c6c3c6;}
@@ -724,22 +811,429 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test145557a { background:#45557a;}
 
 .bg-peach {  background-color: #ffcc99;}
-.bg-vivid-orange {  background-color:  #ffaa00;}
+
+
+/* Gradients */
+.bg-gradient-blue {  /*.mobapp-btn.blue.registr*/
+	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
+	background: -o-linear-gradient(#7fbeea, #5ba2d3);
+	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
+	background: linear-gradient(#7fbeea, #5ba2d3);
+	border-color: #7fbeea;
+}
+
+.bg-gradient-blue2 {
+	background: rgb(67,151,209);
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQzOTdkMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2NmI4ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, rgba(67,151,209,1) 0%, rgba(102,184,230,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(67,151,209,1)), color-stop(100%,rgba(102,184,230,1)));
+	background: -webkit-linear-gradient(top, rgba(67,151,209,1) 0%,rgba(102,184,230,1) 100%);
+	background: -o-linear-gradient(top, rgba(67,151,209,1) 0%,rgba(102,184,230,1) 100%);
+	background: -ms-linear-gradient(top, rgba(67,151,209,1) 0%,rgba(102,184,230,1) 100%);
+	background: linear-gradient(to bottom, rgba(67,151,209,1) 0%,rgba(102,184,230,1) 100%);
+	-webkit-box-shadow: inset 0 1px 2px #12b3db, 0 1px 2px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 1px 2px #12b3db, 0 1px 2px rgba(255, 255, 255, 0.3);
+	color: #273362;
+	text-shadow: 0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+.bg-gradient-blue-green {
+	background-color: #3f9cca;
+	background: -webkit-linear-gradient(#4cadd4, #3896c5);
+	background: -o-linear-gradient(#4cadd4, #3896c5);
+	background: -moz-linear-gradient(#4cadd4, #3896c5);
+	background: linear-gradient(#4cadd4, #3896c5);
+	border-color: #4cadd4;
+}
+.bg-gradient-blue-white {
+background: #b3dced;
+background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%);
+background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
+background: -o-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
+background: linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);	
+}
+
+.bg-gradient-cyan {
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.bg-gradient-cyan2 {
+	color: #040d0f;
+	background-image: -webkit-linear-gradient(bottom, #29a0d1, #5af9ff);
+	background-image: -moz-linear-gradient(bottom, #29a0d1, #5af9ff);
+	background-image: -o-linear-gradient(bottom, #29a0d1, #5af9ff);
+	background-image: linear-gradient(to top, #29a0d1, #5af9ff);
+}
+
+.bg-gradient-primary,
+.lr-btn-primary {/* Bootstrap button */
+	color:#fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+/*  
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.bg-gradient-orange {
+	border-color: #925c23;
+	/*box-shadow: 0 1px 2px #777;*/
+	color: #694219;
+	background-color:#f5c489;
+	background:-webkit-gradient(linear, left top, left bottom, from(#FED99A), to(#ECAE78));
+	background:-moz-linear-gradient(top, #FED99A, #ECAE78);
+	background:-o-linear-gradient(top, #FED99A, #ECAE78);
+	background:linear-gradient(top, #FED99A, #ECAE78);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FED99A', endColorstr='#ECAE78');
+}
+.bg-gradient-orange2 {
+	background: -webkit-linear-gradient(#ffd862, #ffc30b);
+	background: -o-linear-gradient(#ffd862, #ffc30b);
+	background: -moz-linear-gradient(#ffd862, #ffc30b);
+	background: linear-gradient(#ffb644, #ff9e07);
+	border-color: #ffb644;
+}
+
+.bg-gradient-warning {/* Bootstrap button */
+  background-color: #faa732;
+  *background-color: #f89406;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(to bottom, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.bg-gradient-red {
+	background: -webkit-linear-gradient(#f27966, #eb4d4d);
+	background: -o-linear-gradient(#f27966, #eb4d4d);
+	background: -moz-linear-gradient(#f27966, #eb4d4d);
+	background: linear-gradient(#f27966, #eb4d4d);
+	border-color: #f27966;
+}
+.bg-gradient-lightred {
+background: #b82705; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4MjcwNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMlIiBzdG9wLWNvbG9yPSIjYzcyNzAwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNiUiIHN0b3AtY29sb3I9IiNkMjJhMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMyUiIHN0b3AtY29sb3I9IiNkYTJkMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI1MiUiIHN0b3AtY29sb3I9IiNlMTNiMDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5NyUiIHN0b3AtY29sb3I9IiNlYzU1MGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWQ1MzA2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+background: -moz-linear-gradient(top,  #b82705 0%, #c72700 3%, #d22a00 6%, #da2d00 13%, #e13b03 52%, #ec550c 97%, #ed5306 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b82705), color-stop(3%,#c72700), color-stop(6%,#d22a00), color-stop(13%,#da2d00), color-stop(52%,#e13b03), color-stop(97%,#ec550c), color-stop(100%,#ed5306)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #b82705 0%,#c72700 3%,#d22a00 6%,#da2d00 13%,#e13b03 52%,#ec550c 97%,#ed5306 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #b82705 0%,#c72700 3%,#d22a00 6%,#da2d00 13%,#e13b03 52%,#ec550c 97%,#ed5306 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #b82705 0%,#c72700 3%,#d22a00 6%,#da2d00 13%,#e13b03 52%,#ec550c 97%,#ed5306 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #b82705 0%,#c72700 3%,#d22a00 6%,#da2d00 13%,#e13b03 52%,#ec550c 97%,#ed5306 100%); /* W3C */
+}
+.bg-gradient-red2 {
+	background-color: #ae2d52;
+	border: solid 1px rgba(0,0,0,.1);
+	background-image: -webkit-linear-gradient(bottom,#ae2d52,#ff567e);
+	background-image: -moz-linear-gradient(bottom,#ae2d52,#ff567e);
+	background-image: -o-linear-gradient(bottom,#ae2d52,#ff567e);
+	background-image: linear-gradient(to top,#ae2d52,#ff567e);
+}
+
+.bg-gradient-danger {/* Bootstrap button */
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #da4f49;
+  *background-color: #bd362f;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+  background-repeat: repeat-x;
+  border-color: #bd362f #bd362f #802420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+ }
+
+
+.bg-gradient-blue-V {
+background: #2c5885; /* Old browsers */
+background: -moz-linear-gradient(left, #2c5885 7%, #4682b2 20%, #172e46 56%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(7%,#2c5885), color-stop(20%,#4682b2), color-stop(56%,#172e46)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #2c5885 7%,#4682b2 20%,#172e46 56%); /* IE10+ */
+background: linear-gradient(to right, #2c5885 7%,#4682b2 20%,#172e46 56%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c5885', endColorstr='#172e46',GradientType=1 ); /* IE6-9 */
+}
+
+.bg-gradient-blue-radial {
+background-image: -ms-radial-gradient(center, ellipse closest-corner, #135987 30%, #092f48 100%);
+background-image: -moz-radial-gradient(center, ellipse closest-corner, #135987 30%, #092f48 100%);
+background-image: -o-radial-gradient(center, ellipse closest-corner, #135987 30%, #092f48 100%);
+background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #135987), color-stop(100, #092f48));
+background-image: -webkit-radial-gradient(center, ellipse closest-corner, #135987 30%, #092f48 100%);
+background-image: radial-gradient(ellipse closest-corner at center, #135987 30%, #092f48 100%);
+}
+
+.bg-gradient-success {/* Bootstrap button */
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb75b;
+  *background-color: #51a351;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #62c462, #51a351);
+  background-repeat: repeat-x;
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+ }
+
+.bg-gradient-green {
+	color: #000;
+	background-color: #7ec971;
+	background-image: -webkit-linear-gradient(bottom,#7ec971,#90e182);
+	background-image: -moz-linear-gradient(bottom,#7ec971,#90e182);
+	background-image: -o-linear-gradient(bottom,#7ec971,#90e182);
+	background-image: linear-gradient(to top,#7ec971,#90e182);
+}
+.bg-gradient-green2 {
+  background-image: -webkit-linear-gradient(bottom, #0caa40, #2cf136);
+  background-image: -moz-linear-gradient(bottom, #0caa40, #2cf136);
+  background-image: -o-linear-gradient(bottom, #0caa40, #2cf136);
+  background-image: linear-gradient(to top, #0caa40, #2cf136);
+}
+.bg-gradient-green3 {
+	background-color: #fff;
+	background-image: -webkit-linear-gradient(bottom,#789931,#c3e245);
+	background-image: -moz-linear-gradient(bottom,#789931,#c3e245);
+	background-image: -o-linear-gradient(bottom,#789931,#c3e245);
+	background-image: linear-gradient(to top,#789931,#c3e245);
+}
+
+.bg-gradient-info {/* Bootstrap button */
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd;
+  *background-color: #2f96b4;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+ }
+
+.bg-gradient-greywhite-left {
+background: #a2a2a2; 
+background: -moz-linear-gradient(left, #a2a2a2 35%, #ffffff 100%); 
+background: -webkit-gradient(linear, left top, right top, color-stop(35%,#a2a2a2), color-stop(100%,#ffffff)); 
+background: -webkit-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: -o-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: -ms-linear-gradient(left, #a2a2a2 35%,#ffffff 100%); 
+background: linear-gradient(to right, #a2a2a2 35%,#ffffff 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a2a2a2', endColorstr='#ffffff',GradientType=1 ); 
+}
+
+.bg-gradient-greywhite-right {
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(left, #ffffff 35%, #a2a2a2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(35%,#ffffff), color-stop(100%,#a2a2a2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #ffffff 35%,#a2a2a2 100%); /* IE10+ */
+background: linear-gradient(to right, #ffffff 35%,#a2a2a2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a2a2a2',GradientType=1 ); /* IE6-9 */
+}
+
+
+.bg-gradient-left {/* webapp_lib*/
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #ffffff -30%, #aaaaaa 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-right {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #aaaaaa 0%, #ffffff 130%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-left-darkblue {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #45557a 0%, #021838 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-right-darkblue {
+     background: rgba(0, 0, 0, 0) linear-gradient(to right, #021838 0%, #45557a 100%) repeat scroll 0% 0%;
+}
+
+.bg-gradient-grey-navbar {
+background: #f7f7f7;
+border: 1px solid rgba(0, 0, 0, 0.1);
+background-origin: border-box;
+background-image: -webkit-linear-gradient(top, #ffffff, #eeeeee);
+background-image: linear-gradient(to bottom, #ffffff, #eeeeee);
+}
+
+.bg-gradient-default {/* Bootstrap button */
+	color:#000;
+background-color: #f5f5f5;
+*background-color: #e6e6e6;
+background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+background-repeat: repeat-x;
+border: 1px solid #cccccc;
+*border: 0;
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+border-bottom-color: #b3b3b3;
+-webkit-border-radius: 4px;
+ -moz-border-radius: 4px;
+	  border-radius: 4px;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+*zoom: 1;
+-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+ -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.bg-gradient-lightgrey {
+background: #f9f9f9; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMzJSIgc3RvcC1jb2xvcj0iI2Y4ZjhmOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUyJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYWVhZWEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #f9f9f9 0%, #f8f8f8 33%, #f5f5f5 38%, #f5f5f5 52%, #eaeaea 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(33%,#f8f8f8), color-stop(38%,#f5f5f5), color-stop(52%,#f5f5f5), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5 52%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5 52%,#eaeaea 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5 52%,#eaeaea 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f9f9f9 0%,#f8f8f8 33%,#f5f5f5 38%,#f5f5f5 52%,#eaeaea 100%); /* W3C */
+border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bg-gradient-lightgrey2 {
+	background-image: -webkit-linear-gradient(bottom, #a0a0a0, #f0f0f0);
+	background-image: -moz-linear-gradient(bottom, #a0a0a0, #f0f0f0);
+	background-image: -o-linear-gradient(bottom, #a0a0a0, #f0f0f0);
+	background-image: linear-gradient(to top, #a0a0a0, #f0f0f0);
+}
+
+.bg-gradient-bw-hor {
+background: linear-gradient(transparent,rgba(0,0,0,0.95));
+}
+
+.bg-gradient-brown {
+	color: #f2eadb;
+	background: rgb(120,6,6);
+	background: -moz-linear-gradient(top, rgba(200, 87, 87,1) 0%, rgba(92,3,3,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(200, 87, 87,1)), color-stop(100%,rgba(92,3,3,1)));
+	background: -webkit-linear-gradient(top, rgba(200, 87, 87,1) 0%,rgba(92,3,3,1) 100%);
+	background: -o-linear-gradient(top, rgba(200, 87, 87,1) 0%,rgba(92,3,3,1) 100%);
+	background: -ms-linear-gradient(top, rgba(200, 87, 87,1) 0%,rgba(92,3,3,1) 100%);
+	background: linear-gradient(to bottom, rgb(200, 87, 87) 0%,rgba(92,3,3,1) 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#780606', endColorstr='#5c0303',GradientType=0 );
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+.bg-gradient-test {
+}
+
+.bg-gradient-test {
+}
+
 
 
 /* Buttons */
+/*
+.lr-btn.bg-gradient-primary:hover,
+.lr-btn.bg-gradient-primary:focus,
+.lr-btn.bg-gradient-primary:active,
+.lr-btn.bg-gradient-primary.active,
+.lr-btn.bg-gradient-primary.disabled,
+.lr-btn.bg-gradient-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
 
-.btn-blue-c4 {
+.lr-btn.bg-gradient-primary:active,
+.lr-btn.bg-gradient-primary.active {
+  background-color: #003399 \9;
+}
+*/
+
+.lr-btn-primary:hover, .lr-btn-primary:focus,
+.lr-btn-danger:hover, .lr-btn-danger:focus,
+.lr-btn-warning:hover, .lr-btn-warning:focus,
+.lr-btn-success:hover, .lr-btn-success:focus
+ {
+/*
+  color: #333333;
+  text-decoration: none;
+*/ 
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+     -moz-transition: background-position 0.1s linear;
+       -o-transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear;
+}
+
+.lr-btn-primary:hover,
+.lr-btn-primary:focus,
+.lr-btn-primary:active,
+.lr-btn-primary.active,
+.lr-btn-primary.disabled,
+.lr-btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.lr-btn-primary:active,
+.lr-btn-primary.active {
+  background-color: #003399 \9;
+}
+
+
+
+.lr-btn-teal {
     color: #fff;
 	background-color: #269abc;
 }
-.btn-blue-c4:hover {
+.lr-btn-teal:hover {
 	background-color: #ff8c00;
 	color: #000 !important;
 }
-.btn-blue-c4:focus {
+.lr-btn-teal:focus {
 	color: #fff !important;
 }
+
+
 
 .btn-blue-green {
 	background-color: #3f9cca;
@@ -858,28 +1352,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fed081', endCo
 .mobapp-btn.registr{
 	border-width: 2px;
 }
-.mobapp-btn.registr{
-	margin-bottom: 0;
-	margin-right: 10px;
-	padding-top: 18px;
-	padding-bottom: 18px;
-	width: 100px;
-	min-width: 100px;
-	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
-	background: -o-linear-gradient(#7fbeea, #5ba2d3);
-	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
-	background: linear-gradient(#7fbeea, #5ba2d3);
-	border-color: #7fbeea;
-}
-
-.mobapp-btn.blue.registr{
-	background: -webkit-linear-gradient(#7fbeea, #5ba2d3);
-	background: -o-linear-gradient(#7fbeea, #5ba2d3);
-	background: -moz-linear-gradient(#7fbeea, #5ba2d3);
-	background: linear-gradient(#7fbeea, #5ba2d3);
-	border-color: #7fbeea;
-}
-
 
 .mobapp-btn.disabled{
 	pointer-events: none;

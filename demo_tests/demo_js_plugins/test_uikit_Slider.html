@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  Slider, UIkit framework</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.10/css/uikit.min.css" 
+integrity="sha512-54IxsSJXCM76OE9FCyteIkqaKmaH7up87yBgf159l6h4qVD6DR1wZoiJSBu7GTDprUoQGEVq2MHTt5e1owGCHQ==" 
+crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.10/js/uikit.min.js" 
+integrity="sha512-kT1Woxqy8Hn0YySWNJKxzXkFCjzI2Hxr4GMhoI7HxsHCp/TjxHf+oLNh1IWZyFqc7oPyXY3reuei9JD9ptVoAw==" 
+crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.10/js/uikit-icons.min.js"></script>
+
+<!--
+<link rel="stylesheet" href="http://i5/webdisk/codebase/css/uikit-3.6.10/css/uikit-rtl.min.css" />
+<script src="http://i5/webdisk/codebase/css/uikit-3.6.10/js/uikit.min.js"></script>
+-->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+console.log( "DOMContentLoaded" );
+	document.querySelector("#version").innerHTML = UIkit.version;
+	
+	var _element = document.querySelector("#slider-1");
+	var opt = {
+autoplay:  true,
+'autoplay-interval': 500,
+//center: true,
+draggable: true,
+'pause-on-hover': false,
+velocity: 1,
+	};
+	var _slider1 = UIkit.slider(_element, opt);
+console.log( _slider1 );
+
+	UIkit.util.on(_element, 'itemshow', function () {
+console.log("itemshow");
+	});
+
+});//end
+
+window.onload = function(e){
+console.log( "onload...", e.target.URL );
+}//end load
+</script>
+
+<style>
+html {
+	background: none;
+}
+</style>
+	
+</head>
+<body class="bg-darkblue-project padding-top-20">
+	<div class="lr-container w80 bg-lightsteelblue4">
+
+	<div class="lr-panel">
+		<h2>Demo test Slider, UIkit version: <span id="version"></span></h2>
+
+		<div class="padding-small">
+			<ul class="lr-breadcrumbs lr-list-inline">
+				<li><a class="lr-btn lr-btn-darkblue" href="../index.html"><span class="">Home</span></a></li>
+			</ul>
+<pre>
+https://3uikit.ru/slider	
+</pre>
+			
+		</div>
+	</div>
+	
+	<div class="lr-container w80 bg-lightsteelblue4">
+		
+<!--
+<div id="slider-1" class="" uk-slider>
+-->
+<div id="slider-1">
+    <ul class="uk-slider-items uk-child-width-1-2  ">
+        <li>
+            <div class="uk-panel">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael_whelan_green_angel_tower_1993.jpg" alt="">
+<div class=""><h1>1</h1></div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-panel">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael_whelan_the_dark_tower_the_crimson_king_2004.jpg" alt="">
+<div class=""><h1>2</h1></div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-panel">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gravura/imagecache/preview_gallery_img/masquerades_and_operas.jpg" alt="">
+<div class=""><h1>3</h1></div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-panel">
+<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael-whelan_assassins_apprentice_1995.jpg" alt="">
+<div class=""><h1>4</h1></div>
+            </div>
+        </li>
+        <li>
+            <div class="uk-panel">
+<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/michael-whelan_assassins_apprentice_1995.jpg" alt="">
+<div class=""><h1>5</h1></div>
+            </div>
+        </li>
+    </ul>
+
+<ul class="uk-slider-nav uk-dotnav"></ul>
+    <a class="" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+</div>
+
+
+	</div><!-- end container -->
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+</html>

@@ -4,21 +4,15 @@ projects/geolocation
 projects/bookmarks
 projects/notes/.idea
 projects/notes/upload/notes.xml
-graphic-art-collection/cms
-photoalbum/cms
-video/cms
 webapps/webapp_video/db/_export_video.xml
 webapps/webapp_video/db/video.sqlite.7z
-music/cms
 music/player
 lib/cms
 _export_lib.xml
-book_history_engraving/ci
-book_history_engraving/cms
-#book_history_engraving/export
-#book_history_engraving/html
-#book_history_engraving/site.gravura/arc
 
+files_ignore/*
+*/files_ignore/*
+*/*/files_ignore/*
 
 # https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs

@@ -276,7 +276,11 @@ border-top: 16px solid #1c5a83;
 	border: 1px solid transparent;
 	border-radius: 4px;
 }
-
+/*
+.lr-btn:hover,
+.lr-btn:focus {
+}
+*/
 .lr-btn-default {
     color: #333;
     background-color: #fff;
