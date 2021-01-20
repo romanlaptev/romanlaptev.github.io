@@ -296,6 +296,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-darkblue-project{	background-color: #082844;}
 .bg-darkblue-gray{	background-color: #335566;}
 .bg-very-darkblue{  background-color: #001B33;}
+.bg-darkblue-a{  background-color: #002168;}
+
+.bg-darkblue-sea{  background-color: #004262;}
 
 .bg-medium-blue {  background-color:  #5f99cf;}
 .bg-facebook-blue {  background-color:  #3C5A99;}
@@ -326,7 +329,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 }
 
 
-
+.bg-steelblue {background-color: #4682b4;}
+.bg-lightsteelblue {background-color: #b0c4de;}
 .bg-steelblue1{  background-color: #4682b4 !important;}
 .bg-lightsteelblue{
   background-color: #b0c4de !important;
@@ -339,6 +343,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightsteelblue5{  background-color: #77a2cf !important;}
 .bg-lightsteelblue6{  background-color: #C7D5EC !important;}
 .bg-lightsteelblue7{  background-color: #AABAD5 !important;}
+.bg-lightsteelblue8{  background-color: #AFC6DB !important;}
+
 
 .bg-grey-blue {  background-color: #5a819d !important;}
 .bg-blue-grey {/*c1*/
@@ -350,6 +356,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightskyblue1{  background-color: #87cefa !important;}
 .bg-sky-blue5{  background-color: #006699 !important;}
 .bg-sky-blue66{  background-color: #003366 !important;}
+
+.bg-sky-blue-a{  background-color: #007dfd;}
+
 
 .bg-sky-blue{  background-color: #00ccff !important;}
 .bg-sky-blue2{  background-color: #3399ff !important;}
@@ -583,8 +592,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #cfd9db !important;
   color: #679f41;/* ligth-green */
 }
+.bg-palegreen-b{  background-color: #d3ead5;}
+
 
 .bg-green-grass1{  background-color: #9c9 !important;}
+
 .bg-green-grass2{/* gitlab button, bg */
   background-color: #1aaa55 !important;
 }
@@ -644,7 +656,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightskyblue {background-color: #87cefa;}
 .bg-lightslateblue {background-color: #8470ff;}
 .bg-lightslategray {background-color: #778899;}
-.bg-lightsteelblue {background-color: #b0c4de;}
+
+
 .bg-lightyellow {background-color: #ffffe0;}
 .bg-linen {background-color: #faf0e6;}
 .bg-magenta {background-color: #ff00ff;}
@@ -739,7 +752,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-slategray {background-color: #708090;}
 .bg-snow {background-color: #fffafa;}
 .bg-springgreen {background-color: #00ff7f;}
-.bg-steelblue {background-color: #4682b4;}
+
+
 .bg-tan {background-color: #d2b48c;}
 
 
