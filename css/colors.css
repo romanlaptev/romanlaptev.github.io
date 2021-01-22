@@ -1217,7 +1217,81 @@ border: 1px solid rgba(0, 0, 0, 0.1);
 background: linear-gradient(transparent,rgba(0,0,0,0.95));
 }
 
+/*
+https://madeas.ru/%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D0%BB%D1%8E%D0%B1%D0%B8%D0%BC%D1%8B%D1%85-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%BE%D0%B2/
+*/
+.gradients .grad {
+	display: inline-block;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	margin: 10px auto;
+	align-items: center;
+	justify-content: center;
+	counter-increment: div;
+	position: relative;
+	box-shadow: inset 0 -5px 15px rgba(255, 255, 255, 0.4), 
+inset -2px -1px 40px rgba(0, 0, 0, 0.1), 
+0 0 1px lightgray;
+	/* clip-path: polygon(0 0, 100% 0, 100% 25px, 90% 25px, 90% 75%, 100% 75%, 100% 100%, 0 100%); */
+	text-align: center;
+}
 
+.gradients .grad::after {
+/*
+    content: attr(class);
+    color: white;
+    font-size: 18px;
+*/
+}
+.gradients .grad::before {
+    position: absolute;
+    left: 15px;
+    top: 7px;
+    transform: rotate(-25deg);
+    content: '';
+    width: 40px;
+    height: 20px;
+    background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #e8e8e8 1%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 40px / 20px; 
+}
+.gradients .grad:hover {
+	transform: scale(1.5);
+	transition: .2s ease;
+	z-index: 2;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
+}
+
+.gradients .grad-12 {
+	background-image: linear-gradient(to right, #0069ff, #1633ff);
+}
+.gradients .grad-19 {
+	background-image: linear-gradient(135deg, #ffae27 0%, #de496d 100%);
+}
+.gradients .grad-25 {
+	background-image: linear-gradient(#E85B6F, #112B4D);
+}
+.gradients .grad-27 {
+	background-image: linear-gradient(#112B4D, #786BAF);
+}
+.gradients .grad-28 {
+	background: linear-gradient(to top right, #030021, #040023 2%, #0b0539 24%, #0e0741 38%, #2c1575 71%, #2d308f) 50% no-repeat, linear-gradient(rgba(0, 8, 255, 0.1), rgba(0, 8, 255, 0)) 50% no-repeat;
+}
+
+.bg-gradient-gold {
+	background: 
+		radial-gradient(ellipse farthest-corner at right bottom, #fedb37 0%, #FDB931 8%, #9f7928 30%, #8a6e2f 40%, transparent 80%),
+		radial-gradient(ellipse farthest-corner at left top, #ffffff 0%, #ffffac 8%, #d1b464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.bg-gradient-rainbow {
+	background: linear-gradient(to right, #f00, #ffa500, #ff0, #008000, #00f, #4b0082, #ee82ee);
+}
+.colorbox.bg-gradient-rainbow {
+	width: 600px;
+}
 
 .bg-gradient-test {
 }
@@ -1287,4 +1361,3 @@ background: linear-gradient(transparent,rgba(0,0,0,0.95));
   background-color: #00bfff;
   border-color: #00bfff;
 }
-
