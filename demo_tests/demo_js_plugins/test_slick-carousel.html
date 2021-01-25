@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Demo test,  Slick carousel</title>
 
-<script src="../../codebase/js/jquery/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
 <!--
 <script src="../../codebase/js/plugins/slick-carousel/slick.min.js"></script>
 <link rel='stylesheet'  href='../../codebase/js/plugins/slick-carousel/slick.css' type='text/css' media='all' />
@@ -88,6 +89,27 @@ $(document).ready(function(){
 		]
 
 	});
+
+
+	//$('.slider-for').slick({
+	$("#slider-tube").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		fade: true,
+		//asNavFor: '.slider-nav'
+		asNavFor: "#carousel-tube"
+	});
+
+	//$('.slider-nav').slick({
+	$("#carousel-tube").slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		asNavFor: "#slider-tube",
+		dots: true,
+		centerMode: true,
+		focusOnSelect: true
+	});	
 
 
 });//end ready
@@ -375,6 +397,79 @@ href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content
 
 	</div>
 
+	<div class="lr-container w80 bg-azure">
+		<h2>Slider Syncing</h2>
+
+		<div id="slider-tube" class="slider slider-for">
+			<div>
+				<h3>1</h3>
+<a href="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2.jpg" target="_self" rel="gallery noopener noreferrer" class="fancybox">
+	<img src="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2.jpg" alt="">
+</a>
+			</div>
+			
+			<div>
+				<h3>2</h3>
+<a href="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2.jpg" rel="gallery" class="fancybox">
+	<img src="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2.jpg" alt="">
+</a>
+			</div>
+			
+			<div>
+				<h3>3</h3>
+<a href="https://adksib.ru/wp-content/uploads/2020/07/220-2.jpg" rel="gallery" class="fancybox">
+	<img src="https://adksib.ru/wp-content/uploads/2020/07/220-2.jpg" alt="">
+</a>
+			</div>
+			
+			<div>
+				<h3>4</h3>
+<a href="https://adksib.ru/wp-content/uploads/2020/07/33-2.jpg" rel="gallery" class="fancybox">
+	<img src="https://adksib.ru/wp-content/uploads/2020/07/33-2.jpg" alt="">
+</a>
+			</div>
+			
+			<div>
+				<h3>5</h3>
+<a href="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2-1024x582.jpg" rel="gallery" class="fancybox">
+	<img src="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2.jpg" alt="" title="">
+</a>
+			</div>
+
+		</div><!-- end slider-for -->
+		
+		
+		
+		<div id="carousel-tube" class="slider slider-nav">
+			
+			<div>
+				<h3>1</h3>
+<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2-150x150.jpg" alt="" >
+			</div>
+			
+			<div>
+				<h3>2</h3>
+<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2-150x150.jpg" alt="">
+			</div>
+			
+			<div>
+				<h3>3</h3>
+<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/220-2-150x150.jpg" alt="">
+			</div>
+			
+			<div>
+				<h3>4</h3>
+<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/33-2-150x150.jpg" alt="">
+			</div>
+			
+			<div>
+				<h3>5</h3>
+<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2-150x150.jpg" alt="">
+			</div>
+			
+		</div>
+
+	</div>
 
 <pre>
 http://kenwheeler.github.io/slick/
