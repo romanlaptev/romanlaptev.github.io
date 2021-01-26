@@ -148,6 +148,10 @@
 .border-black{border: 3px solid #000 !important;}
 .border-red{border: 3px solid #f00 !important;}
 .border-silver{border: 1px solid #c0c0c0;}
+.border-cyan {
+	border: 3px solid #159fd2;
+	border-radius: 5px;
+}
 
 .border-box{
 border: 1px solid #004586;
@@ -250,7 +254,9 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-blue {background-color: #0000ff;}
 .bg-blueviolet {background-color: #8a2be2;}
 .bg-color-test1003089 { background:#003089;}
-.bg-color-test1055c80 { background:#055c80;}
+
+.bg-darkblue-green { background:#055c80;}
+
 .bg-color-test13d5afe { background:#3d5afe;}
 .bg-color-test15a5eff { background:#5a5eff;}
 .bg-color-test17cc0de { background:#7cc0de;}

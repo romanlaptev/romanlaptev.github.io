@@ -47,6 +47,12 @@ a:active, a:focus { outline: none; }
 .page-header {
 	border-bottom: 1px solid #000;
 }
+.lr-head3 {
+	font-size: 18px;
+	font-weight: bold;
+}
+.lr-head2 {font-size: 24px;font-weight: bold;}
+
 
 .text-left{text-align:left;}
 .text-right{text-align:right;}
@@ -895,9 +901,70 @@ padding: 10px;
 }
 
 /*====== MEDIA styles =======*/
+@media screen and (max-width:1600px){}
+@media screen and (max-width:1300px){}
+@media screen and (max-width:1280px){}
+@media screen and (max-width:1090px){}
+
+@media screen and (max-width: 990px){
+/*
+	body {
+		padding-top: 5px;
+	}
+*/
+	.lr-container {
+		width: 90%;
+	}
+	.list-group-item a {
+		display: block;
+	}
+}
+
+@media screen and (max-width:870px){}
+
+@media(max-width: 800px){
+	.lr-panel-inline {
+		width: auto;
+	}
+}
+
+@media screen and (max-width:790px){}
+
+/* IPAD */
+@media(max-width: 768px){
+}
+
+@media(max-width: 750px){
+	.page-header h1 {
+		font-size: 150%;
+	}
+}
+
+@media screen and (max-width:690px){}
+
+@media screen and (max-width:610px){
+	.float-left, .pull-left {
+		float: none;
+	}
+	.float-right, .pull-right {
+		float: none;
+	}
+}
+
+@media screen and (max-width:480px){
+	.lr-container {
+		width: 99%;
+	}
+	.page-header h1 {
+		font-size: 120%;
+	}
+}
 @media (max-width: 480px){
 	.lr-panel-inline {
 		display: block;
 	}
+}
+
+@media screen and (max-width:340px){
 }
 
