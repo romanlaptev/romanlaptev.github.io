@@ -12,7 +12,7 @@ function _draw( opt ){
 									<a data-toggle="#block-player" href="?q=close" class="uk-button uk-button-small uk-button-danger">x</a>\
 							</div>\
 						</div>\
-						<div class="uk-card-body w60 uk-padding-small wrapper">\
+						<div class="uk-card-body uk-padding-small wrapper">\
 							<div class="uk-margin-small">\
 								<h5 id="track-info"></h5>\
 <audio id="audio-player" controls="controls" class="w100"><source src="" />Tag <b>audio</b> not supported by this browser....</audio>\
@@ -28,7 +28,7 @@ function _draw( opt ){
 								<ul class="button-group uk-list">\
 <!--<button id="btn-play" class="btn btn-blue">play</button>\
 <button id="btn-pause" class="btn btn-blue">pause</button>-->\
-<li><a href="?q=prev-track" class="btn btn-blue">previous track</a></li>\
+<li><a href="?q=prev-track" class="btn btn-blue">previousss track</a></li>\
 <li><a href="?q=next-track" class="btn btn-blue">next track</a></li>\
 								</ul>\
 							</div>\
@@ -117,7 +117,8 @@ function _draw( opt ){
 	<input name="inp_location_path" id="input-location-path" value="{{location}}" type="text" class="uk-input w80">\
 	<a href="?q=define-location" class="btn btn-blue">Reload</a>\
 	<p>/mnt/d2/music; /home/www/music; d:/music</p>\
-	<b>web alias:</b><input name="inp_web_alias" id="input-web-alias" value="{{web_alias}}" type="text" class="uk-input w60">\
+	<b>web alias:</b><input name="inp_web_alias" id="input-web-alias" value="{{web_alias}}" type="text" class="uk-input 
+	">\
 	<p>/music; /www; /video....</p>\
 </div>\
 							<div class="wrapper">\

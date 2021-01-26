@@ -204,7 +204,97 @@ https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js
 
 </div>
 </div><!-- end row -->
+
 </div><!-- #container-->
+
+
+
+<script>
+$(window).load(function() {
+  $('#carousel-tube').flexslider({
+    //animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    //itemWidth: 210,
+    itemMargin: 3,
+    asNavFor: '#slider-tube'
+  });
+ 
+  $('#slider-tube').flexslider({
+    //animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    sync: "#carousel-tube"
+  });
+});
+</script>
+
+
+<div>
+	<div id="slider-tube" class="flexslider">
+		<ul class="slides">
+			<li>
+	<a href="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2.jpg" target="_self" rel="gallery noopener noreferrer" class="fancybox">
+		<img src="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2.jpg" alt="">
+	</a>
+			</li>
+
+			<li>
+	<a href="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2.jpg" rel="gallery" class="fancybox">
+		<img src="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2.jpg" alt="">
+	</a>
+			</li>
+
+			<li>
+	<a href="https://adksib.ru/wp-content/uploads/2020/07/220-2.jpg" rel="gallery" class="fancybox">
+		<img src="https://adksib.ru/wp-content/uploads/2020/07/220-2.jpg" alt="">
+	</a>
+			</li>
+
+			<li>
+	<a href="https://adksib.ru/wp-content/uploads/2020/07/33-2.jpg" rel="gallery" class="fancybox">
+		<img src="https://adksib.ru/wp-content/uploads/2020/07/33-2.jpg" alt="">
+	</a>
+			</li>
+
+			<li>
+	<a href="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2-1024x582.jpg" rel="gallery" class="fancybox">
+		<img src="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2.jpg" alt="" title="">
+	</a>
+			</li>
+		</ul>
+	</div>
+				
+				
+	<div id="carousel-tube" class="flexslider">
+	  <ul class="slides">
+	  
+		<li>
+	<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/1570090536_106-2-150x150.jpg" alt="" >
+		</li>
+		
+		<li>
+	<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/2340_58-2-150x150.jpg" alt="">
+		</li>
+		
+		<li>
+	<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/220-2-150x150.jpg" alt="">
+		</li>
+		
+		<li>
+	<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/33-2-150x150.jpg" alt="">
+		</li>
+
+		<li>
+	<img class="ms-thumb" src="https://adksib.ru/wp-content/uploads/2020/07/unnamed-2-150x150.jpg" alt="">
+		</li>
+
+	  </ul>
+	</div>
+
+</div>
 
 </body>
 </html>
