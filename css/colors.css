@@ -1057,6 +1057,11 @@ background-image: -webkit-radial-gradient(center, ellipse closest-corner, #13598
 background-image: radial-gradient(ellipse closest-corner at center, #135987 30%, #092f48 100%);
 }
 
+.bg-gradient-darkblue {
+    background-image: linear-gradient(to top, #011d51 0%, #008bab 100%);
+}
+
+
 .bg-gradient-success {/* Bootstrap button */
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1298,6 +1303,7 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 .colorbox.bg-gradient-rainbow {
 	width: 600px;
 }
+
 
 .bg-gradient-test {
 }
