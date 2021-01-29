@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  OwlCarousel2</title>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+<!--
+<script src="../../codebase/js/plugins/"></script>
+<link rel='stylesheet'  href='../../codebase/js/plugins/' type='text/css' media='all' />
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" 
+integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" 
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" 
+integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" 
+crossorigin="anonymous" />
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" 
+integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" 
+crossorigin="anonymous" />
+
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+	$('.slider1').owlCarousel({
+		items: 4,
+		startPosition:5,
+		margin: 5,//px
+		loop: true,
+		//autoplay: true,
+		//autoplayTimeout: 3000,
+		//autoplayHoverPause: true,
+		//center:true,
+		//mouseDrag:true,
+		//touchDrag:true,
+		nav:true,
+		navText:["<= Prev =", "= Next => "],
+		dots: true,
+		dotsEach: true,
+		//lazyLoad,
+		//video: true,
+		//videoWidth: 320,
+		//videoHeight: 240,
+		responsive:{
+			0:{
+				items:1
+			},
+			600:{
+				items:2
+			},
+			1000:{
+				items:4
+			}
+		},
+		
+	});
+
+
+	//https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html
+	//var owl = $('.owl-carousel');
+	var slider1 = $('.slider1');
+	slider1.on('changed.owl.carousel', function(event) {
+console.log(event.type, event.item);		
+	});
+	
+});//end ready
+</script>
+
+<!--
+<link rel="stylesheet" href="http://wizardgraphics.dax.ru/albums/js/pirobox/pirobox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://wizardgraphics.dax.ru/albums/js/pirobox/pirobox_ansi.js"></script>
+-->
+<script type="text/javascript">
+/*
+$(document).ready(function() {
+	$.fn.piroBox({
+		my_speed: 300, //animation speed
+		bg_alpha: 0.1, //background opacity
+		slideShow : true, // true == slideshow on, false == slideshow off
+		slideSpeed : 6, //slideshow duration in seconds(3 to 6 Recommended)
+		close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
+	});
+});
+*/
+</script>
+
+
+<style>
+
+.slider1 {
+	max-width: 900px;
+	margin: auto;
+	padding-top: 50px;
+}
+.slide {
+	text-align:center;
+}
+
+.artwork-title{ }
+.autor-name{ font-size: 80% }
+.artwork-year{ font-size: 80%}
+
+.slider1 .slide-caption {
+	padding: 5px 10px;
+}
+
+.picture {
+	padding: 10px;
+	border: none !important;
+	box-shadow: 5px 5px silver;
+	background-color:#fff;
+}
+.picture:hover {
+	box-shadow: 0 0 5px inset;
+}
+
+@media screen and (max-width:1439px){
+}
+
+@media screen and (max-width:1280px){
+}
+
+@media screen and (max-width:1023px){
+}
+
+@media screen and (max-width:550px){
+}
+
+@media screen and (max-width:479px){
+}
+
+</style>
+
+
+</head>
+
+<body class="bg-darkblue-project">
+	
+	<div class="lr-container w80">
+		<div class="lr-panel lr-row">
+			<div class="float-left w70 text-white">
+				<h2>jQuery plugin Owl Carousel, version:<span id="version">2.3.4</span></h2>
+			</div>
+
+			<div class="float-right w30 text-right">
+				<ul class="lr-breadcrumbs lr-list-inline">
+					<li><a class="lr-btn lr-btn-blue" href="../index.html">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="lr-container w80 bg-lightsteelblue4">
+<div class="slider1 owl-carousel owl-theme">
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" class="pirobox_gall item fancybox"
+title="Portrait of Lady Mary Guildford 1527" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/mary_lady_guildford._1527.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/mary_lady_guildford._1527.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Portrait of Lady Mary Guildford</h4>
+<div class="text-right">
+	<span class="autor-name">Ганс Гольбейн Младший<span>
+	<span class="artwork-year">1527</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" class="pirobox_gall item fancybox"
+title="Portrait of Prince Edward, later King Edward VI of England. c.1538" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/w1024/portrait_of_prince_edward_1538.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/portrait_of_prince_edward_1538.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Portrait of Prince Edward, later King Edward VI of England</h4>
+<div class="text-right">
+	<span class="autor-name">Ганс Гольбейн Младший<span>
+	<span class="artwork-year">1538</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет четы Арнольфини" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/van_eyck_-_arnolfini_portrait.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/van_eyck_-_arnolfini_portrait.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет четы Арнольфини</h4>
+<div class="text-right">
+	<span class="autor-name">Ян ван Эйк</span>
+	<span class="artwork-year">1434</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Мадонна канцлера Ролена" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/jan_van_eyck_madonna_kanclera_rolena_1441.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jan_van_eyck_madonna_kanclera_rolena_1441.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Мадонна канцлера Ролена</h4>
+<div class="text-right">
+	<span class="autor-name">Ян ван Эйк</span>
+	<span class="artwork-year">ок. 1441</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Аньес Сорель в облике Богоматери" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/jean_fouquet_-_anes_sorel_v_oblike_bogomateri.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/jean_fouquet_-_anes_sorel_v_oblike_bogomateri.jpg">
+</a>
+				</div>
+				<div class="slide-caption"> 
+<h4 class="artwork-title text-darkblue">Аньес Сорель в облике Богоматери</h4>
+<div class="text-right">
+	<span class="autor-name">Жан Фуке</span>
+	<span class="artwork-year">ок.1450</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет Марии Магдалены Портинари" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/memling_hans_portrait-of-maria-maddalena-portinari_1470.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/memling_hans_portrait-of-maria-maddalena-portinari_1470.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет Марии Магдалены Портинари</h4>
+<div class="text-right">
+	<span class="autor-name">Ганс Мемлинг</span>
+	<span class="artwork-year">1470</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Дофин Карл Орлеанский" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/painting/imagecache/w1024/hey_zhan_dofin_karl_orleanskiy.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/painting/imagecache/preview_gallery_img/hey_zhan_dofin_karl_orleanskiy.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Дофин Карл Орлеанский</h4>
+<div class="text-right">
+	<span class="autor-name">Жан Хэй</span>
+	<span class="artwork-year">1480-1500</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" 
+title="Портрет рыцаря" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p//site-content/albums/gallery_images/imagecache/w1024/gallery_images/carpaccio_vittore_knight.jpg">
+	<img src="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/gallery_images/imagecache/preview_gallery_img/gallery_images/carpaccio_vittore_knight.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Портрет рыцаря</h4>
+<div class="text-right">
+	<span class="autor-name">Витторе Карпаччо</span>
+	<span class="artwork-year">1510</span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+<pre>
+https://owlcarousel2.github.io/OwlCarousel2/
+
+https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
+Welcome | Owl Carousel | 2.3.4
+
+https://mel0ne.ru/2016/09/16/owl-carousel-2/
+
+https://cdnjs.com/libraries/OwlCarousel2
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css 
+	
+------------
+npm npm install --save owl.carousel
+bower bower install --save owl.carousel	
+
+</pre>
+
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+<!--
+<link type="text/css" rel="stylesheet" href="../../css/style.css">
+<script src="../../js/main.js"></script>
+-->
+
+</html>
