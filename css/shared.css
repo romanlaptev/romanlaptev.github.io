@@ -1,3 +1,12 @@
+/* calc padding within div*/
+html {
+	box-sizing:border-box;
+}
+*, *::before, *::after {
+	box-sizing:inherit;
+}
+
+
 .lr-container {
 	width: 90%;
 	margin: auto;
