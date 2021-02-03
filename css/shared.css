@@ -71,7 +71,7 @@ a:active, a:focus { outline: none; }
 
 .margin-small{margin:5px;}
 .margin-top-20{margin-top:20px;}
-.margin-auto{margin:auto;}
+.margin-auto, .lr-margin-auto{margin:auto;}
 
 .padding-small{padding:5px;}
 .padding-10{padding:10px;}
@@ -979,6 +979,10 @@ padding: 10px;
 }
 
 @media screen and (max-width:479px){
+}
+
+/* Galaxy S9 */
+@media screen and (max-width:360px){
 }
 
 @media screen and (max-width:340px){

@@ -28,7 +28,7 @@ function _draw( opt ){
 								<ul class="button-group uk-list">\
 <!--<button id="btn-play" class="btn btn-blue">play</button>\
 <button id="btn-pause" class="btn btn-blue">pause</button>-->\
-<li><a href="?q=prev-track" class="btn btn-blue">previousss track</a></li>\
+<li><a href="?q=prev-track" class="btn btn-blue">previous track</a></li>\
 <li><a href="?q=next-track" class="btn btn-blue">next track</a></li>\
 								</ul>\
 							</div>\
