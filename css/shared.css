@@ -965,6 +965,10 @@ padding: 10px;
 @media screen and (max-width:550px){
 }
 
+/* Surface Duo*/
+@media screen and (max-width:540px){
+}
+
 
 @media screen and (max-width:480px){
 	.lr-container {
@@ -979,6 +983,14 @@ padding: 10px;
 }
 
 @media screen and (max-width:479px){
+}
+
+/* iPhone */
+@media screen and (max-width:414px){
+}
+
+/* iPhone 6 */
+@media screen and (max-width:375px){
 }
 
 /* Galaxy S9 */
