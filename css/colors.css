@@ -261,6 +261,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blueviolet {background-color: #8a2be2;}
 .bg-color-test1003089 { background:#003089;}
 
+
 .bg-darkblue-green { background:#055c80;}
 
 .bg-color-test13d5afe { background:#3d5afe;}
@@ -280,6 +281,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1def { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
+
+.bg-blue-b { background:#17568c;} /*joomla dmin*/
 
 .bg-light-blue-a {  background-color: #9bb4d5;}
 .bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
