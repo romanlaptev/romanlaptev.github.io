@@ -1589,5 +1589,34 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 	<published format="d-M-Y H:i:s">17-Jan-2021 06:47:28</published>
 	<updated format="d-M-Y H:i:s">17-Jan-2021 06:48:38</updated>
 </node>
+
+<node type="playlist">
+	<title>
+		<item>Unreal, game soundtrack</item>
+	</title>
+	<images>
+		<img src="/music/0_covers/unreal.jpg"/>
+		<img src="https://i.ytimg.com/vi/7MSFW8pZ-_4/sddefault.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/unreal.json">unreal.json</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="9" tid="122" group_name="music_genre">Рок</item>
+		<item vid="9" tid="127" group_name="music_genre">Электронная музыка</item>
+		<item vid="2" tid="107" group_name="music_styles">rock</item>
+		<item vid="2" tid="32" group_name="music_styles">rave</item>
+		<item vid="2" tid="33" group_name="music_styles">techno</item>
+		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+		<item vid="3" tid="117" group_name="music_formats">soundtrack</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">02-Feb-2021 20:37:23</published>
+	<updated format="d-M-Y H:i:s">02-Feb-2021 20:37:23</updated>
+</node>
 	</database>
 </xroot>

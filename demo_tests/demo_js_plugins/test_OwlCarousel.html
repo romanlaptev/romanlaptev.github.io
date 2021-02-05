@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo test,  OwlCarousel2</title>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+<!--
+<script src="../../codebase/js/plugins/"></script>
+<link rel='stylesheet'  href='../../codebase/js/plugins/' type='text/css' media='all' />
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" 
+integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" 
+crossorigin="anonymous"></script>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" 
+integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" 
+crossorigin="anonymous" />
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" 
+integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" 
+crossorigin="anonymous" />
+
+<script>
+$(document).ready(function(){
+//console.log("--ready");
+	$('.slider1').owlCarousel({
+		items: 4,
+		startPosition:5,
+		margin: 5,//px
+		loop: true,
+		//autoplay: true,
+		//autoplayTimeout: 3000,
+		//autoplayHoverPause: true,
+		//center:true,
+		//mouseDrag:true,
+		//touchDrag:true,
+		nav:true,
+		navText:["<button>Prev</button>", "<button>Next</button> "],
+		dots: true,
+		dotsEach: true,
+		//lazyLoad,
+		//video: true,
+		//videoWidth: 320,
+		//videoHeight: 240,
+		responsive:{
+			0:{
+				items:1
+			},
+			600:{
+				items:2
+			},
+			1000:{
+				items:4
+			}
+		},
+		
+	});
+
+
+	//https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html
+	//var owl = $('.owl-carousel');
+	var slider1 = $('.slider1');
+	slider1.on('changed.owl.carousel', function(event) {
+console.log(event.type, event.item);		
+	});
+	
+});//end ready
+</script>
+
+<!--
+<link rel="stylesheet" href="http://wizardgraphics.dax.ru/albums/js/pirobox/pirobox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://wizardgraphics.dax.ru/albums/js/pirobox/pirobox_ansi.js"></script>
+-->
+<script type="text/javascript">
+/*
+$(document).ready(function() {
+	$.fn.piroBox({
+		my_speed: 300, //animation speed
+		bg_alpha: 0.1, //background opacity
+		slideShow : true, // true == slideshow on, false == slideshow off
+		slideSpeed : 6, //slideshow duration in seconds(3 to 6 Recommended)
+		close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
+	});
+});
+*/
+</script>
+
+
+<style>
+
+.slider1 {
+	max-width: 900px;
+	margin: auto;
+	padding-top: 50px;
+}
+.slide {
+	text-align:center;
+}
+
+.artwork-title{ }
+.autor-name{ font-size: 80% }
+.artwork-year{ font-size: 80%}
+
+.slider1 .slide-caption {
+	padding: 5px 10px;
+}
+
+.picture {
+	padding: 10px;
+	border: none !important;
+	box-shadow: 5px 5px silver;
+	background-color:#fff;
+}
+.picture:hover {
+	box-shadow: 0 0 5px inset;
+}
+
+@media screen and (max-width:1439px){
+}
+
+@media screen and (max-width:1280px){
+}
+
+@media screen and (max-width:1023px){
+}
+
+@media screen and (max-width:550px){
+}
+
+@media screen and (max-width:479px){
+}
+
+</style>
+
+
+</head>
+
+<body class="bg-darkblue-project">
+	
+	<div class="lr-container w80">
+		<div class="lr-panel lr-row">
+			<div class="float-left w70 text-white">
+				<h2>jQuery plugin Owl Carousel, version: <span id="version">2.3.4</span></h2>
+			</div>
+
+			<div class="float-right w30 text-right">
+				<ul class="lr-breadcrumbs lr-list-inline">
+					<li><a class="lr-btn lr-btn-blue" href="../index.html">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="lr-container w80 bg-lightsteelblue4">
+<div class="slider1 owl-carousel owl-theme">
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" class="pirobox_gall item fancybox"
+title="Kaiser Heinrich" 
+href="https://cloclo20.datacloudmail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/w1024/codex_manesse_6_kaiser_heinrich_3.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/codex_manesse_6_kaiser_heinrich_3.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Kaiser Heinrich</h4>
+<div class="text-right">
+	<span class="autor-name">Codex Manesse<span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]" class="pirobox_gall item fancybox"
+title="Herr Walther von Klingen" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/w1024/codex_manesse_52r_herr_walther_von_klingen.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/codex_manesse_52r_herr_walther_von_klingen.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Herr Walther von Klingen</h4>
+<div class="text-right">
+	<span class="autor-name">Манесский кодекс<span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]"  class="pirobox_gall item fancybox"
+title="Братья Лимбурги" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/Limburg/vremena_goda_-_01_yanvar.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/vremena_goda_-_01_yanvar.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Времена года - Январь</h4>
+<div class="text-right">
+	<span class="autor-name">Братья Лимбурги</span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]"  class="pirobox_gall item fancybox"
+title="Братья Лимбурги" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/w1024/pribytie_izabelly_francuzskoy_v_parizh_pic.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/pribytie_izabelly_francuzskoy_v_parizh_pic.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Прибытие Изабеллы Французской в Париж</h4>
+<div class="text-right">
+	<span class="autor-name">Хроники Жана Фруассара</span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]"  class="pirobox_gall item fancybox"
+title="Братья Лимбурги" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/Limburg/vremena_goda_-_09_sentyabr.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/vremena_goda_-_09_sentyabr.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Времена года - Сентябрь</h4>
+<div class="text-right">
+	<span class="autor-name">Братья Лимбурги</span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]"  class="pirobox_gall item fancybox"
+title="Братья Лимбурги" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/Limburg/vremena_goda_-_10_oktyabr.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/vremena_goda_-_10_oktyabr.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Времена года - Октябрь</h4>
+<div class="text-right">
+	<span class="autor-name">Братья Лимбурги</span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div>
+			<div class="slide picture">
+				<div class="slide-image">
+<a rel="lightbox[gallery1]"  class="pirobox_gall item fancybox"
+title="Братья Лимбурги" 
+href="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/Limburg/vremena_goda_-_12_dekabr.jpg">
+	<img src="https://thumb.cloud.mail.ru/weblink/thumb/xw1/JSDm/zciANxB6p/site-content/albums/miniature/imagecache/preview_gallery_img/vremena_goda_-_12_dekabr.jpg">
+</a>
+				</div>
+				<div class="slide-caption">
+<h4 class="artwork-title text-darkblue">Времена года - Декабрь</h4>
+<div class="text-right">
+	<span class="autor-name">Братья Лимбурги</span>
+	<span class="artwork-year"></span>
+</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+
+<pre>
+https://owlcarousel2.github.io/OwlCarousel2/
+
+https://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html
+Welcome | Owl Carousel | 2.3.4
+
+https://mel0ne.ru/2016/09/16/owl-carousel-2/
+
+https://cdnjs.com/libraries/OwlCarousel2
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js
+https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css 
+	
+------------
+npm npm install --save owl.carousel
+bower bower install --save owl.carousel	
+
+</pre>
+
+</body>
+
+<!-- shared site styles, scripts -->
+<link type="text/css" rel="stylesheet" href="../../css/shared.css">
+<link type="text/css" rel="stylesheet" href="../../css/colors.css">
+<!--
+<link type="text/css" rel="stylesheet" href="../../css/style.css">
+<script src="../../js/main.js"></script>
+-->
+
+</html>

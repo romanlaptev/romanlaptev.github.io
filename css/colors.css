@@ -1,3 +1,9 @@
+/*
+
+#f1f1f1 - wp admin page, body bg
+#f7f7f7 - body bg
+
+*/
 .text-white {color: #fff !important;}
 .text-aliceblue {color: #f0f8ff;}
 .text-antiquewhite {color: #faebd7;}
@@ -739,6 +745,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-red {background-color: #ff0000;}
 .bg-lightred-t{  background-color: #cec1bc;}/* landing */
 
+.bg-lilac{  background-color: #C8A2C8;}
 
 .bg-color-test1E23817 { background:#E23817;}
 .bg-color-test1de4f00 { background:#de4f00;}
@@ -786,6 +793,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 
 .bg-yellow1 {  background-color: #ffd320 !important;}
 .bg-yellow2 {  background-color: #ffcc00 !important;}
+.bg-yellow-pre {  background-color: #fff7d7}
 
 
 .bg-red-brown {  background-color: #2f0606 !important;}
@@ -1057,6 +1065,11 @@ background-image: -webkit-radial-gradient(center, ellipse closest-corner, #13598
 background-image: radial-gradient(ellipse closest-corner at center, #135987 30%, #092f48 100%);
 }
 
+.bg-gradient-darkblue {
+    background-image: linear-gradient(to top, #011d51 0%, #008bab 100%);
+}
+
+
 .bg-gradient-success {/* Bootstrap button */
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -1298,6 +1311,7 @@ inset -2px -1px 40px rgba(0, 0, 0, 0.1),
 .colorbox.bg-gradient-rainbow {
 	width: 600px;
 }
+
 
 .bg-gradient-test {
 }

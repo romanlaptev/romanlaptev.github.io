@@ -1,3 +1,12 @@
+/* calc padding within div*/
+html {
+	box-sizing:border-box;
+}
+*, *::before, *::after {
+	box-sizing:inherit;
+}
+
+
 .lr-container {
 	width: 90%;
 	margin: auto;
@@ -62,7 +71,7 @@ a:active, a:focus { outline: none; }
 
 .margin-small{margin:5px;}
 .margin-top-20{margin-top:20px;}
-.margin-auto{margin:auto;}
+.margin-auto, .lr-margin-auto{margin:auto;}
 
 .padding-small{padding:5px;}
 .padding-10{padding:10px;}
@@ -902,9 +911,11 @@ padding: 10px;
 
 /*====== MEDIA styles =======*/
 @media screen and (max-width:1600px){}
+@media screen and (max-width:1439px){}
 @media screen and (max-width:1300px){}
 @media screen and (max-width:1280px){}
 @media screen and (max-width:1090px){}
+@media screen and (max-width:1023px){}
 
 @media screen and (max-width: 990px){
 /*
@@ -951,6 +962,14 @@ padding: 10px;
 	}
 }
 
+@media screen and (max-width:550px){
+}
+
+/* Surface Duo*/
+@media screen and (max-width:540px){
+}
+
+
 @media screen and (max-width:480px){
 	.lr-container {
 		width: 99%;
@@ -958,11 +977,24 @@ padding: 10px;
 	.page-header h1 {
 		font-size: 120%;
 	}
-}
-@media (max-width: 480px){
 	.lr-panel-inline {
 		display: block;
 	}
+}
+
+@media screen and (max-width:479px){
+}
+
+/* iPhone */
+@media screen and (max-width:414px){
+}
+
+/* iPhone 6 */
+@media screen and (max-width:375px){
+}
+
+/* Galaxy S9 */
+@media screen and (max-width:360px){
 }
 
 @media screen and (max-width:340px){
