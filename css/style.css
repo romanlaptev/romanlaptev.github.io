@@ -9,12 +9,14 @@ body{
 }
 
 .lr-container {
+	border-radius: 4px;
+	width: 80%;
 /*background-color: #b6cfed;	*/
 /*border: 1px solid rgba(0, 0, 0, 0.15);*/
-border-radius: 4px;
 /*box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);*/
 	padding: 1%;
 }
+
 
 .page-header {
 	border-bottom: 1px solid #000;
@@ -82,8 +84,6 @@ margin: 0;
 	font-family: ticker_taperegular;
 }
 .lr-btn-blue {
-	font-family: avantgarde;
-	padding: 10px 15px;
 }
 .lr-btn-green-shadow {
 	/*font-family: Lobster;*/
@@ -94,7 +94,13 @@ margin: 0;
 /*====== MEDIA styles =======*/
 @media screen and (max-width:1600px){}
 @media screen and (max-width:1300px){}
-@media screen and (max-width:1280px){}
+
+@media screen and (max-width:1280px){
+	.lr-container {
+		width: 90%;
+	}
+}
+
 @media screen and (max-width:1090px){}
 
 @media screen and (max-width: 990px){
@@ -104,7 +110,7 @@ margin: 0;
 	}
 */
 	.lr-container {
-		width: 90%;
+		width: 100%;
 	}
 	.list-group-item a {
 		display: block;
