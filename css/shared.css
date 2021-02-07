@@ -829,8 +829,8 @@ header .navbar {
 
 .lr-alert {
 	padding: 15px;
-	margin-bottom: 3px;
-	border: 1px solid transparent;
+	margin: 3px !important;
+	border: 1px solid;
 	border-radius: 4px;
 	padding: 10px;
 }
@@ -839,7 +839,7 @@ header .navbar {
 	color: #000;
 	background-color: #ffb515;
 	/*border-color: #8a6d3b;*/
-	border-color: #ffb515;
+	border-color: #a0522d;
 }
 
 .lr-alert-danger {
@@ -851,9 +851,14 @@ header .navbar {
 .lr-alert-info {
 	color: #31708f;
 	background-color: #d9edf7;
-	border-color: #bce8f1;
+	border-color: #0174e9;
 }
 
+.lr-alert-success {
+	color: #fff;
+	background-color: #00A500;
+	border-color: #008000;
+}
 
 /* LOG panel */
 .log-panel {
@@ -875,12 +880,10 @@ text-decoration:none;
 outline: none;
 }
 
-/*	
 #log{
 	height: 400px;
 	overflow-y: auto;	
 }
-*/	
 
 /*	
 #btn-clear-log {
