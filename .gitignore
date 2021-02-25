@@ -28,6 +28,7 @@ _export_lib.xml
 files_ignore/*
 */files_ignore/*
 */*/files_ignore/*
+*/*/*/files_ignore/*
 
 # https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
