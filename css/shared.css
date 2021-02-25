@@ -28,7 +28,9 @@ a:active, a:focus { outline: none; }
 .w30{width:30%;}
 .w33{width:33%;}
 .w50{width:50%;}
-.w60{width:60%;}
+
+.w60,.w60-large,.w60-lg{width:60%;}
+
 .w65{width:65%;}
 .w70{width:70%;}
 .w80{width:80%;}
@@ -940,17 +942,18 @@ padding: 10px;
 @media screen and (max-width:1023px){}
 
 @media screen and (max-width: 990px){
-/*
-	body {
-		padding-top: 5px;
-	}
-*/
 	.lr-container {
 		width: 90%;
 	}
 	.list-group-item a {
 		display: block;
 	}
+}
+
+@media screen and (max-width: 980px) {
+  .w60-large,.w60-lg {
+      width: 100%;
+  }  
 }
 
 @media screen and (max-width:870px){}
