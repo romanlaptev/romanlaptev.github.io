@@ -29,7 +29,10 @@
 .text-darkblue {color: #00008b;}
 .text-darkcyan {color: #008b8b;}
 .text-darkgoldenrod {color: #b8860b;}
+
 .text-darkgray {color: #a9a9a9;}
+.text-grey-d5{color: #D5D5D5;}
+
 .text-darkgreen {color: #006400;}
 .text-darkkhaki {color: #bdb76b;}
 .text-darkmagenta {color: #8b008b;}
@@ -202,6 +205,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #D3C5BE !important;
 }
 
+
+.bg-grey-d5{
+  background-color: #D5D5D5;
+}
 
 .bg-grey1{ /* comp-books.css */
   background-color: #404050 !important;

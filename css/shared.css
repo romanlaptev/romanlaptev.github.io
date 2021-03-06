@@ -84,9 +84,14 @@ a:active, a:focus { outline: none; }
 .lr-padding-top-50, .padding-top-50 {padding-top: 50px;}
 .lr-padding-top-60, .padding-top-60 {padding-top: 60px;}
 
+
 .colorbox { padding:20px; }
+
 .lr-font-bold{	font-weight:bold;}
 .lr-font-italic{ font-style:italic;}
+.lr-text-small{
+	font-size: 12px;
+}
 
 .hidden {display:none;}
 
@@ -932,6 +937,16 @@ padding: 10px;
 .picture:hover {
 	box-shadow: 0 0 5px inset;
 }
+
+
+/*====== FLEX ===== */
+.lr-flex{
+	display:fle;
+}
+.lr-flex-vcenter{
+	align-items:center;
+}
+
 
 /*====== MEDIA styles =======*/
 @media screen and (max-width:1600px){}
