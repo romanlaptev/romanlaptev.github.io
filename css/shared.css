@@ -940,11 +940,42 @@ padding: 10px;
 
 
 /*====== FLEX ===== */
+@supports (display : flex) {
+   .test-support-flex {
+		/*background-color : lime !important;*/
+	}
+	.lr-panel-inline {
+		width: auto !important;
+		margin: 5px !important;
+	}	
+}
+@supports not (display : flex) {
+   .test-support-flex {
+		background-color : red !important;
+	}
+}
+
 .lr-flex{
-	display:fle;
+	display:flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;	
+}
+.lr-flex-wrap {
+	flex-wrap: wrap;
+}
+
+.lr-flex-hcenter{
+	justify-content:center;
 }
 .lr-flex-vcenter{
 	align-items:center;
+}
+.lr-flex-vtop{
+	align-items:start;
+}
+.lr-flex-vbottom{
+	align-items:end;
 }
 
 
