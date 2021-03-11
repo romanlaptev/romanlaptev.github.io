@@ -942,12 +942,8 @@ padding: 10px;
 /*====== FLEX ===== */
 @supports (display : flex) {
    .test-support-flex {
-		/*background-color : lime !important;*/
+		background-color : lime !important;
 	}
-	.lr-panel-inline {
-		width: auto !important;
-		margin: 5px !important;
-	}	
 }
 @supports not (display : flex) {
    .test-support-flex {
