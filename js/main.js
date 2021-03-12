@@ -3,8 +3,38 @@
 	if( document.getElementById("current_date") ) {
 		_calcUpTime();
 	}
-};//end load
 
+
+if( document.querySelector ){
+	var ua_header = document.querySelector("#user-agent");
+	var flex_info = document.querySelector("#supportFlex");
+	var grid_info = document.querySelector("#supportGrid");
+} else {
+	var ua_header = document.getElementById("ua");
+	var flex_info = document.getElementById("supportFlex");
+	var grid_info = document.getElementById("supportGrid");
+}
+
+	ua_header.innerHTML = navigator.userAgent;
+
+	if( typeof CSS !== "undefined" ){
+		if( typeof CSS.supports === "function" ){
+
+	var supportFlex = CSS.supports("display", "flex");
+	flex_info.innerHTML += " : " + supportFlex;
+
+	var supportGrid = CSS.supports("display", "grid");
+	grid_info.innerHTML += " : " + supportGrid;
+
+		} else {
+				flex_info.innerHTML += " false, method CSS.supports not defined....";
+		}
+
+	} else {
+			flex_info.innerHTML += " false, object CSS not defined....";
+	}
+
+}//end load
 
 
 if( typeof window.AG_jQuery === "function"){

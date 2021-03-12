@@ -21,12 +21,16 @@ a {
 a:active, a:focus { outline: none; }
 
 /* GRID */
+.w1{width:1%;}
+.w5{width:5%;}
 .w10{width:10%;}
 .w15{width:15%;}
 .w20{width:20%;}
 .w25{width:25%;}
 .w30{width:30%;}
 .w33{width:33%;}
+.w40{width:40%;}
+.w45{width:45%;}
 .w50{width:50%;}
 
 .w60,.w60-large,.w60-lg{width:60%;}
@@ -72,17 +76,24 @@ a:active, a:focus { outline: none; }
 .text-bold{font-weight:bold;}
 
 .lr-margin-small, .margin-small{margin:5px;}
-.lr-margin-top-20, .margin-top-20{margin-top:20px;}
+.lr-margin-small-top{margin-top:5px;}
+
 .lr-margin-auto, .margin-auto{margin:auto;}
 
+.lr-margin-10, .lr-margin10 {margin:10px;}
+.lr-margin-20, .lr-margin20 {margin:20px;}
+.lr-margin-10-top, .lr-margin10-top {margin-top:10px;}
+.lr-margin-20-top, .lr-margin20-top {margin-top:20px;}
+
 .lr-padding-small, .padding-small{padding:5px;}
-.lt-padding-10, .padding-10{padding:10px;}
+
+.lr-padding-10, .padding-10{padding:10px;}
 .lr-padding-20, .lr-padding20, .padding-20, .padding20 {padding:20px;}
-.lr-padding-top-10,  .padding-top-10 {padding-top: 10px;}
-.lr-padding-top-20, .padding-top-20 {padding-top: 20px;}
-.lr-padding-top-30, .padding-top-30 {padding-top: 30px;}
-.lr-padding-top-50, .padding-top-50 {padding-top: 50px;}
-.lr-padding-top-60, .padding-top-60 {padding-top: 60px;}
+.lr-padding-10-top, .lr-padding10-top {padding-top: 10px;}
+.lr-padding-20-top, .lr-padding20-top {padding-top: 20px;}
+.lr-padding-30-top, .lr-padding30-top {padding-top: 30px;}
+.lr-padding-50-top, .lr-padding50-top {padding-top: 50px;}
+.lr-padding-60-top, .lr-padding60-top {padding-top: 60px;}
 
 
 .colorbox { padding:20px; }
@@ -942,12 +953,12 @@ padding: 10px;
 /*====== FLEX ===== */
 @supports (display : flex) {
    .test-support-flex {
-		background-color : lime !important;
+		background-color : #20ce20 !important;
 	}
 }
 @supports not (display : flex) {
    .test-support-flex {
-		background-color : red !important;
+		background-color : #ff7f50 !important;
 	}
 }
 
@@ -972,6 +983,19 @@ padding: 10px;
 }
 .lr-flex-vbottom{
 	align-items:end;
+}
+
+
+/*====== GRID =======*/
+@supports (display: grid) {
+   .test-support-grid {
+		background-color : #20ce20;
+	}
+}
+@supports not (display: grid) {
+   .test-support-grid {
+		background-color : #ff7f50;
+	}
 }
 
 

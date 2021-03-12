@@ -61,7 +61,7 @@ https://web.dev/codelab-preload-web-fonts/
 	<script src="js/main.js"></script>
 </head>
 
-<body class="bg-darkblue-project test-support-flex">
+<body class="bg-darkblue-project">
 
 	<div class="lr-container bg-lightsteelblue4">
 					
@@ -241,12 +241,17 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 		
 	</div><!-- end container -->
 
-	<div style="height:3px">&nbsp;</div>
 
-	<footer class="lr-container padding-10 bg-lightsteelblue4">
-		<div class="bg-darkblue">
-			<div class="lr-panel-body text-right">
-<p class="text-white">
+	<footer class="lr-container padding-10 bg-lightsteelblue4 lr-margin10-top">
+		<div class="bg-darkblue lr-padding-10">
+
+<div class="lr-margin-small lr-padding-small">
+	<span id="user-agent" class="bg-cornsilk lr-padding-small"></span>
+	<span id="supportFlex" class="test-support-flex text-white lr-padding-small">support-flex</span>
+	<span id="supportGrid" class="test-support-grid text-white lr-padding-small">support-grid</span>
+</div>
+			
+<p class="text-white text-right">
 <b>Start: </b>28.05.2016 - <span id="current_date"></span>, 
 <b>Uptime: </b><span id="uptime2"></span> days (<span id="uptime"></span>)
 </p>
@@ -254,7 +259,6 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 				<a target="_blank" href="index_theme1.html">old theme</a>
 <div class="test" id="supportFlex"></div>
 -->
-			</div>
 		</div>
 	</footer>
 	
