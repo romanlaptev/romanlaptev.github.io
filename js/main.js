@@ -20,18 +20,24 @@ if( document.querySelector ){
 	if( typeof CSS !== "undefined" ){
 		if( typeof CSS.supports === "function" ){
 
-	var supportFlex = CSS.supports("display", "flex");
-	flex_info.innerHTML += " : " + supportFlex;
+			var supportFlex = CSS.supports("display", "flex");
+			flex_info.innerHTML += " : " + supportFlex;
 
-	var supportGrid = CSS.supports("display", "grid");
-	grid_info.innerHTML += " : " + supportGrid;
+			var supportGrid = CSS.supports("display", "grid");
+			grid_info.innerHTML += " : " + supportGrid;
 
 		} else {
-				flex_info.innerHTML += " false, method CSS.supports not defined....";
+				flex_info.innerHTML += " false";
+				flex_info.classList.add("CSS-support-fail");
+				grid_info.innerHTML += " false";
+				document.body.classList.add("CSS-support-fail");
 		}
 
 	} else {
-			flex_info.innerHTML += " false, object CSS not defined....";
+			flex_info.innerHTML += " false";
+			flex_info.classList.add("CSS-support-fail");
+			grid_info.innerHTML += " false";
+			document.body.classList.add("CSS-support-fail");
 	}
 
 }//end load

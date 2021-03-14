@@ -960,13 +960,22 @@ padding: 10px;
 		background-color : #ff7f50 !important;
 	}
 }
+.CSS-support-fail .test-support-flex{
+	background-color : #ff7f50 !important;
+}
 
 .lr-flex{
 	display:flex;
+	display:inline-block;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;	
 }
+.CSS-support-fail .lr-flex{
+	display:inline-block !important;
+}
+
+
 .lr-flex-wrap {
 	flex-wrap: wrap;
 }
@@ -995,6 +1004,9 @@ padding: 10px;
    .test-support-grid {
 		background-color : #ff7f50;
 	}
+}
+.CSS-support-fail .test-support-grid{
+	background-color : #ff7f50 !important;
 }
 
 
