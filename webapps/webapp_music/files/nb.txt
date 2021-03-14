@@ -9,6 +9,15 @@ webApp.draw()
 	- module localStorage ("webSQLmodule.js" "iDBmodule.js" "storage.js" )
 	*- module fileManager (file_manager.js)
 
+======================= API
+добавить загрузку и встраивание плейлистов с 
+Яндекс.музыки
+Youtube
+
+======================= 
+- в шаблоне, добавить обработку ссылок типа изображение галереи
+<img data-type="image-gallery" .....
+
 =================================================================== ИСПРАВИТЬ
 
 -------- в файловом менеджере невозможно перейти в папку /music/R/Red Elvises/2004 - Lunatics & Poets

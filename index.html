@@ -53,7 +53,7 @@ https://web.dev/codelab-preload-web-fonts/
 -->
 	<link rel="stylesheet" href="css/shared.css">
 	<link rel="stylesheet" href="fonts/fonts.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/glyphicon.css" type="text/css" />
+	<link rel="stylesheet" href="fonts/glyphicons/glyphicon.css" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="css/colors.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -63,21 +63,21 @@ https://web.dev/codelab-preload-web-fonts/
 
 <body class="bg-darkblue-project">
 
-	<div class="lr-container w80 bg-lightsteelblue4">
+	<div class="lr-container bg-lightsteelblue4">
 					
 		<div class="page-header">
 			<h1 class="text-right">Roman Laptev personal site...</h1>
 		</div>
 		
-<div class="text-center">
+<div class="text-center lr-flex lr-flex-wrap lr-flex-hcenter lr-flex-vtop">
 
-		<div class="lr-panel-inline text-left bg-white">
+		<div class="lr-panel-inline text-left bg-whitesmoke lr-margin-small">
 			<div class="lr-panel-heading bg-darkblue  text-white">
 				<h3>webapps</h3>
 			</div>
 
 			<div class="lr-panel-body">
-<a  href="projects/schedule/app.html" class="lr-btn lr-btn-teal" target="_blank">
+<a  href="webapps/schedule_app/app.html" class="lr-btn lr-btn-green-shadow" target="_blank">
 Расписание транспорта</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/projects/schedule" 
 class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
@@ -93,7 +93,7 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 			</div>
 
 			<div class="lr-panel-body">
-<a  href="webapps/bookmarks/" target="_blank" class="lr-btn lr-btn-blue">Bookmarks application</a>
+<a  href="webapps/bookmarks/app.html" target="_blank" class="lr-btn lr-btn-blue">Bookmarks application</a>
 <a href="https://github.com/romanlaptev/bookmarks" target="_blank"
 class="lr-btn bg-gradient-orange" title="GitHub repository">GitHub</a>
 <a class="lr-btn lr-btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-bookmarks.glitch.me">
@@ -105,6 +105,8 @@ class="lr-btn bg-gradient-orange" title="GitHub repository">GitHub</a>
 <a href="webapps/webapp_video/app.html" target="_blank" class="lr-btn lr-btn-blue">webapp_video</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/webapp_video" 
 class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitHub</a>
+	<a href="/projects/webapp_video/" 
+class="lr-btn lr-btn-default" target="_blank">localhost</a>
 			</div>
 
 			<div class="lr-panel-body">
@@ -128,8 +130,8 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 			
 				
 
-		<div class="lr-panel-inline text-left bg-white">
-			<div class="lr-panel-heading bg-gradient-green  text-black">
+		<div class="lr-panel-inline text-left bg-snow lr-margin-small">
+			<div class="lr-panel-heading bg-blue-c3 text-white">
 				<h3>code</h3>
 			</div>
 			<div class="lr-panel-body">
@@ -139,7 +141,8 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 Browser info</a>
 -->
 <div>
-	<a class="lr-btn lr-btn-primary" target="_blank" href="projects/browser_info.html"><i class="glyphicon glyphicon-ok-circle"></i>
+	<a class="lr-btn lr-btn-darkblue lr-hover-blue" target="_blank" href="projects/browser_info.html">
+		<i class="glyphicon glyphicon-ok-circle"></i>
 <span class="">Browser info</span></a>
 	<a target="_blank" href="projects/test_ECMAScript_ver.html">Test ECMAScript </a>
 </div>
@@ -158,17 +161,21 @@ class="lr-btn lr-btn-default" target="_blank">localhost</a>
 				<ul class="lr-list-group">
 <li class="">
 	<a target="_blank" href="projects/webcolors/">web colors</a> |
-	<a target="_blank" href="projects/webcolors/test_CSS_colors.html">test colors.css</a>
+	<a target="_blank" href="projects/webcolors/test_CSS_colors.html">test colors.css</a> |
+	<a target="_blank" href="fonts/preview_fonts.html">preview_fonts</a>
 </li>
 <li class="">
-<a href="projects/notes/index.html" target="_blank" class="lr-btn lr-btn-darkblue"><i class="glyphicon glyphicon-star"></i>Notes</a>
+<a href="projects/notes/app.html" target="_blank" class="lr-btn lr-btn-darkblue lr-hover-blue">
+<!--	<i class="glyphicon glyphicon-star">-->
+	</i>Notes
+</a>
 <a href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/projects/notes" 
 class="" title="GitHub repository" target="_blank">GitHub</a> |
 <a target="_blank" class="" href="/projects/romanlaptev.heroku/projects/db_admin/">Db admin</a> |
 <a target="_blank" href="projects/notes/files/test_API.html">test DB API</a>
 </li>
 <li class="">
-<a class="lr-btn lr-btn-darkblue" target="_blank" href="webapps/geolocation/app.html">test map API</a>
+<a class="lr-btn lr-btn-darkblue lr-hover-blue" target="_blank" href="webapps/geolocation/app.html">test map API</a>
 <a class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank" 
 href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/geolocation">GitHub</a>
 <a class="lr-btn lr-btn-default" title="dev version, glitch.me" target="_blank" href="https://romanlaptev-geolocation.glitch.me/app.html">
@@ -188,11 +195,11 @@ href="https://github.com/romanlaptev/romanlaptev.github.io/tree/master/webapps/g
 
 		</div><!-- end panel -->
 
-		<div class="lr-panel-inline text-left bg-white">
+		<div class="lr-panel-inline text-left bg-white lr-margin-small">
 			<div class="lr-panel-heading bg-gradient-warning  text-black">
 				<h3>sites</h3>
 			</div>
-			<div class="lr-panel-body">
+			<div class="lr-panel-body w90">
 <ul class="lr-list-group lr-nav">
 	<li class="">
 <a target="_blank" href="https://romanlaptev.herokuapp.com/">romanlaptev.herokuapp.com</a>
@@ -215,25 +222,43 @@ class="lr-btn bg-gradient-orange" title="GitHub repository" target="_blank">GitH
 
 <a href="https://romanvlaptev.wordpress.com" target="_blank" class="lr-btn btn-green-shadow">romanvlaptev.wordpress.com</a>
 
-					</div>
+			</div>
+					
+			<div class="lr-panel-body">
+<h3>local net links</h3>				
+<ul class="lr-list-inline">
+	<li class="">
+<a href="http://wl500gp:880" class="lr-btn bg-gradient-default" target="_blank">wl500gp</a>
+	</li>
+	<li class="">
+<a href="http://i5/webdisk/config.git/virtualbox_settings/virtualweb.html" class="lr-btn bg-gradient-default" target="_blank">virtualweb</a>
+	</li>	
+</ul>
+
+			</div>
 		</div><!-- end panel -->
-</div>
 		
-	</div><!-- end container -->
+	</div><!-- end text-center -->
+</div><!-- end container -->
 
-	<div style="height:3px">&nbsp;</div>
 
-	<footer class="lr-container w80 padding-10 bg-lightsteelblue4">
-		<div class="bg-darkblue">
-			<div class="lr-panel-body text-right">
-<p class="text-white">
+	<footer class="lr-container padding-10 bg-lightsteelblue4 lr-margin10-top">
+		<div class="bg-darkblue lr-padding-10">
+
+<div class="lr-padding-small">
+	<div id="user-agent" class="bg-whitesmoke lr-padding-10"></div>
+	<span id="supportFlex" class="test-support-flex text-white lr-padding-small">support-flex</span>
+	<span id="supportGrid" class="test-support-grid text-white lr-padding-small">support-grid</span>
+</div>
+			
+<p class="text-white text-right">
 <b>Start: </b>28.05.2016 - <span id="current_date"></span>, 
 <b>Uptime: </b><span id="uptime2"></span> days (<span id="uptime"></span>)
 </p>
 <!--
 				<a target="_blank" href="index_theme1.html">old theme</a>
+<div class="test" id="supportFlex"></div>
 -->
-			</div>
 		</div>
 	</footer>
 	

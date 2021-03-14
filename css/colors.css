@@ -29,7 +29,10 @@
 .text-darkblue {color: #00008b;}
 .text-darkcyan {color: #008b8b;}
 .text-darkgoldenrod {color: #b8860b;}
+
 .text-darkgray {color: #a9a9a9;}
+.text-grey-d5{color: #D5D5D5;}
+
 .text-darkgreen {color: #006400;}
 .text-darkkhaki {color: #bdb76b;}
 .text-darkmagenta {color: #8b008b;}
@@ -150,14 +153,25 @@
 .text-yellowgreen {color: #9acd32;}
 
 
-.border-white{border: 3px solid #fff !important;}
-.border-black{border: 3px solid #000 !important;}
-.border-red{border: 3px solid #f00 !important;}
-.border-silver{border: 1px solid #c0c0c0;}
-.border-cyan {
-	border: 3px solid #159fd2;
+.lr-border-box{
+border: 1px solid;
+}
+
+.lr-border-white{border-color: #fff;}
+.lr-border-black{border-color: #000;}
+.lr-border-red{border-color: #f00;}
+.lr-border-silver{border-color:#c0c0c0;}
+.lr-border-cyan {
+	border-color:#159fd2;
+}
+
+.lr-border-radius5{
 	border-radius: 5px;
 }
+
+
+.border-white{border: 3px solid #fff !important;}
+.border-silver{border: 1px solid #c0c0c0;}
 
 .border-box{
 border: 1px solid #004586;
@@ -191,6 +205,10 @@ https://www.omiod.com/colors/?rgb=d0ccd5
   background-color: #D3C5BE !important;
 }
 
+
+.bg-grey-d5{
+  background-color: #D5D5D5;
+}
 
 .bg-grey1{ /* comp-books.css */
   background-color: #404050 !important;
@@ -261,6 +279,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-blueviolet {background-color: #8a2be2;}
 .bg-color-test1003089 { background:#003089;}
 
+
 .bg-darkblue-green { background:#055c80;}
 
 .bg-color-test13d5afe { background:#3d5afe;}
@@ -280,6 +299,8 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-color-test1def { background:#def;}
 .bg-color-test1196e9c { background:#196e9c; }
 .bg-color-test10060a0 { background:#0060a0;}
+
+.bg-blue-b { background:#17568c;} /*joomla dmin*/
 
 .bg-light-blue-a {  background-color: #9bb4d5;}
 .bg-light-blue-darken-4 {  background-color: #01579b !important;} /* materialize.css */
@@ -512,6 +533,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-lightgreen-d{  background-color: #bbee77;}/* Drupal info alert */
 .bg-lightgreen-t{  background-color: #94db8a;}/* landing */
 .bg-lightgreen-w{  background-color: #d1e4dd}/* wordpress, dmin */
+.bg-lightgreen-b{  background-color: #dde7e9}/* bitrix, admin */
 
 
 .bg-honeydew {background-color: #f0fff0;border:1px solid #009900;}
@@ -633,6 +655,7 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-vivid-teal { background:#00B8D9;}
 .bg-dark-teal {  background-color:  #003438;}
 .bg-medium-teal {  background-color:  #65a3be;}
+.bg-teal-b {background-color: #018fbc;}
 
 
 
@@ -760,7 +783,11 @@ https://www.omiod.com/colors/?rgb=d0ccd5
 .bg-seagreen {background-color: #2e8b57;}
 .bg-seashell {background-color: #fff5ee;}
 .bg-sienna {background-color: #a0522d;}
+
 .bg-silver {background-color: #c0c0c0;}
+.bg-lightsilver {background-color: #e9e9e9;}
+
+
 .bg-skyblue {background-color: #87ceeb;}
 .bg-slateblue {background-color: #6a5acd;}
 .bg-slategray {background-color: #708090;}

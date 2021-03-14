@@ -11,18 +11,19 @@
 </tag_groups>
 <tag_list>
 	<tag tid="10" vid="2" group_name="music_styles">heavy metal</tag>
-	<tag tid="11" vid="2" group_name="music_styles">speed</tag>
-	<tag tid="12" vid="2" group_name="music_styles">power</tag>
-	<tag tid="15" vid="2" group_name="music_styles">фолк-метал</tag>
-	<tag tid="17" vid="2" group_name="music_styles">thrash</tag>
-	<tag tid="22" vid="2" group_name="music_styles">death</tag>
-	<tag tid="23" vid="2" group_name="music_styles">doom</tag>
-	<tag tid="24" vid="2" group_name="music_styles">симфоник-метал</tag>
+	<tag tid="11" vid="2" group_name="music_styles">speed metal</tag>
+	<tag tid="12" vid="2" group_name="music_styles">power metal</tag>
+	<tag tid="15" vid="2" group_name="music_styles">folk metal</tag>
+	<tag tid="17" vid="2" group_name="music_styles">thrash metal</tag>
+	<tag tid="22" vid="2" group_name="music_styles">death metal</tag>
+	<tag tid="23" vid="2" group_name="music_styles">doom metal</tag>
+	<tag tid="24" vid="2" group_name="music_styles">symphonic metal</tag>
 	<tag tid="31" vid="2" group_name="music_styles">disco</tag>
 	<tag tid="32" vid="2" group_name="music_styles">rave</tag>
 	<tag tid="33" vid="2" group_name="music_styles">techno</tag>
 	<tag tid="34" vid="2" group_name="music_styles">classic rock</tag>
 	<tag tid="39" vid="2" group_name="music_styles">русский рок</tag>
+	<tag tid="41" vid="2" group_name="music_styles">pagan metal</tag>
 	<tag tid="43" vid="2" group_name="music_styles">ska</tag>
 	<tag tid="45" vid="2" group_name="music_styles">punk</tag>
 	<tag tid="50" vid="4" group_name="country">Швеция</tag>
@@ -38,6 +39,7 @@
 	<tag tid="67" vid="5" group_name="alphabetical_voc">П</tag>
 	<tag tid="68" vid="5" group_name="alphabetical_voc">Р</tag>
 	<tag tid="70" vid="5" group_name="alphabetical_voc">Т</tag>
+	<tag tid="73" vid="5" group_name="alphabetical_voc">Х</tag>
 	<tag tid="74" vid="5" group_name="alphabetical_voc">Ц</tag>
 	<tag tid="77" vid="5" group_name="alphabetical_voc">Ш</tag>
 	<tag tid="83" vid="5" group_name="alphabetical_voc">A</tag>
@@ -55,13 +57,14 @@
 	<tag tid="99" vid="5" group_name="alphabetical_voc">S</tag>
 	<tag tid="100" vid="5" group_name="alphabetical_voc">T</tag>
 	<tag tid="101" vid="5" group_name="alphabetical_voc">V</tag>
-	<tag tid="105" vid="2" group_name="music_styles">black</tag>
+	<tag tid="105" vid="2" group_name="music_styles">black metal</tag>
 	<tag tid="106" vid="2" group_name="music_styles">post-punk</tag>
 	<tag tid="107" vid="2" group_name="music_styles">rock</tag>
 	<tag tid="108" vid="2" group_name="music_styles">art-rock</tag>
 	<tag tid="109" vid="2" group_name="music_styles">hard-rock</tag>
 	<tag tid="110" vid="2" group_name="music_styles">alternative rock</tag>
 	<tag tid="112" vid="2" group_name="music_styles">psychedelic rock</tag>
+	<tag tid="114" vid="5" group_name="alphabetical_voc">O</tag>
 	<tag tid="116" vid="4" group_name="country">США</tag>
 	<tag tid="117" vid="3" group_name="music_formats">soundtrack</tag>
 	<tag tid="118" vid="3" group_name="music_formats">aria</tag>
@@ -106,6 +109,7 @@
 	<tag tid="162" vid="5" group_name="alphabetical_voc">C</tag>
 	<tag tid="163" vid="9" group_name="music_genre">кабаре</tag>
 	<tag tid="164" vid="9" group_name="music_genre">Танцевальная музыка</tag>
+	<tag tid="165" vid="2" group_name="music_styles">groove metal</tag>
 </tag_list>
 
 
@@ -309,7 +313,7 @@
 	<node_tags>
 		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
 		<item vid="4" tid="116" group_name="country">США</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -330,7 +334,7 @@
 	<node_tags>
 		<item vid="5" tid="99" group_name="alphabetical_voc">S</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
 		<item vid="4" tid="158" group_name="country">Бразилия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -409,7 +413,7 @@
 	<node_tags>
 		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
 		<item vid="4" tid="116" group_name="country">США</item>
 		<item vid="3" tid="120" group_name="music_formats">studio album</item>
 	</node_tags>
@@ -688,8 +692,8 @@
 	<node_tags>
 		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="22" group_name="music_styles">death</item>
-		<item vid="2" tid="23" group_name="music_styles">doom</item>
+		<item vid="2" tid="22" group_name="music_styles">death metal</item>
+		<item vid="2" tid="23" group_name="music_styles">doom metal</item>
 		<item vid="4" tid="132" group_name="country">Великобритания</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -715,7 +719,7 @@
 		<item vid="5" tid="64" group_name="alphabetical_voc">М</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
 		<item vid="2" tid="107" group_name="music_styles">rock</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
 		<item vid="4" tid="149" group_name="country">Россия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -772,7 +776,7 @@
 		<item vid="5" tid="70" group_name="alphabetical_voc">Т</item>
 		<item vid="9" tid="134" group_name="music_genre">Академическая музыка</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
+		<item vid="2" tid="24" group_name="music_styles">symphonic metal</item>
 		<item vid="4" tid="50" group_name="country">Швеция</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -801,8 +805,8 @@
 		<item vid="5" tid="65" group_name="alphabetical_voc">Н</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
 		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
-		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
-		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="2" tid="24" group_name="music_styles">symphonic metal</item>
+		<item vid="2" tid="15" group_name="music_styles">folk metal</item>
 		<item vid="4" tid="147" group_name="country">Финляндия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -850,7 +854,7 @@
 	<node_tags>
 		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
 		<item vid="4" tid="51" group_name="country">Германия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -1001,10 +1005,10 @@
 		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
 		<item vid="5" tid="100" group_name="alphabetical_voc">T</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="105" group_name="music_styles">black</item>
-		<item vid="2" tid="17" group_name="music_styles">thrash</item>
-		<item vid="2" tid="22" group_name="music_styles">death</item>
-		<item vid="2" tid="23" group_name="music_styles">doom</item>
+		<item vid="2" tid="105" group_name="music_styles">black metal</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
+		<item vid="2" tid="22" group_name="music_styles">death metal</item>
+		<item vid="2" tid="23" group_name="music_styles">doom metal</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
@@ -1096,8 +1100,8 @@
 	<node_tags>
 		<item vid="5" tid="94" group_name="alphabetical_voc">M</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="11" group_name="music_styles">speed</item>
-		<item vid="2" tid="12" group_name="music_styles">power</item>
+		<item vid="2" tid="11" group_name="music_styles">speed metal</item>
+		<item vid="2" tid="12" group_name="music_styles">power metal</item>
 		<item vid="2" tid="10" group_name="music_styles">heavy metal</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -1139,7 +1143,7 @@
 
 	<node_tags>
 		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
-		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="2" tid="15" group_name="music_styles">folk metal</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
 
@@ -1163,7 +1167,7 @@
 	<node_tags>
 		<item vid="5" tid="83" group_name="alphabetical_voc">A</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
-		<item vid="2" tid="24" group_name="music_styles">симфоник-метал</item>
+		<item vid="2" tid="24" group_name="music_styles">symphonic metal</item>
 		<item vid="4" tid="147" group_name="country">Финляндия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -1192,7 +1196,7 @@
 		<item vid="5" tid="92" group_name="alphabetical_voc">K</item>
 		<item vid="9" tid="122" group_name="music_genre">Рок</item>
 		<item vid="9" tid="123" group_name="music_genre">Фолк</item>
-		<item vid="2" tid="15" group_name="music_styles">фолк-метал</item>
+		<item vid="2" tid="15" group_name="music_styles">folk metal</item>
 		<item vid="4" tid="147" group_name="country">Финляндия</item>
 		<item vid="3" tid="121" group_name="music_formats">collection</item>
 	</node_tags>
@@ -1617,6 +1621,65 @@ https://en.wikipedia.org/wiki/Katzenjammer_Kabarett</description>
 
 	<published format="d-M-Y H:i:s">02-Feb-2021 20:37:23</published>
 	<updated format="d-M-Y H:i:s">02-Feb-2021 20:37:23</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>metal - pagan, folk, black</item>
+	</title>
+	<images>
+		<img src="https://avatars.yandex.net/get-music-user-playlist/30088/9941293.1041.12994/200x200?1615039891235"/>
+		<img src="/music/0_covers/pagan_metal.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/metal-pagan_folk_black.json">metal-pagan_folk_black.json</a></li>
+		<li><img data-type="image-gallery" src="/music/0_covers/Corvus_Corax_German_Band.jpg"/></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="84" group_name="alphabetical_voc">B</item>
+		<item vid="5" tid="87" group_name="alphabetical_voc">F</item>
+		<item vid="5" tid="96" group_name="alphabetical_voc">P</item>
+		<item vid="5" tid="67" group_name="alphabetical_voc">П</item>
+		<item vid="5" tid="73" group_name="alphabetical_voc">Х</item>
+		<item vid="2" tid="105" group_name="music_styles">black metal</item>
+		<item vid="2" tid="41" group_name="music_styles">pagan metal</item>
+		<item vid="2" tid="15" group_name="music_styles">folk metal</item>
+		<item vid="4" tid="149" group_name="country">Россия</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">06-Mar-2021 20:36:18</published>
+	<updated format="d-M-Y H:i:s">07-Mar-2021 08:18:40</updated>
+</node>
+
+<node type="playlist">
+	<title>
+		<item>Overkill</item>
+	</title>
+	<images>
+		<img src="/music/0_covers/overkill.jpg"/>
+	</images>
+
+	
+	<related_links>
+		<li><a data-type="playlist-file" href="/music/0_playlists/overkill.json">overkill.json</a></li>
+		<li><a data-type="external-link" href="https://music.yandex.ru/users/roman-laptev/playlists/1040">music.yandex.ru</a></li>
+	</related_links>
+
+	<node_tags>
+		<item vid="5" tid="114" group_name="alphabetical_voc">O</item>
+		<item vid="2" tid="17" group_name="music_styles">thrash metal</item>
+		<item vid="2" tid="165" group_name="music_styles">groove metal</item>
+		<item vid="2" tid="11" group_name="music_styles">speed metal</item>
+		<item vid="4" tid="116" group_name="country">США</item>
+		<item vid="3" tid="121" group_name="music_formats">collection</item>
+	</node_tags>
+
+	<published format="d-M-Y H:i:s">06-Mar-2021 20:38:27</published>
+	<updated format="d-M-Y H:i:s">07-Mar-2021 08:19:48</updated>
 </node>
 	</database>
 </xroot>

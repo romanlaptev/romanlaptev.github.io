@@ -10,9 +10,25 @@ music/player
 lib/cms
 _export_lib.xml
 
+*/mybd.xml
+*/*/mybd.xml
+*/*/*/mybd.xml
+*/*/*/*/mybd.xml
+
+*/bookmarks.xml
+*/*/bookmarks.xml
+*/*/*/bookmarks.xml
+*/*/*/*/bookmarks.xml
+
+*/notes.xml
+*/*/notes.xml
+*/*/*/notes.xml
+*/*/*/*/notes.xml
+
 files_ignore/*
 */files_ignore/*
 */*/files_ignore/*
+*/*/*/files_ignore/*
 
 # https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
