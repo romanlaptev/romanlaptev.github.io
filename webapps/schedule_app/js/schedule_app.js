@@ -233,7 +233,10 @@ console.log( "Warn! error parse url in " + target.href );
 //------------------------------------------------------------------
 
 	$("#date-widget").on("change", function(event) {
-//console.log("change...", event);
+console.log(event.type, $("#date-widget").val() );
+		_runRequest({
+			callback : function(){console.log("-- this is the end...")}
+		});
 	});//end event
 	
 	$("#btn-update").on("click", function(event) {
@@ -266,6 +269,10 @@ console.log( "Warn! error parse url in " + target.href );
 		
 		$("#to-title").data("code", code1);
 		$("#to-title").val( title1 );
+		
+		_runRequest({
+			callback : function(){console.log("-- this is the end...")}
+		});
 		
 	});//end event
 
@@ -574,8 +581,36 @@ function _loadData( opt ){
 //console.log(p);
 
 		if( !p.date ||  p.date.length === 0){
+webApp.vars["logMsg"] = "error, empty or wrong date...";
+_message( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+			if( typeof p["postFunc"] === "function"){
+				p["postFunc"]();
+			}
 			return false;
 		}
+/*
+		if( !p.from_code ||  p.from_code.length === 0){
+webApp.vars["logMsg"] = "error, empty or from_code...";
+_message( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+			if( typeof p["postFunc"] === "function"){
+				p["postFunc"]();
+			}
+			return false;
+		}
+		
+		if( !p.to_code ||  p.to_code.length === 0){
+webApp.vars["logMsg"] = "error, empty or to_code...";
+_message( webApp.vars["logMsg"], "error");
+console.log( webApp.vars["logMsg"] );
+			if( typeof p["postFunc"] === "function"){
+				p["postFunc"]();
+			}
+			return false;
+		}
+*/		
+		
 		var dataUrl = webApp.vars["DB"]["dataUrl"]
 		.replace("{{from_code}}", p["from_code"] )
 		.replace("{{to_code}}", p["to_code"] )

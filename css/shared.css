@@ -864,7 +864,7 @@ header .navbar {
 }
 */
 
-.lr-alert {
+.lr-alert, .alert {
 	padding: 15px;
 	margin: 3px !important;
 	border: 1px solid;
@@ -872,26 +872,26 @@ header .navbar {
 	padding: 10px;
 }
 
-.lr-alert-warning {
+.lr-alert-warning, .alert-warning {
 	color: #000;
 	background-color: #ffb515;
 	/*border-color: #8a6d3b;*/
 	border-color: #a0522d;
 }
 
-.lr-alert-danger {
+.lr-alert-danger, .alert-danger {
 	color: #a94442;
 	background-color: #f2dede;
 	border-color: #ebccd1;
 }
 
-.lr-alert-info {
+.lr-alert-info, .alert-info {
 	color: #31708f;
 	background-color: #d9edf7;
 	border-color: #0174e9;
 }
 
-.lr-alert-success {
+.lr-alert-success, .alert-success {
 	color: #fff;
 	background-color: #00A500;
 	border-color: #008000;
@@ -899,8 +899,6 @@ header .navbar {
 
 /* LOG panel */
 .log-panel {
-	margin-bottom: 0;
-	margin-top: 5px;
 	background-color: #b0c4de;
 	position: fixed;
 	bottom: 0;
@@ -908,6 +906,7 @@ header .navbar {
 	z-index: 999;
 	opacity: 0.9;
 	border-radius: 4px;
+	min-width: 20%;
 }
 
 .log-panel .panel-body{padding: 5px;}
@@ -918,7 +917,7 @@ outline: none;
 }
 
 #log{
-	height: 400px;
+	height: 200px;
 	overflow-y: auto;	
 }
 
